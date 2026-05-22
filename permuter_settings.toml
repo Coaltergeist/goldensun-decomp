@@ -1,0 +1,9 @@
+# decomp-permuter project settings.
+#
+# Compiler/assembler flags mirror goldensun/Makefile's %.o: %.c pipeline at
+# lines 76-84. The permuter invokes this command line per candidate; any drift
+# from the real build produces spurious non-matches.
+
+compiler_type = "gcc"
+compiler_command = "tools/agbcc/bin/agbcc -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi -Iinclude"
+assembler_command = "arm-none-eabi-as -mcpu=arm7tdmi -Iinclude"
