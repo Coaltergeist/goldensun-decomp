@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_7a4370/exports.o(.text)
-		overlays/rom_7a4370/ovl_30.o(.text)
-		overlays/rom_7a4370/imports.o(.text)
+		src/overlays/rom_7a4370/exports.o(.text)
+		asm/overlays/rom_7a4370/ovl_30.o(.text)
+		src/overlays/rom_7a4370/imports.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/rom_7a4370/ovl_30.o(.data)
+		asm/overlays/rom_7a4370/ovl_30.o(.data)
 	} > overlay
 
 	.bss : {
-		overlays/rom_7a4370/ovl_30.o(.bss)
+		asm/overlays/rom_7a4370/ovl_30.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

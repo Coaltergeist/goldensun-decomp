@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_7c5efc/exports.o(.text)
-		overlays/rom_7c5efc/ovl_30_a.o(.text)
-		overlays/rom_7c5efc/ovl_30_b.o(.text)
-		overlays/rom_7c5efc/ovl_30_c_a.o(.text)
-		overlays/rom_7c5efc/ovl_30_c_b.o(.text)
-		overlays/rom_7c5efc/ovl_30_c_c.o(.text)
-		overlays/rom_7c5efc/imports.o(.text)
+		src/overlays/rom_7c5efc/exports.o(.text)
+		asm/overlays/rom_7c5efc/ovl_30_a.o(.text)
+		asm/overlays/rom_7c5efc/ovl_30_b.o(.text)
+		asm/overlays/rom_7c5efc/ovl_30_c_a.o(.text)
+		asm/overlays/rom_7c5efc/ovl_30_c_b.o(.text)
+		asm/overlays/rom_7c5efc/ovl_30_c_c.o(.text)
+		src/overlays/rom_7c5efc/imports.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/rom_7c5efc/ovl_30_c_c.o(.data)
+		asm/overlays/rom_7c5efc/ovl_30_c_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

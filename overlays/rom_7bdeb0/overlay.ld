@@ -13,25 +13,25 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_7bdeb0/exports.o(.text)
-		overlays/common/common0.o(.text)
-		overlays/rom_7bdeb0/ovl_314.o(.text)
-		overlays/rom_7bdeb0/ovl_d20_a.o(.text)
-		overlays/rom_7bdeb0/ovl_d20_b.o(.text)
-		overlays/rom_7bdeb0/ovl_d20_c.o(.text)
-		overlays/rom_7bdeb0/ovl_1300.o(.text)
-		overlays/rom_7bdeb0/ovl_169c.o(.text)
-		overlays/rom_7bdeb0/imports.o(.text)
+		src/overlays/rom_7bdeb0/exports.o(.text)
+		asm/overlays/common/common0.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_314.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_d20_a.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_d20_b.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_d20_c.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_1300.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_169c.o(.text)
+		src/overlays/rom_7bdeb0/imports.o(.text)
 		lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/common/common0.o(.data)
-		overlays/rom_7bdeb0/ovl_314.o(.data)
-		overlays/rom_7bdeb0/ovl_1300.o(.data)
-		overlays/common/common0.o(.data1)
-		overlays/rom_7bdeb0/ovl_d20_c.o(.data)
-		overlays/rom_7bdeb0/ovl_169c.o(.data)
+		asm/overlays/common/common0.o(.data)
+		asm/overlays/rom_7bdeb0/ovl_314.o(.data)
+		asm/overlays/rom_7bdeb0/ovl_1300.o(.data)
+		asm/overlays/common/common0.o(.data1)
+		asm/overlays/rom_7bdeb0/ovl_d20_c.o(.data)
+		asm/overlays/rom_7bdeb0/ovl_169c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

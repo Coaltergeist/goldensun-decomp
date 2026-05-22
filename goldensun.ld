@@ -92,7 +92,7 @@ SECTIONS {
 	} > rom
 
 	rom_320000 : ALIGN(0x1000) {
-		rom_320000/src/rom_320000.o(.rodata)
+		asm/rom_320000/rom_320000.o(.rodata)
 	} > rom
 
 	.fill : {

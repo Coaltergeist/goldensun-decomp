@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_78dc80/exports.o(.text)
-		overlays/rom_78dc80/ovl_30_a.o(.text)
-		overlays/rom_78dc80/ovl_30_b.o(.text)
-		overlays/rom_78dc80/ovl_30_c.o(.text)
-		overlays/rom_78dc80/imports.o(.text)
+		src/overlays/rom_78dc80/exports.o(.text)
+		asm/overlays/rom_78dc80/ovl_30_a.o(.text)
+		asm/overlays/rom_78dc80/ovl_30_b.o(.text)
+		asm/overlays/rom_78dc80/ovl_30_c.o(.text)
+		src/overlays/rom_78dc80/imports.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/rom_78dc80/ovl_30_c.o(.data)
+		asm/overlays/rom_78dc80/ovl_30_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,19 +13,19 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_791794/exports.o(.text)
-		overlays/rom_791794/ovl_30_a.o(.text)
-		overlays/rom_791794/ovl_30_b.o(.text)
-		overlays/rom_791794/ovl_30_c.o(.text)
-		overlays/rom_791794/imports.o(.text)
+		src/overlays/rom_791794/exports.o(.text)
+		asm/overlays/rom_791794/ovl_30_a.o(.text)
+		asm/overlays/rom_791794/ovl_30_b.o(.text)
+		asm/overlays/rom_791794/ovl_30_c.o(.text)
+		src/overlays/rom_791794/imports.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/rom_791794/ovl_30_c.o(.data)
+		asm/overlays/rom_791794/ovl_30_c.o(.data)
 	} > overlay
 
 	.bss : {
-		overlays/rom_791794/ovl_30_c.o(.bss)
+		asm/overlays/rom_791794/ovl_30_c.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {
