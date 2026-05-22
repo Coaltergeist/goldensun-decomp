@@ -15,7 +15,9 @@ SECTIONS {
 	.text : {
 		overlays/rom_7bc690/exports.o(.text)
 		overlays/common/common0.o(.text)
-		overlays/rom_7bc690/ovl_314.o(.text)
+		overlays/rom_7bc690/ovl_314_a.o(.text)
+		overlays/rom_7bc690/ovl_314_b.o(.text)
+		overlays/rom_7bc690/ovl_314_c.o(.text)
 		overlays/rom_7bc690/ovl_4e4.o(.text)
 		overlays/rom_7bc690/ovl_18a4.o(.text)
 		overlays/rom_7bc690/imports.o(.text)
@@ -27,7 +29,7 @@ SECTIONS {
 		overlays/rom_7bc690/ovl_4e4.o(.data)
 		overlays/rom_7bc690/ovl_1f80.o(.data)
 		overlays/common/common0.o(.data1)
-		overlays/rom_7bc690/ovl_314.o(.data)
+		overlays/rom_7bc690/ovl_314_c.o(.data)
 		overlays/rom_7bc690/ovl_18a4.o(.data)
 	} > overlay
 

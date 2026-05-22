@@ -16,7 +16,9 @@ SECTIONS {
 		overlays/rom_7bdeb0/exports.o(.text)
 		overlays/common/common0.o(.text)
 		overlays/rom_7bdeb0/ovl_314.o(.text)
-		overlays/rom_7bdeb0/ovl_d20.o(.text)
+		overlays/rom_7bdeb0/ovl_d20_a.o(.text)
+		overlays/rom_7bdeb0/ovl_d20_b.o(.text)
+		overlays/rom_7bdeb0/ovl_d20_c.o(.text)
 		overlays/rom_7bdeb0/ovl_1300.o(.text)
 		overlays/rom_7bdeb0/ovl_169c.o(.text)
 		overlays/rom_7bdeb0/imports.o(.text)
@@ -28,7 +30,7 @@ SECTIONS {
 		overlays/rom_7bdeb0/ovl_314.o(.data)
 		overlays/rom_7bdeb0/ovl_1300.o(.data)
 		overlays/common/common0.o(.data1)
-		overlays/rom_7bdeb0/ovl_d20.o(.data)
+		overlays/rom_7bdeb0/ovl_d20_c.o(.data)
 		overlays/rom_7bdeb0/ovl_169c.o(.data)
 	} > overlay
 

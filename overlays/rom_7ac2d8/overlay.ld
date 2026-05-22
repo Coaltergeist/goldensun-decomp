@@ -17,7 +17,9 @@ SECTIONS {
 		overlays/common/common0.o(.text)
 		overlays/rom_7ac2d8/ovl_314.o(.text)
 		overlays/rom_7ac2d8/ovl_d58.o(.text)
-		overlays/rom_7ac2d8/ovl_e20.o(.text)
+		overlays/rom_7ac2d8/ovl_e20_a.o(.text)
+		overlays/rom_7ac2d8/ovl_e20_b.o(.text)
+		overlays/rom_7ac2d8/ovl_e20_c.o(.text)
 		overlays/rom_7ac2d8/ovl_f84.o(.text)
 		overlays/rom_7ac2d8/ovl_1db4.o(.text)
 		overlays/rom_7ac2d8/ovl_22c4.o(.text)
@@ -37,7 +39,7 @@ SECTIONS {
 		overlays/rom_7ac2d8/ovl_d58.o(.data)
 		overlays/rom_7ac2d8/ovl_f84.o(.data)
 		overlays/rom_7ac2d8/ovl_22c4.o(.data)
-		overlays/rom_7ac2d8/ovl_e20.o(.data)
+		overlays/rom_7ac2d8/ovl_e20_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

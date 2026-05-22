@@ -1,85 +1,77 @@
-# Golden Sun
+<h1 align="center">Golden Sun</h1>
 
-This is a disassembly of [Golden Sun](https://en.wikipedia.org/wiki/Golden_Sun_%28video_game%29).
+> :warning: **This project is in early stages and under active development.**
+
+This is a work-in-progress matching decompilation of Golden Sun (GBA, 2001).
 
 It builds the following ROM:
 
-- [goldensun.gba](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=0170) (SHA1: `5c4695205413df7db52b9a184815a07783999971`)
+* **goldensun.gba** `sha1: 5c4695205413df7db52b9a184815a07783999971` (USA)
 
-## Status
+## Current state
 
-* All known code has been disassembled and symbolized.
-* Data has not been disassembled yet.
-* Overlays (map code) are not yet built into the output ROM, due to lacking a matching compressor. The build system builds and verifies uncompressed overlays.
-* Editing is not meaningfully possible yet. Data included verbatim from the base ROM contains many absolute addresses, so changing the position of any symbol is likely to produce a broken ROM.
+- :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
+- **215 / 5,774 functions matched as C source (3.7%)**
+- All assembly extracted, disassembled, and labeled — inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
+- Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
+- Canonical compiler identified as **stock GCC 3.0** (arm-agb-elf, ~June 2001) — the original Camelot toolchain. Production build is mid-swap onto it. See [COMPILER_NOTES.md](COMPILER_NOTES.md) for the reproduction recipe and flag set.
 
-## Roadmap
+## Setting up the repo
 
-More like a list of goals. Not in any particular order.
+See [INSTALL.md](INSTALL.md).
 
-* Develop a matching compressor and build overlays into the output ROM.
-* Declare variables in source files and get rid of [wram.sym](wram.sym).
-* Isolate modules further. Modules should be partially linked and combined in a final link. Functions and data should not be visible, only exported entry points.
-* Document code.
-* Disassemble and document data.
-* Develop a matching C compiler and decompile C instead of disassembling.
+## Contributing
 
-## Prerequisites
+Contributions are welcome — the decomp is in its early stages and benefits from any matched function, no matter how small.
 
-The original ROM (USA version) is required. It must be named `baserom.gba` and placed in the root directory of the repository.
+A function is matched when a `.c` file at the same path level as its `.s` compiles back to a byte-identical object. Verify your work with `make compare-rom` (which fails the build if the ROM SHA1 drifts).
 
-Required software:
+Functions awaiting decompilation live under their bank's `nonmatchings/` subdirectory in active assembly form. Pick one, write its C, iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the canonical references for the workflow.
 
-* GNU make
-* GNU binutils targeting ARM/Thumb (arm-none-eabi)
-* C compiler such as GCC or Clang, targeting host architecture (not ARM/Thumb)
-
-To install these dependencies on Debian or Ubuntu:
+### Layout
 
 ```
-apt install make gcc binutils-arm-none-eabi
+├── rom_c0/             # Main ROM banks (one directory per address-region)
+│   ├── src/            #   Matching C + active .s files
+│   │   └── nonmatchings/   #   .s files whose C hasn't been written yet (or fails to match)
+│   └── data/           #   .s files for bank data
+├── rom_9000/           # Additional main-ROM banks
+├── rom_15000/
+├── ...
+├── overlays/           # Overlay banks (97 of them; map-specific code/data)
+│   └── rom_XXXXXX/
+│       ├── ovl_XX.s         #  Active code .s
+│       ├── overlay.ld       #  Per-bank linker script
+│       └── nonmatchings/
+├── include/            # Assembler macros (.inc) and constants
+├── tools/              # agbcc toolchain, asm-differ wrapper
+├── wram.sym            # IWRAM/EWRAM symbol address map
+├── stage1.ld           # Main linker script (stage 1; overlays linked per-bank)
+└── Makefile
 ```
 
-## Build
+### Notable info
 
-```
-make
-```
+- Upstream disassembly: [gsret/goldensun](https://github.com/gsret/goldensun)
+- Cousin projects (also Camelot or contemporary GBA decomps):
+    - [SAT-R/sa2](https://github.com/SAT-R/sa2) — Sonic Advance 1 + 2 (same era, same Sappy audio engine)
+    - [zeldaret/tmc](https://github.com/zeldaret/tmc) — The Minish Cap (Sappy + GBA contemporary)
+    - [pret/pokeemerald](https://github.com/pret/pokeemerald) and [pret/pokefirered](https://github.com/pret/pokefirered) — the canonical GBA-decomp methodology references
+- Useful tooling references:
+    - [decomp.me](https://decomp.me) — matching-decomp sandbox
+    - [simonlindholm/asm-differ](https://github.com/simonlindholm/asm-differ) — the diff harness bundled here
+    - [simonlindholm/decomp-permuter](https://github.com/simonlindholm/decomp-permuter) — random-mutation matcher for stuck functions
 
-The default target builds and verifies the ROM and all overlays.
+## Credits
 
-To build only the ROM:
+This project builds on substantial prior work by others:
 
-```
-make goldensun.bin
-```
+- **[gsret](https://github.com/gsret)** — original disassembly ([gsret/goldensun](https://github.com/gsret/goldensun)) that is the foundation of this entire repo. Every `.s` file traces back to their labeling and structuring work.
+- **FutureFractal** — extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals.
+- **Tarpman** — compiler-reproduction analysis identifying the stock GCC 3.0 (arm-agb-elf) lineage of Camelot's toolchain.
+- **Karathan** — flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
+- **[pret](https://github.com/pret)** — the [agbcc](https://github.com/pret/agbcc) toolchain bundled here, asm-differ tooling, and a decade of GBA decomp methodology that this project applies directly.
+- **[simonlindholm](https://github.com/simonlindholm)** — [asm-differ](https://github.com/simonlindholm/asm-differ) and [decomp-permuter](https://github.com/simonlindholm/decomp-permuter); core matching-decomp infrastructure.
+- **The decomp community at large** — sm64, oot, mm, the [pret](https://github.com/pret) Pokémon family, [zeldaret](https://github.com/zeldaret), [SAT-R](https://github.com/SAT-R), and many others have collectively built the body of techniques this project relies on.
 
-To verify the ROM:
-
-```
-make compare-goldensun
-```
-
-To build a single overlay, for example `overlays/rom_779188/overlay.bin`:
-
-```
-make overlays/rom_779188/overlay.bin
-```
-
-To verify a single overlay, for example `overlays/rom_779188/overlay.bin`:
-
-```
-make compare-overlays/rom_779188/overlay
-```
-
-To delete all output files produced by the build:
-
-```
-make clean
-```
-
-## Acknowledgements
-
-Golden Sun is copyright 2001 Nintendo / Camelot Software Planning.
-
-This is a fan project, not associated in any way with Nintendo or Camelot.
+If you've contributed and aren't listed here, please open an issue.
