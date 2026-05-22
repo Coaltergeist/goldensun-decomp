@@ -1,0 +1,8 @@
+/* Cluster Func_2f3c..Func_2f3c extracted from goldensun/rom_c0/src/rom_2e00_c.s.
+ *
+ * Total .text for this TU = 4 bytes (= 0x4).
+ * Preserves the original ROM layout when slotted between
+ * rom_c0/src/rom_2e00_c_a.o and rom_c0/src/rom_2e00_c_c.o in
+ * goldensun/stage1.ld.
+ */
+void Func_2f3c(void) {}
