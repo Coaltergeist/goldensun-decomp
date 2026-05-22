@@ -135,10 +135,10 @@ clean::
 	-$(RM) $(TOOLS) $(TOOL_OBJS) $(TOOL_DEPS)
 
 
-rom_15000/data/strings/strings.s: rom_15000/data/strings/strings.txt tools/pack_strings
+data/strings/strings.s: data/strings/strings.txt tools/pack_strings
 	tools/pack_strings -i $< -o $(dir $@)
 
-rom_15000/data/strings/strings.txt: baserom.gba tools/unpack_strings
+data/strings/strings.txt: baserom.gba tools/unpack_strings
 	mkdir -p $(dir $@)
 	tools/unpack_strings -r $< -o $@
 
@@ -148,10 +148,10 @@ OVERLAY_LZS := $(OVERLAYS:.bin=.lz)
 $(OVERLAY_LZS): %.lz: %.bin tools/pack_overlay
 	tools/pack_overlay -i $< -o $@
 
-rom_320000/src/rom_320000.s: $(OVERLAY_LZS)
+asm/rom_320000/rom_320000.s: $(OVERLAY_LZS)
 
 clean::
-	-$(RM) -r rom_15000/data $(OVERLAY_LZS)
+	-$(RM) -r data/strings $(OVERLAY_LZS)
 
 
 # We need the uncompressed overlays for incbin statements in overlay
@@ -160,15 +160,15 @@ clean::
 OVERLAY_DIRS := $(dir $(OVERLAYS))
 
 define overlay_orig_deps
-$(patsubst %.s,%.o,$(wildcard $(1)*.s)): %.o: $(1)orig.bin
+$(patsubst %.s,%.o,$(wildcard asm/$(strip $(1))*.s)): %.o: $(strip $(1))orig.bin
 endef
 $(foreach overlay_dir,$(OVERLAY_DIRS),$(eval $(call overlay_orig_deps, $(overlay_dir))))
 
-overlays/common/common0.o: overlays/rom_78ef88/orig.bin
+asm/overlays/common/common0.o: overlays/rom_78ef88/orig.bin
 
-overlays/common/common1.o: overlays/rom_7db0c8/orig.bin
+asm/overlays/common/common1_c.o: overlays/rom_7db0c8/orig.bin
 
-overlays/common/common2.o: overlays/rom_7bf5a8/orig.bin
+asm/overlays/common/common2.o: overlays/rom_7bf5a8/orig.bin
 
 overlays/rom_%/orig.bin: baserom.gba tools/unpack_overlay
 	tools/unpack_overlay -r $< -a 0x$* -o $@

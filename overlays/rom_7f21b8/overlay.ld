@@ -13,13 +13,13 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		overlays/rom_7f21b8/exports.o(.text)
-		overlays/rom_7f21b8/ovl_30.o(.text)
-		overlays/rom_7f21b8/imports.o(.text)
+		src/overlays/rom_7f21b8/exports.o(.text)
+		asm/overlays/rom_7f21b8/ovl_30.o(.text)
+		src/overlays/rom_7f21b8/imports.o(.text)
 	} > overlay
 
 	.data : {
-		overlays/rom_7f21b8/ovl_30.o(.data)
+		asm/overlays/rom_7f21b8/ovl_30.o(.data)
 	} > overlay
 
 	/DISCARD/ : {
