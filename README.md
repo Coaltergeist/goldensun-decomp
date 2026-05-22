@@ -53,7 +53,7 @@ Functions awaiting decompilation live under their bank's `nonmatchings/` subdire
 ### Notable info
 
 - Upstream disassembly: [gsret/goldensun](https://github.com/gsret/goldensun)
-- Cousin projects (also Camelot or contemporary GBA decomps):
+- Reference projects (contemporary GBA decomps):
     - [SAT-R/sa2](https://github.com/SAT-R/sa2) — Sonic Advance 1 + 2 (same era, same Sappy audio engine)
     - [zeldaret/tmc](https://github.com/zeldaret/tmc) — The Minish Cap (Sappy + GBA contemporary)
     - [pret/pokeemerald](https://github.com/pret/pokeemerald) and [pret/pokefirered](https://github.com/pret/pokefirered) — the canonical GBA-decomp methodology references
