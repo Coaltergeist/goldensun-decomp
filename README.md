@@ -16,7 +16,7 @@ It builds the following ROM:
 - **215 / 5,774 functions matched as C source (3.7%)**
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
-- Canonical compiler identified and reproduced: **stock GCC 3.0** (arm-agb-elf, ~June 2001), the original Camelot toolchain. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build.sh`, and `install.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [COMPILER_NOTES.md](COMPILER_NOTES.md) for the codegen idioms and [INSTALL.md](INSTALL.md) for setup.
+- Canonical compiler identified and reproduced: **stock GCC 3.0** (arm-agb-elf, ~June 2001), the original Camelot toolchain. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build.sh`, and `install.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [INSTALL.md](INSTALL.md) for setup.
 - **Community symbol annotations are integrated as soft aliases:** function and global symbols can be referenced by either the corpus name (`Func_4458`, `iwram_1cb4`) or a curated name (`Random`, `gRNGState`, `REG_DISPCNT`, `add_djinni`) interchangeably. See [Annotations](#annotations) below.
 
 ## Annotations
@@ -26,7 +26,7 @@ Multiple community sources contribute curated function and global symbol names, 
 - **[`aliases.sym`](aliases.sym):** ~14,800 symbol aliases. Sources, in collision priority order:
     1. **[`wram.sym`](wram.sym)"** hand-curated seed (~255 entries).
     2. **FutureFractal's Ghidra project:** ~13,490 IWRAM/EWRAM globals + ~819 ROM-space function aliases (e.g. `gRNGState = 0x03001cb4;`, `Random = Func_4458;`). Dominant source.
-    3. **[gs_headers](https://github.com/Mimickal/gs_headers):** ~97 entries from community C headers' Doxygen `@address{AGFE,...}` tags (e.g. `REG_DISPCNT = 0x04000000;`, `CreateTask = Func_145a8;`).
+    3. **[gs_headers](https://github.com/SBird1337/gs_headers):** ~97 entries from community C headers' Doxygen `@address{AGFE,...}` tags (e.g. `REG_DISPCNT = 0x04000000;`, `CreateTask = Func_145a8;`).
     4. **Broken Seal community doc:** ~124 ROM-space function aliases distilled from the [GS1 Documentation](https://docs.google.com/document/d/1CiioR7fp-E1kbTCK0QaJ_Yv93o-zQk4XWUpA0aV9Kxk/edit).
 
 `aliases.sym` is the only file INCLUDEd from [`stage1.ld`](stage1.ld). The corpus symbols (`Func_XXXX`, `iwram_XXXX`, `ewram_XXXX`) remain authoritative for tooling that locates code by symbol grep, but contributors writing new matched `.c` may reference either spelling. The linker resolves both to the same address.
