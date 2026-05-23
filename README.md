@@ -2,7 +2,7 @@
 
 > :warning: **This project is in early stages and under active development.**
 >
-> _This project was created as a learning exercise and a personal challenge; exploring matching decompilation, reverse-engineering, and the GBA toolchain. Contributions and corrections from anyone more experienced are very welcome._
+> _This project was created as a learning exercise and a personal challenge; exploring matching decompilation, reverse-engineering, and the GBA toolchain. Contributions and corrections from anyone more experienced are very welcome, but not expected._
 
 This is a work-in-progress matching decompilation of Golden Sun (GBA, 2001).
 

@@ -7,6 +7,7 @@
  */
 extern void Func_c0f4(void);
 
+/* FF: bool ActorCmd_Delete(Actor * actor) */
 unsigned int Func_d8e8(void) {
     Func_c0f4();
     return 0;

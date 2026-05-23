@@ -7,6 +7,7 @@
  */
 extern unsigned int iwram_1ce0;
 
+/* FF: void SetPhysVec(fx32 x, fx32 y, fx32 z) */
 void Func_5258(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     iwram_1ce0 = arg0;
     *(unsigned int *)((char *)&iwram_1ce0 + 4) = arg1;

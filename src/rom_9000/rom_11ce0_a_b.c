@@ -5,6 +5,7 @@
  * rom_9000/src/rom_11ce0_a_a.o and rom_9000/src/rom_11ce0_a_c.o in
  * goldensun/stage1.ld.
  */
+/* FF: int HeightTile_0(char * param_1) */
 unsigned int Func_11ce0(unsigned char *arg0) {
     return (*arg0 << 24) >> 24 << 19;
 }
