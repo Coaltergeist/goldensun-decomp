@@ -12,6 +12,8 @@ MEMORY {
 }
 
 INCLUDE "wram.sym"
+INCLUDE "wram_ff_aliases.sym"
+INCLUDE "ghidra_names.sym"
 
 SECTIONS {
 	header : {

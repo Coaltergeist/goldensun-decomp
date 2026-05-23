@@ -17,6 +17,27 @@ It builds the following ROM:
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
 - Canonical compiler identified as **stock GCC 3.0** (arm-agb-elf, ~June 2001): the original Camelot toolchain. Production build is mid-swap onto it. See [COMPILER_NOTES.md](COMPILER_NOTES.md) for the reproduction recipe and flag set.
+- **FutureFractal's Ghidra annotations are integrated as soft aliases:** function and global symbols can be referenced by either the corpus name (`Func_4458`, `iwram_1cb4`) or the FF name (`Random`, `gRNGState`) interchangeably. See [FutureFractal annotations](#futurefractal-annotations) below.
+
+## FutureFractal annotations
+
+FutureFractal's reverse-engineering work on Golden Sun's Ghidra project contributed extensive function and type annotations. These are integrated into the build via two auto-generated linker-script files:
+
+- **[`wram_ff_aliases.sym`](wram_ff_aliases.sym):** 13,490 IWRAM/EWRAM global aliases (e.g. `gRNGState = 0x03001cb4;`)
+- **[`ghidra_names.sym`](ghidra_names.sym):** 817 ROM-space function aliases (e.g. `Random = Func_4458;`)
+
+Both are INCLUDEd from [`stage1.ld`](stage1.ld). The corpus symbols (`Func_XXXX`, `iwram_XXXX`, `ewram_XXXX`) remain authoritative for tooling that locates code by symbol grep, but contributors writing new matched `.c` may reference either spelling. The linker resolves both to the same address.
+
+Matched `.c` files carry a `/* FF: <signature> */` comment above each function where FF assigned a human-readable name. Example:
+
+```c
+/* FF: u32 Random(void) */
+unsigned int Func_4458(void) {
+    /* ... */
+}
+```
+
+Overlay-internal function aliases are not currently exported (overlay banks share offsets and need per-overlay linker-script changes; future enhancement).
 
 ## Setting up the repo
 
@@ -53,7 +74,9 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 ├── include/             # Assembler macros (.inc) and constants
 ├── lib/                 # Shared assembly (call_via.s)
 ├── tools/               # agbcc toolchain, asm-differ wrapper
-├── wram.sym             # IWRAM/EWRAM symbol address map
+├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names)
+├── wram_ff_aliases.sym  # FF global-name aliases (auto-generated)
+├── ghidra_names.sym     # FF function-name aliases (auto-generated)
 ├── stage1.ld            # Stage-1 partial link of main ROM
 ├── goldensun.ld         # Final link (main ROM + linked-in overlay blobs)
 └── Makefile
