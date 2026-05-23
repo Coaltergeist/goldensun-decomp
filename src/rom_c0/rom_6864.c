@@ -8,14 +8,17 @@
  * this to a single `swi 0xN; bx lr` byte sequence matching the ROM.
  */
 
+/* FF: void CpuSet(void * src, void * dest, u32 length) */
 void Func_6864(void) {
     asm("swi 0xb");
 }
 
+/* FF: void SoundBias0(void) */
 void Func_6868(void) {
     asm("mov r0, #0\n\tswi 0x19");
 }
 
+/* FF: void SoundBias1(void) */
 void Func_6870(void) {
     asm("mov r0, #1\n\tswi 0x19");
 }

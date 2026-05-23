@@ -5,6 +5,7 @@
  * rom_9000/src/rom_c004_c_a.o and rom_9000/src/rom_c004_c_c.o in
  * goldensun/stage1.ld.
  */
+/* FF: int stub_0800C628(void) */
 unsigned int Func_c628(void) {
     return 1;
 }

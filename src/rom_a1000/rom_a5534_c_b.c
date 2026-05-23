@@ -5,6 +5,7 @@
  * rom_a1000/src/rom_a5534_c_a.o and rom_a1000/src/rom_a5534_c_c.o in
  * goldensun/stage1.ld.
  */
+/* FF: int stub_080A63DC(void) */
 unsigned int Func_a63dc(void) {
     return 1;
 }

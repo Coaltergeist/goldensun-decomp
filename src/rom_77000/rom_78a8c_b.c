@@ -8,6 +8,7 @@
 extern unsigned int Func_78414(void);
 extern unsigned int Func_78b9c(unsigned int arg0);
 
+/* FF: u8 GetPsynergyItemTarget(ItemID item) */
 unsigned int Func_78a8c(void) {
     unsigned int ptr = Func_78414();
     unsigned short val = *(unsigned short *)(ptr + 0x28);

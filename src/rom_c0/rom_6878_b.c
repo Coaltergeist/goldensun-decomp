@@ -5,6 +5,7 @@
  * rom_c0/src/rom_6878_a.o and rom_c0/src/rom_6878_c.o in
  * goldensun/stage1.ld.
  */
+/* FF: u8 ReadFlash1(u8 * addr) */
 unsigned int Func_6abc(unsigned char *arg0) {
     return *arg0;
 }

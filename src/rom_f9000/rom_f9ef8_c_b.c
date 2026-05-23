@@ -5,6 +5,7 @@
  * rom_f9000/src/rom_f9ef8_c_a.o and rom_f9000/src/rom_f9ef8_c_c.o in
  * goldensun/stage1.ld.
  */
+/* FF: void MusicPlayerJumpTableCopy(undefined dest) */
 void Func_fa674(void) {
     asm("swi 0x2a");
 }
