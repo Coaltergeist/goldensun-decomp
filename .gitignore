@@ -9,11 +9,17 @@
 *.map
 stage1.o
 
+# Compiler-generated .s files (Make's %.o:%.c rule writes .s next to the .c;
+# clean removes them via C_GEN_S). Currently only dummy.s, but the gitignore
+# tracks the concept rather than the one file.
+src/rom_b0000/dummy.s
+
 # Per-machine expected disassembly cache
 expected/
 
 # User-installed toolchains (per INSTALL.md, installed via external git clone)
 tools/agbcc/
+tools/gcc3/
 tools/asm-differ/
 
 # Python

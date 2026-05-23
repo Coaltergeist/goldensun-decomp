@@ -16,7 +16,7 @@ It builds the following ROM:
 - **215 / 5,774 functions matched as C source (3.7%)**
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
-- Canonical compiler identified as **stock GCC 3.0** (arm-agb-elf, ~June 2001): the original Camelot toolchain. Production build is mid-swap onto it. See [COMPILER_NOTES.md](COMPILER_NOTES.md) for the reproduction recipe and flag set.
+- Canonical compiler identified and reproduced: **stock GCC 3.0** (arm-agb-elf, ~June 2001), the original Camelot toolchain. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build.sh`, and `install.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [COMPILER_NOTES.md](COMPILER_NOTES.md) for the codegen idioms and [INSTALL.md](INSTALL.md) for setup.
 - **FutureFractal's Ghidra annotations are integrated as soft aliases:** function and global symbols can be referenced by either the corpus name (`Func_4458`, `iwram_1cb4`) or the FF name (`Random`, `gRNGState`) interchangeably. See [FutureFractal annotations](#futurefractal-annotations) below.
 
 ## FutureFractal annotations
@@ -73,7 +73,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 │       └── overlay.lz   #   Compressed overlay binary (build output)
 ├── include/             # Assembler macros (.inc) and constants
 ├── lib/                 # Shared assembly (call_via.s)
-├── tools/               # agbcc toolchain, asm-differ wrapper
+├── tools/               # gcc3 toolchain (installed via camelot-gcc), asm-differ wrapper
 ├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names)
 ├── wram_ff_aliases.sym  # FF global-name aliases (auto-generated)
 ├── ghidra_names.sym     # FF function-name aliases (auto-generated)
@@ -102,7 +102,7 @@ This project builds on substantial prior work by others:
 - **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals.
 - **Tarpman:** compiler-reproduction analysis identifying the stock GCC 3.0 (arm-agb-elf) lineage of Camelot's toolchain.
 - **Karathan:** flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
-- **[pret](https://github.com/pret):** the [agbcc](https://github.com/pret/agbcc) toolchain bundled here, asm-differ tooling, and a decade of GBA decomp methodology that this project applies directly.
+- **[pret](https://github.com/pret):** a decade of GBA decomp methodology that this project applies directly, plus the [agbcc](https://github.com/pret/agbcc) install-script pattern that [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) mirrors.
 - **[simonlindholm](https://github.com/simonlindholm):** [asm-differ](https://github.com/simonlindholm/asm-differ) and [decomp-permuter](https://github.com/simonlindholm/decomp-permuter); core matching-decomp infrastructure.
 - **The decomp community at large:** sm64, oot, mm, the [pret](https://github.com/pret) Pokémon family, [zeldaret](https://github.com/zeldaret), [SAT-R](https://github.com/SAT-R), and many others have collectively built the body of techniques this project relies on.
 

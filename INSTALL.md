@@ -12,13 +12,16 @@ This project is designed to be built on Linux. On Windows, install WSL (Ubuntu) 
 
 ```bash
 sudo apt update
-sudo apt install build-essential binutils-arm-none-eabi python3 git
+sudo apt install build-essential binutils-arm-none-eabi python3 git \
+                 bison flex texinfo
 ```
+
+(The `bison flex texinfo` packages are needed by the compiler build step below.)
 
 #### On MacOS
 
 ```bash
-brew install arm-none-eabi-binutils python3 git
+brew install arm-none-eabi-binutils python3 git bison flex texinfo
 ```
 
 ## Building
@@ -32,18 +35,20 @@ cd goldensun-decomp
 
 ### 2. Install the build toolchain
 
-The build uses [agbcc](https://github.com/pret/agbcc) (pret's GCC 2.95 ARM port). Clone it as a sibling directory and install into this repo:
+The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc): a patched stock GCC 3.0 (arm-agb-elf target) that reproduces Camelot's original codegen byte-identically. Clone it as a sibling directory, build, and install into this repo:
 
 ```bash
 cd ..
-git clone https://github.com/pret/agbcc
-cd agbcc
-./build.sh
+git clone https://github.com/Coaltergeist/camelot-gcc
+cd camelot-gcc
+./build.sh                          # ~5-10 min, vendored gcc-3.0 source + 5 patches
 ./install.sh ../goldensun-decomp
 cd ../goldensun-decomp
 ```
 
-This drops the toolchain binaries into `tools/agbcc/` inside the repo (gitignored, never committed).
+This drops `cc1`, `xgcc`, `cpp0`, `tradcpp0` into `tools/gcc3/` inside the repo (gitignored, never committed).
+
+> If you have an older clone of this repo with `tools/agbcc/` on disk from a previous toolchain, you can delete it: `rm -rf tools/agbcc`. The build no longer uses agbcc.
 
 ### 3. Provide a reference ROM
 
@@ -99,15 +104,15 @@ Press `q` to exit the pager.
 
 ## Troubleshooting
 
-### `agbcc` exec-bit lost on Windows checkout
+### Compiler exec-bit lost on Windows checkout
 
-If `make` fails with `Permission denied` on `tools/agbcc/bin/agbcc` or similar, restore the executable bit:
+If `make` fails with `Permission denied` on `tools/gcc3/xgcc` or similar, restore the executable bit:
 
 ```bash
-chmod +x tools/agbcc/bin/*
+chmod +x tools/gcc3/*
 ```
 
-This commonly happens when checking out the repo from a Windows filesystem.
+This commonly happens when copying the toolchain via a Windows filesystem bridge (e.g. `\\wsl$\`).
 
 ### Build fails after a `git pull`
 

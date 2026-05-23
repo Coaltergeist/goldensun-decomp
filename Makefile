@@ -69,19 +69,25 @@ $(OVERLAYS): %.bin: %.elf
 %.o: %.s
 	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -MD $(@:.o=.d) -o $@ $<
 
-# Compile target C with agbcc -> arm-none-eabi-as. Single explicit rule so it
-# overrides Make's built-in implicit %.o:%.c (which would invoke the host cc).
-# Pipeline mirrors pokeemerald (cpp -> agbcc -> trailing .align -> as). The .i
-# and .s intermediates are written to disk for matching-decomp inspection.
-AGBCC          := tools/agbcc/bin/agbcc
-AGBCC_CPPFLAGS := -I tools/agbcc/include -I tools/agbcc -Iinclude -nostdinc -undef
-AGBCC_CFLAGS   := -mthumb-interwork -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
+# Compile target C with the stock GCC 3.0 build (camelot-build/build-stock).
+# The 5-patch build under camelot-build/build-stock/gcc/ produces
+# byte-identical output to Camelot's original compiler (see compiler.md).
+# Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
+# Karathan's flags (-fcall-used-r4 -ffixed-r7) are required for byte match.
+# Trailing .align 2, 0 is required for the same reason as the agbcc pipeline:
+# gcc-3.0 emits .align with zero-fill BETWEEN functions (via the elf.h patch)
+# but NOT AFTER the last function in a TU, so the assembler's default
+# Thumb-nop fill leaks in without this explicit append.
+GCC3_DIR     ?= tools/gcc3
+GCC3_CC      := $(GCC3_DIR)/xgcc
+GCC3_CFLAGS  := -B$(GCC3_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
+                -fno-builtin -nostdinc -ffreestanding \
+                -fcall-used-r4 -ffixed-r7 -Iinclude
 
 %.o: %.c
-	cpp $(AGBCC_CPPFLAGS) $< -o $(@:.o=.i)
-	$(AGBCC) $(AGBCC_CFLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	$(GCC3_CC) $(GCC3_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
 C_SRCS  := $(wildcard *.c */*.c */*/*.c)
 C_OBJS  := $(C_SRCS:.c=.o)
