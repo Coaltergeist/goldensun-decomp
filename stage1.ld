@@ -11,9 +11,7 @@ MEMORY {
 	sram	(rw)	: ORIGIN = 0x0E000000, LENGTH = 64K
 }
 
-INCLUDE "wram.sym"
-INCLUDE "wram_ff_aliases.sym"
-INCLUDE "ghidra_names.sym"
+INCLUDE "aliases.sym"
 
 SECTIONS {
 	header : {
