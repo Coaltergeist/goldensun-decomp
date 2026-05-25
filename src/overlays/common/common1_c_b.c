@@ -5,9 +5,9 @@
  * asm/overlays/common/common1_c_a.o and asm/overlays/common/common1_c_c.o in
  * goldensun/overlays/rom_7db0c8/overlay.ld.
  */
-extern unsigned int iwram_1f3c;
+extern unsigned int iwram_3001f3c;
 
 void OvlFunc_common1_2008(unsigned short arg0) {
-    unsigned int ptr = iwram_1f3c;
+    unsigned int ptr = iwram_3001f3c;
     *((unsigned short *)(ptr + 0xdc)) = arg0;
 }

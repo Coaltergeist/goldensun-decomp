@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_7822c
+.thumb_func_start Func_807822c
 	push	{r5, lr}
-	bl	Func_77394
+	bl	Func_8077394
 	mov	r5, r0
 	mov	r2, #0x38
 	ldrsh	r0, [r5, r2]
@@ -60,9 +60,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_7822c
+.func_end Func_807822c
 
-.thumb_func_start Func_782a0
+.thumb_func_start Func_80782a0
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #0x34
@@ -130,9 +130,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_782a0
+.func_end Func_80782a0
 
-.thumb_func_start Func_78320
+.thumb_func_start Func_8078320
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #0x36
@@ -201,13 +201,13 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_78320
+.func_end Func_8078320
 
-.thumb_func_start Func_783a4
+.thumb_func_start Func_80783a4
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_77394
+	bl	Func_8077394
 	mov	r6, r0
 	mov	r1, #0x38
 	ldrsh	r3, [r6, r1]
@@ -224,19 +224,19 @@
 .L783c8:
 	mov	r0, r7
 	strh	r1, [r6, #0x38]
-	bl	Func_7822c
+	bl	Func_807822c
 	mov	r2, #0x38
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_783a4
+.func_end Func_80783a4
 
-.thumb_func_start Func_783dc
+.thumb_func_start Func_80783dc
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_77394
+	bl	Func_8077394
 	mov	r6, r0
 	mov	r1, #0x3a
 	ldrsh	r3, [r6, r1]
@@ -253,13 +253,13 @@
 .L78400:
 	mov	r0, r7
 	strh	r1, [r6, #0x3a]
-	bl	Func_7822c
+	bl	Func_807822c
 	mov	r2, #0x3a
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_783dc
+.func_end Func_80783dc
 
 	.section .rodata
 	.global .L7a828

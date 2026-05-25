@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_be70
+.thumb_func_start Func_800be70
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	ldrb	r3, [r0, #0x1c]
-	ldr	r2, =iwram_1b10
+	ldr	r2, =iwram_3001b10
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]
@@ -71,36 +71,36 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_be70
+.func_end Func_800be70
 
-.thumb_func_start Func_befc
+.thumb_func_start Func_800befc
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, #0
 .Lbf02:
 	mov	r1, r6
 	mov	r0, r5
-	bl	Func_be70
+	bl	Func_800be70
 	add	r1, r6, #1
 	mov	r0, r5
-	bl	Func_be70
+	bl	Func_800be70
 	add	r1, r6, #2
 	mov	r0, r5
-	bl	Func_be70
+	bl	Func_800be70
 	add	r1, r6, #3
 	mov	r0, r5
-	bl	Func_be70
+	bl	Func_800be70
 	add	r6, #4
 	mov	r0, #1
-	bl	Func_30f8
+	bl	Func_80030f8
 	cmp	r6, #0x7f
 	bls	.Lbf02
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_befc
+.func_end Func_800befc
 
-.thumb_func_start Func_bf34
+.thumb_func_start Func_800bf34
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -127,23 +127,23 @@
 .Lbf60:
 	ldr	r0, [r5]
 	mov	r1, r7
-	bl	Func_be70
+	bl	Func_800be70
 	ldr	r0, [r5]
 	mov	r1, r9
-	bl	Func_be70
+	bl	Func_800be70
 	ldr	r0, [r5]
 	mov	r1, r10
-	bl	Func_be70
+	bl	Func_800be70
 	sub	r6, #1
 	ldmia	r5!, {r0}
 	mov	r1, r8
-	bl	Func_be70
+	bl	Func_800be70
 	cmp	r6, #0
 	bne	.Lbf60
 .Lbf86:
 	mov	r0, #1
 	add	r7, #4
-	bl	Func_30f8
+	bl	Func_80030f8
 	cmp	r7, #0x7f
 	bls	.Lbf4a
 	add	sp, #4
@@ -155,11 +155,11 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_bf34
+.func_end Func_800bf34
 
-.thumb_func_start Func_bfa4
+.thumb_func_start Func_800bfa4
 	push	{r5, lr}
-	ldr	r3, =iwram_1e70
+	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]
 	add	r3, #0xe4
 	ldr	r4, =0xffff0000
@@ -199,7 +199,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_bfa4
+.func_end Func_800bfa4
 
 	.section .rodata
 

@@ -23,7 +23,7 @@
 	mov	r2, r5
 	mov	r1, r4
 	mov	r3, r6
-	bl	__Func_c150
+	bl	__Func_800c150
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L96
@@ -41,13 +41,13 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_c528
+	bl	__Func_800c528
 	mov	r0, r5
 	mov	r1, #0xe
-	bl	__Func_929d8
+	bl	__Func_80929d8
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_c548
+	bl	__Func_800c548
 	mov	r0, r5
 	b	.L98
 .L96:
@@ -67,7 +67,7 @@
 	mov	r2, r5
 	mov	r1, r4
 	mov	r3, r6
-	bl	__Func_c150
+	bl	__Func_800c150
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lfa
@@ -87,10 +87,10 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_c528
+	bl	__Func_800c528
 	mov	r0, r5
 	mov	r1, #0xf
-	bl	__Func_929d8
+	bl	__Func_80929d8
 	mov	r1, r5
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -156,7 +156,7 @@
 	str	r3, [sp, #4]
 	mov	r10, r1
 	ldr	r7, [sp, #0x34]
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r3, #0x80
 	lsl	r3, #13
 	mov	r2, r10
@@ -176,7 +176,7 @@
 .L17e:
 	mov	r1, r5
 	mov	r3, r8
-	bl	__Func_c150
+	bl	__Func_800c150
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L18e
@@ -189,7 +189,7 @@
 	add	r1, #1
 	and	r1, r5
 	mov	r0, r6
-	bl	__Func_c300
+	bl	__Func_800c300
 	mov	r3, r10
 	ldr	r2, =.L4
 	and	r3, r5
@@ -197,7 +197,7 @@
 	ldr	r1, [r2, r3]
 	mov	r0, r6
 	mov	r11, r3
-	bl	__Func_c2d8
+	bl	__Func_800c2d8
 	mov	r3, r6
 	mov	r0, #0
 	add	r3, #0x55
@@ -249,7 +249,7 @@
 	beq	.L21c
 	ldr	r1, [r7, #4]
 	mov	r0, r6
-	bl	__Func_929d8
+	bl	__Func_80929d8
 .L21c:
 	mov	r3, #0x80
 	lsl	r3, #10
@@ -300,7 +300,7 @@
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	bl	_Func_af0
+	bl	_Func_8000af0
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, [r6, #0x1c]
@@ -312,14 +312,14 @@
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r2
-	bl	_Func_af0
+	bl	_Func_8000af0
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
 .L2a0:
-	bl	_Func_af0
+	bl	_Func_8000af0
 	str	r0, [r6, #0x34]
 .L2a6:
 	mov	r3, #0x80
@@ -330,10 +330,10 @@
 	beq	.L2c2
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_c300
+	bl	__Func_800c300
 	ldr	r1, [r7, #0x1c]
 	mov	r0, r6
-	bl	__Func_c2d8
+	bl	__Func_800c2d8
 .L2c2:
 	mov	r3, #0x80
 	lsl	r3, #15

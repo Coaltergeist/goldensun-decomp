@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_e220
+.thumb_func_start Func_800e220
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le22a
@@ -27,9 +27,9 @@
 .Le248:
 	pop	{r0}
 	bx	r0
-.func_end Func_e220
+.func_end Func_800e220
 
-.thumb_func_start Func_e24c
+.thumb_func_start Func_800e24c
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -59,9 +59,9 @@
 .Le27a:
 	pop	{r0}
 	bx	r0
-.func_end Func_e24c
+.func_end Func_800e24c
 
-.thumb_func_start Func_e280
+.thumb_func_start Func_800e280
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -90,9 +90,9 @@
 .Le2ac:
 	pop	{r0}
 	bx	r0
-.func_end Func_e280
+.func_end Func_800e280
 
-.thumb_func_start Func_e2b0
+.thumb_func_start Func_800e2b0
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le2ba
@@ -118,9 +118,9 @@
 .Le2d6:
 	pop	{r0}
 	bx	r0
-.func_end Func_e2b0
+.func_end Func_800e2b0
 
-.thumb_func_start Func_e2dc
+.thumb_func_start Func_800e2dc
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le2e6
@@ -146,9 +146,9 @@
 .Le302:
 	pop	{r0}
 	bx	r0
-.func_end Func_e2dc
+.func_end Func_800e2dc
 
-.thumb_func_start Func_e308
+.thumb_func_start Func_800e308
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le312
@@ -174,9 +174,9 @@
 .Le32e:
 	pop	{r0}
 	bx	r0
-.func_end Func_e308
+.func_end Func_800e308
 
-.thumb_func_start Func_e334
+.thumb_func_start Func_800e334
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -205,9 +205,9 @@
 .Le360:
 	pop	{r0}
 	bx	r0
-.func_end Func_e334
+.func_end Func_800e334
 
-.thumb_func_start Func_e364
+.thumb_func_start Func_800e364
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le36e
@@ -233,9 +233,9 @@
 .Le38a:
 	pop	{r0}
 	bx	r0
-.func_end Func_e364
+.func_end Func_800e364
 
-.thumb_func_start Func_e390
+.thumb_func_start Func_800e390
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le39a
@@ -261,9 +261,9 @@
 .Le3b6:
 	pop	{r0}
 	bx	r0
-.func_end Func_e390
+.func_end Func_800e390
 
-.thumb_func_start Func_e3bc
+.thumb_func_start Func_800e3bc
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le3c6
@@ -289,9 +289,9 @@
 .Le3e2:
 	pop	{r0}
 	bx	r0
-.func_end Func_e3bc
+.func_end Func_800e3bc
 
-.thumb_func_start Func_e3e8
+.thumb_func_start Func_800e3e8
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le3f2
@@ -317,9 +317,9 @@
 .Le40e:
 	pop	{r0}
 	bx	r0
-.func_end Func_e3e8
+.func_end Func_800e3e8
 
-.thumb_func_start Func_e414
+.thumb_func_start Func_800e414
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le41e
@@ -345,9 +345,9 @@
 .Le43a:
 	pop	{r0}
 	bx	r0
-.func_end Func_e414
+.func_end Func_800e414
 
-.thumb_func_start Func_e440
+.thumb_func_start Func_800e440
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le44a
@@ -373,9 +373,9 @@
 .Le466:
 	pop	{r0}
 	bx	r0
-.func_end Func_e440
+.func_end Func_800e440
 
-.thumb_func_start Func_e46c
+.thumb_func_start Func_800e46c
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le476
@@ -401,9 +401,9 @@
 .Le492:
 	pop	{r0}
 	bx	r0
-.func_end Func_e46c
+.func_end Func_800e46c
 
-.thumb_func_start Func_e498
+.thumb_func_start Func_800e498
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le4a2
@@ -429,9 +429,9 @@
 .Le4be:
 	pop	{r0}
 	bx	r0
-.func_end Func_e498
+.func_end Func_800e498
 
-.thumb_func_start Func_e4c4
+.thumb_func_start Func_800e4c4
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le4ce
@@ -457,9 +457,9 @@
 .Le4ea:
 	pop	{r0}
 	bx	r0
-.func_end Func_e4c4
+.func_end Func_800e4c4
 
-.thumb_func_start Func_e4f0
+.thumb_func_start Func_800e4f0
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le4fa
@@ -485,9 +485,9 @@
 .Le516:
 	pop	{r0}
 	bx	r0
-.func_end Func_e4f0
+.func_end Func_800e4f0
 
-.thumb_func_start Func_e51c
+.thumb_func_start Func_800e51c
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le526
@@ -513,9 +513,9 @@
 .Le542:
 	pop	{r0}
 	bx	r0
-.func_end Func_e51c
+.func_end Func_800e51c
 
-.thumb_func_start Func_e548
+.thumb_func_start Func_800e548
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le552
@@ -541,9 +541,9 @@
 .Le56e:
 	pop	{r0}
 	bx	r0
-.func_end Func_e548
+.func_end Func_800e548
 
-.thumb_func_start Func_e574
+.thumb_func_start Func_800e574
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le57e
@@ -569,9 +569,9 @@
 .Le59a:
 	pop	{r0}
 	bx	r0
-.func_end Func_e574
+.func_end Func_800e574
 
-.thumb_func_start Func_e5a0
+.thumb_func_start Func_800e5a0
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le5aa
@@ -597,9 +597,9 @@
 .Le5c6:
 	pop	{r0}
 	bx	r0
-.func_end Func_e5a0
+.func_end Func_800e5a0
 
-.thumb_func_start Func_e5cc
+.thumb_func_start Func_800e5cc
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le5d6
@@ -626,9 +626,9 @@
 .Le5f4:
 	pop	{r0}
 	bx	r0
-.func_end Func_e5cc
+.func_end Func_800e5cc
 
-.thumb_func_start Func_e5f8
+.thumb_func_start Func_800e5f8
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -663,9 +663,9 @@
 .Le630:
 	pop	{r0}
 	bx	r0
-.func_end Func_e5f8
+.func_end Func_800e5f8
 
-.thumb_func_start Func_e634
+.thumb_func_start Func_800e634
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -700,9 +700,9 @@
 .Le66c:
 	pop	{r0}
 	bx	r0
-.func_end Func_e634
+.func_end Func_800e634
 
-.thumb_func_start Func_e670
+.thumb_func_start Func_800e670
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -737,9 +737,9 @@
 .Le6a8:
 	pop	{r0}
 	bx	r0
-.func_end Func_e670
+.func_end Func_800e670
 
-.thumb_func_start Func_e6ac
+.thumb_func_start Func_800e6ac
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -771,9 +771,9 @@
 .Le6de:
 	pop	{r0}
 	bx	r0
-.func_end Func_e6ac
+.func_end Func_800e6ac
 
-.thumb_func_start Func_e6e4
+.thumb_func_start Func_800e6e4
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -808,9 +808,9 @@
 .Le71c:
 	pop	{r0}
 	bx	r0
-.func_end Func_e6e4
+.func_end Func_800e6e4
 
-.thumb_func_start Func_e720
+.thumb_func_start Func_800e720
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -845,9 +845,9 @@
 .Le758:
 	pop	{r0}
 	bx	r0
-.func_end Func_e720
+.func_end Func_800e720
 
-.thumb_func_start Func_e75c
+.thumb_func_start Func_800e75c
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -882,9 +882,9 @@
 .Le794:
 	pop	{r0}
 	bx	r0
-.func_end Func_e75c
+.func_end Func_800e75c
 
-.thumb_func_start Func_e798
+.thumb_func_start Func_800e798
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -919,9 +919,9 @@
 .Le7d0:
 	pop	{r0}
 	bx	r0
-.func_end Func_e798
+.func_end Func_800e798
 
-.thumb_func_start Func_e7d4
+.thumb_func_start Func_800e7d4
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -956,9 +956,9 @@
 .Le80c:
 	pop	{r0}
 	bx	r0
-.func_end Func_e7d4
+.func_end Func_800e7d4
 
-.thumb_func_start Func_e810
+.thumb_func_start Func_800e810
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -995,9 +995,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_e810
+.func_end Func_800e810
 
-.thumb_func_start Func_e850
+.thumb_func_start Func_800e850
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -1034,9 +1034,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_e850
+.func_end Func_800e850
 
-.thumb_func_start Func_e890
+.thumb_func_start Func_800e890
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -1073,9 +1073,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_e890
+.func_end Func_800e890
 
-.thumb_func_start Func_e8d0
+.thumb_func_start Func_800e8d0
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le8da
@@ -1101,9 +1101,9 @@
 .Le8f6:
 	pop	{r0}
 	bx	r0
-.func_end Func_e8d0
+.func_end Func_800e8d0
 
-.thumb_func_start Func_e8fc
+.thumb_func_start Func_800e8fc
 	push	{lr}
 	cmp	r1, #0
 	bne	.Le906
@@ -1129,9 +1129,9 @@
 .Le922:
 	pop	{r0}
 	bx	r0
-.func_end Func_e8fc
+.func_end Func_800e8fc
 
-.thumb_func_start Func_e928
+.thumb_func_start Func_800e928
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -1166,9 +1166,9 @@
 .Le960:
 	pop	{r0}
 	bx	r0
-.func_end Func_e928
+.func_end Func_800e928
 
-.thumb_func_start Func_e964
+.thumb_func_start Func_800e964
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -1203,9 +1203,9 @@
 .Le99c:
 	pop	{r0}
 	bx	r0
-.func_end Func_e964
+.func_end Func_800e964
 
-.thumb_func_start Func_e9a0
+.thumb_func_start Func_800e9a0
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -1215,7 +1215,7 @@
 	add	r3, r2
 	add	r1, r3, #4
 	ldr	r3, [r1]
-	ldr	r2, =Data_136e0
+	ldr	r2, =Data_80136e0
 	lsl	r3, #2
 	ldr	r3, [r2, r3]
 	ldrh	r0, [r5, #4]
@@ -1233,9 +1233,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_e9a0
+.func_end Func_800e9a0
 
-.thumb_func_start Func_e9dc
+.thumb_func_start Func_800e9dc
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -1245,7 +1245,7 @@
 	add	r3, r2
 	add	r1, r3, #4
 	ldr	r3, [r1]
-	ldr	r2, =Data_136e0
+	ldr	r2, =Data_80136e0
 	lsl	r3, #2
 	ldr	r3, [r2, r3]
 	ldrh	r0, [r5, #4]
@@ -1263,9 +1263,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_e9dc
+.func_end Func_800e9dc
 
-.thumb_func_start Func_ea18
+.thumb_func_start Func_800ea18
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -1275,7 +1275,7 @@
 	add	r3, r2
 	add	r1, r3, #4
 	ldr	r3, [r1]
-	ldr	r2, =Data_136e0
+	ldr	r2, =Data_80136e0
 	lsl	r3, #2
 	ldr	r3, [r2, r3]
 	ldrh	r0, [r5, #4]
@@ -1293,4 +1293,4 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_ea18
+.func_end Func_800ea18

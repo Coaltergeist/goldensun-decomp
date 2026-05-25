@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_d654
+.thumb_func_start Func_800d654
 	mov	r2, #4
 	ldrsh	r3, [r0, r2]
 	ldr	r2, [r0]
@@ -16,9 +16,9 @@
 	strh	r3, [r0, #4]
 	mov	r0, #0
 	bx	lr
-.func_end Func_d654
+.func_end Func_800d654
 
-.thumb_func_start Func_d674
+.thumb_func_start Func_800d674
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, r5
@@ -31,7 +31,7 @@
 	b	.Ld692
 .Ld688:
 	mov	r0, r5
-	bl	Func_ca98
+	bl	Func_800ca98
 	cmp	r0, #0
 	beq	.Ld69c
 .Ld692:
@@ -46,9 +46,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d674
+.func_end Func_800d674
 
-.thumb_func_start Func_d6a4
+.thumb_func_start Func_800d6a4
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, #4
@@ -76,9 +76,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_d6a4
+.func_end Func_800d6a4
 
-.thumb_func_start Func_d6d8
+.thumb_func_start Func_800d6d8
 	push	{lr}
 	mov	r2, r0
 	add	r2, #0x5e
@@ -108,9 +108,9 @@
 .Ld704:
 	pop	{r1}
 	bx	r1
-.func_end Func_d6d8
+.func_end Func_800d6d8
 
-.thumb_func_start Func_d710
+.thumb_func_start Func_800d710
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -137,7 +137,7 @@
 	bge	.Ld74a
 	mov	r0, r5
 .Ld742:
-	bl	Func_d6d8
+	bl	Func_800d6d8
 	strh	r0, [r5, #4]
 	b	.Ld754
 .Ld74a:
@@ -151,9 +151,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d710
+.func_end Func_800d710
 
-.thumb_func_start Func_d760
+.thumb_func_start Func_800d760
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -162,15 +162,15 @@
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r1, [r3, #4]
-	bl	Func_d6d8
+	bl	Func_800d6d8
 	strh	r0, [r5, #4]
 	mov	r0, #1
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d760
+.func_end Func_800d760
 
-.thumb_func_start Func_d780
+.thumb_func_start Func_800d780
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -186,7 +186,7 @@
 	cmp	r3, #0
 	beq	.Ld7a6
 	mov	r0, r5
-	bl	Func_d6d8
+	bl	Func_800d6d8
 	strh	r0, [r5, #4]
 	b	.Ld7aa
 .Ld7a6:
@@ -197,9 +197,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d780
+.func_end Func_800d780
 
-.thumb_func_start Func_d7b4
+.thumb_func_start Func_800d7b4
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -215,7 +215,7 @@
 	cmp	r3, #0
 	bne	.Ld7da
 	mov	r0, r5
-	bl	Func_d6d8
+	bl	Func_800d6d8
 	strh	r0, [r5, #4]
 	b	.Ld7de
 .Ld7da:
@@ -226,18 +226,18 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d7b4
+.func_end Func_800d7b4
 
-.thumb_func_start Func_d7e8
+.thumb_func_start Func_800d7e8
 	ldr	r3, =.L13240
 	str	r3, [r0]
 	mov	r3, #0
 	strh	r3, [r0, #4]
 	mov	r0, #0
 	bx	lr
-.func_end Func_d7e8
+.func_end Func_800d7e8
 
-.thumb_func_start Func_d7f8
+.thumb_func_start Func_800d7f8
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -246,7 +246,7 @@
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r0, [r3, #4]
-	bl	_Func_79338
+	bl	_Func_8079338
 	mov	r3, r5
 	add	r3, #0x57
 	strb	r0, [r3]
@@ -257,9 +257,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d7f8
+.func_end Func_800d7f8
 
-.thumb_func_start Func_d820
+.thumb_func_start Func_800d820
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -269,12 +269,12 @@
 	add	r3, r2
 	ldr	r6, [r3, #4]
 	mov	r0, r6
-	bl	_Func_79338
+	bl	_Func_8079338
 	mov	r3, r5
 	add	r3, #0x57
 	strb	r0, [r3]
 	mov	r0, r6
-	bl	_Func_79358
+	bl	_Func_8079358
 	ldrh	r3, [r5, #4]
 	add	r3, #2
 	strh	r3, [r5, #4]
@@ -282,9 +282,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_d820
+.func_end Func_800d820
 
-.thumb_func_start Func_d850
+.thumb_func_start Func_800d850
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -294,12 +294,12 @@
 	add	r3, r2
 	ldr	r6, [r3, #4]
 	mov	r0, r6
-	bl	_Func_79338
+	bl	_Func_8079338
 	mov	r3, r5
 	add	r3, #0x57
 	strb	r0, [r3]
 	mov	r0, r6
-	bl	_Func_79374
+	bl	_Func_8079374
 	ldrh	r3, [r5, #4]
 	add	r3, #2
 	strh	r3, [r5, #4]
@@ -307,9 +307,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_d850
+.func_end Func_800d850
 
-.thumb_func_start Func_d880
+.thumb_func_start Func_800d880
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r2, #4
@@ -319,7 +319,7 @@
 	add	r3, r2
 	ldr	r5, [r3, #4]
 	mov	r0, r5
-	bl	_Func_79338
+	bl	_Func_8079338
 	mov	r3, r6
 	add	r3, #0x57
 	strb	r0, [r3]
@@ -329,11 +329,11 @@
 	cmp	r0, r3
 	bne	.Ld8ae
 	mov	r0, r5
-	bl	_Func_79374
+	bl	_Func_8079374
 	b	.Ld8b4
 .Ld8ae:
 	mov	r0, r5
-	bl	_Func_79358
+	bl	_Func_8079358
 .Ld8b4:
 	ldrh	r3, [r6, #4]
 	add	r3, #2
@@ -342,9 +342,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_d880
+.func_end Func_800d880
 
-.thumb_func_start Func_d8c4
+.thumb_func_start Func_800d8c4
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -353,7 +353,7 @@
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r1, [r3, #4]
-	bl	Func_c300
+	bl	Func_800c300
 	ldrh	r3, [r5, #4]
 	add	r3, #2
 	strh	r3, [r5, #4]
@@ -361,5 +361,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_d8c4
+.func_end Func_800d8c4
 

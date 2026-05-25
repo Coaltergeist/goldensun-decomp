@@ -1,17 +1,17 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_b8228
+.thumb_func_start Func_80b8228
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r5, r0
 	mov	r8, r1
-	bl	Func_b7dd0
+	bl	Func_80b7dd0
 	mov	r7, r0
 	mov	r0, r5
 	ldr	r6, [r7]
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r2, #0x94
 	lsl	r2, #1
 	add	r0, r2
@@ -44,7 +44,7 @@
 	str	r3, [r6, #0x44]
 	mov	r0, r6
 	strb	r3, [r2]
-	bl	_Func_c4ac
+	bl	_Func_800c4ac
 	ldr	r3, =.Lc5a04
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r3, r5]
@@ -56,19 +56,19 @@
 	mov	r1, r0
 	mov	r2, #0
 	mov	r0, r6
-	bl	_Func_d14c
+	bl	_Func_800d14c
 .Lb829c:
 	mov	r0, r6
 	mov	r1, #5
-	bl	_Func_c300
+	bl	_Func_800c300
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_b8228
+.func_end Func_80b8228
 
-.thumb_func_start Func_b82c4
+.thumb_func_start Func_80b82c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -79,10 +79,10 @@
 	mov	r6, r1
 	mov	r9, r2
 	mov	r11, r3
-	bl	Func_b7dd0
+	bl	Func_80b7dd0
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_b7dd0
+	bl	Func_80b7dd0
 	ldr	r7, [r5]
 	ldr	r6, [r0]
 	mov	r2, #0x4b
@@ -115,7 +115,7 @@
 	mul	r3, r5
 	add	r3, r2
 	mov	r0, r3
-	ldr	r2, =Func_948
+	ldr	r2, =Func_8000948
 	bl	_call_via_r2
 	mov	r1, r9
 	lsl	r0, #8
@@ -143,15 +143,15 @@
 	add	r3, #0x5a
 	strb	r1, [r3]
 	mov	r0, r7
-	bl	_Func_c4ac
+	bl	_Func_800c4ac
 	mov	r0, r7
 	mov	r1, r8
 	mov	r2, #0
 	mov	r3, r6
-	bl	_Func_d14c
+	bl	_Func_800d14c
 	mov	r0, r7
 	mov	r1, #2
-	bl	_Func_c300
+	bl	_Func_800c300
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
 	mov	r9, r5
@@ -160,19 +160,19 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_b82c4
+.func_end Func_80b82c4
 
-.thumb_func_start Func_b8394
+.thumb_func_start Func_80b8394
 	push	{r5, lr}
-	bl	Func_b7dd0
+	bl	Func_80b7dd0
 	ldr	r5, [r0]
 	mov	r0, r5
-	bl	_Func_c4ac
+	bl	_Func_800c4ac
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_c300
+	bl	_Func_800c300
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_b8394
+.func_end Func_80b8394
 

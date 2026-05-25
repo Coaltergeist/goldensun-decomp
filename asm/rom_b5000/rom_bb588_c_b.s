@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_bb928
+	.global	Func_80bb928
 	.thumb_func
-	.type	 Func_bb928,function
-Func_bb928:
+	.type	 Func_80bb928,function
+Func_80bb928:
 	mov	r3, #182
 	lsl	r3, r3, #1
 	add	r0, r0, r3
@@ -17,10 +17,7 @@ Func_bb928:
 	str	r3, [r0]
 	bx	lr
 .Lfe1:
-	.size	 Func_bb928,.Lfe1-Func_bb928
-
-	.text
-	.align	2, 0
+	.size	 Func_80bb928,.Lfe1-Func_80bb928
 
 	.text
 	.align	2, 0

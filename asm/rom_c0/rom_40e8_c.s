@@ -1,10 +1,10 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_4278
+.thumb_func_start Func_8004278
 	push	{r5, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -38,12 +38,12 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_4278
+.func_end Func_8004278
 
-.thumb_func_start Func_42c8
+.thumb_func_start Func_80042c8
 	push	{r5, r6, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -73,12 +73,12 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_42c8
+.func_end Func_80042c8
 
-.thumb_func_start Func_430c
+.thumb_func_start Func_800430c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
-	ldr	r1, =iwram_1a20
+	ldr	r1, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -111,13 +111,13 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_430c
+.func_end Func_800430c
 
-.thumb_func_start Func_4358
+.thumb_func_start Func_8004358
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r5, #1
-	ldr	r1, =iwram_1a20
+	ldr	r1, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -146,12 +146,12 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_4358
+.func_end Func_8004358
 
-.thumb_func_start Func_439c
+.thumb_func_start Func_800439c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -182,12 +182,12 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_439c
+.func_end Func_800439c
 
-.thumb_func_start Func_43e0
+.thumb_func_start Func_80043e0
 	push	{r5, r6, lr}
 	mov	r0, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	neg	r0, r0
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -214,14 +214,14 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_43e0
+.func_end Func_80043e0
 
-.thumb_func_start Func_4420
+.thumb_func_start Func_8004420
 	push	{r5, r6, r7, lr}
-	ldr	r3, =iwram_1d34
+	ldr	r3, =iwram_3001d34
 	ldrb	r3, [r3]
 	mov	r7, r0
-	ldr	r6, =iwram_1a20
+	ldr	r6, =iwram_3001a20
 	asr	r7, #8
 	cmp	r3, #1
 	bne	.L444a
@@ -242,4 +242,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_4420
+.func_end Func_8004420

@@ -4,18 +4,15 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_fa674
+	.global	Func_80fa674
 	.thumb_func
-	.type	 Func_fa674,function
-Func_fa674:
+	.type	 Func_80fa674,function
+Func_80fa674:
 	swi 0x2a
 	.code	16
 	bx	lr
 .Lfe1:
-	.size	 Func_fa674,.Lfe1-Func_fa674
-
-	.text
-	.align	2, 0
+	.size	 Func_80fa674,.Lfe1-Func_80fa674
 
 	.text
 	.align	2, 0

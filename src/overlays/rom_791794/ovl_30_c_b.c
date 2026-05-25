@@ -1,11 +1,11 @@
-/* Cluster OvlFunc_f54..OvlFunc_f54 extracted from goldensun/asm/overlays/rom_791794/ovl_30_c.s.
+/* Cluster OvlFunc_791794_f54..OvlFunc_791794_f54 extracted from goldensun/asm/overlays/rom_791794/ovl_30_c.s.
  *
  * Total .text for this TU = 16 bytes (= 0x10).
  * Preserves the original ROM layout when slotted between
  * asm/overlays/rom_791794/ovl_30_c_a.o and asm/overlays/rom_791794/ovl_30_c_c.o in
  * goldensun/overlays/rom_791794/overlay.ld.
  */
-unsigned int OvlFunc_f54(unsigned int arg0) {
+unsigned int OvlFunc_791794_f54(unsigned int arg0) {
     unsigned short val;
     unsigned int ptr;
 

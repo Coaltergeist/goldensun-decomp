@@ -4,16 +4,13 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_b5b14
+	.global	Func_80b5b14
 	.thumb_func
-	.type	 Func_b5b14,function
-Func_b5b14:
+	.type	 Func_80b5b14,function
+Func_80b5b14:
 	bx	lr
 .Lfe1:
-	.size	 Func_b5b14,.Lfe1-Func_b5b14
-
-	.text
-	.align	2, 0
+	.size	 Func_80b5b14,.Lfe1-Func_80b5b14
 
 	.text
 	.align	2, 0

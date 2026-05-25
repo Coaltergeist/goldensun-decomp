@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_447c
+.thumb_func_start Func_800447c
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -11,8 +11,8 @@
 	lsl	r0, #7
 	add	r0, r8
 	mov	r5, r2
-	bl	Func_2322
-	ldr	r6, =Func_888
+	bl	Func_8002322
+	ldr	r6, =Func_8000888
 	mov	r1, r0
 	mov	r0, r10
 	.call_via r6
@@ -20,7 +20,7 @@
 	add	r3, r0
 	stmia	r5!, {r3}
 	mov	r0, r8
-	bl	Func_2322
+	bl	Func_8002322
 	add	r5, #4
 	mov	r1, r0
 	mov	r0, r10
@@ -34,9 +34,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_447c
+.func_end Func_800447c
 
-.thumb_func_start Func_44d0
+.thumb_func_start Func_80044d0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1
@@ -150,9 +150,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_44d0
+.func_end Func_80044d0
 
-.thumb_func_start Func_45a4
+.thumb_func_start Func_80045a4
 	push	{r5, r6, lr}
 	mov	r5, #0
 	mov	r4, #0xf
@@ -179,16 +179,16 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_45a4
+.func_end Func_80045a4
 
-.thumb_func_start Func_45d4
+.thumb_func_start Func_80045d4
 	push	{lr}
-	ldr	r3, =iwram_1d8
+	ldr	r3, =iwram_30001d8
 	bl	_call_via_r3
 	lsl	r0, #8
 	pop	{r1}
 	bx	r1
-.func_end Func_45d4
+.func_end Func_80045d4
 
 	.section .rodata
 

@@ -4,13 +4,13 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_4d4c
+	.global	OvlFunc_7e7574_4d4c
 	.thumb_func
-	.type	 OvlFunc_4d4c,function
-OvlFunc_4d4c:
+	.type	 OvlFunc_7e7574_4d4c,function
+OvlFunc_7e7574_4d4c:
 	bx	lr
 .Lfe1:
-	.size	 OvlFunc_4d4c,.Lfe1-OvlFunc_4d4c
+	.size	 OvlFunc_7e7574_4d4c,.Lfe1-OvlFunc_7e7574_4d4c
 
 	.text
 	.align	2, 0

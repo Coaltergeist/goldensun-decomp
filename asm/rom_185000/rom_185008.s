@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_185008
+.thumb_func_start Func_8185008
 	ldr	r2, =0xfff
 	mov	r3, r0
 	and	r3, r2
@@ -10,7 +10,7 @@
 	lsl	r0, #2
 	add	r0, r3
 	bx	lr
-.func_end Func_185008
+.func_end Func_8185008
 
 	.section .rodata
 

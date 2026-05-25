@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_1c9c8
+.thumb_func_start Func_801c9c8
 	mov	r1, #0x80
 	lsl	r1, #3
 	mov	r2, #0
@@ -40,7 +40,7 @@
 	add	r0, r3
 	strh	r2, [r0]
 	bx	lr
-.func_end Func_1c9c8
+.func_end Func_801c9c8
 
 	.section .rodata
 	.global .L342f8

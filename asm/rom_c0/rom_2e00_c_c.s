@@ -1,14 +1,14 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_2f40
-	ldr	r3, =Data_320000
+.thumb_func_start Func_8002f40
+	ldr	r3, =Data_8320000
 	lsl	r0, #2
 	ldr	r0, [r3, r0]
 	bx	lr
-.func_end Func_2f40
+.func_end Func_8002f40
 
-.thumb_func_start Func_2f4c
+.thumb_func_start Func_8002f4c
 	push	{r5, r6, r7, lr}
 	asr	r7, r1, #1
 	mov	r6, #1
@@ -59,27 +59,27 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_2f4c
+.func_end Func_8002f4c
 
-.thumb_func_start Func_2fb0
+.thumb_func_start Func_8002fb0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
 	push	{r5, r6}
 	mov	r8, r1
-	bl	Func_2f40
+	bl	Func_8002f40
 	mov	r1, r8
-	bl	Func_5340
+	bl	Func_8005340
 	mov	r10, r0
 	ldr	r5, =0x7c
 	mov	r0, r5
-	bl	Func_4938
+	bl	Func_8004938
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
 	lsl	r2, #24
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_2d5c
+	ldr	r0, =Func_8002d5c
 	mov	r1, r6
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
@@ -88,35 +88,35 @@
 	mov	r1, r10
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_2df0
+	bl	Func_8002df0
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_2fb0
+.func_end Func_8002fb0
 
-.thumb_func_start Func_3008
+.thumb_func_start Func_8003008
 	bx	lr
-.func_end Func_3008
+.func_end Func_8003008
 
-.thumb_func_start Func_300c
+.thumb_func_start Func_800300c
 	push	{r5, r6, lr}
 	ldr	r6, =REG_IME
 	mov	r5, #0
 	strh	r5, [r6]
-	ldr	r4, =iwram_0
+	ldr	r4, =iwram_3000000
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =__load_start_rom_770
 	mov	r1, r4
 	ldr	r2, =0x84000500
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_7ffc
+	ldr	r3, =iwram_3007ffc
 	ldr	r0, =.L7320
 	str	r4, [r3]
-	ldr	r1, =Data_850
+	ldr	r1, =Data_8000850
 	ldr	r3, =REG_DMA3SAD
 	ldr	r2, =0x8400000e
 	stmia	r3!, {r0, r1, r2}
@@ -134,9 +134,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_300c
+.func_end Func_800300c
 
-.thumb_func_start Func_307c
+.thumb_func_start Func_800307c
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r1, r2
@@ -179,13 +179,13 @@
 .L30c4:
 	cmp	r1, #0
 	beq	.L30d0
-	ldr	r2, =Data_850
+	ldr	r2, =Data_8000850
 	lsl	r3, r0, #2
 	str	r1, [r2, r3]
 	b	.L30d8
 .L30d0:
-	ldr	r1, =Data_850
-	ldr	r3, =Func_3008
+	ldr	r1, =Data_8000850
+	ldr	r3, =Func_8003008
 	lsl	r2, r0, #2
 	str	r3, [r1, r2]
 .L30d8:
@@ -195,7 +195,7 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_307c
+.func_end Func_800307c
 
 	.section .rodata
 

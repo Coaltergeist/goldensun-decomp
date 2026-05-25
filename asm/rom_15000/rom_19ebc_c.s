@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_1a5a4
+.thumb_func_start Func_801a5a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -10,18 +10,18 @@
 	ldr	r5, =0x278
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	Func_80048b0
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
 	mov	r1, r0
 	mov	r8, r2
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_15afc
+	ldr	r0, =Func_8015afc
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_1e50
+	ldr	r3, =iwram_3001e50
 	ldr	r4, =0x604
 	add	r3, #0xc4
 	add	r2, r7, r4
@@ -30,35 +30,35 @@
 	mov	r1, r7
 	bl	_call_via_r3
 	mov	r0, #0x31
-	bl	Func_2dd8
+	bl	Func_8002dd8
 	cmp	r6, #0
 	beq	.L1a5fe
 	ldr	r5, =0x9c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	Func_80048b0
 	lsr	r5, #2
 	mov	r2, r8
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_15d74
+	ldr	r0, =Func_8015d74
 	b	.L1a612
 .L1a5fe:
 	ldr	r5, =0x7c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_48b0
+	bl	Func_80048b0
 	lsr	r5, #2
 	mov	r2, r8
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_15e10
+	ldr	r0, =Func_8015e10
 .L1a612:
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r4, #0xc0
-	ldr	r0, =iwram_1e50
+	ldr	r0, =iwram_3001e50
 	lsl	r4, #3
 	mov	r2, #0x80
 	add	r3, r7, r4
@@ -73,13 +73,13 @@
 	mov	r0, r7
 	bl	_call_via_r4
 	mov	r0, #0x31
-	bl	Func_2dd8
+	bl	Func_8002dd8
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_1a5a4
+.func_end Func_801a5a4
 
 	.section .rodata
 	.global .L29a10

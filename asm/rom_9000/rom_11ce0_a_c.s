@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_11cec
+.thumb_func_start Func_8011cec
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -19,9 +19,9 @@
 	add	r0, r2, r0
 	pop	{r1}
 	bx	r1
-.func_end Func_11cec
+.func_end Func_8011cec
 
-.thumb_func_start Func_11d10
+.thumb_func_start Func_8011d10
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -40,9 +40,9 @@
 	add	r0, r1, r0
 	pop	{r1}
 	bx	r1
-.func_end Func_11d10
+.func_end Func_8011d10
 
-.thumb_func_start Func_11d34
+.thumb_func_start Func_8011d34
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -67,9 +67,9 @@
 .L11d5a:
 	pop	{r1}
 	bx	r1
-.func_end Func_11d34
+.func_end Func_8011d34
 
-.thumb_func_start Func_11d60
+.thumb_func_start Func_8011d60
 	push	{r5, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -98,9 +98,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_11d60
+.func_end Func_8011d60
 
-.thumb_func_start Func_11d94
+.thumb_func_start Func_8011d94
 	push	{r5, r6, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -137,9 +137,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_11d94
+.func_end Func_8011d94
 
-.thumb_func_start Func_11ddc
+.thumb_func_start Func_8011ddc
 	push	{r5, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -184,9 +184,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_11ddc
+.func_end Func_8011ddc
 
-.thumb_func_start Func_11e2c
+.thumb_func_start Func_8011e2c
 	mov	r3, r0
 	mov	r0, #0
 	ldrsb	r0, [r3, r0]
@@ -202,9 +202,9 @@
 	mul	r3, r4
 	add	r0, r3
 	bx	lr
-.func_end Func_11e2c
+.func_end Func_8011e2c
 
-.thumb_func_start Func_11e50
+.thumb_func_start Func_8011e50
 	push	{lr}
 	cmp	r1, #7
 	bhi	.L11e5e
@@ -220,9 +220,9 @@
 	lsl	r0, #19
 	pop	{r1}
 	bx	r1
-.func_end Func_11e50
+.func_end Func_8011e50
 
-.thumb_func_start Func_11e6c
+.thumb_func_start Func_8011e6c
 	push	{lr}
 	cmp	r2, #7
 	bhi	.L11e7a
@@ -238,9 +238,9 @@
 	lsl	r0, #19
 	pop	{r1}
 	bx	r1
-.func_end Func_11e6c
+.func_end Func_8011e6c
 
-.thumb_func_start Func_11e88
+.thumb_func_start Func_8011e88
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -280,9 +280,9 @@
 .L11eca:
 	pop	{r1}
 	bx	r1
-.func_end Func_11e88
+.func_end Func_8011e88
 
-.thumb_func_start Func_11ed0
+.thumb_func_start Func_8011ed0
 	push	{lr}
 	ldrb	r3, [r0]
 	add	r0, #1
@@ -320,9 +320,9 @@
 .L11f0e:
 	pop	{r1}
 	bx	r1
-.func_end Func_11ed0
+.func_end Func_8011ed0
 
-.thumb_func_start Func_11f14
+.thumb_func_start Func_8011f14
 	ldr	r3, =.L133fc
 	lsl	r2, #4
 	add	r1, r2
@@ -330,9 +330,9 @@
 	ldrsb	r0, [r0, r3]
 	lsl	r0, #19
 	bx	lr
-.func_end Func_11f14
+.func_end Func_8011f14
 
-.thumb_func_start Func_11f28
+.thumb_func_start Func_8011f28
 	lsl	r2, #4
 	ldr	r3, =.L133fc
 	sub	r2, r1
@@ -341,5 +341,5 @@
 	ldrsb	r0, [r0, r3]
 	lsl	r0, #19
 	bx	lr
-.func_end Func_11f28
+.func_end Func_8011f28
 

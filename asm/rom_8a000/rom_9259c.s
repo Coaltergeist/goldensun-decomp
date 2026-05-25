@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_9259c
+.thumb_func_start Func_809259c
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8ba1c
+	bl	Func_808ba1c
 	cmp	r0, #0
 	beq	.L925c0
 	cmp	r5, #0
@@ -17,23 +17,23 @@
 	ldr	r3, =.L9ebfc
 	lsl	r1, #7
 	add	r1, r3
-	bl	_Func_c2d8
+	bl	_Func_800c2d8
 .L925c0:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_9259c
+.func_end Func_809259c
 
-.thumb_func_start Func_925cc
+.thumb_func_start Func_80925cc
 	push	{r5, lr}
 	mov	r5, r0
-	bl	Func_9259c
+	bl	Func_809259c
 	mov	r0, r5
-	bl	Func_920e8
+	bl	Func_80920e8
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_925cc
+.func_end Func_80925cc
 
 	.section .rodata
 

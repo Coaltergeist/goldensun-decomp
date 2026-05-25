@@ -4,14 +4,14 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_98
+	.global	OvlFunc_7b9cb4_98
 	.thumb_func
-	.type	 OvlFunc_98,function
-OvlFunc_98:
+	.type	 OvlFunc_7b9cb4_98,function
+OvlFunc_7b9cb4_98:
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #8
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r3, [r0, #8]
 	str	r3, [r5, #8]
 	ldr	r3, .L3
@@ -27,12 +27,12 @@ OvlFunc_98:
 .L3:
 	.word	-786432
 .Lfe1:
-	.size	 OvlFunc_98,.Lfe1-OvlFunc_98
+	.size	 OvlFunc_7b9cb4_98,.Lfe1-OvlFunc_7b9cb4_98
 	.align	2, 0
-	.global	OvlFunc_bc
+	.global	OvlFunc_7b9cb4_bc
 	.thumb_func
-	.type	 OvlFunc_bc,function
-OvlFunc_bc:
+	.type	 OvlFunc_7b9cb4_bc,function
+OvlFunc_7b9cb4_bc:
 	ldr	r3, [r0, #8]
 	ldr	r2, [r0, #36]
 	add	r3, r3, r2
@@ -54,7 +54,7 @@ OvlFunc_bc:
 	mov	r0, #0
 	bx	lr
 .Lfe2:
-	.size	 OvlFunc_bc,.Lfe2-OvlFunc_bc
+	.size	 OvlFunc_7b9cb4_bc,.Lfe2-OvlFunc_7b9cb4_bc
 
 	.text
 	.align	2, 0

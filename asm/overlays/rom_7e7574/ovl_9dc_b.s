@@ -4,37 +4,37 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_1098
+	.global	OvlFunc_7e7574_1098
 	.thumb_func
-	.type	 OvlFunc_1098,function
-OvlFunc_1098:
+	.type	 OvlFunc_7e7574_1098,function
+OvlFunc_7e7574_1098:
 	bx	lr
 .Lfe1:
-	.size	 OvlFunc_1098,.Lfe1-OvlFunc_1098
+	.size	 OvlFunc_7e7574_1098,.Lfe1-OvlFunc_7e7574_1098
 	.align	2, 0
-	.global	OvlFunc_109c
+	.global	OvlFunc_7e7574_109c
 	.thumb_func
-	.type	 OvlFunc_109c,function
-OvlFunc_109c:
+	.type	 OvlFunc_7e7574_109c,function
+OvlFunc_7e7574_109c:
 	bx	lr
 .Lfe2:
-	.size	 OvlFunc_109c,.Lfe2-OvlFunc_109c
+	.size	 OvlFunc_7e7574_109c,.Lfe2-OvlFunc_7e7574_109c
 	.align	2, 0
-	.global	OvlFunc_10a0
+	.global	OvlFunc_7e7574_10a0
 	.thumb_func
-	.type	 OvlFunc_10a0,function
-OvlFunc_10a0:
+	.type	 OvlFunc_7e7574_10a0,function
+OvlFunc_7e7574_10a0:
 	bx	lr
 .Lfe3:
-	.size	 OvlFunc_10a0,.Lfe3-OvlFunc_10a0
+	.size	 OvlFunc_7e7574_10a0,.Lfe3-OvlFunc_7e7574_10a0
 	.align	2, 0
-	.global	OvlFunc_10a4
+	.global	OvlFunc_7e7574_10a4
 	.thumb_func
-	.type	 OvlFunc_10a4,function
-OvlFunc_10a4:
+	.type	 OvlFunc_7e7574_10a4,function
+OvlFunc_7e7574_10a4:
 	bx	lr
 .Lfe4:
-	.size	 OvlFunc_10a4,.Lfe4-OvlFunc_10a4
+	.size	 OvlFunc_7e7574_10a4,.Lfe4-OvlFunc_7e7574_10a4
 
 	.text
 	.align	2, 0

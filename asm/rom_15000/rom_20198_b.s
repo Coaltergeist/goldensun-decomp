@@ -4,17 +4,14 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_209cc
+	.global	Func_80209cc
 	.thumb_func
-	.type	 Func_209cc,function
-Func_209cc:
+	.type	 Func_80209cc,function
+Func_80209cc:
 	mov	r0, #1
 	bx	lr
 .Lfe1:
-	.size	 Func_209cc,.Lfe1-Func_209cc
-
-	.text
-	.align	2, 0
+	.size	 Func_80209cc,.Lfe1-Func_80209cc
 
 	.text
 	.align	2, 0

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_f9ef8
+.thumb_func_start Func_80f9ef8
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	ldrb	r1, [r5]
@@ -20,10 +20,10 @@
 	mov	r3, #7
 	and	r0, r3
 	beq	.Lf9f24
-	ldr	r3, =iwram_7ff0
+	ldr	r3, =iwram_3007ff0
 	ldr	r3, [r3]
 	ldr	r3, [r3, #0x2c]
-	bl	Func_f9ee8
+	bl	Func_80f9ee8
 .Lf9f24:
 	strb	r6, [r4]
 .Lf9f26:
@@ -37,9 +37,9 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_f9ef8
+.func_end Func_80f9ef8
 
-.thumb_func_start Func_f9f3c
+.thumb_func_start Func_80f9f3c
 	ldrb	r1, [r4, #0x12]
 	mov	r0, #0x14
 	ldrsb	r2, [r4, r0]
@@ -66,9 +66,9 @@
 .Lf9f68:
 	strb	r0, [r4, #3]
 	bx	lr
-.func_end Func_f9f3c
+.func_end Func_80f9f3c
 
-.thumb_func_start Func_f9f6c
+.thumb_func_start Func_80f9f6c
 	push	{r4, r5, r6, r7, lr}
 	mov	r4, r8
 	mov	r5, r9
@@ -78,7 +78,7 @@
 	sub	sp, #0x18
 	str	r1, [sp]
 	mov	r5, r2
-	ldr	r1, =iwram_7ff0
+	ldr	r1, =iwram_3007ff0
 	ldr	r1, [r1]
 	str	r1, [sp, #4]
 	ldr	r1, =Data_fba14
@@ -250,7 +250,7 @@
 	beq	.Lfa152
 .Lfa0ac:
 	mov	r0, r4
-	bl	Func_fa678
+	bl	Func_80fa678
 	mov	r1, #0
 	str	r1, [r4, #0x30]
 	ldr	r3, [r5, #0x20]
@@ -266,11 +266,11 @@
 	cmp	r0, r1
 	beq	.Lfa0d2
 	mov	r1, r5
-	bl	Func_fa1ac
+	bl	Func_80fa1ac
 .Lfa0d2:
 	ldr	r0, [sp]
 	mov	r1, r5
-	bl	Func_fac44
+	bl	Func_80fac44
 	ldr	r0, [r5, #4]
 	str	r0, [r4, #0x10]
 	ldr	r0, [sp, #0x10]
@@ -288,7 +288,7 @@
 	str	r0, [r4, #4]
 	ldrh	r0, [r5, #0x1e]
 	strh	r0, [r4, #0xc]
-	bl	Func_f9f3c
+	bl	Func_80f9f3c
 	ldrb	r1, [r4, #8]
 	mov	r0, #8
 	ldrsb	r0, [r5, r0]
@@ -318,13 +318,13 @@
 	ldr	r0, [sp, #0xc]
 	ldr	r3, [sp, #4]
 	ldr	r3, [r3, #0x30]
-	bl	Func_f9ee8
+	bl	Func_80f9ee8
 	b	.Lfa144
 .Lfa13a:
 	ldrb	r2, [r5, #9]
 	mov	r1, r3
 	mov	r0, r7
-	bl	Func_fa1fc
+	bl	Func_80fa1fc
 .Lfa144:
 	str	r0, [r4, #0x20]
 	mov	r0, #0x80
@@ -342,9 +342,9 @@
 	mov	r11, r3
 	pop	{r0}
 	bx	r0
-.func_end Func_f9f6c
+.func_end Func_80f9f6c
 
-.thumb_func_start Func_fa16c
+.thumb_func_start Func_80fa16c
 	push	{r4, r5}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -382,9 +382,9 @@
 .Lfa1a8:
 	pop	{r4, r5}
 	bx	lr
-.func_end Func_fa16c
+.func_end Func_80fa16c
 
-.thumb_func_start Func_fa1ac
+.thumb_func_start Func_80fa1ac
 	mov	r2, #0
 	strb	r2, [r1, #0x16]
 	strb	r2, [r1, #0x1a]
@@ -400,39 +400,39 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	bx	lr
-.func_end Func_fa1ac
+.func_end Func_80fa1ac
 
-.thumb_func_start Func_fa1c8
+.thumb_func_start Func_80fa1c8
 	ldr	r2, [r1, #0x40]
 	add	r3, r2, #1
 	str	r3, [r1, #0x40]
 	ldrb	r3, [r2]
 	bx	lr
-.func_end Func_fa1c8
+.func_end Func_80fa1c8
 
-.thumb_func_start Func_fa1d4
+.thumb_func_start Func_80fa1d4
 	mov	r12, lr
-	bl	Func_fa1c8
+	bl	Func_80fa1c8
 	strb	r3, [r1, #0x19]
 	cmp	r3, #0
 	bne	.Lfa1e4
-	bl	Func_fa1ac
+	bl	Func_80fa1ac
 .Lfa1e4:
 	bx	r12
-.func_end Func_fa1d4
+.func_end Func_80fa1d4
 
-.thumb_func_start Func_fa1e8
+.thumb_func_start Func_80fa1e8
 	mov	r12, lr
-	bl	Func_fa1c8
+	bl	Func_80fa1c8
 	strb	r3, [r1, #0x17]
 	cmp	r3, #0
 	bne	.Lfa1f8
-	bl	Func_fa1ac
+	bl	Func_80fa1ac
 .Lfa1f8:
 	bx	r12
-.func_end Func_fa1e8
+.func_end Func_80fa1e8
 
-.thumb_func_start Func_fa1fc
+.thumb_func_start Func_80fa1fc
 	push	{r4, r5, r6, r7, lr}
 	mov	r12, r0
 	lsl	r1, #24
@@ -470,13 +470,13 @@
 	ldr	r4, [r1, #4]
 	sub	r0, r5
 	mov	r1, r7
-	bl	Func_f95e0
+	bl	Func_80f95e0
 	mov	r1, r0
 	add	r1, r5, r1
 	mov	r0, r4
-	bl	Func_f95e0
+	bl	Func_80f95e0
 	pop	{r4, r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_fa1fc
+.func_end Func_80fa1fc
 

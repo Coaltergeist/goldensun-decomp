@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_314
+.thumb_func_start OvlFunc_793768_314
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	mov	r5, r0
 	ldr	r2, [r3]
 	mov	r6, r5
@@ -27,16 +27,16 @@
 .L342:
 	mov	r0, #0xe
 .L344:
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r1, r0
 	mov	r0, r5
 	mov	r2, #0x20
 	mov	r3, #0
-	bl	OvlFunc_1674
+	bl	OvlFunc_793768_1674
 	cmp	r0, #0
 	bne	.L394
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r2, #0xbc
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -64,7 +64,7 @@
 	mov	r0, r5
 	mov	r2, r10
 	mov	r3, r9
-	bl	OvlFunc_1674
+	bl	OvlFunc_793768_1674
 .L394:
 	mov	r0, #0
 	pop	{r3, r5, r6}
@@ -74,14 +74,14 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_314
+.func_end OvlFunc_793768_314
 
-.thumb_func_start OvlFunc_3ac
+.thumb_func_start OvlFunc_793768_3ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	mov	r7, r0
 	mov	r2, #0
 	ldr	r6, [r3]
@@ -95,7 +95,7 @@
 	mov	r0, #0
 	cmp	r3, r2
 	beq	.L402
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r2, #0xbc
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -118,7 +118,7 @@
 	mov	r0, r7
 	mov	r2, r8
 	mov	r3, r10
-	bl	OvlFunc_1674
+	bl	OvlFunc_793768_1674
 	mov	r0, #0
 .L402:
 	pop	{r3, r5}
@@ -127,10 +127,10 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_3ac
+.func_end OvlFunc_793768_3ac
 
-.thumb_func_start OvlFunc_418
+.thumb_func_start OvlFunc_793768_418
 	ldr	r0, =.L1f5c
 	bx	lr
-.func_end OvlFunc_418
+.func_end OvlFunc_793768_418
 

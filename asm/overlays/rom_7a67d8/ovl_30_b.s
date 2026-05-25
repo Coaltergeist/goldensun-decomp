@@ -4,21 +4,21 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_1cc
+	.global	OvlFunc_7a67d8_1cc
 	.thumb_func
-	.type	 OvlFunc_1cc,function
-OvlFunc_1cc:
+	.type	 OvlFunc_7a67d8_1cc,function
+OvlFunc_7a67d8_1cc:
 	bx	lr
 .Lfe1:
-	.size	 OvlFunc_1cc,.Lfe1-OvlFunc_1cc
+	.size	 OvlFunc_7a67d8_1cc,.Lfe1-OvlFunc_7a67d8_1cc
 	.align	2, 0
-	.global	OvlFunc_1d0
+	.global	OvlFunc_7a67d8_1d0
 	.thumb_func
-	.type	 OvlFunc_1d0,function
-OvlFunc_1d0:
+	.type	 OvlFunc_7a67d8_1d0,function
+OvlFunc_7a67d8_1d0:
 	bx	lr
 .Lfe2:
-	.size	 OvlFunc_1d0,.Lfe2-OvlFunc_1d0
+	.size	 OvlFunc_7a67d8_1d0,.Lfe2-OvlFunc_7a67d8_1d0
 
 	.text
 	.align	2, 0

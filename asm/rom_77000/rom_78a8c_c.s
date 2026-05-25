@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_78aa0
+.thumb_func_start Func_8078aa0
 	push	{lr}
 	mov	r2, r0
-	ldr	r4, =ewram_380
+	ldr	r4, =ewram_2000380
 	mov	r0, #0
 	cmp	r2, #0x7f
 	bgt	.L78ac6
@@ -26,9 +26,9 @@
 .L78ac6:
 	pop	{r1}
 	bx	r1
-.func_end Func_78aa0
+.func_end Func_8078aa0
 
-.thumb_func_start Func_78ad0
+.thumb_func_start Func_8078ad0
 	push	{lr}
 	ldr	r3, =0x1ff
 	ldr	r2, =.L7b490
@@ -38,22 +38,22 @@
 	cmp	r0, #0
 	beq	.L78ae8
 	sub	r0, #1
-	bl	Func_78aa0
+	bl	Func_8078aa0
 	mov	r4, r0
 .L78ae8:
 	mov	r0, r4
 	pop	{r1}
 	bx	r1
-.func_end Func_78ad0
+.func_end Func_8078ad0
 
-.thumb_func_start Func_78af8
+.thumb_func_start Func_8078af8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
 	mov	r6, r1
 	sub	sp, #4
-	bl	Func_77394
+	bl	Func_8077394
 	ldr	r3, =0x1ff
 	mov	r8, r0
 	mov	r1, #0
@@ -70,7 +70,7 @@
 	bne	.L78b42
 	mov	r0, r6
 	str	r1, [sp]
-	bl	Func_78414
+	bl	Func_8078414
 	ldrb	r2, [r0, #3]
 	mov	r3, #0x10
 	and	r3, r2
@@ -98,9 +98,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_78af8
+.func_end Func_8078af8
 
-.thumb_func_start Func_78b60
+.thumb_func_start Func_8078b60
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -109,7 +109,7 @@
 	mov	r8, r0
 	mov	r0, r5
 	mov	r7, #0
-	bl	Func_796c4
+	bl	Func_80796c4
 	cmp	r7, r0
 	bge	.L78b8e
 	mov	r6, r5
@@ -117,7 +117,7 @@
 .L78b7c:
 	ldrh	r0, [r6]
 	mov	r1, r8
-	bl	Func_78af8
+	bl	Func_8078af8
 	sub	r5, #1
 	add	r6, #2
 	add	r7, r0
@@ -131,7 +131,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_78b60
+.func_end Func_8078b60
 
 	.section .rodata
 

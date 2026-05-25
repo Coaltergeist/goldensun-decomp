@@ -1,24 +1,24 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_1d4
+.thumb_func_start OvlFunc_7a67d8_1d4
 	push	{lr}
-	ldr	r3, =iwram_1ae8
+	ldr	r3, =iwram_3001ae8
 	ldr	r0, =.L590
 	ldr	r3, [r3]
 	strh	r3, [r0]
-	ldr	r3, =iwram_1b04
+	ldr	r3, =iwram_3001b04
 	ldr	r3, [r3]
 	ldr	r1, =.L5b0
 	strh	r3, [r0, #2]
-	bl	__Func_5ee0
+	bl	__Func_8005ee0
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_1d4
+.func_end OvlFunc_7a67d8_1d4
 
-.thumb_func_start OvlFunc_200
+.thumb_func_start OvlFunc_7a67d8_200
 	push	{r5, lr}
-	ldr	r5, =iwram_1ebc
+	ldr	r5, =iwram_3001ebc
 	mov	r2, #0xe0
 	ldr	r3, [r5]
 	lsl	r2, #1
@@ -26,7 +26,7 @@
 	sub	r2, #0xc0
 	str	r2, [r3]
 	mov	r0, #9
-	bl	__Func_8fe38
+	bl	__Func_808fe38
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .L244	@ 0x3f42
 	strh	r3, [r2]
@@ -46,7 +46,7 @@
 	add	r2, r3
 	mov	r3, #0xa
 	strh	r3, [r2]
-	bl	OvlFunc_2e0
+	bl	OvlFunc_7a67d8_2e0
 	mov	r0, #0
 	b	.L264
 
@@ -61,9 +61,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_200
+.func_end OvlFunc_7a67d8_200
 
-.thumb_func_start OvlFunc_26c
+.thumb_func_start OvlFunc_7a67d8_26c
 	push	{lr}
 	ldr	r3, =REG_VCOUNT
 	ldrh	r2, [r3]
@@ -81,10 +81,10 @@
 	strh	r2, [r3]
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_26c
+.func_end OvlFunc_7a67d8_26c
 
-.thumb_func_start OvlFunc_2a0
-	ldr	r3, =iwram_1e70
+.thumb_func_start OvlFunc_7a67d8_2a0
+	ldr	r3, =iwram_3001e70
 	mov	r1, #0x82
 	ldr	r2, [r3]
 	lsl	r1, #1
@@ -99,28 +99,28 @@
 	mov	r1, #2
 	ldrsh	r2, [r2, r1]
 	strh	r2, [r3]
-	ldr	r3, =iwram_1e40
+	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
 	ldr	r1, =.L616
 	lsr	r3, #2
 	sub	r2, r3
 	strh	r2, [r1]
 	bx	lr
-.func_end OvlFunc_2a0
+.func_end OvlFunc_7a67d8_2a0
 
-.thumb_func_start OvlFunc_2e0
+.thumb_func_start OvlFunc_7a67d8_2e0
 	push	{lr}
-	ldr	r2, =OvlFunc_26c
+	ldr	r2, =OvlFunc_7a67d8_26c
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_307c
+	bl	__Func_800307c
 	mov	r1, #0xc8
 	lsl	r1, #4
-	ldr	r0, =OvlFunc_2a0
-	bl	__Func_41d8
+	ldr	r0, =OvlFunc_7a67d8_2a0
+	bl	__Func_80041d8
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_2e0
+.func_end OvlFunc_7a67d8_2e0
 
 	.section .data
 	.global .L35c

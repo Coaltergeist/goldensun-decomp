@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_2544
+.arm_func_start Func_8002544
 	push	{r5, r6, r7, r9, lr}
 	ldrb	r2, [r0], #1
 	cmp	r2, #0
@@ -205,9 +205,9 @@
 	ldrb	r3, [r0], #1
 	add	r3, #0x10
 	b	.L27d8
-.func_end Func_2544
+.func_end Func_8002544
 
-.arm_func_start Func_2808
+.arm_func_start Func_8002808
 	ldrb	r2, [r0], #1
 	cmp	r2, #2
 	movne	r0, #4
@@ -547,9 +547,9 @@
 	and	r8, r12, r10, lsr #28
 	lsl	r9, r10, #4
 	b	.L2c10
-.func_end Func_2808
+.func_end Func_8002808
 
-.arm_func_start Func_2cf4
+.arm_func_start Func_8002cf4
 	stmfd	sp!, {r5}
 	add	r0, #4
 .L2cfc:
@@ -580,9 +580,9 @@
 	add	r12, #0xd4
 	stm	r12, {r2, r3, r4}
 	b	.L2d3c
-.func_end Func_2cf4
+.func_end Func_8002cf4
 
-.arm_func_start Func_2d5c
+.arm_func_start Func_8002d5c
 	push	{r5, r6}
 	add	r1, r1
 	add	r2, r0, r1
@@ -616,4 +616,4 @@
 .L2dd0:
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_2d5c
+.func_end Func_8002d5c

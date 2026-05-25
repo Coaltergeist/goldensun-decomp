@@ -1,4 +1,4 @@
-/* Cluster Func_a9a58..Func_a9a58 extracted from goldensun/rom_a1000/src/rom_a8604_c.s.
+/* Cluster Func_80a9a58..Func_80a9a58 extracted from goldensun/rom_a1000/src/rom_a8604_c.s.
  *
  * Total .text for this TU = 4 bytes (= 0x4).
  * Preserves the original ROM layout when slotted between
@@ -6,6 +6,6 @@
  * goldensun/stage1.ld.
  */
 /* FF: int stub_080A9A58(void) */
-unsigned int Func_a9a58(void) {
+unsigned int Func_80a9a58(void) {
     return 1;
 }

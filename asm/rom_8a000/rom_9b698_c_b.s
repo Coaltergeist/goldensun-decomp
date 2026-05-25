@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_9ba7c
+	.global	Func_809ba7c
 	.thumb_func
-	.type	 Func_9ba7c,function
-Func_9ba7c:
+	.type	 Func_809ba7c,function
+Func_809ba7c:
 	mov	r3, #0
 	ldrh	r2, .L3
 	str	r1, [r0, #52]
@@ -21,10 +21,7 @@ Func_9ba7c:
 .L3:
 	.word	0
 .Lfe1:
-	.size	 Func_9ba7c,.Lfe1-Func_9ba7c
-
-	.text
-	.align	2, 0
+	.size	 Func_809ba7c,.Lfe1-Func_809ba7c
 
 	.text
 	.align	2, 0

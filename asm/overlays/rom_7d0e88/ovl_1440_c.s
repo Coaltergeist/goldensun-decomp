@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_14bc
+.thumb_func_start OvlFunc_7d0e88_14bc
 	ldr	r0, =.L3014
 	bx	lr
-.func_end OvlFunc_14bc
+.func_end OvlFunc_7d0e88_14bc
 
-.thumb_func_start OvlFunc_14c4
+.thumb_func_start OvlFunc_7d0e88_14c4
 	push	{lr}
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -41,7 +41,7 @@
 .L14fc:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_14c4
+.func_end OvlFunc_7d0e88_14c4
 
 	.section .data
 	.global .L2e7c

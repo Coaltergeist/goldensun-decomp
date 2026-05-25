@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_7b8
+	.global	OvlFunc_7fc720_7b8
 	.thumb_func
-	.type	 OvlFunc_7b8,function
-OvlFunc_7b8:
+	.type	 OvlFunc_7fc720_7b8,function
+OvlFunc_7fc720_7b8:
 	ldr	r3, .L3
 	ldr	r3, [r3]
 	mov	r2, #1
@@ -17,9 +17,9 @@ OvlFunc_7b8:
 .L4:
 	.align	2, 0
 .L3:
-	.word	iwram_1f30
+	.word	iwram_3001f30
 .Lfe1:
-	.size	 OvlFunc_7b8,.Lfe1-OvlFunc_7b8
+	.size	 OvlFunc_7fc720_7b8,.Lfe1-OvlFunc_7fc720_7b8
 
 	.text
 	.align	2, 0

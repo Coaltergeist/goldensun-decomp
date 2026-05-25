@@ -2,77 +2,77 @@
 
 	.section .rodata
 
-	.global	Data_ee2b4
-Data_ee2b4:
+	.global	Data_80ee2b4
+Data_80ee2b4:
 
-	.word	Func_da2ac
-	.word	Func_e2538
-	.word	Func_e302c
-	.word	Func_dd2ac
-	.word	Func_dd9c0
-	.word	Func_dab74
-	.word	Func_c91dc
-	.word	Func_d3c80
-	.word	Func_c972c
-	.word	Func_d33c0
-	.word	Func_d9fc8
-	.word	Func_da6cc
-	.word	Func_d4ce8
-	.word	Func_db6d4
-	.word	Func_d45ec
-	.word	Func_ddde0
-	.word	Func_db264
-	.word	Func_d41a4
-	.word	Func_de974
-	.word	Func_d3854
-	.word	Func_d8960
-	.word	Func_d8948
-	.word	Func_d8954
-	.word	Func_d896c
-	.word	Func_cf2a0
-	.word	Func_d9194
-	.word	Func_d9ab8
-	.word	Func_d91a0
-	.word	Func_d9ac4
-	.word	Func_d91ac
-	.word	Func_d9ad0
-	.word	Func_d5258
-	.word	Func_d5280
-	.word	Func_ce85c
-	.word	Func_d5298
-	.word	Func_d528c
-	.word	Func_d59b0
-	.word	Func_d05fc
-	.word	Func_ce4e8
-	.word	Func_cfef4
-	.word	Func_d5c48
-	.word	Func_d85d0
-	.word	Func_d82b0
-	.word	Func_d8954
-	.word	Func_d8954
-	.word	Func_d9194
-	.word	Func_d9ac4
+	.word	Func_80da2ac
+	.word	Func_80e2538
+	.word	Func_80e302c
+	.word	Func_80dd2ac
+	.word	Func_80dd9c0
+	.word	Func_80dab74
+	.word	Func_80c91dc
+	.word	Func_80d3c80
+	.word	Func_80c972c
+	.word	Func_80d33c0
+	.word	Func_80d9fc8
+	.word	Func_80da6cc
+	.word	Func_80d4ce8
+	.word	Func_80db6d4
+	.word	Func_80d45ec
+	.word	Func_80ddde0
+	.word	Func_80db264
+	.word	Func_80d41a4
+	.word	Func_80de974
+	.word	Func_80d3854
+	.word	Func_80d8960
+	.word	Func_80d8948
+	.word	Func_80d8954
+	.word	Func_80d896c
+	.word	Func_80cf2a0
+	.word	Func_80d9194
+	.word	Func_80d9ab8
+	.word	Func_80d91a0
+	.word	Func_80d9ac4
+	.word	Func_80d91ac
+	.word	Func_80d9ad0
+	.word	Func_80d5258
+	.word	Func_80d5280
+	.word	Func_80ce85c
+	.word	Func_80d5298
+	.word	Func_80d528c
+	.word	Func_80d59b0
+	.word	Func_80d05fc
+	.word	Func_80ce4e8
+	.word	Func_80cfef4
+	.word	Func_80d5c48
+	.word	Func_80d85d0
+	.word	Func_80d82b0
+	.word	Func_80d8954
+	.word	Func_80d8954
+	.word	Func_80d9194
+	.word	Func_80d9ac4
 	.word	0
-	.word	Func_e89ec
-	.word	Func_ceb30
-	.word	Func_e698c
-	.word	Func_ecedc
-	.word	Func_cb1a4
-	.word	Func_de980
-	.word	Func_e90a8
-	.word	Func_dd2b8
-	.word	Func_de9bc
-	.word	Func_e94b8
-	.word	Func_de9f0
-	.word	Func_ce034
-	.word	Func_e99c0
-	.word	Func_d1350
-	.word	Func_dea3c
-	.word	Func_d52b0
-	.word	Func_ecee8
-	.word	Func_d52bc
-	.word	Func_d0ad4
-	.word	Func_d0ee0
+	.word	Func_80e89ec
+	.word	Func_80ceb30
+	.word	Func_80e698c
+	.word	Func_80ecedc
+	.word	Func_80cb1a4
+	.word	Func_80de980
+	.word	Func_80e90a8
+	.word	Func_80dd2b8
+	.word	Func_80de9bc
+	.word	Func_80e94b8
+	.word	Func_80de9f0
+	.word	Func_80ce034
+	.word	Func_80e99c0
+	.word	Func_80d1350
+	.word	Func_80dea3c
+	.word	Func_80d52b0
+	.word	Func_80ecee8
+	.word	Func_80d52bc
+	.word	Func_80d0ad4
+	.word	Func_80d0ee0
 	.word	0
 	.word	0
 	.word	0
@@ -204,26 +204,26 @@ Data_ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_d91b8
-	.word	Func_cf2a0
-	.word	Func_dd77c
-	.word	Func_e1040
-	.word	Func_d8948
-	.word	Func_dea24
-	.word	Func_d8954
-	.word	Func_e0c84
-	.word	Func_d8994
-	.word	Func_cf2ac
-	.word	Func_d9194
-	.word	Func_d91a0
-	.word	Func_d89a0
-	.word	Func_d91c4
-	.word	Func_e6638
-	.word	Func_d91ac
-	.word	Func_d91d0
-	.word	Func_e6948
-	.word	Func_d05fc
-	.word	Func_e28f4
+	.word	Func_80d91b8
+	.word	Func_80cf2a0
+	.word	Func_80dd77c
+	.word	Func_80e1040
+	.word	Func_80d8948
+	.word	Func_80dea24
+	.word	Func_80d8954
+	.word	Func_80e0c84
+	.word	Func_80d8994
+	.word	Func_80cf2ac
+	.word	Func_80d9194
+	.word	Func_80d91a0
+	.word	Func_80d89a0
+	.word	Func_80d91c4
+	.word	Func_80e6638
+	.word	Func_80d91ac
+	.word	Func_80d91d0
+	.word	Func_80e6948
+	.word	Func_80d05fc
+	.word	Func_80e28f4
 	.word	0
 	.word	0
 	.word	0
@@ -254,10 +254,10 @@ Data_ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_e0564
-	.word	Func_dfe2c
-	.word	Func_e08c0
-	.word	Func_e01e4
+	.word	Func_80e0564
+	.word	Func_80dfe2c
+	.word	Func_80e08c0
+	.word	Func_80e01e4
 	.word	0
 	.word	0
 	.word	0
@@ -304,61 +304,61 @@ Data_ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_c9c60
-	.word	Func_c9c6c
-	.word	Func_c9c78
-	.word	Func_de98c
-	.word	Func_c9c84
-	.word	Func_c9c90
-	.word	Func_de9b0
-	.word	Func_de998
-	.word	Func_ceb3c
-	.word	Func_cf8a4
-	.word	Func_e28f4
-	.word	Func_dfa18
-	.word	Func_d52a4
-	.word	Func_ca57c
-	.word	Func_dfa24
-	.word	Func_cf8b0
-	.word	Func_ca588
-	.word	Func_e291c
-	.word	Func_ca594
-	.word	Func_e294c
-	.word	Func_ed104
-	.word	Func_e2928
-	.word	Func_cf8c8
-	.word	Func_ca594
-	.word	Func_ca5ac
-	.word	Func_ca5b8
-	.word	Func_dfa30
-	.word	Func_ca5c4
-	.word	Func_e2934
-	.word	Func_e294c
-	.word	Func_cf8d4
+	.word	Func_80c9c60
+	.word	Func_80c9c6c
+	.word	Func_80c9c78
+	.word	Func_80de98c
+	.word	Func_80c9c84
+	.word	Func_80c9c90
+	.word	Func_80de9b0
+	.word	Func_80de998
+	.word	Func_80ceb3c
+	.word	Func_80cf8a4
+	.word	Func_80e28f4
+	.word	Func_80dfa18
+	.word	Func_80d52a4
+	.word	Func_80ca57c
+	.word	Func_80dfa24
+	.word	Func_80cf8b0
+	.word	Func_80ca588
+	.word	Func_80e291c
+	.word	Func_80ca594
+	.word	Func_80e294c
+	.word	Func_80ed104
+	.word	Func_80e2928
+	.word	Func_80cf8c8
+	.word	Func_80ca594
+	.word	Func_80ca5ac
+	.word	Func_80ca5b8
+	.word	Func_80dfa30
+	.word	Func_80ca5c4
+	.word	Func_80e2934
+	.word	Func_80e294c
+	.word	Func_80cf8d4
 	.word	0
-	.word	Func_ca5d0
-	.word	Func_ca5dc
-	.word	Func_e2940
-	.word	Func_ca5e8
-	.word	Func_ca5a0
-	.word	Func_ca5f4
-	.word	Func_d45f8
-	.word	Func_dfa3c
-	.word	Func_cf8bc
+	.word	Func_80ca5d0
+	.word	Func_80ca5dc
+	.word	Func_80e2940
+	.word	Func_80ca5e8
+	.word	Func_80ca5a0
+	.word	Func_80ca5f4
+	.word	Func_80d45f8
+	.word	Func_80dfa3c
+	.word	Func_80cf8bc
 	.word	0
-	.word	Func_e291c
-	.word	Func_e2928
-	.word	Func_ca1f0
-	.word	Func_ccebc
-	.word	Func_d5298
-	.word	Func_cf88c
-	.word	Func_cefe0
-	.word	Func_ca1e4
-	.word	Func_cf898
-	.word	Func_ceb48
-	.word	Func_d8960
-	.word	Func_cefd4
-	.word	Func_d5c48
+	.word	Func_80e291c
+	.word	Func_80e2928
+	.word	Func_80ca1f0
+	.word	Func_80ccebc
+	.word	Func_80d5298
+	.word	Func_80cf88c
+	.word	Func_80cefe0
+	.word	Func_80ca1e4
+	.word	Func_80cf898
+	.word	Func_80ceb48
+	.word	Func_80d8960
+	.word	Func_80cefd4
+	.word	Func_80d5c48
 	.word	0
 	.word	0
 	.word	0
@@ -384,16 +384,16 @@ Data_ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_db6c8
-	.word	Func_de9a4
-	.word	Func_ccc20
-	.word	Func_ccc2c
-	.word	Func_e732c
-	.word	Func_d244c
-	.word	Func_ca600
-	.word	Func_eceac
-	.word	Func_ece7c
-	.word	Func_cefec
+	.word	Func_80db6c8
+	.word	Func_80de9a4
+	.word	Func_80ccc20
+	.word	Func_80ccc2c
+	.word	Func_80e732c
+	.word	Func_80d244c
+	.word	Func_80ca600
+	.word	Func_80eceac
+	.word	Func_80ece7c
+	.word	Func_80cefec
 	.word	0
 	.word	0
 	.word	0
@@ -404,13 +404,13 @@ Data_ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_dbbdc
-	.word	Func_dbbe8
-	.word	Func_dea30
-	.word	Func_dbbf4
-	.word	Func_dbc00
-	.word	Func_dbc0c
-	.word	Func_dbc18
-	.word	Func_dbc24
+	.word	Func_80dbbdc
+	.word	Func_80dbbe8
+	.word	Func_80dea30
+	.word	Func_80dbbf4
+	.word	Func_80dbc00
+	.word	Func_80dbc0c
+	.word	Func_80dbc18
+	.word	Func_80dbc24
 
-	.ssize	Data_ee2b4
+	.ssize	Data_80ee2b4

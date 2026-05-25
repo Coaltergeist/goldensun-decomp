@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_cd260
+.thumb_func_start Func_80cd260
 	push	{r5, r6, lr}
-	ldr	r0, =iwram_1eec
+	ldr	r0, =iwram_3001eec
 	ldr	r2, =0x7824
 	ldr	r6, [r0]
 	add	r3, r6, r2
@@ -29,7 +29,7 @@
 	.word	.Lcd304
 .Lcd298:
 	mov	r2, #0x80
-	ldr	r3, =Func_1af8
+	ldr	r3, =Func_8001af8
 	ldr	r0, =0x6004000
 	mov	r1, r5
 	lsl	r2, #7
@@ -37,7 +37,7 @@
 	b	.Lcd316
 .Lcd2a8:
 	mov	r2, #0x80
-	ldr	r3, =Func_1af8
+	ldr	r3, =Func_8001af8
 	mov	r1, r5
 	lsl	r2, #7
 	ldr	r0, =0x6004000
@@ -47,7 +47,7 @@
 	add	r3, r6, r2
 	ldr	r2, [r3]
 	mov	r0, r5
-	ldr	r3, =Func_8d8
+	ldr	r3, =Func_80008d8
 	lsl	r1, #7
 	bl	_call_via_r3
 	b	.Lcd316
@@ -61,14 +61,14 @@
 	ldr	r1, =0x6004000
 	lsl	r2, #7
 	mov	r0, r5
-	bl	Func_5534
+	bl	Func_8005534
 	b	.Lcd316
 .Lcd2e2:
 	mov	r2, #0x80
 	ldr	r1, =0x6004000
 	lsl	r2, #7
 	mov	r0, r5
-	bl	Func_54e4
+	bl	Func_80054e4
 	b	.Lcd316
 .Lcd2f0:
 	ldr	r2, =0x7784
@@ -78,7 +78,7 @@
 	ldr	r2, =0x6004000
 	lsl	r3, #7
 	mov	r0, r5
-	bl	Func_5490
+	bl	Func_8005490
 	b	.Lcd316
 .Lcd304:
 	ldr	r2, =0x7784
@@ -88,7 +88,7 @@
 	ldr	r2, =0x6004000
 	lsl	r3, #7
 	mov	r0, r5
-	bl	Func_543c
+	bl	Func_800543c
 .Lcd316:
 	ldr	r3, =0x7824
 	add	r2, r6, r3
@@ -108,11 +108,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_cd260
+.func_end Func_80cd260
 
-.thumb_func_start Func_cd358
+.thumb_func_start Func_80cd358
 	push	{r5, lr}
-	ldr	r3, =iwram_1eec
+	ldr	r3, =iwram_3001eec
 	ldr	r2, =0x7824
 	ldr	r5, [r3]
 	add	r3, r5, r2
@@ -137,16 +137,16 @@
 	b	.Lcd3ee
 .Lcd386:
 	mov	r2, #0xf0
-	ldr	r3, =Func_1af8
+	ldr	r3, =Func_8001af8
 	ldr	r0, =0x6008000
-	ldr	r1, =ewram_10000
+	ldr	r1, =ewram_2010000
 	lsl	r2, #7
 	bl	_call_via_r3
 	b	.Lcd3ee
 .Lcd396:
 	mov	r2, #0xf0
-	ldr	r3, =Func_1af8
-	ldr	r1, =ewram_10000
+	ldr	r3, =Func_8001af8
+	ldr	r1, =ewram_2010000
 	lsl	r2, #7
 	ldr	r0, =0x6008000
 	bl	_call_via_r3
@@ -154,8 +154,8 @@
 	mov	r1, #0xf0
 	add	r3, r5, r2
 	ldr	r2, [r3]
-	ldr	r0, =ewram_10000
-	ldr	r3, =Func_8d8
+	ldr	r0, =ewram_2010000
+	ldr	r3, =Func_80008d8
 	lsl	r1, #7
 	bl	_call_via_r3
 	b	.Lcd3ee
@@ -167,15 +167,15 @@
 	bne	.Lcd3ce
 	ldr	r1, =0x6008000
 	add	r2, #0x7c
-	ldr	r0, =ewram_10000
-	bl	Func_5534
+	ldr	r0, =ewram_2010000
+	bl	Func_8005534
 	b	.Lcd3ee
 .Lcd3ce:
 	mov	r2, #0xf0
 	ldr	r1, =0x6008000
 	lsl	r2, #7
-	ldr	r0, =ewram_10000
-	bl	Func_54e4
+	ldr	r0, =ewram_2010000
+	bl	Func_80054e4
 	b	.Lcd3ee
 .Lcd3dc:
 	ldr	r2, =0x7784
@@ -184,8 +184,8 @@
 	mov	r3, #0xf0
 	ldr	r2, =0x6008000
 	lsl	r3, #7
-	ldr	r0, =ewram_10000
-	bl	Func_5490
+	ldr	r0, =ewram_2010000
+	bl	Func_8005490
 .Lcd3ee:
 	ldr	r3, =0x7824
 	add	r2, r5, r3
@@ -195,10 +195,10 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_cd358
+.func_end Func_80cd358
 
-.thumb_func_start Func_cd418
-	ldr	r3, =iwram_1eec
+.thumb_func_start Func_80cd418
+	ldr	r3, =iwram_3001eec
 	ldr	r0, =0x77bc
 	ldr	r2, [r3]
 	add	r3, r2, r0
@@ -246,10 +246,10 @@
 	add	r1, #2
 	strh	r3, [r1]
 	bx	lr
-.func_end Func_cd418
+.func_end Func_80cd418
 
-.thumb_func_start Func_cd488
-	ldr	r3, =iwram_1eec
+.thumb_func_start Func_80cd488
+	ldr	r3, =iwram_3001eec
 	ldr	r0, =0x77d0
 	ldr	r2, [r3]
 	add	r3, r2, r0
@@ -262,11 +262,11 @@
 	add	r1, #4
 	str	r3, [r1]
 	bx	lr
-.func_end Func_cd488
+.func_end Func_80cd488
 
-.thumb_func_start Func_cd4b4
+.thumb_func_start Func_80cd4b4
 	push	{r5, lr}
-	ldr	r3, =iwram_1e74
+	ldr	r3, =iwram_3001e74
 	ldr	r1, =0x77b4
 	ldr	r2, [r3, #0x78]
 	add	r5, r2, r1
@@ -291,7 +291,7 @@
 	sub	r2, r3
 	ldr	r1, =0x50000c0
 	mov	r3, #0x80
-	bl	_Func_c1724
+	bl	_Func_80c1724
 	ldr	r3, [r5]
 	sub	r3, #1
 	str	r3, [r5]
@@ -299,4 +299,4 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_cd4b4
+.func_end Func_80cd4b4

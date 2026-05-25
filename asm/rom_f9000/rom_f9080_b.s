@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_f9538
+	.global	Func_80f9538
 	.thumb_func
-	.type	 Func_f9538,function
-Func_f9538:
+	.type	 Func_80f9538,function
+Func_80f9538:
 	ldr	r3, .L3
 	strh	r0, [r3]
 	ldr	r3, .L3+4
@@ -16,27 +16,24 @@ Func_f9538:
 .L4:
 	.align	2, 0
 .L3:
-	.word	ewram_3034
-	.word	ewram_3010
+	.word	ewram_2003034
+	.word	ewram_2003010
 .Lfe1:
-	.size	 Func_f9538,.Lfe1-Func_f9538
+	.size	 Func_80f9538,.Lfe1-Func_80f9538
 	.align	2, 0
-	.global	Func_f954c
+	.global	Func_80f954c
 	.thumb_func
-	.type	 Func_f954c,function
-Func_f954c:
+	.type	 Func_80f954c,function
+Func_80f954c:
 	ldr	r3, .L6
 	ldrb	r0, [r3]
 	bx	lr
 .L7:
 	.align	2, 0
 .L6:
-	.word	ewram_3000
+	.word	ewram_2003000
 .Lfe2:
-	.size	 Func_f954c,.Lfe2-Func_f954c
-
-	.text
-	.align	2, 0
+	.size	 Func_80f954c,.Lfe2-Func_80f954c
 
 	.text
 	.align	2, 0

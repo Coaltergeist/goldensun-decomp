@@ -1,13 +1,13 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_40e8
+.thumb_func_start Func_80040e8
 	push	{lr}
-	ldr	r3, =iwram_1d34
+	ldr	r3, =iwram_3001d34
 	mov	r2, #0
 	strb	r2, [r3]
-	ldr	r3, =iwram_1a10
-	ldr	r1, =iwram_1a20
+	ldr	r3, =iwram_3001a10
+	ldr	r1, =iwram_3001a20
 	ldr	r4, .L4118	@ 0xffff
 	strb	r2, [r3]
 	mov	r0, #0
@@ -22,7 +22,7 @@
 	add	r1, #8
 	cmp	r2, #0
 	bge	.L40fc
-	ldr	r2, =iwram_1d34
+	ldr	r2, =iwram_3001d34
 	mov	r3, #1
 	strb	r3, [r2]
 	b	.L4128
@@ -35,9 +35,9 @@
 .L4128:
 	pop	{r0}
 	bx	r0
-.func_end Func_40e8
+.func_end Func_80040e8
 
-.thumb_func_start Func_412c
+.thumb_func_start Func_800412c
 	push	{lr}
 	lsr	r2, #2
 	mov	r4, #0
@@ -52,16 +52,16 @@
 .L4140:
 	pop	{r0}
 	bx	r0
-.func_end Func_412c
+.func_end Func_800412c
 
-.thumb_func_start Func_4144
+.thumb_func_start Func_8004144
 	push	{r5, r6, lr}
 	sub	sp, #8
-	ldr	r2, =iwram_1a20
+	ldr	r2, =iwram_3001a20
 	mov	r4, #0x13
 	b	.L4150
 .L414e:
-	ldr	r2, =iwram_1a20
+	ldr	r2, =iwram_3001a20
 .L4150:
 	mov	r1, r2
 	cmp	r4, #0
@@ -100,12 +100,12 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_4144
+.func_end Func_8004144
 
-.thumb_func_start Func_4198
+.thumb_func_start Func_8004198
 	push	{r5, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -132,13 +132,13 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_4198
+.func_end Func_8004198
 
-.thumb_func_start Func_41d8
+.thumb_func_start Func_80041d8
 	push	{r5, r6, lr}
-	ldr	r3, =iwram_1a10
+	ldr	r3, =iwram_3001a10
 	mov	r5, #1
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	ldrb	r3, [r3]
 	neg	r5, r5
 	ldr	r3, =REG_IME
@@ -165,7 +165,7 @@
 .L420c:
 	mov	r3, #1
 	neg	r3, r3
-	ldr	r4, =iwram_1a20
+	ldr	r4, =iwram_3001a20
 	cmp	r5, r3
 	bne	.L4254
 	ldr	r3, [r4]
@@ -198,7 +198,7 @@
 	strb	r3, [r4, #6]
 	mov	r5, r2
 .L4254:
-	bl	Func_4144
+	bl	Func_8004144
 	ldr	r3, =REG_IME
 	strh	r6, [r3]
 	mov	r0, r5
@@ -213,5 +213,5 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_41d8
+.func_end Func_80041d8
 

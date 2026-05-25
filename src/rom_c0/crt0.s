@@ -10,23 +10,23 @@
 	msr	CPSR_fc, r0
 	ldr	sp, .Lsp_sys
 
-	ldr	r1, =iwram_7ffc	@ IRQ vector
+	ldr	r1, =iwram_3007ffc	@ IRQ vector
 	adr	r0, .Lintr_main
 	str	r0, [r1]
 
-	ldr	r1, =Func_2e00
+	ldr	r1, =Func_8002e00
 	mov	lr, pc
 	bx	r1
 
 	b	_start
 
 .Lsp_sys:
-	.word	iwram_7f00
+	.word	iwram_3007f00
 .Lsp_irq:
-	.word	iwram_7fa0
+	.word	iwram_3007fa0
 .func_end _start
 
-.arm_func_start Func_404
+.arm_func_start Func_8000404
 	asrs	r1, r11, #20
 	bicpl	r1, #0x1f
 	adds	r1, r12, asr #20
@@ -220,9 +220,9 @@
 	addmi	r7, #0x40
 	adds	r1, r7, r6, lsl #16
 .L6fc:
-.func_end Func_404
+.func_end Func_8000404
 
-.thumb_func_start Func_6fc
+.thumb_func_start Func_80006fc
 	ldr	r0, .L76c
 	ldr	r0, [r0]
 	ldr	r2, .L768
@@ -274,11 +274,11 @@
 	ldr	r3, .L75c
 	bx	r3
 
-.L75c:	.word	Func_dc8
+.L75c:	.word	Func_8000dc8
 .L760:	.word	0x350
 	.word	REG_VCOUNT
 .L768:	.word	0x68736d53
-.L76c:	.word	iwram_7ff0
-.func_end Func_6fc
+.L76c:	.word	iwram_3007ff0
+.func_end Func_80006fc
 
 .Lintr_main:

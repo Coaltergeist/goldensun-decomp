@@ -1,10 +1,10 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_d58
+.thumb_func_start OvlFunc_7aa430_d58
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r1, r0
 	ldr	r2, [r1, #0x10]
 	asr	r3, r2, #19
@@ -15,7 +15,7 @@
 	ldr	r3, [r5, #8]
 	sub	r0, r2, r0
 	sub	r1, r3
-	bl	__Func_44d0
+	bl	__Func_80044d0
 	strh	r0, [r5, #6]
 	b	.Ld90
 .Ld7e:
@@ -26,13 +26,13 @@
 	beq	.Ld90
 	mov	r0, #3
 	mov	r2, #0
-	bl	__Func_92adc
+	bl	__Func_8092adc
 .Ld90:
 	mov	r0, #0
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_d58
+.func_end OvlFunc_7aa430_d58
 
 	.section .data
 	.global .L2700

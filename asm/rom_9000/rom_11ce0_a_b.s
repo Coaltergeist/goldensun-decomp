@@ -4,20 +4,17 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_11ce0
+	.global	Func_8011ce0
 	.thumb_func
-	.type	 Func_11ce0,function
-Func_11ce0:
+	.type	 Func_8011ce0,function
+Func_8011ce0:
 	ldrb	r0, [r0, #0]
 	lsl	r0, r0, #24
 	asr	r0, r0, #24
 	lsl	r0, r0, #19
 	bx	lr
 .Lfe1:
-	.size	 Func_11ce0,.Lfe1-Func_11ce0
-
-	.text
-	.align	2, 0
+	.size	 Func_8011ce0,.Lfe1-Func_8011ce0
 
 	.text
 	.align	2, 0

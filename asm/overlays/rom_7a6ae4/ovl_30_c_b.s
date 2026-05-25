@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_44c
+	.global	OvlFunc_7a6ae4_44c
 	.thumb_func
-	.type	 OvlFunc_44c,function
-OvlFunc_44c:
+	.type	 OvlFunc_7a6ae4_44c,function
+OvlFunc_7a6ae4_44c:
 	ldr	r3, .L3
 	ldr	r2, [r3]
 	mov	r3, #1
@@ -16,14 +16,14 @@ OvlFunc_44c:
 .L4:
 	.align	2, 0
 .L3:
-	.word	iwram_1e70
+	.word	iwram_3001e70
 .Lfe1:
-	.size	 OvlFunc_44c,.Lfe1-OvlFunc_44c
+	.size	 OvlFunc_7a6ae4_44c,.Lfe1-OvlFunc_7a6ae4_44c
 	.align	2, 0
-	.global	OvlFunc_45c
+	.global	OvlFunc_7a6ae4_45c
 	.thumb_func
-	.type	 OvlFunc_45c,function
-OvlFunc_45c:
+	.type	 OvlFunc_7a6ae4_45c,function
+OvlFunc_7a6ae4_45c:
 	ldr	r3, .L6
 	ldr	r2, [r3]
 	mov	r3, #0
@@ -32,9 +32,9 @@ OvlFunc_45c:
 .L7:
 	.align	2, 0
 .L6:
-	.word	iwram_1e70
+	.word	iwram_3001e70
 .Lfe2:
-	.size	 OvlFunc_45c,.Lfe2-OvlFunc_45c
+	.size	 OvlFunc_7a6ae4_45c,.Lfe2-OvlFunc_7a6ae4_45c
 
 	.text
 	.align	2, 0

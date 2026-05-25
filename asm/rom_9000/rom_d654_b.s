@@ -4,20 +4,17 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_d8e8
+	.global	Func_800d8e8
 	.thumb_func
-	.type	 Func_d8e8,function
-Func_d8e8:
+	.type	 Func_800d8e8,function
+Func_800d8e8:
 	push	{lr}
-	bl	Func_c0f4
+	bl	Func_800c0f4
 	mov	r0, #0
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 Func_d8e8,.Lfe1-Func_d8e8
-
-	.text
-	.align	2, 0
+	.size	 Func_800d8e8,.Lfe1-Func_800d8e8
 
 	.text
 	.align	2, 0

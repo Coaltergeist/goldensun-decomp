@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_9ba90
+.thumb_func_start Func_809ba90
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -20,7 +20,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r4
-	bl	_Func_bc70
+	bl	_Func_800bc70
 	str	r0, [r5]
 	cmp	r0, #0
 	beq	.L9bac8
@@ -33,7 +33,7 @@
 	mov	r1, r6
 	mov	r0, r5
 	mov	r2, r7
-	bl	Func_9ba5c
+	bl	Func_809ba5c
 	mov	r3, #0x80
 	lsl	r3, #10
 	str	r3, [r5, #0x20]
@@ -60,7 +60,7 @@
 	strb	r2, [r3]
 	add	r3, #1
 	strb	r2, [r3]
-	bl	Func_4458
+	bl	Func_8004458
 	mov	r3, r5
 	add	r3, #0x46
 	mov	r2, r5
@@ -70,23 +70,23 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_9ba70
+	bl	Func_809ba70
 	add	sp, #4
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_9ba90
+.func_end Func_809ba90
 
-.thumb_func_start Func_9bb34
+.thumb_func_start Func_809bb34
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r0, [r5]
 	sub	sp, #4
 	cmp	r0, #0
 	beq	.L9bb44
-	bl	_Func_bdd4
+	bl	_Func_800bdd4
 .L9bb44:
 	mov	r0, sp
 	mov	r3, #0
@@ -100,7 +100,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_9bb34
+.func_end Func_809bb34
 
 	.section .rodata
 	.global .L9c510

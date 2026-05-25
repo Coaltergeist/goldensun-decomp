@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_30
+.thumb_func_start OvlFunc_7a7298_30
 	push	{r5, lr}
 	mov	r5, r0
 	add	r5, #0x64
@@ -63,15 +63,15 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
 	beq	.Lae
-	bl	__Func_4458
+	bl	__Func_8004458
 	mov	r1, #0x28
-	bl	_Func_b50
+	bl	_Func_8000b50
 	add	r0, #0x28
 	b	.Lba
 .Lae:
-	bl	__Func_4458
+	bl	__Func_8004458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_Func_8000b50
 	add	r0, #0x14
 .Lba:
 	strh	r0, [r5]
@@ -83,9 +83,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_30
+.func_end OvlFunc_7a7298_30
 
-.thumb_func_start OvlFunc_d8
+.thumb_func_start OvlFunc_7a7298_d8
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, [r5, #0x68]
@@ -102,7 +102,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_44d0
+	bl	__Func_80044d0
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -129,11 +129,11 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_d8
+.func_end OvlFunc_7a7298_d8
 
-.thumb_func_start OvlFunc_130
+.thumb_func_start OvlFunc_7a7298_130
 	push	{lr}
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -149,5 +149,5 @@
 .L14a:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_130
+.func_end OvlFunc_7a7298_130
 

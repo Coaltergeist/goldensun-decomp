@@ -1,16 +1,16 @@
-/* Cluster OvlFunc_450..OvlFunc_450 extracted from goldensun/asm/overlays/rom_793768/ovl_314_c.s.
+/* Cluster OvlFunc_793768_450..OvlFunc_793768_450 extracted from goldensun/asm/overlays/rom_793768/ovl_314_c.s.
  *
  * Total .text for this TU = 20 bytes (= 0x14).
  * Preserves the original ROM layout when slotted between
  * asm/overlays/rom_793768/ovl_314_c_a.o and asm/overlays/rom_793768/ovl_314_c_c.o in
  * goldensun/overlays/rom_793768/overlay.ld.
  */
-extern unsigned int __Func_77394(unsigned int);
+extern unsigned int __Func_8077394(unsigned int);
 
-unsigned int OvlFunc_450(void) {
+unsigned int OvlFunc_793768_450(void) {
     unsigned int r0;
     unsigned int r3;
-    r0 = __Func_77394(2);
+    r0 = __Func_8077394(2);
     r3 = 0x8c;
     r3 = r3 << 1;
     r0 = r0 + r3;

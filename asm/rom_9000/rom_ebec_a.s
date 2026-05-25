@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_ebec
+.thumb_func_start Func_800ebec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,17 +13,17 @@
 	mov	r0, #0
 	str	r0, [sp, #0x14]
 	str	r0, [sp, #0x10]
-	ldr	r5, =iwram_1f54
+	ldr	r5, =iwram_3001f54
 	ldrb	r3, [r5]
 	cmp	r3, #0
 	beq	.Lec40
 	mov	r0, #0xaf
 	lsl	r0, #1
-	bl	_Func_79338
+	bl	_Func_8079338
 	cmp	r0, #0
 	beq	.Lec40
 	mov	r2, #0x80
-	ldr	r1, =iwram_1810
+	ldr	r1, =iwram_3001810
 	mov	r0, #0
 	lsl	r2, #2
 .Lec20:
@@ -41,14 +41,14 @@
 	cmp	r3, #0
 	bge	.Lec3e
 	mov	r0, #0x87
-	bl	_Func_f9080
+	bl	_Func_80f9080
 .Lec3e:
-	ldr	r5, =iwram_1f54
+	ldr	r5, =iwram_3001f54
 .Lec40:
 	ldrb	r3, [r5]
 	cmp	r3, #0
 	beq	.Lec76
-	ldr	r5, =iwram_1ae8
+	ldr	r5, =iwram_3001ae8
 	mov	r2, #0x80
 	ldr	r3, [r5]
 	lsl	r2, #2
@@ -77,9 +77,9 @@
 	bge	.Lec6e
 	b	.Lec78
 .Lec76:
-	ldr	r5, =iwram_1ae8
+	ldr	r5, =iwram_3001ae8
 .Lec78:
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0x87
 	lsl	r1, #2
 	add	r3, r1
@@ -108,10 +108,10 @@
 	str	r3, [sp, #8]
 .Lecac:
 	ldr	r0, =0x17f
-	bl	_Func_79338
+	bl	_Func_8079338
 	cmp	r0, #0
 	beq	.Lecd4
-	ldr	r5, =iwram_1ae8
+	ldr	r5, =iwram_3001ae8
 	ldr	r3, [r5]
 	mov	r2, #2
 	and	r3, r2
@@ -127,7 +127,7 @@
 	str	r0, [sp, #8]
 	b	.Lecd6
 .Lecd4:
-	ldr	r5, =iwram_1ae8
+	ldr	r5, =iwram_3001ae8
 .Lecd6:
 	ldr	r3, [r5]
 	mov	r2, #0xf
@@ -163,8 +163,8 @@
 	mov	r0, #0x80
 	lsl	r0, #12
 	mov	r2, r11
-	bl	Func_447c
-	ldr	r3, =iwram_1f54
+	bl	Func_800447c
+	ldr	r3, =iwram_3001f54
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Led38
@@ -181,7 +181,7 @@
 .Led38:
 	mov	r0, r7
 	mov	r1, r11
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lee14
 	ldr	r3, [r7, #8]
@@ -201,10 +201,10 @@
 	add	r1, r6, r0
 	mov	r2, r5
 	mov	r0, r8
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lee14
 	ldr	r3, [r7, #8]
@@ -217,10 +217,10 @@
 	add	r1, r6, r2
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lee14
 	ldr	r3, [r7, #8]
@@ -234,10 +234,10 @@
 	add	r1, r6, r3
 	mov	r0, r8
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lee14
 	ldr	r3, [r7, #8]
@@ -250,10 +250,10 @@
 	add	r1, r6, r0
 	mov	r2, r5
 	mov	r0, r8
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lee14
 	ldr	r1, [sp, #4]
@@ -316,10 +316,10 @@
 	lsl	r0, #12
 	mov	r1, r6
 	mov	r2, r8
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r8
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lef24
 	ldr	r3, [r7, #8]
@@ -335,10 +335,10 @@
 	lsl	r0, #12
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lef24
 	ldr	r3, [r7, #8]
@@ -352,10 +352,10 @@
 	add	r1, r6, r3
 	lsl	r0, #12
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lef24
 	ldr	r3, [r7, #8]
@@ -370,10 +370,10 @@
 	lsl	r0, #12
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lef24
 	ldr	r3, [r7, #8]
@@ -387,10 +387,10 @@
 	lsl	r0, #12
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	beq	.Lef44
 .Lef24:
@@ -425,8 +425,8 @@
 	lsr	r1, r2, #16
 	lsl	r0, #11
 	mov	r2, r11
-	bl	Func_447c
-	ldr	r3, =iwram_1e64
+	bl	Func_800447c
+	ldr	r3, =iwram_3001e64
 	ldr	r3, [r3]
 	mov	r8, r3
 	mov	r6, r8
@@ -459,7 +459,7 @@
 	mov	r0, r6
 	sub	r3, #2
 	mov	r2, r11
-	bl	Func_eba0
+	bl	Func_800eba0
 	cmp	r0, #0
 	blt	.Lf09a
 	ldr	r3, [r6, #0x50]
@@ -475,7 +475,7 @@
 	sub	r0, r3
 	ldr	r3, [r7, #8]
 	sub	r1, r3
-	bl	Func_44d0
+	bl	Func_80044d0
 	ldr	r3, [r6]
 	add	r5, sp, #0x50
 	str	r3, [r5]
@@ -492,10 +492,10 @@
 	str	r2, [sp, #0xc]
 	mov	r1, r10
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r8
 	mov	r1, r5
-	bl	Func_d924
+	bl	Func_800d924
 	cmp	r0, #0
 	bne	.Lf092
 	ldr	r3, [r6]
@@ -508,10 +508,10 @@
 	mov	r1, r10
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r8
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lf092
 	ldr	r3, [r6]
@@ -526,15 +526,15 @@
 	lsl	r0, #12
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r8
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lf092
 	mov	r0, r8
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lf092
 	ldr	r3, [r6]
@@ -548,17 +548,17 @@
 	lsl	r0, #12
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r8
 	mov	r1, r5
-	bl	Func_120dc
+	bl	Func_80120dc
 	cmp	r0, #0
 	bne	.Lf092
 	mov	r0, #0x80
 	lsl	r0, #7
 	mov	r1, r10
 	mov	r2, r6
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r3, #0x80
 	lsl	r3, #24
 	str	r3, [r6, #0x30]
@@ -599,7 +599,7 @@
 	lsl	r3, #6
 	str	r3, [r7, #0x34]
 .Lf0c6:
-	ldr	r3, =iwram_1ebc
+	ldr	r3, =iwram_3001ebc
 	ldr	r3, [r3]
 	cmp	r3, #0
 	beq	.Lf0ee
@@ -626,18 +626,18 @@
 	beq	.Lf0fe
 	mov	r0, r7
 	mov	r1, #8
-	bl	Func_c300
+	bl	Func_800c300
 	b	.Lf130
 .Lf0fe:
 	ldr	r2, [sp, #0x14]
 	cmp	r2, #0
 	beq	.Lf128
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	mov	r5, #9
@@ -647,12 +647,12 @@
 .Lf11e:
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_c300
+	bl	Func_800c300
 	b	.Lf130
 .Lf128:
 	mov	r0, r7
 	ldr	r1, [sp, #8]
-	bl	Func_c300
+	bl	Func_800c300
 .Lf130:
 	ldr	r2, [sp, #0x14]
 	cmp	r2, #0
@@ -709,9 +709,9 @@
 	ldr	r2, [r3, #4]
 	mov	r0, r7
 	ldr	r3, [r3, #8]
-	bl	Func_d14c
+	bl	Func_800d14c
 	ldr	r1, [r7, #0x24]
-	ldr	r4, =Func_888
+	ldr	r4, =Func_8000888
 	mov	r0, r1
 	.call_via r4
 	ldr	r1, [r7, #0x2c]
@@ -720,7 +720,7 @@
 	.call_via r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_45d4
+	bl	Func_80045d4
 	ldr	r3, [sp, #0x14]
 	str	r3, [r7, #0x24]
 	str	r3, [r7, #0x2c]
@@ -729,7 +729,7 @@
 	mov	r2, r7
 	add	r2, #0x24
 	lsr	r1, #16
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r3, #0x64
 	add	r3, r7
 	mov	r10, r3
@@ -742,7 +742,7 @@
 	mov	r1, r10
 	strh	r3, [r1]
 .Lf1fa:
-	ldr	r3, =iwram_1e70
+	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]
 	ldr	r2, [sp, #4]
 	ldrb	r3, [r3, #0x17]
@@ -762,7 +762,7 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	mov	r0, #0x19
-	bl	Func_c150
+	bl	Func_800c150
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lf2d8
@@ -770,7 +770,7 @@
 	ldr	r1, =.L13274
 	str	r3, [r6, #0x14]
 	ldr	r5, [r6, #0x50]
-	bl	Func_c2d8
+	bl	Func_800c2d8
 	mov	r2, r6
 	mov	r3, #2
 	add	r2, #0x23
@@ -784,7 +784,7 @@
 	beq	.Lf270
 	mov	r1, #1
 	mov	r0, r5
-	bl	Func_ba30
+	bl	Func_800ba30
 	add	r1, sp, #0x14
 	mov	r3, r5
 	ldrb	r1, [r1]
@@ -810,7 +810,7 @@
 	bne	.Lf294
 	mov	r0, r5
 	mov	r1, #2
-	bl	Func_ba30
+	bl	Func_800ba30
 	add	r2, sp, #0x14
 	ldrh	r2, [r2]
 	mov	r3, r8
@@ -853,7 +853,7 @@
 	.pool_aligned
 
 .Lf2d8:
-	bl	Func_eaf8
+	bl	Func_800eaf8
 	ldrh	r3, [r7, #4]
 	add	r3, #1
 	mov	r0, #1
@@ -867,9 +867,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_ebec
+.func_end Func_800ebec
 
-.thumb_func_start Func_f2f8
+.thumb_func_start Func_800f2f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -880,13 +880,13 @@
 	sub	sp, #0x5c
 	mov	r1, #0
 	mov	r6, r0
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r0, #2
 	mov	r2, #0x87
 	str	r1, [sp, #8]
 	str	r0, [sp]
 	lsl	r2, #2
-	ldr	r1, =iwram_1ae8
+	ldr	r1, =iwram_3001ae8
 	add	r3, r2
 	ldrh	r2, [r3]
 	ldr	r3, [r1]
@@ -910,7 +910,7 @@
 	lsl	r3, #7
 	str	r3, [r6, #0x34]
 .Lf344:
-	ldr	r3, =iwram_1b04
+	ldr	r3, =iwram_3001b04
 	mov	r0, #0x80
 	ldr	r3, [r3]
 	lsl	r0, #2
@@ -922,7 +922,7 @@
 	lsl	r3, #11
 	str	r3, [r6, #0x30]
 .Lf35a:
-	ldr	r5, =iwram_1ae8
+	ldr	r5, =iwram_3001ae8
 	ldr	r2, [r5]
 	mov	r1, #0xf
 	lsr	r2, #4
@@ -964,8 +964,8 @@
 	mov	r0, r10
 	mov	r1, r7
 	mov	r2, r8
-	bl	Func_447c
-	ldr	r3, =iwram_1f54
+	bl	Func_800447c
+	ldr	r3, =iwram_3001f54
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lf3c2
@@ -978,7 +978,7 @@
 .Lf3c2:
 	mov	r0, r6
 	mov	r1, r8
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf466
 	ldr	r3, [r6, #8]
@@ -993,10 +993,10 @@
 	mov	r0, r10
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf466
 	ldr	r3, [r6, #8]
@@ -1009,10 +1009,10 @@
 	mov	r0, r10
 	add	r1, r7, r3
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf466
 	ldr	r3, [r6, #8]
@@ -1026,10 +1026,10 @@
 	str	r3, [r5, #8]
 	mov	r0, r10
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf466
 	ldr	r3, [r6, #8]
@@ -1042,10 +1042,10 @@
 	mov	r0, r10
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf466
 	b	.Lf592
@@ -1105,10 +1105,10 @@
 	mov	r1, r7
 	mov	r11, r2
 	mov	r2, r8
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r8
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf582
 	ldr	r3, [r6, #8]
@@ -1124,10 +1124,10 @@
 	lsl	r0, #11
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf582
 	ldr	r3, [r6, #8]
@@ -1141,10 +1141,10 @@
 	add	r1, r7, r3
 	lsl	r0, #11
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf582
 	ldr	r3, [r6, #8]
@@ -1159,10 +1159,10 @@
 	lsl	r0, #11
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf582
 	ldr	r3, [r6, #8]
@@ -1176,10 +1176,10 @@
 	lsl	r0, #11
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_122ac
+	bl	Func_80122ac
 	cmp	r0, #0
 	bne	.Lf582
 	b	.Lf382
@@ -1193,7 +1193,7 @@
 	orr	r1, r3
 	str	r1, [sp, #8]
 .Lf592:
-	ldr	r3, =iwram_1ebc
+	ldr	r3, =iwram_3001ebc
 	ldr	r3, [r3]
 	cmp	r3, #0
 	beq	.Lf5ba
@@ -1220,12 +1220,12 @@
 	beq	.Lf5ca
 	mov	r0, r6
 	mov	r1, #9
-	bl	Func_c300
+	bl	Func_800c300
 	b	.Lf5d2
 .Lf5ca:
 	mov	r0, r6
 	ldr	r1, [sp]
-	bl	Func_c300
+	bl	Func_800c300
 .Lf5d2:
 	ldr	r2, [sp, #8]
 	cmp	r2, #0
@@ -1283,9 +1283,9 @@
 	ldr	r2, [r3, #4]
 	mov	r0, r6
 	ldr	r3, [r3, #8]
-	bl	Func_d14c
+	bl	Func_800d14c
 	ldr	r1, [r6, #0x24]
-	ldr	r4, =Func_888
+	ldr	r4, =Func_8000888
 	mov	r0, r1
 	.call_via r4
 	ldr	r1, [r6, #0x2c]
@@ -1294,7 +1294,7 @@
 	.call_via r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_45d4
+	bl	Func_80045d4
 	ldr	r2, [sp, #4]
 	ldr	r3, [sp, #8]
 	lsl	r1, r2, #16
@@ -1303,7 +1303,7 @@
 	lsr	r1, #16
 	str	r3, [r6, #0x24]
 	str	r3, [r6, #0x2c]
-	bl	Func_447c
+	bl	Func_800447c
 	mov	r3, #0x64
 	add	r3, r6
 	mov	r8, r3
@@ -1316,9 +1316,9 @@
 	mov	r1, r8
 	strh	r3, [r1]
 .Lf6ae:
-	ldr	r3, =iwram_1e70
+	ldr	r3, =iwram_3001e70
 	ldr	r0, [r3]
-	ldr	r3, =iwram_1ae8
+	ldr	r3, =iwram_3001ae8
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4
@@ -1366,7 +1366,7 @@
 	mov	r0, r6
 	add	r0, #8
 	ldr	r5, [r6, #0x50]
-	bl	Func_12204
+	bl	Func_8012204
 	cmp	r0, #9
 	bne	.Lf738
 	ldr	r3, [r5, #0x2c]
@@ -1404,13 +1404,13 @@
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r0, #0x18
-	bl	Func_c150
+	bl	Func_800c150
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lf7ba
 	ldr	r1, =.L13280
 	ldr	r7, [r5, #0x50]
-	bl	Func_c2d8
+	bl	Func_800c2d8
 	add	r0, sp, #8
 	mov	r3, r5
 	ldrb	r0, [r0]
@@ -1424,7 +1424,7 @@
 	beq	.Lf7b4
 	mov	r1, #1
 	mov	r0, r7
-	bl	Func_ba30
+	bl	Func_800ba30
 	add	r1, sp, #8
 	ldrb	r1, [r1]
 	mov	r3, r7
@@ -1448,7 +1448,7 @@
 	mov	r2, r8
 	strh	r3, [r2]
 .Lf7ba:
-	bl	Func_eaf8
+	bl	Func_800eaf8
 	ldrh	r3, [r6, #4]
 	add	r3, #1
 	mov	r0, #1
@@ -1462,5 +1462,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_f2f8
+.func_end Func_800f2f8
 

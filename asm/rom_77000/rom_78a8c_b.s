@@ -4,22 +4,19 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_78a8c
+	.global	Func_8078a8c
 	.thumb_func
-	.type	 Func_78a8c,function
-Func_78a8c:
+	.type	 Func_8078a8c,function
+Func_8078a8c:
 	push	{lr}
-	bl	Func_78414
+	bl	Func_8078414
 	ldrh	r0, [r0, #40]
-	bl	Func_78b9c
+	bl	Func_8078b9c
 	ldrb	r0, [r0]
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 Func_78a8c,.Lfe1-Func_78a8c
-
-	.text
-	.align	2, 0
+	.size	 Func_8078a8c,.Lfe1-Func_8078a8c
 
 	.text
 	.align	2, 0

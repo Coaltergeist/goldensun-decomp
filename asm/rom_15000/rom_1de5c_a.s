@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_1de5c
+.thumb_func_start Func_801de5c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,17 +13,17 @@
 	str	r1, [sp, #0x10]
 	str	r2, [sp, #0xc]
 	mov	r8, r3
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	mov	r5, #0x80
 	ldr	r3, [r3]
 	lsl	r5, #4
 	mov	r6, r0
 	mov	r0, r5
 	mov	r11, r3
-	bl	Func_4938
+	bl	Func_8004938
 	str	r0, [sp, #8]
 	ldr	r0, =0x13
-	bl	Func_2f40
+	bl	Func_8002f40
 	ldr	r3, =0xea7
 	str	r0, [sp, #4]
 	add	r3, r11
@@ -31,7 +31,7 @@
 	lsl	r3, #12
 	str	r3, [sp]
 	mov	r1, #0x10
-	ldr	r3, =Func_8d4
+	ldr	r3, =Func_80008d4
 	add	r0, sp, #0x14
 	bl	_call_via_r3
 	mov	r2, #0xf0
@@ -53,7 +53,7 @@
 	mov	r3, #3
 	strb	r3, [r4, #3]
 	ldr	r0, [sp, #8]
-	ldr	r3, =Func_8d8
+	ldr	r3, =Func_80008d8
 	mov	r1, r5
 	ldr	r2, =0x4040404
 	bl	_call_via_r3
@@ -70,7 +70,7 @@
 	mov	r3, #1
 	strb	r3, [r7, #3]
 	ldr	r0, [sp, #8]
-	ldr	r3, =Func_8d8
+	ldr	r3, =Func_80008d8
 	mov	r1, r5
 	ldr	r2, =0xe0e0e0e
 	mov	r10, r7
@@ -460,7 +460,7 @@
 	b	.L1e0d0
 .L1e22a:
 	ldr	r0, [sp, #8]
-	bl	Func_2df0
+	bl	Func_8002df0
 	mov	r0, r6
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}
@@ -471,9 +471,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_1de5c
+.func_end Func_801de5c
 
-.thumb_func_start Func_1e260
+.thumb_func_start Func_801e260
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -482,7 +482,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r11, r3
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	mov	r7, r2
 	ldr	r5, [r3]
 	ldr	r2, =0xea2
@@ -561,15 +561,15 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_1e260
+.func_end Func_801e260
 
-.thumb_func_start Func_1e318
+.thumb_func_start Func_801e318
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	mov	r2, #0x1e
 	ldr	r5, [r3]
 	mov	r9, r2
@@ -648,11 +648,11 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_1e318
+.func_end Func_801e318
 
-.thumb_func_start Func_1e3c8
+.thumb_func_start Func_801e3c8
 	push	{lr}
-	ldr	r3, =iwram_1e8c
+	ldr	r3, =iwram_3001e8c
 	ldr	r1, [r3]
 	cmp	r0, #0
 	beq	.L1e3f0
@@ -691,5 +691,5 @@
 .L1e40c:
 	pop	{r0}
 	bx	r0
-.func_end Func_1e3c8
+.func_end Func_801e3c8
 

@@ -1,14 +1,14 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_b5a0c
+.thumb_func_start Func_80b5a0c
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x1c
-	ldr	r3, =iwram_1e74
+	ldr	r3, =iwram_3001e74
 	mov	r7, sp
 	mov	r0, r7
 	ldr	r5, [r3]
-	bl	Func_b6a60
+	bl	Func_80b6a60
 	mov	r6, r0
 	cmp	r6, #0
 	ble	.Lb5a3a
@@ -31,7 +31,7 @@
 	add	r3, #0x58
 	strh	r2, [r5, r3]
 	mov	r0, r7
-	bl	Func_b6ae0
+	bl	Func_80b6ae0
 	mov	r3, r5
 	add	r3, #0x42
 	ldrb	r3, [r3]
@@ -109,9 +109,9 @@
 	.align	2, 0
 .Lb5acc:
 	.word	0xff
-.func_end Func_b5a0c
+.func_end Func_80b5a0c
 
-.thumb_func_start Func_b5ad4
+.thumb_func_start Func_80b5ad4
 	push	{lr}
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =0x6000290
@@ -119,18 +119,18 @@
 	ldr	r2, =0x80000008
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =Func_8d4
+	ldr	r3, =Func_80008d4
 	mov	r1, #0x14
 	ldr	r0, =0x600028c
 	bl	_call_via_r3
 	pop	{r1}
 	bx	r1
-.func_end Func_b5ad4
+.func_end Func_80b5ad4
 
-.thumb_func_start Func_b5b08
+.thumb_func_start Func_80b5b08
 	ldr	r3, =REG_BG0VOFS
 	mov	r2, #0
 	strh	r2, [r3]
 	bx	lr
-.func_end Func_b5b08
+.func_end Func_80b5b08
 
