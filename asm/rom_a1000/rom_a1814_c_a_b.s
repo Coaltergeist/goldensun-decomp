@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_a2408
+	.global	Func_80a2408
 	.thumb_func
-	.type	 Func_a2408,function
-Func_a2408:
+	.type	 Func_80a2408,function
+Func_80a2408:
 	ldr	r3, .L3
 	ldr	r2, .L3+4
 	ldr	r3, [r3]
@@ -18,15 +18,15 @@ Func_a2408:
 .L4:
 	.align	2, 0
 .L3:
-	.word	iwram_1e8c
+	.word	iwram_3001e8c
 	.word	3750
 .Lfe1:
-	.size	 Func_a2408,.Lfe1-Func_a2408
+	.size	 Func_80a2408,.Lfe1-Func_80a2408
 	.align	2, 0
-	.global	Func_a2420
+	.global	Func_80a2420
 	.thumb_func
-	.type	 Func_a2420,function
-Func_a2420:
+	.type	 Func_80a2420,function
+Func_80a2420:
 	ldr	r3, .L6
 	ldr	r2, .L6+4
 	ldr	r3, [r3]
@@ -37,13 +37,10 @@ Func_a2420:
 .L7:
 	.align	2, 0
 .L6:
-	.word	iwram_1e8c
+	.word	iwram_3001e8c
 	.word	3750
 .Lfe2:
-	.size	 Func_a2420,.Lfe2-Func_a2420
-
-	.text
-	.align	2, 0
+	.size	 Func_80a2420,.Lfe2-Func_80a2420
 
 	.text
 	.align	2, 0

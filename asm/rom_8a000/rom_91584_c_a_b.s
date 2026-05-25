@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_917c4
+	.global	Func_80917c4
 	.thumb_func
-	.type	 Func_917c4,function
-Func_917c4:
+	.type	 Func_80917c4,function
+Func_80917c4:
 	ldr	r3, .L3
 	ldr	r3, [r3]
 	str	r0, [r3, #16]
@@ -15,12 +15,9 @@ Func_917c4:
 .L4:
 	.align	2, 0
 .L3:
-	.word	iwram_1ebc
+	.word	iwram_3001ebc
 .Lfe1:
-	.size	 Func_917c4,.Lfe1-Func_917c4
-
-	.text
-	.align	2, 0
+	.size	 Func_80917c4,.Lfe1-Func_80917c4
 
 	.text
 	.align	2, 0

@@ -4,17 +4,17 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_22a4
+	.global	OvlFunc_7f2f14_22a4
 	.thumb_func
-	.type	 OvlFunc_22a4,function
-OvlFunc_22a4:
+	.type	 OvlFunc_7f2f14_22a4,function
+OvlFunc_7f2f14_22a4:
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, r5
 	add	r3, r3, #100
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r2, #128
 	ldr	r3, [r0, #12]
 	lsl	r2, r2, #13
@@ -25,7 +25,7 @@ OvlFunc_22a4:
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 OvlFunc_22a4,.Lfe1-OvlFunc_22a4
+	.size	 OvlFunc_7f2f14_22a4,.Lfe1-OvlFunc_7f2f14_22a4
 
 	.text
 	.align	2, 0

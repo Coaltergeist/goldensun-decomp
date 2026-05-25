@@ -1,15 +1,15 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_f95a0
+.thumb_func_start Func_80f95a0
 	push	{r5, r6, lr}
-	ldr	r6, =ewram_3000
+	ldr	r6, =ewram_2003000
 	mov	r5, #0
 .Lf95a6:
 	ldrb	r3, [r6]
 	cmp	r3, #0
 	beq	.Lf95ba
 	mov	r0, #1
-	bl	Func_30f8
+	bl	Func_80030f8
 	ldr	r3, =0x12b
 	add	r5, #1
 	cmp	r5, r3
@@ -18,9 +18,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_f95a0
+.func_end Func_80f95a0
 
-.thumb_func_start Func_f95c8
+.thumb_func_start Func_80f95c8
 	push	{lr}
 	cmp	r0, #0x46
 	beq	.Lf95d6
@@ -36,7 +36,7 @@
 .Lf95dc:
 	pop	{r1}
 	bx	r1
-.func_end Func_f95c8
+.func_end Func_80f95c8
 
 	.section .rodata
 	.global .Lfb794

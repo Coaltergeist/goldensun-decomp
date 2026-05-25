@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_170
+.thumb_func_start OvlFunc_7bf5a8_170
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -8,7 +8,7 @@
 	push	{r5, r6, r7}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldrh	r3, [r0, #6]
 	mov	r2, #0xa
 	ldrsh	r1, [r0, r2]
@@ -28,7 +28,7 @@
 	asr	r3, #16
 	add	r2, r3
 	asr	r1, r2, #4
-	bl	OvlFunc_134
+	bl	OvlFunc_7bf5a8_134
 	mov	r6, r0
 	mov	r3, r6
 	add	r3, #0x59
@@ -41,7 +41,7 @@
 .L1be:
 	mov	r0, r5
 	add	r0, #0xb
-	bl	__Func_92054
+	bl	__Func_8092054
 	cmp	r6, r0
 	beq	.L29e
 	add	r5, #1
@@ -61,7 +61,7 @@
 	asr	r3, #16
 	add	r2, r3
 	asr	r1, r2, #4
-	bl	OvlFunc_134
+	bl	OvlFunc_7bf5a8_134
 	cmp	r0, #0
 	beq	.L202
 	mov	r3, r0
@@ -94,36 +94,36 @@
 	str	r3, [r7, #8]
 	mov	r0, r6
 	mov	r1, r7
-	bl	__Func_120dc
+	bl	__Func_80120dc
 	cmp	r0, #0
 	bgt	.L29e
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_c300
+	bl	__Func_800c300
 	ldr	r5, =0x3333
 	mov	r0, #0xf
-	bl	__Func_30f8
+	bl	__Func_80030f8
 	mov	r0, #0xee
-	bl	__Func_f9080
+	bl	__Func_80f9080
 	str	r5, [r6, #0x30]
 	str	r5, [r6, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r6
-	bl	__Func_d14c
+	bl	__Func_800d14c
 	mov	r0, r8
 	str	r5, [r0, #0x30]
 	str	r5, [r0, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
-	bl	__Func_d14c
+	bl	__Func_800d14c
 	mov	r0, r6
-	bl	__Func_ca6c
+	bl	__Func_800ca6c
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_f9080
+	bl	__Func_80f9080
 	ldr	r3, [r7]
 	str	r3, [r6, #8]
 	ldr	r3, [r7, #8]
@@ -140,7 +140,7 @@
 	str	r3, [r2, #0x38]
 	str	r3, [r2, #0x40]
 	mov	r1, #1
-	bl	__Func_c300
+	bl	__Func_800c300
 .L29e:
 	add	sp, #0xc
 	pop	{r3, r5, r6}
@@ -150,25 +150,25 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_170
+.func_end OvlFunc_7bf5a8_170
 
-.thumb_func_start OvlFunc_2bc
+.thumb_func_start OvlFunc_7bf5a8_2bc
 	push	{lr}
 	mov	r0, #0xc0
 	lsl	r0, #2
-	bl	__Func_79358
+	bl	__Func_8079358
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_2bc
+.func_end OvlFunc_7bf5a8_2bc
 
-.thumb_func_start OvlFunc_2cc
+.thumb_func_start OvlFunc_7bf5a8_2cc
 	push	{lr}
 	ldr	r0, =0x953
 	mov	r1, #1
-	bl	__Func_1776c
+	bl	__Func_801776c
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_2cc
+.func_end OvlFunc_7bf5a8_2cc
 
 	.section .data
 

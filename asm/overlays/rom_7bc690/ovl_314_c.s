@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_414
+.thumb_func_start OvlFunc_7bc690_414
 	ldr	r0, =.L236c
 	bx	lr
-.func_end OvlFunc_414
+.func_end OvlFunc_7bc690_414
 
-.thumb_func_start OvlFunc_41c
+.thumb_func_start OvlFunc_7bc690_41c
 	push	{r5, lr}
-	ldr	r5, =ewram_240
+	ldr	r5, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r5, r1
@@ -24,7 +24,7 @@
 	cmp	r3, #5
 	bne	.L444
 	ldr	r0, =0x90a
-	bl	__Func_79358
+	bl	__Func_8079358
 .L444:
 	mov	r2, #0xe0
 	lsl	r2, #1
@@ -54,37 +54,37 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_41c
+.func_end OvlFunc_7bc690_41c
 
-.thumb_func_start OvlFunc_498
+.thumb_func_start OvlFunc_7bc690_498
 	push	{lr}
-	bl	__Func_916b0
+	bl	__Func_80916b0
 	ldr	r0, =0x8b2
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L4be
 	ldr	r0, =0x8b3
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L4be
 	ldr	r0, =0x8b3
-	bl	__Func_79358
+	bl	__Func_8079358
 	ldr	r0, =0x8b2
-	bl	__Func_79358
+	bl	__Func_8079358
 .L4be:
 	mov	r0, #0x7b
-	bl	__Func_f9080
+	bl	__Func_80f9080
 	mov	r0, #3
-	bl	__Func_91e9c
-	bl	__Func_91750
+	bl	__Func_8091e9c
+	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_498
+.func_end OvlFunc_7bc690_498
 
-.thumb_func_start OvlFunc_4dc
+.thumb_func_start OvlFunc_7bc690_4dc
 	ldr	r0, =.L2500
 	bx	lr
-.func_end OvlFunc_4dc
+.func_end OvlFunc_7bc690_4dc
 
 	.section .data
 	.global .L212c

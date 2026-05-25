@@ -4,57 +4,54 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_2ef8
+	.global	Func_8002ef8
 	.thumb_func
-	.type	 Func_2ef8,function
-Func_2ef8:
+	.type	 Func_8002ef8,function
+Func_8002ef8:
 	bx	lr
 .Lfe1:
-	.size	 Func_2ef8,.Lfe1-Func_2ef8
+	.size	 Func_8002ef8,.Lfe1-Func_8002ef8
 	.align	2, 0
-	.global	Func_2efc
+	.global	Func_8002efc
 	.thumb_func
-	.type	 Func_2efc,function
-Func_2efc:
+	.type	 Func_8002efc,function
+Func_8002efc:
 	bx	lr
 .Lfe2:
-	.size	 Func_2efc,.Lfe2-Func_2efc
+	.size	 Func_8002efc,.Lfe2-Func_8002efc
 	.align	2, 0
-	.global	Func_2f00
+	.global	Func_8002f00
 	.thumb_func
-	.type	 Func_2f00,function
-Func_2f00:
+	.type	 Func_8002f00,function
+Func_8002f00:
 	bx	lr
 .Lfe3:
-	.size	 Func_2f00,.Lfe3-Func_2f00
+	.size	 Func_8002f00,.Lfe3-Func_8002f00
 	.align	2, 0
-	.global	Func_2f04
+	.global	Func_8002f04
 	.thumb_func
-	.type	 Func_2f04,function
-Func_2f04:
+	.type	 Func_8002f04,function
+Func_8002f04:
 	bx	lr
 .Lfe4:
-	.size	 Func_2f04,.Lfe4-Func_2f04
+	.size	 Func_8002f04,.Lfe4-Func_8002f04
 	.align	2, 0
-	.global	Func_2f08
+	.global	Func_8002f08
 	.thumb_func
-	.type	 Func_2f08,function
-Func_2f08:
+	.type	 Func_8002f08,function
+Func_8002f08:
 	bx	lr
 .Lfe5:
-	.size	 Func_2f08,.Lfe5-Func_2f08
+	.size	 Func_8002f08,.Lfe5-Func_8002f08
 	.align	2, 0
-	.global	Func_2f0c
+	.global	Func_8002f0c
 	.thumb_func
-	.type	 Func_2f0c,function
-Func_2f0c:
+	.type	 Func_8002f0c,function
+Func_8002f0c:
 	mov	r0, #0
 	bx	lr
 .Lfe6:
-	.size	 Func_2f0c,.Lfe6-Func_2f0c
-
-	.text
-	.align	2, 0
+	.size	 Func_8002f0c,.Lfe6-Func_8002f0c
 
 	.text
 	.align	2, 0

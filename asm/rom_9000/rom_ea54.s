@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_ea54
+.thumb_func_start Func_800ea54
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lea5c
@@ -8,17 +8,17 @@
 .Lea5c:
 	pop	{r0}
 	bx	r0
-.func_end Func_ea54
+.func_end Func_800ea54
 
-.thumb_func_start Func_ea60
+.thumb_func_start Func_800ea60
 	push	{r5, r6, r7, lr}
 	ldr	r7, =0x3fff
-	ldr	r3, =iwram_1ebc
+	ldr	r3, =iwram_3001ebc
 	lsr	r6, r0, #14
 	and	r7, r0
 	ldr	r0, =0x107
 	ldr	r5, [r3]
-	bl	_Func_79338
+	bl	_Func_8079338
 	cmp	r0, #0
 	beq	.Lea82
 	mov	r3, #0xc1
@@ -35,7 +35,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #3
 	bne	.Leac2
-	ldr	r1, =iwram_1c94
+	ldr	r1, =iwram_3001c94
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #1
@@ -81,20 +81,20 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_ea60
+.func_end Func_800ea60
 
-.thumb_func_start Func_eaf8
+.thumb_func_start Func_800eaf8
 	push	{r5, lr}
-	ldr	r3, =iwram_1ebc
+	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
 	mov	r5, #0
 	mov	r0, #0
 	cmp	r1, #0
 	beq	.Leb80
-	ldr	r4, =ewram_240
+	ldr	r4, =ewram_2000240
 	mov	r2, #0x85
 	lsl	r2, #2
-	ldr	r0, =iwram_1c94
+	ldr	r0, =iwram_3001c94
 	add	r3, r4, r2
 	ldrh	r2, [r3]
 	ldr	r3, [r0]
@@ -154,7 +154,7 @@
 .Leb74:
 	add	r3, r4, r2
 	ldrh	r0, [r3]
-	bl	Func_ea60
+	bl	Func_800ea60
 	mov	r5, r0
 .Leb7e:
 	mov	r0, r5
@@ -162,9 +162,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_eaf8
+.func_end Func_800eaf8
 
-.thumb_func_start Func_eba0
+.thumb_func_start Func_800eba0
 	push	{r5, r6, lr}
 	ldmia	r0!, {r4}
 	ldmia	r2!, {r5}
@@ -205,4 +205,4 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_eba0
+.func_end Func_800eba0

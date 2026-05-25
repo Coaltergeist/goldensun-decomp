@@ -3,7 +3,7 @@
 	.incdata Data_92b8, 0x92b8, 0x97b8
 	.incdata Data_97b8, 0x97b8, 0x9bb8
 
-.arm_func_start Func_9bb8
+.arm_func_start Func_8009bb8
 	cmp	r2, #0
 	bne	.L9cd0
 .L9bc0:
@@ -62,7 +62,7 @@
 	b	.L9bd8
 
 .L9c8c:
-	.word	iwram_1c90
+	.word	iwram_3001c90
 
 .L9c90:
 	ldr	r2, .L9c8c
@@ -119,7 +119,7 @@
 	str	r2, .L9d90
 	ldr	r3, .L9d98
 	add	r2, r3, r2, lsl #8
-	adr	r3, Data_9d9c
+	adr	r3, Data_8009d9c
 	push	{r5, r6, r7, r8, r9}
 	ldm	r2!, {r4, r5, r6, r7, r8, r9, r12}
 	stmia	r3!, {r4, r5, r6, r7, r8, r9, r12}
@@ -139,7 +139,7 @@
 	stmia	r3!, {r4, r5, r6, r7, r8, r9, r12}
 	pop	{r5, r6, r7, r8, r9}
 .L9d64:
-	adr	r2, Data_9d9c
+	adr	r2, Data_8009d9c
 	b	.L9d70
 .L9d6c:
 	add	r1, r4
@@ -159,13 +159,13 @@
 .L9d98:
 	.word	Data_92b8 - 0x100
 
-	.global	Data_9d9c
-Data_9d9c:
+	.global	Data_8009d9c
+Data_8009d9c:
 	.space	0xe0
-	.ssize	Data_9d9c
-.func_end Func_9bb8
+	.ssize	Data_8009d9c
+.func_end Func_8009bb8
 
-.arm_func_start Func_9e7c
+.arm_func_start Func_8009e7c
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	mov	r4, #0xa00000
 	orr	r4, #0x38
@@ -327,9 +327,9 @@ Data_9d9c:
 	bne	.L9e8c
 	pop	{r5, r6, r7, r8, r9, r10, r11, lr}
 	bx	lr
-.func_end Func_9e7c
+.func_end Func_8009e7c
 
-.arm_func_start Func_a0f8
+.arm_func_start Func_800a0f8
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r5, r1
 	ldr	r9, =Exports_c0
@@ -360,7 +360,7 @@ Data_9d9c:
 	lsl	r2, #16
 	orr	r1, r2, r3, lsr #16
 	str	r1, [sp]
-	ldr	r2, =iwram_1f60
+	ldr	r2, =iwram_3001f60
 	ldr	r3, [r2]
 	cmp	r8, r3
 	beq	.La294
@@ -398,7 +398,7 @@ Data_9d9c:
 	asr	r2, #8
 	strh	r2, [r7, #0x12]
 	strh	r2, [r6, #4]
-	ldr	r3, =iwram_1cec
+	ldr	r3, =iwram_3001cec
 	ldr	r0, [r3]
 	lsl	r3, r14, #8
 	mul	r14, r0, r3
@@ -436,7 +436,7 @@ Data_9d9c:
 	b	.La370
 .La294:
 	mov	r8, #0x9f
-	ldr	r14, =iwram_1e40
+	ldr	r14, =iwram_3001e40
 .La29c:
 	ldr	r3, [r14]
 	tst	r3, #1
@@ -496,9 +496,9 @@ Data_9d9c:
 	add	sp, #8
 	pop	{r5, r6, r7, r8, r9, r10, lr}
 	bx	lr
-.func_end Func_a0f8
+.func_end Func_800a0f8
 
-.arm_func_start Func_a37c
+.arm_func_start Func_800a37c
 	push	{r5, r6, r7, r8}
 	mov	r5, #0xff000000
 	orr	r5, r5, lsr #4
@@ -541,9 +541,9 @@ Data_9d9c:
 	bne	.La3d0
 	pop	{r5, r6, r7, r8}
 	bx	lr
-.func_end Func_a37c
+.func_end Func_800a37c
 
-.arm_func_start Func_a418
+.arm_func_start Func_800a418
 	bics	r1, #7
 	bicnes	r2, #7
 	bxeq	lr
@@ -577,12 +577,12 @@ Data_9d9c:
 	bgt	.La428
 	pop	{r5, r6, r7, r8, r9, r10, r11}
 	bx	lr
-.func_end Func_a418
+.func_end Func_800a418
 
-.arm_func_start Func_a494
+.arm_func_start Func_800a494
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r2, #0
-	ldr	r3, =iwram_1e64
+	ldr	r3, =iwram_3001e64
 	sub	sp, #0x10
 	ldr	r5, [r3]
 .La4a8:
@@ -612,7 +612,7 @@ Data_9d9c:
 	subne	r3, #1
 	strneh	r3, [r5, #0x5e]
 	bne	.La558
-	ldr	r6, =Data_13624
+	ldr	r6, =Data_8013624
 	b	.La520
 .La514:
 	ldrh	r3, [r5, #4]
@@ -660,7 +660,7 @@ Data_9d9c:
 	asrlt	r7, r3, #16
 	mul	r2, r7, r7
 	mla	r0, r6, r6, r2
-	ldr	r1, =Func_948
+	ldr	r1, =Func_8000948
 	mov	lr, pc
 	bx	r1
 	lsl	r0, #16
@@ -677,7 +677,7 @@ Data_9d9c:
 	lsl	r0, #16
 	orr	r0, r2, lsr #16
 	add	r0, r3, r0
-	ldr	r3, =Func_948
+	ldr	r3, =Func_8000948
 	mov	lr, pc
 	bx	r3
 	lsl	r0, #8
@@ -687,7 +687,7 @@ Data_9d9c:
 	ldreq	r10, [r5, #0x40]
 	beq	.La73c
 	ldr	r1, [r5, #0x34]
-	ldr	r3, =Func_8ac
+	ldr	r3, =Func_80008ac
 	mov	lr, pc
 	bx	r3
 	smull	r1, r3, r0, r6
@@ -708,7 +708,7 @@ Data_9d9c:
 	smull	r1, r0, r6, r6
 	lsl	r0, #16
 	orr	r0, r1, lsr #16
-	ldr	r1, =Func_948
+	ldr	r1, =Func_8000948
 	add	r0, r3, r0
 	mov	lr, pc
 	bx	r1
@@ -716,7 +716,7 @@ Data_9d9c:
 	lsl	r0, #8
 	cmp	r0, r1
 	ble	.La73c
-	ldr	r3, =Func_8ac
+	ldr	r3, =Func_80008ac
 	mov	lr, pc
 	bx	r3
 	smull	r2, r3, r0, r8
@@ -735,7 +735,7 @@ Data_9d9c:
 	lsl	r0, #16
 	orr	r0, r1, lsr #16
 	add	r0, r3, r0
-	bl	Func_a960
+	bl	Func_800a960
 	lsls	r0, #8
 	beq	.La730
 	ldr	r3, [r5, #0x34]
@@ -744,7 +744,7 @@ Data_9d9c:
 	strmi	r1, [r5, #0x24]
 	strmi	r1, [r5, #0x2c]
 	bmi	.La73c
-	bl	Func_a968
+	bl	Func_800a968
 	smull	r2, r3, r0, r6
 	lsl	r3, #16
 	orr	r3, r2, lsr #16
@@ -887,7 +887,7 @@ Data_9d9c:
 	beq	.La940
 	mov	r0, r10
 	mov	r1, r9
-	bl	Func_a958
+	bl	Func_800a958
 	lsl	r0, #16
 	ldrh	r3, [r5, #6]
 	mov	r2, #0x80000000
@@ -907,21 +907,21 @@ Data_9d9c:
 	add	sp, #0x10
 	pop	{r5, r6, r7, r8, r9, r10, lr}
 	bx	lr
-.func_end Func_a494
+.func_end Func_800a494
 
-.arm_func_start Func_a958
-	ldr	r4, =Func_44d0
+.arm_func_start Func_800a958
+	ldr	r4, =Func_80044d0
 	bx	r4
-.ssize	Func_a958
+.ssize	Func_800a958
 
-.arm_func_start Func_a960
-	ldr	r4, =Func_948
+.arm_func_start Func_800a960
+	ldr	r4, =Func_8000948
 	bx	r4
-.ssize	Func_a960
+.ssize	Func_800a960
 
-.arm_func_start Func_a968
-	ldr	r4, =Func_8ac
+.arm_func_start Func_800a968
+	ldr	r4, =Func_80008ac
 	bx	r4
-.ssize	Func_a968
+.ssize	Func_800a968
 
 .pool

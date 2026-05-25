@@ -4,13 +4,13 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	OvlFunc_450
+	.global	OvlFunc_793768_450
 	.thumb_func
-	.type	 OvlFunc_450,function
-OvlFunc_450:
+	.type	 OvlFunc_793768_450,function
+OvlFunc_793768_450:
 	push	{lr}
 	mov	r0, #2
-	bl	__Func_77394
+	bl	__Func_8077394
 	mov	r3, #140
 	lsl	r3, r3, #1
 	add	r0, r0, r3
@@ -18,7 +18,7 @@ OvlFunc_450:
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 OvlFunc_450,.Lfe1-OvlFunc_450
+	.size	 OvlFunc_793768_450,.Lfe1-OvlFunc_793768_450
 
 	.text
 	.align	2, 0

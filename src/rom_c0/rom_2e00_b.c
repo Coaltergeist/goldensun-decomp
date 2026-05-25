@@ -1,4 +1,4 @@
-/* Trivial function cluster between Func_2ee4 and Func_2f10 in rom_2e00.s.
+/* Trivial function cluster between Func_8002ee4 and Func_8002f10 in rom_2e00.s.
  *
  * Five no-op stubs (presumably callbacks or vtable slots intentionally left
  * empty) and a constant-zero return helper. agbcc -O2 emits each void leaf
@@ -8,9 +8,9 @@
  * ROM layout when slotted between rom_2e00_a.o and rom_2e00_c.o in stage1.ld.
  */
 
-void Func_2ef8(void) {}
-void Func_2efc(void) {}
-void Func_2f00(void) {}
-void Func_2f04(void) {}
-void Func_2f08(void) {}
-int Func_2f0c(void) { return 0; }
+void Func_8002ef8(void) {}
+void Func_8002efc(void) {}
+void Func_8002f00(void) {}
+void Func_8002f04(void) {}
+void Func_8002f08(void) {}
+int Func_8002f0c(void) { return 0; }

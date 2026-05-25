@@ -4,17 +4,17 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_aa538
+	.global	Func_80aa538
 	.thumb_func
-	.type	 Func_aa538,function
-Func_aa538:
+	.type	 Func_80aa538,function
+Func_80aa538:
 	push	{lr}
 	add	r0, r0, r1
 	bl	Func_b1c_from_thumb
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 Func_aa538,.Lfe1-Func_aa538
+	.size	 Func_80aa538,.Lfe1-Func_80aa538
 
 	.text
 	.align	2, 0

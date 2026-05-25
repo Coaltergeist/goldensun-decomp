@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_34c
+.thumb_func_start OvlFunc_7eaf28_34c
 	push	{lr}
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -31,5 +31,5 @@
 .L37a:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_34c
+.func_end OvlFunc_7eaf28_34c
 

@@ -1,4 +1,4 @@
-/* Cluster Func_aa538..Func_aa538 extracted from goldensun/rom_a1000/src/rom_aa538.s.
+/* Cluster Func_80aa538..Func_80aa538 extracted from goldensun/rom_a1000/src/rom_aa538.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern unsigned int Func_b1c_from_thumb(unsigned int);
 
-unsigned int Func_aa538(unsigned int arg0, unsigned int arg1) {
+unsigned int Func_80aa538(unsigned int arg0, unsigned int arg1) {
     return Func_b1c_from_thumb(arg0 + arg1);
 }

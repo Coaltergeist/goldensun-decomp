@@ -1,16 +1,16 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_30
+.thumb_func_start OvlFunc_7b9cb4_30
 	push	{lr}
 	mov	r0, #0xe
 	mov	r1, #0x17
-	bl	__Func_91f14
+	bl	__Func_8091f14
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_30
+.func_end OvlFunc_7b9cb4_30
 
-.thumb_func_start OvlFunc_40
+.thumb_func_start OvlFunc_7b9cb4_40
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, [r5, #0x68]
@@ -27,7 +27,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_44d0
+	bl	__Func_80044d0
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -54,5 +54,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_40
+.func_end OvlFunc_7b9cb4_40
 

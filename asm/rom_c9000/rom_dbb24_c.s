@@ -1,8 +1,8 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_dbb9c
-	ldr	r3, =iwram_1eec
+.thumb_func_start Func_80dbb9c
+	ldr	r3, =iwram_3001eec
 	ldr	r0, [r3]
 	ldr	r3, =REG_DMA0SAD
 	ldr	r2, =0xc5ff
@@ -22,4 +22,4 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_dbb9c
+.func_end Func_80dbb9c

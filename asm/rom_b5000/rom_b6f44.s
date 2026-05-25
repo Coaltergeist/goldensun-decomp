@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_b6f44
+.thumb_func_start Func_80b6f44
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -21,15 +21,15 @@
 	mov	r1, r2
 	mov	r2, #0
 	str	r3, [sp, #4]
-	bl	_Func_c150
+	bl	_Func_800c150
 	mov	r8, r0
 	mov	r0, r9
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r2, #0
 	mov	r10, r0
 	mov	r0, r9
 	mov	r11, r2
-	bl	Func_b6d30
+	bl	Func_80b6d30
 	ldr	r3, =0x129
 	add	r3, r10
 	ldrb	r3, [r3]
@@ -40,13 +40,13 @@
 	lsl	r5, #1
 	add	r5, r10
 	ldrb	r0, [r5]
-	bl	Func_c2384
+	bl	Func_80c2384
 	mov	r1, r0
 	cmp	r7, #0
 	bne	.Lb6fb0
 	ldrb	r0, [r5]
 	str	r1, [sp]
-	bl	Func_c23a0
+	bl	Func_80c23a0
 	mov	r11, r0
 	ldr	r1, [sp]
 	b	.Lb6ffe
@@ -409,7 +409,7 @@
 	str	r3, [r6, #0x10]
 	str	r2, [r6, #0x14]
 	strh	r1, [r6, #4]
-	bl	Func_b6eb4
+	bl	Func_80b6eb4
 	mov	r5, #0
 	strh	r5, [r6, #8]
 	str	r5, [r6, #0x20]
@@ -428,7 +428,7 @@
 	bhi	.Lb73a8
 	mov	r0, r10
 	mov	r1, #1
-	bl	_Func_78870
+	bl	_Func_8078870
 	cmp	r0, #0xf
 	bne	.Lb73a8
 	ldrb	r3, [r5]
@@ -451,7 +451,7 @@
 .Lb73b0:
 	asr	r0, r3, #3
 	ldr	r1, [sp, #0x10]
-	bl	Func_44d0
+	bl	Func_80044d0
 	mov	r3, #0x80
 	lsl	r3, #8
 	add	r0, r3
@@ -479,7 +479,7 @@
 	str	r3, [r2, #0x1c]
 	ldr	r1, =.Lc5938
 	mov	r0, r8
-	bl	_Func_c2d8
+	bl	_Func_800c2d8
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -489,7 +489,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_b6f44
+.func_end Func_80b6f44
 
 	.section .rodata
 

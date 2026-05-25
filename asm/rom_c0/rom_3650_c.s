@@ -1,26 +1,26 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_3810
+.thumb_func_start Func_8003810
 	push	{lr}
-	ldr	r3, =ewram_2000
+	ldr	r3, =ewram_2002000
 	ldrh	r3, [r3]
 	cmp	r3, #0
 	bne	.L3826
 	ldr	r2, =0xc3ff
 	ldr	r3, =REG_KEYCNT
 	strh	r2, [r3]
-	ldr	r2, =iwram_1cb8
+	ldr	r2, =iwram_3001cb8
 	mov	r3, #1
 	strb	r3, [r2]
 .L3826:
 	pop	{r0}
 	bx	r0
-.func_end Func_3810
+.func_end Func_8003810
 
-.thumb_func_start Func_383c
+.thumb_func_start Func_800383c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -47,11 +47,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_383c
+.func_end Func_800383c
 
-.thumb_func_start Func_387c
+.thumb_func_start Func_800387c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -78,11 +78,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_387c
+.func_end Func_800387c
 
-.thumb_func_start Func_38bc
+.thumb_func_start Func_80038bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -109,11 +109,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_38bc
+.func_end Func_80038bc
 
-.thumb_func_start Func_38fc
+.thumb_func_start Func_80038fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -140,11 +140,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_38fc
+.func_end Func_80038fc
 
-.thumb_func_start Func_393c
+.thumb_func_start Func_800393c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -171,11 +171,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_393c
+.func_end Func_800393c
 
-.thumb_func_start Func_397c
+.thumb_func_start Func_800397c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -202,11 +202,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_397c
+.func_end Func_800397c
 
-.thumb_func_start Func_39bc
+.thumb_func_start Func_80039bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -233,11 +233,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_39bc
+.func_end Func_80039bc
 
-.thumb_func_start Func_39fc
+.thumb_func_start Func_80039fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -264,11 +264,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_39fc
+.func_end Func_80039fc
 
-.thumb_func_start Func_3a3c
+.thumb_func_start Func_8003a3c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2090
+	ldr	r4, =ewram_2002090
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -295,14 +295,14 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_3a3c
+.func_end Func_8003a3c
 
-.thumb_func_start Func_3a7c
+.thumb_func_start Func_8003a7c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r6, =ewram_2090
+	ldr	r6, =ewram_2002090
 	ldrh	r5, [r6]
 	mov	r7, sp
 	cmp	r5, #0
@@ -319,7 +319,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_2cf4
+	ldr	r0, =Func_8002cf4
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -337,4 +337,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_3a7c
+.func_end Func_8003a7c

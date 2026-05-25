@@ -1,27 +1,27 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_3d04
+.thumb_func_start Func_8003d04
 	push	{lr}
-	ldr	r2, =iwram_1d00
+	ldr	r2, =iwram_3001d00
 	mov	r3, #0
 	mov	r1, #0x80
 	strb	r3, [r2]
 	lsl	r1, #3
-	ldr	r3, =Func_8d4
-	ldr	r0, =iwram_1400
+	ldr	r3, =Func_80008d4
+	ldr	r0, =iwram_3001400
 	bl	_call_via_r3
 	pop	{r0}
 	bx	r0
-.func_end Func_3d04
+.func_end Func_8003d04
 
-.thumb_func_start Func_3d28
+.thumb_func_start Func_8003d28
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =iwram_1d00
+	ldr	r3, =iwram_3001d00
 	mov	r2, #0
 	ldrsh	r1, [r0, r2]
 	ldrb	r3, [r3]
@@ -37,7 +37,7 @@
 	bhi	.L3dd2
 	mov	r3, r9
 	lsl	r2, r3, #3
-	ldr	r3, =iwram_1d40
+	ldr	r3, =iwram_3001d40
 	add	r7, r2, r3
 	cmp	r8, r10
 	beq	.L3d62
@@ -49,7 +49,7 @@
 	cmp	r6, #0
 	bne	.L3d8a
 	mov	r0, #0x80
-	ldr	r3, =Func_af0
+	ldr	r3, =Func_8000af0
 	mov	r1, r10
 	lsl	r0, #9
 	bl	_call_via_r3
@@ -68,10 +68,10 @@
 	b	.L3dc8
 .L3d8a:
 	mov	r0, r6
-	bl	Func_2322
+	bl	Func_8002322
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_231c
+	bl	Func_800231c
 	mov	r1, r8
 	mov	r6, r0
 	bl	Func_af0_from_thumb
@@ -93,7 +93,7 @@
 	add	r7, #2
 	strh	r0, [r7]
 .L3dc8:
-	ldr	r2, =iwram_1d00
+	ldr	r2, =iwram_3001d00
 	mov	r3, r9
 	add	r3, #1
 	strb	r3, [r2]
@@ -106,9 +106,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_3d28
+.func_end Func_8003d28
 
-.thumb_func_start Func_3dec
+.thumb_func_start Func_8003dec
 	push	{lr}
 	cmp	r1, #0xff
 	ble	.L3df4
@@ -118,7 +118,7 @@
 	bge	.L3dfa
 	mov	r1, #0
 .L3dfa:
-	ldr	r2, =iwram_1400
+	ldr	r2, =iwram_3001400
 	lsl	r3, r1, #2
 	add	r3, r2
 	ldr	r2, [r3]
@@ -126,22 +126,22 @@
 	str	r2, [r0]
 	pop	{r0}
 	bx	r0
-.func_end Func_3dec
+.func_end Func_8003dec
 
-.thumb_func_start Func_3e10
+.thumb_func_start Func_8003e10
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
 	mov	r8, r0
 	ldr	r5, =0xe0
 	mov	r0, r5
-	bl	Func_4938
+	bl	Func_8004938
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
 	lsl	r2, #24
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_1dc8
+	ldr	r0, =Func_8001dc8
 	mov	r1, r6
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
@@ -149,10 +149,10 @@
 	mov	r0, r8
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_2df0
+	bl	Func_8002df0
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_3e10
+.func_end Func_8003e10

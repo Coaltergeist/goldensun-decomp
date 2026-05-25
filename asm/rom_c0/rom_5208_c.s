@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_5268
+.thumb_func_start Func_8005268
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
-	ldr	r3, =Func_9c0
+	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
 	ldr	r3, [r5, #8]
-	ldr	r7, =iwram_1ce0
+	ldr	r7, =iwram_3001ce0
 	neg	r1, r3
 	ldr	r3, [r7, #4]
 	mov	r0, #0
@@ -22,14 +22,14 @@
 	beq	.L529e
 	lsr	r1, #11
 	lsl	r0, #5
-	ldr	r3, =Func_b60
+	ldr	r3, =Func_8000b60
 	bl	_call_via_r3
 	mov	r4, r0
 	b	.L52a0
 .L529e:
 	ldr	r4, =0x151eb
 .L52a0:
-	ldr	r6, =Func_888
+	ldr	r6, =Func_8000888
 	ldr	r0, [r5]
 	mov	r1, r4
 	.call_via r6
@@ -59,4 +59,4 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_5268
+.func_end Func_8005268

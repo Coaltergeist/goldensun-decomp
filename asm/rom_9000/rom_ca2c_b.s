@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_ca44
+	.global	Func_800ca44
 	.thumb_func
-	.type	 Func_ca44,function
-Func_ca44:
+	.type	 Func_800ca44,function
+Func_800ca44:
 	mov	r2, r0
 	add	r2, r2, #84
 	mov	r3, #0
@@ -18,12 +18,12 @@ Func_ca44:
 	mov	r0, #1
 	bx	lr
 .Lfe1:
-	.size	 Func_ca44,.Lfe1-Func_ca44
+	.size	 Func_800ca44,.Lfe1-Func_800ca44
 	.align	2, 0
-	.global	Func_ca58
+	.global	Func_800ca58
 	.thumb_func
-	.type	 Func_ca58,function
-Func_ca58:
+	.type	 Func_800ca58,function
+Func_800ca58:
 	mov	r2, r0
 	add	r2, r2, #84
 	mov	r3, #1
@@ -34,10 +34,7 @@ Func_ca58:
 	mov	r0, #1
 	bx	lr
 .Lfe2:
-	.size	 Func_ca58,.Lfe2-Func_ca58
-
-	.text
-	.align	2, 0
+	.size	 Func_800ca58,.Lfe2-Func_800ca58
 
 	.text
 	.align	2, 0

@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_2580
+.thumb_func_start OvlFunc_7d0e88_2580
 	push	{lr}
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -42,11 +42,11 @@
 .L25c2:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_2580
+.func_end OvlFunc_7d0e88_2580
 
-.thumb_func_start OvlFunc_25f8
+.thumb_func_start OvlFunc_7d0e88_25f8
 	push	{r5, lr}
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r5, r0
 	add	r0, #0x59
 	ldrb	r2, [r0]
@@ -64,7 +64,7 @@
 	add	r3, #0x55
 	strb	r1, [r3]
 	mov	r0, r5
-	bl	__Func_c528
+	bl	__Func_800c528
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -76,23 +76,23 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_25f8
+.func_end OvlFunc_7d0e88_25f8
 
-.thumb_func_start OvlFunc_263c
+.thumb_func_start OvlFunc_7d0e88_263c
 	push	{r5, r6, lr}
 	mov	r6, r0
 	sub	sp, #8
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r3, =0x1f5
 	mov	r5, r0
 	add	r0, r6, r3
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L2680
 	mov	r0, r5
 	mov	r1, #5
-	bl	__Func_c300
-	ldr	r3, =OvlFunc_20b8
+	bl	__Func_800c300
+	ldr	r3, =OvlFunc_7d0e88_20b8
 	ldr	r2, [r5, #8]
 	str	r3, [r5, #0x6c]
 	ldr	r3, [r5, #0x10]
@@ -104,20 +104,20 @@
 	mov	r1, #0xe
 	mov	r2, #1
 	mov	r3, #1
-	bl	__Func_10704
-	ldr	r1, =OvlData_2d64
+	bl	__Func_8010704
+	ldr	r1, =OvlData_7d0e88_2d64
 	mov	r0, r6
-	bl	__Func_9207c
+	bl	__Func_809207c
 .L2680:
 	add	sp, #8
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_263c
+.func_end OvlFunc_7d0e88_263c
 
-.thumb_func_start OvlFunc_2694
+.thumb_func_start OvlFunc_7d0e88_2694
 	push	{lr}
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r3, #2
 	mov	r1, r0
 	add	r0, #0x22
@@ -126,21 +126,21 @@
 	mov	r2, #0
 	add	r3, #0x55
 	strb	r2, [r3]
-	ldr	r3, =OvlFunc_1aa8
+	ldr	r3, =OvlFunc_7d0e88_1aa8
 	str	r3, [r1, #0x6c]
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_2694
+.func_end OvlFunc_7d0e88_2694
 
-.thumb_func_start OvlFunc_26b8
+.thumb_func_start OvlFunc_7d0e88_26b8
 	push	{r5, r6, lr}
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r6, #8
 	mov	r5, r0
 .L26c4:
 	mov	r0, r6
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r3, [r5, #0xc]
 	cmp	r3, #0
 	bge	.L26d4
@@ -183,11 +183,11 @@
 	lsl	r1, #28
 	lsr	r1, #30
 	mov	r0, #0
-	bl	__Func_92b08
+	bl	__Func_8092b08
 	b	.L2736
 .L2720:
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	add	r0, #0x23
 	ldrb	r2, [r0]
 	mov	r3, #1
@@ -201,33 +201,33 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_26b8
+.func_end OvlFunc_7d0e88_26b8
 
-.thumb_func_start OvlFunc_274c
+.thumb_func_start OvlFunc_7d0e88_274c
 	push	{r5, lr}
-	ldr	r3, =iwram_1ebc
+	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
 	ldr	r1, [r3]
 	mov	r3, #0x81
 	lsl	r3, #2
 	lsl	r2, #1
 	str	r3, [r1, r2]
-	ldr	r1, =ewram_240
+	ldr	r1, =ewram_2000240
 	ldrsh	r2, [r1, r2]
 	ldr	r3, =0x74
 	sub	sp, #8
 	cmp	r2, r3
 	bne	.L2788
 	mov	r0, #8
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #9
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xa
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xb
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xc
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	b	.L29fa
 .L2788:
 	ldr	r3, =0x77
@@ -240,32 +240,32 @@
 	mov	r3, #0x20
 	mov	r0, #0x20
 	str	r2, [sp, #4]
-	bl	__Func_105d4
+	bl	__Func_80105d4
 	mov	r0, #8
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #9
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xa
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xb
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xc
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xd
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xe
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #0xf
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	ldr	r0, =0x109
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L27dc
 	b	.L29fa
 .L27dc:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L27ea
 	b	.L29fa
@@ -278,7 +278,7 @@
 	mov	r1, #0x22
 	mov	r2, #0x54
 	mov	r3, #0x18
-	bl	__Func_10424
+	bl	__Func_8010424
 	mov	r5, #0x20
 	mov	r0, #0
 	mov	r1, #0x20
@@ -286,28 +286,28 @@
 	mov	r3, #0
 	str	r5, [sp]
 	str	r5, [sp, #4]
-	bl	__Func_10424
+	bl	__Func_8010424
 	mov	r1, #0x20
 	mov	r2, #0x40
 	mov	r3, #0
 	mov	r0, #0x20
 	str	r5, [sp]
 	str	r5, [sp, #4]
-	bl	__Func_10424
+	bl	__Func_8010424
 	mov	r0, #9
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xa
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xb
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xc
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xd
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xe
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r0, #0xf
-	bl	OvlFunc_ec8
+	bl	OvlFunc_7d0e88_ec8
 	mov	r3, #0x18
 	mov	r2, #8
 	str	r3, [sp]
@@ -327,33 +327,33 @@
 	mov	r3, #0xdf
 	bl	OvlFunc_common0_70
 	ldr	r0, =0x109
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L2884
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r3, #1
 	add	r0, #0x62
 	strb	r3, [r0]
 .L2884:
 	mov	r0, #0
-	bl	__Func_91494
+	bl	__Func_8091494
 	mov	r0, #0
-	bl	__Func_92054
+	bl	__Func_8092054
 	add	r0, #0x62
 	ldrb	r3, [r0]
 	cmp	r3, #0
 	bne	.L289c
-	bl	OvlFunc_209c
+	bl	OvlFunc_7d0e88_209c
 .L289c:
 	mov	r0, #8
-	bl	OvlFunc_2694
+	bl	OvlFunc_7d0e88_2694
 	mov	r0, #9
-	bl	OvlFunc_2694
+	bl	OvlFunc_7d0e88_2694
 	mov	r0, #0xa
-	bl	OvlFunc_2694
+	bl	OvlFunc_7d0e88_2694
 	mov	r0, #0xb
-	bl	OvlFunc_2694
+	bl	OvlFunc_7d0e88_2694
 	mov	r4, #0x80
 	ldr	r2, =bss_36d0
 	mov	r1, #0
@@ -369,15 +369,15 @@
 	add	r2, #0x14
 	cmp	r1, #3
 	bls	.L28be
-	bl	OvlFunc_1d84
+	bl	OvlFunc_7d0e88_1d84
 	mov	r0, #1
-	bl	__Func_9163c
+	bl	__Func_809163c
 	mov	r1, #0xc8
-	ldr	r0, =OvlFunc_26b8
+	ldr	r0, =OvlFunc_7d0e88_26b8
 	lsl	r1, #4
-	bl	__Func_41d8
+	bl	__Func_80041d8
 	ldr	r0, =0x109
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L28f0
 	b	.L29fa
@@ -390,7 +390,7 @@
 	cmp	r5, #0xb
 	bhi	.L29fa
 	mov	r0, r5
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r3, [r0, #8]
 	asr	r2, r3, #20
 	cmp	r2, #0x25
@@ -406,7 +406,7 @@
 .L2918:
 	mov	r2, #1
 	mov	r3, #1
-	bl	__Func_10704
+	bl	__Func_8010704
 	b	.L29fa
 .L2922:
 	mov	r2, #0xe0
@@ -419,69 +419,69 @@
 	bne	.L29fa
 	mov	r0, #0xa
 	mov	r1, #2
-	bl	__Func_924d4
+	bl	__Func_80924d4
 	mov	r1, #6
 	mov	r0, #0xa
-	bl	__Func_92950
+	bl	__Func_8092950
 	mov	r0, #8
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #9
-	bl	OvlFunc_ba4
+	bl	OvlFunc_7d0e88_ba4
 	mov	r0, #8
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r5, #0
 	add	r0, #0x55
 	strb	r5, [r0]
 	mov	r0, #9
-	bl	__Func_92054
+	bl	__Func_8092054
 	add	r0, #0x55
 	strb	r5, [r0]
-	bl	OvlFunc_24cc
+	bl	OvlFunc_7d0e88_24cc
 	mov	r0, #0xb
-	bl	OvlFunc_25f8
+	bl	OvlFunc_7d0e88_25f8
 	mov	r0, #0xc
-	bl	OvlFunc_25f8
+	bl	OvlFunc_7d0e88_25f8
 	mov	r0, #0xd
-	bl	OvlFunc_25f8
+	bl	OvlFunc_7d0e88_25f8
 	mov	r0, #0xb
-	bl	OvlFunc_263c
+	bl	OvlFunc_7d0e88_263c
 	mov	r0, #0xc
-	bl	OvlFunc_263c
+	bl	OvlFunc_7d0e88_263c
 	mov	r0, #0xd
-	bl	OvlFunc_263c
+	bl	OvlFunc_7d0e88_263c
 	mov	r0, #0xd
-	bl	__Func_92054
+	bl	__Func_8092054
 	str	r5, [r0, #0x6c]
 	mov	r0, #0xe
-	bl	OvlFunc_25f8
+	bl	OvlFunc_7d0e88_25f8
 	mov	r0, #0xe
-	bl	__Func_92054
+	bl	__Func_8092054
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #8
 	orr	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x202
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L29fa
 	mov	r0, #0xd
-	bl	__Func_92054
+	bl	__Func_8092054
 	mov	r5, #0xc0
 	lsl	r5, #9
 	str	r5, [r0, #0x18]
 	mov	r0, #0xd
-	bl	__Func_92054
+	bl	__Func_8092054
 	str	r5, [r0, #0x1c]
 	mov	r0, #0xd
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r2, [r0, #0x50]
 	ldrb	r3, [r2, #9]
 	mov	r5, #0xc
 	orr	r3, r5
 	strb	r3, [r2, #9]
 	mov	r0, #0xe
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r2, [r0, #0x50]
 	ldrb	r3, [r2, #9]
 	orr	r3, r5
@@ -494,14 +494,14 @@
 	mov	r1, #0xc
 	mov	r2, #1
 	mov	r3, #1
-	bl	__Func_10704
+	bl	__Func_8010704
 .L29fa:
 	mov	r0, #0
 	add	sp, #8
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_274c
+.func_end OvlFunc_7d0e88_274c
 
 	.section .data
 

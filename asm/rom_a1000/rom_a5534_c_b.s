@@ -4,25 +4,22 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_a63dc
+	.global	Func_80a63dc
 	.thumb_func
-	.type	 Func_a63dc,function
-Func_a63dc:
+	.type	 Func_80a63dc,function
+Func_80a63dc:
 	mov	r0, #1
 	bx	lr
 .Lfe1:
-	.size	 Func_a63dc,.Lfe1-Func_a63dc
+	.size	 Func_80a63dc,.Lfe1-Func_80a63dc
 	.align	2, 0
-	.global	Func_a63e0
+	.global	Func_80a63e0
 	.thumb_func
-	.type	 Func_a63e0,function
-Func_a63e0:
+	.type	 Func_80a63e0,function
+Func_80a63e0:
 	bx	lr
 .Lfe2:
-	.size	 Func_a63e0,.Lfe2-Func_a63e0
-
-	.text
-	.align	2, 0
+	.size	 Func_80a63e0,.Lfe2-Func_80a63e0
 
 	.text
 	.align	2, 0

@@ -16,7 +16,7 @@ OvlFunc_common1_2008:
 .L4:
 	.align	2, 0
 .L3:
-	.word	iwram_1f3c
+	.word	iwram_3001f3c
 .Lfe1:
 	.size	 OvlFunc_common1_2008,.Lfe1-OvlFunc_common1_2008
 

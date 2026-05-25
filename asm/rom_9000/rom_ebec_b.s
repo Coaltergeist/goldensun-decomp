@@ -4,13 +4,13 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_f7dc
+	.global	Func_800f7dc
 	.thumb_func
-	.type	 Func_f7dc,function
-Func_f7dc:
+	.type	 Func_800f7dc,function
+Func_800f7dc:
 	push	{r5, lr}
 	mov	r5, r0
-	bl	Func_eaf8
+	bl	Func_800eaf8
 	ldrh	r3, [r5, #4]
 	add	r3, r3, #1
 	strh	r3, [r5, #4]
@@ -19,10 +19,7 @@ Func_f7dc:
 	pop	{r1}
 	bx	r1
 .Lfe1:
-	.size	 Func_f7dc,.Lfe1-Func_f7dc
-
-	.text
-	.align	2, 0
+	.size	 Func_800f7dc,.Lfe1-Func_800f7dc
 
 	.text
 	.align	2, 0

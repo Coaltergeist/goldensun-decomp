@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_a9f10
+.thumb_func_start Func_80a9f10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,8 +13,8 @@
 	mov	r10, r2
 	str	r3, [sp, #8]
 	str	r0, [sp, #0x10]
-	bl	_Func_78b9c
-	ldr	r3, =iwram_1f2c
+	bl	_Func_8078b9c
+	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
 	mov	r11, r0
 	mov	r1, #0
@@ -31,7 +31,7 @@
 .La9f48:
 	mov	r0, #0
 .La9f4a:
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r5, r0
 	mov	r3, r11
 	mov	r4, #0
@@ -57,7 +57,7 @@
 	ldrh	r3, [r0, r3]
 	mov	r10, r3
 	mov	r0, r10
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r5, r0
 .La9f84:
 	mov	r1, r11
@@ -96,7 +96,7 @@
 	cmp	r3, #4
 	beq	.La9fec
 	ldr	r0, [sp, #0xc]
-	bl	_Func_77394
+	bl	_Func_8077394
 	mov	r1, r11
 	ldrb	r3, [r1, #2]
 	lsl	r3, #2
@@ -109,7 +109,7 @@
 	mov	r2, #0x80
 	mov	r0, r6
 	lsl	r2, #1
-	bl	_Func_79c5c
+	bl	_Func_8079c5c
 	mov	r6, r0
 .La9ffa:
 	mov	r4, #0x38
@@ -159,7 +159,7 @@
 	mov	r7, #1
 .Laa04a:
 	mov	r0, r10
-	bl	_Func_7822c
+	bl	_Func_807822c
 	mov	r3, #1
 	mov	r4, r11
 	mov	r9, r3
@@ -173,7 +173,7 @@
 	mov	r7, #3
 	b	.Laa178
 .Laa066:
-	bl	Func_4458
+	bl	Func_8004458
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #0
@@ -251,7 +251,7 @@
 	strh	r3, [r5, #0x18]
 	mov	r0, #3
 	mov	r1, #5
-	bl	_Func_19908
+	bl	_Func_8019908
 	mov	r2, #1
 	mov	r7, #0x14
 	mov	r9, r2
@@ -263,7 +263,7 @@
 	strh	r3, [r5, #0x1a]
 	mov	r0, #4
 	mov	r1, #5
-	bl	_Func_19908
+	bl	_Func_8019908
 	mov	r3, #1
 	mov	r7, #0x15
 	mov	r9, r3
@@ -304,7 +304,7 @@
 	mov	r7, #6
 .Laa160:
 	mov	r0, r10
-	bl	_Func_7822c
+	bl	_Func_807822c
 	mov	r3, #1
 	mov	r4, r11
 	mov	r9, r3
@@ -460,7 +460,7 @@
 	mov	r7, #6
 .Laa308:
 	mov	r0, r10
-	bl	_Func_7822c
+	bl	_Func_807822c
 	mov	r3, #1
 	mov	r9, r3
 	b	.Laa3b0
@@ -472,7 +472,7 @@
 	ldrh	r3, [r5, #0x34]
 	mov	r0, r10
 	strh	r3, [r5, #0x38]
-	bl	_Func_7822c
+	bl	_Func_807822c
 	mov	r0, #1
 	mov	r1, r8
 	mov	r9, r0
@@ -514,7 +514,7 @@
 	strh	r0, [r5, #0x38]
 	mov	r0, r10
 .Laa372:
-	bl	_Func_7822c
+	bl	_Func_807822c
 	mov	r0, r8
 	cmp	r0, #0
 	bne	.Laa3b0
@@ -596,7 +596,7 @@
 	ldr	r2, [sp, #4]
 	add	r3, r1
 	ldrh	r0, [r2, r3]
-	bl	_Func_77428
+	bl	_Func_8077428
 	ldr	r3, [sp]
 	add	r3, #1
 	lsl	r3, #24
@@ -622,22 +622,22 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_a9f10
+.func_end Func_80a9f10
 
-.thumb_func_start Func_aa448
+.thumb_func_start Func_80aa448
 	push	{lr}
-	bl	_Func_78414
+	bl	_Func_8078414
 	ldrh	r3, [r0, #0x28]
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	Func_aa460
+	bl	Func_80aa460
 	pop	{r0}
 	bx	r0
-.func_end Func_aa448
+.func_end Func_80aa448
 
-.thumb_func_start Func_aa460
+.thumb_func_start Func_80aa460
 	push	{lr}
-	bl	_Func_78b9c
+	bl	_Func_8078b9c
 	ldrb	r3, [r0, #1]
 	mov	r2, #0xf
 	and	r2, r3
@@ -648,10 +648,10 @@
 	b	.Laa484
 .Laa476:
 	mov	r0, #0x7e
-	bl	Func_a2438
+	bl	Func_80a2438
 .Laa47c:
 	mov	r0, #0x7e
-	bl	Func_a2438
+	bl	Func_80a2438
 	b	.Laa52a
 .Laa484:
 	ldrb	r3, [r0, #3]
@@ -698,17 +698,17 @@
 	.word	.Laa52a
 .Laa514:
 	mov	r0, #0x52
-	bl	Func_a2438
+	bl	Func_80a2438
 	b	.Laa52a
 .Laa51c:
 	mov	r0, #0x54
-	bl	Func_a2438
+	bl	Func_80a2438
 	b	.Laa52a
 .Laa524:
 	mov	r0, #0x5b
-	bl	Func_a2438
+	bl	Func_80a2438
 .Laa52a:
 	pop	{r0}
 	bx	r0
-.func_end Func_aa460
+.func_end Func_80aa460
 

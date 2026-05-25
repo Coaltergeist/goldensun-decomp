@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_c62c
+.thumb_func_start Func_800c62c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -9,7 +9,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r6, =iwram_1e70
+	ldr	r6, =iwram_3001e70
 	ldr	r0, [r6]
 	sub	sp, #0x50
 	str	r0, [sp, #0xc]
@@ -29,13 +29,13 @@
 	ldr	r5, =0x2c4
 	mov	r0, #0x34
 	mov	r1, r5
-	bl	Func_48b0
+	bl	Func_80048b0
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_9bb8
+	ldr	r0, =Func_8009bb8
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -46,7 +46,7 @@
 	mov	r10, r6
 	strh	r3, [r2]
 	mov	r4, #0x3f
-	ldr	r3, =Func_888
+	ldr	r3, =Func_8000888
 	mov	r0, #0x54
 	add	r0, r10
 	mov	r7, r10
@@ -92,7 +92,7 @@
 	ldr	r5, [r7, #0x48]
 	ldrb	r0, [r5, #0x1c]
 	add	r5, #0x25
-	bl	Func_3f78
+	bl	Func_8003f78
 	strb	r6, [r5]
 	b	.Lc822
 .Lc6e0:
@@ -229,7 +229,7 @@
 	ldrh	r3, [r0, #6]
 	mov	r2, r12
 	mov	r0, r5
-	bl	Func_b168
+	bl	Func_800b168
 	b	.Lc822
 .Lc7ea:
 	mov	r1, r8
@@ -257,7 +257,7 @@
 	cmp	r3, #0
 	bne	.Lc822
 	ldrb	r0, [r5, #0x1c]
-	bl	Func_3f78
+	bl	Func_8003f78
 	mov	r3, r5
 	add	r3, #0x25
 	strb	r6, [r3]
@@ -274,7 +274,7 @@
 	b	.Lc696
 .Lc836:
 	mov	r0, #0x34
-	bl	Func_2dd8
+	bl	Func_8002dd8
 	add	sp, #0x50
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -284,5 +284,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_c62c
+.func_end Func_800c62c
 

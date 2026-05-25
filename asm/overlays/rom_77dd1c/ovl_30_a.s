@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_30
+.thumb_func_start OvlFunc_77dd1c_30
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r6
@@ -10,11 +10,11 @@
 	mov	r0, r3
 	cmp	r3, #0
 	bne	.L56
-	bl	__Func_4458
+	bl	__Func_8004458
 	strh	r0, [r6, #6]
-	bl	__Func_4458
+	bl	__Func_8004458
 	mov	r1, #0x14
-	bl	_Func_b50
+	bl	_Func_8000b50
 	add	r0, #0x14
 	strh	r0, [r5]
 .L56:
@@ -24,9 +24,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_30
+.func_end OvlFunc_77dd1c_30
 
-.thumb_func_start OvlFunc_64
+.thumb_func_start OvlFunc_77dd1c_64
 	push	{r5, lr}
 	mov	r5, r0
 	add	r5, #0x64
@@ -78,9 +78,9 @@
 	lsl	r3, #9
 	str	r3, [r0, #0x18]
 	str	r3, [r0, #0x1c]
-	bl	__Func_4458
+	bl	__Func_8004458
 	mov	r1, #0x5a
-	bl	_Func_b50
+	bl	_Func_8000b50
 	add	r0, #0x3c
 	strh	r0, [r5]
 .Lcc:
@@ -91,10 +91,10 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_64
+.func_end OvlFunc_77dd1c_64
 
-.thumb_func_start OvlFunc_e8
+.thumb_func_start OvlFunc_77dd1c_e8
 	ldr	r0, =.L50e4
 	bx	lr
-.func_end OvlFunc_e8
+.func_end OvlFunc_77dd1c_e8
 

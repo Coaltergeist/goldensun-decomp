@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_1b70
+.arm_func_start Func_8001b70
 	push	{r1, r5, r6, r7, lr}
 .L1b74:
 	ldrb	r14, [r0], #1
@@ -159,11 +159,11 @@
 	pop	{r0, r5, r6, r7, r12}
 	sub	r0, r1, r0
 	bx	r12
-.func_end Func_1b70
+.func_end Func_8001b70
 
-.arm_func_start Func_1dc8
+.arm_func_start Func_8001dc8
 	push	{r5, r6, r7, r8, r9, lr}
-	ldr	r2, =iwram_1800
+	ldr	r2, =iwram_3001800
 	mov	r12, #0x40
 	mov	r1, #0x80
 	mov	r9, r0
@@ -182,7 +182,7 @@
 	mov	r2, #0xc0
 	orr	r2, #0xc00000
 	lsl	r1, #3
-	ldr	r4, =Func_8d8
+	ldr	r4, =Func_80008d8
 	adr	r14, .L1e54
 	bx	r4
 .L1e20:
@@ -201,9 +201,9 @@
 	b	.L1e20
 .L1e54:
 	add	r0, r9, #6
-	ldr	r2, =iwram_1d00
+	ldr	r2, =iwram_3001d00
 	ldrb	r4, [r2]
-	ldr	r1, =iwram_1d40
+	ldr	r1, =iwram_3001d40
 	cmp	r4, #0
 	beq	.L1e90
 .L1e6c:
@@ -219,9 +219,9 @@
 .L1e90:
 	pop	{r5, r6, r7, r8, r9, lr}
 	bx	lr
-.func_end Func_1dc8
+.func_end Func_8001dc8
 
-.arm_func_start Func_1ea8
+.arm_func_start Func_8001ea8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -243,9 +243,9 @@
 	bne	.L1ebc
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_1ea8
+.func_end Func_8001ea8
 
-.arm_func_start Func_1ef8
+.arm_func_start Func_8001ef8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -263,9 +263,9 @@
 	bne	.L1f0c
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_1ef8
+.func_end Func_8001ef8
 
-.arm_func_start Func_1f38
+.arm_func_start Func_8001f38
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -299,9 +299,9 @@
 	bne	.L1f5c
 	pop	{r5, r6, r7, r8, r12}
 	bx	r12
-.func_end Func_1f38
+.func_end Func_8001f38
 
-.arm_func_start Func_1fb8
+.arm_func_start Func_8001fb8
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -336,9 +336,9 @@
 	bne	.L1fd0
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_1fb8
+.func_end Func_8001fb8
 
-.arm_func_start Func_203c
+.arm_func_start Func_800203c
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -363,9 +363,9 @@
 	bne	.L2050
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_203c
+.func_end Func_800203c
 
-.arm_func_start Func_2098
+.arm_func_start Func_8002098
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -390,9 +390,9 @@
 	bne	.L20ac
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_2098
+.func_end Func_8002098
 
-.arm_func_start Func_20f4
+.arm_func_start Func_80020f4
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -454,9 +454,9 @@
 .L21bc:
 	pop	{r5, r6, r7, r8, r12}
 	bx	r12
-.func_end Func_20f4
+.func_end Func_80020f4
 
-.arm_func_start Func_21c4
+.arm_func_start Func_80021c4
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -519,9 +519,9 @@
 .L2290:
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_21c4
+.func_end Func_80021c4
 
-.arm_func_start Func_2298
+.arm_func_start Func_8002298
 	mov	r3, #0x80000000
 	b	.L22a4
 .L22a0:
@@ -548,12 +548,12 @@
 	subs	r2, #1
 	bne	.L22d8
 	b	.L22a4
-.func_end Func_2298
+.func_end Func_8002298
 
-.thumb_stub Func_af0_from_thumb, Func_af0, r3
-.thumb_stub Func_b60_from_thumb, Func_b60, r3
-.thumb_stub Func_b1c_from_thumb, Func_b1c, r3
-.thumb_stub Func_b50_from_thumb, Func_b50, r3
+.thumb_stub Func_af0_from_thumb, Func_8000af0, r3
+.thumb_stub Func_b60_from_thumb, Func_8000b60, r3
+.thumb_stub Func_b1c_from_thumb, Func_8000b1c, r3
+.thumb_stub Func_b50_from_thumb, Func_8000b50, r3
 
 .L230c:
 .thumb
@@ -567,13 +567,13 @@
 .L231a:
 	bx	lr
 
-.thumb_func_start_noalign Func_231c
+.thumb_func_start_noalign Func_800231c
 	mov	r1, #0x40
 	lsl	r1, #8
 	add	r0, r1
 
-.thumb_func_start_noalign Func_2322
-Func_2322:
+.thumb_func_start_noalign Func_8002322
+Func_8002322:
 	add	r0, #0x20
 	lsl	r1, r0, #18
 	lsr	r1, #24

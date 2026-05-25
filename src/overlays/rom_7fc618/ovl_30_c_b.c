@@ -1,10 +1,10 @@
-/* Cluster OvlFunc_b4..OvlFunc_b4 extracted from goldensun/overlays/rom_7fc618/ovl_30_c.s.
+/* Cluster OvlFunc_7fc618_b4..OvlFunc_7fc618_b4 extracted from goldensun/overlays/rom_7fc618/ovl_30_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
  * overlays/rom_7fc618/ovl_30_c_a.o and overlays/rom_7fc618/ovl_30_c_c.o in
  * goldensun/overlays/rom_7fc618/overlay.ld.
  */
-unsigned int OvlFunc_b4(void) {
+unsigned int OvlFunc_7fc618_b4(void) {
     return 0;
 }

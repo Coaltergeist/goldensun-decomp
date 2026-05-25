@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_770
+.arm_func_start Func_8000770
 	mov	r3, #0x4000000
 	ldr	r2, [r3, #0x200]!
 	ldrh	r1, [r3, #8]
@@ -60,55 +60,55 @@
 	msr	SPSR_fc, r0
 	bx	lr
 
-	.global	Data_850
-Data_850:
+	.global	Data_8000850
+Data_8000850:
 .L850:	.space	4
 .L854:	.space	4
 .L858:	.space	8
 .L860:	.space	4
-	.ssize	Data_850
+	.ssize	Data_8000850
 
-	.global	Data_864
-Data_864:
+	.global	Data_8000864
+Data_8000864:
 .L864:	.space	4
 .L868:	.space	4
 .L86c:	.space	0x14
 .L880:	.space	4
 .L884:	.space	4
-	.ssize	Data_864
-.func_end Func_770
+	.ssize	Data_8000864
+.func_end Func_8000770
 
-.arm_func_start Func_888
+.arm_func_start Func_8000888
 	smull	r2, r0, r1, r0
 	lsl	r0, #16
 	orr	r0, r2, lsr #16
 	add	r12, #1
 	bx	r12
-.func_end Func_888
+.func_end Func_8000888
 
-.arm_func_start Func_89c
+.arm_func_start Func_800089c
 	smull	r2, r0, r1, r0
 	lsl	r0, #16
 	orr	r0, r2, lsr #16
 	bx	lr
-.func_end Func_89c
+.func_end Func_800089c
 
-.arm_func_start Func_8ac
+.arm_func_start Func_80008ac
 	stmfd	sp!, {lr}
 	mov	r4, r1
 	mov	r1, r0
 	mov	r0, #0x40000000
-	bl	Func_af0
+	bl	Func_8000af0
 	smull	r3, r0, r4, r0
 	ldmfd	sp!, {lr}
 	lsl	r0, #18
 	orr	r0, r3, lsr #14
 	bx	lr
-.func_end Func_8ac
+.func_end Func_80008ac
 
-.arm_func_start Func_8d4
+.arm_func_start Func_80008d4
 	mov	r2, #0
-.arm_func_start Func_8d8
+.arm_func_start Func_80008d8
 	push	{r5, r6, r7, r8, r9}
 	mov	r3, r2
 	mov	r4, r2
@@ -140,10 +140,10 @@ Data_864:
 .L940:
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_8d8
-.func_end Func_8d4
+.func_end Func_80008d8
+.func_end Func_80008d4
 
-.arm_func_start Func_948
+.arm_func_start Func_8000948
 	movs	r1, r0
 	mov	r0, #0
 	bxmi	lr
@@ -160,9 +160,9 @@ Data_864:
 	lsrs	r2, #2
 	bne	.L958
 	bx	lr
-.func_end Func_948
+.func_end Func_8000948
 
-.arm_func_start Func_984
+.arm_func_start Func_8000984
 	add	r12, r0, #0x1c
 .L988:
 	mov	r4, r1
@@ -182,12 +182,12 @@ Data_864:
 	cmp	r0, r12
 	bne	.L988
 	bx	lr
-.func_end Func_984
+.func_end Func_8000984
 
-.arm_func_start Func_9c0
+.arm_func_start Func_80009c0
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	ldm	r0, {r2, r3, r4}
-	adr	r0, Data_ac0
+	adr	r0, Data_8000ac0
 	ldm	r0!, {r5, r6, r7}
 	smull	r8, r9, r2, r5
 	smull	r10, r11, r2, r6
@@ -213,14 +213,14 @@ Data_864:
 	stmia	r1!, {r5, r6, r7}
 	pop	{r5, r6, r7, r8, r9, r10, r11, lr}
 	bx	lr
-.func_end Func_9c0
+.func_end Func_80009c0
 
-.arm_func_start Func_a30
+.arm_func_start Func_8000a30
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	sub	sp, #0x24
 	mov	r4, sp
 .La3c:
-	adr	r1, Data_ac0
+	adr	r1, Data_8000ac0
 	ldm	r0!, {r2, r3}
 	ldm	r1!, {r5, r6, r7}
 	smull	r8, r9, r5, r2
@@ -253,30 +253,30 @@ Data_864:
 	stmdb	r1, {r0, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12}
 	pop	{r5, r6, r7, r8, r9, r10, r11, lr}
 	bx	lr
-.func_end Func_a30
+.func_end Func_8000a30
 
-	.global	Data_ac0
-Data_ac0:
+	.global	Data_8000ac0
+Data_8000ac0:
 	.word	0x10000, 0, 0, 0
 	.word	0x10000, 0, 0, 0
 	.word	0x10000, 0, 0, 0
-	.ssize	Data_ac0
+	.ssize	Data_8000ac0
 
-.arm_func_start Func_af0
+.arm_func_start Func_8000af0
 	eor	r12, r0, r1
 	movs	r2, r1
 	rsbmi	r2, #0
 	movs	r1, r0
 	rsbmi	r1, #0
 	lsrs	r0, r12, #32
-	bcc	Func_b6c
+	bcc	Func_8000b6c
 	mov	r12, lr
-	bl	Func_b6c
+	bl	Func_8000b6c
 	rsb	r0, #0
 	bx	r12
-.func_end Func_af0
+.func_end Func_8000af0
 
-.arm_func_start Func_b1c
+.arm_func_start Func_8000b1c
 	stmfd	sp!, {lr}
 	eor	r12, r0, r1
 	movs	r2, r1
@@ -284,26 +284,26 @@ Data_ac0:
 	movs	r1, r0
 	rsbmi	r1, #0
 	mov	r0, #0
-	bl	Func_b6c
+	bl	Func_8000b6c
 	mov	r0, r1
 	movs	r12, r12
 	rsbmi	r0, #0
 	ldmfd	sp!, {lr}
 	bx	lr
-.func_end Func_b1c
+.func_end Func_8000b1c
 
-.arm_func_start Func_b50
+.arm_func_start Func_8000b50
 	mov	r12, lr
-	bl	Func_b60
+	bl	Func_8000b60
 	mov	r0, r1
 	bx	r12
-.func_end Func_b50
+.func_end Func_8000b50
 
-.arm_func_start Func_b60
+.arm_func_start Func_8000b60
 	mov	r2, r1
 	mov	r1, r0
 	mov	r0, #0
-.arm_func_start Func_b6c
+.arm_func_start Func_8000b6c
 	rsbs	r3, r2, r1, lsr #28
 	bcc	.Lba4
 	rsbs	r3, r2, r1, lsr #31
@@ -424,10 +424,10 @@ Data_ac0:
 	orrcs	r0, #1
 	subcs	r1, r2
 	bx	lr
-.func_end Func_b6c
-.func_end Func_b60
+.func_end Func_8000b6c
+.func_end Func_8000b60
 
-.arm_func_start Func_d30
+.arm_func_start Func_8000d30
 	ldrb	r2, [r0], #1
 	ldrb	r3, [r0], #1
 	orrs	r2, r3, lsl #8
@@ -471,9 +471,9 @@ Data_ac0:
 	pop	{r5, r6, r7}
 	mov	r0, #0
 	bx	lr
-.func_end Func_d30
+.func_end Func_8000d30
 
-.thumb_func_start Func_dc8
+.thumb_func_start Func_8000dc8
 	str	r0, [sp, #4]
 	ldr	r3, [r4, #0x24]
 	ldrb	r6, [r4]
@@ -701,7 +701,7 @@ Data_ac0:
 	b	.L10dc
 
 .L103c:
-	.word	iwram_7900
+	.word	iwram_3007900
 .L1040:
 	.space	4
 
@@ -859,7 +859,7 @@ Data_ac0:
 	sub	r0, #1
 	ble	.L1256
 	add	r4, #0x40
-	b	Func_dc8
+	b	Func_8000dc8
 .L1256:
 	ldr	r5, [sp, #8]
 	adr	r0, .L12d0
@@ -1080,9 +1080,9 @@ Label_1348:
 	b	.L10dc
 
 .L1568:	.space	0x590
-.func_end Func_dc8
+.func_end Func_8000dc8
 
-.arm_func_start Func_1af8
+.arm_func_start Func_8001af8
 	push	{r5, r6, r7, r8, r9}
 	ands	r12, r2, #0xe0
 	rsb	r12, #0xf0
@@ -1116,4 +1116,4 @@ Label_1348:
 .L1b68:
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_1af8
+.func_end Func_8001af8

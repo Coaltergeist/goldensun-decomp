@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_2e0
+.thumb_func_start OvlFunc_7bf5a8_2e0
 	push	{lr}
-	ldr	r3, =ewram_240
+	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -31,12 +31,12 @@
 .L30e:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_2e0
+.func_end OvlFunc_7bf5a8_2e0
 
-.thumb_func_start OvlFunc_334
+.thumb_func_start OvlFunc_7bf5a8_334
 	push	{lr}
 	mov	r0, #9
-	bl	__Func_92054
+	bl	__Func_8092054
 	ldr	r2, [r0, #0x10]
 	cmp	r2, #0
 	bge	.L346
@@ -61,29 +61,29 @@
 .L360:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_334
+.func_end OvlFunc_7bf5a8_334
 
-.thumb_func_start OvlFunc_368
+.thumb_func_start OvlFunc_7bf5a8_368
 	push	{lr}
 	ldr	r0, =0x9a9
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L390
-	bl	OvlFunc_170
-	bl	OvlFunc_334
+	bl	OvlFunc_7bf5a8_170
+	bl	OvlFunc_7bf5a8_334
 	cmp	r0, #0
 	beq	.L390
 	ldr	r0, =0x9a9
-	bl	__Func_79358
+	bl	__Func_8079358
 	mov	r0, #0x50
-	bl	__Func_f9080
-	bl	OvlFunc_398
+	bl	__Func_80f9080
+	bl	OvlFunc_7bf5a8_398
 .L390:
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_368
+.func_end OvlFunc_7bf5a8_368
 
-.thumb_func_start OvlFunc_398
+.thumb_func_start OvlFunc_7bf5a8_398
 	push	{r5, lr}
 	sub	sp, #8
 	mov	r3, #0x50
@@ -94,7 +94,7 @@
 	mov	r1, #0x32
 	mov	r2, #2
 	mov	r3, #4
-	bl	__Func_105d4
+	bl	__Func_80105d4
 	mov	r3, #0x34
 	str	r3, [sp, #4]
 	mov	r5, #0x10
@@ -103,7 +103,7 @@
 	mov	r2, #1
 	mov	r3, #2
 	str	r5, [sp]
-	bl	__Func_105d4
+	bl	__Func_80105d4
 	mov	r3, #0x35
 	str	r3, [sp, #4]
 	mov	r0, #0x10
@@ -111,29 +111,29 @@
 	mov	r2, #1
 	mov	r3, #1
 	str	r5, [sp]
-	bl	__Func_10704
+	bl	__Func_8010704
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_398
+.func_end OvlFunc_7bf5a8_398
 
-.thumb_func_start OvlFunc_3e0
+.thumb_func_start OvlFunc_7bf5a8_3e0
 	push	{lr}
 	ldr	r0, =0x9a9
-	bl	__Func_79338
+	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L404
-	bl	OvlFunc_334
+	bl	OvlFunc_7bf5a8_334
 	cmp	r0, #0
 	beq	.L404
 	ldr	r0, =0x9a9
-	bl	__Func_79358
+	bl	__Func_8079358
 	mov	r0, #0x50
-	bl	__Func_f9080
-	bl	OvlFunc_398
+	bl	__Func_80f9080
+	bl	OvlFunc_7bf5a8_398
 .L404:
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_3e0
+.func_end OvlFunc_7bf5a8_3e0
 

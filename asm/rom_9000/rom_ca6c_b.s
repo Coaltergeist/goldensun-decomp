@@ -4,10 +4,10 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_d130
+	.global	Func_800d130
 	.thumb_func
-	.type	 Func_d130,function
-Func_d130:
+	.type	 Func_800d130,function
+Func_800d130:
 	str	r3, [r0, #16]
 	mov	r3, #128
 	lsl	r3, r3, #24
@@ -22,10 +22,7 @@ Func_d130:
 	str	r3, [r0, #44]
 	bx	lr
 .Lfe1:
-	.size	 Func_d130,.Lfe1-Func_d130
-
-	.text
-	.align	2, 0
+	.size	 Func_800d130,.Lfe1-Func_800d130
 
 	.text
 	.align	2, 0

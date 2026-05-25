@@ -1,16 +1,16 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_d58
+.thumb_func_start OvlFunc_7ac2d8_d58
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	ldr	r3, =0
 	mov	r5, sp
 	add	r5, #2
 	strh	r3, [r5]
-	ldr	r3, =iwram_1e40
+	ldr	r3, =iwram_3001e40
 	mov	r1, #5
 	ldr	r0, [r3]
-	bl	_Func_b50
+	bl	_Func_8000b50
 	cmp	r0, #0
 	bne	.Lde2
 	ldr	r3, =.L6004
@@ -42,7 +42,7 @@
 	bhi	.Ldb4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
-	bl	_Func_af0
+	bl	_Func_8000af0
 	sub	r5, r0
 .Ldb4:
 	mov	r2, #0x6f
@@ -73,9 +73,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_d58
+.func_end OvlFunc_7ac2d8_d58
 
-.thumb_func_start OvlFunc_dfc
+.thumb_func_start OvlFunc_7ac2d8_dfc
 	push	{lr}
 	ldr	r1, =0
 	ldr	r3, =0x50000de
@@ -92,7 +92,7 @@
 	bls	.Le10
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_dfc
+.func_end OvlFunc_7ac2d8_dfc
 
 	.section .data
 

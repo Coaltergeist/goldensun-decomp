@@ -4,32 +4,29 @@
 .gcc2_compiled.:
 .text
 	.align	2, 0
-	.global	Func_11f3c
+	.global	Func_8011f3c
 	.thumb_func
-	.type	 Func_11f3c,function
-Func_11f3c:
+	.type	 Func_8011f3c,function
+Func_8011f3c:
 	ldrb	r0, [r0, #0]
 	lsl	r0, r0, #24
 	asr	r0, r0, #24
 	lsl	r0, r0, #19
 	bx	lr
 .Lfe1:
-	.size	 Func_11f3c,.Lfe1-Func_11f3c
+	.size	 Func_8011f3c,.Lfe1-Func_8011f3c
 	.align	2, 0
-	.global	Func_11f48
+	.global	Func_8011f48
 	.thumb_func
-	.type	 Func_11f48,function
-Func_11f48:
+	.type	 Func_8011f48,function
+Func_8011f48:
 	ldrb	r0, [r0, #0]
 	lsl	r0, r0, #24
 	asr	r0, r0, #24
 	lsl	r0, r0, #19
 	bx	lr
 .Lfe2:
-	.size	 Func_11f48,.Lfe2-Func_11f48
-
-	.text
-	.align	2, 0
+	.size	 Func_8011f48,.Lfe2-Func_8011f48
 
 	.text
 	.align	2, 0

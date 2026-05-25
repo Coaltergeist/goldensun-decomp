@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_52f4
+.thumb_func_start Func_80052f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -18,7 +18,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_2298
+	ldr	r0, =Func_8002298
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -32,9 +32,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_52f4
+.func_end Func_80052f4
 
-.thumb_func_start Func_5340
+.thumb_func_start Func_8005340
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -43,13 +43,13 @@
 	mov	r10, r1
 	ldr	r5, =0x2c4
 	mov	r0, r5
-	bl	Func_4938
+	bl	Func_8004938
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
 	lsl	r2, #24
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_2544
+	ldr	r0, =Func_8002544
 	mov	r1, r6
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
@@ -59,7 +59,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_2df0
+	bl	Func_8002df0
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3
@@ -67,9 +67,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_5340
+.func_end Func_8005340
 
-.thumb_func_start Func_5394
+.thumb_func_start Func_8005394
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -78,13 +78,13 @@
 	mov	r10, r1
 	ldr	r5, =0x4ec
 	mov	r0, r5
-	bl	Func_4938
+	bl	Func_8004938
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
 	lsl	r2, #24
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_2808
+	ldr	r0, =Func_8002808
 	mov	r1, r6
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
@@ -94,7 +94,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_2df0
+	bl	Func_8002df0
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3
@@ -102,9 +102,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_5394
+.func_end Func_8005394
 
-.thumb_func_start Func_53e8
+.thumb_func_start Func_80053e8
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -113,13 +113,13 @@
 	mov	r10, r1
 	ldr	r5, =0x258
 	mov	r0, r5
-	bl	Func_4938
+	bl	Func_8004938
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
 	lsl	r2, #24
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_1b70
+	ldr	r0, =Func_8001b70
 	mov	r1, r6
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
@@ -129,7 +129,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_2df0
+	bl	Func_8002df0
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3
@@ -137,9 +137,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_53e8
+.func_end Func_80053e8
 
-.thumb_func_start Func_543c
+.thumb_func_start Func_800543c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -158,7 +158,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_1fb8
+	ldr	r0, =Func_8001fb8
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -174,9 +174,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_543c
+.func_end Func_800543c
 
-.thumb_func_start Func_5490
+.thumb_func_start Func_8005490
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -195,7 +195,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_1f38
+	ldr	r0, =Func_8001f38
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -211,9 +211,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_5490
+.func_end Func_8005490
 
-.thumb_func_start Func_54e4
+.thumb_func_start Func_80054e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -231,7 +231,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_1ea8
+	ldr	r0, =Func_8001ea8
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -246,9 +246,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_54e4
+.func_end Func_80054e4
 
-.thumb_func_start Func_5534
+.thumb_func_start Func_8005534
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -266,7 +266,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_1ef8
+	ldr	r0, =Func_8001ef8
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -281,9 +281,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_5534
+.func_end Func_8005534
 
-.thumb_func_start Func_5584
+.thumb_func_start Func_8005584
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -302,7 +302,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_21c4
+	ldr	r0, =Func_80021c4
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -318,9 +318,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_5584
+.func_end Func_8005584
 
-.thumb_func_start Func_55d8
+.thumb_func_start Func_80055d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -339,7 +339,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_20f4
+	ldr	r0, =Func_80020f4
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -355,9 +355,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_55d8
+.func_end Func_80055d8
 
-.thumb_func_start Func_562c
+.thumb_func_start Func_800562c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -375,7 +375,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_203c
+	ldr	r0, =Func_800203c
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -390,9 +390,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_562c
+.func_end Func_800562c
 
-.thumb_func_start Func_567c
+.thumb_func_start Func_800567c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -410,7 +410,7 @@
 	mov	r8, sp
 	ldr	r3, =REG_DMA3SAD
 	mov	sp, r1
-	ldr	r0, =Func_2098
+	ldr	r0, =Func_8002098
 	orr	r2, r4
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -425,4 +425,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_567c
+.func_end Func_800567c

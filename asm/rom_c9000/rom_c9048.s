@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_c9048
+.thumb_func_start Func_80c9048
 	push	{lr}
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lc9080	@ 0
@@ -21,7 +21,7 @@
 	strh	r2, [r3]
 	ldr	r2, =REG_WININ
 	ldr	r3, .Lc9090	@ 0x3537
-	ldr	r1, =ewram_2090
+	ldr	r1, =ewram_2002090
 	strh	r3, [r2]
 	ldr	r3, .Lc9094	@ 0x3f21
 	add	r2, #2
@@ -69,14 +69,14 @@
 .Lc90d4:
 	strh	r4, [r0]
 	mov	r0, #1
-	bl	Func_30f8
+	bl	Func_80030f8
 	pop	{r0}
 	bx	r0
-.func_end Func_c9048
+.func_end Func_80c9048
 
-.thumb_func_start Func_c90e4
+.thumb_func_start Func_80c90e4
 	push	{r5, lr}
-	ldr	r3, =iwram_1eec
+	ldr	r3, =iwram_3001eec
 	ldr	r1, =0x7790
 	ldr	r4, [r3]
 	add	r5, r4, r1
@@ -89,7 +89,7 @@
 	cmp	r3, r2
 	bne	.Lc911c
 	ldr	r2, =0x7798
-	ldr	r1, =iwram_1ad0
+	ldr	r1, =iwram_3001ad0
 	add	r3, r4, r2
 	ldr	r2, [r3]
 	ldrh	r3, [r1, #4]
@@ -107,11 +107,11 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_c90e4
+.func_end Func_80c90e4
 
-.thumb_func_start Func_c9138
+.thumb_func_start Func_80c9138
 	push	{r5, lr}
-	ldr	r3, =iwram_1eec
+	ldr	r3, =iwram_3001eec
 	ldr	r1, =0x7790
 	ldr	r4, [r3]
 	add	r5, r4, r1
@@ -151,9 +151,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_c9138
+.func_end Func_80c9138
 
-.thumb_func_start Func_c91a4
+.thumb_func_start Func_80c91a4
 	ldr	r3, =REG_DMA0SAD
 	ldr	r2, =0xc5ff
 	ldrh	r1, [r3, #0xa]
@@ -163,11 +163,11 @@
 	ldrh	r1, [r3, #0xa]
 	and	r2, r1
 	strh	r2, [r3, #0xa]
-	ldr	r0, =ewram_10000
+	ldr	r0, =ewram_2010000
 	ldrh	r2, [r3, #0xa]
 	ldr	r1, =REG_WIN0H
 	ldr	r2, =0xa2600001
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_c91a4
+.func_end Func_80c91a4
