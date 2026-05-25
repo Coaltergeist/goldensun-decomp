@@ -16,7 +16,7 @@ It builds the following ROM:
 - **215 / 5,774 functions matched as C source (3.7%)**
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
-- Canonical compiler identified and reproduced: **stock GCC 3.0** (arm-agb-elf, ~June 2001), the original Camelot toolchain. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build.sh`, and `install.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [INSTALL.md](INSTALL.md) for setup.
+- Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build-296.sh`, and `install-296.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [INSTALL.md](INSTALL.md) for setup.
 - **Community symbol annotations are integrated as soft aliases:** function and global symbols can be referenced by either the corpus name (`Func_4458`, `iwram_1cb4`) or a curated name (`Random`, `gRNGState`, `REG_DISPCNT`, `add_djinni`) interchangeably. See [Annotations](#annotations) below.
 
 ## Annotations
@@ -76,7 +76,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 │       └── overlay.lz   #   Compressed overlay binary (build output)
 ├── include/             # Assembler macros (.inc) and constants
 ├── lib/                 # Shared assembly (call_via.s)
-├── tools/               # gcc3 toolchain (installed via camelot-gcc), asm-differ wrapper
+├── tools/               # gcc-2.96 toolchain (installed via camelot-gcc), asm-differ wrapper
 ├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names; hand-curated seed)
 ├── aliases.sym          # Merged symbol aliases
 ├── stage1.ld            # Stage-1 partial link of main ROM
@@ -102,7 +102,7 @@ This project builds on substantial prior work by others:
 
 - **[gsret](https://github.com/gsret):** original disassembly ([gsret/goldensun](https://github.com/gsret/goldensun)) that is the foundation of this entire repo. Every `.s` file traces back to their labeling and structuring work.
 - **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals.
-- **Tarpman:** compiler-reproduction analysis identifying the stock GCC 3.0 (arm-agb-elf) lineage of Camelot's toolchain.
+- **Tarpman:** compiler-reproduction analysis identifying the early GCC 3.0-family lineage of Camelot's toolchain, and the source-shape repro that pinned down the small-constant literal-pool fingerprint.
 - **Karathan:** flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
 - **[pret](https://github.com/pret):** a decade of GBA decomp methodology that this project applies directly, plus the [agbcc](https://github.com/pret/agbcc) install-script pattern that [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) mirrors.
 - **[simonlindholm](https://github.com/simonlindholm):** [asm-differ](https://github.com/simonlindholm/asm-differ) and [decomp-permuter](https://github.com/simonlindholm/decomp-permuter); core matching-decomp infrastructure.
