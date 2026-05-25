@@ -74,16 +74,16 @@ $(OVERLAYS): %.bin: %.elf
 # output to Camelot's original compiler (see compiler.md).
 # Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
 # Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
-# kept defensively but is a no-op on the matched corpus under gcc-2.96.
-# Trailing .align 2, 0 is required because gcc emits .align with zero-fill
-# BETWEEN functions (via the elf.h patch) but NOT AFTER the last function in
-# a TU, so the assembler's default Thumb-nop fill leaks in without this
-# explicit append.
+# NOT needed under gcc-2.96 — the compiler naturally avoids r7 for the same
+# allocation patterns Camelot did. Trailing .align 2, 0 is required because
+# gcc emits .align with zero-fill BETWEEN functions (via the elf.h patch)
+# but NOT AFTER the last function in a TU, so the assembler's default
+# Thumb-nop fill leaks in without this explicit append.
 GCC296_DIR     ?= tools/gcc296
 GCC296_CC      := $(GCC296_DIR)/xgcc
 GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
                   -fno-builtin -nostdinc -ffreestanding \
-                  -fcall-used-r4 -ffixed-r7 -Iinclude
+                  -fcall-used-r4 -Iinclude
 
 %.o: %.c
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
