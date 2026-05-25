@@ -114,12 +114,20 @@ DEPS := $(SRCS:.s=.d)
 
 
 # Clean target.
+#
+# The legacy wildcard-derived lists (OBJS, C_OBJS, C_GEN_S, C_GEN_I) only go
+# to depth 3, so they silently miss overlay sources at depth 4 and the
+# cross-dir-rule .s artifacts at asm/<rel>/<name>.s. Replaced with a
+# find-based sweep that's depth-agnostic. DEPS is still computed above
+# because -include needs it; we don't reference it here (find catches .d).
 .PHONY: clean
 LDS  := $(wildcard *.ld */*/*.ld)
 MAPS := $(LDS:.ld=.map)
-OBJS := $(SRCS:.s=.o)
 clean::
-	-$(RM) $(ROM) $(OVERLAYS) $(ELFS) $(MAPS) $(OBJS) $(DEPS) $(C_OBJS) $(C_GEN_S) $(C_GEN_I)
+	-$(RM) $(ROM) $(OVERLAYS) $(ELFS) $(MAPS)
+	-find asm src overlays -type f \( -name '*.o' -o -name '*.d' -o -name '*.i' \) -delete 2>/dev/null
+	-find src -name '*.c' -printf '%P\n' 2>/dev/null | sed 's|\.c$$|.s|' | \
+	    while read rel; do $(RM) "src/$$rel" "asm/$$rel"; done
 
 
 # Tools are compiled for the host and used during the build.
