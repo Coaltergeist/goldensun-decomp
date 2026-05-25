@@ -90,6 +90,17 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
+# Cross-dir rule: build asm/<bank>/X.o from src/<bank>/X.c. Used by the
+# split-multifn workflow (tools/split_multifn_s.py) — matched .c source-of-
+# truth lives at src/<bank>/X.c per the 3.5c layout, but the linker keeps
+# referencing asm/<bank>/X.o. Generates asm/<bank>/X.s as a build
+# intermediate alongside the .o; safe to commit per the existing matched-
+# corpus convention, or leave as a build artifact (regenerable from the .c).
+asm/%.o: src/%.c
+	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
 C_SRCS  := $(wildcard *.c */*.c */*/*.c)
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)

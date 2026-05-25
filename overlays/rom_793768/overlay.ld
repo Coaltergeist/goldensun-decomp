@@ -17,7 +17,9 @@ SECTIONS {
 		asm/overlays/common/common0.o(.text)
 		asm/overlays/rom_793768/ovl_314_a.o(.text)
 		asm/overlays/rom_793768/ovl_314_b.o(.text)
-		asm/overlays/rom_793768/ovl_314_c.o(.text)
+		asm/overlays/rom_793768/ovl_314_c_a.o(.text)
+		asm/overlays/rom_793768/ovl_314_c_b.o(.text)
+		asm/overlays/rom_793768/ovl_314_c_c.o(.text)
 		src/overlays/rom_793768/imports.o(.text)
 		lib/call_via.o(.text)
 	} > overlay
@@ -25,7 +27,7 @@ SECTIONS {
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_793768/ovl_314_c.o(.data)
+		asm/overlays/rom_793768/ovl_314_c_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {
