@@ -69,23 +69,24 @@ $(OVERLAYS): %.bin: %.elf
 %.o: %.s
 	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -MD $(@:.o=.d) -o $@ $<
 
-# Compile target C with the stock GCC 3.0 build (camelot-build/build-stock).
-# The 5-patch build under camelot-build/build-stock/gcc/ produces
-# byte-identical output to Camelot's original compiler (see compiler.md).
+# Compile target C with the patched gcc-2.96 build from the camelot-gcc
+# submodule (install via camelot-gcc/install-296.sh). Produces byte-identical
+# output to Camelot's original compiler (see compiler.md).
 # Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
-# Karathan's flags (-fcall-used-r4 -ffixed-r7) are required for byte match.
-# Trailing .align 2, 0 is required for the same reason as the agbcc pipeline:
-# gcc-3.0 emits .align with zero-fill BETWEEN functions (via the elf.h patch)
-# but NOT AFTER the last function in a TU, so the assembler's default
-# Thumb-nop fill leaks in without this explicit append.
-GCC3_DIR     ?= tools/gcc3
-GCC3_CC      := $(GCC3_DIR)/xgcc
-GCC3_CFLAGS  := -B$(GCC3_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
-                -fno-builtin -nostdinc -ffreestanding \
-                -fcall-used-r4 -ffixed-r7 -Iinclude
+# Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
+# kept defensively but is a no-op on the matched corpus under gcc-2.96.
+# Trailing .align 2, 0 is required because gcc emits .align with zero-fill
+# BETWEEN functions (via the elf.h patch) but NOT AFTER the last function in
+# a TU, so the assembler's default Thumb-nop fill leaks in without this
+# explicit append.
+GCC296_DIR     ?= tools/gcc296
+GCC296_CC      := $(GCC296_DIR)/xgcc
+GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
+                  -fno-builtin -nostdinc -ffreestanding \
+                  -fcall-used-r4 -ffixed-r7 -Iinclude
 
 %.o: %.c
-	$(GCC3_CC) $(GCC3_CFLAGS) -S -o $(@:.o=.s) $<
+	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
@@ -121,8 +122,8 @@ CPPFLAGS += -MMD
 CFLAGS ?= -O2 -Wall
 
 # Host tool build — explicit rules so they override the generic %.o:%.c
-# (which now points at the agbcc target pipeline). The tools/ prefix makes
-# these rules more-specific than the generic ones.
+# (which points at the gcc-2.96 target pipeline above). The tools/ prefix
+# makes these rules more-specific than the generic ones.
 tools/%.o: tools/%.c
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 

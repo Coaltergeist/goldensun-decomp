@@ -35,20 +35,20 @@ cd goldensun-decomp
 
 ### 2. Install the build toolchain
 
-The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc): a patched stock GCC 3.0 (arm-agb-elf target) that reproduces Camelot's original codegen byte-identically. Clone it as a sibling directory, build, and install into this repo:
+The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc): a patched gcc-2.96 (arm-elf target, Debian 20000731 dev snapshot) that reproduces Camelot's original codegen byte-identically. Clone it as a sibling directory, build, and install into this repo:
 
 ```bash
 cd ..
 git clone https://github.com/Coaltergeist/camelot-gcc
 cd camelot-gcc
-./build.sh                          # ~5-10 min, vendored gcc-3.0 source + 5 patches
-./install.sh ../goldensun-decomp
+./build-296.sh                          # ~5-10 min, vendored gcc-2.96 source + 7 patches
+./install-296.sh ../goldensun-decomp
 cd ../goldensun-decomp
 ```
 
-This drops `cc1`, `xgcc`, `cpp0`, `tradcpp0` into `tools/gcc3/` inside the repo (gitignored, never committed).
+This drops `cc1`, `xgcc`, `cpp`, `tradcpp` into `tools/gcc296/` inside the repo (gitignored, never committed).
 
-> If you have an older clone of this repo with `tools/agbcc/` on disk from a previous toolchain, you can delete it: `rm -rf tools/agbcc`. The build no longer uses agbcc.
+> If you have an older clone of this repo with `tools/gcc3/` or `tools/agbcc/` on disk from a previous toolchain, you can delete them: `rm -rf tools/gcc3 tools/agbcc`. The build no longer uses either.
 
 ### 3. Provide a reference ROM
 
@@ -106,10 +106,10 @@ Press `q` to exit the pager.
 
 ### Compiler exec-bit lost on Windows checkout
 
-If `make` fails with `Permission denied` on `tools/gcc3/xgcc` or similar, restore the executable bit:
+If `make` fails with `Permission denied` on `tools/gcc296/xgcc` or similar, restore the executable bit:
 
 ```bash
-chmod +x tools/gcc3/*
+chmod +x tools/gcc296/*
 ```
 
 This commonly happens when copying the toolchain via a Windows filesystem bridge (e.g. `\\wsl$\`).
