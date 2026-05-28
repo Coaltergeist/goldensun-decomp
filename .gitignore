@@ -9,10 +9,14 @@
 *.map
 stage1.o
 
-# Compiler-generated .s files (Make's %.o:%.c rule writes .s next to the .c;
-# clean removes them via C_GEN_S). Currently only dummy.s, but the gitignore
-# tracks the concept rather than the one file.
-src/rom_b0000/dummy.s
+# Compiler-generated .s intermediates: Make's %.o:%.c rule writes a .s next to
+# every src/ .c, so refresh_expected.sh / a full `make` litters src/ with them.
+# Ignore all .s under src/ EXCEPT the hand-written glue (crt0/exports/imports),
+# which have no .c sibling and are tracked source-of-truth.
+src/**/*.s
+!src/**/crt0.s
+!src/**/exports.s
+!src/**/imports.s
 
 # Per-machine expected disassembly cache
 expected/
