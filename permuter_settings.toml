@@ -7,3 +7,4 @@
 compiler_type = "gcc"
 compiler_command = "tools/gcc296/xgcc -Btools/gcc296/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi -fno-builtin -nostdinc -ffreestanding -fcall-used-r4 -Iinclude -S -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
 assembler_command = "arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
+asm_prelude_file = "permuter_prelude.inc"
