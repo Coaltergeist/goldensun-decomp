@@ -1,10 +1,10 @@
-/* Cluster OvlFunc_7e7574_a30..OvlFunc_7e7574_a30 extracted from goldensun/overlays/rom_7e7574/ovl_9dc_a.s.
+/* Cluster OvlFunc_959_2008a30..OvlFunc_959_2008a30 extracted from goldensun/overlays/rom_7e7574/ovl_9dc_a.s.
  *
  * Total .text for this TU = 4 bytes (= 0x4).
  * Preserves the original ROM layout when slotted between
  * overlays/rom_7e7574/ovl_9dc_a_a.o and overlays/rom_7e7574/ovl_9dc_a_c.o in
  * goldensun/overlays/rom_7e7574/overlay.ld.
  */
-int OvlFunc_7e7574_a30(void) {
+int OvlFunc_959_2008a30(void) {
     return 0;
 }

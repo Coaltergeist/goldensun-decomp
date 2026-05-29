@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7ebdfc_3c
+.thumb_func_start OvlFunc_961_200803c
 	ldr	r0, =.L3c8
 	bx	lr
-.func_end OvlFunc_7ebdfc_3c
+.func_end OvlFunc_961_200803c
 
-.thumb_func_start OvlFunc_7ebdfc_44
+.thumb_func_start OvlFunc_961_2008044
 	push	{lr}
 	ldr	r0, =0x96f
 	bl	__Func_8079338
@@ -18,9 +18,9 @@
 .L56:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7ebdfc_44
+.func_end OvlFunc_961_2008044
 
-.thumb_func_start OvlFunc_7ebdfc_68
+.thumb_func_start OvlFunc_961_2008068
 	push	{r5, r6, lr}
 	ldr	r5, =0x25b8
 	mov	r6, r0
@@ -49,9 +49,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ebdfc_68
+.func_end OvlFunc_961_2008068
 
-.thumb_func_start OvlFunc_7ebdfc_b0
+.thumb_func_start OvlFunc_961_20080b0
 	push	{r5, r6, lr}
 	ldr	r5, =0x25dc
 	mov	r6, r0
@@ -80,9 +80,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ebdfc_b0
+.func_end OvlFunc_961_20080b0
 
-.thumb_func_start OvlFunc_7ebdfc_f8
+.thumb_func_start OvlFunc_961_20080f8
 	push	{lr}
 	sub	sp, #8
 	mov	r3, #4
@@ -99,9 +99,9 @@
 	add	sp, #8
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ebdfc_f8
+.func_end OvlFunc_961_20080f8
 
-.thumb_func_start OvlFunc_7ebdfc_120
+.thumb_func_start OvlFunc_961_2008120
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -150,9 +150,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ebdfc_120
+.func_end OvlFunc_961_2008120
 
-.thumb_func_start OvlFunc_7ebdfc_194
+.thumb_func_start OvlFunc_961_2008194
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -201,9 +201,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ebdfc_194
+.func_end OvlFunc_961_2008194
 
-.thumb_func_start OvlFunc_7ebdfc_208
+.thumb_func_start OvlFunc_961_2008208
 	push	{lr}
 	ldr	r0, =0x96f
 	bl	__Func_8079338
@@ -216,9 +216,9 @@
 .L21a:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7ebdfc_208
+.func_end OvlFunc_961_2008208
 
-.thumb_func_start OvlFunc_7ebdfc_22c
+.thumb_func_start OvlFunc_961_200822c
 	push	{lr}
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xe1
@@ -246,7 +246,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L270
-	bl	OvlFunc_7ebdfc_f8
+	bl	OvlFunc_961_20080f8
 	mov	r0, #0x10
 	mov	r1, #4
 	bl	__Func_80924d4
@@ -254,7 +254,7 @@
 	mov	r0, #0
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7ebdfc_22c
+.func_end OvlFunc_961_200822c
 
 	.section .data
 	.global .L2f0

@@ -1,21 +1,21 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_78dd40_3c
+.thumb_func_start OvlFunc_893_200803c
 	ldr	r0, =.L120
 	bx	lr
-.func_end OvlFunc_78dd40_3c
+.func_end OvlFunc_893_200803c
 
-.thumb_func_start OvlFunc_78dd40_44
+.thumb_func_start OvlFunc_893_2008044
 	ldr	r0, =.L130
 	bx	lr
-.func_end OvlFunc_78dd40_44
+.func_end OvlFunc_893_2008044
 
-.thumb_func_start OvlFunc_78dd40_4c
+.thumb_func_start OvlFunc_893_200804c
 	ldr	r0, =.L148
 	bx	lr
-.func_end OvlFunc_78dd40_4c
+.func_end OvlFunc_893_200804c
 
-.thumb_func_start OvlFunc_78dd40_54
+.thumb_func_start OvlFunc_893_2008054
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
@@ -46,7 +46,7 @@
 	mov	r0, #0
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_78dd40_54
+.func_end OvlFunc_893_2008054
 
 	.section .data
 	.global .Lc0

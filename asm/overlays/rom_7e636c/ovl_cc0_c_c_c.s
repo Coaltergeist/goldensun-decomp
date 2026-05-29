@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7e636c_1384
+.thumb_func_start OvlFunc_958_2009384
 	push	{lr}
 	mov	r0, #0xc
 	mov	r1, #0
@@ -8,9 +8,9 @@
 	bl	__Func_80923e4
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7e636c_1384
+.func_end OvlFunc_958_2009384
 
-.thumb_func_start OvlFunc_7e636c_1394
+.thumb_func_start OvlFunc_958_2009394
 	push	{r5, lr}
 	ldr	r5, =ewram_2000240
 	mov	r1, #0xe0
@@ -111,7 +111,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7e636c_1394
+.func_end OvlFunc_958_2009394
 
 	.section .data
 	.global .L191c

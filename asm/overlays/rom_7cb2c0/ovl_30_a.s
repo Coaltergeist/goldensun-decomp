@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7cb2c0_30
+.thumb_func_start OvlFunc_945_2008030
 	push	{r5, lr}
 	mov	r1, #1
 	mov	r5, r0
@@ -20,9 +20,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_30
+.func_end OvlFunc_945_2008030
 
-.thumb_func_start OvlFunc_7cb2c0_58
+.thumb_func_start OvlFunc_945_2008058
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r5
@@ -65,9 +65,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_58
+.func_end OvlFunc_945_2008058
 
-.thumb_func_start OvlFunc_7cb2c0_b0
+.thumb_func_start OvlFunc_945_20080b0
 	push	{r5, lr}
 	mov	r5, r0
 	bl	__Func_8004458
@@ -90,9 +90,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_b0
+.func_end OvlFunc_945_20080b0
 
-.thumb_func_start OvlFunc_7cb2c0_d8
+.thumb_func_start OvlFunc_945_20080d8
 	push	{lr}
 	mov	r1, r0
 	add	r1, #0x62
@@ -112,9 +112,9 @@
 .Lf8:
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7cb2c0_d8
+.func_end OvlFunc_945_20080d8
 
-.thumb_func_start OvlFunc_7cb2c0_fc
+.thumb_func_start OvlFunc_945_20080fc
 	push	{lr}
 	ldr	r3, [r0, #0x4c]
 	cmp	r3, #0
@@ -143,9 +143,9 @@
 .L128:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_fc
+.func_end OvlFunc_945_20080fc
 
-.thumb_func_start OvlFunc_7cb2c0_12c
+.thumb_func_start OvlFunc_945_200812c
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r0, #8
@@ -206,7 +206,7 @@
 	b	.L27a
 .L1b6:
 	mov	r0, r5
-	bl	OvlFunc_7cb2c0_fc
+	bl	OvlFunc_945_20080fc
 	cmp	r0, #0
 	beq	.L27c
 	mov	r0, r5
@@ -285,7 +285,7 @@
 	b	.L27c
 .L250:
 	mov	r0, r5
-	bl	OvlFunc_7cb2c0_fc
+	bl	OvlFunc_945_20080fc
 	cmp	r0, #0
 	beq	.L27c
 	mov	r0, r5
@@ -300,7 +300,7 @@
 	b	.L27a
 .L270:
 	mov	r0, r5
-	bl	OvlFunc_7cb2c0_d8
+	bl	OvlFunc_945_20080d8
 	b	.L27c
 .L278:
 	mov	r3, #0
@@ -310,9 +310,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7cb2c0_12c
+.func_end OvlFunc_945_200812c
 
-.thumb_func_start OvlFunc_7cb2c0_284
+.thumb_func_start OvlFunc_945_2008284
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -370,9 +370,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7cb2c0_284
+.func_end OvlFunc_945_2008284
 
-.thumb_func_start OvlFunc_7cb2c0_2f4
+.thumb_func_start OvlFunc_945_20082f4
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r2, r6
@@ -409,9 +409,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_2f4
+.func_end OvlFunc_945_20082f4
 
-.thumb_func_start OvlFunc_7cb2c0_340
+.thumb_func_start OvlFunc_945_2008340
 	push	{lr}
 	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
@@ -429,5 +429,5 @@
 .L35a:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7cb2c0_340
+.func_end OvlFunc_945_2008340
 

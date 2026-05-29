@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7ac2d8_d58
+.thumb_func_start OvlFunc_924_2008d58
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	ldr	r3, =0
@@ -73,9 +73,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ac2d8_d58
+.func_end OvlFunc_924_2008d58
 
-.thumb_func_start OvlFunc_7ac2d8_dfc
+.thumb_func_start OvlFunc_924_2008dfc
 	push	{lr}
 	ldr	r1, =0
 	ldr	r3, =0x50000de
@@ -92,7 +92,7 @@
 	bls	.Le10
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ac2d8_dfc
+.func_end OvlFunc_924_2008dfc
 
 	.section .data
 

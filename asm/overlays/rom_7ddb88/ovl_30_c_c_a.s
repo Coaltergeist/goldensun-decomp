@@ -1,14 +1,14 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_7ddb88_50
+.thumb_func_start OvlFunc_955_2008050
 	push	{lr}
 	bl	OvlFunc_common1_2060
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ddb88_50
+.func_end OvlFunc_955_2008050
 
-.thumb_func_start OvlFunc_7ddb88_5c
+.thumb_func_start OvlFunc_955_200805c
 	push	{lr}
 	mov	r0, #0xb
 	sub	sp, #8
@@ -45,17 +45,17 @@
 	add	sp, #8
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ddb88_5c
+.func_end OvlFunc_955_200805c
 
-.thumb_func_start OvlFunc_7ddb88_b0
+.thumb_func_start OvlFunc_955_20080b0
 	push	{lr}
 	bl	OvlFunc_common1_2060
-	bl	OvlFunc_7ddb88_5c
+	bl	OvlFunc_955_200805c
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ddb88_b0
+.func_end OvlFunc_955_20080b0
 
-.thumb_func_start OvlFunc_7ddb88_c0
+.thumb_func_start OvlFunc_955_20080c0
 	push	{r5, r6, lr}
 	sub	sp, #8
 	mov	r3, #0xe
@@ -117,5 +117,5 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7ddb88_c0
+.func_end OvlFunc_955_20080c0
 

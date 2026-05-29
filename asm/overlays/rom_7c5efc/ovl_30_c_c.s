@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7c5efc_1320
+.thumb_func_start OvlFunc_941_2009320
 	push	{lr}
 	ldr	r0, =0x2557
 	bl	__Func_8092b94
@@ -17,9 +17,9 @@
 	sub	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_1320
+.func_end OvlFunc_941_2009320
 
-.thumb_func_start OvlFunc_7c5efc_134c
+.thumb_func_start OvlFunc_941_200934c
 	push	{lr}
 	ldr	r0, =0x255d
 	bl	__Func_8092b94
@@ -29,9 +29,9 @@
 	mov	r0, #1
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_134c
+.func_end OvlFunc_941_200934c
 
-.thumb_func_start OvlFunc_7c5efc_1368
+.thumb_func_start OvlFunc_941_2009368
 	push	{lr}
 	ldr	r0, =0x254a
 	bl	__Func_8092b94
@@ -48,9 +48,9 @@
 	sub	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_1368
+.func_end OvlFunc_941_2009368
 
-.thumb_func_start OvlFunc_7c5efc_1394
+.thumb_func_start OvlFunc_941_2009394
 	push	{r5, lr}
 	mov	r0, #2
 	mov	r1, #0
@@ -104,9 +104,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_1394
+.func_end OvlFunc_941_2009394
 
-.thumb_func_start OvlFunc_7c5efc_141c
+.thumb_func_start OvlFunc_941_200941c
 	push	{lr}
 	ldr	r0, =0x255c
 	bl	__Func_8092b94
@@ -123,9 +123,9 @@
 	sub	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_141c
+.func_end OvlFunc_941_200941c
 
-.thumb_func_start OvlFunc_7c5efc_1448
+.thumb_func_start OvlFunc_941_2009448
 	push	{r5, lr}
 	mov	r0, #1
 	ldr	r1, =0x105
@@ -428,9 +428,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7c5efc_1448
+.func_end OvlFunc_941_2009448
 
-.thumb_func_start OvlFunc_7c5efc_1760
+.thumb_func_start OvlFunc_941_2009760
 	push	{r5, lr}
 	mov	r1, #0xa0
 	mov	r2, #0
@@ -697,9 +697,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7c5efc_1760
+.func_end OvlFunc_941_2009760
 
-.thumb_func_start OvlFunc_7c5efc_1a0c
+.thumb_func_start OvlFunc_941_2009a0c
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -737,20 +737,20 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L1a6e
-	bl	OvlFunc_7c5efc_210
+	bl	OvlFunc_941_2008210
 .L1a6e:
 	ldr	r0, =0x202
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L1a7c
-	bl	OvlFunc_7c5efc_384
+	bl	OvlFunc_941_2008384
 .L1a7c:
 	mov	r0, #0x80
 	lsl	r0, #2
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L1a8c
-	bl	OvlFunc_7c5efc_d4
+	bl	OvlFunc_941_20080d4
 .L1a8c:
 	ldr	r0, =0x203
 	bl	__Func_8079338
@@ -772,7 +772,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7c5efc_1a0c
+.func_end OvlFunc_941_2009a0c
 
 	.section .data
 	.global .L1cac

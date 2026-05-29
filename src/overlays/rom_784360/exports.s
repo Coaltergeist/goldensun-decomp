@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_784360_940
-	.export_func OvlFunc_784360_88
-	.export_func OvlFunc_784360_94
-	.export_func OvlFunc_784360_b8
-	.export_func OvlFunc_784360_158
-	.export_func OvlFunc_784360_90
+	.export_func OvlFunc_884_2008940
+	.export_func OvlFunc_884_2008088
+	.export_func OvlFunc_884_2008094
+	.export_func OvlFunc_884_20080b8
+	.export_func OvlFunc_884_2008158
+	.export_func OvlFunc_884_2008090
