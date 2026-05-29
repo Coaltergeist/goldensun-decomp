@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7bf5a8_170
+.thumb_func_start OvlFunc_935_2008170
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -28,7 +28,7 @@
 	asr	r3, #16
 	add	r2, r3
 	asr	r1, r2, #4
-	bl	OvlFunc_7bf5a8_134
+	bl	OvlFunc_935_2008134
 	mov	r6, r0
 	mov	r3, r6
 	add	r3, #0x59
@@ -61,7 +61,7 @@
 	asr	r3, #16
 	add	r2, r3
 	asr	r1, r2, #4
-	bl	OvlFunc_7bf5a8_134
+	bl	OvlFunc_935_2008134
 	cmp	r0, #0
 	beq	.L202
 	mov	r3, r0
@@ -150,25 +150,25 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7bf5a8_170
+.func_end OvlFunc_935_2008170
 
-.thumb_func_start OvlFunc_7bf5a8_2bc
+.thumb_func_start OvlFunc_935_20082bc
 	push	{lr}
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__Func_8079358
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7bf5a8_2bc
+.func_end OvlFunc_935_20082bc
 
-.thumb_func_start OvlFunc_7bf5a8_2cc
+.thumb_func_start OvlFunc_935_20082cc
 	push	{lr}
 	ldr	r0, =0x953
 	mov	r1, #1
 	bl	__Func_801776c
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7bf5a8_2cc
+.func_end OvlFunc_935_20082cc
 
 	.section .data
 

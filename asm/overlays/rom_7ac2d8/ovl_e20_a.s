@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7ac2d8_e20
+.thumb_func_start OvlFunc_924_2008e20
 	push	{lr}
 	ldr	r3, =ewram_2000240
 	mov	r1, #0xe0
@@ -30,5 +30,5 @@
 .Le4e:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7ac2d8_e20
+.func_end OvlFunc_924_2008e20
 

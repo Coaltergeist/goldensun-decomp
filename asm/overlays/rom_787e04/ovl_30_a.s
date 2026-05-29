@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_787e04_30
+.thumb_func_start OvlFunc_887_2008030
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, [r5, #0x68]
@@ -45,10 +45,10 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_787e04_30
+.func_end OvlFunc_887_2008030
 
-.thumb_func_start OvlFunc_787e04_88
+.thumb_func_start OvlFunc_887_2008088
 	ldr	r0, =.L1fd0
 	bx	lr
-.func_end OvlFunc_787e04_88
+.func_end OvlFunc_887_2008088
 

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_7bc690_18a4
+.thumb_func_start OvlFunc_933_20098a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -65,7 +65,7 @@
 	cmp	r3, r1
 	bne	.L1932
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =OvlData_7bc690_1f80
+	ldr	r0, =OvlData_933_2009f80
 	ldr	r1, =0x50003c0
 	ldr	r2, =0x80000010
 	stmia	r3!, {r0, r1, r2}
@@ -113,7 +113,7 @@
 	bl	__Func_8004938
 	mov	r9, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =OvlData_7bc690_1f80
+	ldr	r0, =OvlData_933_2009f80
 	mov	r1, r9
 	ldr	r2, =0x80000010
 	stmia	r3!, {r0, r1, r2}
@@ -401,12 +401,12 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7bc690_18a4
+.func_end OvlFunc_933_20098a4
 
-.thumb_func_start OvlFunc_7bc690_1c1c
+.thumb_func_start OvlFunc_933_2009c1c
 	push	{r5, lr}
 	ldr	r1, =.L2730
-	ldr	r0, =OvlData_7bc690_1fa0
+	ldr	r0, =OvlData_933_2009fa0
 	bl	__Func_8005340
 	ldr	r5, =.L26d0
 	bl	__Func_8004080
@@ -423,7 +423,7 @@
 	ldr	r3, =.L3030
 	ldr	r1, =0xc76
 	strh	r2, [r3]
-	ldr	r0, =OvlFunc_7bc690_18a4
+	ldr	r0, =OvlFunc_933_20098a4
 	bl	__Func_80041d8
 	b	.L1c70
 
@@ -436,13 +436,13 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_7bc690_1c1c
+.func_end OvlFunc_933_2009c1c
 
-.thumb_func_start OvlFunc_7bc690_1c78
+.thumb_func_start OvlFunc_933_2009c78
 	ldr	r3, =.L3030
 	strh	r0, [r3]
 	bx	lr
-.func_end OvlFunc_7bc690_1c78
+.func_end OvlFunc_933_2009c78
 
 	.section .data
 

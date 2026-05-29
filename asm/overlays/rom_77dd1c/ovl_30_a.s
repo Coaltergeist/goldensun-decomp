@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_77dd1c_30
+.thumb_func_start OvlFunc_882_2008030
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r6
@@ -24,9 +24,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_77dd1c_30
+.func_end OvlFunc_882_2008030
 
-.thumb_func_start OvlFunc_77dd1c_64
+.thumb_func_start OvlFunc_882_2008064
 	push	{r5, lr}
 	mov	r5, r0
 	add	r5, #0x64
@@ -91,10 +91,10 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_77dd1c_64
+.func_end OvlFunc_882_2008064
 
-.thumb_func_start OvlFunc_77dd1c_e8
+.thumb_func_start OvlFunc_882_20080e8
 	ldr	r0, =.L50e4
 	bx	lr
-.func_end OvlFunc_77dd1c_e8
+.func_end OvlFunc_882_20080e8
 

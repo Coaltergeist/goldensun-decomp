@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_793768_424
+.thumb_func_start OvlFunc_898_2008424
 	ldr	r0, =.L2094
 	bx	lr
-.func_end OvlFunc_793768_424
+.func_end OvlFunc_898_2008424
 
-.thumb_func_start OvlFunc_793768_42c
+.thumb_func_start OvlFunc_898_200842c
 	push	{lr}
 	ldr	r0, =0x855
 	bl	__Func_8079338
@@ -18,5 +18,5 @@
 .L43e:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_793768_42c
+.func_end OvlFunc_898_200842c
 

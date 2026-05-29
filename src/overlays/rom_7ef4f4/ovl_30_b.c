@@ -1,4 +1,4 @@
-/* Cluster OvlFunc_7ef4f4_26a8..OvlFunc_7ef4f4_26a8 extracted from goldensun/asm/overlays/rom_7ef4f4/ovl_30.s.
+/* Cluster OvlFunc_965_200a6a8..OvlFunc_965_200a6a8 extracted from goldensun/asm/overlays/rom_7ef4f4/ovl_30.s.
  *
  * Total .text for this TU = 16 bytes (= 0x10).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001f30;
 
-void OvlFunc_7ef4f4_26a8(void) {
+void OvlFunc_965_200a6a8(void) {
     unsigned int ptr;
     ptr = iwram_3001f30;
     *((unsigned char *)(ptr + 0x34)) = 1;

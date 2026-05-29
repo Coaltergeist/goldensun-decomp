@@ -1,19 +1,19 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_7fc720_7c8
+.thumb_func_start OvlFunc_973_20087c8
 	push	{lr}
 	bl	__Func_8029554
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7fc720_7c8
+.func_end OvlFunc_973_20087c8
 
-.thumb_func_start OvlFunc_7fc720_7d4
+.thumb_func_start OvlFunc_973_20087d4
 	push	{lr}
 	bl	__Func_802977c
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7fc720_7d4
+.func_end OvlFunc_973_20087d4
 
 	.section .data
 	.global .L8d0

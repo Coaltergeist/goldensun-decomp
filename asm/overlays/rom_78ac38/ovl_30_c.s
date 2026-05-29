@@ -1,21 +1,21 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_78ac38_3c
+.thumb_func_start OvlFunc_889_200803c
 	ldr	r0, =.Ld38
 	bx	lr
-.func_end OvlFunc_78ac38_3c
+.func_end OvlFunc_889_200803c
 
-.thumb_func_start OvlFunc_78ac38_44
+.thumb_func_start OvlFunc_889_2008044
 	ldr	r0, =.Ld44
 	bx	lr
-.func_end OvlFunc_78ac38_44
+.func_end OvlFunc_889_2008044
 
-.thumb_func_start OvlFunc_78ac38_4c
+.thumb_func_start OvlFunc_889_200804c
 	ldr	r0, =.Le94
 	bx	lr
-.func_end OvlFunc_78ac38_4c
+.func_end OvlFunc_889_200804c
 
-.thumb_func_start OvlFunc_78ac38_54
+.thumb_func_start OvlFunc_889_2008054
 	push	{lr}
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xe1
@@ -25,14 +25,14 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xf
 	bne	.L6a
-	bl	OvlFunc_78ac38_74
+	bl	OvlFunc_889_2008074
 .L6a:
 	mov	r0, #0
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_78ac38_54
+.func_end OvlFunc_889_2008054
 
-.thumb_func_start OvlFunc_78ac38_74
+.thumb_func_start OvlFunc_889_2008074
 	push	{r5, lr}
 	bl	__Func_80916b0
 	mov	r0, #0xe
@@ -1018,7 +1018,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_78ac38_74
+.func_end OvlFunc_889_2008074
 
 	.section .data
 	.global .Lcf0

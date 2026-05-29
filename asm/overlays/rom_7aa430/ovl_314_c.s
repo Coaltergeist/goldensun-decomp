@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_7aa430_d58
+.thumb_func_start OvlFunc_923_2008d58
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
@@ -32,7 +32,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_7aa430_d58
+.func_end OvlFunc_923_2008d58
 
 	.section .data
 	.global .L2700
