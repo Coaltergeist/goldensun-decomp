@@ -15,7 +15,9 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7c460c/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_7c460c/ovl_314_a.o(.text)
+		asm/overlays/rom_7c460c/ovl_314_a_a.o(.text)
+		asm/overlays/rom_7c460c/ovl_314_a_b.o(.text)
+		asm/overlays/rom_7c460c/ovl_314_a_c.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_b.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_c.o(.text)
 		src/overlays/rom_7c460c/imports.o(.text)
