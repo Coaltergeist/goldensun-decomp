@@ -1,0 +1,10 @@
+/* Cluster OvlFunc_905_2008b50..OvlFunc_905_2008b50 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a.s.
+ *
+ * Total .text for this TU computed at build time from expected/.../.o.
+ * Preserves the original ROM layout when slotted between
+ * asm/overlays/rom_799abc/ovl_30_a_a.o and asm/overlays/rom_799abc/ovl_30_a_c.o in
+ * goldensun/overlays/rom_799abc/overlay.ld.
+ */
+unsigned int OvlFunc_905_2008b50(void) {
+    asm("ldr r0, =.L1690");
+}
