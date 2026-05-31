@@ -210,7 +210,7 @@
 .Ld8ac6:
 	ldr	r0, =0xc0
 .Ld8ac8:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r2, r0
 	mov	r0, #0xa0
 	mov	r1, r2
@@ -238,7 +238,7 @@
 .Ld8afa:
 	ldr	r0, =0x92
 .Ld8afc:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r2, r0
 	ldr	r3, [sp, #0x48]
 	mov	r0, #0x80

@@ -873,7 +873,7 @@
 	add	r1, #4
 	b	.Lb700
 .Lb71e:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r7
 	bl	Func_8005340
 	ldr	r3, [r7]

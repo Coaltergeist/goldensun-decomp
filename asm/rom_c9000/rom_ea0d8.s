@@ -193,7 +193,7 @@
 	cmp	r7, #8
 	bne	.Lea24e
 	ldr	r0, =0x64
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

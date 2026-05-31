@@ -8,7 +8,7 @@
 	.export_func _Func_8003fa4
 	.export_func _Func_8004080
 	.export_func _Func_8003dec
-	.export_func _Func_8002f40
+	.export_func _GetFile
 	.export_func _Func_8002f3c
 	.export_func _Func_8003b70
 	.export_func _Func_8003ce0

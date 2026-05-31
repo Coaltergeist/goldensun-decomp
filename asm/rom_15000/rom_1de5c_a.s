@@ -23,7 +23,7 @@
 	bl	Func_8004938
 	str	r0, [sp, #8]
 	ldr	r0, =0x13
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =0xea7
 	str	r0, [sp, #4]
 	add	r3, r11

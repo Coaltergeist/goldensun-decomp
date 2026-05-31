@@ -162,7 +162,7 @@
 	bl	Func_80e0524
 	mov	r0, r5
 .Ld536e:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	mov	r2, #0x80

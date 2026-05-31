@@ -588,7 +588,7 @@
 	cmp	r3, #0x14
 	bne	.Le0a70
 	ldr	r0, =0x8e
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -2804,7 +2804,7 @@
 	ldr	r0, =0x66
 	bl	Func_80e0524
 	ldr	r0, =0xcf
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

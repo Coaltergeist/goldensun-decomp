@@ -1,13 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8002f40
-	ldr	r3, =Data_8320000
-	lsl	r0, #2
-	ldr	r0, [r3, r0]
-	bx	lr
-.func_end Func_8002f40
-
 .thumb_func_start Func_8002f4c
 	push	{r5, r6, r7, lr}
 	asr	r7, r1, #1
@@ -67,7 +60,7 @@
 	mov	r5, r8
 	push	{r5, r6}
 	mov	r8, r1
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r8
 	bl	Func_8005340
 	mov	r10, r0

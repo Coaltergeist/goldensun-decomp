@@ -1579,7 +1579,7 @@
 	bl	Func_80048f4
 	mov	r5, r0
 	ldr	r0, =0xf1
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r2, r0
 	cmp	r7, #0x5f
 	bgt	.L2173e
@@ -2255,7 +2255,7 @@
 	bl	Func_80048b0
 	mov	r6, r0
 	ldr	r0, =0xf1
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1
 	add	r2, r6, r3
@@ -2292,7 +2292,7 @@
 	bl	Func_80048b0
 	mov	r6, r0
 	ldr	r0, =0xf1
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1
 	add	r2, r6, r3

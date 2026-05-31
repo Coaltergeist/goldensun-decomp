@@ -1062,7 +1062,7 @@
 	mov	r9, r0
 	mov	r0, r1
 	mov	r10, r2
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =iwram_3001f00
 	sub	r3, #0x8c
 	ldr	r6, [r3]

@@ -88,7 +88,7 @@
 	ldr	r7, =0xbf
 	strh	r3, [r2]
 	mov	r0, r7
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	mov	r2, #0x80
@@ -101,7 +101,7 @@
 	mov	r0, r6
 	bl	Func_8005340
 	ldr	r0, =0x9e
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	mov	r1, r6
@@ -157,7 +157,7 @@
 .Lcf9b6:
 	ldr	r0, =0x77
 .Lcf9b8:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

@@ -763,7 +763,7 @@
 	bl	Func_80048b0
 	mov	r6, r0
 	ldr	r0, =0xf0
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r3, r5
 	cmp	r5, #0x7f
 	bls	.L1a522

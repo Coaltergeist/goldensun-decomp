@@ -69,7 +69,7 @@
 	ldr	r5, [r5, #0x1c]
 	ldr	r0, =0x7d
 	str	r5, [sp, #0x2c]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	b	.Ld24f0
 
@@ -92,7 +92,7 @@
 	mov	r0, r5
 	bl	Func_8005340
 	ldr	r0, =0xb4
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xc0
 	mov	r5, r0
 	add	r5, #0x80
@@ -101,14 +101,14 @@
 	mov	r0, r5
 	bl	Func_8005340
 	ldr	r0, =0x73
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, [sp, #0x20]
 	bl	Func_8005340
 	ldr	r0, [sp, #0x38]
 	cmp	r0, #1
 	bne	.Ld2542
 	ldr	r0, =0xc4
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	lsl	r0, #19
@@ -350,7 +350,7 @@
 	add	r2, r10
 	str	r3, [r2]
 	ldr	r0, =0xb4
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
