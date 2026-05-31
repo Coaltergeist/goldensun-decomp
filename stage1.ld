@@ -12,6 +12,7 @@ MEMORY {
 }
 
 INCLUDE "aliases.sym"
+INCLUDE "asset_ids.sym"
 
 SECTIONS {
 	header : {
@@ -262,7 +263,9 @@ SECTIONS {
 		asm/rom_8a000/rom_91584_c_a_b.o(.text)
 		asm/rom_8a000/rom_91584_c_a_c.o(.text)
 		asm/rom_8a000/rom_91584_c_b.o(.text)
-		asm/rom_8a000/rom_91584_c_c_a_a.o(.text)
+		asm/rom_8a000/rom_91584_c_c_a_a_a.o(.text)
+		asm/rom_8a000/rom_91584_c_c_a_a_b.o(.text)
+		asm/rom_8a000/rom_91584_c_c_a_a_c.o(.text)
 		asm/rom_8a000/rom_91584_c_c_a_b.o(.text)
 		asm/rom_8a000/rom_91584_c_c_a_c.o(.text)
 		asm/rom_8a000/rom_91584_c_c_b.o(.text)
