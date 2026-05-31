@@ -582,7 +582,7 @@
 	b	.L2d3c
 .func_end Func_8002cf4
 
-.arm_func_start Func_8002d5c
+.arm_func_start ROM_FixupRamCode
 	push	{r5, r6}
 	add	r1, r1
 	add	r2, r0, r1
@@ -616,4 +616,7 @@
 .L2dd0:
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_8002d5c
+ROM_FixupRamCode_End:
+.func_end ROM_FixupRamCode
+.global _FIXUP_RAM_CODE_SIZE
+_FIXUP_RAM_CODE_SIZE = ROM_FixupRamCode_End - ROM_FixupRamCode
