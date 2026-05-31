@@ -33,7 +33,7 @@
 	mov	r0, #0
 	bl	Func_80cef64
 	ldr	r0, =0x6e
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -46,7 +46,7 @@
 	mov	r0, r5
 	bl	Func_8005340
 	ldr	r0, =0x85
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =0x6e4
 	ldr	r2, [sp, #0x2c]
 	mov	r5, r0
@@ -63,7 +63,7 @@
 	mov	r0, r5
 	bl	Func_8005340
 	ldr	r0, =0x73
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, [sp, #0x28]
 	bl	Func_8005340
 	mov	r0, #0xef
@@ -755,7 +755,7 @@
 	mov	r8, r1
 	bl	Func_80cd594
 	ldr	r0, =0xcd
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -1298,7 +1298,7 @@
 	ldr	r3, .Ld38bc	@ 0x1010
 	ldr	r0, =0xce
 	strh	r3, [r2]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -2449,7 +2449,7 @@
 	cmp	r3, #2
 	beq	.Ld424c
 	ldr	r0, =0x60
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

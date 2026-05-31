@@ -588,7 +588,7 @@
 	bl	_call_via_r3
 	ldr	r6, =0xc9
 	mov	r0, r6
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	mov	r1, r5
@@ -625,7 +625,7 @@
 .Lc1612:
 	ldr	r0, =0xcb
 .Lc1614:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r1, #0xa0
 	ldr	r3, =REG_DMA3SAD

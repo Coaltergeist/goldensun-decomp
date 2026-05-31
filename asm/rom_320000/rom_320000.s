@@ -2,11 +2,11 @@
 
 	.section .rodata
 
-	.global	Data_8320000
-Data_8320000:
+	.global	gFileTable
+gFileTable:
 
 	.word	__start_rom
-	.word	Data_8320000
+	.word	gFileTable
 	.word	.L2
 	.word	Exports_9000
 	.word	Exports_15000
@@ -1006,7 +1006,7 @@ Data_8320000:
 	.word	0
 	.word	0
 
-	.ssize	Data_8320000
+	.ssize	gFileTable
 
 .L2:
 	.incrom 0x320fa0, 0x320fb0

@@ -4,7 +4,7 @@
 .thumb_func_start Func_8002f10
 	push	{lr}
 	ldr	r0, =2
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r4, =iwram_3007804
 	ldr	r3, =REG_DMA3SAD
 	mov	r1, r4

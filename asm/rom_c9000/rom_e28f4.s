@@ -229,7 +229,7 @@
 .Le2aa4:
 	ldr	r0, =0xb4
 .Le2aa6:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	mov	r2, #0x80
@@ -969,7 +969,7 @@
 	ldr	r0, =0x7b
 	bl	Func_80e0524
 	ldr	r0, =0x7c
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

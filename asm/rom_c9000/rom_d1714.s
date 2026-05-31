@@ -45,7 +45,7 @@
 	ldr	r5, [r5, #0x1c]
 	ldr	r0, =0x82
 	str	r5, [sp, #0x58]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -58,7 +58,7 @@
 	mov	r0, r5
 	bl	Func_8005340
 	ldr	r0, =0x73
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, [sp, #0x4c]
 	bl	Func_8005340
 	mov	r1, #0xef
@@ -702,7 +702,7 @@
 	mov	r0, #9
 	bl	Func_80dbb24
 	ldr	r0, =0x88
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	mov	r1, r5

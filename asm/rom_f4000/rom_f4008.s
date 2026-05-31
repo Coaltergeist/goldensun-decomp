@@ -239,7 +239,7 @@
 	cmp	r5, #0x14
 	bne	.Lf41cc
 	ldr	r0, =0x42
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0
 	ldr	r3, =REG_DMA3SAD
@@ -266,7 +266,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, =0x43
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
 	ldr	r1, [sp, #0x74]

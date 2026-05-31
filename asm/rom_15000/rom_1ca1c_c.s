@@ -30,7 +30,7 @@
 .L1cf80:
 	ldr	r0, =0xe8
 .L1cf82:
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =0x5b4
 	add	r3, r5, r1
 	ldr	r3, [r3]
@@ -52,7 +52,7 @@
 .L1cfac:
 	ldr	r0, =0xe8
 .L1cfae:
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =0x5c4
 	add	r3, r5, r1
 	ldr	r3, [r3]
@@ -1526,7 +1526,7 @@
 	ldr	r0, =0x13
 	mov	r9, r2
 	mov	r8, r3
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r10, r0
 	mov	r0, r11
 	ldrb	r5, [r0]

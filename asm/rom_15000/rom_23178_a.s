@@ -10618,7 +10618,7 @@
 	bl	Func_8004938
 	mov	r6, r0
 	ldr	r0, =0xf1
-	bl	Func_8002f40
+	bl	GetFile
 	lsl	r5, #1
 	ldrh	r3, [r5, r0]
 	mov	r1, r6

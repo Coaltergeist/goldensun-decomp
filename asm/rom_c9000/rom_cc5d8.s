@@ -92,7 +92,7 @@
 .Lcc6a8:
 	ldr	r0, =0x46
 .Lcc6aa:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -635,7 +635,7 @@
 .Lccb70:
 	ldr	r0, =0xbe
 .Lccb72:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -769,7 +769,7 @@
 	cmp	r3, #0
 	bne	.Lcccd2
 	ldr	r0, =0xa0
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8

@@ -50,7 +50,7 @@
 	bl	Func_80f0254
 	b	.Lf0348
 .Lf02c6:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r6, r0
 	cmp	r5, #0
 	bne	.Lf02de
