@@ -10,7 +10,8 @@
  *     fixed 0x20x0x20.)
  * Parked in non_matching: those tables are file-local .L rodata labels with
  * no aliases, so this TU's data relocs can't match the original without
- * aliasing them, and the FILE id (0x78) loads from the pool (FP#4 family).
+ * aliasing them, and the FILE id (0x78) loads from the pool (FP#9;
+ * small-const call-argument pooling; see camelot-gcc/README.md scoreboard).
  *
  * Func_ -> friendly name map:
  *   Func_80cd594 AnimStart           Func_80ed408 BuildDraw2DFuncEx

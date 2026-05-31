@@ -6,7 +6,8 @@
  *          Func_80ccebc goldensun/asm/rom_c9000/rom_cc5d8.s
  *
  * RE complete; residual diff is reg-alloc / scheduling / prologue base-share
- * (permuter territory) plus the 0x59 pooled-constant (FP#4 word-ldr family).
+ * (permuter territory) plus the 0x59 pooled-constant (FP#9; small-const
+ * call-argument pooling; see camelot-gcc/README.md scoreboard).
  *
  * Func_ -> friendly name map:
  *   Func_80cd594 AnimStart         Func_80e396c GetBattleActorPos2
