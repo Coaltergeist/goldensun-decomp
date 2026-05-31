@@ -7,6 +7,10 @@ extern int _FILE_BUILD_DATE;
 // friendly names for C
 #define FILE_BUILD_DATE ((int)&_FILE_BUILD_DATE)
 
+// external symbols
+
+extern void *gFileTable[];
+
 // global forward declarations
 
 void *GetFile(int index);
