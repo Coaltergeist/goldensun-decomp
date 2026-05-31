@@ -95,7 +95,7 @@
 	ldrsh	r3, [r6, r2]
 	ldr	r0, [r5]
 	mov	r8, r3
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r10
 	bl	Func_80053e8
 	mov	r3, r8
@@ -108,19 +108,19 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, [r5, #4]
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_2038000
 	bl	Func_8005340
 	ldr	r0, [r5, #8]
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_203a000
 	bl	Func_8005340
 	ldr	r0, [r5, #0xc]
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_203c000
 	bl	Func_8005340
 	ldr	r0, [r5, #0x10]
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_203e000
 	bl	Func_8005340
 	ldr	r2, =iwram_3001cfc
@@ -139,7 +139,7 @@
 	mov	r0, #1
 	bl	Func_80030f8
 	ldr	r0, =0xd5
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r10
 	bl	Func_8005340
 	ldr	r5, .L116fc	@ 0
@@ -187,7 +187,7 @@
 	mov	r0, #1
 	bl	Func_80030f8
 	ldr	r0, =0xd5
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_2010000
 	bl	Func_8005340
 	bl	Func_80113e4

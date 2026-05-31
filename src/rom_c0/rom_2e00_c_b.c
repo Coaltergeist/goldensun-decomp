@@ -6,3 +6,9 @@
  * goldensun/stage1.ld.
  */
 void Func_8002f3c(void) {}
+
+extern void *gFileTable[];
+
+void *GetFile(int index) {
+    return gFileTable[index];
+}

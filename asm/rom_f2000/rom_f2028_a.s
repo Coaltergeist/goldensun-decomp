@@ -559,7 +559,7 @@
 	lsl	r3, #19
 	strh	r6, [r3]
 	ldr	r0, =0x15
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
 	ldr	r1, =0x5000200
@@ -591,7 +591,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, =0x17
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0
 	ldr	r3, =REG_DMA3SAD
@@ -1072,7 +1072,7 @@
 	mov	r0, r10
 	strh	r3, [r0, #0xa]
 	ldr	r0, =0x16
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0
 	ldr	r3, =REG_DMA3SAD

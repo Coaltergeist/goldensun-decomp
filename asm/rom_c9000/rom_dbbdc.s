@@ -219,7 +219,7 @@
 .Ldbd8c:
 	ldr	r0, =0x8d
 .Ldbd8e:
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -1075,7 +1075,7 @@
 	add	r2, #0x32
 	strh	r3, [r2]
 	ldr	r0, =0xa9
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -1366,7 +1366,7 @@
 	ldr	r0, =0x6c
 	bl	Func_80e0524
 	ldr	r0, =0xbb
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -1724,7 +1724,7 @@
 	ldr	r0, =0x6a
 	bl	Func_80e0524
 	ldr	r0, =0xa0
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =Func_8001af8
 	mov	r1, r0
 	mov	r2, #0x80
@@ -1736,7 +1736,7 @@
 	ldr	r0, =0x73
 	bl	Func_80e0524
 	ldr	r0, =0xd2
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r3, #2
 	str	r0, [sp, #0x30]
 	str	r3, [sp]

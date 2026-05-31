@@ -28,7 +28,7 @@
 	mov	r6, #0
 	strh	r6, [r3, #0xa]
 	mov	r0, r5
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xa0
 	ldr	r7, =0x1ff
 	mov	r4, r0
@@ -244,7 +244,7 @@
 	ldr	r5, =ewram_2010000
 	mov	r0, r6
 	mov	r8, r3
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	mov	r6, r5

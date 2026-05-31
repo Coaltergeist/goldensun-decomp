@@ -303,7 +303,7 @@
 	cmp	r3, #1
 	bne	.Le758e
 	ldr	r0, =0xc4
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
 	ldr	r3, =Func_8001af8
@@ -2947,7 +2947,7 @@
 	cmp	r7, #8
 	bne	.Le8b9e
 	ldr	r0, =0xd3
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r2, =0x7828
 	mov	r1, #0
 	add	r2, r9

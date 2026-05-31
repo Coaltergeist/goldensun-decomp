@@ -1060,7 +1060,7 @@
 	ldr	r3, =iwram_3001f3c
 	ldr	r6, [r3]
 	ldr	r5, =ewram_2001000
-	bl	__Func_8002f40
+	bl	__GetFile
 	mov	r1, r6
 	add	r1, #0xf0
 	bl	__Func_8005340

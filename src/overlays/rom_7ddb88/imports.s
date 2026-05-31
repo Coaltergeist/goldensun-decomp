@@ -19,7 +19,7 @@
 	.export_func _Func_8004080
 	.export_func _Func_8003d28
 	.export_func _Func_8003dec
-	.export_func _Func_8002f40
+	.export_func _GetFile
 	.export_func _Func_8004358
 	.export_func _Func_800bc48
 	.export_func _Func_800c300
