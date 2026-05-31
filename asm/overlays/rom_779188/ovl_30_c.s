@@ -175,7 +175,7 @@
 	strh	r0, [r6]
 .L1e0:
 	ldr	r0, =0x1c
-	bl	__Func_8002f40
+	bl	__GetFile
 	mov	r1, r5
 	bl	__Func_8005340
 	ldr	r3, =REG_DMA3SAD
@@ -469,7 +469,7 @@
 	mov	r3, #0
 	strh	r3, [r2, #0xa]
 	mov	r0, r5
-	bl	__Func_8002f40
+	bl	__GetFile
 	mov	r1, #0xa0
 	ldr	r6, =0x1ff
 	mov	r4, r0

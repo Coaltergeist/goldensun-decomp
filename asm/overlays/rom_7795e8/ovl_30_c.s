@@ -28,7 +28,7 @@
 	mov	r3, #0
 	strh	r3, [r2, #0xa]
 	mov	r0, r5
-	bl	__Func_8002f40
+	bl	__GetFile
 	mov	r1, #0xa0
 	ldr	r6, =0x1ff
 	mov	r4, r0

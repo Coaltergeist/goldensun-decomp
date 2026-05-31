@@ -36,7 +36,7 @@
 	strb	r5, [r3]
 	ldr	r3, =iwram_3001f58
 	strb	r5, [r3]
-	bl	Func_8002f10
+	bl	SetRAMBuildDate
 	bl	Func_800479c
 	bl	Func_8004760
 	ldr	r3, .L2e90	@ 0x140

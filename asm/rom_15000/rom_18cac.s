@@ -37,9 +37,9 @@
 	cmp	r3, r8
 	bne	.L18d06
 	ldr	r0, =0x14
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r0, =0x13
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #3
 	mov	r9, r1
 	cmp	r7, #0x20
@@ -47,7 +47,7 @@
 	b	.L18ecc
 .L18d06:
 	ldr	r0, =0x13
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r2, #4
 	mov	r10, r0
 	mov	r9, r2

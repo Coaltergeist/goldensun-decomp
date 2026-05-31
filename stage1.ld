@@ -13,6 +13,7 @@ MEMORY {
 
 INCLUDE "aliases.sym"
 INCLUDE "asset_ids.sym"
+INCLUDE "file_table.sym"
 
 SECTIONS {
 	header : {
@@ -34,7 +35,6 @@ SECTIONS {
 		asm/rom_c0/rom_2dd8.o(.text)
 		asm/rom_c0/rom_2e00_a.o(.text)
 		asm/rom_c0/rom_2e00_b.o(.text)
-		asm/rom_c0/rom_2e00_c_a.o(.text)
 		asm/rom_c0/rom_2e00_c_b.o(.text)
 		asm/rom_c0/rom_2e00_c_c_a.o(.text)
 		asm/rom_c0/rom_2e00_c_c_b.o(.text)

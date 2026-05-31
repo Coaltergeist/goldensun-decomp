@@ -59,9 +59,9 @@ Exports_c0:
 	.export_func Func_8005268
 	.export_func Func_8005208
 	.export_func Func_8005258
-	.export_func Func_8002f10
+	.export_func SetRAMBuildDate
 	.export_func Func_8002f0c
-	.export_func Func_8002f40
+	.export_func GetFile
 	.export_func Func_8002f3c
 	.export_func Func_8002fb0
 	.export_func Func_8003b70

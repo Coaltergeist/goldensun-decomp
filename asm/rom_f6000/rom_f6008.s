@@ -256,7 +256,7 @@
 	lsl	r1, #19
 	sub	sp, #0x80
 	mov	r8, r1
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r1, sp
 	ldr	r2, =0x84000020
@@ -2717,11 +2717,11 @@
 	cmp	r6, #0x14
 	bne	.Lf74d4
 	ldr	r0, =0x76
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, [sp, #0x2c]
 	bl	Func_8005340
 	ldr	r0, =0x3f
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
 	ldr	r1, =0x5000140
@@ -2933,7 +2933,7 @@
 	str	r2, [sp, #0x10]
 	str	r1, [r2]
 	ldr	r0, =0x8f
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0xa0
 	ldr	r3, =REG_DMA3SAD
 	lsl	r1, #19
@@ -2947,7 +2947,7 @@
 	add	r2, #2
 	strh	r3, [r2]
 	ldr	r0, =0x40
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
 	ldr	r1, =0x5000200
@@ -2977,7 +2977,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, =0x41
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
 	ldr	r1, =0x50003e0

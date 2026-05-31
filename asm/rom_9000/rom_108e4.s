@@ -178,14 +178,14 @@
 	str	r2, [r3]
 	str	r6, [r7, #0x10]
 	ldr	r0, =0xd4
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, #0x88
 	lsl	r1, #1
 	add	r3, r7, r1
 	ldr	r5, =ewram_202d000
 	str	r0, [r3]
 	ldr	r0, =0xd6
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	mov	r0, r5
@@ -199,11 +199,11 @@
 	add	r3, #2
 	strh	r6, [r3]
 	ldr	r0, =0xd5
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_2010000
 	bl	Func_8005340
 	ldr	r0, =0xd7
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_202c000
 	bl	Func_8005340
 	mov	r3, #0xf8
@@ -627,7 +627,7 @@
 	ldrsh	r3, [r5, r2]
 	ldr	r0, [r6]
 	mov	r8, r3
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r10
 	bl	Func_80053e8
 	mov	r3, r8
@@ -641,7 +641,7 @@
 	sub	r3, #0xc
 	ldr	r5, =ewram_2038000
 	ldr	r0, [r6, #4]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	ldr	r3, =REG_DMA3SAD
@@ -652,7 +652,7 @@
 	sub	r3, #0xc
 	ldr	r5, =ewram_203a000
 	ldr	r0, [r6, #8]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	ldr	r3, =REG_DMA3SAD
@@ -663,7 +663,7 @@
 	sub	r3, #0xc
 	ldr	r5, =ewram_203c000
 	ldr	r0, [r6, #0xc]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	ldr	r3, =REG_DMA3SAD
@@ -674,7 +674,7 @@
 	sub	r3, #0xc
 	ldr	r5, =ewram_203e000
 	ldr	r0, [r6, #0x10]
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
 	ldr	r3, =REG_DMA3SAD
@@ -684,7 +684,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, [r6, #0x14]
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_2028000
 	bl	Func_8005340
 	ldr	r3, =0xf07ff07f

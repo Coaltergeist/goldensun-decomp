@@ -994,7 +994,7 @@
 	mov	r5, #4
 .L8be:
 	ldr	r0, =0xe7
-	bl	__Func_8002f40
+	bl	__GetFile
 	mov	r1, r6
 	bl	__Func_8005340
 	mov	r2, r8

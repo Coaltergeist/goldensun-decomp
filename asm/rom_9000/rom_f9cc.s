@@ -213,7 +213,7 @@
 	ldr	r3, =0x128
 	ldrh	r0, [r2]
 	add	r0, r3
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r5, r0
 	ldr	r3, [r5, #0x24]
 	ldr	r1, =ewram_2010001
@@ -468,7 +468,7 @@
 	ldrh	r0, [r2, #2]
 	mov	r9, r3
 	add	r0, r9
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r7
 	bl	Func_8005340
 	ldr	r3, =Func_8001af8
@@ -483,7 +483,7 @@
 	ldr	r2, [sp, #8]
 	ldrh	r0, [r2, #4]
 	add	r0, r9
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r7
 	bl	Func_8005394
 	mov	r2, r11
@@ -493,7 +493,7 @@
 	ldr	r3, [sp, #8]
 	ldrh	r0, [r3, #6]
 	add	r0, r9
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r7
 	bl	Func_8005394
 	mov	r1, r7
@@ -503,7 +503,7 @@
 	ldr	r2, [sp, #8]
 	ldrh	r0, [r2, #8]
 	add	r0, r9
-	bl	Func_8002f40
+	bl	GetFile
 	mov	r1, r7
 	bl	Func_8005394
 	mov	r1, r7
@@ -513,7 +513,7 @@
 	ldr	r3, [sp, #8]
 	ldrh	r0, [r3, #0xa]
 	add	r0, r9
-	bl	Func_8002f40
+	bl	GetFile
 	ldr	r1, =ewram_2028000
 	bl	Func_8005394
 	mov	r0, r7
