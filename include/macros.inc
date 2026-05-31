@@ -59,3 +59,20 @@
 	mov	r12, pc
 	bx	\reg
 	.endm
+
+    .macro .ft_include path:req, padding:vararg
+        .section .rodata.mft
+        .word file_\@
+        .section .rodata.mftdata
+    .align 2, 0
+    file_\@:
+        .incbin "\path"
+        .ifnb \padding
+            .byte \padding
+        .endif
+    .endm
+
+	.macro .ft_ref sym:req
+		.section .rodata.mft
+		.word \sym
+	.endm
