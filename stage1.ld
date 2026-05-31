@@ -12,7 +12,7 @@ MEMORY {
 }
 
 INCLUDE "aliases.sym"
-INCLUDE "asset_ids.sym"
+INCLUDE "message.sym"
 INCLUDE "file_table.sym"
 
 SECTIONS {
