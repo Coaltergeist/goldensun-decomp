@@ -13851,7 +13851,6 @@ gfree = Func_8002dd8;
 free = Func_8002df0;
 AgbMain = Func_8002e00;
 WaitForever = Func_8002ee4;
-SetRAMBuildDate = Func_8002f10;
 LoadMapCode = Func_8002fb0;
 DummyIntr = Func_8003008;
 InitRAMLib = Func_800300c;
