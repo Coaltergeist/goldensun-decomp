@@ -1,16 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_956_2008030
-	ldr	r0, =.L5000
-	bx	lr
-.func_end OvlFunc_956_2008030
-
-.thumb_func_start OvlFunc_956_2008038
-	mov	r0, #0
-	bx	lr
-.func_end OvlFunc_956_2008038
-
 .thumb_func_start OvlFunc_956_200803c
 	ldr	r0, =.L5090
 	bx	lr
