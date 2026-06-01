@@ -24,11 +24,11 @@
 	ldrh	r2, [r3]
 	mov	r3, #7
 	and	r3, r2
-	ldr	r2, =0xe8
+	ldr	r2, =_FILE_e8
 	add	r0, r3, r2
 	b	.L1cf82
 .L1cf80:
-	ldr	r0, =0xe8
+	ldr	r0, =_FILE_e8
 .L1cf82:
 	bl	GetFile
 	ldr	r1, =0x5b4
@@ -46,11 +46,11 @@
 	ldrh	r2, [r3]
 	mov	r3, #7
 	and	r3, r2
-	ldr	r2, =0xe8
+	ldr	r2, =_FILE_e8
 	add	r0, r3, r2
 	b	.L1cfae
 .L1cfac:
-	ldr	r0, =0xe8
+	ldr	r0, =_FILE_e8
 .L1cfae:
 	bl	GetFile
 	ldr	r1, =0x5c4

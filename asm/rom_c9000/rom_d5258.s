@@ -133,7 +133,7 @@
 	mov	r3, r8
 	cmp	r3, #5
 	bne	.Ld5340
-	ldr	r5, =0xb7
+	ldr	r5, =_FILE_b7
 	mov	r1, r9
 	mov	r0, r5
 	b	.Ld5364
@@ -144,7 +144,7 @@
 	mov	r0, #0x18
 	str	r0, [sp, #0x34]
 	mov	r1, r9
-	ldr	r0, =0xb7
+	ldr	r0, =_FILE_b7
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524

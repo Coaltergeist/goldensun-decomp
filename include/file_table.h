@@ -323,4 +323,9 @@ extern int _FILE_c8;
 extern int _FILE_ca;
 #define FILE_ca ((int)&_FILE_ca)
 
+// FP#9 manually-verified file IDs (symbolizer flagged ambiguous; confirmed file
+// IDs reached via reg-copy `mov r0, rS` or `GetFile(base + index)`)
+extern int _FILE_e8;
+#define FILE_e8 ((int)&_FILE_e8)
+
 #endif // _FILE_TABLE_H_
