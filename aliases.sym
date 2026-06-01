@@ -14806,3 +14806,46 @@ overworld_zoom_iter = Func_80935d4;
 overworld_zoom = Func_80936a0;
 proto_deal_damage_test = Func_80b8db8;
 isEnemyAttackable = Func_80be18c;
+
+/* overlay-local data tables returned by overlay-header accessors
+   (placeholder names by address; were committed inline-asm cheats) */
+gOvl_0200d27c = 0x0200d27c;
+
+/* overlay-local data tables returned by overlay-header accessors
+   (placeholder names by address; were committed inline-asm cheats) */
+gOvl_02008318 = 0x02008318;
+gOvl_0200835c = 0x0200835c;
+gOvl_020086dc = 0x020086dc;
+gOvl_02008bcc = 0x02008bcc;
+gOvl_02008c08 = 0x02008c08;
+gOvl_02008f80 = 0x02008f80;
+gOvl_02008fc8 = 0x02008fc8;
+gOvl_02009060 = 0x02009060;
+gOvl_02009478 = 0x02009478;
+gOvl_020095c0 = 0x020095c0;
+gOvl_02009690 = 0x02009690;
+gOvl_0200975c = 0x0200975c;
+gOvl_020097e8 = 0x020097e8;
+gOvl_0200991c = 0x0200991c;
+gOvl_02009cac = 0x02009cac;
+gOvl_02009cf4 = 0x02009cf4;
+gOvl_02009dd4 = 0x02009dd4;
+gOvl_02009f5c = 0x02009f5c;
+gOvl_0200a094 = 0x0200a094;
+gOvl_0200a638 = 0x0200a638;
+gOvl_0200a8f4 = 0x0200a8f4;
+gOvl_0200a970 = 0x0200a970;
+gOvl_0200afa0 = 0x0200afa0;
+gOvl_0200b06c = 0x0200b06c;
+gOvl_0200b5f8 = 0x0200b5f8;
+gOvl_0200b938 = 0x0200b938;
+gOvl_0200baa8 = 0x0200baa8;
+gOvl_0200bf70 = 0x0200bf70;
+gOvl_0200c85c = 0x0200c85c;
+gOvl_0200cd88 = 0x0200cd88;
+gOvl_0200d0e4 = 0x0200d0e4;
+gOvl_0200da2c = 0x0200da2c;
+gOvl_0200e3d4 = 0x0200e3d4;
+gOvl_0200e3f4 = 0x0200e3f4;
+gOvl_0200e708 = 0x0200e708;
+gOvl_0200e740 = 0x0200e740;

@@ -5,6 +5,8 @@
  * asm/overlays/rom_7987ac/ovl_30_a_a.o and asm/overlays/rom_7987ac/ovl_30_a_c.o in
  * goldensun/overlays/rom_7987ac/overlay.ld.
  */
+extern unsigned char gOvl_020086dc[];
+
 unsigned int OvlFunc_902_200806c(void) {
-    asm("ldr r0, =.L6dc");
+    return (unsigned int)gOvl_020086dc;
 }
