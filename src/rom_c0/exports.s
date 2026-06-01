@@ -63,7 +63,7 @@ Exports_c0:
 	.export_func Func_8002f0c
 	.export_func GetFile
 	.export_func Func_8002f3c
-	.export_func Func_8002fb0
+	.export_func LoadMapCode
 	.export_func Func_8003b70
 	.export_func Func_8003bb4
 	.export_func Func_8003bf8

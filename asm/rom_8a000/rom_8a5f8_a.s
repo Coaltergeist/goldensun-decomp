@@ -662,7 +662,7 @@
 	lsl	r3, #3
 	ldrsh	r0, [r3, r2]
 	ldr	r1, =__start_overlay
-	bl	Func_8002fb0
+	bl	LoadMapCode
 	pop	{r0}
 	bx	r0
 .func_end Func_808ab48
