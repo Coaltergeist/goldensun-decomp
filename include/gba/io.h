@@ -501,6 +501,281 @@
 
 #define REG_WAITCNT     (*(vu16 *)REG_ADDR_WAITCNT)
 
+// I/O register fields
+
+// DISPCNT
+#define DISPCNT_MODE_0          0x0000 // BG0: text, BG1: text, BG2: text,   BG3: text
+#define DISPCNT_MODE_1          0x0001 // BG0: text, BG1: text, BG2: affine, BG3: off
+#define DISPCNT_MODE_2          0x0002 // BG0: off,  BG1: off,  BG2: affine, BG3: affine
+#define DISPCNT_MODE_3          0x0003 // Bitmap mode, 240x160, BGR555 color
+#define DISPCNT_MODE_4          0x0004 // Bitmap mode, 240x160, 256 color palette
+#define DISPCNT_MODE_5          0x0005 // Bitmap mode, 160x128, BGR555 color
+#define DISPCNT_HBLANK_INTERVAL 0x0020 // Allow access to OAM during H-Blank
+#define DISPCNT_OBJ_1D_MAP      0x0040
+#define DISPCNT_FORCED_BLANK    0x0080
+#define DISPCNT_BG0_ON          0x0100
+#define DISPCNT_BG1_ON          0x0200
+#define DISPCNT_BG2_ON          0x0400
+#define DISPCNT_BG3_ON          0x0800
+#define DISPCNT_BG_ALL_ON       0x0F00
+#define DISPCNT_OBJ_ON          0x1000
+#define DISPCNT_WIN0_ON         0x2000
+#define DISPCNT_WIN1_ON         0x4000
+#define DISPCNT_OBJWIN_ON       0x8000
+
+// DISPSTAT
+#define DISPSTAT_VBLANK      0x0001 // in V-Blank
+#define DISPSTAT_HBLANK      0x0002 // in H-Blank
+#define DISPSTAT_VCOUNT      0x0004 // V-Count match
+#define DISPSTAT_VBLANK_INTR 0x0008 // V-Blank interrupt enabled
+#define DISPSTAT_HBLANK_INTR 0x0010 // H-Blank interrupt enabled
+#define DISPSTAT_VCOUNT_INTR 0x0020 // V-Count interrupt enabled
+
+// BGCNT
+#define BGCNT_PRIORITY(n)          (n) // Values 0 - 3. Lower priority BGs will be drawn on top of higher priority BGs.
+#define BGCNT_CHARBASE(n)   ((n) << 2) // Values 0 - 3. Base block for tile pixel data.
+#define BGCNT_MOSAIC            0x0040
+#define BGCNT_16COLOR           0x0000 // 4 bits per pixel
+#define BGCNT_256COLOR          0x0080 // 8 bits per pixel
+#define BGCNT_SCREENBASE(n) ((n) << 8) // Values 0 - 31. Base block for tile map.
+#define BGCNT_WRAP              0x2000 // Only affects affine BGs. Text BGs wrap by default.
+#define BGCNT_TXT256x256        0x0000 // Internal screen size size of text mode BG in pixels.
+#define BGCNT_TXT512x256        0x4000
+#define BGCNT_TXT256x512        0x8000
+#define BGCNT_TXT512x512        0xC000
+#define BGCNT_AFF128x128        0x0000 // Internal screen size size of affine mode BG in pixels.
+#define BGCNT_AFF256x256        0x4000
+#define BGCNT_AFF512x512        0x8000
+#define BGCNT_AFF1024x1024      0xC000
+
+// WININ/OUT
+#define WININ_WIN0_BG0      (1 << 0)
+#define WININ_WIN0_BG1      (1 << 1)
+#define WININ_WIN0_BG2      (1 << 2)
+#define WININ_WIN0_BG3      (1 << 3)
+#define WININ_WIN0_BG_ALL   (WININ_WIN0_BG0 | WININ_WIN0_BG1 | WININ_WIN0_BG2 | WININ_WIN0_BG3)
+#define WININ_WIN0_OBJ      (1 << 4)
+#define WININ_WIN0_CLR      (1 << 5)
+#define WININ_WIN0_ALL      (WININ_WIN0_BG_ALL | WININ_WIN0_OBJ | WININ_WIN0_CLR)
+#define WININ_WIN1_BG0      (1 << 8)
+#define WININ_WIN1_BG1      (1 << 9)
+#define WININ_WIN1_BG2      (1 << 10)
+#define WININ_WIN1_BG3      (1 << 11)
+#define WININ_WIN1_BG_ALL   (WININ_WIN1_BG0 | WININ_WIN1_BG1 | WININ_WIN1_BG2 | WININ_WIN1_BG3)
+#define WININ_WIN1_OBJ      (1 << 12)
+#define WININ_WIN1_CLR      (1 << 13)
+#define WININ_WIN1_ALL      (WININ_WIN1_BG_ALL | WININ_WIN1_OBJ | WININ_WIN1_CLR)
+
+#define WINOUT_WIN01_BG0    (1 << 0)
+#define WINOUT_WIN01_BG1    (1 << 1)
+#define WINOUT_WIN01_BG2    (1 << 2)
+#define WINOUT_WIN01_BG3    (1 << 3)
+#define WINOUT_WIN01_BG_ALL (WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_BG3)
+#define WINOUT_WIN01_OBJ    (1 << 4)
+#define WINOUT_WIN01_CLR    (1 << 5)
+#define WINOUT_WIN01_ALL    (WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR)
+#define WINOUT_WINOBJ_BG0   (1 << 8)
+#define WINOUT_WINOBJ_BG1   (1 << 9)
+#define WINOUT_WINOBJ_BG2   (1 << 10)
+#define WINOUT_WINOBJ_BG3   (1 << 11)
+#define WINOUT_WINOBJ_BG_ALL (WINOUT_WINOBJ_BG0 | WINOUT_WINOBJ_BG1 | WINOUT_WINOBJ_BG2 | WINOUT_WINOBJ_BG3)
+#define WINOUT_WINOBJ_OBJ   (1 << 12)
+#define WINOUT_WINOBJ_CLR   (1 << 13)
+#define WINOUT_WINOBJ_ALL   (WINOUT_WINOBJ_BG_ALL | WINOUT_WINOBJ_OBJ | WINOUT_WINOBJ_CLR)
+
+#define WIN_RANGE(a, b) (((a) << 8) | (b))
+#define WIN_RANGE2(a, b) ((b) | ((a) << 8))
+
+// BLDCNT
+// Bits 0-5 select layers for the 1st target
+#define BLDCNT_TGT1_BG0      (1 << 0)
+#define BLDCNT_TGT1_BG1      (1 << 1)
+#define BLDCNT_TGT1_BG2      (1 << 2)
+#define BLDCNT_TGT1_BG3      (1 << 3)
+#define BLDCNT_TGT1_BG_ALL   (BLDCNT_TGT1_BG0 | BLDCNT_TGT1_BG1 | BLDCNT_TGT1_BG2 | BLDCNT_TGT1_BG3)
+#define BLDCNT_TGT1_OBJ      (1 << 4)
+#define BLDCNT_TGT1_BD       (1 << 5)
+#define BLDCNT_TGT1_ALL      (BLDCNT_TGT1_BG_ALL | BLDCNT_TGT1_OBJ | BLDCNT_TGT1_BD)
+// Bits 6-7 select the special effect
+#define BLDCNT_EFFECT_NONE      (0 << 6)   // no special effect
+#define BLDCNT_EFFECT_BLEND     (1 << 6)   // 1st+2nd targets mixed (controlled by BLDALPHA)
+#define BLDCNT_EFFECT_LIGHTEN   (2 << 6)   // 1st target becomes whiter (controlled by BLDY)
+#define BLDCNT_EFFECT_DARKEN    (3 << 6)   // 1st target becomes blacker (controlled by BLDY)
+// Bits 8-13 select layers for the 2nd target
+#define BLDCNT_TGT2_BG0      (1 << 8)
+#define BLDCNT_TGT2_BG1      (1 << 9)
+#define BLDCNT_TGT2_BG2      (1 << 10)
+#define BLDCNT_TGT2_BG3      (1 << 11)
+#define BLDCNT_TGT2_BG_ALL   (BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BG1 | BLDCNT_TGT2_BG2 | BLDCNT_TGT2_BG3)
+#define BLDCNT_TGT2_OBJ      (1 << 12)
+#define BLDCNT_TGT2_BD       (1 << 13)
+#define BLDCNT_TGT2_ALL      (BLDCNT_TGT2_BG_ALL | BLDCNT_TGT2_OBJ | BLDCNT_TGT2_BD)
+
+// BLDALPHA
+#define BLDALPHA_BLEND(target1, target2) (((target2) << 8) | (target1))
+
+// SOUNDCNT_H
+#define SOUND_CGB_MIX_QUARTER 0x0000
+#define SOUND_CGB_MIX_HALF    0x0001
+#define SOUND_CGB_MIX_FULL    0x0002
+#define SOUND_A_MIX_HALF      0x0000
+#define SOUND_A_MIX_FULL      0x0004
+#define SOUND_B_MIX_HALF      0x0000
+#define SOUND_B_MIX_FULL      0x0008
+#define SOUND_ALL_MIX_FULL    0x000E
+#define SOUND_A_RIGHT_OUTPUT  0x0100
+#define SOUND_A_LEFT_OUTPUT   0x0200
+#define SOUND_A_TIMER_0       0x0000
+#define SOUND_A_TIMER_1       0x0400
+#define SOUND_A_FIFO_RESET    0x0800
+#define SOUND_B_RIGHT_OUTPUT  0x1000
+#define SOUND_B_LEFT_OUTPUT   0x2000
+#define SOUND_B_TIMER_0       0x0000
+#define SOUND_B_TIMER_1       0x4000
+#define SOUND_B_FIFO_RESET    0x8000
+
+// SOUNDCNT_X
+#define SOUND_1_ON          0x0001
+#define SOUND_2_ON          0x0002
+#define SOUND_3_ON          0x0004
+#define SOUND_4_ON          0x0008
+#define SOUND_MASTER_ENABLE 0x0080
+
+// DMA
+#define DMA_DEST_INC      0x0000
+#define DMA_DEST_DEC      0x0020
+#define DMA_DEST_FIXED    0x0040
+#define DMA_DEST_RELOAD   0x0060
+#define DMA_SRC_INC       0x0000
+#define DMA_SRC_DEC       0x0080
+#define DMA_SRC_FIXED     0x0100
+#define DMA_REPEAT        0x0200
+#define DMA_16BIT         0x0000
+#define DMA_32BIT         0x0400
+#define DMA_DREQ_ON       0x0800
+#define DMA_START_NOW     0x0000
+#define DMA_START_VBLANK  0x1000
+#define DMA_START_HBLANK  0x2000
+#define DMA_START_SPECIAL 0x3000
+#define DMA_START_MASK    0x3000
+#define DMA_INTR_ENABLE   0x4000
+#define DMA_ENABLE        0x8000
+
+// timer
+#define TIMER_1CLK        0x00
+#define TIMER_64CLK       0x01
+#define TIMER_256CLK      0x02
+#define TIMER_1024CLK     0x03
+#define TIMER_INTR_ENABLE 0x40
+#define TIMER_ENABLE      0x80
+
+// serial
+#define SIO_ID             0x0030 // Communication ID
+
+#define SIO_8BIT_MODE      0x0000 // Normal 8-bit communication mode
+#define SIO_32BIT_MODE     0x1000 // Normal 32-bit communication mode
+#define SIO_MULTI_MODE     0x2000 // Multi-player communication mode
+#define SIO_UART_MODE      0x3000 // UART communication mode
+
+#define SIO_9600_BPS       0x0000 // baud rate   9600 bps
+#define SIO_38400_BPS      0x0001 //            38400 bps
+#define SIO_57600_BPS      0x0002 //            57600 bps
+#define SIO_115200_BPS     0x0003 //           115200 bps
+
+#define SIO_MULTI_SI       0x0004 // Multi-player communication SI terminal
+#define SIO_MULTI_SD       0x0008 //                            SD terminal
+#define SIO_MULTI_BUSY     0x0080
+
+#define SIO_ERROR          0x0040 // Detect error
+#define SIO_START          0x0080 // Start transfer
+#define SIO_ENABLE         0x0080 // Enable SIO
+
+#define SIO_INTR_ENABLE    0x4000
+
+#define SIO_MULTI_SI_SHIFT 2
+#define SIO_MULTI_SI_MASK  0x1
+#define SIO_MULTI_DI_SHIFT 3
+#define SIO_MULTI_DI_MASK  0x1
+
+// keys
+#define A_BUTTON        0x0001
+#define B_BUTTON        0x0002
+#define SELECT_BUTTON   0x0004
+#define START_BUTTON    0x0008
+#define DPAD_RIGHT      0x0010
+#define DPAD_LEFT       0x0020
+#define DPAD_UP         0x0040
+#define DPAD_DOWN       0x0080
+#define R_BUTTON        0x0100
+#define L_BUTTON        0x0200
+#define KEYS_MASK       0x03FF
+#define KEY_INTR_ENABLE 0x4000
+#define KEY_OR_INTR     0x0000
+#define KEY_AND_INTR    0x8000
+#define DPAD_ANY        ((DPAD_RIGHT | DPAD_LEFT | DPAD_UP | DPAD_DOWN))
+#define JOY_EXCL_DPAD   0x030F
+
+// interrupt flags
+#define INTR_FLAG_VBLANK  (1 <<  0)
+#define INTR_FLAG_HBLANK  (1 <<  1)
+#define INTR_FLAG_VCOUNT  (1 <<  2)
+#define INTR_FLAG_TIMER0  (1 <<  3)
+#define INTR_FLAG_TIMER1  (1 <<  4)
+#define INTR_FLAG_TIMER2  (1 <<  5)
+#define INTR_FLAG_TIMER3  (1 <<  6)
+#define INTR_FLAG_SERIAL  (1 <<  7)
+#define INTR_FLAG_DMA0    (1 <<  8)
+#define INTR_FLAG_DMA1    (1 <<  9)
+#define INTR_FLAG_DMA2    (1 << 10)
+#define INTR_FLAG_DMA3    (1 << 11)
+#define INTR_FLAG_KEYPAD  (1 << 12)
+#define INTR_FLAG_GAMEPAK (1 << 13)
+
+// WAITCNT
+#define WAITCNT_SRAM_4          (0 << 0)
+#define WAITCNT_SRAM_3          (1 << 0)
+#define WAITCNT_SRAM_2          (2 << 0)
+#define WAITCNT_SRAM_8          (3 << 0)
+#define WAITCNT_SRAM_MASK       (3 << 0)
+
+#define WAITCNT_WS0_N_4         (0 << 2)
+#define WAITCNT_WS0_N_3         (1 << 2)
+#define WAITCNT_WS0_N_2         (2 << 2)
+#define WAITCNT_WS0_N_8         (3 << 2)
+#define WAITCNT_WS0_N_MASK      (3 << 2)
+
+#define WAITCNT_WS0_S_2         (0 << 4)
+#define WAITCNT_WS0_S_1         (1 << 4)
+
+#define WAITCNT_WS1_N_4         (0 << 5)
+#define WAITCNT_WS1_N_3         (1 << 5)
+#define WAITCNT_WS1_N_2         (2 << 5)
+#define WAITCNT_WS1_N_8         (3 << 5)
+#define WAITCNT_WS1_N_MASK      (3 << 5)
+
+#define WAITCNT_WS1_S_4         (0 << 7)
+#define WAITCNT_WS1_S_1         (1 << 7)
+
+#define WAITCNT_WS2_N_4         (0 << 8)
+#define WAITCNT_WS2_N_3         (1 << 8)
+#define WAITCNT_WS2_N_2         (2 << 8)
+#define WAITCNT_WS2_N_8         (3 << 8)
+#define WAITCNT_WS2_N_MASK      (3 << 8)
+
+#define WAITCNT_WS2_S_8         (0 << 10)
+#define WAITCNT_WS2_S_1         (1 << 10)
+
+#define WAITCNT_PHI_OUT_NONE    (0 << 11)
+#define WAITCNT_PHI_OUT_4MHZ    (1 << 11)
+#define WAITCNT_PHI_OUT_8MHZ    (2 << 11)
+#define WAITCNT_PHI_OUT_16MHZ   (3 << 11)
+#define WAITCNT_PHI_OUT_MASK    (3 << 11)
+
+#define WAITCNT_PREFETCH_ENABLE (1 << 14)
+
+#define WAITCNT_AGB (0 << 15)
+#define WAITCNT_CGB (1 << 15)
+
 // I/O Setter functions
 
 static inline void SetIME(unsigned short value) {
