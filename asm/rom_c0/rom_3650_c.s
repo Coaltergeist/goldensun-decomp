@@ -1,23 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003810
-	push	{lr}
-	ldr	r3, =ewram_2002000
-	ldrh	r3, [r3]
-	cmp	r3, #0
-	bne	.L3826
-	ldr	r2, =0xc3ff
-	ldr	r3, =REG_KEYCNT
-	strh	r2, [r3]
-	ldr	r2, =iwram_3001cb8
-	mov	r3, #1
-	strb	r3, [r2]
-.L3826:
-	pop	{r0}
-	bx	r0
-.func_end Func_8003810
-
 .thumb_func_start Func_800383c
 	push	{r5, r6, lr}
 	ldr	r4, =ewram_2002090
