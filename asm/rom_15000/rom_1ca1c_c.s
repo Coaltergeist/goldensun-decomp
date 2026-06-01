@@ -1523,7 +1523,7 @@
 	ldr	r3, =iwram_3001e8c
 	ldr	r3, [r3]
 	mov	r11, r0
-	ldr	r0, =0x13
+	ldr	r0, =_FILE_13
 	mov	r9, r2
 	mov	r8, r3
 	bl	GetFile

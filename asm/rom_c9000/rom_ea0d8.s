@@ -143,19 +143,19 @@
 	ldr	r2, [sp, #0x64]
 	lsl	r3, #3
 	add	r1, r2, r3
-	ldr	r0, =0x67
+	ldr	r0, =_FILE_67
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r5, =0x95c
 	ldr	r4, [sp, #0x64]
-	ldr	r0, =0xce
+	ldr	r0, =_FILE_ce
 	add	r1, r4, r5
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r6, =0x302
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x50]
 	mov	r2, #0
 	mov	r3, #0
@@ -192,7 +192,7 @@
 	sub	r4, #7
 	cmp	r7, #8
 	bne	.Lea24e
-	ldr	r0, =0x64
+	ldr	r0, =_FILE_64
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -1011,7 +1011,7 @@
 	lsl	r2, #7
 	add	r1, r6, r2
 	str	r3, [sp, #0x58]
-	ldr	r0, =0x64
+	ldr	r0, =_FILE_64
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
@@ -1317,7 +1317,7 @@
 	mov	r2, #0xc0
 	lsl	r2, #7
 	add	r1, r5, r2
-	ldr	r0, =0x65
+	ldr	r0, =_FILE_65
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524

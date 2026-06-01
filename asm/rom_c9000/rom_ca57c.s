@@ -138,11 +138,11 @@
 	ldr	r3, .Lca694	@ 0x1010
 	strh	r3, [r2]
 	ldr	r1, [sp, #0x50]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0xce
+	ldr	r0, =_FILE_ce
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #0
@@ -175,7 +175,7 @@
 .Lca6b4:
 	mov	r1, #0xc8
 	lsl	r1, #4
-	ldr	r0, =0xc6
+	ldr	r0, =_FILE_c6
 	add	r1, r11
 	mov	r2, #0
 	mov	r3, #0
@@ -217,7 +217,7 @@
 	ldr	r0, =0x8d
 	b	.Lca70a
 .Lca708:
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 .Lca70a:
 	bl	GetFile
 	mov	r1, r0
@@ -231,7 +231,7 @@
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0x9e
+	ldr	r0, =_FILE_9e
 	bl	Func_80e0524
 	mov	r2, sp
 	mov	r1, #0

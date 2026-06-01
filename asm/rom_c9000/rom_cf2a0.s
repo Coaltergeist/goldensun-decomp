@@ -53,7 +53,7 @@
 	mov	r3, #0
 	bl	Func_80de2f8
 .Lcf300:
-	ldr	r0, =0x7b
+	ldr	r0, =_FILE_7b
 	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
@@ -66,7 +66,7 @@
 	mov	r1, r11
 	mov	r0, r6
 	bl	Func_8005340
-	ldr	r0, =0xb1
+	ldr	r0, =_FILE_b1
 	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
@@ -84,7 +84,7 @@
 	ldr	r0, =0x93
 	b	.Lcf34a
 .Lcf348:
-	ldr	r0, =0x91
+	ldr	r0, =_FILE_91
 .Lcf34a:
 	bl	GetFile
 	mov	r6, r0

@@ -116,10 +116,10 @@
 
 .Ld46cc:
 	mov	r2, #1
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	mov	r3, #1
 	bl	Func_80e0524
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x28]
 	mov	r2, #0
 	mov	r3, #0
@@ -127,7 +127,7 @@
 	ldr	r1, [sp, #0x38]
 	cmp	r1, #1
 	bne	.Ld46fe
-	ldr	r0, =0x87
+	ldr	r0, =_FILE_87
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -140,7 +140,7 @@
 	ldr	r2, [sp, #0x38]
 	cmp	r2, #2
 	bne	.Ld4718
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -880,14 +880,14 @@
 	bl	Func_80cd594
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Ld4d50	@ 0x1010
-	ldr	r0, =0x85
+	ldr	r0, =_FILE_85
 	strh	r3, [r2]
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r3, #0
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x1c]
 	mov	r2, #0
 	bl	Func_80e0524
@@ -895,7 +895,7 @@
 	ldr	r3, [r3, #0x18]
 	cmp	r3, #0
 	bne	.Ld4d72
-	ldr	r0, =0x86
+	ldr	r0, =_FILE_86
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -915,7 +915,7 @@
 .Ld4d72:
 	cmp	r3, #2
 	bne	.Ld4d8a
-	ldr	r0, =0x87
+	ldr	r0, =_FILE_87
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0

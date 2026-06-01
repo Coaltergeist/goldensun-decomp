@@ -1,1 +1,10 @@
 _MSG_LEARN_INNATE_MOVE = 0x1e;
+_MSG_0a = 0x0a;
+_MSG_0b = 0x0b;
+_MSG_0c = 0x0c;
+_MSG_0d = 0x0d;
+_MSG_14 = 0x14;
+_MSG_17 = 0x17;
+_MSG_18 = 0x18;
+_MSG_19 = 0x19;
+_MSG_1a = 0x1a;

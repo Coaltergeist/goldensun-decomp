@@ -294,7 +294,7 @@
 	ldr	r2, [sp, #0x1c]
 	cmp	r2, #3
 	bne	.Le3bda
-	ldr	r0, =0xc5
+	ldr	r0, =_FILE_c5
 	mov	r1, r11
 	mov	r2, #0
 	mov	r3, #0
@@ -314,7 +314,7 @@
 	cmp	r5, #5
 	bne	.Le3c0a
 .Le3bf0:
-	ldr	r0, =0xb5
+	ldr	r0, =_FILE_b5
 .Le3bf2:
 	mov	r1, r11
 	mov	r2, #1
@@ -322,7 +322,7 @@
 	bl	Func_80e0524
 	b	.Le3c0a
 .Le3bfe:
-	ldr	r0, =0xb6
+	ldr	r0, =_FILE_b6
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -334,7 +334,7 @@
 	ldr	r3, [r3, #8]
 	cmp	r3, #7
 	ble	.Le3c2c
-	ldr	r0, =0x8e
+	ldr	r0, =_FILE_8e
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -344,7 +344,7 @@
 	bl	_call_via_r3
 	b	.Le3c40
 .Le3c2c:
-	ldr	r0, =0x4a
+	ldr	r0, =_FILE_4a
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -355,12 +355,12 @@
 .Le3c40:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	ldr	r1, [sp, #0x24]
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x99
+	ldr	r0, =_FILE_99
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #0
@@ -962,7 +962,7 @@
 	bl	_Func_80c0df4
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =0x49
+	ldr	r0, =_FILE_49
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #0
@@ -976,14 +976,14 @@
 	bl	Func_80030f8
 	mov	r2, #1
 	mov	r3, #1
-	ldr	r0, =0x4a
+	ldr	r0, =_FILE_4a
 	ldr	r1, =ewram_2010000
 	bl	Func_80e0524
 	ldr	r2, [r5]
 	ldr	r3, [r2, #8]
 	cmp	r3, #7
 	ble	.Le41c4
-	ldr	r0, =0x8e
+	ldr	r0, =_FILE_8e
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -999,7 +999,7 @@
 	bl	_Func_80c0df4
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	ldr	r1, [sp, #0x2c]
 	mov	r2, #0
 	mov	r3, #0

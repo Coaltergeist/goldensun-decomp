@@ -753,7 +753,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L207e8
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #9
@@ -783,7 +783,7 @@
 	ldrb	r3, [r5, r3]
 	cmp	r3, #0
 	beq	.L20848
-	ldr	r0, =0x14
+	ldr	r0, =_MSG_14
 	mov	r1, #0xd
 	bl	Func_801776c
 	b	.L20826
@@ -810,7 +810,7 @@
 	mov	r0, #0x55
 	strh	r7, [r3]
 	bl	_Func_80f9080
-	ldr	r0, =0x1a
+	ldr	r0, =_MSG_1a
 	mov	r1, #0xd
 	bl	Func_801776c
 	b	.L20862
@@ -838,7 +838,7 @@
 	bl	Func_8019a54
 	cmp	r6, #0
 	beq	.L208a6
-	ldr	r0, =0xb
+	ldr	r0, =_MSG_0b
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r2, #3
@@ -846,7 +846,7 @@
 	mov	r8, r2
 	b	.L208ae
 .L208a6:
-	ldr	r0, =0x17
+	ldr	r0, =_MSG_17
 	mov	r1, #9
 	bl	Func_801776c
 .L208ae:
@@ -871,7 +871,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L2090c
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r2, #9
@@ -909,7 +909,7 @@
 	cmp	r6, #0
 	beq	.L2095c
 	mov	r1, #1
-	ldr	r0, =0xc
+	ldr	r0, =_MSG_0c
 	bl	Func_801776c
 	mov	r1, #2
 	neg	r1, r1

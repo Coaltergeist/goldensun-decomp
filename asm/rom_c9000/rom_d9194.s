@@ -130,7 +130,7 @@
 	ldr	r3, .Ld92ac	@ 0xcc
 	strh	r3, [r2]
 	ldr	r1, [sp, #0x44]
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
@@ -138,7 +138,7 @@
 	ldr	r5, [sp, #0x44]
 	mov	r3, #1
 	add	r1, r5, r2
-	ldr	r0, =0xb7
+	ldr	r0, =_FILE_b7
 	mov	r2, #1
 	bl	Func_80e0524
 	ldr	r3, [sp, #0x48]
@@ -184,7 +184,7 @@
 	bne	.Ld9306
 	ldr	r2, [sp, #0x44]
 	ldr	r3, =0x2b8e
-	ldr	r0, =0xa5
+	ldr	r0, =_FILE_a5
 	add	r1, r2, r3
 	mov	r2, #1
 	mov	r3, #1
@@ -196,7 +196,7 @@
 	bne	.Ld931e
 	ldr	r2, =0x2b8e
 	ldr	r5, [sp, #0x44]
-	ldr	r0, =0x9c
+	ldr	r0, =_FILE_9c
 	add	r1, r5, r2
 	mov	r3, #0
 	mov	r2, #1
@@ -205,7 +205,7 @@
 .Ld931e:
 	ldr	r3, [sp, #0x44]
 	ldr	r4, =0x2b8e
-	ldr	r0, =0x9b
+	ldr	r0, =_FILE_9b
 	add	r1, r3, r4
 	mov	r2, #1
 	mov	r3, #0
@@ -232,7 +232,7 @@
 	ldr	r0, =0x8d
 	b	.Ld9352
 .Ld9350:
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 .Ld9352:
 	bl	GetFile
 	mov	r1, r0

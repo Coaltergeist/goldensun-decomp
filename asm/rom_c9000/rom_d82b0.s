@@ -28,9 +28,9 @@
 	mov	r2, #0
 	ldr	r1, [sp, #0x10]
 	mov	r3, #0
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	bl	Func_80e0524
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -391,7 +391,7 @@
 	mov	r0, #1
 	bl	Func_80cd594
 	lsr	r5, #31
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x28]
 	mov	r2, #0
 	mov	r3, #0
@@ -401,7 +401,7 @@
 	ldr	r0, =0xb9
 	b	.Ld8620
 .Ld861e:
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 .Ld8620:
 	bl	GetFile
 	mov	r1, r0

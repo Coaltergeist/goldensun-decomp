@@ -218,7 +218,7 @@
 
 .thumb_func_start Func_800479c
 	push	{lr}
-	ldr	r0, =0x13
+	ldr	r0, =_FILE_13
 	bl	GetFile
 	mov	r1, #0xc0
 	ldr	r3, =REG_DMA3SAD

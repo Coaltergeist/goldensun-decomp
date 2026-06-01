@@ -122,7 +122,7 @@
 	bl	Func_80de2f8
 .Le29cc:
 	ldr	r1, [sp, #0x44]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
@@ -182,7 +182,7 @@
 	ldrb	r3, [r3, r2]
 	cmp	r3, #0
 	bne	.Le2a60
-	ldr	r0, =0xb5
+	ldr	r0, =_FILE_b5
 	ldr	r1, [sp, #0x50]
 	mov	r2, #1
 	mov	r3, #1
@@ -198,7 +198,7 @@
 	ldr	r1, =ewram_2015e00
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0x6b
+	ldr	r0, =_FILE_6b
 	bl	Func_80e0524
 	ldr	r1, [sp, #0x3c]
 	ldr	r4, [sp, #0x54]
@@ -227,7 +227,7 @@
 	ldr	r0, =0xb6
 	b	.Le2aa6
 .Le2aa4:
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 .Le2aa6:
 	bl	GetFile
 	mov	r1, r0
@@ -966,9 +966,9 @@
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0x7b
+	ldr	r0, =_FILE_7b
 	bl	Func_80e0524
-	ldr	r0, =0x7c
+	ldr	r0, =_FILE_7c
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -1130,7 +1130,7 @@
 	add	r0, #1
 	cmp	r1, r6
 	bne	.Le3200
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x1c]
 	mov	r2, #0
 	mov	r3, #0

@@ -762,7 +762,7 @@
 	mov	r7, r2
 	bl	Func_80048b0
 	mov	r6, r0
-	ldr	r0, =0xf0
+	ldr	r0, =_FILE_f0
 	bl	GetFile
 	mov	r3, r5
 	cmp	r5, #0x7f

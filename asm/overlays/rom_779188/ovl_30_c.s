@@ -174,7 +174,7 @@
 	bl	__Func_8004080
 	strh	r0, [r6]
 .L1e0:
-	ldr	r0, =0x1c
+	ldr	r0, =_FILE_1c
 	bl	__GetFile
 	mov	r1, r5
 	bl	__Func_8005340

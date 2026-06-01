@@ -45,7 +45,7 @@
 	mov	r0, #0
 	mov	r10, r1
 	bl	Func_80cd594
-	ldr	r0, =0x7b
+	ldr	r0, =_FILE_7b
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
@@ -58,7 +58,7 @@
 	mov	r1, r8
 	mov	r0, r5
 	bl	Func_8005340
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
@@ -69,7 +69,7 @@
 	mov	r3, r10
 	cmp	r3, #2
 	bne	.Lcf06e
-	ldr	r0, =0x68
+	ldr	r0, =_FILE_68
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0

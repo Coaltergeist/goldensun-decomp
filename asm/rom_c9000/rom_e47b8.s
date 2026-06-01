@@ -50,16 +50,16 @@
 	ldr	r3, .Le4854	@ 0x1010
 	strh	r3, [r2]
 	ldr	r1, [sp, #0x4c]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x96
+	ldr	r0, =_FILE_96
 	ldr	r1, [sp, #0x5c]
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x99
+	ldr	r0, =_FILE_99
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #0
@@ -170,7 +170,7 @@
 	beq	.Le4912
 	cmp	r0, #0x20
 	beq	.Le4912
-	ldr	r0, =0x9e
+	ldr	r0, =_FILE_9e
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #0
@@ -298,7 +298,7 @@
 	ldr	r0, =0x8e
 	b	.Le4ac6
 .Le4ac4:
-	ldr	r0, =0x90
+	ldr	r0, =_FILE_90
 .Le4ac6:
 	ldr	r1, =ewram_2013c56
 	mov	r2, #1
@@ -1009,13 +1009,13 @@
 	cmp	r1, #0xb
 	bne	.Le5138
 	ldr	r1, [sp, #0x5c]
-	ldr	r0, =0xab
+	ldr	r0, =_FILE_ab
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0xac
+	ldr	r0, =_FILE_ac
 	ldr	r1, =ewram_2010000
 	bl	Func_80e0524
 	ldr	r2, =REG_BLDALPHA
@@ -1026,13 +1026,13 @@
 	cmp	r2, #0x20
 	bne	.Le517c
 	ldr	r1, [sp, #0x5c]
-	ldr	r0, =0xad
+	ldr	r0, =_FILE_ad
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0xae
+	ldr	r0, =_FILE_ae
 	ldr	r1, =ewram_2010000
 	bl	Func_80e0524
 	ldr	r2, =REG_BLDALPHA

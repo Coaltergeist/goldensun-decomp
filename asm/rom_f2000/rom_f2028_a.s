@@ -558,7 +558,7 @@
 	mov	r3, #0x80
 	lsl	r3, #19
 	strh	r6, [r3]
-	ldr	r0, =0x15
+	ldr	r0, =_FILE_15
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
@@ -590,7 +590,7 @@
 	ldr	r2, =0x80000f00
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r0, =0x17
+	ldr	r0, =_FILE_17
 	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0
@@ -1071,7 +1071,7 @@
 	ldr	r3, .Lf2980	@ 0
 	mov	r0, r10
 	strh	r3, [r0, #0xa]
-	ldr	r0, =0x16
+	ldr	r0, =_FILE_16
 	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0

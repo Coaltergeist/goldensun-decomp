@@ -1578,7 +1578,7 @@
 	mov	r8, r2
 	bl	Func_80048f4
 	mov	r5, r0
-	ldr	r0, =0xf1
+	ldr	r0, =_FILE_f1
 	bl	GetFile
 	mov	r2, r0
 	cmp	r7, #0x5f
@@ -2254,7 +2254,7 @@
 	mov	r0, #0x11
 	bl	Func_80048b0
 	mov	r6, r0
-	ldr	r0, =0xf1
+	ldr	r0, =_FILE_f1
 	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1
@@ -2291,7 +2291,7 @@
 	mov	r8, r2
 	bl	Func_80048b0
 	mov	r6, r0
-	ldr	r0, =0xf1
+	ldr	r0, =_FILE_f1
 	bl	GetFile
 	ldr	r3, =0x604
 	lsl	r5, #1

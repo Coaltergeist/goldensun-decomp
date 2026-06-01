@@ -100,7 +100,7 @@
 	mov	r1, r11
 	mov	r0, r6
 	bl	Func_8005340
-	ldr	r0, =0x9e
+	ldr	r0, =_FILE_9e
 	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
@@ -155,7 +155,7 @@
 	ldr	r0, =0x8d
 	b	.Lcf9b8
 .Lcf9b6:
-	ldr	r0, =0x77
+	ldr	r0, =_FILE_77
 .Lcf9b8:
 	bl	GetFile
 	mov	r6, r0

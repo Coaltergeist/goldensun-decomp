@@ -232,7 +232,7 @@
 	ldr	r3, =iwram_3001e50
 	add	r3, #0xb8
 	ldr	r3, [r3]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	str	r3, [sp, #0x70]
 	ldr	r1, [sp, #0x68]
 	mov	r2, #0
@@ -272,7 +272,7 @@
 	bne	.Ldeb84
 	mov	r1, #0x80
 	lsl	r1, #5
-	ldr	r0, =0x80
+	ldr	r0, =_FILE_80
 .Ldeb78:
 	add	r1, r11
 	mov	r2, #1
@@ -282,7 +282,7 @@
 .Ldeb84:
 	mov	r1, #0x80
 	lsl	r1, #5
-	ldr	r0, =0x81
+	ldr	r0, =_FILE_81
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -291,7 +291,7 @@
 	mov	r6, r8
 	cmp	r6, #5
 	bne	.Ldebae
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -302,7 +302,7 @@
 .Ldebae:
 	mov	r1, #0x80
 	lsl	r1, #6
-	ldr	r0, =0xc7
+	ldr	r0, =_FILE_c7
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #0
@@ -310,7 +310,7 @@
 	bl	Func_80e0524
 	cmp	r7, #5
 	bne	.Ldebd8
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -334,7 +334,7 @@
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
-	ldr	r0, =0x5d
+	ldr	r0, =_FILE_5d
 	bl	Func_80e0524
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Ldec14	@ 0
@@ -368,7 +368,7 @@
 	bl	_call_via_r3
 	mov	r2, #0
 	mov	r3, #0
-	ldr	r0, =0x5c
+	ldr	r0, =_FILE_5c
 	mov	r1, r11
 	bl	Func_80e0524
 	mov	r3, #0xef
@@ -404,7 +404,7 @@
 	mov	r1, r11
 	b	.Ldecc2
 .Ldecac:
-	ldr	r0, =0xb8
+	ldr	r0, =_FILE_b8
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -412,7 +412,7 @@
 	ldr	r1, =0x65c0
 	mov	r2, #1
 	mov	r3, #0
-	ldr	r0, =0x92
+	ldr	r0, =_FILE_92
 	add	r1, r11
 .Ldecc2:
 	bl	Func_80e0524

@@ -416,13 +416,13 @@
 	bl	Func_80cd594
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Le69f8	@ 0x100
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	strh	r3, [r2]
 	mov	r1, r5
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x61
+	ldr	r0, =_FILE_61
 	mov	r1, r9
 	mov	r2, #1
 	mov	r3, #1
@@ -430,7 +430,7 @@
 	mov	r1, #0xfa
 	lsl	r1, #6
 	mov	r2, #1
-	ldr	r0, =0x6d
+	ldr	r0, =_FILE_6d
 	add	r1, r9
 	mov	r3, #0
 	bl	Func_80e0524
@@ -1034,18 +1034,18 @@
 
 .Le6f30:
 	ldr	r1, [sp, #0xc]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	str	r5, [sp, #0x14]
 	bl	Func_80e0524
-	ldr	r0, =0x5e
+	ldr	r0, =_FILE_5e
 	mov	r1, r10
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r1, =0x59d8
-	ldr	r0, =0x5f
+	ldr	r0, =_FILE_5f
 	add	r1, r10
 	mov	r2, #0
 	mov	r3, #0

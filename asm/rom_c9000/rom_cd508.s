@@ -1345,11 +1345,11 @@
 	str	r0, [r3]
 	mov	r0, #0
 	bl	Func_80cd594
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x1c]
 	bl	Func_8005340
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
@@ -1574,7 +1574,7 @@
 	mov	r1, r11
 	cmp	r1, #0x10
 	bne	.Lce276
-	ldr	r0, =0x89
+	ldr	r0, =_FILE_89
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0
@@ -1888,7 +1888,7 @@
 	str	r0, [r3]
 	mov	r0, #0
 	bl	Func_80cd594
-	ldr	r0, =0xa9
+	ldr	r0, =_FILE_a9
 	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
@@ -1901,7 +1901,7 @@
 	mov	r1, r10
 	mov	r0, r6
 	bl	Func_8005340
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	bl	GetFile
 	mov	r6, r0
 	mov	r0, #0xa0
@@ -2287,7 +2287,7 @@
 	bl	Func_80cd594
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Lce8c8	@ 0x100
-	ldr	r0, =0xaf
+	ldr	r0, =_FILE_af
 	strh	r3, [r2]
 	bl	GetFile
 	mov	r5, r0

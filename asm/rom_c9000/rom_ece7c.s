@@ -80,7 +80,7 @@
 	strh	r3, [r2]
 	cmp	r6, #0
 	bne	.Lecf48
-	ldr	r0, =0x4f
+	ldr	r0, =_FILE_4f
 	mov	r1, r7
 	mov	r2, #1
 	mov	r3, #0
@@ -96,12 +96,12 @@
 .Lecf48:
 	cmp	r6, #1
 	bne	.Lecf66
-	ldr	r0, =0x4d
+	ldr	r0, =_FILE_4d
 	mov	r1, r7
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x4e
+	ldr	r0, =_FILE_4e
 .Lecf5a:
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
@@ -109,12 +109,12 @@
 	bl	Func_80e0524
 	b	.Lecf7e
 .Lecf66:
-	ldr	r0, =0x4b
+	ldr	r0, =_FILE_4b
 	mov	r1, r7
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x4c
+	ldr	r0, =_FILE_4c
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #1
@@ -308,18 +308,18 @@
 	ldr	r3, .Led170	@ 0x100
 	mov	r1, r5
 	strh	r3, [r2]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x51
+	ldr	r0, =_FILE_51
 	mov	r1, r10
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r1, #0x8c
 	lsl	r1, #3
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	add	r1, r10
 	mov	r2, #1
 	mov	r3, #0
