@@ -18,7 +18,7 @@ static inline void DMA3_COPY(void *src, void *dst, unsigned size) {
         "sub\tr3, #0xc"
         :
         : "r" (_base), "r" (_src), "r" (_dst), "r" (_cnt)
-        : "r0", "r1", "r2", "r3", "memory"
+        : "r0", "r1", "r2", "memory"
     );
 }
 

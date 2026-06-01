@@ -27,7 +27,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bl	Func_8004858
-	bl	Func_800300c
+	bl	InitRAMLib
 	ldr	r3, =ewram_2002090
 	str	r5, [r3]
 	ldr	r3, =iwram_3001ac4
