@@ -4,11 +4,11 @@
  * The .L3938 reference crosses TU into ovl_314_c.s, which already has
  * .L3938 .global'd from the earlier OvlFunc_925_200831c cluster ship.
  *
- * Inline asm is required: .L3938 is a local label, not a C-accessible
- * symbol. The asm leaves the loaded address in r0; the function's
  * unsigned-int return picks it up. gcc emits prologue-free `ldr r0,
  * =.L3938 ; bx lr`, matching the original 4 bytes.
  */
+extern unsigned char gOvl_0200b938[];
+
 unsigned int OvlFunc_925_2008314(void) {
-    asm("ldr r0, =.L3938");
+    return (unsigned int)gOvl_0200b938;
 }
