@@ -14,9 +14,11 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7fc618/exports.o(.text)
-		asm/overlays/rom_7fc618/ovl_30_a.o(.text)
+		asm/overlays/rom_7fc618/ovl_30_a_b.o(.text)
 		asm/overlays/rom_7fc618/ovl_30_b.o(.text)
-		asm/overlays/rom_7fc618/ovl_30_c_a.o(.text)
+		asm/overlays/rom_7fc618/ovl_30_c_a_b.o(.text)
+		asm/overlays/rom_7fc618/ovl_30_c_a_c_a.o(.text)
+		asm/overlays/rom_7fc618/ovl_30_c_a_c_b.o(.text)
 		asm/overlays/rom_7fc618/ovl_30_c_b.o(.text)
 		asm/overlays/rom_7fc618/ovl_30_c_c.o(.text)
 		src/overlays/rom_7fc618/imports.o(.text)
