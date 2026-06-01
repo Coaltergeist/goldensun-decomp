@@ -81,7 +81,7 @@
 	bl	Func_8005340
 	cmp	r7, #0
 	bne	.Lcf348
-	ldr	r0, =0x93
+	ldr	r0, =_FILE_93
 	b	.Lcf34a
 .Lcf348:
 	ldr	r0, =_FILE_91

@@ -131,7 +131,7 @@
 	cmp	r2, #5
 	bne	.Ldbcd0
 	ldr	r1, =0xc56
-	ldr	r0, =0x5a
+	ldr	r0, =_FILE_5a
 	b	.Ldbcda
 .Ldbcd0:
 	mov	r3, r11
@@ -147,7 +147,7 @@
 	b	.Ldbda0
 .Ldbce6:
 	ldr	r1, =0xc56
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	add	r1, r9
 	mov	r2, #1
 	mov	r3, #1
@@ -199,10 +199,10 @@
 	.word	.Ldbd88
 	.word	.Ldbd8c
 .Ldbd54:
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	b	.Ldbd8e
 .Ldbd58:
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	b	.Ldbd8e
 
 	.align	2, 0
@@ -211,10 +211,10 @@
 	.pool
 
 .Ldbd84:
-	ldr	r0, =0x6e
+	ldr	r0, =_FILE_6e
 	b	.Ldbd8e
 .Ldbd88:
-	ldr	r0, =0xa1
+	ldr	r0, =_FILE_a1
 	b	.Ldbd8e
 .Ldbd8c:
 	ldr	r0, =_FILE_8d

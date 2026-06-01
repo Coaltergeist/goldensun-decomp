@@ -196,16 +196,16 @@
 	ldr	r3, [r3, #0x18]
 	cmp	r3, #0
 	bne	.Ld8ab8
-	ldr	r0, =0xb3
+	ldr	r0, =_FILE_b3
 	b	.Ld8ac8
 .Ld8ab8:
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	b	.Ld8ac8
 .Ld8abc:
 	mov	r1, r10
 	cmp	r1, #6
 	bne	.Ld8ac6
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Ld8ac8
 .Ld8ac6:
 	ldr	r0, =_FILE_c0
@@ -224,16 +224,16 @@
 	mov	r3, r10
 	cmp	r3, #6
 	bne	.Ld8aec
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Ld8afc
 .Ld8aec:
-	ldr	r0, =0x91
+	ldr	r0, =_FILE_91
 	b	.Ld8afc
 .Ld8af0:
 	mov	r0, r10
 	cmp	r0, #6
 	bne	.Ld8afa
-	ldr	r0, =0x8e
+	ldr	r0, =_FILE_8e
 	b	.Ld8afc
 .Ld8afa:
 	ldr	r0, =_FILE_92

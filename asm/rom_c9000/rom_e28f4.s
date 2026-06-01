@@ -127,7 +127,7 @@
 	mov	r3, #0
 	bl	Func_80e0524
 	mov	r3, #0
-	ldr	r0, =0x99
+	ldr	r0, =_FILE_99
 	ldr	r1, [sp, #0x50]
 	mov	r2, #1
 	b	.Le29fc
@@ -189,7 +189,7 @@
 	bl	Func_80e0524
 	b	.Le2a6c
 .Le2a60:
-	ldr	r0, =0xb6
+	ldr	r0, =_FILE_b6
 	ldr	r1, [sp, #0x50]
 	mov	r2, #1
 	mov	r3, #1
@@ -218,13 +218,13 @@
 	beq	.Le2aa0
 	b	.Le2aa4
 .Le2a98:
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Le2aa6
 .Le2a9c:
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	b	.Le2aa6
 .Le2aa0:
-	ldr	r0, =0xb6
+	ldr	r0, =_FILE_b6
 	b	.Le2aa6
 .Le2aa4:
 	ldr	r0, =_FILE_b4

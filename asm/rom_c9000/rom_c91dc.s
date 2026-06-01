@@ -1432,16 +1432,16 @@
 	.word	.Lc9d60
 	.word	.Lc9d84
 .Lc9d54:
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	b	.Lc9d86
 .Lc9d58:
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	b	.Lc9d86
 .Lc9d5c:
-	ldr	r0, =0xcb
+	ldr	r0, =_FILE_cb
 	b	.Lc9d86
 .Lc9d60:
-	ldr	r0, =0x86
+	ldr	r0, =_FILE_86
 	b	.Lc9d86
 
 	.pool_aligned

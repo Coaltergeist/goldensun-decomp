@@ -149,7 +149,7 @@
 .Ld929e:
 	ldr	r4, [sp, #0x44]
 	ldr	r5, =0x2b8e
-	ldr	r0, =0xb0
+	ldr	r0, =_FILE_b0
 	add	r1, r4, r5
 	mov	r2, #1
 	b	.Ld92c8
@@ -165,10 +165,10 @@
 	ldr	r0, [sp, #0x48]
 	cmp	r0, #3
 	bne	.Ld92d8
-	ldr	r0, =0x93
+	ldr	r0, =_FILE_93
 	b	.Ld92da
 .Ld92d8:
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 .Ld92da:
 	bl	GetFile
 	mov	r1, r0
@@ -214,7 +214,7 @@
 	ldr	r5, [sp, #0x48]
 	cmp	r5, #0
 	bne	.Ld9338
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Ld9352
 .Ld9338:
 	ldr	r0, [sp, #0x48]
@@ -223,13 +223,13 @@
 	cmp	r0, #4
 	bne	.Ld9346
 .Ld9342:
-	ldr	r0, =0x8f
+	ldr	r0, =_FILE_8f
 	b	.Ld9352
 .Ld9346:
 	ldr	r1, [sp, #0x48]
 	cmp	r1, #1
 	bne	.Ld9350
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Ld9352
 .Ld9350:
 	ldr	r0, =_FILE_bb
@@ -247,7 +247,7 @@
 	bne	.Ld9374
 	ldr	r3, [sp, #0x44]
 	ldr	r4, =0x65c0
-	ldr	r0, =0x93
+	ldr	r0, =_FILE_93
 	add	r1, r3, r4
 	b	.Ld9386
 .Ld9374:
@@ -259,7 +259,7 @@
 .Ld937e:
 	ldr	r2, [sp, #0x44]
 	ldr	r3, =0x65c0
-	ldr	r0, =0x8f
+	ldr	r0, =_FILE_8f
 	add	r1, r2, r3
 .Ld9386:
 	mov	r2, #1
@@ -269,7 +269,7 @@
 .Ld9390:
 	ldr	r4, [sp, #0x44]
 	ldr	r5, =0x65c0
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	add	r1, r4, r5
 	mov	r2, #1
 	mov	r3, #0

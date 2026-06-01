@@ -56,13 +56,13 @@
 	ldr	r2, [sp, #0x3c]
 	cmp	r2, #0
 	bne	.Lceb9a
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	b	.Lceba6
 .Lceb9a:
 	ldr	r3, [sp, #0x3c]
 	cmp	r3, #1
 	bne	.Lceba4
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Lceba6
 .Lceba4:
 	ldr	r0, =_FILE_91

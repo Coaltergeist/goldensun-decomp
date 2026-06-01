@@ -828,13 +828,13 @@
 	beq	.Lcb8c0
 	b	.Lcb8cc
 .Lcb8b8:
-	ldr	r0, =0x48
+	ldr	r0, =_FILE_48
 	b	.Lcb8ce
 .Lcb8bc:
 	mov	r0, r6
 	b	.Lcb8ce
 .Lcb8c0:
-	ldr	r0, =0x47
+	ldr	r0, =_FILE_47
 	b	.Lcb8ce
 
 	.pool_aligned

@@ -85,7 +85,7 @@
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x50
+	ldr	r0, =_FILE_50
 	b	.Lecf5a
 
 	.align	2, 0

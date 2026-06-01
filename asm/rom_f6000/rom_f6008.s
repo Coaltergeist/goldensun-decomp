@@ -2932,7 +2932,7 @@
 	add	r2, #0xa8
 	str	r2, [sp, #0x10]
 	str	r1, [r2]
-	ldr	r0, =0x8f
+	ldr	r0, =_FILE_8f
 	bl	GetFile
 	mov	r1, #0xa0
 	ldr	r3, =REG_DMA3SAD
@@ -3267,29 +3267,29 @@
 	bl	Func_b1c_from_thumb
 	cmp	r0, #0xf
 	bgt	.Lf7a28
-	ldr	r0, =0x91
+	ldr	r0, =_FILE_91
 	bl	Func_80f61e8
 	b	.Lf7a52
 .Lf7a28:
 	cmp	r0, #0x1f
 	bgt	.Lf7a34
-	ldr	r0, =0x93
+	ldr	r0, =_FILE_93
 	bl	Func_80f61e8
 	b	.Lf7a52
 .Lf7a34:
 	cmp	r0, #0x2f
 	bgt	.Lf7a40
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	bl	Func_80f61e8
 	b	.Lf7a52
 .Lf7a40:
 	cmp	r0, #0x3f
 	bgt	.Lf7a4c
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	bl	Func_80f61e8
 	b	.Lf7a52
 .Lf7a4c:
-	ldr	r0, =0x8f
+	ldr	r0, =_FILE_8f
 	bl	Func_80f61e8
 .Lf7a52:
 	ldr	r2, [sp, #0x10]

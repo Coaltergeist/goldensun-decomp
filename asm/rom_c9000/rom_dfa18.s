@@ -134,13 +134,13 @@
 	beq	.Ldfb22
 	b	.Ldfb26
 .Ldfb1a:
-	ldr	r0, =0xc2
+	ldr	r0, =_FILE_c2
 	b	.Ldfb28
 .Ldfb1e:
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	b	.Ldfb28
 .Ldfb22:
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	b	.Ldfb28
 .Ldfb26:
 	ldr	r0, =_FILE_c0

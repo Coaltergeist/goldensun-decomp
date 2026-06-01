@@ -125,19 +125,19 @@
 	mov	r2, r8
 	cmp	r2, #0
 	bne	.Lcf988
-	ldr	r0, =0x9f
+	ldr	r0, =_FILE_9f
 	b	.Lcf9b8
 .Lcf988:
 	mov	r3, r8
 	cmp	r3, #1
 	bne	.Lcf992
-	ldr	r0, =0x59
+	ldr	r0, =_FILE_59
 	b	.Lcf9b8
 .Lcf992:
 	mov	r4, r8
 	cmp	r4, #2
 	bne	.Lcf99c
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	b	.Lcf9b8
 .Lcf99c:
 	mov	r0, r8
@@ -152,7 +152,7 @@
 	mov	r2, r8
 	cmp	r2, #6
 	bne	.Lcf9b6
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Lcf9b8
 .Lcf9b6:
 	ldr	r0, =_FILE_77
