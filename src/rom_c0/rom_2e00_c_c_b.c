@@ -128,7 +128,7 @@ void InitRAMLib(void) {
     INTR_VECTOR = iwram_3000000;
     DMA3_COPY(sInitialIntrVectors, Data_8000850, 56);
     SetDispStat(0);
-    SetKeyCnt(0xc3ff);
+    SetKeyCnt(KEY_AND_INTR | KEY_INTR_ENABLE | DPAD_ANY | JOY_EXCL_DPAD);
     SetIE(0x1001);
     SetIME(1);
 }
