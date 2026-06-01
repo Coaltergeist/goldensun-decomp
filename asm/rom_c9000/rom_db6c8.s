@@ -37,7 +37,7 @@
 	mov	r0, #1
 	bl	Func_80cd594
 	mov	r2, #1
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	mov	r1, r10
 	mov	r3, #0
 	bl	Func_80e0524
@@ -67,7 +67,7 @@
 	str	r1, [sp, #0x18]
 	b	.Ldb75e
 .Ldb744:
-	ldr	r0, =0x96
+	ldr	r0, =_FILE_96
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0

@@ -2716,11 +2716,11 @@
 	add	r6, #1
 	cmp	r6, #0x14
 	bne	.Lf74d4
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	bl	GetFile
 	ldr	r1, [sp, #0x2c]
 	bl	Func_8005340
-	ldr	r0, =0x3f
+	ldr	r0, =_FILE_3f
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
@@ -2946,7 +2946,7 @@
 	ldr	r3, .Lf7764	@ 0x5bf6
 	add	r2, #2
 	strh	r3, [r2]
-	ldr	r0, =0x40
+	ldr	r0, =_FILE_40
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0
@@ -2976,7 +2976,7 @@
 .Lf7794:
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r0, =0x41
+	ldr	r0, =_FILE_41
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0

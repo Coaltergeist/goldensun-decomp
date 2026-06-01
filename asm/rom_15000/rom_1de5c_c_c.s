@@ -2333,7 +2333,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L1f9e2
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #9
@@ -2357,7 +2357,7 @@
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fa1a
-	ldr	r0, =0xb
+	ldr	r0, =_MSG_0b
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #3
@@ -2386,7 +2386,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L1fa5e
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #9
@@ -2406,7 +2406,7 @@
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fa8c
-	ldr	r0, =0xb
+	ldr	r0, =_MSG_0b
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #3
@@ -2440,7 +2440,7 @@
 	bl	Func_80056cc
 	cmp	r0, #0
 	beq	.L1fad8
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	mov	r7, #9
 	bl	Func_801776c
@@ -2452,7 +2452,7 @@
 	bl	Func_8005a78
 	cmp	r0, #0
 	beq	.L1faf2
-	ldr	r0, =0xb
+	ldr	r0, =_MSG_0b
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r7, #2
@@ -2471,7 +2471,7 @@
 	bl	Func_8005920
 	cmp	r0, #0
 	beq	.L1fb1c
-	ldr	r0, =0xb
+	ldr	r0, =_MSG_0b
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r7, #3
@@ -2520,7 +2520,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	blt	.L1fb98
-	ldr	r0, =0x17
+	ldr	r0, =_MSG_17
 	mov	r1, #1
 	bl	Func_801776c
 .L1fb98:
@@ -2541,7 +2541,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L1fbca
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #9
@@ -2574,7 +2574,7 @@
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fc12
-	ldr	r0, =0xc
+	ldr	r0, =_MSG_0c
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #2
@@ -2585,7 +2585,7 @@
 	mov	r5, r0
 	cmp	r5, r3
 	bne	.L1fc2a
-	ldr	r0, =0xd
+	ldr	r0, =_MSG_0d
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #5
@@ -2601,7 +2601,7 @@
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fc52
-	ldr	r0, =0xd
+	ldr	r0, =_MSG_0d
 	mov	r1, #1
 	bl	Func_801776c
 	mov	r3, #3
@@ -2610,7 +2610,7 @@
 	mov	r8, r3
 	b	.L1fc5a
 .L1fc52:
-	ldr	r0, =0x19
+	ldr	r0, =_MSG_19
 	mov	r1, #1
 	bl	Func_801776c
 .L1fc5a:
@@ -2631,7 +2631,7 @@
 	mov	r7, #0
 	cmp	r5, #0
 	beq	.L1fc9e
-	ldr	r0, =0xa
+	ldr	r0, =_MSG_0a
 	mov	r1, #1
 	bl	Func_801776c
 	sub	r7, #9
@@ -2681,14 +2681,14 @@
 	orr	r5, r0
 	cmp	r5, #0
 	beq	.L1fd10
-	ldr	r0, =0xd
+	ldr	r0, =_MSG_0d
 	mov	r1, #1
 	mov	r7, #4
 	bl	Func_801776c
 	neg	r7, r7
 	b	.L1fd18
 .L1fd10:
-	ldr	r0, =0x18
+	ldr	r0, =_MSG_18
 	mov	r1, #1
 	bl	Func_801776c
 .L1fd18:

@@ -113,7 +113,7 @@
 	add	r5, r3
 	ldrh	r3, [r6, #8]
 	mov	r7, r0
-	ldr	r0, =0xf1
+	ldr	r0, =_FILE_f1
 	mov	r8, r3
 	bl	GetFile
 	ldr	r3, =0x604

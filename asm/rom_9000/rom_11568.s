@@ -138,7 +138,7 @@
 	strh	r3, [r2]
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =0xd5
+	ldr	r0, =_FILE_d5
 	bl	GetFile
 	mov	r1, r10
 	bl	Func_8005340
@@ -186,7 +186,7 @@
 	strh	r3, [r2]
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =0xd5
+	ldr	r0, =_FILE_d5
 	bl	GetFile
 	ldr	r1, =ewram_2010000
 	bl	Func_8005340

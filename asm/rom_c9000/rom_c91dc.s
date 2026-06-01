@@ -25,7 +25,7 @@
 	bl	Func_80cd594
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Lc9244	@ 0x100
-	ldr	r0, =0xb3
+	ldr	r0, =_FILE_b3
 	strh	r3, [r2]
 	mov	r1, r10
 	mov	r2, #1
@@ -33,7 +33,7 @@
 	bl	Func_80e0524
 	mov	r2, #0
 	mov	r3, #0
-	ldr	r0, =0xba
+	ldr	r0, =_FILE_ba
 	ldr	r1, [sp, #0x10]
 	bl	Func_80e0524
 	bl	Func_80c9048
@@ -688,12 +688,12 @@
 	ldr	r3, .Lc9790	@ 0x100
 	ldr	r1, =0x604
 	strh	r3, [r2]
-	ldr	r0, =0xcc
+	ldr	r0, =_FILE_cc
 	add	r1, r10
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	mov	r1, r10
 	mov	r2, #0
 	mov	r3, #0
@@ -1412,7 +1412,7 @@
 	bl	Func_80ed408
 	ldr	r6, [r6, #0x20]
 	str	r6, [sp, #0x34]
-	ldr	r0, =0x58
+	ldr	r0, =_FILE_58
 	ldr	r1, [sp, #0x40]
 	mov	r2, #0
 	mov	r3, #0
@@ -1447,7 +1447,7 @@
 	.pool_aligned
 
 .Lc9d84:
-	ldr	r0, =0xa3
+	ldr	r0, =_FILE_a3
 .Lc9d86:
 	bl	GetFile
 	mov	r1, r0

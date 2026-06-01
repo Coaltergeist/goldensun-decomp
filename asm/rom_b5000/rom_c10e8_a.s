@@ -623,7 +623,7 @@
 	ldr	r0, =0xca
 	b	.Lc1614
 .Lc1612:
-	ldr	r0, =0xcb
+	ldr	r0, =_FILE_cb
 .Lc1614:
 	bl	GetFile
 	mov	r5, r0

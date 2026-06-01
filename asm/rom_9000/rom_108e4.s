@@ -177,14 +177,14 @@
 	add	r3, #4
 	str	r2, [r3]
 	str	r6, [r7, #0x10]
-	ldr	r0, =0xd4
+	ldr	r0, =_FILE_d4
 	bl	GetFile
 	mov	r1, #0x88
 	lsl	r1, #1
 	add	r3, r7, r1
 	ldr	r5, =ewram_202d000
 	str	r0, [r3]
-	ldr	r0, =0xd6
+	ldr	r0, =_FILE_d6
 	bl	GetFile
 	mov	r1, r5
 	bl	Func_8005340
@@ -198,11 +198,11 @@
 	strh	r2, [r3]
 	add	r3, #2
 	strh	r6, [r3]
-	ldr	r0, =0xd5
+	ldr	r0, =_FILE_d5
 	bl	GetFile
 	ldr	r1, =ewram_2010000
 	bl	Func_8005340
-	ldr	r0, =0xd7
+	ldr	r0, =_FILE_d7
 	bl	GetFile
 	ldr	r1, =ewram_202c000
 	bl	Func_8005340

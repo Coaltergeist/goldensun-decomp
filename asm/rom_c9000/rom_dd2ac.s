@@ -46,7 +46,7 @@
 	ldr	r2, [sp, #0x2c]
 	cmp	r2, #1
 	bne	.Ldd324
-	ldr	r0, =0x83
+	ldr	r0, =_FILE_83
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -61,7 +61,7 @@
 	.pool
 
 .Ldd324:
-	ldr	r0, =0x84
+	ldr	r0, =_FILE_84
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -610,7 +610,7 @@
 	strh	r3, [r2]
 	mov	r1, r10
 	mov	r2, #1
-	ldr	r0, =0xa6
+	ldr	r0, =_FILE_a6
 	mov	r3, #1
 	bl	Func_80e0524
 	ldr	r3, [r5]
@@ -868,7 +868,7 @@
 	ldr	r3, .Ldda20	@ 0x1010
 	add	r2, #2
 	strh	r3, [r2]
-	ldr	r0, =0x7e
+	ldr	r0, =_FILE_7e
 	mov	r3, #1
 	mov	r1, r9
 	mov	r2, #1
@@ -1366,14 +1366,14 @@
 	mov	r0, #0x2e
 	bl	Func_80ed408
 	ldr	r5, [r5, #0x1c]
-	ldr	r0, =0xce
+	ldr	r0, =_FILE_ce
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #0
 	str	r5, [sp, #0x20]
 	bl	Func_80e0524
 	ldr	r1, =0xc56
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -1381,7 +1381,7 @@
 	mov	r2, #0
 	ldr	r1, [sp, #0x1c]
 	mov	r3, #0
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	bl	Func_80e0524
 	mov	r3, #0
 	mov	r10, r3
@@ -1991,7 +1991,7 @@
 	ldr	r0, =0x8e
 	b	.Lde370
 .Lde36e:
-	ldr	r0, =0x90
+	ldr	r0, =_FILE_90
 .Lde370:
 	bl	GetFile
 	mov	r5, r0
@@ -2005,7 +2005,7 @@
 	ldr	r1, [sp, #0x28]
 	mov	r0, r5
 	bl	Func_8005340
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x18]
 	mov	r2, #0
 	mov	r3, #0

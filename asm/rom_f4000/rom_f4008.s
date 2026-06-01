@@ -238,7 +238,7 @@
 	add	r4, #0x1e
 	cmp	r5, #0x14
 	bne	.Lf41cc
-	ldr	r0, =0x42
+	ldr	r0, =_FILE_42
 	bl	GetFile
 	mov	r1, #0xa0
 	mov	r4, r0
@@ -265,7 +265,7 @@
 	ldr	r2, =0x84002580
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r0, =0x43
+	ldr	r0, =_FILE_43
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
 	mov	r4, r0

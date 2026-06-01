@@ -170,11 +170,11 @@
 	str	r0, [sp, #0x2c]
 .Ld8a7c:
 	ldr	r1, [sp, #0x38]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0xba
+	ldr	r0, =_FILE_ba
 	ldr	r1, [sp, #0x48]
 	mov	r2, #0
 	mov	r3, #0
@@ -208,7 +208,7 @@
 	ldr	r0, =0x8d
 	b	.Ld8ac8
 .Ld8ac6:
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 .Ld8ac8:
 	bl	GetFile
 	mov	r2, r0
@@ -236,7 +236,7 @@
 	ldr	r0, =0x8e
 	b	.Ld8afc
 .Ld8afa:
-	ldr	r0, =0x92
+	ldr	r0, =_FILE_92
 .Ld8afc:
 	bl	GetFile
 	mov	r2, r0

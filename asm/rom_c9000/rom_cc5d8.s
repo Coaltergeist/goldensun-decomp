@@ -44,13 +44,13 @@
 	ldr	r3, .Lcc660	@ 0x100
 	sub	r2, #0x32
 	strh	r3, [r2]
-	ldr	r0, =0x45
+	ldr	r0, =_FILE_45
 	mov	r1, r9
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
 	mov	r3, #0
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	ldr	r1, [sp, #8]
 	mov	r2, #0
 	bl	Func_80e0524
@@ -90,7 +90,7 @@
 	.pool_aligned
 
 .Lcc6a8:
-	ldr	r0, =0x46
+	ldr	r0, =_FILE_46
 .Lcc6aa:
 	bl	GetFile
 	mov	r1, r0
@@ -633,7 +633,7 @@
 	ldr	r0, =0xcb
 	b	.Lccb72
 .Lccb70:
-	ldr	r0, =0xbe
+	ldr	r0, =_FILE_be
 .Lccb72:
 	bl	GetFile
 	mov	r1, r0
@@ -755,20 +755,20 @@
 	bl	Func_80ed408
 	ldr	r6, [r6, #0x1c]
 	str	r6, [sp, #0xc]
-	ldr	r0, =0x71
+	ldr	r0, =_FILE_71
 	mov	r1, r7
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r3, #0
-	ldr	r0, =0x72
+	ldr	r0, =_FILE_72
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	bl	Func_80e0524
 	mov	r3, r10
 	cmp	r3, #0
 	bne	.Lcccd2
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -1052,7 +1052,7 @@
 	sub	r3, r1
 	lsl	r3, #8
 	str	r1, [r6]
-	ldr	r0, =0x59
+	ldr	r0, =_FILE_59
 	str	r3, [r2]
 	mov	r1, r7
 	mov	r2, #1

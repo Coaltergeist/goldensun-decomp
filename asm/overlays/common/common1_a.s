@@ -993,7 +993,7 @@
 	bne	.L8be
 	mov	r5, #4
 .L8be:
-	ldr	r0, =0xe7
+	ldr	r0, =_FILE_e7
 	bl	__GetFile
 	mov	r1, r6
 	bl	__Func_8005340

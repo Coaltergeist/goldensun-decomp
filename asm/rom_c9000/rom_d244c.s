@@ -67,7 +67,7 @@
 	str	r3, [sp]
 	bl	Func_80ed408
 	ldr	r5, [r5, #0x1c]
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	str	r5, [sp, #0x2c]
 	bl	GetFile
 	mov	r5, r0
@@ -91,7 +91,7 @@
 	mov	r1, r10
 	mov	r0, r5
 	bl	Func_8005340
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	bl	GetFile
 	mov	r1, #0xc0
 	mov	r5, r0
@@ -100,14 +100,14 @@
 	add	r1, r10
 	mov	r0, r5
 	bl	Func_8005340
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x20]
 	bl	Func_8005340
 	ldr	r0, [sp, #0x38]
 	cmp	r0, #1
 	bne	.Ld2542
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -349,7 +349,7 @@
 	ldr	r3, =ewram_2020202
 	add	r2, r10
 	str	r3, [r2]
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0

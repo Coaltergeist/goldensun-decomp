@@ -80,7 +80,7 @@
 	mov	r0, #1
 	mov	r1, #1
 	bl	Func_80cd104
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x44]
 	mov	r2, #0
 	mov	r3, #0
@@ -1268,13 +1268,13 @@
 
 .Lec1e8:
 	bl	Func_80e0524
-	ldr	r0, =0x6e
+	ldr	r0, =_FILE_6e
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
 	ldr	r1, =0x4e20
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	add	r1, r11
 	mov	r2, #0
 	mov	r3, #0
@@ -2458,7 +2458,7 @@
 .Lecb7a:
 	mov	r2, #1
 	mov	r3, #1
-	ldr	r0, =0x6f
+	ldr	r0, =_FILE_6f
 	mov	r1, r11
 	bl	Func_80e0524
 	ldr	r0, =0x121

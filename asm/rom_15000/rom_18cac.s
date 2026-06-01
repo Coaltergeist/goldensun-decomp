@@ -36,9 +36,9 @@
 	ldr	r3, [r3]
 	cmp	r3, r8
 	bne	.L18d06
-	ldr	r0, =0x14
+	ldr	r0, =_FILE_14
 	bl	GetFile
-	ldr	r0, =0x13
+	ldr	r0, =_FILE_13
 	bl	GetFile
 	mov	r1, #3
 	mov	r9, r1
@@ -46,7 +46,7 @@
 	bne	.L18d06
 	b	.L18ecc
 .L18d06:
-	ldr	r0, =0x13
+	ldr	r0, =_FILE_13
 	bl	GetFile
 	mov	r2, #4
 	mov	r10, r0

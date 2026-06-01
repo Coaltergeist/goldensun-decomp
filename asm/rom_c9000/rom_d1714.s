@@ -43,7 +43,7 @@
 	str	r3, [sp]
 	bl	Func_80ed408
 	ldr	r5, [r5, #0x1c]
-	ldr	r0, =0x82
+	ldr	r0, =_FILE_82
 	str	r5, [sp, #0x58]
 	bl	GetFile
 	mov	r5, r0
@@ -57,7 +57,7 @@
 	ldr	r1, [sp, #0x5c]
 	mov	r0, r5
 	bl	Func_8005340
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x4c]
 	bl	Func_8005340
@@ -701,7 +701,7 @@
 	mov	r2, #2
 	mov	r0, #9
 	bl	Func_80dbb24
-	ldr	r0, =0x88
+	ldr	r0, =_FILE_88
 	bl	GetFile
 	mov	r5, r0
 	mov	r0, #0xa0

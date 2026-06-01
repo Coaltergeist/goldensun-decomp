@@ -71,7 +71,7 @@
 	bl	Func_80ed408
 	add	r5, #0xbc
 	ldr	r5, [r5]
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x10]
 	mov	r2, #0
 	mov	r3, #0
@@ -83,7 +83,7 @@
 	ldr	r0, =0x7c
 	b	.Lca286
 .Lca284:
-	ldr	r0, =0x7b
+	ldr	r0, =_FILE_7b
 .Lca286:
 	bl	GetFile
 	mov	r1, r0

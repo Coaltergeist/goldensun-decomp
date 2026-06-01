@@ -22,7 +22,7 @@
 	mov	r0, #0
 	mov	r10, r2
 	bl	Func_80cd594
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
@@ -438,7 +438,7 @@
 
 .Lcb568:
 	mov	r2, #1
-	ldr	r0, =0x78
+	ldr	r0, =_FILE_78
 	mov	r3, #1
 	bl	Func_80e0524
 	mov	r3, #0xef
@@ -800,7 +800,7 @@
 	mov	r3, #0
 	bl	Func_80e0524
 	mov	r3, #0
-	ldr	r0, =0x76
+	ldr	r0, =_FILE_76
 	ldr	r1, [sp, #0x18]
 	mov	r2, #0
 	bl	Func_80e0524
@@ -840,7 +840,7 @@
 	.pool_aligned
 
 .Lcb8cc:
-	ldr	r0, =0x46
+	ldr	r0, =_FILE_46
 .Lcb8ce:
 	bl	GetFile
 	mov	r1, r0
@@ -1405,7 +1405,7 @@
 	sub	r2, #2
 	strh	r3, [r2]
 	ldr	r1, [sp, #0x28]
-	ldr	r0, =0x44
+	ldr	r0, =_FILE_44
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
@@ -2137,7 +2137,7 @@
 	ldr	r0, [sp, #0x20]
 	cmp	r0, #0x33
 	bne	.Lcc46c
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	ldr	r1, [sp, #0x28]
 	mov	r2, #1
 	mov	r3, #0

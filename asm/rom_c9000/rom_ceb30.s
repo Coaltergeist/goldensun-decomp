@@ -49,7 +49,7 @@
 	str	r0, [r3]
 	mov	r0, #1
 	bl	Func_80cd594
-	ldr	r0, =0x69
+	ldr	r0, =_FILE_69
 	bl	GetFile
 	mov	r1, r10
 	bl	Func_8005340
@@ -65,7 +65,7 @@
 	ldr	r0, =0x8d
 	b	.Lceba6
 .Lceba4:
-	ldr	r0, =0x91
+	ldr	r0, =_FILE_91
 .Lceba6:
 	bl	GetFile
 	mov	r1, r0
