@@ -288,7 +288,7 @@
 	ldr	r1, [sp, #0x1c]
 	cmp	r1, #4
 	bne	.Le3bc6
-	ldr	r0, =0x6b
+	ldr	r0, =_FILE_6b
 	b	.Le3bf2
 .Le3bc6:
 	ldr	r2, [sp, #0x1c]

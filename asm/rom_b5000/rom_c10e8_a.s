@@ -614,13 +614,13 @@
 	beq	.Lc160e
 	b	.Lc1612
 .Lc1606:
-	ldr	r0, =0xc8
+	ldr	r0, =_FILE_c8
 	b	.Lc1614
 .Lc160a:
 	mov	r0, r6
 	b	.Lc1614
 .Lc160e:
-	ldr	r0, =0xca
+	ldr	r0, =_FILE_ca
 	b	.Lc1614
 .Lc1612:
 	ldr	r0, =_FILE_cb

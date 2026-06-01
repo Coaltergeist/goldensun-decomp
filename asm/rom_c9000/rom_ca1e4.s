@@ -80,7 +80,7 @@
 	ldr	r4, [sp, #0x28]
 	cmp	r4, #0
 	bne	.Lca284
-	ldr	r0, =0x7c
+	ldr	r0, =_FILE_7c
 	b	.Lca286
 .Lca284:
 	ldr	r0, =_FILE_7b

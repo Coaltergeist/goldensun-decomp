@@ -398,7 +398,7 @@
 	bl	Func_80e0524
 	cmp	r5, #0
 	bne	.Ld861e
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	b	.Ld8620
 .Ld861e:
 	ldr	r0, =_FILE_c0

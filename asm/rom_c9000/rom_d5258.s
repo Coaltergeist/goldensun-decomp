@@ -103,31 +103,31 @@
 	mov	r3, r8
 	cmp	r3, #0
 	bne	.Ld530a
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	b	.Ld536e
 .Ld530a:
 	mov	r4, r8
 	cmp	r4, #1
 	bne	.Ld5314
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	b	.Ld536e
 .Ld5314:
 	mov	r0, r8
 	cmp	r0, #2
 	bne	.Ld531e
-	ldr	r0, =0xa3
+	ldr	r0, =_FILE_a3
 	b	.Ld536e
 .Ld531e:
 	mov	r1, r8
 	cmp	r1, #3
 	bne	.Ld5328
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	b	.Ld536e
 .Ld5328:
 	mov	r2, r8
 	cmp	r2, #4
 	bne	.Ld5332
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	b	.Ld536e
 .Ld5332:
 	mov	r3, r8
@@ -148,7 +148,7 @@
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Ld536e
 .Ld535a:
 	ldr	r5, =0xcd

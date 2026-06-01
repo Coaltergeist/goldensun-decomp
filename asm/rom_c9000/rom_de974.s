@@ -264,7 +264,7 @@
 	bne	.Ldeb6c
 	mov	r1, #0x80
 	lsl	r1, #5
-	ldr	r0, =0x7f
+	ldr	r0, =_FILE_7f
 	b	.Ldeb78
 .Ldeb6c:
 	ldr	r4, [sp, #0x5c]
@@ -358,7 +358,7 @@
 	mov	r2, r8
 	cmp	r2, #2
 	bne	.Ldec84
-	ldr	r0, =0x7f
+	ldr	r0, =_FILE_7f
 	bl	GetFile
 	mov	r1, r0
 	mov	r0, #0xa0
@@ -391,7 +391,7 @@
 .Ldec92:
 	mov	r2, #1
 	mov	r3, #1
-	ldr	r0, =0x5b
+	ldr	r0, =_FILE_5b
 	mov	r1, r11
 	b	.Ldecc2
 .Ldec9c:
@@ -400,7 +400,7 @@
 	bne	.Ldecac
 	mov	r2, #1
 	mov	r3, #1
-	ldr	r0, =0x68
+	ldr	r0, =_FILE_68
 	mov	r1, r11
 	b	.Ldecc2
 .Ldecac:

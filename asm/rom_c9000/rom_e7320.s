@@ -1223,7 +1223,7 @@
 	ldr	r3, [r3]
 	ldr	r2, [sp, #0x3c]
 	str	r3, [sp, #0x44]
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	ldr	r1, [r2]
 	b	.Le7d6c
 
@@ -1948,7 +1948,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	ldr	r1, [sp, #0x2c]
 	b	.Le83a4
 
@@ -4019,7 +4019,7 @@
 	bl	Func_80e0524
 	mov	r1, #0x80
 	lsl	r1, #6
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #0
@@ -4272,7 +4272,7 @@
 	mov	r1, r9
 	cmp	r1, #0x10
 	ble	.Le9730
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	bl	Func_80e46f0
 .Le9730:
 	mov	r2, #0
@@ -4779,13 +4779,13 @@
 	sub	r3, #0x19
 	cmp	r3, #0x16
 	bhi	.Le9b74
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	bl	Func_80e46f0
 .Le9b74:
 	mov	r5, r11
 	cmp	r5, #0x38
 	ble	.Le9b80
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 	bl	Func_80e46f0
 .Le9b80:
 	mov	r6, r11

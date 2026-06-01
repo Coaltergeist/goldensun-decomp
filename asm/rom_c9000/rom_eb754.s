@@ -85,7 +85,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x95
+	ldr	r0, =_FILE_95
 	ldr	r1, [sp, #0x4c]
 	mov	r2, #1
 	mov	r3, #1
@@ -1258,7 +1258,7 @@
 	mov	r0, #1
 	mov	r2, #0
 	bl	_Func_80c08ec
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x40]
 	mov	r2, #0
 	mov	r3, #0

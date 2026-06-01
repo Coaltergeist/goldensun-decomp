@@ -87,13 +87,13 @@
 	cmp	r1, #0x17
 	bne	.Le487a
 .Le4876:
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	b	.Le48f0
 .Le487a:
 	ldr	r2, [sp, #0x60]
 	cmp	r2, #0xc
 	bne	.Le4884
-	ldr	r0, =0xa9
+	ldr	r0, =_FILE_a9
 	b	.Le48f0
 .Le4884:
 	ldr	r3, [sp, #0x60]
@@ -102,25 +102,25 @@
 	cmp	r3, #0x1b
 	bne	.Le48a0
 .Le488e:
-	ldr	r0, =0xce
+	ldr	r0, =_FILE_ce
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0xc4
+	ldr	r0, =_FILE_c4
 	ldr	r1, =ewram_2010c56
 	b	.Le48f2
 .Le48a0:
 	ldr	r5, [sp, #0x60]
 	cmp	r5, #0x1f
 	bne	.Le48aa
-	ldr	r0, =0x79
+	ldr	r0, =_FILE_79
 	b	.Le48b2
 .Le48aa:
 	ldr	r0, [sp, #0x60]
 	cmp	r0, #8
 	bne	.Le48be
-	ldr	r0, =0xc3
+	ldr	r0, =_FILE_c3
 .Le48b2:
 	ldr	r1, =ewram_2010000
 	mov	r2, #1
@@ -131,32 +131,32 @@
 	ldr	r1, [sp, #0x60]
 	cmp	r1, #0xe
 	bne	.Le48c8
-	ldr	r0, =0x6f
+	ldr	r0, =_FILE_6f
 	b	.Le48f0
 .Le48c8:
 	ldr	r2, [sp, #0x60]
 	cmp	r2, #0x1e
 	bne	.Le48d2
-	ldr	r0, =0xce
+	ldr	r0, =_FILE_ce
 	b	.Le48f0
 .Le48d2:
 	ldr	r3, [sp, #0x60]
 	cmp	r3, #0x10
 	bne	.Le48dc
-	ldr	r0, =0xb8
+	ldr	r0, =_FILE_b8
 	b	.Le48f0
 .Le48dc:
 	ldr	r5, [sp, #0x60]
 	cmp	r5, #0x14
 	bne	.Le48e6
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	b	.Le48f0
 .Le48e6:
 	ldr	r3, [sp, #0x60]
 	sub	r3, #0x21
 	cmp	r3, #1
 	bhi	.Le48fc
-	ldr	r0, =0x53
+	ldr	r0, =_FILE_53
 .Le48f0:
 	ldr	r1, =ewram_2010000
 .Le48f2:
@@ -289,13 +289,13 @@
 	.word	.Le4ade
 	.word	.Le4ad2
 .Le4ab8:
-	ldr	r0, =0x94
+	ldr	r0, =_FILE_94
 	b	.Le4ac6
 .Le4abc:
-	ldr	r0, =0x92
+	ldr	r0, =_FILE_92
 	b	.Le4ac6
 .Le4ac0:
-	ldr	r0, =0x8e
+	ldr	r0, =_FILE_8e
 	b	.Le4ac6
 .Le4ac4:
 	ldr	r0, =_FILE_90
@@ -306,7 +306,7 @@
 	bl	Func_80e0524
 	b	.Le4ade
 .Le4ad2:
-	ldr	r0, =0x92
+	ldr	r0, =_FILE_92
 	ldr	r1, =ewram_2013c56
 	mov	r2, #1
 	mov	r3, #1
@@ -1408,58 +1408,58 @@
 	.word	.Le551a
 	.word	.Le547c
 .Le547c:
-	ldr	r0, =0x53
+	ldr	r0, =_FILE_53
 	bl	Func_80e46f0
 	b	.Le551a
 .Le5484:
-	ldr	r0, =0x6f
+	ldr	r0, =_FILE_6f
 	bl	Func_80e46f0
 	b	.Le551a
 .Le548c:
-	ldr	r0, =0x79
+	ldr	r0, =_FILE_79
 	bl	Func_80e46f0
 	b	.Le551a
 .Le5494:
-	ldr	r0, =0xc3
+	ldr	r0, =_FILE_c3
 	bl	Func_80e46f0
 	b	.Le551a
 .Le549c:
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	bl	Func_80e46f0
 	b	.Le551a
 .Le54a4:
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	bl	Func_80e46f0
 	b	.Le551a
 .Le54ac:
-	ldr	r0, =0xb9
+	ldr	r0, =_FILE_b9
 	bl	Func_80e46f0
 	b	.Le551a
 .Le54b4:
-	ldr	r0, =0xc0
+	ldr	r0, =_FILE_c0
 	bl	Func_80e46f0
 	b	.Le551a
 .Le54bc:
-	ldr	r0, =0xa4
+	ldr	r0, =_FILE_a4
 	bl	Func_80e46f0
 	b	.Le551a
 .Le54c4:
-	ldr	r0, =0xa3
+	ldr	r0, =_FILE_a3
 	bl	Func_80e46f0
 	b	.Le551a
 
 	.pool_aligned
 
 .Le5504:
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	bl	Func_80e46f0
 	b	.Le551a
 .Le550c:
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	bl	Func_80e46f0
 	b	.Le551a
 .Le5514:
-	ldr	r0, =0x7d
+	ldr	r0, =_FILE_7d
 	bl	Func_80e46f0
 .Le551a:
 	ldr	r1, [sp, #0x60]

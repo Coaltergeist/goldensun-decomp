@@ -84,7 +84,7 @@
 	ldr	r0, [sp, #0x34]
 	cmp	r0, #1
 	bne	.Ld9b5c
-	ldr	r0, =0xb7
+	ldr	r0, =_FILE_b7
 	b	.Ld9b5e
 .Ld9b5c:
 	ldr	r0, =_FILE_bb

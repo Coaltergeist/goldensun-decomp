@@ -158,7 +158,7 @@
 	bne	.Lca6b4
 	mov	r1, #0xc8
 	lsl	r1, #4
-	ldr	r0, =0xc5
+	ldr	r0, =_FILE_c5
 	add	r1, r11
 	mov	r2, #0
 	b	.Lca6ac
@@ -202,19 +202,19 @@
 	.word	.Lca704
 	.word	.Lca708
 .Lca6f4:
-	ldr	r0, =0xcc
+	ldr	r0, =_FILE_cc
 	b	.Lca70a
 .Lca6f8:
-	ldr	r0, =0xa0
+	ldr	r0, =_FILE_a0
 	b	.Lca70a
 .Lca6fc:
-	ldr	r0, =0xa1
+	ldr	r0, =_FILE_a1
 	b	.Lca70a
 .Lca700:
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	b	.Lca70a
 .Lca704:
-	ldr	r0, =0x8d
+	ldr	r0, =_FILE_8d
 	b	.Lca70a
 .Lca708:
 	ldr	r0, =_FILE_c4

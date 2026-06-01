@@ -48,7 +48,7 @@
 	mov	r3, #0
 	str	r5, [sp, #0x1c]
 	bl	Func_80e0524
-	ldr	r0, =0x94
+	ldr	r0, =_FILE_94
 	mov	r1, r9
 	mov	r2, #1
 	b	.Le05e8
@@ -1315,7 +1315,7 @@
 	ldr	r3, =iwram_3001e50
 	add	r3, #0xb8
 	ldr	r3, [r3]
-	ldr	r0, =0xa7
+	ldr	r0, =_FILE_a7
 	str	r3, [sp, #0x20]
 	mov	r1, r9
 	mov	r2, #1
@@ -1409,7 +1409,7 @@
 	ldr	r1, [sp, #0x28]
 	cmp	r1, #0x10
 	ble	.Le1198
-	ldr	r0, =0xa7
+	ldr	r0, =_FILE_a7
 	bl	Func_80e46f0
 .Le1198:
 	ldr	r6, =0x7828
@@ -1967,7 +1967,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	bl	Func_80e0524
-	ldr	r0, =0x73
+	ldr	r0, =_FILE_73
 	mov	r3, #0
 	ldr	r1, [sp, #0x78]
 	mov	r2, #0

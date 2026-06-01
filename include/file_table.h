@@ -282,4 +282,45 @@ extern int _FILE_f0;
 extern int _FILE_f1;
 #define FILE_f1 ((int)&_FILE_f1)
 
+
+// FP#9 bulk asset-symbols (named by value; pending semantic names)
+extern int _FILE_47;
+#define FILE_47 ((int)&_FILE_47)
+extern int _FILE_48;
+#define FILE_48 ((int)&_FILE_48)
+extern int _FILE_50;
+#define FILE_50 ((int)&_FILE_50)
+extern int _FILE_53;
+#define FILE_53 ((int)&_FILE_53)
+extern int _FILE_57;
+#define FILE_57 ((int)&_FILE_57)
+extern int _FILE_5a;
+#define FILE_5a ((int)&_FILE_5a)
+extern int _FILE_5b;
+#define FILE_5b ((int)&_FILE_5b)
+extern int _FILE_70;
+#define FILE_70 ((int)&_FILE_70)
+extern int _FILE_7f;
+#define FILE_7f ((int)&_FILE_7f)
+extern int _FILE_93;
+#define FILE_93 ((int)&_FILE_93)
+extern int _FILE_95;
+#define FILE_95 ((int)&_FILE_95)
+extern int _FILE_9f;
+#define FILE_9f ((int)&_FILE_9f)
+extern int _FILE_a1;
+#define FILE_a1 ((int)&_FILE_a1)
+extern int _FILE_a4;
+#define FILE_a4 ((int)&_FILE_a4)
+extern int _FILE_a7;
+#define FILE_a7 ((int)&_FILE_a7)
+extern int _FILE_b0;
+#define FILE_b0 ((int)&_FILE_b0)
+extern int _FILE_c3;
+#define FILE_c3 ((int)&_FILE_c3)
+extern int _FILE_c8;
+#define FILE_c8 ((int)&_FILE_c8)
+extern int _FILE_ca;
+#define FILE_ca ((int)&_FILE_ca)
+
 #endif // _FILE_TABLE_H_

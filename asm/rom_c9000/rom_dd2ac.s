@@ -1982,13 +1982,13 @@
 	beq	.Lde36a
 	b	.Lde36e
 .Lde362:
-	ldr	r0, =0x94
+	ldr	r0, =_FILE_94
 	b	.Lde370
 .Lde366:
-	ldr	r0, =0x92
+	ldr	r0, =_FILE_92
 	b	.Lde370
 .Lde36a:
-	ldr	r0, =0x8e
+	ldr	r0, =_FILE_8e
 	b	.Lde370
 .Lde36e:
 	ldr	r0, =_FILE_90

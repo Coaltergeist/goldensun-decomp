@@ -118,7 +118,7 @@
 	ldr	r1, [sp, #0x64]
 	lsl	r4, #12
 	mov	r6, #0
-	ldr	r0, =0xbb
+	ldr	r0, =_FILE_bb
 	mov	r2, #1
 	mov	r3, #1
 	str	r4, [sp, #0x44]
@@ -1211,7 +1211,7 @@
 .Leab54:
 	ldr	r1, =REG_IME
 	strh	r0, [r1]
-	ldr	r0, =0x70
+	ldr	r0, =_FILE_70
 	mov	r3, #0x80
 	ldr	r2, [sp, #0x64]
 	lsl	r3, #7
@@ -1309,7 +1309,7 @@
 	ldr	r5, [sp, #0x64]
 	mov	r6, #0x80
 	lsl	r6, #7
-	ldr	r0, =0x70
+	ldr	r0, =_FILE_70
 	add	r1, r5, r6
 	mov	r2, #1
 	mov	r3, #0

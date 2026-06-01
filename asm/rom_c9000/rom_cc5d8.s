@@ -78,13 +78,13 @@
 	beq	.Lcc698
 	b	.Lcc6a8
 .Lcc690:
-	ldr	r0, =0x48
+	ldr	r0, =_FILE_48
 	b	.Lcc6aa
 .Lcc694:
-	ldr	r0, =0x57
+	ldr	r0, =_FILE_57
 	b	.Lcc6aa
 .Lcc698:
-	ldr	r0, =0x47
+	ldr	r0, =_FILE_47
 	b	.Lcc6aa
 
 	.pool_aligned
@@ -613,10 +613,10 @@
 	.word	.Lccb6c
 	.word	.Lccb70
 .Lccb40:
-	ldr	r0, =0xc8
+	ldr	r0, =_FILE_c8
 	b	.Lccb72
 .Lccb44:
-	ldr	r0, =0xcf
+	ldr	r0, =_FILE_cf
 	b	.Lccb72
 
 	.align	2, 0
@@ -627,10 +627,10 @@
 	.pool
 
 .Lccb68:
-	ldr	r0, =0xb4
+	ldr	r0, =_FILE_b4
 	b	.Lccb72
 .Lccb6c:
-	ldr	r0, =0xcb
+	ldr	r0, =_FILE_cb
 	b	.Lccb72
 .Lccb70:
 	ldr	r0, =_FILE_be
