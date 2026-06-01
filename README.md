@@ -13,7 +13,7 @@ It builds the following ROM:
 ## Current state
 
 - :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
-- **300 / 5,742 Thumb functions matched as C source (5.2%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
+- **301 / 5,742 Thumb functions matched as C source (5.2%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo containing the vendored patched GCC source, `build-296.sh`, and `install-296.sh` (mirrors the [pret/agbcc](https://github.com/pret/agbcc) pattern). pret's agbcc is no longer used. See [INSTALL.md](INSTALL.md) for setup.
@@ -30,17 +30,6 @@ Multiple community sources contribute curated function and global symbol names, 
     4. **Broken Seal community doc:** ~124 ROM-space function aliases distilled from the [GS1 Documentation](https://docs.google.com/document/d/1CiioR7fp-E1kbTCK0QaJ_Yv93o-zQk4XWUpA0aV9Kxk/edit).
 
 `aliases.sym` is the only file INCLUDEd from [`stage1.ld`](stage1.ld). The corpus symbols (`Func_XXXX`, `iwram_XXXX`, `ewram_XXXX`) remain authoritative for tooling that locates code by symbol grep, but contributors writing new matched `.c` may reference either spelling. The linker resolves both to the same address.
-
-Matched `.c` files carry a `/* FF: <signature> */` comment above each function where FF assigned a human-readable name. Example:
-
-```c
-/* FF: u32 Random(void) */
-unsigned int Func_4458(void) {
-    /* ... */
-}
-```
-
-Overlay-internal function aliases are not currently exported (overlay banks share offsets and need per-overlay linker-script changes; future enhancement).
 
 ## Setting up the repo
 

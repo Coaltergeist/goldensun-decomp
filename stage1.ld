@@ -562,7 +562,7 @@ SECTIONS {
 		src/rom_f9000/exports.o(.text)
 		asm/rom_f9000/rom_f9080_a_a.o(.text)
 		asm/rom_f9000/rom_f9080_a_b.o(.text)
-		asm/rom_f9000/rom_f9080_a_c.o(.text)
+		asm/rom_f9000/rom_f9080_a_c_b.o(.text)
 		asm/rom_f9000/rom_f9080_b.o(.text)
 		asm/rom_f9000/rom_f9080_c_a_b.o(.text)
 		asm/rom_f9000/rom_f9080_c_a_c.o(.text)
