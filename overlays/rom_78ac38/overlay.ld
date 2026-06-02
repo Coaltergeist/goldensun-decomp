@@ -16,12 +16,13 @@ SECTIONS {
 		src/overlays/rom_78ac38/exports.o(.text)
 		asm/overlays/rom_78ac38/ovl_30_a_b.o(.text)
 		asm/overlays/rom_78ac38/ovl_30_b.o(.text)
-		asm/overlays/rom_78ac38/ovl_30_c.o(.text)
+		asm/overlays/rom_78ac38/ovl_30_c_b.o(.text)
+		asm/overlays/rom_78ac38/ovl_30_c_c.o(.text)
 		src/overlays/rom_78ac38/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_78ac38/ovl_30_c.o(.data)
+		asm/overlays/rom_78ac38/ovl_30_c_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

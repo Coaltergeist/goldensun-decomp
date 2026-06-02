@@ -18,7 +18,8 @@ SECTIONS {
 		asm/overlays/rom_7bdeb0/ovl_314.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_d20_a.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_d20_b.o(.text)
-		asm/overlays/rom_7bdeb0/ovl_d20_c.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_d20_c_b.o(.text)
+		asm/overlays/rom_7bdeb0/ovl_d20_c_c.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_1300.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_169c.o(.text)
 		src/overlays/rom_7bdeb0/imports.o(.text)
@@ -30,7 +31,7 @@ SECTIONS {
 		asm/overlays/rom_7bdeb0/ovl_314.o(.data)
 		asm/overlays/rom_7bdeb0/ovl_1300.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_7bdeb0/ovl_d20_c.o(.data)
+		asm/overlays/rom_7bdeb0/ovl_d20_c_c.o(.data)
 		asm/overlays/rom_7bdeb0/ovl_169c.o(.data)
 	} > overlay
 
