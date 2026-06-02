@@ -64,7 +64,7 @@
 	lsl	r4, #7
 	cmp	r1, r3
 	bgt	.L4582
-	ldr	r2, =.L7676
+	ldr	r2, =(sAtanTable + 2 * 127)
 	ldrh	r0, [r2]
 	mov	r4, #0
 	sub	r2, #0x80
@@ -189,8 +189,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_80045d4
-
-	.section .rodata
-
-.L7676:
-	.incrom 0x7676, 0x777c

@@ -72,8 +72,7 @@ SECTIONS {
 		asm/rom_c0/rom_6878_c.o(.text)
 		lib/call_via.o(.text)
 
-		asm/rom_c0/rom_2e00_c_c_c.o(.rodata)
-		asm/rom_c0/rom_447c.o(.rodata)
+		asm/rom_c0/rom_2e00_c_c_b.o(.rodata)
 		asm/rom_c0/rom_45e8.o(.rodata)
 		asm/rom_c0/rom_49a8_c.o(.rodata)
 		asm/rom_c0/rom_56cc.o(.rodata)
