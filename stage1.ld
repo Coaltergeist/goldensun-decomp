@@ -52,7 +52,8 @@ SECTIONS {
 		asm/rom_c0/rom_40e8_c.o(.text)
 		asm/rom_c0/rom_4458.o(.text)
 		asm/rom_c0/rom_447c.o(.text)
-		asm/rom_c0/rom_45e8.o(.text)
+		asm/rom_c0/rom_45e8_b.o(.text)
+		asm/rom_c0/rom_45e8_c.o(.text)
 		asm/rom_c0/rom_4858_a.o(.text)
 		asm/rom_c0/rom_4858_b.o(.text)
 		asm/rom_c0/rom_4858_c.o(.text)
@@ -73,7 +74,7 @@ SECTIONS {
 		lib/call_via.o(.text)
 
 		asm/rom_c0/rom_2e00_c_c_b.o(.rodata)
-		asm/rom_c0/rom_45e8.o(.rodata)
+		asm/rom_c0/rom_45e8_c.o(.rodata)
 		asm/rom_c0/rom_49a8_c.o(.rodata)
 		asm/rom_c0/rom_56cc.o(.rodata)
 		asm/rom_c0/rom_6878_c.o(.rodata)
