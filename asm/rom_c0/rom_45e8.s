@@ -280,6 +280,7 @@
 
 	.section .rodata
 
+.align 2,0
 .L777c:
 	.incrom 0x777c, 0x779c
 .L779c:

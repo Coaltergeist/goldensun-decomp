@@ -192,7 +192,7 @@
 	cmp	r3, #0
 	beq	.L329e
 	bl	Func_8003538
-	ldr	r2, =iwram_3001cb8
+	ldr	r2, =gSoftReset
 	ldrb	r3, [r2]
 	cmp	r3, #0
 	beq	.L32e2
@@ -407,7 +407,7 @@
 	add	r3, #0xff
 	strb	r3, [r1]
 .L3492:
-	ldr	r2, =iwram_3001cb8
+	ldr	r2, =gSoftReset
 	ldrb	r3, [r2]
 	cmp	r3, #0
 	beq	.L34b2
