@@ -162,7 +162,3 @@
 	bx	r0
 .func_end OvlFunc_903_200843c
 
-.thumb_func_start OvlFunc_903_20084cc
-	bx	lr
-.func_end OvlFunc_903_20084cc
-
