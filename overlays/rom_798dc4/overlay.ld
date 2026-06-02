@@ -17,7 +17,7 @@ SECTIONS {
 		asm/overlays/common/common0.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_a_a_a.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_a_a_b.o(.text)
-		asm/overlays/rom_798dc4/ovl_314_a_a_c.o(.text)
+		asm/overlays/rom_798dc4/ovl_314_a_a_c_b.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_a_b.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_a_c_a.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_a_c_b.o(.text)
