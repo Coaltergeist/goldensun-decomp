@@ -90,7 +90,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 This project builds on substantial prior work by others:
 
 - **[gsret](https://github.com/gsret):** original disassembly ([gsret/goldensun](https://github.com/gsret/goldensun)) that is the foundation of this entire repo. Every `.s` file traces back to their labeling and structuring work.
-- **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals.
+- **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals. Also contributed the extensive [GS-headers](https://github.com/FutureFractal/GS-headers) repository
 - **Tarpman:** compiler-reproduction analysis identifying the early GCC 3.0-family lineage of Camelot's toolchain, and the source-shape repro that pinned down the small-constant literal-pool fingerprint.
 - **Karathan:** flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
 - **[pret](https://github.com/pret):** a decade of GBA decomp methodology that this project applies directly, plus the [agbcc](https://github.com/pret/agbcc) install-script pattern that [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) mirrors.
