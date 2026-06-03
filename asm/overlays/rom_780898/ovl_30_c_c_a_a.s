@@ -1,0 +1,99 @@
+	.include "macros.inc"
+
+.thumb_func_start OvlFunc_883_20089f0
+	push	{lr}
+	ldr	r3, =ewram_2000240
+	mov	r2, #0xe1
+	lsl	r2, #1
+	add	r3, r2
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #0x10
+	bne	.La06
+	ldr	r0, =.L6e48
+	b	.La24
+.La06:
+	ldr	r0, =0x87a
+	bl	__Func_8079338
+	cmp	r0, #0
+	beq	.La14
+	ldr	r0, =.L6cc8
+	b	.La24
+.La14:
+	ldr	r0, =0x815
+	bl	__Func_8079338
+	cmp	r0, #0
+	beq	.La22
+	ldr	r0, =.L6ab8
+	b	.La24
+.La22:
+	ldr	r0, =.L68a8
+.La24:
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_883_20089f0
+
+.thumb_func_start OvlFunc_883_2008a44
+	push	{lr}
+	bl	__Func_80916b0
+	mov	r2, #0
+	mov	r1, #0
+	mov	r0, #0x1a
+	bl	__Func_80923e4
+	mov	r0, #0xfd
+	lsl	r0, #4
+	bl	__Func_8079358
+	mov	r0, #0xb5
+	mov	r1, #3
+	bl	__Func_808f1c0
+	mov	r1, #0
+	mov	r0, #0xb5
+	bl	__Func_8091a58
+	bl	__Func_8091750
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_883_2008a44
+
+.thumb_func_start OvlFunc_883_2008a74
+	push	{lr}
+	bl	__Func_80916b0
+	mov	r2, #0
+	mov	r1, #0
+	mov	r0, #0x14
+	bl	__Func_80923e4
+	mov	r0, #0xfd
+	lsl	r0, #4
+	bl	__Func_8079358
+	mov	r0, #0xb5
+	mov	r1, #3
+	bl	__Func_808f1c0
+	mov	r1, #0
+	mov	r0, #0xb5
+	bl	__Func_8091a58
+	bl	__Func_8091750
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_883_2008a74
+
+.thumb_func_start OvlFunc_883_2008aa4
+	push	{lr}
+	ldr	r0, =0x87a
+	bl	__Func_8079338
+	cmp	r0, #0
+	beq	.Lab4
+	ldr	r0, =.L7334
+	b	.Lac4
+.Lab4:
+	ldr	r0, =0x815
+	bl	__Func_8079338
+	cmp	r0, #0
+	beq	.Lac2
+	ldr	r0, =.L7100
+	b	.Lac4
+.Lac2:
+	ldr	r0, =.L6f38
+.Lac4:
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_883_2008aa4
+

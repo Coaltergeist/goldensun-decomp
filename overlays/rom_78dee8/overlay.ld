@@ -17,16 +17,18 @@ SECTIONS {
 		asm/overlays/rom_78dee8/ovl_30_a.o(.text)
 		asm/overlays/rom_78dee8/ovl_30_b.o(.text)
 		asm/overlays/rom_78dee8/ovl_30_c_b.o(.text)
-		asm/overlays/rom_78dee8/ovl_30_c_c.o(.text)
+		asm/overlays/rom_78dee8/ovl_30_c_c_a.o(.text)
+		asm/overlays/rom_78dee8/ovl_30_c_c_b.o(.text)
+		asm/overlays/rom_78dee8/ovl_30_c_c_c.o(.text)
 		src/overlays/rom_78dee8/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_78dee8/ovl_30_c_c.o(.data)
+		asm/overlays/rom_78dee8/ovl_30_c_c_c.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_78dee8/ovl_30_c_c.o(.bss)
+		asm/overlays/rom_78dee8/ovl_30_c_c_c.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {
