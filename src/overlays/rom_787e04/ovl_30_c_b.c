@@ -1,0 +1,17 @@
+/* Cluster OvlFunc_887_20095bc..OvlFunc_887_20095bc extracted from goldensun/asm/overlays/rom_787e04/ovl_30_c.s.
+ *
+ * Total .text for this TU = 44 bytes (= 0x2c).
+ * Preserves the original ROM layout when slotted between
+ * asm/overlays/rom_787e04/ovl_30_c_a.o and asm/overlays/rom_787e04/ovl_30_c_c.o in
+ * goldensun/overlays/rom_787e04/overlay.ld.
+ */
+extern volatile unsigned int iwram_3001e40;
+extern int _Func_8000b50(unsigned int a, int b);
+extern void __Func_800c598(int a, int b);
+
+void OvlFunc_887_20095bc(int arg0)
+{
+    if (iwram_3001e40 & 1) {
+        __Func_800c598(arg0, _Func_8000b50(iwram_3001e40 >> 1, 6));
+    }
+}
