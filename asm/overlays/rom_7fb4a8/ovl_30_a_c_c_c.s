@@ -1,28 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_971_2008060
-	push	{lr}
-	ldr	r3, =ewram_2000240
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xb
-	beq	.L76
-	cmp	r3, #9
-	bne	.L7a
-.L76:
-	ldr	r0, =.L1c04
-	b	.L7c
-.L7a:
-	ldr	r0, =.L19f4
-.L7c:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_971_2008060
-
 .thumb_func_start OvlFunc_971_200808c
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f64

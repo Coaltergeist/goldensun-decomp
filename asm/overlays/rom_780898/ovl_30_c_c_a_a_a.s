@@ -75,25 +75,3 @@
 	bx	r0
 .func_end OvlFunc_883_2008a74
 
-.thumb_func_start OvlFunc_883_2008aa4
-	push	{lr}
-	ldr	r0, =0x87a
-	bl	__Func_8079338
-	cmp	r0, #0
-	beq	.Lab4
-	ldr	r0, =.L7334
-	b	.Lac4
-.Lab4:
-	ldr	r0, =0x815
-	bl	__Func_8079338
-	cmp	r0, #0
-	beq	.Lac2
-	ldr	r0, =.L7100
-	b	.Lac4
-.Lac2:
-	ldr	r0, =.L6f38
-.Lac4:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_883_2008aa4
-
