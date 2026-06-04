@@ -5,7 +5,16 @@ typedef unsigned char      u8;
 typedef unsigned short    u16;
 typedef unsigned int      u32;
 typedef unsigned long int u64;
+// rom_f9000's stock m4a / "Sappy" engine was prebuilt with signed char (its
+// s8 fields load signed in the ROM), unlike Camelot's own code which uses
+// unsigned char (__CHAR_UNSIGNED__). old_agbcc has no -fsigned-char, so the
+// m4a TU is compiled with -D M4A_SIGNED_CHAR to get a signed s8; everything
+// else (and the matched corpus) keeps the historical unsigned s8.
+#ifdef M4A_SIGNED_CHAR
+typedef signed char        s8;
+#else
 typedef char               s8;
+#endif
 typedef short             s16;
 typedef int               s32;
 typedef long long int     s64;
@@ -29,6 +38,8 @@ typedef vu8  vbool8;
 typedef vu16 vbool16;
 typedef vu32 vbool32;
 
+#ifndef NULL
 #define NULL ( (void *) 0)
+#endif
 
 #endif // _GBA_TYPES_H_

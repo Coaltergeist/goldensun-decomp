@@ -101,7 +101,11 @@ asm/%.o: src/%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-C_SRCS  := $(wildcard *.c */*.c */*/*.c)
+# lib/m4a/ is the stock m4a/"Sappy" engine, built with old_agbcc (not gcc296)
+# via a dedicated rule wired in by the Sappy import (SAPPY_IMPORT_PLAN.md
+# Phase 3). Excluded here so the default gcc296 rule doesn't try (and fail) to
+# build it as ordinary game code.
+C_SRCS  := $(filter-out lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
 C_GEN_I := $(C_SRCS:.c=.i)
