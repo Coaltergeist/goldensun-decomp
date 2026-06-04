@@ -14983,7 +14983,7 @@ gOvl_0200d2b8 = 0x0200d2b8;
 gOvl_0200d558 = 0x0200d558;
 gOvl_0200e870 = 0x0200e870;
 gOvl_0200eb94 = 0x0200eb94;
-/* ---- m4a / "Sappy" import (SAPPY_IMPORT_PLAN.md) ---- */
+/* ---- m4a / "Sappy" import ---- */
 /* Stock-engine symbols the m4a TU (lib/m4a/m4a.o) references but the alias
    generator sources don't name. Mixer fns + CpuSet resolve to their kept
    asm Func_<addr>; gMaxLines/gNumMusicPlayers are symbol-as-value config;
