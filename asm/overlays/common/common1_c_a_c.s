@@ -1,13 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_common1_16fc
-	ldr	r2, =ewram_2001000
-	mov	r3, #9
-	strh	r3, [r2]
-	bx	lr
-.func_end OvlFunc_common1_16fc
-
 .thumb_func_start OvlFunc_common1_1708
 	push	{r5, lr}
 	ldr	r5, =ewram_2001000

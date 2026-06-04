@@ -127,10 +127,3 @@
 	bx	r1
 .func_end Func_80b5ad4
 
-.thumb_func_start Func_80b5b08
-	ldr	r3, =REG_BG0VOFS
-	mov	r2, #0
-	strh	r2, [r3]
-	bx	lr
-.func_end Func_80b5b08
-
