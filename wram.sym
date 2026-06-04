@@ -253,3 +253,80 @@ iwram_3007f00 = 0x03007F00;
 iwram_3007fa0 = 0x03007FA0;
 iwram_3007ff0 = 0x03007FF0;
 iwram_3007ffc = 0x03007FFC;
+
+/* ---- m4a / "Sappy" import (SAPPY_IMPORT_PLAN.md) ---- */
+/* Stock-engine symbols the m4a TU (lib/m4a/m4a.o) references but the alias
+   generator sources don't name. Mixer fns + CpuSet resolve to their kept
+   asm Func_<addr>; gMaxLines/gNumMusicPlayers are symbol-as-value config;
+   SoundMainRAM_Buffer is the IWRAM mixer-code buffer. */
+SoundMainRAM_Buffer = 0x03007000;
+gMaxLines           = 0;
+gNumMusicPlayers    = 8;
+CpuSet              = Func_8006864;
+__divsi3            = Func_af0_from_thumb;
+SoundMain           = Func_80f95f0;
+MP2KPlayerMain      = Func_80f9c90;
+MP2K_event_nxx      = Func_80f9f6c;
+MP2K_event_endtie   = Func_80fa16c;
+MP2K_event_lfos     = Func_80fa1d4;
+MP2K_event_mod      = Func_80fa1e8;
+
+/* Reverse aliases: the C portion is now real-named C in lib/m4a/m4a.c, so the
+   old Func_<addr> names (referenced by exports / prefix / mixer / aliases.sym)
+   alias to the m4a.o definitions. */
+Func_80fa1fc = MidiKeyToFreq;
+Func_80fa264 = MPlayContinue;
+Func_80fa280 = MPlayFadeOut;
+Func_80fa2a0 = m4aSoundInit;
+Func_80fa318 = m4aSoundMain;
+Func_80fa324 = m4aSongNumStart;
+Func_80fa350 = m4aSongNumStartOrChange;
+Func_80fa39c = m4aSongNumStartOrContinue;
+Func_80fa3f0 = m4aSongNumStop;
+Func_80fa424 = m4aSongNumContinue;
+Func_80fa458 = m4aMPlayAllStop;
+Func_80fa484 = m4aMPlayContinue;
+Func_80fa490 = m4aMPlayAllContinue;
+Func_80fa4bc = m4aMPlayFadeOut;
+Func_80fa4cc = m4aMPlayFadeOutTemporarily;
+Func_80fa4ec = m4aMPlayFadeIn;
+Func_80fa514 = m4aMPlayImmInit;
+Func_80fa55c = MPlayExtender;
+Func_80fa674 = MusicPlayerJumpTableCopy;
+Func_80fa678 = ClearChain;
+Func_80fa68c = Clear64byte;
+Func_80fa6a0 = SoundInit;
+Func_80fa798 = SampleFreqSet;
+Func_80fa83c = m4aSoundMode;
+Func_80fa8d4 = SoundClear;
+Func_80fa928 = m4aSoundVSyncOff;
+Func_80fa9a4 = m4aSoundVSyncOn;
+Func_80fa9e0 = MPlayOpen;
+Func_80faa58 = MPlayStart;
+Func_80fab3c = MPlayStop;
+Func_80fab7c = FadeOutBody;
+Func_80fac44 = TrkVolPitSet;
+Func_80facf8 = MidiKeyToCgbFreq;
+Func_80fada0 = CgbOscOff;
+Func_80fadf0 = CgbModVol;
+Func_80fae58 = CgbSound;
+Func_80fb2a4 = m4aMPlayTempoControl;
+Func_80fb2cc = m4aMPlayVolumeControl;
+Func_80fb334 = m4aMPlayPitchControl;
+Func_80fb3a8 = m4aMPlayPanpotControl;
+Func_80fb410 = ClearModM;
+Func_80fb430 = m4aMPlayModDepthSet;
+Func_80fb4a4 = m4aMPlayLFOSpeedSet;
+Func_80fb518 = MP2K_event_memacc;
+Func_80fb670 = MP2K_event_xcmd;
+Func_80fb690 = MP2K_event_xxx;
+Func_80fb6a4 = MP2K_event_xwave;
+Func_80fb6ec = MP2K_event_xtype;
+Func_80fb700 = MP2K_event_xatta;
+Func_80fb714 = MP2K_event_xdeca;
+Func_80fb728 = MP2K_event_xsust;
+Func_80fb73c = MP2K_event_xrele;
+Func_80fb750 = MP2K_event_xiecv;
+Func_80fb75c = MP2K_event_xiecl;
+Func_80fb768 = MP2K_event_xleng;
+Func_80fb77c = MP2K_event_xswee;

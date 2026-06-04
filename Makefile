@@ -101,10 +101,22 @@ asm/%.o: src/%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# lib/m4a/ is the stock m4a/"Sappy" engine, built with old_agbcc (not gcc296)
-# via a dedicated rule wired in by the Sappy import (SAPPY_IMPORT_PLAN.md
-# Phase 3). Excluded here so the default gcc296 rule doesn't try (and fail) to
-# build it as ordinary game code.
+# lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
+# old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
+# sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
+# s8 (its ROM loads are signed) without touching the rest of the unsigned-char
+# corpus. See SAPPY_IMPORT_PLAN.md.
+AGBCC_DIR     ?= tools/agbcc
+M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
+M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2
+
+lib/m4a/%.o: lib/m4a/%.c
+	gcc -E $(M4A_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_DIR)/bin/old_agbcc $(M4A_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
+# lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
 C_SRCS  := $(filter-out lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
