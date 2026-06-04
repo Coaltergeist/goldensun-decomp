@@ -33,13 +33,15 @@ SECTIONS {
 		asm/overlays/rom_7bf5a8/ovl_2e0_c_c_c.o(.text)
 		asm/overlays/rom_7bf5a8/ovl_b8c.o(.text)
 		src/overlays/rom_7bf5a8/imports.o(.text)
-		asm/overlays/common/common2.o(.text)
+		asm/overlays/common/common2_a.o(.text)
+		asm/overlays/common/common2_b.o(.text)
+		asm/overlays/common/common2_c.o(.text)
 	} > overlay
 
 	.data : {
 		asm/overlays/rom_7bf5a8/ovl_170.o(.data)
 		asm/overlays/rom_7bf5a8/ovl_b8c.o(.data)
-		asm/overlays/common/common2.o(.data)
+		asm/overlays/common/common2_c.o(.data)
 		asm/overlays/rom_7bf5a8/ovl_30_c_c.o(.data)
 		asm/overlays/rom_7bf5a8/ovl_2e0_c_c_c.o(.data)
 	} > overlay
