@@ -8,35 +8,27 @@
 #include "platform/shared/audio/cgb_audio.h"
 #endif
 
-#if PLATFORM_GBA
-#define BSS_CODE __attribute__((section(".bss.code")))
+// GS1 port: these globals live at fixed addresses already defined in
+// goldensun's aliases.sym / wram.sym (the existing source of truth — SA2's
+// m4a.c owns them, GS1 does not), so the m4a TU references them extern rather
+// than defining them. SoundMainRAM_Buffer is the IWRAM mixer-code buffer
+// (0x03007000, added to wram.sym as SoundMainRAM_Buffer = iwram_3007000).
+extern char SoundMainRAM_Buffer[0x400];
 
-BSS_CODE ALIGNED(4) char SoundMainRAM_Buffer[0x400] = { 0 };
-#endif
+extern struct MP2KTrack gMPlayTrack_BGM[16];
+extern struct MP2KTrack gMPlayTrack_SE1[16];
+extern struct MP2KTrack gMPlayTrack_SE2[16];
+extern struct MP2KTrack gMPlayTrack_SE3[16];
 
-EWRAM_DATA struct MP2KTrack gMPlayTrack_BGM[16] = {};
-EWRAM_DATA struct MP2KTrack gMPlayTrack_SE1[16] = {};
-EWRAM_DATA struct MP2KTrack gMPlayTrack_SE2[16] = {};
-EWRAM_DATA struct MP2KTrack gMPlayTrack_SE3[16] = {};
+extern struct SoundMixerState gSoundInfo;
+extern void *gMPlayJumpTable[36];
+extern struct MixerSource gCgbChans[4];
 
-// TODO: convert sound_data to C
-// const struct MusicPlayer gMPlayTable[] = {
-//     { &gMPlayInfo_BGM, gMPlayTrack_BGM, 16 },
-//     { &gMPlayInfo_SE1, gMPlayTrack_SE1, 16 },
-//     { &gMPlayInfo_SE2, gMPlayTrack_SE2, 16 },
-//     { &gMPlayInfo_SE3, gMPlayTrack_SE3, 16 },
-// };
-
-EWRAM_DATA struct SoundMixerState gSoundInfo = {};
-EWRAM_DATA void *gMPlayJumpTable[36] = {};
-EWRAM_DATA struct MixerSource gCgbChans[4] = {};
-
-// For some reason these were declared in this order
-EWRAM_DATA struct MP2KPlayerState gMPlayInfo_BGM = {};
-EWRAM_DATA struct MP2KPlayerState gMPlayInfo_SE1 = {};
-EWRAM_DATA struct MP2KPlayerState gMPlayInfo_SE2 = {};
-EWRAM_DATA u8 gMPlayMemAccArea[4 * sizeof(uintptr_t)] = {};
-EWRAM_DATA struct MP2KPlayerState gMPlayInfo_SE3 = {};
+extern struct MP2KPlayerState gMPlayInfo_BGM;
+extern struct MP2KPlayerState gMPlayInfo_SE1;
+extern struct MP2KPlayerState gMPlayInfo_SE2;
+extern u8 gMPlayMemAccArea[4 * sizeof(uintptr_t)];
+extern struct MP2KPlayerState gMPlayInfo_SE3;
 
 static void MP2K_event_null(void);
 
