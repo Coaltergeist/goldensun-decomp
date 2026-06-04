@@ -36,6 +36,7 @@ debug_compiled_object.o
 # User-installed toolchains (per INSTALL.md, installed via external git clone)
 tools/gcc296/
 tools/agbcc/
+tools/gcc3/
 tools/asm-differ/
 
 # Python
