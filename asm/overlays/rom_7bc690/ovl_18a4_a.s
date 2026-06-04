@@ -438,25 +438,3 @@
 	bx	r0
 .func_end OvlFunc_933_2009c1c
 
-.thumb_func_start OvlFunc_933_2009c78
-	ldr	r3, =.L3030
-	strh	r0, [r3]
-	bx	lr
-.func_end OvlFunc_933_2009c78
-
-	.section .data
-
-.L26bc:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26bc, (0x26be-0x26bc)
-.L26be:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26be, (0x26c0-0x26be)
-.L26c0:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26c0
-
-	.section .bss
-
-	.lcomm	.Lunused_26c8, 8
-	.lcomm	.L26d0, 0x10
-	.lcomm	.L26e0, 0x50
-	.lcomm	.L2730, 0x900
-	.lcomm	.L3030, 4
