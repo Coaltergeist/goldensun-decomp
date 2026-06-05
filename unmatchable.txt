@@ -1,0 +1,18 @@
+# Functions that cannot be expressed as byte-matching C.
+#
+# These stay as hand-written assembly permanently, No C decompilation can
+# reproduce their bytes under the production toolchain (gcc-2.96 + Karathan's
+# flags).
+#
+# This is distinct from src/non_matching/ (functions we DO have C for, but it
+# doesn't byte-match yet). Entries here have no viable C at all.
+#
+# Format: one entry per line, whitespace-separated:
+#     <FuncName>   <category>   <free-text reason>
+# Lines starting with '#' and blank lines are ignored; the first token is the
+# function name. Add to this list as such functions are identified.
+#
+# Categories:
+#     veneer  - compiler/linker interworking thunk (e.g. the _call_via_rN family)
+
+Func_80f9ee8   veneer   bx r3 interworking thunk at 0x080f9ee8; gcc-2.96 appends its own bx lr epilogue and silently ignores __attribute__((naked)), so no C yields the bare 2-byte body. (The real _call_via_r3 is the linker veneer at 0x080072f0.)
