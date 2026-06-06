@@ -1,28 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8021dfc
-	ldr	r1, =REG_BG1CNT
-	mov	r3, #4
-	ldrh	r2, [r1]
-	neg	r3, r3
-	and	r3, r2
-	mov	r2, #3
-	orr	r3, r2
-	strh	r3, [r1]
-	bx	lr
-.func_end Func_8021dfc
-
-.thumb_func_start Func_8021e14
-	ldr	r1, =REG_BG1CNT
-	mov	r3, #4
-	ldrh	r2, [r1]
-	neg	r3, r3
-	and	r3, r2
-	strh	r3, [r1]
-	bx	lr
-.func_end Func_8021e14
-
 .thumb_func_start Func_8021e28
 	push	{lr}
 	ldr	r2, =REG_BG0VOFS
