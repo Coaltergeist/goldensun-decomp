@@ -16,16 +16,17 @@ SECTIONS {
 		src/overlays/rom_7ca63c/exports.o(.text)
 		asm/overlays/rom_7ca63c/ovl_30_a.o(.text)
 		asm/overlays/rom_7ca63c/ovl_30_b.o(.text)
-		asm/overlays/rom_7ca63c/ovl_30_c.o(.text)
+		asm/overlays/rom_7ca63c/ovl_30_c_b.o(.text)
+		asm/overlays/rom_7ca63c/ovl_30_c_c.o(.text)
 		src/overlays/rom_7ca63c/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7ca63c/ovl_30_c.o(.data)
+		asm/overlays/rom_7ca63c/ovl_30_c_c.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7ca63c/ovl_30_c.o(.bss)
+		asm/overlays/rom_7ca63c/ovl_30_c_c.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

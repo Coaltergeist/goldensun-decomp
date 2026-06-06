@@ -15,7 +15,7 @@
  *
  * KEY TECHNIQUE (this is why it is worth keeping): the two return values are
  * `.global` data labels `.L8d8` / `.L818` defined in ovl_314_c_c.s. C cannot
- * spell ".L8d8", so bind a legal name via a gcc asm() label — the emitted reloc
+ * spell ".L8d8", so bind a legal name via a gcc asm() label; the emitted reloc
  * is then R_ARM_ABS32 .L8d8, identical to the ROM (verified: the reloc lines
  * match). This unlocks the whole `ldr =.LXXXX`-to-global overlay-data class.
  */
