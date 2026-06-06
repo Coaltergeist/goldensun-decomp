@@ -1,62 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80ca5b8
-	push	{lr}
-	mov	r1, #9
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5b8
-
-.thumb_func_start Func_80ca5c4
-	push	{lr}
-	mov	r1, #4
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5c4
-
-.thumb_func_start Func_80ca5d0
-	push	{lr}
-	mov	r1, #0
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5d0
-
-.thumb_func_start Func_80ca5dc
-	push	{lr}
-	mov	r1, #8
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5dc
-
-.thumb_func_start Func_80ca5e8
-	push	{lr}
-	mov	r1, #7
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5e8
-
-.thumb_func_start Func_80ca5f4
-	push	{lr}
-	mov	r1, #2
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca5f4
-
-.thumb_func_start Func_80ca600
-	push	{lr}
-	mov	r1, #0xb
-	bl	Func_80ca60c
-	pop	{r0}
-	bx	r0
-.func_end Func_80ca600
-
 .thumb_func_start Func_80ca60c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
