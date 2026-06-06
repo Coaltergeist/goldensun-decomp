@@ -19,13 +19,30 @@ SECTIONS {
 		asm/overlays/rom_7ced6c/ovl_30_a_c.o(.text)
 		asm/overlays/rom_7ced6c/ovl_30_b.o(.text)
 		asm/overlays/rom_7ced6c/ovl_30_c_b.o(.text)
-		asm/overlays/rom_7ced6c/ovl_30_c_c.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_a.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_a.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c.o(.text)
 		src/overlays/rom_7ced6c/imports.o(.text)
 		lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7ced6c/ovl_30_c_c.o(.data)
+		asm/overlays/rom_7ced6c/ovl_30_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c_c.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -26,7 +26,10 @@ SECTIONS {
 		asm/overlays/rom_7d0e88/ovl_1528_a_b.o(.text)
 		asm/overlays/rom_7d0e88/ovl_1528_a_c.o(.text)
 		asm/overlays/rom_7d0e88/ovl_1528_b.o(.text)
-		asm/overlays/rom_7d0e88/ovl_1528_c.o(.text)
+		asm/overlays/rom_7d0e88/ovl_1528_c_a.o(.text)
+		asm/overlays/rom_7d0e88/ovl_1528_c_b.o(.text)
+		asm/overlays/rom_7d0e88/ovl_1528_c_c_b.o(.text)
+		asm/overlays/rom_7d0e88/ovl_1528_c_c_c.o(.text)
 		asm/overlays/rom_7d0e88/ovl_2580.o(.text)
 		src/overlays/rom_7d0e88/imports.o(.text)
 		lib/call_via.o(.text)
@@ -37,13 +40,13 @@ SECTIONS {
 		asm/overlays/rom_7d0e88/ovl_314_c.o(.data)
 		asm/overlays/common/common0.o(.data1)
 		asm/overlays/rom_7d0e88/ovl_2d64.o(.data)
-		asm/overlays/rom_7d0e88/ovl_1528_c.o(.data)
+		asm/overlays/rom_7d0e88/ovl_1528_c_c_c.o(.data)
 		asm/overlays/rom_7d0e88/ovl_1440_c_c.o(.data)
 		asm/overlays/rom_7d0e88/ovl_2580.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7d0e88/ovl_1528_c.o(.bss)
+		asm/overlays/rom_7d0e88/ovl_1528_c_c_c.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {
