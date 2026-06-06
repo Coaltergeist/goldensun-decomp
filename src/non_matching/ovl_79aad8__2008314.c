@@ -13,7 +13,7 @@
  *   2. The compare pools the constant (`ldr r3,=0x1d; cmp r2,r3`) rather than
  *      `cmp #29`, despite 0x1d fitting in imm8 — also a typed-field signature.
  *
- * KEY TECHNIQUE (this is why it's worth keeping): the two return values are
+ * KEY TECHNIQUE (this is why it is worth keeping): the two return values are
  * `.global` data labels `.L8d8` / `.L818` defined in ovl_314_c_c.s. C cannot
  * spell ".L8d8", so bind a legal name via a gcc asm() label — the emitted reloc
  * is then R_ARM_ABS32 .L8d8, identical to the ROM (verified: the reloc lines

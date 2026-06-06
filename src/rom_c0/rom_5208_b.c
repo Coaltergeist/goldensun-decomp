@@ -6,8 +6,8 @@
  * goldensun/stage1.ld.
  *
  * iwram_3001ce0 is a 3-element fx32 vector (the physics-state position per
- * FF's SetPhysVec name). The earlier `(char *)&iwram_3001ce0 + N` cast form
- * worked under gcc-3.0 but triggered gcc-2.96's STMIA peephole on the
+ * FF SetPhysVec name). The earlier `(char *)&iwram_3001ce0 + N` cast form
+ * worked under gcc-3.0 but triggered the gcc-2.96 STMIA peephole on the
  * three consecutive stores; array indexing matches under both compilers.
  */
 extern unsigned int iwram_3001ce0[];

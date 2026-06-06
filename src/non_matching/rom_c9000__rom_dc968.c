@@ -1,7 +1,7 @@
 /* Anim_Atalanta (GS1) = Func_80dc968 @ 0x080DC968
  * Defined in: goldensun/asm/rom_c9000/rom_dbbdc.s (cluster, lines 1644-2693)
  *
- * Ported from Salenewt's GS2 re_Atalanta.c (Anim_Atalanta @ GS2 0x8153EBC),
+ * Ported from Salenewt GS2 re_Atalanta.c (Anim_Atalanta @ GS2 0x8153EBC),
  * re-derived against the GS1 .s. GS1 and GS2 share the same overall logic;
  * GS1-specific symbol addresses, file/asset IDs, and a few structural points
  * (noted inline) were read from the GS1 disassembly.

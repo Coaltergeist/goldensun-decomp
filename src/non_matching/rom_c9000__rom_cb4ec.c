@@ -2,14 +2,14 @@
  * Defined in: goldensun/asm/rom_c9000/rom_cb1a4.s (cluster, lines 382-749)
  *
  * First-draft decompilation, re-derived against the GS1 .s. NOTE: the GS1
- * version diverges substantially from Salenewt's GS2 re_DaggerRain.c:
+ * version diverges substantially from Salenewt GS2 re_DaggerRain.c:
  *   - particle pos.y uses the spawn-loop index (0x18 - i/4), not motionX>>2.
  *   - the dagger draw is TABLE-DRIVEN: gfx offset / width / height come from
  *     three rodata tables indexed by abs(motion.x)>>17, with a -4 height
  *     adjustment once frame >= j*4+0x19. (GS2 used a computed offset and a
  *     fixed 0x20x0x20.)
  * Parked in non_matching: those tables are file-local .L rodata labels with
- * no aliases, so this TU's data relocs can't match the original without
+ * no aliases, so this TU data relocs cannot match the original without
  * aliasing them, and the FILE id (0x78) loads from the pool (FP#9;
  * small-const call-argument pooling; see camelot-gcc/README.md scoreboard).
  *

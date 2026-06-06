@@ -41,14 +41,12 @@ The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc): a pat
 cd ..
 git clone https://github.com/Coaltergeist/camelot-gcc
 cd camelot-gcc
-./build-296.sh                          # ~5-10 min, vendored gcc-2.96 source + 7 patches
-./install-296.sh ../goldensun-decomp
+./build.sh all                          # ~5-10 min, vendored gcc-2.96 source + 7 patches as well as gcc 3.0 (unused) and old_agbcc (used for m4a)
+./install.sh all ../goldensun-decomp    # wherever your installation is relative to camelot-gcc
 cd ../goldensun-decomp
 ```
 
-This drops `cc1`, `xgcc`, `cpp`, `tradcpp` into `tools/gcc296/` inside the repo (gitignored, never committed).
-
-> If you have an older clone of this repo with `tools/gcc3/` or `tools/agbcc/` on disk from a previous toolchain, you can delete them: `rm -rf tools/gcc3 tools/agbcc`. The build no longer uses either.
+This drops `cc1`, `xgcc`, `cpp`, `tradcpp` into `tools/gcc296/` (and `tools/gcc3`, unused for the moment), as well as `old_agbcc` into `tools/agbcc/` inside the repo (gitignored, never committed).
 
 ### 3. Provide a reference ROM
 

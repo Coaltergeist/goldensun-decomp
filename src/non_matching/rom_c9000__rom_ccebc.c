@@ -1,7 +1,7 @@
 /* Anim_SpiderWeb (GS1) = Func_80ccebc @ 0x080CCEBC
  * Defined in: goldensun/asm/rom_c9000/rom_cc5d8.s (cluster, lines 990-1249)
  *
- * Ported from Salenewt's GS2 re_SpiderWeb.c, re-derived against the GS1 .s.
+ * Ported from Salenewt GS2 re_SpiderWeb.c, re-derived against the GS1 .s.
  * Judge: tools/judge.sh goldensun/src/non_matching/rom_c9000__rom_ccebc.c \
  *          Func_80ccebc goldensun/asm/rom_c9000/rom_cc5d8.s
  *

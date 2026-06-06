@@ -10,7 +10,7 @@
  * Sieve decompilation with the single FP#9 fix applied: the 0x1e message ID is
  * the absolute symbol MSG_LEARN_INNATE_MOVE (message.h / message.sym), following
  * the file_table.h convention. The ((int)&_MSG_*) macro forces gcc-2.96 to
- * materialize it from the literal pool, matching the ROM's `ldr r0, =...` (where
+ * materialize it from the literal pool, matching the ROM `ldr r0, =...` (where
  * stock gcc would emit an inline `mov`). See FP9_PLAN.md / COMPILER_NOTES.md
  * (FP#9). Original model output (literal 0x1e) preserved in the sibling .response.
  */
