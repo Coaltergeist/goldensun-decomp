@@ -1538,11 +1538,3 @@
 	bx	r0
 .func_end OvlFunc_948_2009838
 
-.thumb_func_start OvlFunc_948_20098c0
-	ldr	r3, =REG_BLDALPHA
-	mov	r2, #0xd0
-	lsl	r2, #4
-	strh	r2, [r3]
-	bx	lr
-.func_end OvlFunc_948_20098c0
-

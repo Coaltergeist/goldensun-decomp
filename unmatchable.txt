@@ -13,6 +13,13 @@
 # function name. Add to this list as such functions are identified.
 #
 # Categories:
-#     veneer  - compiler/linker interworking thunk (e.g. the _call_via_rN family)
+#     veneer    - compiler/linker interworking thunk (e.g. the _call_via_rN family)
+#     m4a-asm   - stock m4a (Sappy) sound-engine mixer, hand-written assembly in
+#                 the original (SA2 m4a0.s, 0x080F95E0-0x080FA1FC). It STAYS asm by
+#                 the Sappy import (SAPPY_IMPORT_PLAN.md Phase 4); decompiling it to
+#                 C would diverge from the canonical stock source. Already correct
+#                 as the asm/rom_f9000/{rom_f95e0,rom_f9ef8_a}.s splits.
 
 Func_80f9ee8   veneer   bx r3 interworking thunk at 0x080f9ee8; gcc-2.96 appends its own bx lr epilogue and silently ignores __attribute__((naked)), so no C yields the bare 2-byte body. (The real _call_via_r3 is the linker veneer at 0x080072f0.)
+Func_80f95e0   m4a-asm   Thumb->ARM interworking veneer (adr r2; bx r2; .arm; umull r2,r3,r0,r1) at 0x080f95e0 — umull has no Thumb-1 encoding, so no -mthumb C produces it. Stock m4a mixer entry.
+Func_80fa1c8   m4a-asm   m4a mixer leaf at 0x080fa1c8 (in the rom_f9ef8_a.s mixer tail, < 0x080fa1fc); hand-asm (reads a byte into r3, not the r0 return reg). Stock m4a, stays asm.

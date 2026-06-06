@@ -317,7 +317,9 @@ SECTIONS {
 		asm/rom_77000/rom_79460_c_b.o(.text)
 		asm/rom_77000/rom_79460_c_c_a.o(.text)
 		asm/rom_77000/rom_79460_c_c_b.o(.text)
-		asm/rom_77000/rom_79460_c_c_c.o(.text)
+		asm/rom_77000/rom_79460_c_c_c_a.o(.text)
+		asm/rom_77000/rom_79460_c_c_c_b.o(.text)
+		asm/rom_77000/rom_79460_c_c_c_c.o(.text)
 
 		asm/rom_77000/rom_77320_c_c.o(.rodata)
 		asm/rom_77000/rom_79008_c.o(.rodata)
@@ -327,7 +329,7 @@ SECTIONS {
 		asm/rom_77000/rom_78b9c.o(.rodata)
 		asm/rom_77000/rom_80ec8.o(.rodata)
 		asm/rom_77000/rom_78ed8_c.o(.rodata)
-		asm/rom_77000/rom_79460_c_c_c.o(.rodata)
+		asm/rom_77000/rom_79460_c_c_c_c.o(.rodata)
 	} > rom
 
 	rom_8a000 : ALIGN(0x1000) {
