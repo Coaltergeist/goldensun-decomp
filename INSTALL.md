@@ -42,7 +42,7 @@ cd ..
 git clone https://github.com/Coaltergeist/camelot-gcc
 cd camelot-gcc
 ./build.sh all                          # ~5-10 min, vendored gcc-2.96 source + 7 patches as well as gcc 3.0 (unused) and old_agbcc (used for m4a)
-./install.sh all ../goldensun-decomp    # wherever your installation is relative to camelot-gcc
+./install.sh ../goldensun-decomp all    # wherever your installation is relative to camelot-gcc
 cd ../goldensun-decomp
 ```
 
