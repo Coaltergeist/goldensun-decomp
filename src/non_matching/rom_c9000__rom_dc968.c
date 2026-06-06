@@ -40,7 +40,7 @@
  *   0x3b AnimTransitionIn BG       0xb4 LoadVFXFile flare (segment 2)
  *   0x2e/0x2f BuildDraw2DFunc      0xd4/0x86 PlaySound (arrow / impact SFX)
  *   These small-const file IDs load from the literal pool (FP#9; see
- *   camelot-gcc/README.md scoreboard) — one reason this stays non-matching.
+ *   camelot-gcc/README.md scoreboard); one reason this stays non-matching.
  */
 
 typedef unsigned char  u8;

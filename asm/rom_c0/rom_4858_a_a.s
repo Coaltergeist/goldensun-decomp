@@ -20,11 +20,3 @@
 	bx	lr
 .func_end Func_8004858
 
-.thumb_func_start Func_800488c
-	ldr	r3, =iwram_3001e50
-	ldr	r0, =iwram_3007800
-	ldr	r3, [r3, #4]
-	sub	r0, r3
-	bx	lr
-.func_end Func_800488c
-

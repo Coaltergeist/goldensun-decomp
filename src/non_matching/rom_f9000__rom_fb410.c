@@ -3,12 +3,12 @@
  *
  * Logic is a faithful 1:1 of the expected disassembly (clears track[0x1a] and
  * track[0x16], then ORs 0xc or 0x3 into track[0] depending on track[0x18]).
- * It does NOT byte-match yet — pure codegen shape:
+ * It does NOT byte-match yet, pure codegen shape:
  *   - the ROM is a frameless leaf (`bx lr`); this compiles framed
  *     (`push {lr}` … `pop {r0}; bx r0`),
  *   - register allocation + branch ordering differ (the default value is
  *     materialized after the cmp in the ROM, before it here).
- * A good permuter seed — the structure is right, only the shape is off.
+ * A good permuter seed; the structure is right, only the shape is off.
  */
 void Func_80fb410(unsigned char *track) {
     unsigned char v;

@@ -1,22 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8019ebc
-	ldr	r0, =.L2a2e0
-	ldr	r3, =.L29ee4
-	sub	r0, r3
-	asr	r0, #2
-	bx	lr
-.func_end Func_8019ebc
-
-.thumb_func_start Func_8019ed0
-	ldr	r0, =.L2e108
-	ldr	r3, =.L2de88
-	sub	r0, r3
-	asr	r0, #2
-	bx	lr
-.func_end Func_8019ed0
-
 .thumb_func_start Func_8019ee4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
