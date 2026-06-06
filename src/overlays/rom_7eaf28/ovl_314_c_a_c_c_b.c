@@ -1,4 +1,4 @@
-/* Cluster OvlFnuc_564..OvlFnuc_564 extracted from goldensun/asm/overlays/rom_7eaf28/ovl_314_c_a_c_c.s.
+/* Cluster OvlFunc_960_2008564..OvlFunc_960_2008564 extracted from goldensun/asm/overlays/rom_7eaf28/ovl_314_c_a_c_c.s.
  *
  * Total .text for this TU = 33587212 bytes (= 0x200800c).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void OvlFunc_960_2008464(int);
 
-void OvlFnuc_564(void) {
+void OvlFunc_960_2008564(void) {
     OvlFunc_960_2008464(9);
 }
