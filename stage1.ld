@@ -985,9 +985,10 @@ SECTIONS {
 
 	rom_185000 : ALIGN(0x1000) {
 		src/rom_185000/exports.o(.text)
-		asm/rom_185000/rom_185008.o(.text)
+		asm/rom_185000/rom_185008_b.o(.text)
+		asm/rom_185000/rom_185008_c.o(.text)
 
-		asm/rom_185000/rom_185008.o(.rodata)
+		asm/rom_185000/rom_185008_c.o(.rodata)
 
 		. += 0x1000;
 	} > rom
