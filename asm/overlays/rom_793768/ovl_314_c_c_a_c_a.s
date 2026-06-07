@@ -24,7 +24,7 @@
 .L4cc:
 	bl	__Func_80916b0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L4e4
 	ldr	r1, [r0, #8]
@@ -335,7 +335,7 @@
 	mov	r6, r8
 	push	{r6}
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r3, #6
 	ldrsh	r2, [r6, r3]
@@ -385,7 +385,7 @@
 	mov	r6, r8
 	push	{r6}
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r3, #6
 	ldrsh	r2, [r6, r3]
@@ -478,7 +478,7 @@
 	mov	r6, r8
 	push	{r6}
 	mov	r6, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	mov	r5, r0
 	add	r5, #0x5b

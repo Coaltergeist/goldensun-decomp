@@ -146,7 +146,7 @@
 .L42e:
 	mov	r0, #0xe
 .L430:
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, r0
 	mov	r0, r5
 	mov	r2, #0x20
@@ -155,7 +155,7 @@
 	cmp	r0, #0
 	bne	.L480
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0xbc
 	lsl	r2, #1
 	add	r3, r7, r2

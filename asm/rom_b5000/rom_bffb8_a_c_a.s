@@ -214,9 +214,9 @@
 	ldr	r0, [sp]
 	bl	Func_80b595c
 	mov	r0, r10
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, r8
-	bl	Func_8004278
+	bl	StopTask
 	mov	r2, r9
 	strh	r2, [r6, #2]
 	mov	r0, #2

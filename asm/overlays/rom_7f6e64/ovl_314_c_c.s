@@ -6,7 +6,7 @@
 	mov	r6, r8
 	push	{r6, r7}
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =.L6764
 	ldr	r3, [r5]
 	mov	r6, r0
@@ -135,28 +135,28 @@
 	add	r3, #1
 	str	r3, [r5]
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #1
 	add	r0, #0x62
 	strb	r5, [r0]
 	mov	r0, #1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x62
 	strb	r5, [r0]
 	mov	r0, #2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x62
 	strb	r5, [r0]
 	mov	r0, #3
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x62
 	strb	r5, [r0]
 	mov	r0, #0x15
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x62
 	strb	r5, [r0]
 	mov	r0, #6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x62
 	strb	r5, [r0]
 	b	.L58dc
@@ -219,7 +219,7 @@
 .L58dc:
 	cmp	r7, #0
 	beq	.L599c
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #4
@@ -248,7 +248,7 @@
 	add	r3, #0x55
 	mov	r5, #0
 	strb	r5, [r3]
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, =0xffff000
 	mov	r2, r7
 	add	r2, #0x64
@@ -259,14 +259,14 @@
 	add	r3, #0x66
 	strh	r5, [r3]
 	mov	r8, r1
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, r7
 	lsr	r0, #13
 	add	r3, #0x62
 	strb	r0, [r3]
 	ldr	r3, =OvlFunc_969_200b660
 	str	r3, [r7, #0x6c]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, r0
 	lsl	r0, r3, #16
 	sub	r0, r3
@@ -306,22 +306,22 @@
 	add	r3, #1
 	str	r3, [r2]
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	mov	r0, #1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	mov	r0, #2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	mov	r0, #3
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	mov	r0, #0x15
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	mov	r0, #6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_969_200d9f0
 	pop	{r3, r5}
 	mov	r8, r3
@@ -368,11 +368,11 @@
 	mov	r5, r8
 	push	{r5, r6, r7}
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001e70
 	mov	r10, r0
 	ldr	r5, [r3]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #4
@@ -397,7 +397,7 @@
 	mov	r0, #0x17
 	bl	__Func_80923e4
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #0x80
 	lsl	r5, #9
 	b	.L5a94
@@ -409,12 +409,12 @@
 	mov	r0, #0x17
 	bl	__Func_80923e4
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =0x14ccc
 .L5a94:
 	str	r5, [r0, #0x18]
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0x1c]
 	b	.L5ab6
 
@@ -468,7 +468,7 @@
 	mov	r3, r7
 	add	r3, #0x55
 	strb	r6, [r3]
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, =0xffff000
 	mov	r2, r7
 	and	r3, r0

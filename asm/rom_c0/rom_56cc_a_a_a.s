@@ -193,7 +193,7 @@
 	mov	r5, #0x10
 	b	.L585a
 .L5848:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r6
 	bl	Func_b50_from_thumb
 	mov	r5, r0

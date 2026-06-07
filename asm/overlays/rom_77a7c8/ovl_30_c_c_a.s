@@ -39,7 +39,7 @@
 	lsl	r1, #1
 	add	r5, r1
 	ldr	r0, [r5]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x55
 	strb	r3, [r0]
@@ -57,10 +57,10 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r0, #0x36
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r8, r0
 	bl	__Func_80916b0
 	mov	r0, #1
@@ -168,7 +168,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xa
 	ldrsh	r5, [r0, r3]
 	ldr	r3, =iwram_3001e40
@@ -179,7 +179,7 @@
 	bl	_Func_8000b50
 	cmp	r0, #0
 	bne	.L39e8
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #1
@@ -343,7 +343,7 @@
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	add	r0, #0x54
 	strb	r3, [r0]

@@ -231,19 +231,19 @@
 	ldr	r5, =ewram_2010000
 	mov	r10, r0
 .Ld93a6:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xc8
 	bl	Func_b50_from_thumb
 	sub	r0, #0x64
 	lsl	r0, #14
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xc8
 	bl	Func_b50_from_thumb
 	sub	r0, #0x64
 	lsl	r0, #15
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xc8
 	bl	Func_b50_from_thumb
 	mov	r1, #1
@@ -1036,7 +1036,7 @@
 	b	.Ld9482
 .Ld9a86:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x84
 	pop	{r3, r5, r6, r7}

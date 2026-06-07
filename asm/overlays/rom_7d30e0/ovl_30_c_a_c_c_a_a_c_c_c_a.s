@@ -6,7 +6,7 @@
 	mov	r0, #2
 	bl	OvlFunc_948_20090b8
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #7
@@ -35,7 +35,7 @@
 	mov	r0, #3
 	bl	OvlFunc_948_20090b8
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #7
@@ -220,7 +220,7 @@
 .thumb_func_start OvlFunc_948_2009308
 	push	{r5, r6, r7, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.L131a
@@ -292,7 +292,7 @@
 	mov	r0, #0xbc
 	bl	__Func_80f9080
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L13c4
 	mov	r3, #0xa
@@ -336,7 +336,7 @@
 .thumb_func_start OvlFunc_948_200941c
 	push	{r5, r6, r7, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.L142e
@@ -406,7 +406,7 @@
 	mov	r0, #0xbc
 	bl	__Func_80f9080
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L14d4
 	mov	r3, #0xa
@@ -454,7 +454,7 @@
 	push	{r6, r7}
 	mov	r7, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r1, [r0, #8]
 	cmp	r1, #0
 	bge	.L1546

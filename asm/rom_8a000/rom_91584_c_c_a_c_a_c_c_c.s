@@ -60,7 +60,7 @@
 	cmp	r5, #0
 	beq	.L920de
 	mov	r0, r6
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r1, =Data_9ff40
 	str	r0, [r5, #0x68]
 	mov	r0, r5

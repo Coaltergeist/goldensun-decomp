@@ -14,7 +14,7 @@
 	mov	r0, #0x64
 	bl	__Func_8010704
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r0, #0xd0
 	asr	r6, r3, #20
@@ -30,7 +30,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010704
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r0, #0xd2
 	asr	r6, r3, #20
@@ -45,7 +45,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010704
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r0, #0xd4
 	asr	r6, r3, #20

@@ -410,7 +410,7 @@
 	str	r3, [r5]
 	cmp	r2, #7
 	bne	.Ldeda8
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0xf
 	ldr	r3, [r6, #0xc]
 	and	r2, r0
@@ -438,7 +438,7 @@
 	mov	r2, r8
 	cmp	r2, #9
 	bne	.Ldedd4
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x1f
 	ldr	r1, [r6, #0xc]
 	and	r2, r0
@@ -449,7 +449,7 @@
 	sub	r3, #3
 	cmp	r3, #1
 	bhi	.Ldedea
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x1f
 	ldr	r1, [r6, #0xc]
 	and	r2, r0
@@ -459,7 +459,7 @@
 	mov	r3, r8
 	cmp	r3, #0xb
 	bne	.Ldee08
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x3f
 	ldr	r1, [r6, #0xc]
 	and	r2, r0
@@ -496,7 +496,7 @@
 	str	r0, [r5, #0xc]
 	cmp	r1, #7
 	bne	.Ldee4e
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	ldr	r0, [r7, #0xc]
@@ -512,7 +512,7 @@
 	mov	r3, r8
 	cmp	r3, #8
 	bne	.Ldee70
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	ldr	r0, [r7, #0xc]
@@ -529,7 +529,7 @@
 	mov	r0, r8
 	cmp	r0, #9
 	bne	.Ldee8a
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x3f
 	and	r2, r0
 	mov	r3, #0x40
@@ -542,7 +542,7 @@
 	mov	r1, r8
 	cmp	r1, #0xa
 	bne	.Ldeeac
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	ldr	r0, [r7, #0xc]
@@ -573,7 +573,7 @@
 	mov	r4, r8
 	cmp	r4, #6
 	bne	.Ldeee6
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r0
 	ldr	r0, [sp, #0x40]
 	lsr	r3, r0, #31
@@ -587,7 +587,7 @@
 	add	r0, r3
 	b	.Ldeefa
 .Ldeee6:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	ldr	r1, [sp, #0x40]
 	mov	r2, r0
@@ -932,19 +932,19 @@
 	str	r1, [sp, #0x10]
 	str	r2, [sp, #0xc]
 	str	r4, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	ldr	r4, [sp, #8]
 	and	r0, r4
 	sub	r0, #0x80
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	ldr	r4, [sp, #8]
 	and	r0, r4
 	sub	r0, #0x80
 	lsl	r0, #11
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	ldr	r2, [sp, #0xc]
 	and	r3, r0
@@ -1029,12 +1029,12 @@
 	cmp	r1, #2
 	bne	.Ldf2a0
 	str	r2, [sp, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x20
 	lsl	r5, r3, #12
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r0, r3
 	ldr	r2, [sp, #0xc]
@@ -1134,21 +1134,21 @@
 	str	r1, [sp, #0x10]
 	str	r2, [sp, #0xc]
 	str	r4, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r9
 	ldr	r2, [sp, #0xc]
 	and	r0, r3
 	sub	r0, #0x80
 	lsl	r0, r2
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r9
 	and	r0, r3
 	ldr	r2, [sp, #0xc]
 	sub	r0, #0x80
 	lsl	r0, r2
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	add	r3, #0x10
@@ -1761,7 +1761,7 @@
 	bl	.Ldefea
 .Ldf864:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	bl	Func_80cdbc0

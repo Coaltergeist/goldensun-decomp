@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_8d9a4_a_a.o and asm/rom_8a000/rom_8d9a4_a_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_8092054(unsigned int actorID);
+extern unsigned int MapActor_GetActor(unsigned int actorID);
 extern void _Func_80f9080(unsigned int arg0);
 extern void _Func_800c300(unsigned int arg0, unsigned int arg1);
 extern void Func_80030f8(unsigned int nframes);
@@ -16,7 +16,7 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
     unsigned char *actor;
     unsigned int ret;
 
-    actor = (unsigned char *)Func_8092054(arg1);
+    actor = (unsigned char *)MapActor_GetActor(arg1);
     ret = 0;
     if (actor != (unsigned char *)0) {
         _Func_80f9080(0x7c);

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8004278
+.thumb_func_start StopTask
 	push	{r5, lr}
 	mov	r5, #1
 	ldr	r4, =iwram_3001a20
@@ -38,7 +38,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8004278
+.func_end StopTask
 
 .thumb_func_start Func_80042c8
 	push	{r5, r6, lr}

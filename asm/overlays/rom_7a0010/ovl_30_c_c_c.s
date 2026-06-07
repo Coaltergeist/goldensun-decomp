@@ -17,7 +17,7 @@
 	mov	r5, #8
 .L1e2:
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r5, #1
 	mov	r1, #0
 	bl	__Func_800c528

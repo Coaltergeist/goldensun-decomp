@@ -218,7 +218,7 @@
 	b	.L1282
 .L13de:
 	ldr	r5, =.L2db8
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #7
 	and	r0, r3
 	lsl	r2, r0, #1

@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_883_200d5b0
 	push	{lr}
 	mov	r0, #1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc5c
 	pop	{r0}
 	bx	r0
@@ -12,7 +12,7 @@
 .thumb_func_start OvlFunc_883_200d5c0
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc5c
 	pop	{r0}
 	bx	r0
@@ -21,7 +21,7 @@
 .thumb_func_start OvlFunc_883_200d5d0
 	push	{lr}
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc98
 	pop	{r0}
 	bx	r0
@@ -30,7 +30,7 @@
 .thumb_func_start OvlFunc_883_200d5e0
 	push	{lr}
 	mov	r0, #0x17
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc98
 	pop	{r0}
 	bx	r0
@@ -39,7 +39,7 @@
 .thumb_func_start OvlFunc_883_200d5f0
 	push	{lr}
 	mov	r0, #0x18
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc98
 	pop	{r0}
 	bx	r0
@@ -48,7 +48,7 @@
 .thumb_func_start OvlFunc_883_200d600
 	push	{lr}
 	mov	r0, #0x19
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_883_200dc98
 	pop	{r0}
 	bx	r0

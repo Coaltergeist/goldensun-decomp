@@ -5,7 +5,7 @@
  * asm/overlays/rom_7ed0a0/ovl_30_a.o and asm/overlays/rom_7ed0a0/ovl_30_c.o in
  * goldensun/overlays/rom_7ed0a0/overlay.ld.
  */
-extern unsigned int __Func_8092054(short arg0);
+extern unsigned int __MapActor_GetActor(short arg0);
 
 unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
     unsigned int r5;
@@ -17,7 +17,7 @@ unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
     r3 = r5;
     r3 += 0x64;
     r2 = 0;
-    r0 = __Func_8092054(*(short *)((char *)r3 + r2));
+    r0 = __MapActor_GetActor(*(short *)((char *)r3 + r2));
     r2 = 0x80;
     r3 = *(unsigned int *)((char *)r0 + 0xc);
     r2 <<= 13;

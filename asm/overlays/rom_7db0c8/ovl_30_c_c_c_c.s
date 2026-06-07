@@ -19,7 +19,7 @@
 	sub	sp, #0xc
 	bl	__Func_8079358
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r1, [r5, #8]
 	ldr	r2, [r5, #0x10]
@@ -58,7 +58,7 @@
 	mov	r6, #0x19
 .Lab0:
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	lsl	r2, #12
 	mov	r9, r2
@@ -89,7 +89,7 @@
 	ldr	r0, =OvlFunc_954_200804c
 	bl	__StartTask
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r2, r5
 	add	r2, #0x22
@@ -123,7 +123,7 @@
 	bl	__Func_8010704
 .Lb40:
 	mov	r0, #0x11
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r3, [r5, #0x10]
 	asr	r2, r3, #20
@@ -142,7 +142,7 @@
 	mov	r0, #0x40
 	bl	__Func_8010704
 	mov	r0, #0x12
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r3, [r5, #8]
 	asr	r2, r3, #20
@@ -191,7 +191,7 @@
 	bl	__Func_80105d4
 .Lbd6:
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r0, =0x301
 	bl	__Func_8079338
@@ -226,7 +226,7 @@
 	bl	__Func_800c300
 .Lc22:
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
@@ -380,7 +380,7 @@
 	mov	r5, r8
 	push	{r5, r6, r7}
 	mov	r7, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xa
 	ldrsh	r2, [r0, r3]
 	mov	r9, r2
@@ -453,7 +453,7 @@
 	mov	r0, r7
 	bl	__Func_80923e4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xc0
 	lsl	r3, #8
 	strh	r3, [r0, #6]
@@ -728,7 +728,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1148
 	mov	r3, #0xa
@@ -742,7 +742,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1168
 	mov	r2, #0xa
@@ -756,7 +756,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1188
 	mov	r2, #0xa
@@ -1076,7 +1076,7 @@
 	mov	r0, #2
 	bl	__Func_80030f8
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, r0
 	add	r3, #0x55
 	mov	r2, r10
@@ -1092,7 +1092,7 @@
 	str	r6, [r0, #0x30]
 	bl	__Func_800d14c
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r3, r5
 	add	r3, #0x55
@@ -1111,7 +1111,7 @@
 	mov	r0, #0x2d
 	bl	__Func_809163c
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, r0
 	add	r3, #0x55
 	mov	r2, r10
@@ -1125,7 +1125,7 @@
 	str	r6, [r0, #0x30]
 	bl	__Func_800d14c
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r3, r5
 	add	r3, #0x55

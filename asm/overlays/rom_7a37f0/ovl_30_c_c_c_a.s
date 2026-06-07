@@ -360,7 +360,7 @@
 	cmp	r3, #0x34
 	bhi	.L392
 .L37e:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mul	r3, r0
 	ldr	r2, =.L20dc
@@ -813,7 +813,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r0, =OvlFunc_916_20083c0
-	bl	__Func_8004278
+	bl	__StopTask
 	ldr	r3, =.L12c8
 	ldr	r1, [r3]
 	ldr	r2, .L7cc	@ 1
@@ -1071,11 +1071,11 @@
 	mov	r0, #9
 	bl	__Func_80924d4
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x55
 	strb	r6, [r0]
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #8
 	strh	r3, [r0, #0x20]
 	mov	r3, #0xc0
@@ -1357,7 +1357,7 @@
 	mov	r5, r0
 	mov	r0, #0
 	str	r2, [sp, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r7, r0
 	ldrh	r3, [r7, #6]
 	mov	r2, #0x80

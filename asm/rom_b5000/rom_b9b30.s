@@ -390,7 +390,7 @@
 	mov	r7, #1
 	b	.Lb9ea0
 .Lb9e64:
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #1
@@ -2349,7 +2349,7 @@
 	beq	.Lbae36
 	add	r5, sp, #4
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	ldr	r4, [sp]
 	mov	r3, r4
 	mul	r3, r0
@@ -3218,7 +3218,7 @@
 	beq	.Lbb51c
 	b	.Lbb53e
 .Lbb4f4:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xb
 	mul	r3, r0
 	lsr	r3, #16
@@ -3229,7 +3229,7 @@
 	mov	r1, #1
 	b	.Lbb53e
 .Lbb508:
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #4
 	sub	r3, r0
 	lsr	r1, r3, #16
@@ -3239,7 +3239,7 @@
 	bgt	.Lbb538
 	b	.Lbb504
 .Lbb51c:
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #3
 	add	r3, r0
 	lsl	r3, #1
@@ -3281,7 +3281,7 @@
 	add	r4, #0x20
 	str	r4, [sp, #0xc]
 .Lbb560:
-	bl	Func_8004458
+	bl	Random
 	ldr	r6, [sp, #0x14]
 	mov	r3, r6
 	mul	r3, r0

@@ -10,7 +10,7 @@
 	push	{r7}
 	sub	sp, #0x1c
 	mov	r11, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r5, r6
 	mov	r3, #0

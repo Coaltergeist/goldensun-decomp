@@ -4,7 +4,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, r0
 	ldr	r2, [r1, #0x10]
 	asr	r3, r2, #19

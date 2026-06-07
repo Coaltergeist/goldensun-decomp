@@ -173,7 +173,7 @@
 	mov	r7, #3
 	b	.Laa178
 .Laa066:
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #0

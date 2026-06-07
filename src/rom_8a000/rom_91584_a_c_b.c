@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_91584_a_c_a.o and asm/rom_8a000/rom_91584_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8004278(void *);
+extern void StopTask(void *);
 extern void Func_80915ec(void);
 extern void Func_809335c(unsigned int, unsigned char);
 extern void *_Func_8077c10(void);
@@ -14,7 +14,7 @@ extern unsigned int ewram_2000240;
 void Func_8091750(void) {
     unsigned int r3;
 
-    Func_8004278(Func_80915ec);
+    StopTask(Func_80915ec);
     r3 = (unsigned int)&ewram_2000240;
     r3 += 0xfa << 1;
     Func_809335c(*(unsigned int *)r3, 1);

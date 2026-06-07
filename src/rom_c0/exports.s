@@ -6,11 +6,11 @@ Exports_c0:
 	.export_func Func_80030f8
 	.export_func Func_80040e8
 	.export_func StartTask
-	.export_func Func_8004278
+	.export_func StopTask
 	.export_func Func_80042c8
 	.export_func Func_800439c
 	.export_func Func_8004420
-	.export_func Func_8004458
+	.export_func Random
 	.export_func Func_80044d0
 	.export_func Func_80045a4
 	.export_func Func_80045d4

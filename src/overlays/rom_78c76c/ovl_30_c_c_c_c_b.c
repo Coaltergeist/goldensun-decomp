@@ -5,11 +5,11 @@
  * asm/overlays/rom_78c76c/ovl_30_c_c_c_c_a.o and asm/overlays/rom_78c76c/ovl_30_c_c_c_c_c.o in
  * goldensun/overlays/rom_78c76c/overlay.ld.
  */
-extern void *__Func_8092054(void);
+extern void *__MapActor_GetActor(void);
 
 unsigned int OvlFunc_891_2009be8(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     void *p;
-    p = __Func_8092054();
+    p = __MapActor_GetActor();
     if (p == (void *)0)
         return 0;
     if ((*(int *)((char *)p + 8) >> 20) != (int)arg1)

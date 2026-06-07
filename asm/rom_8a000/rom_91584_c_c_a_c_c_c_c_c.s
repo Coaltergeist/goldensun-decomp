@@ -22,7 +22,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	cmp	r0, #0
 	beq	.L9237c
 	ldr	r1, [r0, #8]

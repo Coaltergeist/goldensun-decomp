@@ -144,7 +144,7 @@
 .L3fe:
 	bl	__Func_80916b0
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xa
 	add	r0, #0x64
 	strh	r3, [r0]
@@ -216,7 +216,7 @@
 	mov	r0, #8
 	bl	__Func_8092f84
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	mov	r2, #2

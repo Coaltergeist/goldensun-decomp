@@ -165,7 +165,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 .L8eefe:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x64
 	mul	r3, r0
 	lsr	r3, #16
@@ -178,9 +178,9 @@
 	str	r3, [r6, #4]
 	ldr	r3, [r5, #0x10]
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, #4
 	mov	r1, r0
 	mov	r2, r6

@@ -17,7 +17,7 @@
 	cmp	r1, #0
 	bne	.Lc1122
 	ldr	r0, =Func_80c1084
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r3, =REG_BLDY
 	mov	r1, r10
 	strh	r1, [r3]
@@ -226,9 +226,9 @@
 	ldr	r3, [r3]
 	cmp	r3, #0x18
 	bgt	.Lc1344
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r3, r0
@@ -261,7 +261,7 @@
 	neg	r3, r2
 	str	r3, [r7, #4]
 .Lc1310:
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x80
 	lsl	r2, #8
 	add	r0, r2
@@ -458,9 +458,9 @@
 	add	r7, r11
 	mov	r9, r2
 .Lc14ac:
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r3, r0
@@ -494,7 +494,7 @@
 	neg	r3, r2
 	str	r3, [r7, #4]
 .Lc14fe:
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x80
 	lsl	r2, #8
 	add	r0, r2
@@ -701,9 +701,9 @@
 	lsl	r2, #19
 	strh	r3, [r2]
 	ldr	r0, =Func_80c1438
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_80c11ec
-	bl	Func_8004278
+	bl	StopTask
 	b	.Lc1720
 
 	.align	2, 0

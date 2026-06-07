@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_884_200a580
 	push	{lr}
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_884_200a334
 	pop	{r0}
 	bx	r0
@@ -12,7 +12,7 @@
 .thumb_func_start OvlFunc_884_200a590
 	push	{lr}
 	mov	r0, #0x11
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_884_200a334
 	pop	{r0}
 	bx	r0
@@ -21,7 +21,7 @@
 .thumb_func_start OvlFunc_884_200a5a0
 	push	{lr}
 	mov	r0, #0x14
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_884_200a370
 	pop	{r0}
 	bx	r0

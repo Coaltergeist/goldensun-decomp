@@ -100,7 +100,7 @@
 	beq	.L1f68
 	cmp	r6, #0
 	bne	.L1ec8
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r5, r0, #1
@@ -109,7 +109,7 @@
 	add	r5, r3
 	lsl	r3, r5, #8
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r3, r0, #1
@@ -137,7 +137,7 @@
 .L1ec8:
 	cmp	r6, #1
 	bne	.L1f1a
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r5, r0, #1
@@ -146,7 +146,7 @@
 	add	r5, r3
 	lsl	r3, r5, #8
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r3, r0, #1
@@ -174,7 +174,7 @@
 	bl	OvlFunc_common0_10c
 	b	.L1f62
 .L1f1a:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r5, r0, #1
@@ -183,7 +183,7 @@
 	add	r5, r3
 	lsl	r3, r5, #8
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r3, r0, #1
@@ -363,7 +363,7 @@
 	beq	.L2154
 	cmp	r6, #0
 	bne	.L20dc
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	ldr	r0, =0x319
@@ -390,7 +390,7 @@
 .L20dc:
 	cmp	r6, #1
 	bne	.L2116
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #2
 	add	r2, r0
 	lsr	r2, #16
@@ -416,7 +416,7 @@
 	bl	OvlFunc_common0_10c
 	b	.L214e
 .L2116:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #2
 	add	r2, r0
 	lsr	r2, #16
@@ -503,7 +503,7 @@
 .thumb_func_start OvlFunc_924_200a1cc
 	push	{r5, r6, lr}
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.L21de
@@ -512,7 +512,7 @@
 .L21de:
 	mov	r0, #9
 	asr	r6, r3, #20
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	cmp	r3, #0
 	bge	.L21f0

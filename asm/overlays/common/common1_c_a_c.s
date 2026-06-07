@@ -36,7 +36,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 .L1746:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mul	r3, r0
 	lsr	r3, #16
@@ -49,9 +49,9 @@
 	str	r3, [r6, #4]
 	ldr	r3, [r5, #0x10]
 	str	r3, [r6, #8]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, #4
 	mov	r1, r0
 	mov	r2, r6
@@ -97,7 +97,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r2, r3]
 	mov	r8, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, [r5, #0xc]
 	mov	r3, #0x90
 	lsl	r3, #14
@@ -142,7 +142,7 @@
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, r5
 	mov	r6, r0
 	add	r3, #0xe8
@@ -256,7 +256,7 @@
 	sub	sp, #4
 	ldr	r6, [r3]
 	mov	r8, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.L1948
@@ -988,10 +988,10 @@
 	str	r2, [r3]
 	mov	r11, r0
 	mov	r0, r8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r0, r10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r0, =0x109
 	bl	__Func_8079338

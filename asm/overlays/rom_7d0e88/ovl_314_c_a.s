@@ -10,7 +10,7 @@
 	mov	r8, r1
 	mov	r6, r2
 	ldr	r7, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x50]
 	ldr	r3, [r3, #0x28]
 	mov	r1, #0
@@ -128,7 +128,7 @@
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r3, sp, #0xc
 	add	r6, sp, #0x18
 	str	r3, [sp]
@@ -200,7 +200,7 @@
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r3, sp, #0xc
 	add	r6, sp, #0x18
 	str	r3, [sp]
@@ -347,7 +347,7 @@
 	push	{r7}
 	sub	sp, #8
 	mov	r11, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	mov	r6, r0
 	str	r1, [sp, #4]
@@ -468,7 +468,7 @@
 
 .thumb_func_start OvlFunc_947_2009174
 	push	{r5, r6, r7, lr}
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r2, r5
 	add	r2, #0x55
@@ -507,7 +507,7 @@
 	push	{r6, r7}
 	mov	r0, #0
 	sub	sp, #0x38
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001e40
 	ldr	r7, [r3]
 	mov	r3, #3
@@ -522,7 +522,7 @@
 	str	r3, [r2, #8]
 	str	r3, [r2, #0xc]
 	mov	r8, r2
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #4
 	add	r3, r0
 	mov	r2, r10
@@ -531,7 +531,7 @@
 	sub	r3, #8
 	lsl	r3, #16
 	add	r6, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #4
 	add	r3, r0
 	mov	r2, r10
@@ -540,7 +540,7 @@
 	sub	r3, #8
 	lsl	r3, #16
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -581,7 +581,7 @@
 	push	{r5, r6, r7}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0x55
 	mov	r5, r0
 	add	r1, r5

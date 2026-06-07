@@ -3,8 +3,8 @@
 	.export_func Func_8000af0
 	.export_func _Func_80030f8
 	.export_func _StartTask
-	.export_func _Func_8004278
-	.export_func _Func_8004458
+	.export_func _StopTask
+	.export_func _Random
 	.export_func _Func_800447c
 	.export_func _SetIntrHandler
 	.export_func _Func_80048f4
@@ -23,7 +23,7 @@
 	.export_func _Func_809163c
 	.export_func _Func_80916b0
 	.export_func _Func_8091750
-	.export_func _Func_8092054
+	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_8092128
 	.export_func _Func_809228c

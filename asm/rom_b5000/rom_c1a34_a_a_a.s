@@ -242,7 +242,7 @@
 	mov	r3, r9
 	cmp	r3, #0
 	beq	.Lc1c28
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r9
 	mul	r3, r0
 	lsr	r3, #16
@@ -745,7 +745,7 @@
 	add	r2, #1
 	cmp	r1, #0
 	bge	.Lc1fca
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	mul	r3, r0
 	lsr	r3, #16
@@ -895,7 +895,7 @@
 	bge	.Lc2106
 	mov	r5, r0
 .Lc2106:
-	bl	Func_8004458
+	bl	Random
 	add	r3, r5, #1
 	mul	r3, r0
 	mov	r2, r8
@@ -988,10 +988,10 @@
 	mov	r7, #0
 	mov	r6, r8
 .Lc21b2:
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #2
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsr	r5, #16
@@ -1068,7 +1068,7 @@
 	cmp	r5, #0
 	beq	.Lc22b4
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	mul	r3, r0
 	lsr	r3, #16

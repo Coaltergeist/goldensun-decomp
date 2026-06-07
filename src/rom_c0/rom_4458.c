@@ -5,7 +5,7 @@
 extern unsigned iwram_3001cb4;
 
 /* FF: u16 Random(void) */
-unsigned short Func_8004458(void) {
+unsigned short Random(void) {
     unsigned my_state = iwram_3001cb4 * 0x41C64E6D + 12345;
     iwram_3001cb4 = my_state;
     return my_state >> 8;

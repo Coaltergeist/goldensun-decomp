@@ -5,12 +5,12 @@
  * asm/overlays/rom_7cb2c0/ovl_30_a_a.o and asm/overlays/rom_7cb2c0/ovl_30_a_c.o in
  * goldensun/overlays/rom_7cb2c0/overlay.ld.
  */
-extern unsigned int __Func_8004458(unsigned int);
+extern unsigned int __Random(unsigned int);
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
     unsigned int v;
     unsigned int t;
-    v = (__Func_8004458((unsigned int)arg0) << 6) >> 16;
+    v = (__Random((unsigned int)arg0) << 6) >> 16;
     if (v == 6) {
         t = 0xc0;
         *(unsigned short *)(arg0 + 6) = t << 6;

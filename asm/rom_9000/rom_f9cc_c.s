@@ -230,9 +230,9 @@
 	cmp	r3, #0
 	beq	.L100c4
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	ldr	r2, [r2, #4]
 	mov	r1, r0
@@ -254,9 +254,9 @@
 	cmp	r5, #0
 	beq	.L100fa
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	ldr	r2, [r2, #8]
 	mov	r1, r0

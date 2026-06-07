@@ -7,7 +7,7 @@
 	mov	r0, #0xb
 	sub	sp, #0xc
 	ldr	r5, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r1, sp
 	str	r3, [r1]
@@ -35,7 +35,7 @@
 	mov	r0, #0xb
 	ldr	r5, [r3]
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r5, #0x35
 	ldrb	r5, [r5]
 	lsl	r5, #24
@@ -81,7 +81,7 @@
 	add	r3, r2
 	ldr	r0, [r3]
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r7, r5
 	add	r7, #0x55
@@ -227,7 +227,7 @@
 	mov	r9, r1
 	mov	r11, r2
 	mov	r10, r3
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, r8
 	mov	r5, sp
 	mov	r6, r0

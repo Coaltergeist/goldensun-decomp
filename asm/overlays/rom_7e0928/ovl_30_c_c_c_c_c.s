@@ -96,7 +96,7 @@
 	mov	r2, #0
 	bl	__Func_80937b8
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, #0x77
 	mov	r5, r0
 .L241c:

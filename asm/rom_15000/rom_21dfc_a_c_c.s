@@ -1126,7 +1126,7 @@
 	strb	r3, [r2]
 	bl	Func_80030f8
 	ldr	r0, =Func_8021dfc
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0

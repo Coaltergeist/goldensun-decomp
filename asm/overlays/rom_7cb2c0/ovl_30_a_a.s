@@ -31,7 +31,7 @@
 	ldrsh	r3, [r6, r2]
 	cmp	r3, #0
 	beq	.L82
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16
@@ -44,7 +44,7 @@
 	mov	r3, #0
 	b	.La0
 .L82:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16

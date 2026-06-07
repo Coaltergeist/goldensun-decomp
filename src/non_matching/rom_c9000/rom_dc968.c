@@ -14,10 +14,10 @@
  * not expected to byte-match as-is.
  *
  * Func_ -> friendly name map (GS2 name : GS1 symbol):
- *   AnimStart            Func_80cd594      Random               Func_8004458
+ *   AnimStart            Func_80cd594      Random               Random
  *   FUN_0813BA50         Func_80c9048      InitMatrixStack      Func_80049ac
  *   StartTask            StartTask      MatrixRoll           Func_8004c6c
- *   StopTask/free-handle Func_8004278      MatrixPitch          Func_8004bd4
+ *   StopTask/free-handle StopTask      MatrixPitch          Func_8004bd4
  *   Task_BlitAnim        Func_80cd260      MatrixYaw            Func_8004c1c
  *   Task_ScrollBG        Func_80c90e4      MatrixStore          Func_8004a28
  *   AnimTransitionOut    Func_80cd104      MatrixLoad           Func_8004a44
@@ -87,7 +87,7 @@ extern volatile u16 REG_BLDCNT;    /* 0x04000050 */
 extern void  Func_80cd594(int prio);                  /* AnimStart */
 extern void  Func_80c9048(void);                      /* FUN_0813BA50 */
 extern void  StartTask(void (*task)(void), int m); /* StartTask */
-extern void  Func_8004278(void *handle);              /* StopTask / free handle */
+extern void  StopTask(void *handle);              /* StopTask / free handle */
 extern void  Func_80cd260(void);                      /* Task_BlitAnim */
 extern void  Func_80c90e4(void);                      /* Task_ScrollBG */
 extern void  Func_80cd104(int a, int b);              /* AnimTransitionOut */
@@ -99,7 +99,7 @@ extern void  Func_80e0524(int file, void *dst, int a, int b); /* LoadVFXFile */
 extern void  Func_8001af8(volatile u16 *dst, void *src, int len); /* copy helper */
 extern void  Func_80ed408(int idx, int a, int b, int flags, int e); /* BuildDraw2DFunc */
 extern void  Func_80030f8(int n);                     /* WaitFrames */
-extern int   Func_8004458(void);                      /* Random (u16) */
+extern int   Random(void);                      /* Random (u16) */
 extern int   Func_b50_from_thumb(int val, int div);   /* umod veneer */
 extern int   Func_b1c_from_thumb(int val, int div);   /* mod veneer */
 extern void  Func_80049ac(void);                      /* InitMatrixStack */
@@ -207,18 +207,18 @@ void Func_80dc968(AnimContext *context)
             u8 *mtx = ewram_2013800 + i * 0x120 + 0xe00;
             u8 *pb  = ewram_2010000 + i * 0xa8;
 
-            p->px = FX((Func_b50_from_thumb(Func_8004458(), 0x60)) + 0xc);
-            p->py = FX((Func_8004458() & 0x3f) + 0x20);
+            p->px = FX((Func_b50_from_thumb(Random(), 0x60)) + 0xc);
+            p->py = FX((Random() & 0x3f) + 0x20);
             p->mx = 0;
             p->my = 0;
             p->aux = 0;
 
             for (j = 0; j < 24; j++) {
-                *(s32 *)pb = (Func_8004458() & 0xf) + 0x30;
+                *(s32 *)pb = (Random() & 0xf) + 0x30;
                 Func_80049ac();                          /* InitMatrixStack */
-                Func_8004c6c(Func_8004458() & 0xffff);   /* MatrixRoll(Random) */
-                Func_8004bd4(Func_8004458() & 0xffff);   /* MatrixPitch(Random) */
-                Func_8004c1c(Func_8004458() & 0xffff);   /* MatrixYaw(Random) */
+                Func_8004c6c(Random() & 0xffff);   /* MatrixRoll(Random) */
+                Func_8004bd4(Random() & 0xffff);   /* MatrixPitch(Random) */
+                Func_8004c1c(Random() & 0xffff);   /* MatrixYaw(Random) */
                 Func_8004a28(mtx);                       /* MatrixStore */
                 pb  += 7;
                 mtx += 0x30;
@@ -360,7 +360,7 @@ void Func_80dc968(AnimContext *context)
         }
 
         /* ---- Segment 1 teardown ---- */
-        Func_8004278(Func_80c90e4);       /* StopTask(Task_ScrollBG) */
+        StopTask(Func_80c90e4);       /* StopTask(Task_ScrollBG) */
         *(s32 *)(dest + 0x10) = 0;        /* BG_SCROLL_ENABLE = 0 */
         iwram_3001ad0_w[2] = (u16)originalBGCoords;  /* restore saved BG coord */
         Func_80d67dc(originalBGCoords);   /* RestoreBattleBG */
@@ -385,12 +385,12 @@ void Func_80dc968(AnimContext *context)
             if (slot < (int)STATE_CONTEXT(state)->numTargets) {
                 int yrand;
                 Func_80e396c(STATE_CONTEXT(state)->targets[slot], &tpos);
-                yrand = -((Func_8004458() & 0x1f) + 0x28);
+                yrand = -((Random() & 0x1f) + 0x28);
                 p->py = yrand;
                 p->px = (tpos.x + (0x50 - yrand)) >> 1;   /* signed /2 of each, summed */
             } else {
-                p->px = (Func_8004458() & 0x3f) + 0x50;
-                p->py = -((Func_8004458() & 0x1f) + 0x28);
+                p->px = (Random() & 0x3f) + 0x50;
+                p->py = -((Random() & 0x1f) + 0x28);
             }
             p->aux = -1;
         }
@@ -454,7 +454,7 @@ void Func_80dc968(AnimContext *context)
         }
 
         /* ---- Final teardown ---- */
-        Func_8004278(Func_80cd260);       /* StopTask(Task_BlitAnim) */
+        StopTask(Func_80cd260);       /* StopTask(Task_BlitAnim) */
         Func_8002dd8(0x2f);               /* gfree(draw2D_2) */
         Func_8002dd8(0x2e);               /* gfree(draw2D_1) */
         Func_80cdbc0();                   /* AnimEnd */

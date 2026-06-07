@@ -1150,7 +1150,7 @@
 .thumb_func_start Func_80f37ec
 	push	{lr}
 	ldr	r0, =Func_80f2f10
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x20
 	bl	Func_8002dd8
 	pop	{r0}

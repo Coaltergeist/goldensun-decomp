@@ -1423,7 +1423,7 @@
 	mov	r2, #0
 	strb	r2, [r3]
 	ldr	r0, =Func_80b7738
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80c08e0
 	mov	r0, r7
 	add	sp, #0x44

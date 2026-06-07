@@ -413,7 +413,7 @@
 	cmp	r7, #0
 	bge	.Lad66c
 	ldr	r0, =Func_80ad40c
-	bl	Func_8004278
+	bl	StopTask
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}

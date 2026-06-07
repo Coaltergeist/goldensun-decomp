@@ -20,7 +20,7 @@
 .thumb_func_start OvlFunc_911_2008050
 	push	{r5, r6, lr}
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mov	r2, r0
 	mul	r2, r3

@@ -268,7 +268,7 @@
 	b	.Lccd48
 .Lcce54:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	bl	Func_80cdbc0
@@ -531,7 +531,7 @@
 	b	.Lccf84
 .Lcd0d8:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x20
 	pop	{r3, r5, r6, r7}
@@ -568,7 +568,7 @@
 	mov	r5, r11
 	mov	r8, r3
 .Lcd130:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	strb	r0, [r5]
 	add	r5, #1

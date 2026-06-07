@@ -5,7 +5,7 @@
 	push	{lr}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, r0
 	ldr	r3, [r1, #8]
 	mov	r0, sp
@@ -36,7 +36,7 @@
 .thumb_func_start OvlFunc_947_200a080
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ee0
 	ldr	r3, [r3]
 	str	r0, [r3, #0x18]
@@ -50,7 +50,7 @@
 .thumb_func_start OvlFunc_947_200a09c
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ee0
 	ldr	r3, [r3]
 	mov	r2, #0

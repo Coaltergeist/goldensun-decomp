@@ -63,13 +63,13 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
 	beq	.Lae
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x28
 	bl	_Func_8000b50
 	add	r0, #0x28
 	b	.Lba
 .Lae:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x14
 	bl	_Func_8000b50
 	add	r0, #0x14

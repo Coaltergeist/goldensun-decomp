@@ -86,17 +86,17 @@
 	str	r3, [r5]
 	str	r7, [r5, #4]
 	str	r7, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	add	r0, #0x10
 	lsl	r0, #12
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x20
 	mov	r4, #1
@@ -129,18 +129,18 @@
 	str	r3, [r5]
 	str	r6, [r5, #4]
 	str	r6, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #8
 	lsl	r3, #13
 	str	r3, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x20
 	mov	r2, #1
@@ -493,7 +493,7 @@
 	b	.Ldb86a
 .Ldbaf0:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	bl	Func_80cdbc0

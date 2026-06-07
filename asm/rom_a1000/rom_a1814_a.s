@@ -191,7 +191,7 @@
 	bne	.La197a
 .La198a:
 	ldr	r0, =Func_80a19a0
-	bl	Func_8004278
+	bl	StopTask
 	add	sp, #0x1c
 	pop	{r5, r6}
 	pop	{r0}

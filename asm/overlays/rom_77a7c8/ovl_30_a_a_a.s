@@ -20,7 +20,7 @@
 	ldr	r3, [r7]
 	cmp	r3, r0
 	blt	.L7a
-	bl	__Func_8004458
+	bl	__Random
 	mov	r2, #0x80
 	lsl	r2, #8
 	cmp	r0, r2

@@ -18,7 +18,7 @@
 	ldr	r0, =0x203
 	bl	__Func_8079358
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_964_2008fe8
 	str	r3, [r0, #0x6c]
 	pop	{r0}
@@ -42,7 +42,7 @@
 	mov	r0, #9
 	bl	__Func_80924d4
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x23
 	ldrb	r2, [r0]
 	mov	r3, #0xfd
@@ -52,10 +52,10 @@
 	lsl	r0, #2
 	bl	__Func_8079358
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, [r0, #8]
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	asr	r3, #20
 	str	r3, [sp, #4]
@@ -67,11 +67,11 @@
 	str	r5, [sp]
 	bl	__Func_8010704
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =OvlFunc_964_2008ec8
 	str	r5, [r0, #0x6c]
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0x6c]
 	bl	__Func_8091750
 	add	sp, #8

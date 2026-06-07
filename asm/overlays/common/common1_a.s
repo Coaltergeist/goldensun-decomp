@@ -207,13 +207,13 @@
 	add	r3, r2
 	ldr	r7, [r3]
 	mov	r0, r7
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	bl	__Func_80916b0
 	mov	r5, #8
 .L1c2:
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L21e
 	mov	r3, r0
@@ -341,16 +341,16 @@
 	ldr	r0, [r5]
 	mov	r9, r0
 	mov	r0, r7
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r0, r7
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r6, [r3]
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r11, r0
 	bl	__Func_80916b0
 	ldr	r3, =0x2086
@@ -448,7 +448,7 @@
 .thumb_func_start OvlFunc_common1_3e4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xa
 	ldrsh	r7, [r0, r3]
 	mov	r3, #0x12
@@ -668,7 +668,7 @@
 	mov	r6, r0
 	mov	r0, r10
 	str	r2, [sp]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r2, #0xa
 	ldrsh	r0, [r5, r2]
@@ -832,7 +832,7 @@
 	lsl	r2, #8
 	bl	__Func_8092064
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L75a
 	ldr	r1, [r0, #8]
@@ -907,7 +907,7 @@
 	add	r0, r2, r3
 	bl	__Func_8079358
 	mov	r0, r8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r1, [r5, #8]
 	mov	r0, r8
@@ -1159,7 +1159,7 @@
 	b	.L948
 .La0c:
 	ldr	r0, =OvlFunc_common1_920
-	bl	__Func_8004278
+	bl	__StopTask
 	ldr	r3, =.L10
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
@@ -1865,7 +1865,7 @@
 	mov	r11, r0
 	mov	r8, r1
 	mov	r10, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	strb	r3, [r6, #6]
 	mov	r3, #4
@@ -2072,7 +2072,7 @@
 	ldr	r3, =iwram_3001e68
 	mov	r6, r0
 	ldr	r7, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =ewram_2000240
 	mov	r1, #0xf9
 	lsl	r1, #1
@@ -2157,7 +2157,7 @@
 
 .thumb_func_start OvlFunc_common1_1314
 	push	{r5, lr}
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	bl	__Func_800c4ac
 	mov	r3, #0
@@ -2404,7 +2404,7 @@
 .thumb_func_start OvlFunc_common1_1550
 	push	{r5, lr}
 	ldr	r0, =OvlFunc_common1_1354
-	bl	__Func_8004278
+	bl	__StopTask
 	ldr	r5, =.L14
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
@@ -2497,7 +2497,7 @@
 	push	{r5, r6, r7}
 	sub	sp, #4
 	mov	r9, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L16bc

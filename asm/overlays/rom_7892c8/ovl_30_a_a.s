@@ -7,7 +7,7 @@
 	add	r3, #0x64
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, r0
 	ldr	r3, [r5, #0x10]
 	ldr	r0, [r2, #0x10]

@@ -60,7 +60,7 @@
 	strb	r2, [r3]
 	add	r3, #1
 	strb	r2, [r3]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	add	r3, #0x46
 	mov	r2, r5

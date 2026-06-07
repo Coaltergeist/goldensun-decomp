@@ -18,7 +18,7 @@
 	cmp	r0, #0
 	beq	.Lc5a
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
@@ -41,7 +41,7 @@
 	str	r5, [sp, #4]
 	bl	OvlFunc_915_2008244
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 .Lc5a:

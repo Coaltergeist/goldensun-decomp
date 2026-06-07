@@ -45,7 +45,7 @@
 	ldr	r3, [r5, #8]
 	mov	r6, sp
 	str	r3, [r6]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xfff80000
 	lsl	r0, #4
@@ -54,10 +54,10 @@
 	str	r3, [r6, #4]
 	ldr	r3, [r5, #0x10]
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, #4
 	mov	r1, r0
 	mov	r2, r6
@@ -386,7 +386,7 @@
 	ldr	r2, [sp, #0x18]
 	mov	r1, #0x18
 	ldrsh	r0, [r2, r1]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #0xfe
@@ -442,7 +442,7 @@
 	ldr	r1, [sp, #0x18]
 	mov	r3, #0x18
 	ldrsh	r0, [r1, r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #1
@@ -484,7 +484,7 @@
 	str	r3, [r5]
 	ldr	r3, [r6, #0x18]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r0
 	lsl	r1, #16
 	mov	r0, #0xf0
@@ -650,7 +650,7 @@
 	beq	.L98152
 	ldr	r1, =.L9f0d4
 	bl	_Func_800c2d8
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x80
 	lsl	r3, #9
 	mov	r2, r7
@@ -662,21 +662,21 @@
 	strb	r3, [r2]
 	ldr	r3, =0x51e
 	str	r3, [r7, #0x48]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	sub	r5, r0
 	str	r5, [r7, #0x28]
-	bl	Func_8004458
+	bl	Random
 	lsl	r6, r0, #1
 	add	r6, r0
 	mov	r0, #0x80
 	lsl	r0, #12
 	lsl	r6, #3
 	add	r6, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	sub	r5, r0
 	ldrh	r3, [r2, #6]
@@ -783,7 +783,7 @@
 	beq	.L9825e
 	ldr	r1, =.L9f0d4
 	bl	_Func_800c2d8
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r10
 	mov	r2, r6
 	add	r2, #0x55
@@ -794,19 +794,19 @@
 	strb	r3, [r2]
 	ldr	r3, =0xa3d
 	str	r3, [r6, #0x48]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	sub	r5, r0
 	str	r5, [r6, #0x28]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r2, #0x80
 	lsl	r2, #12
 	lsl	r5, #3
 	add	r5, r2
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r5
 	mov	r2, r0
 	mov	r0, r6
@@ -1090,7 +1090,7 @@
 	mov	r0, #0xa7
 	bl	_Func_80f9080
 	ldr	r0, =Func_80982dc
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r1, =0xcba
 	mov	r2, #0
 	strh	r2, [r5]
@@ -1220,14 +1220,14 @@
 	str	r3, [r6]
 	ldr	r3, [r7, #0xc]
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r3, #0x80
 	lsl	r3, #11
 	lsl	r5, #1
 	add	r5, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r6
 	mov	r1, r0
 	mov	r0, r5
@@ -1248,7 +1248,7 @@
 	mov	r3, #2
 	strb	r3, [r2]
 .L98660:
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #1
 	lsr	r0, #16
 	add	r0, #2
@@ -1436,14 +1436,14 @@
 	lsl	r0, #12
 	bl	Func_800447c
 .L987e4:
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r0, #0x80
 	lsl	r0, #11
 	lsl	r5, #1
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	mov	r1, r0
 	mov	r0, r5
@@ -1693,7 +1693,7 @@
 	beq	.L98a44
 	ldr	r1, =.L9f0d4
 	bl	_Func_800c2d8
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r9
 	mov	r2, r6
 	add	r2, #0x55
@@ -1702,14 +1702,14 @@
 	mov	r3, #0
 	str	r0, [r6, #0x30]
 	strb	r3, [r2]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r0, #0x80
 	lsl	r0, #12
 	lsl	r5, #3
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r5
 	mov	r2, r0
 	mov	r0, r6
@@ -1832,7 +1832,7 @@
 	str	r3, [r5]
 	ldr	r3, [r7, #0x18]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r0
 	lsl	r1, #16
 	mov	r0, #0xc8
@@ -1887,7 +1887,7 @@
 	bl	Func_800447c
 	mov	r0, r5
 	bl	Func_80974d8
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r0
 	mov	r0, #0x80
 	mov	r2, r5
@@ -1978,7 +1978,7 @@
 	beq	.L98ca0
 	ldr	r1, =.L9f0d4
 	bl	_Func_800c2d8
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r6
 	add	r2, #0x55
 	mov	r4, r10
@@ -1987,14 +1987,14 @@
 	str	r4, [r6, #0x34]
 	str	r0, [r6, #0x30]
 	strb	r3, [r2]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r0, #0x80
 	lsl	r0, #12
 	lsl	r5, #3
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r5
 	mov	r2, r0
 	mov	r0, r6

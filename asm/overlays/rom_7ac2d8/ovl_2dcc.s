@@ -90,7 +90,7 @@
 	push	{r6, r7}
 	sub	sp, #0x38
 	mov	r5, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r7, r0
 	mov	r2, r7
 	add	r2, #0x55
@@ -133,7 +133,7 @@
 	beq	.L2f2a
 	mov	r0, #0xf6
 	bl	__Func_80f9080
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #3
@@ -143,7 +143,7 @@
 	add	r6, r3
 	ldr	r3, =0xfff40000
 	add	r6, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #5
 	ldr	r5, [r7, #0xc]
 	lsr	r0, #16
@@ -151,7 +151,7 @@
 	lsl	r0, #16
 	add	r5, r0
 	add	r5, r2
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #2
 	lsr	r0, #16
 	mov	r3, #0x80
@@ -209,7 +209,7 @@
 	bl	__Func_809163c
 	bl	OvlFunc_924_200ae08
 	ldr	r0, =OvlFunc_924_200adcc
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r3, #9
 	mov	r2, #4
 	str	r3, [sp]
@@ -243,7 +243,7 @@
 	mov	r0, #0xf6
 	bl	__Func_80f9080
 .L2fd0:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	lsl	r5, #4
@@ -252,7 +252,7 @@
 	lsl	r3, #18
 	lsl	r5, #16
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #3
 	sub	r2, r0
 	lsl	r2, #3
@@ -292,7 +292,7 @@
 	mov	r0, #0xf6
 	bl	__Func_80f9080
 .L303a:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r6, r0, #1
 	add	r6, r0
 	lsl	r6, #4
@@ -301,7 +301,7 @@
 	lsl	r3, #18
 	lsl	r6, #16
 	add	r6, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, r0, #3
 	sub	r5, r0
 	lsl	r5, #3
@@ -310,7 +310,7 @@
 	lsl	r2, #16
 	lsl	r5, #16
 	add	r5, r2
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #1
@@ -386,7 +386,7 @@
 	mov	r7, #0
 	mov	r9, r3
 .L3106:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	lsl	r5, #4
@@ -395,14 +395,14 @@
 	lsl	r2, #18
 	lsl	r5, #16
 	add	r5, r2
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	mov	r6, r11
 	mul	r6, r0
 	ldr	r3, =0xffff999c
 	add	r6, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	mov	r1, r11
@@ -496,7 +496,7 @@
 	mov	r0, #0x3c
 	bl	__Func_809163c
 	ldr	r0, =OvlFunc_924_200adcc
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r0, #0x80
 	lsl	r0, #9
 	mov	r1, #0
@@ -810,7 +810,7 @@
 	lsl	r0, #9
 	bl	__Func_8091220
 	ldr	r0, =OvlFunc_924_200adcc
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r1, #0
 	ldr	r0, =0x10005
 	bl	__Func_8091200

@@ -8,7 +8,7 @@
 	push	{r5, r6, r7}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r3, [r0, #6]
 	ldr	r2, =.L1d3c
 	lsr	r3, #12
@@ -131,7 +131,7 @@
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x8e
 	ldr	r3, [r0, #8]
 	lsl	r2, #16
@@ -228,7 +228,7 @@
 	push	{r5, lr}
 	mov	r0, #8
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1010

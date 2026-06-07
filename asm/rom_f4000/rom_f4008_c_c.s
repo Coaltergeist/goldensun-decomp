@@ -268,31 +268,31 @@
 	.pool_aligned
 
 .Lf4368:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	lsl	r0, #16
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #16
 	str	r0, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #14
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #0x20
 	lsl	r0, #12
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #14
@@ -321,7 +321,7 @@
 	str	r4, [sp, #0x34]
 	str	r2, [r4, #4]
 	str	r2, [sp, #0x90]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #6
 	bl	Func_b50_from_thumb
 	mov	r5, sp
@@ -329,7 +329,7 @@
 	str	r0, [sp, #0x88]
 	str	r5, [sp, #0x28]
 .Lf43f0:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #6
 	bl	Func_b50_from_thumb
 	ldr	r6, [sp, #0x28]
@@ -987,19 +987,19 @@
 	lsl	r3, #15
 	str	r3, [r6, #4]
 .Lf4992:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	sub	r3, #0x40
 	lsl	r3, #12
 	str	r3, [r6, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #0x30
 	lsl	r3, #13
 	str	r3, [r6, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, #0x3f
 	mov	r1, #6
 	and	r5, r0
@@ -1009,7 +1009,7 @@
 	lsl	r5, #12
 	add	r5, r0
 	str	r5, [r6, #0x14]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x90
 	lsl	r1, #7
 	bl	Func_b50_from_thumb
@@ -1053,12 +1053,12 @@
 	str	r0, [r3]
 	add	r3, r6, r5
 	str	r1, [r3]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #6
 	bl	Func_b50_from_thumb
 	str	r0, [sp, #0x88]
 .Lf4a2c:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #6
 	bl	Func_b50_from_thumb
 	ldr	r6, [sp, #0x28]
@@ -1654,7 +1654,7 @@
 .Lf4f16:
 	asr	r3, r2, #6
 	str	r3, [r7, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -1679,7 +1679,7 @@
 	add	r3, #0x3f
 .Lf4f4c:
 	asr	r6, r3, #6
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r5, r0
 	and	r5, r3
@@ -2032,7 +2032,7 @@
 	mov	r7, #0
 	str	r7, [sp]
 	bl	_Func_801ea08
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r3, r0
 	ldr	r0, [sp, #0x34]
@@ -2063,7 +2063,7 @@
 	mov	r7, #0
 	str	r7, [sp]
 	bl	_Func_801ea08
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r3, r0
 	ldr	r0, [sp, #0x34]

@@ -156,7 +156,7 @@
 	str	r3, [sp, #4]
 	mov	r10, r1
 	ldr	r7, [sp, #0x34]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #13
 	mov	r2, r10

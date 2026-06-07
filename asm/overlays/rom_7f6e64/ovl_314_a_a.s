@@ -57,7 +57,7 @@
 	ldr	r3, [r0, #0x1c]
 	add	r3, r2
 	str	r3, [r0, #0x1c]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x50
 	bl	_Func_8000b50
 	add	r0, #0x50
@@ -147,13 +147,13 @@
 	ldrh	r2, [r6]
 	cmp	r3, #0
 	bne	.L458
-	bl	__Func_8004458
+	bl	__Random
 	ldrh	r3, [r5, #6]
 	lsl	r0, #15
 	lsr	r0, #16
 	add	r3, r0
 	strh	r3, [r5, #6]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #4

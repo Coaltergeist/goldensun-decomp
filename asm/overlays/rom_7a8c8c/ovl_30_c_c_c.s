@@ -200,13 +200,13 @@
 	mov	r0, #0x88
 	bl	__Func_80f9080
 .L1dac:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #1
 	lsr	r0, #16
 	ldr	r5, =0xffff0000
 	lsl	r0, #16
 	sub	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #1
 	add	r2, r0
 	lsr	r2, #16
@@ -306,7 +306,7 @@
 	mov	r0, #0x50
 	bl	__Func_80030f8
 	mov	r0, r5
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r0, #0x14
 	bl	__Func_80030f8
 	mov	r0, #0x80

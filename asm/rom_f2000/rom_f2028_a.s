@@ -1056,7 +1056,7 @@
 	mov	r0, #1
 	bl	Func_8003bf8
 	ldr	r0, =Func_80f2028
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r3, =iwram_3001d18
 	mov	r2, r9
 	strb	r2, [r3]

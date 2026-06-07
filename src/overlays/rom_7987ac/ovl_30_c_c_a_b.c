@@ -16,7 +16,7 @@ extern void __Func_8092f84(int a, int b);
 extern void __Func_808f1c0(int a, int b);
 extern void __Func_8091a58(int a, int b);
 extern void __Func_8091750(void);
-extern unsigned char *__Func_8092054(int);
+extern unsigned char *__MapActor_GetActor(int);
 extern void __Func_80b0278(int, int);
 
 void OvlFunc_902_2008338(void) {
@@ -35,7 +35,7 @@ void OvlFunc_902_2008338(void) {
 void OvlFunc_902_2008380(void) {
     unsigned int r5;
 
-    r5 = *(unsigned short *)((char *)__Func_8092054(0) + 6);
+    r5 = *(unsigned short *)((char *)__MapActor_GetActor(0) + 6);
     __Func_80916b0();
     r5 += 0xffff5fff;
     if (r5 <= 0x3ffe) {

@@ -4,7 +4,7 @@
 	.export_func Func_8000b1c
 	.export_func _Func_80030f8
 	.export_func _StartTask
-	.export_func _Func_8004278
+	.export_func _StopTask
 	.export_func _Func_8004970
 	.export_func _Func_8002df0
 	.export_func _Func_8005340
@@ -49,7 +49,7 @@
 	.export_func _Func_8077cb8
 	.export_func _Func_807a7a0
 	.export_func _Func_809163c
-	.export_func _Func_8092054
+	.export_func _MapActor_GetActor
 	.export_func _Func_8091e3c
 	.export_func _Func_8091dc8
 	.export_func _Func_8091df4

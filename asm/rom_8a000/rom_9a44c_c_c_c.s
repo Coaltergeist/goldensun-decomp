@@ -140,7 +140,7 @@
 	mov	r0, r7
 	str	r3, [r7, #8]
 	bl	Func_80974d8
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r0
 	mov	r0, #0x80
 	lsl	r0, #11

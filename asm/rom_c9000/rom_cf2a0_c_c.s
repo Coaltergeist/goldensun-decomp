@@ -92,13 +92,13 @@
 	mov	r3, #0xa0
 	lsl	r3, #15
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x20
 	neg	r3, r3
 	orr	r3, r0
 	lsl	r3, #14
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xff
 	and	r3, r0
 	str	r3, [r5, #0x18]
@@ -673,7 +673,7 @@
 	b	.Lcf44a
 .Lcf84c:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x74
 	pop	{r3, r5, r6, r7}

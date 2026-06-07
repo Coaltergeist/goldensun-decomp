@@ -49,7 +49,7 @@
 	push	{lr}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r1, =0xffe00000
 	ldr	r3, [r0, #8]
 	mov	r2, sp

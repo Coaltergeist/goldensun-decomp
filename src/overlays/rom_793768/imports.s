@@ -3,7 +3,7 @@
 	.export_func Func_8000af0
 	.export_func Func_8000b50
 	.export_func _Func_80030f8
-	.export_func _Func_8004458
+	.export_func _Random
 	.export_func _Func_80044d0
 	.export_func _Func_800c300
 	.export_func _Func_800c2d8
@@ -28,7 +28,7 @@
 	.export_func _Func_80917d0
 	.export_func _Func_8091890
 	.export_func _Func_8091c7c
-	.export_func _Func_8092054
+	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_8092128
 	.export_func _Func_8092158

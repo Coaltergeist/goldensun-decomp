@@ -23,7 +23,7 @@
 	mov	r3, #0
 	strb	r3, [r4]
 	ldr	r0, =Func_80903bc
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
@@ -114,7 +114,7 @@
 	mov	r3, #0
 	strb	r3, [r4]
 	ldr	r0, =Func_8090488
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
@@ -342,7 +342,7 @@
 	mov	r3, #0
 	strb	r3, [r4]
 	ldr	r0, =Func_8090658
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
 	ldrh	r1, [r2, #0xa]
@@ -1734,7 +1734,7 @@
 .thumb_func_start Func_80911e8
 	push	{lr}
 	ldr	r0, =Func_80908e0
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x20
 	bl	Func_8002dd8
 	pop	{r0}

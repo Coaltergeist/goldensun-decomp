@@ -21,17 +21,17 @@
 	mov	r0, #8
 	mov	r2, #0
 	ldrsh	r5, [r3, r2]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x30]
 	mov	r0, #8
 	str	r3, [r6, #0x30]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x34]
 	sub	r5, #0x2d
 	str	r3, [r6, #0x34]
@@ -87,12 +87,12 @@
 	ldr	r0, [r7, #4]
 	bl	__Func_80924d4
 	ldr	r0, [r7, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, #0
 	add	r0, #0x55
 	strb	r6, [r0]
 	ldr	r0, [r7, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0xc
 	str	r6, [r0, #0x44]
 	mov	r2, #0
@@ -108,7 +108,7 @@
 	mov	r0, #0xa
 	bl	__Func_8092b08
 	ldr	r0, [r7, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #3
 	add	r0, #0x55
 	strb	r3, [r0]
@@ -118,13 +118,13 @@
 	ldr	r0, [r7, #4]
 	bl	__Func_809228c
 	ldr	r0, [r7, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_934_2008cd0
 	mov	r1, #8
 	ldr	r0, [r7, #4]
 	bl	__Func_80924d4
 	ldr	r0, [r7, #4]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	mov	r8, r3
 	add	r0, #0x23
@@ -216,12 +216,12 @@
 	mov	r0, #9
 	bl	__Func_80924d4
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, #0
 	add	r0, #0x55
 	strb	r6, [r0]
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0
 	str	r6, [r0, #0x44]
 	mov	r1, #0xc
@@ -243,7 +243,7 @@
 	mov	r0, #9
 	bl	__Func_80924d4
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #3
 	add	r0, #0x55
 	strb	r3, [r0]
@@ -252,7 +252,7 @@
 	mov	r0, #9
 	bl	__Func_809228c
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	OvlFunc_934_2008cd0
 	mov	r0, #9
 	mov	r1, #8
@@ -261,7 +261,7 @@
 	mov	r0, #9
 	bl	__Func_8092b08
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
@@ -331,7 +331,7 @@
 	mov	r0, #0xb
 	bl	__Func_80924d4
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]

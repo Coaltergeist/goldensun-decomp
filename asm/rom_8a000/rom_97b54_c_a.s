@@ -134,11 +134,11 @@
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r5, #0x28]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0x13333
 	add	r0, r3
 	str	r0, [r5, #0x30]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x80
 	mov	r2, r0
 	lsl	r1, #14
@@ -176,9 +176,9 @@
 	ldr	r3, [r6, #0xc]
 	add	r3, r2
 	str	r3, [r6, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, [r6, #8]
 	sub	r5, r0
 	add	r3, r5

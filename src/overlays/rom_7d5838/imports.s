@@ -12,7 +12,7 @@
 	.export_func _Func_80916b0
 	.export_func _Func_8091750
 	.export_func _Func_8091c7c
-	.export_func _Func_8092054
+	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_80921c4
 	.export_func _Func_80923e4

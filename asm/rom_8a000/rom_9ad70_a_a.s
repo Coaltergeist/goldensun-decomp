@@ -4,7 +4,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r5, =.L9f160
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #3
 	lsr	r0, #16
 	ldrsb	r1, [r5, r0]

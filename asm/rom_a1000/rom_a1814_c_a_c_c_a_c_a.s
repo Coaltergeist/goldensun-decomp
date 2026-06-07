@@ -22,7 +22,7 @@
 	cmp	r0, #0
 	bne	.La24a4
 	ldr	r0, =Func_80a2444
-	bl	Func_8004278
+	bl	StopTask
 .La24a4:
 	pop	{r0}
 	bx	r0

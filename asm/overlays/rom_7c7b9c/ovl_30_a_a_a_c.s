@@ -90,13 +90,13 @@
 	mov	r2, #0
 	bl	__Func_8092adc
 .L178:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #0
 	beq	.L192
 	mov	r0, #0x15
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #10
 	str	r3, [r0, #0x28]
@@ -107,7 +107,7 @@
 	mov	r2, #0
 	bl	__Func_80937b8
 	mov	r0, #0x15
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xc0
 	lsl	r3, #11
 	str	r3, [r0, #0x28]
@@ -178,7 +178,7 @@
 	ldrsh	r3, [r7, r2]
 	cmp	r3, #0
 	beq	.L240
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #12
 	lsr	r0, #16
@@ -191,7 +191,7 @@
 	strh	r2, [r7]
 	b	.L25a
 .L240:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #12
 	lsr	r0, #16
@@ -220,7 +220,7 @@
 	ldrsh	r3, [r7, r2]
 	cmp	r3, #0
 	beq	.L292
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16
@@ -233,7 +233,7 @@
 	mov	r3, #0
 	b	.L2b0
 .L292:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16
@@ -250,7 +250,7 @@
 .L2b0:
 	strh	r3, [r7]
 .L2b2:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mul	r3, r0
 	lsr	r3, #16
@@ -357,13 +357,13 @@
 	mov	r2, #0
 	bl	__Func_8092adc
 .L3a0:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #0
 	beq	.L3ba
 	mov	r0, #0x16
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #10
 	str	r3, [r0, #0x28]
@@ -374,7 +374,7 @@
 	mov	r2, #0
 	bl	__Func_80937b8
 	mov	r0, #0x16
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xc0
 	lsl	r3, #11
 	str	r3, [r0, #0x28]
@@ -446,7 +446,7 @@
 	ldrsh	r3, [r7, r2]
 	cmp	r3, #0
 	beq	.L46a
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #12
 	lsr	r0, #16
@@ -459,7 +459,7 @@
 	strh	r2, [r7]
 	b	.L484
 .L46a:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #12
 	lsr	r0, #16
@@ -488,7 +488,7 @@
 	ldrsh	r3, [r7, r2]
 	cmp	r3, #0
 	beq	.L4bc
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16
@@ -501,7 +501,7 @@
 	mov	r3, #0
 	b	.L4da
 .L4bc:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16
@@ -518,7 +518,7 @@
 .L4da:
 	strh	r3, [r7]
 .L4dc:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mul	r3, r0
 	lsr	r3, #16
@@ -544,7 +544,7 @@
 	ldrsh	r3, [r6, r2]
 	cmp	r3, #0
 	beq	.L542
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	ldr	r2, =0xffff8000
@@ -559,7 +559,7 @@
 	mov	r3, #0
 	b	.L560
 .L542:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0xc]
 	lsl	r0, #15
 	lsr	r0, #16

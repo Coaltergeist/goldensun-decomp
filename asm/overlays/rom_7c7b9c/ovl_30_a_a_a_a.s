@@ -52,7 +52,7 @@
 	lsl	r3, #9
 	str	r3, [r0, #0x18]
 	str	r3, [r0, #0x1c]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x5a
 	bl	_Func_8000b50
 	add	r0, #0x3c

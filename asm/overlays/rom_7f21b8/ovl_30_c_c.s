@@ -31,7 +31,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6
@@ -95,7 +95,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6
@@ -141,7 +141,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6
@@ -187,7 +187,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6
@@ -232,7 +232,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6
@@ -277,7 +277,7 @@
 .thumb_func_start OvlFunc_967_2008308
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	ldrh	r5, [r0, #6]
 	lsl	r3, #6
@@ -1358,7 +1358,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Le64
 	mov	r3, #0xa
@@ -1378,7 +1378,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Le94
 	mov	r3, #0xa
@@ -1398,7 +1398,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lec4
 	mov	r3, #0xa
@@ -1579,7 +1579,7 @@
 	cmp	r9, r3
 	bne	.L112a
 	mov	r0, #0x14
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0
 	mov	r10, r2
 	mov	r3, r0
@@ -1604,7 +1604,7 @@
 	orr	r3, r2
 	strb	r3, [r1, #9]
 	mov	r0, #0x12
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, r0
 	add	r3, #0x23
 	mov	r1, r10
@@ -1622,7 +1622,7 @@
 	orr	r3, r2
 	strb	r3, [r1, #9]
 	mov	r0, #0x13
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, r0
 	add	r2, #0x59
 	ldrb	r3, [r2]
@@ -1666,7 +1666,7 @@
 	cmp	r2, r3
 	bne	.L11ac
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x59
 	add	r2, r0
 	mov	r12, r2
@@ -1705,11 +1705,11 @@
 	bne	.L11ac
 	bl	OvlFunc_967_2008508
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #6
 	bl	__Func_8093a6c
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #6
 	bl	__Func_8093a6c
 	mov	r3, #0x15

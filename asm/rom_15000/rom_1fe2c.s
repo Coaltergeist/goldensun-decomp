@@ -121,7 +121,7 @@
 	ldr	r0, =Func_801ff58
 	ldr	r7, [r3]
 	mov	r5, #0x8a
-	bl	Func_8004278
+	bl	StopTask
 	mov	r3, #0
 	mov	r8, r3
 	lsl	r5, #1
@@ -302,7 +302,7 @@
 	ldr	r0, =Func_80200cc
 	ldr	r7, [r3]
 	mov	r5, #0x89
-	bl	Func_8004278
+	bl	StopTask
 	mov	r3, #0
 	mov	r8, r3
 	lsl	r5, #2

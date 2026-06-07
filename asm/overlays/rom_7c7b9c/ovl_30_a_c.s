@@ -30,7 +30,7 @@
 	add	r3, #0xff
 	b	.L92c
 .L8f4:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #2
 	add	r2, r0
 	lsl	r3, r2, #4
@@ -53,7 +53,7 @@
 .L91c:
 	strh	r7, [r5, #6]
 .L91e:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #4

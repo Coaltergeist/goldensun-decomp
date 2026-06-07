@@ -7,7 +7,7 @@
 	ldr	r3, [r6, #8]
 	mov	r5, sp
 	str	r3, [r5]
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r6, #0xc]
 	ldr	r2, =0xfff80000
 	lsl	r0, #4
@@ -16,9 +16,9 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r5, #8]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r6, r0
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, r0
 	lsl	r0, r6, #1
 	add	r0, r6
@@ -118,7 +118,7 @@
 	ldr	r1, =.L66e4
 	mov	r0, r6
 	bl	__Func_800c2d8
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x80
 	lsl	r3, #9
 	mov	r2, r6
@@ -130,19 +130,19 @@
 	strb	r3, [r2]
 	ldr	r3, =0xa3d
 	str	r3, [r6, #0x48]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	sub	r5, r0
 	str	r5, [r6, #0x28]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r2, #0x80
 	lsl	r2, #12
 	lsl	r5, #3
 	add	r5, r2
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, r5
 	mov	r2, r0
 	mov	r0, r6
