@@ -371,7 +371,7 @@
 	strh	r3, [r2, #0xa]
 	ldr	r0, =OvlFunc_957_2008f94
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	cmp	r5, #2
 	bhi	.L12d8
 	ldr	r3, [r6]

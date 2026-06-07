@@ -424,7 +424,7 @@
 	ldr	r1, =0xc76
 	strh	r2, [r3]
 	ldr	r0, =OvlFunc_933_20098a4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L1c70
 
 	.align	2, 0

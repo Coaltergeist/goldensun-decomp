@@ -80,7 +80,7 @@
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
 	mov	r5, #0xe1
-	bl	Func_80041d8
+	bl	StartTask
 	lsl	r5, #7
 	mov	r4, #0
 	mov	r10, r4
@@ -446,7 +446,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r6, #0xe1
 	mov	r3, #0
 	lsl	r6, #7
@@ -873,7 +873,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r5]
 	add	r5, sp, #0x24
 	mov	r2, #0x24
@@ -1341,7 +1341,7 @@
 	lsl	r1, #3
 	add	r5, r9
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
 	bl	_Func_80b7dd0
@@ -2060,10 +2060,10 @@
 	mov	r10, r1
 	ldr	r0, =Func_80c90e4
 	mov	r1, r5
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, r5
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r2, #0xef
 	ldr	r1, [sp, #0x80]
 	lsl	r2, #7
@@ -3792,7 +3792,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r4, r8
 	ldr	r3, [r4]
 	ldr	r2, =.Leecfc

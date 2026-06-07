@@ -1014,7 +1014,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_931_2008d08
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .La0c:
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xe1

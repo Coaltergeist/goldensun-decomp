@@ -134,7 +134,7 @@
 	str	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_954_200804c
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_954_2008158

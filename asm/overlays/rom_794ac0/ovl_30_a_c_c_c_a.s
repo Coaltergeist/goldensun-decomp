@@ -1604,7 +1604,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_899_200aba0
-	bl	__Func_80041d8
+	bl	__StartTask
 	add	r5, #0x64
 	mov	r3, #1
 	strh	r3, [r5]
@@ -2219,7 +2219,7 @@
 	strh	r3, [r0]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_899_200aba0
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r2, [r6]
 	ldr	r3, =0x209
 	str	r3, [r2, r5]

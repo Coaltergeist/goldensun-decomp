@@ -11,7 +11,7 @@
  *
  * Func_ -> friendly name map:
  *   Func_80cd594 AnimStart         Func_80e396c GetBattleActorPos2
- *   Func_80e0524 LoadVFXFile       Func_80041d8 StartTask
+ *   Func_80e0524 LoadVFXFile       StartTask StartTask
  *   Func_8004278 StopTask          _Func_80f9080 PlaySound (ARM veneer)
  *   _Func_80bd7dc SetDamageSFX     Func_80ed408 BuildDraw2DFuncEx
  *   Func_8002dd8 gfree             Func_80d6888 BattleActor_SetState
@@ -50,7 +50,7 @@ extern volatile u16 REG_BLDALPHA; /* 0x04000052 */
 extern void Func_80cd594(int prio);
 extern void Func_80e396c(int target, vec3 *out);
 extern void Func_80e0524(int file, void *dst, int a, int b);
-extern void Func_80041d8(void (*task)(void), int mode);
+extern void StartTask(void (*task)(void), int mode);
 extern void Func_8004278(void (*task)(void));
 extern void _Func_80f9080(int sfx);
 extern void _Func_80bd7dc(int sfx);
@@ -89,7 +89,7 @@ void Func_80ccebc(AnimContext *context)
     Func_80e0524(0x59, state, 1, 1);          /* LoadVFXFile(FILE_VFX_SPIDER_WEB,..,T,T) */
     STATE_BLITMODE(state) = 1;                /* BLIT_CLEAR */
     STATE_BLITPARAM(state) = 0;
-    Func_80041d8(Func_80cd260, 0x480);        /* StartTask(Task_BlitAnim, TASK_VBLANK) */
+    StartTask(Func_80cd260, 0x480);        /* StartTask(Task_BlitAnim, TASK_VBLANK) */
     _Func_80f9080(0x8f);                      /* PlaySound(SFX_BREAK) */
 
     for (frame = 0; frame != 0x3f; frame++) {

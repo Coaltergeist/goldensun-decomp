@@ -715,7 +715,7 @@
 	lsl	r1, #4
 	str	r6, [r5]
 	ldr	r0, =OvlFunc_916_20083c0
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r2, =OvlFunc_916_200836c

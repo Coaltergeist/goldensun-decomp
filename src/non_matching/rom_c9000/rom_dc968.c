@@ -16,7 +16,7 @@
  * Func_ -> friendly name map (GS2 name : GS1 symbol):
  *   AnimStart            Func_80cd594      Random               Func_8004458
  *   FUN_0813BA50         Func_80c9048      InitMatrixStack      Func_80049ac
- *   StartTask            Func_80041d8      MatrixRoll           Func_8004c6c
+ *   StartTask            StartTask      MatrixRoll           Func_8004c6c
  *   StopTask/free-handle Func_8004278      MatrixPitch          Func_8004bd4
  *   Task_BlitAnim        Func_80cd260      MatrixYaw            Func_8004c1c
  *   Task_ScrollBG        Func_80c90e4      MatrixStore          Func_8004a28
@@ -86,7 +86,7 @@ extern volatile u16 REG_BLDCNT;    /* 0x04000050 */
 /* engine (raw symbol names so relocs match the expected .o) */
 extern void  Func_80cd594(int prio);                  /* AnimStart */
 extern void  Func_80c9048(void);                      /* FUN_0813BA50 */
-extern void  Func_80041d8(void (*task)(void), int m); /* StartTask */
+extern void  StartTask(void (*task)(void), int m); /* StartTask */
 extern void  Func_8004278(void *handle);              /* StopTask / free handle */
 extern void  Func_80cd260(void);                      /* Task_BlitAnim */
 extern void  Func_80c90e4(void);                      /* Task_ScrollBG */
@@ -169,7 +169,7 @@ void Func_80dc968(AnimContext *context)
     PALETTE_BG[0] = 0;
     PALETTE_BG[1] = 0;
     STATE_BLITMODE(state) = 0;            /* BLIT_COPY */
-    Func_80041d8(Func_80cd260, 0x480);    /* StartTask(Task_BlitAnim, TASK_VBLANK) */
+    StartTask(Func_80cd260, 0x480);    /* StartTask(Task_BlitAnim, TASK_VBLANK) */
     Func_80cd104(0, 0);                   /* AnimTransitionOut(0,0) */
     Func_80d6750(STATE_CONTEXT(state));   /* FUN_0814CC4C(state->context) */
     Func_80dbb24(9, 0x172, 1);            /* GS2: (gPtrs.battle)->_unk867 = 1 */
@@ -193,7 +193,7 @@ void Func_80dc968(AnimContext *context)
         STATE_SCROLL1(state) = 4;
         STATE_SCROLL2(state) = -1;
         STATE_SCROLL3(state) = 0;
-        Func_80041d8(Func_80c90e4, 0x480);/* StartTask(Task_ScrollBG, TASK_VBLANK) */
+        StartTask(Func_80c90e4, 0x480);/* StartTask(Task_ScrollBG, TASK_VBLANK) */
         *(s32 *)(dest + 0x10) = 1;        /* BG_SCROLL_ENABLE = 1 */
         Func_80cd104(0, 1);               /* AnimTransitionOut(0,1) */
         REG_DISPCNT  = 0x7741;

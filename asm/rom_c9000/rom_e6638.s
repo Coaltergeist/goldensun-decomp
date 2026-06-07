@@ -57,7 +57,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #0xfe
 	b	.Le66d4
 
@@ -222,7 +222,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80dbb9c
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =ewram_201007e
 	ldr	r3, =REG_IME
 	mov	r4, #0
@@ -458,7 +458,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r2, #0
 	mov	r8, r2
 	ldr	r3, =ewram_2010018
@@ -1062,7 +1062,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	mov	r7, #0xe1
-	bl	Func_80041d8
+	bl	StartTask
 	lsl	r7, #7
 	mov	r1, #0
 	mov	r8, r1

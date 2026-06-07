@@ -140,7 +140,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_8096f8c
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 .L970d8:
 	add	sp, #4
 	pop	{r3, r5, r6}

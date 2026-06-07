@@ -193,7 +193,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_923_2008d98
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L133c
 .L1338:
 	bl	OvlFunc_923_2008e3c
@@ -303,7 +303,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_923_2008d98
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r0, =0x875
 	bl	__Func_8079338
 	cmp	r0, #0

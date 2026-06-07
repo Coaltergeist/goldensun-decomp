@@ -509,11 +509,11 @@
 	strh	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_921_2009794
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_921_20098c4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0xb
 	mov	r1, #1
 	bl	__Func_8092b08

@@ -132,7 +132,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_968_200c5f0
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L4732:
 	mov	r3, r8
 	add	r3, #0xc
@@ -316,7 +316,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_968_200c600
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r3, r8
 	add	r3, #0xc
 	mov	r2, #3

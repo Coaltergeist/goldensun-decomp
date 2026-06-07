@@ -288,7 +288,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_879_2008238
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r7, =ewram_2002090
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]

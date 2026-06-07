@@ -341,7 +341,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r5, =0x7828
 	ldr	r2, =REG_BG1CNT
 	ldr	r3, .Le3ca4	@ 0x1f81
@@ -987,7 +987,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	cmp	r6, #1
 	beq	.Le4214
 	b	.Le43cc
@@ -1081,7 +1081,7 @@
 	str	r5, [r3]
 	lsl	r1, #4
 	ldr	r0, =Func_80cd4b4
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0xd4
 	bl	_Func_80f9080
 	mov	r9, r5

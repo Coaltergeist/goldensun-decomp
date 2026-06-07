@@ -130,7 +130,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =0xffffe000
 	ldr	r2, =REG_BG2X
 	mov	r4, #0x5a
@@ -1228,7 +1228,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =0x7828
 	mov	r1, r9
 	ldr	r3, [r1, r2]
@@ -1606,7 +1606,7 @@
 	mov	r10, r0
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =REG_WININ
 	ldr	r3, .Ld76d4	@ 0x2137
 	mov	r0, #1
@@ -1781,7 +1781,7 @@
 	strh	r3, [r7]
 	ldr	r0, =Func_80d66cc
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 .Ld7848:
 	ldr	r4, [sp, #0x18]
 	ldrh	r3, [r7]

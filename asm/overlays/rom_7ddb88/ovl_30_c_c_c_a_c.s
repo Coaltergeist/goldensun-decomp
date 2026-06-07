@@ -737,7 +737,7 @@
 	push	{lr}
 	ldr	r1, =0xc85
 	ldr	r0, =OvlFunc_955_2008714
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x82
 	lsl	r0, #1
 	bl	__Func_8079374

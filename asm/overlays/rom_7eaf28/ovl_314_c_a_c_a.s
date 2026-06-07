@@ -127,7 +127,7 @@
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_960_2008400
 	mov	r7, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	add	r7, #0x55
 	mov	r2, r8
 	strb	r2, [r7]

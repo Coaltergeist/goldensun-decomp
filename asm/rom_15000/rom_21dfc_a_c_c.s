@@ -330,7 +330,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_8021dfc
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_8021e14
 	mov	r0, #2
 	mov	r1, #0x88

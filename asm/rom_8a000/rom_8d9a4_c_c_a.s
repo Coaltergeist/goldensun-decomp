@@ -1365,11 +1365,11 @@
 	strh	r3, [r4]
 	lsl	r1, #4
 	ldr	r0, =Func_808f52c
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	pop	{r5, r6}
 	pop	{r0}
@@ -1510,11 +1510,11 @@
 	strh	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =Func_808f52c
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #1
 	bl	Func_80030f8
 	ldr	r1, =ewram_2002090
@@ -1581,7 +1581,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_8090658
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, =ewram_2002090
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
@@ -1663,7 +1663,7 @@
 	lsl	r1, #4
 	ldr	r0, =Func_8090488
 .L9013a:
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_8090584
 	mov	r1, #0
 	mov	r0, #1
@@ -1785,11 +1785,11 @@
 	strh	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =Func_808f52c
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #1
 	bl	Func_80030f8
 	b	.L902a8
@@ -1819,7 +1819,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_8090658
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 .L902a8:
 	ldr	r2, =0x53a
 	ldr	r6, .L902c4	@ 0x20
@@ -1855,7 +1855,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80903bc
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_8090584
 	mov	r0, #1
 	mov	r1, #0
@@ -1878,7 +1878,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_8090488
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_8090584
 	mov	r1, #0
 	mov	r0, #1

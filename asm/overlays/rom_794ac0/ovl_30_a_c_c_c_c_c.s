@@ -173,7 +173,7 @@
 	ldr	r0, =OvlFunc_899_200aba0
 .L28de:
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L2b92
 .L28e6:
 	ldr	r0, =0x856
@@ -233,7 +233,7 @@
 	strh	r3, [r0]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_899_200aba0
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L2b92
 .L296a:
 	mov	r0, #2

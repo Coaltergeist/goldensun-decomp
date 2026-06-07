@@ -8082,7 +8082,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_8026e80
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 .L272a8:
 	add	r1, sp, #0x64
 	mov	r9, r1
@@ -10319,7 +10319,7 @@
 	sub	r3, #0xc
 	ldr	r1, =0xc76
 	ldr	r0, =Func_8028194
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, r5
 	add	sp, #4
 	pop	{r5}
@@ -11203,7 +11203,7 @@
 	beq	.L28cbc
 	ldr	r1, =0xc76
 	ldr	r0, =Func_8028aa8
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =0xffff
 	mov	r2, r7
 	add	r2, #0x96
@@ -11252,7 +11252,7 @@
 .L28cbc:
 	ldr	r1, =0xc76
 	ldr	r0, =Func_8028b80
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =0xffff
 	mov	r2, r7
 	add	r2, #0x96

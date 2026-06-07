@@ -69,7 +69,7 @@
 	str	r0, [r5]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_944_20090a0
-	bl	__Func_80041d8
+	bl	__StartTask
 .L2a4:
 	ldr	r0, =0x925
 	bl	__Func_8079338

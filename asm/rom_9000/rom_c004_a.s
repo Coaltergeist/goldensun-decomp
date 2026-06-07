@@ -37,12 +37,12 @@
 	bne	.Lc056
 	ldr	r0, =Func_800d340
 	ldr	r1, =0xc8a
-	bl	Func_80041d8
+	bl	StartTask
 	b	.Lc05e
 .Lc056:
 	ldr	r0, =Func_800cacc
 	ldr	r1, =0xc8a
-	bl	Func_80041d8
+	bl	StartTask
 .Lc05e:
 	sub	r3, r7, #3
 	cmp	r3, #1
@@ -50,13 +50,13 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_800c880
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	b	.Lc084
 .Lc070:
 	mov	r1, #0xc8
 	ldr	r0, =Func_800c62c
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =iwram_3001d1c
 	mov	r2, #0
 	str	r2, [r3]

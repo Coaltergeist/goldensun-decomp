@@ -87,7 +87,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_954_200804c
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0xf
 	bl	__Func_8092054
 	mov	r5, r0
@@ -325,7 +325,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_common1_148
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x18
 	bl	__Func_8092924
 	mov	r0, #0x19

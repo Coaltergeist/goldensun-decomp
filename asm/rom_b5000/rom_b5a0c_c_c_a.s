@@ -957,7 +957,7 @@
 .Lb65a2:
 	ldr	r1, =0xc7f
 	ldr	r0, =Func_80b5864
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =ewram_2000240
 	mov	r1, #0xf7
 	lsl	r1, #1
@@ -1097,7 +1097,7 @@
 	strb	r2, [r3]
 	ldr	r0, =Func_80b7738
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 .Lb6736:
 	bl	Func_80b9b2c
 	bl	Func_80b5d3c

@@ -1096,7 +1096,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_943_200b4bc
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r2, =.L5b50
 	mov	r3, #0x80
 	lsl	r3, #14
@@ -1107,7 +1107,7 @@
 	str	r3, [r2, #4]
 	ldr	r0, =OvlFunc_943_200b1a8
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L14ee
 .L14ce:
 	ldr	r0, =0x928
@@ -1122,7 +1122,7 @@
 	str	r5, [r3, #4]
 	ldr	r0, =OvlFunc_943_200b1a8
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L14ee:
 	ldr	r0, =0x927
 	bl	__Func_8079338

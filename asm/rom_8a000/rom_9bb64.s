@@ -816,7 +816,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_809bcf8
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x8e
 	lsl	r0, #1
 	bl	_Func_8079338

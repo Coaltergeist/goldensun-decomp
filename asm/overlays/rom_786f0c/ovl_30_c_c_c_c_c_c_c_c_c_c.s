@@ -358,7 +358,7 @@
 	lsl	r1, #4
 	strb	r6, [r0]
 	mov	r0, r7
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r2, =iwram_3001ebc

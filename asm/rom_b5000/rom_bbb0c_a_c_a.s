@@ -26,7 +26,7 @@
 	strb	r4, [r3]
 	lsl	r1, #4
 	ldr	r0, =Func_80bd898
-	bl	Func_80041d8
+	bl	StartTask
 	pop	{r1}
 	bx	r1
 .func_end Func_80bd808

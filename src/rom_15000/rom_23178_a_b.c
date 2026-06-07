@@ -5,9 +5,9 @@
  * asm/rom_15000/rom_23178_a_a.o and asm/rom_15000/rom_23178_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_80041d8(void *task, int priority);
+extern int StartTask(void *task, int priority);
 extern void Func_8028f98(void);
 
 void Func_8028edc(void) {
-    Func_80041d8(Func_8028f98, 0xc8 << 4);
+    StartTask(Func_8028f98, 0xc8 << 4);
 }

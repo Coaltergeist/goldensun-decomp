@@ -284,7 +284,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80ad40c
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	b	.Lad5a8
 
@@ -1780,7 +1780,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a19a0
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =iwram_3001e8c
 	mov	r5, #0x86
 	ldr	r2, [r3]
@@ -2247,7 +2247,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a19a0
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =iwram_3001e8c
 	mov	r5, #0x86
 	mov	r8, r2

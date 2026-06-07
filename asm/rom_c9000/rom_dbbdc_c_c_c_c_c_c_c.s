@@ -196,7 +196,7 @@
 	mov	r1, #0x90
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =0x7098
 	mov	r2, #1
 	mov	r6, #0
@@ -785,7 +785,7 @@
 	str	r5, [r3]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #0xa0
 	mov	r2, sp
 	add	r2, #0x28
@@ -1065,7 +1065,7 @@
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
 	str	r6, [sp, #0x24]
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =0x7828
 	add	r3, r9
 	ldr	r3, [r3]
@@ -1397,7 +1397,7 @@
 	lsl	r1, #3
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0
 	str	r1, [sp, #0x20]
 .Ldc7c4:
@@ -1641,7 +1641,7 @@
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
 	mov	r10, r1
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0
 	mov	r0, #0
 	bl	Func_80cd104
@@ -1727,7 +1727,7 @@
 	str	r6, [r3]
 	mov	r1, r10
 	ldr	r0, =Func_80c90e4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r0, [sp, #0x38]
 	mov	r3, #1
 	str	r3, [r0, #0x10]

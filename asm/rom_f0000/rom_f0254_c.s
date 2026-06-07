@@ -22,7 +22,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80f03c0
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #0x40
 	mov	r5, #0x80
 	lsl	r5, #19
@@ -406,11 +406,11 @@
 	strh	r2, [r3]
 	lsl	r1, #3
 	ldr	r0, =Func_80f0538
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0xc8
 	ldr	r0, =Func_80f0614
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r7, =.Lf1220
 	mov	r6, #0
 	mov	r5, #0

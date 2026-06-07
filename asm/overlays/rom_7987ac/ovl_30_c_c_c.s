@@ -55,7 +55,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_902_2008030
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L55a:
 	mov	r0, #0
 	add	sp, #8

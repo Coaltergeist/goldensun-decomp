@@ -469,7 +469,7 @@
 	strh	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_897_200b01c
-	bl	__Func_80041d8
+	bl	__StartTask
 	add	sp, #4
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

@@ -134,7 +134,7 @@
 	bx	r1
 .func_end Func_8004198
 
-.thumb_func_start Func_80041d8
+.thumb_func_start StartTask
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001a10
 	mov	r5, #1
@@ -213,5 +213,5 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80041d8
+.func_end StartTask
 

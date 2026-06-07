@@ -456,7 +456,7 @@
 	strb	r5, [r0]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_882_200c5b8
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x18
 	mov	r1, #0
 	mov	r2, #0

@@ -3006,7 +3006,7 @@
 	ldr	r1, =0xc94
 	strh	r2, [r3]
 	ldr	r0, =OvlFunc_899_200c8c8
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r0, =0x1ff
 	bl	__Func_8079374
 	bl	__Func_8091750

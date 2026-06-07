@@ -1013,7 +1013,7 @@
 	ldr	r0, =Func_80a19a0
 	lsl	r1, #4
 	str	r3, [sp, #0xc]
-	bl	Func_80041d8
+	bl	StartTask
 	b	.La92c0
 .La91a4:
 	cmp	r4, #0

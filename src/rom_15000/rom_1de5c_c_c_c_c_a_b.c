@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern void Func_801fd34(void);
-extern void Func_80041d8(void (*task)(void), int priority);
+extern void StartTask(void (*task)(void), int priority);
 
 void Func_801fd84(void) {
     int priority;
     priority = 0xc8 << 4;
-    Func_80041d8(Func_801fd34, priority);
+    StartTask(Func_801fd34, priority);
 }

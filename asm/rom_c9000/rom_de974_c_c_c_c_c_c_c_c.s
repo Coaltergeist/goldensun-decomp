@@ -322,7 +322,7 @@
 	lsl	r1, #3
 	add	r5, r11
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
 	bl	_Func_80b7dd0

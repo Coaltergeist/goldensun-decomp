@@ -79,7 +79,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_935_2008aa0
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -114,7 +114,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_935_20089c0
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -354,7 +354,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_935_20086e4
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.Lf08
 
 	.pool_aligned

@@ -145,7 +145,7 @@
 	strh	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =Func_80915ec
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x99
 	lsl	r0, #1
 	bl	_Func_8079374

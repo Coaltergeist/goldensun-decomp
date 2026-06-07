@@ -305,7 +305,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =0x7828
 	add	r3, r5, r2
 	ldr	r3, [r3]

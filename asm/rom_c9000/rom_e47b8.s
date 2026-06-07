@@ -339,7 +339,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =0x7828
 	ldr	r1, [sp, #0x5c]
 	add	r5, r1, r2
@@ -1159,7 +1159,7 @@
 	mov	r1, #0x90
 	ldr	r0, =Func_80dbb9c
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 .Le5264:
 	ldr	r3, [sp, #0x60]
 	sub	r3, #4

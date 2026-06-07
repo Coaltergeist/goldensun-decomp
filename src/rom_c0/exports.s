@@ -5,7 +5,7 @@ Exports_c0:
 
 	.export_func Func_80030f8
 	.export_func Func_80040e8
-	.export_func Func_80041d8
+	.export_func StartTask
 	.export_func Func_8004278
 	.export_func Func_80042c8
 	.export_func Func_800439c

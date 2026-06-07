@@ -437,7 +437,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_880_20081fc
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r3, =iwram_3001ebc
 	mov	r1, #0xe0
 	ldr	r3, [r3]
@@ -546,7 +546,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_880_2008154
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #1
 	bl	__Func_80030f8
 	mov	r3, #1

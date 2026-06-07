@@ -1125,7 +1125,7 @@
 	str	r5, [r0, #0x6c]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_964_2008e20
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L2fda
 .L2a30:
 	mov	r2, #0xe1
@@ -1533,7 +1533,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_964_2008e20
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L2fda
 .L2e1a:
 	mov	r0, #1

@@ -156,7 +156,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #3
 	str	r3, [sp]
 	mov	r2, #7
@@ -658,11 +658,11 @@
 	str	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =Func_80cc960
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

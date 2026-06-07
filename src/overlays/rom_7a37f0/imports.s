@@ -2,7 +2,7 @@
 
 	.export_func Func_8000af0
 	.export_func _Func_80030f8
-	.export_func _Func_80041d8
+	.export_func _StartTask
 	.export_func _Func_8004278
 	.export_func _Func_8004458
 	.export_func _Func_800447c

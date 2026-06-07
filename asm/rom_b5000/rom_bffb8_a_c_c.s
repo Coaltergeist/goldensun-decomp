@@ -90,7 +90,7 @@
 	bne	.Lc09ae
 	ldr	r0, =Func_80c0130
 	ldr	r1, =0x4ff
-	bl	Func_80041d8
+	bl	StartTask
 .Lc09ae:
 	mov	r3, r9
 	mov	r2, r10

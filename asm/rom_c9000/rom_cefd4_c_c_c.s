@@ -132,7 +132,7 @@
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
 	str	r5, [sp, #0xc]
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, r10
 	cmp	r3, #2
 	bne	.Lcf140

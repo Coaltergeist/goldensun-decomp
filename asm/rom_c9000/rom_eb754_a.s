@@ -42,7 +42,7 @@
 	str	r3, [r7]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #1
 	mov	r1, #0
 	bl	Func_80cd104

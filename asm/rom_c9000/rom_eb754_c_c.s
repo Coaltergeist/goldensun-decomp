@@ -35,7 +35,7 @@
 	strh	r2, [r3]
 	mov	r1, r5
 	ldr	r0, =Func_80ec0e0
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_80ec0f0
 	mov	r0, #2
 	mov	r1, #0
@@ -48,7 +48,7 @@
 	mov	r1, r5
 	ldr	r0, =Func_80cd260
 	mov	r10, r4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =REG_WININ
 	ldr	r3, .Lec174	@ 0x2137
 	b	.Lec190
@@ -359,7 +359,7 @@
 	strh	r3, [r7]
 	ldr	r0, =Func_80d66cc
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 .Lec426:
 	ldr	r4, [sp, #0x3c]
 	ldrh	r3, [r7]

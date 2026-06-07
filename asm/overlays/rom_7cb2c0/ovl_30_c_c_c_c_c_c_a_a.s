@@ -2589,7 +2589,7 @@
 	lsl	r1, #4
 	str	r2, [r3]
 	ldr	r0, =OvlFunc_945_200dc48
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #9
 	mov	r1, #5
 	bl	__Func_80924d4
