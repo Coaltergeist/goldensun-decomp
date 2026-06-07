@@ -583,7 +583,7 @@
 	bne	.La9870
 	mov	r5, #0
 .La9870:
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	and	r3, r6
 	cmp	r3, #0

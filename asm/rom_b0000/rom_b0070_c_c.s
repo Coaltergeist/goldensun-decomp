@@ -547,7 +547,7 @@
 	ldr	r0, [sp, #8]
 	bl	Func_80b2ed8
 .Lb2c4a:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -1570,7 +1570,7 @@
 .Lb353a:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -1788,7 +1788,7 @@
 .Lb370c:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

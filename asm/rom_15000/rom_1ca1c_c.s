@@ -880,7 +880,7 @@
 	bl	Func_80216b4
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #4
 	and	r2, r3
@@ -1437,7 +1437,7 @@
 	bl	Func_80216b4
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

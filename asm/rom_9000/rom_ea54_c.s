@@ -25,7 +25,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #3
 	bne	.Leac2
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #1
@@ -84,7 +84,7 @@
 	ldr	r4, =ewram_2000240
 	mov	r2, #0x85
 	lsl	r2, #2
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	add	r3, r4, r2
 	ldrh	r2, [r3]
 	ldr	r3, [r0]

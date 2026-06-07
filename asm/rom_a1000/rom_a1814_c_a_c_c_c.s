@@ -341,7 +341,7 @@
 .La375c:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 	ldr	r3, [r6]
 	mov	r2, #1
 	and	r3, r2
@@ -792,7 +792,7 @@
 	bl	Func_80a1a40
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

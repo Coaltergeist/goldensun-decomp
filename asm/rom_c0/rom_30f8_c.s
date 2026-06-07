@@ -132,7 +132,7 @@
 	ldr	r2, [r0]
 	eor	r3, r2
 	ldr	r2, [r1]
-	ldr	r4, =iwram_3001c94
+	ldr	r4, =gKeyPress
 	and	r3, r2
 	str	r3, [r4]
 	ldr	r3, [r1]

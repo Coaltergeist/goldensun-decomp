@@ -141,7 +141,7 @@
 	beq	.L93270
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, =0x303
 	ldr	r3, [r1]
 	and	r3, r2

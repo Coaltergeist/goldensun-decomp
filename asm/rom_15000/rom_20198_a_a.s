@@ -684,7 +684,7 @@
 	bne	.L206c0
 	b	.L20494
 .L20728:
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	mov	r1, r11
 	and	r3, r1

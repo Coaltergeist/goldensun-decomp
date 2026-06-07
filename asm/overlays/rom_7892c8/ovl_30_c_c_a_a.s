@@ -3948,7 +3948,7 @@
 	add	r0, sp, #8
 	mov	r1, #0x48
 	bl	__Func_801c154
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #1
 	and	r3, r2
@@ -3982,7 +3982,7 @@
 	bl	__Func_801c154
 	mov	r0, #1
 	bl	__Func_809163c
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	and	r3, r6
 	cmp	r3, #0

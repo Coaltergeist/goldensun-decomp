@@ -415,7 +415,7 @@
 .L97ee4:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r5, [r3]
 	ldr	r3, =0x303
 	and	r5, r3

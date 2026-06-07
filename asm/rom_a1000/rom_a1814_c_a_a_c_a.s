@@ -237,7 +237,7 @@
 	mov	r0, #1
 	bl	Func_80030f8
 	mov	r3, #1
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 	mov	r10, r3
 .La1db0:
 	mov	r0, #1

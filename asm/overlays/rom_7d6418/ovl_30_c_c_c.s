@@ -1084,7 +1084,7 @@
 	bl	__Func_80030f8
 	mov	r0, #0x74
 	bl	__Func_80f9080
-	ldr	r5, =iwram_3001c94
+	ldr	r5, =gKeyPress
 	mov	r7, #1
 	b	.Lc20
 .Lc1a:

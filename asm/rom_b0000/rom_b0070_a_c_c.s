@@ -116,7 +116,7 @@
 	mov	r1, r6
 	bl	Func_80b11a4
 .Lb2206:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -530,7 +530,7 @@
 	mov	r1, r10
 	bl	Func_80b1470
 .Lb25b4:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

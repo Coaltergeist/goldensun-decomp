@@ -881,7 +881,7 @@
 	sub	r3, #0x15
 	cmp	r3, #0xd9
 	bhi	.Lf27b2
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -1264,7 +1264,7 @@
 	mov	r0, r11
 	strh	r3, [r0]
 .Lf2b04:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2

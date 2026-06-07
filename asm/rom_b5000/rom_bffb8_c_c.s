@@ -57,7 +57,7 @@
 	add	r3, #0x64
 	str	r3, [r2]
 .Lc0f50:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #1
 	and	r3, r2

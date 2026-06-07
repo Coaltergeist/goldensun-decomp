@@ -224,7 +224,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	bne	.Lbb78a
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, =0x303
 	ldr	r3, [r3]
 	and	r3, r2
@@ -364,7 +364,7 @@
 	mov	r0, r5
 	mov	r1, #0xf0
 	bl	Func_8003dec
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, =0x303
 	ldr	r3, [r3]
 	and	r3, r2

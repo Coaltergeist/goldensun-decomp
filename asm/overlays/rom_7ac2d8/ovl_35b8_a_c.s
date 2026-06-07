@@ -730,7 +730,7 @@
 	mov	r0, #0xf1
 	bl	__Func_80f9080
 	mov	r1, #0xf
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 	mov	r5, #0
 	mov	r10, r1
 	b	.L5880

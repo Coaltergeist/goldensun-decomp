@@ -263,7 +263,7 @@
 	mov	r2, #0
 	mov	r10, r2
 .La5998:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -1308,7 +1308,7 @@
 	bl	Func_80a1a40
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -1330,9 +1330,9 @@
 .La6272:
 	mov	r0, #0x72
 	bl	_Func_80f9080
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 .La627a:
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	ldr	r3, [r0]
 	mov	r0, #0x80
 	lsl	r0, #2
@@ -1389,7 +1389,7 @@
 	bl	_Func_80f9080
 	b	.La634c
 .La62ec:
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	ldr	r3, [r0]
 	mov	r2, #2
 	and	r3, r2

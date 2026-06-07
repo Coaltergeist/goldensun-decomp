@@ -961,7 +961,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 .L8ce:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, [r3]
 	mov	r3, #2
 	and	r2, r3
@@ -1041,7 +1041,7 @@
 	mov	r2, #0
 	mov	r3, #4
 	bl	__Func_801e74c
-	ldr	r7, =iwram_3001c94
+	ldr	r7, =gKeyPress
 	mov	r5, #1
 .L978:
 	mov	r0, #1
@@ -1181,7 +1181,7 @@
 .Laaa:
 	ldr	r0, =0x6002500
 	bl	__Func_80219c8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #2
 	and	r2, r3
@@ -1204,7 +1204,7 @@
 	bl	__Func_80f9080
 	b	.Lb58
 .Lada:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, [r3]
 	mov	r3, #0x20
 	and	r2, r3
@@ -1223,7 +1223,7 @@
 	.pool_aligned
 
 .Lb30:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #0x10
 	and	r2, r3

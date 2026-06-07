@@ -294,7 +294,7 @@
 	bne	.L19a0a
 	mov	r6, #1
 .L19a0a:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r1, =0xea4
 	ldr	r2, [r3]
 	add	r3, r5, r1

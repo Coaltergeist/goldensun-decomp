@@ -1079,7 +1079,7 @@
 	lsl	r3, #1
 	add	r3, r9
 	ldr	r6, [r3]
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	str	r3, [sp, #0x24]
 	ldr	r3, =iwram_3001b04
@@ -1998,7 +1998,7 @@
 	ldr	r3, =iwram_3001e8c
 	ldr	r3, [r3]
 	str	r3, [sp, #0x24]
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	str	r3, [sp, #0x20]
 	ldr	r3, =iwram_3001b04
