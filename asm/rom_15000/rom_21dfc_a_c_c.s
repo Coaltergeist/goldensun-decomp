@@ -9,7 +9,7 @@
 	ldr	r2, =Func_8021e14
 	mov	r0, #2
 	mov	r1, #0x88
-	bl	Func_800307c
+	bl	SetIntrHandler
 	pop	{r0}
 	bx	r0
 .func_end Func_8021e28
@@ -334,7 +334,7 @@
 	ldr	r2, =Func_8021e14
 	mov	r0, #2
 	mov	r1, #0x88
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r0, #0xd8
 	mov	r2, #0xe0
 	lsl	r0, #1
@@ -1143,7 +1143,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	ldr	r1, =ewram_2002090
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]

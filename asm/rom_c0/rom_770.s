@@ -60,13 +60,13 @@
 	msr	SPSR_fc, r0
 	bx	lr
 
-	.global	Data_8000850
-Data_8000850:
+	.global	gIntrTable
+gIntrTable:
 .L850:	.space	4
 .L854:	.space	4
 .L858:	.space	8
 .L860:	.space	4
-	.ssize	Data_8000850
+	.ssize	gIntrTable
 
 	.global	Data_8000864
 Data_8000864:

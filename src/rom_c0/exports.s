@@ -17,7 +17,7 @@ Exports_c0:
 	.export_func Func_8002322
 	.export_func Func_800231c
 	.export_func Func_800447c
-	.export_func Func_800307c
+	.export_func SetIntrHandler
 	.export_func Func_8004858
 	.export_func Func_80048b0
 	.export_func Func_80048f4

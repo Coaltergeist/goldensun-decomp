@@ -115,11 +115,11 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	bl	Func_8004858
 	bl	Func_8004760
 	bl	Func_800403c

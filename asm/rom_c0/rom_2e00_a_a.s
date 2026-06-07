@@ -46,7 +46,7 @@
 	mov	r0, #0
 	ldr	r2, =Func_8003650
 	mov	r1, #1
-	bl	Func_800307c
+	bl	SetIntrHandler
 	ldr	r2, =0xc00f
 	ldr	r3, =REG_KEYCNT
 	strh	r2, [r3]

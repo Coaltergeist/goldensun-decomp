@@ -39,7 +39,7 @@
 	ldr	r2, =Func_80ec0f0
 	mov	r0, #2
 	mov	r1, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r4, #0xef
 	lsl	r4, #7
 	add	r4, r11
@@ -614,7 +614,7 @@
 	ldr	r2, =Func_80ec0f0
 	mov	r0, #2
 	mov	r1, #0x60
-	bl	Func_800307c
+	bl	SetIntrHandler
 	ldr	r2, =0x77b4
 	mov	r3, #0x18
 	add	r2, r11
@@ -1187,7 +1187,7 @@
 	str	r2, [r6, #0x10]
 	mov	r1, #0
 	mov	r0, #2
-	bl	Func_800307c
+	bl	SetIntrHandler
 	bl	Func_80d67dc
 	ldr	r0, =Func_80ec0e0
 	bl	Func_8004278

@@ -6,11 +6,11 @@
  * goldensun/stage1.ld.
  */
 extern volatile unsigned short iwram_3001cb0;
-extern void Func_800307c(int intr, unsigned int dispstat, void *vector);
+extern void SetIntrHandler(int intr, unsigned int dispstat, void *vector);
 
 void Func_8006358(void)
 {
     iwram_3001cb0 = 0;
-    Func_800307c(7, 0, (void *)0);
-    Func_800307c(6, 0, (void *)0);
+    SetIntrHandler(7, 0, (void *)0);
+    SetIntrHandler(6, 0, (void *)0);
 }

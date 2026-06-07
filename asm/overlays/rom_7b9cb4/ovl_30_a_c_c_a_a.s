@@ -589,7 +589,7 @@
 	ldr	r2, =OvlFunc_932_20086a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r2, =.L5238
 	ldr	r3, .L78c	@ 0
 	strh	r3, [r2]
@@ -610,7 +610,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r0, =0x121
 	bl	__Func_80f9080
 	mov	r0, #1
@@ -688,7 +688,7 @@
 	ldr	r2, =OvlFunc_932_20086a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r2, =.L5238
 	ldr	r3, .L880	@ 0
 	strh	r3, [r2]
@@ -709,7 +709,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r0, =0x121
 	bl	__Func_80f9080
 	mov	r0, #1
@@ -805,7 +805,7 @@
 	ldr	r2, =OvlFunc_932_20086a0
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r2, =.L5238
 	ldr	r3, .L994	@ 0
 	strh	r3, [r2]
@@ -826,7 +826,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	ldr	r0, =0x121
 	bl	__Func_80f9080
 	mov	r0, #1

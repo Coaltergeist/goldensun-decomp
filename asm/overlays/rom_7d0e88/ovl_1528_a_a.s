@@ -175,7 +175,7 @@
 	ldr	r2, =OvlFunc_947_2009578
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	mov	r0, #0xe7
 	bl	__Func_80f9080
 	str	r6, [r5]
@@ -232,7 +232,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #1
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r0, =OvlFunc_947_20095cc
