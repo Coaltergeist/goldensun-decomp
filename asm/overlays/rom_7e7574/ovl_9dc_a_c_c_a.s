@@ -30,7 +30,7 @@
 	push	{r5, lr}
 	mov	r0, #0xc
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	asr	r3, #20
 	cmp	r3, #0x16
@@ -68,7 +68,7 @@
 	str	r5, [sp]
 	bl	__Func_8010704
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lc62

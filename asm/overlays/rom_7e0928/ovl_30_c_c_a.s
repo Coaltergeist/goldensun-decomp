@@ -4,7 +4,7 @@
 .thumb_func_start OvlFunc_956_2008a44
 	push	{r5, lr}
 	mov	r0, #0x1e
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r2, r5
 	add	r2, #0x55
@@ -52,7 +52,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r0, =OvlFunc_956_200804c
-	bl	__Func_8004278
+	bl	__StopTask
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -65,7 +65,7 @@
 	lsl	r0, #1
 	add	r6, r0
 	ldr	r0, [r6]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	mov	r5, r0
 	lsl	r3, #9
@@ -104,7 +104,7 @@
 	lsl	r0, #1
 	add	r6, r3, r0
 	ldr	r0, [r6]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r2, #0xa6
 	ldr	r3, [r5, #8]

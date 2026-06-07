@@ -5,11 +5,11 @@
  * Candidate: tools/runs/run_20260607T010203Z/OvlFunc_936_20095e0-iter-1.c
  * TODO(residual): reg-alloc/scheduling divergence (register swap / op-order); logic correct. Permuter seed.
  */
-extern unsigned char *__Func_8092054(int id);
+extern unsigned char *__MapActor_GetActor(int id);
 
 void OvlFunc_936_20095e0(void) {
     unsigned char *p;
 
-    p = __Func_8092054(0);
+    p = __MapActor_GetActor(0);
     p[0x23] |= 1;
 }

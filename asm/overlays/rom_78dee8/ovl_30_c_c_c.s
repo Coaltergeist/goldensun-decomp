@@ -8,7 +8,7 @@
 	push	{r5, r6, r7}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r3, [r0, #6]
 	ldr	r2, =.L265c
 	lsr	r3, #12
@@ -355,7 +355,7 @@
 	b	.Lcda
 .Lb10:
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	b	.Lcda
@@ -379,47 +379,47 @@
 	b	.Lcda
 .Lb42:
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0x10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0x11
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0x12
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0x13
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	ldr	r0, =0x804
@@ -473,27 +473,27 @@
 	b	.Lcda
 .Lc30:
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	ldr	r0, =0x825
@@ -580,7 +580,7 @@
 	mov	r3, #1
 	bl	__Func_80933f8
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Ld82
 	ldr	r1, [r0, #8]
@@ -589,7 +589,7 @@
 	bl	__Func_80923e4
 .Ld82:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Ld96
 	ldr	r1, [r0, #8]
@@ -598,7 +598,7 @@
 	bl	__Func_80923e4
 .Ld96:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Ldaa
 	ldr	r1, [r0, #8]
@@ -709,7 +709,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lec6
 	mov	r3, #0xa
@@ -723,7 +723,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lee6
 	mov	r2, #0xa
@@ -737,7 +737,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lf06
 	mov	r2, #0xa
@@ -794,7 +794,7 @@
 	bl	__Func_8091dc8
 	bl	__Func_8091e20
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lfae
 	ldr	r1, [r0, #8]
@@ -803,7 +803,7 @@
 	bl	__Func_80923e4
 .Lfae:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lfc2
 	ldr	r1, [r0, #8]
@@ -812,7 +812,7 @@
 	bl	__Func_80923e4
 .Lfc2:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.Lfd6
 	ldr	r1, [r0, #8]
@@ -1363,7 +1363,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1572
 	mov	r3, #0xa
@@ -1377,7 +1377,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1592
 	mov	r3, #0xa
@@ -1391,7 +1391,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L15b2
 	mov	r3, #0xa
@@ -1448,7 +1448,7 @@
 	mov	r0, #0x14
 	bl	__Func_809163c
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1652
 	ldr	r1, [r0, #8]
@@ -1562,7 +1562,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L1776
 	mov	r3, #0xa
@@ -1942,7 +1942,7 @@
 	bl	__Func_8012330
 	b	.L1b14
 .L1aea:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #4
 	sub	r3, r0
 	lsl	r3, #3

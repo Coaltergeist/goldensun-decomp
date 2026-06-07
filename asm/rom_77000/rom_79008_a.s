@@ -169,7 +169,7 @@
 	sub	r3, #2
 	ldrsh	r3, [r1, r3]
 	sub	r7, r2, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -189,7 +189,7 @@
 	sub	r3, #2
 	ldrsh	r3, [r2, r3]
 	sub	r7, r1, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -209,7 +209,7 @@
 	sub	r3, #2
 	ldrh	r3, [r2, r3]
 	sub	r7, r1, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -229,7 +229,7 @@
 	sub	r3, #2
 	ldrh	r3, [r2, r3]
 	sub	r7, r1, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -249,7 +249,7 @@
 	sub	r3, #2
 	ldrh	r3, [r2, r3]
 	sub	r7, r1, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3
@@ -269,7 +269,7 @@
 	sub	r3, #1
 	ldrb	r3, [r2, r3]
 	sub	r7, r1, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r0
 	lsl	r0, r3, #2
 	add	r0, r3

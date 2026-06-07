@@ -234,7 +234,7 @@
 	ldr	r3, =OvlFunc_897_200ae5c
 	mov	r0, #0xf
 	str	r3, [r2, #0x6c]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [sp]
 	ldr	r4, [r3, #0x50]
 	ldr	r3, [r0, #0x50]
@@ -249,7 +249,7 @@
 	orr	r3, r2
 	strb	r3, [r4, #9]
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, r10
 	ldr	r1, [r2, #4]
 	ldr	r3, [r0, #0x50]

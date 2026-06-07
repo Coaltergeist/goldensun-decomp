@@ -136,13 +136,13 @@
 	str	r3, [r6, #4]
 	ldr	r3, [r7, #0x10]
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xc0
 	lsl	r5, r0, #2
 	lsl	r3, #10
 	add	r5, r0
 	add	r5, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r6
 	mov	r1, r0
 	mov	r0, r5
@@ -164,7 +164,7 @@
 	strh	r2, [r3]
 	add	r3, #2
 	strh	r2, [r3]
-	bl	Func_8004458
+	bl	Random
 	strh	r0, [r5, #6]
 .L9aa24:
 	mov	r0, #6
@@ -227,9 +227,9 @@
 	ldr	r3, [r7, #0x18]
 	mov	r8, sp
 	str	r3, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, #16
 	mov	r3, r0
 	lsl	r0, r3, #4
@@ -286,7 +286,7 @@
 	mov	r0, r5
 	str	r3, [r5, #8]
 	bl	Func_80974d8
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r0
 	mov	r0, #0x80
 	mov	r2, r5

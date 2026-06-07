@@ -307,13 +307,13 @@
 	mov	r10, r3
 	cmp	r5, #0
 	bne	.L8af66
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r8, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r6, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	sub	r5, r2
 	add	r5, r6
@@ -370,7 +370,7 @@
 	mov	r0, #0
 	cmp	r5, #0
 	beq	.L8affc
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	mul	r3, r0
 	mov	r2, r9

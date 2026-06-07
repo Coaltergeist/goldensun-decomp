@@ -1650,7 +1650,7 @@
 	add	r0, #0x2c
 	bl	Func_80a10d0
 	ldr	r0, =Func_80a19a0
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =0x242
 	ldr	r1, .La8184	@ 0x68
 	mov	r2, #3

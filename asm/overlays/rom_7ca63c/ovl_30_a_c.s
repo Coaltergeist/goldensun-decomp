@@ -15,7 +15,7 @@
 .Ld6:
 	cmp	r3, #0
 	beq	.Lf2
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #11
 	lsr	r0, #16
@@ -27,7 +27,7 @@
 	mov	r3, #0
 	b	.L10a
 .Lf2:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r5, #0x4c]
 	lsl	r0, #11
 	lsr	r0, #16
@@ -63,7 +63,7 @@
 .L130:
 	cmp	r3, #0
 	beq	.L14e
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #1
 	add	r3, r0
 	ldr	r2, [r5, #0xc]
@@ -76,7 +76,7 @@
 	mov	r3, #0
 	b	.L16a
 .L14e:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #1
 	add	r3, r0
 	ldr	r2, [r5, #0xc]

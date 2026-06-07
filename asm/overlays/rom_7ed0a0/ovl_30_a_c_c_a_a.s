@@ -10,12 +10,12 @@
 	cmp	r0, #0
 	beq	.L1488
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	add	r0, #0x62
 	strb	r3, [r0]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #0xf7
@@ -23,12 +23,12 @@
 	b	.L14a2
 .L1488:
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	add	r0, #0x62
 	strb	r3, [r0]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #8
@@ -49,12 +49,12 @@
 	cmp	r0, #0
 	beq	.L14dc
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	add	r0, #0x62
 	strb	r3, [r0]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #0xf7
@@ -62,12 +62,12 @@
 	b	.L14f6
 .L14dc:
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	add	r0, #0x62
 	strb	r3, [r0]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #8

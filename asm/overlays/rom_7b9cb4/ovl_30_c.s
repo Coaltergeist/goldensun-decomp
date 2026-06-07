@@ -327,7 +327,7 @@
 	sub	sp, #0xc
 	mov	r8, r1
 	mov	r9, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xfa
 	lsl	r2, #1

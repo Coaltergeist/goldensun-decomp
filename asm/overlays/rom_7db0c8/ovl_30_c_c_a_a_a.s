@@ -119,7 +119,7 @@
 	mov	r2, #0
 	str	r2, [r3]
 	mov	r0, r5
-	bl	__Func_8004278
+	bl	__StopTask
 	bl	_call_via_r5
 	pop	{r5}
 	pop	{r0}
@@ -177,7 +177,7 @@
 	mov	r0, #0x1b
 	bl	__Func_8010704
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r1, [r5, #8]
 	ldr	r2, [r5, #0x10]
@@ -208,7 +208,7 @@
 	bl	__Func_8010704
 .L202:
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r1, [r5, #8]
 	mov	r0, #0xc4

@@ -158,9 +158,9 @@
 	bne	.L1931e
 	b	.L195e0
 .L1931e:
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r2, r5, #1
 	lsl	r3, r0, #1
 	add	r2, r5
@@ -179,9 +179,9 @@
 	and	r3, r2
 	orr	r3, r1
 	strh	r3, [r7, #6]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r2, r5, #1
 	lsl	r3, r0, #1
 	add	r2, r5

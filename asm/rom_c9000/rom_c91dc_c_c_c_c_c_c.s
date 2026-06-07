@@ -620,7 +620,7 @@
 	b	.Lc9e9a
 .Lca1a4:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

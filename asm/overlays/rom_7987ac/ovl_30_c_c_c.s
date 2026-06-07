@@ -27,15 +27,15 @@
 	mov	r0, #0
 	bl	__Func_8010424
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #0
 	add	r0, #0x55
 	strb	r5, [r0]
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0xc]
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0x14]
 	b	.L55a
 .L536:

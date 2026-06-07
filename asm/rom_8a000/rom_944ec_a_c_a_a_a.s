@@ -30,7 +30,7 @@
 	ldr	r3, =iwram_3001f30
 	ldr	r0, =Func_8095884
 	ldr	r5, [r3]
-	bl	Func_8004278
+	bl	StopTask
 	mov	r6, r5
 	add	r6, #0x9d
 	add	r5, #0x58

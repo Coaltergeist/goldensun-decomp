@@ -42,7 +42,7 @@
 	mov	r0, #0x20
 	bl	__Func_8092950
 	mov	r0, #0x20
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r1, #0xbe
@@ -315,7 +315,7 @@
 	push	{r5, lr}
 	mov	r0, #9
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lcce

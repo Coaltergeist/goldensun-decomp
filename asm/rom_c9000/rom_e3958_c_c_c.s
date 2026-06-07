@@ -430,16 +430,16 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	lsl	r0, #10
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x20
 	lsl	r0, #10
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x7f
 	ldr	r3, [r5]
@@ -806,7 +806,7 @@
 	b	.Le3db2
 .Le4048:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
@@ -1005,20 +1005,20 @@
 	mov	r7, #0
 	add	r5, r11
 .Le422e:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x10
 	str	r3, [r5]
 	str	r7, [r5, #4]
 	str	r7, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #1
 	add	r10, r1
 	and	r0, r6
@@ -1184,7 +1184,7 @@
 	cmp	r1, #0x20
 	bne	.Le42de
 	ldr	r0, =Func_80cd4b4
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, r8
 	mov	r1, #0x10
 	bl	_Func_800c344
@@ -1305,15 +1305,15 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	lsl	r0, #10
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	lsl	r0, #10
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x7f
 	ldr	r3, [r5]
@@ -1506,7 +1506,7 @@
 	b	.Le452a
 .Le4674:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

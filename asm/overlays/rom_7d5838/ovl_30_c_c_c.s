@@ -56,7 +56,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x80
 	ldrh	r3, [r0, #6]
 	lsl	r2, #6

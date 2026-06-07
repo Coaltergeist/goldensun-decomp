@@ -100,19 +100,19 @@
 	str	r3, [r5]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r9
 	and	r0, r2
 	sub	r0, #0x80
 	lsl	r0, #10
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r9
 	and	r0, r3
 	sub	r0, #0x80
 	lsl	r0, #10
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r9
 	and	r0, r1
 	sub	r0, #0x80
@@ -453,13 +453,13 @@
 	b	.Lcecc2
 .Lcef14:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	ldr	r0, =Func_80dbb9c
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x54
 	pop	{r3, r5, r6, r7}

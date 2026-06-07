@@ -11,7 +11,7 @@
 	mov	r10, r2
 	mov	r9, r3
 	mov	r8, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #1
 	mov	r5, r0
 	mov	r0, r6
@@ -70,7 +70,7 @@
 	mov	r5, r8
 	push	{r5, r6, r7}
 	sub	sp, #0x44
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r10, r0
 	mov	r0, #0xbc
 	bl	__Func_80f9080

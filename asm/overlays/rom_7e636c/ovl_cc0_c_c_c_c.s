@@ -92,7 +92,7 @@
 	bl	__Func_80924d4
 .L1458:
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 .L1464:

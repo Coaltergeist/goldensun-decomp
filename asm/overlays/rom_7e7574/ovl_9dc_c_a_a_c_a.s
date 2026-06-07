@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_959_20094cc
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	cmp	r3, #0
 	bge	.L14de
@@ -58,7 +58,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r0, #0x12
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =iwram_3001e70
 	mov	r1, #0xb2
 	ldr	r3, [r2]

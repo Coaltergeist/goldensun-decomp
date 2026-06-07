@@ -215,7 +215,7 @@
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x10
 	pop	{r3}
@@ -312,10 +312,10 @@
 	mov	r8, r1
 	add	r7, r10
 .Led1cc:
-	bl	Func_8004458
+	bl	Random
 	ldr	r6, =0x1ff
 	and	r6, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r5, r0
 	and	r5, r3
@@ -338,7 +338,7 @@
 	mul	r3, r0
 	asr	r3, #9
 	str	r3, [r7, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	mov	r2, #1
 	and	r3, r0
@@ -554,7 +554,7 @@
 	b	.Led232
 .Led3ba:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x2c
 	pop	{r3, r5, r6, r7}

@@ -16,7 +16,7 @@
 	add	r3, r2
 	mov	r5, r0
 	ldr	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r6, r0
 	bl	Func_8004080
 	mov	r3, #0
@@ -836,7 +836,7 @@
 	cmp	r3, #0
 	beq	.L9c232
 	ldr	r0, =Func_809bcf8
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_809bcd4
 	mov	r2, #0x40
 	mov	r3, #0x80
@@ -922,7 +922,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xf0
 	ldr	r3, [r3]

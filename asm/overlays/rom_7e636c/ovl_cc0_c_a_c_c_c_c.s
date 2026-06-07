@@ -5,7 +5,7 @@
 	sub	sp, #8
 	bl	__Func_80916b0
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	asr	r3, #20
 	cmp	r3, #0x2a

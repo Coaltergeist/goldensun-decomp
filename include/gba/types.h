@@ -38,6 +38,19 @@ typedef vu8  vbool8;
 typedef vu16 vbool16;
 typedef vu32 vbool32;
 
+// fixed point math
+
+typedef s32 fx32;
+typedef s16 fx16;
+
+typedef struct {
+    fx32 x, y;
+} vec2_t;
+
+typedef struct {
+    fx32 x, y, z;
+} vec3_t;
+
 #ifndef NULL
 #define NULL ( (void *) 0)
 #endif

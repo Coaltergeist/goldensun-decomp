@@ -4,7 +4,7 @@
 	push	{r5, lr}
 	mov	r0, #0xe
 	sub	sp, #0x38
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
 	mov	r2, #3
@@ -212,7 +212,7 @@
 	beq	.L594
 .L518:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, r0
 	ldr	r0, [r1, #8]
 	asr	r3, r0, #20

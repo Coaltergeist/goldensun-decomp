@@ -93,7 +93,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, .L134	@ 0
 	add	r0, #0x55
 	strb	r5, [r0]
@@ -174,7 +174,7 @@
 	cmp	r0, r3
 	bls	.L1d8
 	ldr	r0, =OvlFunc_880_2008154
-	bl	__Func_8004278
+	bl	__StopTask
 .L1d8:
 	pop	{r5, r6}
 	pop	{r0}

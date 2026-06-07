@@ -40,7 +40,7 @@
 	push	{lr}
 	bl	__Func_80916b0
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	bl	__Func_8091dc8
@@ -116,7 +116,7 @@
 	cmp	r2, r3
 	bne	.L191e
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r7, =.L3328
 	mov	r3, r0
 	add	r3, #0x55

@@ -23,7 +23,7 @@
 	cmp	r3, #0xa
 	bne	.L220
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r2, [r0]
 	mov	r3, #0x14
@@ -32,20 +32,20 @@
 	b	.L24c
 .L220:
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	mov	r5, #0x14
 	orr	r3, r5
 	strb	r3, [r0]
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	orr	r3, r5
 	strb	r3, [r0]
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	orr	r5, r3

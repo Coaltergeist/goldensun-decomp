@@ -42,7 +42,7 @@
 .thumb_func_start OvlFunc_959_2009108
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	cmp	r3, #0
 	bge	.L111a
@@ -85,10 +85,10 @@
 	mov	r6, r8
 	push	{r6, r7}
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r7, r0
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =iwram_3001e70
 	mov	r1, #0xb2
 	ldr	r3, [r2]
@@ -293,10 +293,10 @@
 .thumb_func_start OvlFunc_959_2009324
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r0, #0x11
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r5, #8]
 	cmp	r3, #0
 	bge	.L133e
@@ -351,7 +351,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r0, #0x11
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =iwram_3001e70
 	mov	r1, #0xb2
 	ldr	r3, [r2]

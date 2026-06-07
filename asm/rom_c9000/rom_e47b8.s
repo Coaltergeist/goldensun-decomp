@@ -387,7 +387,7 @@
 	mov	r8, r5
 	add	r5, r0, r1
 .Le4bc4:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x20
@@ -395,13 +395,13 @@
 	str	r3, [r5]
 	str	r2, [r5, #4]
 	str	r2, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r0, r6
 	add	r10, r3
@@ -798,9 +798,9 @@
 	mov	r3, #0
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
@@ -863,9 +863,9 @@
 	mov	r3, #0
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
@@ -962,12 +962,12 @@
 	ldr	r1, [sp, #0x60]
 	cmp	r1, #0x1f
 	bne	.Le50d8
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #12
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #10
@@ -976,18 +976,18 @@
 	.pool_aligned
 
 .Le50d8:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #12
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #12
 .Le50ee:
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #12
@@ -1082,16 +1082,16 @@
 	cmp	r1, #0x17
 	bne	.Le51e0
 .Le51be:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	lsl	r0, #11
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #11
@@ -1100,33 +1100,33 @@
 	ldr	r2, [sp, #0x60]
 	cmp	r2, #0x19
 	bne	.Le520a
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	lsl	r3, #10
 	str	r3, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #11
 	b	.Le522c
 .Le520a:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #10
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	lsl	r3, #10
 	str	r3, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #10
@@ -1638,17 +1638,17 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r0, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x80
 	lsl	r0, #10
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x80
 	lsl	r0, #10
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #1
 	and	r0, r6
 	sub	r0, #0x80
@@ -1844,7 +1844,7 @@
 	mov	r1, r8
 	and	r1, r7
 	mov	r8, r1
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r5, r0
 	and	r5, r3
@@ -1878,7 +1878,7 @@
 	bl	Func_8002dd8
 	mov	r0, #0x2e
 	bl	Func_8002dd8
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =.Leedd0
 	and	r0, r7
 	ldrb	r2, [r3, r0]
@@ -2050,17 +2050,17 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r2, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #12
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #10
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x7f
 	lsl	r0, #12
@@ -2878,20 +2878,20 @@
 	mov	r10, r0
 	mov	r7, #0
 .Le60d2:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	add	r3, #0x20
 	str	r3, [r5]
 	str	r7, [r5, #4]
 	str	r7, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #1
 	add	r10, r1
 	and	r0, r6
@@ -3468,9 +3468,9 @@
 	mov	r3, #0
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
@@ -3493,10 +3493,10 @@
 	bne	.Le65e2
 .Le65dc:
 	ldr	r0, =Func_80dbb9c
-	bl	Func_8004278
+	bl	StopTask
 .Le65e2:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

@@ -9634,7 +9634,7 @@
 	ldrh	r6, [r5]
 	cmp	r6, #0
 	beq	.L27fa6
-	bl	Func_8004458
+	bl	Random
 	ldrh	r3, [r5]
 	mul	r3, r0
 	lsr	r3, #20
@@ -9729,7 +9729,7 @@
 	ldr	r0, [sp, #0x34]
 	bl	Func_8003f3c
 	ldr	r0, =Func_8026e80
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r3, [sp, #0x24]
 	ldr	r2, [r3]
 	b	.L28078
@@ -10332,7 +10332,7 @@
 	ldr	r3, =iwram_3001f38
 	ldr	r5, [r3]
 	ldr	r0, =Func_8028194
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, [r5, #0x78]
 	cmp	r0, #0
 	beq	.L28534
@@ -11288,11 +11288,11 @@
 	cmp	r3, #0
 	beq	.L28d16
 	ldr	r0, =Func_8028aa8
-	bl	Func_8004278
+	bl	StopTask
 	b	.L28d1c
 .L28d16:
 	ldr	r0, =Func_8028b80
-	bl	Func_8004278
+	bl	StopTask
 .L28d1c:
 	mov	r3, r8
 	ldr	r0, [r3]

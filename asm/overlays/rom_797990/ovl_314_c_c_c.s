@@ -36,19 +36,19 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =OvlFunc_901_2008400
 	str	r5, [r0, #0x6c]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	add	r0, #0x64
 	strh	r3, [r0]
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0x6c]
 	mov	r0, #0xf
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, #0
 	add	r0, #0x64
 	strh	r6, [r0]

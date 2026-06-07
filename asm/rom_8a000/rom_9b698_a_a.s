@@ -113,7 +113,7 @@
 	mov	r0, #0x37
 	bl	Func_80030f8
 	mov	r0, r5
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r3, =ewram_2000240
 	mov	r1, #0x93
 	lsl	r1, #2

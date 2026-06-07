@@ -5,13 +5,13 @@
  * asm/overlays/rom_7e7574/ovl_9dc_c_a_a.o and asm/overlays/rom_7e7574/ovl_9dc_c_a_c.o in
  * goldensun/overlays/rom_7e7574/overlay.ld.
  */
-extern int __Func_8092054(int);
+extern int __MapActor_GetActor(int);
 
 unsigned int OvlFunc_959_2009660(void) {
     int *p;
     int a, b;
 
-    p = (int *)__Func_8092054(0);
+    p = (int *)__MapActor_GetActor(0);
     a = p[4] / 0x100000;
     b = p[2] / 0x100000;
     if (b > 0x2d && a > 0xe && b <= 0x40 && a <= 0x10)

@@ -48,7 +48,7 @@
 	sub	sp, #8
 	bl	OvlFunc_948_2009da0
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r0, [r0, #8]
 	cmp	r0, #0
 	bge	.L1e10
@@ -65,7 +65,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010704
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r0, [r0, #8]
 	cmp	r0, #0
 	bge	.L1e34

@@ -5,11 +5,11 @@
  * asm/rom_f2000/rom_f2028_c_c_a_a.o and asm/rom_f2000/rom_f2028_c_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8004278(void *task);
+extern void StopTask(void *task);
 extern void Func_8002dd8(int index);
 extern void Func_80f2f10(void);
 
 void Func_80f37ec(void) {
-    Func_8004278(Func_80f2f10);
+    StopTask(Func_80f2f10);
     Func_8002dd8(0x20);
 }

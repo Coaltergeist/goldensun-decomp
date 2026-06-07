@@ -5,7 +5,7 @@
 	push	{lr}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, r0
 	ldr	r3, [r1, #8]
 	mov	r0, sp

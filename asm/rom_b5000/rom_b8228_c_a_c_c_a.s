@@ -31,7 +31,7 @@
 	lsl	r0, #1
 	b	.Lb8f4e
 .Lb8f40:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	mul	r3, r0
 	lsr	r3, #16
@@ -327,7 +327,7 @@
 	mov	r9, r3
 	cmp	r3, #0
 	ble	.Lb91cc
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0x2710
 	mul	r3, r0
 	lsr	r3, #16
@@ -544,10 +544,10 @@
 	b	.Lb945e
 .Lb9368:
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r8
 	mul	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	mul	r2, r0
 	lsr	r5, #16
@@ -566,7 +566,7 @@
 	ldrb	r3, [r2]
 	cmp	r3, #2
 	bne	.Lb93b2
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsr	r3, #16

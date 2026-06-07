@@ -136,7 +136,7 @@
 .thumb_func_start OvlFunc_968_2009150
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	bl	__Func_80916b0
 	ldr	r1, =.L521c
@@ -159,7 +159,7 @@
 	cmp	r3, #0x36
 	bgt	.L11a0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #0xfe
@@ -169,7 +169,7 @@
 	b	.L11b2
 .L11a0:
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #0xfe
@@ -185,7 +185,7 @@
 	mov	r0, #1
 	bl	__Func_809163c
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #1
@@ -516,7 +516,7 @@
 	push	{lr}
 	bl	__Func_80916b0
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	asr	r3, #20
 	cmp	r3, #0x35
@@ -530,7 +530,7 @@
 	ldr	r0, =0x986
 	bl	__Func_8079358
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L152e
 	ldr	r1, [r0, #8]
@@ -610,7 +610,7 @@
 	mov	r1, #2
 	bl	__Func_80924d4
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L15fe
 	mov	r3, #0xa
@@ -648,7 +648,7 @@
 	push	{r5, lr}
 	mov	r0, #0xd
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	bl	__Func_80916b0
 	ldr	r3, [r5, #8]
@@ -690,7 +690,7 @@
 	push	{r5, lr}
 	mov	r0, #0
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r1, #0xa
 	ldrsh	r3, [r5, r1]
@@ -840,7 +840,7 @@
 	push	{r5, r6, lr}
 	mov	r0, #0
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	bl	__Func_80916b0
 	mov	r0, #1
@@ -852,7 +852,7 @@
 	neg	r0, r0
 	bl	__Func_80933f8
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r3, #0x80
@@ -937,7 +937,7 @@
 	push	{r5, lr}
 	mov	r0, #8
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	bl	__Func_80916b0
 	mov	r3, #0xc
 	mov	r2, #0x2c
@@ -961,7 +961,7 @@
 .L1930:
 	mov	r0, r5
 	add	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, [r0, #8]
 	ldr	r3, [r0, #0x10]
 	asr	r2, #20

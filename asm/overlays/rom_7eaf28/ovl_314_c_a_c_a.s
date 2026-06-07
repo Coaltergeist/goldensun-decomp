@@ -40,7 +40,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ebc
 	ldr	r6, [r3]
 	ldr	r3, =iwram_3001e40
@@ -92,10 +92,10 @@
 	ldr	r6, [r3]
 	mov	r10, r0
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r0, r10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r0, =0x20f
 	bl	__Func_8079338
 	mov	r8, r0
@@ -109,7 +109,7 @@
 	mov	r1, #9
 	bl	__Func_80924d4
 	mov	r0, r10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L4c2
 	mov	r3, #0xa

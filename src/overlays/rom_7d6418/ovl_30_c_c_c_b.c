@@ -5,12 +5,12 @@
  * asm/overlays/rom_7d6418/ovl_30_c_c_c_a.o and asm/overlays/rom_7d6418/ovl_30_c_c_c_c.o in
  * goldensun/overlays/rom_7d6418/overlay.ld.
  */
-extern unsigned char *__Func_8092054(int actor);
+extern unsigned char *__MapActor_GetActor(int actor);
 
 void OvlFunc_951_2008e44(int actor, int visible) {
     unsigned char *p;
 
-    p = __Func_8092054(actor);
+    p = __MapActor_GetActor(actor);
     if (p != (unsigned char *)0) {
         p[0x54] = visible;
     }

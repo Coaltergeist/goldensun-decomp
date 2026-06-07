@@ -15,7 +15,7 @@
 	mov	r6, r0
 	ldr	r0, [r3]
 	mov	r7, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	lsl	r6, #20
 	lsl	r7, #20

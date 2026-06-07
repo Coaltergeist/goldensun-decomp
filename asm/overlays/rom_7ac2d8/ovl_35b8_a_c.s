@@ -820,7 +820,7 @@
 	b	.L5938
 .L5926:
 	bl	OvlFunc_924_200d158
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #4
 	sub	r3, r0
 	lsl	r3, #1

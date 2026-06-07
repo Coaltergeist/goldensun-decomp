@@ -15,7 +15,7 @@
 	.export_func _Func_801f77c
 	.export_func _Func_8077f70
 	.export_func _Func_809163c
-	.export_func _Func_8092054
+	.export_func _MapActor_GetActor
 	.export_func _Func_8091e3c
 	.export_func _Func_8091dc8
 	.export_func _Func_8091e20

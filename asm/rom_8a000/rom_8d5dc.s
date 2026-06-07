@@ -16,7 +16,7 @@
 	mov	r11, r0
 	mov	r0, r7
 	mov	r9, r1
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r2, #0
 	ldr	r3, =ewram_2000240
 	ldr	r1, =0x24a
@@ -55,7 +55,7 @@
 	mov	r0, r7
 	bl	Func_80915dc
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #1
 	ldr	r3, =0xe0b
 	lsr	r0, #16
@@ -115,7 +115,7 @@
 	lsl	r2, #1
 	add	r5, r2
 	ldr	r0, [r5]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r3, [r0, #8]
 	str	r3, [r0, #0x38]
 	ldr	r3, [r0, #0xc]
@@ -174,7 +174,7 @@
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r2, r8
 	str	r0, [r2, #0x68]
 	mov	r1, r8

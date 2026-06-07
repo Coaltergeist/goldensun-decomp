@@ -102,10 +102,10 @@
 	ldr	r7, =ewram_2010000
 	mov	r8, r3
 .Lca2ce:
-	bl	Func_8004458
+	bl	Random
 	ldr	r5, =0x3ff
 	and	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	ldr	r4, [sp, #0xc]
 	mov	r6, r0
@@ -126,7 +126,7 @@
 	mul	r3, r0
 	asr	r3, #8
 	str	r3, [r7, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xff
 	and	r3, r0
 	sub	r3, #0x20
@@ -140,7 +140,7 @@
 	neg	r3, r3
 	asr	r3, #8
 	str	r3, [r7, #0x14]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x30
@@ -388,7 +388,7 @@
 	b	.Lca368
 .Lca50a:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

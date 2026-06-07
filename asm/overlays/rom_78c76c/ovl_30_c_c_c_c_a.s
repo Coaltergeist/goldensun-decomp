@@ -24,7 +24,7 @@
 	mov	r0, #0
 	bl	__Func_8092064
 	mov	r0, r9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r2, [r0]
 	mov	r3, #0xfe

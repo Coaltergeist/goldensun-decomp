@@ -5,10 +5,10 @@
  * asm/overlays/rom_780898/ovl_30_c_c_c_a_c_c_c_a.o and asm/overlays/rom_780898/ovl_30_c_c_c_a_c_c_c_c.o in
  * goldensun/overlays/rom_780898/overlay.ld.
  */
-extern void __Func_8092054(int a);
+extern void __MapActor_GetActor(int a);
 extern void OvlFunc_883_200dc98(void);
 
 void OvlFunc_883_200d5d0(void) {
-    __Func_8092054(9);
+    __MapActor_GetActor(9);
     OvlFunc_883_200dc98();
 }

@@ -46,11 +46,11 @@
 	mov	r7, #0
 	mov	r6, r11
 .Ld69c4:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r8
 	mov	r5, r0
 	and	r5, r1
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	ldr	r3, =ewram_2010000
 	and	r0, r2
@@ -149,23 +149,23 @@
 	cmp	r0, #4
 	bgt	.Ld6aba
 	str	r6, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #0x68
 	b	.Ld6ac6
 .Ld6aba:
 	mov	r1, r8
 	str	r1, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #0x6c
 .Ld6ac6:
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #4
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #0x10
@@ -184,17 +184,17 @@
 	mov	r10, r0
 	add	r5, r9
 .Ld6af8:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x20
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x40
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	mov	r1, #1
@@ -219,7 +219,7 @@
 	mov	r3, #0x80
 	lsl	r3, #15
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xff
 	and	r3, r0
 	add	r3, #0xc8
@@ -438,28 +438,28 @@
 	mov	r6, #0xff
 	add	r5, r9
 .Ld6cfe:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x60
 	bl	Func_b50_from_thumb
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	add	r3, #0x58
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x80
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	neg	r0, r0
 	lsl	r0, #11
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	neg	r3, r3
@@ -709,23 +709,23 @@
 	ldr	r2, [sp, #0x3c]
 	cmp	r2, #0x9f
 	bgt	.Ld6f8c
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x60
 	bl	Func_b50_from_thumb
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	add	r3, #0x58
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x80
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	neg	r0, r0
 	lsl	r0, #11
@@ -861,14 +861,14 @@
 	ldr	r0, [r5, #0x18]
 	cmp	r0, #0
 	bne	.Ld70b0
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xf
 	ldr	r3, [sp, #0x4c]
 	and	r0, r1
 	add	r3, r0
 	sub	r3, #8
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0xf
 	ldr	r3, [sp, #0x50]
 	and	r0, r2
@@ -904,7 +904,7 @@
 	bgt	.Ld70f2
 	cmp	r3, #5
 	bne	.Ld70f2
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	neg	r3, r3
@@ -1284,7 +1284,7 @@
 	bl	Func_8002322
 	lsl	r0, #2
 	str	r0, [r6, #0xc]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0x7fff
 	mov	r1, #0x80
 	and	r3, r0
@@ -1527,7 +1527,7 @@
 	bl	.Ld6b76
 .Ld75e2:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e
@@ -1710,12 +1710,12 @@
 	.pool
 
 .Ld77b4:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x20
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x78
@@ -1769,7 +1769,7 @@
 	add	r6, #0x80
 .Ld7828:
 	str	r3, [sp, #0xc]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, [sp, #0xc]
 	and	r0, r3
 	strb	r0, [r5]
@@ -1793,7 +1793,7 @@
 	cmp	r5, #0xf
 	bne	.Ld787c
 	ldr	r0, =Func_80d66cc
-	bl	Func_8004278
+	bl	StopTask
 	b	.Ld787c
 
 	.align	2, 0
@@ -1825,12 +1825,12 @@
 	ldr	r5, [sp, #0x28]
 	cmp	r5, #0xa7
 	bgt	.Ld78c4
-	bl	Func_8004458
+	bl	Random
 	mov	r5, #3
 	and	r0, r5
 	sub	r0, #1
 	mov	r9, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =iwram_3001ad0
 	and	r0, r5
 	sub	r7, r0, #1
@@ -2091,28 +2091,28 @@
 	mov	r6, #0x7f
 	mov	r7, #0x1f
 .Ld7aa8:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #0x44
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	add	r0, #8
 	lsl	r0, #16
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	sub	r0, #0x3f
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	neg	r0, r0
 	and	r0, r6
 	sub	r0, #0x40
 	lsl	r0, #11
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	mov	r0, #1
@@ -2132,30 +2132,30 @@
 	mov	r8, r3
 	mov	r6, #0x1f
 .Ld7b00:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x30
 	bl	Func_b50_from_thumb
 	add	r0, #0x3c
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	add	r0, #0x34
 	lsl	r0, #16
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	sub	r3, #0x3f
 	lsl	r3, #12
 	str	r3, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	neg	r0, r0
 	and	r0, r6
 	sub	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	mov	r4, #1
 	and	r3, r0
@@ -2175,30 +2175,30 @@
 	mov	r8, r1
 	mov	r6, #0x1f
 .Ld7b5e:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x34
 	lsl	r3, #16
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	add	r0, #0x48
 	lsl	r0, #16
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	sub	r3, #0x3f
 	lsl	r3, #11
 	str	r3, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	neg	r0, r0
 	and	r0, r6
 	sub	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	mov	r2, #1
@@ -2293,18 +2293,18 @@
 	mov	r3, #0xe0
 	lsl	r3, #14
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	neg	r0, r0
 	sub	r0, #0x40
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	add	r0, #0x10
 	lsl	r0, #11
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r4, #1
 	add	r8, r4
 	mov	r7, r8
@@ -2522,20 +2522,20 @@
 	mov	r6, #0x3f
 	add	r5, r0, r1
 .Ld7e38:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	ldr	r3, =0xfff00000
 	add	r0, #0x40
 	lsl	r0, #16
 	str	r3, [r5, #8]
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	neg	r0, r0
 	sub	r0, #0x40
 	lsl	r0, #16
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	b	.Ld7ea0
 
 	.align	2, 0
@@ -2549,7 +2549,7 @@
 	sub	r0, #0x7f
 	lsl	r0, #12
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #1
 	and	r0, r6
 	mov	r3, #0
@@ -2566,11 +2566,11 @@
 	ldr	r5, =ewram_2010000
 	mov	r8, r4
 .Ld7ecc:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r7, r8
 	lsr	r3, r7, #31
 	add	r3, r8
@@ -2724,13 +2724,13 @@
 	ldrb	r3, [r6, r2]
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	sub	r3, #0x3f
 	lsl	r3, #13
 	str	r3, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	neg	r3, r3
@@ -2871,7 +2871,7 @@
 	ldr	r0, [sp, #0x28]
 	cmp	r0, #0x2f
 	bgt	.Ld8138
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	add	r3, #0x40
@@ -2965,11 +2965,11 @@
 	ldr	r7, [sp, #0x28]
 	cmp	r7, #0x7f
 	bgt	.Ld81fc
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	and	r3, r0
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	lsr	r3, r6, #31
 	mov	r2, #0x3f
 	add	r3, r6, r3
@@ -3024,7 +3024,7 @@
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x14c
 	pop	{r3, r5, r6, r7}

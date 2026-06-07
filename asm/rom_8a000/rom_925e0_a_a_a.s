@@ -52,7 +52,7 @@
 	cmp	r6, #0
 	beq	.L926fc
 	ldr	r5, [r6, #0x50]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r0, r3
 	cmp	r0, #1
@@ -87,7 +87,7 @@
 	add	r3, #0x55
 	mov	r1, r8
 	strb	r1, [r3]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xa
 	bl	Func_b50_from_thumb
 	add	r0, #5
@@ -101,7 +101,7 @@
 	add	r3, r0
 	neg	r3, r3
 	str	r3, [r6, #0x34]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xf
 	bl	Func_b50_from_thumb
 	ldr	r3, =0x1999
@@ -153,7 +153,7 @@
 	mov	r8, r2
 	mov	r10, r0
 	mov	r5, r1
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r6, r0
 	ldr	r2, [r6, #0x10]
 	mov	r9, r2

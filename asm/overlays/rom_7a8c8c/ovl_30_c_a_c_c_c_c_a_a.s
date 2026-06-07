@@ -7,7 +7,7 @@
 	mov	r6, r0
 	mov	r7, r1
 	mov	r8, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1046
@@ -822,7 +822,7 @@
 	ldr	r3, =iwram_3001ee0
 	mov	r0, #0
 	ldr	r5, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r0, [r5, #0x18]
 .L1722:
 	pop	{r5}

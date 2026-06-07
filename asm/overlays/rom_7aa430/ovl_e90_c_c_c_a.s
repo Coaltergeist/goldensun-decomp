@@ -7,7 +7,7 @@
 	push	{r6, r7}
 	mov	r0, #0
 	sub	sp, #0x38
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.Lff2
@@ -16,7 +16,7 @@
 .Lff2:
 	mov	r0, #0
 	asr	r5, r3, #20
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	cmp	r3, #0
 	bge	.L1004
@@ -62,18 +62,18 @@
 	mov	r0, #0xf6
 	str	r3, [r7, #0x1c]
 	bl	__Func_80f9080
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #4
 	lsr	r0, #16
 	mov	r6, #0xd0
 	sub	r6, r0
-	bl	__Func_8004458
+	bl	__Random
 	mov	r5, #0x8c
 	lsl	r0, #4
 	lsr	r0, #16
 	lsl	r5, #2
 	sub	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, r0
 	lsl	r3, #2
 	lsr	r3, #16

@@ -580,14 +580,14 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L99212
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #0x80
 	lsl	r2, #8
 	lsr	r0, #1
 	add	r0, r2
 	str	r0, [r6, #0x1c]
 	str	r0, [r6, #0x18]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	and	r0, r3
 	cmp	r0, #0
@@ -598,13 +598,13 @@
 	ldr	r3, =Func_80990cc
 .L991ba:
 	str	r3, [r6, #0x6c]
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r6
 	add	r2, #0x64
 	mov	r3, #0x3c
 	strh	r0, [r6, #6]
 	strh	r3, [r2]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r6
 	add	r3, #0x66
 	mov	r1, #9
@@ -618,13 +618,13 @@
 	str	r3, [r7, #4]
 	ldr	r3, [r2, #0xc]
 	str	r3, [r7, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x80
 	mov	r5, r0
 	lsl	r3, #10
 	lsl	r5, #2
 	add	r5, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r7
 	mov	r1, r0
 	mov	r0, r5
@@ -883,10 +883,10 @@
 	str	r3, [r6, #4]
 	ldr	r3, [r5, #0x10]
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, r0, #1
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, #1
 	mov	r1, r0
 	mov	r2, r6
@@ -912,7 +912,7 @@
 	mov	r3, #0xe5
 	lsl	r3, #1
 	str	r3, [r5, #0x48]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r5
 	lsr	r0, #9
 	add	r3, #0x64

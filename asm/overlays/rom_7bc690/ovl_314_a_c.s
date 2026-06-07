@@ -23,7 +23,7 @@
 	add	r5, sp, #0x10
 	str	r3, [r5, #8]
 	str	r3, [r5, #0xc]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0xf8
 	lsl	r0, #12
 	lsl	r3, #8

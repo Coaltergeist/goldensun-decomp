@@ -69,11 +69,11 @@
 	mov	r0, #0
 	bl	__Func_8092950
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, r5
-	bl	__Func_8004278
+	bl	__StopTask
 	bl	__Func_8091e20
 	mov	r0, #3
 	bl	__Func_8091e9c

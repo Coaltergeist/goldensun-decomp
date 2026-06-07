@@ -254,13 +254,13 @@
 	bl	__Func_80925cc
 	bl	__Func_8091750
 	mov	r0, #0x10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	add	r0, #0x5b
 	strb	r3, [r0]
 	bl	OvlFunc_902_200811c
 	mov	r0, #0x10
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #0
 	add	r0, #0x5b
 	strb	r5, [r0]

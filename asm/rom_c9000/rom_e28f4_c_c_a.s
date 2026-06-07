@@ -206,16 +206,16 @@
 	str	r3, [r5, #4]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r5, #8]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	lsl	r0, #12
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x7f
 	lsl	r0, #12
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r7
 	sub	r0, #0x7f
 	ldr	r3, [r5]
@@ -592,7 +592,7 @@
 .Le2e56:
 	str	r1, [sp, #0xc]
 	str	r2, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	ldr	r2, [sp, #8]
 	ldr	r1, [sp, #0xc]
 	and	r0, r2
@@ -782,7 +782,7 @@
 	b	.Le2ba6
 .Le2fe6:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	add	sp, #0x8c
 	pop	{r3, r5, r6, r7}
@@ -1150,13 +1150,13 @@
 	.pool
 
 .Le3318:
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	mov	r3, #0x80
 	add	r0, #0x58
 	str	r3, [r5, #4]
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	str	r3, [r5, #0x10]
 	mov	r3, #0x80
@@ -1191,25 +1191,25 @@
 	mov	r7, #0
 	mov	r6, #0x3f
 .Le336a:
-	bl	Func_8004458
+	bl	Random
 	ldr	r1, [sp, #0x18]
 	and	r0, r6
 	add	r0, r1
 	add	r0, #0x20
 	lsl	r0, #16
 	str	r0, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	add	r3, #0x60
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	add	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	mov	r2, #0x80
 	and	r3, r0
@@ -1687,7 +1687,7 @@
 	mov	r3, r11
 	cmp	r3, #0x57
 	ble	.Le3790
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #7
 	and	r3, r0
 	add	r3, #8
@@ -1699,7 +1699,7 @@
 	ldr	r3, [r3, #0x18]
 	cmp	r3, #0
 	bne	.Le3770
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x60
 	bl	Func_b50_from_thumb
 	add	r0, #0x2a
@@ -1707,13 +1707,13 @@
 .Le3770:
 	cmp	r3, #1
 	bne	.Le3782
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x70
 	bl	Func_b50_from_thumb
 	add	r0, #0x22
 	b	.Le378e
 .Le3782:
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xa0
 	bl	Func_b50_from_thumb
 	add	r0, #0xa
@@ -1816,7 +1816,7 @@
 	b	.Le33c4
 .Le386c:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

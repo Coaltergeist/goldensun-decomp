@@ -119,7 +119,7 @@
 .thumb_func_start OvlFunc_937_200818c
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =0xffff9fff
 	ldrh	r3, [r0, #6]
 	add	r3, r2
@@ -162,7 +162,7 @@
 .thumb_func_start OvlFunc_937_20081fc
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =0x5fff
 	ldrh	r3, [r0, #6]
 	add	r3, r2
@@ -195,7 +195,7 @@
 	mov	r6, #0
 .L24e:
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L25e
 	mov	r3, r0
@@ -252,7 +252,7 @@
 	mov	r0, #0
 	bl	__Func_8092064
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	add	r0, #0x55
 	strb	r3, [r0]

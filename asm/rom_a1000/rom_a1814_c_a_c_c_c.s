@@ -1002,7 +1002,7 @@
 	blt	.La3caa
 .La3ccc:
 	ldr	r0, =Func_80a3c08
-	bl	Func_8004278
+	bl	StopTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

@@ -91,7 +91,7 @@
 	mov	r0, #0
 	mov	r8, r3
 	mov	r10, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0xe0
 	ldr	r3, [r0, #0x10]
 	lsl	r2, #16
@@ -1056,7 +1056,7 @@
 	ldr	r5, =OvlFunc_971_2008148
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r0, #5
 	bl	__Func_80118a8
 	mov	r0, #8
@@ -1450,7 +1450,7 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
 	ldr	r6, =ewram_2000240

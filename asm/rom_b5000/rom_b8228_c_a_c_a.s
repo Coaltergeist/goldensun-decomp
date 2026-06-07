@@ -215,7 +215,7 @@
 	strh	r3, [r6, #4]
 	cmp	r3, #0
 	beq	.Lb863a
-	bl	Func_8004458
+	bl	Random
 	ldrh	r3, [r5]
 	mov	r2, r3
 	mul	r2, r0
@@ -228,7 +228,7 @@
 	mov	r1, r11
 	strh	r3, [r6, #6]
 	strh	r1, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	ldr	r2, [sp, #8]
 	mov	r3, r2
 	mul	r3, r0
@@ -474,7 +474,7 @@
 	mov	r7, r8
 	push	{r7}
 	sub	sp, #0x1c
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #4
 	lsr	r0, #16
 	cmp	r0, #0
@@ -600,7 +600,7 @@
 	str	r3, [r2, #4]
 	mov	r0, #0xa
 	bl	Func_80030f8
-	bl	Func_8004458
+	bl	Random
 	ldr	r0, [sp, #8]
 	bl	Func_80b7dd0
 	ldr	r2, [sp, #4]
@@ -916,7 +916,7 @@
 	mov	r3, #0x24
 	ldrsh	r0, [r5, r3]
 	bl	_Func_8077394
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #1
 	ldr	r0, [r5, #8]
 	bl	_Func_8019908

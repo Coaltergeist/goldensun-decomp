@@ -4,7 +4,7 @@
 	push	{r5, lr}
 	mov	r0, #9
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.L35c
@@ -65,7 +65,7 @@
 	push	{r5, r6, lr}
 	mov	r0, #0xa
 	sub	sp, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
 	bge	.L3e4
@@ -78,17 +78,17 @@
 	mov	r0, #0xa
 	bl	__Func_809163c
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #0
 	add	r0, #0x55
 	strb	r5, [r0]
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r3, #0x11

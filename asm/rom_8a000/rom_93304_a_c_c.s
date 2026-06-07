@@ -159,7 +159,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r1, =.L9ff2c
 	str	r0, [r5, #0x68]
 	b	.L93ac6
@@ -316,7 +316,7 @@
 	add	r3, r2
 	ldr	r0, [r3]
 	sub	sp, #0x14
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r3, #1
 	neg	r3, r3
 	str	r3, [sp, #4]
@@ -570,7 +570,7 @@
 	ldr	r0, [r1]
 	mov	r11, r1
 	sub	sp, #0x18
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r6, r0
 	ldr	r3, =0xfff0
 	mov	r2, #0xa
@@ -739,7 +739,7 @@
 	mov	r9, r0
 	ldr	r0, [r1]
 	sub	sp, #0x18
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r7, r0
 	mov	r3, #0xa
 	ldrsh	r5, [r7, r3]

@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001f2c;
 extern int _Func_800bdd4(int task);
-extern void Func_8004278(int task);
+extern void StopTask(int task);
 extern int Func_80ad35c;
 
 void Func_80ad318(void) {
@@ -21,5 +21,5 @@ void Func_80ad318(void) {
             *(unsigned int *)(base + (i << 2)) = 0;
         }
     }
-    Func_8004278((int)&Func_80ad35c);
+    StopTask((int)&Func_80ad35c);
 }

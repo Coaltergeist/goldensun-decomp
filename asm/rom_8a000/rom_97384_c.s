@@ -140,12 +140,12 @@
 	ldr	r5, [r3]
 	bl	Func_8097adc
 	ldr	r0, =Func_8097644
-	bl	Func_8004278
+	bl	StopTask
 	mov	r3, #0xa4
 	lsl	r3, #2
 	add	r5, r3
 	ldrh	r0, [r5]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r1, #1
 	bl	Func_808e0b0
 	bl	Func_809748c
@@ -256,7 +256,7 @@
 	lsl	r4, #2
 	add	r3, r7, r4
 	ldrh	r0, [r3]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r1, #0
 	bl	Func_808e0b0
 	ldr	r0, =0x295
@@ -273,13 +273,13 @@
 	lsl	r1, #2
 	add	r5, r7, r1
 	ldrh	r0, [r5]
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r2, =0x292
 	add	r2, r7
 	mov	r6, r0
 	ldrh	r0, [r2]
 	mov	r11, r2
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	mov	r9, r0
 	cmp	r6, #0
 	beq	.L97806
@@ -707,7 +707,7 @@
 	ldr	r3, =iwram_3001e8c
 	ldr	r0, =Func_8097868
 	ldr	r5, [r3]
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r2, =0x50001e2
 	ldr	r3, .L97b1c	@ 0x7fff
 	ldr	r6, .L97b20	@ 0

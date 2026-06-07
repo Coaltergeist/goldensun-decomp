@@ -436,7 +436,7 @@
 	cmp	r4, #0
 	bge	.La9724
 	ldr	r0, =Func_80a19a0
-	bl	Func_8004278
+	bl	StopTask
 	mov	r6, #0x18
 	ldr	r5, =0xb06
 	neg	r6, r6

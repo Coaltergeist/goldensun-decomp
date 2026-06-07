@@ -820,7 +820,7 @@
 	b	.L23a8
 .L2396:
 	bl	OvlFunc_923_2009bc8
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #4
 	sub	r3, r0
 	lsl	r3, #1

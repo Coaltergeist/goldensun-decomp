@@ -187,7 +187,7 @@
 	ldr	r3, [r3]
 	cmp	r3, #0
 	beq	.L2874
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, =.L3690
 	ldr	r3, [r3]
 	mul	r3, r0
@@ -200,14 +200,14 @@
 	add	r7, r2, r3
 	b	.L2882
 .L2874:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, [r6]
 	lsl	r0, #8
 	ldr	r1, =0xff800000
 	add	r3, r0
 	add	r7, r3, r1
 .L2882:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r2, [r6, #8]
 	lsl	r0, #8
 	ldr	r3, =0xff800000

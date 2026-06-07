@@ -6,7 +6,7 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	mov	r6, r5
 	add	r6, #0x55

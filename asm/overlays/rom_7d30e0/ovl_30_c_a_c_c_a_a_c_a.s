@@ -142,7 +142,7 @@
 .thumb_func_start OvlFunc_948_2009070
 	push	{lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0xc0
 	ldrh	r3, [r0, #6]
 	lsl	r2, #8
@@ -174,7 +174,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0xc0
 	ldrh	r3, [r0, #6]
 	lsl	r2, #8

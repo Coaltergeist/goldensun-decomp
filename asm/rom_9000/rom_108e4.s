@@ -1013,9 +1013,9 @@
 	ldr	r7, [r2]
 	cmp	r3, #0
 	beq	.L1123a
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r4, [r6, #4]
 	mov	r1, r0
 	ldr	r3, =Func_8000888
@@ -1031,9 +1031,9 @@
 	ldr	r3, [r6, #8]
 	cmp	r3, #0
 	beq	.L11266
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r4, [r6, #8]
 	mov	r1, r0
 	ldr	r3, =Func_8000888

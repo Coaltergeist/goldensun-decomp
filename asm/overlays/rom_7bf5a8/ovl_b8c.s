@@ -15,7 +15,7 @@
 	strb	r3, [r2]
 	ldr	r3, =0xffff0000
 	str	r3, [r5, #0x28]
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r3, =0xcccc
 	mov	r2, r5
 	add	r0, r3
@@ -23,7 +23,7 @@
 	mov	r3, #1
 	str	r0, [r5, #0x30]
 	strb	r3, [r2]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x80
 	mov	r2, r0
 	lsl	r1, #14
@@ -60,11 +60,11 @@
 	mov	r6, #5
 .Lc0e:
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =0x1999
 	str	r3, [r0, #0x44]
 	mov	r3, #0
@@ -91,11 +91,11 @@
 	mov	r5, #0
 .Lc56:
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =0x1999
 	str	r3, [r0, #0x44]
 	mov	r3, #0
@@ -224,7 +224,7 @@
 	cmp	r0, #0
 	bne	.Ld80
 	mov	r0, #0x16
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0xc0
 	lsl	r3, #9
 	str	r3, [r0, #0x1c]
@@ -373,7 +373,7 @@
 	bl	__Func_80923e4
 .Lefc:
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
@@ -385,15 +385,15 @@
 	mov	r0, #9
 	bl	__Func_80924d4
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #1
 	add	r0, #0x59
 	strb	r3, [r0]
@@ -419,26 +419,26 @@
 	bl	__Func_80924d4
 .Lf68:
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	mov	r5, #0x80
 	orr	r3, r5
 	strb	r3, [r0]
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	ldrb	r3, [r0]
 	mov	r2, #0xe1
@@ -454,33 +454,33 @@
 	blt	.L1026
 	bl	OvlFunc_935_2008c50
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #2
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #0xd
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #0xe
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #1
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #0xa
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	strb	r5, [r0]
 	mov	r0, #9
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x59
 	strb	r5, [r0]
 	ldr	r0, =0x9aa

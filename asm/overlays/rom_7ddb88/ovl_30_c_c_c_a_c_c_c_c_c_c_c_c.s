@@ -53,7 +53,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 	ldr	r0, =OvlFunc_955_2008714
-	bl	__Func_8004278
+	bl	__StopTask
 	mov	r3, #0xd
 	str	r3, [sp, #4]
 	mov	r5, #0x3a

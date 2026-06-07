@@ -105,11 +105,11 @@
 	mov	r3, #0x80
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	and	r3, r0
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0x1ff
 	mov	r1, #0x80
 	and	r3, r0
@@ -127,11 +127,11 @@
 	mov	r7, #0
 	add	r5, r9
 .Lcc6f4:
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	and	r3, r0
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x10
@@ -373,7 +373,7 @@
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80cdbc0
 	mov	r0, #0x29
 	bl	Func_8002dd8
@@ -418,7 +418,7 @@
 	ldr	r5, =ewram_2010000
 	mov	r10, r2
 .Lcc990:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r0, r3
 	mov	r3, r0
@@ -426,13 +426,13 @@
 	add	r0, #0x28
 	str	r3, [r5]
 	str	r0, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #1
 	mov	r1, #0x80
 	and	r0, r6
@@ -671,16 +671,16 @@
 .thumb_func_start Func_80ccbdc
 	push	{lr}
 	ldr	r0, =Func_80cc960
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r1, #0x80
 	ldr	r3, =Func_80008d4
 	lsl	r1, #7
 	ldr	r0, =0x6004000
 	bl	_call_via_r3
 	ldr	r0, =Func_80cd4b4
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x28
 	bl	Func_8002dd8
 	mov	r0, #0x27

@@ -83,9 +83,9 @@
 .Lc86:
 	asr	r3, r0, #3
 	strh	r3, [r7, #0x1e]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, #9
 	lsl	r0, #9
 	ldr	r3, [r6, #0x30]
@@ -109,7 +109,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r7, r0
 	ldr	r6, [r7, #0x50]
 	mov	r2, #0xd

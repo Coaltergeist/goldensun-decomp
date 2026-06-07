@@ -13,4 +13,8 @@ void StartTask(taskfunc_t *task, int priority);
 void _StartTask(taskfunc_t *task, int priority);
 void __StartTask(taskfunc_t *task, int priority);
 
+void StopTask(taskfunc_t *task);
+void _StopTask(taskfunc_t *task);
+void __StopTask(taskfunc_t *task);
+
 #endif // _TASK_H_

@@ -740,11 +740,11 @@
 	mov	r3, #0x18
 	str	r3, [r2]
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =0x19999
 	str	r5, [r0, #0x1c]
 	mov	r0, #0xb
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #5
 	str	r5, [r0, #0x18]
 	mov	r0, #0xd

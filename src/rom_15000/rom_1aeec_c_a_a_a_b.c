@@ -7,7 +7,7 @@
  */
 extern unsigned int *iwram_3001ebc;
 extern void Func_8016418(unsigned int *box, unsigned int noanim);
-extern void Func_8004278(void *task);
+extern void StopTask(void *task);
 extern void Func_801c3e8(void);
 
 void Func_801c428(void) {
@@ -17,7 +17,7 @@ void Func_801c428(void) {
     if (box != 0) {
         if (*(unsigned short *)((char *)box + 0x16) != 0) {
             Func_8016418(box, 2);
-            Func_8004278((void *)Func_801c3e8);
+            StopTask((void *)Func_801c3e8);
         }
     }
 }

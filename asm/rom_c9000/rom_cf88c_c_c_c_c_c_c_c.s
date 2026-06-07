@@ -508,33 +508,33 @@
 	ldrsb	r6, [r0, r1]
 	cmp	r6, #0
 	bne	.Lcfd2e
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	and	r0, r2
 	sub	r0, #0x20
 	lsl	r0, #11
 	str	r0, [r5, #0xc]
 	str	r6, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r8
 	and	r0, r3
 	sub	r0, #0x20
 	lsl	r0, #11
 	b	.Lcfd56
 .Lcfd2e:
-	bl	Func_8004458
+	bl	Random
 	mov	r4, r8
 	and	r0, r4
 	sub	r0, #0x20
 	lsl	r0, #13
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x20
 	lsl	r3, #12
 	str	r3, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, r8
 	and	r0, r1
 	sub	r0, #0x20
@@ -712,7 +712,7 @@
 	b	.Lcfba0
 .Lcfea6:
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

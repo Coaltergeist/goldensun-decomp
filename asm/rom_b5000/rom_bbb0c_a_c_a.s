@@ -1022,7 +1022,7 @@
 	bne	.Lbe04c
 .Lbe058:
 	ldr	r0, =Func_80bd898
-	bl	Func_8004278
+	bl	StopTask
 	bl	Func_80bdfec
 	pop	{r5}
 	pop	{r1}

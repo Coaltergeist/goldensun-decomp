@@ -74,9 +74,9 @@
 	str	r2, [r7, #0x14]
 	str	r3, [r6, #8]
 	str	r2, [r6]
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	lsl	r5, #13
 	lsl	r0, #13
 	lsr	r0, #16
@@ -245,13 +245,13 @@
 	mov	r0, r5
 	mov	r1, #7
 	bl	Func_809ba70
-	bl	Func_8004458
+	bl	Random
 	lsl	r1, r0, #3
 	sub	r1, r0
 	lsr	r1, #16
 	ldr	r0, [r5]
 	bl	_Func_800b684
-	bl	Func_8004458
+	bl	Random
 	ldr	r2, =0x13333
 	lsr	r0, #1
 	add	r0, r2

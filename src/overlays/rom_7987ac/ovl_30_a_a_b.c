@@ -5,7 +5,7 @@
  * asm/overlays/rom_7987ac/ovl_30_a_a_a.o and asm/overlays/rom_7987ac/ovl_30_a_a_c.o in
  * goldensun/overlays/rom_7987ac/overlay.ld.
  */
-extern int *__Func_8092054(int idx);
+extern int *__MapActor_GetActor(int idx);
 extern void __Func_8079358(int id);
 extern void __Func_8079374(int id);
 
@@ -14,8 +14,8 @@ void OvlFunc_902_2008030(void)
     int r5;
     int r3;
 
-    r5 = __Func_8092054(0)[2];
-    r3 = __Func_8092054(0)[4];
+    r5 = __MapActor_GetActor(0)[2];
+    r3 = __MapActor_GetActor(0)[4];
     r5 >>= 20;
     r5 -= 0x22;
     r3 >>= 20;

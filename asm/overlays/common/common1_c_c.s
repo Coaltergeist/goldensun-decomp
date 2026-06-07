@@ -54,7 +54,7 @@
 	add	r3, r0
 	ldr	r0, [r3]
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r3, [r0, #6]
 	ldr	r2, =.L9
 	lsr	r3, #12
@@ -215,7 +215,7 @@
 	add	r3, r1
 	ldr	r0, [r3]
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	ldrh	r3, [r6, #6]
 	mov	r2, #0x80

@@ -19,7 +19,7 @@ Exports_8a000:
 	.export_func Func_8091c1c
 	.export_func Func_8091c7c
 	.export_func Func_8091d94
-	.export_func Func_8092054
+	.export_func MapActor_GetActor
 	.export_func Func_8092924
 	.export_func Func_8092064
 	.export_func Func_809207c

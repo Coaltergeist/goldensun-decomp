@@ -5,9 +5,9 @@
  * asm/rom_15000/rom_1de5c_c_c_c_c_a.o and asm/rom_15000/rom_1de5c_c_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8004278(void *task);
+extern void StopTask(void *task);
 extern void Func_801fd34(void);
 
 void Func_801fd98(void) {
-    Func_8004278(Func_801fd34);
+    StopTask(Func_801fd34);
 }

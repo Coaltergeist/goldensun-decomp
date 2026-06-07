@@ -747,7 +747,7 @@
 	ldrb	r3, [r0, #0xc]
 	cmp	r3, #2
 	bne	.La479e
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x80
 	lsl	r3, #6
 	cmp	r0, r3

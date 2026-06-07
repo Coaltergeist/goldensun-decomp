@@ -9,7 +9,7 @@
 	ldrsh	r3, [r6, r2]
 	cmp	r3, #0
 	bne	.L9e
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	cmp	r0, #1
@@ -32,14 +32,14 @@
 	bl	__Func_800c300
 	b	.L8c
 .L7e:
-	bl	__Func_8004458
+	bl	__Random
 	ldrh	r3, [r5, #6]
 	lsl	r0, #15
 	lsr	r0, #16
 	add	r3, r0
 	strh	r3, [r5, #6]
 .L8c:
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #4
@@ -68,13 +68,13 @@
 	ldrh	r2, [r6]
 	cmp	r3, #0
 	bne	.Le0
-	bl	__Func_8004458
+	bl	__Random
 	ldrh	r3, [r5, #6]
 	lsl	r0, #15
 	lsr	r0, #16
 	add	r3, r0
 	strh	r3, [r5, #6]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #4

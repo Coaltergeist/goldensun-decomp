@@ -51,7 +51,7 @@
 	cmp	r3, #0x2e
 	bhi	.L159e
 .L158a:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #0x64
 	mul	r3, r0
 	ldr	r2, =.L3738

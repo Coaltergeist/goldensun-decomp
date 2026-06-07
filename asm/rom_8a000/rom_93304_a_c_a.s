@@ -80,7 +80,7 @@
 	mov	r3, r8
 	strh	r2, [r3]
 	ldr	r0, =Func_80935d4
-	bl	Func_8004278
+	bl	StopTask
 .L9367c:
 	pop	{r3, r5}
 	mov	r8, r3

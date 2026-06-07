@@ -10,9 +10,9 @@
 	mov	r0, r3
 	cmp	r3, #0
 	bne	.L56
-	bl	__Func_8004458
+	bl	__Random
 	strh	r0, [r6, #6]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x14
 	bl	_Func_8000b50
 	add	r0, #0x14
@@ -78,7 +78,7 @@
 	lsl	r3, #9
 	str	r3, [r0, #0x18]
 	str	r3, [r0, #0x1c]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0x5a
 	bl	_Func_8000b50
 	add	r0, #0x3c

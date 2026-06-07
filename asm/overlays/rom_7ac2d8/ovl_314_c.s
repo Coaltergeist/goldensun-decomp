@@ -24,7 +24,7 @@
 	mov	r3, #0
 	mov	r8, r3
 	str	r3, [r6]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #3
 	lsr	r0, #16
 	lsl	r4, r0, #1

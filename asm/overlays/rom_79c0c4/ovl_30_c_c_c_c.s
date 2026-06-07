@@ -10,7 +10,7 @@
 	add	r2, #0x49
 	str	r2, [r3]
 	mov	r0, #0x1b
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, r0
 	add	r2, #0x23
 	mov	r3, #0

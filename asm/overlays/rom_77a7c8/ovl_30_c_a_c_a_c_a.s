@@ -100,14 +100,14 @@
 	sub	r0, #0x64
 	mov	r7, r1
 	mov	r6, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	mov	r5, r0
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r0, #8]
 	ldr	r1, [r3]
@@ -137,14 +137,14 @@
 	sub	r0, #0x64
 	mov	r7, r1
 	mov	r6, r2
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =ewram_2000240
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	mov	r5, r0
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r0, #0x10]
 	ldr	r1, [r3]

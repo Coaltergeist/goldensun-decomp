@@ -128,18 +128,18 @@
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 .L310e:
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r2, =.L3a0c
 	ldr	r1, [sp, #8]
 	ldrb	r3, [r1, r2]
 	mul	r3, r0
 	lsr	r6, r3, #16
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r4, [sp, #4]
 	ldrb	r3, [r4]
 	mul	r3, r0
 	lsr	r7, r3, #16
-	bl	__Func_8004458
+	bl	__Random
 	ldr	r1, [sp, #4]
 	ldrb	r3, [r1, #1]
 	mul	r3, r0
@@ -421,7 +421,7 @@
 	mov	r7, #0
 .L3356:
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x50]
 	mov	r2, r11
 	add	r3, #0x26
@@ -430,7 +430,7 @@
 	strb	r2, [r3]
 	strb	r2, [r0]
 	mov	r0, r6
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #1
 	bl	__Func_800c548
 	ldr	r2, =.L3a68

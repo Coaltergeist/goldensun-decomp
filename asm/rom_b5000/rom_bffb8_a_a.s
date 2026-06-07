@@ -57,10 +57,10 @@
 	ldr	r6, =REG_MOSAIC
 	mov	r5, #0
 .Lc0022:
-	bl	Func_8004458
-	bl	Func_8004458
-	bl	Func_8004458
-	bl	Func_8004458
+	bl	Random
+	bl	Random
+	bl	Random
+	bl	Random
 	lsl	r3, r5, #8
 	orr	r3, r5
 	strh	r3, [r6]

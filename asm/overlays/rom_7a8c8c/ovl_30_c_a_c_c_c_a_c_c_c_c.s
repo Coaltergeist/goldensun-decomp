@@ -106,7 +106,7 @@
 	push	{lr}
 	bl	__Func_80916b0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #7
 	strh	r3, [r0, #6]

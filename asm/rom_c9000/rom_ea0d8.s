@@ -204,18 +204,18 @@
 	ldr	r5, =ewram_2010000
 	mov	r7, #0
 .Lea29a:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #0x48
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	and	r0, r6
 	str	r0, [r5, #0x10]
-	bl	Func_8004458
+	bl	Random
 	add	r7, #1
 	and	r0, r6
 	str	r0, [r5, #0x10]
@@ -229,7 +229,7 @@
 	mov	r10, r3
 	mov	r8, r4
 .Lea2d2:
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r5, r0
 	and	r5, r3
@@ -245,7 +245,7 @@
 	mul	r3, r0
 	asr	r3, #2
 	str	r3, [r6, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x20
@@ -755,7 +755,7 @@
 	mov	r5, #3
 	and	r4, r5
 	str	r4, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r6, r0
 	and	r6, r3
@@ -1431,19 +1431,19 @@
 	mov	r7, #0
 	add	r5, r6, r0
 .Lead40:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	add	r3, #0x20
 	lsl	r3, #16
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x60
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #0x10
@@ -1505,7 +1505,7 @@
 	.pool
 
 .Leadf4:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	mov	r4, #0x80
 	lsl	r4, #1
@@ -1513,13 +1513,13 @@
 	add	r3, r4
 	lsl	r3, #16
 	str	r3, [r5]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x1f
 	and	r3, r0
 	add	r3, #0x60
 	lsl	r3, #16
 	str	r3, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #0x10
@@ -2425,7 +2425,7 @@
 	ldr	r1, =0x117
 	cmp	r0, r1
 	bgt	.Leb530
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	ldr	r2, [sp, #0x20]
 	and	r3, r0
@@ -2434,7 +2434,7 @@
 	b	.Leb540
 .Leb530:
 	str	r4, [sp, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	and	r3, r0
 	ldr	r0, [sp, #0x20]
@@ -2486,7 +2486,7 @@
 	mov	r8, r1
 	mov	r9, r3
 .Leb590:
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #1
 	and	r2, r7
 	mov	r5, r10
@@ -2502,7 +2502,7 @@
 	add	r3, r2
 	add	r3, r9
 	mov	r6, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r8
 	ldr	r4, [sp, #0x54]
 	lsr	r3, r2, #31
@@ -2561,7 +2561,7 @@
 	mov	r10, r6
 	mov	r9, r3
 .Leb65a:
-	bl	Func_8004458
+	bl	Random
 	mov	r2, #1
 	and	r2, r7
 	lsl	r3, r2, #2
@@ -2577,7 +2577,7 @@
 	sub	r3, r2
 	add	r3, r9
 	mov	r6, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r2, r10
 	and	r0, r2
 	lsl	r5, #5
@@ -2625,7 +2625,7 @@
 	ldr	r5, [sp, #0x54]
 	cmp	r5, #0x3f
 	ble	.Leb6ec
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #3
 	and	r3, r0
 	ldr	r2, =iwram_3001ad0
@@ -2659,7 +2659,7 @@
 	cmp	r7, #0x10
 	bne	.Leb716
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2e
 	bl	Func_8002dd8
 	bl	Func_80cdbc0

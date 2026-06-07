@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001ebc;
 extern void Func_8016418(void *box, int noanim);
-extern void Func_8004278(void *task);
+extern void StopTask(void *task);
 extern void Func_801c3e8(void);
 
 void Func_801c3e8(void) {
@@ -19,6 +19,6 @@ void Func_801c3e8(void) {
     *counter = *counter - 1;
     if (*counter == 0) {
         Func_8016418((void *)*(unsigned int *)(base + (0x8c << 2)), 2);
-        Func_8004278((void *)Func_801c3e8);
+        StopTask((void *)Func_801c3e8);
     }
 }

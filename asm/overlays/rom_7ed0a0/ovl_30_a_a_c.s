@@ -8,7 +8,7 @@
 	mov	r8, r0
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r7, r6
 	add	r7, #0x55
@@ -116,7 +116,7 @@
 	push	{lr}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r2, sp
 	str	r3, [r2]
@@ -138,7 +138,7 @@
 	push	{lr}
 	mov	r0, #0
 	sub	sp, #0xc
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	mov	r2, sp
 	str	r3, [r2]
@@ -158,7 +158,7 @@
 .thumb_func_start OvlFunc_964_2008e20
 	push	{r5, r6, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =iwram_3001ee0
 	ldr	r1, =ewram_2000240
 	mov	r2, #0xe0
@@ -234,7 +234,7 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r2, #0x23
 	add	r2, r5
 	mov	r12, r2
@@ -271,10 +271,10 @@
 .thumb_func_start OvlFunc_964_2008f10
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, [r6, #0x10]
 	ldr	r3, [r0, #0x10]
 	cmp	r2, r3
@@ -332,7 +332,7 @@
 	str	r3, [r6, #0xc]
 	mov	r3, #5
 	str	r3, [r6, #4]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #3
 	sub	r3, r0
 	mov	r1, r8
@@ -341,7 +341,7 @@
 	sub	r3, #3
 	lsl	r3, #16
 	add	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #3
 	sub	r3, r0
 	mov	r1, r8
@@ -376,25 +376,25 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r2, =0xffd00000
 	ldr	r3, [r0, #0xc]
 	cmp	r3, r2
 	ble	.L1020
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	asr	r3, #20
 	cmp	r3, #0xa
 	bne	.L1020
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
 	str	r3, [r5, #8]
 	ldr	r3, =0xffe00000
 	mov	r0, #8
 	str	r3, [r5, #0xc]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
 	b	.L1026
 .L1020:
@@ -493,7 +493,7 @@
 	push	{r6, r7}
 	mov	r0, #0
 	sub	sp, #0x38
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r6, r0
 	bl	__Func_80916b0
 	mov	r1, #6
@@ -552,14 +552,14 @@
 	and	r3, r7
 	cmp	r3, #0
 	beq	.L11a6
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xa
 	bl	_Func_8000b50
 	ldr	r3, =0x3332
 	sub	r0, #5
 	mov	r5, r0
 	mul	r5, r3
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xa
 	bl	_Func_8000b50
 	lsl	r3, r0, #1
@@ -612,7 +612,7 @@
 	mov	r5, r8
 	push	{r5, r6, r7}
 	sub	sp, #0x44
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r2, sp, #0x10
 	mov	r3, #1
 	str	r3, [r2]

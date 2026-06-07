@@ -306,7 +306,7 @@
 	mov	r10, r2
 	bl	_Func_80f9080
 	ldr	r0, =Func_8099678
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, r5
 	mov	r1, #0
 	bl	_Func_800c300

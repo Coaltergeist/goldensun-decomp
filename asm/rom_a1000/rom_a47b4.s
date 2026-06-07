@@ -64,7 +64,7 @@
 	bl	_Func_80162d4
 	mov	r7, r0
 	ldr	r0, =Func_80a19a0
-	bl	Func_8004278
+	bl	StopTask
 	mov	r3, #0xbe
 	lsl	r3, #1
 	add	r3, r8

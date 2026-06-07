@@ -190,7 +190,7 @@
 	mov	r8, r2
 	cmp	r2, #0
 	beq	.L8b556
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0x1e
 	bl	Func_b50_from_thumb
 	mov	r3, r8

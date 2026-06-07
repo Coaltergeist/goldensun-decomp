@@ -135,7 +135,7 @@
 	mov	r5, #0
 	b	.Lc25c8
 .Lc25b6:
-	bl	Func_8004458
+	bl	Random
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #1
@@ -178,7 +178,7 @@
 	mov	r5, #0
 	b	.Lc2618
 .Lc260a:
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #2
 	lsr	r0, #16
 	add	r0, r6, r0

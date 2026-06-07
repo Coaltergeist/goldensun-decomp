@@ -55,15 +55,15 @@
 	push	{r5, r6, r7}
 	mov	r7, r0
 	mov	r0, #0x13
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r8, r0
 	cmp	r0, #0
 	bne	.L17c6
 	b	.L18da
 .L17c6:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r5, #3
 	mov	r3, r0
 	lsr	r5, #16
@@ -87,7 +87,7 @@
 	beq	.L18da
 	ldr	r1, [r6, #0x50]
 	mov	r10, r1
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, #1
 	and	r0, r3
 	cmp	r0, #1
@@ -117,7 +117,7 @@
 	and	r3, r7
 	cmp	r3, #0
 	beq	.L1882
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xa
 	bl	_Func_8000b50
 	mov	r5, #1
@@ -133,7 +133,7 @@
 	add	r3, r1
 	mul	r3, r0
 	str	r3, [r6, #0x34]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xf
 	bl	_Func_8000b50
 	ldr	r3, =0x1999
@@ -146,7 +146,7 @@
 	strh	r2, [r3]
 	b	.L18b4
 .L1882:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xa
 	bl	_Func_8000b50
 	ldr	r3, =0x3332
@@ -156,7 +156,7 @@
 	add	r3, r1
 	mul	r3, r0
 	str	r3, [r6, #0x30]
-	bl	__Func_8004458
+	bl	__Random
 	mov	r1, #0xe
 	bl	_Func_8000b50
 	ldr	r3, =0x1999

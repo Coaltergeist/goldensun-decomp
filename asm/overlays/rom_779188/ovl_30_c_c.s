@@ -15,7 +15,7 @@
 	lsl	r1, #1
 	add	r3, r2, r1
 	ldr	r0, [r3]
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	add	r0, #0x55
 	strb	r3, [r0]

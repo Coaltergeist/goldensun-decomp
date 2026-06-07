@@ -67,12 +67,12 @@
 	push	{r6}
 	mov	r8, r0
 	mov	r0, r1
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r0, [r0, #0x50]
 	ldrb	r6, [r0, #0x1c]
 	ldrh	r5, [r0, #8]
 	mov	r0, r8
-	bl	Func_8092054
+	bl	MapActor_GetActor
 	ldr	r0, [r0, #0x50]
 	ldr	r3, =0xfffffc00
 	ldrh	r2, [r0, #8]

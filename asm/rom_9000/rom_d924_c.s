@@ -387,16 +387,16 @@
 	str	r3, [r7, #4]
 	ldr	r3, [r6, #0x10]
 	str	r3, [r7, #8]
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =Func_8000888
 	mov	r1, r11
 	.call_via r3
 	ldr	r3, [sp, #4]
 	add	r3, r0
 	mov	r8, r3
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldrh	r3, [r6, #6]
 	lsr	r5, #2
 	lsr	r0, #2
@@ -616,16 +616,16 @@
 	ble	.Ldf9e
 	b	.Le146
 .Ldf9e:
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =Func_8000888
 	ldr	r1, [sp, #0x14]
 	.call_via r3
 	ldr	r4, [sp, #0x18]
 	add	r4, r0
 	mov	r8, r4
-	bl	Func_8004458
+	bl	Random
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, [r6, #8]
 	add	r7, sp, #0x28
 	ldr	r1, [sp, #0xc]
@@ -832,16 +832,16 @@
 	mov	r4, r10
 	cmp	r4, #7
 	bgt	.Le1f6
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =Func_8000888
 	ldr	r1, [sp, #0x14]
 	.call_via r3
 	ldr	r5, [sp, #0x18]
 	add	r5, r0
-	bl	Func_8004458
+	bl	Random
 	mov	r8, r5
 	mov	r5, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r1, [sp, #0xc]
 	lsl	r2, r1, #16
 	ldr	r3, [r6, #8]

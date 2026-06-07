@@ -37,7 +37,7 @@
 .thumb_func_start OvlFunc_944_200807c
 	push	{r5, lr}
 	mov	r5, r0
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #6
 	lsr	r0, #16
 	cmp	r0, #6

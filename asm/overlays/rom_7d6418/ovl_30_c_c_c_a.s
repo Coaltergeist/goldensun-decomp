@@ -59,19 +59,19 @@
 	mov	r0, #0x19
 	bl	__Func_80924d4
 	mov	r0, #0x18
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5,=0xffff0000
 	str	r5, [r0, #0x18]
 	mov	r0, #0x19
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	str	r5, [r0, #0x18]
 	mov	r0, #0x18
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, #2
 	add	r0, #0x23
 	strb	r5, [r0]
 	mov	r0, #0x19
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	add	r0, #0x23
 	strb	r5, [r0]
 	bl	__Func_8091dc8
@@ -1177,7 +1177,7 @@
 	cmp	r6, r12
 	blt	.Lcc6
 .Lcd6:
-	bl	__Func_8004458
+	bl	__Random
 	mov	r3, r7
 	mul	r3, r0
 	mov	r1, r11
@@ -1249,7 +1249,7 @@
 	blt	.Ldbe
 	cmp	r7, #5
 	bne	.Ld8c
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsr	r7, r3, #16
@@ -1261,7 +1261,7 @@
 	add	r6, r7, r3
 	mov	r3, r8
 	ldrsb	r5, [r3, r6]
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #1
 	lsr	r0, #16
 	add	r5, r0
@@ -1292,7 +1292,7 @@
 	mov	r6, r1
 	mov	r8, r2
 	mov	r7, r3
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Le0a

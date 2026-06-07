@@ -174,10 +174,10 @@
 	mov	r3, #0x78
 	str	r3, [r5, #8]
 	str	r6, [r5, #4]
-	bl	Func_8004458
+	bl	Random
 	str	r6, [r5, #0x10]
 	str	r6, [r5, #0xc]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x3f
 	mov	r2, #1
 	and	r3, r0
@@ -746,7 +746,7 @@
 	ldrsh	r0, [r3, r7]
 	bl	_Func_80b7dd0
 	ldr	r5, [r0]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	and	r3, r0
 	add	r3, #8
@@ -770,11 +770,11 @@
 	mov	r9, r4
 	add	r7, r5, r0
 .Ld1d52:
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0x7f
 	mov	r6, r0
 	and	r6, r3
-	bl	Func_8004458
+	bl	Random
 	ldr	r5, =0x7fff
 	ldr	r1, =0x9fff
 	and	r5, r0
@@ -789,7 +789,7 @@
 	mov	r3, r6
 	mul	r3, r0
 	str	r3, [r7, #4]
-	bl	Func_8004458
+	bl	Random
 	mov	r1, #0xc8
 	bl	Func_b50_from_thumb
 	mov	r2, #1
@@ -1119,10 +1119,10 @@
 	add	r7, r10
 	mov	r8, r5
 .Ld204e:
-	bl	Func_8004458
+	bl	Random
 	mov	r6, #0x7f
 	and	r6, r0
-	bl	Func_8004458
+	bl	Random
 	ldr	r3, =0xffff
 	mov	r5, r0
 	and	r5, r3
@@ -1140,7 +1140,7 @@
 	neg	r3, r3
 	asr	r3, #6
 	str	r3, [r7, #0x10]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xff
 	and	r3, r0
 	sub	r3, #0x80
@@ -1150,7 +1150,7 @@
 	str	r0, [r7]
 	str	r0, [r7, #4]
 	str	r0, [r7, #8]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, #0xf
 	mov	r1, #1
 	and	r3, r0
@@ -1565,7 +1565,7 @@
 	cmp	r7, #9
 	bne	.Ld240a
 	ldr	r0, =Func_80cd260
-	bl	Func_8004278
+	bl	StopTask
 	mov	r0, #0x2f
 	bl	Func_8002dd8
 	mov	r0, #0x2e

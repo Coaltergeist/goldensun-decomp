@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_902_20083c8
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
 	ldr	r3, =0xffff5fff
@@ -31,7 +31,7 @@
 .thumb_func_start OvlFunc_902_2008410
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
 	ldr	r3, =0xffff5fff
@@ -59,7 +59,7 @@
 .thumb_func_start OvlFunc_902_2008458
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
 	ldr	r3, =0xffff5fff

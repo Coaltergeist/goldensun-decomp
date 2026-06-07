@@ -5,11 +5,11 @@
  * asm/overlays/rom_7c097c/ovl_30_c_c_c_a_a.o and asm/overlays/rom_7c097c/ovl_30_c_c_c_a_c.o in
  * goldensun/overlays/rom_7c097c/overlay.ld.
  */
-extern unsigned char *__Func_8092054(int id);
+extern unsigned char *__MapActor_GetActor(int id);
 
 void OvlFunc_936_20095f8(void) {
     unsigned char *p;
 
-    p = __Func_8092054(0);
+    p = __MapActor_GetActor(0);
     p[0x23] = p[0x23] & 0xfe;
 }

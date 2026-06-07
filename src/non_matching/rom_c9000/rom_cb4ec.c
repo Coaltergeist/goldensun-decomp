@@ -16,7 +16,7 @@
  * Func_ -> friendly name map:
  *   Func_80cd594 AnimStart           Func_80ed408 BuildDraw2DFuncEx
  *   Func_80e0524 LoadVFXFile         StartTask StartTask
- *   Func_8004278 StopTask            Func_8004458 Random
+ *   StopTask StopTask            Random Random
  *   Func_b50_from_thumb umod         Func_80e396c GetBattleActorPos2
  *   Func_80d6888 BattleActor_SetState  Func_80e155c UpdateScreenShake
  *   Func_80cd52c ResetAllActors      Func_80030f8 WaitFrames
@@ -68,8 +68,8 @@ extern void Func_80cd594(int prio);
 extern void Func_80ed408(int idx, int a, int b, int flags, int e);
 extern void Func_80e0524(int file, void *dst, int a, int b);
 extern void StartTask(void (*task)(void), int mode);
-extern void Func_8004278(void (*task)(void));
-extern int  Func_8004458(void);
+extern void StopTask(void (*task)(void));
+extern int  Random(void);
 extern u32  Func_b50_from_thumb(u32 a, u32 b);
 extern void Func_80e396c(int target, vec3 *out);
 extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
@@ -119,7 +119,7 @@ void Func_80cb4ec(AnimContext *context)
     /* Spawn the 0x40 daggers */
     p = STATE_PARTICLES(state);
     for (i = 0; i != 0x40; i++, p++) {
-        u32 x = Func_b50_from_thumb(Func_8004458(), 0x60) + 0x10;
+        u32 x = Func_b50_from_thumb(Random(), 0x60) + 0x10;
         int motionX;
         if      (x < 0x2c) motionX = 3;
         else if (x < 0x34) motionX = 2;
@@ -184,7 +184,7 @@ void Func_80cb4ec(AnimContext *context)
         Func_80030f8(1);                   /* WaitFrames(1) */
     }
 
-    Func_8004278(Func_80cd260);            /* StopTask(Task_BlitAnim) */
+    StopTask(Func_80cd260);            /* StopTask(Task_BlitAnim) */
     Func_8002dd8(0x2f);                    /* gfree(draw2D_2) */
     Func_8002dd8(0x2e);                    /* gfree(draw2D_1) */
     Func_80cdbc0();                        /* AnimEnd */

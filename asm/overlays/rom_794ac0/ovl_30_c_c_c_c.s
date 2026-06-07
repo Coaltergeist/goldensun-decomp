@@ -472,7 +472,7 @@
 	lsl	r1, #24
 	cmp	r3, r1
 	bne	.L4a4c
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r0, #1
 	lsr	r0, #16
 	lsl	r3, r0, #1
@@ -538,7 +538,7 @@
 	lsl	r1, #24
 	cmp	r3, r1
 	bne	.L4ae2
-	bl	__Func_8004458
+	bl	__Random
 	lsl	r2, r0, #1
 	add	r2, r0
 	lsr	r2, #16

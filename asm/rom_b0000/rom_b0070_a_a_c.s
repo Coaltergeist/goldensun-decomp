@@ -89,7 +89,7 @@
 	ldr	r3, =iwram_3001f2c
 	ldr	r0, =Func_80b00f4
 	ldr	r5, [r3]
-	bl	Func_8004278
+	bl	StopTask
 	bl	_Func_8019a54
 	mov	r2, #0xe4
 	lsl	r2, #2
@@ -184,7 +184,7 @@
 	strb	r3, [r2]
 .Lb02e8:
 	mov	r0, r5
-	bl	_Func_8092054
+	bl	_MapActor_GetActor
 	ldr	r3, [r0, #0x50]
 	ldr	r3, [r3, #0x28]
 	mov	r1, #0xe9

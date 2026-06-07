@@ -31,7 +31,7 @@
 	add	r3, r2, r1
 	ldr	r7, [r3]
 	mov	r0, r7
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r5, =.L2dd0
 	ldr	r2, [r5]
 	mov	r1, #0
@@ -86,7 +86,7 @@
 	mov	r1, #0x1b
 	bl	__Func_80924d4
 	mov	r0, r7
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	b	.L3fc
 

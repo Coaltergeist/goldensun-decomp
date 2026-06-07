@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_949_2008224
 	push	{lr}
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	cmp	r0, #0
 	beq	.L238
 	mov	r2, r0
@@ -12,7 +12,7 @@
 	strb	r3, [r2]
 .L238:
 	mov	r0, #8
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
 	mov	r1, #0x88

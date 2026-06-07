@@ -90,7 +90,7 @@
 	mov	r6, r8
 	push	{r6}
 	mov	r6, r0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r3, #0
 	mov	r5, r0
 	add	r5, #0x5b
@@ -182,7 +182,7 @@
 .thumb_func_start OvlFunc_899_2008454
 	push	{r5, lr}
 	mov	r0, #0
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
 	ldr	r3, =0xffff5fff

@@ -14,7 +14,7 @@
 	sub	sp, #0xc
 	mov	r8, r2
 	mov	r9, r3
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	ldr	r3, =.L160c
 	mov	r10, sp
 	mov	r2, r10

@@ -40,7 +40,7 @@
 .L5976:
 	mov	r0, #0x14
 .L5978:
-	bl	__Func_8092054
+	bl	__MapActor_GetActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L59f2

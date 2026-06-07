@@ -299,9 +299,9 @@
 	and	r3, r2
 	strh	r3, [r1]
 	ldr	r0, =Func_808f498
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r0, =Func_808f52c
-	bl	Func_8004278
+	bl	StopTask
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
 	ldrh	r1, [r2, #0xa]
@@ -497,7 +497,7 @@
 	sub	r6, r3, r5
 .L8f7f4:
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	mov	r3, r6
 	mul	r3, r0
 	mov	r0, #1
@@ -658,7 +658,7 @@
 	lsl	r5, #4
 .L8f92a:
 	str	r4, [sp]
-	bl	Func_8004458
+	bl	Random
 	lsl	r0, #4
 	lsr	r0, #16
 	add	r0, r5, r0
