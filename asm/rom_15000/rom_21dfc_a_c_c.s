@@ -1,19 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8021e28
-	push	{lr}
-	ldr	r2, =REG_BG0VOFS
-	mov	r3, #0
-	strh	r3, [r2]
-	ldr	r2, =Func_8021e14
-	mov	r0, #2
-	mov	r1, #0x88
-	bl	SetIntrHandler
-	pop	{r0}
-	bx	r0
-.func_end Func_8021e28
-
 .thumb_func_start Func_8021e48
 	push	{r5, lr}
 	mov	r3, #1

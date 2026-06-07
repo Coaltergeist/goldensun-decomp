@@ -6,7 +6,15 @@
  * goldensun/stage1.ld.
  */
 #include "gba/io.h"
+#include "interrupt.h"
 
 void Func_8021e14(void) {
-    do { u32 _value = REG_BG1CNT & ~3; REG_BG1CNT = _value; } while (0);
+    SET_IO(REG_BG1CNT, (REG_BG1CNT & ~3));
+}
+
+extern void SetIntrHandler(unsigned int, unsigned int, void *);
+
+void Func_8021e28(void) {
+    SET_IO(REG_BG0VOFS, 0);
+    SetIntrHandler((1 << INTR_ID_HBLANK), 0x88, Func_8021e14);
 }
