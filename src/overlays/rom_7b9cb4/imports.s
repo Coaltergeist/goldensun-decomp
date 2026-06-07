@@ -9,7 +9,7 @@
 	.export_func _Func_8002322
 	.export_func _Func_800231c
 	.export_func _Func_800447c
-	.export_func _Func_800307c
+	.export_func _SetIntrHandler
 	.export_func _Func_800b8ac
 	.export_func _Func_800bc48
 	.export_func _Func_800c300

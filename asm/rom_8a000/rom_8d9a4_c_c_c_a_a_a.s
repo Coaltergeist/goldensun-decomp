@@ -27,7 +27,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	b	.L9045e
 .L903f6:
 	ldr	r2, =0x53b
@@ -118,7 +118,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	b	.L9057c
 .L904c2:
 	ldr	r2, =0x53b

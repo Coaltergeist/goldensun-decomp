@@ -8,7 +8,7 @@
 // stmia r3!, {r0,r1,r2}
 // subs r3, #0xc
 
-static inline void DMA3_COPY(void *src, void *dst, unsigned size) {
+static inline void DMA3_COPY(const void *src, void *dst, unsigned size) {
     register unsigned _base __asm__("r3") = (unsigned)0x040000D4;
     register unsigned _src  __asm__("r0") = (unsigned)(src);
     register unsigned _dst  __asm__("r1") = (unsigned)(dst);

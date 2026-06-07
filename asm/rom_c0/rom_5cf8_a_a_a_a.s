@@ -6,7 +6,7 @@
 	mov	r0, #5
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r0, #0x33
 	bl	Func_8002dd8
 	pop	{r1}
@@ -24,11 +24,11 @@
 	mov	r0, #7
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r0, #6
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_800307c
+	bl	SetIntrHandler
 	ldr	r4, .L5d54	@ 0
 	mov	r3, r6
 	strh	r4, [r3]

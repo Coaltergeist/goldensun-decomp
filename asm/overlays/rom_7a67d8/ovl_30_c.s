@@ -113,7 +113,7 @@
 	ldr	r2, =OvlFunc_919_200826c
 	mov	r0, #1
 	mov	r1, #0
-	bl	__Func_800307c
+	bl	__SetIntrHandler
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_919_20082a0

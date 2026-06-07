@@ -193,7 +193,7 @@
 	ldr	r2, =Func_80c0298
 	mov	r1, #0x20
 	mov	r0, #2
-	bl	Func_800307c
+	bl	SetIntrHandler
 	strh	r5, [r6, #2]
 	mov	r0, #1
 	bl	Func_80030f8
@@ -222,7 +222,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 	b	.Lc069c
 
 	.pool_aligned
@@ -330,7 +330,7 @@
 	mov	r0, #2
 	ldr	r2, =Func_80c0298
 	mov	r1, #0x20
-	bl	Func_800307c
+	bl	SetIntrHandler
 	mov	r0, #1
 	b	.Lc05c0
 
@@ -439,14 +439,14 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_800307c
+	bl	SetIntrHandler
 .Lc069c:
 	ldr	r6, =REG_BG1CNT
 	ldr	r5, .Lc06d8	@ 0x1f83
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #2
-	bl	Func_800307c
+	bl	SetIntrHandler
 	strh	r5, [r6]
 	mov	r0, #1
 	bl	Func_80030f8
