@@ -15,7 +15,7 @@ extern bool8 gSoftReset;
 
 void KeypadIntr(void) {
     if (!ewram_2002000) {
-        SetKeyCnt(KEY_AND_INTR | KEY_INTR_ENABLE | DPAD_ANY | JOY_EXCL_DPAD);
+        SET_IO(REG_KEYCNT, (KEY_AND_INTR | KEY_INTR_ENABLE | DPAD_ANY | JOY_EXCL_DPAD));
         gSoftReset = 1;
     }
 }
