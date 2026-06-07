@@ -776,24 +776,12 @@
 #define WAITCNT_AGB (0 << 15)
 #define WAITCNT_CGB (1 << 15)
 
-// I/O Setter functions
+// I/O Setter macro
 
-static inline void SetIME(unsigned short value) {
-    REG_IME = value;
-    __asm__ volatile("");
-}
-
-static inline void SetIE(unsigned short value) {
-    REG_IE = value;
-    __asm__ volatile("");
-}
-
-static inline void SetKeyCnt(unsigned short value) {
-    REG_KEYCNT = value;
-}
-
-static inline void SetDispStat(unsigned short value) {
-    REG_DISPSTAT = value;
-}
+#define SET_IO(register, value) \
+do {                            \
+    unsigned __value = value;   \
+    register = __value;         \
+} while (0)
 
 #endif // _IO_H_

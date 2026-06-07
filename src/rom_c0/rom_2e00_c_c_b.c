@@ -123,12 +123,12 @@ extern const char __load_start_rom_770[]; // .iwram.code base
 extern char Data_8000850[]; // interrupt vector in .iwram.code
 
 void InitRAMLib(void) {
-    SetIME(0);
+    SET_IO(REG_IME, 0);
     DMA3_COPY(__load_start_rom_770, iwram_3000000, 5120);
     INTR_VECTOR = iwram_3000000;
     DMA3_COPY(sInitialIntrVectors, Data_8000850, 56);
-    SetDispStat(0);
-    SetKeyCnt(KEY_AND_INTR | KEY_INTR_ENABLE | DPAD_ANY | JOY_EXCL_DPAD);
-    SetIE(0x1001);
-    SetIME(1);
+    SET_IO(REG_DISPSTAT, 0);
+    SET_IO(REG_KEYCNT, (KEY_AND_INTR | KEY_INTR_ENABLE | DPAD_ANY | JOY_EXCL_DPAD));
+    SET_IO(REG_IE, 0x1001);
+    SET_IO(REG_IME, 1);
 }
