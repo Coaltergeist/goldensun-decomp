@@ -409,28 +409,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_808ae74
-
-.thumb_func_start Func_808b02c
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xd0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	ldrb	r0, [r3, r0]
-	bl	Func_808ae74
-	pop	{r1}
-	bx	r1
-.func_end Func_808b02c
-
-.thumb_func_start Func_808b048
-	push	{r5, lr}
-	mov	r5, r1
-	bl	Func_808adf0
-	mov	r1, r5
-	bl	Func_808ae74
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_808b048
-
