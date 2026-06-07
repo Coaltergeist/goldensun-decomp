@@ -2004,7 +2004,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a19a0
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, =0x242
 	ldr	r3, .La844c	@ 0x80
 	mov	r2, #3

@@ -125,7 +125,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_8097644
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	pop	{r3}
 	mov	r8, r3
@@ -689,7 +689,7 @@
 	strh	r2, [r3]
 	lsl	r1, #3
 	ldr	r0, =Func_8097868
-	bl	Func_80041d8
+	bl	StartTask
 	b	.L97ad8
 
 	.align	2, 0

@@ -437,7 +437,7 @@
 	lsl	r1, #3
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, [sp, #0x40]
 	mov	r0, #0
 	mov	r11, r0

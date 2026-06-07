@@ -1979,7 +1979,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_933_2008cd0
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r3, #0
 	ldrsh	r2, [r5, r3]
 	ldr	r3, =0x59

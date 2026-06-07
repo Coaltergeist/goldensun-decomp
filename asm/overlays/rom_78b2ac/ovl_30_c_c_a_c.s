@@ -2145,19 +2145,19 @@
 	str	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_890_2008d9c
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_890_2008ef8
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_890_200901c
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_890_2009140
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r5, #0
 .L163c:
 	mov	r0, #0xf6

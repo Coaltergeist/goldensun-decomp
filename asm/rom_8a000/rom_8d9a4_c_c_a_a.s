@@ -1365,11 +1365,11 @@
 	strh	r3, [r4]
 	lsl	r1, #4
 	ldr	r0, =Func_808f52c
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	pop	{r5, r6}
 	pop	{r0}

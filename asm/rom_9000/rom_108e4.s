@@ -433,11 +433,11 @@
 	strh	r3, [r2]
 	ldr	r1, =0xc85
 	ldr	r0, =Func_80111b4
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_8010ff0
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, =0x336
 	mov	r3, #0xff
 	add	r0, r7, r1

@@ -21,7 +21,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_956_2008658
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r3, #0x78
 	mov	r2, #0x3c
 	str	r3, [sp]
@@ -340,7 +340,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_956_200804c
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L108a:
 	mov	r0, #0xd8
 	lsl	r0, #2
@@ -582,7 +582,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_common1_148
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x27
 	bl	__Func_8092924
 	mov	r0, #0x28
@@ -1077,7 +1077,7 @@
 	lsl	r1, #4
 	mov	r0, r5
 	mov	r8, r3
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #5
 	bl	__Func_809163c
 	mov	r0, r5
@@ -1091,7 +1091,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x14
 	bl	__Func_809163c
 	mov	r0, r5
@@ -1107,7 +1107,7 @@
 	str	r6, [r2]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x23
 	bl	__Func_809163c
 	mov	r0, r5
@@ -1124,7 +1124,7 @@
 	str	r6, [r3]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x23
 	bl	__Func_809163c
 	mov	r0, r5
@@ -1155,7 +1155,7 @@
 	str	r6, [r2]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x23
 	bl	__Func_809163c
 	mov	r0, r5
@@ -1192,7 +1192,7 @@
 	str	r6, [r3]
 	mov	r0, r5
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #1
 	mov	r1, #3
 	bl	__Func_80924d4

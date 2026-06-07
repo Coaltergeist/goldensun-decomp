@@ -1026,7 +1026,7 @@
 	bl	__Func_8003fa4
 	ldr	r1, =0xc76
 	ldr	r0, =OvlFunc_common1_1b08
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, r11
 	bl	__Func_8002df0
 	add	sp, #4
@@ -1073,7 +1073,7 @@
 .L1fe4:
 	ldr	r1, =0xc85
 	ldr	r0, =OvlFunc_common1_1928
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

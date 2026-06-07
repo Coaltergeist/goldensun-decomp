@@ -189,7 +189,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_939_2009240
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L117a:
 	pop	{r5, r6}
 	pop	{r0}
@@ -450,7 +450,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	mov	r0, r6
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #1
 	bl	__Func_809163c
 	mov	r0, #0x79
@@ -539,7 +539,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_939_20092a4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #2
 	bl	__Func_809163c
 	mov	r0, #0
@@ -796,12 +796,12 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_939_2008ac4
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L1732:
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_939_2009240
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r0, =0x944
 	bl	__Func_8079374
 	ldr	r0, =0x945

@@ -7,7 +7,7 @@
  */
 extern unsigned char ewram_2000240;
 extern void Func_8099678(void);
-extern void Func_80041d8(void *task, int priority);
+extern void StartTask(void *task, int priority);
 
 void Func_8099810(void) {
     unsigned int r3;
@@ -21,6 +21,6 @@ void Func_8099810(void) {
     r2 = 0;
     val = *(short *)((char *)r3 + r2);
     if (val != 0) {
-        Func_80041d8(Func_8099678, 0xc8 << 4);
+        StartTask(Func_8099678, 0xc8 << 4);
     }
 }

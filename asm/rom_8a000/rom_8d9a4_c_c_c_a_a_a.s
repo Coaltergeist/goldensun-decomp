@@ -554,7 +554,7 @@
 	lsl	r1, #4
 	strh	r6, [r5]
 	ldr	r0, =Func_8090658
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x78
 	bl	Func_80030f8
 	add	sp, #4
@@ -1725,7 +1725,7 @@
 	bl	Func_8090a5c
 	ldr	r1, =0xc8f
 	ldr	r0, =Func_80908e0
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	pop	{r0}
 	bx	r0

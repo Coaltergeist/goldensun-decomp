@@ -263,7 +263,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80912b8
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =0x3f9e
 	ldr	r3, =REG_BLDCNT
 	strh	r2, [r3]

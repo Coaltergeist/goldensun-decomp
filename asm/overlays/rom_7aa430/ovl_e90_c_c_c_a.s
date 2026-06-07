@@ -114,7 +114,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_923_2008d98
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r3, #5
 	mov	r2, #3
 	str	r3, [sp]

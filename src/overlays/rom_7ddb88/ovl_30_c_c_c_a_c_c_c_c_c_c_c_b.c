@@ -6,12 +6,12 @@
  * goldensun/overlays/rom_7ddb88/overlay.ld.
  */
 extern void OvlFunc_955_2008714(void);
-extern void __Func_80041d8(void (*f)(void), int x);
+extern void __StartTask(void (*f)(void), int x);
 extern void __Func_8079374(int x);
 
 void OvlFunc_955_2008950(void) {
     int x;
     x = 0xc85;
-    __Func_80041d8(OvlFunc_955_2008714, x);
+    __StartTask(OvlFunc_955_2008714, x);
     __Func_8079374(0x82 << 1);
 }

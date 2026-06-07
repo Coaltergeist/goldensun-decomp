@@ -866,7 +866,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80f2028
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r0, =iwram_3001ad0
 	mov	r1, #0x12
 	mov	r3, #1

@@ -6,9 +6,9 @@
  * TODO(residual): pure scheduling — ROM does `movs r1,#200; lsls r1,#4; ldr r0`,
  *   candidate interleaves the `ldr r0` before the `lsls`. Overlay fn -> permutable.
  */
-extern void __Func_80041d8(void *arg, int val);
+extern void __StartTask(void *arg, int val);
 extern void OvlFunc_956_200804c(void);
 
 void OvlFunc_956_20081b4(void) {
-    __Func_80041d8(OvlFunc_956_200804c, 0xc8 << 4);
+    __StartTask(OvlFunc_956_200804c, 0xc8 << 4);
 }

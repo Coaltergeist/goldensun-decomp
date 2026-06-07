@@ -3203,10 +3203,10 @@
 	str	r3, [r2]
 	mov	r1, r5
 	ldr	r0, =Func_80f6440
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r0, =Func_80f60a0
 	mov	r1, r5
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r7, [sp, #0x14]
 	ldr	r3, [r7]
 	mov	r2, #0

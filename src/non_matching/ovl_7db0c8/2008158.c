@@ -6,10 +6,10 @@
  * TODO(residual): reg-alloc/scheduling divergence (register swap / op-order); logic correct. Permuter seed.
  */
 extern unsigned char L441c[] __asm__(".L441c");
-extern void __Func_80041d8(void (*func)(void), int arg);
+extern void __StartTask(void (*func)(void), int arg);
 extern void OvlFunc_954_200804c(void);
 
 void OvlFunc_954_2008158(void) {
     *(int *)L441c = 0x42;
-    __Func_80041d8(OvlFunc_954_200804c, 0xc8 << 4);
+    __StartTask(OvlFunc_954_200804c, 0xc8 << 4);
 }

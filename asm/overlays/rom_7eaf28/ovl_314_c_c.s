@@ -349,7 +349,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_960_2008ce4
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .Le48:
 	add	sp, #8
 	pop	{r5}
@@ -401,7 +401,7 @@
 	strb	r3, [r2]
 	ldr	r0, =OvlFunc_960_2008400
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .Lec0:
 	ldr	r5, =ewram_2000240
 	mov	r2, #0xe0

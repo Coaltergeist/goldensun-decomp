@@ -61,7 +61,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_801789c
-	bl	Func_80041d8
+	bl	StartTask
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -104,7 +104,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_801789c
-	bl	Func_80041d8
+	bl	StartTask
 	pop	{r5}
 	pop	{r0}
 	bx	r0

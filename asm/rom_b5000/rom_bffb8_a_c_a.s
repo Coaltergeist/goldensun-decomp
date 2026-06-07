@@ -183,13 +183,13 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	mov	r0, r10
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, =Func_80c0228
 	mov	r8, r1
 	mov	r1, #0x90
 	lsl	r1, #3
 	mov	r0, r8
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =Func_80c0298
 	mov	r1, #0x20
 	mov	r0, #2
@@ -545,7 +545,7 @@
 	bne	.Lc078c
 	ldr	r0, =Func_80c0130
 	ldr	r1, =0x4ff
-	bl	Func_80041d8
+	bl	StartTask
 .Lc078c:
 	str	r7, [r6, #8]
 	cmp	r7, #1

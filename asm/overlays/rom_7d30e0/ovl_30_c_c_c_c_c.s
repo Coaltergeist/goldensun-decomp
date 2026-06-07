@@ -496,15 +496,15 @@
 	str	r5, [r0, #0x18]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_948_20097ac
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_948_200941c
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_948_2009308
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r2, =0x3f42
 	ldr	r3, =REG_BLDCNT
 	strh	r2, [r3]
@@ -526,11 +526,11 @@
 	strb	r5, [r0]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_948_2009e94
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_948_2009edc
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x6b
 	mov	r1, #0
 	mov	r2, #0

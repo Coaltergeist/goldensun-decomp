@@ -129,7 +129,7 @@
 	strh	r2, [r3]
 	ldr	r0, =Func_80935d4
 	ldr	r1, =0xc94
-	bl	Func_80041d8
+	bl	StartTask
 .L936f4:
 	pop	{r5, r6, r7}
 	pop	{r0}

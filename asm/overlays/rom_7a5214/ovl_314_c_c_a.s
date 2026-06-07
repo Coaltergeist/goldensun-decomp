@@ -710,7 +710,7 @@
 	str	r3, [r2, #8]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0xdc
 	bl	__Func_809163c
 	mov	r0, r5
@@ -835,7 +835,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_918_2009244
-	bl	__Func_80041d8
+	bl	__StartTask
 	bl	__Func_8091750
 	add	sp, #8
 	pop	{r5, r6, r7}
@@ -961,7 +961,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_918_2009244
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L1062:
 	ldr	r0, =0x844
 	bl	__Func_8079338

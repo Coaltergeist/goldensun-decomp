@@ -9,7 +9,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a2444
-	bl	Func_80041d8
+	bl	StartTask
 	pop	{r0}
 	bx	r0
 .func_end Func_80a2474

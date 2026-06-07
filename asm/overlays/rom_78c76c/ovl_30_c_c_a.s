@@ -2195,7 +2195,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_891_2008eb0
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

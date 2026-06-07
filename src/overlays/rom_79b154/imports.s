@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.export_func _Func_80030f8
-	.export_func _Func_80041d8
+	.export_func _StartTask
 	.export_func _Func_80044d0
 	.export_func _Func_800ba30
 	.export_func _Func_800c300

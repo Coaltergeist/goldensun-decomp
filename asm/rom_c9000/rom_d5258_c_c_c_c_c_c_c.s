@@ -211,7 +211,7 @@
 	mov	r1, #0x90
 	ldr	r0, =Func_80dbb9c
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 .Ld5466:
 	mov	r2, #0xef
 	lsl	r2, #7
@@ -225,7 +225,7 @@
 	lsl	r1, #3
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x8e
 	bl	_Func_80f9080
 	ldr	r1, [sp, #0x3c]
@@ -925,7 +925,7 @@
 	str	r6, [r3]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x8e
 	bl	_Func_80f9080
 	mov	r3, #0
@@ -1185,7 +1185,7 @@
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
 	str	r7, [sp, #0xc]
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r6]
 	ldr	r3, [r3, #0x14]
 	mov	r2, #0
@@ -1470,7 +1470,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r5, r9
 	mov	r2, #0xa0
 	ldr	r3, [r5, #8]

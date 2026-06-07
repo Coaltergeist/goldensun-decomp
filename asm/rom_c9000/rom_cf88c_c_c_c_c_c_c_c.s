@@ -313,7 +313,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =.Lee0b6
 	ldr	r4, [sp, #0x1c]
 	ldrsb	r3, [r3, r4]

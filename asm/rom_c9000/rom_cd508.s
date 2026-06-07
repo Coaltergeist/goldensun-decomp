@@ -150,7 +150,7 @@
 	str	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =Func_80cd4b4
-	bl	Func_80041d8
+	bl	StartTask
 	ldrh	r3, [r5]
 	mov	r1, r3
 	strh	r5, [r5]
@@ -474,7 +474,7 @@
 	str	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =Func_80cd4b4
-	bl	Func_80041d8
+	bl	StartTask
 	ldrh	r3, [r5]
 	mov	r1, r3
 	strh	r5, [r5]
@@ -1394,7 +1394,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0
 	mov	r2, #0x80
 	ldr	r3, =ewram_2010018
@@ -1933,7 +1933,7 @@
 	lsl	r5, #3
 	mov	r1, r5
 	ldr	r0, =Func_80dbb9c
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #0xef
 	lsl	r3, #7
 	add	r3, r10
@@ -1945,7 +1945,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	ldr	r5, =ewram_2010000
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r6, #0xff
 	mov	r4, #0
 .Lce59c:
@@ -2333,7 +2333,7 @@
 	ldr	r0, =Func_80dbb9c
 	str	r3, [r1, #4]
 	mov	r1, r6
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, #0xef
 	lsl	r3, #7
 	ldr	r2, =0x7784
@@ -2344,7 +2344,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	mov	r1, r6
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r2, r8
 	ldr	r3, [r2]
 	ldr	r3, [r3, #4]

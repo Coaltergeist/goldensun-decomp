@@ -565,7 +565,7 @@
 	strh	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_932_200b9c8
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L3a6c
 
 	.pool_aligned

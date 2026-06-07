@@ -13853,7 +13853,6 @@ UploadSprite2 = Func_80040d0;
 ClearTasks = Func_80040e8;
 SortTasks = Func_8004144;
 GetTaskIndex = Func_8004198;
-StartTask = Func_80041d8;
 StopTask = Func_8004278;
 RunTasks = Func_8004420;
 Random = Func_8004458;

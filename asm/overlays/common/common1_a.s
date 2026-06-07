@@ -1628,7 +1628,7 @@
 	lsl	r1, #4
 	strh	r3, [r2]
 	ldr	r0, =OvlFunc_common1_920
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r1, =.L11
 	cmp	r5, #2
 	bne	.Le32
@@ -2352,7 +2352,7 @@
 	strh	r2, [r3]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_common1_1354
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.L14e8
 
 	.align	2, 0
@@ -2392,7 +2392,7 @@
 	strh	r3, [r2]
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_common1_1354
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r0}
 	bx	r0
 

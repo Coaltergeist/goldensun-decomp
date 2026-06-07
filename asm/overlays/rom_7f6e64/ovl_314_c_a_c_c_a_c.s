@@ -1372,7 +1372,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	mov	r0, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0x50
 	b	.L1700
 

@@ -560,7 +560,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a3c08
-	bl	Func_80041d8
+	bl	StartTask
 	b	.La3ba0
 
 	.pool_aligned

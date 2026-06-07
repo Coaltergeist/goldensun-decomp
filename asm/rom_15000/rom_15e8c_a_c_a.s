@@ -41,7 +41,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80160fc
-	bl	Func_80041d8
+	bl	StartTask
 	bl	Func_80173f4
 	add	sp, #4
 	pop	{r5}
@@ -132,7 +132,7 @@
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80160fc
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, r6
 	bl	Func_8017464
 	add	r1, sp, #4

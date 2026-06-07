@@ -311,7 +311,7 @@
 	str	r2, [r3]
 	ldr	r0, =OvlFunc_905_20090c8
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L1386:
 	mov	r0, #0
 	add	sp, #8

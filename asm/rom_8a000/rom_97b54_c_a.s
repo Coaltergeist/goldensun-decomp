@@ -74,7 +74,7 @@
 	strb	r6, [r3]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, =ewram_2000240
 	mov	r2, #0x93
 	lsl	r2, #2

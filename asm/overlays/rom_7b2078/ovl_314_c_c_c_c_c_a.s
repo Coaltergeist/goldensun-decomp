@@ -40,7 +40,7 @@
 	mov	r1, #0xc8
 	mov	r0, r5
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r1, =0x3333
 	mov	r0, #0
 	ldr	r2, =0x1999

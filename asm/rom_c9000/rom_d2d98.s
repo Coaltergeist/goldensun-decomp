@@ -79,7 +79,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r7, #0xb0
 	ldr	r0, =0xfff00000
 	lsl	r7, #15
@@ -900,7 +900,7 @@
 	str	r2, [r3]
 	mov	r1, r5
 	ldr	r0, =Func_80d6504
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0xef
 	lsl	r1, #7
 	add	r2, r7, r1
@@ -912,7 +912,7 @@
 	str	r3, [r2]
 	mov	r1, r5
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0xa4
 	bl	_Func_80f9080
 	ldr	r0, =0x7828
@@ -1379,7 +1379,7 @@
 	lsl	r1, #3
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Ld397c	@ 0x1000
 	mov	r0, #1
@@ -1817,7 +1817,7 @@
 	.pool
 
 .Ld3d00:
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r4, =.Lee1f5
 	str	r4, [sp, #0xc]
 	mov	r3, #0
@@ -2483,7 +2483,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r0, =0x7828
 	ldr	r7, [sp, #0x28]
 	add	r3, r7, r0

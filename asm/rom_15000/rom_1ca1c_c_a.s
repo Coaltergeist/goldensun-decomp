@@ -156,7 +156,7 @@
 	strb	r0, [r4]
 	lsl	r1, #4
 	ldr	r0, =Func_801cf48
-	bl	Func_80041d8
+	bl	StartTask
 	add	sp, #4
 	pop	{r0}
 	bx	r0

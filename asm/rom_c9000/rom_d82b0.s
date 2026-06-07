@@ -197,7 +197,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r1, =0x7828
 	ldr	r0, [sp, #0x1c]
 	add	r3, r0, r1
@@ -527,7 +527,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0x8e
 	bl	_Func_80f9080
 	ldr	r1, =0x7828

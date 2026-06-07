@@ -530,7 +530,7 @@
 	strh	r2, [r3]
 	ldr	r0, =Func_8010000
 	ldr	r1, =0xc85
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #2
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}

@@ -74,7 +74,7 @@
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
 	lsl	r1, #3
-	bl	Func_80041d8
+	bl	StartTask
 	cmp	r6, #1
 	bne	.Lecfb0
 	mov	r3, #0x80
@@ -293,7 +293,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r6]
 	add	r5, sp, #0x20
 	mov	r4, #0x24

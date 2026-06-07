@@ -105,7 +105,7 @@
 	strh	r2, [r3, #6]
 	lsl	r1, #4
 	mov	r0, r5
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r0, #0xf
 	bl	Func_80030f8
 	mov	r0, #0xae

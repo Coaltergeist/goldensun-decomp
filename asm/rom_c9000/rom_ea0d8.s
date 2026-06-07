@@ -70,7 +70,7 @@
 .Lea164:
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r1, #0
 	mov	r0, #0
 	bl	Func_80cd104

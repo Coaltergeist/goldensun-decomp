@@ -15,7 +15,7 @@
  *
  * Func_ -> friendly name map:
  *   Func_80cd594 AnimStart           Func_80ed408 BuildDraw2DFuncEx
- *   Func_80e0524 LoadVFXFile         Func_80041d8 StartTask
+ *   Func_80e0524 LoadVFXFile         StartTask StartTask
  *   Func_8004278 StopTask            Func_8004458 Random
  *   Func_b50_from_thumb umod         Func_80e396c GetBattleActorPos2
  *   Func_80d6888 BattleActor_SetState  Func_80e155c UpdateScreenShake
@@ -67,7 +67,7 @@ extern const u16 Dagger_GfxOff[];  /* .Ledf88 @ 0x080EDF88 */
 extern void Func_80cd594(int prio);
 extern void Func_80ed408(int idx, int a, int b, int flags, int e);
 extern void Func_80e0524(int file, void *dst, int a, int b);
-extern void Func_80041d8(void (*task)(void), int mode);
+extern void StartTask(void (*task)(void), int mode);
 extern void Func_8004278(void (*task)(void));
 extern int  Func_8004458(void);
 extern u32  Func_b50_from_thumb(u32 a, u32 b);
@@ -111,7 +111,7 @@ void Func_80cb4ec(AnimContext *context)
     Func_80e0524(0x78, state, 1, 1);       /* LoadVFXFile(FILE_VFX_SABRE_DANCE,..,T,T) */
     STATE_BLITMODE(state) = 1;             /* BLIT_CLEAR */
     STATE_BLITPARAM(state) = 0;
-    Func_80041d8(Func_80cd260, 0x480);     /* StartTask(Task_BlitAnim, TASK_VBLANK) */
+    StartTask(Func_80cd260, 0x480);     /* StartTask(Task_BlitAnim, TASK_VBLANK) */
 
     Func_80e396c(STATE_CONTEXT(state)->targets[0], &targetPos);
     REG_BG2X = (0x40 - targetPos.x) << 8;

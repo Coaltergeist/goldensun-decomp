@@ -442,11 +442,11 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_897_20090c4
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_897_200935c
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0xf0
 	bl	__Func_809163c
 	mov	r0, #0xa

@@ -89,7 +89,7 @@
 	str	r3, [r2]
 	lsl	r1, #3
 	ldr	r0, =Func_80cd260
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r2, =0x7828
 	ldr	r1, [sp, #0x24]
 	add	r3, r1, r2

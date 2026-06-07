@@ -788,7 +788,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_80bd898
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	mov	r3, r9
 	ldr	r0, [r3, #0x58]
 	mov	r3, #0x80
@@ -1230,7 +1230,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_80bd898
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r7]
 	cmp	r3, #0
 	beq	.Lba53a
@@ -1501,7 +1501,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_80bd898
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r5]
 	cmp	r3, #0
 	beq	.Lba7c0
@@ -1996,7 +1996,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =Func_80bd898
 	lsl	r1, #4
-	bl	Func_80041d8
+	bl	StartTask
 	ldr	r3, [r5]
 	cmp	r3, #0
 	beq	.Lbab78

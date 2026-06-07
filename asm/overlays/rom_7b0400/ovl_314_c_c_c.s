@@ -25,7 +25,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_925_200b4bc
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0
 	mov	r1, #1
 	bl	__Func_8092b08

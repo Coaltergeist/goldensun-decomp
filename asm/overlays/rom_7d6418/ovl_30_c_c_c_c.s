@@ -1090,7 +1090,7 @@
 	bl	__Func_800c300
 	ldr	r1, =0xc83
 	ldr	r0, =OvlFunc_951_2008e5c
-	bl	__Func_80041d8
+	bl	__StartTask
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0

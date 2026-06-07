@@ -78,7 +78,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_881_2008598
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r0, =0x90a
 	bl	__Func_8079338
 	cmp	r0, #0
@@ -298,7 +298,7 @@
 	strb	r3, [r2]
 	ldr	r0, =OvlFunc_881_200b678
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 	b	.La2c
 .La0c:
 	bl	OvlFunc_881_200b2f0
@@ -975,7 +975,7 @@
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_881_20097a4
 	lsl	r1, #4
-	bl	__Func_80041d8
+	bl	__StartTask
 .L117a:
 	mov	r0, #1
 	bl	__Func_80030f8
@@ -4013,7 +4013,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_881_200b1fc
-	bl	__Func_80041d8
+	bl	__StartTask
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091220
@@ -4462,7 +4462,7 @@
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_881_200b4a0
-	bl	__Func_80041d8
+	bl	__StartTask
 	ldr	r5, =iwram_3001ebc
 	mov	r2, #0xe0
 	ldr	r3, [r5]
@@ -4604,7 +4604,7 @@
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_881_200b678
 	mov	r7, r5
-	bl	__Func_80041d8
+	bl	__StartTask
 	add	r7, #0x55
 	mov	r2, r8
 	strb	r2, [r7]
