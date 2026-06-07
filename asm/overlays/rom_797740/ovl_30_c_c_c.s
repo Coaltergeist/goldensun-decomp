@@ -1,0 +1,78 @@
+	.include "macros.inc"
+
+.thumb_func_start OvlFunc_900_20081e4
+	push	{r5, lr}
+	ldr	r3, =iwram_3001ebc
+	mov	r2, #0xe0
+	ldr	r3, [r3]
+	lsl	r2, #1
+	add	r3, r2
+	add	r2, #0x49
+	str	r2, [r3]
+	ldr	r3, =ewram_2000240
+	sub	r2, #0x47
+	add	r3, r2
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #2
+	bne	.L20a
+	ldr	r0, =0x12f
+	bl	__Func_8079374
+	b	.L24c
+.L20a:
+	cmp	r3, #0xa
+	bne	.L220
+	mov	r0, #8
+	bl	__Func_8092054
+	add	r0, #0x59
+	ldrb	r2, [r0]
+	mov	r3, #0x14
+	orr	r3, r2
+	strb	r3, [r0]
+	b	.L24c
+.L220:
+	mov	r0, #8
+	bl	__Func_8092054
+	add	r0, #0x59
+	ldrb	r3, [r0]
+	mov	r5, #0x14
+	orr	r3, r5
+	strb	r3, [r0]
+	mov	r0, #9
+	bl	__Func_8092054
+	add	r0, #0x59
+	ldrb	r3, [r0]
+	orr	r3, r5
+	strb	r3, [r0]
+	mov	r0, #0xa
+	bl	__Func_8092054
+	add	r0, #0x59
+	ldrb	r3, [r0]
+	orr	r5, r3
+	strb	r5, [r0]
+.L24c:
+	mov	r0, #0
+	pop	{r5}
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_900_20081e4
+
+	.section .data
+	.global .L35c
+	.global .L3bc
+	.global .L3ec
+	.global .L4a0
+	.global .L2d0
+
+.L2d0:
+	.incbin "overlays/rom_797740/orig.bin", 0x2d0, (0x348-0x2d0)
+.L348:
+	.incbin "overlays/rom_797740/orig.bin", 0x348, (0x35c-0x348)
+.L35c:
+	.incbin "overlays/rom_797740/orig.bin", 0x35c, (0x3bc-0x35c)
+.L3bc:
+	.incbin "overlays/rom_797740/orig.bin", 0x3bc, (0x3ec-0x3bc)
+.L3ec:
+	.incbin "overlays/rom_797740/orig.bin", 0x3ec, (0x4a0-0x3ec)
+.L4a0:
+	.incbin "overlays/rom_797740/orig.bin", 0x4a0
