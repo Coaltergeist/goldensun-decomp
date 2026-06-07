@@ -151,13 +151,3 @@
 	bx	r1
 .func_end Func_80040b4
 
-.thumb_func_start Func_80040d0
-	push	{lr}
-	mov	r2, r1
-	ldr	r1, =iwram_3001b10
-	lsl	r3, r0, #2
-	ldrh	r1, [r1, r3]
-	bl	Func_8003fa4
-	pop	{r1}
-	bx	r1
-.func_end Func_80040d0

@@ -101,6 +101,19 @@ asm/%.o: src/%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
+# overlays/common/common2_c was compiled WITHOUT -mthumb-interwork in the
+# original ROM: all 14 of its functions return `pop {pc}` (the non-interwork
+# epilogue), unique in the corpus — every other TU returns `bx`-form. Drop
+# interwork for this one stem so the epilogue byte-matches. Pattern (not explicit)
+# so it also covers the splitter's matched _b children (common2_c_b.o, …). Mirrors
+# the lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
+# without -mthumb-interwork emits `pop {pc}`.
+COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
+asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
+	$(GCC296_CC) $(COMMON2_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
 # lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed

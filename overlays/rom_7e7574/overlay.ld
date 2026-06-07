@@ -43,12 +43,23 @@ SECTIONS {
 		lib/call_via.o(.text)
 		asm/overlays/common/common2_a.o(.text)
 		asm/overlays/common/common2_b.o(.text)
-		asm/overlays/common/common2_c.o(.text)
+		asm/overlays/common/common2_c_b.o(.text)
+		asm/overlays/common/common2_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_a.o(.text)
+		asm/overlays/common/common2_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_a.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_b.o(.text)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.text)
 	} > overlay
 
 	.data : {
 		asm/overlays/rom_7e7574/ovl_30.o(.data)
-		asm/overlays/common/common2_c.o(.data)
+		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.data)
 		asm/overlays/rom_7e7574/ovl_9dc_c_c_c_c_c.o(.data)
 	} > overlay
 

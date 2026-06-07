@@ -153,13 +153,3 @@
 	bx	r1
 .func_end Func_8091c7c
 
-.thumb_func_start Func_8091d84
-	push	{lr}
-	mov	r1, #0
-	mov	r2, #0
-	mov	r3, #0
-	bl	_Func_8028df4
-	pop	{r1}
-	bx	r1
-.func_end Func_8091d84
-
