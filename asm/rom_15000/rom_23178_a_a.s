@@ -1468,7 +1468,7 @@
 	ldr	r3, [r3, #0x4c]
 	cmp	r3, #0
 	beq	.L23e00
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #2
 	and	r3, r2
@@ -2281,7 +2281,7 @@
 	orr	r2, r3
 	strb	r2, [r1]
 .L24412:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r1, [r3]
 	ldr	r3, =iwram_3001b04
 	ldr	r0, =iwram_3001f34
@@ -3674,7 +3674,7 @@
 	str	r3, [r2, #0x30]
 	ldr	r0, [sp, #0x30]
 	str	r0, [r2, #0x38]
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r1, [r3]
 	ldr	r3, =iwram_3001b04
 	ldr	r0, [r3]
@@ -4575,7 +4575,7 @@
 	str	r2, [r1, #0x30]
 	ldr	r3, [sp, #0x2c]
 	str	r3, [r1, #0x38]
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	ldr	r3, [r0]
 	mov	r2, #1
 	and	r3, r2
@@ -5504,7 +5504,7 @@
 	str	r3, [r1, #0x30]
 	ldr	r0, [sp, #0x24]
 	str	r0, [r1, #0x38]
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	ldr	r3, [r0]
 	mov	r2, #1
 	and	r3, r2
@@ -7348,7 +7348,7 @@
 	bge	.L26cdc
 	b	.L26bc4
 .L26cdc:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r6, [r3]
 	ldr	r3, =iwram_3001b04
 	ldr	r5, [r3]
@@ -7762,7 +7762,7 @@
 	mov	r2, #0
 	mov	r3, #4
 	bl	Func_8017aa4
-	ldr	r7, =iwram_3001c94
+	ldr	r7, =gKeyPress
 	ldr	r5, =iwram_3001f34
 	mov	r6, #3
 .L27024:
@@ -10423,7 +10423,7 @@
 	bl	Func_801e7c0
 	mov	r3, #0x8e
 	add	r3, r8
-	ldr	r7, =iwram_3001c94
+	ldr	r7, =gKeyPress
 	mov	r6, r10
 	mov	r9, r3
 .L285e6:

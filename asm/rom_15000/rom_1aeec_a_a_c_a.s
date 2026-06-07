@@ -192,7 +192,7 @@
 	mov	r1, #0
 	mov	r0, r5
 	bl	Func_801b9ec
-	ldr	r7, =iwram_3001c94
+	ldr	r7, =gKeyPress
 .L1b3aa:
 	mov	r0, #1
 	bl	Func_80030f8
@@ -287,7 +287,7 @@
 	mov	r0, r5
 	bl	Func_801b810
 .L1b474:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #1
 	and	r3, r2
@@ -326,7 +326,7 @@
 .L1b4bc:
 	cmp	r6, #0
 	beq	.L1b42c
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #2
 	and	r3, r2

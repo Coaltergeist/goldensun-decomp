@@ -334,7 +334,7 @@
 	add	r8, r3
 	mov	r11, r3
 .L1c734:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2

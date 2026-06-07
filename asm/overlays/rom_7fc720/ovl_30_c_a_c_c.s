@@ -105,7 +105,7 @@
 	mov	r7, #0
 	bl	__Func_801ea08
 .L176:
-	ldr	r5, =iwram_3001c94
+	ldr	r5, =gKeyPress
 	ldr	r3, [r5]
 	mov	r2, #8
 	and	r3, r2
@@ -276,7 +276,7 @@
 	mov	r3, #0x20
 	bl	__Func_801e940
 .L306:
-	ldr	r5, =iwram_3001c94
+	ldr	r5, =gKeyPress
 	ldr	r3, [r5]
 	mov	r2, #1
 	and	r3, r2
@@ -545,7 +545,7 @@
 	mov	r3, #0x30
 	bl	__Func_801e74c
 .L574:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #2
 	and	r3, r2

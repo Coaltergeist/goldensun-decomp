@@ -223,7 +223,7 @@
 	mov	r3, #0x10
 	bl	_Func_801e8b0
 .La5104:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -468,7 +468,7 @@
 	bl	Func_b1c_from_thumb
 	mov	r6, r0
 .La5326:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -642,7 +642,7 @@
 	bl	Func_b1c_from_thumb
 	mov	r8, r0
 .La54aa:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2

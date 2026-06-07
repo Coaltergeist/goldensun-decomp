@@ -14,7 +14,7 @@
 	adr	r0, .Lintr_main
 	str	r0, [r1]
 
-	ldr	r1, =Func_8002e00
+	ldr	r1, =AgbMain
 	mov	lr, pc
 	bx	r1
 

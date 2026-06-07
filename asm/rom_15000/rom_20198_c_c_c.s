@@ -530,7 +530,7 @@
 	bls	.L20f4a
 	mov	r6, #0
 .L20f4a:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, [r3]
 	mov	r3, #8
 	and	r2, r3
@@ -976,7 +976,7 @@
 	mov	r0, #0x51
 	bl	_Func_80f9080
 	ldr	r5, =0x303
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 .L212f8:
 	mov	r0, r7
 	mov	r1, #0xfa
@@ -1102,7 +1102,7 @@
 	mov	r0, #0x51
 	bl	_Func_80f9080
 	ldr	r5, =0x303
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 .L2142a:
 	mov	r0, r7
 	mov	r1, #0xfa
@@ -1245,7 +1245,7 @@
 	bl	_Func_80f954c
 	cmp	r0, #0
 	beq	.L21590
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, =0x303
 	ldr	r3, [r3]
 	and	r3, r2

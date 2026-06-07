@@ -1933,7 +1933,7 @@
 	bl	OvlFunc_932_200abb0
 	mov	r0, #0x3c
 	bl	__Func_809163c
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	cmp	r3, #0
 	bne	.L1fcc

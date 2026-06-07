@@ -113,7 +113,7 @@
 	mov	r0, #1
 	bl	Func_8003bb4
 	bl	Func_8003ce0
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -131,7 +131,7 @@
 	bl	Func_80030f8
 	cmp	r5, #0x77
 	bhi	.Lf2d42
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -142,7 +142,7 @@
 	neg	r6, r6
 	b	.Lf2d42
 .Lf2cc2:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -154,7 +154,7 @@
 	bl	Func_80030f8
 	cmp	r5, #0x3b
 	bhi	.Lf2cea
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -176,7 +176,7 @@
 	bl	Func_8003ce0
 	cmp	r6, #0
 	bne	.Lf2d30
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -188,7 +188,7 @@
 	bl	Func_80030f8
 	cmp	r5, #0xb3
 	bhi	.Lf2d2c
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2
@@ -344,7 +344,7 @@
 	ldr	r2, =0x840000d0
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #9
 	and	r3, r2

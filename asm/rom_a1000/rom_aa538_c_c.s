@@ -1818,7 +1818,7 @@
 	bl	_Func_80f9080
 	b	.Lab4ec
 .Lab45a:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #8
 	and	r2, r3
@@ -2849,7 +2849,7 @@
 	ldr	r3, =iwram_3001b04
 	ldr	r3, [r3]
 	mov	r11, r3
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r4, [r3]
 	ldr	r3, =0x212c
 	add	r3, r9
@@ -2905,7 +2905,7 @@
 	.word	.Labdcc
 	.word	.Labda0
 .Labda0:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -3206,7 +3206,7 @@
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	beq	.Lac02a
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -3253,7 +3253,7 @@
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	beq	.Lac090
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -3300,7 +3300,7 @@
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	beq	.Lac0f6
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

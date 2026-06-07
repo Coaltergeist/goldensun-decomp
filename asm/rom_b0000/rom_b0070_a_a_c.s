@@ -1205,7 +1205,7 @@
 	mov	r3, #0
 	bl	Func_80b110c
 .Lb0ba0:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -1430,7 +1430,7 @@
 	mov	r1, r6
 	bl	Func_80b1260
 .Lb0d72:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -2624,7 +2624,7 @@
 	mov	r0, #1
 	bl	Func_80030f8
 .Lb1776:
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	mov	r2, #1
 	and	r3, r2
@@ -2635,7 +2635,7 @@
 	add	r5, r7, #1
 	b	.Lb17a2
 .Lb178c:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r6, [r3]
 	mov	r3, #2
 	and	r6, r3
@@ -3025,7 +3025,7 @@
 	mov	r1, r10
 	bl	Func_80b1dec
 .Lb1ae2:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -3243,7 +3243,7 @@
 	mov	r1, r6
 	bl	Func_80b11a4
 .Lb1cba:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2

@@ -246,7 +246,7 @@
 	bl	Func_80a1a40
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r5, =iwram_3001c94
+	ldr	r5, =gKeyPress
 	ldr	r2, [r5]
 	mov	r3, #1
 	and	r2, r3

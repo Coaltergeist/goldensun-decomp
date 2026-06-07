@@ -706,7 +706,7 @@
 	add	r3, r2
 	mov	r2, #1
 	strb	r2, [r3]
-	ldr	r6, =iwram_3001c94
+	ldr	r6, =gKeyPress
 	mov	r5, #7
 .La799c:
 	mov	r0, #0xa8
@@ -953,7 +953,7 @@
 	bl	Func_80a1a40
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -1302,7 +1302,7 @@
 	bl	Func_80a1a40
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3
@@ -1861,7 +1861,7 @@
 	mov	r3, #1
 	bl	Func_80a847c
 .La8312:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
 	and	r2, r3

@@ -25,7 +25,7 @@
 	bl	OvlFunc_879_20082e8
 	mov	r0, #0x78
 	bl	__Func_80030f8
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	mov	r5, #0
 	cmp	r3, #0

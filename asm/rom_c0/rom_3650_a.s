@@ -74,7 +74,7 @@
 	ldr	r3, [r4]
 	mov	r2, r0
 	bic	r2, r3
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r1, =iwram_3001af8
 	str	r2, [r3]
 	ldr	r3, [r1]

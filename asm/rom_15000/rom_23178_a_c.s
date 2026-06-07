@@ -621,7 +621,7 @@
 	bl	_Func_8079358
 	b	.L294bc
 .L293c6:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	mov	r2, #2
 	and	r3, r2

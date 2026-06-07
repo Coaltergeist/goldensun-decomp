@@ -762,7 +762,7 @@
 	and	r0, r3
 	str	r0, [sp, #0x10]
 .L127be:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, [r3]
 	mov	r3, #8
 	and	r2, r3

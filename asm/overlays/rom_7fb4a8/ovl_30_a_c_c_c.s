@@ -1581,7 +1581,7 @@
 	bge	.Le9e
 	mov	r5, #0
 .Le9e:
-	ldr	r1, =iwram_3001c94
+	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2

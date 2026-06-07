@@ -33,8 +33,6 @@ SECTIONS {
 		asm/rom_c0/rom_1b70.o(.text)
 		asm/rom_c0/rom_2544.o(.text)
 		asm/rom_c0/rom_2dd8.o(.text)
-		asm/rom_c0/rom_2e00_a_a.o(.text)
-		asm/rom_c0/rom_2e00_a_b.o(.text)
 		asm/rom_c0/rom_2e00_b.o(.text)
 		asm/rom_c0/rom_2e00_c_b.o(.text)
 		asm/rom_c0/rom_2e00_c_c_b.o(.text)

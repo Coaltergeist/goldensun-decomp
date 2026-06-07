@@ -847,7 +847,7 @@
 	cmp	r8, r3
 	blt	.L223fc
 .L2249e:
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	b	.L224ac
 
 	.pool_aligned

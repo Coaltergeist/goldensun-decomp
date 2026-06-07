@@ -1078,7 +1078,7 @@
 	bne	.La9222
 	mov	r4, #0
 .La9222:
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	and	r3, r7
 	cmp	r3, #0

@@ -8,7 +8,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L9162a
-	ldr	r0, =iwram_3001c94
+	ldr	r0, =gKeyPress
 	mov	r2, #0x80
 	ldr	r3, [r0]
 	lsl	r2, #2

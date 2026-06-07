@@ -810,7 +810,7 @@
 .L9a0e8:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r3, =iwram_3001c94
+	ldr	r3, =gKeyPress
 	ldr	r2, [r3]
 	ldr	r3, =0x303
 	and	r2, r3

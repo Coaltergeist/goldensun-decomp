@@ -64,7 +64,7 @@
 	add	r3, r6, r1
 	ldr	r5, [r3]
 	str	r2, [sp]
-	ldr	r2, =iwram_3001c94
+	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	cmp	r3, #0
 	beq	.L91cda
