@@ -360,7 +360,7 @@
 	mov	r5, r2
 	cmp	r3, #0
 	bne	.L1f0ca
-	bl	Func_80045e8
+	bl	GetSpritePalette
 	ldr	r3, =REG_DMA3SAD
 	ldr	r1, =0x50001c0
 	ldr	r2, =0x80000010

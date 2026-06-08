@@ -51,7 +51,7 @@
 	mov	r5, #0
 .L79856:
 	mov	r0, r7
-	bl	Func_8078ed8
+	bl	GetPCBaseStats
 	mov	r3, r5
 	add	r3, #0x90
 	add	r0, #2

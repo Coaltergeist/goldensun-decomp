@@ -19,12 +19,12 @@
  *   StartTask            StartTask      MatrixRoll           MatrixRoll
  *   StopTask/free-handle StopTask      MatrixPitch          MatrixPitch
  *   Task_BlitAnim        Task_BlitAnim      MatrixYaw            MatrixYaw
- *   Task_ScrollBG        Func_80c90e4      MatrixStore          Func_8004a28
- *   AnimTransitionOut    AnimTransitionOut      MatrixLoad           Func_8004a44
+ *   Task_ScrollBG        Func_80c90e4      MatrixStore          MatrixStore
+ *   AnimTransitionOut    AnimTransitionOut      MatrixLoad           MatrixLoad
  *   AnimTransitionIn     _AnimTransitionIn     PhysMove             Func_80e3944
  *   FUN_0814CC4C         Func_80d6750      UpdateSprite         _UpdateSprite
  *   GetFile              Func_8002f40      PlaySound            _PlaySound
- *   LoadVFXFile          LoadVFXFile      BattleActor_GetPos2  Func_80e396c
+ *   LoadVFXFile          LoadVFXFile      BattleActor_GetPos2  GetBattleActorPos2
  *   BuildDraw2DFunc      BuildDraw2DFuncEx      BattleActor_SetState Func_80d6888
  *   WaitFrames           WaitFrames      BattleActor_Knockbk  _SetBattleActorKnockback
  *   RestoreBattleBG      Func_80d67dc      UpdateScreenShake    UpdateScreenShake
@@ -104,12 +104,12 @@ extern void  InitMatrixStack(void);                      /* InitMatrixStack */
 extern void  MatrixRoll(int a);                     /* MatrixRoll */
 extern void  MatrixPitch(int a);                     /* MatrixPitch */
 extern void  MatrixYaw(int a);                     /* MatrixYaw */
-extern void  Func_8004a28(void *m);                   /* MatrixStore */
-extern void  Func_8004a44(void *m);                   /* MatrixLoad */
+extern void  MatrixStore(void *m);                   /* MatrixStore */
+extern void  MatrixLoad(void *m);                   /* MatrixLoad */
 extern void  Func_80e3944(vec3 *in, vec3 *out);       /* PhysMove */
 extern void  _UpdateSprite(void *sprite, int *coords, void *dims, int z); /* UpdateSprite */
 extern void  _PlaySound(int sfx);                  /* PlaySound */
-extern void  Func_80e396c(int target, vec3 *out);     /* BattleActor_GetPos2 */
+extern void  GetBattleActorPos2(int target, vec3 *out);     /* BattleActor_GetPos2 */
 extern void  Func_80d6888(int t, int a, int b, int c, int d); /* BattleActor_SetState */
 extern void  _SetBattleActorKnockback(int t, int v);             /* BattleActor_SetKnockback */
 extern void  UpdateScreenShake(int a, int b);              /* UpdateScreenShake */
@@ -217,7 +217,7 @@ void Anim_Atalanta(AnimContext *context)
                 MatrixRoll(Random() & 0xffff);   /* MatrixRoll(Random) */
                 MatrixPitch(Random() & 0xffff);   /* MatrixPitch(Random) */
                 MatrixYaw(Random() & 0xffff);   /* MatrixYaw(Random) */
-                Func_8004a28(mtx);                       /* MatrixStore */
+                MatrixStore(mtx);                       /* MatrixStore */
                 pb  += 7;
                 mtx += 0x30;
             }
@@ -309,7 +309,7 @@ void Anim_Atalanta(AnimContext *context)
                         for (j = 0; j != 24; j++) {
                             if ((int)*(s32 *)pb > 0) {
                                 vec3 in, out;
-                                Func_8004a44(mtx);        /* MatrixLoad */
+                                MatrixLoad(mtx);        /* MatrixLoad */
                                 in.x = *(s32 *)pb;
                                 Func_80e3944(&in, &out);  /* PhysMove */
                                 out.x = (out.x >> 1) + arrow_x;
@@ -382,7 +382,7 @@ void Anim_Atalanta(AnimContext *context)
             vec3 tpos;
             if (slot < (int)STATE_CONTEXT(state)->numTargets) {
                 int yrand;
-                Func_80e396c(STATE_CONTEXT(state)->targets[slot], &tpos);
+                GetBattleActorPos2(STATE_CONTEXT(state)->targets[slot], &tpos);
                 yrand = -((Random() & 0x1f) + 0x28);
                 p->py = yrand;
                 p->px = (tpos.x + (0x50 - yrand)) >> 1;   /* signed /2 of each, summed */

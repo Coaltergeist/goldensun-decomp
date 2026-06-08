@@ -292,7 +292,7 @@
 	add	r3, #0x40
 	ldr	r0, [r7, r3]
 	str	r0, [r2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #5
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
@@ -348,7 +348,7 @@
 	lsl	r2, #1
 	add	r3, r7, r2
 	ldr	r0, [r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r5
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -381,12 +381,12 @@
 	lsl	r5, r6, #2
 	add	r5, #0x40
 	ldr	r0, [r7, r5]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	ldr	r0, [r7, r5]
 	bl	Func_80b78e4
 	ldr	r0, [r7, r5]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r0, [r7, r5]
 	bl	Func_80b6cd0
@@ -520,7 +520,7 @@
 	str	r3, [r2, #8]
 	mov	r1, r10
 	ldr	r0, [r6]
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .Lbdc84	@ 0x3ff
 	mov	r4, r9
 	ldrh	r2, [r4, #8]
@@ -648,7 +648,7 @@
 	add	r3, #0x65
 	add	r5, r7, r3
 	ldr	r0, [r5]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r0, [r5]
 	bl	Func_80b6cd0
@@ -668,7 +668,7 @@
 	mov	r3, #0xff
 	strh	r0, [r2]
 	strh	r3, [r4, #2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #7
 	ldr	r0, [r0]
 	bl	Func_80ba918
@@ -828,7 +828,7 @@
 	lsl	r2, #1
 	add	r3, r7, r2
 	ldr	r0, [r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r6
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -852,7 +852,7 @@
 	lsl	r1, #1
 	add	r3, r7, r1
 	ldr	r0, [r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r3, #1
 	mov	r6, r0
 	mov	r2, #0
@@ -1626,7 +1626,7 @@
 	ldrsh	r3, [r3, r1]
 	cmp	r3, #3
 	beq	.Lbe51a
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -2370,7 +2370,7 @@
 	ldr	r3, [r1]
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #3
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
@@ -2378,7 +2378,7 @@
 	ldr	r3, [r4]
 	mov	r1, #0
 	ldrsh	r0, [r3, r1]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x20
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed
@@ -2699,7 +2699,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lbeee0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0xff
 	and	r0, r3
 	cmp	r0, #0x98
@@ -2708,7 +2708,7 @@
 	ldr	r3, [r1]
 	strb	r5, [r3, #0x1e]
 .Lbeee0:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0x1f
 	and	r0, r3
 	cmp	r0, #0
@@ -2761,7 +2761,7 @@
 	bne	.Lbef46
 	b	.Lbf1a8
 .Lbef46:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0x1f
 	and	r0, r3
 	cmp	r0, #0
@@ -2780,7 +2780,7 @@
 	lsl	r0, #16
 	bl	__divsi3
 	mov	r5, r0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	ldr	r3, =0xffff
 	and	r0, r3
 	cmp	r5, r0
@@ -2848,7 +2848,7 @@
 .Lbf010:
 	mov	r6, #1
 .Lbf012:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0xff
 	and	r0, r3
 	cmp	r0, r5
@@ -2910,7 +2910,7 @@
 .Lbf084:
 	mov	r5, #3
 .Lbf086:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	and	r0, r5
 	cmp	r0, #0
 	bne	.Lbf0f8

@@ -26,7 +26,7 @@
 	ldr	r5, =0xe39
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -38,11 +38,11 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.La8
 .La2:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .La8:
 	mov	r0, r6
 	mov	r1, #0
@@ -57,7 +57,7 @@
 	ldr	r5, =0xe19
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -69,11 +69,11 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.Lf0
 .Lea:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .Lf0:
 	mov	r0, r6
 	mov	r1, #0
@@ -111,7 +111,7 @@
 	mov	r0, r5
 	bl	__Func_8092adc
 	bl	OvlFunc_951_2008ac8
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -121,12 +121,12 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0xe34
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_951_2008154
@@ -135,12 +135,12 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0xe35
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_951_2008178

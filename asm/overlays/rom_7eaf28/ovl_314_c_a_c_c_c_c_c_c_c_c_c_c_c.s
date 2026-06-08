@@ -27,7 +27,7 @@
 	bl	__SetFlag
 	bl	__CutsceneStart
 	ldr	r0, =0x2633
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
@@ -71,7 +71,7 @@
 	bl	__Func_8092adc
 	mov	r0, #0xd
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
@@ -114,14 +114,14 @@
 	bl	__ActorMessage
 	mov	r0, #0xd
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r0, #0xd
 	ldr	r1, =0xb333
 	ldr	r2, =0x5999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xdc
 	mov	r2, #0x9d
 	lsl	r2, #3
@@ -133,7 +133,7 @@
 	bl	__ActorMessage
 	mov	r0, #0
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0xd
 	mov	r1, #2
 	bl	__MapActor_SetAnim
@@ -146,7 +146,7 @@
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, #0xd
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 .L99a:
 	mov	r0, #0xd
 	bl	__MapActor_WaitMovement
@@ -154,7 +154,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L9ae:
 	pop	{r0}
 	bx	r0
@@ -183,7 +183,7 @@
 	mov	r1, #0
 	mov	r5, r0
 	mov	r0, r6
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, r6
 	add	r1, #0x54
 	ldrb	r3, [r1]

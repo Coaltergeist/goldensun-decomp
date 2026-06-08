@@ -88,7 +88,7 @@
 .thumb_func_start Func_80c0f98
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lc100c
 	ldr	r0, [r0]

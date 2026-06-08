@@ -53,6 +53,6 @@
 	.export_func _SetDestMap
 	.export_func _MapTransitionIn
 	.export_func _MapTransitionOut
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _Func_8091d84
 	.export_func _PlaySound

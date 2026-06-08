@@ -26,7 +26,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	bl	__Func_80929d8
@@ -113,7 +113,7 @@
 	mov	r0, #0x7b
 	bl	__PlaySound
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #1
 	bl	__Func_8091e9c
 	pop	{r0}

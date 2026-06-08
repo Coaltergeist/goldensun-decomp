@@ -1,11 +1,11 @@
-/* Cluster Func_800d130..Func_800d130 extracted from goldensun/asm/rom_9000/rom_ca6c.s.
+/* Cluster Actor_SetPos..Actor_SetPos extracted from goldensun/asm/rom_9000/rom_ca6c.s.
  *
  * Total .text for this TU = 28 bytes (= 0x1c).
  * Preserves the original ROM layout when slotted between
  * asm/rom_9000/rom_ca6c_a.o and asm/rom_9000/rom_ca6c_c.o in
  * goldensun/stage1.ld.
  */
-void Func_800d130(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3) {
+void Actor_SetPos(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3) {
     unsigned int val;
     *(unsigned int *)(arg0 + 0x10) = arg3;
     val = 0x80 << 24;

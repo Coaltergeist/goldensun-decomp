@@ -13,19 +13,19 @@
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	ldr	r5, =0xffff0000
@@ -42,7 +42,7 @@
 	mov	r0, r6
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r6
 	mov	r1, #1
 	bl	__Func_8092b08

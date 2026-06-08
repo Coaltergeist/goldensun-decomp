@@ -977,7 +977,7 @@
 	mov	r2, #0x20
 	ldr	r0, =0x60052c0
 	bl	_call_via_r6
-	bl	Func_80045e8
+	bl	GetSpritePalette
 	ldr	r3, =REG_DMA3SAD
 	ldr	r1, =0x50000a0
 	ldr	r2, =0x80000010

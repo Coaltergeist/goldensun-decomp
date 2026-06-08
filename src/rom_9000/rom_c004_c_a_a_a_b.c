@@ -1,4 +1,4 @@
-/* Cluster Func_800c408..Func_800c408 extracted from goldensun/asm/rom_9000/rom_c004_c_a_a_a.s.
+/* Cluster Actor_SetSpriteID..Actor_SetSpriteID extracted from goldensun/asm/rom_9000/rom_c004_c_a_a_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern void InitSprite(unsigned char *sprite);
 
-void Func_800c408(unsigned char *actor, int spriteID) {
+void Actor_SetSpriteID(unsigned char *actor, int spriteID) {
     if (actor != (unsigned char *)0 && (*(unsigned char *)(actor + 0x54) & 0xf) == 1) {
         unsigned char *p = *(unsigned char **)(actor + 0x50);
         if (spriteID >= 0) {

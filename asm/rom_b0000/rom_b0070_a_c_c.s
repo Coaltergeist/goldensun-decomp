@@ -575,7 +575,7 @@
 	bl	_GiveItemTo
 	ldr	r2, [sp, #4]
 	neg	r0, r2
-	bl	_Func_8079728
+	bl	_AddCoinsSpent
 	mov	r0, #1
 	bl	_Func_8079754
 	b	.Lb267a

@@ -112,7 +112,7 @@
 	ldr	r5, =.L9ddd8
 	mov	r8, r3
 	mov	r7, r0
-	bl	Func_808a8d0
+	bl	GetMapArea
 	ldrh	r4, [r5]
 	mov	r1, r4
 	lsl	r3, r1, #16

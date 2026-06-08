@@ -132,7 +132,7 @@
 	cmp	r5, #0
 	beq	.Lb96
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x55
 	mov	r3, #0

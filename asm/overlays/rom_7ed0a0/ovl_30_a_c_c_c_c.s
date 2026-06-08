@@ -4,7 +4,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_964_20080c4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_964_20099bc
 	pop	{r0}
 	bx	r0
@@ -73,7 +73,7 @@
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	str	r5, [r0, #0x6c]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}

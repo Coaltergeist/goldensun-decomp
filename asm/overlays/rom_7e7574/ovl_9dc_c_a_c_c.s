@@ -233,7 +233,7 @@
 	bl	__MapActor_SetBehavior
 	ldr	r5, =0x240d
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
 	bl	__ActorMessage
@@ -244,14 +244,14 @@
 	add	r5, #1
 	bl	__MapActor_Emote
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
 	bl	__ActorMessage
 	mov	r0, #0x3c
 	bl	__Func_8091e9c
 	bl	__MapTransitionOut
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -301,7 +301,7 @@
 	bl	__MapActor_SetBehavior
 	ldr	r6, =0x240d
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -316,7 +316,7 @@
 	add	r6, #1
 	bl	__MapActor_Emote
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r5
 	bl	__ActorMessage
@@ -325,7 +325,7 @@
 	bl	__CutsceneWait
 	mov	r0, #0x3c
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -390,7 +390,7 @@
 	bl	__Func_80925cc
 	ldr	r5, =0x241e
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
@@ -400,16 +400,16 @@
 	lsl	r1, #1
 	bl	__MapActor_Emote
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
 	add	r5, #2
 	mov	r0, r6
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
@@ -423,7 +423,7 @@
 	ldr	r5, =0x2421
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
@@ -431,16 +431,16 @@
 	mov	r1, #1
 	bl	__Func_80925cc
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
 	add	r5, #2
 	mov	r0, r6
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
@@ -454,7 +454,7 @@
 	ldr	r6, =0x2424
 	mov	r5, r0
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -465,7 +465,7 @@
 	ldr	r1, =0x101
 	bl	__MapActor_Emote
 	add	r0, r6, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -473,16 +473,16 @@
 	mov	r1, #1
 	bl	__Func_80925cc
 	add	r0, r6, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
 	add	r6, #3
 	mov	r0, r5
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -496,15 +496,15 @@
 	ldr	r6, =0x2428
 	mov	r5, r0
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r0, r5
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	add	r0, r6, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -512,16 +512,16 @@
 	mov	r1, #1
 	bl	__Func_80925cc
 	add	r0, r6, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
 	add	r6, #3
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -563,7 +563,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r0, =0x94c
 	bl	__SetFlag
 	pop	{r0}
@@ -603,7 +603,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r0, =0x949
 	bl	__SetFlag
 	pop	{r0}
@@ -639,7 +639,7 @@
 	bl	__Func_809280c
 	ldr	r5, =0x2438
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc
 	mov	r1, #0
 	bl	__ActorMessage
@@ -678,20 +678,20 @@
 	mov	r0, #0xe
 	bl	__Func_8092adc
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r1, #3
 	mov	r0, #0xe
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xe
 	bl	__ActorMessage
 	add	r0, r5, #3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc
 	mov	r1, #0
 	bl	__ActorMessage
@@ -699,21 +699,21 @@
 	mov	r0, #0xd
 	bl	__Func_80925cc
 	add	r0, r5, #4
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r1, #3
 	mov	r0, #0xe
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	add	r0, r5, #5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r1, #3
 	mov	r0, #0xe
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	mov	r0, #0xd
@@ -739,12 +739,12 @@
 	bl	__Func_809280c
 	mov	r1, #3
 	mov	r0, #0xc
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	add	r5, #6
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc
 	mov	r1, #0
 	bl	__ActorMessage
@@ -778,7 +778,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r0, =0x94a
 	bl	__SetFlag
 	pop	{r5}
@@ -820,7 +820,7 @@
 	mov	r1, #0xd
 	mov	r2, #0
 	bl	__Func_809280c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	__MapTransitionIn
 	pop	{r0}
 	bx	r0
@@ -859,7 +859,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r0, =0x94b
 	bl	__SetFlag
 	pop	{r0}
@@ -892,7 +892,7 @@
 	bl	__MapActor_Emote
 	ldr	r5, =0x240d
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc
 	mov	r1, #0
 	bl	__ActorMessage
@@ -903,7 +903,7 @@
 	add	r5, #1
 	bl	__MapActor_Emote
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__ActorMessage
@@ -912,7 +912,7 @@
 	bl	__CutsceneWait
 	mov	r0, #0x3c
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #0x89
 	lsl	r0, #2
 	bl	__SetFlag
@@ -956,7 +956,7 @@
 	bl	__Func_809280c
 	ldr	r5, =0x240d
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
@@ -967,7 +967,7 @@
 	add	r5, #1
 	bl	__MapActor_Emote
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xd
 	bl	__ActorMessage
@@ -976,7 +976,7 @@
 	bl	__CutsceneWait
 	mov	r0, #0x3c
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r0, =0x225
 	bl	__SetFlag
 	pop	{r5}

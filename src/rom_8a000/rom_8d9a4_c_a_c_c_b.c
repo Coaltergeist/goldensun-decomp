@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_8d9a4_c_a_c_c_a.o and asm/rom_8a000/rom_8d9a4_c_a_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808ec14();
+extern int GetMapActorIndex();
 extern void _Actor_SetAnim();
 extern unsigned int iwram_3001ebc;
 
@@ -14,7 +14,7 @@ void Func_808ed1c(void) {
     unsigned char *base;
     int val;
 
-    idx = Func_808ec14();
+    idx = GetMapActorIndex();
     if (idx != -1) {
         base = (unsigned char *)iwram_3001ebc;
         val = *(unsigned int *)(base + (idx << 3) + 0x11c);

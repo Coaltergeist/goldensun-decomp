@@ -73,7 +73,7 @@
 .Lc910:
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_80051d8
+	bl	MatrixSetLook
 .Lc918:
 	ldr	r3, =iwram_3001e64
 	ldr	r3, [r3]

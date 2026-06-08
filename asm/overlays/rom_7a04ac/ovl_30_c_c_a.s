@@ -69,9 +69,9 @@
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .Lb0e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}
@@ -122,7 +122,7 @@
 	strb	r3, [r7]
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0xa
 	ldrsh	r2, [r5, r3]
 	mov	r3, #2
@@ -134,7 +134,7 @@
 	bl	__Actor_SetAnim
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r8
 	mov	r1, #7
 	strb	r3, [r7]
@@ -175,7 +175,7 @@
 	str	r3, [r6, #0x14]
 	mov	r3, r10
 	strb	r3, [r7]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #1
 	b	.Lc04
 .Lc02:

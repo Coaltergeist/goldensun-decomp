@@ -20,14 +20,14 @@
 	beq	.Lbe
 	ldr	r0, =0x1525
 .Lb0:
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
 	bl	__ActorMessage
 	b	.L134
 .Lbe:
 	ldr	r0, =0x1520
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r2, #0x14
 	mov	r0, #9
 	mov	r1, #0
@@ -46,7 +46,7 @@
 	bl	__Func_8093040
 	mov	r1, #3
 	mov	r0, #0
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r0, #9
@@ -74,7 +74,7 @@
 	mov	r0, #0xb
 	mov	r1, #0
 	bl	OvlFunc_917_20092f4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_917_2008088
@@ -90,7 +90,7 @@
 	mov	r0, #0xa
 	bl	OvlFunc_917_20092f4
 	ldr	r0, =0x151c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -107,7 +107,7 @@
 	mov	r0, #0xa
 	bl	OvlFunc_917_20092f4
 	ldr	r0, =0x14eb
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -130,7 +130,7 @@
 	b	.L220
 .L1ce:
 	ldr	r0, =0x14c9
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -160,7 +160,7 @@
 	mov	r0, #0x28
 	bl	__WaitFrames
 .L220:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_917_2008158

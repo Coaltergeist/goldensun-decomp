@@ -152,7 +152,7 @@
 	lsl	r5, r7, #2
 	add	r5, #0x40
 	ldr	r0, [r6, r5]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	ldr	r0, [r6, r5]
 	bl	Func_80b78e4

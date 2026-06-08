@@ -70,7 +70,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, =.L7
 	mov	r0, r5
 	bl	__Actor_SetScript
@@ -235,7 +235,7 @@
 	ldr	r0, =0x96a
 	bl	__Func_801776c
 	mov	r0, r6
-	bl	__Func_800c4ec
+	bl	__Actor_WaitScript
 	mov	r0, r7
 	pop	{r3, r5}
 	mov	r8, r3

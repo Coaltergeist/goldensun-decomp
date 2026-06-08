@@ -151,7 +151,7 @@
 	ldr	r5, [sp, #0xc]
 	ldr	r3, [r3]
 	ldrsh	r0, [r3, r5]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r5, #0xe1
 	ldr	r0, [r0]
 	mov	r2, #0
@@ -166,7 +166,7 @@
 	ldr	r3, [r3]
 	ldrsh	r0, [r3, r1]
 	ldr	r1, [sp, #0x44]
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r0, [sp, #0x44]
 	ldr	r3, [r0]
 	lsr	r2, r3, #31
@@ -377,13 +377,13 @@
 	ldrsh	r0, [r3, r1]
 	mov	r1, r2
 	str	r2, [sp, #0x38]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	mov	r5, #0x24
 	ldrsh	r0, [r3, r5]
 	add	r5, sp, #0x78
 	mov	r1, r5
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r0, [sp, #0x38]
 	ldr	r3, [r5, #4]
 	ldr	r1, [r0, #4]
@@ -1012,7 +1012,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x4c]
 	ldr	r1, [sp, #0x14]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r3, #2
 	str	r3, [sp]
 	mov	r1, #7
@@ -1042,7 +1042,7 @@
 	ldr	r0, [sp, #0x30]
 	ldr	r3, [r0]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r7, =.Ledf04
 	ldr	r1, [sp, #0x1c]
 	ldrb	r2, [r7, r1]

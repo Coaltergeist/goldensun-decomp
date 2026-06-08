@@ -1,4 +1,4 @@
-/* Cluster Func_80d5274..Func_80d5274 extracted from goldensun/asm/rom_c9000/rom_d5258.s.
+/* Cluster Anim_PoisonGel..Anim_PoisonGel extracted from goldensun/asm/rom_c9000/rom_d5258.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_ParticleCloud(void *context, int subanim);
 
-void Func_80d5274(void *context) {
+void Anim_PoisonGel(void *context) {
     BaseAnim_ParticleCloud(context, 1);
 }

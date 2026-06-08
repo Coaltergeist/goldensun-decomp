@@ -315,7 +315,7 @@
 	bl	Func_809ba70
 	ldr	r0, [r5]
 	mov	r1, #0xa
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	bl	Random
 	mov	r1, #3
 	bl	__udivsi3

@@ -337,11 +337,11 @@
 	mov	r5, r0
 	bl	CutsceneStart
 	ldr	r0, [r6, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	ActorMessage
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8e370
 .L8e366:
 	mov	r0, r11

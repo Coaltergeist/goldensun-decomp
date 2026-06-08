@@ -5,7 +5,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r2
-	bl	Func_808ec14
+	bl	GetMapActorIndex
 	mov	r1, #1
 	neg	r1, r1
 	cmp	r0, r1

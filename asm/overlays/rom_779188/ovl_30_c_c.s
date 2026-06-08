@@ -433,7 +433,7 @@
 	mov	r3, #1
 	str	r3, [r1, r5]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	ldr	r2, [r6]
 	mov	r3, #0x3c
 	str	r3, [r2, r5]

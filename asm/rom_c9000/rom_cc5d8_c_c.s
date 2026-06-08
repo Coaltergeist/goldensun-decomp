@@ -91,7 +91,7 @@
 	ldr	r3, [r5]
 	mov	r4, #0x24
 	ldrsh	r0, [r3, r4]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r0, [r0]
 	add	r6, sp, #0x14
@@ -99,7 +99,7 @@
 	mov	r1, r6
 	mov	r2, #0x24
 	ldrsh	r0, [r3, r2]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	ldr	r3, [r3, #4]
 	cmp	r3, #0
@@ -317,7 +317,7 @@
 	mov	r1, #0x24
 	ldrsh	r0, [r3, r1]
 	mov	r1, r6
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r2, [r5]
 	ldr	r3, [r2, #0x14]
 	lsl	r3, #1
@@ -325,7 +325,7 @@
 	add	r3, #0x22
 	ldrsh	r0, [r2, r3]
 	mov	r1, r5
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r1, [r6]
 	ldr	r3, [r5]
 	sub	r3, r1

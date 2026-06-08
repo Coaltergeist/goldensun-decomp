@@ -237,7 +237,7 @@
 	mov	r0, #9
 	bl	__Func_8092adc
 	ldr	r0, =0x24da
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
 	bl	__ActorMessage
@@ -269,7 +269,7 @@
 	mov	r3, #1
 	str	r5, [sp, #4]
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Lf8c:
 	add	sp, #8
 	pop	{r5}

@@ -12,7 +12,7 @@ Exports_c0:
 	.export_func RunTasks
 	.export_func Random
 	.export_func atan2
-	.export_func Func_80045a4
+	.export_func c_sqrt
 	.export_func FastIntSqrtFP1616_RAM 
 	.export_func sin
 	.export_func cos
@@ -55,7 +55,7 @@ Exports_c0:
 	.export_func MatrixScalev
 	.export_func MatrixRotateTrans
 	.export_func MatrixRotateTransScale
-	.export_func Func_80051d8
+	.export_func MatrixSetLook
 	.export_func PhysMove
 	.export_func Func_8005208
 	.export_func Func_8005258

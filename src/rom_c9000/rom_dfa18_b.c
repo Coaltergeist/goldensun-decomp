@@ -1,4 +1,4 @@
-/* Cluster Func_80dfa18..Func_80dfa18 extracted from goldensun/asm/rom_c9000/rom_dfa18.s.
+/* Cluster Anim_BoneCharge..Anim_BoneCharge extracted from goldensun/asm/rom_c9000/rom_dfa18.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Tackle(void *context, int subanim);
 
-void Func_80dfa18(void *context) {
+void Anim_BoneCharge(void *context) {
     BaseAnim_Tackle(context, 0);
 }

@@ -9,7 +9,7 @@ extern unsigned char *_GetUnit(unsigned int arg0);
 extern void _Func_80782a0(unsigned char *base, int arg1);
 extern void Func_80bac6c(unsigned int arg0);
 extern void Func_80b7e60(unsigned int arg0);
-extern unsigned char *Func_80b7dd0(unsigned int arg0);
+extern unsigned char *GetBattleActor(unsigned int arg0);
 extern void _DeleteActor(unsigned int arg0);
 
 unsigned int Func_80bb8e8(unsigned int arg0) {
@@ -21,7 +21,7 @@ unsigned int Func_80bb8e8(unsigned int arg0) {
         _Func_80782a0(base, 0);
         Func_80bac6c(arg0);
         Func_80b7e60(arg0);
-        r5 = Func_80b7dd0(arg0);
+        r5 = GetBattleActor(arg0);
         _DeleteActor(*(unsigned int *)r5);
         *(unsigned int *)r5 = 0;
         *(unsigned short *)(r5 + 0x28) = 0;

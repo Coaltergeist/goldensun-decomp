@@ -13,7 +13,7 @@
 	mov	r6, r1
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, r6
 	bl	__Func_80929d8
@@ -571,7 +571,7 @@
 	ldr	r3, [r7, #8]
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	bl	__Func_809202c
 	ldr	r3, [r7]
 	str	r3, [r6, #8]

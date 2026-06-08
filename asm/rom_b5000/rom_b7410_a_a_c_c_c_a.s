@@ -60,7 +60,7 @@
 	b	.Lb7d46
 .Lb7bd6:
 	mov	r0, r2
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	cmp	r7, #0
 	bne	.Lb7be4
@@ -132,7 +132,7 @@
 	.call_via r3
 	str	r0, [r6, #0x18]
 	mov	r0, r5
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #9]
 	mov	r1, r8
 	lsr	r3, #1
@@ -270,7 +270,7 @@
 	cmp	r3, #0xfe
 	beq	.Lb7d9a
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.Lb7d9a

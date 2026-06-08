@@ -1,4 +1,4 @@
-/* Cluster Func_808b05c..Func_808b05c extracted from goldensun/asm/rom_8a000/rom_8ace0_a_a.s.
+/* Cluster GetEncounterGroup..GetEncounterGroup extracted from goldensun/asm/rom_8a000/rom_8ace0_a_a.s.
  *
  * Total .text for this TU = 24 bytes (= 0x18).
  * Preserves the original ROM layout when slotted between
@@ -26,7 +26,7 @@ s32 Func_808b048(s32 *arg1, s32 arg2) {
 
 extern unsigned short L9c610[] __asm__(".L9c610");
 
-unsigned short Func_808b05c(int encounterID, int group)
+unsigned short GetEncounterGroup(int encounterID, int group)
 {
     unsigned char *base;
     int idx;

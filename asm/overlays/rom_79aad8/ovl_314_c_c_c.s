@@ -49,13 +49,13 @@
 	mov	r0, r11
 	lsl	r1, #10
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xbc
 	mov	r2, #0x90
 	lsl	r1, #1
 	mov	r0, r11
 	lsl	r2, #1
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	ldr	r3, =0xcccc
 	str	r3, [r6, #0x48]
 	mov	r3, #3
@@ -140,7 +140,7 @@
 	lsl	r2, #1
 	mov	r0, r11
 	lsl	r1, #1
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, r11
 	bl	__MapActor_WaitMovement
 	mov	r0, r6

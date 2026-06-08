@@ -26,7 +26,7 @@
 	.export_func _Func_8078550
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091a58
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
@@ -34,14 +34,14 @@
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
 	.export_func _Func_8092950
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _Func_8092c40
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _Func_8091f90
 	.export_func _SetDestMap2
 	.export_func _MapTransitionIn
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _Func_808f1c0
 	.export_func _Func_808e118
 	.export_func _Func_808ba38

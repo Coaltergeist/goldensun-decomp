@@ -38,7 +38,7 @@
 	sub	r2, #0xc0
 	str	r2, [r3]
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	ldr	r0, =0x121
 	bl	__PlaySound
 	mov	r0, #1
@@ -269,7 +269,7 @@
 .L1322:
 	bl	OvlFunc_924_20090c0
 .L1326:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5, r6}
 	pop	{r0}
@@ -290,7 +290,7 @@
 	lsl	r2, #9
 	mov	r0, #0
 	lsl	r1, #10
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #1
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -330,7 +330,7 @@
 	mov	r1, #0xf8
 .L13ae:
 	lsl	r2, #2
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	b	.L13d8
 .L13b6:
 	mov	r1, #0xae
@@ -344,7 +344,7 @@
 	mov	r0, #0
 	lsl	r1, #2
 	lsl	r2, #2
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 .L13d8:
@@ -359,7 +359,7 @@
 	strb	r3, [r0]
 	ldr	r0, =OvlFunc_924_200ba64
 	bl	__StopTask
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -369,7 +369,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_924_20083a8
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_924_2009420
 	pop	{r0}
 	bx	r0
@@ -440,7 +440,7 @@
 	ldr	r0, =0x874
 	bl	__SetFlag
 .L14b0:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5, r6}
 	pop	{r0}
@@ -501,7 +501,7 @@
 	mov	r1, #9
 	mov	r2, #7
 	bl	__Func_8010560
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1552:
 	add	sp, #8
 	pop	{r5}
@@ -549,7 +549,7 @@
 	mov	r1, #9
 	mov	r2, #7
 	bl	__Func_8010560
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L15ce:
 	add	sp, #8
 	pop	{r5}

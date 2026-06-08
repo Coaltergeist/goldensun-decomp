@@ -1003,7 +1003,7 @@
 	add	r3, r2
 	lsr	r1, #16
 	ldr	r0, [r7, r3]
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 .Lb3040:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -1055,7 +1055,7 @@
 	mov	r1, r8
 	ldr	r0, [r1, r3]
 	mov	r1, #0
-	bl	_Func_800baf8
+	bl	_Sprite_SetAnimSpeed
 	mov	r0, #0x14
 	bl	WaitFrames
 	mov	r1, #0xc8
@@ -1103,7 +1103,7 @@
 	sub	r1, r0
 	lsr	r1, #16
 	ldr	r0, [r5]
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	ldr	r3, =0xb333
 	mov	r0, #3
 	str	r3, [r5, #0x2c]
@@ -1150,7 +1150,7 @@
 	mov	r1, r8
 	ldr	r0, [r1, r3]
 	mov	r1, #0
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	mov	r0, #0x14
 	bl	WaitFrames
 	ldr	r6, =0x3f5
@@ -1180,7 +1180,7 @@
 	mov	r2, r8
 	ldr	r0, [r2, r3]
 	mov	r1, #0x10
-	bl	_Func_800baf8
+	bl	_Sprite_SetAnimSpeed
 	bl	Func_80b0894
 	mov	r0, #0x1e
 	bl	WaitFrames
@@ -1430,14 +1430,14 @@
 	mov	r0, #0x14
 	bl	WaitFrames
 	bl	_MapTransitionOut
-	bl	_Func_8091e20
+	bl	_WaitMapTransition
 	mov	r0, #0x56
 	bl	_PlaySound
 	bl	Func_80b04c4
 	mov	r0, #0xa
 	bl	WaitFrames
 	bl	_MapTransitionIn
-	bl	_Func_8091e20
+	bl	_WaitMapTransition
 	mov	r0, #0x1e
 	bl	WaitFrames
 	ldr	r2, [r6]

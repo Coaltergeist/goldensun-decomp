@@ -96,7 +96,7 @@
 	mov	r0, r8
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	ldr	r3, [r7]
 	str	r3, [r6, #8]
 	ldr	r3, [r7, #8]

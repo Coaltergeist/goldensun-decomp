@@ -27,7 +27,7 @@
 	mov	r2, #0
 	ldrsh	r0, [r6, r2]
 	str	r1, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r5, r0
 	ldrb	r2, [r5]
 	mov	r3, r2
@@ -59,7 +59,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
 	str	r1, [sp]
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 	ldr	r1, [sp]
 .Lb836:
 	ldrb	r3, [r5, #4]
@@ -98,7 +98,7 @@
 	beq	.Lb8a6
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r6, r0
 	ldrb	r3, [r6]
 	cmp	r3, #0
@@ -108,7 +108,7 @@
 	bne	.Lb88e
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 .Lb88e:
 	ldrb	r3, [r6, #4]
 	strb	r3, [r5, #4]
@@ -165,7 +165,7 @@
 	add	r3, #0x28
 	mov	r0, r8
 	str	r5, [r6, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r2, #0x27
 	add	r2, r6
 	ldrb	r3, [r2]
@@ -324,7 +324,7 @@
 	beq	.Lba2a
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	cmp	r6, r3
 	bge	.Lba2a
@@ -382,7 +382,7 @@
 	ldrsh	r0, [r5, r2]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]

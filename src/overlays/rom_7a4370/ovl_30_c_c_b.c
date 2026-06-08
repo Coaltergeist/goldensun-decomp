@@ -7,33 +7,33 @@
  */
 extern void __CutsceneStart(void);
 extern int __GetFlag(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void __ActorMessage(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_917_2008248(void) {
     __CutsceneStart();
     if (__GetFlag(0x845)) {
-        __Func_8092b94(0x151f);
+        __MessageID(0x151f);
     } else {
-        __Func_8092b94(0x14c8);
+        __MessageID(0x14c8);
     }
     __ActorMessage(9, 0);
-    __Func_8091750();
+    __CutsceneEnd();
 }
 extern void __CutsceneStart(void);
 extern int __GetFlag(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void __ActorMessage(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_917_2008284(void) {
     __CutsceneStart();
     if (__GetFlag(0x845)) {
-        __Func_8092b94(0x151e);
+        __MessageID(0x151e);
     } else {
-        __Func_8092b94(0x14ec);
+        __MessageID(0x14ec);
     }
     __ActorMessage(8, 0);
-    __Func_8091750();
+    __CutsceneEnd();
 }

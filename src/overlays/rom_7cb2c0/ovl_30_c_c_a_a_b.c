@@ -7,19 +7,19 @@
  */
 extern void __CutsceneStart(void);
 extern int __GetFlag(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void __Func_8093054(int, int);
 extern void __ActorMessage(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_945_20088a8(void) {
     __CutsceneStart();
     if (__GetFlag(0x925)) {
-        __Func_8092b94(0x1e19);
+        __MessageID(0x1e19);
         __Func_8093054(0xa, 0);
     } else {
-        __Func_8092b94(0x1d50);
+        __MessageID(0x1d50);
         __ActorMessage(0xa, 0);
     }
-    __Func_8091750();
+    __CutsceneEnd();
 }

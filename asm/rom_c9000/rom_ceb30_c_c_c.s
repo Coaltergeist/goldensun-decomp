@@ -84,7 +84,7 @@
 	add	r5, r0, r2
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r6, [r0]
 	ldr	r0, [r3, #8]
@@ -196,7 +196,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x2c]
 	ldr	r1, [sp, #0x18]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r6, #0xd3
 	ldr	r0, [sp, #0x34]
 	lsl	r6, #7
@@ -242,7 +242,7 @@
 	ldr	r1, [sp, #0x10]
 	ldr	r3, [r5]
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r0, [r0]
 	ldr	r1, [sp, #0x10]

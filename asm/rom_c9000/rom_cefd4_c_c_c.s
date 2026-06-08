@@ -61,7 +61,7 @@
 	mov	r4, #0x24
 	ldrsh	r0, [r3, r4]
 	mov	r1, r9
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	mov	r3, r10
 	cmp	r3, #0
 	bne	.Lcf0bc

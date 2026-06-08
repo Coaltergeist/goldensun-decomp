@@ -4,10 +4,10 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1338
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xd
 	bl	OvlFunc_898_200890c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_898_2008a2c
@@ -27,7 +27,7 @@
 	strh	r3, [r5]
 	bl	__CutsceneStart
 	ldr	r0, =0x1339
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
@@ -58,7 +58,7 @@
 	mov	r0, #1
 	strh	r7, [r6, #6]
 	bl	__WaitFrames
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldrh	r2, [r5]
 	mov	r3, #1
 	and	r3, r2
@@ -86,7 +86,7 @@
 	strh	r3, [r5]
 	bl	__CutsceneStart
 	ldr	r0, =0x133b
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	__MapActor_SetAnim
@@ -101,7 +101,7 @@
 	strh	r2, [r6, #6]
 	mov	r0, #1
 	bl	__WaitFrames
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.Lb28
 
 	.pool_aligned
@@ -122,7 +122,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x133c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -150,7 +150,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_898_2008b3c
@@ -159,7 +159,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x133f
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #2
@@ -184,7 +184,7 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_898_2008b98
@@ -193,7 +193,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1342
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x13
 	mov	r1, #0
 	bl	__MapActor_SetAnim
@@ -225,7 +225,7 @@
 	mov	r3, #1
 	strh	r3, [r2]
 .Lc40:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_898_2008bec
@@ -234,20 +234,20 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x137f
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r2, #2
 	mov	r0, #0x14
 	mov	r1, #0
 	bl	OvlFunc_898_200973c
 	mov	r1, #3
 	mov	r0, #0x14
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #0x14
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_898_2008c54

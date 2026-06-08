@@ -13,7 +13,7 @@
 	mov	r0, #0x12
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0xcc
 	mov	r1, #0xd8
 	lsl	r2, #1
@@ -29,19 +29,19 @@
 	mov	r1, #6
 	mov	r2, #0
 	mov	r0, #0x12
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r1, #6
 	mov	r2, #0
 	mov	r0, #0x12
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r1, #6
 	mov	r2, #0
 	mov	r0, #0x12
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r2, #0xc4
@@ -58,7 +58,7 @@
 	bl	__Func_8092adc
 	ldr	r0, =0x858
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_901_2008d84
@@ -117,7 +117,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1342
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
 	bl	__MapActor_SetAnim
@@ -151,7 +151,7 @@
 	mov	r3, #1
 	strh	r3, [r2]
 .Leea:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_901_2008e90
@@ -165,7 +165,7 @@
 	ldr	r0, =0x29dc
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_901_2008f00

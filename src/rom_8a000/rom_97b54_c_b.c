@@ -1,4 +1,4 @@
-/* Cluster Func_80999e4..Func_80999e4 extracted from goldensun/asm/rom_8a000/rom_97b54_c.s.
+/* Cluster Field_Douse_Target..Field_Douse_Target extracted from goldensun/asm/rom_8a000/rom_97b54_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void Field_Douse(void);
 
-void Func_80999e4(void) {
+void Field_Douse_Target(void) {
     Field_Douse();
 }

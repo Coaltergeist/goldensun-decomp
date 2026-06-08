@@ -1,4 +1,4 @@
-/* Cluster Func_801964c..Func_801964c extracted from goldensun/asm/rom_15000/rom_1908c.s.
+/* Cluster DecompressString2..DecompressString2 extracted from goldensun/asm/rom_15000/rom_1908c.s.
  *
  * Total .text for this TU = 16 bytes (= 0x10).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void DecompressString(unsigned int param_1, unsigned int param_2, int param_3);
 
-void Func_801964c(unsigned int param_1, unsigned int param_2) {
+void DecompressString2(unsigned int param_1, unsigned int param_2) {
     DecompressString(param_1, param_2, 0x7fffffff);
 }

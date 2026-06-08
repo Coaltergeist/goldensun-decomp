@@ -1,4 +1,4 @@
-/* Cluster Func_809ae58..Func_809ae58 extracted from goldensun/asm/rom_8a000/rom_9ad70_a.s.
+/* Cluster Field_Catch_Target..Field_Catch_Target extracted from goldensun/asm/rom_8a000/rom_9ad70_a.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void Field_Catch(void);
 
-void Func_809ae58(void) {
+void Field_Catch_Target(void) {
     Field_Catch();
 }

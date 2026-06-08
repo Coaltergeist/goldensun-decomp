@@ -219,7 +219,7 @@
 	ldr	r3, [r7, #8]
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	bl	__Func_809202c
 	ldr	r3, [r7]
 	str	r3, [r6, #8]
@@ -844,7 +844,7 @@
 	mov	r2, r5
 	mov	r0, #0
 	mov	r1, r6
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #8
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -906,7 +906,7 @@
 	mov	r0, #0
 	ldr	r1, =0x4ccc
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r2, =.L31f0
 	mov	r1, r8
 	lsl	r3, r1, #2
@@ -939,7 +939,7 @@
 	mov	r2, #0
 	str	r2, [r0, #0x6c]
 	mov	r0, r7
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
 	bl	__PlaySound
@@ -1247,7 +1247,7 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xe
 	bl	__Func_80929d8
@@ -1293,7 +1293,7 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	bl	__Func_80929d8

@@ -4,27 +4,27 @@
 
 	.global	Data_8013624
 Data_8013624:
-	.word	Func_800d654
-	.word	Func_800d674
+	.word	ActorCmd_Wait
+	.word	ActorCmd_WaitMovement
 	.word	ActorCmd_SetPos
 	.word	ActorCmd_TravelTo
 	.word	ActorCmd_Travel
 	.word	ActorCmd_FaceTarget
-	.word	Func_800daa0
+	.word	ActorCmd_FollowTarget
 	.word	ActorCmd_Unused
 	.word	ActorCmd_Wander
 	.word	ActorCmd_Unk9
 	.word	ActorCmd_FollowTargetWait
 	.word	ActorCmd_Camera
 	.word	ActorCmd_Loop
-	.word	Func_800d760
+	.word	ActorCmd_Goto
 	.word	ActorCmd_GotoIfNZ
 	.word	ActorCmd_GotoIfZ
-	.word	Func_800d7e8
+	.word	ActorCmd_Stop
 	.word	ActorCmd_GetFlag
 	.word	ActorCmd_SetFlag
 	.word	ActorCmd_ClearFlag
-	.word	Func_800d880
+	.word	ActorCmd_ToggleFlag
 	.word	ActorCmd_SetAttr
 	.word	ActorCmd_IncAttr
 	.word	ActorCmd_CmpAttr
@@ -33,68 +33,68 @@ Data_8013624:
 	.word	ActorCmd_Player_World
 	.word	Func_800d8e8
 	.word	ActorCmd_Anim
-	.word	Func_800d8f4
+	.word	ActorCmd_Nop
 	.word	ActorCmd_Sound
 	.word	ActorCmd_SetScript
-	.word	Func_800ca44
-	.word	Func_800ca58
+	.word	ActorCmd_Hide
+	.word	ActorCmd_Show
 	.word	ActorCmd_CallNative
-	.word	Func_800f7dc
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
-	.word	Func_800d7e8
+	.word	ActorCmd_Camera2
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
+	.word	ActorCmd_Stop
 	.ssize	Data_8013624
 
 	.global	Data_80136e0
 Data_80136e0:
-	.word	Func_800e220
-	.word	Func_800e24c
-	.word	Func_800e280
-	.word	Func_800e280
-	.word	Func_800e280
-	.word	Func_800e2b0
-	.word	Func_800e2dc
-	.word	Func_800e308
+	.word	ActorAttrOp_script
+	.word	ActorAttrOp_scriptPos
+	.word	ActorAttrOp_facing
+	.word	ActorAttrOp_facing
+	.word	ActorAttrOp_facing
+	.word	ActorAttrOp_x
+	.word	ActorAttrOp_y
+	.word	ActorAttrOp_z
 	.word	ActorAttrOp_width
-	.word	Func_800e364
-	.word	Func_800e390
-	.word	Func_800e390
-	.word	Func_800e3bc
-	.word	Func_800e3e8
-	.word	Func_800e414
-	.word	Func_800e440
-	.word	Func_800e46c
-	.word	Func_800e498
-	.word	Func_800e4c4
-	.word	Func_800e4f0
-	.word	Func_800e51c
-	.word	Func_800e548
-	.word	Func_800e574
-	.word	Func_800e5a0
-	.word	Func_800e5cc
-	.word	Func_800e5f8
-	.word	Func_800e634
-	.word	Func_800e670
-	.word	Func_800e6ac
-	.word	Func_800e6e4
-	.word	Func_800e720
-	.word	Func_800e75c
-	.word	Func_800e798
-	.word	Func_800e7d4
+	.word	ActorAttrOp_scaleX
+	.word	ActorAttrOp_scaleY
+	.word	ActorAttrOp_scaleY
+	.word	ActorAttrOp_motionX
+	.word	ActorAttrOp_motionY
+	.word	ActorAttrOp_motionZ
+	.word	ActorAttrOp_speed
+	.word	ActorAttrOp_accel
+	.word	ActorAttrOp_prevPosX
+	.word	ActorAttrOp_prevPosY
+	.word	ActorAttrOp_prevPosZ
+	.word	ActorAttrOp_bounce
+	.word	ActorAttrOp_gravity
+	.word	ActorAttrOp_floorPos
+	.word	ActorAttrOp_unk4C
+	.word	ActorAttrOp_sprite
+	.word	ActorAttrOp_unk54
+	.word	ActorAttrOp_unk55
+	.word	ActorAttrOp_unk56
+	.word	ActorAttrOp_scriptVar
+	.word	ActorAttrOp_unk58
+	.word	ActorAttrOp_unk59
+	.word	ActorAttrOp_unk5A
+	.word	ActorAttrOp_unk5B
+	.word	ActorAttrOp_unk5D
 	.word	ActorAttrOp_waitTimer
 	.word	ActorAttrOp_unk64
 	.word	ActorAttrOp_unk66
-	.word	Func_800e8d0
-	.word	Func_800e8fc
-	.word	Func_800e928
-	.word	Func_800e964
+	.word	ActorAttrOp_extra
+	.word	ActorAttrOp_updateFn
+	.word	ActorAttrOp_unk62
+	.word	ActorAttrOp_unk63
 
 	.ssize	Data_80136e0

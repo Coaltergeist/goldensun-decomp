@@ -20,7 +20,7 @@
 	ldr	r3, [r5, #0xc]
 	bl	OvlFunc_914_2008608
 .La20:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}
@@ -42,7 +42,7 @@
 	mov	r1, #0
 	mov	r0, #0xb5
 	bl	__Func_8091a58
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_914_2008a2c

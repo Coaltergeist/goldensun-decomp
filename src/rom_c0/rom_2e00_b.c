@@ -23,7 +23,7 @@ extern void InitRAMLib(void);
 extern void SetIntrHandler(u32 intrNo, u32 vCount, intrfunc_t *handler);
 extern void SetRAMBuildDate(void);
 extern void _GameStart(int a1);
-extern void _Func_80f9438(void);
+extern void _InitSoundEngine(void);
 extern void VBlank(void);
 
 extern s32 gDMATaskCount;
@@ -51,7 +51,7 @@ void AgbMain(void) {
     REG_DISPCNT = 0x140;
     SetIntrHandler(0, 1, VBlank);
     SET_IO(REG_KEYCNT, 0xC00F);
-    _Func_80f9438();
+    _InitSoundEngine();
     ClearSprites();
     ClearTasks();
     gIWRAMHeap_end = 0;

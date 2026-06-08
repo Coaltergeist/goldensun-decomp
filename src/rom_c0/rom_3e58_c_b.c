@@ -1,4 +1,4 @@
-/* Cluster Func_80040d0..Func_80040d0 extracted from goldensun/asm/rom_c0/rom_3e58_c.s.
+/* Cluster UploadSprite2..UploadSprite2 extracted from goldensun/asm/rom_c0/rom_3e58_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -8,6 +8,6 @@
 extern int UploadSpriteGFX(int slot, unsigned int size, void *gfx);
 extern unsigned short gSpriteSlots[];
 
-int Func_80040d0(unsigned int param_1, void *param_2) {
+int UploadSprite2(unsigned int param_1, void *param_2) {
     return UploadSpriteGFX(param_1, gSpriteSlots[param_1 << 1], param_2);
 }

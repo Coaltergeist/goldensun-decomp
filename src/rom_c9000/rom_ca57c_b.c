@@ -1,4 +1,4 @@
-/* Cluster Func_80ca57c..Func_80ca57c extracted from goldensun/asm/rom_c9000/rom_ca57c.s.
+/* Cluster Anim_NumbingSting..Anim_NumbingSting extracted from goldensun/asm/rom_c9000/rom_ca57c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Bite_Sting(void *context, int subanim);
 
-void Func_80ca57c(void *context) {
+void Anim_NumbingSting(void *context) {
     BaseAnim_Bite_Sting(context, 6);
 }

@@ -1,4 +1,4 @@
-/* Cluster Func_800b798..Func_800b798 extracted from goldensun/asm/rom_9000/rom_b798.s.
+/* Cluster GetCachedSpriteGFX..GetCachedSpriteGFX extracted from goldensun/asm/rom_9000/rom_b798.s.
  *
  * Total .text for this TU = 40 bytes (= 0x28).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001e68;
 
-unsigned char **Func_800b798(unsigned int spriteID)
+unsigned char **GetCachedSpriteGFX(unsigned int spriteID)
 {
     unsigned int *base;
     unsigned char *r2;

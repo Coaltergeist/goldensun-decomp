@@ -322,8 +322,8 @@
 	bl	__SetFlag
 	mov	r0, #0xe6
 	bl	__Func_8078a08
-	bl	__Func_808acc4
-	bl	__Func_8091750
+	bl	__PlayMapMusic
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3}
 	mov	r8, r3
@@ -338,7 +338,7 @@
 	ldr	r0, =0x17e1
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_2009f04
@@ -349,7 +349,7 @@
 	ldr	r0, =0x17e2
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_2009f20
@@ -360,7 +360,7 @@
 	ldr	r0, =0x17e3
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_2009f3c
@@ -395,7 +395,7 @@
 	mov	r3, #1
 	strh	r3, [r2]
 .L1f98:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_2009f58
@@ -610,7 +610,7 @@
 	mov	r1, #0x30
 	bl	__Actor_SetAnimSpeed
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	ldr	r3, =OvlFunc_922_200a014
 	str	r3, [r6, #0x6c]
 	b	.L21c6
@@ -646,7 +646,7 @@
 	ldr	r2, [r5, #4]
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	ldr	r3, [sp]
 	cmp	r7, r3
 	bne	.L220a
@@ -677,7 +677,7 @@
 	mov	r3, r9
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #2
 	bl	__WaitFrames
 	b	.L20b4
@@ -696,7 +696,7 @@
 .L2220:
 	mov	r0, #0xa
 	bl	__WaitFrames
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L222a:
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}

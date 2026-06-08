@@ -493,7 +493,7 @@
 	strb	r2, [r1, #9]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Actor_SetAnim

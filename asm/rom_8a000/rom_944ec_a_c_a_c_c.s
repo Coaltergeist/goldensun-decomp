@@ -213,13 +213,13 @@
 	mov	r0, r5
 	mov	r1, #4
 	mov	r2, #0xf
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
 	bl	_PlaySound
 	mov	r1, #4
 	mov	r2, #0xf
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x1e
 	bl	WaitFrames
 	ldr	r3, =Func_809592c
@@ -229,7 +229,7 @@
 	mov	r0, r5
 	mov	r1, #8
 	mov	r2, #0x16
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x8c
 	bl	_PlaySound
 	mov	r5, #0x80
@@ -290,7 +290,7 @@
 	bl	Func_809ba70
 	ldr	r0, [r5]
 	mov	r1, #0xb
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	mov	r3, #0x80
 	lsl	r3, #8
 	str	r3, [r5, #0x28]
@@ -714,19 +714,19 @@
 	mov	r1, #3
 	mov	r2, #0xe
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
 	bl	_PlaySound
 	mov	r1, #5
 	mov	r2, #0x10
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
 	bl	_PlaySound
 	mov	r1, #7
 	mov	r2, #0x12
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x14
 	bl	WaitFrames
 	ldr	r3, [r6, #0x50]
@@ -782,7 +782,7 @@
 	bl	_Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r1, r10
 	ldr	r0, [r5, #0x50]
 	bl	Func_8096c48
@@ -876,7 +876,7 @@
 	bl	Func_809ba70
 	ldr	r0, [r6]
 	mov	r1, #9
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	sub	r7, #1
 	mov	r0, #1
 	bl	WaitFrames

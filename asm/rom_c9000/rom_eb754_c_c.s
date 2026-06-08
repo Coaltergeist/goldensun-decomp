@@ -34,9 +34,9 @@
 	add	r3, #2
 	strh	r2, [r3]
 	mov	r1, r5
-	ldr	r0, =Func_80ec0e0
+	ldr	r0, =SetBG2Normal
 	bl	StartTask
-	ldr	r2, =Func_80ec0f0
+	ldr	r2, =SetBG2Wide
 	mov	r0, #2
 	mov	r1, #0
 	bl	SetIntrHandler
@@ -611,7 +611,7 @@
 	mov	r4, r10
 	cmp	r4, #0x98
 	bne	.Lec63a
-	ldr	r2, =Func_80ec0f0
+	ldr	r2, =SetBG2Wide
 	mov	r0, #2
 	mov	r1, #0x60
 	bl	SetIntrHandler
@@ -1189,7 +1189,7 @@
 	mov	r0, #2
 	bl	SetIntrHandler
 	bl	Func_80d67dc
-	ldr	r0, =Func_80ec0e0
+	ldr	r0, =SetBG2Normal
 	bl	StopTask
 	ldr	r2, =REG_WIN0H
 	ldr	r3, .Lecac4	@ 0xf0
@@ -1267,7 +1267,7 @@
 	ldrsh	r0, [r3, r4]
 	mov	r1, r6
 	str	r4, [sp, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r6]
 	lsr	r2, r3, #31
 	add	r3, r2

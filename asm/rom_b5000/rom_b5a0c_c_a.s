@@ -240,7 +240,7 @@
 	cmp	r3, r9
 	bne	.Lb5d18
 	ldrb	r0, [r7, #2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	bne	.Lb5d18
 	ldrb	r3, [r7, #1]

@@ -1791,9 +1791,9 @@
 	mov	r1, #4
 	mov	r2, #0
 	mov	r0, r10
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r1, r5
 	mov	r2, r11
 	mov	r0, r6
@@ -1803,9 +1803,9 @@
 	mov	r1, #4
 	mov	r2, #0
 	mov	r0, r10
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r1, r5
 	mov	r2, r11
 	mov	r0, r6
@@ -1815,9 +1815,9 @@
 	mov	r1, #4
 	mov	r2, #0
 	mov	r0, r10
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, #0x14
 	bl	WaitFrames
 	ldr	r3, [r6, #0x50]
@@ -1899,7 +1899,7 @@
 	bl	_Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r0, [r5, #0x50]
 	ldr	r1, [sp, #0xc]
 	bl	Func_8096c48
@@ -1923,7 +1923,7 @@
 	mov	r0, r10
 	mov	r1, #0xc
 	mov	r2, #0
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x18
 	bl	WaitFrames
 	ldr	r2, [sp, #4]
@@ -1948,7 +1948,7 @@
 	mov	r2, #8
 	orr	r3, r2
 	strb	r3, [r1, #9]
-	bl	Func_8091750
+	bl	CutsceneEnd
 	add	sp, #0x30
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -2049,7 +2049,7 @@
 	mov	r2, r8
 	bl	_Func_8021228
 	bl	Func_808c4c0
-	bl	Func_8091750
+	bl	CutsceneEnd
 .L9566e:
 	pop	{r3, r5}
 	mov	r8, r3
@@ -2136,7 +2136,7 @@
 	ldr	r1, [r5, #8]
 	ldr	r2, [r5, #0xc]
 	ldr	r3, [r5, #0x10]
-	bl	_Func_800d130
+	bl	_Actor_SetPos
 	b	.L9573a
 .L95722:
 	mov	r1, r9
@@ -2148,7 +2148,7 @@
 	ldr	r0, =0xffe00000
 	add	r3, r0
 	mov	r0, r6
-	bl	_Func_800d130
+	bl	_Actor_SetPos
 .L9573a:
 	mov	r0, r6
 	mov	r1, #1

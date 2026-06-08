@@ -5,10 +5,10 @@
  * asm/overlays/rom_7b2078/ovl_314_a_a.o and asm/overlays/rom_7b2078/ovl_314_a_c.o in
  * goldensun/overlays/rom_7b2078/overlay.ld.
  */
-extern void __Func_800c528();
+extern void __Actor_SetSpriteFlags();
 
 unsigned int OvlFunc_926_2008314(void) {
     int r0_in;
-    __Func_800c528(r0_in, 0);
+    __Actor_SetSpriteFlags(r0_in, 0);
     return 0;
 }

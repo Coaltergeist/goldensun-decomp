@@ -120,7 +120,7 @@
 	strb	r3, [r2]
 	mov	r0, r7
 	str	r5, [r6, #0x50]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #9]
 	lsr	r3, #1
 	strh	r3, [r6, #0x20]
@@ -170,7 +170,7 @@
 	cmp	r5, #0
 	beq	.Lc220
 	mov	r0, r7
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #9]
 	lsr	r3, #1
 	mov	r2, r8
@@ -194,7 +194,7 @@
 	mov	r1, r9
 	ldr	r2, [sp]
 	mov	r3, r11
-	bl	Func_800d130
+	bl	Actor_SetPos
 	ldr	r3, =.L1358c
 	str	r3, [r6]
 	mov	r3, #0x80
@@ -348,7 +348,7 @@
 .Lc360:
 	ldr	r0, [r0, #0x50]
 	mov	r1, r7
-	bl	Func_800baf8
+	bl	Sprite_SetAnimSpeed
 	b	.Lc380
 .Lc36a:
 	ldr	r5, [r0, #0x50]
@@ -358,7 +358,7 @@
 	cmp	r0, #0
 	beq	.Lc37a
 	mov	r1, r7
-	bl	Func_800baf8
+	bl	Sprite_SetAnimSpeed
 .Lc37a:
 	sub	r6, #1
 	cmp	r6, #0
@@ -395,7 +395,7 @@
 	bl	Sprite_SetAnim
 	ldr	r0, [r5, #0x50]
 	mov	r1, r10
-	bl	Func_800baf8
+	bl	Sprite_SetAnimSpeed
 	b	.Lc3e0
 .Lc3c0:
 	ldr	r6, [r5, #0x50]
@@ -409,7 +409,7 @@
 	bl	Sprite_SetAnim
 	mov	r0, r5
 	mov	r1, r10
-	bl	Func_800baf8
+	bl	Sprite_SetAnimSpeed
 .Lc3da:
 	sub	r7, #1
 	cmp	r7, #0

@@ -164,7 +164,7 @@
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #1
 	add	r7, sp, #0x10
 	str	r3, [r7]
@@ -240,7 +240,7 @@
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	add	sp, #0x38
 	pop	{r3, r5}
 	mov	r8, r3

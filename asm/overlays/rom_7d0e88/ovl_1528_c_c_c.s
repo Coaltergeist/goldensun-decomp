@@ -341,7 +341,7 @@
 	bl	__CopyMapTiles
 	mov	r0, #0x14
 	bl	__CutsceneWait
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L2472:
 	add	sp, #8
 	pop	{r5}
@@ -367,7 +367,7 @@
 	mov	r3, #1
 	mov	r0, #2
 	bl	OvlFunc_947_2008528
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -416,7 +416,7 @@
 	lsl	r0, #2
 	bl	__SetFlag
 .L252a:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5, r6}
 	pop	{r0}
@@ -447,7 +447,7 @@
 	bl	OvlFunc_947_20083a8
 	bl	OvlFunc_947_200a4cc
 .L2572:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}

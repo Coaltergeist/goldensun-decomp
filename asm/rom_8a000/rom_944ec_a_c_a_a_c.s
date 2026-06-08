@@ -183,7 +183,7 @@
 	mov	r1, #0xc
 	mov	r2, #0x16
 	mov	r0, r6
-	bl	Func_8092560
+	bl	MapActor_Jump
 	ldr	r3, [r7, #8]
 	mov	r6, sp
 	str	r3, [r6]
@@ -217,7 +217,7 @@
 	sub	r1, r0
 	lsr	r1, #16
 	ldr	r0, [r5]
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	bl	Random
 	mov	r1, #3
 	bl	__udivsi3

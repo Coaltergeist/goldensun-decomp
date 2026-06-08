@@ -7,7 +7,7 @@ Exports_15000:
 	.export_func Func_8016018
 	.export_func CreateUIBox
 	.export_func CloseUIBox
-	.export_func Func_801964c
+	.export_func DecompressString2
 	.export_func DecompressString
 	.export_func Func_801965c
 	.export_func Func_8017658
@@ -27,7 +27,7 @@ Exports_15000:
 	.export_func Func_801e9d4
 	.export_func Func_801ea08
 	.export_func SetTextColor
-	.export_func Func_801e738
+	.export_func SetTextBold
 	.export_func Func_801eadc
 	.export_func Func_801eb64
 	.export_func Func_801ec6c

@@ -6,9 +6,9 @@
  * goldensun/overlays/rom_7e7574/overlay.ld.
  */
 extern void OvlFunc_959_2009b24(int a);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_959_2009650(void) {
     OvlFunc_959_2009b24(0x12);
-    __Func_8091750();
+    __CutsceneEnd();
 }

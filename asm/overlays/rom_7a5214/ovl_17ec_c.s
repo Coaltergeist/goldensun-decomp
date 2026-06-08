@@ -85,7 +85,7 @@
 	add	r0, #0x55
 	strb	r5, [r0]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0xcc
 	bl	__PlaySound
 	mov	r0, #0
@@ -177,7 +177,7 @@
 	mov	r3, #0x80
 	lsl	r3, #7
 	str	r3, [r0, #0x44]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x44
 	pop	{r3, r5}
 	mov	r8, r3

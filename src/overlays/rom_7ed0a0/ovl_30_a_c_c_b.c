@@ -9,7 +9,7 @@ extern void __CutsceneStart(void);
 extern void __MapActor_SetAnim(int a, int b);
 extern int __GetFlag(int id);
 extern void __Func_801776c(int id, int b);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_964_2009970(void) {
     __CutsceneStart();
@@ -19,5 +19,5 @@ void OvlFunc_964_2009970(void) {
     } else {
         __Func_801776c(0x2689, 1);
     }
-    __Func_8091750();
+    __CutsceneEnd();
 }

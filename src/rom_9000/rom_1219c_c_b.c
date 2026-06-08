@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int *iwram_3001e60;
-extern void _Func_8185008(unsigned int arg0);
+extern void _GetSpriteInfo(unsigned int arg0);
 extern void InitSpriteLayer(unsigned int layer);
 
 void Func_8012de8(unsigned int arg0, unsigned int arg1)
@@ -16,7 +16,7 @@ void Func_8012de8(unsigned int arg0, unsigned int arg1)
     int i;
 
     p = (unsigned char *)iwram_3001e60;
-    _Func_8185008(arg1);
+    _GetSpriteInfo(arg1);
     off = ((arg0 & 3) << 2) + 0x28;
     for (i = 9; i >= 0; i--) {
         unsigned short *t = *(unsigned short **)(p + off);

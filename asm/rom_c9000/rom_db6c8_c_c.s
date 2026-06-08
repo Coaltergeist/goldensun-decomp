@@ -203,7 +203,7 @@
 	mov	r1, r5
 	mov	r0, r5
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r0, r9
 	cmp	r0, #2
 	bne	.Ldb888

@@ -150,7 +150,7 @@
 	add	r3, r2
 	ldr	r3, [r3]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r3, #0xa0
 	ldr	r2, [r0]
 	lsl	r3, #12
@@ -1386,7 +1386,7 @@
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r7, =ewram_2010e00
 	mov	r1, #0
 	mov	r2, #0x3f
@@ -3163,7 +3163,7 @@
 	mov	r1, r11
 	add	r1, #0xc
 	mov	r0, r11
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r2, [sp, #8]
 	cmp	r2, #0x41
 	bhi	.Le8eb4
@@ -3539,7 +3539,7 @@
 	ldr	r3, [r5]
 	mov	r1, #0x24
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r5, #0xe1
 	mov	r2, #0
 	lsl	r5, #7
@@ -3599,7 +3599,7 @@
 	ldrsh	r0, [r3, r1]
 	mov	r1, r2
 	str	r2, [sp, #0x18]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Task_BlitAnim
@@ -3650,7 +3650,7 @@
 	ldr	r3, [r5]
 	ldr	r1, [sp, #0x10]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	mov	r3, r9
 	sub	r3, #6
 	cmp	r3, #5
@@ -3795,7 +3795,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x1c]
 	ldr	r1, [sp, #0xc]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r2, r9
 	cmp	r2, #3
 	ble	.Le93e8
@@ -3971,7 +3971,7 @@
 	str	r2, [sp, #0x20]
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r6, =0x7828
 	ldr	r0, [r0]
 	mov	r3, #1
@@ -4591,7 +4591,7 @@
 	mov	r4, #0x24
 	ldrsh	r0, [r3, r4]
 	mov	r1, r5
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r3, [r5]
 	lsr	r2, r3, #31
 	add	r3, r2

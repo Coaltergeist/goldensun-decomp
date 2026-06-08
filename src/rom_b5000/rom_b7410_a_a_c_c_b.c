@@ -5,7 +5,7 @@
  * asm/rom_b5000/rom_b7410_a_a_c_c_a.o and asm/rom_b5000/rom_b7410_a_a_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int *Func_80b7dd0(void);
+extern unsigned int *GetBattleActor(void);
 extern void _DeleteSprite(void);
 extern unsigned int Func_80b7f70(unsigned int a, unsigned int b);
 
@@ -14,7 +14,7 @@ void Func_80b7b30(void) {
     unsigned int r5;
     unsigned int r6;
 
-    actor = Func_80b7dd0();
+    actor = GetBattleActor();
     if (actor == (unsigned int *)0) {
         return;
     }

@@ -124,12 +124,12 @@
 	beq	.L9b7ac
 	mov	r0, r10
 	mov	r1, #2
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	b	.L9b7b4
 .L9b7ac:
 	mov	r0, r10
 	mov	r1, #1
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 .L9b7b4:
 	mov	r0, r10
 	mov	r1, #0

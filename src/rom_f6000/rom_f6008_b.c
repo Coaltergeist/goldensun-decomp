@@ -1,4 +1,4 @@
-/* Cluster Func_80f6008..Func_80f6008 extracted from goldensun/asm/rom_f6000/rom_f6008.s.
+/* Cluster StartLuckyWheels..StartLuckyWheels extracted from goldensun/asm/rom_f6000/rom_f6008.s.
  *
  * Total .text for this TU = 48 bytes (= 0x30).
  * Preserves the original ROM layout when slotted between
@@ -11,7 +11,7 @@ extern unsigned int gRNGState;
 extern void _PlaySound(int);
 extern void LuckyWheelsMain(void);
 
-int Func_80f6008(void)
+int StartLuckyWheels(void)
 {
     *(volatile unsigned short *)0x04000000 = 0x40;
     gRNGState = gState[1];

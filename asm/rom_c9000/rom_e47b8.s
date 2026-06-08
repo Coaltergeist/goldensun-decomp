@@ -350,14 +350,14 @@
 	ldrsh	r0, [r3, r1]
 	mov	r1, r2
 	str	r2, [sp, #0x3c]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
 	mov	r3, sp
 	add	r3, #0xac
 	mov	r1, r3
 	str	r3, [sp, #0x38]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	mov	r1, sp
 	ldr	r0, [r3, #4]
@@ -376,7 +376,7 @@
 	str	r3, [r2]
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r1, #0xe1
 	ldr	r7, [r0]
 	ldr	r0, [sp, #0x5c]
@@ -447,7 +447,7 @@
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x38]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r1, [sp, #0x38]
 	ldr	r3, [r1]
 	lsr	r2, r3, #31
@@ -584,7 +584,7 @@
 	ldr	r0, [sp, #0x50]
 	mov	r1, r0
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	add	r1, sp, #0x94
 	mov	r0, r1
 	mov	r1, r8
@@ -819,7 +819,7 @@
 	cmp	r5, #0x18
 	bne	.Le4f70
 	ldr	r0, [sp, #0x64]
-	bl	Func_80d52a4
+	bl	Anim_MysticFlame
 .Le4f70:
 	ldr	r0, [sp, #0x60]
 	cmp	r0, #0x1a
@@ -884,7 +884,7 @@
 	ldr	r3, [r3]
 	mov	r5, #0x24
 	ldrsh	r0, [r3, r5]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	str	r0, [sp, #0x1c]
 	mov	r0, sp
@@ -1283,7 +1283,7 @@
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x38]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r0, [sp, #0x38]
 	ldr	r3, [r0]
 	lsr	r2, r3, #31
@@ -1506,7 +1506,7 @@
 	ldr	r1, [sp, #0x50]
 	ldr	r0, [sp, #0x50]
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r0, [sp, #0x54]
 	cmp	r0, #3
 	ble	.Le5608
@@ -1672,7 +1672,7 @@
 	add	r5, r0, r1
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r0, [r0]
 	mov	r8, r0
@@ -3476,7 +3476,7 @@
 	mov	r0, #0x2e
 	bl	gfree
 	ldr	r0, [sp, #0x64]
-	bl	Func_80d9ac4
+	bl	Anim_Impair
 	b	.Le65f8
 .Le65c4:
 	ldr	r1, [sp, #0x14]

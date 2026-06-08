@@ -4,7 +4,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x156d
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -13,7 +13,7 @@
 	lsl	r1, #6
 	mov	r2, #0xa
 	bl	__Func_8092adc
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_921_20085dc

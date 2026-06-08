@@ -9,7 +9,7 @@
 	sub	sp, #0xc
 	mov	r8, r1
 	mov	r10, r0
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #0
 	mov	r0, r5
@@ -50,7 +50,7 @@
 	push	{r7}
 	mov	r7, r1
 	mov	r8, r0
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #0
 	mov	r0, r5
@@ -101,7 +101,7 @@
 	lsl	r3, #1
 	add	r0, r3
 	ldrb	r0, [r0]
-	bl	Func_80c2454
+	bl	GetEnemyHeight
 	lsl	r0, #24
 	lsr	r3, r0, #8
 	cmp	r3, #0
@@ -602,7 +602,7 @@
 	bl	WaitFrames
 	bl	Random
 	ldr	r0, [sp, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r2, [sp, #4]
 	ldr	r6, [r0]
 	cmp	r2, #7
@@ -929,13 +929,13 @@
 	mov	r3, #0
 	bl	Func_80b82c4
 	ldr	r0, [r5, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x10
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed
 	mov	r3, #0x24
 	ldrsh	r0, [r5, r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldrh	r3, [r5, #0x24]
 	mov	r2, #1
 	str	r2, [r5, #0x14]
@@ -1040,7 +1040,7 @@
 	and	r0, r3
 	bl	_Func_801f200
 	ldr	r0, [r6, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r0, [r0]
 	mov	r1, #3
 	mov	r10, r0
@@ -1078,7 +1078,7 @@
 	lsl	r3, r7, #1
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r3, [r0]
 	ldr	r1, [r3, #0x50]
 	mov	r3, r1
@@ -1194,7 +1194,7 @@
 	strh	r3, [r6, #0x38]
 .Lb8dee:
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #5
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
@@ -1263,7 +1263,7 @@
 	bl	_Func_80175a0
 .Lb8e90:
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #1
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim

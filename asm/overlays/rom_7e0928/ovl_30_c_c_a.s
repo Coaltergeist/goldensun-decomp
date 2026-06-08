@@ -91,7 +91,7 @@
 	ldr	r2, [r5, #0xc]
 	bl	__Actor_TravelTo
 	mov	r0, r5
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -133,7 +133,7 @@
 	mov	r0, r5
 	bl	__Actor_TravelTo
 	mov	r0, r5
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r1, #0x81
 	ldr	r0, [r6]
 	lsl	r1, #1

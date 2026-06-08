@@ -106,7 +106,7 @@
 	ldr	r0, =0x859
 	bl	__SetFlag
 .L12c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -133,17 +133,17 @@
 	cmp	r0, #0
 	bne	.L170
 	ldr	r0, =0x1280
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L176
 .L170:
 	ldr	r0, =0x1370
-	bl	__Func_8092b94
+	bl	__MessageID
 .L176:
 	mov	r0, #0x13
 	mov	r1, #0
 	bl	__ActorMessage
 .L17e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -170,17 +170,17 @@
 	cmp	r0, #0
 	bne	.L1d0
 	ldr	r0, =0x1282
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L1d6
 .L1d0:
 	ldr	r0, =0x1372
-	bl	__Func_8092b94
+	bl	__MessageID
 .L1d6:
 	mov	r0, #0x14
 	mov	r1, #0
 	bl	__ActorMessage
 .L1de:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -207,17 +207,17 @@
 	cmp	r0, #0
 	bne	.L230
 	ldr	r0, =0x128d
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L236
 .L230:
 	ldr	r0, =0x137b
-	bl	__Func_8092b94
+	bl	__MessageID
 .L236:
 	mov	r0, #0x17
 	mov	r1, #0
 	bl	__ActorMessage
 .L23e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

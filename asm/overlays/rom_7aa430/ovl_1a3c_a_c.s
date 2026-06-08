@@ -372,7 +372,7 @@
 	str	r3, [r0, #0x10]
 	ldr	r0, =0x161
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1fc0:
 	add	sp, #4
 	pop	{r3, r5, r6}
@@ -682,7 +682,7 @@
 	strb	r3, [r0]
 	mov	r1, #0
 	mov	r0, r7
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r11
 	mov	r2, #2
 	ldrsh	r1, [r3, r2]
@@ -703,7 +703,7 @@
 	beq	.L22aa
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	b	.L22b0
 .L22aa:
 	mov	r0, #0xd7
@@ -764,12 +764,12 @@
 	mov	r1, #1
 	str	r3, [r7, #0x10]
 	mov	r0, r7
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .L232a:
 	mov	r1, r8
 	mov	r3, #0
 	str	r3, [r1, #8]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #0xd8
 	ldr	r2, [sp, #0xc]
 	lsl	r0, #1

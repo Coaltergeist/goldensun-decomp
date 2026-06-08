@@ -1,4 +1,4 @@
-/* Cluster Func_80ccc2c..Func_80ccc2c extracted from goldensun/asm/rom_c9000/rom_cc5d8_c.s.
+/* Cluster Anim_SpinningBeat..Anim_SpinningBeat extracted from goldensun/asm/rom_c9000/rom_cc5d8_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Tentacle(void *context, int subanim);
 
-void Func_80ccc2c(void *context) {
+void Anim_SpinningBeat(void *context) {
     BaseAnim_Tentacle(context, 1);
 }

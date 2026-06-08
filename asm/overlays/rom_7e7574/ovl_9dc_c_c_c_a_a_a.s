@@ -4,7 +4,7 @@
 	push	{r5, lr}
 	ldr	r5, =0x256c
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	ldr	r0, =0x800d
 	mov	r1, #0
 	bl	__ActorMessage

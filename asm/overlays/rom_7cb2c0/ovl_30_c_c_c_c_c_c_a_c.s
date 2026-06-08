@@ -236,14 +236,14 @@
 	bl	__MapTransitionIn
 	cmp	r7, #0
 	beq	.L4aaa
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 .L4aaa:
 	mov	r0, #0
 	bl	__CutsceneWait
 	b	.L4f5c
 .L4ab2:
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	cmp	r7, #0
 	bne	.L4ac0
 	b	.L4f5c
@@ -528,7 +528,7 @@
 	add	r2, #0x42
 	str	r2, [r3]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	b	.L4f5c
@@ -719,11 +719,11 @@
 	b	.L4f5c
 .L4eea:
 	mov	r0, #1
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #2
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #3
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	b	.L4f5c
 .L4efe:
 	mov	r0, #1
@@ -745,7 +745,7 @@
 	b	.L4f5c
 .L4f26:
 	ldr	r0, =.L72a0
-	bl	__Func_80917ac
+	bl	__LoadFieldActors
 	mov	r0, #1
 	bl	__WaitFrames
 	cmp	r7, #1
@@ -757,7 +757,7 @@
 	bne	.L4f4c
 	ldr	r0, =.L7360
 .L4f40:
-	bl	__Func_80917ac
+	bl	__LoadFieldActors
 	mov	r0, #1
 	bl	__WaitFrames
 	b	.L4f5c
@@ -765,7 +765,7 @@
 	cmp	r7, #3
 	bne	.L4f5c
 	ldr	r0, =.L73c0
-	bl	__Func_80917ac
+	bl	__LoadFieldActors
 	mov	r0, #1
 	bl	__WaitFrames
 .L4f5c:

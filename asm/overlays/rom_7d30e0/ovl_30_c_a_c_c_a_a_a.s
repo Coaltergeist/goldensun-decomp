@@ -57,7 +57,7 @@
 	lsl	r1, #9
 	lsl	r2, #8
 	mov	r0, #0xf
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0x98
 	bl	__PlaySound
 	mov	r0, #0xf
@@ -76,7 +76,7 @@
 	lsl	r1, #7
 	mov	r2, #0x14
 	bl	__Func_8092adc
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Lb5e:
 	pop	{r0}
 	bx	r0
@@ -128,7 +128,7 @@
 	lsl	r1, #9
 	lsl	r2, #8
 	mov	r0, #0xf
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0x98
 	bl	__PlaySound
 	mov	r0, #0xf
@@ -158,7 +158,7 @@
 	mov	r0, #0xf
 	lsl	r1, #12
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xa6
 	mov	r2, #0xa6
 	mov	r0, #0xf
@@ -217,7 +217,7 @@
 	ldr	r1, =gScript_948__0200a6fc
 	mov	r0, r5
 	bl	__Actor_SetScript
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Lcb4:
 	pop	{r5, r6}
 	pop	{r0}
@@ -274,7 +274,7 @@
 	lsl	r1, #9
 	lsl	r2, #8
 	mov	r0, #0xf
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0x98
 	bl	__PlaySound
 	mov	r0, #0xf
@@ -298,7 +298,7 @@
 	mov	r0, #0xf
 	lsl	r1, #10
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xdc
 	mov	r2, #0xae
 	mov	r0, #0xf
@@ -370,7 +370,7 @@
 	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_948_2008aa8
 	str	r3, [r0, #0x6c]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Le30:
 	pop	{r5}
 	pop	{r0}
@@ -431,7 +431,7 @@
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	__MapActor_SetAnim
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_948_2008ec8

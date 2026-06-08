@@ -65,7 +65,7 @@
 	add	r3, r9
 	bl	_Actor_TravelTo
 	mov	r0, r5
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	pop	{r3, r5, r6}
 	mov	r8, r3
 	mov	r9, r5

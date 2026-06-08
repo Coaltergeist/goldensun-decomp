@@ -31,7 +31,7 @@
 	mov	r3, #1
 	orr	r3, r2
 	strb	r3, [r1]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 .L920ba:
 	pop	{r0}
 	bx	r0
@@ -61,7 +61,7 @@
 	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L920f6
-	bl	_Func_800c4ec
+	bl	_Actor_WaitScript
 .L920f6:
 	pop	{r0}
 	bx	r0
@@ -83,7 +83,7 @@
 	mov	r1, r6
 	bl	Actor_SetBehavior
 	mov	r0, r5
-	bl	_Func_800c4ec
+	bl	_Actor_WaitScript
 .L92122:
 	pop	{r5, r6}
 	pop	{r0}

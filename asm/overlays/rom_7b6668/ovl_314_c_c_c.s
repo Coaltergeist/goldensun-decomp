@@ -91,7 +91,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	add	r5, #0x23
@@ -174,7 +174,7 @@
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	ldr	r5, .L12f4	@ 0

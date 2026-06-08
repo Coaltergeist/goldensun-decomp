@@ -447,7 +447,7 @@
 	mov	r0, r6
 	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0xe9
 	bl	__PlaySound
 .L3966:
@@ -488,7 +488,7 @@
 .L39ac:
 	mov	r0, r6
 	bl	OvlFunc_932_200b484
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L39b6:
 	add	sp, #0xc
 	pop	{r3, r5, r6}

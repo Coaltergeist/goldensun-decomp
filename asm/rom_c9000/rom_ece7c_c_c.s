@@ -299,7 +299,7 @@
 	mov	r4, #0x24
 	ldrsh	r0, [r3, r4]
 	mov	r1, r5
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r2, [r5]
 	mov	r3, #0x40
 	ldr	r1, =REG_BG2X

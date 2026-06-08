@@ -90,7 +90,7 @@
 	ldr	r1, =0x33333
 	ldr	r2, =0x19999
 	mov	r0, #0
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, [r5, #0xc]
 	ldr	r2, [r6, #0xc]
 	sub	r3, r1, r2
@@ -132,7 +132,7 @@
 	asr	r3, #14
 	cmp	r2, r3
 	blt	.L34a
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #0x9f
 	bl	__PlaySound
 	mov	r0, r7
@@ -237,7 +237,7 @@
 .L45a:
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x55
 	mov	r3, #0
@@ -271,7 +271,7 @@
 	beq	.L4b8
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -338,7 +338,7 @@
 	beq	.L546
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -376,7 +376,7 @@
 	beq	.L598
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -414,7 +414,7 @@
 	beq	.L5e8
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -452,7 +452,7 @@
 	beq	.L638
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -489,7 +489,7 @@
 	beq	.L68c
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r5, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -931,7 +931,7 @@
 	mov	r0, #0x14
 	bl	__WaitFrames
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_2008a64
@@ -1003,7 +1003,7 @@
 	mov	r0, #0x14
 	bl	__WaitFrames
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_2008b0c
@@ -1067,7 +1067,7 @@
 	mov	r0, #0x14
 	bl	__WaitFrames
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -1132,7 +1132,7 @@
 	mov	r0, #0x14
 	bl	__WaitFrames
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

@@ -1,4 +1,4 @@
-/* Cluster Func_80ecedc..Func_80ecedc extracted from goldensun/asm/rom_c9000/rom_ece7c.s.
+/* Cluster Anim_QuickStrike..Anim_QuickStrike extracted from goldensun/asm/rom_c9000/rom_ece7c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_FullScreenSlash(void *context, int subanim);
 
-void Func_80ecedc(void *context) {
+void Anim_QuickStrike(void *context) {
     BaseAnim_FullScreenSlash(context, 1);
 }

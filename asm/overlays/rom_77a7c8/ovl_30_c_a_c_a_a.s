@@ -61,7 +61,7 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xa
 	bl	__Actor_SetColorswap

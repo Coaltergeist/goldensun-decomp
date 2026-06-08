@@ -141,7 +141,7 @@
 	bl	__Func_8091254
 	mov	r0, #0x78
 	bl	__CutsceneWait
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L111c:
 	add	sp, #0x38
 	pop	{r3, r5}

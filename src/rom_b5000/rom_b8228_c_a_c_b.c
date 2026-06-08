@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char *_GetUnit(unsigned int);
-extern unsigned char *Func_80b7dd0(unsigned int);
+extern unsigned char *GetBattleActor(unsigned int);
 extern void _Sprite_SetAnim(unsigned char *, unsigned int);
 extern void WaitFrames(unsigned int);
 extern void _Func_800befc(unsigned char *);
@@ -24,7 +24,7 @@ void Func_80b8ec4(unsigned int arg0) {
     s = (short *)p;
     idx = 0x38 / 2;
     if (s[idx] <= 0) {
-        q = (unsigned char **)Func_80b7dd0(arg0);
+        q = (unsigned char **)GetBattleActor(arg0);
         r5 = *(unsigned char **)(*q + 0x50);
         _Sprite_SetAnim(r5, 5);
         r2 = *(unsigned char **)(r5 + 0x28);

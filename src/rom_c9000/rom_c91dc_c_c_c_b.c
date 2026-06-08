@@ -1,4 +1,4 @@
-/* Cluster Func_80c9c84..Func_80c9c84 extracted from goldensun/asm/rom_c9000/rom_c91dc_c_c_c.s.
+/* Cluster Anim_WarCry..Anim_WarCry extracted from goldensun/asm/rom_c9000/rom_c91dc_c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_SonicWave(void *context, int subanim);
 
-void Func_80c9c84(void *context) {
+void Anim_WarCry(void *context) {
     BaseAnim_SonicWave(context, 4);
 }

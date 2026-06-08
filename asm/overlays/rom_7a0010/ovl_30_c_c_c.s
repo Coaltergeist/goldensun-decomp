@@ -20,7 +20,7 @@
 	bl	__MapActor_GetActor
 	add	r5, #1
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	cmp	r5, #0x16
 	bls	.L1e2
 .L1f4:

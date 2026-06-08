@@ -67,7 +67,7 @@
 	beq	.L8f182
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r1, =.L9e6c0
 	mov	r0, r5
 	bl	_Actor_SetScript

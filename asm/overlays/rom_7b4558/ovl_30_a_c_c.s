@@ -21,7 +21,7 @@
 	lsl	r2, #9
 	mov	r0, r6
 	lsl	r1, #10
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0x98
 	bl	__PlaySound
 	mov	r3, r9
@@ -33,7 +33,7 @@
 	str	r3, [r5, #0x44]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r6
 	mov	r1, r8
 	mov	r2, r10
@@ -50,7 +50,7 @@
 	bl	__MapActor_SetPos
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r5, #0x48]

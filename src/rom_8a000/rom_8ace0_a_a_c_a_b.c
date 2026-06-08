@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char L9d8b0[] __asm__(".L9d8b0");
-extern int Func_808b05c(int encounterID, int group);
+extern int GetEncounterGroup(int encounterID, int group);
 
 unsigned int Func_808b074(int index)
 {
     unsigned short *p = (unsigned short *)(L9d8b0 + (index << 2));
-    return Func_808b05c(p[0], p[1]);
+    return GetEncounterGroup(p[0], p[1]);
 }

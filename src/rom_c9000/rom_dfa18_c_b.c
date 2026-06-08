@@ -1,4 +1,4 @@
-/* Cluster Func_80dfa24..Func_80dfa24 extracted from goldensun/asm/rom_c9000/rom_dfa18_c.s.
+/* Cluster Anim_BruteForce..Anim_BruteForce extracted from goldensun/asm/rom_c9000/rom_dfa18_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Tackle(void *context, int subanim);
 
-void Func_80dfa24(void *context) {
+void Anim_BruteForce(void *context) {
     BaseAnim_Tackle(context, 1);
 }

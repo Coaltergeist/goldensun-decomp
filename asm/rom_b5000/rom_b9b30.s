@@ -57,7 +57,7 @@
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r0, #0xff
 	mov	r1, #0xc0
 	ldr	r3, =Func_80008ac
@@ -500,7 +500,7 @@
 	and	r0, r3
 	bl	_Func_801f200
 	ldr	r0, [sp, #4]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r0, [r0]
 	mov	r11, r0
 	add	r0, sp, #0x60
@@ -716,7 +716,7 @@
 	lsl	r3, r6, #1
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -967,7 +967,7 @@
 	ldr	r1, [sp, #0xc]
 	str	r3, [sp, #4]
 	ldrb	r0, [r1]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r3, [r0]
 	ldr	r1, [r3, #0x10]
 	ldr	r0, [r3, #8]
@@ -1049,7 +1049,7 @@
 .Lba384:
 	ldr	r3, [sp, #0xc]
 	ldrb	r0, [r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -1073,13 +1073,13 @@
 	mov	r2, r9
 	bl	Func_80b82c4
 	ldr	r0, [r7, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x10
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed
 	mov	r3, #0x24
 	ldrsh	r0, [r7, r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldrh	r3, [r7, #0x24]
 	cmp	r3, #7
 	bhi	.Lba3f0
@@ -1290,7 +1290,7 @@
 	sub	sp, #0x54
 	mov	r8, r1
 	ldr	r5, [r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r3, [r0]
 	ldr	r1, [r3, #0x10]
 	ldr	r0, [r3, #8]
@@ -1343,7 +1343,7 @@
 	mov	r2, r8
 	ldrb	r0, [r6]
 	and	r7, r2
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -1359,12 +1359,12 @@
 	ldr	r0, [r5, #8]
 	bl	Func_80b82c4
 	ldr	r0, [r5, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x10
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed
 	ldrb	r0, [r6, #2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldrb	r3, [r6, #2]
 	cmp	r3, #7
 	bhi	.Lba64e
@@ -1438,7 +1438,7 @@
 	mov	r0, #0
 	bl	Func_80c10e8
 	ldr	r0, [r5, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r0, [r0]
 	mov	r1, #3
 	mov	r9, r0
@@ -1466,7 +1466,7 @@
 	lsl	r3, r7, #1
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -1646,7 +1646,7 @@
 	lsr	r3, #24
 	cmp	r3, #2
 	bne	.Lba8c0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #7
 	and	r0, r3
 	cmp	r0, #0
@@ -1779,7 +1779,7 @@
 	b	.Lbaa28
 .Lba9aa:
 	ldrb	r0, [r7]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r3, [r0]
 	ldr	r1, [r3, #0x10]
 	ldr	r0, [r3, #8]
@@ -1889,7 +1889,7 @@
 	and	r0, r3
 	bl	_Func_801f200
 	ldr	r0, [r5, #8]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r0, [r0]
 	mov	r1, #3
 	mov	r8, r0
@@ -1939,7 +1939,7 @@
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
 	str	r4, [sp]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -2056,7 +2056,7 @@
 	sub	sp, #4
 	bl	_GetUnit
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #5
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
@@ -2070,7 +2070,7 @@
 	strh	r7, [r6]
 	bl	_Func_802281c
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #7
 	ldr	r0, [r0]
 	bl	Func_80ba918
@@ -2080,7 +2080,7 @@
 	strh	r7, [r6]
 	bl	_Func_802281c
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r5, r0
 	mov	r0, r7
 	bl	Func_80b6cd0
@@ -2207,7 +2207,7 @@
 	add	r5, #1
 .Lbad14:
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r5
 	ldr	r0, [r0]
 	bl	Func_80b7f70
@@ -2233,7 +2233,7 @@
 	add	r5, #1
 .Lbad48:
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r5
 	ldr	r0, [r0]
 	bl	Func_80b7f70

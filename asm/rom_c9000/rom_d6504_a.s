@@ -125,7 +125,7 @@
 	b	.Ld663a
 .Ld660c:
 	mov	r0, r5
-	bl	Func_80d2458
+	bl	Anim_Tiamat
 	b	.Ld663a
 .Ld6614:
 	mov	r0, r5
@@ -141,7 +141,7 @@
 	b	.Ld663a
 .Ld662c:
 	mov	r0, r5
-	bl	Func_80e7320
+	bl	Anim_Meteor
 	b	.Ld663a
 .Ld6634:
 	mov	r0, r5
@@ -429,7 +429,7 @@
 	str	r0, [sp, #0x10]
 	mov	r9, r1
 	str	r2, [sp, #0xc]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, =iwram_3001eec
 	ldr	r3, [r3]
 	mov	r8, r0

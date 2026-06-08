@@ -1,4 +1,4 @@
-/* Cluster Func_80e294c..Func_80e294c extracted from goldensun/asm/rom_c9000/rom_e28f4_c.s.
+/* Cluster Anim_SwiftStrike..Anim_SwiftStrike extracted from goldensun/asm/rom_c9000/rom_e28f4_c.s.
  *
  * Total .text for this TU = 40 bytes (= 0x28).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern void BaseAnim_RapidSlash(void *context, int subanim);
 
-void Func_80e294c(void *context) {
+void Anim_SwiftStrike(void *context) {
     int v3 = *(int *)((char *)context + 0x18);
     if (v3 == 0) {
         BaseAnim_RapidSlash(context, 3);

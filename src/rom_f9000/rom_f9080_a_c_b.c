@@ -1,4 +1,4 @@
-/* Cluster Func_80f950c..Func_80f950c extracted from goldensun/asm/rom_f9000/rom_f9080_a_c.s.
+/* Cluster SetMusicVolume..SetMusicVolume extracted from goldensun/asm/rom_f9000/rom_f9080_a_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -10,7 +10,7 @@ extern void *gMPlayInfo_BGM;
 extern unsigned short gMusicVolume;
 extern short gMusicCurVolume;
 
-void Func_80f950c(unsigned short volume) {
+void SetMusicVolume(unsigned short volume) {
     unsigned short r5;
     unsigned short r2;
 

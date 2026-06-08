@@ -52,7 +52,7 @@
 	add	r5, sp, #0x44
 	ldr	r0, [r3, #8]
 	mov	r1, r5
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	lsr	r2, r3, #31
 	add	r3, r2
@@ -950,7 +950,7 @@
 	ldr	r3, [r3]
 	mov	r7, #0x24
 	ldrsh	r0, [r3, r7]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r5, #0xe1
 	ldr	r6, [r0]
 	lsl	r5, #7
@@ -1037,7 +1037,7 @@
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r1, [sp, #0x24]
 	cmp	r1, #0x3f
 	ble	.Ld4e96

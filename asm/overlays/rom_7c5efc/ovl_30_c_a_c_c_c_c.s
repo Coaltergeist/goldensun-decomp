@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_941_20092c4
 	push	{lr}
 	ldr	r0, =0x2549
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #1
 	bl	__Func_8092c40
@@ -22,7 +22,7 @@
 .thumb_func_start OvlFunc_941_20092f0
 	push	{lr}
 	ldr	r0, =0x254d
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #1
 	bl	__Func_8092c40

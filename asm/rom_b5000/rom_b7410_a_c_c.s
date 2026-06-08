@@ -6,7 +6,7 @@
 	mov	r5, r0
 	bl	Func_80b6e30
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r3, #1
 	strh	r3, [r0, #0x28]
 	mov	r0, #0
@@ -26,7 +26,7 @@
 	bgt	.Lb7e8c
 	mov	r0, r6
 .Lb7e8c:
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lb7ea8

@@ -1,4 +1,4 @@
-/* Cluster Func_80ecee8..Func_80ecee8 extracted from goldensun/asm/rom_c9000/rom_ece7c_c.s.
+/* Cluster Anim_VorpalSlash..Anim_VorpalSlash extracted from goldensun/asm/rom_c9000/rom_ece7c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_FullScreenSlash(void *context, int subanim);
 
-void Func_80ecee8(void *context) {
+void Anim_VorpalSlash(void *context) {
     BaseAnim_FullScreenSlash(context, 2);
 }

@@ -123,7 +123,7 @@
 	bl	__PlaySound
 	ldr	r0, [r5]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r8
 	mov	r3, #0
 	add	r2, #0x55
@@ -154,8 +154,8 @@
 	cmp	r5, #0
 	bge	.Lc6c
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
-	bl	__Func_8091750
+	bl	__WaitMapTransition
+	bl	__CutsceneEnd
 	mov	r0, #0x91
 	lsl	r0, #1
 	bl	__SetFlag

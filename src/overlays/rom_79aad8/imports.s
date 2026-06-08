@@ -8,7 +8,7 @@
 	.export_func _Actor_SetScript
 	.export_func _CreateActor
 	.export_func _Func_8010704
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _Func_8012330
 	.export_func _Func_8012350
@@ -16,8 +16,8 @@
 	.export_func _SetFlag
 	.export_func _ClearFlag
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
-	.export_func _Func_8092128
+	.export_func _MapActor_SetSpeed
+	.export_func _MapActor_TravelTo
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim

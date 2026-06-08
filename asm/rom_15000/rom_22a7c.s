@@ -68,7 +68,7 @@
 .L22b04:
 	ldr	r1, =.L31424
 .L22b06:
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L22b24	@ 0x3ff
 	ldrh	r2, [r7, #8]
 	and	r0, r3

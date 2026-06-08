@@ -43,7 +43,7 @@
 	mov	r3, #0xc
 	strh	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0
 	bl	__Actor_SetAnim
@@ -114,7 +114,7 @@
 	cmp	r6, #0
 	beq	.L58ac
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, =gScript_883__0200e6e4
 	mov	r0, r6
 	bl	__Actor_SetScript

@@ -27,7 +27,7 @@
 	b	.L2480
 .L2362:
 	ldr	r0, =0x20c3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	lsl	r0, #10
@@ -60,7 +60,7 @@
 	mov	r0, #0
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xf8
 	lsl	r1, #2
 	mov	r0, #0
@@ -69,7 +69,7 @@
 	mov	r0, #0
 	ldr	r1, =0x4ccc
 	ldr	r2, =0x2666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x8c
 	mov	r2, #0xb8
 	lsl	r1, #3
@@ -148,7 +148,7 @@
 	cmp	r2, #1
 	bne	.L2494
 	ldr	r0, =0x20c2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r7
 	mov	r1, #0
 	bl	__ActorMessage
@@ -157,7 +157,7 @@
 	mov	r2, #5
 	mov	r0, r8
 	bl	OvlFunc_common1_5e4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L24a2:
 	pop	{r3}
 	mov	r8, r3
@@ -188,7 +188,7 @@
 	cmp	r6, #0
 	bne	.L2596
 	ldr	r0, =0x20c7
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	lsl	r0, #10
@@ -249,7 +249,7 @@
 	cmp	r6, #1
 	bne	.L25a8
 	ldr	r0, =0x20c6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
 	bl	__ActorMessage
@@ -258,7 +258,7 @@
 	mov	r2, #6
 	mov	r0, r6
 	bl	OvlFunc_common1_5e4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L25b6:
 	pop	{r5, r6}
 	pop	{r0}

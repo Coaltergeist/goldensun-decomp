@@ -5,9 +5,9 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0x18
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0x19
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #1
 	bl	__Func_807808c
 	bl	__CutsceneStart
@@ -61,7 +61,7 @@
 	bl	__Func_80933f8
 	mov	r0, r5
 	bl	OvlFunc_common1_fac
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

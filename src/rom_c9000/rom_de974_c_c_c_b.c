@@ -1,4 +1,4 @@
-/* Cluster Func_80de998..Func_80de998 extracted from goldensun/asm/rom_c9000/rom_de974_c_c_c.s.
+/* Cluster Anim_WingFlutter..Anim_WingFlutter extracted from goldensun/asm/rom_c9000/rom_de974_c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern int BaseAnim_ParticleSpray(void *context, int subanim);
 
-void Func_80de998(void *context) {
+void Anim_WingFlutter(void *context) {
     BaseAnim_ParticleSpray(context, 3);
 }

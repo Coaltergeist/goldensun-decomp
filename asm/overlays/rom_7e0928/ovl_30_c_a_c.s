@@ -389,7 +389,7 @@
 	mov	r2, r5
 	lsl	r1, #8
 	mov	r0, r11
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0xef
 	bl	__PlaySound
 	mov	r0, r10
@@ -406,12 +406,12 @@
 	ldr	r3, [r0, #0x10]
 	bl	__Actor_TravelTo
 	mov	r0, r10
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r1, #1
 	mov	r0, r10
 	bl	__Actor_SetAnim
 	mov	r0, r8
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r1, #0xa6
 	lsl	r1, #19
 	cmp	r7, r1
@@ -431,7 +431,7 @@
 	mov	r0, r8
 	bl	__Actor_SetAnim
 	mov	r0, r8
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r2, r8
 	add	r2, #0x23
 	mov	r3, #2
@@ -488,7 +488,7 @@
 .L9de:
 	mov	r0, #0xf
 	bl	__CutsceneWait
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L9f2
 .L9ea:
 	bl	OvlFunc_common1_2060

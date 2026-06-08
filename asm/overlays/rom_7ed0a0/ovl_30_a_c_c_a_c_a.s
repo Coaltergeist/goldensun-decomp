@@ -205,7 +205,7 @@
 	ldr	r0, =0x971
 	bl	__SetFlag
 .L16d2:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x38
 	pop	{r3}
 	mov	r8, r3
@@ -218,7 +218,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_964_20080c4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_964_2009550
 	pop	{r0}
 	bx	r0
@@ -421,7 +421,7 @@
 	ldr	r0, =0x972
 	bl	__SetFlag
 .L18d0:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x38
 	pop	{r3}
 	mov	r8, r3
@@ -434,7 +434,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_964_20080c4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_964_2009744
 	pop	{r0}
 	bx	r0

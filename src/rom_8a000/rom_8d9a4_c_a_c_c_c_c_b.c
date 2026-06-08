@@ -1,4 +1,4 @@
-/* Cluster Func_808f0c8..Func_808f0c8 extracted from goldensun/asm/rom_8a000/rom_8d9a4_c_a_c_c_c_c.s.
+/* Cluster DeleteMapActorPtr..DeleteMapActorPtr extracted from goldensun/asm/rom_8a000/rom_8d9a4_c_a_c_c_c_c.s.
  *
  * Total .text for this TU = 16 bytes (= 0x10).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern void _DeleteActor(void *actor);
 
-void Func_808f0c8(void *actor)
+void DeleteMapActorPtr(void *actor)
 {
 	if (actor)
 		_DeleteActor(actor);

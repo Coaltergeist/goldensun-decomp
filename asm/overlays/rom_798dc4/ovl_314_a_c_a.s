@@ -90,7 +90,7 @@
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0x11
 	str	r3, [sp, #4]
 	mov	r0, #0x36
@@ -121,11 +121,11 @@
 	mov	r0, #0
 	ldr	r1, =0x3333
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, =0x3333
 	ldr	r2, =0x1999
 	mov	r0, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0xb9
 	bl	__PlaySound
 	mov	r2, #0xb6
@@ -156,7 +156,7 @@
 	bl	__MapActor_SetAnim
 	bl	OvlFunc_903_2008348
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

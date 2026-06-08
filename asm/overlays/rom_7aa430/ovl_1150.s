@@ -67,7 +67,7 @@
 	mov	r0, #0x24
 	mov	r1, #1
 	bl	__Func_8091eb0
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_923_20091b4
@@ -110,9 +110,9 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0xe4
 	bl	__PlaySound
 	ldr	r3, =OvlFunc_923_2008cc0
@@ -120,7 +120,7 @@
 	str	r3, [r5, #0x6c]
 	ldr	r1, =0x6666
 	ldr	r2, =0x3333
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #8
 	mov	r0, #0
 	mov	r1, #0
@@ -131,7 +131,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -148,7 +148,7 @@
 	strb	r3, [r7]
 	str	r6, [r5, #0x6c]
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L12c6:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -379,7 +379,7 @@
 	add	r0, #0x55
 	strb	r5, [r0]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, #0
@@ -493,7 +493,7 @@
 	bl	__Func_8091200
 	mov	r0, #0x1e
 	bl	__Func_8091254
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r1, #1
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -522,7 +522,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	bl	__CutsceneStart
 	bl	__Func_800fe9c
 	mov	r0, #1
@@ -536,13 +536,13 @@
 	lsl	r2, #1
 	str	r2, [r3]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x78
 	bl	__CutsceneWait
 	mov	r0, #0x32
 	bl	__Func_8091e9c
 .L168e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L1718
 .L1694:
 	ldr	r0, =0x109
@@ -623,17 +623,17 @@
 	mov	r0, #3
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #8
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r2, =0x6666
 	mov	r0, #0
 	ldr	r1, =0xcccc
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r0, =0xcccc
 	ldr	r1, =0x1999
 	bl	__Func_80933d4
@@ -646,7 +646,7 @@
 	neg	r1, r1
 	bl	__Func_80933f8
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r1, #1
 	mov	r0, #3
 	bl	__Func_80925cc
@@ -794,7 +794,7 @@
 	mov	r2, #3
 	mov	r3, #3
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5}
 	mov	r8, r3
@@ -843,7 +843,7 @@
 	lsl	r6, #1
 	str	r3, [r2, r6]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	mov	r2, #0
@@ -852,7 +852,7 @@
 	bl	__Func_809280c
 	mov	r1, #3
 	mov	r0, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r2, #0x48
@@ -876,7 +876,7 @@
 	mov	r3, #0x81
 	lsl	r3, #2
 	str	r3, [r2, r6]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1a26:
 	pop	{r5, r6}
 	pop	{r0}

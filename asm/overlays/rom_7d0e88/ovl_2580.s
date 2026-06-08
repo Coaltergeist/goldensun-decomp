@@ -64,7 +64,7 @@
 	add	r3, #0x55
 	strb	r1, [r3]
 	mov	r0, r5
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]

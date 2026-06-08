@@ -159,7 +159,7 @@
 	bl	__MapActor_SetPos
 	ldr	r0, =0x882
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_920_20081f0
@@ -178,7 +178,7 @@
 	bl	__CutsceneWait
 	mov	r1, #2
 	mov	r0, #0xf
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0xf
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -203,7 +203,7 @@
 	mov	r2, #1
 	mov	r3, #1
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -221,8 +221,8 @@
 	bl	__PlaySound
 	mov	r0, #0xf
 	mov	r1, #6
-	bl	__Func_8092548
-	bl	__Func_8091750
+	bl	__MapActor_DoAnim
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_920_2008280
@@ -239,8 +239,8 @@
 	bl	__PlaySound
 	mov	r0, #0x10
 	mov	r1, #6
-	bl	__Func_8092548
-	bl	__Func_8091750
+	bl	__MapActor_DoAnim
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_920_20082ac
@@ -257,8 +257,8 @@
 	bl	__PlaySound
 	mov	r0, #0x11
 	mov	r1, #6
-	bl	__Func_8092548
-	bl	__Func_8091750
+	bl	__MapActor_DoAnim
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_920_20082d8
@@ -325,7 +325,7 @@
 	bl	__PlaySound
 	mov	r0, #0x11
 	mov	r1, #6
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r3, #0x16
 	str	r3, [sp, #4]
 	mov	r5, #0x24
@@ -343,7 +343,7 @@
 	mov	r3, #1
 	str	r5, [sp]
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L3ba:
 	ldr	r0, =0x302
 	bl	__SetFlag
@@ -360,7 +360,7 @@
 	bl	__PlaySound
 	mov	r0, #0x11
 	mov	r1, #2
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r3, #0x16
 	str	r3, [sp, #4]
 	mov	r5, #0x24
@@ -378,7 +378,7 @@
 	mov	r3, #1
 	str	r5, [sp]
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L40e:
 	ldr	r0, =0x302
 	bl	__ClearFlag

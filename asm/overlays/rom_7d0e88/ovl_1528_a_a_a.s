@@ -9,7 +9,7 @@
 	bne	.L153a
 	bl	OvlFunc_947_20083a8
 .L153a:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_947_2009528
@@ -33,7 +33,7 @@
 	ldr	r3, [r5, #0xc]
 	bl	OvlFunc_947_20088ec
 .L156c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}

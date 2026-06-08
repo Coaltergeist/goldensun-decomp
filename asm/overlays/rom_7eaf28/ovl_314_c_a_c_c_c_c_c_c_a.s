@@ -112,13 +112,13 @@
 	mov	r0, #0xd
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #0
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
@@ -176,7 +176,7 @@
 	mov	r0, #0
 	bl	__Func_8092adc
 	ldr	r0, =0x262e
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0x83
 	mov	r2, #0x3c
 	mov	r0, #0xd
@@ -220,7 +220,7 @@
 	bl	__ActorMessage
 	mov	r0, #0xd
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0xd
 	mov	r1, #0
 	bl	__ActorMessage
@@ -229,7 +229,7 @@
 	mov	r0, #0xd
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0xd
 	mov	r1, #2
 	bl	__MapActor_SetAnim
@@ -242,7 +242,7 @@
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, #0xd
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 .L7bc:
 	mov	r0, #0xd
 	bl	__MapActor_WaitMovement
@@ -251,7 +251,7 @@
 	mov	r2, #0
 	bl	__MapActor_SetPos
 .L7cc:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
 	mov	r9, r5

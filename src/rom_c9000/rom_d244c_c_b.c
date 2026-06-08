@@ -1,4 +1,4 @@
-/* Cluster Func_80d2458..Func_80d2458 extracted from goldensun/asm/rom_c9000/rom_d244c_c.s.
+/* Cluster Anim_Tiamat..Anim_Tiamat extracted from goldensun/asm/rom_c9000/rom_d244c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Tiamat(void *context, int subanim);
 
-void Func_80d2458(void *context) {
+void Anim_Tiamat(void *context) {
     BaseAnim_Tiamat(context, 0);
 }

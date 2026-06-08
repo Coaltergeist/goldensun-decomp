@@ -550,7 +550,7 @@
 .L12618:
 	mov	r1, #0
 	ldrsh	r0, [r2, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #4]
 	cmp	r3, #0x14
 	bne	.L12638
@@ -568,7 +568,7 @@
 .L1263c:
 	mov	r1, #0
 	ldrsh	r0, [r6, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #4]
 	mov	r5, #0
 	cmp	r3, #0x14
@@ -624,13 +624,13 @@
 	mov	r1, #8
 	str	r2, [sp, #4]
 .L126b2:
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	ldr	r2, [sp, #4]
 	mov	r1, #6
 	ldrsb	r1, [r5, r1]
 	mov	r0, r7
 	str	r2, [sp, #4]
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	mov	r3, #2
 	ldrsh	r1, [r5, r3]
 	mov	r0, r7
@@ -957,11 +957,11 @@
 	mov	r1, #1
 	ldrsb	r1, [r5, r1]
 	mov	r0, r10
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	mov	r1, #2
 	ldrsb	r1, [r5, r1]
 	mov	r0, r10
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	mov	r0, r8
 	add	r3, r0, r6
 	mov	r2, #2
@@ -1102,7 +1102,7 @@
 	mov	r1, #2
 	ldrsb	r1, [r3, r1]
 	mov	r0, r10
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	b	.L126f0
 .L12a46:
 	mov	r1, r9
@@ -1162,7 +1162,7 @@
 	mov	r1, #8
 .L12ab0:
 	mov	r0, r10
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	b	.L126f0
 .L12ab8:
 	mov	r1, r9
@@ -1213,7 +1213,7 @@
 	b	.L12afe
 .L12b18:
 	mov	r0, r5
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0]
 	cmp	r3, #0
 	beq	.L12afe

@@ -10,7 +10,7 @@
  * call-argument pooling; see camelot-gcc/README.md scoreboard).
  *
  * Func_ -> friendly name map:
- *   AnimStart AnimStart         Func_80e396c GetBattleActorPos2
+ *   AnimStart AnimStart         GetBattleActorPos2 GetBattleActorPos2
  *   LoadVFXFile LoadVFXFile       StartTask StartTask
  *   StopTask StopTask          _PlaySound PlaySound (ARM veneer)
  *   _Func_80bd7dc SetDamageSFX     BuildDraw2DFuncEx BuildDraw2DFuncEx
@@ -48,7 +48,7 @@ extern volatile u16 REG_BLDALPHA; /* 0x04000052 */
 
 /* engine (raw symbol names so relocs match the expected .o) */
 extern void AnimStart(int prio);
-extern void Func_80e396c(int target, vec3 *out);
+extern void GetBattleActorPos2(int target, vec3 *out);
 extern void LoadVFXFile(int file, void *dst, int a, int b);
 extern void StartTask(void (*task)(void), int mode);
 extern void StopTask(void (*task)(void));
@@ -80,8 +80,8 @@ void Anim_SpiderWeb(AnimContext *context)
     REG_BG2PA = 0x100;
     REG_BLDALPHA = 0x1000;
 
-    Func_80e396c(STATE_CONTEXT(state)->targets[0], &posA);
-    Func_80e396c(STATE_CONTEXT(state)->targets[STATE_CONTEXT(state)->numTargets - 1],
+    GetBattleActorPos2(STATE_CONTEXT(state)->targets[0], &posA);
+    GetBattleActorPos2(STATE_CONTEXT(state)->targets[STATE_CONTEXT(state)->numTargets - 1],
                  &posB);
     posA.x += (posB.x - posA.x) / 2;          /* midpoint of first & last target */
     REG_BG2X = (0x40 - posA.x) << 8;

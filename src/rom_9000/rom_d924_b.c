@@ -1,4 +1,4 @@
-/* Cluster Func_800daa0..Func_800daa0 extracted from goldensun/asm/rom_9000/rom_d924.s.
+/* Cluster ActorCmd_FollowTarget..ActorCmd_FollowTarget extracted from goldensun/asm/rom_9000/rom_d924.s.
  *
  * Total .text for this TU = 32 bytes (= 0x20).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern int Actor_TravelTo(int actor, int x, int y, int z);
 
-int Func_800daa0(unsigned char *actor)
+int ActorCmd_FollowTarget(unsigned char *actor)
 {
     int *p = *(int **)(actor + 0x68);
     Actor_TravelTo((int)actor, p[2], p[3], p[4]);

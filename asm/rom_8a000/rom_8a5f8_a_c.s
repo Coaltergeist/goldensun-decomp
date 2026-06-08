@@ -186,7 +186,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r6
-	bl	_Func_80f6008
+	bl	_StartLuckyWheels
 .L8aa88:
 	ldr	r3, =REG_DMA3SAD
 	mov	r6, r0
@@ -227,7 +227,7 @@
 	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8aae6
-	bl	Func_808acc4
+	bl	PlayMapMusic
 	b	.L8ab0a
 .L8aae6:
 	mov	r0, #0x8d
@@ -246,7 +246,7 @@
 	bl	_PlaySound
 	b	.L8ab0a
 .L8ab06:
-	bl	Func_808acc4
+	bl	PlayMapMusic
 .L8ab0a:
 	mov	r4, r10
 	ldr	r3, =gState

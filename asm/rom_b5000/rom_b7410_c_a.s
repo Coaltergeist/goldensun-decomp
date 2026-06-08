@@ -22,7 +22,7 @@
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
-	bl	Func_80051d8
+	bl	MatrixSetLook
 .Lb7f0a:
 	pop	{r5}
 	pop	{r1}
@@ -35,7 +35,7 @@
 	push	{r6}
 	sub	sp, #0xc
 	mov	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #0
 	mov	r0, r5

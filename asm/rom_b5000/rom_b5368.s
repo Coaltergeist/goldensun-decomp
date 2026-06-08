@@ -253,7 +253,7 @@
 	mov	r6, r0
 	mov	r1, r5
 	ldr	r0, =0x903
-	bl	_Func_801964c
+	bl	_DecompressString2
 	mov	r2, r10
 	ldrh	r3, [r5, r2]
 	strb	r3, [r6]

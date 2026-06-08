@@ -7,7 +7,7 @@
  * 0x800000e0), but dma.h DMA3_COPY hardwires the 32-bit flag (0x84000000) ->
  * 0x84000070; needs a DMA16 helper or a hand-built stmia. (2) src is the
  * same-file .rodata local label .L779c (use `extern u16 L779c[] __asm__(".L779c")`
- * so the splitter globalizes it, cf. Func_8185008). The 16-bit DMA is the wall.
+ * so the splitter globalizes it, cf. GetSpriteInfo). The 16-bit DMA is the wall.
  */
 #include "dma.h"
 

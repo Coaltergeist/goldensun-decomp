@@ -10,7 +10,7 @@ extern void *__MapActor_GetActor(int);
 extern void __SetFlag(int);
 extern void __ClearFlag(int);
 extern void OvlFunc_964_200a52c(void);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_964_2009f70(void) {
     void *p;
@@ -28,5 +28,5 @@ void OvlFunc_964_2009f70(void) {
         __ClearFlag(0x975);
     }
     OvlFunc_964_200a52c();
-    __Func_8091750();
+    __CutsceneEnd();
 }

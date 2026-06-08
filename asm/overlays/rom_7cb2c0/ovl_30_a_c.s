@@ -289,7 +289,7 @@
 	ldr	r5, [r6, #0x50]
 	mov	r1, #0
 	strb	r3, [r2]
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, #0xd
 	ldrb	r1, [r5, #9]
 	neg	r2, r2

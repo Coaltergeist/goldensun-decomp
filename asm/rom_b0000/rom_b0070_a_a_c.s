@@ -2700,7 +2700,7 @@
 	sub	r5, #1
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
-	bl	_Func_8079728
+	bl	_AddCoinsSpent
 	bl	Func_80b10cc
 	cmp	r5, #0
 	bne	.Lb1814

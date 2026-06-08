@@ -7,7 +7,7 @@
  */
 extern unsigned char *__MapActor_GetActor(int);
 extern void __UI_Sanctum(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void __ActorMessage(int, int);
 
 void OvlFunc_940_2008454(void)
@@ -18,7 +18,7 @@ void OvlFunc_940_2008454(void)
     if ((unsigned int)(*(unsigned short *)(p + 6) - 0xa001) <= 0x3ffe) {
         __UI_Sanctum(0x15);
     } else {
-        __Func_8092b94(0x266b);
+        __MessageID(0x266b);
         __ActorMessage(0x16, 0);
     }
 }

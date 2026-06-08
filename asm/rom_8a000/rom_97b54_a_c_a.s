@@ -244,7 +244,7 @@
 	mov	r0, r10
 	bl	_Actor_TravelTo
 	mov	r0, r10
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r3, [r6, #8]
 	str	r3, [r7]
 	ldr	r3, [r6, #0xc]
@@ -403,7 +403,7 @@
 	bl	_Actor_TravelTo
 .L97ece:
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r1, [sp, #0x10]
 	str	r1, [r6, #8]
 	ldr	r2, [sp, #0xc]
@@ -725,7 +725,7 @@
 	str	r3, [r0, #0x18]
 	str	r3, [r0, #0x1c]
 .L981a4:
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 .L981a8:
 	pop	{r0}
 	bx	r0
@@ -1182,7 +1182,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r1, r5
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -1418,7 +1418,7 @@
 	bl	_Actor_SetScript
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r9
 	ldr	r3, [r0, #4]
 	mov	r2, r8
@@ -1540,7 +1540,7 @@
 	cmp	r5, #0
 	bge	.L988ac
 	ldr	r0, [sp]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r3, =Func_8096b88
 	mov	r0, #0x82
 	str	r3, [r7, #0x6c]
@@ -1666,7 +1666,7 @@
 	cmp	r0, #0
 	bge	.L989b6
 	ldr	r0, [sp]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, #0x86
 	bl	_PlaySound
 	mov	r0, #0x80

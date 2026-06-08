@@ -27,7 +27,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r0, r6
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	lsl	r5, #16
 	mov	r0, r6
 	mov	r1, #2
@@ -43,7 +43,7 @@
 	mov	r0, r6
 	bl	_Actor_TravelTo
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r7
 	mov	r1, r8
 	bl	Func_8092b08

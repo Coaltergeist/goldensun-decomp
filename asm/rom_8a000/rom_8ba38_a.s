@@ -184,7 +184,7 @@
 	ldr	r2, [sp]
 	mov	r0, r5
 	ldrb	r1, [r2]
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r3, r11
 	ldrb	r1, [r3]
 	mov	r3, #3
@@ -221,7 +221,7 @@
 	str	r3, [r2, #0x14]
 	str	r3, [r2, #0xc]
 	str	r3, [r1, #4]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 .L8bbf2:
 	mov	r2, #0x70
 	ldr	r3, [sp, #4]
@@ -1663,7 +1663,7 @@
 	ldr	r3, [r4, r3]
 	mov	r10, r3
 	mov	r0, r10
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r1, r10
 	mov	r2, #0xee
 	ldr	r3, [r1, #8]

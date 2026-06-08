@@ -124,7 +124,7 @@
 	mov	r9, r3
 	bl	galloc_iwram
 	mov	r5, r0
-	bl	Func_8019ebc
+	bl	NumItemIcons
 	cmp	r6, r0
 	bcc	.L19ff8
 	mov	r6, #0
@@ -639,7 +639,7 @@
 	mov	r1, #0
 	mov	r5, r0
 	mov	r8, r1
-	bl	Func_8019ed0
+	bl	NumMoveIcons
 	cmp	r6, r0
 	bcc	.L1a430
 	mov	r6, #0

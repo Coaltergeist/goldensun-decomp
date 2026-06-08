@@ -285,7 +285,7 @@
 	bl	__MapActor_Emote
 	mov	r0, #0xa
 	bl	OvlFunc_959_2009b24
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_959_20092e0

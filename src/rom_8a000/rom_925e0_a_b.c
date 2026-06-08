@@ -1,4 +1,4 @@
-/* Cluster Func_8092924..Func_8092924 extracted from goldensun/asm/rom_8a000/rom_925e0_a.s.
+/* Cluster DeleteFieldActor..DeleteFieldActor extracted from goldensun/asm/rom_8a000/rom_925e0_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -9,7 +9,7 @@ extern int GetFieldActor(int actorID);
 extern void _DeleteActor(void);
 extern unsigned int iwram_3001ebc;
 
-void Func_8092924(int actorID) {
+void DeleteFieldActor(int actorID) {
     int res;
     unsigned char *base;
     int off;

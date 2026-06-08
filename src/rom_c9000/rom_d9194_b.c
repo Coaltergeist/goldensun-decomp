@@ -1,4 +1,4 @@
-/* Cluster Func_80d9194..Func_80d9194 extracted from goldensun/asm/rom_c9000/rom_d9194.s.
+/* Cluster Anim_Impact..Anim_Impact extracted from goldensun/asm/rom_c9000/rom_d9194.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_StatUp(void *context, int subanim);
 
-void Func_80d9194(void *context) {
+void Anim_Impact(void *context) {
     BaseAnim_StatUp(context, 0);
 }

@@ -100,7 +100,7 @@
 	bl	Func_808e9a8
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r1, #6
 	ldrsh	r0, [r6, r1]
 	bl	_GetFlag
@@ -122,7 +122,7 @@
 	bl	_Actor_SetAnim
 .L8eaaa:
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r2, [r5, #8]
 	cmp	r2, #0
 	bge	.L8eaba
@@ -195,9 +195,9 @@
 	bl	Func_808e9a8
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r5
 	mov	r1, #1
 	bl	_Actor_SetAnim

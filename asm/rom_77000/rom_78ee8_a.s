@@ -19,7 +19,7 @@
 	ldr	r0, =0x66
 	mov	r1, r9
 	add	r0, r6, r0
-	bl	_Func_801964c
+	bl	_DecompressString2
 	mov	r2, r9
 	ldrh	r3, [r2]
 	strb	r3, [r7]
@@ -65,7 +65,7 @@
 	add	r3, r7, r1
 	strb	r2, [r3]
 	ldrb	r0, [r3]
-	bl	Func_8078ed8
+	bl	GetPCBaseStats
 	mov	r3, r7
 	ldr	r2, .L78f8c	@ 0
 	mov	r10, r0

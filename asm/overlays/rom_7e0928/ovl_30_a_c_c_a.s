@@ -337,7 +337,7 @@
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, r6
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 .L332:
 	mov	r0, r6
 	bl	__MapActor_WaitMovement
@@ -389,7 +389,7 @@
 	bl	__Actor_TravelTo
 	mov	r1, #1
 	mov	r0, r5
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r6
 	bl	__MapActor_WaitMovement
 	mov	r3, #9
@@ -405,7 +405,7 @@
 	bl	__WaitFrames
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #3
 	mov	r2, r9
 	strb	r3, [r2]
@@ -511,7 +511,7 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	mov	r5, r0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, #2
 	mov	r10, r1
 	mov	r2, r5

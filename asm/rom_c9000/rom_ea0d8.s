@@ -321,7 +321,7 @@
 	ldr	r0, [sp, #0x4c]
 	mov	r1, r0
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	add	r0, sp, #0xa0
 	mov	r8, r0
 	ldr	r6, =ewram_2010e00

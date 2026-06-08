@@ -6,7 +6,7 @@
  * goldensun/overlays/rom_7e7574/overlay.ld.
  */
 extern int __GetFlag(int);
-extern int __Func_8092b94(int);
+extern int __MessageID(int);
 extern void __ActorMessage(int, int);
 extern void __Func_8097608(void);
 extern void OvlFunc_959_200cbfc(void);
@@ -16,7 +16,7 @@ void OvlFunc_959_200cd0c(void) {
     int x;
     x = __GetFlag(0x226);
     if (x) {
-        __Func_8092b94(0x2435);
+        __MessageID(0x2435);
         __ActorMessage(0x14, 0);
     } else {
         *(unsigned short *)(iwram_3001ebc + (0xbf << 1)) = x;

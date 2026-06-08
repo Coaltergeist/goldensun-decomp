@@ -25,7 +25,7 @@
 	ldrsh	r0, [r5, r3]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]

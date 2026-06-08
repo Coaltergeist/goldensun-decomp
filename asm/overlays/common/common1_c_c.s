@@ -179,7 +179,7 @@
 	mov	r0, #0xee
 	bl	__PlaySound
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
 	bl	__PlaySound

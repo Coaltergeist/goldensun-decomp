@@ -1,4 +1,4 @@
-/* Cluster Func_80d91ac..Func_80d91ac extracted from goldensun/asm/rom_c9000/rom_d9194_c_c.s.
+/* Cluster Anim_Ward..Anim_Ward extracted from goldensun/asm/rom_c9000/rom_d9194_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_StatUp(int context, int subanim);
 
-void Func_80d91ac(int context) {
+void Anim_Ward(int context) {
     BaseAnim_StatUp(context, 2);
 }

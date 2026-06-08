@@ -17,7 +17,7 @@
  *   AnimStart AnimStart           BuildDraw2DFuncEx BuildDraw2DFuncEx
  *   LoadVFXFile LoadVFXFile         StartTask StartTask
  *   StopTask StopTask            Random Random
- *   __umodsi3 umod         Func_80e396c GetBattleActorPos2
+ *   __umodsi3 umod         GetBattleActorPos2 GetBattleActorPos2
  *   Func_80d6888 BattleActor_SetState  UpdateScreenShake UpdateScreenShake
  *   Func_80cd52c ResetAllActors      WaitFrames WaitFrames
  *   AnimEnd AnimEnd             gfree gfree
@@ -70,7 +70,7 @@ extern void LoadVFXFile(int file, void *dst, int a, int b);
 extern void StartTask(void (*task)(void), int mode);
 extern void StopTask(void (*task)(void));
 extern unsigned Random(void);
-extern void Func_80e396c(int target, vec3 *out);
+extern void GetBattleActorPos2(int target, vec3 *out);
 extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
 extern void UpdateScreenShake(int x, int y);
 extern void Func_80cd52c(void);
@@ -112,7 +112,7 @@ void Anim_Unused_SabreRain(AnimContext *context)
     STATE_BLITPARAM(state) = 0;
     StartTask(Task_BlitAnim, 0x480);     /* StartTask(Task_BlitAnim, TASK_VBLANK) */
 
-    Func_80e396c(STATE_CONTEXT(state)->targets[0], &targetPos);
+    GetBattleActorPos2(STATE_CONTEXT(state)->targets[0], &targetPos);
     REG_BG2X = (0x40 - targetPos.x) << 8;
 
     /* Spawn the 0x40 daggers */

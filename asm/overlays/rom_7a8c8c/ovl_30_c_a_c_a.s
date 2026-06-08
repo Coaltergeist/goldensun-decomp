@@ -138,8 +138,8 @@
 	bl	__Actor_SetAnim
 .L236:
 	mov	r0, r6
-	bl	__Func_800ca6c
-	bl	__Func_8091750
+	bl	__Actor_WaitMovement
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

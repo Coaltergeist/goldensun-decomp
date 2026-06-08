@@ -11,7 +11,7 @@
 	bl	OvlFunc_968_2008374
 	bl	OvlFunc_968_20099c0
 .L1a0a:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_968_20099f0
@@ -119,7 +119,7 @@
 	mov	r0, r5
 	bl	OvlFunc_968_2009a50
 .L1ae6:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -373,7 +373,7 @@
 	str	r2, [r3]
 	mov	r0, #0xb
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1d00:
 	add	sp, #0x38
 	pop	{r3, r5, r6, r7}
@@ -484,7 +484,7 @@
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r6
 	add	r3, #0x22
 	mov	r5, r6
@@ -584,7 +584,7 @@
 	ldr	r0, =0x301
 	bl	__SetFlag
 .L1efc:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -614,7 +614,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_968_2008374
 .L1f50:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_968_2009d48
 	add	sp, #8
 	pop	{r0}
@@ -783,7 +783,7 @@
 	mov	r0, r9
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r6
 	add	r3, #0x22
 	mov	r0, #0
@@ -856,7 +856,7 @@
 	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L214a
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L2236
 .L214a:
 	mov	r0, #9
@@ -968,7 +968,7 @@
 	bhi	.L2232
 	b	.L1f96
 .L2232:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L2236:
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
@@ -999,7 +999,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_968_2008374
 .L2294:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_968_2009f60
 	add	sp, #8
 	pop	{r0}

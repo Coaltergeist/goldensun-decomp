@@ -59,7 +59,7 @@
 	cmp	r3, #1
 	bne	.Lc5ae
 	ldr	r0, [r0, #0x50]
-	bl	Func_800b684
+	bl	Sprite_SetColorswap
 .Lc5ae:
 	pop	{r0}
 	bx	r0

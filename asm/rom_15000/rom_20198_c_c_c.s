@@ -1891,7 +1891,7 @@
 	add	r5, r3
 	mov	r1, r5
 	mov	r0, r8
-	bl	Func_80040d0
+	bl	UploadSprite2
 	mov	r5, r0
 	mov	r0, #0x11
 	bl	gfree
@@ -1922,7 +1922,7 @@
 	add	r5, r3
 	mov	r1, r5
 	mov	r0, r8
-	bl	Func_80040d0
+	bl	UploadSprite2
 	mov	r5, r0
 	mov	r0, #0x11
 	bl	gfree
@@ -1959,7 +1959,7 @@
 	add	r5, r3
 	mov	r1, r5
 	mov	r0, r6
-	bl	Func_80040d0
+	bl	UploadSprite2
 	mov	r5, r0
 	mov	r0, #0x11
 	bl	gfree
@@ -2102,7 +2102,7 @@
 	bl	DecompressLZ1
 	mov	r1, r6
 	mov	r0, r8
-	bl	Func_80040d0
+	bl	UploadSprite2
 	mov	r5, r0
 	mov	r0, #0x11
 	bl	gfree

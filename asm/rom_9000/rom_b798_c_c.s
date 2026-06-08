@@ -75,7 +75,7 @@
 	mov	r4, #0
 	str	r4, [sp]
 	mov	r7, r0
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldr	r3, =iwram_3001e5c
 	mov	r6, r0
 	ldr	r2, [r3]
@@ -111,7 +111,7 @@
 	cmp	r0, #0
 	bne	.Lbc14
 	mov	r0, r7
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 .Lbc14:
 	ldr	r2, [r6, #0x10]
 	str	r0, [r5, #8]
@@ -169,7 +169,7 @@
 	mov	r1, #0
 	mov	r8, r1
 	mov	r10, r0
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r7, r0
 	bl	AllocSpriteSlot
 	ldr	r3, =iwram_3001e60
@@ -370,7 +370,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r5, r2
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	mov	r7, #0
 	cmp	r6, r3

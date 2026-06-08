@@ -219,7 +219,7 @@
 .L13a4:
 	bl	__CutsceneStart
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #5
 	bl	OvlFunc_971_2008128
 	mov	r3, #0xa9
@@ -272,7 +272,7 @@
 	bl	__Func_809280c
 	ldr	r0, =0x293e
 	add	r0, r5, r0
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
 	bl	__Func_8092c40
@@ -312,7 +312,7 @@
 	bcs	.L148a
 	strh	r5, [r2]
 	ldr	r0, =0x293c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
 	bl	__Func_8092c40
@@ -320,7 +320,7 @@
 	b	.L1498
 .L148a:
 	ldr	r0, =0x2939
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__Func_8092c40
@@ -338,7 +338,7 @@
 	strh	r3, [r2]
 	bl	__CutsceneStart
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #5
 	bl	OvlFunc_971_2008128
 	mov	r2, #0xfa
@@ -362,7 +362,7 @@
 	bcs	.L1500
 	strh	r5, [r2]
 	ldr	r0, =0x293c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
 	bl	__Func_8092c40
@@ -370,7 +370,7 @@
 	b	.L150e
 .L1500:
 	ldr	r0, =0x293a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__Func_8092c40
@@ -391,14 +391,14 @@
 .L152c:
 	bl	OvlFunc_971_2008128
 .L1530:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L1680
 .L1536:
 	cmp	r3, #0xa
 	bne	.L15d2
 	bl	__CutsceneStart
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0
 	bl	OvlFunc_971_2008128
 	mov	r0, #4
@@ -464,7 +464,7 @@
 	bne	.L161c
 	bl	__CutsceneStart
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0
 	bl	OvlFunc_971_2008128
 	mov	r0, #4
@@ -506,7 +506,7 @@
 	beq	.L166c
 	bl	__CutsceneStart
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -515,11 +515,11 @@
 	mov	r0, #8
 	bl	__Func_809280c
 	ldr	r0, =0x2929
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L166c:
 	ldr	r3, =iwram_3001d08
 	mov	r2, #0

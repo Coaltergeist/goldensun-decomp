@@ -22,7 +22,7 @@
 	lsl	r3, r6, #3
 	add	r5, r3
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldr	r4, [sp]
 	ldr	r2, =.L12fa0
 	lsl	r3, r6, #12

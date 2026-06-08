@@ -21,15 +21,15 @@
 .L2f8:
 	bl	__CutsceneStart
 	ldr	r0, =0x24f5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L31e
 .L310:
 	ldr	r0, =0x1bcd
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage

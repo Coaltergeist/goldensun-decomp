@@ -31,7 +31,7 @@
 	mov	r5, sp
 	ldr	r0, =0x80c
 	mov	r1, r5
-	bl	_Func_801964c
+	bl	_DecompressString2
 	mov	r0, #0
 	ldrh	r3, [r5, r0]
 	cmp	r3, #0
@@ -1066,7 +1066,7 @@
 	.pool_aligned
 
 .Lb66f4:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0xf
 	and	r0, r3
 	cmp	r0, #0
@@ -1077,7 +1077,7 @@
 	strb	r3, [r2]
 	b	.Lb671a
 .Lb6708:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0x1f
 	and	r0, r3
 	cmp	r0, #0

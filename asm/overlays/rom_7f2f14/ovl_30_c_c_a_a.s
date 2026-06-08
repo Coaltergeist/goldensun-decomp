@@ -20,13 +20,13 @@
 	lsl	r2, #7
 	mov	r10, r0
 	mov	r0, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x80
 	mov	r2, #0x80
 	mov	r0, #9
 	lsl	r1, #8
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, r9
 	cmp	r0, #0
 	beq	.L230e
@@ -179,7 +179,7 @@
 	mov	r0, r8
 	lsl	r1, #11
 	lsl	r2, #10
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, [r7, #8]
 	ldr	r3, [r7, #0x10]
 	mov	r2, r10
@@ -477,7 +477,7 @@
 	bgt	.L26ca
 	b	.L24a4
 .L26ca:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x84
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -493,7 +493,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_968_2008374
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_968_200a6e4
@@ -714,7 +714,7 @@
 	str	r2, [r3]
 	mov	r0, #0x12
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L28c6:
 	add	sp, #0x38
 	pop	{r3, r5, r6, r7}
@@ -936,7 +936,7 @@
 	str	r2, [r3]
 	mov	r0, #0x13
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L2aca:
 	add	sp, #0x38
 	pop	{r3, r5, r6, r7}
@@ -1154,7 +1154,7 @@
 	mov	r0, r10
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r8
 	add	r3, #0x22
 	mov	r2, #0
@@ -1259,7 +1259,7 @@
 	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L2d9a
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L2ea8
 .L2d9a:
 	mov	r0, #0xf
@@ -1319,7 +1319,7 @@
 	lsl	r0, #16
 	bl	__Func_80933f8
 	mov	r0, r6
-	bl	__Func_800c4ec
+	bl	__Actor_WaitScript
 	mov	r0, r6
 	ldr	r1, =gScript_968__0200d7c8
 	bl	__Actor_SetScript
@@ -1382,7 +1382,7 @@
 	bhi	.L2ea4
 	b	.L2b60
 .L2ea4:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L2ea8:
 	add	sp, #0x10
 	pop	{r3, r5, r6, r7}
@@ -1422,7 +1422,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_968_2008374
 .L2f20:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	bl	OvlFunc_968_200ab14
 	add	sp, #8
 	pop	{r0}
@@ -1437,7 +1437,7 @@
 	mov	r0, #0
 	lsl	r1, #8
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x82
 	mov	r2, #0xb2
 	mov	r0, #0
@@ -1464,7 +1464,7 @@
 	bl	__CutsceneWait
 	mov	r0, #0x14
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_968_200af30
@@ -1532,7 +1532,7 @@
 	and	r3, r2
 	strb	r3, [r1]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #5
 	bl	__Actor_SetAnim

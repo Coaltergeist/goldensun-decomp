@@ -119,7 +119,7 @@
 	ldmia	r3!, {r1}
 	ldmia	r3!, {r2}
 	ldr	r3, [r3]
-	bl	Func_800d130
+	bl	Actor_SetPos
 	ldrh	r3, [r5, #4]
 	add	r3, #4
 	strh	r3, [r5, #4]

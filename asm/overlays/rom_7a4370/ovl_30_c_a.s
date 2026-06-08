@@ -16,7 +16,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

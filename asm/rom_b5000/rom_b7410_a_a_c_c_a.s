@@ -23,7 +23,7 @@
 .Lb775e:
 	mov	r3, r10
 	ldrh	r0, [r3, r2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lb77a0
@@ -99,7 +99,7 @@
 	mov	r1, #2
 	ldrh	r0, [r3]
 	add	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lb7848
 	ldr	r5, [r0]
@@ -167,7 +167,7 @@
 	mov	r1, #2
 	ldrh	r0, [r3]
 	add	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lb78c6
 	ldr	r5, [r0]
@@ -522,12 +522,12 @@
 	sub	r5, r3, r5
 .Lb7b0a:
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r5
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #3
 	and	r1, r6
 	ldr	r0, [r0]

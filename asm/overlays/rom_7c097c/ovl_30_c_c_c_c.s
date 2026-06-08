@@ -80,7 +80,7 @@
 	ldr	r3, [r6, #8]
 	bl	__Actor_TravelTo
 	mov	r0, r7
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	bl	__Func_809202c
 	ldr	r3, [r6]
 	str	r3, [r7, #8]
@@ -381,7 +381,7 @@
 	mov	r3, #1
 	str	r5, [sp, #4]
 	bl	__Func_8010704
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L351e:
 	ldr	r0, =0x303
 	bl	__GetFlag
@@ -579,7 +579,7 @@
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	bl	OvlFunc_936_20095b4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L36ea:
 	add	sp, #8
 	pop	{r3, r5}
@@ -794,7 +794,7 @@
 	bl	__Func_80929d8
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	bl	__Random
 	lsl	r0, #1
 	lsr	r0, #16
@@ -905,7 +905,7 @@
 	beq	.L39be
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r3, [r6, #0xc]
 	ldr	r2, =0xffe00000
 	add	r3, r2
@@ -1004,7 +1004,7 @@
 	mov	r2, r8
 	strb	r2, [r3]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0x5c
 	add	r3, r7
 	mov	r2, r8

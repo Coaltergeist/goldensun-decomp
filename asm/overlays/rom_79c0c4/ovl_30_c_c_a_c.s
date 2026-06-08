@@ -21,17 +21,17 @@
 	cmp	r0, #0
 	bne	.L90
 	ldr	r0, =0x13e3
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L96
 .L90:
 	ldr	r0, =0x16f5
-	bl	__Func_8092b94
+	bl	__MessageID
 .L96:
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__ActorMessage
 .L9e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -58,17 +58,17 @@
 	cmp	r0, #0
 	bne	.Lf0
 	ldr	r0, =0x13e9
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.Lf6
 .Lf0:
 	ldr	r0, =0x16f9
-	bl	__Func_8092b94
+	bl	__MessageID
 .Lf6:
 	mov	r0, #0x12
 	mov	r1, #0
 	bl	__ActorMessage
 .Lfe:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

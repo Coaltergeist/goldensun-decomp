@@ -16,7 +16,7 @@
 	.export_func _Func_8010560
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _Actor_SetColorswap
 	.export_func _Func_801776c
@@ -26,13 +26,13 @@
 	.export_func _ClearFlag
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091a58
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
+	.export_func _MapActor_SetSpeed
 	.export_func _MapActor_SetIdle
-	.export_func _Func_8092128
+	.export_func _MapActor_TravelTo
 	.export_func _Func_809218c
 	.export_func _Func_8092208
 	.export_func _Func_809228c
@@ -43,7 +43,7 @@
 	.export_func _Func_80925cc
 	.export_func _Func_809280c
 	.export_func _Func_80929d8
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _Func_8092c40
 	.export_func _ActorMessage
 	.export_func _Func_8093054
@@ -56,10 +56,10 @@
 	.export_func _Func_8093c00
 	.export_func _MapTransitionIn
 	.export_func _MapTransitionOut
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _Func_808f1c0
 	.export_func _Func_808edac
-	.export_func _Func_80967e4
+	.export_func _FieldMove
 	.export_func _Func_8096fb0
 	.export_func _Func_80970f8
 	.export_func _Func_8097174

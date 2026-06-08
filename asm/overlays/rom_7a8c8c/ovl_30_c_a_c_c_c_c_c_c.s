@@ -10,7 +10,7 @@
 	mov	r0, #0
 	lsl	r1, #10
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, r5
 	mov	r2, r6
 	mov	r0, #0
@@ -18,7 +18,7 @@
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #4
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	mov	r1, #7
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -27,7 +27,7 @@
 	mov	r0, #0
 	mov	r1, #6
 	bl	__MapActor_SetAnim
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -113,7 +113,7 @@
 	beq	.L1bc8
 	bl	__DeleteActor
 .L1bc8:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

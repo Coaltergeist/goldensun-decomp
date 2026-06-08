@@ -485,7 +485,7 @@
 	ldr	r0, [sp, #0x54]
 	lsl	r3, #3
 	str	r3, [sp, #0x3c]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r0]
 	ldr	r4, [sp, #8]
 	ldr	r2, [r3, #0x50]
@@ -525,7 +525,7 @@
 	str	r7, [r1, #8]
 	ldr	r0, [sp, #0x40]
 	ldr	r1, =Data_310a4
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r4, [sp, #0xc]
 	ldrh	r3, [r4, #8]
 	mov	r2, r8
@@ -2703,7 +2703,7 @@
 	str	r2, [r1, #8]
 	ldr	r0, [sp, #0x3c]
 	ldr	r1, =Data_310a4
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L247c8	@ 0x3ff
 	ldr	r1, [sp, #4]
 	and	r0, r3
@@ -2995,7 +2995,7 @@
 	mov	r1, #1
 	neg	r1, r1
 	stmia	r6!, {r0}
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, =0x3ff
 	and	r0, r3
 	ldrh	r3, [r5, r7]
@@ -3487,7 +3487,7 @@
 	ldr	r1, [sp, #0xc]
 	lsr	r0, r1, #16
 	ldr	r1, =Data_310a4
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L24e10	@ 0x3ff
 	ldr	r2, [sp, #0x18]
 	and	r0, r3
@@ -4113,7 +4113,7 @@
 	str	r1, [sp, #8]
 	mov	r1, #1
 	neg	r1, r1
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, =0x3ff
 	and	r0, r3
 	ldrh	r3, [r5, r6]
@@ -4508,7 +4508,7 @@
 	str	r2, [r1, #8]
 	ldr	r0, [sp, #0x38]
 	ldr	r1, =Data_310a4
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L2565c	@ 0x3ff
 	ldr	r1, [sp, #0x18]
 	and	r0, r3
@@ -4986,7 +4986,7 @@
 	str	r1, [sp, #4]
 	mov	r1, #1
 	neg	r1, r1
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, =0x3ff
 	and	r0, r3
 	ldrh	r3, [r5, r6]
@@ -5438,7 +5438,7 @@
 	str	r2, [r1, #8]
 	ldr	r0, [sp, #0x34]
 	ldr	r1, =Data_310a4
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L25e10	@ 0x3ff
 	ldr	r1, [sp, #0x18]
 	and	r0, r3
@@ -6197,7 +6197,7 @@
 	lsl	r1, #8
 	add	r1, r3
 	ldr	r0, [sp, #0x34]
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L263e4	@ 0x3ff
 	ldr	r6, [sp, #0x20]
 	and	r0, r3

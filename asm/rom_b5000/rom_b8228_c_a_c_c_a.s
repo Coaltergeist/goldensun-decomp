@@ -1123,7 +1123,7 @@
 	ldr	r2, [r3]
 	ldr	r3, [r7]
 	str	r3, [r2]
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r1, r10
 	ldr	r3, [r1]
 	str	r0, [r3, #4]
@@ -1171,7 +1171,7 @@
 	bl	Func_80b9554
 	cmp	r0, #0
 	blt	.Lb9890
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r2, r10
 	ldr	r1, [r2]
 	ldr	r3, [r1, #4]

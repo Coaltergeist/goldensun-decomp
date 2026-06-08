@@ -527,7 +527,7 @@
 	strh	r0, [r5, #0x1a]
 	strh	r3, [r5, #0x18]
 	mov	r0, r5
-	bl	Func_80163ec
+	bl	UIBox_WaitAnim
 	mov	r0, #1
 	bl	WaitFrames
 .L163e0:

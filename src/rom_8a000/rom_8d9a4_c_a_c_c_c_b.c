@@ -5,14 +5,14 @@
  * asm/rom_8a000/rom_8d9a4_c_a_c_c_c_a.o and asm/rom_8a000/rom_8d9a4_c_a_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808ec14();
+extern int GetMapActorIndex();
 extern unsigned int iwram_3001ebc;
 
 void Func_808ed78(void) {
     int res;
     unsigned char *base;
 
-    res = Func_808ec14();
+    res = GetMapActorIndex();
     if (res != -1) {
         base = (unsigned char *)(*(unsigned int *)&iwram_3001ebc + (res << 3) + 0x11c);
         if (*(unsigned int *)base != 0) {

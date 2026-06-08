@@ -61,7 +61,7 @@
 	cmp	r5, #0
 	bge	.L1ca
 	mov	r0, r8
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #2
 	bl	__CutsceneWait
 	mov	r5, #0

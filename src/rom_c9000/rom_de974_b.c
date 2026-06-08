@@ -1,4 +1,4 @@
-/* Cluster Func_80de974..Func_80de974 extracted from goldensun/asm/rom_c9000/rom_de974.s.
+/* Cluster Anim_Slash..Anim_Slash extracted from goldensun/asm/rom_c9000/rom_de974.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_ParticleSpray(void *context, int subanim);
 
-void Func_80de974(void *context) {
+void Anim_Slash(void *context) {
     BaseAnim_ParticleSpray(context, 0);
 }

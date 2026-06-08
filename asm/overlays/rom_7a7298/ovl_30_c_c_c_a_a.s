@@ -8,11 +8,11 @@
 	mov	r0, #9
 	bl	__Func_809280c
 	ldr	r0, =0x152a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_921_200828c
@@ -25,7 +25,7 @@
 	cmp	r0, #0
 	beq	.L31c
 	ldr	r0, =0x163c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__ActorMessage
@@ -58,7 +58,7 @@
 	b	.L36e
 .L31c:
 	ldr	r0, =0x152d
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__ActorMessage
@@ -89,7 +89,7 @@
 	mov	r1, #9
 	bl	__MapActor_SetAnim
 .L36e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_921_20082b8
@@ -108,11 +108,11 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x1644
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L4d6
 .L3b8:
 	ldr	r0, =0x82b
@@ -128,7 +128,7 @@
 	ldr	r0, =.L31c0
 	bl	__Func_8010560
 	ldr	r0, =0x156c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
 	bl	__ActorMessage
@@ -139,7 +139,7 @@
 	mov	r1, #0xa
 	mov	r2, #0x45
 	bl	__Func_8010560
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L4d6
 .L3fe:
 	bl	__CutsceneStart
@@ -152,7 +152,7 @@
 	mov	r0, #9
 	bl	__MapActor_SetBehavior
 	ldr	r0, =0x1534
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
 	bl	__ActorMessage
@@ -181,7 +181,7 @@
 	ldr	r2, =0xcccc
 	mov	r0, #8
 	ldr	r1, =0x19999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, =.L2508
 	mov	r0, #8
 	bl	__MapActor_RunScript
@@ -190,7 +190,7 @@
 	mov	r2, #0
 	mov	r0, #8
 	mov	r1, #2
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	mov	r0, #8
 	mov	r1, #2
 	bl	__Func_809259c
@@ -224,7 +224,7 @@
 	strb	r3, [r0]
 	ldr	r0, =0x82c
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L4d6:
 	pop	{r0}
 	bx	r0
@@ -234,11 +234,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x153f
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_921_2008510
@@ -247,11 +247,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x154d
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0x12
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_921_2008530

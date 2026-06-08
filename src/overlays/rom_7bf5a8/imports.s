@@ -12,11 +12,11 @@
 	.export_func _CreateActor
 	.export_func _Func_800fe9c
 	.export_func _Actor_TravelTo
-	.export_func _Func_800ca6c
+	.export_func _Actor_WaitMovement
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
 	.export_func _TestCollision
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_8012330
 	.export_func _Func_8012350
 	.export_func _Func_801776c
@@ -25,7 +25,7 @@
 	.export_func _ClearFlag
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim

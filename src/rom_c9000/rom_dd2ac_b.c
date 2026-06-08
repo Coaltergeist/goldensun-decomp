@@ -1,4 +1,4 @@
-/* Cluster Func_80dd2ac..Func_80dd2ac extracted from goldensun/asm/rom_c9000/rom_dd2ac.s.
+/* Cluster Anim_Growth..Anim_Growth extracted from goldensun/asm/rom_c9000/rom_dd2ac.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Growth(void *context, int subanim);
 
-void Func_80dd2ac(void *context) {
+void Anim_Growth(void *context) {
     BaseAnim_Growth(context, 0);
 }

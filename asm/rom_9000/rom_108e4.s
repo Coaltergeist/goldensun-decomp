@@ -325,7 +325,7 @@
 	bl	InitMatrixStack
 	mov	r0, r9
 	mov	r1, r8
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r5, =0x284
 	mov	r0, #0x2e
 	mov	r1, r5
@@ -1159,7 +1159,7 @@
 	bl	InitMatrixStack
 	mov	r1, r10
 	ldr	r0, [sp, #0x14]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, =iwram_3001af4
 	ldrh	r0, [r6]
 	mov	r8, r3

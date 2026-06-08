@@ -67,11 +67,11 @@
 .L100e:
 	add	r0, r5, r6
 	sub	r0, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
@@ -133,11 +133,11 @@
 	sub	r6, r3, r6
 .L10bc:
 	add	r0, r7, r6
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r5
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
@@ -179,11 +179,11 @@
 	bl	__ClearFlag
 .L1130:
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
@@ -211,16 +211,16 @@
 	mov	r1, #5
 	bl	__Func_8019908
 	ldr	r0, =0x298a
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L1194
 .L118e:
 	ldr	r0, =0x298b
-	bl	__Func_8092b94
+	bl	__MessageID
 .L1194:
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1

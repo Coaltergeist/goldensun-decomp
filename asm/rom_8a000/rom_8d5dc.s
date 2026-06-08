@@ -53,7 +53,7 @@
 	cmp	r3, r2
 	blt	.L8d682
 	mov	r0, r7
-	bl	Func_80915dc
+	bl	MapActor_GetName
 	mov	r5, r0
 	bl	Random
 	lsl	r0, #1
@@ -64,11 +64,11 @@
 	add	r5, r3
 	bl	CutsceneStart
 	mov	r0, r5
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
 	bl	ActorMessage
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d794
 .L8d678:
 	mov	r0, #0
@@ -141,11 +141,11 @@
 	bl	_Func_8017620
 	bl	CutsceneStart
 	ldr	r0, [r6, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
 	bl	ActorMessage
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d722
 .L8d716:
 	bl	Func_8091660
@@ -255,12 +255,12 @@
 	bge	.L8d816
 	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	ActorMessage
 	mov	r6, #0
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d81e
 .L8d816:
 	mov	r0, r7
@@ -310,12 +310,12 @@
 	bge	.L8d886
 	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
 	bl	ActorMessage
 	mov	r7, #0
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d8de
 .L8d886:
 	mov	r0, r6
@@ -347,12 +347,12 @@
 .L8d8bc:
 	mov	r0, #0x80
 	bl	_PlaySound
-	bl	Func_8094354
+	bl	Player_EnterStairsUp
 	b	.L8d8d2
 .L8d8c8:
 	mov	r0, #0x81
 	bl	_PlaySound
-	bl	Func_8094368
+	bl	Player_EnterStairsDown
 .L8d8d2:
 	mov	r3, #0xb8
 	ldr	r2, [r5, #8]

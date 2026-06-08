@@ -170,7 +170,7 @@
 	str	r3, [r7, #0x44]
 	strb	r3, [r5]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, #0xcc
@@ -258,7 +258,7 @@
 	mov	r3, #0x80
 	lsl	r3, #7
 	str	r3, [r7, #0x44]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x44
 	pop	{r3, r5}
 	mov	r8, r3
@@ -444,7 +444,7 @@
 	str	r3, [r5, #0x34]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #7
 	bl	__Actor_SetAnim
@@ -585,7 +585,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0xa
 	ldrsh	r2, [r6, r3]
 	mov	r3, #2
@@ -597,11 +597,11 @@
 	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r9
 	mov	r3, r8
 	strb	r2, [r3]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #1
 	b	.Ldee
 .Ldec:

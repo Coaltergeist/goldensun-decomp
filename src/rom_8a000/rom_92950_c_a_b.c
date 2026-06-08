@@ -1,4 +1,4 @@
-/* Cluster Func_8092b94..Func_8092b94 extracted from goldensun/asm/rom_8a000/rom_92950_c_a.s.
+/* Cluster MessageID..MessageID extracted from goldensun/asm/rom_8a000/rom_92950_c_a.s.
  *
  * Total .text for this TU = 20 bytes (= 0x14).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001ebc;
 
-void Func_8092b94(unsigned short stringID) {
+void MessageID(unsigned short stringID) {
     unsigned int r3;
     unsigned short r2;
 

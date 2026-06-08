@@ -8,7 +8,7 @@
 extern int __GetFlag(int);
 extern void __Func_8095214(void);
 extern void __MapTransitionOut(void);
-extern void __Func_8091e20(void);
+extern void __WaitMapTransition(void);
 extern void __Func_8091e9c(int);
 extern unsigned int iwram_3001ebc;
 
@@ -21,6 +21,6 @@ void OvlFunc_887_20082e0(int arg0) {
     base = (unsigned char *)iwram_3001ebc;
     *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
     __MapTransitionOut();
-    __Func_8091e20();
+    __WaitMapTransition();
     __Func_8091e9c(arg0);
 }

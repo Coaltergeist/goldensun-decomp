@@ -13,7 +13,7 @@ Exports_b5000:
 	.export_func Func_80c0774
 	.export_func AnimTransitionIn
 	.export_func Func_80c0700
-	.export_func Func_80c2454
+	.export_func GetEnemyHeight
 	.export_func GetEnemyUnk
 	.export_func GetEnemyAttackAnimParam
 	.export_func Func_80c23c0
@@ -22,7 +22,7 @@ Exports_b5000:
 	.export_func Func_80b81c8
 	.export_func SetBattleActorKnockback
 	.export_func Func_80b6c08
-	.export_func Func_80b7dd0
+	.export_func GetBattleActor
 	.export_func BattleMain
 	.export_func Func_80b7f20
 	.export_func Func_80b845c

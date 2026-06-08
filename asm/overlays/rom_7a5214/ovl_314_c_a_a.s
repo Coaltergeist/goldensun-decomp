@@ -93,7 +93,7 @@
 	.pool_aligned
 
 .L3fc:
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r7
 	ldr	r1, =0x101
 	bl	__MapActor_Surprise

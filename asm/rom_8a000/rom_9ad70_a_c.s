@@ -187,7 +187,7 @@
 	ldr	r2, [r2, #0xc]
 	ldr	r0, [sp]
 	mov	r1, r3
-	bl	_Func_800d130
+	bl	_Actor_SetPos
 .L9afee:
 	mov	r0, #0x14
 	bl	WaitFrames

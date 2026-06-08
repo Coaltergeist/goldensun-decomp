@@ -26,7 +26,7 @@
 	bl	__Func_80970f8
 	bl	__Func_809728c
 	mov	r0, #1
-	bl	__Func_80967e4
+	bl	__FieldMove
 	mov	r0, #1
 	bl	__WaitFrames
 	pop	{r5, r6}
@@ -37,7 +37,7 @@
 .thumb_func_start OvlFunc_899_200c684
 	push	{lr}
 	mov	r0, #2
-	bl	__Func_80967e4
+	bl	__FieldMove
 	bl	__Func_8097174
 	bl	__Func_8097194
 	pop	{r0}
@@ -641,15 +641,15 @@
 	mov	r0, #0
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #1
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #2
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0xae
 	mov	r0, #0
 	mov	r1, #0xf8
@@ -714,24 +714,24 @@
 	mov	r0, #1
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #2
 	lsl	r1, #8
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x80
 	mov	r0, #0x18
 	lsl	r1, #9
 	ldr	r2, =0x13333
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #0x19
 	lsl	r1, #9
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r3, =.L64f8
 	ldr	r2, .L4c48	@ 0
 	ldr	r1, =0xc94
@@ -740,7 +740,7 @@
 	bl	__StartTask
 	ldr	r0, =0x1ff
 	bl	__ClearFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #9
 	bl	__PlaySound
 	b	.L4c68

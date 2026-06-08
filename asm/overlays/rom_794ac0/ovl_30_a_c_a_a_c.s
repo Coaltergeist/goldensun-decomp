@@ -4,7 +4,7 @@
 	push	{lr}
 	bl	__Func_8091660
 	ldr	r0, =0x12bb
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0
 	bl	__ActorMessage
@@ -21,7 +21,7 @@
 	ldr	r0, =0x94b
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_20082c0
@@ -35,7 +35,7 @@
 	ldr	r0, =0x949
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_20082e8
@@ -106,7 +106,7 @@
 	mov	r0, r6
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r3, r8
 	strb	r3, [r5]
 	pop	{r3}
@@ -151,13 +151,13 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1247
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #1
 	mov	r0, #0xb
 	bl	__MapActor_SetAnim
 	mov	r0, #0xb
 	bl	OvlFunc_899_20083bc
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_2008400
@@ -166,7 +166,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1253
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xf
 	bl	OvlFunc_899_20083bc
 	mov	r1, #0x80
@@ -174,7 +174,7 @@
 	lsl	r1, #8
 	mov	r2, #0
 	bl	__Func_8092adc
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_2008428
@@ -200,18 +200,18 @@
 	cmp	r0, #0
 	bne	.L48e
 	ldr	r0, =0x1284
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x15
 	bl	OvlFunc_899_20083bc
 	b	.L49c
 .L48e:
 	ldr	r0, =0x1374
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x15
 	mov	r1, #0
 	bl	__ActorMessage
 .L49c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -225,15 +225,15 @@
 	cmp	r0, #0
 	bne	.L4d4
 	ldr	r0, =0x1243
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L4da
 .L4d4:
 	ldr	r0, =0x1353
-	bl	__Func_8092b94
+	bl	__MessageID
 .L4da:
 	mov	r0, #9
 	bl	OvlFunc_899_2008354
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_20084bc

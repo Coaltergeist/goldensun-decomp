@@ -1,4 +1,4 @@
-/* Cluster Func_808acc4..Func_808acc4 extracted from goldensun/asm/rom_8a000/rom_8a5f8.s.
+/* Cluster PlayMapMusic..PlayMapMusic extracted from goldensun/asm/rom_8a000/rom_8a5f8.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -8,7 +8,7 @@
 extern void *_PlaySound(short arg0);
 extern unsigned int gState;
 
-void Func_808acc4(void) {
+void PlayMapMusic(void) {
     unsigned int r3;
     unsigned int r2;
     short r0;

@@ -8,7 +8,7 @@
 extern int __MapActor_GetActor(int);
 extern void __CutsceneStart(void);
 extern void __SetFlag(int);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_968_2008ff0(void)
 {
@@ -18,5 +18,5 @@ void OvlFunc_968_2008ff0(void)
     if ((*(int *)((char *)r5 + 8) >> 20) == 0x36 ||
         (*(int *)((char *)r5 + 0x10) >> 20) == 6)
         __SetFlag(0x987);
-    __Func_8091750();
+    __CutsceneEnd();
 }

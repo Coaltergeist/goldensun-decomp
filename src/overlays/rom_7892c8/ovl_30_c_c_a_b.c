@@ -9,9 +9,9 @@ extern int OvlFunc_888_200b2a8(void);
 extern void __UI_Sanctum(int);
 extern void __CutsceneStart(void);
 extern int __GetFlag(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void __ActorMessage(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_888_200b45c(void) {
     if (OvlFunc_888_200b2a8()) {
@@ -19,12 +19,12 @@ void OvlFunc_888_200b45c(void) {
     } else {
         __CutsceneStart();
         if (__GetFlag(0x845)) {
-            __Func_8092b94(0x171c);
+            __MessageID(0x171c);
         } else {
-            __Func_8092b94(0x1408);
+            __MessageID(0x1408);
         }
         __ActorMessage(8, 0);
-        __Func_8091750();
+        __CutsceneEnd();
     }
 }
 void OvlFunc_888_200b4a8(void) {
@@ -32,11 +32,11 @@ void OvlFunc_888_200b4a8(void) {
         __UI_Sanctum(8);
     } else {
         __CutsceneStart();
-        __Func_8092b94(0x190a);
+        __MessageID(0x190a);
         if (__GetFlag(0x909)) {
-            __Func_8092b94(0x1951);
+            __MessageID(0x1951);
         }
         __ActorMessage(8, 0);
-        __Func_8091750();
+        __CutsceneEnd();
     }
 }

@@ -1,4 +1,4 @@
-/* Cluster Func_800d880..Func_800d880 extracted from goldensun/asm/rom_9000/rom_d654_a_c.s.
+/* Cluster ActorCmd_ToggleFlag..ActorCmd_ToggleFlag extracted from goldensun/asm/rom_9000/rom_d654_a_c.s.
  *
  * Total .text for this TU = 68 bytes (= 0x44).
  * Preserves the original ROM layout when slotted between
@@ -9,7 +9,7 @@ extern int _GetFlag(int);
 extern void _ClearFlag(int);
 extern void _SetFlag(int);
 
-int Func_800d880(unsigned char *actor)
+int ActorCmd_ToggleFlag(unsigned char *actor)
 {
     int idx;
     unsigned int *base;

@@ -23,7 +23,7 @@
 	.export_func _Func_8010704
 	.export_func _CreateUIBox
 	.export_func _CloseUIBox
-	.export_func _Func_801964c
+	.export_func _DecompressString2
 	.export_func _Func_8017658
 	.export_func _Func_8017364
 	.export_func _Func_8016478
@@ -41,14 +41,14 @@
 	.export_func _GetPartySize
 	.export_func _Func_807808c
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
+	.export_func _MapActor_SetSpeed
 	.export_func _Func_809218c
 	.export_func _MapActor_WaitMovement
 	.export_func _Func_809280c
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _Func_8092c40
 	.export_func _ActorMessage
 	.export_func _SetDestMap
@@ -56,7 +56,7 @@
 	.export_func _Func_8091f90
 	.export_func _Func_8091fa8
 	.export_func _MapTransitionIn
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _UI_Sanctum
 	.export_func _Func_80bf65c
 	.export_func _Debug_LoadPresetParty

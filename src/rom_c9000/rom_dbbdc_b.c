@@ -1,4 +1,4 @@
-/* Cluster Func_80dbbdc..Func_80dbbdc extracted from goldensun/asm/rom_c9000/rom_dbbdc.s.
+/* Cluster Anim_FireBreath..Anim_FireBreath extracted from goldensun/asm/rom_c9000/rom_dbbdc.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Breath(void *context, int subanim);
 
-void Func_80dbbdc(void *context) {
+void Anim_FireBreath(void *context) {
     BaseAnim_Breath(context, 0);
 }

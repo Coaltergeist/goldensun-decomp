@@ -203,7 +203,7 @@
 	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r6, .L9b2c0	@ 0
 	mov	r3, r5
 	add	r3, #0x55
@@ -250,7 +250,7 @@
 	sub	r1, r0
 	lsr	r1, #16
 	ldr	r0, [r5]
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	bl	Random
 	ldr	r2, =0x13333
 	lsr	r0, #1

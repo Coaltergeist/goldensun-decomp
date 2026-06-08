@@ -7,26 +7,26 @@ Exports_8a000:
 	.export_func GameStart
 	.export_func CutsceneWait
 	.export_func CutsceneStart
-	.export_func Func_8091750
+	.export_func CutsceneEnd
 	.export_func Func_8091780
-	.export_func Func_80917ac
+	.export_func LoadFieldActors
 	.export_func Func_808b868
-	.export_func Func_80917c4
+	.export_func SetMapEvents
 	.export_func Func_80917d0
 	.export_func Func_80917f4
 	.export_func Func_8091890
 	.export_func Func_8091a58
 	.export_func Func_8091c1c
 	.export_func Func_8091c7c
-	.export_func Func_8091d94
+	.export_func LearnInnateMove
 	.export_func MapActor_GetActor
-	.export_func Func_8092924
-	.export_func Func_8092064
+	.export_func DeleteFieldActor
+	.export_func MapActor_SetSpeed
 	.export_func MapActor_SetBehavior
 	.export_func MapActor_WaitScript
 	.export_func MapActor_SetIdle
 	.export_func MapActor_RunScript
-	.export_func Func_8092128
+	.export_func MapActor_TravelTo
 	.export_func Func_8092158
 	.export_func Func_809218c
 	.export_func Func_80921c4
@@ -37,10 +37,10 @@ Exports_8a000:
 	.export_func MapActor_SetPos3D
 	.export_func MapActor_SetAnim
 	.export_func MapActor_SetAnimSpeed
-	.export_func Func_8092548
+	.export_func MapActor_DoAnim
 	.export_func Func_8092504
 	.export_func Func_809255c
-	.export_func Func_8092560
+	.export_func MapActor_Jump
 	.export_func Func_809259c
 	.export_func Func_80925cc
 	.export_func Func_8092708
@@ -49,7 +49,7 @@ Exports_8a000:
 	.export_func Func_8092950
 	.export_func Func_80929d8
 	.export_func Func_8092a1c
-	.export_func Func_8092b94
+	.export_func MessageID
 	.export_func Func_8092c40
 	.export_func ActorMessage
 	.export_func Func_8093040
@@ -113,7 +113,7 @@ Exports_8a000:
 	.export_func Func_8091240
 	.export_func MapTransitionIn
 	.export_func MapTransitionOut
-	.export_func Func_8091e20
+	.export_func WaitMapTransition
 	.export_func Func_8094730
 	.export_func Func_80947e4
 	.export_func Func_808e078
@@ -130,12 +130,12 @@ Exports_8a000:
 	.export_func Func_808c4c0
 	.export_func InitMapActors
 	.export_func LoadMapActors
-	.export_func Func_808b64c
+	.export_func DeleteMapActor
 	.export_func GetFieldActor
 	.export_func Func_8091494
 	.export_func Func_8091540
 	.export_func Func_8091550
-	.export_func Func_80967e4
+	.export_func FieldMove
 	.export_func Func_8096fb0
 	.export_func Func_80970f8
 	.export_func Func_8097174
@@ -159,9 +159,9 @@ Exports_8a000:
 	.export_func Func_808c30c
 	.export_func Func_8096c24
 	.export_func Func_8091d84
-	.export_func Func_808b05c
+	.export_func GetEncounterGroup
 	.export_func Func_808b074
-	.export_func Func_808acc4
+	.export_func PlayMapMusic
 	.export_func Func_80955b0
 	.export_func Func_809b804
 	.export_func Func_809ba34

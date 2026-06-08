@@ -1,4 +1,4 @@
-/* Cluster Func_8091750..Func_8091750 extracted from goldensun/asm/rom_8a000/rom_91584_a_c.s.
+/* Cluster CutsceneEnd..CutsceneEnd extracted from goldensun/asm/rom_8a000/rom_91584_a_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -11,7 +11,7 @@ extern void SetCameraTarget(unsigned int, unsigned char);
 extern void *_CheckLure(void);
 extern unsigned int gState;
 
-void Func_8091750(void) {
+void CutsceneEnd(void) {
     unsigned int r3;
 
     StopTask(Task_Cutscene);

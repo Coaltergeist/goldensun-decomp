@@ -1,4 +1,4 @@
-/* Cluster Func_80f94e0..Func_80f94e0 extracted from goldensun/asm/rom_f9000/rom_f9080_a_a_c_c.s.
+/* Cluster SetMusicPitch..SetMusicPitch extracted from goldensun/asm/rom_f9000/rom_f9080_a_a_c_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -13,6 +13,6 @@
 extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, short pitch);
 extern void *gMPlayInfo_BGM;
 
-void Func_80f94e0(int pitch) {
+void SetMusicPitch(int pitch) {
     m4aMPlayPitchControl(&gMPlayInfo_BGM, 0xff, (short)pitch);
 }

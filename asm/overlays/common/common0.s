@@ -41,7 +41,7 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xe
 	bl	__Func_80929d8
@@ -87,7 +87,7 @@
 	mov	r3, #8
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	bl	__Func_80929d8

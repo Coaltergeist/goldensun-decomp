@@ -533,9 +533,9 @@
 	mov	r0, r5
 	bl	_Actor_TravelTo
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r5
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r1, r10
 	ldr	r3, [r1]
 	mov	r2, #0x80
@@ -564,7 +564,7 @@
 	mov	r0, r7
 	strb	r3, [r1]
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r2, [sp, #0x14]
 	cmp	r2, #0
 	beq	.L99efe
@@ -692,9 +692,9 @@
 	ldr	r3, [r5, #8]
 	bl	_Actor_TravelTo
 	ldr	r0, [sp, #0x14]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r0, [sp, #0x18]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r3, [r7, #8]
 	str	r3, [r5]
 	ldr	r3, [r7, #0x14]
@@ -795,7 +795,7 @@
 	ldr	r0, [sp, #8]
 	bl	_Actor_TravelTo
 	mov	r0, r7
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r1, r8
 	str	r5, [r7, #8]
 	str	r6, [r7, #0x10]
@@ -1056,7 +1056,7 @@
 	cmp	r0, #0
 	bge	.L9a2f6
 	ldr	r0, [sp]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, #0x86
 	bl	_PlaySound
 	mov	r0, #0x80

@@ -180,7 +180,7 @@
 	mov	r1, r11
 	ldr	r0, [r4, #8]
 	mov	r5, r11
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r2, [r5]
 	mov	r3, #0x40
 	ldr	r1, =REG_BG2X

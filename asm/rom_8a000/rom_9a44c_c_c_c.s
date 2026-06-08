@@ -156,7 +156,7 @@
 	bl	Func_809ba7c
 	ldr	r0, [r5]
 	mov	r1, #7
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	mov	r3, #1
 	neg	r3, r3
 	add	r10, r3

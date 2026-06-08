@@ -7,12 +7,12 @@
 	mov	r0, #0xc
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0xbc
 	mov	r1, #0xf8
 	lsl	r2, #1
 	mov	r0, #0xc
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, #0xc
 	bl	__MapActor_WaitMovement
 	mov	r0, #0xd7
@@ -73,7 +73,7 @@
 	cmp	r5, #0
 	beq	.Lc62
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x23
 	mov	r3, #2

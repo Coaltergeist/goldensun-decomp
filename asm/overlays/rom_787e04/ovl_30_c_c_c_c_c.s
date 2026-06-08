@@ -11,7 +11,7 @@
 	bl	__Func_80970f8
 	bl	__Func_809728c
 	mov	r0, #1
-	bl	__Func_80967e4
+	bl	__FieldMove
 	bl	__Func_8097174
 	bl	__Func_8097194
 	pop	{r0}

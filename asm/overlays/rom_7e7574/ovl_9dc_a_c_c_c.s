@@ -92,7 +92,7 @@
 .L1082:
 	mov	r0, r7
 	bl	__DeleteActor
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, r8
 	pop	{r3}
 	mov	r8, r3

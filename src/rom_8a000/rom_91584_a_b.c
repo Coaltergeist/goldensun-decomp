@@ -1,4 +1,4 @@
-/* Cluster Func_8091584..Func_8091584 extracted from goldensun/asm/rom_8a000/rom_91584_a.s.
+/* Cluster MapActor_GetSpriteID..MapActor_GetSpriteID extracted from goldensun/asm/rom_8a000/rom_91584_a.s.
  *
  * Total .text for this TU = 40 bytes (= 0x28).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int GetFieldActor(unsigned int);
 
-unsigned int Func_8091584(unsigned int actorID) {
+unsigned int MapActor_GetSpriteID(unsigned int actorID) {
     unsigned int v0;
     unsigned int v3;
 

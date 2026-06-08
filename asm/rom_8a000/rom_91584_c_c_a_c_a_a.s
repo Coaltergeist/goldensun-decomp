@@ -6,7 +6,7 @@
 	mov	r6, r1
 	ldr	r7, [r3]
 	mov	r5, r0
-	bl	Func_808b05c
+	bl	GetEncounterGroup
 	mov	r1, #0xbe
 	lsl	r1, #1
 	add	r3, r7, r1

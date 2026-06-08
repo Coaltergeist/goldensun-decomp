@@ -49,7 +49,7 @@
 	mov	r1, #0
 	mov	r0, #0xb5
 	bl	__Func_8091a58
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_883_2008a44
@@ -70,7 +70,7 @@
 	mov	r1, #0
 	mov	r0, #0xb5
 	bl	__Func_8091a58
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_883_2008a74

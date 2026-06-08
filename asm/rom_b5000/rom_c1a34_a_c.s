@@ -269,7 +269,7 @@
 	mov	r5, #0x80
 	lsl	r5, #10
 	asr	r5, r0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	ldr	r3, =0xffff
 	and	r0, r3
 	cmp	r5, r0

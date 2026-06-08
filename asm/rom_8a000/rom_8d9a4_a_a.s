@@ -251,7 +251,7 @@
 .L8dbd0:
 	ldrh	r1, [r7, #8]
 	mov	r0, #0x63
-	bl	Func_808b05c
+	bl	GetEncounterGroup
 	mov	r1, #0xbe
 	lsl	r1, #1
 	add	r3, r5, r1
@@ -356,7 +356,7 @@
 	mov	r1, #1
 	bl	_Func_801776c
 	mov	r0, r9
-	bl	Func_808f0c8
+	bl	DeleteMapActorPtr
 	ldr	r3, [r7]
 	mov	r2, r11
 	and	r3, r2
@@ -420,7 +420,7 @@
 	add	r0, r5, r0
 	bl	_Func_801776c
 .L8dd50:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	bl	Func_809202c
 	b	.L8dd6a
 .L8dd5a:

@@ -30,8 +30,8 @@
 	ldrsh	r0, [r3, r2]
 	bl	__Func_8091e9c
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
-	bl	__Func_8091750
+	bl	__WaitMapTransition
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

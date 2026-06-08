@@ -94,7 +94,7 @@
 	mov	r0, #0xc
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .L1464:
 	mov	r0, #0
 	add	sp, #8

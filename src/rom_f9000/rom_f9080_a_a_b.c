@@ -1,4 +1,4 @@
-/* Cluster Func_80f9438..Func_80f9438 extracted from goldensun/asm/rom_f9000/rom_f9080_a_a.s.
+/* Cluster InitSoundEngine..InitSoundEngine extracted from goldensun/asm/rom_f9000/rom_f9080_a_a.s.
  *
  * Total .text for this TU = 144 bytes (= 0x90).
  * Preserves the original ROM layout when slotted between
@@ -23,7 +23,7 @@ extern unsigned char ewram_2003040;
 extern unsigned char ewram_2003004;
 extern unsigned short ewram_2003020[];
 
-void Func_80f9438(void) {
+void InitSoundEngine(void) {
     int i;
 
     m4aSoundInit();

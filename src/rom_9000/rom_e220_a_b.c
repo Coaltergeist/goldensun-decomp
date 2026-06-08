@@ -1,11 +1,11 @@
-/* Cluster Func_800e220..Func_800e308 extracted from goldensun/asm/rom_9000/rom_e220_a.s.
+/* Cluster ActorAttrOp_script..ActorAttrOp_z extracted from goldensun/asm/rom_9000/rom_e220_a.s.
  *
  * Total .text for this TU = 276 bytes (= 0x114).
  * Preserves the original ROM layout when slotted between
  * asm/rom_9000/rom_e220_a_a.o and asm/rom_9000/rom_e220_a_c.o in
  * goldensun/stage1.ld.
  */
-void Func_800e220(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_script(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char v;
     if (op == 0) {
@@ -17,7 +17,7 @@ void Func_800e220(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e24c(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_scriptPos(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
     if (op == 0) {
@@ -29,7 +29,7 @@ void Func_800e24c(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = eq;
     }
 }
-void Func_800e280(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_facing(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned short v;
     if (op == 0) {
@@ -43,7 +43,7 @@ void Func_800e280(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = v;
     }
 }
-void Func_800e2b0(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_x(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
     if (op == 0) {
@@ -55,7 +55,7 @@ void Func_800e2b0(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e2dc(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_y(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
     if (op == 0) {
@@ -69,7 +69,7 @@ void Func_800e2dc(unsigned char *actor, unsigned int op, unsigned int param)
         *(actor + 0x57) = eq;
     }
 }
-void Func_800e308(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_z(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
     if (op == 0) {

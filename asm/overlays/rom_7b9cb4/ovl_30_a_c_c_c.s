@@ -31,7 +31,7 @@
 	mov	r3, #0x28
 	str	r3, [r2]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #0
@@ -64,15 +64,15 @@
 	mov	r0, #1
 	ldr	r1, =0x9999
 	ldr	r2, =0x4ccc
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #2
 	ldr	r1, =0x9999
 	ldr	r2, =0x4ccc
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r2, =0x4ccc
 	mov	r0, #3
 	ldr	r1, =0x9999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, =gScript_932__0200c054
 	mov	r0, #1
 	bl	__MapActor_SetBehavior
@@ -106,7 +106,7 @@
 	mov	r0, #1
 	bl	__Func_8092adc
 	ldr	r0, =0x190c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r2, #0xa
 	mov	r0, #1
 	mov	r1, #0
@@ -134,12 +134,12 @@
 	bne	.L316e
 	mov	r0, #2
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	b	.L3184
 .L316e:
 	mov	r0, #2
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	ldr	r2, [r5]
 	mov	r3, #0xec
 	lsl	r3, #1
@@ -163,14 +163,14 @@
 	bl	__MapActor_SetAnim
 	mov	r1, #3
 	mov	r0, #0
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #2
 	mov	r0, #3
 	bl	__Func_80925cc
 	ldr	r0, =0x1910
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #3
 	mov	r1, #0
 	bl	__ActorMessage
@@ -306,7 +306,7 @@
 	bl	__MapActor_SetAnim
 	mov	r1, #3
 	mov	r0, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #3
@@ -328,14 +328,14 @@
 	bl	__Func_8092adc
 	mov	r0, #1
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r2, #0xa
 	mov	r0, #1
 	mov	r1, #0
 	bl	__Func_8093040
 	mov	r0, #0
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #1
 	mov	r1, #3
 	bl	__MapActor_SetAnim
@@ -344,7 +344,7 @@
 	bl	__MapActor_SetAnim
 	mov	r1, #3
 	mov	r0, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	ldr	r5, =gScript_932__0200c12c
@@ -376,7 +376,7 @@
 	str	r2, [r3]
 	ldr	r0, =0x909
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -475,7 +475,7 @@
 	mov	r3, r9
 	bl	__Actor_TravelTo
 	mov	r0, r5
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r3, r5
 	mov	r6, #0
 	add	r3, #0x22

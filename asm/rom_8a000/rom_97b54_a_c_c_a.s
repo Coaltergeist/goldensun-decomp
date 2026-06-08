@@ -52,7 +52,7 @@
 	bl	Func_809ba70
 	ldr	r0, [r5]
 	mov	r1, #9
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	ldr	r3, =0xb333
 	mov	r0, #2
 	str	r3, [r5, #0x2c]

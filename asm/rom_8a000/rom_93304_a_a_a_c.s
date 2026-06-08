@@ -9,7 +9,7 @@
 	lsl	r3, #1
 	add	r0, r3
 	ldr	r0, [r0]
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, #2
 	bl	CutsceneWait
 	pop	{r0}

@@ -43,7 +43,7 @@
 	add	r0, r9
 	mov	r8, r0
 	ldrb	r0, [r5]
-	bl	Func_8079ad8
+	bl	GetClassInfo
 	str	r0, [sp, #4]
 	ldrb	r3, [r5]
 	mov	r4, #0x80

@@ -78,7 +78,7 @@
 	ldr	r0, =0xee4
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_882_200c5fc
@@ -89,7 +89,7 @@
 	ldr	r0, =0x1120
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_882_200c618

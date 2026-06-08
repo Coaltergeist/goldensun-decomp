@@ -1,4 +1,4 @@
-/* Cluster Func_80e732c..Func_80e732c extracted from goldensun/asm/rom_c9000/rom_e7320_c.s.
+/* Cluster Anim_OuterSpace..Anim_OuterSpace extracted from goldensun/asm/rom_c9000/rom_e7320_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Meteor(void *context, int subanim);
 
-void Func_80e732c(void *context) {
+void Anim_OuterSpace(void *context) {
     BaseAnim_Meteor(context, 1);
 }

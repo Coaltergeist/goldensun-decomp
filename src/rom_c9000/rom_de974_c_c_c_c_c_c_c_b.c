@@ -1,4 +1,4 @@
-/* Cluster Func_80dea30..Func_80dea30 extracted from goldensun/asm/rom_c9000/rom_de974_c_c_c_c_c_c_c.s.
+/* Cluster Anim_IceBreath..Anim_IceBreath extracted from goldensun/asm/rom_c9000/rom_de974_c_c_c_c_c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_ParticleSpray(void *context, int subanim);
 
-void Func_80dea30(void *context) {
+void Anim_IceBreath(void *context) {
     BaseAnim_ParticleSpray(context, 0xa);
 }

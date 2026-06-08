@@ -5,7 +5,7 @@
 	bl	__CutsceneStart
 	ldr	r0, =0x866
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_903_20084d4

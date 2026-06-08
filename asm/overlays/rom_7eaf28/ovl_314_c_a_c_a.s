@@ -117,7 +117,7 @@
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, r6
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 .L4c2:
 	mov	r0, r6
 	bl	__MapActor_WaitMovement
@@ -160,7 +160,7 @@
 	lsl	r0, #2
 	mov	r1, #0xb4
 	bl	__SetFlagByte
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xbe
 	ldr	r3, [r3]

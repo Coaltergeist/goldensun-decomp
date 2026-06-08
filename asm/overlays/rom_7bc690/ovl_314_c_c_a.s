@@ -71,7 +71,7 @@
 	bl	__PlaySound
 	mov	r0, #3
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_933_2008498

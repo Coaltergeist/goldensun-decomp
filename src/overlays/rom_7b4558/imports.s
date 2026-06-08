@@ -12,10 +12,10 @@
 	.export_func _Actor_SetScript
 	.export_func _CreateActor
 	.export_func _Actor_TravelTo
-	.export_func _Func_800ca6c
+	.export_func _Actor_WaitMovement
 	.export_func _Func_8010704
 	.export_func _TestCollision
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _Func_8012330
 	.export_func _Func_8012350
@@ -25,10 +25,10 @@
 	.export_func _SetFlag
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
+	.export_func _MapActor_SetSpeed
 	.export_func _MapActor_SetBehavior
 	.export_func _Func_8092158
 	.export_func _Func_809218c
@@ -55,7 +55,7 @@
 	.export_func _Func_8091f14
 	.export_func _Func_8091f90
 	.export_func _MapTransitionIn
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _Func_808f1c0
 	.export_func _Func_809202c
 	.export_func _PlaySound

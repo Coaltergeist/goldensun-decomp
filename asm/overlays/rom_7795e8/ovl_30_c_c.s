@@ -446,7 +446,7 @@
 	add	r3, r1
 	str	r2, [r3]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	ldr	r3, =gState
 	mov	r0, #0xe1
 	lsl	r0, #1
@@ -1413,7 +1413,7 @@
 	mov	r0, #0x11
 	bl	__PlaySound
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 .Lcbe:

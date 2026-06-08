@@ -1,4 +1,4 @@
-/* Cluster Func_8094354..Func_8094354 extracted from goldensun/asm/rom_8a000/rom_93304_c.s.
+/* Cluster Player_EnterStairsUp..Player_EnterStairsUp extracted from goldensun/asm/rom_8a000/rom_93304_c.s.
  *
  * Total .text for this TU = 20 bytes (= 0x14).
  * Preserves the original ROM layout when slotted between
@@ -8,7 +8,7 @@
 extern void Func_942e0(unsigned int anim);
 extern void _SetFlag(int x);
 
-void Func_8094354(void) {
+void Player_EnterStairsUp(void) {
     Func_942e0(0x1a);
     _SetFlag(0x90 << 1);
 }

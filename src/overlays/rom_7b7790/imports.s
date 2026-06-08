@@ -4,19 +4,19 @@
 	.export_func _Actor_SetAnim
 	.export_func _Actor_SetScript
 	.export_func _CreateActor
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _GetFlag
 	.export_func _ClearFlag
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_808b868
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetAnim
 	.export_func _Func_809280c
 	.export_func _Func_80929d8
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8093054

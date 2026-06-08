@@ -91,14 +91,14 @@
 	mov	r0, #0xe2
 	bl	__PlaySound
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
 	bl	__PlaySound
 	mov	r0, r7
 	mov	r1, #2
 	bl	__Actor_SetAnim
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -312,7 +312,7 @@
 	mov	r0, r9
 	ldr	r2, =0x3333
 	lsl	r1, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, r6
 	mov	r1, #2
 	bl	__Actor_SetAnim
@@ -327,12 +327,12 @@
 	mov	r0, #0xef
 	bl	__PlaySound
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r1, #1
 	mov	r0, r6
 	bl	__Actor_SetAnim
 	mov	r0, r5
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
 	bl	__PlaySound
@@ -343,7 +343,7 @@
 	bl	__Actor_SetAnim
 	mov	r0, #0xf
 	bl	__CutsceneWait
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #4
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

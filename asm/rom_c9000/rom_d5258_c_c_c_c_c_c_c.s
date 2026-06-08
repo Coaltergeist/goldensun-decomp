@@ -343,7 +343,7 @@
 	ldr	r3, [r5]
 	ldr	r1, [sp, #0x10]
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [sp, #0x38]
 	ldr	r0, [r0]
 	lsl	r3, #3
@@ -366,7 +366,7 @@
 	add	r5, sp, #0x50
 	ldrsh	r0, [r3, r2]
 	mov	r1, r5
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r2, =Data_eded0
 	ldr	r7, [sp, #0x40]
 	mov	r0, #0
@@ -476,7 +476,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x30]
 	ldr	r1, [sp, #0x24]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r2, [sp, #0x2c]
 	ldr	r4, [sp, #0x1c]
 	ldr	r3, [r2, #8]
@@ -959,12 +959,12 @@
 	ldr	r3, [r7]
 	mov	r1, r8
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	bl	InitMatrixStack
 	mov	r0, r11
 	ldr	r1, [sp, #8]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, [r5, #8]
 	str	r3, [r6]
 	mov	r3, #0xa0
@@ -1262,7 +1262,7 @@
 	add	r5, sp, #0x18
 	ldrsh	r0, [r2, r3]
 	mov	r1, r5
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	mov	r2, r11
 	ldr	r3, [r2]
 	ldr	r3, [r3, #4]
@@ -1402,13 +1402,13 @@
 	bl	BuildDraw2DFuncs
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r0, [r0]
 	mov	r9, r0
 	mov	r5, #0x24
 	ldrsh	r0, [r3, r5]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	ldr	r7, =gBuffer
 	str	r0, [sp, #0x38]
@@ -1539,7 +1539,7 @@
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r3, r9
 	sub	r3, #0x1e
 	cmp	r3, #0x27
@@ -1855,7 +1855,7 @@
 	mov	r1, r3
 	ldr	r0, [sp, #0x28]
 	str	r3, [sp, #0x24]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r5, [sp, #0x20]
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
@@ -1927,7 +1927,7 @@
 	ldr	r1, [sp, #0xc]
 	ldr	r3, [r5]
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [sp, #0x44]
 	lsl	r3, #3
 	ldr	r5, [r0]
@@ -1935,7 +1935,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x28]
 	ldr	r1, [sp, #0x24]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, [r5, #8]
 	mov	r0, r11
 	str	r3, [r0]

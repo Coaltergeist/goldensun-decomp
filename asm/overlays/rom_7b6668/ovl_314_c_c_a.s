@@ -20,11 +20,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x17e8
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_928_20085d4
@@ -62,7 +62,7 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x17fb
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x80
 	lsl	r0, #2
 	bl	__GetFlag
@@ -101,7 +101,7 @@
 	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_928_2008500
 	str	r3, [r0, #0x6c]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L916
 .L6a2:
 	mov	r0, #0
@@ -127,7 +127,7 @@
 	mov	r0, #0
 	lsl	r1, #8
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0
 	mov	r1, #0x12
 	mov	r0, #0
@@ -283,7 +283,7 @@
 	mov	r0, #0x46
 	bl	__CutsceneWait
 	ldr	r0, =0x17fa
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0x14
@@ -308,7 +308,7 @@
 	mov	r0, #0
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	lsl	r1, #8
 	mov	r2, #0xa
@@ -337,7 +337,7 @@
 	mov	r0, #0x12
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0x12
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0x10]
@@ -367,7 +367,7 @@
 	mov	r3, #1
 	orr	r3, r2
 	strb	r3, [r0]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L916:
 	add	sp, #8
 	pop	{r5, r6, r7}
@@ -431,7 +431,7 @@
 	mov	r0, #0x14
 	mov	r1, #2
 	bl	__Func_8092b08
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -460,7 +460,7 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x17f4
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
@@ -468,11 +468,11 @@
 	mov	r1, #0
 	mov	r2, #0xa
 	bl	__Func_8092adc
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.Lc9c
 .La2a:
 	ldr	r0, =0x17f2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
@@ -584,12 +584,12 @@
 	lsl	r1, #10
 	mov	r0, #0xe
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0x9c
 	lsl	r2, #1
 	mov	r1, #0xa8
 	mov	r0, #0xe
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, #0xe
 	bl	__MapActor_WaitMovement
 	mov	r0, #0x86
@@ -629,7 +629,7 @@
 	mov	r1, #0x92
 	lsl	r2, #1
 	mov	r0, #0xe
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, #0xe
 	bl	__MapActor_WaitMovement
 	mov	r0, r5
@@ -736,7 +736,7 @@
 	ldr	r0, =0x202
 	bl	__SetFlag
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Lc9c:
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}
@@ -753,11 +753,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x17f7
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0x11
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_928_2008cec
@@ -835,7 +835,7 @@
 	strb	r3, [r7]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0xa
 	ldrsh	r2, [r6, r3]
 	mov	r3, #2
@@ -847,10 +847,10 @@
 	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, r8
 	strb	r3, [r7]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Ldd8:
 	add	sp, #0xc
 	pop	{r3}
@@ -873,7 +873,7 @@
 	lsl	r1, #8
 	mov	r0, #0
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	cmp	r5, #6
 	bne	.Le20
 	mov	r0, #0
@@ -991,7 +991,7 @@
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
 	bl	OvlFunc_928_2008de8
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -1082,7 +1082,7 @@
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x17fd
-	bl	__Func_8092b94
+	bl	__MessageID
 	ldr	r0, =0x203
 	bl	__GetFlag
 	cmp	r0, #0
@@ -1102,7 +1102,7 @@
 	ldr	r0, =0x203
 	bl	__SetFlag
 	bl	__Func_809202c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x10
 	pop	{r3, r5, r6}
 	mov	r8, r3
@@ -1159,13 +1159,13 @@
 	mov	r0, #0x12
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #0
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x8c
 	mov	r0, #0x12
 	lsl	r1, #1
@@ -1195,7 +1195,7 @@
 	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_928_2008500
 	str	r3, [r0, #0x6c]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

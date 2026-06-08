@@ -103,18 +103,18 @@
 	.incrom 0x133fc, 0x134fc
 .L134fc:
 	.word	Func_8011ce0
-	.word	Func_8011cec
-	.word	Func_8011d10
+	.word	HeightTile_1
+	.word	HeightTile_2
 	.word	HeightTile_3
 	.word	HeightTile_4
 	.word	HeightTile_5
 	.word	HeightTile_6
 	.word	HeightTile_7
-	.word	Func_8011e50
+	.word	HeightTile_8
 	.word	HeightTile_9
 	.word	HeightTile_A
 	.word	HeightTile_B
-	.word	Func_8011f14
-	.word	Func_8011f28
+	.word	HeightTile_C
+	.word	HeightTile_D
 	.word	Func_8011f3c
 	.word	Func_8011f48

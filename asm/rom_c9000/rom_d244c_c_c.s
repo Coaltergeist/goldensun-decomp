@@ -136,7 +136,7 @@
 	add	r6, sp, #0x3c
 	ldr	r0, [r3, #8]
 	mov	r1, r6
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r6]
 	lsr	r2, r3, #31
 	add	r3, r2
@@ -306,7 +306,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x30]
 	ldr	r1, [sp, #0xc]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r4, [sp, #0x24]
 	cmp	r4, #0xb2
 	bne	.Ld26f2

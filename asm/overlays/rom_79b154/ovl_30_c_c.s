@@ -80,7 +80,7 @@
 	ldr	r3, [r6, #8]
 	bl	__Actor_TravelTo
 	mov	r0, r7
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	ldr	r3, [r6]
 	str	r3, [r7, #8]
 	ldr	r3, [r6, #8]

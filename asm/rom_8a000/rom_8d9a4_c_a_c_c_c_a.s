@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_808ed4c
 	push	{lr}
-	bl	Func_808ec14
+	bl	GetMapActorIndex
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2

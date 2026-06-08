@@ -37,7 +37,7 @@
 	bne	.Lb2
 	bl	OvlFunc_890_2009be8
 .Lb2:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.Lf0
 .Lb8:
 	mov	r0, #0x80
@@ -59,7 +59,7 @@
 	bl	__ClearFlag
 	ldr	r0, =0x202
 	bl	__ClearFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Lf0:
 	pop	{r0}
 	bx	r0
@@ -86,7 +86,7 @@
 	bl	__ClearFlag
 	ldr	r0, =0x202
 	bl	__ClearFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L142:
 	pop	{r0}
 	bx	r0
@@ -116,7 +116,7 @@
 	bl	__ClearFlag
 	ldr	r0, =0x202
 	bl	__ClearFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L1d6
 .L194:
 	ldr	r0, =0x201
@@ -142,7 +142,7 @@
 	bne	.L1d2
 	bl	OvlFunc_890_20089f4
 .L1d2:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1d6:
 	pop	{r0}
 	bx	r0

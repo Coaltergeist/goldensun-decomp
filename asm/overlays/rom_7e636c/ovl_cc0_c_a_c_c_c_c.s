@@ -39,7 +39,7 @@
 	ldr	r0, =0x9a5
 	bl	__SetFlag
 .L11b4:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

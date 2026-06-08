@@ -25,16 +25,16 @@
 	.export_func _Actor_SetScript
 	.export_func _CreateActor
 	.export_func _Camera_SetTarget
-	.export_func _Func_800c4ac
-	.export_func _Func_800c4ec
+	.export_func _Actor_Stop
+	.export_func _Actor_WaitScript
 	.export_func _Actor_TravelTo
-	.export_func _Func_800ca6c
+	.export_func _Actor_WaitMovement
 	.export_func _Func_8011f54
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
 	.export_func _Func_8010788
 	.export_func _TestCollision
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_801776c
 	.export_func _Func_8019908
 	.export_func _LoadItemIcon
@@ -53,24 +53,24 @@
 	.export_func _Func_807808c
 	.export_func _CutsceneWait
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092924
-	.export_func _Func_8092064
+	.export_func _DeleteFieldActor
+	.export_func _MapActor_SetSpeed
 	.export_func _MapActor_WaitScript
-	.export_func _Func_8092128
+	.export_func _MapActor_TravelTo
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
-	.export_func _Func_8092548
+	.export_func _MapActor_DoAnim
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
 	.export_func _Func_809280c
 	.export_func _Func_8092848
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _Func_8092c40
 	.export_func _ActorMessage
 	.export_func _Func_8093054
@@ -88,10 +88,10 @@
 	.export_func _Func_8093c00
 	.export_func _MapTransitionIn
 	.export_func _MapTransitionOut
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _GetFieldActor
 	.export_func _Func_808e118
-	.export_func _Func_808acc4
+	.export_func _PlayMapMusic
 	.export_func _Func_8091858
 	.export_func _MapActor_SetExtra
 	.export_func _Func_80a7380

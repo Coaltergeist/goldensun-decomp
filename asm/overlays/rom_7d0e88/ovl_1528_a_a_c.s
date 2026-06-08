@@ -323,7 +323,7 @@
 	lsl	r0, #2
 	bl	__ClearFlag
 .L190c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -1200,7 +1200,7 @@
 	orr	r5, r3
 	strb	r5, [r0]
 .L2028:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

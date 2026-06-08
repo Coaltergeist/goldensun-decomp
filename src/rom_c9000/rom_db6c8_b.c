@@ -1,4 +1,4 @@
-/* Cluster Func_80db6c8..Func_80db6c8 extracted from goldensun/asm/rom_c9000/rom_db6c8.s.
+/* Cluster Anim_SmokeBomb..Anim_SmokeBomb extracted from goldensun/asm/rom_c9000/rom_db6c8.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Blast(void *context, int subanim);
 
-void Func_80db6c8(void *context) {
+void Anim_SmokeBomb(void *context) {
     BaseAnim_Blast(context, 1);
 }

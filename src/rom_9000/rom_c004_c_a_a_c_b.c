@@ -1,4 +1,4 @@
-/* Cluster Func_800c4ec..Func_800c4ec extracted from goldensun/asm/rom_9000/rom_c004_c_a_a_c.s.
+/* Cluster Actor_WaitScript..Actor_WaitScript extracted from goldensun/asm/rom_9000/rom_c004_c_a_a_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern void WaitFrames(unsigned int nframes);
 
-void Func_800c4ec(int actor) {
+void Actor_WaitScript(int actor) {
     int idx;
     int base;
     int r6;

@@ -232,7 +232,7 @@
 	mov	r0, r6
 	bl	_Actor_TravelTo
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r6, #0x14]
 	mov	r5, #0

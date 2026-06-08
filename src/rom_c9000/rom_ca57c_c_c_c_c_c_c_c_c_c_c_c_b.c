@@ -1,4 +1,4 @@
-/* Cluster Func_80ca600..Func_80ca600 extracted from goldensun/asm/rom_c9000/rom_ca57c_c_c_c_c_c_c_c_c_c_c_c.s.
+/* Cluster Anim_DrainFang..Anim_DrainFang extracted from goldensun/asm/rom_c9000/rom_ca57c_c_c_c_c_c_c_c_c_c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Bite_Sting(void *context, int subanim);
 
-void Func_80ca600(void *context) {
+void Anim_DrainFang(void *context) {
     BaseAnim_Bite_Sting(context, 11);
 }

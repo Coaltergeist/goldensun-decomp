@@ -432,7 +432,7 @@
 	mov	r3, r11
 	and	r1, r3
 	mov	r0, r6
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
@@ -448,7 +448,7 @@
 	bl	_Actor_SetAnim
 	mov	r0, r6
 	mov	r1, r11
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r6
 	mov	r1, #0xcf
 	bl	Func_8093af8
@@ -504,7 +504,7 @@
 	ldrb	r2, [r2]
 	mov	r3, r8
 	strb	r2, [r3]
-	bl	Func_8091750
+	bl	CutsceneEnd
 	mov	r3, r10
 	cmp	r3, #0
 	beq	.L93dd8
@@ -656,7 +656,7 @@
 	strb	r7, [r3]
 	mov	r0, r6
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r6
 	mov	r1, #0xd
 	bl	_Actor_SetAnim
@@ -693,7 +693,7 @@
 	mov	r0, r6
 	str	r3, [r6, #0x14]
 	mov	r1, #1
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, #6
 	bl	CutsceneWait
 	mov	r5, #0
@@ -707,11 +707,11 @@
 	lsl	r3, #8
 	strh	r3, [r6, #6]
 .L93f6a:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	mov	r0, #0
 	b	.L93f7a
 .L93f72:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	mov	r0, #1
 	neg	r0, r0
 .L93f7a:
@@ -842,7 +842,7 @@
 	mov	r11, r2
 	mov	r0, r7
 	mov	r1, r11
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r7, #0x30]
@@ -892,7 +892,7 @@
 	str	r3, [r7, #0x14]
 	mov	r0, r7
 	mov	r1, r11
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, #4
 	bl	CutsceneWait
 	mov	r3, r9
@@ -901,7 +901,7 @@
 	add	r3, #0x5a
 	strb	r5, [r3]
 .L94112:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	mov	r0, #0
 	b	.L94140
 
@@ -911,7 +911,7 @@
 	.pool
 
 .L94138:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	mov	r0, #1
 	neg	r0, r0
 .L94140:
@@ -979,7 +979,7 @@
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldr	r3, [r5]
 	mov	r2, #8
 	ldrsb	r2, [r0, r2]

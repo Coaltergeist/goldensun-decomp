@@ -95,7 +95,7 @@
 .thumb_func_start Func_809ae3c
 	push	{r5, lr}
 	mov	r5, r0
-	bl	Func_80915dc
+	bl	MapActor_GetName
 	cmp	r0, #0xff
 	bne	.L9ae4e
 	mov	r0, #1

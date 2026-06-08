@@ -6,7 +6,7 @@
 	ldr	r0, =0x1637
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_924_2008f14

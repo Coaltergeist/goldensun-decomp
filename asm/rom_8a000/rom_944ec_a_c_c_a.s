@@ -101,7 +101,7 @@
 	mov	r1, r5
 	bl	Func_80970f8
 	mov	r0, r5
-	bl	Func_809ab98
+	bl	Field_Halt_Target
 	mov	r0, r5
 	bl	Func_809ad90
 	strh	r5, [r7]
@@ -225,11 +225,11 @@
 	b	.L96a92
 .L96a1a:
 	mov	r0, r5
-	bl	Func_8098ccc
+	bl	Field_Force_Target
 	b	.L96a92
 .L96a22:
 	mov	r0, r5
-	bl	Func_80999e4
+	bl	Field_Douse_Target
 	b	.L96a92
 .L96a2a:
 	mov	r0, r5
@@ -257,19 +257,19 @@
 	bl	Func_809ad90
 	strh	r5, [r6]
 	mov	r0, r5
-	bl	Func_809ab98
+	bl	Field_Halt_Target
 	b	.L96a92
 .L96a64:
 	mov	r0, r5
-	bl	Func_80994c0
+	bl	Field_Ply_Target
 	b	.L96a92
 .L96a6c:
 	mov	r0, r5
-	bl	Func_809a8b8
+	bl	Field_Whirlwind_Target
 	b	.L96a92
 .L96a74:
 	mov	r0, r5
-	bl	Func_809ae58
+	bl	Field_Catch_Target
 	b	.L96a92
 .L96a7c:
 	bl	Field_Reveal
@@ -362,11 +362,11 @@
 	bge	.L96b5a
 	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r6
 	mov	r1, #0
 	bl	ActorMessage
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L96b60
 .L96b5a:
 	mov	r1, r6
@@ -381,7 +381,7 @@
 	ldr	r0, =0x927
 	mov	r1, #1
 	bl	_Func_801776c
-	bl	Func_8091750
+	bl	CutsceneEnd
 .L96b7c:
 	mov	r0, #0
 	pop	{r5, r6}

@@ -476,12 +476,12 @@
 	add	r5, r9
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r6, [r0]
 	mov	r1, #0x24
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	ldr	r2, [r6, #8]
 	ldr	r3, [r0, #8]
@@ -536,7 +536,7 @@
 	str	r1, [r6, #0x44]
 	mov	r0, r6
 	strb	r2, [r3]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r1, r10
 	mov	r2, #0
 	mov	r3, r8
@@ -557,7 +557,7 @@
 	ldr	r3, [r4]
 	mov	r1, r11
 	ldr	r0, [r3, #8]
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	mov	r6, r11
 	ldr	r2, [r6]
 	mov	r3, #0x50

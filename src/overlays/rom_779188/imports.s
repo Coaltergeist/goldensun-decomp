@@ -18,7 +18,7 @@
 	.export_func _MapActor_GetActor
 	.export_func _SetDestMap
 	.export_func _MapTransitionIn
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _StartGS1Credits
 	.export_func _StartTitleScreen
 	.export_func _NintendoLogo

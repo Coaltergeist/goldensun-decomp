@@ -43,7 +43,7 @@
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .Lc5a:
 	mov	r0, #8
 	bl	OvlFunc_915_20088c0

@@ -42,19 +42,19 @@
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	bl	__MapTransitionIn
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #10
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x84
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xc4
 	bl	__Func_8092158
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_20097a8

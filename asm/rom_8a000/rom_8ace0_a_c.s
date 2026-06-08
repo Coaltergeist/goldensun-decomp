@@ -163,7 +163,7 @@
 	bhi	.L8b528
 	mov	r0, r6
 	mov	r1, #0xe2
-	bl	_Func_800c430
+	bl	_Actor_AddSpriteLayer
 	b	.L8b528
 .L8b512:
 	ldr	r0, =0x109
@@ -174,7 +174,7 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	mov	r0, r6
-	bl	_Func_800d130
+	bl	_Actor_SetPos
 .L8b528:
 	cmp	r6, #0
 	beq	.L8b600

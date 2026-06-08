@@ -294,7 +294,7 @@
 	bl	Func_808d394
 	mov	r1, #0
 	ldrsh	r0, [r0, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r2, #8
 	ldrsb	r2, [r0, r2]
 	ldr	r3, [r6, #0xc]
@@ -315,7 +315,7 @@
 	bl	Func_808d394
 	mov	r2, #0
 	ldrsh	r0, [r0, r2]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r4, r9
 	mov	r3, #8
 	ldrsb	r3, [r0, r3]

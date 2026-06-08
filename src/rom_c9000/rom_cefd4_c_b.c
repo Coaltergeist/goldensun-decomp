@@ -1,4 +1,4 @@
-/* Cluster Func_80cefe0..Func_80cefe0 extracted from goldensun/asm/rom_c9000/rom_cefd4_c.s.
+/* Cluster Anim_Spasm..Anim_Spasm extracted from goldensun/asm/rom_c9000/rom_cefd4_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Spasm(void *context, int subanim);
 
-void Func_80cefe0(void *context) {
+void Anim_Spasm(void *context) {
     BaseAnim_Spasm(context, 0);
 }

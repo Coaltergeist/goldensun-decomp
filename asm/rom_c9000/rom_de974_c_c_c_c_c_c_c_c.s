@@ -5,7 +5,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #2
 	mov	r0, r5
@@ -325,7 +325,7 @@
 	bl	StartTask
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r6, [r0]
 	mov	r0, r8
 	lsl	r0, #2
@@ -376,7 +376,7 @@
 	ldr	r7, [sp, #0x14]
 	ldr	r3, [r4]
 	ldrsh	r0, [r3, r7]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r2, [sp, #0x44]
 	ldr	r4, [sp, #0x14]
 	ldr	r3, [r2]
@@ -828,7 +828,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x6c]
 	ldr	r1, [sp, #0x30]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r0, #0
 	str	r0, [sp, #0x3c]
 	str	r0, [sp, #0x80]
@@ -848,7 +848,7 @@
 	ldr	r3, [r4, r2]
 	ldr	r6, [sp, #0x20]
 	ldrsh	r0, [r3, r6]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	ldr	r1, [sp, #0x58]
 	str	r0, [sp, #0x38]
@@ -1778,7 +1778,7 @@
 
 .thumb_func_start Func_80df8b8
 	push	{r5, r6, lr}
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r6, r0
 	ldr	r5, [r6]
 	mov	r3, #0x80
@@ -1801,7 +1801,7 @@
 	mov	r3, #1
 	strb	r3, [r2]
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r1, [r6, #0xc]
 	mov	r0, r5
 	ldr	r3, [r6, #0x10]
@@ -1825,10 +1825,10 @@
 	push	{r5, r6}
 	mov	r6, r1
 	mov	r11, r2
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r5, r0
 	mov	r0, r6
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r6, [r5]
 	ldr	r0, [r0]
 	mov	r2, #0x50
@@ -1882,7 +1882,7 @@
 	str	r2, [r6, #0x44]
 	mov	r0, r6
 	strb	r1, [r3]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r6
 	mov	r1, r9
 	mov	r2, #0

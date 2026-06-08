@@ -1,4 +1,4 @@
-/* Cluster Func_80967e4..Func_80967e4 extracted from goldensun/asm/rom_8a000/rom_944ec_a_c.s.
+/* Cluster FieldMove..FieldMove extracted from goldensun/asm/rom_8a000/rom_944ec_a_c.s.
  *
  * Total .text for this TU = 44 bytes (= 0x2c).
  * Preserves the original ROM layout when slotted between
@@ -10,7 +10,7 @@ extern void FieldMove_Target(void);
 extern void Func_8096ab0(void);
 extern void Func_8096af0(void);
 
-void Func_80967e4(int param_1)
+void FieldMove(int param_1)
 {
 	if (param_1 == 0)
 		FieldMove_NoTarget();

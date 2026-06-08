@@ -885,7 +885,7 @@
 	mov	r1, r9
 	ldrsh	r0, [r3, r1]
 	mov	r1, r5
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r3, [r5]
 	ldr	r4, [sp, #0x1c]
 	cmp	r3, r4

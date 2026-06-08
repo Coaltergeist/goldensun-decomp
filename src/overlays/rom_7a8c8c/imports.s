@@ -15,12 +15,12 @@
 	.export_func _CreateActor
 	.export_func _DeleteActor
 	.export_func _Actor_TravelTo
-	.export_func _Func_800ca6c
+	.export_func _Actor_WaitMovement
 	.export_func _CopyMapTiles
 	.export_func _Func_8011f54
 	.export_func _Func_8012038
 	.export_func _Func_8010704
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_801776c
 	.export_func _LoadItemIcon
 	.export_func _CheckPartyItem
@@ -29,15 +29,15 @@
 	.export_func _ClearFlag
 	.export_func _Func_8078a08
 	.export_func _CutsceneStart
-	.export_func _Func_8091750
+	.export_func _CutsceneEnd
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
+	.export_func _MapActor_SetSpeed
 	.export_func _Func_8092158
 	.export_func _Func_809228c
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetAnim
-	.export_func _Func_8092560
+	.export_func _MapActor_Jump
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
 	.export_func _Func_8092b08
@@ -48,11 +48,11 @@
 	.export_func _Func_8091254
 	.export_func _MapTransitionIn
 	.export_func _MapTransitionOut
-	.export_func _Func_8091e20
+	.export_func _WaitMapTransition
 	.export_func _Func_808f140
 	.export_func _GetFieldActor
 	.export_func _Func_8091494
 	.export_func _Func_808e118
-	.export_func _Func_808acc4
+	.export_func _PlayMapMusic
 	.export_func _Func_80955b0
 	.export_func _PlaySound

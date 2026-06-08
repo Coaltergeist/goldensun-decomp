@@ -299,7 +299,7 @@
 	cmp	r0, #0
 	beq	.L694
 	ldr	r0, =0x1dd4
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__ActorMessage
@@ -310,7 +310,7 @@
 	cmp	r0, #0
 	beq	.L6dc
 	ldr	r0, =0x1d91
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	__Func_8092c40
@@ -336,12 +336,12 @@
 	b	.L6ea
 .L6dc:
 	ldr	r0, =0x1d31
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__ActorMessage
 .L6ea:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_945_2008670
@@ -350,11 +350,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1dd1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_945_2008708
@@ -367,7 +367,7 @@
 	cmp	r0, #0
 	beq	.L768
 	ldr	r0, =0x1eb2
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	bl	OvlFunc_945_200c86c
 	mov	r1, #0xd0
@@ -377,12 +377,12 @@
 	bl	__Func_8092adc
 	mov	r1, #4
 	mov	r0, #8
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #8
 	bl	OvlFunc_945_200c86c
 	mov	r0, #8
 	mov	r1, #3
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	b	.L7cc
 .L768:
 	ldr	r0, =0x925
@@ -390,7 +390,7 @@
 	cmp	r0, #0
 	beq	.L782
 	ldr	r0, =0x1e06
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -401,7 +401,7 @@
 	cmp	r0, #0
 	beq	.L7be
 	ldr	r0, =0x1dcd
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -423,12 +423,12 @@
 	b	.L7cc
 .L7be:
 	ldr	r0, =0x1d30
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
 .L7cc:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_945_2008728
@@ -444,7 +444,7 @@
 	mov	r0, #8
 	bl	__Func_809259c
 	ldr	r0, =0x1e13
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	bl	OvlFunc_945_200c86c
 	mov	r0, #8
@@ -491,12 +491,12 @@
 	b	.L88e
 .L880:
 	ldr	r0, =0x1d4e
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
 .L88e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_945_20087f8

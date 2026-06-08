@@ -144,7 +144,7 @@
 	bl	_Actor_SetScript
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r3, =Func_808f28c
 	str	r3, [r5, #0x6c]
 .L8f44a:

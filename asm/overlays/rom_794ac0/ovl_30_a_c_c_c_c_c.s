@@ -287,7 +287,7 @@
 	mov	r0, #0x1a
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r0, =0x859
 	bl	__GetFlag
 	cmp	r0, #0
@@ -357,7 +357,7 @@
 	cmp	r0, #0
 	beq	.L2a8c
 	bl	OvlFunc_899_200adb4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L2b92
 .L2a8c:
 	mov	r1, #7
@@ -367,11 +367,11 @@
 	mov	r0, #0x11
 	bl	__PlaySound
 	ldr	r0, =0x12c3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0xa
 	bl	OvlFunc_899_200c5f4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	b	.L2b92
 .L2ab2:
 	mov	r3, #0x15
@@ -532,11 +532,11 @@
 	mov	r0, #0xb
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0xc
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc4
 	mov	r2, #0xe0
 	mov	r0, #0
@@ -580,15 +580,15 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #2
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #1
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, #0xb0
 	mov	r0, #8
 	lsl	r1, #8
@@ -614,7 +614,7 @@
 	mov	r0, #0xa
 	bl	OvlFunc_899_200c63c
 	ldr	r0, =0x12dd
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xa
 	mov	r1, #0x1e
 	bl	OvlFunc_899_200c5f4
@@ -661,7 +661,7 @@
 	mov	r0, #0xc
 	mov	r1, #0x3c
 	bl	OvlFunc_899_200c5f4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -762,7 +762,7 @@
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	ldr	r0, =0x12e1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #1
 	mov	r0, #0xb
 	bl	__Func_80925cc

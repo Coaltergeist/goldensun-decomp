@@ -1,4 +1,4 @@
-/* Cluster Func_8098ccc..Func_8098ccc extracted from goldensun/asm/rom_8a000/rom_97b54_a_c.s.
+/* Cluster Field_Force_Target..Field_Force_Target extracted from goldensun/asm/rom_8a000/rom_97b54_a_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void Field_Force(void);
 
-void Func_8098ccc(void) {
+void Field_Force_Target(void) {
     Field_Force();
 }

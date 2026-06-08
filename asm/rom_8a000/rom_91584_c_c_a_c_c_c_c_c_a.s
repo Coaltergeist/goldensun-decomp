@@ -16,7 +16,7 @@
 	ldr	r2, =0x4ccc
 	mov	r0, r6
 	ldr	r1, =0x9999
-	bl	Func_8092064
+	bl	MapActor_SetSpeed
 	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
@@ -63,7 +63,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L923dc
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r5
 	mov	r1, #1
 	bl	_Actor_SetAnim
@@ -81,7 +81,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L9244a
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r3, #0
 	str	r3, [r5, #0x24]
 	str	r3, [r5, #0x28]
@@ -141,7 +141,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L924c4
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r3, #0
 	str	r3, [r5, #0x24]
 	str	r3, [r5, #0x28]

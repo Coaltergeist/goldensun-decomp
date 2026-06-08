@@ -99,7 +99,7 @@
 	str	r0, [r2]
 .L790ce:
 	mov	r0, r11
-	bl	Func_8078ed8
+	bl	GetPCBaseStats
 	mov	r2, #0
 	ldrsh	r3, [r6, r2]
 	mov	r1, r0

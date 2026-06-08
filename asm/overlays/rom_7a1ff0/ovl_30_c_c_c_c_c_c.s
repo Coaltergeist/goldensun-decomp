@@ -133,7 +133,7 @@
 	mov	r2, r8
 	strb	r2, [r3]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0x5c
 	add	r3, r7
 	mov	r2, r8

@@ -39,7 +39,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_964_20080c4
 	bl	OvlFunc_964_200a3a0
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -81,7 +81,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_964_20080c4
 	bl	OvlFunc_964_200a410
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

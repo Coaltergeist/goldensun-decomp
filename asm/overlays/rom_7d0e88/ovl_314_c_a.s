@@ -352,7 +352,7 @@
 	mov	r6, r0
 	str	r1, [sp, #4]
 	mov	r9, r1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, [r6, #8]
 	ldr	r2, [r6, #0x10]
 	mov	r0, #2
@@ -689,7 +689,7 @@
 	strb	r3, [r1]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, #2
 	ldrsh	r1, [r6, r2]
 	mov	r0, #0
@@ -701,11 +701,11 @@
 	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, r9
 	mov	r2, r10
 	strb	r1, [r2]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #1
 	b	.L1398
 .L1396:

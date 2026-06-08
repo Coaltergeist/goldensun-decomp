@@ -1,4 +1,4 @@
-/* Cluster Func_80d45f8..Func_80d45f8 extracted from goldensun/asm/rom_c9000/rom_d45ec_c.s.
+/* Cluster Anim_Dynamite..Anim_Dynamite extracted from goldensun/asm/rom_c9000/rom_d45ec_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Nova(void *context, int subanim);
 
-void Func_80d45f8(void *context) {
+void Anim_Dynamite(void *context) {
     BaseAnim_Nova(context, 1);
 }

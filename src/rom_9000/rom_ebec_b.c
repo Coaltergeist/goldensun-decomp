@@ -1,4 +1,4 @@
-/* Cluster Func_800f7dc..Func_800f7dc extracted from goldensun/asm/rom_9000/rom_ebec.s.
+/* Cluster ActorCmd_Camera2..ActorCmd_Camera2 extracted from goldensun/asm/rom_9000/rom_ebec.s.
  *
  * Total .text for this TU = 24 bytes (= 0x18).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int Func_800eaf8(unsigned int);
 
-unsigned int Func_800f7dc(unsigned int arg0) {
+unsigned int ActorCmd_Camera2(unsigned int arg0) {
     unsigned int r5;
     unsigned short r3;
 

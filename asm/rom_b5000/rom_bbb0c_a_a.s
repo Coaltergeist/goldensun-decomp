@@ -180,7 +180,7 @@
 	sub	r5, r2, r5
 	add	r5, #0x1e
 	mul	r5, r3
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	ldr	r3, =0xffff
 	and	r0, r3
 	cmp	r5, r0
@@ -306,7 +306,7 @@
 .Lbbd5e:
 	bl	Func_80b7548
 	mov	r0, r8
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r2, [r0, #0xc]
 	cmp	r2, #0
 	bge	.Lbbd72
@@ -590,7 +590,7 @@
 	mov	r0, #5
 	bl	Func_80bbabc
 .Lbbfbc:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	ldr	r4, =0x12b
 	and	r3, r0
@@ -825,7 +825,7 @@
 	ldr	r2, [sp, #0x30]
 	mov	r5, r0
 	mul	r5, r2
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r3, r0
 	add	r5, r3
@@ -1088,7 +1088,7 @@
 	bl	__divsi3
 	mov	r5, r0
 .Lbc3d8:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	ldr	r2, =0x12b
 	and	r3, r0
@@ -2809,7 +2809,7 @@
 	ldr	r4, [sp, #0x2c]
 	cmp	r4, #0
 	ble	.Lbd304
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -2846,7 +2846,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lbd35c
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -2900,7 +2900,7 @@
 	sub	sp, #4
 	str	r3, [sp]
 	mov	r5, r0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0xff
 	ldrb	r2, [r5]
 	and	r0, r3
@@ -3024,7 +3024,7 @@
 	lsl	r3, r2, #31
 	cmp	r3, #0
 	bne	.Lbd508
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r1, r8
 	mov	r3, #7
 	ldrb	r2, [r1]

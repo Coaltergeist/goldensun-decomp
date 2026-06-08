@@ -13,7 +13,7 @@
  *
  * non_matching: faithful logic, NOT byte-matched yet. The gMPlayTable /
  * song-table struct layouts are inferred (12-byte and 8-byte strides), the
- * 0x46/0x4b/0x43 -> sfx-mode classifier is inlined (cf. Func_80f95c8), and
+ * 0x46/0x4b/0x43 -> sfx-mode classifier is inlined (cf. GetSoundReverbType), and
  * the pooled-constant scheduling is unverified.
  *
  * Func_ -> friendly name:

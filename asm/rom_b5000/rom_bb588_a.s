@@ -93,7 +93,7 @@
 	mov	r0, r5
 	bl	_CalcStats
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -158,7 +158,7 @@
 	str	r3, [r7, #8]
 	mov	r1, r5
 	mov	r0, r11
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .Lbb704	@ 0x3ff
 	ldr	r2, .Lbb708	@ 0xfffffc00
 	and	r0, r3
@@ -315,7 +315,7 @@
 	str	r3, [r5, #8]
 	mov	r1, r11
 	mov	r0, r6
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .Lbb868	@ 0x3ff
 	ldr	r2, .Lbb86c	@ 0xfffffc00
 	and	r0, r3

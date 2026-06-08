@@ -1,4 +1,4 @@
-/* Cluster Func_80d9adc..Func_80d9adc extracted from goldensun/asm/rom_c9000/rom_d9ab8_c_c_c.s.
+/* Cluster Anim_Unused_Weaken..Anim_Unused_Weaken extracted from goldensun/asm/rom_c9000/rom_d9ab8_c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_StatDown(void *context, int subanim);
 
-void Func_80d9adc(void *context) {
+void Anim_Unused_Weaken(void *context) {
     BaseAnim_StatDown(context, 3);
 }

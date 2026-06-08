@@ -45,7 +45,7 @@
 	bl	__Func_8010704
 	bl	OvlFunc_964_20080c4
 	bl	OvlFunc_964_200a480
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}

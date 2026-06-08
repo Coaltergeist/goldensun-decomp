@@ -598,13 +598,13 @@
 	lsl	r1, #9
 	mov	r0, #8
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x80
 	mov	r2, #0x80
 	mov	r0, #9
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r0, =0x109
 	bl	__GetFlag
 	cmp	r0, #0

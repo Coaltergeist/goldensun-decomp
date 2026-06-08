@@ -35,12 +35,12 @@
 	b	.Lcc
 .Lbe:
 	ldr	r0, =0x16ad
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__ActorMessage
 .Lcc:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -63,12 +63,12 @@
 	b	.L114
 .L106:
 	ldr	r0, =0x16af
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x11
 	mov	r1, #0
 	bl	__ActorMessage
 .L114:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -91,12 +91,12 @@
 	b	.L15c
 .L14e:
 	ldr	r0, =0x16b1
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
 	bl	__ActorMessage
 .L15c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -119,12 +119,12 @@
 	b	.L1a4
 .L196:
 	ldr	r0, =0x16b7
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x13
 	mov	r1, #0
 	bl	__ActorMessage
 .L1a4:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

@@ -7,7 +7,7 @@
 	cmp	r0, #0
 	beq	.L8e
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .L8e:
 	pop	{r0}
 	bx	r0
@@ -59,7 +59,7 @@
 	beq	.Lfc
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x23
 	mov	r3, #1
@@ -157,7 +157,7 @@
 	beq	.L1d6
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x23
 	mov	r3, #1

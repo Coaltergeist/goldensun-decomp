@@ -183,7 +183,7 @@
 	lsl	r0, #16
 	bl	__divsi3
 	mov	r5, r0
-	bl	Func_8079bc4
+	bl	RPGRandom
 	ldr	r3, =0xffff
 	and	r0, r3
 	cmp	r5, r0
@@ -340,7 +340,7 @@
 	ldr	r1, =0x129
 	add	r3, r2, r1
 	ldrb	r0, [r3]
-	bl	Func_8079ad8
+	bl	GetClassInfo
 	mov	r2, #0
 	add	r0, #0x50
 .L79ed8:
@@ -582,7 +582,7 @@
 	mov	r1, #0x64
 	bl	__divsi3
 	mov	r5, r0
-	bl	Func_8079be8
+	bl	RPGRandom2
 	cmp	r5, r0
 	bge	.L7a074
 	add	r6, #1

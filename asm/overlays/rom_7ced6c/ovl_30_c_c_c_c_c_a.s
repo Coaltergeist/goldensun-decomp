@@ -104,7 +104,7 @@
 	ldr	r3, [r5, #0xc]
 	bl	OvlFunc_946_2008608
 .L1768:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}
@@ -201,11 +201,11 @@
 	mov	r0, #0xe2
 	bl	__PlaySound
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
 	bl	__PlaySound
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

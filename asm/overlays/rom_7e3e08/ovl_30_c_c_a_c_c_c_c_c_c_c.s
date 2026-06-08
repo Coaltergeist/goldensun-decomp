@@ -133,7 +133,7 @@
 	strb	r3, [r7]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, #2
 	ldrsh	r1, [r6, r2]
 	mov	r0, #0
@@ -145,10 +145,10 @@
 	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r8
 	strb	r2, [r7]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .Le9c:
 	add	sp, #0xc
 	pop	{r3}
@@ -177,7 +177,7 @@
 	ldr	r3, [r5, #0xc]
 	bl	OvlFunc_957_2008608
 .Led4:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}

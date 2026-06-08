@@ -251,7 +251,7 @@
 	mov	r5, r6
 .Lc04f2:
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	mov	r0, r5
 	bl	_GetUnit

@@ -1,4 +1,4 @@
-/* Cluster Func_80ceb3c..Func_80ceb3c extracted from goldensun/asm/rom_c9000/rom_ceb30_c.s.
+/* Cluster Anim_Rumble..Anim_Rumble extracted from goldensun/asm/rom_c9000/rom_ceb30_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_HauntAttack(int context, int subanim);
 
-void Func_80ceb3c(int context) {
+void Anim_Rumble(int context) {
     BaseAnim_HauntAttack(context, 1);
 }

@@ -91,14 +91,14 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1add
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__ActorMessage
 	mov	r0, #0x91
 	lsl	r0, #4
 	bl	__SetFlag
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_937_2008144
@@ -107,11 +107,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1ae3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0x10
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_937_200816c
@@ -138,14 +138,14 @@
 	cmp	r0, #0
 	beq	.L1ca
 	ldr	r0, =0x1afb
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
 	b	.L1e0
 .L1ca:
 	ldr	r0, =0x1ad7
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__Func_8093054
@@ -153,7 +153,7 @@
 	lsl	r0, #4
 	bl	__SetFlag
 .L1e0:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L1e4:
 	pop	{r0}
 	bx	r0
@@ -176,11 +176,11 @@
 .L21a:
 	bl	__CutsceneStart
 	ldr	r0, =0x1a8f
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L230:
 	pop	{r0}
 	bx	r0
@@ -250,7 +250,7 @@
 	lsl	r2, #7
 	lsl	r1, #8
 	mov	r0, #0
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -273,8 +273,8 @@
 	ldrsh	r0, [r3, r2]
 	bl	__Func_8091e9c
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
-	bl	__Func_8091750
+	bl	__WaitMapTransition
+	bl	__CutsceneEnd
 .L2fa:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -338,23 +338,23 @@
 	cmp	r0, #0
 	beq	.L3b8
 	mov	r0, #0xa
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0xb
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0xc
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0xd
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0xe
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0x11
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0x12
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0x13
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0xf
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	b	.L3d8
 .L3b8:
 	mov	r0, #0xd
@@ -367,9 +367,9 @@
 	cmp	r0, #0
 	beq	.L3d8
 	mov	r0, #0x10
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 	mov	r0, #0x11
-	bl	__Func_8092924
+	bl	__DeleteFieldActor
 .L3d8:
 	add	sp, #8
 	pop	{r0}

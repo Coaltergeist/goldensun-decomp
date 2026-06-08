@@ -1,11 +1,11 @@
-/* Cluster Func_8091d94..Func_8091d94 extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_a.s.
+/* Cluster LearnInnateMove..LearnInnateMove extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_a.s.
  *
  * Total .text for this TU = 52 bytes (= 0x34).
  * Preserves the original ROM layout when slotted between
  * asm/rom_8a000/rom_91584_c_c_a_a_a.o and asm/rom_8a000/rom_91584_c_c_a_a_c.o in
  * goldensun/stage1.ld.
  */
-/* Func_8091d94 = LearnInnateMove @ 0x08091D94
+/* LearnInnateMove = LearnInnateMove @ 0x08091D94
  *
  * Sieve decompilation with the single FP#9 fix applied: the 0x1e message ID is
  * the absolute symbol MSG_LEARN_INNATE_MOVE (message.h / message.sym), following
@@ -21,7 +21,7 @@ extern void _PlaySound(unsigned int);
 extern void _Func_8019908(unsigned int, unsigned int);
 extern void _Func_801776c(unsigned int, unsigned int);
 
-void Func_8091d94(unsigned int pc, unsigned int move) {
+void LearnInnateMove(unsigned int pc, unsigned int move) {
     unsigned int r5;
     unsigned int r6;
 

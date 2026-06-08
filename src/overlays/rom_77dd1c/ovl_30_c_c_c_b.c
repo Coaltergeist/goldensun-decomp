@@ -9,9 +9,9 @@ extern int __GetFlag(int);
 extern void __CutsceneStart(void);
 extern void __Func_80925cc(int, int);
 extern void __CutsceneWait(int);
-extern void __Func_8092b94(int);
+extern void __MessageID(int);
 extern void OvlFunc_882_200973c(void);
-extern void __Func_8091750(void);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_882_2009684(void)
 {
@@ -20,8 +20,8 @@ void OvlFunc_882_2009684(void)
         __CutsceneStart();
         __Func_80925cc(0x16, 2);
         __CutsceneWait(0x14);
-        __Func_8092b94(0xe71);
+        __MessageID(0xe71);
         OvlFunc_882_200973c();
-        __Func_8091750();
+        __CutsceneEnd();
     }
 }

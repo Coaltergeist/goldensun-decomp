@@ -1,4 +1,4 @@
-/* Cluster Func_80d8948..Func_80d8948 extracted from goldensun/asm/rom_c9000/rom_d8948.s.
+/* Cluster Anim_Ply..Anim_Ply extracted from goldensun/asm/rom_c9000/rom_d8948.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Heal(void *context, int subanim);
 
-void Func_80d8948(void *context) {
+void Anim_Ply(void *context) {
     BaseAnim_Heal(context, 0);
 }

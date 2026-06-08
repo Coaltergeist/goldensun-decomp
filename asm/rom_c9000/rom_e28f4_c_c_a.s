@@ -172,7 +172,7 @@
 	add	r3, #0x74
 	mov	r1, r3
 	str	r3, [sp, #0x38]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	mov	r0, #0xef
 	ldr	r4, [sp, #0x50]
 	lsl	r0, #7
@@ -190,7 +190,7 @@
 	ldr	r3, [r5]
 	mov	r2, #0x24
 	ldrsh	r0, [r3, r2]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, =gBuffer
 	mov	r3, #0
 	ldr	r6, [r0]
@@ -284,7 +284,7 @@
 	ldr	r3, [r5]
 	ldr	r1, [sp, #0x18]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r0, [sp, #0x18]
 	ldr	r3, [r0]
 	lsr	r2, r3, #31
@@ -662,7 +662,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x40]
 	ldr	r1, [sp, #0x14]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	mov	r3, #3
 	mov	r1, #7
 	mov	r2, #7

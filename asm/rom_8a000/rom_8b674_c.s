@@ -188,7 +188,7 @@
 	str	r3, [r5, #0xc]
 	cmp	r6, #0
 	beq	.L8b9e8
-	bl	Func_808b824
+	bl	FindMapActorSlot
 	mov	r1, r0
 	mov	r0, r6
 	bl	LoadMapActors

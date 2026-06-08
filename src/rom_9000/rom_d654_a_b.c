@@ -1,4 +1,4 @@
-/* Cluster Func_800d674..Func_800d674 extracted from goldensun/asm/rom_9000/rom_d654_a.s.
+/* Cluster ActorCmd_WaitMovement..ActorCmd_WaitMovement extracted from goldensun/asm/rom_9000/rom_d654_a.s.
  *
  * Total .text for this TU = 48 bytes (= 0x30).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern int Actor_IsNotMoving(unsigned char *actor);
 
-int Func_800d674(unsigned char *actor)
+int ActorCmd_WaitMovement(unsigned char *actor)
 {
 	unsigned char *p;
 

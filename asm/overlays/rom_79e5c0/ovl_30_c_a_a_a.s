@@ -49,12 +49,12 @@
 	b	.L25e
 .L250:
 	ldr	r0, =0x16b3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__Func_8093054
 .L25e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

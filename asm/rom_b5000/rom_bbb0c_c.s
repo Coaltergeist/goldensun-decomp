@@ -49,7 +49,7 @@
 	cmp	r3, #0
 	ble	.Lbf6f0
 	ldrb	r0, [r5, #2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lbf6f0
 	ldrb	r0, [r5, #2]
@@ -87,7 +87,7 @@
 	bne	.Lbf7c0
 	ldrb	r7, [r6, #2]
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lbf7c6
 	bl	Func_80bdfec
@@ -122,12 +122,12 @@
 	mov	r0, #0xd4
 	bl	_PlaySound
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #3
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
 	mov	r0, r7
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x20
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed
@@ -341,7 +341,7 @@
 	cmp	r0, #0
 	beq	.Lbf96e
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -357,7 +357,7 @@
 	cmp	r0, #0
 	beq	.Lbf998
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -373,7 +373,7 @@
 	cmp	r0, #0
 	beq	.Lbf9c2
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -389,7 +389,7 @@
 	cmp	r0, #0
 	beq	.Lbf9ec
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -405,7 +405,7 @@
 	cmp	r0, #0
 	beq	.Lbfa16
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -421,7 +421,7 @@
 	cmp	r0, #0
 	beq	.Lbfa40
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -437,7 +437,7 @@
 	cmp	r0, #0
 	beq	.Lbfa6a
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -453,7 +453,7 @@
 	cmp	r0, #0
 	beq	.Lbfa9a
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -471,7 +471,7 @@
 	cmp	r0, #0
 	beq	.Lbfaca
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -489,7 +489,7 @@
 	cmp	r0, #0
 	beq	.Lbfaf4
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -505,7 +505,7 @@
 	cmp	r0, #0
 	beq	.Lbfb1e
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -521,7 +521,7 @@
 	cmp	r0, #0
 	beq	.Lbfb48
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	mov	r0, r5
 	bl	Func_80b78e4
@@ -830,12 +830,12 @@
 	mov	r0, #0xd4
 	bl	_PlaySound
 	mov	r0, r8
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #3
 	ldr	r0, [r0]
 	bl	_Actor_SetAnim
 	mov	r0, r8
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #0x20
 	ldr	r0, [r0]
 	bl	_Actor_SetAnimSpeed

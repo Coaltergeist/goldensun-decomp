@@ -7,7 +7,7 @@
 	push	{r7}
 	mov	r5, r0
 	mov	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	mov	r0, r5
 	ldr	r6, [r7]
@@ -44,7 +44,7 @@
 	str	r3, [r6, #0x44]
 	mov	r0, r6
 	strb	r3, [r2]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r3, =.Lc5a04
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r3, r5]
@@ -79,10 +79,10 @@
 	mov	r6, r1
 	mov	r9, r2
 	mov	r11, r3
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r7, [r5]
 	ldr	r6, [r0]
 	mov	r2, #0x4b
@@ -143,7 +143,7 @@
 	add	r3, #0x5a
 	strb	r1, [r3]
 	mov	r0, r7
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r7
 	mov	r1, r8
 	mov	r2, #0
@@ -164,10 +164,10 @@
 
 .thumb_func_start Func_80b8394
 	push	{r5, lr}
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r5, [r0]
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r5
 	mov	r1, #2
 	bl	_Actor_SetAnim

@@ -646,7 +646,7 @@
 	bne	.Ld3314
 	ldr	r3, [r7]
 	ldrsh	r0, [r3, r4]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r7]
 	ldr	r4, [sp, #8]
 	ldr	r5, [r0]
@@ -790,7 +790,7 @@
 	ldr	r6, [r6, #0x20]
 	ldr	r0, [r3, #8]
 	str	r6, [sp, #0x10]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r6, [r0]
 	mov	r0, r8
 	ldr	r3, [r0]
@@ -871,7 +871,7 @@
 	ldr	r3, [r6]
 	ldrsh	r0, [r3, r1]
 	str	r1, [sp, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r2, [r0]
 	ldr	r3, [r2, #8]
 	str	r3, [r5]
@@ -965,7 +965,7 @@
 	mov	r1, r6
 	add	r1, #0xc
 	mov	r0, r6
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x18]
 	mov	r2, r10

@@ -149,7 +149,7 @@
 	beq	.L62c
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x13
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -187,7 +187,7 @@
 	beq	.L680
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x14
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -226,7 +226,7 @@
 	beq	.L6d0
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -439,7 +439,7 @@
 	bl	__PlaySound
 	bl	__Func_800fe9c
 	bl	__Func_8012350
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x10
 	pop	{r3, r5}
 	mov	r8, r3

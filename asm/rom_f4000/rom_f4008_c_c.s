@@ -444,7 +444,7 @@
 	bl	InitMatrixStack
 	ldr	r0, [sp, #0x68]
 	ldr	r1, [sp, #0x30]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, =0xc0006000
 	ldr	r0, [sp, #0x6c]
 	mov	r2, #0xc8

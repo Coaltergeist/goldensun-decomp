@@ -37,7 +37,7 @@ Exports_77000:
 	.export_func DecFlagByte
 	.export_func GetFlagNybble
 	.export_func SetFlagNybble
-	.export_func Func_8077320
+	.export_func Debug_StartGame
 	.export_func ModifyHP
 	.export_func ModifyPP
 	.export_func UpdateStatBarPercent
@@ -55,7 +55,7 @@ Exports_77000:
 	.export_func Func_8079c30
 	.export_func Func_8079c5c
 	.export_func GetEnemyInfo
-	.export_func Func_8079bc4
+	.export_func RPGRandom
 	.export_func GiveDjinni
 	.export_func SetDjinni
 	.export_func Func_807a350
@@ -86,7 +86,7 @@ Exports_77000:
 	.export_func Func_8078228
 	.export_func Func_807a0f4
 	.export_func GetNumDjinn
-	.export_func Func_8079728
+	.export_func AddCoinsSpent
 	.export_func Func_8079754
 	.export_func CanRemoveItem
 	.export_func Func_8078948

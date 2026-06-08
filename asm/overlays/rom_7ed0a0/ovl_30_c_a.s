@@ -13,13 +13,13 @@
 	mov	r0, #0xa
 	lsl	r2, #7
 	sub	sp, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x80
 	mov	r2, #0x80
 	lsl	r2, #7
 	mov	r0, #0xb
 	lsl	r1, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, r9
 	cmp	r2, #0
 	beq	.L1af2
@@ -225,7 +225,7 @@
 	lsl	r1, #11
 	lsl	r2, #10
 	mov	r0, r7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, r7
 	bl	__MapActor_GetActor
 	mov	r6, r0
@@ -507,7 +507,7 @@
 	bgt	.L1f40
 	b	.L1d20
 .L1f40:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x70
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -523,7 +523,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	bl	OvlFunc_964_20080c4
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_964_2009f5c

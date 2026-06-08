@@ -104,7 +104,7 @@
 	add	r0, #0x55
 	strb	r5, [r0]
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, #0xcc
@@ -198,7 +198,7 @@
 	mov	r3, #0x80
 	lsl	r3, #7
 	str	r3, [r0, #0x44]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x44
 	pop	{r3, r5}
 	mov	r8, r3
@@ -244,9 +244,9 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	bl	__MapTransitionIn
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r0, #0xcc
@@ -268,7 +268,7 @@
 	bl	__Func_8092950
 	mov	r0, r6
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

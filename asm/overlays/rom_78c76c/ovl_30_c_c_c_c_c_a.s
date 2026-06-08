@@ -589,7 +589,7 @@
 	lsl	r1, #10
 	lsl	r2, #10
 	mov	r0, #0
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	add	r0, #0x5a
@@ -601,11 +601,11 @@
 	mov	r1, #4
 	mov	r0, #0
 	mov	r2, #0
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	ldr	r1, [r7, #0x68]
 	ldr	r2, [r7, #0x6c]
 	mov	r0, #0
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r4, r7
 	add	r4, #0x80
 	ldr	r5, [r4]
@@ -719,9 +719,9 @@
 	cmp	r3, #1
 	bne	.L2216
 	bl	__MapTransitionOut
-	bl	__Func_8091e20
+	bl	__WaitMapTransition
 .L2216:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3}
 	mov	r8, r3
@@ -794,7 +794,7 @@
 	beq	.L22dc
 	bl	OvlFunc_891_2008098
 .L22dc:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -865,7 +865,7 @@
 	beq	.L238e
 	bl	OvlFunc_891_2008098
 .L238e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

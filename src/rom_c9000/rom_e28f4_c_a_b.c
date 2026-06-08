@@ -1,4 +1,4 @@
-/* Cluster Func_80e291c..Func_80e291c extracted from goldensun/asm/rom_c9000/rom_e28f4_c_a.s.
+/* Cluster Anim_Counterstrike..Anim_Counterstrike extracted from goldensun/asm/rom_c9000/rom_e28f4_c_a.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_RapidSlash(void *context, int subanim);
 
-void Func_80e291c(void *context) {
+void Anim_Counterstrike(void *context) {
     BaseAnim_RapidSlash(context, 0);
 }

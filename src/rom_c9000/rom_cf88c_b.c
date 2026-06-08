@@ -1,4 +1,4 @@
-/* Cluster Func_80cf88c..Func_80cf88c extracted from goldensun/asm/rom_c9000/rom_cf88c.s.
+/* Cluster Anim_MadSpatter..Anim_MadSpatter extracted from goldensun/asm/rom_c9000/rom_cf88c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 extern void BaseAnim_Blob(void *context, int subanim);
 
-void Func_80cf88c(void *context) {
+void Anim_MadSpatter(void *context) {
     BaseAnim_Blob(context, 4);
 }

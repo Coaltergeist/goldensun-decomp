@@ -752,7 +752,7 @@
 	str	r1, [sp, #4]
 	str	r3, [r2]
 	bl	MapTransitionOut
-	bl	Func_8091e20
+	bl	WaitMapTransition
 	mov	r1, r6
 	add	r1, #0x18
 	add	r2, sp, #8
@@ -884,7 +884,7 @@
 	mov	r2, r11
 	strh	r3, [r2, #4]
 	bl	MapTransitionIn
-	bl	Func_8091e20
+	bl	WaitMapTransition
 	mov	r1, #0xe4
 	lsl	r1, #1
 	ldr	r2, [sp, #4]

@@ -1,11 +1,11 @@
-/* Cluster Func_800d654..Func_800d654 extracted from goldensun/asm/rom_9000/rom_d654_a_a.s.
+/* Cluster ActorCmd_Wait..ActorCmd_Wait extracted from goldensun/asm/rom_9000/rom_d654_a_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
  * asm/rom_9000/rom_d654_a_a_a.o and asm/rom_9000/rom_d654_a_a_c.o in
  * goldensun/stage1.ld.
  */
-int Func_800d654(unsigned char *actor)
+int ActorCmd_Wait(unsigned char *actor)
 {
     int idx;
     int val;

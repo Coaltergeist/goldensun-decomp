@@ -5,11 +5,11 @@
  * asm/rom_8a000/rom_93304_a_c_a.o and asm/rom_8a000/rom_93304_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_800c528(unsigned int arg, int b);
+extern void _Actor_SetSpriteFlags(unsigned int arg, int b);
 
 unsigned int Func_8093964(unsigned int arg0)
 {
-    _Func_800c528(arg0, 0);
+    _Actor_SetSpriteFlags(arg0, 0);
     *(unsigned char *)(arg0 + 0x59) = 0;
     return 0;
 }

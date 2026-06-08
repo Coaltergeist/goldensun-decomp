@@ -5,7 +5,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #2
 	mov	r0, r5
@@ -28,7 +28,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #2
 	mov	r0, r5

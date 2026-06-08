@@ -27,7 +27,7 @@
 	ldr	r1, =OvlData_947_200ad64
 	mov	r0, r6
 	bl	__MapActor_SetBehavior
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r5, r6}
 	pop	{r0}

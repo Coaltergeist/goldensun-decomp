@@ -44,17 +44,17 @@
 	cmp	r0, #0
 	bne	.L390
 	ldr	r0, =0x1817
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L396
 .L390:
 	ldr	r0, =0x1a46
-	bl	__Func_8092b94
+	bl	__MessageID
 .L396:
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
 .L39e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -81,17 +81,17 @@
 	cmp	r0, #0
 	bne	.L3f0
 	ldr	r0, =0x1819
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L3f6
 .L3f0:
 	ldr	r0, =0x1a48
-	bl	__Func_8092b94
+	bl	__MessageID
 .L3f6:
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	__ActorMessage
 .L3fe:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -118,19 +118,19 @@
 	cmp	r0, #0
 	bne	.L458
 	ldr	r0, =0x181b
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__ActorMessage
 	b	.L466
 .L458:
 	ldr	r0, =0x1a4a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__Func_8093054
 .L466:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -158,17 +158,17 @@
 	cmp	r0, #0
 	bne	.L4ba
 	ldr	r0, =0x181d
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L4c0
 .L4ba:
 	ldr	r0, =0x1a4e
-	bl	__Func_8092b94
+	bl	__MessageID
 .L4c0:
 	mov	r0, #0x11
 	mov	r1, #0
 	bl	__ActorMessage
 .L4c8:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -178,11 +178,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1a3a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_20084e4
@@ -191,11 +191,11 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1a40
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_2008504
@@ -204,7 +204,7 @@
 	push	{lr}
 	bl	__CutsceneStart
 	ldr	r0, =0x1a64
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0x14
@@ -224,7 +224,7 @@
 	mov	r0, #9
 	mov	r1, #0
 	bl	__ActorMessage
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_2008524

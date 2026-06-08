@@ -165,7 +165,7 @@
 	mov	r0, r5
 	mov	r8, r3
 	mov	r9, r2
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r6, r3

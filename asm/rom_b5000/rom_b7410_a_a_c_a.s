@@ -53,7 +53,7 @@
 	ldrsh	r0, [r2, r7]
 	cmp	r0, #0xfe
 	beq	.Lb75bc
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r10
 	ldr	r3, [r5, r1]
 	lsl	r3, #16
@@ -141,7 +141,7 @@
 	mov	r1, r10
 	strb	r2, [r1, r3]
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r3, r11
 	ldrsb	r2, [r6, r3]
 	mov	r1, r11
@@ -205,7 +205,7 @@
 	cmp	r5, #0xfe
 	beq	.Lb76e2
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r9
 	ldr	r2, [r6, r1]
 	mov	r1, r10

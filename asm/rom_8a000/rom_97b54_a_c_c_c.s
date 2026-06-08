@@ -166,7 +166,7 @@
 	mov	r0, r6
 	bl	Func_8096bec
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r6
 	bl	_DeleteActor
 .L99636:

@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char *GetFieldActor(unsigned int actorID);
-extern void _Func_800c4ac(void);
+extern void _Actor_Stop(void);
 extern void _Actor_SetAnim(unsigned char *actor, int arg1);
 
 void Func_8092ab4(unsigned int actorID) {
@@ -17,7 +17,7 @@ void Func_8092ab4(unsigned int actorID) {
         *(unsigned int *)(r5 + 0x38) = 0x80 << 24;
         *(unsigned int *)(r5 + 0x3c) = 0x80 << 24;
         *(unsigned int *)(r5 + 0x40) = 0x80 << 24;
-        _Func_800c4ac();
+        _Actor_Stop();
         _Actor_SetAnim(r5, 1);
     }
 }
