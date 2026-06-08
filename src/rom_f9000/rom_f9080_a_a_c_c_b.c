@@ -6,13 +6,13 @@
  * goldensun/stage1.ld.
  */
 /* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix wrapper.
- * BGM pitch control: Func_80fb334 = m4aMPlayPitchControl(MP2KPlayerState*, u16 trackBits, s16 pitch).
+ * BGM pitch control: m4aMPlayPitchControl = m4aMPlayPitchControl(MP2KPlayerState*, u16 trackBits, s16 pitch).
  * trackBits = 0xff (all tracks). Param is int + (short) cast at the call site
  * (matches the ROM's lsl/ldr/asr scheduling; a plain short param does not).
  */
-extern void Func_80fb334(void *mplayInfo, unsigned short trackBits, short pitch);
+extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, short pitch);
 extern void *gMPlayInfo_BGM;
 
 void Func_80f94e0(int pitch) {
-    Func_80fb334(&gMPlayInfo_BGM, 0xff, (short)pitch);
+    m4aMPlayPitchControl(&gMPlayInfo_BGM, 0xff, (short)pitch);
 }

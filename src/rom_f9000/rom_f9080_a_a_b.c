@@ -9,7 +9,7 @@
  * Func_80fa2a0 = m4aSoundInit. Stores follow ROM order; the 0x100/4/0
  * constants are CSE'd into the literal pool by gcc-2.96.
  */
-extern void Func_80fa2a0(void);
+extern void m4aSoundInit(void);
 extern unsigned char ewram_200303c;
 extern unsigned char ewram_2003000;
 extern unsigned short gMusicVolume;
@@ -26,7 +26,7 @@ extern unsigned short ewram_2003020[];
 void Func_80f9438(void) {
     int i;
 
-    Func_80fa2a0();
+    m4aSoundInit();
     ewram_200303c = 0xff;
     ewram_2003000 = 0;
     gMusicVolume = 0x100;

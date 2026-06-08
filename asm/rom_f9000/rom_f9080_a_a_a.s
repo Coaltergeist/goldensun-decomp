@@ -18,7 +18,7 @@
 .Lf909c:
 	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #7
-	bl	Func_80fa4bc
+	bl	m4aMPlayFadeOut
 	ldrb	r3, [r5]
 	ldr	r2, =ewram_200303c
 	add	r3, #1
@@ -34,7 +34,7 @@
 	strh	r2, [r3, #6]
 	ldr	r0, =gMPlayInfo_02004360
 	mov	r1, #3
-	bl	Func_80fa4bc
+	bl	m4aMPlayFadeOut
 	b	.Lf91e0
 .Lf90c6:
 	cmp	r6, #0x63
@@ -68,7 +68,7 @@
 	lsl	r3, #2
 	ldr	r0, [r1, r3]
 	ldr	r1, [r7, r4]
-	bl	Func_80faa58
+	bl	MPlayStart
 	ldr	r3, =ewram_2003020
 	strh	r6, [r3, r5]
 	b	.Lf91e0
@@ -78,7 +78,7 @@
 	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #0xff
 	mov	r2, #0
-	bl	Func_80fb2cc
+	bl	m4aMPlayVolumeControl
 	ldr	r2, .Lf9130	@ 0
 	ldr	r3, =gMusicVolume
 	strh	r2, [r3]
@@ -86,7 +86,7 @@
 	lsl	r0, r6, #16
 	strh	r2, [r3]
 	lsr	r0, #16
-	bl	Func_80fa324
+	bl	m4aSongNumStart
 	ldr	r2, =ewram_2003000
 	mov	r3, #0xa
 	b	.Lf91c2
@@ -117,7 +117,7 @@
 	bl	SetSoundFXMode
 	lsl	r0, r6, #16
 	lsr	r0, #16
-	bl	Func_80fa324
+	bl	m4aSongNumStart
 	mov	r3, #0x80
 	lsl	r3, #5
 	and	r3, r5
@@ -228,7 +228,7 @@
 	ldrh	r2, [r1]
 	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #0xff
-	bl	Func_80fb2cc
+	bl	m4aMPlayVolumeControl
 .Lf9272:
 	ldr	r3, =gMusicSpeed
 	ldr	r1, =gMusicCurSpeed
@@ -268,7 +268,7 @@
 	ldr	r5, =gMPlayInfo_BGM
 	ldrh	r1, [r6]
 	mov	r0, r5
-	bl	Func_80fb2a4
+	bl	m4aMPlayTempoControl
 	mov	r0, #0
 	ldrsh	r3, [r6, r0]
 	lsl	r2, r3, #1
@@ -280,7 +280,7 @@
 	asr	r2, #16
 	mov	r0, r5
 	mov	r1, #0xff
-	bl	Func_80fb334
+	bl	m4aMPlayPitchControl
 .Lf92d6:
 	bl	m4aSoundVSync
 	pop	{r5, r6}

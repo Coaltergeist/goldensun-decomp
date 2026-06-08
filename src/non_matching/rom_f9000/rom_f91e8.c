@@ -12,8 +12,8 @@
  * and the pool scheduling still need to be pinned. Good permuter seed.
  *
  * Func_ -> friendly name:
- *   Func_80fb2cc m4aMPlayVolumeControl   Func_80fb2a4 m4aMPlayTempoControl
- *   Func_80fb334 m4aMPlayPitchControl    m4aSoundVSync m4aSoundVSync
+ *   m4aMPlayVolumeControl m4aMPlayVolumeControl   m4aMPlayTempoControl m4aMPlayTempoControl
+ *   m4aMPlayPitchControl m4aMPlayPitchControl    m4aSoundVSync m4aSoundVSync
  *   gMPlayInfo_BGM gMPlayInfo_BGM
  */
 extern unsigned char  ewram_2003000;
@@ -26,9 +26,9 @@ extern short          gMusicSpeed;   /* target  tempo   */
 extern unsigned short gMusicSpeedDelta;   /* tempo  step     */
 extern void *gMPlayInfo_BGM;
 
-extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
-extern void Func_80fb2a4(void *mplayInfo, unsigned short tempo);
-extern void Func_80fb334(void *mplayInfo, unsigned short trackBits, int pitch);
+extern void m4aMPlayVolumeControl(void *mplayInfo, unsigned short trackBits, unsigned short volume);
+extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);
+extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, int pitch);
 extern void m4aSoundVSync(void);
 
 void UpdateMusicSettings(void) {
@@ -55,7 +55,7 @@ void UpdateMusicSettings(void) {
             gMusicCurVolume = (unsigned short)gMusicCurVolume - gMusicVolumeDelta;
         if (((gMusicVolume - gMusicCurVolume) ^ diff) < 0)
             gMusicCurVolume = gMusicVolume;
-        Func_80fb2cc(&gMPlayInfo_BGM, 0xff, (unsigned short)gMusicCurVolume);
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, (unsigned short)gMusicCurVolume);
     }
 
     if (gMusicSpeed != gMusicCurSpeed) {
@@ -66,8 +66,8 @@ void UpdateMusicSettings(void) {
             gMusicCurSpeed = (unsigned short)gMusicCurSpeed - gMusicSpeedDelta;
         if (((gMusicSpeed - gMusicCurSpeed) ^ diff) < 0)
             gMusicCurSpeed = gMusicSpeed;
-        Func_80fb2a4(&gMPlayInfo_BGM, (unsigned short)gMusicCurSpeed);
-        Func_80fb334(&gMPlayInfo_BGM, 0xff,
+        m4aMPlayTempoControl(&gMPlayInfo_BGM, (unsigned short)gMusicCurSpeed);
+        m4aMPlayPitchControl(&gMPlayInfo_BGM, 0xff,
                      (((3 * gMusicCurSpeed) << 18) + (0xf4 << 24)) >> 16);
     }
 

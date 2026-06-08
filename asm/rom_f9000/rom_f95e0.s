@@ -13,7 +13,7 @@
 	bx	lr
 .func_end umul3232H32
 
-.thumb_func_start Func_80f95f0
+.thumb_func_start SoundMain
 	ldr	r0, .Lf965c	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	ldr	r2, .Lf9660	@ 0x68736d53
@@ -84,7 +84,7 @@
 	.word	0x350
 .Lf9670:
 	.word	0x630
-.func_end Func_80f95f0
+.func_end SoundMain
 
 .thumb_func_start SoundMainRAM
 	ldrb	r3, [r0, #5]
@@ -867,7 +867,7 @@
 	ldr	r0, [r0]
 	mov	r8, r0
 	mov	r0, r7
-	bl	Func_80fab7c
+	bl	FadeOutBody
 	ldr	r0, [r7, #4]
 	cmp	r0, #0
 	bge	.Lf9cd8
@@ -912,7 +912,7 @@
 	b	.Lf9d20
 .Lf9d1a:
 	mov	r0, r4
-	bl	Func_80fa678
+	bl	ClearChain
 .Lf9d20:
 	ldr	r4, [r4, #0x34]
 	cmp	r4, #0
@@ -923,7 +923,7 @@
 	tst	r0, r3
 	beq	.Lf9da4
 	mov	r0, r5
-	bl	Func_80fa68c
+	bl	Clear64byte
 	mov	r0, #0x80
 	strb	r0, [r5]
 	mov	r0, #2
@@ -1078,7 +1078,7 @@
 	mov	r9, r2
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_80fac44
+	bl	TrkVolPitSet
 	ldr	r4, [r5, #0x20]
 	cmp	r4, #0
 	beq	.Lf9ec4
@@ -1088,7 +1088,7 @@
 	tst	r0, r1
 	bne	.Lf9e62
 	mov	r0, r4
-	bl	Func_80fa678
+	bl	ClearChain
 	b	.Lf9ebe
 .Lf9e62:
 	ldrb	r0, [r4, #1]
@@ -1135,7 +1135,7 @@
 	mov	r1, r2
 	ldrb	r2, [r5, #9]
 	ldr	r0, [r4, #0x24]
-	bl	Func_80fa1fc
+	bl	MidiKeyToFreq
 	str	r0, [r4, #0x20]
 .Lf9ebe:
 	ldr	r4, [r4, #0x34]

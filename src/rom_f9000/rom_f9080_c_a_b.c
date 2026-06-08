@@ -5,13 +5,13 @@
  * asm/rom_f9000/rom_f9080_c_a_a.o and asm/rom_f9000/rom_f9080_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80fa458(void);
+extern void m4aMPlayAllStop(void);
 
 void Func_80f9558(void) {
-    Func_80fa458();
+    m4aMPlayAllStop();
 }
-extern void Func_80fa490(void);
+extern void m4aMPlayAllContinue(void);
 
 void Func_80f9564(void) {
-    Func_80fa490();
+    m4aMPlayAllContinue();
 }

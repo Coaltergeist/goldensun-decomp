@@ -1,4 +1,4 @@
-/* Cluster Func_80fa674..Func_80fa674 extracted from goldensun/rom_f9000/src/rom_f9ef8_c.s.
+/* Cluster MusicPlayerJumpTableCopy..MusicPlayerJumpTableCopy extracted from goldensun/rom_f9000/src/rom_f9ef8_c.s.
  *
  * Total .text for this TU = 4 bytes (= 0x4).
  * Preserves the original ROM layout when slotted between
@@ -6,6 +6,6 @@
  * goldensun/stage1.ld.
  */
 /* FF: void MusicPlayerJumpTableCopy(undefined dest) */
-void Func_80fa674(void) {
+void MusicPlayerJumpTableCopy(void) {
     asm("swi 0x2a");
 }

@@ -250,7 +250,7 @@
 	beq	.Lfa152
 .Lfa0ac:
 	mov	r0, r4
-	bl	Func_80fa678
+	bl	ClearChain
 	mov	r1, #0
 	str	r1, [r4, #0x30]
 	ldr	r3, [r5, #0x20]
@@ -270,7 +270,7 @@
 .Lfa0d2:
 	ldr	r0, [sp]
 	mov	r1, r5
-	bl	Func_80fac44
+	bl	TrkVolPitSet
 	ldr	r0, [r5, #4]
 	str	r0, [r4, #0x10]
 	ldr	r0, [sp, #0x10]
@@ -324,7 +324,7 @@
 	ldrb	r2, [r5, #9]
 	mov	r1, r3
 	mov	r0, r7
-	bl	Func_80fa1fc
+	bl	MidiKeyToFreq
 .Lfa144:
 	str	r0, [r4, #0x20]
 	mov	r0, #0x80

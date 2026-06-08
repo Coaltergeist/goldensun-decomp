@@ -6,11 +6,11 @@
  * goldensun/stage1.ld.
  */
 /* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix wrapper.
- * BGM tempo control: Func_80fb2a4 = m4aMPlayTempoControl(MP2KPlayerState*, u16).
+ * BGM tempo control: m4aMPlayTempoControl = m4aMPlayTempoControl(MP2KPlayerState*, u16).
  */
-extern void Func_80fb2a4(void *mplayInfo, unsigned short tempo);
+extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);
 extern void *gMPlayInfo_BGM;
 
 void Func_80f94c8(unsigned short tempo) {
-    Func_80fb2a4(&gMPlayInfo_BGM, tempo);
+    m4aMPlayTempoControl(&gMPlayInfo_BGM, tempo);
 }

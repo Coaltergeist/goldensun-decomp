@@ -3,7 +3,7 @@
 	.global	Exports_f9000
 Exports_f9000:
 
-	.export_func Func_80fa318
+	.export_func m4aSoundMain
 	.export_func Func_80f9438
 	.export_func PlaySound
 	.export_func UpdateMusicSettings

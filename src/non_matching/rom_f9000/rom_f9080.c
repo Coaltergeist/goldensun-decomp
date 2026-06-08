@@ -17,9 +17,9 @@
  * the pooled-constant scheduling is unverified.
  *
  * Func_ -> friendly name:
- *   Func_80fa4bc m4aMPlayFadeOut    Func_80fb2cc m4aMPlayVolumeControl
- *   Func_80fa324 m4aSongNumStart    SetSoundFXMode SetSoundFXMode
- *   Func_80faa58 MPlayStart         Data_fc624 gMPlayTable
+ *   m4aMPlayFadeOut m4aMPlayFadeOut    m4aMPlayVolumeControl m4aMPlayVolumeControl
+ *   m4aSongNumStart m4aSongNumStart    SetSoundFXMode SetSoundFXMode
+ *   MPlayStart MPlayStart         Data_fc624 gMPlayTable
  *   gMPlayInfo_BGM gMPlayInfo_BGM    gMPlayInfo_02004360 gMPlayInfo_02004360
  */
 typedef unsigned char  u8;
@@ -43,11 +43,11 @@ extern unsigned short ewram_2003020[];
 extern void *gMPlayInfo_BGM;
 extern void *gMPlayInfo_02004360;
 
-extern void Func_80fa4bc(void *mplayInfo, unsigned short speed);
-extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
-extern void Func_80fa324(unsigned short songNum);
+extern void m4aMPlayFadeOut(void *mplayInfo, unsigned short speed);
+extern void m4aMPlayVolumeControl(void *mplayInfo, unsigned short trackBits, unsigned short volume);
+extern void m4aSongNumStart(unsigned short songNum);
 extern void SetSoundFXMode(int mode);
-extern void Func_80faa58(void *info, void *songHeader);
+extern void MPlayStart(void *info, void *songHeader);
 
 void PlaySound(int req) {
     unsigned int flags = req & 0xf000;
@@ -55,13 +55,13 @@ void PlaySound(int req) {
 
     if (id == 0x11) {
         if (ewram_2003014 == 0) {
-            Func_80fa4bc(&gMPlayInfo_BGM, 7);
+            m4aMPlayFadeOut(&gMPlayInfo_BGM, 7);
             ewram_2003014++;
             ewram_200303c = 0x13;
         }
     } else if (id == 0x121) {
         ewram_2003020[3] = 0;
-        Func_80fa4bc(&gMPlayInfo_02004360, 3);
+        m4aMPlayFadeOut(&gMPlayInfo_02004360, 3);
     } else if (id > 0x63) {
         int slot = Data_fc684[id].player;
         if (slot == 7) {
@@ -72,13 +72,13 @@ void PlaySound(int req) {
                 if (slot <= 3) { slot = 7; break; }
             }
         }
-        Func_80faa58(Data_fc624[slot].info, Data_fc684[id].header);
+        MPlayStart(Data_fc624[slot].info, Data_fc684[id].header);
         ewram_2003020[slot] = id;
     } else if (id > 0x4f) {
-        Func_80fb2cc(&gMPlayInfo_BGM, 0xff, 0);
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, 0);
         gMusicVolume = 0;
         gMusicCurVolume = 0;
-        Func_80fa324(id);
+        m4aSongNumStart(id);
         ewram_2003000 = 0xa;
     } else if (id != 0x12 && id != ewram_200303c) {
         int mode;
@@ -88,7 +88,7 @@ void PlaySound(int req) {
         else
             mode = 2;
         SetSoundFXMode(mode);
-        Func_80fa324(id);
+        m4aSongNumStart(id);
         gMusicCurVolume = (flags & 0x1000) ? 0 : 0x100;
         gMusicVolume = 0x100;
         gMusicVolumeDelta = 4;
