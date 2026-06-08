@@ -255,11 +255,7 @@ SOUND_INFO_PTR = 0x03007FF0;
 iwram_3007ffc = 0x03007FFC;
 
 /* ---- m4a / "Sappy" import (SAPPY_IMPORT_PLAN.md) ---- */
-/* Stock-engine symbols the m4a TU (lib/m4a/m4a.o) references but the alias
-   generator sources don't name. Mixer fns + CpuSet resolve to their kept
-   asm Func_<addr>; gMaxLines/gNumMusicPlayers are symbol-as-value config;
-   SoundMainRAM_Buffer is the IWRAM mixer-code buffer. */
+
 SoundMainRAM_Buffer = 0x03007000;
 gMaxLines           = 0;
 gNumMusicPlayers    = 8;
-CpuSet              = Func_8006864;

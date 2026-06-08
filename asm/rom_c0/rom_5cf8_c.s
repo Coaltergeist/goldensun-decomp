@@ -22,7 +22,7 @@
 	str	r3, [r0]
 	ldr	r1, =gBuffer
 	ldr	r2, =0x5000100
-	bl	Func_8006864
+	bl	CpuSet
 	mov	r0, #3
 	bl	Func_8006384
 .L67d0:
