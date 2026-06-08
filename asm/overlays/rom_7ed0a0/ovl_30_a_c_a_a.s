@@ -11,7 +11,7 @@
 	ldr	r3, =0xac
 	cmp	r2, r3
 	bne	.L12f8
-	ldr	r5, =.L38f4
+	ldr	r5, =gScript_925__0200b8f4
 	b	.L12fa
 .L12f8:
 	ldr	r5, =.L3a74

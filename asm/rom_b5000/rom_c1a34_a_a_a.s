@@ -264,7 +264,7 @@
 	mov	r5, #1
 .Lc1c30:
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	add	sp, #0x10
 	pop	{r3, r5, r6, r7}
@@ -466,7 +466,7 @@
 	ldr	r0, [sp, #8]
 	bl	_Func_8077428
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

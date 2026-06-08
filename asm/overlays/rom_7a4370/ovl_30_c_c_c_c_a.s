@@ -62,7 +62,7 @@
 	mov	r2, #0
 	lsl	r3, #16
 	bl	__Func_800d14c
-	ldr	r1, =.L1d9c
+	ldr	r1, =gScript_917__02009d9c
 	mov	r0, r5
 	bl	__Func_800c2d8
 .L129e:

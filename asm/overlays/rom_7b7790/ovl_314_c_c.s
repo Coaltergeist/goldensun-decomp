@@ -307,11 +307,12 @@
 .func_end OvlFunc_929_2008598
 
 	.section .data
-	.global .L778
+	.global gOvl_02008778
 
-.L778:
+gOvl_02008778:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x778, (0x868-0x778)
-.L868:
+	.global gOvl_02008868
+gOvl_02008868:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x868, (0x890-0x868)
 .L890:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x890, (0x9c8-0x890)

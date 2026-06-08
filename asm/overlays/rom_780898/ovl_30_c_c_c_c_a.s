@@ -47,7 +47,7 @@
 	mov	r0, r5
 	mov	r1, #0
 	bl	__Func_800c300
-	ldr	r1, =.L66e0
+	ldr	r1, =gScript_883__0200e6e0
 	mov	r0, r5
 	bl	__Func_800c2d8
 	ldr	r1, [r5, #0x50]
@@ -115,7 +115,7 @@
 	beq	.L58ac
 	mov	r1, #0
 	bl	__Func_800c528
-	ldr	r1, =.L66e4
+	ldr	r1, =gScript_883__0200e6e4
 	mov	r0, r6
 	bl	__Func_800c2d8
 	bl	__Random

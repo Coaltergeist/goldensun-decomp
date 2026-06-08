@@ -107,7 +107,7 @@
 	ldr	r0, =.L3a64
 	b	.L19a
 .L198:
-	ldr	r0, =.L3938
+	ldr	r0, =gOvl_0200b938
 .L19a:
 	pop	{r1}
 	bx	r1
@@ -630,7 +630,7 @@
 	bl	__Func_80920a0
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r1, =.L2e34
+	ldr	r1, =gScript_884__0200ae34
 	mov	r0, #0x15
 	bl	__Func_809207c
 	bl	__Func_8091750

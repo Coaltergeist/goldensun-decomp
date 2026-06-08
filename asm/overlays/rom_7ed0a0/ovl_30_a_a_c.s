@@ -709,7 +709,7 @@
 	mov	r0, #0
 	cmp	r2, r3
 	bne	.L12c8
-	ldr	r0, =.L381c
+	ldr	r0, =gScript_888__0200b81c
 .L12c8:
 	pop	{r1}
 	bx	r1

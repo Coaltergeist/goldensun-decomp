@@ -34,7 +34,7 @@
 	mov	r3, #8
 	strh	r3, [r2]
 	mov	r0, r5
-	ldr	r1, =.L1884
+	ldr	r1, =gScript_935__02009884
 	bl	__Func_800c2d8
 	add	r7, #1
 .Lbda:
@@ -513,5 +513,6 @@
 
 	.section .data
 
-.L1884:
+	.global gScript_935__02009884
+gScript_935__02009884:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1884, (0x1888-0x1884)

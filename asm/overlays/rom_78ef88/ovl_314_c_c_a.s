@@ -3084,7 +3084,7 @@
 	mov	r6, #1
 	orr	r3, r6
 	strb	r3, [r2]
-	ldr	r3, =.L4bd0
+	ldr	r3, =gScript_896__0200cbd0
 	mov	r1, #0
 	mov	r8, r3
 	mov	r9, r1

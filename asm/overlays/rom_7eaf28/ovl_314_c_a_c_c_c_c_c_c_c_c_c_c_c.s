@@ -305,7 +305,7 @@
 	lsl	r1, #15
 	lsl	r2, #18
 	bl	__Func_80923e4
-	ldr	r1, =.L17a8
+	ldr	r1, =gScript_960__020097a8
 	mov	r0, #0xc
 	bl	__Func_809207c
 .Lb04:

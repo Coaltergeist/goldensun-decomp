@@ -28,7 +28,7 @@
 	ldr	r0, =_FILE_69
 	bl	GetFile
 	mov	r1, r10
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r2, [sp, #0x3c]
 	cmp	r2, #0
 	bne	.Lceb9a

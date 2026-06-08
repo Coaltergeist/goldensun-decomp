@@ -258,12 +258,12 @@
 	bl	__Func_8011590
 	mov	r1, r7
 	ldr	r0, =.L47a6
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	mov	r2, #0x80
 	lsl	r2, #5
 	add	r1, r7, r2
-	ldr	r0, =.L44ec
-	bl	__Func_8005340
+	ldr	r0, =gScript_943__0200c4ec
+	bl	__DecompressLZ
 	ldr	r6, =ewram_2002090
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
@@ -823,7 +823,7 @@
 .L3eec:
 	bl	__Func_8091e20
 	mov	r0, r7
-	bl	__Func_8002df0
+	bl	__free
 	ldr	r0, =0x101
 	bl	__Func_8079358
 	pop	{r3, r5, r6, r7}

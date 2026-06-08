@@ -1106,7 +1106,7 @@
 	bl	__Func_8016498
 	mov	r0, r7
 	bl	__Func_80164ac
-	ldr	r0, =.L1390
+	ldr	r0, =gOvl_02009390
 	mov	r1, r7
 	mov	r2, #0
 	mov	r3, #0
@@ -1126,7 +1126,7 @@
 	mov	r2, #0
 	mov	r3, #0x20
 	and	r5, r6
-	ldr	r0, =.L139c
+	ldr	r0, =gScript_944__0200939c
 	bl	__Func_801e940
 	mov	r0, r5
 	bl	__Func_8078414
@@ -1150,7 +1150,7 @@
 	bl	__Func_80a4924
 	b	.Lde0
 .Ldd4:
-	ldr	r0, =.L13b4
+	ldr	r0, =gScript_960__020093b4
 	mov	r1, r7
 	mov	r2, #0
 	mov	r3, #0x20

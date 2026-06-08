@@ -24,7 +24,7 @@
 	ldr	r3, =0x78
 	cmp	r2, r3
 	bne	.La1c
-	ldr	r0, =.L2928
+	ldr	r0, =gOvl_0200a928
 	b	.La1e
 .La1c:
 	ldr	r0, =.L2868

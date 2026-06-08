@@ -983,10 +983,10 @@
 
 	.section .data
 	.global .L1bec
-	.global .L1d3c
+	.global gOvl_02009d3c
 	.global .L1dcc
-	.global .L1e04
-	.global .L1e14
+	.global gScript_918__02009e04
+	.global gOvl_02009e14
 	.global .L1f64
 	.global .L1fc4
 	.global .L21bc
@@ -995,13 +995,13 @@
 
 .L1bec:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1bec, (0x1d3c-0x1bec)
-.L1d3c:
+gOvl_02009d3c:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1d3c, (0x1dcc-0x1d3c)
 .L1dcc:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1dcc, (0x1e04-0x1dcc)
-.L1e04:
+gScript_918__02009e04:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1e04, (0x1e14-0x1e04)
-.L1e14:
+gOvl_02009e14:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1e14, (0x1f64-0x1e14)
 .L1f64:
 	.incbin "overlays/rom_7c460c/orig.bin", 0x1f64, (0x1fc4-0x1f64)

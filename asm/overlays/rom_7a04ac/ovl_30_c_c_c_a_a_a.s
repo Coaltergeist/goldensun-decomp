@@ -152,7 +152,7 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
-	ldr	r5, =.L3024
+	ldr	r5, =gScript_913__0200b024
 	mov	r0, #0x11
 	mov	r1, r5
 	bl	__Func_809207c
@@ -214,10 +214,10 @@
 	mov	r0, #2
 	bl	__Func_80923e4
 .Le86:
-	ldr	r1, =.L2e20
+	ldr	r1, =gScript_911__0200ae20
 	mov	r0, #1
 	bl	__Func_809207c
-	ldr	r1, =.L2e54
+	ldr	r1, =gScript_913__0200ae54
 	mov	r0, #2
 	bl	__Func_809207c
 	ldr	r3, [r6]
@@ -236,7 +236,7 @@
 	mov	r0, #3
 	bl	__Func_80923e4
 .Leba:
-	ldr	r1, =.L2e88
+	ldr	r1, =gScript_913__0200ae88
 	mov	r0, #3
 	bl	__Func_809207c
 .Lec2:
@@ -409,7 +409,7 @@
 	bl	__Func_8091254
 	mov	r0, #0x3c
 	bl	__Func_80030f8
-	ldr	r5, =.L2ebc
+	ldr	r5, =gScript_913__0200aebc
 	mov	r0, #0
 	mov	r1, r5
 	bl	__Func_809207c
@@ -482,7 +482,7 @@
 	mov	r0, #3
 	neg	r1, r1
 	bl	__Func_809228c
-	ldr	r1, =.L2f48
+	ldr	r1, =gScript_913__0200af48
 	mov	r0, #3
 	bl	__Func_809207c
 	mov	r0, #3
@@ -506,7 +506,7 @@
 	mov	r1, r5
 	mov	r0, #0
 	bl	__Func_8092064
-	ldr	r6, =.L2f48
+	ldr	r6, =gScript_913__0200af48
 	mov	r0, #0
 	mov	r1, r6
 	bl	__Func_809207c
@@ -758,7 +758,7 @@
 	mov	r0, #0xd
 	lsl	r1, #16
 	bl	__Func_80923e4
-	ldr	r5, =.L2f6c
+	ldr	r5, =gScript_913__0200af6c
 	mov	r0, #0xd
 	mov	r1, r5
 	bl	__Func_809207c
@@ -865,7 +865,7 @@
 	bl	__Func_80920a0
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r5, =.L2fc8
+	ldr	r5, =gScript_913__0200afc8
 	mov	r0, #0xd
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1671,7 +1671,7 @@
 	mov	r0, #0xd
 	lsl	r1, #16
 	bl	__Func_80923e4
-	ldr	r5, =.L2f6c
+	ldr	r5, =gScript_913__0200af6c
 	mov	r0, #0xd
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2093,7 +2093,7 @@
 	bl	__Func_80920a0
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r5, =.L2fc8
+	ldr	r5, =gScript_913__0200afc8
 	mov	r0, #0xd
 	mov	r1, r5
 	bl	__Func_809207c

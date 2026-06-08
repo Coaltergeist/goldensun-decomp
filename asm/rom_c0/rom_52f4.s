@@ -34,7 +34,7 @@
 	bx	r0
 .func_end Func_80052f4
 
-.thumb_func_start Func_8005340
+.thumb_func_start DecompressLZ
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -59,7 +59,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3
@@ -67,7 +67,7 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8005340
+.func_end DecompressLZ
 
 .thumb_func_start Func_8005394
 	push	{r5, r6, lr}
@@ -94,7 +94,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3
@@ -129,7 +129,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	pop	{r3, r5}
 	mov	r8, r3

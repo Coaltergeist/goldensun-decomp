@@ -544,7 +544,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L2230
-	ldr	r1, =.L5f20
+	ldr	r1, =gScript_924__0200df20
 	b	.L226a
 .L2230:
 	cmp	r6, #0x31
@@ -563,7 +563,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L225a
-	ldr	r1, =.L5f60
+	ldr	r1, =gScript_924__0200df60
 	b	.L226a
 .L225a:
 	cmp	r5, #0x2c
@@ -572,7 +572,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L2272
-	ldr	r1, =.L5ff0
+	ldr	r1, =gScript_924__0200dff0
 .L226a:
 	mov	r0, #9
 	bl	__Func_809207c
@@ -584,7 +584,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L2292
-	ldr	r1, =.L5fa8
+	ldr	r1, =gScript_924__0200dfa8
 	mov	r0, #9
 	bl	__Func_809207c
 	mov	r0, #0x1e
@@ -603,11 +603,15 @@
 
 	.section .data
 
-.L5f20:
+	.global gScript_924__0200df20
+gScript_924__0200df20:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5f20, (0x5f60-0x5f20)
-.L5f60:
+	.global gScript_924__0200df60
+gScript_924__0200df60:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5f60, (0x5fa8-0x5f60)
-.L5fa8:
+	.global gScript_924__0200dfa8
+gScript_924__0200dfa8:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5fa8, (0x5ff0-0x5fa8)
-.L5ff0:
+	.global gScript_924__0200dff0
+gScript_924__0200dff0:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5ff0, (0x6004-0x5ff0)

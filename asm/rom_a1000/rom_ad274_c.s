@@ -725,9 +725,9 @@
 	mov	r0, r7
 	bl	_call_via_r5
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x54]
-	bl	Func_8002df0
+	bl	free
 	b	.Lad9d8
 .Lad922:
 	mov	r3, r11
@@ -808,9 +808,9 @@
 	str	r3, [r0, #4]
 	mov	r0, r10
 	str	r1, [sp, #0x58]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x34]
-	bl	Func_8002df0
+	bl	free
 .Lad9d8:
 	ldr	r0, [sp, #0x78]
 	mov	r1, #5
@@ -1291,7 +1291,7 @@
 	strb	r3, [r2, #5]
 .Lade06:
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 .Lade0c:
 	ldr	r2, [sp, #0x60]
 	cmp	r2, #0
@@ -1918,9 +1918,9 @@
 	str	r0, [sp, #0x44]
 	str	r0, [r3, #4]
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x44]
 	mov	r1, #6
 	sub	r0, #1

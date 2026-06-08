@@ -286,31 +286,33 @@
 
 	.section .data
 	.global .L44ac
-	.global .L44ec
+	.global gScript_943__0200c4ec
 	.global .L47a6
-	.global .L49e4
-	.global .L4a78
-	.global .L4ac4
-	.global .L4af4
-	.global .L4b50
-	.global .L4be4
-	.global .L4c30
-	.global .L4c74
-	.global .L4d08
-	.global .L4d54
-	.global .L4d98
-	.global .L4e2c
-	.global .L4e78
-	.global .L4ebc
-	.global .L4f20
-	.global .L4f7c
-	.global .L501c
-	.global .L50a8
-	.global .L514c
-	.global .L5158
-	.global .L51b8
-	.global .L5218
-	.global .L5a2c
+	.global gScript_881__0200c9e4
+	.global gScript_881__0200ca78
+	.global gScript_882__0200ca78
+	.global gScript_881__0200cac4
+	.global gScript_881__0200caf4
+	.global gScript_881__0200cb50
+	.global gScript_881__0200cbe4
+	.global gScript_896__0200cbe4
+	.global gScript_881__0200cc30
+	.global gScript_881__0200cc74
+	.global gScript_881__0200cd08
+	.global gScript_881__0200cd54
+	.global gScript_881__0200cd98
+	.global gScript_881__0200ce2c
+	.global gScript_881__0200ce78
+	.global gScript_881__0200cebc
+	.global gScript_881__0200cf20
+	.global gScript_881__0200cf7c
+	.global gScript_881__0200d01c
+	.global gScript_881__0200d0a8
+	.global gScript_881__0200d14c
+	.global gScript_881__0200d158
+	.global gScript_881__0200d1b8
+	.global gScript_881__0200d218
+	.global gOvl_0200da2c
 	.global .L5b84
 	.global .L604c
 	.global .L6154
@@ -320,64 +322,66 @@
 	.global .L62ec
 	.global .L6394
 	.global .L63c4
-	.global .L63f4
+	.global gOvl_0200e3f4
 	.global .L6718
-	.global .L673c
-	.global .L527c
+	.global gScript_881__0200e73c
+	.global gOvl_0200d27c
 
 .L44ac:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x44ac, (0x44ec-0x44ac)
-.L44ec:
+gScript_943__0200c4ec:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x44ec, (0x47a6-0x44ec)
 .L47a6:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x47a6, (0x49e4-0x47a6)
-.L49e4:
+gScript_881__0200c9e4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x49e4, (0x4a78-0x49e4)
-.L4a78:
+gScript_881__0200ca78:
+gScript_882__0200ca78:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4a78, (0x4ac4-0x4a78)
-.L4ac4:
+gScript_881__0200cac4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4ac4, (0x4af4-0x4ac4)
-.L4af4:
+gScript_881__0200caf4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4af4, (0x4b50-0x4af4)
-.L4b50:
+gScript_881__0200cb50:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4b50, (0x4be4-0x4b50)
-.L4be4:
+gScript_881__0200cbe4:
+gScript_896__0200cbe4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4be4, (0x4c30-0x4be4)
-.L4c30:
+gScript_881__0200cc30:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4c30, (0x4c74-0x4c30)
-.L4c74:
+gScript_881__0200cc74:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4c74, (0x4d08-0x4c74)
-.L4d08:
+gScript_881__0200cd08:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4d08, (0x4d54-0x4d08)
-.L4d54:
+gScript_881__0200cd54:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4d54, (0x4d98-0x4d54)
-.L4d98:
+gScript_881__0200cd98:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4d98, (0x4e2c-0x4d98)
-.L4e2c:
+gScript_881__0200ce2c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4e2c, (0x4e78-0x4e2c)
-.L4e78:
+gScript_881__0200ce78:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4e78, (0x4ebc-0x4e78)
-.L4ebc:
+gScript_881__0200cebc:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4ebc, (0x4f20-0x4ebc)
-.L4f20:
+gScript_881__0200cf20:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4f20, (0x4f7c-0x4f20)
-.L4f7c:
+gScript_881__0200cf7c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x4f7c, (0x501c-0x4f7c)
-.L501c:
+gScript_881__0200d01c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x501c, (0x50a8-0x501c)
-.L50a8:
+gScript_881__0200d0a8:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x50a8, (0x514c-0x50a8)
-.L514c:
+gScript_881__0200d14c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x514c, (0x5158-0x514c)
-.L5158:
+gScript_881__0200d158:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x5158, (0x51b8-0x5158)
-.L51b8:
+gScript_881__0200d1b8:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x51b8, (0x5218-0x51b8)
-.L5218:
+gScript_881__0200d218:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x5218, (0x527c-0x5218)
-.L527c:
+gOvl_0200d27c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x527c, (0x5a2c-0x527c)
-.L5a2c:
+gOvl_0200da2c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x5a2c, (0x5b84-0x5a2c)
 .L5b84:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x5b84, (0x604c-0x5b84)
@@ -397,11 +401,11 @@
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x6394, (0x63c4-0x6394)
 .L63c4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x63c4, (0x63f4-0x63c4)
-.L63f4:
+gOvl_0200e3f4:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x63f4, (0x6718-0x63f4)
 .L6718:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x6718, (0x673c-0x6718)
-.L673c:
+gScript_881__0200e73c:
 	.incbin "overlays/rom_77a7c8/orig.bin", 0x673c, (0x679c-0x673c)
 
 	.section .bss

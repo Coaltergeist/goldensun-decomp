@@ -15,11 +15,11 @@
 	bx	lr
 	.ssize	Func_8002dd8
 
-.thumb_func_start Func_8002df0
+.thumb_func_start free
 	ldr	r4, =iwram_3001e50
 	mov	r1, #4
 	lsr	r2, r0, #22
 	and	r2, r1
 	str	r0, [r2, r4]
 	bx	lr
-.func_end Func_8002df0
+.func_end free

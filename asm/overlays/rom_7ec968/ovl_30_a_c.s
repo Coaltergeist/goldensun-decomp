@@ -20,7 +20,7 @@
 	ldr	r0, =.Lad0
 	b	.L64
 .L62:
-	ldr	r0, =.L998
+	ldr	r0, =gOvl_02008998
 .L64:
 	pop	{r1}
 	bx	r1

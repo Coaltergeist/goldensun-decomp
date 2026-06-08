@@ -7,7 +7,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.La4
-	ldr	r0, =.L21dc
+	ldr	r0, =gOvl_0200a1dc
 	b	.La6
 .La4:
 	ldr	r0, =.L2198

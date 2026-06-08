@@ -460,7 +460,7 @@
 	b	.L1e0d0
 .L1e22a:
 	ldr	r0, [sp, #8]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r6
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}

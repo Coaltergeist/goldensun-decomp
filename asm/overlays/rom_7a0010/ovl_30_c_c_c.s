@@ -110,13 +110,16 @@
 
 	.section .data
 	.global .L4d8
-	.global .L318
-
-.L318:
+	.global gOvl_02008318
+	.global MapEntrance_ARRAY_912__02008318
+gOvl_02008318:
+MapEntrance_ARRAY_912__02008318:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x318, (0x498-0x318)
-.L498:
+	.global gOvl_02008498
+gOvl_02008498:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x498, (0x4d8-0x498)
 .L4d8:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x4d8, (0x658-0x4d8)
-.L658:
+	.global gOvl_02008658
+gOvl_02008658:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x658

@@ -266,57 +266,58 @@
 .func_end OvlFunc_956_200a4d0
 
 	.section .data
-	.global .L4bec
-	.global .L4c48
+	.global ActorCmd_ARRAY_956__0200cbec
+	.global gScript_956__0200cc48
 	.global .L4c38
 	.global .L4c20
 
-.L4bec:
+ActorCmd_ARRAY_956__0200cbec:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x4bec, (0x4c20-0x4bec)
 .L4c20:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x4c20, (0x4c38-0x4c20)
 .L4c38:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x4c38, (0x4c48-0x4c38)
-.L4c48:
+gScript_956__0200cc48:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x4c48, (0x4cb0-0x4c48)
 
 	.section .data1
-	.global .L5668
-	.global .L5738
-	.global .L5808
-	.global .L58ac
-	.global .L5950
-	.global .L596c
+	.global gScript_956__0200d668
+	.global gScript_956__0200d738
+	.global gScript_956__0200d808
+	.global gScript_956__0200d8ac
+	.global gScript_956__0200d950
+	.global gScript_956__0200d96c
 	.global .L5480
-	.global .L5000
-	.global .L5090
-	.global .L50a8
+	.global gOvl_0200d000
+	.global gOvl_0200d090
+	.global gScript_881__0200d0a8
 	.global .L5480
 	.global .L5484
 
-.L5000:
+gOvl_0200d000:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5000, (0x5090-0x5000)
-.L5090:
+gOvl_0200d090:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5090, (0x50a8-0x5090)
-.L50a8:
+gScript_881__0200d0a8:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x50a8, (0x5480-0x50a8)
 .L5480:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5480, (0x5484-0x5480)
 .L5484:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5484, (0x5488-0x5484)
-.L5488:
+	.global gScript_968__0200d488
+gScript_968__0200d488:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5488, (0x5668-0x5488)
-.L5668:
+gScript_956__0200d668:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5668, (0x5738-0x5668)
-.L5738:
+gScript_956__0200d738:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5738, (0x5808-0x5738)
-.L5808:
+gScript_956__0200d808:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5808, (0x58ac-0x5808)
-.L58ac:
+gScript_956__0200d8ac:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x58ac, (0x5950-0x58ac)
-.L5950:
+gScript_956__0200d950:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x5950, (0x596c-0x5950)
-.L596c:
+gScript_956__0200d96c:
 	.incbin "overlays/rom_7e0928/orig.bin", 0x596c, (0x59a4-0x596c)
 
 	.section .bss

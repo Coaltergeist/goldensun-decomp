@@ -3,8 +3,8 @@
 	.export_func _Func_80030f8
 	.export_func _StartTask
 	.export_func _Func_8004970
-	.export_func _Func_8002df0
-	.export_func _Func_8005340
+	.export_func _free
+	.export_func _DecompressLZ
 	.export_func _Func_8003fa4
 	.export_func _Func_8004080
 	.export_func _Func_8003dec

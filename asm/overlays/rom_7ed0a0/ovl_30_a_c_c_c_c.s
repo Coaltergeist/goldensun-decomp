@@ -12,7 +12,7 @@
 
 .thumb_func_start OvlFunc_964_20099e4
 	push	{lr}
-	ldr	r1, =.L33b8
+	ldr	r1, =gScript_964__0200b3b8
 	mov	r0, #8
 	bl	__Func_809207c
 	ldr	r0, =0x203

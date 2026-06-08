@@ -419,7 +419,7 @@
 	mov	r3, r11
 	mov	r0, #0
 	strh	r3, [r6]
-	ldr	r1, =.L3dec
+	ldr	r1, =gScript_932__0200bdec
 	bl	__Func_809207c
 	ldr	r0, =0x205
 	bl	__Func_8079338
@@ -461,7 +461,7 @@
 	add	r5, #0x64
 	mov	r0, r11
 	strh	r0, [r5]
-	ldr	r1, =.L3d78
+	ldr	r1, =gScript_932__0200bd78
 	mov	r0, #8
 	bl	__Func_809207c
 .L10d0:
@@ -1020,7 +1020,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L169a
-	ldr	r0, =.L4d6c
+	ldr	r0, =gScript_882__0200cd6c
 	b	.L1704
 .L169a:
 	ldr	r0, =.L4d24
@@ -1041,13 +1041,13 @@
 	ldr	r3, =0x50
 	cmp	r2, r3
 	bne	.L16bc
-	ldr	r0, =.L4e5c
+	ldr	r0, =gScript_882__0200ce5c
 	b	.L1704
 .L16bc:
 	ldr	r3, =0x51
 	cmp	r2, r3
 	bne	.L16c6
-	ldr	r0, =.L4ebc
+	ldr	r0, =gScript_881__0200cebc
 	b	.L1704
 .L16c6:
 	ldr	r3, =0x52
@@ -1651,7 +1651,7 @@
 	bl	__Func_80933f8
 	bl	__Func_8093530
 	mov	r1, #0x80
-	ldr	r2, =.L3d34
+	ldr	r2, =gScript_932__0200bd34
 	lsl	r1, #9
 	mov	r0, #0xa
 	bl	__Func_8092a1c
@@ -2189,7 +2189,7 @@
 	lsl	r2, #16
 	bl	__Func_80923e4
 	mov	r1, #0x80
-	ldr	r2, =.L3d34
+	ldr	r2, =gScript_932__0200bd34
 	mov	r0, #0xa
 	lsl	r1, #9
 	bl	__Func_8092a1c
@@ -3338,7 +3338,7 @@
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Func_800c300
-	ldr	r1, =.L401c
+	ldr	r1, =gScript_932__0200c01c
 	mov	r0, r5
 	bl	__Func_800c2d8
 	bl	__Random
@@ -3476,7 +3476,7 @@
 	mov	r3, #1
 	bl	__Func_80933f8
 	bl	__Func_8093530
-	ldr	r0, =.L4d6c
+	ldr	r0, =gScript_882__0200cd6c
 	bl	__Func_80917c4
 	ldr	r2, [r6]
 	mov	r3, #0x81

@@ -13,7 +13,7 @@
 	bl	_Func_8000b50
 	cmp	r0, #0
 	bne	.Lde2
-	ldr	r3, =.L6004
+	ldr	r3, =gScript_969__0200e004
 	ldr	r2, [r3]
 	mov	r1, #0x1f
 	add	r2, #4
@@ -63,7 +63,7 @@
 	strh	r5, [r2]
 	cmp	r6, #5
 	bls	.Ld90
-	ldr	r3, =.L6004
+	ldr	r3, =gScript_969__0200e004
 	ldr	r3, [r3]
 	ldr	r2, =0x50000d2
 	orr	r3, r1
@@ -96,7 +96,8 @@
 
 	.section .data
 
-.L6004:
+	.global gScript_969__0200e004
+gScript_969__0200e004:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6004, (0x6008-0x6004)
 .L6008:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6008, (0x600c-0x6008)

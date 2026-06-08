@@ -11,7 +11,7 @@
 	ldr	r3, =0xb3
 	cmp	r2, r3
 	bne	.L64
-	ldr	r0, =.L1690
+	ldr	r0, =gOvl_02009690
 	b	.L66
 .L64:
 	ldr	r0, =.L16b0

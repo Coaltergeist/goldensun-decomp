@@ -39,7 +39,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L1be
-	ldr	r0, =.L2a58
+	ldr	r0, =gOvl_0200aa58
 	b	.L1c0
 .L1be:
 	ldr	r0, =.L29e0

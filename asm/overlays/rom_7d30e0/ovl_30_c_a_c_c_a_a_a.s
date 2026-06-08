@@ -214,7 +214,7 @@
 	mov	r1, #0
 	strh	r6, [r5, #6]
 	bl	__Func_800c344
-	ldr	r1, =.L26fc
+	ldr	r1, =gScript_948__0200a6fc
 	mov	r0, r5
 	bl	__Func_800c2d8
 	bl	__Func_8091750
@@ -459,7 +459,7 @@
 	ldr	r3, =0x78
 	cmp	r2, r3
 	bne	.Lf0c
-	ldr	r0, =.L2dac
+	ldr	r0, =gScript_953__0200adac
 	b	.Lf0e
 .Lf0c:
 	ldr	r0, =.L2ba8

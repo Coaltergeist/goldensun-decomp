@@ -80,7 +80,7 @@
 	cmp	r2, #0x41
 	bls	.L9bbf0
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0x8e
 	lsl	r0, #1
 	bl	_Func_8079338
@@ -798,7 +798,7 @@
 	add	r4, r2
 	mov	r1, r5
 	mov	r0, r4
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x6006a00

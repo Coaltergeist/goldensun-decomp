@@ -27,7 +27,7 @@
 	add	r4, r2
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6006800
@@ -260,7 +260,7 @@
 	ldr	r3, [r6]
 	cmp	r3, #0
 	beq	.L2ee
-	ldr	r1, =.L16b8
+	ldr	r1, =gScript_930__020096b8
 	mov	r2, #0
 	ldrsh	r3, [r1, r2]
 	ldr	r7, =.L14dc
@@ -1445,7 +1445,7 @@
 	mov	r8, r0
 	mov	r1, r8
 	mov	r0, r5
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldrh	r3, [r7, #0xe]
 	ldrh	r2, [r7, #0xc]
 	lsl	r3, #5
@@ -1485,7 +1485,7 @@
 	cmp	r0, #7
 	ble	.Ld30
 	mov	r0, r8
-	bl	__Func_8002df0
+	bl	__free
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
@@ -1545,7 +1545,7 @@
 	cmp	r5, #7
 	ble	.Ld9c
 	mov	r0, r7
-	bl	__Func_8002df0
+	bl	__free
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -1623,7 +1623,7 @@
 	cmp	r4, #8
 	bne	.Le54
 	mov	r6, #0
-	ldr	r5, =.L16d0
+	ldr	r5, =gOvl_020096d0
 	mov	r9, r6
 	mov	r6, #1
 .Le68:
@@ -2254,19 +2254,22 @@
 .func_end OvlFunc_880_20092c8
 
 	.section .data
-	.global .L1658
+	.global gOvl_02009658
 
 .L14d4:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x14d4, (0x14dc-0x14d4)
 .L14dc:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x14dc, (0x1658-0x14dc)
-.L1658:
+gOvl_02009658:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x1658, (0x1688-0x1658)
-.L1688:
+	.global gScript_958__02009688
+gScript_958__02009688:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x1688, (0x168c-0x1688)
-.L168c:
+	.global gOvl_0200968c
+gOvl_0200968c:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x168c, (0x16a4-0x168c)
-.L16a4:
+	.global gOvl_020096a4
+gOvl_020096a4:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16a4, (0x16b0-0x16a4)
 .L16b0:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16b0, (0x16b2-0x16b0)
@@ -2276,7 +2279,8 @@
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16b4, (0x16b6-0x16b4)
 .L16b6:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16b6, (0x16b8-0x16b6)
-.L16b8:
+	.global gScript_930__020096b8
+gScript_930__020096b8:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16b8, (0x16ba-0x16b8)
 .L16ba:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16ba, (0x16bc-0x16ba)
@@ -2284,7 +2288,8 @@
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16bc, (0x16c0-0x16bc)
 .L16c0:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16c0, (0x16d0-0x16c0)
-.L16d0:
+	.global gOvl_020096d0
+gOvl_020096d0:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16d0, (0x16dc-0x16d0)
 .L16dc:
 	.incbin "overlays/rom_7795e8/orig.bin", 0x16dc, (0x16ec-0x16dc)

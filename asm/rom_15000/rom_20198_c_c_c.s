@@ -2195,7 +2195,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r14
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0x11
 	bl	Func_8002dd8
 	pop	{r3, r5}

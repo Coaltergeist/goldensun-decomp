@@ -16,7 +16,7 @@
 	str	r3, [r5, #0x30]
 	bl	__Func_800c300
 	mov	r0, r5
-	ldr	r1, =.L4c48
+	ldr	r1, =gScript_956__0200cc48
 	bl	__Func_800c2d8
 	ldr	r0, =0x363
 	bl	__Func_8079358

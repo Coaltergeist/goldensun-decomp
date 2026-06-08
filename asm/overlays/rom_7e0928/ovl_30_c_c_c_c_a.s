@@ -383,7 +383,7 @@
 	mov	r0, r7
 	mov	r1, #3
 	bl	__Func_800c300
-	ldr	r1, =.L4bec
+	ldr	r1, =ActorCmd_ARRAY_956__0200cbec
 	mov	r0, r7
 	bl	__Func_800c2d8
 	b	.L10fa
@@ -745,7 +745,7 @@
 	add	r2, #2
 	mov	r3, #0x80
 	strh	r3, [r2]
-	ldr	r1, =.L596c
+	ldr	r1, =gScript_956__0200d96c
 	mov	r0, r6
 	bl	__Func_809207c
 .L145c:
@@ -788,7 +788,7 @@
 	mov	r1, #8
 	bl	__Func_80924d4
 .L14be:
-	ldr	r1, =.L5668
+	ldr	r1, =gScript_956__0200d668
 	mov	r0, #8
 	bl	__Func_809207c
 	mov	r1, #0xbc
@@ -801,7 +801,7 @@
 	bl	__MapActor_GetActor
 	mov	r5, #0
 	strh	r5, [r0, #6]
-	ldr	r1, =.L5738
+	ldr	r1, =gScript_956__0200d738
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0
@@ -874,7 +874,7 @@
 	bl	__Func_8092b94
 	mov	r0, #0x3c
 	bl	__Func_809163c
-	ldr	r6, =.L5950
+	ldr	r6, =gScript_956__0200d950
 	mov	r0, #0
 	mov	r1, r6
 	bl	__Func_809207c
@@ -906,7 +906,7 @@
 	bl	__Func_800c528
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L5808
+	ldr	r1, =gScript_956__0200d808
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r1, #0
@@ -1028,7 +1028,7 @@
 	mov	r0, #3
 	mov	r1, #0
 	bl	__Func_8092f84
-	ldr	r1, =.L58ac
+	ldr	r1, =gScript_956__0200d8ac
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #1

@@ -79,7 +79,7 @@
 	cmp	r5, #0
 	beq	.L1b26
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L27e8
+	ldr	r1, =gScript_923__0200a7e8
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
 	bl	__Func_800c2d8
@@ -136,7 +136,7 @@
 	cmp	r5, #0
 	beq	.L1bb6
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L27d0
+	ldr	r1, =gScript_923__0200a7d0
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
 	bl	__Func_800c2d8
@@ -197,7 +197,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1c14
-	ldr	r1, =.L27b8
+	ldr	r1, =gScript_923__0200a7b8
 	ldr	r6, [r5, #0x50]
 	bl	__Func_800c2d8
 	mov	r3, r5

@@ -51,7 +51,7 @@
 	ldr	r3, [r0, #0x10]
 	lsl	r1, r2, #4
 	str	r3, [r5, #0x10]
-	ldr	r0, =.L2cf8
+	ldr	r0, =gScript_884__0200acf8
 	add	r3, r1, #4
 	ldr	r2, [r0, r3]
 	cmp	r2, #0

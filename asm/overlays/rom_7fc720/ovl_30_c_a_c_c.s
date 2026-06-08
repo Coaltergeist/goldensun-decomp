@@ -90,7 +90,7 @@
 	mov	r2, #0
 	mov	r3, #0x30
 	bl	__Func_801e8b0
-	ldr	r0, =.L8d0
+	ldr	r0, =s_Lv_973__020088d0
 	mov	r1, r6
 	mov	r2, #0x30
 	mov	r3, #0x30
@@ -770,7 +770,7 @@
 	bl	__Func_80162d4
 	mov	r5, r0
 	mov	r1, r5
-	ldr	r0, =.L920
+	ldr	r0, =gOvl_02008920
 	mov	r2, #0
 	mov	r3, #0
 	bl	__Func_801e940

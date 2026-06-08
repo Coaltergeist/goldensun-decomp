@@ -232,7 +232,7 @@
 	sub	r3, #0xc
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

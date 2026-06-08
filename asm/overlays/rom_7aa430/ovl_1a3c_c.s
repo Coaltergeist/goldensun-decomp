@@ -2,22 +2,22 @@
 	.include "gba.inc"
 
 	.section .data
-	.global .L27b8
-	.global .L27c4
-	.global .L27d0
-	.global .L27dc
-	.global .L27e8
+	.global gScript_923__0200a7b8
+	.global gScript_923__0200a7c4
+	.global gScript_923__0200a7d0
+	.global gScript_923__0200a7dc
+	.global gScript_923__0200a7e8
 	.global .L27f4
 
-.L27b8:
+gScript_923__0200a7b8:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27b8, (0x27c4-0x27b8)
-.L27c4:
+gScript_923__0200a7c4:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27c4, (0x27d0-0x27c4)
-.L27d0:
+gScript_923__0200a7d0:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27d0, (0x27dc-0x27d0)
-.L27dc:
+gScript_923__0200a7dc:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27dc, (0x27e8-0x27dc)
-.L27e8:
+gScript_923__0200a7e8:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27e8, (0x27f4-0x27e8)
 .L27f4:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x27f4, (0x2814-0x27f4)

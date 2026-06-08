@@ -182,7 +182,7 @@
 	lsl	r0, #5
 	add	r1, r3, r0
 	mov	r0, r2
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r2, =0x7828
 	ldr	r1, [sp, #0x48]
 	add	r3, r1, r2

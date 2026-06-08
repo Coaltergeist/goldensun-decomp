@@ -942,7 +942,7 @@
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__Func_8093040
-	ldr	r1, =.L162c
+	ldr	r1, =gScript_930__0200962c
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r0, #0x94
@@ -965,7 +965,7 @@
 	mov	r0, #0
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r1, =.L16b8
+	ldr	r1, =gScript_930__020096b8
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0

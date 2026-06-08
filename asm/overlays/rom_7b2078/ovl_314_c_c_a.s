@@ -827,7 +827,7 @@
 	ldr	r5, .Lbc0	@ 0
 	add	r0, #0x5b
 	strb	r5, [r0]
-	ldr	r1, =.L4638
+	ldr	r1, =gScript_926__0200c638
 	mov	r0, #0xc
 	bl	__Func_809207c
 	bl	__Func_8091750
@@ -2623,7 +2623,7 @@
 	mov	r0, #0xb
 	mov	r1, #5
 	bl	__Func_80924d4
-	ldr	r1, =.L4638
+	ldr	r1, =gScript_926__0200c638
 	mov	r0, #0xc
 	bl	__Func_809207c
 	pop	{r5}
@@ -3257,7 +3257,7 @@
 	bl	__Func_80924d4
 	mov	r0, #0xc
 	bl	__Func_80923c4
-	ldr	r1, =.L4638
+	ldr	r1, =gScript_926__0200c638
 	mov	r0, #0xc
 	bl	__Func_809207c
 	mov	r0, #0xf

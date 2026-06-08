@@ -657,7 +657,7 @@
 	mov	r0, #3
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r5, =.L2dac
+	ldr	r5, =gScript_953__0200adac
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1092,7 +1092,7 @@
 	mov	r0, #3
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r5, =.L2dac
+	ldr	r5, =gScript_953__0200adac
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1385,7 +1385,7 @@
 	mov	r0, #3
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r5, =.L2dac
+	ldr	r5, =gScript_953__0200adac
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1517,14 +1517,17 @@
 .func_end OvlFunc_953_200ab1c
 
 	.section .data
-	.global .L2d3c
-	.global .L2d74
-	.global .L2de4
-	.global .L2e20
-	.global .L2e5c
-	.global .L2ed4
-	.global .L2f24
-	.global .L2f88
+	.global ActorCmd_ARRAY_953__0200ad3c
+	.global gScript_884__0200ad74
+	.global gScript_953__0200ad74
+	.global gScript_953__0200ade4
+	.global gScript_911__0200ae20
+	.global gScript_913__0200ae20
+	.global gScript_953__0200ae20
+	.global gScript_953__0200ae5c
+	.global gScript_953__0200aed4
+	.global gScript_953__0200af24
+	.global gScript_953__0200af88
 	.global .L3324
 	.global .L339c
 	.global .L35f4
@@ -1544,23 +1547,27 @@
 	.global .L3094
 	.global .L3274
 
-.L2d3c:
+ActorCmd_ARRAY_953__0200ad3c:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2d3c, (0x2d74-0x2d3c)
-.L2d74:
+gScript_884__0200ad74:
+gScript_953__0200ad74:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2d74, (0x2dac-0x2d74)
-.L2dac:
+	.global gScript_953__0200adac
+gScript_953__0200adac:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2dac, (0x2de4-0x2dac)
-.L2de4:
+gScript_953__0200ade4:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2de4, (0x2e20-0x2de4)
-.L2e20:
+gScript_911__0200ae20:
+gScript_913__0200ae20:
+gScript_953__0200ae20:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2e20, (0x2e5c-0x2e20)
-.L2e5c:
+gScript_953__0200ae5c:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2e5c, (0x2ed4-0x2e5c)
-.L2ed4:
+gScript_953__0200aed4:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2ed4, (0x2f24-0x2ed4)
-.L2f24:
+gScript_953__0200af24:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2f24, (0x2f88-0x2f24)
-.L2f88:
+gScript_953__0200af88:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x2f88, (0x3034-0x2f88)
 .L3034:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x3034, (0x3094-0x3034)
@@ -1568,7 +1575,8 @@
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x3094, (0x3274-0x3094)
 .L3274:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x3274, (0x32bc-0x3274)
-.L32bc:
+	.global gOvl_0200b2bc
+gOvl_0200b2bc:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x32bc, (0x3324-0x32bc)
 .L3324:
 	.incbin "overlays/rom_7d95dc/orig.bin", 0x3324, (0x339c-0x3324)

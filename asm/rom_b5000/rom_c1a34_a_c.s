@@ -551,7 +551,7 @@
 	b	.Lc2782
 .Lc291e:
 	mov	r0, r11
-	bl	Func_8002df0
+	bl	free
 	ldr	r2, [sp, #0x14]
 	ldr	r0, [r2]
 	cmp	r0, #0

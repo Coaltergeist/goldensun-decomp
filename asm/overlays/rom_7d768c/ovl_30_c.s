@@ -345,7 +345,7 @@
 	bl	__MapActor_GetActor
 	mov	r8, r0
 	bl	__Func_80916b0
-	ldr	r3, =.L4570
+	ldr	r3, =gScript_952__0200c570
 	mov	r10, r3
 	mov	r1, r10
 	mov	r0, r5
@@ -6640,15 +6640,18 @@
 
 .L4550:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4550, (0x4570-0x4550)
-.L4570:
+	.global gScript_952__0200c570
+gScript_952__0200c570:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4570, (0x4614-0x4570)
 .L4614:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4614, (0x4a1c-0x4614)
 .L4a1c:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4a1c, (0x4a7c-0x4a1c)
-.L4a7c:
+	.global gOvl_0200ca7c
+gOvl_0200ca7c:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4a7c, (0x4a8c-0x4a7c)
-.L4a8c:
+	.global gOvl_0200ca8c
+gOvl_0200ca8c:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4a8c, (0x4b3c-0x4a8c)
 .L4b3c:
 	.incbin "overlays/rom_7d768c/orig.bin", 0x4b3c, (0x4b84-0x4b3c)

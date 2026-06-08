@@ -852,7 +852,7 @@
 	cmp	r6, #3
 	ble	.Lbfd72
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	ldr	r1, [sp, #4]
 	cmp	r1, #0
 	bne	.Lbfdfe

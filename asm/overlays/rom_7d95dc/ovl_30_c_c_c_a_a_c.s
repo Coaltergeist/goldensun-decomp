@@ -232,7 +232,7 @@
 	bl	__Func_80925cc
 	mov	r0, #0x28
 	bl	__Func_809163c
-	ldr	r1, =.L2f88
+	ldr	r1, =gScript_953__0200af88
 	mov	r0, #0x10
 	bl	__Func_809207c
 	mov	r0, #0x50
@@ -608,7 +608,7 @@
 	bl	__Func_80925cc
 	mov	r0, #0x28
 	bl	__Func_809163c
-	ldr	r1, =.L2f88
+	ldr	r1, =gScript_953__0200af88
 	mov	r0, #0x11
 	bl	__Func_809207c
 	mov	r0, #0x50

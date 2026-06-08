@@ -44,7 +44,7 @@
 	add	r5, #0x80
 	ldr	r1, [sp, #0x2c]
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_85
 	bl	GetFile
 	ldr	r3, =0x6e4
@@ -61,11 +61,11 @@
 	add	r5, #0x80
 	add	r1, r2, r3
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x28]
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r0, #0xef
 	ldr	r7, [sp, #0x2c]
 	lsl	r0, #7
@@ -766,7 +766,7 @@
 	bl	_call_via_r3
 	mov	r0, r5
 	mov	r1, r7
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r5, #2
 	mov	r1, #7
 	mov	r2, #7
@@ -1309,7 +1309,7 @@
 	add	r5, #0x80
 	ldr	r1, [sp, #0x28]
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r5, #2
 	mov	r1, #7
 	mov	r2, #7

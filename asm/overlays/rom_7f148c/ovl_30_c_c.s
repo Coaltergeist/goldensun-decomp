@@ -37,7 +37,7 @@
 	bl	__Func_8092adc
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L1638
+	ldr	r1, =ActorCmd_ARRAY_966__02009638
 	mov	r0, r6
 	bl	__Func_809207c
 	pop	{r5, r6}
@@ -2058,13 +2058,15 @@
 .func_end OvlFunc_966_200920c
 
 	.section .data
-	.global .L175c
+	.global gOvl_0200975c
 
-.L1638:
+	.global ActorCmd_ARRAY_966__02009638
+ActorCmd_ARRAY_966__02009638:
 	.incbin "overlays/rom_7f148c/orig.bin", 0x1638, (0x175c-0x1638)
-.L175c:
+gOvl_0200975c:
 	.incbin "overlays/rom_7f148c/orig.bin", 0x175c, (0x18c4-0x175c)
-.L18c4:
+	.global gOvl_020098c4
+gOvl_020098c4:
 	.incbin "overlays/rom_7f148c/orig.bin", 0x18c4, (0x1900-0x18c4)
 .L1900:
 	.incbin "overlays/rom_7f148c/orig.bin", 0x1900, (0x1a98-0x1900)

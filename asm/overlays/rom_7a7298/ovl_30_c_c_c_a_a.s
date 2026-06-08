@@ -148,7 +148,7 @@
 	mov	r3, #0xa
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L24f4
+	ldr	r1, =gScript_921__0200a4f4
 	mov	r0, #9
 	bl	__Func_809207c
 	ldr	r0, =0x1534
@@ -175,7 +175,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	bl	__Func_8093040
-	ldr	r1, =.L2564
+	ldr	r1, =gScript_921__0200a564
 	mov	r0, #0
 	bl	__Func_809207c
 	ldr	r2, =0xcccc

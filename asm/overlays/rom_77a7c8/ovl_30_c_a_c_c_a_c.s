@@ -554,22 +554,22 @@
 	bl	__Func_8092064
 	mov	r0, #0x8d
 	bl	__Func_80f9080
-	ldr	r1, =.L49e4
+	ldr	r1, =gScript_881__0200c9e4
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4b50
+	ldr	r1, =gScript_881__0200cb50
 	mov	r0, #0xb
 	bl	__Func_809207c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4c74
+	ldr	r1, =gScript_881__0200cc74
 	mov	r0, #0xc
 	bl	__Func_809207c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4d98
+	ldr	r1, =gScript_881__0200cd98
 	mov	r0, #0xd
 	bl	__Func_80920fc
 	ldr	r0, =0x121
@@ -651,17 +651,17 @@
 	bl	__Func_8092adc
 	mov	r0, #0x8d
 	bl	__Func_80f9080
-	ldr	r1, =.L4a78
+	ldr	r1, =gScript_881__0200ca78
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4be4
+	ldr	r1, =gScript_881__0200cbe4
 	mov	r0, #0xb
 	bl	__Func_809207c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4d08
+	ldr	r1, =gScript_881__0200cd08
 	mov	r0, #0xc
 	bl	__Func_809207c
 	mov	r0, #0xa
@@ -676,7 +676,7 @@
 	mov	r0, #1
 	lsl	r1, #7
 	bl	__Func_8092adc
-	ldr	r1, =.L4e2c
+	ldr	r1, =gScript_881__0200ce2c
 	mov	r0, #0xd
 	bl	__Func_80920fc
 	ldr	r0, =0x121
@@ -937,7 +937,7 @@
 	mov	r0, #0xe
 	ldr	r1, =0x4ccc
 	bl	__Func_8092064
-	ldr	r1, =.L4ebc
+	ldr	r1, =gScript_881__0200cebc
 	mov	r0, #0xe
 	bl	__Func_809207c
 	mov	r0, #0xa0
@@ -1145,20 +1145,20 @@
 	bl	__Func_80923e4
 	mov	r0, #0x8d
 	bl	__Func_80f9080
-	ldr	r1, =.L4ac4
+	ldr	r1, =gScript_881__0200cac4
 	mov	r0, #0xa
 	bl	__Func_809207c
-	ldr	r1, =.L4c30
+	ldr	r1, =gScript_881__0200cc30
 	mov	r0, #0xb
 	bl	__Func_809207c
 	mov	r0, #0x28
 	bl	__Func_809163c
-	ldr	r1, =.L4d54
+	ldr	r1, =gScript_881__0200cd54
 	mov	r0, #0xc
 	bl	__Func_809207c
 	mov	r0, #0x28
 	bl	__Func_809163c
-	ldr	r1, =.L4e78
+	ldr	r1, =gScript_881__0200ce78
 	mov	r0, #0xd
 	bl	__Func_80920fc
 	bl	__Func_808c4c0
@@ -1185,7 +1185,7 @@
 	neg	r1, r1
 	bl	__Func_80933f8
 	bl	__Func_8093530
-	ldr	r5, =.L4af4
+	ldr	r5, =gScript_881__0200caf4
 	mov	r0, #0xa
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1671,7 +1671,7 @@
 	add	r5, #0x64
 	mov	r3, #0
 	strh	r3, [r5]
-	ldr	r1, =.L5158
+	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__Func_809207c
 .L18f6:
@@ -1735,7 +1735,7 @@
 	add	r5, #0x64
 	mov	r3, #0
 	strh	r3, [r5]
-	ldr	r1, =.L5158
+	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__Func_809207c
 .L19a6:
@@ -1799,7 +1799,7 @@
 	add	r5, #0x64
 	mov	r3, #0
 	strh	r3, [r5]
-	ldr	r1, =.L5158
+	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__Func_809207c
 .L1a56:
@@ -1866,12 +1866,12 @@
 	bl	OvlFunc_881_200b41c
 	cmp	r0, #0xb
 	bne	.L1b10
-	ldr	r1, =.L51b8
+	ldr	r1, =gScript_881__0200d1b8
 	mov	r0, #8
 	bl	__Func_809207c
 	b	.L1b18
 .L1b10:
-	ldr	r1, =.L5158
+	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__Func_809207c
 .L1b18:
@@ -2880,7 +2880,7 @@
 	mov	r0, #0
 	ldr	r1, =0xcccc
 	bl	__Func_8092064
-	ldr	r1, =.L4f20
+	ldr	r1, =gScript_881__0200cf20
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0x14
@@ -3032,7 +3032,7 @@
 
 .thumb_func_start OvlFunc_881_200a768
 	push	{r5, r6, r7, lr}
-	ldr	r4, =.L63f4
+	ldr	r4, =gOvl_0200e3f4
 	mov	r3, #1
 	neg	r3, r3
 	ldr	r6, =OvlFunc_881_200a858
@@ -3087,7 +3087,7 @@
 
 .thumb_func_start OvlFunc_881_200a7dc
 	push	{r5, r6, r7, lr}
-	ldr	r0, =.L63f4
+	ldr	r0, =gOvl_0200e3f4
 	mov	r3, #0x21
 	mov	r4, #1
 	mov	r7, r0
@@ -3775,7 +3775,7 @@
 	bl	__Func_801173c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L4f7c
+	ldr	r1, =gScript_881__0200cf7c
 	mov	r0, #9
 	bl	__Func_809207c
 	mov	r0, #0x50
@@ -3812,7 +3812,7 @@
 	mov	r0, #5
 	ldr	r1, =0x9999
 	bl	__Func_8092064
-	ldr	r1, =.L501c
+	ldr	r1, =gScript_881__0200d01c
 	mov	r0, #8
 	bl	__Func_809207c
 	mov	r0, #0x14
@@ -3826,7 +3826,7 @@
 	ldr	r2, =0xdc80000
 	mov	r3, #1
 	bl	__Func_80933f8
-	ldr	r1, =.L50a8
+	ldr	r1, =gScript_881__0200d0a8
 	mov	r0, #5
 	bl	__Func_809207c
 .L2f4a:
@@ -4095,7 +4095,7 @@
 	mov	r1, #1
 	mov	r0, r6
 	bl	__Func_800c300
-	ldr	r1, =.L514c
+	ldr	r1, =gScript_881__0200d14c
 	mov	r0, r6
 	bl	__Func_800c2d8
 .L3270:
@@ -4410,7 +4410,7 @@
 	mov	r0, r5
 	mov	r1, #2
 	bl	__Func_800c300
-	ldr	r1, =.L673c
+	ldr	r1, =gScript_881__0200e73c
 	mov	r0, r5
 	bl	__Func_800c2d8
 .L3566:
@@ -4456,7 +4456,7 @@
 	add	r5, #0x64
 	mov	r3, #0
 	strh	r3, [r5]
-	ldr	r1, =.L5218
+	ldr	r1, =gScript_881__0200d218
 	mov	r0, #8
 	bl	__Func_809207c
 	mov	r1, #0xc8

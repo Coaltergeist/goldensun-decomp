@@ -944,7 +944,7 @@
 	lsr	r3, #12
 	add	r2, #0x66
 	strh	r3, [r2]
-	ldr	r1, =.L3eac
+	ldr	r1, =gScript_936__0200beac
 	mov	r0, r5
 	bl	__Func_800c2d8
 	pop	{r5, r6}
@@ -996,7 +996,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L3ec0
+	ldr	r1, =gScript_936__0200bec0
 	mov	r0, #0x15
 	bl	__Func_809207c
 	ldr	r2, =.L5144
@@ -1016,7 +1016,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L3fb0
+	ldr	r1, =gScript_936__0200bfb0
 	mov	r0, #0x14
 	bl	__Func_809207c
 	ldr	r2, =.L5144
@@ -1036,7 +1036,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L3ec0
+	ldr	r1, =gScript_936__0200bec0
 	mov	r0, #0x14
 	bl	__Func_809207c
 	ldr	r2, =.L5144
@@ -1056,7 +1056,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L3fb0
+	ldr	r1, =gScript_936__0200bfb0
 	mov	r0, #0x15
 	bl	__Func_809207c
 	ldr	r2, =.L5144
@@ -1975,7 +1975,7 @@
 	bl	__Random
 	lsl	r3, r0, #2
 	add	r3, r0
-	ldr	r6, =.L421c
+	ldr	r6, =gScript_936__0200c21c
 	lsr	r3, #12
 	add	r5, #0x66
 	strh	r3, [r5]
@@ -2721,7 +2721,7 @@
 	mov	r0, #0xb
 	mov	r1, #0
 	bl	__Func_80923e4
-	ldr	r5, =.L4230
+	ldr	r5, =gScript_936__0200c230
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c

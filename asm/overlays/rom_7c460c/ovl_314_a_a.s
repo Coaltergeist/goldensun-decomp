@@ -14,7 +14,7 @@
 	ldr	r3, =0x9f
 	cmp	r2, r3
 	bne	.L332
-	ldr	r0, =.L1d3c
+	ldr	r0, =gOvl_02009d3c
 	b	.L334
 .L332:
 	ldr	r0, =.L1bec

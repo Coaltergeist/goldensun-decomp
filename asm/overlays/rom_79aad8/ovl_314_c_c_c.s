@@ -195,7 +195,7 @@
 .func_end OvlFunc_906_20084f4
 
 	.section .data
-	.global .L920
+	.global gOvl_02008920
 	.global .L948
 	.global .L978
 	.global .L990
@@ -207,7 +207,7 @@
 	.incbin "overlays/rom_79aad8/orig.bin", 0x818, (0x8d8-0x818)
 .L8d8:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x8d8, (0x920-0x8d8)
-.L920:
+gOvl_02008920:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x920, (0x948-0x920)
 .L948:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x948, (0x978-0x948)

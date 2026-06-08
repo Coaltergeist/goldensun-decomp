@@ -11,7 +11,7 @@
 	ldr	r3, =0x67
 	cmp	r2, r3
 	bne	.L48
-	ldr	r0, =.L1c04
+	ldr	r0, =gScript_887__02009c04
 	b	.L4a
 .L48:
 	ldr	r0, =.L1bd4

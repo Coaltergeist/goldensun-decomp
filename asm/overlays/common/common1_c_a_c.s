@@ -567,7 +567,7 @@
 	mov	r5, r0
 	mov	r1, r5
 	ldr	r0, =.L5
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	mov	r1, #0x80
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
@@ -575,7 +575,7 @@
 	mov	r2, r5
 	bl	__Func_8003fa4
 	mov	r0, r5
-	bl	__Func_8002df0
+	bl	__free
 .L1bc4:
 	mov	r1, #0
 	ldrsh	r2, [r6, r1]
@@ -1013,7 +1013,7 @@
 	strh	r2, [r3]
 	mov	r1, r11
 	ldr	r0, =.L5
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	bl	__Func_8004080
 	mov	r3, r7
 	add	r3, #0xd8
@@ -1028,7 +1028,7 @@
 	ldr	r0, =OvlFunc_common1_1b08
 	bl	__StartTask
 	mov	r0, r11
-	bl	__Func_8002df0
+	bl	__free
 	add	sp, #4
 	b	.L1fa4
 
@@ -1056,7 +1056,7 @@
 	bl	__GetFile
 	mov	r1, r6
 	add	r1, #0xf0
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r0, =0x109
 	bl	__Func_8079338
 	cmp	r0, #0

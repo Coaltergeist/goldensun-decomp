@@ -62,7 +62,8 @@
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x635c, (0x650c-0x635c)
 .L650c:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x650c, (0x6614-0x650c)
-.L6614:
+	.global gScript_883__0200e614
+gScript_883__0200e614:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6614, (0x66e8-0x6614)
 .L66e8:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x66e8, (0x6700-0x66e8)

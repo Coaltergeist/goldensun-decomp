@@ -123,18 +123,20 @@
 .func_end OvlFunc_919_20082e0
 
 	.section .data
-	.global .L35c
-	.global .L44c
-	.global .L474
-	.global .L4a4
+	.global gOvl_0200835c
+	.global MapEntrance_ARRAY_919__0200835c
+	.global gOvl_0200844c
+	.global gOvl_02008474
+	.global gOvl_020084a4
 
-.L35c:
+gOvl_0200835c:
+MapEntrance_ARRAY_919__0200835c:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x35c, (0x44c-0x35c)
-.L44c:
+gOvl_0200844c:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x44c, (0x474-0x44c)
-.L474:
+gOvl_02008474:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x474, (0x4a4-0x474)
-.L4a4:
+gOvl_020084a4:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x4a4
 
 	.section .bss

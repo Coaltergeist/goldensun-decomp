@@ -20,7 +20,7 @@
 	bl	__Func_8079358
 	b	.Lf4
 .Lb0:
-	ldr	r3, =.L1928
+	ldr	r3, =CHAR_ARRAY_ARRAY_971__02009928
 	lsl	r2, r7, #2
 	add	r6, r2, r3
 	cmp	r5, #0
@@ -70,7 +70,7 @@
 
 .thumb_func_start OvlFunc_971_2008128
 	ldr	r3, =.L1940
-	ldr	r2, =.L1928
+	ldr	r2, =CHAR_ARRAY_ARRAY_971__02009928
 	lsl	r1, r0, #2
 	ldrb	r3, [r3, r0]
 	ldr	r4, =ewram_2002224
@@ -506,7 +506,7 @@
 	b	.L516
 .L4ec:
 	mov	r0, r11
-	bl	__Func_8002df0
+	bl	__free
 	mov	r3, #0xa0
 	lsl	r3, #1
 	mov	r8, r3
@@ -525,7 +525,7 @@
 	mov	r9, r0
 .L516:
 	mov	r0, r11
-	bl	__Func_8002df0
+	bl	__free
 	mov	r0, r9
 	add	sp, #0x30
 	pop	{r3, r5, r6, r7}
@@ -733,7 +733,7 @@
 	mov	r5, #0xa0
 	mov	r0, r8
 	lsl	r5, #1
-	bl	__Func_8002df0
+	bl	__free
 	mov	r0, r5
 	bl	__Func_8004970
 	mov	r8, r0
@@ -844,7 +844,7 @@
 	bl	__Func_80030f8
 .L78e:
 	mov	r0, r8
-	bl	__Func_8002df0
+	bl	__free
 	ldr	r0, [sp, #4]
 	add	sp, #0x20
 	pop	{r3, r5, r6, r7}

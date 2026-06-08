@@ -726,7 +726,7 @@
 	bne	.Lf0994
 .Lf0a0e:
 	ldr	r0, [sp, #4]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0
 .Lf0a16:
 	add	sp, #0x2c

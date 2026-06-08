@@ -74,7 +74,7 @@
 	bl	_call_via_r6
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_b4
 	bl	GetFile
 	mov	r1, #0xc0
@@ -83,11 +83,11 @@
 	lsl	r1, #6
 	add	r1, r10
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x20]
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, [sp, #0x38]
 	cmp	r0, #1
 	bne	.Ld2542

@@ -563,26 +563,27 @@
 .func_end OvlFunc_971_20092e0
 
 	.section .data
-	.global .L1928
+	.global CHAR_ARRAY_ARRAY_971__02009928
 	.global .L1940
-	.global .L1948
-	.global .L19f0
+	.global gOvl_02009948
+	.global gOvl_020099f0
 	.global .L19f4
-	.global .L1c04
+	.global gScript_887__02009c04
 
-.L1928:
+CHAR_ARRAY_ARRAY_971__02009928:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x1928, (0x1940-0x1928)
 .L1940:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x1940, (0x1948-0x1940)
-.L1948:
+gOvl_02009948:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x1948, (0x19f0-0x1948)
-.L19f0:
+gOvl_020099f0:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x19f0, (0x19f4-0x19f0)
 .L19f4:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x19f4, (0x1c04-0x19f4)
-.L1c04:
+gScript_887__02009c04:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x1c04, (0x1e14-0x1c04)
-.L1e14:
+	.global gOvl_02009e14
+gOvl_02009e14:
 	.incbin "overlays/rom_7fb4a8/orig.bin", 0x1e14
 
 	.section .bss

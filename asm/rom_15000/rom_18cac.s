@@ -77,7 +77,7 @@
 	bl	_call_via_r6
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	b	.L18ee8
 .L18d50:

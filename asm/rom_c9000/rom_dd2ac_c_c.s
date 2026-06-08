@@ -1988,7 +1988,7 @@
 	add	r5, #0x80
 	ldr	r1, [sp, #0x28]
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x18]
 	mov	r2, #0

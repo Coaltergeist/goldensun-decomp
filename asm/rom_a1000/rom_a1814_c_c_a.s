@@ -119,7 +119,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	b	.La4086
 .La3ff4:
 	cmp	r6, r8
@@ -191,7 +191,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 .La4086:
 	add	sp, #4
 	pop	{r3, r5, r6, r7}

@@ -63,7 +63,7 @@
 	ldr	r3, =0x3e
 	cmp	r2, r3
 	bne	.Lf52
-	ldr	r0, =.L2c08
+	ldr	r0, =gScript_911__0200ac08
 	b	.Lf86
 .Lf52:
 	ldr	r3, =0x3f

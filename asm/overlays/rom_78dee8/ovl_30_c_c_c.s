@@ -1977,17 +1977,18 @@
 	.global .L232c
 	.global .L241c
 	.global .L2524
-	.global .L1cd4
+	.global MapEntrance_ARRAY_895__02009cd4
 	.global .L1d04
 	.global .L1d64
 
-.L1cd4:
+MapEntrance_ARRAY_895__02009cd4:
 	.incbin "overlays/rom_78dee8/orig.bin", 0x1cd4, (0x1d04-0x1cd4)
 .L1d04:
 	.incbin "overlays/rom_78dee8/orig.bin", 0x1d04, (0x1d64-0x1d04)
 .L1d64:
 	.incbin "overlays/rom_78dee8/orig.bin", 0x1d64, (0x1f14-0x1d64)
-.L1f14:
+	.global gOvl_02009f14
+gOvl_02009f14:
 	.incbin "overlays/rom_78dee8/orig.bin", 0x1f14, (0x1fc0-0x1f14)
 .L1fc0:
 	.incbin "overlays/rom_78dee8/orig.bin", 0x1fc0, (0x1fd8-0x1fc0)

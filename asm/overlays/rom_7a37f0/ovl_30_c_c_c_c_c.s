@@ -57,7 +57,7 @@
 	.global .L1164
 	.global .L1168
 	.global .L116c
-	.global .L1170
+	.global gOvl_02009170
 
 .L111c:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x111c, (0x1164-0x111c)
@@ -67,13 +67,16 @@
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x1168, (0x116c-0x1168)
 .L116c:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x116c, (0x1170-0x116c)
-.L1170:
+gOvl_02009170:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x1170, (0x11d0-0x1170)
-.L11d0:
+	.global gOvl_020091d0
+gOvl_020091d0:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x11d0, (0x11e0-0x11d0)
-.L11e0:
+	.global gOvl_020091e0
+gOvl_020091e0:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x11e0, (0x1240-0x11e0)
-.L1240:
+	.global gOvl_02009240
+gOvl_02009240:
 	.incbin "overlays/rom_7a37f0/orig.bin", 0x1240
 
 	.section .bss

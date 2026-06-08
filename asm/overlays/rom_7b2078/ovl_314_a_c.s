@@ -31,7 +31,7 @@
 	ldr	r3, =0x3c
 	cmp	r2, r3
 	bne	.L364
-	ldr	r0, =.L47a8
+	ldr	r0, =gScript_943__0200c7a8
 	b	.L366
 .L364:
 	ldr	r0, =.L4838

@@ -686,7 +686,7 @@
 	push	{lr}
 	mov	r0, #0x9e
 	bl	__Func_80f9080
-	ldr	r0, =.L176c
+	ldr	r0, =gOvl_0200976c
 	mov	r1, #0x2c
 	mov	r2, #0x11
 	bl	__Func_8010560

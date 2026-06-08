@@ -342,7 +342,7 @@
 	mov	r1, #2
 	bl	__Func_800c300
 	mov	r0, r7
-	ldr	r1, =.L3a00
+	ldr	r1, =gScript_897__0200ba00
 	bl	__Func_800c2d8
 	mov	r1, r11
 	lsl	r6, r1, #16

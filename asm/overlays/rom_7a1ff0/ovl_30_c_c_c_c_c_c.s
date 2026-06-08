@@ -208,7 +208,7 @@
 	.global .Lec8
 	.global .Lf08
 	.global .Lf20
-	.global .Lf80
+	.global gOvl_02008f80
 
 .Lec8:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xec8, (0xf08-0xec8)
@@ -216,13 +216,16 @@
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xf08, (0xf20-0xf08)
 .Lf20:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xf20, (0xf80-0xf20)
-.Lf80:
+gOvl_02008f80:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xf80, (0xfe0-0xf80)
-.Lfe0:
+	.global gOvl_02008fe0
+gOvl_02008fe0:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xfe0, (0xff0-0xfe0)
-.Lff0:
+	.global gOvl_02008ff0
+gOvl_02008ff0:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0xff0, (0x1068-0xff0)
-.L1068:
+	.global gOvl_02009068
+gOvl_02009068:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0x1068
 
 	.section .bss

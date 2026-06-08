@@ -166,9 +166,9 @@
 	mov	r2, r8
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6}
@@ -218,16 +218,16 @@
 	ldr	r3, [r5, #0x24]
 	ldr	r1, =ewram_2010001
 	add	r0, r5, r3
-	bl	Func_8005340
+	bl	DecompressLZ
 	bl	Func_800f9f4
 	ldr	r3, [r5, #0x28]
 	ldr	r1, =ewram_202c000
 	add	r0, r5, r3
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, [r5, #0x2c]
 	ldr	r1, =ewram_2010000
 	add	r0, r5, r3
-	bl	Func_8005340
+	bl	DecompressLZ
 	bl	Func_800fac8
 	ldr	r0, [r5, #0x30]
 	cmp	r0, #0
@@ -235,7 +235,7 @@
 	ldr	r6, =ewram_202d000
 	add	r0, r5, r0
 	mov	r1, r6
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r0, r6
 	bl	Func_80118d8
 .Lfbc8:
@@ -245,7 +245,7 @@
 	ldr	r6, =ewram_202de00
 	add	r0, r5, r0
 	mov	r1, r6
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r0, r6
 	bl	Func_8011a84
 .Lfbde:
@@ -470,7 +470,7 @@
 	add	r0, r9
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =Func_8001af8
 	mov	r2, r10
 	strh	r2, [r7]
@@ -517,7 +517,7 @@
 	ldr	r1, =ewram_2028000
 	bl	Func_8005394
 	mov	r0, r7
-	bl	Func_8002df0
+	bl	free
 .Lfe42:
 	ldr	r3, =REG_MOSAIC
 	mov	r2, #0

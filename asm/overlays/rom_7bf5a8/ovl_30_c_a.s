@@ -55,7 +55,7 @@
 	ldr	r3, =0x62
 	cmp	r2, r3
 	bne	.L10c
-	ldr	r0, =.L1ecc
+	ldr	r0, =gScript_887__02009ecc
 	b	.L10e
 .L10c:
 	ldr	r0, =.L1d1c

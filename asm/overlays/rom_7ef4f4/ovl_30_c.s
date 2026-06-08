@@ -782,7 +782,7 @@
 
 	.section .data
 	.global .L2fd4
-	.global .L3014
+	.global gOvl_0200b014
 	.global .L302c
 	.global .L3134
 	.global .L3270
@@ -790,7 +790,7 @@
 	.global .L34f8
 	.global .L3558
 	.global .L35b8
-	.global .L35f8
+	.global gOvl_0200b5f8
 	.global .L3694
 	.global .L3754
 	.global .L3784
@@ -798,7 +798,7 @@
 
 .L2fd4:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x2fd4, (0x3014-0x2fd4)
-.L3014:
+gOvl_0200b014:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x3014, (0x302c-0x3014)
 .L302c:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x302c, (0x3134-0x302c)
@@ -814,7 +814,7 @@
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x3558, (0x35b8-0x3558)
 .L35b8:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x35b8, (0x35f8-0x35b8)
-.L35f8:
+gOvl_0200b5f8:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x35f8, (0x3694-0x35f8)
 .L3694:
 	.incbin "overlays/rom_7ef4f4/orig.bin", 0x3694, (0x3754-0x3694)

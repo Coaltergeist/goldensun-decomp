@@ -32,7 +32,7 @@
 	ldr	r0, =.Lc7c
 	b	.Lda
 .Ld8:
-	ldr	r0, =.Lc64
+	ldr	r0, =gScript_889__02008c64
 .Lda:
 	pop	{r1}
 	bx	r1
@@ -355,7 +355,7 @@
 	bl	__Func_8079358
 .L3fa:
 	mov	r1, #0x80
-	ldr	r2, =.Lbf4
+	ldr	r2, =gScript_910__02008bf4
 	mov	r0, #0xc
 	lsl	r1, #9
 	bl	__Func_8092a1c
@@ -494,7 +494,7 @@
 	mov	r2, #0
 	bl	__Func_80923e4
 	mov	r1, #0x80
-	ldr	r2, =.Lbf4
+	ldr	r2, =gScript_910__02008bf4
 	mov	r0, #0xc
 	lsl	r1, #9
 	bl	__Func_8092a1c
@@ -995,17 +995,20 @@
 .func_end OvlFunc_910_2008974
 
 	.section .data
-	.global .Lc08
+	.global gOvl_02008c08
 
 .Lbd4:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xbd4, (0xbf4-0xbd4)
-.Lbf4:
+	.global gScript_910__02008bf4
+gScript_910__02008bf4:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xbf4, (0xc08-0xbf4)
-.Lc08:
+gOvl_02008c08:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xc08, (0xc50-0xc08)
-.Lc50:
+	.global gOvl_02008c50
+gOvl_02008c50:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xc50, (0xc64-0xc50)
-.Lc64:
+	.global gScript_889__02008c64
+gScript_889__02008c64:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xc64, (0xc7c-0xc64)
 .Lc7c:
 	.incbin "overlays/rom_79dd90/orig.bin", 0xc7c, (0xd24-0xc7c)

@@ -1030,7 +1030,7 @@
 	bl	_call_via_r3
 	mov	r0, r5
 	mov	r1, r9
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r5, #2
 	mov	r1, #7
 	mov	r2, #7

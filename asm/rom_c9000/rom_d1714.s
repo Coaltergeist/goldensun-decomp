@@ -56,11 +56,11 @@
 	add	r5, #0x80
 	ldr	r1, [sp, #0x5c]
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x4c]
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r1, #0xef
 	ldr	r0, [sp, #0x5c]
 	lsl	r1, #7
@@ -716,7 +716,7 @@
 	add	r5, #0x80
 	add	r1, r2, r3
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r4, #0
 	mov	r2, #0x80
 	ldr	r3, =ewram_2010018

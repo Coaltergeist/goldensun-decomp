@@ -25,7 +25,7 @@
 	mov	r1, r10
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5

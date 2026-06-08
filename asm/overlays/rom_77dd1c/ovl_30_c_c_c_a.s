@@ -332,7 +332,7 @@
 	bl	__Func_80923e4
 	b	.L584
 .L57c:
-	ldr	r1, =.L49f4
+	ldr	r1, =gScript_882__0200c9f4
 	mov	r0, #0x13
 	bl	__Func_809207c
 .L584:
@@ -357,7 +357,7 @@
 	bl	__Random
 	mov	r1, #0x5a
 	bl	_Func_8000b50
-	ldr	r2, =.L4ec8
+	ldr	r2, =gScript_882__0200cec8
 	mov	r3, r5
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -507,7 +507,7 @@
 	bl	__Random
 	mov	r1, #0x5a
 	bl	_Func_8000b50
-	ldr	r6, =.L4ec8
+	ldr	r6, =gScript_882__0200cec8
 	add	r0, #0x3c
 	add	r5, #0x64
 	strh	r0, [r5]
@@ -1951,7 +1951,7 @@
 	mov	r0, #0x14
 	mov	r1, #0
 	bl	__Func_8093040
-	ldr	r1, =.L48c0
+	ldr	r1, =gScript_882__0200c8c0
 	mov	r0, #0x14
 	bl	__Func_80920fc
 	ldr	r0, =0x835

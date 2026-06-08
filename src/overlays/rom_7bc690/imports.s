@@ -6,8 +6,8 @@
 	.export_func _Random
 	.export_func _Func_800447c
 	.export_func _Func_8004938
-	.export_func _Func_8002df0
-	.export_func _Func_8005340
+	.export_func _free
+	.export_func _DecompressLZ
 	.export_func _Func_8003f78
 	.export_func _Func_8003fa4
 	.export_func _Func_8004080

@@ -17,7 +17,7 @@
 	mov	r0, r5
 	b	.L8e
 .L8c:
-	ldr	r0, =.L1ddc
+	ldr	r0, =gScript_918__02009ddc
 .L8e:
 	pop	{r5}
 	pop	{r1}
@@ -1951,7 +1951,7 @@
 	mov	r0, #3
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r5, =.L1b94
+	ldr	r5, =ActorCmd_ARRAY_938__02009b94
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2581,7 +2581,7 @@
 	bl	__Func_8092548
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r5, =.L1b94
+	ldr	r5, =ActorCmd_ARRAY_938__02009b94
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2615,17 +2615,20 @@
 
 	.section .data
 	.global .L1bd4
-	.global .L1c04
+	.global gScript_887__02009c04
 
-.L1b94:
+	.global ActorCmd_ARRAY_938__02009b94
+ActorCmd_ARRAY_938__02009b94:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1b94, (0x1bd4-0x1b94)
 .L1bd4:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1bd4, (0x1c04-0x1bd4)
-.L1c04:
+gScript_887__02009c04:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1c04, (0x1d9c-0x1c04)
-.L1d9c:
+	.global gScript_917__02009d9c
+gScript_917__02009d9c:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1d9c, (0x1ddc-0x1d9c)
-.L1ddc:
+	.global gScript_918__02009ddc
+gScript_918__02009ddc:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1ddc, (0x1df4-0x1ddc)
 .L1df4:
 	.incbin "overlays/rom_7c37ac/orig.bin", 0x1df4, (0x1f2c-0x1df4)

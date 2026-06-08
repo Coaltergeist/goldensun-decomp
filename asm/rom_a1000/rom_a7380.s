@@ -308,9 +308,9 @@
 	ldr	r0, =0x6004000
 	bl	_call_via_r5
 	mov	r0, r11
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	ldr	r5, =iwram_3001e8c
 	ldr	r6, =0xea6
 	ldr	r2, [r5]
@@ -2218,7 +2218,7 @@
 	mov	r2, #0
 	bl	_Func_8017aa4
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}

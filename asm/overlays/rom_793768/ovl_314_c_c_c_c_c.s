@@ -95,7 +95,7 @@
 	mov	r0, r6
 	mov	r1, #3
 	bl	__Func_800c300
-	ldr	r1, =.L28c4
+	ldr	r1, =gScript_898__0200a8c4
 	mov	r0, r6
 	bl	__Func_800c2d8
 	b	.L182e
@@ -103,7 +103,7 @@
 	mov	r0, r6
 	mov	r1, #2
 	bl	__Func_800c300
-	ldr	r1, =.L28dc
+	ldr	r1, =gScript_898__0200a8dc
 	mov	r0, r6
 	bl	__Func_800c2d8
 .L182e:
@@ -207,15 +207,15 @@
 	.global .L28ac
 	.global .L2414
 	.global .L2630
-	.global .L2094
+	.global gOvl_0200a094
 	.global .L20cc
 	.global .L227c
-	.global .L1f5c
+	.global gOvl_02009f5c
 
 	.incbin "overlays/rom_793768/orig.bin", 0x1bc0, (0x1f5c-0x1bc0)
-.L1f5c:
+gOvl_02009f5c:
 	.incbin "overlays/rom_793768/orig.bin", 0x1f5c, (0x2094-0x1f5c)
-.L2094:
+gOvl_0200a094:
 	.incbin "overlays/rom_793768/orig.bin", 0x2094, (0x20cc-0x2094)
 .L20cc:
 	.incbin "overlays/rom_793768/orig.bin", 0x20cc, (0x227c-0x20cc)
@@ -239,7 +239,9 @@
 	.incbin "overlays/rom_793768/orig.bin", 0x2896, (0x28ac-0x2896)
 .L28ac:
 	.incbin "overlays/rom_793768/orig.bin", 0x28ac, (0x28c4-0x28ac)
-.L28c4:
+	.global gScript_898__0200a8c4
+gScript_898__0200a8c4:
 	.incbin "overlays/rom_793768/orig.bin", 0x28c4, (0x28dc-0x28c4)
-.L28dc:
+	.global gScript_898__0200a8dc
+gScript_898__0200a8dc:
 	.incbin "overlays/rom_793768/orig.bin", 0x28dc

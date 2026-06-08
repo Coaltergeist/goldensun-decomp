@@ -428,7 +428,7 @@
 	bl	__Func_80924d4
 	mov	r0, #0xa
 	bl	__Func_809163c
-	ldr	r5, =.L12fc
+	ldr	r5, =ActorCmd_ARRAY_886__020092fc
 	mov	r0, #0
 	ldr	r1, =0x1000a
 	mov	r2, r5
@@ -1250,7 +1250,7 @@
 	mov	r0, #2
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r5, =.L1400
+	ldr	r5, =gScript_886__02009400
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1260,7 +1260,7 @@
 	mov	r1, r5
 	mov	r0, #3
 	bl	__Func_80920fc
-	ldr	r1, =.L1310
+	ldr	r1, =gScript_886__02009310
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r2, #0xbc
@@ -1338,7 +1338,7 @@
 	add	r2, #2
 	mov	r3, #0x80
 	strh	r3, [r2]
-	ldr	r1, =.L1440
+	ldr	r1, =gScript_886__02009440
 	mov	r0, r6
 	bl	__Func_809207c
 .L1130:
@@ -1348,27 +1348,30 @@
 .func_end OvlFunc_886_20090c0
 
 	.section .data
-	.global .L12fc
+	.global ActorCmd_ARRAY_886__020092fc
 	.global .L1568
 	.global .L1590
 	.global .L15b8
 	.global .L1738
 	.global .L18b8
-	.global .L1ac8
-	.global .L1c00
+	.global gOvl_02009ac8
+	.global ActorCmd_ARRAY_918__02009c00
 	.global .L1da4
 	.global .L1ffc
-	.global .L1478
+	.global gOvl_02009478
 
-.L12fc:
+ActorCmd_ARRAY_886__020092fc:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x12fc, (0x1310-0x12fc)
-.L1310:
+	.global gScript_886__02009310
+gScript_886__02009310:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1310, (0x1400-0x1310)
-.L1400:
+	.global gScript_886__02009400
+gScript_886__02009400:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1400, (0x1440-0x1400)
-.L1440:
+	.global gScript_886__02009440
+gScript_886__02009440:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1440, (0x1478-0x1440)
-.L1478:
+gOvl_02009478:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1478, (0x1568-0x1478)
 .L1568:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1568, (0x1590-0x1568)
@@ -1380,9 +1383,9 @@
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1738, (0x18b8-0x1738)
 .L18b8:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x18b8, (0x1ac8-0x18b8)
-.L1ac8:
+gOvl_02009ac8:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1ac8, (0x1c00-0x1ac8)
-.L1c00:
+ActorCmd_ARRAY_918__02009c00:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1c00, (0x1da4-0x1c00)
 .L1da4:
 	.incbin "overlays/rom_786f0c/orig.bin", 0x1da4, (0x1ffc-0x1da4)

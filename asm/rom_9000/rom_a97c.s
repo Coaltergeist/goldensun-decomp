@@ -579,7 +579,7 @@
 	lsl	r3, #2
 	ldr	r0, [r3, r2]
 	mov	r1, r10
-	bl	Func_8005340
+	bl	DecompressLZ
 	b	.Laf0a
 .Laea4:
 	cmp	r3, #3
@@ -602,7 +602,7 @@
 	ldr	r3, [sp, #0x1c]
 	bl	_call_via_r3
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	b	.Laf0a
 .Laed8:
 	ldrb	r3, [r6, #0x16]
@@ -748,7 +748,7 @@
 	bcc	.Lafb8
 .Lafea:
 	ldr	r0, [sp, #0xc]
-	bl	Func_8002df0
+	bl	free
 .Laff0:
 	ldr	r3, [sp, #0x2c]
 	ldr	r1, [sp, #0x24]
@@ -787,7 +787,7 @@
 	add	r3, r2
 	strh	r3, [r4]
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	b	.Lb054
 
 	.align	2, 0

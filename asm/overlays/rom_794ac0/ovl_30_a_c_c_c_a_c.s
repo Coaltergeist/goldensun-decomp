@@ -157,10 +157,10 @@
 	mov	r0, #0x19
 	lsl	r1, #10
 	bl	__Func_8092064
-	ldr	r1, =.L5830
+	ldr	r1, =gScript_899__0200d830
 	mov	r0, #0x19
 	bl	__Func_809207c
-	ldr	r1, =.L5560
+	ldr	r1, =gScript_899__0200d560
 	mov	r0, #0x18
 	bl	__Func_809207c
 	mov	r0, #0x18
@@ -216,12 +216,12 @@
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #3
 	bgt	.L1bda
-	ldr	r1, =.L5678
+	ldr	r1, =gScript_899__0200d678
 	mov	r0, #0x18
 	bl	__Func_809207c
 	b	.L1be2
 .L1bda:
-	ldr	r1, =.L5650
+	ldr	r1, =gScript_899__0200d650
 	mov	r0, #0x18
 	bl	__Func_809207c
 .L1be2:
@@ -231,12 +231,12 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #2
 	bgt	.L1bf8
-	ldr	r1, =.L5768
+	ldr	r1, =gScript_899__0200d768
 	mov	r0, #0x19
 	bl	__Func_809207c
 	b	.L1c00
 .L1bf8:
-	ldr	r1, =.L5650
+	ldr	r1, =gScript_899__0200d650
 	mov	r0, #0x19
 	bl	__Func_809207c
 .L1c00:
@@ -536,10 +536,10 @@
 	mov	r0, #0x19
 	lsl	r1, #10
 	bl	__Func_8092064
-	ldr	r1, =.L5830
+	ldr	r1, =gScript_899__0200d830
 	mov	r0, #0x19
 	bl	__Func_809207c
-	ldr	r1, =.L5560
+	ldr	r1, =gScript_899__0200d560
 	mov	r0, #0x18
 	bl	__Func_809207c
 	mov	r0, #0x18
@@ -1203,12 +1203,12 @@
 	mov	r1, #1
 	mov	r2, #2
 	bl	OvlFunc_899_200a6e4
-	ldr	r3, =.L58bc
+	ldr	r3, =gScript_899__0200d8bc
 	mov	r0, #0x19
 	mov	r1, #3
 	b	.L25f6
 .L25b8:
-	ldr	r3, =.L5678
+	ldr	r3, =gScript_899__0200d678
 	mov	r0, #0x18
 	mov	r1, #1
 	mov	r2, #4
@@ -1218,7 +1218,7 @@
 	mov	r1, #2
 	mov	r2, #3
 	bl	OvlFunc_899_200a6e4
-	ldr	r3, =.L5830
+	ldr	r3, =gScript_899__0200d830
 	mov	r0, #0x19
 	mov	r1, #1
 	b	.L2610
@@ -1246,7 +1246,7 @@
 	mov	r1, #3
 	mov	r2, #2
 	bl	OvlFunc_899_200a6e4
-	ldr	r3, =.L5858
+	ldr	r3, =gScript_899__0200d858
 	mov	r0, #0x19
 	mov	r1, #4
 .L2610:
@@ -1264,7 +1264,7 @@
 	mov	r1, #1
 	b	.L2670
 .L262c:
-	ldr	r3, =.L5560
+	ldr	r3, =gScript_899__0200d560
 	mov	r0, #0x18
 	mov	r1, #4
 	mov	r2, #1
@@ -1281,7 +1281,7 @@
 	bl	OvlFunc_899_200a6e4
 	b	.L2690
 .L2652:
-	ldr	r3, =.L5650
+	ldr	r3, =gScript_899__0200d650
 	mov	r0, #0x18
 	mov	r1, #5
 	mov	r2, #4
@@ -1291,7 +1291,7 @@
 	mov	r1, #6
 	mov	r2, #3
 	bl	OvlFunc_899_200a6e4
-	ldr	r3, =.L5808
+	ldr	r3, =gScript_956__0200d808
 	mov	r0, #0x19
 	mov	r1, #4
 .L2670:
@@ -1304,7 +1304,7 @@
 	mov	r1, #6
 	mov	r2, #5
 	bl	OvlFunc_899_200a6e4
-	ldr	r3, =.L5768
+	ldr	r3, =gScript_899__0200d768
 	mov	r0, #0x19
 	mov	r1, #2
 	mov	r2, #1

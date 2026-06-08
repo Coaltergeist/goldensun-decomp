@@ -47,7 +47,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L150
-	ldr	r0, =.L1ac8
+	ldr	r0, =gOvl_02009ac8
 	b	.L16e
 .L150:
 	ldr	r0, =0x87a
@@ -64,7 +64,7 @@
 	ldr	r0, =.L1da4
 	b	.L16e
 .L16c:
-	ldr	r0, =.L1c00
+	ldr	r0, =ActorCmd_ARRAY_918__02009c00
 .L16e:
 	pop	{r1}
 	bx	r1
@@ -117,7 +117,7 @@
 	mov	r1, #0
 	bl	__Func_8092f84
 	mov	r1, #0x80
-	ldr	r2, =.L12fc
+	ldr	r2, =ActorCmd_ARRAY_886__020092fc
 	mov	r0, #0x14
 	lsl	r1, #9
 	bl	__Func_8092a1c

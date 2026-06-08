@@ -8,7 +8,7 @@
 extern int __Func_8079338(int);
 extern unsigned char L19d0[] __asm__(".L19d0");
 extern unsigned char L1670[] __asm__(".L1670");
-extern unsigned char L1310[] __asm__(".L1310");
+extern unsigned char gScript_886__02009310[];
 
 unsigned char *OvlFunc_950_2008064(void)
 {
@@ -16,5 +16,5 @@ unsigned char *OvlFunc_950_2008064(void)
 		return L19d0;
 	if (__Func_8079338(0x962))
 		return L1670;
-	return L1310;
+	return gScript_886__02009310;
 }

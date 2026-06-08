@@ -492,9 +492,9 @@
 	add	r5, r3, r0
 .Lb9302:
 	ldr	r0, [sp, #4]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #8]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	add	sp, #0x10
 	pop	{r3, r5, r6, r7}
@@ -1204,7 +1204,7 @@
 	bne	.Lb985e
 .Lb9870:
 	ldr	r0, [r5]
-	bl	Func_8002df0
+	bl	free
 	mov	r1, r8
 	ldr	r0, [r1]
 	b	.Lb98a2
@@ -1218,7 +1218,7 @@
 	bl	Func_800651c
 	bl	Func_8006358
 	ldr	r0, [r5]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #1
 	neg	r0, r0
 .Lb98a2:

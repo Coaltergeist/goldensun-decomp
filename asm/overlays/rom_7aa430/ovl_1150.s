@@ -5,7 +5,7 @@
 	push	{lr}
 	ldr	r0, =0x205
 	bl	__Func_8079374
-	ldr	r1, =.L2820
+	ldr	r1, =gScript_923__0200a820
 	mov	r0, #8
 	bl	__Func_809207c
 	pop	{r0}
@@ -27,12 +27,12 @@
 	bl	__Func_8079358
 	cmp	r5, #7
 	bne	.L1194
-	ldr	r1, =.L2874
+	ldr	r1, =gScript_884__0200a874
 	mov	r0, #8
 	bl	__Func_809207c
 	b	.L119c
 .L1194:
-	ldr	r1, =.L28c8
+	ldr	r1, =gScript_923__0200a8c8
 	mov	r0, #8
 	bl	__Func_809207c
 .L119c:
@@ -661,7 +661,7 @@
 	bl	__Func_809163c
 	mov	r3, #0xfe
 	mov	r8, r3
-	ldr	r7, =.L2820
+	ldr	r7, =gScript_923__0200a820
 	mov	r3, #0
 	mov	r10, r3
 	mov	r6, #1
@@ -673,7 +673,7 @@
 	bl	__Func_809218c
 	mov	r0, #0xa
 	bl	__Func_809163c
-	ldr	r1, =.L28c8
+	ldr	r1, =gScript_923__0200a8c8
 	mov	r0, #8
 	bl	__Func_809207c
 	mov	r0, #3
@@ -718,7 +718,7 @@
 	bl	__Func_809218c
 	mov	r0, #5
 	bl	__Func_809163c
-	ldr	r1, =.L2874
+	ldr	r1, =gScript_884__0200a874
 	mov	r0, #8
 	bl	__Func_809207c
 	mov	r0, #3
@@ -885,9 +885,14 @@
 
 	.section .data
 
-.L2820:
+	.global gScript_923__0200a820
+gScript_923__0200a820:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x2820, (0x2874-0x2820)
-.L2874:
+	.global gScript_884__0200a874
+	.global gScript_923__0200a874
+gScript_884__0200a874:
+gScript_923__0200a874:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x2874, (0x28c8-0x2874)
-.L28c8:
+	.global gScript_923__0200a8c8
+gScript_923__0200a8c8:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x28c8, (0x291c-0x28c8)

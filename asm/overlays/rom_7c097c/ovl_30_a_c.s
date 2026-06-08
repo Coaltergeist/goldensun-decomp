@@ -134,7 +134,7 @@
 	ldr	r3, =0x9c
 	cmp	r2, r3
 	bne	.L136
-	ldr	r0, =.L4628
+	ldr	r0, =gScript_943__0200c628
 	b	.L138
 .L136:
 	ldr	r0, =.L4298

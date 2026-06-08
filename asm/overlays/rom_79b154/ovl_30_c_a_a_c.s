@@ -26,7 +26,7 @@
 	ldr	r0, =.L16f0
 	b	.L14a
 .L148:
-	ldr	r0, =.L1480
+	ldr	r0, =gScript_944__02009480
 .L14a:
 	pop	{r1}
 	bx	r1

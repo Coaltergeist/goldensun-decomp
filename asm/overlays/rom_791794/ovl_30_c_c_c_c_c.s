@@ -474,24 +474,24 @@
 
 	.section .data
 	.global .L3684
-	.global .L3a00
-	.global .L36d4
-	.global .L3704
-	.global .L3710
-	.global .L3998
+	.global gScript_897__0200ba00
+	.global gOvl_0200b6d4
+	.global gOvl_0200b704
+	.global gOvl_0200b710
+	.global gOvl_0200b998
 
 	.incbin "overlays/rom_791794/orig.bin", 0x362c, (0x3684-0x362c)
 .L3684:
 	.incbin "overlays/rom_791794/orig.bin", 0x3684, (0x36d4-0x3684)
-.L36d4:
+gOvl_0200b6d4:
 	.incbin "overlays/rom_791794/orig.bin", 0x36d4, (0x3704-0x36d4)
-.L3704:
+gOvl_0200b704:
 	.incbin "overlays/rom_791794/orig.bin", 0x3704, (0x3710-0x3704)
-.L3710:
+gOvl_0200b710:
 	.incbin "overlays/rom_791794/orig.bin", 0x3710, (0x3998-0x3710)
-.L3998:
+gOvl_0200b998:
 	.incbin "overlays/rom_791794/orig.bin", 0x3998, (0x3a00-0x3998)
-.L3a00:
+gScript_897__0200ba00:
 	.incbin "overlays/rom_791794/orig.bin", 0x3a00, (0x3a0c-0x3a00)
 .L3a0c:
 	.incbin "overlays/rom_791794/orig.bin", 0x3a0c, (0x3a2a-0x3a0c)

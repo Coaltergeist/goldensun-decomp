@@ -2823,7 +2823,7 @@
 	bl	Func_80bbabc
 .Lbd304:
 	ldr	r0, [sp, #0x10]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r10
 	bl	_Func_8077428
 	ldr	r3, =iwram_3001e74

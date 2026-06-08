@@ -3,17 +3,21 @@
 	.section .data
 	.global .L256c
 	.global .L2974
-	.global .L25c0
-
+	.global gOvl_0200a5c0
+	.global ActorCmd_ARRAY_909__0200a5c0
 .L256c:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x256c, (0x25c0-0x256c)
-.L25c0:
+gOvl_0200a5c0:
+ActorCmd_ARRAY_909__0200a5c0:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x25c0, (0x2698-0x25c0)
-.L2698:
+	.global gOvl_0200a698
+gOvl_0200a698:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x2698, (0x26bc-0x2698)
-.L26bc:
+	.global gOvl_0200a6bc
+gOvl_0200a6bc:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x26bc, (0x280c-0x26bc)
-.L280c:
+	.global gOvl_0200a80c
+gOvl_0200a80c:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x280c, (0x2974-0x280c)
 .L2974:
 	.incbin "overlays/rom_78c76c/orig.bin", 0x2974

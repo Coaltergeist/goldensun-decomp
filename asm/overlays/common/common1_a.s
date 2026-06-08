@@ -996,7 +996,7 @@
 	ldr	r0, =_FILE_e7
 	bl	__GetFile
 	mov	r1, r6
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	mov	r2, r8
 	add	r0, r6, r2
 	ldr	r3, =REG_DMA3SAD
@@ -1021,7 +1021,7 @@
 	cmp	r3, #0
 	bne	.L8f0
 	mov	r0, r6
-	bl	__Func_8002df0
+	bl	__free
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}

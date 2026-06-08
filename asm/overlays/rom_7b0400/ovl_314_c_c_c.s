@@ -5187,7 +5187,7 @@
 	mov	r8, r1
 	cmp	r7, #0
 	beq	.L3618
-	ldr	r1, =.L3c54
+	ldr	r1, =gScript_925__0200bc54
 	mov	r0, r7
 	ldr	r5, [r7, #0x50]
 	bl	__Func_800c2d8
@@ -5257,17 +5257,20 @@
 
 	.section .data
 	.global .L39d4
-	.global .L3938
+	.global gOvl_0200b938
 
-.L3938:
+gOvl_0200b938:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x3938, (0x39c8-0x3938)
-.L39c8:
+	.global gOvl_0200b9c8
+gOvl_0200b9c8:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x39c8, (0x39d4-0x39c8)
 .L39d4:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x39d4, (0x3be4-0x39d4)
-.L3be4:
+	.global gOvl_0200bbe4
+gOvl_0200bbe4:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x3be4, (0x3c50-0x3be4)
 .L3c50:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x3c50, (0x3c54-0x3c50)
-.L3c54:
+	.global gScript_925__0200bc54
+gScript_925__0200bc54:
 	.incbin "overlays/rom_7b0400/orig.bin", 0x3c54

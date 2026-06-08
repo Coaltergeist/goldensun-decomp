@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f95e0
+.thumb_func_start umul3232H32
 	adr	r2, .Lf95e4
 	bx	r2
 
@@ -11,7 +11,7 @@
 	umull	r2, r3, r0, r1
 	add	r0, r3, #0
 	bx	lr
-.func_end Func_80f95e0
+.func_end umul3232H32
 
 .thumb_func_start Func_80f95f0
 	ldr	r0, .Lf965c	@ iwram_3007ff0
@@ -86,7 +86,7 @@
 	.word	0x630
 .func_end Func_80f95f0
 
-.thumb_func_start Func_80f9674
+.thumb_func_start SoundMainRAM
 	ldrb	r3, [r0, #5]
 	cmp	r3, #0
 	beq	.Lf96d4
@@ -462,7 +462,7 @@
 
 .Lf9a14:
 	.word	0x68736d53
-.func_end Func_80f9674
+.func_end SoundMainRAM
 
 .thumb_func_start Func_80f9a18
 	mov	r12, r4
@@ -529,7 +529,7 @@
 	bx	r0
 .func_end Func_80f9a50
 
-.thumb_func_start Func_80f9a80
+.thumb_func_start MPlayJumpTableCopy
 	mov	r12, lr
 	mov	r1, #0x24
 	ldr	r2, .Lf9ab0	@ .Lfb7a0
@@ -541,7 +541,7 @@
 	sub	r1, #1
 	bgt	.Lf9a86
 	bx	r12
-.func_end Func_80f9a80
+.func_end MPlayJumpTableCopy
 
 .thumb_func_start Func_80f9a98
 	ldrb	r3, [r2]

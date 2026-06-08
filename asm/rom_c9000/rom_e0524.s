@@ -24,7 +24,7 @@
 .Le054e:
 	mov	r0, r6
 	mov	r1, r8
-	bl	Func_8005340
+	bl	DecompressLZ
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}

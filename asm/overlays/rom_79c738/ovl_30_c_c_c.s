@@ -1717,7 +1717,7 @@
 	bl	__Func_8092548
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r5, =.L25c0
+	ldr	r5, =gOvl_0200a5c0
 	mov	r0, #0
 	ldr	r1, =0x10013
 	mov	r2, r5
@@ -2235,7 +2235,7 @@
 	ldr	r0, =0x37e0000
 	neg	r1, r1
 	bl	__Func_80933f8
-	ldr	r1, =.L25d4
+	ldr	r1, =gScript_909__0200a5d4
 	mov	r0, #0x13
 	bl	__Func_809207c
 	mov	r2, #0xab
@@ -2826,7 +2826,7 @@
 	lsl	r1, #7
 	mov	r2, #0
 	bl	__Func_8092adc
-	ldr	r2, =.L25c0
+	ldr	r2, =gOvl_0200a5c0
 	mov	r0, #0
 	ldr	r1, =0x10013
 	bl	__Func_8092a1c
@@ -3128,15 +3128,20 @@
 	.global .L29b4
 	.global .L2c9c
 	.global .L2ca8
-	.global .L2638
+	.global gOvl_0200a638
 
-.L25c0:
+	.global gOvl_0200a5c0
+	.global ActorCmd_ARRAY_909__0200a5c0
+gOvl_0200a5c0:
+ActorCmd_ARRAY_909__0200a5c0:
 	.incbin "overlays/rom_79c738/orig.bin", 0x25c0, (0x25d4-0x25c0)
-.L25d4:
+	.global gScript_909__0200a5d4
+gScript_909__0200a5d4:
 	.incbin "overlays/rom_79c738/orig.bin", 0x25d4, (0x2638-0x25d4)
-.L2638:
+gOvl_0200a638:
 	.incbin "overlays/rom_79c738/orig.bin", 0x2638, (0x2920-0x2638)
-.L2920:
+	.global gOvl_0200a920
+gOvl_0200a920:
 	.incbin "overlays/rom_79c738/orig.bin", 0x2920, (0x299c-0x2920)
 .L299c:
 	.incbin "overlays/rom_79c738/orig.bin", 0x299c, (0x29b4-0x299c)

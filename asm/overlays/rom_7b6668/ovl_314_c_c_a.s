@@ -594,7 +594,7 @@
 	bl	__Func_80923c4
 	mov	r0, #0x86
 	bl	__Func_80f9080
-	ldr	r1, =.L16a0
+	ldr	r1, =gScript_928__020096a0
 	mov	r0, #0x13
 	bl	__Func_809207c
 	mov	r1, #0xc8
@@ -1007,7 +1007,7 @@
 	push	{r5, r6}
 	sub	sp, #0x10
 	bl	__Func_80916b0
-	ldr	r1, =.L16a0
+	ldr	r1, =gScript_928__020096a0
 	mov	r0, #0x13
 	bl	__Func_809207c
 	ldr	r3, =OvlFunc_928_2008358
@@ -1188,7 +1188,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	bl	__Func_80937b8
-	ldr	r1, =.L15b0
+	ldr	r1, =gScript_928__020095b0
 	mov	r0, #0x12
 	bl	__Func_809207c
 	mov	r0, #0x12

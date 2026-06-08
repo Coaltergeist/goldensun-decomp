@@ -169,7 +169,7 @@
 	mov	r3, r10
 	bl	Func_8017aa4
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	b	.L1e8a4
 
 	.pool_aligned
@@ -247,7 +247,7 @@
 .L1e928:
 	bl	Func_801de5c
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 .L1e932:
 	pop	{r3, r5}
 	mov	r8, r3
@@ -294,7 +294,7 @@
 	mov	r8, r3
 	bl	Func_8017c8c
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	b	.L1e994
 
 	.pool_aligned

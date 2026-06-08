@@ -57,7 +57,7 @@
 .Lb71e:
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, [r7]
 	mov	r4, r7
 	mov	r5, #0

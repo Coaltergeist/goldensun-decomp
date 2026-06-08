@@ -16,7 +16,7 @@
 	mov	r10, r0
 	mov	r1, r10
 	mov	r0, r8
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldrh	r3, [r5, #0xe]
 	ldrh	r2, [r5, #0xc]
 	lsl	r3, #5
@@ -63,7 +63,7 @@
 	blt	.L20a14
 .L20a44:
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5

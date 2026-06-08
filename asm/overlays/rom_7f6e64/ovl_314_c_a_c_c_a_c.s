@@ -915,7 +915,7 @@
 	mov	r0, #3
 	mov	r1, #3
 	bl	__Func_8092548
-	ldr	r5, =.L5fc4
+	ldr	r5, =gScript_969__0200dfc4
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2299,7 +2299,7 @@
 	bl	__MapActor_GetActor
 	add	r0, #0x5a
 	ldrb	r3, [r0]
-	ldr	r6, =.L6004
+	ldr	r6, =gScript_969__0200e004
 	and	r5, r3
 	strb	r5, [r0]
 	mov	r1, r6
@@ -2314,7 +2314,7 @@
 	mov	r1, r6
 	mov	r0, #3
 	bl	__Func_809207c
-	ldr	r5, =.L603c
+	ldr	r5, =gScript_969__0200e03c
 	mov	r0, #0x13
 	mov	r1, r5
 	bl	__Func_809207c

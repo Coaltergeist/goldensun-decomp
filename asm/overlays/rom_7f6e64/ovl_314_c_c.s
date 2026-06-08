@@ -115,7 +115,7 @@
 	str	r3, [r6, #0x18]
 	str	r3, [r6, #0x1c]
 	bl	OvlFunc_969_200d688
-	ldr	r1, =.L62d0
+	ldr	r1, =gScript_969__0200e2d0
 	mov	r0, #0x17
 	bl	__Func_809207c
 	b	.L58dc
@@ -239,7 +239,7 @@
 	beq	.L599c
 	ldr	r1, [r7, #0x50]
 	mov	r10, r1
-	ldr	r1, =.L61cc
+	ldr	r1, =gScript_969__0200e1cc
 	bl	__Func_800c2d8
 	mov	r1, #1
 	mov	r0, r7
@@ -458,7 +458,7 @@
 	mov	r8, r1
 	cmp	r7, #0
 	beq	.L5b80
-	ldr	r1, =.L6734
+	ldr	r1, =gScript_969__0200e734
 	mov	r0, r7
 	ldr	r5, [r7, #0x50]
 	bl	__Func_800c2d8
@@ -571,72 +571,75 @@
 .func_end OvlFunc_969_200db90
 
 	.section .data
-	.global .L5fc4
-	.global .L6004
-	.global .L603c
-	.global .L6074
-	.global .L6088
-	.global .L60ac
-	.global .L60d0
-	.global .L60f4
-	.global .L6130
-	.global .L616c
-	.global .L622c
-	.global .L6324
-	.global .L6360
-	.global .L639c
-	.global .L63c0
-	.global .L6464
-	.global .L6478
+	.global gScript_969__0200dfc4
+	.global gScript_969__0200e004
+	.global gScript_969__0200e03c
+	.global gScript_969__0200e074
+	.global gScript_969__0200e088
+	.global gScript_969__0200e0ac
+	.global gScript_969__0200e0d0
+	.global gScript_969__0200e0f4
+	.global gScript_969__0200e130
+	.global gScript_969__0200e16c
+	.global gScript_969__0200e22c
+	.global gScript_969__0200e324
+	.global gScript_969__0200e360
+	.global gScript_969__0200e39c
+	.global gScript_969__0200e3c0
+	.global gOvl_0200e464
+	.global gOvl_0200e478
 	.global .L66e8
-	.global .L66ec
-	.global .L63d4
+	.global gOvl_0200e6ec
+	.global gOvl_0200e3d4
 
-.L5fc4:
+gScript_969__0200dfc4:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x5fc4, (0x6004-0x5fc4)
-.L6004:
+gScript_969__0200e004:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6004, (0x603c-0x6004)
-.L603c:
+gScript_969__0200e03c:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x603c, (0x6074-0x603c)
-.L6074:
+gScript_969__0200e074:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6074, (0x6088-0x6074)
-.L6088:
+gScript_969__0200e088:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6088, (0x60ac-0x6088)
-.L60ac:
+gScript_969__0200e0ac:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x60ac, (0x60d0-0x60ac)
-.L60d0:
+gScript_969__0200e0d0:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x60d0, (0x60f4-0x60d0)
-.L60f4:
+gScript_969__0200e0f4:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x60f4, (0x6130-0x60f4)
-.L6130:
+gScript_969__0200e130:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6130, (0x616c-0x6130)
-.L616c:
+gScript_969__0200e16c:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x616c, (0x61cc-0x616c)
-.L61cc:
+	.global gScript_969__0200e1cc
+gScript_969__0200e1cc:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x61cc, (0x622c-0x61cc)
-.L622c:
+gScript_969__0200e22c:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x622c, (0x62d0-0x622c)
-.L62d0:
+	.global gScript_969__0200e2d0
+gScript_969__0200e2d0:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x62d0, (0x6324-0x62d0)
-.L6324:
+gScript_969__0200e324:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6324, (0x6360-0x6324)
-.L6360:
+gScript_969__0200e360:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6360, (0x639c-0x6360)
-.L639c:
+gScript_969__0200e39c:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x639c, (0x63c0-0x639c)
-.L63c0:
+gScript_969__0200e3c0:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x63c0, (0x63d4-0x63c0)
-.L63d4:
+gOvl_0200e3d4:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x63d4, (0x6464-0x63d4)
-.L6464:
+gOvl_0200e464:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6464, (0x6478-0x6464)
-.L6478:
+gOvl_0200e478:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6478, (0x66e8-0x6478)
 .L66e8:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x66e8, (0x66ec-0x66e8)
-.L66ec:
+gOvl_0200e6ec:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x66ec, (0x6734-0x66ec)
-.L6734:
+	.global gScript_969__0200e734
+gScript_969__0200e734:
 	.incbin "overlays/rom_7f6e64/orig.bin", 0x6734
 
 	.section .bss

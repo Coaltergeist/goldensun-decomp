@@ -1157,7 +1157,7 @@
 .L22706:
 	strh	r4, [r0]
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	ldr	r6, =0xea6
 	ldr	r5, [sp, #0x30]
 	mov	r3, #0

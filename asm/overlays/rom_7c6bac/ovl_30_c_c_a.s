@@ -15,7 +15,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.Lc2
-	ldr	r0, =.L1ba4
+	ldr	r0, =gOvl_02009ba4
 	b	.L10a
 .Lc2:
 	ldr	r0, =.L1acc
@@ -32,7 +32,7 @@
 	ldr	r0, =.L19c4
 	b	.L10a
 .Ldc:
-	ldr	r0, =.L18ec
+	ldr	r0, =gOvl_020098ec
 	b	.L10a
 .Le0:
 	ldr	r3, =0x6c
@@ -110,7 +110,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L1be
-	ldr	r0, =.L1fa0
+	ldr	r0, =GFX_Thermometer
 	b	.L206
 .L1be:
 	ldr	r0, =.L1e80
@@ -748,7 +748,7 @@
 	lsl	r1, #1
 	lsl	r2, #3
 	bl	__Func_809218c
-	ldr	r0, =.L16b8
+	ldr	r0, =gScript_930__020096b8
 	mov	r1, #0x4e
 	mov	r2, #0x56
 	bl	__Func_8010560

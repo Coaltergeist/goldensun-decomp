@@ -26,13 +26,13 @@ Exports_c0:
 	.export_func Func_80048a0
 	.export_func Func_8004938
 	.export_func Func_8004970
-	.export_func Func_8002df0
+	.export_func free
 	.export_func Func_80046c4
 	.export_func Func_8004718
 	.export_func Func_800473c
 	.export_func Func_8004698
 	.export_func Func_80053e8
-	.export_func Func_8005340
+	.export_func DecompressLZ
 	.export_func Func_800403c
 	.export_func Func_8003f3c
 	.export_func Func_8003f78

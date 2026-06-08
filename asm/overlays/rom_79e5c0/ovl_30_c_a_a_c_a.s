@@ -362,7 +362,7 @@
 	mov	r1, #1
 	bl	__Func_800c300
 	mov	r0, r5
-	ldr	r1, =.L2e20
+	ldr	r1, =gScript_911__0200ae20
 	bl	__Func_800c2d8
 .L5d4:
 	mov	r0, #0x80
@@ -410,7 +410,7 @@
 	ldr	r2, =0xe666
 	bl	__Func_8012330
 	mov	r1, #0x80
-	ldr	r2, =.L2e34
+	ldr	r2, =gScript_884__0200ae34
 	lsl	r1, #9
 	mov	r0, #8
 	bl	__Func_8092a1c
@@ -475,7 +475,7 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
-	ldr	r5, =.L2dd8
+	ldr	r5, =gScript_911__0200add8
 	mov	r0, #0x17
 	mov	r1, r5
 	bl	__Func_809207c
@@ -773,10 +773,10 @@
 	mov	r0, #2
 	bl	__Func_80923e4
 .L9b4:
-	ldr	r1, =.L2bd4
+	ldr	r1, =ActorCmd_ARRAY_911__0200abd4
 	mov	r0, #1
 	bl	__Func_809207c
-	ldr	r1, =.L2c08
+	ldr	r1, =gScript_911__0200ac08
 	mov	r0, #2
 	bl	__Func_809207c
 	ldr	r3, [r5]
@@ -795,7 +795,7 @@
 	mov	r0, #3
 	bl	__Func_80923e4
 .L9e8:
-	ldr	r1, =.L2c3c
+	ldr	r1, =gScript_911__0200ac3c
 	mov	r0, #3
 	bl	__Func_809207c
 .L9f0:
@@ -1076,7 +1076,7 @@
 	ldrb	r3, [r0]
 	orr	r3, r6
 	strb	r3, [r0]
-	ldr	r1, =.L2c08
+	ldr	r1, =gScript_911__0200ac08
 	mov	r0, #2
 	bl	__Func_809207c
 	ldr	r3, [r5]
@@ -1334,7 +1334,7 @@
 	bl	__Func_8091254
 	mov	r0, #0x3c
 	bl	__Func_80030f8
-	ldr	r5, =.L2c70
+	ldr	r5, =gScript_911__0200ac70
 	mov	r0, #0
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1406,7 +1406,7 @@
 	mov	r0, #3
 	neg	r1, r1
 	bl	__Func_809228c
-	ldr	r1, =.L2cfc
+	ldr	r1, =gScript_911__0200acfc
 	mov	r0, #3
 	bl	__Func_809207c
 	mov	r0, #3
@@ -1430,7 +1430,7 @@
 	mov	r1, r5
 	mov	r0, #0
 	bl	__Func_8092064
-	ldr	r6, =.L2cfc
+	ldr	r6, =gScript_911__0200acfc
 	mov	r0, #0
 	mov	r1, r6
 	bl	__Func_809207c
@@ -1677,7 +1677,7 @@
 	mov	r0, #0x13
 	lsl	r1, #15
 	bl	__Func_80923e4
-	ldr	r5, =.L2d20
+	ldr	r5, =gScript_911__0200ad20
 	mov	r0, #0x13
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1786,7 +1786,7 @@
 	bl	__Func_80920a0
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r5, =.L2d7c
+	ldr	r5, =gScript_911__0200ad7c
 	mov	r0, #0x13
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2585,7 +2585,7 @@
 	mov	r0, #0x13
 	lsl	r1, #15
 	bl	__Func_80923e4
-	ldr	r5, =.L2d20
+	ldr	r5, =gScript_911__0200ad20
 	mov	r0, #0x13
 	mov	r1, r5
 	bl	__Func_809207c
@@ -3001,7 +3001,7 @@
 	bl	__Func_80920a0
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r5, =.L2d7c
+	ldr	r5, =gScript_911__0200ad7c
 	mov	r0, #0x13
 	mov	r1, r5
 	bl	__Func_809207c

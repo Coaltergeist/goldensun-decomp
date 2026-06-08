@@ -559,7 +559,7 @@
 	lsl	r1, #18
 	mov	r0, #0xa
 	bl	__Func_80923e4
-	ldr	r1, =.L53c4
+	ldr	r1, =gScript_968__0200d3c4
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r0, #0xa
@@ -885,11 +885,11 @@
 	lsl	r6, #2
 	mov	r1, r6
 	mov	r0, r5
-	ldr	r2, =.L5488
+	ldr	r2, =gScript_968__0200d488
 	bl	OvlFunc_968_2008c5c
 	mov	r1, r6
 	mov	r7, r0
-	ldr	r2, =.L5508
+	ldr	r2, =gScript_968__0200d508
 	mov	r0, r5
 	bl	OvlFunc_968_2008c5c
 	ldr	r3, [r7]

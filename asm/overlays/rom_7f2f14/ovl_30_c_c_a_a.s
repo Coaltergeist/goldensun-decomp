@@ -1321,12 +1321,12 @@
 	mov	r0, r6
 	bl	__Func_800c4ec
 	mov	r0, r6
-	ldr	r1, =.L57c8
+	ldr	r1, =gScript_968__0200d7c8
 	bl	__Func_800c2d8
 	mov	r1, #0xbe
 	lsl	r1, #2
 	mov	r0, #0xd8
-	ldr	r2, =.L5ac8
+	ldr	r2, =gScript_968__0200dac8
 	bl	OvlFunc_968_2008c5c
 	mov	r1, #0x63
 	ldr	r3, [r6]

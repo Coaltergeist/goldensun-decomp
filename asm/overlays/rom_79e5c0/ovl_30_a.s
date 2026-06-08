@@ -184,7 +184,7 @@
 	ldr	r3, =0x26
 	cmp	r2, r3
 	bne	.L18e
-	ldr	r0, =.L2fc8
+	ldr	r0, =gScript_913__0200afc8
 	b	.L190
 .L18e:
 	ldr	r0, =.L2e60

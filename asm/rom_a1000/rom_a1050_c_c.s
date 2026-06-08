@@ -297,7 +297,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	b	.La1490
 .La13ac:
 	ldr	r2, [sp, #0x10]

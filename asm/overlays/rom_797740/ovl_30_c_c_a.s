@@ -13,7 +13,7 @@
 	ldr	r0, =.L3bc
 	b	.L5c
 .L5a:
-	ldr	r0, =.L35c
+	ldr	r0, =gOvl_0200835c
 .L5c:
 	pop	{r1}
 	bx	r1
@@ -29,7 +29,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xa
 	bne	.L82
-	ldr	r0, =.L4a0
+	ldr	r0, =MapEntrance_ARRAY_937__020084a0
 	b	.L84
 .L82:
 	ldr	r0, =.L3ec

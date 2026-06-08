@@ -599,7 +599,7 @@
 	bl	_call_via_r3
 	mov	r1, r11
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r1, [sp, #4]
 	cmp	r1, #1
 	beq	.Lc160a

@@ -1741,13 +1741,13 @@
 	.global .L3230
 	.global .L3248
 	.global .L336c
-	.global .L33b8
+	.global gScript_964__0200b3b8
 	.global .L342c
 	.global .L3474
 	.global .L3654
-	.global .L381c
-	.global .L385c
-	.global .L38f4
+	.global gScript_888__0200b81c
+	.global gOvl_0200b85c
+	.global gScript_925__0200b8f4
 	.global .L3a74
 
 .L31f0:
@@ -1760,7 +1760,7 @@
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x3350, (0x336c-0x3350)
 .L336c:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x336c, (0x33b8-0x336c)
-.L33b8:
+gScript_964__0200b3b8:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x33b8, (0x33ec-0x33b8)
 .L33ec:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x33ec, (0x340c-0x33ec)
@@ -1772,11 +1772,11 @@
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x3474, (0x3654-0x3474)
 .L3654:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x3654, (0x381c-0x3654)
-.L381c:
+gScript_888__0200b81c:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x381c, (0x385c-0x381c)
-.L385c:
+gOvl_0200b85c:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x385c, (0x38f4-0x385c)
-.L38f4:
+gScript_925__0200b8f4:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x38f4, (0x3a74-0x38f4)
 .L3a74:
 	.incbin "overlays/rom_7ed0a0/orig.bin", 0x3a74, (0x3c0c-0x3a74)

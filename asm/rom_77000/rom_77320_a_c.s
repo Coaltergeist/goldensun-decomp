@@ -1014,7 +1014,7 @@
 	strh	r2, [r7, #0x3a]
 .L77be2:
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	add	sp, #4
 	pop	{r3, r5}
 	mov	r8, r3

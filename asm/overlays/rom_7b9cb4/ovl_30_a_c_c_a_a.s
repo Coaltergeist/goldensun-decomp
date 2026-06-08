@@ -24,7 +24,7 @@
 	ldr	r3, =0x51
 	cmp	r2, r3
 	bne	.L238
-	ldr	r0, =.L4a00
+	ldr	r0, =gScript_882__0200ca00
 	b	.L276
 .L238:
 	ldr	r3, =0x52
@@ -580,7 +580,7 @@
 	lsl	r2, #16
 	bl	__Func_80923e4
 	mov	r0, #8
-	ldr	r1, =.L3d48
+	ldr	r1, =gScript_932__0200bd48
 	bl	__Func_809207c
 .L742:
 	add	r5, #1

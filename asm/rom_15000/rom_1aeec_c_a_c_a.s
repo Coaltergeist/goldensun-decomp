@@ -398,7 +398,7 @@
 	bl	Func_80030f8
 .L1c7b6:
 	mov	r0, r7
-	bl	Func_8002df0
+	bl	free
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

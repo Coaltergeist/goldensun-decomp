@@ -35,19 +35,19 @@
 	ldr	r0, [r5, #4]
 	bl	GetFile
 	ldr	r1, =ewram_2038000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, [r5, #8]
 	bl	GetFile
 	ldr	r1, =ewram_203a000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, [r5, #0xc]
 	bl	GetFile
 	ldr	r1, =ewram_203c000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, [r5, #0x10]
 	bl	GetFile
 	ldr	r1, =ewram_203e000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r2, =iwram_3001cfc
 	ldr	r3, =Func_801161c
 	str	r3, [r2]
@@ -66,7 +66,7 @@
 	ldr	r0, =_FILE_d5
 	bl	GetFile
 	mov	r1, r10
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r5, .L116fc	@ 0
 	bl	Func_80113e4
 	mov	r3, r7
@@ -114,7 +114,7 @@
 	ldr	r0, =_FILE_d5
 	bl	GetFile
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	bl	Func_80113e4
 	ldr	r0, =Func_801179c
 	bl	Func_800439c

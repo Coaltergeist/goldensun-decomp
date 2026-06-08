@@ -11,7 +11,7 @@
 	ldr	r3, =0x71
 	cmp	r2, r3
 	bne	.Ld60
-	ldr	r0, =.L3610
+	ldr	r0, =gScript_911__0200b610
 	b	.Ld7c
 .Ld60:
 	ldr	r3, =0x7b
@@ -29,7 +29,7 @@
 	ldr	r0, =.L3850
 	b	.Ld7c
 .Ld7a:
-	ldr	r0, =.L35f8
+	ldr	r0, =gOvl_0200b5f8
 .Ld7c:
 	pop	{r1}
 	bx	r1
@@ -198,7 +198,7 @@
 	ldr	r3, =0x7c
 	cmp	r2, r3
 	bne	.Lefa
-	ldr	r0, =.L3d48
+	ldr	r0, =gScript_932__0200bd48
 	b	.Lf06
 .Lefa:
 	ldr	r3, =0x7d
@@ -682,7 +682,7 @@
 	push	{lr}
 	mov	r1, #0x25
 	mov	r2, #7
-	ldr	r0, =.L32bc
+	ldr	r0, =gOvl_0200b2bc
 	bl	__Func_8010560
 	mov	r0, #0xb7
 	bl	__Func_80f9080
@@ -780,7 +780,7 @@
 	bl	__Func_8091750
 	b	.L1474
 .L145e:
-	ldr	r0, =.L32bc
+	ldr	r0, =gOvl_0200b2bc
 	mov	r1, #0x2c
 	mov	r2, #7
 	bl	__Func_8010560
@@ -816,7 +816,7 @@
 	bl	__Func_8079358
 	mov	r0, #0x1e
 	bl	__Func_809163c
-	ldr	r0, =.L32bc
+	ldr	r0, =gOvl_0200b2bc
 	mov	r1, #0x2c
 	mov	r2, #7
 	bl	__Func_8010560

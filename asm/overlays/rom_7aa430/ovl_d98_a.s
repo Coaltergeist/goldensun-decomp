@@ -53,7 +53,7 @@
 	ldr	r3, =.L2924
 	ldr	r3, [r3]
 	lsl	r1, r3, #10
-	ldr	r3, =.L2920
+	ldr	r3, =gOvl_0200a920
 	ldr	r3, [r3]
 	lsl	r3, #5
 	orr	r1, r3

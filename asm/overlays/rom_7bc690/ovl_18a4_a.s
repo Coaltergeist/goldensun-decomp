@@ -140,7 +140,7 @@
 	lsr	r2, #26
 	and	r2, r3
 	and	r5, r3
-	ldr	r3, =.L26bc
+	ldr	r3, =gOvl_0200a6bc
 	mov	r0, #0
 	ldrsh	r6, [r3, r0]
 	mov	r1, #3
@@ -237,7 +237,7 @@
 	ldrsh	r1, [r2, r3]
 	lsl	r0, #3
 	bl	_Func_8000af0
-	ldr	r5, =.L26bc
+	ldr	r5, =gOvl_0200a6bc
 	mov	r1, #0xec
 	strh	r0, [r5]
 	lsl	r1, #15
@@ -285,7 +285,7 @@
 	ldrsh	r3, [r3, r1]
 	cmp	r3, #0x76
 	bgt	.L1b52
-	ldr	r3, =.L26bc
+	ldr	r3, =gOvl_0200a6bc
 	mov	r5, #0
 	ldrsh	r2, [r3, r5]
 	mov	r3, #0x80
@@ -390,7 +390,7 @@
 	cmp	r4, #4
 	bls	.L1b8c
 	mov	r0, r9
-	bl	__Func_8002df0
+	bl	__free
 .L1be4:
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
@@ -407,7 +407,7 @@
 	push	{r5, lr}
 	ldr	r1, =.L2730
 	ldr	r0, =OvlData_933_2009fa0
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r5, =.L26d0
 	bl	__Func_8004080
 	mov	r1, #0x90

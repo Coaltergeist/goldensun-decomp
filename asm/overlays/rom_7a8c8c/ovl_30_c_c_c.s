@@ -711,7 +711,7 @@
 
 	.section .data
 	.global .L2488
-	.global .L28f4
+	.global gOvl_0200a8f4
 	.global .L29a4
 	.global .L29bc
 	.global .L29ec
@@ -721,7 +721,7 @@
 	.global .L2b9c
 	.global .L2bcc
 	.global .L2bd8
-	.global .L2c08
+	.global gScript_911__0200ac08
 	.global .L2d1c
 	.global .L2e24
 	.global .L3058
@@ -761,7 +761,7 @@
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2744, (0x27bc-0x2744)
 .L27bc:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x27bc, (0x28f4-0x27bc)
-.L28f4:
+gOvl_0200a8f4:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x28f4, (0x29a4-0x28f4)
 .L29a4:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x29a4, (0x29bc-0x29a4)
@@ -781,7 +781,7 @@
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2bcc, (0x2bd8-0x2bcc)
 .L2bd8:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2bd8, (0x2c08-0x2bd8)
-.L2c08:
+gScript_911__0200ac08:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2c08, (0x2d1c-0x2c08)
 .L2d1c:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2d1c, (0x2e24-0x2d1c)

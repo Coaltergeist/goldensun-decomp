@@ -2966,7 +2966,7 @@
 	b	.L2b56
 .L2b2c:
 	mov	r0, #0x12
-	ldr	r1, =.L3084
+	ldr	r1, =gScript_927__0200b084
 	bl	__Func_809207c
 	ldr	r0, =0x893
 	bl	__Func_8079338
@@ -3145,7 +3145,7 @@
 	.section .data
 	.global .L2ef8
 	.global .L2f38
-	.global .L2f50
+	.global gScript_884__0200af50
 	.global .L3058
 	.global .L30f4
 	.global .L31e4
@@ -3156,11 +3156,12 @@
 	.incbin "overlays/rom_7b4558/orig.bin", 0x2ef8, (0x2f38-0x2ef8)
 .L2f38:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x2f38, (0x2f50-0x2f38)
-.L2f50:
+gScript_884__0200af50:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x2f50, (0x3058-0x2f50)
 .L3058:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3058, (0x3084-0x3058)
-.L3084:
+	.global gScript_927__0200b084
+gScript_927__0200b084:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3084, (0x30f4-0x3084)
 .L30f4:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x30f4, (0x31e4-0x30f4)
@@ -3170,7 +3171,8 @@
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3334, (0x34b4-0x3334)
 .L34b4:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x34b4, (0x35bc-0x34b4)
-.L35bc:
+	.global gOvl_0200b5bc
+gOvl_0200b5bc:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x35bc, (0x36a0-0x35bc)
 .L36a0:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x36a0, (0x3790-0x36a0)

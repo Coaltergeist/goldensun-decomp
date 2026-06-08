@@ -32,7 +32,7 @@
 	ldr	r0, =.L4b58
 	b	.L1b8
 .L1b6:
-	ldr	r0, =.L4750
+	ldr	r0, =gScript_926__0200c750
 .L1b8:
 	pop	{r1}
 	bx	r1
@@ -89,13 +89,13 @@
 	ldr	r3, =0x66
 	cmp	r2, r3
 	bne	.L262
-	ldr	r0, =.L4e88
+	ldr	r0, =gScript_882__0200ce88
 	b	.L28c
 .L262:
 	ldr	r3, =0x99
 	cmp	r2, r3
 	bne	.L26c
-	ldr	r0, =.L4edc
+	ldr	r0, =gScript_882__0200cedc
 	b	.L28c
 .L26c:
 	ldr	r3, =0x9a

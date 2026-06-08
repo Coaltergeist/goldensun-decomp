@@ -229,10 +229,10 @@
 	mov	r0, #2
 	bl	__Func_80923e4
 .L4fc:
-	ldr	r1, =.L1ab8
+	ldr	r1, =ActorCmd_ARRAY_917__02009ab8
 	mov	r0, #1
 	bl	__Func_809207c
-	ldr	r1, =.L1af4
+	ldr	r1, =gScript_917__02009af4
 	mov	r0, #2
 	bl	__Func_809207c
 	cmp	r6, #0
@@ -252,7 +252,7 @@
 	mov	r0, #3
 	bl	__Func_80923e4
 .L532:
-	ldr	r1, =.L1b30
+	ldr	r1, =gScript_917__02009b30
 	mov	r0, #3
 	bl	__Func_809207c
 .L53a:
@@ -1276,7 +1276,7 @@
 	bl	__Func_8092548
 	mov	r0, #0x11
 	bl	__Func_80f9080
-	ldr	r5, =.L1b6c
+	ldr	r5, =gScript_917__02009b6c
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c

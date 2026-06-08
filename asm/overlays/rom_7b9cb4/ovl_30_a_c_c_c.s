@@ -73,13 +73,13 @@
 	mov	r0, #3
 	ldr	r1, =0x9999
 	bl	__Func_8092064
-	ldr	r1, =.L4054
+	ldr	r1, =gScript_932__0200c054
 	mov	r0, #1
 	bl	__Func_809207c
-	ldr	r1, =.L4084
+	ldr	r1, =gScript_932__0200c084
 	mov	r0, #2
 	bl	__Func_809207c
-	ldr	r1, =.L40b4
+	ldr	r1, =gScript_932__0200c0b4
 	mov	r0, #3
 	bl	__Func_80920fc
 	mov	r1, #0xc0
@@ -269,7 +269,7 @@
 	mov	r0, r6
 	lsl	r1, #4
 	bl	__StartTask
-	ldr	r5, =.L40e4
+	ldr	r5, =gScript_932__0200c0e4
 	mov	r0, #9
 	mov	r1, r5
 	bl	__Func_809207c
@@ -347,7 +347,7 @@
 	bl	__Func_8092548
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r5, =.L412c
+	ldr	r5, =gScript_932__0200c12c
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c

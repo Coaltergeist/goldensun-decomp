@@ -322,7 +322,7 @@
 	bl	Func_8077428
 .L792a4:
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r6
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

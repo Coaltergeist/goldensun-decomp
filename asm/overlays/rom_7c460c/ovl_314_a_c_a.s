@@ -14,7 +14,7 @@
 	ldr	r3, =0x9f
 	cmp	r2, r3
 	bne	.L36e
-	ldr	r0, =.L1e04
+	ldr	r0, =gScript_918__02009e04
 	b	.L370
 .L36e:
 	ldr	r0, =.L1dcc
@@ -40,7 +40,7 @@
 	ldr	r0, =.L1f64
 	b	.L3a8
 .L3a6:
-	ldr	r0, =.L1e14
+	ldr	r0, =gOvl_02009e14
 .L3a8:
 	pop	{r1}
 	bx	r1

@@ -2,11 +2,11 @@
 	.include "gba.inc"
 
 	.section .data
-	.global .L26bc
+	.global gOvl_0200a6bc
 	.global .L26be
 	.global .L26c0
 
-.L26bc:
+gOvl_0200a6bc:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x26bc, (0x26be-0x26bc)
 .L26be:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x26be, (0x26c0-0x26be)

@@ -76,7 +76,7 @@
 	ldr	r3, =0x4b
 	cmp	r2, r3
 	bne	.L134
-	ldr	r0, =.L1730
+	ldr	r0, =gScript_930__02009730
 	b	.L140
 .L134:
 	ldr	r3, =0x4c
@@ -1459,7 +1459,8 @@
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x1120, (0x1288-0x1120)
 .L1288:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x1288, (0x1390-0x1288)
-.L1390:
+	.global gOvl_02009390
+gOvl_02009390:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x1390, (0x13f4-0x1390)
 .L13f4:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x13f4, (0x140c-0x13f4)
@@ -1469,7 +1470,8 @@
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x15bc, (0x1724-0x15bc)
 .L1724:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x1724, (0x1730-0x1724)
-.L1730:
+	.global gScript_930__02009730
+gScript_930__02009730:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x1730, (0x19f4-0x1730)
 .L19f4:
 	.incbin "overlays/rom_7b8cb0/orig.bin", 0x19f4, (0x1e70-0x19f4)

@@ -147,7 +147,7 @@
 	add	r3, r5
 	strb	r1, [r3]
 	mov	r0, r7
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #1
 	bl	Func_80030f8
 	bl	Func_80a1050
@@ -1324,9 +1324,9 @@
 	bl	Func_80a1d08
 .La3078:
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r11
-	bl	Func_8002df0
+	bl	free
 .La3084:
 	bl	_Func_8091858
 	mov	r2, #0

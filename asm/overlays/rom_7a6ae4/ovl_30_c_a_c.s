@@ -55,7 +55,7 @@
 	ldr	r3, =0x2f
 	cmp	r2, r3
 	bne	.L120
-	ldr	r0, =.Lf80
+	ldr	r0, =gOvl_02008f80
 	b	.L122
 .L120:
 	ldr	r0, =.Le9c

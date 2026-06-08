@@ -3825,7 +3825,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L27c8
-	ldr	r1, =.L415c
+	ldr	r1, =gScript_888__0200c15c
 	ldr	r5, [r6, #0x50]
 	bl	__Func_800c2d8
 	mov	r3, r6
@@ -4560,10 +4560,10 @@
 	bl	__Func_80925cc
 	mov	r0, #0xa
 	bl	__Func_809163c
-	ldr	r1, =.L3740
+	ldr	r1, =ActorCmd_ARRAY_888__0200b740
 	mov	r0, #0
 	bl	__Func_809207c
-	ldr	r1, =.L381c
+	ldr	r1, =gScript_888__0200b81c
 	mov	r0, #1
 	bl	__Func_809207c
 	mov	r0, #0
@@ -4757,7 +4757,7 @@
 	mov	r5, #0
 	cmp	r7, #0
 	beq	.L3132
-	ldr	r1, =.L38f8
+	ldr	r1, =gScript_888__0200b8f8
 	bl	__Func_800c2d8
 	ldr	r6, [r7, #0x50]
 	mov	r3, r6
@@ -4815,7 +4815,7 @@
 	bl	__Func_80030f8
 	cmp	r5, #0x3b
 	bls	.L310e
-	ldr	r1, =.L3a9c
+	ldr	r1, =gScript_888__0200ba9c
 	mov	r0, r7
 	bl	__Func_800c2d8
 .L3132:
@@ -4879,7 +4879,7 @@
 	lsl	r3, #16
 	cmp	r3, #0
 	bgt	.L31a6
-	ldr	r1, =.L418c
+	ldr	r1, =gScript_888__0200c18c
 	bl	__Func_800c2d8
 .L31a6:
 	pop	{r0}

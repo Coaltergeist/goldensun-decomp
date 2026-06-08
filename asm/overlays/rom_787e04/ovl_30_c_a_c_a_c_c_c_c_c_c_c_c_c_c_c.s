@@ -502,7 +502,7 @@
 	bl	__MapActor_GetActor
 	add	r0, #0x23
 	ldrb	r3, [r0]
-	ldr	r5, =.L1ab4
+	ldr	r5, =ActorCmd_ARRAY_887__02009ab4
 	orr	r6, r3
 	mov	r1, r5
 	strb	r6, [r0]
@@ -566,10 +566,10 @@
 	bl	__Func_8092548
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L1b04
+	ldr	r1, =gScript_887__02009b04
 	mov	r0, #8
 	bl	__Func_809207c
-	ldr	r1, =.L1b34
+	ldr	r1, =gScript_887__02009b34
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0x14
@@ -662,7 +662,7 @@
 	mov	r2, #4
 	orr	r3, r2
 	strb	r3, [r6, #9]
-	ldr	r1, =.L1cec
+	ldr	r1, =gScript_887__02009cec
 	mov	r0, #0xa
 	bl	__Func_809207c
 	ldr	r2, =iwram_3001ebc
@@ -783,10 +783,10 @@
 	mov	r0, #9
 	lsl	r1, #9
 	bl	__Func_8092064
-	ldr	r1, =.L1bb4
+	ldr	r1, =gScript_887__02009bb4
 	mov	r0, #0
 	bl	__Func_809207c
-	ldr	r1, =.L1b78
+	ldr	r1, =gScript_887__02009b78
 	mov	r0, #8
 	bl	__Func_809207c
 	bl	__Func_8091dc8
@@ -871,17 +871,17 @@
 	bl	__Func_809218c
 	mov	r0, #0xa
 	bl	__Func_809163c
-	ldr	r1, =.L1c04
+	ldr	r1, =gScript_887__02009c04
 	mov	r0, #8
 	bl	__Func_809207c
-	ldr	r1, =.L1c54
+	ldr	r1, =gScript_887__02009c54
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0xea
 	bl	__Func_80f9080
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L1d38
+	ldr	r1, =gScript_887__02009d38
 	mov	r0, #0xa
 	bl	__Func_809207c
 	mov	r6, #0
@@ -964,7 +964,7 @@
 	mov	r0, #8
 	mov	r1, #1
 	bl	__Func_809335c
-	ldr	r5, =.L1ca4
+	ldr	r5, =gScript_887__02009ca4
 	mov	r0, #8
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1479,7 +1479,7 @@
 	beq	.L136e
 	mov	r1, #0x80
 	lsl	r1, #9
-	ldr	r2, =.L1e6c
+	ldr	r2, =gScript_887__02009e6c
 	mov	r0, #8
 	bl	__Func_8092a1c
 	mov	r0, #0x14
@@ -1648,12 +1648,12 @@
 	mov	r0, #0x12
 	lsl	r1, #7
 	bl	__Func_8092adc
-	ldr	r1, =.L1eac
+	ldr	r1, =gScript_887__02009eac
 	mov	r0, r8
 	bl	__Func_800c2d8
 	mov	r0, r8
 	bl	__Func_800c4ec
-	ldr	r1, =.L1ecc
+	ldr	r1, =gScript_887__02009ecc
 	mov	r0, r8
 	bl	__Func_800c2d8
 	mov	r0, r8

@@ -20,7 +20,7 @@
 	ldr	r0, =.L6c8
 	b	.L54
 .L52:
-	ldr	r0, =.L4a0
+	ldr	r0, =MapEntrance_ARRAY_937__020084a0
 .L54:
 	pop	{r1}
 	bx	r1

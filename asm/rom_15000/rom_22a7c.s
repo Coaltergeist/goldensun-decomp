@@ -805,11 +805,11 @@
 	ldr	r1, [sp, #0x34]
 	bl	_call_via_r3
 	ldr	r0, [sp, #0x18]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x34]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x30]
-	bl	Func_8002df0
+	bl	free
 	mov	r2, r10
 	ldr	r0, [r2]
 .L23134:

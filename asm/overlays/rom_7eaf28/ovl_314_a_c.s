@@ -12,7 +12,7 @@
 	ldr	r3, =0xa4
 	cmp	r2, r3
 	bne	.L364
-	ldr	r0, =.L1488
+	ldr	r0, =gOvl_02009488
 	b	.L37a
 .L364:
 	ldr	r3, =0xa5

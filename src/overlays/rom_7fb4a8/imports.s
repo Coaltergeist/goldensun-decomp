@@ -8,7 +8,7 @@
 	.export_func _Func_80048f4
 	.export_func _Func_8002dd8
 	.export_func _Func_8004970
-	.export_func _Func_8002df0
+	.export_func _free
 	.export_func _Func_8005d10
 	.export_func _Func_8006358
 	.export_func _Func_80037d4

@@ -252,11 +252,13 @@
 .func_end OvlFunc_961_200822c
 
 	.section .data
-	.global .L2f0
-
-.L2f0:
+	.global gOvl_020082f0
+	.global MapEntrance_ARRAY_961__020082f0
+gOvl_020082f0:
+MapEntrance_ARRAY_961__020082f0:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x2f0, (0x3c8-0x2f0)
-.L3c8:
+	.global gOvl_020083c8
+gOvl_020083c8:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x3c8, (0x3f0-0x3c8)
 .L3f0:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x3f0, (0x4e0-0x3f0)

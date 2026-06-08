@@ -1069,12 +1069,12 @@
 	mov	r0, #8
 	mov	r1, #0xa
 	bl	__Func_809280c
-	ldr	r1, =.L5248
+	ldr	r1, =gScript_899__0200d248
 	mov	r0, #0xb
 	bl	__Func_809207c
 	mov	r0, #0x28
 	bl	__Func_809163c
-	ldr	r1, =.L52ac
+	ldr	r1, =gScript_899__0200d2ac
 	mov	r0, #0xc
 	bl	__Func_809207c
 	mov	r0, #0xc

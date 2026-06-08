@@ -184,7 +184,7 @@
 	lsl	r2, #1
 	add	r3, r7, r2
 	ldr	r0, [r3]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0x37
 	bl	Func_8002dd8
 	bl	_Func_8091858
@@ -5437,7 +5437,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	ldr	r0, [sp, #0x30]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #1
 	add	sp, #0xac
 	pop	{r3, r5, r6, r7}

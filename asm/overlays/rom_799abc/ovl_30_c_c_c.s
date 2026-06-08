@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_905_20090c8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
-	ldr	r2, =.L18ec
+	ldr	r2, =gOvl_020098ec
 	ldr	r5, [r3]
 	ldr	r3, [r2]
 	add	r3, #1
@@ -305,7 +305,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
 	beq	.L1386
-	ldr	r3, =.L18ec
+	ldr	r3, =gOvl_020098ec
 	mov	r2, #0
 	mov	r1, #0xc8
 	str	r2, [r3]
@@ -325,7 +325,7 @@
 	.global .L1594
 	.global .L15ac
 	.global .L160c
-	.global .L1690
+	.global gOvl_02009690
 
 .L1554:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1554, (0x1594-0x1554)
@@ -335,13 +335,17 @@
 	.incbin "overlays/rom_799abc/orig.bin", 0x15ac, (0x160c-0x15ac)
 .L160c:
 	.incbin "overlays/rom_799abc/orig.bin", 0x160c, (0x1690-0x160c)
-.L1690:
+gOvl_02009690:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1690, (0x1750-0x1690)
-.L1750:
+	.global gOvl_02009750
+gOvl_02009750:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1750, (0x176c-0x1750)
-.L176c:
+	.global gOvl_0200976c
+gOvl_0200976c:
 	.incbin "overlays/rom_799abc/orig.bin", 0x176c, (0x1814-0x176c)
-.L1814:
+	.global gOvl_02009814
+gOvl_02009814:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1814, (0x18ec-0x1814)
-.L18ec:
+	.global gOvl_020098ec
+gOvl_020098ec:
 	.incbin "overlays/rom_799abc/orig.bin", 0x18ec

@@ -161,7 +161,7 @@
 	bl	__Func_8093530
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L25ec
+	ldr	r1, =gScript_921__0200a5ec
 	mov	r0, #0xc
 	bl	__Func_80920fc
 	ldr	r0, =0x153e
@@ -249,7 +249,7 @@
 	bl	__Func_8093530
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L25ec
+	ldr	r1, =gScript_921__0200a5ec
 	mov	r0, #0xd
 	bl	__Func_80920fc
 	ldr	r0, =0x1543
@@ -690,7 +690,7 @@
 	bl	__MapActor_GetActor
 	add	r0, #0x66
 	strh	r5, [r0]
-	ldr	r1, =.L24f4
+	ldr	r1, =gScript_921__0200a4f4
 	mov	r0, #9
 	bl	__Func_809207c
 	b	.Lf78
@@ -713,7 +713,7 @@
 	mov	r3, #1
 	add	r0, #0x66
 	strh	r3, [r0]
-	ldr	r1, =.L24f4
+	ldr	r1, =gScript_921__0200a4f4
 	mov	r0, #0xb
 	bl	__Func_809207c
 	b	.Lf78
@@ -990,7 +990,7 @@
 	mov	r0, #1
 	mov	r1, #1
 	bl	__Func_80924d4
-	ldr	r5, =.L274c
+	ldr	r5, =gScript_921__0200a74c
 	mov	r0, #0
 	mov	r2, r5
 	ldr	r1, =0x10003
@@ -1004,7 +1004,7 @@
 	ldr	r1, =0x10003
 	bl	__Func_8092a1c
 	bl	__Func_8093530
-	ldr	r5, =.L25ec
+	ldr	r5, =gScript_921__0200a5ec
 	mov	r0, #9
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1173,7 +1173,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L2670
+	ldr	r1, =gScript_921__0200a670
 	mov	r0, #3
 	bl	__Func_809207c
 	b	.L128a
@@ -1312,7 +1312,7 @@
 	mov	r3, #0
 	add	r0, #0x64
 	strh	r3, [r0]
-	ldr	r1, =.L26e0
+	ldr	r1, =gScript_921__0200a6e0
 	mov	r0, #3
 	bl	__Func_809207c
 	b	.L13e6
@@ -1430,7 +1430,7 @@
 	mov	r0, #2
 	ldr	r1, =0xcccc
 	bl	__Func_8092064
-	ldr	r5, =.L2760
+	ldr	r5, =gScript_921__0200a760
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c
@@ -1603,7 +1603,7 @@
 	mov	r1, #9
 	strb	r3, [r2]
 	bl	__Func_80929d8
-	ldr	r1, =.L264c
+	ldr	r1, =gScript_921__0200a64c
 	mov	r0, r5
 	bl	__Func_800c2d8
 	b	.L16a4
@@ -1622,7 +1622,7 @@
 
 .thumb_func_start OvlFunc_921_20096ac
 	push	{lr}
-	ldr	r1, =.L25ec
+	ldr	r1, =gScript_921__0200a5ec
 	mov	r0, #9
 	bl	__Func_809207c
 	mov	r0, #9
@@ -2773,13 +2773,13 @@
 .func_end OvlFunc_921_2009fa4
 
 	.section .data
-	.global .L24f4
+	.global gScript_921__0200a4f4
 	.global .L2508
-	.global .L2564
+	.global gScript_921__0200a564
 	.global .L31c0
 	.global .L31d6
 	.global .L29e0
-	.global .L2a58
+	.global gOvl_0200aa58
 	.global .L2ad0
 	.global .L2c80
 	.global .L2db8
@@ -2790,33 +2790,40 @@
 	.incbin "overlays/rom_7a7298/orig.bin", 0x23f0, (0x2430-0x23f0)
 .L2430:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2430, (0x24f4-0x2430)
-.L24f4:
+gScript_921__0200a4f4:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x24f4, (0x2508-0x24f4)
 .L2508:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2508, (0x2564-0x2508)
-.L2564:
+gScript_921__0200a564:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2564, (0x25ec-0x2564)
-.L25ec:
+	.global gScript_921__0200a5ec
+gScript_921__0200a5ec:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x25ec, (0x264c-0x25ec)
-.L264c:
+	.global gScript_921__0200a64c
+gScript_921__0200a64c:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x264c, (0x2670-0x264c)
-.L2670:
+	.global gScript_921__0200a670
+gScript_921__0200a670:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2670, (0x26e0-0x2670)
-.L26e0:
+	.global gScript_921__0200a6e0
+gScript_921__0200a6e0:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x26e0, (0x274c-0x26e0)
-.L274c:
+	.global gScript_921__0200a74c
+gScript_921__0200a74c:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x274c, (0x2760-0x274c)
-.L2760:
+	.global gScript_921__0200a760
+gScript_921__0200a760:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2760, (0x2798-0x2760)
 .L2798:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2798, (0x28a0-0x2798)
 .L28a0:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x28a0, (0x2990-0x28a0)
-.L2990:
+	.global gOvl_0200a990
+gOvl_0200a990:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2990, (0x29e0-0x2990)
 .L29e0:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x29e0, (0x2a58-0x29e0)
-.L2a58:
+gOvl_0200aa58:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2a58, (0x2ad0-0x2a58)
 .L2ad0:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2ad0, (0x2c80-0x2ad0)

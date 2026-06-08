@@ -713,7 +713,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	OvlFunc_945_200c8e8
-	ldr	r1, =.L6840
+	ldr	r1, =gScript_945__0200e840
 	mov	r0, #0xc
 	bl	__Func_809207c
 	b	.L4f5c

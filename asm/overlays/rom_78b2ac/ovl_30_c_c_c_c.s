@@ -343,15 +343,19 @@
 .func_end OvlFunc_890_200a924
 
 	.section .data
-	.global .L2afc
-
-.L2afc:
+	.global gOvl_0200aafc
+	.global MapEntrance_ARRAY_890__0200aafc
+gOvl_0200aafc:
+MapEntrance_ARRAY_890__0200aafc:
 	.incbin "overlays/rom_78b2ac/orig.bin", 0x2afc, (0x2bec-0x2afc)
-.L2bec:
+	.global gOvl_0200abec
+gOvl_0200abec:
 	.incbin "overlays/rom_78b2ac/orig.bin", 0x2bec, (0x2c14-0x2bec)
-.L2c14:
+	.global gScript_884__0200ac14
+gScript_884__0200ac14:
 	.incbin "overlays/rom_78b2ac/orig.bin", 0x2c14, (0x2d34-0x2c14)
-.L2d34:
+	.global gOvl_0200ad34
+gOvl_0200ad34:
 	.incbin "overlays/rom_78b2ac/orig.bin", 0x2d34
 
 	.section .bss

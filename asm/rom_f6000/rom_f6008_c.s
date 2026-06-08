@@ -2696,7 +2696,7 @@
 	ldr	r0, =_FILE_76
 	bl	GetFile
 	ldr	r1, [sp, #0x2c]
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_3f
 	bl	GetFile
 	ldr	r3, =REG_DMA3SAD
@@ -2708,7 +2708,7 @@
 	add	r4, #0x20
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =ewram_2010000
 	mov	r3, #0
 	ldr	r7, =0x600b500
@@ -2936,7 +2936,7 @@
 	add	r4, r3
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6010000
@@ -2964,7 +2964,7 @@
 	add	r4, #0x20
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6016e00

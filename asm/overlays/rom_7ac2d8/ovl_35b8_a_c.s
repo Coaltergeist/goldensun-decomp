@@ -174,7 +174,7 @@
 	cmp	r5, #0
 	beq	.L53ec
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L5e14
+	ldr	r1, =gScript_924__0200de14
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
 	bl	__Func_800c2d8
@@ -211,7 +211,7 @@
 	cmp	r5, #0
 	beq	.L5446
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L5e14
+	ldr	r1, =gScript_924__0200de14
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
 	bl	__Func_800c2d8
@@ -295,7 +295,7 @@
 	ldr	r3, [r7, #0x14]
 	ldr	r4, [r5, #0x50]
 	str	r3, [r5, #0x14]
-	ldr	r1, =.L5e38
+	ldr	r1, =gScript_924__0200de38
 	str	r4, [sp]
 	bl	__Func_800c2d8
 	mov	r2, r5
@@ -402,7 +402,7 @@
 	mov	r3, r5
 	add	r3, #0x64
 	strh	r7, [r3]
-	ldr	r1, =.L5e2c
+	ldr	r1, =gScript_924__0200de2c
 	mov	r0, r5
 	bl	__Func_800c2d8
 	mov	r0, r5
@@ -555,7 +555,7 @@
 	add	r3, #0x64
 	mov	r2, r10
 	strh	r2, [r3]
-	ldr	r1, =.L5e2c
+	ldr	r1, =gScript_924__0200de2c
 	mov	r0, r5
 	bl	__Func_800c2d8
 	mov	r0, r5
@@ -587,7 +587,7 @@
 	ldr	r3, [r6, #0x14]
 	mov	r9, r1
 	str	r3, [r5, #0x14]
-	ldr	r1, =.L5e20
+	ldr	r1, =gScript_924__0200de20
 	bl	__Func_800c2d8
 	mov	r3, r5
 	add	r3, #0x55

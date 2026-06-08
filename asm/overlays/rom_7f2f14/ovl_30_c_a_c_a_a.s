@@ -12,7 +12,7 @@
 	ldr	r3, =0xb5
 	cmp	r2, r3
 	bne	.Lea0
-	ldr	r0, =.L6904
+	ldr	r0, =gScript_945__0200e904
 	b	.Ledc
 .Lea0:
 	ldr	r3, =0xb6

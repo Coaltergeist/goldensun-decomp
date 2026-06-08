@@ -75,7 +75,7 @@
 	add	r2, #0x5e
 	mov	r3, #0x14
 	strh	r3, [r2]
-	ldr	r1, =.L14c4
+	ldr	r1, =gScript_970__020094c4
 	mov	r0, r6
 	bl	__Func_800c2d8
 .L158:
@@ -116,7 +116,7 @@
 	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]
 	mov	r9, r3
-	ldr	r3, =.L17e8
+	ldr	r3, =gOvl_020097e8
 	ldr	r3, [r3]
 	sub	sp, #0x14
 	cmp	r3, #0
@@ -209,7 +209,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 .L268:
-	ldr	r7, =.L1814
+	ldr	r7, =gOvl_02009814
 	ldr	r3, [r7]
 	cmp	r3, r10
 	beq	.L28e
@@ -373,7 +373,7 @@
 .thumb_func_start OvlFunc_970_20083f8
 	push	{r5, lr}
 	mov	r0, #3
-	ldr	r5, =.L1814
+	ldr	r5, =gOvl_02009814
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #0xc]
 	mov	r0, #0
@@ -888,7 +888,7 @@
 	mov	r0, #3
 	ldr	r1, =0x13333
 	bl	__Func_8092064
-	ldr	r1, =.L1820
+	ldr	r1, =gScript_970__02009820
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0x32
@@ -901,12 +901,12 @@
 	lsl	r0, #17
 	neg	r1, r1
 	bl	__Func_80933f8
-	ldr	r1, =.L18e0
+	ldr	r1, =gScript_970__020098e0
 	mov	r0, #1
 	bl	__Func_809207c
 	mov	r0, #0x32
 	bl	__Func_809163c
-	ldr	r1, =.L198c
+	ldr	r1, =gScript_970__0200998c
 	mov	r0, #2
 	bl	__Func_809207c
 	mov	r0, #2
@@ -947,7 +947,7 @@
 	bl	__Func_8092adc
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r1, =.L1a4c
+	ldr	r1, =gScript_970__02009a4c
 	mov	r0, #3
 	bl	__Func_809207c
 	mov	r0, #3
@@ -1148,7 +1148,7 @@
 	bl	__Func_809163c
 	cmp	r5, #0
 	bge	.Lba0
-	ldr	r3, =.L17e8
+	ldr	r3, =gOvl_020097e8
 	mov	r5, #1
 	str	r5, [r3]
 	ldr	r3, =.L17ec
@@ -1249,7 +1249,7 @@
 	and	r2, r3
 	ldr	r3, .Lcb0	@ 2
 	orr	r2, r3
-	ldr	r3, =.L17e8
+	ldr	r3, =gOvl_020097e8
 	mov	r0, #0x90
 	strh	r2, [r5]
 	str	r6, [r3]
@@ -1944,23 +1944,28 @@
 .func_end OvlFunc_970_20092ac
 
 	.section .data
-	.global .L16c8
+	.global gOvl_020096c8
 
 .L14ac:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x14ac, (0x14c4-0x14ac)
-.L14c4:
+	.global gScript_970__020094c4
+gScript_970__020094c4:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x14c4, (0x14c8-0x14c4)
 .L14c8:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x14c8, (0x16c8-0x14c8)
-.L16c8:
+gOvl_020096c8:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x16c8, (0x1710-0x16c8)
-.L1710:
+	.global gOvl_02009710
+gOvl_02009710:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1710, (0x171c-0x1710)
-.L171c:
+	.global gOvl_0200971c
+gOvl_0200971c:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x171c, (0x17ac-0x171c)
-.L17ac:
+	.global gOvl_020097ac
+gOvl_020097ac:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x17ac, (0x17e8-0x17ac)
-.L17e8:
+	.global gOvl_020097e8
+gOvl_020097e8:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x17e8, (0x17ec-0x17e8)
 .L17ec:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x17ec, (0x17f0-0x17ec)
@@ -1982,19 +1987,24 @@
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x180c, (0x1810-0x180c)
 .L1810:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1810, (0x1814-0x1810)
-.L1814:
+	.global gOvl_02009814
+gOvl_02009814:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1814, (0x1818-0x1814)
 .L1818:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1818, (0x181c-0x1818)
 .L181c:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x181c, (0x1820-0x181c)
-.L1820:
+	.global gScript_970__02009820
+gScript_970__02009820:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1820, (0x18e0-0x1820)
-.L18e0:
+	.global gScript_970__020098e0
+gScript_970__020098e0:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x18e0, (0x198c-0x18e0)
-.L198c:
+	.global gScript_970__0200998c
+gScript_970__0200998c:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x198c, (0x1a4c-0x198c)
-.L1a4c:
+	.global gScript_970__02009a4c
+gScript_970__02009a4c:
 	.incbin "overlays/rom_7fa4ec/orig.bin", 0x1a4c
 
 	.section .bss

@@ -1376,7 +1376,7 @@
 	lsl	r5, #24
 	mov	r0, r6
 	asr	r5, #24
-	bl	Func_8002df0
+	bl	free
 	cmp	r5, #0
 	bne	.La62e4
 	mov	r2, r11

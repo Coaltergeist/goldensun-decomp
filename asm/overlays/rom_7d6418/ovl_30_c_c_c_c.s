@@ -1209,31 +1209,33 @@
 .func_end OvlFunc_951_200973c
 
 	.section .data
-	.global .L1e1c
-	.global .L1f30
+	.global Events_GameBuildings
+	.global Events_TolbiSpring
 	.global .L1fc0
-	.global .L1fd0
+	.global gLuckyFountainPrizes
 	.global .L200c
 	.global .L2018
 	.global .L1aec
 	.global .L1cfc
-	.global .L1a08
-
-.L1a08:
+	.global gOvl_02009a08
+	.global MapEntrance_ARRAY_951__02009a08
+gOvl_02009a08:
+MapEntrance_ARRAY_951__02009a08:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1a08, (0x1ac8-0x1a08)
-.L1ac8:
+	.global gOvl_02009ac8
+gOvl_02009ac8:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1ac8, (0x1aec-0x1ac8)
 .L1aec:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1aec, (0x1cfc-0x1aec)
 .L1cfc:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1cfc, (0x1e1c-0x1cfc)
-.L1e1c:
+Events_GameBuildings:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1e1c, (0x1f30-0x1e1c)
-.L1f30:
+Events_TolbiSpring:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1f30, (0x1fc0-0x1f30)
 .L1fc0:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1fc0, (0x1fd0-0x1fc0)
-.L1fd0:
+gLuckyFountainPrizes:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1fd0, (0x200c-0x1fd0)
 .L200c:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x200c, (0x2018-0x200c)

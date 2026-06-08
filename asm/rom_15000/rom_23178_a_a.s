@@ -1283,7 +1283,7 @@
 	ldr	r3, =Func_8001af8
 	bl	_call_via_r3
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	ldr	r3, [sp, #0x20]
 	sub	r3, #8
 	ldr	r4, [sp, #4]
@@ -1392,7 +1392,7 @@
 	mov	r3, #4
 	bl	Func_8017aa4
 	ldr	r0, [sp, #0x24]
-	bl	Func_8002df0
+	bl	free
 	ldr	r4, =0xea3
 	ldr	r3, [sp, #0x50]
 	add	r2, r3, r4
@@ -2869,7 +2869,7 @@
 	mov	r0, #0
 	bl	Func_801e3c8
 	ldr	r0, [sp, #0x38]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #1
 	bl	Func_80030f8
 	mov	r0, r6
@@ -8155,7 +8155,7 @@
 	mov	r1, r5
 	bl	Func_8023178
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	b	.L272a8
 .L27340:
 	cmp	r6, #4
@@ -8360,7 +8360,7 @@
 	add	r3, #0x26
 	strb	r2, [r3]
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	b	.L2739e
 .L27506:
 	ldr	r0, [sp, #0x14]
@@ -10629,7 +10629,7 @@
 	mov	r2, r6
 	bl	Func_8003fa4
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5

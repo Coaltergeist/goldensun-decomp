@@ -139,7 +139,7 @@
 	bl	__MapActor_GetActor
 	mov	r5, r0
 	bl	__Func_80916b0
-	ldr	r1, =.L521c
+	ldr	r1, =gScript_968__0200d21c
 	mov	r0, #0
 	bl	__Func_809207c
 	mov	r0, #0

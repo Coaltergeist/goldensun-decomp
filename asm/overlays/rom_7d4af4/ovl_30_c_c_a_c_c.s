@@ -204,7 +204,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L4d0
-	ldr	r0, =.L17a8
+	ldr	r0, =gScript_960__020097a8
 	b	.L4d2
 .L4d0:
 	ldr	r0, =.L14a8
@@ -470,7 +470,7 @@
 	mov	r0, #0x10
 	lsl	r1, #17
 	bl	__Func_80923e4
-	ldr	r1, =.Lec0
+	ldr	r1, =gScript_949__02008ec0
 	mov	r0, #0x10
 	bl	__Func_809207c
 	mov	r0, #0x10
@@ -487,7 +487,7 @@
 	lsl	r1, #17
 	mov	r0, #0x11
 	bl	__Func_80923e4
-	ldr	r1, =.Lf90
+	ldr	r1, =gScript_949__02008f90
 	mov	r0, #0x11
 	bl	__Func_809207c
 	mov	r0, #0x11

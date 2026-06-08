@@ -18,7 +18,7 @@
 	ldr	r3, =0xa5
 	cmp	r2, r3
 	bne	.L3ce
-	ldr	r0, =.L16b8
+	ldr	r0, =gScript_930__020096b8
 	b	.L3da
 .L3ce:
 	ldr	r3, =0xa6

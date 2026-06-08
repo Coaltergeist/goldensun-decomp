@@ -33,7 +33,7 @@
 	bl	_call_via_r6
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_8d
 	bl	GetFile
 	mov	r5, r0

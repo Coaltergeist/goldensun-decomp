@@ -12,7 +12,7 @@
 	ldr	r3, =0x4d
 	cmp	r2, r3
 	bne	.Lfc
-	ldr	r0, =.L4194
+	ldr	r0, =gOvl_0200c194
 	b	.L162
 .Lfc:
 	ldr	r3, =0x4e
@@ -42,7 +42,7 @@
 	ldr	r3, =0x52
 	cmp	r2, r3
 	bne	.L12e
-	ldr	r0, =.L4464
+	ldr	r0, =ActorCmd_ARRAY_943__0200c464
 	b	.L162
 .L12e:
 	ldr	r3, =0x53
@@ -75,7 +75,7 @@
 	ldr	r0, =.L477c
 	b	.L162
 .L160:
-	ldr	r0, =.L4164
+	ldr	r0, =gScript_936__0200c164
 .L162:
 	pop	{r1}
 	bx	r1
@@ -92,14 +92,14 @@
 	ldr	r3, =0x55
 	cmp	r2, r3
 	bne	.L1e0
-	ldr	r0, =.L480c
+	ldr	r0, =gScript_943__0200c80c
 	b	.L1ea
 .L1e0:
 	ldr	r3, =0x56
 	mov	r0, #0
 	cmp	r2, r3
 	bne	.L1ea
-	ldr	r0, =.L483c
+	ldr	r0, =gOvl_0200c83c
 .L1ea:
 	pop	{r1}
 	bx	r1

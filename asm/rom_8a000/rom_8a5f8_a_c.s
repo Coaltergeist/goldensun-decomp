@@ -196,7 +196,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	b	.L8aaa0
 .L8aa9e:
 	mov	r6, #0

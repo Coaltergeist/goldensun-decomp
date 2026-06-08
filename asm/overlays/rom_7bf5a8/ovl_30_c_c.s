@@ -8,7 +8,7 @@
 	.global .L1d1c
 	.global .L1d34
 	.global .L1d4c
-	.global .L1ecc
+	.global gScript_887__02009ecc
 	.global .L189c
 	.global .L18cc
 	.global .L1a34
@@ -22,7 +22,8 @@
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1a34, (0x1b9c-0x1a34)
 .L1b9c:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1b9c, (0x1c5c-0x1b9c)
-.L1c5c:
+	.global gOvl_02009c5c
+gOvl_02009c5c:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1c5c, (0x1c7c-0x1c5c)
 .L1c7c:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1c7c, (0x1c80-0x1c7c)
@@ -38,5 +39,5 @@
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1d34, (0x1d4c-0x1d34)
 .L1d4c:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1d4c, (0x1ecc-0x1d4c)
-.L1ecc:
+gScript_887__02009ecc:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1ecc, (0x1f8c-0x1ecc)

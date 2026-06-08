@@ -162,7 +162,7 @@
 	ldr	r0, =_FILE_1c
 	bl	__GetFile
 	mov	r1, r5
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x50003e0
@@ -185,7 +185,7 @@
 	cmp	r3, #0
 	bne	.L20e
 	mov	r0, r5
-	bl	__Func_8002df0
+	bl	__free
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -468,7 +468,7 @@
 	add	r4, r3
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6006800
@@ -535,15 +535,19 @@
 .func_end OvlFunc_879_2008454
 
 	.section .data
-	.global .L5f8
-
-.L5f8:
+	.global gOvl_020085f8
+	.global MapEntrance_ARRAY_879__020085f8
+gOvl_020085f8:
+MapEntrance_ARRAY_879__020085f8:
 	.incbin "overlays/rom_779188/orig.bin", 0x5f8, (0x628-0x5f8)
-.L628:
+	.global gOvl_02008628
+gOvl_02008628:
 	.incbin "overlays/rom_779188/orig.bin", 0x628, (0x62c-0x628)
-.L62c:
+	.global gOvl_0200862c
+gOvl_0200862c:
 	.incbin "overlays/rom_779188/orig.bin", 0x62c, (0x644-0x62c)
-.L644:
+	.global gOvl_02008644
+gOvl_02008644:
 	.incbin "overlays/rom_779188/orig.bin", 0x644, (0x650-0x644)
 .L650:
 	.incbin "overlays/rom_779188/orig.bin", 0x650

@@ -680,7 +680,7 @@
 	ldr	r5, =0x21b
 	mov	r0, r11
 	add	r5, r9
-	bl	Func_8002df0
+	bl	free
 	ldrb	r0, [r5]
 	bl	_Func_8077428
 	ldrb	r0, [r5]

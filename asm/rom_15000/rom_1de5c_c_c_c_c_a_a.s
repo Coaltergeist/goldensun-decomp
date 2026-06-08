@@ -45,7 +45,7 @@
 	mov	r1, r7
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 .L1ee4e:
 	add	sp, #4
 	pop	{r3}
@@ -1628,7 +1628,7 @@
 .L1fb1c:
 	bl	Func_8005cf8
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r7
 .L1fb28:
 	pop	{r5, r6, r7}

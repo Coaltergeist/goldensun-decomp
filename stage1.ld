@@ -11,7 +11,7 @@ MEMORY {
 	sram	(rw)	: ORIGIN = 0x0E000000, LENGTH = 64K
 }
 
-INCLUDE "aliases.sym"
+INCLUDE "wram.sym"
 INCLUDE "message.sym"
 INCLUDE "file_table.sym"
 

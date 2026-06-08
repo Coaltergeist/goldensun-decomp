@@ -342,7 +342,7 @@
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
-	ldr	r2, =.L3014
+	ldr	r2, =gOvl_0200b014
 	mov	r1, #0
 .L2e8:
 	ldmia	r2!, {r3}
@@ -425,7 +425,7 @@
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	ldr	r3, =.L3014
+	ldr	r3, =gOvl_0200b014
 	mov	r4, #0
 	str	r1, [sp, #4]
 	ldr	r0, =.L302c
@@ -1075,7 +1075,7 @@
 	ldr	r3, [r3, #0x28]
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
-	ldr	r1, =.L3014
+	ldr	r1, =gOvl_0200b014
 	mov	r5, #0
 	ldr	r3, [r1, r5]
 	cmp	r2, r3

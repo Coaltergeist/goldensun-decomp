@@ -279,7 +279,7 @@
 	mov	r0, #0xe
 	mov	r1, #3
 	bl	__Func_8092548
-	ldr	r5, =.L11c0
+	ldr	r5, =ActorCmd_ARRAY_907__020091c0
 	mov	r1, #0x80
 	mov	r0, #0xc
 	lsl	r1, #9

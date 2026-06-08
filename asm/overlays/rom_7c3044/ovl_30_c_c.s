@@ -26,7 +26,7 @@
 	ldr	r5, =.L8d4
 	b	.Lac
 .Laa:
-	ldr	r5, =.L79c
+	ldr	r5, =gScript_906__0200879c
 .Lac:
 	mov	r0, r5
 	bl	__Func_808b868
@@ -377,21 +377,23 @@
 .func_end OvlFunc_937_200833c
 
 	.section .data
-	.global .L4a0
+	.global MapEntrance_ARRAY_937__020084a0
 	.global .L4d0
 	.global .L6c8
 
-.L4a0:
+MapEntrance_ARRAY_937__020084a0:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x4a0, (0x4d0-0x4a0)
 .L4d0:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x4d0, (0x6c8-0x4d0)
 .L6c8:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x6c8, (0x728-0x6c8)
-.L728:
+	.global gOvl_02008728
+gOvl_02008728:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x728, (0x784-0x728)
 .L784:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x784, (0x79c-0x784)
-.L79c:
+	.global gScript_906__0200879c
+gScript_906__0200879c:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x79c, (0x8d4-0x79c)
 .L8d4:
 	.incbin "overlays/rom_7c3044/orig.bin", 0x8d4, (0xa0c-0x8d4)

@@ -7,7 +7,7 @@
 	bl	__Func_80f9080
 	mov	r1, #0x4d
 	mov	r2, #8
-	ldr	r0, =.L4764
+	ldr	r0, =gScript_943__0200c764
 	bl	__Func_8010560
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -2812,7 +2812,7 @@
 .func_end OvlFunc_926_200c1ec
 
 	.section .data
-	.global .L4638
+	.global gScript_926__0200c638
 	.global .L477a
 	.global .L4790
 	.global .L48f0
@@ -2821,22 +2821,24 @@
 	.global .L4b90
 	.global .L4d40
 	.global .L5184
-	.global .L47a8
+	.global gScript_943__0200c7a8
 	.global .L4838
 
-.L4638:
+gScript_926__0200c638:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x4638, (0x4764-0x4638)
-.L4764:
+	.global gScript_943__0200c764
+gScript_943__0200c764:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x4764, (0x477a-0x4764)
 .L477a:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x477a, (0x4790-0x477a)
 .L4790:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x4790, (0x47a8-0x4790)
-.L47a8:
+gScript_943__0200c7a8:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x47a8, (0x4838-0x47a8)
 .L4838:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x4838, (0x48c8-0x4838)
-.L48c8:
+	.global gOvl_0200c8c8
+gOvl_0200c8c8:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x48c8, (0x48f0-0x48c8)
 .L48f0:
 	.incbin "overlays/rom_7b2078/orig.bin", 0x48f0, (0x4998-0x48f0)

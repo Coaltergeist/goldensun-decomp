@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f9ef8
+.thumb_func_start TrackStop
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	ldrb	r1, [r5]
@@ -37,7 +37,7 @@
 	pop	{r4, r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f9ef8
+.func_end TrackStop
 
 .thumb_func_start Func_80f9f3c
 	ldrb	r1, [r4, #0x12]

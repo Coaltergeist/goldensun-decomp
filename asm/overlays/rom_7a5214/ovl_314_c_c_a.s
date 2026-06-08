@@ -90,17 +90,17 @@
 	mov	r0, #3
 	bl	__Func_80923e4
 .L76e:
-	ldr	r1, =.L1e2c
+	ldr	r1, =gScript_918__02009e2c
 	mov	r0, #3
 	bl	__Func_809207c
 .L776:
-	ldr	r1, =.L1db4
+	ldr	r1, =gScript_918__02009db4
 	mov	r0, #0
 	bl	__Func_809207c
-	ldr	r1, =.L1ddc
+	ldr	r1, =gScript_918__02009ddc
 	mov	r0, #1
 	bl	__Func_809207c
-	ldr	r1, =.L1e04
+	ldr	r1, =gScript_918__02009e04
 	mov	r0, #2
 	bl	__Func_80920fc
 	mov	r0, #0xa
@@ -736,7 +736,7 @@
 	ldr	r0, =0x8009
 	mov	r1, #0
 	bl	__Func_8092f84
-	ldr	r1, =.L1e54
+	ldr	r1, =gScript_918__02009e54
 	mov	r0, #8
 	bl	__Func_80920fc
 	mov	r0, #0x28
@@ -808,7 +808,7 @@
 	mov	r0, #2
 	mov	r1, #3
 	bl	__Func_8092548
-	ldr	r5, =.L1ec8
+	ldr	r5, =gScript_918__02009ec8
 	mov	r0, #1
 	mov	r1, r5
 	bl	__Func_809207c

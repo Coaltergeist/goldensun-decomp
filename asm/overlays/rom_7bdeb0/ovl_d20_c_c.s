@@ -614,7 +614,8 @@
 	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2014, (0x2134-0x2014)
 .L2134:
 	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2134, (0x21dc-0x2134)
-.L21dc:
+	.global gOvl_0200a1dc
+gOvl_0200a1dc:
 	.incbin "overlays/rom_7bdeb0/orig.bin", 0x21dc, (0x2234-0x21dc)
 .L2234:
 	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2234, (0x22c4-0x2234)

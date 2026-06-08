@@ -129,25 +129,27 @@
 	.section .data
 	.global .L1740
 	.global .L1756
-	.global .L176c
+	.global gOvl_0200976c
 	.global .L1782
 	.global .L1798
 	.global .L17ae
 	.global .L17c4
-	.global .L1450
+	.global gScript_944__02009450
 
 	.incbin "overlays/rom_797990/orig.bin", 0x12a8, (0x1450-0x12a8)
-.L1450:
+gScript_944__02009450:
 	.incbin "overlays/rom_797990/orig.bin", 0x1450, (0x15a0-0x1450)
-.L15a0:
+	.global gOvl_020095a0
+gOvl_020095a0:
 	.incbin "overlays/rom_797990/orig.bin", 0x15a0, (0x15d8-0x15a0)
-.L15d8:
+	.global gOvl_020095d8
+gOvl_020095d8:
 	.incbin "overlays/rom_797990/orig.bin", 0x15d8, (0x1740-0x15d8)
 .L1740:
 	.incbin "overlays/rom_797990/orig.bin", 0x1740, (0x1756-0x1740)
 .L1756:
 	.incbin "overlays/rom_797990/orig.bin", 0x1756, (0x176c-0x1756)
-.L176c:
+gOvl_0200976c:
 	.incbin "overlays/rom_797990/orig.bin", 0x176c, (0x1782-0x176c)
 .L1782:
 	.incbin "overlays/rom_797990/orig.bin", 0x1782, (0x1798-0x1782)
@@ -157,5 +159,6 @@
 	.incbin "overlays/rom_797990/orig.bin", 0x17ae, (0x17c4-0x17ae)
 .L17c4:
 	.incbin "overlays/rom_797990/orig.bin", 0x17c4, (0x17dc-0x17c4)
-.L17dc:
+	.global gOvl_020097dc
+gOvl_020097dc:
 	.incbin "overlays/rom_797990/orig.bin", 0x17dc

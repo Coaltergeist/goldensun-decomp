@@ -138,7 +138,7 @@
 	add	r4, r0
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6004000
@@ -163,7 +163,7 @@
 	add	r4, r1
 	mov	r0, r4
 	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2010000
 	ldr	r1, =0x6010000

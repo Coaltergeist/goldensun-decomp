@@ -140,7 +140,7 @@
 	add	r3, #2
 	strh	r2, [r3]
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L779c
+	ldr	r0, =PAL_Sprites
 	add	r1, #0x20
 	ldr	r2, =0x800000e0
 	stmia	r3!, {r0, r1, r2}
@@ -151,7 +151,7 @@
 
 .thumb_func_start Func_8004838
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L779c
+	ldr	r0, =PAL_Sprites
 	ldr	r1, =0x5000200
 	ldr	r2, =0x800000e0
 	stmia	r3!, {r0, r1, r2}
@@ -162,11 +162,12 @@
 	.section .rodata
 	.global .L795c
 	.global .L7970
+	.global PAL_Sprites
 
 .align 2,0
 .L777c:
 	.incrom 0x777c, 0x779c
-.L779c:
+PAL_Sprites:
 	.incrom 0x779c, 0x795c
 .L795c:
 	.incrom 0x795c, 0x7970

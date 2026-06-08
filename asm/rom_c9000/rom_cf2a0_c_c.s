@@ -49,7 +49,7 @@
 	bl	_call_via_r5
 	mov	r1, r11
 	mov	r0, r6
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_b1
 	bl	GetFile
 	mov	r6, r0
@@ -62,7 +62,7 @@
 	add	r6, #0x80
 	add	r1, r11
 	mov	r0, r6
-	bl	Func_8005340
+	bl	DecompressLZ
 	cmp	r7, #0
 	bne	.Lcf348
 	ldr	r0, =_FILE_93
@@ -82,7 +82,7 @@
 	add	r6, #0x80
 	add	r1, r11
 	mov	r0, r6
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r5, =ewram_2010000
 	mov	r1, #0
 	mov	r9, r1

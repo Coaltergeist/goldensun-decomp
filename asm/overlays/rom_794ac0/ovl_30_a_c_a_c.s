@@ -200,13 +200,13 @@
 	add	r3, r7, r2
 	cmp	r3, r0
 	bhi	.L70e
-	ldr	r1, =.L58bc
+	ldr	r1, =gScript_899__0200d8bc
 	mov	r0, #0x19
 	bl	__Func_809207c
 	mov	r3, #2
 	b	.L78c
 .L70e:
-	ldr	r1, =.L5858
+	ldr	r1, =gScript_899__0200d858
 	mov	r0, #0x19
 	bl	__Func_809207c
 	mov	r3, #3

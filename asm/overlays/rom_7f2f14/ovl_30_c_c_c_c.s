@@ -737,7 +737,7 @@
 	bne	.L4c7e
 .L4c74:
 	mov	r0, r5
-	ldr	r1, =.L5564
+	ldr	r1, =gScript_968__0200d564
 	bl	__Func_800c2d8
 	b	.L4d54
 .L4c7e:
@@ -854,7 +854,7 @@
 	bl	__Func_800c2d8
 	b	.L4d54
 .L4d4c:
-	ldr	r1, =.L5564
+	ldr	r1, =gScript_968__0200d564
 	mov	r0, r5
 	bl	__Func_800c2d8
 .L4d54:
@@ -869,8 +869,8 @@
 	.global .L5148
 	.global .L5164
 	.global .L577c
-	.global .L57c8
-	.global .L5ac8
+	.global gScript_968__0200d7c8
+	.global gScript_968__0200dac8
 	.global .L5d3c
 	.global .L6e44
 	.global .L6f1c
@@ -879,15 +879,15 @@
 	.global .L73b4
 	.global .L74f8
 	.global .L5128
-	.global .L521c
-	.global .L53c4
-	.global .L5488
-	.global .L5508
+	.global gScript_968__0200d21c
+	.global gScript_968__0200d3c4
+	.global gScript_968__0200d488
+	.global gScript_968__0200d508
 	.global .L5ce8
 	.global .L5d12
-	.global .L6740
+	.global gOvl_0200e740
 	.global .L68ec
-	.global .L6904
+	.global gScript_945__0200e904
 	.global .L69c4
 	.global .L6b74
 	.global .L6c04
@@ -921,23 +921,24 @@
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x51b0, (0x51d4-0x51b0)
 .L51d4:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x51d4, (0x521c-0x51d4)
-.L521c:
+gScript_968__0200d21c:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x521c, (0x52cc-0x521c)
 .L52cc:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x52cc, (0x53c4-0x52cc)
-.L53c4:
+gScript_968__0200d3c4:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x53c4, (0x5488-0x53c4)
-.L5488:
+gScript_968__0200d488:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x5488, (0x5508-0x5488)
-.L5508:
+gScript_968__0200d508:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x5508, (0x5564-0x5508)
-.L5564:
+	.global gScript_968__0200d564
+gScript_968__0200d564:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x5564, (0x577c-0x5564)
 .L577c:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x577c, (0x57c8-0x577c)
-.L57c8:
+gScript_968__0200d7c8:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x57c8, (0x5ac8-0x57c8)
-.L5ac8:
+gScript_968__0200dac8:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x5ac8, (0x5ce8-0x5ac8)
 .L5ce8:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x5ce8, (0x5d12-0x5ce8)
@@ -957,11 +958,11 @@
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x6350, (0x6548-0x6350)
 .L6548:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x6548, (0x6740-0x6548)
-.L6740:
+gOvl_0200e740:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x6740, (0x68ec-0x6740)
 .L68ec:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x68ec, (0x6904-0x68ec)
-.L6904:
+gScript_945__0200e904:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x6904, (0x69c4-0x6904)
 .L69c4:
 	.incbin "overlays/rom_7f2f14/orig.bin", 0x69c4, (0x6b74-0x69c4)

@@ -53,7 +53,7 @@
 	.pool
 
 .Lf2bf8:
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x6004000
@@ -246,7 +246,7 @@
 	mov	r8, r3
 	bl	GetFile
 	mov	r1, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r6, r5
 	mov	r1, #0xa0
 	ldr	r3, =REG_DMA3SAD

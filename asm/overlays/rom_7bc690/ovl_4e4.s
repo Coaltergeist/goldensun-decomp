@@ -1076,7 +1076,7 @@
 	ldr	r3, =0x59
 	cmp	r2, r3
 	bne	.Le74
-	ldr	r2, =.L1f30
+	ldr	r2, =Events_TolbiSpring
 	mov	r7, #3
 	mov	r8, r2
 	b	.Le88
@@ -2215,7 +2215,8 @@
 
 	.section .data
 
-.L1f30:
+	.global Events_TolbiSpring
+Events_TolbiSpring:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x1f30, (0x1f48-0x1f30)
 .L1f48:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x1f48, (0x1f70-0x1f48)

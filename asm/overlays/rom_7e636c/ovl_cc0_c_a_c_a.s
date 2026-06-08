@@ -24,7 +24,7 @@
 	ldr	r3, =0x9d
 	cmp	r2, r3
 	bne	.Ld50
-	ldr	r0, =.L1a4c
+	ldr	r0, =gScript_970__02009a4c
 	b	.Ld5c
 .Ld50:
 	ldr	r3, =0x9e
@@ -69,7 +69,7 @@
 	ldr	r3, =0x9e
 	cmp	r2, r3
 	bne	.Ldc2
-	ldr	r0, =.L1ce0
+	ldr	r0, =gScript_885__02009ce0
 	b	.Ldc4
 .Ldc2:
 	ldr	r0, =.L1b3c

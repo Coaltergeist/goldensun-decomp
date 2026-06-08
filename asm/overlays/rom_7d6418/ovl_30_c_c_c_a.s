@@ -12,10 +12,10 @@
 	ldr	r3, =0xbd
 	cmp	r2, r3
 	bne	.L1c0
-	ldr	r0, =.L1f30
+	ldr	r0, =Events_TolbiSpring
 	b	.L1c2
 .L1c0:
-	ldr	r0, =.L1e1c
+	ldr	r0, =Events_GameBuildings
 .L1c2:
 	pop	{r1}
 	bx	r1
@@ -1207,7 +1207,7 @@
 	bne	.Ld0e
 	mov	r6, #0xe
 .Ld0e:
-	ldr	r2, =.L1fd0
+	ldr	r2, =gLuckyFountainPrizes
 	lsl	r3, r6, #2
 	ldr	r0, [r2, r3]
 	bl	OvlFunc_951_20084bc

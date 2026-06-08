@@ -95,7 +95,7 @@
 	bne	.Lb5e30
 .Lb5ec4:
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0xa0
 	lsl	r0, #1
 	bl	Func_8004970
@@ -112,7 +112,7 @@
 	bl	Func_80030f8
 .Lb5ef0:
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r10
 	add	sp, #0x30
 	pop	{r3, r5}
@@ -226,7 +226,7 @@
 	mov	r5, #0xa0
 	mov	r0, r6
 	lsl	r5, #1
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r5
 	bl	Func_8004970
 	mov	r6, r0
@@ -275,7 +275,7 @@
 	bl	Func_80030f8
 .Lb604a:
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	add	sp, #0x10
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

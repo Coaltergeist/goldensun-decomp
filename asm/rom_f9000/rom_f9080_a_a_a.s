@@ -39,13 +39,13 @@
 .Lf90c6:
 	cmp	r6, #0x63
 	ble	.Lf9108
-	ldr	r7, =Data_fc684
+	ldr	r7, =gSongTable
 	lsl	r4, r6, #3
 	add	r3, r4, #4
 	ldrh	r2, [r7, r3]
 	cmp	r2, #7
 	bne	.Lf90f2
-	ldr	r1, =Data_fc624
+	ldr	r1, =gMPlayTable
 .Lf90d8:
 	lsl	r5, r2, #1
 	add	r3, r5, r2
@@ -61,7 +61,7 @@
 	mov	r5, #0xe
 	b	.Lf90f6
 .Lf90f2:
-	ldr	r1, =Data_fc624
+	ldr	r1, =gMPlayTable
 	lsl	r5, r2, #1
 .Lf90f6:
 	add	r3, r5, r2

@@ -6,7 +6,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L960
-	ldr	r0, =.L5508
+	ldr	r0, =gScript_968__0200d508
 	b	.L9ca
 .L960:
 	ldr	r0, =0x927
@@ -135,7 +135,7 @@
 	add	r3, #0x3c
 	add	r5, #0x64
 	strh	r3, [r5]
-	ldr	r1, =.L44d8
+	ldr	r1, =gScript_943__0200c4d8
 	mov	r0, #0x15
 	bl	__Func_809207c
 	b	.Laca
@@ -195,7 +195,7 @@
 	add	r3, #0x3c
 	add	r5, #0x64
 	strh	r3, [r5]
-	ldr	r1, =.L44d8
+	ldr	r1, =gScript_943__0200c4d8
 	mov	r0, #0x18
 	bl	__Func_809207c
 	b	.Lb72
@@ -595,14 +595,14 @@
 	mov	r0, #0x17
 	ldr	r1, =0xcccc
 	bl	__Func_8092064
-	ldr	r1, =.L4464
+	ldr	r1, =ActorCmd_ARRAY_943__0200c464
 	mov	r0, #0x17
 	bl	__Func_809207c
 	ldr	r2, =0x6666
 	mov	r0, #0x16
 	ldr	r1, =0xcccc
 	bl	__Func_8092064
-	ldr	r1, =.L449c
+	ldr	r1, =gScript_943__0200c49c
 	mov	r0, #0x16
 	bl	__Func_809207c
 	mov	r0, #0x14
@@ -1334,7 +1334,7 @@
 	bl	__Random
 	mov	r1, #0x5a
 	bl	_Func_8000b50
-	ldr	r6, =.L44d8
+	ldr	r6, =gScript_943__0200c4d8
 	add	r0, #0x3c
 	add	r5, #0x64
 	strh	r0, [r5]
@@ -1494,7 +1494,7 @@
 	mov	r0, #0x16
 	ldr	r1, =0x9999
 	bl	__Func_8092064
-	ldr	r1, =.L458c
+	ldr	r1, =gScript_943__0200c58c
 	mov	r0, #0x16
 	bl	__Func_809207c
 	mov	r0, #0x15
@@ -1508,7 +1508,7 @@
 	ldr	r2, =0x6666
 	bl	__Func_8092064
 	mov	r0, #0x15
-	ldr	r1, =.L4628
+	ldr	r1, =gScript_943__0200c628
 	bl	__Func_809207c
 	ldr	r0, =0x109
 	bl	__Func_8079338
@@ -1547,7 +1547,7 @@
 	bl	__MapActor_GetActor
 	mov	r3, #0
 	strh	r3, [r0, #6]
-	ldr	r1, =.L4980
+	ldr	r1, =gScript_943__0200c980
 	mov	r0, #0x16
 	bl	__Func_809207c
 	mov	r0, #0x15
@@ -1562,7 +1562,7 @@
 	ldr	r2, =0x6666
 	bl	__Func_8092064
 	mov	r0, #0x15
-	ldr	r1, =.L4628
+	ldr	r1, =gScript_943__0200c628
 	bl	__Func_809207c
 	ldr	r0, =0x109
 	bl	__Func_8079338
@@ -2068,7 +2068,7 @@
 	mov	r0, #0x1a
 	ldr	r1, =0x26666
 	bl	__Func_8092064
-	ldr	r5, =.L44ec
+	ldr	r5, =gScript_943__0200c4ec
 	mov	r0, #0x18
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2177,7 +2177,7 @@
 	mov	r0, #0x16
 	lsl	r1, #17
 	bl	__Func_80923e4
-	ldr	r5, =.L480c
+	ldr	r5, =gScript_943__0200c80c
 	mov	r0, #0x16
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2231,14 +2231,14 @@
 	bl	__MapActor_GetActor
 	add	r0, #0x63
 	strb	r5, [r0]
-	ldr	r5, =.L47a8
+	ldr	r5, =gScript_943__0200c7a8
 	mov	r0, #0x18
 	mov	r1, r5
 	bl	__Func_809207c
 	mov	r1, r5
 	mov	r0, #0x19
 	bl	__Func_809207c
-	ldr	r5, =.L4764
+	ldr	r5, =gScript_943__0200c764
 	mov	r0, #0x1a
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2308,7 +2308,7 @@
 	bl	__Func_8092158
 	mov	r0, #0x92
 	bl	__Func_80f9080
-	ldr	r5, =.L47ec
+	ldr	r5, =gScript_943__0200c7ec
 	mov	r0, #0x1c
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2322,7 +2322,7 @@
 	mov	r0, #0x1f
 	lsl	r1, #16
 	bl	__Func_80923e4
-	ldr	r1, =.L4814
+	ldr	r1, =gScript_943__0200c814
 	mov	r0, #0x1f
 	bl	__Func_809207c
 	mov	r0, #0xa
@@ -2373,7 +2373,7 @@
 	bl	OvlFunc_943_2008bb8
 	mov	r0, #0xa
 	bl	__Func_809163c
-	ldr	r5, =.L4888
+	ldr	r5, =gScript_943__0200c888
 	mov	r0, #0x1e
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2513,7 +2513,7 @@
 	mov	r0, #0x14
 	mov	r1, #0
 	bl	__Func_80923e4
-	ldr	r5, =.L48c4
+	ldr	r5, =gScript_943__0200c8c4
 	mov	r0, #0x18
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2528,14 +2528,14 @@
 	mov	r1, r5
 	mov	r0, #0x19
 	bl	__Func_809207c
-	ldr	r5, =.L48b0
+	ldr	r5, =gScript_943__0200c8b0
 	mov	r0, #0x1a
 	mov	r1, r5
 	bl	__Func_809207c
 	mov	r1, r5
 	mov	r0, #0x1b
 	bl	__Func_809207c
-	ldr	r5, =.L48d8
+	ldr	r5, =gScript_943__0200c8d8
 	mov	r0, #0x1c
 	mov	r1, r5
 	bl	__Func_809207c
@@ -2678,7 +2678,7 @@
 	mov	r0, #0x1c
 	ldr	r1, =0x19999
 	bl	__Func_8092064
-	ldr	r5, =.L4888
+	ldr	r5, =gScript_943__0200c888
 	mov	r0, #0x1c
 	mov	r1, r5
 	bl	__Func_809207c
@@ -3129,7 +3129,7 @@
 	bl	__MapActor_GetActor
 	mov	r3, #0
 	strh	r3, [r0, #6]
-	ldr	r1, =.L4980
+	ldr	r1, =gScript_943__0200c980
 	mov	r0, #0x16
 	bl	__Func_809207c
 	mov	r0, #0x15
@@ -3143,7 +3143,7 @@
 	mov	r0, #0x15
 	ldr	r1, =0xcccc
 	bl	__Func_8092064
-	ldr	r1, =.L4628
+	ldr	r1, =gScript_943__0200c628
 	mov	r0, #0x15
 	bl	__Func_809207c
 	ldr	r5, =iwram_3001ebc
@@ -3749,7 +3749,7 @@
 	mov	r0, r5
 	bl	OvlFunc_943_200b9ec
 	add	r6, #1
-	ldr	r1, =.L48e0
+	ldr	r1, =gScript_943__0200c8e0
 	mov	r0, r5
 	bl	__Func_809207c
 	cmp	r6, #3

@@ -90,7 +90,7 @@
 	mov	r0, #0
 	cmp	r2, r3
 	bne	.Lf4
-	ldr	r0, =.L13fc
+	ldr	r0, =gOvl_020093fc
 .Lf4:
 	pop	{r1}
 	bx	r1

@@ -1787,7 +1787,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__Func_80923e4
-	ldr	r5, =.L1ce0
+	ldr	r5, =gScript_885__02009ce0
 	mov	r1, #0x80
 	mov	r0, #0xe
 	lsl	r1, #9
@@ -2125,7 +2125,7 @@
 	bl	__MapActor_GetActor
 	mov	r3, #0xc
 	strh	r3, [r0, #0x20]
-	ldr	r1, =.L1c34
+	ldr	r1, =gOvl_02009c34
 	mov	r0, #0xb
 	bl	__Func_809207c
 	ldr	r0, =0x839
@@ -2252,7 +2252,7 @@
 	lsl	r1, #17
 	lsl	r2, #17
 	bl	__Func_80923e4
-	ldr	r5, =.L1ce0
+	ldr	r5, =gScript_885__02009ce0
 	mov	r1, #0x80
 	mov	r0, #0xe
 	lsl	r1, #9
@@ -2437,7 +2437,7 @@
 	mov	r0, #0xb
 	mov	r1, #3
 	bl	__Func_8092548
-	ldr	r5, =.L1ce0
+	ldr	r5, =gScript_885__02009ce0
 	mov	r0, #0
 	ldr	r1, =0x1000b
 	mov	r2, r5
@@ -2446,7 +2446,7 @@
 	mov	r0, #1
 	ldr	r1, =0x1000b
 	bl	__Func_8092a1c
-	ldr	r1, =.L1bdc
+	ldr	r1, =ActorCmd_ARRAY_885__02009bdc
 	mov	r0, #0xb
 	bl	__Func_80920fc
 	mov	r0, #0
@@ -2569,19 +2569,30 @@
 .func_end OvlFunc_885_2009a2c
 
 	.section .data
-	.global .L1cf4
+	.global gOvl_02009cf4
 
-.L1bdc:
+	.global ActorCmd_ARRAY_885__02009bdc
+ActorCmd_ARRAY_885__02009bdc:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1bdc, (0x1c34-0x1bdc)
-.L1c34:
+	.global gOvl_02009c34
+	.global MapEntrance_ARRAY_941__02009c34
+	.global gScript_885__02009c34
+gOvl_02009c34:
+MapEntrance_ARRAY_941__02009c34:
+gScript_885__02009c34:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1c34, (0x1ce0-0x1c34)
-.L1ce0:
+	.global gScript_885__02009ce0
+gScript_885__02009ce0:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1ce0, (0x1cf4-0x1ce0)
-.L1cf4:
+gOvl_02009cf4:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1cf4, (0x1db4-0x1cf4)
-.L1db4:
+	.global gScript_918__02009db4
+	.global gScript_898__02009db4
+gScript_918__02009db4:
+gScript_898__02009db4:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1db4, (0x1ddc-0x1db4)
-.L1ddc:
+	.global gScript_918__02009ddc
+gScript_918__02009ddc:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1ddc, (0x1efc-0x1ddc)
 .L1efc:
 	.incbin "overlays/rom_78603c/orig.bin", 0x1efc, (0x1fb0-0x1efc)

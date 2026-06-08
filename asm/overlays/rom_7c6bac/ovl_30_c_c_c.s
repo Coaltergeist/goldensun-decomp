@@ -818,7 +818,7 @@
 	mov	r0, #0x10
 	mov	r1, #6
 	bl	__Func_8092560
-	ldr	r1, =.L16e4
+	ldr	r1, =gScript_942__020096e4
 	mov	r0, #0x10
 	bl	__Func_809207c
 	mov	r0, #0xa
@@ -1001,19 +1001,19 @@
 .func_end OvlFunc_942_2008e40
 
 	.section .data
-	.global .L16b8
+	.global gScript_930__020096b8
 	.global .L16ce
 	.global .L18d4
-	.global .L18ec
+	.global gOvl_020098ec
 	.global .L19c4
 	.global .L1acc
-	.global .L1ba4
+	.global gOvl_02009ba4
 	.global .L1c7c
 	.global .L1d24
 	.global .L1dcc
 	.global .L1e74
 	.global .L1e80
-	.global .L1fa0
+	.global GFX_Thermometer
 	.global .L2018
 	.global .L2120
 	.global .L224c
@@ -1024,11 +1024,12 @@
 	.global .L17c8
 	.global .L1840
 
-.L16b8:
+gScript_930__020096b8:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x16b8, (0x16ce-0x16b8)
 .L16ce:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x16ce, (0x16e4-0x16ce)
-.L16e4:
+	.global gScript_942__020096e4
+gScript_942__020096e4:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x16e4, (0x1708-0x16e4)
 .L1708:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1708, (0x1738-0x1708)
@@ -1038,17 +1039,18 @@
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x17c8, (0x1840-0x17c8)
 .L1840:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1840, (0x18a0-0x1840)
-.L18a0:
+	.global gOvl_020098a0
+gOvl_020098a0:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x18a0, (0x18d4-0x18a0)
 .L18d4:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x18d4, (0x18ec-0x18d4)
-.L18ec:
+gOvl_020098ec:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x18ec, (0x19c4-0x18ec)
 .L19c4:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x19c4, (0x1acc-0x19c4)
 .L1acc:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1acc, (0x1ba4-0x1acc)
-.L1ba4:
+gOvl_02009ba4:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1ba4, (0x1c7c-0x1ba4)
 .L1c7c:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1c7c, (0x1d24-0x1c7c)
@@ -1060,7 +1062,7 @@
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1e74, (0x1e80-0x1e74)
 .L1e80:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1e80, (0x1fa0-0x1e80)
-.L1fa0:
+GFX_Thermometer:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x1fa0, (0x2018-0x1fa0)
 .L2018:
 	.incbin "overlays/rom_7c6bac/orig.bin", 0x2018, (0x2120-0x2018)
