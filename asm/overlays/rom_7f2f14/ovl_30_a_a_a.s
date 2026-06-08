@@ -286,7 +286,7 @@
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, [r6, #0x1c]
@@ -298,14 +298,14 @@
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r2
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
 .L27c:
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	str	r0, [r6, #0x34]
 .L282:
 	mov	r3, #0x80
@@ -790,7 +790,7 @@
 	lsl	r0, #16
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, r10
 	ldr	r2, [r3, #0x10]
 	mov	r3, #0xb0

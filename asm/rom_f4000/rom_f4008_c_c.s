@@ -1004,7 +1004,7 @@
 	mov	r1, #6
 	and	r5, r0
 	ldr	r0, [r6, #4]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, #0x8c
 	lsl	r5, #12
 	add	r5, r0
@@ -1196,7 +1196,7 @@
 	add	r1, #0x80
 	lsl	r0, #4
 	str	r4, [sp, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6]
 	sub	r2, r3, r0
 	ldr	r3, [r6, #4]
@@ -1298,14 +1298,14 @@
 	mov	r0, #0x80
 	mov	r1, r6
 	lsl	r0, #4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r9
 	ldr	r5, [r1]
 	sub	r5, r0
 	mov	r0, #0xc0
 	mov	r1, r6
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r9
 	ldr	r2, [r3, #4]
 	mov	r4, #0x9e
@@ -1522,21 +1522,21 @@
 	mov	r5, r0
 	mov	r1, r5
 	lsl	r0, r6, #15
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0xc]
 	ldr	r4, [sp, #8]
 	add	r3, r0
 	str	r3, [r7, #0xc]
 	lsl	r0, r4, #15
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0x10]
 	add	r3, r0
 	str	r3, [r7, #0x10]
 	mov	r3, r8
 	lsl	r0, r3, #15
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0x14]
 	add	r3, r0
 	str	r3, [r7, #0x14]
@@ -1827,7 +1827,7 @@
 	ldr	r0, [r7, #0x18]
 	lsl	r1, #4
 	add	r5, sp, #0xe0
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, =.Lf541a
 	mov	r3, #0
 	str	r0, [r5, r6]

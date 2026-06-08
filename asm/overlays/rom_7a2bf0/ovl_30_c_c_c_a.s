@@ -128,19 +128,19 @@
 	mov	r0, r6
 	and	r5, r2
 	and	r7, r2
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r0, r6, r0
 	lsl	r0, #16
 	mov	r1, r8
 	asr	r6, r0, #16
 	mov	r0, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r0, r5, r0
 	lsl	r0, #16
 	asr	r5, r0, #16
 	mov	r1, r8
 	mov	r0, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r0, r7, r0
 	lsl	r0, #16
 	asr	r7, r0, #16

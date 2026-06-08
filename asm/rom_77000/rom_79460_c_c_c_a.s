@@ -89,7 +89,7 @@
 	mov	r1, #0xa
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, [sp]
 	cmp	r0, #0xf
 	ble	.L79970

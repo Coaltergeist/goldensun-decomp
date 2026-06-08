@@ -420,7 +420,7 @@
 	bl	LoadIcon
 	mov	r0, r10
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, #0
 	beq	.L1a26e
 	lsl	r3, r0, #2

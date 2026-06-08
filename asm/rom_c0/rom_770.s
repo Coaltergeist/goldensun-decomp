@@ -98,7 +98,7 @@ Data_8000864:
 	mov	r4, r1
 	mov	r1, r0
 	mov	r0, #0x40000000
-	bl	Func_8000af0
+	bl	divsi3_RAM
 	smull	r3, r0, r4, r0
 	ldmfd	sp!, {lr}
 	lsl	r0, #18
@@ -262,7 +262,7 @@ Data_8000ac0:
 	.word	0x10000, 0, 0, 0
 	.ssize	Data_8000ac0
 
-.arm_func_start Func_8000af0
+.arm_func_start divsi3_RAM
 	eor	r12, r0, r1
 	movs	r2, r1
 	rsbmi	r2, #0
@@ -274,7 +274,7 @@ Data_8000ac0:
 	bl	Func_8000b6c
 	rsb	r0, #0
 	bx	r12
-.func_end Func_8000af0
+.func_end divsi3_RAM
 
 .arm_func_start Func_8000b1c
 	stmfd	sp!, {lr}

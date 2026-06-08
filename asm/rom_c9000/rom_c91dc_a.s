@@ -459,7 +459,7 @@
 .Lc956a:
 	mov	r1, #3
 	str	r2, [sp, #0xc]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r0
 	lsl	r1, #10
 	mov	r3, #0x80

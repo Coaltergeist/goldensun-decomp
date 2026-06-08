@@ -1211,7 +1211,7 @@
 	mov	r0, r10
 	ldr	r5, [r3, #8]
 	ldr	r6, [r3, #0xc]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r0
 	add	r2, #0x64
 	mov	r0, r5

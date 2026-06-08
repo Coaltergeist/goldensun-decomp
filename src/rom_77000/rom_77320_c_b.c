@@ -6,7 +6,6 @@
  * goldensun/stage1.ld.
  */
 extern void *GetUnit(unsigned int);
-extern int Func_af0_from_thumb(int, int);
 
 void UpdateStatBarPercent(unsigned int unit) {
     void *r5;
@@ -21,7 +20,7 @@ void UpdateStatBarPercent(unsigned int unit) {
     r3 = 0x34;
     r1 = *(short *)((char *)r5 + r3);
     r0 <<= 14;
-    r0 = Func_af0_from_thumb(r0, r1);
+    r0 /= r1;
     r3 = 0x80;
     r3 <<= 7;
     if (r0 > r3) {
@@ -50,7 +49,7 @@ label_0x3a:
     r2 = 0x36;
     r1 = *(short *)((char *)r5 + r2);
     r0 <<= 14;
-    r0 = Func_af0_from_thumb(r0, r1);
+    r0 /= r1;
     r3 = 0x80;
     r3 <<= 7;
     if (r0 > r3) {

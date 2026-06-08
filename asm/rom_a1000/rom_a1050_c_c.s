@@ -439,7 +439,7 @@
 	cmp	r5, #0xf
 	bgt	.La1516
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, #9
 	bgt	.La1506
 .La1516:

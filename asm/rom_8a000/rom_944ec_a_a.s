@@ -2249,7 +2249,7 @@
 	add	r5, r6, r1
 	mov	r0, r5
 	mov	r1, #0x14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #0x14
 	mov	r8, r0
 	mov	r0, r5

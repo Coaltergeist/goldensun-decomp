@@ -575,7 +575,7 @@
 	add	r0, r5
 	lsl	r0, #1
 	mov	r1, #0xd
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .L8deb2:
 	cmp	r5, r11
@@ -744,7 +744,7 @@
 	beq	.L8e006
 	lsl	r0, r5, #1
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .L8e006:
 	ldr	r1, [sp]

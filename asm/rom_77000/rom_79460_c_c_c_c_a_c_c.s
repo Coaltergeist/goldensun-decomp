@@ -181,7 +181,7 @@
 	add	r0, r3
 	mov	r1, #0x64
 	lsl	r0, #16
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	bl	Func_8079bc4
 	ldr	r3, =0xffff
@@ -580,7 +580,7 @@
 .L7a08e:
 	mov	r0, r7
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	bl	Func_8079be8
 	cmp	r5, r0

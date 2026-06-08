@@ -510,7 +510,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	strh	r0, [r5, #0x38]
 	mov	r0, r10
 .Laa372:

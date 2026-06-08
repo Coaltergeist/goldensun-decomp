@@ -92,7 +92,7 @@
 	sub	r2, r5
 	sub	r0, r6, r0
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r5
 .L79b9e:
 	mov	r7, r8

@@ -84,7 +84,7 @@
 	lsl	r0, #16
 	add	r0, r2
 	mov	r1, #0x64
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, r10
 	str	r3, [sp, #4]
 	ldr	r3, =0x320001

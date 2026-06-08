@@ -48,7 +48,7 @@
 	mov	r3, r8
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r0
 	mov	r0, #0xd2
 	ldr	r1, [r6]

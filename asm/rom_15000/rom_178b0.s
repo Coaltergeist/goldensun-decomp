@@ -643,7 +643,7 @@
 	strb	r0, [r5]
 	mov	r1, #0xa
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, #1
 	mov	r6, r0
 	cmp	r5, r10

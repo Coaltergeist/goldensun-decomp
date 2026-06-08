@@ -57,7 +57,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
@@ -90,7 +90,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r5, [r0]
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #4
 	add	r0, r7
 	strh	r0, [r5, #8]
@@ -553,7 +553,7 @@
 	bl	_Func_80219c8
 	mov	r1, r7
 	mov	r0, r8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r7
 	mov	r9, r0
 	mov	r0, r8
@@ -793,7 +793,7 @@
 	mov	r3, #0x31
 	ldr	r7, [sp, #0x24]
 	mov	r10, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r6
 	mov	r8, r0
 	mov	r0, r5

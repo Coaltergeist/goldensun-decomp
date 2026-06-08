@@ -1325,7 +1325,7 @@
 	mov	r0, r11
 	sub	r0, #0x40
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r5, #0
 	bge	.Le3494
@@ -1393,7 +1393,7 @@
 	cmp	r0, #0x17
 	bhi	.Le358c
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #7
 	sub	r5, r3, r0
 	cmp	r5, #0

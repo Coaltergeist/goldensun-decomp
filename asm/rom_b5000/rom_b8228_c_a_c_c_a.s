@@ -65,7 +65,7 @@
 	lsl	r0, #9
 	sub	r0, r3
 	ldr	r1, =0x2aaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r8
 	lsr	r3, r5, #10
 	and	r3, r2
@@ -293,7 +293,7 @@
 	add	r0, r6
 	mov	r1, r8
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r10
 	add	r9, r0
 	mov	r0, #2
@@ -321,7 +321,7 @@
 	add	r0, r6
 	lsl	r0, #2
 	mov	r1, r8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r9
 	sub	r3, r0
 	mov	r9, r3

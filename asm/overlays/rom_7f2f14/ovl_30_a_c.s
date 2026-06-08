@@ -106,7 +106,7 @@
 	add	r3, r7
 	mov	r1, #0x12
 	str	r3, [r6, #0x10]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 	str	r5, [r6, #0x44]
 	mov	r3, r7
@@ -303,7 +303,7 @@
 	mov	r1, #3
 	mov	r0, r5
 	str	r6, [r7, #8]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r5, r0
 	str	r5, [r7]
 	mov	r3, r10
@@ -387,7 +387,7 @@
 	sub	r0, #4
 	mov	r1, #0xa
 	lsl	r0, #16
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r6, r0
 	bl	__Random
 	mov	r3, r0
@@ -397,7 +397,7 @@
 	sub	r0, #4
 	mov	r1, #0xa
 	lsl	r0, #16
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r2, [r7, #0x10]
 	ldr	r3, =0xffff0000
 	add	r2, r3

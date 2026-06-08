@@ -241,7 +241,7 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r11
 	ldrh	r3, [r2, #0xe]
 	add	r6, #0x8c
@@ -292,7 +292,7 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r11
 	ldrh	r3, [r2, #0xe]
 	lsl	r3, #3
@@ -578,7 +578,7 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, #0x8c
 	add	r5, r0
 	mov	r0, r8
@@ -604,7 +604,7 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r8
 	ldrh	r3, [r2, #0xe]
 	lsl	r3, #3

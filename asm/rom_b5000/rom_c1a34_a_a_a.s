@@ -93,7 +93,7 @@
 .Lc1ade:
 	mov	r0, r11
 	mov	r1, r9
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 .Lc1ae6:
 	add	sp, #0x1c
 	pop	{r3, r5, r6, r7}
@@ -143,7 +143,7 @@
 .Lc1b42:
 	mov	r1, r7
 	mov	r0, r8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r8, r0
 	mov	r0, #0xfe
 	lsl	r0, #2
@@ -310,7 +310,7 @@
 	mov	r1, #0xa
 	add	r0, r10
 	mov	r11, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	mov	r0, r9
 	mov	r2, #0
@@ -318,7 +318,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r5, r0
 	bge	.Lc1cb6
 	mov	r5, r0
@@ -338,7 +338,7 @@
 	mov	r2, #0x12
 	ldrsh	r5, [r7, r2]
 	str	r3, [sp, #4]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	mov	r0, r9
 	mov	r2, #2
@@ -346,7 +346,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r5, r0
 	bge	.Lc1cee
 	mov	r5, r0
@@ -364,7 +364,7 @@
 	mov	r8, r1
 	sub	r0, r2
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrh	r5, [r7, #0x18]
 	add	r5, r0
 	mov	r0, r9
@@ -372,7 +372,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r5, r0
 	bge	.Lc1d22
 	mov	r5, r0
@@ -386,7 +386,7 @@
 	strh	r5, [r7, #0x18]
 	mov	r1, #0xa
 	add	r0, r10
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r9
 	ldrh	r3, [r1, #0xa]
 	ldrh	r5, [r7, #0x1a]
@@ -394,7 +394,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r5, r0
 	bge	.Lc1d4e
 	mov	r5, r0
@@ -408,7 +408,7 @@
 	strh	r5, [r7, #0x1a]
 	mov	r1, #0xa
 	add	r0, r11
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrh	r5, [r7, #0x1c]
 	add	r5, r0
 	mov	r0, r9
@@ -416,7 +416,7 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r5, r0
 	bge	.Lc1d7a
 	mov	r5, r0
@@ -443,7 +443,7 @@
 	sub	r0, r3
 	mov	r1, #0xa
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, [sp]
 	cmp	r5, r0
 	bge	.Lc1dae
@@ -890,7 +890,7 @@
 	mov	r3, #2
 	sub	r1, r3, r1
 	mov	r0, r11
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, r5
 	bge	.Lc2106
 	mov	r5, r0

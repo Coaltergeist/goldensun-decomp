@@ -2304,7 +2304,7 @@
 	lsl	r0, #16
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	lsl	r5, #1
 	mov	r3, r10
 	lsr	r5, #16

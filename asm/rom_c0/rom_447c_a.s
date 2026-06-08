@@ -57,7 +57,7 @@
 	neg	r0, r6
 .L44f2:
 	lsl	r0, #8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =0xfb6a
 	mov	r4, #0x80
 	mov	r1, r0

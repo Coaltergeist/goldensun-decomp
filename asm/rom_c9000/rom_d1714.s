@@ -1017,7 +1017,7 @@
 .Ld1f42:
 	mov	r1, #0x24
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #6
 	sub	r4, r3, r0
 	lsl	r0, r4, #1
@@ -1041,19 +1041,19 @@
 	ldr	r5, [r6]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #8]
 	b	.Ld1fe4
@@ -1077,7 +1077,7 @@
 	ble	.Ld2030
 	mov	r1, #0xa
 	mov	r0, r10
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r4, r0, #1
 	lsl	r0, r4, #1
 	ldr	r2, =Data_ede48
@@ -1204,7 +1204,7 @@
 .Ld20fa:
 	mov	r1, #0x5a
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #3
 	sub	r4, r3, r0
 	lsl	r0, r4, #1
@@ -1436,7 +1436,7 @@
 .Ld22c4:
 	mov	r1, #0x5a
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #3
 	sub	r4, r3, r0
 	lsl	r0, r4, #1

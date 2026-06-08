@@ -158,7 +158,7 @@
 	lsl	r0, r5, #1
 	add	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r6, r0
 	bge	.Lc25f0
 	mov	r6, r0
@@ -199,7 +199,7 @@
 	lsl	r0, r5, #1
 	add	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r6, r0
 	bge	.Lc2640
 	mov	r6, r0

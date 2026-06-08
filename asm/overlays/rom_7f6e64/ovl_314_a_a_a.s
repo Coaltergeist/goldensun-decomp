@@ -91,13 +91,13 @@
 	mov	r0, r4
 	mov	r1, #0x16
 	str	r4, [sp]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r4, [sp]
 	sub	r4, r0
 	str	r4, [r5, #0x44]
 	mov	r0, r6
 	mov	r1, #0x14
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, [r5, #0x18]
 	ldr	r2, [r5, #0x30]
 	add	r3, r2

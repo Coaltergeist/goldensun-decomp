@@ -364,7 +364,7 @@
 	str	r5, [r0, #8]
 	mov	r1, #0x64
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x40]
 	add	r4, r0, #1
 	cmp	r1, r5
@@ -494,7 +494,7 @@
 	add	r0, #0x3c
 	str	r0, [r5, #8]
 	mov	r1, #0x14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [r5]
 	ldr	r3, [r5, #4]
 	add	r0, #2

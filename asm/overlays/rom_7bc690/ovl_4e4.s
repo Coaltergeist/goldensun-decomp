@@ -918,7 +918,7 @@
 	add	r2, r1
 	mov	r3, #0
 	ldrsh	r1, [r2, r3]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r5, r0
 	ldr	r0, =0x201
 	bl	__GetFlag

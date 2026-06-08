@@ -118,7 +118,7 @@
 	bl	__CopyMapTiles
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r6, #1
 	mov	r5, r0
 	cmp	r6, #2

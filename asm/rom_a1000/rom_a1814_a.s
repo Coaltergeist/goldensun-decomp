@@ -405,7 +405,7 @@
 	sub	r0, r5
 	mov	r1, #2
 	add	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r8
 	mov	r11, r0
 	lsl	r6, #4
@@ -413,7 +413,7 @@
 	sub	r0, r6
 	add	r0, #1
 	mov	r1, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, .La1b88	@ 0xffff
 	mov	r8, r0
 .La1b56:

@@ -80,7 +80,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r0
 	lsl	r5, #4
 	lsl	r2, #4

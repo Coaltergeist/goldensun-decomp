@@ -61,7 +61,7 @@
 .La55be:
 	mov	r1, #5
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #5
 	mov	r9, r0
 	mov	r0, r6
@@ -69,7 +69,7 @@
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7

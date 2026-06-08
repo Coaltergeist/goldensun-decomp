@@ -3955,7 +3955,7 @@
 	add	r5, r0
 	mov	r1, #0x60
 	ldr	r0, [r7, #0x18]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #3
 	bl	Func_b1c_from_thumb
 	ldr	r2, =.Leed1e

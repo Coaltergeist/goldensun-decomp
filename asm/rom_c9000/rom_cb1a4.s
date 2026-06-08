@@ -69,7 +69,7 @@
 	mov	r1, #0x64
 	mov	r0, r8
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [sp, #0x2c]
 	mov	r4, r9
@@ -79,7 +79,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r10
 	ldr	r3, [r1]
 	add	r5, r0

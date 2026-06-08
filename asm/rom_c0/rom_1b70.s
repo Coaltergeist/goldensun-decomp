@@ -550,7 +550,7 @@
 	b	.L22a4
 .func_end Func_8002298
 
-.thumb_stub Func_af0_from_thumb, Func_8000af0, r3
+.thumb_stub __divsi3, divsi3_RAM, r3
 .thumb_stub Func_b60_from_thumb, Func_8000b60, r3
 .thumb_stub Func_b1c_from_thumb, Func_8000b1c, r3
 .thumb_stub Func_b50_from_thumb, Func_8000b50, r3

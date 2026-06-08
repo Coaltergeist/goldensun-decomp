@@ -98,7 +98,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r7, #8]
 	mov	r2, r10
@@ -109,7 +109,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r7, #0xc]
 	mov	r2, r9
@@ -120,7 +120,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0xc0
 	lsl	r3, #8
 	add	r5, r0
@@ -128,7 +128,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	str	r5, [r7, #0x10]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	add	r0, r3
@@ -324,7 +324,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r7, #8]
 	mov	r1, r10
@@ -334,7 +334,7 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r7, #0xc]
 	mov	r2, r10
@@ -344,14 +344,14 @@
 	mov	r0, r8
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =0xffff4000
 	add	r5, r0
 	mov	r1, #0xa
 	mov	r0, r8
 	mul	r0, r3
 	str	r5, [r7, #0x10]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r0, r3

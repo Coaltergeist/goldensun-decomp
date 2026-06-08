@@ -875,19 +875,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #8]
 .Ld90d6:

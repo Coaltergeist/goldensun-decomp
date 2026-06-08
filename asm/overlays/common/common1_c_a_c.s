@@ -822,7 +822,7 @@
 	lsl	r5, #12
 	sub	r0, r3
 	mov	r1, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xec
 	ldr	r3, [r3]
@@ -832,7 +832,7 @@
 	mov	r1, r5
 	sub	r0, r3
 	str	r4, [sp]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xda
 	mov	r1, #0
@@ -887,7 +887,7 @@
 	lsl	r5, #12
 	sub	r0, r3
 	mov	r1, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xec
 	ldr	r3, [r3]
@@ -897,7 +897,7 @@
 	mov	r1, r5
 	sub	r0, r3
 	str	r4, [sp]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, [sp, #0x10]
 	add	r3, #0xda
 	mov	r1, #0

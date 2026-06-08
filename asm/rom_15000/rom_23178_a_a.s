@@ -2115,7 +2115,7 @@
 	mov	r0, r11
 	mov	r1, #5
 	add	r6, r7, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L242d0
 	ldr	r3, =0xf30b
@@ -2136,7 +2136,7 @@
 .L242ea:
 	mov	r0, r8
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r7, r5
 	blt	.L242bc
@@ -2191,7 +2191,7 @@
 .L24354:
 	mov	r0, r11
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L24364
 	ldr	r2, =0xf30b
@@ -2201,7 +2201,7 @@
 	mov	r1, #5
 	mov	r0, r8
 	ldrh	r5, [r3, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	add	r5, r7
 	mov	r1, #0
@@ -2217,7 +2217,7 @@
 .L2438a:
 	mov	r0, r8
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	blt	.L24336
 	ldr	r3, =gKeyHeld
@@ -2430,7 +2430,7 @@
 	ldr	r0, [sp, #0x34]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	cmp	r11, r3
@@ -2628,7 +2628,7 @@
 	sub	r0, #1
 	mov	r1, #5
 	mov	r10, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	cmp	r11, r3
@@ -2667,7 +2667,7 @@
 	ldr	r0, [sp, #0x34]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	ldr	r1, [sp, #0x24]
 	add	r3, r0
@@ -4341,7 +4341,7 @@
 	mov	r0, r9
 	mov	r1, #5
 	add	r6, r7, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L254d4
 	ldr	r3, =0xf30b
@@ -4362,7 +4362,7 @@
 .L254ee:
 	mov	r0, r10
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r7, r5
 	blt	.L254c0
@@ -4412,7 +4412,7 @@
 	bhi	.L2556c
 	mov	r0, r9
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L2556c
 	ldr	r2, =0xf30b
@@ -4422,7 +4422,7 @@
 	mov	r1, #5
 	mov	r0, r10
 	ldrh	r5, [r3, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	add	r5, r7
 	mov	r1, #0
@@ -4438,7 +4438,7 @@
 .L25592:
 	mov	r0, r10
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	blt	.L2554c
 	mov	r3, r11
@@ -4714,7 +4714,7 @@
 	ldr	r0, [sp, #0x48]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	cmp	r9, r3
@@ -4765,7 +4765,7 @@
 	sub	r0, #1
 	mov	r1, #5
 	mov	r8, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	cmp	r9, r3
@@ -4804,7 +4804,7 @@
 	ldr	r0, [sp, #0x48]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	mov	r9, r3
@@ -5273,7 +5273,7 @@
 	ldr	r0, [sp, #0x3c]
 	mov	r1, #5
 	add	r6, r7, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L25c7e
 	ldr	r0, =0xf30b
@@ -5294,7 +5294,7 @@
 .L25c98:
 	mov	r0, r8
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r7, r5
 	blt	.L25c6a
@@ -5344,7 +5344,7 @@
 	bhi	.L25d24
 	ldr	r0, [sp, #0x3c]
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	bne	.L25d24
 	ldr	r1, =0xf30b
@@ -5354,7 +5354,7 @@
 	mov	r1, #5
 	mov	r0, r8
 	ldrh	r5, [r2, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	add	r5, r7
 	mov	r3, #0
@@ -5369,7 +5369,7 @@
 .L25d48:
 	mov	r0, r8
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r7, r0
 	blt	.L25d04
 	mov	r1, r11
@@ -5597,7 +5597,7 @@
 	ldr	r0, [sp, #0x44]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	ldr	r0, [sp, #0x3c]
@@ -5650,7 +5650,7 @@
 	mov	r1, #5
 	str	r3, [sp, #0x3c]
 	mov	r10, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	ldr	r0, [sp, #0x3c]
@@ -5689,7 +5689,7 @@
 	ldr	r0, [sp, #0x44]
 	mov	r1, #5
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	str	r3, [sp, #0x3c]
@@ -7571,7 +7571,7 @@
 	sub	r6, r0, r5
 	mov	r0, r6
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, #0
 	bne	.L26eac
 	sub	r0, #1
@@ -7674,7 +7674,7 @@
 	mov	r0, r6
 	add	r0, #0x3b
 	mov	r1, #0x3c
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L26f7a
@@ -10718,7 +10718,7 @@
 	mov	r1, #3
 	lsl	r0, #1
 	sub	sp, #4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r5, r6, #1
 	add	r5, r6
 	add	r5, r0

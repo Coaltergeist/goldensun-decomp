@@ -550,7 +550,7 @@
 	lsl	r0, #16
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, =0x90001
 	mov	r2, r10
 	ldr	r1, [r2, #0xc]
@@ -743,18 +743,18 @@
 	str	r3, [r5, #0x10]
 	mov	r0, r6
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r6, r0
 	str	r6, [r5, #0x44]
 	mov	r0, r8
 	mov	r1, #3
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, r8
 	sub	r3, r0
 	str	r3, [r5, #0x48]
 	mov	r0, r10
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, r10
 	sub	r2, r0
 	str	r2, [r5, #0x4c]

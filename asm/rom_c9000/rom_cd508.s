@@ -1165,7 +1165,7 @@
 	bge	.Lcdf0e
 	sub	r1, r5, r6
 .Lcdf0e:
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r12, r0
 	mov	r0, r5
 	mov	r1, r8
@@ -1248,7 +1248,7 @@
 	blt	.Lcdfae
 	mov	r1, r7
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r12, r0
 	ldr	r4, [sp]
 	b	.Lcdfbc
@@ -1256,7 +1256,7 @@
 	mov	r3, r8
 	sub	r1, r3, r4
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, [sp]
 	mov	r12, r0
 .Lcdfbc:
@@ -2181,19 +2181,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6, #0x18]
 	sub	r5, r0
 	add	r3, #1

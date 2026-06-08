@@ -404,7 +404,7 @@
 	ldr	r4, [sp, #0xc]
 	mov	r1, #3
 	sub	r0, r3, r4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r5, #9
 	ble	.Lcfc1a
@@ -622,7 +622,7 @@
 	mov	r1, r8
 	ldr	r0, [r1, #0x18]
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #1
 	mov	r3, r10
 	and	r3, r1

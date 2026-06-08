@@ -21,7 +21,7 @@
 	mov	r1, #0x12
 	str	r3, [r6, #0xc]
 	str	r3, [r6, #0x3c]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #0x30]
 	mov	r3, r7

@@ -462,42 +462,42 @@
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrb	r2, [r5, #9]
 	ldr	r3, [r6, #4]
 	str	r0, [r6]
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrb	r2, [r5, #0xa]
 	ldr	r3, [r6, #8]
 	str	r0, [r6, #4]
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrb	r2, [r5, #0xb]
 	ldr	r3, [r6, #0xc]
 	str	r0, [r6, #8]
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrb	r2, [r5, #0xc]
 	ldr	r3, [r6, #0x10]
 	str	r0, [r6, #0xc]
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldrb	r2, [r5, #0xd]
 	ldr	r3, [r6, #0x18]
 	str	r0, [r6, #0x10]
 	mov	r1, #0xa
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x18]
 	mov	r5, #0
 .L7780c:
@@ -549,7 +549,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6]
 	b	.L778fa
 .L7787e:
@@ -558,7 +558,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x20]
 	b	.L778fa
 .L77890:
@@ -567,7 +567,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #4]
 	b	.L778fa
 .L778a2:
@@ -576,7 +576,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x24]
 	b	.L778fa
 .L778b4:
@@ -585,7 +585,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #8]
 	b	.L778fa
 .L778c6:
@@ -594,7 +594,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0xc]
 	b	.L778fa
 .L778d8:
@@ -603,7 +603,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x10]
 	b	.L778fa
 .L778ea:
@@ -612,7 +612,7 @@
 	mov	r1, #0xa
 	mov	r0, r3
 	mul	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x18]
 .L778fa:
 	mov	r1, #1
@@ -1448,7 +1448,7 @@
 	lsl	r1, #16
 	asr	r1, #16
 	lsl	r0, r1, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1474,7 +1474,7 @@
 	mov	r3, #0x36
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1579,7 +1579,7 @@
 	lsl	r1, #16
 	asr	r1, #16
 	lsl	r0, r1, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1605,7 +1605,7 @@
 	mov	r2, #0x36
 	ldrsh	r1, [r5, r2]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1701,7 +1701,7 @@
 	mov	r3, #0x34
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1727,7 +1727,7 @@
 	mov	r3, #0x36
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3

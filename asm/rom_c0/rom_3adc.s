@@ -44,7 +44,7 @@
 	ldrb	r1, [r7]
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =REG_BLDY
 	add	r5, r0
 	strh	r5, [r3]

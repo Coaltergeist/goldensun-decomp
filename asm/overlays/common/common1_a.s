@@ -94,7 +94,7 @@
 	mov	r3, #0x34
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -127,7 +127,7 @@
 	mov	r3, #0x36
 	ldrsh	r1, [r5, r3]
 	lsl	r0, #14
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1196,7 +1196,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r6, r0
 	mov	r11, r6
 	cmp	r5, r7
@@ -1239,7 +1239,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r6, r0
 	str	r6, [sp, #4]
 	cmp	r5, r7
@@ -1281,7 +1281,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r6, r0
 	cmp	r5, r7
 	blt	.Lb64
@@ -2233,7 +2233,7 @@
 	mov	r0, r5
 	mul	r0, r2
 	mov	r1, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r2, =.L29
 	add	r6, r0
 	mov	r1, r8
@@ -2250,7 +2250,7 @@
 	mov	r0, r5
 	mul	r0, r3
 	mov	r1, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, r8
 	add	r6, r0
 	strh	r6, [r2]

@@ -207,7 +207,7 @@
 	mov	r1, #5
 	str	r0, [sp, #0x14]
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x6c]
 	add	r0, #1
 	str	r0, [r3]

@@ -1562,7 +1562,7 @@
 .Le8024:
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x24]
 	cmp	r0, r1
 	bge	.Le80bc
@@ -2438,7 +2438,7 @@
 	cmp	r0, #0x17
 	bhi	.Le87ec
 	mov	r1, #6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =.Leeeea
 	add	r0, #3
 	lsl	r0, #1
@@ -2997,7 +2997,7 @@
 	bgt	.Le8cce
 	mov	r0, r3
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =Data_edeb2
 	mov	r5, r0
 	lsl	r0, r5, #1
@@ -4337,7 +4337,7 @@
 	cmp	r0, #0x11
 	bhi	.Le97f2
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r8
 	ldrb	r1, [r2, r0]
 	mov	r3, #0x80
@@ -4429,7 +4429,7 @@
 	asr	r6, r0, #16
 	mov	r1, #5
 	mov	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, #1
 	lsl	r5, r0, #1
 	mov	r3, r10
@@ -4840,7 +4840,7 @@
 	cmp	r0, #0x11
 	bhi	.Le9c30
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r10
 	ldrb	r1, [r2, r0]
 	ldr	r3, [sp, #0x24]
@@ -5286,7 +5286,7 @@
 	cmp	r6, #0
 	blt	.Le9fee
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, #1
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48

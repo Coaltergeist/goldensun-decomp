@@ -1269,7 +1269,7 @@
 	mov	r0, r10
 	mul	r0, r3
 	mov	r1, #0x18
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [sp, #0x1c]
 	ldr	r1, [sp, #0x24]
 	ldr	r3, [r2, #0x10]
@@ -1279,7 +1279,7 @@
 	mov	r1, #0x18
 	mov	r0, r10
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =Data_ede5c
 	sub	r3, r7, #2
 	ldrh	r1, [r2, r3]
@@ -1737,7 +1737,7 @@
 	mul	r0, r3
 	mov	r1, #0x18
 	str	r4, [sp, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x20]
 	mov	r5, r9
 	ldr	r3, [r5, #0x10]
@@ -1747,7 +1747,7 @@
 	mov	r1, #0x18
 	mov	r0, r8
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =Data_ede5c
 	sub	r3, r7, #2
 	ldrh	r1, [r2, r3]
@@ -1979,7 +1979,7 @@
 	sub	r0, r2
 	mov	r1, #0xc
 .Ld0fd8:
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r5, #0xc]
 	mov	r1, r11
 	ldr	r0, [r1, #0xc]
@@ -1989,14 +1989,14 @@
 	lsl	r2, #14
 	add	r0, r2
 	mov	r1, #0xc
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r5, #0x10]
 	mov	r3, r11
 	ldr	r0, [r3, #0x10]
 	ldr	r3, [r5, #8]
 	mov	r1, #0xc
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0
 	str	r0, [r5, #0x14]
 	str	r3, [r5, #0x18]
@@ -2490,7 +2490,7 @@
 	ldr	r3, [r6]
 	mov	r1, #0xc
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0xc]
 	ldr	r0, [r7, #0xc]
 	ldr	r3, [r6, #4]
@@ -2499,13 +2499,13 @@
 	lsl	r3, #13
 	add	r0, r3
 	mov	r1, #0xc
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x10]
 	ldr	r3, [r6, #8]
 	ldr	r0, [r7, #0x10]
 	mov	r1, #0xc
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x14]
 	bl	Random
 	mov	r3, #0xf
@@ -2670,7 +2670,7 @@
 	mul	r0, r3
 	mov	r1, #0xc
 	str	r4, [sp, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r8
 	add	r6, r0
 	mov	r0, r10
@@ -2681,7 +2681,7 @@
 	mov	r0, r4
 	mul	r0, r3
 	mov	r1, #0xc
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =Data_ede48
 	mov	r3, #4
 	sub	r3, #2

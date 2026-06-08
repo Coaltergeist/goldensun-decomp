@@ -42,7 +42,7 @@
 	bhi	.Ldb4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 .Ldb4:
 	mov	r2, #0x6f

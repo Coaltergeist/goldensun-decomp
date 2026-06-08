@@ -351,7 +351,7 @@
 	cmp	r0, #0x14
 	bhi	.Ldb9c2
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =.Leeaec
 	lsl	r0, #1
 	ldrh	r1, [r3, r0]

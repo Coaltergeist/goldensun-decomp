@@ -1127,7 +1127,7 @@
 	mov	r10, r0
 	mov	r0, r9
 	mov	r11, r3
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r0, #1
 	mov	r8, r0
 	mov	r1, #0
@@ -1355,7 +1355,7 @@
 	mov	r5, r0
 	mov	r1, #0xa
 	mov	r0, r4
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	lsl	r2, r5, #1
 	mov	r3, r0
 	add	r2, r5
@@ -1372,7 +1372,7 @@
 	mov	r5, r0
 	mov	r1, #0xa
 	mov	r0, r4
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	lsl	r2, r5, #1
 	mov	r3, r0
 	add	r2, r5

@@ -639,7 +639,7 @@
 	bgt	.Le3f6e
 	mov	r0, r9
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6]
 	ldr	r3, [r3, #4]
 	mov	r5, r0

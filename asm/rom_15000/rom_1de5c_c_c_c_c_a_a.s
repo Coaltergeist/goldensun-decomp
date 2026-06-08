@@ -813,7 +813,7 @@
 	lsl	r0, r6, #2
 	add	r0, r6
 	lsl	r0, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r0
 	cmp	r3, #0
 	bne	.L1f460
@@ -862,7 +862,7 @@
 	lsl	r0, r6, #2
 	add	r0, r6
 	lsl	r0, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r0
 	cmp	r3, #0
 	bne	.L1f4c2

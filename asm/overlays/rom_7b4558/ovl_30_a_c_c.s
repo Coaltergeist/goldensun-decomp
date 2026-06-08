@@ -96,7 +96,7 @@
 	mov	r1, #3
 	mov	r0, r5
 	str	r6, [r7, #8]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r5, r0
 	str	r5, [r7]
 	mov	r1, r10

@@ -350,7 +350,7 @@
 	cmp	r0, #0x30
 	bhi	.Ld6c76
 	mov	r1, #0x18
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #3
 	bl	Func_b1c_from_thumb
 	ldr	r3, =0x77e4
@@ -771,7 +771,7 @@
 	add	r0, r5
 	mov	r1, #3
 	str	r4, [sp, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, [sp, #8]
 	cmp	r7, r0
 	ble	.Ld7000

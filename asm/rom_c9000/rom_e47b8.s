@@ -896,7 +896,7 @@
 	ldr	r0, [r1, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3]
 	ldr	r5, [sp, #0x1c]
@@ -908,7 +908,7 @@
 	sub	r0, r3
 	add	r0, r2
 	mov	r1, #6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3, #4]
 	ldr	r0, [r5, #0x10]
@@ -916,7 +916,7 @@
 	ldr	r3, [r5, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x18]
 	str	r0, [r1, #8]
 	ldr	r5, [sp, #0x5c]

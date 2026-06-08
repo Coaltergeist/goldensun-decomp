@@ -45,7 +45,7 @@
 .L7737e:
 	mov	r0, r6
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r6, r0
 .L77388:
 	add	sp, #4

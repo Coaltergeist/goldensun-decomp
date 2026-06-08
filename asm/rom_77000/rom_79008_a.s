@@ -148,7 +148,7 @@
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r1, #0x14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #16
 	asr	r5, r0, #16
 	cmp	r5, #0

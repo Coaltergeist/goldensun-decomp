@@ -139,7 +139,7 @@
 	asr	r7, r0, #24
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #24
 	asr	r0, #24
 	mov	r8, r0

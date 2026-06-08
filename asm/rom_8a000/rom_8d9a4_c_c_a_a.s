@@ -340,7 +340,7 @@
 	mul	r0, r2
 	mov	r1, #0
 	ldrsb	r1, [r4, r1]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	mov	r3, #0
 	ldrsb	r3, [r5, r3]
@@ -587,12 +587,12 @@
 	str	r2, [sp, #8]
 	str	r3, [sp, #4]
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [sp, #8]
 	mov	r5, r0
 	mov	r1, r7
 	mov	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r11
 	add	r0, r6, r0
 	ldr	r4, [sp]

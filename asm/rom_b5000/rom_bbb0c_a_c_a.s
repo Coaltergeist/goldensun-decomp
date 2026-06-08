@@ -2778,7 +2778,7 @@
 	bl	_CheckEquipmentCritBoost
 	mov	r1, #0xc8
 	lsl	r0, #16
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	bl	_Func_8079bc4
 	ldr	r3, =0xffff

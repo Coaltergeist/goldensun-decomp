@@ -1155,7 +1155,7 @@
 	mov	r1, #0x64
 	mov	r0, r5
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r0
 	cmp	r1, #0
 	bne	.L8c382
@@ -1207,7 +1207,7 @@
 	ldrsh	r0, [r0, r3]
 	mov	r1, #0x14
 	add	r0, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	neg	r1, r0
 	cmp	r1, #0
 	bne	.L8c3ea
@@ -1223,7 +1223,7 @@
 	ldrsh	r0, [r0, r2]
 	mov	r1, #0xa
 	add	r0, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	neg	r1, r0
 	cmp	r1, #0
 	bne	.L8c408
@@ -1815,7 +1815,7 @@
 	mov	r0, r5
 	mov	r2, #0x34
 	ldrsh	r1, [r6, r2]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -1848,7 +1848,7 @@
 	mov	r3, #0x36
 	ldrsh	r1, [r6, r3]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3

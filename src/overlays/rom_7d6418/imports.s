@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-	.export_func Func_8000af0
+	.export_func divsi3_RAM
 	.export_func Func_8000b1c
 	.export_func _WaitFrames
 	.export_func _StartTask

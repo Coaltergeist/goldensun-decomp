@@ -263,5 +263,3 @@ SoundMainRAM_Buffer = 0x03007000;
 gMaxLines           = 0;
 gNumMusicPlayers    = 8;
 CpuSet              = Func_8006864;
-__divsi3            = Func_af0_from_thumb;
-

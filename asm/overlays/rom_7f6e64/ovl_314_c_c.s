@@ -451,7 +451,7 @@
 	lsl	r1, #11
 	mov	r7, r0
 	mov	r0, r8
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r8, r0
 	mov	r1, r8
 	lsl	r1, #16

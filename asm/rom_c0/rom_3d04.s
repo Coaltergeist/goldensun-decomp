@@ -49,7 +49,7 @@
 	cmp	r6, #0
 	bne	.L3d8a
 	mov	r0, #0x80
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	mov	r1, r10
 	lsl	r0, #9
 	bl	_call_via_r3
@@ -74,22 +74,22 @@
 	bl	cos
 	mov	r1, r8
 	mov	r6, r0
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r8
 	strh	r0, [r7]
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	neg	r5, r5
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	strh	r0, [r7]
 .L3dc8:

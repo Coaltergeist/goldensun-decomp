@@ -492,7 +492,7 @@
 	mov	r1, #0x64
 	lsl	r0, #4
 	mov	r10, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r4, r8
 	ldr	r3, [r4, #0x10]
 	mov	r5, r0
@@ -503,7 +503,7 @@
 	add	r0, r3
 	mov	r1, #0x64
 	lsl	r0, #4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r10, r5
 	add	r8, r0
 	asr	r5, #8
@@ -518,7 +518,7 @@
 	bl	_call_via_r2
 	mov	r1, #0x14
 	lsl	r0, #8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r6
 	mov	r2, #1
 	add	r3, #0x58
@@ -857,7 +857,7 @@
 	str	r0, [r7]
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #21
 	add	r0, r10
 	str	r0, [r7, #8]
@@ -1192,7 +1192,7 @@
 	mov	r0, r7
 	sub	r0, #8
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r4, r0
 	cmp	r4, #0
 	bge	.Le7092
@@ -1341,7 +1341,7 @@
 	bl	Func_80e3908
 	mov	r1, #7
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r1, r0, #3
 	add	r1, r0
 	lsl	r1, #5

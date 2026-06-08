@@ -230,7 +230,7 @@
 	cmp	r0, #0x14
 	bhi	.Lcc816
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r1, r0, #3
 	add	r1, r0
 	lsl	r1, #8
@@ -253,7 +253,7 @@
 	cmp	r0, #0xe
 	bhi	.Lcc878
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #5
 	bl	Func_b1c_from_thumb
 	ldr	r6, =iwram_3001f0c

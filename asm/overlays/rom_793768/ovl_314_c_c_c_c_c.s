@@ -33,13 +33,13 @@
 	ldr	r5, [r6, #0x30]
 	mov	r1, #0x1c
 	mov	r0, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 	str	r5, [r6, #0x30]
 	ldr	r5, [r6, #0x34]
 	mov	r1, #0x1c
 	mov	r0, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 	str	r5, [r6, #0x34]
 	pop	{r5, r6}

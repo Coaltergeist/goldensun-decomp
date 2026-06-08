@@ -1533,7 +1533,7 @@
 	lsl	r0, #8
 	sub	r1, #1
 	str	r2, [sp, #4]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #0xc0
 	lsl	r1, #4
 	ldr	r2, [sp, #4]
@@ -1833,7 +1833,7 @@
 	ldrh	r1, [r5, r3]
 	lsl	r0, #8
 	sub	r1, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r8
 	mov	r3, #2
 	strh	r0, [r2]

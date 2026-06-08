@@ -448,7 +448,7 @@
 .Lca9a4:
 	mov	r1, r4
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #6
 	bl	Func_b1c_from_thumb
 	mov	r6, r0
@@ -627,7 +627,7 @@
 	add	r1, r3
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #5
 	add	r0, r8
 	lsl	r5, r0, #3
@@ -657,7 +657,7 @@
 .Lcabaa:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3
@@ -696,7 +696,7 @@
 	bge	.Lcac0c
 	mov	r0, r5
 	mov	r1, r4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, #4
 	ble	.Lcac04
 .Lcabfe:
@@ -837,7 +837,7 @@
 	add	r1, r3
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #6
 	add	r0, r8
 	lsl	r5, r0, #3
@@ -866,7 +866,7 @@
 .Lcad72:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3
@@ -893,7 +893,7 @@
 .Lcada8:
 	ldr	r0, [sp, #0x58]
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #4
 	add	r0, r8
 	lsl	r3, r0, #3

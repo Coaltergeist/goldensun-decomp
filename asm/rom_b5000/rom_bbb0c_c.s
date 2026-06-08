@@ -918,7 +918,7 @@
 	ldrsh	r3, [r2, r1]
 	mov	r1, #0xa
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =iwram_3001e74
 	mov	r7, r0
 	mov	r1, r8

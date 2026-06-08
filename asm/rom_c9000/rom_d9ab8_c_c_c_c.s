@@ -2414,7 +2414,7 @@
 .Ldaeca:
 	ldr	r0, [sp, #0xc]
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r10, r0
 	bge	.Ldaf84
 	mov	r1, #3

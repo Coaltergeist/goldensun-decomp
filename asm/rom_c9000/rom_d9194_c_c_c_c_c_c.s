@@ -75,7 +75,7 @@
 	ldr	r0, [sp, #0x50]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [sp, #0x50]
 .Ld9272:
 	ldr	r2, =REG_BG2PA
@@ -274,7 +274,7 @@
 	neg	r0, r0
 	lsl	r0, #2
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, #0x40
 	str	r0, [sp, #0x30]
 	b	.Ld9424
@@ -477,7 +477,7 @@
 	bl	_Func_80b8530
 	mov	r1, #3
 	lsl	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x10]
 	add	r3, #0x50
 	mov	r7, r0
@@ -610,7 +610,7 @@
 	ldr	r0, [r5]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x30]
 	ldr	r2, [r5, #8]
 	ldr	r3, =0x139
@@ -659,19 +659,19 @@
 	ldr	r5, [r6]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #8]
 .Ld9784:
@@ -698,7 +698,7 @@
 	ldr	r0, [sp, #0x60]
 	mov	r1, #5
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x30]
 	add	r0, r3
 	ldr	r3, [sp, #0x10]

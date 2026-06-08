@@ -43,13 +43,13 @@
 	blt	.L939f8
 	lsl	r0, r5, #20
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r5, [r6, #8]
 	mov	r3, r8
 	add	r5, r0
 	mov	r1, r7
 	lsl	r0, r3, #20
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6, #0x10]
 	mov	r1, r5
 	add	r3, r0

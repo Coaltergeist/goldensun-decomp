@@ -147,7 +147,7 @@
 	mov	r0, r6
 	mov	r7, r2
 	str	r4, [sp]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r1, #6
 	add	r8, r0
 	b	.L1a00
@@ -159,7 +159,7 @@
 
 .L1a00:
 	mov	r0, r6
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r7, #0x14
 	sub	r0, r7, r0
 	mov	r7, r0
@@ -175,7 +175,7 @@
 	beq	.L1a30
 	lsl	r0, r6, #6
 	mov	r1, #0x78
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r0, r5, r0
 	mov	r5, r0
 	ldr	r4, [sp]
@@ -236,7 +236,7 @@
 	mov	r3, #0
 	ldrsh	r1, [r2, r3]
 	lsl	r0, #3
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r5, =gOvl_0200a6bc
 	mov	r1, #0xec
 	strh	r0, [r5]

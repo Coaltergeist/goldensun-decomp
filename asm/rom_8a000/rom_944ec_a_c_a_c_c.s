@@ -372,7 +372,7 @@
 	mov	r1, #0x18
 	strh	r3, [r2]
 	lsl	r0, r7, #16
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r6
 	add	r3, #0x66
 	strh	r0, [r3]

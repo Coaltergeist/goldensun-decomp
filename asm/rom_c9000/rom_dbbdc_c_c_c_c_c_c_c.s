@@ -264,7 +264,7 @@
 	bne	.Ldbe70
 	ldr	r0, [r7]
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Ldbe84	@ 0x55
 	str	r0, [r7]
@@ -352,7 +352,7 @@
 	bne	.Ldbf3a
 	ldr	r0, [sp, #0x20]
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #3
 	bl	Func_b1c_from_thumb
 	lsl	r1, r0, #3
@@ -373,7 +373,7 @@
 .Ldbf3a:
 	ldr	r0, [sp, #0x20]
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #3
 	bl	Func_b1c_from_thumb
 	lsl	r1, r0, #3
@@ -1468,7 +1468,7 @@
 .Ldc848:
 	ldr	r0, [r6, #0x18]
 	mov	r1, #6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	cmp	r5, #5
 	ble	.Ldc858

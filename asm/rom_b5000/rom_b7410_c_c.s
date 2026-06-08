@@ -145,7 +145,7 @@
 	mul	r0, r3
 	mov	r1, #0x64
 	mov	r8, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6, #0x10]
 	ldr	r6, [r5, #0x10]
 	sub	r3, r6
@@ -153,7 +153,7 @@
 	mov	r1, #0x64
 	mov	r0, r10
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lb812c	@ 0
 	strh	r3, [r2]

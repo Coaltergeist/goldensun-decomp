@@ -545,7 +545,7 @@
 	mov	r1, #3
 	sub	r0, #0x58
 	str	r2, [sp, #0xc]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r10
 	sub	r1, r0
 	ldr	r2, [sp, #0xc]
