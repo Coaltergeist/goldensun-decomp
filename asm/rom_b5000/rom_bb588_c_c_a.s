@@ -99,7 +99,7 @@
 	blt	.Lbba08
 	bl	_Func_80175a0
 .Lbba08:
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbba0c:
 	bl	_Func_80198dc
 	b	.Lbba88
@@ -118,7 +118,7 @@
 	ldr	r0, [r3]
 	cmp	r0, #0
 	ble	.Lbba32
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lbba32:
 	lsl	r3, r7, #2
 	add	r3, #0x40

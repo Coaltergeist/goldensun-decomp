@@ -8,14 +8,14 @@
 extern volatile unsigned short iwram_disp;
 extern unsigned int gState[];
 extern unsigned int gRNGState;
-extern void _Func_80f9080(int);
-extern void Func_80f7460(void);
+extern void _PlaySound(int);
+extern void LuckyWheelsMain(void);
 
 int Func_80f6008(void)
 {
     *(volatile unsigned short *)0x04000000 = 0x40;
     gRNGState = gState[1];
-    _Func_80f9080(9);
-    Func_80f7460();
+    _PlaySound(9);
+    LuckyWheelsMain();
     return 0;
 }

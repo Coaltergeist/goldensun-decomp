@@ -5,10 +5,10 @@ Exports_15000:
 
 	.export_func Func_8015f30
 	.export_func Func_8016018
-	.export_func Func_80162d4
-	.export_func Func_8016418
+	.export_func CreateUIBox
+	.export_func CloseUIBox
 	.export_func Func_801964c
-	.export_func Func_80196c4
+	.export_func DecompressString
 	.export_func Func_801965c
 	.export_func Func_8017658
 	.export_func Func_801776c
@@ -18,15 +18,15 @@ Exports_15000:
 	.export_func Func_8016478
 	.export_func Func_80164d4
 	.export_func Func_801e41c
-	.export_func Func_801e74c
+	.export_func DrawSmallText
 	.export_func Func_801e7c0
 	.export_func Func_801e858
 	.export_func Func_801e8b0
-	.export_func Func_801e940
+	.export_func UIDrawText
 	.export_func Func_801e9a0
 	.export_func Func_801e9d4
 	.export_func Func_801ea08
-	.export_func Func_801e71c
+	.export_func SetTextColor
 	.export_func Func_801e738
 	.export_func Func_801eadc
 	.export_func Func_801eb64
@@ -36,8 +36,8 @@ Exports_15000:
 	.export_func Func_801eddc
 	.export_func Func_8019da8
 	.export_func Func_8019e48
-	.export_func Func_80187ac
-	.export_func Func_80187fc
+	.export_func TextBox
+	.export_func DialogueBox
 	.export_func Func_80198dc
 	.export_func Func_8019908
 	.export_func Func_801ef08
@@ -61,12 +61,12 @@ Exports_15000:
 	.export_func Func_801a90c
 	.export_func Func_8027114
 	.export_func Func_80175a0
-	.export_func Func_80174f8
+	.export_func PrintBattleText
 	.export_func Func_801c0d8
-	.export_func Func_8019d2c
+	.export_func GetPortrait
 	.export_func Func_801c244
 	.export_func Func_80289e8
-	.export_func Func_8028c04
+	.export_func DataTransferMenu
 	.export_func Func_801c34c
 	.export_func Func_801c428
 	.export_func Func_8019aa0
@@ -77,55 +77,55 @@ Exports_15000:
 	.export_func Func_801c17c
 	.export_func Func_801c924
 	.export_func Func_801c458
-	.export_func Func_801a370
+	.export_func LoadItemIcon
 	.export_func Func_8017aa4
 	.export_func Func_801cf44
 	.export_func Func_801edec
 	.export_func Func_8016498
 	.export_func Func_80164ac
 	.export_func Func_8019000
-	.export_func Func_8028f98
-	.export_func Func_80291e4
+	.export_func Debug_WarpMenu
+	.export_func Debug_FlagEditor
 	.export_func Func_801bcd4
 	.export_func Func_801c49c
 	.export_func Func_801e318
-	.export_func Func_801a088
+	.export_func DrawInventoryIcon
 	.export_func Func_802281c
-	.export_func Func_8019fcc
-	.export_func Func_801a404
+	.export_func LoadItemIconID
+	.export_func LoadMoveIconID
 	.export_func Func_801eb90
 	.export_func Func_801ec24
 	.export_func Func_801f9b4
-	.export_func Func_80207c4
-	.export_func Func_80208e4
+	.export_func Menu_Save
+	.export_func SystemMsgBox
 	.export_func Func_801fba8
 	.export_func Func_801fc84
 	.export_func Func_801faa8
 	.export_func Func_801fa3c
 	.export_func Func_801f77c
-	.export_func Func_8020bd8
+	.export_func UI_NameEntry
 	.export_func Func_8020aec
 	.export_func Func_8020b00
 	.export_func Func_801b1ec
-	.export_func Func_8029554
-	.export_func Func_802977c
+	.export_func Debug_IconTest
+	.export_func Debug_FaceTest
 	.export_func Func_801c468
 	.export_func Func_8021228
-	.export_func Func_801ccc0
-	.export_func Func_801d4cc
-	.export_func Func_8029504
+	.export_func SetUIColor
+	.export_func Menu_Settings
+	.export_func StartMenu
 	.export_func Func_801ee68
-	.export_func Func_8028d74
-	.export_func Func_8028db4
-	.export_func Func_8028df4
-	.export_func Func_8028ea8
+	.export_func ShopMenu
+	.export_func SanctumMenu
+	.export_func YesNoMenu
+	.export_func LuckyFountainMenu
 	.export_func Func_802106c
-	.export_func Func_801a32c
-	.export_func Func_8028e54
+	.export_func LoadUIBanner
+	.export_func YesNoMenu2
 	.export_func Func_80209b0
 	.export_func Func_8018790
 	.export_func Func_8022768
-	.export_func Func_801a3d0
+	.export_func LoadMoveIcon
 	.export_func Func_8021a18
 	.export_func Func_801e3c8
 	.export_func Func_802899c
@@ -133,7 +133,7 @@ Exports_15000:
 	.export_func Func_80175c0
 	.export_func Func_801f730
 	.export_func Func_80170f8
-	.export_func Func_8016178
+	.export_func ClearUIRegion
 	.export_func Func_80219c8
 	.export_func Func_8021390
 	.export_func Func_8021488

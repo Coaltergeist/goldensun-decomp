@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern int Func_808b824(void);
-extern void Func_808b3ec(void *info, int index);
+extern void LoadMapActors(void *info, int index);
 
 void Func_80917ac(void *actors)
 {
-	Func_808b3ec(actors, Func_808b824());
+	LoadMapActors(actors, Func_808b824());
 }

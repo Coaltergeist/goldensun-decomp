@@ -1,39 +1,39 @@
 	.include "macros.inc"
 
 	.export_func Func_8000b1c
-	.export_func _Func_80030f8
-	.export_func _Func_80162d4
-	.export_func _Func_8016418
+	.export_func _WaitFrames
+	.export_func _CreateUIBox
+	.export_func _CloseUIBox
 	.export_func _Func_8017658
 	.export_func _Func_801776c
 	.export_func _Func_8017364
-	.export_func _Func_801e74c
+	.export_func _DrawSmallText
 	.export_func _Func_801e7c0
-	.export_func _Func_801e940
+	.export_func _UIDrawText
 	.export_func _Func_801e9d4
 	.export_func _Func_8019da8
 	.export_func _Func_8019908
 	.export_func _Func_8019a54
 	.export_func _Func_8016498
 	.export_func _Func_80164ac
-	.export_func _Func_8020bd8
-	.export_func _Func_8029554
-	.export_func _Func_8077394
-	.export_func _Func_8077428
-	.export_func _Func_8078414
-	.export_func _Func_8078588
-	.export_func _Func_8078618
-	.export_func _Func_80783a4
-	.export_func _Func_80783dc
-	.export_func _Func_807961c
+	.export_func _UI_NameEntry
+	.export_func _Debug_IconTest
+	.export_func _GetUnit
+	.export_func _CalcStats
+	.export_func _GetItemInfo
+	.export_func _GiveItemTo
+	.export_func _GiveItem
+	.export_func _ModifyHP
+	.export_func _ModifyPP
+	.export_func _AddPartyMember
 	.export_func _Func_8079664
-	.export_func _Func_807a1b4
-	.export_func _Func_807a2e4
-	.export_func _Func_80792fc
+	.export_func _GiveDjinni
+	.export_func _SetDjinni
+	.export_func _SetMinLevel
 	.export_func _Func_8078ad0
 	.export_func _Func_8078500
 	.export_func _Func_80a4924
-	.export_func _Func_80b0444
-	.export_func _Func_80b29a8
-	.export_func _Func_80b3444
-	.export_func _Func_80f9080
+	.export_func _Debug_TestEquipAndStatus
+	.export_func _UI_Sanctum
+	.export_func _UI_SellMenu
+	.export_func _PlaySound

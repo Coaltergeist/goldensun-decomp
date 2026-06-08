@@ -13,7 +13,7 @@
 	mov	r0, r7
 	sub	sp, #4
 	mov	r9, r2
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
 	mov	r1, r11
@@ -29,7 +29,7 @@
 	and	r1, r3
 	mov	r10, r1
 	mov	r0, r10
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r6, r0
 	ldrh	r3, [r6, #0x28]
 	ldr	r0, =0x3fff
@@ -44,7 +44,7 @@
 	beq	.La9eee
 	mov	r3, r8
 	ldrh	r0, [r5, r3]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r6, r0
 	ldrb	r2, [r6, #0xc]
 	mov	r3, r2

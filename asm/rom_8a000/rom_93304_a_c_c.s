@@ -55,15 +55,15 @@
 	add	r3, r0
 	ldr	r2, [r6, #0xc]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.L93a00
 .L939f8:
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L93a00:
 	mov	r0, #1
 	pop	{r3}
@@ -90,7 +90,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -119,7 +119,7 @@
 	bx	r1
 .func_end Func_8093a14
 
-.thumb_func_start Func_8093a6c
+.thumb_func_start Actor_SetBehavior
 	push	{r5, lr}
 	sub	r3, r1, #1
 	mov	r5, r0
@@ -167,11 +167,11 @@
 	ldr	r1, =.L9fe04
 .L93ac6:
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_8093a6c
+.func_end Actor_SetBehavior
 
 .thumb_func_start Func_8093af8
 	push	{r5, r6, r7, lr}
@@ -253,7 +253,7 @@
 	sub	r0, r3
 	ldr	r3, [r7, #8]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	lsl	r0, #16
 	lsr	r0, #16
 	cmp	r6, #0x17
@@ -358,10 +358,10 @@
 	mov	r1, r9
 	str	r3, [r7, #8]
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
-	bl	_Func_80120dc
+	bl	_TestCollision
 	cmp	r0, #1
 	bne	.L93c84
 	mov	r0, #1
@@ -384,10 +384,10 @@
 	mov	r1, r9
 	str	r3, [r7, #8]
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
-	bl	_Func_80120dc
+	bl	_TestCollision
 	cmp	r0, #0
 	beq	.L93cb6
 	b	.L93dfe
@@ -402,17 +402,17 @@
 	ldrb	r3, [r3]
 	mov	r11, r3
 .L93cc8:
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r1, #6
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #6
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r3, #0xc0
 	lsl	r3, #10
 	str	r3, [r6, #0x30]
@@ -445,7 +445,7 @@
 	bl	Func_8092158
 	mov	r0, r6
 	mov	r1, #6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
 	mov	r1, r11
 	bl	_Func_800c528
@@ -461,7 +461,7 @@
 	beq	.L93da0
 .L93d50:
 	mov	r1, #7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r5, =0xffff0000
 	ldr	r3, [r6, #0xc]
 	add	r3, r5
@@ -470,7 +470,7 @@
 	add	r3, r5
 	str	r3, [r6, #0x14]
 	mov	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6, #0xc]
 	add	r3, r5
 	str	r3, [r6, #0xc]
@@ -478,7 +478,7 @@
 	add	r3, r5
 	str	r3, [r6, #0x14]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r5, #0x80
 	ldr	r3, [r6, #0xc]
 	lsl	r5, #9
@@ -488,7 +488,7 @@
 	add	r3, r5
 	str	r3, [r6, #0x14]
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6, #0xc]
 	add	r3, r5
 	str	r3, [r6, #0xc]
@@ -498,7 +498,7 @@
 	b	.L93da6
 .L93da0:
 	mov	r0, #6
-	bl	Func_80030f8
+	bl	WaitFrames
 .L93da6:
 	mov	r2, sp
 	ldrb	r2, [r2]
@@ -533,9 +533,9 @@
 	bne	.L93dfa
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #6
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L93c4c
 .L93dfa:
 	mov	r2, #0
@@ -585,7 +585,7 @@
 	add	r2, r7
 	mov	r10, r0
 	mov	r9, r2
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r3, #0xf9
 	lsl	r3, #1
 	add	r8, r3
@@ -647,7 +647,7 @@
 	bl	Func_8092adc
 	mov	r1, r11
 	ldr	r0, [r1]
-	bl	Func_80920e8
+	bl	MapActor_WaitScript
 	mov	r3, r6
 	add	r3, #0x5a
 	mov	r5, #1
@@ -659,7 +659,7 @@
 	bl	_Func_800c528
 	mov	r0, r6
 	mov	r1, #0xd
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r10
 	lsl	r1, r2, #16
 	ldr	r3, =0xfff00000
@@ -671,17 +671,17 @@
 	lsl	r0, #13
 	add	r3, r0
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r1, r11
 	ldr	r0, [r1]
-	bl	Func_80923c4
+	bl	MapActor_WaitMovement
 	mov	r2, r8
 	strb	r5, [r2]
 	b	.L93f6a
 .L93f2e:
 	mov	r0, r6
 	mov	r1, #0xa
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r6
 	add	r2, #0x55
 	mov	r3, #3
@@ -695,7 +695,7 @@
 	mov	r1, #1
 	bl	_Func_800c528
 	mov	r0, #6
-	bl	Func_809163c
+	bl	CutsceneWait
 	mov	r5, #0
 	mov	r3, r8
 	mov	r2, r6
@@ -756,7 +756,7 @@
 	add	r2, r6
 	mov	r8, r0
 	mov	r10, r2
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r3, r7
 	add	r3, #0x54
 	ldrb	r3, [r3]
@@ -822,17 +822,17 @@
 	bl	Func_8092158
 	mov	r1, #6
 	mov	r0, r7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #7
 	mov	r0, r7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r3, #0x80
 	lsl	r3, #11
 	str	r3, [r7, #0x28]
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, r7
 	add	r3, #0x55
 	strb	r5, [r3]
@@ -849,15 +849,15 @@
 	mov	r0, r7
 	mov	r1, #0xc
 	str	r5, [r7, #0x28]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	mov	r0, r9
 	strb	r3, [r0]
 	strb	r3, [r6]
 	mov	r0, #8
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L94112
 .L940b8:
 	mov	r5, r7
@@ -866,7 +866,7 @@
 	strb	r6, [r5]
 	mov	r0, r7
 	mov	r1, #0xb
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r8
 	lsl	r1, r2, #16
 	mov	r3, #0x80
@@ -878,10 +878,10 @@
 	ldr	r0, =0xfff00000
 	add	r3, r0
 	mov	r0, r7
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	ldr	r1, =ewram_2000434
 	ldr	r0, [r1]
-	bl	Func_80923c4
+	bl	MapActor_WaitMovement
 	mov	r3, #3
 	strb	r3, [r5]
 	ldr	r5, .L9411c	@ 1
@@ -894,7 +894,7 @@
 	mov	r1, r11
 	bl	_Func_800c528
 	mov	r0, #4
-	bl	Func_809163c
+	bl	CutsceneWait
 	mov	r3, r9
 	strb	r6, [r3]
 	mov	r3, r7
@@ -929,7 +929,7 @@
 .thumb_func_start Func_8094154
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r4, r0
 	cmp	r4, #0
 	bne	.L94168

@@ -1,4 +1,4 @@
-/* Func_80f9080(req) PlaySound dispatch [rom_f9000]
+/* PlaySound(req) PlaySound dispatch [rom_f9000]
  * Source asm: goldensun/asm/rom_f9000/rom_f9080_a_a.s  (Camelot music-driver prefix)
  *
  * The Camelot sound front-end. The request word packs flags in bits 12-15
@@ -18,7 +18,7 @@
  *
  * Func_ -> friendly name:
  *   Func_80fa4bc m4aMPlayFadeOut    Func_80fb2cc m4aMPlayVolumeControl
- *   Func_80fa324 m4aSongNumStart    Func_80037d4 SetSoundFXMode
+ *   Func_80fa324 m4aSongNumStart    SetSoundFXMode SetSoundFXMode
  *   Func_80faa58 MPlayStart         Data_fc624 gMPlayTable
  *   gMPlayInfo_BGM gMPlayInfo_BGM    gMPlayInfo_02004360 gMPlayInfo_02004360
  */
@@ -46,10 +46,10 @@ extern void *gMPlayInfo_02004360;
 extern void Func_80fa4bc(void *mplayInfo, unsigned short speed);
 extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
 extern void Func_80fa324(unsigned short songNum);
-extern void Func_80037d4(int mode);
+extern void SetSoundFXMode(int mode);
 extern void Func_80faa58(void *info, void *songHeader);
 
-void Func_80f9080(int req) {
+void PlaySound(int req) {
     unsigned int flags = req & 0xf000;
     unsigned int id    = req & 0xfff;
 
@@ -87,7 +87,7 @@ void Func_80f9080(int req) {
             mode = 3;
         else
             mode = 2;
-        Func_80037d4(mode);
+        SetSoundFXMode(mode);
         Func_80fa324(id);
         gMusicCurVolume = (flags & 0x1000) ? 0 : 0x100;
         gMusicVolume = 0x100;

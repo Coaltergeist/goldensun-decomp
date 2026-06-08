@@ -53,7 +53,7 @@
 	cmp	r0, #0
 	beq	.Lbf6f0
 	ldrb	r0, [r5, #2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
@@ -120,33 +120,33 @@
 	mov	r0, #0xb
 	bl	Func_80bbabc
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r7
 	bl	Func_80b7dd0
 	mov	r1, #3
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r7
 	bl	Func_80b7dd0
 	mov	r1, #0x20
 	ldr	r0, [r0]
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	ldrb	r5, [r6]
 	ldrb	r2, [r6, #1]
 	mov	r1, r5
 	mov	r0, r7
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 	ldrb	r1, [r6]
 	ldrb	r2, [r6, #1]
 	mov	r0, r7
 	bl	_Func_807a3a8
 	mov	r0, r7
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r1, r5
 	mov	r2, #3
 	mov	r3, #0
 	mov	r0, r7
-	bl	Func_80c1798
+	bl	Anim_MoveIntro
 	bl	Func_80be02c
 	b	.Lbf7c6
 .Lbf7c0:
@@ -233,7 +233,7 @@
 	mov	r2, r11
 	ldrh	r5, [r2, r3]
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0xa2
 	lsl	r3, #1
 	mov	r7, r0
@@ -266,7 +266,7 @@
 .Lbf894:
 	mov	r1, r6
 	mov	r0, r5
-	bl	_Func_80783a4
+	bl	_ModifyHP
 	mov	r0, r5
 	mov	r1, #1
 	bl	_Func_8019908
@@ -287,8 +287,8 @@
 	bl	_Func_80175a0
 .Lbf8c6:
 	mov	r0, #0xaf
-	bl	_Func_80f9080
-	bl	Func_80bb65c
+	bl	_PlaySound
+	bl	WaitTextPrompt
 .Lbf8d0:
 	mov	r0, r7
 	add	r0, #0x45
@@ -309,7 +309,7 @@
 .Lbf8f0:
 	mov	r1, r6
 	mov	r0, r5
-	bl	_Func_80783dc
+	bl	_ModifyPP
 	mov	r0, r5
 	mov	r1, #1
 	bl	_Func_8019908
@@ -333,8 +333,8 @@
 	bl	_Func_80175a0
 .Lbf93a:
 	mov	r0, #0xaf
-	bl	_Func_80f9080
-	bl	Func_80bb65c
+	bl	_PlaySound
+	bl	WaitTextPrompt
 .Lbf944:
 	mov	r0, r5
 	bl	Func_80bf574
@@ -350,7 +350,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x889
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbf96e:
 	mov	r0, r5
 	bl	Func_80bf250
@@ -366,7 +366,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x887
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbf998:
 	mov	r0, r5
 	bl	Func_80bf2b4
@@ -382,7 +382,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x888
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbf9c2:
 	mov	r0, r5
 	bl	Func_80bf318
@@ -398,7 +398,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x886
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbf9ec:
 	mov	r0, r5
 	bl	Func_80bf37c
@@ -414,7 +414,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x88b
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfa16:
 	mov	r0, r5
 	bl	Func_80bf3bc
@@ -430,7 +430,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x88a
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfa40:
 	mov	r0, r5
 	bl	Func_80bf400
@@ -446,7 +446,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x88e
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfa6a:
 	mov	r0, r5
 	bl	Func_80bf440
@@ -464,7 +464,7 @@
 	bl	Func_80b7aac
 	ldr	r0, =0x88d
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfa9a:
 	mov	r0, r5
 	bl	Func_80bf484
@@ -482,7 +482,7 @@
 	bl	Func_80b7aac
 	ldr	r0, =0x883
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfaca:
 	mov	r0, r5
 	bl	Func_80bf4c4
@@ -498,7 +498,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x88c
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfaf4:
 	mov	r0, r5
 	bl	Func_80bf524
@@ -514,7 +514,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x891
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfb1e:
 	mov	r0, r5
 	bl	Func_80bf54c
@@ -530,7 +530,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x892
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbfb48:
 	mov	r2, #1
 	add	r8, r2
@@ -570,7 +570,7 @@
 	mov	r1, #0
 	mov	r8, r0
 	str	r1, [sp, #4]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r8
 	str	r0, [sp, #8]
 	mov	r0, #0
@@ -797,7 +797,7 @@
 	strb	r1, [r0, r2]
 .Lbfd68:
 	mov	r0, r8
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r6, #0
 	mov	r7, #0x48
 .Lbfd72:
@@ -828,23 +828,23 @@
 	mov	r0, #0xb
 	bl	Func_80bbabc
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r8
 	bl	Func_80b7dd0
 	mov	r1, #3
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r8
 	bl	Func_80b7dd0
 	mov	r1, #0x20
 	ldr	r0, [r0]
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r3, r10
 	mov	r1, r6
 	mov	r2, #2
 	sub	r3, #1
 	mov	r0, r8
-	bl	Func_80c1798
+	bl	Anim_MoveIntro
 	bl	Func_80be02c
 .Lbfde8:
 	add	r6, #1
@@ -880,7 +880,7 @@
 	ldr	r1, [r0, #0x60]
 	mov	r0, r8
 	neg	r1, r1
-	bl	_Func_80783a4
+	bl	_ModifyHP
 	cmp	r0, #0
 	bne	.Lbfe60
 	mov	r1, r8
@@ -952,7 +952,7 @@
 	str	r3, [r2]
 	neg	r1, r7
 	mov	r0, r8
-	bl	_Func_80783a4
+	bl	_ModifyHP
 	cmp	r0, #0
 	bne	.Lbfefc
 	mov	r1, r8
@@ -994,7 +994,7 @@
 	mov	r1, #0xc0
 	lsl	r1, #24
 	mov	r0, r8
-	bl	_Func_80783a4
+	bl	_ModifyHP
 	cmp	r0, #0
 	bne	.Lbff74
 	mov	r1, r8
@@ -1028,7 +1028,7 @@
 	bl	Func_80bb938
 .Lbff78:
 	mov	r0, r8
-	bl	_Func_8077428
+	bl	_CalcStats
 	add	sp, #0x20
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

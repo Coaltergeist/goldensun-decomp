@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003fa4
+.thumb_func_start UploadSpriteGFX
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -73,9 +73,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8003fa4
+.func_end UploadSpriteGFX
 
-.thumb_func_start Func_800403c
+.thumb_func_start ClearSprites
 	push	{lr}
 	ldr	r0, =0x1ff
 	ldr	r3, =gSpriteAllocTable
@@ -109,9 +109,9 @@
 	bls	.L406c
 	pop	{r0}
 	bx	r0
-.func_end Func_800403c
+.func_end ClearSprites
 
-.thumb_func_start Func_8004080
+.thumb_func_start AllocSpriteSlot
 	push	{lr}
 	ldr	r1, =gSpriteSlots
 	ldr	r4, =0xffff
@@ -135,19 +135,19 @@
 .L40a6:
 	pop	{r1}
 	bx	r1
-.func_end Func_8004080
+.func_end AllocSpriteSlot
 
-.thumb_func_start Func_80040b4
+.thumb_func_start AllocUploadSpriteGFX
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r1, r6
 	mov	r2, #0
 	mov	r5, r0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, r5
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80040b4
+.func_end AllocUploadSpriteGFX
 

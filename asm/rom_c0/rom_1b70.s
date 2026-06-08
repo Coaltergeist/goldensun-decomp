@@ -567,13 +567,13 @@
 .L231a:
 	bx	lr
 
-.thumb_func_start_noalign Func_800231c
+.thumb_func_start_noalign cos
 	mov	r1, #0x40
 	lsl	r1, #8
 	add	r0, r1
 
-.thumb_func_start_noalign Func_8002322
-Func_8002322:
+.thumb_func_start_noalign sin
+sin:
 	add	r0, #0x20
 	lsl	r1, r0, #18
 	lsr	r1, #24

@@ -32,7 +32,7 @@
 	bx	r0
 .func_end Func_800383c
 
-.thumb_func_start Func_800387c
+.thumb_func_start SetRegAnimDest
 	push	{r5, r6, lr}
 	ldr	r4, =gDMATaskCount
 	mov	r6, r0
@@ -61,7 +61,7 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800387c
+.func_end SetRegAnimDest
 
 .thumb_func_start Func_80038bc
 	push	{r5, r6, lr}
@@ -280,7 +280,7 @@
 	bx	r0
 .func_end Func_8003a3c
 
-.thumb_func_start Func_8003a7c
+.thumb_func_start UploadPalette
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -320,4 +320,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8003a7c
+.func_end UploadPalette

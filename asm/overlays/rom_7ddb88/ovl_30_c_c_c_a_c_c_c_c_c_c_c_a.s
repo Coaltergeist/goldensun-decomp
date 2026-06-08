@@ -52,7 +52,7 @@
 .L76e:
 	mov	r0, #0x82
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L77e
 	ldr	r3, [r5, #0x10]
@@ -137,7 +137,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x17
 	bl	__MapActor_GetActor
 	mov	r1, #0xf2
@@ -145,7 +145,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x18
 	bl	__MapActor_GetActor
 	mov	r1, #0xfa
@@ -153,7 +153,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x19
 	bl	__MapActor_GetActor
 	mov	r1, #0x81
@@ -161,10 +161,10 @@
 	lsl	r1, #19
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x1f
 	mov	r1, #0xb
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	b	.L8ba
 .L862:
 	mov	r0, #0x16
@@ -174,7 +174,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x17
 	bl	__MapActor_GetActor
 	mov	r1, #0xf2
@@ -182,7 +182,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x18
 	bl	__MapActor_GetActor
 	mov	r1, #0xfa
@@ -190,7 +190,7 @@
 	lsl	r1, #18
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x19
 	bl	__MapActor_GetActor
 	mov	r1, #0x81
@@ -198,10 +198,10 @@
 	lsl	r1, #19
 	mov	r2, #0
 	lsl	r3, #16
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0x1f
 	mov	r1, #0xa
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L8ba:
 	ldr	r3, [r5]
 	add	r3, #1
@@ -210,7 +210,7 @@
 	bls	.L8d2
 	mov	r0, #0x82
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L8d2
 	str	r0, [r5]
@@ -235,28 +235,28 @@
 	mov	r0, #0x16
 	lsl	r1, #18
 	lsl	r2, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xf2
 	mov	r2, #0xd8
 	mov	r0, #0x17
 	lsl	r1, #18
 	lsl	r2, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xfa
 	mov	r2, #0xd8
 	mov	r0, #0x18
 	lsl	r1, #18
 	lsl	r2, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0x81
 	mov	r2, #0xd8
 	mov	r0, #0x19
 	lsl	r1, #19
 	lsl	r2, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0x1f
 	mov	r1, #0xa
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_955_20088ec

@@ -16,7 +16,7 @@
 	bl	_Func_8000b50
 	mov	r1, r0
 	mov	r0, r6
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L15a2:
 	ldr	r3, [r5]
 	mov	r2, #0xf

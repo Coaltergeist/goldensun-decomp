@@ -5,16 +5,16 @@
  * asm/overlays/rom_77a7c8/ovl_30_a_a_a.o and asm/overlays/rom_77a7c8/ovl_30_a_a_c.o in
  * goldensun/overlays/rom_77a7c8/overlay.ld.
  */
-extern int __Func_8079338(int kind);
+extern int __GetFlag(int kind);
 extern void OvlFunc_881_20081c4(void);
 
 unsigned int OvlFunc_881_2008250(unsigned int arg0) {
     unsigned char *base;
 
     base = (unsigned char *)arg0;
-    if (__Func_8079338(0x30) != 0)
+    if (__GetFlag(0x30) != 0)
         return 0;
-    if (__Func_8079338(0xb7 << 1) != 0)
+    if (__GetFlag(0xb7 << 1) != 0)
         return 0;
 
     *(unsigned int *)(base + 0x6c) = (unsigned int)OvlFunc_881_20081c4;

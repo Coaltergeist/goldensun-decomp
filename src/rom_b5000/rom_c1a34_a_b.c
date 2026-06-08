@@ -5,7 +5,7 @@
  * asm/rom_b5000/rom_c1a34_a_a.o and asm/rom_b5000/rom_c1a34_a_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char *_Func_8078414(unsigned int arg);
+extern unsigned char *_GetItemInfo(unsigned int arg);
 
 unsigned int Func_80c2470(unsigned int arg0) {
 	unsigned int r6;
@@ -16,7 +16,7 @@ unsigned int Func_80c2470(unsigned int arg0) {
 	r5 = 0;
 	if (r6 == 0)
 		return 0;
-	r2 = _Func_8078414(r6)[3];
+	r2 = _GetItemInfo(r6)[3];
 	if (r2 & 8)
 		r5 = 1;
 	r5 <<= 1;

@@ -127,7 +127,7 @@
 	bx	r0
 .func_end Func_800b074
 
-.thumb_func_start Func_800b168
+.thumb_func_start UpdateSprite
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -166,7 +166,7 @@
 	mov	r1, r3
 	mov	r0, r7
 	mov	r11, r4
-	bl	Func_800aa0c
+	bl	UpdateSpriteAnim
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.Lb1da
@@ -402,7 +402,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b168
+.func_end UpdateSprite
 
 .thumb_func_start Func_800b388
 	push	{r5, r6, r7, lr}
@@ -431,7 +431,7 @@
 	mov	r10, r3
 	mov	r1, r10
 	ldr	r0, [sp, #0x14]
-	bl	Func_8005268
+	bl	PhysMove
 	mov	r1, r10
 	ldr	r3, [r1, #8]
 	mov	r5, r0
@@ -492,7 +492,7 @@
 	mov	r0, r7
 	mov	r9, r2
 	str	r3, [sp, #4]
-	bl	Func_800aa0c
+	bl	UpdateSpriteAnim
 	mov	r1, #0x80
 	lsl	r1, #3
 	ldr	r3, =0xfffff800
@@ -709,7 +709,7 @@
 	ldr	r3, [r2, #8]
 	mov	r1, r10
 	str	r3, [r0, #8]
-	bl	Func_8005268
+	bl	PhysMove
 	mov	r3, r10
 	ldr	r1, [sp, #4]
 	ldr	r2, [r3]

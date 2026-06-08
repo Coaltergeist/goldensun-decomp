@@ -6,10 +6,10 @@
  * goldensun/overlays/rom_7fc618/overlay.ld.
  */
 extern void __Func_80955b0(int a, int b, int c);
-extern void __Func_8079374(int a);
+extern void __ClearFlag(int a);
 
 void OvlFunc_972_2008094(void)
 {
 	__Func_80955b0(0xb, 3, 0);
-	__Func_8079374(0x6c);
+	__ClearFlag(0x6c);
 }

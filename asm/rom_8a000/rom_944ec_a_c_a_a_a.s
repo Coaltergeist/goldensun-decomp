@@ -7,7 +7,7 @@
 	lsl	r1, #3
 	mov	r0, #0x38
 	sub	sp, #4
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r3, #0
 	mov	r1, r0
 	mov	r0, sp
@@ -49,9 +49,9 @@
 	cmp	r7, #0
 	bge	.L958f8
 	mov	r0, #0x38
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0

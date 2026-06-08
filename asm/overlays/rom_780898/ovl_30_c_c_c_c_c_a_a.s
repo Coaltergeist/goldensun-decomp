@@ -32,7 +32,7 @@
 	mov	r3, #1
 	bl	__Func_8010704
 	ldr	r0, =0x87a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5976
 	mov	r0, #0x15
@@ -46,11 +46,11 @@
 	beq	.L59f2
 	mov	r0, #0xc5
 	lsl	r0, #2
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r0, =0x315
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r0, =0x316
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r3, [r5, #8]
 	asr	r0, r3, #20
 	cmp	r0, #0x16
@@ -65,7 +65,7 @@
 	bl	__Func_8010704
 	mov	r0, #0xc5
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	b	.L59f2
 .L59ba:
 	cmp	r0, #0x17
@@ -79,7 +79,7 @@
 	mov	r3, #1
 	bl	__Func_8010704
 	ldr	r0, =0x315
-	bl	__Func_8079358
+	bl	__SetFlag
 	b	.L59f2
 .L59d8:
 	mov	r3, #0x18
@@ -92,7 +92,7 @@
 	mov	r3, #1
 	bl	__Func_8010704
 	ldr	r0, =0x316
-	bl	__Func_8079358
+	bl	__SetFlag
 .L59f2:
 	add	sp, #8
 	pop	{r5}

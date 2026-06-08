@@ -13,7 +13,7 @@
 	mov	r6, r1
 .L6396:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r2, [r6]
 	mov	r3, r5
 	and	r3, r2

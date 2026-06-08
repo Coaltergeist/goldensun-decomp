@@ -6,7 +6,7 @@
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L3b4
 	ldr	r2, =0xffff5fff
@@ -19,12 +19,12 @@
 	bl	__Func_80b0278
 	b	.L3c2
 .L39c:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x24f7
 	bl	__Func_8092b94
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	b	.L3c2
 .L3b4:
@@ -32,7 +32,7 @@
 	bl	__Func_8092b94
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L3c2:
 	pop	{r5}
 	pop	{r0}
@@ -56,7 +56,7 @@
 	cmp	r6, #0xa
 	bne	.L412
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r1, #0xe2
 	ldr	r2, =0x69
 	lsl	r1, #1

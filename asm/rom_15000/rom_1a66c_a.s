@@ -5,7 +5,7 @@
 	mov	r1, #0xf9
 	lsl	r1, #2
 	mov	r0, #0x12
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xd2
 	mov	r7, r0
 	lsl	r2, #2
@@ -72,7 +72,7 @@
 	strh	r5, [r7, #0x12]
 	strh	r5, [r3]
 	ldr	r6, =Data_346f8
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, #0xb9
 	lsl	r2, #2
 	add	r3, r7, r2
@@ -81,7 +81,7 @@
 	mov	r2, r6
 	ldrh	r0, [r3]
 	lsl	r1, #1
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, =0x2e6
 	add	r3, r7, r2
 	sub	r2, #4

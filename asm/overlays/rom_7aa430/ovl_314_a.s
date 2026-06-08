@@ -187,7 +187,7 @@
 	str	r3, [r7, #8]
 	mov	r0, r6
 	mov	r1, r7
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bgt	.L50a
 	mov	r3, r6
@@ -198,26 +198,26 @@
 	bne	.L50a
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r5, =0x3333
 	mov	r0, #0xf
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xb9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	str	r5, [r6, #0x30]
 	str	r5, [r6, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r6
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r8
 	str	r5, [r0, #0x30]
 	str	r5, [r0, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Func_800ca6c
 	bl	__Func_809202c
@@ -245,7 +245,7 @@
 	str	r3, [r2, #0x10]
 	mov	r0, r8
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L50a:
 	add	sp, #0xc
 	pop	{r3, r5, r6}
@@ -374,7 +374,7 @@
 	mov	r0, r5
 	mov	r1, r6
 	str	r3, [r6, #8]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	ble	.L61a
 	mov	r3, #0
@@ -662,7 +662,7 @@
 	mov	r1, r4
 	mov	r0, r10
 	str	r4, [sp]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #2
 	beq	.L894
@@ -847,9 +847,9 @@
 	bl	__Func_8092064
 	mov	r1, #8
 	mov	r0, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xf
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r4, r11
 	ldr	r2, [sp, #0x50]
 	ldr	r3, [r4]
@@ -877,32 +877,32 @@
 	ldr	r3, =OvlFunc_923_200858c
 	str	r3, [r0, #0x6c]
 	mov	r0, #4
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r3, r8
 	sub	r3, #6
 	cmp	r3, #7
 	bhi	.La08
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.La10
 .La08:
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .La10:
 	mov	r0, #0xef
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r7
 	ldr	r1, [sp, #0x50]
 	ldr	r2, [sp, #0x54]
 	ldr	r3, [sp, #0x58]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0
 	ldr	r1, =0x4ccc
 	ldr	r2, =0x1999
@@ -930,10 +930,10 @@
 	bl	_call_via_r3
 .La68:
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #1
 	mov	r0, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r2, #0
@@ -942,9 +942,9 @@
 	bl	__Func_800ca6c
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xd5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r3, [sp, #0x50]
 	str	r3, [r7, #8]
 	ldr	r3, [sp, #0x58]
@@ -954,7 +954,7 @@
 	str	r3, [r7, #0x2c]
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r2, [sp, #0x48]
 	ldr	r4, =.L2758
 	lsl	r2, #4

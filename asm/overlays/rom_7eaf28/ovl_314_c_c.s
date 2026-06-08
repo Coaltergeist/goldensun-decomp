@@ -17,7 +17,7 @@
 	strh	r3, [r2]
 .Lb3e:
 	ldr	r0, =0x20f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r3, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
@@ -29,7 +29,7 @@
 	bne	.Lb60
 	ldr	r2, =0x2f9
 	add	r0, r6, r2
-	bl	__Func_8079358
+	bl	__SetFlag
 	b	.Lb6e
 .Lb60:
 	ldr	r3, =0xa5
@@ -37,12 +37,12 @@
 	bne	.Lb6e
 	ldr	r3, =0x309
 	add	r0, r6, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lb6e:
 	mov	r0, #0x84
 	lsl	r0, #2
 	mov	r1, #0
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	mov	r0, #0x62
 	mov	r1, #5
 	bl	__Func_8091eb0
@@ -73,11 +73,11 @@
 	mov	r0, #0x62
 	bl	__Func_8091eb0
 	mov	r0, #0xc
-	bl	__Func_80920a0
+	bl	__MapActor_SetIdle
 	mov	r0, #0xc
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .Lbc6:
 	mov	r2, #0xfa
 	lsl	r2, #1
@@ -98,7 +98,7 @@
 	push	{r7}
 	mov	r0, #0x86
 	lsl	r0, #2
-	bl	__Func_80793b8
+	bl	__GetFlagByte
 	ldr	r5, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
@@ -110,7 +110,7 @@
 	mov	r0, r6
 	bl	__MapActor_GetActor
 	mov	r8, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #1
 	mov	r1, #1
 	mov	r2, #1
@@ -120,7 +120,7 @@
 	neg	r0, r0
 	bl	__Func_80933f8
 	mov	r0, #0xdb
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, [r5]
 	mov	r1, #0
 	bl	__Func_800c528
@@ -150,15 +150,15 @@
 	str	r3, [r2, #0x28]
 	mov	r0, #1
 	sub	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0
 	bge	.Lc6c
-	bl	__Func_8091df4
+	bl	__MapTransitionOut
 	bl	__Func_8091e20
 	bl	__Func_8091750
 	mov	r0, #0x91
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
@@ -170,17 +170,17 @@
 	bne	.Lcc2
 	mov	r0, #0x86
 	lsl	r0, #2
-	bl	__Func_80793b8
+	bl	__GetFlagByte
 	cmp	r0, #0xb
 	bne	.Lcc2
 	ldr	r0, =2
 	mov	r1, #0x4d
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.Lcca
 .Lcc2:
 	ldr	r0, =2
 	mov	r1, #0x1b
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 .Lcca:
 	pop	{r3}
 	mov	r8, r3
@@ -250,7 +250,7 @@
 	mov	r1, #0
 	mov	r0, #0xe
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, #0xf
 	mov	r2, #0x2c
 	str	r3, [sp]
@@ -320,7 +320,7 @@
 	lsl	r1, #16
 	mov	r0, #0xe
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, #0xf
 	mov	r2, #0x2c
 	str	r3, [sp]
@@ -389,7 +389,7 @@
 	mov	r0, #0x84
 	str	r2, [r3]
 	lsl	r0, #2
-	bl	__Func_80793b8
+	bl	__GetFlagByte
 	cmp	r0, #0
 	beq	.Lec0
 	ldr	r3, =gState
@@ -440,7 +440,7 @@
 .Lf04:
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 .Lf0c:
 	ldr	r3, =gState
 	mov	r2, #0xe1
@@ -468,41 +468,41 @@
 	mov	r0, #0
 	mov	r8, r0
 	ldr	r0, =0x301
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lf6a
 	ldr	r0, =0x206
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lf6a:
 	ldr	r0, =0x302
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lf7a
 	ldr	r0, =0x207
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lf7a:
 	ldr	r0, =0x303
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lf8c
 	mov	r0, #0x82
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lf8c:
 	mov	r0, #0xc1
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lf9e
 	ldr	r0, =0x209
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lf9e:
 	ldr	r0, =0x305
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lfae
 	ldr	r0, =0x20a
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lfae:
 	mov	r7, #0x80
 	mov	r6, #8
@@ -514,7 +514,7 @@
 	cmp	r5, #0
 	beq	.Lfd6
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lfce
 	str	r7, [r5, #0x18]
@@ -554,7 +554,7 @@
 	strh	r1, [r5]
 	mov	r0, #0xd0
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1020
 	mov	r3, #0x10
@@ -602,26 +602,26 @@
 	mov	r0, #0
 	mov	r8, r0
 	ldr	r0, =0x311
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L10ae
 	ldr	r0, =0x206
-	bl	__Func_8079358
+	bl	__SetFlag
 .L10ae:
 	ldr	r0, =0x312
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L10be
 	ldr	r0, =0x207
-	bl	__Func_8079358
+	bl	__SetFlag
 .L10be:
 	ldr	r0, =0x313
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L10d0
 	mov	r0, #0x82
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L10d0:
 	mov	r7, #0x80
 	mov	r6, #8
@@ -633,7 +633,7 @@
 	cmp	r5, #0
 	beq	.L10fa
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L10f0
 	str	r7, [r5, #0x18]
@@ -670,11 +670,11 @@
 	strb	r3, [r2]
 .L1128:
 	ldr	r0, =0x315
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1138
 	ldr	r0, =0x9b7
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1138:
 	ldr	r6, =gDMATaskCount
 	ldr	r5, =REG_IME
@@ -702,7 +702,7 @@
 	strh	r1, [r5]
 	mov	r0, #0xd0
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L117c
 	mov	r3, #0x10

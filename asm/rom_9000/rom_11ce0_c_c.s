@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80120dc
+.thumb_func_start TestCollision
 	push	{r5, r6, r7, lr}
 	mov	r3, #0xa
 	ldrsh	r6, [r1, r3]
@@ -90,7 +90,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80120dc
+.func_end TestCollision
 
 	.section .rodata
 	.global .L134fc
@@ -105,15 +105,15 @@
 	.word	Func_8011ce0
 	.word	Func_8011cec
 	.word	Func_8011d10
-	.word	Func_8011d34
-	.word	Func_8011d60
-	.word	Func_8011d94
-	.word	Func_8011ddc
-	.word	Func_8011e2c
+	.word	HeightTile_3
+	.word	HeightTile_4
+	.word	HeightTile_5
+	.word	HeightTile_6
+	.word	HeightTile_7
 	.word	Func_8011e50
-	.word	Func_8011e6c
-	.word	Func_8011e88
-	.word	Func_8011ed0
+	.word	HeightTile_9
+	.word	HeightTile_A
+	.word	HeightTile_B
 	.word	Func_8011f14
 	.word	Func_8011f28
 	.word	Func_8011f3c

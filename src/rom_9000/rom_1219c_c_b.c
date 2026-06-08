@@ -7,7 +7,7 @@
  */
 extern unsigned int *iwram_3001e60;
 extern void _Func_8185008(unsigned int arg0);
-extern void Func_800b868(unsigned int layer);
+extern void InitSpriteLayer(unsigned int layer);
 
 void Func_8012de8(unsigned int arg0, unsigned int arg1)
 {
@@ -21,7 +21,7 @@ void Func_8012de8(unsigned int arg0, unsigned int arg1)
     for (i = 9; i >= 0; i--) {
         unsigned short *t = *(unsigned short **)(p + off);
         *t = arg1;
-        Func_800b868(*(unsigned int *)(p + off));
+        InitSpriteLayer(*(unsigned int *)(p + off));
         p += 0x38;
     }
 }

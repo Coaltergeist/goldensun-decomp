@@ -5,9 +5,9 @@
  * asm/rom_8a000/rom_91584_c_c_a_a_c_a.o and asm/rom_8a000/rom_91584_c_c_a_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80030f8(unsigned int nframes);
+extern void WaitFrames(unsigned int nframes);
 extern unsigned int *iwram_3001ebc;
 
 void Func_8091e20(void) {
-    Func_80030f8(*(unsigned int *)((char *)iwram_3001ebc + 0x1c8));
+    WaitFrames(*(unsigned int *)((char *)iwram_3001ebc + 0x1c8));
 }

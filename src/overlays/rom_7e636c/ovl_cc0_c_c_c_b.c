@@ -5,8 +5,8 @@
  * asm/overlays/rom_7e636c/ovl_cc0_c_c_c_a.o and asm/overlays/rom_7e636c/ovl_cc0_c_c_c_c.o in
  * goldensun/overlays/rom_7e636c/overlay.ld.
  */
-extern void __Func_80923e4(int a, int b, int c);
+extern void __MapActor_SetPos(int a, int b, int c);
 
 void OvlFunc_958_2009384(void) {
-    __Func_80923e4(12, 0, 0);
+    __MapActor_SetPos(12, 0, 0);
 }

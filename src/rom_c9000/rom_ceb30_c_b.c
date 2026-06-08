@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_ceb30_c_a.o and asm/rom_c9000/rom_ceb30_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80ceb54(int context, int subanim);
+extern void BaseAnim_HauntAttack(int context, int subanim);
 
 void Func_80ceb3c(int context) {
-    Func_80ceb54(context, 1);
+    BaseAnim_HauntAttack(context, 1);
 }

@@ -25,7 +25,7 @@
 	mov	r2, #8
 	mov	r3, #0x43
 	mov	r0, #0
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r5, #0
@@ -69,7 +69,7 @@
 	mov	r7, r0
 	mov	r0, #0x16
 	mov	r5, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	cmp	r0, #0
 	beq	.L5d4
 	ldr	r6, [r0, #0x50]
@@ -97,19 +97,19 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r5, r0
 	mov	r0, r7
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	ldrb	r0, [r6, #0x1c]
 	mov	r1, #0x80
 	mov	r2, r5
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 .L5d4:
 	pop	{r5, r6, r7}
 	pop	{r0}

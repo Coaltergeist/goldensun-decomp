@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800d6a4
+.thumb_func_start ActorCmd_CallNative
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, #4
@@ -28,9 +28,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d6a4
+.func_end ActorCmd_CallNative
 
-.thumb_func_start Func_800d6d8
+.thumb_func_start Actor_FindScriptMarker
 	push	{lr}
 	mov	r2, r0
 	add	r2, #0x5e
@@ -60,9 +60,9 @@
 .Ld704:
 	pop	{r1}
 	bx	r1
-.func_end Func_800d6d8
+.func_end Actor_FindScriptMarker
 
-.thumb_func_start Func_800d710
+.thumb_func_start ActorCmd_Loop
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -89,7 +89,7 @@
 	bge	.Ld74a
 	mov	r0, r5
 .Ld742:
-	bl	Func_800d6d8
+	bl	Actor_FindScriptMarker
 	strh	r0, [r5, #4]
 	b	.Ld754
 .Ld74a:
@@ -103,5 +103,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d710
+.func_end ActorCmd_Loop
 

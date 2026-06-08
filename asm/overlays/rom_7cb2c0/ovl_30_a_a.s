@@ -4,7 +4,7 @@
 	push	{r5, lr}
 	mov	r1, #1
 	mov	r5, r0
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #0
 	str	r3, [r5, #8]
 	str	r3, [r5, #0xc]

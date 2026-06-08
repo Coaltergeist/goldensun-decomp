@@ -5,8 +5,8 @@
  * asm/rom_8a000/rom_925e0_a_a.o and asm/rom_8a000/rom_925e0_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808ba1c(int actorID);
-extern void _Func_800c0f4(void);
+extern int GetFieldActor(int actorID);
+extern void _DeleteActor(void);
 extern unsigned int iwram_3001ebc;
 
 void Func_8092924(int actorID) {
@@ -14,10 +14,10 @@ void Func_8092924(int actorID) {
     unsigned char *base;
     int off;
 
-    res = Func_808ba1c(actorID);
+    res = GetFieldActor(actorID);
     base = (unsigned char *)iwram_3001ebc;
     if (res != 0) {
-        _Func_800c0f4();
+        _DeleteActor();
         off = (actorID << 2) + 0x14;
         *(unsigned int *)(base + off) = 0;
     }

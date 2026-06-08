@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8004858
+.thumb_func_start ClearHeap
 	sub	sp, #4
 	ldr	r4, =gPtrs
 	mov	r0, sp
@@ -18,5 +18,5 @@
 	add	sp, #4
 	str	r3, [r4]
 	bx	lr
-.func_end Func_8004858
+.func_end ClearHeap
 

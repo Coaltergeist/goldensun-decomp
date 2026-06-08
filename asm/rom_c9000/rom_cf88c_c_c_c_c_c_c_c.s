@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80cf8e0
+.thumb_func_start BaseAnim_Blob
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -26,7 +26,7 @@
 	str	r2, [sp, #0x24]
 	mov	r0, #1
 	str	r1, [r3]
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r3, .Lcf954	@ 0x1010
 	ldr	r2, =REG_BLDALPHA
 	ldr	r7, =0xbf
@@ -217,7 +217,7 @@
 	mov	r0, #0x2e
 	mov	r2, #7
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
@@ -242,7 +242,7 @@
 	mov	r1, #7
 	mov	r2, #7
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, r5
 	add	r3, #0xbc
 	ldr	r3, [r3]
@@ -258,7 +258,7 @@
 	mov	r1, #7
 	mov	r2, #7
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
@@ -276,7 +276,7 @@
 	mov	r0, #0x2f
 	mov	r2, #7
 	str	r3, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, r5
 	add	r3, #0xbc
 	ldr	r3, [r3]
@@ -292,7 +292,7 @@
 	mov	r1, #7
 	str	r6, [sp]
 .Lcfb34:
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, r5
 	add	r3, #0xbc
 	ldr	r3, [r3]
@@ -311,7 +311,7 @@
 	add	r2, r11
 	mov	r1, #0x90
 	str	r3, [r2]
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	lsl	r1, #3
 	bl	StartTask
 	ldr	r3, =.Lee0b6
@@ -336,7 +336,7 @@
 .Lcfb86:
 	str	r3, [sp, #0x28]
 	mov	r0, #0x67
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r1, [sp, #0x28]
 	mov	r0, #0
 	str	r0, [sp, #0x30]
@@ -348,7 +348,7 @@
 	add	r2, #0xc
 	str	r2, [sp, #0x14]
 .Lcfba0:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [sp, #0x14]
 	bl	Func_80051d8
@@ -695,14 +695,14 @@
 	bne	.Lcfd94
 	mov	r0, #2
 	mov	r1, #2
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r11
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [sp, #0x30]
 	ldr	r4, [sp, #0x28]
 	add	r3, #1
@@ -711,13 +711,13 @@
 	beq	.Lcfea6
 	b	.Lcfba0
 .Lcfea6:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x50
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -727,7 +727,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80cf8e0
+.func_end BaseAnim_Blob
 
 	.section .rodata
 

@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_c91dc_c_c_c_a.o and asm/rom_c9000/rom_c91dc_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80c9ca8(void *context, int subanim);
+extern void BaseAnim_SonicWave(void *context, int subanim);
 
 void Func_80c9c84(void *context) {
-    Func_80c9ca8(context, 4);
+    BaseAnim_SonicWave(context, 4);
 }

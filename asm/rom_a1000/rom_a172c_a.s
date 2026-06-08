@@ -9,14 +9,14 @@
 	mov	r8, r0
 	mov	r10, r2
 	mov	r7, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r6, #0
 	cmp	r5, #0
 	beq	.La1762
 	ldr	r2, =.Laea4c
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	lsl	r1, #23
 	mov	r0, r5
@@ -45,14 +45,14 @@
 	mov	r8, r0
 	mov	r10, r1
 	mov	r7, r2
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r6, #0
 	cmp	r5, #0
 	beq	.La17ae
 	ldr	r2, =.Laea4c
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	lsl	r1, #23
 	mov	r0, r5

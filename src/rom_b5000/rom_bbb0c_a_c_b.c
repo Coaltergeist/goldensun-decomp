@@ -5,14 +5,14 @@
  * asm/rom_b5000/rom_bbb0c_a_c_a.o and asm/rom_b5000/rom_bbb0c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int _Func_8077394(void);
+extern int _GetUnit(void);
 extern int _Func_8079bc4(void);
 
 unsigned int Func_80bf208(int arg0, int arg1, int arg2)
 {
 	int v;
 	int t;
-	v = _Func_8077394();
+	v = _GetUnit();
 	if (arg1 <= 5) {
 		int e;
 		e = *(unsigned char *)(v + 0x42);

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800d900
+.thumb_func_start ActorCmd_Sound
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -9,7 +9,7 @@
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r0, [r3, #4]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r3, [r5, #4]
 	add	r3, #2
 	strh	r3, [r5, #4]
@@ -17,7 +17,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d900
+.func_end ActorCmd_Sound
 
 	.section .rodata
 	.global .L13240

@@ -17,7 +17,7 @@
 	mov	r7, #1
 .L1808:
 	ldrsh	r0, [r6, r5]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1832
 	add	r3, r5, #2
@@ -34,7 +34,7 @@
 	ldrsh	r3, [r6, r3]
 	str	r7, [sp]
 	str	r7, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 .L1832:
 	ldr	r6, =.L1ca8
 	add	r5, #0xc

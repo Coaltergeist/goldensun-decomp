@@ -6,7 +6,7 @@
 	sub	sp, #8
 	mov	r1, sp
 	add	r0, sp, #4
-	bl	__Func_80b3444
+	bl	__UI_SellMenu
 	add	sp, #8
 	pop	{r0}
 	bx	r0

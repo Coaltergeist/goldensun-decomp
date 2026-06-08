@@ -5,7 +5,7 @@
  * asm/rom_c0/rom_5cf8_a_a_c_a.o and asm/rom_c0/rom_5cf8_a_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80030f8(unsigned int nframes);
+extern void WaitFrames(unsigned int nframes);
 extern unsigned int ewram_2002080;
 extern unsigned int ewram_20023ac;
 
@@ -15,7 +15,7 @@ void Func_8006458(void)
     count = 0;
     if (ewram_2002080 != 0) {
         do {
-            Func_80030f8(1);
+            WaitFrames(1);
             count++;
             if (count > 0x927bf)
                 break;
@@ -28,7 +28,7 @@ void Func_8006488(void)
     count = 0;
     if (ewram_20023ac != 0) {
         do {
-            Func_80030f8(1);
+            WaitFrames(1);
             count++;
             if (count > 0x927bf)
                 break;

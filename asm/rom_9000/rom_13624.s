@@ -6,39 +6,39 @@
 Data_8013624:
 	.word	Func_800d654
 	.word	Func_800d674
-	.word	Func_800d9f0
-	.word	Func_800da18
-	.word	Func_800da40
-	.word	Func_800da78
+	.word	ActorCmd_SetPos
+	.word	ActorCmd_TravelTo
+	.word	ActorCmd_Travel
+	.word	ActorCmd_FaceTarget
 	.word	Func_800daa0
-	.word	Func_800dac0
-	.word	Func_800dd70
-	.word	Func_800df04
-	.word	Func_800dcdc
-	.word	Func_800daf0
-	.word	Func_800d710
+	.word	ActorCmd_Unused
+	.word	ActorCmd_Wander
+	.word	ActorCmd_Unk9
+	.word	ActorCmd_FollowTargetWait
+	.word	ActorCmd_Camera
+	.word	ActorCmd_Loop
 	.word	Func_800d760
-	.word	Func_800d780
-	.word	Func_800d7b4
+	.word	ActorCmd_GotoIfNZ
+	.word	ActorCmd_GotoIfZ
 	.word	Func_800d7e8
-	.word	Func_800d7f8
-	.word	Func_800d820
-	.word	Func_800d850
+	.word	ActorCmd_GetFlag
+	.word	ActorCmd_SetFlag
+	.word	ActorCmd_ClearFlag
 	.word	Func_800d880
-	.word	Func_800e9a0
-	.word	Func_800e9dc
-	.word	Func_800ea18
-	.word	Func_800ebec
-	.word	Func_800f7f4
-	.word	Func_800f2f8
+	.word	ActorCmd_SetAttr
+	.word	ActorCmd_IncAttr
+	.word	ActorCmd_CmpAttr
+	.word	ActorCmd_Player
+	.word	ActorCmd_Player_Climb
+	.word	ActorCmd_Player_World
 	.word	Func_800d8e8
-	.word	Func_800d8c4
+	.word	ActorCmd_Anim
 	.word	Func_800d8f4
-	.word	Func_800d900
-	.word	Func_800ca2c
+	.word	ActorCmd_Sound
+	.word	ActorCmd_SetScript
 	.word	Func_800ca44
 	.word	Func_800ca58
-	.word	Func_800d6a4
+	.word	ActorCmd_CallNative
 	.word	Func_800f7dc
 	.word	Func_800d7e8
 	.word	Func_800d7e8
@@ -63,7 +63,7 @@ Data_80136e0:
 	.word	Func_800e2b0
 	.word	Func_800e2dc
 	.word	Func_800e308
-	.word	Func_800e334
+	.word	ActorAttrOp_width
 	.word	Func_800e364
 	.word	Func_800e390
 	.word	Func_800e390
@@ -89,9 +89,9 @@ Data_80136e0:
 	.word	Func_800e75c
 	.word	Func_800e798
 	.word	Func_800e7d4
-	.word	Func_800e810
-	.word	Func_800e850
-	.word	Func_800e890
+	.word	ActorAttrOp_waitTimer
+	.word	ActorAttrOp_unk64
+	.word	ActorAttrOp_unk66
 	.word	Func_800e8d0
 	.word	Func_800e8fc
 	.word	Func_800e928

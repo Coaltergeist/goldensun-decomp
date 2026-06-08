@@ -68,7 +68,7 @@
 	bx	lr
 .func_end Func_80f9f3c
 
-.thumb_func_start Func_80f9f6c
+.thumb_func_start MP2K_event_nxx
 	push	{r4, r5, r6, r7, lr}
 	mov	r4, r8
 	mov	r5, r9
@@ -342,9 +342,9 @@
 	mov	r11, r3
 	pop	{r0}
 	bx	r0
-.func_end Func_80f9f6c
+.func_end MP2K_event_nxx
 
-.thumb_func_start Func_80fa16c
+.thumb_func_start MP2K_event_endtie
 	push	{r4, r5}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -382,7 +382,7 @@
 .Lfa1a8:
 	pop	{r4, r5}
 	bx	lr
-.func_end Func_80fa16c
+.func_end MP2K_event_endtie
 
 .thumb_func_start Func_80fa1ac
 	mov	r2, #0
@@ -410,7 +410,7 @@
 	bx	lr
 .func_end Func_80fa1c8
 
-.thumb_func_start Func_80fa1d4
+.thumb_func_start MP2K_event_lfos
 	mov	r12, lr
 	bl	Func_80fa1c8
 	strb	r3, [r1, #0x19]
@@ -419,9 +419,9 @@
 	bl	Func_80fa1ac
 .Lfa1e4:
 	bx	r12
-.func_end Func_80fa1d4
+.func_end MP2K_event_lfos
 
-.thumb_func_start Func_80fa1e8
+.thumb_func_start MP2K_event_mod
 	mov	r12, lr
 	bl	Func_80fa1c8
 	strb	r3, [r1, #0x17]
@@ -430,5 +430,5 @@
 	bl	Func_80fa1ac
 .Lfa1f8:
 	bx	r12
-.func_end Func_80fa1e8
+.func_end MP2K_event_mod
 

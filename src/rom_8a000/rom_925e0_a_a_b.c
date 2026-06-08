@@ -5,21 +5,21 @@
  * asm/rom_8a000/rom_925e0_a_a_a.o and asm/rom_8a000/rom_925e0_a_a_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_808ba1c(unsigned int actorID);
-extern int Func_80044d0(int y, int x);
-extern void Func_809163c(unsigned int param_1);
+extern unsigned int GetFieldActor(unsigned int actorID);
+extern int atan2(int y, int x);
+extern void CutsceneWait(unsigned int param_1);
 
 void Func_809280c(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
     unsigned char *a;
     unsigned char *b;
 
-    a = (unsigned char *)Func_808ba1c(arg0);
-    b = (unsigned char *)Func_808ba1c(arg1);
+    a = (unsigned char *)GetFieldActor(arg0);
+    b = (unsigned char *)GetFieldActor(arg1);
     if (a != (unsigned char *)0 && b != (unsigned char *)0) {
-        *(short *)(a + 6) = Func_80044d0(
+        *(short *)(a + 6) = atan2(
             *(int *)(b + 16) - *(int *)(a + 16),
             *(int *)(b + 8) - *(int *)(a + 8));
-        Func_809163c(arg2);
+        CutsceneWait(arg2);
     }
 }

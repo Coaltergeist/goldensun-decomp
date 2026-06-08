@@ -95,7 +95,7 @@
 	mov	r0, #0xb6
 	lsl	r0, #1
 	ldr	r5, =.L9e488
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b33c
 	mov	r6, #0x12

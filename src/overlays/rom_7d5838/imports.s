@@ -1,33 +1,33 @@
 	.include "macros.inc"
 
-	.export_func _Func_800c300
-	.export_func _Func_800c150
-	.export_func _Func_800c0f4
+	.export_func _Actor_SetAnim
+	.export_func _CreateActor
+	.export_func _DeleteActor
 	.export_func _Func_8010560
 	.export_func _Func_8010704
 	.export_func _Func_800c528
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_80921c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092548
 	.export_func _Func_8092560
 	.export_func _Func_80925cc
 	.export_func _Func_8092b94
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
+	.export_func _ActorMessage
 	.export_func _Func_8092adc
-	.export_func _Func_80937b8
+	.export_func _MapActor_Emote
 	.export_func _Func_8091e9c
-	.export_func _Func_8091dc8
+	.export_func _MapTransitionIn
 	.export_func _Func_8092304
 	.export_func _Func_80b0278
-	.export_func _Func_80b29a8
-	.export_func _Func_80f9080
+	.export_func _UI_Sanctum
+	.export_func _PlaySound

@@ -5,19 +5,19 @@
  * asm/overlays/rom_7aa430/ovl_1a3c_a.o and asm/overlays/rom_7aa430/ovl_1a3c_c.o in
  * goldensun/overlays/rom_7aa430/overlay.ld.
  */
-extern unsigned int *__Func_80048f4(int a, int b);
-extern void __Func_800c0f4(int a);
+extern unsigned int *__galloc_ewram(int a, int b);
+extern void __DeleteActor(int a);
 
 void OvlFunc_923_200a3b8(void) {
     unsigned int *p;
     unsigned int *r5;
 
-    p = __Func_80048f4(0x23, 4);
+    p = __galloc_ewram(0x23, 4);
     if (p == (unsigned int *)0)
         return;
     r5 = (unsigned int *)*p;
     if (*(unsigned int *)((char *)r5 + 0x14) == 0)
         return;
-    __Func_800c0f4(*(unsigned int *)((char *)r5 + 0x14));
+    __DeleteActor(*(unsigned int *)((char *)r5 + 0x14));
     *(unsigned int *)((char *)r5 + 0x14) = 0;
 }

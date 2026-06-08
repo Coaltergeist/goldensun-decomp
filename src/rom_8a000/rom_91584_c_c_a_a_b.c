@@ -16,8 +16,8 @@
  */
 #include "message.h"
 
-extern void _Func_8078e28(void);
-extern void _Func_80f9080(unsigned int);
+extern void _GiveInnateMove(void);
+extern void _PlaySound(unsigned int);
 extern void _Func_8019908(unsigned int, unsigned int);
 extern void _Func_801776c(unsigned int, unsigned int);
 
@@ -27,8 +27,8 @@ void Func_8091d94(unsigned int pc, unsigned int move) {
 
     r6 = move;
     r5 = pc;
-    _Func_8078e28();
-    _Func_80f9080(0x53);
+    _GiveInnateMove();
+    _PlaySound(0x53);
     _Func_8019908(r5, 1);
     _Func_8019908(r6, 4);
     _Func_801776c(MSG_LEARN_INNATE_MOVE, 3);

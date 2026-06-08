@@ -322,7 +322,7 @@
 	bx	r0
 .func_end Func_8090584
 
-.thumb_func_start Func_8090658
+.thumb_func_start Task_Transition300
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -341,7 +341,7 @@
 	blt	.L90698
 	mov	r3, #0
 	strb	r3, [r4]
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	bl	StopTask
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -469,7 +469,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8090658
+.func_end Task_Transition300
 
 .thumb_func_start Func_80907b0
 	push	{r5, lr}
@@ -531,7 +531,7 @@
 	lsl	r1, #3
 	mov	r0, #0x1f
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r6, #0
 	mov	r5, r0
 	mov	r0, sp
@@ -553,10 +553,10 @@
 	add	r5, r3
 	lsl	r1, #4
 	strh	r6, [r5]
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	bl	StartTask
 	mov	r0, #0x78
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #4
 	pop	{r3}
 	mov	r8, r3
@@ -616,7 +616,7 @@
 	lsl	r1, #5
 	lsl	r0, #1
 	add	r5, r6, r1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L908fa
 	b	.L90a44
@@ -1693,7 +1693,7 @@
 	ldr	r1, =0x2a04
 	mov	r0, #0x20
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp

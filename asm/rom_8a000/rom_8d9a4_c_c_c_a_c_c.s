@@ -237,12 +237,12 @@
 	mov	r1, #0x1c
 	mov	r0, #0x24
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0x80
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #0xe
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, =0x11111111
 	mov	r4, r0
 	mov	r5, sp
@@ -257,9 +257,9 @@
 	mov	r2, r4
 	lsl	r1, #2
 	mov	r0, #0x5e
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0xe
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80912b8
@@ -288,7 +288,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 .L91514:
 	str	r6, [r7, #0x18]

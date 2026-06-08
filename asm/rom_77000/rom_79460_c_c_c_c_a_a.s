@@ -3,7 +3,7 @@
 .thumb_func_start Func_8079ae8
 	push	{r5, r6, lr}
 	mov	r5, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #0x94
 	mov	r6, r0
 	lsl	r2, #1

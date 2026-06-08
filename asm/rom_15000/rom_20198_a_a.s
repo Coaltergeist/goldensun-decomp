@@ -26,7 +26,7 @@
 	mov	r1, r5
 	mov	r2, #0x48
 	mov	r3, #0
-	bl	Func_801e940
+	bl	UIDrawText
 	mov	r6, #0
 	ldrb	r0, [r7, #0x1c]
 	mov	r1, #2
@@ -52,7 +52,7 @@
 	mov	r1, r5
 	mov	r2, #0x30
 	mov	r3, #0x28
-	bl	Func_801e940
+	bl	UIDrawText
 	mov	r6, #0x30
 	ldr	r0, [r7, #0x24]
 	mov	r1, #6
@@ -86,7 +86,7 @@
 	lsl	r1, #4
 	mov	r0, #0x37
 	sub	sp, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, =iwram_3001f1c
 	mov	r1, #0
 	mov	r2, #1
@@ -266,7 +266,7 @@
 .L203a4:
 	mov	r0, #0x71
 	mov	r5, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	neg	r5, r5
 	b	.L2074a
 .L203b0:
@@ -285,7 +285,7 @@
 	mov	r2, #0x1c
 	mov	r3, #7
 	mov	r0, #1
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #0x82
 	lsl	r1, #5
 	add	r1, r7, r1
@@ -329,7 +329,7 @@
 	mov	r1, r10
 	mov	r2, #0xa
 	mov	r3, r11
-	bl	Func_801e74c
+	bl	DrawSmallText
 	b	.L2044e
 .L20426:
 	ldr	r0, [sp, #0x14]
@@ -344,7 +344,7 @@
 	add	r0, r3
 	mov	r2, #0x3e
 	mov	r3, r11
-	bl	Func_801e74c
+	bl	DrawSmallText
 	ldr	r1, =0xea3
 	ldr	r3, [sp, #8]
 	add	r2, r3, r1
@@ -405,7 +405,7 @@
 	ldrb	r0, [r7, r3]
 	add	r3, r7, r3
 	ldrb	r1, [r3, #1]
-	bl	Func_801ccc0
+	bl	SetUIColor
 	ldr	r2, [sp, #0x20]
 	cmp	r2, #0
 	bne	.L204d6
@@ -415,7 +415,7 @@
 	mov	r1, #0xa
 	mov	r2, #0xe
 	mov	r3, #9
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x20]
 .L204d6:
 	mov	r1, #0x82
@@ -426,7 +426,7 @@
 	mov	r1, r6
 	bl	Func_8020198
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #0x1c]
 	cmp	r2, #0
 	bne	.L20504
@@ -436,7 +436,7 @@
 	mov	r1, #0xa
 	mov	r2, #0xd
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x1c]
 .L20504:
 	bl	Func_801ff14
@@ -446,7 +446,7 @@
 	mov	r3, r6
 	bl	Func_801fe2c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =0x1068
 	add	r3, r5, r1
 	add	r1, #1
@@ -472,7 +472,7 @@
 	mov	r1, #0xe
 	mov	r2, #0xd
 	mov	r3, #5
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x18]
 .L20552:
 	ldr	r0, [sp, #0x18]
@@ -488,7 +488,7 @@
 	bl	Func_8020088
 	mov	r1, #2
 	ldr	r0, [sp, #0x18]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #0
 	str	r1, [sp, #0x18]
 	b	.L205e6
@@ -503,18 +503,18 @@
 	ldr	r3, =0x206
 	add	r2, r3
 	ldrb	r1, [r2]
-	bl	Func_801ccc0
+	bl	SetUIColor
 	bl	Func_8020088
 	bl	Func_801ff14
 	mov	r1, #2
 	ldr	r0, [sp, #0x18]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0x1c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0x20]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #0
 	str	r1, [sp, #0x18]
 	str	r1, [sp, #0x1c]
@@ -548,7 +548,7 @@
 	ldr	r0, [sp, #0x10]
 	bl	Func_80216b4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
@@ -556,7 +556,7 @@
 	cmp	r2, #0
 	beq	.L206aa
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	str	r1, [sp, #0xc]
 	b	.L20696
@@ -623,7 +623,7 @@
 	cmp	r2, #0
 	beq	.L20728
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	str	r3, [sp, #0xc]
 	b	.L20714
@@ -700,26 +700,26 @@
 	b	.L20494
 .L20742:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r5, r8
 .L2074a:
 	bl	Func_8020088
 	bl	Func_801ff14
 	mov	r1, #2
 	ldr	r0, [sp, #0x18]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0x1c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0x20]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	mov	r0, r10
-	bl	Func_8016418
+	bl	CloseUIBox
 	bl	Func_801fd98
 	mov	r0, #0x37
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r3, =gState
 	ldr	r1, =0x205
 	add	r2, r3, r1
@@ -727,9 +727,9 @@
 	ldr	r2, =0x206
 	add	r3, r2
 	ldrb	r1, [r3]
-	bl	Func_801ccc0
+	bl	SetUIColor
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L20794:
 	mov	r0, r5
 	add	sp, #0x28
@@ -743,7 +743,7 @@
 	bx	r1
 .func_end Func_8020244
 
-.thumb_func_start Func_80207c4
+.thumb_func_start Menu_Save
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -789,7 +789,7 @@
 	b	.L20826
 .L20820:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L20826:
 	bl	Func_8017364
 	cmp	r0, #0
@@ -798,7 +798,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r3, #1
-	bl	Func_8028df4
+	bl	YesNoMenu
 	cmp	r0, #0
 	beq	.L20844
 	bl	Func_8019a54
@@ -809,31 +809,31 @@
 	ldr	r3, =ewram_2002004
 	mov	r0, #0x55
 	strh	r7, [r3]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =_MSG_1a
 	mov	r1, #0xd
 	bl	Func_801776c
 	b	.L20862
 .L2085c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L20862:
 	bl	Func_8017364
 	cmp	r0, #0
 	beq	.L2085c
-	bl	Func_801f818
+	bl	PrepareSaveHeader
 	bl	_Func_808ba38
 	ldr	r5, =ewram_2000000
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	mov	r3, #0x80
 	lsl	r3, #5
 	add	r5, r3
 	mov	r6, r0
 	mov	r1, r5
 	add	r0, r7, #3
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	orr	r6, r0
 	bl	Func_8019a54
 	cmp	r6, #0
@@ -857,9 +857,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80207c4
+.func_end Menu_Save
 
-.thumb_func_start Func_80208e4
+.thumb_func_start SystemMsgBox
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -939,5 +939,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80208e4
+.func_end SystemMsgBox
 

@@ -120,7 +120,7 @@
 	strh	r3, [r2]
 	b	.L136
 .L132:
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 .L136:
 	pop	{r0}
 	bx	r0
@@ -152,10 +152,10 @@
 	ldr	r2, [r0, #0xc]
 	ldr	r3, [r0, #0x10]
 	ldr	r0, =0x11d
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	mov	r0, #0xf6
-	bl	__Func_80f9080
+	bl	__PlaySound
 	cmp	r6, #0
 	beq	.L1ac
 	mov	r3, r6
@@ -175,7 +175,7 @@
 	bl	__Func_800c528
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, r6
 	add	r3, #0x64
 	strh	r5, [r3]
@@ -197,12 +197,12 @@
 	cmp	r3, #0
 	beq	.L1dc
 	mov	r1, #0xa
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 	b	.L1e4
 .L1dc:
 	mov	r0, r6
 	mov	r1, #7
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L1e4:
 	mov	r3, r6
 	add	r3, #0x66
@@ -217,7 +217,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
 	lsl	r0, #3
-	bl	__Func_8002322
+	bl	__sin
 	mov	r1, #0x80
 	ldr	r3, =Func_8000888
 	lsl	r1, #11
@@ -234,7 +234,7 @@
 	mov	r2, r6
 	add	r2, #8
 	mov	r0, r4
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldrh	r3, [r5]
 	mov	r2, #0x80
 	lsl	r2, #7

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80ece7c
+.thumb_func_start Anim_Thrash
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #0x24
@@ -11,18 +11,18 @@
 	mov	r2, #0x18
 	bl	_Func_80b82c4
 	mov	r0, #0x1d
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #4
 	mov	r0, r5
 	mov	r1, #2
 	str	r3, [r5, #0x18]
-	bl	Func_80d4604
+	bl	BaseAnim_Nova
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80ece7c
+.func_end Anim_Thrash
 
-.thumb_func_start Func_80eceac
+.thumb_func_start Anim_SevereBlow
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #0x24
@@ -32,14 +32,14 @@
 	mov	r2, #0x18
 	bl	_Func_80b82c4
 	mov	r0, #0xc
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #3
 	mov	r0, r5
 	mov	r1, #2
 	str	r3, [r5, #0x18]
-	bl	Func_80d4604
+	bl	BaseAnim_Nova
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80eceac
+.func_end Anim_SevereBlow
 

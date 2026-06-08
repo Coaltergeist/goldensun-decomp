@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80c08ec
+.thumb_func_start AnimTransitionIn
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -21,7 +21,7 @@
 	ldr	r5, =0x230
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -39,7 +39,7 @@
 	add	r0, r8
 	bl	_call_via_r3
 	mov	r0, #0x31
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r3, =0x544
 	add	r4, r6, r3
 	mov	r0, r8
@@ -64,7 +64,7 @@
 	ldr	r1, =0x50000c0
 	mov	r0, r4
 	mov	r3, #0x80
-	bl	Func_80c1724
+	bl	UploadBGPalette
 .Lc0974:
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =0x5000200
@@ -112,7 +112,7 @@
 	.align	2, 0
 .Lc09cc:
 	.word	0x1f83
-.func_end Func_80c08ec
+.func_end AnimTransitionIn
 
 .thumb_func_start Func_80c0a24
 	push	{r5, r6, r7, lr}
@@ -250,7 +250,7 @@
 	add	r6, r0, #1
 	ldr	r0, =0x16b
 	mov	r5, #0
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lc0b4a
 	ldr	r3, .Lc0b6c	@ 0x3f8e
@@ -379,17 +379,17 @@
 	mov	r1, r0
 	mov	r0, r6
 	bl	Func_8005258
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r2, r8
 	mov	r3, #0x36
 	ldrsh	r0, [r2, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r2, r8
 	mov	r3, #0x34
 	ldrsh	r0, [r2, r3]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	add	r0, sp, #0x1c
 	str	r5, [r0]
 	str	r5, [r0, #4]
@@ -403,14 +403,14 @@
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r8
 	mov	r1, r10
 	bl	Func_80051d8
 	add	r6, sp, #0x10
 	mov	r1, r6
 	mov	r0, r9
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r3, [r6, #4]
 	ldr	r2, [r6]
 	sub	r2, r5, r2
@@ -493,17 +493,17 @@
 	mov	r1, r0
 	mov	r0, r6
 	bl	Func_8005258
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r2, r8
 	mov	r3, #0x36
 	ldrsh	r0, [r2, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r2, r8
 	mov	r3, #0x34
 	ldrsh	r0, [r2, r3]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	add	r0, sp, #0x1c
 	mov	r1, r8
 	str	r5, [r0]
@@ -515,14 +515,14 @@
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r8
 	mov	r1, r10
 	bl	Func_80051d8
 	add	r6, sp, #0x10
 	mov	r1, r6
 	mov	r0, r9
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r3, [r6, #4]
 	ldr	r2, [r6]
 	sub	r2, r5, r2
@@ -613,7 +613,7 @@
 	strh	r3, [r7]
 	mov	r0, #1
 	add	r5, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x10
 	ble	.Lc0e58
 	pop	{r5, r6, r7}
@@ -643,7 +643,7 @@
 	strh	r3, [r7]
 	mov	r0, #1
 	add	r5, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x10
 	ble	.Lc0e90
 	pop	{r5, r6, r7}

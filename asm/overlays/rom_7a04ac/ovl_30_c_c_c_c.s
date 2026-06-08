@@ -75,10 +75,10 @@
 	bge	.L2926
 .L2912:
 	mov	r0, #0x6a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r1, =gScript_913__0200b2e4
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	ldr	r2, =.L3390
 	mov	r3, #1
 	str	r3, [r2]
@@ -166,7 +166,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r3, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L2aa2
@@ -179,7 +179,7 @@
 	cmp	r3, #0
 	bne	.L2a1a
 	mov	r0, #0xf6
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L2a1a:
 	ldr	r3, =.L338c
 	ldr	r3, [r3]
@@ -242,10 +242,10 @@
 	strb	r3, [r1, #9]
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r1, =gScript_913__0200b308
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 .L2aa2:
 	pop	{r5, r6, r7}
 	pop	{r0}

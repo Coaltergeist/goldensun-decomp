@@ -7,7 +7,7 @@
 	mov	r6, r0
 	bl	__MapActor_GetActor
 	mov	r5, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =OvlFunc_947_200a0b8
 	ldr	r2, [r5, #8]
 	str	r3, [r5, #0x6c]
@@ -23,10 +23,10 @@
 	bl	__Func_8010704
 	ldr	r3, =0x1f5
 	add	r0, r6, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r1, =OvlData_947_200ad64
 	mov	r0, r6
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	bl	__Func_8091750
 	add	sp, #8
 	pop	{r5, r6}

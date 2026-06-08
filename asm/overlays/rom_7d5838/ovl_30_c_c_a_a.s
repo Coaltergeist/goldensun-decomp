@@ -4,7 +4,7 @@
 	push	{lr}
 	mov	r0, #0x95
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L56
 	ldr	r0, =.L1040

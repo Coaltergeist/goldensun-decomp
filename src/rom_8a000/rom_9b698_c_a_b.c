@@ -5,8 +5,8 @@
  * asm/rom_8a000/rom_9b698_c_a_a.o and asm/rom_8a000/rom_9b698_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_800ba30(unsigned int);
+extern void _Sprite_SetAnim(unsigned int);
 
 void Func_809ba70(unsigned int *p) {
-    _Func_800ba30(*p);
+    _Sprite_SetAnim(*p);
 }

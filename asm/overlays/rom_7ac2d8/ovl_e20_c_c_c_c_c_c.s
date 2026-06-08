@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_924_2008f14
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1637
 	mov	r1, #1
 	bl	__Func_801776c

@@ -24,7 +24,7 @@
 	bl	__Func_8012078
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_949_2008224

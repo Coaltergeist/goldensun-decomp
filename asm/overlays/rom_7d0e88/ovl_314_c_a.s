@@ -156,7 +156,7 @@
 	bl	__Func_8010704
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, r7
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -175,7 +175,7 @@
 	add	r3, #2
 	mov	r0, #0x46
 	mov	r1, #0x28
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	b	.Lf4c
 .Lf38:
 	ldr	r2, [r6, #8]
@@ -186,7 +186,7 @@
 	add	r3, #2
 	mov	r0, #0x44
 	mov	r1, #0x28
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 .Lf4c:
 	mov	r0, #1
 .Lf4e:
@@ -239,7 +239,7 @@
 	bl	OvlFunc_947_2008528
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, r7
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -452,7 +452,7 @@
 	cmp	r3, #0
 	beq	.L1158
 	mov	r0, r9
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 .L1158:
 	ldr	r0, [sp, #4]
 	add	sp, #8
@@ -480,7 +480,7 @@
 	cmp	r6, #0x1f
 	bhi	.L11ac
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, [r5, #0x1c]
 	ldr	r1, =0xffffe667
 	ldr	r3, [r5, #0xc]
@@ -622,10 +622,10 @@
 	mov	r2, r6
 	mov	r1, r7
 	str	r3, [r6, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #1
 	beq	.L1396
 	mov	r0, r6
@@ -650,7 +650,7 @@
 	mov	r1, r7
 	mov	r2, r6
 	str	r3, [r6, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r0, r6
 	mov	r1, r5
 	bl	OvlFunc_947_2008350
@@ -658,20 +658,20 @@
 	bne	.L1396
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bne	.L1396
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #6
 	mov	r0, r5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #6
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x98
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r5
 	mov	r1, #7
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #0xc0
 	lsl	r3, #10
 	str	r3, [r5, #0x30]
@@ -698,7 +698,7 @@
 	bl	__Func_8092158
 	mov	r0, r5
 	mov	r1, #6
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Func_800c528

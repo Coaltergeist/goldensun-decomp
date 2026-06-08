@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_807961c
+.thumb_func_start AddPartyMember
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_8079358
+	bl	SetFlag
 	mov	r2, #0
 	cmp	r2, r5
 	bge	.L7964e
@@ -38,15 +38,15 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_807961c
+.func_end AddPartyMember
 
 .thumb_func_start Func_8079664
 	push	{r5, r6, lr}
 	mov	r5, r0
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_8079374
+	bl	ClearFlag
 	mov	r1, #0
 	cmp	r1, r6
 	bge	.L79696
@@ -83,7 +83,7 @@
 	cmp	r1, #0
 	bne	.L796a8
 .L796b4:
-	bl	Func_80795fc
+	bl	GetPartySize
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
@@ -95,7 +95,7 @@
 	mov	r0, #0
 	cmp	r5, #0
 	beq	.L796f2
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r1, #0
 	cmp	r0, #0
 	beq	.L796ee
@@ -123,7 +123,7 @@
 	.word	0xff
 .func_end Func_80796c4
 
-.thumb_func_start Func_8079700
+.thumb_func_start AddCoins
 	push	{lr}
 	ldr	r1, =gState
 	ldr	r3, [r1, #0x10]
@@ -141,5 +141,5 @@
 	mov	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end Func_8079700
+.func_end AddCoins
 

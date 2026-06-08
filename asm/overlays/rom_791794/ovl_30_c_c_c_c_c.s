@@ -13,7 +13,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #0x44
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	str	r0, [sp, #0x40]
 	str	r0, [sp, #0x3c]
 	ldr	r1, [sp, #0x40]
@@ -245,21 +245,21 @@
 	ldrb	r3, [r4]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_8002322
+	bl	__sin
 	ldr	r2, [sp]
 	ldr	r4, [sp, #0x30]
 	ldrb	r3, [r2, #1]
 	lsl	r6, r0, #1
 	mov	r0, r3
 	mul	r0, r4
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r7, r0, #1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #0x2c]
 	ldrb	r3, [r0, #2]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r11
 	lsl	r0, #1
 	cmp	r2, #0
@@ -395,7 +395,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #4
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r3, #0
 	mov	r9, r0
 	mov	r0, sp

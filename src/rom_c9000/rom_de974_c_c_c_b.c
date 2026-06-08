@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_de974_c_c_c_a.o and asm/rom_c9000/rom_de974_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_80dea70(void *context, int subanim);
+extern int BaseAnim_ParticleSpray(void *context, int subanim);
 
 void Func_80de998(void *context) {
-    Func_80dea70(context, 3);
+    BaseAnim_ParticleSpray(context, 3);
 }

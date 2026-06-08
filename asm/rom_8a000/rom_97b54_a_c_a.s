@@ -18,7 +18,7 @@
 	cmp	r0, #0
 	beq	.L97bb2
 .L97b90:
-	bl	Func_80044d0
+	bl	atan2
 	ldrh	r3, [r5, #6]
 	sub	r0, r3
 	lsl	r0, #16
@@ -62,12 +62,12 @@
 	mov	r1, r0
 	mov	r2, r6
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r0, =0x11d
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L97c20
@@ -78,14 +78,14 @@
 	ldr	r3, =0x1999
 	mov	r1, #0
 	str	r3, [r5, #0x48]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r5
 	add	r2, #0x5e
 	mov	r3, #0xc
 	strh	r3, [r2]
 	ldr	r1, =Data_9f0b0
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L97c20:
 	add	sp, #0xc
 	pop	{r5, r6}
@@ -93,7 +93,7 @@
 	bx	r0
 .func_end Func_8097b70
 
-.thumb_func_start Func_8097c3c
+.thumb_func_start Field_Move_Target
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -124,7 +124,7 @@
 	str	r6, [r2, #0x68]
 	ldr	r0, [sp, #0x14]
 	ldr	r1, =.L9f0bc
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	ldr	r0, [sp, #0x14]
 	bl	Func_8098070
 	mov	r10, r0
@@ -150,14 +150,14 @@
 	ldr	r1, [sp, #8]
 	mov	r0, r5
 	mov	r2, r9
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r2, r9
 	mov	r0, r9
 	ldr	r1, [r2]
 	ldr	r3, [r0, #8]
 	ldr	r2, [r2, #4]
 	mov	r0, r10
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r10
 	bl	Func_8098184
 	mov	r3, #0x80
@@ -207,15 +207,15 @@
 	ldr	r1, [sp, #8]
 	mov	r0, r11
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r10
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r10
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r10
 	str	r5, [r0, #0x24]
 	str	r5, [r0, #0x28]
@@ -232,17 +232,17 @@
 	ldr	r1, [sp, #8]
 	mov	r0, r11
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, #0x80
 	lsl	r0, #10
 	mov	r1, r8
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r10
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r10
 	bl	_Func_800ca6c
 	ldr	r3, [r6, #8]
@@ -254,7 +254,7 @@
 	str	r3, [r7, #8]
 	mov	r1, r8
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r6, #8]
 	add	r5, sp, #0x1c
 	str	r3, [r5]
@@ -266,10 +266,10 @@
 	mov	r1, r8
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
-	bl	_Func_80120dc
+	bl	_TestCollision
 	cmp	r0, #0
 	bgt	.L97e16
 	mov	r0, r6
@@ -319,7 +319,7 @@
 .L97e16:
 	mov	r0, r10
 	mov	r1, #4
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
 	mov	r2, #0xf
@@ -327,14 +327,14 @@
 	cmp	r3, #0
 	bne	.L97ee4
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L97ee4
 .L97e32:
 	mov	r1, #1
 	str	r1, [sp, #4]
 .L97e36:
 	mov	r0, #0xaf
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [r7]
 	str	r2, [sp, #0x10]
 	ldr	r0, [sp, #8]
@@ -347,9 +347,9 @@
 	lsr	r3, #30
 	ldrb	r1, [r2, r3]
 	mov	r0, r10
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0xf
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, r6
 	add	r3, #0x5b
 	mov	r2, #0
@@ -362,7 +362,7 @@
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	ldr	r1, [sp]
 	mov	r3, r10
 	mov	r2, r9
@@ -373,13 +373,13 @@
 	mov	r0, r11
 	mov	r1, r8
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r2, [r7, #4]
 	mov	r0, r10
 	ldr	r1, [r7]
 	add	r2, r11
 	ldr	r3, [r7, #8]
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	ldr	r0, [sp, #4]
 	cmp	r0, #1
 	bne	.L97ece
@@ -400,7 +400,7 @@
 	ldr	r1, [r5]
 	ldr	r2, [r5, #4]
 	ldr	r3, [r5, #8]
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .L97ece:
 	mov	r0, r6
 	bl	_Func_800ca6c
@@ -414,7 +414,7 @@
 	b	.L97ef8
 .L97ee4:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =gKeyPress
 	ldr	r5, [r3]
 	ldr	r3, =0x303
@@ -427,11 +427,11 @@
 	add	r3, #0x44
 	ldrb	r1, [r3]
 	mov	r0, r6
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	ldr	r0, [sp, #0x18]
 	ldr	r1, [r0, #0x3c]
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	ldr	r1, [sp, #0x18]
 	ldr	r3, [r1, #0x38]
 	str	r3, [r6, #0x6c]
@@ -462,7 +462,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8097c3c
+.func_end Field_Move_Target
 
 .thumb_Func_start Func_97f80
 	push	{r5, r6, r7, lr}
@@ -491,7 +491,7 @@
 	mov	r2, r5
 	lsl	r0, #13
 	lsr	r1, #16
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r6, #0xc]
 	ldr	r3, [r5, #8]
@@ -554,7 +554,7 @@
 	bx	r0
 .func_end Func_97f80
 
-.thumb_func_start Func_809802c
+.thumb_func_start Field_Move
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -569,9 +569,9 @@
 	beq	.L98058
 	mov	r0, r5
 	mov	r1, #4
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 .L98058:
 	bl	Func_809748c
 	mov	r0, r5
@@ -580,7 +580,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_809802c
+.func_end Field_Move
 
 .thumb_func_start Func_8098070
 	push	{r5, r6, r7, lr}
@@ -605,7 +605,7 @@
 	add	r2, r6
 	ldr	r3, [r0, #0x10]
 	mov	r0, #0xd7
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r10, r0
 	cmp	r0, #0
 	bne	.L980aa
@@ -628,7 +628,7 @@
 	strb	r3, [r2]
 	mov	r0, r10
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r10
 	mov	r1, r6
 	mov	r2, r5
@@ -644,12 +644,12 @@
 	add	r2, r3
 	ldr	r3, [r0, #0x10]
 	ldr	r0, =0x11d
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.L98152
 	ldr	r1, =.L9f0d4
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	bl	Random
 	mov	r3, #0x80
 	lsl	r3, #9
@@ -694,7 +694,7 @@
 	cmp	r0, #0
 	bge	.L980dc
 	mov	r0, #0x8a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r10
 .L98166:
 	pop	{r3, r5, r6}
@@ -738,7 +738,7 @@
 	push	{r6, r7}
 	mov	r7, r0
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r5, =0xfffff800
 	mov	r2, #0x1e
 	mov	r8, r2
@@ -760,7 +760,7 @@
 	add	r3, r5
 	str	r3, [r7, #0x1c]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	add	r8, r3
@@ -777,12 +777,12 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	ldr	r0, =0x11d
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L9825e
 	ldr	r1, =.L9f0d4
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	bl	Random
 	mov	r3, r10
 	mov	r2, r6
@@ -819,9 +819,9 @@
 	cmp	r2, #0
 	bge	.L98202
 	mov	r0, #0x83
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r7
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5
@@ -877,7 +877,7 @@
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r1, #0xcc
 	lsl	r1, #4
 	add	r3, r5, r1
@@ -954,7 +954,7 @@
 	bx	r0
 .func_end Func_80982dc
 
-.thumb_func_start Func_80983a0
+.thumb_func_start Field_Reveal
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -973,7 +973,7 @@
 	mov	r10, r0
 	ldr	r0, [r0]
 	ldr	r7, [r5, #0x10]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r2, =0x52c
 	ldr	r3, [r0, #8]
 	add	r5, r7, r2
@@ -997,7 +997,7 @@
 	mov	r0, #1
 	bl	Func_8091254
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =0x50000005
 	mov	r2, sp
 	mov	r1, #8
@@ -1010,7 +1010,7 @@
 	bl	Func_8096b28
 .L9841c:
 	mov	r0, #0x83
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0xcb8
 	mov	r1, #1
 	add	r3, r6, r0
@@ -1050,7 +1050,7 @@
 	add	r6, r7, r2
 .L9846a:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	strh	r5, [r6]
 	add	r5, #1
 	cmp	r5, #0x12
@@ -1066,7 +1066,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80983a0
+.func_end Field_Reveal
 
 .thumb_func_start Func_80984c0
 	push	{r5, r6, r7, lr}
@@ -1088,7 +1088,7 @@
 	cmp	r3, #0
 	beq	.L9859c
 	mov	r0, #0xa7
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =Func_80982dc
 	bl	StopTask
 	ldr	r1, =0xcba
@@ -1114,7 +1114,7 @@
 	mov	r0, #0x1e
 	bl	Func_8091254
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =0x40000005
 	mov	r2, sp
 	mov	r1, #8
@@ -1148,7 +1148,7 @@
 	add	r3, r7, r1
 	strb	r2, [r3]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L9859c
 
 	.align	2, 0
@@ -1165,7 +1165,7 @@
 	bx	r0
 .func_end Func_80984c0
 
-.thumb_func_start Func_80985a8
+.thumb_func_start Field_Growth_Target
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -1175,7 +1175,7 @@
 	bl	Func_8098698
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r5
 	add	r2, #0x59
 	mov	r3, #0
@@ -1190,19 +1190,19 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x7e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_809748c
 .L985f2:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80985a8
+.func_end Field_Growth_Target
 
-.thumb_func_start Func_80985fc
+.thumb_func_start Field_Growth
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1211,7 +1211,7 @@
 	ldr	r7, [r3]
 	bl	Func_8098698
 	mov	r0, #0x86
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #4
 	mov	r6, sp
 	mov	r8, r3
@@ -1231,18 +1231,18 @@
 	mov	r2, r6
 	mov	r1, r0
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r2, [r7, #8]
 	ldr	r1, [r6]
 	ldr	r3, [r6, #8]
 	mov	r0, #0xd9
 	str	r2, [r6, #4]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L98660
 	ldr	r1, =.L9f11c
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r2, r5
 	add	r2, #0x55
 	mov	r3, #2
@@ -1252,7 +1252,7 @@
 	lsl	r0, #1
 	lsr	r0, #16
 	add	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	add	r8, r3
@@ -1260,7 +1260,7 @@
 	cmp	r3, #0
 	bge	.L98618
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_809748c
 	add	sp, #0xc
 	pop	{r3}
@@ -1268,7 +1268,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80985fc
+.func_end Field_Growth
 
 .thumb_func_start Func_8098698
 	push	{r5, r6, r7, lr}
@@ -1336,7 +1336,7 @@
 	mov	r2, r9
 	ldr	r1, [r2]
 	mov	r2, r10
-	bl	Func_800447c
+	bl	vec3_translate
 .L98716:
 	mov	r3, r10
 	mov	r0, #0x8e
@@ -1344,7 +1344,7 @@
 	ldr	r2, [r3, #4]
 	lsl	r0, #1
 	ldr	r3, [r3, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	ldr	r4, [r6, #0x50]
 	ldrb	r3, [r4, #5]
@@ -1409,13 +1409,13 @@
 
 .L987a4:
 	mov	r1, #0xb
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r0, r6
 	mov	r1, #7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
 	ldr	r1, =.L9f0b4
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r0, r6
 	mov	r1, #1
 	bl	_Func_800c528
@@ -1434,7 +1434,7 @@
 	bne	.L987e4
 	mov	r0, #0xe0
 	lsl	r0, #12
-	bl	Func_800447c
+	bl	vec3_translate
 .L987e4:
 	bl	Random
 	lsl	r5, r0, #1
@@ -1447,19 +1447,19 @@
 	mov	r2, r8
 	mov	r1, r0
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r5, r8
 	mov	r2, r8
 	ldr	r1, [r2]
 	ldr	r3, [r5, #8]
 	ldr	r2, [r2, #4]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .L98812:
 	mov	r0, #0x83
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	neg	r0, r0
 	add	r11, r0
@@ -1469,7 +1469,7 @@
 	b	.L986bc
 .L9882c:
 	mov	r0, #8
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1481,7 +1481,7 @@
 	bx	r0
 .func_end Func_8098698
 
-.thumb_func_start Func_8098848
+.thumb_func_start Field_Lift_Target
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1496,7 +1496,7 @@
 	mov	r0, r5
 	str	r7, [r5, #0x68]
 	ldr	r1, =.L9f0bc
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	ldr	r0, [r6, #4]
 	add	r5, sp, #8
 	str	r0, [r5]
@@ -1524,7 +1524,7 @@
 	str	r0, [sp, #4]
 	mov	r0, #0xf
 	mov	r8, sp
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r6, r8
 	mov	r5, #1
 .L988ac:
@@ -1544,7 +1544,7 @@
 	ldr	r3, =Func_8096b88
 	mov	r0, #0x82
 	str	r3, [r7, #0x6c]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, r7
 	add	r2, #0x55
 	mov	r3, #4
@@ -1580,7 +1580,7 @@
 	add	r3, r1
 	str	r3, [r7, #0xc]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0x80
 	lsl	r3, #14
 	add	r2, r5, r3
@@ -1601,9 +1601,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8098848
+.func_end Field_Lift_Target
 
-.thumb_func_start Func_8098954
+.thumb_func_start Field_Lift
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1645,7 +1645,7 @@
 	str	r0, [sp, #4]
 	mov	r0, #0xf
 	mov	r11, sp
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	mov	r7, r11
 	mov	r8, r0
@@ -1668,7 +1668,7 @@
 	ldr	r0, [sp]
 	bl	_Func_800ca6c
 	mov	r0, #0x86
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x80
 	mov	r3, #0x17
 	lsl	r0, #10
@@ -1687,12 +1687,12 @@
 	ldr	r3, [r3, #0xc]
 	ldr	r0, =0x11d
 	str	r3, [r7, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L98a44
 	ldr	r1, =.L9f0d4
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	bl	Random
 	mov	r3, r9
 	mov	r2, r6
@@ -1722,10 +1722,10 @@
 	cmp	r0, #0
 	bge	.L989ec
 	ldr	r0, [sp]
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r3, r11
 	ldr	r0, [r3, #4]
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	bl	Func_809748c
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
@@ -1736,7 +1736,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8098954
+.func_end Field_Lift
 
 .thumb_func_start Func_8098a84
 	push	{r5, r6, r7, lr}
@@ -1747,12 +1747,12 @@
 	mov	r8, r2
 	mov	r0, #0x8a
 	mov	r7, r3
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r5
 	mov	r0, #0xd7
 	mov	r2, r6
 	mov	r3, r8
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L98b02
@@ -1771,7 +1771,7 @@
 	and	r3, r2
 	strb	r3, [r1, #9]
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, #0x80
 	ldr	r3, [r5, #0x18]
 	lsl	r2, #9
@@ -1788,7 +1788,7 @@
 	add	r3, r6
 	strh	r3, [r5, #6]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r5, #0x18]
 	ldr	r2, =0xffff
 	cmp	r3, r2
@@ -1839,7 +1839,7 @@
 	lsr	r1, #16
 	lsl	r0, #13
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r5, #8]
@@ -1884,7 +1884,7 @@
 	ldr	r1, [r2]
 	lsl	r0, #12
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r5
 	bl	Func_80974d8
 	bl	Random
@@ -1892,7 +1892,7 @@
 	mov	r0, #0x80
 	mov	r2, r5
 	lsl	r0, #11
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r5, #8]
@@ -1937,7 +1937,7 @@
 	mov	r5, r0
 	mov	r0, #0x86
 	sub	sp, #0xc
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r1, [r5, #8]
 	mov	r6, sp
 	str	r1, [r6]
@@ -1948,7 +1948,7 @@
 	ldr	r0, =0x11b
 	str	r3, [r6, #8]
 	add	r2, r4
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	cmp	r0, #0
 	beq	.L98c4a
 	mov	r2, r0
@@ -1959,7 +1959,7 @@
 	mov	r3, #0x14
 	strh	r3, [r2]
 	ldr	r1, =Data_9f0b0
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L98c4a:
 	mov	r0, #0x80
 	lsl	r0, #9
@@ -1972,12 +1972,12 @@
 	ldr	r2, [r3, #4]
 	ldr	r0, =0x11d
 	ldr	r3, [r3, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L98ca0
 	ldr	r1, =.L9f0d4
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	bl	Random
 	mov	r2, r6
 	add	r2, #0x55

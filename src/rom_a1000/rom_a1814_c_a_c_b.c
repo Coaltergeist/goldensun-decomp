@@ -5,9 +5,9 @@
  * asm/rom_a1000/rom_a1814_c_a_c_a.o and asm/rom_a1000/rom_a1814_c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int _Func_80f9080(void);
+extern unsigned int _PlaySound(void);
 
 unsigned int Func_80a2438(void) {
-    _Func_80f9080();
+    _PlaySound();
     return 1;
 }

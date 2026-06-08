@@ -5,8 +5,8 @@
  * asm/rom_8a000/rom_97b54_c_a.o and asm/rom_8a000/rom_97b54_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80999f0(void);
+extern void Field_Douse(void);
 
 void Func_80999e4(void) {
-    Func_80999f0();
+    Field_Douse();
 }

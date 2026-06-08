@@ -6,11 +6,11 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int Func_8078480(unsigned int item);
-extern unsigned int Func_807842c(unsigned int unit, unsigned int item);
+extern unsigned int CanEquipItem(unsigned int unit, unsigned int item);
 
 unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
 {
 	if (!Func_8078480(arg1))
 		return 1;
-	return Func_807842c(arg0, arg1);
+	return CanEquipItem(arg0, arg1);
 }

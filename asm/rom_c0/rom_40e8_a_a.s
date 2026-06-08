@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80040e8
+.thumb_func_start ClearTasks
 	push	{lr}
 	ldr	r3, =gTasksEnabled
 	mov	r2, #0
@@ -35,5 +35,5 @@
 .L4128:
 	pop	{r0}
 	bx	r0
-.func_end Func_80040e8
+.func_end ClearTasks
 

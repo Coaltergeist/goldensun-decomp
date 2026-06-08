@@ -5,10 +5,10 @@
  * asm/rom_8a000/rom_92950_c_a_c_a.o and asm/rom_8a000/rom_92950_c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8092f84(unsigned int actor);
-extern void Func_809163c(unsigned int param_1);
+extern void ActorMessage(unsigned int actor);
+extern void CutsceneWait(unsigned int param_1);
 
 void Func_8093040(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
-    Func_8092f84(arg0);
-    Func_809163c(arg2);
+    ActorMessage(arg0);
+    CutsceneWait(arg2);
 }

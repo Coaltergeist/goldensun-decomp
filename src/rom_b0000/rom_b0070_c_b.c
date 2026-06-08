@@ -5,7 +5,7 @@
  * asm/rom_b0000/rom_b0070_c_a.o and asm/rom_b0000/rom_b0070_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char *_Func_8077394(void);
+extern unsigned char *_GetUnit(void);
 
 unsigned int Func_80b2778(unsigned int arg0, unsigned int arg1)
 {
@@ -13,7 +13,7 @@ unsigned int Func_80b2778(unsigned int arg0, unsigned int arg1)
 	unsigned char v;
 	unsigned int result;
 
-	p = _Func_8077394();
+	p = _GetUnit();
 	v = p[15];
 	result = 0;
 	if (arg1 == 0)

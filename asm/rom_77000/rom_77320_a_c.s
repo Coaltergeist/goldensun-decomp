@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8077428
+.thumb_func_start CalcStats
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -12,7 +12,7 @@
 	bl	Func_8004970
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r7, r0
 	mov	r0, #0x10
 	ldrsh	r3, [r7, r0]
@@ -172,7 +172,7 @@
 	b	.L77708
 .L77564:
 	ldrh	r0, [r7, r1]
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, #1
 	and	r3, r2
@@ -411,7 +411,7 @@
 	mov	r0, r4
 	mov	r1, r5
 	str	r4, [sp]
-	bl	Func_807a0cc
+	bl	GetDjinniInfo
 	ldr	r3, [r6]
 	mov	r2, #4
 	ldrsb	r2, [r0, r2]
@@ -511,7 +511,7 @@
 	cmp	r3, #0
 	beq	.L77904
 	ldrh	r0, [r7, r1]
-	bl	Func_8078414
+	bl	GetItemInfo
 	mov	r1, #0
 	str	r0, [r6, #0x58]
 	mov	r8, r1
@@ -738,15 +738,15 @@
 	mov	r0, #0x89
 .L779e2:
 	lsl	r0, #1
-	bl	Func_8079338
+	bl	GetFlag
 	b	.L77a28
 .L779ea:
 	ldr	r0, =0x113
-	bl	Func_8079338
+	bl	GetFlag
 	b	.L77a28
 .L779f2:
 	ldr	r0, =0x111
-	bl	Func_8079338
+	bl	GetFlag
 	b	.L77a28
 
 	.pool_aligned
@@ -754,7 +754,7 @@
 .L77a20:
 	mov	r0, #0x89
 	lsl	r0, #1
-	bl	Func_8079338
+	bl	GetFlag
 .L77a28:
 	cmp	r0, #0
 	beq	.L77a32
@@ -1022,9 +1022,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8077428
+.func_end CalcStats
 
-.thumb_func_start Func_8077c10
+.thumb_func_start CheckLure
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1034,8 +1034,8 @@
 	push	{r7}
 	ldr	r0, =0x167
 	sub	sp, #8
-	bl	Func_8079374
-	bl	Func_80795fc
+	bl	ClearFlag
+	bl	GetPartySize
 	mov	r10, r0
 	mov	r0, #0
 	mov	r8, r0
@@ -1052,7 +1052,7 @@
 .L77c44:
 	mov	r2, r9
 	ldrb	r0, [r2]
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #0xd8
 	mov	r7, r0
 	mov	r1, #0xe
@@ -1065,7 +1065,7 @@
 	ldrh	r0, [r2, r7]
 	str	r1, [sp, #4]
 	str	r2, [sp]
-	bl	Func_8078414
+	bl	GetItemInfo
 	mov	r5, r0
 	ldr	r2, [sp]
 	ldr	r1, [sp, #4]
@@ -1079,7 +1079,7 @@
 	ldr	r0, =0x167
 	str	r1, [sp, #4]
 	str	r2, [sp]
-	bl	Func_8079358
+	bl	SetFlag
 	ldr	r2, [sp]
 	ldr	r1, [sp, #4]
 .L77c86:
@@ -1106,7 +1106,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8077c10
+.func_end CheckLure
 
 .thumb_func_start Func_8077cb8
 	push	{r5, lr}
@@ -1167,7 +1167,7 @@
 	bx	r1
 .func_end Func_8077cb8
 
-.thumb_func_start Func_8077d38
+.thumb_func_start GameInit
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1217,7 +1217,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	str	r4, [sp]
-	bl	Func_8078ee8
+	bl	ResetPCs
 	ldr	r7, =gState
 	mov	r3, #0x84
 	lsl	r3, #2
@@ -1277,7 +1277,7 @@
 	add	r3, r7, r1
 	str	r4, [r3]
 	mov	r0, #0
-	bl	Func_807961c
+	bl	AddPartyMember
 	mov	r2, #0x83
 	ldr	r4, [sp]
 	ldr	r5, .L77e78	@ 1
@@ -1397,12 +1397,12 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8077d38
+.func_end GameInit
 
 .thumb_func_start Func_8077f40
 	push	{lr}
 	mov	r0, #0x20
-	bl	Func_8079358
+	bl	SetFlag
 	mov	r0, #0
 	bl	Func_8079ae8
 	mov	r0, #1
@@ -1410,11 +1410,11 @@
 	mov	r0, #5
 	bl	Func_8079ae8
 	mov	r0, #0
-	bl	Func_8077428
+	bl	CalcStats
 	mov	r0, #1
-	bl	Func_8077428
+	bl	CalcStats
 	mov	r0, #5
-	bl	Func_8077428
+	bl	CalcStats
 	pop	{r0}
 	bx	r0
 .func_end Func_8077f40
@@ -1422,24 +1422,24 @@
 .thumb_func_start Func_8077f70
 	push	{r5, r6, lr}
 	mov	r0, #0x20
-	bl	Func_8079374
+	bl	ClearFlag
 	mov	r0, #0x21
-	bl	Func_8079374
+	bl	ClearFlag
 	ldr	r0, =0x901
-	bl	Func_8079358
+	bl	SetFlag
 	mov	r0, #5
 	bl	Func_8079ae8
 	mov	r0, #5
-	bl	Func_8077428
+	bl	CalcStats
 	ldr	r0, =0x11b
-	bl	Func_8079374
+	bl	ClearFlag
 	mov	r0, #0x8d
 	lsl	r0, #1
-	bl	Func_8079358
+	bl	SetFlag
 	mov	r6, #0
 .L77fa0:
 	mov	r0, r6
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r5, r0
 	ldrh	r1, [r5, #0x34]
 	ldrh	r3, [r5, #0x36]
@@ -1518,7 +1518,7 @@
 	ldr	r3, =0x10
 	mov	r0, r6
 	strh	r3, [r2, r5]
-	bl	Func_8078708
+	bl	EquipItem
 	b	.L78044
 
 	.pool_aligned
@@ -1528,21 +1528,21 @@
 	bl	Func_8079ae8
 	mov	r0, r6
 	add	r6, #1
-	bl	Func_8077428
+	bl	CalcStats
 	cmp	r6, #1
 	ble	.L77fa0
 	mov	r1, #0x8c
 	mov	r0, #0
-	bl	Func_8078e28
+	bl	GiveInnateMove
 	mov	r1, #0x95
 	mov	r0, #0
-	bl	Func_8078e28
+	bl	GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #1
-	bl	Func_8078e28
+	bl	GiveInnateMove
 	mov	r1, #0x8d
 	mov	r0, #2
-	bl	Func_8078e28
+	bl	GiveInnateMove
 	ldr	r2, =gState
 	mov	r1, #0x96
 	ldr	r3, [r2, #0x10]
@@ -1559,7 +1559,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r6, #0
 	mov	r7, r0
 	cmp	r6, r7
@@ -1570,7 +1570,7 @@
 	lsl	r1, #1
 	add	r3, r6, r1
 	ldrb	r0, [r2, r3]
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r5, r0
 	ldrh	r1, [r5, #0x34]
 	ldrh	r3, [r5, #0x36]
@@ -1652,7 +1652,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r7, #0
 	mov	r8, r0
 	cmp	r7, r8
@@ -1670,7 +1670,7 @@
 	bne	.L7817c
 	mov	r0, #0x88
 	lsl	r0, #1
-	bl	Func_8079338
+	bl	GetFlag
 	cmp	r0, #0
 	bne	.L78190
 	mov	r0, #0x89
@@ -1678,12 +1678,12 @@
 	b	.L78188
 .L7817c:
 	ldr	r0, =0x111
-	bl	Func_8079338
+	bl	GetFlag
 	cmp	r0, #0
 	bne	.L78190
 	ldr	r0, =0x113
 .L78188:
-	bl	Func_8079338
+	bl	GetFlag
 	cmp	r0, #0
 	beq	.L78192
 .L78190:
@@ -1692,7 +1692,7 @@
 	cmp	r5, #0
 	beq	.L78206
 	mov	r0, r6
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r5, r0
 	ldrh	r3, [r5, #0x36]
 	strh	r3, [r5, #0x3a]

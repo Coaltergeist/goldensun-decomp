@@ -9,7 +9,7 @@
 	mov	r2, r5
 	mov	r1, r4
 	mov	r3, r6
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lf28
@@ -104,15 +104,15 @@
 
 .thumb_func_start OvlFunc_922_2008fcc
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #7
 	strh	r3, [r0, #6]
 	mov	r0, #0x7b
-	bl	__Func_80f9080
-	bl	__Func_8091df4
+	bl	__PlaySound
+	bl	__MapTransitionOut
 	bl	__Func_8091e20
 	mov	r0, #1
 	bl	__Func_8091e9c

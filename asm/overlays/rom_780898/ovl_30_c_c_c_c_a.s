@@ -24,12 +24,12 @@
 	add	r0, r6
 	mov	r2, r5
 	lsl	r0, #4
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r5]
 	ldr	r2, [r5, #4]
 	ldr	r3, [r5, #8]
 	ldr	r0, =0x11d
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L57de
@@ -46,10 +46,10 @@
 	bl	__Func_800c528
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r1, =gScript_883__0200e6e0
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -60,7 +60,7 @@
 	strb	r3, [r1, #9]
 .L57de:
 	mov	r0, #0x8a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	add	sp, #0xc
 	pop	{r5, r6}
 	pop	{r0}
@@ -73,7 +73,7 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r0, #0x9a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r5, =0xfffff800
 	mov	r2, #0x1e
 	mov	r8, r2
@@ -95,7 +95,7 @@
 	add	r3, r5
 	str	r3, [r7, #0x1c]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	add	r8, r3
@@ -109,7 +109,7 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	ldr	r0, =0x11d
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L58ac
@@ -117,7 +117,7 @@
 	bl	__Func_800c528
 	ldr	r1, =gScript_883__0200e6e4
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	bl	__Random
 	mov	r3, #0x80
 	lsl	r3, #9
@@ -155,7 +155,7 @@
 	cmp	r2, #0
 	bge	.L5846
 	mov	r0, #0x83
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0x80
 	mov	r2, #0
 	lsl	r3, #24

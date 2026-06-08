@@ -238,7 +238,7 @@
 	bx	r1
 .func_end Func_8017e88
 
-.thumb_func_start Func_8018038
+.thumb_func_start BufferString
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -288,7 +288,7 @@
 	ldr	r5, =0x140
 	mov	r0, #0x32
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -306,7 +306,7 @@
 	mov	r0, r10
 	ldr	r1, [sp, #0x30]
 	mov	r9, r3
-	bl	Func_8019bac
+	bl	HuffStr_Start
 	mov	r3, sp
 	add	r3, #0x54
 	str	r3, [sp, #0xc]
@@ -673,7 +673,7 @@
 	add	r5, sp, #0x44
 	mov	r0, r5
 	mov	r2, #0
-	bl	Func_8017dd4
+	bl	PrintNum
 	sub	r4, r0, r5
 	cmp	r4, #0x10
 	bne	.L18374
@@ -719,7 +719,7 @@
 	ldr	r1, [sp, #0xc]
 	add	r0, r2, r0
 	mov	r2, #0x18
-	bl	Func_80196c4
+	bl	DecompressString
 	ldr	r3, [sp, #0x18]
 	str	r3, [sp, #4]
 	add	r3, sp, #0x34
@@ -744,7 +744,7 @@
 	ldr	r1, [sp, #0xc]
 	add	r0, r2, r0
 	mov	r2, #0x18
-	bl	Func_80196c4
+	bl	DecompressString
 	ldr	r1, [sp, #0x18]
 	add	r3, sp, #0x34
 	str	r1, [sp, #4]
@@ -764,7 +764,7 @@
 	ldr	r1, [sp, #0xc]
 	add	r0, r2, r0
 	mov	r2, #0x18
-	bl	Func_80196c4
+	bl	DecompressString
 	ldr	r1, [sp, #0xc]
 	ldrh	r2, [r1]
 	mov	r3, r2
@@ -789,12 +789,12 @@
 	mov	r0, #6
 	bl	Func_8019944
 	mov	r1, #1
-	bl	_Func_808b158
+	bl	_GetLocationName
 	ldr	r3, =0x99b
 	ldr	r1, [sp, #0xc]
 	add	r0, r3
 	mov	r2, #0x18
-	bl	Func_80196c4
+	bl	DecompressString
 	ldr	r1, [sp, #0xc]
 	ldrh	r2, [r1]
 	mov	r3, r2
@@ -820,7 +820,7 @@
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	add	r1, sp, #0x54
 	mov	r2, r1
 	mov	r4, #0
@@ -840,7 +840,7 @@
 	sub	r5, r0, #1
 	mov	r0, #1
 	bl	Func_8019944
-	bl	_Func_8077394
+	bl	_GetUnit
 	add	r1, sp, #0x54
 	mov	r2, r1
 	mov	r4, #0
@@ -866,7 +866,7 @@
 	bl	_call_via_r9
 	sub	r2, r0, #1
 	mov	r0, r2
-	bl	_Func_8077394
+	bl	_GetUnit
 	add	r1, sp, #0x54
 	mov	r2, r1
 	mov	r4, #0
@@ -1045,7 +1045,7 @@
 	add	r2, r0, r1
 	strh	r3, [r2]
 	mov	r0, #0x32
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r5, =0x12b4
 	ldr	r2, [sp, #0x2c]
 	add	r0, sp, #0x20
@@ -1075,7 +1075,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8018038
+.func_end BufferString
 
 .thumb_func_start Func_801868c
 	push	{r5, r6, r7, lr}
@@ -1221,7 +1221,7 @@
 	mov	r5, r1
 	mov	r6, r2
 	mov	r1, #0
-	bl	Func_8018038
+	bl	BufferString
 	mov	r1, r5
 	mov	r2, r6
 	mov	r3, #0
@@ -1231,7 +1231,7 @@
 	bx	r0
 .func_end Func_8018790
 
-.thumb_func_start Func_80187ac
+.thumb_func_start TextBox
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1242,7 +1242,7 @@
 	ldr	r5, [r3]
 	mov	r7, r2
 	sub	sp, #0xc
-	bl	Func_8018038
+	bl	BufferString
 	mov	r2, #0xeb
 	lsl	r3, r0, #1
 	lsl	r2, #4
@@ -1270,9 +1270,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80187ac
+.func_end TextBox
 
-.thumb_func_start Func_80187fc
+.thumb_func_start DialogueBox
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1283,7 +1283,7 @@
 	ldr	r5, [r3]
 	mov	r7, r2
 	sub	sp, #0xc
-	bl	Func_8018038
+	bl	BufferString
 	mov	r2, #0xeb
 	lsl	r3, r0, #1
 	lsl	r2, #4
@@ -1312,7 +1312,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80187fc
+.func_end DialogueBox
 
 .thumb_func_start Func_8018850
 	push	{r5, r6, r7, lr}

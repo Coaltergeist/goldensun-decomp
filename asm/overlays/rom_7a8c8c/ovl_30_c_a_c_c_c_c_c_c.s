@@ -4,7 +4,7 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r1
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #0xa0
 	mov	r2, #0xa0
 	mov	r0, #0
@@ -21,12 +21,12 @@
 	bl	__Func_8092560
 	mov	r1, #7
 	mov	r0, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0
 	mov	r1, #6
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	__Func_8091750
 	pop	{r5, r6}
 	pop	{r0}
@@ -42,7 +42,7 @@
 	lsl	r1, #16
 	lsl	r2, #12
 	lsl	r3, #16
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r7, r0
 	mov	r5, #0
 	cmp	r7, #0
@@ -72,19 +72,19 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r5, r0
 	mov	r0, #0xe6
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	mov	r1, #0x80
 	mov	r2, r5
 	ldrb	r0, [r6, #0x1c]
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 	ldr	r3, =.L2488
 	str	r7, [r3]
 .L1b90:
@@ -95,7 +95,7 @@
 
 .thumb_func_start OvlFunc_922_2009b9c
 	push	{r5, lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r5, =.L2488
 	ldr	r0, [r5]
 	cmp	r0, #0
@@ -107,11 +107,11 @@
 	mov	r0, #0xe6
 	bl	__Func_8091a58
 	ldr	r0, =0xf13
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, [r5]
 	cmp	r0, #0
 	beq	.L1bc8
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 .L1bc8:
 	bl	__Func_8091750
 	pop	{r5}

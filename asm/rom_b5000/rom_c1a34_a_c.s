@@ -39,7 +39,7 @@
 	push	{r7}
 	mov	r11, r1
 	mov	r5, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =iwram_3001e74
 	mov	r8, r0
 	mov	r1, #0xa6
@@ -106,7 +106,7 @@
 	add	r3, #1
 	str	r3, [r7, #8]
 	ldr	r0, =0x173
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lc2584
 	b	.Lc2702
@@ -118,9 +118,9 @@
 	mov	r2, #0xc0
 	lsl	r2, #3
 	add	r0, r2
-	bl	_Func_8079358
+	bl	_SetFlag
 	ldrb	r0, [r5]
-	bl	_Func_80773d8
+	bl	_GetEnemyInfo
 	mov	r3, r11
 	mov	r10, r0
 	cmp	r3, #0
@@ -342,7 +342,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x83a
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc2756:
 	mov	r2, sp
 	add	r2, #0x18
@@ -371,7 +371,7 @@
 	ldrh	r3, [r3, r0]
 	mov	r0, r3
 	str	r3, [sp, #4]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x92
 	mov	r10, r0
 	lsl	r3, #1
@@ -384,7 +384,7 @@
 	b	.Lc28ee
 .Lc27a4:
 	mov	r0, #0x59
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	_Func_80198dc
 	ldr	r3, =0x129
 	add	r3, r10
@@ -402,7 +402,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x89a
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 	ldr	r3, =0x3fff
 	mov	r6, r10
 	mov	r9, r3
@@ -452,10 +452,10 @@
 	mov	r0, r5
 	bl	_Func_8019908
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0x89b
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc284c:
 	sub	r7, #1
 	cmp	r7, #0
@@ -469,7 +469,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x89c
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc286c:
 	mov	r3, r8
 	mov	r2, #6
@@ -480,7 +480,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x89d
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc2886:
 	mov	r3, r8
 	mov	r2, #8
@@ -491,7 +491,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x89e
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc28a0:
 	mov	r3, r8
 	mov	r2, #0xa
@@ -502,7 +502,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x89f
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc28ba:
 	mov	r3, r8
 	mov	r2, #0xc
@@ -513,7 +513,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x8a0
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc28d4:
 	mov	r3, r8
 	mov	r2, #0xe
@@ -524,7 +524,7 @@
 	bl	_Func_8019908
 	ldr	r0, =0x8a1
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lc28ee:
 	mov	r2, #0xa6
 	mov	r1, r10
@@ -562,8 +562,8 @@
 	bl	_Func_80175a0
 	ldr	r3, [sp, #0x14]
 	ldr	r0, [r3]
-	bl	_Func_8079700
-	bl	Func_80bb65c
+	bl	_AddCoins
+	bl	WaitTextPrompt
 .Lc2944:
 	ldr	r0, =ewram_200047c
 	mov	r10, r0
@@ -602,10 +602,10 @@
 	bl	_Func_8019908
 	ldr	r0, =0x83c
 	bl	_Func_80175a0
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 	ldr	r2, [sp, #0x14]
 	ldrh	r0, [r2, r5]
-	bl	_Func_8078618
+	bl	_GiveItem
 	cmp	r0, r6
 	bne	.Lc29a8
 	ldr	r0, [sp, #0x14]

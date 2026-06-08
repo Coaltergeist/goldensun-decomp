@@ -7,7 +7,7 @@
  */
 /* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix helper.
  * Maps song ids 0x46/0x4b/0x43 -> sfx mode 3, everything else -> 2.
- * (Identical logic to the inline block at Func_80f9080+0xe4.)
+ * (Identical logic to the inline block at PlaySound+0xe4.)
  */
 
 int Func_80f95c8(int songId) {

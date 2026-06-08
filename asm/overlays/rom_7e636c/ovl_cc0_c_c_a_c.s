@@ -19,7 +19,7 @@
 	mov	r8, r3
 .L121a:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, [r6, #0x50]
 	ldr	r1, =0xffffff00
 	ldrh	r3, [r2, #0x1e]
@@ -27,7 +27,7 @@
 	strh	r3, [r2, #0x1e]
 	ldr	r3, [r6, #0x50]
 	ldrh	r0, [r3, #0x1e]
-	bl	__Func_800231c
+	bl	__cos
 	lsr	r3, r0, #31
 	add	r0, r3
 	ldr	r3, [r6, #8]
@@ -45,7 +45,7 @@
 	ldr	r3, =OvlFunc_958_20091c8
 	mov	r0, #0x88
 	str	r3, [r6, #0x6c]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0x80
 	mov	r2, #0x80
 	mov	r0, r11
@@ -67,7 +67,7 @@
 	mov	r2, #0
 	strb	r2, [r3]
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0x80
 	lsl	r1, #14
 	mov	r0, r6
@@ -94,13 +94,13 @@
 	mov	r1, r8
 	lsl	r5, r1, #12
 	mov	r0, r5
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r10
 	mov	r3, r9
 	str	r0, [r2]
 	str	r3, [r2, #4]
 	mov	r0, r5
-	bl	__Func_8002322
+	bl	__sin
 	mov	r4, r10
 	ldr	r2, [r4]
 	str	r0, [r4, #8]
@@ -139,7 +139,7 @@
 	lsl	r1, #1
 	bl	__Func_8092128
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0x80
 	lsl	r1, #14
 	mov	r0, r6
@@ -151,16 +151,16 @@
 	lsl	r3, #5
 	strh	r3, [r2, #0x1e]
 	mov	r0, #0x9a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r11
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	__Func_8012350
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r11
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	add	sp, #0x1c
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

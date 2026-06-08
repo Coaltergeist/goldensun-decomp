@@ -7,10 +7,10 @@
  * temp reorders the add r0,#0x66. TRY declaring the address pointer first
  * (q = p + 0x66; *q = v) per the tarpman 'registers cross' rule, else permuter.
  */
-extern void __Func_80f9080(int a);
+extern void __PlaySound(int a);
 
 void OvlFunc_932_200b724(unsigned char *p) {
     unsigned short v = 0x21;
     *(unsigned short *)(p + 0x66) = v;
-    __Func_80f9080(0x120);
+    __PlaySound(0x120);
 }

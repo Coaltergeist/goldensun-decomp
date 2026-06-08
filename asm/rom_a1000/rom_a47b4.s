@@ -61,7 +61,7 @@
 	mov	r3, #0xa
 	mov	r9, r0
 	mov	r0, #0
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r7, r0
 	ldr	r0, =Func_80a19a0
 	bl	StopTask
@@ -73,7 +73,7 @@
 	bl	Func_80a22f4
 	mov	r0, #1
 	mov	r6, #0
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.La487c
 .La4854:
 	ldr	r1, =gKeyRepeat
@@ -96,11 +96,11 @@
 	mov	r10, r3
 .La4876:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .La487c:
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La48be
 	mov	r3, r10
@@ -133,10 +133,10 @@
 	mov	r0, r7
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	mov	r0, r7
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, r8
 	ldr	r0, [r3, #0x10]
 	bl	_Func_8016498
@@ -183,7 +183,7 @@
 	and	r0, r1
 	mov	r11, r1
 	str	r5, [sp, #8]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	mov	r10, r0
 	cmp	r3, #0
@@ -405,7 +405,7 @@
 	mov	r1, r8
 	mov	r2, #0x40
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	cmp	r7, #9
 	ble	.La4b50
 	mov	r0, #1
@@ -418,7 +418,7 @@
 	mov	r1, r8
 	mov	r2, #0x50
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r0, r7
 	sub	r0, #0xa
 	b	.La4b6c
@@ -433,7 +433,7 @@
 	mov	r1, r8
 	mov	r2, #0x50
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r0, r7
 .La4b6c:
 	mov	r1, #1
@@ -734,7 +734,7 @@
 	add	r2, #0x10
 	mov	r1, r7
 	ldr	r3, [sp, #0x14]
-	bl	_Func_801e940
+	bl	_UIDrawText
 	b	.La4e0e
 .La4dfe:
 	lsl	r2, #3
@@ -743,7 +743,7 @@
 	add	r2, #0x10
 	mov	r1, r7
 	ldr	r3, [sp, #0x14]
-	bl	_Func_801e940
+	bl	_UIDrawText
 .La4e0e:
 	add	sp, #4
 	pop	{r5, r6, r7}

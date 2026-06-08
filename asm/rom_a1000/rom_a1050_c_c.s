@@ -19,7 +19,7 @@
 	ldr	r3, [r3]
 	mov	r0, r9
 	mov	r10, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, [sp, #0x18]
 	lsl	r3, #1
 	str	r3, [sp, #8]
@@ -29,7 +29,7 @@
 	ldr	r0, =0x1ff
 	and	r0, r3
 	str	r3, [sp, #0xc]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, #0x80
 	lsl	r5, #1
 	mov	r2, r11
@@ -57,7 +57,7 @@
 	cmp	r5, #0
 	bne	.La11b4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r10
 	mov	r3, #0x20
 	ldr	r0, [r2, #0x24]
@@ -142,7 +142,7 @@
 	cmp	r5, #0
 	bne	.La1266
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r10
 	mov	r3, #0x50
 	ldr	r0, [r2, #0x24]
@@ -243,7 +243,7 @@
 .La132c:
 	mov	r0, r9
 	ldr	r1, [sp, #0xc]
-	bl	_Func_807842c
+	bl	_CanEquipItem
 	cmp	r0, #0
 	bne	.La1346
 	ldr	r0, =0xb21
@@ -282,10 +282,10 @@
 .La137e:
 	mov	r0, r9
 	ldr	r1, [sp, #0x18]
-	bl	_Func_8078708
+	bl	_EquipItem
 .La1386:
 	mov	r0, r9
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r0, r8
 	mov	r1, r6
 	mov	r2, r7
@@ -478,7 +478,7 @@
 	mov	r3, #0x28
 	mov	r1, r6
 	mov	r2, #0x30
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r3, #0x34
 	ldrsh	r5, [r7, r3]
 	mov	r1, r6
@@ -494,12 +494,12 @@
 	cmp	r5, r3
 	bge	.La1584
 	mov	r0, #4
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La1584:
 	cmp	r5, #0
 	bne	.La158e
 	mov	r0, #2
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La158e:
 	mov	r1, r6
 	mov	r0, r5
@@ -507,7 +507,7 @@
 	mov	r3, #0x28
 	bl	Func_80a14f0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r1, r6
 	ldr	r0, =.Laf218
 	mov	r2, #0
@@ -517,7 +517,7 @@
 	mov	r1, r6
 	mov	r3, #0x30
 	mov	r2, #0x30
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r3, #0x3a
 	ldrsh	r5, [r7, r3]
 	mov	r1, r6

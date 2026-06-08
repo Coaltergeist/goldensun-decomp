@@ -19,7 +19,7 @@
 	bl	Func_80b7ed8
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r5, =Func_8000888
 	ldr	r1, [r6, #0x18]
 	.call_via r5
@@ -60,13 +60,13 @@
 	bl	Func_80b7ed8
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r5, =Func_8000888
 	ldr	r1, [r6, #0x18]
 	.call_via r5
 	mov	r6, r0
 	mov	r0, r8
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
@@ -96,7 +96,7 @@
 .thumb_func_start Func_80b8530
 	push	{r5, lr}
 	mov	r5, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
@@ -107,7 +107,7 @@
 	cmp	r3, #0
 	bne	.Lb856a
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
@@ -148,7 +148,7 @@
 .Lb859a:
 	mov	r0, r7
 	add	r7, #1
-	bl	_Func_8077394
+	bl	_GetUnit
 	cmp	r7, #4
 	bne	.Lb859a
 	mov	r7, #0
@@ -163,7 +163,7 @@
 	mov	r0, r5
 	str	r1, [sp, #4]
 	str	r2, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, r0
 	add	r3, #0x40
 	ldrh	r3, [r3]
@@ -206,7 +206,7 @@
 	mov	r2, #2
 	mov	r0, r5
 	add	r8, r2
-	bl	_Func_8077394
+	bl	_GetUnit
 	strh	r5, [r6]
 	mov	r5, r0
 	add	r5, #0x40
@@ -367,7 +367,7 @@
 	mov	r7, r0
 	mov	r1, #0
 	ldrsh	r0, [r7, r1]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
@@ -419,13 +419,13 @@
 	b	.Lb87f6
 .Lb87bc:
 	mov	r0, #0x2d
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r7
 	bl	Func_80b8888
 	b	.Lb87f0
 .Lb87ca:
 	mov	r0, #0x2d
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r7
 	bl	Func_80b8c1c
 	b	.Lb87f0
@@ -495,13 +495,13 @@
 	bl	Func_80b8064
 	add	r7, #1
 	mov	r0, #8
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r5, #2
 	cmp	r7, r6
 	bne	.Lb884e
 .Lb8864:
 	mov	r0, #0x16
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	b	.Lb8876
 .Lb886e:
@@ -522,7 +522,7 @@
 	mov	r2, #0
 	ldrsh	r5, [r0, r2]
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	mov	r0, r5
 	bl	Func_80b8808
@@ -599,7 +599,7 @@
 	str	r1, [r2]
 	str	r3, [r2, #4]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Random
 	ldr	r0, [sp, #8]
 	bl	Func_80b7dd0
@@ -640,14 +640,14 @@
 	bne	.Lb8986
 	mov	r0, r6
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .Lb8986:
 	add	r5, #1
 	cmp	r5, r11
 	bne	.Lb8974
 .Lb898c:
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lb89bc	@ 0x3f40
 	strh	r3, [r2]
@@ -687,7 +687,7 @@
 	strh	r3, [r1]
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x10
 	bne	.Lb89d0
 	mov	r0, #9
@@ -710,7 +710,7 @@
 	mov	r6, r5
 	add	r6, #0x80
 	mov	r0, r6
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
@@ -738,7 +738,7 @@
 	add	r6, r3, r1
 .Lb8a42:
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
@@ -759,7 +759,7 @@
 	strh	r2, [r1, r3]
 	mov	r0, r10
 	mov	r1, #0
-	bl	Func_80b7b6c
+	bl	CreateBattleSpriteOverlays
 	ldr	r1, [sp, #0xc]
 	mov	r2, #8
 	ldrsh	r3, [r1, r2]
@@ -798,9 +798,9 @@
 	mov	r3, #0
 .Lb8ab2:
 	str	r3, [r0, #4]
-	bl	_Func_80d6578
+	bl	_Anim_Summon
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_80b6c90
 	ldr	r3, .Lb8ae8	@ 0x3f40
 	ldr	r2, =REG_BLDCNT
@@ -836,7 +836,7 @@
 	strh	r3, [r7]
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x10
 	bne	.Lb8af8
 	mov	r2, r11
@@ -858,7 +858,7 @@
 	mov	r3, #0x64
 	bl	Func_80c0cec
 	mov	r0, #3
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0
 .Lb8b36:
 	add	sp, #0x80
@@ -885,12 +885,12 @@
 	bne	.Lb8b66
 	str	r1, [r2]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lb8b6e
 .Lb8b66:
 	str	r1, [r2]
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb8b6e:
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
@@ -912,10 +912,10 @@
 	b	.Lb8c0a
 .Lb8b94:
 	ldr	r0, [r5, #8]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x24
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	bl	Random
 	mov	r1, #1
 	ldr	r0, [r5, #8]
@@ -932,7 +932,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #0x10
 	ldr	r0, [r0]
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r3, #0x24
 	ldrsh	r0, [r5, r3]
 	bl	Func_80b7dd0
@@ -950,9 +950,9 @@
 	mov	r3, #0
 	mov	r0, #4
 	str	r3, [r5, #0x1c]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
-	bl	_Func_80e3a3c
+	bl	_Anim_Attack
 	mov	r3, #0x24
 	ldrsh	r0, [r5, r3]
 	bl	Func_80b8000
@@ -989,14 +989,14 @@
 	mov	r3, #0x28
 	str	r3, [r2, #4]
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lb8c58
 .Lb8c4c:
 	mov	r3, #0x28
 	str	r1, [r2]
 	str	r3, [r2, #4]
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb8c58:
 	mov	r2, #8
 	ldrsh	r3, [r5, r2]
@@ -1044,10 +1044,10 @@
 	ldr	r0, [r0]
 	mov	r1, #3
 	mov	r10, r0
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r10
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	ldrh	r3, [r5, #0xa]
 	cmp	r3, #7
 	bhi	.Lb8cda
@@ -1113,25 +1113,25 @@
 	mov	r0, r6
 	str	r7, [r6]
 	str	r7, [r6, #0x18]
-	bl	_Func_80cb7f8
+	bl	_Anim_EPowerUp
 	mov	r3, #1
 	str	r3, [r6]
 	mov	r0, r6
-	bl	_Func_80cb7f8
+	bl	_Anim_EPowerUp
 	mov	r3, #2
 	str	r3, [r6]
 	mov	r0, r6
-	bl	_Func_80cb7f8
+	bl	_Anim_EPowerUp
 	mov	r3, #3
 	str	r3, [r6]
 	mov	r0, r6
-	bl	_Func_80cb7f8
+	bl	_Anim_EPowerUp
 	mov	r0, r6
 	str	r7, [r6]
-	bl	_Func_80d6660
+	bl	_Anim_Func
 	mov	r0, r10
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	add	r5, sp, #8
 	ldr	r3, [r5, #0x14]
 	mov	r2, r5
@@ -1182,7 +1182,7 @@
 	strb	r3, [r2, #3]
 .Lb8dd6:
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	ldrh	r3, [r6, #0x38]
 	sub	r3, r7
@@ -1197,7 +1197,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #5
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0
 	bl	_Func_801f200
 	bl	_Func_80198dc
@@ -1266,7 +1266,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #1
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	add	sp, #4
 	pop	{r3}
 	mov	r8, r3

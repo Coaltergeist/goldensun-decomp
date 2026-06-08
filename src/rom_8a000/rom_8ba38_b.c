@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_8ba38_a.o and asm/rom_8a000/rom_8ba38_c.o in
  * goldensun/stage1.ld.
  */
-extern int _Func_8079338(void);
+extern int _GetFlag(void);
 
 unsigned int Func_808d428(int x)
 {
@@ -13,8 +13,8 @@ unsigned int Func_808d428(int x)
     if (x == -1)
         return 1;
     if (x & 0x1000)
-        return _Func_8079338();
-    v = _Func_8079338();
+        return _GetFlag();
+    v = _GetFlag();
     return 1 - (((unsigned int)(-v | v)) >> 31);
 }
 unsigned int Func_808d458(unsigned int arg0, unsigned int arg1)

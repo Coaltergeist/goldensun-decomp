@@ -1108,7 +1108,7 @@
 	ldr	r1, =0x3004
 	mov	r0, #0x20
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp

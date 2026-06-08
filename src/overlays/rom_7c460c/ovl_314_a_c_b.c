@@ -7,8 +7,8 @@
  */
 extern unsigned char gState;
 extern void __Func_8092b94(int);
-extern int __Func_8079338(int);
-extern void __Func_8092f84(int, int);
+extern int __GetFlag(int);
+extern void __ActorMessage(int, int);
 
 void OvlFunc_939_2008980(void) {
     unsigned int r3;
@@ -21,10 +21,10 @@ void OvlFunc_939_2008980(void) {
     r2 = 0;
     if (*(short *)((char *)r3 + r2) != 0) {
         __Func_8092b94(0x2412);
-    } else if (__Func_8079338(0x941) != 0) {
+    } else if (__GetFlag(0x941) != 0) {
         __Func_8092b94(0x24dd);
     } else {
         __Func_8092b94(0x1bb6);
     }
-    __Func_8092f84(9, 0);
+    __ActorMessage(9, 0);
 }

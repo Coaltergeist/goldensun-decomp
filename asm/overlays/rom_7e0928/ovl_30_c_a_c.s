@@ -47,7 +47,7 @@
 	bl	__Func_8010704
 	ldr	r3, =0x205
 	add	r0, r6, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 .L644:
 	add	r6, #1
 	cmp	r6, #0x11
@@ -244,7 +244,7 @@
 	mov	r2, r5
 	lsl	r0, #13
 	str	r4, [sp, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r1, r8
 	ldr	r7, [r1, #8]
 	ldr	r2, [r5]
@@ -351,12 +351,12 @@
 	mov	r0, #0x78
 	mov	r1, #0x3c
 	bl	__Func_8010704
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #8
 	mov	r0, r11
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #6
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r5, =0x3333
 	mov	r0, #0x80
 	mov	r1, r8
@@ -365,36 +365,36 @@
 	str	r5, [r1, #0x34]
 	ldr	r1, [sp, #0x10]
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, r6
 	mov	r2, #0
 	mov	r1, r7
 	mov	r0, r8
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #6
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r11
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r2, #0xf0
 	lsl	r2, #1
 	add	r0, r2
 	ldr	r0, [r0]
 	mov	r1, r8
-	bl	__Func_800c4bc
+	bl	__Camera_SetTarget
 	mov	r1, #0x80
 	mov	r2, r5
 	lsl	r1, #8
 	mov	r0, r11
 	bl	__Func_8092064
 	mov	r0, #0xef
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r10
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, [sp, #0xc]
 	mov	r1, r9
 	mul	r1, r3
@@ -404,12 +404,12 @@
 	add	r1, r3
 	mov	r2, #0
 	ldr	r3, [r0, #0x10]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r10
 	bl	__Func_800ca6c
 	mov	r1, #1
 	mov	r0, r10
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r8
 	bl	__Func_800ca6c
 	mov	r1, #0xa6
@@ -417,19 +417,19 @@
 	cmp	r7, r1
 	blt	.L9a2
 	ldr	r0, =0x369
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x1f
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #6
 	mov	r1, #0x12
 	mov	r0, #0x1f
 	bl	__Func_809228c
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r8
 	bl	__Func_800ca6c
 	mov	r2, r8
@@ -455,19 +455,19 @@
 	bl	__Func_8010704
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xf0
-	bl	__Func_80f9080
+	bl	__PlaySound
 	b	.L9de
 .L9a2:
 	mov	r1, #1
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xd5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r2, #9
 	asr	r5, r7, #20
 	str	r2, [sp, #4]
@@ -487,7 +487,7 @@
 	bl	__Func_8010704
 .L9de:
 	mov	r0, #0xf
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	bl	__Func_8091750
 	b	.L9f2
 .L9ea:

@@ -16,7 +16,7 @@
 	str	r3, [r2]
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lc8
 	mov	r1, #0xd8
@@ -24,10 +24,10 @@
 	lsl	r2, #16
 	mov	r0, #8
 	lsl	r1, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #2
 	mov	r0, #8
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0

@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_cc5d8_c_a.o and asm/rom_c9000/rom_cc5d8_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80ccc38(void *context, int subanim);
+extern void BaseAnim_Tentacle(void *context, int subanim);
 
 void Func_80ccc2c(void *context) {
-    Func_80ccc38(context, 1);
+    BaseAnim_Tentacle(context, 1);
 }

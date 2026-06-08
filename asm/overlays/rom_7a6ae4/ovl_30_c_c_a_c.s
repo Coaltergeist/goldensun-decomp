@@ -69,24 +69,24 @@
 	str	r3, [r7, #8]
 	mov	r0, r6
 	mov	r1, r7
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bgt	.L8e6
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r5, =0x3333
 	mov	r0, #0xf
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xb9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	str	r5, [r6, #0x30]
 	str	r5, [r6, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r6
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r1, r8
 	str	r5, [r1, #0x30]
 	str	r5, [r1, #0x34]
@@ -94,7 +94,7 @@
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r8
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Func_800ca6c
 	ldr	r3, [r7]
@@ -106,7 +106,7 @@
 	str	r2, [r6, #0x2c]
 	mov	r0, r8
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	bl	OvlFunc_920_2008304
 .L8e6:
 	add	sp, #0xc

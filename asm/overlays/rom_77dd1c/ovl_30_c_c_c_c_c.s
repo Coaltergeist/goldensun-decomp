@@ -74,7 +74,7 @@
 
 .thumb_func_start OvlFunc_882_200c5fc
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0xee4
 	mov	r1, #1
 	bl	__Func_801776c
@@ -85,7 +85,7 @@
 
 .thumb_func_start OvlFunc_882_200c618
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1120
 	mov	r1, #1
 	bl	__Func_801776c

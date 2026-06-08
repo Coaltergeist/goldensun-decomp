@@ -9,7 +9,7 @@
 	lsr	r0, #16
 	ldrsb	r1, [r5, r0]
 	mov	r0, r6
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -17,7 +17,7 @@
 
 .thumb_func_start Func_809ad90
 	push	{lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9add6
 	ldr	r1, =gState
@@ -49,7 +49,7 @@
 	mov	r3, #1
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L9add6:
 	pop	{r0}
 	bx	r0
@@ -57,7 +57,7 @@
 
 .thumb_func_start Func_809ade8
 	push	{r5, lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L9ae28
@@ -77,7 +77,7 @@
 	add	r2, r3
 	mov	r1, #0
 	ldrsb	r1, [r2, r1]
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 .L9ae18:
 	mov	r2, r5
 	add	r2, #0x5b
@@ -85,7 +85,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L9ae28:
 	pop	{r5}
 	pop	{r0}

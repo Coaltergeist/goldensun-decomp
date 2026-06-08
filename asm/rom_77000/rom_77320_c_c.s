@@ -142,11 +142,11 @@
 	bx	r0
 .func_end Func_8078320
 
-.thumb_func_start Func_80783a4
+.thumb_func_start ModifyHP
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r1, #0x38
 	ldrsh	r3, [r6, r1]
@@ -163,19 +163,19 @@
 .L783c8:
 	mov	r0, r7
 	strh	r1, [r6, #0x38]
-	bl	Func_807822c
+	bl	UpdateStatBarPercent
 	mov	r2, #0x38
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80783a4
+.func_end ModifyHP
 
-.thumb_func_start Func_80783dc
+.thumb_func_start ModifyPP
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r1, #0x3a
 	ldrsh	r3, [r6, r1]
@@ -192,13 +192,13 @@
 .L78400:
 	mov	r0, r7
 	strh	r1, [r6, #0x3a]
-	bl	Func_807822c
+	bl	UpdateStatBarPercent
 	mov	r2, #0x3a
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80783dc
+.func_end ModifyPP
 
 	.section .rodata
 	.global .L7a828

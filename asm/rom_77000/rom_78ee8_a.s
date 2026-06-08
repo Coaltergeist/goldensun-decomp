@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078ee8
+.thumb_func_start ResetPCs
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -14,7 +14,7 @@
 	mov	r9, r10
 .L78efe:
 	mov	r0, r6
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r7, r0
 	ldr	r0, =0x66
 	mov	r1, r9
@@ -54,7 +54,7 @@
 	cmp	r0, r1
 	beq	.L78ff4
 .L78f4e:
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.L78fe2
@@ -95,13 +95,13 @@
 	ldrh	r3, [r6]
 	mov	r1, r9
 	and	r1, r3
-	bl	Func_8078588
+	bl	GiveItemTo
 	mov	r2, r8
 	mov	r1, r0
 	add	r5, #1
 	ldr	r0, [r2]
 	add	r6, #2
-	bl	Func_8078708
+	bl	EquipItem
 	cmp	r5, #0xc
 	bls	.L78f9c
 	mov	r3, r8
@@ -116,10 +116,10 @@
 	add	r3, #0x96
 	ldr	r0, [r1]
 	ldrb	r1, [r3]
-	bl	Func_80792fc
+	bl	SetMinLevel
 	mov	r2, r8
 	ldr	r0, [r2]
-	bl	Func_8077428
+	bl	CalcStats
 .L78fe2:
 	mov	r3, #4
 	add	r8, r3
@@ -139,5 +139,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8078ee8
+.func_end ResetPCs
 

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091e3c
+.thumb_func_start SetDestMap
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xb8
 	ldr	r3, [r3]
@@ -18,9 +18,9 @@
 	add	r3, r2, r0
 	strh	r1, [r3]
 	bx	lr
-.func_end Func_8091e3c
+.func_end SetDestMap
 
-.thumb_func_start Func_8091e6c
+.thumb_func_start SetRespawnMap
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xb8
 	ldr	r3, [r3]
@@ -38,5 +38,5 @@
 	add	r3, r2, r0
 	strh	r1, [r3]
 	bx	lr
-.func_end Func_8091e6c
+.func_end SetRespawnMap
 

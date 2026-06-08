@@ -20,7 +20,7 @@
 	asr	r6, r3, #20
 	mov	r1, r6
 	lsl	r0, #2
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	mov	r5, #0x10
 	mov	r2, #1
 	mov	r1, #0x10
@@ -36,7 +36,7 @@
 	asr	r6, r3, #20
 	mov	r1, r6
 	lsl	r0, #2
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	mov	r2, #1
 	mov	r1, #0x10
 	mov	r3, #1
@@ -51,7 +51,7 @@
 	asr	r6, r3, #20
 	mov	r1, r6
 	lsl	r0, #2
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	mov	r0, #0x47
 	mov	r1, #0x10
 	mov	r2, #1

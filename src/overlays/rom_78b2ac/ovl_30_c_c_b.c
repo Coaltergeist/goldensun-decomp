@@ -5,17 +5,17 @@
  * asm/overlays/rom_78b2ac/ovl_30_c_c_a.o and asm/overlays/rom_78b2ac/ovl_30_c_c_c.o in
  * goldensun/overlays/rom_78b2ac/overlay.ld.
  */
-extern int __Func_8079338(int);
+extern int __GetFlag(int);
 
 unsigned int OvlFunc_890_200a5b0(void) {
     unsigned int r5 = 1;
-    if (!__Func_8079338(0x80b))
+    if (!__GetFlag(0x80b))
         r5 = 0;
-    if (!__Func_8079338(0x80c))
+    if (!__GetFlag(0x80c))
         r5 = 0;
-    if (!__Func_8079338(0x80d))
+    if (!__GetFlag(0x80d))
         r5 = 0;
-    if (!__Func_8079338(0x80e))
+    if (!__GetFlag(0x80e))
         r5 = 0;
     return r5;
 }

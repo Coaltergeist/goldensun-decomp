@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80052f4
+.thumb_func_start DecompressLZ16
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -32,7 +32,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80052f4
+.func_end DecompressLZ16
 
 .thumb_func_start DecompressLZ
 	push	{r5, r6, lr}
@@ -69,7 +69,7 @@
 	bx	r1
 .func_end DecompressLZ
 
-.thumb_func_start Func_8005394
+.thumb_func_start DecompressLZ2
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -102,9 +102,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8005394
+.func_end DecompressLZ2
 
-.thumb_func_start Func_80053e8
+.thumb_func_start DecompressLZ1
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -137,9 +137,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80053e8
+.func_end DecompressLZ1
 
-.thumb_func_start Func_800543c
+.thumb_func_start BlitFade_Add
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -174,9 +174,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800543c
+.func_end BlitFade_Add
 
-.thumb_func_start Func_8005490
+.thumb_func_start BlitFade_Sub
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -211,9 +211,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8005490
+.func_end BlitFade_Sub
 
-.thumb_func_start Func_80054e4
+.thumb_func_start BlitFade_Div4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -246,9 +246,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80054e4
+.func_end BlitFade_Div4
 
-.thumb_func_start Func_8005534
+.thumb_func_start BlitFade_Div2
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -281,9 +281,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8005534
+.func_end BlitFade_Div2
 
-.thumb_func_start Func_8005584
+.thumb_func_start BlitFadeAlt_Add
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -318,9 +318,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8005584
+.func_end BlitFadeAlt_Add
 
-.thumb_func_start Func_80055d8
+.thumb_func_start BlitFadeAlt_Sub
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -355,9 +355,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80055d8
+.func_end BlitFadeAlt_Sub
 
-.thumb_func_start Func_800562c
+.thumb_func_start BlitFadeAlt_Div4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -390,9 +390,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800562c
+.func_end BlitFadeAlt_Div4
 
-.thumb_func_start Func_800567c
+.thumb_func_start BlitFadeAlt_Div2
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -425,4 +425,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800567c
+.func_end BlitFadeAlt_Div2

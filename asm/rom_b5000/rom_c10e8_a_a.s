@@ -23,10 +23,10 @@
 	strh	r1, [r3]
 	bl	Func_80c1054
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =REG_BLDCNT
 	mov	r1, #0
-	bl	Func_800387c
+	bl	SetRegAnimDest
 .Lc1122:
 	cmp	r5, #0
 	beq	.Lc11c4
@@ -99,10 +99,10 @@
 	bne	.Lc1192
 .Lc11ac:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =REG_BLDCNT
 	mov	r1, #0
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	mov	r1, #0x90
 	ldr	r0, =Func_80c1084
 	lsl	r1, #3
@@ -174,7 +174,7 @@
 	mul	r2, r3
 	mov	r3, r2
 	add	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	ldr	r3, =0xfff
 	cmp	r0, r3
 	bgt	.Lc1266
@@ -235,12 +235,12 @@
 	lsr	r6, r3, #1
 	mov	r0, r5
 	mov	r8, r3
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r6
 	.call_via r9
 	str	r0, [r7]
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r6
 	.call_via r9
 	ldr	r2, [r7]
@@ -401,7 +401,7 @@
 	bx	r1
 .func_end Func_80c11ec
 
-.thumb_func_start Func_80c1438
+.thumb_func_start Task_BlitPreAnim
 	push	{lr}
 	ldr	r3, =gPtrs
 	mov	r2, r3
@@ -422,13 +422,13 @@
 	mov	r2, #0x80
 	ldr	r1, =0x6004000
 	lsl	r2, #7
-	bl	Func_80054e4
+	bl	BlitFade_Div4
 .Lc1464:
 	pop	{r1}
 	bx	r1
-.func_end Func_80c1438
+.func_end Task_BlitPreAnim
 
-.thumb_func_start Func_80c1470
+.thumb_func_start Anim_Cast
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -444,12 +444,12 @@
 	str	r3, [r2, #8]
 	ldr	r1, =0x13d0
 	mov	r0, #0x27
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0x80
 	mov	r11, r0
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =Func_8000888
 	mov	r7, #0x8e
 	lsl	r7, #5
@@ -467,12 +467,12 @@
 	lsr	r6, r3, #1
 	mov	r0, r5
 	mov	r8, r3
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r6
 	.call_via r10
 	str	r0, [r7]
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r6
 	.call_via r10
 	ldr	r2, [r7]
@@ -537,23 +537,23 @@
 	mov	r9, r2
 .Lc1552:
 	mov	r0, r7
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r8
 	.call_via r6
 	str	r0, [r5]
 	mov	r0, r7
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r8
 	.call_via r6
 	str	r0, [r5, #4]
 	mov	r0, r7
-	bl	Func_800231c
+	bl	cos
 	mov	r1, #0x80
 	lsl	r1, #2
 	.call_via r6
 	str	r0, [r5, #8]
 	mov	r0, r7
-	bl	Func_8002322
+	bl	sin
 	mov	r1, #0x80
 	lsl	r1, #2
 	.call_via r6
@@ -654,7 +654,7 @@
 	mov	r2, #7
 	mov	r0, #0x2e
 	str	r3, [sp]
-	bl	_Func_80ed408
+	bl	_BuildDraw2DFuncEx
 	mov	r5, #0xc8
 	mov	r3, #2
 	str	r3, [sp]
@@ -663,12 +663,12 @@
 	lsl	r5, #4
 	mov	r1, #7
 	mov	r0, #0x2f
-	bl	_Func_80ed408
+	bl	_BuildDraw2DFuncEx
 	mov	r1, r5
 	ldr	r0, =Func_80c11ec
 	bl	StartTask
 	mov	r1, r5
-	ldr	r0, =Func_80c1438
+	ldr	r0, =Task_BlitPreAnim
 	bl	StartTask
 	add	sp, #0x24
 	pop	{r3, r5, r6, r7}
@@ -679,7 +679,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80c1470
+.func_end Anim_Cast
 
 .thumb_func_start Func_80c16d0
 	push	{lr}
@@ -689,18 +689,18 @@
 	ldr	r0, =0x6004000
 	bl	_call_via_r3
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x28
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x27
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r3, .Lc170c
 	mov	r2, #0x80
 	lsl	r2, #19
 	strh	r3, [r2]
-	ldr	r0, =Func_80c1438
+	ldr	r0, =Task_BlitPreAnim
 	bl	StopTask
 	ldr	r0, =Func_80c11ec
 	bl	StopTask
@@ -716,7 +716,7 @@
 	bx	r1
 .func_end Func_80c16d0
 
-.thumb_func_start Func_80c1724
+.thumb_func_start UploadBGPalette
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -777,9 +777,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80c1724
+.func_end UploadBGPalette
 
-.thumb_func_start Func_80c1798
+.thumb_func_start Anim_MoveIntro
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -798,7 +798,7 @@
 	str	r3, [sp, #4]
 	mov	r11, r1
 	mov	r5, r2
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0xc9
 	ldr	r0, [sp, #4]
 	lsl	r1, #3
@@ -815,15 +815,15 @@
 	mov	r0, #0x80
 	lsl	r0, #19
 	ldr	r1, =0x3741
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	ldr	r0, =REG_BG2CNT
 	ldr	r1, =0x784
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	ldr	r1, =0x3f44
 	ldr	r0, =REG_BLDCNT
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0xf0
 	ldr	r3, =REG_WIN0H
 	strh	r2, [r3]
@@ -840,9 +840,9 @@
 	bne	.Lc18ce
 	ldr	r0, =REG_BLDALPHA
 	ldr	r1, =0x100e
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	mov	r0, r11
-	bl	Func_80c1470
+	bl	Anim_Cast
 	ldr	r4, =0x644
 	ldr	r3, [sp, #4]
 	add	r4, r3, r4
@@ -870,7 +870,7 @@
 	mov	r3, #0x80
 	add	r0, r4, r1
 	ldr	r1, =0x50000c0
-	bl	Func_80c1724
+	bl	UploadBGPalette
 .Lc1860:
 	mov	r1, r6
 	mov	r0, r10
@@ -914,7 +914,7 @@
 	mov	r3, #1
 	mov	r0, #1
 	str	r3, [r2]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	ldr	r4, =0x444
 	add	r8, r0
@@ -929,7 +929,7 @@
 	cmp	r5, #1
 	bne	.Lc1958
 	mov	r0, r11
-	bl	_Func_80ccaec
+	bl	_Anim_UnleashIntro
 	ldr	r2, =gDMATaskCount
 	mov	r3, #0x27
 	mov	r4, #0x40
@@ -984,7 +984,7 @@
 	add	r2, r5, r0
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	neg	r1, r1
 	add	r8, r1
@@ -1010,7 +1010,7 @@
 	str	r4, [r0, #0xc]
 	str	r3, [r0, #0x14]
 	str	r3, [r0, #0x10]
-	bl	_Func_80cb7f8
+	bl	_Anim_EPowerUp
 	b	.Lc199e
 .Lc197e:
 	add	r0, sp, #8
@@ -1027,7 +1027,7 @@
 	strh	r4, [r0, #0x24]
 	str	r3, [r0, #0x14]
 	str	r3, [r0, #0x10]
-	bl	_Func_80cc5d8
+	bl	_Anim_DjinnSet
 .Lc199e:
 	add	sp, #0xf0
 	pop	{r3, r5, r6, r7}
@@ -1038,5 +1038,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80c1798
+.func_end Anim_MoveIntro
 

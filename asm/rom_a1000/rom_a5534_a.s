@@ -4,21 +4,21 @@
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	ldr	r2, =0x392
 	add	r3, r5, r2
 	strh	r0, [r3]
 	ldr	r2, =.Laebcc
 	mov	r1, #0x80
-	bl	Func_8003fa4
-	bl	Func_8004080
+	bl	UploadSpriteGFX
+	bl	AllocSpriteSlot
 	mov	r3, #0xe5
 	lsl	r3, #2
 	add	r5, r3
 	strh	r0, [r5]
 	ldr	r2, =.Laeb4c
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -46,7 +46,7 @@
 	bl	Func_80a3d6c
 	mov	r7, r0
 	ldrb	r0, [r6, r5]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldrb	r3, [r6, r5]
 	mov	r2, #0x98
 	lsl	r2, #2
@@ -118,7 +118,7 @@
 	sub	sp, #8
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r8
 	ldr	r3, [r2, #0x18]
 	mov	r1, #0xe4
@@ -172,7 +172,7 @@
 	cmp	r6, #4
 	ble	.La566c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	add	sp, #8
 	pop	{r3, r5}

@@ -5,10 +5,10 @@
  * asm/overlays/rom_7b2078/ovl_314_c_c_c_c_c_a.o and asm/overlays/rom_7b2078/ovl_314_c_c_c_c_c_c.o in
  * goldensun/overlays/rom_7b2078/overlay.ld.
  */
-extern void __Func_80f9080(int);
+extern void __PlaySound(int);
 extern void __Func_8091e9c(int);
 
 void OvlFunc_926_200a764(void) {
-    __Func_80f9080(0x7b);
+    __PlaySound(0x7b);
     __Func_8091e9c(1);
 }

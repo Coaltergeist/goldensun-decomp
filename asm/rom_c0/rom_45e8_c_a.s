@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80045f0
+.thumb_func_start Debug_PrintHex
 	push	{lr}
 	ldr	r3, =iwram_3001f70
 	ldr	r4, =.L795c
@@ -22,7 +22,7 @@
 	strb	r3, [r2, #8]
 	pop	{r0}
 	bx	r0
-.func_end Func_80045f0
+.func_end Debug_PrintHex
 
 .thumb_func_start Func_8004620
 	push	{r5, r6, r7, lr}

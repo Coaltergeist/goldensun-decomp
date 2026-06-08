@@ -72,7 +72,7 @@
 	.word	.L58d0
 .L5788:
 	mov	r0, #0xdc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -117,7 +117,7 @@
 	bl	OvlFunc_969_200d688
 	ldr	r1, =gScript_969__0200e2d0
 	mov	r0, #0x17
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	b	.L58dc
 .L57ee:
 	ldr	r3, [r5]
@@ -187,7 +187,7 @@
 	cmp	r3, #0
 	bne	.L588a
 	mov	r0, #0xf6
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r1, [r6, #0xc]
 .L588a:
 	mov	r2, #0x90
@@ -201,7 +201,7 @@
 	b	.L58dc
 .L589a:
 	mov	r0, #0xbb
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x7fff
 	mov	r1, #0
 	bl	__Func_8091200
@@ -213,9 +213,9 @@
 
 .L58d0:
 	mov	r0, #0x17
-	bl	__Func_80920a0
+	bl	__MapActor_SetIdle
 	ldr	r0, =0x237
-	bl	__Func_8079358
+	bl	__SetFlag
 .L58dc:
 	cmp	r7, #0
 	beq	.L599c
@@ -233,14 +233,14 @@
 	ldr	r1, [r6, #8]
 	ldr	r3, [r6, #0x10]
 	lsl	r0, #1
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.L599c
 	ldr	r1, [r7, #0x50]
 	mov	r10, r1
 	ldr	r1, =gScript_969__0200e1cc
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r1, #1
 	mov	r0, r7
 	bl	__Func_80929d8
@@ -271,7 +271,7 @@
 	lsl	r0, r3, #16
 	sub	r0, r3
 	lsr	r0, #20
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #3
@@ -395,7 +395,7 @@
 	lsl	r1, #17
 	lsl	r2, #16
 	mov	r0, #0x17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0x17
 	bl	__MapActor_GetActor
 	mov	r5, #0x80
@@ -407,7 +407,7 @@
 	lsl	r1, #17
 	lsl	r2, #16
 	mov	r0, #0x17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0x17
 	bl	__MapActor_GetActor
 	ldr	r5, =0x14ccc
@@ -424,7 +424,7 @@
 	mov	r0, #0x17
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L5ab6:
 	mov	r1, r10
 	cmp	r1, #0
@@ -446,7 +446,7 @@
 	ldr	r3, [r0, #0x10]
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r1, #0xc0
 	lsl	r1, #11
 	mov	r7, r0
@@ -461,7 +461,7 @@
 	ldr	r1, =gScript_969__0200e734
 	mov	r0, r7
 	ldr	r5, [r7, #0x50]
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r1, #5
 	mov	r0, r7
 	bl	__Func_80929d8
@@ -487,7 +487,7 @@
 	str	r1, [r7, #0x68]
 	str	r3, [r7, #0x6c]
 	asr	r0, #4
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #3
@@ -539,7 +539,7 @@
 	mov	r8, r2
 	mov	r0, r8
 	mov	r10, r1
-	bl	__Func_800231c
+	bl	__cos
 	ldr	r3, [r5, #0x30]
 	add	r3, #0x1c
 	mov	r2, r3
@@ -549,7 +549,7 @@
 	mov	r0, r8
 	add	r3, r2
 	str	r3, [r5, #8]
-	bl	__Func_8002322
+	bl	__sin
 	mov	r2, #0xa4
 	ldr	r3, [r5, #8]
 	lsl	r2, #16

@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern void Func_942e0(unsigned int anim);
-extern void _Func_8079358(int x);
+extern void _SetFlag(int x);
 
 void Func_8094368(void) {
     Func_942e0(0x19);
-    _Func_8079358(0x121);
+    _SetFlag(0x121);
 }

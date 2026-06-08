@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80e0524
+.thumb_func_start LoadVFXFile
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -30,4 +30,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80e0524
+.func_end LoadVFXFile

@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_dbbdc_a.o and asm/rom_c9000/rom_dbbdc_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80dbc30(void *context, int subanim);
+extern void BaseAnim_Breath(void *context, int subanim);
 
 void Func_80dbbdc(void *context) {
-    Func_80dbc30(context, 0);
+    BaseAnim_Breath(context, 0);
 }

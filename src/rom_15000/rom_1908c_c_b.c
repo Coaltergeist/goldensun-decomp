@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 /* Func_8019ba0 — forwards its incoming stringID (r0) unchanged to
- * Func_8018038(stringID, 1). The param must be int (not u16): the ROM does NOT
+ * BufferString(stringID, 1). The param must be int (not u16): the ROM does NOT
  * zero-extend r0, so a u16 param's lsl#16/lsr#16 narrowing diverges. */
-extern int Func_8018038(int stringID, int unk);
+extern int BufferString(int stringID, int unk);
 
 int Func_8019ba0(int stringID) {
-    return Func_8018038(stringID, 1);
+    return BufferString(stringID, 1);
 }

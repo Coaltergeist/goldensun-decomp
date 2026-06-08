@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int *iwram_3001ebc;
-extern void Func_8016418(unsigned int *box, unsigned int noanim);
+extern void CloseUIBox(unsigned int *box, unsigned int noanim);
 extern void StopTask(void *task);
 extern void Func_801c3e8(void);
 
@@ -16,7 +16,7 @@ void Func_801c428(void) {
     box = (unsigned int *)*(unsigned int *)((char *)*(unsigned int *)&iwram_3001ebc + (0x8c << 2));
     if (box != 0) {
         if (*(unsigned short *)((char *)box + 0x16) != 0) {
-            Func_8016418(box, 2);
+            CloseUIBox(box, 2);
             StopTask((void *)Func_801c3e8);
         }
     }

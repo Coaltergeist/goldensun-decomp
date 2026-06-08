@@ -12,7 +12,7 @@
 	cmp	r3, r2
 	bne	.L191e
 	ldr	r0, =0x206
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1912
 	mov	r3, #0x2d
@@ -26,7 +26,7 @@
 	bl	__Func_8010704
 .L1912:
 	ldr	r0, =0x207
-	bl	__Func_8079374
+	bl	__ClearFlag
 	bl	__Func_8093fa0
 	b	.L1972
 .L191e:
@@ -40,7 +40,7 @@
 	cmp	r3, #0
 	bne	.L195a
 	ldr	r0, =0x206
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L194e
 	mov	r3, #0x2d
@@ -54,7 +54,7 @@
 	bl	__Func_8010704
 .L194e:
 	ldr	r0, =0x207
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8093c00
 	b	.L1972
 .L195a:

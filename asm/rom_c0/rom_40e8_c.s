@@ -216,7 +216,7 @@
 	bx	r1
 .func_end Func_80043e0
 
-.thumb_func_start Func_8004420
+.thumb_func_start RunTasks
 	push	{r5, r6, r7, lr}
 	ldr	r3, =gTasksEnabled
 	ldrb	r3, [r3]
@@ -242,4 +242,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004420
+.func_end RunTasks

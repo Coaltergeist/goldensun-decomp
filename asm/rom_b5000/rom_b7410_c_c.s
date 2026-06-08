@@ -21,16 +21,16 @@
 	str	r6, [r5, #0x1c]
 	str	r6, [r5, #0x18]
 	sub	sp, #0xc
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r3, #0x34
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r0, sp
 	str	r6, [r0]
 	str	r6, [r0, #4]
@@ -74,7 +74,7 @@
 	ldr	r1, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	ldr	r0, [r6, #0x10]
 	cmp	r0, #0
 	bge	.Lb8048
@@ -82,7 +82,7 @@
 .Lb8048:
 	ldr	r1, [r6, #0xc]
 	asr	r0, #3
-	bl	Func_80044d0
+	bl	atan2
 	mov	r3, #0x80
 	lsl	r3, #8
 	add	r0, r3
@@ -121,10 +121,10 @@
 	mov	r0, r5
 	ldr	r3, [r6, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -179,10 +179,10 @@
 	mov	r1, r8
 	mov	r2, #0
 	mov	r3, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.Lb8138
 
 	.align	2, 0
@@ -219,7 +219,7 @@
 	ldr	r1, [r2, #0xc]
 	ldr	r3, [r2, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	pop	{r0}
 	bx	r0
 .func_end Func_80b8144
@@ -256,7 +256,7 @@
 	ldr	r3, [r6, #0x10]
 	mov	r0, r5
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -291,10 +291,10 @@
 	ldr	r3, [r6, #0x10]
 	mov	r0, r5
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

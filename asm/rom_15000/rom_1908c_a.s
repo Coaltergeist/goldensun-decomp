@@ -90,7 +90,7 @@
 	add	r2, r3
 	ldrh	r0, [r1]
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L192d0	@ 0x3ff
 	ldrh	r2, [r7, #8]
 	and	r0, r3
@@ -294,7 +294,7 @@
 	mov	r3, #0xe8
 	lsl	r3, #8
 	add	r0, r3
-	bl	Func_8002322
+	bl	sin
 	ldrh	r2, [r6, #6]
 	asr	r0, #14
 	sub	r2, r0
@@ -310,7 +310,7 @@
 	lsl	r2, #7
 	strh	r3, [r7, #6]
 	add	r0, r2
-	bl	Func_800231c
+	bl	cos
 	ldrb	r3, [r6, #8]
 	asr	r0, #14
 	sub	r3, r0

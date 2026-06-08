@@ -6,8 +6,8 @@
  * goldensun/overlays/rom_794ac0/overlay.ld.
  */
 extern int *__MapActor_GetActor(int);
-extern void __Func_8079358(int);
-extern void __Func_8079374(int);
+extern void __SetFlag(int);
+extern void __ClearFlag(int);
 
 void OvlFunc_899_200a71c(void)
 {
@@ -20,7 +20,7 @@ void OvlFunc_899_200a71c(void)
     r3 >>= 20;
     r5 -= 0x22;
     if ((unsigned int)r5 <= 1 && r3 > 0x28 && r3 <= 0x2a)
-        __Func_8079358(0x94 << 2);
+        __SetFlag(0x94 << 2);
     else
-        __Func_8079374(0x94 << 2);
+        __ClearFlag(0x94 << 2);
 }

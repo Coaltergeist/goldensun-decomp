@@ -52,18 +52,18 @@
 	.word	.L452
 .L418:
 	ldr	r0, =0x94f
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L456
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L456
 	ldr	r0, =.L6154
 	b	.L45e
 .L430:
 	ldr	r0, =0x85a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L456
 	ldr	r0, =.L604c
@@ -88,7 +88,7 @@
 	b	.L45e
 .L456:
 	ldr	r0, =0x235
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =.L5b84
 .L45e:
 	pop	{r1}
@@ -126,7 +126,7 @@
 	strh	r6, [r3]
 .L4da:
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -163,7 +163,7 @@
 	strh	r6, [r3]
 .L52a:
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0

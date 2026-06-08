@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809207c
+.thumb_func_start MapActor_SetBehavior
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9209a
 	mov	r1, r0
@@ -13,16 +13,16 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	mov	r1, r5
-	bl	Func_8093a6c
+	bl	Actor_SetBehavior
 .L9209a:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_809207c
+.func_end MapActor_SetBehavior
 
-.thumb_func_start Func_80920a0
+.thumb_func_start MapActor_SetIdle
 	push	{lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L920ba
 	mov	r1, r0
@@ -35,12 +35,12 @@
 .L920ba:
 	pop	{r0}
 	bx	r0
-.func_end Func_80920a0
+.func_end MapActor_SetIdle
 
-.thumb_func_start Func_80920c0
+.thumb_func_start MapActor_SetExtra
 	push	{r5, r6, lr}
 	mov	r6, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L920de
@@ -49,28 +49,28 @@
 	ldr	r1, =Data_9ff40
 	str	r0, [r5, #0x68]
 	mov	r0, r5
-	bl	Func_8093a6c
+	bl	Actor_SetBehavior
 .L920de:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80920c0
+.func_end MapActor_SetExtra
 
-.thumb_func_start Func_80920e8
+.thumb_func_start MapActor_WaitScript
 	push	{lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L920f6
 	bl	_Func_800c4ec
 .L920f6:
 	pop	{r0}
 	bx	r0
-.func_end Func_80920e8
+.func_end MapActor_WaitScript
 
-.thumb_func_start Func_80920fc
+.thumb_func_start MapActor_RunScript
 	push	{r5, r6, lr}
 	mov	r6, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L92122
@@ -81,12 +81,12 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	mov	r1, r6
-	bl	Func_8093a6c
+	bl	Actor_SetBehavior
 	mov	r0, r5
 	bl	_Func_800c4ec
 .L92122:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80920fc
+.func_end MapActor_RunScript
 

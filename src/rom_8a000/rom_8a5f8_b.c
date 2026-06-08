@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_8a5f8_a.o and asm/rom_8a000/rom_8a5f8_c.o in
  * goldensun/stage1.ld.
  */
-extern void *_Func_80f9080(short arg0);
+extern void *_PlaySound(short arg0);
 extern unsigned int gState;
 
 void Func_808acc4(void) {
@@ -19,6 +19,6 @@ void Func_808acc4(void) {
     r3 += r2;
     r2 = 0;
     r0 = *(short *)((char *)r3 + r2);
-    r3 = (unsigned int)_Func_80f9080(r0);
+    r3 = (unsigned int)_PlaySound(r0);
     r3 = r3;
 }

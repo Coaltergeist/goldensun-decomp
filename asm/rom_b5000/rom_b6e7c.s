@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80b6e7c
+.thumb_func_start GetWeaponType
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r4, #0
@@ -28,7 +28,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_80b6e7c
+.func_end GetWeaponType
 
 	.section .rodata
 

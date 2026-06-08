@@ -6,7 +6,7 @@
 	mov	r6, r2
 	cmp	r7, #7
 	ble	.L79838
-	bl	Func_80773d8
+	bl	GetEnemyInfo
 	add	r0, #0x34
 	ldrb	r1, [r0]
 	cmp	r1, #0x2b

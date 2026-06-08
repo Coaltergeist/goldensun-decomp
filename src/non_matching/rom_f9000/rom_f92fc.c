@@ -1,4 +1,4 @@
-/* Func_80f92fc(void) sound-test / music control loop [rom_f9000]
+/* Debug_SoundTest(void) sound-test / music control loop [rom_f9000]
  * Source asm: goldensun/asm/rom_f9000/rom_f9080_a_a.s  (Camelot music-driver prefix)
  *
  * An infinite control loop (never returns) driving a 3-slot song selector
@@ -18,20 +18,20 @@
  * 0x080fb794 (label .Lfb794) and needs an alias to be nameable in C.
  *
  * Func_ -> friendly name:
- *   Func_80f9080 PlaySound        Func_80030f8 WaitFrames
- *   Func_80037d4 SetSoundFXMode   Func_b1c_from_thumb umod
+ *   PlaySound PlaySound        WaitFrames WaitFrames
+ *   SetSoundFXMode SetSoundFXMode   Func_b1c_from_thumb umod
  */
 extern int Data_fb794[3];          /* .Lfb794 @ 0x080fb794 (needs alias) */
 extern int gRAMBuildDate;
 extern unsigned int gKeyRepeat; /* controller flags */
 extern int Label_12cc;
 
-extern void Func_80f9080(int req);
-extern void Func_80037d4(int mode);
-extern void Func_80030f8(int frames);
+extern void PlaySound(int req);
+extern void SetSoundFXMode(int mode);
+extern void WaitFrames(int frames);
 extern int  Func_b1c_from_thumb(int a, int b);   /* (a % b) */
 
-void Func_80f92fc(void) {
+void Debug_SoundTest(void) {
     int slots[3];
     int cur;         /* current slot (ROM: pointer r6 / index r8 / count r7) */
     int fadeTimer;
@@ -58,7 +58,7 @@ void Func_80f92fc(void) {
         in = gKeyRepeat;
         if (in & 4) {
             channel = Func_b1c_from_thumb(channel + 1, 5);
-            Func_80037d4(channel);
+            SetSoundFXMode(channel);
         }
         if (in & 0x100) slots[cur] += 0xa;
         if (in & 0x200) slots[cur] -= 0xa;
@@ -70,11 +70,11 @@ void Func_80f92fc(void) {
         in = gKeyRepeat;
         if ((in & 0x80) && cur <= 1)
             cur++;
-        if (in & 1) Func_80f9080(slots[cur]);
-        if (in & 2) Func_80f9080(0x13);
-        if (in & 8) Func_80f9080(0x11);
-        if (in & 4) Func_80f9080(0x121);
+        if (in & 1) PlaySound(slots[cur]);
+        if (in & 2) PlaySound(0x13);
+        if (in & 8) PlaySound(0x11);
+        if (in & 4) PlaySound(0x121);
 
-        Func_80030f8(1);
+        WaitFrames(1);
     }
 }

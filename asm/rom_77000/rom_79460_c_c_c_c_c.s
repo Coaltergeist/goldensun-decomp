@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_807a5bc
+.thumb_func_start GetNumDjinn
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x24
 	add	r6, sp, #4
@@ -16,7 +16,7 @@
 	ldrh	r0, [r1]
 	add	r1, #2
 	str	r1, [sp]
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, r0
 	mov	r0, #1
 	neg	r0, r0
@@ -56,7 +56,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_807a5bc
+.func_end GetNumDjinn
 
 .thumb_func_start Func_807a628
 	push	{r5, r6, r7, lr}
@@ -64,11 +64,11 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r8, r1
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r1, r8
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_8078588
+	bl	GiveItemTo
 	mov	r6, #0
 	add	r5, #0xd8
 .L7a644:
@@ -78,7 +78,7 @@
 	bne	.L7a654
 	mov	r0, r7
 	mov	r1, r6
-	bl	Func_8078708
+	bl	EquipItem
 .L7a654:
 	add	r6, #1
 	cmp	r6, #0xe
@@ -127,7 +127,7 @@
 	mov	r10, r1
 .L7a6a6:
 	mov	r0, r10
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r7, r0
 	mov	r2, r7
 	add	r2, #0xd8
@@ -148,7 +148,7 @@
 .L7a6cc:
 	ldrh	r0, [r6, r7]
 	str	r2, [sp]
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r3, [r0, #2]
 	ldr	r2, [sp]
 	cmp	r3, #6
@@ -206,7 +206,7 @@
 	mov	r0, r10
 	bl	Func_8079ae8
 	mov	r0, r10
-	bl	Func_8077428
+	bl	CalcStats
 	mov	r2, #1
 	add	r10, r2
 	mov	r3, r10
@@ -232,7 +232,7 @@
 	mov	r1, #0x10
 	bl	Func_807a628
 	ldr	r0, =0x952
-	bl	Func_8079358
+	bl	SetFlag
 .L7a780:
 	mov	r0, #1
 	bl	Func_807808c
@@ -259,7 +259,7 @@
 	mov	r6, #0
 .L7a7b2:
 	mov	r0, r6
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #0xe
 	add	r0, #0xd8
 .L7a7bc:
@@ -274,7 +274,7 @@
 	bl	Func_8079ae8
 	mov	r0, r6
 	add	r6, #1
-	bl	Func_8077428
+	bl	CalcStats
 	cmp	r6, #3
 	ble	.L7a7b2
 	ldr	r0, =gState
@@ -302,7 +302,7 @@
 	strh	r3, [r2]
 	ldr	r0, =0x952
 	strh	r1, [r5]
-	bl	Func_8079374
+	bl	ClearFlag
 .L7a812:
 	pop	{r5, r6}
 	pop	{r0}

@@ -5,7 +5,7 @@
 	bl	Func_801a66c
 	bl	Func_801a778
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r0}
 	bx	r0
 .func_end Func_801c2f0
@@ -57,7 +57,7 @@
 	add	r3, r2, r1
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	bl	_Func_808b158
+	bl	_GetLocationName
 	ldr	r3, =0x99b
 	mov	r5, r0
 	add	r5, r3
@@ -67,7 +67,7 @@
 	add	r3, sp, #8
 	str	r0, [sp]
 	mov	r0, r5
-	bl	Func_80187ac
+	bl	TextBox
 	ldr	r2, [sp, #8]
 	ldr	r3, [sp, #4]
 	mov	r0, #0x1e
@@ -80,7 +80,7 @@
 	str	r1, [sp, #0xc]
 	str	r4, [sp]
 	str	r0, [sp, #0x10]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, #0x8c
 	lsl	r2, #2
 	mov	r1, r0
@@ -89,7 +89,7 @@
 	mov	r0, r5
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r3, #0x8d
 	lsl	r3, #2
 	add	r2, r6, r3

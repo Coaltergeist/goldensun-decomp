@@ -1,26 +1,26 @@
 	.include "macros.inc"
 
-	.export_func _Func_80044d0
+	.export_func _atan2
 	.export_func _Func_8010560
 	.export_func _Func_8010704
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
-	.export_func _Func_809207c
-	.export_func _Func_80920a0
-	.export_func _Func_80920fc
+	.export_func _MapActor_SetBehavior
+	.export_func _MapActor_SetIdle
+	.export_func _MapActor_RunScript
 	.export_func _Func_8092128
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092548
 	.export_func _Func_8092560
 	.export_func _Func_809259c
@@ -30,23 +30,23 @@
 	.export_func _Func_8092a1c
 	.export_func _Func_8092b94
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
+	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8093054
 	.export_func _Func_8092adc
-	.export_func _Func_80937b8
-	.export_func _Func_8093874
-	.export_func _Func_809335c
+	.export_func _MapActor_Emote
+	.export_func _MapActor_Surprise
+	.export_func _SetCameraTarget
 	.export_func _Func_80933d4
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8091e9c
 	.export_func _Func_8091eb0
-	.export_func _Func_8094ac8
-	.export_func _Func_8095160
+	.export_func _StartRain
+	.export_func _StartThunder
 	.export_func _Func_8091220
-	.export_func _Func_8091dc8
-	.export_func _Func_8091df4
+	.export_func _MapTransitionIn
+	.export_func _MapTransitionOut
 	.export_func _Func_8091e20
 	.export_func _Func_808acc4
-	.export_func _Func_80f9080
+	.export_func _PlaySound

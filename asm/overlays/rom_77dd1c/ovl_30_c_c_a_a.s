@@ -5,7 +5,7 @@
 	mov	r0, #0x84
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0xa
 	mov	r2, #0x54
 	str	r3, [sp]
@@ -25,7 +25,7 @@
 	mov	r0, #0x84
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r3, #0xa
 	mov	r2, #0x54
 	str	r3, [sp]

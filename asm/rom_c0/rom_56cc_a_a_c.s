@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8005920
+.thumb_func_start SomethingSaveHeader
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -159,7 +159,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8005920
+.func_end SomethingSaveHeader
 
 .thumb_func_start Func_8005a78
 	push	{r5, r6, lr}

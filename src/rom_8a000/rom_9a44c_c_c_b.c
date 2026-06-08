@@ -6,12 +6,12 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char **iwram_3001f30;
-extern void Func_809abb4(void);
+extern void Field_Halt(void);
 
 void Func_809ab98(void) {
     unsigned char *p;
 
     p = iwram_3001f30[5];
     p[0x5b] = 1;
-    Func_809abb4();
+    Field_Halt();
 }

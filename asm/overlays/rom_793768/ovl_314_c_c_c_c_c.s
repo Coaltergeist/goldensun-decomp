@@ -81,7 +81,7 @@
 	add	r3, r1
 	mov	r0, #0xac
 	mov	r1, r5
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L18da
@@ -94,18 +94,18 @@
 	bne	.L181e
 	mov	r0, r6
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r1, =gScript_898__0200a8c4
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	b	.L182e
 .L181e:
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r1, =gScript_898__0200a8dc
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 .L182e:
 	mov	r2, #0
 	mov	r3, r6

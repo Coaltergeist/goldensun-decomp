@@ -1,32 +1,32 @@
 	.include "macros.inc"
 
 	.export_func Func_8000b1c
-	.export_func _Func_80030f8
-	.export_func _Func_80162d4
-	.export_func _Func_8016418
-	.export_func _Func_801e74c
+	.export_func _WaitFrames
+	.export_func _CreateUIBox
+	.export_func _CloseUIBox
+	.export_func _DrawSmallText
 	.export_func _Func_801e7c0
 	.export_func _Func_801e8b0
-	.export_func _Func_801e940
+	.export_func _UIDrawText
 	.export_func _Func_801e9d4
 	.export_func _Func_801ea08
 	.export_func _Func_8016498
 	.export_func _Func_80164ac
-	.export_func _Func_8029554
-	.export_func _Func_802977c
-	.export_func _Func_8077394
-	.export_func _Func_8077428
-	.export_func _Func_8078414
-	.export_func _Func_8078618
-	.export_func _Func_8078b9c
+	.export_func _Debug_IconTest
+	.export_func _Debug_FaceTest
+	.export_func _GetUnit
+	.export_func _CalcStats
+	.export_func _GetItemInfo
+	.export_func _GiveItem
+	.export_func _GetMoveInfo
 	.export_func _Func_80796c4
-	.export_func _Func_80792fc
+	.export_func _SetMinLevel
 	.export_func _Func_8078500
 	.export_func _MapActor_GetActor
-	.export_func _Func_80924d4
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092b94
-	.export_func _Func_8092f84
-	.export_func _Func_80937b8
+	.export_func _ActorMessage
+	.export_func _MapActor_Emote
 	.export_func _Func_8091e9c
 	.export_func _Func_80a4924
-	.export_func _Func_80f9080
+	.export_func _PlaySound

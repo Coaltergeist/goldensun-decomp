@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c004
+.thumb_func_start InitActors
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -9,15 +9,15 @@
 	mov	r1, #0x5c
 	mov	r0, #6
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0xe0
 	lsl	r1, #5
 	mov	r8, r0
 	mov	r0, #5
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r6, r0
 	mov	r0, r7
-	bl	Func_800bb20
+	bl	InitSprites
 	mov	r5, #0
 	mov	r4, sp
 	str	r5, [r4]
@@ -40,7 +40,7 @@
 	bl	StartTask
 	b	.Lc05e
 .Lc056:
-	ldr	r0, =Func_800cacc
+	ldr	r0, =UpdateActors
 	ldr	r1, =0xc8a
 	bl	StartTask
 .Lc05e:
@@ -74,5 +74,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c004
+.func_end InitActors
 

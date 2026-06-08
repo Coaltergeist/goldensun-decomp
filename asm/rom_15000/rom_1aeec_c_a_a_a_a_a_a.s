@@ -8,11 +8,11 @@
 	mov	r5, r0
 	mov	r8, r3
 	mov	r6, r1
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, r8
 	str	r0, [r6]
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L1c134	@ 0x3ff
 	ldrh	r2, [r5, #8]
 	and	r0, r3

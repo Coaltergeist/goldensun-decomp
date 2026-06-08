@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80f9080
+.thumb_func_start PlaySound
 	push	{r5, r6, r7, lr}
 	mov	r5, #0xf0
 	ldr	r3, =0xfff
@@ -114,7 +114,7 @@
 .Lf9180:
 	mov	r0, #3
 .Lf9182:
-	bl	Func_80037d4
+	bl	SetSoundFXMode
 	lsl	r0, r6, #16
 	lsr	r0, #16
 	bl	Func_80fa324
@@ -160,9 +160,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f9080
+.func_end PlaySound
 
-.thumb_func_start Func_80f91e8
+.thumb_func_start UpdateMusicSettings
 	push	{r5, r6, lr}
 	ldr	r1, =ewram_2003000
 	ldrb	r3, [r1]
@@ -282,13 +282,13 @@
 	mov	r1, #0xff
 	bl	Func_80fb334
 .Lf92d6:
-	bl	Func_80f9c44
+	bl	m4aSoundVSync
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f91e8
+.func_end UpdateMusicSettings
 
-.thumb_func_start Func_80f92fc
+.thumb_func_start Debug_SoundTest
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -340,7 +340,7 @@
 	mov	r1, #5
 	bl	Func_b1c_from_thumb
 	mov	r11, r0
-	bl	Func_80037d4
+	bl	SetSoundFXMode
 .Lf9362:
 	ldr	r3, [r5]
 	mov	r2, #0x80
@@ -414,7 +414,7 @@
 	mov	r3, r8
 	mov	r4, r9
 	ldr	r0, [r3, r4]
-	bl	Func_80f9080
+	bl	PlaySound
 .Lf93ea:
 	ldr	r3, [r5]
 	mov	r2, #2
@@ -422,7 +422,7 @@
 	cmp	r3, #0
 	beq	.Lf93fa
 	mov	r0, #0x13
-	bl	Func_80f9080
+	bl	PlaySound
 .Lf93fa:
 	ldr	r3, [r5]
 	mov	r2, #8
@@ -430,7 +430,7 @@
 	cmp	r3, #0
 	beq	.Lf940a
 	mov	r0, #0x11
-	bl	Func_80f9080
+	bl	PlaySound
 .Lf940a:
 	ldr	r3, [r5]
 	mov	r2, #4
@@ -438,10 +438,10 @@
 	cmp	r3, #0
 	beq	.Lf941a
 	ldr	r0, =0x121
-	bl	Func_80f9080
+	bl	PlaySound
 .Lf941a:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lf932a
-.func_end Func_80f92fc
+.func_end Debug_SoundTest
 

@@ -2,32 +2,32 @@
 
 	.export_func Func_8000b1c
 	.export_func Func_8000b50
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _Random
-	.export_func _Func_800447c
-	.export_func _Func_800387c
-	.export_func _Func_800c300
-	.export_func _Func_800c2d8
-	.export_func _Func_800c150
+	.export_func _vec3_translate
+	.export_func _SetRegAnimDest
+	.export_func _Actor_SetAnim
+	.export_func _Actor_SetScript
+	.export_func _CreateActor
 	.export_func _Func_800fe9c
-	.export_func _Func_800d14c
+	.export_func _Actor_TravelTo
 	.export_func _Func_800ca6c
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
-	.export_func _Func_80120dc
+	.export_func _TestCollision
 	.export_func _Func_800c528
 	.export_func _Func_8012330
 	.export_func _Func_8012350
 	.export_func _Func_801776c
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _MapActor_GetActor
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092b08
-	.export_func _Func_80f9080
+	.export_func _PlaySound

@@ -11,7 +11,7 @@
 	cmp	r3, #0
 	bne	.L35c
 	mov	r0, #0x76
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L35c:
 	ldr	r6, [r5]
 	mov	r3, #0xf

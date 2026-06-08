@@ -49,7 +49,7 @@
 	bx	r0
 .func_end Func_800c570
 
-.thumb_func_start Func_800c598
+.thumb_func_start Actor_SetColorswap
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc5ae
@@ -63,7 +63,7 @@
 .Lc5ae:
 	pop	{r0}
 	bx	r0
-.func_end Func_800c598
+.func_end Actor_SetColorswap
 
 .thumb_func_start Func_800c5b4
 	push	{lr}
@@ -78,7 +78,7 @@
 	mov	r0, #1
 	bl	_Func_8091254
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0x80
 	lsl	r1, #19
 	ldrh	r2, [r1]

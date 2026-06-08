@@ -13,7 +13,7 @@
 	lsl	r1, #5
 	mov	r0, #0x33
 	sub	sp, #0x18
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r11, r0
 	add	r0, sp, #4
@@ -25,17 +25,17 @@
 	sub	r3, #0xc
 	ldr	r1, =Data_8000864
 	mov	r0, #2
-	bl	Func_80069c8
+	bl	SetFlashTimerIntr
 	mov	r7, #0
 	b	.L570c
 .L5704:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r7, #1
 .L570c:
 	cmp	r7, #7
 	bhi	.L571c
-	bl	Func_8006910
+	bl	IdentifyFlash
 	lsl	r0, #16
 	cmp	r0, #0
 	bne	.L5704
@@ -229,7 +229,7 @@
 .L588c:
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_8006c68
+	bl	VerifyFlashSector
 	mov	r3, r0
 	neg	r0, r3
 	orr	r0, r3
@@ -252,7 +252,7 @@
 	lsl	r3, #5
 	mov	r1, #0
 	sub	sp, #0x10
-	bl	Func_8006ba8
+	bl	ReadFlash
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	mov	r1, sp

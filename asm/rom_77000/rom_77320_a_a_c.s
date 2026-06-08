@@ -6,7 +6,7 @@
 	cmp	r0, #0
 	beq	.L7733e
 	mov	r0, #0x83
-	bl	Func_8077394
+	bl	GetUnit
 	b	.L77340
 .L7733e:
 	ldr	r0, =ewram_200024c
@@ -18,7 +18,7 @@
 .thumb_func_start Func_8077348
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r7, r0
 	mov	r6, #0
 	mov	r0, #0
@@ -35,7 +35,7 @@
 	ldrb	r0, [r2]
 	add	r2, #1
 	str	r2, [sp]
-	bl	Func_8077394
+	bl	GetUnit
 	ldrb	r3, [r0, #0xf]
 	sub	r5, #1
 	add	r6, r3
@@ -54,7 +54,7 @@
 	bx	r1
 .func_end Func_8077348
 
-.thumb_func_start Func_8077394
+.thumb_func_start GetUnit
 	push	{lr}
 	mov	r3, r14
 	ldr	r2, =gPartyStatus
@@ -86,9 +86,9 @@
 .L773c8:
 	pop	{r1}
 	bx	r1
-.func_end Func_8077394
+.func_end GetUnit
 
-.thumb_func_start Func_80773d8
+.thumb_func_start GetEnemyInfo
 	push	{lr}
 	sub	r0, #8
 	cmp	r0, #0xf9
@@ -101,5 +101,5 @@
 	add	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end Func_80773d8
+.func_end GetEnemyInfo
 

@@ -5,7 +5,7 @@
 	mov	r1, #0x81
 	mov	r0, #0xe
 	lsl	r1, #1
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r0, #0
 	pop	{r1}
 	bx	r1

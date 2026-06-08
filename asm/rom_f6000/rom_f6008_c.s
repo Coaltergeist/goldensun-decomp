@@ -58,7 +58,7 @@
 	bx	r1
 .func_end Func_80f6038
 
-.thumb_func_start Func_80f60a0
+.thumb_func_start Task_BlitLuckyWheelsAnim
 	push	{r5, lr}
 	ldr	r0, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -102,14 +102,14 @@
 	ldr	r1, =0x6003500
 	lsl	r2, #8
 	mov	r0, r4
-	bl	Func_800567c
+	bl	BlitFadeAlt_Div2
 	b	.Lf6106
 .Lf60fa:
 	mov	r2, #0x80
 	ldr	r1, =0x6003500
 	lsl	r2, #8
 	mov	r0, r4
-	bl	Func_800562c
+	bl	BlitFadeAlt_Div4
 .Lf6106:
 	ldr	r3, =0x7824
 	add	r2, r5, r3
@@ -129,7 +129,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f60a0
+.func_end Task_BlitLuckyWheelsAnim
 
 .thumb_func_start Func_80f6148
 	push	{r5, r6, r7, lr}
@@ -703,7 +703,7 @@
 	add	r3, r7, r2
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #0x94
 	add	r3, r7
 	mov	r8, r3
@@ -722,11 +722,11 @@
 	add	r3, #1
 	str	r3, [r4]
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf65ca
 .Lf65c4:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lf65ca:
 	ldrh	r2, [r6]
 	mov	r3, #0x80
@@ -740,14 +740,14 @@
 	sub	r3, #1
 	str	r3, [r0]
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf65fa
 
 	.pool_aligned
 
 .Lf65f4:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lf65fa:
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lf6634	@ 0x3fd0
@@ -774,7 +774,7 @@
 	str	r3, [r2]
 	add	r3, r7, r0
 	ldr	r0, [r3]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r1, r8
 	ldr	r3, [r1]
 	b	.Lf6644
@@ -803,10 +803,10 @@
 	add	r3, r7, r4
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #0x98
 	lsl	r0, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf6dd2
 .Lf6670:
 	cmp	r5, #5
@@ -888,7 +888,7 @@
 	cmp	r3, #4
 	bgt	.Lf671a
 	ldr	r0, =0x131
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [r5]
 	lsl	r3, r2, #3
 	sub	r3, r2
@@ -906,7 +906,7 @@
 	bne	.Lf6752
 	mov	r0, #0x98
 	lsl	r0, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, [sp, #0x18]
 	mov	r1, r9
 	mov	r3, #1
@@ -931,7 +931,7 @@
 	b	.Lf67ac
 .Lf6752:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf67ac
 .Lf675a:
 	mov	r3, r8
@@ -948,7 +948,7 @@
 	bl	Func_b1c_from_thumb
 	str	r0, [r5]
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r4, r8
 	ldrh	r2, [r4]
 .Lf6780:
@@ -964,7 +964,7 @@
 	bl	Func_b1c_from_thumb
 	str	r0, [r5]
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x94
 	add	r0, r7
 	mov	r8, r0
@@ -1001,14 +1001,14 @@
 	add	r5, r7, r0
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0
 	mov	r2, #0x13
 	mov	r3, #4
 	mov	r0, #0xb
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	str	r1, [r5]
 	mov	r3, #0
@@ -1049,14 +1049,14 @@
 	add	r5, r7, r0
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0
 	mov	r2, #0xe
 	mov	r3, #3
 	mov	r0, #0x10
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	str	r1, [r5]
 	ldr	r0, =0x90f
@@ -1090,14 +1090,14 @@
 	add	r5, r7, r3
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x17
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	str	r1, [r5]
 	ldr	r0, =0x90d
@@ -1123,14 +1123,14 @@
 	add	r5, r7, r1
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x17
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	str	r1, [r5]
 	ldr	r0, =0x90e
@@ -1150,7 +1150,7 @@
 	add	r3, r7, r4
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #0x98
 	add	r0, r7
 	mov	r11, r0
@@ -1174,7 +1174,7 @@
 	str	r3, [r2]
 	mov	r0, #0x5d
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, [sp, #0x1c]
 	ldr	r4, [sp, #8]
 	ldr	r2, =REG_BLDCNT
@@ -1223,7 +1223,7 @@
 	mov	r3, #0xa
 	str	r3, [r0]
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf6dfe
 .Lf69c4:
 	cmp	r5, #0xb
@@ -1258,13 +1258,13 @@
 	str	r3, [r0]
 	str	r1, [r5]
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #0x99
 	lsl	r2, #3
 	add	r3, r7, r2
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	b	.Lf6e0c
 .Lf6a16:
 	cmp	r5, #0x14
@@ -1293,7 +1293,7 @@
 	add	r0, #4
 	strb	r0, [r5, #2]
 	ldr	r0, =0x133
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf6adc
 .Lf6a4e:
 	cmp	r5, #0xa
@@ -1313,7 +1313,7 @@
 	mov	r3, #3
 	mov	r0, #0x12
 	str	r4, [sp, #8]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	mov	r0, #0x99
 	lsl	r0, #3
@@ -1331,7 +1331,7 @@
 	mov	r0, #0x99
 	lsl	r0, #1
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	ldr	r3, [r4]
 .Lf6a9c:
@@ -1549,7 +1549,7 @@
 	mov	r3, #2
 	str	r3, [r1]
 	mov	r0, #0xab
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r4, #0xef
 	ldr	r3, [sp, #0x24]
 	lsl	r4, #7
@@ -1567,7 +1567,7 @@
 	add	r3, r7, r2
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #0x94
 	add	r3, r7
 	mov	r8, r3
@@ -1586,14 +1586,14 @@
 	str	r1, [r3]
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0x10
 	mov	r2, #0x18
 	mov	r3, #4
 	mov	r0, #3
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, r0
 	str	r1, [r5]
 	mov	r3, #0
@@ -1664,7 +1664,7 @@
 	mov	r2, #0xc
 	mov	r3, #4
 	mov	r0, #0x12
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r2, =0x4cc
 	ldr	r5, =0x905
 	mov	r1, r0
@@ -2300,7 +2300,7 @@
 	bgt	.Lf7200
 	ldr	r3, =0x2aa
 	mul	r0, r3
-	bl	Func_8002322
+	bl	sin
 	lsl	r0, #6
 	b	.Lf7210
 .Lf7200:
@@ -2309,7 +2309,7 @@
 	ldr	r1, =0xfffd0000
 	lsl	r0, #12
 	add	r0, r1
-	bl	Func_8002322
+	bl	sin
 	lsl	r0, #2
 .Lf7210:
 	asr	r0, #16
@@ -2509,13 +2509,13 @@
 	mov	r5, r6
 	mul	r5, r3
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsr	r3, #15
 	strh	r3, [r7]
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r2, #0x6e
 	sub	r2, r6
 	mov	r3, #0x9b
@@ -2563,7 +2563,7 @@
 	mov	r2, #0xc
 	mov	r3, #4
 	mov	r0, #0x12
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r6, =0x4cc
 	ldr	r5, =0x905
 	mov	r1, r0
@@ -2588,7 +2588,7 @@
 	bx	r0
 .func_end Func_80f731c
 
-.thumb_func_start Func_80f7460
+.thumb_func_start LuckyWheelsMain
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2599,20 +2599,20 @@
 	ldr	r1, =0x60e
 	mov	r0, #0x29
 	sub	sp, #0x74
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0x80
 	str	r0, [sp, #0x2c]
 	lsl	r1, #8
 	mov	r0, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =0x782c
 	str	r0, [sp, #0x28]
 	mov	r0, #0x27
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r1, =0x61c
 	str	r0, [sp, #0x24]
 	mov	r0, #0x2d
-	bl	Func_80048f4
+	bl	galloc_ewram
 	str	r0, [sp, #0x20]
 	ldr	r0, =0xc
 	ldr	r5, =ewram_200024c
@@ -2631,7 +2631,7 @@
 	add	r1, #0x98
 	str	r1, [sp, #0x1c]
 	str	r3, [r1]
-	bl	Func_80040e8
+	bl	ClearTasks
 	ldr	r5, .Lf74dc	@ 0
 	ldr	r3, =iwram_3001d18
 	mov	r0, #0
@@ -3080,7 +3080,7 @@
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x2e
-	bl	_Func_80ed408
+	bl	_BuildDraw2DFuncEx
 	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
@@ -3091,7 +3091,7 @@
 	mov	r3, #3
 	mov	r0, #0x2f
 	str	r3, [sp]
-	bl	_Func_80ed408
+	bl	_BuildDraw2DFuncEx
 	add	r5, #0xbc
 	ldr	r3, [r5]
 	mov	r7, sp
@@ -3148,7 +3148,7 @@
 	mov	r2, #0x12
 	mov	r3, #3
 	mov	r0, #6
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r2, #0x99
 	mov	r1, r0
 	ldr	r0, [sp, #0x20]
@@ -3175,7 +3175,7 @@
 	mov	r2, #0x1a
 	mov	r3, #4
 	mov	r0, #2
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r7, #0x99
 	ldr	r3, [sp, #0x20]
 	ldr	r5, =0x908
@@ -3204,7 +3204,7 @@
 	mov	r1, r5
 	ldr	r0, =Func_80f6440
 	bl	StartTask
-	ldr	r0, =Func_80f60a0
+	ldr	r0, =Task_BlitLuckyWheelsAnim
 	mov	r1, r5
 	bl	StartTask
 	ldr	r7, [sp, #0x14]
@@ -3326,14 +3326,14 @@
 	str	r1, [r7, #4]
 	str	r0, [r7]
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	add	r5, #0x40
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r5
 	mul	r3, r0
 	neg	r3, r3
@@ -3604,7 +3604,7 @@
 	add	r3, r7, r0
 	str	r2, [r3]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #0x14]
 	ldr	r3, [r2]
 	mov	r1, #1
@@ -3635,28 +3635,28 @@
 	mov	r3, r6
 	bl	Func_80f6038
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	add	r8, r0
 	mov	r1, r8
 	cmp	r1, #0x11
 	bne	.Lf7d2e
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	ldr	r0, =Func_80f60a0
+	bl	gfree
+	ldr	r0, =Task_BlitLuckyWheelsAnim
 	bl	StopTask
 	ldr	r0, =Func_80f6440
 	bl	StopTask
 	mov	r0, #0x2d
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x28
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x27
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x29
-	bl	Func_8002dd8
+	bl	gfree
 	add	sp, #0x74
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -3666,7 +3666,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f7460
+.func_end LuckyWheelsMain
 
 .thumb_func_start Func_80f7db4
 	push	{lr}

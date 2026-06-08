@@ -89,7 +89,7 @@
 	mov	r1, r5
 	mov	r2, r6
 	lsl	r0, #15
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r6]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r6, #8]
@@ -113,7 +113,7 @@
 	cmp	r3, #0
 	beq	.L9b1f2
 	mov	r0, #0xf6
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L9b1f2
 .L9b1c2:
 	mov	r3, r8
@@ -148,7 +148,7 @@
 	bx	r0
 .func_end Func_809b11c
 
-.thumb_func_start Func_809b208
+.thumb_func_start Field_Retreat
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -157,7 +157,7 @@
 	sub	sp, #0xc
 	ldr	r5, [r3, #0x10]
 	mov	r8, r3
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r2, #1
 	neg	r2, r2
 	mov	r0, r2
@@ -166,7 +166,7 @@
 	bl	Func_80933f8
 	bl	Func_8097384
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, r8
 	mov	r1, #0x80
 	mov	r2, #0x18
@@ -175,24 +175,24 @@
 	mov	r2, #0
 	bl	Func_8092adc
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =Func_8096b88
 	mov	r0, #0x83
 	str	r3, [r5, #0x6c]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #0x1c
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xdc
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r0, r5
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r3, =Func_809b0b0
 	mov	r2, r5
 	str	r3, [r5, #0x6c]
@@ -200,7 +200,7 @@
 	mov	r3, #0
 	strh	r3, [r2]
 	mov	r0, #0x46
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #0
 	bl	_Func_800c528
@@ -259,12 +259,12 @@
 	str	r0, [r5, #0x28]
 	add	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r5, #0x48
 	cmp	r7, #0x17
 	bls	.L9b2d4
 	mov	r0, #0x46
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r8
 	mov	r7, #0
 	mov	r1, #2
@@ -281,17 +281,17 @@
 	cmp	r7, #0x17
 	bls	.L9b32c
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_809748c
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #0xc
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_809b208
+.func_end Field_Retreat
 
 .thumb_func_start Func_809b364
 	push	{r5, r6, lr}
@@ -316,7 +316,7 @@
 	ldr	r5, [r0, #0xc]
 	cmp	r5, r4
 	bgt	.L9b394
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L9b3c6
 .L9b394:
 	ldr	r3, [r0, #0x18]
@@ -374,7 +374,7 @@
 	ldr	r5, [r0, #0xc]
 	cmp	r5, r4
 	bgt	.L9b408
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L9b43c
 .L9b408:
 	ldr	r3, [r0, #0x18]
@@ -439,7 +439,7 @@
 	add	r2, r3
 	mov	r0, #0x1a
 	ldr	r3, [r6, #0x10]
-	bl	_Func_800c150
+	bl	_CreateActor
 	lsl	r3, r7, #2
 	mov	r1, r9
 	str	r0, [r3, r1]
@@ -464,7 +464,7 @@
 	beq	.L9b538
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r3, r5
 	add	r3, #0x26
 	mov	r2, r8
@@ -571,7 +571,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r3, =iwram_3001e40
 	ldr	r5, [r0, #0x50]
 	mov	r1, #5

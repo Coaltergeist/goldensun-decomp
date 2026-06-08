@@ -3,7 +3,7 @@
 .thumb_func_start Func_8079008
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r1, =0x129
 	mov	r2, r0
 	add	r3, r2, r1
@@ -51,7 +51,7 @@
 	push	{r7}
 	mov	r6, r1
 	mov	r11, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r10, r0
 	mov	r0, #0x2c
 	bl	Func_8004970
@@ -319,7 +319,7 @@
 	mov	r0, r11
 	bl	Func_8078bf0
 	mov	r0, r11
-	bl	Func_8077428
+	bl	CalcStats
 .L792a4:
 	mov	r0, r9
 	bl	free

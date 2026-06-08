@@ -13,18 +13,18 @@
 #include "dma.h"
 #include "interrupt.h"
 
-extern void Func_80030f8(u32 n);
-extern void Func_800403c(void);
-extern void Func_80040e8(void); 
-extern void Func_8004760(void);
+extern void WaitFrames(u32 n);
+extern void ClearSprites(void);
+extern void ClearTasks(void); 
+extern void ClearVRAM(void);
 extern void Func_800479c(void);
-extern void Func_8004858(void);
+extern void ClearHeap(void);
 extern void InitRAMLib(void);
 extern void SetIntrHandler(u32 intrNo, u32 vCount, intrfunc_t *handler);
 extern void SetRAMBuildDate(void);
-extern void _Func_808a8e4(int a1);
+extern void _GameStart(int a1);
 extern void _Func_80f9438(void);
-extern void Func_8003650(void);
+extern void VBlank(void);
 
 extern s32 gDMATaskCount;
 extern s8 iwram_3001ac4;
@@ -39,7 +39,7 @@ void AgbMain(void) {
 
     SET_IO(REG_WAITCNT, 0x4014);
     DMA3_CLEAR((void*)0x03000000, 0x1E000 / 4);
-    Func_8004858();
+    ClearHeap();
     InitRAMLib();
     gDMATaskCount = 0;
     iwram_3001ac4 = 0;
@@ -47,18 +47,18 @@ void AgbMain(void) {
     iwram_3001f58 = 0;
     SetRAMBuildDate();
     Func_800479c();
-    Func_8004760();
+    ClearVRAM();
     REG_DISPCNT = 0x140;
-    SetIntrHandler(0, 1, Func_8003650);
+    SetIntrHandler(0, 1, VBlank);
     SET_IO(REG_KEYCNT, 0xC00F);
     _Func_80f9438();
-    Func_800403c();
-    Func_80040e8();
+    ClearSprites();
+    ClearTasks();
     gIWRAMHeap_end = 0;
     iwram_3001d18 = 1;
     iwram_3001ca0 = 0;
-    Func_80030f8(0xA);
-    _Func_808a8e4(0);
+    WaitFrames(0xA);
+    _GameStart(0);
 }
 
 extern vu32 gKeyPress;
@@ -67,7 +67,7 @@ void Unused_WaitForever(void)
 {
     for (;;) {
         (void) gKeyPress;
-        Func_80030f8(1);
+        WaitFrames(1);
     }
 }
 

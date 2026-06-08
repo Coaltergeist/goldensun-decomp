@@ -15,7 +15,7 @@
 	mov	r3, #0x18
 	str	r3, [r2]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x4d
 	bl	__Func_808fe38
 	ldr	r3, =0x52a
@@ -24,7 +24,7 @@
 	mov	r3, #5
 	strh	r3, [r2]
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lb7e
 	ldr	r3, =0x534
@@ -106,7 +106,7 @@
 	mov	r0, #0x80
 	lsl	r0, #2
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lc4a
 	bl	OvlFunc_957_2008b30
@@ -158,14 +158,14 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r1, [r5, #8]
 	ldr	r2, [r5, #0xc]
 	ldr	r3, [r5, #0x10]
 	mov	r0, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r4, r0
 	cmp	r4, #0
 	beq	.Lce6
@@ -218,7 +218,7 @@
 	str	r4, [sp, #4]
 	bl	__Func_8010704
 	ldr	r0, =0x212
-	bl	__Func_8079358
+	bl	__SetFlag
 .Ld3c:
 	add	sp, #8
 	pop	{r0}

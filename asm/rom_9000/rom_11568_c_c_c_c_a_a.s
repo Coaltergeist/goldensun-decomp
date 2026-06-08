@@ -5,7 +5,7 @@
 	push	{r5, r6, lr}
 	mov	r1, #0xb4
 	mov	r0, #0x1c
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r5, r0
 	mov	r1, r5
 	mov	r0, #0

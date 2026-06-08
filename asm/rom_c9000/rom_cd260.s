@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80cd260
+.thumb_func_start Task_BlitAnim
 	push	{r5, r6, lr}
 	ldr	r0, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -61,14 +61,14 @@
 	ldr	r1, =0x6004000
 	lsl	r2, #7
 	mov	r0, r5
-	bl	Func_8005534
+	bl	BlitFade_Div2
 	b	.Lcd316
 .Lcd2e2:
 	mov	r2, #0x80
 	ldr	r1, =0x6004000
 	lsl	r2, #7
 	mov	r0, r5
-	bl	Func_80054e4
+	bl	BlitFade_Div4
 	b	.Lcd316
 .Lcd2f0:
 	ldr	r2, =0x7784
@@ -78,7 +78,7 @@
 	ldr	r2, =0x6004000
 	lsl	r3, #7
 	mov	r0, r5
-	bl	Func_8005490
+	bl	BlitFade_Sub
 	b	.Lcd316
 .Lcd304:
 	ldr	r2, =0x7784
@@ -88,7 +88,7 @@
 	ldr	r2, =0x6004000
 	lsl	r3, #7
 	mov	r0, r5
-	bl	Func_800543c
+	bl	BlitFade_Add
 .Lcd316:
 	ldr	r3, =0x7824
 	add	r2, r6, r3
@@ -108,9 +108,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80cd260
+.func_end Task_BlitAnim
 
-.thumb_func_start Func_80cd358
+.thumb_func_start Task_BlitAnim_BG1Wide
 	push	{r5, lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -168,14 +168,14 @@
 	ldr	r1, =0x6008000
 	add	r2, #0x7c
 	ldr	r0, =gBuffer
-	bl	Func_8005534
+	bl	BlitFade_Div2
 	b	.Lcd3ee
 .Lcd3ce:
 	mov	r2, #0xf0
 	ldr	r1, =0x6008000
 	lsl	r2, #7
 	ldr	r0, =gBuffer
-	bl	Func_80054e4
+	bl	BlitFade_Div4
 	b	.Lcd3ee
 .Lcd3dc:
 	ldr	r2, =0x7784
@@ -185,7 +185,7 @@
 	ldr	r2, =0x6008000
 	lsl	r3, #7
 	ldr	r0, =gBuffer
-	bl	Func_8005490
+	bl	BlitFade_Sub
 .Lcd3ee:
 	ldr	r3, =0x7824
 	add	r2, r5, r3
@@ -195,7 +195,7 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80cd358
+.func_end Task_BlitAnim_BG1Wide
 
 .thumb_func_start Func_80cd418
 	ldr	r3, =iwram_3001eec
@@ -291,7 +291,7 @@
 	sub	r2, r3
 	ldr	r1, =0x50000c0
 	mov	r3, #0x80
-	bl	_Func_80c1724
+	bl	_UploadBGPalette
 	ldr	r3, [r5]
 	sub	r3, #1
 	str	r3, [r5]

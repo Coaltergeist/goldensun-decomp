@@ -10,7 +10,7 @@
 	beq	.L1722
 .L1714:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #9
@@ -56,12 +56,12 @@
 	mov	r1, r0
 	mov	r2, r6
 	mov	r0, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
 	ldr	r0, =0x11d
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L17b0
@@ -73,13 +73,13 @@
 	bl	__Func_800c528
 	ldr	r1, =.L7
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L17b0:
 	add	sp, #0xc
 	pop	{r5, r6}
@@ -105,16 +105,16 @@
 	mov	r6, r0
 	ldr	r1, [r5, #8]
 	ldr	r3, [r5, #0x10]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r3, r6
 	add	r3, #0x55
 	mov	r5, #0
 	strb	r5, [r3]
 	ldr	r1, =.L8
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r0, #0x53
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r2, r8
 	strh	r5, [r2]
 	mov	r0, #0
@@ -135,7 +135,7 @@
 	ldr	r0, =0x211
 	mov	r8, r1
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	ldr	r3, =gState
 	mov	r7, r0
 	mov	r0, #0xfa
@@ -189,19 +189,19 @@
 	str	r3, [r6, #0x30]
 	mov	r0, r6
 	mov	r3, r4
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r0, =0x211
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, r6
 	ldr	r1, =.L16
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r0, #0
 	ldrsh	r3, [r5, r0]
 	cmp	r3, #0
 	beq	.L18b8
 .L18aa:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0
@@ -289,7 +289,7 @@
 	mov	r3, #9
 	strh	r3, [r1]
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, r6
 	add	r3, #0xe8
 	ldr	r2, [r3]
@@ -303,7 +303,7 @@
 	add	r7, r2, r3
 .L1996:
 	ldr	r0, =0x211
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L19b2
 	mov	r3, r6
@@ -338,12 +338,12 @@
 	mov	r0, r5
 	mov	r2, #0
 	mov	r3, r4
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r0, =0x211
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r1, =.L15
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	b	.L1afc
 .L19f0:
 	mov	r2, r8
@@ -372,7 +372,7 @@
 	sub	r0, r4, r3
 	sub	r1, r7, r2
 	str	r4, [sp]
-	bl	__Func_80044d0
+	bl	__atan2
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -413,12 +413,12 @@
 	ble	.L1a70
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L1afc
 .L1a70:
 	mov	r0, r5
 	mov	r1, #5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L1afc
 
 	.pool_aligned
@@ -527,7 +527,7 @@
 .L1b56:
 	mov	r0, #0x83
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1b76
 	mov	r6, r8
@@ -573,7 +573,7 @@
 	ldrsh	r0, [r7, r3]
 	lsl	r1, #2
 	mov	r2, r5
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, r5
 	bl	__free
 .L1bc4:
@@ -810,7 +810,7 @@
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]
 	mov	r9, r1
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L1e18
@@ -875,7 +875,7 @@
 	add	r3, #0xde
 	mov	r1, #0
 	ldrsh	r0, [r3, r1]
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L1e9a
@@ -961,7 +961,7 @@
 	ldr	r6, [sp, #0x2c]
 	str	r3, [sp]
 	mov	r9, r2
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r7, r0
 	mov	r0, #0x80
 	lsl	r0, #2
@@ -994,7 +994,7 @@
 	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1f4c
 	ldr	r2, [sp]
@@ -1014,7 +1014,7 @@
 	mov	r1, r11
 	ldr	r0, =.L5
 	bl	__DecompressLZ
-	bl	__Func_8004080
+	bl	__AllocSpriteSlot
 	mov	r3, r7
 	add	r3, #0xd8
 	strh	r0, [r3]
@@ -1023,7 +1023,7 @@
 	mov	r2, r11
 	lsl	r1, #2
 	asr	r0, #16
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	ldr	r1, =0xc76
 	ldr	r0, =OvlFunc_common1_1b08
 	bl	__StartTask
@@ -1058,7 +1058,7 @@
 	add	r1, #0xf0
 	bl	__DecompressLZ
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1fe4
 	mov	r3, #1

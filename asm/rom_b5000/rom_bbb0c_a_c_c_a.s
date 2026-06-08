@@ -6,7 +6,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x99
 	lsl	r2, #1
 	mov	r1, r0
@@ -58,7 +58,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x9a
 	lsl	r2, #1
 	mov	r1, r0
@@ -110,7 +110,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x9b
 	lsl	r2, #1
 	mov	r1, r0
@@ -160,7 +160,7 @@
 .thumb_func_start Func_80bf37c
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x9c
 	lsl	r3, #1
 	add	r5, r0, r3
@@ -195,7 +195,7 @@
 .thumb_func_start Func_80bf3bc
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =0x139
 	add	r5, r0, r3
 	ldrb	r2, [r5]
@@ -229,7 +229,7 @@
 .thumb_func_start Func_80bf400
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x9d
 	lsl	r3, #1
 	add	r5, r0, r3
@@ -264,7 +264,7 @@
 .thumb_func_start Func_80bf440
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =0x13b
 	add	r5, r0, r3
 	ldrb	r2, [r5]
@@ -298,7 +298,7 @@
 .thumb_func_start Func_80bf484
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x9e
 	lsl	r3, #1
 	add	r5, r0, r3
@@ -333,7 +333,7 @@
 .thumb_func_start Func_80bf4c4
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =0x13d
 	add	r5, r0, r3
 	ldrb	r2, [r5]
@@ -382,7 +382,7 @@
 
 .thumb_func_start Func_80bf524
 	push	{lr}
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x9f
 	lsl	r3, #1
 	add	r1, r0, r3
@@ -405,7 +405,7 @@
 
 .thumb_func_start Func_80bf54c
 	push	{lr}
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =0x13f
 	add	r1, r0, r3
 	ldrb	r2, [r1]
@@ -427,7 +427,7 @@
 
 .thumb_func_start Func_80bf574
 	push	{lr}
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0xa3
 	lsl	r3, #1
 	add	r1, r0, r3
@@ -479,7 +479,7 @@
 	ble	.Lbf5ee
 	ldrb	r0, [r5, #2]
 	str	r2, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	ldr	r2, [sp]
@@ -517,13 +517,13 @@
 	ldrb	r1, [r6]
 	ldrb	r2, [r6, #1]
 	mov	r0, r5
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 	ldrb	r2, [r6, #1]
 	ldrb	r1, [r6]
 	mov	r0, r5
 	bl	_Func_807a3a8
 	mov	r0, r5
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r2, #1
 	b	.Lbf640
 .Lbf63a:

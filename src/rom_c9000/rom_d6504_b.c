@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern void Func_80cdb24(int);
-extern void Func_80cdbc0(void);
+extern void AnimEnd(void);
 
 void Func_80d6960(void)
 {
 	Func_80cdb24(1);
-	Func_80cdbc0();
+	AnimEnd();
 }

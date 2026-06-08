@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_d9ab8_c_c_a.o and asm/rom_c9000/rom_d9ab8_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80d9ae8(void *context, int subanim);
+extern void BaseAnim_StatDown(void *context, int subanim);
 
 void Func_80d9ad0(void *context) {
-    Func_80d9ae8(context, 2);
+    BaseAnim_StatDown(context, 2);
 }

@@ -5,8 +5,8 @@
  * asm/rom_8a000/rom_97b54_a_c_a.o and asm/rom_8a000/rom_97b54_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8098cd8(void);
+extern void Field_Force(void);
 
 void Func_8098ccc(void) {
-    Func_8098cd8();
+    Field_Force();
 }

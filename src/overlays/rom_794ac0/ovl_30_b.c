@@ -5,11 +5,11 @@
  * asm/overlays/rom_794ac0/ovl_30_a.o and asm/overlays/rom_794ac0/ovl_30_c.o in
  * goldensun/overlays/rom_794ac0/overlay.ld.
  */
-extern unsigned int __Func_8077394(unsigned int);
+extern unsigned int __GetUnit(unsigned int);
 
 unsigned int OvlFunc_899_200af84(void) {
     unsigned int result;
-    result = __Func_8077394(2);
+    result = __GetUnit(2);
     result += 0x8c * 2;
     result = *(unsigned char *)result;
     return result;

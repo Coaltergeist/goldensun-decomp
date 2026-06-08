@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c0cc
+.thumb_func_start NewActor
 	push	{lr}
 	ldr	r3, =iwram_3001e64
 	ldr	r2, [r3]
@@ -22,9 +22,9 @@
 .Lc0ea:
 	pop	{r1}
 	bx	r1
-.func_end Func_800c0cc
+.func_end NewActor
 
-.thumb_func_start Func_800c0f4
+.thumb_func_start DeleteActor
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	sub	sp, #4
@@ -42,7 +42,7 @@
 	b	.Lc12e
 .Lc112:
 	ldr	r0, [r7, #0x50]
-	bl	Func_800bdd4
+	bl	DeleteSprite
 	b	.Lc12e
 .Lc11a:
 	ldr	r5, [r7, #0x50]
@@ -51,7 +51,7 @@
 	ldmia	r5!, {r0}
 	cmp	r0, #0
 	beq	.Lc128
-	bl	Func_800bdd4
+	bl	DeleteSprite
 .Lc128:
 	sub	r6, #1
 	cmp	r6, #0
@@ -70,9 +70,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c0f4
+.func_end DeleteActor
 
-.thumb_func_start Func_800c150
+.thumb_func_start CreateActor
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -85,7 +85,7 @@
 	mov	r11, r3
 	mov	r9, r1
 	str	r2, [sp]
-	bl	Func_800c0cc
+	bl	NewActor
 	mov	r3, r7
 	cmp	r7, #0
 	bge	.Lc176
@@ -95,7 +95,7 @@
 	asr	r5, r3, #12
 	ldr	r3, .Lc1c8	@ 0xfff
 	and	r7, r3
-	bl	Func_800c0cc
+	bl	NewActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.Lc188
@@ -110,7 +110,7 @@
 	b	.Lc230
 .Lc196:
 	mov	r0, r7
-	bl	Func_800bc70
+	bl	CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lc1ba
@@ -165,7 +165,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r7
-	bl	Func_800bc70
+	bl	CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lc220
@@ -181,7 +181,7 @@
 	mov	r8, r3
 .Lc220:
 	add	r0, r7, #1
-	bl	Func_800bc70
+	bl	CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lc230
@@ -265,9 +265,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800c150
+.func_end CreateActor
 
-.thumb_func_start Func_800c2d8
+.thumb_func_start Actor_SetScript
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc2fc
@@ -289,9 +289,9 @@
 .Lc2fc:
 	pop	{r0}
 	bx	r0
-.func_end Func_800c2d8
+.func_end Actor_SetScript
 
-.thumb_func_start Func_800c300
+.thumb_func_start Actor_SetAnim
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	cmp	r0, #0
@@ -309,7 +309,7 @@
 .Lc31c:
 	ldr	r0, [r0, #0x50]
 	mov	r1, r7
-	bl	Func_800ba30
+	bl	Sprite_SetAnim
 	b	.Lc33c
 .Lc326:
 	ldr	r5, [r0, #0x50]
@@ -319,7 +319,7 @@
 	cmp	r0, #0
 	beq	.Lc336
 	mov	r1, r7
-	bl	Func_800ba30
+	bl	Sprite_SetAnim
 .Lc336:
 	sub	r6, #1
 	cmp	r6, #0
@@ -328,9 +328,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c300
+.func_end Actor_SetAnim
 
-.thumb_func_start Func_800c344
+.thumb_func_start Actor_SetAnimSpeed
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	cmp	r0, #0
@@ -367,9 +367,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c344
+.func_end Actor_SetAnimSpeed
 
-.thumb_func_start Func_800c388
+.thumb_func_start Actor_SetAnimAndSpeed
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -392,7 +392,7 @@
 .Lc3ae:
 	mov	r1, r8
 	ldr	r0, [r5, #0x50]
-	bl	Func_800ba30
+	bl	Sprite_SetAnim
 	ldr	r0, [r5, #0x50]
 	mov	r1, r10
 	bl	Func_800baf8
@@ -406,7 +406,7 @@
 	beq	.Lc3da
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_800ba30
+	bl	Sprite_SetAnim
 	mov	r0, r5
 	mov	r1, r10
 	bl	Func_800baf8
@@ -421,9 +421,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c388
+.func_end Actor_SetAnimAndSpeed
 
-.thumb_func_start Func_800c3ec
+.thumb_func_start Actor_SetRotation
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc404
@@ -439,5 +439,5 @@
 .Lc404:
 	pop	{r0}
 	bx	r0
-.func_end Func_800c3ec
+.func_end Actor_SetRotation
 

@@ -22,7 +22,7 @@
 .Lb5b3c:
 	mov	r1, r8
 	ldrh	r0, [r6, r1]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	ldr	r0, =0x12f
 	mov	r1, #3
@@ -104,7 +104,7 @@
 	strb	r5, [r3]
 	ldrh	r0, [r6, r1]
 	add	r7, #1
-	bl	_Func_8077428
+	bl	_CalcStats
 	add	r6, #2
 	cmp	r7, r10
 	blt	.Lb5b3c
@@ -213,7 +213,7 @@
 .Lb5cb6:
 	mov	r0, #0xb6
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lb5d2a
 	mov	r0, #0
@@ -250,7 +250,7 @@
 	mov	r1, r6
 	mov	r0, r5
 	str	r3, [sp]
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 	ldr	r3, [sp]
 	mov	r0, r5
 	mov	r1, r6
@@ -314,7 +314,7 @@
 	ldrh	r0, [r6]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r1, [sp, #4]
 	mov	r2, r8
 	ldrb	r3, [r7, r2]
@@ -337,7 +337,7 @@
 	mov	r8, r2
 .Lb5dac:
 	mov	r0, r8
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	cmp	r0, #0
 	beq	.Lb5de8
 	mov	r3, r10

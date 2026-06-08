@@ -51,13 +51,13 @@
 	mov	r0, r4
 	str	r3, [sp, #0x20]
 	mov	r8, r2
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	str	r0, [sp, #0x4c]
 	ldr	r0, [sp, #0x44]
-	bl	_Func_8077394
+	bl	_GetUnit
 	str	r0, [sp, #0x48]
 	mov	r0, r10
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r7, r0
 	ldr	r3, =Func_8001af8
 	mov	r2, r5
@@ -265,7 +265,7 @@
 	mov	r1, r5
 	and	r2, r6
 	mov	r0, r8
-	bl	_Func_8079460
+	bl	_InitEnemyUnit
 	ldr	r1, [sp, #0x38]
 	mov	r2, #0x64
 	add	r1, #2
@@ -630,7 +630,7 @@
 .Lbc004:
 	mov	r0, #0xb7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbc020
 	ldr	r2, [sp, #4]
@@ -791,7 +791,7 @@
 	str	r3, [sp, #0x2c]
 	mov	r0, r10
 	strh	r6, [r7, #0x3a]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc150:
 	ldr	r4, [sp, #0x4c]
@@ -1113,7 +1113,7 @@
 .Lbc406:
 	mov	r0, #0xb7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbc422
 	ldr	r0, [sp, #4]
@@ -1247,7 +1247,7 @@
 .Lbc514:
 	strh	r6, [r7, #0x3a]
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc51e:
 	ldr	r1, [sp, #0x24]
@@ -1368,7 +1368,7 @@
 	str	r3, [sp, #0x2c]
 	mov	r0, r10
 	strh	r6, [r7, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc64e:
 	mov	r1, r10
@@ -1759,7 +1759,7 @@
 	mov	r3, #5
 	strb	r3, [r2]
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r3, r7
 	add	r3, #0x40
 	ldrh	r1, [r3]
@@ -1782,7 +1782,7 @@
 	mov	r3, #5
 	strb	r3, [r2]
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r3, [sp, #0x10]
 	add	r3, #0x40
 	ldrh	r1, [r3]
@@ -1817,7 +1817,7 @@
 	strb	r3, [r2]
 .Lbcab4:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r3, [r7, #0x3c]
 	ldrh	r1, [r5, #0x3c]
@@ -1854,7 +1854,7 @@
 	strb	r3, [r2]
 .Lbcafe:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r3, [r7, #0x3c]
 	ldrh	r1, [r2, #0x3c]
@@ -1891,7 +1891,7 @@
 	strb	r3, [r2]
 .Lbcb48:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r6, [sp, #0x10]
 	ldrh	r1, [r7, #0x3c]
 	ldrh	r3, [r6, #0x3c]
@@ -1926,7 +1926,7 @@
 	strb	r3, [r2]
 .Lbcb8e:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r1, [r7, #0x3c]
 	ldrh	r3, [r5, #0x3c]
@@ -1963,7 +1963,7 @@
 	strb	r3, [r2]
 .Lbcbd8:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r3, [r7, #0x3e]
 	ldrh	r1, [r2, #0x3e]
@@ -2000,7 +2000,7 @@
 	strb	r3, [r2]
 .Lbcc22:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r6, [sp, #0x10]
 	ldrh	r3, [r7, #0x3e]
 	ldrh	r1, [r6, #0x3e]
@@ -2035,7 +2035,7 @@
 	strb	r3, [r2]
 .Lbcc68:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r1, [r7, #0x3e]
 	ldrh	r3, [r5, #0x3e]
@@ -2072,7 +2072,7 @@
 	strb	r3, [r2]
 .Lbccb2:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r1, [r7, #0x3e]
 	ldrh	r3, [r2, #0x3e]
@@ -2099,7 +2099,7 @@
 	ldrh	r3, [r7, #0x34]
 	mov	r0, r10
 	strh	r3, [r7, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 .Lbccf4:
 	mov	r5, #0x38
@@ -2460,7 +2460,7 @@
 	strh	r3, [r7, #0x38]
 .Lbcfd8:
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 .Lbcfe0:
 	ldr	r1, =0x86f
@@ -2573,7 +2573,7 @@
 	strh	r5, [r6, #0x3a]
 .Lbd0b8:
 	ldr	r0, [sp, #0x44]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 
 	.pool_aligned
@@ -2621,7 +2621,7 @@
 .Lbd176:
 	ldr	r0, [sp, #0x44]
 	mov	r1, r5
-	bl	_Func_80783dc
+	bl	_ModifyPP
 	b	.Lbd2c0
 .Lbd180:
 	ldr	r1, =0x133
@@ -2825,7 +2825,7 @@
 	ldr	r0, [sp, #0x10]
 	bl	free
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r3, =iwram_3001e74
 	ldr	r3, [r3]
 	add	r3, #0x41
@@ -2882,7 +2882,7 @@
 	mov	r0, #1
 	b	.Lbd3de
 .Lbd3d2:
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #9]
 	neg	r0, r3
 	orr	r0, r3
@@ -2940,7 +2940,7 @@
 	mov	r7, r0
 	mov	r1, #0
 	ldrsh	r0, [r7, r1]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0
 	mov	r2, #1
 	str	r3, [sp, #0xc]
@@ -2970,7 +2970,7 @@
 	lsl	r3, #1
 	add	r3, r11
 	ldrb	r0, [r3]
-	bl	_Func_80773d8
+	bl	_GetEnemyInfo
 	str	r0, [sp, #0x14]
 	ldr	r1, [sp, #0x14]
 	mov	r3, #0x90
@@ -3112,13 +3112,13 @@
 	cmp	r6, #0
 	beq	.Lbd5ba
 	ldrh	r0, [r1]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #0xc]
 	cmp	r3, #1
 	bne	.Lbd5b4
 	ldrh	r0, [r5, #0x28]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, #2
 	ldrh	r5, [r5, #0x28]
 	strh	r3, [r7, #6]
@@ -3145,7 +3145,7 @@
 	b	.Lbd766
 .Lbd5c6:
 	mov	r0, r9
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #3]
 	cmp	r3, #0x2f

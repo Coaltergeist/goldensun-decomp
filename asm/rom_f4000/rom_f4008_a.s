@@ -1,15 +1,15 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f4008
+.thumb_func_start StartLuckyDice
 	push	{lr}
 	ldr	r3, =0x40
 	mov	r2, #0x80
 	lsl	r2, #19
 	strh	r3, [r2]
 	mov	r0, #9
-	bl	_Func_80f9080
-	bl	Func_80f4168
+	bl	_PlaySound
+	bl	LuckyDiceMain
 	mov	r0, #0
 	b	.Lf4024
 
@@ -18,7 +18,7 @@
 .Lf4024:
 	pop	{r1}
 	bx	r1
-.func_end Func_80f4008
+.func_end StartLuckyDice
 
 .thumb_func_start Func_80f4028
 	push	{r5, r6, lr}
@@ -41,16 +41,16 @@
 	str	r6, [r3, #0x10]
 	str	r6, [r5, #0x18]
 	sub	sp, #0xc
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r3, #0x34
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r0, sp
 	str	r6, [r0]
 	str	r6, [r0, #4]

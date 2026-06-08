@@ -17,7 +17,7 @@
 	bne	.L9308e
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_8092f84
+	bl	ActorMessage
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
 	mov	r3, #0xec
@@ -38,7 +38,7 @@
 	strh	r3, [r2]
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_8092f84
+	bl	ActorMessage
 .L930a6:
 	mov	r0, r7
 	pop	{r5, r6, r7}

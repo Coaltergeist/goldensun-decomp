@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800b6b8
+.thumb_func_start PreloadSpriteGFX
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -115,7 +115,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b6b8
+.func_end PreloadSpriteGFX
 
 	.section .rodata
 

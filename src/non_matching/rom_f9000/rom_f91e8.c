@@ -1,4 +1,4 @@
-/* Func_80f91e8(void) BGM volume/tempo/pitch slide updater [rom_f9000]
+/* UpdateMusicSettings(void) BGM volume/tempo/pitch slide updater [rom_f9000]
  * Source asm: goldensun/asm/rom_f9000/rom_f9080_a_a.s  (Camelot music-driver prefix)
  *
  * Per-frame updater: ages a fade counter, then eases the current BGM volume
@@ -13,7 +13,7 @@
  *
  * Func_ -> friendly name:
  *   Func_80fb2cc m4aMPlayVolumeControl   Func_80fb2a4 m4aMPlayTempoControl
- *   Func_80fb334 m4aMPlayPitchControl    Func_80f9c44 m4aSoundVSync
+ *   Func_80fb334 m4aMPlayPitchControl    m4aSoundVSync m4aSoundVSync
  *   gMPlayInfo_BGM gMPlayInfo_BGM
  */
 extern unsigned char  ewram_2003000;
@@ -29,9 +29,9 @@ extern void *gMPlayInfo_BGM;
 extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
 extern void Func_80fb2a4(void *mplayInfo, unsigned short tempo);
 extern void Func_80fb334(void *mplayInfo, unsigned short trackBits, int pitch);
-extern void Func_80f9c44(void);
+extern void m4aSoundVSync(void);
 
-void Func_80f91e8(void) {
+void UpdateMusicSettings(void) {
     int diff;
     unsigned char state;
 
@@ -71,5 +71,5 @@ void Func_80f91e8(void) {
                      (((3 * gMusicCurSpeed) << 18) + (0xf4 << 24)) >> 16);
     }
 
-    Func_80f9c44();
+    m4aSoundVSync();
 }

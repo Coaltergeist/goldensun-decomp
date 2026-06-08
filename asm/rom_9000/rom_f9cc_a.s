@@ -23,7 +23,7 @@
 	bx	r0
 .func_end Func_800f9cc
 
-.thumb_func_start Func_800f9f4
+.thumb_func_start DecodeMetatileset
 	push	{r5, r6, r7, lr}
 	sub	r3, r0, #1
 	lsr	r2, r3, #31
@@ -102,7 +102,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800f9f4
+.func_end DecodeMetatileset
 
 .thumb_func_start Func_800fa8c
 	push	{r5, r6, lr}
@@ -135,7 +135,7 @@
 	bx	r0
 .func_end Func_800fa8c
 
-.thumb_func_start Func_800fac8
+.thumb_func_start UnpackTilemap
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -174,9 +174,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800fac8
+.func_end UnpackTilemap
 
-.thumb_func_start Func_800fb38
+.thumb_func_start LoadMapData
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -204,7 +204,7 @@
 	mov	r1, r6
 	mov	r0, #8
 	str	r3, [sp, #8]
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, r6
 	ldr	r3, =Func_80008d4
 	mov	r8, r0
@@ -219,7 +219,7 @@
 	ldr	r1, =ewram_2010001
 	add	r0, r5, r3
 	bl	DecompressLZ
-	bl	Func_800f9f4
+	bl	DecodeMetatileset
 	ldr	r3, [r5, #0x28]
 	ldr	r1, =ewram_202c000
 	add	r0, r5, r3
@@ -228,7 +228,7 @@
 	ldr	r1, =gBuffer
 	add	r0, r5, r3
 	bl	DecompressLZ
-	bl	Func_800fac8
+	bl	UnpackTilemap
 	ldr	r0, [r5, #0x30]
 	cmp	r0, #0
 	beq	.Lfbc8
@@ -442,11 +442,11 @@
 	mov	r5, #0xb8
 	lsl	r5, #1
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lfd98
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 	b	.Lfe42
 .Lfd98:
 	mov	r2, #0x80
@@ -485,7 +485,7 @@
 	add	r0, r9
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005394
+	bl	DecompressLZ2
 	mov	r2, r11
 	mov	r1, r7
 	ldr	r0, =0x6004000
@@ -495,7 +495,7 @@
 	add	r0, r9
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005394
+	bl	DecompressLZ2
 	mov	r1, r7
 	mov	r2, r11
 	ldr	r0, =0x6008000
@@ -505,7 +505,7 @@
 	add	r0, r9
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005394
+	bl	DecompressLZ2
 	mov	r1, r7
 	mov	r2, r11
 	ldr	r0, =0x600c000
@@ -515,7 +515,7 @@
 	add	r0, r9
 	bl	GetFile
 	ldr	r1, =ewram_2028000
-	bl	Func_8005394
+	bl	DecompressLZ2
 	mov	r0, r7
 	bl	free
 .Lfe42:
@@ -528,7 +528,7 @@
 	lsl	r2, #1
 	sub	r3, #0x50
 	strh	r2, [r3]
-	ldr	r0, =Func_8010000
+	ldr	r0, =UpdateFieldScreen
 	ldr	r1, =0xc85
 	bl	StartTask
 	mov	r0, #2
@@ -541,5 +541,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800fb38
+.func_end LoadMapData
 

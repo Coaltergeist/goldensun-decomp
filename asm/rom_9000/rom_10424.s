@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8010424
+.thumb_func_start CopyMapTiles
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -150,7 +150,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8010424
+.func_end CopyMapTiles
 
 .thumb_func_start Func_8010560
 	push	{r5, r6, r7, lr}
@@ -190,10 +190,10 @@
 	mov	r2, r10
 	mov	r3, r8
 	lsr	r5, #16
-	bl	Func_8010424
+	bl	CopyMapTiles
 	add	r7, #0xa
 	mov	r0, r5
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r0, [r7]
 	mov	r12, r0
 	add	r6, #0xa

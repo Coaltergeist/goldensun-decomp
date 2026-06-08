@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079338
+.thumb_func_start GetFlag
 	mov	r3, #7
 	and	r3, r0
 	mov	r2, #1
@@ -14,9 +14,9 @@
 	orr	r0, r3
 	lsr	r0, #31
 	bx	lr
-.func_end Func_8079338
+.func_end GetFlag
 
-.thumb_func_start Func_8079358
+.thumb_func_start SetFlag
 	mov	r3, #7
 	and	r3, r0
 	mov	r2, #1
@@ -28,9 +28,9 @@
 	orr	r2, r3
 	strb	r2, [r1, r0]
 	bx	lr
-.func_end Func_8079358
+.func_end SetFlag
 
-.thumb_func_start Func_8079374
+.thumb_func_start ClearFlag
 	mov	r3, #7
 	and	r3, r0
 	mov	r2, #1
@@ -42,9 +42,9 @@
 	bic	r3, r2
 	strb	r3, [r1, r0]
 	bx	lr
-.func_end Func_8079374
+.func_end ClearFlag
 
-.thumb_func_start Func_8079390
+.thumb_func_start ToggleFlag
 	mov	r4, r0
 	mov	r3, #7
 	and	r3, r4
@@ -63,25 +63,25 @@
 	orr	r0, r3
 	lsr	r0, #31
 	bx	lr
-.func_end Func_8079390
+.func_end ToggleFlag
 
-.thumb_func_start Func_80793b8
+.thumb_func_start GetFlagByte
 	lsl	r3, r0, #20
 	lsr	r0, r3, #23
 	ldr	r3, =gFlags
 	ldrb	r0, [r3, r0]
 	bx	lr
-.func_end Func_80793b8
+.func_end GetFlagByte
 
-.thumb_func_start Func_80793c8
+.thumb_func_start SetFlagByte
 	lsl	r3, r0, #20
 	lsr	r0, r3, #23
 	ldr	r3, =gFlags
 	strb	r1, [r3, r0]
 	bx	lr
-.func_end Func_80793c8
+.func_end SetFlagByte
 
-.thumb_func_start Func_80793d8
+.thumb_func_start IncFlagByte
 	push	{lr}
 	lsl	r3, r0, #20
 	ldr	r1, =gFlags
@@ -96,9 +96,9 @@
 	ldrb	r0, [r1, r0]
 	pop	{r1}
 	bx	r1
-.func_end Func_80793d8
+.func_end IncFlagByte
 
-.thumb_func_start Func_80793f8
+.thumb_func_start DecFlagByte
 	push	{lr}
 	lsl	r3, r0, #20
 	ldr	r1, =gFlags
@@ -113,9 +113,9 @@
 	ldrb	r0, [r1, r0]
 	pop	{r1}
 	bx	r1
-.func_end Func_80793f8
+.func_end DecFlagByte
 
-.thumb_func_start Func_8079418
+.thumb_func_start GetFlagNybble
 	lsl	r3, r0, #20
 	mov	r1, #4
 	and	r1, r0
@@ -127,9 +127,9 @@
 	and	r0, r2
 	asr	r0, r1
 	bx	lr
-.func_end Func_8079418
+.func_end GetFlagNybble
 
-.thumb_func_start Func_8079434
+.thumb_func_start SetFlagNybble
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r4, =gFlags
@@ -149,4 +149,4 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8079434
+.func_end SetFlagNybble

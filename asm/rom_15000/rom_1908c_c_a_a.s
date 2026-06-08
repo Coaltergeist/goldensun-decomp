@@ -12,7 +12,7 @@
 	mov	r7, r1
 	strh	r3, [r2]
 	mov	r1, #1
-	bl	Func_8018038
+	bl	BufferString
 	sub	r5, #1
 	mov	r0, #0
 	cmp	r0, r5
@@ -56,7 +56,7 @@
 	.word	0
 .func_end Func_801965c
 
-.thumb_func_start Func_80196c4
+.thumb_func_start DecompressString
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -77,7 +77,7 @@
 	ldr	r5, =0x140
 	mov	r0, #0x32
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -94,7 +94,7 @@
 	mov	r1, r9
 	mov	r0, r5
 	mov	r8, r3
-	bl	Func_8019bac
+	bl	HuffStr_Start
 	ldr	r3, =0xffff
 	mov	r9, r3
 	b	.L19770
@@ -155,7 +155,7 @@
 	cmp	r3, #0
 	bne	.L19786
 	mov	r0, #0x32
-	bl	Func_8002dd8
+	bl	gfree
 .L19786:
 	ldr	r3, .L1979c	@ 0
 	add	sp, #0xc
@@ -170,5 +170,5 @@
 	.align	2, 0
 .L1979c:
 	.word	0
-.func_end Func_80196c4
+.func_end DecompressString
 

@@ -8,11 +8,11 @@
 	lsl	r3, #3
 	add	r6, r5, r3
 	mov	r0, r6
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lb2716
 	mov	r0, r6
-	bl	_Func_8079358
+	bl	_SetFlag
 	lsl	r3, r5, #5
 	add	r3, r5
 	lsl	r2, r3, #1

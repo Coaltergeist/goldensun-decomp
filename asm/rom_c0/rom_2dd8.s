@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8002dd8
+.thumb_func_start gfree
 	ldr	r4, =gPtrs
 	lsl	r0, #2
 	ldr	r1, [r0, r4]
@@ -13,7 +13,7 @@
 	str	r1, [r3, r4]
 .L2dec:
 	bx	lr
-	.ssize	Func_8002dd8
+	.ssize	gfree
 
 .thumb_func_start free
 	ldr	r4, =gPtrs

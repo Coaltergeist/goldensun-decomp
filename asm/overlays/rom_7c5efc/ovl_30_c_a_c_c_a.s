@@ -40,7 +40,7 @@
 	bl	__Func_8010704
 	mov	r0, #0x81
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -54,7 +54,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, #0xa
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	cmp	r5, #0
 	beq	.Lfc
 	mov	r0, r5
@@ -75,7 +75,7 @@
 	str	r6, [sp]
 	bl	__Func_80105d4
 	mov	r0, #4
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r3, #0x18
 	mov	r2, #0x3e
 	str	r3, [sp]
@@ -102,7 +102,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #4
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r1, #0x57
 	mov	r2, #2
 	mov	r3, #5
@@ -111,9 +111,9 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #4
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #4
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r3, #0xd
 	str	r3, [sp, #4]
 	mov	r0, #0x15
@@ -152,7 +152,7 @@
 	mov	r5, r0
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	cmp	r5, #0
 	beq	.L1d6
 	mov	r0, r5
@@ -164,16 +164,16 @@
 	strb	r3, [r2]
 .L1d6:
 	ldr	r0, =0x202
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1f6
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	bl	OvlFunc_941_20080d4
 	mov	r0, #0x50
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x202
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1f6:
 	pop	{r5}
 	pop	{r0}

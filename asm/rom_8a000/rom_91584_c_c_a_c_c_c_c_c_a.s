@@ -9,7 +9,7 @@
 	mov	r7, r1
 	mov	r8, r2
 	mov	r10, r3
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L923a6
@@ -28,7 +28,7 @@
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, r6
-	bl	Func_80923e4
+	bl	MapActor_SetPos
 .L9237c:
 	mov	r2, r5
 	mov	r3, #0
@@ -36,14 +36,14 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r8
 	mov	r0, r6
 	mov	r1, r7
 	bl	Func_809228c
 	ldr	r1, =.L9fbcc
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r3, r5
 	add	r3, #0x64
 	mov	r2, r10
@@ -57,27 +57,27 @@
 	bx	r0
 .func_end Func_809233c
 
-.thumb_func_start Func_80923c4
+.thumb_func_start MapActor_WaitMovement
 	push	{r5, lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L923dc
 	bl	_Func_800ca6c
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L923dc:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80923c4
+.func_end MapActor_WaitMovement
 
-.thumb_func_start Func_80923e4
+.thumb_func_start MapActor_SetPos
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L9244a
@@ -128,16 +128,16 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80923e4
+.func_end MapActor_SetPos
 
-.thumb_func_start Func_8092454
+.thumb_func_start MapActor_SetPos3D
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r7, r1
 	mov	r6, r2
 	mov	r8, r3
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L924c4
@@ -192,40 +192,40 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8092454
+.func_end MapActor_SetPos3D
 
-.thumb_func_start Func_80924d4
+.thumb_func_start MapActor_SetAnim
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L924e6
 	mov	r1, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L924e6:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80924d4
+.func_end MapActor_SetAnim
 
-.thumb_func_start Func_80924ec
+.thumb_func_start MapActor_SetAnimSpeed
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L924fe
 	mov	r1, r5
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L924fe:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80924ec
+.func_end MapActor_SetAnimSpeed
 
 .thumb_func_start Func_8092504
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9253e
 	mov	r3, r0
@@ -247,7 +247,7 @@
 	cmp	r5, #0x59
 	bgt	.L9253e
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrb	r2, [r6]
 	ldr	r3, [r7]
 	cmp	r3, r2

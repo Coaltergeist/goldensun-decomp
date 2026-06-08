@@ -15,11 +15,11 @@
 	cmp	r0, #0x1f
 	ble	.L1608
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L1632
 .L1608:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -58,11 +58,11 @@
 	cmp	r0, #0x1f
 	ble	.L1658
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L1684
 .L1658:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -110,7 +110,7 @@
 	ldr	r3, [r6, #0x10]
 	ldr	r1, [r6, #8]
 	mov	r0, #0x1a
-	bl	__Func_800c150
+	bl	__CreateActor
 	lsl	r3, r7, #2
 	mov	r2, r10
 	str	r0, [r3, r2]
@@ -140,7 +140,7 @@
 .L16e8:
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r3, r5
 	add	r3, #0x26
 	mov	r2, r8

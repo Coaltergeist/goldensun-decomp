@@ -43,7 +43,7 @@
 	b	.L931b4
 .L931ae:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L931b4:
 	mov	r0, r5
 	bl	_Func_8017394
@@ -93,7 +93,7 @@
 	bl	Func_8092ba8
 	mov	r7, r0
 	mov	r0, r11
-	bl	Func_80915ac
+	bl	GetSpriteVoice
 	mov	r2, #0xec
 	lsl	r2, #1
 	add	r5, r2
@@ -114,7 +114,7 @@
 	mov	r0, r11
 	bl	_Func_8019da8
 	mov	r0, r7
-	bl	Func_80915ac
+	bl	GetSpriteVoice
 	mov	r3, r0
 	ldrh	r0, [r5]
 	add	r2, r0, #1
@@ -134,13 +134,13 @@
 	b	.L93276
 .L93270:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L93276:
 	bl	_Func_8017364
 	cmp	r0, #0
 	beq	.L93270
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r2, =0x303
 	ldr	r3, [r1]
@@ -151,25 +151,25 @@
 	mov	r5, r2
 .L93294:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	and	r3, r5
 	cmp	r3, #0
 	beq	.L93294
 .L932a2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r11
 	bl	_Func_8019e48
 	mov	r0, r7
 	bl	_Func_8019e48
 	bl	_Func_8019a54
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L932c6
 .L932c0:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L932c6:
 	mov	r0, r10
 	bl	_Func_8017394
@@ -178,14 +178,14 @@
 	b	.L932d8
 .L932d2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L932d8:
 	mov	r0, r8
 	bl	_Func_8017394
 	cmp	r0, #0
 	beq	.L932d2
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
 	mov	r9, r5

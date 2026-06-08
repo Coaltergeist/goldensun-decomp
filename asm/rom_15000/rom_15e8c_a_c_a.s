@@ -6,7 +6,7 @@
 	ldr	r1, =0x12fc
 	mov	r0, #0xf
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r5, sp
@@ -94,7 +94,7 @@
 	ldr	r1, =0x12fc
 	mov	r0, #0xf
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r5, r0
 	mov	r4, sp
@@ -225,7 +225,7 @@
 	bx	r0
 .func_end Func_80160fc
 
-.thumb_func_start Func_8016178
+.thumb_func_start ClearUIRegion
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -318,7 +318,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8016178
+.func_end ClearUIRegion
 
 .thumb_func_start Func_8016230
 	push	{r5, r6, r7, lr}
@@ -393,7 +393,7 @@
 	bx	r0
 .func_end Func_8016230
 
-.thumb_func_start Func_80162d4
+.thumb_func_start CreateUIBox
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -529,7 +529,7 @@
 	mov	r0, r5
 	bl	Func_80163ec
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L163e0:
 	mov	r0, r5
 	pop	{r3}
@@ -537,5 +537,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80162d4
+.func_end CreateUIBox
 

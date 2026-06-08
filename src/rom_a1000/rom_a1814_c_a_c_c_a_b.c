@@ -6,14 +6,14 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int gKeyPress;
-extern void _Func_80f9080(int);
-extern void _Func_8079358(int);
+extern void _PlaySound(int);
+extern void _SetFlag(int);
 extern void StopTask(void *task);
 
 void Func_80a2444(void) {
     if (gKeyPress & 8) {
-        _Func_80f9080(0x71);
-        _Func_8079358(0xa8 << 1);
+        _PlaySound(0x71);
+        _SetFlag(0xa8 << 1);
         StopTask(Func_80a2444);
     }
 }

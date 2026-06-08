@@ -4,21 +4,21 @@
 .thumb_func_start OvlFunc_935_20084d0
 	push	{lr}
 	ldr	r0, =0x9aa
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L4fe
 	bl	OvlFunc_935_2008458
 	cmp	r0, #0
 	beq	.L4fe
 	ldr	r0, =0x207
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L4fe
 	mov	r0, #0x50
-	bl	__Func_80f9080
+	bl	__PlaySound
 	bl	OvlFunc_935_2008410
 	ldr	r0, =0x9aa
-	bl	__Func_8079358
+	bl	__SetFlag
 .L4fe:
 	pop	{r0}
 	bx	r0
@@ -53,7 +53,7 @@
 .L544:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -88,7 +88,7 @@
 	strb	r3, [r2]
 .L58c:
 	ldr	r0, =0x201
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -123,7 +123,7 @@
 	strb	r3, [r2]
 .L5d8:
 	ldr	r0, =0x202
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -161,7 +161,7 @@
 	strb	r3, [r2]
 .L62c:
 	ldr	r0, =0x203
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -200,7 +200,7 @@
 .L680:
 	mov	r0, #0x81
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -238,7 +238,7 @@
 	strb	r3, [r2]
 .L6d0:
 	ldr	r0, =0x205
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -321,7 +321,7 @@
 	add	r2, r3
 	mov	r10, r2
 	sub	sp, #0x10
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
 	mov	r2, #1
@@ -353,7 +353,7 @@
 	ldr	r2, =0xe666
 	bl	__Func_8012330
 	mov	r0, #0xa3
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r3, =0x1df
 	mov	r8, r3
 .L7b4:
@@ -392,7 +392,7 @@
 	mov	r3, r10
 	str	r0, [r3, #0x24]
 	mov	r0, #1
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #1
 	neg	r2, r2
 	add	r8, r2
@@ -409,9 +409,9 @@
 	orr	r1, r7
 	orr	r1, r6
 	ldr	r0, =REG_BLDALPHA
-	bl	__Func_800387c
+	bl	__SetRegAnimDest
 	mov	r0, #1
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r8
 	mov	r1, #0x14
 	bl	_Func_8000b1c
@@ -436,7 +436,7 @@
 	bl	__Func_80105d4
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	bl	__Func_800fe9c
 	bl	__Func_8012350
 	bl	__Func_8091750
@@ -453,16 +453,16 @@
 	push	{r5, r6, lr}
 	ldr	r0, =0x9a8
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L932
 	mov	r1, #1
 	ldr	r0, =0x1528
 	bl	__Func_801776c
 	ldr	r0, =0x9a8
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x9b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r5, #0x1b
 	mov	r6, #0x5c
 	mov	r1, #0x1b
@@ -473,7 +473,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #0x27
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0x1b
 	mov	r2, #1
 	mov	r3, #1
@@ -482,9 +482,9 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #0x32
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x9c
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r6, #0x19
 	mov	r1, #0x18
 	mov	r2, #1
@@ -494,7 +494,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #2
 	mov	r1, #0x18
 	mov	r2, #1
@@ -503,7 +503,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_80105d4
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	bl	OvlFunc_935_2008754
 .L932:
 	add	sp, #8
@@ -637,7 +637,7 @@
 	str	r7, [r5, #0x28]
 	mov	r0, #0x6a
 	strb	r7, [r3]
-	bl	__Func_80f9080
+	bl	__PlaySound
 .La3c:
 	add	r6, #1
 	cmp	r6, #3
@@ -648,26 +648,26 @@
 	beq	.La72
 	mov	r0, #0xa
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	ldr	r0, =0x207
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.La6c
 	ldr	r0, =0x207
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0xcc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	b	.La72
 .La6c:
 	mov	r0, #0x6a
-	bl	__Func_80f9080
+	bl	__PlaySound
 .La72:
 	mov	r0, #9
 	bl	OvlFunc_935_2008944
 	cmp	r0, #0
 	beq	.La82
 	mov	r0, #0x6a
-	bl	__Func_80f9080
+	bl	__PlaySound
 .La82:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -714,7 +714,7 @@
 	lsl	r2, #2
 	mov	r5, r0
 	add	r0, r6, r2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lb1a
 	ldr	r3, [r5, #0x28]
@@ -730,7 +730,7 @@
 	str	r3, [r5, #0x48]
 	str	r3, [r5, #0x28]
 	mov	r0, #0x6a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	b	.Lb34
 .Lb1a:
 	ldr	r3, [r5, #0x28]
@@ -745,7 +745,7 @@
 	str	r0, [r5, #0x28]
 	str	r7, [r5, #0xc]
 	mov	r0, #0x6a
-	bl	__Func_80f9080
+	bl	__PlaySound
 .Lb34:
 	add	r6, #1
 	cmp	r6, #5

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800b7c0
+.thumb_func_start InitSprite
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -89,9 +89,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b7c0
+.func_end InitSprite
 
-.thumb_func_start Func_800b868
+.thumb_func_start InitSpriteLayer
 	push	{r5, r6, lr}
 	mov	r5, r0
 	cmp	r5, #0
@@ -126,9 +126,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b868
+.func_end InitSpriteLayer
 
-.thumb_func_start Func_800b8ac
+.thumb_func_start Sprite_AddLayer
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -156,7 +156,7 @@
 	b	.Lb932
 .Lb8da:
 	mov	r0, r8
-	bl	Func_800bbc0
+	bl	CreateSpriteLayer
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0
@@ -205,9 +205,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b8ac
+.func_end Sprite_AddLayer
 
-.thumb_func_start Func_800b93c
+.thumb_func_start Sprite_DeleteLayer
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1
@@ -216,7 +216,7 @@
 	cmp	r5, #0
 	beq	.Lb99e
 	mov	r0, r5
-	bl	Func_800bc48
+	bl	DeleteSpriteLayer
 	ldr	r3, [r6, #0x28]
 	mov	r0, #0
 	cmp	r5, r3
@@ -265,9 +265,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b93c
+.func_end Sprite_DeleteLayer
 
-.thumb_func_start Func_800b9a4
+.thumb_func_start Sprite_DeleteLayerIndex
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r7, r1
@@ -281,7 +281,7 @@
 	ldr	r0, [r5, r6]
 	cmp	r0, #0
 	beq	.Lb9ee
-	bl	Func_800bc48
+	bl	DeleteSpriteLayer
 	mov	r3, #0
 	add	r2, r7, #1
 	str	r3, [r5, r6]
@@ -311,9 +311,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b9a4
+.func_end Sprite_DeleteLayerIndex
 
-.thumb_func_start Func_800b9f4
+.thumb_func_start SpriteLayer_SetAnim
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r3, [r5, #0xc]
@@ -344,9 +344,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b9f4
+.func_end SpriteLayer_SetAnim
 
-.thumb_func_start Func_800ba30
+.thumb_func_start Sprite_SetAnim
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -428,5 +428,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800ba30
+.func_end Sprite_SetAnim
 

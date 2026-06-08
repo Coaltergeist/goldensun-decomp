@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8005268
+.thumb_func_start PhysMove
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	ldr	r3, =Func_80009c0
@@ -59,4 +59,4 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8005268
+.func_end PhysMove

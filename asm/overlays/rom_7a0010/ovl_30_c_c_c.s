@@ -11,7 +11,7 @@
 	str	r2, [r3]
 	ldr	r0, =0x845
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1f4
 	mov	r5, #8
@@ -41,21 +41,21 @@
 	mov	r3, #0x10
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x22
 	mov	r1, #0x5e
 	mov	r2, #0x12
 	mov	r3, #0x4c
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x5e
 	mov	r1, #0x22
 	mov	r2, #0x4e
 	mov	r3, #0x10
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	b	.L29c
 .L23c:
 	mov	r3, r2
@@ -73,33 +73,33 @@
 	mov	r3, #0x17
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x22
 	mov	r1, #0x5e
 	mov	r2, #0x13
 	mov	r3, #0x53
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r3, #0x17
 	mov	r0, #0x5e
 	mov	r1, #0x22
 	mov	r2, #0x4f
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xb
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xc
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L29c:
 	mov	r0, #0
 	add	sp, #8

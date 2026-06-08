@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern void StopTask(void *task);
-extern void Func_8002dd8(int index);
+extern void gfree(int index);
 extern void Func_80908e0(void);
 
 void Func_80911e8(void) {
     StopTask(Func_80908e0);
-    Func_8002dd8(0x20);
+    gfree(0x20);
 }

@@ -20,7 +20,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, r4
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	str	r0, [r5]
 	cmp	r0, #0
 	beq	.L9bac8
@@ -86,7 +86,7 @@
 	sub	sp, #4
 	cmp	r0, #0
 	beq	.L9bb44
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 .L9bb44:
 	mov	r0, sp
 	mov	r3, #0

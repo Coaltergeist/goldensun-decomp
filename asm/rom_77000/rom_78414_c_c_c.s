@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078a34
+.thumb_func_start BreakItem
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	lsl	r5, #1
 	add	r5, #0xd8
 	ldrh	r2, [r0, r5]
@@ -22,12 +22,12 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078a34
+.func_end BreakItem
 
-.thumb_func_start Func_8078a60
+.thumb_func_start RepairItem
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	lsl	r5, #1
 	add	r5, #0xd8
 	ldrh	r2, [r0, r5]
@@ -46,7 +46,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078a60
+.func_end RepairItem
 
 	.section .rodata
 	.global .L7b6a8

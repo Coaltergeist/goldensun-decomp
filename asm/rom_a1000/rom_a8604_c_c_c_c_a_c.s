@@ -2,7 +2,7 @@
 
 .thumb_func_start Func_80aa460
 	push	{lr}
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #1]
 	mov	r2, #0xf
 	and	r2, r3

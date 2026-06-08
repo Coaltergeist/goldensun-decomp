@@ -5,19 +5,19 @@
  * asm/rom_8a000/rom_91584_c_c_a_c_c_c_c_a.o and asm/rom_8a000/rom_91584_c_c_a_c_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808ba1c(unsigned int actorID);
+extern int GetFieldActor(unsigned int actorID);
 extern void Func_80922c4(unsigned int a, unsigned int b, unsigned int c);
 extern void _Func_800ca6c(int actor);
-extern void _Func_800c300(int actor, int b);
+extern void _Actor_SetAnim(int actor, int b);
 
 void Func_8092304(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
     int actor;
 
-    actor = Func_808ba1c(arg0);
+    actor = GetFieldActor(arg0);
     Func_80922c4(arg0, arg1, arg2);
     if (actor != 0) {
         _Func_800ca6c(actor);
-        _Func_800c300(actor, 1);
+        _Actor_SetAnim(actor, 1);
     }
 }

@@ -4,7 +4,7 @@
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	ldr	r2, =0x392
 	mov	r6, #1
 	add	r3, r5, r2
@@ -14,9 +14,9 @@
 	beq	.Lae8ac
 	ldr	r2, =.Laed4c
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 .Lae8ac:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, #0xe5
 	lsl	r2, #2
 	add	r3, r5, r2
@@ -25,7 +25,7 @@
 	beq	.Lae8c4
 	ldr	r2, =.Laedcc
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 .Lae8c4:
 	pop	{r5, r6}
 	pop	{r0}
@@ -60,7 +60,7 @@
 	lsl	r1, #3
 	mov	r0, #0x11
 	sub	sp, #0xc
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #1
 	add	r2, sp, #8
 	add	r3, sp, #4
@@ -69,7 +69,7 @@
 	mov	r1, #0
 	mov	r0, r8
 	str	r6, [sp, #8]
-	bl	_Func_801a3d0
+	bl	_LoadMoveIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
@@ -78,7 +78,7 @@
 	bl	Func_80040d0
 	mov	r5, r0
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, r5
 	add	sp, #0xc
 	pop	{r3}
@@ -98,7 +98,7 @@
 	mov	r10, r1
 	mov	r7, r2
 	mov	r6, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	cmp	r5, #0x60
 	beq	.Lae98c

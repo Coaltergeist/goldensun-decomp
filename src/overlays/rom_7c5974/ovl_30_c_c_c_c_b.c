@@ -6,9 +6,9 @@
  * goldensun/overlays/rom_7c5974/overlay.ld.
  */
 extern unsigned char *__MapActor_GetActor(int);
-extern void __Func_80b29a8(int);
+extern void __UI_Sanctum(int);
 extern void __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
+extern void __ActorMessage(int, int);
 
 void OvlFunc_940_2008454(void)
 {
@@ -16,9 +16,9 @@ void OvlFunc_940_2008454(void)
 
     p = __MapActor_GetActor(0);
     if ((unsigned int)(*(unsigned short *)(p + 6) - 0xa001) <= 0x3ffe) {
-        __Func_80b29a8(0x15);
+        __UI_Sanctum(0x15);
     } else {
         __Func_8092b94(0x266b);
-        __Func_8092f84(0x16, 0);
+        __ActorMessage(0x16, 0);
     }
 }

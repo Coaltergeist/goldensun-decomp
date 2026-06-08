@@ -5,9 +5,9 @@
  * Candidate: tools/runs/run_20260607T010203Z/OvlFunc_967_2008030-iter-2.c
  * TODO(residual): reg-alloc/scheduling divergence (register swap / op-order); logic correct. Permuter seed.
  */
-extern void __Func_8093874(int a, int b);
+extern void __MapActor_Surprise(int a, int b);
 
 unsigned int OvlFunc_967_2008030(void) {
-    __Func_8093874(0xe, 0x102);
+    __MapActor_Surprise(0xe, 0x102);
     return 0;
 }

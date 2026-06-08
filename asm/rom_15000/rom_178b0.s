@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80178b0
+.thumb_func_start DrawMsgGlyph
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -201,7 +201,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80178b0
+.func_end DrawMsgGlyph
 
 .thumb_func_start Func_8017a64
 	push	{lr}
@@ -386,7 +386,7 @@
 	mov	r0, r10
 	mov	r1, r4
 	mov	r3, r8
-	bl	Func_8018cac
+	bl	DrawText
 	add	r7, r0
 .L17be6:
 	ldrh	r4, [r5]
@@ -610,7 +610,7 @@
 	bx	r0
 .func_end Func_8017c8c
 
-.thumb_func_start Func_8017dd4
+.thumb_func_start PrintNum
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -711,7 +711,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8017dd4
+.func_end PrintNum
 
 	.section .rodata
 

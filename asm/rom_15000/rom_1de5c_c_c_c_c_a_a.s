@@ -105,7 +105,7 @@
 	mov	r7, #3
 	b	.L1eec6
 .L1eec2:
-	bl	_Func_80795fc
+	bl	_GetPartySize
 .L1eec6:
 	mov	r3, #1
 	and	r3, r6
@@ -150,7 +150,7 @@
 	mov	r1, #0x10
 	mov	r0, #0x10
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r3, =iwram_3001e8c
 	ldr	r6, [r3]
 	ldr	r3, =0xea6
@@ -168,7 +168,7 @@
 	mov	r4, #6
 	ldrh	r0, [r5, #4]
 	str	r4, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [r5]
 	mov	r0, r8
 	bl	Func_801f200
@@ -585,7 +585,7 @@
 	bne	.L1f26a
 	b	.L1f2d8
 .L1f288:
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	str	r0, [sp, #0x1c]
 	ldr	r1, [sp, #0x1c]
 	mov	r0, #0
@@ -674,7 +674,7 @@
 	ldrh	r1, [r6, #6]
 	ldrh	r2, [r6, #8]
 	ldrh	r3, [r6, #0xa]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	b	.L1f5a6
 .L1f33a:
 	ldr	r1, [sp, #0x20]
@@ -696,7 +696,7 @@
 	ldrh	r2, [r6, #8]
 	ldrh	r3, [r6, #0xa]
 	ldrh	r0, [r6, #4]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	mov	r0, r11
 	bl	Func_801eea0
 	ldrh	r3, [r6, #8]
@@ -747,7 +747,7 @@
 	ldr	r3, [sp, #4]
 	ldr	r4, [sp, #0x10]
 	ldrh	r0, [r3, r4]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, r0
 	mov	r0, #0x38
 	ldrsh	r7, [r5, r0]
@@ -756,7 +756,7 @@
 	cmp	r7, #0
 	bne	.L1f3e2
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L1f3fc
 .L1f3e2:
 	cmp	r3, #0
@@ -767,11 +767,11 @@
 	cmp	r7, r3
 	bgt	.L1f3f6
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L1f3fc
 .L1f3f6:
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 .L1f3fc:
 	ldr	r2, [sp, #0x20]
 	ldr	r3, =0xea7
@@ -803,7 +803,7 @@
 	ldr	r3, [sp, #0x14]
 	bl	Func_801e8b0
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r2, #0x34
 	ldrsh	r1, [r5, r2]
 	cmp	r1, #0
@@ -996,9 +996,9 @@
 	ldr	r3, [r3]
 	mov	r1, #1
 	ldr	r0, [r3]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #0x10
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r0}
 	bx	r0
 .func_end Func_801f5d4
@@ -1107,7 +1107,7 @@
 	mov	r6, r0
 	mov	r2, #3
 	mov	r0, r8
-	bl	Func_8017dd4
+	bl	PrintNum
 	ldrb	r3, [r0]
 	strb	r3, [r7]
 	add	r0, #1
@@ -1124,7 +1124,7 @@
 	mov	r0, r8
 	mov	r1, r6
 	mov	r2, #2
-	bl	Func_8017dd4
+	bl	PrintNum
 	ldrb	r3, [r0]
 	add	r5, #1
 	strb	r3, [r5]
@@ -1280,7 +1280,7 @@
 	bx	r1
 .func_end Func_801f77c
 
-.thumb_func_start Func_801f818
+.thumb_func_start PrepareSaveHeader
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1308,7 +1308,7 @@
 	lsl	r1, #1
 	add	r2, r1
 	ldr	r0, [r2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r7, r5
 	mov	r6, r0
 	mov	r1, r5
@@ -1337,7 +1337,7 @@
 	add	r3, r5, r2
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	bl	_Func_808b158
+	bl	_GetLocationName
 	strh	r0, [r7, #0x1e]
 	ldr	r0, =0x129
 	add	r3, r6, r0
@@ -1346,22 +1346,22 @@
 	ldr	r3, [r5, #0x10]
 	mov	r0, #0
 	str	r3, [r7, #0x24]
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	mov	r3, r7
 	add	r3, #0x28
 	strb	r0, [r3]
 	mov	r0, #1
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	mov	r3, r7
 	add	r3, #0x29
 	strb	r0, [r3]
 	mov	r0, #2
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	mov	r3, r7
 	add	r3, #0x2a
 	strb	r0, [r3]
 	mov	r0, #3
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	mov	r3, r7
 	add	r3, #0x2b
 	mov	r6, sp
@@ -1421,7 +1421,7 @@
 	mov	r6, r3
 .L1f936:
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1f946
 	ldrb	r3, [r6]
@@ -1432,7 +1432,7 @@
 	cmp	r5, #0x7f
 	ble	.L1f936
 	mov	r0, #0x20
-	bl	_Func_8079338
+	bl	_GetFlag
 	neg	r3, r0
 	orr	r3, r0
 	mov	r2, r7
@@ -1462,7 +1462,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_801f818
+.func_end PrepareSaveHeader
 
 .thumb_func_start Func_801f9b4
 	push	{r5, r6, r7, lr}
@@ -1487,12 +1487,12 @@
 	mov	r3, #9
 	b	.L1fa16
 .L1f9e2:
-	bl	Func_801f818
+	bl	PrepareSaveHeader
 	ldr	r5, =ewram_2000000
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
 	mov	r1, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	mov	r6, r0
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
@@ -1501,7 +1501,7 @@
 	add	r5, r3
 	add	r0, #3
 	mov	r1, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fa1a
@@ -1543,14 +1543,14 @@
 	ldr	r5, =ewram_2000000
 	mov	r0, r7
 	mov	r1, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	mov	r3, #0x80
 	lsl	r3, #5
 	add	r5, r3
 	mov	r6, r0
 	mov	r1, r5
 	add	r0, r7, #3
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fa8c
@@ -1616,7 +1616,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
 	mov	r1, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	cmp	r0, #0
 	beq	.L1fb1c
 	ldr	r0, =_MSG_0b
@@ -1646,7 +1646,7 @@
 	b	.L1fb5e
 .L1fb58:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L1fb5e:
 	bl	Func_8017364
 	cmp	r0, #0
@@ -1655,7 +1655,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r3, #1
-	bl	Func_8028df4
+	bl	YesNoMenu
 	cmp	r0, #0
 	beq	.L1fb7c
 	bl	Func_8019a54
@@ -1663,7 +1663,7 @@
 .L1fb7c:
 	bl	Func_8019a54
 	mov	r0, #0x55
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_801faa8
 	mov	r5, r0
 	cmp	r5, #0
@@ -1741,11 +1741,11 @@
 .L1fc2a:
 	mov	r1, r7
 	mov	r0, r5
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	mov	r1, r10
 	mov	r6, r0
 	add	r0, r5, #3
-	bl	Func_8005920
+	bl	SomethingSaveHeader
 	orr	r6, r0
 	cmp	r6, #0
 	beq	.L1fc52
@@ -1805,7 +1805,7 @@
 	b	.L1fccc
 .L1fcc6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L1fccc:
 	bl	Func_8017364
 	cmp	r0, #0
@@ -1814,7 +1814,7 @@
 	mov	r1, #0
 	mov	r2, #3
 	mov	r3, #1
-	bl	Func_8028df4
+	bl	YesNoMenu
 	cmp	r0, #0
 	beq	.L1fcea
 	bl	Func_8019a54
@@ -1859,7 +1859,7 @@
 	lsl	r0, r3, #1
 	add	r0, r3
 	lsl	r0, #8
-	bl	Func_8002322
+	bl	sin
 	cmp	r0, #0
 	bge	.L1fd54
 	ldr	r3, =0x3fff

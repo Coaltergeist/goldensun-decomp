@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_944ec_a_c_a_c_a.o and asm/rom_8a000/rom_944ec_a_c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_800c0f4(void);
+extern void _DeleteActor(void);
 
 void Func_8095f9c(unsigned char *p)
 {
@@ -22,5 +22,5 @@ void Func_8095f9c(unsigned char *p)
     limit = 0xc0 << 6;
     *(int *)(p + 0x18) = v18;
     if (v18 < limit)
-        _Func_800c0f4();
+        _DeleteActor();
 }

@@ -192,7 +192,7 @@
 	lsl	r3, r6, #2
 	add	r3, #0x40
 	ldr	r0, [r7, r3]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lbdb3e
 .Lbd9a8:
 	lsl	r3, r6, #2
@@ -244,7 +244,7 @@
 	ldr	r0, [r7, r3]
 	cmp	r0, #0
 	blt	.Lbda08
-	bl	_Func_80174f8
+	bl	_PrintBattleText
 .Lbda08:
 	mov	r4, #0xa4
 	lsl	r4, #1
@@ -259,7 +259,7 @@
 	ldr	r0, [r7, r3]
 	cmp	r0, #0
 	blt	.Lbda24
-	bl	_Func_80174f8
+	bl	_PrintBattleText
 .Lbda24:
 	mov	r1, #0xa4
 	lsl	r1, #1
@@ -283,7 +283,7 @@
 	ldr	r0, [r3]
 	cmp	r0, #0
 	ble	.Lbda52
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lbda52:
 	mov	r3, #0xb2
 	lsl	r3, #1
@@ -295,7 +295,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #5
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r4, #0xa4
 	lsl	r4, #1
 	mov	r1, #0xa8
@@ -324,7 +324,7 @@
 	ldr	r0, [r5]
 	bl	Func_80bb588
 	ldr	r0, [r5]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, #0
 	mov	r6, r0
 	b	.Lbdaca
@@ -336,11 +336,11 @@
 	cmp	r3, #1
 	beq	.Lbdac2
 	mov	r1, #4
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	b	.Lbdac8
 .Lbdac2:
 	mov	r1, #5
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Lbdac8:
 	add	r5, #1
 .Lbdaca:
@@ -562,7 +562,7 @@
 	mov	r4, r9
 	strh	r3, [r4, #6]
 	lsl	r0, #12
-	bl	Func_8002322
+	bl	sin
 	cmp	r0, #0
 	bge	.Lbdcbc
 	ldr	r2, =0x7fff
@@ -607,7 +607,7 @@
 	beq	.Lbdd22
 .Lbdd06:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #0xa4
 	lsl	r1, #1
 	add	r2, r7, r1
@@ -724,7 +724,7 @@
 	lsl	r2, #1
 	add	r3, r7, r2
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
@@ -738,7 +738,7 @@
 	mov	r0, #0
 .Lbde0a:
 	add	r0, #0x92
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lbde10:
 	mov	r4, #0xa8
 	lsl	r4, #1
@@ -763,7 +763,7 @@
 	lsl	r1, #1
 	add	r3, r7, r1
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x94
 	lsl	r2, #1
 	add	r0, r2
@@ -772,7 +772,7 @@
 	cmp	r0, #0
 	blt	.Lbde54
 	add	r0, #0x92
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lbde54:
 	mov	r4, #0xa8
 	lsl	r4, #1
@@ -1016,7 +1016,7 @@
 	add	r5, r1, r3
 .Lbe04c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r5]
 	cmp	r3, #4
 	bne	.Lbe04c
@@ -1199,7 +1199,7 @@
 	mov	r1, r9
 	str	r1, [r3]
 	mov	r10, r1
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, #0
 	ldrb	r2, [r0]
 	str	r3, [sp, #0x14]
@@ -1329,7 +1329,7 @@
 	bne	.Lbe2a6
 	mov	r0, r5
 	str	r4, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	ldr	r4, [sp]
@@ -1367,7 +1367,7 @@
 	bne	.Lbe2f0
 	mov	r0, r5
 	str	r4, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	ldr	r4, [sp]
@@ -1461,7 +1461,7 @@
 	mov	r4, #0
 	ldrsh	r0, [r3, r4]
 	mov	r10, r2
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, sp
 	add	r1, #0x1c
 	str	r1, [sp, #0xc]
@@ -1504,7 +1504,7 @@
 	cmp	r3, #0
 	beq	.Lbe46a
 	ldr	r0, =0x16d
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbe46a
 	ldr	r1, =gKeyHeld
@@ -1531,7 +1531,7 @@
 	mov	r1, #0xc0
 	mov	r0, r5
 	lsl	r1, #24
-	bl	_Func_80783a4
+	bl	_ModifyHP
 	cmp	r0, #0
 	bne	.Lbe446
 	mov	r1, r5
@@ -1808,7 +1808,7 @@
 	ldr	r0, =0x846
 	bl	_Func_80175a0
 .Lbe726:
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 	ldr	r3, [sp, #8]
 	ldr	r2, [r3]
 	mov	r3, #7
@@ -1867,7 +1867,7 @@
 	mov	r1, #8
 	ldrsh	r0, [r3, r1]
 	mov	r11, r0
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	add	r2, sp, #0x30
 	mov	r6, r0
 	mov	r9, r2
@@ -1933,7 +1933,7 @@
 	ldr	r3, [r4]
 	mov	r1, #0
 	ldrsh	r0, [r3, r1]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	ldr	r2, [sp, #0xc]
 	ldr	r1, [r2]
 	mov	r4, #0x3a
@@ -1973,7 +1973,7 @@
 	ldr	r3, [r4]
 	add	r2, #0xd8
 	ldrh	r0, [r3, r2]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, r0
 	ldrh	r0, [r5, #0x28]
 	mov	r11, r0
@@ -2105,7 +2105,7 @@
 	mov	r1, #4
 	bl	_Func_8019908
 	mov	r0, r11
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0xf
 	and	r3, r2
@@ -2292,7 +2292,7 @@
 	b	.Lbec62
 .Lbeb66:
 	mov	r0, r11
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r1, #0
 	mov	r0, #0
 	bl	Func_80c10e8
@@ -2306,7 +2306,7 @@
 	mov	r2, r5
 	and	r2, r3
 	and	r1, r6
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 	mov	r2, r10
 	ldr	r3, [r2]
 	mov	r4, #0
@@ -2322,7 +2322,7 @@
 	ldr	r3, [r0]
 	mov	r1, #0
 	ldrsh	r0, [r3, r1]
-	bl	_Func_8077428
+	bl	_CalcStats
 	bl	Func_80bdfec
 	mov	r0, #0x1e
 	bl	Func_80bd808
@@ -2365,7 +2365,7 @@
 	mov	r0, #0xb
 	bl	Func_80bbabc
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r10
 	ldr	r3, [r1]
 	mov	r2, #0
@@ -2373,7 +2373,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #3
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r4, r10
 	ldr	r3, [r4]
 	mov	r1, #0
@@ -2381,7 +2381,7 @@
 	bl	Func_80b7dd0
 	mov	r1, #0x20
 	ldr	r0, [r0]
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r2, r10
 	ldr	r3, [r2]
 	ldrh	r1, [r3, #8]
@@ -2392,7 +2392,7 @@
 	and	r1, r6
 	mov	r2, #3
 	mov	r3, #0
-	bl	Func_80c1798
+	bl	Anim_MoveIntro
 	bl	Func_80be02c
 .Lbec5c:
 	mov	r0, #2
@@ -2409,11 +2409,11 @@
 	mov	r0, r11
 	bl	_Func_8019908
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0x85b
 	bl	_Func_80175a0
 	mov	r0, #0x3c
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lbec8a:
 	mov	r0, #1
 	neg	r0, r0
@@ -2441,7 +2441,7 @@
 	and	r1, r6
 	bl	_Func_807a458
 	mov	r0, r11
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r2, r10
 	ldr	r3, [r2]
 	mov	r5, r0
@@ -2464,7 +2464,7 @@
 	ldr	r3, [r1]
 	mov	r2, #8
 	ldrsh	r0, [r3, r2]
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	mov	r4, r10
 	mov	r2, #0x18
 	ldr	r3, [r4]
@@ -2604,7 +2604,7 @@
 	ldr	r4, [sp, #8]
 	ldr	r3, [r4]
 	ldrb	r0, [r3, #2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	ldr	r0, [sp, #8]
 	ldr	r2, [r0]
@@ -2747,7 +2747,7 @@
 .Lbef28:
 	mov	r0, #0xb7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbef3c
 	ldr	r0, [sp, #8]
@@ -2775,7 +2775,7 @@
 .Lbef88:
 	ldr	r3, [sp, #0xc]
 	ldr	r0, [r3]
-	bl	_Func_8079cbc
+	bl	_CheckEquipmentCritBoost
 	mov	r1, #0xc8
 	lsl	r0, #16
 	bl	Func_af0_from_thumb
@@ -2796,7 +2796,7 @@
 	b	.Lbf1a8
 .Lbefb4:
 	mov	r0, r11
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r7, r0
 	ldr	r0, [sp, #8]
 	ldrb	r2, [r7, #2]

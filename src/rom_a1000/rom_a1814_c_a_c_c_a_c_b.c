@@ -5,8 +5,8 @@
  * asm/rom_a1000/rom_a1814_c_a_c_c_a_c_a.o and asm/rom_a1000/rom_a1814_c_a_c_c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_801e71c(int);
+extern void _SetTextColor(int);
 
 void Func_80a24ac(void) {
-    _Func_801e71c(15);
+    _SetTextColor(15);
 }

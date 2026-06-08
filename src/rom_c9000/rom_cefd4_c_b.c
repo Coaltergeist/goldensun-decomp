@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_cefd4_c_a.o and asm/rom_c9000/rom_cefd4_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80ceff8(void *context, int subanim);
+extern void BaseAnim_Spasm(void *context, int subanim);
 
 void Func_80cefe0(void *context) {
-    Func_80ceff8(context, 0);
+    BaseAnim_Spasm(context, 0);
 }

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808d48c
+.thumb_func_start FindMapActorEvent
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -19,7 +19,7 @@
 	ldr	r0, [r3]
 	ldr	r6, [r7, #0x10]
 	mov	r9, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, #1
 	ldrh	r0, [r0, #6]
 	ldr	r5, [r6]
@@ -133,5 +133,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808d48c
+.func_end FindMapActorEvent
 

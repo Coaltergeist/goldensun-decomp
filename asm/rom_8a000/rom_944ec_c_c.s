@@ -1,11 +1,11 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8096c80
+.thumb_func_start CreateParticleActor
 	push	{r5, r6, lr}
 	ldr	r4, =iwram_3001f30
 	ldr	r6, [r4]
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L96cce
@@ -14,7 +14,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	bne	.L96ca2
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r0, #0
 	b	.L96cd0
 .L96ca2:
@@ -37,14 +37,14 @@
 	bl	_Func_800c528
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L96cce:
 	mov	r0, r5
 .L96cd0:
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8096c80
+.func_end CreateParticleActor
 
 	.section .rodata
 	.global .L9ed84

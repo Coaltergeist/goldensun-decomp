@@ -14,7 +14,7 @@
 	b	.L72
 .L62:
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L70
 	ldr	r0, =.La64
@@ -37,7 +37,7 @@
 	cmp	r3, r2
 	bhi	.Lb4
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lb4
 	mov	r0, #8
@@ -45,9 +45,9 @@
 	bl	__Func_80b3284
 	b	.Le4
 .Lb4:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Ld2
 	ldr	r0, =0x24fb
@@ -71,7 +71,7 @@
 
 .thumb_func_start OvlFunc_940_20080fc
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1bd5
 	bl	__Func_8092b94
 	mov	r1, #0
@@ -79,7 +79,7 @@
 	bl	__Func_8093054
 	mov	r0, #0x94
 	lsl	r0, #4
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -87,15 +87,15 @@
 
 .thumb_func_start OvlFunc_940_2008124
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1bdb
 	bl	__Func_8092b94
 	mov	r1, #0
 	mov	r0, #0x14
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r0, #0x94
 	lsl	r0, #4
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -103,7 +103,7 @@
 
 .thumb_func_start OvlFunc_940_200814c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x24fe
 	bl	__Func_8092b94
 	mov	r1, #0
@@ -125,28 +125,28 @@
 	cmp	r3, r2
 	bhi	.L188
 	mov	r0, #0x15
-	bl	__Func_80b29a8
+	bl	__UI_Sanctum
 	b	.L1c0
 .L188:
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1aa
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x2507
 	bl	__Func_8092b94
 	mov	r0, #0x15
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	b	.L1c0
 .L1aa:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1bdc
 	bl	__Func_8092b94
 	mov	r0, #0x15
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 .L1c0:
 	pop	{r0}
@@ -156,24 +156,24 @@
 .thumb_func_start OvlFunc_940_20081d8
 	push	{lr}
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1fc
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x24fa
 	bl	__Func_8092b94
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	b	.L212
 .L1fc:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1be0
 	bl	__Func_8092b94
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 .L212:
 	pop	{r0}
@@ -196,24 +196,24 @@
 	b	.L27a
 .L242:
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L264
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x24f9
 	bl	__Func_8092b94
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	b	.L27a
 .L264:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1bcf
 	bl	__Func_8092b94
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 .L27a:
 	pop	{r0}

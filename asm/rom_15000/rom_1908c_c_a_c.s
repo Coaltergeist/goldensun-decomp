@@ -23,7 +23,7 @@
 	cmp	r3, #0
 	beq	.L197f0
 	mov	r1, #0
-	bl	Func_8016418
+	bl	CloseUIBox
 .L197f0:
 	add	r6, #1
 	add	r5, #0x28
@@ -58,7 +58,7 @@
 	cmp	r1, #0
 	bne	.L19842
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L197f8
 .L19830:
 	ldrh	r3, [r7, #0x16]
@@ -66,7 +66,7 @@
 	beq	.L1983e
 	mov	r0, r7
 	mov	r1, #0
-	bl	Func_8016418
+	bl	CloseUIBox
 .L1983e:
 	add	r7, #0x24
 	add	r6, #1
@@ -128,7 +128,7 @@
 	mov	r1, r7
 	mov	r2, r8
 	mov	r3, r10
-	bl	Func_8016178
+	bl	ClearUIRegion
 	mov	r0, r9
 	mov	r1, r11
 	ldr	r2, [sp, #4]
@@ -350,14 +350,14 @@
 	and	r1, r2
 	lsl	r1, #16
 	lsr	r1, #16
-	bl	Func_8016418
+	bl	CloseUIBox
 .L19a88:
 	add	r6, #1
 	add	r5, #0x28
 	cmp	r6, #3
 	bne	.L19a62
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -380,7 +380,7 @@
 	str	r3, [sp, #0x14]
 	str	r3, [sp, #0x10]
 	mov	r7, r0
-	bl	Func_8018038
+	bl	BufferString
 	mov	r2, #0xeb
 	lsl	r2, #4
 	lsl	r3, r0, #1
@@ -397,7 +397,7 @@
 	add	r3, sp, #0xc
 	str	r0, [sp]
 	mov	r0, r7
-	bl	Func_80187ac
+	bl	TextBox
 	ldr	r2, [sp, #0xc]
 	mov	r3, #0x1e
 	sub	r3, r2
@@ -414,7 +414,7 @@
 	beq	.L19b10
 	mov	r3, r4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r5, r0
 	b	.L19b22
 .L19b10:
@@ -422,7 +422,7 @@
 	str	r3, [sp]
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r5, r0
 	strh	r6, [r5, #8]
 	strh	r6, [r5, #0xa]
@@ -438,11 +438,11 @@
 	bne	.L19b46
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	b	.L19b84
 .L19b40:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L19b46:
 	bl	Func_8017364
 	cmp	r0, #0
@@ -451,11 +451,11 @@
 	beq	.L19b6e
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_8016418
+	bl	CloseUIBox
 	b	.L19b62
 .L19b5c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L19b62:
 	mov	r0, r5
 	bl	Func_8017394
@@ -465,7 +465,7 @@
 .L19b6e:
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L19b76:
 	ldr	r3, =0x12f4
 	mov	r2, #0

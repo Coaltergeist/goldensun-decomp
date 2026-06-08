@@ -17,7 +17,7 @@
 	bl	OvlFunc_common1_2c4
 	b	.L24a2
 .L234e:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, r7
 	mov	r1, #5
 	bl	OvlFunc_common1_4cc
@@ -43,13 +43,13 @@
 	bl	__Func_80933f8
 	bl	__Func_8093530
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r7
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r0, r7
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r1, #0xf6
 	lsl	r1, #2
 	mov	r2, #0xb8
@@ -76,25 +76,25 @@
 	mov	r0, #0
 	bl	OvlFunc_956_200a2c4
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r1, =0x101
 	mov	r0, #0
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0
 	bl	OvlFunc_common1_1314
 	mov	r0, #0
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #1
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r0, #0
 	ldr	r1, =0x105
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r6, #0x77
@@ -111,13 +111,13 @@
 .L242c:
 	mov	r0, #1
 	sub	r6, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r6, #0
 	bge	.L241c
 	mov	r0, #0
 	ldr	r1, =0x103
 	mov	r2, #0x3c
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r1, #0x8c
 	mov	r2, #0xb8
 	lsl	r1, #3
@@ -125,7 +125,7 @@
 	bl	OvlFunc_956_200a2c4
 	mov	r1, #0
 	mov	r0, r7
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r0, #0
 	bl	OvlFunc_common1_1314
 	ldr	r3, =gState
@@ -138,7 +138,7 @@
 	bl	OvlFunc_common1_1254
 	mov	r0, #0
 	mov	r1, #0
-	bl	__Func_809335c
+	bl	__SetCameraTarget
 	mov	r0, r7
 	mov	r1, #5
 	bl	OvlFunc_common1_588
@@ -151,7 +151,7 @@
 	bl	__Func_8092b94
 	mov	r0, r7
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L2494:
 	mov	r1, r7
 	mov	r2, #5
@@ -180,7 +180,7 @@
 	bl	OvlFunc_common1_2c4
 	b	.L25b6
 .L24ea:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, r5
 	mov	r1, #6
 	bl	OvlFunc_common1_4cc
@@ -204,43 +204,43 @@
 	bl	__Func_80933f8
 	bl	__Func_8093530
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r2, #0
 	mov	r1, #0x58
 	mov	r0, #0xb4
 	bl	OvlFunc_common1_1490
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r2, #0xa
 	mov	r1, #0x54
 	mov	r0, #0x20
 	bl	OvlFunc_common1_14f4
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r2, #0x1e
 	mov	r1, #0x54
 	mov	r0, #0x60
 	bl	OvlFunc_common1_14f4
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	OvlFunc_common1_1550
 	mov	r0, #2
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0
 	mov	r1, #0
-	bl	__Func_809335c
+	bl	__SetCameraTarget
 	mov	r0, r5
 	mov	r1, #6
 	bl	OvlFunc_common1_588
@@ -252,7 +252,7 @@
 	bl	__Func_8092b94
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L25a8:
 	mov	r1, r5
 	mov	r2, #6

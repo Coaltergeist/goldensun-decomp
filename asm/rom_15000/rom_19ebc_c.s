@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801a5a4
+.thumb_func_start LoadIcon
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -10,7 +10,7 @@
 	ldr	r5, =0x278
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -30,13 +30,13 @@
 	mov	r1, r7
 	bl	_call_via_r3
 	mov	r0, #0x31
-	bl	Func_8002dd8
+	bl	gfree
 	cmp	r6, #0
 	beq	.L1a5fe
 	ldr	r5, =0x9c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	lsr	r5, #2
 	mov	r2, r8
 	mov	r1, r0
@@ -47,7 +47,7 @@
 	ldr	r5, =0x7c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	lsr	r5, #2
 	mov	r2, r8
 	mov	r1, r0
@@ -73,13 +73,13 @@
 	mov	r0, r7
 	bl	_call_via_r4
 	mov	r0, #0x31
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801a5a4
+.func_end LoadIcon
 
 	.section .rodata
 	.global .L29a10

@@ -4,7 +4,7 @@
 .thumb_func_start OvlFunc_914_20089f8
 	push	{r5, lr}
 	sub	sp, #0x20
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	add	r5, sp, #8
 	mov	r0, r5
 	bl	OvlFunc_914_2008474
@@ -29,13 +29,13 @@
 
 .thumb_func_start OvlFunc_914_2008a2c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xb
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	ldr	r0, =0xfd3
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0xb5
 	mov	r1, #3
 	bl	__Func_808f1c0

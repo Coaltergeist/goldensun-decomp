@@ -30,7 +30,7 @@
 	lsl	r3, #1
 	add	r3, r2
 	ldrh	r0, [r6, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, r8
 	lsl	r3, #1
 	mov	r10, r3
@@ -62,7 +62,7 @@
 	lsl	r7, #2
 	add	r7, r10
 	ldrh	r0, [r6, r7]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, [r6, #0x10]
 	mov	r1, r10
 	ldrh	r2, [r3, #0xc]
@@ -98,7 +98,7 @@
 	ldrh	r1, [r6, r7]
 	bl	Func_80a1804
 	ldr	r0, =0x151
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La64ea
 	ldr	r2, [sp]
@@ -123,7 +123,7 @@
 	b	.La6506
 .La64ea:
 	ldr	r0, =0x151
-	bl	_Func_8079374
+	bl	_ClearFlag
 	b	.La6506
 
 	.align	2, 0
@@ -143,7 +143,7 @@
 	sub	r0, #0xa
 	bl	Func_80a1a40
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r3, [r1]
 	mov	r2, #1
@@ -151,7 +151,7 @@
 	cmp	r3, #0
 	beq	.La6538
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #0x82
 	lsl	r3, #2
 	add	r3, r10
@@ -165,7 +165,7 @@
 	cmp	r3, #0
 	beq	.La6550
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	neg	r1, r1
 	str	r1, [sp, #4]
@@ -178,7 +178,7 @@
 	cmp	r3, #0
 	beq	.La656c
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	neg	r2, r2
 	mov	r3, #1
@@ -191,14 +191,14 @@
 	cmp	r3, #0
 	beq	.La6582
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	add	r8, r1
 	mov	r9, r1
 .La6582:
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La6590
 	b	.La6440
@@ -215,7 +215,7 @@
 	mov	r3, #0xd
 	strb	r3, [r5, #5]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r8
 	mov	r2, #0x82
 	strb	r1, [r6, #0x1d]
@@ -322,7 +322,7 @@
 	mov	r1, r10
 	mov	r3, r11
 	mov	r2, r9
-	bl	_Func_80187ac
+	bl	_TextBox
 	ldr	r3, [sp, #8]
 	mov	r6, #1
 	cmp	r3, #0xa
@@ -350,7 +350,7 @@
 	bne	.La66e2
 	ldrh	r0, [r7]
 	lsr	r0, #10
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, r5
 	mov	r2, #0x50
 	mov	r3, #0
@@ -376,7 +376,7 @@
 	mov	r1, r10
 	mov	r3, r11
 	mov	r2, r9
-	bl	_Func_80187ac
+	bl	_TextBox
 	ldr	r3, [sp, #8]
 	mov	r6, #1
 	cmp	r3, #0xa
@@ -403,14 +403,14 @@
 	bne	.La6744
 	ldrh	r0, [r7]
 	lsr	r0, #10
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, r5
 	mov	r2, #0x50
 	mov	r3, #8
 	bl	_Func_801e8b0
 .La6744:
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	b	.La6758
 .La674c:
 	ldr	r0, =0xae6
@@ -455,7 +455,7 @@
 	mov	r3, #0xf
 	mov	r0, #0
 	str	r6, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r3, #0x88
 	lsl	r3, #1
 	mov	r2, r10
@@ -542,16 +542,16 @@
 	bl	Func_80a195c
 	ldr	r0, [r5, #0x10]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	ldr	r0, [r5, #0x20]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #0x86
 	lsl	r3, #1
 	add	r5, r3
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -642,7 +642,7 @@
 	and	r0, r2
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]
@@ -681,7 +681,7 @@
 	and	r0, r2
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]
 	cmp	r7, #0
@@ -758,7 +758,7 @@
 	mov	r9, r0
 	ldrb	r0, [r3, r5]
 	mov	r8, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r10
 	ldrb	r7, [r6, r2]
 	mov	r2, r8
@@ -830,13 +830,13 @@
 	str	r3, [r1, #0x18]
 	ldr	r0, =0x151
 	sub	sp, #8
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La6af4
 	ldr	r0, [r7, #0x2c]
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r8
 	ldr	r3, [r2, #0x18]
 	mov	r1, #0xe4
@@ -858,7 +858,7 @@
 	b	.La6afa
 .La6af4:
 	ldr	r0, =0x2ff
-	bl	_Func_8079374
+	bl	_ClearFlag
 .La6afa:
 	mov	r2, #1
 	mov	r6, #0
@@ -894,7 +894,7 @@
 	cmp	r6, #4
 	ble	.La6b02
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	add	sp, #8
 	pop	{r3, r5}
@@ -993,13 +993,13 @@
 	ldr	r3, =0x21a
 	add	r3, r10
 	ldrb	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r10
 	ldrh	r3, [r6, r2]
 	mov	r5, r0
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r7, r0
 	ldrb	r2, [r7, #9]
 	mov	r1, #0x3a
@@ -1007,7 +1007,7 @@
 	cmp	r2, r3
 	ble	.La6c3e
 	mov	r0, #2
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	b	.La6c5c
 .La6c3e:
 	mov	r2, r10
@@ -1018,11 +1018,11 @@
 	cmp	r0, #0
 	beq	.La6c56
 	mov	r0, #4
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	b	.La6c5c
 .La6c56:
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La6c5c:
 	mov	r1, r10
 	ldrh	r3, [r6, r1]
@@ -1044,7 +1044,7 @@
 	str	r5, [sp]
 	bl	_Func_801e9d4
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, r9
 	add	r3, #1
 	lsl	r3, #24
@@ -1120,7 +1120,7 @@
 	ldr	r1, [sp, #0x10]
 	ldrb	r0, [r1, r3]
 	str	r4, [sp, #8]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x9a
 	str	r0, [sp, #0x20]
 	lsl	r2, #2
@@ -1140,7 +1140,7 @@
 .La6d58:
 	mov	r0, #0x71
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	neg	r0, r0
 	mov	r1, #1
@@ -1166,7 +1166,7 @@
 .La6d8a:
 	mov	r0, #0x82
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	ldr	r3, [r4, #0x18]
 	mov	r0, #0xe4
@@ -1254,7 +1254,7 @@
 	str	r0, [sp, #0x28]
 	mov	r0, #1
 	str	r4, [sp, #8]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp, #8]
 	mov	r0, r8
 	mov	r2, r4
@@ -1315,7 +1315,7 @@
 	ldr	r0, [r7, r3]
 	mov	r1, #1
 	str	r4, [sp, #8]
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	add	r3, r5, #1
 	lsl	r3, #24
 	lsr	r5, r3, #24
@@ -1326,7 +1326,7 @@
 .La6ece:
 	mov	r0, #1
 	str	r4, [sp, #8]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp, #8]
 	ldr	r1, [r4, #0x18]
 	ldr	r3, =gKeyHeld
@@ -1392,13 +1392,13 @@
 	ldr	r0, .La6f64	@ 0x3fff
 	and	r0, r3
 	str	r4, [sp, #8]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	ldr	r4, [sp, #8]
 	cmp	r3, #0
 	bne	.La6f78
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La6fae
 
 	.align	2, 0
@@ -1409,7 +1409,7 @@
 .La6f78:
 	mov	r0, #0xae
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r2, #0x88
 	str	r1, [sp, #0x18]
@@ -1515,7 +1515,7 @@
 	ldr	r0, =0x3fff
 	and	r0, r3
 	str	r4, [sp, #8]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r1, [sp, #0x20]
 	ldrb	r2, [r0, #9]
 	mov	r0, #0x3a
@@ -1524,7 +1524,7 @@
 	cmp	r2, r3
 	ble	.La707c
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	b	.La709a
 
@@ -1534,7 +1534,7 @@
 	mov	r0, #0xad
 .La707e:
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	ldr	r3, [r4, #0x18]
 	mov	r2, #0xe4
@@ -1588,7 +1588,7 @@
 	lsr	r5, #31
 	sub	r5, r3, r5
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #0x86
 	ldr	r0, [sp, #0x30]
 	ldr	r2, [sp, #0x10]
@@ -1641,7 +1641,7 @@
 	add	r3, r7, r0
 	strb	r2, [r3]
 	ldrb	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0xe4
 	lsl	r2, #1
 	add	r1, r7, r2
@@ -1721,13 +1721,13 @@
 	ldr	r0, .La720c	@ 0x3fff
 	and	r0, r3
 	str	r4, [sp, #8]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	ldr	r4, [sp, #8]
 	cmp	r3, #0
 	bne	.La7214
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	b	.La7244
 
@@ -1739,7 +1739,7 @@
 .La7214:
 	mov	r0, #0x82
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x86
 	ldr	r2, [sp, #0x30]
 	ldr	r1, [sp, #0x10]
@@ -1782,14 +1782,14 @@
 	ldr	r0, .La7288	@ 0x3fff
 	and	r0, r3
 	str	r4, [sp, #8]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	ldr	r4, [sp, #8]
 	cmp	r3, #0
 	bne	.La7290
 .La727c:
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 	b	.La72b8
 
@@ -1822,7 +1822,7 @@
 	mov	r0, #0xa8
 	lsl	r0, #1
 	str	r4, [sp, #8]
-	bl	_Func_8079338
+	bl	_GetFlag
 	mov	r6, r0
 	ldr	r4, [sp, #8]
 	cmp	r6, #0
@@ -1835,7 +1835,7 @@
 	mov	r0, #0xa8
 	lsl	r0, #1
 	str	r4, [sp, #8]
-	bl	_Func_8079338
+	bl	_GetFlag
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	bne	.La72e4
@@ -1878,7 +1878,7 @@
 	strh	r0, [r7, r3]
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.La733e
 	mov	r1, #1
@@ -1886,7 +1886,7 @@
 	str	r1, [sp, #0x2c]
 .La733e:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x2c]
 	add	sp, #0x64
 	pop	{r3, r5, r6, r7}
@@ -1903,7 +1903,7 @@
 	push	{lr}
 	lsl	r0, #18
 	lsr	r0, #18
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	cmp	r3, #0
 	bne	.La7378

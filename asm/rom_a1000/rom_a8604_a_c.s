@@ -5,7 +5,7 @@
 	ldr	r3, =iwram_3001f2c
 	mov	r0, r1
 	ldr	r5, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	bl	Func_80a345c
 	mov	r3, #0xe4
 	lsl	r3, #1

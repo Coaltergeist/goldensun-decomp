@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80294d4
+.thumb_func_start CollectDjinni
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -13,22 +13,22 @@
 	lsl	r0, #2
 	add	r0, r6
 	add	r0, #0x30
-	bl	_Func_8079358
+	bl	_SetFlag
 	mov	r0, r8
 	mov	r1, r5
 	mov	r2, r6
-	bl	_Func_807a1b4
+	bl	_GiveDjinni
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80294d4
+.func_end CollectDjinni
 
-.thumb_func_start Func_8029504
+.thumb_func_start StartMenu
 	push	{r5, r6, lr}
 .L29506:
-	bl	Func_801db70
+	bl	StartMenu_Main
 	mov	r6, #1
 	mov	r5, r0
 	neg	r6, r6
@@ -37,7 +37,7 @@
 	beq	.L29544
 	cmp	r5, #0
 	bne	.L29524
-	bl	Func_80207c4
+	bl	Menu_Save
 	cmp	r0, r6
 	bne	.L29542
 	b	.L29506
@@ -53,7 +53,7 @@
 .L29536:
 	cmp	r5, #2
 	bne	.L29542
-	bl	Func_801d4cc
+	bl	Menu_Settings
 	cmp	r0, r6
 	beq	.L29506
 .L29542:
@@ -62,9 +62,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8029504
+.func_end StartMenu
 
-.thumb_func_start Func_8029554
+.thumb_func_start Debug_IconTest
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -85,7 +85,7 @@
 	ldrh	r1, [r1]
 	mov	r0, #1
 	strh	r1, [r3, #4]
-	bl	Func_80030f8
+	bl	WaitFrames
 .L29580:
 	ldr	r2, =gKeyRepeat
 	ldr	r3, [r2]
@@ -174,13 +174,13 @@
 	mov	r1, #2
 	mov	r9, r0
 	mov	r0, r10
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #0
 	mov	r0, #0xa
 	mov	r2, #0x12
 	mov	r3, #0xc
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, r9
 	mov	r10, r0
 	cmp	r1, #0
@@ -196,20 +196,20 @@
 	mov	r1, r10
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_801e940
+	bl	UIDrawText
 	b	.L2965e
 .L29652:
 	ldr	r0, =.L37450
 	mov	r1, r10
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_801e940
+	bl	UIDrawText
 .L2965e:
 	ldr	r0, =.L37458
 	mov	r1, r10
 	mov	r2, #0
 	mov	r3, #8
-	bl	Func_801e940
+	bl	UIDrawText
 	mov	r3, #8
 	str	r3, [sp]
 	mov	r0, r11
@@ -231,7 +231,7 @@
 	mov	r1, r10
 	mov	r2, #0x58
 	mov	r3, #8
-	bl	Func_801e940
+	bl	UIDrawText
 	mov	r3, #8
 	mov	r0, r8
 	str	r3, [sp]
@@ -266,7 +266,7 @@
 	add	r2, sp, #0xc
 	mov	r1, #1
 	add	r3, sp, #8
-	bl	Func_8019fcc
+	bl	LoadItemIconID
 	b	.L296fc
 .L296e4:
 	mov	r3, r9
@@ -279,7 +279,7 @@
 	mov	r1, #1
 	add	r2, sp, #0xc
 	add	r3, sp, #8
-	bl	Func_801a404
+	bl	LoadMoveIconID
 .L296fc:
 	mov	r1, #0x80
 	ldr	r0, [sp, #0xc]
@@ -290,12 +290,12 @@
 	bl	Func_801eadc
 	b	.L2972e
 .L2970e:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r1, #0
 	mov	r2, r0
 	mov	r0, r5
 	str	r2, [sp, #0xc]
-	bl	Func_801a2ec
+	bl	LoadStatusIcon
 	mov	r1, #0x80
 	ldr	r0, [sp, #0xc]
 	lsl	r1, #23
@@ -309,12 +309,12 @@
 	ble	.L296b0
 .L29734:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L29580
 .L2973c:
 	mov	r0, r10
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	ldr	r3, =iwram_3001e68
 	ldr	r2, [r3]
 	mov	r3, #0
@@ -329,9 +329,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8029554
+.func_end Debug_IconTest
 
-.thumb_func_start Func_802977c
+.thumb_func_start Debug_FaceTest
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -357,7 +357,7 @@
 	mov	r1, #0xa
 	mov	r3, #3
 	mov	r0, #0xa
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r7, r0
 	ldr	r0, =Data_367e4
 	mov	r5, #0
@@ -488,7 +488,7 @@
 	add	r2, sp, #0x14
 	add	r3, sp, #0x10
 	mov	r1, #0
-	bl	Func_801a4fc
+	bl	LoadPortrait
 	mov	r3, #0
 	mov	r0, r5
 	mov	r1, #2
@@ -503,17 +503,17 @@
 	bl	Func_801e7c0
 .L298c6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L29800
 .L298ce:
 	mov	r0, r7
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0xc]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0
 	add	sp, #0x18
 	pop	{r3, r5, r6, r7}
@@ -524,7 +524,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_802977c
+.func_end Debug_FaceTest
 
 	.section .rodata
 	.global .L37308

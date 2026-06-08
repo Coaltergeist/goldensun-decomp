@@ -19,7 +19,7 @@
 	mov	r0, #1
 	mov	r3, #0xe
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #0
 	mov	r2, #2
 	mov	r3, #0x1b
@@ -81,13 +81,13 @@
 	mov	r2, #8
 	mov	r3, #0x58
 	bl	Func_801e7c0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r6, r0
 	cmp	r6, #0x5f
 	bgt	.L1d1fc
 	ldr	r2, =Data_310a4
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	mov	r3, #0
 	lsl	r1, #23
@@ -110,7 +110,7 @@
 	mov	r2, r7
 	bl	_Func_80b0a20
 .L1d1fc:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r6, r0
 	cmp	r6, #0x5f
 	bgt	.L1d2be
@@ -124,7 +124,7 @@
 	lsl	r1, #1
 	ldr	r2, =Data_29910
 	mov	r0, r6
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, =0x40004000
 	mov	r8, r2
 	mov	r7, #0
@@ -202,14 +202,14 @@
 	orr	r3, r5
 	strb	r3, [r4, #0x19]
 .L1d2be:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r6, r0
 	cmp	r6, #0x5f
 	bgt	.L1d32c
 	mov	r1, #0x80
 	lsl	r1, #1
 	mov	r2, #0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	mov	r3, #0
 	lsl	r1, #23
@@ -253,14 +253,14 @@
 	mov	r2, r7
 	bl	_Func_80b0a20
 .L1d32c:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r6, r0
 	cmp	r6, #0x5f
 	bgt	.L1d39c
 	mov	r1, #0x80
 	lsl	r1, #1
 	mov	r2, #0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	mov	r3, #0
 	lsl	r1, #23
@@ -396,7 +396,7 @@
 	bx	r1
 .func_end Func_801d108
 
-.thumb_func_start Func_801d4cc
+.thumb_func_start Menu_Settings
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -418,7 +418,7 @@
 	mov	r2, #0x1c
 	mov	r3, #3
 	mov	r0, #1
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x10]
 	bl	Func_801d108
 	mov	r3, #0x30
@@ -430,7 +430,7 @@
 	bl	Func_8021620
 	str	r0, [sp, #0xc]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =0x594
 	ldr	r3, =0x595
 	add	r2, r7, r2
@@ -505,7 +505,7 @@
 	ldr	r3, =.L367c9
 	ldrsb	r0, [r3, r5]
 	add	r5, #1
-	bl	Func_80216e8
+	bl	StartMenu_AddOption
 	add	r6, #4
 	cmp	r5, #2
 	ble	.L1d574
@@ -532,7 +532,7 @@
 	ldr	r3, =.L367cc
 	ldrsb	r0, [r3, r5]
 	add	r5, #1
-	bl	Func_80216e8
+	bl	StartMenu_AddOption
 	add	r6, #4
 	cmp	r5, #1
 	ble	.L1d5cc
@@ -560,7 +560,7 @@
 	ldr	r3, =.L367ce
 	ldrsb	r0, [r3, r5]
 	add	r5, #1
-	bl	Func_80216e8
+	bl	StartMenu_AddOption
 	add	r6, #4
 	cmp	r5, #1
 	ble	.L1d600
@@ -676,7 +676,7 @@
 	ldrsb	r0, [r1, r0]
 	mov	r1, #0
 	ldrsb	r1, [r2, r1]
-	bl	Func_801ccc0
+	bl	SetUIColor
 	mov	r0, r8
 	ldrh	r3, [r0, #0xc]
 	mov	r1, r9
@@ -703,12 +703,12 @@
 	add	r0, r9
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_801e74c
+	bl	DrawSmallText
 .L1d766:
 	ldr	r0, [sp, #0xc]
 	bl	Func_80216b4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #4
@@ -716,7 +716,7 @@
 	cmp	r2, #0
 	beq	.L1d7b6
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0x57e
 	add	r1, r7, r0
 	ldrh	r3, [r1]
@@ -761,7 +761,7 @@
 	cmp	r2, #0
 	beq	.L1d7e8
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	neg	r1, r1
 	mov	r2, #1
@@ -775,7 +775,7 @@
 	cmp	r2, #0
 	beq	.L1d800
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	add	r9, r3
 	mov	r11, r3
@@ -787,7 +787,7 @@
 	cmp	r3, #0
 	beq	.L1d81e
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, =0x594
 	add	r2, r9
 	ldrb	r3, [r7, r2]
@@ -804,7 +804,7 @@
 	b	.L1d526
 .L1d82a:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, =0x594
 	add	r2, r9
 	ldrb	r3, [r7, r2]
@@ -816,10 +816,10 @@
 .L1d840:
 	ldr	r0, [sp, #0x10]
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, r8
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	cmp	r5, #0
 	bne	.L1d8b0
 	ldr	r0, =0x594
@@ -861,12 +861,12 @@
 	mov	r5, #1
 	mov	r0, #0x71
 	neg	r5, r5
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1d840
 .L1d8a6:
 	mov	r0, #0x70
 	mov	r5, #0
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1d840
 .L1d8b0:
 	ldr	r3, =gState
@@ -876,11 +876,11 @@
 	add	r3, r1
 	ldrb	r0, [r2]
 	ldrb	r1, [r3]
-	bl	Func_801ccc0
+	bl	SetUIColor
 .L1d8c2:
 	bl	Func_801d0f0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
@@ -891,7 +891,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_801d4cc
+.func_end Menu_Settings
 
 .thumb_func_start Func_801d94c
 	push	{r5, lr}
@@ -919,7 +919,7 @@
 	lsl	r1, #3
 	mov	r0, #0x14
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r1, r0
 	mov	r0, sp

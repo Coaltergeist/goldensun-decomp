@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern int Func_808ec14();
-extern void _Func_800c300();
+extern void _Actor_SetAnim();
 extern unsigned int iwram_3001ebc;
 
 void Func_808ed1c(void) {
@@ -19,7 +19,7 @@ void Func_808ed1c(void) {
         base = (unsigned char *)iwram_3001ebc;
         val = *(unsigned int *)(base + (idx << 3) + 0x11c);
         if (val != 0) {
-            _Func_800c300(val, 2);
+            _Actor_SetAnim(val, 2);
         }
     }
 }

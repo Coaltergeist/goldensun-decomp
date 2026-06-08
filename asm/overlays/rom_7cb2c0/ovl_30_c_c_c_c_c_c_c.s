@@ -6,7 +6,7 @@
 	mov	r0, #0
 	bl	OvlFunc_945_200cfa8
 	mov	r6, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x18
 	mov	r1, #1
 	mov	r2, #0
@@ -22,23 +22,23 @@
 	bl	OvlFunc_945_200c8e8
 	mov	r0, #0xa
 	mov	r1, #6
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	ldr	r5, =gScript_945__0200e840
 	mov	r0, r6
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0xb
 	bl	__Func_8092924
 	mov	r1, r5
 	mov	r0, #0xc
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	ldr	r5, =gScript_945__0200e8e4
 	mov	r0, #0x24
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0x25
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	bl	OvlFunc_945_200d0e4
 	bl	__Func_8091750
 	pop	{r5, r6}
@@ -62,15 +62,15 @@
 	mov	r0, #0
 	mov	r1, r6
 	lsl	r2, #16
-	bl	__Func_80923e4
-	bl	__Func_8091dc8
+	bl	__MapActor_SetPos
+	bl	__MapTransitionIn
 	ldr	r2, =0xcccc
 	mov	r0, #0
 	ldr	r1, =0x19999
 	bl	__Func_8092064
 	mov	r0, #0
 	mov	r1, #5
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0xcc
 	mov	r0, #0
 	lsl	r1, #1
@@ -88,7 +88,7 @@
 	bl	__Func_8092158
 	mov	r0, #0
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #7
@@ -101,7 +101,7 @@
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #2
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L516a:
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -110,7 +110,7 @@
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #1
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L517e:
 	mov	r0, #1
 	bl	__MapActor_GetActor
@@ -119,10 +119,10 @@
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #3
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L5192:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #2
 	ldr	r1, =0x19999
 	ldr	r2, =0xcccc
@@ -154,10 +154,10 @@
 	bl	__Func_80921c4
 	mov	r0, #1
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #2
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0x80
 	mov	r0, #2
 	lsl	r1, #7
@@ -181,7 +181,7 @@
 	mov	r2, #0xa
 	bl	__Func_8019aa0
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #0x28
@@ -226,23 +226,23 @@
 	ldr	r5, =gScript_945__0200e7c8
 	mov	r0, #1
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #2
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #3
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r0, =0x301
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x17
 	mov	r1, #0
 	mov	r2, #0
 	bl	OvlFunc_945_200c8e8
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -304,7 +304,7 @@
 	mov	r6, #1
 	mov	r0, #0xa
 	mov	r1, #6
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	lsl	r5, #17
 	neg	r6, r6
 	mov	r2, #0x9a
@@ -313,10 +313,10 @@
 	mov	r1, r6
 	mov	r0, r5
 	bl	OvlFunc_945_200c8ac
-	bl	__Func_8091dc8
+	bl	__MapTransitionIn
 	bl	__Func_8091e20
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #6
@@ -439,7 +439,7 @@
 	bl	__Func_80925cc
 	mov	r0, #0x1b
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #0x86
 	mov	r0, #0x1b
 	mov	r1, r9
@@ -453,7 +453,7 @@
 	bl	__Func_8092158
 	mov	r0, #0x1b
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0xd0
 	lsl	r1, #8
 	mov	r0, #0x1b
@@ -473,7 +473,7 @@
 	mov	r0, #0x1b
 	bl	__Func_8092548
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #0x50
 	mov	r0, #0x1b
 	mov	r1, #0
@@ -482,12 +482,12 @@
 	mov	r0, #0x1b
 	bl	__Func_80925cc
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #3
 	mov	r0, #0x1b
 	bl	__Func_8092548
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0xa0
 	lsl	r1, #7
 	mov	r0, #0x1b
@@ -529,7 +529,7 @@
 	bl	__Func_80925cc
 	mov	r0, #0x1b
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x1b
 	bl	OvlFunc_945_200c86c
 .L55ac:
@@ -540,13 +540,13 @@
 	ldr	r5, =gScript_945__0200e7f0
 	mov	r0, #1
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #2
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #3
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	ldr	r0, =0x9999
 	ldr	r1, =0x1333
 	bl	__Func_80933d4
@@ -576,7 +576,7 @@
 	mov	r0, #0
 	bl	__Func_809218c
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
 	ldr	r3, [r3]
@@ -589,9 +589,9 @@
 	mov	r0, #9
 	bl	OvlFunc_945_200c8e8
 	ldr	r0, =0x301
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r0, =0x927
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #4
 	bl	__Func_8091e9c
 	pop	{r3, r5, r6}
@@ -609,7 +609,7 @@
 	mov	r0, #0
 	bl	OvlFunc_945_200cfa8
 	mov	r5, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x18
 	mov	r1, #1
 	mov	r2, #0
@@ -627,10 +627,10 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xb
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	bl	OvlFunc_945_200d2f4
 	ldr	r0, =0x929
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r5}
 	pop	{r0}
@@ -649,7 +649,7 @@
 	mov	r0, #1
 	bl	OvlFunc_945_200cfa8
 	mov	r8, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x18
 	mov	r1, #1
 	mov	r2, #0
@@ -665,25 +665,25 @@
 	bl	OvlFunc_945_200c8e8
 	mov	r0, #0xa
 	mov	r1, #6
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	ldr	r5, =gScript_945__0200e840
 	mov	r0, r6
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0xb
 	bl	__Func_8092924
 	mov	r1, r5
 	mov	r0, r8
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0xc
 	bl	__Func_8092924
 	ldr	r5, =gScript_945__0200e8e4
 	mov	r0, #0x24
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #0x25
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0x24
 	mov	r1, #3
 	bl	__Func_8092950
@@ -709,7 +709,7 @@
 	mov	r0, #1
 	bl	OvlFunc_945_200cfa8
 	mov	r5, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x18
 	mov	r1, #1
 	mov	r2, #0
@@ -727,14 +727,14 @@
 	mov	r0, #0xb
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xc
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	bl	OvlFunc_945_200d2f4
 	ldr	r0, =0x92a
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r5, r6}
 	pop	{r0}
@@ -758,7 +758,7 @@
 	mov	r0, #2
 	bl	OvlFunc_945_200cfa8
 	mov	r10, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0
@@ -772,16 +772,16 @@
 	lsl	r2, #16
 	mov	r0, #8
 	lsl	r1, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #9
 	mov	r1, #5
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0xdc
 	mov	r2, #0x86
 	lsl	r2, #16
 	mov	r0, #0x1b
 	lsl	r1, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xf
 	mov	r0, #0x1b
 	bl	__Func_8092950
@@ -805,9 +805,9 @@
 	mov	r0, #8
 	bl	OvlFunc_945_200c8e8
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xb5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x80
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -816,15 +816,15 @@
 	lsl	r0, #10
 	bl	__Func_8012330
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, r5
 	ldr	r2, =0xe666
 	mov	r0, r5
 	bl	__Func_8012330
 	mov	r0, #0x50
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0xb5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x80
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -833,24 +833,24 @@
 	lsl	r0, #10
 	bl	__Func_8012330
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r2, =0xe666
 	mov	r1, r5
 	mov	r0, r5
 	bl	__Func_8012330
 	mov	r0, #0x3f
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x8d
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r1, #0x81
 	lsl	r1, #1
 	mov	r0, #3
 	mov	r5, #0xc0
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	lsl	r5, #7
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, r5
 	mov	r0, #3
 	bl	OvlFunc_945_200c880
@@ -908,7 +908,7 @@
 	mov	r2, #0x3c
 	mov	r0, #2
 	lsl	r1, #1
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r1, #0x80
 	lsl	r1, #6
 	mov	r0, #2
@@ -928,7 +928,7 @@
 	mov	r0, #3
 	bl	__Func_80925cc
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0xc0
 	mov	r0, #0
 	lsl	r1, #8
@@ -991,21 +991,21 @@
 	mov	r1, #0x81
 	mov	r0, r6
 	lsl	r1, #1
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r1, #0x81
 	mov	r0, r8
 	lsl	r1, #1
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r1, #0x81
 	mov	r0, r10
 	lsl	r1, #1
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r1, #0x81
 	lsl	r1, #1
 	mov	r0, #0xd
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, r6
 	mov	r0, #0xc
 	mov	r2, #0
@@ -1060,7 +1060,7 @@
 	bl	__Func_809259c
 	mov	r0, #0x1b
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r1, #0xc0
 	mov	r0, #0
 	lsl	r1, #8
@@ -1091,7 +1091,7 @@
 	mov	r2, #0
 	mov	r0, #0x1b
 	mov	r1, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, r5
 	mov	r0, #1
 	bl	OvlFunc_945_200c880
@@ -1109,13 +1109,13 @@
 	bl	OvlFunc_945_200c880
 	mov	r0, #0
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #1
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #2
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #3
 	mov	r1, #3
 	bl	__Func_8092548
@@ -1137,15 +1137,15 @@
 	ldr	r5, =gScript_945__0200e818
 	mov	r0, #1
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #2
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #3
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	ldr	r0, =0x302
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r2, =.L7f84
 	mov	r3, #0
 	mov	r1, #0xc8
@@ -1160,9 +1160,9 @@
 	mov	r0, #0x1b
 	bl	__Func_8092924
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r0, =0x927
-	bl	__Func_8079374
+	bl	__ClearFlag
 	bl	__Func_8091750
 	pop	{r3, r5}
 	mov	r8, r3
@@ -1198,7 +1198,7 @@
 	cmp	r3, #0
 	bne	.L5c94
 	mov	r0, #0xb5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x80
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -1216,7 +1216,7 @@
 
 .thumb_func_start OvlFunc_945_200dca4
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xf
 	mov	r1, #1
 	mov	r2, #0
@@ -1237,7 +1237,7 @@
 	mov	r0, #9
 	bl	__Func_80925cc
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0xd0
 	mov	r0, #8
 	lsl	r1, #8
@@ -1251,7 +1251,7 @@
 	mov	r0, #8
 	bl	__Func_8092548
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #9
 	mov	r1, #0x15
 	mov	r2, #0
@@ -1281,7 +1281,7 @@
 	mov	r0, #3
 	bl	OvlFunc_945_200cfa8
 	mov	r7, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	bl	OvlFunc_945_200b7b4
 	mov	r0, #0xa
 	mov	r1, #0
@@ -1296,13 +1296,13 @@
 	mov	r0, #8
 	lsl	r1, #17
 	lsl	r2, #16
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xdc
 	mov	r2, #0x86
 	lsl	r2, #16
 	mov	r0, #0x1b
 	lsl	r1, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xf
 	mov	r0, #0x1b
 	bl	__Func_8092950
@@ -1314,7 +1314,7 @@
 	bl	OvlFunc_945_200c670
 	mov	r0, #9
 	mov	r1, #5
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xdb
 	mov	r1, #1
 	mov	r2, #0xae
@@ -1363,7 +1363,7 @@
 	mov	r0, #0x1b
 	bl	OvlFunc_945_200c86c
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0xc
 	mov	r1, r5
 	mov	r2, #0
@@ -1406,18 +1406,18 @@
 	bl	__Func_8092adc
 	ldr	r0, =0x934
 	mov	r6, #0
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5e88
 	mov	r6, #2
 	b	.L5e9e
 .L5e88:
 	ldr	r0, =0x933
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L5e9c
 	ldr	r0, =0x92f
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5e9e
 .L5e9c:
@@ -1465,22 +1465,22 @@
 	mov	r0, r5
 	lsl	r1, #1
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r1, #0x81
 	mov	r0, r8
 	lsl	r1, #1
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r1, #0x81
 	mov	r0, r10
 	lsl	r1, #1
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r1, #0x81
 	lsl	r1, #1
 	mov	r2, #0x3c
 	mov	r0, r7
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, #0x1b
 	bl	OvlFunc_945_200c86c
 	mov	r1, #0xcc
@@ -1496,15 +1496,15 @@
 	mov	r0, #0x1b
 	bl	__Func_8092924
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	cmp	r6, #0
 	bne	.L5f78
 	ldr	r0, =0x92c
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L5f62
 	ldr	r0, =0x92d
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5f64
 .L5f62:
@@ -1558,7 +1558,7 @@
 	ldr	r6, =gScript_945__0200e904
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r1, #0xa0
 	mov	r0, r8
 	lsl	r1, #7
@@ -1608,22 +1608,22 @@
 	bl	__Func_8092064
 	mov	r1, r6
 	mov	r0, r10
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r5, =gScript_945__0200e938
 	mov	r0, r8
 	mov	r1, r5
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r0, r8
 	mov	r1, r6
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r0, r7
 	mov	r1, r5
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r0, r7
 	mov	r1, r6
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r1, #0x80
 	mov	r2, #0x80
 	mov	r0, #1
@@ -1645,24 +1645,24 @@
 	ldr	r5, =gScript_945__0200e7c8
 	mov	r0, #1
 	mov	r1, r5
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #2
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	mov	r1, r5
 	mov	r0, #3
-	bl	__Func_80920fc
+	bl	__MapActor_RunScript
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0x17
 	bl	OvlFunc_945_200c8e8
 	ldr	r0, =0x927
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #0x8a
 	lsl	r0, #4
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	bl	__Func_8091750
 	pop	{r3, r5}
 	mov	r8, r3
@@ -1696,7 +1696,7 @@
 	mov	r0, #3
 	bl	OvlFunc_945_200cfa8
 	mov	r10, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0
@@ -1724,10 +1724,10 @@
 	ldr	r3, =0x201
 	lsl	r7, #1
 	str	r3, [r2, r7]
-	bl	__Func_8091dc8
+	bl	__MapTransitionIn
 	bl	__Func_8091e20
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #1
 	mov	r0, #0x1b
 	bl	__Func_80925cc
@@ -1748,7 +1748,7 @@
 	mov	r1, #2
 	bl	__Func_80925cc
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, r8
 	mov	r1, #0
 	mov	r2, #0
@@ -1813,13 +1813,13 @@
 	bl	__Func_80921c4
 	mov	r0, r8
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #0xd0
 	mov	r0, r6
 	lsl	r1, #8
@@ -1847,13 +1847,13 @@
 	bl	OvlFunc_945_200c86c
 	mov	r0, r8
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r6
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r10
 	mov	r1, #3
 	bl	__Func_8092548
@@ -1861,13 +1861,13 @@
 	bl	OvlFunc_945_200c86c
 	mov	r0, r8
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r6
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r5, #0x80
 	mov	r0, r10
 	mov	r1, #3
@@ -1903,12 +1903,12 @@
 	mov	r0, #0x1b
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, r11
 	ldr	r2, [r3]
 	ldr	r3, =0x202
 	str	r3, [r2, r7]
-	bl	__Func_8091df4
+	bl	__MapTransitionOut
 	bl	__Func_8091e20
 	ldr	r0, =0x92c
 	ldr	r1, =0x935
@@ -1919,7 +1919,7 @@
 	bl	OvlFunc_945_200e3ac
 	mov	r0, #0x8a
 	lsl	r0, #4
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #0xa
 	bl	__Func_8091e9c
 	pop	{r3, r5, r6, r7}
@@ -1955,11 +1955,11 @@
 	mov	r3, r8
 	add	r5, r3, r6
 	mov	r0, r5
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L63c4
 	mov	r0, r5
-	bl	__Func_8079374
+	bl	__ClearFlag
 .L63e2:
 	mov	r6, #0
 	b	.L63ec
@@ -1972,18 +1972,18 @@
 	bhi	.L6402
 	add	r5, r7, r6
 	mov	r0, r5
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L63e6
 	mov	r0, r5
-	bl	__Func_8079374
+	bl	__ClearFlag
 .L6402:
 	mov	r3, r10
 	add	r0, r7, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, r8
 	add	r0, r9
-	bl	__Func_8079358
+	bl	__SetFlag
 	pop	{r3, r5, r6}
 	mov	r8, r3
 	mov	r9, r5

@@ -6,9 +6,9 @@
  * goldensun/overlays/rom_780898/overlay.ld.
  */
 extern unsigned int iwram_3001e40;
-extern void __Func_80f9080(int);
+extern void __PlaySound(int);
 
 void OvlFunc_883_200da08(void) {
     if ((iwram_3001e40 & 0xf) == 0)
-        __Func_80f9080(0x83);
+        __PlaySound(0x83);
 }

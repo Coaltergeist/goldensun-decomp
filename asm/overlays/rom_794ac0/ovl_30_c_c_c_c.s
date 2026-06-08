@@ -4,11 +4,11 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	bl	__Func_8092504
 	mov	r0, r6
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -28,7 +28,7 @@
 	mov	r0, #1
 	bl	__Func_80967e4
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -49,7 +49,7 @@
 	mov	r7, r0
 	mov	r0, #0x16
 	mov	r5, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	cmp	r0, #0
 	beq	.L46fc
 	ldr	r6, [r0, #0x50]
@@ -77,19 +77,19 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r5, r0
 	mov	r0, r7
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	ldrb	r0, [r6, #0x1c]
 	mov	r1, #0x80
 	mov	r2, r5
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 .L46fc:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -199,7 +199,7 @@
 	mov	r5, r0
 	mov	r0, r2
 	mov	r6, r1
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r3, #0x80
 	ldr	r4, [r0, #0x38]
 	lsl	r3, #24
@@ -236,7 +236,7 @@
 	mov	r5, r0
 	mov	r0, r2
 	mov	r6, r1
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r3, #0x80
 	ldr	r4, [r0, #0x38]
 	lsl	r3, #24
@@ -337,7 +337,7 @@
 	lsl	r3, #19
 	add	r3, r2
 	mov	r2, #0
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_200c8a4
@@ -352,7 +352,7 @@
 	push	{r7}
 	mov	r0, #0
 	sub	sp, #4
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	ldr	r3, =iwram_3001ebc
 	ldr	r3, [r3]
 	mov	r1, #0
@@ -360,7 +360,7 @@
 	mov	r0, #2
 	mov	r9, r1
 	mov	r11, r3
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	mov	r5, r7
 	add	r5, #8
@@ -390,7 +390,7 @@
 	mov	r1, r6
 	strh	r3, [r2]
 	mov	r0, r5
-	bl	__Func_80044d0
+	bl	__atan2
 	mov	r3, #0xce
 	lsl	r3, #1
 	add	r3, r11
@@ -452,15 +452,15 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L49b8
 .L49b0:
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L49b8:
 	mov	r0, #0x18
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	add	r0, #8
 	bl	OvlFunc_899_200c704
@@ -508,12 +508,12 @@
 	bne	.L4a2e
 	mov	r0, #0x18
 	mov	r1, #2
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	b	.L4a3c
 .L4a2e:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #1
 	mov	r9, r3
 	b	.L4a4c
@@ -523,10 +523,10 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L4a4c:
 	mov	r0, #0x19
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	add	r0, #8
 	bl	OvlFunc_899_200c704
@@ -575,12 +575,12 @@
 	bne	.L4ac4
 	mov	r0, #0x19
 	mov	r1, #2
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	b	.L4ad2
 .L4ac4:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #2
 	add	r9, r3
 	b	.L4ae2
@@ -590,7 +590,7 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L4ae2:
 	mov	r1, r9
 	cmp	r1, #0
@@ -629,7 +629,7 @@
 
 .thumb_func_start OvlFunc_899_200cb2c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xa8
 	mov	r1, #1
 	mov	r2, #0xa4
@@ -660,13 +660,13 @@
 	mov	r0, #1
 	lsl	r1, #16
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xf8
 	mov	r2, #0xae
 	mov	r0, #2
 	lsl	r1, #16
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r2, #0xae
 	mov	r0, #0
 	mov	r1, #0xc8
@@ -683,7 +683,7 @@
 	mov	r0, #2
 	bl	__Func_80921c4
 	mov	r0, #1
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0xc0
 	mov	r0, #1
 	lsl	r1, #8
@@ -695,10 +695,10 @@
 	mov	r0, #2
 	bl	__Func_8092adc
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #1
 	mov	r1, #0xc
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	OvlFunc_899_2009e80
 	mov	r0, #0xc0
 	mov	r1, #0x90
@@ -739,10 +739,10 @@
 	ldr	r0, =OvlFunc_899_200c8c8
 	bl	__StartTask
 	ldr	r0, =0x1ff
-	bl	__Func_8079374
+	bl	__ClearFlag
 	bl	__Func_8091750
 	mov	r0, #9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	b	.L4c68
 
 	.align	2, 0

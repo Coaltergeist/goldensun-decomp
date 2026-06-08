@@ -43,7 +43,7 @@
 .Lbf86:
 	mov	r0, #1
 	add	r7, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0x7f
 	bls	.Lbf4a
 	add	sp, #4

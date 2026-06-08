@@ -92,7 +92,7 @@
 	ldr	r5, [r3]
 .L1bb18:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0x22
 	ldrsh	r6, [r5, r1]
 	cmp	r6, #0
@@ -197,7 +197,7 @@
 	lsl	r6, #1
 .L1bbea:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0x22
 	ldrsh	r3, [r5, r2]
 	cmp	r3, r6
@@ -227,7 +227,7 @@
 	bx	r0
 .func_end Func_801ba68
 
-.thumb_func_start Func_801bc34
+.thumb_func_start UploadIcon
 	push	{r5, lr}
 	mov	r3, #1
 	sub	sp, #0xc
@@ -259,20 +259,20 @@
 	add	r3, sp, #4
 	mov	r0, r5
 	str	r1, [sp]
-	bl	Func_8019ee4
+	bl	LoadOldUIIcon
 	b	.L1bcc6
 .L1bc84:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, r0
 	str	r2, [sp, #8]
 	cmp	r2, #0x60
 	beq	.L1bca6
 	mov	r0, r5
 	mov	r1, #0x1a
-	bl	Func_801a2a4
+	bl	LoadInventoryIcon
 	b	.L1bcc6
 .L1bc9a:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, r0
 	str	r2, [sp, #8]
 	cmp	r2, #0x60
@@ -284,7 +284,7 @@
 .L1bcac:
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a32c
+	bl	LoadUIBanner
 	b	.L1bcc6
 .L1bcb6:
 	mov	r1, #0
@@ -293,7 +293,7 @@
 	add	r3, sp, #4
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_801a3d0
+	bl	LoadMoveIcon
 .L1bcc6:
 	ldr	r0, [sp, #8]
 .L1bcc8:
@@ -301,7 +301,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_801bc34
+.func_end UploadIcon
 
 .thumb_func_start Func_801bcd4
 	push	{r5, r6, r7, lr}
@@ -318,7 +318,7 @@
 	mov	r6, r4
 	cmp	r4, r3
 	bne	.L1bcfe
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r4, r0
 	str	r0, [sp, #8]
 	mov	r0, r6
@@ -351,19 +351,19 @@
 	add	r3, sp, #4
 	mov	r0, r5
 	mov	r1, r8
-	bl	Func_8019ee4
+	bl	LoadOldUIIcon
 	b	.L1bd82
 .L1bd42:
 	mov	r2, r4
 	mov	r0, r5
 	mov	r1, #0x3a
-	bl	Func_801a2a4
+	bl	LoadInventoryIcon
 	b	.L1bd82
 .L1bd4e:
 	mov	r2, r4
 	mov	r0, r5
 	mov	r1, #0x2a
-	bl	Func_801a2a4
+	bl	LoadInventoryIcon
 	b	.L1bd82
 .L1bd5a:
 	mov	r1, #1
@@ -372,19 +372,19 @@
 	add	r3, sp, #4
 	mov	r0, r5
 	mov	r1, r8
-	bl	Func_801a3d0
+	bl	LoadMoveIcon
 	b	.L1bd82
 .L1bd6c:
 	mov	r2, r4
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a2ec
+	bl	LoadStatusIcon
 	b	.L1bd82
 .L1bd78:
 	mov	r2, r4
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a32c
+	bl	LoadUIBanner
 .L1bd82:
 	ldr	r4, [sp, #8]
 .L1bd84:
@@ -428,7 +428,7 @@
 	add	r2, sp, #8
 	mov	r0, r6
 	mov	r1, #0
-	bl	Func_8019ee4
+	bl	LoadOldUIIcon
 	ldr	r3, =0x1f
 	b	.L1be06
 .L1bdd4:
@@ -442,7 +442,7 @@
 	add	r2, sp, #8
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_8019fcc
+	bl	LoadItemIconID
 	ldr	r3, =0x182
 	b	.L1be06
 .L1bdee:
@@ -456,7 +456,7 @@
 	add	r2, sp, #8
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_801a3d0
+	bl	LoadMoveIcon
 	ldr	r3, =0x333
 .L1be06:
 	add	r3, r6, r3
@@ -543,7 +543,7 @@
 	add	r2, r5, r1
 	strh	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =0x2e2
 	ldr	r0, =0x2fa
 	mov	r7, #0
@@ -602,7 +602,7 @@
 	bne	.L1bf10
 .L1bf2c:
 	mov	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0xd2
 	lsl	r1, #2
 	add	r3, r5, r1
@@ -686,7 +686,7 @@
 	orr	r3, r2
 	strh	r3, [r1]
 	mov	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	bl	Func_801a910
 	ldrh	r3, [r6, #0xa]

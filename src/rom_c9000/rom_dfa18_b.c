@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_dfa18_a.o and asm/rom_c9000/rom_dfa18_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80dfa48(void *context, int subanim);
+extern void BaseAnim_Tackle(void *context, int subanim);
 
 void Func_80dfa18(void *context) {
-    Func_80dfa48(context, 0);
+    BaseAnim_Tackle(context, 0);
 }

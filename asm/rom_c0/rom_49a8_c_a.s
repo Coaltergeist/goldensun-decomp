@@ -1,12 +1,12 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80049ac
+.thumb_func_start InitMatrixStack
 	push	{r5, lr}
 	mov	r1, #0x30
 	mov	r0, #2
 	ldr	r5, =gMatrixStack
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r2, =gMatrixStackSize
 	mov	r3, #0
 	str	r3, [r2]
@@ -24,9 +24,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80049ac
+.func_end InitMatrixStack
 
-.thumb_func_start Func_80049e8
+.thumb_func_start MatrixPush
 	push	{r5, lr}
 	ldr	r5, =gMatrixStackSize
 	ldr	r3, [r5]
@@ -49,5 +49,5 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80049e8
+.func_end MatrixPush
 

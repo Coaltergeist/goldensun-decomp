@@ -32,7 +32,7 @@
 	add	r2, #0x56
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	add	r0, #8
 	bl	Func_808adf0
 .L91ef8:
@@ -87,7 +87,7 @@
 	lsl	r1, #1
 	add	r3, r6, r1
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	add	r0, #8
 	bl	Func_808adf0
 .L91f74:

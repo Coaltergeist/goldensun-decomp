@@ -91,7 +91,7 @@
 	add	r1, r9
 	mov	r2, #0
 	add	r3, r7, r4
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.L8ea74
@@ -103,7 +103,7 @@
 	bl	_Func_800c528
 	mov	r1, #6
 	ldrsh	r0, [r6, r1]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8eaaa
 	ldr	r3, =0xfff00000
@@ -114,12 +114,12 @@
 	cmp	r2, r3
 	bne	.L8eaa2
 	mov	r0, r5
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L8ebb8
 .L8eaa2:
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L8eaaa:
 	mov	r0, r5
 	bl	_Func_800c4ac
@@ -179,7 +179,7 @@
 	bne	.L8ebb8
 	mov	r4, #6
 	ldrsh	r0, [r6, r4]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8ebb8
 	mov	r4, r9
@@ -188,7 +188,7 @@
 	add	r1, r9
 	mov	r2, #0
 	add	r3, r7, r4
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8ebb8
@@ -200,7 +200,7 @@
 	bl	_Func_800c4ac
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r2, [r5, #8]
 	cmp	r2, #0
 	bge	.L8eb5a

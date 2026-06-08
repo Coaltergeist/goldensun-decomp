@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809ae64
+.thumb_func_start Field_Catch
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -44,7 +44,7 @@
 	str	r3, [r2, #8]
 	ldr	r1, [r5]
 	mov	r9, r2
-	bl	Func_800447c
+	bl	vec3_translate
 	b	.L9aedc
 
 	.pool_aligned
@@ -74,7 +74,7 @@
 	ldr	r3, [r5, #0xc]
 	str	r3, [r0, #8]
 	mov	r0, #0xd7
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L9aefe
@@ -82,7 +82,7 @@
 .L9aefe:
 	bl	Func_8097384
 	mov	r0, #0x8a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r3, [r7, #6]
 	strh	r3, [r6, #6]
 	ldr	r3, =0x14ccc
@@ -93,10 +93,10 @@
 	strb	r2, [r3]
 	mov	r0, r6
 	mov	r1, #5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r7, #0
 	mov	r10, r11
 	mov	r8, r9
@@ -154,16 +154,16 @@
 	str	r0, [r6, #0x1c]
 	add	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0xb
 	blt	.L9af38
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r6
 	mov	r1, #6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0xf
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r5, #9
 .L9afba:
 	ldr	r3, [r6, #0xc]
@@ -172,14 +172,14 @@
 	str	r3, [r6, #0xc]
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	bge	.L9afba
 	mov	r0, r6
 	mov	r1, #5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x84
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [sp]
 	cmp	r2, #0
 	beq	.L9afee
@@ -190,7 +190,7 @@
 	bl	_Func_800d130
 .L9afee:
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r5, #0xc
 .L9aff6:
 	ldr	r3, [r6, #0xc]
@@ -200,13 +200,13 @@
 	str	r3, [r6, #0xc]
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	bge	.L9aff6
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r7, #0
 	mov	r10, r9
 	mov	r8, r11
@@ -256,11 +256,11 @@
 	str	r0, [r6, #0x1c]
 	add	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0xb
 	blt	.L9b01e
 	mov	r0, r6
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	bl	Func_809748c
 .L9b092:
 	add	sp, #0x28
@@ -272,5 +272,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_809ae64
+.func_end Field_Catch
 

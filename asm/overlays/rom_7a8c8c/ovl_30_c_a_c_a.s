@@ -72,7 +72,7 @@
 	mov	r0, r5
 	bl	__MapActor_GetActor
 	mov	r7, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, [sp, #4]
 	lsl	r3, #16
 	mov	r11, r3
@@ -100,10 +100,10 @@
 	str	r2, [r6, #0x34]
 	mov	r0, r6
 	ldr	r2, [r6, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #0x1b
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, [r7, #8]
 	mov	r2, r10
 	add	r3, r11
@@ -120,7 +120,7 @@
 	str	r2, [r7, #0x34]
 	mov	r0, r7
 	ldr	r2, [r7, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r3, [sp, #4]
 	cmp	r3, #0
 	blt	.L224
@@ -130,12 +130,12 @@
 .L224:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L236
 .L22e:
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L236:
 	mov	r0, r6
 	bl	__Func_800ca6c
@@ -154,7 +154,7 @@
 .thumb_func_start OvlFunc_922_200825c
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #8
 	mov	r1, #0x70
 	mov	r2, #0
@@ -164,11 +164,11 @@
 	mov	r0, #8
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x301
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r0}
 	bx	r0
@@ -179,7 +179,7 @@
 	mov	r5, #0x70
 	neg	r5, r5
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, r5
 	mov	r0, #8
 	mov	r2, #0
@@ -189,11 +189,11 @@
 	mov	r0, #8
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x301
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r5}
 	pop	{r0}
@@ -203,17 +203,17 @@
 .thumb_func_start OvlFunc_922_20082e0
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0
 	mov	r2, #0x40
 	mov	r0, #9
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x302
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r0}
 	bx	r0
@@ -222,18 +222,18 @@
 .thumb_func_start OvlFunc_922_2008314
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r2, #0x40
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #9
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x302
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r0}
 	bx	r0
@@ -242,17 +242,17 @@
 .thumb_func_start OvlFunc_922_200834c
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0
 	mov	r2, #0x40
 	mov	r0, #0xa
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x303
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r0}
 	bx	r0
@@ -261,18 +261,18 @@
 .thumb_func_start OvlFunc_922_2008380
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r2, #0x40
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x303
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009050
 	pop	{r0}
 	bx	r0
@@ -281,18 +281,18 @@
 .thumb_func_start OvlFunc_922_20083b8
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0x90
 	mov	r2, #0
 	mov	r0, #8
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc1
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009154
 	pop	{r0}
 	bx	r0
@@ -301,21 +301,21 @@
 .thumb_func_start OvlFunc_922_20083ec
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0x90
 	neg	r1, r1
 	mov	r2, #0
 	mov	r0, #8
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc1
 	lsl	r0, #2
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldr	r0, =0x305
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009154
 	pop	{r0}
 	bx	r0
@@ -324,18 +324,18 @@
 .thumb_func_start OvlFunc_922_200842c
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0xe
 	neg	r1, r1
 	mov	r2, #0
 	mov	r0, #8
 	bl	OvlFunc_922_2008180
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x305
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_922_2009154
 	pop	{r0}
 	bx	r0

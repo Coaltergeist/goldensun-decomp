@@ -57,7 +57,7 @@
 	mov	r1, #0
 	bl	__Func_800c528
 	ldr	r0, =0x864
-	bl	__Func_8079358
+	bl	__SetFlag
 .L3d6:
 	add	sp, #8
 	pop	{r0}
@@ -107,7 +107,7 @@
 	cmp	r3, #5
 	bne	.L446
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	b	.L4a6
 .L446:
 	mov	r0, #8
@@ -118,7 +118,7 @@
 	orr	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x864
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L4a6
 	mov	r1, #0xad
@@ -126,7 +126,7 @@
 	lsl	r2, #17
 	lsl	r1, #17
 	mov	r0, #8
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0
@@ -140,7 +140,7 @@
 	strb	r3, [r0]
 	mov	r1, #2
 	mov	r0, #8
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, #0x13
 	mov	r2, #0x11
 	str	r3, [sp]

@@ -35,7 +35,7 @@
 	cmp	r3, #0
 	beq	.Lb7ea8
 	ldr	r0, [r5]
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	str	r7, [r5]
 	strh	r7, [r5, #0x28]
 .Lb7ea8:

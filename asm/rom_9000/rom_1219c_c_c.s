@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8012e28
+.thumb_func_start Task_Debug_SpriteTest
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -93,7 +93,7 @@
 	mov	r1, r6
 	mov	r2, r11
 	str	r4, [sp]
-	bl	Func_800b168
+	bl	UpdateSprite
 	mov	r3, #0x38
 	mov	r1, r9
 	add	r8, r3
@@ -126,7 +126,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8012e28
+.func_end Task_Debug_SpriteTest
 
 	.section .rodata
 	.global .L1353c

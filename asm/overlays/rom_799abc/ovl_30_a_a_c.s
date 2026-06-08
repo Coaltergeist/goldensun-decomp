@@ -25,7 +25,7 @@
 	mov	r0, #0xde
 	mov	r1, r5
 	mov	r3, r8
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lb34
@@ -34,14 +34,14 @@
 	add	r1, #1
 	and	r1, r5
 	ldr	r7, [r6, #0x50]
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, [sp, #0x30]
 	and	r3, r5
 	lsl	r3, #2
 	mov	r0, r10
 	ldr	r1, [r0, r3]
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	ldr	r2, [sp, #0x30]
 	lsr	r1, r2, #16
 	mov	r0, r6

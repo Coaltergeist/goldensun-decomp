@@ -47,7 +47,7 @@
 	bl	__Func_8010704
 	mov	r0, #0x10
 	mov	r1, #0xb
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	b	.L122
 .Lae:
 	mov	r3, #0x32
@@ -69,7 +69,7 @@
 	bl	__Func_8010788
 	mov	r0, #0x10
 	mov	r1, #0xa
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	b	.L122
 .Lde:
 	mov	r6, #0x32
@@ -91,7 +91,7 @@
 	bl	__Func_8010788
 	mov	r0, #0x10
 	mov	r1, #0xc
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, #0xc
 	str	r3, [sp, #4]
 	mov	r0, #0x32
@@ -142,7 +142,7 @@
 .thumb_func_start OvlFunc_954_2008178
 	push	{r5, r6, lr}
 	mov	r0, #0xa
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, =.L441c
 	ldr	r3, [r2]
 	mov	r5, #0
@@ -152,7 +152,7 @@
 .L18c:
 	mov	r0, #1
 	add	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0x77
 	bgt	.L19e
 	ldr	r3, [r6]
@@ -214,7 +214,7 @@
 	mov	r0, #0xc4
 	asr	r1, #20
 	lsl	r0, #2
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	ldr	r2, [r5, #8]
 	ldr	r3, [r5, #0x10]
 	asr	r2, #20

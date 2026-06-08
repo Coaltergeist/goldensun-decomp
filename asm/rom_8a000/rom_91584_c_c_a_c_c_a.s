@@ -8,7 +8,7 @@
 	mov	r7, r0
 	mov	r8, r1
 	mov	r10, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L92280
@@ -31,7 +31,7 @@
 	lsl	r5, #16
 	mov	r0, r6
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	asr	r5, #16
 	mov	r3, #8
 	ldr	r1, [r6, #8]
@@ -41,7 +41,7 @@
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r6
 	bl	_Func_800ca6c
 	mov	r0, r7
@@ -54,7 +54,7 @@
 	add	r3, r0
 	ldr	r2, [r6, #0xc]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .L92280:
 	pop	{r3, r5}
 	mov	r8, r3

@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_964_20099cc
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	bl	OvlFunc_964_20080c4
 	bl	__Func_8091750
 	bl	OvlFunc_964_20099bc
@@ -14,9 +14,9 @@
 	push	{lr}
 	ldr	r1, =gScript_964__0200b3b8
 	mov	r0, #8
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 	ldr	r0, =0x203
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_964_2008fe8
@@ -28,19 +28,19 @@
 .thumb_func_start OvlFunc_964_2009a10
 	push	{r5, lr}
 	sub	sp, #8
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #9
 	mov	r1, #1
 	bl	__Func_8092b08
 	mov	r0, #9
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #9
 	mov	r1, #0
 	bl	__Func_8092950
 	mov	r1, #2
 	mov	r0, #9
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	add	r0, #0x23
@@ -50,7 +50,7 @@
 	strb	r3, [r0]
 	mov	r0, #0x81
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	ldr	r5, [r0, #8]

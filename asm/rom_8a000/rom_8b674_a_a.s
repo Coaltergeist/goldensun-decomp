@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b674
+.thumb_func_start InitMapActors
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -63,10 +63,10 @@
 	mov	r0, r5
 	strh	r3, [r5, #0x14]
 	mov	r1, r7
-	bl	Func_808b3ec
+	bl	LoadMapActors
 	mov	r0, r10
 	mov	r1, #8
-	bl	Func_808b3ec
+	bl	LoadMapActors
 	lsl	r3, r7, #2
 	add	r3, #0x14
 	mov	r0, r8
@@ -137,7 +137,7 @@
 	bl	_Func_800c528
 	mov	r0, r5
 	mov	r1, #0xc
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.L8b7c4
 
 	.align	2, 0
@@ -158,12 +158,12 @@
 	ldr	r2, [r5, #0xc]
 	ldr	r3, [r5, #0x10]
 	lsl	r0, #8
-	bl	_Func_800c150
+	bl	_CreateActor
 	ldr	r3, [r5, #0x14]
 	mov	r6, r0
 	str	r3, [r6, #0x14]
 	mov	r1, r5
-	bl	_Func_800c4bc
+	bl	_Camera_SetTarget
 	mov	r3, #0xcf
 	lsl	r3, #1
 	add	r3, r8
@@ -173,7 +173,7 @@
 	bne	.L8b7fc
 	ldr	r0, [r5, #0x50]
 	mov	r1, #0x17
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	mov	r3, #0xf
 	strb	r3, [r0, #5]
 	mov	r3, #9
@@ -194,5 +194,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808b674
+.func_end InitMapActors
 

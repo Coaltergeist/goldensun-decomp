@@ -23,12 +23,12 @@
 	str	r1, [sp, #0x50]
 	mov	r10, r2
 	str	r3, [sp, #0x44]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r4, #0
 	str	r0, [sp, #0x34]
 	ldr	r0, [sp, #0x44]
 	str	r4, [sp, #0x30]
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	str	r0, [sp, #0x2c]
 	add	r5, #0xa8
 	ldr	r5, [r5]
@@ -37,12 +37,12 @@
 	str	r1, [r5, #0x48]
 	cmp	r0, #0
 	beq	.L231ca
-	bl	Func_8016418
+	bl	CloseUIBox
 	ldr	r2, [sp, #0x30]
 	str	r2, [r5, #0x44]
 .L231ca:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r6, #4
 	mov	r2, #0
 	add	r3, sp, #0x64
@@ -58,7 +58,7 @@
 	str	r3, [r2, #0xc]
 	str	r3, [r2, #0x10]
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r3, #0x8e
 	mov	r4, #0x88
 	lsl	r3, #1
@@ -76,7 +76,7 @@
 	mov	r6, #0xa
 .L2320e:
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	sub	r6, #1
 	mov	r2, r8
 	strb	r2, [r5]
@@ -122,7 +122,7 @@
 	mov	r0, #0
 	str	r1, [sp, #0x38]
 	str	r1, [sp, #0x3c]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, #0xa
 	str	r0, [sp, #0x4c]
 	str	r3, [sp]
@@ -130,7 +130,7 @@
 	mov	r2, #0x1e
 	mov	r3, #6
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x48]
 	bl	Func_801e318
 	mov	r3, #0xaa
@@ -282,7 +282,7 @@
 	mov	r2, #0
 	mov	r0, #0x6f
 	str	r2, [sp, #0x28]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, [r6, #0x14]
 	add	r5, #1
 	cmp	r5, r3
@@ -300,7 +300,7 @@
 	mov	r0, #0x6f
 	sub	r5, #1
 	str	r1, [sp, #0x28]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	cmp	r5, #0
 	bge	.L234c8
 	ldr	r3, [r6, #0x14]
@@ -322,7 +322,7 @@
 	mov	r3, #0
 	mov	r0, #0x6f
 	str	r3, [sp, #0x28]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r1, [r6, #0x10]
 	mov	r3, #2
 	eor	r1, r3
@@ -391,7 +391,7 @@
 	ldrsb	r5, [r6, r5]
 .L234a6:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L234c8
 .L234ae:
 	ldr	r4, [sp, #0x28]
@@ -405,7 +405,7 @@
 	str	r1, [r6, #0x10]
 	mov	r5, #0
 	ldrsb	r5, [r6, r5]
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L234c8:
 	add	r2, sp, #0x60
 	ldr	r3, [r2, #0x10]
@@ -598,7 +598,7 @@
 	b	.L23cfa
 .L23656:
 	ldr	r0, [sp, #0x54]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r9, r0
 	bl	Func_801e318
 	bl	Func_8016738
@@ -1265,7 +1265,7 @@
 	ldr	r0, [sp, #0x54]
 	mov	r10, r1
 	mov	r11, r2
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r1, r9
 	ldrh	r3, [r1, #0x3c]
 	mov	r2, r10
@@ -1499,7 +1499,7 @@
 	mov	r0, #0x6f
 	str	r3, [sp, #0x54]
 	mov	r10, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L23df6
 .L23dc6:
 	mov	r3, #0x80
@@ -1525,10 +1525,10 @@
 	mov	r0, #0x6f
 	str	r3, [sp, #0x54]
 	mov	r10, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L23df6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	.L232a0
 .L23e00:
 	ldr	r5, [sp, #0x10]
@@ -1544,14 +1544,14 @@
 	ldr	r0, [sp, #0x40]
 	bl	Func_8003f3c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_801e318
 	mov	r1, #1
 	ldr	r0, [sp, #0x4c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #0x48]
-	bl	Func_8016418
+	bl	CloseUIBox
 	ldr	r5, =iwram_3001e74
 	ldr	r3, [r5]
 	add	r3, #0x41
@@ -1562,7 +1562,7 @@
 	mov	r3, #0
 	str	r3, [r2, #0x48]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0
 	add	sp, #0x160
 	pop	{r3, r5, r6, r7}
@@ -1594,7 +1594,7 @@
 	str	r1, [sp, #0x48]
 	str	r2, [sp, #0x44]
 	str	r3, [sp, #0x40]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	str	r0, [sp, #0x3c]
 	mov	r0, #0xa8
 	lsl	r0, #1
@@ -1616,7 +1616,7 @@
 	str	r6, [sp, #0x50]
 	str	r6, [sp, #0x1c]
 	str	r6, [sp, #0x18]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x2c]
 	mov	r0, #1
 	bl	Func_801e3c8
@@ -1626,7 +1626,7 @@
 	mov	r2, #9
 	mov	r3, #0xb
 	mov	r0, #0x15
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
 	add	r5, #0xa8
 	ldr	r3, [r5]
@@ -1637,7 +1637,7 @@
 	mov	r10, r2
 	str	r3, [sp, #0x24]
 	ldr	r0, [sp, #0x4c]
-	bl	_Func_8077394
+	bl	_GetUnit
 	add	r0, #0xf8
 	mov	r7, #0
 	mov	r8, r0
@@ -1817,14 +1817,14 @@
 	beq	.L24064
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #0x2a
 	str	r3, [sp]
 	mov	r0, #0
 	mov	r1, #4
 	mov	r2, #0x1e
 	mov	r3, #4
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x2c]
 	bl	Func_8016738
 .L24064:
@@ -1874,7 +1874,7 @@
 	beq	.L241ac
 	mov	r0, r2
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #0
 	str	r3, [sp, #0x44]
 	str	r3, [sp, #0x20]
@@ -1914,7 +1914,7 @@
 	beq	.L241ac
 	mov	r0, r1
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r2, #0
 	str	r2, [sp, #0x44]
 	str	r2, [sp, #0x20]
@@ -1989,14 +1989,14 @@
 	strb	r3, [r5]
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #0x2a
 	str	r3, [sp]
 	mov	r0, #0
 	mov	r3, #4
 	mov	r1, #4
 	mov	r2, #0x1e
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [sp, #0x2c]
 	add	r3, sp, #0x20
 	ldrb	r3, [r3]
@@ -2044,7 +2044,7 @@
 	cmp	r3, #0
 	beq	.L2423e
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L2424e
 .L2423e:
 	mov	r3, #0x80
@@ -2053,7 +2053,7 @@
 	cmp	r3, #0
 	beq	.L2424e
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 .L2424e:
 	mov	r1, #0xf0
 	lsl	r1, #4
@@ -2087,7 +2087,7 @@
 .L2428c:
 	mov	r0, #0xf
 	add	r7, #1
-	bl	Func_801e71c
+	bl	SetTextColor
 	cmp	r7, #4
 	bgt	.L242a8
 	mov	r2, #4
@@ -2322,7 +2322,7 @@
 .L2445a:
 	mov	r0, #0x71
 	mov	r6, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	neg	r6, r6
 	b	.L248a0
 .L24466:
@@ -2376,7 +2376,7 @@
 	bl	Func_8017aa4
 .L244ce:
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L2451c
 .L244d6:
 	mov	r6, #1
@@ -2396,7 +2396,7 @@
 	cmp	r3, #0
 	beq	.L24550
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	add	r10, r1
 	mov	r2, r10
@@ -2420,7 +2420,7 @@
 	cmp	r3, #0
 	beq	.L24590
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	neg	r1, r1
 	add	r10, r1
@@ -2557,7 +2557,7 @@
 	cmp	r3, #0
 	beq	.L24672
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r1, [sp, #0x20]
 	ldr	r3, [sp, #0x50]
 	add	r1, #1
@@ -2572,7 +2572,7 @@
 	cmp	r3, #0
 	beq	.L24766
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r1, [sp, #0x20]
 	sub	r1, #1
 	str	r1, [sp, #0x20]
@@ -2606,7 +2606,7 @@
 	cmp	r3, #0
 	beq	.L24708
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r3, r11
 	ldr	r2, [sp, #0x34]
@@ -2649,7 +2649,7 @@
 	cmp	r3, #0
 	beq	.L24766
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r1, r11
 	cmp	r1, #0
@@ -2833,7 +2833,7 @@
 	bl	_call_via_r3
 .L24896:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	.L23ff4
 .L248a0:
 	ldr	r3, =iwram_3001e90
@@ -2858,20 +2858,20 @@
 	bl	Func_8003f3c
 	mov	r1, #1
 	ldr	r0, [sp, #0x2c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #0x44]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	mov	r0, r9
-	bl	Func_8016418
+	bl	CloseUIBox
 	bl	Func_801e318
 	mov	r0, #0
 	bl	Func_801e3c8
 	ldr	r0, [sp, #0x38]
 	bl	free
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r6
 	add	sp, #0xe0
 	pop	{r3, r5, r6, r7}
@@ -2902,7 +2902,7 @@
 	mov	r0, #0x80
 	str	r1, [sp, #0x44]
 	mov	r9, r1
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r3, #0x2a
@@ -2912,7 +2912,7 @@
 	mov	r2, #0x1e
 	mov	r3, #4
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r6, #6
 	str	r0, [sp, #0x3c]
 	mov	r1, #8
@@ -2920,7 +2920,7 @@
 	mov	r3, #3
 	mov	r0, #0x14
 	str	r6, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, #0
 	str	r0, [sp, #0x38]
 	str	r2, [sp, #0x34]
@@ -2937,7 +2937,7 @@
 	mov	r3, #9
 	mov	r0, #0xd
 	mov	r1, #0xb
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, #0x9c
 	lsl	r2, #1
 	add	r2, sp
@@ -2991,7 +2991,7 @@
 .L24a0c:
 	mov	r0, #0x80
 	str	r4, [sp, #4]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r1, #1
 	neg	r1, r1
 	stmia	r6!, {r0}
@@ -3034,7 +3034,7 @@
 .L24a62:
 	ldrb	r6, [r5]
 	mov	r0, r6
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	ldr	r1, [sp, #0x54]
 	add	r0, #4
 	ldrb	r2, [r0]
@@ -3136,7 +3136,7 @@
 	ldr	r1, [sp, #0x20]
 	add	r3, r10
 	ldrb	r0, [r1, r3]
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	mov	r6, r0
 	ldrh	r0, [r6]
 	ldr	r3, =0x53a
@@ -3214,7 +3214,7 @@
 .L24bbc:
 	mov	r0, r6
 	str	r4, [sp, #4]
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	str	r0, [sp, #0x24]
 	mov	r1, r0
 	ldr	r0, [sp, #0x54]
@@ -3254,7 +3254,7 @@
 	sub	r5, r1, r5
 	mov	r1, #0
 	str	r4, [sp, #4]
-	bl	Func_801a3d0
+	bl	LoadMoveIcon
 	ldr	r4, [sp, #4]
 	lsl	r3, r4, #1
 	add	r1, r3, r4
@@ -3284,12 +3284,12 @@
 	cmp	r5, #0
 	bne	.L24c54
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r4, [sp, #4]
 .L24c54:
 	mov	r0, r6
 	str	r4, [sp, #4]
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	ldr	r3, =0x333
 	ldr	r4, [sp, #4]
 	ldrh	r0, [r0]
@@ -3342,7 +3342,7 @@
 	ble	.L24c8c
 	mov	r0, #0xf
 	str	r4, [sp, #4]
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r4, [sp, #4]
 	add	r3, sp, #0x5c
 	mov	r1, #1
@@ -3721,7 +3721,7 @@
 .L24faa:
 	mov	r0, #0x71
 	mov	r6, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	neg	r6, r6
 	b	.L25106
 .L24fb6:
@@ -3730,7 +3730,7 @@
 	cmp	r3, #0
 	beq	.L24fe6
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	add	r10, r1
 	mov	r2, r10
@@ -3756,7 +3756,7 @@
 	cmp	r3, #0
 	beq	.L2502c
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	neg	r0, r0
 	add	r10, r0
@@ -3794,7 +3794,7 @@
 	cmp	r3, #0
 	beq	.L2508a
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r3, r11
 	ldr	r0, [sp, #0x50]
@@ -3842,7 +3842,7 @@
 	cmp	r3, #0
 	beq	.L250fe
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r3, r11
 	cmp	r3, #0
@@ -3902,11 +3902,11 @@
 	str	r3, [sp, #0x10]
 .L250fe:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L24ae2
 .L25106:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r4, #3
 	add	r5, sp, #0x60
 .L25110:
@@ -3922,15 +3922,15 @@
 	bl	Func_8003f3c
 	mov	r1, #1
 	ldr	r0, [sp, #0x38]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #0x3c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #0x4c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r6
 	add	sp, #0x174
 	pop	{r3, r5, r6, r7}
@@ -3951,7 +3951,7 @@
 	cmp	r6, #0
 	beq	.L251cc
 	mov	r0, r6
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #0xc]
 	mov	r0, #1
@@ -3965,14 +3965,14 @@
 	beq	.L251b8
 	mov	r0, r7
 	mov	r1, r6
-	bl	_Func_807842c
+	bl	_CanEquipItem
 	cmp	r0, #0
 	bne	.L251b8
 	mov	r0, #1
 	b	.L251cc
 .L251b8:
 	ldrh	r0, [r5, #0x28]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0x80
 	and	r3, r2
@@ -4024,7 +4024,7 @@
 	str	r1, [sp, #0x44]
 	str	r2, [sp, #0x40]
 	str	r2, [sp, #0x3c]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r3, #0x2a
 	str	r0, [sp, #0x38]
 	str	r3, [sp]
@@ -4032,7 +4032,7 @@
 	mov	r2, #0x1e
 	mov	r3, #4
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, #0
 	str	r0, [sp, #0x34]
 	str	r3, [sp, #0x30]
@@ -4050,7 +4050,7 @@
 	mov	r3, #0xb
 	mov	r0, #0xf
 	mov	r2, #0xf
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, sp
 	add	r3, #0x54
 	ldr	r1, =0xfffffe00
@@ -4106,7 +4106,7 @@
 	mov	r7, #4
 .L252cc:
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	ldr	r2, [sp, #8]
 	stmia	r2!, {r0}
 	mov	r1, r2
@@ -4257,16 +4257,16 @@
 	mov	r10, r2
 .L25416:
 	mov	r0, r5
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r1, r5
 	ldr	r0, [sp, #0x50]
 	bl	Func_8025180
 	cmp	r0, #0
 	beq	.L2543c
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L2544c
 
 	.pool_aligned
@@ -4278,7 +4278,7 @@
 	cmp	r3, #0
 	beq	.L2544c
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 .L2544c:
 	ldr	r0, =0x1ff
 	ldr	r3, =0x182
@@ -4289,7 +4289,7 @@
 	mov	r2, #0x10
 	bl	Func_801e7c0
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r3, [sp, #4]
 	ldmia	r3!, {r1}
 	mov	r0, r5
@@ -4593,7 +4593,7 @@
 	mov	r7, #0x80
 	mov	r10, r2
 	lsl	r7, #3
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrh	r2, [r5]
 	mov	r3, r7
 	and	r3, r2
@@ -4609,7 +4609,7 @@
 	b	.L258c8
 .L25706:
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	cmp	r6, #2
 	bne	.L25716
 	ldr	r5, [sp, #0x20]
@@ -4658,7 +4658,7 @@
 	beq	.L25772
 .L25764:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	neg	r3, r3
 	mov	r10, r3
@@ -4676,7 +4676,7 @@
 	cmp	r3, #0
 	beq	.L257b0
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	add	r8, r2
 	mov	r3, r8
@@ -4704,7 +4704,7 @@
 	cmp	r3, #0
 	beq	.L257f6
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	neg	r2, r2
 	add	r8, r2
@@ -4741,7 +4741,7 @@
 	cmp	r3, #0
 	beq	.L25854
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r3, r9
 	ldr	r1, [sp, #0x48]
@@ -4787,7 +4787,7 @@
 	cmp	r3, #0
 	beq	.L258c0
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	mov	r2, r9
 	cmp	r2, #0
@@ -4839,17 +4839,17 @@
 	str	r2, [sp, #0x14]
 .L258c0:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L25344
 .L258c8:
 	ldr	r0, [sp, #0x34]
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	mov	r0, r11
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x38]
 	bl	Func_8003f3c
 	ldr	r5, [sp, #0x1c]
@@ -4861,7 +4861,7 @@
 	cmp	r7, #0
 	bge	.L258e8
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r10
 	add	sp, #0x130
 	pop	{r3, r5, r6, r7}
@@ -4894,10 +4894,10 @@
 	mov	r0, #0x80
 	str	r1, [sp, #0x38]
 	mov	r9, r1
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	str	r0, [sp, #0x34]
 	mov	r0, r6
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x2a
 	str	r0, [sp, #0x30]
 	str	r3, [sp]
@@ -4905,7 +4905,7 @@
 	mov	r2, #0x1e
 	mov	r3, #4
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, #5
 	str	r0, [sp, #0x2c]
 	str	r2, [sp, #0x28]
@@ -4923,7 +4923,7 @@
 	mov	r3, #0xb
 	mov	r0, #9
 	mov	r1, #9
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, sp
 	add	r2, #0x50
 	ldr	r3, =0xfffffe00
@@ -4979,7 +4979,7 @@
 	mov	r7, #4
 .L25a00:
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	ldr	r2, [sp, #4]
 	stmia	r2!, {r0}
 	mov	r1, r2
@@ -5114,7 +5114,7 @@
 	str	r2, [sp, #0x10]
 .L25b24:
 	mov	r0, r5
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r8, r0
 	mov	r0, #0
 	str	r0, [sp]
@@ -5140,7 +5140,7 @@
 	str	r3, [sp]
 	mov	r1, #0
 	ldr	r3, [sp, #0x10]
-	bl	Func_801a3d0
+	bl	LoadMoveIcon
 	mov	r0, r9
 	add	r1, r0, r7
 	ldr	r2, [sp, #0xc]
@@ -5162,7 +5162,7 @@
 	cmp	r3, #0
 	bne	.L25bac
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L25bd4
 
 	.align	2, 0
@@ -5181,7 +5181,7 @@
 	cmp	r2, r3
 	ble	.L25bc2
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L25bd4
 .L25bc2:
 	ldr	r2, [sp, #0x30]
@@ -5191,7 +5191,7 @@
 	cmp	r3, #0
 	beq	.L25bd4
 	mov	r0, #9
-	bl	Func_801e71c
+	bl	SetTextColor
 .L25bd4:
 	ldr	r1, [sp, #0x40]
 	ldr	r2, =0xea7
@@ -5213,7 +5213,7 @@
 	str	r5, [sp]
 	bl	Func_801e9d4
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r3, #0xf
 	mov	r0, r8
 	strb	r3, [r6]
@@ -5518,7 +5518,7 @@
 	add	r6, r10
 	lsl	r3, r6, #1
 	ldrh	r0, [r3, r2]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0x80
 	and	r3, r2
@@ -5543,7 +5543,7 @@
 .L25eba:
 	mov	r0, #0x71
 	mov	r6, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	neg	r6, r6
 	b	.L2602a
 .L25ec6:
@@ -5559,7 +5559,7 @@
 	cmp	r3, #0
 	beq	.L25f04
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	add	r10, r0
 	mov	r1, r10
@@ -5587,7 +5587,7 @@
 	cmp	r3, #0
 	beq	.L25f4e
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	neg	r2, r2
 	add	r10, r2
@@ -5625,7 +5625,7 @@
 	cmp	r3, #0
 	beq	.L25fae
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	ldr	r3, [sp, #0x3c]
 	ldr	r1, [sp, #0x44]
@@ -5672,7 +5672,7 @@
 	cmp	r3, #0
 	beq	.L26022
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_800352c
 	ldr	r0, [sp, #0x3c]
 	cmp	r0, #0
@@ -5728,17 +5728,17 @@
 	str	r3, [sp, #0x14]
 .L26022:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L25a72
 .L2602a:
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, r11
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, [sp, #8]
 	mov	r7, #4
 .L26044:
@@ -5750,7 +5750,7 @@
 	ldr	r0, [sp, #0x34]
 	bl	Func_8003f3c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r6
 	add	sp, #0x12c
 	pop	{r3, r5, r6, r7}
@@ -5785,7 +5785,7 @@
 	mov	r1, #0
 	str	r1, [sp, #0x40]
 	str	r2, [sp, #0x38]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	ldr	r4, [sp, #0x54]
 	mov	r3, #0
 	str	r0, [sp, #0x34]
@@ -5966,7 +5966,7 @@
 	beq	.L262ac
 	mov	r0, r3
 	str	r4, [sp, #8]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r2, [sp, #0x50]
 	mov	r1, r0
 	ldr	r4, [sp, #8]
@@ -6122,14 +6122,14 @@
 	beq	.L262f4
 	mov	r0, #0xb6
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L26336
 	mov	r7, r8
 	cmp	r7, #1
 	bne	.L26336
 	ldrh	r0, [r6, r5]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	cmp	r3, #0
@@ -6156,7 +6156,7 @@
 	mov	r1, #0xc
 	mov	r2, #0x1e
 	mov	r3, #4
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r6, #0x98
 	mov	r5, sp
 	mov	r7, sp
@@ -6209,7 +6209,7 @@
 	mov	r7, r6
 	strh	r3, [r7, #8]
 	lsl	r0, #12
-	bl	Func_8002322
+	bl	sin
 	cmp	r0, #0
 	bge	.L263fc
 	ldr	r1, =0x7fff
@@ -6534,7 +6534,7 @@
 	.pool_aligned
 .L26648:
 	mov	r0, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, [sp, #0x18]
 	mov	r6, r0
 	mov	r1, r11
@@ -6545,7 +6545,7 @@
 	beq	.L26668
 	mov	r0, r9
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L26668:
 	ldr	r3, [sp, #0x50]
 	sub	r3, #1
@@ -6585,10 +6585,10 @@
 	mov	r1, #8
 	mov	r2, #9
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r0, =0x8ac
 	b	.L26a72
 .L266c8:
@@ -6610,7 +6610,7 @@
 	mov	r1, #8
 	mov	r2, #0xd
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
 	mov	r1, r9
 	ldr	r0, =.L373dc
@@ -6652,7 +6652,7 @@
 	mov	r1, #8
 	mov	r2, #0xd
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
 	mov	r1, r9
 	ldr	r0, =.L373e4
@@ -6700,7 +6700,7 @@
 	mov	r1, #8
 	mov	r3, #3
 	mov	r2, #0xc
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #0x38
 	ldrsh	r3, [r6, r1]
 	mov	r9, r0
@@ -6729,7 +6729,7 @@
 	mov	r1, #8
 	mov	r3, #3
 	mov	r2, #0xc
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r4, =0x131
 	add	r3, r6, r4
 	ldrb	r3, [r3]
@@ -6816,7 +6816,7 @@
 	add	r3, r5, #2
 	str	r2, [sp]
 	mov	r2, #0x10
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldrb	r3, [r7]
 	mov	r9, r0
 	mov	r5, #0
@@ -6956,7 +6956,7 @@
 	add	r3, r5, #2
 	str	r2, [sp]
 	mov	r2, #0x10
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r4, =0x131
 	add	r3, r6, r4
 	ldrb	r3, [r3]
@@ -7054,7 +7054,7 @@
 	b	.L26b8c
 .L26a6a:
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r0, =0x8a3
 .L26a72:
 	mov	r1, r9
@@ -7062,7 +7062,7 @@
 	mov	r3, #0
 	bl	Func_801e7c0
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L26b8c
 .L26a84:
 	ldr	r0, [sp, #0x54]
@@ -7073,7 +7073,7 @@
 	ldr	r1, [sp, #0x1c]
 	ldr	r2, [sp, #0x18]
 	ldrh	r0, [r1, r2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, [sp, #0x1c]
 	ldr	r4, [sp, #0x18]
 	add	r5, sp, #0x6c
@@ -7084,7 +7084,7 @@
 	ldr	r3, =iwram_3001e40
 	ldr	r0, [r3]
 	lsl	r0, #12
-	bl	Func_8002322
+	bl	sin
 	cmp	r0, #0
 	bge	.L26ab8
 	ldr	r6, =0x7fff
@@ -7220,7 +7220,7 @@
 	ldr	r3, =iwram_3001e40
 	ldr	r0, [r3]
 	lsl	r0, #12
-	bl	Func_8002322
+	bl	sin
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	bge	.L26bf2
@@ -7452,7 +7452,7 @@
 	cmp	r3, #0
 	beq	.L26dc4
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L26da2:
 	ldr	r1, [sp, #0x44]
 	add	r1, #1
@@ -7476,7 +7476,7 @@
 	cmp	r3, #0
 	beq	.L26df6
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L26dd2:
 	ldr	r0, [sp, #0x44]
 	ldr	r1, [sp, #0x3c]
@@ -7507,21 +7507,21 @@
 	beq	.L26e16
 .L26e08:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r5, #1
 	neg	r5, r5
 	str	r5, [sp, #0x44]
 	b	.L26e26
 .L26e16:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r6, [sp, #0x38]
 	cmp	r6, #0
 	beq	.L26e26
 	bl	.L26388
 .L26e26:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r7, r9
 	ldr	r0, [sp, #0x34]
 	bl	Func_8003f3c
@@ -7529,11 +7529,11 @@
 	beq	.L26e40
 	mov	r0, r9
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L26e40:
 	ldr	r0, [sp, #0x48]
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #0
 	ldr	r0, [sp, #0x1c]
 	bl	_Func_80c10e8
@@ -7542,7 +7542,7 @@
 	mov	r3, #0
 	str	r3, [r2, #0x28]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x44]
 	add	sp, #0x144
 	pop	{r3, r5, r6, r7}
@@ -7684,7 +7684,7 @@
 	cmp	r3, r6
 	bne	.L26f7a
 	mov	r0, #0x6c
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L26f7a:
 	ldr	r2, [r7, #0x44]
 	cmp	r2, #0
@@ -7749,7 +7749,7 @@
 	mov	r1, #7
 	mov	r2, #0x1e
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r10, r0
 	bl	Func_8016738
 	add	r5, sp, #4
@@ -7767,7 +7767,7 @@
 	mov	r6, #3
 .L27024:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r7]
 	and	r3, r6
 	cmp	r3, #0
@@ -7779,7 +7779,7 @@
 .L2703a:
 	mov	r0, r10
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L27042:
 	mov	r0, r8
 	add	sp, #0x84
@@ -7791,7 +7791,7 @@
 	bx	r1
 .func_end Func_8026fa8
 
-.thumb_func_start Func_802706c
+.thumb_func_start GetMoveDisplayEffect
 	push	{r5, lr}
 	ldrb	r3, [r0, #1]
 	mov	r2, #0xf
@@ -7828,7 +7828,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_802706c
+.func_end GetMoveDisplayEffect
 
 .thumb_func_start Func_80270ac
 	push	{r5, lr}
@@ -7902,16 +7902,16 @@
 	str	r2, [sp, #0x50]
 	str	r1, [sp, #0x3c]
 	str	r1, [sp, #0x38]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	str	r0, [sp, #0x34]
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r1, #0x82
 	str	r0, [sp, #0x30]
 	lsl	r1, #1
 	mov	r0, #0x39
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, sp
 	add	r2, #0x5c
 	str	r2, [sp, #0x24]
@@ -8057,7 +8057,7 @@
 	b	.L27296
 .L27274:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L2727a:
 	ldrb	r2, [r7]
 	mov	r3, #1
@@ -8103,7 +8103,7 @@
 	mov	r0, #0xb7
 	str	r1, [r3]
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L272ea
 	ldr	r3, [sp, #0x24]
@@ -8120,7 +8120,7 @@
 	cmp	r0, #0
 	ble	.L272fa
 	mov	r0, #0
-	bl	Func_8021e6c
+	bl	MenuBar
 	mov	r6, r0
 	b	.L272fc
 .L272fa:
@@ -8149,7 +8149,7 @@
 	bl	_Func_80b6c08
 	mov	r5, r0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r2, [r6]
 	mov	r0, r6
 	mov	r1, r5
@@ -8189,7 +8189,7 @@
 	bl	.L28020
 .L2737e:
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [sp, #0x50]
 	mov	r1, #0
 	str	r1, [sp, #0x2c]
@@ -8240,7 +8240,7 @@
 	ldr	r1, [sp, #0x54]
 	ldrh	r0, [r0, r1]
 	str	r0, [sp, #0x40]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r3, =iwram_3001f34
 	str	r0, [sp, #0x48]
 	ldr	r5, [r3]
@@ -8321,12 +8321,12 @@
 	ldr	r0, [sp, #0x14]
 	bl	Func_802281c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
-	bl	Func_8021e6c
+	bl	MenuBar
 	mov	r6, r0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #2
 	neg	r3, r3
 	cmp	r6, r3
@@ -8349,7 +8349,7 @@
 	add	r3, #0x26
 	strb	r1, [r3]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	ldr	r2, [sp, #0x40]
 	mov	r1, r6
@@ -8476,7 +8476,7 @@
 	mov	r2, #0xb
 	mov	r3, #3
 	mov	r0, #0xb
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r11, r0
 	mov	r1, r11
 	ldr	r0, =0x1f
@@ -8492,7 +8492,7 @@
 	orr	r3, r2
 	strh	r3, [r1, #6]
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #0
 	ldr	r0, [sp, #0x40]
 	mov	r1, #1
@@ -8501,7 +8501,7 @@
 	mov	r1, #1
 	mov	r6, r0
 	mov	r0, r11
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r6, r3
@@ -8525,7 +8525,7 @@
 	bl	.L27f82
 .L27670:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r6, #0
 	ldr	r3, =iwram_3001f34
 	ldr	r3, [r3]
@@ -8572,7 +8572,7 @@
 	mov	r0, r5
 	str	r1, [sp, #0x10]
 	str	r4, [sp, #4]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0x80
 	and	r3, r2
@@ -8623,7 +8623,7 @@
 	and	r2, r3
 	mov	r0, r2
 	str	r2, [sp, #0x38]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r6, r0
 	ldr	r0, [sp, #0x24]
 	b	.L27748
@@ -8635,7 +8635,7 @@
 	ldr	r5, [r0]
 	mov	r0, #0x80
 	mov	r8, r3
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	ldr	r3, =iwram_3001e8c
 	ldr	r7, [r3]
 	mov	r3, #6
@@ -8645,7 +8645,7 @@
 	mov	r2, #0x12
 	mov	r3, #3
 	mov	r0, #8
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r1, [sp, #0x24]
 	mov	r11, r0
 	ldr	r0, [r1]
@@ -8712,7 +8712,7 @@
 	cmp	r2, r3
 	ble	.L27808
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L2781a
 
 	.pool_aligned
@@ -8725,7 +8725,7 @@
 	cmp	r3, #0
 	beq	.L2781a
 	mov	r0, #9
-	bl	Func_801e71c
+	bl	SetTextColor
 .L2781a:
 	ldr	r1, [sp, #0x38]
 	ldr	r0, =0x333
@@ -8746,7 +8746,7 @@
 	mov	r3, #0xf
 	strb	r3, [r2]
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r1, =0xf01f
 	mov	r0, r11
 	mov	r2, #0xb
@@ -8775,9 +8775,9 @@
 	mov	r1, r8
 	strh	r1, [r2, #0xc]
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
-	bl	Func_802706c
+	bl	GetMoveDisplayEffect
 	ldrb	r1, [r6]
 	mov	r3, r0
 	mov	r2, r8
@@ -8793,7 +8793,7 @@
 	bl	Func_8003f3c
 	mov	r1, #1
 	mov	r0, r11
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	neg	r1, r1
 	cmp	r6, r1
@@ -8813,7 +8813,7 @@
 
 .L278e4:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =iwram_3001f34
 	ldr	r2, [r3]
 	mov	r3, #0
@@ -8860,19 +8860,19 @@
 	mov	r0, #1
 	str	r3, [sp, #0x3c]
 	str	r6, [sp, #0x38]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x24]
 	ldr	r3, [r0]
 	mov	r0, r6
 	add	r3, #0xc
 	mov	r8, r3
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	mov	r9, r0
 	ldrh	r0, [r0]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r10, r0
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	ldr	r1, [sp, #0x3c]
 	str	r0, [sp, #0x28]
 	str	r1, [sp]
@@ -8880,7 +8880,7 @@
 	mov	r1, #0x11
 	mov	r3, #3
 	mov	r0, #0xa
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r2, [sp, #0x24]
 	ldr	r4, [sp, #0x1c]
 	ldr	r3, [r2]
@@ -8978,12 +8978,12 @@
 	cmp	r4, #0
 	bne	.L27a42
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r4, [sp, #4]
 .L27a42:
 	mov	r0, r6
 	str	r4, [sp, #4]
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	ldr	r3, =0x333
 	ldrh	r0, [r0]
 	b	.L27a60
@@ -9039,17 +9039,17 @@
 	cmp	r4, #0
 	beq	.L27ac8
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L27ace
 
 	.pool_aligned
 
 .L27ac8:
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L27ace:
 	mov	r0, r10
-	bl	Func_802706c
+	bl	GetMoveDisplayEffect
 	mov	r3, r0
 	mov	r0, r10
 	ldrb	r1, [r0]
@@ -9070,7 +9070,7 @@
 	bl	Func_8003f3c
 	mov	r0, r11
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r6, r2
@@ -9122,7 +9122,7 @@
 	b	.L278c2
 .L27b5c:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =iwram_3001f34
 	ldr	r2, [r3]
 	mov	r3, #0
@@ -9194,7 +9194,7 @@
 	mov	r1, r4
 	mov	r0, r7
 	bl	_Func_807a5b0
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, #6
 	mov	r5, r0
 	ldrb	r6, [r5, #8]
@@ -9203,7 +9203,7 @@
 	mov	r2, #0xa
 	mov	r3, #3
 	mov	r0, #0xb
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r3, [sp, #0x24]
 	ldr	r1, [r3]
 	ldrh	r2, [r1, #6]
@@ -9234,16 +9234,16 @@
 	ldr	r3, [sp, #0x4c]
 	mov	r0, #1
 	strh	r6, [r3, #0xc]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x70
 	b	.L27c60
 
 	.pool_aligned
 
 .L27c60:
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
-	bl	Func_802706c
+	bl	GetMoveDisplayEffect
 	mov	r2, r6
 	mov	r3, r0
 	ldrb	r1, [r5]
@@ -9264,14 +9264,14 @@
 	b	.L27c98
 .L27c92:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L27c98:
 	bl	Func_8017364
 	cmp	r0, #0
 	beq	.L27c92
 	mov	r1, #1
 	mov	r0, r5
-	bl	Func_8016418
+	bl	CloseUIBox
 	ldr	r2, [sp, #0x24]
 	ldr	r1, [r2]
 	mov	r2, r1
@@ -9285,7 +9285,7 @@
 .L27cbc:
 	mov	r0, r11
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r6, r3
@@ -9304,7 +9304,7 @@
 	mov	r3, #3
 	mov	r0, #0xb
 	str	r4, [sp, #4]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r11, r0
 	ldr	r0, [sp, #0x24]
 	ldr	r1, [r0]
@@ -9315,7 +9315,7 @@
 	orr	r3, r2
 	strh	r3, [r1, #6]
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r2, =0x5001
 	mov	r0, r11
 	add	r1, r7, r2
@@ -9335,7 +9335,7 @@
 	mov	r3, #0
 	bl	Func_801e7c0
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r0, [sp, #0x4c]
 	b	.L27d3c
 
@@ -9345,9 +9345,9 @@
 	mov	r3, #1
 	strh	r3, [r0, #0xc]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #4
 	ldr	r0, [sp, #0x40]
 	mov	r2, #0
@@ -9356,7 +9356,7 @@
 	mov	r1, #1
 	mov	r6, r0
 	mov	r0, r11
-	bl	Func_8016418
+	bl	CloseUIBox
 	cmp	r6, r9
 	bne	.L27d68
 	b	.L27b6e
@@ -9364,7 +9364,7 @@
 	b	.L278c2
 .L27d6a:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r6, #0
 	ldr	r3, =iwram_3001f34
 	ldr	r3, [r3]
@@ -9408,7 +9408,7 @@
 	mov	r0, r5
 	str	r3, [sp, #8]
 	str	r4, [sp, #4]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r1, r5
 	ldr	r0, [sp, #0x40]
 	bl	Func_8025180
@@ -9449,7 +9449,7 @@
 	mov	r0, r5
 	str	r2, [sp, #0xc]
 	str	r4, [sp, #4]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r1, r5
 	ldr	r0, [sp, #0x40]
 	bl	Func_8025180
@@ -9499,16 +9499,16 @@
 	lsl	r6, #1
 	add	r6, #0xd8
 	ldrh	r0, [r3, r6]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrh	r0, [r0, #0x28]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r8, r0
 	ldrb	r0, [r0, #8]
 	ldr	r1, [sp, #0x24]
 	mov	r10, r0
 	mov	r0, #0x80
 	ldr	r5, [r1]
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r9, r0
@@ -9516,7 +9516,7 @@
 	mov	r2, #0xf
 	mov	r3, #3
 	mov	r0, #9
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r2, [sp, #0x24]
 	mov	r11, r0
 	ldr	r0, [r2]
@@ -9592,9 +9592,9 @@
 	.pool_aligned
 
 .L27f40:
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r8
-	bl	Func_802706c
+	bl	GetMoveDisplayEffect
 	mov	r3, r0
 	mov	r0, r8
 	ldrb	r1, [r0]
@@ -9611,7 +9611,7 @@
 	bl	Func_8003f3c
 	mov	r0, r11
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	cmp	r6, r7
 	bne	.L27f78
 	b	.L27d7c
@@ -9624,7 +9624,7 @@
 	str	r0, [sp, #0x3c]
 .L27f82:
 	mov	r0, #0x6e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r1, sp, #0x40
 	ldrh	r1, [r1]
 	ldr	r2, [sp, #0x4c]
@@ -9722,7 +9722,7 @@
 	cmp	r0, #0
 	beq	.L28048
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L28048:
 	ldr	r0, [sp, #0x30]
 	bl	Func_8003f3c
@@ -9766,7 +9766,7 @@
 	mov	r1, #0x10
 	mov	r3, #4
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r1, [sp, #0x24]
 	ldr	r3, [r1]
 	str	r0, [r3, #0x44]
@@ -9846,7 +9846,7 @@
 	mov	r6, #1
 .L28134:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrb	r2, [r5]
 	mov	r3, #1
 	eor	r3, r2
@@ -9868,12 +9868,12 @@
 	cmp	r0, #0
 	beq	.L28166
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L28166:
 	mov	r0, #0
 	bl	_Func_80b8fd4
 	mov	r0, #0x39
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, [sp, #0x50]
 	add	sp, #0x64
 	pop	{r3, r5, r6, r7}
@@ -10307,7 +10307,7 @@
 	mov	r1, #0x98
 	mov	r0, #0x3a
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r5, r0
 	mov	r0, sp
@@ -10337,7 +10337,7 @@
 	cmp	r0, #0
 	beq	.L28534
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 .L28534:
 	mov	r2, r5
 	add	r2, #0x8e
@@ -10359,9 +10359,9 @@
 	blt	.L28546
 .L28558:
 	mov	r0, #0x3a
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -10402,7 +10402,7 @@
 	b	.L285d0
 .L285b4:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	neg	r0, r0
 	b	.L2867e
@@ -10428,7 +10428,7 @@
 	mov	r9, r3
 .L285e6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [r7]
 	mov	r3, #1
 	and	r2, r3
@@ -10457,7 +10457,7 @@
 	beq	.L2863e
 .L28620:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r3, [r6]
 	sub	r3, #1
 	strh	r3, [r6]
@@ -10483,7 +10483,7 @@
 	beq	.L285e6
 .L28652:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r3, [r6]
 	add	r3, #1
 	strh	r3, [r6]
@@ -10499,7 +10499,7 @@
 	b	.L28598
 .L28672:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r10
 	mov	r3, #0
 	ldrsh	r0, [r1, r3]
@@ -10547,7 +10547,7 @@
 	add	r3, r9
 	strh	r3, [r5]
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #0
 	mov	r10, r2
 	add	r8, r9
@@ -10586,13 +10586,13 @@
 .L28724:
 	ldrb	r0, [r0, r2]
 	add	r0, r10
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r8, r7
 	bne	.L286d4
 	mov	r0, #0x30
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r7
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -10604,7 +10604,7 @@
 	bx	r1
 .func_end Func_80286a0
 
-.thumb_func_start Func_802875c
+.thumb_func_start LoadUIIcon
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -10623,11 +10623,11 @@
 	ldrh	r3, [r5, r0]
 	mov	r1, r6
 	add	r0, r3
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r0, r10
 	mov	r1, r8
 	mov	r2, r6
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, r6
 	bl	free
 	pop	{r3, r5}
@@ -10636,9 +10636,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_802875c
+.func_end LoadUIIcon
 
-.thumb_func_start Func_80287a8
+.thumb_func_start AddMenuBarOption
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -10656,11 +10656,11 @@
 	bgt	.L287f8
 	add	r3, #1
 	strh	r3, [r2]
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r1, r10
 	mov	r6, r0
 	lsl	r5, r7, #2
-	bl	Func_802875c
+	bl	LoadUIIcon
 	lsl	r3, r7, #1
 	add	r5, r7
 	add	r3, r7
@@ -10684,7 +10684,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80287a8
+.func_end AddMenuBarOption
 
 .thumb_func_start Func_8028808
 	push	{r5, r6, r7, lr}
@@ -10754,7 +10754,7 @@
 	str	r3, [sp]
 	mov	r1, r10
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [r7, #0x78]
 	add	sp, #4
 	pop	{r3, r5, r6}
@@ -10818,7 +10818,7 @@
 	str	r3, [sp]
 	mov	r1, r6
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [r5, #0x78]
 	add	sp, #4
 	pop	{r3}
@@ -10834,7 +10834,7 @@
 	mov	r0, #1
 	neg	r0, r0
 	mov	r6, #0
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	cmp	r0, #0
 	bne	.L28934
 	mov	r6, #1
@@ -10852,16 +10852,16 @@
 .L28948:
 	bl	Func_80284dc
 	mov	r0, #1
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	cmp	r6, #0
 	bne	.L2895c
 	mov	r0, #0xf
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L2895c:
 	mov	r0, #2
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #7
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x11
 	mov	r1, #7
 	mov	r2, #0
@@ -10890,13 +10890,13 @@
 	bl	Func_801c2d0
 	bl	Func_80284dc
 	mov	r0, #1
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0xf
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #2
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #7
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r2, #0
 	mov	r0, #0x11
 	mov	r1, #7
@@ -10953,12 +10953,12 @@
 	bne	.L28a30
 .L28a2a:
 	mov	r0, #0x15
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28a30:
 	cmp	r6, #1
 	bhi	.L28a3a
 	mov	r0, #0x16
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28a3a:
 	cmp	r6, #0
 	beq	.L28a42
@@ -10966,17 +10966,17 @@
 	bne	.L28a48
 .L28a42:
 	mov	r0, #0x17
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28a48:
 	mov	r0, #0x18
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	ldr	r3, =ewram_200200c
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
 	beq	.L28a5e
 	mov	r0, #0x1d
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28a5e:
 	ldr	r3, =ewram_2002010
 	mov	r2, #0
@@ -10984,7 +10984,7 @@
 	cmp	r3, #0
 	beq	.L28a6e
 	mov	r0, #0x1e
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28a6e:
 	mov	r0, #0x11
 	mov	r1, #7
@@ -11137,12 +11137,12 @@
 	mov	r2, #0x10
 	mov	r3, #4
 	add	r5, #1
-	bl	Func_801e74c
+	bl	DrawSmallText
 	ldr	r1, [r6, #0x7c]
 	mov	r0, r5
 	mov	r2, #0x10
 	mov	r3, #0x10
-	bl	Func_801e74c
+	bl	DrawSmallText
 	b	.L28bf2
 .L28bca:
 	ldr	r5, =0xc73
@@ -11150,25 +11150,25 @@
 	mov	r0, r5
 	mov	r2, #0
 	mov	r3, #4
-	bl	Func_801e74c
+	bl	DrawSmallText
 	add	r0, r5, #1
 	ldr	r1, [r6, #0x7c]
 	mov	r2, #0
 	mov	r3, #0x10
 	add	r5, #2
-	bl	Func_801e74c
+	bl	DrawSmallText
 	ldr	r1, [r6, #0x7c]
 	mov	r0, r5
 	mov	r2, #0
 	mov	r3, #0x1c
-	bl	Func_801e74c
+	bl	DrawSmallText
 .L28bf2:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
 .func_end Func_8028b80
 
-.thumb_func_start Func_8028c04
+.thumb_func_start DataTransferMenu
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -11182,17 +11182,17 @@
 	cmp	r3, #0
 	bne	.L28c2c
 	mov	r0, #0x2c
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x2d
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	b	.L28c3e
 .L28c2c:
 	mov	r0, #0x2e
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x2f
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x30
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 .L28c3e:
 	mov	r0, #0x11
 	mov	r1, #7
@@ -11214,7 +11214,7 @@
 	mov	r3, #4
 	mov	r0, #7
 	str	r6, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	ldr	r5, =0xc77
 	mov	r3, #0x80
 	mov	r1, r0
@@ -11224,30 +11224,30 @@
 	mov	r2, #0
 	mov	r8, r3
 	mov	r3, #4
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r1, #4
 	mov	r2, #0x19
 	mov	r3, #0xc
 	mov	r0, #3
 	str	r6, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, r0
 	str	r1, [r7, #0x7c]
 	add	r0, r5, #1
 	mov	r2, #8
 	mov	r3, #0
-	bl	Func_801e74c
+	bl	DrawSmallText
 	add	r0, r5, #2
 	ldr	r1, [r7, #0x7c]
 	mov	r2, #8
 	mov	r3, #0xb
 	add	r5, #3
-	bl	Func_801e74c
+	bl	DrawSmallText
 	ldr	r1, [r7, #0x7c]
 	mov	r0, r5
 	mov	r2, #8
 	mov	r3, #0x16
-	bl	Func_801e74c
+	bl	DrawSmallText
 	b	.L28d00
 .L28cbc:
 	ldr	r1, =0xc76
@@ -11263,7 +11263,7 @@
 	mov	r3, #4
 	mov	r0, #6
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, #0x80
 	mov	r1, r0
 	add	r3, r7
@@ -11272,13 +11272,13 @@
 	mov	r2, #2
 	mov	r8, r3
 	mov	r3, #4
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r0, #1
 	mov	r1, #5
 	mov	r2, #0x1c
 	mov	r3, #7
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	str	r0, [r7, #0x7c]
 .L28d00:
 	mov	r0, #0
@@ -11302,12 +11302,12 @@
 	mov	r3, r8
 	ldr	r0, [r3]
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #2
 	ldr	r0, [r7, #0x7c]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_802851c
 	mov	r0, r5
 	add	sp, #4
@@ -11321,20 +11321,20 @@
 	.pool_aligned
 .L28d70:
 	.word	0xc76
-.func_end Func_8028c04
+.func_end DataTransferMenu
 
-.thumb_func_start Func_8028d74
+.thumb_func_start ShopMenu
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc
 	mov	r0, #0x11
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x12
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x13
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x14
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r1, #7
 	mov	r2, #0
 	mov	r0, #0x11
@@ -11347,20 +11347,20 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8028d74
+.func_end ShopMenu
 
-.thumb_func_start Func_8028db4
+.thumb_func_start SanctumMenu
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc
 	mov	r0, #0x19
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x1a
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x1b
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x1c
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r1, #0xa
 	mov	r2, #0
 	mov	r0, #0x11
@@ -11373,9 +11373,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8028db4
+.func_end SanctumMenu
 
-.thumb_func_start Func_8028df4
+.thumb_func_start YesNoMenu
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -11397,9 +11397,9 @@
 	mov	r8, r3
 .L28e1a:
 	mov	r0, #5
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #6
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r1, r5
 	mov	r2, r10
 	mov	r0, r8
@@ -11421,9 +11421,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8028df4
+.func_end YesNoMenu
 
-.thumb_func_start Func_8028e54
+.thumb_func_start YesNoMenu2
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -11434,9 +11434,9 @@
 	mov	r5, r0
 	bl	Func_80284dc
 	mov	r0, #5
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #6
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r3, r8
 	mov	r1, r6
 	mov	r2, #3
@@ -11458,16 +11458,16 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8028e54
+.func_end YesNoMenu2
 
-.thumb_func_start Func_8028ea8
+.thumb_func_start LuckyFountainMenu
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc
 	mov	r0, #0x20
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r0, #0x21
-	bl	Func_80287a8
+	bl	AddMenuBarOption
 	mov	r1, #9
 	mov	r2, #0
 	mov	r0, #0x11
@@ -11480,5 +11480,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8028ea8
+.func_end LuckyFountainMenu
 

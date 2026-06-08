@@ -1,34 +1,34 @@
 	.include "macros.inc"
 
 	.export_func Func_8000af0
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _Random
-	.export_func _Func_8002322
-	.export_func _Func_800231c
-	.export_func _Func_80048b0
-	.export_func _Func_8002dd8
-	.export_func _Func_8003fa4
-	.export_func _Func_800c300
-	.export_func _Func_800d14c
+	.export_func _sin
+	.export_func _cos
+	.export_func _galloc_iwram
+	.export_func _gfree
+	.export_func _UploadSpriteGFX
+	.export_func _Actor_SetAnim
+	.export_func _Actor_TravelTo
 	.export_func _Func_800ca6c
 	.export_func _Func_8010704
-	.export_func _Func_80120dc
+	.export_func _TestCollision
 	.export_func _Func_800c528
-	.export_func _Func_801a370
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _LoadItemIcon
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8091200
 	.export_func _Func_8091220
 	.export_func _Func_808f1c0
 	.export_func _Func_809202c
-	.export_func _Func_80f9080
+	.export_func _PlaySound

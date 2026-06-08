@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_947_2009528
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	bl	OvlFunc_947_2009268
 	cmp	r0, #0
 	bne	.L153a
@@ -17,7 +17,7 @@
 .thumb_func_start OvlFunc_947_2009544
 	push	{r5, lr}
 	sub	sp, #0x20
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	add	r5, sp, #8
 	mov	r0, r5
 	bl	OvlFunc_947_2008758

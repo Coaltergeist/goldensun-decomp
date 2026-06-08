@@ -6,7 +6,7 @@
 	mov	r5, r0
 	mov	r1, r5
 	mov	r0, #0
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	ldr	r2, =0x24a
 	ldr	r3, =gState
 	add	r3, r2
@@ -16,7 +16,7 @@
 	cmp	r1, r5
 	bne	.L8d5ca
 	mov	r0, #7
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	cmp	r0, #0
 	bne	.L8d5cc
 .L8d5ca:

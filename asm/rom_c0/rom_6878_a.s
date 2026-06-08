@@ -1,11 +1,11 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8006878
+.thumb_func_start ReadFlashId
 	push	{r4, r5, lr}
 	sub	sp, #0x44
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	mov	r5, sp
 	add	r5, #1
 	ldr	r2, =0xe005555
@@ -69,9 +69,9 @@
 	pop	{r4, r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006878
+.func_end ReadFlashId
 
-.thumb_func_start Func_8006910
+.thumb_func_start IdentifyFlash
 	push	{r4, lr}
 	ldr	r2, =REG_WAITCNT
 	ldrh	r0, [r2]
@@ -80,7 +80,7 @@
 	mov	r1, #3
 	orr	r0, r1
 	strh	r0, [r2]
-	bl	Func_8006878
+	bl	ReadFlashId
 	lsl	r0, #16
 	lsr	r3, r0, #16
 	ldr	r2, =.L7a0c
@@ -131,9 +131,9 @@
 	pop	{r4}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006910
+.func_end IdentifyFlash
 
-.thumb_func_start Func_80069a4
+.thumb_func_start FlashTimerIntr
 	ldr	r1, =ewram_2004c22
 	ldrh	r0, [r1]
 	cmp	r0, #0
@@ -149,9 +149,9 @@
 	strb	r0, [r1]
 .L69be:
 	bx	lr
-.func_end Func_80069a4
+.func_end FlashTimerIntr
 
-.thumb_func_start Func_80069c8
+.thumb_func_start SetFlashTimerIntr
 	mov	r2, r1
 	lsl	r0, #24
 	lsr	r1, r0, #24
@@ -165,7 +165,7 @@
 	ldr	r3, =REG_TM0CNT
 	add	r0, r3
 	str	r0, [r1]
-	ldr	r0, =Func_80069a4
+	ldr	r0, =FlashTimerIntr
 	str	r0, [r2]
 	mov	r0, #0
 	b	.L69fe
@@ -176,9 +176,9 @@
 	mov	r0, #1
 .L69fe:
 	bx	lr
-.func_end Func_80069c8
+.func_end SetFlashTimerIntr
 
-.thumb_func_start Func_8006a00
+.thumb_func_start StartFlashTimer
 	push	{r4, r5, lr}
 	lsl	r0, #24
 	lsr	r0, #24
@@ -223,9 +223,9 @@
 	pop	{r4, r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_8006a00
+.func_end StartFlashTimer
 
-.thumb_func_start Func_8006a78
+.thumb_func_start StopFlashTimer
 	ldr	r1, =ewram_2004c28
 	ldr	r0, [r1]
 	mov	r2, #0
@@ -249,5 +249,5 @@
 	ldrh	r0, [r0]
 	strh	r0, [r3]
 	bx	lr
-.func_end Func_8006a78
+.func_end StopFlashTimer
 

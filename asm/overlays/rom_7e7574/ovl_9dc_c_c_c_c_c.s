@@ -4,28 +4,28 @@
 	push	{lr}
 	mov	r0, #0xd4
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5534
 	mov	r0, #0
 	bl	OvlFunc_959_2008c90
 .L5534:
 	ldr	r0, =0x351
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5544
 	mov	r0, #1
 	bl	OvlFunc_959_2008c90
 .L5544:
 	ldr	r0, =0x352
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5554
 	mov	r0, #2
 	bl	OvlFunc_959_2008c90
 .L5554:
 	ldr	r0, =0x353
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5564
 	mov	r0, #3
@@ -33,7 +33,7 @@
 .L5564:
 	mov	r0, #0xd5
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5576
 	mov	r0, #4

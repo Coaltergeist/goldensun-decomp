@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8019bac
+.thumb_func_start HuffStr_Start
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -32,7 +32,7 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8019bac
+.func_end HuffStr_Start
 
 .thumb_func_start Func_8019bfc
 	push	{r5, r6, r7, lr}

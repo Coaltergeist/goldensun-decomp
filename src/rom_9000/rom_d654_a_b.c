@@ -5,7 +5,7 @@
  * asm/rom_9000/rom_d654_a_a.o and asm/rom_9000/rom_d654_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_800ca98(unsigned char *actor);
+extern int Actor_IsNotMoving(unsigned char *actor);
 
 int Func_800d674(unsigned char *actor)
 {
@@ -16,7 +16,7 @@ int Func_800d674(unsigned char *actor)
 		*p = 0;
 		goto inc;
 	}
-	if (Func_800ca98(actor)) {
+	if (Actor_IsNotMoving(actor)) {
 inc:
 		*(unsigned short *)(actor + 4) = *(unsigned short *)(actor + 4) + 1;
 		return 1;

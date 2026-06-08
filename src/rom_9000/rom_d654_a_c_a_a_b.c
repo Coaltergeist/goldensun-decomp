@@ -5,7 +5,7 @@
  * asm/rom_9000/rom_d654_a_c_a_a_a.o and asm/rom_9000/rom_d654_a_c_a_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_800d6d8(int actor, unsigned int value);
+extern int Actor_FindScriptMarker(int actor, unsigned int value);
 
 int Func_800d760(int actor) {
     int idx;
@@ -15,6 +15,6 @@ int Func_800d760(int actor) {
     idx = *(short *)((char *)actor + 4);
     base = *(int *)actor;
     val = *(unsigned int *)((char *)(idx << 2) + base + 4);
-    *(short *)((char *)actor + 4) = Func_800d6d8(actor, val);
+    *(short *)((char *)actor + 4) = Actor_FindScriptMarker(actor, val);
     return 1;
 }

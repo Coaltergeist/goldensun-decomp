@@ -4,7 +4,7 @@
 .thumb_func_start Func_80b27b0
 	push	{r5, lr}
 	mov	r5, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	mov	r0, #0
 	cmp	r5, #0
@@ -151,7 +151,7 @@
 	add	r3, r2
 	mov	r6, r0
 	ldrh	r0, [r3]
-	bl	_Func_80915ac
+	bl	_GetSpriteVoice
 	mov	r5, r0
 	bl	_Func_8019a54
 	mov	r0, r6
@@ -167,13 +167,13 @@
 	b	.Lb290e
 .Lb2908:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb290e:
 	bl	_Func_8017364
 	cmp	r0, #0
 	beq	.Lb2908
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -198,7 +198,7 @@
 	add	r3, r8
 	mov	r7, r0
 	ldrh	r0, [r3]
-	bl	_Func_80915ac
+	bl	_GetSpriteVoice
 	mov	r5, r0
 	mov	r0, r7
 	bl	Func_80b2884
@@ -218,13 +218,13 @@
 	b	.Lb297e
 .Lb2978:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb297e:
 	bl	_Func_8017364
 	cmp	r0, #0
 	beq	.Lb2978
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0xe0
 	lsl	r3, #2
 	add	r3, r8
@@ -239,7 +239,7 @@
 	bx	r0
 .func_end Func_80b2928
 
-.thumb_func_start Func_80b29a8
+.thumb_func_start UI_Sanctum
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -280,7 +280,7 @@
 	mov	r2, #5
 	mov	r3, #5
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r8, r0
 	cmp	r0, #0
 	bne	.Lb2a2c
@@ -289,7 +289,7 @@
 	mov	r3, #5
 	mov	r0, #0
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r3, #4
 	neg	r3, r3
 	mov	r8, r0
@@ -333,7 +333,7 @@
 	mov	r2, #0xc
 	mov	r3, #4
 	mov	r0, #0x10
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	str	r0, [r7, #0xc]
 	bl	Func_80b10cc
 	ldr	r1, =0x3aa
@@ -365,7 +365,7 @@
 	bl	Func_80b28d4
 .Lb2ab8:
 	mov	r0, r10
-	bl	_Func_8028db4
+	bl	_SanctumMenu
 	mov	r1, #1
 	mov	r10, r0
 	mov	r3, r10
@@ -377,10 +377,10 @@
 	bl	Func_80b28d4
 	ldr	r0, [r7, #0xc]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, r8
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	bl	Func_80b0204
 	mov	r0, #0
 	add	sp, #8
@@ -390,7 +390,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80b29a8
+.func_end UI_Sanctum
 
 .thumb_func_start Func_80b2b10
 	push	{r5, r6, r7, lr}
@@ -421,7 +421,7 @@
 	mov	r3, #3
 	mov	r0, #1
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r4, #0xe0
 	lsl	r4, #2
 	add	r3, r7, r4
@@ -447,7 +447,7 @@
 	mov	r2, #0x17
 	mov	r3, #3
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r6, #0
 	mov	r5, #0xdb
 	mov	r10, r6
@@ -554,7 +554,7 @@
 	cmp	r2, #0
 	beq	.Lb2d12
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r9
 	mov	r0, r10
 	bl	Func_80b2778
@@ -565,7 +565,7 @@
 	cmp	r0, #0
 	bne	.Lb2c7a
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lb2bba
 .Lb2c7a:
 	mov	r0, r10
@@ -594,7 +594,7 @@
 	cmp	r5, r3
 	bls	.Lb2cc8
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r8
 	add	r0, #1
 	bl	Func_80b2928
@@ -615,7 +615,7 @@
 	mov	r0, r6
 	bl	Func_80b3050
 	neg	r0, r5
-	bl	_Func_8079700
+	bl	_AddCoins
 	bl	Func_80b10cc
 	mov	r0, r10
 	mov	r1, #1
@@ -636,7 +636,7 @@
 	cmp	r3, #0
 	beq	.Lb2d24
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lb2d5a
 .Lb2d24:
 	ldr	r5, =gKeyRepeat
@@ -646,7 +646,7 @@
 	cmp	r3, #0
 	beq	.Lb2d3c
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	str	r1, [sp, #4]
 	sub	r6, #1
@@ -657,24 +657,24 @@
 	cmp	r3, #0
 	beq	.Lb2d52
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	str	r2, [sp, #4]
 	add	r6, #1
 .Lb2d52:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lb2bba
 .Lb2d5a:
 	bl	_Func_80a195c
 	mov	r1, #2
 	ldr	r0, [sp, #8]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, r11
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
@@ -693,14 +693,14 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r5, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	cmp	r5, #0
 	bne	.Lb2dc8
 	ldrh	r3, [r2, #0x34]
 	mov	r0, r7
 	strh	r3, [r2, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lb2e20
 .Lb2dc8:
 	cmp	r5, #1
@@ -733,7 +733,7 @@
 	cmp	r3, #0
 	beq	.Lb2e18
 	ldrh	r0, [r5]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, #1
 	and	r3, r2
@@ -744,7 +744,7 @@
 	eor	r3, r2
 	strh	r3, [r5]
 	mov	r0, r7
-	bl	_Func_8077428
+	bl	_CalcStats
 .Lb2e18:
 	sub	r6, #1
 	add	r5, #2
@@ -797,12 +797,12 @@
 	bne	.Lb2e80
 	ldr	r0, [r5]
 	mov	r1, #0x1e
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	b	.Lb2e88
 .Lb2e80:
 	ldr	r0, [r5]
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Lb2e88:
 	mov	r3, #0x80
 	lsl	r3, #9
@@ -879,7 +879,7 @@
 	mov	r1, r6
 	mov	r2, #0
 	mov	r3, #0
-	bl	_Func_801e74c
+	bl	_DrawSmallText
 .Lb2f30:
 	pop	{r3}
 	mov	r8, r3
@@ -911,7 +911,7 @@
 	mov	r0, #0xa0
 	lsl	r0, #14
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r1, [r5]
 	ldr	r2, [r5, #8]
 	mov	r0, r6
@@ -925,7 +925,7 @@
 	mov	r0, #0x80
 	mov	r2, r5
 	lsl	r0, #11
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r6, #0xc]
 	ldr	r3, [r5, #8]
@@ -1043,7 +1043,7 @@
 	mov	r10, r0
 	ldrsb	r0, [r2, r3]
 	sub	sp, #0xc
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0x202108
 	bl	Func_80b0840
 	mov	r0, r10
@@ -1057,7 +1057,7 @@
 	mov	r1, #0
 	bl	_Func_800baf8
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80b2ffc
@@ -1108,7 +1108,7 @@
 	mov	r0, #3
 	str	r3, [r5, #0x2c]
 	str	r3, [r5, #0x28]
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #5
 	bne	.Lb3134
 	ldr	r3, =0x3ab
@@ -1138,9 +1138,9 @@
 	cmp	r7, #0
 	bge	.Lb314a
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x7e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, =0x3ab
 	mov	r3, #0xff
 	add	r2, r8
@@ -1152,7 +1152,7 @@
 	mov	r1, #0
 	bl	_Func_800b684
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r6, =0x3f5
 	mov	r5, #0xec
 	lsl	r5, #2
@@ -1183,7 +1183,7 @@
 	bl	_Func_800baf8
 	bl	Func_80b0894
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0xe0
 	lsl	r3, #2
 	add	r3, r8
@@ -1229,7 +1229,7 @@
 	mov	r1, r8
 	ldrsh	r0, [r1, r5]
 	str	r2, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	ldr	r2, [sp]
@@ -1310,7 +1310,7 @@
 	mov	r2, #0xc
 	mov	r3, #4
 	mov	r0, #0
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	str	r0, [r5, #0xc]
 	bl	Func_80b10cc
 	mov	r0, #0
@@ -1331,20 +1331,20 @@
 	bl	Func_80b04dc
 	ldr	r0, [r5, #0xc]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	b	.Lb336a
 .Lb3328:
 	mov	r1, #2
 	ldr	r0, [r5, #0xc]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, r10
 	add	r0, #1
 	bl	Func_80b04dc
 	mov	r1, #2
 	mov	r0, r8
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, r6
-	bl	Func_80b3398
+	bl	InnHeal
 	mov	r0, r9
 	bl	_MapActor_GetActor
 	ldr	r3, [r0, #0x50]
@@ -1363,7 +1363,7 @@
 .Lb336a:
 	mov	r0, r8
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	bl	Func_80b0204
 	mov	r0, #0
 	add	sp, #4
@@ -1376,7 +1376,7 @@
 	bx	r1
 .func_end Func_80b3284
 
-.thumb_func_start Func_80b3398
+.thumb_func_start InnHeal
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1389,7 +1389,7 @@
 	neg	r5, r5
 	mov	r7, r0
 	mov	r0, r5
-	bl	_Func_8079700
+	bl	_AddCoins
 	cmp	r7, #0
 	ble	.Lb33e8
 	mov	r10, r8
@@ -1398,7 +1398,7 @@
 .Lb33c0:
 	mov	r2, r10
 	ldrsh	r0, [r6, r2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
@@ -1409,7 +1409,7 @@
 	strh	r3, [r0, #0x3a]
 	mov	r3, r8
 	ldrsh	r0, [r6, r3]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 .Lb33e0:
 	sub	r5, #1
 	add	r6, #2
@@ -1428,18 +1428,18 @@
 	mov	r3, #0x3c
 	str	r3, [r1, r5]
 	mov	r0, #0x14
-	bl	Func_80030f8
-	bl	_Func_8091df4
+	bl	WaitFrames
+	bl	_MapTransitionOut
 	bl	_Func_8091e20
 	mov	r0, #0x56
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_80b04c4
 	mov	r0, #0xa
-	bl	Func_80030f8
-	bl	_Func_8091dc8
+	bl	WaitFrames
+	bl	_MapTransitionIn
 	bl	_Func_8091e20
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [r6]
 	mov	r3, #0x10
 	str	r3, [r2, r5]
@@ -1450,9 +1450,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80b3398
+.func_end InnHeal
 
-.thumb_func_start Func_80b3444
+.thumb_func_start UI_SellMenu
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1478,7 +1478,7 @@
 	mov	r3, #8
 	mov	r0, #0x10
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r3, r8
 	str	r0, [r3, #0x20]
 	mov	r1, #0xe
@@ -1486,7 +1486,7 @@
 	mov	r3, #3
 	mov	r0, #0
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r3, #0xe4
 	lsl	r3, #2
 	ldr	r4, [sp, #4]
@@ -1569,7 +1569,7 @@
 	bl	Func_80b1dec
 .Lb353a:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
@@ -1577,15 +1577,15 @@
 	cmp	r2, #0
 	beq	.Lb3598
 	mov	r0, r11
-	bl	_Func_80784d8
+	bl	_FindEmptyInventorySlot
 	cmp	r0, #0
 	bne	.Lb355e
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lb34ea
 .Lb355e:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r11
 	bl	Func_80b362c
 	mov	r3, #1
@@ -1619,7 +1619,7 @@
 	cmp	r3, #0
 	beq	.Lb35b8
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	ldr	r2, [sp, #0xc]
 	neg	r3, r3
@@ -1636,7 +1636,7 @@
 	cmp	r3, #0
 	beq	.Lb35d0
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	sub	r7, #1
 	mov	r9, r0
@@ -1647,7 +1647,7 @@
 	cmp	r3, #0
 	beq	.Lb34ea
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	add	r7, #1
 	mov	r9, r2
@@ -1656,13 +1656,13 @@
 	bl	_Func_80a195c
 	mov	r0, r10
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, r8
 	ldr	r0, [r3, #0x20]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_80b0204
 	ldr	r0, [sp, #4]
 	add	sp, #0x10
@@ -1674,7 +1674,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80b3444
+.func_end UI_SellMenu
 
 .thumb_func_start Func_80b362c
 	push	{r5, r6, r7, lr}
@@ -1689,7 +1689,7 @@
 	sub	sp, #0x18
 	str	r3, [sp, #0x14]
 	mov	r11, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #1
 	mov	r2, #0
 	str	r0, [sp, #8]
@@ -1702,14 +1702,14 @@
 	mov	r0, #0xe
 	mov	r1, #8
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r1, #5
 	str	r0, [sp, #0xc]
 	mov	r2, #0x1e
 	mov	r3, #3
 	mov	r0, #0
 	str	r5, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r2, #0xe0
 	ldr	r1, [sp, #0x14]
 	str	r0, [sp, #0x10]
@@ -1731,7 +1731,7 @@
 	mov	r2, #0
 	mov	r0, r11
 	mov	r9, r2
-	bl	_Func_80784d8
+	bl	_FindEmptyInventorySlot
 	mov	r10, r0
 	mov	r3, r10
 	sub	r3, #1
@@ -1787,7 +1787,7 @@
 	bl	Func_80b11a4
 .Lb370c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
@@ -1796,11 +1796,11 @@
 	beq	.Lb377c
 	mov	r0, r11
 	mov	r1, r7
-	bl	_Func_8078980
+	bl	_CanRemoveItem
 	cmp	r0, #0
 	bne	.Lb3734
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	str	r7, [sp, #4]
 	b	.Lb382c
 .Lb3734:
@@ -1827,11 +1827,11 @@
 	bl	_Func_8017658
 .Lb3760:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lb376e
 .Lb3768:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb376e:
 	bl	_Func_8017364
 	cmp	r0, #0
@@ -1845,7 +1845,7 @@
 	cmp	r3, #0
 	beq	.Lb3794
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	neg	r2, r2
 	str	r2, [sp, #4]
@@ -1858,7 +1858,7 @@
 	cmp	r3, #0
 	beq	.Lb37b8
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	sub	r7, #1
 	mov	r3, r10
 	add	r0, r7, r3
@@ -1874,7 +1874,7 @@
 	cmp	r3, #0
 	beq	.Lb37da
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r7, #1
 	mov	r2, r10
 	add	r0, r7, r2
@@ -1902,7 +1902,7 @@
 	bge	.Lb37f0
 .Lb37f6:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r9, r1
 .Lb3800:
@@ -1927,19 +1927,19 @@
 	blt	.Lb381a
 .Lb3820:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	mov	r9, r2
 	b	.Lb3690
 .Lb382c:
 	ldr	r0, [sp, #0x10]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r1, #2
 	ldr	r0, [sp, #0xc]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #4]
 	add	sp, #0x18
 	pop	{r3, r5, r6, r7}
@@ -1965,7 +1965,7 @@
 	mov	r0, r10
 	mov	r9, r2
 	sub	sp, #4
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r9
 	lsl	r3, r2, #1
 	mov	r6, r3
@@ -1990,7 +1990,7 @@
 	bl	_Func_801e7c0
 	mov	r0, r10
 	mov	r1, r9
-	bl	_Func_8078980
+	bl	_CanRemoveItem
 	mov	r3, #4
 	neg	r3, r3
 	cmp	r0, r3

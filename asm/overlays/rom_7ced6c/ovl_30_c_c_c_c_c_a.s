@@ -4,7 +4,7 @@
 	push	{lr}
 	ldr	r0, =0x8c4
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L16ae
 	mov	r3, #8
@@ -21,7 +21,7 @@
 	mov	r0, #0xf
 	lsl	r1, #18
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	b	.L16b8
 .L16ae:
 	mov	r0, #0xf
@@ -30,7 +30,7 @@
 	str	r3, [r0, #0x1c]
 .L16b8:
 	ldr	r0, =0x8c5
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L16d2
 	mov	r1, #0xf2
@@ -38,7 +38,7 @@
 	mov	r0, #0x10
 	lsl	r1, #18
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	b	.L16dc
 .L16d2:
 	mov	r0, #0x10
@@ -47,7 +47,7 @@
 	str	r3, [r0, #0x1c]
 .L16dc:
 	ldr	r0, =0x8c6
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L16f6
 	mov	r1, #0xf2
@@ -55,7 +55,7 @@
 	mov	r0, #0x11
 	lsl	r1, #18
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	b	.L1700
 .L16f6:
 	mov	r0, #0x11
@@ -64,7 +64,7 @@
 	str	r3, [r0, #0x1c]
 .L1700:
 	ldr	r0, =0x8c7
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L171a
 	mov	r1, #0xf2
@@ -72,7 +72,7 @@
 	mov	r0, #0x12
 	lsl	r1, #18
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	b	.L1724
 .L171a:
 	mov	r0, #0x12
@@ -88,7 +88,7 @@
 .thumb_func_start OvlFunc_946_2009740
 	push	{r5, lr}
 	sub	sp, #0x20
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	add	r5, sp, #8
 	mov	r0, r5
 	bl	OvlFunc_946_2008474
@@ -133,7 +133,7 @@
 	mov	r0, r5
 	bl	__MapActor_GetActor
 	mov	r7, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, [sp, #4]
 	lsl	r3, #16
 	mov	r11, r3
@@ -161,10 +161,10 @@
 	str	r2, [r6, #0x34]
 	mov	r0, r6
 	ldr	r2, [r6, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #0x1b
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, [r7, #8]
 	mov	r2, r10
 	add	r3, r11
@@ -181,7 +181,7 @@
 	str	r2, [r7, #0x34]
 	mov	r0, r7
 	ldr	r2, [r7, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r3, [sp, #4]
 	cmp	r3, #0
 	blt	.L1818
@@ -191,20 +191,20 @@
 .L1818:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L182a
 .L1822:
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L182a:
 	mov	r0, #0xe2
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r6
 	bl	__Func_800ca6c
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	bl	__Func_8091750
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
@@ -305,10 +305,10 @@
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	pop	{r5}
 	pop	{r0}
 	bx	r0

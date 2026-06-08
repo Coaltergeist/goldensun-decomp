@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800ca2c
+.thumb_func_start ActorCmd_SetScript
 	mov	r3, #4
 	ldrsh	r2, [r0, r3]
 	ldr	r3, [r0]
@@ -12,5 +12,5 @@
 	strh	r3, [r0, #4]
 	mov	r0, #1
 	bx	lr
-.func_end  Func_800ca2c
+.func_end  ActorCmd_SetScript
 

@@ -97,7 +97,7 @@
 	b	.L168dc
 .L168a2:
 	mov	r0, r5
-	bl	Func_80168f4
+	bl	AdvanceMsgText
 	cmp	r0, #8
 	beq	.L168b2
 	cmp	r0, #9
@@ -114,7 +114,7 @@
 	and	r1, r3
 	lsl	r1, #16
 	lsr	r1, #16
-	bl	Func_8016418
+	bl	CloseUIBox
 	ldr	r3, [r5]
 	mov	r2, r8
 	strh	r6, [r5, #4]
@@ -138,7 +138,7 @@
 	bx	r0
 .func_end Func_8016868
 
-.thumb_func_start Func_80168f4
+.thumb_func_start AdvanceMsgText
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -360,7 +360,7 @@
 	sub	r3, #0x10
 	mov	r1, #1
 	str	r5, [sp]
-	bl	Func_8018cac
+	bl	DrawText
 	strb	r5, [r7]
 	b	.L16d64
 .L16afa:
@@ -393,7 +393,7 @@
 	ldrh	r1, [r5, #0xe]
 	ldrh	r2, [r5, #8]
 	ldrh	r3, [r5, #0xa]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	ldr	r4, [sp, #0xc]
 .L16b3c:
 	ldr	r3, =0x1ff
@@ -419,7 +419,7 @@
 	ldrh	r1, [r5, #0xe]
 	ldrh	r2, [r5, #8]
 	ldrh	r3, [r5, #0xa]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	b	.L16c06
 .L16b70:
 	add	r1, sp, #0x30
@@ -790,7 +790,7 @@
 	mov	r2, r5
 	mov	r3, r12
 	mov	r1, r7
-	bl	Func_8018cac
+	bl	DrawText
 	ldr	r3, =gState
 	mov	r4, r0
 	mov	r0, #0x83
@@ -828,7 +828,7 @@
 	and	r3, r7
 	add	r0, r3
 	str	r4, [sp, #0xc]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r10
 	strh	r1, [r5]
 	ldr	r4, [sp, #0xc]
@@ -907,7 +907,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80168f4
+.func_end AdvanceMsgText
 
 .thumb_func_start Func_8016f2c
 	push	{r5, r6, r7, lr}
@@ -960,7 +960,7 @@
 	ldrsh	r2, [r5, r3]
 	mov	r4, #0x22
 	ldrsh	r3, [r5, r4]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	mov	r1, #1
 	mov	r0, r5
 	bl	Func_8017004
@@ -981,7 +981,7 @@
 	ldrsh	r3, [r5, r4]
 	mov	r4, #0x20
 	ldrsh	r2, [r5, r4]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	ldr	r1, =0xea3
 	mov	r3, #1
 	add	r2, r7, r1

@@ -17,7 +17,7 @@
 	cmp	r3, #2
 	bne	.L20a
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	b	.L24c
 .L20a:
 	cmp	r3, #0xa

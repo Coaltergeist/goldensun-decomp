@@ -1,12 +1,12 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c4bc
+.thumb_func_start Camera_SetTarget
 	push	{r5, r6, lr}
 	mov	r6, r1
 	ldr	r1, =.L135f0
 	mov	r5, r0
-	bl	Func_800c2d8
+	bl	Actor_SetScript
 	cmp	r6, #0
 	beq	.Lc4e2
 	mov	r3, #0x80
@@ -24,5 +24,5 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800c4bc
+.func_end Camera_SetTarget
 

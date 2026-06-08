@@ -49,7 +49,7 @@
 	mov	r6, #8
 .L5f4:
 	mov	r0, r6
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L684
@@ -80,7 +80,7 @@
 	cmp	r3, #0
 	beq	.L63a
 	ldr	r0, =0x163
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L684
 .L63a:
@@ -114,7 +114,7 @@
 .L66c:
 	mov	r0, #0x82
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L684
 	mov	r3, #0xb6
@@ -141,7 +141,7 @@
 .thumb_func_start OvlFunc_881_20086b4
 	push	{lr}
 	ldr	r0, =0x85a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L6c8
 	mov	r0, #0x65
@@ -149,7 +149,7 @@
 	b	.L6d4
 .L6c8:
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #3
 	bl	__Func_8091e9c
 .L6d4:

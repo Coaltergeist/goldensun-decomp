@@ -5,8 +5,8 @@
  * asm/overlays/rom_7fc720/ovl_30_c_c_a.o and asm/overlays/rom_7fc720/ovl_30_c_c_c.o in
  * goldensun/overlays/rom_7fc720/overlay.ld.
  */
-extern int __Func_8029554(void);
+extern int __Debug_IconTest(void);
 
 int OvlFunc_973_20087c8(void) {
-    return __Func_8029554();
+    return __Debug_IconTest();
 }

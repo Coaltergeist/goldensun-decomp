@@ -1,4 +1,4 @@
-/* Func_80793b8 / Func_80793c8 get/set a flag byte by 9-bit bitfield index.
+/* GetFlagByte / SetFlagByte get/set a flag byte by 9-bit bitfield index.
  * Source asm: goldensun/asm/rom_77000/rom_79338.s
  *
  * index = (id << 20) >> 23  (bits 3..11 of id), into the byte array
@@ -12,10 +12,10 @@
  * moves the pool load past the shifts. A clean decomp-permuter seed. */
 extern unsigned char gFlags[];
 
-unsigned char Func_80793b8(unsigned int id) {
+unsigned char GetFlagByte(unsigned int id) {
     return gFlags[(id << 20) >> 23];
 }
 
-void Func_80793c8(unsigned int id, unsigned char val) {
+void SetFlagByte(unsigned int id, unsigned char val) {
     gFlags[(id << 20) >> 23] = val;
 }

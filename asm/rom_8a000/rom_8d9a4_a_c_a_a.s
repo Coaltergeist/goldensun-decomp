@@ -95,7 +95,7 @@
 	ldr	r0, [r5]
 	ldr	r6, [r3, #0x10]
 	sub	sp, #4
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldrh	r0, [r0, #6]
 	mov	r11, r0
 	ldr	r0, [r5]
@@ -220,7 +220,7 @@
 	mov	r11, r2
 	mov	r10, r0
 	str	r1, [sp, #4]
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	mov	r2, r10
 	mov	r7, #0
 	mov	r8, r0
@@ -239,7 +239,7 @@
 	add	r5, r3, r2
 .L8e28a:
 	ldrb	r0, [r5]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r4, #0
 	add	r0, #0xd8
 	mov	r1, #0xe
@@ -268,7 +268,7 @@
 	b	.L8e2de
 .L8e2be:
 	mov	r0, r10
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r4, =0x1ff
 	add	r0, #0xd8
 	mov	r1, #0xe
@@ -303,10 +303,10 @@
 	cmp	r3, #0
 	beq	.L8e376
 	ldr	r0, =0x143
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 	ldrh	r2, [r6, #4]
 	mov	r3, #0x80
 	lsl	r3, #3
@@ -335,12 +335,12 @@
 	ldr	r0, [r3]
 	bl	Func_808ddec
 	mov	r5, r0
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, [r6, #8]
 	bl	Func_8092b94
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_8092f84
+	bl	ActorMessage
 	bl	Func_8091750
 	b	.L8e370
 .L8e366:
@@ -356,11 +356,11 @@
 	mov	r7, #0xa1
 	ldr	r0, =0x143
 	lsl	r7, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r0, r7
-	bl	_Func_8079358
+	bl	_SetFlag
 	mov	r0, r11
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldr	r3, =iwram_3001ebc
 	ldrh	r5, [r0, #0x28]
 	ldr	r3, [r3]
@@ -368,14 +368,14 @@
 	cmp	r5, #0
 	beq	.L8e448
 	ldr	r0, =0x145
-	bl	_Func_8079358
+	bl	_SetFlag
 	mov	r0, r7
-	bl	_Func_8079374
+	bl	_ClearFlag
 	cmp	r5, #0x95
 	bne	.L8e3fc
 	mov	r0, #0xa2
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8e3fc
 	mov	r0, r11
@@ -429,22 +429,22 @@
 	mov	r5, #1
 	mov	r8, r2
 	strb	r5, [r6]
-	bl	Func_8096810
+	bl	FieldMove_NoTarget
 	mov	r3, r8
 	strb	r3, [r6]
 	bl	Func_8097194
 	mov	r0, r11
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #0xc]
 	and	r5, r3
 	cmp	r5, #0
 	beq	.L8e448
 	ldr	r0, =0x143
-	bl	_Func_8079358
+	bl	_SetFlag
 .L8e448:
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e45c
 	ldr	r0, =0x927
@@ -452,7 +452,7 @@
 	bl	_Func_801776c
 .L8e45c:
 	ldr	r0, =0x143
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e46e
 	mov	r0, r10
@@ -492,7 +492,7 @@
 	sub	sp, #0xc
 	ldr	r7, [r3, #0x10]
 	mov	r10, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldrh	r0, [r0, #6]
 	str	r0, [sp, #8]
 	mov	r1, r10
@@ -561,7 +561,7 @@
 .L8e56a:
 	ldrb	r0, [r7, #1]
 	str	r4, [sp]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	ldr	r4, [sp]
 	cmp	r3, r10
@@ -634,7 +634,7 @@
 	lsr	r5, #10
 	sub	sp, #4
 	and	r5, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r6, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
@@ -642,7 +642,7 @@
 	add	r6, r3
 	mov	r9, r0
 	ldr	r0, [r6]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r10, sp
 	mov	r1, r9
 	mov	r2, r10
@@ -702,7 +702,7 @@
 	mov	r0, r9
 	sub	sp, #0xc
 	mov	r10, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, r8
 	ldrb	r0, [r0, #0xc]
 	lsr	r6, r3, #10
@@ -714,19 +714,19 @@
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r2, #0
 	str	r2, [sp]
 	bl	Func_8091660
 	ldr	r0, =0x145
-	bl	_Func_8079374
+	bl	_ClearFlag
 	cmp	r6, #0xf
 	bne	.L8e6d4
 	mov	r6, #0
 .L8e6d4:
 	mov	r0, #0xbf
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e6fa
 	mov	r0, r6
@@ -763,7 +763,7 @@
 	bne	.L8e78e
 	mov	r0, #0xa2
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e740
 	mov	r0, r6
@@ -825,10 +825,10 @@
 	cmp	r6, #7
 	bgt	.L8e7ee
 	mov	r0, r9
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r5, [r0, #9]
 	mov	r0, r6
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x3a
 	ldrsh	r3, [r0, r2]
 	cmp	r3, r5
@@ -855,7 +855,7 @@
 .L8e7e6:
 	neg	r1, r5
 	mov	r0, r6
-	bl	_Func_80783dc
+	bl	_ModifyPP
 .L8e7ee:
 	add	r5, sp, #8
 	mov	r2, r5
@@ -879,9 +879,9 @@
 	neg	r3, r3
 	lsl	r0, #1
 	str	r3, [sp, #8]
-	bl	_Func_8079358
+	bl	_SetFlag
 	mov	r0, r5
-	bl	_Func_8079358
+	bl	_SetFlag
 	ldr	r0, [sp, #4]
 	cmp	r0, #0
 	bne	.L8e83a
@@ -910,13 +910,13 @@
 	beq	.L8e874
 	mov	r0, #0xa0
 	lsl	r0, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 	ldr	r0, =0x141
-	bl	_Func_8079374
+	bl	_ClearFlag
 	b	.L8e874
 .L8e86e:
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 .L8e874:
 	mov	r3, #0xcf
 	lsl	r3, #1
@@ -948,17 +948,17 @@
 	bl	Func_8096b28
 	mov	r0, #0xa0
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e8d4
 	ldr	r0, =0x141
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e8d0
-	bl	Func_8096960
+	bl	FieldMove_Target
 	b	.L8e8d4
 .L8e8d0:
-	bl	Func_8096810
+	bl	FieldMove_NoTarget
 .L8e8d4:
 	bl	Func_8097174
 	mov	r5, #0xa0
@@ -968,15 +968,15 @@
 	lsl	r5, #1
 	bl	Func_8096b28
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8e8f4
 	bl	Func_8096ab0
 .L8e8f4:
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 	ldr	r0, =0x141
-	bl	_Func_8079374
+	bl	_ClearFlag
 	ldr	r2, =0xcc6
 	mov	r3, #0
 	add	r2, r10

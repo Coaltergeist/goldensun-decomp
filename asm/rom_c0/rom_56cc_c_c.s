@@ -35,7 +35,7 @@
 	lsr	r0, #16
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_8006ba8
+	bl	ReadFlash
 	mov	r3, #1
 	add	r8, r3
 .L5cb2:
@@ -50,7 +50,7 @@
 	add	r2, #0x38
 	lsl	r1, #1
 	mov	r3, #4
-	bl	Func_8006ba8
+	bl	ReadFlash
 	b	.L5cd4
 .L5cd0:
 	mov	r2, r10

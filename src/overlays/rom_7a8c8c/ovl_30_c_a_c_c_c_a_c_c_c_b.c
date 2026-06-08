@@ -5,10 +5,10 @@
  * asm/overlays/rom_7a8c8c/ovl_30_c_a_c_c_c_a_c_c_c_a.o and asm/overlays/rom_7a8c8c/ovl_30_c_a_c_c_c_a_c_c_c_c.o in
  * goldensun/overlays/rom_7a8c8c/overlay.ld.
  */
-extern void __Func_80924d4(int arg0, int arg1);
+extern void __MapActor_SetAnim(int arg0, int arg1);
 
 void OvlFunc_922_2008ec0(void)
 {
-	__Func_80924d4(0xb, 1);
-	__Func_80924d4(0xb, 2);
+	__MapActor_SetAnim(0xb, 1);
+	__MapActor_SetAnim(0xb, 2);
 }

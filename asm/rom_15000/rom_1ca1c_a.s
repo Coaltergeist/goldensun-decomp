@@ -283,7 +283,7 @@
 	bx	r1
 .func_end Func_801cc50
 
-.thumb_func_start Func_801ccc0
+.thumb_func_start SetUIColor
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -428,7 +428,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801ccc0
+.func_end SetUIColor
 
 .thumb_func_start Func_801ce48
 	push	{lr}

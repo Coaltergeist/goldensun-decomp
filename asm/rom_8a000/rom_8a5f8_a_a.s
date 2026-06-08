@@ -46,7 +46,7 @@
 .L8a648:
 	cmp	r0, #0
 	beq	.L8a654
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8a65a
 .L8a654:
@@ -117,7 +117,7 @@
 	bx	r0
 .func_end Func_808a5f8
 
-.thumb_func_start Func_808a6e4
+.thumb_func_start RespawnAtSanctum
 	push	{r5, r6, lr}
 	ldr	r1, =gState
 	ldr	r2, =0x236
@@ -133,7 +133,7 @@
 	lsl	r4, #1
 	add	r3, r1, r4
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	mov	r5, #0x38
 	ldrsh	r3, [r6, r5]
@@ -193,13 +193,13 @@
 	strh	r3, [r6, #0x16]
 .L8a774:
 	mov	r0, #0x20
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8a7f6
 	mov	r5, #0
 .L8a780:
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	ldrh	r1, [r6, #0x34]
 	ldrh	r3, [r6, #0x36]
@@ -369,10 +369,10 @@
 	add	r2, r1, r0
 	strh	r3, [r2]
 	sub	r0, #0xb9
-	bl	_Func_8079358
+	bl	_SetFlag
 .L8a8c2:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_808a6e4
+.func_end RespawnAtSanctum
 

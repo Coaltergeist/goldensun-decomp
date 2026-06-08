@@ -26,7 +26,7 @@
 	mov	r0, #0xde
 	mov	r1, r4
 	mov	r2, r5
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L1c56
@@ -37,14 +37,14 @@
 	add	r1, #1
 	and	r1, r5
 	ldr	r7, [r6, #0x50]
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, r8
 	and	r3, r5
 	lsl	r5, r3, #2
 	mov	r2, r9
 	ldr	r1, [r2, r5]
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r3, r6
 	mov	r2, #0
 	add	r3, #0x55
@@ -198,7 +198,7 @@
 	cmp	r3, #0
 	bne	.L1dac
 	mov	r0, #0x88
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L1dac:
 	bl	__Random
 	lsl	r0, #1
@@ -243,10 +243,10 @@
 	push	{r7}
 	mov	r0, #0x13
 	sub	sp, #8
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xb6
-	bl	__Func_80f9080
-	bl	__Func_80916b0
+	bl	__PlaySound
+	bl	__CutsceneStart
 	bl	__Func_808e118
 	mov	r3, #8
 	mov	r5, #0
@@ -260,7 +260,7 @@
 	mov	r0, #1
 	bl	__Func_8091254
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0
 	bne	.L1e68
 	mov	r3, r8
@@ -270,14 +270,14 @@
 	mov	r2, #0xc
 	mov	r3, #8
 	str	r7, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x1e
 	mov	r1, #0x39
 	mov	r2, #0x13
 	mov	r3, #0x39
 	str	r6, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 .L1e68:
 	mov	r1, #1
 	ldr	r0, =0x203108
@@ -286,29 +286,29 @@
 	bl	__Func_8091254
 	add	r5, #1
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #3
 	bls	.L1e2e
 	mov	r0, #0x1e
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r5, =OvlFunc_922_2009d78
 	mov	r1, #0xc8
 	lsl	r1, #4
 	mov	r0, r5
 	bl	__StartTask
 	mov	r0, #0x28
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r1, #1
 	ldr	r0, =0x201090
 	bl	__Func_8091200
 	mov	r0, #0x28
 	bl	__Func_8091254
 	mov	r0, #0x50
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, r5
 	bl	__StopTask
 	mov	r0, #0x14
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x80
 	mov	r1, #1
 	lsl	r0, #9
@@ -316,10 +316,10 @@
 	mov	r0, #0x50
 	bl	__Func_8091254
 	mov	r0, #0x50
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x82
 	lsl	r0, #4
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0xe6
 	bl	__Func_8078a08
 	bl	__Func_808acc4
@@ -334,7 +334,7 @@
 
 .thumb_func_start OvlFunc_922_2009f04
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x17e1
 	mov	r1, #1
 	bl	__Func_801776c
@@ -345,7 +345,7 @@
 
 .thumb_func_start OvlFunc_922_2009f20
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x17e2
 	mov	r1, #1
 	bl	__Func_801776c
@@ -356,7 +356,7 @@
 
 .thumb_func_start OvlFunc_922_2009f3c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x17e3
 	mov	r1, #1
 	bl	__Func_801776c
@@ -367,10 +367,10 @@
 
 .thumb_func_start OvlFunc_922_2009f58
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x82
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1f74
 	ldr	r0, =0x17e5
@@ -382,7 +382,7 @@
 	ldr	r0, =0x17e4
 	bl	__Func_801776c
 	mov	r0, #0xe6
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r1, #1
 	neg	r1, r1
 	cmp	r0, r1
@@ -436,7 +436,7 @@
 	mov	r0, #0x10
 	bl	__Func_8091254
 	mov	r0, #0x10
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .L1ffc:
 	pop	{r0}
 	bx	r0
@@ -473,7 +473,7 @@
 	bne	.L2054
 	mov	r0, r5
 	mov	r1, #9
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L2082
 .L2054:
 	ldrh	r1, [r5, #6]
@@ -495,10 +495,10 @@
 	mov	r0, r5
 	mov	r1, #2
 	strh	r3, [r5, #6]
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0x30
-	bl	__Func_800c344
+	bl	__Actor_SetAnimSpeed
 .L2082:
 	pop	{r5}
 	pop	{r0}
@@ -519,7 +519,7 @@
 	add	r3, r0
 	ldr	r0, [r3]
 	sub	sp, #0x14
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r6, r0
 .L20b4:
 	ldr	r3, =gKeyHeld
@@ -537,7 +537,7 @@
 	bne	.L20d0
 	b	.L222a
 .L20d0:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r2, [r6, #8]
 	ldr	r1, =0xfff00000
 	mov	r3, #0x80
@@ -567,7 +567,7 @@
 	ldr	r1, [sp, #4]
 	lsl	r0, #13
 	mov	r2, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r2, r8
 	ldrb	r0, [r2]
 	ldr	r1, [r5]
@@ -602,13 +602,13 @@
 	mov	r3, r9
 	ldr	r2, [r6, #0xc]
 	mov	r1, r10
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r6
 	mov	r1, #0x30
-	bl	__Func_800c344
+	bl	__Actor_SetAnimSpeed
 	mov	r0, r6
 	bl	__Func_800ca6c
 	ldr	r3, =OvlFunc_922_200a014
@@ -644,7 +644,7 @@
 	mov	r0, r6
 	mov	r9, r2
 	ldr	r2, [r5, #4]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Func_800ca6c
 	ldr	r3, [sp]
@@ -655,7 +655,7 @@
 	ldr	r1, [sp, #4]
 	add	r2, sp, #8
 	lsl	r0, #13
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r2, r8
 	ldrb	r0, [r2]
 	ldr	r1, [r5]
@@ -675,11 +675,11 @@
 	mov	r0, r6
 	mov	r1, r10
 	mov	r3, r9
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Func_800ca6c
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	b	.L20b4
 .L220a:
 	mov	r3, #0
@@ -695,7 +695,7 @@
 	str	r3, [r6, #0x34]
 .L2220:
 	mov	r0, #0xa
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	__Func_8091750
 .L222a:
 	add	sp, #0x14

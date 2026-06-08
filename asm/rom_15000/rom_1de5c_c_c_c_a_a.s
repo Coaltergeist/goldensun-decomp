@@ -11,7 +11,7 @@
 	mov	r7, r1
 	mov	r8, r2
 	mov	r10, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0x60
@@ -19,7 +19,7 @@
 	mov	r1, r7
 	mov	r2, r5
 	mov	r0, r6
-	bl	Func_801a2a4
+	bl	LoadInventoryIcon
 	ldr	r3, [sp, #0x1c]
 	mov	r1, #0x80
 	str	r3, [sp]
@@ -47,7 +47,7 @@
 	mov	r7, r1
 	mov	r8, r2
 	mov	r6, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	str	r0, [sp, #8]
 	cmp	r0, #0x60
 	bne	.L1ebf6
@@ -59,7 +59,7 @@
 	mov	r1, #1
 	mov	r0, r5
 	str	r1, [sp]
-	bl	Func_8019ee4
+	bl	LoadOldUIIcon
 	mov	r1, #0x80
 	mov	r3, r8
 	ldr	r0, [sp, #8]
@@ -88,7 +88,7 @@
 	mov	r8, r1
 	mov	r10, r2
 	mov	r7, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0x60
@@ -96,7 +96,7 @@
 	mov	r1, #0
 	mov	r2, r5
 	mov	r0, r6
-	bl	Func_801a32c
+	bl	LoadUIBanner
 	mov	r1, #0x80
 	lsl	r1, #23
 	mov	r0, r5
@@ -128,7 +128,7 @@
 	mov	r10, r1
 	mov	r6, r2
 	ldr	r7, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ec9a
 	cmp	r5, #0
@@ -140,7 +140,7 @@
 	mov	r5, #0x13
 .L1ec9a:
 	mov	r0, r5
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r1, #1
 	mov	r5, r0
 	neg	r1, r1
@@ -174,7 +174,7 @@
 	str	r1, [sp, #4]
 	mov	r0, r5
 	mov	r1, r10
-	bl	Func_801a4fc
+	bl	LoadPortrait
 	ldr	r3, [sp, #0x30]
 	mov	r1, #0x80
 	str	r3, [sp]
@@ -225,7 +225,7 @@
 	mov	r5, r1
 	mov	r8, r2
 	ldr	r7, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ed68
 	cmp	r5, #0
@@ -237,7 +237,7 @@
 	mov	r5, #0x13
 .L1ed68:
 	mov	r0, r5
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2
@@ -270,7 +270,7 @@
 	add	r2, sp, #0xc
 	add	r3, sp, #8
 	mov	r1, r8
-	bl	Func_801a4fc
+	bl	LoadPortrait
 .L1edb0:
 	add	sp, #0x10
 	pop	{r3}

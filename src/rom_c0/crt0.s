@@ -222,7 +222,7 @@
 .L6fc:
 .func_end Func_8000404
 
-.thumb_func_start Func_80006fc
+.thumb_func_start cam4aSoundMain
 	ldr	r0, .L76c
 	ldr	r0, [r0]
 	ldr	r2, .L768
@@ -279,6 +279,6 @@
 	.word	REG_VCOUNT
 .L768:	.word	0x68736d53
 .L76c:	.word	SOUND_INFO_PTR
-.func_end Func_80006fc
+.func_end cam4aSoundMain
 
 .Lintr_main:

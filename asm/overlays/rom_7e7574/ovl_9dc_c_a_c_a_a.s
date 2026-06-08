@@ -6,7 +6,7 @@
 	mov	r0, #0x85
 	lsl	r0, #2
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L16f4
 	bl	OvlFunc_959_2009660
@@ -25,14 +25,14 @@
 	cmp	r0, #0
 	beq	.L16de
 	ldr	r0, =0x215
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L16de:
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L16f4
 	mov	r3, #0xc1

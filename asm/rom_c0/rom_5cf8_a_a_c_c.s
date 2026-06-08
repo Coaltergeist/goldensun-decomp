@@ -9,7 +9,7 @@
 	b	.L64d4
 .L64c2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =0x927bf
 	add	r5, #1
 	cmp	r5, r3

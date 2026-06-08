@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_809b698
+.thumb_func_start Field_Avoid
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -20,7 +20,7 @@
 	mov	r10, r1
 	str	r3, [sp]
 	mov	r9, r2
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	ldr	r2, =0x71a
 	ldr	r1, [sp, #4]
 	add	r3, r1, r2
@@ -32,7 +32,7 @@
 	lsl	r1, #1
 	ldr	r2, =.L9c510
 	asr	r0, #16
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r5, =gState
 	mov	r3, #0x91
 	lsl	r3, #2
@@ -41,14 +41,14 @@
 	lsl	r3, #20
 	str	r3, [r2]
 	ldr	r0, =0x145
-	bl	_Func_8079338
+	bl	_GetFlag
 	mov	r1, #0x92
 	lsl	r1, #2
 	add	r3, r5, r1
 	strb	r0, [r3]
 	mov	r1, #0
 	mov	r0, r10
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	ldr	r3, =Func_809b5dc
 	mov	r2, r10
 	mov	r5, r10
@@ -61,13 +61,13 @@
 	add	r3, #0x66
 	strh	r1, [r3]
 	mov	r0, #0x8c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0xf
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	strh	r3, [r5]
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0x26
 	add	r2, r6
 	mov	r3, #7
@@ -82,7 +82,7 @@
 	strb	r1, [r2, #5]
 	mov	r0, #2
 	strb	r7, [r6]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0
 	mov	r1, r9
 	mov	r2, r8
@@ -91,7 +91,7 @@
 	strb	r7, [r2]
 	mov	r0, #3
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	bge	.L9b73a
 	mov	r2, sp
@@ -107,11 +107,11 @@
 	mov	r0, r5
 	bl	StartTask
 	mov	r0, #0xf
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xae
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x37
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	bl	StopTask
 	ldr	r3, =gState
@@ -133,7 +133,7 @@
 .L9b7b4:
 	mov	r0, r10
 	mov	r1, #0
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	ldr	r2, =0x71a
 	ldr	r1, [sp, #4]
 	add	r3, r1, r2
@@ -152,7 +152,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_809b698
+.func_end Field_Avoid
 
 .thumb_func_start Func_809b804
 	push	{r5, r6, lr}
@@ -262,7 +262,7 @@
 	mov	r0, r5
 	mov	r2, r7
 	mov	r3, #0
-	bl	_Func_800b168
+	bl	_UpdateSprite
 .L9b8dc:
 	add	sp, #0x18
 	pop	{r5, r6, r7}
@@ -331,7 +331,7 @@
 	.call_via r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 .L9b974:
 	mov	r2, #0x80
 	lsl	r2, #12
@@ -345,7 +345,7 @@
 .L9b988:
 	mov	r0, r5
 	mov	r1, r7
-	bl	Func_80044d0
+	bl	atan2
 	mov	r3, r6
 	add	r3, #0x42
 	ldrb	r3, [r3]
@@ -403,7 +403,7 @@
 	mov	r0, r4
 	str	r7, [r6, #0x1c]
 	str	r4, [sp]
-	bl	Func_800231c
+	bl	cos
 	ldr	r5, =Func_8000888
 	mov	r1, r7
 	.call_via r5
@@ -412,7 +412,7 @@
 	add	r3, r0
 	mov	r0, r4
 	str	r3, [r6, #4]
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r7
 	.call_via r5
 	ldr	r3, [r6, #8]

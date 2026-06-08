@@ -30,7 +30,7 @@
 .L19bc:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r5}
 	pop	{r0}
@@ -295,9 +295,9 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	ldr	r0, =0x207
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1bf8
 	mov	r3, #0x2d
@@ -323,7 +323,7 @@
 .L1c0c:
 	bl	OvlFunc_948_2009ec0
 	ldr	r0, =0x206
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r0}
 	bx	r0

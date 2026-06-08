@@ -12,7 +12,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	strh	r0, [r5, #6]
 	mov	r0, #0
 	pop	{r5}

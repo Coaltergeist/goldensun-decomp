@@ -5,9 +5,9 @@
  * asm/rom_9000/rom_d654_a_c_a.o and asm/rom_9000/rom_d654_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int _Func_8079338(int);
-extern void _Func_8079374(int);
-extern void _Func_8079358(int);
+extern int _GetFlag(int);
+extern void _ClearFlag(int);
+extern void _SetFlag(int);
 
 int Func_800d880(unsigned char *actor)
 {
@@ -20,13 +20,13 @@ int Func_800d880(unsigned char *actor)
     base = *(unsigned int **)actor;
     r5 = (int)((unsigned int *)((char *)base + idx * 4))[1];
 
-    result = _Func_8079338(r5);
+    result = _GetFlag(r5);
     *(unsigned char *)(actor + 0x57) = (unsigned char)result;
 
     if ((result << 24) == (0x80 << 17))
-        _Func_8079374(r5);
+        _ClearFlag(r5);
     else
-        _Func_8079358(r5);
+        _SetFlag(r5);
 
     *(unsigned short *)(actor + 4) = *(unsigned short *)(actor + 4) + 2;
     return 1;

@@ -181,7 +181,7 @@
 	add	r3, sp, #0xc
 	str	r0, [sp]
 	mov	r0, r6
-	bl	_Func_80187ac
+	bl	_TextBox
 	ldr	r2, [sp, #8]
 	mov	r5, r7
 	str	r2, [sp]
@@ -228,20 +228,20 @@
 	mov	r1, r5
 	mov	r2, #0
 	mov	r3, #0
-	bl	_Func_801e74c
+	bl	_DrawSmallText
 .La1d9c:
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r10, r2
 	beq	.La1df4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	ldr	r6, =gKeyPress
 	mov	r10, r3
 .La1db0:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	mov	r2, r10
 	and	r3, r2
@@ -273,7 +273,7 @@
 
 .La1df4:
 	ldr	r0, =0x151
-	bl	_Func_8079358
+	bl	_SetFlag
 .La1dfa:
 	ldr	r3, =0x222
 	add	r2, r7, r3
@@ -391,7 +391,7 @@
 	beq	.La1f0a
 	mov	r0, r3
 	str	r4, [sp]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r1, [r7]
 	mov	r2, #0x7f
 	ldrb	r3, [r0, #2]
@@ -596,7 +596,7 @@
 	cmp	r5, #0
 	beq	.La2084
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r10
 	ldr	r3, [r1]
 	sub	r3, #1
@@ -624,7 +624,7 @@
 	cmp	r2, #0
 	beq	.La20ce
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, r10
 	ldr	r3, [r2]
 	add	r3, #1
@@ -663,7 +663,7 @@
 	cmp	r1, #0
 	beq	.La20fc
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, [r6]
 	sub	r3, #1
 	str	r3, [r6]
@@ -688,7 +688,7 @@
 	cmp	r4, #0
 	beq	.La212e
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [r6]
 	add	r2, #1
 	str	r2, [r6]

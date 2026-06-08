@@ -3,16 +3,16 @@
 .thumb_func_start OvlFunc_950_2008898
 	push	{r5, lr}
 	mov	r5, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x23a8
 	bl	__Func_8092b94
 	mov	r2, #0x28
 	mov	r0, #0x1f
 	ldr	r1, =0x103
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r5}
 	pop	{r0}
@@ -22,7 +22,7 @@
 .thumb_func_start OvlFunc_950_20088cc
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r5, =0x23ac
 	mov	r0, r5
 	bl	__Func_8092b94
@@ -35,7 +35,7 @@
 	cmp	r0, #0
 	bne	.L8fe
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	add	r0, r5, #1
 	bl	__Func_8092b94
 	b	.L904
@@ -45,7 +45,7 @@
 .L904:
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r5, r6}
 	pop	{r0}
@@ -69,12 +69,12 @@
 	cmp	r3, r2
 	bne	.L944
 	mov	r0, r5
-	bl	__Func_80b29a8
+	bl	__UI_Sanctum
 	b	.L984
 .L944:
 	mov	r0, #0x95
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L95c
 	ldr	r0, =0x23bf
@@ -84,7 +84,7 @@
 
 .L95c:
 	ldr	r0, =0x962
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L976
 	ldr	r0, =0x2231
@@ -92,14 +92,14 @@
 	bl	__Func_8092b94
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	b	.L984
 .L976:
 	ldr	r0, =0x1feb
 	bl	__Func_8092b94
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L984:
 	pop	{r5}
 	pop	{r0}

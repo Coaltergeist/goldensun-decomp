@@ -910,7 +910,7 @@ Data_8009d9c:
 .func_end Func_800a494
 
 .arm_func_start Func_800a958
-	ldr	r4, =Func_80044d0
+	ldr	r4, =atan2
 	bx	r4
 .ssize	Func_800a958
 

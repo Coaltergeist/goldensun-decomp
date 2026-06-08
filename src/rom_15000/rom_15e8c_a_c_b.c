@@ -5,13 +5,13 @@
  * asm/rom_15000/rom_15e8c_a_c_a.o and asm/rom_15000/rom_15e8c_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80030f8(unsigned int nframes);
+extern void WaitFrames(unsigned int nframes);
 
 void Func_80163ec(unsigned char *box)
 {
     if ((*(unsigned short *)(box + 0x16) & 2) == 0) {
         while (*(short *)(box + 0x1a) != 0) {
-            Func_80030f8(1);
+            WaitFrames(1);
         }
     }
 }

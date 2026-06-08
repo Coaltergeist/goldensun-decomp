@@ -34,7 +34,7 @@
 	ldr	r3, =iwram_3001ebc
 	ldr	r0, =0x225
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L17a2
 	mov	r0, #0xd
@@ -50,7 +50,7 @@
 	cmp	r3, #0
 	bne	.L17a2
 	ldr	r0, =0x225
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0,=OvlFunc_959_200975c
 	bl	__StopTask
 	ldr	r0, =OvlFunc_959_20097bc
@@ -71,7 +71,7 @@
 	ldr	r3, =iwram_3001ebc
 	ldr	r0, =0x225
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1802
 	mov	r0, #0x15
@@ -87,7 +87,7 @@
 	cmp	r3, #0
 	bne	.L1802
 	ldr	r0, =0x225
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =OvlFunc_959_20097bc
 	bl	__StopTask
 	ldr	r0, =OvlFunc_959_200975c

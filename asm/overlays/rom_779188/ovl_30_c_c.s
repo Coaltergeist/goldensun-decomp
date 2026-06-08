@@ -20,11 +20,11 @@
 	add	r0, #0x55
 	strb	r3, [r0]
 	mov	r0, #0x4b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
 	bl	OvlFunc_879_20082e8
 	mov	r0, #0x78
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	mov	r5, #0
@@ -33,7 +33,7 @@
 	mov	r6, r2
 .L96:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, =0xe0f
 	add	r5, #1
 	cmp	r5, r2
@@ -44,27 +44,27 @@
 .Laa:
 	ldr	r0, =0
 	mov	r1, #2
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L196
 .Lb4:
 	cmp	r3, #9
 	bne	.Lea
 	mov	r0, #0x43
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f03f0
+	bl	__StartGS1Credits
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x3c
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
 	mov	r0, #0xf0
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =1
 	mov	r1, #2
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L196
 .Lea:
 	ldr	r0, =0xb
@@ -75,22 +75,22 @@
 	bne	.L15c
 .Lf8:
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f2b70
+	bl	__NintendoLogo
 	mov	r0, #0
-	bl	__Func_80f2d54
+	bl	__CamelotLogo
 	bl	__Func_801f77c
 	cmp	r0, #0
 	ble	.L152
 	mov	r0, #0x46
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #1
-	bl	__Func_80f26ec
+	bl	__StartTitleScreen
 	cmp	r0, #0
 	bne	.L152
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x1e
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
@@ -103,7 +103,7 @@
 .L13e:
 	mov	r0, #1
 	add	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0x77
 	bgt	.Lf8
 	ldr	r3, [r6]
@@ -113,29 +113,29 @@
 .L152:
 	ldr	r0, =1
 	mov	r1, #1
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L17a
 .L15c:
 	mov	r0, #0x40
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f26ec
+	bl	__StartTitleScreen
 	bl	__Func_8077f70
 	ldr	r0, =4
 	mov	r1, #0x10
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L17a:
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x1e
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L196:
 	mov	r0, #0
 	pop	{r5, r6}
@@ -156,7 +156,7 @@
 	mov	r5, r0
 	cmp	r3, r2
 	bne	.L1e0
-	bl	__Func_8004080
+	bl	__AllocSpriteSlot
 	strh	r0, [r6]
 .L1e0:
 	ldr	r0, =_FILE_1c
@@ -175,7 +175,7 @@
 	lsl	r1, #3
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r2, #0x80
 	ldr	r1, =REG_DMA3SAD
 	lsl	r2, #24
@@ -279,7 +279,7 @@
 	push	{r5, r6, r7, lr}
 	bl	OvlFunc_879_2008454
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r2, =.L68c
 	ldr	r3, .L31c	@ 0
 	mov	r0, #0
@@ -390,7 +390,7 @@
 .L3ce:
 	strh	r1, [r5]
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r6, #0
 .L3d8:
 	ldrh	r3, [r5]
@@ -418,7 +418,7 @@
 	strh	r1, [r5]
 	mov	r0, #3
 	add	r6, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r6, #0x10
 	ble	.L3d8
 	ldr	r6, =iwram_3001ebc
@@ -432,7 +432,7 @@
 	lsl	r5, #1
 	mov	r3, #1
 	str	r3, [r1, r5]
-	bl	__Func_8091dc8
+	bl	__MapTransitionIn
 	bl	__Func_8091e20
 	ldr	r2, [r6]
 	mov	r3, #0x3c

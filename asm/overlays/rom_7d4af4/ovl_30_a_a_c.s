@@ -66,7 +66,7 @@
 	sub	r0, r3
 	ldr	r3, [r2]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldr	r3, =0xffffe000
 	lsl	r0, #16
 	lsr	r0, #16
@@ -108,7 +108,7 @@
 	strb	r3, [r2]
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r2, #1
 	mov	r9, r2
 .L11e:
@@ -127,7 +127,7 @@
 	strb	r3, [r2]
 	mov	r0, r6
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #1
 	mov	r9, r3
 	b	.L156
@@ -138,7 +138,7 @@
 	strb	r2, [r3]
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L156:
 	mov	r0, r9
 	pop	{r3, r5, r6, r7}

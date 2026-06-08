@@ -47,7 +47,7 @@
 	ldr	r1, [r7, #8]
 	ldr	r3, [r7, #0x10]
 	mov	r0, #0xde
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L926fc
@@ -59,10 +59,10 @@
 	bne	.L92664
 	mov	r0, r6
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, =.L9fbec
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	b	.L92674
 
 	.pool_aligned
@@ -70,10 +70,10 @@
 .L92664:
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, =.L9fc04
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L92674:
 	mov	r1, r8
 	cmp	r1, #0
@@ -160,17 +160,17 @@
 	cmp	r6, #0
 	beq	.L927f6
 	ldr	r0, =0x121
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r5
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r7, r6
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r7, #0x55
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldrb	r2, [r7]
 	mov	r3, #2
 	orr	r3, r2
@@ -184,11 +184,11 @@
 	ldr	r2, [r6, #0xc]
 	add	r3, r9
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, #6
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xd9
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #0xa0
 	mov	r5, #0
 	lsl	r1, #7
@@ -203,7 +203,7 @@
 	str	r3, [r6, #0xc]
 	str	r3, [r6, #0x3c]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r8, r3
@@ -230,7 +230,7 @@
 	add	r3, r9
 	ldr	r1, [r6, #8]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r6
 	bl	_Func_800ca6c
 	ldr	r2, [r6, #0xc]
@@ -241,7 +241,7 @@
 .L927d8:
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0xb3
 	bhi	.L927ec
 	ldr	r2, [r6, #0xc]
@@ -250,7 +250,7 @@
 	bgt	.L927d8
 .L927ec:
 	mov	r0, #2
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_809202c
 .L927f6:
 	pop	{r3, r5, r6}

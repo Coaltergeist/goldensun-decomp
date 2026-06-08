@@ -6,8 +6,8 @@
  * goldensun/stage1.ld.
  */
 extern int Data_310a4;
-extern void Func_8003fa4(int slot, unsigned int size, unsigned char *gfx);
+extern void UploadSpriteGFX(int slot, unsigned int size, unsigned char *gfx);
 
 void Func_8020aec(int slot) {
-    Func_8003fa4(slot, 0x80, (unsigned char *)&Data_310a4);
+    UploadSpriteGFX(slot, 0x80, (unsigned char *)&Data_310a4);
 }

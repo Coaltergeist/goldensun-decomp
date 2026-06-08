@@ -69,7 +69,7 @@
 .Lc90d4:
 	strh	r4, [r0]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r0}
 	bx	r0
 .func_end Func_80c9048

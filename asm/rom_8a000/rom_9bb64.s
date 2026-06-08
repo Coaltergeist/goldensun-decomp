@@ -18,7 +18,7 @@
 	ldr	r0, [r3]
 	bl	MapActor_GetActor
 	mov	r6, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r3, #0
 	strh	r0, [r7]
 	add	r0, sp, #8
@@ -61,7 +61,7 @@
 	mov	r1, #0x80
 	mov	r2, r5
 	ldrh	r0, [r7]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r3, #0x80
 	lsl	r3, #3
 	orr	r0, r3
@@ -83,7 +83,7 @@
 	bl	free
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9bc22
 	mov	r3, #0xf0
@@ -136,7 +136,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	mov	r0, #0
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r3, =0xffff
 	strh	r3, [r7, #0x12]
 	add	r3, #1
@@ -172,7 +172,7 @@
 	bl	Func_8003f3c
 	ldr	r0, [r5, #0x1c]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -220,7 +220,7 @@
 	lsl	r0, #1
 	add	r7, #0x20
 	str	r3, [sp, #0x18]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L9bd9c
 	ldr	r1, =gKeyHeld
@@ -231,7 +231,7 @@
 	cmp	r3, #0
 	beq	.L9bd9e
 	ldr	r0, [r5]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9be2c
 	ldr	r2, [r0, #8]
@@ -284,7 +284,7 @@
 	str	r3, [r5, #8]
 	mov	r2, r5
 	ldr	r0, [r0, #0x18]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r1, #0x80
 	ldr	r3, [r5]
 	lsl	r1, #13
@@ -349,11 +349,11 @@
 	.pool_aligned
 
 .L9be58:
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9bf2e
 	mov	r0, r6
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9bf2e
 	ldr	r2, [r0, #8]
@@ -474,7 +474,7 @@
 	bne	.L9bf5c
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L9bf2e
 	mov	r1, #0
@@ -608,7 +608,7 @@
 .L9c058:
 	ldr	r0, [sp]
 	mov	r1, #1
-	bl	Func_808b158
+	bl	GetLocationName
 	ldr	r3, =0x99b
 	add	r0, r3
 	str	r0, [sp]
@@ -645,7 +645,7 @@
 	ldr	r1, [r0, #0x1c]
 	mov	r3, r9
 	ldr	r0, [sp]
-	bl	_Func_801e74c
+	bl	_DrawSmallText
 .L9c0a8:
 	ldr	r0, =gDMATaskCount
 	ldr	r1, =REG_IME
@@ -722,7 +722,7 @@
 	mov	r0, #0x1b
 	ldr	r6, [r5]
 	sub	sp, #0x18
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xcf
 	ldr	r1, =0x1b
 	mov	r7, r0
@@ -751,7 +751,7 @@
 	mov	r3, #6
 	str	r1, [sp, #4]
 	str	r3, [r2]
-	bl	Func_8091df4
+	bl	MapTransitionOut
 	bl	Func_8091e20
 	mov	r1, r6
 	add	r1, #0x18
@@ -773,7 +773,7 @@
 	mov	r3, #1
 	strh	r3, [r1, #4]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =REG_BLDALPHA
 	ldrh	r3, [r3]
 	lsl	r3, #16
@@ -819,7 +819,7 @@
 	bl	StartTask
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9c22e
 	ldr	r0, =0x985
@@ -830,7 +830,7 @@
 	mov	r5, #3
 .L9c232:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	and	r3, r5
 	cmp	r3, #0
@@ -883,7 +883,7 @@
 	mov	r3, #0
 	mov	r2, r11
 	strh	r3, [r2, #4]
-	bl	Func_8091dc8
+	bl	MapTransitionIn
 	bl	Func_8091e20
 	mov	r1, #0xe4
 	lsl	r1, #1
@@ -946,7 +946,7 @@
 	mov	r5, #8
 .L9c354:
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9c382
 	ldr	r3, [r0, #8]
@@ -986,7 +986,7 @@
 	push	{r5, r6, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xcf
 	lsl	r2, #1
 	add	r3, r0, r2
@@ -1011,7 +1011,7 @@
 	mov	r5, r2
 .L9c3e2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	and	r3, r5
 	cmp	r3, #0

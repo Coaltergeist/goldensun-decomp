@@ -5,7 +5,7 @@
 	push	{lr}
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80a2444
@@ -18,7 +18,7 @@
 	push	{lr}
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La24a4
 	ldr	r0, =Func_80a2444

@@ -98,7 +98,7 @@
 	asr	r5, r0, #20
 	mov	r0, #0xc0
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1d40
 	cmp	r7, #2
@@ -106,7 +106,7 @@
 	bl	OvlFunc_948_2009ca0
 	mov	r0, #0xc0
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1d40:
 	cmp	r5, #0x37
 	bne	.L1d56

@@ -27,7 +27,7 @@
 	lsl	r0, #13
 	mov	r2, r5
 	str	r3, [r5, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r3, [r5]
 	mov	r1, #0x80
 	lsl	r1, #12
@@ -44,9 +44,9 @@
 	mov	r1, #5
 	mov	r10, r3
 	add	r6, r2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xb8
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0xf
 	mov	r8, r3
 .L3610:
@@ -61,7 +61,7 @@
 	mov	r1, r6
 	mov	r2, r5
 	str	r3, [r5]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #8]
 	mov	r2, #0x80
@@ -71,7 +71,7 @@
 	add	r3, r6, r2
 	strh	r3, [r7, #6]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	add	r8, r3
@@ -79,7 +79,7 @@
 	cmp	r2, #0
 	bge	.L3610
 	mov	r0, #0xe9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	add	sp, #0xc
 	pop	{r3, r5, r6}
 	mov	r8, r3
@@ -115,7 +115,7 @@
 	lsl	r0, #13
 	mov	r2, r5
 	str	r3, [r5, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r3, [r5]
 	mov	r1, #0x80
 	lsl	r1, #12
@@ -132,9 +132,9 @@
 	mov	r1, #6
 	mov	r10, r3
 	add	r6, r2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xb8
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0xf
 	mov	r8, r3
 .L36ca:
@@ -148,7 +148,7 @@
 	mov	r1, r6
 	mov	r2, r5
 	str	r3, [r5]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #8]
 	ldr	r2, =0xffffc000
@@ -157,7 +157,7 @@
 	add	r3, r6, r2
 	strh	r3, [r7, #6]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r3, #1
 	neg	r3, r3
 	add	r8, r3
@@ -165,7 +165,7 @@
 	cmp	r2, #0
 	bge	.L36ca
 	mov	r0, #0xe9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	add	sp, #0xc
 	pop	{r3, r5, r6}
 	mov	r8, r3
@@ -183,7 +183,7 @@
 	strh	r3, [r0]
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_200b724
@@ -240,7 +240,7 @@
 	cmp	r3, r0
 	bne	.L37a0
 	mov	r0, #0xb8
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L37a0:
 	mov	r2, r8
 	mov	r1, #0
@@ -248,7 +248,7 @@
 	cmp	r3, #0
 	bne	.L37b0
 	mov	r0, #0xe9
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L37b0:
 	ldr	r3, [r7, #8]
 	mov	r5, sp
@@ -264,7 +264,7 @@
 	.call_via r3
 	mov	r1, r9
 	mov	r2, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r5]
 	str	r1, [r7, #8]
 	ldr	r2, [r5, #8]
@@ -280,7 +280,7 @@
 	neg	r0, r0
 	mov	r1, r9
 	mov	r2, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r5]
 	ldr	r2, [r5, #8]
 	mov	r0, #2
@@ -294,19 +294,19 @@
 	bne	.L381c
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L3832
 .L381c:
 	cmp	r6, r0
 	ble	.L382a
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L3832
 .L382a:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L3832:
 	add	sp, #0xc
 	pop	{r3, r5, r6}
@@ -334,9 +334,9 @@
 	add	r3, r2
 	mov	r6, r0
 	ldr	r0, [r3]
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r10, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r8, r3
@@ -368,7 +368,7 @@
 	lsl	r0, #13
 	mov	r1, r8
 	mov	r2, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r5]
 	ldr	r2, [r5, #8]
 	mov	r0, #2
@@ -389,10 +389,10 @@
 	str	r5, [r2, #0x10]
 	mov	r1, #0x10
 	ldr	r0, [r6, #0x50]
-	bl	__Func_800b8ac
+	bl	__Sprite_AddLayer
 	mov	r0, r9
 	mov	r1, #1
-	bl	__Func_809335c
+	bl	__SetCameraTarget
 	bl	__Func_8093530
 	mov	r0, #0x80
 	mov	r1, #0x80
@@ -440,16 +440,16 @@
 	lsl	r0, #13
 	mov	r1, r8
 	mov	r2, r5
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r1, [r5]
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r5, #8]
 	mov	r0, r6
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Func_800ca6c
 	mov	r0, #0xe9
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L3966:
 	ldr	r1, [r6, #8]
 	ldr	r2, [r6, #0x10]
@@ -483,7 +483,7 @@
 	mov	r0, r6
 	bl	OvlFunc_932_200b738
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	b	.L3966
 .L39ac:
 	mov	r0, r6

@@ -89,7 +89,7 @@
 	mov	r3, r11
 	ldrh	r0, [r3, r1]
 	bl	_Func_808b398
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	cmp	r0, #0
 	beq	.La190e
 	str	r0, [r6]
@@ -124,7 +124,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .La190e:
 	mov	r2, #2
 	add	r5, #1
@@ -184,7 +184,7 @@
 	ldmia	r6!, {r0}
 	cmp	r0, #0
 	beq	.La1984
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 .La1984:
 	sub	r5, #1
 	cmp	r5, #0
@@ -206,7 +206,7 @@
 	ldr	r3, =iwram_3001f2c
 	sub	sp, #0x1c
 	ldr	r5, [r3]
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	lsl	r0, #16
 	lsr	r0, #16
 	mov	r10, r0
@@ -262,7 +262,7 @@
 	mov	r2, r8
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .La1a24:
 	add	r4, #1
@@ -463,7 +463,7 @@
 	beq	.La1bb6
 	mov	r0, #1
 	str	r4, [sp]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp]
 	b	.La1b56
 .La1bb6:

@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_cf2a0_a.o and asm/rom_c9000/rom_cf2a0_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80cf2b8(void *context, int subanim);
+extern void BaseAnim_Revive(void *context, int subanim);
 
 void Func_80cf2a0(void *context) {
-    Func_80cf2b8(context, 0);
+    BaseAnim_Revive(context, 0);
 }

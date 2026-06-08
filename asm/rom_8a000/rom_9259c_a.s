@@ -3,7 +3,7 @@
 .thumb_func_start Func_809259c
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L925c0
 	cmp	r5, #0
@@ -17,7 +17,7 @@
 	ldr	r3, =.L9ebfc
 	lsl	r1, #7
 	add	r1, r3
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L925c0:
 	pop	{r5}
 	pop	{r0}

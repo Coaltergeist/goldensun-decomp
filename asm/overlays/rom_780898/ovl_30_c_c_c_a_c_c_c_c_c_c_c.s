@@ -58,7 +58,7 @@
 	cmp	r3, #0
 	bne	.L5690
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #1
 	b	.L5716
 .L568a:
@@ -88,7 +88,7 @@
 	ldr	r1, [r7]
 	ldr	r3, [r2]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldr	r3, =0xfffff000
 	lsl	r0, #16
 	mov	r2, #0x80
@@ -117,7 +117,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #1
 	mov	r2, r9
 	str	r3, [sp]
@@ -128,7 +128,7 @@
 	strb	r6, [r3]
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r2, r9
 	strb	r6, [r2]
 .L5714:

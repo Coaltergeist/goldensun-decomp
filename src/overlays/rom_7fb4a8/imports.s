@@ -2,27 +2,27 @@
 
 	.export_func Func_8000af0
 	.export_func Func_8000b1c
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _StopTask
-	.export_func _Func_80048f4
-	.export_func _Func_8002dd8
+	.export_func _galloc_ewram
+	.export_func _gfree
 	.export_func _Func_8004970
 	.export_func _free
 	.export_func _Func_8005d10
 	.export_func _Func_8006358
-	.export_func _Func_80037d4
+	.export_func _SetSoundFXMode
 	.export_func _Func_80063bc
 	.export_func _Func_8006408
 	.export_func _Func_80064f4
 	.export_func _Func_8004358
 	.export_func _Func_800fe9c
-	.export_func _Func_8010424
+	.export_func _CopyMapTiles
 	.export_func _Func_80118a8
 	.export_func _Func_80118c0
 	.export_func _Func_8010704
-	.export_func _Func_80162d4
-	.export_func _Func_8016418
+	.export_func _CreateUIBox
+	.export_func _CloseUIBox
 	.export_func _Func_801964c
 	.export_func _Func_8017658
 	.export_func _Func_8017364
@@ -32,32 +32,32 @@
 	.export_func _Func_8019908
 	.export_func _Func_801faa8
 	.export_func _Func_8077330
-	.export_func _Func_8077394
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_80793b8
-	.export_func _Func_80793c8
-	.export_func _Func_80795fc
+	.export_func _GetUnit
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _GetFlagByte
+	.export_func _SetFlagByte
+	.export_func _GetPartySize
 	.export_func _Func_807808c
-	.export_func _Func_80916b0
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_809218c
-	.export_func _Func_80923c4
+	.export_func _MapActor_WaitMovement
 	.export_func _Func_809280c
 	.export_func _Func_8092b94
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
-	.export_func _Func_8091e3c
+	.export_func _ActorMessage
+	.export_func _SetDestMap
 	.export_func _Func_8091eb0
 	.export_func _Func_8091f90
 	.export_func _Func_8091fa8
-	.export_func _Func_8091dc8
+	.export_func _MapTransitionIn
 	.export_func _Func_8091e20
-	.export_func _Func_80b29a8
+	.export_func _UI_Sanctum
 	.export_func _Func_80bf65c
-	.export_func _Func_80b5368
-	.export_func _Func_80f9080
+	.export_func _Debug_LoadPresetParty
+	.export_func _PlaySound

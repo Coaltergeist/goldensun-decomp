@@ -8,7 +8,7 @@
 	and	r7, r0
 	ldr	r0, =0x107
 	ldr	r5, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lea82
 	mov	r3, #0xc1

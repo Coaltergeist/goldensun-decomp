@@ -5,8 +5,8 @@
  * asm/overlays/rom_7fcd20/ovl_30_c_c_a_c_c_a.o and asm/overlays/rom_7fcd20/ovl_30_c_c_a_c_c_c.o in
  * goldensun/overlays/rom_7fcd20/overlay.ld.
  */
-extern int __Func_8029554(unsigned int actorID);
+extern int __Debug_IconTest(unsigned int actorID);
 
 int OvlFunc_974_2009170(unsigned int actorID) {
-    return __Func_8029554(actorID);
+    return __Debug_IconTest(actorID);
 }

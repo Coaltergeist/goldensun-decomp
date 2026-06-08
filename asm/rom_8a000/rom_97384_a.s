@@ -47,52 +47,52 @@
 	lsl	r0, #1
 	mov	r3, #7
 	and	r5, r3
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L973e6
 	mov	r5, #0
 .L973e6:
 	ldr	r0, =0x149
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L973f2
 	mov	r5, #1
 .L973f2:
 	mov	r0, #0xa5
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L97400
 	mov	r5, #2
 .L97400:
 	ldr	r0, =0x14b
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9740c
 	mov	r5, #3
 .L9740c:
 	mov	r0, #0xa6
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9741a
 	mov	r5, #4
 .L9741a:
 	ldr	r0, =0x14d
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L97426
 	mov	r5, #5
 .L97426:
 	mov	r0, #0xa7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L97434
 	mov	r5, #6
 .L97434:
 	ldr	r0, =0x14f
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L97440
 	mov	r5, #7

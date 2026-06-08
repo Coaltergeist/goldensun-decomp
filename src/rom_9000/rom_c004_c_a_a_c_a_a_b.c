@@ -5,10 +5,10 @@
  * asm/rom_9000/rom_c004_c_a_a_c_a_a_a.o and asm/rom_9000/rom_c004_c_a_a_c_a_a_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_800c2d8(unsigned char *actor, unsigned char *script);
+extern void Actor_SetScript(unsigned char *actor, unsigned char *script);
 extern unsigned char L13608[] __asm__(".L13608");
 
 void Func_800c454(unsigned char *actor, unsigned char *other) {
-    Func_800c2d8(actor, L13608);
+    Actor_SetScript(actor, L13608);
     *(unsigned char **)(actor + 0x68) = other;
 }

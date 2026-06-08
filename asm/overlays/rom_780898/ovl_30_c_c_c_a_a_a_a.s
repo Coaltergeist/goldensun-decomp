@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_883_2008c9c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r2, #0x14
 	mov	r1, #0xa
 	mov	r0, #0
@@ -11,9 +11,9 @@
 	bl	__Func_8092b94
 	mov	r1, #0
 	mov	r0, #0xa
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	ldr	r0, =0x81f
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -21,7 +21,7 @@
 
 .thumb_func_start OvlFunc_883_2008cd0
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -30,7 +30,7 @@
 	lsl	r0, #10
 	bl	__Func_8012330
 	mov	r0, #0xa
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #1
 	mov	r1, #1
 	neg	r1, r1
@@ -49,7 +49,7 @@
 	bl	__Func_809280c
 	mov	r0, #0x11
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -57,12 +57,12 @@
 
 .thumb_func_start OvlFunc_883_2008d2c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #2
 	mov	r0, #0x13
 	bl	__Func_80925cc
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #0x14
 	mov	r1, #0
 	mov	r0, #0x13
@@ -73,7 +73,7 @@
 	mov	r0, #0x13
 	bl	__Func_8093054
 	ldr	r0, =0x307
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -84,7 +84,7 @@
 	mov	r0, #0x84
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0xa
 	mov	r2, #0x54
 	str	r3, [sp]
@@ -104,7 +104,7 @@
 	mov	r0, #0x84
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r3, #0xa
 	mov	r2, #0x54
 	str	r3, [sp]
@@ -122,7 +122,7 @@
 .thumb_func_start OvlFunc_883_2008dc0
 	push	{lr}
 	mov	r0, #0xbc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =.L7544
 	mov	r1, #0x2d
 	mov	r2, #0xb
@@ -141,14 +141,14 @@
 .thumb_func_start OvlFunc_883_2008df0
 	push	{lr}
 	ldr	r0, =0x801
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Le02
 	bl	OvlFunc_883_2008fec
 	b	.Le0e
 .Le02:
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #1
 	bl	__Func_8091e9c
 .Le0e:

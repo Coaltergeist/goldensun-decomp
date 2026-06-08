@@ -57,7 +57,7 @@
 	mov	r1, r2
 	mov	r2, r5
 	str	r4, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	str	r0, [r6]
 	mov	r0, #1
 .La110c:

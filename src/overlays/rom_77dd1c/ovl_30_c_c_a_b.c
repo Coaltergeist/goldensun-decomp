@@ -5,7 +5,7 @@
  * asm/overlays/rom_77dd1c/ovl_30_c_c_a_a.o and asm/overlays/rom_77dd1c/ovl_30_c_c_a_c.o in
  * goldensun/overlays/rom_77dd1c/overlay.ld.
  */
-extern int __Func_8079338(int);
+extern int __GetFlag(int);
 extern void __Func_8095214(void);
 extern void __Func_8091e9c(unsigned int);
 extern unsigned int iwram_3001ebc;
@@ -14,7 +14,7 @@ void OvlFunc_882_200815c(unsigned int arg0) {
     int res;
     unsigned char *base;
 
-    res = __Func_8079338(0x834);
+    res = __GetFlag(0x834);
     if (res != 0) {
         __Func_8095214();
     }

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091fc0
+.thumb_func_start SetDestMap2
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
 	ldr	r3, =gState
@@ -19,7 +19,7 @@
 	ldr	r3, =0x3e7
 	strh	r3, [r2]
 	bx	lr
-.func_end Func_8091fc0
+.func_end SetDestMap2
 
 .thumb_func_start Func_8091ff0
 	push	{r5, lr}
@@ -39,9 +39,9 @@
 .L9200c:
 	mov	r0, #0x95
 	lsl	r0, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
-	bl	_Func_80f9080
+	bl	_PlaySound
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -59,7 +59,7 @@
 	neg	r3, r3
 	cmp	r0, r3
 	beq	.L92046
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L92046:
 	pop	{r0}
 	bx	r0

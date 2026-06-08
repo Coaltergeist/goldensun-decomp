@@ -70,7 +70,7 @@
 	b	.Lc0f6e
 .Lc0f66:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lc0efc
 .Lc0f6e:
 	ldr	r3, [r1]

@@ -78,7 +78,7 @@
 
 .thumb_func_start Func_8079c8c
 	push	{lr}
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r2, =0x129
 	add	r3, r0, r2
 	ldrb	r3, [r3]
@@ -100,7 +100,7 @@
 	bx	r1
 .func_end Func_8079c8c
 
-.thumb_func_start Func_8079cbc
+.thumb_func_start CheckEquipmentCritBoost
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -120,7 +120,7 @@
 	beq	.L79cfe
 	ldrh	r0, [r5, r7]
 	str	r1, [sp]
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldr	r1, [sp]
 	add	r0, #0x18
 	mov	r2, #3
@@ -152,7 +152,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8079cbc
+.func_end CheckEquipmentCritBoost
 
 .thumb_func_start Func_8079d1c
 	push	{r5, r6, lr}
@@ -174,7 +174,7 @@
 	cmp	r3, #0
 	beq	.L79d6c
 	mov	r0, r5
-	bl	Func_8079cbc
+	bl	CheckEquipmentCritBoost
 	ldrb	r2, [r6, #0xb]
 	lsl	r3, r2, #2
 	add	r3, r2
@@ -324,7 +324,7 @@
 	sub	r1, #1
 	add	r3, r2, r1
 	ldrb	r0, [r3]
-	bl	Func_80773d8
+	bl	GetEnemyInfo
 	mov	r2, #0
 	add	r0, #0x48
 .L79eba:
@@ -394,7 +394,7 @@
 	mov	r0, r9
 	mov	r8, r3
 	mov	r11, r2
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r0, #1
 	mov	r10, r0
@@ -601,7 +601,7 @@
 	bx	r1
 .func_end Func_8079f10
 
-.thumb_func_start Func_807a0cc
+.thumb_func_start GetDjinniInfo
 	push	{lr}
 	mov	r3, #0
 	cmp	r0, #3
@@ -620,7 +620,7 @@
 	add	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end Func_807a0cc
+.func_end GetDjinniInfo
 
 .thumb_func_start Func_807a0f4
 	push	{r5, r6, r7, lr}
@@ -643,14 +643,14 @@
 	mov	r0, r11
 	mov	r9, r2
 	mov	r8, r3
-	bl	Func_8079338
+	bl	GetFlag
 	cmp	r0, #0
 	beq	.L7a12a
 	mov	r0, #1
 	neg	r0, r0
 	b	.L7a19a
 .L7a12a:
-	bl	Func_80795fc
+	bl	GetPartySize
 	cmp	r9, r0
 	bge	.L7a172
 	ldr	r3, =gState
@@ -660,7 +660,7 @@
 	mov	r5, r0
 .L7a13c:
 	ldrb	r0, [r6]
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #0x8c
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -698,13 +698,13 @@
 	mov	r1, r7
 	mov	r2, r10
 	mov	r0, r9
-	bl	Func_807a1b4
+	bl	GiveDjinni
 	mov	r1, r7
 	mov	r2, r10
 	mov	r0, r9
 	bl	Func_807a458
 	mov	r0, r11
-	bl	Func_8079358
+	bl	SetFlag
 	mov	r0, r9
 .L7a19a:
 	pop	{r3, r5, r6, r7}
@@ -717,11 +717,11 @@
 	bx	r1
 .func_end Func_807a0f4
 
-.thumb_func_start Func_807a1b4
+.thumb_func_start GiveDjinni
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r2
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r3, #0x8c
 	lsl	r3, #1
 	add	r6, r5, r3
@@ -753,14 +753,14 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_807a1b4
+.func_end GiveDjinni
 
 .thumb_func_start Func_807a1f8
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r6, r2
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #0x8c
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -864,7 +864,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r2
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r3, #0x84
 	lsl	r3, #1
 	lsl	r5, #2
@@ -881,7 +881,7 @@
 	bx	r1
 .func_end Func_807a2bc
 
-.thumb_func_start Func_807a2e4
+.thumb_func_start SetDjinni
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -889,7 +889,7 @@
 	mov	r7, r0
 	mov	r6, r1
 	mov	r8, r2
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r1, r6
 	mov	r5, r0
 	mov	r2, r8
@@ -936,7 +936,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_807a2e4
+.func_end SetDjinni
 
 .thumb_func_start Func_807a350
 	push	{r5, r6, r7, lr}
@@ -946,7 +946,7 @@
 	mov	r7, r0
 	mov	r6, r1
 	mov	r10, r2
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r1, r6
 	mov	r5, r0
 	mov	r2, r10
@@ -1125,7 +1125,7 @@
 	mov	r11, r3
 	sub	sp, #4
 	mov	r10, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, #1
 	lsl	r3, r5, #2
 	mov	r9, r2
@@ -1149,7 +1149,7 @@
 	str	r0, [sp]
 	mov	r2, r6
 	mov	r0, r11
-	bl	Func_807a1b4
+	bl	GiveDjinni
 	cmp	r0, #0
 	bne	.L7a538
 	mov	r2, r6
@@ -1174,7 +1174,7 @@
 	mov	r0, r11
 	mov	r1, r5
 	mov	r2, r6
-	bl	Func_807a2e4
+	bl	SetDjinni
 	b	.L7a534
 .L7a520:
 	mov	r1, r5

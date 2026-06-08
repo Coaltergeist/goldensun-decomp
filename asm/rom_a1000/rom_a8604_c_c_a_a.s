@@ -11,7 +11,7 @@
 	mov	r0, r1
 	mov	r10, r2
 	mov	r8, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	bl	Func_80a9cbc
 	bl	Func_80a345c
 	ldr	r5, =0xb24
@@ -46,7 +46,7 @@
 	cmp	r3, #0
 	bne	.La9ad8
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #1
 	bl	Func_80a3e28
@@ -83,7 +83,7 @@
 	mov	r5, r3
 	and	r5, r0
 	mov	r0, r5
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	cmp	r3, #2
 	beq	.La9b4e

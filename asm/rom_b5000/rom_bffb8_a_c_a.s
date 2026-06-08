@@ -16,7 +16,7 @@
 	mov	r0, #0x2a
 	mov	r1, #4
 	ldr	r7, [r6]
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =0x15b
 	mov	r11, r0
 	cmp	r5, r1
@@ -135,7 +135,7 @@
 	strh	r5, [r6, #6]
 	strh	r3, [r6, #4]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, .Lc0414	@ 0xf0
 	ldr	r3, =REG_WIN0H
 	ldr	r2, .Lc0418	@ 0x88
@@ -155,7 +155,7 @@
 	strh	r3, [r2]
 	lsl	r0, #19
 	ldr	r1, =0x7741
-	bl	Func_800387c
+	bl	SetRegAnimDest
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #0
@@ -196,7 +196,7 @@
 	bl	SetIntrHandler
 	strh	r5, [r6, #2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =iwram_3001e74
 	ldr	r3, [r3]
 	add	r3, #0x41
@@ -204,7 +204,7 @@
 	ldr	r5, =REG_BG0CNT
 	bl	_Func_801ef08
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #2
 	bl	Func_80039fc
@@ -254,7 +254,7 @@
 	bl	Func_80b7dd0
 	mov	r7, r0
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
@@ -294,7 +294,7 @@
 .Lc0544:
 	strh	r4, [r0]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0xc9
 	ldr	r2, =0x21
 	lsl	r3, #3
@@ -316,9 +316,9 @@
 	strh	r3, [r5, r0]
 	mov	r1, #0
 	mov	r0, r6
-	bl	Func_80b7b6c
+	bl	CreateBattleSpriteOverlays
 	mov	r0, r5
-	bl	_Func_80cbc0c
+	bl	_Anim_ScreenShatter
 	mov	r3, #0x64
 	mov	r0, #0
 	mov	r1, #0
@@ -340,9 +340,9 @@
 	.pool
 
 .Lc05c0:
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =iwram_3001e74
 	ldr	r3, [r3]
 	ldr	r5, =REG_BG0CNT
@@ -370,7 +370,7 @@
 	strh	r2, [r1, r3]
 	mov	r0, r8
 	mov	r1, #0
-	bl	Func_80b7b6c
+	bl	CreateBattleSpriteOverlays
 	mov	r0, #1
 	mov	r1, r8
 	bl	Func_80b6c08
@@ -406,7 +406,7 @@
 	strh	r3, [r1]
 	mov	r0, #1
 	add	r6, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r6, #0x10
 	bne	.Lc0648
 	mov	r6, #0
@@ -435,7 +435,7 @@
 	mov	r3, #0
 	strh	r3, [r2, #2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
@@ -449,7 +449,7 @@
 	bl	SetIntrHandler
 	strh	r5, [r6]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	strh	r5, [r6]
 	ldr	r1, =REG_BG0CNT
 	ldr	r3, =0xfffd
@@ -464,7 +464,7 @@
 	lsl	r2, #19
 	strh	r3, [r2]
 	mov	r0, #0x2a
-	bl	Func_8002dd8
+	bl	gfree
 	add	sp, #0x94
 	b	.Lc06f0
 
@@ -523,7 +523,7 @@
 	ldr	r1, =0x50000c0
 	mov	r0, r5
 	mov	r3, #0x80
-	bl	Func_80c1724
+	bl	UploadBGPalette
 .Lc074a:
 	ldr	r2, [r6]
 	ldr	r3, =REG_IME
@@ -672,7 +672,7 @@
 	lsl	r1, #2
 	mov	r0, #0xa
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r3, =iwram_3001f00
 	mov	r1, r0
 	mov	r4, #0

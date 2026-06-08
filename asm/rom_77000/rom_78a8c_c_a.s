@@ -53,7 +53,7 @@
 	push	{r6, r7}
 	mov	r6, r1
 	sub	sp, #4
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r3, =0x1ff
 	mov	r8, r0
 	mov	r1, #0
@@ -70,7 +70,7 @@
 	bne	.L78b42
 	mov	r0, r6
 	str	r1, [sp]
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, #0x10
 	and	r3, r2

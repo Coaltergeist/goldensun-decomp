@@ -31,7 +31,7 @@
 	ldr	r0, .La9c6c	@ 0x1ff
 	and	r0, r2
 	str	r1, [sp]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	ldr	r1, [sp]
 	cmp	r3, #2

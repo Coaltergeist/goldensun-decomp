@@ -24,12 +24,12 @@
 .L6a:
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L8c
 .L74:
 	mov	r0, r5
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L8c
 .L7e:
 	bl	__Random

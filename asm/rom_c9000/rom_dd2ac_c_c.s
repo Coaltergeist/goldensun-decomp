@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80dd2c4
+.thumb_func_start BaseAnim_Growth
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -20,7 +20,7 @@
 	add	r3, r11
 	str	r0, [r3]
 	mov	r0, #1
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Ldd30c	@ 0x100
 	strh	r3, [r2]
@@ -34,7 +34,7 @@
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	b	.Ldd330
 
 	.align	2, 0
@@ -49,7 +49,7 @@
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 .Ldd330:
 	ldr	r7, =0x7828
 	add	r7, r11
@@ -67,7 +67,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
@@ -78,7 +78,7 @@
 	mov	r3, #7
 	mov	r0, #0x2f
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	add	r5, #0xbc
 	ldr	r3, [r5]
 	mov	r5, sp
@@ -160,7 +160,7 @@
 	add	r2, r11
 	mov	r1, #0x90
 	str	r3, [r2]
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	lsl	r1, #3
 	bl	StartTask
 	ldr	r5, [sp, #0x20]
@@ -354,7 +354,7 @@
 	bne	.Ldd5b0
 	mov	r0, #0x85
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 .Ldd5b0:
 	ldr	r3, [r5]
@@ -523,14 +523,14 @@
 	bne	.Ldd64a
 	mov	r0, #4
 	mov	r1, #4
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r11
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, [sp, #0x24]
 	ldr	r6, [sp, #0x20]
 	add	r5, #1
@@ -539,13 +539,13 @@
 	beq	.Ldd714
 	b	.Ldd430
 .Ldd714:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x38
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -555,9 +555,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80dd2c4
+.func_end BaseAnim_Growth
 
-.thumb_func_start Func_80dd77c
+.thumb_func_start Anim_Vine
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -583,9 +583,9 @@
 	str	r3, [sp, #4]
 	mov	r1, #4
 	mov	r3, #4
-	bl	Func_80de2f8
+	bl	Anim_Djinni
 	mov	r0, #1
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Ldd7f4	@ 0x100
 	strh	r3, [r2]
@@ -596,7 +596,7 @@
 	mov	r2, #1
 	ldr	r0, =_FILE_a6
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r3, [r5]
 	add	r6, sp, #0x24
 	mov	r1, #0x24
@@ -640,7 +640,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r5, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r2, r8
 	ldr	r3, [r2, #0x1c]
 	mov	r1, #7
@@ -649,7 +649,7 @@
 	mov	r3, #7
 	mov	r0, #0x2f
 	str	r5, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r0, r8
 	ldr	r3, [r0, #0x20]
 	add	r1, sp, #8
@@ -681,7 +681,7 @@
 	add	r2, r10
 	mov	r1, #0x90
 	str	r3, [r2]
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	lsl	r1, #3
 	bl	StartTask
 	mov	r2, #0
@@ -691,7 +691,7 @@
 	cmp	r3, #0x20
 	bne	.Ldd8ce
 	mov	r0, #0x8f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =0x7828
 	mov	r0, r10
 	ldr	r3, [r0, r3]
@@ -792,26 +792,26 @@
 	bne	.Ldd8d6
 	mov	r1, #4
 	mov	r0, #4
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r10
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	add	r8, r1
 	mov	r2, r8
 	cmp	r2, #0x46
 	bne	.Ldd890
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x30
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -821,9 +821,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80dd77c
+.func_end Anim_Vine
 
-.thumb_func_start Func_80dd9c0
+.thumb_func_start Anim_Thorn
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -842,7 +842,7 @@
 	str	r3, [sp, #0x30]
 	str	r0, [r6]
 	mov	r0, #1
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r2, =REG_BG2PA
 	ldr	r3, .Ldda18	@ 0x100
 	strh	r3, [r2]
@@ -856,7 +856,7 @@
 	mov	r3, #1
 	mov	r1, r9
 	mov	r2, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r3, [r6]
 	ldr	r3, [r3, #4]
 	cmp	r3, #1
@@ -882,7 +882,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r5, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r2, [r7, #0x1c]
 	mov	r1, #7
 	str	r2, [sp, #0x24]
@@ -890,7 +890,7 @@
 	mov	r2, #7
 	mov	r0, #0x2f
 	str	r5, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, #0xef
 	lsl	r3, #7
 	ldr	r2, =0x7784
@@ -902,7 +902,7 @@
 	mov	r1, #0x90
 	str	r3, [r2]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	str	r7, [sp, #0x28]
 	bl	StartTask
 	ldr	r3, [r6]
@@ -1172,7 +1172,7 @@
 	cmp	r0, r10
 	bne	.Lddca0
 	mov	r0, #0x84
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, [r5]
 	ldrsh	r0, [r3, r7]
 	mov	r3, #3
@@ -1286,14 +1286,14 @@
 	bne	.Lddce4
 	mov	r1, #8
 	mov	r0, #8
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r9
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, [sp, #0x2c]
 	ldr	r2, [sp, #0x20]
 	add	r1, #1
@@ -1302,13 +1302,13 @@
 	beq	.Lddd90
 	b	.Lddaba
 .Lddd90:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x34
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1318,9 +1318,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80dd9c0
+.func_end Anim_Thorn
 
-.thumb_func_start Func_80ddde0
+.thumb_func_start Anim_Bolt
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1341,32 +1341,32 @@
 	str	r2, [sp, #0x1c]
 	str	r0, [r3]
 	mov	r0, #1
-	bl	Func_80cd594
+	bl	AnimStart
 	mov	r3, #2
 	str	r3, [sp]
 	mov	r1, #7
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x2e
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, [r5, #0x1c]
 	ldr	r0, =_FILE_ce
 	mov	r1, r11
 	mov	r2, #1
 	mov	r3, #0
 	str	r5, [sp, #0x20]
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r1, =0xc56
 	ldr	r0, =_FILE_c4
 	add	r1, r11
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	mov	r2, #0
 	ldr	r1, [sp, #0x1c]
 	mov	r3, #0
 	ldr	r0, =_FILE_73
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	mov	r3, #0
 	mov	r10, r3
 	mov	r2, #0x80
@@ -1405,10 +1405,10 @@
 	mov	r1, #0x90
 	str	r3, [r2]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	mov	r0, #0x8a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0
 	ldr	r3, =0x7828
 	str	r0, [sp, #0x28]
@@ -1524,7 +1524,7 @@
 	ldr	r1, [sp, #0x10]
 	ldrsh	r0, [r3, r1]
 	mov	r1, #6
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 .Lddf7a:
 	mov	r3, #2
 	ldr	r4, [sp, #0x28]
@@ -1633,14 +1633,14 @@
 	lsl	r3, #15
 	str	r3, [r7, #4]
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	add	r6, #0x40
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #5
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r6
 	mul	r3, r0
 	neg	r3, r3
@@ -1754,7 +1754,7 @@
 	str	r2, [sp]
 	mov	r1, #7
 	mov	r2, #7
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r4, [sp, #8]
 	ldr	r2, =Data_edebe
 	lsl	r3, r4, #1
@@ -1773,7 +1773,7 @@
 	mov	r2, r6
 	bl	_call_via_r4
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r3, #1
 	add	r10, r3
 	ldr	r3, [r7]
@@ -1873,14 +1873,14 @@
 	bne	.Lde1f6
 	mov	r0, #2
 	mov	r1, #8
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r11
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #0x28]
 	add	r2, #1
 	str	r2, [sp, #0x28]
@@ -1893,11 +1893,11 @@
 	beq	.Lde2a0
 	b	.Lddeb8
 .Lde2a0:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x40
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1907,9 +1907,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80ddde0
+.func_end Anim_Bolt
 
-.thumb_func_start Func_80de2f8
+.thumb_func_start Anim_Djinni
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1933,7 +1933,7 @@
 	add	r3, r1, r2
 	str	r0, [r3]
 	mov	r0, #0
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r4, =0x77b4
 	ldr	r3, [sp, #0x28]
 	add	r2, r3, r4
@@ -1993,7 +1993,7 @@
 	ldr	r1, [sp, #0x18]
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	cmp	r6, #1
 	bne	.Lde3c0
 	mov	r3, #3
@@ -2002,14 +2002,14 @@
 	mov	r2, #7
 	mov	r3, #7
 	mov	r0, #0x2e
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, #2
 	str	r3, [sp]
 	mov	r0, #0x2f
 	mov	r1, #7
 	mov	r2, #7
 	mov	r3, #7
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	b	.Lde3de
 .Lde3c0:
 	mov	r3, #3
@@ -2017,14 +2017,14 @@
 	mov	r2, #7
 	mov	r0, #0x2e
 	str	r3, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, #2
 	str	r3, [sp]
 	mov	r0, #0x2f
 	mov	r1, #7
 	mov	r2, #7
 	mov	r3, #3
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 .Lde3de:
 	ldr	r3, =gPtrs
 	ldr	r4, [sp, #0x28]
@@ -2071,7 +2071,7 @@
 	str	r4, [r7, #8]
 	str	r3, [r7, #4]
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	add	r5, #0x80
 	mov	r3, r5
 	mul	r3, r0
@@ -2080,7 +2080,7 @@
 	str	r3, [r7, #0xc]
 	str	r1, [r7, #0x10]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #5
@@ -2105,7 +2105,7 @@
 	mov	r3, #0x4b
 	str	r3, [r2]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	mov	r7, r9
 	ldr	r3, [r7, #8]
@@ -2233,7 +2233,7 @@
 	cmp	r1, #8
 	bne	.Lde5d4
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lde5d4
 
 	.align	2, 0
@@ -2244,7 +2244,7 @@
 	.pool
 
 .Lde5d4:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r1, r5
 	add	r1, #0xc
 	mov	r0, r5
@@ -2270,7 +2270,7 @@
 	str	r3, [r7, #8]
 .Lde608:
 	mov	r0, r11
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r1, r10
 	cmp	r1, #0
 	bne	.Lde62e
@@ -2329,7 +2329,7 @@
 	beq	.Lde67a
 	b	.Lde7a4
 .Lde67a:
-	bl	Func_80049e8
+	bl	MatrixPush
 	mov	r3, #3
 	mov	r2, r8
 	and	r3, r2
@@ -2348,21 +2348,21 @@
 	b	.Lde6c0
 .Lde69c:
 	mov	r0, r9
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	b	.Lde6c0
 .Lde6a4:
 	mov	r0, r7
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	b	.Lde6c0
 .Lde6ac:
 	mov	r0, r7
-	bl	Func_8004c6c
+	bl	MatrixRoll
 	b	.Lde6c0
 .Lde6b4:
 	mov	r0, r7
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r0, r7
-	bl	Func_8004c6c
+	bl	MatrixRoll
 .Lde6c0:
 	add	r5, sp, #0x30
 	mov	r1, r5
@@ -2371,7 +2371,7 @@
 	ldr	r3, [r5]
 	asr	r3, #1
 	str	r3, [r5]
-	bl	Func_8004a5c
+	bl	MatrixPop
 	ldr	r2, [r5, #8]
 	cmp	r2, #0xf9
 	bgt	.Lde6e0
@@ -2501,7 +2501,7 @@
 	cmp	r3, #0xf
 	bhi	.Lde80c
 	lsl	r0, r1, #10
-	bl	Func_8002322
+	bl	sin
 	mov	r3, #0
 	add	r5, sp, #0x30
 	add	r2, sp, #0x3c
@@ -2559,14 +2559,14 @@
 	str	r3, [r7, #4]
 	and	r5, r0
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	add	r5, #0x80
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r7, #0xc]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #5
@@ -2639,7 +2639,7 @@
 	mov	r3, #1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r7, #1
 	ldr	r1, [sp, #0x14]
 	add	r10, r7
@@ -2647,12 +2647,12 @@
 	beq	.Lde8f4
 	b	.Lde59e
 .Lde8f4:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, =Func_80cd4b4
 	bl	StopTask
 	mov	r1, #0x80
@@ -2680,7 +2680,7 @@
 	.align	2, 0
 .Lde93c:
 	.word	0x1010
-.func_end Func_80de2f8
+.func_end Anim_Djinni
 
 	.section .rodata
 

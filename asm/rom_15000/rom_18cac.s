@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8018cac
+.thumb_func_start DrawText
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -151,7 +151,7 @@
 .L18dc6:
 	add	r1, sp, #0x10
 	mov	r0, r7
-	bl	Func_80178b0
+	bl	DrawMsgGlyph
 	cmp	r0, #0
 	bne	.L18dd4
 	mov	r0, #1
@@ -168,7 +168,7 @@
 	add	r7, #0x10
 	cmp	r3, #0x63
 	bne	.L18df0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	strh	r0, [r6]
 .L18df0:
 	mov	r3, r8
@@ -277,7 +277,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8018cac
+.func_end DrawText
 
 .thumb_func_start Func_8018efc
 	push	{r5, r6, r7, lr}
@@ -322,7 +322,7 @@
 	cmp	r3, #0x63
 	bne	.L18f5a
 	str	r4, [sp]
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	strh	r0, [r6]
 	ldr	r4, [sp]
 .L18f5a:

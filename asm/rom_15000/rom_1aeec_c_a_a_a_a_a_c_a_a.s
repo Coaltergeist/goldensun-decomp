@@ -18,7 +18,7 @@
 	mov	r1, #0xc1
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r3, #0xc3
 	lsl	r3, #2
 	add	r5, r3
@@ -35,18 +35,18 @@
 	add	r0, r3
 	str	r0, [r2]
 	mov	r1, r7
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	ldrh	r3, [r5, #0xa]
 	cmp	r3, #0
 	bne	.L1c1e0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	strh	r0, [r5, #0xc]
 .L1c1e0:
 	mov	r1, #0x80
 	ldrh	r0, [r5, #0xc]
 	lsl	r1, #3
 	mov	r2, r7
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r3, #1
 	strh	r3, [r5, #0xa]
 	mov	r3, r8
@@ -58,7 +58,7 @@
 	strh	r0, [r5, #0xe]
 	strh	r3, [r5, #0x26]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 .L1c206:
 	pop	{r3}
 	mov	r8, r3

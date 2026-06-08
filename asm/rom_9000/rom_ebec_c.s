@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800f7f4
+.thumb_func_start ActorCmd_Player_Climb
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -57,7 +57,7 @@
 	str	r3, [r5]
 	str	r3, [r5, #4]
 	str	r3, [r5, #8]
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	ldr	r2, [r6, #8]
 	add	r3, r2
@@ -196,7 +196,7 @@
 .Lf962:
 	mov	r1, r9
 	mov	r0, r6
-	bl	Func_800c300
+	bl	Actor_SetAnim
 	mov	r1, r10
 	cmp	r1, #0
 	beq	.Lf984
@@ -216,7 +216,7 @@
 	ldr	r2, [r3, #4]
 	mov	r0, r6
 	ldr	r3, [r3, #8]
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 .Lf992:
 	ldrh	r3, [r6, #4]
 	add	r3, #1
@@ -230,7 +230,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800f7f4
+.func_end ActorCmd_Player_Climb
 
 	.section .rodata
 	.global .L13254

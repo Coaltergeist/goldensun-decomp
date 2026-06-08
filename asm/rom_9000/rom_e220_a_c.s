@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800e334
+.thumb_func_start ActorAttrOp_width
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -29,5 +29,5 @@
 .Le360:
 	pop	{r0}
 	bx	r0
-.func_end Func_800e334
+.func_end ActorAttrOp_width
 

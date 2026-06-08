@@ -15,7 +15,7 @@
 	ldr	r3, [r5, #8]
 	sub	r0, r2, r0
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	strh	r0, [r5, #6]
 	b	.Ld90
 .Ld7e:

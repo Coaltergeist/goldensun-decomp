@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_898_200842c
 	push	{lr}
 	ldr	r0, =0x855
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L43c
 	ldr	r0, =.L227c

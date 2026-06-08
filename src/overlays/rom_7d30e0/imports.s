@@ -1,30 +1,30 @@
 	.include "macros.inc"
 
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _StopTask
-	.export_func _Func_80044d0
-	.export_func _Func_80048b0
-	.export_func _Func_8002dd8
-	.export_func _Func_8003fa4
-	.export_func _Func_800bc48
-	.export_func _Func_800c300
-	.export_func _Func_800c344
-	.export_func _Func_800c2d8
-	.export_func _Func_800d14c
+	.export_func _atan2
+	.export_func _galloc_iwram
+	.export_func _gfree
+	.export_func _UploadSpriteGFX
+	.export_func _DeleteSpriteLayer
+	.export_func _Actor_SetAnim
+	.export_func _Actor_SetAnimSpeed
+	.export_func _Actor_SetScript
+	.export_func _Actor_TravelTo
 	.export_func _Func_800ca6c
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
-	.export_func _Func_80120dc
+	.export_func _TestCollision
 	.export_func _Func_8012330
-	.export_func _Func_801a370
-	.export_func _Func_8078698
+	.export_func _LoadItemIcon
+	.export_func _CheckPartyItem
 	.export_func _Func_80789dc
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
@@ -33,14 +33,14 @@
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_80925cc
 	.export_func _Func_8092708
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
-	.export_func _Func_8093874
+	.export_func _MapActor_Surprise
 	.export_func _Func_80933d4
 	.export_func _Func_8093530
 	.export_func _Func_8093500
@@ -51,4 +51,4 @@
 	.export_func _Func_808edac
 	.export_func _Func_80955b0
 	.export_func _Func_809202c
-	.export_func _Func_80f9080
+	.export_func _PlaySound

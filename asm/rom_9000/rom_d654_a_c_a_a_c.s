@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800d780
+.thumb_func_start ActorCmd_GotoIfNZ
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -16,7 +16,7 @@
 	cmp	r3, #0
 	beq	.Ld7a6
 	mov	r0, r5
-	bl	Func_800d6d8
+	bl	Actor_FindScriptMarker
 	strh	r0, [r5, #4]
 	b	.Ld7aa
 .Ld7a6:
@@ -27,9 +27,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d780
+.func_end ActorCmd_GotoIfNZ
 
-.thumb_func_start Func_800d7b4
+.thumb_func_start ActorCmd_GotoIfZ
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -45,7 +45,7 @@
 	cmp	r3, #0
 	bne	.Ld7da
 	mov	r0, r5
-	bl	Func_800d6d8
+	bl	Actor_FindScriptMarker
 	strh	r0, [r5, #4]
 	b	.Ld7de
 .Ld7da:
@@ -56,5 +56,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d7b4
+.func_end ActorCmd_GotoIfZ
 

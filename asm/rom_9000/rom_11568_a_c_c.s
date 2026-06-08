@@ -22,7 +22,7 @@
 	mov	r8, r3
 	bl	GetFile
 	mov	r1, r10
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r3, r8
 	mov	r2, r10
 	strh	r3, [r2]
@@ -62,7 +62,7 @@
 	mov	r3, #0x9f
 	strh	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =_FILE_d5
 	bl	GetFile
 	mov	r1, r10
@@ -75,7 +75,7 @@
 	ldr	r0, =Func_801179c
 	bl	Func_800439c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L11730
 
 	.align	2, 0
@@ -110,7 +110,7 @@
 	mov	r3, #0x9f
 	strh	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, =_FILE_d5
 	bl	GetFile
 	ldr	r1, =gBuffer
@@ -119,7 +119,7 @@
 	ldr	r0, =Func_801179c
 	bl	Func_800439c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r0}
 	bx	r0
 .func_end Func_801173c

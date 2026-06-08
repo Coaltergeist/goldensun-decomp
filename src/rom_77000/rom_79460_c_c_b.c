@@ -5,7 +5,7 @@
  * asm/rom_77000/rom_79460_c_c_a.o and asm/rom_77000/rom_79460_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_8077394(unsigned int unit);
+extern int GetUnit(unsigned int unit);
 extern int Func_80797fc(unsigned int a, unsigned char *b, unsigned char *c);
 extern int Func_af0_from_thumb(int a, int b);
 
@@ -15,7 +15,7 @@ int Func_807987c(unsigned int arg0, int arg1)
     int buf[4];
     int ret;
 
-    p = (unsigned char *)Func_8077394(arg0);
+    p = (unsigned char *)GetUnit(arg0);
     ret = 0;
     if (arg1 <= 3) {
         Func_80797fc(*(unsigned char *)(p + 0x128), p + 0xf8, (unsigned char *)buf);

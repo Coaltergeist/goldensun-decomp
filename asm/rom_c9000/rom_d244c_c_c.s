@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80d2464
+.thumb_func_start BaseAnim_Tiamat
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -27,7 +27,7 @@
 	str	r2, [sp, #0x20]
 	str	r0, [r7]
 	mov	r0, #0
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Ld24d8	@ 0x1010
 	strh	r3, [r2]
@@ -41,7 +41,7 @@
 	mov	r8, r3
 	mov	r0, #0x2e
 	mov	r3, #3
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r4, [r5, #0x18]
 	mov	r3, #3
 	mov	r1, #7
@@ -49,7 +49,7 @@
 	mov	r0, #0x2f
 	str	r4, [sp, #0x28]
 	str	r3, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, [r5, #0x1c]
 	ldr	r0, =_FILE_7d
 	str	r5, [sp, #0x2c]
@@ -109,7 +109,7 @@
 	mov	r3, #0x4b
 	mov	r1, #0x90
 	str	r3, [r2]
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	lsl	r1, #3
 	bl	StartTask
 	ldr	r3, [sp, #0x38]
@@ -223,11 +223,11 @@
 	ldr	r0, [r3]
 	bl	Func_80d6750
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =0x179
 	mov	r0, #8
 	mov	r2, #2
-	bl	Func_80dbb24
+	bl	CreateSummonSprite
 .Ld2644:
 	ldr	r0, [sp, #0x30]
 	mov	r6, #0
@@ -253,22 +253,22 @@
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #8
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77dc
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #9
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e4
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #0xa
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e8
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #0xb
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Ld269a:
 	ldr	r3, =0x7828
 	mov	r4, r10
@@ -292,7 +292,7 @@
 	ldr	r3, [r5]
 	mov	r1, #4
 	ldrsh	r0, [r3, r6]
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
 	add	r7, #1
@@ -303,7 +303,7 @@
 	mov	r3, #0xa0
 	str	r3, [sp, #0x24]
 .Ld26da:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x30]
 	ldr	r1, [sp, #0xc]
 	bl	Func_80051d8
@@ -502,13 +502,13 @@
 .Ld28c4:
 	str	r3, [r5, #4]
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #9
 	str	r3, [r5, #0xc]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r8
 	mul	r3, r0
 	mov	r6, #1
@@ -530,13 +530,13 @@
 	cmp	r1, #0x30
 	bne	.Ld2904
 	mov	r0, #0x8d
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld2904:
 	ldr	r2, [sp, #0x24]
 	cmp	r2, #0x80
 	bne	.Ld2910
 	mov	r0, #0x91
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld2910:
 	ldr	r3, [sp, #0x24]
 	sub	r3, #0x81
@@ -586,13 +586,13 @@
 .Ld296a:
 	str	r3, [r5, #4]
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r5, #0xc]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r8
 	mul	r3, r0
 	asr	r3, #6
@@ -833,22 +833,22 @@
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #8
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77dc
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #9
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e4
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #0xa
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e8
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #0xb
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Ld2b6e:
 	ldr	r6, [sp, #0x24]
 	cmp	r6, #0xb0
@@ -857,22 +857,22 @@
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #0
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77dc
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e4
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #3
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r3, =0x77e8
 	add	r3, r10
 	ldr	r0, [r3]
 	mov	r1, #4
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Ld2ba4:
 	mov	r0, #3
 	ldr	r1, [sp, #0x18]
@@ -904,7 +904,7 @@
 	ldr	r3, [r5]
 	mov	r1, #4
 	ldrsh	r0, [r3, r6]
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
 	add	r7, #1
@@ -991,7 +991,7 @@
 	ble	.Ld2ce2
 	mov	r0, #0x88
 	str	r4, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #8]
 .Ld2ce2:
 	ldr	r2, =Data_ede48
@@ -1024,14 +1024,14 @@
 .Ld2d16:
 	mov	r0, #8
 	mov	r1, #8
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
 	mov	r3, #1
 	add	r2, r10
 	mov	r0, #1
 	str	r3, [r2]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x24]
 	add	r0, #1
 	str	r0, [sp, #0x24]
@@ -1039,30 +1039,30 @@
 	beq	.Ld2d3c
 	b	.Ld264e
 .Ld2d3c:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r1, [sp, #0x38]
 	cmp	r1, #0
 	bne	.Ld2d70
 	mov	r0, #3
 	ldr	r1, [sp, #0x18]
 	ldr	r2, [sp, #0x1c]
-	bl	Func_80e6eac
+	bl	Anim_Unsummon
 	ldr	r5, =0x77d8
 	mov	r7, #0
 	add	r5, r10
 .Ld2d64:
 	ldmia	r5!, {r0}
 	add	r7, #1
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	cmp	r7, #8
 	bne	.Ld2d64
 .Ld2d70:
-	bl	Func_80cdbc0
+	bl	AnimEnd
 	add	sp, #0x48
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1072,7 +1072,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d2464
+.func_end BaseAnim_Tiamat
 
 	.section .rodata
 

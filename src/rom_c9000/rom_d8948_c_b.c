@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_d8948_c_a.o and asm/rom_c9000/rom_d8948_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80d89ac(int context, int subanim);
+extern void BaseAnim_Heal(int context, int subanim);
 
 void Func_80d8954(int context) {
-    Func_80d89ac(context, 1);
+    BaseAnim_Heal(context, 1);
 }

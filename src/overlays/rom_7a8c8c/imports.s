@@ -1,42 +1,42 @@
 	.include "macros.inc"
 
 	.export_func Func_8000af0
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _StopTask
 	.export_func _Random
-	.export_func _Func_800447c
-	.export_func _Func_80048b0
-	.export_func _Func_8002dd8
-	.export_func _Func_8003fa4
-	.export_func _Func_800c300
-	.export_func _Func_800c344
-	.export_func _Func_800c2d8
-	.export_func _Func_800c150
-	.export_func _Func_800c0f4
-	.export_func _Func_800d14c
+	.export_func _vec3_translate
+	.export_func _galloc_iwram
+	.export_func _gfree
+	.export_func _UploadSpriteGFX
+	.export_func _Actor_SetAnim
+	.export_func _Actor_SetAnimSpeed
+	.export_func _Actor_SetScript
+	.export_func _CreateActor
+	.export_func _DeleteActor
+	.export_func _Actor_TravelTo
 	.export_func _Func_800ca6c
-	.export_func _Func_8010424
+	.export_func _CopyMapTiles
 	.export_func _Func_8011f54
 	.export_func _Func_8012038
 	.export_func _Func_8010704
 	.export_func _Func_800c528
 	.export_func _Func_801776c
-	.export_func _Func_801a370
-	.export_func _Func_8078698
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
+	.export_func _LoadItemIcon
+	.export_func _CheckPartyItem
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
 	.export_func _Func_8078a08
-	.export_func _Func_80916b0
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
 	.export_func _Func_8092158
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092560
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
@@ -46,13 +46,13 @@
 	.export_func _Func_8091200
 	.export_func _Func_8091220
 	.export_func _Func_8091254
-	.export_func _Func_8091dc8
-	.export_func _Func_8091df4
+	.export_func _MapTransitionIn
+	.export_func _MapTransitionOut
 	.export_func _Func_8091e20
 	.export_func _Func_808f140
-	.export_func _Func_808ba1c
+	.export_func _GetFieldActor
 	.export_func _Func_8091494
 	.export_func _Func_808e118
 	.export_func _Func_808acc4
 	.export_func _Func_80955b0
-	.export_func _Func_80f9080
+	.export_func _PlaySound

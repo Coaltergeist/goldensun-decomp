@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int Func_8091584(void);
-extern unsigned int Func_8091560(void);
+extern unsigned int GetSpriteVoiceEntry(void);
 
 unsigned int Func_80915dc(void) {
     Func_8091584();
-    return *(unsigned char *)(Func_8091560() + 3);
+    return *(unsigned char *)(GetSpriteVoiceEntry() + 3);
 }

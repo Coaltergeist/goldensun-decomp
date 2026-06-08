@@ -5,7 +5,7 @@
  * asm/rom_9000/rom_c004_c_a_a_c_a.o and asm/rom_9000/rom_c004_c_a_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80030f8(unsigned int nframes);
+extern void WaitFrames(unsigned int nframes);
 
 void Func_800c4ec(int actor) {
     int idx;
@@ -17,7 +17,7 @@ void Func_800c4ec(int actor) {
     r6 = 0;
     if (*(int *)((idx << 2) + base) != 0x10) {
         do {
-            Func_80030f8(1);
+            WaitFrames(1);
             r6++;
             if (r6 > 0x12b)
                 break;

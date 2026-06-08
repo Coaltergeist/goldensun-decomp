@@ -4,9 +4,9 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r0, r5
-	bl	_Func_807961c
+	bl	_AddPartyMember
 	cmp	r6, #0
 	beq	.L917ec
 	mov	r0, r5
@@ -22,9 +22,9 @@
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r5, r0
-	bl	_Func_807961c
+	bl	_AddPartyMember
 	mov	r0, r6
-	bl	_Func_807961c
+	bl	_AddPartyMember
 	mov	r0, r5
 	mov	r1, r6
 	bl	_Func_8021488
@@ -47,7 +47,7 @@
 	b	.L9184e
 .L9182a:
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L9183a
 	mov	r0, #2
@@ -56,7 +56,7 @@
 .L9183a:
 	mov	r0, r5
 	mov	r1, r6
-	bl	_Func_8078bc0
+	bl	_HasMove
 	cmp	r0, #0
 	bne	.L9184c
 	mov	r0, #3
@@ -105,7 +105,7 @@
 	bl	_Func_8079664
 	bl	Func_8091858
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	ldrh	r1, [r6, #0x34]
 	ldrh	r3, [r6, #0x36]
@@ -166,7 +166,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r8, r3
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	cmp	r8, r0
 	bge	.L91948
 	ldr	r3, =gState
@@ -176,7 +176,7 @@
 	mov	r5, r0
 .L9192c:
 	ldrb	r0, [r7]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	mov	r2, #0x38
 	ldrsh	r3, [r6, r2]
@@ -198,7 +198,7 @@
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, #1
 	mov	r6, r0
 	strh	r5, [r6, #0x38]
@@ -268,7 +268,7 @@
 	mov	r2, #0
 	mov	r8, r0
 	mov	r10, r2
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	mov	r6, r0
 	cmp	r10, r6
 	bge	.L91a0c
@@ -339,7 +339,7 @@
 	sub	sp, #0xc
 	str	r2, [sp]
 	mov	r6, r0
-	bl	_Func_8078618
+	bl	_GiveItem
 	mov	r2, #1
 	mov	r8, r0
 	neg	r2, r2
@@ -369,14 +369,14 @@
 	bl	_Func_801776c
 	mov	r0, r9
 	mov	r1, r10
-	bl	_Func_80b3444
+	bl	_UI_SellMenu
 	mov	r3, #1
 	mov	r5, r0
 	neg	r3, r3
 	cmp	r5, r3
 	bne	.L91b34
 	mov	r0, r6
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, #8
 	and	r3, r2
@@ -420,10 +420,10 @@
 	b	.L91bee
 .L91b34:
 	ldr	r0, [sp, #8]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r1, [sp, #4]
 	ldr	r0, [sp, #8]
-	bl	_Func_80784b0
+	bl	_GetInventoryItem
 	cmp	r0, #0
 	ble	.L91b56
 	mov	r5, r0
@@ -436,10 +436,10 @@
 	bne	.L91b48
 .L91b56:
 	mov	r0, r6
-	bl	_Func_8078618
+	bl	_GiveItem
 	mov	r8, r0
 	mov	r0, #0x53
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
@@ -474,7 +474,7 @@
 	b	.L91bee
 .L91baa:
 	mov	r0, #0x53
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #2
 	bl	_Func_8019908
@@ -520,7 +520,7 @@
 	mov	r5, r2
 	mov	r1, r0
 	mov	r0, r5
-	bl	_Func_8078588
+	bl	_GiveItemTo
 	cmp	r0, #0
 	blt	.L91c30
 	mov	r0, r5

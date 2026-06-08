@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800d14c
+.thumb_func_start Actor_TravelTo
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -75,7 +75,7 @@
 	add	r4, r5
 	add	r4, r0
 	mov	r0, r4
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	mov	r5, r0
 .Ld1ec:
 	mov	r3, #0x80
@@ -213,7 +213,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800d14c
+.func_end Actor_TravelTo
 
 .thumb_func_start Func_800d304
 	push	{r5, r6, lr}
@@ -584,7 +584,7 @@
 .Ld602:
 	mov	r0, r9
 	mov	r1, r11
-	bl	Func_80044d0
+	bl	atan2
 	ldrh	r3, [r5, #6]
 	sub	r0, r3
 	lsl	r0, #16

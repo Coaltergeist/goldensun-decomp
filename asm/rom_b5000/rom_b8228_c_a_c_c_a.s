@@ -7,7 +7,7 @@
 	ldrsh	r5, [r0, r2]
 	mov	r0, r5
 	sub	sp, #0x1c
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x38
 	ldrsh	r3, [r0, r2]
 	mov	r0, r5
@@ -59,7 +59,7 @@
 	add	r0, r3
 	lsl	r0, #10
 	ldrh	r5, [r6, #0x20]
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r0
 	mov	r0, #0x80
 	lsl	r0, #9
@@ -134,16 +134,16 @@
 	str	r6, [r5, #0x18]
 	sub	sp, #0x10
 	mov	r10, r0
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r2, #0x34
 	ldrsh	r0, [r5, r2]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	add	r0, sp, #4
 	str	r6, [r0]
 	str	r6, [r0, #4]
@@ -210,14 +210,14 @@
 	mov	r5, r0
 .Lb90ca:
 	ldrh	r0, [r6, r7]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r2, =0x12b
 	add	r3, r0, r2
 	mov	r2, r8
 	ldrh	r0, [r6, r7]
 	strb	r2, [r3]
 	sub	r5, #1
-	bl	_Func_8077428
+	bl	_CalcStats
 	add	r6, #2
 	cmp	r5, #0
 	bne	.Lb90ca
@@ -279,7 +279,7 @@
 .Lb9152:
 	mov	r3, r11
 	ldrsh	r0, [r7, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldrb	r3, [r0, #0xf]
 	sub	r5, #1
 	add	r6, r3
@@ -307,7 +307,7 @@
 .Lb918c:
 	mov	r3, r10
 	ldrsh	r0, [r7, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldrb	r3, [r0, #0xf]
 	sub	r5, #1
 	add	r6, r3
@@ -391,7 +391,7 @@
 	mov	r10, r5
 .Lb9246:
 	ldrh	r0, [r6]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x43
 	add	r3, r0
 	mov	r12, r3
@@ -589,7 +589,7 @@
 	mov	r9, r3
 	mov	r0, r9
 	str	r4, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x43
 	mov	r6, r0
 	add	r3, r6
@@ -707,7 +707,7 @@
 	bne	.Lb94dc
 	mov	r2, #0
 	ldrsh	r0, [r5, r2]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldrh	r2, [r5, #8]
 	ldr	r3, =0xf
 	lsl	r0, r2, #16
@@ -716,7 +716,7 @@
 	and	r1, r2
 	and	r0, r3
 	bl	_Func_807a5b0
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, r2
 	add	r3, #0xd2
@@ -824,7 +824,7 @@
 .Lb957e:
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	blt	.Lb95e2
 	ldr	r3, =iwram_3001f64
@@ -859,7 +859,7 @@
 .Lb95c4:
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	blt	.Lb95e2
 	ldr	r3, =iwram_3001f64
@@ -921,7 +921,7 @@
 	bhi	.Lb9704
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	blt	.Lb9704
 	ldr	r3, =iwram_3001f64
@@ -986,7 +986,7 @@
 	bhi	.Lb9704
 	mov	r0, #1
 	sub	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	blt	.Lb9704
 	ldr	r3, =iwram_3001f64
@@ -1329,7 +1329,7 @@
 	mov	r0, #8
 	bl	Func_80b98b4
 	ldr	r0, =0x16b
-	bl	_Func_8079358
+	bl	_SetFlag
 	add	r5, #0x45
 	mov	r0, #0
 	bl	Func_80b8fd4
@@ -1400,7 +1400,7 @@
 .Lb99f0:
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r4, #6
 	ldrsh	r2, [r5, r4]
 	mov	r3, #3
@@ -1419,7 +1419,7 @@
 	bne	.Lb99e4
 .Lb9a16:
 	ldr	r0, =0x16b
-	bl	_Func_8079374
+	bl	_ClearFlag
 	bl	Func_80b7f9c
 	ldr	r3, =iwram_3001f00
 	ldr	r2, [r3]

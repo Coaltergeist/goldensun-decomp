@@ -66,7 +66,7 @@
 	strh	r3, [r6]
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0xf
 	ble	.Lc0022
 	ldr	r3, .Lc0050	@ 1
@@ -84,7 +84,7 @@
 	lsl	r2, #19
 	strh	r3, [r2]
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r9
 	ldrh	r3, [r1]
 	ldr	r2, =REG_BG0CNT

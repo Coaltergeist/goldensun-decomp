@@ -19,7 +19,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =iwram_3001e40
 	ldr	r2, [r3]
 	and	r2, r6

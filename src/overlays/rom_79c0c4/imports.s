@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_808b868
 	.export_func _Func_8091c7c
@@ -12,10 +12,10 @@
 	.export_func _Func_809280c
 	.export_func _Func_8092b94
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
+	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8093054
 	.export_func _Func_8092adc
-	.export_func _Func_8093874
+	.export_func _MapActor_Surprise
 	.export_func _Func_80b0278
 	.export_func _Func_80b3284

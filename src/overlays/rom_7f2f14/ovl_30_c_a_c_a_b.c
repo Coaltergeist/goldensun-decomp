@@ -6,17 +6,17 @@
  * goldensun/overlays/rom_7f2f14/overlay.ld.
  */
 extern int __MapActor_GetActor(int);
-extern void __Func_80916b0(void);
-extern void __Func_8079358(int);
+extern void __CutsceneStart(void);
+extern void __SetFlag(int);
 extern void __Func_8091750(void);
 
 void OvlFunc_968_2008ff0(void)
 {
     int r5;
     r5 = __MapActor_GetActor(0xc);
-    __Func_80916b0();
+    __CutsceneStart();
     if ((*(int *)((char *)r5 + 8) >> 20) == 0x36 ||
         (*(int *)((char *)r5 + 0x10) >> 20) == 6)
-        __Func_8079358(0x987);
+        __SetFlag(0x987);
     __Func_8091750();
 }

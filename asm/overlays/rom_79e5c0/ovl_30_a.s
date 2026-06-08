@@ -7,7 +7,7 @@
 	cmp	r3, #0
 	beq	.L44
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #0
 	str	r3, [r5]
 .L44:
@@ -114,7 +114,7 @@
 	lsl	r3, #16
 	cmp	r3, #0
 	bne	.L108
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 .L108:
 	mov	r0, #1
 	pop	{r1}
@@ -138,7 +138,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16

@@ -229,7 +229,7 @@
 	mov	r5, r2
 .L3cec:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrb	r3, [r5]
 	cmp	r3, #0
 	bne	.L3cec

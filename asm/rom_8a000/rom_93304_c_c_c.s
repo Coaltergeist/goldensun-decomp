@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8094380
+.thumb_func_start Player_ExitStairs
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -12,13 +12,13 @@
 	add	r3, r1
 	mov	r6, r0
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	ldr	r2, [r5, #0x50]
 	mov	r8, r2
 	mov	r0, r8
 	mov	r1, #0x1b
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	mov	r3, #0
 	mov	r10, r3
 	mov	r7, r8
@@ -40,16 +40,16 @@
 	mov	r1, r6
 	str	r3, [r5, #0x10]
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, r8
 	add	r3, #0x27
 	mov	r6, #1
 	strb	r6, [r3]
 	mov	r2, r8
 	ldr	r0, [r2, #0x2c]
-	bl	_Func_800bc48
+	bl	_DeleteSpriteLayer
 	mov	r3, r10
 	mov	r1, r8
 	str	r3, [r1, #0x2c]
@@ -63,7 +63,7 @@
 	ldr	r1, [r5, #8]
 	ldr	r2, [r5, #0xc]
 	add	r3, r9
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	bl	_Func_800ca6c
 	pop	{r3, r5, r6}
@@ -73,7 +73,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8094380
+.func_end Player_ExitStairs
 
 .thumb_func_start Func_8094428
 	push	{r5, r6, lr}
@@ -81,43 +81,43 @@
 	lsl	r5, #1
 	mov	r0, r5
 	mov	r6, #0
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9444a
 	mov	r0, #0x18
-	bl	Func_8094380
+	bl	Player_ExitStairs
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r6, #1
 	b	.L944da
 .L9444a:
 	ldr	r5, =0x121
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L94466
 	mov	r0, #0x17
-	bl	Func_8094380
+	bl	Player_ExitStairs
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r6, #2
 	b	.L944da
 .L94466:
 	mov	r5, #0x91
 	lsl	r5, #1
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L944da
 	mov	r0, r5
-	bl	_Func_8079374
+	bl	_ClearFlag
 	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r6, [r3]
 	mov	r0, r6
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	ldr	r3, [r5, #0xc]
 	mov	r2, #0xa0
@@ -133,7 +133,7 @@
 	b	.L944ac
 .L944a6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L944ac:
 	ldr	r2, [r5, #0x28]
 	ldr	r3, [r5, #0xc]
@@ -142,17 +142,17 @@
 	cmp	r3, r2
 	bgt	.L944a6
 	mov	r0, #0x9f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, [r5, #0x14]
 	mov	r1, #0x16
 	str	r3, [r5, #0xc]
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0xf
-	bl	Func_809163c
+	bl	CutsceneWait
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_809335c
+	bl	SetCameraTarget
 	mov	r6, #3
 .L944da:
 	mov	r0, r6

@@ -5,12 +5,12 @@
  * asm/rom_9000/rom_d924_a.o and asm/rom_9000/rom_d924_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_800d14c(int actor, int x, int y, int z);
+extern int Actor_TravelTo(int actor, int x, int y, int z);
 
 int Func_800daa0(unsigned char *actor)
 {
     int *p = *(int **)(actor + 0x68);
-    Func_800d14c((int)actor, p[2], p[3], p[4]);
+    Actor_TravelTo((int)actor, p[2], p[3], p[4]);
     *(unsigned short *)(actor + 4) += 1;
     return 1;
 }

@@ -69,7 +69,7 @@
 	ldrsh	r0, [r5, r2]
 	cmp	r0, r8
 	beq	.L8b118
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b122
 .L8b118:
@@ -103,7 +103,7 @@
 	bx	r0
 .func_end Func_808b090
 
-.thumb_func_start Func_808b158
+.thumb_func_start GetLocationName
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -169,9 +169,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808b158
+.func_end GetLocationName
 
-.thumb_func_start Func_808b1d8
+.thumb_func_start UpdateRespawnMap
 	push	{r5, r6, r7, lr}
 	ldr	r0, =gState
 	mov	r1, #0xe0
@@ -227,5 +227,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808b1d8
+.func_end UpdateRespawnMap
 

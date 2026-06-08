@@ -50,7 +50,7 @@
 	bls	.L4724
 	mov	r5, #8
 .L4724:
-	bl	Func_80045f0
+	bl	Debug_PrintHex
 	ldr	r0, =iwram_3001f78
 	sub	r0, r5
 	bl	Func_80046c4
@@ -76,7 +76,7 @@
 	bx	r0
 .func_end Func_800473c
 
-.thumb_func_start Func_8004760
+.thumb_func_start ClearVRAM
 	sub	sp, #4
 	ldr	r3, =0xf000f000
 	mov	r0, sp
@@ -95,7 +95,7 @@
 	strh	r2, [r3]
 	add	sp, #4
 	bx	lr
-.func_end Func_8004760
+.func_end ClearVRAM
 
 .thumb_func_start Func_800479c
 	push	{lr}
@@ -149,7 +149,7 @@
 	bx	r0
 .func_end Func_800479c
 
-.thumb_func_start Func_8004838
+.thumb_func_start LoadSpritePalette
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =PAL_Sprites
 	ldr	r1, =0x5000200
@@ -157,7 +157,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_8004838
+.func_end LoadSpritePalette
 
 	.section .rodata
 	.global .L795c

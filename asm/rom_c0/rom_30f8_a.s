@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80030f8
+.thumb_func_start WaitFrames
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -48,13 +48,13 @@
 	mov	r0, #0xc8
 	strb	r3, [r5]
 	lsl	r0, #4
-	bl	Func_8004420
+	bl	RunTasks
 	mov	r3, #0
 	mov	r1, #0x80
 	strb	r3, [r5]
 	lsl	r1, #3
 	mov	r0, #0x34
-	bl	Func_80048b0
+	bl	galloc_iwram
 	bl	Func_8003e10
 	ldr	r3, =iwram_3001e44
 	mov	r1, r11
@@ -191,7 +191,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	beq	.L329e
-	bl	Func_8003538
+	bl	UpdateKeyPressRepeat
 	ldr	r2, =gSoftReset
 	ldrb	r3, [r2]
 	cmp	r3, #0
@@ -253,7 +253,7 @@
 	cmp	r3, #0
 	beq	.L3322
 	mov	r0, #0x34
-	bl	Func_8002dd8
+	bl	gfree
 	bl	Func_8003d04
 	ldr	r2, =iwram_3001e40
 	ldr	r3, [r2]
@@ -273,7 +273,7 @@
 	ldr	r3, [r2]
 	add	r3, #1
 	str	r3, [r2]
-	bl	Func_8003538
+	bl	UpdateKeyPressRepeat
 	ldr	r3, =iwram_3001cb0
 	ldrh	r3, [r3]
 	cmp	r3, #0
@@ -472,5 +472,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80030f8
+.func_end WaitFrames
 

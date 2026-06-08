@@ -5,8 +5,8 @@
  * asm/rom_8a000/rom_9a44c_c_a.o and asm/rom_8a000/rom_9a44c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_809a8c4(void);
+extern void Field_Whirlwind(void);
 
 void Func_809a8b8(void) {
-    Func_809a8c4();
+    Field_Whirlwind();
 }

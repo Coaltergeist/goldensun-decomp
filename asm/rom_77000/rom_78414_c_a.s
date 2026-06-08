@@ -2,7 +2,7 @@
 
 .thumb_func_start Func_8078480
 	push	{lr}
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r3, [r0, #2]
 	mov	r2, #0
 	cmp	r3, #1
@@ -28,10 +28,10 @@
 	bx	r1
 .func_end Func_8078480
 
-.thumb_func_start Func_80784b0
+.thumb_func_start GetInventoryItem
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	lsl	r5, #1
 	add	r5, #0xd8
 	ldrh	r0, [r0, r5]
@@ -46,5 +46,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_80784b0
+.func_end GetInventoryItem
 

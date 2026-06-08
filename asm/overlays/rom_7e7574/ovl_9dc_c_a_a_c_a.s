@@ -84,7 +84,7 @@
 .L155e:
 	mov	r0, #0x83
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1586
 	mov	r3, #0xbf
@@ -110,7 +110,7 @@
 .L1590:
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1630
 	mov	r5, r7
@@ -118,7 +118,7 @@
 	strb	r0, [r5]
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L15c8
 	ldrb	r3, [r5]
@@ -169,14 +169,14 @@
 	cmp	r0, #0
 	beq	.L161a
 	ldr	r0, =0x215
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L161a:
 	mov	r0, #0x85
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1630
 	mov	r2, #0xc1

@@ -4,13 +4,13 @@
 	push	{lr}
 	mov	r0, #0xb0
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x16d
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x844
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x845
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x28
 	bl	__Func_8091e9c
 	pop	{r0}

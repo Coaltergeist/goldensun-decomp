@@ -265,11 +265,6 @@ gNumMusicPlayers    = 8;
 CpuSet              = Func_8006864;
 __divsi3            = Func_af0_from_thumb;
 SoundMain           = Func_80f95f0;
-MP2KPlayerMain      = Func_80f9c90;
-MP2K_event_nxx      = Func_80f9f6c;
-MP2K_event_endtie   = Func_80fa16c;
-MP2K_event_lfos     = Func_80fa1d4;
-MP2K_event_mod      = Func_80fa1e8;
 
 /* Reverse aliases: the C portion is now real-named C in lib/m4a/m4a.c, so the
    old Func_<addr> names (referenced by exports / prefix / mixer / aliases.sym)

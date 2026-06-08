@@ -13,7 +13,7 @@
 	cmp	r3, #0
 	beq	.L27e4
 	mov	r0, #0xc8
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L27e4:
 	mov	r1, #0xe7
 	mov	r3, #0xe6
@@ -21,7 +21,7 @@
 	lsl	r1, #16
 	mov	r2, #0
 	lsl	r3, #17
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L284c
@@ -52,17 +52,17 @@
 	strb	r6, [r3]
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, #0xe7
 	mov	r3, #0x9c
 	mov	r0, r5
 	lsl	r1, #16
 	mov	r2, #0
 	lsl	r3, #18
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r1, =gScript_913__0200b2d0
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 .L284c:
 	pop	{r5, r6}
 	pop	{r0}

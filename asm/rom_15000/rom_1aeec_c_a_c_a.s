@@ -45,25 +45,25 @@
 	mov	r1, #0x8c
 	mov	r7, r0
 	mov	r0, #0
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #1
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8d
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x4e
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x5d
 	mov	r0, #3
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #5
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r3, #0
 	mov	r0, r7
 	str	r3, [sp, #0xc]
@@ -84,29 +84,29 @@
 	mov	r3, #7
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #3
 	mov	r2, #0x14
 	mov	r3, #3
 	mov	r6, r0
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #0xe
 	str	r0, [sp, #8]
 	mov	r2, #0x14
 	mov	r3, #5
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1c56e
 	ldr	r2, =Data_310a4
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0
 	mov	r1, #0x80
 	str	r0, [sp]
@@ -233,7 +233,7 @@
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r0, [r3, #2]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r3, [sp, #0xc]
 	b	.L1c684
 .L1c676:
@@ -241,7 +241,7 @@
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r0, [r3, #2]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r3, [sp, #0x10]
 .L1c684:
 	lsl	r3, #2
@@ -262,7 +262,7 @@
 	bl	Func_801e7c0
 .L1c6a8:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
@@ -270,7 +270,7 @@
 	cmp	r3, #0
 	beq	.L1c6da
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, r8
 	cmp	r3, #0
 	beq	.L1c6ce
@@ -293,7 +293,7 @@
 	cmp	r3, #0
 	beq	.L1c704
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r8
 	cmp	r1, #0
 	beq	.L1c6f8
@@ -316,7 +316,7 @@
 	cmp	r3, #0
 	beq	.L1c71e
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	neg	r0, r0
 	mov	r1, #1
@@ -329,7 +329,7 @@
 	cmp	r3, #0
 	beq	.L1c734
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	add	r8, r3
 	mov	r11, r3
@@ -341,7 +341,7 @@
 	cmp	r3, #0
 	beq	.L1c748
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1c76c
 .L1c748:
 	ldr	r3, [r1]
@@ -350,7 +350,7 @@
 	cmp	r3, #0
 	beq	.L1c75a
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1c76c
 .L1c75a:
 	ldr	r3, [r1]
@@ -361,7 +361,7 @@
 	b	.L1c57c
 .L1c766:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L1c76c:
 	ldr	r3, [sp, #0x10]
 	lsl	r3, #2
@@ -387,15 +387,15 @@
 	strh	r2, [r1]
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #8]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, r9
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L1c7b6:
 	mov	r0, r7
 	bl	free
@@ -436,7 +436,7 @@
 	mov	r8, r3
 	add	r11, r0
 	mov	r0, r8
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x58
 	ldr	r2, =0x3fff
 	ldrh	r3, [r0, r3]
@@ -459,7 +459,7 @@
 	mov	r0, r5
 	str	r1, [sp, #4]
 	str	r2, [sp]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r1, [sp, #4]
 	mov	r3, r8
 	mov	r0, #1

@@ -5,9 +5,9 @@
  * asm/rom_c0/rom_3e58_c_a.o and asm/rom_c0/rom_3e58_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_8003fa4(int slot, unsigned int size, void *gfx);
+extern int UploadSpriteGFX(int slot, unsigned int size, void *gfx);
 extern unsigned short gSpriteSlots[];
 
 int Func_80040d0(unsigned int param_1, void *param_2) {
-    return Func_8003fa4(param_1, gSpriteSlots[param_1 << 1], param_2);
+    return UploadSpriteGFX(param_1, gSpriteSlots[param_1 << 1], param_2);
 }

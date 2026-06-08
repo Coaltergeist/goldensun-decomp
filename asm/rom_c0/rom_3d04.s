@@ -68,10 +68,10 @@
 	b	.L3dc8
 .L3d8a:
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r8
 	mov	r6, r0
 	bl	Func_af0_from_thumb

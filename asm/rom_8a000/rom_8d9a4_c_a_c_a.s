@@ -17,15 +17,15 @@
 	add	r3, r2
 	ldr	r5, [r3]
 	mov	r0, #0x12
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	beq	.L8ecbc
 	mov	r0, r5
 	mov	r1, #7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L8ecbc:
 	mov	r0, #0x92
-	bl	_Func_80f9080
+	bl	_PlaySound
 	cmp	r5, #0
 	beq	.L8ecd4
 	mov	r3, #0x80

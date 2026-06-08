@@ -5,10 +5,10 @@
  * asm/rom_a1000/rom_a8604_c_c_c_c_a_a.o and asm/rom_a1000/rom_a8604_c_c_c_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int _Func_8078414(void);
+extern int _GetItemInfo(void);
 extern void Func_80aa460(int);
 
 void Func_80aa448(void) {
-    unsigned char *p = (unsigned char *)_Func_8078414();
+    unsigned char *p = (unsigned char *)_GetItemInfo();
     Func_80aa460(*(unsigned short *)(p + 0x28) & 0x3fff);
 }

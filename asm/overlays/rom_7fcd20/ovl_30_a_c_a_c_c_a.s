@@ -42,7 +42,7 @@
 	cmp	r3, #0
 	bne	.L104
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .Ld6:
 	ldr	r3, [r5]
 	mov	r2, #2
@@ -77,7 +77,7 @@
 	bl	__Func_8019a54
 	mov	r0, r10
 	mov	r1, #2
-	bl	__Func_8016418
+	bl	__CloseUIBox
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5

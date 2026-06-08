@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f03f0
+.thumb_func_start StartGS1Credits
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -18,7 +18,7 @@
 	strb	r2, [r3]
 	ldr	r3, =iwram_3001d08
 	strb	r2, [r3]
-	bl	Func_80040e8
+	bl	ClearTasks
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_80f03c0
@@ -50,7 +50,7 @@
 	bl	Func_80f0678
 	mov	r0, #0x96
 	lsl	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0
 	mov	r8, r1
 	ldr	r3, =REG_BLDALPHA
@@ -67,7 +67,7 @@
 	mov	r1, r5
 	ldr	r0, [r2]
 	eor	r1, r3
-	bl	Func_80f02b0
+	bl	LoadGS1CreditsBG
 	mov	r7, r5
 	mov	r5, #0xf0
 	mov	r6, #1
@@ -89,14 +89,14 @@
 	strh	r3, [r1]
 .Lf04a6:
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =0xffffff00
 	add	r6, #1
 	add	r5, r2
 	cmp	r6, #0x10
 	ble	.Lf048c
 	ldr	r0, =0x10b
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	add	r8, r1
 	mov	r3, #4
@@ -112,7 +112,7 @@
 	sub	r3, #0x50
 	strh	r2, [r3]
 	bl	Func_800479c
-	bl	Func_8004760
+	bl	ClearVRAM
 	ldr	r2, =iwram_3001d18
 	mov	r3, #1
 	strb	r3, [r2]
@@ -125,7 +125,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80f03f0
+.func_end StartGS1Credits
 
 .thumb_func_start Func_80f0538
 	push	{r5, r6, r7, lr}
@@ -470,7 +470,7 @@
 	mov	r5, #0x80
 	lsl	r5, #2
 	mov	r0, r5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lf0848
 	ldr	r3, =Func_80008d8
@@ -479,7 +479,7 @@
 	mov	r2, #0
 	bl	_call_via_r3
 	mov	r0, r5
-	bl	_Func_8079358
+	bl	_SetFlag
 	b	.Lf086e
 .Lf0848:
 	ldr	r4, [sp, #4]

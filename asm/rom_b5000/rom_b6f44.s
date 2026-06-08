@@ -21,10 +21,10 @@
 	mov	r1, r2
 	mov	r2, #0
 	str	r3, [sp, #4]
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r8, r0
 	mov	r0, r9
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0
 	mov	r10, r0
 	mov	r0, r9
@@ -409,7 +409,7 @@
 	str	r3, [r6, #0x10]
 	str	r2, [r6, #0x14]
 	strh	r1, [r6, #4]
-	bl	Func_80b6eb4
+	bl	GetWeaponSpriteID
 	mov	r5, #0
 	strh	r5, [r6, #8]
 	str	r5, [r6, #0x20]
@@ -451,7 +451,7 @@
 .Lb73b0:
 	asr	r0, r3, #3
 	ldr	r1, [sp, #0x10]
-	bl	Func_80044d0
+	bl	atan2
 	mov	r3, #0x80
 	lsl	r3, #8
 	add	r0, r3
@@ -479,7 +479,7 @@
 	str	r3, [r2, #0x1c]
 	ldr	r1, =.Lc5938
 	mov	r0, r8
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

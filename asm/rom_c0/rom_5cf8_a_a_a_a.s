@@ -8,7 +8,7 @@
 	mov	r2, #0
 	bl	SetIntrHandler
 	mov	r0, #0x33
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r1}
 	bx	r1
 .func_end Func_8005cf8

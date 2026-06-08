@@ -11,9 +11,9 @@
 	add	r2, #0x44
 	lsl	r0, #1
 	str	r2, [r3]
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x814
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L90
 	mov	r0, #0x8d
@@ -25,7 +25,7 @@
 	lsl	r1, #9
 	lsl	r2, #9
 	bl	__Func_8012330
-	bl	__Func_809509c
+	bl	__StartEarthquake
 .L90:
 	mov	r0, #0
 	pop	{r1}

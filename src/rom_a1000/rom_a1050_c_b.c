@@ -5,11 +5,11 @@
  * asm/rom_a1000/rom_a1050_c_a.o and asm/rom_a1000/rom_a1050_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_8016418(unsigned int x);
+extern void _CloseUIBox(unsigned int x);
 
 void Func_80a1114(unsigned int *arg0) {
     if (arg0[0]) {
-        _Func_8016418(arg0[0]);
+        _CloseUIBox(arg0[0]);
         arg0[0] = 0;
     }
 }

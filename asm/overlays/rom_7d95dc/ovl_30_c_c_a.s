@@ -119,14 +119,14 @@
 	bne	.L1f4
 	mov	r0, #0x95
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1e2
 	ldr	r0, =.L3e1c
 	b	.L1f6
 .L1e2:
 	ldr	r0, =0x962
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1f0
 	ldr	r0, =.L3bdc

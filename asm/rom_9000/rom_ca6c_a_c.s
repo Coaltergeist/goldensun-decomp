@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800ca98
+.thumb_func_start Actor_IsNotMoving
 	push	{lr}
 	mov	r3, r0
 	add	r3, #0x55
@@ -31,9 +31,9 @@
 .Lcac6:
 	pop	{r1}
 	bx	r1
-.func_end Func_800ca98
+.func_end Actor_IsNotMoving
 
-.thumb_func_start Func_800cacc
+.thumb_func_start UpdateActors
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -228,7 +228,7 @@
 	add	r3, r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	ldr	r1, [r6, #0x30]
 	cmp	r0, r1
 	bgt	.Lcc4e
@@ -272,7 +272,7 @@
 	add	r3, r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	cmp	r0, #0
 	beq	.Lccf0
 	ldr	r3, [r6, #0x34]
@@ -360,7 +360,7 @@
 	.call_via r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 .Lcd70:
 	cmp	r0, #0
 	bne	.Lcd9c
@@ -402,7 +402,7 @@
 	.call_via r7
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	ldr	r1, [r6, #0x30]
 	cmp	r0, r1
 	ble	.Lce66
@@ -431,7 +431,7 @@
 	.call_via r7
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	cmp	r0, #0
 	beq	.Lce62
 	ldr	r3, [r6, #0x34]
@@ -531,7 +531,7 @@
 	add	r3, r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	cmp	r0, #0
 	beq	.Lcf3e
 	sub	r1, r0, r7
@@ -776,7 +776,7 @@
 .Ld0d8:
 	ldr	r0, [sp, #0x14]
 	ldr	r1, [sp, #0x1c]
-	bl	Func_80044d0
+	bl	atan2
 	ldrh	r3, [r6, #6]
 	sub	r0, r3
 	lsl	r0, #16
@@ -818,5 +818,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800cacc
+.func_end UpdateActors
 

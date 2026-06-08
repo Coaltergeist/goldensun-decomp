@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_898_2008a2c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1338
 	bl	__Func_8092b94
 	mov	r0, #0xd
@@ -25,11 +25,11 @@
 	ldr	r3, =2
 	orr	r3, r2
 	strh	r3, [r5]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1339
 	bl	__Func_8092b94
 	mov	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.La98
 	ldr	r3, =iwram_3001ebc
@@ -47,7 +47,7 @@
 .La98:
 	mov	r0, #0xe
 	mov	r1, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #2
 	mov	r0, #0xe
 	mov	r1, #0
@@ -57,7 +57,7 @@
 	bl	OvlFunc_898_2009724
 	mov	r0, #1
 	strh	r7, [r6, #6]
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	__Func_8091750
 	ldrh	r2, [r5]
 	mov	r3, #1
@@ -84,12 +84,12 @@
 	ldrh	r2, [r5]
 	orr	r3, r2
 	strh	r3, [r5]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x133b
 	bl	__Func_8092b94
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #2
 	mov	r0, #0xf
 	mov	r1, #0
@@ -100,7 +100,7 @@
 	mov	r2, r8
 	strh	r2, [r6, #6]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	__Func_8091750
 	b	.Lb28
 
@@ -120,12 +120,12 @@
 
 .thumb_func_start OvlFunc_898_2008b3c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x133c
 	bl	__Func_8092b94
 	mov	r0, #0x10
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #2
@@ -149,7 +149,7 @@
 .Lb7e:
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -157,7 +157,7 @@
 
 .thumb_func_start OvlFunc_898_2008b98
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x133f
 	bl	__Func_8092b94
 	mov	r0, #0x12
@@ -183,7 +183,7 @@
 .Lbd2:
 	mov	r0, #0x12
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -191,30 +191,30 @@
 
 .thumb_func_start OvlFunc_898_2008bec
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1342
 	bl	__Func_8092b94
 	mov	r0, #0x13
 	mov	r1, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #2
 	mov	r0, #0x13
 	mov	r1, #0
 	bl	OvlFunc_898_200973c
 	mov	r0, #0x13
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r1, #1
 	mov	r0, #0x13
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xe7
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r1, #1
 	neg	r1, r1
 	cmp	r0, r1
 	beq	.Lc40
 	ldr	r0, =0x858
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lc40
 	ldr	r3, =iwram_3001ebc
@@ -232,7 +232,7 @@
 
 .thumb_func_start OvlFunc_898_2008c54
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x137f
 	bl	__Func_8092b94
 	mov	r2, #2
@@ -243,10 +243,10 @@
 	mov	r0, #0x14
 	bl	__Func_8092548
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x14
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0

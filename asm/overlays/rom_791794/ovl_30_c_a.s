@@ -11,7 +11,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xa
 	bne	.Lf4a
-	bl	__Func_809509c
+	bl	__StartEarthquake
 	bl	OvlFunc_897_2008054
 .Lf4a:
 	mov	r0, #0

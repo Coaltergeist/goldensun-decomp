@@ -6,18 +6,18 @@
  * goldensun/stage1.ld.
  */
 /* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix helper.
- * Spin up to 0x12c frames (Func_80030f8 = WaitFrames/sleep) while the
+ * Spin up to 0x12c frames (WaitFrames = WaitFrames/sleep) while the
  * driver-busy flag ewram_2003000 is still set.
  */
 extern unsigned char ewram_2003000;
-extern void Func_80030f8(int frames);
+extern void WaitFrames(int frames);
 
 void Func_80f95a0(void) {
     int i;
 
     i = 0;
     while (ewram_2003000 != 0) {
-        Func_80030f8(1);
+        WaitFrames(1);
         if (++i > 0x12b)
             break;
     }

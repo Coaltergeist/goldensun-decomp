@@ -27,7 +27,7 @@
 .thumb_func_start OvlFunc_964_2009318
 	push	{lr}
 	sub	sp, #8
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r3, #9
 	mov	r2, #0x26
 	str	r3, [sp]
@@ -69,7 +69,7 @@
 .thumb_func_start OvlFunc_964_2009374
 	push	{lr}
 	sub	sp, #8
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r3, #0x1d
 	mov	r2, #0x1e
 	str	r3, [sp]

@@ -64,7 +64,7 @@
 	add	r3, r2
 	ldr	r0, [r3]
 	sub	sp, #4
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r3, =iwram_3001ebc
 	mov	r6, #0x8e
 	ldr	r3, [r3]
@@ -115,7 +115,7 @@
 	str	r3, [r5, #0x10]
 	ldr	r0, [sp]
 	mov	r1, r8
-	bl	Func_80044d0
+	bl	atan2
 	mov	r1, r0
 	lsl	r1, #16
 	mov	r0, #0xa0
@@ -123,7 +123,7 @@
 	lsr	r1, #16
 	lsl	r0, #13
 	add	r2, #8
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r3, #0x80
 	lsl	r3, #24
 	str	r3, [r5, #0x38]
@@ -185,20 +185,20 @@
 	mov	r1, r0
 	mov	r2, r6
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r0, =0x11d
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8ef60
 	ldr	r1, =.L9e87c
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -244,7 +244,7 @@
 	ldrh	r1, [r7, #6]
 	mov	r2, r5
 	lsl	r0, #13
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r1, =0xfff00000
 	ldr	r3, [r5]
 	mov	r2, #0x80
@@ -274,14 +274,14 @@
 	cmp	r2, r3
 	bne	.L8efea
 	mov	r0, r5
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	ldr	r1, [r5]
 .L8efea:
 	ldr	r3, =.L9e87c
 	cmp	r1, r3
 	bne	.L8eff6
 	mov	r0, r5
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 .L8eff6:
 	sub	r6, #1
 	add	r5, #0x70
@@ -289,20 +289,20 @@
 	bge	.L8efd4
 .L8effe:
 	mov	r0, #3
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0x80
 	mov	r3, r7
 	lsl	r2, #13
 	mov	r0, #0x16
 	mov	r1, r8
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r7, r0
 	mov	r0, #0
 	cmp	r7, #0
 	beq	.L8f0b8
 	ldr	r1, =.L9e6c0
 	mov	r0, r7
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	ldr	r6, [r7, #0x50]
 	mov	r2, r6
 	mov	r3, #0
@@ -332,17 +332,17 @@
 	str	r3, [r7, #0x48]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r5, r0
 	mov	r0, r9
-	bl	_Func_801a370
+	bl	_LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	mov	r1, #0x80
 	mov	r2, r5
 	ldrb	r0, [r6, #0x1c]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L8f094	@ 0x3ff
 	ldrh	r2, [r6, #8]
 	and	r0, r3
@@ -351,7 +351,7 @@
 	orr	r3, r0
 	strh	r3, [r6, #8]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r3, =Func_808eee4
 	str	r3, [r7, #0x6c]
 	mov	r0, r7

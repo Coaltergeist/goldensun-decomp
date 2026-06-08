@@ -14,7 +14,7 @@
 	sub	sp, #8
 	bl	OvlFunc_915_20088c0
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lc5a
 	mov	r0, #0xa
@@ -50,7 +50,7 @@
 	mov	r0, #9
 	bl	OvlFunc_915_20088c0
 	ldr	r0, =0x845
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lc76
 	mov	r0, #6

@@ -4,7 +4,7 @@
 .thumb_func_start Func_80bb588
 	push	{r5, lr}
 	mov	r5, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r4, =0x12f
 	mov	r1, r0
 	mov	r2, #3
@@ -91,7 +91,7 @@
 	add	r2, r1, r4
 	strb	r3, [r2]
 	mov	r0, r5
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r0, r5
 	bl	Func_80b7dd0
 	mov	r1, r0
@@ -102,7 +102,7 @@
 	bx	r1
 .func_end Func_80bb588
 
-.thumb_func_start Func_80bb65c
+.thumb_func_start WaitTextPrompt
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -114,14 +114,14 @@
 	b	.Lbb674
 .Lbb66e:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lbb674:
 	bl	_Func_8017364
 	cmp	r0, #0
 	beq	.Lbb66e
 	mov	r0, #0x80
 	add	r7, sp, #4
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r1, #0
 	str	r1, [sp]
 	mov	r11, r0
@@ -198,7 +198,7 @@
 .Lbb728:
 	ldr	r0, [r3]
 	lsl	r0, #12
-	bl	Func_8002322
+	bl	sin
 	cmp	r0, #0
 	bge	.Lbb738
 	ldr	r1, =0x7fff
@@ -239,18 +239,18 @@
 	bne	.Lbb78a
 .Lbb77c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, [sp]
 	add	r1, #1
 	str	r1, [sp]
 	b	.Lbb68a
 .Lbb78a:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r11
 	bl	Func_8003f3c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #0x10
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -260,7 +260,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80bb65c
+.func_end WaitTextPrompt
 
 .thumb_func_start Func_80bb7c0
 	push	{r5, r6, r7, lr}
@@ -281,14 +281,14 @@
 	b	.Lbb7e8
 .Lbb7e2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lbb7e8:
 	bl	_Func_8017364
 	cmp	r0, #0
 	beq	.Lbb7e2
 	mov	r0, #0x80
 	add	r5, sp, #8
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r2, sp
 	ldrh	r2, [r2]
 	ldr	r3, =iwram_3001e40
@@ -371,13 +371,13 @@
 	cmp	r3, #0
 	bne	.Lbb8b0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lbb80a
 .Lbb8b0:
 	mov	r0, r6
 	bl	Func_8003f3c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

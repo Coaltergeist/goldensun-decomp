@@ -4,9 +4,9 @@
 	push	{lr}
 	mov	r0, #0xe7
 	bl	__Func_8078a08
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x12
 	mov	r1, #2
 	bl	__Func_80925cc
@@ -20,7 +20,7 @@
 	mov	r0, #0x12
 	bl	__Func_80921c4
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0x80
 	mov	r0, #0x12
 	lsl	r1, #7
@@ -31,33 +31,33 @@
 	mov	r0, #0x12
 	bl	__Func_8092560
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #6
 	mov	r2, #0
 	mov	r0, #0x12
 	bl	__Func_8092560
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #6
 	mov	r2, #0
 	mov	r0, #0x12
 	bl	__Func_8092560
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #0xc4
 	mov	r1, #0xd8
 	lsl	r2, #1
 	mov	r0, #0x12
 	bl	__Func_80921c4
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r2, #0x14
 	mov	r0, #0x12
 	bl	__Func_8092adc
 	ldr	r0, =0x858
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	__Func_8091750
 	pop	{r0}
 	bx	r0
@@ -82,7 +82,7 @@
 	mov	r1, #0x2a
 	mov	r2, #0xc
 	mov	r3, #0x16
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -107,7 +107,7 @@
 	mov	r1, #0x2a
 	mov	r2, #0xc
 	mov	r3, #0x16
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -115,32 +115,32 @@
 
 .thumb_func_start OvlFunc_901_2008e90
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1342
 	bl	__Func_8092b94
 	mov	r0, #0x12
 	mov	r1, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0x12
 	bl	__Func_8092848
 	mov	r0, #2
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x12
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r1, #1
 	mov	r0, #0x12
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xe7
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r1, #1
 	neg	r1, r1
 	cmp	r0, r1
 	beq	.Leea
 	ldr	r0, =0x858
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Leea
 	ldr	r3, =iwram_3001ebc
@@ -158,7 +158,7 @@
 
 .thumb_func_start OvlFunc_901_2008f00
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x947
 	mov	r1, #1
 	bl	__Func_801776c

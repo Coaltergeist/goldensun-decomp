@@ -7,12 +7,12 @@
  */
 extern void __Func_80118c0(unsigned int);
 extern void __Func_80118a8(unsigned int);
-extern void __Func_80f9080(unsigned int);
+extern void __PlaySound(unsigned int);
 
 unsigned int OvlFunc_956_2008a20(void) {
     __Func_80118c0(1);
     __Func_80118a8(2);
-    __Func_80f9080(0x90 << 1);
-    __Func_80f9080(0xd9);
+    __PlaySound(0x90 << 1);
+    __PlaySound(0xd9);
     return 0;
 }

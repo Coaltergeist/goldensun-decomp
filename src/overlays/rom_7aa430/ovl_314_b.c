@@ -5,9 +5,9 @@
  * overlays/rom_7aa430/ovl_314_a.o and overlays/rom_7aa430/ovl_314_c.o in
  * goldensun/overlays/rom_7aa430/overlay.ld.
  */
-extern void __Func_80f9080(unsigned int);
+extern void __PlaySound(unsigned int);
 
 unsigned int OvlFunc_923_2008d48(void) {
-    __Func_80f9080(0x76);
+    __PlaySound(0x76);
     return 0;
 }

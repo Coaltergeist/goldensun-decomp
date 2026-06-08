@@ -12,10 +12,10 @@
 	mov	r0, r5
 	mov	r10, r2
 	mov	r8, r1
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	lsl	r1, r0, #2
 	add	r1, r0
 	lsl	r1, #4

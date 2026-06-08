@@ -32,7 +32,7 @@
 .L18da:
 	mov	r0, #0x82
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L190c
 	ldr	r4, =.L26be
@@ -340,7 +340,7 @@
 	mov	r1, #0x90
 	mov	r2, r9
 	lsl	r1, #3
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	ldr	r2, =0x80008000
 	ldr	r5, =.L26e0
 	mov	r8, r2
@@ -409,14 +409,14 @@
 	ldr	r0, =OvlData_933_2009fa0
 	bl	__DecompressLZ
 	ldr	r5, =.L26d0
-	bl	__Func_8004080
+	bl	__AllocSpriteSlot
 	mov	r1, #0x90
 	strh	r0, [r5]
 	lsl	r0, #16
 	lsl	r1, #3
 	mov	r2, #0
 	asr	r0, #16
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	ldr	r2, .L1c50	@ 0
 	ldr	r3, =.L26be
 	strh	r2, [r3]

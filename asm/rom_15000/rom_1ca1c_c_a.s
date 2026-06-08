@@ -38,7 +38,7 @@
 	mov	r2, r0
 	lsl	r1, #1
 	ldrb	r0, [r3, #0xe]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	cmp	r6, #1
 	bne	.L1cfac
 	ldr	r2, =0x57c
@@ -60,7 +60,7 @@
 	mov	r2, r0
 	lsl	r1, #1
 	ldrb	r0, [r3, #0xe]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	cmp	r6, #1
 	ble	.L1cfe0
 	ldr	r1, =0x594
@@ -91,7 +91,7 @@
 	lsl	r1, #3
 	mov	r0, #0x14
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp

@@ -1,51 +1,51 @@
 	.include "macros.inc"
 
-	.export_func _Func_80030f8
-	.export_func _Func_80044d0
+	.export_func _WaitFrames
+	.export_func _atan2
 	.export_func _Func_8010560
-	.export_func _Func_8010424
+	.export_func _CopyMapTiles
 	.export_func _Func_8010704
 	.export_func _Func_800c528
 	.export_func _Func_801776c
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
 	.export_func _Func_8091750
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _Func_8092064
-	.export_func _Func_809207c
-	.export_func _Func_80920e8
-	.export_func _Func_80920a0
+	.export_func _MapActor_SetBehavior
+	.export_func _MapActor_WaitScript
+	.export_func _MapActor_SetIdle
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092548
 	.export_func _Func_8092560
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
 	.export_func _Func_8092b94
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
+	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8093054
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
-	.export_func _Func_80937b8
-	.export_func _Func_8093874
+	.export_func _MapActor_Emote
+	.export_func _MapActor_Surprise
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8093500
 	.export_func _Func_8091e9c
-	.export_func _Func_8091dc8
+	.export_func _MapTransitionIn
 	.export_func _Func_8091e20
 	.export_func _Func_808edac
 	.export_func _Func_8091ff0
 	.export_func _Func_809202c
-	.export_func _Func_80b29a8
-	.export_func _Func_80f9080
+	.export_func _UI_Sanctum
+	.export_func _PlaySound

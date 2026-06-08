@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8004144
+.thumb_func_start SortTasks
 	push	{r5, r6, lr}
 	sub	sp, #8
 	ldr	r2, =gTasks
@@ -47,9 +47,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004144
+.func_end SortTasks
 
-.thumb_func_start Func_8004198
+.thumb_func_start GetTaskIndex
 	push	{r5, lr}
 	mov	r5, #1
 	ldr	r4, =gTasks
@@ -79,7 +79,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8004198
+.func_end GetTaskIndex
 
 .thumb_func_start StartTask
 	push	{r5, r6, lr}
@@ -145,7 +145,7 @@
 	strb	r3, [r4, #6]
 	mov	r5, r2
 .L4254:
-	bl	Func_8004144
+	bl	SortTasks
 	ldr	r3, =REG_IME
 	strh	r6, [r3]
 	mov	r0, r5

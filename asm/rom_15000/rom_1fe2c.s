@@ -44,12 +44,12 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	bl	_Func_808b3d0
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1fea6
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r2, r5
 	add	r2, #0x26
 	mov	r3, #0
@@ -130,7 +130,7 @@
 	ldr	r0, [r5, r7]
 	cmp	r0, #0
 	beq	.L1ff3c
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r3, r8
 	str	r3, [r5, r7]
 .L1ff3c:
@@ -191,7 +191,7 @@
 	mov	r1, r6
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .L1ffb6:
 	mov	r3, #1
@@ -239,12 +239,12 @@
 	ldr	r3, =.L73854
 	lsl	r2, r7, #2
 	ldr	r0, [r3, r2]
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L20032
 	mov	r1, #2
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r2, r5
 	add	r2, #0x26
 	mov	r3, #0
@@ -311,7 +311,7 @@
 	ldr	r0, [r5, r7]
 	cmp	r0, #0
 	beq	.L200b0
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r3, r8
 	str	r3, [r5, r7]
 .L200b0:
@@ -375,7 +375,7 @@
 	mov	r1, r5
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .L20130:
 	mov	r3, #1

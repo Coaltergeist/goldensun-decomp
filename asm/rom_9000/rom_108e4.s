@@ -46,13 +46,13 @@
 	strh	r5, [r2]
 	lsl	r1, #3
 	mov	r0, #0xe
-	bl	Func_80048b0
+	bl	galloc_iwram
 	lsl	r3, r5, #2
 	mov	r7, r0
 	ldr	r0, [r3, r6]
 	mov	r1, r7
 	add	r0, r6, r0
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r3, r9
 	add	r3, r8
 	lsl	r3, #5
@@ -111,7 +111,7 @@
 	bls	.L1098e
 .L109b6:
 	mov	r0, #0xe
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #1
 .L109be:
 	pop	{r3, r5, r6}
@@ -123,7 +123,7 @@
 	bx	r1
 .func_end Func_80108e4
 
-.thumb_func_start Func_80109e8
+.thumb_func_start InitWorldMap
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -145,7 +145,7 @@
 	mov	r1, #0xd7
 	lsl	r1, #2
 	mov	r0, #8
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r6, #0
 	mov	r7, r0
 	add	r0, sp, #0x1c
@@ -250,11 +250,11 @@
 	str	r6, [r3]
 	mov	r0, #0xc
 	mov	r1, #0x4c
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r1, =0x3484
 	mov	r9, r0
 	mov	r0, #7
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0xc
 	add	r2, r9
 	mov	r3, #0xc8
@@ -298,21 +298,21 @@
 	str	r6, [r3]
 	str	r6, [r3, #4]
 	str	r6, [r3, #8]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r8
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r1, #0x8d
 	lsl	r1, #1
 	add	r1, r7, r1
 	str	r1, [sp]
 	ldrh	r0, [r1]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r2, #0x8c
 	lsl	r2, #1
 	add	r2, r7
 	ldrh	r0, [r2]
 	mov	r11, r2
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	add	r3, sp, #0x10
 	mov	r10, r3
 	str	r6, [r3]
@@ -322,14 +322,14 @@
 	ldr	r2, =Func_80009c0
 	mov	r0, r10
 	bl	_call_via_r2
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r9
 	mov	r1, r8
 	bl	Func_80051d8
 	ldr	r5, =0x284
 	mov	r0, #0x2e
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -341,11 +341,11 @@
 	sub	r3, #0xc
 	mov	r3, r11
 	ldrh	r0, [r3]
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r11
 	mov	r5, r0
 	ldrh	r0, [r1]
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, =Func_80008ac
 	mov	r1, r0
 	mov	r0, r5
@@ -379,22 +379,22 @@
 	str	r6, [r3]
 	str	r6, [r3, #4]
 	str	r6, [r3, #8]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r3, #0xe0
 	mov	r1, r11
 	lsl	r3, #8
 	strh	r3, [r1]
 	ldr	r2, [sp]
 	strh	r6, [r2]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r8
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	ldr	r3, [sp]
 	ldrh	r0, [r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r1, r11
 	ldrh	r0, [r1]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r2, r10
 	str	r6, [r2]
 	str	r6, [r2, #4]
@@ -456,7 +456,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80109e8
+.func_end InitWorldMap
 
 .thumb_func_start Func_8010d48
 	push	{r5, r6, r7, lr}
@@ -629,7 +629,7 @@
 	mov	r8, r3
 	bl	GetFile
 	mov	r1, r10
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r3, r8
 	mov	r2, r10
 	strh	r3, [r2]
@@ -1132,19 +1132,19 @@
 	str	r7, [r1, #4]
 	ldr	r3, [r2, #4]
 	str	r3, [r1, #8]
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r10
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r2, #0x8d
 	lsl	r2, #1
 	add	r3, r6, r2
 	ldrh	r0, [r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r3, #0x8c
 	lsl	r3, #1
 	add	r6, r3
 	ldrh	r0, [r6]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	add	r0, sp, #0x18
 	str	r7, [r0]
 	str	r7, [r0, #4]
@@ -1156,7 +1156,7 @@
 	ldr	r1, [sp, #0x14]
 	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r1, r10
 	ldr	r0, [sp, #0x14]
 	bl	Func_80051d8
@@ -1166,10 +1166,10 @@
 	ldr	r3, [r3]
 	cmp	r3, r0
 	beq	.L11388
-	bl	Func_800231c
+	bl	cos
 	mov	r5, r0
 	ldrh	r0, [r6]
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, =Func_80008ac
 	mov	r1, r0
 	mov	r0, r5

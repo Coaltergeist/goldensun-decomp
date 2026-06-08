@@ -48,7 +48,7 @@
 	add	r1, r3
 	lsl	r0, #15
 	mov	r2, r8
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r1, r8
 	ldr	r3, [r1]
 	str	r3, [r7, #0xc]
@@ -88,7 +88,7 @@
 	cmp	r3, #0
 	beq	.L95db6
 	mov	r0, #0x86
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L95db6
 .L95cc2:
 	cmp	r6, #1
@@ -170,7 +170,7 @@
 	mov	r0, #0x80
 	mov	r2, r5
 	lsl	r0, #11
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r5, #8]
@@ -186,7 +186,7 @@
 	cmp	r3, #0
 	beq	.L95db6
 	mov	r0, #0x91
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L95db6
 .L95d8a:
 	cmp	r6, #4
@@ -221,7 +221,7 @@
 	bx	r0
 .func_end Func_8095c08
 
-.thumb_func_start Func_8095dd0
+.thumb_func_start GetMarsDjinni
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -248,33 +248,33 @@
 	mov	r10, r3
 	bl	_Func_80b0840
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0x80
 	mov	r2, #0
 	lsl	r1, #7
 	mov	r0, r6
 	bl	Func_8092adc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xad
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #1
 	bl	Func_80925cc
 	mov	r0, #0xae
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #1
 	bl	Func_80925cc
 	mov	r0, #0xaf
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r0, r6
 	bl	Func_80925cc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x8c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =Func_8095bac
 	mov	r2, r5
 	str	r3, [r5, #0x6c]
@@ -282,12 +282,12 @@
 	mov	r3, #0
 	strh	r3, [r2]
 	mov	r0, #0x50
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =Func_8095bd8
 	mov	r0, r5
 	str	r3, [r5, #0x6c]
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r3, [r5, #8]
 	mov	r7, sp
 	str	r3, [r7]
@@ -326,12 +326,12 @@
 	str	r0, [r5, #0x28]
 	sub	r6, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r5, #0x48
 	cmp	r6, #0
 	bge	.L95e8e
 	mov	r0, #0x3c
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
@@ -342,13 +342,13 @@
 	ldr	r0, [r5]
 	bl	Func_8092adc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [r5]
 	bl	MapActor_GetActor
 	mov	r1, #0x1c
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r10
 	mov	r1, #2
 	add	r2, #0x98
@@ -365,12 +365,12 @@
 	cmp	r6, #0
 	bge	.L95f10
 	mov	r0, #0x3c
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =Func_8095b8c
 	mov	r2, r8
 	str	r3, [r2, #0x6c]
 	mov	r0, #0x64
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r10
 	mov	r1, #5
 	add	r2, #0x98
@@ -387,7 +387,7 @@
 	cmp	r6, #0
 	bge	.L95f3c
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r5, #0
 	mov	r3, r8
 	str	r5, [r3, #0x6c]
@@ -397,7 +397,7 @@
 	str	r3, [r2, #0x18]
 	str	r3, [r2, #0x1c]
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	_Func_80b0894
 	bl	Func_80958e4
 .L95f72:
@@ -408,5 +408,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8095dd0
+.func_end GetMarsDjinni
 

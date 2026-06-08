@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b8228
+.thumb_func_start SetBattleActorKnockback
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -11,7 +11,7 @@
 	mov	r7, r0
 	mov	r0, r5
 	ldr	r6, [r7]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x94
 	lsl	r2, #1
 	add	r0, r2
@@ -56,17 +56,17 @@
 	mov	r1, r0
 	mov	r2, #0
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .Lb829c:
 	mov	r0, r6
 	mov	r1, #5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80b8228
+.func_end SetBattleActorKnockback
 
 .thumb_func_start Func_80b82c4
 	push	{r5, r6, r7, lr}
@@ -148,10 +148,10 @@
 	mov	r1, r8
 	mov	r2, #0
 	mov	r3, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r7
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
 	mov	r9, r5
@@ -170,7 +170,7 @@
 	bl	_Func_800c4ac
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r5}
 	pop	{r0}
 	bx	r0

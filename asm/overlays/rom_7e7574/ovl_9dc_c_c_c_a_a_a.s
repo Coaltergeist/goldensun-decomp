@@ -7,9 +7,9 @@
 	bl	__Func_8092b94
 	ldr	r0, =0x800d
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r0, #0xea
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3

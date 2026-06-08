@@ -64,7 +64,7 @@
 	bx	r1
 .func_end Func_80c23e8
 
-.thumb_func_start Func_80c2410
+.thumb_func_start GetEnemyAttackAnimParam
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc241a
@@ -83,9 +83,9 @@
 .Lc242c:
 	pop	{r1}
 	bx	r1
-.func_end Func_80c2410
+.func_end GetEnemyAttackAnimParam
 
-.thumb_func_start Func_80c2434
+.thumb_func_start GetEnemyUnk
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc243e
@@ -101,5 +101,5 @@
 .Lc244a:
 	pop	{r1}
 	bx	r1
-.func_end Func_80c2434
+.func_end GetEnemyUnk
 

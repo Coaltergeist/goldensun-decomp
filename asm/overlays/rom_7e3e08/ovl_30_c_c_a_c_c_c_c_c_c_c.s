@@ -15,7 +15,7 @@
 	str	r3, [r1, #4]
 	ldr	r3, [r0, #0x10]
 	str	r3, [r1, #8]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	ble	.Ld84
 	mov	r2, r5
@@ -63,7 +63,7 @@
 	strb	r5, [r3]
 .Ldd2:
 	ldr	r0, =0x211
-	bl	__Func_8079358
+	bl	__SetFlag
 .Ldd8:
 	add	sp, #8
 	pop	{r5, r6}
@@ -101,23 +101,23 @@
 	and	r1, r3
 	lsl	r0, #14
 	mov	r2, r6
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bne	.Le9c
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #6
 	mov	r0, r5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #6
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x98
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r5
 	mov	r1, #7
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #0xc0
 	lsl	r3, #10
 	str	r3, [r5, #0x30]
@@ -142,7 +142,7 @@
 	bl	__Func_8092158
 	mov	r0, r5
 	mov	r1, #6
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Func_800c528
@@ -161,7 +161,7 @@
 .thumb_func_start OvlFunc_957_2008eac
 	push	{r5, lr}
 	sub	sp, #0x20
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	add	r5, sp, #8
 	mov	r0, r5
 	bl	OvlFunc_957_2008474
@@ -237,7 +237,7 @@
 	mov	r1, r11
 	mov	r2, r5
 	str	r3, [r5, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r6, #8]
 	mov	r7, #0x90

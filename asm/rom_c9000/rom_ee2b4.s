@@ -5,30 +5,30 @@
 	.global	Data_80ee2b4
 Data_80ee2b4:
 
-	.word	Func_80da2ac
-	.word	Func_80e2538
-	.word	Func_80e302c
+	.word	Anim_Quake
+	.word	Anim_Spire
+	.word	Anim_Gaia
 	.word	Func_80dd2ac
-	.word	Func_80dd9c0
-	.word	Func_80dab74
-	.word	Func_80c91dc
-	.word	Func_80d3c80
-	.word	Func_80c972c
-	.word	Func_80d33c0
-	.word	Func_80d9fc8
-	.word	Func_80da6cc
-	.word	Func_80d4ce8
+	.word	Anim_Thorn
+	.word	Anim_Frost
+	.word	Anim_Ice
+	.word	Anim_Prism
+	.word	Anim_Douse
+	.word	Anim_Froth
+	.word	Anim_Flare
+	.word	Anim_Fireball
+	.word	Anim_Volcano
 	.word	Func_80db6d4
 	.word	Func_80d45ec
-	.word	Func_80ddde0
-	.word	Func_80db264
-	.word	Func_80d41a4
+	.word	Anim_Bolt
+	.word	Anim_Ray
+	.word	Anim_Plasma
 	.word	Func_80de974
-	.word	Func_80d3854
+	.word	Anim_Whirlwind
 	.word	Func_80d8960
 	.word	Func_80d8948
 	.word	Func_80d8954
-	.word	Func_80d896c
+	.word	Anim_CurePoison
 	.word	Func_80cf2a0
 	.word	Func_80d9194
 	.word	Func_80d9ab8
@@ -36,43 +36,43 @@ Data_80ee2b4:
 	.word	Func_80d9ac4
 	.word	Func_80d91ac
 	.word	Func_80d9ad0
-	.word	Func_80d5258
+	.word	Anim_Poison
 	.word	Func_80d5280
-	.word	Func_80ce85c
+	.word	Anim_Confuse
 	.word	Func_80d5298
 	.word	Func_80d528c
-	.word	Func_80d59b0
-	.word	Func_80d05fc
-	.word	Func_80ce4e8
-	.word	Func_80cfef4
-	.word	Func_80d5c48
-	.word	Func_80d85d0
-	.word	Func_80d82b0
+	.word	Anim_Sleep
+	.word	Anim_Bind
+	.word	Anim_Haunt
+	.word	Anim_Condemn
+	.word	Anim_Curse
+	.word	Anim_Drain
+	.word	Anim_Break
 	.word	Func_80d8954
 	.word	Func_80d8954
 	.word	Func_80d9194
 	.word	Func_80d9ac4
 	.word	0
-	.word	Func_80e89ec
+	.word	Anim_DragonCloud
 	.word	Func_80ceb30
-	.word	Func_80e698c
+	.word	Anim_HelmSplitter
 	.word	Func_80ecedc
-	.word	Func_80cb1a4
+	.word	Anim_DeathPlunge
 	.word	Func_80de980
-	.word	Func_80e90a8
+	.word	Anim_Annihilation
 	.word	Func_80dd2b8
-	.word	Func_80de9bc
-	.word	Func_80e94b8
-	.word	Func_80de9f0
-	.word	Func_80ce034
-	.word	Func_80e99c0
-	.word	Func_80d1350
-	.word	Func_80dea3c
+	.word	Anim_CuttingEdge
+	.word	Anim_Ragnarok
+	.word	Anim_HeatWave
+	.word	Anim_PlanetDiver
+	.word	Anim_TitanBlade
+	.word	Anim_ShiningStar
+	.word	Anim_Blizzard
 	.word	Func_80d52b0
 	.word	Func_80ecee8
 	.word	Func_80d52bc
-	.word	Func_80d0ad4
-	.word	Func_80d0ee0
+	.word	Anim_PsyphonSeal
+	.word	Anim_AstralBlast
 	.word	0
 	.word	0
 	.word	0
@@ -206,23 +206,23 @@ Data_80ee2b4:
 	.word	0
 	.word	Func_80d91b8
 	.word	Func_80cf2a0
-	.word	Func_80dd77c
-	.word	Func_80e1040
+	.word	Anim_Vine
+	.word	Anim_Ground
 	.word	Func_80d8948
 	.word	Func_80dea24
 	.word	Func_80d8954
-	.word	Func_80e0c84
+	.word	Anim_Hail
 	.word	Func_80d8994
 	.word	Func_80cf2ac
 	.word	Func_80d9194
 	.word	Func_80d91a0
 	.word	Func_80d89a0
 	.word	Func_80d91c4
-	.word	Func_80e6638
+	.word	Anim_Torch
 	.word	Func_80d91ac
 	.word	Func_80d91d0
-	.word	Func_80e6948
-	.word	Func_80d05fc
+	.word	Anim_Kite
+	.word	Anim_Bind
 	.word	Func_80e28f4
 	.word	0
 	.word	0
@@ -254,10 +254,10 @@ Data_80ee2b4:
 	.word	0
 	.word	0
 	.word	0
-	.word	Func_80e0564
-	.word	Func_80dfe2c
-	.word	Func_80e08c0
-	.word	Func_80e01e4
+	.word	Anim_Venus
+	.word	Anim_Mercury
+	.word	Anim_Mars
+	.word	Anim_Jupiter
 	.word	0
 	.word	0
 	.word	0
@@ -324,7 +324,7 @@ Data_80ee2b4:
 	.word	Func_80e291c
 	.word	Func_80ca594
 	.word	Func_80e294c
-	.word	Func_80ed104
+	.word	Anim_UndeadSword
 	.word	Func_80e2928
 	.word	Func_80cf8c8
 	.word	Func_80ca594
@@ -349,7 +349,7 @@ Data_80ee2b4:
 	.word	Func_80e291c
 	.word	Func_80e2928
 	.word	Func_80ca1f0
-	.word	Func_80ccebc
+	.word	Anim_SpiderWeb
 	.word	Func_80d5298
 	.word	Func_80cf88c
 	.word	Func_80cefe0
@@ -358,7 +358,7 @@ Data_80ee2b4:
 	.word	Func_80ceb48
 	.word	Func_80d8960
 	.word	Func_80cefd4
-	.word	Func_80d5c48
+	.word	Anim_Curse
 	.word	0
 	.word	0
 	.word	0
@@ -391,8 +391,8 @@ Data_80ee2b4:
 	.word	Func_80e732c
 	.word	Func_80d244c
 	.word	Func_80ca600
-	.word	Func_80eceac
-	.word	Func_80ece7c
+	.word	Anim_SevereBlow
+	.word	Anim_Thrash
 	.word	Func_80cefec
 	.word	0
 	.word	0

@@ -5,8 +5,8 @@
  * asm/rom_c9000/rom_d5258_a.o and asm/rom_c9000/rom_d5258_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80d52c8(void *context, int subanim);
+extern void BaseAnim_ParticleCloud(void *context, int subanim);
 
 void Func_80d5274(void *context) {
-    Func_80d52c8(context, 1);
+    BaseAnim_ParticleCloud(context, 1);
 }

@@ -6,8 +6,8 @@
  * goldensun/overlays/rom_7ed0a0/overlay.ld.
  */
 extern unsigned char gScript_964__0200b3b8[];
-extern void __Func_809207c(int a, unsigned char *b);
+extern void __MapActor_SetBehavior(int a, unsigned char *b);
 
 void OvlFunc_964_2009910(void) {
-    __Func_809207c(0x13, gScript_964__0200b3b8);
+    __MapActor_SetBehavior(0x13, gScript_964__0200b3b8);
 }

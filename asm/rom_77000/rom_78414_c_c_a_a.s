@@ -8,7 +8,7 @@
 	add	r3, r2
 	ldr	r0, [r3]
 	sub	sp, #0x14
-	bl	Func_80784d8
+	bl	FindEmptyInventorySlot
 	cmp	r0, #0xf
 	beq	.L7851a
 .L78516:
@@ -27,7 +27,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
 	add	r7, #2
-	bl	Func_80784d8
+	bl	FindEmptyInventorySlot
 	cmp	r0, #0xf
 	bne	.L78516
 	add	r5, #1
@@ -56,7 +56,7 @@
 .L78566:
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
-	bl	Func_80784d8
+	bl	FindEmptyInventorySlot
 	sub	r0, r7, r0
 	mov	r7, r0
 	sub	r5, #1
@@ -72,13 +72,13 @@
 	bx	r1
 .func_end Func_8078550
 
-.thumb_func_start Func_8078588
+.thumb_func_start GiveItemTo
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r2, [r0, #3]
 	mov	r3, #0x10
 	and	r3, r2
@@ -146,9 +146,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078588
+.func_end GiveItemTo
 
-.thumb_func_start Func_8078618
+.thumb_func_start GiveItem
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -169,7 +169,7 @@
 	add	r3, #2
 	mov	r0, r5
 	str	r3, [sp]
-	bl	Func_8078588
+	bl	GiveItemTo
 	ldr	r3, [sp]
 	cmp	r0, #0
 	blt	.L7864e
@@ -189,5 +189,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078618
+.func_end GiveItem
 
