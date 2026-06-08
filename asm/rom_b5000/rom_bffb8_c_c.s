@@ -3,13 +3,13 @@
 
 .thumb_func_start Func_80c0eec
 	push	{r5, lr}
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #8
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lc0f6e
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 .Lc0efc:
 	ldr	r3, =iwram_3001e74
 	ldr	r1, [r3]
@@ -66,7 +66,7 @@
 	ldr	r2, =0x828
 	add	r3, r1, r2
 	ldr	r0, [r3]
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	b	.Lc0f6e
 .Lc0f66:
 	mov	r0, #1

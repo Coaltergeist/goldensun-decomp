@@ -76,7 +76,7 @@
 	bl	Func_80030f8
 	b	.La487c
 .La4854:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x40
 	and	r3, r2

@@ -101,7 +101,7 @@
 	ldr	r2, =0x8500018a
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r0, =0x205
 	add	r3, r1, r0
 	ldr	r0, =0x594

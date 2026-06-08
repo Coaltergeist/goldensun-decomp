@@ -571,7 +571,7 @@
 	mov	r3, #0x80
 	lsl	r3, #2
 	mov	r8, r3
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r8
 	mov	r1, r5
 	mov	r0, r4
@@ -836,7 +836,7 @@
 	mov	r1, #0
 	mov	r0, #2
 	bl	Func_80f3824
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -1082,7 +1082,7 @@
 	sub	r3, #0xc
 	mov	r2, #0x80
 	lsl	r2, #2
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r3, #0xa0
 	add	r4, r2
 	lsl	r3, #19

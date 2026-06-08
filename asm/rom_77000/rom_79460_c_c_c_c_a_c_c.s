@@ -653,7 +653,7 @@
 	bl	Func_80795fc
 	cmp	r9, r0
 	bge	.L7a172
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r6, r3, r2

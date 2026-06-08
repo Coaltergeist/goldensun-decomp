@@ -7,9 +7,9 @@
  */
 #include "gba/io.h"
 #include "dma.h"
-extern unsigned char ewram_2010000[];
+extern unsigned char gBuffer[];
 
 void Func_8011568(void) {
     do { u32 _value = 0x682; REG_BG1CNT = _value; } while (0);
-    DMA3_COPY(ewram_2010000, (void *)0x6006a00, 0x9600);
+    DMA3_COPY(gBuffer, (void *)0x6006a00, 0x9600);
 }

@@ -6,7 +6,7 @@
  * TODO(residual): reg-alloc/scheduling divergence (register swap / op-order); logic correct. Permuter seed.
  */
 extern unsigned char iwram_3001d00;
-extern unsigned int iwram_3001400[248];
+extern unsigned int gRAMLib_end[248];
 extern void Func_80008d4(unsigned int *arr, int n);
 extern void _call_via_r3(void);
 
@@ -14,5 +14,5 @@ void Func_8003d04(void) {
     void (*fn)(unsigned int *, int);
     iwram_3001d00 = 0;
     fn = (void (*)(unsigned int *, int))Func_80008d4;
-    fn(iwram_3001400, 0x80 << 3);
+    fn(gRAMLib_end, 0x80 << 3);
 }

@@ -256,7 +256,7 @@
 	bne	.L199ba
 	mov	r5, #1
 .L199ba:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r2, =0x303
 	ldr	r3, [r3]
 	and	r3, r2

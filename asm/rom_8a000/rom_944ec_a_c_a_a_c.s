@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_8095938
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	mov	r5, r0
 	lsl	r1, #1
@@ -234,7 +234,7 @@
 	bge	.L95ad8
 	mov	r0, #0x3c
 	bl	Func_80030f8
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
 	add	r5, r3

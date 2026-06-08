@@ -11,7 +11,7 @@
 	push	{r7}
 	sub	sp, #8
 	str	r2, [sp]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1
@@ -112,7 +112,7 @@
 
 .thumb_func_start OvlFunc_955_2008400
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -137,7 +137,7 @@
 	bne	.L4ae
 	cmp	r6, #0x33
 	ble	.L448
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0x20
 	and	r3, r2
@@ -147,7 +147,7 @@
 	neg	r5, r5
 	b	.L456
 .L448:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0x10
 	and	r3, r2
@@ -209,7 +209,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r7, r1
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1

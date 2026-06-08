@@ -268,7 +268,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L758
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -299,7 +299,7 @@
 	beq	.L766
 	b	.L888
 .L766:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

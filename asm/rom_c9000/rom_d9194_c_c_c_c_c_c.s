@@ -228,7 +228,7 @@
 	bl	Func_80e0524
 .Ld93a0:
 	mov	r0, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r10, r0
 .Ld93a6:
 	bl	Random
@@ -572,7 +572,7 @@
 	lsl	r3, r0, #9
 	sub	r3, r2
 	ldr	r1, [sp, #0x18]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r5, #0
 	lsl	r3, #2
 	mov	r10, r5

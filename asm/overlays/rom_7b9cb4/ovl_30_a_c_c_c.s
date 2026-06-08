@@ -510,7 +510,7 @@
 	add	r5, #0x25
 	strb	r3, [r5]
 	mov	r2, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]

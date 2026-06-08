@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_8095fcc
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -63,7 +63,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -180,7 +180,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r5, r0
 	mov	r0, #0xfa
 	lsl	r0, #1
@@ -484,7 +484,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -833,7 +833,7 @@
 .L96712:
 	mov	r0, #0xa
 	bl	Func_80030f8
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
 	add	r5, r3

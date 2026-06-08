@@ -38,7 +38,7 @@
 	ldrb	r3, [r3]
 	mov	r1, #0xbd
 	mov	r8, r3
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	lsl	r1, #1
 	ldr	r2, =0xfff80000
 	add	r3, r1
@@ -283,7 +283,7 @@
 	sub	r3, #0xc
 	cmp	r6, #0
 	bne	.L91514
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

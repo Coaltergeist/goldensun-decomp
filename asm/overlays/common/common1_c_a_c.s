@@ -136,7 +136,7 @@
 	mov	r8, r1
 	ldr	r5, [r3]
 	bl	__Func_8079338
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r7, r0
 	mov	r0, #0xfa
 	lsl	r0, #1
@@ -224,7 +224,7 @@
 	mov	r1, #2
 	bl	__Func_8019908
 .L18de:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -503,7 +503,7 @@
 	add	r7, #0xd8
 	mov	r1, #0
 	ldrsh	r3, [r7, r1]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]

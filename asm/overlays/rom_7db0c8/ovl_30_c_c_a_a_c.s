@@ -114,7 +114,7 @@
 	push	{r7}
 	sub	sp, #8
 	str	r2, [sp]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1
@@ -215,7 +215,7 @@
 
 .thumb_func_start OvlFunc_954_200842c
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -261,14 +261,14 @@
 
 .thumb_func_start OvlFunc_954_2008490
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
 	sub	sp, #8
 	bl	__MapActor_GetActor
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r0, #8]
 	asr	r7, r3, #20
 	ldr	r3, [r1]
@@ -354,7 +354,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

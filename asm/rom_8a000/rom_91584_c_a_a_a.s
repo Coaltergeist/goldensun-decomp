@@ -8,7 +8,7 @@
 	bl	Func_808b674
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

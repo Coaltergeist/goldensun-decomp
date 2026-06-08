@@ -306,7 +306,7 @@
 	lsl	r3, #7
 	stmia	r2!, {r3}
 	mov	r1, #0xbb
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	lsl	r1, #1
 	add	r3, r1
 	ldrh	r3, [r3]

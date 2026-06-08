@@ -61,7 +61,7 @@
 	str	r5, [sp]
 	bl	Func_80ed408
 .Ldfac4:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, r3
 	add	r2, #0xb8
 	add	r3, #0xbc
@@ -82,7 +82,7 @@
 	mov	r3, #0x90
 	lsl	r3, #1
 	mov	r0, r9
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #0x28
 	bl	Func_80df9d0
 	ldr	r0, =_FILE_bd
@@ -294,7 +294,7 @@
 	lsl	r1, r3, #4
 	ldr	r2, [r4]
 	sub	r1, r3
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	lsl	r1, #6
 	mov	r0, r10
 	add	r1, r3
@@ -478,7 +478,7 @@
 	mov	r0, #0
 	str	r2, [sp, #0xc]
 	bl	Func_80cef64
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r1, [sp, #0x10]
 	ldr	r0, =_FILE_73
 	mov	r2, #0
@@ -604,7 +604,7 @@
 	ldr	r2, =0x77a8
 	mov	r3, #4
 	add	r2, r9
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	str	r3, [r2]
 	mov	r4, #0
 	add	r7, r11
@@ -796,7 +796,7 @@
 	str	r3, [r2, #0x18]
 .Le00f0:
 	mov	r0, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r6, =Data_ede48
 	mov	r10, r0
 .Le00f8:
@@ -1067,7 +1067,7 @@
 	cmp	r3, #0x5f
 	ble	.Le0422
 	ldr	r0, [sp, #0xc]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r4, #0
 	add	r7, r0, r1
 .Le037a:
@@ -1164,7 +1164,7 @@
 	b	.Le0334
 .Le043c:
 	mov	r0, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r6, =Data_ede48
 	mov	r10, r0
 .Le0444:

@@ -60,7 +60,7 @@
 
 .thumb_func_start OvlFunc_957_2008bc8
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xe0
 	lsl	r0, #1
 	add	r3, r0
@@ -115,7 +115,7 @@
 	mov	r3, #1
 	strb	r3, [r2]
 .Lc4a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

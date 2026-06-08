@@ -22,7 +22,7 @@
 	ldr	r3, =Func_80008ac
 	mov	r0, r6
 	bl	_call_via_r3
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r2, r8
 	str	r2, [r3, #4]
 	mov	r2, r10

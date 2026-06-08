@@ -99,7 +99,7 @@
 	lsl	r0, #19
 	mov	r2, #0x80
 	bl	_call_via_r3
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r7, #0
 .Lcc6c0:
 	mov	r3, #0x80
@@ -164,7 +164,7 @@
 	mov	r3, #7
 	mov	r0, #0x2e
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r0, #0x8c
@@ -415,7 +415,7 @@
 	bne	.Lcc9c8
 	mov	r2, #0
 	ldr	r6, =0xffff
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r10, r2
 .Lcc990:
 	bl	Random
@@ -448,7 +448,7 @@
 	str	r2, [r3, #4]
 	str	r2, [r3, #8]
 	mov	r10, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r9, r3
 	mov	r8, r2
 .Lcc9d8:

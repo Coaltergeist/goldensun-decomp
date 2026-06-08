@@ -12,7 +12,7 @@
 	bl	OvlFunc_959_2009660
 	cmp	r0, #0
 	bne	.L16f4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

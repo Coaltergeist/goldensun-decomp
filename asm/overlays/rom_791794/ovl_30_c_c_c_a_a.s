@@ -189,7 +189,7 @@
 	orr	r3, r2
 	strb	r3, [r5, #0x1d]
 	ldrb	r3, [r5, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r1, [r3, #2]

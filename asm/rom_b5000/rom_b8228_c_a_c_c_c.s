@@ -59,7 +59,7 @@
 .thumb_func_start Func_80b9acc
 	push	{lr}
 	ldr	r3, =iwram_3001e80
-	ldr	r0, =iwram_3001ae8
+	ldr	r0, =gKeyHeld
 	ldr	r1, [r3]
 	add	r3, #0x80
 	ldr	r4, [r3]

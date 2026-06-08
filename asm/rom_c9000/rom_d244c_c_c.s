@@ -235,7 +235,7 @@
 	str	r6, [sp, #0x24]
 	str	r0, [sp, #0xc]
 .Ld264e:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -384,7 +384,7 @@
 .Ld2778:
 	ldr	r1, =.Lee184
 	mov	r0, #0x7f
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r7, #0
 	mov	r11, r0
 	mov	r9, r1
@@ -712,7 +712,7 @@
 	ldr	r2, [sp, #0x24]
 	cmp	r2, #0xaf
 	bgt	.Ld2af6
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r7, #0
 .Ld2a68:
 	ldr	r3, [r5, #0x18]

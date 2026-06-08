@@ -17,7 +17,7 @@
 .L9331e:
 	bl	Func_8092ba8
 	bl	Func_80915ac
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x83
 	lsl	r1, #2
 	add	r3, r1

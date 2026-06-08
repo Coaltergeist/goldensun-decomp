@@ -27,7 +27,7 @@
 	ldr	r2, [r1, r3]
 	b	.L12110
 .L1210e:
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 .L12110:
 	mov	r3, r5
 	cmp	r5, #0

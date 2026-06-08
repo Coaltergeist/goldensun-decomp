@@ -439,7 +439,7 @@
 	add	r0, #1
 	cmp	r4, #1
 	bls	.L906fc
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -741,7 +741,7 @@
 	mov	r1, #0x8c
 	add	r0, r6, r3
 	lsl	r1, #6
-	ldr	r5, =ewram_2002090
+	ldr	r5, =gDMATaskCount
 	add	r6, r0, r1
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]

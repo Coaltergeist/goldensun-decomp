@@ -14,17 +14,17 @@
  * Func_ -> friendly name:
  *   Func_80fb2cc m4aMPlayVolumeControl   Func_80fb2a4 m4aMPlayTempoControl
  *   Func_80fb334 m4aMPlayPitchControl    Func_80f9c44 m4aSoundVSync
- *   ewram_2004290 gMPlayInfo_BGM
+ *   gMPlayInfo_BGM gMPlayInfo_BGM
  */
 extern unsigned char  ewram_2003000;
-extern unsigned char  ewram_2004210[];
-extern short          ewram_2003008;   /* current volume */
-extern short          ewram_2003034;   /* target  volume */
-extern unsigned short ewram_2003010;   /* volume step     */
-extern short          ewram_2003038;   /* current tempo   */
-extern short          ewram_2003030;   /* target  tempo   */
-extern unsigned short ewram_200300c;   /* tempo  step     */
-extern void *ewram_2004290;
+extern unsigned char  gMPlayInfo_02004210[];
+extern short          gMusicCurVolume;   /* current volume */
+extern short          gMusicVolume;   /* target  volume */
+extern unsigned short gMusicVolumeDelta;   /* volume step     */
+extern short          gMusicCurSpeed;   /* current tempo   */
+extern short          gMusicSpeed;   /* target  tempo   */
+extern unsigned short gMusicSpeedDelta;   /* tempo  step     */
+extern void *gMPlayInfo_BGM;
 
 extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
 extern void Func_80fb2a4(void *mplayInfo, unsigned short tempo);
@@ -38,37 +38,37 @@ void Func_80f91e8(void) {
     state = ewram_2003000;
     if (state != 0) {
         if (state == 1) {
-            if (ewram_2004210[4] == 0) {
+            if (gMPlayInfo_02004210[4] == 0) {
                 ewram_2003000 = 0;
-                ewram_2003034 = 0x100;
+                gMusicVolume = 0x100;
             }
         } else {
             ewram_2003000 = state - 1;
         }
     }
 
-    if (ewram_2003034 != ewram_2003008) {
-        diff = ewram_2003034 - ewram_2003008;
+    if (gMusicVolume != gMusicCurVolume) {
+        diff = gMusicVolume - gMusicCurVolume;
         if (diff > 0)
-            ewram_2003008 = (unsigned short)ewram_2003008 + ewram_2003010;
+            gMusicCurVolume = (unsigned short)gMusicCurVolume + gMusicVolumeDelta;
         else
-            ewram_2003008 = (unsigned short)ewram_2003008 - ewram_2003010;
-        if (((ewram_2003034 - ewram_2003008) ^ diff) < 0)
-            ewram_2003008 = ewram_2003034;
-        Func_80fb2cc(&ewram_2004290, 0xff, (unsigned short)ewram_2003008);
+            gMusicCurVolume = (unsigned short)gMusicCurVolume - gMusicVolumeDelta;
+        if (((gMusicVolume - gMusicCurVolume) ^ diff) < 0)
+            gMusicCurVolume = gMusicVolume;
+        Func_80fb2cc(&gMPlayInfo_BGM, 0xff, (unsigned short)gMusicCurVolume);
     }
 
-    if (ewram_2003030 != ewram_2003038) {
-        diff = ewram_2003030 - ewram_2003038;
+    if (gMusicSpeed != gMusicCurSpeed) {
+        diff = gMusicSpeed - gMusicCurSpeed;
         if (diff > 0)
-            ewram_2003038 = (unsigned short)ewram_2003038 + ewram_200300c;
+            gMusicCurSpeed = (unsigned short)gMusicCurSpeed + gMusicSpeedDelta;
         else
-            ewram_2003038 = (unsigned short)ewram_2003038 - ewram_200300c;
-        if (((ewram_2003030 - ewram_2003038) ^ diff) < 0)
-            ewram_2003038 = ewram_2003030;
-        Func_80fb2a4(&ewram_2004290, (unsigned short)ewram_2003038);
-        Func_80fb334(&ewram_2004290, 0xff,
-                     (((3 * ewram_2003038) << 18) + (0xf4 << 24)) >> 16);
+            gMusicCurSpeed = (unsigned short)gMusicCurSpeed - gMusicSpeedDelta;
+        if (((gMusicSpeed - gMusicCurSpeed) ^ diff) < 0)
+            gMusicCurSpeed = gMusicSpeed;
+        Func_80fb2a4(&gMPlayInfo_BGM, (unsigned short)gMusicCurSpeed);
+        Func_80fb334(&gMPlayInfo_BGM, 0xff,
+                     (((3 * gMusicCurSpeed) << 18) + (0xf4 << 24)) >> 16);
     }
 
     Func_80f9c44();

@@ -118,7 +118,7 @@
 	bl	Func_80e0524
 .Ld53a8:
 	mov	r4, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r11, r4
 	mov	r6, #0xff
 .Ld53b0:
@@ -327,7 +327,7 @@
 	add	r1, #0x48
 	add	r3, #0xc
 	mov	r4, sp
-	ldr	r0, =iwram_3001e50
+	ldr	r0, =gPtrs
 	str	r1, [sp, #0x20]
 	str	r3, [sp, #0x24]
 	add	r4, #0x5c
@@ -517,7 +517,7 @@
 	lsl	r2, r0, #6
 	lsl	r3, r0, #9
 	sub	r3, r2
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	add	r7, r3, r1
 .Ld5728:
@@ -877,7 +877,7 @@
 
 .Ld5a2c:
 	ldr	r6, [r6, #0x20]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	str	r6, [sp, #0x10]
 	mov	r7, #0
 .Ld5a34:
@@ -1000,7 +1000,7 @@
 	bne	.Ld5ad0
 .Ld5b2c:
 	mov	r0, #0x20
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r7, #0
 	mov	r8, r0
 .Ld5b34:
@@ -1410,7 +1410,7 @@
 	ldrsh	r0, [r3, r5]
 	bl	_Func_80b7dd0
 	ldr	r0, [r0]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	str	r0, [sp, #0x38]
 	mov	r0, #0
 	mov	r10, r0
@@ -1600,7 +1600,7 @@
 	mov	r5, #0
 	lsl	r1, #8
 	str	r0, [sp, #0x2c]
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r10, r5
 	lsl	r7, r0, #8
 	mov	r8, r1
@@ -1787,7 +1787,7 @@
 	b	.Ld5fb0
 .Ld61e2:
 	mov	r1, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r10, r1
 	mov	r6, #0xff
 .Ld61ea:
@@ -1991,7 +1991,7 @@
 	sub	r0, r3, r5
 	lsl	r0, #9
 	bl	Func_8004c1c
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r1, [sp, #8]
 	mov	r0, #0
 	mov	r10, r0

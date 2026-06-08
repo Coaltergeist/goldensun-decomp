@@ -62,7 +62,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xc8
 	mov	r7, r2
 	ldr	r2, [r3]

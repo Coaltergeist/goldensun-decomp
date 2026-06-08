@@ -68,12 +68,12 @@ typedef void (*Draw2DFn)(u8 *dst, void *gfx, int x, int y, int w, int h);
  *   *(iwram_3001f00 - 0x0c) = gPtrs.particleGFX  (dest_00) */
 extern u8 *iwram_3001f00;
 extern u16 iwram_3001ad0;      /* +4 -> saved BG coord (originalBGCoords) */
-extern u8 *iwram_3001ce0;      /* draw2D scratch + [+0x10] = a BG/scroll field */
-extern u8 *iwram_3001b04;      /* low bits gate the movement-pattern loop */
+extern u8 *gPhysVec;      /* draw2D scratch + [+0x10] = a BG/scroll field */
+extern u8 *gKeyRepeat;      /* low bits gate the movement-pattern loop */
 
 /* gBuffer regions (ewram) */
 extern u8 ewram_2013800[];     /* matrix blocks: + i*0x120 + 0xe00 per arrow */
-extern u8 ewram_2010000[];     /* particle bytes: + i*0xa8, stride 7; flare gfx base */
+extern u8 gBuffer[];     /* particle bytes: + i*0xa8, stride 7; flare gfx base */
 
 /* MMIO */
 extern volatile u16 REG_BG2PA;     /* 0x04000020 */
@@ -185,7 +185,7 @@ void Func_80dc968(AnimContext *context)
         Func_80ed408(0x2f, 7, 7, 3, 3);   /* BuildDraw2DFunc draw2D_2 */
         draw2D[0] = *(Draw2DFn *)(gBuffer + 8);
         draw2D[1] = *(Draw2DFn *)(gBuffer + 0xc);
-        iwram_3001ce0[0x10] = 0xf0;        /* move all units off screen (Y=0xf0) */
+        gPhysVec[0x10] = 0xf0;        /* move all units off screen (Y=0xf0) */
 
         Func_80030f8(1);                  /* WaitFrames(1) */
         _Func_80c08ec(1, 0x3b, 0);        /* AnimTransitionIn(1, BG, 0) */
@@ -205,7 +205,7 @@ void Func_80dc968(AnimContext *context)
         for (i = 0; i < 16; i++) {
             Particle3D *p = STATE_PARTICLES(state) + i;
             u8 *mtx = ewram_2013800 + i * 0x120 + 0xe00;
-            u8 *pb  = ewram_2010000 + i * 0xa8;
+            u8 *pb  = gBuffer + i * 0xa8;
 
             p->px = FX((Func_b50_from_thumb(Random(), 0x60)) + 0xc);
             p->py = FX((Random() & 0x3f) + 0x20);
@@ -230,7 +230,7 @@ void Func_80dc968(AnimContext *context)
         REG_BG2CNT = 0x784;
 
         /* ---- Animation Segment 1 ---- */
-        if ((*(s32 *)iwram_3001b04 & 3) == 0) {
+        if ((*(s32 *)gKeyRepeat & 3) == 0) {
             int movement_xCoord = 0;
             int movement_yCoord = 0;
 
@@ -307,7 +307,7 @@ void Func_80dc968(AnimContext *context)
 
                     if (frame < spawn + 0x50) {
                         u8 *mtx = ewram_2013800 + i * 0x120 + 0xe00;
-                        u8 *pb  = ewram_2010000 + i * 0xa8;
+                        u8 *pb  = gBuffer + i * 0xa8;
                         for (j = 0; j != 24; j++) {
                             if ((int)*(s32 *)pb > 0) {
                                 vec3 in, out;
@@ -375,7 +375,7 @@ void Func_80dc968(AnimContext *context)
         /* ---- Segment 2 setup ---- */
         REG_BG2PA   = 0x80;
         REG_DISPCNT = 0x7741;
-        Func_80e0524(0xb4, ewram_2010000, 1, 0);  /* LoadVFXFile flare */
+        Func_80e0524(0xb4, gBuffer, 1, 0);  /* LoadVFXFile flare */
 
         /* init 0x20 flare particles */
         for (i = 0; i < 0x20; i++) {
@@ -432,7 +432,7 @@ void Func_80dc968(AnimContext *context)
                     if (flareLife < 0x18) {
                         int idx = (flareLife < 0) ? (flareLife + 3) >> 2 : flareLife >> 2;
                         (*draw2D[i & 1])(dest,
-                            ewram_2010000 + Data_edeb2[idx],          /* gfx offset table */
+                            gBuffer + Data_edeb2[idx],          /* gfx offset table */
                             (p->px - (Data_ede9f[idx] >> 1)) - 8,     /* width table */
                             (p->py + Data_edeab[idx]) - 0x28,         /* yoffset table */
                             Data_ede9f[idx],                          /* width */

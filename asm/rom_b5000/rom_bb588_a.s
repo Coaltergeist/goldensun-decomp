@@ -218,7 +218,7 @@
 	mov	r1, #0xf0
 	mov	r0, r7
 	bl	Func_8003dec
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #2
 	and	r3, r2

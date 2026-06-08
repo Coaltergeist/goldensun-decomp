@@ -149,7 +149,7 @@
 	ldrsh	r0, [r2, r3]
 	str	r4, [sp, #8]
 	bl	_Func_80b7dd0
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r2, #0
 	ldr	r0, [r0]
 	ldr	r4, [sp, #8]
@@ -218,7 +218,7 @@
 	mov	r2, #7
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -259,7 +259,7 @@
 	mov	r2, #7
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -362,7 +362,7 @@
 	bne	.Lcfbbe
 	b	.Lcfd88
 .Lcfbbe:
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	mov	r0, #0
 	str	r4, [sp, #0x10]
 	str	r0, [sp, #0xc]

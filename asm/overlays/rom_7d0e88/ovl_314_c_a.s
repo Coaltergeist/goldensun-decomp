@@ -596,7 +596,7 @@
 	mov	r9, r2
 	and	r7, r3
 	mov	r2, #0xf9
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldrb	r3, [r3]

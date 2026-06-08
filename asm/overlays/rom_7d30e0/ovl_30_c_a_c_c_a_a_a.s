@@ -386,7 +386,7 @@
 	cmp	r0, #0
 	beq	.Leae
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
@@ -438,7 +438,7 @@
 
 .thumb_func_start OvlFunc_948_2008ee0
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

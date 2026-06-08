@@ -154,7 +154,7 @@
 	ldr	r1, =.L9ff18
 	b	.L93ac6
 .L93ab0:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -310,7 +310,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -433,7 +433,7 @@
 	and	r1, r3
 	mov	r0, r6
 	bl	_Func_800c528
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -562,7 +562,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r1, #0xfa
 	mov	r8, r0
 	lsl	r1, #1
@@ -609,7 +609,7 @@
 	asr	r3, #4
 	lsl	r3, #7
 	add	r3, r2, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r0, =ewram_2010200
 	lsl	r3, #2
 	add	r2, r3, r1
@@ -735,7 +735,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r1, =ewram_2000434
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r9, r0
 	ldr	r0, [r1]
 	sub	sp, #0x18
@@ -790,7 +790,7 @@
 	asr	r3, #4
 	lsl	r3, #7
 	add	r3, r2, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r0, =ewram_200fe00
 	lsl	r3, #2
 	add	r2, r3, r1

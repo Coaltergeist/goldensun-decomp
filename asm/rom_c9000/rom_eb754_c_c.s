@@ -76,7 +76,7 @@
 	mov	r0, #8
 	mov	r2, #1
 	bl	Func_80dbb24
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	mov	r0, #1
@@ -254,7 +254,7 @@
 	add	r7, #0x1c
 	cmp	r2, #0x20
 	bne	.Lec2d2
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r3
 .Lec34c:
 	bl	Random
@@ -338,7 +338,7 @@
 	mov	r2, r10
 	cmp	r2, #0xf
 	bhi	.Lec43e
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	cmp	r2, #1
 	bne	.Lec426
 	ldr	r5, =ewram_2010002
@@ -549,7 +549,7 @@
 	cmp	r3, #0x4c
 	bne	.Lec61a
 	mov	r4, #0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r4
 .Lec5a2:
 	mov	r6, #1
@@ -1065,7 +1065,7 @@
 	ldr	r4, [sp, #0x18]
 	ldr	r4, [r4, #4]
 	mov	r6, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r9, r4
 	mov	r8, r6
 	mov	r7, #3
@@ -1170,7 +1170,7 @@
 	bgt	.Leca80
 	b	.Lec3c2
 .Leca80:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -1414,7 +1414,7 @@
 .Lecc8a:
 	mov	r2, #0
 	mov	r9, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 .Lecc90:
 	ldr	r3, [r2, #0x18]
 	cmp	r3, #0
@@ -1521,7 +1521,7 @@
 .Lecd60:
 	mov	r6, #0
 	mov	r8, r6
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 .Lecd66:
 	ldr	r3, [r6, #0x18]
 	cmp	r3, #0

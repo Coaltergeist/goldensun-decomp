@@ -548,7 +548,7 @@
 .L54a:
 	cmp	r0, #0
 	ble	.L56a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r3, r2
@@ -1067,7 +1067,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	beq	.L9e8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -1207,7 +1207,7 @@
 	mov	r1, #0xb
 	bl	__Func_8091fa8
 .Lb1e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #4
@@ -1263,7 +1263,7 @@
 	push	{r5, r6, r7, lr}
 	ldr	r6, =0x2930
 	bl	__Func_80916b0
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -1453,7 +1453,7 @@
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	bl	__Func_80916b0
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -1516,7 +1516,7 @@
 	sub	sp, #4
 	mov	r5, r0
 	bl	__Func_80916b0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -1562,7 +1562,7 @@
 	bl	__Func_801e9a0
 	mov	r7, r5
 .Le7e:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1661,7 +1661,7 @@
 	mov	r1, #0
 	cmp	r1, r5
 	bge	.Lf7a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfc
 	lsl	r0, #1
 	add	r2, r3, r0

@@ -12,7 +12,7 @@
 	mov	r0, #0x37
 	sub	sp, #4
 	bl	Func_80048b0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r3, r2
@@ -188,7 +188,7 @@
 	mov	r0, #0x37
 	bl	Func_8002dd8
 	bl	_Func_8091858
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r3, r2
@@ -1762,7 +1762,7 @@
 	bl	_Func_801e7c0
 	cmp	r5, #6
 	ble	.Lab3ce
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	mov	r2, #1
 	mov	r1, #0
 	mov	r11, r2
@@ -2823,7 +2823,7 @@
 .Labccc:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r3]
 	lsl	r2, #1
@@ -2846,7 +2846,7 @@
 	str	r2, [sp, #0x24]
 	str	r2, [sp, #0x20]
 .Labcfa:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r11, r3
 	ldr	r3, =gKeyPress
@@ -2940,7 +2940,7 @@
 	ldr	r0, =0xc4c
 	mov	r1, #9
 	bl	_Func_8017658
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #0x83
 	lsl	r3, #2
 	add	r2, r3
@@ -2968,7 +2968,7 @@
 	mov	r1, #9
 	bl	_Func_8017658
 	mov	r7, #0x83
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r7, #2
 	add	r2, r7
 	mov	r3, #1
@@ -3021,7 +3021,7 @@
 	ldr	r0, =0xc40
 	str	r4, [sp, #8]
 	bl	_Func_8017658
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0x83
 	lsl	r1, #2
 	add	r2, r1
@@ -3102,7 +3102,7 @@
 	str	r4, [sp, #8]
 	bl	_Func_8017658
 	mov	r7, #0x83
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r7, #2
 	add	r2, r7
 	mov	r3, #1
@@ -3178,7 +3178,7 @@
 	beq	.Lac004
 	b	.Lac1b8
 .Lac004:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x83
 	lsl	r1, #2
 	add	r3, r1

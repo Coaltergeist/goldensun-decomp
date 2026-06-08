@@ -2,11 +2,11 @@
  * u16 truncation of (state >> 8) is what produces the lsl #8 / lsr #16
  * tail in the asm. */
 
-extern unsigned iwram_3001cb4;
+extern unsigned gRNGState;
 
 /* FF: u16 Random(void) */
 unsigned short Random(void) {
-    unsigned my_state = iwram_3001cb4 * 0x41C64E6D + 12345;
-    iwram_3001cb4 = my_state;
+    unsigned my_state = gRNGState * 0x41C64E6D + 12345;
+    gRNGState = my_state;
     return my_state >> 8;
 }

@@ -10,7 +10,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xfa
 	ldr	r5, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
@@ -210,7 +210,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r1, #0xfa
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
@@ -317,7 +317,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -428,7 +428,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

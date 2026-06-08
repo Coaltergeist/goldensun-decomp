@@ -4,11 +4,11 @@
 .thumb_func_start Func_8004144
 	push	{r5, r6, lr}
 	sub	sp, #8
-	ldr	r2, =iwram_3001a20
+	ldr	r2, =gTasks
 	mov	r4, #0x13
 	b	.L4150
 .L414e:
-	ldr	r2, =iwram_3001a20
+	ldr	r2, =gTasks
 .L4150:
 	mov	r1, r2
 	cmp	r4, #0
@@ -52,7 +52,7 @@
 .thumb_func_start Func_8004198
 	push	{r5, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -85,7 +85,7 @@
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001a10
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	ldrb	r3, [r3]
 	neg	r5, r5
 	ldr	r3, =REG_IME
@@ -112,7 +112,7 @@
 .L420c:
 	mov	r3, #1
 	neg	r3, r3
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	cmp	r5, r3
 	bne	.L4254
 	ldr	r3, [r4]

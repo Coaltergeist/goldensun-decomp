@@ -3,7 +3,7 @@
 .thumb_func_start Func_8091fc0
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r12, r3
 	mov	r3, #0xe0
 	lsl	r3, #1

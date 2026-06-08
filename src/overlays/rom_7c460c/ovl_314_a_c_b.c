@@ -5,7 +5,7 @@
  * asm/overlays/rom_7c460c/ovl_314_a_c_a.o and asm/overlays/rom_7c460c/ovl_314_a_c_c.o in
  * goldensun/overlays/rom_7c460c/overlay.ld.
  */
-extern unsigned char ewram_2000240;
+extern unsigned char gState;
 extern void __Func_8092b94(int);
 extern int __Func_8079338(int);
 extern void __Func_8092f84(int, int);
@@ -14,7 +14,7 @@ void OvlFunc_939_2008980(void) {
     unsigned int r3;
     unsigned int r2;
 
-    r3 = (unsigned int)&ewram_2000240;
+    r3 = (unsigned int)&gState;
     r2 = 0x93;
     r2 <<= 2;
     r3 += r2;

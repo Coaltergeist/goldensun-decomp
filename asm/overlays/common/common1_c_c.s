@@ -48,7 +48,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -209,7 +209,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1

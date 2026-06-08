@@ -108,7 +108,7 @@
 	push	{r5, r6, lr}
 	mov	r4, #0x80
 	mov	r0, #1
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r6, =0xfff
 	lsl	r4, #7
 	neg	r0, r0
@@ -144,7 +144,7 @@
 	mov	r0, r5
 	bl	Func_8004970
 	ldr	r3, =Func_8001af8
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r5
 	mov	r8, r0
 	bl	_call_via_r3
@@ -162,7 +162,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r0, =ewram_2018000
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r8
 	bl	_call_via_r6
 	mov	r0, r6
@@ -225,7 +225,7 @@
 	add	r0, r5, r3
 	bl	DecompressLZ
 	ldr	r3, [r5, #0x2c]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	add	r0, r5, r3
 	bl	DecompressLZ
 	bl	Func_800fac8
@@ -334,7 +334,7 @@
 	mov	r4, #3
 	ldrsb	r4, [r6, r4]
 	add	r2, r0
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	lsl	r2, #2
 	add	r2, r3
 	lsl	r1, #12

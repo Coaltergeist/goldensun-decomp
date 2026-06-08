@@ -496,7 +496,7 @@
 	orr	r3, r2
 	mov	r0, r10
 	orr	r3, r0
-	ldr	r0, =iwram_3001b10
+	ldr	r0, =gSpriteSlots
 	str	r3, [r5, #0x14]
 	lsl	r3, r7, #2
 	add	r3, r0

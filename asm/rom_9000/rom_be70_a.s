@@ -5,7 +5,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldrb	r3, [r0, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]

@@ -194,7 +194,7 @@
 	add	r3, #0xc
 	b	.L17800
 .L177e0:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

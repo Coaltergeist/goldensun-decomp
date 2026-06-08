@@ -13,7 +13,7 @@
 	ldr	r3, [r3]
 	mov	r1, #0xfa
 	ldr	r7, [r3, #0x10]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
@@ -822,7 +822,7 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]
@@ -1081,7 +1081,7 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]
@@ -1199,7 +1199,7 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]

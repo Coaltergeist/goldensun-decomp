@@ -102,7 +102,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]

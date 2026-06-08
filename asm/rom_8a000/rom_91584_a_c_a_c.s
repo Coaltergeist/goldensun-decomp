@@ -4,7 +4,7 @@
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L9162a
@@ -58,7 +58,7 @@
 
 .thumb_func_start Func_8091660
 	push	{r5, lr}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -149,7 +149,7 @@
 	mov	r0, #0x99
 	lsl	r0, #1
 	bl	_Func_8079374
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	ldr	r3, [r3, r2]

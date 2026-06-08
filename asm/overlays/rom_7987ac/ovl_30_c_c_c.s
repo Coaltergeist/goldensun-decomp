@@ -9,7 +9,7 @@
 	add	r3, r2
 	add	r2, #0x49
 	str	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	sub	r2, #0x47
 	add	r3, r2
 	mov	r2, #0

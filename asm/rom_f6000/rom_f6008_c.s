@@ -580,7 +580,7 @@
 	ldr	r2, =0xa2600001
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r5, r7
 	ldr	r4, [r3]
 	add	r5, #0x9c
@@ -2707,9 +2707,9 @@
 	sub	r3, #0xc
 	add	r4, #0x20
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r3, #0
 	ldr	r7, =0x600b500
 	mov	r8, r3
@@ -2935,10 +2935,10 @@
 	lsl	r3, #1
 	add	r4, r3
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6010000
 	ldr	r2, =0x84001b30
 	b	.Lf7794
@@ -2963,10 +2963,10 @@
 	sub	r3, #0xc
 	add	r4, #0x20
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6016e00
 	ldr	r2, =0x84000480
 	stmia	r3!, {r0, r1, r2}
@@ -3081,7 +3081,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	bl	_Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -3304,7 +3304,7 @@
 	and	r2, r3
 	lsl	r3, r2, #3
 	sub	r3, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #10
 	add	r7, r3, r2
 	lsl	r5, #16
@@ -3354,7 +3354,7 @@
 .Lf7b00:
 	mov	r7, #0
 	mov	r8, r7
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 .Lf7b06:
 	ldr	r0, [r7, #0x18]
 	cmp	r0, #0
@@ -3898,7 +3898,7 @@
 	push	{r7}
 	sub	sp, #0x2c
 	ldr	r5, =ewram_2004c00
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	str	r0, [sp, #0x28]
 	mov	r0, #0
 	str	r1, [sp, #0x24]

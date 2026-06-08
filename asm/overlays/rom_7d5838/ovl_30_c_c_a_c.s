@@ -394,7 +394,7 @@
 	mov	r2, #0
 	bl	__Func_8092adc
 .L472:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r5, r2

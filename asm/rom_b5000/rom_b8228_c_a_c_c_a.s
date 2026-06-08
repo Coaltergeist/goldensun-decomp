@@ -161,7 +161,7 @@
 	mov	r1, r0
 	mov	r0, #0
 	bl	Func_8005258
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, r10
 	add	r3, #0x78
 	str	r3, [r2, #0x10]
@@ -341,7 +341,7 @@
 	add	r3, #1
 	strb	r3, [r2]
 .Lb91d4:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	ldrb	r3, [r3]
@@ -1130,8 +1130,8 @@
 	ldr	r2, =REG_IME
 	ldrh	r1, [r2]
 	strh	r2, [r2]
-	ldr	r4, =ewram_20023a8
-	ldr	r3, =iwram_3001cb4
+	ldr	r4, =sRPGRNGState
+	ldr	r3, =gRNGState
 	add	r5, sp, #0x10
 	ldr	r3, [r3]
 	ldr	r0, [r5]
@@ -1177,7 +1177,7 @@
 	ldr	r3, [r1, #4]
 	cmp	r0, r3
 	bne	.Lb9890
-	ldr	r2, =ewram_20023a8
+	ldr	r2, =sRPGRNGState
 	ldr	r3, [r1, #8]
 	str	r3, [r2]
 .Lb9848:

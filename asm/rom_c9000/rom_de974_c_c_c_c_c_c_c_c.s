@@ -119,7 +119,7 @@
 	str	r3, [sp]
 	bl	Func_80ed408
 .Ldeb28:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	ldr	r0, =_FILE_73
@@ -794,7 +794,7 @@
 	str	r3, [sp]
 	bl	Func_80ed408
 .Ldf0ac:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xbc
 	ldr	r5, [r3]
 	ldr	r7, [sp, #0x78]
@@ -861,7 +861,7 @@
 	ldr	r4, [sp, #0x3c]
 	lsl	r3, r4, #3
 	sub	r3, r4
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	ldr	r2, [sp, #0x1c]
 	lsl	r3, #2
 	add	r6, r3, r6
@@ -1472,7 +1472,7 @@
 .Ldf5e6:
 	ldr	r1, =.Leec44
 	ldr	r2, =.Leec28
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r9, r1
 	mov	r10, r2
 .Ldf5f0:

@@ -593,7 +593,7 @@
 	cmp	r10, r1
 	bcs	.L1f2c8
 	mov	r2, sp
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r4, #0xfc
 	add	r2, #0x28
 	lsl	r4, #1
@@ -1239,7 +1239,7 @@
 	add	r1, #0x40
 	cmp	r0, #0
 	bge	.L1f7a8
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x90
 	ldr	r3, [r3]
 	b	.L1f7e8
@@ -1289,7 +1289,7 @@
 	sub	sp, #0x1c
 	mov	r8, r0
 	bl	_Func_8077cb8
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r3, =iwram_3001c9c
 	str	r0, [r2]
 	mov	r0, #0x80
@@ -1324,7 +1324,7 @@
 	cmp	r5, #0
 	bge	.L1f860
 	ldrb	r3, [r6, #0xf]
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	strb	r3, [r7, #0x1c]
 	ldr	r3, [r5, #4]
 	mov	r2, #0xe0
@@ -1395,7 +1395,7 @@
 	add	r2, #0x2c
 	strb	r3, [r7, r2]
 	ldr	r0, =0x205
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	add	r3, r2, r0
 	ldrb	r1, [r3]
 	mov	r3, r7
@@ -1439,10 +1439,10 @@
 	lsr	r3, #31
 	add	r2, #0x33
 	strb	r3, [r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xf2
 	ldr	r3, [r3]
-	ldr	r2, =ewram_2000040
+	ldr	r2, =gFlags
 	mov	r5, #0
 	lsl	r1, #2
 	strh	r3, [r7, #0x36]

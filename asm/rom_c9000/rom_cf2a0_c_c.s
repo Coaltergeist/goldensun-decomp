@@ -83,7 +83,7 @@
 	add	r1, r11
 	mov	r0, r6
 	bl	DecompressLZ
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r1, #0
 	mov	r9, r1
 .Lcf370:
@@ -274,7 +274,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -332,7 +332,7 @@
 	cmp	r3, r10
 	ble	.Lcf65c
 	ldr	r0, [sp, #0x10]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r5, #0
 	mov	r9, r5
 	add	r6, r0, r1

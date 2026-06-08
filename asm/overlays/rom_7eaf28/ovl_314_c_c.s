@@ -18,7 +18,7 @@
 .Lb3e:
 	ldr	r0, =0x20f
 	bl	__Func_8079374
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r2
@@ -46,7 +46,7 @@
 	mov	r0, #0x62
 	mov	r1, #5
 	bl	__Func_8091eb0
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r3, =0x22b
 	add	r2, r1, r3
 	mov	r3, #3
@@ -99,7 +99,7 @@
 	mov	r0, #0x86
 	lsl	r0, #2
 	bl	__Func_80793b8
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r5, r1
@@ -159,7 +159,7 @@
 	mov	r0, #0x91
 	lsl	r0, #1
 	bl	__Func_8079358
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -227,7 +227,7 @@
 
 .thumb_func_start OvlFunc_960_2008d24
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -295,7 +295,7 @@
 
 .thumb_func_start OvlFunc_960_2008dc8
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -359,7 +359,7 @@
 
 .thumb_func_start OvlFunc_960_2008e5c
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -392,7 +392,7 @@
 	bl	__Func_80793b8
 	cmp	r0, #0
 	beq	.Lec0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xf9
 	lsl	r1, #1
 	add	r2, r3, r1
@@ -403,7 +403,7 @@
 	lsl	r1, #4
 	bl	__StartTask
 .Lec0:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -442,7 +442,7 @@
 	lsl	r0, #1
 	bl	__Func_80f9080
 .Lf0c:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -528,7 +528,7 @@
 	add	r6, #1
 	cmp	r6, #0xc
 	ble	.Lfb4
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
 	mov	r1, r3
@@ -676,7 +676,7 @@
 	ldr	r0, =0x9b7
 	bl	__Func_8079358
 .L1138:
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
 	mov	r1, r3

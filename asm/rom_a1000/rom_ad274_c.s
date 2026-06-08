@@ -1082,7 +1082,7 @@
 	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	str	r3, [sp, #0x24]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	ldr	r0, =0x212c
 	str	r3, [sp, #0x20]
@@ -1181,7 +1181,7 @@
 	mov	r0, #2
 	mov	r1, #0x60
 	bl	Func_80a1ac0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0x83
 	lsl	r0, #2
 	add	r3, r0
@@ -1245,7 +1245,7 @@
 	mov	r0, #0x6a
 	mov	r1, #0x38
 	bl	Func_80a1ac0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r3, r2
@@ -2001,7 +2001,7 @@
 	ldr	r3, =gKeyPress
 	ldr	r3, [r3]
 	str	r3, [sp, #0x20]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	str	r3, [sp, #0x1c]
 	ldr	r3, [sp, #0x34]

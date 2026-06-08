@@ -10,7 +10,7 @@
 	mov	r2, #0
 	cmp	r2, r5
 	bge	.L7964e
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r3, #0xfc
 	lsl	r3, #1
 	add	r1, r0, r3
@@ -27,7 +27,7 @@
 	mov	r0, r5
 	b	.L7965a
 .L7964e:
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 .L79650:
 	mov	r1, #0xfc
 	lsl	r1, #1
@@ -50,7 +50,7 @@
 	mov	r1, #0
 	cmp	r1, r6
 	bge	.L79696
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	ldrb	r3, [r0, r2]
@@ -69,7 +69,7 @@
 	sub	r0, r6, #1
 	cmp	r1, r0
 	bge	.L796b4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r4, #0xfc
 	add	r3, r1, r3
 	lsl	r4, #1
@@ -99,7 +99,7 @@
 	mov	r1, #0
 	cmp	r0, #0
 	beq	.L796ee
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r4, #0xfc
 	lsl	r4, #1
 	add	r2, r3, r4
@@ -125,7 +125,7 @@
 
 .thumb_func_start Func_8079700
 	push	{lr}
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r3, [r1, #0x10]
 	ldr	r2, =0xf423f
 	add	r3, r0

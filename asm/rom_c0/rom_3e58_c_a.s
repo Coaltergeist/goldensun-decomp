@@ -6,7 +6,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r5, r0
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	mov	r8, r2
 	lsl	r2, r5, #2
 	mov	r6, r1
@@ -78,7 +78,7 @@
 .thumb_func_start Func_800403c
 	push	{lr}
 	ldr	r0, =0x1ff
-	ldr	r3, =iwram_3001810
+	ldr	r3, =gSpriteAllocTable
 	mov	r1, #0
 	mov	r2, #0xff
 .L4046:
@@ -87,7 +87,7 @@
 	add	r3, #1
 	cmp	r1, r0
 	bls	.L4046
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	ldr	r4, .L405c	@ 0xffff
 	mov	r1, #0
 	mov	r0, #0
@@ -113,7 +113,7 @@
 
 .thumb_func_start Func_8004080
 	push	{lr}
-	ldr	r1, =iwram_3001b10
+	ldr	r1, =gSpriteSlots
 	ldr	r4, =0xffff
 	ldrh	r3, [r1, #2]
 	mov	r0, #0x60

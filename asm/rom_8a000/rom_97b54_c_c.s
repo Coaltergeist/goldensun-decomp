@@ -633,7 +633,7 @@
 	str	r0, [sp, #8]
 	b	.L9a0e8
 .L99f3a:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r0, [r3]
 	bl	Func_8097b54
 	lsl	r0, #16

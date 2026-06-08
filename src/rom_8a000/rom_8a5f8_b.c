@@ -6,14 +6,14 @@
  * goldensun/stage1.ld.
  */
 extern void *_Func_80f9080(short arg0);
-extern unsigned int ewram_2000240;
+extern unsigned int gState;
 
 void Func_808acc4(void) {
     unsigned int r3;
     unsigned int r2;
     short r0;
 
-    r3 = (unsigned int)&ewram_2000240;
+    r3 = (unsigned int)&gState;
     r2 = 0xf8;
     r2 <<= 1;
     r3 += r2;

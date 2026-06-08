@@ -127,7 +127,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r2, =iwram_3001e50
+	ldr	r2, =gPtrs
 	mov	r12, r2
 	mov	r3, r12
 	add	r3, #0xa0
@@ -330,7 +330,7 @@
 	blt	.Lc1392
 	b	.Lc1230
 .Lc1392:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xbc
 	ldr	r3, [r3]
 	mov	r5, #0x9c
@@ -403,7 +403,7 @@
 
 .thumb_func_start Func_80c1438
 	push	{lr}
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, r3
 	add	r2, #0xa0
 	ldr	r0, [r2]
@@ -579,7 +579,7 @@
 	ldr	r3, =0x13cc
 	add	r3, r11
 	str	r2, [r3]
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r1, #0x80
 	add	r3, #0xa0
 	lsl	r1, #7
@@ -853,7 +853,7 @@
 	add	r6, sp, #0xbc
 	mov	r9, r2
 .Lc183a:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r0, r8
 	add	r3, #0x9c
 	ldr	r5, [r3]
@@ -886,7 +886,7 @@
 	ldr	r3, [r6, #4]
 	add	r2, r5, r1
 	sub	r3, r4, r3
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	lsl	r3, #8
 	str	r3, [r2]
 	ldrh	r3, [r7]
@@ -930,7 +930,7 @@
 	bne	.Lc1958
 	mov	r0, r11
 	bl	_Func_80ccaec
-	ldr	r2, =ewram_2002090
+	ldr	r2, =gDMATaskCount
 	mov	r3, #0x27
 	mov	r4, #0x40
 	ldr	r6, =REG_IME

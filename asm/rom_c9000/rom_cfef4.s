@@ -45,7 +45,7 @@
 	bl	DecompressLZ
 	ldr	r0, =_FILE_ac
 	bl	GetFile
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r7, r0
 	add	r7, #0x80
 	mov	r1, r5
@@ -475,7 +475,7 @@
 	ldr	r4, [r0, r1]
 	add	r3, r11
 	ldr	r0, [sp, #0x24]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 .Ld02ce:
 	mov	r3, r8
@@ -674,7 +674,7 @@
 	mov	r9, r3
 	mov	r8, r1
 	ldr	r3, =Func_8001af8
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6008000
 	lsl	r2, #7
 	bl	_call_via_r3
@@ -745,7 +745,7 @@
 	asr	r3, #3
 	lsl	r3, #11
 	add	r3, r2, r3
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	add	r4, r3, r2
 	ldrb	r3, [r4]
 	mov	r1, #0xa0
@@ -786,7 +786,7 @@
 .Ld0576:
 	mov	r2, #0xf0
 	ldr	r3, =Func_8001af8
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r2, #7
 	ldr	r0, =0x6008000
 	bl	_call_via_r3
@@ -815,7 +815,7 @@
 	cmp	r5, #0x20
 	bne	.Ld059a
 	mov	r1, #0xf0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r5, #0
 	lsl	r1, #7
 .Ld05ba:
@@ -828,7 +828,7 @@
 	bne	.Ld05ba
 	mov	r2, #0xf0
 	ldr	r3, =Func_8001af8
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r2, #7
 	ldr	r0, =0x6008000
 	bl	_call_via_r3
@@ -1068,7 +1068,7 @@
 	mov	r0, #0x2e
 	str	r5, [sp]
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r1, #7
@@ -1539,7 +1539,7 @@
 	mov	r0, #0x2e
 	str	r5, [sp]
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r0, #0x2f
@@ -2088,7 +2088,7 @@
 	str	r0, [sp, #0x24]
 	mov	r1, #0x5c
 	sub	r3, r2
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	add	r1, sp
 	lsl	r3, #2
 	str	r5, [sp, #0x28]
@@ -2184,7 +2184,7 @@
 	add	r2, r4, r3
 	lsl	r3, r2, #3
 	sub	r3, r2
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r3, #2
 	add	r4, #1
 	add	r7, r3, r0
@@ -2196,7 +2196,7 @@
 	add	r0, r1
 	lsl	r3, r0, #3
 	sub	r3, r0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	add	r6, r3, r2
 	mov	r5, #0
@@ -2581,7 +2581,7 @@
 	mov	r10, r5
 	sub	r3, r2
 	ldr	r5, =.Lee158
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r3, #3
 	mov	r4, #0
 	mov	r8, r5
@@ -2644,7 +2644,7 @@
 	lsl	r3, r2, #3
 	add	r4, #1
 	sub	r3, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	mov	r9, r4
 	add	r2, r3
@@ -2655,7 +2655,7 @@
 	add	r0, r11
 	lsl	r3, r0, #3
 	sub	r3, r0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r3, #2
 	add	r5, r3
 	mov	r8, r5

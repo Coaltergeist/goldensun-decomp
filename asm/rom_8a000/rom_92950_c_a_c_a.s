@@ -165,7 +165,7 @@
 .L92ce6:
 	cmp	r6, #7
 	bgt	.L92d38
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	str	r6, [sp, #0x18]
@@ -551,7 +551,7 @@
 	lsl	r3, #2
 	cmp	r5, r3
 	bhi	.L93010
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r2, [r1]
 	mov	r3, #4
 	and	r2, r3

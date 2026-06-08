@@ -137,10 +137,10 @@
 	lsl	r0, #1
 	add	r4, r0
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6004000
 	ldr	r2, =0x84002580
 	stmia	r3!, {r0, r1, r2}
@@ -162,10 +162,10 @@
 	lsl	r1, #2
 	add	r4, r1
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6010000
 	ldr	r2, =0x84001f00
 	stmia	r3!, {r0, r1, r2}
@@ -383,7 +383,7 @@
 	mov	r2, #0x30
 	mov	r3, #0
 	bl	_Func_801e7c0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, [r6]
 	ldr	r0, [r3, #0x10]
 	mov	r1, #6
@@ -702,7 +702,7 @@
 	ldr	r3, [sp, #0x58]
 	cmp	r3, #0x13
 	ble	.Lf4742
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #1
 	and	r3, r2
@@ -770,7 +770,7 @@
 	mov	r3, #0x28
 	str	r7, [sp]
 	bl	_Func_801ea08
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, [sp, #0x6c]
 	mov	r4, #0x99
 	lsl	r4, #3
@@ -832,8 +832,8 @@
 	bgt	.Lf485c
 	b	.Lf49e6
 .Lf485c:
-	ldr	r7, =iwram_3001b04
-	ldr	r0, =iwram_3001ae8
+	ldr	r7, =gKeyRepeat
+	ldr	r0, =gKeyHeld
 	ldr	r3, [r7]
 	ldr	r3, [r7]
 	ldr	r3, [r0]
@@ -905,7 +905,7 @@
 	ble	.Lf48e2
 	str	r1, [r2]
 .Lf48e2:
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	bl	_Func_8077348
 	lsl	r3, r0, #2
 	add	r3, r0
@@ -1933,7 +1933,7 @@
 	add	r3, r7
 .Lf5126:
 	str	r3, [sp, #0x50]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, [sp, #0x6c]
 	mov	r2, #0x99
 	lsl	r2, #3
@@ -1998,7 +1998,7 @@
 	cmp	r4, #1
 	bne	.Lf51de
 	ldr	r5, [sp, #0x5c]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	str	r5, [sp, #0x50]
 	ldr	r6, [sp, #0x6c]
 	mov	r7, #0x99
@@ -2020,7 +2020,7 @@
 	ldr	r4, [sp, #0x5c]
 	lsl	r4, #1
 	str	r4, [sp, #0x50]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r5, [sp, #0x6c]
 	mov	r6, #0x99
 	lsl	r6, #3
@@ -2052,7 +2052,7 @@
 	add	r3, r4
 	str	r3, [sp, #0x50]
 	ldr	r5, [sp, #0x6c]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r6, #0x99
 	lsl	r6, #3
 	ldr	r0, [r3, #0x10]

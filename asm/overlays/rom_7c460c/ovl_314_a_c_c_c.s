@@ -182,7 +182,7 @@
 
 .thumb_func_start OvlFunc_939_2008eb0
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

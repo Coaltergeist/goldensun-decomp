@@ -108,7 +108,7 @@
 	b	.L7a780
 .L7a682:
 	mov	r1, r8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0x88
 	strh	r2, [r1]
 	lsl	r0, #2
@@ -277,7 +277,7 @@
 	bl	Func_8077428
 	cmp	r6, #3
 	ble	.L7a7b2
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r4, #0x88
 	ldrh	r2, [r5]
 	lsl	r4, #2

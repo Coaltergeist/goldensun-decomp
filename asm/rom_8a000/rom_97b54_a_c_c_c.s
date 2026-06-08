@@ -194,7 +194,7 @@
 
 .thumb_func_start Func_8099678
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -250,7 +250,7 @@
 	ldr	r5, [r5, r3]
 	b	.L996e6
 .L996e4:
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 .L996e6:
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
@@ -293,7 +293,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -370,7 +370,7 @@
 	mov	r1, r9
 	mov	r3, #1
 	strb	r3, [r1]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	mov	r2, #0

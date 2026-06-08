@@ -9,7 +9,7 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	ldr	r3, =Func_80008d4
-	ldr	r0, =iwram_3001400
+	ldr	r0, =gRAMLib_end
 	bl	_call_via_r3
 	pop	{r0}
 	bx	r0
@@ -118,7 +118,7 @@
 	bge	.L3dfa
 	mov	r1, #0
 .L3dfa:
-	ldr	r2, =iwram_3001400
+	ldr	r2, =gRAMLib_end
 	lsl	r3, r1, #2
 	add	r3, r2
 	ldr	r2, [r3]

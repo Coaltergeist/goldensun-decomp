@@ -42,7 +42,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -99,7 +99,7 @@
 	ldr	r0, [r0]
 	mov	r3, #0
 	str	r0, [sp, #0xc]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r3
 .Lca2ce:
 	bl	Random
@@ -179,7 +179,7 @@
 	ldr	r0, [sp, #0x14]
 	ldr	r1, [sp, #8]
 	bl	Func_80051d8
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r4, #0
 	mov	r8, r4
 .Lca37a:

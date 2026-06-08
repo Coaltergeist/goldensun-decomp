@@ -1088,7 +1088,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	bne	.La9188
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r7, #0x80
 	ldr	r3, [r5]
 	lsl	r7, #1

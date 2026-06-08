@@ -26,7 +26,7 @@
 	push	{lr}
 	ldr	r0, =0x87a
 	bl	__Func_8079358
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -91,7 +91,7 @@
 	ldr	r0, =0x321
 	bl	__Func_8079358
 .L16f6:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r3, r1
@@ -213,7 +213,7 @@
 	ldr	r0, =0x321
 	bl	__Func_8079358
 .L181e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -249,7 +249,7 @@
 	mov	r3, #0
 	strh	r3, [r0, #6]
 .L187e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -307,7 +307,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 .L1904:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -356,7 +356,7 @@
 	mov	r0, #0x80
 	lsl	r0, #2
 	bl	__Func_8079358
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -705,7 +705,7 @@
 	.pool_aligned
 
 .L1ca8:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -888,7 +888,7 @@
 	bl	__Func_8010704
 	b	.L1e5a
 .L1e40:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

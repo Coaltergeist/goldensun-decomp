@@ -147,7 +147,7 @@
 	mov	r0, #2
 	sub	sp, #8
 	bl	__Func_80037d4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xac
 	lsl	r2, #2
 	add	r3, r2
@@ -207,7 +207,7 @@
 	add	r6, #1
 	cmp	r6, #7
 	ble	.L134a
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -262,7 +262,7 @@
 	lsl	r0, #2
 	bl	__Func_80793c8
 .L1408:
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -375,7 +375,7 @@
 	mov	r1, #0
 	bl	__Func_8092c40
 .L150e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x2aa
 	add	r3, r2
 	mov	r2, #0
@@ -538,7 +538,7 @@
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Func_8004358
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

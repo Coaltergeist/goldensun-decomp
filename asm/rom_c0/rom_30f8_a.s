@@ -106,7 +106,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L31e4
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	cmp	r3, #0
 	beq	.L31cc
@@ -123,11 +123,11 @@
 	ldrh	r2, [r2]
 	cmp	r2, r3
 	bls	.L31e4
-	ldr	r3, =iwram_3001cc8
+	ldr	r3, =gSleepMode
 	mov	r1, r11
 	strb	r1, [r3]
 .L31e4:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0xc0
 	ldr	r3, [r3]
 	lsl	r2, #2
@@ -142,7 +142,7 @@
 	bls	.L3210
 	ldr	r3, .L322c	@ 0
 	strh	r3, [r2]
-	ldr	r3, =iwram_3001cc8
+	ldr	r3, =gSleepMode
 	mov	r1, r11
 	strb	r1, [r3]
 	b	.L3210
@@ -151,7 +151,7 @@
 	ldr	r3, .L322c
 	strh	r3, [r2]
 .L3210:
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	bne	.L321a
@@ -163,7 +163,7 @@
 	lsl	r2, #20
 	ldr	r7, =iwram_3001d28
 	mov	r8, r2
-	ldr	r6, =iwram_3001ae8
+	ldr	r6, =gKeyHeld
 	b	.L32e4
 
 	.align	2, 0
@@ -198,7 +198,7 @@
 	beq	.L32e2
 	mov	r3, #0
 	strb	r3, [r2]
-	ldr	r2, =iwram_3007800
+	ldr	r2, =gIWRAMHeap_end
 	ldr	r3, =0x19670704
 	str	r3, [r2]
 	b	.L32d8
@@ -215,7 +215,7 @@
 .L32e4:
 	cmp	r3, #0
 	beq	.L3288
-	ldr	r0, =iwram_3001b04
+	ldr	r0, =gKeyRepeat
 	ldr	r3, [r0]
 	mov	r2, #7
 	and	r3, r2
@@ -286,7 +286,7 @@
 	mov	r3, #1
 	strb	r3, [r2, #8]
 .L3386:
-	ldr	r1, =iwram_3001cc8
+	ldr	r1, =gSleepMode
 	ldrb	r3, [r1]
 	cmp	r3, #0
 	bne	.L3390
@@ -389,7 +389,7 @@
 	add	r1, #1
 	cmp	r1, #9
 	ble	.L3454
-	ldr	r3, =iwram_3001cc8
+	ldr	r3, =gSleepMode
 	mov	r2, #0
 	strb	r2, [r3]
 	ldr	r3, .L347c	@ 0
@@ -414,7 +414,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r0, #0x80
-	ldr	r2, =iwram_3007800
+	ldr	r2, =gIWRAMHeap_end
 	ldr	r3, =0x19670704
 	lsl	r0, #20
 	str	r3, [r2]

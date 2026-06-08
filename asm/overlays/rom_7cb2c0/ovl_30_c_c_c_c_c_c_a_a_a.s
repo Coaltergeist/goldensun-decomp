@@ -154,7 +154,7 @@
 	push	{lr}
 	bl	__Func_80916b0
 	bl	__Func_808e118
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3
@@ -2307,7 +2307,7 @@
 	ldr	r3, [r3]
 	lsl	r2, #1
 	add	r3, r2
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	add	r2, #0x49
 	str	r2, [r3]
 	sub	r2, #0x47
@@ -2385,7 +2385,7 @@
 .L30d0:
 	bl	__Func_8092950
 .L30d4:
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 .L30d6:
 	mov	r2, #0xe1
 	lsl	r2, #1

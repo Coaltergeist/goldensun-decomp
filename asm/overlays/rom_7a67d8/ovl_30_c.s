@@ -3,11 +3,11 @@
 
 .thumb_func_start OvlFunc_919_20081d4
 	push	{lr}
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r0, =.L590
 	ldr	r3, [r3]
 	strh	r3, [r0]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	ldr	r1, =.L5b0
 	strh	r3, [r0, #2]

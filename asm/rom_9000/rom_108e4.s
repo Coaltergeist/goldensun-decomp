@@ -83,7 +83,7 @@
 	add	r3, r10
 	ldr	r2, =0x6004000
 	lsl	r3, #5
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r1, r3, r2
 	mov	r4, r7
 	mov	r6, #0
@@ -200,7 +200,7 @@
 	strh	r6, [r3]
 	ldr	r0, =_FILE_d5
 	bl	GetFile
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	ldr	r0, =_FILE_d7
 	bl	GetFile
@@ -284,7 +284,7 @@
 	add	r3, r7, r1
 	str	r6, [r2, #0x18]
 	str	r6, [r2, #0x1c]
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	strh	r6, [r3]
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
@@ -363,7 +363,7 @@
 	ldr	r2, [r3]
 	mov	r3, #1
 	and	r2, r3
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	lsl	r3, r2, #2
 	add	r3, r2
 	ldr	r2, [sp, #8]
@@ -880,7 +880,7 @@
 	mov	r0, #0
 .L110fe:
 	ldrh	r2, [r4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r2, #2
 	add	r3, r2, r5
 	ldrh	r3, [r3]
@@ -905,7 +905,7 @@
 	mov	r0, #0
 .L1112e:
 	ldrh	r2, [r4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r2, #2
 	add	r3, r2, r5
 	ldrh	r3, [r3]
@@ -943,7 +943,7 @@
 	mov	r0, #0
 .L11180:
 	ldrh	r2, [r4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r2, #2
 	add	r3, r2, r5
 	ldrh	r3, [r3]
@@ -1110,7 +1110,7 @@
 	str	r7, [r3]
 	str	r1, [r5]
 .L112e0:
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
 	mov	r3, #0x60
@@ -1187,7 +1187,7 @@
 	ldr	r2, [r3]
 	mov	r3, #1
 	and	r2, r3
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	lsl	r3, r2, #2
 	add	r3, r2
 	ldr	r2, [sp, #8]

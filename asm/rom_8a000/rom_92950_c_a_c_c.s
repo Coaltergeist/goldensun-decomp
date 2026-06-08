@@ -5,7 +5,7 @@
 	mov	r6, r1
 	mov	r5, r0
 	bl	Func_8092c40
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

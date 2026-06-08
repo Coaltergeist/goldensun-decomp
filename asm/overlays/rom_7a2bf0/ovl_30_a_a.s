@@ -281,7 +281,7 @@
 	ldr	r0, [r2, r3]
 	b	.L270
 .L26e:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 .L270:
 	lsl	r3, r1, #7
 	add	r3, r6, r3

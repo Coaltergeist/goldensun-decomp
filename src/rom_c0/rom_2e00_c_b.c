@@ -9,13 +9,13 @@
 #include "file_table.h"
 #include "dma.h"
 
-extern unsigned iwram_3007804[];
+extern unsigned gRAMBuildDate[];
 
 void SetRAMBuildDate(void)
 {
     void *src = GetFile(FILE_BUILD_DATE);
-    DMA3_COPY(src, iwram_3007804, 12);
-    iwram_3007804[3] = 0;
+    DMA3_COPY(src, gRAMBuildDate, 12);
+    gRAMBuildDate[3] = 0;
 }
 
 void Func_8002f3c(void) {}

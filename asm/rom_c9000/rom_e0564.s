@@ -187,7 +187,7 @@
 	cmp	r0, r11
 	bne	.Le07ae
 	ldr	r1, [sp, #0xc]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r4, #0
 	add	r7, r1, r2
 .Le06f6:
@@ -300,7 +300,7 @@
 	b	.Le06c2
 .Le07d4:
 	mov	r7, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r6, =Data_ede48
 	mov	r10, r7
 .Le07dc:
@@ -486,7 +486,7 @@
 	str	r3, [r6, #0x18]
 	ldr	r1, =0xffff
 	ldr	r2, [sp, #8]
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r4, #0
 	mov	r0, #0x7f
 	mov	r8, r4
@@ -690,7 +690,7 @@
 	cmp	r7, #9
 	bne	.Le0ae0
 .Le0b28:
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r7, #0
 .Le0b2c:
 	mov	r3, r7
@@ -880,7 +880,7 @@
 	ldrsh	r0, [r3, r2]
 	mov	r1, r5
 	bl	Func_80e3980
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	mov	r3, #0xf
 	mov	r0, #0x7f
 	mov	r7, #0
@@ -1055,7 +1055,7 @@
 	mov	r3, r5
 	bl	_call_via_r4
 .Le0e9e:
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	mov	r7, #0
 	mov	r8, r4
 .Le0ea4:
@@ -1312,7 +1312,7 @@
 	mov	r3, #3
 	bl	Func_80ed408
 .Le10c8:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	ldr	r0, =_FILE_a7
@@ -1882,7 +1882,7 @@
 	add	r3, #0x20
 	strh	r6, [r1, #4]
 	strh	r3, [r1, #6]
-	ldr	r1, =iwram_3001ce0
+	ldr	r1, =gPhysVec
 	mov	r3, #0x78
 	sub	r6, r3, r6
 	sub	r3, r2
@@ -1903,7 +1903,7 @@
 	add	r3, r1, r0
 	ldr	r3, [r3]
 	strh	r3, [r2, #6]
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
 	str	r3, [r2, #0x10]
@@ -2077,7 +2077,7 @@
 	mov	r0, #1
 	mov	r2, #0
 	bl	_Func_80c08ec
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	mov	r0, #0
@@ -2092,7 +2092,7 @@
 	mov	r0, #0x2e
 	str	r3, [sp]
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r2, #0x80
@@ -2762,7 +2762,7 @@
 	mov	r0, #0x91
 	bl	_Func_80f9080
 .Le1cf2:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -2786,7 +2786,7 @@
 	mov	r2, #1
 	bl	Func_80dbb24
 	ldr	r0, =_FILE_ce
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
@@ -3615,7 +3615,7 @@
 	ldr	r2, =Data_edebe
 	lsl	r3, r4, #1
 	ldrh	r1, [r2, r3]
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r0, r10
 	add	r1, r3
 	ldrb	r3, [r0, r4]
@@ -3831,7 +3831,7 @@
 	mov	r3, #0x8c
 	mov	r4, r9
 	mul	r4, r3
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r3, r4
 	add	r3, r7, r3
 	mov	r6, r10
@@ -3945,7 +3945,7 @@
 	add	r3, r8
 	lsl	r2, r3, #3
 	sub	r2, r3
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r2, #2
 	add	r7, r2, r0
 	mov	r1, #5

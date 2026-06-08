@@ -27,7 +27,7 @@
 	mov	r0, #0x62
 	mov	r1, #5
 	bl	__Func_8091eb0
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r3, =0x22b
 	add	r2, r5, r3
 	mov	r3, #3
@@ -52,7 +52,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -163,7 +163,7 @@
 
 .thumb_func_start OvlFunc_881_200b95c
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -264,7 +264,7 @@
 	add	r1, r7, r2
 	ldr	r0, =gScript_943__0200c4ec
 	bl	__DecompressLZ
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
 	mov	r0, r3
@@ -338,7 +338,7 @@
 	str	r2, [r3]
 .L3aca:
 	strh	r1, [r5]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1

@@ -136,7 +136,7 @@
 	str	r3, [sp, #0x20]
 .Ld9bf4:
 	mov	r2, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r9, r2
 	mov	r7, #0xc0
 .Ld9bfc:
@@ -449,7 +449,7 @@
 	mul	r2, r3
 	mov	r11, r5
 	ldr	r3, [sp, #8]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r0, #0
 	str	r2, [sp, #0x10]
 	mov	r9, r0
@@ -978,10 +978,10 @@
 	mov	r2, #0x80
 	ldr	r3, =Func_8001af8
 	lsl	r2, #8
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6008000
 	bl	_call_via_r3
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r2, #7
 	mov	r5, #0
 	mov	r12, r2
@@ -1067,7 +1067,7 @@
 	mov	r1, #7
 	mov	r2, #7
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	str	r3, [sp, #0x3c]
@@ -1489,7 +1489,7 @@
 	mov	r0, #0x2e
 	str	r3, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -1526,7 +1526,7 @@
 	mov	r1, #0x7f
 	mov	r0, #0
 	str	r3, [sp, #0x10]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r10, r0
 	mov	r11, r1
 	b	.Lda7b0
@@ -1673,7 +1673,7 @@
 	bne	.Lda8ca
 	b	.Ldaa5c
 .Lda8ca:
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 .Lda8cc:
 	mov	r5, r10
 	lsr	r3, r5, #31
@@ -1888,7 +1888,7 @@
 	mov	r10, r0
 	cmp	r3, #0
 	beq	.Ldaac2
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 .Ldaa6e:
 	ldr	r3, [r6, #0x18]
 	cmp	r3, #0xb
@@ -2502,7 +2502,7 @@
 	cmp	r1, r3
 	bne	.Ldb00c
 	mov	r2, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r10, r2
 	mov	r6, #0xf
 .Ldafbe:
@@ -2553,7 +2553,7 @@
 	cmp	r0, r3
 	blt	.Ldb09e
 	mov	r1, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r10, r1
 .Ldb028:
 	ldr	r3, [r5, #0x18]
@@ -2873,7 +2873,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -2937,7 +2937,7 @@
 	str	r3, [r2]
 .Ldb344:
 	mov	r3, #0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r3
 .Ldb34a:
 	bl	Random
@@ -3119,7 +3119,7 @@
 	add	r3, #0x70
 	mov	r1, #0
 	lsl	r3, #16
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r1
 	mov	r11, r3
 .Ldb4ca:
@@ -3195,7 +3195,7 @@
 	str	r3, [r2]
 .Ldb55a:
 	mov	r3, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r3
 .Ldb560:
 	ldr	r3, [r5, #0x18]

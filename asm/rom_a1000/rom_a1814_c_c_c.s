@@ -312,7 +312,7 @@
 	beq	.La43d4
 	b	.La4248
 .La43d4:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
 	and	r2, r3

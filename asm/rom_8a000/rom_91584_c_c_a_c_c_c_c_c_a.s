@@ -17,7 +17,7 @@
 	mov	r0, r6
 	ldr	r1, =0x9999
 	bl	Func_8092064
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

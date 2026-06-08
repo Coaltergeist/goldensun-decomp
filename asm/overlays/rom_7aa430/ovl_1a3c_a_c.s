@@ -158,7 +158,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r1, #0xfa
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r3, [r3]
@@ -264,7 +264,7 @@
 	mov	r8, r2
 	mov	r0, #0xfa
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r3, [r3]
@@ -431,7 +431,7 @@
 	ldr	r2, [r2]
 	mov	r0, #0xfa
 	str	r3, [sp, #0xc]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r3, [r3]
@@ -445,7 +445,7 @@
 	str	r2, [sp]
 	ldrb	r3, [r2]
 	str	r3, [sp, #4]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4
@@ -494,7 +494,7 @@
 .L20c2:
 	asr	r3, #20
 	add	r3, r2, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	mov	r0, #0x80
 	add	r5, r3, r1
@@ -520,7 +520,7 @@
 .L20f4:
 	asr	r3, #20
 	add	r3, r2, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	add	r1, r3, r1
 	str	r1, [sp, #8]
@@ -806,7 +806,7 @@
 	ldr	r5, [r2]
 	mov	r1, #0xfa
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r3, [r3]

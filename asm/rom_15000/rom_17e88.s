@@ -815,7 +815,7 @@
 	bne	.L18470
 	b	.L1851a
 .L18486:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0

@@ -8,7 +8,7 @@
 	mov	r6, r2
 	asr	r5, #16
 	asr	r6, #16
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	cmp	r1, #0
 	beq	.L11f7a
 	mov	r2, #3
@@ -68,7 +68,7 @@
 	mov	r6, r0
 	asr	r1, #16
 	asr	r4, #16
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	cmp	r5, #0
 	beq	.L11ffe
 	mov	r2, #3
@@ -116,7 +116,7 @@
 	mov	r4, r2
 	asr	r1, #20
 	asr	r4, #20
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	cmp	r0, #0
 	beq	.L1205e
 	mov	r2, #3

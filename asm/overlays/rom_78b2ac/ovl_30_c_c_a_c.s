@@ -3307,7 +3307,7 @@
 	lsl	r2, #15
 	bl	__Func_80923e4
 .L21ae:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -3443,7 +3443,7 @@
 	str	r6, [sp]
 	str	r5, [sp, #4]
 	bl	__Func_8010424
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -3666,7 +3666,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L254a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

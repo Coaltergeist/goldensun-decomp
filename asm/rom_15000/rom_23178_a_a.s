@@ -148,7 +148,7 @@
 	str	r4, [sp, #0xc]
 	str	r1, [sp, #0x18]
 .L232a0:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	ldr	r2, [sp, #0x1c]
 	str	r3, [sp, #0x28]
@@ -327,7 +327,7 @@
 	mov	r3, #2
 	eor	r1, r3
 	str	r1, [r6, #0x10]
-	ldr	r0, =iwram_3001b04
+	ldr	r0, =gKeyRepeat
 	ldr	r3, [r0]
 	mov	r2, #1
 	and	r3, r2
@@ -1401,7 +1401,7 @@
 	strb	r3, [r2]
 	mov	r10, r1
 .L23cfa:
-	ldr	r1, =iwram_3001b10
+	ldr	r1, =gSpriteSlots
 	ldr	r5, [sp, #0x18]
 	ldr	r7, [sp, #0x10]
 	mov	r6, #0
@@ -2173,7 +2173,7 @@
 	mov	r8, r3
 	b	.L2438a
 .L24336:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r3]
 	ldr	r1, =0xf301
@@ -2220,7 +2220,7 @@
 	bl	Func_af0_from_thumb
 	cmp	r7, r0
 	blt	.L24336
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r5, [r3]
 	mov	r3, #0x80
 	lsl	r3, #1
@@ -2283,10 +2283,10 @@
 .L24412:
 	ldr	r3, =gKeyPress
 	ldr	r1, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r0, =iwram_3001f34
 	ldr	r7, [r3]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r2, [r0]
 	ldr	r3, [r3]
 	mov	r8, r3
@@ -3676,7 +3676,7 @@
 	str	r0, [r2, #0x38]
 	ldr	r3, =gKeyPress
 	ldr	r1, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r0, [r3]
 	mov	r3, r2
 	add	r3, #0xd8
@@ -4669,7 +4669,7 @@
 	bne	.L2577a
 	b	.L258c0
 .L2577a:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x80
 	and	r3, r2
@@ -5552,7 +5552,7 @@
 	bne	.L25ece
 	b	.L26022
 .L25ece:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x80
 	and	r3, r2
@@ -7350,7 +7350,7 @@
 .L26cdc:
 	ldr	r3, =gKeyPress
 	ldr	r6, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r5, [r3]
 	ldr	r3, =iwram_3001f34
 	ldr	r2, [r3]
@@ -7710,7 +7710,7 @@
 	ldr	r3, =iwram_3001e74
 	ldr	r1, =0x22b
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r1
 	ldrb	r3, [r3]
 	sub	sp, #0x84
@@ -8130,12 +8130,12 @@
 	bne	.L27340
 	mov	r0, #0xc
 	bl	Func_8004938
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	mov	r6, r0
 	cmp	r3, #0
 	beq	.L2731e
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r2, [r3]
 	mov	r3, #8
 	and	r2, r3
@@ -9941,7 +9941,7 @@
 	mov	r10, r2
 	cmp	r5, r3
 	bcs	.L282bc
-	ldr	r4, =iwram_3001b10
+	ldr	r4, =gSpriteSlots
 .L28202:
 	mov	r0, #0xc
 	ldrsh	r2, [r6, r0]
@@ -10444,7 +10444,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	bne	.L285b4
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x20
 	and	r2, r3

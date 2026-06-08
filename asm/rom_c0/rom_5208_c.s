@@ -6,7 +6,7 @@
 	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
 	ldr	r3, [r5, #8]
-	ldr	r7, =iwram_3001ce0
+	ldr	r7, =gPhysVec
 	neg	r1, r3
 	ldr	r3, [r7, #4]
 	mov	r0, #0

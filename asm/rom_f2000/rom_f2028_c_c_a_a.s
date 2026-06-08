@@ -166,7 +166,7 @@
 	lsl	r3, #10
 	add	r0, r5, r3
 	lsl	r1, #6
-	ldr	r5, =ewram_2002090
+	ldr	r5, =gDMATaskCount
 	add	r6, r0, r1
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]

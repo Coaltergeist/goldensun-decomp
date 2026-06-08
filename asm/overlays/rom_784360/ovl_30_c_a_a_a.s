@@ -24,7 +24,7 @@
 	ldr	r0, =.L3380
 	b	.Lec
 .Lc8:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -89,7 +89,7 @@
 	ldr	r0, =.L3b3c
 	b	.L19a
 .L176:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

@@ -30,7 +30,7 @@
 	mov	r2, #0
 	bl	__Func_80923e4
 .L980:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -162,7 +162,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 .Laaa:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -224,7 +224,7 @@
 	mov	r2, #0
 	bl	__Func_80923e4
 .Lb3a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -1183,7 +1183,7 @@
 	ldr	r1, =gScript_884__0200a9f0
 	mov	r0, #0x19
 	bl	__Func_80920fc
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #2

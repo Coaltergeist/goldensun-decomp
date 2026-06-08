@@ -21,7 +21,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	ldr	r4, =0x604
 	add	r3, #0xc4
 	add	r2, r7, r4
@@ -58,7 +58,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r4, #0xc0
-	ldr	r0, =iwram_3001e50
+	ldr	r0, =gPtrs
 	lsl	r4, #3
 	mov	r2, #0x80
 	add	r3, r7, r4

@@ -4,7 +4,7 @@
 .thumb_func_start StopTask
 	push	{r5, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -43,7 +43,7 @@
 .thumb_func_start Func_80042c8
 	push	{r5, r6, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -78,7 +78,7 @@
 .thumb_func_start Func_800430c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
-	ldr	r1, =iwram_3001a20
+	ldr	r1, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -117,7 +117,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r5, #1
-	ldr	r1, =iwram_3001a20
+	ldr	r1, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -151,7 +151,7 @@
 .thumb_func_start Func_800439c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -187,7 +187,7 @@
 .thumb_func_start Func_80043e0
 	push	{r5, r6, lr}
 	mov	r0, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r0, r0
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -218,10 +218,10 @@
 
 .thumb_func_start Func_8004420
 	push	{r5, r6, r7, lr}
-	ldr	r3, =iwram_3001d34
+	ldr	r3, =gTasksEnabled
 	ldrb	r3, [r3]
 	mov	r7, r0
-	ldr	r6, =iwram_3001a20
+	ldr	r6, =gTasks
 	asr	r7, #8
 	cmp	r3, #1
 	bne	.L444a

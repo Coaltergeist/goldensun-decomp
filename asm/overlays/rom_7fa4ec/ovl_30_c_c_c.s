@@ -1336,7 +1336,7 @@
 
 .thumb_func_start OvlFunc_970_2008da4
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -1794,7 +1794,7 @@
 	ldr	r3, =.L1c1a
 	mov	r1, #0
 	ldrsh	r3, [r3, r1]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r2, =.L1c18

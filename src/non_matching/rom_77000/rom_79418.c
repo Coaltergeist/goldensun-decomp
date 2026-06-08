@@ -7,10 +7,10 @@
  * reg-alloc/scheduling ONLY (drain rolled back on compare-rom). Permuter should
  * close it. Sibling family: Func_8079358 (set), Func_8079374 (clear).
  */
-extern unsigned char ewram_2000040[];
+extern unsigned char gFlags[];
 
 int Func_8079418(int flagID) {
     int idx = ((unsigned)flagID << 20) >> 23;
     int shift = flagID & 4;
-    return (ewram_2000040[idx] & (0xf << shift)) >> shift;
+    return (gFlags[idx] & (0xf << shift)) >> shift;
 }

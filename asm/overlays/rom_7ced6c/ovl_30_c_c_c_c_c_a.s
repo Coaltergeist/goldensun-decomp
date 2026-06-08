@@ -121,7 +121,7 @@
 	push	{r7}
 	sub	sp, #8
 	str	r2, [sp]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1

@@ -193,7 +193,7 @@
 	str	r4, [sp, #0x50]
 	str	r5, [sp, #0x24]
 .Ld18a8:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -760,7 +760,7 @@
 	cmp	r9, r3
 	bne	.Ld1d1a
 .Ld1d40:
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x48
 	str	r3, [r2, #0xc]
 	ldr	r5, [sp, #0x5c]
@@ -1113,7 +1113,7 @@
 	ldr	r4, [sp, #0x50]
 	cmp	r4, r3
 	bne	.Ld20b0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r5, #0
 	mov	r9, r5
 	add	r7, r10
@@ -1169,7 +1169,7 @@
 	blt	.Ld2156
 	mov	r5, #0
 	mov	r9, r5
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 .Ld20be:
 	ldr	r3, [r5, #0x18]
 	cmp	r3, #0
@@ -1542,7 +1542,7 @@
 	cmp	r9, r3
 	bne	.Ld2376
 .Ld23a0:
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
 	b	.Ld23fc

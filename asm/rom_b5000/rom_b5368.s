@@ -285,7 +285,7 @@
 	mov	r3, #0x80
 	lsl	r3, #19
 	strh	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r3, r2
@@ -329,7 +329,7 @@
 	bl	Func_80030f8
 	ldr	r2, =0x2850
 	ldr	r3, =0x26fa
-	ldr	r6, =iwram_3001b04
+	ldr	r6, =gKeyRepeat
 	sub	r2, r3
 	mov	r8, r2
 	b	.Lb5614
@@ -458,7 +458,7 @@
 	bl	Func_800403c
 	mov	r0, r5
 	bl	_Func_8079358
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2
@@ -477,7 +477,7 @@
 	mov	r9, r2
 	neg	r3, r3
 	add	r3, r9
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r7, #0
 	mov	r11, r3
 .Lb5740:
@@ -575,7 +575,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lb574e
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	and	r3, r1
 	cmp	r3, #0

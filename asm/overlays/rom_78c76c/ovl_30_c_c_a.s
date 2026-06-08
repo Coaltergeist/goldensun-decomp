@@ -1681,7 +1681,7 @@
 	mov	r1, #1
 	mov	r0, #0x12
 	bl	__Func_8092b08
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2033,7 +2033,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010424
 .L13c8:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r5, r2

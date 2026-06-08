@@ -565,7 +565,7 @@
 .La2016:
 	cmp	r5, #0
 	beq	.La2034
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r4, [r2]
 	mov	r3, #0x10
 	ldr	r1, [r2]
@@ -579,7 +579,7 @@
 	mov	r3, #0x80
 	b	.La204c
 .La2034:
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r4, [r2]
 	mov	r3, #0x80
 	ldr	r1, [r2]
@@ -1039,7 +1039,7 @@
 
 .thumb_func_start Func_80a23c0
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	sub	sp, #4
 	mov	r5, r0
 	ldr	r0, [r3, #0x10]

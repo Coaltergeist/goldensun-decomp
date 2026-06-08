@@ -2327,7 +2327,7 @@
 	mov	r0, #6
 	mov	r1, r6
 	bl	__Func_80920fc
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3

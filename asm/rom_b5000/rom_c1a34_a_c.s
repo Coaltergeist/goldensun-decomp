@@ -7,7 +7,7 @@
 	ldr	r0, [r3]
 	lsl	r2, #3
 	add	r1, r0, r2
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x8f
 	lsl	r2, #2
 	add	r3, r2

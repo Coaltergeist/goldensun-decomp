@@ -19,12 +19,12 @@
  * is then R_ARM_ABS32 .L8d8, identical to the ROM (verified: the reloc lines
  * match). This unlocks the whole `ldr =.LXXXX`-to-global overlay-data class.
  */
-extern unsigned char ewram_2000240[];                 /* &gState (GlobalState, 0x02000240) */
+extern unsigned char gState[];                 /* &gState (GlobalState, 0x02000240) */
 extern unsigned char L818[] __asm__(".L818");
 extern unsigned char L8d8[] __asm__(".L8d8");
 
 unsigned char *OvlFunc_906_2008314(void) {
-    if (*(short *)((int)ewram_2000240 + 0x1c0) == 0x1d)
+    if (*(short *)((int)gState + 0x1c0) == 0x1d)
         return L8d8;
     return L818;
 }

@@ -5,66 +5,6 @@
 /* Source 2: Ghidra FF (14309 aliases)
 /* ============================================================ */
 
-gFlags = 0x02000040;
-gState = 0x02000240;
-gMapDataID = 0x0200041a;
-gPlayerStart = 0x0200041c;
-gPartyStatus = 0x02000500;
-gDMATaskCount = 0x02002090;
-gDMATasks = 0x02002094;
-sRPGRNGState = 0x020023a8;
-gMusicCurVolume = 0x02003008;
-gMusicSpeedDelta = 0x0200300c;
-gMusicVolumeDelta = 0x02003010;
-gMusicSpeed = 0x02003030;
-gMusicVolume = 0x02003034;
-gMusicCurSpeed = 0x02003038;
-gSoundInfo = 0x02003050;
-gMPlayJumpTable = 0x02004000;
-gCgbChans = 0x02004090;
-gMPlayInfo_02004190 = 0x02004190;
-gMPlayInfo_020041d0 = 0x020041d0;
-gMPlayInfo_02004210 = 0x02004210;
-gMPlayInfo_02004250 = 0x02004250;
-gMPlayInfo_BGM = 0x02004290;
-gMPlayInfo_020042d0 = 0x020042d0;
-gMPlayInfo_02004310 = 0x02004310;
-gMPlayMemAccArea = 0x02004350;
-gMPlayInfo_02004360 = 0x02004360;
-gMPlayTrack_020043a0 = 0x020043a0;
-gMPlayTrack_BGM = 0x020044e0;
-gMPlayTrack_02004800 = 0x02004800;
-gMPlayTrack_020048a0 = 0x020048a0;
-gMPlayTrack_02004940 = 0x02004940;
-gMPlayTrack_020049e0 = 0x020049e0;
-gMPlayTrack_02004a80 = 0x02004a80;
-gMPlayTrack_02004b20 = 0x02004b20;
-gMapCode = 0x02008000;
-gBuffer = 0x02010000;
-gEWRAMHeap = 0x02030000;
-gRAMLib_end = 0x03001400;
-gSpriteAllocTable = 0x03001810;
-gTasks = 0x03001a20;
-gKeyHeld = 0x03001ae8;
-gKeyRepeat = 0x03001b04;
-gSpriteSlots = 0x03001b10;
-gKeyPress = 0x03001c94;
-gRNGState = 0x03001cb4;
-gSoftReset = 0x03001cb8;
-gMatrixStackSize = 0x03001cc4;
-gSleepMode = 0x03001cc8;
-gPhysVec = 0x03001ce0;
-gMatrixStack = 0x03001d2c;
-gTasksEnabled = 0x03001d34;
-gPtrs = 0x03001e50;
-gDebugMode = 0x03001f54;
-gIWRAMHeap = 0x03002000;
-gIWRAMHeap_end = 0x03007800;
-gRAMBuildDate = 0x03007804;
-IRQ_STACK_BASE = 0x03007f00;
-SVC_STACK_BASE = 0x03007fa0;
-SOUND_INFO_PTR = 0x03007ff0;
-
 _Sound_FX0 = 0x08000404;
 _Sound_FX3 = 0x080005cc;
 _Sound_FX4 = 0x08000664;
@@ -13157,7 +13097,7 @@ isEnemyAttackable = Func_80be18c;
    generator sources don't name. Mixer fns + CpuSet resolve to their kept
    asm Func_<addr>; gMaxLines/gNumMusicPlayers are symbol-as-value config;
    SoundMainRAM_Buffer is the IWRAM mixer-code buffer. */
-SoundMainRAM_Buffer = 0x03007000;
+// SoundMainRAM_Buffer = 0x03007000;
 gMaxLines           = 0;
 gNumMusicPlayers    = 8;
 CpuSet              = Func_8006864;

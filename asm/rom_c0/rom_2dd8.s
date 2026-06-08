@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 .thumb_func_start Func_8002dd8
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	lsl	r0, #2
 	ldr	r1, [r0, r4]
 	lsr	r3, r1, #22
@@ -16,7 +16,7 @@
 	.ssize	Func_8002dd8
 
 .thumb_func_start free
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	mov	r1, #4
 	lsr	r2, r0, #22
 	and	r2, r1

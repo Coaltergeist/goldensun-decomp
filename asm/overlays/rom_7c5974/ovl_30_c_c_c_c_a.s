@@ -47,7 +47,7 @@
 	lsl	r1, #1
 	ldr	r2, =0x209
 	add	r3, r1
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	str	r2, [r3]
 	sub	r2, #0x47
 	add	r3, r5, r2

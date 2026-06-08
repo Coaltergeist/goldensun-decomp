@@ -632,7 +632,7 @@
 	ldr	r0, [r2, r3]
 	b	.L520
 .L51e:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 .L520:
 	lsl	r3, r1, #7
 	add	r3, r6, r3

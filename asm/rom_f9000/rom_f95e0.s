@@ -14,7 +14,7 @@
 .func_end umul3232H32
 
 .thumb_func_start Func_80f95f0
-	ldr	r0, .Lf965c	@ iwram_3007ff0
+	ldr	r0, .Lf965c	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	ldr	r2, .Lf9660	@ 0x68736d53
 	ldr	r3, [r0]
@@ -73,7 +73,7 @@
 
 	.align	2, 0
 .Lf965c:
-	.word	iwram_3007ff0
+	.word	SOUND_INFO_PTR
 .Lf9660:
 	.word	0x68736d53
 .Lf9664:
@@ -796,7 +796,7 @@
 .func_end Func_80f9c2c
 
 .thumb_func_start Func_80f9c44
-	ldr	r0, .Lf9ef0	@ iwram_3007ff0
+	ldr	r0, .Lf9ef0	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	ldr	r2, .Lf9ef4	@ 0x68736d53
 	ldr	r3, [r0]
@@ -863,7 +863,7 @@
 	bge	.Lf9cc4
 	b	.Lf9ed8
 .Lf9cc4:
-	ldr	r0, .Lf9ef0	@ iwram_3007ff0
+	ldr	r0, .Lf9ef0	@ SOUND_INFO_PTR
 	ldr	r0, [r0]
 	mov	r8, r0
 	mov	r0, r7
@@ -1171,7 +1171,7 @@
 .Lf9eec:
 	.word	Data_fba14
 .Lf9ef0:
-	.word	iwram_3007ff0
+	.word	SOUND_INFO_PTR
 .Lf9ef4:
 	.word	0x68736d53
 

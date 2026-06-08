@@ -9,7 +9,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -49,7 +49,7 @@
 	mov	r3, r8
 	cmp	r3, #0
 	bne	.L630
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	add	r5, r2, #1
 	ldrh	r3, [r6]
 	mov	r0, r3

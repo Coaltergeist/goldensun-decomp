@@ -329,7 +329,7 @@
 
 .thumb_func_start Func_80b0444
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x30d40
 	str	r2, [r3, #0x10]
 	mov	r2, #0x8e
@@ -1220,7 +1220,7 @@
 	beq	.Lb0bba
 	b	.Lb0f3a
 .Lb0bba:
-	ldr	r0, =iwram_3001b04
+	ldr	r0, =gKeyRepeat
 	ldr	r3, [r0]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1239,7 +1239,7 @@
 	mov	r2, #1
 	mov	r11, r2
 .Lb0be2:
-	ldr	r0, =iwram_3001b04
+	ldr	r0, =gKeyRepeat
 	ldr	r3, [r0]
 	mov	r2, #0x10
 	and	r3, r2
@@ -1258,7 +1258,7 @@
 	mov	r2, #1
 	mov	r11, r2
 .Lb0c0a:
-	ldr	r0, =iwram_3001b04
+	ldr	r0, =gKeyRepeat
 	ldr	r3, [r0]
 	mov	r2, #0x40
 	and	r3, r2
@@ -1271,7 +1271,7 @@
 	mov	r7, r3
 	mov	r11, r1
 .Lb0c22:
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r3, [r2]
 	mov	r2, #0x80
 	and	r3, r2
@@ -1472,7 +1472,7 @@
 	ldr	r2, [sp, #8]
 	mov	r1, #0
 	ldrsh	r3, [r2, r1]
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r2, [r2, #0x10]
 	cmp	r3, r2
 	bls	.Lb0dfe
@@ -1531,7 +1531,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	bne	.Lb0f18
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1816,7 +1816,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	bl	_Func_801e7c0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r0, [r3, #0x10]
 	mov	r3, #8
 	str	r3, [sp]
@@ -2403,7 +2403,7 @@
 	mov	r5, #0x1e
 	cmp	r1, #0
 	beq	.Lb15a4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r0, [r3, #0x10]
 	bl	Func_b60_from_thumb
 	mov	r5, r0
@@ -2537,7 +2537,7 @@
 	.pool
 
 .Lb16b8:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -3100,7 +3100,7 @@
 	pop	{r1}
 	bx	r1
 .Lb1b86:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -3266,7 +3266,7 @@
 
 	b	.Lb1d82
 .Lb1ce6:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -3321,7 +3321,7 @@
 	mov	r3, #1
 	mov	r10, r3
 .Lb1d52:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2

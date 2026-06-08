@@ -551,7 +551,7 @@
 	add	r3, r2
 	add	r2, #0x40
 	str	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, #0x2b
 	add	r3, r2
 	mov	r2, #3
@@ -591,7 +591,7 @@
 	add	r3, r2
 	add	r2, #0x40
 	str	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, #0x2b
 	add	r3, r2
 	mov	r2, #3
@@ -758,7 +758,7 @@
 	ldr	r0, =0xa1
 	mov	r1, #0x1f
 	bl	__Func_8091f90
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3
@@ -847,7 +847,7 @@
 	add	r3, r2
 	add	r2, #0x40
 	str	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, #0x2b
 	add	r3, r2
 	mov	r2, #3

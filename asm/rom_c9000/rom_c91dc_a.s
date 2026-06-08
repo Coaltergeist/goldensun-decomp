@@ -156,7 +156,7 @@
 	mov	r3, #6
 	bl	Func_80ed408
 .Lc932a:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, r3
 	add	r2, #0xb8
 	ldr	r2, [r2]
@@ -176,7 +176,7 @@
 	mov	r8, r2
 	mov	r1, #0xe0
 	ldr	r6, .Lc9378	@ 0xf0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r5, .Lc937c	@ 0x888
 	ldr	r4, .Lc9380	@ 0x100
 	ldr	r0, =0xffffff00
@@ -224,7 +224,7 @@
 	mov	r0, #0x80
 	ldr	r5, =0x78f8
 	ldr	r4, =0x100
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r8, r7
 	lsl	r1, #5
 	lsl	r0, #1
@@ -810,7 +810,7 @@
 	mov	r4, #0
 	mov	r8, r4
 	ldr	r5, .Lc988c	@ 0x34
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r4, .Lc9890	@ 0xb4
 	ldr	r0, .Lc9894	@ 0x80
 .Lc9870:
@@ -863,7 +863,7 @@
 	mov	r8, r0
 	ldr	r4, =0x70f0
 	ldr	r0, =0x100
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 .Lc98d2:
 	mov	r3, r8
 	sub	r3, #8

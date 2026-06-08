@@ -6,7 +6,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0x8e
 	ldr	r6, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #2
 	add	r7, r3, r2
 	mov	r3, #0xd6
@@ -46,7 +46,7 @@
 .thumb_func_start OvlFunc_881_200808c
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0x8e
 	lsl	r2, #2
 	ldr	r6, [r3]
@@ -78,7 +78,7 @@
 .thumb_func_start OvlFunc_881_20080d4
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0x8e
 	lsl	r2, #2
 	ldr	r6, [r3]

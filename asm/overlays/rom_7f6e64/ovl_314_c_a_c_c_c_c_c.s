@@ -1829,7 +1829,7 @@
 	bl	OvlFunc_969_200b5c4
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r4, =0x22b
 	mov	r2, #3
 	add	r3, r4

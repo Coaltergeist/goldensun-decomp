@@ -93,7 +93,7 @@
 	bl	Func_80030f8
 	ldr	r3, .Lcd604	@ 0
 	ldr	r2, =REG_BLDCNT
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	strh	r3, [r2]
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
@@ -416,7 +416,7 @@
 	bl	Func_80030f8
 	ldr	r3, .Lcd8dc	@ 0
 	ldr	r2, =REG_BLDCNT
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	strh	r3, [r2]
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
@@ -798,7 +798,7 @@
 	ldr	r3, =0x77a4
 	add	r5, r3
 	ldr	r3, [r5]
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	strh	r3, [r6, #6]
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
@@ -813,7 +813,7 @@
 	bl	_call_via_r3
 	ldr	r0, =Func_80cd4b4
 	bl	StopTask
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	mov	r3, #0x20
 	strh	r3, [r6, #6]
 	ldr	r0, =REG_IME
@@ -887,7 +887,7 @@
 	add	r5, #3
 	cmp	r6, #8
 	bne	.Lcdcb0
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -1667,7 +1667,7 @@
 	str	r3, [r2, #0xc]
 	mov	r8, r3
 	add	r3, sp, #0x30
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r9, r3
 .Lce302:
 	bl	Random
@@ -1736,7 +1736,7 @@
 	bl	Func_80d6888
 .Lce392:
 	mov	r2, #0
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r8, r2
 .Lce398:
 	ldr	r4, [r6, #0x18]
@@ -1944,7 +1944,7 @@
 	mov	r1, r5
 	str	r3, [r2]
 	ldr	r0, =Func_80cd260
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	bl	StartTask
 	mov	r6, #0xff
 	mov	r4, #0
@@ -2117,7 +2117,7 @@
 	lsl	r2, #3
 	mov	r3, #0x3c
 	ldr	r5, [sp, #0xc]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	add	r3, sp
 	str	r2, [sp, #0x14]
 	mov	r4, #0

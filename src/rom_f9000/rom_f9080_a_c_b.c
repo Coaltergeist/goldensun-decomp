@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern void Func_80fb2cc(void *a0, unsigned short a1, unsigned short a2);
-extern void *ewram_2004290;
-extern unsigned short ewram_2003034;
-extern short ewram_2003008;
+extern void *gMPlayInfo_BGM;
+extern unsigned short gMusicVolume;
+extern short gMusicCurVolume;
 
 void Func_80f950c(unsigned short volume) {
     unsigned short r5;
@@ -16,7 +16,7 @@ void Func_80f950c(unsigned short volume) {
 
     r2 = volume;
     r5 = (short)r2;
-    Func_80fb2cc(&ewram_2004290, 0xff, r2);
-    ewram_2003034 = r5;
-    ewram_2003008 = r5;
+    Func_80fb2cc(&gMPlayInfo_BGM, 0xff, r2);
+    gMusicVolume = r5;
+    gMusicCurVolume = r5;
 }

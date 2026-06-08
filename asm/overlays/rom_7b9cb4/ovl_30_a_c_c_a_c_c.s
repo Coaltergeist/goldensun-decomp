@@ -1007,7 +1007,7 @@
 
 .thumb_func_start OvlFunc_932_2009678
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -1982,7 +1982,7 @@
 	lsl	r2, #1
 	lsl	r3, #2
 	str	r3, [r1, r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldrsh	r2, [r3, r2]
 	ldr	r3, =0x4d
 	cmp	r2, r3
@@ -2049,7 +2049,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L20f2
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2304,7 +2304,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L235a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2425,7 +2425,7 @@
 	mov	r3, #1
 	bl	__Func_8010704
 .L2458:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2467,7 +2467,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L24d4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2575,7 +2575,7 @@
 
 .thumb_func_start OvlFunc_932_200a5c0
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2913,7 +2913,7 @@
 	mov	r0, #1
 	bl	__Func_80030f8
 .L28da:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -2979,7 +2979,7 @@
 	add	r0, #0x59
 	strb	r5, [r0]
 .L2982:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -3023,7 +3023,7 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Func_800c528
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -3654,7 +3654,7 @@
 	bl	__Func_809259c
 	mov	r0, #8
 	bl	__Func_80923c4
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3

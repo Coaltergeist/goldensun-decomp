@@ -28,7 +28,7 @@
 	str	r0, [sp, #8]
 	mov	r10, r3
 .L1da08:
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L1da14
@@ -95,7 +95,7 @@
 	mov	r1, r8
 	mov	r2, #0x30
 	bl	Func_801e74c
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	add	r7, #0x18
 	cmp	r3, #0
@@ -214,7 +214,7 @@
 	ldr	r3, [r3]
 	mov	r10, r3
 	bl	Func_801d9d4
-	ldr	r6, =iwram_3001f54
+	ldr	r6, =gDebugMode
 	str	r0, [sp, #0x10]
 	ldrb	r3, [r6]
 	mov	r4, #0x18
@@ -342,7 +342,7 @@
 	bl	_Func_80f9080
 	b	.L1dcdc
 .L1dca6:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
 	and	r2, r3

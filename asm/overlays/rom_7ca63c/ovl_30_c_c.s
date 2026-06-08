@@ -86,7 +86,7 @@
 	lsl	r2, #17
 	bl	__Func_80923e4
 .L2c6:
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r1, r2
@@ -1384,7 +1384,7 @@
 	str	r3, [r2, r6]
 	bl	__Func_8091df4
 	bl	__Func_8091e20
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0xe2
 	ldr	r2, =0x6f
 	lsl	r0, #1

@@ -6,10 +6,10 @@
 	mov	r0, #0x20
 	sub	sp, #0xc
 	bl	Func_8004970
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r1, r7
 	add	r1, #0x20
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1
@@ -126,7 +126,7 @@
 	bl	_Func_80209b0
 	strh	r0, [r7, #2]
 	ldrh	r3, [r7, #2]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r5, [r3, #2]
@@ -165,7 +165,7 @@
 
 .thumb_func_start Func_809bcd4
 	push	{r5, lr}
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldrh	r0, [r5]
 	bl	Func_8003f3c
 	ldrh	r0, [r5, #2]
@@ -186,7 +186,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r5, r3, r0
@@ -195,9 +195,9 @@
 	sub	sp, #0x3c
 	str	r1, [sp, #0x24]
 	str	r2, [sp, #0x20]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldrh	r3, [r0]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]
@@ -214,7 +214,7 @@
 	lsr	r3, #1
 	mov	r2, #0x1f
 	and	r3, r2
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	ldrb	r3, [r1, r3]
 	mov	r0, #0x8e
 	lsl	r0, #1
@@ -223,7 +223,7 @@
 	bl	_Func_8079338
 	cmp	r0, #0
 	bne	.L9bd9c
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	mov	r2, #0xc0
 	ldr	r3, [r1]
 	lsl	r2, #2
@@ -262,7 +262,7 @@
 	asr	r0, #12
 	b	.L9be2a
 .L9bd9c:
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 .L9bd9e:
 	ldr	r2, [r1]
 	mov	r1, #0xf
@@ -274,7 +274,7 @@
 	ldr	r2, =0xffff
 	cmp	r1, r2
 	beq	.L9be14
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r3, [r0, #4]
 	add	r5, sp, #0x30
 	mov	r6, #0
@@ -313,7 +313,7 @@
 	str	r2, [r5, #8]
 .L9bdf8:
 	ldr	r3, [r5]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	str	r3, [r2, #4]
 	ldr	r3, [r5, #8]
 	mov	r0, #0xc0
@@ -328,15 +328,15 @@
 	b	.L9be1a
 .L9be14:
 	mov	r3, #0x80
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #9
 .L9be1a:
 	str	r3, [r2, #0x18]
 .L9be1c:
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r0, #6
 	ldrsh	r3, [r3, r0]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r1, #0xa
 	ldrsh	r0, [r0, r1]
 	mov	r11, r3
@@ -578,7 +578,7 @@
 	mov	r0, r7
 	mov	r1, #0xf6
 	bl	Func_8003dec
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r2, [sp, #0x14]
 	mov	r0, #0x12
 	ldrsh	r3, [r1, r0]
@@ -586,7 +586,7 @@
 	beq	.L9c0a8
 	add	r3, sp, #0x14
 	ldrh	r3, [r3]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	strh	r3, [r0, #0x12]
 	ldr	r0, [r0, #0x1c]
 	b	.L9c040
@@ -640,14 +640,14 @@
 	mov	r3, #0
 	mov	r9, r3
 .L9c09a:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r2, r11
 	ldr	r1, [r0, #0x1c]
 	mov	r3, r9
 	ldr	r0, [sp]
 	bl	_Func_801e74c
 .L9c0a8:
-	ldr	r0, =ewram_2002090
+	ldr	r0, =gDMATaskCount
 	ldr	r1, =REG_IME
 	ldrh	r3, [r1]
 	mov	r4, r3
@@ -794,7 +794,7 @@
 	mov	r2, #0xe0
 	strh	r5, [r3]
 	lsl	r2, #1
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r2
 	mov	r1, r5
 	mov	r0, r4
@@ -826,7 +826,7 @@
 	mov	r1, #1
 	bl	_Func_801776c
 .L9c22e:
-	ldr	r6, =iwram_3001b04
+	ldr	r6, =gKeyRepeat
 	mov	r5, #3
 .L9c232:
 	mov	r0, #1
@@ -843,7 +843,7 @@
 	lsl	r3, #19
 	strh	r2, [r3]
 	bl	_Func_8011644
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -917,7 +917,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -1000,7 +1000,7 @@
 	mov	r1, #6
 	ldr	r0, =0x9d89
 	bl	Func_80936a0
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #2

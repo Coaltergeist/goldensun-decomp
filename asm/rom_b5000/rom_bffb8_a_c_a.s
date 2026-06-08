@@ -268,7 +268,7 @@
 	cmp	r6, r8
 	bne	.Lc04e8
 .Lc0516:
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -550,7 +550,7 @@
 	str	r7, [r6, #8]
 	cmp	r7, #1
 	bne	.Lc07c0
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3

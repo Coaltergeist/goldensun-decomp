@@ -147,13 +147,13 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r3, =iwram_3001e8c
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r6, r0
 	mov	r8, r3
 	mov	r0, #0x83
 	ldr	r3, [r1]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #2
 	add	r3, r0
 	ldrb	r3, [r3]
@@ -708,7 +708,7 @@
 	asr	r3, #8
 	mov	r12, r3
 	mov	r0, #0x83
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #2
 	add	r3, r0
 	ldrb	r3, [r3]
@@ -791,7 +791,7 @@
 	mov	r3, r12
 	mov	r1, r7
 	bl	Func_8018cac
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r4, r0
 	mov	r0, #0x83
 	lsl	r0, #2

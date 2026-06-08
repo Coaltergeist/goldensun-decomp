@@ -79,7 +79,7 @@
 	str	r3, [r5, #0x50]
 	ldr	r3, [r7, #0xc]
 	str	r3, [r5, #0x54]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r12, r3
 	mov	r3, #0xed
 	lsl	r3, #1

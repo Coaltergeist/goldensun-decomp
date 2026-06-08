@@ -1130,7 +1130,7 @@
 	bne	.L14fc
 	bl	OvlFunc_943_200b710
 .L14fc:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -1644,7 +1644,7 @@
 .L1a5e:
 	lsl	r3, #8
 	strh	r3, [r0, #6]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -3076,7 +3076,7 @@
 	bl	__Func_809218c
 	mov	r0, #0x14
 	bl	__Func_809163c
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r0, #0xe2
 	ldr	r1, =0x6f
 	lsl	r0, #1

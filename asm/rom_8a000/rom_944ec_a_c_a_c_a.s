@@ -7,7 +7,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -229,7 +229,7 @@
 	sub	sp, #0xc
 	mov	r6, r0
 	bl	MapActor_GetActor
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -332,7 +332,7 @@
 	bge	.L95e8e
 	mov	r0, #0x3c
 	bl	Func_80030f8
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r5, r2

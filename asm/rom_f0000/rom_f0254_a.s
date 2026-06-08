@@ -81,7 +81,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, #0x80
 	lsl	r2, #1
 	add	r3, #0xc4
@@ -92,7 +92,7 @@
 	bl	_call_via_r3
 	mov	r0, #0x31
 	bl	Func_8002dd8
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3

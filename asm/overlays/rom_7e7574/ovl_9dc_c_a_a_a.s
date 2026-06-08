@@ -173,7 +173,7 @@
 	bl	OvlFunc_959_2009108
 	cmp	r0, #0
 	bne	.L12b8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r5, r3, r2
@@ -199,7 +199,7 @@
 	bl	OvlFunc_959_2009918
 	cmp	r0, #0
 	beq	.L1262
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	add	r3, r1
@@ -213,7 +213,7 @@
 	add	r2, r8
 	b	.L12b6
 .L1262:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	add	r3, r1
@@ -438,7 +438,7 @@
 	bl	OvlFunc_959_2009918
 	cmp	r0, #0
 	beq	.L1460
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -451,7 +451,7 @@
 	add	r2, r8
 	b	.L149c
 .L1460:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

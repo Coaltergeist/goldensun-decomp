@@ -20,7 +20,7 @@
 	mov	r3, #7
 	and	r0, r3
 	beq	.Lf9f24
-	ldr	r3, =iwram_3007ff0
+	ldr	r3, =SOUND_INFO_PTR
 	ldr	r3, [r3]
 	ldr	r3, [r3, #0x2c]
 	bl	Func_80f9ee8
@@ -78,7 +78,7 @@
 	sub	sp, #0x18
 	str	r1, [sp]
 	mov	r5, r2
-	ldr	r1, =iwram_3007ff0
+	ldr	r1, =SOUND_INFO_PTR
 	ldr	r1, [r1]
 	str	r1, [sp, #4]
 	ldr	r1, =Data_fba14

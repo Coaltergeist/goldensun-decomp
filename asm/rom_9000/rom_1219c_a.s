@@ -284,7 +284,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r1, #0x80
 	lsl	r1, #5
 	add	r6, r1
@@ -337,7 +337,7 @@
 	ldr	r3, [r2, #4]
 	sub	r0, r3, r0
 	str	r0, [sp, #8]
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r9, r3
 	ldr	r3, [r3]
 	mov	r2, #0
@@ -346,7 +346,7 @@
 	mov	r11, r2
 	b	.L1244c
 .L12448:
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r9, r3
 .L1244c:
 	mov	r2, r9
@@ -496,7 +496,7 @@
 	bls	.L12580
 	mov	r3, #1
 	mov	r0, r8
-	ldr	r2, =iwram_3001f54
+	ldr	r2, =gDebugMode
 	strb	r3, [r0, #4]
 	mov	r3, #2
 	strb	r3, [r2]
@@ -538,7 +538,7 @@
 	mov	r0, r8
 	mov	r3, #0
 	ldrsh	r2, [r0, r3]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r3, #0
 	mov	r0, #0
 	bl	Func_800b6b8
@@ -653,8 +653,8 @@
 .L126f0:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r0, =iwram_3001ae8
-	ldr	r1, =iwram_3001b04
+	ldr	r0, =gKeyHeld
+	ldr	r1, =gKeyRepeat
 	mov	r11, r0
 	mov	r9, r1
 .L126fe:
@@ -710,7 +710,7 @@
 	bl	Func_8012b2c
 	b	.L127be
 .L1275e:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r3, r9
 	ldr	r2, [r3]
@@ -805,7 +805,7 @@
 	bne	.L12808
 	b	.L12a46
 .L12808:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	mov	r3, #0x80
 	ldr	r2, [r1]
 	lsl	r3, #2
@@ -1235,7 +1235,7 @@
 	ldr	r3, [r3]
 	ldr	r3, [r3, #0x28]
 	ldrb	r4, [r3, #4]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r7, r2
 	mov	r2, #2

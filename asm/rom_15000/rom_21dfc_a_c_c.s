@@ -842,7 +842,7 @@
 .L224ac:
 	ldr	r2, =iwram_3001f34
 	ldr	r5, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r2, [r2]
 	ldr	r7, [r3]
 	mov	r3, #0xd8
@@ -1131,7 +1131,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	SetIntrHandler
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3

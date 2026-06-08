@@ -1722,7 +1722,7 @@
 	sub	sp, #0x30
 	mov	r10, r0
 	bl	MapActor_GetActor
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r6, r0
 	mov	r0, #0xfa
 	lsl	r0, #1
@@ -2065,7 +2065,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r0, #0x8d
 	lsl	r0, #2
 	add	r3, r5, r0
@@ -2174,7 +2174,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0x8d
 	lsl	r0, #2
 	add	r7, r1, r0
@@ -2280,7 +2280,7 @@
 	mov	r2, r7
 	bl	Func_80955b0
 .L95854:
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 .L95856:
 	mov	r3, #0x8d
 	lsl	r3, #2

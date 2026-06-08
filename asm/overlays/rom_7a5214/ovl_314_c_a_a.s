@@ -13,7 +13,7 @@
 	str	r1, [sp, #8]
 	mov	r11, r2
 	mov	r1, #0xee
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	str	r0, [sp, #0xc]
 	lsl	r1, #1
 	mov	r9, r3

@@ -29,7 +29,7 @@
 	mov	r3, #0x81
 	lsl	r3, #2
 	str	r3, [r0]
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldrsh	r2, [r1, r2]
 	ldr	r3, =0xb5
 	cmp	r2, r3
@@ -752,7 +752,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010704
 .L378c:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r3, r1
@@ -879,7 +879,7 @@
 	lsl	r1, #4
 	bl	__StartTask
 .L38ee:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -1408,7 +1408,7 @@
 	str	r7, [sp, #4]
 	bl	__Func_8010424
 .L3dc8:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r5, r3, r1
@@ -1701,7 +1701,7 @@
 	mov	r9, r0
 	ldr	r2, [r3]
 	mov	r0, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r3, [r3]

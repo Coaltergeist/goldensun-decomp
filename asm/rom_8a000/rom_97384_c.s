@@ -721,7 +721,7 @@
 	add	r2, #2
 	strh	r3, [r2]
 	ldr	r1, =0x205
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, r3, r1
 	ldrb	r0, [r2]
 	ldr	r2, =0x206

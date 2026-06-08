@@ -8,13 +8,13 @@
  *   lsrs r0,r3,#23`) and places the table `ldr` between, vs in-place on r0 here.
  *   Main-tree fn -> permutable.
  */
-extern unsigned char ewram_2000040[512];
+extern unsigned char gFlags[512];
 
 int Func_8079338(int flagID)
 {
     int bit;
     int val;
     bit = 1 << (flagID & 7);
-    val = ewram_2000040[(unsigned)(flagID << 20) >> 23] & bit;
+    val = gFlags[(unsigned)(flagID << 20) >> 23] & bit;
     return (unsigned)(-val | val) >> 31;
 }

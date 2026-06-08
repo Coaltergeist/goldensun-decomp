@@ -12,7 +12,7 @@
 	mov	r11, r2
 	lsl	r1, #7
 	lsl	r3, r4, #7
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	add	r1, r0
 	add	r3, r11
 	lsl	r1, #2
@@ -227,7 +227,7 @@
 	lsl	r3, r6, #7
 	add	r3, r0
 	mov	r11, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	lsl	r3, #2
 	add	r1, r2
@@ -367,7 +367,7 @@
 	ldr	r3, [sp, #0x1c]
 	mov	r12, r2
 	ldr	r2, [sp, #0x18]
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	lsl	r3, #7
 	add	r3, r2
 	lsl	r1, #7
@@ -442,7 +442,7 @@
 	lsl	r3, r5, #7
 	add	r3, r0
 	mov	r11, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	lsl	r3, #2
 	add	r1, r2

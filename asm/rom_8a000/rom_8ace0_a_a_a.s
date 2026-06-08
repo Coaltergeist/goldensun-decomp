@@ -9,7 +9,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r3, =iwram_3001ebc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r3, [r3]
 	mov	r1, #0xe0
 	lsl	r1, #1
@@ -237,7 +237,7 @@
 	bne	.L8aeba
 	b	.L8affc
 .L8aeba:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -286,7 +286,7 @@
 .L8af14:
 	cmp	r0, #0
 	ble	.L8af2a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x91
 	lsl	r2, #2
 	add	r3, r2
@@ -336,7 +336,7 @@
 	ldr	r3, =Func_8000888
 	ldr	r1, [sp]
 	.call_via r3
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x8e
 	lsl	r2, #2
 	add	r3, r2

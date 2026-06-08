@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_80048b0
 	push	{r5, lr}
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
 	ldr	r0, [r4, r5]
 	cmp	r0, #0
@@ -39,7 +39,7 @@
 
 .thumb_func_start Func_80048f4
 	push	{r5, lr}
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
 	ldr	r0, [r4, r5]
 	cmp	r0, #0
@@ -75,7 +75,7 @@
 
 .thumb_func_start Func_8004938
 	push	{lr}
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	add	r3, r0, #3
 	lsr	r3, #2
 	ldr	r2, [r1, #4]
@@ -106,7 +106,7 @@
 
 .thumb_func_start Func_8004970
 	push	{lr}
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	add	r3, r0, #3
 	lsr	r3, #2
 	ldr	r2, [r1]

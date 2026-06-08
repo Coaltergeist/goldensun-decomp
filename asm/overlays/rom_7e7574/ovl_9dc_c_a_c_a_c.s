@@ -8,7 +8,7 @@
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L1748
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -41,7 +41,7 @@
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L17a2
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -78,7 +78,7 @@
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L1802
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

@@ -139,14 +139,14 @@
 	mov	r2, #0xf0
 	ldr	r3, =Func_8001af8
 	ldr	r0, =0x6008000
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r2, #7
 	bl	_call_via_r3
 	b	.Lcd3ee
 .Lcd396:
 	mov	r2, #0xf0
 	ldr	r3, =Func_8001af8
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r2, #7
 	ldr	r0, =0x6008000
 	bl	_call_via_r3
@@ -154,7 +154,7 @@
 	mov	r1, #0xf0
 	add	r3, r5, r2
 	ldr	r2, [r3]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r3, =Func_80008d8
 	lsl	r1, #7
 	bl	_call_via_r3
@@ -167,14 +167,14 @@
 	bne	.Lcd3ce
 	ldr	r1, =0x6008000
 	add	r2, #0x7c
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	bl	Func_8005534
 	b	.Lcd3ee
 .Lcd3ce:
 	mov	r2, #0xf0
 	ldr	r1, =0x6008000
 	lsl	r2, #7
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	bl	Func_80054e4
 	b	.Lcd3ee
 .Lcd3dc:
@@ -184,7 +184,7 @@
 	mov	r3, #0xf0
 	ldr	r2, =0x6008000
 	lsl	r3, #7
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	bl	Func_8005490
 .Lcd3ee:
 	ldr	r3, =0x7824

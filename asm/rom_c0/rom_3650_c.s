@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_800383c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -34,7 +34,7 @@
 
 .thumb_func_start Func_800387c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -65,7 +65,7 @@
 
 .thumb_func_start Func_80038bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -96,7 +96,7 @@
 
 .thumb_func_start Func_80038fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -127,7 +127,7 @@
 
 .thumb_func_start Func_800393c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -158,7 +158,7 @@
 
 .thumb_func_start Func_800397c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -189,7 +189,7 @@
 
 .thumb_func_start Func_80039bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -220,7 +220,7 @@
 
 .thumb_func_start Func_80039fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -251,7 +251,7 @@
 
 .thumb_func_start Func_8003a3c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -285,7 +285,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	ldrh	r5, [r6]
 	mov	r7, sp
 	cmp	r5, #0

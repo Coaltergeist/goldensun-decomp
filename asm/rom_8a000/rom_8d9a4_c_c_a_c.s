@@ -71,7 +71,7 @@
 	bl	Func_8091254
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r5, r3
@@ -132,7 +132,7 @@
 	bl	StartTask
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r6, r3
@@ -197,7 +197,7 @@
 	lsl	r1, #4
 	ldr	r0, =Func_8090658
 	bl	StartTask
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r6, r3
@@ -300,7 +300,7 @@
 	mov	r1, r8
 	strb	r1, [r3]
 .L90168:
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r5, r3

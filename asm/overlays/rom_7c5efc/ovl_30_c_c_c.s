@@ -677,7 +677,7 @@
 	lsl	r2, #1
 	lsl	r5, #2
 	str	r5, [r3, r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldrsh	r2, [r3, r2]
 	ldr	r3, =0x6a
 	cmp	r2, r3

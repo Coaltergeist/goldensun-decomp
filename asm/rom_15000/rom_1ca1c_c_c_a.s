@@ -754,7 +754,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	bne	.L1d89a
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r2, [r5]
 	mov	r3, #0x40
 	and	r2, r3
@@ -823,7 +823,7 @@
 	cmp	r5, #0
 	bne	.L1d8b0
 	ldr	r0, =0x594
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	add	r3, r7, r0
 	ldr	r0, =0x205
 	ldrb	r1, [r3]
@@ -869,7 +869,7 @@
 	bl	_Func_80f9080
 	b	.L1d840
 .L1d8b0:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r0, =0x205
 	ldr	r1, =0x206
 	add	r2, r3, r0

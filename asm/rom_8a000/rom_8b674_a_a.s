@@ -10,7 +10,7 @@
 	mov	r10, r0
 	mov	r8, r3
 	mov	r0, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	mov	r5, #0x80
 	add	r3, r0
@@ -41,7 +41,7 @@
 	bge	.L8b6b6
 	bl	Func_808b9f8
 	ldr	r3, =0xffff
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r1, #0xee
 	strh	r3, [r5, #2]
 	strh	r7, [r5]
@@ -94,7 +94,7 @@
 	asr	r3, #20
 	lsl	r3, #7
 	add	r3, r2, r3
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r3, #2
 	add	r2, r3, r0
 	ldr	r4, =ewram_200fe00
@@ -146,7 +146,7 @@
 	.pool
 
 .L8b7b8:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xf9
 	lsl	r0, #1
 	add	r2, r3, r0

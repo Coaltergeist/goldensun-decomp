@@ -242,7 +242,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L1376
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	add	r3, r2, r1
@@ -358,7 +358,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L1486
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	add	r3, r2, r1
@@ -469,7 +469,7 @@
 	add	r0, r3
 .L1552:
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r5, r7
 	mov	r2, #0

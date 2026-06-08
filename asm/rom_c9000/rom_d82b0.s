@@ -113,7 +113,7 @@
 	asr	r3, #1
 	str	r3, [r2]
 	ldr	r4, [sp, #8]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r3, #0
 	mov	r8, r3
 	add	r7, r4, r0
@@ -251,7 +251,7 @@
 .Ld84b6:
 	cmp	r9, r7
 	ble	.Ld853a
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r0, #0
 	mov	r8, r0
 	add	r5, r10
@@ -450,7 +450,7 @@
 	lsr	r3, r0, #31
 	add	r0, r3
 	ldr	r2, [sp, #0x10]
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	asr	r0, #1
 	mov	r10, r0
 	mov	r7, #0
@@ -511,7 +511,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r2, #0xef
@@ -633,7 +633,7 @@
 	cmp	r11, r2
 	ble	.Ld8898
 	ldr	r3, [sp, #0x14]
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	mov	r7, #0
 	add	r6, sp, #0x34
 	add	r5, r3, r4

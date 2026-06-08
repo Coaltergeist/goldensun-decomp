@@ -7,7 +7,7 @@
 	mov	r6, r8
 	push	{r6, r7}
 	ldr	r3, =iwram_3001ebc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r3, [r3]
 	mov	r1, #0xfa
 	lsl	r1, #1
@@ -168,7 +168,7 @@
 	add	r1, #1
 	mov	r0, #0x48
 	bl	__Func_8091eb0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3

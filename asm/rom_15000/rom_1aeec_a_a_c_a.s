@@ -205,7 +205,7 @@
 	ldr	r3, =0x3e7
 	cmp	r6, r3
 	beq	.L1b3fa
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x10
 	and	r3, r2
@@ -265,7 +265,7 @@
 	ldr	r2, =0x3e7
 	cmp	r6, r2
 	beq	.L1b4bc
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x10
 	and	r3, r2

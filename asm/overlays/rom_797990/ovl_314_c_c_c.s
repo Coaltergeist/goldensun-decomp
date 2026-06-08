@@ -63,7 +63,7 @@
 	lsl	r2, #17
 	bl	__Func_80923e4
 .Lfbe:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r3, r1
@@ -97,7 +97,7 @@
 	lsl	r2, #15
 	bl	__Func_80923e4
 .L100a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r5, r3, r1

@@ -16,7 +16,7 @@
 	beq	.Lf909c
 	b	.Lf91e0
 .Lf909c:
-	ldr	r0, =ewram_2004290
+	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #7
 	bl	Func_80fa4bc
 	ldrb	r3, [r5]
@@ -32,7 +32,7 @@
 	ldr	r3, =ewram_2003020
 	mov	r2, #0
 	strh	r2, [r3, #6]
-	ldr	r0, =ewram_2004360
+	ldr	r0, =gMPlayInfo_02004360
 	mov	r1, #3
 	bl	Func_80fa4bc
 	b	.Lf91e0
@@ -75,14 +75,14 @@
 .Lf9108:
 	cmp	r6, #0x4f
 	ble	.Lf9164
-	ldr	r0, =ewram_2004290
+	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #0xff
 	mov	r2, #0
 	bl	Func_80fb2cc
 	ldr	r2, .Lf9130	@ 0
-	ldr	r3, =ewram_2003034
+	ldr	r3, =gMusicVolume
 	strh	r2, [r3]
-	ldr	r3, =ewram_2003008
+	ldr	r3, =gMusicCurVolume
 	lsl	r0, r6, #16
 	strh	r2, [r3]
 	lsr	r0, #16
@@ -123,7 +123,7 @@
 	and	r3, r5
 	cmp	r3, #0
 	beq	.Lf91ac
-	ldr	r2, =ewram_2003008
+	ldr	r2, =gMusicCurVolume
 	ldr	r3, .Lf91a0	@ 0
 	b	.Lf91b0
 
@@ -133,14 +133,14 @@
 	.pool
 
 .Lf91ac:
-	ldr	r2, =ewram_2003008
+	ldr	r2, =gMusicCurVolume
 	ldr	r3, .Lf91c8	@ 0x100
 .Lf91b0:
 	strh	r3, [r2]
-	ldr	r2, =ewram_2003034
+	ldr	r2, =gMusicVolume
 	ldr	r3, .Lf91c8	@ 0x100
 	strh	r3, [r2]
-	ldr	r2, =ewram_2003010
+	ldr	r2, =gMusicVolumeDelta
 	ldr	r3, .Lf91cc	@ 4
 	strh	r3, [r2]
 	ldr	r2, =ewram_2003014
@@ -171,12 +171,12 @@
 	beq	.Lf920e
 	cmp	r2, #1
 	bne	.Lf920a
-	ldr	r3, =ewram_2004210
+	ldr	r3, =gMPlayInfo_02004210
 	ldrb	r3, [r3, #4]
 	cmp	r3, #0
 	bne	.Lf920e
 	strb	r3, [r1]
-	ldr	r2, =ewram_2003034
+	ldr	r2, =gMusicVolume
 	ldr	r3, .Lf9230	@ 0x100
 	strh	r3, [r2]
 	b	.Lf920e
@@ -184,8 +184,8 @@
 	add	r3, #0xff
 	strb	r3, [r1]
 .Lf920e:
-	ldr	r3, =ewram_2003034
-	ldr	r1, =ewram_2003008
+	ldr	r3, =gMusicVolume
+	ldr	r1, =gMusicCurVolume
 	mov	r0, #0
 	ldrsh	r2, [r3, r0]
 	mov	r5, #0
@@ -196,7 +196,7 @@
 	sub	r0, r2, r3
 	cmp	r0, #0
 	ble	.Lf9248
-	ldr	r3, =ewram_2003010
+	ldr	r3, =gMusicVolumeDelta
 	ldrh	r3, [r3]
 	add	r3, r4, r3
 	b	.Lf924e
@@ -207,13 +207,13 @@
 	.pool
 
 .Lf9248:
-	ldr	r3, =ewram_2003010
+	ldr	r3, =gMusicVolumeDelta
 	ldrh	r3, [r3]
 	sub	r3, r4, r3
 .Lf924e:
 	strh	r3, [r1]
-	ldr	r3, =ewram_2003034
-	ldr	r1, =ewram_2003008
+	ldr	r3, =gMusicVolume
+	ldr	r1, =gMusicCurVolume
 	ldrh	r4, [r3]
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
@@ -226,12 +226,12 @@
 	strh	r4, [r1]
 .Lf9268:
 	ldrh	r2, [r1]
-	ldr	r0, =ewram_2004290
+	ldr	r0, =gMPlayInfo_BGM
 	mov	r1, #0xff
 	bl	Func_80fb2cc
 .Lf9272:
-	ldr	r3, =ewram_2003030
-	ldr	r1, =ewram_2003038
+	ldr	r3, =gMusicSpeed
+	ldr	r1, =gMusicCurSpeed
 	mov	r0, #0
 	ldrsh	r2, [r3, r0]
 	mov	r5, #0
@@ -242,18 +242,18 @@
 	sub	r0, r2, r3
 	cmp	r0, #0
 	ble	.Lf9292
-	ldr	r3, =ewram_200300c
+	ldr	r3, =gMusicSpeedDelta
 	ldrh	r3, [r3]
 	add	r3, r4, r3
 	b	.Lf9298
 .Lf9292:
-	ldr	r3, =ewram_200300c
+	ldr	r3, =gMusicSpeedDelta
 	ldrh	r3, [r3]
 	sub	r3, r4, r3
 .Lf9298:
 	strh	r3, [r1]
-	ldr	r3, =ewram_2003030
-	ldr	r6, =ewram_2003038
+	ldr	r3, =gMusicSpeed
+	ldr	r6, =gMusicCurSpeed
 	ldrh	r1, [r3]
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
@@ -265,7 +265,7 @@
 	bge	.Lf92b2
 	strh	r1, [r6]
 .Lf92b2:
-	ldr	r5, =ewram_2004290
+	ldr	r5, =gMPlayInfo_BGM
 	ldrh	r1, [r6]
 	mov	r0, r5
 	bl	Func_80fb2a4
@@ -305,7 +305,7 @@
 	mov	r0, #2
 	mov	r7, #0
 	mov	r11, r0
-	ldr	r3, =iwram_3007804
+	ldr	r3, =gRAMBuildDate
 	str	r7, [r3]
 	mov	r1, #0x14
 	mov	r2, #0
@@ -329,7 +329,7 @@
 	str	r3, [r2]
 	mov	r10, r0
 .Lf9346:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #4
 	and	r3, r2
@@ -393,7 +393,7 @@
 	add	r8, r1
 	sub	r7, #1
 .Lf93be:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x80
 	and	r3, r2

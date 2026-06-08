@@ -129,7 +129,7 @@
 	lsl	r2, #1
 	lsl	r3, #2
 	str	r3, [r1, r2]
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	ldr	r3, =0x60
 	ldrsh	r2, [r6, r2]
 	sub	sp, #8
@@ -202,7 +202,7 @@
 	bl	__Func_800fe9c
 	mov	r0, #1
 	bl	__Func_80030f8
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	b	.Ld56
 .Ld50:
 	ldr	r0, =0x9a8
@@ -397,7 +397,7 @@
 	mov	r3, #1
 	add	r0, #0x59
 	strb	r3, [r0]
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 .Lf3e:
 	mov	r2, #0xe0
 	lsl	r2, #1

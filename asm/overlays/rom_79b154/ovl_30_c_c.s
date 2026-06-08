@@ -91,7 +91,7 @@
 	mov	r1, #1
 	mov	r0, r8
 	bl	__Func_800c300
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r4, #0xe0
 	lsl	r4, #1
 	add	r3, r4
@@ -126,7 +126,7 @@
 
 .thumb_func_start OvlFunc_907_2008ed8
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1

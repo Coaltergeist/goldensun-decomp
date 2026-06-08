@@ -14,7 +14,7 @@
 	ldr	r4, [sp, #0x30]
 	mov	r10, r2
 	add	r1, r0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	add	r3, r4, r3
 	add	r5, r1, r2
@@ -1213,7 +1213,7 @@
 	mov	r6, r1
 	cmp	r3, r2
 	beq	.Lb82
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r12, r2
 .Lb50:
 	mov	r3, #2
@@ -1305,7 +1305,7 @@
 
 .thumb_func_start OvlFunc_916_2008be4
 	push	{r5, r6, r7, lr}
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	ldr	r6, =ewram_202c000
 	mov	r5, r2
 	mov	r2, #0

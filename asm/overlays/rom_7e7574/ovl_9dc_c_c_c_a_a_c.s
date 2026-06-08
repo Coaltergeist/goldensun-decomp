@@ -7,7 +7,7 @@
 	lsl	r3, r0, #3
 	sub	r3, r0
 	lsr	r3, #16
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	mov	r1, #0xe0
 	str	r3, [r5]
 	lsl	r1, #1
@@ -192,7 +192,7 @@
 	push	{lr}
 	sub	sp, #8
 	bl	OvlFunc_959_200d470
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -387,7 +387,7 @@
 	mov	r2, #0
 	bl	__Func_80923e4
 .L5152:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

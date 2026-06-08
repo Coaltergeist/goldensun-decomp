@@ -26,13 +26,13 @@ extern void _Func_808a8e4(int a1);
 extern void _Func_80f9438(void);
 extern void Func_8003650(void);
 
-extern s32 ewram_2002090;
+extern s32 gDMATaskCount;
 extern s8 iwram_3001ac4;
 extern s8 iwram_3001ca0;
 extern s8 iwram_3001d18;
-extern s8 iwram_3001f54;
+extern s8 gDebugMode;
 extern s8 iwram_3001f58;
-extern s32 iwram_3007800;
+extern s32 gIWRAMHeap_end;
 
 void AgbMain(void) {
     (void) UnknownDMAPrefix();
@@ -41,9 +41,9 @@ void AgbMain(void) {
     DMA3_CLEAR((void*)0x03000000, 0x1E000 / 4);
     Func_8004858();
     InitRAMLib();
-    ewram_2002090 = 0;
+    gDMATaskCount = 0;
     iwram_3001ac4 = 0;
-    iwram_3001f54 = 0;
+    gDebugMode = 0;
     iwram_3001f58 = 0;
     SetRAMBuildDate();
     Func_800479c();
@@ -54,7 +54,7 @@ void AgbMain(void) {
     _Func_80f9438();
     Func_800403c();
     Func_80040e8();
-    iwram_3007800 = 0;
+    gIWRAMHeap_end = 0;
     iwram_3001d18 = 1;
     iwram_3001ca0 = 0;
     Func_80030f8(0xA);

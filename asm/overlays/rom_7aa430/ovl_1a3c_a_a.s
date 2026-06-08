@@ -32,7 +32,7 @@
 	str	r3, [r0, #4]
 	b	.L1bb6
 .L1a7a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -57,7 +57,7 @@
 .L1aa6:
 	asr	r3, #20
 	add	r3, r2, r3
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	mov	r0, r8
 	add	r2, r3

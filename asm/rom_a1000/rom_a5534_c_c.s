@@ -171,7 +171,7 @@
 	str	r1, [sp, #4]
 	b	.La6596
 .La6550:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -247,12 +247,12 @@
 	orr	r0, r3
 	cmp	r2, #0
 	bne	.La65fa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x88
 	lsl	r2, #2
 	b	.La65fe
 .La65fa:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x222
 .La65fe:
 	add	r3, r2
@@ -270,7 +270,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0x88
 	lsl	r1, #2
 	add	r3, r2, r1
@@ -299,7 +299,7 @@
 	mov	r2, #0
 	bl	_Func_801e7c0
 .La665c:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x88
 	lsl	r2, #2
 	add	r3, r2
@@ -329,7 +329,7 @@
 	bhi	.La6698
 	mov	r6, #0
 .La6698:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x88
 	lsl	r1, #2
 	add	r7, r3, r1
@@ -363,7 +363,7 @@
 	mov	r3, #0
 	bl	_Func_801e7c0
 .La66e2:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x222
 	add	r3, r2
 	ldrh	r3, [r3]
@@ -383,7 +383,7 @@
 	bhi	.La670a
 	mov	r6, #0
 .La670a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x222
 	add	r7, r3, r1
 	ldrh	r2, [r7]
@@ -1329,7 +1329,7 @@
 	bl	Func_80030f8
 	ldr	r4, [sp, #8]
 	ldr	r1, [r4, #0x18]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	str	r1, [sp, #0x1c]
 	ldr	r3, [r3]
 	mov	r2, r10
@@ -1434,7 +1434,7 @@
 .La6fae:
 	ldr	r4, [sp, #8]
 .La6fb0:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r0, r10
 	and	r3, r0
@@ -1555,7 +1555,7 @@
 	beq	.La70a8
 	b	.La6d58
 .La70a8:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	add	r3, #0xfe
 	and	r2, r3
@@ -1569,7 +1569,7 @@
 	bne	.La70c2
 	b	.La71c8
 .La70c2:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r1, r10
 	and	r3, r1
@@ -1607,7 +1607,7 @@
 	mov	r9, r1
 	lsl	r5, #24
 .La710c:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	mov	r2, #0x80
 	ldr	r3, [r3]
 	lsl	r2, #1
@@ -1706,7 +1706,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	beq	.La7244
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r0, r10
 	and	r3, r0
@@ -1767,7 +1767,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	beq	.La72b8
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r0, r10
 	and	r3, r0

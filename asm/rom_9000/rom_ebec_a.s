@@ -13,7 +13,7 @@
 	mov	r0, #0
 	str	r0, [sp, #0x14]
 	str	r0, [sp, #0x10]
-	ldr	r5, =iwram_3001f54
+	ldr	r5, =gDebugMode
 	ldrb	r3, [r5]
 	cmp	r3, #0
 	beq	.Lec40
@@ -23,7 +23,7 @@
 	cmp	r0, #0
 	beq	.Lec40
 	mov	r2, #0x80
-	ldr	r1, =iwram_3001810
+	ldr	r1, =gSpriteAllocTable
 	mov	r0, #0
 	lsl	r2, #2
 .Lec20:
@@ -43,12 +43,12 @@
 	mov	r0, #0x87
 	bl	_Func_80f9080
 .Lec3e:
-	ldr	r5, =iwram_3001f54
+	ldr	r5, =gDebugMode
 .Lec40:
 	ldrb	r3, [r5]
 	cmp	r3, #0
 	beq	.Lec76
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r5]
 	lsl	r2, #2
@@ -77,9 +77,9 @@
 	bge	.Lec6e
 	b	.Lec78
 .Lec76:
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 .Lec78:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x87
 	lsl	r1, #2
 	add	r3, r1
@@ -111,7 +111,7 @@
 	bl	_Func_8079338
 	cmp	r0, #0
 	beq	.Lecd4
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 	ldr	r3, [r5]
 	mov	r2, #2
 	and	r3, r2
@@ -127,7 +127,7 @@
 	str	r0, [sp, #8]
 	b	.Lecd6
 .Lecd4:
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 .Lecd6:
 	ldr	r3, [r5]
 	mov	r2, #0xf
@@ -164,7 +164,7 @@
 	lsl	r0, #12
 	mov	r2, r11
 	bl	Func_800447c
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Led38
@@ -632,7 +632,7 @@
 	ldr	r2, [sp, #0x14]
 	cmp	r2, #0
 	beq	.Lf128
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -880,13 +880,13 @@
 	sub	sp, #0x5c
 	mov	r1, #0
 	mov	r6, r0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #2
 	mov	r2, #0x87
 	str	r1, [sp, #8]
 	str	r0, [sp]
 	lsl	r2, #2
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	add	r3, r2
 	ldrh	r2, [r3]
 	ldr	r3, [r1]
@@ -910,7 +910,7 @@
 	lsl	r3, #7
 	str	r3, [r6, #0x34]
 .Lf344:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	mov	r0, #0x80
 	ldr	r3, [r3]
 	lsl	r0, #2
@@ -922,7 +922,7 @@
 	lsl	r3, #11
 	str	r3, [r6, #0x30]
 .Lf35a:
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 	ldr	r2, [r5]
 	mov	r1, #0xf
 	lsr	r2, #4
@@ -965,7 +965,7 @@
 	mov	r1, r7
 	mov	r2, r8
 	bl	Func_800447c
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lf3c2
@@ -1318,7 +1318,7 @@
 .Lf6ae:
 	ldr	r3, =iwram_3001e70
 	ldr	r0, [r3]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4

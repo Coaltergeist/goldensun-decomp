@@ -32,7 +32,7 @@
 	mov	r14, r2
 .Lff00:
 	add	r3, r7, r5
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	lsl	r3, #2
 	add	r3, r6
 	ldr	r1, [r3]
@@ -108,7 +108,7 @@
 	mov	r8, r2
 .Lffa0:
 	add	r3, r6, r7
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	lsl	r3, #2
 	add	r3, r4
 	ldr	r1, [r3]
@@ -602,7 +602,7 @@
 	mov	r12, r1
 .L10380:
 	add	r3, r6, r4
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r1, [r3]

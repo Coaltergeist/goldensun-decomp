@@ -202,7 +202,7 @@
 
 .thumb_func_start Func_80d66cc
 	push	{r5, r6, lr}
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	ldr	r5, .Ld66f8	@ 0xfff1
 	ldr	r1, =ewram_2010082
 	ldr	r4, =ewram_200fffa
@@ -392,7 +392,7 @@
 	strh	r3, [r2]
 	ldr	r3, .Ld6868	@ 0x7741
 	mov	r1, r8
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	strh	r3, [r1]
 	mov	r3, #0x78
 	str	r3, [r2, #0x10]

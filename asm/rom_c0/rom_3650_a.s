@@ -34,7 +34,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L36a8
-	ldr	r2, =iwram_3001e50
+	ldr	r2, =gPtrs
 	mov	r1, #0xe0
 	add	r2, #0xd0
 	ldr	r0, [r2]
@@ -68,7 +68,7 @@
 	ldr	r3, =REG_KEYINPUT
 	ldrh	r2, [r3]
 	ldr	r3, .L3708	@ 0x3ff
-	ldr	r4, =iwram_3001ae8
+	ldr	r4, =gKeyHeld
 	mov	r0, r3
 	eor	r0, r2
 	ldr	r3, [r4]
@@ -86,7 +86,7 @@
 	ldr	r3, =iwram_3001b00
 	mov	r2, #0x13
 	str	r2, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r1, =iwram_3001d0c
 	str	r0, [r3]
 	b	.L3792
@@ -109,7 +109,7 @@
 	mov	r2, #1
 	neg	r2, r2
 	str	r2, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	str	r0, [r3]
 	b	.L3792
 .L3786:

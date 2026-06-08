@@ -402,7 +402,7 @@
 
 .thumb_func_start OvlFunc_922_2009fac
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -459,7 +459,7 @@
 	mov	r3, r5
 	add	r3, #0x5a
 	strb	r1, [r3]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4
@@ -513,7 +513,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -522,7 +522,7 @@
 	bl	__Func_808ba1c
 	mov	r6, r0
 .L20b4:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4

@@ -347,7 +347,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	beq	.La37f0
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x80
 	b	.La3784
 
@@ -428,7 +428,7 @@
 	str	r3, [sp, #8]
 	mov	r11, r3
 .La381a:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	and	r3, r2
 	cmp	r3, #0
@@ -441,7 +441,7 @@
 	str	r2, [sp, #8]
 	mov	r11, r3
 .La3832:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -830,7 +830,7 @@
 	str	r2, [sp, #0xc]
 	b	.La3bb4
 .La3b6e:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2

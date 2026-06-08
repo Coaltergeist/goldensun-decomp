@@ -26,10 +26,10 @@
 	lsl	r2, #1
 	add	r4, r2
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6006800
 	ldr	r2, =0x84002580
 	b	.Lc0
@@ -88,7 +88,7 @@
 	mov	r3, #0xa0
 	lsl	r3, #5
 	strh	r3, [r2, #0x14]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -112,7 +112,7 @@
 	ldrh	r2, [r3]
 	add	r2, #1
 	strh	r2, [r3]
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	lsl	r2, #16
 	lsr	r5, r2, #17
 	ldr	r0, =REG_IME
@@ -194,14 +194,14 @@
 	ldrsh	r4, [r5, r3]
 	cmp	r4, #0
 	beq	.L220
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	cmp	r3, #0
 	bne	.L276
 	strh	r3, [r5]
 	b	.L276
 .L220:
-	ldr	r6, =iwram_3001ae8
+	ldr	r6, =gKeyHeld
 	ldr	r3, [r6]
 	cmp	r3, #0
 	beq	.L276
@@ -249,14 +249,14 @@
 	ldrsh	r4, [r5, r3]
 	cmp	r4, #0
 	beq	.L298
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	cmp	r3, #0
 	bne	.L2ee
 	strh	r3, [r5]
 	b	.L2ee
 .L298:
-	ldr	r6, =iwram_3001ae8
+	ldr	r6, =gKeyHeld
 	ldr	r3, [r6]
 	cmp	r3, #0
 	beq	.L2ee
@@ -398,7 +398,7 @@
 	b	.L3bc
 .L396:
 	ldr	r1, =0x23e
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	add	r3, r2, r1
 	mov	r1, #0
 	ldrsh	r3, [r3, r1]
@@ -447,7 +447,7 @@
 	str	r2, [r3]
 	bl	__Func_8091dc8
 	bl	__Func_8091e20
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xe1
 	lsl	r0, #1
 	add	r3, r0
@@ -469,7 +469,7 @@
 	add	r0, r5, #1
 	mov	r1, #1
 	bl	__Func_801776c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x20f
 	add	r3, r2
 	mov	r2, #1
@@ -520,12 +520,12 @@
 	mov	r6, r0
 	cmp	r6, #0
 	bge	.L4d2
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L4d2
 	ldr	r1, =0x22a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #1
 	add	r3, r1
 	strb	r2, [r3]
@@ -563,7 +563,7 @@
 	cmp	r6, #0
 	bne	.L57a
 	bl	__Func_8077d38
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r0, =0x205
 	ldr	r1, =0x206
 	add	r3, r2, r0
@@ -606,7 +606,7 @@
 	cmp	r7, r5
 	blt	.L522
 	bl	__Func_8077f40
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0xe0
 	ldr	r3, =8
 	lsl	r0, #1
@@ -632,7 +632,7 @@
 	beq	.L4a8
 	ldr	r0, =0x109
 	bl	__Func_8079358
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r1, =0x205
 	ldr	r2, =0x206
 	add	r3, r5, r1
@@ -663,7 +663,7 @@
 	bl	__Func_8079374
 	b	.L696
 .L5d8:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x82
 	ldr	r3, [r3]
 	lsl	r2, #2
@@ -781,7 +781,7 @@
 	bne	.L72a
 	b	.L4a8
 .L72a:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -851,7 +851,7 @@
 	bne	.L7ca
 	b	.L4a8
 .L7ca:
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r0, =0x205
 	ldr	r1, =0x206
 	add	r3, r2, r0
@@ -1965,7 +1965,7 @@
 	mov	r2, r9
 	cmp	r2, #4
 	bne	.L1060
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, r11
 	ldrh	r3, [r2, #0x12]
 	add	r1, #0xa5

@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_879_2008054
 	push	{r5, r6, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r5, r2, r1
@@ -94,7 +94,7 @@
 	mov	r0, #0x1e
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
-	ldr	r2, =iwram_3001ae8
+	ldr	r2, =gKeyHeld
 	ldr	r3, [r2]
 	mov	r5, #0
 	cmp	r3, #0
@@ -198,7 +198,7 @@
 	ldr	r3, =.L650
 	mov	r1, #0
 	ldrsh	r3, [r3, r1]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r4, =.L6a0
@@ -289,7 +289,7 @@
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_879_2008238
 	bl	__StartTask
-	ldr	r7, =ewram_2002090
+	ldr	r7, =gDMATaskCount
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
 	mov	r1, r3
@@ -467,10 +467,10 @@
 	lsl	r3, #1
 	add	r4, r3
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6006800
 	ldr	r2, =0x84002580
 	b	.L4c0

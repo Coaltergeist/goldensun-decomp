@@ -60,7 +60,7 @@
 
 .Leb7d8:
 	bl	Func_80dbb24
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	ldr	r0, [r6]
@@ -174,7 +174,7 @@
 	mov	r1, #7
 	str	r3, [sp]
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	ldr	r2, =REG_BG2CNT
@@ -634,7 +634,7 @@
 	mov	r0, #0x9a
 	bl	_Func_80f9080
 .Lebc9a:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -895,7 +895,7 @@
 	mov	r0, r8
 	strb	r3, [r7, r0]
 	ldr	r1, [sp, #0xc]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r10, r5
 	mov	r6, #0
 	mov	r7, #0xff
@@ -965,7 +965,7 @@
 	bne	.Lebe80
 .Lebf3a:
 	mov	r2, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r2
 	mov	r7, #3
 	mov	r6, #6

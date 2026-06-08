@@ -14,7 +14,7 @@
 	bl	OvlFunc_971_2008f30
 	mov	r7, r0
 	bl	__Func_80916b0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -110,7 +110,7 @@
 .L108a:
 	ldr	r7, =0x2982
 .L108c:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -147,7 +147,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	__Func_80916b0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -193,7 +193,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	__Func_80916b0
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r5, r2

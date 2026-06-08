@@ -802,7 +802,7 @@
 	ldr	r3, =OvlFunc_898_20083ac
 	str	r3, [r0, #0x6c]
 .L140e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r5, r3, r2
@@ -913,7 +913,7 @@
 	lsl	r2, #15
 	bl	__Func_80923e4
 .L1516:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

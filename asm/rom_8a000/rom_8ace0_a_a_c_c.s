@@ -2,7 +2,7 @@
 
 .thumb_func_start Func_808b25c
 	push	{r5, r6, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #0xe0
 	mov	r12, r2
 	lsl	r3, #1
@@ -77,7 +77,7 @@
 .L8b2f0:
 	ldr	r2, =0x39
 .L8b2f2:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xeb
 	lsl	r1, #1
 	add	r3, r1
@@ -135,7 +135,7 @@
 	cmp	r3, r12
 	bne	.L8b35a
 .L8b37a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xf7
 	lsl	r2, #1
 	add	r3, r2

@@ -200,7 +200,7 @@
 	bne	.Ld8b82
 .Ld8b32:
 	mov	r1, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r1
 	mov	r6, #0xff
 .Ld8b3a:
@@ -242,7 +242,7 @@
 	cmp	r2, #1
 	bne	.Ld8bd6
 	mov	r3, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r3
 	mov	r6, #0xff
 .Ld8b90:
@@ -283,7 +283,7 @@
 	cmp	r1, #2
 	bne	.Ld8c42
 	mov	r2, #0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r2
 .Ld8be2:
 	bl	Random
@@ -334,7 +334,7 @@
 	cmp	r3, #3
 	bne	.Ld8c8e
 	mov	r0, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r0
 	mov	r6, #0xff
 .Ld8c50:
@@ -368,7 +368,7 @@
 	b	.Ld8cd2
 .Ld8c8e:
 	mov	r2, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r2
 	mov	r6, #0xff
 .Ld8c96:
@@ -710,7 +710,7 @@
 	mov	r1, r10
 	sub	r1, #3
 	ldr	r2, [sp, #8]
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	str	r1, [sp, #0x18]
 	add	r6, r2, r3
 .Ld8f84:

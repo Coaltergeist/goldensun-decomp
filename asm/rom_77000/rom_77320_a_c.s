@@ -1041,7 +1041,7 @@
 	mov	r8, r0
 	cmp	r8, r10
 	bge	.L77c9e
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r2, r3
@@ -1152,7 +1152,7 @@
 	lsl	r3, #16
 	lsl	r2, #21
 	orr	r2, r3
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	asr	r0, r2, #16
 	cmp	r3, #0
@@ -1178,7 +1178,7 @@
 	str	r4, [r5]
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r2, =0x850000b0
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -1199,7 +1199,7 @@
 	str	r4, [r5]
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
-	ldr	r1, =ewram_2000040
+	ldr	r1, =gFlags
 	ldr	r2, =0x85000080
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
@@ -1212,13 +1212,13 @@
 	mov	r0, r5
 	str	r4, [r5]
 	ldr	r3, =REG_DMA3SAD
-	ldr	r1, =ewram_2000500
+	ldr	r1, =gPartyStatus
 	ldr	r2, =0x85000298
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	str	r4, [sp]
 	bl	Func_8078ee8
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	mov	r3, #0x84
 	lsl	r3, #2
 	add	r2, r7, r3
@@ -1543,7 +1543,7 @@
 	mov	r1, #0x8d
 	mov	r0, #2
 	bl	Func_8078e28
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0x96
 	ldr	r3, [r2, #0x10]
 	lsl	r1, #1
@@ -1566,7 +1566,7 @@
 	bge	.L78132
 .L780a0:
 	mov	r1, #0xfc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r1, #1
 	add	r3, r6, r1
 	ldrb	r0, [r2, r3]
@@ -1659,7 +1659,7 @@
 	bge	.L7820c
 .L78156:
 	mov	r1, #0xfc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r1, #1
 	add	r3, r7, r1
 	ldrb	r6, [r2, r3]

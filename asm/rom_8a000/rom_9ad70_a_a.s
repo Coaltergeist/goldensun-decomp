@@ -20,7 +20,7 @@
 	bl	Func_808ba1c
 	cmp	r0, #0
 	beq	.L9add6
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r3, #0x94
 	lsl	r3, #2
 	add	r2, r1, r3
@@ -65,7 +65,7 @@
 	ldr	r3, =Func_809ad70
 	cmp	r2, r3
 	bne	.L9ae18
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #0x94
 	lsl	r3, #2
 	add	r1, r2, r3

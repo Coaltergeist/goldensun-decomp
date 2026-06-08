@@ -758,7 +758,7 @@
 	ldr	r4, =0x6010000
 	mov	r5, r0
 	lsl	r3, r5, #5
-	ldr	r0, =iwram_3001e50
+	ldr	r0, =gPtrs
 	add	r3, r4
 	ldr	r2, [sp, #0x14]
 	ldr	r4, [sp, #0x10]

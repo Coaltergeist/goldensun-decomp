@@ -138,7 +138,7 @@
 	neg	r5, r5
 	b	.Lb22ce
 .Lb2232:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -193,7 +193,7 @@
 	mov	r3, #1
 	mov	r10, r3
 .Lb229e:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2
@@ -329,7 +329,7 @@
 	bl	Func_80b0574
 	b	.Lb24b0
 .Lb23cc:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r3, [r3, #0x10]
 	cmp	r9, r3
 	bls	.Lb23dc
@@ -447,7 +447,7 @@
 	ldrh	r4, [r3]
 	mov	r9, r0
 	mov	r0, #1
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r11, r0
 	mov	r0, #0x8e
 	str	r4, [sp]
@@ -591,7 +591,7 @@
 	bl	_Func_80f9080
 	b	.Lb267a
 .Lb2644:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2

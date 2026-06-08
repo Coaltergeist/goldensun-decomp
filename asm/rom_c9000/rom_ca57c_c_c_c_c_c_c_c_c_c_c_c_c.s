@@ -204,7 +204,7 @@
 	bne	.Lca758
 	mov	r8, r0
 	ldr	r3, [sp, #0x10]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r6, #0xff
 	add	r5, r3, r0
 .Lca7bc:
@@ -898,7 +898,7 @@
 	add	r0, r8
 	lsl	r3, r0, #3
 	sub	r3, r0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	add	r3, r2
 	mov	r2, #0
@@ -1151,7 +1151,7 @@
 .Lcafb6:
 	mov	r2, #0
 	mov	r3, r10
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r2
 	add	r6, sp, #0x6c
 	lsl	r7, r3, #1

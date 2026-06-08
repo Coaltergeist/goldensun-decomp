@@ -60,7 +60,7 @@
 
 .thumb_func_start OvlFunc_956_2008658
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -205,7 +205,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r5, r0
@@ -278,7 +278,7 @@
 	ble	.L808
 	b	.L9ea
 .L808:
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #0x20
 	and	r3, r2

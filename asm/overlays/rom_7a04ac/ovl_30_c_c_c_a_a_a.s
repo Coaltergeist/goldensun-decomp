@@ -42,7 +42,7 @@
 	bl	OvlFunc_913_20088c0
 	mov	r0, #9
 	bl	OvlFunc_913_20088c0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

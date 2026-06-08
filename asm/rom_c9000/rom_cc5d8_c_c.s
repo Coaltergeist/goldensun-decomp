@@ -58,7 +58,7 @@
 	bl	Func_80e0524
 	mov	r3, #0
 	ldr	r0, =_FILE_72
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	bl	Func_80e0524
 	mov	r3, r10
@@ -173,7 +173,7 @@
 	lsl	r3, r4, #1
 	mov	r0, r11
 	ldrh	r1, [r0, r3]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r3, [r6]
 	add	r1, r2
 	ldr	r2, [r3, #4]

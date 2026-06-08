@@ -3,13 +3,13 @@
 
 .thumb_func_start Func_8004a5c
 	push	{lr}
-	ldr	r2, =iwram_3001cc4
+	ldr	r2, =gMatrixStackSize
 	ldr	r3, [r2]
 	cmp	r3, #0
 	ble	.L4a7c
 	sub	r3, #1
 	str	r3, [r2]
-	ldr	r3, =iwram_3001d2c
+	ldr	r3, =gMatrixStack
 	ldr	r0, [r3]
 	sub	r0, #0x30
 	str	r0, [r3]

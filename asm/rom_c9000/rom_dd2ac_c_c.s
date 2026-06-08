@@ -68,7 +68,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -387,7 +387,7 @@
 	cmp	r2, r3
 	bne	.Ldd622
 .Ldd5e6:
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r6, #0
 	mov	r7, #0xf
 	b	.Ldd5f2
@@ -435,7 +435,7 @@
 	beq	.Ldd642
 	b	.Ldd4d0
 .Ldd642:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r0, #0
 	mov	r9, r0
 	mov	r8, r1
@@ -1119,7 +1119,7 @@
 	mov	r3, #0x1f
 	and	r3, r0
 	mov	r1, r3
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	add	r1, #0x48
 	mov	r6, #0
 	b	.Lddc36
@@ -1215,7 +1215,7 @@
 .Lddcda:
 	ldr	r3, =.Leebc0
 	mov	r2, #0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r11, r2
 	mov	r10, r3
 .Lddce4:
@@ -1615,7 +1615,7 @@
 	cmp	r3, #0
 	beq	.Lde0da
 	ldr	r2, [sp, #0xc]
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	add	r7, r2, r3
 .Lde028:
 	bl	Random
@@ -1806,7 +1806,7 @@
 	b	.Lddf1c
 .Lde1f0:
 	mov	r1, #0
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r10, r1
 .Lde1f6:
 	ldr	r3, [r6, #0x18]
@@ -2026,7 +2026,7 @@
 	mov	r3, #3
 	bl	Func_80ed408
 .Lde3de:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	ldr	r4, [sp, #0x28]
 	mov	r2, r3
 	ldr	r7, =0x7828
@@ -2049,7 +2049,7 @@
 	ldr	r0, [r0]
 	mov	r2, #0
 	str	r0, [sp, #0x10]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r2
 	mov	r10, r2
 .Lde416:
@@ -2309,7 +2309,7 @@
 	mov	r3, #0
 	lsl	r1, #8
 	str	r4, [sp, #8]
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r8, r3
 	lsl	r7, r4, #8
 	mov	r9, r1

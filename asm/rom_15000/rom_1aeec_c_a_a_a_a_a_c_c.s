@@ -43,7 +43,7 @@
 	ldr	r3, =iwram_3001ebc
 	sub	sp, #0x14
 	ldr	r6, [r3]
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #8
 	mov	r1, #0xe0
 	str	r3, [sp, #0x10]

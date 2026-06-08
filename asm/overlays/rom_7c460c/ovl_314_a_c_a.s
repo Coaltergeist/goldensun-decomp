@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_939_2008350
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -25,7 +25,7 @@
 
 .thumb_func_start OvlFunc_939_2008388
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -395,7 +395,7 @@
 
 .thumb_func_start OvlFunc_939_20086e4
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -602,7 +602,7 @@
 
 .thumb_func_start OvlFunc_939_20088ec
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

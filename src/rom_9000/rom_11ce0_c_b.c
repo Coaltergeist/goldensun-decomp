@@ -5,7 +5,7 @@
  * asm/rom_9000/rom_11ce0_c_a.o and asm/rom_9000/rom_11ce0_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char ewram_2010000[];
+extern unsigned char gBuffer[];
 
 unsigned int Func_80120b4(int x, int y)
 {
@@ -13,6 +13,6 @@ unsigned int Func_80120b4(int x, int y)
     int idx;
 
     idx = (x / 16) + ((y / 16) << 7);
-    p = ewram_2010000 + (idx << 2);
+    p = gBuffer + (idx << 2);
     return (unsigned int)p[1] >> 6;
 }

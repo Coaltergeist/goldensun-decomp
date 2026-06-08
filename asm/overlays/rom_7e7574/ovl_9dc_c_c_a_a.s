@@ -442,7 +442,7 @@
 	str	r2, [r3]
 	mov	r0, #1
 	bl	__Func_809163c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3
@@ -1072,7 +1072,7 @@
 	str	r2, [r3]
 	mov	r0, #1
 	bl	__Func_809163c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3

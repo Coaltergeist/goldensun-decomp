@@ -7,7 +7,7 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	ldr	r2, =0x205
 	add	r3, r7, r2
 	mov	r9, r0
@@ -485,16 +485,16 @@
 	beq	.L1ceba
 	b	.L1cecc
 .L1ceac:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	b	.L1cebe
 .L1ceb4:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x205
 	b	.L1cebe
 .L1ceba:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x206
 .L1cebe:
 	add	r1, r3, r2
@@ -526,7 +526,7 @@
 	beq	.L1cf1e
 	b	.L1cf30
 .L1cefc:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r1, r3, r2
@@ -536,7 +536,7 @@
 	bhi	.L1cf30
 	b	.L1cf2c
 .L1cf0e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x205
 	add	r1, r3, r2
 	ldrb	r2, [r1]
@@ -545,7 +545,7 @@
 	bhi	.L1cf30
 	b	.L1cf2c
 .L1cf1e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x206
 	add	r1, r3, r2
 	ldrb	r2, [r1]

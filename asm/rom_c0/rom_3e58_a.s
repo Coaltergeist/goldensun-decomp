@@ -11,8 +11,8 @@
 	neg	r0, r0
 	b	.L3ec4
 .L3e68:
-	ldr	r1, =iwram_3001810
-	ldr	r2, =iwram_3001b10
+	ldr	r1, =gSpriteAllocTable
+	ldr	r2, =gSpriteSlots
 	mov	r12, r1
 	mov	r4, #0
 	mov	r14, r2
@@ -72,7 +72,7 @@
 .thumb_func_start Func_8003ed4
 	push	{lr}
 	mov	r2, #0x80
-	ldr	r4, =iwram_3001810
+	ldr	r4, =gSpriteAllocTable
 	mov	r1, #0
 	mov	r0, #0
 	lsl	r2, #2
@@ -102,7 +102,7 @@
 	cmp	r0, #0x5f
 	bhi	.L3f2a
 	mov	r1, #0x80
-	ldr	r2, =iwram_3001810
+	ldr	r2, =gSpriteAllocTable
 	mov	r5, #0xff
 	lsl	r1, #2
 .L3f14:
@@ -132,7 +132,7 @@
 
 .thumb_func_start Func_8003f3c
 	push	{r5, r6, lr}
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	lsl	r2, r0, #2
 	add	r5, r2, r3
 	cmp	r0, #0x5f

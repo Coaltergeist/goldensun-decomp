@@ -86,7 +86,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r3, =iwram_3001ebc
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r5, r1
@@ -231,7 +231,7 @@
 	mov	r6, #0
 	cmp	r10, r8
 	bge	.L8e2de
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r0, =0x1ff
 	mov	r2, #0xfc
 	lsl	r2, #1
@@ -328,7 +328,7 @@
 	lsl	r0, #9
 	cmp	r3, r0
 	bge	.L8e366
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -391,7 +391,7 @@
 	mov	r0, #0
 	cmp	r6, #0
 	bne	.L8e470
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0x90
 	lsl	r0, #2
 	add	r3, r1, r0
@@ -482,7 +482,7 @@
 	push	{r7}
 	mov	r6, r2
 	ldr	r3, =iwram_3001ebc
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r5, r2
@@ -635,7 +635,7 @@
 	sub	sp, #4
 	and	r5, r3
 	bl	_Func_8078b9c
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
 	ldrb	r0, [r0, #0xc]
@@ -709,7 +709,7 @@
 	mov	r3, #0xf
 	and	r6, r3
 	mov	r11, r0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -790,7 +790,7 @@
 	beq	.L8e764
 	b	.L8e920
 .L8e764:
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0x90
 	lsl	r0, #2
 	add	r3, r1, r0
@@ -891,7 +891,7 @@
 	cmp	r7, #0
 	beq	.L8e86e
 .L8e83a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -934,7 +934,7 @@
 	mov	r3, #1
 	add	r2, r10
 	strb	r3, [r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

@@ -41,7 +41,7 @@
 	mov	r3, r9
 	str	r3, [sp]
 	ldrb	r3, [r0, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r2, [r3, #2]
@@ -577,7 +577,7 @@
 	ldrh	r3, [r1, #6]
 	lsr	r3, #8
 	add	r3, r2
-	ldr	r0, =iwram_3001ae8
+	ldr	r0, =gKeyHeld
 	add	r3, #6
 	mov	r2, r9
 	strb	r3, [r2, #4]
@@ -1499,7 +1499,7 @@
 	bne	.Lbe3f0
 	bl	.Lbec5c
 .Lbe3f0:
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lbe46a
@@ -1507,7 +1507,7 @@
 	bl	_Func_8079338
 	cmp	r0, #0
 	beq	.Lbe46a
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #1

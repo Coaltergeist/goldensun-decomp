@@ -13,7 +13,7 @@
 	sub	sp, #8
 	str	r3, [sp, #4]
 	mov	r2, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
@@ -75,7 +75,7 @@
 	lsl	r1, #4
 	mov	r0, r5
 	bl	StartTask
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2

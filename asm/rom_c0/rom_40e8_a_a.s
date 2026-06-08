@@ -3,11 +3,11 @@
 
 .thumb_func_start Func_80040e8
 	push	{lr}
-	ldr	r3, =iwram_3001d34
+	ldr	r3, =gTasksEnabled
 	mov	r2, #0
 	strb	r2, [r3]
 	ldr	r3, =iwram_3001a10
-	ldr	r1, =iwram_3001a20
+	ldr	r1, =gTasks
 	ldr	r4, .L4118	@ 0xffff
 	strb	r2, [r3]
 	mov	r0, #0
@@ -22,7 +22,7 @@
 	add	r1, #8
 	cmp	r2, #0
 	bge	.L40fc
-	ldr	r2, =iwram_3001d34
+	ldr	r2, =gTasksEnabled
 	mov	r3, #1
 	strb	r3, [r2]
 	b	.L4128

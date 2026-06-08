@@ -248,7 +248,7 @@
 	mov	r0, #0x80
 	mov	r1, #0x28
 	bl	Func_80a1a40
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -427,7 +427,7 @@
 	add	r1, #0x46
 	mov	r0, #0x68
 	bl	Func_80a1a40
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x40
 	and	r3, r2
@@ -598,7 +598,7 @@
 	add	r0, #0x6e
 	mov	r1, #0x20
 	bl	Func_80a1a40
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2

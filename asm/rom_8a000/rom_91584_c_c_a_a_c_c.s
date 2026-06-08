@@ -9,7 +9,7 @@
 	ldr	r2, =0x3e7
 	mov	r4, #0xe0
 	strh	r2, [r3]
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r4, #1
 	add	r3, r2, r4
 	strh	r0, [r3]
@@ -29,7 +29,7 @@
 	ldr	r2, =0x3e7
 	mov	r4, #0xe2
 	strh	r2, [r3]
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	lsl	r4, #1
 	add	r3, r2, r4
 	strh	r0, [r3]

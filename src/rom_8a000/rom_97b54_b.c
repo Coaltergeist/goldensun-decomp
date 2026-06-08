@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_97b54_a.o and asm/rom_8a000/rom_97b54_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char ewram_2000240;
+extern unsigned char gState;
 extern void Func_8099678(void);
 extern void StartTask(void *task, int priority);
 
@@ -14,7 +14,7 @@ void Func_8099810(void) {
     unsigned int r2;
     short val;
 
-    r3 = (unsigned int)&ewram_2000240;
+    r3 = (unsigned int)&gState;
     r2 = 0x93;
     r2 <<= 2;
     r3 += r2;

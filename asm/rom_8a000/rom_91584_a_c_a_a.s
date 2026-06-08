@@ -2,7 +2,7 @@
 
 .thumb_func_start Func_80915ac
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x20a
 	add	r3, r2
 	ldrb	r3, [r3]

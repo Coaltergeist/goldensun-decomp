@@ -188,7 +188,7 @@
 	strb	r3, [r2]
 	b	.L97ee4
 .L97d00:
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r0, [r3]
 	bl	Func_8097b54
 	lsl	r0, #16
@@ -873,7 +873,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xfa
 	ldr	r5, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	add	r3, r0
 	ldr	r0, [r3]
@@ -966,7 +966,7 @@
 	bl	Func_8098294
 	mov	r0, #8
 	bl	Func_808fe38
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r0, r3
@@ -1121,7 +1121,7 @@
 	bl	Func_808e4b4
 	cmp	r0, #0
 	beq	.L9854c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

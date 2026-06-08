@@ -8,7 +8,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r4, r2
@@ -75,7 +75,7 @@
 .L8b118:
 	mov	r1, #6
 	ldrsh	r3, [r5, r1]
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r10, r3
 	b	.L8b132
 .L8b122:
@@ -86,7 +86,7 @@
 	mov	r0, r1
 	cmp	r3, r8
 	bne	.L8b0da
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 .L8b132:
 	mov	r2, #0xf8
 	lsl	r2, #1
@@ -173,7 +173,7 @@
 
 .thumb_func_start Func_808b1d8
 	push	{r5, r6, r7, lr}
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r0, r1

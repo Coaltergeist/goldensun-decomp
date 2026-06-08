@@ -741,7 +741,7 @@
 	bl	__Func_800c2d8
 	b	.L4d54
 .L4c7e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r2

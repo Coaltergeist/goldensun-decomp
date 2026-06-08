@@ -25,7 +25,7 @@
 	mov	r2, #0
 	mov	r10, r2
 	mov	r1, #0x80
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r0, #0x7f
 	lsl	r1, #3
 .Ld69a6:
@@ -52,7 +52,7 @@
 	and	r5, r1
 	bl	Random
 	mov	r2, r8
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	and	r0, r2
 	add	r0, r6, r0
 	add	r5, r6, r5
@@ -92,7 +92,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -246,7 +246,7 @@
 .Ld6b76:
 	ldr	r3, =iwram_3001e80
 	ldr	r5, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -946,7 +946,7 @@
 	and	r0, r5
 	lsl	r3, r0, #5
 	add	r3, r10
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	add	r3, r7
 	add	r3, r1
@@ -1000,7 +1000,7 @@
 	and	r0, r5
 	lsl	r3, r0, #5
 	add	r3, r10
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	add	r3, r7
 	add	r3, r1
@@ -1193,7 +1193,7 @@
 	mov	r0, #0x2e
 	str	r6, [sp]
 	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -1655,7 +1655,7 @@
 	mov	r0, #0x2f
 	bl	Func_80ed408
 	ldr	r5, [r5, #0x1c]
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	str	r5, [sp, #0x20]
 	mov	r3, #0xf0
 	mov	r4, r8
@@ -1694,7 +1694,7 @@
 	add	r2, r7, r0
 	mov	r1, #0
 	str	r3, [r2]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r1
 	b	.Ld77b4
 
@@ -1749,7 +1749,7 @@
 	bl	_Func_80f9080
 	mov	r0, #0
 	str	r0, [sp, #0x28]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	mov	r2, sp
 	add	r2, #0x34
 	mov	r1, #0x10
@@ -1760,7 +1760,7 @@
 	ldr	r3, [sp, #0x28]
 	cmp	r3, #0xf
 	bhi	.Ld787c
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	cmp	r3, #1
 	bne	.Ld7848
 	ldr	r5, =ewram_2010002
@@ -2086,7 +2086,7 @@
 	cmp	r5, #0x20
 	bne	.Ld7af2
 	mov	r7, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r7
 	mov	r6, #0x7f
 	mov	r7, #0x1f
@@ -2171,7 +2171,7 @@
 	cmp	r0, #0x68
 	bne	.Ld7bac
 	mov	r1, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r1
 	mov	r6, #0x1f
 .Ld7b5e:
@@ -2215,7 +2215,7 @@
 	cmp	r3, #0xaf
 	bhi	.Ld7c58
 	mov	r4, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r4
 .Ld7bba:
 	ldr	r3, [r5, #0x18]
@@ -2283,7 +2283,7 @@
 	cmp	r2, #0xe0
 	bne	.Ld7ca4
 	mov	r3, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r3
 	mov	r6, #0x7f
 .Ld7c6c:
@@ -2314,7 +2314,7 @@
 	bne	.Ld7c6c
 .Ld7ca4:
 	mov	r0, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r0
 .Ld7caa:
 	mov	r3, r8
@@ -2394,7 +2394,7 @@
 	bne	.Ld7d5c
 	mov	r3, #0
 	ldr	r2, =ewram_2010e00
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r8, r3
 	mov	r0, #0
 .Ld7d44:
@@ -2413,7 +2413,7 @@
 .Ld7d5c:
 	mov	r7, #0
 	ldr	r5, =ewram_2010e00
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r8, r7
 .Ld7d64:
 	mov	r3, r8
@@ -2480,7 +2480,7 @@
 	str	r4, [sp, #0x28]
 	cmp	r4, r5
 	beq	.Ld7dfe
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	mov	r7, #0x10
@@ -2563,7 +2563,7 @@
 	cmp	r3, #0x40
 	bne	.Ld7e38
 	mov	r4, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r4
 .Ld7ecc:
 	bl	Random
@@ -2927,7 +2927,7 @@
 	ble	.Ld8208
 	mov	r6, r5
 	mov	r7, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r7
 	sub	r6, #0x36
 .Ld8196:

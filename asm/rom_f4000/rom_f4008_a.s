@@ -30,7 +30,7 @@
 	mov	r3, #0xff
 	lsl	r3, #17
 	str	r3, [r5, #0x20]
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r6, #0
 	str	r6, [r5, #0xc]
 	str	r6, [r5, #0x10]

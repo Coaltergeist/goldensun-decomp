@@ -20,7 +20,7 @@
  *   Func_80fa4bc m4aMPlayFadeOut    Func_80fb2cc m4aMPlayVolumeControl
  *   Func_80fa324 m4aSongNumStart    Func_80037d4 SetSoundFXMode
  *   Func_80faa58 MPlayStart         Data_fc624 gMPlayTable
- *   ewram_2004290 gMPlayInfo_BGM    ewram_2004360 gMPlayInfo_02004360
+ *   gMPlayInfo_BGM gMPlayInfo_BGM    gMPlayInfo_02004360 gMPlayInfo_02004360
  */
 typedef unsigned char  u8;
 typedef unsigned short u16;
@@ -36,12 +36,12 @@ extern struct SongTableEntry  Data_fc684[];
 extern unsigned char  ewram_2003000;
 extern unsigned char  ewram_2003014;
 extern unsigned char  ewram_200303c;
-extern short          ewram_2003008;
-extern short          ewram_2003034;
-extern unsigned short ewram_2003010;
+extern short          gMusicCurVolume;
+extern short          gMusicVolume;
+extern unsigned short gMusicVolumeDelta;
 extern unsigned short ewram_2003020[];
-extern void *ewram_2004290;
-extern void *ewram_2004360;
+extern void *gMPlayInfo_BGM;
+extern void *gMPlayInfo_02004360;
 
 extern void Func_80fa4bc(void *mplayInfo, unsigned short speed);
 extern void Func_80fb2cc(void *mplayInfo, unsigned short trackBits, unsigned short volume);
@@ -55,13 +55,13 @@ void Func_80f9080(int req) {
 
     if (id == 0x11) {
         if (ewram_2003014 == 0) {
-            Func_80fa4bc(&ewram_2004290, 7);
+            Func_80fa4bc(&gMPlayInfo_BGM, 7);
             ewram_2003014++;
             ewram_200303c = 0x13;
         }
     } else if (id == 0x121) {
         ewram_2003020[3] = 0;
-        Func_80fa4bc(&ewram_2004360, 3);
+        Func_80fa4bc(&gMPlayInfo_02004360, 3);
     } else if (id > 0x63) {
         int slot = Data_fc684[id].player;
         if (slot == 7) {
@@ -75,9 +75,9 @@ void Func_80f9080(int req) {
         Func_80faa58(Data_fc624[slot].info, Data_fc684[id].header);
         ewram_2003020[slot] = id;
     } else if (id > 0x4f) {
-        Func_80fb2cc(&ewram_2004290, 0xff, 0);
-        ewram_2003034 = 0;
-        ewram_2003008 = 0;
+        Func_80fb2cc(&gMPlayInfo_BGM, 0xff, 0);
+        gMusicVolume = 0;
+        gMusicCurVolume = 0;
         Func_80fa324(id);
         ewram_2003000 = 0xa;
     } else if (id != 0x12 && id != ewram_200303c) {
@@ -89,9 +89,9 @@ void Func_80f9080(int req) {
             mode = 2;
         Func_80037d4(mode);
         Func_80fa324(id);
-        ewram_2003008 = (flags & 0x1000) ? 0 : 0x100;
-        ewram_2003034 = 0x100;
-        ewram_2003010 = 4;
+        gMusicCurVolume = (flags & 0x1000) ? 0 : 0x100;
+        gMusicVolume = 0x100;
+        gMusicVolumeDelta = 4;
         ewram_2003014 = 0;
     }
 }

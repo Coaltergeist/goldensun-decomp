@@ -287,7 +287,7 @@
 	beq	.La59c4
 	b	.La57fe
 .La59c4:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	add	r3, #0xfe
 	and	r2, r3
@@ -331,7 +331,7 @@
 	mov	r9, r0
 	mov	r10, r3
 .La5a1c:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	mov	r2, #0x80
 	ldr	r3, [r3]
 	lsl	r2, #1
@@ -1402,7 +1402,7 @@
 	str	r1, [sp, #0x10]
 	b	.La634c
 .La6306:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2

@@ -885,7 +885,7 @@
 	ldr	r1, [sp, #4]
 	mov	r3, #1
 	strb	r3, [r1]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #4
@@ -900,7 +900,7 @@
 	ldrb	r3, [r1]
 	cmp	r3, #0
 	beq	.Lb65a2
-	ldr	r3, =ewram_20023a8
+	ldr	r3, =sRPGRNGState
 	str	r5, [r3]
 	mov	r5, #0
 	ldr	r2, =iwram_3001f64
@@ -958,7 +958,7 @@
 	ldr	r1, =0xc7f
 	ldr	r0, =Func_80b5864
 	bl	StartTask
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xf7
 	lsl	r1, #1
 	add	r3, r1
@@ -1055,7 +1055,7 @@
 	bl	_Func_8079338
 	cmp	r0, #0
 	bne	.Lb6700
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x22b
 	add	r3, r1
 	ldrb	r3, [r3]
@@ -1379,7 +1379,7 @@
 	mov	r0, #0x3b
 	bl	_Func_80f9080
 	bl	_Func_80198dc
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfc
 	lsl	r1, #1
 	add	r3, r1
@@ -1417,7 +1417,7 @@
 	bl	Func_80b5b18
 	bl	Func_80bf674
 	bl	Func_80bf5a8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #0
@@ -1460,7 +1460,7 @@
 .Lb6a86:
 	cmp	r7, #0
 	ble	.Lb6abc
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfc
 	lsl	r1, #1
 	add	r2, r3, r1

@@ -21,7 +21,7 @@
 	strh	r2, [r3]
 	ldr	r2, =REG_WININ
 	ldr	r3, .Lc9090	@ 0x3537
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	strh	r3, [r2]
 	ldr	r3, .Lc9094	@ 0x3f21
 	add	r2, #2

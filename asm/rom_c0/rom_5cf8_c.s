@@ -20,15 +20,15 @@
 	mov	r0, sp
 	mov	r3, #0
 	str	r3, [r0]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r2, =0x5000100
 	bl	Func_8006864
 	mov	r0, #3
 	bl	Func_8006384
 .L67d0:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	bl	Func_8006408
-	ldr	r6, =iwram_3001ae8
+	ldr	r6, =gKeyHeld
 .L67d8:
 	ldr	r3, [r6]
 	mov	r2, #1
@@ -68,7 +68,7 @@
 	cmp	r3, #0
 	bne	.L682e
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6001000
 	ldr	r2, =0x840000a0
 	stmia	r3!, {r0, r1, r2}

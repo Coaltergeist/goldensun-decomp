@@ -295,7 +295,7 @@
 
 .thumb_func_start Func_809b364
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r5, #0xed
 	lsl	r5, #1
 	ldr	r1, [r0, #0x14]
@@ -353,7 +353,7 @@
 
 .thumb_func_start Func_809b3d8
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r5, #0xed
 	lsl	r5, #1
 	ldr	r1, [r0, #0x14]
@@ -488,7 +488,7 @@
 
 .L9b4f0:
 	ldrb	r3, [r5, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r1, [r3, #2]
@@ -566,7 +566,7 @@
 
 .thumb_func_start Func_809b588
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -620,7 +620,7 @@
 	strh	r2, [r1]
 	asr	r0, r3, #16
 	mov	r2, #0xed
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	mov	r1, #0
@@ -658,7 +658,7 @@
 
 .thumb_func_start Func_809b648
 	push	{lr}
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r3, #0x91
 	lsl	r3, #2
 	add	r2, r1, r3

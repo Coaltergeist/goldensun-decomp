@@ -33,7 +33,7 @@
 	ldr	r2, =.L9c510
 	asr	r0, #16
 	bl	Func_8003fa4
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r3, #0x91
 	lsl	r3, #2
 	add	r2, r5, r3
@@ -114,7 +114,7 @@
 	bl	Func_80030f8
 	mov	r0, r5
 	bl	StopTask
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	add	r3, r1

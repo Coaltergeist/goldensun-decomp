@@ -313,7 +313,7 @@
 	lsl	r2, #1
 	lsl	r3, #1
 	str	r3, [r1, r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldrsh	r2, [r3, r2]
 	ldr	r3, =0x1e
 	cmp	r2, r3
@@ -378,7 +378,7 @@
 	lsl	r3, #9
 	str	r3, [r0, #0x1c]
 	mov	r2, #0xe1
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	mov	r2, #0
@@ -400,7 +400,7 @@
 	bl	__Func_8079338
 	cmp	r0, #0
 	bne	.L990
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -810,7 +810,7 @@
 	add	r2, #0x44
 	str	r2, [r3]
 	bl	OvlFunc_907_2008fa0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2

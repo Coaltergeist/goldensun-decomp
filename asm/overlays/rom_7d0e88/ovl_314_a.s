@@ -281,7 +281,7 @@
 	ldr	r0, [r2, r3]
 	b	.L554
 .L552:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 .L554:
 	lsl	r3, r1, #7
 	add	r3, r6, r3
@@ -1220,7 +1220,7 @@
 	ldr	r4, [sp, #0x30]
 	mov	r10, r2
 	add	r1, r0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	add	r3, r4, r3
 	add	r5, r1, r2

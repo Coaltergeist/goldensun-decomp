@@ -53,7 +53,7 @@
 	mov	r1, #4
 	bl	__Func_80924d4
 .L112e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x8d
 	lsl	r2, #2
 	add	r3, r2
@@ -226,7 +226,7 @@
 	mov	r0, #0xa
 	lsl	r1, #18
 	bl	__Func_80923e4
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -265,7 +265,7 @@
 	bl	__Func_8010704
 	b	.L131c
 .L131a:
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 .L131c:
 	mov	r2, #0xe1
 	lsl	r2, #1

@@ -1181,7 +1181,7 @@
 	bl	__Func_80f9080
 	b	.Lea4
 .Le12:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x40
 	and	r3, r2

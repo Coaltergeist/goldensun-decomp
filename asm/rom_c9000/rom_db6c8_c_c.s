@@ -109,7 +109,7 @@
 	cmp	r0, #0x20
 	bne	.Ldb76c
 	mov	r1, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r1
 	mov	r6, #0
 	mov	r7, #0x3f
@@ -160,7 +160,7 @@
 	mov	r0, #0x2e
 	str	r5, [sp]
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	str	r3, [sp, #0x1c]
@@ -227,7 +227,7 @@
 	ldrb	r3, [r6, r5]
 	cmp	r3, #0
 	beq	.Ldb94e
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 .Ldb8ac:
 	ldr	r3, [r6, #4]
 	cmp	r3, #0

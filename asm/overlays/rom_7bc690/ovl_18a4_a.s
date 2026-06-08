@@ -12,7 +12,7 @@
 	ldr	r3, =.L26d0
 	mov	r0, #0
 	ldrsh	r3, [r3, r0]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]
@@ -223,7 +223,7 @@
 	ldr	r1, [r6]
 	mov	r0, r5
 	bl	__Func_80038bc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r0, =0x232
 	add	r3, r2, r0
 	mov	r1, #0

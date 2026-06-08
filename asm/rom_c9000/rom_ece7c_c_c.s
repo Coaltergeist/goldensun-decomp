@@ -45,7 +45,7 @@
 	bl	Func_80e0524
 	ldr	r0, =_FILE_4e
 .Lecf5a:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
@@ -57,7 +57,7 @@
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r0, =_FILE_4c
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
@@ -118,7 +118,7 @@
 	mov	r3, #3
 	bl	Func_80ed408
 .Lecff2:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	mov	r0, #0xd4
@@ -150,7 +150,7 @@
 	str	r6, [sp]
 	str	r6, [sp, #4]
 	mov	r0, r8
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 .Led030:
 	mov	r2, #0
 	mov	r3, #0

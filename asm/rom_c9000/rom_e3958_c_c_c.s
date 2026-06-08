@@ -69,7 +69,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0x7f
 	ble	.Le3a2c
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 .Le3a2c:
 	pop	{r0}
@@ -236,7 +236,7 @@
 	mov	r3, #7
 	bl	Func_80ed408
 .Le3ba0:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, r3
 	add	r2, #0xb8
 	ldr	r2, [r2]
@@ -325,7 +325,7 @@
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r0, =_FILE_99
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
@@ -708,7 +708,7 @@
 	ldr	r0, [sp, #0x14]
 	lsl	r1, r3, #4
 	sub	r1, r3
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	ldr	r2, [r0]
 	ldr	r3, [r0, #4]
 	lsl	r1, #7
@@ -906,7 +906,7 @@
 	mov	r3, #7
 	bl	Func_80ed408
 .Le4150:
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, r3
 	add	r2, #0xb8
 	ldr	r2, [r2]
@@ -941,7 +941,7 @@
 	mov	r2, #1
 	mov	r3, #1
 	ldr	r0, =_FILE_4a
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	Func_80e0524
 	ldr	r2, [r5]
 	ldr	r3, [r2, #8]
@@ -1399,7 +1399,7 @@
 	str	r0, [sp, #4]
 	ldr	r4, [sp, #0x38]
 	ldr	r0, [sp, #0x34]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 .Le45a0:
 	mov	r2, #0
 	mov	r3, #0

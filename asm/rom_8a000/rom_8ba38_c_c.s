@@ -8,7 +8,7 @@
 	mov	r0, #0
 	bl	Func_808d48c
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]

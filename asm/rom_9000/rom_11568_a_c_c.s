@@ -7,7 +7,7 @@
 	mov	r6, r8
 	push	{r6, r7}
 	ldr	r3, =iwram_3001e70
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r7, [r3]
 	mov	r10, r2
 	mov	r2, #0x8e
@@ -113,7 +113,7 @@
 	bl	Func_80030f8
 	ldr	r0, =_FILE_d5
 	bl	GetFile
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	DecompressLZ
 	bl	Func_80113e4
 	ldr	r0, =Func_801179c

@@ -18,7 +18,7 @@
 	mov	r9, r1
 	bl	MapActor_GetActor
 	mov	r2, #0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x24a
 	str	r2, [sp]
 	add	r3, r1
@@ -110,7 +110,7 @@
 	cmp	r3, r1
 	bne	.L8d6ee
 .L8d6c2:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r5, r2
@@ -169,7 +169,7 @@
 	ldrsb	r0, [r3, r0]
 	cmp	r0, #3
 	bne	.L8d76a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -213,7 +213,7 @@
 	mov	r3, r10
 	cmp	r3, #0
 	beq	.L8d7ac
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r1, =0x24a
 	add	r5, r1
 	mov	r2, #0
@@ -375,7 +375,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xfa
 	ldr	r5, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r1, [r3]
@@ -400,7 +400,7 @@
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0xc
 	ble	.L8d98e
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2
@@ -432,7 +432,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xc
 	ble	.L8d98e
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #0x80
 	and	r3, r2

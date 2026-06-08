@@ -81,7 +81,7 @@
 	mov	r0, #0x10
 	mov	r2, #1
 	bl	Func_80dbb24
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	mov	r0, #1
@@ -201,7 +201,7 @@
 	mov	r2, #0x80
 	bl	_call_via_r3
 	ldr	r6, =0xffff
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r7, #0
 .Lea29a:
 	bl	Random
@@ -275,7 +275,7 @@
 	strh	r3, [r2]
 	mov	r0, sp
 	mov	r1, sp
-	ldr	r2, =iwram_3001e50
+	ldr	r2, =gPtrs
 	ldr	r3, =0xfffffa70
 	mov	r5, #0
 	add	r6, #0xac
@@ -437,7 +437,7 @@
 	mov	r3, #0
 	str	r3, [r4, #8]
 	str	r3, [r4, #4]
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r7, #0
 .Lea4ba:
 	mov	r3, r7
@@ -935,7 +935,7 @@
 	bgt	.Lea8e8
 	b	.Lea34e
 .Lea8e8:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r6, #3
 	and	r3, r6
@@ -1003,7 +1003,7 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	ldr	r6, [sp, #0x64]
@@ -1145,7 +1145,7 @@
 	mov	r0, #0x91
 	bl	_Func_80bd7dc
 .Leaad8:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -1155,7 +1155,7 @@
 	sub	r3, #5
 	cmp	r3, #0x90
 	bhi	.Leab6c
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	mov	r4, #0x96
 	str	r4, [sp, #0x54]
 	ldr	r5, =REG_IME
@@ -1243,7 +1243,7 @@
 	ldr	r6, [sp, #0x54]
 	cmp	r6, #0x40
 	bne	.Leac4c
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r0, r3

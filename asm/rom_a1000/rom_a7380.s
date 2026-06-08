@@ -977,7 +977,7 @@
 	str	r2, [sp, #4]
 	b	.La7d38
 .La7bf4:
-	ldr	r7, =iwram_3001b04
+	ldr	r7, =gKeyRepeat
 	mov	r3, #0x80
 	ldr	r5, [r7]
 	lsl	r3, #1
@@ -1324,7 +1324,7 @@
 	neg	r0, r0
 	b	.La7f0e
 .La7eca:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r2, [r5]
 	mov	r3, #0x20
 	and	r2, r3
@@ -1849,7 +1849,7 @@
 .La82f4:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r2, [r5]
 	mov	r3, #0xf0
 	and	r2, r3

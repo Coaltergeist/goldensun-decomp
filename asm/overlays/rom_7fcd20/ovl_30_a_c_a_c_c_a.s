@@ -6,7 +6,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r3, r2
@@ -23,7 +23,7 @@
 	mov	r10, r0
 	cmp	r7, r8
 	bge	.L10a
-	ldr	r5, =iwram_3001ae8
+	ldr	r5, =gKeyHeld
 .Laa:
 	mov	r0, #1
 	mov	r1, #1

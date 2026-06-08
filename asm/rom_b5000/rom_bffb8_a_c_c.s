@@ -399,7 +399,7 @@
 	str	r3, [r0, #8]
 	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]
@@ -511,7 +511,7 @@
 	str	r6, [r0, #8]
 	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r5, #0x78
 	str	r5, [r3, #0xc]
 	str	r5, [r3, #0x10]

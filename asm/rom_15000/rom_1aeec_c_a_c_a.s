@@ -3,7 +3,7 @@
 .thumb_func_start Func_801c46c
 	push	{lr}
 	ldr	r2, =0x205
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	add	r3, r1, r2
 	ldrb	r2, [r3]
 	mov	r3, #0x20
@@ -263,7 +263,7 @@
 .L1c6a8:
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -284,7 +284,7 @@
 	str	r3, [sp, #0x10]
 .L1c6d4:
 	mov	r0, #1
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r11, r0
 .L1c6da:
 	ldr	r3, [r5]
@@ -307,7 +307,7 @@
 	str	r3, [sp, #0x10]
 .L1c6fe:
 	mov	r3, #1
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r11, r3
 .L1c704:
 	ldr	r3, [r5]
@@ -367,7 +367,7 @@
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r2, [r3]
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldrh	r3, [r3, #2]
 	mov	r0, #0x88
 	lsl	r0, #2
@@ -505,7 +505,7 @@
 	mov	r7, r2
 	str	r3, [r1]
 	mov	r2, #0x88
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #2
 	add	r3, r2
 	ldrh	r3, [r3]

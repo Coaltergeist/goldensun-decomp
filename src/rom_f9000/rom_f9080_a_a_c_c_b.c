@@ -11,8 +11,8 @@
  * (matches the ROM's lsl/ldr/asr scheduling; a plain short param does not).
  */
 extern void Func_80fb334(void *mplayInfo, unsigned short trackBits, short pitch);
-extern void *ewram_2004290;
+extern void *gMPlayInfo_BGM;
 
 void Func_80f94e0(int pitch) {
-    Func_80fb334(&ewram_2004290, 0xff, (short)pitch);
+    Func_80fb334(&gMPlayInfo_BGM, 0xff, (short)pitch);
 }

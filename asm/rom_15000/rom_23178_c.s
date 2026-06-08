@@ -47,7 +47,7 @@
 	ldr	r0, =0xc2a
 	mov	r1, #1
 	bl	Func_801776c
-	ldr	r3, =iwram_3001cc8
+	ldr	r3, =gSleepMode
 	strb	r5, [r3]
 	b	.L29542
 .L29536:
@@ -87,7 +87,7 @@
 	strh	r1, [r3, #4]
 	bl	Func_80030f8
 .L29580:
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r3, [r2]
 	mov	r2, #0x20
 	and	r3, r2
@@ -99,7 +99,7 @@
 	str	r1, [sp, #4]
 	add	r11, r3
 .L29596:
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r3, [r2]
 	mov	r2, #0x10
 	and	r3, r2
@@ -109,7 +109,7 @@
 	str	r3, [sp, #4]
 	add	r11, r3
 .L295a8:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #2
@@ -122,7 +122,7 @@
 	str	r3, [sp, #4]
 	add	r9, r2
 .L295c0:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #1
@@ -133,7 +133,7 @@
 	str	r2, [sp, #4]
 	add	r9, r2
 .L295d4:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #1
 	and	r3, r2
@@ -397,7 +397,7 @@
 .L297f6:
 	add	r1, r8
 	mov	r10, r1
-	ldr	r6, =iwram_3001b04
+	ldr	r6, =gKeyRepeat
 	mov	r1, #2
 	mov	r9, r1
 .L29800:

@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_881_200837c
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -101,7 +101,7 @@
 	mov	r7, r1
 	mov	r6, r2
 	bl	__MapActor_GetActor
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -138,7 +138,7 @@
 	mov	r7, r1
 	mov	r6, r2
 	bl	__MapActor_GetActor
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

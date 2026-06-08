@@ -26,7 +26,7 @@
 	beq	.L77388
 	cmp	r6, r7
 	bge	.L7737e
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfc
 	lsl	r1, #1
 	add	r2, r3, r1
@@ -57,7 +57,7 @@
 .thumb_func_start Func_8077394
 	push	{lr}
 	mov	r3, r14
-	ldr	r2, =ewram_2000500
+	ldr	r2, =gPartyStatus
 	cmp	r0, #7
 	bhi	.L773a8
 	mov	r3, #0xa6

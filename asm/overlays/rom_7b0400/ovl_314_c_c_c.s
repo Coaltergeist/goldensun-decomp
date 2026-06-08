@@ -12,7 +12,7 @@
 	lsl	r2, #1
 	lsl	r3, #2
 	str	r3, [r1, r2]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldrsh	r2, [r3, r2]
 	ldr	r3, =0x3a
 	cmp	r2, r3
@@ -140,7 +140,7 @@
 	str	r5, [r0, #0x18]
 	mov	r0, #0xd
 	bl	__MapActor_GetActor
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	str	r5, [r0, #0x18]
 	lsl	r2, #1
@@ -2376,7 +2376,7 @@
 	ldr	r0, =0x3a
 	mov	r1, #2
 	bl	__Func_8091f90
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2
 	mov	r2, #3

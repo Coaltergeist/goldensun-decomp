@@ -739,7 +739,7 @@
 	eor	r0, r3
 	add	r1, sp, #0x14
 	bl	Func_80cef64
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r3, #0xff
 	mov	r7, #0
 	mov	r8, r3
@@ -811,7 +811,7 @@
 	str	r3, [sp, #8]
 	lsl	r2, #8
 	lsl	r3, #8
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r7, #0
 	mov	r8, r3
 	mov	r9, r2
@@ -1702,7 +1702,7 @@
 	add	r2, #0x3c
 	str	r2, [sp, #0x10]
 	str	r3, [r2, #4]
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	mov	r0, #1
@@ -1797,7 +1797,7 @@
 	add	r6, r3, r1
 	lsl	r3, r2, #3
 	sub	r3, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #5
 	add	r5, r3, r2
 .Ldcb76:
@@ -1848,7 +1848,7 @@
 	strh	r3, [r2]
 	mov	r2, #0
 	str	r2, [sp, #0x28]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -2232,7 +2232,7 @@
 	add	r7, r2, r0
 	lsl	r2, r3, #3
 	sub	r2, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r2, #5
 	add	r6, sp, #0x60
 	add	r5, r2, r1
@@ -2302,7 +2302,7 @@
 	str	r0, [sp, #0x28]
 	cmp	r0, #0xdc
 	beq	.Ldcfba
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -2338,7 +2338,7 @@
 	ldr	r3, .Ldd028	@ 0x7741
 	sub	r2, #0x20
 	strh	r3, [r2]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r0, =_FILE_b4
 	mov	r2, #1
 	mov	r3, #0
@@ -2452,7 +2452,7 @@
 	ldrb	r5, [r3, r6]
 	ldr	r2, [r7]
 	lsr	r3, r5, #1
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	sub	r2, r3
 	ldr	r3, =Data_edeab
 	add	r1, r0

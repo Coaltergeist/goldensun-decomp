@@ -39,7 +39,7 @@
 	sub	r3, #0xc
 	mov	r3, #0xe0
 	lsl	r3, #1
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r3
 	mov	r1, r5
 	mov	r0, r4
@@ -241,7 +241,7 @@
 	ldr	r3, =iwram_3001ad0
 	mov	r5, #0
 	strh	r5, [r3, #0xa]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r0, r6
 	mov	r8, r3
 	bl	GetFile

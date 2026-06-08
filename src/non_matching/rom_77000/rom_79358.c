@@ -9,10 +9,10 @@
  * registers + order than the ROM (drain rolled back on compare-rom). Permuter
  * should close it. Sibling family: Func_8079374 (clear), Func_8079418 (get).
  */
-extern unsigned char ewram_2000040[];
+extern unsigned char gFlags[];
 
 void Func_8079358(int flagID) {
     int bit = 1 << (flagID & 7);
     int idx = ((unsigned)flagID << 20) >> 23;
-    ewram_2000040[idx] |= bit;
+    gFlags[idx] |= bit;
 }

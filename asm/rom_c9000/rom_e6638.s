@@ -297,7 +297,7 @@
 .Le6890:
 	mov	r5, r9
 	ldrh	r3, [r5]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r0, =ewram_201007c
 	strh	r3, [r2, #2]
 	mov	r1, r9
@@ -305,7 +305,7 @@
 	ldr	r2, =0x80a0003e
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	mov	r5, r10
 	ldrh	r3, [r5]
 	mov	r0, r3
@@ -656,7 +656,7 @@
 	add	r2, r9
 	mov	r0, #0
 	str	r3, [r2]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r0
 .Le6bcc:
 	bl	Random
@@ -701,7 +701,7 @@
 	bne	.Le6bcc
 .Le6c26:
 	mov	r4, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r4
 .Le6c2c:
 	ldr	r3, [r5, #0x18]
@@ -1136,7 +1136,7 @@
 	cmp	r2, #3
 	bne	.Le6fdc
 	mov	r3, #0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r3
 .Le7014:
 	bl	Random
@@ -1277,7 +1277,7 @@
 	bne	.Le70c8
 	ldr	r3, =Data_ede48
 	mov	r2, #0
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	mov	r8, r2
 	mov	r9, r3
 .Le7134:

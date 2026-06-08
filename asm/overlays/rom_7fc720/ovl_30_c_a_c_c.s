@@ -46,7 +46,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -301,7 +301,7 @@
 	bl	__Func_80f9080
 	b	.L442
 .L338:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x40
 	and	r3, r2
@@ -572,7 +572,7 @@
 	pop	{r0}
 	bx	r0
 .L5b2:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x40
 	and	r3, r2

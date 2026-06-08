@@ -72,7 +72,7 @@
 	b	.L9693e
 .L968b4:
 	ldr	r2, =0x24a
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	add	r7, r5, r2
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
@@ -193,7 +193,7 @@
 	bl	Func_80984c0
 .L969dc:
 	ldr	r1, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r1
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
@@ -240,7 +240,7 @@
 	bl	Func_80985a8
 	b	.L96a92
 .L96a3a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x24a
 	add	r6, r3, r1
 	mov	r2, #0
@@ -298,7 +298,7 @@
 	bne	.L96adc
 	bl	Func_8097608
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]

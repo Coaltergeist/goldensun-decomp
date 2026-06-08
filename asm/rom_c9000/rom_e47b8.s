@@ -60,7 +60,7 @@
 	mov	r3, #0
 	bl	Func_80e0524
 	ldr	r0, =_FILE_99
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
@@ -70,7 +70,7 @@
 	mov	r3, #0x90
 	add	r1, r5, r0
 	lsl	r3, #1
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r2, #0x28
 	bl	Func_80df9d0
 	b	.Le486c
@@ -103,7 +103,7 @@
 	bne	.Le48a0
 .Le488e:
 	ldr	r0, =_FILE_ce
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
@@ -122,7 +122,7 @@
 	bne	.Le48be
 	ldr	r0, =_FILE_c3
 .Le48b2:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #1
 	bl	Func_80e0524
@@ -158,7 +158,7 @@
 	bhi	.Le48fc
 	ldr	r0, =_FILE_53
 .Le48f0:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 .Le48f2:
 	mov	r2, #1
 	mov	r3, #0
@@ -171,7 +171,7 @@
 	cmp	r0, #0x20
 	beq	.Le4912
 	ldr	r0, =_FILE_9e
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
 	bl	Func_80e0524
@@ -1016,7 +1016,7 @@
 	mov	r2, #1
 	mov	r3, #0
 	ldr	r0, =_FILE_ac
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	Func_80e0524
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Le5160	@ 0xe10
@@ -1033,7 +1033,7 @@
 	mov	r2, #1
 	mov	r3, #0
 	ldr	r0, =_FILE_ae
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	Func_80e0524
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Le5160	@ 0xe10
@@ -1894,7 +1894,7 @@
 	mov	r1, r8
 	lsl	r3, r1, #1
 	ldrh	r1, [r2, r3]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r0, r11
 	add	r1, r2
 	mov	r2, r8
@@ -1972,7 +1972,7 @@
 	mov	r3, #3
 	mov	r0, #0x2f
 	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	ldr	r0, [sp, #0xc]
 	mov	r8, r3
 	mov	r5, #0xbc
@@ -1991,7 +1991,7 @@
 	ldr	r0, [sp, #0x58]
 	ldr	r4, [r2]
 	sub	r3, #0x68
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r10
 	bl	_call_via_r4
 	sub	r5, r7
@@ -2000,7 +2000,7 @@
 	mov	r3, r8
 	ldr	r4, [r3]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r10
 	mov	r3, r9
 	bl	_call_via_r4
@@ -2110,7 +2110,7 @@
 	bl	Func_80ed408
 	mov	r3, r9
 	mov	r1, #0x18
-	ldr	r6, =iwram_3001e50
+	ldr	r6, =gPtrs
 	str	r1, [sp]
 	str	r3, [sp, #4]
 	asr	r5, #1
@@ -2120,7 +2120,7 @@
 	ldr	r0, [sp, #0x58]
 	sub	r2, #0x18
 	mov	r8, r1
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 	mov	r0, #0x2f
 	bl	Func_8002dd8
@@ -2137,7 +2137,7 @@
 	str	r2, [sp, #4]
 	ldr	r0, [sp, #0x58]
 	ldr	r4, [r6]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r5
 	mov	r3, #0x30
 	bl	_call_via_r4
@@ -2267,7 +2267,7 @@
 	add	r5, r3, r5
 	bl	Func_80e3944
 	ldr	r2, [r6]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsr	r3, r2, #31
 	asr	r5, #1
 	add	r2, r3
@@ -2453,7 +2453,7 @@
 	add	r3, r5, r3
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 .Le5d66:
 	ldr	r3, [sp, #0x54]
@@ -2717,7 +2717,7 @@
 	str	r3, [sp, #4]
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #0
 	mov	r3, #0x10
 	bl	_call_via_r4
@@ -2838,7 +2838,7 @@
 	ldr	r2, =Data_edeb2
 	lsl	r3, r4, #1
 	ldrh	r1, [r2, r3]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r3, =Data_edeab
 	add	r1, r2
 	ldrb	r2, [r7, r4]
@@ -2957,7 +2957,7 @@
 	ldrh	r1, [r1, r5]
 	str	r0, [sp]
 	str	r0, [sp, #4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r0, [sp, #0x34]
 	add	r3, #0x1c
 	ldr	r4, [r0, #4]
@@ -3034,7 +3034,7 @@
 	str	r1, [sp, #4]
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #0x30
 	bl	_call_via_r4
 	b	.Le640e
@@ -3101,7 +3101,7 @@
 	ldr	r4, [r1, #4]
 	sub	r3, #0x20
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 	b	.Le640e
 
@@ -3154,7 +3154,7 @@
 	and	r4, r3
 	add	r1, r5
 	ldr	r3, [r6, #4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	str	r0, [sp]
 	str	r0, [sp, #4]
 	ldr	r0, [sp, #0x34]
@@ -3229,7 +3229,7 @@
 	str	r0, [sp, #4]
 	add	r1, r5
 	ldr	r0, [sp, #0x34]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r4, #2
 	lsl	r1, #7
 	add	r1, r5

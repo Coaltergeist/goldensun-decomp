@@ -589,7 +589,7 @@
 	mov	r8, r3
 	b	.Lb2bba
 .Lb2cac:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r3, [r3, #0x10]
 	cmp	r5, r3
 	bls	.Lb2cc8
@@ -639,7 +639,7 @@
 	bl	_Func_80f9080
 	b	.Lb2d5a
 .Lb2d24:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1321,7 +1321,7 @@
 	add	r0, #3
 	b	.Lb331a
 .Lb330e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r3, [r3, #0x10]
 	cmp	r6, r3
 	bls	.Lb3328
@@ -1629,7 +1629,7 @@
 	str	r3, [sp, #4]
 	b	.Lb35e8
 .Lb35b8:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1851,7 +1851,7 @@
 	str	r2, [sp, #4]
 	b	.Lb382c
 .Lb3794:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
@@ -1906,7 +1906,7 @@
 	mov	r1, #1
 	mov	r9, r1
 .Lb3800:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2

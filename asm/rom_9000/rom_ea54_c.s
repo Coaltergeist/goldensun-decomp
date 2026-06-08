@@ -81,7 +81,7 @@
 	mov	r0, #0
 	cmp	r1, #0
 	beq	.Leb80
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r2, #0x85
 	lsl	r2, #2
 	ldr	r0, =gKeyPress

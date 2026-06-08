@@ -13,7 +13,7 @@
 	lsl	r4, #8
 	str	r3, [r6, #0x34]
 	str	r4, [r6, #0x30]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0xf
 	lsr	r3, #4
@@ -97,7 +97,7 @@
 	asr	r3, #20
 	lsl	r1, r3, #7
 	add	r3, r0, r1
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r3, #2
 	add	r0, r3
 	ldr	r3, [r5]
@@ -109,7 +109,7 @@
 .Lf8bc:
 	asr	r3, #20
 	add	r3, r1
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsl	r3, #2
 	mov	r0, r5
 	add	r7, r3, r1
@@ -128,7 +128,7 @@
 	mov	r9, r1
 	b	.Lf93a
 .Lf8e4:
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #0x40
 	and	r3, r2

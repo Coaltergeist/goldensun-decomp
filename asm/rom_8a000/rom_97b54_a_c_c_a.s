@@ -355,7 +355,7 @@
 	bl	Func_808e4b4
 	cmp	r0, #0
 	beq	.L98fd6
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -703,7 +703,7 @@
 	bl	Func_808e4b4
 	cmp	r0, #0
 	beq	.L992bc
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2

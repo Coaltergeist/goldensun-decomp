@@ -30,7 +30,7 @@
 	mov	r3, #0xc8
 	lsl	r3, #4
 	add	r5, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r0, r5
 	bl	Func_8012388
 	mov	r3, #0x80

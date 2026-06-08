@@ -406,7 +406,7 @@
 	ldrb	r3, [r4, r0]
 	add	r2, r3
 	strb	r2, [r5, #0x14]
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r2, [r5]
 	mov	r3, #0x40
 	and	r2, r3
@@ -496,7 +496,7 @@
 	cmp	r6, #0x11
 	bne	.L20f12
 .L20f0e:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	sub	r6, #1
 .L20f12:
 	ldr	r2, [r5]
@@ -543,7 +543,7 @@
 	mov	r6, #0x12
 	mov	r7, #5
 .L20f64:
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	ldr	r5, [r2]
 	mov	r3, #2
 	and	r5, r3
@@ -759,7 +759,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	ldr	r3, .L2112c	@ 0x6318
-	ldr	r2, =iwram_3001b04
+	ldr	r2, =gKeyRepeat
 	strh	r3, [r4, #8]
 	mov	r3, #1
 	mov	r11, r3
@@ -827,7 +827,7 @@
 	bne	.L211ba
 	mov	r7, #2
 .L211ba:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 .L211bc:
 	mov	r2, r9
 	ldr	r3, [r2]
@@ -844,7 +844,7 @@
 	bne	.L211da
 	mov	r7, #0
 .L211da:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 .L211dc:
 	mov	r2, r9
 	ldr	r3, [r2]
@@ -2041,7 +2041,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	ldr	r1, =0x604
 	add	r3, #0xc4
 	add	r2, r6, r1

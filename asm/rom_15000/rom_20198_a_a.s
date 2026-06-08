@@ -496,7 +496,7 @@
 	.pool_aligned
 
 .L205ac:
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r1, =0x205
 	add	r3, r2, r1
 	ldrb	r0, [r3]
@@ -549,7 +549,7 @@
 	bl	Func_80216b4
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
 	and	r2, r3
@@ -720,7 +720,7 @@
 	bl	Func_801fd98
 	mov	r0, #0x37
 	bl	Func_8002dd8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x205
 	add	r2, r3, r1
 	ldrb	r0, [r2]
@@ -916,7 +916,7 @@
 	mov	r8, r1
 	b	.L20978
 .L2095c:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =iwram_3001c9c
 	ldr	r2, [r3, #4]
 	str	r2, [r1]

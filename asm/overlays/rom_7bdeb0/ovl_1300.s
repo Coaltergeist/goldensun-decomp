@@ -9,7 +9,7 @@
 	cmp	r0, #0
 	beq	.L135e
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]

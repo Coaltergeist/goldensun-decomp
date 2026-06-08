@@ -369,7 +369,7 @@
 
 .thumb_func_start Func_808bd24
 	push	{r5, r6, r7, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r2, r1
@@ -585,7 +585,7 @@
 	sub	r3, #0x4c
 	ldr	r3, [r3]
 	mov	r10, r1
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	mov	r1, #0xfa
 	str	r3, [sp, #0x14]
 	lsl	r1, #1
@@ -668,7 +668,7 @@
 	ldr	r0, [r1, r3]
 	b	.L8bf7e
 .L8bf7c:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 .L8bf7e:
 	mov	r3, r10
 	cmp	r3, #0
@@ -723,7 +723,7 @@
 	add	r3, r8
 	strh	r6, [r3]
 .L8bfde:
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r2, #0xf9
 	lsl	r2, #1
 	add	r3, r4, r2
@@ -839,7 +839,7 @@
 	bl	Func_808c3a4
 	str	r0, [sp, #4]
 .L8c0c2:
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	ldr	r0, =0x22e
 	add	r3, r4, r0
 	mov	r1, #0
@@ -1088,7 +1088,7 @@
 	bl	_Func_80795fc
 	cmp	r0, #0
 	ble	.L8c302
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r6, r3, r2
@@ -1138,7 +1138,7 @@
 	bl	_Func_80795fc
 	cmp	r0, #0
 	ble	.L8c390
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r7, r3, r2
@@ -1184,7 +1184,7 @@
 	bl	_Func_80795fc
 	cmp	r7, r0
 	bge	.L8c420
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfc
 	lsl	r2, #1
 	add	r6, r3, r2
@@ -1362,7 +1362,7 @@
 	sub	r3, #0xc
 	ldr	r0, =0x103
 	bl	_Func_8079374
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r5, r1
@@ -1443,7 +1443,7 @@
 	beq	.L8c5e2
 	bl	Func_808bb2c
 .L8c5e2:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r4, #0x8d
 	lsl	r4, #2
 	add	r3, r5, r4
@@ -1500,7 +1500,7 @@
 	str	r3, [r2]
 	add	r3, #0x1b
 	add	r3, r8
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r1, =0x23e
 	str	r6, [r3]
 	add	r3, r5, r1
@@ -1517,7 +1517,7 @@
 	mov	r3, #0xde
 	ldr	r1, =0x109
 	lsl	r3, #1
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	add	r3, r8
 	mov	r9, r1
 	str	r2, [r3]
@@ -1607,7 +1607,7 @@
 	beq	.L8c750
 	mov	r0, r5
 	bl	_Func_8079374
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r2
@@ -1615,7 +1615,7 @@
 	ldrsh	r0, [r3, r4]
 	bl	_Func_801c34c
 .L8c750:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0x8d
 	lsl	r1, #2
 	add	r6, r5, r1
@@ -1647,7 +1647,7 @@
 	mov	r3, #0
 	strh	r3, [r5]
 .L8c794:
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r1, #0
 	mov	r9, r4
 	mov	r11, r1
@@ -2087,11 +2087,11 @@
 	mov	r0, #0x83
 	lsl	r0, #1
 	bl	_Func_8079358
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L8cb98
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #2
 	and	r3, r2
@@ -2220,11 +2220,11 @@
 	mov	r0, #0x83
 	lsl	r0, #1
 	bl	_Func_8079358
-	ldr	r1, =iwram_3001f54
+	ldr	r1, =gDebugMode
 	ldrb	r3, [r1]
 	cmp	r3, #0
 	beq	.L8ccb4
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #2
 	and	r3, r2
@@ -2236,7 +2236,7 @@
 	ldrb	r3, [r1]
 	cmp	r3, #0
 	beq	.L8ccce
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r3]
 	lsl	r2, #2
@@ -2271,7 +2271,7 @@
 	ldr	r3, =iwram_3001e68
 	mov	r2, #0x80
 	ldr	r5, [r3]
-	ldr	r1, =iwram_3001810
+	ldr	r1, =gSpriteAllocTable
 	mov	r0, #0
 	lsl	r2, #2
 .L8cd0e:
@@ -2334,7 +2334,7 @@
 	add	r3, #0x14
 	mov	r4, r8
 	ldr	r3, [r4, r3]
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r10, r3
 	cmp	r3, #0
 	beq	.L8cdd8
@@ -2378,7 +2378,7 @@
 	mov	r4, r8
 	ldr	r3, [r4, r3]
 	mov	r10, r3
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L8cdfe
@@ -2441,7 +2441,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -2572,7 +2572,7 @@
 	ldr	r3, =iwram_3001e70
 	mov	r0, #0xe1
 	ldr	r7, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	add	r3, r0
 	mov	r2, #0
@@ -2619,7 +2619,7 @@
 	bl	_Func_8079338
 	cmp	r0, #0
 	bne	.L8d020
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r4, #0xee
 	lsl	r4, #1
 	add	r2, r1, r4
@@ -2844,7 +2844,7 @@
 	bls	.L8d164
 	mov	r0, #1
 	bl	Func_80030f8
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	mov	r4, #0x1f
 .L8d1a2:
 	ldr	r2, [r1]
@@ -3075,7 +3075,7 @@
 	str	r1, [sp, #4]
 	str	r4, [sp]
 	bl	Func_80030f8
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r2, [r3]
 	mov	r3, #8
 	and	r2, r3
