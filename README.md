@@ -19,18 +19,6 @@ It builds the following ROM:
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
 - **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`lib/m4a/`](lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
 
-## Annotations
-
-Multiple community sources contribute curated function and global symbol names, all merged into a single auto-generated linker-script file:
-
-- **[`aliases.sym`](aliases.sym):** ~14,800 symbol aliases. Sources, in collision priority order:
-    1. **[`wram.sym`](wram.sym)"** hand-curated seed (~255 entries).
-    2. **FutureFractal's Ghidra project:** ~13,490 IWRAM/EWRAM globals + ~819 ROM-space function aliases (e.g. `gRNGState = 0x03001cb4;`, `Random = Func_4458;`). Dominant source.
-    3. **[gs_headers](https://github.com/SBird1337/gs_headers):** ~97 entries from community C headers' Doxygen `@address{AGFE,...}` tags (e.g. `REG_DISPCNT = 0x04000000;`, `CreateTask = Func_145a8;`).
-    4. **Broken Seal community doc:** ~124 ROM-space function aliases distilled from the [GS1 Documentation](https://docs.google.com/document/d/1CiioR7fp-E1kbTCK0QaJ_Yv93o-zQk4XWUpA0aV9Kxk/edit).
-
-`aliases.sym` is the only file INCLUDEd from [`stage1.ld`](stage1.ld). The corpus symbols (`Func_XXXX`, `iwram_XXXX`, `ewram_XXXX`) remain authoritative for tooling that locates code by symbol grep, but contributors writing new matched `.c` may reference either spelling. The linker resolves both to the same address.
-
 ## Setting up the repo
 
 See [INSTALL.md](INSTALL.md).
