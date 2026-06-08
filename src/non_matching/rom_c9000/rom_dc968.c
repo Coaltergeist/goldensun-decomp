@@ -101,7 +101,6 @@ extern void  BuildDraw2DFuncEx(int idx, int a, int b, int flags, int e); /* Buil
 extern void  WaitFrames(int n);                     /* WaitFrames */
 extern int   Random(void);                      /* Random (u16) */
 extern int   Func_b50_from_thumb(int val, int div);   /* umod veneer */
-extern int   Func_b1c_from_thumb(int val, int div);   /* mod veneer */
 extern void  InitMatrixStack(void);                      /* InitMatrixStack */
 extern void  MatrixRoll(int a);                     /* MatrixRoll */
 extern void  MatrixPitch(int a);                     /* MatrixPitch */
@@ -380,7 +379,7 @@ void Anim_Atalanta(AnimContext *context)
         /* init 0x20 flare particles */
         for (i = 0; i < 0x20; i++) {
             Particle3D *p = STATE_PARTICLES(state) + i;
-            int slot = Func_b1c_from_thumb(i, 6);     /* i % 6 */
+            int slot = i % 6;     /* i % 6 */
             vec3 tpos;
             if (slot < (int)STATE_CONTEXT(state)->numTargets) {
                 int yrand;
@@ -421,7 +420,7 @@ void Anim_Atalanta(AnimContext *context)
                         STATE_SHAKE2(state) = 2;   /* state+0x77a8 */
                         _PlaySound(0x86);
                         {
-                            int slot = Func_b1c_from_thumb(i, 6);  /* i % 6 */
+                            int slot = i % 6;  /* i % 6 */
                             if (slot < (int)STATE_CONTEXT(state)->numTargets) {
                                 Func_80d6888(STATE_CONTEXT(state)->targets[slot], 7, 5, slot, 8);
                                 _SetBattleActorKnockback(STATE_CONTEXT(state)->targets[slot], 1);

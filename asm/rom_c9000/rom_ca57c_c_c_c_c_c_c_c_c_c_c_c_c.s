@@ -450,7 +450,7 @@
 	mov	r0, r5
 	bl	__divsi3
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r6, r0
 	ldr	r0, [sp, #0x30]
 	ldr	r3, [r0]
@@ -539,7 +539,7 @@
 	add	r1, r5
 	lsl	r1, #1
 	ldr	r0, [sp, #0x58]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, #2
 	cmp	r0, r5
 	beq	.Lcaaca
@@ -785,7 +785,7 @@
 	ldrb	r5, [r1, r6]
 	ldr	r0, [sp, #0x58]
 	lsl	r1, r5, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r3, r5, #1
 	add	r3, r5
 	cmp	r0, r3

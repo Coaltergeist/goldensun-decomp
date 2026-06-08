@@ -638,7 +638,7 @@
 .L17e00:
 	mov	r0, r6
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #0x30
 	strb	r0, [r5]
 	mov	r1, #0xa

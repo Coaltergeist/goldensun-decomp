@@ -134,7 +134,7 @@
 	str	r5, [r6, #0x10]
 	mov	r0, r9
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldrb	r3, [r7, r0]
 	cmp	r3, r5
 	bge	.Ldd3e4
@@ -259,7 +259,7 @@
 	ble	.Ldd57c
 	mov	r0, r9
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r5, [sp, #0xc]
 	ldr	r2, [sp, #0x24]
 	mov	r6, r10
@@ -744,7 +744,7 @@
 	asr	r0, #2
 	add	r0, r6
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r5
 	add	r3, #0x20
 	cmp	r8, r3

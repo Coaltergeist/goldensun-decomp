@@ -276,7 +276,7 @@ Data_8000ac0:
 	bx	r12
 .func_end divsi3_RAM
 
-.arm_func_start Func_8000b1c
+.arm_func_start modsi3_RAM
 	stmfd	sp!, {lr}
 	eor	r12, r0, r1
 	movs	r2, r1
@@ -290,7 +290,7 @@ Data_8000ac0:
 	rsbmi	r0, #0
 	ldmfd	sp!, {lr}
 	bx	lr
-.func_end Func_8000b1c
+.func_end modsi3_RAM
 
 .arm_func_start Func_8000b50
 	mov	r12, lr

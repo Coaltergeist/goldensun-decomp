@@ -520,7 +520,7 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	add	r0, r6, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0xdb
 	mov	r6, r0
 	lsl	r1, r6, #1
@@ -1541,7 +1541,7 @@
 	mov	r4, #0
 	add	r0, r7, r1
 	mov	r9, r4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r7, r0
 	mov	r0, #0xdb
 	lsl	r0, #2
@@ -1750,7 +1750,7 @@
 	mov	r0, r7
 	and	r6, r3
 	mov	r8, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
@@ -1863,7 +1863,7 @@
 	mov	r3, r10
 	add	r0, r7, r3
 	mov	r1, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #1
 	mov	r7, r0
 	mov	r9, r1
@@ -1879,7 +1879,7 @@
 	mov	r2, r10
 	add	r0, r7, r2
 	mov	r1, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #1
 	mov	r7, r0
 	mov	r9, r3

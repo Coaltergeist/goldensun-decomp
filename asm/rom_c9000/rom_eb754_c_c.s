@@ -1075,7 +1075,7 @@
 	blt	.Leca1c
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #2
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48
@@ -1342,7 +1342,7 @@
 	mov	r1, r10
 	lsl	r0, r1, #4
 	mov	r1, #0x68
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r6, #0x68
 	ldr	r3, [r7, #4]
 	mov	r4, #0x11

@@ -1644,7 +1644,7 @@
 	str	r3, [r6, #4]
 	add	r0, r8
 	mov	r1, #0xb
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r4, #1
 	neg	r4, r4
 	cmp	r0, r4
@@ -1760,7 +1760,7 @@
 	cmp	r0, #0x55
 	ble	.Le3826
 	mov	r1, #0xc
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.Le3816
 	ldr	r3, [r5]

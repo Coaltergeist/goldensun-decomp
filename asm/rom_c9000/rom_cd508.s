@@ -2162,7 +2162,7 @@
 	mov	r0, r4
 	str	r5, [r2]
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	lsl	r1, r0, #3
 	ldr	r3, [r2, #4]

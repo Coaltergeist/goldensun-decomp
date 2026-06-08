@@ -110,7 +110,7 @@
 	add	r0, r6, #5
 	mov	r1, #5
 	mov	r10, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r9
 	mov	r6, r0
 	mov	r0, r7

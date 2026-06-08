@@ -531,7 +531,7 @@
 	mov	r1, #9
 	add	r0, #1
 	str	r4, [sp]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r7
 	strb	r0, [r5, r6]
 	add	r3, #0x1c

@@ -821,7 +821,7 @@
 	ldrsh	r0, [r6, r3]
 	mov	r1, #3
 	add	r0, #1
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r3, #0x24
 	strh	r3, [r6, #0x12]
 	mov	r3, #0x1e

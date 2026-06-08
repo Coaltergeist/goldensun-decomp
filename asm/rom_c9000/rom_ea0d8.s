@@ -979,7 +979,7 @@
 	strb	r3, [r2]
 	mov	r1, #3
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r0
 	mov	r0, r5
 	bl	_Sprite_SetAnim

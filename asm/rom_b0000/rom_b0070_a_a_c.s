@@ -707,7 +707,7 @@
 	sub	r3, #0xc
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r2, #0
 	bl	Func_80b06ec
@@ -718,7 +718,7 @@
 	cmp	r5, #0
 	beq	.Lb07f2
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r2, #1
 	bl	Func_80b06ec
@@ -729,7 +729,7 @@
 	cmp	r5, #0
 	beq	.Lb07f2
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r2, #2
 	bl	Func_80b06ec
@@ -740,7 +740,7 @@
 	cmp	r5, #0
 	beq	.Lb07f2
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r2, #3
 	bl	Func_80b06ec
@@ -750,7 +750,7 @@
 	cmp	r0, #0
 	beq	.Lb07f2
 	mov	r1, #0xa
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r2, #4
 	bl	Func_80b06ec
@@ -1177,7 +1177,7 @@
 	mov	r1, #7
 	mov	r0, r7
 	mov	r11, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r0
 	lsl	r1, #5
 	ldr	r0, [sp, #0x1c]
@@ -1230,7 +1230,7 @@
 	mov	r8, r7
 	sub	r7, #1
 	add	r0, r7, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r7, r0
 	cmp	r8, r7
 	beq	.Lb0be2
@@ -1249,7 +1249,7 @@
 	mov	r8, r7
 	add	r7, #1
 	add	r0, r7, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r7, r0
 	cmp	r8, r7
 	beq	.Lb0c0a
@@ -1389,7 +1389,7 @@
 	mov	r0, #0
 	mov	r11, r0
 	add	r0, r7, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0xdb
 	mov	r7, r0
 	lsl	r1, r7, #1
@@ -1685,7 +1685,7 @@
 	mov	r0, r1
 	mov	r1, #7
 	str	r3, [sp, #4]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [sp, #8]
 	mov	r2, r9
 	sub	r6, r3, r0
@@ -2568,7 +2568,7 @@
 	add	r0, r7, r3
 	mov	r1, r9
 	str	r2, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =REG_DMA3SAD
 	mov	r7, r0
 	mov	r1, r8
@@ -2999,7 +2999,7 @@
 	mov	r4, #0
 	add	r0, r7, r1
 	mov	r9, r4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0xdb
 	mov	r7, r0
 	lsl	r1, r7, #1
@@ -3203,7 +3203,7 @@
 	mov	r0, r7
 	str	r4, [sp, #4]
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
@@ -3278,7 +3278,7 @@
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2
@@ -3294,7 +3294,7 @@
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2

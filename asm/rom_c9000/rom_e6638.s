@@ -742,7 +742,7 @@
 .Le6c72:
 	mov	r1, #6
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r0
 	lsl	r1, #8
 	mov	r2, #0xfa
@@ -851,7 +851,7 @@
 .Le6d94:
 	mov	r0, r5
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #21
 	add	r0, r9
 	str	r0, [r7]

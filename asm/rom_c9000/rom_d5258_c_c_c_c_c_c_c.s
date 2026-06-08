@@ -1299,7 +1299,7 @@
 	mov	r1, #6
 	bl	__divsi3
 	mov	r1, #9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #1
 	ldr	r2, [r5]
 	ldr	r3, [r5, #4]
@@ -2050,7 +2050,7 @@
 	lsl	r0, r3, #2
 	mov	r1, #9
 	add	r0, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, =Data_ede84
 	lsl	r3, r0, #1
 	ldrh	r1, [r2, r3]

@@ -255,7 +255,7 @@
 	mov	r1, #3
 	bl	__divsi3
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r6, =iwram_3001f0c
 	lsl	r0, #10
 	mov	r7, #0

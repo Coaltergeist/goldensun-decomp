@@ -1106,7 +1106,7 @@
 	lsl	r0, r1, #4
 	add	r0, r3
 	mov	r1, #0x68
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r5, [sp, #0x20]
 	mov	r3, #1
 	and	r5, r3

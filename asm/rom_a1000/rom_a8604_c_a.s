@@ -652,7 +652,7 @@
 	add	r3, r7, r2
 	ldrb	r1, [r3]
 	add	r0, r5, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x82
 	mov	r5, r0
 	lsl	r3, #2

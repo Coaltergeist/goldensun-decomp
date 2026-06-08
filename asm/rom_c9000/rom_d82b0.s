@@ -261,7 +261,7 @@
 	blt	.Ld852e
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #1
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48

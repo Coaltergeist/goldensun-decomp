@@ -1026,7 +1026,7 @@
 .Lcba66:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r7, r0
 	lsl	r5, r7, #7
 	ldr	r2, [sp, #8]

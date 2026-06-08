@@ -1285,7 +1285,7 @@
 	bgt	.Ldf57c
 	mov	r1, #6
 	ldr	r0, [sp, #0x78]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #1
 	ldr	r2, [r7]
 	ldr	r3, [r7, #4]
@@ -1331,7 +1331,7 @@
 	bne	.Ldf4fc
 	mov	r1, #6
 	ldr	r0, [sp, #0x7c]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, [r7]
 	ldr	r3, [r7, #4]
 	mov	r1, r0

@@ -629,7 +629,7 @@
 	cmp	r2, r3
 	bne	.L9b61a
 	mov	r1, #7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.L9b62a
 	mov	r0, r5
@@ -637,7 +637,7 @@
 	b	.L9b62a
 .L9b61a:
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.L9b62a
 	mov	r0, r5

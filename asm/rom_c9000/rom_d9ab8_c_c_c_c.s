@@ -367,7 +367,7 @@
 .Ld9dbe:
 	mov	r1, #7
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #4
 	sub	r1, r0
 	ldr	r2, [sp, #0x30]
@@ -399,7 +399,7 @@
 .Ld9e3a:
 	mov	r1, #6
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #1
 	add	r1, r0
 	lsl	r1, #3
@@ -475,7 +475,7 @@
 .Ld9eca:
 	mov	r1, #3
 	asr	r0, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r11
 	mov	r5, r0
 	mov	r0, r7
@@ -1777,7 +1777,7 @@
 	ldr	r5, [r3]
 	mov	r0, r10
 	ldr	r1, [r5, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #1
 	add	r0, #0x24
 	ldrsh	r0, [r5, r0]
@@ -1853,7 +1853,7 @@
 	ldr	r5, [r3]
 	mov	r0, r10
 	ldr	r1, [r5, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r0
 	lsl	r2, r3, #1
 	add	r2, #0x24
@@ -2354,7 +2354,7 @@
 	str	r3, [r6, #8]
 	mov	r1, #5
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [r6, #4]
 	add	r0, #2
 	lsl	r0, #16
@@ -2419,7 +2419,7 @@
 	bge	.Ldaf84
 	mov	r1, #3
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r1, [sp, #0x10]
 	ldr	r3, [r1]
 	ldr	r2, [r3, #0x18]
@@ -3010,7 +3010,7 @@
 .Ldb3da:
 	mov	r0, r1
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #2
 	bne	.Ldb3f4
 	mov	r1, #0x80

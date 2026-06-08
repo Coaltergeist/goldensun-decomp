@@ -107,7 +107,7 @@
 .L12a6:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r2, #0x10
 	mov	r1, r0
 	sub	r2, r6

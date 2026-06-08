@@ -459,7 +459,7 @@
 .Ld1aca:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x30
 	sub	r2, r3, r5
 	lsl	r1, r0, #1
@@ -500,7 +500,7 @@
 .Ld1b1a:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x40
 	sub	r3, r5
 	lsl	r1, r0, #1
@@ -532,7 +532,7 @@
 .Ld1b5a:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #1
 	add	r5, r0
 	ldr	r7, [sp, #0x5c]

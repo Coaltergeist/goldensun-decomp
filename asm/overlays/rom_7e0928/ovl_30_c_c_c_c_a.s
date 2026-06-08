@@ -688,7 +688,7 @@
 	str	r0, [r3]
 	mov	r6, #0x29
 	mov	r8, r5
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	cmp	r0, #0x14
 	beq	.L13f8
 	cmp	r0, #0x14

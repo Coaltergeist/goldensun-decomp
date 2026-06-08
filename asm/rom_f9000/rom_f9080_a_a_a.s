@@ -338,7 +338,7 @@
 	mov	r0, r11
 	add	r0, #1
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r11, r0
 	bl	SetSoundFXMode
 .Lf9362:

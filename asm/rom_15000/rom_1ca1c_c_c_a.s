@@ -448,7 +448,7 @@
 	mov	r11, r1
 	add	r0, #5
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r5, =0x594
 	mov	r2, #0xb3
 	mov	r9, r0
@@ -459,7 +459,7 @@
 	ldrsb	r1, [r3, r2]
 	ldrsb	r0, [r7, r5]
 	add	r0, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, =0x574
 	strb	r0, [r7, r5]
 	add	r3, r7, r2

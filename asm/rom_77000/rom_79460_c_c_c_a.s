@@ -85,7 +85,7 @@
 	mov	r1, #0xa
 	mov	r0, r5
 	str	r4, [sp]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #0xa
 	mov	r6, r0
 	mov	r0, r5

@@ -2184,7 +2184,7 @@
 	mov	r1, #3
 	asr	r0, #1
 	add	r6, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #2
 	add	r5, r0
 	lsl	r3, r5, #9
@@ -3137,7 +3137,7 @@
 .Le6308:
 	mov	r0, r10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r5, r0
 	mov	r0, r7

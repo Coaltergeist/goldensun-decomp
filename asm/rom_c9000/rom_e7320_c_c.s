@@ -1867,7 +1867,7 @@
 	strb	r3, [r2]
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r0
 	mov	r0, r5
 	bl	_Sprite_SetAnim
@@ -5029,7 +5029,7 @@
 	mov	r10, r3
 	mov	r8, r4
 	ldr	r5, [sp, #0x18]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r9, r5
 	mov	r2, r8
 	mov	r5, r0
@@ -5064,7 +5064,7 @@
 	blt	.Le9eda
 	mov	r0, r8
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [r5, #0x10]
 	add	r4, r0, #2
 	cmp	r3, #0

@@ -19,7 +19,7 @@
  *
  * Func_ -> friendly name:
  *   PlaySound PlaySound        WaitFrames WaitFrames
- *   SetSoundFXMode SetSoundFXMode   Func_b1c_from_thumb umod
+ *   SetSoundFXMode SetSoundFXMode   __modsi3 umod
  */
 extern int Data_fb794[3];          /* .Lfb794 @ 0x080fb794 (needs alias) */
 extern int gRAMBuildDate;
@@ -29,7 +29,6 @@ extern int Label_12cc;
 extern void PlaySound(int req);
 extern void SetSoundFXMode(int mode);
 extern void WaitFrames(int frames);
-extern int  Func_b1c_from_thumb(int a, int b);   /* (a % b) */
 
 void Debug_SoundTest(void) {
     int slots[3];
@@ -57,7 +56,7 @@ void Debug_SoundTest(void) {
 
         in = gKeyRepeat;
         if (in & 4) {
-            channel = Func_b1c_from_thumb(channel + 1, 5);
+            channel = (channel + 1) % 5;
             SetSoundFXMode(channel);
         }
         if (in & 0x100) slots[cur] += 0xa;

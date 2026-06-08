@@ -1557,7 +1557,7 @@
 	str	r1, [sp, #0x5c]
 	mov	r0, r1
 	mov	r1, #0x3c
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	sub	r6, r0, #5
 	cmp	r6, #0
 	bge	.Lae066
@@ -1579,7 +1579,7 @@
 	bhi	.Lae0ec
 	mov	r1, #0x1e
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r0
 	lsl	r0, r3, #4
 	add	r0, r3
@@ -1604,7 +1604,7 @@
 .Lae0ba:
 	mov	r0, r6
 	mov	r1, #0x23
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r6, r0, #1
 	mov	r1, r6
 	mov	r2, r5
@@ -1709,7 +1709,7 @@
 	ldr	r0, [sp, #0x58]
 	mov	r1, #3
 	add	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #2
 	str	r0, [sp, #0x58]
 	mov	r0, #0x6f
@@ -2134,7 +2134,7 @@
 	mov	r0, r3
 	mov	r1, #0x3c
 	str	r3, [sp, #0x30]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	sub	r0, #5
 	mov	r0, #0
 	mov	r1, #0x20

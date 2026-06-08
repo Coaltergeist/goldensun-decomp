@@ -347,7 +347,7 @@
 	add	r3, r7, r4
 	ldrb	r1, [r3]
 	add	r0, r5, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #0x82
 	mov	r5, r0
 	lsl	r1, #2
@@ -1229,7 +1229,7 @@
 	ldr	r0, [sp, #0x18]
 	ldr	r1, [sp, #0x18]
 	add	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r10, r0
 	mov	r1, r10
 	ldr	r5, [sp, #0x1c]

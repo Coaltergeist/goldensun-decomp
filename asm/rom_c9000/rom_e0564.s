@@ -3142,7 +3142,7 @@
 	bl	BuildDraw2DFuncEx
 	mov	r1, #3
 	mov	r0, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #2
 	add	r1, r0
 	mov	r3, #0x48
@@ -3950,14 +3950,14 @@
 	add	r7, r2, r0
 	mov	r1, #5
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r1, #0x60
 	ldr	r0, [r7, #0x18]
 	bl	__divsi3
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, =.Leed1e
 	add	r5, r0
 	lsl	r3, r5, #1

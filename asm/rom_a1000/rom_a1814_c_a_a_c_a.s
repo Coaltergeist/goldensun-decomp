@@ -63,7 +63,7 @@
 	strh	r0, [r5, #8]
 	ldr	r1, [sp, #0x14]
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #4
 	add	r0, r8
 	strh	r0, [r5, #6]
@@ -96,7 +96,7 @@
 	strh	r0, [r5, #8]
 	ldr	r1, [sp, #0x14]
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #3
@@ -557,7 +557,7 @@
 	mov	r1, r7
 	mov	r9, r0
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	beq	.La2016
 	mov	r3, #1
@@ -797,7 +797,7 @@
 	mov	r1, r6
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	beq	.La21e8
 	mov	r3, #1

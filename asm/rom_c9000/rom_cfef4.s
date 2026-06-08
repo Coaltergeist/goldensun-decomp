@@ -1235,7 +1235,7 @@
 	mov	r0, r7
 	str	r3, [sp, #0x24]
 	str	r7, [sp, #0x18]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [sp, #0x20]
 	add	r0, r3
 	lsl	r3, r0, #3
@@ -1705,7 +1705,7 @@
 	mov	r1, #3
 	str	r3, [sp, #0x20]
 	str	r7, [sp, #0x18]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, [sp, #0x1c]
 	add	r0, r2
 	lsl	r3, r0, #3
@@ -2191,7 +2191,7 @@
 	mov	r1, #0xa
 	mov	r0, r4
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r1, [sp, #0x20]
 	add	r0, r1
 	lsl	r3, r0, #3
@@ -2651,7 +2651,7 @@
 	mov	r0, r9
 	mov	r1, #0xa
 	mov	r10, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, r11
 	lsl	r3, r0, #3
 	sub	r3, r0

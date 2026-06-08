@@ -414,7 +414,7 @@
 	bl	__CutsceneWait
 	mov	r0, r8
 	mov	r1, #0x14
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	cmp	r0, #0
 	bne	.L842
 	sub	r6, #1

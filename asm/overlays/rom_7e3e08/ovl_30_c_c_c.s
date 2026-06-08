@@ -353,7 +353,7 @@
 	asr	r0, #24
 	mov	r1, #5
 	add	r0, #5
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	ldr	r6, =.L3f6c
 	strb	r0, [r7, #1]
 	ldr	r2, [r6]

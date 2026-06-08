@@ -945,7 +945,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	add	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [r5]
 	mov	r0, #0x6f
 	bl	_PlaySound
@@ -961,7 +961,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	add	r0, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [r5]
 	mov	r0, #0x6f
 	bl	_PlaySound
@@ -1484,7 +1484,7 @@
 .Lf6b9e:
 	mov	r1, #0x15
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, r5
 	add	r0, #4
 	ldrb	r3, [r7, r0]
@@ -2260,7 +2260,7 @@
 	add	r0, #0x15
 	mov	r1, #0x15
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #4
 	ldrb	r3, [r5, r0]
 	mov	r2, #0x80
@@ -3241,7 +3241,7 @@
 .Lf7a14:
 	mov	r0, r11
 	mov	r1, #0x50
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0xf
 	bgt	.Lf7a28
 	ldr	r0, =_FILE_91

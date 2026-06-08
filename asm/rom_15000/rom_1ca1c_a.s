@@ -15,7 +15,7 @@
 	mov	r1, #0x18
 	add	r0, #0xc
 	sub	sp, #4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, =0x206
 	add	r3, r7, r2
 	ldrb	r3, [r3]
@@ -28,7 +28,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #16
 	mov	r2, r8
 	asr	r0, #16
@@ -36,13 +36,13 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	add	r0, #0x20
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r5, #0x40
 	mov	r3, r8
 	ldrb	r7, [r3, r0]
 	mov	r1, #0x60
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r8
 	ldrb	r2, [r3, r0]
 	add	r6, r10
@@ -293,7 +293,7 @@
 	add	r0, #0xc
 	mov	r1, #0x18
 	sub	sp, #8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r5, r0
 	lsl	r5, #18
 	asr	r5, #16
@@ -301,7 +301,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	mov	r8, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #16
 	mov	r2, r8
 	asr	r0, #16
@@ -316,7 +316,7 @@
 	mov	r1, #0x60
 	add	r0, #0x20
 	mov	r10, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	ldrb	r3, [r2, r0]
 	add	r5, #0x40
@@ -325,7 +325,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	asr	r7, r3, #16
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	ldrb	r3, [r2, r0]
 	add	r3, r6

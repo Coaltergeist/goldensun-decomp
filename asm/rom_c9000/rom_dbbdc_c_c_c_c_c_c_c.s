@@ -318,7 +318,7 @@
 	ldr	r3, [r1]
 	ldr	r0, [sp, #0x20]
 	ldr	r1, [r3, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, [sp, #0x20]
 	mov	r8, r0
 	cmp	r2, #4
@@ -354,7 +354,7 @@
 	mov	r1, #3
 	bl	__divsi3
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #3
 	add	r1, r0
 	ldr	r2, =0xc56
@@ -375,7 +375,7 @@
 	mov	r1, #3
 	bl	__divsi3
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #3
 	add	r1, r0
 	ldr	r3, [sp, #0x18]
@@ -1355,7 +1355,7 @@
 	mov	r0, r9
 	mov	r1, #6
 	and	r6, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #5
 	bne	.Ldc776
 	mov	r1, r8
@@ -2353,7 +2353,7 @@
 .Ldd010:
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =0x7828
 	add	r3, r11
 	ldr	r2, [r3]
@@ -2571,7 +2571,7 @@
 	bl	_PlaySound
 	mov	r1, #6
 	ldr	r0, [sp, #0x2c]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r6, =0x7828
 	add	r6, r11
 	ldr	r2, [r6]

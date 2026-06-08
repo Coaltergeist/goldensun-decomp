@@ -1744,7 +1744,7 @@
 .Lf4fc6:
 	asr	r0, #10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #1
 	bne	.Lf4fdc
 	mov	r4, #0x80

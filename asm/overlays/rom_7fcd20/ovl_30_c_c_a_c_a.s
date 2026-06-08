@@ -1100,7 +1100,7 @@
 	mov	r1, #0x87
 	add	r0, r6, r3
 	lsl	r1, #1
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r6, r0
 	mov	r0, r7
 	bl	__Func_8016498

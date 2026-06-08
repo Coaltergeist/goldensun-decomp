@@ -134,7 +134,7 @@
 .La4258:
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #24
 	asr	r7, r0, #24
 	mov	r1, #3
@@ -167,7 +167,7 @@
 	add	r0, r7, #3
 	mov	r9, r1
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	add	r2, #2
 	lsr	r3, r2, #31

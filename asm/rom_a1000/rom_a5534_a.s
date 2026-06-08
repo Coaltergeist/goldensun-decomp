@@ -65,7 +65,7 @@
 	mov	r1, #5
 	mov	r9, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
@@ -73,7 +73,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	beq	.La55ea
 	add	r5, #1

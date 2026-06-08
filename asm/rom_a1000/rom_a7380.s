@@ -892,7 +892,7 @@
 	mov	r0, r10
 	mov	r1, r11
 	add	r0, r11
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #0x82
 	lsl	r2, #2
 	lsl	r7, r0, #1
@@ -904,7 +904,7 @@
 	mov	r0, r9
 	mov	r1, #3
 	add	r0, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r8
 	mov	r9, r0
 	ldrh	r0, [r1, r5]
@@ -1220,7 +1220,7 @@
 	str	r1, [sp, #4]
 	add	r0, r9
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 	mov	r2, r8
 	lsl	r2, #1
@@ -1233,7 +1233,7 @@
 	ldr	r0, [sp]
 	mov	r1, #3
 	add	r0, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [sp]
 	ldr	r1, [sp]
 	ldrh	r0, [r7, r5]
@@ -1748,7 +1748,7 @@
 	bne	.La8256
 	mov	r2, r8
 	add	r0, r2, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 	ldr	r0, [r7, #0x2c]
 	bl	_Func_8016498
@@ -1792,7 +1792,7 @@
 	mov	r0, r8
 	add	r0, #7
 	mov	r1, #7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 .La8286:
 	mov	r1, r8
@@ -1954,7 +1954,7 @@
 	add	r3, r7, r1
 	ldrb	r1, [r3]
 	add	r0, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x82
 	lsl	r2, r0, #1
 	lsl	r3, #2

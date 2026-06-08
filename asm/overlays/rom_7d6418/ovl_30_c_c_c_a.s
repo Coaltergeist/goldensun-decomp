@@ -1268,7 +1268,7 @@
 	add	r5, #4
 	mov	r0, r5
 	mov	r1, #3
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r3, r8
 	strb	r0, [r3, r6]
 	lsl	r3, r7, #1

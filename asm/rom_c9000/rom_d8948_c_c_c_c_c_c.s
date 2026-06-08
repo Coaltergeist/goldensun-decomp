@@ -814,7 +814,7 @@
 	lsl	r0, r2, #2
 	add	r0, r11
 	mov	r1, #9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r4, r0
 	b	.Ld9052
 .Ld9044:

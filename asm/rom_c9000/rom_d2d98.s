@@ -404,7 +404,7 @@
 .Ld30e6:
 	mov	r0, r7
 	mov	r1, #0x68
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldrb	r3, [r6, #1]
 	ldrb	r2, [r6]
 	mov	r5, r0
@@ -483,7 +483,7 @@
 .Ld3180:
 	mov	r0, r8
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [r5, #0x10]
 	add	r4, r0, #2
 	cmp	r3, #0
@@ -639,7 +639,7 @@
 	ble	.Ld332e
 	mov	r1, #0xc
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r6, r0
 	ldr	r4, [sp, #8]
 	cmp	r6, #0
@@ -1048,7 +1048,7 @@
 	ldr	r3, [r2]
 	mov	r0, r8
 	ldr	r1, [r3, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #3
 	sub	r1, r0
 	lsl	r1, #2
@@ -1132,7 +1132,7 @@
 	str	r3, [r6, #4]
 	mov	r0, r8
 	ldr	r1, [r5, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r0
 	lsl	r2, r3, #1
 	add	r2, #0x24
@@ -1146,7 +1146,7 @@
 	ldr	r5, [r2]
 	mov	r0, r8
 	ldr	r1, [r5, #0x14]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #1
 	add	r0, #0x24
 	ldrsh	r0, [r5, r0]
@@ -1166,7 +1166,7 @@
 	add	r0, r3, r0
 	mov	r1, #3
 	asr	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, [r6]
 	ldr	r3, [r6, #4]
 	mov	r1, r0
@@ -1186,7 +1186,7 @@
 	add	r0, r3
 	mov	r1, #3
 	asr	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, [r6, #4]
 	mov	r1, r0
 	mov	r4, #0x40
@@ -1528,7 +1528,7 @@
 	add	r0, r11
 	mov	r1, #3
 	asr	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #2
 	ldr	r2, [sp, #0x28]
 	add	r5, r0
@@ -2024,14 +2024,14 @@
 .Ld3e8a:
 	mov	r1, #5
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #1
 	add	r5, r0
 	mov	r1, #0x60
 	ldr	r0, [r7, #0x18]
 	bl	__divsi3
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #4
 	mov	r3, r10
 	mov	r6, r7

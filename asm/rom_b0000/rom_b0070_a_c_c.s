@@ -76,7 +76,7 @@
 	mov	r0, r7
 	str	r4, [sp, #4]
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
@@ -150,7 +150,7 @@
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2
@@ -166,7 +166,7 @@
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2
@@ -499,7 +499,7 @@
 	mov	r4, #0
 	add	r0, r7, r1
 	mov	r11, r4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0xdb
 	mov	r7, r0
 	lsl	r1, r7, #1

@@ -791,7 +791,7 @@
 .Lbde70:
 	asr	r0, #3
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #1
 	mov	r10, r0
 .Lbde7c:

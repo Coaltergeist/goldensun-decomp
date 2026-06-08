@@ -53,7 +53,7 @@
 	mov	r1, r11
 	add	r0, r11
 	mov	r9, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 	mov	r3, r8
 	lsl	r3, #1
@@ -779,7 +779,7 @@
 	mov	r1, #5
 	mov	r10, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
@@ -787,7 +787,7 @@
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	beq	.La6a6e
 	add	r5, #1
@@ -1627,7 +1627,7 @@
 	ldrb	r1, [r3]
 	add	r0, r6, r1
 	str	r4, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r6, r0
 	lsl	r3, r6, #1
 	mov	r2, #0x82

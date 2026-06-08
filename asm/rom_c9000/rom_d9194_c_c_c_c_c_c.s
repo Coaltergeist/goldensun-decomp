@@ -718,7 +718,7 @@
 .Ld97da:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r4, #2
 	mov	r5, r0
 	ldr	r3, [sp, #0x2c]
@@ -775,7 +775,7 @@
 .Ld984c:
 	asr	r0, r3, #2
 	mov	r1, #7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #2
 	mov	r5, r0
 	str	r1, [sp]
@@ -832,7 +832,7 @@
 .Ld98ba:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #2
 	str	r1, [sp]
 	ldr	r3, [sp, #0x2c]
@@ -883,7 +883,7 @@
 	add	r0, r3
 	mov	r1, #6
 	asr	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #2
 	str	r2, [sp]
 	ldr	r3, [sp, #0x2c]
@@ -962,7 +962,7 @@
 .Ld99ea:
 	asr	r0, r3, #2
 	mov	r1, #6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #3
 	mov	r5, r0
 	str	r3, [sp]

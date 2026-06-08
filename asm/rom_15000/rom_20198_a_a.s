@@ -610,7 +610,7 @@
 	mov	r0, r8
 	add	r0, #2
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r9
 	mov	r8, r0
 	cmp	r2, #0
@@ -677,7 +677,7 @@
 	mov	r0, r8
 	add	r0, #4
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r9
 	mov	r8, r0
 	cmp	r2, #0

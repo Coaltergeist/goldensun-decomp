@@ -986,7 +986,7 @@
 	ldr	r0, [r4]
 	ldr	r1, [r5]
 	add	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r6, [sp, #0x18]
 	str	r0, [r6]
 	b	.L225f0
@@ -1003,7 +1003,7 @@
 	ldr	r1, [r2]
 	add	r0, r1
 	sub	r0, #1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [r7]
 	b	.L225f0
 .L225e4:

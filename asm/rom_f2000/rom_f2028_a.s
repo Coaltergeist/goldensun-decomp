@@ -906,7 +906,7 @@
 	ldr	r5, [r1, #0xc]
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.Lf280a
 	mov	r0, r10
@@ -980,7 +980,7 @@
 	strh	r2, [r3]
 	sub	r0, r1
 	mov	r1, #0xa0
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #4
 	sub	r1, r0
 	ldr	r2, =0x6004ec0

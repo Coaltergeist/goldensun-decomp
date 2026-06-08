@@ -2253,7 +2253,7 @@
 	mov	r1, #0x14
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r5, #8
 	mov	r7, r0
 	b	.L95828

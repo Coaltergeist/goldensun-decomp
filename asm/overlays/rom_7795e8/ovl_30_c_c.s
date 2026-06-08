@@ -1239,7 +1239,7 @@
 	add	r0, #1
 .Lb4e:
 	mov	r1, r8
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r7, #1
 	mov	r11, r0
 .Lb58:
@@ -1344,13 +1344,13 @@
 	bl	OvlFunc_880_20082f4
 	mov	r0, r7
 	mov	r1, #0xa
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	ldr	r4, [sp, #4]
 	cmp	r0, #4
 	ble	.Lc4a
 	mov	r0, r4
 	mov	r1, #0xa
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	ldr	r4, [sp, #4]
 	mov	r5, r0
 	mov	r1, #0xa
@@ -1367,7 +1367,7 @@
 	mov	r0, r4
 	mov	r1, #0xa
 	str	r4, [sp, #4]
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	ldr	r4, [sp, #4]
 	mov	r5, r0
 	mov	r1, #0xa

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.export_func divsi3_RAM
-	.export_func Func_8000b1c
+	.export_func modsi3_RAM
 	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _Random

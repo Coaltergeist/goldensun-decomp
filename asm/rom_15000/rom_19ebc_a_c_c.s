@@ -396,7 +396,7 @@
 	bgt	.L1a26e
 	mov	r1, #0xa
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =.L29b68
 	lsl	r0, #2
 	ldr	r2, =0x604

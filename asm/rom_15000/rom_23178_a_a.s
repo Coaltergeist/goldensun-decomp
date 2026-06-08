@@ -6110,7 +6110,7 @@
 	mov	r0, r3
 	mov	r1, r4
 	str	r3, [sp, #0x44]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [sp, #0x44]
 .L26308:
 	ldr	r5, [sp, #0x44]
@@ -7459,7 +7459,7 @@
 	str	r1, [sp, #0x44]
 	mov	r0, r1
 	ldr	r1, [sp, #0x3c]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [sp, #0x44]
 	ldr	r4, [sp, #0x1c]
 	lsl	r2, r0, #1
@@ -7484,7 +7484,7 @@
 	sub	r3, #1
 	mov	r0, r3
 	str	r3, [sp, #0x44]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	str	r0, [sp, #0x44]
 	ldr	r2, [sp, #0x1c]
 	lsl	r3, r0, #1

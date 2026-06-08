@@ -18,7 +18,7 @@
 	beq	.La34aa
 	mov	r0, r6
 	mov	r1, #5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.La34aa
 	mov	r3, r8
@@ -264,7 +264,7 @@
 	ldr	r0, [sp, #0x18]
 	ldr	r1, [sp, #0x18]
 	add	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r7, r0, #1
 	mov	r8, r0
 	add	r0, r7, r0
@@ -576,7 +576,7 @@
 	ldr	r1, [sp, #0x14]
 	add	r0, r10
 	str	r3, [sp, #0x10]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r10, r0
 	mov	r2, r10
 	lsl	r2, #1

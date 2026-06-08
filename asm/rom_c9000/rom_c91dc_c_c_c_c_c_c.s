@@ -361,7 +361,7 @@
 	lsl	r5, #3
 	asr	r0, #1
 	add	r5, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r2, r0, #2
 	add	r2, r0
 	lsl	r3, r2, #4

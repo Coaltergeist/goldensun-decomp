@@ -115,7 +115,7 @@
 	mov	r2, #0
 	add	r0, r8
 	str	r2, [sp, #0xc]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 	mov	r0, r7
 	bl	_Func_8016498
@@ -465,7 +465,7 @@
 	add	r0, r6, #2
 	mov	r1, #2
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r6, r0
 .La5326:
 	ldr	r1, =gKeyPress
@@ -639,7 +639,7 @@
 	add	r0, #2
 	mov	r1, #2
 	str	r3, [sp, #8]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r8, r0
 .La54aa:
 	ldr	r1, =gKeyPress

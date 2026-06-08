@@ -256,7 +256,7 @@
 	add	r0, r11
 	mov	r1, r11
 	str	r2, [sp, #0xc]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =0x574
 	mov	r8, r0
 	add	r3, r10
