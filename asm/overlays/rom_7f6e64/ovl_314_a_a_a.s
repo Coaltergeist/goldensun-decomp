@@ -59,7 +59,7 @@
 	str	r3, [r0, #0x1c]
 	bl	__Random
 	mov	r1, #0x50
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x50
 	strh	r0, [r5]
 .L386:

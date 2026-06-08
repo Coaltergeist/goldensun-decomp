@@ -978,7 +978,7 @@
 	lsl	r0, #4
 	add	r0, #0x13
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #2
@@ -1013,7 +1013,7 @@
 	add	r0, #0x13
 	mov	r1, #0x14
 	mov	r8, r3
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #2
@@ -1061,7 +1061,7 @@
 	mov	r1, #0x14
 	add	r0, #0x13
 	mov	r11, r2
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r3, r0, #2
 	add	r3, r0
 	lsl	r3, #2

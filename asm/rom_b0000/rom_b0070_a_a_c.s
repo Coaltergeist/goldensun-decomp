@@ -2405,7 +2405,7 @@
 	beq	.Lb15a4
 	ldr	r3, =gState
 	ldr	r0, [r3, #0x10]
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r5, r0
 .Lb15a4:
 	ldr	r3, =0x3aa

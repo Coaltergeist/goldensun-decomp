@@ -588,11 +588,11 @@
 	strh	r2, [r3]
 	mov	r1, r8
 	mov	r0, r10
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mul	r0, r7
 	mov	r1, r10
 	lsl	r0, #16
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r3, r5
 	add	r3, #0x66
 	strh	r0, [r3]

@@ -10,7 +10,7 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #5
 	ldr	r0, [r3]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.Le22
 	ldr	r3, =.L291c

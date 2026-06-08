@@ -233,19 +233,19 @@
 .Ld93a6:
 	bl	Random
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	sub	r0, #0x64
 	lsl	r0, #14
 	str	r0, [r5]
 	bl	Random
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	sub	r0, #0x64
 	lsl	r0, #15
 	str	r0, [r5, #4]
 	bl	Random
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r1, #1
 	sub	r0, #0x64
 	mov	r2, #0x80

@@ -1243,7 +1243,7 @@
 	bls	.Lf2aa8
 	mov	r1, #0x3c
 	mov	r0, r7
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, =.Lf39b1
 	b	.Lf2af0
 

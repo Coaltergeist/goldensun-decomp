@@ -133,7 +133,7 @@
 	mov	r1, #0x50
 	str	r2, [sp, #4]
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, [sp, #4]
 	ldrb	r3, [r2, r0]
 	mov	r2, r8
@@ -335,7 +335,7 @@
 	ldrh	r0, [r6, #0xc]
 	mov	r1, #0x14
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r4, [sp]
 	lsl	r0, #16
 	lsr	r0, #15
@@ -351,7 +351,7 @@
 	strh	r3, [r7, #6]
 	mov	r1, #0x14
 	ldrh	r0, [r6, #0xc]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	lsl	r0, #16
 	lsr	r0, #15
 	ldr	r4, [sp]

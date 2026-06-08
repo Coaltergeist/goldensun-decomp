@@ -4896,7 +4896,7 @@
 	beq	.L3264
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r5, [r6, #8]
 	ldr	r2, =0xfff60000
 	lsl	r0, #16
@@ -4925,7 +4925,7 @@
 	strb	r3, [r2]
 	bl	__Random
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	add	r3, #0x64
 	ldr	r2, .L3254	@ 0
@@ -4934,7 +4934,7 @@
 	mov	r8, r2
 	bl	__Random
 	mov	r1, #0x3c
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	add	r3, #0x66
 	add	r0, #0x1e

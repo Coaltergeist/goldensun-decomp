@@ -30,7 +30,7 @@
  *   RestoreBattleBG      Func_80d67dc      UpdateScreenShake    UpdateScreenShake
  *   DeleteSprite         _DeleteSprite     ResetAllActors       Func_80cd52c
  *   gfree                gfree      AnimEnd              AnimEnd
- *   battle-flag setter   CreateSummonSprite      x%0x60 helper        Func_b50_from_thumb
+ *   battle-flag setter   CreateSummonSprite      x%0x60 helper        __umodsi3
  *   palette/copy helper  Func_8001af8 (via _call_via_r3)
  *   ATALANTA_TILE_DIMENSIONS = .Leeb40   draw2D[] calls via _call_via_r4
  *
@@ -99,8 +99,7 @@ extern void  LoadVFXFile(int file, void *dst, int a, int b); /* LoadVFXFile */
 extern void  Func_8001af8(volatile u16 *dst, void *src, int len); /* copy helper */
 extern void  BuildDraw2DFuncEx(int idx, int a, int b, int flags, int e); /* BuildDraw2DFunc */
 extern void  WaitFrames(int n);                     /* WaitFrames */
-extern int   Random(void);                      /* Random (u16) */
-extern int   Func_b50_from_thumb(int val, int div);   /* umod veneer */
+extern unsigned   Random(void);                      /* Random (u16) */
 extern void  InitMatrixStack(void);                      /* InitMatrixStack */
 extern void  MatrixRoll(int a);                     /* MatrixRoll */
 extern void  MatrixPitch(int a);                     /* MatrixPitch */
@@ -206,7 +205,7 @@ void Anim_Atalanta(AnimContext *context)
             u8 *mtx = ewram_2013800 + i * 0x120 + 0xe00;
             u8 *pb  = gBuffer + i * 0xa8;
 
-            p->px = FX((Func_b50_from_thumb(Random(), 0x60)) + 0xc);
+            p->px = FX(((Random() % 0x60)) + 0xc);
             p->py = FX((Random() & 0x3f) + 0x20);
             p->mx = 0;
             p->my = 0;

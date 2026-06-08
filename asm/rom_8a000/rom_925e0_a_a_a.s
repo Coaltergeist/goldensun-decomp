@@ -89,7 +89,7 @@
 	strb	r1, [r3]
 	bl	Random
 	mov	r1, #0xa
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #5
 	lsl	r2, r0, #1
 	add	r2, r0
@@ -103,7 +103,7 @@
 	str	r3, [r6, #0x34]
 	bl	Random
 	mov	r1, #0xf
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r3, =0x1999
 	sub	r0, #7
 	lsl	r0, #1

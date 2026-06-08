@@ -12,14 +12,14 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Actor_SetColorswap
 .L213e:
 	ldr	r0, [r5]
 	mov	r1, #0xf
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L2150
 	mov	r0, r6

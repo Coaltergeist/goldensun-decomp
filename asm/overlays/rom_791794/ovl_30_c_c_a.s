@@ -168,7 +168,7 @@
 	mov	r1, #0xa
 	ldr	r0, [r3]
 	sub	sp, #4
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	cmp	r0, #0
 	beq	.L10fc
 	ldr	r1, =0x40c
@@ -291,7 +291,7 @@
 .L11c8:
 	bl	__Random
 	ldr	r1, =0xffff
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r11, r0
@@ -2654,7 +2654,7 @@
 	bne	.L2966
 	bl	__Random
 	mov	r1, #0x64
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0x32
 	bls	.L2960
 	mov	r0, #1
@@ -2678,7 +2678,7 @@
 	bne	.L299a
 	bl	__Random
 	mov	r1, #0x64
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0x32
 	bls	.L2994
 	mov	r0, #1

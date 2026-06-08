@@ -323,7 +323,7 @@
 	str	r2, [sp, #0x90]
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r5, sp
 	add	r5, #0x88
 	str	r0, [sp, #0x88]
@@ -331,7 +331,7 @@
 .Lf43f0:
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]
@@ -1012,7 +1012,7 @@
 	bl	Random
 	mov	r1, #0x90
 	lsl	r1, #7
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r3, #0x96
 	lsl	r3, #1
 	str	r0, [r6, #0x18]
@@ -1055,12 +1055,12 @@
 	str	r1, [r3]
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	str	r0, [sp, #0x88]
 .Lf4a2c:
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]

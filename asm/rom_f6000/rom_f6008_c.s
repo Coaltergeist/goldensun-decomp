@@ -2988,7 +2988,7 @@
 .Lf77de:
 	bl	Random
 	mov	r1, #5
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r6, #1
 	strb	r0, [r5]
 	add	r5, #1
@@ -3014,7 +3014,7 @@
 	str	r4, [sp, #8]
 	bl	Random
 	mov	r1, #0x15
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r1, r8
 	str	r0, [r5, r7]
 	mov	r6, #0

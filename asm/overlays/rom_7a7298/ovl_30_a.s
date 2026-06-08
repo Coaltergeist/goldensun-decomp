@@ -65,13 +65,13 @@
 	beq	.Lae
 	bl	__Random
 	mov	r1, #0x28
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x28
 	b	.Lba
 .Lae:
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x14
 .Lba:
 	strh	r0, [r5]

@@ -1701,7 +1701,7 @@
 	bne	.Le3770
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #0x2a
 	b	.Le378e
 .Le3770:
@@ -1709,13 +1709,13 @@
 	bne	.Le3782
 	bl	Random
 	mov	r1, #0x70
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #0x22
 	b	.Le378e
 .Le3782:
 	bl	Random
 	mov	r1, #0xa0
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #0xa
 .Le378e:
 	str	r0, [r5]

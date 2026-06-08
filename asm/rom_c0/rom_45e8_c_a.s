@@ -62,7 +62,7 @@
 	mov	r1, r5
 	str	r2, [sp, #4]
 	str	r4, [sp]
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r3, r0
 	add	r3, #0x30
 	strb	r3, [r7]

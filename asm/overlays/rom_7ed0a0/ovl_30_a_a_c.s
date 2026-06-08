@@ -554,14 +554,14 @@
 	beq	.L11a6
 	bl	__Random
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r3, =0x3332
 	sub	r0, #5
 	mov	r5, r0
 	mul	r5, r3
 	bl	__Random
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsl	r3, #2

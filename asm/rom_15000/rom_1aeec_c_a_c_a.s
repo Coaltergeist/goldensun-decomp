@@ -134,12 +134,12 @@
 	mov	r1, r10
 	add	r0, r10
 	mov	r11, r3
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	str	r0, [sp, #0x10]
 	ldr	r0, [sp, #0xc]
 	mov	r1, r10
 	add	r0, r10
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r2, r8
 	add	r2, #2
 	lsr	r3, r2, #31

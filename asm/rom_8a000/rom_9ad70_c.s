@@ -577,7 +577,7 @@
 	mov	r1, #5
 	ldr	r0, [r3]
 	ldr	r6, [r5, #0x28]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	cmp	r0, #0
 	bne	.L9b5b8
 	mov	r2, r5

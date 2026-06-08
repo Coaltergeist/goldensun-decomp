@@ -474,7 +474,7 @@
 .Lcb5b2:
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r2, r9
 	add	r0, #0x10
 	str	r0, [r5]

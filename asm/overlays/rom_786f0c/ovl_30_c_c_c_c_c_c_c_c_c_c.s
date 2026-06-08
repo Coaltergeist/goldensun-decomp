@@ -1289,7 +1289,7 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #0xb4
 	ldr	r0, [r3]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r6, #0x17
 	cmp	r0, #0x14
 	beq	.L10e2

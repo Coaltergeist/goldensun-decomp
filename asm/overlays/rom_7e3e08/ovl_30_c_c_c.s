@@ -4410,7 +4410,7 @@
 	bl	__Func_800b684
 	bl	__Random
 	mov	r1, #3
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r3, #0xc0
 	lsl	r3, #9
 	add	r0, r3

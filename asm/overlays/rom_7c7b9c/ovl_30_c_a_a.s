@@ -1333,7 +1333,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r6, =gScript_943__0200c4d8
 	add	r0, #0x3c
 	add	r5, #0x64
@@ -1352,7 +1352,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]

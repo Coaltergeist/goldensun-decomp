@@ -22,7 +22,7 @@
 	beq	.L529e
 	lsr	r1, #11
 	lsl	r0, #5
-	ldr	r3, =Func_8000b60
+	ldr	r3, =udivsi3_RAM
 	bl	_call_via_r3
 	mov	r4, r0
 	b	.L52a0

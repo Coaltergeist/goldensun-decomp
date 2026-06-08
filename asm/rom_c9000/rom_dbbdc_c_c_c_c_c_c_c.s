@@ -1772,7 +1772,7 @@
 .Ldcb34:
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #0xc
 	lsl	r0, #16
 	str	r0, [r7]

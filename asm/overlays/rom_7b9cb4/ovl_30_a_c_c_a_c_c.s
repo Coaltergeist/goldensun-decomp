@@ -3265,7 +3265,7 @@
 	ldr	r6, =iwram_3001e40
 	mov	r1, #3
 	ldr	r0, [r6]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L2cbc
 	bl	__Random
@@ -3286,7 +3286,7 @@
 	beq	.L2cbc
 	ldr	r0, [r6]
 	mov	r1, #9
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L2c3a
 	bl	__Random

@@ -421,7 +421,7 @@
 	mov	r2, r10
 	ldr	r0, [r2]
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldmia	r7!, {r5}
 	sub	r6, #1
 	strb	r0, [r5, #5]

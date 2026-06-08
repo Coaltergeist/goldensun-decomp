@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-	.export_func Func_8000b50
+	.export_func umodsi3_RAM
 	.export_func _WaitFrames
 	.export_func _atan2
 	.export_func _sin

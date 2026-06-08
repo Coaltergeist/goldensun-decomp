@@ -504,7 +504,7 @@
 	strh	r2, [r3]
 	lsl	r1, #1
 	mov	r0, r7
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r3, r5
 	add	r3, #0x66
 	strh	r0, [r3]

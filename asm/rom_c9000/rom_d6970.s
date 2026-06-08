@@ -440,7 +440,7 @@
 .Ld6cfe:
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	lsl	r0, #16
 	str	r0, [r5]
 	bl	Random
@@ -711,7 +711,7 @@
 	bgt	.Ld6f8c
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	lsl	r0, #16
 	str	r0, [r5]
 	bl	Random
@@ -2134,7 +2134,7 @@
 .Ld7b00:
 	bl	Random
 	mov	r1, #0x30
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #0x3c
 	lsl	r0, #16
 	str	r0, [r5]

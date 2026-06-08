@@ -1512,7 +1512,7 @@
 .Le125e:
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, #3
 	str	r0, [r5, #0xc]
 	bl	Random
@@ -3849,7 +3849,7 @@
 	str	r3, [r5, #4]
 	bl	Random
 	mov	r1, #0x60
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	sub	r0, #0x30
 	lsl	r0, #10
 	str	r0, [r5, #0xc]

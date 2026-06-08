@@ -119,7 +119,7 @@
 	beq	.L1882
 	bl	__Random
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r5, #1
 	and	r7, r5
 	mov	r3, r7
@@ -135,7 +135,7 @@
 	str	r3, [r6, #0x34]
 	bl	__Random
 	mov	r1, #0xf
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r3, =0x1999
 	sub	r0, #7
 	mul	r3, r0
@@ -148,7 +148,7 @@
 .L1882:
 	bl	__Random
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r3, =0x3332
 	mul	r3, r7
 	ldr	r1, =0xffffe667
@@ -158,7 +158,7 @@
 	str	r3, [r6, #0x30]
 	bl	__Random
 	mov	r1, #0xe
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r3, =0x1999
 	add	r0, #1
 	mul	r3, r0

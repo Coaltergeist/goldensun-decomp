@@ -150,7 +150,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r6, r0
 	b	.L314a
 .L3148:
@@ -161,7 +161,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r9, r0
 	b	.L3160
 .L315c:
@@ -174,7 +174,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	b	.L3174
 .L3172:
 	mov	r0, #0

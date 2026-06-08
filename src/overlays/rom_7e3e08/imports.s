@@ -2,7 +2,7 @@
 
 	.export_func divsi3_RAM
 	.export_func modsi3_RAM
-	.export_func Func_8000b60
+	.export_func udivsi3_RAM
 	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _StopTask

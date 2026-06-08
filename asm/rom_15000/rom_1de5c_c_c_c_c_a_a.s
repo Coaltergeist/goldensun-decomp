@@ -1088,7 +1088,7 @@
 	mov	r1, #0xe1
 	lsl	r1, #4
 	sub	sp, #0x40
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldr	r3, =0xea5f
 	mov	r6, r0
 	cmp	r6, r3
@@ -1097,11 +1097,11 @@
 .L1f69c:
 	mov	r0, r6
 	mov	r1, #0x3c
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r1, #0x3c
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r8, sp
 	mov	r1, r5
 	mov	r6, r0

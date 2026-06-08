@@ -570,7 +570,7 @@
 .Lbbf8e:
 	ldrb	r0, [r7, #0xf]
 	mov	r1, #5
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r0, #24
 	lsr	r0, #24
 	add	r0, r5, r0

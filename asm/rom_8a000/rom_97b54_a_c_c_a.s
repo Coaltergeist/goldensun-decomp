@@ -870,7 +870,7 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #3
 	ldr	r0, [r3]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	cmp	r0, #0
 	bne	.L9949c
 	ldr	r3, [r5, #8]

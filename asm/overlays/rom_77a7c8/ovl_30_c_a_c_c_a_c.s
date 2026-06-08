@@ -4102,7 +4102,7 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #3
 	ldr	r0, [r3]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L32c6
 	bl	__Random

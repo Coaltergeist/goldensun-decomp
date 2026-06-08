@@ -195,7 +195,7 @@
 .L5848:
 	bl	Random
 	mov	r1, r6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r5, r0
 	mov	r2, sp
 	lsl	r3, r5, #2

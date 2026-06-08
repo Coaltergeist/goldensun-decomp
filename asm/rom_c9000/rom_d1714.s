@@ -791,7 +791,7 @@
 	str	r3, [r7, #4]
 	bl	Random
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r2, #1
 	mov	r3, #0
 	sub	r0, #0x64

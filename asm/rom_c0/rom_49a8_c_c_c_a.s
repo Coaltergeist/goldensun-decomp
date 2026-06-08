@@ -622,7 +622,7 @@
 	ldr	r3, =Func_8000948
 	bl	_call_via_r3
 	mov	r1, r0
-	ldr	r0, =Func_8000b60
+	ldr	r0, =udivsi3_RAM
 	mov	r11, r0
 	mov	r0, #0x80
 	lsl	r0, #24

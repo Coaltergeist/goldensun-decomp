@@ -2665,7 +2665,7 @@
 	ldr	r2, [sp, #0x14]
 	ldr	r3, [sp, #0x18]
 	sub	r1, r2, r3
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r6, [sp, #0x18]
 	add	r0, r6
 	lsl	r0, #16
@@ -2772,7 +2772,7 @@
 	ldr	r6, [sp, #0x18]
 	ldr	r3, [sp, #0x14]
 	sub	r1, r3, r6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	add	r0, r6
 	lsl	r0, #16
 	str	r0, [r5, #0x10]

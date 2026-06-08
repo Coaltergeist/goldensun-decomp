@@ -17,7 +17,7 @@
  *   AnimStart AnimStart           BuildDraw2DFuncEx BuildDraw2DFuncEx
  *   LoadVFXFile LoadVFXFile         StartTask StartTask
  *   StopTask StopTask            Random Random
- *   Func_b50_from_thumb umod         Func_80e396c GetBattleActorPos2
+ *   __umodsi3 umod         Func_80e396c GetBattleActorPos2
  *   Func_80d6888 BattleActor_SetState  UpdateScreenShake UpdateScreenShake
  *   Func_80cd52c ResetAllActors      WaitFrames WaitFrames
  *   AnimEnd AnimEnd             gfree gfree
@@ -69,8 +69,7 @@ extern void BuildDraw2DFuncEx(int idx, int a, int b, int flags, int e);
 extern void LoadVFXFile(int file, void *dst, int a, int b);
 extern void StartTask(void (*task)(void), int mode);
 extern void StopTask(void (*task)(void));
-extern int  Random(void);
-extern u32  Func_b50_from_thumb(u32 a, u32 b);
+extern unsigned Random(void);
 extern void Func_80e396c(int target, vec3 *out);
 extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
 extern void UpdateScreenShake(int x, int y);
@@ -119,7 +118,7 @@ void Anim_Unused_SabreRain(AnimContext *context)
     /* Spawn the 0x40 daggers */
     p = STATE_PARTICLES(state);
     for (i = 0; i != 0x40; i++, p++) {
-        u32 x = Func_b50_from_thumb(Random(), 0x60) + 0x10;
+        u32 x = (Random() % 0x60) + 0x10;
         int motionX;
         if      (x < 0x2c) motionX = 3;
         else if (x < 0x34) motionX = 2;

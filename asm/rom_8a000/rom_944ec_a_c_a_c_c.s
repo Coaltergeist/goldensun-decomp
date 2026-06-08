@@ -360,7 +360,7 @@
 	beq	.L96348
 	bl	Random
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r2, #0x80
 	lsl	r2, #9
 	add	r0, r2

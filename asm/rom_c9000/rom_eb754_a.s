@@ -159,7 +159,7 @@
 	str	r0, [r5, #0x10]
 	bl	Random
 	mov	r1, #0x30
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r4, #1
 	add	r8, r4
 	add	r0, #2

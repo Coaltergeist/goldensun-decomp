@@ -78,7 +78,7 @@
 	mov	r1, #0xb4
 	lsl	r1, #1
 	lsl	r0, #1
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, =0x28e
 	add	r3, r5, r2
 	strh	r0, [r3]
@@ -202,7 +202,7 @@
 	add	r0, r3
 	mov	r1, #0xa0
 	lsl	r0, #16
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	bl	sin
 	add	r5, #1
 	asr	r0, #14

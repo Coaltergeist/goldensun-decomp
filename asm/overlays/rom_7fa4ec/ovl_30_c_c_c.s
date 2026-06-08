@@ -6,7 +6,7 @@
 	ldr	r5, =.L181c
 	mov	r1, #6
 	ldrh	r0, [r5]
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	ldr	r2, =.L14ac
 	lsl	r0, #16
 	lsr	r0, #15

@@ -1089,7 +1089,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	ldr	r6, =gScript_882__0200cec8
 	add	r0, #0x3c
 	add	r5, #0x64
@@ -1125,7 +1125,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -1150,7 +1150,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -1872,7 +1872,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -1881,7 +1881,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -1890,7 +1890,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	strh	r0, [r5]
@@ -2221,7 +2221,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x3c
 	ldr	r1, =gScript_882__0200cec8
@@ -2776,7 +2776,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	ldr	r2, .L3394	@ 0
 	add	r0, #0x14
@@ -2789,7 +2789,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -2798,7 +2798,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -2815,7 +2815,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -2824,7 +2824,7 @@
 	mov	r5, r0
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r5, #0x64
 	add	r0, #0x14
 	strh	r0, [r5]
@@ -3455,7 +3455,7 @@
 	strh	r3, [r7, #6]
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	ldr	r5, =gScript_882__0200cec8
 	add	r0, #0x3c
@@ -3483,7 +3483,7 @@
 	strh	r0, [r7, #6]
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -3509,7 +3509,7 @@
 	strh	r2, [r7, #6]
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	b	.L3adc
 
@@ -3541,7 +3541,7 @@
 	strh	r3, [r7, #6]
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r3, r7
 	add	r0, #0x3c
 	add	r3, #0x64
@@ -4371,7 +4371,7 @@
 	lsl	r1, #3
 	add	r1, #0x10
 	ldr	r0, [r2]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L42f6
 	mov	r0, r5
@@ -4394,7 +4394,7 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r6
 	bl	__Actor_SetColorswap
@@ -4404,7 +4404,7 @@
 	lsl	r1, #3
 	add	r1, #0x10
 	ldr	r0, [r5]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L433e
 	mov	r0, r6
@@ -4427,7 +4427,7 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r5
 	bl	__Actor_SetColorswap

@@ -177,7 +177,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #4]
 	add	r3, r0
 	strh	r3, [r6, #4]
@@ -197,7 +197,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #6]
 	add	r3, r0
 	strh	r3, [r6, #6]
@@ -217,7 +217,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #8]
 	add	r3, r0
 	mov	r0, r9
@@ -237,7 +237,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #0xa]
 	add	r3, r0
 	strh	r3, [r6, #0xa]
@@ -257,7 +257,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #0xc]
 	add	r3, r0
 	mov	r0, r9
@@ -277,7 +277,7 @@
 	lsr	r0, #16
 	mov	r1, #0x14
 	add	r0, r7
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r2, r10
 	ldrh	r3, [r2, #0x10]
 	ldrh	r1, [r6, #0xe]

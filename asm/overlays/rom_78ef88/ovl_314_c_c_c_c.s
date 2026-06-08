@@ -399,7 +399,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r6, r0
 	b	.L45ca
 .L45c8:
@@ -410,7 +410,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r9, r0
 	b	.L45e0
 .L45dc:
@@ -423,7 +423,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	b	.L45f4
 .L45f2:
 	mov	r0, #0

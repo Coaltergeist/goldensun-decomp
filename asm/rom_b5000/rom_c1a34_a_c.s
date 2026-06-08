@@ -147,7 +147,7 @@
 	mov	r1, r8
 	ldrb	r0, [r1, #0xf]
 	mov	r1, #0xa
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r0, #24
 	lsr	r0, #24
 	add	r0, #1
@@ -188,7 +188,7 @@
 	mov	r1, r8
 	ldrb	r0, [r1, #0xf]
 	mov	r1, #0xa
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r0, #24
 	lsr	r0, #24
 	add	r0, #1

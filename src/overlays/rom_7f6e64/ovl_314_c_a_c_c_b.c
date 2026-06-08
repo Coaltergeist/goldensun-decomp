@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001e40;
 extern void __Actor_SetColorswap(unsigned int, unsigned int);
-extern int _Func_8000b50(unsigned int, unsigned int);
+extern int _umodsi3_RAM(unsigned int, unsigned int);
 extern void OvlFunc_969_200a200(unsigned int);
 
 void OvlFunc_969_200a0dc(unsigned int arg0)
@@ -17,7 +17,7 @@ void OvlFunc_969_200a0dc(unsigned int arg0)
     } else {
         __Actor_SetColorswap(arg0, 0);
     }
-    if (_Func_8000b50(iwram_3001e40, 0xf) == 0) {
+    if (_umodsi3_RAM(iwram_3001e40, 0xf) == 0) {
         OvlFunc_969_200a200(arg0);
     }
 }

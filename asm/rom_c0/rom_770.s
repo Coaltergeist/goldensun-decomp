@@ -292,14 +292,14 @@ Data_8000ac0:
 	bx	lr
 .func_end modsi3_RAM
 
-.arm_func_start Func_8000b50
+.arm_func_start umodsi3_RAM
 	mov	r12, lr
-	bl	Func_8000b60
+	bl	udivsi3_RAM
 	mov	r0, r1
 	bx	r12
-.func_end Func_8000b50
+.func_end umodsi3_RAM
 
-.arm_func_start Func_8000b60
+.arm_func_start udivsi3_RAM
 	mov	r2, r1
 	mov	r1, r0
 	mov	r0, #0
@@ -425,7 +425,7 @@ Data_8000ac0:
 	subcs	r1, r2
 	bx	lr
 .func_end Func_8000b6c
-.func_end Func_8000b60
+.func_end udivsi3_RAM
 
 .arm_func_start Func_8000d30
 	ldrb	r2, [r0], #1

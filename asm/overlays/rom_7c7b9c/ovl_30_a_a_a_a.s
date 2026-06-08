@@ -54,7 +54,7 @@
 	str	r3, [r0, #0x1c]
 	bl	__Random
 	mov	r1, #0x5a
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x3c
 	strh	r0, [r5]
 .L98:

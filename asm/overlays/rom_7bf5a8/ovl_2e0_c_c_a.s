@@ -695,7 +695,7 @@
 	ldr	r5, =.L2230
 	bl	__Random
 	mov	r1, #6
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	str	r0, [r5]
 	add	r0, #0xa
 	bl	__MapActor_GetActor

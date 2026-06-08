@@ -261,7 +261,7 @@
 .L322:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.L348
 	mov	r3, #1
