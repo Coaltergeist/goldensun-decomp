@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7f9c
+.thumb_func_start Func_80b7f9c  @ 0x080b7f9c
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e80
 	ldr	r5, [r3]
@@ -45,7 +45,7 @@
 	bx	r0
 .func_end Func_80b7f9c
 
-.thumb_func_start Func_80b8000
+.thumb_func_start Func_80b8000  @ 0x080b8000
 	push	{r5, r6, lr}
 	bl	GetBattleActor
 	mov	r6, r0
@@ -92,7 +92,7 @@
 	bx	r0
 .func_end Func_80b8000
 
-.thumb_func_start Func_80b8064
+.thumb_func_start Func_80b8064  @ 0x080b8064
 	push	{r5, r6, lr}
 	bl	GetBattleActor
 	mov	r6, r0
@@ -130,7 +130,7 @@
 	bx	r0
 .func_end Func_80b8064
 
-.thumb_func_start Func_80b80b8
+.thumb_func_start Func_80b80b8  @ 0x080b80b8
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -199,7 +199,7 @@
 	bx	r0
 .func_end Func_80b80b8
 
-.thumb_func_start Func_80b8144
+.thumb_func_start Func_80b8144  @ 0x080b8144
 	push	{lr}
 	mov	r2, r0
 	ldr	r0, [r2]
@@ -224,7 +224,7 @@
 	bx	r0
 .func_end Func_80b8144
 
-.thumb_func_start Func_80b8178
+.thumb_func_start Func_80b8178  @ 0x080b8178
 	push	{r5, r6, lr}
 	bl	GetBattleActor
 	mov	r6, r0
@@ -262,7 +262,7 @@
 	bx	r0
 .func_end Func_80b8178
 
-.thumb_func_start Func_80b81c8
+.thumb_func_start Func_80b81c8  @ 0x080b81c8
 	push	{r5, r6, lr}
 	bl	GetBattleActor
 	mov	r6, r0

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b868
+.thumb_func_start Func_808b868  @ 0x0808b868
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e70
 	mov	r5, r0
@@ -64,7 +64,7 @@
 	bx	r0
 .func_end Func_808b868
 
-.thumb_func_start Func_808b8e8
+.thumb_func_start Func_808b8e8  @ 0x0808b8e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -146,7 +146,7 @@
 	bx	r0
 .func_end Func_808b8e8
 
-.thumb_func_start Func_808b98c
+.thumb_func_start Func_808b98c  @ 0x0808b98c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -201,7 +201,7 @@
 	bx	r0
 .func_end Func_808b98c
 
-.thumb_func_start Func_808b9f8
+.thumb_func_start Func_808b9f8  @ 0x0808b9f8
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0x8c
@@ -220,7 +220,7 @@
 	bx	r0
 .func_end Func_808b9f8
 
-.thumb_func_start GetFieldActor
+.thumb_func_start GetFieldActor  @ 0x0808ba1c
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]

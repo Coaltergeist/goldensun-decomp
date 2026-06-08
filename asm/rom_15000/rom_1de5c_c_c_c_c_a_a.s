@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801edec
+.thumb_func_start Func_801edec  @ 0x0801edec
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -55,7 +55,7 @@
 	bx	r0
 .func_end Func_801edec
 
-.thumb_func_start Func_801ee68
+.thumb_func_start Func_801ee68  @ 0x0801ee68
 	push	{r5, r6, lr}
 	mov	r5, r3
 	mov	r4, #0
@@ -87,7 +87,7 @@
 	bx	r0
 .func_end Func_801ee68
 
-.thumb_func_start Func_801eea0
+.thumb_func_start Func_801eea0  @ 0x0801eea0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e90
 	ldr	r5, [r3]
@@ -141,7 +141,7 @@
 	bx	r0
 .func_end Func_801eea0
 
-.thumb_func_start Func_801ef08
+.thumb_func_start Func_801ef08  @ 0x0801ef08
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -183,7 +183,7 @@
 	bx	r0
 .func_end Func_801ef08
 
-.thumb_func_start Func_801ef68
+.thumb_func_start Func_801ef68  @ 0x0801ef68
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -337,7 +337,7 @@
 	bx	r0
 .func_end Func_801ef68
 
-.thumb_func_start Func_801f088
+.thumb_func_start Func_801f088  @ 0x0801f088
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -515,7 +515,7 @@
 	bx	r1
 .func_end Func_801f088
 
-.thumb_func_start Func_801f200
+.thumb_func_start Func_801f200  @ 0x0801f200
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -990,7 +990,7 @@
 	bx	r0
 .func_end Func_801f200
 
-.thumb_func_start Func_801f5d4
+.thumb_func_start Func_801f5d4  @ 0x0801f5d4
 	push	{lr}
 	ldr	r3, =iwram_3001e90
 	ldr	r3, [r3]
@@ -1003,7 +1003,7 @@
 	bx	r0
 .func_end Func_801f5d4
 
-.thumb_func_start Func_801f5f0
+.thumb_func_start Func_801f5f0  @ 0x0801f5f0
 	push	{r5, r6, r7, lr}
 	mov	r6, r3
 	ldr	r3, =iwram_3001e8c
@@ -1080,7 +1080,7 @@
 	bx	r0
 .func_end Func_801f5f0
 
-.thumb_func_start Func_801f680
+.thumb_func_start Func_801f680  @ 0x0801f680
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1142,7 +1142,7 @@
 	bx	r1
 .func_end Func_801f680
 
-.thumb_func_start Func_801f704
+.thumb_func_start Func_801f704  @ 0x0801f704
 	push	{lr}
 	ldr	r3, =iwram_3001f1c
 	mov	r1, #0x82
@@ -1164,7 +1164,7 @@
 	bx	r1
 .func_end Func_801f704
 
-.thumb_func_start Func_801f730
+.thumb_func_start Func_801f730  @ 0x0801f730
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	Func_80056cc
@@ -1200,7 +1200,7 @@
 	bx	r1
 .func_end Func_801f730
 
-.thumb_func_start Func_801f77c
+.thumb_func_start Func_801f77c  @ 0x0801f77c
 	push	{r5, r6, r7, lr}
 	bl	Func_80056cc
 	mov	r6, #9
@@ -1280,7 +1280,7 @@
 	bx	r1
 .func_end Func_801f77c
 
-.thumb_func_start PrepareSaveHeader
+.thumb_func_start PrepareSaveHeader  @ 0x0801f818
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1464,7 +1464,7 @@
 	bx	r1
 .func_end PrepareSaveHeader
 
-.thumb_func_start Func_801f9b4
+.thumb_func_start Func_801f9b4  @ 0x0801f9b4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1523,7 +1523,7 @@
 	bx	r1
 .func_end Func_801f9b4
 
-.thumb_func_start Func_801fa3c
+.thumb_func_start Func_801fa3c  @ 0x0801fa3c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1571,7 +1571,7 @@
 	bx	r1
 .func_end Func_801fa3c
 
-.thumb_func_start Func_801faa8
+.thumb_func_start Func_801faa8  @ 0x0801faa8
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x80
 	lsl	r0, #5
@@ -1636,7 +1636,7 @@
 	bx	r1
 .func_end Func_801faa8
 
-.thumb_func_start Func_801fb48
+.thumb_func_start Func_801fb48  @ 0x0801fb48
 	push	{r5, lr}
 	mov	r1, #8
 	mov	r2, #0xc
@@ -1678,7 +1678,7 @@
 	bx	r1
 .func_end Func_801fb48
 
-.thumb_func_start Func_801fba8
+.thumb_func_start Func_801fba8  @ 0x0801fba8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1772,7 +1772,7 @@
 	bx	r1
 .func_end Func_801fba8
 
-.thumb_func_start Func_801fc84
+.thumb_func_start Func_801fc84  @ 0x0801fc84
 	push	{r5, r6, r7, lr}
 	bl	Func_80056cc
 	mov	r5, r0
@@ -1847,7 +1847,7 @@
 	bx	r1
 .func_end Func_801fc84
 
-.thumb_func_start Func_801fd34
+.thumb_func_start Func_801fd34  @ 0x0801fd34
 	push	{r5, r6, r7, lr}
 	ldr	r7, =iwram_3001800
 	ldr	r6, =0x50001d0

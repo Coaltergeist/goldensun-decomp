@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_CurePoison
+.thumb_func_start Anim_CurePoison  @ 0x080d896c
 	push	{lr}
 	ldr	r3, [r0, #0x18]
 	cmp	r3, #0

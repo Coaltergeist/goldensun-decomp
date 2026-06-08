@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801c46c
+.thumb_func_start Func_801c46c  @ 0x0801c46c
 	push	{lr}
 	ldr	r2, =0x205
 	ldr	r1, =gState
@@ -25,7 +25,7 @@
 	bx	r0
 .func_end Func_801c46c
 
-.thumb_func_start Func_801c49c
+.thumb_func_start Func_801c49c  @ 0x0801c49c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -410,7 +410,7 @@
 	bx	r0
 .func_end Func_801c49c
 
-.thumb_func_start Func_801c7fc
+.thumb_func_start Func_801c7fc  @ 0x0801c7fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -497,7 +497,7 @@
 	bx	r1
 .func_end Func_801c7fc
 
-.thumb_func_start Func_801c8a0
+.thumb_func_start Func_801c8a0  @ 0x0801c8a0
 	push	{r5, r6, r7, lr}
 	mov	r3, #0
 	mov	r6, r0

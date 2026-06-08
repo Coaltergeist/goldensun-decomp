@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800b074
+.thumb_func_start Func_800b074  @ 0x0800b074
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -127,7 +127,7 @@
 	bx	r0
 .func_end Func_800b074
 
-.thumb_func_start UpdateSprite
+.thumb_func_start UpdateSprite  @ 0x0800b168
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -404,7 +404,7 @@
 	bx	r0
 .func_end UpdateSprite
 
-.thumb_func_start Func_800b388
+.thumb_func_start Func_800b388  @ 0x0800b388
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

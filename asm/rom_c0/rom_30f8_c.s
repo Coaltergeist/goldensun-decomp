@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start UpdateKeyPressRepeat
+.thumb_func_start UpdateKeyPressRepeat  @ 0x08003538
 	push	{r5, lr}
 	ldr	r4, =iwram_3001b00
 	ldr	r0, [r4]

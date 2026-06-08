@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_CuttingEdge
+.thumb_func_start Anim_CuttingEdge  @ 0x080de9bc
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
@@ -24,7 +24,7 @@
 	bx	r0
 .func_end Anim_CuttingEdge
 
-.thumb_func_start Anim_HeatWave
+.thumb_func_start Anim_HeatWave  @ 0x080de9f0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]

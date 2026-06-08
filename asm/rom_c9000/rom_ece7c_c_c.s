@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_FullScreenSlash
+.thumb_func_start BaseAnim_FullScreenSlash  @ 0x080ecef4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -225,7 +225,7 @@
 	bx	r0
 .func_end BaseAnim_FullScreenSlash
 
-.thumb_func_start Anim_UndeadSword
+.thumb_func_start Anim_UndeadSword  @ 0x080ed104
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

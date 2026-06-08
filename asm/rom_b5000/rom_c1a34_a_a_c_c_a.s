@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80c23a0
+.thumb_func_start Func_80c23a0  @ 0x080c23a0
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc23ac
@@ -19,7 +19,7 @@
 	bx	r1
 .func_end Func_80c23a0
 
-.thumb_func_start Func_80c23c0
+.thumb_func_start Func_80c23c0  @ 0x080c23c0
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc23ca
@@ -42,7 +42,7 @@
 	bx	r1
 .func_end Func_80c23c0
 
-.thumb_func_start Func_80c23e8
+.thumb_func_start Func_80c23e8  @ 0x080c23e8
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc23f2
@@ -64,7 +64,7 @@
 	bx	r1
 .func_end Func_80c23e8
 
-.thumb_func_start GetEnemyAttackAnimParam
+.thumb_func_start GetEnemyAttackAnimParam  @ 0x080c2410
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc241a
@@ -85,7 +85,7 @@
 	bx	r1
 .func_end GetEnemyAttackAnimParam
 
-.thumb_func_start GetEnemyUnk
+.thumb_func_start GetEnemyUnk  @ 0x080c2434
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc243e

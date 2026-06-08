@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start SortTasks
+.thumb_func_start SortTasks  @ 0x08004144
 	push	{r5, r6, lr}
 	sub	sp, #8
 	ldr	r2, =gTasks
@@ -49,7 +49,7 @@
 	bx	r0
 .func_end SortTasks
 
-.thumb_func_start GetTaskIndex
+.thumb_func_start GetTaskIndex  @ 0x08004198
 	push	{r5, lr}
 	mov	r5, #1
 	ldr	r4, =gTasks
@@ -81,7 +81,7 @@
 	bx	r1
 .func_end GetTaskIndex
 
-.thumb_func_start StartTask
+.thumb_func_start StartTask  @ 0x080041d8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001a10
 	mov	r5, #1

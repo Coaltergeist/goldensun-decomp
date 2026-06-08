@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079bf8
+.thumb_func_start Func_8079bf8  @ 0x08079bf8
 	push	{r5, r6, lr}
 	mov	r5, r0
 	sub	r5, r1
@@ -30,7 +30,7 @@
 	bx	r1
 .func_end Func_8079bf8
 
-.thumb_func_start Func_8079c30
+.thumb_func_start Func_8079c30  @ 0x08079c30
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r0, r1
@@ -52,7 +52,7 @@
 	bx	r1
 .func_end Func_8079c30
 
-.thumb_func_start Func_8079c5c
+.thumb_func_start Func_8079c5c  @ 0x08079c5c
 	push	{r5, r6, lr}
 	lsl	r1, #1
 	sub	r1, #0xc8
@@ -76,7 +76,7 @@
 	bx	r1
 .func_end Func_8079c5c
 
-.thumb_func_start Func_8079c8c
+.thumb_func_start Func_8079c8c  @ 0x08079c8c
 	push	{lr}
 	bl	GetUnit
 	ldr	r2, =0x129
@@ -100,7 +100,7 @@
 	bx	r1
 .func_end Func_8079c8c
 
-.thumb_func_start CheckEquipmentCritBoost
+.thumb_func_start CheckEquipmentCritBoost  @ 0x08079cbc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -154,7 +154,7 @@
 	bx	r1
 .func_end CheckEquipmentCritBoost
 
-.thumb_func_start Func_8079d1c
+.thumb_func_start Func_8079d1c  @ 0x08079d1c
 	push	{r5, r6, lr}
 	ldr	r2, =0x129
 	mov	r5, r0
@@ -198,7 +198,7 @@
 	bx	r1
 .func_end Func_8079d1c
 
-.thumb_func_start Func_8079d7c
+.thumb_func_start Func_8079d7c  @ 0x08079d7c
 	push	{lr}
 	sub	r0, #8
 	cmp	r0, #0x31
@@ -312,7 +312,7 @@
 	bx	r1
 .func_end Func_8079d7c
 
-.thumb_func_start Func_8079e9c
+.thumb_func_start Func_8079e9c  @ 0x08079e9c
 	push	{r5, lr}
 	mov	r5, r1
 	ldr	r1, =0x129
@@ -363,7 +363,7 @@
 	bx	r1
 .func_end Func_8079e9c
 
-.thumb_func_start Func_8079ef8
+.thumb_func_start Func_8079ef8  @ 0x08079ef8
 	push	{lr}
 	cmp	r0, #5
 	beq	.L79f06
@@ -381,7 +381,7 @@
 	bx	r1
 .func_end Func_8079ef8
 
-.thumb_func_start Func_8079f10
+.thumb_func_start Func_8079f10  @ 0x08079f10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -601,7 +601,7 @@
 	bx	r1
 .func_end Func_8079f10
 
-.thumb_func_start GetDjinniInfo
+.thumb_func_start GetDjinniInfo  @ 0x0807a0cc
 	push	{lr}
 	mov	r3, #0
 	cmp	r0, #3
@@ -622,7 +622,7 @@
 	bx	r1
 .func_end GetDjinniInfo
 
-.thumb_func_start Func_807a0f4
+.thumb_func_start Func_807a0f4  @ 0x0807a0f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -717,7 +717,7 @@
 	bx	r1
 .func_end Func_807a0f4
 
-.thumb_func_start GiveDjinni
+.thumb_func_start GiveDjinni  @ 0x0807a1b4
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r2
@@ -755,7 +755,7 @@
 	bx	r1
 .func_end GiveDjinni
 
-.thumb_func_start Func_807a1f8
+.thumb_func_start Func_807a1f8  @ 0x0807a1f8
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r6, r2
@@ -860,7 +860,7 @@
 	bx	r1
 .func_end Func_807a1f8
 
-.thumb_func_start Func_807a2bc
+.thumb_func_start Func_807a2bc  @ 0x0807a2bc
 	push	{r5, r6, lr}
 	mov	r6, r2
 	mov	r5, r1
@@ -881,7 +881,7 @@
 	bx	r1
 .func_end Func_807a2bc
 
-.thumb_func_start SetDjinni
+.thumb_func_start SetDjinni  @ 0x0807a2e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -938,7 +938,7 @@
 	bx	r1
 .func_end SetDjinni
 
-.thumb_func_start Func_807a350
+.thumb_func_start Func_807a350  @ 0x0807a350
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -983,7 +983,7 @@
 	bx	r1
 .func_end Func_807a350
 
-.thumb_func_start Func_807a3a8
+.thumb_func_start Func_807a3a8  @ 0x0807a3a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -1079,7 +1079,7 @@
 	bx	r1
 .func_end Func_807a3a8
 
-.thumb_func_start Func_807a458
+.thumb_func_start Func_807a458  @ 0x0807a458
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -1112,7 +1112,7 @@
 	bx	r1
 .func_end Func_807a458
 
-.thumb_func_start Func_807a498
+.thumb_func_start Func_807a498  @ 0x0807a498
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1203,7 +1203,7 @@
 	bx	r1
 .func_end Func_807a498
 
-.thumb_func_start Func_807a550
+.thumb_func_start Func_807a550  @ 0x0807a550
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r0, #0

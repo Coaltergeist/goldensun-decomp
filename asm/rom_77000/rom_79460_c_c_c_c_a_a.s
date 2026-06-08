@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079ae8
+.thumb_func_start Func_8079ae8  @ 0x08079ae8
 	push	{r5, r6, lr}
 	mov	r5, r0
 	bl	GetUnit
@@ -26,7 +26,7 @@
 	bx	r0
 .func_end Func_8079ae8
 
-.thumb_func_start Func_8079b24
+.thumb_func_start Func_8079b24  @ 0x08079b24
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

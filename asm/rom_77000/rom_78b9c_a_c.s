@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start HasMove
+.thumb_func_start HasMove  @ 0x08078bc0
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetUnit
@@ -26,7 +26,7 @@
 	bx	r1
 .func_end HasMove
 
-.thumb_func_start Func_8078bf0
+.thumb_func_start Func_8078bf0  @ 0x08078bf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -346,7 +346,7 @@
 	bx	r1
 .func_end Func_8078bf0
 
-.thumb_func_start GiveInnateMove
+.thumb_func_start GiveInnateMove  @ 0x08078e28
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r0

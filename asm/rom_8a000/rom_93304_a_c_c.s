@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809397c
+.thumb_func_start Func_809397c  @ 0x0809397c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -73,7 +73,7 @@
 	bx	r1
 .func_end Func_809397c
 
-.thumb_func_start Func_8093a14
+.thumb_func_start Func_8093a14  @ 0x08093a14
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, [r5, #0x68]
@@ -119,7 +119,7 @@
 	bx	r1
 .func_end Func_8093a14
 
-.thumb_func_start Actor_SetBehavior
+.thumb_func_start Actor_SetBehavior  @ 0x08093a6c
 	push	{r5, lr}
 	sub	r3, r1, #1
 	mov	r5, r0
@@ -173,7 +173,7 @@
 	bx	r0
 .func_end Actor_SetBehavior
 
-.thumb_func_start Func_8093af8
+.thumb_func_start Func_8093af8  @ 0x08093af8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -302,7 +302,7 @@
 	bx	r1
 .func_end Func_8093af8
 
-.thumb_func_start Func_8093c00
+.thumb_func_start Func_8093c00  @ 0x08093c00
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -554,7 +554,7 @@
 	bx	r1
 .func_end Func_8093c00
 
-.thumb_func_start Func_8093e28
+.thumb_func_start Func_8093e28  @ 0x08093e28
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -726,7 +726,7 @@
 	bx	r1
 .func_end Func_8093e28
 
-.thumb_func_start Func_8093fa0
+.thumb_func_start Func_8093fa0  @ 0x08093fa0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -926,7 +926,7 @@
 	bx	r1
 .func_end Func_8093fa0
 
-.thumb_func_start Func_8094154
+.thumb_func_start Func_8094154  @ 0x08094154
 	push	{r5, r6, lr}
 	mov	r5, r1
 	bl	GetFieldActor

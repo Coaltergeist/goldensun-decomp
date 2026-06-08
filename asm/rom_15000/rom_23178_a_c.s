@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8028ef0
+.thumb_func_start Func_8028ef0  @ 0x08028ef0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -74,7 +74,7 @@
 	bx	r0
 .func_end Func_8028ef0
 
-.thumb_func_start Debug_WarpMenu
+.thumb_func_start Debug_WarpMenu  @ 0x08028f98
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -191,7 +191,7 @@
 	bx	r1
 .func_end Debug_WarpMenu
 
-.thumb_func_start Debug_WarpMenu_UI
+.thumb_func_start Debug_WarpMenu_UI  @ 0x08029094
 	push	{r5, r6, r7, lr}
 	ldr	r6, =gKeyRepeat
 	mov	r7, r0
@@ -379,7 +379,7 @@
 	bx	r1
 .func_end Debug_WarpMenu_UI
 
-.thumb_func_start Debug_FlagEditor
+.thumb_func_start Debug_FlagEditor  @ 0x080291e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -447,7 +447,7 @@
 	bx	r1
 .func_end Debug_FlagEditor
 
-.thumb_func_start Func_8029274
+.thumb_func_start Func_8029274  @ 0x08029274
 	push	{r5, r6, lr}
 	sub	sp, #8
 	mov	r5, r2
@@ -497,7 +497,7 @@
 	bx	r0
 .func_end Func_8029274
 
-.thumb_func_start Func_80292c4
+.thumb_func_start Func_80292c4  @ 0x080292c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -592,7 +592,7 @@
 	bx	r0
 .func_end Func_80292c4
 
-.thumb_func_start Func_802938c
+.thumb_func_start Func_802938c  @ 0x0802938c
 	push    {r5, r6, lr}
 	ldr	r6, =gKeyRepeat
 	ldr	r3, [r6]

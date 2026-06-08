@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8005cf8
+.thumb_func_start Func_8005cf8  @ 0x08005cf8
 	push	{lr}
 	mov	r0, #5
 	mov	r1, #0
@@ -13,7 +13,7 @@
 	bx	r1
 .func_end Func_8005cf8
 
-.thumb_func_start Func_8005d10
+.thumb_func_start Func_8005d10  @ 0x08005d10
 	push	{r5, r6, r7, lr}
 	ldr	r6, =REG_IME
 	ldrh	r3, [r6]

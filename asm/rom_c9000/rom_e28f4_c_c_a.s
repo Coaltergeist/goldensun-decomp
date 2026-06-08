@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_RapidSlash
+.thumb_func_start BaseAnim_RapidSlash  @ 0x080e2974
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -795,7 +795,7 @@
 	bx	r0
 .func_end BaseAnim_RapidSlash
 
-.thumb_func_start Anim_Gaia
+.thumb_func_start Anim_Gaia  @ 0x080e302c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1842,7 +1842,7 @@
 	bx	r0
 .func_end Anim_Gaia
 
-.thumb_func_start Func_80e38b8
+.thumb_func_start Func_80e38b8  @ 0x080e38b8
 	push	{r5, r6, lr}
 	mov	r4, r0
 	ldr	r3, [r4]
@@ -1888,7 +1888,7 @@
 	bx	r0
 .func_end Func_80e38b8
 
-.thumb_func_start Func_80e3908
+.thumb_func_start Func_80e3908  @ 0x080e3908
 	push	{r5, lr}
 	mov	r4, r0
 	ldr	r3, [r4]

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start NintendoLogo
+.thumb_func_start NintendoLogo  @ 0x080f2b70
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -218,7 +218,7 @@
 	bx	r1
 .func_end NintendoLogo
 
-.thumb_func_start CamelotLogo
+.thumb_func_start CamelotLogo  @ 0x080f2d54
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}

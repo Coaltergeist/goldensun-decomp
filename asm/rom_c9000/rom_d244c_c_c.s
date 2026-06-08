@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Tiamat
+.thumb_func_start BaseAnim_Tiamat  @ 0x080d2464
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

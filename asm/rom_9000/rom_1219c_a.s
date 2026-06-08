@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801219c
+.thumb_func_start Func_801219c  @ 0x0801219c
 	push	{lr}
 	ldr	r3, [r0]
 	cmp	r3, #0
@@ -57,7 +57,7 @@
 	bx	r1
 .func_end Func_801219c
 
-.thumb_func_start Func_8012204
+.thumb_func_start Func_8012204  @ 0x08012204
 	push	{r5, lr}
 	ldr	r4, [r0, #8]
 	ldr	r3, [r0]
@@ -144,7 +144,7 @@
 	bx	r1
 .func_end Func_8012204
 
-.thumb_func_start Func_80122ac
+.thumb_func_start Func_80122ac  @ 0x080122ac
 	push	{lr}
 	mov	r0, r1
 	bl	Func_8012204
@@ -161,7 +161,7 @@
 	bx	r1
 .func_end Func_80122ac
 
-.thumb_func_start Func_80122c8
+.thumb_func_start Func_80122c8  @ 0x080122c8
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -213,7 +213,7 @@
 	bx	r1
 .func_end Func_80122c8
 
-.thumb_func_start Func_8012330
+.thumb_func_start Func_8012330  @ 0x08012330
 	push	{lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]
@@ -233,7 +233,7 @@
 	bx	r0
 .func_end Func_8012330
 
-.thumb_func_start Func_8012350
+.thumb_func_start Func_8012350  @ 0x08012350
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r5, [r3]
@@ -263,7 +263,7 @@
 	bx	r0
 .func_end Func_8012350
 
-.thumb_func_start Func_8012388
+.thumb_func_start Func_8012388  @ 0x08012388
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -305,7 +305,7 @@
 	bx	r0
 .func_end Func_8012388
 
-.thumb_func_start Func_80123f4
+.thumb_func_start Func_80123f4  @ 0x080123f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -435,7 +435,7 @@
 	bx	r0
 .func_end Func_80123f4
 
-.thumb_func_start Debug_SpriteTest
+.thumb_func_start Debug_SpriteTest  @ 0x08012518
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1192,7 +1192,7 @@
 	b	.L126fe
 .func_end Debug_SpriteTest
 
-.thumb_func_start SpriteTest_ChangeVar
+.thumb_func_start SpriteTest_ChangeVar  @ 0x08012af8
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -1223,7 +1223,7 @@
 	bx	r1
 .func_end SpriteTest_ChangeVar
 
-.thumb_func_start Func_8012b2c
+.thumb_func_start Func_8012b2c  @ 0x08012b2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

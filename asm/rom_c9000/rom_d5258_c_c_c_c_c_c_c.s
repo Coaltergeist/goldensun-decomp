@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_ParticleCloud
+.thumb_func_start BaseAnim_ParticleCloud  @ 0x080d52c8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -820,7 +820,7 @@
 	bx	r0
 .func_end BaseAnim_ParticleCloud
 
-.thumb_func_start Anim_Sleep
+.thumb_func_start Anim_Sleep  @ 0x080d59b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1117,7 +1117,7 @@
 	bx	r0
 .func_end Anim_Sleep
 
-.thumb_func_start Anim_Curse
+.thumb_func_start Anim_Curse  @ 0x080d5c48
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1359,7 +1359,7 @@
 	bx	r0
 .func_end Anim_Curse
 
-.thumb_func_start Anim_Unused_Fizz
+.thumb_func_start Anim_Unused_Fizz  @ 0x080d5e54
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

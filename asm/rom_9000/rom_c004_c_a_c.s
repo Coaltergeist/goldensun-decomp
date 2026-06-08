@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c548
+.thumb_func_start Func_800c548  @ 0x0800c548
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc56c
@@ -25,7 +25,7 @@
 	bx	r0
 .func_end Func_800c548
 
-.thumb_func_start Func_800c570
+.thumb_func_start Func_800c570  @ 0x0800c570
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc594
@@ -49,7 +49,7 @@
 	bx	r0
 .func_end Func_800c570
 
-.thumb_func_start Actor_SetColorswap
+.thumb_func_start Actor_SetColorswap  @ 0x0800c598
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc5ae
@@ -65,7 +65,7 @@
 	bx	r0
 .func_end Actor_SetColorswap
 
-.thumb_func_start Func_800c5b4
+.thumb_func_start Func_800c5b4  @ 0x0800c5b4
 	push	{lr}
 	ldr	r0, =Func_800c62c
 	bl	Func_80042c8
@@ -95,7 +95,7 @@
 	.word	0x1000
 .func_end Func_800c5b4
 
-.thumb_func_start Func_800c5fc
+.thumb_func_start Func_800c5fc  @ 0x0800c5fc
 	push	{lr}
 	ldr	r0, =Func_800c62c
 	bl	Func_800439c

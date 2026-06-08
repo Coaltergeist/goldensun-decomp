@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Actor_TravelTo
+.thumb_func_start Actor_TravelTo  @ 0x0800d14c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -215,7 +215,7 @@
 	bx	r0
 .func_end Actor_TravelTo
 
-.thumb_func_start Func_800d304
+.thumb_func_start Func_800d304  @ 0x0800d304
 	push	{r5, r6, lr}
 	ldr	r5, =0x4e8
 	mov	r0, r5
@@ -238,7 +238,7 @@
 	bx	r0
 .func_end Func_800d304
 
-.thumb_func_start Func_800d340
+.thumb_func_start Func_800d340  @ 0x0800d340
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

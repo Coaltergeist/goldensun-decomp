@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Camera_SetTarget
+.thumb_func_start Camera_SetTarget  @ 0x0800c4bc
 	push	{r5, r6, lr}
 	mov	r6, r1
 	ldr	r1, =.L135f0

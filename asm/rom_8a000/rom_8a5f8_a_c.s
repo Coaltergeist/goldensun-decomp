@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start GameStart
+.thumb_func_start GameStart  @ 0x0808a8e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -265,7 +265,7 @@
 
 	.pool_aligned
 
-.thumb_func_start Func_808ab48
+.thumb_func_start Func_808ab48  @ 0x0808ab48
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -282,7 +282,7 @@
 	bx	r0
 .func_end Func_808ab48
 
-.thumb_func_start InitMapFlags
+.thumb_func_start InitMapFlags  @ 0x0808ab74
 	push	{r5, r6, lr}
 	ldr	r5, =gState
 	mov	r2, #0xe0

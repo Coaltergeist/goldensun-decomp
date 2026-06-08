@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start SomethingSaveHeader
+.thumb_func_start SomethingSaveHeader  @ 0x08005920
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -161,7 +161,7 @@
 	bx	r1
 .func_end SomethingSaveHeader
 
-.thumb_func_start Func_8005a78
+.thumb_func_start Func_8005a78  @ 0x08005a78
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f1c
 	mov	r6, r1
@@ -195,7 +195,7 @@
 	bx	r1
 .func_end Func_8005a78
 
-.thumb_func_start Func_8005ac0
+.thumb_func_start Func_8005ac0  @ 0x08005ac0
 	push	{lr}
 	bl	Func_8005b24
 	cmp	r0, #0xf

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808f32c
+.thumb_func_start Func_808f32c  @ 0x0808f32c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -180,7 +180,7 @@
 	bx	r0
 .func_end Func_808f32c
 
-.thumb_func_start Func_808f498
+.thumb_func_start Func_808f498  @ 0x0808f498
 	ldr	r3, =iwram_3001ecc
 	ldr	r2, =0x539
 	ldr	r0, [r3]
@@ -243,7 +243,7 @@
 	bx	lr
 .func_end Func_808f498
 
-.thumb_func_start Task_ScreenWindowTransition
+.thumb_func_start Task_ScreenWindowTransition  @ 0x0808f52c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1330,7 +1330,7 @@
 	bx	r0
 .func_end Task_ScreenWindowTransition
 
-.thumb_func_start Func_808fe38
+.thumb_func_start Func_808fe38  @ 0x0808fe38
 	push	{r5, r6, lr}
 	mov	r1, #0xa8
 	mov	r6, r0

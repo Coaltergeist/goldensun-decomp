@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b3d0
+.thumb_func_start Func_808b3d0  @ 0x0808b3d0
 	push	{lr}
 	cmp	r0, #8
 	bgt	.L8b3e6
@@ -18,7 +18,7 @@
 	bx	r1
 .func_end Func_808b3d0
 
-.thumb_func_start LoadMapActors
+.thumb_func_start LoadMapActors  @ 0x0808b3ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

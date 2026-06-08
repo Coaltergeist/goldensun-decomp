@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800f9cc
+.thumb_func_start Func_800f9cc  @ 0x0800f9cc
 	push	{lr}
 	mov	r3, #1
 	sub	r1, #1
@@ -23,7 +23,7 @@
 	bx	r0
 .func_end Func_800f9cc
 
-.thumb_func_start DecodeMetatileset
+.thumb_func_start DecodeMetatileset  @ 0x0800f9f4
 	push	{r5, r6, r7, lr}
 	sub	r3, r0, #1
 	lsr	r2, r3, #31
@@ -104,7 +104,7 @@
 	bx	r0
 .func_end DecodeMetatileset
 
-.thumb_func_start Func_800fa8c
+.thumb_func_start Func_800fa8c  @ 0x0800fa8c
 	push	{r5, r6, lr}
 	mov	r4, #0x80
 	mov	r0, #1
@@ -135,7 +135,7 @@
 	bx	r0
 .func_end Func_800fa8c
 
-.thumb_func_start UnpackTilemap
+.thumb_func_start UnpackTilemap  @ 0x0800fac8
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -176,7 +176,7 @@
 	bx	r0
 .func_end UnpackTilemap
 
-.thumb_func_start LoadMapData
+.thumb_func_start LoadMapData  @ 0x0800fb38
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

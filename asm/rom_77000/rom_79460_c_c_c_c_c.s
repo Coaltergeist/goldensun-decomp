@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start GetNumDjinn
+.thumb_func_start GetNumDjinn  @ 0x0807a5bc
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x24
 	add	r6, sp, #4
@@ -58,7 +58,7 @@
 	bx	r1
 .func_end GetNumDjinn
 
-.thumb_func_start Func_807a628
+.thumb_func_start Func_807a628  @ 0x0807a628
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -90,7 +90,7 @@
 	bx	r0
 .func_end Func_807a628
 
-.thumb_func_start Func_807a664
+.thumb_func_start Func_807a664  @ 0x0807a664
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -247,7 +247,7 @@
 	bx	r0
 .func_end Func_807a664
 
-.thumb_func_start Func_807a7a0
+.thumb_func_start Func_807a7a0  @ 0x0807a7a0
 	push	{r5, r6, lr}
 	ldr	r5, =ewram_2001078
 	ldrh	r3, [r5]

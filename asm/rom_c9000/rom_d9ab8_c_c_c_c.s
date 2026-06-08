@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_StatDown
+.thumb_func_start BaseAnim_StatDown  @ 0x080d9ae8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -581,7 +581,7 @@
 	bx	r0
 .func_end BaseAnim_StatDown
 
-.thumb_func_start Anim_Flare
+.thumb_func_start Anim_Flare  @ 0x080d9fc8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -882,7 +882,7 @@
 	bx	r0
 .func_end Anim_Flare
 
-.thumb_func_start Func_80da24c
+.thumb_func_start Func_80da24c  @ 0x080da24c
 	push	{r5, r6, r7, lr}
 	mov	r14, r1
 	ldr	r1, [r0, #0x10]
@@ -939,7 +939,7 @@
 	bx	r1
 .func_end Func_80da24c
 
-.thumb_func_start Anim_Quake
+.thumb_func_start Anim_Quake  @ 0x080da2ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1436,7 +1436,7 @@
 	bx	r0
 .func_end Anim_Quake
 
-.thumb_func_start Anim_Fireball
+.thumb_func_start Anim_Fireball  @ 0x080da6cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1986,7 +1986,7 @@
 	bx	r0
 .func_end Anim_Fireball
 
-.thumb_func_start Anim_Frost
+.thumb_func_start Anim_Frost  @ 0x080dab74
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2826,7 +2826,7 @@
 	bx	r0
 .func_end Anim_Frost
 
-.thumb_func_start Anim_Ray
+.thumb_func_start Anim_Ray  @ 0x080db264
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

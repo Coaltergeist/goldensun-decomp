@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Anim
+.thumb_func_start ActorCmd_Anim  @ 0x0800d8c4
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4

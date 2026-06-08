@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Player_ExitStairs
+.thumb_func_start Player_ExitStairs  @ 0x08094380
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -75,7 +75,7 @@
 	bx	r0
 .func_end Player_ExitStairs
 
-.thumb_func_start Func_8094428
+.thumb_func_start Func_8094428  @ 0x08094428
 	push	{r5, r6, lr}
 	mov	r5, #0x90
 	lsl	r5, #1

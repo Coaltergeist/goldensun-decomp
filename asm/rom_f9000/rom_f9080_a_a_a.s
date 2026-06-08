@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start PlaySound
+.thumb_func_start PlaySound  @ 0x080f9080
 	push	{r5, r6, r7, lr}
 	mov	r5, #0xf0
 	ldr	r3, =0xfff
@@ -162,7 +162,7 @@
 	bx	r0
 .func_end PlaySound
 
-.thumb_func_start UpdateMusicSettings
+.thumb_func_start UpdateMusicSettings  @ 0x080f91e8
 	push	{r5, r6, lr}
 	ldr	r1, =ewram_2003000
 	ldrb	r3, [r1]
@@ -288,7 +288,7 @@
 	bx	r0
 .func_end UpdateMusicSettings
 
-.thumb_func_start Debug_SoundTest
+.thumb_func_start Debug_SoundTest  @ 0x080f92fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

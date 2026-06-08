@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start MatrixPop
+.thumb_func_start MatrixPop  @ 0x08004a5c
 	push	{lr}
 	ldr	r2, =gMatrixStackSize
 	ldr	r3, [r2]
@@ -23,7 +23,7 @@
 	bx	r0
 .func_end MatrixPop
 
-.thumb_func_start MatrixReset
+.thumb_func_start MatrixReset  @ 0x08004a94
 	ldr	r3, =Data_8000ac0
 	mov	r0, r3
 	mov	r1, #0x80
@@ -37,7 +37,7 @@
 	bx	lr
 .func_end MatrixReset
 
-.thumb_func_start MatrixRotate
+.thumb_func_start MatrixRotate  @ 0x08004ab0
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -148,7 +148,7 @@
 	bx	r0
 .func_end MatrixRotate
 
-.thumb_func_start MatrixPitch
+.thumb_func_start MatrixPitch  @ 0x08004bd4
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
@@ -182,7 +182,7 @@
 	bx	r0
 .func_end MatrixPitch
 
-.thumb_func_start MatrixYaw
+.thumb_func_start MatrixYaw  @ 0x08004c1c
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -220,7 +220,7 @@
 	bx	r0
 .func_end MatrixYaw
 
-.thumb_func_start MatrixRoll
+.thumb_func_start MatrixRoll  @ 0x08004c6c
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
@@ -254,7 +254,7 @@
 	bx	r0
 .func_end MatrixRoll
 
-.thumb_func_start MatrixTranslatev
+.thumb_func_start MatrixTranslatev  @ 0x08004cb4
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -283,7 +283,7 @@
 	bx	r0
 .func_end MatrixTranslatev
 
-.thumb_func_start MatrixScalev
+.thumb_func_start MatrixScalev  @ 0x08004cf0
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -312,7 +312,7 @@
 	bx	r0
 .func_end MatrixScalev
 
-.thumb_func_start MatrixRotateTrans
+.thumb_func_start MatrixRotateTrans  @ 0x08004d2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -425,7 +425,7 @@
 	bx	r0
 .func_end MatrixRotateTrans
 
-.thumb_func_start MatrixRotateTransScale
+.thumb_func_start MatrixRotateTransScale  @ 0x08004e54
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -573,7 +573,7 @@
 	bx	r0
 .func_end MatrixRotateTransScale
 
-.thumb_func_start MakeLookMatrix
+.thumb_func_start MakeLookMatrix  @ 0x08004fe4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

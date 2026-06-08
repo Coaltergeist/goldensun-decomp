@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start InitSprites
+.thumb_func_start InitSprites  @ 0x0800bb20
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	cmp	r0, #3
@@ -67,7 +67,7 @@
 	bx	r0
 .func_end InitSprites
 
-.thumb_func_start CreateSpriteLayer
+.thumb_func_start CreateSpriteLayer  @ 0x0800bbc0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -142,7 +142,7 @@
 	bx	r1
 .func_end CreateSpriteLayer
 
-.thumb_func_start DeleteSpriteLayer
+.thumb_func_start DeleteSpriteLayer  @ 0x0800bc48
 	push	{lr}
 	mov	r1, r0
 	sub	sp, #4
@@ -161,7 +161,7 @@
 	bx	r0
 .func_end DeleteSpriteLayer
 
-.thumb_func_start CreateSprite
+.thumb_func_start CreateSprite  @ 0x0800bc70
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -328,7 +328,7 @@
 	bx	r1
 .func_end CreateSprite
 
-.thumb_func_start DeleteSprite
+.thumb_func_start DeleteSprite  @ 0x0800bdd4
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	sub	sp, #4
@@ -366,7 +366,7 @@
 	bx	r0
 .func_end DeleteSprite
 
-.thumb_func_start Func_800be20
+.thumb_func_start Func_800be20  @ 0x0800be20
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r5, r2

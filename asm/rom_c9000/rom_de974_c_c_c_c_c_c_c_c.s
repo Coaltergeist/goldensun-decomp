@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Blizzard
+.thumb_func_start Anim_Blizzard  @ 0x080dea3c
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
@@ -24,7 +24,7 @@
 	bx	r0
 .func_end Anim_Blizzard
 
-.thumb_func_start BaseAnim_ParticleSpray
+.thumb_func_start BaseAnim_ParticleSpray  @ 0x080dea70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1776,7 +1776,7 @@
 	bx	r0
 .func_end BaseAnim_ParticleSpray
 
-.thumb_func_start Func_80df8b8
+.thumb_func_start Func_80df8b8  @ 0x080df8b8
 	push	{r5, r6, lr}
 	bl	_GetBattleActor
 	mov	r6, r0
@@ -1815,7 +1815,7 @@
 	bx	r0
 .func_end Func_80df8b8
 
-.thumb_func_start Func_80df90c
+.thumb_func_start Func_80df90c  @ 0x080df90c
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -1902,7 +1902,7 @@
 	bx	r0
 .func_end Func_80df90c
 
-.thumb_func_start Func_80df9d0
+.thumb_func_start Func_80df9d0  @ 0x080df9d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

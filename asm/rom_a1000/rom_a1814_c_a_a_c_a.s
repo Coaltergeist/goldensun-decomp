@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a1bdc
+.thumb_func_start Func_80a1bdc  @ 0x080a1bdc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -43,7 +43,7 @@
 	bx	r0
 .func_end Func_80a1bdc
 
-.thumb_func_start Func_80a1c2c
+.thumb_func_start Func_80a1c2c  @ 0x080a1c2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -111,7 +111,7 @@
 	bx	r0
 .func_end Func_a1c6c
 
-.thumb_func_start Func_80a1cb0
+.thumb_func_start Func_80a1cb0  @ 0x080a1cb0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -157,7 +157,7 @@
 	bx	r0
 .func_end Func_80a1cb0
 
-.thumb_func_start Func_80a1d08
+.thumb_func_start Func_80a1d08  @ 0x080a1d08
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -307,7 +307,7 @@
 	bx	r0
 .func_end Func_80a1d08
 
-.thumb_func_start Func_80a1e38
+.thumb_func_start Func_80a1e38  @ 0x080a1e38
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -530,7 +530,7 @@
 	bx	r0
 .func_end Func_a1f74
 
-.thumb_func_start Func_80a1fd4
+.thumb_func_start Func_80a1fd4  @ 0x080a1fd4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -719,7 +719,7 @@
 	bx	r1
 .func_end Func_80a1fd4
 
-.thumb_func_start Func_80a2144
+.thumb_func_start Func_80a2144  @ 0x080a2144
 	push	{r5, lr}
 	mov	r3, #0xa0
 	lsl	r0, #5
@@ -775,7 +775,7 @@
 	bx	r0
 .func_end Func_80a2144
 
-.thumb_func_start Func_80a21b0
+.thumb_func_start Func_80a21b0  @ 0x080a21b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -865,7 +865,7 @@
 	bx	r0
 .func_end Func_80a21b0
 
-.thumb_func_start Func_80a2268
+.thumb_func_start Func_80a2268  @ 0x080a2268
 	push	{r5, r6, r7, lr}
 	mov	r6, r3
 	ldr	r3, =iwram_3001e8c
@@ -940,7 +940,7 @@
 	bx	r0
 .func_end Func_80a2268
 
-.thumb_func_start Func_80a22f4
+.thumb_func_start Func_80a22f4  @ 0x080a22f4
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =0x5000200
 	ldr	r1, =0x50001c0
@@ -955,7 +955,7 @@
 	bx	lr
 .func_end Func_80a22f4
 
-.thumb_func_start Func_80a2324
+.thumb_func_start Func_80a2324  @ 0x080a2324
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -1037,7 +1037,7 @@
 	bx	r0
 .func_end Func_80a2324
 
-.thumb_func_start Func_80a23c0
+.thumb_func_start Func_80a23c0  @ 0x080a23c0
 	push	{r5, lr}
 	ldr	r3, =gState
 	sub	sp, #4

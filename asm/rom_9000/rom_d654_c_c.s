@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Sound
+.thumb_func_start ActorCmd_Sound  @ 0x0800d900
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4

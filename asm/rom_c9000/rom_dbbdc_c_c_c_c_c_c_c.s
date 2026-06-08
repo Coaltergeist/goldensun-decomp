@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Breath
+.thumb_func_start BaseAnim_Breath  @ 0x080dbc30
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -709,7 +709,7 @@
 	bx	r0
 .func_end BaseAnim_Breath
 
-.thumb_func_start Anim_Unused_ElementOrbs
+.thumb_func_start Anim_Unused_ElementOrbs  @ 0x080dc1ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -991,7 +991,7 @@
 	bx	r0
 .func_end Anim_Unused_ElementOrbs
 
-.thumb_func_start Anim_Unused_Haunt
+.thumb_func_start Anim_Unused_Haunt  @ 0x080dc454
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1277,7 +1277,7 @@
 	bx	r0
 .func_end Anim_Unused_Haunt
 
-.thumb_func_start Anim_Unused_SkullCloud
+.thumb_func_start Anim_Unused_SkullCloud  @ 0x080dc6bc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1585,7 +1585,7 @@
 	bx	r0
 .func_end Anim_Unused_SkullCloud
 
-.thumb_func_start Anim_Atalanta
+.thumb_func_start Anim_Atalanta  @ 0x080dc968
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

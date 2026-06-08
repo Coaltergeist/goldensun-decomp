@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8093304
+.thumb_func_start Func_8093304  @ 0x08093304
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r1, #0x80
@@ -36,7 +36,7 @@
 	bx	r0
 .func_end Func_8093304
 
-.thumb_func_start SetCameraTarget
+.thumb_func_start SetCameraTarget  @ 0x0809335c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -90,7 +90,7 @@
 	bx	r0
 .func_end SetCameraTarget
 
-.thumb_func_start Func_80933d4
+.thumb_func_start Func_80933d4  @ 0x080933d4
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -108,7 +108,7 @@
 	bx	r0
 .func_end Func_80933d4
 
-.thumb_func_start Func_80933f8
+.thumb_func_start Func_80933f8  @ 0x080933f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

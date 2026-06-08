@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f6038
+.thumb_func_start Func_80f6038  @ 0x080f6038
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -58,7 +58,7 @@
 	bx	r1
 .func_end Func_80f6038
 
-.thumb_func_start Task_BlitLuckyWheelsAnim
+.thumb_func_start Task_BlitLuckyWheelsAnim  @ 0x080f60a0
 	push	{r5, lr}
 	ldr	r0, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -131,7 +131,7 @@
 	bx	r0
 .func_end Task_BlitLuckyWheelsAnim
 
-.thumb_func_start Func_80f6148
+.thumb_func_start Func_80f6148  @ 0x080f6148
 	push	{r5, r6, r7, lr}
 	ldr	r5, =0x5000140
 	ldr	r7, .Lf617c	@ 0x1f
@@ -224,7 +224,7 @@
 	bx	r0
 .func_end Func_80f6148
 
-.thumb_func_start Func_80f61e8
+.thumb_func_start Func_80f61e8  @ 0x080f61e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -329,7 +329,7 @@
 	bx	r0
 .func_end Func_80f61e8
 
-.thumb_func_start Func_80f62b8
+.thumb_func_start Func_80f62b8  @ 0x080f62b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -543,7 +543,7 @@
 	bx	r0
 .func_end Func_80f62b8
 
-.thumb_func_start Func_80f6440
+.thumb_func_start Func_80f6440  @ 0x080f6440
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2442,7 +2442,7 @@
 	bx	r0
 .func_end Func_80f6440
 
-.thumb_func_start Func_80f731c
+.thumb_func_start Func_80f731c  @ 0x080f731c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2588,7 +2588,7 @@
 	bx	r0
 .func_end Func_80f731c
 
-.thumb_func_start LuckyWheelsMain
+.thumb_func_start LuckyWheelsMain  @ 0x080f7460
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3668,7 +3668,7 @@
 	bx	r0
 .func_end LuckyWheelsMain
 
-.thumb_func_start Func_80f7db4
+.thumb_func_start Func_80f7db4  @ 0x080f7db4
 	push	{lr}
 	ldr	r3, =ewram_2004c00
 	ldr	r3, [r3]
@@ -3699,7 +3699,7 @@
 	bx	r0
 .func_end Func_80f7db4
 
-.thumb_func_start Func_80f7df0
+.thumb_func_start Func_80f7df0  @ 0x080f7df0
 	push	{r5, lr}
 	ldr	r3, =ewram_2004c00
 	lsl	r1, r0, #1
@@ -3732,7 +3732,7 @@
 	bx	r0
 .func_end Func_80f7df0
 
-.thumb_func_start Func_80f7e34
+.thumb_func_start Func_80f7e34  @ 0x080f7e34
 	push	{lr}
 	ldr	r3, =ewram_2004c00
 	ldr	r1, [r3]
@@ -3756,7 +3756,7 @@
 	bx	r0
 .func_end Func_80f7e34
 
-.thumb_func_start Func_80f7e60
+.thumb_func_start Func_80f7e60  @ 0x080f7e60
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3854,7 +3854,7 @@
 	bx	r0
 .func_end Func_80f7e60
 
-.thumb_func_start Func_80f7f30
+.thumb_func_start Func_80f7f30  @ 0x080f7f30
 	push	{r5, r6, lr}
 	ldr	r3, =ewram_2004c00
 	ldr	r1, =0x4404
@@ -3888,7 +3888,7 @@
 	bx	r0
 .func_end Func_80f7f30
 
-.thumb_func_start Func_80f7f78
+.thumb_func_start Func_80f7f78  @ 0x080f7f78
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

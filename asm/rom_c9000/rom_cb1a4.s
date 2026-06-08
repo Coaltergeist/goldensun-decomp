@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_DeathPlunge
+.thumb_func_start Anim_DeathPlunge  @ 0x080cb1a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -379,7 +379,7 @@
 	bx	r0
 .func_end Anim_DeathPlunge
 
-.thumb_func_start Anim_Unused_SabreRain
+.thumb_func_start Anim_Unused_SabreRain  @ 0x080cb4ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -748,7 +748,7 @@
 	bx	r0
 .func_end Anim_Unused_SabreRain
 
-.thumb_func_start Anim_EPowerUp
+.thumb_func_start Anim_EPowerUp  @ 0x080cb7f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1209,7 +1209,7 @@
 	bx	r0
 .func_end Anim_EPowerUp
 
-.thumb_func_start Anim_ScreenShatter
+.thumb_func_start Anim_ScreenShatter  @ 0x080cbc0c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

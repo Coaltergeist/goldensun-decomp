@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801ba68
+.thumb_func_start Func_801ba68  @ 0x0801ba68
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -227,7 +227,7 @@
 	bx	r0
 .func_end Func_801ba68
 
-.thumb_func_start UploadIcon
+.thumb_func_start UploadIcon  @ 0x0801bc34
 	push	{r5, lr}
 	mov	r3, #1
 	sub	sp, #0xc
@@ -303,7 +303,7 @@
 	bx	r1
 .func_end UploadIcon
 
-.thumb_func_start Func_801bcd4
+.thumb_func_start Func_801bcd4  @ 0x0801bcd4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -398,7 +398,7 @@
 	bx	r1
 .func_end Func_801bcd4
 
-.thumb_func_start Func_801bd98
+.thumb_func_start Func_801bd98  @ 0x0801bd98
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	mov	r6, r1
@@ -513,7 +513,7 @@
 	bx	r0
 .func_end Func_801bd98
 
-.thumb_func_start Func_801be80
+.thumb_func_start Func_801be80  @ 0x0801be80
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9

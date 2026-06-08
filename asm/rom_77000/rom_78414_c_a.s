@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078480
+.thumb_func_start Func_8078480  @ 0x08078480
 	push	{lr}
 	bl	GetItemInfo
 	ldrb	r3, [r0, #2]
@@ -28,7 +28,7 @@
 	bx	r1
 .func_end Func_8078480
 
-.thumb_func_start GetInventoryItem
+.thumb_func_start GetInventoryItem  @ 0x080784b0
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetUnit

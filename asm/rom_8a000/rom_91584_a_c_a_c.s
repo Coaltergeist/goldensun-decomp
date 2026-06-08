@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Task_Cutscene
+.thumb_func_start Task_Cutscene  @ 0x080915ec
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
@@ -38,7 +38,7 @@
 	bx	r0
 .func_end Task_Cutscene
 
-.thumb_func_start CutsceneWait
+.thumb_func_start CutsceneWait  @ 0x0809163c
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe6
@@ -56,7 +56,7 @@
 	bx	r0
 .func_end CutsceneWait
 
-.thumb_func_start Func_8091660
+.thumb_func_start Func_8091660  @ 0x08091660
 	push	{r5, lr}
 	ldr	r5, =gState
 	mov	r2, #0xfa
@@ -95,7 +95,7 @@
 	bx	r0
 .func_end Func_8091660
 
-.thumb_func_start CutsceneStart
+.thumb_func_start CutsceneStart  @ 0x080916b0
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r6, [r3]

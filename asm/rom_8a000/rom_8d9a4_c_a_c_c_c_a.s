@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808ed4c
+.thumb_func_start Func_808ed4c  @ 0x0808ed4c
 	push	{lr}
 	bl	GetMapActorIndex
 	mov	r2, #1

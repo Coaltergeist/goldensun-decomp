@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Player_Climb
+.thumb_func_start ActorCmd_Player_Climb  @ 0x0800f7f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9

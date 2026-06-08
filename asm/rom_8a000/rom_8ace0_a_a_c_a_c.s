@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b090
+.thumb_func_start Func_808b090  @ 0x0808b090
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -103,7 +103,7 @@
 	bx	r0
 .func_end Func_808b090
 
-.thumb_func_start GetLocationName
+.thumb_func_start GetLocationName  @ 0x0808b158
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -171,7 +171,7 @@
 	bx	r1
 .func_end GetLocationName
 
-.thumb_func_start UpdateRespawnMap
+.thumb_func_start UpdateRespawnMap  @ 0x0808b1d8
 	push	{r5, r6, r7, lr}
 	ldr	r0, =gState
 	mov	r1, #0xe0

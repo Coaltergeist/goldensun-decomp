@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80935d4
+.thumb_func_start Func_80935d4  @ 0x080935d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -90,7 +90,7 @@
 	bx	r1
 .func_end Func_80935d4
 
-.thumb_func_start Func_80936a0
+.thumb_func_start Func_80936a0  @ 0x080936a0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e70
 	mov	r6, r0
@@ -136,7 +136,7 @@
 	bx	r0
 .func_end Func_80936a0
 
-.thumb_func_start Func_8093710
+.thumb_func_start Func_8093710  @ 0x08093710
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r1, =0xccc
@@ -178,7 +178,7 @@
 	bx	r0
 .func_end Func_8093710
 
-.thumb_func_start Update_EmoteBubble
+.thumb_func_start Update_EmoteBubble  @ 0x0809376c
 	push	{r5, r6, lr}
 	mov	r5, r0
 	ldr	r6, [r5, #0x68]
@@ -218,7 +218,7 @@
 	bx	r1
 .func_end Update_EmoteBubble
 
-.thumb_func_start MapActor_Emote
+.thumb_func_start MapActor_Emote  @ 0x080937b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -311,7 +311,7 @@
 	bx	r0
 .func_end MapActor_Emote
 
-.thumb_func_start MapActor_Surprise
+.thumb_func_start MapActor_Surprise  @ 0x08093874
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

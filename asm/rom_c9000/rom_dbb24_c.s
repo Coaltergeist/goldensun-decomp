@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80dbb9c
+.thumb_func_start Func_80dbb9c  @ 0x080dbb9c
 	ldr	r3, =iwram_3001eec
 	ldr	r0, [r3]
 	ldr	r3, =REG_DMA0SAD

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808ba38
+.thumb_func_start Func_808ba38  @ 0x0808ba38
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -124,7 +124,7 @@
 	bx	r0
 .func_end Func_808ba38
 
-.thumb_func_start Func_808bb2c
+.thumb_func_start Func_808bb2c  @ 0x0808bb2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -254,7 +254,7 @@
 	bx	r0
 .func_end Func_808bb2c
 
-.thumb_func_start Func_808bc44
+.thumb_func_start Func_808bc44  @ 0x0808bc44
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xb6
 	ldr	r1, [r3]
@@ -298,7 +298,7 @@
 	bx	lr
 .func_end Func_808bc44
 
-.thumb_func_start Func_808bc9c
+.thumb_func_start Func_808bc9c  @ 0x0808bc9c
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xb6
 	ldr	r1, [r3]
@@ -367,7 +367,7 @@
 	bx	lr
 .func_end Func_808bc9c
 
-.thumb_func_start Func_808bd24
+.thumb_func_start Func_808bd24  @ 0x0808bd24
 	push	{r5, r6, r7, lr}
 	ldr	r2, =gState
 	mov	r1, #0xfa
@@ -459,7 +459,7 @@
 	bx	r1
 .func_end Func_808bd24
 
-.thumb_func_start CheckSpecialExits
+.thumb_func_start CheckSpecialExits  @ 0x0808bde0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -568,7 +568,7 @@
 	bx	r0
 .func_end CheckSpecialExits
 
-.thumb_func_start Func_808bec0
+.thumb_func_start Func_808bec0  @ 0x0808bec0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1082,7 +1082,7 @@
 	bx	r0
 .func_end Func_808bec0
 
-.thumb_func_start Func_808c2dc
+.thumb_func_start Func_808c2dc  @ 0x0808c2dc
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	bl	_GetPartySize
@@ -1107,7 +1107,7 @@
 	bx	r0
 .func_end Func_808c2dc
 
-.thumb_func_start Func_808c30c
+.thumb_func_start Func_808c30c  @ 0x0808c30c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1178,7 +1178,7 @@
 	bx	r0
 .func_end Func_808c30c
 
-.thumb_func_start UpdatePoison
+.thumb_func_start UpdatePoison  @ 0x0808c3a4
 	push	{r5, r6, r7, lr}
 	mov	r7, #0
 	bl	_GetPartySize
@@ -1260,7 +1260,7 @@
 	bx	r1
 .func_end UpdatePoison
 
-.thumb_func_start Func_808c44c
+.thumb_func_start Func_808c44c  @ 0x0808c44c
 	push	{r5, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
@@ -1312,7 +1312,7 @@
 	bx	r0
 .func_end Func_808c44c
 
-.thumb_func_start Func_808c4c0
+.thumb_func_start Func_808c4c0  @ 0x0808c4c0
 	push	{r5, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
@@ -1339,7 +1339,7 @@
 	bx	r0
 .func_end Func_808c4c0
 
-.thumb_func_start FieldMain
+.thumb_func_start FieldMain  @ 0x0808c4f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2436,7 +2436,7 @@
 	bx	r1
 .func_end FieldMain
 
-.thumb_func_start Func_808ce74
+.thumb_func_start Func_808ce74  @ 0x0808ce74
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2564,7 +2564,7 @@
 	bx	r1
 .func_end Func_808ce74
 
-.thumb_func_start InitPlayerPos
+.thumb_func_start InitPlayerPos  @ 0x0808cf78
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2735,7 +2735,7 @@
 	bx	r0
 .func_end InitPlayerPos
 
-.thumb_func_start Debug_PaletteEditor
+.thumb_func_start Debug_PaletteEditor  @ 0x0808d0c8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3113,7 +3113,7 @@
 	bx	r0
 .func_end Debug_PaletteEditor
 
-.thumb_func_start Func_808d394
+.thumb_func_start Func_808d394  @ 0x0808d394
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #1

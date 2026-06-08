@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80798b4
+.thumb_func_start Func_80798b4  @ 0x080798b4
 	push	{lr}
 	mov	r3, #0x94
 	lsl	r3, #1
@@ -22,7 +22,7 @@
 	bx	r1
 .func_end Func_80798b4
 
-.thumb_func_start Func_80798e0
+.thumb_func_start Func_80798e0  @ 0x080798e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -125,7 +125,7 @@
 	bx	r1
 .func_end Func_80798e0
 
-.thumb_func_start Func_80799b0
+.thumb_func_start Func_80799b0  @ 0x080799b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start galloc_iwram
+.thumb_func_start galloc_iwram  @ 0x080048b0
 	push	{r5, lr}
 	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
@@ -37,7 +37,7 @@
 	bx	r1
 .func_end galloc_iwram
 
-.thumb_func_start galloc_ewram
+.thumb_func_start galloc_ewram  @ 0x080048f4
 	push	{r5, lr}
 	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
@@ -73,7 +73,7 @@
 	bx	r1
 .func_end galloc_ewram
 
-.thumb_func_start Func_8004938
+.thumb_func_start Func_8004938  @ 0x08004938
 	push	{lr}
 	ldr	r1, =gPtrs
 	add	r3, r0, #3
@@ -104,7 +104,7 @@
 	bx	r1
 .func_end Func_8004938
 
-.thumb_func_start Func_8004970
+.thumb_func_start Func_8004970  @ 0x08004970
 	push	{lr}
 	ldr	r1, =gPtrs
 	add	r3, r0, #3

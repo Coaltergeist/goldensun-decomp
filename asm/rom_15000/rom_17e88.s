@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8017e88
+.thumb_func_start Func_8017e88  @ 0x08017e88
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -238,7 +238,7 @@
 	bx	r1
 .func_end Func_8017e88
 
-.thumb_func_start BufferString
+.thumb_func_start BufferString  @ 0x08018038
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1077,7 +1077,7 @@
 	bx	r1
 .func_end BufferString
 
-.thumb_func_start Func_801868c
+.thumb_func_start Func_801868c  @ 0x0801868c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1216,7 +1216,7 @@
 	bx	r0
 .func_end Func_801868c
 
-.thumb_func_start Func_8018790
+.thumb_func_start Func_8018790  @ 0x08018790
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r6, r2
@@ -1231,7 +1231,7 @@
 	bx	r0
 .func_end Func_8018790
 
-.thumb_func_start TextBox
+.thumb_func_start TextBox  @ 0x080187ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1272,7 +1272,7 @@
 	bx	r1
 .func_end TextBox
 
-.thumb_func_start DialogueBox
+.thumb_func_start DialogueBox  @ 0x080187fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1314,7 +1314,7 @@
 	bx	r1
 .func_end DialogueBox
 
-.thumb_func_start Func_8018850
+.thumb_func_start Func_8018850  @ 0x08018850
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1561,7 +1561,7 @@
 	bx	r0
 .func_end Func_8018850
 
-.thumb_func_start Func_8018a50
+.thumb_func_start Func_8018a50  @ 0x08018a50
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

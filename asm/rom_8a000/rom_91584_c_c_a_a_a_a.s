@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start MapActor_WaitAnim
+.thumb_func_start MapActor_WaitAnim  @ 0x08091c44
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	bl	GetFieldActor
@@ -32,7 +32,7 @@
 	bx	r0
 .func_end MapActor_WaitAnim
 
-.thumb_func_start Func_8091c7c
+.thumb_func_start Func_8091c7c  @ 0x08091c7c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8015f30
+.thumb_func_start Func_8015f30  @ 0x08015f30
 	push	{r5, lr}
 	ldr	r1, =0x12fc
 	mov	r0, #0xf
@@ -49,7 +49,7 @@
 	bx	r0
 .func_end Func_8015f30
 
-.thumb_func_start Func_8015fb8
+.thumb_func_start Func_8015fb8  @ 0x08015fb8
 	push	{lr}
 	mov	r12, r3
 	mov	r3, r9
@@ -86,7 +86,7 @@
 	bx	r1
 .func_end Func_8015fb8
 
-.thumb_func_start Func_8016018
+.thumb_func_start Func_8016018  @ 0x08016018
 	push	{r5, r6, lr}
 	mov	r6, r9
 	push	{r6}
@@ -168,7 +168,7 @@
 	bx	r0
 .func_end Func_8016018
 
-.thumb_func_start Func_80160fc
+.thumb_func_start Func_80160fc  @ 0x080160fc
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, =0xea6
@@ -225,7 +225,7 @@
 	bx	r0
 .func_end Func_80160fc
 
-.thumb_func_start ClearUIRegion
+.thumb_func_start ClearUIRegion  @ 0x08016178
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -320,7 +320,7 @@
 	bx	r0
 .func_end ClearUIRegion
 
-.thumb_func_start Func_8016230
+.thumb_func_start Func_8016230  @ 0x08016230
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -393,7 +393,7 @@
 	bx	r0
 .func_end Func_8016230
 
-.thumb_func_start CreateUIBox
+.thumb_func_start CreateUIBox  @ 0x080162d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

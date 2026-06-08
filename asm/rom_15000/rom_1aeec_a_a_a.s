@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start DisplayMenuArrowCursor
+.thumb_func_start DisplayMenuArrowCursor  @ 0x0801aeec
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -142,7 +142,7 @@
 	bx	r0
 .func_end DisplayMenuArrowCursor
 
-.thumb_func_start Func_801b010
+.thumb_func_start Func_801b010  @ 0x0801b010
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -296,7 +296,7 @@
 	bx	r0
 .func_end Func_801b010
 
-.thumb_func_start Func_801b148
+.thumb_func_start Func_801b148  @ 0x0801b148
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r6, [r3]

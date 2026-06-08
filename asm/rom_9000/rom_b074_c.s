@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start PreloadSpriteGFX
+.thumb_func_start PreloadSpriteGFX  @ 0x0800b6b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

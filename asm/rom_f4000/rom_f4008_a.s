@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start StartLuckyDice
+.thumb_func_start StartLuckyDice  @ 0x080f4008
 	push	{lr}
 	ldr	r3, =0x40
 	mov	r2, #0x80
@@ -20,7 +20,7 @@
 	bx	r1
 .func_end StartLuckyDice
 
-.thumb_func_start Func_80f4028
+.thumb_func_start Func_80f4028  @ 0x080f4028
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e80
 	ldr	r5, [r3]
@@ -76,7 +76,7 @@
 	bx	r0
 .func_end Func_80f4028
 
-.thumb_func_start Func_80f40b4
+.thumb_func_start Func_80f40b4  @ 0x080f40b4
 	push	{lr}
 	lsl	r0, #16
 	lsl	r1, #16

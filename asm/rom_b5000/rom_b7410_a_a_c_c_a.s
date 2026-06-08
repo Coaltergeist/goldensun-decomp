@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7738
+.thumb_func_start Func_80b7738  @ 0x080b7738
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -227,7 +227,7 @@
 	bx	r0
 .func_end Func_80b7738
 
-.thumb_func_start Func_80b78e4
+.thumb_func_start Func_80b78e4  @ 0x080b78e4
 	push	{r5, lr}
 	mov	r5, r1
 	bl	_GetUnit
@@ -317,7 +317,7 @@
 	bx	r1
 .func_end Func_80b78e4
 
-.thumb_func_start Func_80b7994
+.thumb_func_start Func_80b7994  @ 0x080b7994
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -471,7 +471,7 @@
 	bx	r1
 .func_end Func_80b7994
 
-.thumb_func_start Func_80b7aac
+.thumb_func_start Func_80b7aac  @ 0x080b7aac
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit

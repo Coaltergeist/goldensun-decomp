@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start MapTransitionIn
+.thumb_func_start MapTransitionIn  @ 0x08091dc8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -22,7 +22,7 @@
 	bx	r0
 .func_end MapTransitionIn
 
-.thumb_func_start MapTransitionOut
+.thumb_func_start MapTransitionOut  @ 0x08091df4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80e7338
+.thumb_func_start Func_80e7338  @ 0x080e7338
 	push	{r5, r6, r7, lr}
 	mov	r7, r9
 	push	{r7}
@@ -58,7 +58,7 @@
 	bx	r0
 .func_end Func_80e7338
 
-.thumb_func_start Func_80e73a0
+.thumb_func_start Func_80e73a0  @ 0x080e73a0
 	push	{r5, r6, lr}
 	mov	r6, r9
 	push	{r6}
@@ -113,7 +113,7 @@
 	bx	r0
 .func_end Func_80e73a0
 
-.thumb_func_start BaseAnim_Meteor
+.thumb_func_start BaseAnim_Meteor  @ 0x080e7404
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1790,7 +1790,7 @@
 	bx	r0
 .func_end BaseAnim_Meteor
 
-.thumb_func_start Anim_Ramses
+.thumb_func_start Anim_Ramses  @ 0x080e823c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2679,7 +2679,7 @@
 	bx	r0
 .func_end Anim_Ramses
 
-.thumb_func_start Anim_DragonCloud
+.thumb_func_start Anim_DragonCloud  @ 0x080e89ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3486,7 +3486,7 @@
 	bx	r0
 .func_end Anim_DragonCloud
 
-.thumb_func_start Anim_Annihilation
+.thumb_func_start Anim_Annihilation  @ 0x080e90a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3952,7 +3952,7 @@
 	bx	r0
 .func_end Anim_Annihilation
 
-.thumb_func_start Anim_Ragnarok
+.thumb_func_start Anim_Ragnarok  @ 0x080e94b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -4561,7 +4561,7 @@
 	bx	r0
 .func_end Anim_Ragnarok
 
-.thumb_func_start Anim_TitanBlade
+.thumb_func_start Anim_TitanBlade  @ 0x080e99c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

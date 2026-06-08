@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start CopyMapTiles
+.thumb_func_start CopyMapTiles  @ 0x08010424
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -152,7 +152,7 @@
 	bx	r0
 .func_end CopyMapTiles
 
-.thumb_func_start Func_8010560
+.thumb_func_start Func_8010560  @ 0x08010560
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -210,7 +210,7 @@
 	bx	r0
 .func_end Func_8010560
 
-.thumb_func_start Func_80105d4
+.thumb_func_start Func_80105d4  @ 0x080105d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -358,7 +358,7 @@
 	bx	r0
 .func_end Func_80105d4
 
-.thumb_func_start Func_8010704
+.thumb_func_start Func_8010704  @ 0x08010704
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -425,7 +425,7 @@
 	bx	r0
 .func_end Func_8010704
 
-.thumb_func_start Func_8010788
+.thumb_func_start Func_8010788  @ 0x08010788
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -578,7 +578,7 @@
 	bx	r0
 .func_end Func_8010788
 
-.thumb_func_start Func_80108c4
+.thumb_func_start Func_80108c4  @ 0x080108c4
 	ldr	r3, =iwram_3001e70
 	ldr	r4, [r3]
 	mov	r2, #0xe0

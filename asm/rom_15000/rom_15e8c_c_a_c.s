@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80173ac
+.thumb_func_start Func_80173ac  @ 0x080173ac
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, [r3]
 	ldr	r3, =0xeae
@@ -27,7 +27,7 @@
 	bx	lr
 .func_end Func_80173ac
 
-.thumb_func_start Func_80173f4
+.thumb_func_start Func_80173f4  @ 0x080173f4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r1, #0x80
@@ -67,7 +67,7 @@
 	bx	r0
 .func_end Func_80173f4
 
-.thumb_func_start Func_8017464
+.thumb_func_start Func_8017464  @ 0x08017464
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r5, [r3]
@@ -110,7 +110,7 @@
 	bx	r0
 .func_end Func_8017464
 
-.thumb_func_start Func_80174d8
+.thumb_func_start Func_80174d8  @ 0x080174d8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ee4
 	ldr	r5, [r3]
@@ -127,7 +127,7 @@
 	bx	r0
 .func_end Func_80174d8
 
-.thumb_func_start PrintBattleText
+.thumb_func_start PrintBattleText  @ 0x080174f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -208,7 +208,7 @@
 	bx	r0
 .func_end PrintBattleText
 
-.thumb_func_start Func_80175a0
+.thumb_func_start Func_80175a0  @ 0x080175a0
 	push	{lr}
 	bl	PrintBattleText
 	b	.L175ae
@@ -225,7 +225,7 @@
 	bx	r0
 .func_end Func_80175a0
 
-.thumb_func_start Func_80175c0
+.thumb_func_start Func_80175c0  @ 0x080175c0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, =0x12f4

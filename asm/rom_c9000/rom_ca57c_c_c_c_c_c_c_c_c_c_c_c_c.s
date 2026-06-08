@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Bite_Sting
+.thumb_func_start BaseAnim_Bite_Sting  @ 0x080ca60c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

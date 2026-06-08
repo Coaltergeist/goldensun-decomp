@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start LoadIcon
+.thumb_func_start LoadIcon  @ 0x0801a5a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801fe2c
+.thumb_func_start Func_801fe2c  @ 0x0801fe2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -113,7 +113,7 @@
 	bx	r0
 .func_end Func_801fe2c
 
-.thumb_func_start Func_801ff14
+.thumb_func_start Func_801ff14  @ 0x0801ff14
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -145,7 +145,7 @@
 	bx	r0
 .func_end Func_801ff14
 
-.thumb_func_start Func_801ff58
+.thumb_func_start Func_801ff58  @ 0x0801ff58
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -210,7 +210,7 @@
 	bx	r0
 .func_end Func_801ff58
 
-.thumb_func_start Func_801ffd8
+.thumb_func_start Func_801ffd8  @ 0x0801ffd8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -294,7 +294,7 @@
 	bx	r0
 .func_end Func_801ffd8
 
-.thumb_func_start Func_8020088
+.thumb_func_start Func_8020088  @ 0x08020088
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -326,7 +326,7 @@
 	bx	r0
 .func_end Func_8020088
 
-.thumb_func_start Func_80200cc
+.thumb_func_start Func_80200cc  @ 0x080200cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -394,7 +394,7 @@
 	bx	r0
 .func_end Func_80200cc
 
-.thumb_func_start Func_8020150
+.thumb_func_start Func_8020150  @ 0x08020150
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

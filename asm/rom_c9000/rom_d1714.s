@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Anim_Procne
+.thumb_func_start Anim_Procne  @ 0x080d1714
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

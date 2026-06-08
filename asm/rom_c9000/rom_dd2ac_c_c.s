@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Growth
+.thumb_func_start BaseAnim_Growth  @ 0x080dd2c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -557,7 +557,7 @@
 	bx	r0
 .func_end BaseAnim_Growth
 
-.thumb_func_start Anim_Vine
+.thumb_func_start Anim_Vine  @ 0x080dd77c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -823,7 +823,7 @@
 	bx	r0
 .func_end Anim_Vine
 
-.thumb_func_start Anim_Thorn
+.thumb_func_start Anim_Thorn  @ 0x080dd9c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1320,7 +1320,7 @@
 	bx	r0
 .func_end Anim_Thorn
 
-.thumb_func_start Anim_Bolt
+.thumb_func_start Anim_Bolt  @ 0x080ddde0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1909,7 +1909,7 @@
 	bx	r0
 .func_end Anim_Bolt
 
-.thumb_func_start Anim_Djinni
+.thumb_func_start Anim_Djinni  @ 0x080de2f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

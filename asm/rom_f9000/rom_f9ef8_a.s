@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start TrackStop
+.thumb_func_start TrackStop  @ 0x080f9ef8
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	ldrb	r1, [r5]
@@ -39,7 +39,7 @@
 	bx	r0
 .func_end TrackStop
 
-.thumb_func_start Func_80f9f3c
+.thumb_func_start Func_80f9f3c  @ 0x080f9f3c
 	ldrb	r1, [r4, #0x12]
 	mov	r0, #0x14
 	ldrsb	r2, [r4, r0]
@@ -68,7 +68,7 @@
 	bx	lr
 .func_end Func_80f9f3c
 
-.thumb_func_start MP2K_event_nxx
+.thumb_func_start MP2K_event_nxx  @ 0x080f9f6c
 	push	{r4, r5, r6, r7, lr}
 	mov	r4, r8
 	mov	r5, r9
@@ -344,7 +344,7 @@
 	bx	r0
 .func_end MP2K_event_nxx
 
-.thumb_func_start MP2K_event_endtie
+.thumb_func_start MP2K_event_endtie  @ 0x080fa16c
 	push	{r4, r5}
 	ldr	r2, [r1, #0x40]
 	ldrb	r3, [r2]
@@ -384,7 +384,7 @@
 	bx	lr
 .func_end MP2K_event_endtie
 
-.thumb_func_start Func_80fa1ac
+.thumb_func_start Func_80fa1ac  @ 0x080fa1ac
 	mov	r2, #0
 	strb	r2, [r1, #0x16]
 	strb	r2, [r1, #0x1a]
@@ -402,7 +402,7 @@
 	bx	lr
 .func_end Func_80fa1ac
 
-.thumb_func_start Func_80fa1c8
+.thumb_func_start Func_80fa1c8  @ 0x080fa1c8
 	ldr	r2, [r1, #0x40]
 	add	r3, r2, #1
 	str	r3, [r1, #0x40]
@@ -410,7 +410,7 @@
 	bx	lr
 .func_end Func_80fa1c8
 
-.thumb_func_start MP2K_event_lfos
+.thumb_func_start MP2K_event_lfos  @ 0x080fa1d4
 	mov	r12, lr
 	bl	Func_80fa1c8
 	strb	r3, [r1, #0x19]
@@ -421,7 +421,7 @@
 	bx	r12
 .func_end MP2K_event_lfos
 
-.thumb_func_start MP2K_event_mod
+.thumb_func_start MP2K_event_mod  @ 0x080fa1e8
 	mov	r12, lr
 	bl	Func_80fa1c8
 	strb	r3, [r1, #0x17]

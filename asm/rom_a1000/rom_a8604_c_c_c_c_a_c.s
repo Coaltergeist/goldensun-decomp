@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80aa460
+.thumb_func_start Func_80aa460  @ 0x080aa460
 	push	{lr}
 	bl	_GetMoveInfo
 	ldrb	r3, [r0, #1]

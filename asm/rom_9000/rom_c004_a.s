@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start InitActors
+.thumb_func_start InitActors  @ 0x0800c004
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

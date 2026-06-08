@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809233c
+.thumb_func_start Func_809233c  @ 0x0809233c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -57,7 +57,7 @@
 	bx	r0
 .func_end Func_809233c
 
-.thumb_func_start MapActor_WaitMovement
+.thumb_func_start MapActor_WaitMovement  @ 0x080923c4
 	push	{r5, lr}
 	bl	GetFieldActor
 	mov	r5, r0
@@ -73,7 +73,7 @@
 	bx	r0
 .func_end MapActor_WaitMovement
 
-.thumb_func_start MapActor_SetPos
+.thumb_func_start MapActor_SetPos  @ 0x080923e4
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r2
@@ -130,7 +130,7 @@
 	bx	r0
 .func_end MapActor_SetPos
 
-.thumb_func_start MapActor_SetPos3D
+.thumb_func_start MapActor_SetPos3D  @ 0x08092454
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -194,7 +194,7 @@
 	bx	r0
 .func_end MapActor_SetPos3D
 
-.thumb_func_start MapActor_SetAnim
+.thumb_func_start MapActor_SetAnim  @ 0x080924d4
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetFieldActor
@@ -208,7 +208,7 @@
 	bx	r0
 .func_end MapActor_SetAnim
 
-.thumb_func_start MapActor_SetAnimSpeed
+.thumb_func_start MapActor_SetAnimSpeed  @ 0x080924ec
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetFieldActor
@@ -222,7 +222,7 @@
 	bx	r0
 .func_end MapActor_SetAnimSpeed
 
-.thumb_func_start Func_8092504
+.thumb_func_start Func_8092504  @ 0x08092504
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	bl	GetFieldActor

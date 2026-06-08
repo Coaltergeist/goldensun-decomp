@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_GetFlag
+.thumb_func_start ActorCmd_GetFlag  @ 0x0800d7f8
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -22,7 +22,7 @@
 	bx	r1
 .func_end ActorCmd_GetFlag
 
-.thumb_func_start ActorCmd_SetFlag
+.thumb_func_start ActorCmd_SetFlag  @ 0x0800d820
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -47,7 +47,7 @@
 	bx	r1
 .func_end ActorCmd_SetFlag
 
-.thumb_func_start ActorCmd_ClearFlag
+.thumb_func_start ActorCmd_ClearFlag  @ 0x0800d850
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, #4

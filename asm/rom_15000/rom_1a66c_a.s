@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801a66c
+.thumb_func_start Func_801a66c  @ 0x0801a66c
 	push	{r5, r6, r7, lr}
 	mov	r1, #0xf9
 	lsl	r1, #2
@@ -128,7 +128,7 @@
 	bx	r0
 .func_end Func_801a66c
 
-.thumb_func_start Func_801a778
+.thumb_func_start Func_801a778  @ 0x0801a778
 	push	{lr}
 	ldr	r3, =iwram_3001e98
 	mov	r2, #0xd2
@@ -164,7 +164,7 @@
 	bx	r0
 .func_end Func_801a778
 
-.thumb_func_start Func_801a7c0
+.thumb_func_start Func_801a7c0  @ 0x0801a7c0
 	push	{lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r2, [r3]
@@ -192,7 +192,7 @@
 	bx	r0
 .func_end Func_801a7c0
 
-.thumb_func_start Func_801a7f4
+.thumb_func_start Func_801a7f4  @ 0x0801a7f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

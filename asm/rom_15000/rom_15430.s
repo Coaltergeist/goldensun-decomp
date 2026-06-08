@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_8015430
+.arm_func_start Func_8015430  @ 0x08015430
 	push	{r5, r6}
 	ldm	r0, {r1, r2, r3}
 	ldr	r12, =HuffmanTreePointers
@@ -91,7 +91,7 @@
 	bx	lr
 .func_end Func_8015430
 
-.arm_func_start Func_8015570
+.arm_func_start Func_8015570  @ 0x08015570
 	lsr	r3, r1, #8
 	ldr	r12, =StringPointers
 	add	r12, r3, lsl #3
@@ -120,7 +120,7 @@
 	bx	lr
 .func_end Func_8015570
 
-.arm_func_start Func_80155d0
+.arm_func_start Func_80155d0  @ 0x080155d0
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r7, r3
 	sub	sp, #0x2c
@@ -342,7 +342,7 @@
 	bx	lr
 .func_end Func_80155d0
 
-.arm_func_start Func_80158e8
+.arm_func_start Func_80158e8  @ 0x080158e8
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r10, r1
 	mov	r1, #0
@@ -493,7 +493,7 @@
 	bx	lr
 .func_end Func_80158e8
 
-.arm_func_start Func_8015afc
+.arm_func_start Func_8015afc  @ 0x08015afc
 	push	{r5, r6}
 	adr	r5, .L15b30
 	ldm	r5, {r2, r3}
@@ -677,7 +677,7 @@
 	bx	lr
 .func_end Func_8015afc
 
-.arm_func_start Func_8015d74
+.arm_func_start Func_8015d74  @ 0x08015d74
 	push	{r5, r6, r7, r8, r9, r10}
 	adr	r10, .L15e04
 	ldm	r10, {r4, r6, r7}
@@ -724,7 +724,7 @@
 	.word	0x11111111
 .func_end Func_8015d74
 
-.arm_func_start Func_8015e10
+.arm_func_start Func_8015e10  @ 0x08015e10
 	push	{r5, r6, r7, r8, r9, r10}
 	adr	r10, .L15e80
 	ldm	r10, {r4, r6, r7}

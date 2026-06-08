@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_SetAttr
+.thumb_func_start ActorCmd_SetAttr  @ 0x0800e9a0
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -30,7 +30,7 @@
 	bx	r1
 .func_end ActorCmd_SetAttr
 
-.thumb_func_start ActorCmd_IncAttr
+.thumb_func_start ActorCmd_IncAttr  @ 0x0800e9dc
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -60,7 +60,7 @@
 	bx	r1
 .func_end ActorCmd_IncAttr
 
-.thumb_func_start ActorCmd_CmpAttr
+.thumb_func_start ActorCmd_CmpAttr  @ 0x0800ea18
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4

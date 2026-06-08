@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7548
+.thumb_func_start Func_80b7548  @ 0x080b7548
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -79,7 +79,7 @@
 	bx	r1
 .func_end Func_80b7548
 
-.thumb_func_start Func_80b75dc
+.thumb_func_start Func_80b75dc  @ 0x080b75dc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

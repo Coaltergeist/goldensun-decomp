@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8097b70
+.thumb_func_start Func_8097b70  @ 0x08097b70
 	push	{r5, r6, lr}
 	mov	r5, r0
 	ldr	r0, [r5, #0x68]
@@ -93,7 +93,7 @@
 	bx	r0
 .func_end Func_8097b70
 
-.thumb_func_start Field_Move_Target
+.thumb_func_start Field_Move_Target  @ 0x08097c3c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -554,7 +554,7 @@
 	bx	r0
 .func_end Func_97f80
 
-.thumb_func_start Field_Move
+.thumb_func_start Field_Move  @ 0x0809802c
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -582,7 +582,7 @@
 	bx	r0
 .func_end Field_Move
 
-.thumb_func_start Func_8098070
+.thumb_func_start Func_8098070  @ 0x08098070
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -706,7 +706,7 @@
 	bx	r1
 .func_end Func_8098070
 
-.thumb_func_start Func_8098184
+.thumb_func_start Func_8098184  @ 0x08098184
 	push	{lr}
 	cmp	r0, #0
 	beq	.L981a8
@@ -731,7 +731,7 @@
 	bx	r0
 .func_end Func_8098184
 
-.thumb_func_start Func_80981b0
+.thumb_func_start Func_80981b0  @ 0x080981b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -830,7 +830,7 @@
 	bx	r0
 .func_end Func_80981b0
 
-.thumb_func_start Func_8098294
+.thumb_func_start Func_8098294  @ 0x08098294
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e64
 	ldr	r3, [r3]
@@ -868,7 +868,7 @@
 	bx	r0
 .func_end Func_8098294
 
-.thumb_func_start Func_80982dc
+.thumb_func_start Func_80982dc  @ 0x080982dc
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xfa
@@ -954,7 +954,7 @@
 	bx	r0
 .func_end Func_80982dc
 
-.thumb_func_start Field_Reveal
+.thumb_func_start Field_Reveal  @ 0x080983a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1068,7 +1068,7 @@
 	bx	r0
 .func_end Field_Reveal
 
-.thumb_func_start Func_80984c0
+.thumb_func_start Func_80984c0  @ 0x080984c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1165,7 +1165,7 @@
 	bx	r0
 .func_end Func_80984c0
 
-.thumb_func_start Field_Growth_Target
+.thumb_func_start Field_Growth_Target  @ 0x080985a8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -1202,7 +1202,7 @@
 	bx	r0
 .func_end Field_Growth_Target
 
-.thumb_func_start Field_Growth
+.thumb_func_start Field_Growth  @ 0x080985fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1270,7 +1270,7 @@
 	bx	r0
 .func_end Field_Growth
 
-.thumb_func_start Func_8098698
+.thumb_func_start Func_8098698  @ 0x08098698
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1481,7 +1481,7 @@
 	bx	r0
 .func_end Func_8098698
 
-.thumb_func_start Field_Lift_Target
+.thumb_func_start Field_Lift_Target  @ 0x08098848
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1603,7 +1603,7 @@
 	bx	r0
 .func_end Field_Lift_Target
 
-.thumb_func_start Field_Lift
+.thumb_func_start Field_Lift  @ 0x08098954
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1738,7 +1738,7 @@
 	bx	r0
 .func_end Field_Lift
 
-.thumb_func_start Func_8098a84
+.thumb_func_start Func_8098a84  @ 0x08098a84
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1808,7 +1808,7 @@
 	bx	r1
 .func_end Func_8098a84
 
-.thumb_func_start Func_8098b10
+.thumb_func_start Func_8098b10  @ 0x08098b10
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1929,7 +1929,7 @@
 	bx	r0
 .func_end Func_8098b10
 
-.thumb_func_start Func_8098c08
+.thumb_func_start Func_8098c08  @ 0x08098c08
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

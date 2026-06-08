@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start PhysMove
+.thumb_func_start PhysMove  @ 0x08005268
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	ldr	r3, =Func_80009c0

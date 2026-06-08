@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Nereid
+.thumb_func_start Anim_Nereid  @ 0x080d2d98
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -734,7 +734,7 @@
 	bx	r0
 .func_end Anim_Nereid
 
-.thumb_func_start Anim_Froth
+.thumb_func_start Anim_Froth  @ 0x080d33c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1274,7 +1274,7 @@
 	bx	r0
 .func_end Anim_Froth
 
-.thumb_func_start Anim_Whirlwind
+.thumb_func_start Anim_Whirlwind  @ 0x080d3854
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1763,7 +1763,7 @@
 	bx	r0
 .func_end Anim_Whirlwind
 
-.thumb_func_start Anim_Prism
+.thumb_func_start Anim_Prism  @ 0x080d3c80
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2288,7 +2288,7 @@
 	bx	r0
 .func_end Anim_Prism
 
-.thumb_func_start ColorCycleVFXPalette
+.thumb_func_start ColorCycleVFXPalette  @ 0x080d40ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2381,7 +2381,7 @@
 	bx	r0
 .func_end ColorCycleVFXPalette
 
-.thumb_func_start Anim_Plasma
+.thumb_func_start Anim_Plasma  @ 0x080d41a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

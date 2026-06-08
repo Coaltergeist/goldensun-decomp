@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start UploadSpriteGFX
+.thumb_func_start UploadSpriteGFX  @ 0x08003fa4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -75,7 +75,7 @@
 	bx	r1
 .func_end UploadSpriteGFX
 
-.thumb_func_start ClearSprites
+.thumb_func_start ClearSprites  @ 0x0800403c
 	push	{lr}
 	ldr	r0, =0x1ff
 	ldr	r3, =gSpriteAllocTable
@@ -111,7 +111,7 @@
 	bx	r0
 .func_end ClearSprites
 
-.thumb_func_start AllocSpriteSlot
+.thumb_func_start AllocSpriteSlot  @ 0x08004080
 	push	{lr}
 	ldr	r1, =gSpriteSlots
 	ldr	r4, =0xffff
@@ -137,7 +137,7 @@
 	bx	r1
 .func_end AllocSpriteSlot
 
-.thumb_func_start AllocUploadSpriteGFX
+.thumb_func_start AllocUploadSpriteGFX  @ 0x080040b4
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	AllocSpriteSlot

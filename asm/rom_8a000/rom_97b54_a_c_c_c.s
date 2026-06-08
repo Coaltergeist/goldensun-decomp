@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Ply
+.thumb_func_start Field_Ply  @ 0x080994d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -192,7 +192,7 @@
 	bx	r0
 .func_end Field_Ply
 
-.thumb_func_start Func_8099678
+.thumb_func_start Func_8099678  @ 0x08099678
 	push	{r5, r6, lr}
 	ldr	r3, =gState
 	mov	r2, #0xfa
@@ -285,7 +285,7 @@
 	bx	r0
 .func_end Func_8099678
 
-.thumb_func_start Func_8099738
+.thumb_func_start Func_8099738  @ 0x08099738
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

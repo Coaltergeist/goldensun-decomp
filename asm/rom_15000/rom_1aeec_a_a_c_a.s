@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801b228
+.thumb_func_start Func_801b228  @ 0x0801b228
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r5, [r3]
@@ -15,7 +15,7 @@
 	bx	r0
 .func_end Func_801b228
 
-.thumb_func_start DisplayMenuArrowCursor2
+.thumb_func_start DisplayMenuArrowCursor2  @ 0x0801b248
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -159,7 +159,7 @@
 	bx	r0
 .func_end DisplayMenuArrowCursor2
 
-.thumb_func_start Func_801b36c
+.thumb_func_start Func_801b36c  @ 0x0801b36c
 	push	{lr}
 	mov	r2, #0xd2
 	lsl	r2, #2
@@ -184,7 +184,7 @@
 	bx	r1
 .func_end Func_801b36c
 
-.thumb_func_start Func_801b398
+.thumb_func_start Func_801b398  @ 0x0801b398
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r5, [r3]
@@ -248,7 +248,7 @@
 	bx	r1
 .func_end Func_801b398
 
-.thumb_func_start Func_801b424
+.thumb_func_start Func_801b424  @ 0x0801b424
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r5, [r3]
@@ -342,7 +342,7 @@
 	bx	r1
 .func_end Func_801b424
 
-.thumb_func_start Func_801b4ec
+.thumb_func_start Func_801b4ec  @ 0x0801b4ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -442,7 +442,7 @@
 	bx	r0
 .func_end Func_801b4ec
 
-.thumb_func_start Func_801b5c0
+.thumb_func_start Func_801b5c0  @ 0x0801b5c0
 	push	{r5, r6, r7, lr}
 	mov	r1, #0xe7
 	mov	r6, r0
@@ -517,7 +517,7 @@
 	bx	r0
 .func_end Func_801b5c0
 
-.thumb_func_start Func_801b664
+.thumb_func_start Func_801b664  @ 0x0801b664
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -727,7 +727,7 @@
 	bx	r0
 .func_end Func_801b664
 
-.thumb_func_start Func_801b810
+.thumb_func_start Func_801b810  @ 0x0801b810
 	push	{r5, r6, r7, lr}
 	ldr	r1, =0x39e
 	mov	r7, r0
@@ -932,7 +932,7 @@
 	bx	r0
 .func_end Func_801b810
 
-.thumb_func_start Func_801b9a8
+.thumb_func_start Func_801b9a8  @ 0x0801b9a8
 	push	{lr}
 	mov	r3, #0xd2
 	lsl	r3, #2
@@ -970,7 +970,7 @@
 	bx	r0
 .func_end Func_801b9a8
 
-.thumb_func_start Func_801b9ec
+.thumb_func_start Func_801b9ec  @ 0x0801b9ec
 	push	{lr}
 	mov	r3, #0xd2
 	lsl	r3, #2

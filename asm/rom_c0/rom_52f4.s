@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start DecompressLZ16
+.thumb_func_start DecompressLZ16  @ 0x080052f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -34,7 +34,7 @@
 	bx	r0
 .func_end DecompressLZ16
 
-.thumb_func_start DecompressLZ
+.thumb_func_start DecompressLZ  @ 0x08005340
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -69,7 +69,7 @@
 	bx	r1
 .func_end DecompressLZ
 
-.thumb_func_start DecompressLZ2
+.thumb_func_start DecompressLZ2  @ 0x08005394
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -104,7 +104,7 @@
 	bx	r1
 .func_end DecompressLZ2
 
-.thumb_func_start DecompressLZ1
+.thumb_func_start DecompressLZ1  @ 0x080053e8
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -139,7 +139,7 @@
 	bx	r1
 .func_end DecompressLZ1
 
-.thumb_func_start BlitFade_Add
+.thumb_func_start BlitFade_Add  @ 0x0800543c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -176,7 +176,7 @@
 	bx	r0
 .func_end BlitFade_Add
 
-.thumb_func_start BlitFade_Sub
+.thumb_func_start BlitFade_Sub  @ 0x08005490
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -213,7 +213,7 @@
 	bx	r0
 .func_end BlitFade_Sub
 
-.thumb_func_start BlitFade_Div4
+.thumb_func_start BlitFade_Div4  @ 0x080054e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -248,7 +248,7 @@
 	bx	r0
 .func_end BlitFade_Div4
 
-.thumb_func_start BlitFade_Div2
+.thumb_func_start BlitFade_Div2  @ 0x08005534
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -283,7 +283,7 @@
 	bx	r0
 .func_end BlitFade_Div2
 
-.thumb_func_start BlitFadeAlt_Add
+.thumb_func_start BlitFadeAlt_Add  @ 0x08005584
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -320,7 +320,7 @@
 	bx	r0
 .func_end BlitFadeAlt_Add
 
-.thumb_func_start BlitFadeAlt_Sub
+.thumb_func_start BlitFadeAlt_Sub  @ 0x080055d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -357,7 +357,7 @@
 	bx	r0
 .func_end BlitFadeAlt_Sub
 
-.thumb_func_start BlitFadeAlt_Div4
+.thumb_func_start BlitFadeAlt_Div4  @ 0x0800562c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -392,7 +392,7 @@
 	bx	r0
 .func_end BlitFadeAlt_Div4
 
-.thumb_func_start BlitFadeAlt_Div2
+.thumb_func_start BlitFadeAlt_Div2  @ 0x0800567c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

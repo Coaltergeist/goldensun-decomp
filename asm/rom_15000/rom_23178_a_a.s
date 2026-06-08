@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8023178
+.thumb_func_start Func_8023178  @ 0x08023178
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1575,7 +1575,7 @@
 	bx	r1
 .func_end Func_8023178
 
-.thumb_func_start Func_8023e70
+.thumb_func_start Func_8023e70  @ 0x08023e70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2884,7 +2884,7 @@
 	bx	r1
 .func_end Func_8023e70
 
-.thumb_func_start Func_8024934
+.thumb_func_start Func_8024934  @ 0x08024934
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3943,7 +3943,7 @@
 	bx	r1
 .func_end Func_8024934
 
-.thumb_func_start Func_8025180
+.thumb_func_start Func_8025180  @ 0x08025180
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r0
@@ -3986,7 +3986,7 @@
 	bx	r1
 .func_end Func_8025180
 
-.thumb_func_start Func_80251d4
+.thumb_func_start Func_80251d4  @ 0x080251d4
 	mov	r3, r0
 	ldr	r0, =0x3ff
 	mov	r2, #0xc0
@@ -4004,7 +4004,7 @@
 	bx	lr
 .func_end Func_80251d4
 
-.thumb_func_start Func_8025200
+.thumb_func_start Func_8025200  @ 0x08025200
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -4874,7 +4874,7 @@
 	bx	r1
 .func_end Func_8025200
 
-.thumb_func_start Func_802592c
+.thumb_func_start Func_802592c  @ 0x0802592c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -5763,7 +5763,7 @@
 	bx	r1
 .func_end Func_802592c
 
-.thumb_func_start Func_8026080
+.thumb_func_start Func_8026080  @ 0x08026080
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -7555,7 +7555,7 @@
 	bx	r1
 .func_end Func_8026080
 
-.thumb_func_start Func_8026e80
+.thumb_func_start Func_8026e80  @ 0x08026e80
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f34
 	ldr	r7, [r3]
@@ -7702,7 +7702,7 @@
 	bx	r0
 .func_end Func_8026e80
 
-.thumb_func_start Func_8026fa8
+.thumb_func_start Func_8026fa8  @ 0x08026fa8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -7791,7 +7791,7 @@
 	bx	r1
 .func_end Func_8026fa8
 
-.thumb_func_start GetMoveDisplayEffect
+.thumb_func_start GetMoveDisplayEffect  @ 0x0802706c
 	push	{r5, lr}
 	ldrb	r3, [r0, #1]
 	mov	r2, #0xf
@@ -7830,7 +7830,7 @@
 	bx	r1
 .func_end GetMoveDisplayEffect
 
-.thumb_func_start Func_80270ac
+.thumb_func_start Func_80270ac  @ 0x080270ac
 	push	{r5, lr}
 	mov	r5, r9
 	push	{r5}
@@ -7853,7 +7853,7 @@
 	bx	r0
 .func_end Func_80270ac
 
-.thumb_func_start Func_80270d8
+.thumb_func_start Func_80270d8  @ 0x080270d8
 	push	{r5, r6, lr}
 	mov	r6, r9
 	push	{r6}
@@ -7882,7 +7882,7 @@
 	bx	r1
 .func_end Func_80270d8
 
-.thumb_func_start Func_8027114
+.thumb_func_start Func_8027114  @ 0x08027114
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -9886,7 +9886,7 @@
 	bx	r1
 .func_end Func_8027114
 
-.thumb_func_start Func_8028194
+.thumb_func_start Func_8028194  @ 0x08028194
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -10302,7 +10302,7 @@
 	bx	r0
 .func_end Func_8028194
 
-.thumb_func_start Func_80284dc
+.thumb_func_start Func_80284dc  @ 0x080284dc
 	push	{r5, lr}
 	mov	r1, #0x98
 	mov	r0, #0x3a
@@ -10327,7 +10327,7 @@
 	bx	r1
 .func_end Func_80284dc
 
-.thumb_func_start Func_802851c
+.thumb_func_start Func_802851c  @ 0x0802851c
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f38
 	ldr	r5, [r3]
@@ -10367,7 +10367,7 @@
 	bx	r0
 .func_end Func_802851c
 
-.thumb_func_start Func_8028574
+.thumb_func_start Func_8028574  @ 0x08028574
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -10514,7 +10514,7 @@
 	bx	r1
 .func_end Func_8028574
 
-.thumb_func_start Func_80286a0
+.thumb_func_start Func_80286a0  @ 0x080286a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -10604,7 +10604,7 @@
 	bx	r1
 .func_end Func_80286a0
 
-.thumb_func_start LoadUIIcon
+.thumb_func_start LoadUIIcon  @ 0x0802875c
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -10638,7 +10638,7 @@
 	bx	r0
 .func_end LoadUIIcon
 
-.thumb_func_start AddMenuBarOption
+.thumb_func_start AddMenuBarOption  @ 0x080287a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -10686,7 +10686,7 @@
 	bx	r0
 .func_end AddMenuBarOption
 
-.thumb_func_start Func_8028808
+.thumb_func_start Func_8028808  @ 0x08028808
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -10766,7 +10766,7 @@
 	bx	r0
 .func_end Func_8028808
 
-.thumb_func_start Func_80288a8
+.thumb_func_start Func_80288a8  @ 0x080288a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -10828,7 +10828,7 @@
 	bx	r0
 .func_end Func_80288a8
 
-.thumb_func_start Func_8028920
+.thumb_func_start Func_8028920  @ 0x08028920
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r0, #1
@@ -10883,7 +10883,7 @@
 	bx	r1
 .func_end Func_8028920
 
-.thumb_func_start Func_802899c
+.thumb_func_start Func_802899c  @ 0x0802899c
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r5, r0
@@ -10913,7 +10913,7 @@
 	bx	r1
 .func_end Func_802899c
 
-.thumb_func_start Func_80289e8
+.thumb_func_start Func_80289e8  @ 0x080289e8
 	push	{r5, r6, lr}
 	mov	r6, #0
 	mov	r5, #0
@@ -11010,7 +11010,7 @@
 	bx	r1
 .func_end Func_80289e8
 
-.thumb_func_start Func_8028aa8
+.thumb_func_start Func_8028aa8  @ 0x08028aa8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f38
 	ldr	r6, [r3]
@@ -11109,7 +11109,7 @@
 	bx	r0
 .func_end Func_8028aa8
 
-.thumb_func_start Func_8028b80
+.thumb_func_start Func_8028b80  @ 0x08028b80
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f38
 	ldr	r6, [r3]
@@ -11168,7 +11168,7 @@
 	bx	r0
 .func_end Func_8028b80
 
-.thumb_func_start DataTransferMenu
+.thumb_func_start DataTransferMenu  @ 0x08028c04
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -11323,7 +11323,7 @@
 	.word	0xc76
 .func_end DataTransferMenu
 
-.thumb_func_start ShopMenu
+.thumb_func_start ShopMenu  @ 0x08028d74
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc
@@ -11349,7 +11349,7 @@
 	bx	r1
 .func_end ShopMenu
 
-.thumb_func_start SanctumMenu
+.thumb_func_start SanctumMenu  @ 0x08028db4
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc
@@ -11375,7 +11375,7 @@
 	bx	r1
 .func_end SanctumMenu
 
-.thumb_func_start YesNoMenu
+.thumb_func_start YesNoMenu  @ 0x08028df4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -11423,7 +11423,7 @@
 	bx	r1
 .func_end YesNoMenu
 
-.thumb_func_start YesNoMenu2
+.thumb_func_start YesNoMenu2  @ 0x08028e54
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -11460,7 +11460,7 @@
 	bx	r1
 .func_end YesNoMenu2
 
-.thumb_func_start LuckyFountainMenu
+.thumb_func_start LuckyFountainMenu  @ 0x08028ea8
 	push	{r5, lr}
 	mov	r5, r0
 	bl	Func_80284dc

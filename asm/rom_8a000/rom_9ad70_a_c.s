@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Catch
+.thumb_func_start Field_Catch  @ 0x0809ae64
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

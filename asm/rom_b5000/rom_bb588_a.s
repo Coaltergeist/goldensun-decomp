@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bb588
+.thumb_func_start Func_80bb588  @ 0x080bb588
 	push	{r5, lr}
 	mov	r5, r0
 	bl	_GetUnit
@@ -102,7 +102,7 @@
 	bx	r1
 .func_end Func_80bb588
 
-.thumb_func_start WaitTextPrompt
+.thumb_func_start WaitTextPrompt  @ 0x080bb65c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -262,7 +262,7 @@
 	bx	r1
 .func_end WaitTextPrompt
 
-.thumb_func_start Func_80bb7c0
+.thumb_func_start Func_80bb7c0  @ 0x080bb7c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

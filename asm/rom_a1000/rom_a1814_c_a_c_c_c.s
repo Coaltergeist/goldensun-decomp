@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a3480
+.thumb_func_start Func_80a3480  @ 0x080a3480
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -34,7 +34,7 @@
 	bx	r0
 .func_end Func_80a3480
 
-.thumb_func_start Func_80a34c0
+.thumb_func_start Func_80a34c0  @ 0x080a34c0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
@@ -98,7 +98,7 @@
 	bx	r0
 .func_end Func_80a34c0
 
-.thumb_func_start Func_80a355c
+.thumb_func_start Func_80a355c  @ 0x080a355c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -170,7 +170,7 @@
 	bx	r1
 .func_end Func_80a355c
 
-.thumb_func_start Func_80a35f8
+.thumb_func_start Func_80a35f8  @ 0x080a35f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -497,7 +497,7 @@
 	bx	r1
 .func_end Func_80a35f8
 
-.thumb_func_start Func_80a38a8
+.thumb_func_start Func_80a38a8  @ 0x080a38a8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
@@ -514,7 +514,7 @@
 	bx	r0
 .func_end Func_80a38a8
 
-.thumb_func_start Func_80a38d0
+.thumb_func_start Func_80a38d0  @ 0x080a38d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -902,7 +902,7 @@
 	bx	r1
 .func_end Func_80a38d0
 
-.thumb_func_start Func_80a3c08
+.thumb_func_start Func_80a3c08  @ 0x080a3c08
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r6, [r3]
@@ -973,7 +973,7 @@
 	bx	r0
 .func_end Func_80a3c08
 
-.thumb_func_start Func_80a3c98
+.thumb_func_start Func_80a3c98  @ 0x080a3c98
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r1, =0x219
@@ -1008,7 +1008,7 @@
 	bx	r0
 .func_end Func_80a3c98
 
-.thumb_func_start Func_80a3ce4
+.thumb_func_start Func_80a3ce4  @ 0x080a3ce4
 	push	{lr}
 	cmp	r0, #0xc4
 	bgt	.La3cf2
@@ -1023,7 +1023,7 @@
 	bx	r1
 .func_end Func_80a3ce4
 
-.thumb_func_start Func_80a3cf8
+.thumb_func_start Func_80a3cf8  @ 0x080a3cf8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
@@ -1043,7 +1043,7 @@
 	bx	r0
 .func_end Func_80a3cf8
 
-.thumb_func_start Func_80a3d24
+.thumb_func_start Func_80a3d24  @ 0x080a3d24
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1080,7 +1080,7 @@
 	bx	r0
 .func_end Func_80a3d24
 
-.thumb_func_start Func_80a3d6c
+.thumb_func_start Func_80a3d6c  @ 0x080a3d6c
 	push	{r5, lr}
 	bl	_GetUnit
 	ldr	r4, =0x1ff
@@ -1105,7 +1105,7 @@
 	bx	r1
 .func_end Func_80a3d6c
 
-.thumb_func_start Func_80a3d9c
+.thumb_func_start Func_80a3d9c  @ 0x080a3d9c
 	push	{r5, r6, lr}
 	mov	r6, r1
 	bl	_GetUnit
@@ -1140,7 +1140,7 @@
 	bx	r1
 .func_end Func_80a3d9c
 
-.thumb_func_start Func_80a3ddc
+.thumb_func_start Func_80a3ddc  @ 0x080a3ddc
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r3, r5
@@ -1185,7 +1185,7 @@
 	bx	r1
 .func_end Func_80a3ddc
 
-.thumb_func_start Func_80a3e28
+.thumb_func_start Func_80a3e28  @ 0x080a3e28
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1233,7 +1233,7 @@
 	bx	r0
 .func_end Func_80a3e28
 
-.thumb_func_start Func_80a3e88
+.thumb_func_start Func_80a3e88  @ 0x080a3e88
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

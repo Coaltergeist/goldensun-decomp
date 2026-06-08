@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start SetDestMap2
+.thumb_func_start SetDestMap2  @ 0x08091fc0
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
 	ldr	r3, =gState
@@ -21,7 +21,7 @@
 	bx	lr
 .func_end SetDestMap2
 
-.thumb_func_start Func_8091ff0
+.thumb_func_start Func_8091ff0  @ 0x08091ff0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, =0xcc8
@@ -47,7 +47,7 @@
 	bx	r0
 .func_end Func_8091ff0
 
-.thumb_func_start Func_809202c
+.thumb_func_start Func_809202c  @ 0x0809202c
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, =0xcc8

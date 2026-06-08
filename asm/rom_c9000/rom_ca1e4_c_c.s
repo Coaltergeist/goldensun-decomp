@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start BaseAnim_Spore
+.thumb_func_start BaseAnim_Spore  @ 0x080ca1fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

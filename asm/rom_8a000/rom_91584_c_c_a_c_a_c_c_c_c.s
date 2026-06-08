@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start MapActor_SetBehavior
+.thumb_func_start MapActor_SetBehavior  @ 0x0809207c
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetFieldActor
@@ -20,7 +20,7 @@
 	bx	r0
 .func_end MapActor_SetBehavior
 
-.thumb_func_start MapActor_SetIdle
+.thumb_func_start MapActor_SetIdle  @ 0x080920a0
 	push	{lr}
 	bl	GetFieldActor
 	cmp	r0, #0
@@ -37,7 +37,7 @@
 	bx	r0
 .func_end MapActor_SetIdle
 
-.thumb_func_start MapActor_SetExtra
+.thumb_func_start MapActor_SetExtra  @ 0x080920c0
 	push	{r5, r6, lr}
 	mov	r6, r1
 	bl	GetFieldActor
@@ -56,7 +56,7 @@
 	bx	r0
 .func_end MapActor_SetExtra
 
-.thumb_func_start MapActor_WaitScript
+.thumb_func_start MapActor_WaitScript  @ 0x080920e8
 	push	{lr}
 	bl	GetFieldActor
 	cmp	r0, #0
@@ -67,7 +67,7 @@
 	bx	r0
 .func_end MapActor_WaitScript
 
-.thumb_func_start MapActor_RunScript
+.thumb_func_start MapActor_RunScript  @ 0x080920fc
 	push	{r5, r6, lr}
 	mov	r6, r1
 	bl	GetFieldActor

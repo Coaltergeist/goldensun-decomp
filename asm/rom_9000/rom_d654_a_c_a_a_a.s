@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_CallNative
+.thumb_func_start ActorCmd_CallNative  @ 0x0800d6a4
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, #4
@@ -30,7 +30,7 @@
 	bx	r1
 .func_end ActorCmd_CallNative
 
-.thumb_func_start Actor_FindScriptMarker
+.thumb_func_start Actor_FindScriptMarker  @ 0x0800d6d8
 	push	{lr}
 	mov	r2, r0
 	add	r2, #0x5e
@@ -62,7 +62,7 @@
 	bx	r1
 .func_end Actor_FindScriptMarker
 
-.thumb_func_start ActorCmd_Loop
+.thumb_func_start ActorCmd_Loop  @ 0x0800d710
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4

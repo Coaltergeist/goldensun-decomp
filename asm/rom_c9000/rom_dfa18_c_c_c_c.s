@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Tackle
+.thumb_func_start BaseAnim_Tackle  @ 0x080dfa48
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -404,7 +404,7 @@
 	bx	r0
 .func_end BaseAnim_Tackle
 
-.thumb_func_start Func_80dfddc
+.thumb_func_start Func_80dfddc  @ 0x080dfddc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -450,7 +450,7 @@
 	bx	r0
 .func_end Func_80dfddc
 
-.thumb_func_start Anim_Mercury
+.thumb_func_start Anim_Mercury  @ 0x080dfe2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -882,7 +882,7 @@
 	bx	r0
 .func_end Anim_Mercury
 
-.thumb_func_start Anim_Jupiter
+.thumb_func_start Anim_Jupiter  @ 0x080e01e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

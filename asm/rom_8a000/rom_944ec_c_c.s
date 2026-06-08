@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CreateParticleActor
+.thumb_func_start CreateParticleActor  @ 0x08096c80
 	push	{r5, r6, lr}
 	ldr	r4, =iwram_3001f30
 	ldr	r6, [r4]

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start ClearHeap
+.thumb_func_start ClearHeap  @ 0x08004858
 	sub	sp, #4
 	ldr	r4, =gPtrs
 	mov	r0, sp

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Venus
+.thumb_func_start Anim_Venus  @ 0x080e0564
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -389,7 +389,7 @@
 	bx	r0
 .func_end Anim_Venus
 
-.thumb_func_start Anim_Mars
+.thumb_func_start Anim_Mars  @ 0x080e08c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -820,7 +820,7 @@
 	bx	r0
 .func_end Anim_Mars
 
-.thumb_func_start Anim_Hail
+.thumb_func_start Anim_Hail  @ 0x080e0c84
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1248,7 +1248,7 @@
 	bx	r0
 .func_end Anim_Hail
 
-.thumb_func_start Anim_Ground
+.thumb_func_start Anim_Ground  @ 0x080e1040
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1852,7 +1852,7 @@
 	bx	r0
 .func_end Anim_Ground
 
-.thumb_func_start UpdateScreenShake
+.thumb_func_start UpdateScreenShake  @ 0x080e155c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1915,7 +1915,7 @@
 	bx	r0
 .func_end UpdateScreenShake
 
-.thumb_func_start Anim_Thor
+.thumb_func_start Anim_Thor  @ 0x080e15e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3698,7 +3698,7 @@
 	bx	r0
 .func_end Anim_Thor
 
-.thumb_func_start Anim_Spire
+.thumb_func_start Anim_Spire  @ 0x080e2538
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

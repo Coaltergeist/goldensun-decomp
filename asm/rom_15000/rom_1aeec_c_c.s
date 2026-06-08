@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801c9c8
+.thumb_func_start Func_801c9c8  @ 0x0801c9c8
 	mov	r1, #0x80
 	lsl	r1, #3
 	mov	r2, #0

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bf250
+.thumb_func_start Func_80bf250  @ 0x080bf250
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -53,7 +53,7 @@
 	bx	r1
 .func_end Func_80bf250
 
-.thumb_func_start Func_80bf2b4
+.thumb_func_start Func_80bf2b4  @ 0x080bf2b4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -105,7 +105,7 @@
 	bx	r1
 .func_end Func_80bf2b4
 
-.thumb_func_start Func_80bf318
+.thumb_func_start Func_80bf318  @ 0x080bf318
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -157,7 +157,7 @@
 	bx	r1
 .func_end Func_80bf318
 
-.thumb_func_start Func_80bf37c
+.thumb_func_start Func_80bf37c  @ 0x080bf37c
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -192,7 +192,7 @@
 	bx	r1
 .func_end Func_80bf37c
 
-.thumb_func_start Func_80bf3bc
+.thumb_func_start Func_80bf3bc  @ 0x080bf3bc
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -226,7 +226,7 @@
 	bx	r1
 .func_end Func_80bf3bc
 
-.thumb_func_start Func_80bf400
+.thumb_func_start Func_80bf400  @ 0x080bf400
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -261,7 +261,7 @@
 	bx	r1
 .func_end Func_80bf400
 
-.thumb_func_start Func_80bf440
+.thumb_func_start Func_80bf440  @ 0x080bf440
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -295,7 +295,7 @@
 	bx	r1
 .func_end Func_80bf440
 
-.thumb_func_start Func_80bf484
+.thumb_func_start Func_80bf484  @ 0x080bf484
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -330,7 +330,7 @@
 	bx	r1
 .func_end Func_80bf484
 
-.thumb_func_start Func_80bf4c4
+.thumb_func_start Func_80bf4c4  @ 0x080bf4c4
 	push	{r5, r6, lr}
 	mov	r6, r0
 	bl	_GetUnit
@@ -380,7 +380,7 @@
 	bx	r1
 .func_end Func_80bf4c4
 
-.thumb_func_start Func_80bf524
+.thumb_func_start Func_80bf524  @ 0x080bf524
 	push	{lr}
 	bl	_GetUnit
 	mov	r3, #0x9f
@@ -403,7 +403,7 @@
 	bx	r1
 .func_end Func_80bf524
 
-.thumb_func_start Func_80bf54c
+.thumb_func_start Func_80bf54c  @ 0x080bf54c
 	push	{lr}
 	bl	_GetUnit
 	ldr	r3, =0x13f
@@ -425,7 +425,7 @@
 	bx	r1
 .func_end Func_80bf54c
 
-.thumb_func_start Func_80bf574
+.thumb_func_start Func_80bf574  @ 0x080bf574
 	push	{lr}
 	bl	_GetUnit
 	mov	r3, #0xa3
@@ -453,7 +453,7 @@
 	bx	r1
 .func_end Func_80bf574
 
-.thumb_func_start Func_80bf5a8
+.thumb_func_start Func_80bf5a8  @ 0x080bf5a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

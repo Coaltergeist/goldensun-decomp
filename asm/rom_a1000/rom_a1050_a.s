@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a1050
+.thumb_func_start Func_80a1050  @ 0x080a1050
 	push	{lr}
 	bl	Func_80043e0
 	bl	_Func_80119a8

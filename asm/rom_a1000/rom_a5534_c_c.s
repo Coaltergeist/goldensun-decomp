@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a63e4
+.thumb_func_start Func_80a63e4  @ 0x080a63e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -239,7 +239,7 @@
 	bx	r1
 .func_end Func_80a63e4
 
-.thumb_func_start Func_80a65e4
+.thumb_func_start Func_80a65e4  @ 0x080a65e4
 	push	{lr}
 	ldr	r3, =0x3fff
 	lsl	r0, #10
@@ -262,7 +262,7 @@
 	bx	r1
 .func_end Func_80a65e4
 
-.thumb_func_start Func_80a6614
+.thumb_func_start Func_80a6614  @ 0x080a6614
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -431,7 +431,7 @@
 	bx	r1
 .func_end Func_80a6614
 
-.thumb_func_start Func_80a6794
+.thumb_func_start Func_80a6794  @ 0x080a6794
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -535,7 +535,7 @@
 	bx	r0
 .func_end Func_80a6794
 
-.thumb_func_start Func_80a6874
+.thumb_func_start Func_80a6874  @ 0x080a6874
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
@@ -557,7 +557,7 @@
 	bx	r0
 .func_end Func_80a6874
 
-.thumb_func_start Func_80a68a8
+.thumb_func_start Func_80a68a8  @ 0x080a68a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -592,7 +592,7 @@
 	bx	r0
 .func_end Func_80a68a8
 
-.thumb_func_start Func_80a68ec
+.thumb_func_start Func_80a68ec  @ 0x080a68ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -739,7 +739,7 @@
 	bx	r1
 .func_end Func_80a68ec
 
-.thumb_func_start Func_80a6a00
+.thumb_func_start Func_80a6a00  @ 0x080a6a00
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -813,7 +813,7 @@
 	bx	r1
 .func_end Func_80a6a00
 
-.thumb_func_start Func_80a6a98
+.thumb_func_start Func_80a6a98  @ 0x080a6a98
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -905,7 +905,7 @@
 	bx	r1
 .func_end Func_80a6a98
 
-.thumb_func_start Func_80a6b64
+.thumb_func_start Func_80a6b64  @ 0x080a6b64
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1066,7 +1066,7 @@
 	bx	r1
 .func_end Func_80a6b64
 
-.thumb_func_start Func_80a6ccc
+.thumb_func_start Func_80a6ccc  @ 0x080a6ccc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1899,7 +1899,7 @@
 	bx	r1
 .func_end Func_80a6ccc
 
-.thumb_func_start Func_80a735c
+.thumb_func_start Func_80a735c  @ 0x080a735c
 	push	{lr}
 	lsl	r0, #18
 	lsr	r0, #18

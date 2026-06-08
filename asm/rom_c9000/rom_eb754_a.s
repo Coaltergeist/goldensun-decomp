@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Kirin
+.thumb_func_start Anim_Kirin  @ 0x080eb754
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

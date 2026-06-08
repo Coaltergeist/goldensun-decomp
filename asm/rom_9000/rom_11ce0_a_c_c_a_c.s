@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start HeightTile_9
+.thumb_func_start HeightTile_9  @ 0x08011e6c
 	push	{lr}
 	cmp	r2, #7
 	bhi	.L11e7a
@@ -18,7 +18,7 @@
 	bx	r1
 .func_end HeightTile_9
 
-.thumb_func_start HeightTile_A
+.thumb_func_start HeightTile_A  @ 0x08011e88
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -60,7 +60,7 @@
 	bx	r1
 .func_end HeightTile_A
 
-.thumb_func_start HeightTile_B
+.thumb_func_start HeightTile_B  @ 0x08011ed0
 	push	{lr}
 	ldrb	r3, [r0]
 	add	r0, #1

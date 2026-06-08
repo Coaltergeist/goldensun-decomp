@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start NewActor
+.thumb_func_start NewActor  @ 0x0800c0cc
 	push	{lr}
 	ldr	r3, =iwram_3001e64
 	ldr	r2, [r3]
@@ -24,7 +24,7 @@
 	bx	r1
 .func_end NewActor
 
-.thumb_func_start DeleteActor
+.thumb_func_start DeleteActor  @ 0x0800c0f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	sub	sp, #4
@@ -72,7 +72,7 @@
 	bx	r0
 .func_end DeleteActor
 
-.thumb_func_start CreateActor
+.thumb_func_start CreateActor  @ 0x0800c150
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -267,7 +267,7 @@
 	bx	r1
 .func_end CreateActor
 
-.thumb_func_start Actor_SetScript
+.thumb_func_start Actor_SetScript  @ 0x0800c2d8
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc2fc
@@ -291,7 +291,7 @@
 	bx	r0
 .func_end Actor_SetScript
 
-.thumb_func_start Actor_SetAnim
+.thumb_func_start Actor_SetAnim  @ 0x0800c300
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	cmp	r0, #0
@@ -330,7 +330,7 @@
 	bx	r0
 .func_end Actor_SetAnim
 
-.thumb_func_start Actor_SetAnimSpeed
+.thumb_func_start Actor_SetAnimSpeed  @ 0x0800c344
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	cmp	r0, #0
@@ -369,7 +369,7 @@
 	bx	r0
 .func_end Actor_SetAnimSpeed
 
-.thumb_func_start Actor_SetAnimAndSpeed
+.thumb_func_start Actor_SetAnimAndSpeed  @ 0x0800c388
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -423,7 +423,7 @@
 	bx	r0
 .func_end Actor_SetAnimAndSpeed
 
-.thumb_func_start Actor_SetRotation
+.thumb_func_start Actor_SetRotation  @ 0x0800c3ec
 	push	{lr}
 	cmp	r0, #0
 	beq	.Lc404

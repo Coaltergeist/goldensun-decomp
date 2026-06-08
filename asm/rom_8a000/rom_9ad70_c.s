@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809b0dc
+.thumb_func_start Func_809b0dc  @ 0x0809b0dc
 	push	{lr}
 	ldr	r1, =0xfffffd80
 	ldr	r3, [r0, #0x1c]
@@ -36,7 +36,7 @@
 	.word	0
 .func_end Func_809b0dc
 
-.thumb_func_start Func_809b11c
+.thumb_func_start Func_809b11c  @ 0x0809b11c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -148,7 +148,7 @@
 	bx	r0
 .func_end Func_809b11c
 
-.thumb_func_start Field_Retreat
+.thumb_func_start Field_Retreat  @ 0x0809b208
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -293,7 +293,7 @@
 	bx	r0
 .func_end Field_Retreat
 
-.thumb_func_start Func_809b364
+.thumb_func_start Func_809b364  @ 0x0809b364
 	push	{r5, r6, lr}
 	ldr	r3, =gState
 	mov	r5, #0xed
@@ -351,7 +351,7 @@
 	bx	r0
 .func_end Func_809b364
 
-.thumb_func_start Func_809b3d8
+.thumb_func_start Func_809b3d8  @ 0x0809b3d8
 	push	{r5, r6, lr}
 	ldr	r3, =gState
 	mov	r5, #0xed
@@ -410,7 +410,7 @@
 	bx	r0
 .func_end Func_809b3d8
 
-.thumb_func_start Func_809b450
+.thumb_func_start Func_809b450  @ 0x0809b450
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -564,7 +564,7 @@
 	bx	r0
 .func_end Func_809b450
 
-.thumb_func_start Func_809b588
+.thumb_func_start Func_809b588  @ 0x0809b588
 	push	{r5, r6, lr}
 	ldr	r3, =gState
 	mov	r2, #0xfa
@@ -605,7 +605,7 @@
 	bx	r0
 .func_end Func_809b588
 
-.thumb_func_start Func_809b5dc
+.thumb_func_start Func_809b5dc  @ 0x0809b5dc
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r3, r5
@@ -656,7 +656,7 @@
 	bx	r0
 .func_end Func_809b5dc
 
-.thumb_func_start Func_809b648
+.thumb_func_start Func_809b648  @ 0x0809b648
 	push	{lr}
 	ldr	r1, =gState
 	mov	r3, #0x91

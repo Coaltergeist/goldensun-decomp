@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b9a70
+.thumb_func_start Func_80b9a70  @ 0x080b9a70
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e74
 	mov	r4, r0
@@ -56,7 +56,7 @@
 	bx	r1
 .func_end Func_80b9a70
 
-.thumb_func_start Func_80b9acc
+.thumb_func_start Func_80b9acc  @ 0x080b9acc
 	push	{lr}
 	ldr	r3, =iwram_3001e80
 	ldr	r0, =gKeyHeld

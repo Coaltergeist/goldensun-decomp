@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start BreakItem
+.thumb_func_start BreakItem  @ 0x08078a34
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetUnit
@@ -24,7 +24,7 @@
 	bx	r1
 .func_end BreakItem
 
-.thumb_func_start RepairItem
+.thumb_func_start RepairItem  @ 0x08078a60
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetUnit

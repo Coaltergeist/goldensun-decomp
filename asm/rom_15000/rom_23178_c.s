@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CollectDjinni
+.thumb_func_start CollectDjinni  @ 0x080294d4
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -25,7 +25,7 @@
 	bx	r0
 .func_end CollectDjinni
 
-.thumb_func_start StartMenu
+.thumb_func_start StartMenu  @ 0x08029504
 	push	{r5, r6, lr}
 .L29506:
 	bl	StartMenu_Main
@@ -64,7 +64,7 @@
 	bx	r1
 .func_end StartMenu
 
-.thumb_func_start Debug_IconTest
+.thumb_func_start Debug_IconTest  @ 0x08029554
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -331,7 +331,7 @@
 	bx	r1
 .func_end Debug_IconTest
 
-.thumb_func_start Debug_FaceTest
+.thumb_func_start Debug_FaceTest  @ 0x0802977c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Torch
+.thumb_func_start Anim_Torch  @ 0x080e6638
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -363,7 +363,7 @@
 	bx	r0
 .func_end Anim_Torch
 
-.thumb_func_start Anim_Kite
+.thumb_func_start Anim_Kite  @ 0x080e6948
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r5, [r3]
@@ -393,7 +393,7 @@
 	bx	r0
 .func_end Anim_Kite
 
-.thumb_func_start Anim_HelmSplitter
+.thumb_func_start Anim_HelmSplitter  @ 0x080e698c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -801,7 +801,7 @@
 	bx	r0
 .func_end Anim_HelmSplitter
 
-.thumb_func_start Func_80e6d3c
+.thumb_func_start Func_80e6d3c  @ 0x080e6d3c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -967,7 +967,7 @@
 	bx	r0
 .func_end Func_80e6d3c
 
-.thumb_func_start Anim_Unsummon
+.thumb_func_start Anim_Unsummon  @ 0x080e6eac
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1408,7 +1408,7 @@
 	bx	r0
 .func_end Anim_Unsummon
 
-.thumb_func_start Func_80e727c
+.thumb_func_start Func_80e727c  @ 0x080e727c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1465,7 +1465,7 @@
 	bx	r0
 .func_end Func_80e727c
 
-.thumb_func_start Func_80e72e0
+.thumb_func_start Func_80e72e0  @ 0x080e72e0
 	ldr	r3, =iwram_3001eec
 	ldr	r0, [r3]
 	ldr	r3, =REG_DMA0SAD

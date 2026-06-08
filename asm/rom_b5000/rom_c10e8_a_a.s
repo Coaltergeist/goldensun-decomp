@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80c10e8
+.thumb_func_start Func_80c10e8  @ 0x080c10e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -119,7 +119,7 @@
 	bx	r0
 .func_end Func_80c10e8
 
-.thumb_func_start Func_80c11ec
+.thumb_func_start Func_80c11ec  @ 0x080c11ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -401,7 +401,7 @@
 	bx	r1
 .func_end Func_80c11ec
 
-.thumb_func_start Task_BlitPreAnim
+.thumb_func_start Task_BlitPreAnim  @ 0x080c1438
 	push	{lr}
 	ldr	r3, =gPtrs
 	mov	r2, r3
@@ -428,7 +428,7 @@
 	bx	r1
 .func_end Task_BlitPreAnim
 
-.thumb_func_start Anim_Cast
+.thumb_func_start Anim_Cast  @ 0x080c1470
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -681,7 +681,7 @@
 	bx	r1
 .func_end Anim_Cast
 
-.thumb_func_start Func_80c16d0
+.thumb_func_start Func_80c16d0  @ 0x080c16d0
 	push	{lr}
 	mov	r1, #0x80
 	lsl	r1, #7
@@ -716,7 +716,7 @@
 	bx	r1
 .func_end Func_80c16d0
 
-.thumb_func_start UploadBGPalette
+.thumb_func_start UploadBGPalette  @ 0x080c1724
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -779,7 +779,7 @@
 	bx	r1
 .func_end UploadBGPalette
 
-.thumb_func_start Anim_MoveIntro
+.thumb_func_start Anim_MoveIntro  @ 0x080c1798
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

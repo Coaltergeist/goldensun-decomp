@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078500
+.thumb_func_start Func_8078500  @ 0x08078500
 	push	{r5, r6, r7, lr}
 	ldr	r3, =gState
 	mov	r2, #0xfa
@@ -42,7 +42,7 @@
 	bx	r1
 .func_end Func_8078500
 
-.thumb_func_start Func_8078550
+.thumb_func_start Func_8078550  @ 0x08078550
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x14
 	mov	r5, sp
@@ -72,7 +72,7 @@
 	bx	r1
 .func_end Func_8078550
 
-.thumb_func_start GiveItemTo
+.thumb_func_start GiveItemTo  @ 0x08078588
 	push	{r5, r6, lr}
 	mov	r5, r1
 	bl	GetUnit
@@ -148,7 +148,7 @@
 	bx	r1
 .func_end GiveItemTo
 
-.thumb_func_start GiveItem
+.thumb_func_start GiveItem  @ 0x08078618
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80e3994
+.thumb_func_start Func_80e3994  @ 0x080e3994
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -58,7 +58,7 @@
 	bx	r1
 .func_end Func_80e3994
 
-.thumb_func_start Func_80e3a14
+.thumb_func_start Func_80e3a14  @ 0x080e3a14
 	push	{lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r2, =0x7828
@@ -76,7 +76,7 @@
 	bx	r0
 .func_end Func_80e3a14
 
-.thumb_func_start Anim_Attack
+.thumb_func_start Anim_Attack  @ 0x080e3a3c
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, =0x60e
@@ -118,7 +118,7 @@
 	bx	r0
 .func_end Anim_Attack
 
-.thumb_func_start BaseAnim_Attack
+.thumb_func_start BaseAnim_Attack  @ 0x080e3aa0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -826,7 +826,7 @@
 	bx	r0
 .func_end BaseAnim_Attack
 
-.thumb_func_start Anim_CriticalHit
+.thumb_func_start Anim_CriticalHit  @ 0x080e40a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1546,7 +1546,7 @@
 	bx	r0
 .func_end Anim_CriticalHit
 
-.thumb_func_start Func_80e46f0
+.thumb_func_start Func_80e46f0  @ 0x080e46f0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

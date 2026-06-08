@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start CheckPartyItem
+.thumb_func_start CheckPartyItem  @ 0x08078698
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -59,7 +59,7 @@
 	bx	r1
 .func_end CheckPartyItem
 
-.thumb_func_start EquipItem
+.thumb_func_start EquipItem  @ 0x08078708
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -169,7 +169,7 @@
 	bx	r1
 .func_end EquipItem
 
-.thumb_func_start GetEquippedItem
+.thumb_func_start GetEquippedItem  @ 0x080787dc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -214,7 +214,7 @@
 	bx	r1
 .func_end GetEquippedItem
 
-.thumb_func_start Func_807882c
+.thumb_func_start Func_807882c  @ 0x0807882c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -252,7 +252,7 @@
 	bx	r1
 .func_end Func_807882c
 
-.thumb_func_start Func_8078870
+.thumb_func_start Func_8078870  @ 0x08078870
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -296,7 +296,7 @@
 	bx	r1
 .func_end Func_8078870
 
-.thumb_func_start Func_80788c4
+.thumb_func_start Func_80788c4  @ 0x080788c4
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
@@ -370,7 +370,7 @@
 	bx	r1
 .func_end Func_80788c4
 
-.thumb_func_start Func_8078948
+.thumb_func_start Func_8078948  @ 0x08078948
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -397,7 +397,7 @@
 	bx	r1
 .func_end Func_8078948
 
-.thumb_func_start CanRemoveItem
+.thumb_func_start CanRemoveItem  @ 0x08078980
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	bl	GetUnit

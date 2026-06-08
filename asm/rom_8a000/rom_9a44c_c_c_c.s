@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Halt
+.thumb_func_start Field_Halt  @ 0x0809abb4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9

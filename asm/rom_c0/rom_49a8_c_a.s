@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start InitMatrixStack
+.thumb_func_start InitMatrixStack  @ 0x080049ac
 	push	{r5, lr}
 	mov	r1, #0x30
 	mov	r0, #2
@@ -26,7 +26,7 @@
 	bx	r0
 .func_end InitMatrixStack
 
-.thumb_func_start MatrixPush
+.thumb_func_start MatrixPush  @ 0x080049e8
 	push	{r5, lr}
 	ldr	r5, =gMatrixStackSize
 	ldr	r3, [r5]

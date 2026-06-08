@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801d108
+.thumb_func_start Func_801d108  @ 0x0801d108
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -396,7 +396,7 @@
 	bx	r1
 .func_end Func_801d108
 
-.thumb_func_start Menu_Settings
+.thumb_func_start Menu_Settings  @ 0x0801d4cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -893,7 +893,7 @@
 	bx	r1
 .func_end Menu_Settings
 
-.thumb_func_start Func_801d94c
+.thumb_func_start Func_801d94c  @ 0x0801d94c
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ea0
 	ldr	r2, =0x5a4
@@ -913,7 +913,7 @@
 	bx	r0
 .func_end Func_801d94c
 
-.thumb_func_start Func_801d980
+.thumb_func_start Func_801d980  @ 0x0801d980
 	push	{lr}
 	mov	r1, #0xc5
 	lsl	r1, #3

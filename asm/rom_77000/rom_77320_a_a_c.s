@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8077330
+.thumb_func_start Func_8077330  @ 0x08077330
 	push	{lr}
 	cmp	r0, #0
 	beq	.L7733e
@@ -15,7 +15,7 @@
 	bx	r1
 .func_end Func_8077330
 
-.thumb_func_start Func_8077348
+.thumb_func_start Func_8077348  @ 0x08077348
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	bl	GetPartySize
@@ -54,7 +54,7 @@
 	bx	r1
 .func_end Func_8077348
 
-.thumb_func_start GetUnit
+.thumb_func_start GetUnit  @ 0x08077394
 	push	{lr}
 	mov	r3, r14
 	ldr	r2, =gPartyStatus
@@ -88,7 +88,7 @@
 	bx	r1
 .func_end GetUnit
 
-.thumb_func_start GetEnemyInfo
+.thumb_func_start GetEnemyInfo  @ 0x080773d8
 	push	{lr}
 	sub	r0, #8
 	cmp	r0, #0xf9

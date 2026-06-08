@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start StopTask
+.thumb_func_start StopTask  @ 0x08004278
 	push	{r5, lr}
 	mov	r5, #1
 	ldr	r4, =gTasks
@@ -40,7 +40,7 @@
 	bx	r1
 .func_end StopTask
 
-.thumb_func_start Func_80042c8
+.thumb_func_start Func_80042c8  @ 0x080042c8
 	push	{r5, r6, lr}
 	mov	r5, #1
 	ldr	r4, =gTasks
@@ -75,7 +75,7 @@
 	bx	r1
 .func_end Func_80042c8
 
-.thumb_func_start Func_800430c
+.thumb_func_start Func_800430c  @ 0x0800430c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
 	ldr	r1, =gTasks
@@ -113,7 +113,7 @@
 	bx	r1
 .func_end Func_800430c
 
-.thumb_func_start Func_8004358
+.thumb_func_start Func_8004358  @ 0x08004358
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r5, #1
@@ -148,7 +148,7 @@
 	bx	r1
 .func_end Func_8004358
 
-.thumb_func_start Func_800439c
+.thumb_func_start Func_800439c  @ 0x0800439c
 	push	{r5, r6, r7, lr}
 	mov	r5, #1
 	ldr	r4, =gTasks
@@ -184,7 +184,7 @@
 	bx	r1
 .func_end Func_800439c
 
-.thumb_func_start Func_80043e0
+.thumb_func_start Func_80043e0  @ 0x080043e0
 	push	{r5, r6, lr}
 	mov	r0, #1
 	ldr	r4, =gTasks
@@ -216,7 +216,7 @@
 	bx	r1
 .func_end Func_80043e0
 
-.thumb_func_start RunTasks
+.thumb_func_start RunTasks  @ 0x08004420
 	push	{r5, r6, r7, lr}
 	ldr	r3, =gTasksEnabled
 	ldrb	r3, [r3]

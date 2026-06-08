@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80903bc
+.thumb_func_start Func_80903bc  @ 0x080903bc
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -92,7 +92,7 @@
 	.word	0x9f
 .func_end Func_80903bc
 
-.thumb_func_start Func_8090488
+.thumb_func_start Func_8090488  @ 0x08090488
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -208,7 +208,7 @@
 	bx	r0
 .func_end Func_8090488
 
-.thumb_func_start Func_8090584
+.thumb_func_start Func_8090584  @ 0x08090584
 	push	{lr}
 	ldr	r3, =REG_VCOUNT
 	ldrh	r3, [r3]
@@ -322,7 +322,7 @@
 	bx	r0
 .func_end Func_8090584
 
-.thumb_func_start Task_Transition300
+.thumb_func_start Task_Transition300  @ 0x08090658
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -471,7 +471,7 @@
 	bx	r0
 .func_end Task_Transition300
 
-.thumb_func_start Func_80907b0
+.thumb_func_start Func_80907b0  @ 0x080907b0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ecc
 	sub	sp, #4
@@ -522,7 +522,7 @@
 	bx	r0
 .func_end Func_80907b0
 
-.thumb_func_start Func_8090824
+.thumb_func_start Func_8090824  @ 0x08090824
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -565,7 +565,7 @@
 	bx	r0
 .func_end Func_8090824
 
-.thumb_func_start Func_809088c
+.thumb_func_start Func_809088c  @ 0x0809088c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -607,7 +607,7 @@
 	bx	r0
 .func_end Func_809088c
 
-.thumb_func_start Func_80908e0
+.thumb_func_start Func_80908e0  @ 0x080908e0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ed0
 	mov	r1, #0xc4
@@ -794,7 +794,7 @@
 	bx	r0
 .func_end Func_80908e0
 
-.thumb_func_start Func_8090a5c
+.thumb_func_start Func_8090a5c  @ 0x08090a5c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1688,7 +1688,7 @@
 	bx	r0
 .func_end Func_8090a5c
 
-.thumb_func_start Func_8091174
+.thumb_func_start Func_8091174  @ 0x08091174
 	push	{lr}
 	ldr	r1, =0x2a04
 	mov	r0, #0x20

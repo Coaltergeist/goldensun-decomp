@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorAttrOp_width
+.thumb_func_start ActorAttrOp_width  @ 0x0800e334
 	push	{lr}
 	mov	r4, r2
 	cmp	r1, #0

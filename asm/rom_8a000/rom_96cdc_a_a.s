@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8096cdc
+.thumb_func_start Func_8096cdc  @ 0x08096cdc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -41,7 +41,7 @@
 	bx	r0
 .func_end Func_8096cdc
 
-.thumb_func_start Func_8096d2c
+.thumb_func_start Func_8096d2c  @ 0x08096d2c
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, r5
@@ -85,7 +85,7 @@
 	bx	r0
 .func_end Func_8096d2c
 
-.thumb_func_start Func_8096d84
+.thumb_func_start Func_8096d84  @ 0x08096d84
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, r5
@@ -130,7 +130,7 @@
 	bx	r0
 .func_end Func_8096d84
 
-.thumb_func_start Func_8096ddc
+.thumb_func_start Func_8096ddc  @ 0x08096ddc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

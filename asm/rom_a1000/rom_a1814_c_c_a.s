@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a3ef0
+.thumb_func_start Func_80a3ef0  @ 0x080a3ef0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -204,7 +204,7 @@
 	bx	r0
 .func_end Func_80a3ef0
 
-.thumb_func_start Func_80a40ac
+.thumb_func_start Func_80a40ac  @ 0x080a40ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	bl	_GetUnit
@@ -265,7 +265,7 @@
 	bx	r1
 .func_end Func_80a40ac
 
-.thumb_func_start Func_80a4110
+.thumb_func_start Func_80a4110  @ 0x080a4110
 	push	{lr}
 	cmp	r0, #2
 	bgt	.La4122

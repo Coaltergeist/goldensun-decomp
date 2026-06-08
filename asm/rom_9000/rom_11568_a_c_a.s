@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8011590
+.thumb_func_start Func_8011590  @ 0x08011590
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e6c
 	ldmia	r3!, {r5}

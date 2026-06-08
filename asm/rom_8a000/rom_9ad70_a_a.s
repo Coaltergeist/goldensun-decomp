@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809ad70
+.thumb_func_start Func_809ad70  @ 0x0809ad70
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r5, =.L9f160
@@ -15,7 +15,7 @@
 	bx	r0
 .func_end Func_809ad70
 
-.thumb_func_start Func_809ad90
+.thumb_func_start Func_809ad90  @ 0x0809ad90
 	push	{lr}
 	bl	GetFieldActor
 	cmp	r0, #0
@@ -55,7 +55,7 @@
 	bx	r0
 .func_end Func_809ad90
 
-.thumb_func_start Func_809ade8
+.thumb_func_start Func_809ade8  @ 0x0809ade8
 	push	{r5, lr}
 	bl	GetFieldActor
 	mov	r5, r0
@@ -92,7 +92,7 @@
 	bx	r0
 .func_end Func_809ade8
 
-.thumb_func_start Func_809ae3c
+.thumb_func_start Func_809ae3c  @ 0x0809ae3c
 	push	{r5, lr}
 	mov	r5, r0
 	bl	MapActor_GetName

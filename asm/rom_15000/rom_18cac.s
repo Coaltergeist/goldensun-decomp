@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start DrawText
+.thumb_func_start DrawText  @ 0x08018cac
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -279,7 +279,7 @@
 	bx	r1
 .func_end DrawText
 
-.thumb_func_start Func_8018efc
+.thumb_func_start Func_8018efc  @ 0x08018efc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -403,7 +403,7 @@
 	bx	r0
 .func_end Func_8018efc
 
-.thumb_func_start Func_8019000
+.thumb_func_start Func_8019000  @ 0x08019000
 	push	{r5, r6, r7, lr}
 	mov	r4, r3
 	ldr	r3, =iwram_3001e8c
@@ -479,7 +479,7 @@
 	bx	r0
 .func_end Func_8019000
 
-.thumb_func_start Func_801908c
+.thumb_func_start Func_801908c  @ 0x0801908c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

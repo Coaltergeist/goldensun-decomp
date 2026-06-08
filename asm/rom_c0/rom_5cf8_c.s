@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Debug_TransferTest
+.thumb_func_start Debug_TransferTest  @ 0x0800679c
 	push	{r5, r6, lr}
 	mov	r0, #3
 	sub	sp, #4

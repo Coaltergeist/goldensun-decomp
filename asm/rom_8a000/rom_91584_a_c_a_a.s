@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start GetSpriteVoice
+.thumb_func_start GetSpriteVoice  @ 0x080915ac
 	push	{lr}
 	ldr	r3, =gState
 	ldr	r2, =0x20a

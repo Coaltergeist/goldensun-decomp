@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start AnimTransitionIn
+.thumb_func_start AnimTransitionIn  @ 0x080c08ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -114,7 +114,7 @@
 	.word	0x1f83
 .func_end AnimTransitionIn
 
-.thumb_func_start Func_80c0a24
+.thumb_func_start Func_80c0a24  @ 0x080c0a24
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -333,7 +333,7 @@
 	bx	r0
 .func_end Func_80c0a24
 
-.thumb_func_start Func_80c0be4
+.thumb_func_start Func_80c0be4  @ 0x080c0be4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -446,7 +446,7 @@
 	bx	r0
 .func_end Func_80c0be4
 
-.thumb_func_start Func_80c0cec
+.thumb_func_start Func_80c0cec  @ 0x080c0cec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -558,7 +558,7 @@
 	bx	r0
 .func_end Func_80c0cec
 
-.thumb_func_start Func_80c0df4
+.thumb_func_start Func_80c0df4  @ 0x080c0df4
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -591,7 +591,7 @@
 	bx	r0
 .func_end Func_80c0df4
 
-.thumb_func_start Func_80c0e38
+.thumb_func_start Func_80c0e38  @ 0x080c0e38
 	push	{r5, r6, r7, lr}
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lc0e48	@ 0x2044
@@ -621,7 +621,7 @@
 	bx	r0
 .func_end Func_80c0e38
 
-.thumb_func_start Func_80c0e70
+.thumb_func_start Func_80c0e70  @ 0x080c0e70
 	push	{r5, r6, r7, lr}
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lc0e80	@ 0x2044

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Anim_Break
+.thumb_func_start Anim_Break  @ 0x080d82b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -362,7 +362,7 @@
 	bx	r0
 .func_end Anim_Break
 
-.thumb_func_start Anim_Drain
+.thumb_func_start Anim_Drain  @ 0x080d85d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

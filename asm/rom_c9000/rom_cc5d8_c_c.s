@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Tentacle
+.thumb_func_start BaseAnim_Tentacle  @ 0x080ccc38
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -283,7 +283,7 @@
 	bx	r0
 .func_end BaseAnim_Tentacle
 
-.thumb_func_start Anim_SpiderWeb
+.thumb_func_start Anim_SpiderWeb  @ 0x080ccebc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -544,7 +544,7 @@
 	bx	r0
 .func_end Anim_SpiderWeb
 
-.thumb_func_start AnimTransitionOut
+.thumb_func_start AnimTransitionOut  @ 0x080cd104
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start LoadOldUIIcon
+.thumb_func_start LoadOldUIIcon  @ 0x08019ee4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -81,7 +81,7 @@
 	bx	r0
 .func_end LoadOldUIIcon
 
-.thumb_func_start LoadOldMoveIcon
+.thumb_func_start LoadOldMoveIcon  @ 0x08019f98
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -107,7 +107,7 @@
 	bx	r0
 .func_end LoadOldMoveIcon
 
-.thumb_func_start LoadItemIconID
+.thumb_func_start LoadItemIconID  @ 0x08019fcc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -194,7 +194,7 @@
 	bx	r0
 .func_end LoadItemIconID
 
-.thumb_func_start DrawInventoryIcon
+.thumb_func_start DrawInventoryIcon  @ 0x0801a088
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -450,7 +450,7 @@
 	bx	r1
 .func_end DrawInventoryIcon
 
-.thumb_func_start LoadInventoryIcon
+.thumb_func_start LoadInventoryIcon  @ 0x0801a2a4
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -484,7 +484,7 @@
 	bx	r1
 .func_end LoadInventoryIcon
 
-.thumb_func_start LoadStatusIcon
+.thumb_func_start LoadStatusIcon  @ 0x0801a2ec
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -514,7 +514,7 @@
 	bx	r1
 .func_end LoadStatusIcon
 
-.thumb_func_start LoadUIBanner
+.thumb_func_start LoadUIBanner  @ 0x0801a32c
 	push	{lr}
 	mov	r3, r2
 	cmp	r0, #1
@@ -555,7 +555,7 @@
 	.word	Data_31864
 .func_end LoadUIBanner
 
-.thumb_func_start LoadItemIcon
+.thumb_func_start LoadItemIcon  @ 0x0801a370
 	push	{r5, r6, lr}
 	mov	r5, r0
 	ldr	r0, =0x1ff
@@ -596,7 +596,7 @@
 	bx	r0
 .func_end LoadItemIcon
 
-.thumb_func_start LoadMoveIcon
+.thumb_func_start LoadMoveIcon  @ 0x0801a3d0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -622,7 +622,7 @@
 	bx	r0
 .func_end LoadMoveIcon
 
-.thumb_func_start LoadMoveIconID
+.thumb_func_start LoadMoveIconID  @ 0x0801a404
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -709,7 +709,7 @@
 	bx	r0
 .func_end LoadMoveIconID
 
-.thumb_func_start DecompressStatusIcon
+.thumb_func_start DecompressStatusIcon  @ 0x0801a4c0
 	push	{lr}
 	ldr	r3, =iwram_3001e94
 	ldr	r1, [r3]
@@ -734,7 +734,7 @@
 	bx	r0
 .func_end DecompressStatusIcon
 
-.thumb_func_start LoadPortrait
+.thumb_func_start LoadPortrait  @ 0x0801a4fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

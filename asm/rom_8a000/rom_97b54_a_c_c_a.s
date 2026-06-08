@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Force
+.thumb_func_start Field_Force  @ 0x08098cd8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -385,7 +385,7 @@
 	bx	r0
 .func_end Field_Force
 
-.thumb_func_start Func_8099018
+.thumb_func_start Func_8099018  @ 0x08099018
 	push	{lr}
 	ldr	r3, =iwram_3001e40
 	ldr	r2, [r3]
@@ -406,7 +406,7 @@
 	bx	r0
 .func_end Func_8099018
 
-.thumb_func_start Func_8099040
+.thumb_func_start Func_8099040  @ 0x08099040
 	push	{lr}
 	cmp	r0, #0
 	beq	.L99062
@@ -428,7 +428,7 @@
 	bx	r0
 .func_end Func_8099040
 
-.thumb_func_start Func_8099070
+.thumb_func_start Func_8099070  @ 0x08099070
 	push	{r5, r6, lr}
 	mov	r6, r0
 	sub	sp, #0xc
@@ -476,7 +476,7 @@
 	bx	r0
 .func_end Func_8099070
 
-.thumb_func_start Func_80990cc
+.thumb_func_start Func_80990cc  @ 0x080990cc
 	push	{r5, r6, lr}
 	mov	r6, r0
 	sub	sp, #0xc
@@ -524,7 +524,7 @@
 	bx	r0
 .func_end Func_80990cc
 
-.thumb_func_start Field_Frost_Target
+.thumb_func_start Field_Frost_Target  @ 0x08099128
 	push	{lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r2, [r3]
@@ -553,7 +553,7 @@
 	bx	r0
 .func_end Field_Frost_Target
 
-.thumb_func_start Field_Frost
+.thumb_func_start Field_Frost  @ 0x08099160
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -725,7 +725,7 @@
 	bx	r0
 .func_end Field_Frost
 
-.thumb_func_start Func_80992f0
+.thumb_func_start Func_80992f0  @ 0x080992f0
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r5
@@ -764,7 +764,7 @@
 	bx	r0
 .func_end Func_80992f0
 
-.thumb_func_start Func_8099340
+.thumb_func_start Func_8099340  @ 0x08099340
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f30
 	mov	r6, r0
@@ -818,7 +818,7 @@
 	bx	r0
 .func_end Func_8099340
 
-.thumb_func_start Func_80993b0
+.thumb_func_start Func_80993b0  @ 0x080993b0
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r3, =iwram_3001f30

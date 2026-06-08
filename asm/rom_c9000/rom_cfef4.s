@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Condemn
+.thumb_func_start Anim_Condemn  @ 0x080cfef4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -644,7 +644,7 @@
 	bx	r0
 .func_end Anim_Condemn
 
-.thumb_func_start Anim_Unused_ScreenMelt
+.thumb_func_start Anim_Unused_ScreenMelt  @ 0x080d0468
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -843,7 +843,7 @@
 	bx	r0
 .func_end Anim_Unused_ScreenMelt
 
-.thumb_func_start Anim_Bind
+.thumb_func_start Anim_Bind  @ 0x080d05fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1401,7 +1401,7 @@
 	bx	r0
 .func_end Anim_Bind
 
-.thumb_func_start Anim_PsyphonSeal
+.thumb_func_start Anim_PsyphonSeal  @ 0x080d0ad4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1863,7 +1863,7 @@
 	bx	r0
 .func_end Anim_PsyphonSeal
 
-.thumb_func_start Anim_AstralBlast
+.thumb_func_start Anim_AstralBlast  @ 0x080d0ee0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2386,7 +2386,7 @@
 	bx	r0
 .func_end Anim_AstralBlast
 
-.thumb_func_start Anim_ShiningStar
+.thumb_func_start Anim_ShiningStar  @ 0x080d1350
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

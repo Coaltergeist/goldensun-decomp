@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Poison
+.thumb_func_start Anim_Poison  @ 0x080d5258
 	push	{lr}
 	ldr	r3, [r0, #0x18]
 	cmp	r3, #0

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorAttrOp_waitTimer
+.thumb_func_start ActorAttrOp_waitTimer  @ 0x0800e810
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -39,7 +39,7 @@
 	bx	r0
 .func_end ActorAttrOp_waitTimer
 
-.thumb_func_start ActorAttrOp_unk64
+.thumb_func_start ActorAttrOp_unk64  @ 0x0800e850
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0
@@ -78,7 +78,7 @@
 	bx	r0
 .func_end ActorAttrOp_unk64
 
-.thumb_func_start ActorAttrOp_unk66
+.thumb_func_start ActorAttrOp_unk66  @ 0x0800e890
 	push	{r5, lr}
 	mov	r4, r2
 	cmp	r1, #0

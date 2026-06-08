@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_HauntAttack
+.thumb_func_start BaseAnim_HauntAttack  @ 0x080ceb54
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -472,7 +472,7 @@
 	bx	r0
 .func_end BaseAnim_HauntAttack
 
-.thumb_func_start BuildDraw2DFuncs
+.thumb_func_start BuildDraw2DFuncs  @ 0x080cef64
 	push	{r5, r6, lr}
 	sub	sp, #4
 	mov	r6, r1

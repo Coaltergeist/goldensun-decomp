@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800d924
+.thumb_func_start Func_800d924  @ 0x0800d924
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -54,7 +54,7 @@
 	bx	r1
 .func_end Func_800d924
 
-.thumb_func_start Func_800d98c
+.thumb_func_start Func_800d98c  @ 0x0800d98c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -107,7 +107,7 @@
 	bx	r1
 .func_end Func_800d98c
 
-.thumb_func_start ActorCmd_SetPos
+.thumb_func_start ActorCmd_SetPos  @ 0x0800d9f0
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -129,7 +129,7 @@
 	bx	r1
 .func_end ActorCmd_SetPos
 
-.thumb_func_start ActorCmd_TravelTo
+.thumb_func_start ActorCmd_TravelTo  @ 0x0800da18
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -151,7 +151,7 @@
 	bx	r1
 .func_end ActorCmd_TravelTo
 
-.thumb_func_start ActorCmd_Travel
+.thumb_func_start ActorCmd_Travel  @ 0x0800da40
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #4
@@ -180,7 +180,7 @@
 	bx	r1
 .func_end ActorCmd_Travel
 
-.thumb_func_start ActorCmd_FaceTarget
+.thumb_func_start ActorCmd_FaceTarget  @ 0x0800da78
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r2, [r5, #0x68]

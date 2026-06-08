@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_SpecialAttack
+.thumb_func_start BaseAnim_SpecialAttack  @ 0x080e47b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

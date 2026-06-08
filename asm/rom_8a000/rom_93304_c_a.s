@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start BattleIntro
+.thumb_func_start BattleIntro  @ 0x080941e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

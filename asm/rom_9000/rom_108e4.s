@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80108e4
+.thumb_func_start Func_80108e4  @ 0x080108e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -123,7 +123,7 @@
 	bx	r1
 .func_end Func_80108e4
 
-.thumb_func_start InitWorldMap
+.thumb_func_start InitWorldMap  @ 0x080109e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -458,7 +458,7 @@
 	bx	r1
 .func_end InitWorldMap
 
-.thumb_func_start Func_8010d48
+.thumb_func_start Func_8010d48  @ 0x08010d48
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -565,7 +565,7 @@
 	bx	r0
 .func_end Func_8010d48
 
-.thumb_func_start Func_8010e14
+.thumb_func_start Func_8010e14  @ 0x08010e14
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -753,7 +753,7 @@
 	bx	r0
 .func_end Func_8010e14
 
-.thumb_func_start Func_8010ff0
+.thumb_func_start Func_8010ff0  @ 0x08010ff0
 	push	{r5, r6, lr}
 	ldr	r1, =iwram_3001e6c
 	mov	r2, #0xc8
@@ -862,7 +862,7 @@
 	bx	r0
 .func_end Func_8010ff0
 
-.thumb_func_start Func_80110e0
+.thumb_func_start Func_80110e0  @ 0x080110e0
 	push	{r5, lr}
 	lsr	r3, r0, #31
 	add	r3, r0, r3
@@ -926,7 +926,7 @@
 	bx	r0
 .func_end Func_80110e0
 
-.thumb_func_start Func_8011164
+.thumb_func_start Func_8011164  @ 0x08011164
 	push	{r5, lr}
 	lsr	r3, r0, #31
 	add	r3, r0, r3
@@ -964,7 +964,7 @@
 	bx	r0
 .func_end Func_8011164
 
-.thumb_func_start Func_80111b4
+.thumb_func_start Func_80111b4  @ 0x080111b4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1210,7 +1210,7 @@
 	bx	r0
 .func_end Func_80111b4
 
-.thumb_func_start Func_80113e4
+.thumb_func_start Func_80113e4  @ 0x080113e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1305,7 +1305,7 @@
 	bx	r0
 .func_end Func_80113e4
 
-.thumb_func_start Func_80114a0
+.thumb_func_start Func_80114a0  @ 0x080114a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

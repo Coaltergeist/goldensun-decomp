@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start FieldMove_NoTarget
+.thumb_func_start FieldMove_NoTarget  @ 0x08096810
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -142,7 +142,7 @@
 	bx	r0
 .func_end FieldMove_NoTarget
 
-.thumb_func_start FieldMove_Target
+.thumb_func_start FieldMove_Target  @ 0x08096960
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r6, [r3]
@@ -288,7 +288,7 @@
 	bx	r0
 .func_end FieldMove_Target
 
-.thumb_func_start Func_8096ab0
+.thumb_func_start Func_8096ab0  @ 0x08096ab0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r5, [r3]
@@ -316,7 +316,7 @@
 	bx	r0
 .func_end Func_8096ab0
 
-.thumb_func_start Func_8096af0
+.thumb_func_start Func_8096af0  @ 0x08096af0
 	push	{lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -346,7 +346,7 @@
 	bx	r0
 .func_end Func_8096af0
 
-.thumb_func_start Func_8096b28
+.thumb_func_start Func_8096b28  @ 0x08096b28
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r2
@@ -389,7 +389,7 @@
 	bx	r1
 .func_end Func_8096b28
 
-.thumb_func_start Func_8096b88
+.thumb_func_start Func_8096b88  @ 0x08096b88
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

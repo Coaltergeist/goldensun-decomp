@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Cloak
+.thumb_func_start Field_Cloak  @ 0x08099838
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -105,7 +105,7 @@
 	bx	r0
 .func_end Field_Cloak
 
-.thumb_func_start Func_8099920
+.thumb_func_start Func_8099920  @ 0x08099920
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	ldr	r2, [r6, #0xc]
@@ -169,7 +169,7 @@
 	bx	r0
 .func_end Func_8099920
 
-.thumb_func_start Func_80999a8
+.thumb_func_start Func_80999a8  @ 0x080999a8
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r2, =0xffffb334

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start GetWeaponSpriteID
+.thumb_func_start GetWeaponSpriteID  @ 0x080b6eb4
 	push	{r5, r6, lr}
 	mov	r5, r0
 	bl	_GetUnit

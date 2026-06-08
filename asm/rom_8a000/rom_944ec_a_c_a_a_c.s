@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095938
+.thumb_func_start Func_8095938  @ 0x08095938
 	push	{r5, r6, r7, lr}
 	ldr	r3, =gState
 	mov	r1, #0xfa
@@ -140,7 +140,7 @@
 	bx	r0
 .func_end Func_8095938
 
-.thumb_func_start GetJupiterDjinni
+.thumb_func_start GetJupiterDjinni  @ 0x08095a44
 	push	{r5, r6, r7, lr}
 	sub	sp, #0xc
 	mov	r6, r0
@@ -264,7 +264,7 @@
 	bx	r0
 .func_end GetJupiterDjinni
 
-.thumb_func_start Func_8095b8c
+.thumb_func_start Func_8095b8c  @ 0x08095b8c
 	ldr	r3, =iwram_3001800
 	ldr	r3, [r3]
 	mov	r2, #1

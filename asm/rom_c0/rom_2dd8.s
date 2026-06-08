@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start gfree
+.thumb_func_start gfree  @ 0x08002dd8
 	ldr	r4, =gPtrs
 	lsl	r0, #2
 	ldr	r1, [r0, r4]
@@ -15,7 +15,7 @@
 	bx	lr
 	.ssize	gfree
 
-.thumb_func_start free
+.thumb_func_start free  @ 0x08002df0
 	ldr	r4, =gPtrs
 	mov	r1, #4
 	lsr	r2, r0, #22

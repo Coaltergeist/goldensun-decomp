@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bb938
+.thumb_func_start Func_80bb938  @ 0x080bb938
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e74
 	mov	r2, #0xd7
@@ -174,7 +174,7 @@
 	bx	r1
 .func_end Func_80bb938
 
-.thumb_func_start Func_80bbabc
+.thumb_func_start Func_80bbabc  @ 0x080bbabc
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e74
 	ldr	r4, [r3]

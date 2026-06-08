@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b27b0
+.thumb_func_start Func_80b27b0  @ 0x080b27b0
 	push	{r5, lr}
 	mov	r5, r1
 	bl	_GetUnit
@@ -51,7 +51,7 @@
 	bx	r1
 .func_end Func_80b27b0
 
-.thumb_func_start Func_80b280c
+.thumb_func_start Func_80b280c  @ 0x080b280c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -109,7 +109,7 @@
 	bx	r1
 .func_end Func_80b280c
 
-.thumb_func_start Func_80b2884
+.thumb_func_start Func_80b2884  @ 0x080b2884
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r2, =0x3aa
@@ -142,7 +142,7 @@
 	bx	r1
 .func_end Func_80b2884
 
-.thumb_func_start Func_80b28d4
+.thumb_func_start Func_80b28d4  @ 0x080b28d4
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0xe9
@@ -179,7 +179,7 @@
 	bx	r0
 .func_end Func_80b28d4
 
-.thumb_func_start Func_80b2928
+.thumb_func_start Func_80b2928  @ 0x080b2928
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -239,7 +239,7 @@
 	bx	r0
 .func_end Func_80b2928
 
-.thumb_func_start UI_Sanctum
+.thumb_func_start UI_Sanctum  @ 0x080b29a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -392,7 +392,7 @@
 	bx	r1
 .func_end UI_Sanctum
 
-.thumb_func_start Func_80b2b10
+.thumb_func_start Func_80b2b10  @ 0x080b2b10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -687,7 +687,7 @@
 	bx	r1
 .func_end Func_80b2b10
 
-.thumb_func_start Func_80b2da8
+.thumb_func_start Func_80b2da8  @ 0x080b2da8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -758,7 +758,7 @@
 	bx	r0
 .func_end Func_80b2da8
 
-.thumb_func_start Func_80b2e30
+.thumb_func_start Func_80b2e30  @ 0x080b2e30
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -839,7 +839,7 @@
 	bx	r0
 .func_end Func_80b2e30
 
-.thumb_func_start Func_80b2ed8
+.thumb_func_start Func_80b2ed8  @ 0x080b2ed8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -888,7 +888,7 @@
 	bx	r0
 .func_end Func_80b2ed8
 
-.thumb_func_start Func_80b2f4c
+.thumb_func_start Func_80b2f4c  @ 0x080b2f4c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -971,7 +971,7 @@
 	bx	r0
 .func_end Func_80b2f4c
 
-.thumb_func_start Func_80b2ffc
+.thumb_func_start Func_80b2ffc  @ 0x080b2ffc
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0xec
@@ -1010,7 +1010,7 @@
 	bx	r0
 .func_end Func_80b2ffc
 
-.thumb_func_start Func_80b3050
+.thumb_func_start Func_80b3050  @ 0x080b3050
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1201,7 +1201,7 @@
 	bx	r0
 .func_end Func_80b3050
 
-.thumb_func_start Func_80b3210
+.thumb_func_start Func_80b3210  @ 0x080b3210
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1258,7 +1258,7 @@
 	bx	r1
 .func_end Func_80b3210
 
-.thumb_func_start Func_80b3284
+.thumb_func_start Func_80b3284  @ 0x080b3284
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -1376,7 +1376,7 @@
 	bx	r1
 .func_end Func_80b3284
 
-.thumb_func_start InnHeal
+.thumb_func_start InnHeal  @ 0x080b3398
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1452,7 +1452,7 @@
 	bx	r0
 .func_end InnHeal
 
-.thumb_func_start UI_SellMenu
+.thumb_func_start UI_SellMenu  @ 0x080b3444
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1676,7 +1676,7 @@
 	bx	r1
 .func_end UI_SellMenu
 
-.thumb_func_start Func_80b362c
+.thumb_func_start Func_80b362c  @ 0x080b362c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1952,7 +1952,7 @@
 	bx	r1
 .func_end Func_80b362c
 
-.thumb_func_start Func_80b386c
+.thumb_func_start Func_80b386c  @ 0x080b386c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

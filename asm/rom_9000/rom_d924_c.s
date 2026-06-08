@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Unused
+.thumb_func_start ActorCmd_Unused  @ 0x0800dac0
 	push	{r5, lr}
 	sub	sp, #0xc
 	mov	r5, r0
@@ -26,7 +26,7 @@
 	bx	r1
 .func_end ActorCmd_Unused
 
-.thumb_func_start ActorCmd_Camera
+.thumb_func_start ActorCmd_Camera  @ 0x0800daf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -268,7 +268,7 @@
 	bx	r1
 .func_end ActorCmd_Camera
 
-.thumb_func_start ActorCmd_FollowTargetWait
+.thumb_func_start ActorCmd_FollowTargetWait  @ 0x0800dcdc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -339,7 +339,7 @@
 	bx	r1
 .func_end ActorCmd_FollowTargetWait
 
-.thumb_func_start ActorCmd_Wander
+.thumb_func_start ActorCmd_Wander  @ 0x0800dd70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -533,7 +533,7 @@
 	bx	r1
 .func_end ActorCmd_Wander
 
-.thumb_func_start ActorCmd_Unk9
+.thumb_func_start ActorCmd_Unk9  @ 0x0800df04
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

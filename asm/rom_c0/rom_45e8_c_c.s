@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80046c4
+.thumb_func_start Func_80046c4  @ 0x080046c4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ac4
 	ldrb	r3, [r3]
@@ -42,7 +42,7 @@
 	bx	r0
 .func_end Func_80046c4
 
-.thumb_func_start Func_8004718
+.thumb_func_start Func_8004718  @ 0x08004718
 	push	{r5, lr}
 	mov	r5, r1
 	sub	r3, r5, #1
@@ -59,7 +59,7 @@
 	bx	r0
 .func_end Func_8004718
 
-.thumb_func_start Func_800473c
+.thumb_func_start Func_800473c  @ 0x0800473c
 	push	{r5, lr}
 	mov	r5, r1
 	sub	r3, r5, #1
@@ -76,7 +76,7 @@
 	bx	r0
 .func_end Func_800473c
 
-.thumb_func_start ClearVRAM
+.thumb_func_start ClearVRAM  @ 0x08004760
 	sub	sp, #4
 	ldr	r3, =0xf000f000
 	mov	r0, sp
@@ -97,7 +97,7 @@
 	bx	lr
 .func_end ClearVRAM
 
-.thumb_func_start Func_800479c
+.thumb_func_start Func_800479c  @ 0x0800479c
 	push	{lr}
 	ldr	r0, =_FILE_13
 	bl	GetFile
@@ -149,7 +149,7 @@
 	bx	r0
 .func_end Func_800479c
 
-.thumb_func_start LoadSpritePalette
+.thumb_func_start LoadSpritePalette  @ 0x08004838
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =PAL_Sprites
 	ldr	r1, =0x5000200

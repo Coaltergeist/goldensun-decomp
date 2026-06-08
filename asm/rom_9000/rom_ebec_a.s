@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Player
+.thumb_func_start ActorCmd_Player  @ 0x0800ebec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -869,7 +869,7 @@
 	bx	r1
 .func_end ActorCmd_Player
 
-.thumb_func_start ActorCmd_Player_World
+.thumb_func_start ActorCmd_Player_World  @ 0x0800f2f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

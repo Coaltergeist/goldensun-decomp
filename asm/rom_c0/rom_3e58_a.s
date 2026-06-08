@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003e58
+.thumb_func_start Func_8003e58  @ 0x08003e58
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	lsr	r5, r1, #6
@@ -69,7 +69,7 @@
 	bx	r1
 .func_end Func_8003e58
 
-.thumb_func_start Func_8003ed4
+.thumb_func_start Func_8003ed4  @ 0x08003ed4
 	push	{lr}
 	mov	r2, #0x80
 	ldr	r4, =gSpriteAllocTable
@@ -96,7 +96,7 @@
 	bx	r1
 .func_end Func_8003ed4
 
-.thumb_func_start Func_8003f04
+.thumb_func_start Func_8003f04  @ 0x08003f04
 	push	{r5, lr}
 	mov	r4, #0
 	cmp	r0, #0x5f
@@ -130,7 +130,7 @@
 	bx	r1
 .func_end Func_8003f04
 
-.thumb_func_start Func_8003f3c
+.thumb_func_start Func_8003f3c  @ 0x08003f3c
 	push	{r5, r6, lr}
 	ldr	r3, =gSpriteSlots
 	lsl	r2, r0, #2

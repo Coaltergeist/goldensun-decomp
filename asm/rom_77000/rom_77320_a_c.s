@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CalcStats
+.thumb_func_start CalcStats  @ 0x08077428
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1024,7 +1024,7 @@
 	bx	r0
 .func_end CalcStats
 
-.thumb_func_start CheckLure
+.thumb_func_start CheckLure  @ 0x08077c10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1108,7 +1108,7 @@
 	bx	r0
 .func_end CheckLure
 
-.thumb_func_start Func_8077cb8
+.thumb_func_start Func_8077cb8  @ 0x08077cb8
 	push	{r5, lr}
 	ldr	r0, =2
 	bl	GetFile
@@ -1167,7 +1167,7 @@
 	bx	r1
 .func_end Func_8077cb8
 
-.thumb_func_start GameInit
+.thumb_func_start GameInit  @ 0x08077d38
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1399,7 +1399,7 @@
 	bx	r0
 .func_end GameInit
 
-.thumb_func_start Func_8077f40
+.thumb_func_start Func_8077f40  @ 0x08077f40
 	push	{lr}
 	mov	r0, #0x20
 	bl	SetFlag
@@ -1419,7 +1419,7 @@
 	bx	r0
 .func_end Func_8077f40
 
-.thumb_func_start Func_8077f70
+.thumb_func_start Func_8077f70  @ 0x08077f70
 	push	{r5, r6, lr}
 	mov	r0, #0x20
 	bl	ClearFlag
@@ -1554,7 +1554,7 @@
 	bx	r0
 .func_end Func_8077f70
 
-.thumb_func_start Func_807808c
+.thumb_func_start Func_807808c  @ 0x0807808c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1648,7 +1648,7 @@
 	bx	r0
 .func_end Func_807808c
 
-.thumb_func_start Func_8078144
+.thumb_func_start Func_8078144  @ 0x08078144
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_GotoIfNZ
+.thumb_func_start ActorCmd_GotoIfNZ  @ 0x0800d780
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -29,7 +29,7 @@
 	bx	r1
 .func_end ActorCmd_GotoIfNZ
 
-.thumb_func_start ActorCmd_GotoIfZ
+.thumb_func_start ActorCmd_GotoIfZ  @ 0x0800d7b4
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4

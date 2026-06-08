@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8020198
+.thumb_func_start Func_8020198  @ 0x08020198
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	sub	sp, #0x14
@@ -72,7 +72,7 @@
 	bx	r0
 .func_end Func_8020198
 
-.thumb_func_start Func_8020244
+.thumb_func_start Func_8020244  @ 0x08020244
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -743,7 +743,7 @@
 	bx	r1
 .func_end Func_8020244
 
-.thumb_func_start Menu_Save
+.thumb_func_start Menu_Save  @ 0x080207c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -859,7 +859,7 @@
 	bx	r1
 .func_end Menu_Save
 
-.thumb_func_start SystemMsgBox
+.thumb_func_start SystemMsgBox  @ 0x080208e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

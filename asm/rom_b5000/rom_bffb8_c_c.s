@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80c0eec
+.thumb_func_start Func_80c0eec  @ 0x080c0eec
 	push	{r5, lr}
 	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
@@ -85,7 +85,7 @@
 	bx	r1
 .func_end Func_80c0eec
 
-.thumb_func_start Func_80c0f98
+.thumb_func_start Func_80c0f98  @ 0x080c0f98
 	push	{r5, r6, lr}
 	mov	r5, r1
 	bl	GetBattleActor
@@ -152,7 +152,7 @@
 	bx	r0
 .func_end Func_80c0f98
 
-.thumb_func_start Func_80c1014
+.thumb_func_start Func_80c1014  @ 0x080c1014
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -188,7 +188,7 @@
 	bx	r0
 .func_end Func_80c1014
 
-.thumb_func_start Func_80c1054
+.thumb_func_start Func_80c1054  @ 0x080c1054
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x1c
 	mov	r5, sp
@@ -215,7 +215,7 @@
 	bx	r0
 .func_end Func_80c1054
 
-.thumb_func_start Func_80c1084
+.thumb_func_start Func_80c1084  @ 0x080c1084
 	push	{lr}
 	ldr	r3, =iwram_3001e74
 	ldr	r0, [r3]

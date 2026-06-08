@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_DjinnSet
+.thumb_func_start Anim_DjinnSet  @ 0x080cc5d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -392,7 +392,7 @@
 	bx	r0
 .func_end Anim_DjinnSet
 
-.thumb_func_start Func_80cc960
+.thumb_func_start Func_80cc960  @ 0x080cc960
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -576,7 +576,7 @@
 	bx	r0
 .func_end Func_80cc960
 
-.thumb_func_start Anim_UnleashIntro
+.thumb_func_start Anim_UnleashIntro  @ 0x080ccaec
 	push	{r5, r6, lr}
 	ldr	r1, =0x782c
 	mov	r6, r0
@@ -668,7 +668,7 @@
 	bx	r0
 .func_end Anim_UnleashIntro
 
-.thumb_func_start Func_80ccbdc
+.thumb_func_start Func_80ccbdc  @ 0x080ccbdc
 	push	{lr}
 	ldr	r0, =Func_80cc960
 	bl	StopTask

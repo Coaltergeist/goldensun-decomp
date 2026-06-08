@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Actor_IsNotMoving
+.thumb_func_start Actor_IsNotMoving  @ 0x0800ca98
 	push	{lr}
 	mov	r3, r0
 	add	r3, #0x55
@@ -33,7 +33,7 @@
 	bx	r1
 .func_end Actor_IsNotMoving
 
-.thumb_func_start UpdateActors
+.thumb_func_start UpdateActors  @ 0x0800cacc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

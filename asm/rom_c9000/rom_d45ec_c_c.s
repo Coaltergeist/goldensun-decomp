@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start BaseAnim_Nova
+.thumb_func_start BaseAnim_Nova  @ 0x080d4604
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -840,7 +840,7 @@
 	bx	r0
 .func_end BaseAnim_Nova
 
-.thumb_func_start Anim_Volcano
+.thumb_func_start Anim_Volcano  @ 0x080d4ce8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

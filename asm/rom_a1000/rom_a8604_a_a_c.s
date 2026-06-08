@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a8914
+.thumb_func_start Func_80a8914  @ 0x080a8914
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -216,7 +216,7 @@
 	bx	r0
 .func_end Func_80a8914
 
-.thumb_func_start Func_80a8b10
+.thumb_func_start Func_80a8b10  @ 0x080a8b10
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r0, r2
@@ -285,7 +285,7 @@
 	bx	r1
 .func_end Func_80a8b10
 
-.thumb_func_start Func_80a8b8c
+.thumb_func_start Func_80a8b8c  @ 0x080a8b8c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -363,7 +363,7 @@
 	bx	r1
 .func_end Func_80a8b8c
 
-.thumb_func_start LoadMoveRangeIcons
+.thumb_func_start LoadMoveRangeIcons  @ 0x080a8c2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -436,7 +436,7 @@
 	bx	r0
 .func_end LoadMoveRangeIcons
 
-.thumb_func_start Func_80a8cc0
+.thumb_func_start Func_80a8cc0  @ 0x080a8cc0
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -489,7 +489,7 @@
 	bx	r0
 .func_end Func_80a8cc0
 
-.thumb_func_start Func_80a8d34
+.thumb_func_start Func_80a8d34  @ 0x080a8d34
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -739,7 +739,7 @@
 	bx	r1
 .func_end Func_80a8d34
 
-.thumb_func_start Func_80a8f40
+.thumb_func_start Func_80a8f40  @ 0x080a8f40
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -905,7 +905,7 @@
 	bx	r1
 .func_end Func_80a8f40
 
-.thumb_func_start Func_80a90bc
+.thumb_func_start Func_80a90bc  @ 0x080a90bc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

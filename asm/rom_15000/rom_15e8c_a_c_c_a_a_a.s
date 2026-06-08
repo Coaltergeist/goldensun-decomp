@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CloseUIBox
+.thumb_func_start CloseUIBox  @ 0x08016418
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r7, r1
@@ -52,7 +52,7 @@
 	bx	r0
 .func_end CloseUIBox
 
-.thumb_func_start Func_8016478
+.thumb_func_start Func_8016478  @ 0x08016478
 	push	{r5, lr}
 	mov	r5, r0
 	ldrh	r2, [r5, #0x16]

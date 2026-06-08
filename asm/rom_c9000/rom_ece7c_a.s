@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Thrash
+.thumb_func_start Anim_Thrash  @ 0x080ece7c
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #0x24
@@ -22,7 +22,7 @@
 	bx	r0
 .func_end Anim_Thrash
 
-.thumb_func_start Anim_SevereBlow
+.thumb_func_start Anim_SevereBlow  @ 0x080eceac
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r3, #0x24

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start DrawMsgGlyph
+.thumb_func_start DrawMsgGlyph  @ 0x080178b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -203,7 +203,7 @@
 	bx	r1
 .func_end DrawMsgGlyph
 
-.thumb_func_start Func_8017a64
+.thumb_func_start Func_8017a64  @ 0x08017a64
 	push	{lr}
 	ldrh	r2, [r0]
 	mov	r1, #0
@@ -241,7 +241,7 @@
 	bx	r1
 .func_end Func_8017a64
 
-.thumb_func_start Func_8017aa4
+.thumb_func_start Func_8017aa4  @ 0x08017aa4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -409,7 +409,7 @@
 	bx	r0
 .func_end Func_8017aa4
 
-.thumb_func_start Func_8017c1c
+.thumb_func_start Func_8017c1c  @ 0x08017c1c
 	push	{r5, r6, r7, lr}
 	mov	r6, r3
 	ldr	r3, =iwram_3001e8c
@@ -467,7 +467,7 @@
 	bx	r0
 .func_end Func_8017c1c
 
-.thumb_func_start Func_8017c8c
+.thumb_func_start Func_8017c8c  @ 0x08017c8c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -610,7 +610,7 @@
 	bx	r0
 .func_end Func_8017c8c
 
-.thumb_func_start PrintNum
+.thumb_func_start PrintNum  @ 0x08017dd4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9

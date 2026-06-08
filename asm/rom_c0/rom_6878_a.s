@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start ReadFlashId
+.thumb_func_start ReadFlashId  @ 0x08006878
 	push	{r4, r5, lr}
 	sub	sp, #0x44
 	mov	r0, sp
@@ -71,7 +71,7 @@
 	bx	r1
 .func_end ReadFlashId
 
-.thumb_func_start IdentifyFlash
+.thumb_func_start IdentifyFlash  @ 0x08006910
 	push	{r4, lr}
 	ldr	r2, =REG_WAITCNT
 	ldrh	r0, [r2]
@@ -133,7 +133,7 @@
 	bx	r1
 .func_end IdentifyFlash
 
-.thumb_func_start FlashTimerIntr
+.thumb_func_start FlashTimerIntr  @ 0x080069a4
 	ldr	r1, =ewram_2004c22
 	ldrh	r0, [r1]
 	cmp	r0, #0
@@ -151,7 +151,7 @@
 	bx	lr
 .func_end FlashTimerIntr
 
-.thumb_func_start SetFlashTimerIntr
+.thumb_func_start SetFlashTimerIntr  @ 0x080069c8
 	mov	r2, r1
 	lsl	r0, #24
 	lsr	r1, r0, #24
@@ -178,7 +178,7 @@
 	bx	lr
 .func_end SetFlashTimerIntr
 
-.thumb_func_start StartFlashTimer
+.thumb_func_start StartFlashTimer  @ 0x08006a00
 	push	{r4, r5, lr}
 	lsl	r0, #24
 	lsr	r0, #24
@@ -225,7 +225,7 @@
 	bx	r0
 .func_end StartFlashTimer
 
-.thumb_func_start StopFlashTimer
+.thumb_func_start StopFlashTimer  @ 0x08006a78
 	ldr	r1, =ewram_2004c28
 	ldr	r0, [r1]
 	mov	r2, #0

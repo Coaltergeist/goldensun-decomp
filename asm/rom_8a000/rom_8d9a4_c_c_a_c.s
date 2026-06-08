@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start AllocGlobal1F
+.thumb_func_start AllocGlobal1F  @ 0x0808fecc
 	push	{lr}
 	mov	r1, #0xa8
 	lsl	r1, #3
@@ -23,7 +23,7 @@
 	bx	r1
 .func_end AllocGlobal1F
 
-.thumb_func_start ScreenTransitionIn
+.thumb_func_start ScreenTransitionIn  @ 0x0808fefc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -337,7 +337,7 @@
 	bx	r0
 .func_end ScreenTransitionIn
 
-.thumb_func_start ScreenTransitionOut
+.thumb_func_start ScreenTransitionOut  @ 0x080901c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start GetSpriteVoiceEntry
+.thumb_func_start GetSpriteVoiceEntry  @ 0x08091560
 	push	{lr}
 	mov	r2, r0
 	ldr	r0, =.L9e9f0

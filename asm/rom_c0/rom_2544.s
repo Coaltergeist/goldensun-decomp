@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_8002544
+.arm_func_start Func_8002544  @ 0x08002544
 	push	{r5, r6, r7, r9, lr}
 	ldrb	r2, [r0], #1
 	cmp	r2, #0
@@ -207,7 +207,7 @@
 	b	.L27d8
 .func_end Func_8002544
 
-.arm_func_start Func_8002808
+.arm_func_start Func_8002808  @ 0x08002808
 	ldrb	r2, [r0], #1
 	cmp	r2, #2
 	movne	r0, #4
@@ -549,7 +549,7 @@
 	b	.L2c10
 .func_end Func_8002808
 
-.arm_func_start Func_8002cf4
+.arm_func_start Func_8002cf4  @ 0x08002cf4
 	stmfd	sp!, {r5}
 	add	r0, #4
 .L2cfc:
@@ -582,7 +582,7 @@
 	b	.L2d3c
 .func_end Func_8002cf4
 
-.arm_func_start ROM_FixupRamCode
+.arm_func_start ROM_FixupRamCode  @ 0x08002d5c
 	push	{r5, r6}
 	add	r1, r1
 	add	r2, r0, r1

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095fcc
+.thumb_func_start Func_8095fcc  @ 0x08095fcc
 	push	{r5, r6, r7, lr}
 	ldr	r3, =gState
 	mov	r1, #0xfa
@@ -58,7 +58,7 @@
 	bx	r0
 .func_end Func_8095fcc
 
-.thumb_func_start Func_8096048
+.thumb_func_start Func_8096048  @ 0x08096048
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -174,7 +174,7 @@
 	bx	r0
 .func_end Func_8096048
 
-.thumb_func_start GetVenusDjinni
+.thumb_func_start GetVenusDjinni  @ 0x08096140
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -479,7 +479,7 @@
 	bx	r0
 .func_end GetVenusDjinni
 
-.thumb_func_start Func_809641c
+.thumb_func_start Func_809641c  @ 0x0809641c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -640,7 +640,7 @@
 	bx	r0
 .func_end Func_809641c
 
-.thumb_func_start Func_8096574
+.thumb_func_start Func_8096574  @ 0x08096574
 	ldr	r4, [r0, #0x68]
 	ldr	r1, [r0, #8]
 	ldr	r3, [r4, #8]
@@ -669,7 +669,7 @@
 	bx	lr
 .func_end Func_8096574
 
-.thumb_func_start GetMercuryDjinni
+.thumb_func_start GetMercuryDjinni  @ 0x080965a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

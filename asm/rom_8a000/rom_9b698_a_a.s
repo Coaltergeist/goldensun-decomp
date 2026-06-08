@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Field_Avoid
+.thumb_func_start Field_Avoid  @ 0x0809b698
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -154,7 +154,7 @@
 	bx	r0
 .func_end Field_Avoid
 
-.thumb_func_start Func_809b804
+.thumb_func_start Func_809b804  @ 0x0809b804
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r5
@@ -210,7 +210,7 @@
 	bx	r0
 .func_end Func_809b804
 
-.thumb_func_start Func_809b86c
+.thumb_func_start Func_809b86c  @ 0x0809b86c
 	push	{r5, r6, r7, lr}
 	mov	r4, r0
 	mov	r3, r4
@@ -270,7 +270,7 @@
 	bx	r0
 .func_end Func_809b86c
 
-.thumb_func_start Func_809b8f4
+.thumb_func_start Func_809b8f4  @ 0x0809b8f4
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	mov	r2, #0x80

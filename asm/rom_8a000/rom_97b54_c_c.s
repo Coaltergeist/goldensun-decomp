@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Douse
+.thumb_func_start Field_Douse  @ 0x080999f0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -379,7 +379,7 @@
 	bx	r0
 .func_end Field_Douse
 
-.thumb_func_start Func_8099d18
+.thumb_func_start Func_8099d18  @ 0x08099d18
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -437,7 +437,7 @@
 	bx	r0
 .func_end Func_8099d18
 
-.thumb_func_start Field_Carry_Target
+.thumb_func_start Field_Carry_Target  @ 0x08099da4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -993,7 +993,7 @@
 	bx	r0
 .func_end Field_Carry_Target
 
-.thumb_func_start Field_Carry
+.thumb_func_start Field_Carry  @ 0x0809a294
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1128,7 +1128,7 @@
 	bx	r0
 .func_end Field_Carry
 
-.thumb_func_start Func_809a3c4
+.thumb_func_start Func_809a3c4  @ 0x0809a3c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

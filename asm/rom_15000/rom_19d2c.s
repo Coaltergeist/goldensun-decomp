@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start GetPortrait
+.thumb_func_start GetPortrait  @ 0x08019d2c
 	push	{r5, lr}
 	mov	r1, #1
 	neg	r1, r1
@@ -66,7 +66,7 @@
 	bx	r1
 .func_end GetPortrait
 
-.thumb_func_start Func_8019da8
+.thumb_func_start Func_8019da8  @ 0x08019da8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -145,7 +145,7 @@
 	bx	r1
 .func_end Func_8019da8
 
-.thumb_func_start Func_8019e48
+.thumb_func_start Func_8019e48  @ 0x08019e48
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r2, #0xa0

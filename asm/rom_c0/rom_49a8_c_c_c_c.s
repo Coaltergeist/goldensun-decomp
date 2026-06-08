@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start MatrixLook
+.thumb_func_start MatrixLook  @ 0x080051e8
 	push	{r5, lr}
 	sub	sp, #0x30
 	mov	r5, sp

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f2028
+.thumb_func_start Func_80f2028  @ 0x080f2028
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -548,7 +548,7 @@
 	bx	r0
 .func_end Func_80f2028
 
-.thumb_func_start LoadGS1TitleGFX
+.thumb_func_start LoadGS1TitleGFX  @ 0x080f24a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -801,7 +801,7 @@
 	bx	r0
 .func_end LoadGS1TitleGFX
 
-.thumb_func_start StartTitleScreen
+.thumb_func_start StartTitleScreen  @ 0x080f26ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

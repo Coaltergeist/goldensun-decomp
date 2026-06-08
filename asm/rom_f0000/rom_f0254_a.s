@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f0254
+.thumb_func_start Func_80f0254  @ 0x080f0254
 	push	{r5, lr}
 	sub	sp, #4
 	cmp	r0, #0
@@ -38,7 +38,7 @@
 	bx	r0
 .func_end Func_80f0254
 
-.thumb_func_start LoadGS1CreditsBG
+.thumb_func_start LoadGS1CreditsBG  @ 0x080f02b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -123,7 +123,7 @@
 	bx	r0
 .func_end LoadGS1CreditsBG
 
-.thumb_func_start Func_80f037c
+.thumb_func_start Func_80f037c  @ 0x080f037c
 	push	{lr}
 	mov	r2, #0x80
 	ldr	r1, =0x1ff01ff

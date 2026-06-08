@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809259c
+.thumb_func_start Func_809259c  @ 0x0809259c
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetFieldActor

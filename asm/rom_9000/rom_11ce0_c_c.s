@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start TestCollision
+.thumb_func_start TestCollision  @ 0x080120dc
 	push	{r5, r6, r7, lr}
 	mov	r3, #0xa
 	ldrsh	r6, [r1, r3]

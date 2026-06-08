@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80944ec
+.thumb_func_start Func_80944ec  @ 0x080944ec
 	ldr	r3, =iwram_3001ed8
 	mov	r2, #0xf0
 	ldr	r0, [r3]
@@ -35,7 +35,7 @@
 	bx	lr
 .func_end Func_80944ec
 
-.thumb_func_start Func_8094544
+.thumb_func_start Func_8094544  @ 0x08094544
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -274,7 +274,7 @@
 	bx	r0
 .func_end Func_8094544
 
-.thumb_func_start Func_8094730
+.thumb_func_start Func_8094730  @ 0x08094730
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -346,7 +346,7 @@
 	bx	r0
 .func_end Func_8094730
 
-.thumb_func_start Func_80947e4
+.thumb_func_start Func_80947e4  @ 0x080947e4
 	push	{lr}
 	ldr	r0, =Func_80944ec
 	bl	StopTask
@@ -366,7 +366,7 @@
 	bx	r0
 .func_end Func_80947e4
 
-.thumb_func_start Task_Rain
+.thumb_func_start Task_Rain  @ 0x08094820
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -564,7 +564,7 @@
 	bx	r0
 .func_end Task_Rain
 
-.thumb_func_start Task_Thunder
+.thumb_func_start Task_Thunder  @ 0x080949a8
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ec8
 	mov	r1, #0xfc
@@ -685,7 +685,7 @@
 	bx	r0
 .func_end Task_Thunder
 
-.thumb_func_start StartRain
+.thumb_func_start StartRain  @ 0x08094ac8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -789,7 +789,7 @@
 	bx	r0
 .func_end StartRain
 
-.thumb_func_start Task_Snow
+.thumb_func_start Task_Snow  @ 0x08094bbc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1030,7 +1030,7 @@
 	bx	r0
 .func_end Task_Snow
 
-.thumb_func_start StartSnow
+.thumb_func_start StartSnow  @ 0x08094da0
 	push	{r5, r6, r7, lr}
 	mov	r1, #0x82
 	lsl	r1, #3
@@ -1124,7 +1124,7 @@
 	bx	r0
 .func_end StartSnow
 
-.thumb_func_start Task_Earthquake
+.thumb_func_start Task_Earthquake  @ 0x08094e7c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1396,7 +1396,7 @@
 	bx	r0
 .func_end Task_Earthquake
 
-.thumb_func_start StartEarthquake
+.thumb_func_start StartEarthquake  @ 0x0809509c
 	push	{r5, r6, r7, lr}
 	mov	r1, #0x82
 	lsl	r1, #3
@@ -1481,7 +1481,7 @@
 	bx	r0
 .func_end StartEarthquake
 
-.thumb_func_start StartThunder
+.thumb_func_start StartThunder  @ 0x08095160
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -1551,7 +1551,7 @@
 	bx	r0
 .func_end StartThunder
 
-.thumb_func_start Func_8095214
+.thumb_func_start Func_8095214  @ 0x08095214
 	push	{lr}
 	ldr	r1, =0x1f88
 	mov	r0, #0x1e
@@ -1569,7 +1569,7 @@
 	bx	r0
 .func_end Func_8095214
 
-.thumb_func_start Func_8095240
+.thumb_func_start Func_8095240  @ 0x08095240
 	push	{lr}
 	ldr	r1, =0x1f88
 	mov	r0, #0x1e
@@ -1587,7 +1587,7 @@
 	bx	r0
 .func_end Func_8095240
 
-.thumb_func_start Func_8095268
+.thumb_func_start Func_8095268  @ 0x08095268
 	push	{lr}
 	ldr	r1, =0x1f88
 	mov	r0, #0x1e
@@ -1605,7 +1605,7 @@
 	bx	r0
 .func_end Func_8095268
 
-.thumb_func_start StartThunder2
+.thumb_func_start StartThunder2  @ 0x08095290
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -1682,7 +1682,7 @@
 	bx	r0
 .func_end StartThunder2
 
-.thumb_func_start Func_8095348
+.thumb_func_start Func_8095348  @ 0x08095348
 	ldr	r4, [r0, #0x68]
 	ldr	r1, [r0, #8]
 	ldr	r3, [r4, #8]
@@ -1711,7 +1711,7 @@
 	bx	lr
 .func_end Func_8095348
 
-.thumb_func_start Func_809537c
+.thumb_func_start Func_809537c  @ 0x0809537c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1960,7 +1960,7 @@
 	bx	r0
 .func_end Func_809537c
 
-.thumb_func_start Func_80955b0
+.thumb_func_start Func_80955b0  @ 0x080955b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2059,7 +2059,7 @@
 	bx	r0
 .func_end Func_80955b0
 
-.thumb_func_start Func_8095680
+.thumb_func_start Func_8095680  @ 0x08095680
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -2169,7 +2169,7 @@
 	bx	r0
 .func_end Func_8095680
 
-.thumb_func_start Func_8095778
+.thumb_func_start Func_8095778  @ 0x08095778
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

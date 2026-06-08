@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start VBlank
+.thumb_func_start VBlank  @ 0x08003650
 	push	{r5, lr}
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -142,7 +142,7 @@
 	.word 1
 .func_end VBlank
 
-.thumb_func_start SetSoundFXMode
+.thumb_func_start SetSoundFXMode  @ 0x080037d4
 	push	{lr}
 	cmp	r0, #4
 	bls	.L37dc

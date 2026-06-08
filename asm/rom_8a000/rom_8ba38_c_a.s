@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start FindMapActorEvent
+.thumb_func_start FindMapActorEvent  @ 0x0808d48c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

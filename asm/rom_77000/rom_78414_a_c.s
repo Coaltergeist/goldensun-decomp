@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start CanEquipItem
+.thumb_func_start CanEquipItem  @ 0x0807842c
 	push	{r5, r6, lr}
 	mov	r5, r1
 	bl	GetUnit

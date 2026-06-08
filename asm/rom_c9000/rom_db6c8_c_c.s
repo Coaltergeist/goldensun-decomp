@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start BaseAnim_Blast
+.thumb_func_start BaseAnim_Blast  @ 0x080db6e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

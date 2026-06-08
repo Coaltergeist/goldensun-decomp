@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CreateSummonSprite
+.thumb_func_start CreateSummonSprite  @ 0x080dbb24
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Task_BlitAnim
+.thumb_func_start Task_BlitAnim  @ 0x080cd260
 	push	{r5, r6, lr}
 	ldr	r0, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -110,7 +110,7 @@
 	bx	r0
 .func_end Task_BlitAnim
 
-.thumb_func_start Task_BlitAnim_BG1Wide
+.thumb_func_start Task_BlitAnim_BG1Wide  @ 0x080cd358
 	push	{r5, lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r2, =0x7824
@@ -197,7 +197,7 @@
 	bx	r0
 .func_end Task_BlitAnim_BG1Wide
 
-.thumb_func_start Func_80cd418
+.thumb_func_start Func_80cd418  @ 0x080cd418
 	ldr	r3, =iwram_3001eec
 	ldr	r0, =0x77bc
 	ldr	r2, [r3]
@@ -248,7 +248,7 @@
 	bx	lr
 .func_end Func_80cd418
 
-.thumb_func_start Func_80cd488
+.thumb_func_start Func_80cd488  @ 0x080cd488
 	ldr	r3, =iwram_3001eec
 	ldr	r0, =0x77d0
 	ldr	r2, [r3]
@@ -264,7 +264,7 @@
 	bx	lr
 .func_end Func_80cd488
 
-.thumb_func_start Func_80cd4b4
+.thumb_func_start Func_80cd4b4  @ 0x080cd4b4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e74
 	ldr	r1, =0x77b4

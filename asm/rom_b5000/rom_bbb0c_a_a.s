@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bbb0c
+.thumb_func_start Func_80bbb0c  @ 0x080bbb0c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2875,7 +2875,7 @@
 	bx	r1
 .func_end Func_80bbb0c
 
-.thumb_func_start Func_80bd3c8
+.thumb_func_start Func_80bd3c8  @ 0x080bd3c8
 	push	{lr}
 	cmp	r0, #0x7e
 	bne	.Lbd3d2
@@ -2892,7 +2892,7 @@
 	bx	r1
 .func_end Func_80bd3c8
 
-.thumb_func_start Func_80bd3e4
+.thumb_func_start Func_80bd3e4  @ 0x080bd3e4
 	push	{r5, lr}
 	mov	r5, r9
 	push	{r5}
@@ -2927,7 +2927,7 @@
 	bx	r1
 .func_end Func_80bd3e4
 
-.thumb_func_start Func_80bd424
+.thumb_func_start Func_80bd424  @ 0x080bd424
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -3394,7 +3394,7 @@
 	bx	r1
 .func_end Func_80bd424
 
-.thumb_func_start Func_80bd7a4
+.thumb_func_start Func_80bd7a4  @ 0x080bd7a4
 	push	{lr}
 	mov	r2, #0x84
 	ldr	r3, =REG_DMA3SAD

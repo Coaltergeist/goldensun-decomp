@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_809bb64
+.thumb_func_start Func_809bb64  @ 0x0809bb64
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x20
 	sub	sp, #0xc
@@ -163,7 +163,7 @@
 	bx	r0
 .func_end Func_809bb64
 
-.thumb_func_start Func_809bcd4
+.thumb_func_start Func_809bcd4  @ 0x0809bcd4
 	push	{r5, lr}
 	ldr	r5, =gBuffer
 	ldrh	r0, [r5]
@@ -178,7 +178,7 @@
 	bx	r0
 .func_end Func_809bcd4
 
-.thumb_func_start Func_809bcf8
+.thumb_func_start Func_809bcf8  @ 0x0809bcf8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -709,7 +709,7 @@
 	bx	r0
 .func_end Func_809bcf8
 
-.thumb_func_start Func_809c138
+.thumb_func_start Func_809c138  @ 0x0809c138
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -912,7 +912,7 @@
 	.word	0
 .func_end Func_809c138
 
-.thumb_func_start Func_809c314
+.thumb_func_start Func_809c314  @ 0x0809c314
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -982,7 +982,7 @@
 	bx	r0
 .func_end Func_809c314
 
-.thumb_func_start Func_809c3a4
+.thumb_func_start Func_809c3a4  @ 0x0809c3a4
 	push	{r5, r6, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b

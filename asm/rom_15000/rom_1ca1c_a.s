@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801ca1c
+.thumb_func_start Func_801ca1c  @ 0x0801ca1c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -92,7 +92,7 @@
 	bx	r0
 .func_end Func_801ca1c
 
-.thumb_func_start Func_801cae0
+.thumb_func_start Func_801cae0  @ 0x0801cae0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -165,7 +165,7 @@
 	bx	r0
 .func_end Func_801cae0
 
-.thumb_func_start Func_801cbd4
+.thumb_func_start Func_801cbd4  @ 0x0801cbd4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r0, =0x576
@@ -226,7 +226,7 @@
 	bx	r1
 .func_end Func_801cbd4
 
-.thumb_func_start Func_801cc50
+.thumb_func_start Func_801cc50  @ 0x0801cc50
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r2
@@ -283,7 +283,7 @@
 	bx	r1
 .func_end Func_801cc50
 
-.thumb_func_start SetUIColor
+.thumb_func_start SetUIColor  @ 0x0801ccc0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -430,7 +430,7 @@
 	bx	r0
 .func_end SetUIColor
 
-.thumb_func_start Func_801ce48
+.thumb_func_start Func_801ce48  @ 0x0801ce48
 	push	{lr}
 	ldr	r1, =0x574
 	add	r0, r1
@@ -449,7 +449,7 @@
 	bx	r0
 .func_end Func_801ce48
 
-.thumb_func_start Func_801ce6c
+.thumb_func_start Func_801ce6c  @ 0x0801ce6c
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2
@@ -468,7 +468,7 @@
 	bx	r0
 .func_end Func_801ce6c
 
-.thumb_func_start Func_801ce90
+.thumb_func_start Func_801ce90  @ 0x0801ce90
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2
@@ -509,7 +509,7 @@
 	bx	r0
 .func_end Func_801ce90
 
-.thumb_func_start Func_801cee0
+.thumb_func_start Func_801cee0  @ 0x0801cee0
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2

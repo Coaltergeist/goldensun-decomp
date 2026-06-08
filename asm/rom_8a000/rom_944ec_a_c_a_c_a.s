@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095c08
+.thumb_func_start Func_8095c08  @ 0x08095c08
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -221,7 +221,7 @@
 	bx	r0
 .func_end Func_8095c08
 
-.thumb_func_start GetMarsDjinni
+.thumb_func_start GetMarsDjinni  @ 0x08095dd0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

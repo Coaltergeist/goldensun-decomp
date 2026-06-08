@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Field_Whirlwind
+.thumb_func_start Field_Whirlwind  @ 0x0809a8c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -203,7 +203,7 @@
 	bx	r0
 .func_end Field_Whirlwind
 
-.thumb_func_start Func_809aa98
+.thumb_func_start Func_809aa98  @ 0x0809aa98
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

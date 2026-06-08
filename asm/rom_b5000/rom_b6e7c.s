@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start GetWeaponType
+.thumb_func_start GetWeaponType  @ 0x080b6e7c
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r4, #0

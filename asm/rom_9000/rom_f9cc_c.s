@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start UpdateScreenEdge_V
+.thumb_func_start UpdateScreenEdge_V  @ 0x0800fec8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -67,7 +67,7 @@
 	bx	r0
 .func_end UpdateScreenEdge_V
 
-.thumb_func_start UpdateScreenEdge_H
+.thumb_func_start UpdateScreenEdge_H  @ 0x0800ff54
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -148,7 +148,7 @@
 	bx	r0
 .func_end UpdateScreenEdge_H
 
-.thumb_func_start UpdateFieldScreen
+.thumb_func_start UpdateFieldScreen  @ 0x08010000
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -423,7 +423,7 @@
 	bx	r0
 .func_end UpdateFieldScreen
 
-.thumb_func_start Func_8010230
+.thumb_func_start Func_8010230  @ 0x08010230
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

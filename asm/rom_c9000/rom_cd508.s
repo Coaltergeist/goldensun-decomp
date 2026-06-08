@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80cd508
+.thumb_func_start Func_80cd508  @ 0x080cd508
 	push	{lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r0, [r3]
@@ -14,7 +14,7 @@
 	bx	r0
 .func_end Func_80cd508
 
-.thumb_func_start Func_80cd52c
+.thumb_func_start Func_80cd52c  @ 0x080cd52c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -64,7 +64,7 @@
 	bx	r0
 .func_end Func_80cd52c
 
-.thumb_func_start AnimStart
+.thumb_func_start AnimStart  @ 0x080cd594
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -387,7 +387,7 @@
 	bx	r0
 .func_end AnimStart
 
-.thumb_func_start AnimStart2
+.thumb_func_start AnimStart2  @ 0x080cd86c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -700,7 +700,7 @@
 	bx	r0
 .func_end AnimStart2
 
-.thumb_func_start Func_80cdb24
+.thumb_func_start Func_80cdb24  @ 0x080cdb24
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -780,7 +780,7 @@
 	bx	r0
 .func_end Func_80cdb24
 
-.thumb_func_start AnimEnd
+.thumb_func_start AnimEnd  @ 0x080cdbc0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -921,7 +921,7 @@
 	bx	r0
 .func_end AnimEnd
 
-.thumb_func_start Func_80cdd14
+.thumb_func_start Func_80cdd14  @ 0x080cdd14
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f00
 	ldr	r2, [r3]
@@ -949,7 +949,7 @@
 	bx	r0
 .func_end Func_80cdd14
 
-.thumb_func_start InitRenderTilemapBG1
+.thumb_func_start InitRenderTilemapBG1  @ 0x080cdd58
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1092,7 +1092,7 @@
 	bx	r0
 .func_end InitRenderTilemapBG1
 
-.thumb_func_start DrawLine
+.thumb_func_start DrawLine  @ 0x080cde90
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1323,7 +1323,7 @@
 	bx	r0
 .func_end DrawLine
 
-.thumb_func_start Anim_PlanetDiver
+.thumb_func_start Anim_PlanetDiver  @ 0x080ce034
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1867,7 +1867,7 @@
 	bx	r0
 .func_end Anim_PlanetDiver
 
-.thumb_func_start Anim_Haunt
+.thumb_func_start Anim_Haunt  @ 0x080ce4e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2264,7 +2264,7 @@
 	bx	r0
 .func_end Anim_Haunt
 
-.thumb_func_start Anim_Confuse
+.thumb_func_start Anim_Confuse  @ 0x080ce85c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

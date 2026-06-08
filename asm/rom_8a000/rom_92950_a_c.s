@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092adc
+.thumb_func_start Func_8092adc  @ 0x08092adc
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r6, r2
@@ -20,7 +20,7 @@
 	bx	r0
 .func_end Func_8092adc
 
-.thumb_func_start Func_8092b08
+.thumb_func_start Func_8092b08  @ 0x08092b08
 	push	{r5, r6, lr}
 	mov	r5, r1
 	bl	GetFieldActor
@@ -61,7 +61,7 @@
 	bx	r0
 .func_end Func_8092b08
 
-.thumb_func_start Func_8092b54
+.thumb_func_start Func_8092b54  @ 0x08092b54
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}

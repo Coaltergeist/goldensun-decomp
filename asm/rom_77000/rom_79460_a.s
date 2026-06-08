@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start InitEnemyUnit
+.thumb_func_start InitEnemyUnit  @ 0x08079460
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

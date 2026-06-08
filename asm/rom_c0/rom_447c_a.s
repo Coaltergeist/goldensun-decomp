@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start vec3_translate
+.thumb_func_start vec3_translate  @ 0x0800447c
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -36,7 +36,7 @@
 	bx	r0
 .func_end vec3_translate
 
-.thumb_func_start atan2
+.thumb_func_start atan2  @ 0x080044d0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1

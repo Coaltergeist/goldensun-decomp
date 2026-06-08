@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Debug_LoadPresetParty
+.thumb_func_start Debug_LoadPresetParty  @ 0x080b5368
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -239,7 +239,7 @@
 	bx	r1
 .func_end Debug_LoadPresetParty
 
-.thumb_func_start Func_80b5534
+.thumb_func_start Func_80b5534  @ 0x080b5534
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -437,7 +437,7 @@
 	b	.Lb559c
 .func_end Func_80b5534
 
-.thumb_func_start Debug_BattleTest
+.thumb_func_start Debug_BattleTest  @ 0x080b56e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -616,7 +616,7 @@
 .func_end Debug_BattleTest
 
 
-.thumb_func_start Func_80b5864
+.thumb_func_start Func_80b5864  @ 0x080b5864
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e80
 	mov	r2, r3
@@ -736,7 +736,7 @@
 	bx	r0
 .func_end Func_80b5864
 
-.thumb_func_start Func_80b595c
+.thumb_func_start Func_80b595c  @ 0x080b595c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

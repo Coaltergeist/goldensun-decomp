@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start ResetPCs
+.thumb_func_start ResetPCs  @ 0x08078ee8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9

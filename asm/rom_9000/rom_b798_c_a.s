@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start InitSprite
+.thumb_func_start InitSprite  @ 0x0800b7c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -91,7 +91,7 @@
 	bx	r1
 .func_end InitSprite
 
-.thumb_func_start InitSpriteLayer
+.thumb_func_start InitSpriteLayer  @ 0x0800b868
 	push	{r5, r6, lr}
 	mov	r5, r0
 	cmp	r5, #0
@@ -128,7 +128,7 @@
 	bx	r0
 .func_end InitSpriteLayer
 
-.thumb_func_start Sprite_AddLayer
+.thumb_func_start Sprite_AddLayer  @ 0x0800b8ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -207,7 +207,7 @@
 	bx	r1
 .func_end Sprite_AddLayer
 
-.thumb_func_start Sprite_DeleteLayer
+.thumb_func_start Sprite_DeleteLayer  @ 0x0800b93c
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1
@@ -267,7 +267,7 @@
 	bx	r0
 .func_end Sprite_DeleteLayer
 
-.thumb_func_start Sprite_DeleteLayerIndex
+.thumb_func_start Sprite_DeleteLayerIndex  @ 0x0800b9a4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r7, r1
@@ -313,7 +313,7 @@
 	bx	r0
 .func_end Sprite_DeleteLayerIndex
 
-.thumb_func_start SpriteLayer_SetAnim
+.thumb_func_start SpriteLayer_SetAnim  @ 0x0800b9f4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r3, [r5, #0xc]
@@ -346,7 +346,7 @@
 	bx	r0
 .func_end SpriteLayer_SetAnim
 
-.thumb_func_start Sprite_SetAnim
+.thumb_func_start Sprite_SetAnim  @ 0x0800ba30
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

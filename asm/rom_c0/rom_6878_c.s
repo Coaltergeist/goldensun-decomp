@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start SetReadFlash1
+.thumb_func_start SetReadFlash1  @ 0x08006ac0
 	mov	r2, r0
 	ldr	r1, =ewram_2004c1c
 	add	r0, r2, #1
@@ -31,7 +31,7 @@
 	bx	lr
 .func_end SetReadFlash1
 
-.thumb_func_start WaitForFlashWrite_Common
+.thumb_func_start WaitForFlashWrite_Common  @ 0x08006af8
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -101,7 +101,7 @@
 	bx	r1
 .func_end WaitForFlashWrite_Common
 
-.thumb_func_start ReadFlash_Core
+.thumb_func_start ReadFlash_Core  @ 0x08006b84
 	push	{r4, lr}
 	mov	r4, r0
 	sub	r3, r2, #1
@@ -123,7 +123,7 @@
 	bx	r0
 .func_end ReadFlash_Core
 
-.thumb_func_start ReadFlash
+.thumb_func_start ReadFlash  @ 0x08006ba8
 	push	{r4, r5, r6, r7, lr}
 	sub	sp, #0x80
 	mov	r5, r1
@@ -180,7 +180,7 @@
 	bx	r0
 .func_end ReadFlash
 
-.thumb_func_start VerifyFlashSector_Core
+.thumb_func_start VerifyFlashSector_Core  @ 0x08006c24
 	push	{r4, r5, lr}
 	mov	r4, r0
 	mov	r3, r1
@@ -218,7 +218,7 @@
 	bx	r1
 .func_end VerifyFlashSector_Core
 
-.thumb_func_start VerifyFlashSector
+.thumb_func_start VerifyFlashSector  @ 0x08006c68
 	push	{r4, r5, lr}
 	sub	sp, #0x100
 	mov	r5, r1
@@ -272,7 +272,7 @@
 	bx	r1
 .func_end VerifyFlashSector
 
-.thumb_func_start EraseFlashChip_MX
+.thumb_func_start EraseFlashChip_MX  @ 0x08006cdc
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	ldr	r5, =REG_WAITCNT
@@ -318,7 +318,7 @@
 	bx	r1
 .func_end EraseFlashChip_MX
 
-.thumb_func_start EraseFlashSector_MX
+.thumb_func_start EraseFlashSector_MX  @ 0x08006d50
 	push	{r4, r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -386,7 +386,7 @@
 	bx	r1
 .func_end EraseFlashSector_MX
 
-.thumb_func_start ProgramByte
+.thumb_func_start ProgramByte  @ 0x08006dec
 	push	{r4, lr}
 	ldr	r4, =0xe005555
 	mov	r2, #0xaa
@@ -410,7 +410,7 @@
 	bx	r1
 .func_end ProgramByte
 
-.thumb_func_start ProgramFlashSector_MX
+.thumb_func_start ProgramFlashSector_MX  @ 0x08006e24
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r9
 	mov	r6, r8
@@ -555,7 +555,7 @@
 	bx	r1
 .func_end ProgramFlashSector_MX
 
-.thumb_func_start Func_8006f48
+.thumb_func_start Func_8006f48  @ 0x08006f48
 	mov	r2, r0
 	ldr	r0, =ewram_2004c08
 	ldr	r0, [r0]
@@ -578,7 +578,7 @@
 	bx	lr
 .func_end Func_8006f48
 
-.thumb_func_start Func_8006f6c
+.thumb_func_start Func_8006f6c  @ 0x08006f6c
 	push	{lr}
 	bl	_call_via_r1
 	cmp	r0, #0
@@ -592,7 +592,7 @@
 	bx	r1
 .func_end Func_8006f6c
 
-.thumb_func_start Func_8006f84
+.thumb_func_start Func_8006f84  @ 0x08006f84
 	push	{r4, r5, r6, r7, lr}
 	sub	sp, #0x40
 	mov	r7, r1
@@ -670,7 +670,7 @@
 	bx	r1
 .func_end Func_8006f84
 
-.thumb_func_start Func_8007028
+.thumb_func_start Func_8007028  @ 0x08007028
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	mov	r0, sp
@@ -715,7 +715,7 @@
 	bx	r1
 .func_end Func_8007028
 
-.thumb_func_start Func_8007098
+.thumb_func_start Func_8007098  @ 0x08007098
 	push	{r4, r5, lr}
 	lsl	r0, #16
 	ldr	r3, =.L7c10
@@ -775,7 +775,7 @@
 	bx	r1
 .func_end Func_8007098
 
-.thumb_func_start Func_800711c
+.thumb_func_start Func_800711c  @ 0x0800711c
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	lsl	r0, #16
@@ -847,7 +847,7 @@
 	bx	r1
 .func_end Func_800711c
 
-.thumb_func_start Func_80071a8
+.thumb_func_start Func_80071a8  @ 0x080071a8
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	lsl	r0, #16
@@ -901,7 +901,7 @@
 	bx	r1
 .func_end Func_80071a8
 
-.thumb_func_start Func_8007220
+.thumb_func_start Func_8007220  @ 0x08007220
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

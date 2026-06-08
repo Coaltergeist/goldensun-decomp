@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a9374
+.thumb_func_start Func_80a9374  @ 0x080a9374
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r0, r1

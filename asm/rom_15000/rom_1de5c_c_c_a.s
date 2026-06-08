@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start DrawSmallText
+.thumb_func_start DrawSmallText  @ 0x0801e74c
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -59,7 +59,7 @@
 	bx	r0
 .func_end DrawSmallText
 
-.thumb_func_start Func_801e7c0
+.thumb_func_start Func_801e7c0  @ 0x0801e7c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -135,7 +135,7 @@
 	bx	r0
 .func_end Func_801e7c0
 
-.thumb_func_start Func_801e858
+.thumb_func_start Func_801e858  @ 0x0801e858
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -183,7 +183,7 @@
 	bx	r0
 .func_end Func_801e858
 
-.thumb_func_start Func_801e8b0
+.thumb_func_start Func_801e8b0  @ 0x0801e8b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -257,7 +257,7 @@
 	bx	r0
 .func_end Func_801e8b0
 
-.thumb_func_start UIDrawText
+.thumb_func_start UIDrawText  @ 0x0801e940
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -308,7 +308,7 @@
 	bx	r0
 .func_end UIDrawText
 
-.thumb_func_start Func_801e9a0
+.thumb_func_start Func_801e9a0  @ 0x0801e9a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -334,7 +334,7 @@
 	bx	r0
 .func_end Func_801e9a0
 
-.thumb_func_start Func_801e9d4
+.thumb_func_start Func_801e9d4  @ 0x0801e9d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -360,7 +360,7 @@
 	bx	r0
 .func_end Func_801e9d4
 
-.thumb_func_start Func_801ea08
+.thumb_func_start Func_801ea08  @ 0x0801ea08
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -386,7 +386,7 @@
 	bx	r0
 .func_end Func_801ea08
 
-.thumb_func_start Func_801ea3c
+.thumb_func_start Func_801ea3c  @ 0x0801ea3c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -460,7 +460,7 @@
 	bx	r0
 .func_end Func_801ea3c
 
-.thumb_func_start Func_801eadc
+.thumb_func_start Func_801eadc  @ 0x0801eadc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f4100
+.thumb_func_start Func_80f4100  @ 0x080f4100
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -58,7 +58,7 @@
 	bx	r1
 .func_end Func_80f4100
 
-.thumb_func_start LuckyDiceMain
+.thumb_func_start LuckyDiceMain  @ 0x080f4168
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

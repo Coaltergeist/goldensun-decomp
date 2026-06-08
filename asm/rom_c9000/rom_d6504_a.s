@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Task_SpinCamera
+.thumb_func_start Task_SpinCamera  @ 0x080d6504
 	push	{lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r2, [r3]
@@ -45,7 +45,7 @@
 	bx	r0
 .func_end Task_SpinCamera
 
-.thumb_func_start Unk_080D655C
+.thumb_func_start Unk_080D655C  @ 0x080d655c
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, #0
@@ -62,7 +62,7 @@
 	bx	r0
 .func_end Unk_080D655C
 
-.thumb_func_start Anim_Summon
+.thumb_func_start Anim_Summon  @ 0x080d6578
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, =0x302
@@ -158,7 +158,7 @@
 	bx	r0
 .func_end Anim_Summon
 
-.thumb_func_start Anim_Func
+.thumb_func_start Anim_Func  @ 0x080d6660
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, =0x302
@@ -200,7 +200,7 @@
 	bx	r0
 .func_end Anim_Func
 
-.thumb_func_start Func_80d66cc
+.thumb_func_start Func_80d66cc  @ 0x080d66cc
 	push	{r5, r6, lr}
 	ldr	r6, =gBuffer
 	ldr	r5, .Ld66f8	@ 0xfff1
@@ -259,7 +259,7 @@
 	bx	r0
 .func_end Func_80d66cc
 
-.thumb_func_start Func_80d6750
+.thumb_func_start Func_80d6750  @ 0x080d6750
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -336,7 +336,7 @@
 	bx	r0
 .func_end Func_80d6750
 
-.thumb_func_start Func_80d67dc
+.thumb_func_start Func_80d67dc  @ 0x080d67dc
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -416,7 +416,7 @@
 	bx	r0
 .func_end Func_80d67dc
 
-.thumb_func_start Func_80d6888
+.thumb_func_start Func_80d6888  @ 0x080d6888
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start InitEncounters
+.thumb_func_start InitEncounters  @ 0x0808ace0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -135,7 +135,7 @@
 	bx	r0
 .func_end InitEncounters
 
-.thumb_func_start Func_808adf0
+.thumb_func_start Func_808adf0  @ 0x0808adf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -202,7 +202,7 @@
 	bx	r1
 .func_end Func_808adf0
 
-.thumb_func_start Func_808ae74
+.thumb_func_start Func_808ae74  @ 0x0808ae74
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

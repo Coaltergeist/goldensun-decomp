@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Cybele
+.thumb_func_start Anim_Cybele  @ 0x080d6970
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1563,7 +1563,7 @@
 	bx	r0
 .func_end Anim_Cybele
 
-.thumb_func_start Anim_Boreas
+.thumb_func_start Anim_Boreas  @ 0x080d765c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

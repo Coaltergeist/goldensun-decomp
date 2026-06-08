@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start SetBattleActorKnockback
+.thumb_func_start SetBattleActorKnockback  @ 0x080b8228
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -68,7 +68,7 @@
 	bx	r0
 .func_end SetBattleActorKnockback
 
-.thumb_func_start Func_80b82c4
+.thumb_func_start Func_80b82c4  @ 0x080b82c4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -162,7 +162,7 @@
 	bx	r0
 .func_end Func_80b82c4
 
-.thumb_func_start Func_80b8394
+.thumb_func_start Func_80b8394  @ 0x080b8394
 	push	{r5, lr}
 	bl	GetBattleActor
 	ldr	r5, [r0]

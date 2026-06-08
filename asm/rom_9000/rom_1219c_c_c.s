@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Task_Debug_SpriteTest
+.thumb_func_start Task_Debug_SpriteTest  @ 0x08012e28
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

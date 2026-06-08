@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8020b14
+.thumb_func_start Func_8020b14  @ 0x08020b14
 	push	{lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r4, [r3]
@@ -48,7 +48,7 @@
 	bx	r1
 .func_end Func_8020b14
 
-.thumb_func_start Func_8020b64
+.thumb_func_start Func_8020b64  @ 0x08020b64
 	push	{r5, r6, lr}
 	ldrb	r2, [r1]
 	mov	r3, r2
@@ -112,7 +112,7 @@
 	bx	r0
 .func_end Func_8020b64
 
-.thumb_func_start UI_NameEntry
+.thumb_func_start UI_NameEntry  @ 0x08020bd8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -675,7 +675,7 @@
 	bx	r1
 .func_end UI_NameEntry
 
-.thumb_func_start Func_802106c
+.thumb_func_start Func_802106c  @ 0x0802106c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -881,7 +881,7 @@
 	bx	r1
 .func_end Func_802106c
 
-.thumb_func_start Func_8021228
+.thumb_func_start Func_8021228  @ 0x08021228
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1010,7 +1010,7 @@
 	bx	r0
 .func_end Func_8021228
 
-.thumb_func_start Func_8021360
+.thumb_func_start Func_8021360  @ 0x08021360
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r0, #0
@@ -1034,7 +1034,7 @@
 	bx	r1
 .func_end Func_8021360
 
-.thumb_func_start Func_8021390
+.thumb_func_start Func_8021390  @ 0x08021390
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1134,7 +1134,7 @@
 	bx	r0
 .func_end Func_8021390
 
-.thumb_func_start Func_8021488
+.thumb_func_start Func_8021488  @ 0x08021488
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1273,7 +1273,7 @@
 	bx	r0
 .func_end Func_8021488
 
-.thumb_func_start Func_80215e0
+.thumb_func_start Func_80215e0  @ 0x080215e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r1
 	mov	r1, #0x80
@@ -1302,7 +1302,7 @@
 	bx	r0
 .func_end Func_80215e0
 
-.thumb_func_start Func_8021620
+.thumb_func_start Func_8021620  @ 0x08021620
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1374,7 +1374,7 @@
 	bx	r1
 .func_end Func_8021620
 
-.thumb_func_start Func_80216b4
+.thumb_func_start Func_80216b4  @ 0x080216b4
 	push	{r5, lr}
 	ldr	r4, =iwram_3001800
 	ldr	r3, [r4]
@@ -1399,7 +1399,7 @@
 	bx	r0
 .func_end Func_80216b4
 
-.thumb_func_start StartMenu_AddOption
+.thumb_func_start StartMenu_AddOption  @ 0x080216e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1447,7 +1447,7 @@
 	bx	r0
 .func_end StartMenu_AddOption
 
-.thumb_func_start Func_8021750
+.thumb_func_start Func_8021750  @ 0x08021750
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1490,7 +1490,7 @@
 	bx	r1
 .func_end Func_8021750
 
-.thumb_func_start Func_80217a4
+.thumb_func_start Func_80217a4  @ 0x080217a4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001800
 	ldr	r3, [r3]
@@ -1567,7 +1567,7 @@
 	bx	r0
 .func_end Func_80217a4
 
-.thumb_func_start Func_8021848
+.thumb_func_start Func_8021848  @ 0x08021848
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1640,7 +1640,7 @@
 	bx	r1
 .func_end Func_8021848
 
-.thumb_func_start Func_80218dc
+.thumb_func_start Func_80218dc  @ 0x080218dc
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -1693,7 +1693,7 @@
 	bx	r1
 .func_end Func_80218dc
 
-.thumb_func_start Func_8021950
+.thumb_func_start Func_8021950  @ 0x08021950
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1759,7 +1759,7 @@
 	bx	r0
 .func_end Func_8021950
 
-.thumb_func_start Func_80219c8
+.thumb_func_start Func_80219c8  @ 0x080219c8
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
@@ -1794,7 +1794,7 @@
 	bx	r0
 .func_end Func_80219c8
 
-.thumb_func_start Func_8021a18
+.thumb_func_start Func_8021a18  @ 0x08021a18
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1873,7 +1873,7 @@
 	bx	r0
 .func_end Func_8021a18
 
-.thumb_func_start Func_8021ab0
+.thumb_func_start Func_8021ab0  @ 0x08021ab0
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -1903,7 +1903,7 @@
 	bx	r1
 .func_end Func_8021ab0
 
-.thumb_func_start Func_8021af0
+.thumb_func_start Func_8021af0  @ 0x08021af0
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -1934,7 +1934,7 @@
 	bx	r1
 .func_end Func_8021af0
 
-.thumb_func_start Func_8021b30
+.thumb_func_start Func_8021b30  @ 0x08021b30
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -1972,7 +1972,7 @@
 	bx	r1
 .func_end Func_8021b30
 
-.thumb_func_start Func_8021b80
+.thumb_func_start Func_8021b80  @ 0x08021b80
 	push	{r5, lr}
 	sub	sp, #0x10
 	mov	r5, r0
@@ -2012,7 +2012,7 @@
 	bx	r1
 .func_end Func_8021b80
 
-.thumb_func_start Func_8021bc8
+.thumb_func_start Func_8021bc8  @ 0x08021bc8
 	push	{lr}
 	cmp	r0, #0
 	beq	.L21bd0
@@ -2025,7 +2025,7 @@
 	bx	r1
 .func_end Func_8021bc8
 
-.thumb_func_start DecompressIcon
+.thumb_func_start DecompressIcon  @ 0x08021be0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r5, =0x278
@@ -2056,7 +2056,7 @@
 	bx	r0
 .func_end DecompressIcon
 
-.thumb_func_start Func_8021c34
+.thumb_func_start Func_8021c34  @ 0x08021c34
 	push	{r5, lr}
 	sub	sp, #4
 	mov	r3, #6
@@ -2079,7 +2079,7 @@
 	bx	r1
 .func_end Func_8021c34
 
-.thumb_func_start Func_8021c64
+.thumb_func_start Func_8021c64  @ 0x08021c64
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -2114,7 +2114,7 @@
 	bx	r1
 .func_end Func_8021c64
 
-.thumb_func_start Func_8021cb8
+.thumb_func_start Func_8021cb8  @ 0x08021cb8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -2206,7 +2206,7 @@
 	bx	r0
 .func_end Func_8021cb8
 
-.thumb_func_start Func_8021d88
+.thumb_func_start Func_8021d88  @ 0x08021d88
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}

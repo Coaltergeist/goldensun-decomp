@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80167e0
+.thumb_func_start Func_80167e0  @ 0x080167e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -64,7 +64,7 @@
 	bx	r0
 .func_end Func_80167e0
 
-.thumb_func_start Func_8016868
+.thumb_func_start Func_8016868  @ 0x08016868
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -138,7 +138,7 @@
 	bx	r0
 .func_end Func_8016868
 
-.thumb_func_start AdvanceMsgText
+.thumb_func_start AdvanceMsgText  @ 0x080168f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -909,7 +909,7 @@
 	bx	r1
 .func_end AdvanceMsgText
 
-.thumb_func_start Func_8016f2c
+.thumb_func_start Func_8016f2c  @ 0x08016f2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -1016,7 +1016,7 @@
 	bx	r0
 .func_end Func_8016f2c
 
-.thumb_func_start Func_8017004
+.thumb_func_start Func_8017004  @ 0x08017004
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1108,7 +1108,7 @@
 	bx	r0
 .func_end Func_8017004
 
-.thumb_func_start Func_80170c4
+.thumb_func_start Func_80170c4  @ 0x080170c4
 	push	{r5, lr}
 	mov	r4, r2
 	sub	sp, #4
@@ -1135,7 +1135,7 @@
 	bx	r1
 .func_end Func_80170c4
 
-.thumb_func_start Func_80170f8
+.thumb_func_start Func_80170f8  @ 0x080170f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1310,7 +1310,7 @@
 	bx	r0
 .func_end Func_80170f8
 
-.thumb_func_start Func_8017248
+.thumb_func_start Func_8017248  @ 0x08017248
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1461,7 +1461,7 @@
 	bx	r0
 .func_end Func_8017248
 
-.thumb_func_start Func_8017364
+.thumb_func_start Func_8017364  @ 0x08017364
 	push	{lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r1, #0xc4
