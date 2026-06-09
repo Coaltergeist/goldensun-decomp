@@ -5,10 +5,10 @@
  * rom_9000/src/rom_d654_a.o and rom_9000/src/rom_d654_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_800c0f4(void);
+extern void DeleteActor(void);
 
 /* FF: bool ActorCmd_Delete(Actor * actor) */
 unsigned int Func_800d8e8(void) {
-    Func_800c0f4();
+    DeleteActor();
     return 0;
 }

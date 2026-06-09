@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80046c4
+.thumb_func_start Func_80046c4  @ 0x080046c4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ac4
 	ldrb	r3, [r3]
@@ -42,7 +42,7 @@
 	bx	r0
 .func_end Func_80046c4
 
-.thumb_func_start Func_8004718
+.thumb_func_start Func_8004718  @ 0x08004718
 	push	{r5, lr}
 	mov	r5, r1
 	sub	r3, r5, #1
@@ -50,7 +50,7 @@
 	bls	.L4724
 	mov	r5, #8
 .L4724:
-	bl	Func_80045f0
+	bl	Debug_PrintHex
 	ldr	r0, =iwram_3001f78
 	sub	r0, r5
 	bl	Func_80046c4
@@ -59,7 +59,7 @@
 	bx	r0
 .func_end Func_8004718
 
-.thumb_func_start Func_800473c
+.thumb_func_start Func_800473c  @ 0x0800473c
 	push	{r5, lr}
 	mov	r5, r1
 	sub	r3, r5, #1
@@ -76,7 +76,7 @@
 	bx	r0
 .func_end Func_800473c
 
-.thumb_func_start Func_8004760
+.thumb_func_start ClearVRAM  @ 0x08004760
 	sub	sp, #4
 	ldr	r3, =0xf000f000
 	mov	r0, sp
@@ -95,9 +95,9 @@
 	strh	r2, [r3]
 	add	sp, #4
 	bx	lr
-.func_end Func_8004760
+.func_end ClearVRAM
 
-.thumb_func_start Func_800479c
+.thumb_func_start Func_800479c  @ 0x0800479c
 	push	{lr}
 	ldr	r0, =_FILE_13
 	bl	GetFile
@@ -140,7 +140,7 @@
 	add	r3, #2
 	strh	r2, [r3]
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L779c
+	ldr	r0, =PAL_Sprites
 	add	r1, #0x20
 	ldr	r2, =0x800000e0
 	stmia	r3!, {r0, r1, r2}
@@ -149,24 +149,25 @@
 	bx	r0
 .func_end Func_800479c
 
-.thumb_func_start Func_8004838
+.thumb_func_start LoadSpritePalette  @ 0x08004838
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L779c
+	ldr	r0, =PAL_Sprites
 	ldr	r1, =0x5000200
 	ldr	r2, =0x800000e0
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bx	lr
-.func_end Func_8004838
+.func_end LoadSpritePalette
 
 	.section .rodata
 	.global .L795c
 	.global .L7970
+	.global PAL_Sprites
 
 .align 2,0
 .L777c:
 	.incrom 0x777c, 0x779c
-.L779c:
+PAL_Sprites:
 	.incrom 0x779c, 0x795c
 .L795c:
 	.incrom 0x795c, 0x7970

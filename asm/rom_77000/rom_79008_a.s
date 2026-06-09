@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079008
+.thumb_func_start Func_8079008  @ 0x08079008
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r1, =0x129
 	mov	r2, r0
 	add	r3, r2, r1
@@ -41,7 +41,7 @@
 	bx	r1
 .func_end Func_8079008
 
-.thumb_func_start Func_807905c
+.thumb_func_start Func_807905c  @ 0x0807905c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -51,7 +51,7 @@
 	push	{r7}
 	mov	r6, r1
 	mov	r11, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r10, r0
 	mov	r0, #0x2c
 	bl	Func_8004970
@@ -99,7 +99,7 @@
 	str	r0, [r2]
 .L790ce:
 	mov	r0, r11
-	bl	Func_8078ed8
+	bl	GetPCBaseStats
 	mov	r2, #0
 	ldrsh	r3, [r6, r2]
 	mov	r1, r0
@@ -148,7 +148,7 @@
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r1, #0x14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #16
 	asr	r5, r0, #16
 	cmp	r5, #0
@@ -177,7 +177,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #4]
 	add	r3, r0
 	strh	r3, [r6, #4]
@@ -197,7 +197,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #6]
 	add	r3, r0
 	strh	r3, [r6, #6]
@@ -217,7 +217,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #8]
 	add	r3, r0
 	mov	r0, r9
@@ -237,7 +237,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #0xa]
 	add	r3, r0
 	strh	r3, [r6, #0xa]
@@ -257,7 +257,7 @@
 	lsr	r0, #16
 	add	r0, r7
 	mov	r1, #0x14
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	ldrh	r3, [r6, #0xc]
 	add	r3, r0
 	mov	r0, r9
@@ -277,7 +277,7 @@
 	lsr	r0, #16
 	mov	r1, #0x14
 	add	r0, r7
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r2, r10
 	ldrh	r3, [r2, #0x10]
 	ldrh	r1, [r6, #0xe]
@@ -319,10 +319,10 @@
 	mov	r0, r11
 	bl	Func_8078bf0
 	mov	r0, r11
-	bl	Func_8077428
+	bl	CalcStats
 .L792a4:
 	mov	r0, r9
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r6
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

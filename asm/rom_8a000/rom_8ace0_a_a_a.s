@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808ace0
+.thumb_func_start InitEncounters  @ 0x0808ace0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -9,7 +9,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r3, =iwram_3001ebc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r3, [r3]
 	mov	r1, #0xe0
 	lsl	r1, #1
@@ -63,7 +63,7 @@
 	lsl	r0, #17
 	asr	r0, #17
 	str	r1, [sp]
-	bl	_Func_8079338
+	bl	_GetFlag
 	ldr	r1, [sp]
 	cmp	r0, #0
 	bne	.L8ad74
@@ -133,9 +133,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808ace0
+.func_end InitEncounters
 
-.thumb_func_start Func_808adf0
+.thumb_func_start Func_808adf0  @ 0x0808adf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -174,7 +174,7 @@
 	ldrsh	r0, [r5, r3]
 	cmp	r0, r2
 	beq	.L8ae42
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8ae4a
 .L8ae42:
@@ -202,7 +202,7 @@
 	bx	r1
 .func_end Func_808adf0
 
-.thumb_func_start Func_808ae74
+.thumb_func_start Func_808ae74  @ 0x0808ae74
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -217,18 +217,18 @@
 	ldr	r3, [r3]
 	ldr	r0, =0x15f
 	mov	r11, r3
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8ae9a
 	b	.L8afa0
 .L8ae9a:
 	mov	r0, #0xb0
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8af26
 	ldr	r0, =0x161
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8af26
 	ldr	r2, [sp, #4]
@@ -237,7 +237,7 @@
 	bne	.L8aeba
 	b	.L8affc
 .L8aeba:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -260,11 +260,11 @@
 	b	.L8affc
 .L8aee2:
 	mov	r0, #5
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8aefe
 	mov	r0, #5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x92
 	lsl	r3, #1
 	add	r0, r3
@@ -286,7 +286,7 @@
 .L8af14:
 	cmp	r0, #0
 	ble	.L8af2a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x91
 	lsl	r2, #2
 	add	r3, r2
@@ -336,7 +336,7 @@
 	ldr	r3, =Func_8000888
 	ldr	r1, [sp]
 	.call_via r3
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x8e
 	lsl	r2, #2
 	add	r3, r2

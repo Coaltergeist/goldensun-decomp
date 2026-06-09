@@ -3,6 +3,6 @@
 	.global	Exports_f4000
 Exports_f4000:
 
-	.export_func Func_80f4008
+	.export_func StartLuckyDice
 
 	.ssize	Exports_f4000

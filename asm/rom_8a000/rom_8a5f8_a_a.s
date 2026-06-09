@@ -1,13 +1,13 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808a5f8
+.thumb_func_start Func_808a5f8  @ 0x0808a5f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r8, r0
 	mov	r0, #0xe0
 	lsl	r0, #1
@@ -46,7 +46,7 @@
 .L8a648:
 	cmp	r0, #0
 	beq	.L8a654
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8a65a
 .L8a654:
@@ -97,7 +97,7 @@
 	ldr	r3, =0x3e7
 	cmp	r1, r3
 	beq	.L8a6bc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r0, #0xe0
 	lsl	r0, #1
 	add	r3, r2, r0
@@ -117,9 +117,9 @@
 	bx	r0
 .func_end Func_808a5f8
 
-.thumb_func_start Func_808a6e4
+.thumb_func_start RespawnAtSanctum  @ 0x0808a6e4
 	push	{r5, r6, lr}
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r2, =0x236
 	mov	r4, #1
 	add	r3, r1, r2
@@ -133,7 +133,7 @@
 	lsl	r4, #1
 	add	r3, r1, r4
 	ldr	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	mov	r5, #0x38
 	ldrsh	r3, [r6, r5]
@@ -145,7 +145,7 @@
 	mov	r0, #0x34
 	ldrsh	r1, [r6, r0]
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #0x80
 	lsl	r1, #7
 	cmp	r0, r1
@@ -171,7 +171,7 @@
 	mov	r4, #0x36
 	ldrsh	r1, [r6, r4]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -193,13 +193,13 @@
 	strh	r3, [r6, #0x16]
 .L8a774:
 	mov	r0, #0x20
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8a7f6
 	mov	r5, #0
 .L8a780:
 	mov	r0, r5
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r6, r0
 	ldrh	r1, [r6, #0x34]
 	ldrh	r3, [r6, #0x36]
@@ -208,7 +208,7 @@
 	lsl	r1, #16
 	asr	r1, #16
 	lsl	r0, r1, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -234,7 +234,7 @@
 	mov	r2, #0x36
 	ldrsh	r1, [r6, r2]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -259,7 +259,7 @@
 	cmp	r5, #1
 	ble	.L8a780
 .L8a7f6:
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r5, #0xe9
 	lsl	r5, #1
 	mov	r4, #0xea
@@ -335,14 +335,14 @@
 	neg	r5, r5
 	cmp	r0, r5
 	beq	.L8a88a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r3, r1
 	strh	r0, [r3]
 	b	.L8a8c2
 .L8a88a:
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r4, #0xe5
 	lsl	r4, #1
 	add	r3, r2, r4
@@ -369,10 +369,10 @@
 	add	r2, r1, r0
 	strh	r3, [r2]
 	sub	r0, #0xb9
-	bl	_Func_8079358
+	bl	_SetFlag
 .L8a8c2:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_808a6e4
+.func_end RespawnAtSanctum
 

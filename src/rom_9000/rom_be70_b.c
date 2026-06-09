@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern void Func_800be70(unsigned int arg0, unsigned int arg1);
-extern void Func_80030f8(unsigned int nframes);
+extern void WaitFrames(unsigned int nframes);
 
 void Func_800befc(unsigned int arg0) {
     unsigned int i;
@@ -18,6 +18,6 @@ void Func_800befc(unsigned int arg0) {
         Func_800be70(arg0, i + 2);
         Func_800be70(arg0, i + 3);
         i += 4;
-        Func_80030f8(1);
+        WaitFrames(1);
     } while (i <= 0x7f);
 }

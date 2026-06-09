@@ -7,11 +7,11 @@
  */
 extern void OvlFunc_955_2008714(void);
 extern void __StartTask(void (*f)(void), int x);
-extern void __Func_8079374(int x);
+extern void __ClearFlag(int x);
 
 void OvlFunc_955_2008950(void) {
     int x;
     x = 0xc85;
     __StartTask(OvlFunc_955_2008714, x);
-    __Func_8079374(0x82 << 1);
+    __ClearFlag(0x82 << 1);
 }

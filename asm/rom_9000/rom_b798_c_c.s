@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800bb20
+.thumb_func_start InitSprites  @ 0x0800bb20
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	cmp	r0, #3
@@ -9,26 +9,26 @@
 	mov	r1, #0xe0
 	lsl	r1, #4
 	mov	r0, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0xc0
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #3
-	bl	Func_80048f4
+	bl	galloc_ewram
 	b	.Lbb56
 .Lbb40:
 	mov	r1, #0xe0
 	lsl	r1, #4
 	mov	r0, #4
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0xc0
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #3
-	bl	Func_80048b0
+	bl	galloc_iwram
 .Lbb56:
 	mov	r6, r0
-	bl	Func_8004838
+	bl	LoadSpritePalette
 	mov	r5, #0
 	mov	r4, sp
 	str	r5, [r4]
@@ -47,11 +47,11 @@
 	ldr	r2, =.L12f20
 	mov	r1, #0x80
 	mov	r0, #0x5d
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r5, =0x7c
 	mov	r0, #0x35
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -65,9 +65,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800bb20
+.func_end InitSprites
 
-.thumb_func_start Func_800bbc0
+.thumb_func_start CreateSpriteLayer  @ 0x0800bbc0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -75,7 +75,7 @@
 	mov	r4, #0
 	str	r4, [sp]
 	mov	r7, r0
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldr	r3, =iwram_3001e5c
 	mov	r6, r0
 	ldr	r2, [r3]
@@ -111,7 +111,7 @@
 	cmp	r0, #0
 	bne	.Lbc14
 	mov	r0, r7
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 .Lbc14:
 	ldr	r2, [r6, #0x10]
 	str	r0, [r5, #8]
@@ -140,9 +140,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800bbc0
+.func_end CreateSpriteLayer
 
-.thumb_func_start Func_800bc48
+.thumb_func_start DeleteSpriteLayer  @ 0x0800bc48
 	push	{lr}
 	mov	r1, r0
 	sub	sp, #4
@@ -159,9 +159,9 @@
 	add	sp, #4
 	pop	{r0}
 	bx	r0
-.func_end Func_800bc48
+.func_end DeleteSpriteLayer
 
-.thumb_func_start Func_800bc70
+.thumb_func_start CreateSprite  @ 0x0800bc70
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -169,9 +169,9 @@
 	mov	r1, #0
 	mov	r8, r1
 	mov	r10, r0
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r7, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	ldr	r3, =iwram_3001e60
 	ldr	r5, [r3]
 	ldrb	r3, [r7]
@@ -208,7 +208,7 @@
 	mov	r0, r6
 	mov	r1, #0
 	mov	r2, #0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r12, r0
 	cmp	r0, #0
 	bne	.Lbcd6
@@ -306,7 +306,7 @@
 	lsl	r3, #7
 	stmia	r2!, {r3}
 	mov	r1, #0xbb
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	lsl	r1, #1
 	add	r3, r1
 	ldrh	r3, [r3]
@@ -315,7 +315,7 @@
 	str	r3, [r2]
 	mov	r0, r5
 	mov	r1, r10
-	bl	Func_800b8ac
+	bl	Sprite_AddLayer
 	mov	r2, #1
 	neg	r2, r2
 	mov	r0, r8
@@ -326,9 +326,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800bc70
+.func_end CreateSprite
 
-.thumb_func_start Func_800bdd4
+.thumb_func_start DeleteSprite  @ 0x0800bdd4
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	sub	sp, #4
@@ -348,7 +348,7 @@
 .Lbdf4:
 	ldmia	r5!, {r0}
 	sub	r6, #1
-	bl	Func_800bc48
+	bl	DeleteSpriteLayer
 	cmp	r6, #0
 	bge	.Lbdf4
 	mov	r0, sp
@@ -364,13 +364,13 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800bdd4
+.func_end DeleteSprite
 
-.thumb_func_start Func_800be20
+.thumb_func_start Func_800be20  @ 0x0800be20
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r5, r2
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	mov	r7, #0
 	cmp	r6, r3

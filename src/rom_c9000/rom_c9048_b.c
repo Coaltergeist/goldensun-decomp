@@ -5,7 +5,7 @@
  * asm/rom_c9000/rom_c9048_a.o and asm/rom_c9000/rom_c9048_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char ewram_2010000[65536];
+extern unsigned char gBuffer[65536];
 
 void Func_80c91a4(void) {
     volatile unsigned short *reg = (volatile unsigned short *)0x040000B0;
@@ -14,7 +14,7 @@ void Func_80c91a4(void) {
     reg[5] = reg[5] & 0x7fff;
     {
         unsigned short scratch = reg[5];
-        register unsigned int s asm("r0") = (unsigned int)ewram_2010000;
+        register unsigned int s asm("r0") = (unsigned int)gBuffer;
         register unsigned int d asm("r1") = 0x04000040;
         register unsigned int c asm("r2") = 0xa2600001;
         register volatile unsigned int *p asm("r3") = dma;

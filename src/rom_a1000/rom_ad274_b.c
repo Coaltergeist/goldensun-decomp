@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int iwram_3001f2c;
-extern int _Func_800bdd4(int task);
+extern int _DeleteSprite(int task);
 extern void StopTask(int task);
 extern int Func_80ad35c;
 
@@ -17,7 +17,7 @@ void Func_80ad318(void) {
     base = (unsigned char *)iwram_3001f2c;
     for (i = 0x89; i <= 0x8c; i++) {
         if (*(unsigned int *)(base + (i << 2)) != 0) {
-            _Func_800bdd4(*(unsigned int *)(base + (i << 2)));
+            _DeleteSprite(*(unsigned int *)(base + (i << 2)));
             *(unsigned int *)(base + (i << 2)) = 0;
         }
     }

@@ -8,7 +8,7 @@
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L1748
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -34,14 +34,14 @@
 	ldr	r3, =iwram_3001ebc
 	ldr	r0, =0x225
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L17a2
 	mov	r0, #0xd
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L17a2
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -50,7 +50,7 @@
 	cmp	r3, #0
 	bne	.L17a2
 	ldr	r0, =0x225
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0,=OvlFunc_959_200975c
 	bl	__StopTask
 	ldr	r0, =OvlFunc_959_20097bc
@@ -71,14 +71,14 @@
 	ldr	r3, =iwram_3001ebc
 	ldr	r0, =0x225
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1802
 	mov	r0, #0x15
 	bl	OvlFunc_959_20098e4
 	cmp	r0, #0
 	beq	.L1802
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -87,7 +87,7 @@
 	cmp	r3, #0
 	bne	.L1802
 	ldr	r0, =0x225
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =OvlFunc_959_20097bc
 	bl	__StopTask
 	ldr	r0, =OvlFunc_959_200975c

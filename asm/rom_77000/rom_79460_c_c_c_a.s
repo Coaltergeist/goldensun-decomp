@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80798b4
+.thumb_func_start Func_80798b4  @ 0x080798b4
 	push	{lr}
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r0, r3
 	ldrb	r0, [r0]
-	bl	Func_80773d8
+	bl	GetEnemyInfo
 	add	r0, #0x34
 	ldrb	r1, [r0]
 	cmp	r1, #0x2b
@@ -22,7 +22,7 @@
 	bx	r1
 .func_end Func_80798b4
 
-.thumb_func_start Func_80798e0
+.thumb_func_start Func_80798e0  @ 0x080798e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -30,7 +30,7 @@
 	push	{r5, r6, r7}
 	sub	sp, #0x14
 	mov	r9, r1
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r2, r0
 	ldr	r0, =0x129
 	add	r3, r2, r0
@@ -41,7 +41,7 @@
 	lsl	r1, #1
 	add	r3, r2, r1
 	ldrb	r0, [r3]
-	bl	Func_80773d8
+	bl	GetEnemyInfo
 	add	r0, #0x34
 	ldrb	r0, [r0]
 	cmp	r0, #0x2b
@@ -85,11 +85,11 @@
 	mov	r1, #0xa
 	mov	r0, r5
 	str	r4, [sp]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #0xa
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, [sp]
 	cmp	r0, #0xf
 	ble	.L79970
@@ -125,7 +125,7 @@
 	bx	r1
 .func_end Func_80798e0
 
-.thumb_func_start Func_80799b0
+.thumb_func_start Func_80799b0  @ 0x080799b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -146,7 +146,7 @@
 	mov	r2, r6
 	bl	Func_80797fc
 	mov	r0, #0x20
-	bl	Func_8079338
+	bl	GetFlag
 	cmp	r0, #0
 	beq	.L799ee
 	mov	r0, #0xc8

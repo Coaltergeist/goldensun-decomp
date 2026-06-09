@@ -2,18 +2,18 @@
 
 .thumb_func_start OvlFunc_924_2008f14
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1637
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_924_2008f14
 
 .thumb_func_start OvlFunc_924_2008f30
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -62,7 +62,8 @@
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x635c, (0x650c-0x635c)
 .L650c:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x650c, (0x6614-0x650c)
-.L6614:
+	.global gScript_883__0200e614
+gScript_883__0200e614:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6614, (0x66e8-0x6614)
 .L66e8:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x66e8, (0x6700-0x66e8)

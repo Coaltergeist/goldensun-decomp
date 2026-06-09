@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80e47b8
+.thumb_func_start BaseAnim_SpecialAttack  @ 0x080e47b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -44,7 +44,7 @@
 
 .Le480c:
 	mov	r0, #0
-	bl	Func_80cd594
+	bl	AnimStart
 .Le4812:
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Le4854	@ 0x1010
@@ -53,24 +53,24 @@
 	ldr	r0, =_FILE_73
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r0, =_FILE_96
 	ldr	r1, [sp, #0x5c]
 	mov	r2, #1
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r0, =_FILE_99
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	mov	r0, #0xa2
 	ldr	r5, [sp, #0x5c]
 	lsl	r0, #7
 	mov	r3, #0x90
 	add	r1, r5, r0
 	lsl	r3, #1
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r2, #0x28
 	bl	Func_80df9d0
 	b	.Le486c
@@ -103,10 +103,10 @@
 	bne	.Le48a0
 .Le488e:
 	ldr	r0, =_FILE_ce
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r0, =_FILE_c4
 	ldr	r1, =ewram_2010c56
 	b	.Le48f2
@@ -122,10 +122,10 @@
 	bne	.Le48be
 	ldr	r0, =_FILE_c3
 .Le48b2:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	b	.Le4912
 .Le48be:
 	ldr	r1, [sp, #0x60]
@@ -158,11 +158,11 @@
 	bhi	.Le48fc
 	ldr	r0, =_FILE_53
 .Le48f0:
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 .Le48f2:
 	mov	r2, #1
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	b	.Le4912
 .Le48fc:
 	ldr	r0, [sp, #0x60]
@@ -171,10 +171,10 @@
 	cmp	r0, #0x20
 	beq	.Le4912
 	ldr	r0, =_FILE_9e
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #1
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 .Le4912:
 	ldr	r1, [sp, #0x60]
 	cmp	r1, #0x64
@@ -303,14 +303,14 @@
 	ldr	r1, =ewram_2013c56
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	b	.Le4ade
 .Le4ad2:
 	ldr	r0, =_FILE_92
 	ldr	r1, =ewram_2013c56
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 .Le4ade:
 	ldr	r3, [sp, #0x5c]
 	mov	r5, #0xef
@@ -338,7 +338,7 @@
 	str	r3, [r2]
 	mov	r1, #0x90
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	ldr	r2, =0x7828
 	ldr	r1, [sp, #0x5c]
@@ -350,20 +350,20 @@
 	ldrsh	r0, [r3, r1]
 	mov	r1, r2
 	str	r2, [sp, #0x3c]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
 	mov	r3, sp
 	add	r3, #0xac
 	mov	r1, r3
 	str	r3, [sp, #0x38]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r3, [r5]
 	mov	r1, sp
 	ldr	r0, [r3, #4]
 	add	r1, #0x68
 	str	r1, [sp, #0x34]
-	bl	Func_80cef64
+	bl	BuildDraw2DFuncs
 	ldr	r0, =0x77b4
 	ldr	r3, [sp, #0x5c]
 	add	r2, r3, r0
@@ -376,7 +376,7 @@
 	str	r3, [r2]
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	mov	r1, #0xe1
 	ldr	r7, [r0]
 	ldr	r0, [sp, #0x5c]
@@ -412,7 +412,7 @@
 	bne	.Le4bc4
 	mov	r0, r7
 	mov	r1, #0
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r1, sp
 	add	r1, #0x94
 	str	r1, [sp, #8]
@@ -447,7 +447,7 @@
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x38]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r1, [sp, #0x38]
 	ldr	r3, [r1]
 	lsr	r2, r3, #31
@@ -455,7 +455,7 @@
 	asr	r3, #1
 	str	r3, [r1]
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #0
 	add	r3, sp, #0x7c
 	str	r2, [sp, #0x54]
@@ -483,13 +483,13 @@
 	blt	.Le4d30
 	mov	r3, #5
 	mov	r11, r3
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [r6, #0x14]
-	bl	Func_8004c6c
+	bl	MatrixRoll
 	ldr	r0, [r6, #0xc]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	ldr	r0, [r6, #0x10]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	add	r5, sp, #0x7c
 	mov	r1, r5
 	mov	r0, r6
@@ -580,11 +580,11 @@
 	mov	r5, r9
 	cmp	r5, #0x3f
 	bgt	.Le4d8a
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x50]
 	mov	r1, r0
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	add	r1, sp, #0x94
 	mov	r0, r1
 	mov	r1, r8
@@ -614,7 +614,7 @@
 	add	r2, r0, r1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #0x54]
 	add	r2, #1
 	str	r2, [sp, #0x54]
@@ -799,27 +799,27 @@
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
 	bl	StopTask
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, r7
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r3, [sp, #0x60]
 	cmp	r3, #0xf
 	bne	.Le4f64
 	ldr	r0, [sp, #0x64]
 	mov	r1, #9
-	bl	Func_80dea70
+	bl	BaseAnim_ParticleSpray
 .Le4f64:
 	ldr	r5, [sp, #0x60]
 	cmp	r5, #0x18
 	bne	.Le4f70
 	ldr	r0, [sp, #0x64]
-	bl	Func_80d52a4
+	bl	Anim_MysticFlame
 .Le4f70:
 	ldr	r0, [sp, #0x60]
 	cmp	r0, #0x1a
@@ -828,12 +828,12 @@
 .Le4f7a:
 	ldr	r0, [sp, #0x64]
 	mov	r1, #8
-	bl	Func_80dea70
+	bl	BaseAnim_ParticleSpray
 	bl	.Le65f8
 .Le4f86:
 	mov	r0, r7
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	ldr	r1, [sp, #0x30]
 	str	r1, [r7, #0x24]
 	ldr	r2, [sp, #0x2c]
@@ -864,18 +864,18 @@
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
 	bl	StopTask
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, [sp, #0x64]
 	mov	r3, #3
 	str	r3, [r0, #0x18]
 	ldr	r0, [sp, #0x64]
 	mov	r1, #2
-	bl	Func_80d4604
+	bl	BaseAnim_Nova
 	bl	.Le65f8
 .Le4ff4:
 	ldr	r1, [sp, #0x5c]
@@ -884,7 +884,7 @@
 	ldr	r3, [r3]
 	mov	r5, #0x24
 	ldrsh	r0, [r3, r5]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	str	r0, [sp, #0x1c]
 	mov	r0, sp
@@ -896,7 +896,7 @@
 	ldr	r0, [r1, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3]
 	ldr	r5, [sp, #0x1c]
@@ -908,7 +908,7 @@
 	sub	r0, r3
 	add	r0, r2
 	mov	r1, #6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x18]
 	str	r0, [r3, #4]
 	ldr	r0, [r5, #0x10]
@@ -916,7 +916,7 @@
 	ldr	r3, [r5, #8]
 	mov	r1, #6
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [sp, #0x18]
 	str	r0, [r1, #8]
 	ldr	r5, [sp, #0x5c]
@@ -1012,12 +1012,12 @@
 	ldr	r0, =_FILE_ab
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	mov	r2, #1
 	mov	r3, #0
 	ldr	r0, =_FILE_ac
-	ldr	r1, =ewram_2010000
-	bl	Func_80e0524
+	ldr	r1, =gBuffer
+	bl	LoadVFXFile
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Le5160	@ 0xe10
 	strh	r3, [r2]
@@ -1029,12 +1029,12 @@
 	ldr	r0, =_FILE_ad
 	mov	r2, #1
 	mov	r3, #1
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	mov	r2, #1
 	mov	r3, #0
 	ldr	r0, =_FILE_ae
-	ldr	r1, =ewram_2010000
-	bl	Func_80e0524
+	ldr	r1, =gBuffer
+	bl	LoadVFXFile
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Le5160	@ 0xe10
 	strh	r3, [r2]
@@ -1260,7 +1260,7 @@
 	lsl	r5, r1, #12
 .Le5316:
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	lsl	r0, #2
 	sub	r0, r7, r0
 	mov	r3, #1
@@ -1283,7 +1283,7 @@
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x38]
 	ldr	r0, [r3, #8]
-	bl	Func_80e396c
+	bl	GetBattleActorPos2
 	ldr	r0, [sp, #0x38]
 	ldr	r3, [r0]
 	lsr	r2, r3, #31
@@ -1502,11 +1502,11 @@
 	ldr	r0, [sp, #0x58]
 	bl	_call_via_r4
 .Le556a:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r1, [sp, #0x50]
 	ldr	r0, [sp, #0x50]
 	add	r1, #0xc
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r0, [sp, #0x54]
 	cmp	r0, #3
 	ble	.Le5608
@@ -1672,7 +1672,7 @@
 	add	r5, r0, r1
 	ldr	r3, [r5]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r0, [r0]
 	mov	r8, r0
@@ -1849,7 +1849,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	ldr	r2, [sp, #0x3c]
 	ldr	r3, [r2]
 	mov	r6, r0
@@ -1865,7 +1865,7 @@
 	mov	r0, r5
 	lsr	r3, #1
 	sub	r6, r3
-	bl	Func_800231c
+	bl	cos
 	mov	r2, r9
 	mov	r5, r0
 	mov	r0, r8
@@ -1875,9 +1875,9 @@
 	mov	r0, #0x2f
 	asr	r5, #16
 	sub	r5, r3
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	bl	Random
 	ldr	r3, =.Leedd0
 	and	r0, r7
@@ -1889,12 +1889,12 @@
 	mov	r1, #7
 	mov	r2, #7
 	mov	r0, #0x2f
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r2, =Data_edebe
 	mov	r1, r8
 	lsl	r3, r1, #1
 	ldrh	r1, [r2, r3]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r0, r11
 	add	r1, r2
 	mov	r2, r8
@@ -1911,14 +1911,14 @@
 	ldr	r0, [sp, #0x58]
 	bl	_call_via_r4
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, =0x7828
 	ldr	r5, [sp, #0x5c]
 	add	r3, r5, r0
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x34]
 	ldr	r0, [r3, #4]
-	bl	Func_80cef64
+	bl	BuildDraw2DFuncs
 	mov	r1, #1
 	add	r10, r1
 	mov	r2, r10
@@ -1932,9 +1932,9 @@
 	b	.Le5a2e
 .Le58fa:
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r5, [sp, #0x54]
 	cmp	r5, #0x17
 	bls	.Le590e
@@ -1971,8 +1971,8 @@
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x2f
-	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	bl	BuildDraw2DFuncEx
+	ldr	r3, =gPtrs
 	ldr	r0, [sp, #0xc]
 	mov	r8, r3
 	mov	r5, #0xbc
@@ -1991,7 +1991,7 @@
 	ldr	r0, [sp, #0x58]
 	ldr	r4, [r2]
 	sub	r3, #0x68
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r10
 	bl	_call_via_r4
 	sub	r5, r7
@@ -2000,7 +2000,7 @@
 	mov	r3, r8
 	ldr	r4, [r3]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r10
 	mov	r3, r9
 	bl	_call_via_r4
@@ -2018,7 +2018,7 @@
 	ldr	r0, [sp, #0x58]
 	bl	_call_via_r4
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, [sp, #0x54]
 	cmp	r0, #8
 	bne	.Le59be
@@ -2087,9 +2087,9 @@
 	cmp	r1, #0x1f
 	bne	.Le5afc
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r3, [sp, #0x54]
 	sub	r3, #4
 	cmp	r3, #0x13
@@ -2107,10 +2107,10 @@
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x2f
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, r9
 	mov	r1, #0x18
-	ldr	r6, =iwram_3001e50
+	ldr	r6, =gPtrs
 	str	r1, [sp]
 	str	r3, [sp, #4]
 	asr	r5, #1
@@ -2120,29 +2120,29 @@
 	ldr	r0, [sp, #0x58]
 	sub	r2, #0x18
 	mov	r8, r1
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, r10
 	str	r0, [sp]
 	mov	r1, #7
 	mov	r2, #7
 	mov	r3, #7
 	mov	r0, #0x2f
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r1, r8
 	mov	r2, r9
 	str	r1, [sp]
 	str	r2, [sp, #4]
 	ldr	r0, [sp, #0x58]
 	ldr	r4, [r6]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, r5
 	mov	r3, #0x30
 	bl	_call_via_r4
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 .Le5ab6:
 	ldr	r0, =0x7828
 	ldr	r5, [sp, #0x5c]
@@ -2150,7 +2150,7 @@
 	ldr	r3, [r3]
 	ldr	r1, [sp, #0x34]
 	ldr	r0, [r3, #4]
-	bl	Func_80cef64
+	bl	BuildDraw2DFuncs
 	bl	.Le640e
 
 	.pool_aligned
@@ -2184,7 +2184,7 @@
 	mov	r1, #3
 	asr	r0, #1
 	add	r6, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #2
 	add	r5, r0
 	lsl	r3, r5, #9
@@ -2267,7 +2267,7 @@
 	add	r5, r3, r5
 	bl	Func_80e3944
 	ldr	r2, [r6]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	lsr	r3, r2, #31
 	asr	r5, #1
 	add	r2, r3
@@ -2315,9 +2315,9 @@
 	ldr	r0, [sp, #0x54]
 	lsl	r5, r0, #9
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	ldr	r2, [sp, #0x3c]
 	lsl	r0, #2
 	mov	r1, #6
@@ -2453,7 +2453,7 @@
 	add	r3, r5, r3
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 .Le5d66:
 	ldr	r3, [sp, #0x54]
@@ -2717,7 +2717,7 @@
 	str	r3, [sp, #4]
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #0
 	mov	r3, #0x10
 	bl	_call_via_r4
@@ -2838,7 +2838,7 @@
 	ldr	r2, =Data_edeb2
 	lsl	r3, r4, #1
 	ldrh	r1, [r2, r3]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	ldr	r3, =Data_edeab
 	add	r1, r2
 	ldrb	r2, [r7, r4]
@@ -2925,12 +2925,12 @@
 	blt	.Le61c6
 	mov	r5, #3
 	and	r5, r1
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [r7, #0xc]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r6, r9
 	ldr	r0, [r7, #0x10]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r1, r6
 	mov	r0, r7
 	bl	Func_80e3944
@@ -2957,7 +2957,7 @@
 	ldrh	r1, [r1, r5]
 	str	r0, [sp]
 	str	r0, [sp, #4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldr	r0, [sp, #0x34]
 	add	r3, #0x1c
 	ldr	r4, [r0, #4]
@@ -2979,7 +2979,7 @@
 	bne	.Le61c6
 .Le61a6:
 	mov	r0, #0x85
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r5, =0x7828
 	ldr	r2, [sp, #0x5c]
 	add	r3, r2, r5
@@ -3034,7 +3034,7 @@
 	str	r1, [sp, #4]
 	ldr	r4, [sp, #0x68]
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r2, #0x30
 	bl	_call_via_r4
 	b	.Le640e
@@ -3101,7 +3101,7 @@
 	ldr	r4, [r1, #4]
 	sub	r3, #0x20
 	ldr	r0, [sp, #0x58]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	bl	_call_via_r4
 	b	.Le640e
 
@@ -3137,7 +3137,7 @@
 .Le6308:
 	mov	r0, r10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r6
 	mov	r5, r0
 	mov	r0, r7
@@ -3154,7 +3154,7 @@
 	and	r4, r3
 	add	r1, r5
 	ldr	r3, [r6, #4]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	str	r0, [sp]
 	str	r0, [sp, #4]
 	ldr	r0, [sp, #0x34]
@@ -3229,7 +3229,7 @@
 	str	r0, [sp, #4]
 	add	r1, r5
 	ldr	r0, [sp, #0x34]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	lsl	r4, #2
 	lsl	r1, #7
 	add	r1, r5
@@ -3318,7 +3318,7 @@
 	cmp	r3, #4
 	bne	.Le647e
 	mov	r0, #0x86
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Le647e:
 	ldr	r5, [sp, #0x54]
 	cmp	r5, #6
@@ -3349,7 +3349,7 @@
 	mov	r1, #0x24
 	ldrsh	r0, [r3, r1]
 	mov	r1, #4
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	ldr	r3, [sp, #0x5c]
 	sub	r5, #0x80
 	add	r2, r3, r5
@@ -3370,7 +3370,7 @@
 	mov	r1, #1
 	mov	r5, #0x24
 	ldrsh	r0, [r3, r5]
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	ldr	r1, =0x77a8
 	ldr	r0, [sp, #0x5c]
 	mov	r3, #2
@@ -3390,7 +3390,7 @@
 	mov	r1, #0x24
 	ldrsh	r0, [r3, r1]
 	mov	r1, #3
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	ldr	r3, =0x77a8
 	add	r2, r5, r3
 .Le650c:
@@ -3432,7 +3432,7 @@
 .Le6550:
 	mov	r1, #8
 	mov	r0, #8
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r5, =0x7824
 	ldr	r3, [sp, #0x5c]
@@ -3440,7 +3440,7 @@
 	mov	r3, #1
 	mov	r0, #1
 	str	r3, [r2]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #0x54]
 	ldr	r1, [sp, #0x40]
 	add	r0, #1
@@ -3469,14 +3469,14 @@
 	str	r3, [r2, #0x1c]
 	ldr	r0, =Func_80cd4b4
 	bl	StopTask
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r0, [sp, #0x64]
-	bl	Func_80d9ac4
+	bl	Anim_Impair
 	b	.Le65f8
 .Le65c4:
 	ldr	r1, [sp, #0x14]
@@ -3495,13 +3495,13 @@
 	ldr	r0, =Func_80dbb9c
 	bl	StopTask
 .Le65e2:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 .Le65f8:
 	add	sp, #0xb8
 	pop	{r3, r5, r6, r7}
@@ -3512,7 +3512,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80e47b8
+.func_end BaseAnim_SpecialAttack
 
 	.section .rodata
 

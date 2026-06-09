@@ -12,7 +12,7 @@
 	ldr	r3, =.L26d0
 	mov	r0, #0
 	ldrsh	r3, [r3, r0]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]
@@ -32,7 +32,7 @@
 .L18da:
 	mov	r0, #0x82
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L190c
 	ldr	r4, =.L26be
@@ -140,14 +140,14 @@
 	lsr	r2, #26
 	and	r2, r3
 	and	r5, r3
-	ldr	r3, =.L26bc
+	ldr	r3, =gOvl_0200a6bc
 	mov	r0, #0
 	ldrsh	r6, [r3, r0]
 	mov	r1, #3
 	mov	r0, r6
 	mov	r7, r2
 	str	r4, [sp]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r1, #6
 	add	r8, r0
 	b	.L1a00
@@ -159,7 +159,7 @@
 
 .L1a00:
 	mov	r0, r6
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r7, #0x14
 	sub	r0, r7, r0
 	mov	r7, r0
@@ -175,7 +175,7 @@
 	beq	.L1a30
 	lsl	r0, r6, #6
 	mov	r1, #0x78
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r0, r5, r0
 	mov	r5, r0
 	ldr	r4, [sp]
@@ -223,7 +223,7 @@
 	ldr	r1, [r6]
 	mov	r0, r5
 	bl	__Func_80038bc
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	ldr	r0, =0x232
 	add	r3, r2, r0
 	mov	r1, #0
@@ -236,8 +236,8 @@
 	mov	r3, #0
 	ldrsh	r1, [r2, r3]
 	lsl	r0, #3
-	bl	_Func_8000af0
-	ldr	r5, =.L26bc
+	bl	_divsi3_RAM
+	ldr	r5, =gOvl_0200a6bc
 	mov	r1, #0xec
 	strh	r0, [r5]
 	lsl	r1, #15
@@ -285,7 +285,7 @@
 	ldrsh	r3, [r3, r1]
 	cmp	r3, #0x76
 	bgt	.L1b52
-	ldr	r3, =.L26bc
+	ldr	r3, =gOvl_0200a6bc
 	mov	r5, #0
 	ldrsh	r2, [r3, r5]
 	mov	r3, #0x80
@@ -340,7 +340,7 @@
 	mov	r1, #0x90
 	mov	r2, r9
 	lsl	r1, #3
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	ldr	r2, =0x80008000
 	ldr	r5, =.L26e0
 	mov	r8, r2
@@ -390,7 +390,7 @@
 	cmp	r4, #4
 	bls	.L1b8c
 	mov	r0, r9
-	bl	__Func_8002df0
+	bl	__free
 .L1be4:
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}
@@ -407,16 +407,16 @@
 	push	{r5, lr}
 	ldr	r1, =.L2730
 	ldr	r0, =OvlData_933_2009fa0
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r5, =.L26d0
-	bl	__Func_8004080
+	bl	__AllocSpriteSlot
 	mov	r1, #0x90
 	strh	r0, [r5]
 	lsl	r0, #16
 	lsl	r1, #3
 	mov	r2, #0
 	asr	r0, #16
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	ldr	r2, .L1c50	@ 0
 	ldr	r3, =.L26be
 	strh	r2, [r3]

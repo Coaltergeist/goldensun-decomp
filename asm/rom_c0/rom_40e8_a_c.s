@@ -1,14 +1,14 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8004144
+.thumb_func_start SortTasks  @ 0x08004144
 	push	{r5, r6, lr}
 	sub	sp, #8
-	ldr	r2, =iwram_3001a20
+	ldr	r2, =gTasks
 	mov	r4, #0x13
 	b	.L4150
 .L414e:
-	ldr	r2, =iwram_3001a20
+	ldr	r2, =gTasks
 .L4150:
 	mov	r1, r2
 	cmp	r4, #0
@@ -47,12 +47,12 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004144
+.func_end SortTasks
 
-.thumb_func_start Func_8004198
+.thumb_func_start GetTaskIndex  @ 0x08004198
 	push	{r5, lr}
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	neg	r5, r5
 	ldr	r3, =REG_IME
 	ldrh	r2, [r3]
@@ -79,13 +79,13 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8004198
+.func_end GetTaskIndex
 
-.thumb_func_start StartTask
+.thumb_func_start StartTask  @ 0x080041d8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001a10
 	mov	r5, #1
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	ldrb	r3, [r3]
 	neg	r5, r5
 	ldr	r3, =REG_IME
@@ -112,7 +112,7 @@
 .L420c:
 	mov	r3, #1
 	neg	r3, r3
-	ldr	r4, =iwram_3001a20
+	ldr	r4, =gTasks
 	cmp	r5, r3
 	bne	.L4254
 	ldr	r3, [r4]
@@ -145,7 +145,7 @@
 	strb	r3, [r4, #6]
 	mov	r5, r2
 .L4254:
-	bl	Func_8004144
+	bl	SortTasks
 	ldr	r3, =REG_IME
 	strh	r6, [r3]
 	mov	r0, r5

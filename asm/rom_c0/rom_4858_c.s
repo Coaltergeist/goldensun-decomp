@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80048b0
+.thumb_func_start galloc_iwram  @ 0x080048b0
 	push	{r5, lr}
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
 	ldr	r0, [r4, r5]
 	cmp	r0, #0
@@ -35,11 +35,11 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_80048b0
+.func_end galloc_iwram
 
-.thumb_func_start Func_80048f4
+.thumb_func_start galloc_ewram  @ 0x080048f4
 	push	{r5, lr}
-	ldr	r4, =iwram_3001e50
+	ldr	r4, =gPtrs
 	lsl	r5, r0, #2
 	ldr	r0, [r4, r5]
 	cmp	r0, #0
@@ -71,11 +71,11 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_80048f4
+.func_end galloc_ewram
 
-.thumb_func_start Func_8004938
+.thumb_func_start Func_8004938  @ 0x08004938
 	push	{lr}
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	add	r3, r0, #3
 	lsr	r3, #2
 	ldr	r2, [r1, #4]
@@ -104,9 +104,9 @@
 	bx	r1
 .func_end Func_8004938
 
-.thumb_func_start Func_8004970
+.thumb_func_start Func_8004970  @ 0x08004970
 	push	{lr}
-	ldr	r1, =iwram_3001e50
+	ldr	r1, =gPtrs
 	add	r3, r0, #3
 	lsr	r3, #2
 	ldr	r2, [r1]

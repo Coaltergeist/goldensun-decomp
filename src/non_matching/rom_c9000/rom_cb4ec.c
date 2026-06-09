@@ -1,4 +1,4 @@
-/* Anim_Unused_SabreRain (GS1) = Func_80cb4ec @ 0x080CB4EC
+/* Anim_Unused_SabreRain (GS1) = Anim_Unused_SabreRain @ 0x080CB4EC
  * Defined in: goldensun/asm/rom_c9000/rom_cb1a4.s (cluster, lines 382-749)
  *
  * First-draft decompilation, re-derived against the GS1 .s. NOTE: the GS1
@@ -14,14 +14,14 @@
  * small-const call-argument pooling; see camelot-gcc/README.md scoreboard).
  *
  * Func_ -> friendly name map:
- *   Func_80cd594 AnimStart           Func_80ed408 BuildDraw2DFuncEx
- *   Func_80e0524 LoadVFXFile         StartTask StartTask
+ *   AnimStart AnimStart           BuildDraw2DFuncEx BuildDraw2DFuncEx
+ *   LoadVFXFile LoadVFXFile         StartTask StartTask
  *   StopTask StopTask            Random Random
- *   Func_b50_from_thumb umod         Func_80e396c GetBattleActorPos2
- *   Func_80d6888 BattleActor_SetState  Func_80e155c UpdateScreenShake
- *   Func_80cd52c ResetAllActors      Func_80030f8 WaitFrames
- *   Func_80cdbc0 AnimEnd             Func_8002dd8 gfree
- *   _Func_80f9080 PlaySound          Func_80cd260 Task_BlitAnim
+ *   __umodsi3 umod         GetBattleActorPos2 GetBattleActorPos2
+ *   Func_80d6888 BattleActor_SetState  UpdateScreenShake UpdateScreenShake
+ *   Func_80cd52c ResetAllActors      WaitFrames WaitFrames
+ *   AnimEnd AnimEnd             gfree gfree
+ *   _PlaySound PlaySound          Task_BlitAnim Task_BlitAnim
  */
 
 typedef unsigned char  u8;
@@ -64,22 +64,21 @@ extern const u8  Dagger_Height[];  /* .Ledf83 @ 0x080EDF83 */
 extern const u16 Dagger_GfxOff[];  /* .Ledf88 @ 0x080EDF88 */
 
 /* engine (raw symbol names so call relocs match) */
-extern void Func_80cd594(int prio);
-extern void Func_80ed408(int idx, int a, int b, int flags, int e);
-extern void Func_80e0524(int file, void *dst, int a, int b);
+extern void AnimStart(int prio);
+extern void BuildDraw2DFuncEx(int idx, int a, int b, int flags, int e);
+extern void LoadVFXFile(int file, void *dst, int a, int b);
 extern void StartTask(void (*task)(void), int mode);
 extern void StopTask(void (*task)(void));
-extern int  Random(void);
-extern u32  Func_b50_from_thumb(u32 a, u32 b);
-extern void Func_80e396c(int target, vec3 *out);
+extern unsigned Random(void);
+extern void GetBattleActorPos2(int target, vec3 *out);
 extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
-extern void Func_80e155c(int x, int y);
+extern void UpdateScreenShake(int x, int y);
 extern void Func_80cd52c(void);
-extern void Func_80030f8(int n);
-extern void Func_80cdbc0(void);
-extern void Func_8002dd8(int idx);
-extern void _Func_80f9080(int sfx);
-extern void Func_80cd260(void);   /* Task_BlitAnim */
+extern void WaitFrames(int n);
+extern void AnimEnd(void);
+extern void gfree(int idx);
+extern void _PlaySound(int sfx);
+extern void Task_BlitAnim(void);   /* Task_BlitAnim */
 
 #define STATE_BLITMODE(s)  (*(s32 *)((u8 *)(s) + 0x7780))
 #define STATE_BLITPARAM(s) (*(s32 *)((u8 *)(s) + 0x7784))
@@ -88,7 +87,7 @@ extern void Func_80cd260(void);   /* Task_BlitAnim */
 #define STATE_CONTEXT(s)   (*(AnimContext **)((u8 *)(s) + 0x7828))
 #define STATE_PARTICLES(s) ((Particle3D *)((u8 *)(s) + 0x7080))
 
-void Func_80cb4ec(AnimContext *context)
+void Anim_Unused_SabreRain(AnimContext *context)
 {
     void     *state    = gPtrs.anim_move;
     u8       *renderbuf = gPtrs.renderbuffer;
@@ -98,28 +97,28 @@ void Func_80cb4ec(AnimContext *context)
     int frame, i, j;
 
     STATE_CONTEXT(state) = context;
-    Func_80cd594(1);                       /* AnimStart(BG_PRIORITY_MASK1) */
+    AnimStart(1);                       /* AnimStart(BG_PRIORITY_MASK1) */
 
     REG_BG2PA = 0x100;
     REG_BLDALPHA = 0x1000;
 
-    Func_80ed408(0x2e, 7, 7, 3, 1);        /* BuildDraw2DFuncEx(draw2D_1, ...XYCLIP) */
+    BuildDraw2DFuncEx(0x2e, 7, 7, 3, 1);        /* BuildDraw2DFuncEx(draw2D_1, ...XYCLIP) */
     draw2D[0] = gPtrs.draw2D_1;
-    Func_80ed408(0x2f, 7, 7, 7, 1);        /* BuildDraw2DFuncEx(draw2D_2, ...XFLIP|XYCLIP) */
+    BuildDraw2DFuncEx(0x2f, 7, 7, 7, 1);        /* BuildDraw2DFuncEx(draw2D_2, ...XFLIP|XYCLIP) */
     draw2D[1] = gPtrs.draw2D_2;
 
-    Func_80e0524(0x78, state, 1, 1);       /* LoadVFXFile(FILE_VFX_SABRE_DANCE,..,T,T) */
+    LoadVFXFile(0x78, state, 1, 1);       /* LoadVFXFile(FILE_VFX_SABRE_DANCE,..,T,T) */
     STATE_BLITMODE(state) = 1;             /* BLIT_CLEAR */
     STATE_BLITPARAM(state) = 0;
-    StartTask(Func_80cd260, 0x480);     /* StartTask(Task_BlitAnim, TASK_VBLANK) */
+    StartTask(Task_BlitAnim, 0x480);     /* StartTask(Task_BlitAnim, TASK_VBLANK) */
 
-    Func_80e396c(STATE_CONTEXT(state)->targets[0], &targetPos);
+    GetBattleActorPos2(STATE_CONTEXT(state)->targets[0], &targetPos);
     REG_BG2X = (0x40 - targetPos.x) << 8;
 
     /* Spawn the 0x40 daggers */
     p = STATE_PARTICLES(state);
     for (i = 0; i != 0x40; i++, p++) {
-        u32 x = Func_b50_from_thumb(Random(), 0x60) + 0x10;
+        u32 x = (Random() % 0x60) + 0x10;
         int motionX;
         if      (x < 0x2c) motionX = 3;
         else if (x < 0x34) motionX = 2;
@@ -134,7 +133,7 @@ void Func_80cb4ec(AnimContext *context)
         p->motion.y = 0x80000;
     }
 
-    _Func_80f9080(0xd4);                   /* PlaySound(SFX_ENERGY_FLASH_2) */
+    _PlaySound(0xd4);                   /* PlaySound(SFX_ENERGY_FLASH_2) */
 
     for (frame = 0; frame != 0x78; frame++) {
         if (frame <= 0x10) {
@@ -175,17 +174,17 @@ void Func_80cb4ec(AnimContext *context)
             Func_80d6888(STATE_CONTEXT(state)->targets[0], 7, 5, 0, 2);
             STATE_SHAKE(state) = 1;
             if ((frame & 7) == 0)
-                _Func_80f9080(0x85);       /* PlaySound(SFX_ATTACK) */
+                _PlaySound(0x85);       /* PlaySound(SFX_ATTACK) */
         }
 
-        Func_80e155c(8, 8);                /* UpdateScreenShake(8, 8) */
+        UpdateScreenShake(8, 8);                /* UpdateScreenShake(8, 8) */
         Func_80cd52c();                    /* ResetAllActors */
         STATE_DIRTY(state) = 1;
-        Func_80030f8(1);                   /* WaitFrames(1) */
+        WaitFrames(1);                   /* WaitFrames(1) */
     }
 
-    StopTask(Func_80cd260);            /* StopTask(Task_BlitAnim) */
-    Func_8002dd8(0x2f);                    /* gfree(draw2D_2) */
-    Func_8002dd8(0x2e);                    /* gfree(draw2D_1) */
-    Func_80cdbc0();                        /* AnimEnd */
+    StopTask(Task_BlitAnim);            /* StopTask(Task_BlitAnim) */
+    gfree(0x2f);                    /* gfree(draw2D_2) */
+    gfree(0x2e);                    /* gfree(draw2D_1) */
+    AnimEnd();                        /* AnimEnd */
 }

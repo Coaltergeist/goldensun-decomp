@@ -1,4 +1,4 @@
-/* Cluster Func_8004a44..Func_8004a44 extracted from goldensun/asm/rom_c0/rom_49a8_c_c.s.
+/* Cluster MatrixLoad..MatrixLoad extracted from goldensun/asm/rom_c0/rom_49a8_c_c.s.
  *
  * Total .text for this TU = 24 bytes (= 0x18).
  * Preserves the original ROM layout when slotted between
@@ -8,7 +8,7 @@
 #include "dma.h"
 extern unsigned int Data_8000ac0;
 
-void Func_8004a44(unsigned int src)
+void MatrixLoad(unsigned int src)
 {
     DMA3_COPY(src, (unsigned int)&Data_8000ac0, 0x30);
 }

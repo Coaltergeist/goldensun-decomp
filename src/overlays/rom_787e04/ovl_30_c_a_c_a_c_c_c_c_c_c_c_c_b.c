@@ -5,10 +5,10 @@
  * asm/overlays/rom_787e04/ovl_30_c_a_c_a_c_c_c_c_c_c_c_c_a.o and asm/overlays/rom_787e04/ovl_30_c_a_c_a_c_c_c_c_c_c_c_c_c.o in
  * goldensun/overlays/rom_787e04/overlay.ld.
  */
-extern void __Func_80f9080(int);
+extern void __PlaySound(int);
 extern void OvlFunc_887_20082e0(int);
 
 void OvlFunc_887_20083bc(void) {
-    __Func_80f9080(0x81);
+    __PlaySound(0x81);
     OvlFunc_887_20082e0(9);
 }

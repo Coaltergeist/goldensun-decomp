@@ -1,13 +1,13 @@
-/* Cluster Func_800e364..Func_800e7d4 extracted from goldensun/asm/rom_9000/rom_e220.s.
+/* Cluster ActorAttrOp_scaleX..ActorAttrOp_unk5D extracted from goldensun/asm/rom_9000/rom_e220.s.
  *
  * Total .text for this TU = 1196 bytes (= 0x4ac).
  * Preserves the original ROM layout when slotted between
  * asm/rom_9000/rom_e220_a.o and asm/rom_9000/rom_e220_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_800e364(unsigned char *actor, unsigned int op, unsigned int param);
+extern void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int param);
 
-void Func_800e364(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
 
@@ -22,7 +22,7 @@ void Func_800e364(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e390(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_scaleY(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         actor[7] = param;
@@ -36,7 +36,7 @@ void Func_800e390(unsigned int *actor, unsigned int op, unsigned int param)
         *((unsigned char *)actor + 0x57) = val;
     }
 }
-void Func_800e3bc(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_motionX(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
 
@@ -51,7 +51,7 @@ void Func_800e3bc(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
-void Func_800e3e8(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_motionY(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
     if (op == 0) {
@@ -63,7 +63,7 @@ void Func_800e3e8(unsigned int *actor, unsigned int op, unsigned int param)
         *((unsigned char *)actor + 0x57) = eq;
     }
 }
-void Func_800e414(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_motionZ(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         actor[11] = param;
@@ -74,7 +74,7 @@ void Func_800e414(unsigned int *actor, unsigned int op, unsigned int param)
         *((unsigned char *)actor + 0x57) = b;
     }
 }
-void Func_800e440(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_speed(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)(actor + 0x30) = param;
@@ -88,7 +88,7 @@ void Func_800e440(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
-void Func_800e46c(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_accel(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
 
@@ -103,7 +103,7 @@ void Func_800e46c(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e498(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_prevPosX(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char r1;
     if (op == 0) {
@@ -115,7 +115,7 @@ void Func_800e498(unsigned int *actor, unsigned int op, unsigned int param)
         *((unsigned char *)actor + 0x57) = r1;
     }
 }
-void Func_800e4c4(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_prevPosY(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
     if (op == 0) {
@@ -127,7 +127,7 @@ void Func_800e4c4(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e4f0(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_prevPosZ(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
 
@@ -142,7 +142,7 @@ void Func_800e4f0(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = val;
     }
 }
-void Func_800e51c(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_bounce(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
 
@@ -157,7 +157,7 @@ void Func_800e51c(unsigned int *actor, unsigned int op, unsigned int param)
         *(unsigned char *)((char *)actor + 0x57) = val;
     }
 }
-void Func_800e548(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_gravity(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)((char *)actor + 0x48) = param;
@@ -171,7 +171,7 @@ void Func_800e548(unsigned int *actor, unsigned int op, unsigned int param)
         *(unsigned char *)((char *)actor + 0x57) = val;
     }
 }
-void Func_800e574(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_floorPos(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)((char *)actor + 0x14) = param;
@@ -185,7 +185,7 @@ void Func_800e574(unsigned int *actor, unsigned int op, unsigned int param)
         *((unsigned char *)actor + 0x57) = val;
     }
 }
-void Func_800e5a0(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk4C(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)(actor + 0x4c) = param;
@@ -198,7 +198,7 @@ void Func_800e5a0(unsigned char *actor, unsigned int op, unsigned int param)
         *(actor + 0x57) = val;
     }
 }
-void Func_800e5cc(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_sprite(unsigned char *actor, unsigned int op, unsigned int param)
 {
     int flag;
     if (op == 0) {
@@ -212,7 +212,7 @@ void Func_800e5cc(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = flag;
     }
 }
-void Func_800e5f8(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk54(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char result;
     if (op == 0) {
@@ -226,7 +226,7 @@ void Func_800e5f8(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
-void Func_800e634(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk55(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char tmp;
 
@@ -241,7 +241,7 @@ void Func_800e634(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = tmp;
     }
 }
-void Func_800e670(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk56(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned char *)(actor + 0x56) = param;
@@ -255,7 +255,7 @@ void Func_800e670(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
-void Func_800e6ac(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_scriptVar(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned char *)(actor + 0x57) = param;
@@ -266,7 +266,7 @@ void Func_800e6ac(unsigned char *actor, unsigned int op, unsigned int param)
             (*(unsigned char *)(actor + 0x57) == (unsigned char)param);
     }
 }
-void Func_800e6e4(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk58(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
 
@@ -281,7 +281,7 @@ void Func_800e6e4(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
-void Func_800e720(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk59(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char result;
     if (op == 0) {
@@ -295,7 +295,7 @@ void Func_800e720(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
-void Func_800e75c(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk5A(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
     unsigned char result;
@@ -312,7 +312,7 @@ void Func_800e75c(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = result;
     }
 }
-void Func_800e798(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk5B(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char r1;
 
@@ -327,7 +327,7 @@ void Func_800e798(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = r1;
     }
 }
-void Func_800e7d4(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk5D(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         actor[0x5d] = param;

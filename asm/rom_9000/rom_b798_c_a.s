@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800b7c0
+.thumb_func_start InitSprite  @ 0x0800b7c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -27,7 +27,7 @@
 	mov	r2, #0
 	ldrsh	r0, [r6, r2]
 	str	r1, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r5, r0
 	ldrb	r2, [r5]
 	mov	r3, r2
@@ -59,7 +59,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
 	str	r1, [sp]
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 	ldr	r1, [sp]
 .Lb836:
 	ldrb	r3, [r5, #4]
@@ -89,16 +89,16 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b7c0
+.func_end InitSprite
 
-.thumb_func_start Func_800b868
+.thumb_func_start InitSpriteLayer  @ 0x0800b868
 	push	{r5, r6, lr}
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lb8a6
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r6, r0
 	ldrb	r3, [r6]
 	cmp	r3, #0
@@ -108,7 +108,7 @@
 	bne	.Lb88e
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	Func_800b798
+	bl	GetCachedSpriteGFX
 .Lb88e:
 	ldrb	r3, [r6, #4]
 	strb	r3, [r5, #4]
@@ -126,9 +126,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b868
+.func_end InitSpriteLayer
 
-.thumb_func_start Func_800b8ac
+.thumb_func_start Sprite_AddLayer  @ 0x0800b8ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -156,7 +156,7 @@
 	b	.Lb932
 .Lb8da:
 	mov	r0, r8
-	bl	Func_800bbc0
+	bl	CreateSpriteLayer
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0
@@ -165,7 +165,7 @@
 	add	r3, #0x28
 	mov	r0, r8
 	str	r5, [r6, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r2, #0x27
 	add	r2, r6
 	ldrb	r3, [r2]
@@ -205,9 +205,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b8ac
+.func_end Sprite_AddLayer
 
-.thumb_func_start Func_800b93c
+.thumb_func_start Sprite_DeleteLayer  @ 0x0800b93c
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1
@@ -216,7 +216,7 @@
 	cmp	r5, #0
 	beq	.Lb99e
 	mov	r0, r5
-	bl	Func_800bc48
+	bl	DeleteSpriteLayer
 	ldr	r3, [r6, #0x28]
 	mov	r0, #0
 	cmp	r5, r3
@@ -265,9 +265,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b93c
+.func_end Sprite_DeleteLayer
 
-.thumb_func_start Func_800b9a4
+.thumb_func_start Sprite_DeleteLayerIndex  @ 0x0800b9a4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r7, r1
@@ -281,7 +281,7 @@
 	ldr	r0, [r5, r6]
 	cmp	r0, #0
 	beq	.Lb9ee
-	bl	Func_800bc48
+	bl	DeleteSpriteLayer
 	mov	r3, #0
 	add	r2, r7, #1
 	str	r3, [r5, r6]
@@ -311,9 +311,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b9a4
+.func_end Sprite_DeleteLayerIndex
 
-.thumb_func_start Func_800b9f4
+.thumb_func_start SpriteLayer_SetAnim  @ 0x0800b9f4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r3, [r5, #0xc]
@@ -324,7 +324,7 @@
 	beq	.Lba2a
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	cmp	r6, r3
 	bge	.Lba2a
@@ -344,9 +344,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800b9f4
+.func_end SpriteLayer_SetAnim
 
-.thumb_func_start Func_800ba30
+.thumb_func_start Sprite_SetAnim  @ 0x0800ba30
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -382,7 +382,7 @@
 	ldrsh	r0, [r5, r2]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]
@@ -428,5 +428,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800ba30
+.func_end Sprite_SetAnim
 

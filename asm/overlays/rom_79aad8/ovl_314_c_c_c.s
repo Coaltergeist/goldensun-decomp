@@ -19,7 +19,7 @@
 	mov	r8, r3
 .L516:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, [r6, #0x50]
 	ldr	r1, =0xffffff00
 	ldrh	r3, [r2, #0x1e]
@@ -27,7 +27,7 @@
 	strh	r3, [r2, #0x1e]
 	ldr	r3, [r6, #0x50]
 	ldrh	r0, [r3, #0x1e]
-	bl	__Func_800231c
+	bl	__cos
 	lsr	r3, r0, #31
 	add	r0, r3
 	ldr	r3, [r6, #8]
@@ -49,13 +49,13 @@
 	mov	r0, r11
 	lsl	r1, #10
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xbc
 	mov	r2, #0x90
 	lsl	r1, #1
 	mov	r0, r11
 	lsl	r2, #1
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	ldr	r3, =0xcccc
 	str	r3, [r6, #0x48]
 	mov	r3, #3
@@ -65,12 +65,12 @@
 	mov	r2, #0
 	strb	r2, [r3]
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0
 	mov	r0, r6
 	bl	OvlFunc_906_20084d4
 	mov	r0, #0xbc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xa0
 	lsl	r0, #11
 	mov	r2, #0x80
@@ -78,7 +78,7 @@
 	lsl	r2, #9
 	bl	__Func_8012330
 	mov	r0, #0x8d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #1
 	mov	r1, #1
 	neg	r0, r0
@@ -94,13 +94,13 @@
 	mov	r1, r8
 	lsl	r5, r1, #12
 	mov	r0, r5
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r10
 	mov	r3, r9
 	str	r0, [r2]
 	str	r3, [r2, #4]
 	mov	r0, r5
-	bl	__Func_8002322
+	bl	__sin
 	mov	r4, r10
 	ldr	r2, [r4]
 	str	r0, [r4, #8]
@@ -140,9 +140,9 @@
 	lsl	r2, #1
 	mov	r0, r11
 	lsl	r1, #1
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, r6
 	mov	r1, #0
 	bl	OvlFunc_906_20084d4
@@ -178,10 +178,10 @@
 	str	r4, [sp, #0xc]
 	bl	OvlFunc_common0_10c
 	mov	r0, #0x9a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r11
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	__Func_8012350
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}
@@ -195,7 +195,7 @@
 .func_end OvlFunc_906_20084f4
 
 	.section .data
-	.global .L920
+	.global gOvl_02008920
 	.global .L948
 	.global .L978
 	.global .L990
@@ -207,7 +207,7 @@
 	.incbin "overlays/rom_79aad8/orig.bin", 0x818, (0x8d8-0x818)
 .L8d8:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x8d8, (0x920-0x8d8)
-.L920:
+gOvl_02008920:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x920, (0x948-0x920)
 .L948:
 	.incbin "overlays/rom_79aad8/orig.bin", 0x948, (0x978-0x948)

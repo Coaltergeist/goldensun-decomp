@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_905_20090c8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
-	ldr	r2, =.L18ec
+	ldr	r2, =gOvl_020098ec
 	ldr	r5, [r3]
 	ldr	r3, [r2]
 	add	r3, #1
@@ -35,7 +35,7 @@
 	mov	r0, #0xd
 	mov	r1, #2
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	b	.L112e
 .L1110:
 	mov	r0, #0xd
@@ -46,14 +46,14 @@
 	mov	r0, #0xd
 	mov	r1, #4
 	mov	r2, #0
-	bl	__Func_8092560
+	bl	__MapActor_Jump
 	b	.L112e
 .L1126:
 	mov	r0, #0xd
 	mov	r1, #4
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L112e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x8d
 	lsl	r2, #2
 	add	r3, r2
@@ -76,12 +76,12 @@
 	push	{lr}
 	ldr	r0, =OvlFunc_905_20090c8
 	bl	__StopTask
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #0x80
 	mov	r2, #0x1e
 	mov	r0, #0xd
 	lsl	r1, #1
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, #0xd
 	mov	r1, #2
 	bl	__Func_80925cc
@@ -91,15 +91,15 @@
 	mov	r0, #0
 	bl	__Func_8092adc
 	ldr	r0, =0x132f
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xd
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	mov	r1, #3
 	mov	r0, #0xd
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	add	r0, #0x23
@@ -112,7 +112,7 @@
 	lsl	r1, #10
 	mov	r0, #0xd
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x96
 	mov	r0, #0xd
 	lsl	r1, #2
@@ -132,7 +132,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xd
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	add	r0, #0x23
@@ -141,8 +141,8 @@
 	orr	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x869
-	bl	__Func_8079358
-	bl	__Func_8091750
+	bl	__SetFlag
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_905_200915c
@@ -169,7 +169,7 @@
 	orr	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x302
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1272
 	mov	r1, #0xac
@@ -177,7 +177,7 @@
 	mov	r0, #8
 	lsl	r1, #17
 	lsl	r2, #15
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, #0x12
 	mov	r2, #6
 	str	r3, [sp]
@@ -199,13 +199,13 @@
 .L1284:
 	mov	r0, #0xc0
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L12ae
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, #0x15
 	mov	r2, #0xb
 	str	r3, [sp]
@@ -217,7 +217,7 @@
 	bl	__Func_8010704
 .L12ae:
 	ldr	r0, =0x301
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L131a
 	mov	r1, #0x9a
@@ -225,8 +225,8 @@
 	lsl	r2, #16
 	mov	r0, #0xa
 	lsl	r1, #18
-	bl	__Func_80923e4
-	ldr	r6, =ewram_2000240
+	bl	__MapActor_SetPos
+	ldr	r6, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -265,7 +265,7 @@
 	bl	__Func_8010704
 	b	.L131c
 .L131a:
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 .L131c:
 	mov	r2, #0xe1
 	lsl	r2, #1
@@ -274,16 +274,16 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0x63
 	bne	.L1368
-	bl	__Func_8091dc8
-	bl	__Func_8091e20
+	bl	__MapTransitionIn
+	bl	__WaitMapTransition
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	lsl	r1, #17
 	lsl	r2, #16
 	mov	r0, #9
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	mov	r3, #2
@@ -295,7 +295,7 @@
 	mov	r2, #0xc0
 	bl	__Func_8092158
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	bl	OvlFunc_905_2008ce0
 .L1368:
 	mov	r2, #0x8d
@@ -305,7 +305,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
 	beq	.L1386
-	ldr	r3, =.L18ec
+	ldr	r3, =gOvl_020098ec
 	mov	r2, #0
 	mov	r1, #0xc8
 	str	r2, [r3]
@@ -325,7 +325,7 @@
 	.global .L1594
 	.global .L15ac
 	.global .L160c
-	.global .L1690
+	.global gOvl_02009690
 
 .L1554:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1554, (0x1594-0x1554)
@@ -335,13 +335,17 @@
 	.incbin "overlays/rom_799abc/orig.bin", 0x15ac, (0x160c-0x15ac)
 .L160c:
 	.incbin "overlays/rom_799abc/orig.bin", 0x160c, (0x1690-0x160c)
-.L1690:
+gOvl_02009690:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1690, (0x1750-0x1690)
-.L1750:
+	.global gOvl_02009750
+gOvl_02009750:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1750, (0x176c-0x1750)
-.L176c:
+	.global gOvl_0200976c
+gOvl_0200976c:
 	.incbin "overlays/rom_799abc/orig.bin", 0x176c, (0x1814-0x176c)
-.L1814:
+	.global gOvl_02009814
+gOvl_02009814:
 	.incbin "overlays/rom_799abc/orig.bin", 0x1814, (0x18ec-0x1814)
-.L18ec:
+	.global gOvl_020098ec
+gOvl_020098ec:
 	.incbin "overlays/rom_799abc/orig.bin", 0x18ec

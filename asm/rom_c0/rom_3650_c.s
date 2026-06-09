@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800383c
+.thumb_func_start Func_800383c  @ 0x0800383c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -32,9 +32,9 @@
 	bx	r0
 .func_end Func_800383c
 
-.thumb_func_start Func_800387c
+.thumb_func_start SetRegAnimDest  @ 0x0800387c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -61,11 +61,11 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800387c
+.func_end SetRegAnimDest
 
-.thumb_func_start Func_80038bc
+.thumb_func_start Func_80038bc  @ 0x080038bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -94,9 +94,9 @@
 	bx	r0
 .func_end Func_80038bc
 
-.thumb_func_start Func_80038fc
+.thumb_func_start Func_80038fc  @ 0x080038fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -125,9 +125,9 @@
 	bx	r0
 .func_end Func_80038fc
 
-.thumb_func_start Func_800393c
+.thumb_func_start Func_800393c  @ 0x0800393c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -156,9 +156,9 @@
 	bx	r0
 .func_end Func_800393c
 
-.thumb_func_start Func_800397c
+.thumb_func_start Func_800397c  @ 0x0800397c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -187,9 +187,9 @@
 	bx	r0
 .func_end Func_800397c
 
-.thumb_func_start Func_80039bc
+.thumb_func_start Func_80039bc  @ 0x080039bc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -218,9 +218,9 @@
 	bx	r0
 .func_end Func_80039bc
 
-.thumb_func_start Func_80039fc
+.thumb_func_start Func_80039fc  @ 0x080039fc
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -249,9 +249,9 @@
 	bx	r0
 .func_end Func_80039fc
 
-.thumb_func_start Func_8003a3c
+.thumb_func_start Func_8003a3c  @ 0x08003a3c
 	push	{r5, r6, lr}
-	ldr	r4, =ewram_2002090
+	ldr	r4, =gDMATaskCount
 	mov	r6, r0
 	mov	r0, r1
 	ldr	r1, =REG_IME
@@ -280,12 +280,12 @@
 	bx	r0
 .func_end Func_8003a3c
 
-.thumb_func_start Func_8003a7c
+.thumb_func_start UploadPalette  @ 0x08003a7c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r6, =ewram_2002090
+	ldr	r6, =gDMATaskCount
 	ldrh	r5, [r6]
 	mov	r7, sp
 	cmp	r5, #0
@@ -320,4 +320,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8003a7c
+.func_end UploadPalette

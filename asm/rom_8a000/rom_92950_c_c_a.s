@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80930bc
+.thumb_func_start Func_80930bc  @ 0x080930bc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -11,7 +11,7 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, #0xfa
 	lsl	r3, #1
 	add	r3, r8
@@ -64,7 +64,7 @@
 	b	.L93134
 .L9312e:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L93134:
 	mov	r0, r5
 	bl	_Func_8017394

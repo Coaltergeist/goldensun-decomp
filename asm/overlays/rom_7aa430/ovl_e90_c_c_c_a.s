@@ -32,7 +32,7 @@
 	beq	.L1012
 	b	.L111c
 .L1012:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x80
 	mov	r1, #0
 	lsl	r0, #9
@@ -40,14 +40,14 @@
 	mov	r0, #0x3c
 	bl	__Func_8091254
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #1
 	ldr	r0, =0x10005
 	bl	__Func_8091200
 	mov	r0, #0x3c
 	bl	__Func_8091254
 	mov	r0, #0x28
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r3, #0
 	mov	r8, r3
 	add	r7, sp, #0x10
@@ -61,7 +61,7 @@
 	ldr	r3, =.L2f4c
 	mov	r0, #0xf6
 	str	r3, [r7, #0x1c]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	bl	__Random
 	lsl	r0, #4
 	lsr	r0, #16
@@ -84,7 +84,7 @@
 	lsl	r0, #16
 	add	r0, r2
 	mov	r1, #0x64
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, r10
 	str	r3, [sp, #4]
 	ldr	r3, =0x320001
@@ -99,18 +99,18 @@
 	str	r7, [sp, #0xc]
 	bl	OvlFunc_common0_10c
 	mov	r0, #4
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #1
 	add	r8, r2
 	mov	r3, r8
 	cmp	r3, #0xe
 	bls	.L1048
 	mov	r0, #0xdc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r0, =0x875
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_923_2008d98
@@ -123,7 +123,7 @@
 	mov	r1, #0x62
 	mov	r2, #0xa
 	mov	r3, #0x61
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r3, #6
 	mov	r2, #0x20
 	str	r3, [sp]
@@ -140,8 +140,8 @@
 	mov	r0, #0x3c
 	bl	__Func_8091254
 	mov	r0, #0x78
-	bl	__Func_809163c
-	bl	__Func_8091750
+	bl	__CutsceneWait
+	bl	__CutsceneEnd
 .L111c:
 	add	sp, #0x38
 	pop	{r3, r5}

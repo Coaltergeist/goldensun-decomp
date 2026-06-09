@@ -1,4 +1,4 @@
-/* Func_801e71c == SetTextColor(u8 color)  [rom_15000]
+/* SetTextColor == SetTextColor(u8 color)  [rom_15000]
  * Source asm: goldensun/asm/rom_15000/rom_1de5c_c_a.s
  *
  * Logic is faithful; this does NOT yet byte-match. Single residual diff:
@@ -10,7 +10,7 @@
  */
 extern unsigned char *iwram_3001e8c;
 
-void Func_801e71c(int color) {
+void SetTextColor(int color) {
     unsigned char *base = iwram_3001e8c;
     int masked = color & 0xf;
     *(unsigned short *)(base + 0xeae) = masked;

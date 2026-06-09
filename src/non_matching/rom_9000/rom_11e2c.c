@@ -1,13 +1,13 @@
-/* Func_8011e2c  [rom_9000]
+/* HeightTile_7  [rom_9000]
  * Source asm: goldensun/asm/rom_9000/rom_11ce0_a_c_c_a.s
  *
  * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
- * Candidate: tools/runs/run_20260607T010203Z/Func_8011e2c-iter-7.c
+ * Candidate: tools/runs/run_20260607T010203Z/HeightTile_7-iter-7.c
  * TODO(residual): reg-alloc/scheduling divergence (register swap / op-order); logic correct. Permuter seed.
  */
 extern unsigned char L132fc[] __asm__(".L132fc");
 
-int Func_8011e2c(signed char *param_1, int param_2, int param_3)
+int HeightTile_7(signed char *param_1, int param_2, int param_3)
 {
     int i, a, b;
 

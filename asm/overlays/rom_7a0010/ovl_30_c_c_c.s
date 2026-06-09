@@ -11,7 +11,7 @@
 	str	r2, [r3]
 	ldr	r0, =0x845
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1f4
 	mov	r5, #8
@@ -20,11 +20,11 @@
 	bl	__MapActor_GetActor
 	add	r5, #1
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	cmp	r5, #0x16
 	bls	.L1e2
 .L1f4:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -41,21 +41,21 @@
 	mov	r3, #0x10
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x22
 	mov	r1, #0x5e
 	mov	r2, #0x12
 	mov	r3, #0x4c
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x5e
 	mov	r1, #0x22
 	mov	r2, #0x4e
 	mov	r3, #0x10
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	b	.L29c
 .L23c:
 	mov	r3, r2
@@ -73,33 +73,33 @@
 	mov	r3, #0x17
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0x22
 	mov	r1, #0x5e
 	mov	r2, #0x13
 	mov	r3, #0x53
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r3, #0x17
 	mov	r0, #0x5e
 	mov	r1, #0x22
 	mov	r2, #0x4f
 	str	r5, [sp]
 	str	r6, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xb
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xc
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L29c:
 	mov	r0, #0
 	add	sp, #8
@@ -110,13 +110,16 @@
 
 	.section .data
 	.global .L4d8
-	.global .L318
-
-.L318:
+	.global gOvl_02008318
+	.global MapEntrance_ARRAY_912__02008318
+gOvl_02008318:
+MapEntrance_ARRAY_912__02008318:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x318, (0x498-0x318)
-.L498:
+	.global gOvl_02008498
+gOvl_02008498:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x498, (0x4d8-0x498)
 .L4d8:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x4d8, (0x658-0x4d8)
-.L658:
+	.global gOvl_02008658
+gOvl_02008658:
 	.incbin "overlays/rom_7a0010/orig.bin", 0x658

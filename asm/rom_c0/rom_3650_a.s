@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003650
+.thumb_func_start VBlank  @ 0x08003650
 	push	{r5, lr}
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -24,7 +24,7 @@
 	strh	r0, [r5]
 	bl	Func_800655c
 .L367e:
-	bl	_Func_80f91e8
+	bl	_UpdateMusicSettings
 	bl	Func_8003adc
 	ldr	r5, =iwram_3001e44
 	ldrb	r3, [r5]
@@ -34,7 +34,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L36a8
-	ldr	r2, =iwram_3001e50
+	ldr	r2, =gPtrs
 	mov	r1, #0xe0
 	add	r2, #0xd0
 	ldr	r0, [r2]
@@ -50,7 +50,7 @@
 	ldr	r2, =0x84000004
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	bl	Func_8003a7c
+	bl	UploadPalette
 	mov	r3, #0
 	strb	r3, [r5]
 .L36bc:
@@ -64,11 +64,11 @@
 .L36cc:
 	mov	r0, #0x90
 	lsl	r0, #3
-	bl	Func_8004420
+	bl	RunTasks
 	ldr	r3, =REG_KEYINPUT
 	ldrh	r2, [r3]
 	ldr	r3, .L3708	@ 0x3ff
-	ldr	r4, =iwram_3001ae8
+	ldr	r4, =gKeyHeld
 	mov	r0, r3
 	eor	r0, r2
 	ldr	r3, [r4]
@@ -86,7 +86,7 @@
 	ldr	r3, =iwram_3001b00
 	mov	r2, #0x13
 	str	r2, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r1, =iwram_3001d0c
 	str	r0, [r3]
 	b	.L3792
@@ -109,7 +109,7 @@
 	mov	r2, #1
 	neg	r2, r2
 	str	r2, [r3]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	str	r0, [r3]
 	b	.L3792
 .L3786:
@@ -132,7 +132,7 @@
 	ldr	r2, =iwram_3001d28
 	ldr	r3, .L37b4	@ 1
 	strh	r3, [r2]
-	bl	Func_80006fc
+	bl	cam4aSoundMain
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -140,9 +140,9 @@
 	.align	2, 0
 .L37b4:
 	.word 1
-.func_end Func_8003650
+.func_end VBlank
 
-.thumb_func_start Func_80037d4
+.thumb_func_start SetSoundFXMode  @ 0x080037d4
 	push	{lr}
 	cmp	r0, #4
 	bls	.L37dc
@@ -161,5 +161,5 @@
 	mov	r0, #0
 	pop	{r1}
 	bx	r1
-.func_end Func_80037d4
+.func_end SetSoundFXMode
 

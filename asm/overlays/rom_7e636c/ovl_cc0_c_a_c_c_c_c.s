@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_958_2009158
 	push	{lr}
 	sub	sp, #8
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
@@ -20,26 +20,26 @@
 	mov	r0, #0x6c
 	bl	__Func_8010704
 	mov	r0, #8
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xae
 	mov	r2, #0x90
 	lsl	r2, #17
 	mov	r0, #0xa
 	lsl	r1, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xa
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x9a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =0x9a5
-	bl	__Func_8079358
+	bl	__SetFlag
 .L11b4:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

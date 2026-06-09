@@ -1,13 +1,13 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801ca1c
+.thumb_func_start Func_801ca1c  @ 0x0801ca1c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r7, =ewram_2000240
+	ldr	r7, =gState
 	ldr	r2, =0x205
 	add	r3, r7, r2
 	mov	r9, r0
@@ -15,7 +15,7 @@
 	mov	r1, #0x18
 	add	r0, #0xc
 	sub	sp, #4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r2, =0x206
 	add	r3, r7, r2
 	ldrb	r3, [r3]
@@ -28,7 +28,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #16
 	mov	r2, r8
 	asr	r0, #16
@@ -36,13 +36,13 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	add	r0, #0x20
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r5, #0x40
 	mov	r3, r8
 	ldrb	r7, [r3, r0]
 	mov	r1, #0x60
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, r8
 	ldrb	r2, [r3, r0]
 	add	r6, r10
@@ -92,7 +92,7 @@
 	bx	r0
 .func_end Func_801ca1c
 
-.thumb_func_start Func_801cae0
+.thumb_func_start Func_801cae0  @ 0x0801cae0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -165,7 +165,7 @@
 	bx	r0
 .func_end Func_801cae0
 
-.thumb_func_start Func_801cbd4
+.thumb_func_start Func_801cbd4  @ 0x0801cbd4
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	ldr	r0, =0x576
@@ -226,7 +226,7 @@
 	bx	r1
 .func_end Func_801cbd4
 
-.thumb_func_start Func_801cc50
+.thumb_func_start Func_801cc50  @ 0x0801cc50
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r2
@@ -283,7 +283,7 @@
 	bx	r1
 .func_end Func_801cc50
 
-.thumb_func_start Func_801ccc0
+.thumb_func_start SetUIColor  @ 0x0801ccc0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -293,7 +293,7 @@
 	add	r0, #0xc
 	mov	r1, #0x18
 	sub	sp, #8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r5, r0
 	lsl	r5, #18
 	asr	r5, #16
@@ -301,7 +301,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	mov	r8, r2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #16
 	mov	r2, r8
 	asr	r0, #16
@@ -316,7 +316,7 @@
 	mov	r1, #0x60
 	add	r0, #0x20
 	mov	r10, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	ldrb	r3, [r2, r0]
 	add	r5, #0x40
@@ -325,7 +325,7 @@
 	mov	r0, r5
 	mov	r1, #0x60
 	asr	r7, r3, #16
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	ldrb	r3, [r2, r0]
 	add	r3, r6
@@ -428,9 +428,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801ccc0
+.func_end SetUIColor
 
-.thumb_func_start Func_801ce48
+.thumb_func_start Func_801ce48  @ 0x0801ce48
 	push	{lr}
 	ldr	r1, =0x574
 	add	r0, r1
@@ -449,7 +449,7 @@
 	bx	r0
 .func_end Func_801ce48
 
-.thumb_func_start Func_801ce6c
+.thumb_func_start Func_801ce6c  @ 0x0801ce6c
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2
@@ -468,7 +468,7 @@
 	bx	r0
 .func_end Func_801ce6c
 
-.thumb_func_start Func_801ce90
+.thumb_func_start Func_801ce90  @ 0x0801ce90
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2
@@ -485,16 +485,16 @@
 	beq	.L1ceba
 	b	.L1cecc
 .L1ceac:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	b	.L1cebe
 .L1ceb4:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x205
 	b	.L1cebe
 .L1ceba:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x206
 .L1cebe:
 	add	r1, r3, r2
@@ -509,7 +509,7 @@
 	bx	r0
 .func_end Func_801ce90
 
-.thumb_func_start Func_801cee0
+.thumb_func_start Func_801cee0  @ 0x0801cee0
 	push	{lr}
 	ldr	r2, =0x574
 	add	r0, r2
@@ -526,7 +526,7 @@
 	beq	.L1cf1e
 	b	.L1cf30
 .L1cefc:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x83
 	lsl	r2, #2
 	add	r1, r3, r2
@@ -536,7 +536,7 @@
 	bhi	.L1cf30
 	b	.L1cf2c
 .L1cf0e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x205
 	add	r1, r3, r2
 	ldrb	r2, [r1]
@@ -545,7 +545,7 @@
 	bhi	.L1cf30
 	b	.L1cf2c
 .L1cf1e:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x206
 	add	r1, r3, r2
 	ldrb	r2, [r1]

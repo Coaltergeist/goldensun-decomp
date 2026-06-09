@@ -5,7 +5,7 @@
  * asm/overlays/rom_7e636c/ovl_cc0_c_c_a_a.o and asm/overlays/rom_7e636c/ovl_cc0_c_c_a_c.o in
  * goldensun/overlays/rom_7e636c/overlay.ld.
  */
-extern void __Func_80030f8(int);
+extern void __WaitFrames(int);
 
 void OvlFunc_958_20091d8(unsigned int arg0, int arg1)
 {
@@ -15,7 +15,7 @@ void OvlFunc_958_20091d8(unsigned int arg0, int arg1)
     r7 = (int *)arg0;
     r5 = 0x28;
     while (r5 != 0) {
-        __Func_80030f8(1);
+        __WaitFrames(1);
         r5--;
         if (r7[3] <= arg1)
             break;

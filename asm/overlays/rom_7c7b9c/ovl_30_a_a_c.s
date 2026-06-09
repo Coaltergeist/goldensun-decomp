@@ -57,7 +57,7 @@
 	ldr	r3, =0x2960000
 	lsl	r1, #17
 	mov	r2, #0
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldrh	r3, [r6]
 	add	r3, #1
 	b	.L706
@@ -81,7 +81,7 @@
 	mov	r0, #0x98
 	add	r3, #1
 	strh	r3, [r6]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, r5
 	add	r3, #0x63
 	ldrb	r3, [r3]
@@ -115,7 +115,7 @@
 	mov	r0, #0x15
 	ldr	r1, =0x103
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r3, #0xc0
@@ -149,7 +149,7 @@
 	lsl	r1, #16
 	mov	r2, #0
 	ldr	r3, =0x2860000
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	b	.L708
 .L6d2:
 	mov	r1, #0x80
@@ -157,7 +157,7 @@
 	lsl	r1, #17
 	mov	r2, #0
 	ldr	r3, =0x2ae0000
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	b	.L708
 .L6e2:
 	ldrh	r3, [r6]
@@ -247,7 +247,7 @@
 	mov	r0, r5
 	lsl	r1, #16
 	mov	r2, #0
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldrh	r3, [r6]
 	add	r3, #1
 	b	.L88a
@@ -271,7 +271,7 @@
 	mov	r0, #0x98
 	add	r3, #1
 	strh	r3, [r6]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, r5
 	add	r3, #0x63
 	ldrb	r3, [r3]
@@ -304,7 +304,7 @@
 	mov	r0, #0x16
 	ldr	r1, =0x103
 	mov	r2, #0
-	bl	__Func_80937b8
+	bl	__MapActor_Emote
 	mov	r0, #0x16
 	bl	__MapActor_GetActor
 	mov	r3, #0xc0
@@ -344,7 +344,7 @@
 	lsl	r1, #16
 	mov	r2, #0
 	lsl	r3, #18
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	b	.L88c
 .L866:
 	ldrh	r3, [r6]

@@ -2,11 +2,11 @@
 
 .thumb_func_start OvlFunc_883_200da24
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0xee4
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_883_200da24
@@ -14,12 +14,12 @@
 .thumb_func_start OvlFunc_883_200da40
 	push	{r5, lr}
 	ldr	r0, =0x241
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5a6c
 	mov	r0, #0x83
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.L5a8a
@@ -28,12 +28,12 @@
 	add	r0, #0x5b
 	strb	r5, [r0]
 	ldr	r0, =0x241
-	bl	__Func_8079374
+	bl	__ClearFlag
 	b	.L5a8a
 .L5a6c:
 	mov	r0, #0x83
 	lsl	r0, #1
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5a8a
 	mov	r0, #0x16
@@ -42,7 +42,7 @@
 	add	r0, #0x5b
 	strb	r3, [r0]
 	ldr	r0, =0x241
-	bl	__Func_8079358
+	bl	__SetFlag
 .L5a8a:
 	pop	{r5}
 	pop	{r0}
@@ -55,7 +55,7 @@
 	bl	__MapActor_GetActor
 	mov	r5, r0
 	ldr	r0, =0x87a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L5ab0
 	mov	r0, #0x15
@@ -93,14 +93,14 @@
 	mov	r6, r0
 	ldr	r0, [r6, #0x30]
 	ldr	r7, [r6, #0x50]
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r5, r0, #1
 	cmp	r5, #0
 	ble	.L5af4
 	neg	r5, r5
 .L5af4:
 	ldr	r0, [r6, #0x30]
-	bl	__Func_800231c
+	bl	__cos
 	ldr	r3, [r6, #0x38]
 	lsl	r0, #1
 	add	r3, r0
@@ -112,7 +112,7 @@
 	add	r3, r5
 	add	r0, r2
 	str	r3, [r6, #0xc]
-	bl	__Func_800231c
+	bl	__cos
 	cmp	r0, #0
 	bge	.L5b1a
 	add	r0, #7
@@ -169,7 +169,7 @@
 	mov	r2, r8
 	strb	r2, [r3]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #0x5c
 	add	r3, r7
 	mov	r2, r8
@@ -179,7 +179,7 @@
 	add	r3, #0x55
 	strb	r2, [r3]
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L5bac
 	ldr	r3, [r7, #0xc]
@@ -203,19 +203,19 @@
 	strb	r2, [r3]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r5, r0
 	mov	r0, #0xb5
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	mov	r2, r5
 	mov	r1, #0x80
 	ldrb	r0, [r6, #0x1c]
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 	ldr	r3, [r7, #8]
 	str	r3, [r7, #0x38]
 	ldr	r3, [r7, #0xc]

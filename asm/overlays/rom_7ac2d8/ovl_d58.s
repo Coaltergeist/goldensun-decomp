@@ -10,10 +10,10 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #5
 	ldr	r0, [r3]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.Lde2
-	ldr	r3, =.L6004
+	ldr	r3, =gScript_969__0200e004
 	ldr	r2, [r3]
 	mov	r1, #0x1f
 	add	r2, #4
@@ -42,7 +42,7 @@
 	bhi	.Ldb4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 .Ldb4:
 	mov	r2, #0x6f
@@ -63,7 +63,7 @@
 	strh	r5, [r2]
 	cmp	r6, #5
 	bls	.Ld90
-	ldr	r3, =.L6004
+	ldr	r3, =gScript_969__0200e004
 	ldr	r3, [r3]
 	ldr	r2, =0x50000d2
 	orr	r3, r1
@@ -96,7 +96,8 @@
 
 	.section .data
 
-.L6004:
+	.global gScript_969__0200e004
+gScript_969__0200e004:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6004, (0x6008-0x6004)
 .L6008:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6008, (0x600c-0x6008)

@@ -1,25 +1,25 @@
 	.include "macros.inc"
 
-	.export_func Func_8000af0
-	.export_func _Func_80030f8
-	.export_func _Func_8002322
-	.export_func _Func_800231c
-	.export_func _Func_800c300
-	.export_func _Func_800c2d8
-	.export_func _Func_800c150
+	.export_func divsi3_RAM
+	.export_func _WaitFrames
+	.export_func _sin
+	.export_func _cos
+	.export_func _Actor_SetAnim
+	.export_func _Actor_SetScript
+	.export_func _CreateActor
 	.export_func _Func_8010704
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _Func_8012330
 	.export_func _Func_8012350
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
-	.export_func _Func_8092128
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_SetSpeed
+	.export_func _MapActor_TravelTo
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_80929d8
-	.export_func _Func_80f9080
+	.export_func _PlaySound

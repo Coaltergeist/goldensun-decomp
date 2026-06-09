@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800bf34
+.thumb_func_start Func_800bf34  @ 0x0800bf34
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -43,7 +43,7 @@
 .Lbf86:
 	mov	r0, #1
 	add	r7, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0x7f
 	bls	.Lbf4a
 	add	sp, #4
@@ -57,7 +57,7 @@
 	bx	r0
 .func_end Func_800bf34
 
-.thumb_func_start Func_800bfa4
+.thumb_func_start Func_800bfa4  @ 0x0800bfa4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]

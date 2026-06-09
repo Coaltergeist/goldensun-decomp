@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801cf48
+.thumb_func_start Func_801cf48  @ 0x0801cf48
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ea0
 	ldr	r1, =0x574
@@ -38,7 +38,7 @@
 	mov	r2, r0
 	lsl	r1, #1
 	ldrb	r0, [r3, #0xe]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	cmp	r6, #1
 	bne	.L1cfac
 	ldr	r2, =0x57c
@@ -60,7 +60,7 @@
 	mov	r2, r0
 	lsl	r1, #1
 	ldrb	r0, [r3, #0xe]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	cmp	r6, #1
 	ble	.L1cfe0
 	ldr	r1, =0x594
@@ -85,13 +85,13 @@
 	bx	r0
 .func_end Func_801cf48
 
-.thumb_func_start Func_801d014
+.thumb_func_start Func_801d014  @ 0x0801d014
 	push	{lr}
 	mov	r1, #0xc5
 	lsl	r1, #3
 	mov	r0, #0x14
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp
@@ -101,7 +101,7 @@
 	ldr	r2, =0x8500018a
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldr	r0, =0x205
 	add	r3, r1, r0
 	ldr	r0, =0x594

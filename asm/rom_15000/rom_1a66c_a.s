@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801a66c
+.thumb_func_start Func_801a66c  @ 0x0801a66c
 	push	{r5, r6, r7, lr}
 	mov	r1, #0xf9
 	lsl	r1, #2
 	mov	r0, #0x12
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xd2
 	mov	r7, r0
 	lsl	r2, #2
@@ -72,7 +72,7 @@
 	strh	r5, [r7, #0x12]
 	strh	r5, [r3]
 	ldr	r6, =Data_346f8
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, #0xb9
 	lsl	r2, #2
 	add	r3, r7, r2
@@ -81,7 +81,7 @@
 	mov	r2, r6
 	ldrh	r0, [r3]
 	lsl	r1, #1
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, =0x2e6
 	add	r3, r7, r2
 	sub	r2, #4
@@ -128,7 +128,7 @@
 	bx	r0
 .func_end Func_801a66c
 
-.thumb_func_start Func_801a778
+.thumb_func_start Func_801a778  @ 0x0801a778
 	push	{lr}
 	ldr	r3, =iwram_3001e98
 	mov	r2, #0xd2
@@ -164,7 +164,7 @@
 	bx	r0
 .func_end Func_801a778
 
-.thumb_func_start Func_801a7c0
+.thumb_func_start Func_801a7c0  @ 0x0801a7c0
 	push	{lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r2, [r3]
@@ -192,7 +192,7 @@
 	bx	r0
 .func_end Func_801a7c0
 
-.thumb_func_start Func_801a7f4
+.thumb_func_start Func_801a7f4  @ 0x0801a7f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

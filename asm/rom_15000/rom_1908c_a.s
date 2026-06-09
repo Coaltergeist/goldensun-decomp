@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80191cc
+.thumb_func_start Func_80191cc  @ 0x080191cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -90,7 +90,7 @@
 	add	r2, r3
 	ldrh	r0, [r1]
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L192d0	@ 0x3ff
 	ldrh	r2, [r7, #8]
 	and	r0, r3
@@ -133,7 +133,7 @@
 	mov	r1, #0x50
 	str	r2, [sp, #4]
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, [sp, #4]
 	ldrb	r3, [r2, r0]
 	mov	r2, r8
@@ -294,7 +294,7 @@
 	mov	r3, #0xe8
 	lsl	r3, #8
 	add	r0, r3
-	bl	Func_8002322
+	bl	sin
 	ldrh	r2, [r6, #6]
 	asr	r0, #14
 	sub	r2, r0
@@ -310,7 +310,7 @@
 	lsl	r2, #7
 	strh	r3, [r7, #6]
 	add	r0, r2
-	bl	Func_800231c
+	bl	cos
 	ldrb	r3, [r6, #8]
 	asr	r0, #14
 	sub	r3, r0
@@ -335,7 +335,7 @@
 	ldrh	r0, [r6, #0xc]
 	mov	r1, #0x14
 	str	r4, [sp]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r4, [sp]
 	lsl	r0, #16
 	lsr	r0, #15
@@ -351,7 +351,7 @@
 	strh	r3, [r7, #6]
 	mov	r1, #0x14
 	ldrh	r0, [r6, #0xc]
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	lsl	r0, #16
 	lsr	r0, #15
 	ldr	r4, [sp]

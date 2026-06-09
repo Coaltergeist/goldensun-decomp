@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_934_200969c
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -42,7 +42,7 @@
 	mov	r3, #0x81
 	lsl	r3, #2
 	str	r3, [r1]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldrsh	r2, [r3, r2]
 	ldr	r3, =0x5d
 	cmp	r2, r3
@@ -51,7 +51,7 @@
 	lsl	r3, #1
 	str	r3, [r1]
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xb
 	mov	r1, #3
 	bl	__Func_8092b08
@@ -59,7 +59,7 @@
 	mov	r1, #3
 	bl	__Func_8092b08
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 .L172e:
 	bl	OvlFunc_934_2009984
 	mov	r0, #0
@@ -77,7 +77,7 @@
 	mov	r2, #0
 	ldrsh	r5, [r3, r2]
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r5
 	bl	__Func_8091e9c
 	pop	{r5}
@@ -98,7 +98,7 @@
 	str	r5, [sp, #4]
 	bl	__Func_8010704
 	ldr	r0, =0x301
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L17ae
 	mov	r0, #0xb
@@ -143,7 +143,7 @@
 	push	{r7}
 	sub	sp, #8
 	str	r2, [sp]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1
@@ -155,7 +155,7 @@
 	mov	r0, r5
 	bl	__MapActor_GetActor
 	mov	r7, r0
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, [sp, #4]
 	lsl	r3, #16
 	mov	r11, r3
@@ -183,10 +183,10 @@
 	str	r2, [r6, #0x34]
 	mov	r0, r6
 	ldr	r2, [r6, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #0x1b
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, [r7, #8]
 	mov	r2, r10
 	add	r3, r11
@@ -203,7 +203,7 @@
 	str	r2, [r7, #0x34]
 	mov	r0, r7
 	ldr	r2, [r7, #0xc]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r3, [sp, #4]
 	cmp	r3, #0
 	blt	.L187c
@@ -213,16 +213,16 @@
 .L187c:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L188e
 .L1886:
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L188e:
 	mov	r0, r6
-	bl	__Func_800ca6c
-	bl	__Func_8091750
+	bl	__Actor_WaitMovement
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -237,7 +237,7 @@
 .thumb_func_start OvlFunc_934_20098b4
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xb
 	mov	r1, #0x70
 	mov	r2, #0
@@ -247,12 +247,12 @@
 	mov	r0, #0xb
 	bl	OvlFunc_934_20097d8
 	ldr	r0, =0x301
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_934_2009770
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_934_20098b4
@@ -260,7 +260,7 @@
 .thumb_func_start OvlFunc_934_20098f4
 	push	{lr}
 	mov	r0, #0xf1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0x70
 	neg	r1, r1
 	mov	r0, #0xb
@@ -272,12 +272,12 @@
 	mov	r0, #0xb
 	bl	OvlFunc_934_20097d8
 	ldr	r0, =0x301
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	bl	OvlFunc_934_2009770
 	ldr	r0, =0x121
-	bl	__Func_80f9080
+	bl	__PlaySound
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_934_20098f4
@@ -324,7 +324,7 @@
 
 .thumb_func_start OvlFunc_934_2009984
 	push	{r5, r6, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r0, #0xe0
 	lsl	r0, #1
 	add	r3, r2, r0
@@ -379,21 +379,21 @@
 	b	.L1bc6
 .L1a02:
 	mov	r0, #0x70
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1a0e
 	b	.L1bc6
 .L1a0e:
 	ldr	r0, =0x302
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1a1a
 	b	.L1bc6
 .L1a1a:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
-	ldr	r3, =ewram_2000240
+	bl	__SetFlag
+	ldr	r3, =gState
 	mov	r0, #0xe1
 	lsl	r0, #1
 	add	r3, r0
@@ -402,12 +402,12 @@
 	cmp	r3, #5
 	bne	.L1a38
 	add	r0, #0x3f
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1a38:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1a4a
 	b	.L1bc6
@@ -417,7 +417,7 @@
 	mov	r0, #8
 	lsl	r1, #18
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	ldr	r3, =OvlFunc_934_2008cf8
@@ -442,7 +442,7 @@
 	bl	OvlFunc_934_2009770
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1aaa
 	mov	r3, #0x17
@@ -456,7 +456,7 @@
 	bl	__Func_8010704
 .L1aaa:
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1ab6
 	b	.L1bc6
@@ -485,7 +485,7 @@
 	cmp	r3, #1
 	blt	.L1bc6
 	add	r0, #0x40
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1b14
 	mov	r6, #4
@@ -510,7 +510,7 @@
 	bl	OvlFunc_934_2008ba4
 .L1b1a:
 	ldr	r0, =0x203
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1b4a
 	mov	r6, #4
@@ -535,7 +535,7 @@
 	bl	OvlFunc_934_2008ba4
 .L1b50:
 	ldr	r0, =0x205
-	bl	__Func_8079338
+	bl	__GetFlag
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1b72
@@ -552,7 +552,7 @@
 .L1b72:
 	mov	r0, #0x81
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1bb8
 	mov	r3, #2

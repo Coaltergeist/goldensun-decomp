@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80994d0
+.thumb_func_start Field_Ply  @ 0x080994d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -22,7 +22,7 @@
 	ldr	r1, [r6, #8]
 	ldr	r3, [r6, #0x10]
 	mov	r0, #0xe9
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L9952c
@@ -48,21 +48,21 @@
 .L9952c:
 	mov	r0, #1
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #7
 	ble	.L994ec
 	mov	r2, r8
 	ldrb	r2, [r2, #0x1c]
 	mov	r0, #0x82
 	mov	r9, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x6e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xe9
 	mov	r1, #0
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	mov	r5, r6
 	cmp	r6, #0
@@ -86,12 +86,12 @@
 	mov	r3, #4
 	strb	r3, [r2]
 	mov	r1, #7
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 .L99588:
 	mov	r0, #0x83
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0xc
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r6, #0
 	beq	.L995c6
 	mov	r3, #3
@@ -105,24 +105,24 @@
 	beq	.L995b2
 	mov	r0, r5
 	mov	r1, #9
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	b	.L995ba
 .L995b2:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 .L995ba:
 	mov	r0, #2
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0x1d
 	ble	.L9959e
 .L995c6:
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r0, #0x54
-	bl	_Func_80f9080
+	bl	_PlaySound
 	cmp	r5, #0
 	beq	.L99600
 	ldr	r3, =Func_80993b0
@@ -139,11 +139,11 @@
 	cmp	r3, #0
 	beq	.L995fa
 	mov	r0, #0x80
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L99600
 .L995fa:
 	mov	r0, #0xc0
-	bl	Func_80030f8
+	bl	WaitFrames
 .L99600:
 	cmp	r6, #0
 	beq	.L99636
@@ -166,9 +166,9 @@
 	mov	r0, r6
 	bl	Func_8096bec
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r6
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 .L99636:
 	mov	r3, r9
 	cmp	r3, #0x60
@@ -190,18 +190,18 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80994d0
+.func_end Field_Ply
 
-.thumb_func_start Func_8099678
+.thumb_func_start Func_8099678  @ 0x08099678
 	push	{r5, r6, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r5, =iwram_3001ebc
 	ldr	r0, [r3]
 	ldr	r6, [r5]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r2, #0xcf
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -250,7 +250,7 @@
 	ldr	r5, [r5, r3]
 	b	.L996e6
 .L996e4:
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 .L996e6:
 	ldr	r3, [r0, #8]
 	cmp	r3, #0
@@ -285,7 +285,7 @@
 	bx	r0
 .func_end Func_8099678
 
-.thumb_func_start Func_8099738
+.thumb_func_start Func_8099738  @ 0x08099738
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -293,23 +293,23 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	ldr	r6, [r5, #0x50]
 	ldr	r2, [r6, #0x28]
 	mov	r0, #0x9a
 	mov	r10, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =Func_8099678
 	bl	StopTask
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r3, #0
 	str	r3, [r5, #0x6c]
 	mov	r3, #0x25
@@ -331,14 +331,14 @@
 	strb	r1, [r6]
 	mov	r0, #2
 	strb	r3, [r5]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r8
 	mov	r3, #0
 	strb	r2, [r6]
 	mov	r0, #2
 	strb	r3, [r5]
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #4
 	bls	.L99788
 	mov	r1, #0
@@ -357,20 +357,20 @@
 	strb	r6, [r5]
 	mov	r0, #2
 	strb	r2, [r3]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r8
 	mov	r2, r10
 	strb	r1, [r2, #5]
 	strb	r6, [r5]
 	mov	r0, #2
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #4
 	bls	.L997be
 	mov	r1, r9
 	mov	r3, #1
 	strb	r3, [r1]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0x93
 	lsl	r1, #2
 	mov	r2, #0

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8012d70
+.thumb_func_start Func_8012d70  @ 0x08012d70
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -25,7 +25,7 @@
 	ldrsh	r0, [r5, r3]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #5]
 	ldr	r1, [sp, #4]
 	ldr	r4, [sp]

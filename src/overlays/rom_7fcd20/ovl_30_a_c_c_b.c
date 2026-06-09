@@ -5,8 +5,8 @@
  * asm/overlays/rom_7fcd20/ovl_30_a_c_c_a.o and asm/overlays/rom_7fcd20/ovl_30_a_c_c_c.o in
  * goldensun/overlays/rom_7fcd20/overlay.ld.
  */
-extern void __Func_8020bd8(int);
+extern void __UI_NameEntry(int);
 
 void OvlFunc_974_200821c(void) {
-    __Func_8020bd8(0);
+    __UI_NameEntry(0);
 }

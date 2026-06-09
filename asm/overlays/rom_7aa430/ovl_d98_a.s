@@ -10,7 +10,7 @@
 	ldr	r3, =iwram_3001e40
 	mov	r1, #5
 	ldr	r0, [r3]
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	cmp	r0, #0
 	bne	.Le22
 	ldr	r3, =.L291c
@@ -41,7 +41,7 @@
 	bhi	.Ldf4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r5, r0
 .Ldf4:
 	mov	r2, #0x6f
@@ -53,7 +53,7 @@
 	ldr	r3, =.L2924
 	ldr	r3, [r3]
 	lsl	r1, r3, #10
-	ldr	r3, =.L2920
+	ldr	r3, =gOvl_0200a920
 	ldr	r3, [r3]
 	lsl	r3, #5
 	orr	r1, r3

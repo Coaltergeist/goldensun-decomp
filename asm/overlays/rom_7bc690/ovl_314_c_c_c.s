@@ -21,7 +21,8 @@
 	.incbin "overlays/rom_7bc690/orig.bin", 0x2234, (0x22dc-0x2234)
 .L22dc:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x22dc, (0x236c-0x22dc)
-.L236c:
+	.global gOvl_0200a36c
+gOvl_0200a36c:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x236c, (0x23b0-0x236c)
 .L23b0:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x23b0, (0x23c8-0x23b0)
@@ -31,5 +32,6 @@
 	.incbin "overlays/rom_7bc690/orig.bin", 0x2410, (0x24b8-0x2410)
 .L24b8:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x24b8, (0x2500-0x24b8)
-.L2500:
+	.global gOvl_0200a500
+gOvl_0200a500:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x2500, (0x26bc-0x2500)

@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_807842c
+.thumb_func_start CanEquipItem  @ 0x0807842c
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_8078414
+	bl	GetItemInfo
 	mov	r3, #0x94
 	lsl	r3, #1
 	add	r6, r3
@@ -25,5 +25,5 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_807842c
+.func_end CanEquipItem
 

@@ -1,4 +1,4 @@
-/* Cluster Func_80ec0f0..Func_80ec0f0 extracted from goldensun/asm/rom_c9000/rom_eb754_c.s.
+/* Cluster SetBG2Wide..SetBG2Wide extracted from goldensun/asm/rom_c9000/rom_eb754_c.s.
  *
  * Total .text for this TU = 16 bytes (= 0x10).
  * Preserves the original ROM layout when slotted between
@@ -7,6 +7,6 @@
  */
 #define REG_BG2PA (*(volatile unsigned short *)0x04000020)
 
-void Func_80ec0f0(void) {
+void SetBG2Wide(void) {
     REG_BG2PA = 0x80;
 }

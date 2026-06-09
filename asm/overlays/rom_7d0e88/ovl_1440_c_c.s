@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_947_20094c4
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -11,13 +11,13 @@
 	ldr	r3, =0x73
 	cmp	r2, r3
 	bne	.L14dc
-	ldr	r0, =.L306c
+	ldr	r0, =gOvl_0200b06c
 	b	.L14fc
 .L14dc:
 	ldr	r3, =0x74
 	cmp	r2, r3
 	bne	.L14e6
-	ldr	r0, =.L30e4
+	ldr	r0, =gOvl_0200b0e4
 	b	.L14fc
 .L14e6:
 	ldr	r3, =0x77
@@ -58,11 +58,14 @@
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x2f84, (0x2fcc-0x2f84)
 .L2fcc:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x2fcc, (0x3014-0x2fcc)
-.L3014:
+	.global gOvl_0200b014
+gOvl_0200b014:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x3014, (0x306c-0x3014)
-.L306c:
+	.global gOvl_0200b06c
+gOvl_0200b06c:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x306c, (0x30e4-0x306c)
-.L30e4:
+	.global gOvl_0200b0e4
+gOvl_0200b0e4:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x30e4, (0x3174-0x30e4)
 .L3174:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x3174, (0x3264-0x3174)

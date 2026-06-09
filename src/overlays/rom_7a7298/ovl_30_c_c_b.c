@@ -5,35 +5,35 @@
  * asm/overlays/rom_7a7298/ovl_30_c_c_a.o and asm/overlays/rom_7a7298/ovl_30_c_c_c.o in
  * goldensun/overlays/rom_7a7298/overlay.ld.
  */
-extern void __Func_80916b0(void);
-extern int __Func_8079338(int);
-extern void __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneStart(void);
+extern int __GetFlag(int);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_921_200821c(void) {
-    __Func_80916b0();
-    if (__Func_8079338(3)) {
-        __Func_8092b94(0x1570);
+    __CutsceneStart();
+    if (__GetFlag(3)) {
+        __MessageID(0x1570);
     } else {
-        __Func_8092b94(0x1529);
+        __MessageID(0x1529);
     }
-    __Func_8092f84(8, 0);
-    __Func_8091750();
+    __ActorMessage(8, 0);
+    __CutsceneEnd();
 }
-extern void __Func_80916b0(void);
-extern int __Func_8079338(int);
-extern void __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneStart(void);
+extern int __GetFlag(int);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_921_2008254(void) {
-    __Func_80916b0();
-    if (__Func_8079338(3)) {
-        __Func_8092b94(0x1571);
+    __CutsceneStart();
+    if (__GetFlag(3)) {
+        __MessageID(0x1571);
     } else {
-        __Func_8092b94(0x152f);
+        __MessageID(0x152f);
     }
-    __Func_8092f84(8, 0);
-    __Func_8091750();
+    __ActorMessage(8, 0);
+    __CutsceneEnd();
 }

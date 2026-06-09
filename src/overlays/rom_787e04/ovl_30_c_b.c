@@ -6,12 +6,12 @@
  * goldensun/overlays/rom_787e04/overlay.ld.
  */
 extern volatile unsigned int iwram_3001e40;
-extern int _Func_8000b50(unsigned int a, int b);
-extern void __Func_800c598(int a, int b);
+extern int _umodsi3_RAM(unsigned int a, int b);
+extern void __Actor_SetColorswap(int a, int b);
 
 void OvlFunc_887_20095bc(int arg0)
 {
     if (iwram_3001e40 & 1) {
-        __Func_800c598(arg0, _Func_8000b50(iwram_3001e40 >> 1, 6));
+        __Actor_SetColorswap(arg0, _umodsi3_RAM(iwram_3001e40 >> 1, 6));
     }
 }

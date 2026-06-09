@@ -1,25 +1,25 @@
 	.include "macros.inc"
 
 	.export_func _Func_8010560
-	.export_func _Func_8010424
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
-	.export_func _Func_8091750
+	.export_func _CopyMapTiles
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
+	.export_func _CutsceneEnd
 	.export_func _Func_808b868
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092924
-	.export_func _Func_8092064
+	.export_func _DeleteFieldActor
+	.export_func _MapActor_SetSpeed
 	.export_func _Func_8092208
-	.export_func _Func_80924d4
+	.export_func _MapActor_SetAnim
 	.export_func _Func_8092950
-	.export_func _Func_8092b94
-	.export_func _Func_8092f84
+	.export_func _MessageID
+	.export_func _ActorMessage
 	.export_func _Func_8093054
 	.export_func _Func_8091e9c
-	.export_func _Func_8091df4
-	.export_func _Func_8091e20
-	.export_func _Func_80b29a8
+	.export_func _MapTransitionOut
+	.export_func _WaitMapTransition
+	.export_func _UI_Sanctum
 	.export_func _Func_80b3284
-	.export_func _Func_80f9080
+	.export_func _PlaySound

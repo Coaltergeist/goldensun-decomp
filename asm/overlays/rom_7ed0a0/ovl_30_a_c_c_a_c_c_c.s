@@ -4,13 +4,13 @@
 	push	{lr}
 	mov	r0, #0x15
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x15
 	mov	r1, #0
 	bl	__Func_8092950
 	mov	r1, #2
 	mov	r0, #0x15
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	add	r0, #0x23
@@ -19,7 +19,7 @@
 	and	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x201
-	bl	__Func_8079358
+	bl	__SetFlag
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_964_2009938

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800d8c4
+.thumb_func_start ActorCmd_Anim  @ 0x0800d8c4
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #4
@@ -9,7 +9,7 @@
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r1, [r3, #4]
-	bl	Func_800c300
+	bl	Actor_SetAnim
 	ldrh	r3, [r5, #4]
 	add	r3, #2
 	strh	r3, [r5, #4]
@@ -17,5 +17,5 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800d8c4
+.func_end ActorCmd_Anim
 

@@ -5,9 +5,9 @@
  * asm/rom_77000/rom_79460_c_c_c_c_a.o and asm/rom_77000/rom_79460_c_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_807a0cc();
+extern unsigned int GetDjinniInfo();
 
 unsigned short Func_807a5b0(void) {
-    unsigned int ptr = Func_807a0cc();
+    unsigned int ptr = GetDjinniInfo();
     return *(unsigned short *)ptr;
 }

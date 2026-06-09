@@ -5,7 +5,7 @@
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r5, [r3]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0
@@ -16,7 +16,7 @@
 	mov	r3, #0
 	ldrsh	r0, [r5, r3]
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

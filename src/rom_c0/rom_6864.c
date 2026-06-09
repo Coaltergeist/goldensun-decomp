@@ -9,7 +9,7 @@
  */
 
 /* FF: void CpuSet(void * src, void * dest, u32 length) */
-void Func_8006864(void) {
+void CpuSet(void) {
     asm("swi 0xb");
 }
 

@@ -5,12 +5,12 @@
  * Candidate: tools/runs/run_20260607T031612Z/OvlFunc_964_20092b0-iter-1.c
  * TODO(residual): expected pools cmp const 0xad behind .L381c; candidate emits immediate cmp
  */
-extern short ewram_2000240[];
+extern short gState[];
 extern unsigned char L381c[] __asm__(".L381c");
 
 unsigned char *OvlFunc_964_20092b0(void)
 {
-	if (ewram_2000240[0xe0] == 0xad)
+	if (gState[0xe0] == 0xad)
 		return L381c;
 	return (unsigned char *)0;
 }

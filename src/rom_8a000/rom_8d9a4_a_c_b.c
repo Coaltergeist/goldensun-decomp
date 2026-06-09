@@ -1,4 +1,4 @@
-/* Cluster Func_808ec14..Func_808ec14 extracted from goldensun/asm/rom_8a000/rom_8d9a4_a_c.s.
+/* Cluster GetMapActorIndex..GetMapActorIndex extracted from goldensun/asm/rom_8a000/rom_8d9a4_a_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned char *iwram_3001ebc;
 
-int Func_808ec14(unsigned int param_1)
+int GetMapActorIndex(unsigned int param_1)
 {
     unsigned char *p;
     int i;

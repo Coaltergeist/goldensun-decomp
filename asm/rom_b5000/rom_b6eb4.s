@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80b6eb4
+.thumb_func_start GetWeaponSpriteID  @ 0x080b6eb4
 	push	{r5, r6, lr}
 	mov	r5, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #1
 	mov	r6, r0
 	mov	r0, r5
-	bl	_Func_80787dc
+	bl	_GetEquippedItem
 	mov	r5, #0
 	cmp	r0, #0
 	blt	.Lb6f1e
@@ -16,7 +16,7 @@
 	ldrh	r3, [r6, r3]
 	ldr	r0, =0x1ff
 	and	r0, r3
-	bl	Func_80b6e7c
+	bl	GetWeaponType
 	mov	r2, #0x94
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -58,7 +58,7 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80b6eb4
+.func_end GetWeaponSpriteID
 
 	.section .rodata
 

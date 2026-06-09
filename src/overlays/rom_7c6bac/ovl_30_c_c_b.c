@@ -6,9 +6,9 @@
  * goldensun/overlays/rom_7c6bac/overlay.ld.
  */
 extern unsigned int iwram_3001ebc;
-extern void __Func_8079374(int);
+extern void __ClearFlag(int);
 
 void OvlFunc_942_2008ad4(void) {
     *(unsigned int *)((char *)iwram_3001ebc + 0x1c0) = 0x1c0 + 0x49;
-    __Func_8079374(0x12f);
+    __ClearFlag(0x12f);
 }

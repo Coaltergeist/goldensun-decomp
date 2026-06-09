@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a8604
+.thumb_func_start Func_80a8604  @ 0x080a8604
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -17,13 +17,13 @@
 	mov	r0, #1
 	neg	r0, r0
 	mov	r8, r3
-	bl	_Func_807a5bc
+	bl	_GetNumDjinn
 	neg	r3, r0
 	orr	r3, r0
 	lsr	r3, #31
 	ldr	r0, [sp, #0x1c]
 	str	r3, [sp, #0xc]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r2, [sp, #0x18]
 	mov	r3, #0xff
 	and	r3, r2
@@ -154,7 +154,7 @@
 	cmp	r6, #0
 	bne	.La8754
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0x60
 	str	r3, [sp]
 	mov	r0, r7
@@ -164,7 +164,7 @@
 	bl	_Func_80164d4
 .La8754:
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	ldr	r3, [sp, #0x18]
 	cmp	r3, #1
 	beq	.La8766
@@ -293,7 +293,7 @@
 	ldr	r0, =.Laf230
 	mov	r1, r7
 	ldr	r3, [sp, #4]
-	bl	_Func_801e940
+	bl	_UIDrawText
 	b	.La886a
 .La8866:
 	ldr	r3, [sp, #0x10]

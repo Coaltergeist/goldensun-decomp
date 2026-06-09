@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091eb0
+.thumb_func_start Func_8091eb0  @ 0x08091eb0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r6, r1
 	ldr	r7, [r3]
 	mov	r5, r0
-	bl	Func_808b05c
+	bl	GetEncounterGroup
 	mov	r1, #0xbe
 	lsl	r1, #1
 	add	r3, r7, r1
@@ -15,7 +15,7 @@
 	bne	.L91ed8
 	cmp	r6, #0
 	bne	.L91ed8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x21
 	add	r1, #0x5a
 	add	r3, r1
@@ -28,11 +28,11 @@
 	ldrsh	r3, [r3, r1]
 	cmp	r3, #3
 	bne	.L91ef8
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, #0x56
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	add	r0, #8
 	bl	Func_808adf0
 .L91ef8:
@@ -44,7 +44,7 @@
 	bx	r0
 .func_end Func_8091eb0
 
-.thumb_func_start Func_8091f14
+.thumb_func_start Func_8091f14  @ 0x08091f14
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -63,7 +63,7 @@
 .L91f34:
 	mov	r1, #0x96
 	lsl	r1, #1
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	add	r3, r7, r1
 	mov	r1, #0x8d
 	lsl	r1, #2
@@ -87,7 +87,7 @@
 	lsl	r1, #1
 	add	r3, r6, r1
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	add	r0, #8
 	bl	Func_808adf0
 .L91f74:

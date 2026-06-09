@@ -21,9 +21,9 @@
 	b	_start
 
 .Lsp_sys:
-	.word	iwram_3007f00
+	.word	IRQ_STACK_BASE
 .Lsp_irq:
-	.word	iwram_3007fa0
+	.word	SVC_STACK_BASE
 .func_end _start
 
 .arm_func_start Func_8000404
@@ -222,7 +222,7 @@
 .L6fc:
 .func_end Func_8000404
 
-.thumb_func_start Func_80006fc
+.thumb_func_start cam4aSoundMain
 	ldr	r0, .L76c
 	ldr	r0, [r0]
 	ldr	r2, .L768
@@ -278,7 +278,7 @@
 .L760:	.word	0x350
 	.word	REG_VCOUNT
 .L768:	.word	0x68736d53
-.L76c:	.word	iwram_3007ff0
-.func_end Func_80006fc
+.L76c:	.word	SOUND_INFO_PTR
+.func_end cam4aSoundMain
 
 .Lintr_main:

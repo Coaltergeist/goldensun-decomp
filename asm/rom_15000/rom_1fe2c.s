@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801fe2c
+.thumb_func_start Func_801fe2c  @ 0x0801fe2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -44,12 +44,12 @@
 	mov	r1, #0
 	ldrsb	r1, [r3, r1]
 	bl	_Func_808b3d0
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1fea6
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r2, r5
 	add	r2, #0x26
 	mov	r3, #0
@@ -113,7 +113,7 @@
 	bx	r0
 .func_end Func_801fe2c
 
-.thumb_func_start Func_801ff14
+.thumb_func_start Func_801ff14  @ 0x0801ff14
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -130,7 +130,7 @@
 	ldr	r0, [r5, r7]
 	cmp	r0, #0
 	beq	.L1ff3c
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r3, r8
 	str	r3, [r5, r7]
 .L1ff3c:
@@ -145,7 +145,7 @@
 	bx	r0
 .func_end Func_801ff14
 
-.thumb_func_start Func_801ff58
+.thumb_func_start Func_801ff58  @ 0x0801ff58
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -191,7 +191,7 @@
 	mov	r1, r6
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .L1ffb6:
 	mov	r3, #1
@@ -210,7 +210,7 @@
 	bx	r0
 .func_end Func_801ff58
 
-.thumb_func_start Func_801ffd8
+.thumb_func_start Func_801ffd8  @ 0x0801ffd8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -239,12 +239,12 @@
 	ldr	r3, =.L73854
 	lsl	r2, r7, #2
 	ldr	r0, [r3, r2]
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L20032
 	mov	r1, #2
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r2, r5
 	add	r2, #0x26
 	mov	r3, #0
@@ -294,7 +294,7 @@
 	bx	r0
 .func_end Func_801ffd8
 
-.thumb_func_start Func_8020088
+.thumb_func_start Func_8020088  @ 0x08020088
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -311,7 +311,7 @@
 	ldr	r0, [r5, r7]
 	cmp	r0, #0
 	beq	.L200b0
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r3, r8
 	str	r3, [r5, r7]
 .L200b0:
@@ -326,7 +326,7 @@
 	bx	r0
 .func_end Func_8020088
 
-.thumb_func_start Func_80200cc
+.thumb_func_start Func_80200cc  @ 0x080200cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -375,7 +375,7 @@
 	mov	r1, r5
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .L20130:
 	mov	r3, #1
@@ -394,7 +394,7 @@
 	bx	r0
 .func_end Func_80200cc
 
-.thumb_func_start Func_8020150
+.thumb_func_start Func_8020150  @ 0x08020150
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}

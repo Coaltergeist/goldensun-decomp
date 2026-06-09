@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8005268
+.thumb_func_start PhysMove  @ 0x08005268
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	ldr	r3, =Func_80009c0
 	bl	_call_via_r3
 	ldr	r3, [r5, #8]
-	ldr	r7, =iwram_3001ce0
+	ldr	r7, =gPhysVec
 	neg	r1, r3
 	ldr	r3, [r7, #4]
 	mov	r0, #0
@@ -22,7 +22,7 @@
 	beq	.L529e
 	lsr	r1, #11
 	lsl	r0, #5
-	ldr	r3, =Func_8000b60
+	ldr	r3, =udivsi3_RAM
 	bl	_call_via_r3
 	mov	r4, r0
 	b	.L52a0
@@ -59,4 +59,4 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8005268
+.func_end PhysMove

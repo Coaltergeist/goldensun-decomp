@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a9a5c
+.thumb_func_start Func_80a9a5c  @ 0x080a9a5c
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -11,7 +11,7 @@
 	mov	r0, r1
 	mov	r10, r2
 	mov	r8, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	bl	Func_80a9cbc
 	bl	Func_80a345c
 	ldr	r5, =0xb24
@@ -46,7 +46,7 @@
 	cmp	r3, #0
 	bne	.La9ad8
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #1
 	bl	Func_80a3e28
@@ -61,7 +61,7 @@
 	bx	r0
 .func_end Func_80a9a5c
 
-.thumb_func_start Func_80a9aec
+.thumb_func_start Func_80a9aec  @ 0x080a9aec
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -83,7 +83,7 @@
 	mov	r5, r3
 	and	r5, r0
 	mov	r0, r5
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	cmp	r3, #2
 	beq	.La9b4e
@@ -152,7 +152,7 @@
 	bx	r0
 .func_end Func_80a9aec
 
-.thumb_func_start Func_80a9b94
+.thumb_func_start Func_80a9b94  @ 0x080a9b94
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8006384
+.thumb_func_start Func_8006384  @ 0x08006384
 	push	{r5, r6, lr}
 	ldr	r1, =iwram_3001f64
 	mov	r5, r0
@@ -13,7 +13,7 @@
 	mov	r6, r1
 .L6396:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r2, [r6]
 	mov	r3, r5
 	and	r3, r2
@@ -29,7 +29,7 @@
 	bx	r1
 .func_end Func_8006384
 
-.thumb_func_start Func_80063bc
+.thumb_func_start Func_80063bc  @ 0x080063bc
 	push	{r5, r6, r7, lr}
 	ldr	r5, =ewram_2002080
 	ldr	r4, [r5]
@@ -61,7 +61,7 @@
 	bx	r1
 .func_end Func_80063bc
 
-.thumb_func_start Func_8006408
+.thumb_func_start Func_8006408  @ 0x08006408
 	push	{r5, r6, lr}
 	ldr	r5, =ewram_20023ac
 	ldr	r4, [r5]

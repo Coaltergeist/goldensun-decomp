@@ -1,39 +1,39 @@
 	.include "macros.inc"
 
-	.export_func Func_8000af0
-	.export_func _Func_80030f8
+	.export_func divsi3_RAM
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _StopTask
 	.export_func _Random
-	.export_func _Func_800447c
+	.export_func _vec3_translate
 	.export_func _SetIntrHandler
-	.export_func _Func_80048f4
-	.export_func _Func_800c300
-	.export_func _Func_800c150
-	.export_func _Func_800c4bc
+	.export_func _galloc_ewram
+	.export_func _Actor_SetAnim
+	.export_func _CreateActor
+	.export_func _Camera_SetTarget
 	.export_func _Func_800fe9c
-	.export_func _Func_800d14c
-	.export_func _Func_800ca6c
+	.export_func _Actor_TravelTo
+	.export_func _Actor_WaitMovement
 	.export_func _Func_8011f54
 	.export_func _Func_80105d4
 	.export_func _Func_8010704
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_801776c
-	.export_func _Func_8079338
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
-	.export_func _Func_8091750
+	.export_func _GetFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
+	.export_func _CutsceneEnd
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
-	.export_func _Func_8092128
+	.export_func _MapActor_SetSpeed
+	.export_func _MapActor_TravelTo
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
 	.export_func _Func_80933d4
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8093c00
 	.export_func _Func_8091200
 	.export_func _Func_8091220
-	.export_func _Func_80f9080
+	.export_func _PlaySound

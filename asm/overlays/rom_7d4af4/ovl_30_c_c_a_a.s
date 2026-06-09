@@ -14,7 +14,7 @@
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, #0x88
 	mov	r2, #0x90
 	mov	r0, #0
@@ -24,7 +24,7 @@
 	bl	__Func_8012078
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_949_2008224

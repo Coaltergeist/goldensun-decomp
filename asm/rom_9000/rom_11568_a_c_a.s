@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8011590
+.thumb_func_start Func_8011590  @ 0x08011590
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e6c
 	ldmia	r3!, {r5}
@@ -19,7 +19,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =iwram_3001e40
 	ldr	r2, [r3]
 	and	r2, r6
@@ -30,7 +30,7 @@
 	mov	r3, #0xc8
 	lsl	r3, #4
 	add	r5, r3
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r0, r5
 	bl	Func_8012388
 	mov	r3, #0x80

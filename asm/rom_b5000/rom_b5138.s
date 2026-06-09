@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_80b5138
+.arm_func_start Func_80b5138  @ 0x080b5138
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	ldr	r2, .Lb5208
 	adr	r3, .Lb5238

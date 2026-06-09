@@ -1,4 +1,4 @@
-/* Cluster Func_8078ed8..Func_8078ed8 extracted from goldensun/asm/rom_77000/rom_78ed8.s.
+/* Cluster GetPCBaseStats..GetPCBaseStats extracted from goldensun/asm/rom_77000/rom_78ed8.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -11,7 +11,7 @@ typedef struct {
 
 extern PCStats gPCStats[];
 
-PCStats *Func_8078ed8(unsigned int idx) {
+PCStats *GetPCBaseStats(unsigned int idx) {
     PCStats *base = gPCStats;
     return base + idx;
 }

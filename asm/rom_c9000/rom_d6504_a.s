@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80d6504
+.thumb_func_start Task_SpinCamera  @ 0x080d6504
 	push	{lr}
 	ldr	r3, =iwram_3001eec
 	ldr	r2, [r3]
@@ -43,9 +43,9 @@
 .Ld654a:
 	pop	{r0}
 	bx	r0
-.func_end Func_80d6504
+.func_end Task_SpinCamera
 
-.thumb_func_start Func_80d655c
+.thumb_func_start Unk_080D655C  @ 0x080d655c
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, #0
@@ -60,21 +60,21 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d655c
+.func_end Unk_080D655C
 
-.thumb_func_start Func_80d6578
+.thumb_func_start Anim_Summon  @ 0x080d6578
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, =0x302
 	mov	r0, #0x29
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =0x782c
 	mov	r0, #0x27
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, [r5]
 	cmp	r3, #0
 	beq	.Ld662c
@@ -101,76 +101,76 @@
 	.word	.Ld6634
 .Ld65dc:
 	mov	r0, r5
-	bl	Func_80e823c
+	bl	Anim_Ramses
 	b	.Ld663a
 .Ld65e4:
 	mov	r0, r5
-	bl	Func_80d2d98
+	bl	Anim_Nereid
 	b	.Ld663a
 .Ld65ec:
 	mov	r0, r5
-	bl	Func_80eb754
+	bl	Anim_Kirin
 	b	.Ld663a
 .Ld65f4:
 	mov	r0, r5
-	bl	Func_80dc968
+	bl	Anim_Atalanta
 	b	.Ld663a
 .Ld65fc:
 	mov	r0, r5
-	bl	Func_80d6970
+	bl	Anim_Cybele
 	b	.Ld663a
 .Ld6604:
 	mov	r0, r5
-	bl	Func_80ec100
+	bl	Anim_Neptune
 	b	.Ld663a
 .Ld660c:
 	mov	r0, r5
-	bl	Func_80d2458
+	bl	Anim_Tiamat
 	b	.Ld663a
 .Ld6614:
 	mov	r0, r5
-	bl	Func_80d1714
+	bl	Anim_Procne
 	b	.Ld663a
 .Ld661c:
 	mov	r0, r5
-	bl	Func_80ea0d8
+	bl	Anim_Judgment
 	b	.Ld663a
 .Ld6624:
 	mov	r0, r5
-	bl	Func_80d765c
+	bl	Anim_Boreas
 	b	.Ld663a
 .Ld662c:
 	mov	r0, r5
-	bl	Func_80e7320
+	bl	Anim_Meteor
 	b	.Ld663a
 .Ld6634:
 	mov	r0, r5
-	bl	Func_80e15e8
+	bl	Anim_Thor
 .Ld663a:
 	mov	r0, #0x28
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x27
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x29
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d6578
+.func_end Anim_Summon
 
-.thumb_func_start Func_80d6660
+.thumb_func_start Anim_Func  @ 0x080d6660
 	push	{r5, lr}
 	mov	r5, r0
 	ldr	r1, =0x302
 	mov	r0, #0x29
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =0x782c
 	mov	r0, #0x27
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r0, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, =iwram_3001eec
 	ldr	r2, =0x7828
 	ldr	r3, [r3]
@@ -190,19 +190,19 @@
 	bl	_call_via_r3
 .Ld66a0:
 	mov	r0, #0x28
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x27
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x29
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d6660
+.func_end Anim_Func
 
-.thumb_func_start Func_80d66cc
+.thumb_func_start Func_80d66cc  @ 0x080d66cc
 	push	{r5, r6, lr}
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	ldr	r5, .Ld66f8	@ 0xfff1
 	ldr	r1, =ewram_2010082
 	ldr	r4, =ewram_200fffa
@@ -259,7 +259,7 @@
 	bx	r0
 .func_end Func_80d66cc
 
-.thumb_func_start Func_80d6750
+.thumb_func_start Func_80d6750  @ 0x080d6750
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -278,7 +278,7 @@
 	add	r5, #0x80
 	mov	r0, r5
 	str	r2, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	ldr	r2, [sp]
@@ -302,7 +302,7 @@
 .Ld679a:
 	mov	r0, r6
 	str	r2, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0x38
 	ldrsh	r3, [r0, r1]
 	ldr	r2, [sp]
@@ -322,7 +322,7 @@
 	strh	r3, [r1, r2]
 	mov	r0, r8
 	mov	r1, #0
-	bl	_Func_80b7b6c
+	bl	_CreateBattleSpriteOverlays
 	add	sp, #0x20
 	b	.Ld67d0
 
@@ -336,7 +336,7 @@
 	bx	r0
 .func_end Func_80d6750
 
-.thumb_func_start Func_80d67dc
+.thumb_func_start Func_80d67dc  @ 0x080d67dc
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -358,7 +358,7 @@
 	mov	r0, #1
 	mov	r2, #0x18
 	sub	sp, #4
-	bl	_Func_80c08ec
+	bl	_AnimTransitionIn
 	mov	r5, #0
 	mov	r4, sp
 	str	r5, [r4]
@@ -383,7 +383,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =REG_BLDALPHA
 	ldr	r3, .Ld6860	@ 0x100e
 	strh	r3, [r2]
@@ -392,7 +392,7 @@
 	strh	r3, [r2]
 	ldr	r3, .Ld6868	@ 0x7741
 	mov	r1, r8
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	strh	r3, [r1]
 	mov	r3, #0x78
 	str	r3, [r2, #0x10]
@@ -416,7 +416,7 @@
 	bx	r0
 .func_end Func_80d67dc
 
-.thumb_func_start Func_80d6888
+.thumb_func_start Func_80d6888  @ 0x080d6888
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -429,7 +429,7 @@
 	str	r0, [sp, #0x10]
 	mov	r9, r1
 	str	r2, [sp, #0xc]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, =iwram_3001eec
 	ldr	r3, [r3]
 	mov	r8, r0
@@ -504,7 +504,7 @@
 	cmp	r1, r2
 	beq	.Ld6930
 	mov	r0, r7
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .Ld6930:
 	ldr	r3, [sp, #4]
 	add	r3, #1

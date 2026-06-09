@@ -1,12 +1,12 @@
-/* Cluster Func_80d9ac4..Func_80d9ac4 extracted from goldensun/asm/rom_c9000/rom_d9ab8_c.s.
+/* Cluster Anim_Impair..Anim_Impair extracted from goldensun/asm/rom_c9000/rom_d9ab8_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
  * asm/rom_c9000/rom_d9ab8_c_a.o and asm/rom_c9000/rom_d9ab8_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80d9ae8(void *context, int subanim);
+extern void BaseAnim_StatDown(void *context, int subanim);
 
-void Func_80d9ac4(void *context) {
-    Func_80d9ae8(context, 1);
+void Anim_Impair(void *context) {
+    BaseAnim_StatDown(context, 1);
 }

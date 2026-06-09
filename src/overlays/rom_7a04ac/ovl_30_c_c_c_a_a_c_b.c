@@ -6,10 +6,10 @@
  * goldensun/overlays/rom_7a04ac/overlay.ld.
  */
 extern void __Func_8092adc(unsigned int arg0, unsigned int arg1, unsigned int arg2);
-extern void __Func_809163c(unsigned int arg0);
+extern void __CutsceneWait(unsigned int arg0);
 
 void OvlFunc_913_200a780(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
 	__Func_8092adc(arg0, arg1, 0);
-	__Func_809163c(arg2);
+	__CutsceneWait(arg2);
 }

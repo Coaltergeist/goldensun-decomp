@@ -5,33 +5,33 @@
  * asm/overlays/rom_791794/ovl_30_c_c_a.o and asm/overlays/rom_791794/ovl_30_c_c_c.o in
  * goldensun/overlays/rom_791794/overlay.ld.
  */
-extern void __Func_80f9080(unsigned int arg0);
+extern void __PlaySound(unsigned int arg0);
 extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
 extern void __Func_8091254(unsigned int arg0);
-extern void __Func_809163c(unsigned int arg0);
+extern void __CutsceneWait(unsigned int arg0);
 extern unsigned int iwram_3001e40;
-extern void __Func_800c598(unsigned int a, unsigned int b);
+extern void __Actor_SetColorswap(unsigned int a, unsigned int b);
 extern void OvlFunc_897_200aeb0(unsigned int a);
 
 void OvlFunc_897_200ad48(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     if (arg0 == 1) {
-        __Func_80f9080(0x9a << 1);
+        __PlaySound(0x9a << 1);
         __Func_8091200(0x203a52, 1);
     } else {
-        __Func_80f9080(0x121);
+        __PlaySound(0x121);
         __Func_8091200(0x80 << 9, 1);
     }
     __Func_8091254(arg1);
     if (arg2 != 0) {
-        __Func_809163c(arg2);
+        __CutsceneWait(arg2);
     }
 }
 void OvlFunc_897_200ad94(unsigned int arg0)
 {
     if (iwram_3001e40 & 2) {
-        __Func_800c598(arg0, 7);
+        __Actor_SetColorswap(arg0, 7);
     } else {
-        __Func_800c598(arg0, 0);
+        __Actor_SetColorswap(arg0, 0);
     }
     if ((iwram_3001e40 & 0xf) == 0) {
         OvlFunc_897_200aeb0(arg0);

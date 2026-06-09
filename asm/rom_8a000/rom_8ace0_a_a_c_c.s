@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b25c
+.thumb_func_start Func_808b25c  @ 0x0808b25c
 	push	{r5, r6, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #0xe0
 	mov	r12, r2
 	lsl	r3, #1
@@ -41,7 +41,7 @@
 	bx	r0
 .func_end Func_808b25c
 
-.thumb_func_start Func_808b2b0
+.thumb_func_start Func_808b2b0  @ 0x0808b2b0
 	push	{lr}
 	sub	r0, #1
 	cmp	r0, #6
@@ -77,7 +77,7 @@
 .L8b2f0:
 	ldr	r2, =0x39
 .L8b2f2:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xeb
 	lsl	r1, #1
 	add	r3, r1
@@ -86,7 +86,7 @@
 	bx	r0
 .func_end Func_808b2b0
 
-.thumb_func_start Func_808b320
+.thumb_func_start Func_808b320  @ 0x0808b320
 	push	{r5, r6, r7, lr}
 	lsl	r0, #4
 	add	r0, r1
@@ -95,7 +95,7 @@
 	mov	r0, #0xb6
 	lsl	r0, #1
 	ldr	r5, =.L9e488
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b33c
 	mov	r6, #0x12
@@ -135,7 +135,7 @@
 	cmp	r3, r12
 	bne	.L8b35a
 .L8b37a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xf7
 	lsl	r2, #1
 	add	r3, r2

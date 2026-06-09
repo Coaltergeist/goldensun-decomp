@@ -1,68 +1,68 @@
 	.include "macros.inc"
 
-	.export_func _Func_80030f8
-	.export_func _Func_80048b0
-	.export_func _Func_8002dd8
-	.export_func _Func_8003fa4
+	.export_func _WaitFrames
+	.export_func _galloc_iwram
+	.export_func _gfree
+	.export_func _UploadSpriteGFX
 	.export_func _Func_8010560
 	.export_func _Func_80118a8
 	.export_func _Func_80118c0
-	.export_func _Func_800c528
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_801776c
 	.export_func _Func_8019908
-	.export_func _Func_801a370
-	.export_func _Func_8077394
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_807822c
-	.export_func _Func_807961c
+	.export_func _LoadItemIcon
+	.export_func _GetUnit
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _UpdateStatBarPercent
+	.export_func _AddPartyMember
 	.export_func _Func_80796c4
 	.export_func _Func_807a7a0
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
-	.export_func _Func_8091750
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
+	.export_func _CutsceneEnd
 	.export_func _Func_8091a58
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
-	.export_func _Func_809207c
-	.export_func _Func_80920e8
-	.export_func _Func_80920a0
-	.export_func _Func_8092128
+	.export_func _MapActor_SetSpeed
+	.export_func _MapActor_SetBehavior
+	.export_func _MapActor_WaitScript
+	.export_func _MapActor_SetIdle
+	.export_func _MapActor_TravelTo
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
 	.export_func _Func_8092208
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
-	.export_func _Func_8092548
-	.export_func _Func_8092560
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
+	.export_func _MapActor_DoAnim
+	.export_func _MapActor_Jump
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
 	.export_func _Func_809280c
 	.export_func _Func_8092848
-	.export_func _Func_8092b94
+	.export_func _MessageID
 	.export_func _Func_8092c40
-	.export_func _Func_8092f84
+	.export_func _ActorMessage
 	.export_func _Func_8092adc
-	.export_func _Func_80937b8
-	.export_func _Func_8093874
-	.export_func _Func_809335c
+	.export_func _MapActor_Emote
+	.export_func _MapActor_Surprise
+	.export_func _SetCameraTarget
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8091e9c
 	.export_func _Func_808fe38
-	.export_func _Func_8091dc8
-	.export_func _Func_8091e20
+	.export_func _MapTransitionIn
+	.export_func _WaitMapTransition
 	.export_func _Func_808f1c0
 	.export_func _Func_808e118
 	.export_func _Func_8097608
-	.export_func _Func_808acc4
+	.export_func _PlayMapMusic
 	.export_func _Func_809233c
 	.export_func _Func_80922c4
 	.export_func _Func_8092304
-	.export_func _Func_80920c0
-	.export_func _Func_80b3398
-	.export_func _Func_80f9080
+	.export_func _MapActor_SetExtra
+	.export_func _InnHeal
+	.export_func _PlaySound

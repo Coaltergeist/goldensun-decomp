@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091dc8
+.thumb_func_start MapTransitionIn  @ 0x08091dc8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -11,7 +11,7 @@
 	ldr	r0, [r3]
 	add	r3, r5, r2
 	ldr	r1, [r3]
-	bl	Func_808fefc
+	bl	ScreenTransitionIn
 	mov	r3, #0xe3
 	lsl	r3, #1
 	add	r2, r5, r3
@@ -20,9 +20,9 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_8091dc8
+.func_end MapTransitionIn
 
-.thumb_func_start Func_8091df4
+.thumb_func_start MapTransitionOut  @ 0x08091df4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -33,7 +33,7 @@
 	ldr	r0, [r3]
 	add	r3, r5, r2
 	ldr	r1, [r3]
-	bl	Func_80901c0
+	bl	ScreenTransitionOut
 	mov	r3, #0xe3
 	lsl	r3, #1
 	add	r2, r5, r3
@@ -42,5 +42,5 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_8091df4
+.func_end MapTransitionOut
 

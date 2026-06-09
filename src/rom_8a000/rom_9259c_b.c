@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern void Func_809259c(void);
-extern void Func_80920e8(unsigned int actorID);
+extern void MapActor_WaitScript(unsigned int actorID);
 
 void Func_80925cc(unsigned int arg0)
 {
 	Func_809259c();
-	Func_80920e8(arg0);
+	MapActor_WaitScript(arg0);
 }

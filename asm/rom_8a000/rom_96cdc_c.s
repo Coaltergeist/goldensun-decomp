@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8096fb0
+.thumb_func_start Func_8096fb0  @ 0x08096fb0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -25,7 +25,7 @@
 	mov	r1, #0xe4
 	lsl	r1, #3
 	mov	r0, #0x38
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r5, r0
 	mov	r0, sp
 	str	r6, [r0]
@@ -44,7 +44,7 @@
 	mov	r3, r8
 	strh	r3, [r5, #0x1c]
 	mov	r0, r8
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #0xc]
 	strh	r3, [r5, #0x1e]
 	ldr	r3, =0xcc6
@@ -79,7 +79,7 @@
 	str	r3, [r5, #0x50]
 	ldr	r3, [r7, #0xc]
 	str	r3, [r5, #0x54]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r12, r3
 	mov	r3, #0xed
 	lsl	r3, #1
@@ -127,7 +127,7 @@
 	add	r3, r10
 	strh	r6, [r3]
 .L970b6:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r3, r5
 	add	r3, #0x46
 	strh	r0, [r3]
@@ -136,7 +136,7 @@
 	lsl	r1, #1
 	asr	r0, #16
 	ldr	r2, =.L9c410
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0xc8
 	ldr	r0, =Func_8096f8c
 	lsl	r1, #4
@@ -152,7 +152,7 @@
 	bx	r0
 .func_end Func_8096fb0
 
-.thumb_func_start Func_80970f8
+.thumb_func_start Func_80970f8  @ 0x080970f8
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r6, [r3]
@@ -160,14 +160,14 @@
 	lsl	r0, #16
 	asr	r0, #16
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	strh	r5, [r6, #0x1a]
 	lsl	r5, #16
 	mov	r7, r0
 	asr	r5, #16
 	str	r7, [r6, #0x10]
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldrh	r3, [r7, #6]
 	mov	r2, #0x80
 	lsl	r2, #6
@@ -206,14 +206,14 @@
 	str	r3, [r6, #8]
 	lsl	r0, #13
 	add	r2, r6, #4
-	bl	Func_800447c
+	bl	vec3_translate
 .L97168:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
 .func_end Func_80970f8
 
-.thumb_func_start Func_8097174
+.thumb_func_start Func_8097174  @ 0x08097174
 	push	{lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -221,14 +221,14 @@
 	mov	r3, #0
 	str	r3, [r0, #0x6c]
 	mov	r1, #0
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r0}
 	bx	r0
 .func_end Func_8097174
 
-.thumb_func_start Func_8097194
+.thumb_func_start Func_8097194  @ 0x08097194
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -297,7 +297,7 @@
 	beq	.L9721a
 	mov	r0, #1
 	add	r6, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r6, #0x1d
 	ble	.L971ee
 .L9721a:
@@ -332,7 +332,7 @@
 .L97256:
 	bl	Func_809202c
 	mov	r0, #0x38
-	bl	Func_8002dd8
+	bl	gfree
 .L97260:
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -344,7 +344,7 @@
 	bx	r0
 .func_end Func_8097194
 
-.thumb_func_start Func_809728c
+.thumb_func_start Func_809728c  @ 0x0809728c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -359,7 +359,7 @@
 	mov	r10, r3
 	mov	r2, #0x1c
 	ldrsh	r7, [r6, r2]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r3, [r5, #8]
 	str	r3, [r5, #0x38]
 	ldr	r3, [r5, #0xc]
@@ -379,7 +379,7 @@
 	cmp	r3, #0
 	beq	.L972da
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =Func_8096f14
 	str	r3, [r5, #0x6c]
 .L972da:
@@ -426,7 +426,7 @@
 .L97330:
 	mov	r0, #0xa0
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L97354
 	mov	r2, r8
@@ -439,7 +439,7 @@
 .L9734a:
 	mov	r0, r5
 	mov	r1, #0x15
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.L97358
 .L97354:
 	bl	Func_8097174

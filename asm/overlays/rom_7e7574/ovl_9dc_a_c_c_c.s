@@ -8,7 +8,7 @@
 	cmp	r0, #0
 	beq	.Lfdc
 	ldr	r0, =0xf2a
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lfdc:
 	pop	{r0}
 	bx	r0
@@ -22,7 +22,7 @@
 	cmp	r0, #0
 	beq	.Lff8
 	ldr	r0, =0xf2b
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lff8:
 	pop	{r0}
 	bx	r0
@@ -36,7 +36,7 @@
 	cmp	r0, #0
 	beq	.L1014
 	ldr	r0, =0xf2c
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1014:
 	pop	{r0}
 	bx	r0
@@ -50,7 +50,7 @@
 	cmp	r0, #0
 	beq	.L1030
 	ldr	r0, =0xf2d
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1030:
 	pop	{r0}
 	bx	r0
@@ -64,7 +64,7 @@
 	mov	r5, r1
 	mov	r6, r0
 	mov	r8, r3
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, r6
 	mov	r2, r5
 	mov	r0, #0
@@ -79,20 +79,20 @@
 	beq	.L1074
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, #1
 	mov	r8, r3
 	b	.L1082
 .L1074:
 	mov	r0, #0x7d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r6
 	mov	r1, #5
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L1082:
 	mov	r0, r7
-	bl	__Func_800c0f4
-	bl	__Func_8091750
+	bl	__DeleteActor
+	bl	__CutsceneEnd
 	mov	r0, r8
 	pop	{r3}
 	mov	r8, r3

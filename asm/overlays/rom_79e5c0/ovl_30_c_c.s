@@ -77,10 +77,10 @@
 	bgt	.L276a
 .L2756:
 	mov	r0, #0x6a
-	bl	__Func_80f9080
-	ldr	r1, =.L35ec
+	bl	__PlaySound
+	ldr	r1, =gScript_911__0200b5ec
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	ldr	r2, =.L3698
 	mov	r3, #1
 	str	r3, [r2]
@@ -168,7 +168,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r3, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L28da
@@ -181,7 +181,7 @@
 	cmp	r3, #0
 	bne	.L2852
 	mov	r0, #0xf6
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L2852:
 	ldr	r3, =.L3694
 	ldr	r3, [r3]
@@ -244,10 +244,10 @@
 	strb	r3, [r1, #9]
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
-	ldr	r1, =.L3610
+	bl	__Actor_SetAnim
+	ldr	r1, =gScript_911__0200b610
 	mov	r0, r5
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 .L28da:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -258,13 +258,13 @@
 	push	{lr}
 	ldr	r0, =0x845
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L2948
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r3, #9
 	mov	r2, #0x12
 	str	r3, [sp]
@@ -276,16 +276,16 @@
 	bl	__Func_8010704
 	bl	__Func_800fe9c
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	b	.L2952
 .L2948:
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L2952:
 	ldr	r0, =0x847
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L298e
 	mov	r3, #5
@@ -296,7 +296,7 @@
 	mov	r1, #0x13
 	mov	r2, #0x48
 	mov	r3, #9
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r3, #8
 	mov	r2, #0xb
 	str	r3, [sp]
@@ -308,7 +308,7 @@
 	bl	__Func_8010704
 	bl	__Func_800fe9c
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .L298e:
 	add	sp, #8
 	pop	{r0}
@@ -316,16 +316,19 @@
 .func_end OvlFunc_911_200a910
 
 	.section .data
-	.global .L2bd4
-	.global .L2c08
-	.global .L2c3c
-	.global .L2c70
-	.global .L2cfc
-	.global .L2d20
-	.global .L2d7c
-	.global .L2dd8
-	.global .L2e20
-	.global .L2e34
+	.global ActorCmd_ARRAY_911__0200abd4
+	.global gScript_911__0200ac08
+	.global gScript_911__0200ac3c
+	.global gScript_911__0200ac70
+	.global gScript_911__0200acfc
+	.global gScript_911__0200ad20
+	.global gScript_911__0200ad7c
+	.global gScript_911__0200add8
+	.global gScript_911__0200ae20
+	.global gScript_913__0200ae20
+	.global gScript_953__0200ae20
+	.global gScript_884__0200ae34
+	.global gScript_911__0200ae34
 	.global .L2e48
 	.global .L3080
 	.global .L3098
@@ -333,31 +336,34 @@
 	.global .L3368
 	.global .L33b0
 	.global .L3590
-	.global .L35d8
+	.global gScript_911__0200b5d8
 	.global .L2e60
 	.global .L2f80
-	.global .L2fc8
+	.global gScript_913__0200afc8
 	.global .L3010
 
-.L2bd4:
+ActorCmd_ARRAY_911__0200abd4:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2bd4, (0x2c08-0x2bd4)
-.L2c08:
+gScript_911__0200ac08:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c08, (0x2c3c-0x2c08)
-.L2c3c:
+gScript_911__0200ac3c:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c3c, (0x2c70-0x2c3c)
-.L2c70:
+gScript_911__0200ac70:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c70, (0x2cfc-0x2c70)
-.L2cfc:
+gScript_911__0200acfc:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2cfc, (0x2d20-0x2cfc)
-.L2d20:
+gScript_911__0200ad20:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2d20, (0x2d7c-0x2d20)
-.L2d7c:
+gScript_911__0200ad7c:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2d7c, (0x2dd8-0x2d7c)
-.L2dd8:
+gScript_911__0200add8:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2dd8, (0x2e20-0x2dd8)
-.L2e20:
+gScript_911__0200ae20:
+gScript_913__0200ae20:
+gScript_953__0200ae20:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e20, (0x2e34-0x2e20)
-.L2e34:
+gScript_884__0200ae34:
+gScript_911__0200ae34:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e34, (0x2e48-0x2e34)
 .L2e48:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e48, (0x2e60-0x2e48)
@@ -365,11 +371,12 @@
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e60, (0x2f80-0x2e60)
 .L2f80:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2f80, (0x2fc8-0x2f80)
-.L2fc8:
+gScript_913__0200afc8:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x2fc8, (0x3010-0x2fc8)
 .L3010:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x3010, (0x3040-0x3010)
-.L3040:
+	.global gOvl_0200b040
+gOvl_0200b040:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x3040, (0x3080-0x3040)
 .L3080:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x3080, (0x3098-0x3080)
@@ -383,11 +390,13 @@
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x33b0, (0x3590-0x33b0)
 .L3590:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x3590, (0x35d8-0x3590)
-.L35d8:
+gScript_911__0200b5d8:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x35d8, (0x35ec-0x35d8)
-.L35ec:
+	.global gScript_911__0200b5ec
+gScript_911__0200b5ec:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x35ec, (0x3610-0x35ec)
-.L3610:
+	.global gScript_911__0200b610
+gScript_911__0200b610:
 	.incbin "overlays/rom_79e5c0/orig.bin", 0x3610
 
 	.section .bss

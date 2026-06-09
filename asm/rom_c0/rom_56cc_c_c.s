@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8005c68
+.thumb_func_start Func_8005c68  @ 0x08005c68
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -35,7 +35,7 @@
 	lsr	r0, #16
 	mov	r1, #0
 	mov	r2, r5
-	bl	Func_8006ba8
+	bl	ReadFlash
 	mov	r3, #1
 	add	r8, r3
 .L5cb2:
@@ -50,7 +50,7 @@
 	add	r2, #0x38
 	lsl	r1, #1
 	mov	r3, #4
-	bl	Func_8006ba8
+	bl	ReadFlash
 	b	.L5cd4
 .L5cd0:
 	mov	r2, r10

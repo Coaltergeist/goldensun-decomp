@@ -5,8 +5,7 @@
  * asm/rom_f4000/rom_f4008_c_a.o and asm/rom_f4000/rom_f4008_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_af0_from_thumb(int a, int b);
 
 short Func_80f40e8(short arg0) {
-    return Func_af0_from_thumb(0x80 << 9, arg0);
+    return 0x10000 / arg0;
 }

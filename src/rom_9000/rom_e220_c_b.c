@@ -1,11 +1,11 @@
-/* Cluster Func_800e8d0..Func_800e964 extracted from goldensun/asm/rom_9000/rom_e220_c.s.
+/* Cluster ActorAttrOp_extra..ActorAttrOp_unk63 extracted from goldensun/asm/rom_9000/rom_e220_c.s.
  *
  * Total .text for this TU = 208 bytes (= 0xd0).
  * Preserves the original ROM layout when slotted between
  * asm/rom_9000/rom_e220_c_a.o and asm/rom_9000/rom_e220_c_c.o in
  * goldensun/stage1.ld.
  */
-void Func_800e8d0(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_extra(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)(actor + 0x68) = param;
@@ -19,7 +19,7 @@ void Func_800e8d0(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
-void Func_800e8fc(unsigned int *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_updateFn(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         *(unsigned int *)((char *)actor + 0x6c) = param;
@@ -33,7 +33,7 @@ void Func_800e8fc(unsigned int *actor, unsigned int op, unsigned int param)
         *(unsigned char *)((char *)actor + 0x57) = v;
     }
 }
-void Func_800e928(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk62(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
 
@@ -46,7 +46,7 @@ void Func_800e928(unsigned char *actor, unsigned int op, unsigned int param)
         actor[0x57] = val;
     }
 }
-void Func_800e964(unsigned char *actor, unsigned int op, unsigned int param)
+void ActorAttrOp_unk63(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
         actor[0x63] = param;

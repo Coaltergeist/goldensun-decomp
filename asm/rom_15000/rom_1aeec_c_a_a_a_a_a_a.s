@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801c0dc
+.thumb_func_start Func_801c0dc  @ 0x0801c0dc
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -8,11 +8,11 @@
 	mov	r5, r0
 	mov	r8, r3
 	mov	r6, r1
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, r8
 	str	r0, [r6]
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L1c134	@ 0x3ff
 	ldrh	r2, [r5, #8]
 	and	r0, r3
@@ -61,7 +61,7 @@
 	bx	r0
 .func_end Func_801c0dc
 
-.thumb_func_start Func_801c154
+.thumb_func_start Func_801c154  @ 0x0801c154
 	push	{lr}
 	ldr	r3, =0x1ff
 	ldrh	r4, [r0, #6]

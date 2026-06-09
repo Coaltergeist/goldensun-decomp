@@ -1,11 +1,11 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800679c
+.thumb_func_start Debug_TransferTest  @ 0x0800679c
 	push	{r5, r6, lr}
 	mov	r0, #3
 	sub	sp, #4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	bl	Func_8005d10
 	ldr	r2, =0x6002426
 	ldr	r3, =0xfffff093
@@ -20,15 +20,15 @@
 	mov	r0, sp
 	mov	r3, #0
 	str	r3, [r0]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r2, =0x5000100
-	bl	Func_8006864
+	bl	CpuSet
 	mov	r0, #3
 	bl	Func_8006384
 .L67d0:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	bl	Func_8006408
-	ldr	r6, =iwram_3001ae8
+	ldr	r6, =gKeyHeld
 .L67d8:
 	ldr	r3, [r6]
 	mov	r2, #1
@@ -68,7 +68,7 @@
 	cmp	r3, #0
 	bne	.L682e
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6001000
 	ldr	r2, =0x840000a0
 	stmia	r3!, {r0, r1, r2}
@@ -76,6 +76,6 @@
 	b	.L67d0
 .L682e:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L67d8
-.func_end Func_800679c
+.func_end Debug_TransferTest

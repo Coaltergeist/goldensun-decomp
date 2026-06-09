@@ -1,14 +1,14 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80915ac
+.thumb_func_start GetSpriteVoice  @ 0x080915ac
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, =0x20a
 	add	r3, r2
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L915c4
-	bl	Func_8091560
+	bl	GetSpriteVoiceEntry
 	ldrb	r0, [r0, #2]
 	cmp	r0, #0xff
 	bne	.L915c8
@@ -22,5 +22,5 @@
 .L915ce:
 	pop	{r1}
 	bx	r1
-.func_end Func_80915ac
+.func_end GetSpriteVoice
 

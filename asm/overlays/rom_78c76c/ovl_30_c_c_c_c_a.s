@@ -12,17 +12,17 @@
 	mov	r5, r3
 	mov	r8, r1
 	mov	r10, r2
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xb9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r9
 	ldr	r1, =0x3333
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r1, =0x3333
 	ldr	r2, =0x1999
 	mov	r0, #0
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, r9
 	bl	__MapActor_GetActor
 	add	r0, #0x5a
@@ -36,11 +36,11 @@
 	mov	r0, #0
 	add	r5, #8
 	add	r6, #8
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, r5
 	mov	r2, r6
 	mov	r0, #0
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r3, r8
 	lsl	r3, #4
 	mov	r8, r3
@@ -53,13 +53,13 @@
 	mov	r1, r8
 	mov	r2, r10
 	mov	r0, r9
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, r9
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0
 	mov	r1, #1
-	bl	__Func_80924d4
-	bl	__Func_8091750
+	bl	__MapActor_SetAnim
+	bl	__CutsceneEnd
 	pop	{r3, r5, r6}
 	mov	r8, r3
 	mov	r9, r5

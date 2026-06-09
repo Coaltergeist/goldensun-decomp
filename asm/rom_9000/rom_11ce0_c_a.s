@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8011f54
+.thumb_func_start Func_8011f54  @ 0x08011f54
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e70
 	mov	r5, r1
@@ -8,7 +8,7 @@
 	mov	r6, r2
 	asr	r5, #16
 	asr	r6, #16
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	cmp	r1, #0
 	beq	.L11f7a
 	mov	r2, #3
@@ -60,7 +60,7 @@
 	bx	r1
 .func_end Func_8011f54
 
-.thumb_func_start Func_8011fd8
+.thumb_func_start Func_8011fd8  @ 0x08011fd8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r5, [r3]
@@ -68,7 +68,7 @@
 	mov	r6, r0
 	asr	r1, #16
 	asr	r4, #16
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	cmp	r5, #0
 	beq	.L11ffe
 	mov	r2, #3
@@ -108,7 +108,7 @@
 	bx	r1
 .func_end Func_8011fd8
 
-.thumb_func_start Func_8012038
+.thumb_func_start Func_8012038  @ 0x08012038
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e70
 	mov	r5, r0
@@ -116,7 +116,7 @@
 	mov	r4, r2
 	asr	r1, #20
 	asr	r4, #20
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	cmp	r0, #0
 	beq	.L1205e
 	mov	r2, #3
@@ -139,7 +139,7 @@
 	bx	r1
 .func_end Func_8012038
 
-.thumb_func_start Func_8012078
+.thumb_func_start Func_8012078  @ 0x08012078
 	push	{r5, r6, lr}
 	mov	r6, r3
 	ldr	r3, =iwram_3001e70

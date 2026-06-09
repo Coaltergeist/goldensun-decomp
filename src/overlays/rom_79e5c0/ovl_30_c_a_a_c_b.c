@@ -5,11 +5,11 @@
  * asm/overlays/rom_79e5c0/ovl_30_c_a_a_c_a.o and asm/overlays/rom_79e5c0/ovl_30_c_a_a_c_c.o in
  * goldensun/overlays/rom_79e5c0/overlay.ld.
  */
-extern void __Func_8092f84(unsigned int arg0, unsigned int arg1);
-extern void __Func_809163c(unsigned int arg0);
+extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
+extern void __CutsceneWait(unsigned int arg0);
 
 void OvlFunc_911_200a5a8(unsigned int arg0, unsigned int arg1)
 {
-	__Func_8092f84(arg0, 0);
-	__Func_809163c(arg1);
+	__ActorMessage(arg0, 0);
+	__CutsceneWait(arg1);
 }

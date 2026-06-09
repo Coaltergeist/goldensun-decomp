@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80209d0
+.thumb_func_start Func_80209d0  @ 0x080209d0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -16,7 +16,7 @@
 	mov	r10, r0
 	mov	r1, r10
 	mov	r0, r8
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldrh	r3, [r5, #0xe]
 	ldrh	r2, [r5, #0xc]
 	lsl	r3, #5
@@ -63,7 +63,7 @@
 	blt	.L20a14
 .L20a44:
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5
@@ -72,7 +72,7 @@
 	bx	r0
 .func_end Func_80209d0
 
-.thumb_func_start Func_8020a60
+.thumb_func_start Func_8020a60  @ 0x08020a60
 	push	{r5, r6, r7, lr}
 	mov	r6, r3
 	ldr	r3, =iwram_3001e8c

@@ -3,60 +3,60 @@
 	.global	Exports_c0
 Exports_c0:
 
-	.export_func Func_80030f8
-	.export_func Func_80040e8
+	.export_func WaitFrames
+	.export_func ClearTasks
 	.export_func StartTask
 	.export_func StopTask
 	.export_func Func_80042c8
 	.export_func Func_800439c
-	.export_func Func_8004420
+	.export_func RunTasks
 	.export_func Random
-	.export_func Func_80044d0
-	.export_func Func_80045a4
-	.export_func Func_80045d4
-	.export_func Func_8002322
-	.export_func Func_800231c
-	.export_func Func_800447c
+	.export_func atan2
+	.export_func c_sqrt
+	.export_func FastIntSqrtFP1616_RAM 
+	.export_func sin
+	.export_func cos
+	.export_func vec3_translate
 	.export_func SetIntrHandler
-	.export_func Func_8004858
-	.export_func Func_80048b0
-	.export_func Func_80048f4
-	.export_func Func_8002dd8
+	.export_func ClearHeap
+	.export_func galloc_iwram
+	.export_func galloc_ewram
+	.export_func gfree
 	.export_func Func_800488c
 	.export_func Func_80048a0
 	.export_func Func_8004938
 	.export_func Func_8004970
-	.export_func Func_8002df0
+	.export_func free
 	.export_func Func_80046c4
 	.export_func Func_8004718
 	.export_func Func_800473c
 	.export_func Func_8004698
-	.export_func Func_80053e8
-	.export_func Func_8005340
-	.export_func Func_800403c
+	.export_func DecompressLZ1
+	.export_func DecompressLZ
+	.export_func ClearSprites
 	.export_func Func_8003f3c
 	.export_func Func_8003f78
-	.export_func Func_8003fa4
-	.export_func Func_8004080
-	.export_func Func_8004760
+	.export_func UploadSpriteGFX
+	.export_func AllocSpriteSlot
+	.export_func ClearVRAM
 	.export_func Func_8003d28
 	.export_func Func_8003dec
 	.export_func Func_800479c
-	.export_func Func_8004838
-	.export_func Func_80049ac
-	.export_func Func_8004a94
-	.export_func Func_80049e8
-	.export_func Func_8004a5c
-	.export_func Func_8004ab0
-	.export_func Func_8004bd4
-	.export_func Func_8004c1c
-	.export_func Func_8004c6c
-	.export_func Func_8004cb4
-	.export_func Func_8004cf0
-	.export_func Func_8004d2c
-	.export_func Func_8004e54
-	.export_func Func_80051d8
-	.export_func Func_8005268
+	.export_func LoadSpritePalette
+	.export_func InitMatrixStack
+	.export_func MatrixReset
+	.export_func MatrixPush
+	.export_func MatrixPop
+	.export_func MatrixRotate
+	.export_func MatrixPitch
+	.export_func MatrixYaw
+	.export_func MatrixRoll
+	.export_func MatrixTranslatev
+	.export_func MatrixScalev
+	.export_func MatrixRotateTrans
+	.export_func MatrixRotateTransScale
+	.export_func MatrixSetLook
+	.export_func PhysMove
 	.export_func Func_8005208
 	.export_func Func_8005258
 	.export_func SetRAMBuildDate
@@ -78,7 +78,7 @@ Exports_c0:
 	.export_func Func_8005d10
 	.export_func Func_8005ee0
 	.export_func Func_800383c
-	.export_func Func_800387c
+	.export_func SetRegAnimDest
 	.export_func Func_80038bc
 	.export_func Func_80038fc
 	.export_func Func_800393c
@@ -87,10 +87,10 @@ Exports_c0:
 	.export_func Func_80039fc
 	.export_func Func_8003a3c
 	.export_func Func_800352c
-	.export_func Func_80051e8
+	.export_func MatrixLook
 	.export_func Func_8006384
 	.export_func Func_8006358
-	.export_func Func_80037d4
+	.export_func SetSoundFXMode
 	.export_func Func_80063bc
 	.export_func Func_8006408
 	.export_func Func_8006458

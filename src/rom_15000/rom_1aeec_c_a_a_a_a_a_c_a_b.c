@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern void Func_801ef08(int);
-extern void Func_80030f8(unsigned int);
+extern void WaitFrames(unsigned int);
 
 void Func_801c2d0(void) {
     Func_801ef08(1);
-    Func_80030f8(1);
+    WaitFrames(1);
 }

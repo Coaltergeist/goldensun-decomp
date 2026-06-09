@@ -3,13 +3,13 @@
 
 .thumb_func_start OvlFunc_947_2009528
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	bl	OvlFunc_947_2009268
 	cmp	r0, #0
 	bne	.L153a
 	bl	OvlFunc_947_20083a8
 .L153a:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_947_2009528
@@ -17,7 +17,7 @@
 .thumb_func_start OvlFunc_947_2009544
 	push	{r5, lr}
 	sub	sp, #0x20
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	add	r5, sp, #8
 	mov	r0, r5
 	bl	OvlFunc_947_2008758
@@ -33,7 +33,7 @@
 	ldr	r3, [r5, #0xc]
 	bl	OvlFunc_947_20088ec
 .L156c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
 	pop	{r0}

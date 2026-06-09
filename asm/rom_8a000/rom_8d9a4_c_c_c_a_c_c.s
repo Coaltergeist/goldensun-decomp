@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80912b8
+.thumb_func_start Func_80912b8  @ 0x080912b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -38,7 +38,7 @@
 	ldrb	r3, [r3]
 	mov	r1, #0xbd
 	mov	r8, r3
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	lsl	r1, #1
 	ldr	r2, =0xfff80000
 	add	r3, r1
@@ -231,18 +231,18 @@
 	bx	r0
 .func_end Func_80912b8
 
-.thumb_func_start Func_8091494
+.thumb_func_start Func_8091494  @ 0x08091494
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	mov	r1, #0x1c
 	mov	r0, #0x24
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0x80
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #0xe
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, =0x11111111
 	mov	r4, r0
 	mov	r5, sp
@@ -257,9 +257,9 @@
 	mov	r2, r4
 	lsl	r1, #2
 	mov	r0, #0x5e
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0xe
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r1, #0xc8
 	lsl	r1, #4
 	ldr	r0, =Func_80912b8
@@ -283,12 +283,12 @@
 	sub	r3, #0xc
 	cmp	r6, #0
 	bne	.L91514
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 .L91514:
 	str	r6, [r7, #0x18]

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801eb90
+.thumb_func_start Func_801eb90  @ 0x0801eb90
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -11,7 +11,7 @@
 	mov	r7, r1
 	mov	r8, r2
 	mov	r10, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0x60
@@ -19,7 +19,7 @@
 	mov	r1, r7
 	mov	r2, r5
 	mov	r0, r6
-	bl	Func_801a2a4
+	bl	LoadInventoryIcon
 	ldr	r3, [sp, #0x1c]
 	mov	r1, #0x80
 	str	r3, [sp]
@@ -38,7 +38,7 @@
 	bx	r1
 .func_end Func_801eb90
 
-.thumb_func_start Func_801ebd8
+.thumb_func_start Func_801ebd8  @ 0x0801ebd8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -47,7 +47,7 @@
 	mov	r7, r1
 	mov	r8, r2
 	mov	r6, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	str	r0, [sp, #8]
 	cmp	r0, #0x60
 	bne	.L1ebf6
@@ -59,7 +59,7 @@
 	mov	r1, #1
 	mov	r0, r5
 	str	r1, [sp]
-	bl	Func_8019ee4
+	bl	LoadOldUIIcon
 	mov	r1, #0x80
 	mov	r3, r8
 	ldr	r0, [sp, #8]
@@ -78,7 +78,7 @@
 	bx	r1
 .func_end Func_801ebd8
 
-.thumb_func_start Func_801ec24
+.thumb_func_start Func_801ec24  @ 0x0801ec24
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -88,7 +88,7 @@
 	mov	r8, r1
 	mov	r10, r2
 	mov	r7, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	mov	r0, #0
 	cmp	r5, #0x60
@@ -96,7 +96,7 @@
 	mov	r1, #0
 	mov	r2, r5
 	mov	r0, r6
-	bl	Func_801a32c
+	bl	LoadUIBanner
 	mov	r1, #0x80
 	lsl	r1, #23
 	mov	r0, r5
@@ -114,7 +114,7 @@
 	bx	r1
 .func_end Func_801ec24
 
-.thumb_func_start Func_801ec6c
+.thumb_func_start Func_801ec6c  @ 0x0801ec6c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -128,7 +128,7 @@
 	mov	r10, r1
 	mov	r6, r2
 	ldr	r7, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ec9a
 	cmp	r5, #0
@@ -140,7 +140,7 @@
 	mov	r5, #0x13
 .L1ec9a:
 	mov	r0, r5
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r1, #1
 	mov	r5, r0
 	neg	r1, r1
@@ -174,7 +174,7 @@
 	str	r1, [sp, #4]
 	mov	r0, r5
 	mov	r1, r10
-	bl	Func_801a4fc
+	bl	LoadPortrait
 	ldr	r3, [sp, #0x30]
 	mov	r1, #0x80
 	str	r3, [sp]
@@ -214,7 +214,7 @@
 	bx	r1
 .func_end Func_801ec6c
 
-.thumb_func_start Func_801ed40
+.thumb_func_start Func_801ed40  @ 0x0801ed40
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -225,7 +225,7 @@
 	mov	r5, r1
 	mov	r8, r2
 	ldr	r7, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ed68
 	cmp	r5, #0
@@ -237,7 +237,7 @@
 	mov	r5, #0x13
 .L1ed68:
 	mov	r0, r5
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2
@@ -270,7 +270,7 @@
 	add	r2, sp, #0xc
 	add	r3, sp, #8
 	mov	r1, r8
-	bl	Func_801a4fc
+	bl	LoadPortrait
 .L1edb0:
 	add	sp, #0x10
 	pop	{r3}

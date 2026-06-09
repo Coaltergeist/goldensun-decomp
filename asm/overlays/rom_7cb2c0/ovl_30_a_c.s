@@ -98,7 +98,7 @@
 .L192:
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, #0xea
 	mov	r2, #0x80
 	mov	r3, #0x9e
@@ -106,7 +106,7 @@
 	mov	r0, r5
 	lsl	r1, #17
 	lsl	r2, #14
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r3, #0x3c
 	str	r3, [r5, #0x4c]
 	ldrh	r3, [r6]
@@ -119,7 +119,7 @@
 	beq	.L27c
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r2, r5
 	mov	r3, #0
 	add	r2, #0x62
@@ -144,7 +144,7 @@
 	bne	.L200
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r2, r5
 	add	r2, #0x63
 	mov	r3, #2
@@ -167,7 +167,7 @@
 .L218:
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, #0xf0
 	mov	r2, #0x80
 	mov	r3, #0x96
@@ -175,7 +175,7 @@
 	mov	r0, r5
 	lsl	r1, #17
 	lsl	r2, #14
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r3, #0x3c
 	str	r3, [r5, #0x4c]
 	ldrh	r3, [r6]
@@ -198,7 +198,7 @@
 	beq	.L27c
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r2, r5
 	mov	r3, #0
 	add	r2, #0x62
@@ -256,7 +256,7 @@
 	beq	.L2ce
 	mov	r0, r5
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L2ce:
 	mov	r3, r8
 	strb	r6, [r3]
@@ -289,7 +289,7 @@
 	ldr	r5, [r6, #0x50]
 	mov	r1, #0
 	strb	r3, [r2]
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, #0xd
 	ldrb	r1, [r5, #9]
 	neg	r2, r2
@@ -321,7 +321,7 @@
 
 .thumb_func_start OvlFunc_945_2008340
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

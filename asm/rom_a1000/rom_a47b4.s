@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a47b4
+.thumb_func_start Func_80a47b4  @ 0x080a47b4
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r6, [r3]
@@ -36,7 +36,7 @@
 	bx	r1
 .func_end Func_80a47b4
 
-.thumb_func_start Func_80a4800
+.thumb_func_start Func_80a4800  @ 0x080a4800
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -61,7 +61,7 @@
 	mov	r3, #0xa
 	mov	r9, r0
 	mov	r0, #0
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r7, r0
 	ldr	r0, =Func_80a19a0
 	bl	StopTask
@@ -73,10 +73,10 @@
 	bl	Func_80a22f4
 	mov	r0, #1
 	mov	r6, #0
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.La487c
 .La4854:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r2, #0x40
 	and	r3, r2
@@ -96,11 +96,11 @@
 	mov	r10, r3
 .La4876:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .La487c:
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La48be
 	mov	r3, r10
@@ -110,7 +110,7 @@
 	add	r0, r6, #5
 	mov	r1, #5
 	mov	r10, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, r9
 	mov	r6, r0
 	mov	r0, r7
@@ -133,10 +133,10 @@
 	mov	r0, r7
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	mov	r0, r7
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, r8
 	ldr	r0, [r3, #0x10]
 	bl	_Func_8016498
@@ -168,7 +168,7 @@
 	bx	r1
 .func_end Func_80a4800
 
-.thumb_func_start Func_80a4924
+.thumb_func_start Func_80a4924  @ 0x080a4924
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -183,7 +183,7 @@
 	and	r0, r1
 	mov	r11, r1
 	str	r5, [sp, #8]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	mov	r10, r0
 	cmp	r3, #0
@@ -405,7 +405,7 @@
 	mov	r1, r8
 	mov	r2, #0x40
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	cmp	r7, #9
 	ble	.La4b50
 	mov	r0, #1
@@ -418,7 +418,7 @@
 	mov	r1, r8
 	mov	r2, #0x50
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r0, r7
 	sub	r0, #0xa
 	b	.La4b6c
@@ -433,7 +433,7 @@
 	mov	r1, r8
 	mov	r2, #0x50
 	mov	r3, r5
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r0, r7
 .La4b6c:
 	mov	r1, #1
@@ -696,7 +696,7 @@
 	bx	r0
 .func_end Func_80a4924
 
-.thumb_func_start Func_80a4db4
+.thumb_func_start Func_80a4db4  @ 0x080a4db4
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	mov	r6, r3
@@ -734,7 +734,7 @@
 	add	r2, #0x10
 	mov	r1, r7
 	ldr	r3, [sp, #0x14]
-	bl	_Func_801e940
+	bl	_UIDrawText
 	b	.La4e0e
 .La4dfe:
 	lsl	r2, #3
@@ -743,7 +743,7 @@
 	add	r2, #0x10
 	mov	r1, r7
 	ldr	r3, [sp, #0x14]
-	bl	_Func_801e940
+	bl	_UIDrawText
 .La4e0e:
 	add	sp, #4
 	pop	{r5, r6, r7}
@@ -751,7 +751,7 @@
 	bx	r0
 .func_end Func_80a4db4
 
-.thumb_func_start Func_80a4e20
+.thumb_func_start Func_80a4e20  @ 0x080a4e20
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
@@ -768,7 +768,7 @@
 	bx	r0
 .func_end Func_80a4e20
 
-.thumb_func_start Func_80a4e44
+.thumb_func_start Func_80a4e44  @ 0x080a4e44
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
@@ -785,7 +785,7 @@
 	bx	r0
 .func_end Func_80a4e44
 
-.thumb_func_start Func_80a4e68
+.thumb_func_start Func_80a4e68  @ 0x080a4e68
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0x86
@@ -805,7 +805,7 @@
 	bx	r0
 .func_end Func_80a4e68
 
-.thumb_func_start Func_80a4e90
+.thumb_func_start Func_80a4e90  @ 0x080a4e90
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0x86
@@ -825,7 +825,7 @@
 	bx	r0
 .func_end Func_80a4e90
 
-.thumb_func_start Func_80a4eb8
+.thumb_func_start Func_80a4eb8  @ 0x080a4eb8
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0x86
@@ -845,7 +845,7 @@
 	bx	r0
 .func_end Func_80a4eb8
 
-.thumb_func_start Func_80a4ee0
+.thumb_func_start Func_80a4ee0  @ 0x080a4ee0
 	push	{lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0x86

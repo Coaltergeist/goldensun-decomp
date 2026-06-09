@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80e0524
+.thumb_func_start LoadVFXFile  @ 0x080e0524
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -24,10 +24,10 @@
 .Le054e:
 	mov	r0, r6
 	mov	r1, r8
-	bl	Func_8005340
+	bl	DecompressLZ
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80e0524
+.func_end LoadVFXFile

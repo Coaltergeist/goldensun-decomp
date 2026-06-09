@@ -4,13 +4,16 @@
 	.global .L824
 	.global .La64
 	.global .Lc98
-	.global .L4f8
-
-.L4f8:
+	.global gOvl_020084f8
+	.global MapEntrance_ARRAY_940__020084f8
+gOvl_020084f8:
+MapEntrance_ARRAY_940__020084f8:
 	.incbin "overlays/rom_7c5974/orig.bin", 0x4f8, (0x630-0x4f8)
-.L630:
+	.global gOvl_02008630
+gOvl_02008630:
 	.incbin "overlays/rom_7c5974/orig.bin", 0x630, (0x65c-0x630)
-.L65c:
+	.global gOvl_0200865c
+gOvl_0200865c:
 	.incbin "overlays/rom_7c5974/orig.bin", 0x65c, (0x824-0x65c)
 .L824:
 	.incbin "overlays/rom_7c5974/orig.bin", 0x824, (0xa64-0x824)

@@ -7,7 +7,7 @@
  */
 extern int *iwram_3001e70;
 extern void Func_8010230(unsigned int a, unsigned int b);
-extern void Func_8010000(void);
+extern void UpdateFieldScreen(void);
 
 void Func_800fe9c(void)
 {
@@ -26,5 +26,5 @@ void Func_800fe9c(void)
         b = *p;
     }
     Func_8010230(a, b - c);
-    Func_8010000();
+    UpdateFieldScreen();
 }

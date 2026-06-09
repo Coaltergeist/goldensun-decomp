@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80782a0
+.thumb_func_start Func_80782a0  @ 0x080782a0
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #0x34
@@ -19,7 +19,7 @@
 	mov	r3, #0x34
 	ldrsh	r1, [r5, r3]
 	asr	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -45,7 +45,7 @@
 	mov	r2, #0x36
 	ldrsh	r1, [r5, r2]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -71,7 +71,7 @@
 	bx	r0
 .func_end Func_80782a0
 
-.thumb_func_start Func_8078320
+.thumb_func_start Func_8078320  @ 0x08078320
 	push	{r5, lr}
 	mov	r5, r0
 	mov	r2, #0x36
@@ -90,7 +90,7 @@
 	lsl	r0, #14
 	mov	r2, #0x34
 	ldrsh	r1, [r5, r2]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -116,7 +116,7 @@
 	mov	r2, #0x36
 	ldrsh	r1, [r5, r2]
 	lsl	r0, #14
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0x80
 	lsl	r3, #7
 	cmp	r0, r3
@@ -142,11 +142,11 @@
 	bx	r0
 .func_end Func_8078320
 
-.thumb_func_start Func_80783a4
+.thumb_func_start ModifyHP  @ 0x080783a4
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r1, #0x38
 	ldrsh	r3, [r6, r1]
@@ -163,19 +163,19 @@
 .L783c8:
 	mov	r0, r7
 	strh	r1, [r6, #0x38]
-	bl	Func_807822c
+	bl	UpdateStatBarPercent
 	mov	r2, #0x38
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80783a4
+.func_end ModifyHP
 
-.thumb_func_start Func_80783dc
+.thumb_func_start ModifyPP  @ 0x080783dc
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r6, r0
 	mov	r1, #0x3a
 	ldrsh	r3, [r6, r1]
@@ -192,13 +192,13 @@
 .L78400:
 	mov	r0, r7
 	strh	r1, [r6, #0x3a]
-	bl	Func_807822c
+	bl	UpdateStatBarPercent
 	mov	r2, #0x3a
 	ldrsh	r0, [r6, r2]
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80783dc
+.func_end ModifyPP
 
 	.section .rodata
 	.global .L7a828

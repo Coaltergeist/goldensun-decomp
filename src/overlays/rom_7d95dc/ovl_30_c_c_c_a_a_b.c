@@ -5,12 +5,12 @@
  * asm/overlays/rom_7d95dc/ovl_30_c_c_c_a_a_a.o and asm/overlays/rom_7d95dc/ovl_30_c_c_c_a_a_c.o in
  * goldensun/overlays/rom_7d95dc/overlay.ld.
  */
-extern void __Func_8079374(int);
-extern void __Func_8079358(int);
+extern void __ClearFlag(int);
+extern void __SetFlag(int);
 
 void OvlFunc_953_20091ac(void) {
     int val;
-    __Func_8079374(0x235);
+    __ClearFlag(0x235);
     val = 0x8d << 2;
-    __Func_8079358(val);
+    __SetFlag(val);
 }

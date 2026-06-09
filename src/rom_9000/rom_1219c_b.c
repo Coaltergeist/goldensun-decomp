@@ -1,4 +1,4 @@
-/* Cluster Func_8012d20..Func_8012d48 extracted from goldensun/asm/rom_9000/rom_1219c.s.
+/* Cluster SpriteTest_SetLayerColorswap..SpriteTest_SetLayerPriority extracted from goldensun/asm/rom_9000/rom_1219c.s.
  *
  * Total .text for this TU = 80 bytes (= 0x50).
  * Preserves the original ROM layout when slotted between
@@ -8,7 +8,7 @@
  */
 extern unsigned int iwram_3001e60;
 
-void Func_8012d20(unsigned int layer, unsigned int colorswap) {
+void SpriteTest_SetLayerColorswap(unsigned int layer, unsigned int colorswap) {
     unsigned int base;
     unsigned int off;
     int i;
@@ -22,7 +22,7 @@ void Func_8012d20(unsigned int layer, unsigned int colorswap) {
         base += 0x38;
     }
 }
-void Func_8012d48(int layer, int value) {
+void SpriteTest_SetLayerPriority(int layer, int value) {
     unsigned char **p;
     int idx;
     int i;

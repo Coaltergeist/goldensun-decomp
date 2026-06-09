@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b6cdc
+.thumb_func_start Func_80b6cdc  @ 0x080b6cdc
 	push	{r5, lr}
 	bl	Func_80c23c0
 	ldr	r3, =iwram_3001e74
@@ -45,7 +45,7 @@
 	bx	r1
 .func_end Func_80b6cdc
 
-.thumb_func_start Func_80b6d30
+.thumb_func_start Func_80b6d30  @ 0x080b6d30
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -57,7 +57,7 @@
 	sub	sp, #4
 	ldr	r6, [r3]
 	mov	r11, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, #0x94
 	mov	r9, r0
 	lsl	r5, #1
@@ -123,7 +123,7 @@
 	add	r1, r2
 	mov	r0, r5
 	add	r2, r7, r4
-	bl	_Func_800b6b8
+	bl	_PreloadSpriteGFX
 	ldr	r4, [sp]
 	cmp	r0, #0
 	bne	.Lb6dda
@@ -171,7 +171,7 @@
 	bx	r1
 .func_end Func_80b6d30
 
-.thumb_func_start Func_80b6e30
+.thumb_func_start Func_80b6e30  @ 0x080b6e30
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -191,7 +191,7 @@
 	mov	r0, r6
 	mov	r1, #0
 	mov	r2, #0
-	bl	_Func_800b6b8
+	bl	_PreloadSpriteGFX
 	mov	r3, r10
 	strh	r3, [r5, r7]
 	b	.Lb6e68

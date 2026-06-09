@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a3ef0
+.thumb_func_start Func_80a3ef0  @ 0x080a3ef0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -18,7 +18,7 @@
 	ldr	r7, [r3]
 	mov	r8, r0
 	mov	r10, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r9
 	lsl	r3, r2, #1
 	add	r3, #0xd8
@@ -34,7 +34,7 @@
 	ldr	r1, [sp]
 	ldr	r0, =0x1ff
 	and	r0, r1
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	cmp	r3, #9
 	bls	.La3f3c
@@ -63,7 +63,7 @@
 	b	.La3ffa
 .La3f74:
 	mov	r0, r6
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, #0xa6
 	lsl	r5, #1
 	mov	r11, r0
@@ -84,7 +84,7 @@
 	mov	r0, r6
 	and	r1, r3
 	str	r1, [sp]
-	bl	_Func_8078588
+	bl	_GiveItemTo
 	mov	r3, #1
 	mov	r2, r0
 	neg	r3, r3
@@ -119,7 +119,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 	b	.La4086
 .La3ff4:
 	cmp	r6, r8
@@ -138,7 +138,7 @@
 	b	.La4086
 .La400e:
 	mov	r0, r6
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, #0xa6
 	lsl	r5, #1
 	mov	r11, r0
@@ -156,7 +156,7 @@
 	beq	.La4066
 	mov	r0, r6
 	ldr	r1, [sp]
-	bl	_Func_8078588
+	bl	_GiveItemTo
 	mov	r3, #1
 	mov	r2, r0
 	neg	r3, r3
@@ -191,7 +191,7 @@
 	lsl	r2, #1
 	bl	_call_via_r3
 	mov	r0, r8
-	bl	Func_8002df0
+	bl	free
 .La4086:
 	add	sp, #4
 	pop	{r3, r5, r6, r7}
@@ -204,10 +204,10 @@
 	bx	r0
 .func_end Func_80a3ef0
 
-.thumb_func_start Func_80a40ac
+.thumb_func_start Func_80a40ac  @ 0x080a40ac
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0xd8
 	ldrh	r3, [r0, r3]
 	mov	r1, #0
@@ -265,7 +265,7 @@
 	bx	r1
 .func_end Func_80a40ac
 
-.thumb_func_start Func_80a4110
+.thumb_func_start Func_80a4110  @ 0x080a4110
 	push	{lr}
 	cmp	r0, #2
 	bgt	.La4122

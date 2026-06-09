@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_936_2008180
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -32,7 +32,7 @@
 	ldr	r0, =.L4b58
 	b	.L1b8
 .L1b6:
-	ldr	r0, =.L4750
+	ldr	r0, =gScript_926__0200c750
 .L1b8:
 	pop	{r1}
 	bx	r1
@@ -40,41 +40,41 @@
 
 .thumb_func_start OvlFunc_936_20081e4
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x947
 	mov	r1, #1
 	bl	__Func_801776c
 	ldr	r0, =0x29df
 	mov	r1, #1
 	bl	__Func_801776c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_20081e4
 
 .thumb_func_start OvlFunc_936_200820c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xc
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	ldr	r0, =0xfd6
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0xb5
 	mov	r1, #3
 	bl	__Func_808f1c0
 	mov	r1, #0
 	mov	r0, #0xb5
 	bl	__Func_8091a58
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_200820c
 
 .thumb_func_start OvlFunc_936_2008240
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -89,13 +89,13 @@
 	ldr	r3, =0x66
 	cmp	r2, r3
 	bne	.L262
-	ldr	r0, =.L4e88
+	ldr	r0, =gScript_882__0200ce88
 	b	.L28c
 .L262:
 	ldr	r3, =0x99
 	cmp	r2, r3
 	bne	.L26c
-	ldr	r0, =.L4edc
+	ldr	r0, =gScript_882__0200cedc
 	b	.L28c
 .L26c:
 	ldr	r3, =0x9a
@@ -124,13 +124,13 @@
 
 .thumb_func_start OvlFunc_936_20082c8
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1a7c
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0x13
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_20082c8
@@ -147,15 +147,15 @@
 	lsl	r2, #23
 	cmp	r3, r2
 	bls	.L364
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #8
 	mov	r2, #0
 	mov	r0, #0
 	bl	__Func_8092848
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r0, =0x2584
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
 	bl	__Func_8092c40
@@ -166,10 +166,10 @@
 	bne	.L340
 	mov	r0, #8
 	mov	r1, #4
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	b	.L360
 .L340:
 	ldr	r3, =iwram_3001ebc
@@ -182,12 +182,12 @@
 	mov	r0, #8
 	mov	r1, #3
 	strh	r3, [r2]
-	bl	__Func_8092548
+	bl	__MapActor_DoAnim
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L360:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 .L364:
 	pop	{r0}
 	bx	r0
@@ -195,13 +195,13 @@
 
 .thumb_func_start OvlFunc_936_2008374
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x25b3
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_2008374

@@ -14,7 +14,7 @@
 	mov	r3, #0x10
 	str	r3, [r2]
 	ldr	r0, =0x814
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L90
 	mov	r0, #0x8d
@@ -26,7 +26,7 @@
 	lsl	r1, #9
 	lsl	r2, #9
 	bl	__Func_8012330
-	bl	__Func_809509c
+	bl	__StartEarthquake
 .L90:
 	mov	r0, #0
 	pop	{r1}
@@ -34,13 +34,19 @@
 .func_end OvlFunc_894_2008054
 
 	.section .data
-	.global .Lc0
-
-.Lc0:
+	.global gOvl_020080c0
+	.global MapEntrance_ARRAY_893__020080c0
+	.global MapEntrance_ARRAY_894__020080c0
+gOvl_020080c0:
+MapEntrance_ARRAY_893__020080c0:
+MapEntrance_ARRAY_894__020080c0:
 	.incbin "overlays/rom_78de18/orig.bin", 0xc0, (0x120-0xc0)
-.L120:
+	.global gOvl_02008120
+gOvl_02008120:
 	.incbin "overlays/rom_78de18/orig.bin", 0x120, (0x130-0x120)
-.L130:
+	.global gOvl_02008130
+gOvl_02008130:
 	.incbin "overlays/rom_78de18/orig.bin", 0x130, (0x148-0x130)
-.L148:
+	.global gOvl_02008148
+gOvl_02008148:
 	.incbin "overlays/rom_78de18/orig.bin", 0x148

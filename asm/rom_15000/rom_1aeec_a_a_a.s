@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801aeec
+.thumb_func_start DisplayMenuArrowCursor  @ 0x0801aeec
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -78,7 +78,7 @@
 	add	r2, r1, r2
 	ldrh	r0, [r6, r3]
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L1afb0	@ 0x3ff
 	ldrh	r2, [r5, #8]
 	and	r0, r3
@@ -87,7 +87,7 @@
 	orr	r3, r0
 	strh	r3, [r5, #8]
 	ldr	r0, =0x103
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1afde
 	ldr	r1, =0x2e2
@@ -140,9 +140,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801aeec
+.func_end DisplayMenuArrowCursor
 
-.thumb_func_start Func_801b010
+.thumb_func_start Func_801b010  @ 0x0801b010
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -186,7 +186,7 @@
 	mov	r1, #0
 .L1b062:
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, r8
 	str	r0, [r2]
 	mov	r3, #0xe8
@@ -210,7 +210,7 @@
 	add	r0, #0x13
 	mov	r1, #0x11
 	mov	r3, #3
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, r8
 	str	r0, [r2]
 .L1b09c:
@@ -228,7 +228,7 @@
 	cmp	r3, r7
 	beq	.L1b0d6
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #9
 	sub	r0, r5
 	mov	r3, #6
@@ -238,7 +238,7 @@
 	mov	r3, #3
 	mov	r1, #0x11
 	mov	r2, r7
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, r8
 	str	r0, [r3]
 .L1b0d6:
@@ -296,7 +296,7 @@
 	bx	r0
 .func_end Func_801b010
 
-.thumb_func_start Func_801b148
+.thumb_func_start Func_801b148  @ 0x0801b148
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e98
 	ldr	r6, [r3]
@@ -306,9 +306,9 @@
 	add	r3, r6, r2
 	ldr	r0, [r3]
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0xd2
 	lsl	r2, #2
 	add	r3, r6, r2
@@ -369,7 +369,7 @@
 	ldrh	r0, [r3]
 	bl	Func_8003f3c
 	mov	r0, #0x12
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0

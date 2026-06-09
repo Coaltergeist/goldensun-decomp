@@ -14,7 +14,7 @@
 	sub	sp, #8
 	bl	OvlFunc_915_20088c0
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lc5a
 	mov	r0, #0xa
@@ -43,14 +43,14 @@
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .Lc5a:
 	mov	r0, #8
 	bl	OvlFunc_915_20088c0
 	mov	r0, #9
 	bl	OvlFunc_915_20088c0
 	ldr	r0, =0x845
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lc76
 	mov	r0, #6
@@ -128,19 +128,19 @@
 	mov	r0, r6
 	and	r5, r2
 	and	r7, r2
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	add	r0, r6, r0
 	lsl	r0, #16
 	mov	r1, r8
 	asr	r6, r0, #16
 	mov	r0, r5
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r0, r5, r0
 	lsl	r0, #16
 	asr	r5, r0, #16
 	mov	r1, r8
 	mov	r0, r7
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r0, r7, r0
 	lsl	r0, #16
 	asr	r7, r0, #16

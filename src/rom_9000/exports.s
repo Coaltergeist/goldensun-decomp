@@ -3,55 +3,55 @@
 	.global	Exports_9000
 Exports_9000:
 
-	.export_func Func_800bb20
-	.export_func Func_800b168
+	.export_func InitSprites
+	.export_func UpdateSprite
 	.export_func Func_800b388
-	.export_func Func_800b7c0
-	.export_func Func_800ba30
-	.export_func Func_800bacc
-	.export_func Func_800bc70
-	.export_func Func_800bdd4
+	.export_func InitSprite
+	.export_func Sprite_SetAnim
+	.export_func Sprite_SetAnimTimer
+	.export_func CreateSprite
+	.export_func DeleteSprite
 	.export_func Func_800b074
-	.export_func Func_800b8ac
-	.export_func Func_800b93c
-	.export_func Func_800b9a4
-	.export_func Func_800bc48
-	.export_func Func_800b868
-	.export_func Func_800b9f4
-	.export_func Func_800c004
-	.export_func Func_800c300
-	.export_func Func_800c344
-	.export_func Func_800c388
-	.export_func Func_800c2d8
+	.export_func Sprite_AddLayer
+	.export_func Sprite_DeleteLayer
+	.export_func Sprite_DeleteLayerIndex
+	.export_func DeleteSpriteLayer
+	.export_func InitSpriteLayer
+	.export_func SpriteLayer_SetAnim
+	.export_func InitActors
+	.export_func Actor_SetAnim
+	.export_func Actor_SetAnimSpeed
+	.export_func Actor_SetAnimAndSpeed
+	.export_func Actor_SetScript
 	.export_func Func_800c48c
 	.export_func Func_800c49c
 	.export_func Func_800c47c
 	.export_func Func_800c46c
-	.export_func Func_800c0cc
-	.export_func Func_800c150
-	.export_func Func_800c0f4
-	.export_func Func_800c3ec
-	.export_func Func_800c4bc
-	.export_func Func_800c454
-	.export_func Func_800d130
+	.export_func NewActor
+	.export_func CreateActor
+	.export_func DeleteActor
+	.export_func Actor_SetRotation
+	.export_func Camera_SetTarget
+	.export_func Actor_Ride
+	.export_func Actor_SetPos
 	.export_func Func_800be70
 	.export_func Func_800befc
 	.export_func Func_800bf34
-	.export_func Func_800fb38
-	.export_func Func_80109e8
+	.export_func LoadMapData
+	.export_func InitWorldMap
 	.export_func Func_8010230
 	.export_func Func_800fe9c
 	.export_func Func_80113e4
 	.export_func Func_8010e14
-	.export_func Func_800c4ac
-	.export_func Func_800c4ec
-	.export_func Func_800d14c
-	.export_func Func_800ca6c
+	.export_func Actor_Stop
+	.export_func Actor_WaitScript
+	.export_func Actor_TravelTo
+	.export_func Actor_WaitMovement
 	.export_func Func_800bfa4
 	.export_func Func_80111b4
 	.export_func Func_801173c
 	.export_func Func_8010560
-	.export_func Func_8010424
+	.export_func CopyMapTiles
 	.export_func Func_80118a8
 	.export_func Func_80118c0
 	.export_func Func_8011af0
@@ -62,33 +62,33 @@ Exports_9000:
 	.export_func Func_8010704
 	.export_func Func_8010788
 	.export_func Func_8010d48
-	.export_func Func_80120dc
-	.export_func Func_800c528
+	.export_func TestCollision
+	.export_func Actor_SetSpriteFlags
 	.export_func Func_800c548
 	.export_func Func_8012330
 	.export_func Func_8012350
-	.export_func Func_800c408
+	.export_func Actor_SetSpriteID
 	.export_func Func_800c5b4
 	.export_func Func_800c5fc
 	.export_func Func_800c570
 	.export_func Func_801219c
-	.export_func Func_800c430
+	.export_func Actor_AddSpriteLayer
 	.export_func Func_8011590
 	.export_func Func_8011644
-	.export_func Func_800c598
-	.export_func Func_800b684
+	.export_func Actor_SetColorswap
+	.export_func Sprite_SetColorswap
 	.export_func Func_800d924
 	.export_func Func_80108c4
 	.export_func Func_800be20
 	.export_func Func_80122c8
-	.export_func Func_800b6b8
+	.export_func PreloadSpriteGFX
 	.export_func Func_8012078
-	.export_func Func_800baf8
+	.export_func Sprite_SetAnimSpeed
 	.export_func Func_800f9cc
 	.export_func Func_8011984
 	.export_func Func_80119a8
 	.export_func Func_800d98c
 	.export_func Func_8011fd8
-	.export_func Func_8012518
+	.export_func Debug_SpriteTest
 
 	.ssize	Exports_9000

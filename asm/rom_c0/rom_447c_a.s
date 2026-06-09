@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800447c
+.thumb_func_start vec3_translate  @ 0x0800447c
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -11,7 +11,7 @@
 	lsl	r0, #7
 	add	r0, r8
 	mov	r5, r2
-	bl	Func_8002322
+	bl	sin
 	ldr	r6, =Func_8000888
 	mov	r1, r0
 	mov	r0, r10
@@ -20,7 +20,7 @@
 	add	r3, r0
 	stmia	r5!, {r3}
 	mov	r0, r8
-	bl	Func_8002322
+	bl	sin
 	add	r5, #4
 	mov	r1, r0
 	mov	r0, r10
@@ -34,9 +34,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_800447c
+.func_end vec3_translate
 
-.thumb_func_start Func_80044d0
+.thumb_func_start atan2  @ 0x080044d0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	mov	r5, r1
@@ -57,7 +57,7 @@
 	neg	r0, r6
 .L44f2:
 	lsl	r0, #8
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, =0xfb6a
 	mov	r4, #0x80
 	mov	r1, r0
@@ -150,5 +150,5 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80044d0
+.func_end atan2
 

@@ -11,7 +11,7 @@
 	cmp	r3, #0x24
 	bne	.L8a
 	ldr	r0, =0x335
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0x23
 	mov	r2, #0x4d
 	str	r3, [sp]
@@ -24,7 +24,7 @@
 	b	.La4
 .L8a:
 	ldr	r0, =0x335
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r3, #0x23
 	mov	r2, #0x4d
 	str	r3, [sp]

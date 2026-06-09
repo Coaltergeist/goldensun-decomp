@@ -65,13 +65,13 @@
 	beq	.Lae
 	bl	__Random
 	mov	r1, #0x28
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x28
 	b	.Lba
 .Lae:
 	bl	__Random
 	mov	r1, #0x14
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	add	r0, #0x14
 .Lba:
 	strh	r0, [r5]
@@ -102,7 +102,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -133,7 +133,7 @@
 
 .thumb_func_start OvlFunc_921_2008130
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

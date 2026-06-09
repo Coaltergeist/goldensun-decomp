@@ -1,49 +1,49 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80de9bc
+.thumb_func_start Anim_CuttingEdge  @ 0x080de9bc
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #2
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0x30
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r0, r6
 	mov	r1, #5
-	bl	Func_80dea70
+	bl	BaseAnim_ParticleSpray
 	mov	r0, r5
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80de9bc
+.func_end Anim_CuttingEdge
 
-.thumb_func_start Func_80de9f0
+.thumb_func_start Anim_HeatWave  @ 0x080de9f0
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r0, [r6, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	mov	r1, #2
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0x30
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r0, r6
 	mov	r1, #6
-	bl	Func_80dea70
+	bl	BaseAnim_ParticleSpray
 	mov	r0, r5
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80de9f0
+.func_end Anim_HeatWave
 

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801e41c
+.thumb_func_start Func_801e41c  @ 0x0801e41c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -303,7 +303,7 @@
 	bx	r0
 .func_end Func_801e41c
 
-.thumb_func_start Func_801e71c
+.thumb_func_start SetTextColor  @ 0x0801e71c
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, .L1e72c	@ 0xf
 	ldr	r3, [r3]
@@ -315,5 +315,5 @@
 	.align	2, 0
 .L1e72c:
 	.word	0xf
-.func_end Func_801e71c
+.func_end SetTextColor
 

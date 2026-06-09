@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a8914
+.thumb_func_start Func_80a8914  @ 0x080a8914
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -14,7 +14,7 @@
 	mov	r8, r2
 	ldr	r5, [r3]
 	sub	sp, #4
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0xbe
 	lsl	r2, #1
 	add	r5, r2
@@ -56,7 +56,7 @@
 	ldr	r0, =.Laf22c
 	bl	_Func_801e8b0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #0
 	ldrb	r0, [r7, #0xf]
 	mov	r1, #2
@@ -91,7 +91,7 @@
 	mov	r0, r5
 	mov	r2, #0x68
 	mov	r3, #0x10
-	bl	_Func_801e940
+	bl	_UIDrawText
 	mov	r2, #0x28
 	ldr	r0, =.Laf238
 	mov	r1, r6
@@ -118,7 +118,7 @@
 	mov	r1, r6
 	mov	r2, #0x68
 	mov	r3, #0x18
-	bl	_Func_801e940
+	bl	_UIDrawText
 	ldr	r5, =0xb0e
 	mov	r1, r6
 	mov	r0, r5
@@ -140,7 +140,7 @@
 	cmp	r2, #0
 	bne	.La8a5e
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0x28
 	str	r3, [sp]
 	mov	r0, r6
@@ -216,12 +216,12 @@
 	bx	r0
 .func_end Func_80a8914
 
-.thumb_func_start Func_80a8b10
+.thumb_func_start Func_80a8b10  @ 0x080a8b10
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r0, r2
 	mov	r6, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0
 	mov	r2, r0
 	add	r3, r5, #4
@@ -285,7 +285,7 @@
 	bx	r1
 .func_end Func_80a8b10
 
-.thumb_func_start Func_80a8b8c
+.thumb_func_start Func_80a8b8c  @ 0x080a8b8c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -304,7 +304,7 @@
 	mov	r9, r0
 	ldrb	r0, [r3, r5]
 	mov	r8, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r10
 	ldrb	r7, [r6, r2]
 	mov	r2, r8
@@ -325,19 +325,19 @@
 .La8bd4:
 	mov	r1, #5
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #5
 	mov	r10, r0
 	mov	r0, r6
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r8, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	beq	.La8c00
 	add	r5, #1
@@ -363,7 +363,7 @@
 	bx	r1
 .func_end Func_80a8b8c
 
-.thumb_func_start Func_80a8c2c
+.thumb_func_start LoadMoveRangeIcons  @ 0x080a8c2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -434,9 +434,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80a8c2c
+.func_end LoadMoveRangeIcons
 
-.thumb_func_start Func_80a8cc0
+.thumb_func_start Func_80a8cc0  @ 0x080a8cc0
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -489,7 +489,7 @@
 	bx	r0
 .func_end Func_80a8cc0
 
-.thumb_func_start Func_80a8d34
+.thumb_func_start Func_80a8d34  @ 0x080a8d34
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -514,7 +514,7 @@
 	sub	sp, #8
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r11
 	ldr	r3, [r1, #0x18]
 	mov	r2, #0xe4
@@ -545,7 +545,7 @@
 	ldrh	r3, [r2, r3]
 	and	r5, r3
 	mov	r0, r5
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, #0x68
 	mov	r5, r0
 	str	r3, [sp]
@@ -630,7 +630,7 @@
 	ldrh	r3, [r1]
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #2]
 	cmp	r3, #4
@@ -673,7 +673,7 @@
 	ldrh	r3, [r2]
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #2]
 	cmp	r3, #4
@@ -726,7 +726,7 @@
 	cmp	r2, #4
 	ble	.La8e38
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
@@ -739,7 +739,7 @@
 	bx	r1
 .func_end Func_80a8d34
 
-.thumb_func_start Func_80a8f40
+.thumb_func_start Func_80a8f40  @ 0x080a8f40
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -756,7 +756,7 @@
 	ldrb	r0, [r3]
 	mov	r5, r2
 	sub	sp, #8
-	bl	_Func_8077394
+	bl	_GetUnit
 	str	r0, [sp, #4]
 	mov	r0, r8
 	bl	_Func_8016498
@@ -806,7 +806,7 @@
 	ldrh	r3, [r7, r2]
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r1, r11
 	ldrh	r3, [r7, r1]
 	mov	r6, r0
@@ -884,7 +884,7 @@
 	ldr	r0, =.Laf22c
 	mov	r2, #0
 	mov	r3, #0x30
-	bl	_Func_801e940
+	bl	_UIDrawText
 	ldr	r3, [sp, #4]
 	ldrb	r0, [r3, #0xf]
 	mov	r3, #0x30
@@ -905,7 +905,7 @@
 	bx	r1
 .func_end Func_80a8f40
 
-.thumb_func_start Func_80a90bc
+.thumb_func_start Func_80a90bc  @ 0x080a90bc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -920,7 +920,7 @@
 	mov	r8, r3
 	str	r1, [sp, #0xc]
 	mov	r11, r1
-	bl	Func_80a8c2c
+	bl	LoadMoveRangeIcons
 	mov	r3, #0x86
 	lsl	r3, #1
 	add	r3, r8
@@ -997,14 +997,14 @@
 	b	.La92c0
 .La917a:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	str	r2, [sp, #0xc]
 	mov	r11, r2
 	b	.La92c0
 .La9188:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r3, #1
 	mov	r11, r1
@@ -1038,12 +1038,12 @@
 	str	r4, [sp, #8]
 	bl	Func_80a8d34
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp, #8]
 .La91d8:
 	mov	r0, #1
 	str	r4, [sp, #8]
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r3, sp, #0x18
 	ldr	r1, [r6, #0x14]
 	mov	r2, #5
@@ -1088,7 +1088,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	bne	.La9188
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r7, #0x80
 	ldr	r3, [r5]
 	lsl	r7, #1
@@ -1103,7 +1103,7 @@
 	beq	.La92ae
 .La9250:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, r8
 	mov	r0, #0x1c
 	ldrsb	r0, [r2, r0]
@@ -1131,7 +1131,7 @@
 	add	r3, r8
 	ldrb	r1, [r3]
 	add	r0, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x82
 	lsl	r2, r0, #1
 	lsl	r3, #2
@@ -1152,7 +1152,7 @@
 	mov	r0, #0xa8
 	lsl	r0, #1
 	str	r4, [sp, #8]
-	bl	_Func_8079338
+	bl	_GetFlag
 	ldr	r4, [sp, #8]
 	cmp	r0, #0
 	bne	.La92c0
@@ -1163,7 +1163,7 @@
 	bne	.La931c
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La931c
 	bl	Func_80a9cbc
@@ -1172,7 +1172,7 @@
 	bl	_Func_8016498
 	mov	r3, r9
 	ldrb	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, #0xe4
 	lsl	r1, #1
 	mov	r2, #0
@@ -1183,7 +1183,7 @@
 	add	r3, r8
 	strb	r0, [r3]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r6, sp, #0x10
 	mov	r1, #0
 	mov	r0, r6

@@ -3,11 +3,11 @@
 
 .thumb_func_start OvlFunc_919_20081d4
 	push	{lr}
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r0, =.L590
 	ldr	r3, [r3]
 	strh	r3, [r0]
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	ldr	r1, =.L5b0
 	strh	r3, [r0, #2]
@@ -123,18 +123,20 @@
 .func_end OvlFunc_919_20082e0
 
 	.section .data
-	.global .L35c
-	.global .L44c
-	.global .L474
-	.global .L4a4
+	.global gOvl_0200835c
+	.global MapEntrance_ARRAY_919__0200835c
+	.global gOvl_0200844c
+	.global gOvl_02008474
+	.global gOvl_020084a4
 
-.L35c:
+gOvl_0200835c:
+MapEntrance_ARRAY_919__0200835c:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x35c, (0x44c-0x35c)
-.L44c:
+gOvl_0200844c:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x44c, (0x474-0x44c)
-.L474:
+gOvl_02008474:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x474, (0x4a4-0x474)
-.L4a4:
+gOvl_020084a4:
 	.incbin "overlays/rom_7a67d8/orig.bin", 0x4a4
 
 	.section .bss

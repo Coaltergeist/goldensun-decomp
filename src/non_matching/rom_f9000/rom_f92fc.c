@@ -1,8 +1,8 @@
-/* Func_80f92fc(void) sound-test / music control loop [rom_f9000]
+/* Debug_SoundTest(void) sound-test / music control loop [rom_f9000]
  * Source asm: goldensun/asm/rom_f9000/rom_f9080_a_a.s  (Camelot music-driver prefix)
  *
  * An infinite control loop (never returns) driving a 3-slot song selector
- * from the controller flag word iwram_3001b04:
+ * from the controller flag word gKeyRepeat:
  *   bit 0x004  cycle the sfx channel ((ch+1) % 5) and re-arm it
  *   bit 0x100/0x200  +/- 0xa to the current slot id
  *   bit 0x010/0x020  +/- 1  to the current slot id
@@ -18,20 +18,19 @@
  * 0x080fb794 (label .Lfb794) and needs an alias to be nameable in C.
  *
  * Func_ -> friendly name:
- *   Func_80f9080 PlaySound        Func_80030f8 WaitFrames
- *   Func_80037d4 SetSoundFXMode   Func_b1c_from_thumb umod
+ *   PlaySound PlaySound        WaitFrames WaitFrames
+ *   SetSoundFXMode SetSoundFXMode   __modsi3 umod
  */
 extern int Data_fb794[3];          /* .Lfb794 @ 0x080fb794 (needs alias) */
-extern int iwram_3007804;
-extern unsigned int iwram_3001b04; /* controller flags */
+extern int gRAMBuildDate;
+extern unsigned int gKeyRepeat; /* controller flags */
 extern int Label_12cc;
 
-extern void Func_80f9080(int req);
-extern void Func_80037d4(int mode);
-extern void Func_80030f8(int frames);
-extern int  Func_b1c_from_thumb(int a, int b);   /* (a % b) */
+extern void PlaySound(int req);
+extern void SetSoundFXMode(int mode);
+extern void WaitFrames(int frames);
 
-void Func_80f92fc(void) {
+void Debug_SoundTest(void) {
     int slots[3];
     int cur;         /* current slot (ROM: pointer r6 / index r8 / count r7) */
     int fadeTimer;
@@ -42,7 +41,7 @@ void Func_80f92fc(void) {
     slots[2] = Data_fb794[2];
     channel = 2;
     cur = 0;
-    iwram_3007804 = 0;
+    gRAMBuildDate = 0;
     fadeTimer = 0x14;
 
     for (;;) {
@@ -55,10 +54,10 @@ void Func_80f92fc(void) {
             fadeTimer = 0x14;
         }
 
-        in = iwram_3001b04;
+        in = gKeyRepeat;
         if (in & 4) {
-            channel = Func_b1c_from_thumb(channel + 1, 5);
-            Func_80037d4(channel);
+            channel = (channel + 1) % 5;
+            SetSoundFXMode(channel);
         }
         if (in & 0x100) slots[cur] += 0xa;
         if (in & 0x200) slots[cur] -= 0xa;
@@ -67,14 +66,14 @@ void Func_80f92fc(void) {
         if ((in & 0x40) && cur > 0)
             cur--;
 
-        in = iwram_3001b04;
+        in = gKeyRepeat;
         if ((in & 0x80) && cur <= 1)
             cur++;
-        if (in & 1) Func_80f9080(slots[cur]);
-        if (in & 2) Func_80f9080(0x13);
-        if (in & 8) Func_80f9080(0x11);
-        if (in & 4) Func_80f9080(0x121);
+        if (in & 1) PlaySound(slots[cur]);
+        if (in & 2) PlaySound(0x13);
+        if (in & 8) PlaySound(0x11);
+        if (in & 4) PlaySound(0x121);
 
-        Func_80030f8(1);
+        WaitFrames(1);
     }
 }

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80ed408
+.thumb_func_start BuildDraw2DFuncEx  @ 0x080ed408
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -157,7 +157,7 @@
 .Led506:
 	add	r1, #8
 	lsl	r1, #2
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r6, =Data_edcc4
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD
@@ -828,7 +828,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80ed408
+.func_end BuildDraw2DFuncEx
 
 	.section .rodata
 

@@ -53,7 +53,7 @@
 	str	r5, [sp]
 	bl	__Func_8010704
 	ldr	r0, =0x301
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1090
 	mov	r0, #8
@@ -85,7 +85,7 @@
 	bl	__Func_8010704
 .L10ae:
 	ldr	r0, =0x302
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L10d8
 	mov	r0, #9
@@ -118,7 +118,7 @@
 	bl	__Func_8010704
 .L10f6:
 	ldr	r0, =0x303
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1120
 	mov	r0, #0xa
@@ -170,7 +170,7 @@
 	bl	__Func_8010704
 	mov	r0, #0xc1
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1198
 	mov	r0, #8
@@ -203,7 +203,7 @@
 	bl	__Func_8010704
 .L11b6:
 	ldr	r0, =0x305
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1226
 	mov	r0, #8
@@ -229,7 +229,7 @@
 	bl	__Func_8010704
 	mov	r0, #0xc1
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1226
 	mov	r0, #8
@@ -252,7 +252,7 @@
 	bl	__Func_8010704
 .L1226:
 	ldr	r0, =0x306
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1250
 	mov	r0, #9
@@ -285,7 +285,7 @@
 	bl	__Func_8010704
 .L126e:
 	ldr	r0, =0x307
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1298
 	mov	r0, #0xa
@@ -337,7 +337,7 @@
 	bl	__Func_8010704
 	mov	r0, #0xc2
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1310
 	mov	r0, #8
@@ -356,7 +356,7 @@
 	b	.L137c
 .L1310:
 	ldr	r0, =0x309
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L135e
 	mov	r0, #8
@@ -405,7 +405,7 @@
 	bl	__Func_8010704
 .L137c:
 	ldr	r0, =0x30a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L13a6
 	mov	r0, #9
@@ -438,7 +438,7 @@
 	bl	__Func_8010704
 .L13c4:
 	ldr	r0, =0x30b
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L13f6
 	mov	r0, #0xa
@@ -462,7 +462,7 @@
 .L13f6:
 	mov	r0, #0xc3
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L143a
 	mov	r0, #0xa
@@ -492,7 +492,7 @@
 	b	.L14be
 .L143a:
 	ldr	r0, =0x30d
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L147e
 	mov	r0, #0xa
@@ -523,7 +523,7 @@
 	b	.L14c0
 .L147e:
 	ldr	r0, =0x30e
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L14cc
 	mov	r0, #0xa
@@ -565,7 +565,7 @@
 	bl	OvlFunc_922_2009004
 .L14d6:
 	ldr	r0, =0x30f
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1508
 	mov	r0, #0xb
@@ -589,7 +589,7 @@
 .L1508:
 	mov	r0, #0xc4
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L153c
 	mov	r0, #0xb
@@ -612,7 +612,7 @@
 	b	.L159e
 .L153c:
 	ldr	r0, =0x311
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L156e
 	mov	r0, #0xb
@@ -635,7 +635,7 @@
 	b	.L159e
 .L156e:
 	ldr	r0, =0x312
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L15aa
 	mov	r0, #0xb
@@ -675,7 +675,7 @@
 
 .thumb_func_start OvlFunc_922_20095dc
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -709,7 +709,7 @@
 	bl	__Func_8010704
 .L1620:
 	ldr	r0, =0x313
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L164a
 	mov	r0, #8
@@ -743,7 +743,7 @@
 .L1668:
 	mov	r0, #0xc5
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1694
 	mov	r0, #9
@@ -776,7 +776,7 @@
 	bl	__Func_8010704
 .L16b2:
 	ldr	r0, =0x315
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L16dc
 	mov	r0, #0xa

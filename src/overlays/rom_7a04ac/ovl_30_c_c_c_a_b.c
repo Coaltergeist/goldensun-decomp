@@ -5,7 +5,7 @@
  * asm/overlays/rom_7a04ac/ovl_30_c_c_c_a_a.o and asm/overlays/rom_7a04ac/ovl_30_c_c_c_a_c.o in
  * goldensun/overlays/rom_7a04ac/overlay.ld.
  */
-extern void __Func_800c0f4(void);
+extern void __DeleteActor(void);
 
 unsigned int OvlFunc_913_200a798(unsigned char *param)
 {
@@ -18,7 +18,7 @@ unsigned int OvlFunc_913_200a798(unsigned char *param)
         if (v3c == v38) {
             v40 = *(int *)(param + 0x40);
             if (v40 == v3c) {
-                __Func_800c0f4();
+                __DeleteActor();
             }
         }
     }

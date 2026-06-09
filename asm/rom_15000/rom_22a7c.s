@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8022a7c
+.thumb_func_start Func_8022a7c  @ 0x08022a7c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -23,7 +23,7 @@
 	strb	r3, [r6, #5]
 	strb	r3, [r6, #4]
 	mov	r0, #0x80
-	bl	Func_80040b4
+	bl	AllocUploadSpriteGFX
 	mov	r3, #0xf0
 	strb	r3, [r6, #0xf]
 	mov	r3, #0x78
@@ -68,7 +68,7 @@
 .L22b04:
 	ldr	r1, =.L31424
 .L22b06:
-	bl	Func_80040d0
+	bl	UploadSprite2
 	ldr	r3, .L22b24	@ 0x3ff
 	ldrh	r2, [r7, #8]
 	and	r0, r3
@@ -98,7 +98,7 @@
 	bx	r0
 .func_end Func_8022a7c
 
-.thumb_func_start Func_8022b44
+.thumb_func_start Func_8022b44  @ 0x08022b44
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -114,14 +114,14 @@
 	mov	r10, r4
 	mov	r8, r2
 	str	r3, [sp, #0x3c]
-	bl	_Func_8077394
+	bl	_GetUnit
 	str	r0, [sp, #0x38]
 	mov	r1, r10
 	ldr	r0, [r1]
 	cmp	r0, #0
 	beq	.L22b76
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L22b76:
 	ldr	r2, [sp, #0x3c]
 	cmp	r2, #0
@@ -132,7 +132,7 @@
 	mov	r3, #0xb
 	mov	r1, #8
 	mov	r2, #0x15
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, r10
 	str	r0, [r3]
 	b	.L22ba6
@@ -143,7 +143,7 @@
 	mov	r1, #5
 	mov	r2, #0x15
 	mov	r3, #0xe
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r4, r10
 	str	r0, [r4]
 .L22ba6:
@@ -191,10 +191,10 @@
 	mov	r0, r7
 	mov	r1, r5
 	mov	r2, r6
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 .L22c0a:
 	mov	r0, r7
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r0, [sp, #0x34]
 	ldr	r1, [sp, #0x38]
 	add	r2, sp, #0x40
@@ -207,7 +207,7 @@
 	mov	r1, #5
 	str	r0, [sp, #0x14]
 	sub	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [sp, #0x6c]
 	add	r0, #1
 	str	r0, [r3]
@@ -355,7 +355,7 @@
 	beq	.L22d78
 .L22d72:
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 .L22d78:
 	mov	r2, r10
 	ldr	r0, =0x8ad
@@ -364,7 +364,7 @@
 	mov	r2, #0x18
 	bl	Func_801e7c0
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 .L22d8c:
 	ldr	r3, [sp, #0x3c]
 	cmp	r3, #0
@@ -411,7 +411,7 @@
 	mov	r11, r3
 .L22dda:
 	ldrh	r0, [r6]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #2]
 	cmp	r3, #4
@@ -454,7 +454,7 @@
 	cmp	r3, #0
 	beq	.L22e3a
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L22e6e
 .L22e3a:
 	ldr	r3, .L22e50	@ 0x4000
@@ -462,7 +462,7 @@
 	cmp	r3, #0
 	beq	.L22e68
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	b	.L22e6e
 
 	.align	2, 0
@@ -474,7 +474,7 @@
 
 .L22e68:
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 .L22e6e:
 	ldrh	r3, [r6]
 	ldr	r0, =0x3fff
@@ -500,7 +500,7 @@
 	mov	r3, r9
 	bl	Func_8019000
 	ldrh	r0, [r6]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r4, r11
 	ldr	r2, [r7]
 	ldrb	r0, [r0, #9]
@@ -533,7 +533,7 @@
 	cmp	r3, #0
 	beq	.L22efe
 	mov	r0, #4
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r4, r10
 	ldr	r1, [r4]
 	ldr	r0, =0xba2
@@ -547,7 +547,7 @@
 	cmp	r3, #0
 	beq	.L22f22
 	mov	r0, #2
-	bl	Func_801e71c
+	bl	SetTextColor
 	ldr	r4, [sp, #0xc]
 	mov	r2, r10
 	lsl	r3, r4, #3
@@ -571,9 +571,9 @@
 	bl	Func_801e7c0
 .L22f36:
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r0, #0xf
-	bl	Func_801e71c
+	bl	SetTextColor
 	mov	r3, #0xa
 	mov	r4, r10
 	ldr	r0, [r4]
@@ -805,11 +805,11 @@
 	ldr	r1, [sp, #0x34]
 	bl	_call_via_r3
 	ldr	r0, [sp, #0x18]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x34]
-	bl	Func_8002df0
+	bl	free
 	ldr	r0, [sp, #0x30]
-	bl	Func_8002df0
+	bl	free
 	mov	r2, r10
 	ldr	r0, [r2]
 .L23134:

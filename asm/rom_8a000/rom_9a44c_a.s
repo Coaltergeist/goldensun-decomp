@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809a44c
+.thumb_func_start Func_809a44c  @ 0x0809a44c
 	ldr	r3, [r0, #8]
 	ldr	r2, [r0, #0x44]
 	add	r3, r2
@@ -30,7 +30,7 @@
 	bx	lr
 .func_end Func_809a44c
 
-.thumb_func_start Func_809a484
+.thumb_func_start Func_809a484  @ 0x0809a484
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -67,7 +67,7 @@
 .L9a4c6:
 	mov	r1, r5
 	mov	r3, r8
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L9a4d6
@@ -80,7 +80,7 @@
 	add	r1, #1
 	and	r1, r5
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r3, r10
 	ldr	r2, =.La012c
 	and	r3, r5
@@ -88,7 +88,7 @@
 	ldr	r1, [r2, r3]
 	mov	r0, r6
 	mov	r11, r3
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r3, r6
 	mov	r0, #0
 	add	r3, #0x55
@@ -191,7 +191,7 @@
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, [r6, #0x1c]
@@ -203,14 +203,14 @@
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x30]
 	ldr	r0, [r7, #0x14]
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
 .L9a5e8:
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	str	r0, [r6, #0x34]
 .L9a5ee:
 	mov	r3, #0x80
@@ -221,10 +221,10 @@
 	beq	.L9a60a
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, [r7, #0x1c]
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L9a60a:
 	mov	r3, #0x80
 	lsl	r3, #15
@@ -266,7 +266,7 @@
 	bx	r0
 .func_end Func_809a484
 
-.thumb_func_start Func_809a65c
+.thumb_func_start Func_809a65c  @ 0x0809a65c
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	ldr	r5, [r6, #0x44]
@@ -283,7 +283,7 @@
 	add	r3, r7
 	mov	r1, #0x12
 	str	r3, [r6, #0x10]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #0x44]
 	mov	r3, r7
@@ -314,7 +314,7 @@
 	bx	r0
 .func_end Func_809a65c
 
-.thumb_func_start Func_809a6b8
+.thumb_func_start Func_809a6b8  @ 0x0809a6b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -335,7 +335,7 @@
 .L9a6da:
 	lsl	r5, r7, #12
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	lsr	r2, r3, #31
@@ -345,7 +345,7 @@
 	mov	r0, r5
 	mov	r3, #0
 	str	r3, [r6, #4]
-	bl	Func_8002322
+	bl	sin
 	str	r0, [r6, #8]
 	mov	r2, r10
 	ldr	r5, [r2, #8]
@@ -373,7 +373,7 @@
 	bx	r0
 .func_end Func_809a6b8
 
-.thumb_func_start Func_809a738
+.thumb_func_start Func_809a738  @ 0x0809a738
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -387,14 +387,14 @@
 	mov	r6, r0
 	mov	r0, r8
 	add	r6, r1
-	bl	Func_800231c
+	bl	cos
 	ldr	r5, =Func_8000888
 	mov	r1, r0
 	mov	r0, r6
 	.call_via r5
 	mov	r10, r0
 	mov	r0, r8
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r0
 	mov	r0, r6
 	.call_via r5
@@ -447,7 +447,7 @@
 	bne	.L9a7da
 	ldr	r1, =Data_9f0b0
 	mov	r0, r7
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L9a7da:
 	pop	{r3, r5}
 	mov	r8, r3
@@ -457,7 +457,7 @@
 	bx	r0
 .func_end Func_809a738
 
-.thumb_func_start Func_809a7f4
+.thumb_func_start Func_809a7f4  @ 0x0809a7f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -471,14 +471,14 @@
 	mov	r9, r0
 	mov	r0, r6
 	mov	r10, r2
-	bl	Func_800231c
+	bl	cos
 	ldr	r5, =Func_8000888
 	mov	r1, r0
 	mov	r0, r10
 	.call_via r5
 	mov	r8, r0
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	mov	r1, r0
 	mov	r0, r10
 	.call_via r5

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_80f0008
+.arm_func_start Func_80f0008  @ 0x080f0008
 	smull	r12, r0, r1, r0
 	smlal	r12, r0, r2, r3
 	ldm	sp, {r2, r3}
@@ -10,7 +10,7 @@
 	bx	lr
 .func_end Func_80f0008
 
-.arm_func_start Func_80f0024
+.arm_func_start Func_80f0024  @ 0x080f0024
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	mov	r10, r2
 	ldr	r2, .Lf00f4	@ .Lf0124

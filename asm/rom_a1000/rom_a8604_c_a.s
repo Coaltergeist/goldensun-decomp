@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a93a4
+.thumb_func_start Func_80a93a4  @ 0x080a93a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -26,7 +26,7 @@
 	sub	sp, #8
 	bl	_Func_8016498
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, r10
 	ldr	r3, [r1, #0x18]
 	mov	r2, #0xe4
@@ -72,7 +72,7 @@
 	ldrh	r3, [r1, r3]
 	ldr	r0, =0x1ff
 	and	r0, r3
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldr	r0, [r0, #0x14]
 	cmp	r0, #4
 	beq	.La9454
@@ -101,7 +101,7 @@
 	ldrh	r3, [r1]
 	ldr	r0, =0x1ff
 	and	r0, r3
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldr	r0, [r0, #0x14]
 	cmp	r0, #4
 	beq	.La94a0
@@ -174,7 +174,7 @@
 	beq	.La9572
 	ldr	r0, =0x1ff
 	and	r0, r2
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r1, [r0, #2]
 	cmp	r1, #2
 	beq	.La955c
@@ -234,7 +234,7 @@
 	bl	Func_80a2268
 .La9572:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
@@ -247,7 +247,7 @@
 	bx	r1
 .func_end Func_80a93a4
 
-.thumb_func_start Func_80a9598
+.thumb_func_start Func_80a9598  @ 0x080a9598
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -264,7 +264,7 @@
 	ldrb	r0, [r3]
 	mov	r5, r2
 	sub	sp, #4
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x60
 	str	r3, [sp]
 	mov	r2, #8
@@ -390,7 +390,7 @@
 	bx	r1
 .func_end Func_80a9598
 
-.thumb_func_start Func_80a96d8
+.thumb_func_start Func_80a96d8  @ 0x080a96d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -410,7 +410,7 @@
 	lsl	r3, #1
 	add	r3, r0
 	ldrh	r0, [r7, r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0xa
 	str	r3, [sp]
 	mov	r0, r7
@@ -453,7 +453,7 @@
 	bl	_Func_801e7c0
 	bl	Func_80a9cbc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0x86
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -469,14 +469,14 @@
 	b	.La9926
 .La977e:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	str	r2, [sp, #0x14]
 	str	r2, [sp, #0x10]
 	b	.La9926
 .La978c:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	neg	r3, r3
 	mov	r0, #1
@@ -520,7 +520,7 @@
 	ldr	r0, [r7, #0x30]
 	bl	Func_80a9a5c
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0
 	ldr	r0, [sp, #0xc]
 	bl	Func_80a3e28
@@ -558,7 +558,7 @@
 	mov	r0, #0x60
 	bl	Func_80a1a40
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r11
 	add	r3, sp, #0x20
 	ldr	r1, [r2, #0x14]
@@ -595,7 +595,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	bne	.La978c
-	ldr	r6, =iwram_3001b04
+	ldr	r6, =gKeyRepeat
 	mov	r1, #0x80
 	ldr	r3, [r6]
 	lsl	r1, #1
@@ -611,7 +611,7 @@
 .La98a0:
 	mov	r0, #0x6f
 	str	r1, [sp, #8]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r5, #0x1c
 	ldrsb	r5, [r7, r5]
 	mov	r0, #0x82
@@ -652,7 +652,7 @@
 	add	r3, r7, r2
 	ldrb	r1, [r3]
 	add	r0, r5, r1
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x82
 	mov	r5, r0
 	lsl	r3, #2
@@ -672,7 +672,7 @@
 .La9918:
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La9926
 	b	.La9802
@@ -682,7 +682,7 @@
 	bne	.La9952
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.La9952
 	bl	Func_80a9cbc
@@ -691,7 +691,7 @@
 	ldr	r0, =0x21a
 	add	r3, r7, r0
 	ldrb	r0, [r3]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r4, #0
 	mov	r9, r0
 	b	.La97ae
@@ -724,7 +724,7 @@
 	bx	r1
 .func_end Func_80a96d8
 
-.thumb_func_start Func_80a99b0
+.thumb_func_start Func_80a99b0  @ 0x080a99b0
 	push	{lr}
 	ldr	r3, [r0]
 	ldr	r4, [r1]

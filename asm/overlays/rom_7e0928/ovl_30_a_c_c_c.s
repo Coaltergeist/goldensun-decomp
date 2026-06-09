@@ -11,7 +11,7 @@
 	asr	r5, #20
 	mov	r1, r5
 	lsl	r0, #2
-	bl	__Func_80793c8
+	bl	__SetFlagByte
 	mov	r3, #0x12
 	str	r3, [sp]
 	mov	r6, #0xb

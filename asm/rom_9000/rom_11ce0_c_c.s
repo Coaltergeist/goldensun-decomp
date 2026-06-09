@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80120dc
+.thumb_func_start TestCollision  @ 0x080120dc
 	push	{r5, r6, r7, lr}
 	mov	r3, #0xa
 	ldrsh	r6, [r1, r3]
@@ -27,7 +27,7 @@
 	ldr	r2, [r1, r3]
 	b	.L12110
 .L1210e:
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 .L12110:
 	mov	r3, r5
 	cmp	r5, #0
@@ -90,7 +90,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80120dc
+.func_end TestCollision
 
 	.section .rodata
 	.global .L134fc
@@ -103,18 +103,18 @@
 	.incrom 0x133fc, 0x134fc
 .L134fc:
 	.word	Func_8011ce0
-	.word	Func_8011cec
-	.word	Func_8011d10
-	.word	Func_8011d34
-	.word	Func_8011d60
-	.word	Func_8011d94
-	.word	Func_8011ddc
-	.word	Func_8011e2c
-	.word	Func_8011e50
-	.word	Func_8011e6c
-	.word	Func_8011e88
-	.word	Func_8011ed0
-	.word	Func_8011f14
-	.word	Func_8011f28
+	.word	HeightTile_1
+	.word	HeightTile_2
+	.word	HeightTile_3
+	.word	HeightTile_4
+	.word	HeightTile_5
+	.word	HeightTile_6
+	.word	HeightTile_7
+	.word	HeightTile_8
+	.word	HeightTile_9
+	.word	HeightTile_A
+	.word	HeightTile_B
+	.word	HeightTile_C
+	.word	HeightTile_D
 	.word	Func_8011f3c
 	.word	Func_8011f48

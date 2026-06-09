@@ -1,4 +1,4 @@
-/* Cluster Func_8078b9c..Func_8078b9c extracted from goldensun/asm/rom_77000/rom_78b9c_a.s.
+/* Cluster GetMoveInfo..GetMoveInfo extracted from goldensun/asm/rom_77000/rom_78b9c_a.s.
  *
  * Total .text for this TU = 36 bytes (= 0x24).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned char L7ee58[] __asm__(".L7ee58");
 
-unsigned char *Func_8078b9c(int moveID) {
+unsigned char *GetMoveInfo(int moveID) {
     unsigned int idx = moveID & 0x3fff;
     if (idx >= 0x208)
         idx = 0;

@@ -4,11 +4,11 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r5
 	bl	__Func_8092504
 	mov	r0, r6
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -26,9 +26,9 @@
 	bl	__Func_80970f8
 	bl	__Func_809728c
 	mov	r0, #1
-	bl	__Func_80967e4
+	bl	__FieldMove
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -37,7 +37,7 @@
 .thumb_func_start OvlFunc_899_200c684
 	push	{lr}
 	mov	r0, #2
-	bl	__Func_80967e4
+	bl	__FieldMove
 	bl	__Func_8097174
 	bl	__Func_8097194
 	pop	{r0}
@@ -49,7 +49,7 @@
 	mov	r7, r0
 	mov	r0, #0x16
 	mov	r5, #0
-	bl	__Func_800c150
+	bl	__CreateActor
 	cmp	r0, #0
 	beq	.L46fc
 	ldr	r6, [r0, #0x50]
@@ -77,19 +77,19 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r5, r0
 	mov	r0, r7
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	ldrb	r0, [r6, #0x1c]
 	mov	r1, #0x80
 	mov	r2, r5
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 .L46fc:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -199,7 +199,7 @@
 	mov	r5, r0
 	mov	r0, r2
 	mov	r6, r1
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r3, #0x80
 	ldr	r4, [r0, #0x38]
 	lsl	r3, #24
@@ -236,7 +236,7 @@
 	mov	r5, r0
 	mov	r0, r2
 	mov	r6, r1
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r3, #0x80
 	ldr	r4, [r0, #0x38]
 	lsl	r3, #24
@@ -337,7 +337,7 @@
 	lsl	r3, #19
 	add	r3, r2
 	mov	r2, #0
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_200c8a4
@@ -352,7 +352,7 @@
 	push	{r7}
 	mov	r0, #0
 	sub	sp, #4
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	ldr	r3, =iwram_3001ebc
 	ldr	r3, [r3]
 	mov	r1, #0
@@ -360,7 +360,7 @@
 	mov	r0, #2
 	mov	r9, r1
 	mov	r11, r3
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	mov	r5, r7
 	add	r5, #8
@@ -390,7 +390,7 @@
 	mov	r1, r6
 	strh	r3, [r2]
 	mov	r0, r5
-	bl	__Func_80044d0
+	bl	__atan2
 	mov	r3, #0xce
 	lsl	r3, #1
 	add	r3, r11
@@ -452,15 +452,15 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L49b8
 .L49b0:
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L49b8:
 	mov	r0, #0x18
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	add	r0, #8
 	bl	OvlFunc_899_200c704
@@ -508,12 +508,12 @@
 	bne	.L4a2e
 	mov	r0, #0x18
 	mov	r1, #2
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	b	.L4a3c
 .L4a2e:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #1
 	mov	r9, r3
 	b	.L4a4c
@@ -523,10 +523,10 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L4a4c:
 	mov	r0, #0x19
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	add	r0, #8
 	bl	OvlFunc_899_200c704
@@ -575,12 +575,12 @@
 	bne	.L4ac4
 	mov	r0, #0x19
 	mov	r1, #2
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	b	.L4ad2
 .L4ac4:
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #2
 	add	r9, r3
 	b	.L4ae2
@@ -590,7 +590,7 @@
 	bl	OvlFunc_899_200c8a4
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L4ae2:
 	mov	r1, r9
 	cmp	r1, #0
@@ -629,7 +629,7 @@
 
 .thumb_func_start OvlFunc_899_200cb2c
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0xa8
 	mov	r1, #1
 	mov	r2, #0xa4
@@ -641,15 +641,15 @@
 	mov	r0, #0
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #1
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r0, #2
 	ldr	r1, =0xcccc
 	ldr	r2, =0x6666
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0xae
 	mov	r0, #0
 	mov	r1, #0xf8
@@ -660,13 +660,13 @@
 	mov	r0, #1
 	lsl	r1, #16
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xf8
 	mov	r2, #0xae
 	mov	r0, #2
 	lsl	r1, #16
 	lsl	r2, #18
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r2, #0xae
 	mov	r0, #0
 	mov	r1, #0xc8
@@ -683,7 +683,7 @@
 	mov	r0, #2
 	bl	__Func_80921c4
 	mov	r0, #1
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0xc0
 	mov	r0, #1
 	lsl	r1, #8
@@ -695,10 +695,10 @@
 	mov	r0, #2
 	bl	__Func_8092adc
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #1
 	mov	r1, #0xc
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	OvlFunc_899_2009e80
 	mov	r0, #0xc0
 	mov	r1, #0x90
@@ -714,24 +714,24 @@
 	mov	r0, #1
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #2
 	lsl	r1, #8
 	lsl	r2, #7
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x80
 	mov	r0, #0x18
 	lsl	r1, #9
 	ldr	r2, =0x13333
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xc0
 	mov	r2, #0xc0
 	mov	r0, #0x19
 	lsl	r1, #9
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r3, =.L64f8
 	ldr	r2, .L4c48	@ 0
 	ldr	r1, =0xc94
@@ -739,10 +739,10 @@
 	ldr	r0, =OvlFunc_899_200c8c8
 	bl	__StartTask
 	ldr	r0, =0x1ff
-	bl	__Func_8079374
-	bl	__Func_8091750
+	bl	__ClearFlag
+	bl	__CutsceneEnd
 	mov	r0, #9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	b	.L4c68
 
 	.align	2, 0
@@ -756,35 +756,35 @@
 .func_end OvlFunc_899_200cb2c
 
 	.section .data
-	.global .L517c
-	.global .L52fc
-	.global .L5354
-	.global .L53ac
-	.global .L5444
-	.global .L54c8
-	.global .L5248
-	.global .L52ac
+	.global gScript_899__0200d17c
+	.global gScript_899__0200d2fc
+	.global gScript_899__0200d354
+	.global gScript_899__0200d3ac
+	.global gScript_899__0200d444
+	.global gScript_899__0200d4c8
+	.global gScript_899__0200d248
+	.global gScript_899__0200d2ac
 	.global .L5538
-	.global .L5560
+	.global gScript_899__0200d560
 	.global .L55b0
 	.global .L55d8
 	.global .L5600
-	.global .L5650
-	.global .L5678
+	.global gScript_899__0200d650
+	.global gScript_899__0200d678
 	.global .L56c8
 	.global .L56f0
 	.global .L5718
-	.global .L5768
+	.global gScript_899__0200d768
 	.global .L57a4
 	.global .L57cc
-	.global .L5808
-	.global .L5830
-	.global .L5858
+	.global gScript_956__0200d808
+	.global gScript_899__0200d830
+	.global gScript_899__0200d858
 	.global .L5894
-	.global .L58bc
-	.global .L58f8
-	.global .L5a60
-	.global .L5a80
+	.global gScript_899__0200d8bc
+	.global gOvl_0200d8f8
+	.global gOvl_0200da60
+	.global gOvl_0200da80
 	.global .L5ab8
 	.global .L5cc8
 	.global .L5e30
@@ -796,25 +796,25 @@
 
 .L4f2c:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x4f2c, (0x517c-0x4f2c)
-.L517c:
+gScript_899__0200d17c:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x517c, (0x5248-0x517c)
-.L5248:
+gScript_899__0200d248:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5248, (0x52ac-0x5248)
-.L52ac:
+gScript_899__0200d2ac:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x52ac, (0x52fc-0x52ac)
-.L52fc:
+gScript_899__0200d2fc:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x52fc, (0x5354-0x52fc)
-.L5354:
+gScript_899__0200d354:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5354, (0x53ac-0x5354)
-.L53ac:
+gScript_899__0200d3ac:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x53ac, (0x5444-0x53ac)
-.L5444:
+gScript_899__0200d444:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5444, (0x54c8-0x5444)
-.L54c8:
+gScript_899__0200d4c8:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x54c8, (0x5538-0x54c8)
 .L5538:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5538, (0x5560-0x5538)
-.L5560:
+gScript_899__0200d560:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5560, (0x55b0-0x5560)
 .L55b0:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x55b0, (0x55d8-0x55b0)
@@ -822,9 +822,9 @@
 	.incbin "overlays/rom_794ac0/orig.bin", 0x55d8, (0x5600-0x55d8)
 .L5600:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5600, (0x5650-0x5600)
-.L5650:
+gScript_899__0200d650:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5650, (0x5678-0x5650)
-.L5678:
+gScript_899__0200d678:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5678, (0x56c8-0x5678)
 .L56c8:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x56c8, (0x56f0-0x56c8)
@@ -832,27 +832,27 @@
 	.incbin "overlays/rom_794ac0/orig.bin", 0x56f0, (0x5718-0x56f0)
 .L5718:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5718, (0x5768-0x5718)
-.L5768:
+gScript_899__0200d768:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5768, (0x57a4-0x5768)
 .L57a4:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x57a4, (0x57cc-0x57a4)
 .L57cc:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x57cc, (0x5808-0x57cc)
-.L5808:
+gScript_956__0200d808:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5808, (0x5830-0x5808)
-.L5830:
+gScript_899__0200d830:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5830, (0x5858-0x5830)
-.L5858:
+gScript_899__0200d858:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5858, (0x5894-0x5858)
 .L5894:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5894, (0x58bc-0x5894)
-.L58bc:
+gScript_899__0200d8bc:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x58bc, (0x58f8-0x58bc)
-.L58f8:
+gOvl_0200d8f8:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x58f8, (0x5a60-0x58f8)
-.L5a60:
+gOvl_0200da60:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5a60, (0x5a80-0x5a60)
-.L5a80:
+gOvl_0200da80:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5a80, (0x5ab8-0x5a80)
 .L5ab8:
 	.incbin "overlays/rom_794ac0/orig.bin", 0x5ab8, (0x5cc8-0x5ab8)

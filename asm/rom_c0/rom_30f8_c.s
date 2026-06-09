@@ -1,15 +1,15 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003538
+.thumb_func_start UpdateKeyPressRepeat  @ 0x08003538
 	push	{r5, lr}
 	ldr	r4, =iwram_3001b00
 	ldr	r0, [r4]
 	mov	r5, #0
 	cmp	r0, #0
 	bgt	.L355e
-	ldr	r2, =iwram_3001ae8
-	ldr	r3, =iwram_3001b04
+	ldr	r2, =gKeyHeld
+	ldr	r3, =gKeyRepeat
 	ldr	r2, [r2]
 	str	r2, [r3]
 	ldr	r1, [r3]
@@ -23,7 +23,7 @@
 	str	r3, [r4]
 	b	.L3564
 .L355e:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	str	r5, [r3]
 	ldr	r1, [r3]
 .L3564:
@@ -126,7 +126,7 @@
 	ldr	r3, =iwram_3001afc
 	str	r1, [r3]
 .L360e:
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r0, =iwram_3001cf4
 	ldr	r3, [r1]
 	ldr	r2, [r0]
@@ -140,4 +140,4 @@
 	pop	{r5}
 	pop	{r0}
 	bx	r0
-.func_end Func_8003538
+.func_end UpdateKeyPressRepeat

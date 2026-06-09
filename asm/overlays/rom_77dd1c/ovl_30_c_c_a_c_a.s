@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_882_2008198
 	push	{lr}
 	mov	r0, #0x9e
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =.L5774
 	mov	r1, #0x2d
 	mov	r2, #0xb
@@ -14,7 +14,7 @@
 	mov	r0, #0
 	bl	__Func_809218c
 	mov	r0, #3
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0xb
 	bl	OvlFunc_882_200815c
 	pop	{r0}

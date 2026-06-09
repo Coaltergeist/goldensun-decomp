@@ -13,10 +13,10 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r6
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L2df2:
 	ldr	r3, [r5]
 	mov	r2, #0xf
@@ -45,11 +45,11 @@
 	cmp	r0, #0x1f
 	ble	.L2e2c
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L2e56
 .L2e2c:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -88,11 +88,11 @@
 	cmp	r0, #0x1f
 	ble	.L2e7c
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L2ea8
 .L2e7c:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -133,7 +133,7 @@
 	lsl	r0, #1
 	sub	sp, #8
 	mov	r11, r3
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, #0x3f
 	mov	r7, #0
 	mov	r10, sp
@@ -143,7 +143,7 @@
 	ldr	r3, [r6, #0x10]
 	ldr	r1, [r6, #8]
 	mov	r0, #0x1a
-	bl	__Func_800c150
+	bl	__CreateActor
 	lsl	r3, r7, #2
 	mov	r2, r10
 	str	r0, [r3, r2]
@@ -173,7 +173,7 @@
 .L2f14:
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r3, r5
 	add	r3, #0x26
 	mov	r2, r8
@@ -189,7 +189,7 @@
 	orr	r3, r2
 	strb	r3, [r5, #0x1d]
 	ldrb	r3, [r5, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r1, [r3, #2]

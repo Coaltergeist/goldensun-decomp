@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_9a44c_a.o and asm/rom_8a000/rom_9a44c_c.o in
  * goldensun/stage1.ld.
  */
-extern void _Func_800d130();
+extern void _Actor_SetPos();
 
 void Func_809a890(unsigned int arg0)
 {
@@ -15,7 +15,7 @@ void Func_809a890(unsigned int arg0)
     *(int *)(arg0 + 0x1c) = r3;
     *(int *)(arg0 + 0x18) = r3;
     if (r3 < (0x80 << 8)) {
-        _Func_800d130(arg0, 0, 0, 0);
+        _Actor_SetPos(arg0, 0, 0, 0);
         *(int *)(arg0 + 0x6c) = 0;
     }
 }

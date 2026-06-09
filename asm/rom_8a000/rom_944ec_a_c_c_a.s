@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8096810
+.thumb_func_start FieldMove_NoTarget  @ 0x08096810
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -41,38 +41,38 @@
 	.word	.L96934
 	.word	.L9693a
 .L96878:
-	bl	Func_809802c
+	bl	Field_Move
 	b	.L9693e
 .L9687e:
-	bl	Func_8098954
+	bl	Field_Lift
 	b	.L9693e
 .L96884:
-	bl	Func_809a294
+	bl	Field_Carry
 	b	.L9693e
 .L9688a:
-	bl	Func_8098cd8
+	bl	Field_Force
 	b	.L9693e
 .L96890:
-	bl	Func_80999f0
+	bl	Field_Douse
 	b	.L9693e
 .L96896:
-	bl	Func_809a8c4
+	bl	Field_Whirlwind
 	b	.L9693e
 .L9689c:
-	bl	Func_8099160
+	bl	Field_Frost
 	b	.L9693e
 .L968a2:
-	bl	Func_80994d0
+	bl	Field_Ply
 	b	.L9693e
 .L968a8:
-	bl	Func_80985fc
+	bl	Field_Growth
 	b	.L9693e
 .L968ae:
-	bl	Func_809ae64
+	bl	Field_Catch
 	b	.L9693e
 .L968b4:
 	ldr	r2, =0x24a
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	add	r7, r5, r2
 	mov	r3, #0
 	ldrsh	r0, [r7, r3]
@@ -101,13 +101,13 @@
 	mov	r1, r5
 	bl	Func_80970f8
 	mov	r0, r5
-	bl	Func_809ab98
+	bl	Field_Halt_Target
 	mov	r0, r5
 	bl	Func_809ad90
 	strh	r5, [r7]
 	b	.L9693e
 .L96906:
-	bl	Func_809abb4
+	bl	Field_Halt
 	b	.L9693e
 .L9690c:
 	ldr	r2, =0xcb8
@@ -121,28 +121,28 @@
 	mov	r3, #0x18
 	ldrsh	r0, [r5, r3]
 	mov	r1, r7
-	bl	Func_8097540
+	bl	Field_MindRead
 	b	.L9693e
 .L96928:
-	bl	Func_80983a0
+	bl	Field_Reveal
 	b	.L9693e
 .L9692e:
-	bl	Func_8099838
+	bl	Field_Cloak
 	b	.L9693e
 .L96934:
-	bl	Func_809b208
+	bl	Field_Retreat
 	b	.L9693e
 .L9693a:
-	bl	Func_809b698
+	bl	Field_Avoid
 .L9693e:
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8096810
+.func_end FieldMove_NoTarget
 
-.thumb_func_start Func_8096960
+.thumb_func_start FieldMove_Target  @ 0x08096960
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r6, [r3]
@@ -193,7 +193,7 @@
 	bl	Func_80984c0
 .L969dc:
 	ldr	r1, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r1
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
@@ -209,38 +209,38 @@
 	mov	r2, #0x18
 	ldrsh	r0, [r6, r2]
 	mov	r1, r5
-	bl	Func_8097540
+	bl	Field_MindRead
 	b	.L96a92
 .L96a02:
 	mov	r0, r5
-	bl	Func_8097c3c
+	bl	Field_Move_Target
 	b	.L96a92
 .L96a0a:
 	mov	r0, r5
-	bl	Func_8098848
+	bl	Field_Lift_Target
 	b	.L96a92
 .L96a12:
 	mov	r0, r5
-	bl	Func_8099da4
+	bl	Field_Carry_Target
 	b	.L96a92
 .L96a1a:
 	mov	r0, r5
-	bl	Func_8098ccc
+	bl	Field_Force_Target
 	b	.L96a92
 .L96a22:
 	mov	r0, r5
-	bl	Func_80999e4
+	bl	Field_Douse_Target
 	b	.L96a92
 .L96a2a:
 	mov	r0, r5
-	bl	Func_8099128
+	bl	Field_Frost_Target
 	b	.L96a92
 .L96a32:
 	mov	r0, r5
-	bl	Func_80985a8
+	bl	Field_Growth_Target
 	b	.L96a92
 .L96a3a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x24a
 	add	r6, r3, r1
 	mov	r2, #0
@@ -257,38 +257,38 @@
 	bl	Func_809ad90
 	strh	r5, [r6]
 	mov	r0, r5
-	bl	Func_809ab98
+	bl	Field_Halt_Target
 	b	.L96a92
 .L96a64:
 	mov	r0, r5
-	bl	Func_80994c0
+	bl	Field_Ply_Target
 	b	.L96a92
 .L96a6c:
 	mov	r0, r5
-	bl	Func_809a8b8
+	bl	Field_Whirlwind_Target
 	b	.L96a92
 .L96a74:
 	mov	r0, r5
-	bl	Func_809ae58
+	bl	Field_Catch_Target
 	b	.L96a92
 .L96a7c:
-	bl	Func_80983a0
+	bl	Field_Reveal
 	b	.L96a92
 .L96a82:
-	bl	Func_8099838
+	bl	Field_Cloak
 	b	.L96a92
 .L96a88:
-	bl	Func_809b208
+	bl	Field_Retreat
 	b	.L96a92
 .L96a8e:
-	bl	Func_809b698
+	bl	Field_Avoid
 .L96a92:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8096960
+.func_end FieldMove_Target
 
-.thumb_func_start Func_8096ab0
+.thumb_func_start Func_8096ab0  @ 0x08096ab0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r5, [r3]
@@ -298,7 +298,7 @@
 	bne	.L96adc
 	bl	Func_8097608
 	ldr	r2, =0x24a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r3, r2
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
@@ -316,7 +316,7 @@
 	bx	r0
 .func_end Func_8096ab0
 
-.thumb_func_start Func_8096af0
+.thumb_func_start Func_8096af0  @ 0x08096af0
 	push	{lr}
 	ldr	r3, =iwram_3001f30
 	ldr	r3, [r3]
@@ -346,7 +346,7 @@
 	bx	r0
 .func_end Func_8096af0
 
-.thumb_func_start Func_8096b28
+.thumb_func_start Func_8096b28  @ 0x08096b28
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r2
@@ -360,13 +360,13 @@
 	lsl	r2, #9
 	cmp	r3, r2
 	bge	.L96b5a
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r6
 	mov	r1, #0
-	bl	Func_8092f84
-	bl	Func_8091750
+	bl	ActorMessage
+	bl	CutsceneEnd
 	b	.L96b60
 .L96b5a:
 	mov	r1, r6
@@ -374,14 +374,14 @@
 .L96b60:
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L96b7c
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, =0x927
 	mov	r1, #1
 	bl	_Func_801776c
-	bl	Func_8091750
+	bl	CutsceneEnd
 .L96b7c:
 	mov	r0, #0
 	pop	{r5, r6}
@@ -389,7 +389,7 @@
 	bx	r1
 .func_end Func_8096b28
 
-.thumb_func_start Func_8096b88
+.thumb_func_start Func_8096b88  @ 0x08096b88
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -421,7 +421,7 @@
 	mov	r2, r10
 	ldr	r0, [r2]
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldmia	r7!, {r5}
 	sub	r6, #1
 	strb	r0, [r5, #5]

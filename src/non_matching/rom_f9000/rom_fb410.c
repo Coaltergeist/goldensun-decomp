@@ -1,4 +1,4 @@
-/* Func_80fb410(track)  [rom_f9000]
+/* ClearModM(track)  [rom_f9000]
  * Source asm: goldensun/asm/rom_f9000/rom_f9ef8_c_c_a.s
  *
  * Logic is a faithful 1:1 of the expected disassembly (clears track[0x1a] and
@@ -10,7 +10,7 @@
  *     materialized after the cmp in the ROM, before it here).
  * A good permuter seed; the structure is right, only the shape is off.
  */
-void Func_80fb410(unsigned char *track) {
+void ClearModM(unsigned char *track) {
     unsigned char v;
 
     track[0x1a] = 0;

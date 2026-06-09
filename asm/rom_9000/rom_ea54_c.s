@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800ea60
+.thumb_func_start Func_800ea60  @ 0x0800ea60
 	push	{r5, r6, r7, lr}
 	ldr	r7, =0x3fff
 	ldr	r3, =iwram_3001ebc
@@ -8,7 +8,7 @@
 	and	r7, r0
 	ldr	r0, =0x107
 	ldr	r5, [r3]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lea82
 	mov	r3, #0xc1
@@ -73,7 +73,7 @@
 	bx	r1
 .func_end Func_800ea60
 
-.thumb_func_start Func_800eaf8
+.thumb_func_start Func_800eaf8  @ 0x0800eaf8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
@@ -81,7 +81,7 @@
 	mov	r0, #0
 	cmp	r1, #0
 	beq	.Leb80
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r2, #0x85
 	lsl	r2, #2
 	ldr	r0, =gKeyPress
@@ -154,7 +154,7 @@
 	bx	r1
 .func_end Func_800eaf8
 
-.thumb_func_start Func_800eba0
+.thumb_func_start Func_800eba0  @ 0x0800eba0
 	push	{r5, r6, lr}
 	ldmia	r0!, {r4}
 	ldmia	r2!, {r5}

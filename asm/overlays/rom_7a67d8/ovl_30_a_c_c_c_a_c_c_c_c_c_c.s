@@ -6,7 +6,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0x7b
 	ldr	r5, [r3]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0xb6
 	lsl	r3, #1
 	add	r5, r3

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8091560
+.thumb_func_start GetSpriteVoiceEntry  @ 0x08091560
 	push	{lr}
 	mov	r2, r0
 	ldr	r0, =.L9e9f0
@@ -20,7 +20,7 @@
 .L9157c:
 	pop	{r1}
 	bx	r1
-.func_end Func_8091560
+.func_end GetSpriteVoiceEntry
 
 	.section .rodata
 	.global .L9e8ee

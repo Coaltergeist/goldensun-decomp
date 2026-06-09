@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_921_200816c
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -15,7 +15,7 @@
 	mov	r0, r5
 	bl	__Func_808b868
 	ldr	r0, =0x881
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1ac
 	mov	r3, #0x83
@@ -36,10 +36,10 @@
 	b	.L1c0
 .L1b0:
 	ldr	r0, =0x881
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1be
-	ldr	r0, =.L2a58
+	ldr	r0, =gOvl_0200aa58
 	b	.L1c0
 .L1be:
 	ldr	r0, =.L29e0

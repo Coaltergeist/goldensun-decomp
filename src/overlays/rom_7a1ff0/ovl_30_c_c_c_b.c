@@ -6,7 +6,7 @@
  * goldensun/overlays/rom_7a1ff0/overlay.ld.
  */
 extern int iwram_3001ebc;
-extern int __Func_8079338(int id);
+extern int __GetFlag(int id);
 extern void OvlFunc_914_2008cb4(int x);
 extern void OvlFunc_914_20088c0(int x);
 extern void OvlFunc_914_2008abc(int x);
@@ -16,13 +16,13 @@ int OvlFunc_914_2008a68(void) {
 
     base = (unsigned char *)iwram_3001ebc;
     *(int *)(base + 0x1c0) = 0x204;
-    if (__Func_8079338(0xfd3) == 0) {
+    if (__GetFlag(0xfd3) == 0) {
         OvlFunc_914_2008cb4(0xb);
     }
     OvlFunc_914_20088c0(8);
     OvlFunc_914_20088c0(9);
     OvlFunc_914_20088c0(0xa);
-    if (__Func_8079338(0x845) == 0) {
+    if (__GetFlag(0x845) == 0) {
         OvlFunc_914_2008abc(0xb);
     }
     return 0;

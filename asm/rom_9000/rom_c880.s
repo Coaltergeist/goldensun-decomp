@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c880
+.thumb_func_start Func_800c880  @ 0x0800c880
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -18,7 +18,7 @@
 	ldr	r5, =0x2c4
 	mov	r0, #0x34
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -49,16 +49,16 @@
 	sub	r1, r3
 	asr	r1, #16
 	asr	r0, #16
-	bl	Func_80044d0
+	bl	atan2
 	mov	r3, #0
 	mov	r2, r8
 	lsl	r0, #16
 	asr	r0, #16
 	strh	r3, [r2]
 	mov	r9, r0
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, =0x16b
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lc910
 	ldr	r3, =0xffffe000
@@ -68,12 +68,12 @@
 	bl	_call_via_r3
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_80051e8
+	bl	MatrixLook
 	b	.Lc918
 .Lc910:
 	mov	r0, r5
 	mov	r1, r6
-	bl	Func_80051d8
+	bl	MatrixSetLook
 .Lc918:
 	ldr	r3, =iwram_3001e64
 	ldr	r3, [r3]
@@ -115,7 +115,7 @@
 	str	r3, [r6, #4]
 	ldr	r0, =0x16b
 	ldr	r5, [r7, #0x38]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lc972
 	mov	r2, r11
@@ -140,7 +140,7 @@
 	str	r3, [r4, #4]
 	ldr	r0, =0x16b
 	str	r4, [sp, #4]
-	bl	_Func_8079338
+	bl	_GetFlag
 	ldr	r4, [sp, #4]
 	cmp	r0, #0
 	beq	.Lc9a6
@@ -185,7 +185,7 @@
 	cmp	r3, #0
 	bge	.Lc930
 	mov	r0, #0x34
-	bl	Func_8002dd8
+	bl	gfree
 	add	sp, #0x34
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

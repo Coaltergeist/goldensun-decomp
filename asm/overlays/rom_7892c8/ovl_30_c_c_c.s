@@ -1,10 +1,10 @@
 	.include "macros.inc"
 
 	.section .data
-	.global .L3740
-	.global .L381c
-	.global .L38f8
-	.global .L3a9c
+	.global ActorCmd_ARRAY_888__0200b740
+	.global gScript_888__0200b81c
+	.global gScript_888__0200b8f8
+	.global gScript_888__0200ba9c
 	.global .L3bf4
 	.global .L3c0c
 	.global .L3c9c
@@ -21,21 +21,22 @@
 	.global .L4080
 	.global .L40ec
 	.global .L411c
-	.global .L415c
-	.global .L418c
-	.global .L3aa8
+	.global gScript_888__0200c15c
+	.global gScript_888__0200c18c
+	.global gOvl_0200baa8
 
-.L3740:
+ActorCmd_ARRAY_888__0200b740:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3740, (0x381c-0x3740)
-.L381c:
+gScript_888__0200b81c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x381c, (0x38f8-0x381c)
-.L38f8:
+gScript_888__0200b8f8:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x38f8, (0x3a9c-0x38f8)
-.L3a9c:
+gScript_888__0200ba9c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3a9c, (0x3aa8-0x3a9c)
-.L3aa8:
+gOvl_0200baa8:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3aa8, (0x3bc8-0x3aa8)
-.L3bc8:
+	.global gOvl_0200bbc8
+gOvl_0200bbc8:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3bc8, (0x3bf4-0x3bc8)
 .L3bf4:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3bf4, (0x3c0c-0x3bf4)
@@ -69,7 +70,7 @@
 	.incbin "overlays/rom_7892c8/orig.bin", 0x40ec, (0x411c-0x40ec)
 .L411c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x411c, (0x415c-0x411c)
-.L415c:
+gScript_888__0200c15c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x415c, (0x418c-0x415c)
-.L418c:
+gScript_888__0200c18c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x418c

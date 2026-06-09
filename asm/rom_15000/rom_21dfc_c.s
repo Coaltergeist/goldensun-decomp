@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80228e4
+.thumb_func_start Func_80228e4  @ 0x080228e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -29,7 +29,7 @@
 	sub	r6, #2
 .L22916:
 	ldrh	r0, [r5]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0x80
 	and	r3, r2
@@ -107,7 +107,7 @@
 	mov	r11, r2
 .L229a4:
 	ldrh	r0, [r5]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r2, [r0, #1]
 	mov	r3, #0x80
 	and	r3, r2
@@ -188,7 +188,7 @@
 	bx	r1
 .func_end Func_80228e4
 
-.thumb_func_start Func_8022a38
+.thumb_func_start Func_8022a38  @ 0x08022a38
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -198,7 +198,7 @@
 	mov	r10, r1
 	mov	r7, r2
 	mov	r6, r3
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	cmp	r5, #0x60
 	beq	.L22a6c

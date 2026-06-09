@@ -5,11 +5,11 @@
  * asm/overlays/rom_7c5efc/ovl_30_c_c_a.o and asm/overlays/rom_7c5efc/ovl_30_c_c_c.o in
  * goldensun/overlays/rom_7c5efc/overlay.ld.
  */
-extern int __Func_8092b94();
+extern int __MessageID();
 extern int __Func_8092c40();
 
 unsigned int OvlFunc_941_200934c(void) {
-    __Func_8092b94(0x255d);
+    __MessageID(0x255d);
     __Func_8092c40(1, 0);
     return 1;
 }

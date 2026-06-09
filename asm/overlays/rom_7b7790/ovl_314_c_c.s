@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_929_2008328
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -28,7 +28,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -40,21 +40,21 @@
 	b	.L39e
 .L37e:
 	ldr	r0, =0x895
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L390
 	ldr	r0, =0x1817
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L396
 .L390:
 	ldr	r0, =0x1a46
-	bl	__Func_8092b94
+	bl	__MessageID
 .L396:
 	mov	r0, #0xe
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L39e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -65,7 +65,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -77,21 +77,21 @@
 	b	.L3fe
 .L3de:
 	ldr	r0, =0x895
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L3f0
 	ldr	r0, =0x1819
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L3f6
 .L3f0:
 	ldr	r0, =0x1a48
-	bl	__Func_8092b94
+	bl	__MessageID
 .L3f6:
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L3fe:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -102,7 +102,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -114,23 +114,23 @@
 	b	.L466
 .L43e:
 	ldr	r0, =0x895
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L458
 	ldr	r0, =0x181b
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	b	.L466
 .L458:
 	ldr	r0, =0x1a4a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0
 	bl	__Func_8093054
 .L466:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -141,7 +141,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffffe000
 	add	r5, r3
 	mov	r3, #0xc0
@@ -154,21 +154,21 @@
 	b	.L4c8
 .L4a8:
 	ldr	r0, =0x895
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L4ba
 	ldr	r0, =0x181d
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L4c0
 .L4ba:
 	ldr	r0, =0x1a4e
-	bl	__Func_8092b94
+	bl	__MessageID
 .L4c0:
 	mov	r0, #0x11
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L4c8:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -176,35 +176,35 @@
 
 .thumb_func_start OvlFunc_929_20084e4
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1a3a
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_20084e4
 
 .thumb_func_start OvlFunc_929_2008504
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1a40
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xc
 	bl	__Func_8093054
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_2008504
 
 .thumb_func_start OvlFunc_929_2008524
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x1a64
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0x14
@@ -214,24 +214,24 @@
 	mov	r0, #9
 	bl	__Func_809280c
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #9
 	bl	__Func_809280c
 	mov	r0, #0x14
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #9
 	mov	r1, #0
-	bl	__Func_8092f84
-	bl	__Func_8091750
+	bl	__ActorMessage
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_929_2008524
 
 .thumb_func_start OvlFunc_929_2008570
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -257,7 +257,7 @@
 	add	r3, r2
 	add	r2, #0x49
 	str	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	sub	r2, #0x47
 	add	r3, r2
 	mov	r2, #0
@@ -295,10 +295,10 @@
 	cmp	r3, #8
 	bne	.L5fc
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r0, #0xa
 	mov	r1, #6
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L5fc:
 	mov	r0, #0
 	pop	{r5}
@@ -307,11 +307,12 @@
 .func_end OvlFunc_929_2008598
 
 	.section .data
-	.global .L778
+	.global gOvl_02008778
 
-.L778:
+gOvl_02008778:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x778, (0x868-0x778)
-.L868:
+	.global gOvl_02008868
+gOvl_02008868:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x868, (0x890-0x868)
 .L890:
 	.incbin "overlays/rom_7b7790/orig.bin", 0x890, (0x9c8-0x890)

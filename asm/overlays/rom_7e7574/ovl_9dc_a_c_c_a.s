@@ -7,21 +7,21 @@
 	mov	r0, #0xc
 	lsl	r1, #9
 	lsl	r2, #8
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r2, #0xbc
 	mov	r1, #0xf8
 	lsl	r2, #1
 	mov	r0, #0xc
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, #0xc
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0xd7
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	bl	OvlFunc_959_2008b4c
 	ldr	r0, =0x943
-	bl	__Func_8079358
+	bl	__SetFlag
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_959_2008bac
@@ -49,7 +49,7 @@
 	neg	r0, r0
 	bl	__Func_8012330
 	mov	r0, #0x90
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0x16
 	str	r3, [sp, #4]
 	mov	r5, #0xf
@@ -73,14 +73,14 @@
 	cmp	r5, #0
 	beq	.Lc62
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, r5
 	add	r2, #0x23
 	mov	r3, #2
 	strb	r3, [r2]
 .Lc62:
 	ldr	r0, =0x943
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lc68:
 	add	sp, #8
 	pop	{r5}
@@ -95,7 +95,7 @@
 	mov	r0, #0xc
 	lsl	r1, #16
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	bl	OvlFunc_959_2008b4c
 	pop	{r0}
 	bx	r0
@@ -144,7 +144,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xea
 	ldr	r5, [r3]
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r6, #1
 	neg	r6, r6
 	cmp	r0, r6
@@ -157,7 +157,7 @@
 	ldr	r0, =0x941
 	mov	r5, r7
 	sub	r5, #0x28
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Ld10
 	cmp	r5, #4
@@ -166,7 +166,7 @@
 	mov	r0, r5
 	bl	OvlFunc_959_2008c90
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -181,7 +181,7 @@
 	mov	r3, #0xca
 	lsl	r3, #2
 	add	r0, r7, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 .Ld40:
 	pop	{r5, r6, r7}
 	pop	{r0}
@@ -250,7 +250,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xea
 	ldr	r5, [r3]
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r6, #1
 	neg	r6, r6
 	cmp	r0, r6
@@ -264,7 +264,7 @@
 	sub	r0, #0x28
 	bl	OvlFunc_959_2008d54
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -279,7 +279,7 @@
 	ldr	r3, =0x32d
 	add	r5, r3
 	mov	r0, r5
-	bl	__Func_8079358
+	bl	__SetFlag
 .Le1c:
 	pop	{r5, r6}
 	pop	{r0}
@@ -329,7 +329,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xea
 	ldr	r5, [r3]
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r6, #1
 	neg	r6, r6
 	cmp	r0, r6
@@ -343,7 +343,7 @@
 	sub	r0, #0x28
 	bl	OvlFunc_959_2008e30
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -358,7 +358,7 @@
 	mov	r3, #0xcc
 	lsl	r3, #2
 	add	r0, r5, r3
-	bl	__Func_8079358
+	bl	__SetFlag
 .Led0:
 	pop	{r5, r6}
 	pop	{r0}
@@ -408,7 +408,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0xea
 	ldr	r5, [r3]
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r6, #1
 	neg	r6, r6
 	cmp	r0, r6
@@ -422,7 +422,7 @@
 	sub	r0, #0x28
 	bl	OvlFunc_959_2008ee0
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xc0
 	mov	r1, #0xc0
 	mov	r2, #0x80
@@ -437,7 +437,7 @@
 	ldr	r3, =0x332
 	add	r5, r3
 	mov	r0, r5
-	bl	__Func_8079358
+	bl	__SetFlag
 .Lf80:
 	pop	{r5, r6}
 	pop	{r0}
@@ -447,7 +447,7 @@
 .thumb_func_start OvlFunc_959_2008f94
 	push	{lr}
 	mov	r0, #0xea
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3

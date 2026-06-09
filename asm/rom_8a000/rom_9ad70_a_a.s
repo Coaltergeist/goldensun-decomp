@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809ad70
+.thumb_func_start Func_809ad70  @ 0x0809ad70
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r5, =.L9f160
@@ -9,18 +9,18 @@
 	lsr	r0, #16
 	ldrsb	r1, [r5, r0]
 	mov	r0, r6
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
 .func_end Func_809ad70
 
-.thumb_func_start Func_809ad90
+.thumb_func_start Func_809ad90  @ 0x0809ad90
 	push	{lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9add6
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r3, #0x94
 	lsl	r3, #2
 	add	r2, r1, r3
@@ -49,15 +49,15 @@
 	mov	r3, #1
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L9add6:
 	pop	{r0}
 	bx	r0
 .func_end Func_809ad90
 
-.thumb_func_start Func_809ade8
+.thumb_func_start Func_809ade8  @ 0x0809ade8
 	push	{r5, lr}
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L9ae28
@@ -65,7 +65,7 @@
 	ldr	r3, =Func_809ad70
 	cmp	r2, r3
 	bne	.L9ae18
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r3, #0x94
 	lsl	r3, #2
 	add	r1, r2, r3
@@ -77,7 +77,7 @@
 	add	r2, r3
 	mov	r1, #0
 	ldrsb	r1, [r2, r1]
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 .L9ae18:
 	mov	r2, r5
 	add	r2, #0x5b
@@ -85,17 +85,17 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L9ae28:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
 .func_end Func_809ade8
 
-.thumb_func_start Func_809ae3c
+.thumb_func_start Func_809ae3c  @ 0x0809ae3c
 	push	{r5, lr}
 	mov	r5, r0
-	bl	Func_80915dc
+	bl	MapActor_GetName
 	cmp	r0, #0xff
 	bne	.L9ae4e
 	mov	r0, #1

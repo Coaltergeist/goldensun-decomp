@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f2028
+.thumb_func_start Func_80f2028  @ 0x080f2028
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -58,7 +58,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -127,7 +127,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -168,7 +168,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -241,7 +241,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -310,7 +310,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x10
@@ -381,7 +381,7 @@
 	mov	r0, r9
 	mul	r0, r3
 	mov	r1, #0x50
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r10
 	mov	r5, r0
 	sub	r5, #0x20
@@ -548,7 +548,7 @@
 	bx	r0
 .func_end Func_80f2028
 
-.thumb_func_start Func_80f24a0
+.thumb_func_start LoadGS1TitleGFX  @ 0x080f24a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -571,11 +571,11 @@
 	mov	r3, #0x80
 	lsl	r3, #2
 	mov	r8, r3
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r8
 	mov	r1, r5
 	mov	r0, r4
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	ldr	r3, =REG_DMA3SAD
 	b	.Lf24fc
 
@@ -605,7 +605,7 @@
 	strh	r6, [r3]
 	mov	r1, r5
 	mov	r0, r4
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r1, #0xc0
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =ewram_2012940
@@ -799,9 +799,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f24a0
+.func_end LoadGS1TitleGFX
 
-.thumb_func_start Func_80f26ec
+.thumb_func_start StartTitleScreen  @ 0x080f26ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -818,25 +818,25 @@
 	mov	r1, #0xe0
 	mov	r0, #0x2b
 	str	r3, [sp, #4]
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r8, r0
-	bl	Func_8004760
-	bl	Func_800403c
+	bl	ClearVRAM
+	bl	ClearSprites
 	mov	r0, #1
-	bl	Func_80030f8
-	bl	Func_80040e8
+	bl	WaitFrames
+	bl	ClearTasks
 	add	r1, sp, #8
 	ldrb	r1, [r1]
 	ldr	r3, =iwram_3001d18
 	mov	r2, r1
 	strb	r1, [r3]
 	strb	r2, [r5]
-	bl	Func_80f24a0
+	bl	LoadGS1TitleGFX
 	bl	Func_80f377c
 	mov	r1, #0
 	mov	r0, #2
 	bl	Func_80f3824
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -906,7 +906,7 @@
 	ldr	r5, [r1, #0xc]
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #0
 	bne	.Lf280a
 	mov	r0, r10
@@ -980,7 +980,7 @@
 	strh	r2, [r3]
 	sub	r0, r1
 	mov	r1, #0xa0
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r1, r0, #4
 	sub	r1, r0
 	ldr	r2, =0x6004ec0
@@ -1061,7 +1061,7 @@
 	mov	r2, r9
 	strb	r2, [r3]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =REG_BG2CNT
 	ldr	r3, .Lf2978	@ 0x681
 	strh	r3, [r2]
@@ -1082,7 +1082,7 @@
 	sub	r3, #0xc
 	mov	r2, #0x80
 	lsl	r2, #2
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r3, #0xa0
 	add	r4, r2
 	lsl	r3, #19
@@ -1101,7 +1101,7 @@
 
 .Lf29a0:
 	mov	r1, r5
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x6004000
@@ -1115,7 +1115,7 @@
 	b	.Lf29ea
 .Lf29bc:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lf278e
 .Lf29c4:
 	mov	r6, #0
@@ -1142,28 +1142,28 @@
 	cmp	r7, #0x13
 	bls	.Lf29c4
 	bl	Func_800479c
-	bl	Func_8004760
+	bl	ClearVRAM
 	ldr	r1, [sp, #0xc]
 	cmp	r1, #0
 	beq	.Lf2a40
 	mov	r1, #0x80
 	lsl	r1, #3
 	mov	r0, #0xe
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r6, r0
 	mov	r1, r6
 	ldr	r0, =.Lf38bc
-	bl	Func_80053e8
+	bl	DecompressLZ1
 	mov	r5, r8
 	add	r5, #0x80
 	mov	r7, #0
 .Lf2a16:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	lsl	r2, r7, #8
 	lsr	r2, #1
 	add	r2, r6, r2
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r2, r5
 	mov	r3, #0
 	stmia	r2!, {r3}
@@ -1175,7 +1175,7 @@
 	cmp	r7, #4
 	bls	.Lf2a16
 	mov	r0, #0xe
-	bl	Func_8002dd8
+	bl	gfree
 .Lf2a40:
 	mov	r0, #0x1e
 	bl	Func_8003c3c
@@ -1243,7 +1243,7 @@
 	bls	.Lf2aa8
 	mov	r1, #0x3c
 	mov	r0, r7
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, =.Lf39b1
 	b	.Lf2af0
 
@@ -1272,7 +1272,7 @@
 	bne	.Lf2a66
 	mov	r0, #1
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, r9
 	bcc	.Lf2a96
 .Lf2b1c:
@@ -1286,14 +1286,14 @@
 
 .Lf2b38:
 	strb	r1, [r3]
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r2, =0
 	ldr	r3, =REG_BLDCNT
 	strh	r2, [r3]
 	add	r3, #2
 	strh	r2, [r3]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [sp, #8]
 	add	sp, #0x14
 	b	.Lf2b5c
@@ -1309,5 +1309,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80f26ec
+.func_end StartTitleScreen
 

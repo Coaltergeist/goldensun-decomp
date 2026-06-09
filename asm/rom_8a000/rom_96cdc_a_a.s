@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8096cdc
+.thumb_func_start Func_8096cdc  @ 0x08096cdc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -14,7 +14,7 @@
 	mov	r10, r1
 .L96cf0:
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r1, r10
 	mov	r2, #0
 	ldrsh	r3, [r1, r2]
@@ -28,7 +28,7 @@
 	add	r3, #0x5b
 	strb	r7, [r3]
 	mov	r1, r6
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L96d14:
 	add	r5, #1
 	cmp	r5, #0x42
@@ -41,7 +41,7 @@
 	bx	r0
 .func_end Func_8096cdc
 
-.thumb_func_start Func_8096d2c
+.thumb_func_start Func_8096d2c  @ 0x08096d2c
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, r5
@@ -56,11 +56,11 @@
 	ble	.L96d4e
 	ldr	r1, =Data_9f0b0
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	b	.L96d78
 .L96d4e:
 	lsl	r0, #10
-	bl	Func_8002322
+	bl	sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -85,7 +85,7 @@
 	bx	r0
 .func_end Func_8096d2c
 
-.thumb_func_start Func_8096d84
+.thumb_func_start Func_8096d84  @ 0x08096d84
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r2, r5
@@ -100,11 +100,11 @@
 	ble	.L96da6
 	ldr	r1, =Data_9f0b0
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	b	.L96dd2
 .L96da6:
 	lsl	r0, #10
-	bl	Func_8002322
+	bl	sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -130,7 +130,7 @@
 	bx	r0
 .func_end Func_8096d84
 
-.thumb_func_start Func_8096ddc
+.thumb_func_start Func_8096ddc  @ 0x08096ddc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -156,7 +156,7 @@
 	ldr	r3, [r6, #0x10]
 	ldr	r2, [r6, #0xc]
 	mov	r0, #0x1a
-	bl	_Func_800c150
+	bl	_CreateActor
 	lsl	r3, r7, #2
 	mov	r1, r9
 	str	r0, [r3, r1]
@@ -189,7 +189,7 @@
 .L96e4c:
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	mov	r3, r5
 	add	r3, #0x26
 	mov	r2, r8
@@ -205,7 +205,7 @@
 	orr	r3, r2
 	strb	r3, [r5, #0x1d]
 	ldrb	r3, [r5, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r1, [r3, #2]

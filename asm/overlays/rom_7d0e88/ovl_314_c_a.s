@@ -51,7 +51,7 @@
 	ldr	r3, [r0, #0x10]
 	lsl	r1, r2, #4
 	str	r3, [r5, #0x10]
-	ldr	r0, =.L2cf8
+	ldr	r0, =gScript_884__0200acf8
 	add	r3, r1, #4
 	ldr	r2, [r0, r3]
 	cmp	r2, #0
@@ -156,7 +156,7 @@
 	bl	__Func_8010704
 	mov	r0, r7
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, r7
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -175,7 +175,7 @@
 	add	r3, #2
 	mov	r0, #0x46
 	mov	r1, #0x28
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	b	.Lf4c
 .Lf38:
 	ldr	r2, [r6, #8]
@@ -186,7 +186,7 @@
 	add	r3, #2
 	mov	r0, #0x44
 	mov	r1, #0x28
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 .Lf4c:
 	mov	r0, #1
 .Lf4e:
@@ -239,7 +239,7 @@
 	bl	OvlFunc_947_2008528
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, r7
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -352,7 +352,7 @@
 	mov	r6, r0
 	str	r1, [sp, #4]
 	mov	r9, r1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, [r6, #8]
 	ldr	r2, [r6, #0x10]
 	mov	r0, #2
@@ -452,7 +452,7 @@
 	cmp	r3, #0
 	beq	.L1158
 	mov	r0, r9
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 .L1158:
 	ldr	r0, [sp, #4]
 	add	sp, #8
@@ -480,7 +480,7 @@
 	cmp	r6, #0x1f
 	bhi	.L11ac
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, [r5, #0x1c]
 	ldr	r1, =0xffffe667
 	ldr	r3, [r5, #0xc]
@@ -550,7 +550,7 @@
 	lsl	r0, #16
 	add	r0, r3
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r3, =0x90001
 	mov	r2, r10
 	ldr	r1, [r2, #0xc]
@@ -596,7 +596,7 @@
 	mov	r9, r2
 	and	r7, r3
 	mov	r2, #0xf9
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldrb	r3, [r3]
@@ -622,10 +622,10 @@
 	mov	r2, r6
 	mov	r1, r7
 	str	r3, [r6, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #1
 	beq	.L1396
 	mov	r0, r6
@@ -650,7 +650,7 @@
 	mov	r1, r7
 	mov	r2, r6
 	str	r3, [r6, #8]
-	bl	__Func_800447c
+	bl	__vec3_translate
 	mov	r0, r6
 	mov	r1, r5
 	bl	OvlFunc_947_2008350
@@ -658,20 +658,20 @@
 	bne	.L1396
 	mov	r0, r5
 	mov	r1, r6
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bne	.L1396
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r1, #6
 	mov	r0, r5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #6
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0x98
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r5
 	mov	r1, #7
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #0xc0
 	lsl	r3, #10
 	str	r3, [r5, #0x30]
@@ -689,7 +689,7 @@
 	strb	r3, [r1]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r2, #2
 	ldrsh	r1, [r6, r2]
 	mov	r0, #0
@@ -698,14 +698,14 @@
 	bl	__Func_8092158
 	mov	r0, r5
 	mov	r1, #6
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, r9
 	mov	r2, r10
 	strb	r1, [r2]
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	mov	r0, #1
 	b	.L1398
 .L1396:
@@ -743,18 +743,18 @@
 	str	r3, [r5, #0x10]
 	mov	r0, r6
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	sub	r6, r0
 	str	r6, [r5, #0x44]
 	mov	r0, r8
 	mov	r1, #3
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r3, r8
 	sub	r3, r0
 	str	r3, [r5, #0x48]
 	mov	r0, r10
 	mov	r1, #0xa
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, r10
 	sub	r2, r0
 	str	r2, [r5, #0x4c]

@@ -11,10 +11,10 @@
 	lsl	r2, #2
 	str	r2, [r3]
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L178c
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r2
@@ -25,7 +25,7 @@
 	bne	.L178c
 	mov	r0, #0xa2
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	OvlFunc_922_20097a8
 	b	.L1790
 .L178c:
@@ -38,23 +38,23 @@
 
 .thumb_func_start OvlFunc_922_20097a8
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
-	bl	__Func_8091dc8
+	bl	__Actor_SetSpriteFlags
+	bl	__MapTransitionIn
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #10
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0x84
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xc4
 	bl	__Func_8092158
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_922_20097a8
@@ -63,7 +63,7 @@
 	push	{r5, r6, r7, lr}
 	sub	sp, #8
 	bl	OvlFunc_922_2009948
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r6, r1
@@ -73,7 +73,7 @@
 	cmp	r2, r3
 	bne	.L1852
 	ldr	r0, =0xf13
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L181a
 	mov	r2, #0xe1
@@ -85,7 +85,7 @@
 	bne	.L181a
 	bl	OvlFunc_922_2009b1c
 .L181a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -158,7 +158,7 @@
 	mov	r3, #0
 	str	r3, [r5, #0x18]
 .L18b2:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -168,7 +168,7 @@
 	bgt	.L191e
 	mov	r0, #0x82
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L18f4
 	mov	r3, #1
@@ -178,7 +178,7 @@
 	mov	r1, #0x39
 	mov	r2, #0x13
 	mov	r3, #0x39
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r2, #7
 	mov	r3, #8
 	str	r2, [sp, #4]
@@ -186,7 +186,7 @@
 	mov	r1, #8
 	mov	r2, #0xc
 	str	r3, [sp]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	b	.L191e
 .L18f4:
 	ldr	r3, =iwram_3001ebc
@@ -205,7 +205,7 @@
 	mov	r0, #1
 	bl	__Func_8091254
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .L191e:
 	add	sp, #8
 	pop	{r5, r6, r7}
@@ -215,7 +215,7 @@
 
 .thumb_func_start OvlFunc_922_2009948
 	push	{lr}
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r0, #0xe0
 	lsl	r0, #1
 	add	r3, r1, r0
@@ -326,7 +326,7 @@
 	mov	r1, #0xb6
 	ldr	r3, [r3]
 	lsl	r1, #1
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	add	r3, r1
 	add	r1, #0x54
 	mov	r2, #0
@@ -361,7 +361,7 @@
 	cmp	r6, #0x19
 	bne	.L1a94
 	ldr	r0, =0x309
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1a94
 	mov	r0, #0

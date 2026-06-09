@@ -5,8 +5,7 @@
  * rom_a1000/src/rom_aa538_a.o and rom_a1000/src/rom_aa538_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_b1c_from_thumb(unsigned int);
 
-unsigned int Func_80aa538(unsigned int arg0, unsigned int arg1) {
-    return Func_b1c_from_thumb(arg0 + arg1);
+int Func_80aa538(int arg0, int arg1) {
+    return (arg0 + arg1) % arg1;
 }

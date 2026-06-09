@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80d1714
+.thumb_func_start Anim_Procne  @ 0x080d1714
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -26,14 +26,14 @@
 	str	r0, [r3]
 	mov	r0, #0
 	mov	r8, r3
-	bl	Func_80cd594
+	bl	AnimStart
 	mov	r6, #2
 	mov	r1, #7
 	mov	r2, #7
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r7, [r5, #0x18]
 	mov	r3, #3
 	mov	r1, #7
@@ -41,7 +41,7 @@
 	mov	r0, #0x2f
 	str	r7, [sp, #0x54]
 	str	r3, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	ldr	r5, [r5, #0x1c]
 	ldr	r0, =_FILE_82
 	str	r5, [sp, #0x58]
@@ -56,11 +56,11 @@
 	add	r5, #0x80
 	ldr	r1, [sp, #0x5c]
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_73
 	bl	GetFile
 	ldr	r1, [sp, #0x4c]
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r1, #0xef
 	ldr	r0, [sp, #0x5c]
 	lsl	r1, #7
@@ -72,7 +72,7 @@
 	mov	r3, #0x32
 	str	r3, [r2]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	mov	r1, r8
 	ldr	r3, [r1]
@@ -116,7 +116,7 @@
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
 	str	r4, [sp, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	ldr	r3, [r5, #8]
 	str	r3, [r6]
@@ -128,7 +128,7 @@
 	str	r3, [r4, r2]
 	ldr	r1, [r5, #0x10]
 	ldr	r0, [r5, #8]
-	bl	Func_80044d0
+	bl	atan2
 	ldr	r4, [sp, #8]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -193,7 +193,7 @@
 	str	r4, [sp, #0x50]
 	str	r5, [sp, #0x24]
 .Ld18a8:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -214,15 +214,15 @@
 	ldr	r3, =0x18b
 	str	r3, [sp, #0x50]
 .Ld18ce:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x60]
 	ldr	r1, [sp, #0x24]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r4, [sp, #0x50]
 	cmp	r4, #0x10
 	bne	.Ld18e6
 	mov	r0, #0x8d
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld18e6:
 	mov	r7, #0x80
 	ldr	r5, [sp, #0x50]
@@ -230,7 +230,7 @@
 	cmp	r5, r7
 	bne	.Ld18f6
 	mov	r0, #0x8c
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld18f6:
 	mov	r1, #0xa7
 	ldr	r0, [sp, #0x50]
@@ -238,21 +238,21 @@
 	cmp	r0, r1
 	bne	.Ld1906
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld1906:
 	ldr	r2, [sp, #0x50]
 	ldr	r3, =0x15b
 	cmp	r2, r3
 	bne	.Ld1914
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld1914:
 	ldr	r4, [sp, #0x50]
 	ldr	r5, =0x167
 	cmp	r4, r5
 	bne	.Ld1922
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld1922:
 	mov	r0, #0xba
 	ldr	r7, [sp, #0x50]
@@ -260,7 +260,7 @@
 	cmp	r7, r0
 	bne	.Ld1932
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Ld1932:
 	ldr	r2, =0x7828
 	ldr	r4, [sp, #0x5c]
@@ -289,13 +289,13 @@
 	add	r3, #0x24
 	ldrsh	r0, [r2, r3]
 	str	r4, [sp, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r4, [sp, #8]
 	add	r6, sp, #0x144
 	ldr	r5, [r0]
 	ldr	r0, [r6, r4]
 	mov	r10, r4
-	bl	Func_8002322
+	bl	sin
 	mov	r1, #0x92
 	ldr	r4, [sp, #8]
 	lsl	r1, #1
@@ -306,7 +306,7 @@
 	str	r3, [r5, #8]
 	ldr	r0, [r6, r4]
 	mov	r8, r1
-	bl	Func_800231c
+	bl	cos
 	ldr	r4, [sp, #8]
 	mov	r2, r8
 	ldr	r3, [r2, r4]
@@ -459,7 +459,7 @@
 .Ld1aca:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x30
 	sub	r2, r3, r5
 	lsl	r1, r0, #1
@@ -500,7 +500,7 @@
 .Ld1b1a:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0x40
 	sub	r3, r5
 	lsl	r1, r0, #1
@@ -532,7 +532,7 @@
 .Ld1b5a:
 	mov	r1, #3
 	asr	r0, #2
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r5, r0, #1
 	add	r5, r0
 	ldr	r7, [sp, #0x5c]
@@ -577,7 +577,7 @@
 	bne	.Ld1c80
 	ldr	r0, [r6, #0x10]
 	str	r4, [sp, #8]
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, [r6, #8]
 	mul	r3, r0
 	mov	r5, r8
@@ -585,7 +585,7 @@
 	ldr	r3, [r6, #4]
 	str	r3, [r5, #4]
 	ldr	r0, [r6, #0x10]
-	bl	Func_800231c
+	bl	cos
 	ldr	r3, [r6, #8]
 	mul	r3, r0
 	add	r7, sp, #0x8c
@@ -686,7 +686,7 @@
 	mov	r0, #1
 	mov	r1, r5
 	mov	r2, #0
-	bl	_Func_80c08ec
+	bl	_AnimTransitionIn
 	mov	r1, r5
 	mov	r2, #8
 	mov	r0, #1
@@ -700,7 +700,7 @@
 	lsl	r1, #1
 	mov	r2, #2
 	mov	r0, #9
-	bl	Func_80dbb24
+	bl	CreateSummonSprite
 	ldr	r0, =_FILE_88
 	bl	GetFile
 	mov	r5, r0
@@ -716,7 +716,7 @@
 	add	r5, #0x80
 	add	r1, r2, r3
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r4, #0
 	mov	r2, #0x80
 	ldr	r3, =ewram_2010018
@@ -744,7 +744,7 @@
 .Ld1d1a:
 	ldr	r3, [r6]
 	ldrsh	r0, [r3, r7]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r5, [r0]
 	bl	Random
 	mov	r3, #0xf
@@ -760,7 +760,7 @@
 	cmp	r9, r3
 	bne	.Ld1d1a
 .Ld1d40:
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x48
 	str	r3, [r2, #0xc]
 	ldr	r5, [sp, #0x5c]
@@ -780,18 +780,18 @@
 	and	r5, r0
 	add	r5, r1
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r6
 	mul	r3, r0
 	mov	r0, r5
 	str	r3, [r7]
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r6
 	mul	r3, r0
 	str	r3, [r7, #4]
 	bl	Random
 	mov	r1, #0xc8
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r2, #1
 	mov	r3, #0
 	sub	r0, #0x64
@@ -848,7 +848,7 @@
 .Ld1dee:
 	mov	r1, r10
 	lsl	r0, r1, #7
-	bl	Func_8002322
+	bl	sin
 	ldr	r2, [sp, #0x44]
 	lsl	r0, #5
 	asr	r0, #6
@@ -856,7 +856,7 @@
 	mov	r3, r10
 	str	r0, [sp, #0x44]
 	lsl	r0, r3, #9
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r5
 	mul	r3, r0
 	ldr	r4, [sp, #0x48]
@@ -921,7 +921,7 @@
 	mov	r3, #0
 	mov	r1, r6
 	str	r4, [sp, #8]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	mov	r3, #1
 	mov	r2, #0x80
 	add	r9, r3
@@ -944,9 +944,9 @@
 	str	r2, [r5]
 	str	r2, [r5, #4]
 	mov	r10, r2
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r5
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	ldr	r4, =0x149
 	ldr	r3, [sp, #0x50]
 	cmp	r3, r4
@@ -1017,7 +1017,7 @@
 .Ld1f42:
 	mov	r1, #0x24
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #6
 	sub	r4, r3, r0
 	lsl	r0, r4, #1
@@ -1041,19 +1041,19 @@
 	ldr	r5, [r6]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6]
 	ldr	r5, [r6, #4]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #4]
 	ldr	r5, [r6, #8]
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	sub	r5, r0
 	str	r5, [r6, #8]
 	b	.Ld1fe4
@@ -1077,7 +1077,7 @@
 	ble	.Ld2030
 	mov	r1, #0xa
 	mov	r0, r10
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r4, r0, #1
 	lsl	r0, r4, #1
 	ldr	r2, =Data_ede48
@@ -1113,7 +1113,7 @@
 	ldr	r4, [sp, #0x50]
 	cmp	r4, r3
 	bne	.Ld20b0
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r5, #0
 	mov	r9, r5
 	add	r7, r10
@@ -1127,14 +1127,14 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	add	r6, #0x10
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #6
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r6
 	mul	r3, r0
 	neg	r3, r3
@@ -1169,7 +1169,7 @@
 	blt	.Ld2156
 	mov	r5, #0
 	mov	r9, r5
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 .Ld20be:
 	ldr	r3, [r5, #0x18]
 	cmp	r3, #0
@@ -1204,7 +1204,7 @@
 .Ld20fa:
 	mov	r1, #0x5a
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #3
 	sub	r4, r3, r0
 	lsl	r0, r4, #1
@@ -1360,9 +1360,9 @@
 	cmp	r5, r3
 	bge	.Ld230a
 	ldr	r0, =0xfffff800
-	bl	Func_8004c6c
+	bl	MatrixRoll
 	ldr	r0, =0xfffff000
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	add	r0, sp, #0x98
 	ldr	r1, [sp, #0x18]
 	ldr	r2, [sp, #0x1c]
@@ -1384,13 +1384,13 @@
 	mov	r3, #0
 	str	r3, [r1]
 	ldr	r0, [sp, #0x20]
-	bl	Func_800231c
+	bl	cos
 	ldr	r3, [r5, #0x18]
 	mul	r3, r0
 	mov	r2, r8
 	str	r3, [r2, #4]
 	ldr	r0, [sp, #0x20]
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, [r5, #0x18]
 	mul	r3, r0
 	mov	r4, r8
@@ -1436,7 +1436,7 @@
 .Ld22c4:
 	mov	r1, #0x5a
 	sub	r0, #0xaa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #3
 	sub	r4, r3, r0
 	lsl	r0, r4, #1
@@ -1495,7 +1495,7 @@
 	mov	r3, #1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, [sp, #0x50]
 	mov	r7, #0xc8
 	add	r5, #1
@@ -1524,7 +1524,7 @@
 	ldr	r3, [r6]
 	ldrsh	r0, [r3, r1]
 	str	r1, [sp, #0xc]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r3, [r5]
 	ldr	r2, [r0]
 	str	r3, [r2, #8]
@@ -1542,7 +1542,7 @@
 	cmp	r9, r3
 	bne	.Ld2376
 .Ld23a0:
-	ldr	r2, =iwram_3001ce0
+	ldr	r2, =gPhysVec
 	mov	r3, #0x78
 	str	r3, [r2, #0xc]
 	b	.Ld23fc
@@ -1558,19 +1558,19 @@
 	add	r5, r2, r3
 .Ld240a:
 	ldmia	r5!, {r0}
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r4, #1
 	add	r9, r4
 	mov	r7, r9
 	cmp	r7, #9
 	bne	.Ld240a
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x164
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1580,7 +1580,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d1714
+.func_end Anim_Procne
 
 	.section .rodata
 

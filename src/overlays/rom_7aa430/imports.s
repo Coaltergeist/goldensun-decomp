@@ -1,58 +1,58 @@
 	.include "macros.inc"
 
-	.export_func Func_8000af0
-	.export_func Func_8000b50
-	.export_func _Func_80030f8
+	.export_func divsi3_RAM
+	.export_func umodsi3_RAM
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _Random
-	.export_func _Func_80044d0
-	.export_func _Func_80045d4
-	.export_func _Func_8002322
-	.export_func _Func_800231c
-	.export_func _Func_800447c
-	.export_func _Func_80048f4
-	.export_func _Func_800ba30
-	.export_func _Func_800c300
-	.export_func _Func_800c2d8
-	.export_func _Func_800c150
-	.export_func _Func_800c0f4
+	.export_func _atan2
+	.export_func _FastIntSqrtFP1616_RAM
+	.export_func _sin
+	.export_func _cos
+	.export_func _vec3_translate
+	.export_func _galloc_ewram
+	.export_func _Sprite_SetAnim
+	.export_func _Actor_SetAnim
+	.export_func _Actor_SetScript
+	.export_func _CreateActor
+	.export_func _DeleteActor
 	.export_func _Func_800fe9c
-	.export_func _Func_800d14c
-	.export_func _Func_800ca6c
-	.export_func _Func_8010424
+	.export_func _Actor_TravelTo
+	.export_func _Actor_WaitMovement
+	.export_func _CopyMapTiles
 	.export_func _Func_8010704
-	.export_func _Func_80120dc
-	.export_func _Func_800c528
+	.export_func _TestCollision
+	.export_func _Actor_SetSpriteFlags
 	.export_func _Func_800c548
 	.export_func _Func_8012330
 	.export_func _Func_8012350
 	.export_func _Func_801776c
 	.export_func _Func_8019aa0
-	.export_func _Func_8079338
-	.export_func _Func_8079358
-	.export_func _Func_8079374
-	.export_func _Func_809163c
-	.export_func _Func_80916b0
-	.export_func _Func_8091750
+	.export_func _GetFlag
+	.export_func _SetFlag
+	.export_func _ClearFlag
+	.export_func _CutsceneWait
+	.export_func _CutsceneStart
+	.export_func _CutsceneEnd
 	.export_func _MapActor_GetActor
-	.export_func _Func_8092064
-	.export_func _Func_809207c
+	.export_func _MapActor_SetSpeed
+	.export_func _MapActor_SetBehavior
 	.export_func _Func_8092158
 	.export_func _Func_809218c
 	.export_func _Func_80921c4
 	.export_func _Func_809228c
-	.export_func _Func_80923c4
-	.export_func _Func_80923e4
-	.export_func _Func_80924d4
-	.export_func _Func_8092548
+	.export_func _MapActor_WaitMovement
+	.export_func _MapActor_SetPos
+	.export_func _MapActor_SetAnim
+	.export_func _MapActor_DoAnim
 	.export_func _Func_80925cc
 	.export_func _Func_809280c
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
-	.export_func _Func_80937b8
-	.export_func _Func_8093874
+	.export_func _MapActor_Emote
+	.export_func _MapActor_Surprise
 	.export_func _Func_80933d4
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
@@ -63,12 +63,12 @@
 	.export_func _Func_8091200
 	.export_func _Func_8091220
 	.export_func _Func_8091254
-	.export_func _Func_8091dc8
-	.export_func _Func_8091df4
-	.export_func _Func_8091e20
-	.export_func _Func_808ba1c
+	.export_func _MapTransitionIn
+	.export_func _MapTransitionOut
+	.export_func _WaitMapTransition
+	.export_func _GetFieldActor
 	.export_func _Func_8091494
 	.export_func _Func_8092304
 	.export_func _Func_8091ff0
 	.export_func _Func_809202c
-	.export_func _Func_80f9080
+	.export_func _PlaySound

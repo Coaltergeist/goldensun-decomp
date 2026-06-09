@@ -1,23 +1,23 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f2b70
+.thumb_func_start NintendoLogo  @ 0x080f2b70
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
 	mov	r0, #0x6e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, =iwram_3001d18
 	mov	r3, #1
 	strb	r3, [r2]
 	ldr	r5, =0x18
-	bl	Func_80040e8
+	bl	ClearTasks
 	mov	r0, #1
 	bl	Func_8003b70
-	bl	Func_8004760
+	bl	ClearVRAM
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =REG_BG2CNT
 	ldr	r3, .Lf2bd0	@ 0x681
 	strh	r3, [r2]
@@ -39,7 +39,7 @@
 	sub	r3, #0xc
 	mov	r3, #0xe0
 	lsl	r3, #1
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r3
 	mov	r1, r5
 	mov	r0, r4
@@ -53,7 +53,7 @@
 	.pool
 
 .Lf2bf8:
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x6004000
@@ -102,7 +102,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bl	Func_800479c
-	bl	Func_8004760
+	bl	ClearVRAM
 	ldr	r3, .Lf2c80	@ 0x1540
 	mov	r2, #0x80
 	lsl	r2, #19
@@ -128,7 +128,7 @@
 .Lf2ca4:
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x77
 	bhi	.Lf2d42
 	ldr	r3, =gKeyPress
@@ -151,7 +151,7 @@
 .Lf2cce:
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x3b
 	bhi	.Lf2cea
 	ldr	r3, =gKeyPress
@@ -185,7 +185,7 @@
 .Lf2d10:
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0xb3
 	bhi	.Lf2d2c
 	ldr	r3, =gKeyPress
@@ -216,9 +216,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80f2b70
+.func_end NintendoLogo
 
-.thumb_func_start Func_80f2d54
+.thumb_func_start CamelotLogo  @ 0x080f2d54
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -226,12 +226,12 @@
 	mov	r3, #1
 	strb	r3, [r2]
 	ldr	r6, =0x19
-	bl	Func_80040e8
+	bl	ClearTasks
 	mov	r0, #1
 	bl	Func_8003b70
-	bl	Func_8004760
+	bl	ClearVRAM
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, =REG_BG2CNT
 	ldr	r3, .Lf2db0	@ 0x685
 	strh	r3, [r2]
@@ -241,12 +241,12 @@
 	ldr	r3, =iwram_3001ad0
 	mov	r5, #0
 	strh	r5, [r3, #0xa]
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r0, r6
 	mov	r8, r3
 	bl	GetFile
 	mov	r1, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	mov	r6, r5
 	mov	r1, #0xa0
 	ldr	r3, =REG_DMA3SAD
@@ -303,7 +303,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	bl	Func_800479c
-	bl	Func_8004760
+	bl	ClearVRAM
 	mov	r0, #1
 	bl	Func_8003c3c
 	bl	Func_8003ce0
@@ -328,7 +328,7 @@
 .Lf2e68:
 	mov	r0, #1
 	add	r5, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0x77
 	bhi	.Lf2e98
 	ldr	r3, =iwram_3001e40
@@ -357,5 +357,5 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80f2d54
+.func_end CamelotLogo
 

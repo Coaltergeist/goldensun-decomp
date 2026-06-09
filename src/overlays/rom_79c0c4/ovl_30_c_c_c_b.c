@@ -5,19 +5,19 @@
  * asm/overlays/rom_79c0c4/ovl_30_c_c_c_a.o and asm/overlays/rom_79c0c4/ovl_30_c_c_c_c.o in
  * goldensun/overlays/rom_79c0c4/overlay.ld.
  */
-extern void __Func_80916b0(void);
-extern int __Func_8079338(int);
-extern void __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneStart(void);
+extern int __GetFlag(int);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_908_2008490(void) {
-    __Func_80916b0();
-    if (__Func_8079338(3)) {
-        __Func_8092b94(0x146f);
+    __CutsceneStart();
+    if (__GetFlag(3)) {
+        __MessageID(0x146f);
     } else {
-        __Func_8092b94(0x13d9);
+        __MessageID(0x13d9);
     }
-    __Func_8092f84(0xa, 0);
-    __Func_8091750();
+    __ActorMessage(0xa, 0);
+    __CutsceneEnd();
 }

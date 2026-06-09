@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092208
+.thumb_func_start Func_8092208  @ 0x08092208
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -8,7 +8,7 @@
 	mov	r7, r0
 	mov	r8, r1
 	mov	r10, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L92280
@@ -27,11 +27,11 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r0, r6
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	lsl	r5, #16
 	mov	r0, r6
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	asr	r5, #16
 	mov	r3, #8
 	ldr	r1, [r6, #8]
@@ -41,9 +41,9 @@
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r6
-	bl	_Func_800ca6c
+	bl	_Actor_WaitMovement
 	mov	r0, r7
 	mov	r1, r8
 	bl	Func_8092b08
@@ -54,7 +54,7 @@
 	add	r3, r0
 	ldr	r2, [r6, #0xc]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .L92280:
 	pop	{r3, r5}
 	mov	r8, r3

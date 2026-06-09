@@ -1,12 +1,12 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003fa4
+.thumb_func_start UploadSpriteGFX  @ 0x08003fa4
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r5, r0
-	ldr	r3, =iwram_3001b10
+	ldr	r3, =gSpriteSlots
 	mov	r8, r2
 	lsl	r2, r5, #2
 	mov	r6, r1
@@ -73,12 +73,12 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8003fa4
+.func_end UploadSpriteGFX
 
-.thumb_func_start Func_800403c
+.thumb_func_start ClearSprites  @ 0x0800403c
 	push	{lr}
 	ldr	r0, =0x1ff
-	ldr	r3, =iwram_3001810
+	ldr	r3, =gSpriteAllocTable
 	mov	r1, #0
 	mov	r2, #0xff
 .L4046:
@@ -87,7 +87,7 @@
 	add	r3, #1
 	cmp	r1, r0
 	bls	.L4046
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	ldr	r4, .L405c	@ 0xffff
 	mov	r1, #0
 	mov	r0, #0
@@ -109,11 +109,11 @@
 	bls	.L406c
 	pop	{r0}
 	bx	r0
-.func_end Func_800403c
+.func_end ClearSprites
 
-.thumb_func_start Func_8004080
+.thumb_func_start AllocSpriteSlot  @ 0x08004080
 	push	{lr}
-	ldr	r1, =iwram_3001b10
+	ldr	r1, =gSpriteSlots
 	ldr	r4, =0xffff
 	ldrh	r3, [r1, #2]
 	mov	r0, #0x60
@@ -135,19 +135,19 @@
 .L40a6:
 	pop	{r1}
 	bx	r1
-.func_end Func_8004080
+.func_end AllocSpriteSlot
 
-.thumb_func_start Func_80040b4
+.thumb_func_start AllocUploadSpriteGFX  @ 0x080040b4
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r1, r6
 	mov	r2, #0
 	mov	r5, r0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, r5
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_80040b4
+.func_end AllocUploadSpriteGFX
 

@@ -3,44 +3,44 @@
 	.global	Exports_8a000
 Exports_8a000:
 
-	.export_func Func_808c4f8
-	.export_func Func_808a8e4
-	.export_func Func_809163c
-	.export_func Func_80916b0
-	.export_func Func_8091750
+	.export_func FieldMain
+	.export_func GameStart
+	.export_func CutsceneWait
+	.export_func CutsceneStart
+	.export_func CutsceneEnd
 	.export_func Func_8091780
-	.export_func Func_80917ac
+	.export_func LoadFieldActors
 	.export_func Func_808b868
-	.export_func Func_80917c4
+	.export_func SetMapEvents
 	.export_func Func_80917d0
 	.export_func Func_80917f4
 	.export_func Func_8091890
 	.export_func Func_8091a58
 	.export_func Func_8091c1c
 	.export_func Func_8091c7c
-	.export_func Func_8091d94
+	.export_func LearnInnateMove
 	.export_func MapActor_GetActor
-	.export_func Func_8092924
-	.export_func Func_8092064
-	.export_func Func_809207c
-	.export_func Func_80920e8
-	.export_func Func_80920a0
-	.export_func Func_80920fc
-	.export_func Func_8092128
+	.export_func DeleteFieldActor
+	.export_func MapActor_SetSpeed
+	.export_func MapActor_SetBehavior
+	.export_func MapActor_WaitScript
+	.export_func MapActor_SetIdle
+	.export_func MapActor_RunScript
+	.export_func MapActor_TravelTo
 	.export_func Func_8092158
 	.export_func Func_809218c
 	.export_func Func_80921c4
 	.export_func Func_8092208
 	.export_func Func_809228c
-	.export_func Func_80923c4
-	.export_func Func_80923e4
-	.export_func Func_8092454
-	.export_func Func_80924d4
-	.export_func Func_80924ec
-	.export_func Func_8092548
+	.export_func MapActor_WaitMovement
+	.export_func MapActor_SetPos
+	.export_func MapActor_SetPos3D
+	.export_func MapActor_SetAnim
+	.export_func MapActor_SetAnimSpeed
+	.export_func MapActor_DoAnim
 	.export_func Func_8092504
 	.export_func Func_809255c
-	.export_func Func_8092560
+	.export_func MapActor_Jump
 	.export_func Func_809259c
 	.export_func Func_80925cc
 	.export_func Func_8092708
@@ -49,9 +49,9 @@ Exports_8a000:
 	.export_func Func_8092950
 	.export_func Func_80929d8
 	.export_func Func_8092a1c
-	.export_func Func_8092b94
+	.export_func MessageID
 	.export_func Func_8092c40
-	.export_func Func_8092f84
+	.export_func ActorMessage
 	.export_func Func_8093040
 	.export_func Func_8093054
 	.export_func Func_80930b8
@@ -64,45 +64,45 @@ Exports_8a000:
 	.export_func Func_80931ec
 	.export_func Func_8093304
 	.export_func Func_8092b08
-	.export_func Func_80937b8
-	.export_func Func_8093874
+	.export_func MapActor_Emote
+	.export_func MapActor_Surprise
 	.export_func Func_8092b54
-	.export_func Func_809335c
+	.export_func SetCameraTarget
 	.export_func Func_80933d4
 	.export_func Func_80933f8
 	.export_func Func_8093530
 	.export_func Func_8093500
 	.export_func Func_8093554
 	.export_func Func_80935b0
-	.export_func Func_8091e3c
-	.export_func Func_8091e6c
+	.export_func SetDestMap
+	.export_func SetRespawnMap
 	.export_func Func_8091e9c
 	.export_func Func_8091eb0
 	.export_func Func_8091f14
 	.export_func Func_8091f90
 	.export_func Func_8091fa8
-	.export_func Func_8091fc0
+	.export_func SetDestMap2
 	.export_func Func_8094154
 	.export_func Func_808ce74
 	.export_func Func_808b398
-	.export_func Func_8097c3c
-	.export_func Func_8099838
+	.export_func Field_Move_Target
+	.export_func Field_Cloak
 	.export_func Func_8093c00
 	.export_func Func_8093e28
 	.export_func Func_8093fa0
 	.export_func Func_8091660
-	.export_func Func_8094ac8
-	.export_func Func_8095160
+	.export_func StartRain
+	.export_func StartThunder
 	.export_func Func_8095214
 	.export_func Func_8095240
 	.export_func Func_8095268
-	.export_func Func_8095290
-	.export_func Func_8094da0
-	.export_func Func_809509c
+	.export_func StartThunder2
+	.export_func StartSnow
+	.export_func StartEarthquake
 	.export_func Func_808fe38
 	.export_func Func_8090824
-	.export_func Func_808fefc
-	.export_func Func_80901c0
+	.export_func ScreenTransitionIn
+	.export_func ScreenTransitionOut
 	.export_func Func_8090378
 	.export_func Func_8091174
 	.export_func Func_8091200
@@ -111,9 +111,9 @@ Exports_8a000:
 	.export_func Func_8091254
 	.export_func Func_80911e8
 	.export_func Func_8091240
-	.export_func Func_8091dc8
-	.export_func Func_8091df4
-	.export_func Func_8091e20
+	.export_func MapTransitionIn
+	.export_func MapTransitionOut
+	.export_func WaitMapTransition
 	.export_func Func_8094730
 	.export_func Func_80947e4
 	.export_func Func_808e078
@@ -128,14 +128,14 @@ Exports_8a000:
 	.export_func Func_808ee0c
 	.export_func Func_808c44c
 	.export_func Func_808c4c0
-	.export_func Func_808b674
-	.export_func Func_808b3ec
-	.export_func Func_808b64c
-	.export_func Func_808ba1c
+	.export_func InitMapActors
+	.export_func LoadMapActors
+	.export_func DeleteMapActor
+	.export_func GetFieldActor
 	.export_func Func_8091494
 	.export_func Func_8091540
 	.export_func Func_8091550
-	.export_func Func_80967e4
+	.export_func FieldMove
 	.export_func Func_8096fb0
 	.export_func Func_80970f8
 	.export_func Func_8097174
@@ -144,7 +144,7 @@ Exports_8a000:
 	.export_func Func_8097384
 	.export_func Func_809748c
 	.export_func Func_808e118
-	.export_func Func_8097540
+	.export_func Field_MindRead
 	.export_func Func_8097608
 	.export_func Func_8097a7c
 	.export_func Func_8097adc
@@ -159,9 +159,9 @@ Exports_8a000:
 	.export_func Func_808c30c
 	.export_func Func_8096c24
 	.export_func Func_8091d84
-	.export_func Func_808b05c
+	.export_func GetEncounterGroup
 	.export_func Func_808b074
-	.export_func Func_808acc4
+	.export_func PlayMapMusic
 	.export_func Func_80955b0
 	.export_func Func_809b804
 	.export_func Func_809ba34
@@ -171,7 +171,7 @@ Exports_8a000:
 	.export_func Func_809ba90
 	.export_func Func_809bb34
 	.export_func Func_80974d8
-	.export_func Func_80915ac
+	.export_func GetSpriteVoice
 	.export_func Func_8091858
 	.export_func Func_80958a8
 	.export_func Func_80958e4
@@ -180,7 +180,7 @@ Exports_8a000:
 	.export_func Func_809233c
 	.export_func Func_80922c4
 	.export_func Func_8092304
-	.export_func Func_80920c0
+	.export_func MapActor_SetExtra
 	.export_func Func_809ad90
 	.export_func Func_809ade8
 	.export_func Func_8092be0
@@ -189,8 +189,8 @@ Exports_8a000:
 	.export_func Func_808bb2c
 	.export_func Func_80936a0
 	.export_func Func_8093710
-	.export_func Func_808b158
-	.export_func Func_8093a6c
+	.export_func GetLocationName
+	.export_func Actor_SetBehavior
 	.export_func Func_8091ff0
 	.export_func Func_809202c
 	.export_func Func_808b3d0

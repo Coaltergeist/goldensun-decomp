@@ -100,7 +100,7 @@
 	cmp	r3, #0
 	bne	.L44e
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #1
 	b	.L4ea
 .L448:
@@ -130,7 +130,7 @@
 	ldr	r1, [r7]
 	ldr	r3, [r2]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldr	r3, =0xfffff000
 	lsl	r0, #16
 	mov	r2, #0x80
@@ -157,7 +157,7 @@
 	mov	r1, #2
 	strb	r6, [r3]
 	mov	r0, r5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, r9
 	strh	r6, [r1]
 	b	.L4e8
@@ -167,7 +167,7 @@
 	strb	r3, [r2]
 	mov	r1, #1
 	mov	r0, r5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, #1
 	str	r3, [sp]
 	mov	r1, sp
@@ -180,7 +180,7 @@
 	strb	r6, [r2]
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r3, r9
 	strh	r6, [r3]
 .L4e8:

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80064b8
+.thumb_func_start Func_80064b8  @ 0x080064b8
 	push	{r5, lr}
 	ldr	r3, =ewram_2002080
 	ldr	r3, [r3]
@@ -9,7 +9,7 @@
 	b	.L64d4
 .L64c2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =0x927bf
 	add	r5, #1
 	cmp	r5, r3

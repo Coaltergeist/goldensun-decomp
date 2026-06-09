@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a414c
+.thumb_func_start Func_80a414c  @ 0x080a414c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -125,7 +125,7 @@
 	b	.La427a
 .La4248:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	neg	r3, r3
 	ldr	r1, =0x25d
@@ -134,12 +134,12 @@
 .La4258:
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	lsl	r0, #24
 	asr	r7, r0, #24
 	mov	r1, #3
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	lsl	r0, #24
 	asr	r0, #24
 	mov	r8, r0
@@ -167,7 +167,7 @@
 	add	r0, r7, #3
 	mov	r9, r1
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, r8
 	add	r2, #2
 	lsr	r3, r2, #31
@@ -245,7 +245,7 @@
 	mov	r0, r5
 	bl	Func_80a1a40
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r5, =gKeyPress
 	ldr	r2, [r5]
 	mov	r3, #1
@@ -260,7 +260,7 @@
 	cmp	r3, r1
 	bne	.La4372
 	mov	r0, #0x72
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La43c8
 .La4372:
 	mov	r2, r10
@@ -280,23 +280,23 @@
 	.word	.La43a8
 .La4398:
 	mov	r0, #0xae
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La43be
 .La43a0:
 	mov	r0, #0xaf
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La43be
 .La43a8:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La43be
 .La43b0:
 	mov	r0, #0x75
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La43be
 .La43b8:
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 .La43be:
 	ldr	r1, =0x25d
 .La43c0:
@@ -312,7 +312,7 @@
 	beq	.La43d4
 	b	.La4248
 .La43d4:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
 	and	r2, r3
@@ -323,7 +323,7 @@
 	mov	r0, #0x6f
 	add	r8, r3
 	mov	r9, r1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La4436
 .La43f0:
 	ldr	r2, [r1]
@@ -335,7 +335,7 @@
 	mov	r0, #0x6f
 	add	r8, r2
 	mov	r9, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La4436
 .La4408:
 	ldr	r2, [r1]
@@ -347,7 +347,7 @@
 	mov	r0, #0x6f
 	add	r7, #1
 	mov	r9, r3
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.La4436
 .La4420:
 	ldr	r3, [r1]
@@ -359,11 +359,11 @@
 	mov	r0, #0x6f
 	sub	r7, #1
 	mov	r9, r1
-	bl	_Func_80f9080
+	bl	_PlaySound
 .La4436:
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.La4446
@@ -387,7 +387,7 @@
 	bx	r1
 .func_end Func_80a414c
 
-.thumb_func_start Func_80a448c
+.thumb_func_start Func_80a448c  @ 0x080a448c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -400,7 +400,7 @@
 	mov	r5, r0
 	ldr	r0, =0x1ff
 	and	r0, r3
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #2]
 	mov	r8, r0
 	cmp	r3, #0
@@ -457,7 +457,7 @@
 	sub	r1, #0x1b
 	ldrb	r0, [r3]
 	and	r1, r2
-	bl	_Func_807842c
+	bl	_CanEquipItem
 	cmp	r0, #0
 	bne	.La4520
 	mov	r2, #1
@@ -549,14 +549,14 @@
 	bx	r0
 .func_end Func_80a448c
 
-.thumb_func_start Func_80a45cc
+.thumb_func_start Func_80a45cc  @ 0x080a45cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r5, r0
 	mov	r0, #0xf
 	mov	r6, r1
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r2, #1
 	neg	r2, r2
 	mov	r3, #0
@@ -565,7 +565,7 @@
 	cmp	r3, r8
 	bne	.La45f0
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La45f0:
 	ldr	r7, =0xb33
 	mov	r3, #0x18
@@ -574,13 +574,13 @@
 	mov	r2, #0
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #1
 	ldrsb	r3, [r5, r3]
 	cmp	r3, r8
 	bne	.La4612
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La4612:
 	mov	r3, #0x18
 	add	r0, r7, #1
@@ -588,13 +588,13 @@
 	mov	r2, #0x20
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #3
 	ldrsb	r3, [r5, r3]
 	cmp	r3, r8
 	bne	.La4632
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La4632:
 	mov	r3, #0x20
 	add	r0, r7, #2
@@ -602,13 +602,13 @@
 	mov	r2, #0
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #5
 	ldrsb	r3, [r5, r3]
 	cmp	r3, r8
 	bne	.La4652
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La4652:
 	mov	r3, #0x20
 	add	r0, r7, #3
@@ -616,13 +616,13 @@
 	mov	r2, #0x50
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #2
 	ldrsb	r3, [r5, r3]
 	cmp	r3, r8
 	bne	.La4672
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La4672:
 	mov	r3, #0x18
 	add	r0, r7, #4
@@ -630,13 +630,13 @@
 	mov	r2, #0x50
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	mov	r3, #4
 	ldrsb	r3, [r5, r3]
 	cmp	r3, r8
 	bne	.La4692
 	mov	r0, #0xe
-	bl	_Func_801e71c
+	bl	_SetTextColor
 .La4692:
 	add	r0, r7, #5
 	mov	r1, r6
@@ -644,7 +644,7 @@
 	mov	r3, #0x20
 	bl	_Func_801e7c0
 	mov	r0, #0xf
-	bl	_Func_801e71c
+	bl	_SetTextColor
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
@@ -652,7 +652,7 @@
 	bx	r0
 .func_end Func_80a45cc
 
-.thumb_func_start Func_80a46b4
+.thumb_func_start Func_80a46b4  @ 0x080a46b4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -662,7 +662,7 @@
 	and	r6, r3
 	mov	r10, r0
 	mov	r0, r6
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r7, #1
 	mov	r5, r0
 	mov	r0, r6
@@ -676,7 +676,7 @@
 	ldrh	r3, [r5, #0x28]
 	ldr	r0, =0x3fff
 	and	r0, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrh	r3, [r5, #0x28]
 	mov	r8, r0
 	cmp	r3, #0
@@ -689,7 +689,7 @@
 	beq	.La470a
 	mov	r0, r10
 	mov	r1, r6
-	bl	_Func_807842c
+	bl	_CanEquipItem
 	cmp	r0, #0
 	beq	.La470a
 .La4708:
@@ -733,7 +733,7 @@
 	bx	r1
 .func_end Func_80a46b4
 
-.thumb_func_start Func_80a4754
+.thumb_func_start Func_80a4754  @ 0x080a4754
 	push	{r5, lr}
 	ldr	r3, =iwram_3001f2c
 	mov	r2, #0xbc
@@ -743,7 +743,7 @@
 	ldrh	r3, [r3]
 	ldr	r0, =0x1ff
 	and	r0, r3
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldrb	r3, [r0, #0xc]
 	cmp	r3, #2
 	bne	.La479e
@@ -758,9 +758,9 @@
 	ldrb	r0, [r3]
 	add	r3, r5, r2
 	ldrh	r1, [r3]
-	bl	_Func_8078a34
+	bl	_BreakItem
 	mov	r0, #0x8a
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	ldr	r0, =0xb86
 	neg	r2, r2

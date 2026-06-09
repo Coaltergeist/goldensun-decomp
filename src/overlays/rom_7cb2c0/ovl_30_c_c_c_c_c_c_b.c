@@ -5,8 +5,8 @@
  * asm/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_a.o and asm/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_c.o in
  * goldensun/overlays/rom_7cb2c0/overlay.ld.
  */
-extern int __Func_8079338(unsigned int arg);
-extern void __Func_80923e4(unsigned int a, int b, int c);
+extern int __GetFlag(unsigned int arg);
+extern void __MapActor_SetPos(unsigned int a, int b, int c);
 
 void OvlFunc_945_200d038(unsigned int arg0, unsigned int arg1)
 {
@@ -17,8 +17,8 @@ void OvlFunc_945_200d038(unsigned int arg0, unsigned int arg1)
     p6 = arg0;
     p5 = arg1;
     for (i = 0; i <= 8; i++, p6++, p5++) {
-        if (__Func_8079338(p5)) {
-            __Func_80923e4(p6, 0, 0);
+        if (__GetFlag(p5)) {
+            __MapActor_SetPos(p6, 0, 0);
             return;
         }
     }

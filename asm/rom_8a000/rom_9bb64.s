@@ -1,15 +1,15 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_809bb64
+.thumb_func_start Func_809bb64  @ 0x0809bb64
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x20
 	sub	sp, #0xc
 	bl	Func_8004970
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r1, r7
 	add	r1, #0x20
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	str	r1, [sp, #4]
 	lsl	r2, #1
@@ -18,7 +18,7 @@
 	ldr	r0, [r3]
 	bl	MapActor_GetActor
 	mov	r6, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r3, #0
 	strh	r0, [r7]
 	add	r0, sp, #8
@@ -61,7 +61,7 @@
 	mov	r1, #0x80
 	mov	r2, r5
 	ldrh	r0, [r7]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r3, #0x80
 	lsl	r3, #3
 	orr	r0, r3
@@ -80,10 +80,10 @@
 	cmp	r2, #0x41
 	bls	.L9bbf0
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9bc22
 	mov	r3, #0xf0
@@ -126,7 +126,7 @@
 	bl	_Func_80209b0
 	strh	r0, [r7, #2]
 	ldrh	r3, [r7, #2]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r5, [r3, #2]
@@ -136,7 +136,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	mov	r0, #0
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r3, =0xffff
 	strh	r3, [r7, #0x12]
 	add	r3, #1
@@ -163,22 +163,22 @@
 	bx	r0
 .func_end Func_809bb64
 
-.thumb_func_start Func_809bcd4
+.thumb_func_start Func_809bcd4  @ 0x0809bcd4
 	push	{r5, lr}
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	ldrh	r0, [r5]
 	bl	Func_8003f3c
 	ldrh	r0, [r5, #2]
 	bl	Func_8003f3c
 	ldr	r0, [r5, #0x1c]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	pop	{r5}
 	pop	{r0}
 	bx	r0
 .func_end Func_809bcd4
 
-.thumb_func_start Func_809bcf8
+.thumb_func_start Func_809bcf8  @ 0x0809bcf8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -186,7 +186,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r5, r3, r0
@@ -195,9 +195,9 @@
 	sub	sp, #0x3c
 	str	r1, [sp, #0x24]
 	str	r2, [sp, #0x20]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldrh	r3, [r0]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]
@@ -214,16 +214,16 @@
 	lsr	r3, #1
 	mov	r2, #0x1f
 	and	r3, r2
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	ldrb	r3, [r1, r3]
 	mov	r0, #0x8e
 	lsl	r0, #1
 	add	r7, #0x20
 	str	r3, [sp, #0x18]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L9bd9c
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	mov	r2, #0xc0
 	ldr	r3, [r1]
 	lsl	r2, #2
@@ -231,7 +231,7 @@
 	cmp	r3, #0
 	beq	.L9bd9e
 	ldr	r0, [r5]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9be2c
 	ldr	r2, [r0, #8]
@@ -262,7 +262,7 @@
 	asr	r0, #12
 	b	.L9be2a
 .L9bd9c:
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 .L9bd9e:
 	ldr	r2, [r1]
 	mov	r1, #0xf
@@ -274,7 +274,7 @@
 	ldr	r2, =0xffff
 	cmp	r1, r2
 	beq	.L9be14
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r3, [r0, #4]
 	add	r5, sp, #0x30
 	mov	r6, #0
@@ -284,7 +284,7 @@
 	str	r3, [r5, #8]
 	mov	r2, r5
 	ldr	r0, [r0, #0x18]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r1, #0x80
 	ldr	r3, [r5]
 	lsl	r1, #13
@@ -313,7 +313,7 @@
 	str	r2, [r5, #8]
 .L9bdf8:
 	ldr	r3, [r5]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	str	r3, [r2, #4]
 	ldr	r3, [r5, #8]
 	mov	r0, #0xc0
@@ -328,15 +328,15 @@
 	b	.L9be1a
 .L9be14:
 	mov	r3, #0x80
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #9
 .L9be1a:
 	str	r3, [r2, #0x18]
 .L9be1c:
-	ldr	r3, =ewram_2010000
+	ldr	r3, =gBuffer
 	mov	r0, #6
 	ldrsh	r3, [r3, r0]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r1, #0xa
 	ldrsh	r0, [r0, r1]
 	mov	r11, r3
@@ -349,11 +349,11 @@
 	.pool_aligned
 
 .L9be58:
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9bf2e
 	mov	r0, r6
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9bf2e
 	ldr	r2, [r0, #8]
@@ -474,7 +474,7 @@
 	bne	.L9bf5c
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L9bf2e
 	mov	r1, #0
@@ -578,7 +578,7 @@
 	mov	r0, r7
 	mov	r1, #0xf6
 	bl	Func_8003dec
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	ldr	r2, [sp, #0x14]
 	mov	r0, #0x12
 	ldrsh	r3, [r1, r0]
@@ -586,7 +586,7 @@
 	beq	.L9c0a8
 	add	r3, sp, #0x14
 	ldrh	r3, [r3]
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	strh	r3, [r0, #0x12]
 	ldr	r0, [r0, #0x1c]
 	b	.L9c040
@@ -608,7 +608,7 @@
 .L9c058:
 	ldr	r0, [sp]
 	mov	r1, #1
-	bl	Func_808b158
+	bl	GetLocationName
 	ldr	r3, =0x99b
 	add	r0, r3
 	str	r0, [sp]
@@ -640,14 +640,14 @@
 	mov	r3, #0
 	mov	r9, r3
 .L9c09a:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	mov	r2, r11
 	ldr	r1, [r0, #0x1c]
 	mov	r3, r9
 	ldr	r0, [sp]
-	bl	_Func_801e74c
+	bl	_DrawSmallText
 .L9c0a8:
-	ldr	r0, =ewram_2002090
+	ldr	r0, =gDMATaskCount
 	ldr	r1, =REG_IME
 	ldrh	r3, [r1]
 	mov	r4, r3
@@ -709,7 +709,7 @@
 	bx	r0
 .func_end Func_809bcf8
 
-.thumb_func_start Func_809c138
+.thumb_func_start Func_809c138  @ 0x0809c138
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -722,7 +722,7 @@
 	mov	r0, #0x1b
 	ldr	r6, [r5]
 	sub	sp, #0x18
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xcf
 	ldr	r1, =0x1b
 	mov	r7, r0
@@ -751,8 +751,8 @@
 	mov	r3, #6
 	str	r1, [sp, #4]
 	str	r3, [r2]
-	bl	Func_8091df4
-	bl	Func_8091e20
+	bl	MapTransitionOut
+	bl	WaitMapTransition
 	mov	r1, r6
 	add	r1, #0x18
 	add	r2, sp, #8
@@ -773,7 +773,7 @@
 	mov	r3, #1
 	strh	r3, [r1, #4]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =REG_BLDALPHA
 	ldrh	r3, [r3]
 	lsl	r3, #16
@@ -794,11 +794,11 @@
 	mov	r2, #0xe0
 	strh	r5, [r3]
 	lsl	r2, #1
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	add	r4, r2
 	mov	r1, r5
 	mov	r0, r4
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x6006a00
@@ -819,18 +819,18 @@
 	bl	StartTask
 	mov	r0, #0x8e
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L9c22e
 	ldr	r0, =0x985
 	mov	r1, #1
 	bl	_Func_801776c
 .L9c22e:
-	ldr	r6, =iwram_3001b04
+	ldr	r6, =gKeyRepeat
 	mov	r5, #3
 .L9c232:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	and	r3, r5
 	cmp	r3, #0
@@ -843,7 +843,7 @@
 	lsl	r3, #19
 	strh	r2, [r3]
 	bl	_Func_8011644
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -883,8 +883,8 @@
 	mov	r3, #0
 	mov	r2, r11
 	strh	r3, [r2, #4]
-	bl	Func_8091dc8
-	bl	Func_8091e20
+	bl	MapTransitionIn
+	bl	WaitMapTransition
 	mov	r1, #0xe4
 	lsl	r1, #1
 	ldr	r2, [sp, #4]
@@ -912,12 +912,12 @@
 	.word	0
 .func_end Func_809c138
 
-.thumb_func_start Func_809c314
+.thumb_func_start Func_809c314  @ 0x0809c314
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -946,7 +946,7 @@
 	mov	r5, #8
 .L9c354:
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L9c382
 	ldr	r3, [r0, #8]
@@ -982,11 +982,11 @@
 	bx	r0
 .func_end Func_809c314
 
-.thumb_func_start Func_809c3a4
+.thumb_func_start Func_809c3a4  @ 0x0809c3a4
 	push	{r5, r6, lr}
 	ldr	r1, =0xccc
 	mov	r0, #0x1b
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r2, #0xcf
 	lsl	r2, #1
 	add	r3, r0, r2
@@ -1000,7 +1000,7 @@
 	mov	r1, #6
 	ldr	r0, =0x9d89
 	bl	Func_80936a0
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	mov	r2, #0x80
 	ldr	r3, [r1]
 	lsl	r2, #2
@@ -1011,7 +1011,7 @@
 	mov	r5, r2
 .L9c3e2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6]
 	and	r3, r5
 	cmp	r3, #0

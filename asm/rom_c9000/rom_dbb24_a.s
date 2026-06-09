@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80dbb24
+.thumb_func_start CreateSummonSprite  @ 0x080dbb24
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -26,7 +26,7 @@
 	mov	r11, r1
 .Ldbb50:
 	mov	r0, r9
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	str	r0, [r5, r7]
 	cmp	r0, #0
 	beq	.Ldbb78
@@ -35,7 +35,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, r6
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r2, [r5, r7]
 	ldrb	r3, [r2, #9]
 	mov	r1, r11
@@ -57,5 +57,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80dbb24
+.func_end CreateSummonSprite
 

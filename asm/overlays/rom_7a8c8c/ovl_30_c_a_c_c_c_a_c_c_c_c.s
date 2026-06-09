@@ -9,7 +9,7 @@
 	mov	r2, r5
 	mov	r1, r4
 	mov	r3, r6
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lf28
@@ -26,7 +26,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	bl	__Func_80929d8
@@ -48,7 +48,7 @@
 
 .thumb_func_start OvlFunc_922_2008f30
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -63,7 +63,7 @@
 	ldr	r3, =0x3e
 	cmp	r2, r3
 	bne	.Lf52
-	ldr	r0, =.L2c08
+	ldr	r0, =gScript_911__0200ac08
 	b	.Lf86
 .Lf52:
 	ldr	r3, =0x3f
@@ -104,16 +104,16 @@
 
 .thumb_func_start OvlFunc_922_2008fcc
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #7
 	strh	r3, [r0, #6]
 	mov	r0, #0x7b
-	bl	__Func_80f9080
-	bl	__Func_8091df4
-	bl	__Func_8091e20
+	bl	__PlaySound
+	bl	__MapTransitionOut
+	bl	__WaitMapTransition
 	mov	r0, #1
 	bl	__Func_8091e9c
 	pop	{r0}

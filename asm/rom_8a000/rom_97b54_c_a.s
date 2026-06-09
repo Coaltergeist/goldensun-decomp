@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8099838
+.thumb_func_start Field_Cloak  @ 0x08099838
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,20 +13,20 @@
 	sub	sp, #8
 	str	r3, [sp, #4]
 	mov	r2, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	ldr	r6, [r5, #0x50]
 	ldr	r3, [r6, #0x28]
 	mov	r0, #0x82
 	mov	r9, r3
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r2, r6
 	mov	r3, #0
 	add	r2, #0x25
@@ -48,13 +48,13 @@
 	strb	r2, [r6]
 	mov	r0, #2
 	strb	r7, [r5]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, r10
 	mov	r2, #0
 	strb	r3, [r6]
 	mov	r0, #2
 	strb	r2, [r5]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	add	r8, r3
 	mov	r2, r8
@@ -75,7 +75,7 @@
 	lsl	r1, #4
 	mov	r0, r5
 	bl	StartTask
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0x93
 	lsl	r2, #2
 	add	r3, r2
@@ -103,9 +103,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8099838
+.func_end Field_Cloak
 
-.thumb_func_start Func_8099920
+.thumb_func_start Func_8099920  @ 0x08099920
 	push	{r5, r6, r7, lr}
 	mov	r6, r0
 	ldr	r2, [r6, #0xc]
@@ -117,7 +117,7 @@
 	mov	r3, #2
 	strh	r3, [r2]
 	ldr	r1, =Data_9f0b0
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r5, #0
 	mov	r7, #0
 	str	r5, [r6, #0x6c]
@@ -150,7 +150,7 @@
 	strh	r3, [r2]
 	mov	r0, r5
 	ldr	r1, =Data_9f0b0
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	add	r7, #1
 .L99984:
 	cmp	r7, #2
@@ -159,7 +159,7 @@
 	ldr	r2, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r0, #0xf0
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.L99942
@@ -169,7 +169,7 @@
 	bx	r0
 .func_end Func_8099920
 
-.thumb_func_start Func_80999a8
+.thumb_func_start Func_80999a8  @ 0x080999a8
 	push	{r5, r6, lr}
 	mov	r6, r0
 	ldr	r2, =0xffffb334
@@ -189,7 +189,7 @@
 	bgt	.L999d6
 	ldr	r1, =Data_9f0b0
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L999d6:
 	pop	{r5, r6}
 	pop	{r0}

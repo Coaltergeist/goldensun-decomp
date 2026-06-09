@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7738
+.thumb_func_start Func_80b7738  @ 0x080b7738
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -23,7 +23,7 @@
 .Lb775e:
 	mov	r3, r10
 	ldrh	r0, [r3, r2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lb77a0
@@ -99,7 +99,7 @@
 	mov	r1, #2
 	ldrh	r0, [r3]
 	add	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lb7848
 	ldr	r5, [r0]
@@ -167,7 +167,7 @@
 	mov	r1, #2
 	ldrh	r0, [r3]
 	add	r8, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lb78c6
 	ldr	r5, [r0]
@@ -227,10 +227,10 @@
 	bx	r0
 .func_end Func_80b7738
 
-.thumb_func_start Func_80b78e4
+.thumb_func_start Func_80b78e4  @ 0x080b78e4
 	push	{r5, lr}
 	mov	r5, r1
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	ldr	r0, =0x131
 	add	r3, r2, r0
@@ -317,7 +317,7 @@
 	bx	r1
 .func_end Func_80b78e4
 
-.thumb_func_start Func_80b7994
+.thumb_func_start Func_80b7994  @ 0x080b7994
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -424,7 +424,7 @@
 	cmp	r3, #0
 	beq	.Lb7a58
 	mov	r0, r7
-	bl	_Func_800b93c
+	bl	_Sprite_DeleteLayer
 	mov	r3, #0
 	str	r3, [r5, #0x20]
 .Lb7a58:
@@ -435,7 +435,7 @@
 	beq	.Lb7a88
 	mov	r0, r7
 	mov	r1, r6
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	mov	r3, #1
 	neg	r3, r3
 	str	r0, [r5, #0x20]
@@ -450,7 +450,7 @@
 	mov	r3, #3
 	strb	r3, [r0, #6]
 	mov	r1, #0
-	bl	_Func_800b9f4
+	bl	_SpriteLayer_SetAnim
 .Lb7a88:
 	mov	r2, r7
 	add	r2, #0x25
@@ -471,10 +471,10 @@
 	bx	r1
 .func_end Func_80b7994
 
-.thumb_func_start Func_80b7aac
+.thumb_func_start Func_80b7aac  @ 0x080b7aac
 	push	{r5, r6, lr}
 	mov	r6, r0
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	mov	r1, #0x38
 	ldrsh	r3, [r2, r1]
@@ -522,17 +522,17 @@
 	sub	r5, r3, r5
 .Lb7b0a:
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r5
 	ldr	r0, [r0]
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, #3
 	and	r1, r6
 	ldr	r0, [r0]
 	add	r1, #0xe
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1

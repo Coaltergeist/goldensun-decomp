@@ -5,7 +5,7 @@
 	mov	r0, #8
 	sub	sp, #8
 	bl	__MapActor_GetActor
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
@@ -24,9 +24,9 @@
 	mov	r3, #1
 	bl	__Func_8010704
 	ldr	r0, =0x9a2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L1138:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0

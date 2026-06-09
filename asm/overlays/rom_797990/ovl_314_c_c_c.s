@@ -5,7 +5,7 @@
 	mov	r0, #0x80
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lf54
 	mov	r3, #0x17
@@ -32,9 +32,9 @@
 	mov	r2, #8
 	mov	r3, #0x2d
 	mov	r0, #0x2d
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	ldr	r5, =OvlFunc_901_2008400
@@ -53,7 +53,7 @@
 	add	r0, #0x64
 	strh	r6, [r0]
 	ldr	r0, =0x858
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.Lfbe
 	mov	r1, #0xd8
@@ -61,9 +61,9 @@
 	mov	r0, #0x12
 	lsl	r1, #16
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .Lfbe:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r3, r1
@@ -72,22 +72,22 @@
 	cmp	r3, #2
 	bgt	.Lfe8
 	mov	r0, #0x34
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lfe8
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.Lfe8
 	ldr	r0, =0x867
-	bl	__Func_8079374
+	bl	__ClearFlag
 .Lfe8:
 	ldr	r0, =0x867
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L100a
 	mov	r0, #0x34
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L100a
 	mov	r1, #0xcc
@@ -95,9 +95,9 @@
 	mov	r0, #0x15
 	lsl	r1, #17
 	lsl	r2, #15
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L100a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r5, r3, r1
@@ -107,7 +107,7 @@
 	cmp	r3, #0xb
 	bne	.L1024
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	ldrh	r2, [r5]
 .L1024:
 	lsl	r3, r2, #16
@@ -117,7 +117,7 @@
 	bne	.L1036
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_8079374
+	bl	__ClearFlag
 .L1036:
 	mov	r0, #0
 	add	sp, #8
@@ -129,25 +129,27 @@
 	.section .data
 	.global .L1740
 	.global .L1756
-	.global .L176c
+	.global gOvl_0200976c
 	.global .L1782
 	.global .L1798
 	.global .L17ae
 	.global .L17c4
-	.global .L1450
+	.global gScript_944__02009450
 
 	.incbin "overlays/rom_797990/orig.bin", 0x12a8, (0x1450-0x12a8)
-.L1450:
+gScript_944__02009450:
 	.incbin "overlays/rom_797990/orig.bin", 0x1450, (0x15a0-0x1450)
-.L15a0:
+	.global gOvl_020095a0
+gOvl_020095a0:
 	.incbin "overlays/rom_797990/orig.bin", 0x15a0, (0x15d8-0x15a0)
-.L15d8:
+	.global gOvl_020095d8
+gOvl_020095d8:
 	.incbin "overlays/rom_797990/orig.bin", 0x15d8, (0x1740-0x15d8)
 .L1740:
 	.incbin "overlays/rom_797990/orig.bin", 0x1740, (0x1756-0x1740)
 .L1756:
 	.incbin "overlays/rom_797990/orig.bin", 0x1756, (0x176c-0x1756)
-.L176c:
+gOvl_0200976c:
 	.incbin "overlays/rom_797990/orig.bin", 0x176c, (0x1782-0x176c)
 .L1782:
 	.incbin "overlays/rom_797990/orig.bin", 0x1782, (0x1798-0x1782)
@@ -157,5 +159,6 @@
 	.incbin "overlays/rom_797990/orig.bin", 0x17ae, (0x17c4-0x17ae)
 .L17c4:
 	.incbin "overlays/rom_797990/orig.bin", 0x17c4, (0x17dc-0x17c4)
-.L17dc:
+	.global gOvl_020097dc
+gOvl_020097dc:
 	.incbin "overlays/rom_797990/orig.bin", 0x17dc

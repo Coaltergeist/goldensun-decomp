@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8011d34
+.thumb_func_start HeightTile_3  @ 0x08011d34
 	push	{lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -25,9 +25,9 @@
 .L11d5a:
 	pop	{r1}
 	bx	r1
-.func_end Func_8011d34
+.func_end HeightTile_3
 
-.thumb_func_start Func_8011d60
+.thumb_func_start HeightTile_4  @ 0x08011d60
 	push	{r5, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -56,9 +56,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8011d60
+.func_end HeightTile_4
 
-.thumb_func_start Func_8011d94
+.thumb_func_start HeightTile_5  @ 0x08011d94
 	push	{r5, r6, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -80,7 +80,7 @@
 	mov	r0, r1
 	mul	r0, r3
 	mov	r1, #0xf
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r6, r0
 	b	.L11dd6
 .L11dc6:
@@ -89,15 +89,15 @@
 	mov	r0, r1
 	mul	r0, r3
 	mov	r1, #0xf
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r0, r5, r0
 .L11dd6:
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8011d94
+.func_end HeightTile_5
 
-.thumb_func_start Func_8011ddc
+.thumb_func_start HeightTile_6  @ 0x08011ddc
 	push	{r5, lr}
 	mov	r3, #0
 	ldrsb	r3, [r0, r3]
@@ -142,9 +142,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8011ddc
+.func_end HeightTile_6
 
-.thumb_func_start Func_8011e2c
+.thumb_func_start HeightTile_7  @ 0x08011e2c
 	mov	r3, r0
 	mov	r0, #0
 	ldrsb	r0, [r3, r0]
@@ -160,5 +160,5 @@
 	mul	r3, r4
 	add	r0, r3
 	bx	lr
-.func_end Func_8011e2c
+.func_end HeightTile_7
 

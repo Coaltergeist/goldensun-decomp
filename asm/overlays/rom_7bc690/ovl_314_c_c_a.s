@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_933_200841c
 	push	{r5, lr}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r5, r1
@@ -19,7 +19,7 @@
 	cmp	r3, #5
 	bne	.L444
 	ldr	r0, =0x90a
-	bl	__Func_8079358
+	bl	__SetFlag
 .L444:
 	mov	r2, #0xe0
 	lsl	r2, #1
@@ -53,25 +53,25 @@
 
 .thumb_func_start OvlFunc_933_2008498
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x8b2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L4be
 	ldr	r0, =0x8b3
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L4be
 	ldr	r0, =0x8b3
-	bl	__Func_8079358
+	bl	__SetFlag
 	ldr	r0, =0x8b2
-	bl	__Func_8079358
+	bl	__SetFlag
 .L4be:
 	mov	r0, #0x7b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #3
 	bl	__Func_8091e9c
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_933_2008498

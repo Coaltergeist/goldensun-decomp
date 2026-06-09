@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801219c
+.thumb_func_start Func_801219c  @ 0x0801219c
 	push	{lr}
 	ldr	r3, [r0]
 	cmp	r3, #0
@@ -57,7 +57,7 @@
 	bx	r1
 .func_end Func_801219c
 
-.thumb_func_start Func_8012204
+.thumb_func_start Func_8012204  @ 0x08012204
 	push	{r5, lr}
 	ldr	r4, [r0, #8]
 	ldr	r3, [r0]
@@ -144,7 +144,7 @@
 	bx	r1
 .func_end Func_8012204
 
-.thumb_func_start Func_80122ac
+.thumb_func_start Func_80122ac  @ 0x080122ac
 	push	{lr}
 	mov	r0, r1
 	bl	Func_8012204
@@ -161,7 +161,7 @@
 	bx	r1
 .func_end Func_80122ac
 
-.thumb_func_start Func_80122c8
+.thumb_func_start Func_80122c8  @ 0x080122c8
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -213,7 +213,7 @@
 	bx	r1
 .func_end Func_80122c8
 
-.thumb_func_start Func_8012330
+.thumb_func_start Func_8012330  @ 0x08012330
 	push	{lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r3, [r3]
@@ -233,7 +233,7 @@
 	bx	r0
 .func_end Func_8012330
 
-.thumb_func_start Func_8012350
+.thumb_func_start Func_8012350  @ 0x08012350
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e70
 	ldr	r5, [r3]
@@ -242,7 +242,7 @@
 	b	.L1236e
 .L1235c:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #0x96
 	add	r6, #1
 	lsl	r3, #1
@@ -263,7 +263,7 @@
 	bx	r0
 .func_end Func_8012350
 
-.thumb_func_start Func_8012388
+.thumb_func_start Func_8012388  @ 0x08012388
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -274,7 +274,7 @@
 	ldr	r5, =0x27c
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -284,7 +284,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r1, #0x80
 	lsl	r1, #5
 	add	r6, r1
@@ -296,7 +296,7 @@
 	mov	r3, r6
 	bl	_call_via_r4
 	mov	r0, #0x31
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5
@@ -305,7 +305,7 @@
 	bx	r0
 .func_end Func_8012388
 
-.thumb_func_start Func_80123f4
+.thumb_func_start Func_80123f4  @ 0x080123f4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -337,7 +337,7 @@
 	ldr	r3, [r2, #4]
 	sub	r0, r3, r0
 	str	r0, [sp, #8]
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r9, r3
 	ldr	r3, [r3]
 	mov	r2, #0
@@ -346,7 +346,7 @@
 	mov	r11, r2
 	b	.L1244c
 .L12448:
-	ldr	r3, =iwram_3001ce0
+	ldr	r3, =gPhysVec
 	mov	r9, r3
 .L1244c:
 	mov	r2, r9
@@ -435,7 +435,7 @@
 	bx	r0
 .func_end Func_80123f4
 
-.thumb_func_start Func_8012518
+.thumb_func_start Debug_SpriteTest  @ 0x08012518
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -455,7 +455,7 @@
 	mov	r10, r3
 	str	r2, [sp, #0x10]
 	str	r2, [sp, #0xc]
-	bl	Func_80048f4
+	bl	galloc_ewram
 	ldr	r2, =iwram_3001c90
 	str	r0, [sp, #8]
 	add	r4, sp, #0x1c
@@ -479,7 +479,7 @@
 	mov	r0, #1
 	mov	r1, #1
 	neg	r0, r0
-	bl	Func_8012af8
+	bl	SpriteTest_ChangeVar
 	add	r2, sp, #0x20
 	mov	r8, r2
 	ldr	r1, .L125ac	@ 1
@@ -496,7 +496,7 @@
 	bls	.L12580
 	mov	r3, #1
 	mov	r0, r8
-	ldr	r2, =iwram_3001f54
+	ldr	r2, =gDebugMode
 	strb	r3, [r0, #4]
 	mov	r3, #2
 	strb	r3, [r2]
@@ -526,22 +526,22 @@
 	mov	r0, #1
 	bl	Func_8003bb4
 .L125de:
-	bl	Func_8004858
-	bl	Func_80040e8
+	bl	ClearHeap
+	bl	ClearTasks
 	mov	r1, #0xa0
 	mov	r0, #9
-	bl	Func_80048f4
+	bl	galloc_ewram
 	str	r0, [sp, #8]
-	bl	Func_800403c
+	bl	ClearSprites
 	mov	r0, #2
-	bl	Func_800c004
+	bl	InitActors
 	mov	r0, r8
 	mov	r3, #0
 	ldrsh	r2, [r0, r3]
-	ldr	r1, =ewram_2010000
+	ldr	r1, =gBuffer
 	mov	r3, #0
 	mov	r0, #0
-	bl	Func_800b6b8
+	bl	PreloadSpriteGFX
 	mov	r2, r8
 	b	.L12618
 
@@ -550,7 +550,7 @@
 .L12618:
 	mov	r1, #0
 	ldrsh	r0, [r2, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #4]
 	cmp	r3, #0x14
 	bne	.L12638
@@ -561,14 +561,14 @@
 	add	r2, #1
 	mov	r0, #1
 	mov	r3, #0
-	bl	Func_800b6b8
+	bl	PreloadSpriteGFX
 .L12638:
 	mov	r7, #0
 	mov	r6, r8
 .L1263c:
 	mov	r1, #0
 	ldrsh	r0, [r6, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #4]
 	mov	r5, #0
 	cmp	r3, #0x14
@@ -584,19 +584,19 @@
 	lsl	r3, r5, #12
 	add	r0, r5
 	add	r0, r3
-	bl	Func_800bc70
+	bl	CreateSprite
 	mov	r3, #8
 	ldrsh	r1, [r6, r3]
 	mov	r5, r0
-	bl	Func_800b8ac
+	bl	Sprite_AddLayer
 	mov	r0, #0x10
 	ldrsh	r1, [r6, r0]
 	mov	r0, r5
-	bl	Func_800b8ac
+	bl	Sprite_AddLayer
 	mov	r0, r5
 	mov	r2, #0x18
 	ldrsh	r1, [r6, r2]
-	bl	Func_800b8ac
+	bl	Sprite_AddLayer
 	add	r3, sp, #0xc
 	ldrb	r3, [r3]
 	add	r5, #0x26
@@ -624,13 +624,13 @@
 	mov	r1, #8
 	str	r2, [sp, #4]
 .L126b2:
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	ldr	r2, [sp, #4]
 	mov	r1, #6
 	ldrsb	r1, [r5, r1]
 	mov	r0, r7
 	str	r2, [sp, #4]
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	mov	r3, #2
 	ldrsh	r1, [r5, r3]
 	mov	r0, r7
@@ -647,14 +647,14 @@
 	ldr	r2, [sp, #8]
 	bl	Func_8012b2c
 	mov	r1, #0xc8
-	ldr	r0, =Func_8012e28
+	ldr	r0, =Task_Debug_SpriteTest
 	lsl	r1, #4
 	bl	StartTask
 .L126f0:
 	mov	r0, #1
-	bl	Func_80030f8
-	ldr	r0, =iwram_3001ae8
-	ldr	r1, =iwram_3001b04
+	bl	WaitFrames
+	ldr	r0, =gKeyHeld
+	ldr	r1, =gKeyRepeat
 	mov	r11, r0
 	mov	r9, r1
 .L126fe:
@@ -710,7 +710,7 @@
 	bl	Func_8012b2c
 	b	.L127be
 .L1275e:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r3, [r1]
 	mov	r3, r9
 	ldr	r2, [r3]
@@ -805,7 +805,7 @@
 	bne	.L12808
 	b	.L12a46
 .L12808:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	mov	r3, #0x80
 	ldr	r2, [r1]
 	lsl	r3, #2
@@ -898,7 +898,7 @@
 	ldrsh	r0, [r6, r5]
 	neg	r1, r1
 	str	r4, [sp]
-	bl	Func_8012af8
+	bl	SpriteTest_ChangeVar
 	ldr	r4, [sp]
 	add	r7, #1
 	strh	r0, [r6, r5]
@@ -924,7 +924,7 @@
 	ldrsh	r0, [r6, r5]
 	mov	r1, #1
 	str	r4, [sp]
-	bl	Func_8012af8
+	bl	SpriteTest_ChangeVar
 	ldr	r4, [sp]
 	add	r7, #1
 	strh	r0, [r6, r5]
@@ -957,11 +957,11 @@
 	mov	r1, #1
 	ldrsb	r1, [r5, r1]
 	mov	r0, r10
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	mov	r1, #2
 	ldrsb	r1, [r5, r1]
 	mov	r0, r10
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	mov	r0, r8
 	add	r3, r0, r6
 	mov	r2, #2
@@ -1102,7 +1102,7 @@
 	mov	r1, #2
 	ldrsb	r1, [r3, r1]
 	mov	r0, r10
-	bl	Func_8012d20
+	bl	SpriteTest_SetLayerColorswap
 	b	.L126f0
 .L12a46:
 	mov	r1, r9
@@ -1162,7 +1162,7 @@
 	mov	r1, #8
 .L12ab0:
 	mov	r0, r10
-	bl	Func_8012d48
+	bl	SpriteTest_SetLayerPriority
 	b	.L126f0
 .L12ab8:
 	mov	r1, r9
@@ -1171,7 +1171,7 @@
 	and	r2, r3
 	cmp	r2, #0
 	beq	.L12ae2
-	bl	Func_80040e8
+	bl	ClearTasks
 	mov	r2, r11
 	ldr	r3, [r2]
 	mov	r2, #2
@@ -1188,11 +1188,11 @@
 	b	.L125de
 .L12ae2:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L126fe
-.func_end Func_8012518
+.func_end Debug_SpriteTest
 
-.thumb_func_start Func_8012af8
+.thumb_func_start SpriteTest_ChangeVar  @ 0x08012af8
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r6, r1
@@ -1213,7 +1213,7 @@
 	b	.L12afe
 .L12b18:
 	mov	r0, r5
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0]
 	cmp	r3, #0
 	beq	.L12afe
@@ -1221,9 +1221,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8012af8
+.func_end SpriteTest_ChangeVar
 
-.thumb_func_start Func_8012b2c
+.thumb_func_start Func_8012b2c  @ 0x08012b2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1235,7 +1235,7 @@
 	ldr	r3, [r3]
 	ldr	r3, [r3, #0x28]
 	ldrb	r4, [r3, #4]
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r7, r2
 	mov	r2, #2
@@ -1292,7 +1292,7 @@
 	mov	r2, r7
 	lsl	r0, #14
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, =0x2aaa
 	ldr	r4, [sp]
 	add	r5, r3
@@ -1326,7 +1326,7 @@
 	mov	r2, r7
 	lsl	r0, #14
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r3, #0x80
 	lsl	r3, #6
 	ldr	r4, [sp]
@@ -1361,7 +1361,7 @@
 	mov	r2, r7
 	lsl	r0, #14
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, =0x1999
 	ldr	r4, [sp]
 	add	r5, r3
@@ -1401,7 +1401,7 @@
 	mov	r2, r7
 	mov	r0, r9
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r3, r10
 	str	r3, [r6, #0x10]
 	mov	r3, r11
@@ -1412,7 +1412,7 @@
 	str	r3, [r6, #0x18]
 	mov	r1, r5
 	mov	r0, r9
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r2, #0x80
 	lsl	r2, #8
 	ldr	r4, [sp]
@@ -1448,7 +1448,7 @@
 	mov	r1, r5
 	lsl	r0, #14
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r2, #0x80
 	lsl	r2, #7
 	ldr	r4, [sp]

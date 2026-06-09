@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-	.export_func _Func_80030f8
+	.export_func _WaitFrames
 	.export_func _StartTask
 	.export_func _Func_8004970
-	.export_func _Func_8002df0
-	.export_func _Func_8005340
-	.export_func _Func_8003fa4
-	.export_func _Func_8004080
+	.export_func _free
+	.export_func _DecompressLZ
+	.export_func _UploadSpriteGFX
+	.export_func _AllocSpriteSlot
 	.export_func _Func_8003dec
 	.export_func _GetFile
 	.export_func _Func_8002f3c
@@ -14,13 +14,13 @@
 	.export_func _Func_8003ce0
 	.export_func _Func_801f77c
 	.export_func _Func_8077f70
-	.export_func _Func_809163c
+	.export_func _CutsceneWait
 	.export_func _MapActor_GetActor
-	.export_func _Func_8091e3c
-	.export_func _Func_8091dc8
-	.export_func _Func_8091e20
-	.export_func _Func_80f03f0
-	.export_func _Func_80f26ec
-	.export_func _Func_80f2b70
-	.export_func _Func_80f2d54
-	.export_func _Func_80f9080
+	.export_func _SetDestMap
+	.export_func _MapTransitionIn
+	.export_func _WaitMapTransition
+	.export_func _StartGS1Credits
+	.export_func _StartTitleScreen
+	.export_func _NintendoLogo
+	.export_func _CamelotLogo
+	.export_func _PlaySound

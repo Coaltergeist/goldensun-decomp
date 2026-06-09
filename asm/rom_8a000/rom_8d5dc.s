@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808d5dc
+.thumb_func_start Func_808d5dc  @ 0x0808d5dc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -18,7 +18,7 @@
 	mov	r9, r1
 	bl	MapActor_GetActor
 	mov	r2, #0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, =0x24a
 	str	r2, [sp]
 	add	r3, r1
@@ -32,13 +32,13 @@
 	mov	r0, #7
 	mov	r1, r7
 	mov	r10, r3
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L8d688
 	mov	r1, r7
 	mov	r0, #0
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r1, #1
 	mov	r6, r0
 	str	r1, [sp]
@@ -53,7 +53,7 @@
 	cmp	r3, r2
 	blt	.L8d682
 	mov	r0, r7
-	bl	Func_80915dc
+	bl	MapActor_GetName
 	mov	r5, r0
 	bl	Random
 	lsl	r0, #1
@@ -62,18 +62,18 @@
 	lsl	r5, #1
 	add	r5, r0
 	add	r5, r3
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r0, r5
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
-	bl	Func_8092f84
-	bl	Func_8091750
+	bl	ActorMessage
+	bl	CutsceneEnd
 	b	.L8d794
 .L8d678:
 	mov	r0, #0
 	mov	r1, r7
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r6, r0
 .L8d682:
 	cmp	r6, #0
@@ -94,7 +94,7 @@
 	strb	r3, [r2]
 	mov	r1, #0
 	mov	r0, r8
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 	mov	r2, r8
 	ldrh	r2, [r2, #6]
 	str	r2, [sp, #4]
@@ -110,7 +110,7 @@
 	cmp	r3, r1
 	bne	.L8d6ee
 .L8d6c2:
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r5, r2
@@ -139,13 +139,13 @@
 	bge	.L8d716
 	ldr	r0, [sp]
 	bl	_Func_8017620
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, [r6, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
-	bl	Func_8092f84
-	bl	Func_8091750
+	bl	ActorMessage
+	bl	CutsceneEnd
 	b	.L8d722
 .L8d716:
 	bl	Func_8091660
@@ -169,7 +169,7 @@
 	ldrsb	r0, [r3, r0]
 	cmp	r0, #3
 	bne	.L8d76a
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -185,7 +185,7 @@
 	strb	r3, [r1]
 	mov	r0, r8
 	ldr	r1, =Data_9ff40
-	bl	Func_8093a6c
+	bl	Actor_SetBehavior
 	b	.L8d780
 .L8d76a:
 	cmp	r0, #1
@@ -197,7 +197,7 @@
 	strh	r1, [r3]
 	mov	r0, r8
 	ldr	r1, =Data_9fc1c
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L8d780:
 	mov	r2, r8
 	add	r2, #0x5b
@@ -205,7 +205,7 @@
 	strb	r3, [r2]
 	mov	r0, r8
 	mov	r1, #0x10
-	bl	_Func_800c344
+	bl	_Actor_SetAnimSpeed
 .L8d790:
 	mov	r2, #0
 	mov	r9, r2
@@ -213,7 +213,7 @@
 	mov	r3, r10
 	cmp	r3, #0
 	beq	.L8d7ac
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r1, =0x24a
 	add	r5, r1
 	mov	r2, #0
@@ -235,12 +235,12 @@
 	bx	r1
 .func_end Func_808d5dc
 
-.thumb_func_start Func_808d7d8
+.thumb_func_start Func_808d7d8  @ 0x0808d7d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	mov	r1, r7
 	mov	r0, #6
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r6, #1
 	mov	r5, r0
 	neg	r6, r6
@@ -253,14 +253,14 @@
 	lsl	r2, #9
 	cmp	r3, r2
 	bge	.L8d816
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r6
 	mov	r1, #0
-	bl	Func_8092f84
+	bl	ActorMessage
 	mov	r6, #0
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d81e
 .L8d816:
 	mov	r0, r7
@@ -273,14 +273,14 @@
 	bx	r1
 .func_end Func_808d7d8
 
-.thumb_func_start Func_808d828
+.thumb_func_start Func_808d828  @ 0x0808d828
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	mov	r6, r0
 	mov	r1, r6
 	mov	r0, #2
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	ldr	r3, =iwram_3001ebc
 	ldr	r3, [r3]
 	mov	r7, #1
@@ -308,14 +308,14 @@
 	lsl	r3, #9
 	cmp	r1, r3
 	bge	.L8d886
-	bl	Func_80916b0
+	bl	CutsceneStart
 	ldr	r0, [r5, #8]
-	bl	Func_8092b94
+	bl	MessageID
 	mov	r0, r7
 	mov	r1, #0
-	bl	Func_8092f84
+	bl	ActorMessage
 	mov	r7, #0
-	bl	Func_8091750
+	bl	CutsceneEnd
 	b	.L8d8de
 .L8d886:
 	mov	r0, r6
@@ -324,7 +324,7 @@
 .L8d88e:
 	mov	r0, #1
 	mov	r1, r6
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8d8de
@@ -342,17 +342,17 @@
 	b	.L8d8d2
 .L8d8b4:
 	mov	r0, #0x7b
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L8d8d2
 .L8d8bc:
 	mov	r0, #0x80
-	bl	_Func_80f9080
-	bl	Func_8094354
+	bl	_PlaySound
+	bl	Player_EnterStairsUp
 	b	.L8d8d2
 .L8d8c8:
 	mov	r0, #0x81
-	bl	_Func_80f9080
-	bl	Func_8094368
+	bl	_PlaySound
+	bl	Player_EnterStairsDown
 .L8d8d2:
 	mov	r3, #0xb8
 	ldr	r2, [r5, #8]
@@ -370,12 +370,12 @@
 	bx	r1
 .func_end Func_808d828
 
-.thumb_func_start Func_808d8f0
+.thumb_func_start Func_808d8f0  @ 0x0808d8f0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xfa
 	ldr	r5, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r1, [r3]
@@ -400,7 +400,7 @@
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0xc
 	ble	.L8d98e
-	ldr	r3, =iwram_3001ae8
+	ldr	r3, =gKeyHeld
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2
@@ -432,7 +432,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xc
 	ble	.L8d98e
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #0x80
 	and	r3, r2

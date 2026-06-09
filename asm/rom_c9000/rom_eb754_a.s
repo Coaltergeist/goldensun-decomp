@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80eb754
+.thumb_func_start Anim_Kirin  @ 0x080eb754
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -22,7 +22,7 @@
 	str	r2, [sp, #0x44]
 	str	r0, [r6]
 	mov	r0, #0
-	bl	Func_80cd594
+	bl	AnimStart
 	bl	Func_80c9048
 	ldr	r2, =REG_BG2CNT
 	ldr	r3, .Leb7bc	@ 0x784
@@ -41,11 +41,11 @@
 	mov	r1, #0x90
 	str	r3, [r7]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	mov	r0, #1
 	mov	r1, #0
-	bl	Func_80cd104
+	bl	AnimTransitionOut
 	ldr	r1, =0x175
 	mov	r0, #9
 	mov	r2, #1
@@ -59,8 +59,8 @@
 	.pool
 
 .Leb7d8:
-	bl	Func_80dbb24
-	ldr	r2, =iwram_3001ce0
+	bl	CreateSummonSprite
+	ldr	r2, =gPhysVec
 	mov	r3, #0xf0
 	str	r3, [r2, #0x10]
 	ldr	r0, [r6]
@@ -72,19 +72,19 @@
 	sub	r2, #8
 	strh	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, #0
 	ldr	r1, =0x3a
 	mov	r0, #1
-	bl	_Func_80c08ec
+	bl	_AnimTransitionIn
 	mov	r0, #1
 	mov	r1, #1
-	bl	Func_80cd104
+	bl	AnimTransitionOut
 	ldr	r0, =_FILE_73
 	ldr	r1, [sp, #0x44]
 	mov	r2, #0
 	mov	r3, #0
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r0, =_FILE_95
 	ldr	r1, [sp, #0x4c]
 	mov	r2, #1
@@ -99,7 +99,7 @@
 	.pool
 
 .Leb840:
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r3, =0x7741
 	mov	r2, #0x80
 	lsl	r2, #19
@@ -159,7 +159,7 @@
 	str	r0, [r5, #0x10]
 	bl	Random
 	mov	r1, #0x30
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r4, #1
 	add	r8, r4
 	add	r0, #2
@@ -173,8 +173,8 @@
 	mov	r0, #0x2e
 	mov	r1, #7
 	str	r3, [sp]
-	bl	Func_80ed408
-	ldr	r3, =iwram_3001e50
+	bl	BuildDraw2DFuncEx
+	ldr	r3, =gPtrs
 	add	r3, #0xb8
 	ldr	r3, [r3]
 	ldr	r2, =REG_BG2CNT
@@ -267,7 +267,7 @@
 	ldr	r2, =0xffff8000
 	add	r0, r2
 .Leb99e:
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r5
 	mul	r3, r0
 	asr	r3, #16
@@ -322,7 +322,7 @@
 	mov	r2, r7
 	ldmia	r5!, {r0}
 	mov	r3, #0
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	mov	r1, #1
 	add	r8, r1
 	mov	r2, r8
@@ -369,7 +369,7 @@
 	mov	r1, r8
 	lsl	r6, r1, #10
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, [sp, #0x28]
 	add	r3, #8
 	mov	r5, r3
@@ -378,7 +378,7 @@
 	asr	r5, #16
 	mov	r0, r6
 	add	r5, r2
-	bl	Func_800231c
+	bl	cos
 	ldr	r4, [sp, #0x24]
 	mov	r3, r4
 	mul	r3, r0
@@ -444,7 +444,7 @@
 	bne	.Lebb78
 	mov	r1, #3
 	mov	r0, r8
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	add	r0, #1
 	lsl	r4, r0, #1
 	ldr	r2, =Data_ede48
@@ -596,7 +596,7 @@
 	mov	r3, #1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r4, #1
 	add	r11, r4
 .Lebc56:
@@ -608,33 +608,33 @@
 	cmp	r7, #0
 	bne	.Lebc6a
 	mov	r0, #0x88
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebc6a:
 	mov	r1, r11
 	cmp	r1, #0x1a
 	bne	.Lebc76
 	mov	r0, #0x8d
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebc76:
 	mov	r2, r11
 	cmp	r2, #0x28
 	bne	.Lebc82
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebc82:
 	mov	r3, r11
 	cmp	r3, #0x48
 	bne	.Lebc8e
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebc8e:
 	mov	r4, r11
 	cmp	r4, #0x68
 	bne	.Lebc9a
 	mov	r0, #0x9a
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebc9a:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #3
 	and	r3, r2
@@ -777,7 +777,7 @@
 	ldr	r4, =0xffffc000
 	add	r0, r3, r4
 .Lebdc4:
-	bl	Func_8002322
+	bl	sin
 	lsl	r0, #6
 	b	.Lebde8
 .Lebdcc:
@@ -793,7 +793,7 @@
 	ldr	r4, =0xffffc000
 	add	r0, r3, r4
 .Lebde2:
-	bl	Func_8002322
+	bl	sin
 	lsl	r0, #5
 .Lebde8:
 	asr	r4, r0, #16
@@ -831,7 +831,7 @@
 	ldmia	r5!, {r0}
 	mov	r1, r6
 	str	r4, [sp, #8]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	mov	r2, #1
 	add	r8, r2
 	mov	r3, r8
@@ -847,19 +847,19 @@
 	add	r3, r7, r0
 	str	r4, [r3]
 	mov	r0, #0x91
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebe50:
 	mov	r1, r11
 	cmp	r1, #0xb
 	bne	.Lebe5c
 	mov	r0, #0x91
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebe5c:
 	mov	r2, r11
 	cmp	r2, #0x2e
 	bne	.Lebe68
 	mov	r0, #0x89
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebe68:
 	ldr	r2, =0x7828
 	ldr	r4, [sp, #0x4c]
@@ -885,7 +885,7 @@
 	mov	r1, r9
 	ldrsh	r0, [r3, r1]
 	mov	r1, r5
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	ldr	r3, [r5]
 	ldr	r4, [sp, #0x1c]
 	cmp	r3, r4
@@ -895,7 +895,7 @@
 	mov	r0, r8
 	strb	r3, [r7, r0]
 	ldr	r1, [sp, #0xc]
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	mov	r10, r5
 	mov	r6, #0
 	mov	r7, #0xff
@@ -944,9 +944,9 @@
 	mov	r1, r9
 	ldrsh	r0, [r3, r1]
 	mov	r1, #1
-	bl	_Func_80b8228
+	bl	_SetBattleActorKnockback
 	mov	r0, #0x86
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebf1c:
 	ldr	r4, [sp, #0xc]
 	mov	r7, #0xe0
@@ -965,7 +965,7 @@
 	bne	.Lebe80
 .Lebf3a:
 	mov	r2, #0
-	ldr	r5, =ewram_2010000
+	ldr	r5, =gBuffer
 	mov	r8, r2
 	mov	r7, #3
 	mov	r6, #6
@@ -1010,7 +1010,7 @@
 	cmp	r2, #0x30
 	bne	.Lebf98
 	mov	r0, #0x88
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lebf98:
 	mov	r3, r11
 	cmp	r3, #0x28
@@ -1102,7 +1102,7 @@
 .Lec044:
 	mov	r0, #8
 	mov	r1, #8
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	bl	Func_80cd52c
 	ldr	r1, =0x7824
 	ldr	r0, [sp, #0x4c]
@@ -1110,7 +1110,7 @@
 	add	r2, r0, r1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r3, #1
 	ldr	r2, [sp, #0x10]
 	add	r11, r3
@@ -1130,17 +1130,17 @@
 	add	r6, r0, r1
 .Lec082:
 	ldmia	r6!, {r0}
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	mov	r2, #1
 	add	r8, r2
 	mov	r3, r8
 	cmp	r3, #9
 	bne	.Lec082
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0xb0
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -1150,5 +1150,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80eb754
+.func_end Anim_Kirin
 

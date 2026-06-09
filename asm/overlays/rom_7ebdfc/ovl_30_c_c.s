@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_961_2008044
 	push	{lr}
 	ldr	r0, =0x96f
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L54
 	ldr	r0, =.L4e0
@@ -20,7 +20,7 @@
 	ldr	r5, =0x25b8
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -30,17 +30,17 @@
 	cmp	r0, #0
 	bne	.L96
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L9c
 .L96:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .L9c:
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -51,7 +51,7 @@
 	ldr	r5, =0x25dc
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -61,17 +61,17 @@
 	cmp	r0, #0
 	bne	.Lde
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.Le4
 .Lde:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .Le4:
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -90,7 +90,7 @@
 	mov	r0, #0x19
 	bl	__Func_8010704
 	ldr	r0, =0x201
-	bl	__Func_8079358
+	bl	__SetFlag
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -120,7 +120,7 @@
 	mov	r0, #0x9e
 	lsr	r6, #16
 	lsr	r5, #16
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, r6
 	mov	r2, r5
 	ldr	r0, =.L5e8
@@ -171,7 +171,7 @@
 	mov	r0, #0x9e
 	lsr	r6, #16
 	lsr	r5, #16
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r1, r6
 	mov	r2, r5
 	ldr	r0, =.L5fe
@@ -201,7 +201,7 @@
 .thumb_func_start OvlFunc_961_2008208
 	push	{lr}
 	ldr	r0, =0x96f
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L218
 	ldr	r0, =.L758
@@ -215,7 +215,7 @@
 
 .thumb_func_start OvlFunc_961_200822c
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -224,7 +224,7 @@
 	cmp	r3, #0x5a
 	bne	.L244
 	ldr	r0, =0x96f
-	bl	__Func_8079358
+	bl	__SetFlag
 .L244:
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
@@ -238,13 +238,13 @@
 	mov	r3, #0x18
 	str	r3, [r2]
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L270
 	bl	OvlFunc_961_20080f8
 	mov	r0, #0x10
 	mov	r1, #4
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L270:
 	mov	r0, #0
 	pop	{r1}
@@ -252,11 +252,13 @@
 .func_end OvlFunc_961_200822c
 
 	.section .data
-	.global .L2f0
-
-.L2f0:
+	.global gOvl_020082f0
+	.global MapEntrance_ARRAY_961__020082f0
+gOvl_020082f0:
+MapEntrance_ARRAY_961__020082f0:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x2f0, (0x3c8-0x2f0)
-.L3c8:
+	.global gOvl_020083c8
+gOvl_020083c8:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x3c8, (0x3f0-0x3c8)
 .L3f0:
 	.incbin "overlays/rom_7ebdfc/orig.bin", 0x3f0, (0x4e0-0x3f0)

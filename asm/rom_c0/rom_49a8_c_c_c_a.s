@@ -1,15 +1,15 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8004a5c
+.thumb_func_start MatrixPop  @ 0x08004a5c
 	push	{lr}
-	ldr	r2, =iwram_3001cc4
+	ldr	r2, =gMatrixStackSize
 	ldr	r3, [r2]
 	cmp	r3, #0
 	ble	.L4a7c
 	sub	r3, #1
 	str	r3, [r2]
-	ldr	r3, =iwram_3001d2c
+	ldr	r3, =gMatrixStack
 	ldr	r0, [r3]
 	sub	r0, #0x30
 	str	r0, [r3]
@@ -21,9 +21,9 @@
 .L4a7c:
 	pop	{r0}
 	bx	r0
-.func_end Func_8004a5c
+.func_end MatrixPop
 
-.thumb_func_start Func_8004a94
+.thumb_func_start MatrixReset  @ 0x08004a94
 	ldr	r3, =Data_8000ac0
 	mov	r0, r3
 	mov	r1, #0x80
@@ -35,9 +35,9 @@
 	stmia	r0!, {r1, r2, r3, r4}
 	stmia	r0!, {r1, r2, r3, r4}
 	bx	lr
-.func_end Func_8004a94
+.func_end MatrixReset
 
-.thumb_func_start Func_8004ab0
+.thumb_func_start MatrixRotate  @ 0x08004ab0
 	push	{r5, r6, lr}
 	mov	r6, r11
 	mov	r5, r10
@@ -48,22 +48,22 @@
 	mov	r5, r0
 	ldr	r0, [r5]
 	sub	sp, #0x30
-	bl	Func_8002322
+	bl	sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_800231c
+	bl	cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_8002322
+	bl	sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_800231c
+	bl	cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_800231c
+	bl	cos
 	mov	r14, r0
 	ldr	r3, =Func_8000888
 	mov	r0, r11
@@ -146,16 +146,16 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004ab0
+.func_end MatrixRotate
 
-.thumb_func_start Func_8004bd4
+.thumb_func_start MatrixPitch  @ 0x08004bd4
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r12, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -180,18 +180,18 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004bd4
+.func_end MatrixPitch
 
-.thumb_func_start Func_8004c1c
+.thumb_func_start MatrixYaw  @ 0x08004c1c
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_8002322
+	bl	sin
 	mov	r8, r0
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r6, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -218,16 +218,16 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004c1c
+.func_end MatrixYaw
 
-.thumb_func_start Func_8004c6c
+.thumb_func_start MatrixRoll  @ 0x08004c6c
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r5, r0
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r12, r0
 	mov	r5, sp
 	mov	r0, r5
@@ -252,9 +252,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004c6c
+.func_end MatrixRoll
 
-.thumb_func_start Func_8004cb4
+.thumb_func_start MatrixTranslatev  @ 0x08004cb4
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -281,9 +281,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004cb4
+.func_end MatrixTranslatev
 
-.thumb_func_start Func_8004cf0
+.thumb_func_start MatrixScalev  @ 0x08004cf0
 	push	{r5, r6, lr}
 	sub	sp, #0x30
 	mov	r6, r0
@@ -310,9 +310,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004cf0
+.func_end MatrixScalev
 
-.thumb_func_start Func_8004d2c
+.thumb_func_start MatrixRotateTrans  @ 0x08004d2c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -324,22 +324,22 @@
 	ldr	r0, [r5]
 	mov	r7, r1
 	sub	sp, #0x30
-	bl	Func_8002322
+	bl	sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_800231c
+	bl	cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_8002322
+	bl	sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_800231c
+	bl	cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_800231c
+	bl	cos
 	mov	r14, r0
 	ldr	r3, =Func_8000888
 	mov	r0, r11
@@ -423,9 +423,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004d2c
+.func_end MatrixRotateTrans
 
-.thumb_func_start Func_8004e54
+.thumb_func_start MatrixRotateTransScale  @ 0x08004e54
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -438,22 +438,22 @@
 	str	r2, [sp]
 	mov	r5, r0
 	ldr	r0, [r5]
-	bl	Func_8002322
+	bl	sin
 	mov	r10, r0
 	ldr	r0, [r5]
-	bl	Func_800231c
+	bl	cos
 	mov	r9, r0
 	ldr	r0, [r5, #4]
-	bl	Func_8002322
+	bl	sin
 	mov	r8, r0
 	ldr	r0, [r5, #4]
-	bl	Func_800231c
+	bl	cos
 	mov	r11, r0
 	ldr	r0, [r5, #8]
-	bl	Func_8002322
+	bl	sin
 	mov	r6, r0
 	ldr	r0, [r5, #8]
-	bl	Func_800231c
+	bl	cos
 	ldr	r2, [sp]
 	mov	r14, r0
 	ldr	r7, [r2]
@@ -571,9 +571,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004e54
+.func_end MatrixRotateTransScale
 
-.thumb_func_start Func_8004fe4
+.thumb_func_start MakeLookMatrix  @ 0x08004fe4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -622,7 +622,7 @@
 	ldr	r3, =Func_8000948
 	bl	_call_via_r3
 	mov	r1, r0
-	ldr	r0, =Func_8000b60
+	ldr	r0, =udivsi3_RAM
 	mov	r11, r0
 	mov	r0, #0x80
 	lsl	r0, #24
@@ -653,7 +653,7 @@
 	sub	r0, r3, r0
 	cmp	r0, #0
 	ble	.L50a6
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	mov	r1, r0
 	mov	r0, #0x80
 	lsl	r0, #24
@@ -692,7 +692,7 @@
 	ldr	r4, [sp, #0xc]
 	mov	r0, r10
 	bl	_call_via_r4
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	mov	r1, r0
 	mov	r0, #0x80
 	lsl	r0, #24
@@ -777,5 +777,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8004fe4
+.func_end MakeLookMatrix
 

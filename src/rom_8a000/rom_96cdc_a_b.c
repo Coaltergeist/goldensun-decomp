@@ -6,15 +6,15 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int iwram_3001e40;
-extern void _Func_800c598(unsigned int a, unsigned int b);
+extern void _Actor_SetColorswap(unsigned int a, unsigned int b);
 extern void Func_8096ddc(unsigned int a);
 
 void Func_8096f14(unsigned int arg0)
 {
     if (iwram_3001e40 & 2) {
-        _Func_800c598(arg0, 7);
+        _Actor_SetColorswap(arg0, 7);
     } else {
-        _Func_800c598(arg0, 0);
+        _Actor_SetColorswap(arg0, 0);
     }
     if ((iwram_3001e40 & 0xf) == 0) {
         Func_8096ddc(arg0);

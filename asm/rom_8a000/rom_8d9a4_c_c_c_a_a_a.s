@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80903bc
+.thumb_func_start Func_80903bc  @ 0x080903bc
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -47,7 +47,7 @@
 	mul	r0, r2
 	mov	r1, #0
 	ldrsb	r1, [r4, r1]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	mov	r3, #0
 	ldrsb	r3, [r5, r3]
@@ -92,7 +92,7 @@
 	.word	0x9f
 .func_end Func_80903bc
 
-.thumb_func_start Func_8090488
+.thumb_func_start Func_8090488  @ 0x08090488
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -138,7 +138,7 @@
 	mul	r0, r2
 	mov	r1, #0
 	ldrsb	r1, [r4, r1]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	mov	r3, #0
 	ldrsb	r3, [r5, r3]
@@ -208,7 +208,7 @@
 	bx	r0
 .func_end Func_8090488
 
-.thumb_func_start Func_8090584
+.thumb_func_start Func_8090584  @ 0x08090584
 	push	{lr}
 	ldr	r3, =REG_VCOUNT
 	ldrh	r3, [r3]
@@ -322,7 +322,7 @@
 	bx	r0
 .func_end Func_8090584
 
-.thumb_func_start Func_8090658
+.thumb_func_start Task_Transition300  @ 0x08090658
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ecc
 	ldr	r1, =0x53c
@@ -341,7 +341,7 @@
 	blt	.L90698
 	mov	r3, #0
 	strb	r3, [r4]
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	bl	StopTask
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -372,7 +372,7 @@
 	mul	r0, r2
 	mov	r1, #0
 	ldrsb	r1, [r4, r1]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	mov	r3, #0
 	ldrsb	r3, [r5, r3]
@@ -439,7 +439,7 @@
 	add	r0, #1
 	cmp	r4, #1
 	bls	.L906fc
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -469,9 +469,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8090658
+.func_end Task_Transition300
 
-.thumb_func_start Func_80907b0
+.thumb_func_start Func_80907b0  @ 0x080907b0
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ecc
 	sub	sp, #4
@@ -522,7 +522,7 @@
 	bx	r0
 .func_end Func_80907b0
 
-.thumb_func_start Func_8090824
+.thumb_func_start Func_8090824  @ 0x08090824
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -531,7 +531,7 @@
 	lsl	r1, #3
 	mov	r0, #0x1f
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r6, #0
 	mov	r5, r0
 	mov	r0, sp
@@ -553,10 +553,10 @@
 	add	r5, r3
 	lsl	r1, #4
 	strh	r6, [r5]
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	bl	StartTask
 	mov	r0, #0x78
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #4
 	pop	{r3}
 	mov	r8, r3
@@ -565,7 +565,7 @@
 	bx	r0
 .func_end Func_8090824
 
-.thumb_func_start Func_809088c
+.thumb_func_start Func_809088c  @ 0x0809088c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -577,7 +577,7 @@
 	mov	r8, r3
 	cmp	r3, #0
 	ble	.L908ca
-	ldr	r1, =Func_8000af0
+	ldr	r1, =divsi3_RAM
 	ldr	r2, =0x53f
 	mov	r10, r1
 .L908a8:
@@ -607,7 +607,7 @@
 	bx	r0
 .func_end Func_809088c
 
-.thumb_func_start Func_80908e0
+.thumb_func_start Func_80908e0  @ 0x080908e0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ed0
 	mov	r1, #0xc4
@@ -616,7 +616,7 @@
 	lsl	r1, #5
 	lsl	r0, #1
 	add	r5, r6, r1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L908fa
 	b	.L90a44
@@ -741,7 +741,7 @@
 	mov	r1, #0x8c
 	add	r0, r6, r3
 	lsl	r1, #6
-	ldr	r5, =ewram_2002090
+	ldr	r5, =gDMATaskCount
 	add	r6, r0, r1
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
@@ -794,7 +794,7 @@
 	bx	r0
 .func_end Func_80908e0
 
-.thumb_func_start Func_8090a5c
+.thumb_func_start Func_8090a5c  @ 0x08090a5c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -910,7 +910,7 @@
 	bcc	.L90b44
 	b	.L9115e
 .L90b44:
-	ldr	r6, =Func_8000af0
+	ldr	r6, =divsi3_RAM
 	mov	r5, r8
 .L90b48:
 	mov	r1, r10
@@ -970,7 +970,7 @@
 	add	r0, r6, r0
 	add	r0, r3
 	str	r2, [sp]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	mov	r1, #0xa
 	bl	_call_via_r3
 	mov	r4, r0
@@ -1059,7 +1059,7 @@
 	mov	r1, #3
 	mov	r0, r7
 	sub	r6, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r6, #0xa
 	sub	r7, r0
 	mov	r0, r6
@@ -1209,7 +1209,7 @@
 	mov	r3, #2
 	add	r0, r5
 	add	r10, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	bl	Func_8091294
 	asr	r3, r6, #1
 	add	r6, r3, r0
@@ -1278,11 +1278,11 @@
 	mov	r1, #3
 	mov	r6, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, #3
 	sub	r7, r0
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, =.L9e92e
 	sub	r5, r0
 	lsl	r3, r5, #1
@@ -1335,7 +1335,7 @@
 	mov	r1, #3
 	and	r5, r2
 	sub	r6, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r6, #6
 	sub	r7, r0
 	mov	r0, r6
@@ -1456,7 +1456,7 @@
 	add	r0, r2
 	add	r0, r3
 	mov	r1, #0x60
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	ldr	r1, [sp, #0x20]
 	mov	r4, r0
@@ -1546,7 +1546,7 @@
 	ldr	r1, [sp, #0x10]
 	add	r0, r3
 	add	r1, r11
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	lsl	r0, #4
 	bl	_call_via_r3
 	ldr	r3, [sp, #0x18]
@@ -1688,12 +1688,12 @@
 	bx	r0
 .func_end Func_8090a5c
 
-.thumb_func_start Func_8091174
+.thumb_func_start Func_8091174  @ 0x08091174
 	push	{lr}
 	ldr	r1, =0x2a04
 	mov	r0, #0x20
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp

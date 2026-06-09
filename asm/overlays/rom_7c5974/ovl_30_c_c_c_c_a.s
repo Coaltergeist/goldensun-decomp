@@ -6,7 +6,7 @@
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
 	ldr	r0, =0x941
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L3b4
 	ldr	r2, =0xffff5fff
@@ -19,20 +19,20 @@
 	bl	__Func_80b0278
 	b	.L3c2
 .L39c:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0x24f7
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_8092f84
-	bl	__Func_8091750
+	bl	__ActorMessage
+	bl	__CutsceneEnd
 	b	.L3c2
 .L3b4:
 	ldr	r0, =0x1bce
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #0xf
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L3c2:
 	pop	{r5}
 	pop	{r0}
@@ -47,7 +47,7 @@
 	lsl	r1, #1
 	ldr	r2, =0x209
 	add	r3, r1
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	str	r2, [r3]
 	sub	r2, #0x47
 	add	r3, r5, r2
@@ -56,7 +56,7 @@
 	cmp	r6, #0xa
 	bne	.L412
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 	mov	r1, #0xe2
 	ldr	r2, =0x69
 	lsl	r1, #1
@@ -70,15 +70,15 @@
 	mov	r0, #0x17
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x18
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x19
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0
 	pop	{r5, r6}
 	pop	{r1}

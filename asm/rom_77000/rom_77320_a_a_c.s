@@ -1,12 +1,12 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8077330
+.thumb_func_start Func_8077330  @ 0x08077330
 	push	{lr}
 	cmp	r0, #0
 	beq	.L7733e
 	mov	r0, #0x83
-	bl	Func_8077394
+	bl	GetUnit
 	b	.L77340
 .L7733e:
 	ldr	r0, =ewram_200024c
@@ -15,10 +15,10 @@
 	bx	r1
 .func_end Func_8077330
 
-.thumb_func_start Func_8077348
+.thumb_func_start Func_8077348  @ 0x08077348
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
-	bl	Func_80795fc
+	bl	GetPartySize
 	mov	r7, r0
 	mov	r6, #0
 	mov	r0, #0
@@ -26,7 +26,7 @@
 	beq	.L77388
 	cmp	r6, r7
 	bge	.L7737e
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfc
 	lsl	r1, #1
 	add	r2, r3, r1
@@ -35,7 +35,7 @@
 	ldrb	r0, [r2]
 	add	r2, #1
 	str	r2, [sp]
-	bl	Func_8077394
+	bl	GetUnit
 	ldrb	r3, [r0, #0xf]
 	sub	r5, #1
 	add	r6, r3
@@ -45,7 +45,7 @@
 .L7737e:
 	mov	r0, r6
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r6, r0
 .L77388:
 	add	sp, #4
@@ -54,10 +54,10 @@
 	bx	r1
 .func_end Func_8077348
 
-.thumb_func_start Func_8077394
+.thumb_func_start GetUnit  @ 0x08077394
 	push	{lr}
 	mov	r3, r14
-	ldr	r2, =ewram_2000500
+	ldr	r2, =gPartyStatus
 	cmp	r0, #7
 	bhi	.L773a8
 	mov	r3, #0xa6
@@ -86,9 +86,9 @@
 .L773c8:
 	pop	{r1}
 	bx	r1
-.func_end Func_8077394
+.func_end GetUnit
 
-.thumb_func_start Func_80773d8
+.thumb_func_start GetEnemyInfo  @ 0x080773d8
 	push	{lr}
 	sub	r0, #8
 	cmp	r0, #0xf9
@@ -101,5 +101,5 @@
 	add	r0, r3
 	pop	{r1}
 	bx	r1
-.func_end Func_80773d8
+.func_end GetEnemyInfo
 

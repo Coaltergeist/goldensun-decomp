@@ -17,7 +17,7 @@
 	cmp	r3, #0
 	beq	.Lf98
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x80
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -40,7 +40,7 @@
 	str	r6, [sp]
 	bl	__Func_80105d4
 	mov	r0, #0x28
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .Lf98:
 	mov	r3, #0x28
 	str	r3, [sp, #4]
@@ -81,7 +81,7 @@
 	cmp	r0, #0
 	beq	.L1028
 	mov	r0, #0x9d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x80
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -105,7 +105,7 @@
 	mov	r3, #3
 	bl	__Func_80105d4
 	mov	r0, #0x3c
-	bl	__Func_80030f8
+	bl	__WaitFrames
 .L1028:
 	mov	r3, #0x46
 	mov	r2, #0x31
@@ -149,17 +149,17 @@
 	cmp	r3, r2
 	bne	.L10ae
 	ldr	r0, =0x9c4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L10ae
 	mov	r0, #0xf3
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3
 	beq	.L10ae
 	ldr	r0, =0x9c4
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x80
 	lsl	r0, #1
 	bl	OvlFunc_948_2008fdc
@@ -184,17 +184,17 @@
 	lsl	r3, #4
 	add	r5, r6, r3
 	mov	r0, r5
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1100
 	mov	r0, #0xf4
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2
 	beq	.L1100
 	mov	r0, r5
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x80
 	lsl	r0, #1
 	orr	r0, r6

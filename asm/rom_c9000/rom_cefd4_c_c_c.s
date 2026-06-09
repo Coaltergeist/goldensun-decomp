@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80ceff8
+.thumb_func_start BaseAnim_Spasm  @ 0x080ceff8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -20,7 +20,7 @@
 	str	r0, [r7]
 	mov	r0, #0
 	mov	r10, r1
-	bl	Func_80cd594
+	bl	AnimStart
 	ldr	r0, =_FILE_7b
 	bl	GetFile
 	mov	r5, r0
@@ -33,7 +33,7 @@
 	bl	_call_via_r6
 	mov	r1, r8
 	mov	r0, r5
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r0, =_FILE_8d
 	bl	GetFile
 	mov	r5, r0
@@ -61,7 +61,7 @@
 	mov	r4, #0x24
 	ldrsh	r0, [r3, r4]
 	mov	r1, r9
-	bl	Func_80e3980
+	bl	GetBattleActorPos3
 	mov	r3, r10
 	cmp	r3, #0
 	bne	.Lcf0bc
@@ -89,7 +89,7 @@
 	neg	r0, r0
 	lsl	r0, #2
 	mov	r1, #5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =REG_BG2X
 	add	r0, #0x40
 .Lcf0d4:
@@ -101,8 +101,8 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r6, [sp]
-	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	bl	BuildDraw2DFuncEx
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -117,7 +117,7 @@
 .Lcf10c:
 	mov	r0, #0x2f
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	mov	r3, #0xef
 	lsl	r3, #7
 	ldr	r2, =0x7784
@@ -129,7 +129,7 @@
 	add	r2, r8
 	mov	r1, #0x90
 	str	r3, [r2]
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	lsl	r1, #3
 	str	r5, [sp, #0xc]
 	bl	StartTask
@@ -149,7 +149,7 @@
 	add	r2, r8
 	str	r3, [r2]
 	mov	r0, #0xd4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lcf15e
 .Lcf156:
 	ldr	r2, =0x77a8
@@ -204,7 +204,7 @@
 	cmp	r3, #0
 	bne	.Lcf1be
 	mov	r0, #0x7e
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lcf1be:
 	cmp	r7, #0x1f
 	bgt	.Lcf226
@@ -264,12 +264,12 @@
 	bne	.Lcf236
 	mov	r0, #2
 	mov	r1, #2
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 	b	.Lcf23e
 .Lcf236:
 	mov	r0, #0x10
 	mov	r1, #0x10
-	bl	Func_80e155c
+	bl	UpdateScreenShake
 .Lcf23e:
 	bl	Func_80cd52c
 	ldr	r2, =0x7824
@@ -278,16 +278,16 @@
 	str	r3, [r2]
 	mov	r0, #1
 	add	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0x30
 	bne	.Lcf164
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x20
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -297,7 +297,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80ceff8
+.func_end BaseAnim_Spasm
 
 	.section .rodata
 

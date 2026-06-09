@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a9f10
+.thumb_func_start Func_80a9f10  @ 0x080a9f10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,7 +13,7 @@
 	mov	r10, r2
 	str	r3, [sp, #8]
 	str	r0, [sp, #0x10]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
 	mov	r11, r0
@@ -31,7 +31,7 @@
 .La9f48:
 	mov	r0, #0
 .La9f4a:
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, r0
 	mov	r3, r11
 	mov	r4, #0
@@ -57,7 +57,7 @@
 	ldrh	r3, [r0, r3]
 	mov	r10, r3
 	mov	r0, r10
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r5, r0
 .La9f84:
 	mov	r1, r11
@@ -96,7 +96,7 @@
 	cmp	r3, #4
 	beq	.La9fec
 	ldr	r0, [sp, #0xc]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r1, r11
 	ldrb	r3, [r1, #2]
 	lsl	r3, #2
@@ -159,7 +159,7 @@
 	mov	r7, #1
 .Laa04a:
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	mov	r3, #1
 	mov	r4, r11
 	mov	r9, r3
@@ -304,7 +304,7 @@
 	mov	r7, #6
 .Laa160:
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	mov	r3, #1
 	mov	r4, r11
 	mov	r9, r3
@@ -460,7 +460,7 @@
 	mov	r7, #6
 .Laa308:
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	mov	r3, #1
 	mov	r9, r3
 	b	.Laa3b0
@@ -472,7 +472,7 @@
 	ldrh	r3, [r5, #0x34]
 	mov	r0, r10
 	strh	r3, [r5, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	mov	r0, #1
 	mov	r1, r8
 	mov	r9, r0
@@ -510,11 +510,11 @@
 	lsl	r0, r3, #3
 	sub	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	strh	r0, [r5, #0x38]
 	mov	r0, r10
 .Laa372:
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	mov	r0, r8
 	cmp	r0, #0
 	bne	.Laa3b0
@@ -596,7 +596,7 @@
 	ldr	r2, [sp, #4]
 	add	r3, r1
 	ldrh	r0, [r2, r3]
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r3, [sp]
 	add	r3, #1
 	lsl	r3, #24

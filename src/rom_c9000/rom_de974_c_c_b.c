@@ -1,12 +1,12 @@
-/* Cluster Func_80de98c..Func_80de98c extracted from goldensun/asm/rom_c9000/rom_de974_c_c.s.
+/* Cluster Anim_CrazyVoice..Anim_CrazyVoice extracted from goldensun/asm/rom_c9000/rom_de974_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
  * asm/rom_c9000/rom_de974_c_c_a.o and asm/rom_c9000/rom_de974_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_80dea70(void *context, int subanim);
+extern void BaseAnim_ParticleSpray(void *context, int subanim);
 
-void Func_80de98c(void *context) {
-    Func_80dea70(context, 2);
+void Anim_CrazyVoice(void *context) {
+    BaseAnim_ParticleSpray(context, 2);
 }

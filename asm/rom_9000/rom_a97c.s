@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800a97c
+.thumb_func_start DecompressSpriteLZ  @ 0x0800a97c
 	push	{r5, r6, r7, lr}
 	ldrb	r3, [r0, #1]
 	ldrb	r4, [r0]
@@ -80,9 +80,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800a97c
+.func_end DecompressSpriteLZ
 
-.thumb_func_start Func_800aa0c
+.thumb_func_start UpdateSpriteAnim  @ 0x0800aa0c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -109,7 +109,7 @@
 	bne	.Laa62
 	ldr	r1, =0x2c4
 	mov	r0, #0x34
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r2, =Data_8009d9c
 	mov	r1, r0
 	ldr	r0, =Func_8009bb8
@@ -203,7 +203,7 @@
 .Lab0c:
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_800b9f4
+	bl	SpriteLayer_SetAnim
 	ldr	r3, [sp, #0x2c]
 	add	r3, #0x24
 	strb	r5, [r3]
@@ -579,7 +579,7 @@
 	lsl	r3, #2
 	ldr	r0, [r3, r2]
 	mov	r1, r10
-	bl	Func_8005340
+	bl	DecompressLZ
 	b	.Laf0a
 .Laea4:
 	cmp	r3, #3
@@ -596,13 +596,13 @@
 	lsl	r3, #2
 	ldr	r0, [r3, r2]
 	mov	r1, r5
-	bl	Func_800a97c
+	bl	DecompressSpriteLZ
 	ldrb	r2, [r6, #5]
 	mov	r1, r10
 	ldr	r3, [sp, #0x1c]
 	bl	_call_via_r3
 	mov	r0, r5
-	bl	Func_8002df0
+	bl	free
 	b	.Laf0a
 .Laed8:
 	ldrb	r3, [r6, #0x16]
@@ -748,17 +748,17 @@
 	bcc	.Lafb8
 .Lafea:
 	ldr	r0, [sp, #0xc]
-	bl	Func_8002df0
+	bl	free
 .Laff0:
 	ldr	r3, [sp, #0x2c]
 	ldr	r1, [sp, #0x24]
 	ldrb	r0, [r3, #0x1c]
 	mov	r2, #0
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r4, =0x6010000
 	mov	r5, r0
 	lsl	r3, r5, #5
-	ldr	r0, =iwram_3001e50
+	ldr	r0, =gPtrs
 	add	r3, r4
 	ldr	r2, [sp, #0x14]
 	ldr	r4, [sp, #0x10]
@@ -787,7 +787,7 @@
 	add	r3, r2
 	strh	r3, [r4]
 	mov	r0, r10
-	bl	Func_8002df0
+	bl	free
 	b	.Lb054
 
 	.align	2, 0
@@ -800,7 +800,7 @@
 	cmp	r1, #0
 	bne	.Lb060
 	mov	r0, #0x34
-	bl	Func_8002dd8
+	bl	gfree
 .Lb060:
 	ldr	r0, [sp, #0x28]
 	add	sp, #0x38
@@ -812,7 +812,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800aa0c
+.func_end UpdateSpriteAnim
 
 	.section .rodata
 

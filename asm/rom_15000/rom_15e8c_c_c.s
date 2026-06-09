@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8017658
+.thumb_func_start Func_8017658  @ 0x08017658
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -26,7 +26,7 @@
 	ldr	r3, =0xffff
 	mov	r1, #1
 	and	r5, r3
-	bl	Func_8018038
+	bl	BufferString
 	lsl	r3, r0, #1
 	mov	r10, r0
 	mov	r0, #0xeb
@@ -93,7 +93,7 @@
 	ldr	r1, [sp, #0x14]
 	mov	r3, r4
 	str	r7, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r6, r0
 	mov	r0, #0
 	cmp	r6, #0
@@ -111,7 +111,7 @@
 	bne	.L17736
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #0
 	b	.L17744
 .L17736:
@@ -133,7 +133,7 @@
 	bx	r1
 .func_end Func_8017658
 
-.thumb_func_start Func_801776c
+.thumb_func_start Func_801776c  @ 0x0801776c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -168,7 +168,7 @@
 	str	r0, [sp]
 	add	r1, sp, #0x18
 	mov	r0, r10
-	bl	Func_80187ac
+	bl	TextBox
 	ldr	r2, [sp, #0x10]
 	mov	r3, #0x1e
 	sub	r3, r2
@@ -194,7 +194,7 @@
 	add	r3, #0xc
 	b	.L17800
 .L177e0:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -223,7 +223,7 @@
 	b	.L1781c
 .L17816:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L1781c:
 	bl	Func_8017364
 	cmp	r0, #0
@@ -245,11 +245,11 @@
 	bne	.L1785a
 	mov	r0, r5
 	mov	r1, r7
-	bl	Func_8016418
+	bl	CloseUIBox
 	b	.L17850
 .L1784a:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L17850:
 	mov	r0, r5
 	bl	Func_8017394
@@ -267,7 +267,7 @@
 	add	r3, r8
 	strh	r2, [r3]
 	mov	r0, #3
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	sp, #0x1c
 	pop	{r3, r5}
 	mov	r8, r3
@@ -277,7 +277,7 @@
 	bx	r0
 .func_end Func_801776c
 
-.thumb_func_start Func_801789c
+.thumb_func_start Func_801789c  @ 0x0801789c
 	push	{lr}
 	bl	Func_8016f2c
 	bl	Func_8016868

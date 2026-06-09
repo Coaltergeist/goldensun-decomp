@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808e9c0
+.thumb_func_start Func_808e9c0  @ 0x0808e9c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -91,7 +91,7 @@
 	add	r1, r9
 	mov	r2, #0
 	add	r3, r7, r4
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	bne	.L8ea74
@@ -100,10 +100,10 @@
 	bl	Func_808e9a8
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r1, #6
 	ldrsh	r0, [r6, r1]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8eaaa
 	ldr	r3, =0xfff00000
@@ -114,15 +114,15 @@
 	cmp	r2, r3
 	bne	.L8eaa2
 	mov	r0, r5
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L8ebb8
 .L8eaa2:
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L8eaaa:
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r2, [r5, #8]
 	cmp	r2, #0
 	bge	.L8eaba
@@ -179,7 +179,7 @@
 	bne	.L8ebb8
 	mov	r4, #6
 	ldrsh	r0, [r6, r4]
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8ebb8
 	mov	r4, r9
@@ -188,19 +188,19 @@
 	add	r1, r9
 	mov	r2, #0
 	add	r3, r7, r4
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8ebb8
 	bl	Func_808e9a8
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r2, [r5, #8]
 	cmp	r2, #0
 	bge	.L8eb5a

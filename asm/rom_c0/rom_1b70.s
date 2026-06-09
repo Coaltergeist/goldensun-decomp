@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_8001b70
+.arm_func_start Func_8001b70  @ 0x08001b70
 	push	{r1, r5, r6, r7, lr}
 .L1b74:
 	ldrb	r14, [r0], #1
@@ -161,7 +161,7 @@
 	bx	r12
 .func_end Func_8001b70
 
-.arm_func_start Func_8001dc8
+.arm_func_start Func_8001dc8  @ 0x08001dc8
 	push	{r5, r6, r7, r8, r9, lr}
 	ldr	r2, =iwram_3001800
 	mov	r12, #0x40
@@ -221,7 +221,7 @@
 	bx	lr
 .func_end Func_8001dc8
 
-.arm_func_start Func_8001ea8
+.arm_func_start Func_8001ea8  @ 0x08001ea8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -245,7 +245,7 @@
 	bx	lr
 .func_end Func_8001ea8
 
-.arm_func_start Func_8001ef8
+.arm_func_start Func_8001ef8  @ 0x08001ef8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -265,7 +265,7 @@
 	bx	lr
 .func_end Func_8001ef8
 
-.arm_func_start Func_8001f38
+.arm_func_start Func_8001f38  @ 0x08001f38
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -301,7 +301,7 @@
 	bx	r12
 .func_end Func_8001f38
 
-.arm_func_start Func_8001fb8
+.arm_func_start Func_8001fb8  @ 0x08001fb8
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -338,7 +338,7 @@
 	bx	lr
 .func_end Func_8001fb8
 
-.arm_func_start Func_800203c
+.arm_func_start Func_800203c  @ 0x0800203c
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -365,7 +365,7 @@
 	bx	lr
 .func_end Func_800203c
 
-.arm_func_start Func_8002098
+.arm_func_start Func_8002098  @ 0x08002098
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -392,7 +392,7 @@
 	bx	lr
 .func_end Func_8002098
 
-.arm_func_start Func_80020f4
+.arm_func_start Func_80020f4  @ 0x080020f4
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -456,7 +456,7 @@
 	bx	r12
 .func_end Func_80020f4
 
-.arm_func_start Func_80021c4
+.arm_func_start Func_80021c4  @ 0x080021c4
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -521,7 +521,7 @@
 	bx	lr
 .func_end Func_80021c4
 
-.arm_func_start Func_8002298
+.arm_func_start Func_8002298  @ 0x08002298
 	mov	r3, #0x80000000
 	b	.L22a4
 .L22a0:
@@ -550,10 +550,10 @@
 	b	.L22a4
 .func_end Func_8002298
 
-.thumb_stub Func_af0_from_thumb, Func_8000af0, r3
-.thumb_stub Func_b60_from_thumb, Func_8000b60, r3
-.thumb_stub Func_b1c_from_thumb, Func_8000b1c, r3
-.thumb_stub Func_b50_from_thumb, Func_8000b50, r3
+.thumb_stub __divsi3, divsi3_RAM, r3
+.thumb_stub __udivsi3, udivsi3_RAM, r3
+.thumb_stub __modsi3, modsi3_RAM, r3
+.thumb_stub __umodsi3, umodsi3_RAM, r3
 
 .L230c:
 .thumb
@@ -567,13 +567,13 @@
 .L231a:
 	bx	lr
 
-.thumb_func_start_noalign Func_800231c
+.thumb_func_start_noalign cos
 	mov	r1, #0x40
 	lsl	r1, #8
 	add	r0, r1
 
-.thumb_func_start_noalign Func_8002322
-Func_8002322:
+.thumb_func_start_noalign sin
+sin:
 	add	r0, #0x20
 	lsl	r1, r0, #18
 	lsr	r1, #24

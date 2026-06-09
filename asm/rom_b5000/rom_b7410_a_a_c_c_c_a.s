@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7b6c
+.thumb_func_start CreateBattleSpriteOverlays  @ 0x080b7b6c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -39,7 +39,7 @@
 	cmp	r3, #0
 	bne	.Lb7bb8
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .Lb7bb8:
 	ldr	r3, [sp, #0x18]
 	mov	r1, #0
@@ -60,7 +60,7 @@
 	b	.Lb7d46
 .Lb7bd6:
 	mov	r0, r2
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	cmp	r7, #0
 	bne	.Lb7be4
@@ -122,7 +122,7 @@
 	mov	r0, r10
 	bl	_call_via_r3
 	mov	r0, r5
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lb7c82
@@ -132,7 +132,7 @@
 	.call_via r3
 	str	r0, [r6, #0x18]
 	mov	r0, r5
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldrb	r3, [r0, #9]
 	mov	r1, r8
 	lsr	r3, #1
@@ -150,7 +150,7 @@
 	add	r3, #0x26
 	strb	r1, [r3]
 	add	r0, r5, r2
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.Lb7caa
@@ -170,7 +170,7 @@
 .Lb7cb4:
 	ldrh	r0, [r7, #4]
 	str	r1, [sp, #4]
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r6, r0
 	ldr	r1, [sp, #4]
 	cmp	r6, #0
@@ -194,7 +194,7 @@
 	mov	r1, r5
 	mov	r0, r6
 	str	r4, [sp]
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	ldr	r4, [sp]
 	mov	r5, r0
 	strb	r4, [r5, #6]
@@ -204,11 +204,11 @@
 	beq	.Lb7d14
 	mov	r1, r5
 	mov	r0, r6
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	mov	r5, r0
 	str	r5, [r7, #0x20]
 	mov	r1, #0
-	bl	_Func_800b9f4
+	bl	_SpriteLayer_SetAnim
 	mov	r3, #3
 	strb	r3, [r5, #6]
 .Lb7d14:
@@ -224,7 +224,7 @@
 .Lb7d26:
 	mov	r1, r5
 	mov	r0, r6
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	add	r1, sp, #0xc
 	ldrb	r1, [r1]
 	mov	r3, r6
@@ -270,7 +270,7 @@
 	cmp	r3, #0xfe
 	beq	.Lb7d9a
 	mov	r0, r5
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.Lb7d9a
@@ -302,5 +302,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80b7b6c
+.func_end CreateBattleSpriteOverlays
 

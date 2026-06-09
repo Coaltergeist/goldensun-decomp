@@ -188,7 +188,7 @@
 	str	r3, [r7, #8]
 	mov	r0, r6
 	mov	r1, r7
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bgt	.L50a
 	mov	r3, r6
@@ -199,28 +199,28 @@
 	bne	.L50a
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r5, =0x3333
 	mov	r0, #0xf
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xb9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	str	r5, [r6, #0x30]
 	str	r5, [r6, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
 	mov	r0, r6
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r8
 	str	r5, [r0, #0x30]
 	str	r5, [r0, #0x34]
 	ldr	r1, [r7]
 	ldr	r2, [r7, #4]
 	ldr	r3, [r7, #8]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	bl	__Func_809202c
 	ldr	r3, [r7]
 	str	r3, [r6, #8]
@@ -246,7 +246,7 @@
 	str	r3, [r2, #0x10]
 	mov	r0, r8
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L50a:
 	add	sp, #0xc
 	pop	{r3, r5, r6}
@@ -281,7 +281,7 @@
 	ldr	r0, [r2, r3]
 	b	.L554
 .L552:
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 .L554:
 	lsl	r3, r1, #7
 	add	r3, r6, r3
@@ -375,7 +375,7 @@
 	mov	r0, r5
 	mov	r1, r6
 	str	r3, [r6, #8]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	ble	.L61a
 	mov	r3, #0
@@ -429,7 +429,7 @@
 	ldr	r3, =.L2ce0
 	mov	r4, #0
 	str	r1, [sp, #4]
-	ldr	r0, =.L2cf8
+	ldr	r0, =gScript_884__0200acf8
 	str	r3, [sp]
 	mov	r8, r4
 .L67c:
@@ -570,7 +570,7 @@
 	ldr	r3, [r6]
 	mov	r1, #0
 	str	r1, [sp, #0xc]
-	ldr	r5, =.L2cf8
+	ldr	r5, =gScript_884__0200acf8
 	lsl	r1, r3, #4
 	add	r3, r1, #4
 	ldr	r2, [r5, r3]
@@ -633,7 +633,7 @@
 	mov	r11, r8
 .L804:
 	ldr	r3, [r6]
-	ldr	r0, =.L2cf8
+	ldr	r0, =gScript_884__0200acf8
 	lsl	r3, #4
 	add	r3, #4
 	ldr	r2, [r0, r3]
@@ -648,7 +648,7 @@
 	bge	.L86a
 .L820:
 	ldr	r3, [r6]
-	ldr	r0, =.L2cf8
+	ldr	r0, =gScript_884__0200acf8
 	lsl	r3, #4
 	ldr	r2, [r0, r3]
 	mov	r1, r8
@@ -663,7 +663,7 @@
 	mov	r1, r4
 	mov	r0, r10
 	str	r4, [sp]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #2
 	beq	.L894
@@ -773,7 +773,7 @@
 	mov	r8, r3
 	bl	__MapActor_GetActor
 	ldr	r3, [sp, #0x48]
-	ldr	r4, =.L2cf8
+	ldr	r4, =gScript_884__0200acf8
 	lsl	r1, r3, #4
 	add	r3, r1, #4
 	ldr	r2, [r4, r3]
@@ -845,12 +845,12 @@
 	mov	r2, r5
 	mov	r0, #0
 	mov	r1, r6
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #8
 	mov	r0, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xf
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r4, r11
 	ldr	r2, [sp, #0x50]
 	ldr	r3, [r4]
@@ -878,36 +878,36 @@
 	ldr	r3, =OvlFunc_947_200858c
 	str	r3, [r0, #0x6c]
 	mov	r0, #4
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r3, r8
 	sub	r3, #6
 	cmp	r3, #7
 	bhi	.La08
 	mov	r0, r7
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.La10
 .La08:
 	mov	r0, r7
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .La10:
 	mov	r0, #0xef
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r7
 	ldr	r1, [sp, #0x50]
 	ldr	r2, [sp, #0x54]
 	ldr	r3, [sp, #0x58]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0
 	ldr	r1, =0x4ccc
 	ldr	r2, =0x1999
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	ldr	r2, =.L2ca0
 	mov	r1, r8
 	lsl	r3, r1, #2
@@ -931,21 +931,21 @@
 	bl	_call_via_r3
 .La68:
 	mov	r0, #0
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #1
 	mov	r0, #0
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r2, #0
 	str	r2, [r0, #0x6c]
 	mov	r0, r7
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xd5
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r3, [sp, #0x50]
 	str	r3, [r7, #8]
 	ldr	r3, [sp, #0x58]
@@ -955,9 +955,9 @@
 	str	r3, [r7, #0x2c]
 	mov	r0, r7
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r2, [sp, #0x48]
-	ldr	r4, =.L2cf8
+	ldr	r4, =gScript_884__0200acf8
 	lsl	r2, #4
 	ldr	r3, [r4, r2]
 	ldr	r0, [sp, #0x50]
@@ -1119,7 +1119,7 @@
 	ldr	r0, [r0, #0x10]
 	lsl	r1, r2, #4
 	str	r0, [r7, #0x10]
-	ldr	r4, =.L2cf8
+	ldr	r4, =gScript_884__0200acf8
 	add	r5, r1, #4
 	ldr	r2, [r4, r5]
 	mov	r14, r0
@@ -1220,7 +1220,7 @@
 	ldr	r4, [sp, #0x30]
 	mov	r10, r2
 	add	r1, r0
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	add	r3, r4, r3
 	add	r5, r1, r2

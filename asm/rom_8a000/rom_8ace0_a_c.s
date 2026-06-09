@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b3d0
+.thumb_func_start Func_808b3d0  @ 0x0808b3d0
 	push	{lr}
 	cmp	r0, #8
 	bgt	.L8b3e6
@@ -18,7 +18,7 @@
 	bx	r1
 .func_end Func_808b3d0
 
-.thumb_func_start Func_808b3ec
+.thumb_func_start LoadMapActors  @ 0x0808b3ec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -107,7 +107,7 @@
 	bl	Func_808b398
 	mov	r10, r0
 	ldr	r0, [sp, #4]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L8b512
@@ -115,7 +115,7 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	mov	r0, r10
-	bl	_Func_800c150
+	bl	_CreateActor
 	ldrb	r2, [r7, #0x17]
 	mov	r3, #1
 	and	r3, r2
@@ -126,7 +126,7 @@
 	ldr	r0, [sp, #4]
 	sub	r0, #1
 	str	r1, [sp]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, r0
 	add	r3, #0x54
 	ldrb	r3, [r3]
@@ -154,7 +154,7 @@
 	strb	r5, [r1, #0x1c]
 .L8b4f6:
 	mov	r0, #0x21
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b528
 	mov	r3, r10
@@ -163,24 +163,24 @@
 	bhi	.L8b528
 	mov	r0, r6
 	mov	r1, #0xe2
-	bl	_Func_800c430
+	bl	_Actor_AddSpriteLayer
 	b	.L8b528
 .L8b512:
 	ldr	r0, =0x109
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8b528
 	ldr	r1, [r7, #8]
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	mov	r0, r6
-	bl	_Func_800d130
+	bl	_Actor_SetPos
 .L8b528:
 	cmp	r6, #0
 	beq	.L8b600
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r3, r6
 	add	r3, #0x54
 	ldrb	r3, [r3]
@@ -192,7 +192,7 @@
 	beq	.L8b556
 	bl	Random
 	mov	r1, #0x1e
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r3, r8
 	add	r3, #0x24
 	strb	r0, [r3]
@@ -205,10 +205,10 @@
 	strb	r3, [r2]
 	ldr	r1, [r7, #4]
 	mov	r0, r6
-	bl	Func_8093a6c
+	bl	Actor_SetBehavior
 	mov	r0, r6
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r2, [r6, #8]
 	cmp	r2, #0
 	bge	.L8b57c
@@ -255,7 +255,7 @@
 	and	r2, r3
 	strb	r2, [r1]
 	mov	r0, #0x21
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8b5f8
 	mov	r1, r8
@@ -312,5 +312,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808b3ec
+.func_end LoadMapActors
 

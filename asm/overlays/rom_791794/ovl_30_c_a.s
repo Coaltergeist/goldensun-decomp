@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_897_2008f30
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -11,7 +11,7 @@
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xa
 	bne	.Lf4a
-	bl	__Func_809509c
+	bl	__StartEarthquake
 	bl	OvlFunc_897_2008054
 .Lf4a:
 	mov	r0, #0

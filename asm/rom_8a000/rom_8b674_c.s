@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b868
+.thumb_func_start Func_808b868  @ 0x0808b868
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e70
 	mov	r5, r0
@@ -8,9 +8,9 @@
 	mov	r0, #0xb2
 	lsl	r0, #1
 	ldr	r6, [r3]
-	bl	_Func_8079374
+	bl	_ClearFlag
 	mov	r0, r7
-	bl	_Func_8079358
+	bl	_SetFlag
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	mov	r2, #1
@@ -64,7 +64,7 @@
 	bx	r0
 .func_end Func_808b868
 
-.thumb_func_start Func_808b8e8
+.thumb_func_start Func_808b8e8  @ 0x0808b8e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -128,7 +128,7 @@
 	mov	r1, r11
 	and	r3, r1
 	strb	r3, [r2, #0x1d]
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r2, #0
 	str	r2, [r5]
 .L8b968:
@@ -146,7 +146,7 @@
 	bx	r0
 .func_end Func_808b8e8
 
-.thumb_func_start Func_808b98c
+.thumb_func_start Func_808b98c  @ 0x0808b98c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -173,7 +173,7 @@
 	mov	r1, r8
 	and	r3, r1
 	strb	r3, [r2, #0x1d]
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r3, r10
 	str	r3, [r6, r5]
 .L8b9c6:
@@ -188,10 +188,10 @@
 	str	r3, [r5, #0xc]
 	cmp	r6, #0
 	beq	.L8b9e8
-	bl	Func_808b824
+	bl	FindMapActorSlot
 	mov	r1, r0
 	mov	r0, r6
-	bl	Func_808b3ec
+	bl	LoadMapActors
 .L8b9e8:
 	pop	{r3, r5}
 	mov	r8, r3
@@ -201,7 +201,7 @@
 	bx	r0
 .func_end Func_808b98c
 
-.thumb_func_start Func_808b9f8
+.thumb_func_start Func_808b9f8  @ 0x0808b9f8
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r0, #0x8c
@@ -220,7 +220,7 @@
 	bx	r0
 .func_end Func_808b9f8
 
-.thumb_func_start Func_808ba1c
+.thumb_func_start GetFieldActor  @ 0x0808ba1c
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
@@ -235,7 +235,7 @@
 .L8ba30:
 	pop	{r1}
 	bx	r1
-.func_end Func_808ba1c
+.func_end GetFieldActor
 
 	.section .rodata
 	.global .L9f810

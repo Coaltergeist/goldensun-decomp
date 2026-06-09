@@ -7,10 +7,10 @@
  */
 extern void *__MapActor_GetActor(int);
 extern void __Func_80b0278(int, int);
-extern void __Func_80916b0(void);
-extern void __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
-extern void __Func_8091750(void);
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_936_2008394(void)
 {
@@ -21,9 +21,9 @@ void OvlFunc_936_2008394(void)
     if (v > (0x80 << 24)) {
         __Func_80b0278(0x16, 0x16);
     } else {
-        __Func_80916b0();
-        __Func_8092b94(0x1acf);
-        __Func_8092f84(0x16, 0);
-        __Func_8091750();
+        __CutsceneStart();
+        __MessageID(0x1acf);
+        __ActorMessage(0x16, 0);
+        __CutsceneEnd();
     }
 }

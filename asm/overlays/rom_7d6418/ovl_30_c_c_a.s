@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_951_2008044
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -26,7 +26,7 @@
 	ldr	r5, =0xe39
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -36,17 +36,17 @@
 	cmp	r0, #0
 	bne	.La2
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.La8
 .La2:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .La8:
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -57,7 +57,7 @@
 	ldr	r5, =0xe19
 	mov	r6, r0
 	mov	r0, r5
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
 	bl	__Func_8092c40
@@ -67,17 +67,17 @@
 	cmp	r0, #0
 	bne	.Lea
 	mov	r0, #0xa
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	add	r0, r5, #1
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.Lf0
 .Lea:
 	add	r0, r5, #2
-	bl	__Func_8092b94
+	bl	__MessageID
 .Lf0:
 	mov	r0, r6
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -85,22 +85,22 @@
 
 .thumb_func_start OvlFunc_951_2008104
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	mov	r0, #0x80
 	add	r3, r2
 	lsl	r0, #2
 	ldr	r5, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L128
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	bl	OvlFunc_951_2008880
 .L128:
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, r5
 	mov	r1, #0x78
 	mov	r2, #0x98
@@ -111,7 +111,7 @@
 	mov	r0, r5
 	bl	__Func_8092adc
 	bl	OvlFunc_951_2008ac8
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -119,28 +119,28 @@
 
 .thumb_func_start OvlFunc_951_2008154
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0xe34
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_951_2008154
 
 .thumb_func_start OvlFunc_951_2008178
 	push	{lr}
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r0, =0xe35
-	bl	__Func_8092b94
+	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
 	bl	__Func_8092c40
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_951_2008178

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8019d2c
+.thumb_func_start GetPortrait  @ 0x08019d2c
 	push	{r5, lr}
 	mov	r1, #1
 	neg	r1, r1
@@ -64,9 +64,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8019d2c
+.func_end GetPortrait
 
-.thumb_func_start Func_8019da8
+.thumb_func_start Func_8019da8  @ 0x08019da8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -81,7 +81,7 @@
 	mov	r10, r0
 	mov	r11, r1
 	ldr	r5, [r3]
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2
@@ -104,7 +104,7 @@
 	mov	r3, #5
 	mov	r1, r7
 	mov	r2, #6
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, #0
 	mov	r5, r0
 	mov	r8, r3
@@ -116,7 +116,7 @@
 	mov	r1, r7
 	mov	r2, #5
 	mov	r3, #5
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r5, r0
 .L19e10:
 	cmp	r5, #0
@@ -145,14 +145,14 @@
 	bx	r1
 .func_end Func_8019da8
 
-.thumb_func_start Func_8019e48
+.thumb_func_start Func_8019e48  @ 0x08019e48
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r2, #0xa0
 	ldr	r6, [r3]
 	lsl	r2, #3
 	add	r5, r6, r2
-	bl	Func_8019d2c
+	bl	GetPortrait
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3
@@ -167,7 +167,7 @@
 .L19e6e:
 	mov	r0, r5
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	b	.L19ea4
 .L19e78:
 	ldr	r2, =0x12ec

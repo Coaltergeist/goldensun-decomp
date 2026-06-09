@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800b6b8
+.thumb_func_start PreloadSpriteGFX  @ 0x0800b6b8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -22,7 +22,7 @@
 	lsl	r3, r6, #3
 	add	r5, r3
 	str	r4, [sp]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	ldr	r4, [sp]
 	ldr	r2, =.L12fa0
 	lsl	r3, r6, #12
@@ -57,7 +57,7 @@
 .Lb71e:
 	bl	GetFile
 	mov	r1, r7
-	bl	Func_8005340
+	bl	DecompressLZ
 	ldr	r3, [r7]
 	mov	r4, r7
 	mov	r5, #0
@@ -115,7 +115,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800b6b8
+.func_end PreloadSpriteGFX
 
 	.section .rodata
 

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808d9a4
+.thumb_func_start Func_808d9a4  @ 0x0808d9a4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -10,7 +10,7 @@
 	mov	r7, r8
 	push	{r7}
 	mov	r8, r0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	mov	r5, r8
@@ -35,7 +35,7 @@
 .L8d9e6:
 	mov	r0, #3
 	mov	r1, r8
-	bl	Func_808d48c
+	bl	FindMapActorEvent
 	mov	r7, r0
 	cmp	r7, #0
 	bne	.L8d9f6
@@ -63,12 +63,12 @@
 	bl	_Func_801776c
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079358
+	bl	_SetFlag
 	b	.L8da34
 .L8da2c:
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 .L8da34:
 	ldr	r2, [r7, #8]
 	mov	r3, #0xf0
@@ -88,7 +88,7 @@
 	bl	Func_808d428
 	cmp	r0, #0
 	beq	.L8da68
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -98,7 +98,7 @@
 .L8da68:
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8da76
 	b	.L8dd6a
@@ -122,7 +122,7 @@
 	bl	_Func_801776c
 	b	.L8dd6a
 .L8da9a:
-	bl	Func_80916b0
+	bl	CutsceneStart
 	mov	r0, r10
 	bl	Func_808d428
 	cmp	r0, #0
@@ -175,7 +175,7 @@
 	mov	r6, r0
 	bl	Func_808f0d8
 	mov	r0, #0x53
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r0, [r7, #8]
 	mov	r1, #5
 	bl	_Func_8019908
@@ -189,19 +189,19 @@
 	mov	r0, #1
 	bl	_Func_801ef08
 	mov	r0, #0x7e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r0, r5, #1
 	mov	r1, #1
 	bl	_Func_801776c
 	bl	_Func_801f5d4
 	mov	r1, #2
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0xf6
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r5, #2
 	mov	r0, #0x1e
-	bl	Func_809163c
+	bl	CutsceneWait
 	mov	r0, r5
 	mov	r1, #1
 	bl	_Func_801776c
@@ -214,7 +214,7 @@
 	b	.L8dd50
 .L8db6a:
 	mov	r0, r10
-	bl	_Func_8079358
+	bl	_SetFlag
 	b	.L8dd50
 
 	.pool_aligned
@@ -241,7 +241,7 @@
 	ldr	r2, .L8dbf8	@ 0x1000
 	mov	r1, r10
 	orr	r1, r2
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0x8d
 	lsl	r0, #2
 	mov	r10, r1
@@ -251,12 +251,12 @@
 .L8dbd0:
 	ldrh	r1, [r7, #8]
 	mov	r0, #0x63
-	bl	Func_808b05c
+	bl	GetEncounterGroup
 	mov	r1, #0xbe
 	lsl	r1, #1
 	add	r3, r5, r1
 	strh	r0, [r3]
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	ldr	r3, =0x22b
 	add	r2, r5, r3
 	mov	r3, #2
@@ -277,7 +277,7 @@
 	add	r3, r5, r0
 	mov	r1, #0
 	ldrsh	r0, [r3, r1]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0x973
 	b	.L8dd3e
 .L8dc18:
@@ -285,7 +285,7 @@
 	lsl	r2, #14
 	cmp	r3, r2
 	bne	.L8dc80
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xfa
 	lsl	r0, #1
 	add	r3, r0
@@ -294,7 +294,7 @@
 	bl	Func_808ef70
 	mov	r5, r0
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r7]
 	mov	r1, r11
 	and	r3, r1
@@ -306,7 +306,7 @@
 	mov	r0, r5
 	bl	Func_808f0d8
 	mov	r0, #0x53
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrh	r0, [r7, #8]
 	mov	r1, #5
 	bl	_Func_8019908
@@ -314,16 +314,16 @@
 	mov	r1, #3
 	bl	_Func_801776c
 	ldrh	r0, [r7, #8]
-	bl	_Func_8079700
+	bl	_AddCoins
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r10, r2
 	beq	.L8dc78
 	mov	r0, r10
-	bl	_Func_8079358
+	bl	_SetFlag
 .L8dc78:
 	mov	r0, r5
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L8dd50
 .L8dc80:
 	ldr	r3, =ewram_2000434
@@ -333,9 +333,9 @@
 	bl	Func_808ef70
 	mov	r9, r0
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r0, [r7, #8]
-	bl	_Func_8078618
+	bl	_GiveItem
 	mov	r3, #1
 	mov	r6, r0
 	neg	r3, r3
@@ -356,7 +356,7 @@
 	mov	r1, #1
 	bl	_Func_801776c
 	mov	r0, r9
-	bl	Func_808f0c8
+	bl	DeleteMapActorPtr
 	ldr	r3, [r7]
 	mov	r2, r11
 	and	r3, r2
@@ -377,7 +377,7 @@
 	mov	r0, r9
 	bl	Func_808f0d8
 	mov	r0, #0x53
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, [r7, #8]
 	mov	r1, #2
 	and	r0, r5
@@ -403,10 +403,10 @@
 	cmp	r10, r2
 	beq	.L8dd34
 	mov	r0, r10
-	bl	_Func_8079358
+	bl	_SetFlag
 .L8dd34:
 	mov	r0, r9
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	b	.L8dd50
 .L8dd3c:
 	ldr	r0, =0x96f
@@ -420,7 +420,7 @@
 	add	r0, r5, r0
 	bl	_Func_801776c
 .L8dd50:
-	bl	Func_8091750
+	bl	CutsceneEnd
 	bl	Func_809202c
 	b	.L8dd6a
 .L8dd5a:
@@ -433,7 +433,7 @@
 .L8dd6a:
 	mov	r0, #0xa1
 	lsl	r0, #1
-	bl	_Func_8079374
+	bl	_ClearFlag
 .L8dd72:
 	mov	r0, #0
 	pop	{r3, r5, r6, r7}
@@ -446,7 +446,7 @@
 	bx	r1
 .func_end Func_808d9a4
 
-.thumb_func_start Func_808ddb8
+.thumb_func_start Func_808ddb8  @ 0x0808ddb8
 	push	{lr}
 	ldr	r2, =.L9e686
 	mov	r4, #0
@@ -475,7 +475,7 @@
 	bx	r1
 .func_end Func_808ddb8
 
-.thumb_func_start Func_808ddec
+.thumb_func_start Func_808ddec  @ 0x0808ddec
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -490,7 +490,7 @@
 	mov	r9, r0
 	str	r1, [sp]
 	mov	r11, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.L8def2
@@ -500,7 +500,7 @@
 	cmp	r10, r9
 	beq	.L8dee8
 	mov	r0, r10
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L8dee8
@@ -575,7 +575,7 @@
 	add	r0, r5
 	lsl	r0, #1
 	mov	r1, #0xd
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .L8deb2:
 	cmp	r5, r11
@@ -586,7 +586,7 @@
 	sub	r0, r3
 	ldr	r3, [r7, #8]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	lsl	r0, #16
 	lsr	r0, #16
 	cmp	r5, #0xb
@@ -624,7 +624,7 @@
 	bx	r1
 .func_end Func_808ddec
 
-.thumb_func_start Func_808df1c
+.thumb_func_start Func_808df1c  @ 0x0808df1c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -642,7 +642,7 @@
 	bl	Func_808ddb8
 	str	r0, [sp]
 	ldr	r0, [sp, #8]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r7, r0
 	cmp	r7, #0
 	bne	.L8df4c
@@ -663,7 +663,7 @@
 	cmp	r9, r1
 	beq	.L8e052
 	mov	r0, r9
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L8e052
@@ -744,7 +744,7 @@
 	beq	.L8e006
 	lsl	r0, r5, #1
 	mov	r1, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .L8e006:
 	ldr	r1, [sp]
@@ -756,7 +756,7 @@
 	sub	r0, r3
 	ldr	r3, [r7, #8]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	mov	r2, #0xc0
 	lsl	r0, #16
 	lsr	r0, #16

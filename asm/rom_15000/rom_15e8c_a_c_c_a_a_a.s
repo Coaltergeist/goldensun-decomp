@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8016418
+.thumb_func_start CloseUIBox  @ 0x08016418
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r7, r1
@@ -24,7 +24,7 @@
 	ldrh	r1, [r5, #0xe]
 	ldrh	r2, [r5, #8]
 	ldrh	r3, [r5, #0xa]
-	bl	Func_8016178
+	bl	ClearUIRegion
 	str	r6, [r5]
 	str	r6, [r5, #4]
 	strh	r6, [r5, #8]
@@ -50,9 +50,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8016418
+.func_end CloseUIBox
 
-.thumb_func_start Func_8016478
+.thumb_func_start Func_8016478  @ 0x08016478
 	push	{r5, lr}
 	mov	r5, r0
 	ldrh	r2, [r5, #0x16]

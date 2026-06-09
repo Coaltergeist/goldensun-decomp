@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7f9c
+.thumb_func_start Func_80b7f9c  @ 0x080b7f9c
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e80
 	ldr	r5, [r3]
@@ -21,16 +21,16 @@
 	str	r6, [r5, #0x1c]
 	str	r6, [r5, #0x18]
 	sub	sp, #0xc
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	mov	r0, r5
 	add	r0, #0xc
-	bl	Func_8004cb4
+	bl	MatrixTranslatev
 	mov	r3, #0x36
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004c1c
+	bl	MatrixYaw
 	mov	r3, #0x34
 	ldrsh	r0, [r5, r3]
-	bl	Func_8004bd4
+	bl	MatrixPitch
 	mov	r0, sp
 	str	r6, [r0]
 	str	r6, [r0, #4]
@@ -45,9 +45,9 @@
 	bx	r0
 .func_end Func_80b7f9c
 
-.thumb_func_start Func_80b8000
+.thumb_func_start Func_80b8000  @ 0x080b8000
 	push	{r5, r6, lr}
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r5, [r6]
 	mov	r3, #0x80
@@ -69,12 +69,12 @@
 	mov	r3, #1
 	strb	r3, [r2]
 	mov	r0, r5
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	mov	r0, r5
 	ldr	r1, [r6, #0xc]
 	ldr	r3, [r6, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	ldr	r0, [r6, #0x10]
 	cmp	r0, #0
 	bge	.Lb8048
@@ -82,7 +82,7 @@
 .Lb8048:
 	ldr	r1, [r6, #0xc]
 	asr	r0, #3
-	bl	Func_80044d0
+	bl	atan2
 	mov	r3, #0x80
 	lsl	r3, #8
 	add	r0, r3
@@ -92,9 +92,9 @@
 	bx	r0
 .func_end Func_80b8000
 
-.thumb_func_start Func_80b8064
+.thumb_func_start Func_80b8064  @ 0x080b8064
 	push	{r5, r6, lr}
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r5, [r6]
 	mov	r3, #0x80
@@ -114,23 +114,23 @@
 	str	r3, [r5, #0x44]
 	mov	r0, r5
 	strb	r3, [r2]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r3, [r6, #0xc]
 	lsl	r1, r3, #1
 	add	r1, r3
 	mov	r0, r5
 	ldr	r3, [r6, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
 .func_end Func_80b8064
 
-.thumb_func_start Func_80b80b8
+.thumb_func_start Func_80b80b8  @ 0x080b80b8
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -145,7 +145,7 @@
 	mul	r0, r3
 	mov	r1, #0x64
 	mov	r8, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6, #0x10]
 	ldr	r6, [r5, #0x10]
 	sub	r3, r6
@@ -153,7 +153,7 @@
 	mov	r1, #0x64
 	mov	r0, r10
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, =REG_BLDCNT
 	ldr	r3, .Lb812c	@ 0
 	strh	r3, [r2]
@@ -179,10 +179,10 @@
 	mov	r1, r8
 	mov	r2, #0
 	mov	r3, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #2
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.Lb8138
 
 	.align	2, 0
@@ -199,7 +199,7 @@
 	bx	r0
 .func_end Func_80b80b8
 
-.thumb_func_start Func_80b8144
+.thumb_func_start Func_80b8144  @ 0x080b8144
 	push	{lr}
 	mov	r2, r0
 	ldr	r0, [r2]
@@ -219,14 +219,14 @@
 	ldr	r1, [r2, #0xc]
 	ldr	r3, [r2, #0x10]
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	pop	{r0}
 	bx	r0
 .func_end Func_80b8144
 
-.thumb_func_start Func_80b8178
+.thumb_func_start Func_80b8178  @ 0x080b8178
 	push	{r5, r6, lr}
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r5, [r6]
 	mov	r3, #0x80
@@ -246,7 +246,7 @@
 	str	r3, [r5, #0x44]
 	mov	r0, r5
 	strb	r3, [r2]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r3, [r6, #0xc]
 	lsl	r1, r3, #1
 	add	r1, r3
@@ -256,15 +256,15 @@
 	ldr	r3, [r6, #0x10]
 	mov	r0, r5
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
 .func_end Func_80b8178
 
-.thumb_func_start Func_80b81c8
+.thumb_func_start Func_80b81c8  @ 0x080b81c8
 	push	{r5, r6, lr}
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r5, [r6]
 	mov	r3, #0x80
@@ -282,7 +282,7 @@
 	str	r3, [r5, #0x44]
 	mov	r0, r5
 	strb	r3, [r2]
-	bl	_Func_800c4ac
+	bl	_Actor_Stop
 	ldr	r3, =Func_8000888
 	ldr	r0, [r6, #0xc]
 	ldr	r1, =0x14ccc
@@ -291,10 +291,10 @@
 	ldr	r3, [r6, #0x10]
 	mov	r0, r5
 	mov	r2, #0
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, r5
 	mov	r1, #5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

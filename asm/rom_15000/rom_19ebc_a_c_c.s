@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8019ee4
+.thumb_func_start LoadOldUIIcon  @ 0x08019ee4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -17,7 +17,7 @@
 	mov	r0, #0x11
 	str	r3, [sp]
 	mov	r11, r2
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r3, =.L29a10
 	lsl	r5, #2
 	ldr	r2, =0x604
@@ -39,7 +39,7 @@
 	mov	r2, r8
 	strh	r5, [r2]
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	ldr	r3, =.L29e00
 	lsl	r6, #2
 	ldr	r3, [r3, r6]
@@ -51,11 +51,11 @@
 	mov	r0, r7
 	strh	r5, [r2]
 	mov	r1, #1
-	bl	Func_801a5a4
+	bl	LoadIcon
 	ldr	r3, [sp, #0x24]
 	cmp	r3, #0
 	bne	.L19f5c
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r2, r11
 	str	r0, [r2]
 .L19f5c:
@@ -65,11 +65,11 @@
 	lsl	r3, #3
 	add	r2, r7, r3
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, [sp]
 	str	r0, [r2]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	add	sp, #4
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -79,9 +79,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8019ee4
+.func_end LoadOldUIIcon
 
-.thumb_func_start Func_8019f98
+.thumb_func_start LoadOldMoveIcon  @ 0x08019f98
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -91,13 +91,13 @@
 	mov	r6, r1
 	mov	r8, r2
 	mov	r10, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r1, r6
 	ldrb	r0, [r0, #4]
 	mov	r2, r8
 	mov	r3, r10
 	str	r5, [sp]
-	bl	Func_8019fcc
+	bl	LoadItemIconID
 	add	sp, #4
 	pop	{r3, r5}
 	mov	r8, r3
@@ -105,9 +105,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8019f98
+.func_end LoadOldMoveIcon
 
-.thumb_func_start Func_8019fcc
+.thumb_func_start LoadItemIconID  @ 0x08019fcc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -122,9 +122,9 @@
 	mov	r0, #0x11
 	mov	r8, r2
 	mov	r9, r3
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r5, r0
-	bl	Func_8019ebc
+	bl	NumItemIcons
 	cmp	r6, r0
 	bcc	.L19ff8
 	mov	r6, #0
@@ -146,7 +146,7 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	mov	r2, #1
 	mov	r10, r2
 .L1a022:
@@ -166,11 +166,11 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, r10
-	bl	Func_801a5a4
+	bl	LoadIcon
 	ldr	r2, [sp, #0x1c]
 	cmp	r2, #0
 	bne	.L1a054
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r3, r8
 	str	r0, [r3]
 .L1a054:
@@ -180,11 +180,11 @@
 	ldr	r0, [r1]
 	add	r2, r5, r3
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, r9
 	str	r0, [r1]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r3, r5, r6}
 	mov	r8, r3
 	mov	r9, r5
@@ -192,9 +192,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8019fcc
+.func_end LoadItemIconID
 
-.thumb_func_start Func_801a088
+.thumb_func_start DrawInventoryIcon  @ 0x0801a088
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -211,7 +211,7 @@
 	mov	r1, #0
 	str	r1, [sp, #4]
 	mov	r10, r1
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	ldr	r3, =iwram_3001e94
 	str	r0, [sp]
 	ldr	r5, [r3]
@@ -241,7 +241,7 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	mov	r2, #1
 	str	r2, [sp, #4]
 .L1a0ec:
@@ -267,7 +267,7 @@
 	strh	r6, [r7]
 	ldr	r1, [sp, #4]
 	mov	r0, r5
-	bl	Func_801a5a4
+	bl	LoadIcon
 	mov	r3, #8
 	mov	r1, r11
 	and	r3, r1
@@ -288,7 +288,7 @@
 	strh	r6, [r2]
 	mov	r1, #1
 	strh	r6, [r7]
-	bl	Func_801a5a4
+	bl	LoadIcon
 .L1a148:
 	mov	r3, #0x10
 	mov	r1, r11
@@ -316,7 +316,7 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_801a5a4
+	bl	LoadIcon
 .L1a180:
 	mov	r3, #0x20
 	mov	r2, r11
@@ -354,7 +354,7 @@
 	strh	r1, [r3]
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_801a5a4
+	bl	LoadIcon
 .L1a1cc:
 	mov	r3, #2
 	mov	r1, r11
@@ -396,7 +396,7 @@
 	bgt	.L1a26e
 	mov	r1, #0xa
 	mov	r0, r10
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =.L29b68
 	lsl	r0, #2
 	ldr	r2, =0x604
@@ -417,10 +417,10 @@
 	mov	r0, r5
 	mov	r1, #1
 	strh	r6, [r7]
-	bl	Func_801a5a4
+	bl	LoadIcon
 	mov	r0, r10
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	cmp	r0, #0
 	beq	.L1a26e
 	lsl	r3, r0, #2
@@ -434,7 +434,7 @@
 	mov	r0, r5
 	strh	r6, [r7]
 	mov	r1, #1
-	bl	Func_801a5a4
+	bl	LoadIcon
 .L1a26e:
 	mov	r0, #0x80
 	lsl	r0, #1
@@ -448,9 +448,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_801a088
+.func_end DrawInventoryIcon
 
-.thumb_func_start Func_801a2a4
+.thumb_func_start LoadInventoryIcon  @ 0x0801a2a4
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -461,20 +461,20 @@
 	lsl	r1, #3
 	mov	r0, #0x11
 	mov	r10, r2
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, r8
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_801a088
+	bl	DrawInventoryIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	mov	r1, #0x80
 	mov	r2, r5
 	mov	r0, r10
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #1
 	pop	{r3, r5}
 	mov	r8, r3
@@ -482,9 +482,9 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_801a2a4
+.func_end LoadInventoryIcon
 
-.thumb_func_start Func_801a2ec
+.thumb_func_start LoadStatusIcon  @ 0x0801a2ec
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -493,28 +493,28 @@
 	lsl	r1, #3
 	mov	r0, #0x11
 	mov	r8, r2
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_801a4c0
+	bl	DecompressStatusIcon
 	mov	r3, #0x80
 	lsl	r3, #3
 	add	r5, r3
 	mov	r1, #0x80
 	mov	r2, r5
 	mov	r0, r8
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #1
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_801a2ec
+.func_end LoadStatusIcon
 
-.thumb_func_start Func_801a32c
+.thumb_func_start LoadUIBanner  @ 0x0801a32c
 	push	{lr}
 	mov	r3, r2
 	cmp	r0, #1
@@ -540,7 +540,7 @@
 .L1a350:
 	mov	r0, r3
 	mov	r1, #0x20
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #1
 	pop	{r1}
 	bx	r1
@@ -553,16 +553,16 @@
 	.word	Data_31864
 .L1a36c:
 	.word	Data_31864
-.func_end Func_801a32c
+.func_end LoadUIBanner
 
-.thumb_func_start Func_801a370
+.thumb_func_start LoadItemIcon  @ 0x0801a370
 	push	{r5, r6, lr}
 	mov	r5, r0
 	ldr	r0, =0x1ff
 	ldr	r3, =iwram_3001e94
 	and	r0, r5
 	ldr	r6, [r3]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	cmp	r5, #0
 	beq	.L1a394
 	ldr	r2, =0x604
@@ -590,13 +590,13 @@
 	strh	r2, [r3]
 	mov	r0, r6
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_801a370
+.func_end LoadItemIcon
 
-.thumb_func_start Func_801a3d0
+.thumb_func_start LoadMoveIcon  @ 0x0801a3d0
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r8
@@ -606,13 +606,13 @@
 	mov	r6, r1
 	mov	r8, r2
 	mov	r10, r3
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r1, r6
 	ldrb	r0, [r0, #4]
 	mov	r2, r8
 	mov	r3, r10
 	str	r5, [sp]
-	bl	Func_801a404
+	bl	LoadMoveIconID
 	add	sp, #4
 	pop	{r3, r5}
 	mov	r8, r3
@@ -620,9 +620,9 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_801a3d0
+.func_end LoadMoveIcon
 
-.thumb_func_start Func_801a404
+.thumb_func_start LoadMoveIconID  @ 0x0801a404
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -635,11 +635,11 @@
 	mov	r0, #0x11
 	mov	r10, r2
 	mov	r9, r3
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0
 	mov	r5, r0
 	mov	r8, r1
-	bl	Func_8019ed0
+	bl	NumMoveIcons
 	cmp	r6, r0
 	bcc	.L1a430
 	mov	r6, #0
@@ -661,7 +661,7 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	mov	r2, #1
 	mov	r8, r2
 .L1a45a:
@@ -681,11 +681,11 @@
 	strh	r2, [r3]
 	mov	r0, r5
 	mov	r1, r8
-	bl	Func_801a5a4
+	bl	LoadIcon
 	ldr	r2, [sp, #0x1c]
 	cmp	r2, #0
 	bne	.L1a48c
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r3, r10
 	str	r0, [r3]
 .L1a48c:
@@ -695,11 +695,11 @@
 	ldr	r0, [r1]
 	add	r2, r5, r3
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, r9
 	str	r0, [r1]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r3, r5, r6}
 	mov	r8, r3
 	mov	r9, r5
@@ -707,9 +707,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801a404
+.func_end LoadMoveIconID
 
-.thumb_func_start Func_801a4c0
+.thumb_func_start DecompressStatusIcon  @ 0x0801a4c0
 	push	{lr}
 	ldr	r3, =iwram_3001e94
 	ldr	r1, [r3]
@@ -729,12 +729,12 @@
 	strh	r2, [r3]
 	mov	r0, r1
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	pop	{r0}
 	bx	r0
-.func_end Func_801a4c0
+.func_end DecompressStatusIcon
 
-.thumb_func_start Func_801a4fc
+.thumb_func_start LoadPortrait  @ 0x0801a4fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -744,7 +744,7 @@
 	mov	r0, #0x11
 	mov	r8, r3
 	mov	r7, r2
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r6, r0
 	ldr	r0, =_FILE_f0
 	bl	GetFile
@@ -771,11 +771,11 @@
 	strh	r2, [r3]
 	mov	r0, r6
 	mov	r1, #0
-	bl	Func_801a5a4
+	bl	LoadIcon
 	ldr	r2, [sp, #0x18]
 	cmp	r2, #0
 	bne	.L1a556
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	str	r0, [r7]
 .L1a556:
 	mov	r3, #0x80
@@ -784,11 +784,11 @@
 	add	r2, r6, r3
 	ldr	r0, [r7]
 	lsl	r1, #2
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, r8
 	str	r0, [r1]
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	ldr	r1, [sp, #0x14]
 	ldr	r2, =0x5000200
 	lsl	r1, #5
@@ -803,5 +803,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_801a4fc
+.func_end LoadPortrait
 

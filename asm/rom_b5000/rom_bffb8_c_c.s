@@ -1,15 +1,15 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80c0eec
+.thumb_func_start Func_80c0eec  @ 0x080c0eec
 	push	{r5, lr}
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	ldr	r3, [r1]
 	mov	r2, #8
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lc0f6e
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 .Lc0efc:
 	ldr	r3, =iwram_3001e74
 	ldr	r1, [r3]
@@ -66,11 +66,11 @@
 	ldr	r2, =0x828
 	add	r3, r1, r2
 	ldr	r0, [r3]
-	ldr	r1, =iwram_3001ae8
+	ldr	r1, =gKeyHeld
 	b	.Lc0f6e
 .Lc0f66:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lc0efc
 .Lc0f6e:
 	ldr	r3, [r1]
@@ -85,10 +85,10 @@
 	bx	r1
 .func_end Func_80c0eec
 
-.thumb_func_start Func_80c0f98
+.thumb_func_start Func_80c0f98  @ 0x080c0f98
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	beq	.Lc100c
 	ldr	r0, [r0]
@@ -152,7 +152,7 @@
 	bx	r0
 .func_end Func_80c0f98
 
-.thumb_func_start Func_80c1014
+.thumb_func_start Func_80c1014  @ 0x080c1014
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -188,7 +188,7 @@
 	bx	r0
 .func_end Func_80c1014
 
-.thumb_func_start Func_80c1054
+.thumb_func_start Func_80c1054  @ 0x080c1054
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x1c
 	mov	r5, sp
@@ -215,7 +215,7 @@
 	bx	r0
 .func_end Func_80c1054
 
-.thumb_func_start Func_80c1084
+.thumb_func_start Func_80c1084  @ 0x080c1084
 	push	{lr}
 	ldr	r3, =iwram_3001e74
 	ldr	r0, [r3]

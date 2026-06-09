@@ -5,19 +5,19 @@
  * asm/overlays/rom_7e7574/ovl_9dc_c_c_a_c_a.o and asm/overlays/rom_7e7574/ovl_9dc_c_c_a_c_c.o in
  * goldensun/overlays/rom_7e7574/overlay.ld.
  */
-extern int __Func_8079338(int);
-extern int __Func_8092b94(int);
-extern void __Func_8092f84(int, int);
+extern int __GetFlag(int);
+extern int __MessageID(int);
+extern void __ActorMessage(int, int);
 extern void __Func_8097608(void);
 extern void OvlFunc_959_200cbfc(void);
 extern unsigned int iwram_3001ebc;
 
 void OvlFunc_959_200cd0c(void) {
     int x;
-    x = __Func_8079338(0x226);
+    x = __GetFlag(0x226);
     if (x) {
-        __Func_8092b94(0x2435);
-        __Func_8092f84(0x14, 0);
+        __MessageID(0x2435);
+        __ActorMessage(0x14, 0);
     } else {
         *(unsigned short *)(iwram_3001ebc + (0xbf << 1)) = x;
         __Func_8097608();

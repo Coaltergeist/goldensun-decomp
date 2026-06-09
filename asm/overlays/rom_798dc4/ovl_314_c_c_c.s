@@ -19,7 +19,7 @@
 	mov	r8, r3
 .Ldfa:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, [r6, #0x50]
 	ldr	r1, =0xffffff00
 	ldrh	r3, [r2, #0x1e]
@@ -27,7 +27,7 @@
 	strh	r3, [r2, #0x1e]
 	ldr	r3, [r6, #0x50]
 	ldrh	r0, [r3, #0x1e]
-	bl	__Func_800231c
+	bl	__cos
 	lsr	r3, r0, #31
 	add	r0, r3
 	ldr	r3, [r6, #8]
@@ -49,11 +49,11 @@
 	mov	r0, r11
 	lsl	r1, #10
 	lsl	r2, #9
-	bl	__Func_8092064
+	bl	__MapActor_SetSpeed
 	mov	r1, #0xa0
 	mov	r0, r11
 	mov	r2, #0xc0
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	ldr	r3, =0xcccc
 	str	r3, [r6, #0x48]
 	mov	r3, #3
@@ -63,13 +63,13 @@
 	mov	r2, #0
 	strb	r2, [r3]
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0x80
 	lsl	r1, #14
 	mov	r0, r6
 	bl	OvlFunc_903_2008db8
 	mov	r0, #0xbc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xa0
 	lsl	r0, #11
 	mov	r2, #0x80
@@ -77,7 +77,7 @@
 	lsl	r2, #9
 	bl	__Func_8012330
 	mov	r0, #0x8d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #1
 	mov	r1, #1
 	neg	r0, r0
@@ -93,13 +93,13 @@
 	mov	r1, r8
 	lsl	r5, r1, #12
 	mov	r0, r5
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r10
 	mov	r3, r9
 	str	r0, [r2]
 	str	r3, [r2, #4]
 	mov	r0, r5
-	bl	__Func_8002322
+	bl	__sin
 	mov	r4, r10
 	ldr	r2, [r4]
 	str	r0, [r4, #8]
@@ -137,9 +137,9 @@
 	mov	r2, #0xc4
 	mov	r0, r11
 	mov	r1, #0x8b
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 	mov	r0, r11
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r1, #0x80
 	mov	r0, r6
 	lsl	r1, #14
@@ -176,10 +176,10 @@
 	str	r4, [sp, #0xc]
 	bl	OvlFunc_common0_10c
 	mov	r0, #0x9a
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r11
 	mov	r1, #3
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	bl	__Func_8012350
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}
@@ -198,11 +198,11 @@
 	push	{r7}
 	mov	r7, r0
 	mov	r8, r1
-	bl	__Func_8077394
+	bl	__GetUnit
 	mov	r1, r8
 	mov	r5, r0
 	mov	r0, r7
-	bl	__Func_8078588
+	bl	__GiveItemTo
 	mov	r6, #0
 	add	r5, #0xd8
 .Lfa8:
@@ -212,7 +212,7 @@
 	bne	.Lfb8
 	mov	r0, r7
 	mov	r1, r6
-	bl	__Func_8078708
+	bl	__EquipItem
 .Lfb8:
 	add	r6, #1
 	cmp	r6, #0xe
@@ -233,7 +233,7 @@
 	mov	r0, #2
 	mov	r10, r3
 	sub	sp, #4
-	bl	__Func_8077394
+	bl	__GetUnit
 	mov	r3, #0
 	mov	r7, r0
 	mov	r8, r3
@@ -251,7 +251,7 @@
 .Lff6:
 	mov	r0, #2
 	mov	r1, #0x41
-	bl	__Func_8078588
+	bl	__GiveItemTo
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3
@@ -261,7 +261,7 @@
 	add	r5, #0xd8
 .L100c:
 	ldrh	r0, [r5]
-	bl	__Func_8078414
+	bl	__GetItemInfo
 	ldrb	r3, [r0, #2]
 	add	r5, #2
 	cmp	r3, #1
@@ -276,7 +276,7 @@
 .L1028:
 	ldrh	r0, [r5]
 	str	r2, [sp]
-	bl	__Func_8078414
+	bl	__GetItemInfo
 	ldrh	r3, [r0, #2]
 	ldr	r2, [sp]
 	and	r3, r2
@@ -310,7 +310,7 @@
 	bne	.L1070
 	mov	r0, #2
 	mov	r1, r6
-	bl	__Func_8078708
+	bl	__EquipItem
 .L1070:
 	add	r6, #1
 	cmp	r6, #0xe
@@ -325,17 +325,17 @@
 .func_end OvlFunc_903_2008fc8
 
 	.section .data
-	.global .L1488
-	.global .L12f8
-	.global .L1358
-	.global .L1368
+	.global gOvl_02009488
+	.global gOvl_020092f8
+	.global gOvl_02009358
+	.global gOvl_02009368
 
 	.incbin "overlays/rom_798dc4/orig.bin", 0x12e8, (0x12f8-0x12e8)
-.L12f8:
+gOvl_020092f8:
 	.incbin "overlays/rom_798dc4/orig.bin", 0x12f8, (0x1358-0x12f8)
-.L1358:
+gOvl_02009358:
 	.incbin "overlays/rom_798dc4/orig.bin", 0x1358, (0x1368-0x1358)
-.L1368:
+gOvl_02009368:
 	.incbin "overlays/rom_798dc4/orig.bin", 0x1368, (0x1488-0x1368)
-.L1488:
+gOvl_02009488:
 	.incbin "overlays/rom_798dc4/orig.bin", 0x1488

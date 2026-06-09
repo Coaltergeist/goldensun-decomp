@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8005e88
+.thumb_func_start Func_8005e88  @ 0x08005e88
 	ldr	r0, =REG_IME
 	ldr	r4, .L5eb4	@ 0
 	ldr	r1, =REG_IE
@@ -40,7 +40,7 @@
 	bx	lr
 .func_end Func_8005e88
 
-.thumb_func_start Func_8005ee0
+.thumb_func_start Func_8005ee0  @ 0x08005ee0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -157,7 +157,7 @@
 	bx	r1
 .func_end Func_8005ee0
 
-.thumb_func_start Func_8005fcc
+.thumb_func_start Func_8005fcc  @ 0x08005fcc
 	push	{r5, r6, r7, lr}
 	ldr	r7, =ewram_2002240
 	ldr	r6, =REG_SIOCNT
@@ -251,7 +251,7 @@
 	bx	r1
 .func_end Func_8005fcc
 
-.thumb_func_start Func_8006088
+.thumb_func_start Func_8006088  @ 0x08006088
 	push	{r5, r6, r7, lr}
 	ldr	r3, =REG_SIOCNT
 	ldr	r5, =ewram_2002240
@@ -299,7 +299,7 @@
 	bx	r1
 .func_end Func_8006088
 
-.thumb_func_start Func_80060e8
+.thumb_func_start Func_80060e8  @ 0x080060e8
 	push	{r5, lr}
 	ldr	r4, =ewram_2002240
 	ldr	r1, [r4, #0x28]
@@ -357,7 +357,7 @@
 	.word	0xc0
 .func_end Func_80060e8
 
-.thumb_func_start Func_800615c
+.thumb_func_start Func_800615c  @ 0x0800615c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -470,7 +470,7 @@
 	bx	r1
 .func_end Func_800615c
 
-.thumb_func_start Func_8006240
+.thumb_func_start Func_8006240  @ 0x08006240
 	push	{r5, r6, r7, lr}
 	ldr	r3, =REG_SIODATA32
 	sub	sp, #8

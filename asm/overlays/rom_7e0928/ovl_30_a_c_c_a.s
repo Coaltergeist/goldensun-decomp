@@ -10,7 +10,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xfa
 	ldr	r5, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
@@ -47,11 +47,11 @@
 	ldrsb	r5, [r2, r3]
 	mov	r0, r6
 	mov	r1, r5
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, r5
 	add	r0, r6, #5
 	add	r1, #8
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, r10
 	str	r3, [sp, #4]
 	mov	r0, #0x20
@@ -84,7 +84,7 @@
 	add	r3, #5
 	ldrsb	r1, [r1, r3]
 	mov	r0, #0x1c
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	b	.L14c
 .Lfc:
 	ldr	r3, =.L5480
@@ -179,7 +179,7 @@
 .thumb_func_start OvlFunc_956_20081c8
 	push	{r5, lr}
 	mov	r0, #0xa
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r3, =.L5480
 	ldr	r3, [r3]
 	mov	r5, #0
@@ -187,7 +187,7 @@
 .L1d8:
 	mov	r0, #1
 	add	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0x77
 	bgt	.L1f4
 	ldr	r3, =.L5480
@@ -210,7 +210,7 @@
 	ldr	r3, =iwram_3001ebc
 	mov	r1, #0xfa
 	ldr	r2, [r3]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
@@ -242,7 +242,7 @@
 	mov	r0, #0xd8
 	lsl	r0, #2
 	sub	sp, #8
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0x31
 	mov	r2, #0x3d
 	str	r3, [sp]
@@ -276,7 +276,7 @@
 	str	r6, [r0, #0x34]
 	str	r5, [r0, #0x30]
 	lsl	r2, #14
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r2, #0x80
@@ -285,9 +285,9 @@
 	str	r6, [r0, #0x34]
 	str	r5, [r0, #0x30]
 	lsl	r2, #11
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	ldr	r0, =0x362
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0xd
 	str	r3, [sp]
 	mov	r5, #0xc
@@ -317,14 +317,14 @@
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, =0x362
 	sub	sp, #8
 	ldr	r6, [r3]
-	bl	__Func_8079338
+	bl	__GetFlag
 	mov	r7, r0
 	cmp	r7, #0
 	bne	.L3e0
@@ -337,10 +337,10 @@
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, r6
-	bl	__Func_8092128
+	bl	__MapActor_TravelTo
 .L332:
 	mov	r0, r6
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -356,7 +356,7 @@
 	str	r3, [r0, #0x30]
 	lsl	r2, #14
 	ldr	r3, [r0, #0x10]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -370,7 +370,7 @@
 	str	r3, [r0, #0x30]
 	lsl	r2, #11
 	ldr	r3, [r0, #0x10]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__MapActor_GetActor
 	mov	r2, #0x55
@@ -386,12 +386,12 @@
 	str	r3, [r5, #0x34]
 	ldr	r1, [r5, #8]
 	ldr	r3, [r5, #0x10]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r1, #1
 	mov	r0, r5
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r6
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r3, #9
 	mov	r2, #0xc
 	str	r3, [sp]
@@ -402,17 +402,17 @@
 	mov	r0, #0
 	bl	__Func_8010704
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, r5
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #3
 	mov	r2, r9
 	strb	r3, [r2]
 	ldr	r3, [r5, #0xc]
 	ldr	r0, =0x367
 	str	r3, [r5, #0x14]
-	bl	__Func_8079358
+	bl	__SetFlag
 .L3e0:
 	add	sp, #8
 	pop	{r3, r5, r6}
@@ -428,14 +428,14 @@
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
 	mov	r1, #1
 	sub	sp, #8
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r2, #0
@@ -452,7 +452,7 @@
 	str	r6, [r0, #0x34]
 	str	r5, [r0, #0x30]
 	lsl	r2, #11
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -465,9 +465,9 @@
 	str	r6, [r0, #0x34]
 	str	r5, [r0, #0x30]
 	lsl	r2, #14
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xa
-	bl	__Func_80923c4
+	bl	__MapActor_WaitMovement
 	mov	r3, #9
 	mov	r2, #0xc
 	str	r3, [sp]
@@ -478,9 +478,9 @@
 	mov	r0, #0
 	bl	__Func_8010704
 	mov	r0, #2
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r0, =0x367
-	bl	__Func_8079374
+	bl	__ClearFlag
 	add	sp, #8
 	pop	{r3}
 	mov	r8, r3
@@ -511,7 +511,7 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	mov	r5, r0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r1, #2
 	mov	r10, r1
 	mov	r2, r5
@@ -531,7 +531,7 @@
 	lsl	r2, #11
 	mov	r0, r5
 	str	r6, [r5, #0x30]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -545,7 +545,7 @@
 	ldr	r3, [r0, #0x10]
 	lsl	r2, #14
 	str	r6, [r0, #0x30]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r3, r8
@@ -555,10 +555,10 @@
 	lsl	r2, #11
 	ldr	r3, [r0, #0x10]
 	str	r6, [r0, #0x30]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, #0xda
 	lsl	r0, #2
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r3, #0xd
 	str	r3, [sp]
 	mov	r0, #0xf

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003d04
+.thumb_func_start Func_8003d04  @ 0x08003d04
 	push	{lr}
 	ldr	r2, =iwram_3001d00
 	mov	r3, #0
@@ -9,13 +9,13 @@
 	strb	r3, [r2]
 	lsl	r1, #3
 	ldr	r3, =Func_80008d4
-	ldr	r0, =iwram_3001400
+	ldr	r0, =gRAMLib_end
 	bl	_call_via_r3
 	pop	{r0}
 	bx	r0
 .func_end Func_8003d04
 
-.thumb_func_start Func_8003d28
+.thumb_func_start Func_8003d28  @ 0x08003d28
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -49,7 +49,7 @@
 	cmp	r6, #0
 	bne	.L3d8a
 	mov	r0, #0x80
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	mov	r1, r10
 	lsl	r0, #9
 	bl	_call_via_r3
@@ -68,28 +68,28 @@
 	b	.L3dc8
 .L3d8a:
 	mov	r0, r6
-	bl	Func_8002322
+	bl	sin
 	mov	r5, r0
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r1, r8
 	mov	r6, r0
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r8
 	strh	r0, [r7]
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	neg	r5, r5
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	strh	r0, [r7]
 	mov	r1, r10
 	mov	r0, r6
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r7, #2
 	strh	r0, [r7]
 .L3dc8:
@@ -108,7 +108,7 @@
 	bx	r1
 .func_end Func_8003d28
 
-.thumb_func_start Func_8003dec
+.thumb_func_start Func_8003dec  @ 0x08003dec
 	push	{lr}
 	cmp	r1, #0xff
 	ble	.L3df4
@@ -118,7 +118,7 @@
 	bge	.L3dfa
 	mov	r1, #0
 .L3dfa:
-	ldr	r2, =iwram_3001400
+	ldr	r2, =gRAMLib_end
 	lsl	r3, r1, #2
 	add	r3, r2
 	ldr	r2, [r3]
@@ -128,7 +128,7 @@
 	bx	r0
 .func_end Func_8003dec
 
-.thumb_func_start Func_8003e10
+.thumb_func_start Func_8003e10  @ 0x08003e10
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -149,7 +149,7 @@
 	mov	r0, r8
 	bl	_call_via_r6
 	mov	r0, r6
-	bl	Func_8002df0
+	bl	free
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6}

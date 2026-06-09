@@ -1,12 +1,12 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80797fc
+.thumb_func_start Func_80797fc  @ 0x080797fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r0
 	mov	r6, r2
 	cmp	r7, #7
 	ble	.L79838
-	bl	Func_80773d8
+	bl	GetEnemyInfo
 	add	r0, #0x34
 	ldrb	r1, [r0]
 	cmp	r1, #0x2b
@@ -51,7 +51,7 @@
 	mov	r5, #0
 .L79856:
 	mov	r0, r7
-	bl	Func_8078ed8
+	bl	GetPCBaseStats
 	mov	r3, r5
 	add	r3, #0x90
 	add	r0, #2

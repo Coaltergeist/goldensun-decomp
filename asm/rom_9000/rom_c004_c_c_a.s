@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800c62c
+.thumb_func_start Func_800c62c  @ 0x0800c62c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -29,7 +29,7 @@
 	ldr	r5, =0x2c4
 	mov	r0, #0x34
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -229,7 +229,7 @@
 	ldrh	r3, [r0, #6]
 	mov	r2, r12
 	mov	r0, r5
-	bl	Func_800b168
+	bl	UpdateSprite
 	b	.Lc822
 .Lc7ea:
 	mov	r1, r8
@@ -274,7 +274,7 @@
 	b	.Lc696
 .Lc836:
 	mov	r0, #0x34
-	bl	Func_8002dd8
+	bl	gfree
 	add	sp, #0x50
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

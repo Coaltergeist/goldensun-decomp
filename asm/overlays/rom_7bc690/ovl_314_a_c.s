@@ -11,7 +11,7 @@
 	cmp	r3, #0
 	bne	.L35c
 	mov	r0, #0x76
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L35c:
 	ldr	r6, [r5]
 	mov	r3, #0xf
@@ -50,7 +50,7 @@
 
 .thumb_func_start OvlFunc_933_20083ac
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

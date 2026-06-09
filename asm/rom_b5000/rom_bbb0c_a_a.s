@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bbb0c
+.thumb_func_start Func_80bbb0c  @ 0x080bbb0c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -51,13 +51,13 @@
 	mov	r0, r4
 	str	r3, [sp, #0x20]
 	mov	r8, r2
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	str	r0, [sp, #0x4c]
 	ldr	r0, [sp, #0x44]
-	bl	_Func_8077394
+	bl	_GetUnit
 	str	r0, [sp, #0x48]
 	mov	r0, r10
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r7, r0
 	ldr	r3, =Func_8001af8
 	mov	r2, r5
@@ -180,7 +180,7 @@
 	sub	r5, r2, r5
 	add	r5, #0x1e
 	mul	r5, r3
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	ldr	r3, =0xffff
 	and	r0, r3
 	cmp	r5, r0
@@ -265,7 +265,7 @@
 	mov	r1, r5
 	and	r2, r6
 	mov	r0, r8
-	bl	_Func_8079460
+	bl	_InitEnemyUnit
 	ldr	r1, [sp, #0x38]
 	mov	r2, #0x64
 	add	r1, #2
@@ -306,7 +306,7 @@
 .Lbbd5e:
 	bl	Func_80b7548
 	mov	r0, r8
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	ldr	r2, [r0, #0xc]
 	cmp	r2, #0
 	bge	.Lbbd72
@@ -535,7 +535,7 @@
 	bl	_Func_8079bf8
 	mov	r1, #0xa
 	mul	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	b	.Lbbf66
 .Lbbf58:
 	ldr	r2, [sp, #0x48]
@@ -570,7 +570,7 @@
 .Lbbf8e:
 	ldrb	r0, [r7, #0xf]
 	mov	r1, #5
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	lsl	r0, #24
 	lsr	r0, #24
 	add	r0, r5, r0
@@ -590,7 +590,7 @@
 	mov	r0, #5
 	bl	Func_80bbabc
 .Lbbfbc:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	ldr	r4, =0x12b
 	and	r3, r0
@@ -610,7 +610,7 @@
 .Lbbfe0:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbbfea:
 	cmp	r5, #0
@@ -630,7 +630,7 @@
 .Lbc004:
 	mov	r0, #0xb7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbc020
 	ldr	r2, [sp, #4]
@@ -727,7 +727,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, =0x12b
 	add	r3, r7, r4
 	ldr	r2, [sp, #0x30]
@@ -747,7 +747,7 @@
 .Lbc0ec:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbc0f6:
 	ldr	r0, [sp, #0x4c]
@@ -791,7 +791,7 @@
 	str	r3, [sp, #0x2c]
 	mov	r0, r10
 	strh	r6, [r7, #0x3a]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc150:
 	ldr	r4, [sp, #0x4c]
@@ -821,11 +821,11 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [sp, #0x30]
 	mov	r5, r0
 	mul	r5, r2
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r3, r0
 	add	r5, r3
@@ -900,7 +900,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, =0x12b
 	add	r3, r7, r1
 	mov	r5, r0
@@ -920,7 +920,7 @@
 .Lbc274:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbc27e:
 	mov	r1, r10
@@ -1043,7 +1043,7 @@
 	mov	r1, #0x64
 	mov	r0, r2
 	mul	r0, r3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 .Lbc38c:
 	mov	r2, #0x80
@@ -1085,10 +1085,10 @@
 	mov	r1, #0x64
 	mov	r0, r3
 	mul	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbc3d8:
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	ldr	r2, =0x12b
 	and	r3, r0
@@ -1108,12 +1108,12 @@
 .Lbc3fc:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbc406:
 	mov	r0, #0xb7
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.Lbc422
 	ldr	r0, [sp, #4]
@@ -1212,7 +1212,7 @@
 	mov	r0, r3
 	mul	r0, r5
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [sp, #0x30]
 	mov	r5, r0
 	mul	r5, r2
@@ -1247,7 +1247,7 @@
 .Lbc514:
 	strh	r6, [r7, #0x3a]
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc51e:
 	ldr	r1, [sp, #0x24]
@@ -1292,7 +1292,7 @@
 	mov	r1, #0x64
 	mov	r0, r3
 	mul	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	ldr	r0, =0x12b
 	add	r3, r7, r0
@@ -1313,7 +1313,7 @@
 .Lbc5d4:
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 .Lbc5de:
 	mov	r1, r10
@@ -1368,7 +1368,7 @@
 	str	r3, [sp, #0x2c]
 	mov	r0, r10
 	strh	r6, [r7, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbc666
 .Lbc64e:
 	mov	r1, r10
@@ -1672,7 +1672,7 @@
 	lsl	r0, #1
 .Lbc94a:
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	lsl	r3, r6, #16
 	asr	r2, r3, #16
@@ -1717,7 +1717,7 @@
 	lsl	r0, r6, #3
 	sub	r0, r6
 	mov	r1, #0x64
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r8, r5
 	add	r5, r0
 	cmp	r5, r6
@@ -1759,7 +1759,7 @@
 	mov	r3, #5
 	strb	r3, [r2]
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	mov	r3, r7
 	add	r3, #0x40
 	ldrh	r1, [r3]
@@ -1782,7 +1782,7 @@
 	mov	r3, #5
 	strb	r3, [r2]
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r3, [sp, #0x10]
 	add	r3, #0x40
 	ldrh	r1, [r3]
@@ -1817,7 +1817,7 @@
 	strb	r3, [r2]
 .Lbcab4:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r3, [r7, #0x3c]
 	ldrh	r1, [r5, #0x3c]
@@ -1854,7 +1854,7 @@
 	strb	r3, [r2]
 .Lbcafe:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r3, [r7, #0x3c]
 	ldrh	r1, [r2, #0x3c]
@@ -1891,7 +1891,7 @@
 	strb	r3, [r2]
 .Lbcb48:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r6, [sp, #0x10]
 	ldrh	r1, [r7, #0x3c]
 	ldrh	r3, [r6, #0x3c]
@@ -1926,7 +1926,7 @@
 	strb	r3, [r2]
 .Lbcb8e:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r1, [r7, #0x3c]
 	ldrh	r3, [r5, #0x3c]
@@ -1963,7 +1963,7 @@
 	strb	r3, [r2]
 .Lbcbd8:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r3, [r7, #0x3e]
 	ldrh	r1, [r2, #0x3e]
@@ -2000,7 +2000,7 @@
 	strb	r3, [r2]
 .Lbcc22:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r6, [sp, #0x10]
 	ldrh	r3, [r7, #0x3e]
 	ldrh	r1, [r6, #0x3e]
@@ -2035,7 +2035,7 @@
 	strb	r3, [r2]
 .Lbcc68:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r5, [sp, #0x10]
 	ldrh	r1, [r7, #0x3e]
 	ldrh	r3, [r5, #0x3e]
@@ -2072,7 +2072,7 @@
 	strb	r3, [r2]
 .Lbccb2:
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r2, [sp, #0x10]
 	ldrh	r1, [r7, #0x3e]
 	ldrh	r3, [r2, #0x3e]
@@ -2099,7 +2099,7 @@
 	ldrh	r3, [r7, #0x34]
 	mov	r0, r10
 	strh	r3, [r7, #0x38]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 .Lbccf4:
 	mov	r5, #0x38
@@ -2133,7 +2133,7 @@
 	ldrsh	r0, [r7, r1]
 	mov	r1, #0xa
 	lsl	r0, #3
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	strh	r0, [r7, #0x38]
 	b	.Lbcfd8
 .Lbcd38:
@@ -2460,7 +2460,7 @@
 	strh	r3, [r7, #0x38]
 .Lbcfd8:
 	mov	r0, r10
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 .Lbcfe0:
 	ldr	r1, =0x86f
@@ -2573,7 +2573,7 @@
 	strh	r5, [r6, #0x3a]
 .Lbd0b8:
 	ldr	r0, [sp, #0x44]
-	bl	_Func_807822c
+	bl	_UpdateStatBarPercent
 	b	.Lbd2c0
 
 	.pool_aligned
@@ -2581,7 +2581,7 @@
 .Lbd128:
 	ldr	r0, [sp, #0x2c]
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r5, r0
 	mov	r0, #0x3a
 	ldrsh	r3, [r7, r0]
@@ -2621,7 +2621,7 @@
 .Lbd176:
 	ldr	r0, [sp, #0x44]
 	mov	r1, r5
-	bl	_Func_80783dc
+	bl	_ModifyPP
 	b	.Lbd2c0
 .Lbd180:
 	ldr	r1, =0x133
@@ -2809,7 +2809,7 @@
 	ldr	r4, [sp, #0x2c]
 	cmp	r4, #0
 	ble	.Lbd304
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -2823,9 +2823,9 @@
 	bl	Func_80bbabc
 .Lbd304:
 	ldr	r0, [sp, #0x10]
-	bl	Func_8002df0
+	bl	free
 	mov	r0, r10
-	bl	_Func_8077428
+	bl	_CalcStats
 	ldr	r3, =iwram_3001e74
 	ldr	r3, [r3]
 	add	r3, #0x41
@@ -2846,7 +2846,7 @@
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.Lbd35c
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #3
 	and	r0, r3
 	cmp	r0, #0
@@ -2875,14 +2875,14 @@
 	bx	r1
 .func_end Func_80bbb0c
 
-.thumb_func_start Func_80bd3c8
+.thumb_func_start Func_80bd3c8  @ 0x080bd3c8
 	push	{lr}
 	cmp	r0, #0x7e
 	bne	.Lbd3d2
 	mov	r0, #1
 	b	.Lbd3de
 .Lbd3d2:
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldrb	r3, [r0, #9]
 	neg	r0, r3
 	orr	r0, r3
@@ -2892,7 +2892,7 @@
 	bx	r1
 .func_end Func_80bd3c8
 
-.thumb_func_start Func_80bd3e4
+.thumb_func_start Func_80bd3e4  @ 0x080bd3e4
 	push	{r5, lr}
 	mov	r5, r9
 	push	{r5}
@@ -2900,7 +2900,7 @@
 	sub	sp, #4
 	str	r3, [sp]
 	mov	r5, r0
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r3, #0xff
 	ldrb	r2, [r5]
 	and	r0, r3
@@ -2927,7 +2927,7 @@
 	bx	r1
 .func_end Func_80bd3e4
 
-.thumb_func_start Func_80bd424
+.thumb_func_start Func_80bd424  @ 0x080bd424
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -2940,7 +2940,7 @@
 	mov	r7, r0
 	mov	r1, #0
 	ldrsh	r0, [r7, r1]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0
 	mov	r2, #1
 	str	r3, [sp, #0xc]
@@ -2970,7 +2970,7 @@
 	lsl	r3, #1
 	add	r3, r11
 	ldrb	r0, [r3]
-	bl	_Func_80773d8
+	bl	_GetEnemyInfo
 	str	r0, [sp, #0x14]
 	ldr	r1, [sp, #0x14]
 	mov	r3, #0x90
@@ -3024,7 +3024,7 @@
 	lsl	r3, r2, #31
 	cmp	r3, #0
 	bne	.Lbd508
-	bl	_Func_8079bc4
+	bl	_RPGRandom
 	mov	r1, r8
 	mov	r3, #7
 	ldrb	r2, [r1]
@@ -3112,13 +3112,13 @@
 	cmp	r6, #0
 	beq	.Lbd5ba
 	ldrh	r0, [r1]
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #0xc]
 	cmp	r3, #1
 	bne	.Lbd5b4
 	ldrh	r0, [r5, #0x28]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r3, #2
 	ldrh	r5, [r5, #0x28]
 	strh	r3, [r7, #6]
@@ -3145,7 +3145,7 @@
 	b	.Lbd766
 .Lbd5c6:
 	mov	r0, r9
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	mov	r5, r0
 	ldrb	r3, [r5, #3]
 	cmp	r3, #0x2f
@@ -3394,7 +3394,7 @@
 	bx	r1
 .func_end Func_80bd424
 
-.thumb_func_start Func_80bd7a4
+.thumb_func_start Func_80bd7a4  @ 0x080bd7a4
 	push	{lr}
 	mov	r2, #0x84
 	ldr	r3, =REG_DMA3SAD

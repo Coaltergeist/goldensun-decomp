@@ -15,7 +15,7 @@
 	mov	r0, #0xa9
 	sub	sp, #8
 	bl	__Func_8091ff0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -24,10 +24,10 @@
 	cmp	r3, #9
 	ble	.L117c
 	ldr	r0, =0x12f
-	bl	__Func_8079374
+	bl	__ClearFlag
 .L117c:
 	ldr	r0, =0x895
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L11be
 	mov	r1, #0x80
@@ -40,29 +40,29 @@
 	mov	r0, #0xe
 	lsl	r1, #16
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0
 	bl	__Func_8092adc
 	ldr	r0, =0x89a
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L11be
 	mov	r0, #0x11
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L11be:
 	mov	r0, #0x8b
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L11d4
 	mov	r0, #0x11
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L11d4:
 	mov	r2, #0
 	mov	r6, #0
@@ -91,7 +91,7 @@
 	strb	r3, [r2]
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xf
 	add	r5, #0x23
@@ -106,7 +106,7 @@
 	cmp	r6, #2
 	bls	.L11da
 	ldr	r0, =0x202
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L124c
 	mov	r1, #0x92
@@ -114,19 +114,19 @@
 	mov	r0, #0xe
 	lsl	r1, #16
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0
 	bl	__Func_8092adc
 .L124c:
 	ldr	r0, =0x201
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L128c
 	mov	r1, #5
 	mov	r0, #0x14
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, #0x14
 	bl	__MapActor_GetActor
 	ldr	r5, [r0, #8]
@@ -174,7 +174,7 @@
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	ldr	r5, .L12f4	@ 0
@@ -206,8 +206,8 @@
 .func_end OvlFunc_928_2009148
 
 	.section .data
-	.global .L15b0
-	.global .L16a0
+	.global gScript_928__020095b0
+	.global gScript_928__020096a0
 	.global .L1714
 	.global .L1778
 	.global .L178e
@@ -216,11 +216,11 @@
 	.global .L17d0
 	.global .L1900
 	.global .L1740
-	.global .L17e8
+	.global gOvl_020097e8
 
-.L15b0:
+gScript_928__020095b0:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x15b0, (0x16a0-0x15b0)
-.L16a0:
+gScript_928__020096a0:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x16a0, (0x1714-0x16a0)
 .L1714:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x1714, (0x1740-0x1714)
@@ -236,11 +236,13 @@
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17ba, (0x17d0-0x17ba)
 .L17d0:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17d0, (0x17e8-0x17d0)
-.L17e8:
+gOvl_020097e8:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17e8, (0x18d8-0x17e8)
-.L18d8:
+	.global gOvl_020098d8
+gOvl_020098d8:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x18d8, (0x1900-0x18d8)
 .L1900:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x1900, (0x1ac8-0x1900)
-.L1ac8:
+	.global gOvl_02009ac8
+gOvl_02009ac8:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x1ac8

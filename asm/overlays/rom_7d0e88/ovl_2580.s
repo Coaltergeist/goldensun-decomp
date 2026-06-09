@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_947_200a580
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -64,7 +64,7 @@
 	add	r3, #0x55
 	strb	r1, [r3]
 	mov	r0, r5
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -86,12 +86,12 @@
 	ldr	r3, =0x1f5
 	mov	r5, r0
 	add	r0, r6, r3
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L2680
 	mov	r0, r5
 	mov	r1, #5
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r3, =OvlFunc_947_200a0b8
 	ldr	r2, [r5, #8]
 	str	r3, [r5, #0x6c]
@@ -107,7 +107,7 @@
 	bl	__Func_8010704
 	ldr	r1, =OvlData_947_200ad64
 	mov	r0, r6
-	bl	__Func_809207c
+	bl	__MapActor_SetBehavior
 .L2680:
 	add	sp, #8
 	pop	{r5, r6}
@@ -212,7 +212,7 @@
 	lsl	r3, #2
 	lsl	r2, #1
 	str	r3, [r1, r2]
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldrsh	r2, [r1, r2]
 	ldr	r3, =0x74
 	sub	sp, #8
@@ -258,14 +258,14 @@
 	mov	r0, #0xf
 	bl	OvlFunc_947_2008ba4
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L27dc
 	b	.L29fa
 .L27dc:
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L27ea
 	b	.L29fa
@@ -278,7 +278,7 @@
 	mov	r1, #0x22
 	mov	r2, #0x54
 	mov	r3, #0x18
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r5, #0x20
 	mov	r0, #0
 	mov	r1, #0x20
@@ -286,14 +286,14 @@
 	mov	r3, #0
 	str	r5, [sp]
 	str	r5, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r1, #0x20
 	mov	r2, #0x40
 	mov	r3, #0
 	mov	r0, #0x20
 	str	r5, [sp]
 	str	r5, [sp, #4]
-	bl	__Func_8010424
+	bl	__CopyMapTiles
 	mov	r0, #9
 	bl	OvlFunc_947_2008ec8
 	mov	r0, #0xa
@@ -327,7 +327,7 @@
 	mov	r3, #0xdf
 	bl	OvlFunc_common0_70
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L2884
 	mov	r0, #0
@@ -371,13 +371,13 @@
 	bls	.L28be
 	bl	OvlFunc_947_2009d84
 	mov	r0, #1
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r1, #0xc8
 	ldr	r0, =OvlFunc_947_200a6b8
 	lsl	r1, #4
 	bl	__StartTask
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L28f0
 	b	.L29fa
@@ -419,7 +419,7 @@
 	bne	.L29fa
 	mov	r0, #0xa
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r1, #6
 	mov	r0, #0xa
 	bl	__Func_8092950
@@ -462,7 +462,7 @@
 	orr	r3, r2
 	strb	r3, [r0]
 	ldr	r0, =0x202
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L29fa
 	mov	r0, #0xd

@@ -1,18 +1,18 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b26cc
+.thumb_func_start Func_80b26cc  @ 0x080b26cc
 	push	{r5, r6, lr}
 	mov	r3, #0x80
 	mov	r5, r0
 	lsl	r3, #3
 	add	r6, r5, r3
 	mov	r0, r6
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lb2716
 	mov	r0, r6
-	bl	_Func_8079358
+	bl	_SetFlag
 	lsl	r3, r5, #5
 	add	r3, r5
 	lsl	r2, r3, #1
@@ -43,7 +43,7 @@
 	bx	r0
 .func_end Func_80b26cc
 
-.thumb_func_start Func_80b2720
+.thumb_func_start Func_80b2720  @ 0x080b2720
 	push	{r5, lr}
 	lsl	r3, r0, #5
 	add	r3, r0

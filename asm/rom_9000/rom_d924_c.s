@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800dac0
+.thumb_func_start ActorCmd_Unused  @ 0x0800dac0
 	push	{r5, lr}
 	sub	sp, #0xc
 	mov	r5, r0
@@ -15,7 +15,7 @@
 	ldr	r3, [r5, #0x10]
 	add	r3, r0
 	mov	r0, r5
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 	ldrh	r3, [r5, #4]
 	add	r3, #3
 	mov	r0, #1
@@ -24,9 +24,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_800dac0
+.func_end ActorCmd_Unused
 
-.thumb_func_start Func_800daf0
+.thumb_func_start ActorCmd_Camera  @ 0x0800daf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -175,7 +175,7 @@
 	.call_via r4
 	add	r3, r0
 	mov	r0, r3
-	bl	Func_80045d4
+	bl	FastIntSqrtFP1616_RAM 
 	mov	r7, r0
 .Ldc16:
 	mov	r1, r7
@@ -266,9 +266,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800daf0
+.func_end ActorCmd_Camera
 
-.thumb_func_start Func_800dcdc
+.thumb_func_start ActorCmd_FollowTargetWait  @ 0x0800dcdc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -304,22 +304,22 @@
 	mov	r0, r8
 	mul	r0, r5
 	mov	r1, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r7
 	mov	r8, r0
 	mov	r0, r10
 	mul	r0, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, [r6, #8]
 	ldr	r3, [r6, #0x10]
 	add	r1, r8
 	add	r3, r0
 	ldr	r2, [r6, #0xc]
 	mov	r0, r6
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 	mov	r0, r6
 	mov	r1, #2
-	bl	Func_800c300
+	bl	Actor_SetAnim
 	ldrh	r3, [r6, #4]
 	add	r3, #1
 	strh	r3, [r6, #4]
@@ -328,7 +328,7 @@
 .Ldd56:
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_800c300
+	bl	Actor_SetAnim
 	mov	r0, #0
 .Ldd60:
 	pop	{r3, r5}
@@ -337,9 +337,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800dcdc
+.func_end ActorCmd_FollowTargetWait
 
-.thumb_func_start Func_800dd70
+.thumb_func_start ActorCmd_Wander  @ 0x0800dd70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -406,7 +406,7 @@
 	mov	r0, r8
 	mov	r1, r10
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
 	bl	Func_800d924
@@ -414,7 +414,7 @@
 	bne	.Lddae
 	mov	r0, r6
 	mov	r1, r7
-	bl	Func_80120dc
+	bl	TestCollision
 	cmp	r0, #0
 	bne	.Lddae
 	mov	r5, #0x80
@@ -430,7 +430,7 @@
 	str	r3, [r5, #8]
 	mov	r1, r10
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r6, #8]
 	str	r3, [r5]
 	ldr	r3, [r6, #0xc]
@@ -442,10 +442,10 @@
 	mov	r0, r8
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	cmp	r0, #0
 	bne	.Lddae
 	ldr	r3, [r6, #8]
@@ -458,10 +458,10 @@
 	mov	r0, r8
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	cmp	r0, #0
 	bne	.Lddae
 	ldr	r3, [r7]
@@ -516,7 +516,7 @@
 	mov	r0, r6
 	mov	r3, r4
 	ldr	r2, [r7, #4]
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 	ldrh	r3, [r6, #4]
 	add	r3, #4
 	strh	r3, [r6, #4]
@@ -531,9 +531,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800dd70
+.func_end ActorCmd_Wander
 
-.thumb_func_start Func_800df04
+.thumb_func_start ActorCmd_Unk9  @ 0x0800df04
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -647,7 +647,7 @@
 	lsl	r0, #12
 	mov	r2, r7
 	str	r4, [sp]
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
 	bl	Func_800d924
@@ -663,10 +663,10 @@
 	str	r3, [r7, #8]
 	mov	r0, r8
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r7
-	bl	Func_80120dc
+	bl	TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #0
 	bne	.Ldf92
@@ -683,10 +683,10 @@
 	str	r3, [r5, #8]
 	mov	r0, r8
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #0
 	bne	.Ldf92
@@ -701,10 +701,10 @@
 	add	r1, r4, r3
 	mov	r0, r8
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #0
 	bne	.Ldf92
@@ -718,10 +718,10 @@
 	str	r3, [r5, #8]
 	mov	r0, r8
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #0
 	beq	.Le098
@@ -738,10 +738,10 @@
 	str	r3, [r5, #8]
 	mov	r0, r8
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	ldr	r4, [sp]
 	cmp	r0, #0
 	beq	.Le0c2
@@ -757,10 +757,10 @@
 	mov	r0, r8
 	add	r1, r4, r3
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	cmp	r0, #0
 	beq	.Le0e8
 	b	.Ldf92
@@ -812,14 +812,14 @@
 	ldr	r2, [r7, #4]
 	mov	r0, r6
 	mov	r3, r4
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 	b	.Le1f6
 .Le146:
 	mov	r1, #0
 	mov	r10, r1
 	mov	r0, r9
 	mov	r1, r11
-	bl	Func_80044d0
+	bl	atan2
 	mov	r2, #0x80
 	lsl	r2, #8
 	add	r0, r2
@@ -862,7 +862,7 @@
 	mov	r1, r7
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
 	bl	Func_800d924
@@ -877,10 +877,10 @@
 	mov	r1, r7
 	str	r3, [r5, #8]
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	mov	r1, r5
-	bl	Func_80120dc
+	bl	TestCollision
 	cmp	r0, #0
 	bne	.Le15e
 	mov	r1, r6
@@ -893,7 +893,7 @@
 	ldr	r1, [r5]
 	ldr	r2, [r5, #4]
 	ldr	r3, [r5, #8]
-	bl	Func_800d14c
+	bl	Actor_TravelTo
 .Le1f6:
 	ldrh	r3, [r6, #4]
 	add	r3, #4
@@ -908,4 +908,4 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_800df04
+.func_end ActorCmd_Unk9

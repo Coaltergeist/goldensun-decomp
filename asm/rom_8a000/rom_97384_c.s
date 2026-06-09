@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80974d8
+.thumb_func_start Func_80974d8  @ 0x080974d8
 	push	{r5, r6, lr}
 	ldr	r2, =iwram_3001ebc
 	mov	r1, #0xcf
@@ -16,7 +16,7 @@
 	bne	.L97504
 	mov	r5, sp
 	mov	r1, r5
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r3, [r5]
 	lsl	r3, #16
 	str	r3, [r6]
@@ -52,7 +52,7 @@
 	bx	r0
 .func_end Func_80974d8
 
-.thumb_func_start Func_8097540
+.thumb_func_start Field_MindRead  @ 0x08097540
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -62,7 +62,7 @@
 	mov	r6, r0
 	mov	r0, #0x16
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r5, r0
 	bl	Func_8097384
 	mov	r3, #0
@@ -78,7 +78,7 @@
 	mov	r1, #0xb4
 	lsl	r1, #1
 	lsl	r0, #1
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r2, =0x28e
 	add	r3, r5, r2
 	strh	r0, [r3]
@@ -124,7 +124,7 @@
 	bl	Func_8097a7c
 	mov	r1, #0xc8
 	lsl	r1, #4
-	ldr	r0, =Func_8097644
+	ldr	r0, =Task_08097644
 	bl	StartTask
 	add	sp, #4
 	pop	{r3}
@@ -132,14 +132,14 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_8097540
+.func_end Field_MindRead
 
-.thumb_func_start Func_8097608
+.thumb_func_start Func_8097608  @ 0x08097608
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ea8
 	ldr	r5, [r3]
 	bl	Func_8097adc
-	ldr	r0, =Func_8097644
+	ldr	r0, =Task_08097644
 	bl	StopTask
 	mov	r3, #0xa4
 	lsl	r3, #2
@@ -150,13 +150,13 @@
 	bl	Func_808e0b0
 	bl	Func_809748c
 	mov	r0, #0x16
-	bl	Func_8002dd8
+	bl	gfree
 	pop	{r5}
 	pop	{r0}
 	bx	r0
 .func_end Func_8097608
 
-.thumb_func_start Func_8097644
+.thumb_func_start Task_08097644  @ 0x08097644
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -202,8 +202,8 @@
 	add	r0, r3
 	mov	r1, #0xa0
 	lsl	r0, #16
-	bl	Func_b60_from_thumb
-	bl	Func_8002322
+	bl	__udivsi3
+	bl	sin
 	add	r5, #1
 	asr	r0, #14
 	strh	r0, [r6]
@@ -294,7 +294,7 @@
 	bl	Func_808d394
 	mov	r1, #0
 	ldrsh	r0, [r0, r1]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r2, #8
 	ldrsb	r2, [r0, r2]
 	ldr	r3, [r6, #0xc]
@@ -315,7 +315,7 @@
 	bl	Func_808d394
 	mov	r2, #0
 	ldrsh	r0, [r0, r2]
-	bl	_Func_8185008
+	bl	_GetSpriteInfo
 	mov	r4, r9
 	mov	r3, #8
 	ldrsb	r3, [r0, r3]
@@ -330,7 +330,7 @@
 	mov	r4, r8
 	ldr	r0, =0x119
 	ldr	r1, [r4]
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L97806
@@ -350,7 +350,7 @@
 	sub	r0, r3
 	ldr	r3, [r2]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	ldr	r3, =Func_8097a54
 	ldr	r2, .L97814	@ 0
 	str	r3, [r6, #0x6c]
@@ -370,7 +370,7 @@
 	ldr	r2, [r3, #4]
 	mov	r0, r6
 	ldr	r3, [r3, #8]
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 .L97806:
 	ldr	r4, =0x295
 	add	r5, r7, r4
@@ -387,7 +387,7 @@
 
 .L9783c:
 	mov	r0, #0x82
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldrb	r2, [r5]
 .L97844:
 	add	r3, r2, #1
@@ -409,9 +409,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8097644
+.func_end Task_08097644
 
-.thumb_func_start Func_8097868
+.thumb_func_start Func_8097868  @ 0x08097868
 	push	{lr}
 	ldr	r3, =iwram_3001ea8
 	mov	r2, #0xa5
@@ -449,7 +449,7 @@
 	bx	r0
 .func_end Func_8097868
 
-.thumb_func_start Func_80978c4
+.thumb_func_start Func_80978c4  @ 0x080978c4
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ea8
 	ldr	r2, =0x28e
@@ -512,7 +512,7 @@
 	bx	r0
 .func_end Func_80978c4
 
-.thumb_func_start Func_8097948
+.thumb_func_start Func_8097948  @ 0x08097948
 	push	{r5, r6, lr}
 	mov	r6, r10
 	mov	r5, r9
@@ -556,7 +556,7 @@
 	bx	r0
 .func_end Func_8097948
 
-.thumb_func_start Func_80979a4
+.thumb_func_start Func_80979a4  @ 0x080979a4
 	push	{r5, r6, lr}
 	mov	r6, r1
 	mov	r1, #0xb4
@@ -605,7 +605,7 @@
 	bx	r1
 .func_end Func_80979a4
 
-.thumb_func_start Func_8097a10
+.thumb_func_start Func_8097a10  @ 0x08097a10
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r6, r0
@@ -635,7 +635,7 @@
 	bx	r1
 .func_end Func_8097a10
 
-.thumb_func_start Func_8097a54
+.thumb_func_start Func_8097a54  @ 0x08097a54
 	push	{lr}
 	mov	r2, #0x80
 	ldr	r3, [r0, #0x38]
@@ -649,13 +649,13 @@
 	cmp	r3, r2
 	bne	.L97a72
 	ldr	r1, =.La0128
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 .L97a72:
 	pop	{r0}
 	bx	r0
 .func_end Func_8097a54
 
-.thumb_func_start Func_8097a7c
+.thumb_func_start Func_8097a7c  @ 0x08097a7c
 	push	{lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, =0xea4
@@ -702,7 +702,7 @@
 	bx	r0
 .func_end Func_8097a7c
 
-.thumb_func_start Func_8097adc
+.thumb_func_start Func_8097adc  @ 0x08097adc
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r0, =Func_8097868
@@ -721,13 +721,13 @@
 	add	r2, #2
 	strh	r3, [r2]
 	ldr	r1, =0x205
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	add	r2, r3, r1
 	ldrb	r0, [r2]
 	ldr	r2, =0x206
 	add	r3, r2
 	ldrb	r1, [r3]
-	bl	_Func_801ccc0
+	bl	_SetUIColor
 	ldr	r3, =0xea4
 	add	r5, r3
 	strb	r6, [r5]

@@ -1,29 +1,29 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092adc
+.thumb_func_start Func_8092adc  @ 0x08092adc
 	push	{r5, r6, lr}
 	mov	r5, r1
 	mov	r6, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	cmp	r0, #0
 	beq	.L92afc
 	mov	r3, r0
 	add	r3, #0x64
 	strh	r5, [r3]
 	ldr	r1, =Data_9fc1c
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r0, r6
-	bl	Func_809163c
+	bl	CutsceneWait
 .L92afc:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
 .func_end Func_8092adc
 
-.thumb_func_start Func_8092b08
+.thumb_func_start Func_8092b08  @ 0x08092b08
 	push	{r5, r6, lr}
 	mov	r5, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L92b4e
@@ -61,7 +61,7 @@
 	bx	r0
 .func_end Func_8092b08
 
-.thumb_func_start Func_8092b54
+.thumb_func_start Func_8092b54  @ 0x08092b54
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}

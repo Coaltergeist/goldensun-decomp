@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b090
+.thumb_func_start Func_808b090  @ 0x0808b090
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -8,7 +8,7 @@
 	push	{r5, r6, r7}
 	mov	r7, r8
 	push	{r7}
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r2, #0xe0
 	lsl	r2, #1
 	add	r3, r4, r2
@@ -69,13 +69,13 @@
 	ldrsh	r0, [r5, r2]
 	cmp	r0, r8
 	beq	.L8b118
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b122
 .L8b118:
 	mov	r1, #6
 	ldrsh	r3, [r5, r1]
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 	mov	r10, r3
 	b	.L8b132
 .L8b122:
@@ -86,7 +86,7 @@
 	mov	r0, r1
 	cmp	r3, r8
 	bne	.L8b0da
-	ldr	r4, =ewram_2000240
+	ldr	r4, =gState
 .L8b132:
 	mov	r2, #0xf8
 	lsl	r2, #1
@@ -103,7 +103,7 @@
 	bx	r0
 .func_end Func_808b090
 
-.thumb_func_start Func_808b158
+.thumb_func_start GetLocationName  @ 0x0808b158
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -112,7 +112,7 @@
 	ldr	r5, =.L9ddd8
 	mov	r8, r3
 	mov	r7, r0
-	bl	Func_808a8d0
+	bl	GetMapArea
 	ldrh	r4, [r5]
 	mov	r1, r4
 	lsl	r3, r1, #16
@@ -169,11 +169,11 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808b158
+.func_end GetLocationName
 
-.thumb_func_start Func_808b1d8
+.thumb_func_start UpdateRespawnMap  @ 0x0808b1d8
 	push	{r5, r6, r7, lr}
-	ldr	r0, =ewram_2000240
+	ldr	r0, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r0, r1
@@ -227,5 +227,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808b1d8
+.func_end UpdateRespawnMap
 

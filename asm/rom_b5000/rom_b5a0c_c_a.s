@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b5b18
+.thumb_func_start Func_80b5b18  @ 0x080b5b18
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -22,7 +22,7 @@
 .Lb5b3c:
 	mov	r1, r8
 	ldrh	r0, [r6, r1]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, r0
 	ldr	r0, =0x12f
 	mov	r1, #3
@@ -104,7 +104,7 @@
 	strb	r5, [r3]
 	ldrh	r0, [r6, r1]
 	add	r7, #1
-	bl	_Func_8077428
+	bl	_CalcStats
 	add	r6, #2
 	cmp	r7, r10
 	blt	.Lb5b3c
@@ -119,7 +119,7 @@
 	bx	r1
 .func_end Func_80b5b18
 
-.thumb_func_start Func_80b5c08
+.thumb_func_start Func_80b5c08  @ 0x080b5c08
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -213,7 +213,7 @@
 .Lb5cb6:
 	mov	r0, #0xb6
 	lsl	r0, #1
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lb5d2a
 	mov	r0, #0
@@ -240,7 +240,7 @@
 	cmp	r3, r9
 	bne	.Lb5d18
 	ldrb	r0, [r7, #2]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	cmp	r0, #0
 	bne	.Lb5d18
 	ldrb	r3, [r7, #1]
@@ -250,7 +250,7 @@
 	mov	r1, r6
 	mov	r0, r5
 	str	r3, [sp]
-	bl	_Func_807a2e4
+	bl	_SetDjinni
 	ldr	r3, [sp]
 	mov	r0, r5
 	mov	r1, r6
@@ -277,7 +277,7 @@
 	bx	r1
 .func_end Func_80b5c08
 
-.thumb_func_start Func_80b5d3c
+.thumb_func_start Func_80b5d3c  @ 0x080b5d3c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -314,7 +314,7 @@
 	ldrh	r0, [r6]
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r1, [sp, #4]
 	mov	r2, r8
 	ldrb	r3, [r7, r2]
@@ -337,7 +337,7 @@
 	mov	r8, r2
 .Lb5dac:
 	mov	r0, r8
-	bl	_Func_80797d4
+	bl	_GetSummonInfo
 	cmp	r0, #0
 	beq	.Lb5de8
 	mov	r3, r10

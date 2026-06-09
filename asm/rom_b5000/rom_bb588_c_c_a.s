@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80bb938
+.thumb_func_start Func_80bb938  @ 0x080bb938
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e74
 	mov	r2, #0xd7
@@ -99,7 +99,7 @@
 	blt	.Lbba08
 	bl	_Func_80175a0
 .Lbba08:
-	bl	Func_80bb65c
+	bl	WaitTextPrompt
 .Lbba0c:
 	bl	_Func_80198dc
 	b	.Lbba88
@@ -118,7 +118,7 @@
 	ldr	r0, [r3]
 	cmp	r0, #0
 	ble	.Lbba32
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lbba32:
 	lsl	r3, r7, #2
 	add	r3, #0x40
@@ -152,7 +152,7 @@
 	lsl	r5, r7, #2
 	add	r5, #0x40
 	ldr	r0, [r6, r5]
-	bl	Func_80b7dd0
+	bl	GetBattleActor
 	mov	r1, r0
 	ldr	r0, [r6, r5]
 	bl	Func_80b78e4
@@ -174,7 +174,7 @@
 	bx	r1
 .func_end Func_80bb938
 
-.thumb_func_start Func_80bbabc
+.thumb_func_start Func_80bbabc  @ 0x080bbabc
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e74
 	ldr	r4, [r3]

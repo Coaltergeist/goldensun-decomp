@@ -5,13 +5,13 @@
  * asm/rom_b5000/rom_b5a0c_c_c_a.o and asm/rom_b5000/rom_b5a0c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_80b7dd0(void);
+extern unsigned int GetBattleActor(void);
 
 unsigned int Func_80b6cd0(void) {
     unsigned int r0;
     unsigned int r1;
 
-    r0 = Func_80b7dd0();
+    r0 = GetBattleActor();
     r1 = *(unsigned int *)(r0 + 0x14);
     return r1;
 }

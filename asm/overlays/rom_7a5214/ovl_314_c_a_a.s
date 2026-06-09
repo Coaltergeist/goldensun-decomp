@@ -13,7 +13,7 @@
 	str	r1, [sp, #8]
 	mov	r11, r2
 	mov	r1, #0xee
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	str	r0, [sp, #0xc]
 	lsl	r1, #1
 	mov	r9, r3
@@ -44,7 +44,7 @@
 	mov	r3, r9
 	strh	r3, [r2]
 	ldr	r0, [sp, #0xc]
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L3b4
 	mov	r1, r10
@@ -57,7 +57,7 @@
 	mov	r3, #1
 	bl	__Func_80105d4
 	ldr	r0, [sp, #0xc]
-	bl	__Func_8079358
+	bl	__SetFlag
 	b	.L480
 
 	.pool_aligned
@@ -77,14 +77,14 @@
 	add	r1, #1
 	bl	__Func_80105d4
 	mov	r0, #0xce
-	bl	__Func_80f9080
-	bl	__Func_80916b0
+	bl	__PlaySound
+	bl	__CutsceneStart
 	ldr	r0, =0x2d
 	mov	r1, r9
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	mov	r0, r7
 	mov	r1, #0x1b
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r7
 	bl	__MapActor_GetActor
 	mov	r1, #0
@@ -93,12 +93,12 @@
 	.pool_aligned
 
 .L3fc:
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r7
 	ldr	r1, =0x101
-	bl	__Func_8093874
+	bl	__MapActor_Surprise
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #1
 	mov	r1, #1
 	mov	r2, #1
@@ -117,9 +117,9 @@
 	lsl	r3, #8
 	str	r3, [r6, #0x48]
 	mov	r0, #0xcc
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #3
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r3, r6
 	add	r3, #0x22
 	strb	r5, [r3]
@@ -134,7 +134,7 @@
 	strh	r3, [r6, #6]
 	mov	r0, #1
 	sub	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0
 	bge	.L450
 	mov	r1, r9
@@ -142,7 +142,7 @@
 	beq	.L480
 	mov	r0, #0x91
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	b	.L480
 
 	.align	2, 0

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801a98c
+.thumb_func_start Func_801a98c  @ 0x0801a98c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -167,7 +167,7 @@
 	cmp	r3, #0
 	beq	.L1ab10
 	ldr	r0, =0x103
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ab08
 	ldr	r3, =0x2e2
@@ -338,7 +338,7 @@
 	strh	r3, [r1, #0x22]
 .L1ac18:
 	ldr	r0, =0x103
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ac2e
 	ldrb	r3, [r5, #5]
@@ -354,10 +354,10 @@
 .L1ac36:
 	mov	r0, r10
 	mov	r1, #0
-	bl	Func_801aeec
+	bl	DisplayMenuArrowCursor
 	mov	r0, r10
 	mov	r1, #1
-	bl	Func_801aeec
+	bl	DisplayMenuArrowCursor
 	mov	r3, #0xd3
 	lsl	r3, #2
 	add	r3, r10
@@ -480,7 +480,7 @@
 	strb	r3, [r6, #7]
 .L1ad2e:
 	ldr	r0, =0x103
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1ad9a
 	ldr	r3, =0x2e2
@@ -539,7 +539,7 @@
 	add	r2, r11
 	ldrh	r0, [r4, #0xc]
 	lsl	r1, #1
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r3, .L1ae00	@ 0x3ff
 	ldr	r1, [sp, #8]
 	and	r0, r3
@@ -625,7 +625,7 @@
 	orr	r3, r2
 	strh	r3, [r0, #6]
 	ldr	r0, =0x103
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L1aec4
 	ldr	r3, =0x2e2

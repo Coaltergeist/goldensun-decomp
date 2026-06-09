@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808ec8c
+.thumb_func_start Func_808ec8c  @ 0x0808ec8c
 	push	{r5, lr}
-	bl	Func_808ec14
+	bl	GetMapActorIndex
 	mov	r2, #1
 	neg	r2, r2
 	cmp	r0, r2
@@ -17,15 +17,15 @@
 	add	r3, r2
 	ldr	r5, [r3]
 	mov	r0, #0x12
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	beq	.L8ecbc
 	mov	r0, r5
 	mov	r1, #7
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L8ecbc:
 	mov	r0, #0x92
-	bl	_Func_80f9080
+	bl	_PlaySound
 	cmp	r5, #0
 	beq	.L8ecd4
 	mov	r3, #0x80
@@ -33,7 +33,7 @@
 	str	r3, [r5, #0x28]
 	mov	r0, r5
 	mov	r1, #1
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 .L8ecd4:
 	pop	{r5}
 	pop	{r0}

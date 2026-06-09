@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_958_2009394
 	push	{r5, lr}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r5, r1
@@ -14,16 +14,16 @@
 	bne	.L13c8
 	mov	r0, #0xa2
 	lsl	r0, #1
-	bl	__Func_8079358
+	bl	__SetFlag
 	mov	r0, #0x9a
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L13c8
 	mov	r0, #0xb
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 .L13c8:
 	mov	r2, #0xe0
 	lsl	r2, #1
@@ -51,7 +51,7 @@
 	bl	__Func_8010704
 .L13fa:
 	ldr	r0, =0x9a2
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L142e
 	mov	r1, #0xdc
@@ -59,10 +59,10 @@
 	lsl	r2, #17
 	mov	r0, #8
 	lsl	r1, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #8
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, #0x1b
 	mov	r2, #0x13
 	str	r3, [sp]
@@ -74,27 +74,27 @@
 	bl	__Func_8010704
 .L142e:
 	ldr	r0, =0x9a5
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L1458
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r1, #0xae
 	mov	r2, #0x90
 	mov	r0, #0xa
 	lsl	r1, #18
 	lsl	r2, #17
-	bl	__Func_80923e4
+	bl	__MapActor_SetPos
 	mov	r0, #0xa
 	mov	r1, #2
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 .L1458:
 	mov	r0, #0xc
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 .L1464:
 	mov	r0, #0
 	add	sp, #8
@@ -104,17 +104,17 @@
 .func_end OvlFunc_958_2009394
 
 	.section .data
-	.global .L191c
+	.global gOvl_0200991c
 	.global .L195c
 	.global .L1974
 	.global .L19d4
-	.global .L1a4c
+	.global gScript_970__02009a4c
 	.global .L1aac
 	.global .L1b3c
 	.global .L1b48
 	.global .L1bcc
 	.global .L1c80
-	.global .L1ce0
+	.global gScript_885__02009ce0
 	.global .L1784
 	.global .L17b4
 	.global .L17fc
@@ -128,7 +128,7 @@
 	.incbin "overlays/rom_7e636c/orig.bin", 0x17fc, (0x1874-0x17fc)
 .L1874:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1874, (0x191c-0x1874)
-.L191c:
+gOvl_0200991c:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x191c, (0x195c-0x191c)
 .L195c:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x195c, (0x1974-0x195c)
@@ -136,7 +136,7 @@
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1974, (0x19d4-0x1974)
 .L19d4:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x19d4, (0x1a4c-0x19d4)
-.L1a4c:
+gScript_970__02009a4c:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1a4c, (0x1aac-0x1a4c)
 .L1aac:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1aac, (0x1b3c-0x1aac)
@@ -148,5 +148,5 @@
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1bcc, (0x1c80-0x1bcc)
 .L1c80:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1c80, (0x1ce0-0x1c80)
-.L1ce0:
+gScript_885__02009ce0:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1ce0

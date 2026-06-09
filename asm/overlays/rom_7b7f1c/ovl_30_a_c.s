@@ -12,7 +12,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	strh	r0, [r5, #6]
 	mov	r0, #0
 	pop	{r5}
@@ -22,7 +22,7 @@
 
 .thumb_func_start OvlFunc_930_200807c
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1

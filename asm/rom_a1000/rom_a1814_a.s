@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a1814
+.thumb_func_start Func_80a1814  @ 0x080a1814
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -48,7 +48,7 @@
 	bx	r1
 .func_end Func_80a1814
 
-.thumb_func_start Func_80a1870
+.thumb_func_start Func_80a1870  @ 0x080a1870
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -89,7 +89,7 @@
 	mov	r3, r11
 	ldrh	r0, [r3, r1]
 	bl	_Func_808b398
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	cmp	r0, #0
 	beq	.La190e
 	str	r0, [r6]
@@ -124,7 +124,7 @@
 	mov	r3, #0
 	strb	r3, [r2]
 	mov	r1, #1
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 .La190e:
 	mov	r2, #2
 	add	r5, #1
@@ -165,7 +165,7 @@
 	bx	r0
 .func_end Func_80a1870
 
-.thumb_func_start Func_80a195c
+.thumb_func_start Func_80a195c  @ 0x080a195c
 	push	{r5, r6, lr}
 	sub	sp, #0x1c
 	ldr	r3, =iwram_3001f2c
@@ -184,7 +184,7 @@
 	ldmia	r6!, {r0}
 	cmp	r0, #0
 	beq	.La1984
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 .La1984:
 	sub	r5, #1
 	cmp	r5, #0
@@ -198,7 +198,7 @@
 	bx	r0
 .func_end Func_80a195c
 
-.thumb_func_start Func_80a19a0
+.thumb_func_start Func_80a19a0  @ 0x080a19a0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -206,7 +206,7 @@
 	ldr	r3, =iwram_3001f2c
 	sub	sp, #0x1c
 	ldr	r5, [r3]
-	bl	_Func_80795fc
+	bl	_GetPartySize
 	lsl	r0, #16
 	lsr	r0, #16
 	mov	r10, r0
@@ -262,7 +262,7 @@
 	mov	r2, r8
 	lsl	r3, #7
 	str	r4, [sp]
-	bl	_Func_800b168
+	bl	_UpdateSprite
 	ldr	r4, [sp]
 .La1a24:
 	add	r4, #1
@@ -280,7 +280,7 @@
 	bx	r0
 .func_end Func_80a19a0
 
-.thumb_func_start Func_80a1a40
+.thumb_func_start Func_80a1a40  @ 0x080a1a40
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001f2c
 	ldr	r5, [r3]
@@ -340,7 +340,7 @@
 	bx	r0
 .func_end Func_80a1a40
 
-.thumb_func_start Func_80a1ac0
+.thumb_func_start Func_80a1ac0  @ 0x080a1ac0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -405,7 +405,7 @@
 	sub	r0, r5
 	mov	r1, #2
 	add	r0, #1
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r8
 	mov	r11, r0
 	lsl	r6, #4
@@ -413,7 +413,7 @@
 	sub	r0, r6
 	add	r0, #1
 	mov	r1, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r4, .La1b88	@ 0xffff
 	mov	r8, r0
 .La1b56:
@@ -463,7 +463,7 @@
 	beq	.La1bb6
 	mov	r0, #1
 	str	r4, [sp]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp]
 	b	.La1b56
 .La1bb6:

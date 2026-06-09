@@ -4,48 +4,48 @@
 Exports_77000:
 
 	.export_func Func_8077330
-	.export_func Func_8077394
-	.export_func Func_8077428
-	.export_func Func_8078414
-	.export_func Func_80784b0
-	.export_func Func_8078588
-	.export_func Func_8078618
-	.export_func Func_8078664
-	.export_func Func_8078698
+	.export_func GetUnit
+	.export_func CalcStats
+	.export_func GetItemInfo
+	.export_func GetInventoryItem
+	.export_func GiveItemTo
+	.export_func GiveItem
+	.export_func CheckItem
+	.export_func CheckPartyItem
 	.export_func Func_80789dc
-	.export_func Func_8078708
+	.export_func EquipItem
 	.export_func Func_80788c4
-	.export_func Func_8078a34
-	.export_func Func_8078a60
+	.export_func BreakItem
+	.export_func RepairItem
 	.export_func Func_8078a8c
 	.export_func Func_8078870
-	.export_func Func_8078b9c
-	.export_func Func_8078e28
-	.export_func Func_8078bc0
-	.export_func Func_8077d38
+	.export_func GetMoveInfo
+	.export_func GiveInnateMove
+	.export_func HasMove
+	.export_func GameInit
 	.export_func Func_8078ecc
-	.export_func Func_8078ee8
+	.export_func ResetPCs
 	.export_func Func_8079004
 	.export_func Func_80792c4
-	.export_func Func_8079338
-	.export_func Func_8079358
-	.export_func Func_8079374
-	.export_func Func_8079390
-	.export_func Func_80793b8
-	.export_func Func_80793c8
-	.export_func Func_80793d8
-	.export_func Func_80793f8
-	.export_func Func_8079418
-	.export_func Func_8079434
-	.export_func Func_8077320
-	.export_func Func_80783a4
-	.export_func Func_80783dc
-	.export_func Func_807822c
+	.export_func GetFlag
+	.export_func SetFlag
+	.export_func ClearFlag
+	.export_func ToggleFlag
+	.export_func GetFlagByte
+	.export_func SetFlagByte
+	.export_func IncFlagByte
+	.export_func DecFlagByte
+	.export_func GetFlagNybble
+	.export_func SetFlagNybble
+	.export_func Debug_StartGame
+	.export_func ModifyHP
+	.export_func ModifyPP
+	.export_func UpdateStatBarPercent
 	.export_func Func_80782a0
 	.export_func Func_8078320
-	.export_func Func_8079460
-	.export_func Func_80795fc
-	.export_func Func_807961c
+	.export_func InitEnemyUnit
+	.export_func GetPartySize
+	.export_func AddPartyMember
 	.export_func Func_80796c4
 	.export_func Func_8079d1c
 	.export_func Func_8079664
@@ -54,29 +54,29 @@ Exports_77000:
 	.export_func Func_8079bf8
 	.export_func Func_8079c30
 	.export_func Func_8079c5c
-	.export_func Func_80773d8
-	.export_func Func_8079bc4
-	.export_func Func_807a1b4
-	.export_func Func_807a2e4
+	.export_func GetEnemyInfo
+	.export_func RPGRandom
+	.export_func GiveDjinni
+	.export_func SetDjinni
 	.export_func Func_807a350
 	.export_func Func_807a3a8
 	.export_func Func_807a458
 	.export_func Func_807a498
 	.export_func Func_807977c
-	.export_func Func_80797d4
+	.export_func GetSummonInfo
 	.export_func Func_807a5b0
-	.export_func Func_80792fc
+	.export_func SetMinLevel
 	.export_func Func_807987c
 	.export_func Func_807a550
 	.export_func Func_807a2bc
 	.export_func Func_807a1f8
-	.export_func Func_807842c
+	.export_func CanEquipItem
 	.export_func Func_807845c
-	.export_func Func_80787dc
-	.export_func Func_8079700
+	.export_func GetEquippedItem
+	.export_func AddCoins
 	.export_func Func_8078480
 	.export_func Func_8078ad0
-	.export_func Func_80784d8
+	.export_func FindEmptyInventorySlot
 	.export_func Func_8078500
 	.export_func Func_8079008
 	.export_func Func_807808c
@@ -85,10 +85,10 @@ Exports_77000:
 	.export_func Func_8077f70
 	.export_func Func_8078228
 	.export_func Func_807a0f4
-	.export_func Func_807a5bc
-	.export_func Func_8079728
+	.export_func GetNumDjinn
+	.export_func AddCoinsSpent
 	.export_func Func_8079754
-	.export_func Func_8078980
+	.export_func CanRemoveItem
 	.export_func Func_8078948
 	.export_func Func_8079ef8
 	.export_func Func_8078bf0
@@ -97,8 +97,8 @@ Exports_77000:
 	.export_func Func_8078af8
 	.export_func Func_8078b60
 	.export_func Func_8078a08
-	.export_func Func_8077c10
-	.export_func Func_8079cbc
+	.export_func CheckLure
+	.export_func CheckEquipmentCritBoost
 	.export_func Func_8077cb8
 	.export_func Func_8078550
 	.export_func Func_807a664

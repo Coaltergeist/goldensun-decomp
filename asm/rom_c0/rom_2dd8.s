@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8002dd8
-	ldr	r4, =iwram_3001e50
+.thumb_func_start gfree  @ 0x08002dd8
+	ldr	r4, =gPtrs
 	lsl	r0, #2
 	ldr	r1, [r0, r4]
 	lsr	r3, r1, #22
@@ -13,13 +13,13 @@
 	str	r1, [r3, r4]
 .L2dec:
 	bx	lr
-	.ssize	Func_8002dd8
+	.ssize	gfree
 
-.thumb_func_start Func_8002df0
-	ldr	r4, =iwram_3001e50
+.thumb_func_start free  @ 0x08002df0
+	ldr	r4, =gPtrs
 	mov	r1, #4
 	lsr	r2, r0, #22
 	and	r2, r1
 	str	r0, [r2, r4]
 	bx	lr
-.func_end Func_8002df0
+.func_end free

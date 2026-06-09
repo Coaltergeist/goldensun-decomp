@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079460
+.thumb_func_start InitEnemyUnit  @ 0x08079460
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -30,7 +30,7 @@
 	b	.L795da
 .L79492:
 	mov	r0, r9
-	bl	Func_8077394
+	bl	GetUnit
 	mov	r1, #0xa6
 	ldr	r3, =Func_80008d4
 	lsl	r1, #1
@@ -83,7 +83,7 @@
 	mov	r1, r4
 	mov	r2, #0xf
 	str	r4, [sp]
-	bl	_Func_80196c4
+	bl	_DecompressString
 	ldr	r4, [sp]
 	mov	r5, #0
 	ldrh	r3, [r4, r5]
@@ -182,7 +182,7 @@
 	mov	r0, r9
 	bl	Func_80798e0
 	mov	r0, r9
-	bl	Func_8077428
+	bl	CalcStats
 	mov	r3, #0x95
 	lsl	r3, #1
 	add	r2, r6, r3
@@ -207,5 +207,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8079460
+.func_end InitEnemyUnit
 

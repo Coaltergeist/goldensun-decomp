@@ -65,13 +65,13 @@
 	mov	r0, #0x11
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.Lee8
 .Ledc:
 	mov	r0, #0xc
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .Lee8:
 	mov	r2, r9
 	ldr	r3, [r2, #0x4c]
@@ -101,7 +101,7 @@
 	mov	r0, r8
 	mul	r0, r7
 	mov	r1, r10
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r1, r9
 	ldr	r3, [r1, #0x40]
 	add	r7, r3, r0
@@ -109,7 +109,7 @@
 	mov	r0, r8
 	mul	r0, r6
 	mov	r1, r10
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, r9
 	ldr	r3, [r2, #0x48]
 	add	r2, r3, r0
@@ -193,7 +193,7 @@
 	mov	r0, #0x11
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	OvlFunc_951_2008e44
@@ -208,7 +208,7 @@
 	mov	r0, #0xc
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	OvlFunc_951_2008e44
@@ -303,7 +303,7 @@
 	mul	r0, r2
 	mov	r1, #0x12
 	str	r4, [sp, #4]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r1, #0xc0
 	lsl	r1, #14
 	mov	r3, #0xb4
@@ -334,7 +334,7 @@
 	add	r0, r1
 	mov	r1, #0x12
 	str	r4, [sp, #4]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, #0xc0
 	lsl	r2, #14
 	mov	r3, #0xb4
@@ -369,7 +369,7 @@
 	add	r0, r3
 	lsl	r0, #1
 	mov	r1, #0x2a
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, #0xc0
 	lsl	r2, #13
 	mov	r3, #0xa8
@@ -399,7 +399,7 @@
 	lsl	r0, #1
 	add	r0, r1
 	mov	r1, #0x2a
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, #0xc0
 	lsl	r2, #13
 	mov	r3, #0xa8
@@ -546,13 +546,13 @@
 	mov	r0, #0x12
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L12a2
 .L1296:
 	mov	r0, #0x13
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L12a2:
 	mov	r4, #0xe
 	ldrsh	r3, [r6, r4]
@@ -626,16 +626,16 @@
 .L131a:
 	bl	__MapActor_GetActor
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L1410
 .L1326:
 	mov	r0, #0x14
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r1, #0xc
 	ldrsh	r0, [r6, r1]
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r3, r0, #1
 	add	r3, r0
 	mov	r2, #0xe0
@@ -645,7 +645,7 @@
 	str	r3, [r6]
 	mov	r3, #0xc
 	ldrsh	r0, [r6, r3]
-	bl	__Func_800231c
+	bl	__cos
 	lsl	r3, r0, #2
 	add	r3, r0
 	mov	r4, #0x90
@@ -689,7 +689,7 @@
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L140a
 .L13ba:
 	ldr	r3, =0x17f
@@ -697,7 +697,7 @@
 	bgt	.L13fe
 	mov	r4, #0xc
 	ldrsh	r0, [r6, r4]
-	bl	__Func_8002322
+	bl	__sin
 	mov	r3, #0x34
 	mul	r3, r0
 	mov	r0, #0xe0
@@ -706,7 +706,7 @@
 	str	r3, [r6]
 	mov	r1, #0xc
 	ldrsh	r0, [r6, r1]
-	bl	__Func_800231c
+	bl	__cos
 	lsl	r3, r0, #1
 	add	r3, r0
 	mov	r2, #0x90
@@ -720,13 +720,13 @@
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L140a
 .L13fe:
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L140a:
 	ldrh	r3, [r6, #0xe]
 	add	r3, #1
@@ -798,7 +798,7 @@
 	mul	r0, r4
 	mov	r1, r2
 	str	r2, [sp, #8]
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	ldr	r2, [sp, #8]
 	ldr	r4, [sp, #4]
 	neg	r3, r5
@@ -807,7 +807,7 @@
 	mov	r0, r3
 	mul	r0, r4
 	mov	r1, r2
-	bl	_Func_8000af0
+	bl	_divsi3_RAM
 	mov	r2, r9
 	ldr	r3, [r2, #0x4c]
 	sub	r3, #0x64
@@ -816,12 +816,12 @@
 	str	r3, [r2, #0x4c]
 .L14b2:
 	ldr	r0, =0x12d
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r3, #0x10
 	ldrsh	r0, [r6, r3]
 	mov	r1, #3
 	add	r0, #1
-	bl	_Func_8000b1c
+	bl	_modsi3_RAM
 	mov	r3, #0x24
 	strh	r3, [r6, #0x12]
 	mov	r3, #0x1e
@@ -957,15 +957,15 @@
 	mov	r0, #0xf
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xd
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	b	.L1666
 .L15f0:
 	mov	r1, r9
@@ -1007,15 +1007,15 @@
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r1, #4
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L1666:
 	mov	r3, r9
 	ldrh	r2, [r3, #2]
@@ -1083,11 +1083,11 @@
 	mov	r0, #0x14
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0x15
 	bl	__MapActor_GetActor
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r1, =0xc83
 	ldr	r0, =OvlFunc_951_2008e5c
 	bl	__StartTask
@@ -1125,14 +1125,14 @@
 	bne	.L1776
 	mov	r0, #0x96
 	lsl	r0, #1
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r3, [r6]
 .L1776:
 	cmp	r3, #0x10
 	bne	.L1816
 	ldr	r0, [r7]
 	mov	r1, #0x1d
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r3, #0
 	strh	r3, [r5, #2]
 	ldr	r3, =0x14ccc
@@ -1161,11 +1161,11 @@
 	mov	r0, #0x10
 	bl	__MapActor_GetActor
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0x11
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xf
 	mov	r1, #1
 	bl	OvlFunc_951_2008e44
@@ -1180,11 +1180,11 @@
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r1, #3
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xc
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	mov	r0, #0xa
 	mov	r1, #1
 	bl	OvlFunc_951_2008e44
@@ -1196,7 +1196,7 @@
 	bl	OvlFunc_951_2008e44
 .L1816:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r3, =.L2134
 	ldr	r3, [r3]
 	cmp	r3, #1
@@ -1209,31 +1209,33 @@
 .func_end OvlFunc_951_200973c
 
 	.section .data
-	.global .L1e1c
-	.global .L1f30
+	.global Events_GameBuildings
+	.global Events_TolbiSpring
 	.global .L1fc0
-	.global .L1fd0
+	.global gLuckyFountainPrizes
 	.global .L200c
 	.global .L2018
 	.global .L1aec
 	.global .L1cfc
-	.global .L1a08
-
-.L1a08:
+	.global gOvl_02009a08
+	.global MapEntrance_ARRAY_951__02009a08
+gOvl_02009a08:
+MapEntrance_ARRAY_951__02009a08:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1a08, (0x1ac8-0x1a08)
-.L1ac8:
+	.global gOvl_02009ac8
+gOvl_02009ac8:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1ac8, (0x1aec-0x1ac8)
 .L1aec:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1aec, (0x1cfc-0x1aec)
 .L1cfc:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1cfc, (0x1e1c-0x1cfc)
-.L1e1c:
+Events_GameBuildings:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1e1c, (0x1f30-0x1e1c)
-.L1f30:
+Events_TolbiSpring:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1f30, (0x1fc0-0x1f30)
 .L1fc0:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1fc0, (0x1fd0-0x1fc0)
-.L1fd0:
+gLuckyFountainPrizes:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x1fd0, (0x200c-0x1fd0)
 .L200c:
 	.incbin "overlays/rom_7d6418/orig.bin", 0x200c, (0x2018-0x200c)

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808b674
+.thumb_func_start InitMapActors  @ 0x0808b674
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -10,7 +10,7 @@
 	mov	r10, r0
 	mov	r8, r3
 	mov	r0, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r0, #1
 	mov	r5, #0x80
 	add	r3, r0
@@ -41,7 +41,7 @@
 	bge	.L8b6b6
 	bl	Func_808b9f8
 	ldr	r3, =0xffff
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	mov	r1, #0xee
 	strh	r3, [r5, #2]
 	strh	r7, [r5]
@@ -63,10 +63,10 @@
 	mov	r0, r5
 	strh	r3, [r5, #0x14]
 	mov	r1, r7
-	bl	Func_808b3ec
+	bl	LoadMapActors
 	mov	r0, r10
 	mov	r1, #8
-	bl	Func_808b3ec
+	bl	LoadMapActors
 	lsl	r3, r7, #2
 	add	r3, #0x14
 	mov	r0, r8
@@ -94,7 +94,7 @@
 	asr	r3, #20
 	lsl	r3, #7
 	add	r3, r2, r3
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	lsl	r3, #2
 	add	r2, r3, r0
 	ldr	r4, =ewram_200fe00
@@ -134,10 +134,10 @@
 	mov	r0, r5
 	mov	r1, #0
 	strb	r3, [r2]
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xc
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.L8b7c4
 
 	.align	2, 0
@@ -146,7 +146,7 @@
 	.pool
 
 .L8b7b8:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r0, #0xf9
 	lsl	r0, #1
 	add	r2, r3, r0
@@ -158,12 +158,12 @@
 	ldr	r2, [r5, #0xc]
 	ldr	r3, [r5, #0x10]
 	lsl	r0, #8
-	bl	_Func_800c150
+	bl	_CreateActor
 	ldr	r3, [r5, #0x14]
 	mov	r6, r0
 	str	r3, [r6, #0x14]
 	mov	r1, r5
-	bl	_Func_800c4bc
+	bl	_Camera_SetTarget
 	mov	r3, #0xcf
 	lsl	r3, #1
 	add	r3, r8
@@ -173,7 +173,7 @@
 	bne	.L8b7fc
 	ldr	r0, [r5, #0x50]
 	mov	r1, #0x17
-	bl	_Func_800b8ac
+	bl	_Sprite_AddLayer
 	mov	r3, #0xf
 	strb	r3, [r0, #5]
 	mov	r3, #9
@@ -194,5 +194,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808b674
+.func_end InitMapActors
 

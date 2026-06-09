@@ -1,11 +1,11 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_800be70
+.thumb_func_start Func_800be70  @ 0x0800be70
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
 	ldrb	r3, [r0, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r3, [r3, #2]

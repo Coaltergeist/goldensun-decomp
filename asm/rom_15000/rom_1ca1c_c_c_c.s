@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_801d9d4
+.thumb_func_start Func_801d9d4  @ 0x0801d9d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -17,7 +17,7 @@
 	lsl	r0, #1
 	sub	sp, #0xc
 	mov	r11, r3
-	bl	_Func_8079338
+	bl	_GetFlag
 	mov	r2, #0
 	mov	r9, r0
 	str	r2, [sp, #8]
@@ -28,7 +28,7 @@
 	str	r0, [sp, #8]
 	mov	r10, r3
 .L1da08:
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L1da14
@@ -52,7 +52,7 @@
 	mov	r2, #0x14
 	mov	r0, #5
 	mov	r3, r4
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r2, r10
 	mov	r8, r0
 	cmp	r2, #1
@@ -82,20 +82,20 @@
 	mov	r2, #0x30
 	mov	r3, #4
 	add	r5, #1
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r0, r5
 	mov	r1, r8
 	mov	r2, #0x30
 	mov	r3, #0x1c
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r7, #0x34
 .L1da82:
 	mov	r3, r7
 	ldr	r0, =0xc25
 	mov	r1, r8
 	mov	r2, #0x30
-	bl	Func_801e74c
-	ldr	r3, =iwram_3001f54
+	bl	DrawSmallText
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	add	r7, #0x18
 	cmp	r3, #0
@@ -106,27 +106,27 @@
 	mov	r1, r8
 	mov	r2, #0x30
 	add	r7, #0x18
-	bl	Func_801e74c
+	bl	DrawSmallText
 	add	r0, r5, #1
 	mov	r3, r7
 	mov	r1, r8
 	mov	r2, #0x30
 	add	r7, #0x18
 	add	r5, #2
-	bl	Func_801e74c
+	bl	DrawSmallText
 	mov	r0, r5
 	mov	r1, r8
 	mov	r2, #0x30
 	mov	r3, r7
-	bl	Func_801e74c
+	bl	DrawSmallText
 .L1dac4:
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	cmp	r5, #0x5f
 	bgt	.L1db02
 	ldr	r2, =Data_310a4
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r1, #0x80
 	mov	r3, #0
 	lsl	r1, #23
@@ -190,7 +190,7 @@
 	bx	r1
 .func_end Func_801d9d4
 
-.thumb_func_start Func_801db70
+.thumb_func_start StartMenu_Main  @ 0x0801db70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -205,7 +205,7 @@
 	mov	r2, #3
 	lsl	r0, #1
 	mov	r11, r2
-	bl	_Func_8079338
+	bl	_GetFlag
 	mov	r3, #0
 	str	r3, [sp, #4]
 	mov	r5, r0
@@ -214,7 +214,7 @@
 	ldr	r3, [r3]
 	mov	r10, r3
 	bl	Func_801d9d4
-	ldr	r6, =iwram_3001f54
+	ldr	r6, =gDebugMode
 	str	r0, [sp, #0x10]
 	ldrb	r3, [r6]
 	mov	r4, #0x18
@@ -230,7 +230,7 @@
 	bl	Func_8021620
 	str	r0, [sp, #8]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =0x574
 	add	r3, r10
 	ldrh	r3, [r3]
@@ -256,7 +256,7 @@
 	add	r0, r11
 	mov	r1, r11
 	str	r2, [sp, #0xc]
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	ldr	r3, =0x574
 	mov	r8, r0
 	add	r3, r10
@@ -292,7 +292,7 @@
 	mov	r3, r9
 	ldrsb	r0, [r6, r3]
 	str	r4, [sp]
-	bl	Func_80216e8
+	bl	StartMenu_AddOption
 	ldr	r4, [sp]
 	add	r4, #1
 	add	r6, #1
@@ -319,7 +319,7 @@
 	ldr	r0, [sp, #8]
 	bl	Func_80216b4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =gKeyPress
 	ldr	r2, [r1]
 	mov	r3, #1
@@ -328,7 +328,7 @@
 	beq	.L1dc90
 	mov	r0, #0x70
 	mov	r5, r8
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1dcdc
 .L1dc90:
 	ldr	r2, [r1]
@@ -339,17 +339,17 @@
 	mov	r5, #1
 	mov	r0, #0x71
 	neg	r5, r5
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1dcdc
 .L1dca6:
-	ldr	r1, =iwram_3001b04
+	ldr	r1, =gKeyRepeat
 	ldr	r2, [r1]
 	mov	r3, #0x40
 	and	r2, r3
 	cmp	r2, #0
 	beq	.L1dcc4
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	neg	r2, r2
 	mov	r3, #1
@@ -363,7 +363,7 @@
 	cmp	r3, #0
 	beq	.L1dbe6
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	add	r8, r0
 	str	r0, [sp, #0xc]
@@ -371,10 +371,10 @@
 .L1dcdc:
 	ldr	r0, [sp, #0x10]
 	mov	r1, #2
-	bl	Func_8016418
+	bl	CloseUIBox
 	bl	Func_801d9bc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	blt	.L1dcf6
 	ldr	r2, [sp, #4]
@@ -390,9 +390,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_801db70
+.func_end StartMenu_Main
 
-.thumb_func_start Func_801dd28
+.thumb_func_start Func_801dd28  @ 0x0801dd28
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10

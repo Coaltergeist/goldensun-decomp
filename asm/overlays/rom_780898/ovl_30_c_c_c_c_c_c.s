@@ -12,10 +12,10 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r6
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L5c7e:
 	ldr	r3, [r5]
 	mov	r2, #0xf
@@ -42,10 +42,10 @@
 	ldr	r0, [r0]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r5
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L5cba:
 	pop	{r5}
 	pop	{r0}
@@ -66,11 +66,11 @@
 	cmp	r0, #0x1f
 	ble	.L5ce4
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L5d0e
 .L5ce4:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]
@@ -109,11 +109,11 @@
 	cmp	r0, #0x1f
 	ble	.L5d34
 	mov	r0, r5
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	b	.L5d60
 .L5d34:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	neg	r3, r0
 	str	r0, [r5, #0x18]
 	str	r3, [r5, #0x1c]
@@ -161,7 +161,7 @@
 	ldr	r3, [r6, #0x10]
 	ldr	r1, [r6, #8]
 	mov	r0, #0x1a
-	bl	__Func_800c150
+	bl	__CreateActor
 	lsl	r3, r7, #2
 	mov	r2, r10
 	str	r0, [r3, r2]
@@ -191,7 +191,7 @@
 .L5dc4:
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r3, r5
 	add	r3, #0x26
 	mov	r2, r8
@@ -207,7 +207,7 @@
 	orr	r3, r2
 	strb	r3, [r5, #0x1d]
 	ldrb	r3, [r5, #0x1c]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r1, [r3, #2]
@@ -284,19 +284,20 @@
 .func_end OvlFunc_883_200dd68
 
 	.section .data
-	.global .L66e0
-	.global .L66e4
-	.global .L6248
-	.global .L6590
-	.global .L65cc
-	.global .L6614
-	.global .L665c
+	.global gScript_883__0200e6e0
+	.global gScript_883__0200e6e4
+	.global gScript_945__0200e6e4
+	.global gScript_883__0200e248
+	.global gScript_883__0200e590
+	.global gScript_883__0200e5cc
+	.global gScript_883__0200e614
+	.global gScript_883__0200e65c
 	.global .L7544
 	.global .L755a
 	.global .L7570
 	.global .L7586
-	.global .L759c
-	.global .L75ec
+	.global gScript_883__0200f59c
+	.global gScript_883__0200f5ec
 	.global .L763c
 	.global .L76cc
 	.global .L7748
@@ -311,7 +312,7 @@
 	.global .L6190
 	.global .L61d0
 	.global .L61e8
-	.global .L6708
+	.global gOvl_0200e708
 
 .L6190:
 	.incbin "overlays/rom_780898/orig.bin", 0x6190, (0x61d0-0x6190)
@@ -319,23 +320,25 @@
 	.incbin "overlays/rom_780898/orig.bin", 0x61d0, (0x61e8-0x61d0)
 .L61e8:
 	.incbin "overlays/rom_780898/orig.bin", 0x61e8, (0x6248-0x61e8)
-.L6248:
+gScript_883__0200e248:
 	.incbin "overlays/rom_780898/orig.bin", 0x6248, (0x6590-0x6248)
-.L6590:
+gScript_883__0200e590:
 	.incbin "overlays/rom_780898/orig.bin", 0x6590, (0x65cc-0x6590)
-.L65cc:
+gScript_883__0200e5cc:
 	.incbin "overlays/rom_780898/orig.bin", 0x65cc, (0x6614-0x65cc)
-.L6614:
+gScript_883__0200e614:
 	.incbin "overlays/rom_780898/orig.bin", 0x6614, (0x665c-0x6614)
-.L665c:
+gScript_883__0200e65c:
 	.incbin "overlays/rom_780898/orig.bin", 0x665c, (0x66e0-0x665c)
-.L66e0:
+gScript_883__0200e6e0:
 	.incbin "overlays/rom_780898/orig.bin", 0x66e0, (0x66e4-0x66e0)
-.L66e4:
+gScript_883__0200e6e4:
+gScript_945__0200e6e4:
 	.incbin "overlays/rom_780898/orig.bin", 0x66e4, (0x6708-0x66e4)
-.L6708:
+gOvl_0200e708:
 	.incbin "overlays/rom_780898/orig.bin", 0x6708, (0x6870-0x6708)
-.L6870:
+	.global gOvl_0200e870
+gOvl_0200e870:
 	.incbin "overlays/rom_780898/orig.bin", 0x6870, (0x68a8-0x6870)
 .L68a8:
 	.incbin "overlays/rom_780898/orig.bin", 0x68a8, (0x6ab8-0x68a8)
@@ -359,9 +362,9 @@
 	.incbin "overlays/rom_780898/orig.bin", 0x7570, (0x7586-0x7570)
 .L7586:
 	.incbin "overlays/rom_780898/orig.bin", 0x7586, (0x759c-0x7586)
-.L759c:
+gScript_883__0200f59c:
 	.incbin "overlays/rom_780898/orig.bin", 0x759c, (0x75ec-0x759c)
-.L75ec:
+gScript_883__0200f5ec:
 	.incbin "overlays/rom_780898/orig.bin", 0x75ec, (0x763c-0x75ec)
 .L763c:
 	.incbin "overlays/rom_780898/orig.bin", 0x763c, (0x76cc-0x763c)

@@ -6,8 +6,8 @@
  * goldensun/stage1.ld.
  */
 extern int StartTask(void *task, int priority);
-extern void Func_8028f98(void);
+extern void Debug_WarpMenu(void);
 
 void Func_8028edc(void) {
-    StartTask(Func_8028f98, 0xc8 << 4);
+    StartTask(Debug_WarpMenu, 0xc8 << 4);
 }

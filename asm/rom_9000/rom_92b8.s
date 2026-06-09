@@ -3,7 +3,7 @@
 	.incdata Data_92b8, 0x92b8, 0x97b8
 	.incdata Data_97b8, 0x97b8, 0x9bb8
 
-.arm_func_start Func_8009bb8
+.arm_func_start Func_8009bb8  @ 0x08009bb8
 	cmp	r2, #0
 	bne	.L9cd0
 .L9bc0:
@@ -165,7 +165,7 @@ Data_8009d9c:
 	.ssize	Data_8009d9c
 .func_end Func_8009bb8
 
-.arm_func_start Func_8009e7c
+.arm_func_start Func_8009e7c  @ 0x08009e7c
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}
 	mov	r4, #0xa00000
 	orr	r4, #0x38
@@ -329,7 +329,7 @@ Data_8009d9c:
 	bx	lr
 .func_end Func_8009e7c
 
-.arm_func_start Func_800a0f8
+.arm_func_start Func_800a0f8  @ 0x0800a0f8
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r5, r1
 	ldr	r9, =Exports_c0
@@ -498,7 +498,7 @@ Data_8009d9c:
 	bx	lr
 .func_end Func_800a0f8
 
-.arm_func_start Func_800a37c
+.arm_func_start Func_800a37c  @ 0x0800a37c
 	push	{r5, r6, r7, r8}
 	mov	r5, #0xff000000
 	orr	r5, r5, lsr #4
@@ -543,7 +543,7 @@ Data_8009d9c:
 	bx	lr
 .func_end Func_800a37c
 
-.arm_func_start Func_800a418
+.arm_func_start Func_800a418  @ 0x0800a418
 	bics	r1, #7
 	bicnes	r2, #7
 	bxeq	lr
@@ -579,7 +579,7 @@ Data_8009d9c:
 	bx	lr
 .func_end Func_800a418
 
-.arm_func_start Func_800a494
+.arm_func_start Func_800a494  @ 0x0800a494
 	push	{r5, r6, r7, r8, r9, r10, lr}
 	mov	r2, #0
 	ldr	r3, =iwram_3001e64
@@ -909,17 +909,17 @@ Data_8009d9c:
 	bx	lr
 .func_end Func_800a494
 
-.arm_func_start Func_800a958
-	ldr	r4, =Func_80044d0
+.arm_func_start Func_800a958  @ 0x0800a958
+	ldr	r4, =atan2
 	bx	r4
 .ssize	Func_800a958
 
-.arm_func_start Func_800a960
+.arm_func_start Func_800a960  @ 0x0800a960
 	ldr	r4, =Func_8000948
 	bx	r4
 .ssize	Func_800a960
 
-.arm_func_start Func_800a968
+.arm_func_start Func_800a968  @ 0x0800a968
 	ldr	r4, =Func_80008ac
 	bx	r4
 .ssize	Func_800a968

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808f32c
+.thumb_func_start Func_808f32c  @ 0x0808f32c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -13,12 +13,12 @@
 	ldr	r3, [r3]
 	mov	r1, #0xfa
 	ldr	r7, [r3, #0x10]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r1, #1
 	add	r3, r1
 	ldr	r0, [r3]
 	sub	sp, #8
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r5, r0
 	ldr	r3, [r5, #8]
 	asr	r3, #20
@@ -126,7 +126,7 @@
 	neg	r2, r2
 	cmp	r0, r2
 	beq	.L8f44a
-	bl	_Func_8079338
+	bl	_GetFlag
 	cmp	r0, #0
 	bne	.L8f44a
 	mov	r1, r8
@@ -136,15 +136,15 @@
 	add	r1, r9
 	mov	r2, #0
 	add	r3, r9
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8f44a
 	ldr	r1, =.L9e8a0
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r3, =Func_808f28c
 	str	r3, [r5, #0x6c]
 .L8f44a:
@@ -180,7 +180,7 @@
 	bx	r0
 .func_end Func_808f32c
 
-.thumb_func_start Func_808f498
+.thumb_func_start Func_808f498  @ 0x0808f498
 	ldr	r3, =iwram_3001ecc
 	ldr	r2, =0x539
 	ldr	r0, [r3]
@@ -243,7 +243,7 @@
 	bx	lr
 .func_end Func_808f498
 
-.thumb_func_start Func_808f52c
+.thumb_func_start Task_ScreenWindowTransition  @ 0x0808f52c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -300,7 +300,7 @@
 	strh	r3, [r1]
 	ldr	r0, =Func_808f498
 	bl	StopTask
-	ldr	r0, =Func_808f52c
+	ldr	r0, =Task_ScreenWindowTransition
 	bl	StopTask
 	ldr	r2, =REG_DMA0SAD
 	ldr	r3, =0xc5ff
@@ -340,7 +340,7 @@
 	mul	r0, r2
 	mov	r1, #0
 	ldrsb	r1, [r4, r1]
-	ldr	r3, =Func_8000af0
+	ldr	r3, =divsi3_RAM
 	bl	_call_via_r3
 	mov	r3, #0
 	ldrsb	r3, [r5, r3]
@@ -587,12 +587,12 @@
 	str	r2, [sp, #8]
 	str	r3, [sp, #4]
 	str	r4, [sp]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r2, [sp, #8]
 	mov	r5, r0
 	mov	r1, r7
 	mov	r0, r2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r11
 	add	r0, r6, r0
 	ldr	r4, [sp]
@@ -822,12 +822,12 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]
 	str	r4, [sp]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r3, [r0, #8]
 	sub	r3, r5
 	ldr	r4, [sp]
@@ -1081,12 +1081,12 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]
 	str	r4, [sp]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r3, [r0, #8]
 	sub	r3, r5
 	ldr	r4, [sp]
@@ -1199,12 +1199,12 @@
 	and	r5, r3
 	and	r6, r3
 	mov	r7, #0xfa
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r7, #1
 	add	r3, r7
 	ldr	r0, [r3]
 	str	r4, [sp]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	ldr	r3, [r0, #8]
 	sub	r3, r5
 	ldr	r4, [sp]
@@ -1328,16 +1328,16 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808f52c
+.func_end Task_ScreenWindowTransition
 
-.thumb_func_start Func_808fe38
+.thumb_func_start Func_808fe38  @ 0x0808fe38
 	push	{r5, r6, lr}
 	mov	r1, #0xa8
 	mov	r6, r0
 	lsl	r1, #3
 	mov	r0, #0x1f
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r5, #0
 	mov	r4, r0
 	mov	r0, sp
@@ -1364,7 +1364,7 @@
 	mov	r1, #0xc8
 	strh	r3, [r4]
 	lsl	r1, #4
-	ldr	r0, =Func_808f52c
+	ldr	r0, =Task_ScreenWindowTransition
 	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3

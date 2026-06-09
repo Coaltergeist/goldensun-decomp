@@ -1,4 +1,4 @@
-/* Cluster Func_808b824..Func_808b824 extracted from goldensun/asm/rom_8a000/rom_8b674_a.s.
+/* Cluster FindMapActorSlot..FindMapActorSlot extracted from goldensun/asm/rom_8a000/rom_8b674_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001ebc;
 
-int Func_808b824(void)
+int FindMapActorSlot(void)
 {
     unsigned int *base;
     int r0;

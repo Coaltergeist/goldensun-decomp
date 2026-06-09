@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80173ac
+.thumb_func_start Func_80173ac  @ 0x080173ac
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, [r3]
 	ldr	r3, =0xeae
@@ -27,7 +27,7 @@
 	bx	lr
 .func_end Func_80173ac
 
-.thumb_func_start Func_80173f4
+.thumb_func_start Func_80173f4  @ 0x080173f4
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e8c
 	mov	r1, #0x80
@@ -35,7 +35,7 @@
 	mov	r2, #0
 	mov	r0, #0x5f
 	ldr	r5, [r3]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, =0x12b8
 	add	r3, r5, r2
 	strh	r0, [r3]
@@ -67,7 +67,7 @@
 	bx	r0
 .func_end Func_80173f4
 
-.thumb_func_start Func_8017464
+.thumb_func_start Func_8017464  @ 0x08017464
 	push	{r5, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r5, [r3]
@@ -77,7 +77,7 @@
 	mov	r2, #0
 	lsl	r1, #6
 	mov	r0, #0x5f
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	ldr	r2, =0x12b8
 	add	r3, r5, r2
 	strh	r0, [r3]
@@ -110,7 +110,7 @@
 	bx	r0
 .func_end Func_8017464
 
-.thumb_func_start Func_80174d8
+.thumb_func_start Func_80174d8  @ 0x080174d8
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ee4
 	ldr	r5, [r3]
@@ -118,7 +118,7 @@
 	cmp	r0, #0
 	beq	.L174ee
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r3, #0
 	str	r3, [r5]
 .L174ee:
@@ -127,7 +127,7 @@
 	bx	r0
 .func_end Func_80174d8
 
-.thumb_func_start Func_80174f8
+.thumb_func_start PrintBattleText  @ 0x080174f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -144,7 +144,7 @@
 	mov	r1, #1
 	mov	r8, r2
 	sub	sp, #4
-	bl	Func_8018038
+	bl	BufferString
 	mov	r2, #1
 	mov	r9, r2
 	mov	r3, r9
@@ -166,7 +166,7 @@
 	mov	r2, #0x1e
 	mov	r3, #6
 	mov	r0, #0
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r3, r9
 	mov	r5, r0
 	str	r5, [r7]
@@ -196,7 +196,7 @@
 	bne	.L17588
 	mov	r0, r5
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 .L17588:
 	add	sp, #4
 	pop	{r3, r5, r6}
@@ -206,26 +206,26 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80174f8
+.func_end PrintBattleText
 
-.thumb_func_start Func_80175a0
+.thumb_func_start Func_80175a0  @ 0x080175a0
 	push	{lr}
-	bl	Func_80174f8
+	bl	PrintBattleText
 	b	.L175ae
 .L175a8:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L175ae:
 	bl	Func_8017364
 	cmp	r0, #0
 	beq	.L175a8
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	pop	{r0}
 	bx	r0
 .func_end Func_80175a0
 
-.thumb_func_start Func_80175c0
+.thumb_func_start Func_80175c0  @ 0x080175c0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001e8c
 	ldr	r2, =0x12f4
@@ -240,7 +240,7 @@
 	mov	r0, r1
 	mov	r1, #1
 	sub	sp, #0x10
-	bl	Func_8018038
+	bl	BufferString
 	mov	r2, #0xeb
 	mov	r1, r0
 	lsl	r3, r1, #1

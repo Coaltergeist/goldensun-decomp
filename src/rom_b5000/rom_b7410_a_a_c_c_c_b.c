@@ -1,4 +1,4 @@
-/* Cluster Func_80b7dd0..Func_80b7dd0 extracted from goldensun/asm/rom_b5000/rom_b7410_a_a_c_c_c.s.
+/* Cluster GetBattleActor..GetBattleActor extracted from goldensun/asm/rom_b5000/rom_b7410_a_a_c_c_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001e74;
 
-unsigned int Func_80b7dd0(int unit)
+unsigned int GetBattleActor(int unit)
 {
     unsigned char *base;
     unsigned char *table;

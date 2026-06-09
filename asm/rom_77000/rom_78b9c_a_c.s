@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078bc0
+.thumb_func_start HasMove  @ 0x08078bc0
 	push	{r5, lr}
 	mov	r5, r1
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r1, =0x3fff
 	mov	r2, #0
 	add	r0, #0x58
@@ -24,9 +24,9 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078bc0
+.func_end HasMove
 
-.thumb_func_start Func_8078bf0
+.thumb_func_start Func_8078bf0  @ 0x08078bf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -35,7 +35,7 @@
 	mov	r7, r8
 	push	{r7}
 	sub	sp, #8
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r5, =0x129
 	mov	r9, r0
 	mov	r0, #0x58
@@ -43,7 +43,7 @@
 	add	r0, r9
 	mov	r8, r0
 	ldrb	r0, [r5]
-	bl	Func_8079ad8
+	bl	GetClassInfo
 	str	r0, [sp, #4]
 	ldrb	r3, [r5]
 	mov	r4, #0x80
@@ -220,7 +220,7 @@
 	cmp	r3, #0
 	beq	.L78dc4
 	ldrh	r0, [r0, r1]
-	bl	Func_8078414
+	bl	GetItemInfo
 	ldrb	r3, [r0, #0xc]
 	cmp	r3, #3
 	bne	.L78dc4
@@ -346,11 +346,11 @@
 	bx	r1
 .func_end Func_8078bf0
 
-.thumb_func_start Func_8078e28
+.thumb_func_start GiveInnateMove  @ 0x08078e28
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r7, r0
-	bl	Func_8077394
+	bl	GetUnit
 	ldr	r3, =0x3fff
 	mov	r5, r0
 	mov	r0, #0x58
@@ -432,5 +432,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8078e28
+.func_end GiveInnateMove
 

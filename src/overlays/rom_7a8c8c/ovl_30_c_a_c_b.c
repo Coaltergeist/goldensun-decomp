@@ -5,24 +5,24 @@
  * asm/overlays/rom_7a8c8c/ovl_30_c_a_c_a.o and asm/overlays/rom_7a8c8c/ovl_30_c_a_c_c.o in
  * goldensun/overlays/rom_7a8c8c/overlay.ld.
  */
-extern void __Func_80f9080(int);
-extern int __Func_8079338(int);
+extern void __PlaySound(int);
+extern int __GetFlag(int);
 extern void OvlFunc_922_2008180(int, int, int);
-extern void __Func_8079374(int);
-extern void __Func_8079358(int);
-extern void __Func_80030f8(int);
+extern void __ClearFlag(int);
+extern void __SetFlag(int);
+extern void __WaitFrames(int);
 extern void OvlFunc_922_2009154(void);
 
 void OvlFunc_922_2008464(void) {
-    __Func_80f9080(0xf1);
-    if (__Func_8079338(0x306)) {
+    __PlaySound(0xf1);
+    if (__GetFlag(0x306)) {
         OvlFunc_922_2008180(8, 0x10, 0);
-        __Func_8079374(0x305);
+        __ClearFlag(0x305);
     } else {
         OvlFunc_922_2008180(8, 0x90, 0);
-        __Func_8079358(0xc1 << 2);
+        __SetFlag(0xc1 << 2);
     }
-    __Func_80f9080(0x121);
-    __Func_80030f8(2);
+    __PlaySound(0x121);
+    __WaitFrames(2);
     OvlFunc_922_2009154();
 }

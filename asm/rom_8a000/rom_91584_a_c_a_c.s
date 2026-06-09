@@ -1,10 +1,10 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80915ec
+.thumb_func_start Task_Cutscene  @ 0x080915ec
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r1, [r3]
-	ldr	r3, =iwram_3001f54
+	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
 	beq	.L9162a
@@ -36,9 +36,9 @@
 .L9162a:
 	pop	{r0}
 	bx	r0
-.func_end Func_80915ec
+.func_end Task_Cutscene
 
-.thumb_func_start Func_809163c
+.thumb_func_start CutsceneWait  @ 0x0809163c
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe6
@@ -50,20 +50,20 @@
 	bne	.L91656
 	cmp	r0, #0
 	beq	.L91656
-	bl	Func_80030f8
+	bl	WaitFrames
 .L91656:
 	pop	{r0}
 	bx	r0
-.func_end Func_809163c
+.func_end CutsceneWait
 
-.thumb_func_start Func_8091660
+.thumb_func_start Func_8091660  @ 0x08091660
 	push	{r5, lr}
-	ldr	r5, =ewram_2000240
+	ldr	r5, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r5, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r0, #0x30]
@@ -84,18 +84,18 @@
 	cmp	r3, #1
 	bne	.L9169e
 	mov	r1, #0xc
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	b	.L916a4
 .L9169e:
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L916a4:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
 .func_end Func_8091660
 
-.thumb_func_start Func_80916b0
+.thumb_func_start CutsceneStart  @ 0x080916b0
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r6, [r3]
@@ -144,12 +144,12 @@
 	mov	r1, #0xc8
 	strh	r3, [r2]
 	lsl	r1, #4
-	ldr	r0, =Func_80915ec
+	ldr	r0, =Task_Cutscene
 	bl	StartTask
 	mov	r0, #0x99
 	lsl	r0, #1
-	bl	_Func_8079374
-	ldr	r3, =ewram_2000240
+	bl	_ClearFlag
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	ldr	r3, [r3, r2]
@@ -160,5 +160,5 @@
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
-.func_end Func_80916b0
+.func_end CutsceneStart
 

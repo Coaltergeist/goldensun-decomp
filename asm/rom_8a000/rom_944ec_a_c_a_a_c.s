@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095938
+.thumb_func_start Func_8095938  @ 0x08095938
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	mov	r5, r0
 	lsl	r1, #1
@@ -129,7 +129,7 @@
 	lsl	r0, #16
 	lsl	r1, #11
 	mov	r2, r6
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r6]
 	str	r3, [r5, #4]
 	ldr	r3, [r6, #8]
@@ -140,7 +140,7 @@
 	bx	r0
 .func_end Func_8095938
 
-.thumb_func_start Func_8095a44
+.thumb_func_start GetJupiterDjinni  @ 0x08095a44
 	push	{r5, r6, r7, lr}
 	sub	sp, #0xc
 	mov	r6, r0
@@ -156,34 +156,34 @@
 	ldr	r5, [r3]
 	bl	_Func_80b0840
 	mov	r0, #0xad
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #1
 	bl	Func_80925cc
 	mov	r0, #0xae
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r6
 	mov	r1, #1
 	bl	Func_80925cc
 	mov	r0, #0xaf
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r0, r6
 	bl	Func_80925cc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x8c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r3, =Func_809592c
 	mov	r0, #0x28
 	str	r3, [r7, #0x6c]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x99
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #0xc
 	mov	r2, #0x16
 	mov	r0, r6
-	bl	Func_8092560
+	bl	MapActor_Jump
 	ldr	r3, [r7, #8]
 	mov	r6, sp
 	str	r3, [r6]
@@ -194,9 +194,9 @@
 	str	r3, [r6, #8]
 	bl	Func_80974d8
 	mov	r0, r7
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r0, #0xa4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r5, #0x58
 	mov	r7, #0x17
 .L95ad8:
@@ -217,10 +217,10 @@
 	sub	r1, r0
 	lsr	r1, #16
 	ldr	r0, [r5]
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	bl	Random
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r3, #0x80
 	lsl	r3, #9
 	add	r0, r3
@@ -228,13 +228,13 @@
 	str	r0, [r5, #0x28]
 	sub	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r5, #0x48
 	cmp	r7, #0
 	bge	.L95ad8
 	mov	r0, #0x3c
-	bl	Func_80030f8
-	ldr	r5, =ewram_2000240
+	bl	WaitFrames
+	ldr	r5, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
 	add	r5, r3
@@ -244,17 +244,17 @@
 	ldr	r0, [r5]
 	bl	Func_8092adc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [r5]
 	bl	MapActor_GetActor
 	mov	r1, #0x1c
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x28
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0xa4
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x64
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	_Func_80b0894
 	bl	Func_80958e4
 .L95b6e:
@@ -262,9 +262,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8095a44
+.func_end GetJupiterDjinni
 
-.thumb_func_start Func_8095b8c
+.thumb_func_start Func_8095b8c  @ 0x08095b8c
 	ldr	r3, =iwram_3001800
 	ldr	r3, [r3]
 	mov	r2, #1

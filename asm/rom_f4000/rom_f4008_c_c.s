@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f4100
+.thumb_func_start Func_80f4100  @ 0x080f4100
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -58,7 +58,7 @@
 	bx	r1
 .func_end Func_80f4100
 
-.thumb_func_start Func_80f4168
+.thumb_func_start LuckyDiceMain  @ 0x080f4168
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -70,29 +70,29 @@
 	ldr	r1, =0x60e
 	mov	r0, #0x29
 	add	sp, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r1, #0x80
 	lsl	r1, #2
 	mov	r0, #0x28
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r1, =0x782c
 	str	r0, [sp, #0x74]
 	mov	r0, #0x27
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0xc3
 	str	r0, [sp, #0x70]
 	lsl	r1, #3
 	mov	r0, #0x2d
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r1, #0x4c
 	str	r0, [sp, #0x6c]
 	mov	r0, #0xc
-	bl	Func_80048f4
+	bl	galloc_ewram
 	str	r0, [sp, #0x68]
 	ldr	r0, =0xc
 	bl	Func_8002f3c
 	bl	Func_80f4028
-	bl	Func_80040e8
+	bl	ClearTasks
 	ldr	r2, =iwram_3001d18
 	mov	r3, #0
 	mov	r0, #0
@@ -137,10 +137,10 @@
 	lsl	r0, #1
 	add	r4, r0
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	ldr	r1, =gBuffer
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6004000
 	ldr	r2, =0x84002580
 	stmia	r3!, {r0, r1, r2}
@@ -162,10 +162,10 @@
 	lsl	r1, #2
 	add	r4, r1
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
-	bl	Func_8005340
+	ldr	r1, =gBuffer
+	bl	DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6010000
 	ldr	r2, =0x84001f00
 	stmia	r3!, {r0, r1, r2}
@@ -323,7 +323,7 @@
 	str	r2, [sp, #0x90]
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r5, sp
 	add	r5, #0x88
 	str	r0, [sp, #0x88]
@@ -331,7 +331,7 @@
 .Lf43f0:
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]
@@ -370,7 +370,7 @@
 	mov	r3, #3
 	mov	r0, #0x12
 	str	r6, [sp]
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r7, [sp, #0x6c]
 	mov	r1, r0
 	mov	r0, #0x99
@@ -383,7 +383,7 @@
 	mov	r2, #0x30
 	mov	r3, #0
 	bl	_Func_801e7c0
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, [r6]
 	ldr	r0, [r3, #0x10]
 	mov	r1, #6
@@ -396,7 +396,7 @@
 	mov	r1, #0x10
 	mov	r3, #4
 	mov	r0, #0x16
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r2, #0x9a
 	lsl	r2, #3
 	mov	r1, r0
@@ -441,10 +441,10 @@
 	mov	r3, r6
 	bl	Func_80f4100
 .Lf44e2:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x68]
 	ldr	r1, [sp, #0x30]
-	bl	Func_80051d8
+	bl	MatrixSetLook
 	ldr	r3, =0xc0006000
 	ldr	r0, [sp, #0x6c]
 	mov	r2, #0xc8
@@ -530,7 +530,7 @@
 	ldr	r0, =0x12f
 	str	r1, [sp, #0x10]
 	str	r2, [sp, #0xc]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r2, [sp, #0xc]
 	ldr	r1, [sp, #0x10]
 .Lf459c:
@@ -629,7 +629,7 @@
 	cmp	r1, #0
 	ble	.Lf46d8
 	mov	r0, r1
-	bl	_Func_8079700
+	bl	_AddCoins
 	ldr	r3, [sp, #0x50]
 	mov	r2, #1
 	str	r2, [sp, #0x48]
@@ -667,7 +667,7 @@
 	add	r2, #0xc
 	mov	r1, #0x10
 	mov	r3, #3
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r7, =0x4cc
 	ldr	r6, [sp, #0x6c]
 	add	r5, r6, r7
@@ -702,14 +702,14 @@
 	ldr	r3, [sp, #0x58]
 	cmp	r3, #0x13
 	ble	.Lf4742
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #1
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lf4742
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r4, [sp, #0x50]
 	cmp	r4, #0
 	ble	.Lf470a
@@ -727,7 +727,7 @@
 	mov	r2, #8
 	mov	r3, #4
 	mov	r0, #0x16
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r5, =0x910
 	ldr	r2, [sp, #0x40]
 	mov	r1, r0
@@ -770,7 +770,7 @@
 	mov	r3, #0x28
 	str	r7, [sp]
 	bl	_Func_801ea08
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r2, [sp, #0x6c]
 	mov	r4, #0x99
 	lsl	r4, #3
@@ -792,14 +792,14 @@
 	add	r3, r7, r0
 	ldr	r0, [r3]
 	mov	r1, #1
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r3, #6
 	str	r3, [sp]
 	mov	r1, #0x10
 	mov	r2, #8
 	mov	r3, #4
 	mov	r0, #0x16
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	ldr	r5, =0x910
 	ldr	r2, [sp, #0x40]
 	mov	r1, r0
@@ -832,8 +832,8 @@
 	bgt	.Lf485c
 	b	.Lf49e6
 .Lf485c:
-	ldr	r7, =iwram_3001b04
-	ldr	r0, =iwram_3001ae8
+	ldr	r7, =gKeyRepeat
+	ldr	r0, =gKeyHeld
 	ldr	r3, [r7]
 	ldr	r3, [r7]
 	ldr	r3, [r0]
@@ -905,7 +905,7 @@
 	ble	.Lf48e2
 	str	r1, [r2]
 .Lf48e2:
-	ldr	r6, =ewram_2000240
+	ldr	r6, =gState
 	bl	_Func_8077348
 	lsl	r3, r0, #2
 	add	r3, r0
@@ -916,7 +916,7 @@
 	ldr	r4, [sp, #0x40]
 	mov	r1, #1
 	ldr	r0, [r4]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	bl	.Lf535e
 .Lf4902:
 	ldr	r5, [r7]
@@ -925,11 +925,11 @@
 	cmp	r5, #0
 	beq	.Lf4920
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r5, [sp, #0x40]
 	mov	r1, #1
 	ldr	r0, [r5]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	bl	.Lf535e
 .Lf4920:
 	ldr	r3, [r7]
@@ -939,11 +939,11 @@
 	beq	.Lf49e6
 	mov	r0, #0x97
 	lsl	r0, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r7, [sp, #0x40]
 	mov	r1, #1
 	ldr	r0, [r7]
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #1
 	str	r0, [sp, #0x60]
 	bl	_Func_8077348
@@ -959,7 +959,7 @@
 .Lf4956:
 	ldr	r2, [sp, #0x5c]
 	neg	r0, r2
-	bl	_Func_8079700
+	bl	_AddCoins
 	ldr	r0, [r6, #0x10]
 	ldr	r4, [sp, #0x6c]
 	mov	r6, #0x99
@@ -1004,7 +1004,7 @@
 	mov	r1, #6
 	and	r5, r0
 	ldr	r0, [r6, #4]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, #0x8c
 	lsl	r5, #12
 	add	r5, r0
@@ -1012,7 +1012,7 @@
 	bl	Random
 	mov	r1, #0x90
 	lsl	r1, #7
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r3, #0x96
 	lsl	r3, #1
 	str	r0, [r6, #0x18]
@@ -1055,12 +1055,12 @@
 	str	r1, [r3]
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	str	r0, [sp, #0x88]
 .Lf4a2c:
 	bl	Random
 	mov	r1, #6
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	ldr	r6, [sp, #0x28]
 	str	r0, [r6, #4]
 	ldr	r3, [sp, #0x88]
@@ -1162,7 +1162,7 @@
 	mov	r0, r4
 	mov	r1, r6
 	str	r4, [sp, #8]
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r2, [r6, #8]
 	ldr	r0, =0x15d
 	ldr	r4, [sp, #8]
@@ -1196,7 +1196,7 @@
 	add	r1, #0x80
 	lsl	r0, #4
 	str	r4, [sp, #8]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r6]
 	sub	r2, r3, r0
 	ldr	r3, [r6, #4]
@@ -1283,7 +1283,7 @@
 .Lf4c16:
 	mov	r1, r9
 	mov	r0, r10
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r6, [sp, #0x18]
 	ldmia	r6!, {r3}
 	mov	r5, r6
@@ -1298,14 +1298,14 @@
 	mov	r0, #0x80
 	mov	r1, r6
 	lsl	r0, #4
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r1, r9
 	ldr	r5, [r1]
 	sub	r5, r0
 	mov	r0, #0xc0
 	mov	r1, r6
 	lsl	r0, #2
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r9
 	ldr	r2, [r3, #4]
 	mov	r4, #0x9e
@@ -1381,7 +1381,7 @@
 	str	r3, [r4, #8]
 	mov	r1, r5
 	str	r4, [sp, #8]
-	bl	Func_8005268
+	bl	PhysMove
 	ldr	r3, [r5, #8]
 	ldr	r2, =0x15d
 	ldr	r4, [sp, #8]
@@ -1522,21 +1522,21 @@
 	mov	r5, r0
 	mov	r1, r5
 	lsl	r0, r6, #15
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0xc]
 	ldr	r4, [sp, #8]
 	add	r3, r0
 	str	r3, [r7, #0xc]
 	lsl	r0, r4, #15
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0x10]
 	add	r3, r0
 	str	r3, [r7, #0x10]
 	mov	r3, r8
 	lsl	r0, r3, #15
 	mov	r1, r5
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r3, [r7, #0x14]
 	add	r3, r0
 	str	r3, [r7, #0x14]
@@ -1684,13 +1684,13 @@
 	mov	r5, r0
 	and	r5, r3
 	mov	r0, r5
-	bl	Func_8002322
+	bl	sin
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #8
 	str	r3, [r7, #0xc]
 	mov	r0, r5
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r6
 	mul	r3, r0
 	asr	r3, #8
@@ -1744,7 +1744,7 @@
 .Lf4fc6:
 	asr	r0, #10
 	mov	r1, #3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	cmp	r0, #1
 	bne	.Lf4fdc
 	mov	r4, #0x80
@@ -1827,7 +1827,7 @@
 	ldr	r0, [r7, #0x18]
 	lsl	r1, #4
 	add	r5, sp, #0xe0
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	ldr	r1, =.Lf541a
 	mov	r3, #0
 	str	r0, [r5, r6]
@@ -1933,7 +1933,7 @@
 	add	r3, r7
 .Lf5126:
 	str	r3, [sp, #0x50]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r1, [sp, #0x6c]
 	mov	r2, #0x99
 	lsl	r2, #3
@@ -1945,7 +1945,7 @@
 	str	r3, [sp]
 	bl	_Func_801ea08
 	mov	r0, #0x5d
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lf5260
 
 	.pool_aligned
@@ -1998,7 +1998,7 @@
 	cmp	r4, #1
 	bne	.Lf51de
 	ldr	r5, [sp, #0x5c]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	str	r5, [sp, #0x50]
 	ldr	r6, [sp, #0x6c]
 	mov	r7, #0x99
@@ -2020,7 +2020,7 @@
 	ldr	r4, [sp, #0x5c]
 	lsl	r4, #1
 	str	r4, [sp, #0x50]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r5, [sp, #0x6c]
 	mov	r6, #0x99
 	lsl	r6, #3
@@ -2042,7 +2042,7 @@
 	mov	r1, #2
 	mov	r0, #0x5b
 	str	r1, [sp, #0x54]
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lf521e:
 	mov	r2, r8
 	cmp	r2, #3
@@ -2052,7 +2052,7 @@
 	add	r3, r4
 	str	r3, [sp, #0x50]
 	ldr	r5, [sp, #0x6c]
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r6, #0x99
 	lsl	r6, #3
 	ldr	r0, [r3, #0x10]
@@ -2073,7 +2073,7 @@
 	mov	r1, #1
 	mov	r0, #0x5c
 	str	r1, [sp, #0x54]
-	bl	_Func_80f9080
+	bl	_PlaySound
 .Lf5260:
 	ldr	r2, [sp, #0x44]
 	cmp	r2, #0x80
@@ -2195,7 +2195,7 @@
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #0x64]
 	add	r2, #1
 	str	r2, [sp, #0x64]
@@ -2226,19 +2226,19 @@
 	bl	Func_80f4100
 	mov	r7, r11
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0x11
 	bne	.Lf5366
 	mov	r0, #0xc
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2d
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x28
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x27
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x29
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r3, #0xc0
 	lsl	r3, #2
 	add	sp, r3
@@ -2250,7 +2250,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f4168
+.func_end LuckyDiceMain
 
 	.section .rodata
 

@@ -13,10 +13,10 @@
 	ldr	r0, [r5]
 	mov	r1, #6
 	lsr	r0, #1
-	bl	_Func_8000b50
+	bl	_umodsi3_RAM
 	mov	r1, r0
 	mov	r0, r6
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 .L15a2:
 	ldr	r3, [r5]
 	mov	r2, #0xf

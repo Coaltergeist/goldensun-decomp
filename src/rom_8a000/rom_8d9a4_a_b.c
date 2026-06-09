@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int MapActor_GetActor(unsigned int actorID);
-extern void _Func_80f9080(unsigned int arg0);
-extern void _Func_800c300(unsigned int arg0, unsigned int arg1);
-extern void Func_80030f8(unsigned int nframes);
+extern void _PlaySound(unsigned int arg0);
+extern void _Actor_SetAnim(unsigned int arg0, unsigned int arg1);
+extern void WaitFrames(unsigned int nframes);
 extern unsigned int Func_808ef70(unsigned int arg0, unsigned int arg1);
 
 unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg2)
@@ -19,9 +19,9 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
     actor = (unsigned char *)MapActor_GetActor(arg1);
     ret = 0;
     if (actor != (unsigned char *)0) {
-        _Func_80f9080(0x7c);
-        _Func_800c300((unsigned int)actor, 4);
-        Func_80030f8(0xc);
+        _PlaySound(0x7c);
+        _Actor_SetAnim((unsigned int)actor, 4);
+        WaitFrames(0xc);
         ret = Func_808ef70(arg0, arg2);
     }
     return ret;

@@ -1,13 +1,13 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092848
+.thumb_func_start Func_8092848  @ 0x08092848
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r2
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r6, r0
 	mov	r0, r5
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r1, r0
 	cmp	r6, #0
 	beq	.L92870
@@ -16,14 +16,14 @@
 	mov	r0, r6
 	bl	Func_8092878
 	mov	r0, r7
-	bl	Func_809163c
+	bl	CutsceneWait
 .L92870:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
 .func_end Func_8092848
 
-.thumb_func_start Func_8092878
+.thumb_func_start Func_8092878  @ 0x08092878
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -40,7 +40,7 @@
 	sub	r0, r3
 	ldr	r3, [r6, #8]
 	sub	r1, r3
-	bl	Func_80044d0
+	bl	atan2
 	lsl	r0, #16
 	lsr	r7, r0, #16
 	mov	r0, #0x80
@@ -103,7 +103,7 @@
 	beq	.L92912
 	mov	r0, #1
 	str	r4, [sp]
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r4, [sp]
 	add	r4, #1
 	cmp	r4, #0x3b

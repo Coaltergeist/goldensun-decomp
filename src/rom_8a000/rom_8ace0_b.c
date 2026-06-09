@@ -1,4 +1,4 @@
-/* Cluster Func_808b64c..Func_808b64c extracted from goldensun/asm/rom_8a000/rom_8ace0.s.
+/* Cluster DeleteMapActor..DeleteMapActor extracted from goldensun/asm/rom_8a000/rom_8ace0.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -6,17 +6,17 @@
  * goldensun/stage1.ld.
  */
 extern unsigned int iwram_3001ebc;
-extern int Func_808ba1c(int actor);
-extern void _Func_800c0f4(void);
+extern int GetFieldActor(int actor);
+extern void _DeleteActor(void);
 
-void Func_808b64c(int actor)
+void DeleteMapActor(int actor)
 {
     unsigned int base;
     int r3;
 
     base = iwram_3001ebc;
-    if (Func_808ba1c(actor)) {
-        _Func_800c0f4();
+    if (GetFieldActor(actor)) {
+        _DeleteActor();
         r3 = (actor << 2) + 20;
         *(int *)((char *)base + r3) = 0;
     }

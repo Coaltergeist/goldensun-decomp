@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_809abb4
+.thumb_func_start Field_Halt  @ 0x0809abb4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -18,11 +18,11 @@
 	mov	r2, #0
 	mov	r3, #0
 	sub	sp, #0x24
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r1, #0
 	mov	r6, r0
 	mov	r7, #0
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	cmp	r6, #0
 	bne	.L9abea
 	b	.L9ad52
@@ -61,7 +61,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r6, #8]
 	mov	r2, r8
@@ -72,7 +72,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	add	r5, r0
 	str	r5, [r6, #0xc]
 	mov	r2, r8
@@ -83,7 +83,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	mov	r1, #0xa
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, #0xc0
 	lsl	r3, #8
 	add	r5, r0
@@ -91,7 +91,7 @@
 	mov	r0, r7
 	mul	r0, r3
 	str	r5, [r6, #0x10]
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, #0x80
 	lsl	r2, #7
 	add	r0, r2
@@ -99,28 +99,28 @@
 	str	r0, [r6, #0x1c]
 	add	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0xb
 	blt	.L9ac1e
 	mov	r0, #5
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x6c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x6c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x6c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x6d
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r3, sp, #0x18
 	mov	r5, r9
 	mov	r8, r3
@@ -145,7 +145,7 @@
 	mov	r0, #0x80
 	lsl	r0, #11
 	mov	r2, r7
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r7, #8]
 	ldr	r2, [r7]
 	mov	r0, r5
@@ -156,7 +156,7 @@
 	bl	Func_809ba7c
 	ldr	r0, [r5]
 	mov	r1, #7
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	mov	r3, #1
 	neg	r3, r3
 	add	r10, r3
@@ -175,13 +175,13 @@
 	ldr	r3, [r6, #0x10]
 	mov	r0, #8
 	str	r3, [r2, #8]
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r6
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r0, #4
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	Func_809748c
 .L9ad52:
 	add	sp, #0x24
@@ -192,7 +192,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_809abb4
+.func_end Field_Halt
 
 	.section .rodata
 	.global .La012c

@@ -17,7 +17,7 @@
 	sub	r0, r3
 	ldr	r3, [r5, #8]
 	sub	r1, r3
-	bl	__Func_80044d0
+	bl	__atan2
 	ldrh	r3, [r5, #6]
 	lsl	r0, #16
 	lsr	r0, #16
@@ -48,7 +48,7 @@
 
 .thumb_func_start OvlFunc_907_2008088
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -80,7 +80,7 @@
 
 .thumb_func_start OvlFunc_907_20080dc
 	push	{lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xe0
 	lsl	r1, #1
 	add	r3, r1
@@ -90,7 +90,7 @@
 	mov	r0, #0
 	cmp	r2, r3
 	bne	.Lf4
-	ldr	r0, =.L13fc
+	ldr	r0, =gOvl_020093fc
 .Lf4:
 	pop	{r1}
 	bx	r1

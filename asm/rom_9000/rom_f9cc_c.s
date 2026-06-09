@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800fec8
+.thumb_func_start UpdateScreenEdge_V  @ 0x0800fec8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -32,7 +32,7 @@
 	mov	r14, r2
 .Lff00:
 	add	r3, r7, r5
-	ldr	r6, =ewram_2010000
+	ldr	r6, =gBuffer
 	lsl	r3, #2
 	add	r3, r6
 	ldr	r1, [r3]
@@ -65,9 +65,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800fec8
+.func_end UpdateScreenEdge_V
 
-.thumb_func_start Func_800ff54
+.thumb_func_start UpdateScreenEdge_H  @ 0x0800ff54
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -108,7 +108,7 @@
 	mov	r8, r2
 .Lffa0:
 	add	r3, r6, r7
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	lsl	r3, #2
 	add	r3, r4
 	ldr	r1, [r3]
@@ -146,9 +146,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_800ff54
+.func_end UpdateScreenEdge_H
 
-.thumb_func_start Func_8010000
+.thumb_func_start UpdateFieldScreen  @ 0x08010000
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -364,7 +364,7 @@
 	mov	r2, r5
 	str	r4, [sp]
 .L101a4:
-	bl	Func_800ff54
+	bl	UpdateScreenEdge_H
 	ldr	r4, [sp]
 .L101aa:
 	ldr	r1, [r4, #4]
@@ -389,7 +389,7 @@
 	mov	r2, r5
 	str	r4, [sp]
 .L101d2:
-	bl	Func_800fec8
+	bl	UpdateScreenEdge_V
 	ldr	r4, [sp]
 .L101d8:
 	mov	r1, r10
@@ -421,9 +421,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8010000
+.func_end UpdateFieldScreen
 
-.thumb_func_start Func_8010230
+.thumb_func_start Func_8010230  @ 0x08010230
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -602,7 +602,7 @@
 	mov	r12, r1
 .L10380:
 	add	r3, r6, r4
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r1, [r3]

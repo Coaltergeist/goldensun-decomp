@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8010424
+.thumb_func_start CopyMapTiles  @ 0x08010424
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -12,7 +12,7 @@
 	mov	r11, r2
 	lsl	r1, #7
 	lsl	r3, r4, #7
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	add	r1, r0
 	add	r3, r11
 	lsl	r1, #2
@@ -150,9 +150,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8010424
+.func_end CopyMapTiles
 
-.thumb_func_start Func_8010560
+.thumb_func_start Func_8010560  @ 0x08010560
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -190,10 +190,10 @@
 	mov	r2, r10
 	mov	r3, r8
 	lsr	r5, #16
-	bl	Func_8010424
+	bl	CopyMapTiles
 	add	r7, #0xa
 	mov	r0, r5
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldrh	r0, [r7]
 	mov	r12, r0
 	add	r6, #0xa
@@ -210,7 +210,7 @@
 	bx	r0
 .func_end Func_8010560
 
-.thumb_func_start Func_80105d4
+.thumb_func_start Func_80105d4  @ 0x080105d4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -227,7 +227,7 @@
 	lsl	r3, r6, #7
 	add	r3, r0
 	mov	r11, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	lsl	r3, #2
 	add	r1, r2
@@ -358,7 +358,7 @@
 	bx	r0
 .func_end Func_80105d4
 
-.thumb_func_start Func_8010704
+.thumb_func_start Func_8010704  @ 0x08010704
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -367,7 +367,7 @@
 	ldr	r3, [sp, #0x1c]
 	mov	r12, r2
 	ldr	r2, [sp, #0x18]
-	ldr	r4, =ewram_2010000
+	ldr	r4, =gBuffer
 	lsl	r3, #7
 	add	r3, r2
 	lsl	r1, #7
@@ -425,7 +425,7 @@
 	bx	r0
 .func_end Func_8010704
 
-.thumb_func_start Func_8010788
+.thumb_func_start Func_8010788  @ 0x08010788
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -442,7 +442,7 @@
 	lsl	r3, r5, #7
 	add	r3, r0
 	mov	r11, r2
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r1, #2
 	lsl	r3, #2
 	add	r1, r2
@@ -578,7 +578,7 @@
 	bx	r0
 .func_end Func_8010788
 
-.thumb_func_start Func_80108c4
+.thumb_func_start Func_80108c4  @ 0x080108c4
 	ldr	r3, =iwram_3001e70
 	ldr	r4, [r3]
 	mov	r2, #0xe0

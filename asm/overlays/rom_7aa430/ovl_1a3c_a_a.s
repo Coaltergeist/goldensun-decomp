@@ -12,11 +12,11 @@
 	mov	r1, #4
 	mov	r0, #0x23
 	sub	sp, #4
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r2, r8
 	str	r2, [r0]
 	ldr	r0, =0x109
-	bl	__Func_8079338
+	bl	__GetFlag
 	mov	r3, r0
 	cmp	r3, #0
 	bne	.L1a7a
@@ -32,12 +32,12 @@
 	str	r3, [r0, #4]
 	b	.L1bb6
 .L1a7a:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	__Func_808ba1c
+	bl	__GetFieldActor
 	mov	r7, r0
 	ldr	r4, [r7, #0x10]
 	mov	r3, r4
@@ -57,7 +57,7 @@
 .L1aa6:
 	asr	r3, #20
 	add	r3, r2, r3
-	ldr	r2, =ewram_2010000
+	ldr	r2, =gBuffer
 	lsl	r3, #2
 	mov	r0, r8
 	add	r2, r3
@@ -74,15 +74,15 @@
 	add	r2, r3
 	mov	r0, #0x1a
 	mov	r3, r4
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1b26
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L27e8
+	ldr	r1, =gScript_923__0200a7e8
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r2, r5
 	mov	r3, #4
 	add	r2, #0x55
@@ -99,7 +99,7 @@
 	mov	r1, #6
 	sub	r1, r3
 	mov	r0, r6
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r2, r6
 	add	r2, #0x26
 	mov	r3, #0
@@ -131,15 +131,15 @@
 	ldr	r2, [r7, #0xc]
 	ldr	r3, [r7, #0x10]
 	mov	r0, #0x1a
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1bb6
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L27d0
+	ldr	r1, =gScript_923__0200a7d0
 	str	r3, [r5, #0x14]
 	ldr	r6, [r5, #0x50]
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r3, r5
 	mov	r2, #0
 	add	r3, #0x55
@@ -157,7 +157,7 @@
 	beq	.L1b82
 	mov	r0, r6
 	mov	r1, #6
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r2, r6
 	ldr	r3, .L1b88	@ 0
 	add	r2, #0x26
@@ -193,13 +193,13 @@
 	ldr	r2, [r0, #0xc]
 	ldr	r3, [r0, #0x10]
 	mov	r0, #0x18
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1c14
-	ldr	r1, =.L27b8
+	ldr	r1, =gScript_923__0200a7b8
 	ldr	r6, [r5, #0x50]
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r3, r5
 	add	r3, #0x55
 	mov	r7, #0
@@ -215,7 +215,7 @@
 	beq	.L1c14
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r3, r6
 	add	r3, #0x26
 	strb	r7, [r3]
@@ -246,7 +246,7 @@
 	b	.L1c5a
 .L1c3c:
 	lsl	r0, #10
-	bl	__Func_8002322
+	bl	__sin
 	str	r0, [r5, #0x18]
 	str	r0, [r5, #0x1c]
 	ldr	r3, [r6, #8]

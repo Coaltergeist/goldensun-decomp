@@ -7,9 +7,9 @@
  */
 extern void Func_801d94c(void);
 extern void StopTask(void *task);
-extern void Func_8002dd8(int index);
+extern void gfree(int index);
 
 void Func_801d9bc(void) {
     StopTask(Func_801d94c);
-    Func_8002dd8(0x14);
+    gfree(0x14);
 }

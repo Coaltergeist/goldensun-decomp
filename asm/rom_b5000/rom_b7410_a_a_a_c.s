@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b7424
+.thumb_func_start Func_80b7424  @ 0x080b7424
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -51,7 +51,7 @@
 	cmp	r3, r1
 	bls	.Lb74b6
 	ldrh	r0, [r6]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x94
 	lsl	r2, #1
 	mov	r5, r0
@@ -93,7 +93,7 @@
 	cmp	r3, r1
 	bls	.Lb74ec
 	ldrh	r0, [r6]
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #0x94
 	lsl	r2, #1
 	add	r0, r2

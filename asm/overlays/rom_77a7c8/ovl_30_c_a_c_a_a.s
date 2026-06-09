@@ -6,12 +6,12 @@
 	mov	r5, r0
 	bl	OvlFunc_881_20082cc
 	ldr	r0, =0x847
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L2be
 	mov	r0, r5
 	mov	r1, #2
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 .L2be:
 	mov	r0, #1
 	pop	{r5}
@@ -61,21 +61,21 @@
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r0, r5
 	mov	r1, #0xa
-	bl	__Func_800c598
+	bl	__Actor_SetColorswap
 	mov	r3, r5
 	add	r3, #0x59
 	mov	r6, #0
 	mov	r0, #0x8a
 	strb	r6, [r3]
 	lsl	r0, #4
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L344
 	ldr	r0, =0x2f1
-	bl	__Func_8079358
+	bl	__SetFlag
 	str	r6, [r5, #8]
 	str	r6, [r5, #0xc]
 .L344:

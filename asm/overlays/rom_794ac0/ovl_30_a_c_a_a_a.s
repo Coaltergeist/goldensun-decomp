@@ -2,7 +2,7 @@
 
 .thumb_func_start OvlFunc_899_2008048
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r2
@@ -87,7 +87,7 @@
 .thumb_func_start OvlFunc_899_20080fc
 	push	{lr}
 	sub	sp, #8
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	mov	r0, #0x1a
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
@@ -104,9 +104,9 @@
 	mov	r3, #4
 	bl	__Func_8010704
 	ldr	r0, =0x859
-	bl	__Func_8079358
+	bl	__SetFlag
 .L12c:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
 	bx	r0
@@ -117,7 +117,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -129,21 +129,21 @@
 	b	.L17e
 .L15e:
 	ldr	r0, =0x855
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L170
 	ldr	r0, =0x1280
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L176
 .L170:
 	ldr	r0, =0x1370
-	bl	__Func_8092b94
+	bl	__MessageID
 .L176:
 	mov	r0, #0x13
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L17e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -154,7 +154,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -166,21 +166,21 @@
 	b	.L1de
 .L1be:
 	ldr	r0, =0x855
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L1d0
 	ldr	r0, =0x1282
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L1d6
 .L1d0:
 	ldr	r0, =0x1372
-	bl	__Func_8092b94
+	bl	__MessageID
 .L1d6:
 	mov	r0, #0x14
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L1de:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -191,7 +191,7 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldrh	r5, [r0, #6]
-	bl	__Func_80916b0
+	bl	__CutsceneStart
 	ldr	r3, =0xffff5fff
 	add	r5, r3
 	ldr	r3, =0x3ffe
@@ -203,21 +203,21 @@
 	b	.L23e
 .L21e:
 	ldr	r0, =0x855
-	bl	__Func_8079338
+	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L230
 	ldr	r0, =0x128d
-	bl	__Func_8092b94
+	bl	__MessageID
 	b	.L236
 .L230:
 	ldr	r0, =0x137b
-	bl	__Func_8092b94
+	bl	__MessageID
 .L236:
 	mov	r0, #0x17
 	mov	r1, #0
-	bl	__Func_8092f84
+	bl	__ActorMessage
 .L23e:
-	bl	__Func_8091750
+	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
 	bx	r0

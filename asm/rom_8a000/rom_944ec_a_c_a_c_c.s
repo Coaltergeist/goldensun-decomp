@@ -1,9 +1,9 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095fcc
+.thumb_func_start Func_8095fcc  @ 0x08095fcc
 	push	{r5, r6, r7, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -34,7 +34,7 @@
 	lsl	r1, #11
 	add	r1, r3
 	mov	r2, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #8]
 	ldr	r3, [r5, #8]
@@ -50,7 +50,7 @@
 	cmp	r2, r3
 	bge	.L96034
 	mov	r0, r7
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 .L96034:
 	add	sp, #0xc
 	pop	{r5, r6, r7}
@@ -58,12 +58,12 @@
 	bx	r0
 .func_end Func_8095fcc
 
-.thumb_func_start Func_8096048
+.thumb_func_start Func_8096048  @ 0x08096048
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
@@ -97,7 +97,7 @@
 	mov	r2, r6
 	mov	r1, r0
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	mov	r0, r6
 	bl	Func_80974d8
 	ldr	r2, [r6]
@@ -113,7 +113,7 @@
 	lsl	r1, #8
 	mov	r2, r6
 	str	r3, [r6, #8]
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r6]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r6, #8]
@@ -139,7 +139,7 @@
 	cmp	r3, #0
 	beq	.L9612a
 	mov	r0, #0x90
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L9612a
 .L960fa:
 	mov	r3, r8
@@ -174,13 +174,13 @@
 	bx	r0
 .func_end Func_8096048
 
-.thumb_func_start Func_8096140
+.thumb_func_start GetVenusDjinni  @ 0x08096140
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r5, r0
 	mov	r0, #0xfa
 	lsl	r0, #1
@@ -203,35 +203,35 @@
 	mov	r9, r3
 	bl	_Func_80b0840
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r6
 	mov	r3, #0
 	add	r2, #0x5b
 	strb	r3, [r2]
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
 	mov	r1, #4
 	mov	r2, #0xf
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #4
 	mov	r2, #0xf
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, =Func_809592c
 	mov	r0, #0x99
 	str	r3, [r6, #0x6c]
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r5
 	mov	r1, #8
 	mov	r2, #0x16
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x8c
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r5, #0x80
 	ldr	r1, =0x14ccc
 	lsl	r5, #9
@@ -242,22 +242,22 @@
 	mov	r0, r6
 	str	r3, [r6, #0x6c]
 	mov	r1, #3
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x5a
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0x80
 	mov	r2, #0
 	lsl	r1, #7
 	ldr	r0, [r7]
 	bl	Func_8092adc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [r7]
 	bl	MapActor_GetActor
 	mov	r1, #0x1c
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r1, =0x19999
 	mov	r2, r5
 	mov	r0, r1
@@ -290,7 +290,7 @@
 	bl	Func_809ba70
 	ldr	r0, [r5]
 	mov	r1, #0xb
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	mov	r3, #0x80
 	lsl	r3, #8
 	str	r3, [r5, #0x28]
@@ -301,12 +301,12 @@
 	str	r0, [r5, #0x2c]
 	sub	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r5, #0x48
 	cmp	r7, #0
 	bge	.L96234
 	mov	r0, #0x8c
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r9
 	mov	r1, #2
 	add	r2, #0x98
@@ -323,13 +323,13 @@
 	cmp	r7, #0
 	bge	.L96288
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #1
 	mov	r1, #1
 	mov	r2, #1
 	bl	_Func_8012330
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, .L962bc	@ 0
 	mov	r7, #0
 	mov	r5, r8
@@ -354,13 +354,13 @@
 	mov	r0, #0x8e
 	str	r3, [r5, #8]
 	lsl	r0, #1
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L96348
 	bl	Random
 	mov	r1, #3
-	bl	Func_b60_from_thumb
+	bl	__udivsi3
 	mov	r2, #0x80
 	lsl	r2, #9
 	add	r0, r2
@@ -372,7 +372,7 @@
 	mov	r1, #0x18
 	strh	r3, [r2]
 	lsl	r0, r7, #16
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r3, r6
 	add	r3, #0x66
 	strh	r0, [r3]
@@ -384,23 +384,23 @@
 	strb	r0, [r3]
 	mov	r1, #7
 	mov	r0, r6
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
 	mov	r1, #0xb
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 .L96348:
 	add	r7, #1
 	cmp	r7, #0x17
 	ble	.L962e0
 	mov	r0, #0x64
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x90
 	lsl	r0, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x97
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, r10
 	ldr	r3, [r2, #8]
 	mov	r0, r8
@@ -442,14 +442,14 @@
 	bl	Func_8096bec
 	mov	r0, r6
 	mov	r1, #0xb
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r2, r6
 	add	r2, #0x5e
 	mov	r3, #8
 	strh	r3, [r2]
 	mov	r0, r6
 	ldr	r1, =Data_9f0b0
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	add	r7, #1
 .L963d4:
 	cmp	r7, #7
@@ -459,13 +459,13 @@
 	ldr	r2, [r5, #4]
 	ldr	r3, [r5, #8]
 	lsl	r0, #1
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r6, r0
 	cmp	r6, #0
 	bne	.L96388
 .L963ec:
 	mov	r0, #0xf
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	_Func_80b0894
 	bl	Func_80958e4
 .L963fa:
@@ -477,14 +477,14 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8096140
+.func_end GetVenusDjinni
 
-.thumb_func_start Func_809641c
+.thumb_func_start Func_809641c  @ 0x0809641c
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -529,7 +529,7 @@
 	mov	r2, r6
 	mov	r1, r0
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r2, [r6]
 	str	r2, [r7, #0xc]
 	ldr	r1, =0xff9c0000
@@ -585,7 +585,7 @@
 	mov	r0, #0xc0
 	mov	r2, r5
 	lsl	r0, #12
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r3, [r5]
 	str	r3, [r7, #0xc]
 	ldr	r3, [r5, #8]
@@ -606,7 +606,7 @@
 	str	r3, [r7, #0x28]
 	str	r3, [r7, #0x2c]
 	mov	r0, #0x8f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r8
 	mov	r3, #0
 	ldrsb	r3, [r1, r3]
@@ -640,7 +640,7 @@
 	bx	r0
 .func_end Func_809641c
 
-.thumb_func_start Func_8096574
+.thumb_func_start Func_8096574  @ 0x08096574
 	ldr	r4, [r0, #0x68]
 	ldr	r1, [r0, #8]
 	ldr	r3, [r4, #8]
@@ -669,7 +669,7 @@
 	bx	lr
 .func_end Func_8096574
 
-.thumb_func_start Func_80965a8
+.thumb_func_start GetMercuryDjinni  @ 0x080965a8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -692,43 +692,43 @@
 	str	r3, [sp, #4]
 	bl	_Func_80b0840
 	mov	r0, #0x1e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r6
 	mov	r3, #0
 	add	r2, #0x5b
 	strb	r3, [r2]
 	mov	r0, #0xad
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r0, r5
 	bl	Func_80925cc
 	mov	r0, #0xaf
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #1
 	mov	r0, r5
 	bl	Func_80925cc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #3
 	mov	r2, #0xe
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #5
 	mov	r2, #0x10
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x98
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, #7
 	mov	r2, #0x12
 	mov	r0, r5
-	bl	Func_8092560
+	bl	MapActor_Jump
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6, #0x50]
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
@@ -746,7 +746,7 @@
 	ldr	r3, [r6, #0x10]
 	ldr	r1, [r6, #8]
 	mov	r0, r9
-	bl	_Func_800c150
+	bl	_CreateActor
 	ldr	r3, [sp]
 	mov	r5, r0
 	stmia	r3!, {r5}
@@ -776,13 +776,13 @@
 	ldrh	r3, [r6, #6]
 	mov	r1, #9
 	strh	r3, [r5, #6]
-	bl	_Func_800c598
+	bl	_Actor_SetColorswap
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	mov	r1, r10
 	ldr	r0, [r5, #0x50]
 	bl	Func_8096c48
@@ -798,7 +798,7 @@
 	ldrb	r2, [r2, #0x1c]
 	mov	r0, #0x99
 	mov	r8, r2
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, r6
 	add	r2, #0x55
 	mov	r3, #0
@@ -812,17 +812,17 @@
 	str	r3, [r6, #0xc]
 	mov	r0, #1
 	sub	r7, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r7, #0
 	bge	.L966da
 	mov	r0, r6
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	mov	r5, r11
 	mov	r7, #7
 .L966fa:
 	ldmia	r5!, {r0}
 	sub	r7, #1
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 	cmp	r7, #0
 	bge	.L966fa
 	mov	r2, r8
@@ -832,8 +832,8 @@
 	bl	Func_8003f3c
 .L96712:
 	mov	r0, #0xa
-	bl	Func_80030f8
-	ldr	r5, =ewram_2000240
+	bl	WaitFrames
+	ldr	r5, =gState
 	mov	r3, #0xfa
 	lsl	r3, #1
 	add	r5, r3
@@ -843,13 +843,13 @@
 	ldr	r0, [r5]
 	bl	Func_8092adc
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r0, [r5]
 	bl	MapActor_GetActor
 	mov	r1, #0x1c
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r3, [r6, #8]
 	add	r5, sp, #8
 	str	r3, [r5]
@@ -876,15 +876,15 @@
 	bl	Func_809ba70
 	ldr	r0, [r6]
 	mov	r1, #9
-	bl	_Func_800b684
+	bl	_Sprite_SetColorswap
 	sub	r7, #1
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	add	r6, #0x48
 	cmp	r7, #0
 	bge	.L9675e
 	mov	r0, #0x78
-	bl	Func_80030f8
+	bl	WaitFrames
 	ldr	r2, [sp, #4]
 	mov	r1, #2
 	add	r2, #0x98
@@ -901,7 +901,7 @@
 	cmp	r7, #0
 	bge	.L9679e
 	mov	r0, #0x32
-	bl	Func_80030f8
+	bl	WaitFrames
 	bl	_Func_80b0894
 	bl	Func_80958e4
 .L967be:
@@ -914,5 +914,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80965a8
+.func_end GetMercuryDjinni
 

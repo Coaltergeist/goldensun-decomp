@@ -1,20 +1,20 @@
-/* Func_80793f8  [rom_77000]
+/* DecFlagByte  [rom_77000]
  * Source asm: goldensun/asm/rom_77000/rom_79338.s
  *
  * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
- * Candidate: tools/runs/run_20260607T010203Z/Func_80793f8-iter-9.c
+ * Candidate: tools/runs/run_20260607T010203Z/DecFlagByte-iter-9.c
  * TODO(residual): rom_79xxx flag-array family; ((unsigned)x<<20)>>23 logical shift correct, reg-alloc/scheduling diverges (siblings 8079358/74/418 same wall). Permuter.
  */
-extern unsigned char ewram_2000040[];
+extern unsigned char gFlags[];
 
-unsigned char Func_80793f8(int flagID)
+unsigned char DecFlagByte(int flagID)
 {
 	unsigned int idx;
 	unsigned char v;
 
 	idx = ((unsigned int)(flagID << 20)) >> 23;
-	v = ewram_2000040[idx];
+	v = gFlags[idx];
 	if (v != 0)
-		ewram_2000040[idx] = v - 1;
-	return ewram_2000040[idx];
+		gFlags[idx] = v - 1;
+	return gFlags[idx];
 }

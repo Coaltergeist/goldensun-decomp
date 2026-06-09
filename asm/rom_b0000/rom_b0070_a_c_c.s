@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b211c
+.thumb_func_start Func_80b211c  @ 0x080b211c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -14,7 +14,7 @@
 	ldr	r3, =iwram_3001f2c
 	ldr	r3, [r3]
 	mov	r11, r3
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r2, #1
 	mov	r3, #2
 	str	r0, [sp, #8]
@@ -24,7 +24,7 @@
 	mov	r1, #8
 	mov	r2, #0xf
 	mov	r3, #4
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	str	r0, [sp, #0xc]
 	mov	r7, #0
 .Lb2152:
@@ -34,7 +34,7 @@
 	mov	r3, #3
 	mov	r0, #0
 	mov	r1, #5
-	bl	_Func_80162d4
+	bl	_CreateUIBox
 	mov	r3, #0xe0
 	str	r0, [sp, #0x10]
 	lsl	r3, #2
@@ -56,7 +56,7 @@
 	mov	r3, #0
 	ldr	r0, [sp, #0x14]
 	mov	r10, r3
-	bl	_Func_80784d8
+	bl	_FindEmptyInventorySlot
 	mov	r9, r0
 	mov	r3, r9
 	sub	r3, #1
@@ -76,11 +76,11 @@
 	mov	r0, r7
 	str	r4, [sp, #4]
 	mov	r8, r3
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r1, #5
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_af0_from_thumb
+	bl	__divsi3
 	mov	r2, r0
 	lsl	r5, #4
 	lsl	r2, #4
@@ -123,7 +123,7 @@
 	cmp	r3, #0
 	beq	.Lb221c
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r5, #0
 	b	.Lb22ce
 .Lb221c:
@@ -134,23 +134,23 @@
 	beq	.Lb2232
 	mov	r0, #0x71
 	mov	r5, #1
-	bl	_Func_80f9080
+	bl	_PlaySound
 	neg	r5, r5
 	b	.Lb22ce
 .Lb2232:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lb2256
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	sub	r7, #1
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2
@@ -161,12 +161,12 @@
 	cmp	r3, #0
 	beq	.Lb2278
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	add	r7, #1
 	mov	r3, r9
 	add	r0, r7, r3
 	mov	r1, r9
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r2, #1
 	mov	r7, r0
 	mov	r10, r2
@@ -189,11 +189,11 @@
 	bge	.Lb228e
 .Lb2294:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	mov	r10, r3
 .Lb229e:
-	ldr	r3, =iwram_3001b04
+	ldr	r3, =gKeyRepeat
 	ldr	r3, [r3]
 	mov	r2, #0x80
 	and	r3, r2
@@ -212,19 +212,19 @@
 	blt	.Lb22b6
 .Lb22bc:
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r2, #1
 	mov	r10, r2
 .Lb22c6:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lb217e
 .Lb22ce:
 	ldr	r0, [sp, #0x10]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r5, #0
 	bne	.Lb22fa
 	ldr	r0, [sp, #0x14]
@@ -233,14 +233,14 @@
 	ldr	r0, =0xcc2
 	bl	Func_80b04dc
 	ldr	r0, [sp, #0x14]
-	bl	_Func_80784d8
+	bl	_FindEmptyInventorySlot
 	cmp	r0, #0
 	beq	.Lb22fa
 	b	.Lb2152
 .Lb22fa:
 	ldr	r0, [sp, #0xc]
 	mov	r1, #2
-	bl	_Func_8016418
+	bl	_CloseUIBox
 	mov	r0, r5
 	add	sp, #0x18
 	pop	{r3, r5, r6, r7}
@@ -253,7 +253,7 @@
 	bx	r1
 .func_end Func_80b211c
 
-.thumb_func_start Func_80b2328
+.thumb_func_start Func_80b2328  @ 0x080b2328
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -267,7 +267,7 @@
 	ldr	r3, [r3]
 	mov	r7, r0
 	str	r3, [sp, #8]
-	bl	_Func_8077394
+	bl	_GetUnit
 	ldr	r2, [sp, #0xc]
 	lsl	r2, #1
 	str	r2, [sp, #4]
@@ -279,11 +279,11 @@
 	mov	r10, r2
 	mov	r8, r0
 	mov	r0, r10
-	bl	_Func_8078414
+	bl	_GetItemInfo
 	mov	r5, r0
 	ldrb	r1, [r5, #2]
 	mov	r0, r7
-	bl	_Func_80787dc
+	bl	_GetEquippedItem
 	str	r0, [sp]
 	mov	r3, r8
 	ldrh	r0, [r3, r6]
@@ -329,7 +329,7 @@
 	bl	Func_80b0574
 	b	.Lb24b0
 .Lb23cc:
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	ldr	r3, [r3, #0x10]
 	cmp	r9, r3
 	bls	.Lb23dc
@@ -374,31 +374,31 @@
 	bl	Func_80b0574
 	bl	_Func_8019a54
 	mov	r0, #0xa
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x64
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x6e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x64
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x6e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x64
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x6e
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #0x14
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r2, r8
 	strh	r6, [r2, r5]
 	ldr	r1, [sp, #0xc]
 	mov	r0, r7
-	bl	_Func_8078a60
+	bl	_RepairItem
 	mov	r3, r9
 	neg	r0, r3
-	bl	_Func_8079700
+	bl	_AddCoins
 	bl	Func_80b10cc
 	ldr	r2, [sp, #8]
 	mov	r1, r7
@@ -430,7 +430,7 @@
 	bx	r0
 .func_end Func_80b2328
 
-.thumb_func_start Func_80b24e4
+.thumb_func_start Func_80b24e4  @ 0x080b24e4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -447,7 +447,7 @@
 	ldrh	r4, [r3]
 	mov	r9, r0
 	mov	r0, #1
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	mov	r11, r0
 	mov	r0, #0x8e
 	str	r4, [sp]
@@ -499,7 +499,7 @@
 	mov	r4, #0
 	add	r0, r7, r1
 	mov	r11, r4
-	bl	Func_b1c_from_thumb
+	bl	__modsi3
 	mov	r3, #0xdb
 	mov	r7, r0
 	lsl	r1, r7, #1
@@ -540,12 +540,12 @@
 	add	r5, r6, r0
 	ldrh	r1, [r5]
 	mov	r0, r10
-	bl	_Func_8078588
+	bl	_GiveItemTo
 	mov	r1, r0
 	cmp	r1, #0
 	bge	.Lb2602
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r10
 	mov	r1, #1
 	bl	_Func_8019908
@@ -553,7 +553,7 @@
 	mov	r1, #2
 	bl	_Func_8019908
 	mov	r0, r10
-	bl	_Func_80784d8
+	bl	_FindEmptyInventorySlot
 	cmp	r0, #0xf
 	bne	.Lb25fa
 	ldr	r0, =0xc9e
@@ -567,15 +567,15 @@
 	mov	r0, r10
 	bl	_Func_80788c4
 	mov	r0, #0x65
-	bl	_Func_80f9080
+	bl	_PlaySound
 	ldr	r0, =0xca1
 	bl	Func_80b0574
 	ldrh	r1, [r5]
 	mov	r0, r10
-	bl	_Func_8078588
+	bl	_GiveItemTo
 	ldr	r2, [sp, #4]
 	neg	r0, r2
-	bl	_Func_8079728
+	bl	_AddCoinsSpent
 	mov	r0, #1
 	bl	_Func_8079754
 	b	.Lb267a
@@ -588,17 +588,17 @@
 	ldr	r0, =0xcc5
 	bl	Func_80b0574
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.Lb267a
 .Lb2644:
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
 	cmp	r3, #0
 	beq	.Lb265c
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	sub	r7, #1
 	mov	r11, r3
@@ -609,13 +609,13 @@
 	cmp	r3, #0
 	beq	.Lb2672
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r4, #1
 	add	r7, #1
 	mov	r11, r4
 .Lb2672:
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.Lb255c
 .Lb267a:
 	ldr	r0, =0x39e

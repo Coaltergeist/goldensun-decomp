@@ -11,20 +11,20 @@
 	mov	r0, #0
 	mov	r8, r0
 	mov	r0, #0x16
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r6, r0
 	mov	r0, #0xe0
-	bl	__Func_8078698
+	bl	__CheckPartyItem
 	mov	r1, #0xe0
 	mov	r7, r0
-	bl	__Func_8078664
+	bl	__CheckItem
 	mov	r9, r0
 	mov	r0, r7
 	cmp	r6, #0
 	beq	.L4316
-	ldr	r1, =.L4be4
+	ldr	r1, =gScript_881__0200cbe4
 	mov	r0, r6
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	ldr	r5, [r6, #0x50]
 	mov	r3, r5
 	mov	r2, r8
@@ -50,20 +50,20 @@
 	str	r3, [r6, #0x48]
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	__Func_80048b0
+	bl	__galloc_iwram
 	mov	r8, r0
 	mov	r0, r10
-	bl	__Func_801a370
+	bl	__LoadItemIcon
 	mov	r2, #0x80
 	lsl	r2, #3
 	add	r2, r8
 	mov	r1, #0x80
 	ldrb	r0, [r5, #0x1c]
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r0, #0x11
-	bl	__Func_8002dd8
+	bl	__gfree
 	mov	r0, #0x53
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, r6
 	mov	r1, #3
 	bl	__Func_808f140
@@ -72,12 +72,12 @@
 	bl	__Func_8078948
 	mov	r1, r10
 	mov	r0, r7
-	bl	__Func_8078588
+	bl	__GiveItemTo
 	mov	r0, r6
-	bl	__Func_800c0f4
+	bl	__DeleteActor
 	mov	r0, #0
 	mov	r1, #1
-	bl	__Func_80924d4
+	bl	__MapActor_SetAnim
 	mov	r0, r7
 .L4316:
 	pop	{r3, r5, r6}
@@ -100,7 +100,7 @@
 	sub	sp, #8
 	mov	r2, #0
 	ldrsh	r7, [r3, r2]
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xe0
 	mov	r1, #3
 	bl	__Func_808f1c0
@@ -109,11 +109,11 @@
 	bl	__Func_801776c
 .L4350:
 	mov	r0, #0
-	bl	__Func_80784d8
+	bl	__FindEmptyInventorySlot
 	mov	r5, #0x1e
 	sub	r5, r0
 	mov	r0, #1
-	bl	__Func_80784d8
+	bl	__FindEmptyInventorySlot
 	sub	r5, r0
 	cmp	r5, #3
 	bgt	.L4388
@@ -122,7 +122,7 @@
 	bl	__Func_801776c
 	add	r0, sp, #4
 	mov	r1, sp
-	bl	__Func_80b3444
+	bl	__UI_SellMenu
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3
@@ -133,13 +133,13 @@
 	b	.L4350
 .L4388:
 	mov	r0, #0xe0
-	bl	__Func_8078618
+	bl	__GiveItem
 	mov	r0, #0xe0
-	bl	__Func_8078618
+	bl	__GiveItem
 	mov	r0, #0xe0
-	bl	__Func_8078618
+	bl	__GiveItem
 	mov	r0, #0xe0
-	bl	__Func_8078618
+	bl	__GiveItem
 	mov	r2, #0xec
 	lsl	r2, #1
 	add	r3, r6, r2
@@ -160,11 +160,11 @@
 	bl	__MapActor_GetActor
 	mov	r10, r0
 	mov	r0, #0xbe
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #0
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	mov	r3, #1
 	add	r7, sp, #0x10
 	str	r3, [r7]
@@ -182,7 +182,7 @@
 	mov	r8, r2
 .L43fe:
 	mov	r0, #1
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r6, #1
 	mov	r3, r8
 	and	r6, r3
@@ -240,7 +240,7 @@
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #1
-	bl	__Func_800c528
+	bl	__Actor_SetSpriteFlags
 	add	sp, #0x38
 	pop	{r3, r5}
 	mov	r8, r3
@@ -262,7 +262,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #0x44
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	str	r0, [sp, #0x40]
 	str	r0, [sp, #0x3c]
 	ldr	r1, [sp, #0x40]
@@ -280,7 +280,7 @@
 	ldr	r3, [sp, #0x40]
 	ldr	r4, [sp, #0x40]
 	str	r0, [sp, #8]
-	ldr	r0, =.L50e4
+	ldr	r0, =gOvl_0200d0e4
 	mov	r10, r1
 	ldr	r1, =.L5102
 	add	r3, #0x24
@@ -378,7 +378,7 @@
 	str	r0, [r5, #0x1c]
 .L458e:
 	bl	__Random
-	ldr	r2, =.L50e4
+	ldr	r2, =gOvl_0200d0e4
 	ldr	r1, [sp, #8]
 	ldrb	r3, [r1, r2]
 	mul	r3, r0
@@ -399,7 +399,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r6, r0
 	b	.L45ca
 .L45c8:
@@ -410,7 +410,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r9, r0
 	b	.L45e0
 .L45dc:
@@ -423,12 +423,12 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	b	.L45f4
 .L45f2:
 	mov	r0, #0
 .L45f4:
-	ldr	r2, =.L5120
+	ldr	r2, =gScript_936__0200d120
 	ldr	r4, [sp, #8]
 	ldrsb	r3, [r2, r4]
 	cmp	r3, #1
@@ -494,21 +494,21 @@
 	ldrb	r3, [r4]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_8002322
+	bl	__sin
 	ldr	r2, [sp]
 	ldr	r4, [sp, #0x30]
 	ldrb	r3, [r2, #1]
 	lsl	r6, r0, #1
 	mov	r0, r3
 	mul	r0, r4
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r7, r0, #1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #0x2c]
 	ldrb	r3, [r0, #2]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r11
 	lsl	r0, #1
 	cmp	r2, #0
@@ -644,7 +644,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #4
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r3, #0
 	mov	r9, r0
 	mov	r0, sp
@@ -722,29 +722,37 @@
 .func_end OvlFunc_896_200c78c
 
 	.section .data
-	.global .L4bd0
+	.global gScript_896__0200cbd0
 	.global .L5088
-	.global .L4d88
+	.global gOvl_0200cd88
 
-.L4bd0:
+gScript_896__0200cbd0:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4bd0, (0x4be4-0x4bd0)
-.L4be4:
+	.global gScript_881__0200cbe4
+	.global gScript_896__0200cbe4
+gScript_881__0200cbe4:
+gScript_896__0200cbe4:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4be4, (0x4d88-0x4be4)
-.L4d88:
+gOvl_0200cd88:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4d88, (0x4db8-0x4d88)
-.L4db8:
+	.global gOvl_0200cdb8
+gOvl_0200cdb8:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4db8, (0x4dc4-0x4db8)
-.L4dc4:
+	.global gOvl_0200cdc4
+gOvl_0200cdc4:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4dc4, (0x4fa4-0x4dc4)
-.L4fa4:
+	.global gOvl_0200cfa4
+gOvl_0200cfa4:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x4fa4, (0x5088-0x4fa4)
 .L5088:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x5088, (0x50e4-0x5088)
-.L50e4:
+	.global gOvl_0200d0e4
+gOvl_0200d0e4:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x50e4, (0x5102-0x50e4)
 .L5102:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x5102, (0x5120-0x5102)
-.L5120:
+	.global gScript_936__0200d120
+gScript_936__0200d120:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x5120, (0x5140-0x5120)
 .L5140:
 	.incbin "overlays/rom_78ef88/orig.bin", 0x5140, (0x5168-0x5140)

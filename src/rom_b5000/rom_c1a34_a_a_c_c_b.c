@@ -1,4 +1,4 @@
-/* Cluster Func_80c2454..Func_80c2454 extracted from goldensun/asm/rom_b5000/rom_c1a34_a_a_c_c.s.
+/* Cluster GetEnemyHeight..GetEnemyHeight extracted from goldensun/asm/rom_b5000/rom_c1a34_a_a_c_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned char Lc7420[] __asm__(".Lc7420");
 
-unsigned int Func_80c2454(unsigned int param_1)
+unsigned int GetEnemyHeight(unsigned int param_1)
 {
     if (param_1 > 0xab)
         return 0;

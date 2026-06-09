@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80ad274
+.thumb_func_start Func_80ad274  @ 0x080ad274
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -17,7 +17,7 @@
 	cmp	r0, #0
 	beq	.Lad29a
 	str	r2, [sp]
-	bl	_Func_800bdd4
+	bl	_DeleteSprite
 	str	r6, [r5, r7]
 	ldr	r2, [sp]
 .Lad29a:
@@ -41,13 +41,13 @@
 	mov	r3, r10
 	ldr	r0, [r1, r3]
 	str	r2, [sp]
-	bl	_Func_800bc70
+	bl	_CreateSprite
 	mov	r5, r0
 	ldr	r2, [sp]
 	cmp	r5, #0
 	beq	.Lad2d4
 	mov	r1, #2
-	bl	_Func_800ba30
+	bl	_Sprite_SetAnim
 	ldr	r2, [sp]
 .Lad2d4:
 	ldr	r3, .Lad2f8	@ 0x10

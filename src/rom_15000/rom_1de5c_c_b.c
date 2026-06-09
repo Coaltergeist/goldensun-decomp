@@ -1,4 +1,4 @@
-/* Cluster Func_801e738..Func_801e738 extracted from goldensun/asm/rom_15000/rom_1de5c_c.s.
+/* Cluster SetTextBold..SetTextBold extracted from goldensun/asm/rom_15000/rom_1de5c_c.s.
  *
  * Total .text for this TU = 20 bytes (= 0x14).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int iwram_3001e8c;
 
-void Func_801e738(unsigned short arg0) {
+void SetTextBold(unsigned short arg0) {
     unsigned int ptr = iwram_3001e8c;
     ptr += 0xeac;
     *(unsigned short *)ptr = arg0;

@@ -13,7 +13,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #0x44
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	str	r0, [sp, #0x40]
 	str	r0, [sp, #0x3c]
 	ldr	r1, [sp, #0x40]
@@ -150,7 +150,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r6, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r6, r0
 	b	.L314a
 .L3148:
@@ -161,7 +161,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r7, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	mov	r9, r0
 	b	.L3160
 .L315c:
@@ -174,7 +174,7 @@
 	mov	r1, #0xfa
 	lsl	r0, r3, #16
 	lsl	r1, #2
-	bl	_Func_8000b60
+	bl	_udivsi3_RAM
 	b	.L3174
 .L3172:
 	mov	r0, #0
@@ -245,21 +245,21 @@
 	ldrb	r3, [r4]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_8002322
+	bl	__sin
 	ldr	r2, [sp]
 	ldr	r4, [sp, #0x30]
 	ldrb	r3, [r2, #1]
 	lsl	r6, r0, #1
 	mov	r0, r3
 	mul	r0, r4
-	bl	__Func_8002322
+	bl	__sin
 	lsl	r7, r0, #1
 	ldr	r0, [sp]
 	ldr	r1, [sp, #0x2c]
 	ldrb	r3, [r0, #2]
 	mov	r0, r3
 	mul	r0, r1
-	bl	__Func_800231c
+	bl	__cos
 	mov	r2, r11
 	lsl	r0, #1
 	cmp	r2, #0
@@ -395,7 +395,7 @@
 	lsl	r1, #1
 	mov	r0, #0x21
 	sub	sp, #4
-	bl	__Func_80048f4
+	bl	__galloc_ewram
 	mov	r3, #0
 	mov	r9, r0
 	mov	r0, sp
@@ -474,24 +474,24 @@
 
 	.section .data
 	.global .L3684
-	.global .L3a00
-	.global .L36d4
-	.global .L3704
-	.global .L3710
-	.global .L3998
+	.global gScript_897__0200ba00
+	.global gOvl_0200b6d4
+	.global gOvl_0200b704
+	.global gOvl_0200b710
+	.global gOvl_0200b998
 
 	.incbin "overlays/rom_791794/orig.bin", 0x362c, (0x3684-0x362c)
 .L3684:
 	.incbin "overlays/rom_791794/orig.bin", 0x3684, (0x36d4-0x3684)
-.L36d4:
+gOvl_0200b6d4:
 	.incbin "overlays/rom_791794/orig.bin", 0x36d4, (0x3704-0x36d4)
-.L3704:
+gOvl_0200b704:
 	.incbin "overlays/rom_791794/orig.bin", 0x3704, (0x3710-0x3704)
-.L3710:
+gOvl_0200b710:
 	.incbin "overlays/rom_791794/orig.bin", 0x3710, (0x3998-0x3710)
-.L3998:
+gOvl_0200b998:
 	.incbin "overlays/rom_791794/orig.bin", 0x3998, (0x3a00-0x3998)
-.L3a00:
+gScript_897__0200ba00:
 	.incbin "overlays/rom_791794/orig.bin", 0x3a00, (0x3a0c-0x3a00)
 .L3a0c:
 	.incbin "overlays/rom_791794/orig.bin", 0x3a0c, (0x3a2a-0x3a0c)

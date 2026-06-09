@@ -5,12 +5,12 @@
  * asm/rom_8a000/rom_91584_c_c_a_c_a_c_c_a.o and asm/rom_8a000/rom_91584_c_c_a_c_a_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808ba1c(int actorID);
+extern int GetFieldActor(int actorID);
 
 int MapActor_GetActor(int actorID)
 {
 	int r;
-	r = Func_808ba1c(actorID);
+	r = GetFieldActor(actorID);
 	if (!r)
 		return 0;
 	return r;

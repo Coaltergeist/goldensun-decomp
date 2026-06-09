@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f0254
+.thumb_func_start Func_80f0254  @ 0x080f0254
 	push	{r5, lr}
 	sub	sp, #4
 	cmp	r0, #0
@@ -38,7 +38,7 @@
 	bx	r0
 .func_end Func_80f0254
 
-.thumb_func_start Func_80f02b0
+.thumb_func_start LoadGS1CreditsBG  @ 0x080f02b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -71,7 +71,7 @@
 	ldr	r5, =0x230
 	mov	r0, #0x31
 	mov	r1, r5
-	bl	Func_80048b0
+	bl	galloc_iwram
 	mov	r2, #0x84
 	lsr	r5, #2
 	lsl	r2, #24
@@ -81,7 +81,7 @@
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	ldr	r3, =iwram_3001e50
+	ldr	r3, =gPtrs
 	mov	r2, #0x80
 	lsl	r2, #1
 	add	r3, #0xc4
@@ -91,8 +91,8 @@
 	mov	r2, r8
 	bl	_call_via_r3
 	mov	r0, #0x31
-	bl	Func_8002dd8
-	ldr	r1, =ewram_2002090
+	bl	gfree
+	ldr	r1, =gDMATaskCount
 	ldr	r0, =REG_IME
 	ldrh	r3, [r0]
 	mov	r4, r3
@@ -121,9 +121,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80f02b0
+.func_end LoadGS1CreditsBG
 
-.thumb_func_start Func_80f037c
+.thumb_func_start Func_80f037c  @ 0x080f037c
 	push	{lr}
 	mov	r2, #0x80
 	ldr	r1, =0x1ff01ff

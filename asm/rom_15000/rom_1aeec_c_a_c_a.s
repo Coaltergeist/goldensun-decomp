@@ -1,9 +1,9 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801c46c
+.thumb_func_start Func_801c46c  @ 0x0801c46c
 	push	{lr}
 	ldr	r2, =0x205
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	add	r3, r1, r2
 	ldrb	r2, [r3]
 	mov	r3, #0x20
@@ -25,7 +25,7 @@
 	bx	r0
 .func_end Func_801c46c
 
-.thumb_func_start Func_801c49c
+.thumb_func_start Func_801c49c  @ 0x0801c49c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -45,25 +45,25 @@
 	mov	r1, #0x8c
 	mov	r7, r0
 	mov	r0, #0
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #1
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8d
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x4e
 	mov	r0, #2
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x5d
 	mov	r0, #3
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r1, #0x8c
 	mov	r0, #5
-	bl	_Func_8078e28
+	bl	_GiveInnateMove
 	mov	r3, #0
 	mov	r0, r7
 	str	r3, [sp, #0xc]
@@ -84,29 +84,29 @@
 	mov	r3, #7
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #3
 	mov	r2, #0x14
 	mov	r3, #3
 	mov	r6, r0
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r1, #0xe
 	str	r0, [sp, #8]
 	mov	r2, #0x14
 	mov	r3, #5
 	mov	r0, #4
 	str	r5, [sp]
-	bl	Func_80162d4
+	bl	CreateUIBox
 	mov	r9, r0
-	bl	Func_8004080
+	bl	AllocSpriteSlot
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L1c56e
 	ldr	r2, =Data_310a4
 	mov	r1, #0x80
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0
 	mov	r1, #0x80
 	str	r0, [sp]
@@ -134,12 +134,12 @@
 	mov	r1, r10
 	add	r0, r10
 	mov	r11, r3
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	str	r0, [sp, #0x10]
 	ldr	r0, [sp, #0xc]
 	mov	r1, r10
 	add	r0, r10
-	bl	Func_b50_from_thumb
+	bl	__umodsi3
 	mov	r2, r8
 	add	r2, #2
 	lsr	r3, r2, #31
@@ -233,7 +233,7 @@
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r0, [r3, #2]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r3, [sp, #0xc]
 	b	.L1c684
 .L1c676:
@@ -241,7 +241,7 @@
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r0, [r3, #2]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r3, [sp, #0x10]
 .L1c684:
 	lsl	r3, #2
@@ -262,15 +262,15 @@
 	bl	Func_801e7c0
 .L1c6a8:
 	mov	r0, #1
-	bl	Func_80030f8
-	ldr	r5, =iwram_3001b04
+	bl	WaitFrames
+	ldr	r5, =gKeyRepeat
 	ldr	r3, [r5]
 	mov	r2, #0x20
 	and	r3, r2
 	cmp	r3, #0
 	beq	.L1c6da
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, r8
 	cmp	r3, #0
 	beq	.L1c6ce
@@ -284,7 +284,7 @@
 	str	r3, [sp, #0x10]
 .L1c6d4:
 	mov	r0, #1
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r11, r0
 .L1c6da:
 	ldr	r3, [r5]
@@ -293,7 +293,7 @@
 	cmp	r3, #0
 	beq	.L1c704
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r1, r8
 	cmp	r1, #0
 	beq	.L1c6f8
@@ -307,7 +307,7 @@
 	str	r3, [sp, #0x10]
 .L1c6fe:
 	mov	r3, #1
-	ldr	r5, =iwram_3001b04
+	ldr	r5, =gKeyRepeat
 	mov	r11, r3
 .L1c704:
 	ldr	r3, [r5]
@@ -316,7 +316,7 @@
 	cmp	r3, #0
 	beq	.L1c71e
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, #1
 	neg	r0, r0
 	mov	r1, #1
@@ -329,7 +329,7 @@
 	cmp	r3, #0
 	beq	.L1c734
 	mov	r0, #0x6f
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r3, #1
 	add	r8, r3
 	mov	r11, r3
@@ -341,7 +341,7 @@
 	cmp	r3, #0
 	beq	.L1c748
 	mov	r0, #0x70
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1c76c
 .L1c748:
 	ldr	r3, [r1]
@@ -350,7 +350,7 @@
 	cmp	r3, #0
 	beq	.L1c75a
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 	b	.L1c76c
 .L1c75a:
 	ldr	r3, [r1]
@@ -361,13 +361,13 @@
 	b	.L1c57c
 .L1c766:
 	mov	r0, #0x71
-	bl	_Func_80f9080
+	bl	_PlaySound
 .L1c76c:
 	ldr	r3, [sp, #0x10]
 	lsl	r3, #2
 	add	r3, r7
 	ldrh	r2, [r3]
-	ldr	r1, =ewram_2000240
+	ldr	r1, =gState
 	ldrh	r3, [r3, #2]
 	mov	r0, #0x88
 	lsl	r0, #2
@@ -387,18 +387,18 @@
 	strh	r2, [r1]
 	mov	r0, r6
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r1, #1
 	ldr	r0, [sp, #8]
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, r9
 	mov	r1, #1
-	bl	Func_8016418
+	bl	CloseUIBox
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 .L1c7b6:
 	mov	r0, r7
-	bl	Func_8002df0
+	bl	free
 	add	sp, #0x14
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -410,7 +410,7 @@
 	bx	r0
 .func_end Func_801c49c
 
-.thumb_func_start Func_801c7fc
+.thumb_func_start Func_801c7fc  @ 0x0801c7fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -436,7 +436,7 @@
 	mov	r8, r3
 	add	r11, r0
 	mov	r0, r8
-	bl	_Func_8077394
+	bl	_GetUnit
 	mov	r3, #0x58
 	ldr	r2, =0x3fff
 	ldrh	r3, [r0, r3]
@@ -459,7 +459,7 @@
 	mov	r0, r5
 	str	r1, [sp, #4]
 	str	r2, [sp]
-	bl	_Func_8078b9c
+	bl	_GetMoveInfo
 	ldr	r1, [sp, #4]
 	mov	r3, r8
 	mov	r0, #1
@@ -497,7 +497,7 @@
 	bx	r1
 .func_end Func_801c7fc
 
-.thumb_func_start Func_801c8a0
+.thumb_func_start Func_801c8a0  @ 0x0801c8a0
 	push	{r5, r6, r7, lr}
 	mov	r3, #0
 	mov	r6, r0
@@ -505,7 +505,7 @@
 	mov	r7, r2
 	str	r3, [r1]
 	mov	r2, #0x88
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	lsl	r2, #2
 	add	r3, r2
 	ldrh	r3, [r3]

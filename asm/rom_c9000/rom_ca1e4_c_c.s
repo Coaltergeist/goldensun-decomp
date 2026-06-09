@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80ca1fc
+.thumb_func_start BaseAnim_Spore  @ 0x080ca1fc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -29,11 +29,11 @@
 	cmp	r3, #0
 	bne	.Lca23a
 	mov	r0, #0
-	bl	Func_80cd594
+	bl	AnimStart
 	b	.Lca240
 .Lca23a:
 	mov	r0, #1
-	bl	Func_80cd594
+	bl	AnimStart
 .Lca240:
 	mov	r6, #2
 	mov	r1, #7
@@ -41,8 +41,8 @@
 	mov	r3, #3
 	mov	r0, #0x2e
 	str	r6, [sp]
-	bl	Func_80ed408
-	ldr	r5, =iwram_3001e50
+	bl	BuildDraw2DFuncEx
+	ldr	r5, =gPtrs
 	mov	r3, r5
 	add	r3, #0xb8
 	ldr	r3, [r3]
@@ -52,7 +52,7 @@
 	mov	r3, #0xb
 	mov	r0, #0x2f
 	str	r6, [sp]
-	bl	Func_80ed408
+	bl	BuildDraw2DFuncEx
 	add	r5, #0xbc
 	ldr	r5, [r5]
 	ldr	r0, =_FILE_73
@@ -60,7 +60,7 @@
 	mov	r2, #0
 	mov	r3, #0
 	str	r5, [sp, #0x1c]
-	bl	Func_80e0524
+	bl	LoadVFXFile
 	ldr	r4, [sp, #0x28]
 	cmp	r4, #0
 	bne	.Lca284
@@ -88,18 +88,18 @@
 	mov	r1, #0x90
 	str	r3, [r2]
 	lsl	r1, #3
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StartTask
 	ldr	r2, =0x7828
 	ldr	r1, [sp, #0x24]
 	add	r3, r1, r2
 	ldr	r3, [r3]
 	ldr	r0, [r3, #8]
-	bl	_Func_80b7dd0
+	bl	_GetBattleActor
 	ldr	r0, [r0]
 	mov	r3, #0
 	str	r0, [sp, #0xc]
-	ldr	r7, =ewram_2010000
+	ldr	r7, =gBuffer
 	mov	r8, r3
 .Lca2ce:
 	bl	Random
@@ -120,7 +120,7 @@
 	ldr	r3, [r4, #0x10]
 	mov	r0, r6
 	str	r3, [r7, #8]
-	bl	Func_8002322
+	bl	sin
 	add	r5, #0x20
 	mov	r3, r5
 	mul	r3, r0
@@ -133,7 +133,7 @@
 	lsl	r3, #9
 	str	r3, [r7, #0x10]
 	mov	r0, r6
-	bl	Func_800231c
+	bl	cos
 	mov	r3, r5
 	mul	r3, r0
 	lsl	r3, #1
@@ -175,11 +175,11 @@
 	mov	r11, r1
 	mov	r9, r3
 .Lca368:
-	bl	Func_80049ac
+	bl	InitMatrixStack
 	ldr	r0, [sp, #0x14]
 	ldr	r1, [sp, #8]
-	bl	Func_80051d8
-	ldr	r6, =ewram_2010000
+	bl	MatrixSetLook
+	ldr	r6, =gBuffer
 	mov	r4, #0
 	mov	r8, r4
 .Lca37a:
@@ -199,7 +199,7 @@
 	lsl	r0, r1, #2
 	add	r0, r3
 	lsl	r0, #10
-	bl	Func_8002322
+	bl	sin
 	ldr	r3, [r6]
 	lsl	r0, #4
 	mov	r2, r9
@@ -351,7 +351,7 @@
 	cmp	r11, r6
 	bne	.Lca4da
 	mov	r0, #0x7e
-	bl	_Func_80f9080
+	bl	_PlaySound
 	mov	r0, r10
 	bl	_Func_80bd7dc
 	ldr	r3, [r5]
@@ -379,7 +379,7 @@
 	mov	r3, #1
 	str	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #1
 	add	r11, r1
 	mov	r2, r11
@@ -387,13 +387,13 @@
 	beq	.Lca50a
 	b	.Lca368
 .Lca50a:
-	ldr	r0, =Func_80cd260
+	ldr	r0, =Task_BlitAnim
 	bl	StopTask
 	mov	r0, #0x2f
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r0, #0x2e
-	bl	Func_8002dd8
-	bl	Func_80cdbc0
+	bl	gfree
+	bl	AnimEnd
 	add	sp, #0x44
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
@@ -403,4 +403,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80ca1fc
+.func_end BaseAnim_Spore

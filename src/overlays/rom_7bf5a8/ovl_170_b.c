@@ -5,8 +5,8 @@
  * asm/overlays/rom_7bf5a8/ovl_170_a.o and asm/overlays/rom_7bf5a8/ovl_170_c.o in
  * goldensun/overlays/rom_7bf5a8/overlay.ld.
  */
-extern void __Func_8079358(int);
+extern void __SetFlag(int);
 
 void OvlFunc_935_20082bc(void) {
-    __Func_8079358(0xc0 << 2);
+    __SetFlag(0xc0 << 2);
 }

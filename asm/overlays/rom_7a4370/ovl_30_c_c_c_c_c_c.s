@@ -53,31 +53,40 @@
 .func_end OvlFunc_917_20098b8
 
 	.section .data
-	.global .L1d9c
-	.global .L1ab8
-	.global .L1af4
-	.global .L1b30
-	.global .L1b6c
+	.global gScript_917__02009d9c
+	.global ActorCmd_ARRAY_917__02009ab8
+	.global gScript_917__02009af4
+	.global gScript_917__02009b30
+	.global gScript_917__02009b6c
 
-.L1ab8:
+ActorCmd_ARRAY_917__02009ab8:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1ab8, (0x1af4-0x1ab8)
-.L1af4:
+gScript_917__02009af4:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1af4, (0x1b30-0x1af4)
-.L1b30:
+gScript_917__02009b30:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1b30, (0x1b6c-0x1b30)
-.L1b6c:
+gScript_917__02009b6c:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1b6c, (0x1ba4-0x1b6c)
-.L1ba4:
+	.global gOvl_02009ba4
+gOvl_02009ba4:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1ba4, (0x1c04-0x1ba4)
-.L1c04:
+	.global gScript_887__02009c04
+gScript_887__02009c04:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1c04, (0x1c24-0x1c04)
-.L1c24:
+	.global gOvl_02009c24
+gOvl_02009c24:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1c24, (0x1c34-0x1c24)
-.L1c34:
+	.global gOvl_02009c34
+	.global MapEntrance_ARRAY_941__02009c34
+	.global gScript_885__02009c34
+gOvl_02009c34:
+MapEntrance_ARRAY_941__02009c34:
+gScript_885__02009c34:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1c34, (0x1d3c-0x1c34)
-.L1d3c:
+	.global gOvl_02009d3c
+gOvl_02009d3c:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1d3c, (0x1d9c-0x1d3c)
-.L1d9c:
+gScript_917__02009d9c:
 	.incbin "overlays/rom_7a4370/orig.bin", 0x1d9c
 
 	.section .bss

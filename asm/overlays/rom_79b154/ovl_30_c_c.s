@@ -10,7 +10,7 @@
 	sub	sp, #0xc
 	bl	__MapActor_GetActor
 	ldrh	r3, [r0, #6]
-	ldr	r2, =.L1d3c
+	ldr	r2, =gOvl_02009d3c
 	lsr	r3, #12
 	lsl	r5, r3, #2
 	ldr	r3, [r2, r5]
@@ -53,24 +53,24 @@
 	add	r3, r1
 	mov	r1, r6
 	str	r3, [r6, #8]
-	bl	__Func_80120dc
+	bl	__TestCollision
 	cmp	r0, #0
 	bgt	.Leaa
 	mov	r1, #8
 	mov	r0, r8
-	bl	__Func_800c300
+	bl	__Actor_SetAnim
 	ldr	r5, =0x3333
 	mov	r0, #0xf
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	mov	r0, #0xb9
-	bl	__Func_80f9080
+	bl	__PlaySound
 	str	r5, [r7, #0x30]
 	str	r5, [r7, #0x34]
 	mov	r0, r7
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r1, r8
 	str	r5, [r1, #0x30]
 	str	r5, [r1, #0x34]
@@ -78,9 +78,9 @@
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
-	bl	__Func_800d14c
+	bl	__Actor_TravelTo
 	mov	r0, r7
-	bl	__Func_800ca6c
+	bl	__Actor_WaitMovement
 	ldr	r3, [r6]
 	str	r3, [r7, #8]
 	ldr	r3, [r6, #8]
@@ -90,8 +90,8 @@
 	str	r2, [r7, #0x2c]
 	mov	r1, #1
 	mov	r0, r8
-	bl	__Func_800c300
-	ldr	r3, =ewram_2000240
+	bl	__Actor_SetAnim
+	ldr	r3, =gState
 	mov	r4, #0xe0
 	lsl	r4, #1
 	add	r3, r4
@@ -126,7 +126,7 @@
 
 .thumb_func_start OvlFunc_907_2008ed8
 	push	{r5, lr}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r1, #0xfa
 	lsl	r1, #1
 	add	r3, r1
@@ -181,13 +181,13 @@
 	ldr	r2, [r0, #0xc]
 	ldr	r3, [r0, #0x10]
 	mov	r0, #0x18
-	bl	__Func_800c150
+	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.Lf96
-	ldr	r1, =.L1d7c
+	ldr	r1, =gScript_907__02009d7c
 	ldr	r6, [r5, #0x50]
-	bl	__Func_800c2d8
+	bl	__Actor_SetScript
 	mov	r3, r5
 	add	r3, #0x55
 	mov	r7, #0
@@ -203,7 +203,7 @@
 	beq	.Lf96
 	mov	r0, r6
 	mov	r1, #2
-	bl	__Func_800ba30
+	bl	__Sprite_SetAnim
 	mov	r3, r6
 	add	r3, #0x26
 	strb	r7, [r3]
@@ -287,8 +287,8 @@
 .func_end OvlFunc_907_2008fa0
 
 	.section .data
-	.global .L11c0
-	.global .L1480
+	.global ActorCmd_ARRAY_907__020091c0
+	.global gScript_944__02009480
 	.global .L1498
 	.global .L1600
 	.global .L16f0
@@ -303,9 +303,9 @@
 	.global .L11ec
 	.global .L130c
 	.global .L136c
-	.global .L13fc
+	.global gOvl_020093fc
 
-.L11c0:
+ActorCmd_ARRAY_907__020091c0:
 	.incbin "overlays/rom_79b154/orig.bin", 0x11c0, (0x11d4-0x11c0)
 .L11d4:
 	.incbin "overlays/rom_79b154/orig.bin", 0x11d4, (0x11ec-0x11d4)
@@ -315,11 +315,12 @@
 	.incbin "overlays/rom_79b154/orig.bin", 0x130c, (0x136c-0x130c)
 .L136c:
 	.incbin "overlays/rom_79b154/orig.bin", 0x136c, (0x13fc-0x136c)
-.L13fc:
+gOvl_020093fc:
 	.incbin "overlays/rom_79b154/orig.bin", 0x13fc, (0x142c-0x13fc)
-.L142c:
+	.global gOvl_0200942c
+gOvl_0200942c:
 	.incbin "overlays/rom_79b154/orig.bin", 0x142c, (0x1480-0x142c)
-.L1480:
+gScript_944__02009480:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1480, (0x1498-0x1480)
 .L1498:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1498, (0x1600-0x1498)
@@ -341,9 +342,11 @@
 	.incbin "overlays/rom_79b154/orig.bin", 0x1d0c, (0x1d28-0x1d0c)
 .L1d28:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1d28, (0x1d3c-0x1d28)
-.L1d3c:
+	.global gOvl_02009d3c
+gOvl_02009d3c:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1d3c, (0x1d7c-0x1d3c)
-.L1d7c:
+	.global gScript_907__02009d7c
+gScript_907__02009d7c:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1d7c, (0x1d88-0x1d7c)
 .L1d88:
 	.incbin "overlays/rom_79b154/orig.bin", 0x1d88

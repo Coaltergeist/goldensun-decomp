@@ -5,8 +5,8 @@
  * asm/rom_b5000/rom_bffb8_a_c_a.o and asm/rom_b5000/rom_bffb8_a_c_c.o in
  * goldensun/stage1.ld.
  */
-extern void Func_8002dd8(int index);
+extern void gfree(int index);
 
 void Func_80c08e0(void) {
-    Func_8002dd8(10);
+    gfree(10);
 }

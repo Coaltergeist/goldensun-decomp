@@ -1,17 +1,17 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808f0d8
+.thumb_func_start Func_808f0d8  @ 0x0808f0d8
 	push	{r5, r6, lr}
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L8f132
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r6, #0x34]
@@ -30,15 +30,15 @@
 	ldr	r1, [r5, #8]
 	ldr	r3, [r5, #0x10]
 	mov	r0, r6
-	bl	_Func_800d14c
+	bl	_Actor_TravelTo
 	mov	r0, #3
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r5
 	mov	r1, #0x1c
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, =.L9e75c
 	mov	r0, r6
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r3, #0x80
 	lsl	r3, #7
 	strh	r3, [r5, #6]
@@ -48,18 +48,18 @@
 	bx	r0
 .func_end Func_808f0d8
 
-.thumb_func_start Func_808f140
+.thumb_func_start Func_808f140  @ 0x0808f140
 	push	{r5, r6, r7, lr}
 	mov	r5, r0
 	mov	r6, r1
 	cmp	r5, #0
 	beq	.L8f1ac
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	ldr	r0, [r3]
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r3, #1
 	and	r3, r6
 	mov	r7, r0
@@ -67,10 +67,10 @@
 	beq	.L8f182
 	mov	r0, r5
 	mov	r1, #0
-	bl	_Func_800c528
+	bl	_Actor_SetSpriteFlags
 	ldr	r1, =.L9e6c0
 	mov	r0, r5
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r3, #0x80
 	lsl	r3, #10
 	str	r3, [r5, #0x28]
@@ -83,7 +83,7 @@
 	cmp	r6, #3
 	bne	.L8f18c
 	mov	r0, #0x3c
-	bl	Func_80030f8
+	bl	WaitFrames
 .L8f18c:
 	mov	r3, #2
 	and	r3, r6
@@ -95,36 +95,36 @@
 	cmp	r6, #3
 	bne	.L8f1a4
 	mov	r0, #0x50
-	bl	Func_80030f8
+	bl	WaitFrames
 .L8f1a4:
 	mov	r0, r7
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 .L8f1ac:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
 .func_end Func_808f140
 
-.thumb_func_start Func_808f1c0
+.thumb_func_start Func_808f1c0  @ 0x0808f1c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
 	mov	r5, r8
 	push	{r5, r6, r7}
-	ldr	r3, =ewram_2000240
+	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1
 	add	r3, r2
 	mov	r9, r0
 	ldr	r0, [r3]
 	mov	r10, r1
-	bl	Func_808ba1c
+	bl	GetFieldActor
 	mov	r1, #0xc1
 	mov	r7, r0
 	lsl	r1, #3
 	mov	r0, #0x11
-	bl	Func_80048b0
+	bl	galloc_iwram
 	ldr	r2, [r7, #0xc]
 	mov	r3, #0x90
 	lsl	r3, #14
@@ -133,7 +133,7 @@
 	ldr	r1, [r7, #8]
 	ldr	r3, [r7, #0x10]
 	mov	r0, #0x16
-	bl	_Func_800c150
+	bl	_CreateActor
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L8f276
@@ -158,15 +158,15 @@
 	orr	r3, r2
 	strb	r3, [r5, #9]
 	mov	r0, r9
-	bl	_Func_801a370
+	bl	_LoadItemIcon
 	mov	r2, #0x80
 	lsl	r2, #3
 	add	r2, r8
 	mov	r1, #0x80
 	ldrb	r0, [r5, #0x1c]
-	bl	Func_8003fa4
+	bl	UploadSpriteGFX
 	mov	r0, #0x11
-	bl	Func_8002dd8
+	bl	gfree
 	mov	r3, #1
 	mov	r2, r10
 	and	r3, r2
@@ -184,12 +184,12 @@
 	bl	Func_808f0d8
 .L8f262:
 	mov	r0, #0x50
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r0, r7
 	mov	r1, #1
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	mov	r0, r6
-	bl	_Func_800c0f4
+	bl	_DeleteActor
 .L8f276:
 	pop	{r3, r5, r6}
 	mov	r8, r3
@@ -200,7 +200,7 @@
 	bx	r0
 .func_end Func_808f1c0
 
-.thumb_func_start Func_808f28c
+.thumb_func_start Func_808f28c  @ 0x0808f28c
 	push	{r5, r6, lr}
 	sub	sp, #0xc
 	mov	r5, r0
@@ -224,20 +224,20 @@
 	mov	r1, r0
 	mov	r2, r6
 	mov	r0, r5
-	bl	Func_800447c
+	bl	vec3_translate
 	ldr	r0, =0x11d
 	ldr	r1, [r6]
 	ldr	r2, [r6, #4]
 	ldr	r3, [r6, #8]
-	bl	Func_8096c80
+	bl	CreateParticleActor
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8f2f4
 	ldr	r1, =.L9e87c
-	bl	_Func_800c2d8
+	bl	_Actor_SetScript
 	mov	r1, #0
 	mov	r0, r5
-	bl	_Func_800c300
+	bl	_Actor_SetAnim
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]

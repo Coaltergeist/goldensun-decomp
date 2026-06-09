@@ -1,13 +1,13 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808fecc
+.thumb_func_start AllocGlobal1F  @ 0x0808fecc
 	push	{lr}
 	mov	r1, #0xa8
 	lsl	r1, #3
 	mov	r0, #0x1f
 	sub	sp, #4
-	bl	Func_80048f4
+	bl	galloc_ewram
 	mov	r3, #0
 	mov	r4, r0
 	mov	r0, sp
@@ -21,9 +21,9 @@
 	add	sp, #4
 	pop	{r1}
 	bx	r1
-.func_end Func_808fecc
+.func_end AllocGlobal1F
 
-.thumb_func_start Func_808fefc
+.thumb_func_start ScreenTransitionIn  @ 0x0808fefc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -58,7 +58,7 @@
 	mov	r0, r10
 	bl	Func_8003bb4
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L90168
 .L8ff4c:
 	mov	r3, #0xa0
@@ -70,8 +70,8 @@
 	mov	r0, r10
 	bl	Func_8091254
 	mov	r0, #1
-	bl	Func_80030f8
-	ldr	r1, =ewram_2002090
+	bl	WaitFrames
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r5, r3
@@ -102,7 +102,7 @@
 	bl	Func_8091240
 	b	.L9019c
 .L8ffa2:
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r1, #0xa5
 	mov	r5, r0
 	lsl	r1, #3
@@ -124,15 +124,15 @@
 	mov	r1, #0xc8
 	strh	r3, [r2]
 	lsl	r1, #4
-	ldr	r0, =Func_808f52c
+	ldr	r0, =Task_ScreenWindowTransition
 	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
 	bl	StartTask
 	mov	r0, #1
-	bl	Func_80030f8
-	ldr	r1, =ewram_2002090
+	bl	WaitFrames
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r6, r3
@@ -177,7 +177,7 @@
 	strb	r2, [r3]
 	b	.L9019c
 .L9003c:
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r1, #0xa5
 	mov	r5, r0
 	lsl	r1, #3
@@ -192,12 +192,12 @@
 	mov	r0, #0xf
 	bl	Func_80907b0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0xc8
 	lsl	r1, #4
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	bl	StartTask
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r6, r3
@@ -242,7 +242,7 @@
 	b	.L9019c
 .L900c0:
 	ldr	r7, [r1]
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r3, #0x80
 	lsl	r3, #1
 	ldr	r1, .L900f4	@ 0
@@ -258,7 +258,7 @@
 	mov	r5, r0
 	strh	r3, [r2]
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	cmp	r6, #0
 	bne	.L90134
 	mov	r1, #0xc8
@@ -300,7 +300,7 @@
 	mov	r1, r8
 	strb	r1, [r3]
 .L90168:
-	ldr	r1, =ewram_2002090
+	ldr	r1, =gDMATaskCount
 	ldr	r4, =REG_IME
 	ldrh	r3, [r4]
 	mov	r5, r3
@@ -335,9 +335,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808fefc
+.func_end ScreenTransitionIn
 
-.thumb_func_start Func_80901c0
+.thumb_func_start ScreenTransitionOut  @ 0x080901c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -377,7 +377,7 @@
 	bl	Func_8091254
 	b	.L90352
 .L90214:
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r2, #0xa5
 	mov	r5, r0
 	lsl	r2, #3
@@ -399,14 +399,14 @@
 	mov	r3, #1
 	strh	r3, [r2]
 	lsl	r1, #4
-	ldr	r0, =Func_808f52c
+	ldr	r0, =Task_ScreenWindowTransition
 	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
 	ldr	r0, =Func_808f498
 	bl	StartTask
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	b	.L902a8
 
 	.align	2, 0
@@ -415,7 +415,7 @@
 	.pool
 
 .L90278:
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r2, #0xa5
 	mov	r5, r0
 	lsl	r2, #3
@@ -430,9 +430,9 @@
 	mov	r0, #0
 	bl	Func_80907b0
 	mov	r0, #1
-	bl	Func_80030f8
+	bl	WaitFrames
 	mov	r1, #0xc8
-	ldr	r0, =Func_8090658
+	ldr	r0, =Task_Transition300
 	lsl	r1, #4
 	bl	StartTask
 .L902a8:
@@ -463,7 +463,7 @@
 	strb	r2, [r5]
 	b	.L90352
 .L902e8:
-	bl	Func_808fecc
+	bl	AllocGlobal1F
 	mov	r5, r0
 	cmp	r6, #0
 	bne	.L90322
@@ -518,5 +518,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80901c0
+.func_end ScreenTransitionOut
 

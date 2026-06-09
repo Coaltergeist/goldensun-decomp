@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8006ac0
+.thumb_func_start SetReadFlash1  @ 0x08006ac0
 	mov	r2, r0
 	ldr	r1, =ewram_2004c1c
 	add	r0, r2, #1
@@ -9,7 +9,7 @@
 	ldr	r3, =Func_8006abc
 	mov	r0, #1
 	eor	r3, r0
-	ldr	r0, =Func_8006ac0
+	ldr	r0, =SetReadFlash1
 	ldr	r1, =Func_8006abc
 	sub	r0, r1
 	lsl	r0, #15
@@ -29,9 +29,9 @@
 	cmp	r1, #0
 	bne	.L6ae4
 	bx	lr
-.func_end Func_8006ac0
+.func_end SetReadFlash1
 
-.thumb_func_start Func_8006af8
+.thumb_func_start WaitForFlashWrite_Common  @ 0x08006af8
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -44,7 +44,7 @@
 	mov	r0, #0
 	mov	r8, r0
 	mov	r0, r4
-	bl	Func_8006a00
+	bl	StartFlashTimer
 	ldr	r7, =ewram_2004c1c
 	mov	r0, #0xc0
 	lsl	r0, #8
@@ -92,16 +92,16 @@
 	cmp	r0, r6
 	bne	.L6b24
 .L6b70:
-	bl	Func_8006a78
+	bl	StopFlashTimer
 	mov	r0, r8
 	pop	{r3}
 	mov	r8, r3
 	pop	{r4, r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006af8
+.func_end WaitForFlashWrite_Common
 
-.thumb_func_start Func_8006b84
+.thumb_func_start ReadFlash_Core  @ 0x08006b84
 	push	{r4, lr}
 	mov	r4, r0
 	sub	r3, r2, #1
@@ -121,9 +121,9 @@
 	pop	{r4}
 	pop	{r0}
 	bx	r0
-.func_end Func_8006b84
+.func_end ReadFlash_Core
 
-.thumb_func_start Func_8006ba8
+.thumb_func_start ReadFlash  @ 0x08006ba8
 	push	{r4, r5, r6, r7, lr}
 	sub	sp, #0x80
 	mov	r5, r1
@@ -138,12 +138,12 @@
 	mov	r1, #3
 	orr	r0, r1
 	strh	r0, [r2]
-	ldr	r3, =Func_8006b84
+	ldr	r3, =ReadFlash_Core
 	mov	r0, #1
 	eor	r3, r0
 	mov	r2, sp
-	ldr	r0, =Func_8006ba8
-	ldr	r1, =Func_8006b84
+	ldr	r0, =ReadFlash
+	ldr	r1, =ReadFlash_Core
 	sub	r0, r1
 	lsl	r0, #15
 	b	.L6bf4
@@ -178,9 +178,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8006ba8
+.func_end ReadFlash
 
-.thumb_func_start Func_8006c24
+.thumb_func_start VerifyFlashSector_Core  @ 0x08006c24
 	push	{r4, r5, lr}
 	mov	r4, r0
 	mov	r3, r1
@@ -216,9 +216,9 @@
 	pop	{r4, r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006c24
+.func_end VerifyFlashSector_Core
 
-.thumb_func_start Func_8006c68
+.thumb_func_start VerifyFlashSector  @ 0x08006c68
 	push	{r4, r5, lr}
 	sub	sp, #0x100
 	mov	r5, r1
@@ -231,12 +231,12 @@
 	mov	r1, #3
 	orr	r0, r1
 	strh	r0, [r2]
-	ldr	r3, =Func_8006c24
+	ldr	r3, =VerifyFlashSector_Core
 	mov	r0, #1
 	eor	r3, r0
 	mov	r2, sp
-	ldr	r0, =Func_8006c68
-	ldr	r1, =Func_8006c24
+	ldr	r0, =VerifyFlashSector
+	ldr	r1, =VerifyFlashSector_Core
 	sub	r0, r1
 	lsl	r0, #15
 	b	.L6cb0
@@ -270,9 +270,9 @@
 	pop	{r4, r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006c68
+.func_end VerifyFlashSector
 
-.thumb_func_start Func_8006cdc
+.thumb_func_start EraseFlashChip_MX  @ 0x08006cdc
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	ldr	r5, =REG_WAITCNT
@@ -297,7 +297,7 @@
 	mov	r0, #0x10
 	strb	r0, [r1]
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r0, =ewram_2004c00
 	mov	r1, #0xe0
 	lsl	r1, #20
@@ -316,9 +316,9 @@
 	pop	{r4, r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006cdc
+.func_end EraseFlashChip_MX
 
-.thumb_func_start Func_8006d50
+.thumb_func_start EraseFlashSector_MX  @ 0x08006d50
 	push	{r4, r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
@@ -356,7 +356,7 @@
 	mov	r0, #0x30
 	strb	r0, [r4]
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r0, =ewram_2004c00
 	ldr	r3, [r0]
 	mov	r0, #2
@@ -384,9 +384,9 @@
 	pop	{r4, r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006d50
+.func_end EraseFlashSector_MX
 
-.thumb_func_start Func_8006dec
+.thumb_func_start ProgramByte  @ 0x08006dec
 	push	{r4, lr}
 	ldr	r4, =0xe005555
 	mov	r2, #0xaa
@@ -408,9 +408,9 @@
 	pop	{r4}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006dec
+.func_end ProgramByte
 
-.thumb_func_start Func_8006e24
+.thumb_func_start ProgramFlashSector_MX  @ 0x08006e24
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r9
 	mov	r6, r8
@@ -468,7 +468,7 @@
 	beq	.L6f30
 .L6e90:
 	mov	r0, r8
-	bl	Func_8006d50
+	bl	EraseFlashSector_MX
 	lsl	r0, #16
 	lsr	r5, r0, #16
 	cmp	r5, #0
@@ -491,7 +491,7 @@
 	bhi	.L6ece
 .L6ebe:
 	mov	r0, r8
-	bl	Func_8006d50
+	bl	EraseFlashSector_MX
 	add	r0, r4, #1
 	lsl	r0, #24
 	lsr	r4, r0, #24
@@ -499,7 +499,7 @@
 	bls	.L6ebe
 .L6ece:
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r3, =REG_WAITCNT
 	ldrh	r1, [r3]
 	ldr	r0, =0xfffc
@@ -530,7 +530,7 @@
 	beq	.L6f22
 	mov	r0, r9
 	mov	r1, r7
-	bl	Func_8006dec
+	bl	ProgramByte
 	lsl	r0, #16
 	lsr	r5, r0, #16
 	cmp	r5, #0
@@ -553,9 +553,9 @@
 	pop	{r4, r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8006e24
+.func_end ProgramFlashSector_MX
 
-.thumb_func_start Func_8006f48
+.thumb_func_start Func_8006f48  @ 0x08006f48
 	mov	r2, r0
 	ldr	r0, =ewram_2004c08
 	ldr	r0, [r0]
@@ -578,7 +578,7 @@
 	bx	lr
 .func_end Func_8006f48
 
-.thumb_func_start Func_8006f6c
+.thumb_func_start Func_8006f6c  @ 0x08006f6c
 	push	{lr}
 	bl	_call_via_r1
 	cmp	r0, #0
@@ -592,7 +592,7 @@
 	bx	r1
 .func_end Func_8006f6c
 
-.thumb_func_start Func_8006f84
+.thumb_func_start Func_8006f84  @ 0x08006f84
 	push	{r4, r5, r6, r7, lr}
 	sub	sp, #0x40
 	mov	r7, r1
@@ -607,13 +607,13 @@
 
 .L6f9c:
 	mov	r0, r4
-	bl	Func_8006d50
+	bl	EraseFlashSector_MX
 	lsl	r0, #16
 	lsr	r5, r0, #16
 	cmp	r5, #0
 	bne	.L7016
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r3, =REG_WAITCNT
 	ldrh	r1, [r3]
 	ldr	r0, =0xfffc
@@ -648,7 +648,7 @@
 	beq	.L7008
 	mov	r0, r7
 	mov	r1, r4
-	bl	Func_8006dec
+	bl	ProgramByte
 	lsl	r0, #16
 	lsr	r5, r0, #16
 	cmp	r5, #0
@@ -670,11 +670,11 @@
 	bx	r1
 .func_end Func_8006f84
 
-.thumb_func_start Func_8007028
+.thumb_func_start Func_8007028  @ 0x08007028
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r5, =REG_WAITCNT
 	ldrh	r0, [r5]
 	ldr	r6, =0xfffc
@@ -715,7 +715,7 @@
 	bx	r1
 .func_end Func_8007028
 
-.thumb_func_start Func_8007098
+.thumb_func_start Func_8007098  @ 0x08007098
 	push	{r4, r5, lr}
 	lsl	r0, #16
 	ldr	r3, =.L7c10
@@ -775,7 +775,7 @@
 	bx	r1
 .func_end Func_8007098
 
-.thumb_func_start Func_800711c
+.thumb_func_start Func_800711c  @ 0x0800711c
 	push	{r4, r5, r6, lr}
 	sub	sp, #0x40
 	lsl	r0, #16
@@ -789,7 +789,7 @@
 
 .L7130:
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r2, =REG_WAITCNT
 	ldrh	r0, [r2]
 	ldr	r1, =0xfffc
@@ -847,7 +847,7 @@
 	bx	r1
 .func_end Func_800711c
 
-.thumb_func_start Func_80071a8
+.thumb_func_start Func_80071a8  @ 0x080071a8
 	push	{r4, r5, r6, lr}
 	mov	r5, r1
 	lsl	r0, #16
@@ -901,7 +901,7 @@
 	bx	r1
 .func_end Func_80071a8
 
-.thumb_func_start Func_8007220
+.thumb_func_start Func_8007220  @ 0x08007220
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -918,7 +918,7 @@
 
 .L723c:
 	mov	r0, sp
-	bl	Func_8006ac0
+	bl	SetReadFlash1
 	ldr	r2, =REG_WAITCNT
 	ldrh	r0, [r2]
 	ldr	r1, =0xfffc

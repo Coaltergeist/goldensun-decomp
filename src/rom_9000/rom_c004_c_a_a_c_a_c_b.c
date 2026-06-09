@@ -6,8 +6,8 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char L135a8[] __asm__(".L135a8");
-extern void Func_800c2d8(int actor, unsigned char *script);
+extern void Actor_SetScript(int actor, unsigned char *script);
 
 void Func_800c47c(int actor) {
-    Func_800c2d8(actor, L135a8);
+    Actor_SetScript(actor, L135a8);
 }

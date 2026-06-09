@@ -3,7 +3,7 @@
 
 .thumb_func_start OvlFunc_879_2008054
 	push	{r5, r6, lr}
-	ldr	r2, =ewram_2000240
+	ldr	r2, =gState
 	mov	r1, #0xe1
 	lsl	r1, #1
 	add	r5, r2, r1
@@ -20,11 +20,11 @@
 	add	r0, #0x55
 	strb	r3, [r0]
 	mov	r0, #0x4b
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
 	bl	OvlFunc_879_20082e8
 	mov	r0, #0x78
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, =gKeyPress
 	ldr	r3, [r2]
 	mov	r5, #0
@@ -33,7 +33,7 @@
 	mov	r6, r2
 .L96:
 	mov	r0, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	ldr	r2, =0xe0f
 	add	r5, #1
 	cmp	r5, r2
@@ -44,27 +44,27 @@
 .Laa:
 	ldr	r0, =0
 	mov	r1, #2
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L196
 .Lb4:
 	cmp	r3, #9
 	bne	.Lea
 	mov	r0, #0x43
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f03f0
+	bl	__StartGS1Credits
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x3c
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
 	mov	r0, #0xf0
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 	ldr	r0, =1
 	mov	r1, #2
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L196
 .Lea:
 	ldr	r0, =0xb
@@ -75,26 +75,26 @@
 	bne	.L15c
 .Lf8:
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f2b70
+	bl	__NintendoLogo
 	mov	r0, #0
-	bl	__Func_80f2d54
+	bl	__CamelotLogo
 	bl	__Func_801f77c
 	cmp	r0, #0
 	ble	.L152
 	mov	r0, #0x46
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #1
-	bl	__Func_80f26ec
+	bl	__StartTitleScreen
 	cmp	r0, #0
 	bne	.L152
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x1e
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
-	ldr	r2, =iwram_3001ae8
+	ldr	r2, =gKeyHeld
 	ldr	r3, [r2]
 	mov	r5, #0
 	cmp	r3, #0
@@ -103,7 +103,7 @@
 .L13e:
 	mov	r0, #1
 	add	r5, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r5, #0x77
 	bgt	.Lf8
 	ldr	r3, [r6]
@@ -113,29 +113,29 @@
 .L152:
 	ldr	r0, =1
 	mov	r1, #1
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	b	.L17a
 .L15c:
 	mov	r0, #0x40
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0
-	bl	__Func_80f26ec
+	bl	__StartTitleScreen
 	bl	__Func_8077f70
 	ldr	r0, =4
 	mov	r1, #0x10
-	bl	__Func_8091e3c
+	bl	__SetDestMap
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L17a:
 	mov	r0, #0x11
-	bl	__Func_80f9080
+	bl	__PlaySound
 	mov	r0, #0x1e
 	bl	__Func_8003b70
 	bl	__Func_8003ce0
 	mov	r0, #0x3c
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r0, #0x13
-	bl	__Func_80f9080
+	bl	__PlaySound
 .L196:
 	mov	r0, #0
 	pop	{r5, r6}
@@ -156,13 +156,13 @@
 	mov	r5, r0
 	cmp	r3, r2
 	bne	.L1e0
-	bl	__Func_8004080
+	bl	__AllocSpriteSlot
 	strh	r0, [r6]
 .L1e0:
 	ldr	r0, =_FILE_1c
 	bl	__GetFile
 	mov	r1, r5
-	bl	__Func_8005340
+	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r5
 	ldr	r1, =0x50003e0
@@ -175,7 +175,7 @@
 	lsl	r1, #3
 	mov	r3, #0
 	ldrsh	r0, [r6, r3]
-	bl	__Func_8003fa4
+	bl	__UploadSpriteGFX
 	mov	r2, #0x80
 	ldr	r1, =REG_DMA3SAD
 	lsl	r2, #24
@@ -185,7 +185,7 @@
 	cmp	r3, #0
 	bne	.L20e
 	mov	r0, r5
-	bl	__Func_8002df0
+	bl	__free
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -198,7 +198,7 @@
 	ldr	r3, =.L650
 	mov	r1, #0
 	ldrsh	r3, [r3, r1]
-	ldr	r2, =iwram_3001b10
+	ldr	r2, =gSpriteSlots
 	lsl	r3, #2
 	add	r3, r2
 	ldr	r4, =.L6a0
@@ -279,7 +279,7 @@
 	push	{r5, r6, r7, lr}
 	bl	OvlFunc_879_2008454
 	mov	r0, #0x1e
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	ldr	r2, =.L68c
 	ldr	r3, .L31c	@ 0
 	mov	r0, #0
@@ -289,7 +289,7 @@
 	lsl	r1, #4
 	ldr	r0, =OvlFunc_879_2008238
 	bl	__StartTask
-	ldr	r7, =ewram_2002090
+	ldr	r7, =gDMATaskCount
 	ldr	r5, =REG_IME
 	ldrh	r3, [r5]
 	mov	r1, r3
@@ -390,7 +390,7 @@
 .L3ce:
 	strh	r1, [r5]
 	mov	r0, #0x78
-	bl	__Func_809163c
+	bl	__CutsceneWait
 	mov	r6, #0
 .L3d8:
 	ldrh	r3, [r5]
@@ -418,7 +418,7 @@
 	strh	r1, [r5]
 	mov	r0, #3
 	add	r6, #1
-	bl	__Func_80030f8
+	bl	__WaitFrames
 	cmp	r6, #0x10
 	ble	.L3d8
 	ldr	r6, =iwram_3001ebc
@@ -432,8 +432,8 @@
 	lsl	r5, #1
 	mov	r3, #1
 	str	r3, [r1, r5]
-	bl	__Func_8091dc8
-	bl	__Func_8091e20
+	bl	__MapTransitionIn
+	bl	__WaitMapTransition
 	ldr	r2, [r6]
 	mov	r3, #0x3c
 	str	r3, [r2, r5]
@@ -467,10 +467,10 @@
 	lsl	r3, #1
 	add	r4, r3
 	mov	r0, r4
-	ldr	r1, =ewram_2010000
-	bl	__Func_8005340
+	ldr	r1, =gBuffer
+	bl	__DecompressLZ
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =ewram_2010000
+	ldr	r0, =gBuffer
 	ldr	r1, =0x6006800
 	ldr	r2, =0x84002580
 	b	.L4c0
@@ -535,15 +535,19 @@
 .func_end OvlFunc_879_2008454
 
 	.section .data
-	.global .L5f8
-
-.L5f8:
+	.global gOvl_020085f8
+	.global MapEntrance_ARRAY_879__020085f8
+gOvl_020085f8:
+MapEntrance_ARRAY_879__020085f8:
 	.incbin "overlays/rom_779188/orig.bin", 0x5f8, (0x628-0x5f8)
-.L628:
+	.global gOvl_02008628
+gOvl_02008628:
 	.incbin "overlays/rom_779188/orig.bin", 0x628, (0x62c-0x628)
-.L62c:
+	.global gOvl_0200862c
+gOvl_0200862c:
 	.incbin "overlays/rom_779188/orig.bin", 0x62c, (0x644-0x62c)
-.L644:
+	.global gOvl_02008644
+gOvl_02008644:
 	.incbin "overlays/rom_779188/orig.bin", 0x644, (0x650-0x644)
 .L650:
 	.incbin "overlays/rom_779188/orig.bin", 0x650

@@ -6,10 +6,10 @@
  * goldensun/stage1.ld.
  */
 extern void Func_80042c8(void (*)(void));
-extern void Func_808f52c(void);
+extern void Task_ScreenWindowTransition(void);
 extern void Func_808f498(void);
 
 void Func_808feb0(void) {
-    Func_80042c8(Func_808f52c);
+    Func_80042c8(Task_ScreenWindowTransition);
     Func_80042c8(Func_808f498);
 }
