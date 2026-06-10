@@ -1,23 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start HeightTile_9  @ 0x08011e6c
-	push	{lr}
-	cmp	r2, #7
-	bhi	.L11e7a
-	ldrb	r0, [r0]
-	lsl	r0, #24
-	asr	r0, #24
-	b	.L11e80
-.L11e7a:
-	ldrb	r0, [r0, #1]
-	lsl	r0, #24
-	asr	r0, #24
-.L11e80:
-	lsl	r0, #19
-	pop	{r1}
-	bx	r1
-.func_end HeightTile_9
-
 .thumb_func_start HeightTile_A  @ 0x08011e88
 	push	{lr}
 	mov	r3, #0
