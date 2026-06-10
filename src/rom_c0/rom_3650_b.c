@@ -6,6 +6,20 @@
  */
 
 #include "gba/io.h"
+#include "dma.h"
+
+extern u8 RAM_SoundFXCode[];
+extern u8 ROM_SoundFXCode[];
+
+#define SOUND_FX_SEGMENT_SIZE (0x98)
+
+s32 SetSoundFXMode(u32 filterID) {
+    if (filterID > 4) {
+        filterID = 0;
+    }
+    DMA3_COPY(ROM_SoundFXCode + (filterID * SOUND_FX_SEGMENT_SIZE), RAM_SoundFXCode, SOUND_FX_SEGMENT_SIZE);
+    return 0;
+}
 
 void Func_8003808(void) {}
 void Func_800380c(void) {}

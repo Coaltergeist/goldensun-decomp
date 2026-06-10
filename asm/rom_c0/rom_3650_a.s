@@ -141,25 +141,3 @@
 .L37b4:
 	.word 1
 .func_end VBlank
-
-.thumb_func_start SetSoundFXMode  @ 0x080037d4
-	push	{lr}
-	cmp	r0, #4
-	bls	.L37dc
-	mov	r0, #0
-.L37dc:
-	mov	r3, #0x98
-	mov	r2, r0
-	mul	r2, r3
-	ldr	r0, =Func_8000404
-	ldr	r3, =REG_DMA3SAD
-	add	r0, r2, r0
-	ldr	r1, =Label_1348
-	ldr	r2, =0x84000026
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end SetSoundFXMode
-

@@ -934,8 +934,8 @@ Label_12cc:
 	str	r11, [r5, #0x630]
 	ldr	r11, [r5]
 	str	r7, [r5], #4
-	.global	Label_1348
-Label_1348:
+	.global	RAM_SoundFXCode
+RAM_SoundFXCode:
 	asrs	r6, r4, #18
 	adds	r6, r11, asr #19
 	addmi	r6, #0x28

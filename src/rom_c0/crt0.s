@@ -26,7 +26,7 @@
 	.word	SVC_STACK_BASE
 .func_end _start
 
-.arm_func_start Func_8000404
+.arm_func_start ROM_SoundFXCode
 	asrs	r1, r11, #20
 	bicpl	r1, #0x1f
 	adds	r1, r12, asr #20
@@ -220,7 +220,7 @@
 	addmi	r7, #0x40
 	adds	r1, r7, r6, lsl #16
 .L6fc:
-.func_end Func_8000404
+.func_end ROM_SoundFXCode
 
 .thumb_func_start cam4aSoundMain
 	ldr	r0, .L76c
