@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster SetFlagNybble..SetFlagNybble extracted from goldensun/asm/rom_77000/rom_79338_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.

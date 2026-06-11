@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_80f40b4..Func_80f40b4 extracted from goldensun/asm/rom_f4000/rom_f4008_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.

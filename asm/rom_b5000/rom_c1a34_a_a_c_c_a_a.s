@@ -85,21 +85,3 @@
 	bx	r1
 .func_end GetEnemyAttackAnimParam
 
-.thumb_func_start GetEnemyUnk  @ 0x080c2434
-	push	{lr}
-	cmp	r0, #0xab
-	bls	.Lc243e
-	mov	r0, #0
-	b	.Lc244a
-.Lc243e:
-	ldr	r3, =.Lc7420
-	lsl	r2, r0, #3
-	add	r2, r3
-	ldrb	r0, [r2, #3]
-	lsl	r0, #31
-	lsr	r0, #31
-.Lc244a:
-	pop	{r1}
-	bx	r1
-.func_end GetEnemyUnk
-

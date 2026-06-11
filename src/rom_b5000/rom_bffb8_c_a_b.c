@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_80c0eb8..Func_80c0eb8 extracted from goldensun/asm/rom_b5000/rom_bffb8_c_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.

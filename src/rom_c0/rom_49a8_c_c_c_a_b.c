@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster MatrixReset..MatrixReset extracted from goldensun/asm/rom_c0/rom_49a8_c_c_c_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
