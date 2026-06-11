@@ -111,19 +111,3 @@
 	.word	0xff
 .func_end Func_80b5a0c
 
-.thumb_func_start Func_80b5ad4  @ 0x080b5ad4
-	push	{lr}
-	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =0x6000290
-	ldr	r1, =0x6000280
-	ldr	r2, =0x80000008
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	ldr	r3, =Func_80008d4
-	mov	r1, #0x14
-	ldr	r0, =0x600028c
-	bl	_call_via_r3
-	pop	{r1}
-	bx	r1
-.func_end Func_80b5ad4
-

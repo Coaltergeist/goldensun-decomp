@@ -1,28 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800651c  @ 0x0800651c
-	ldr	r1, =ewram_2002220
-	ldr	r0, =REG_IME
-	ldrh	r4, [r0]
-	strh	r0, [r0]
-	mov	r2, #0
-	mov	r3, #0x80
-	strb	r3, [r1, #1]
-	ldr	r3, =ewram_2002080
-	str	r2, [r3]
-	ldr	r3, =ewram_2002008
-	strh	r2, [r3]
-	ldr	r3, =ewram_20023ac
-	str	r2, [r3]
-	ldr	r3, =ewram_2002238
-	strb	r2, [r1, #3]
-	strb	r2, [r1, #2]
-	strh	r2, [r3]
-	strh	r4, [r0]
-	bx	lr
-.func_end Func_800651c
-
 .thumb_func_start Func_800655c  @ 0x0800655c
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
