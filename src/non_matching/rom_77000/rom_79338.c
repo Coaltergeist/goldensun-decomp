@@ -4,7 +4,7 @@
  * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
  * Candidate: tools/runs/run_20260606T194103Z/GetFlag-iter-9.c
  * TODO(residual): shift idiom is correct ((unsigned)(x<<20)>>23); pure reg-alloc /
- *   scheduling diff — ROM keeps the shift result in a fresh reg (`lsls r3,r0,#20;
+ *   scheduling diff; ROM keeps the shift result in a fresh reg (`lsls r3,r0,#20;
  *   lsrs r0,r3,#23`) and places the table `ldr` between, vs in-place on r0 here.
  *   Main-tree fn -> permutable.
  */

@@ -7,7 +7,7 @@
  *   Y as separate literal-pool words and subtracts at runtime (`ldr;ldr;subs`); the
  *   folded form here computes Y-X at compile time (`movs r1,#0x2b`) and keeps one
  *   pool word. To stop the fold, X and Y must be SYMBOLS (FP#9 message/file IDs via
- *   the file_table infra), not literals — identify the two symbols per call site.
+ *   the file_table infra), not literals; identify the two symbols per call site.
  */
 extern void OvlFunc_974_200807c(int a, int b);
 

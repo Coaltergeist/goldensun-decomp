@@ -174,24 +174,3 @@
 	bx	r1
 .func_end Func_80bb938
 
-.thumb_func_start Func_80bbabc  @ 0x080bbabc
-	push	{r5, lr}
-	ldr	r3, =iwram_3001e74
-	ldr	r4, [r3]
-	mov	r3, #0xd7
-	lsl	r3, #3
-	add	r5, r4, r3
-	ldr	r3, =0x7fc
-	add	r4, r3
-	ldr	r2, [r4]
-	lsl	r3, r2, #2
-	strb	r0, [r5, r2]
-	add	r3, #0x40
-	add	r2, #1
-	str	r1, [r5, r3]
-	str	r2, [r4]
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_80bbabc
-

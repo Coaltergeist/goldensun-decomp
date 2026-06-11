@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_924_2008d58
+.thumb_func_start OvlFunc_923_2008d98
 	push	{r5, r6, r7, lr}
 	sub	sp, #4
 	ldr	r3, =0
@@ -12,8 +12,8 @@
 	ldr	r0, [r3]
 	bl	_umodsi3_RAM
 	cmp	r0, #0
-	bne	.Lde2
-	ldr	r3, =gScript_969__0200e004
+	bne	.Le22
+	ldr	r3, =.L291c
 	ldr	r2, [r3]
 	mov	r1, #0x1f
 	add	r2, #4
@@ -21,12 +21,11 @@
 	str	r2, [r3]
 	mov	r6, #0
 	mov	r7, r5
-	b	.Ld90
+	b	.Ldd0
 
 	.pool_aligned
 
-.Ld90:
-.Ld90:
+.Ldd0:
 	mov	r3, #0x6e
 	sub	r3, r6
 	mov	r2, #0xa0
@@ -39,22 +38,22 @@
 	strh	r3, [r7]
 	ldrh	r5, [r7]
 	cmp	r6, #2
-	bhi	.Ldb4
+	bhi	.Ldf4
 	lsl	r0, r5, #2
 	mov	r1, #0xa
 	bl	_divsi3_RAM
 	sub	r5, r0
-.Ldb4:
+.Ldf4:
 	mov	r2, #0x6f
 	sub	r2, r6
 	mov	r3, #0xa0
 	lsl	r3, #19
 	lsl	r2, #1
 	add	r2, r3
-	ldr	r3, =.L600c
+	ldr	r3, =.L2924
 	ldr	r3, [r3]
 	lsl	r1, r3, #10
-	ldr	r3, =.L6008
+	ldr	r3, =gOvl_0200a920
 	ldr	r3, [r3]
 	lsl	r3, #5
 	orr	r1, r3
@@ -62,44 +61,16 @@
 	add	r6, #1
 	strh	r5, [r2]
 	cmp	r6, #5
-	bls	.Ld90
-	ldr	r3, =gScript_969__0200e004
+	bls	.Ldd0
+	ldr	r3, =.L291c
 	ldr	r3, [r3]
 	ldr	r2, =0x50000d2
 	orr	r3, r1
 	strh	r3, [r2]
-.Lde2:
+.Le22:
 	add	sp, #4
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_924_2008d58
+.func_end OvlFunc_923_2008d98
 
-.thumb_func_start OvlFunc_924_2008dfc
-	push	{lr}
-	ldr	r1, =0
-	ldr	r3, =0x50000de
-	mov	r2, #0
-	b	.Le10
-
-	.pool_aligned
-
-.Le10:
-	add	r2, #1
-	strh	r1, [r3]
-	sub	r3, #2
-	cmp	r2, #6
-	bls	.Le10
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_2008dfc
-
-	.section .data
-
-	.global gScript_969__0200e004
-gScript_969__0200e004:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6004, (0x6008-0x6004)
-.L6008:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6008, (0x600c-0x6008)
-.L600c:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x600c, (0x6010-0x600c)

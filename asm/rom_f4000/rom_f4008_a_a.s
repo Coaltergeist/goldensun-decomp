@@ -76,21 +76,3 @@
 	bx	r0
 .func_end Func_80f4028
 
-.thumb_func_start Func_80f40b4  @ 0x080f40b4
-	push	{lr}
-	lsl	r0, #16
-	lsl	r1, #16
-	asr	r1, #16
-	asr	r0, #16
-	mul	r0, r1
-	mov	r3, r0
-	cmp	r0, #0
-	bge	.Lf40c8
-	add	r3, #0xff
-.Lf40c8:
-	lsl	r0, r3, #8
-	asr	r0, #16
-	pop	{r1}
-	bx	r1
-.func_end Func_80f40b4
-

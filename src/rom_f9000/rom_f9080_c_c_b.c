@@ -5,7 +5,7 @@
  * asm/rom_f9000/rom_f9080_c_c_a.o and asm/rom_f9000/rom_f9080_c_c_c.o in
  * goldensun/stage1.ld.
  */
-/* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix helper.
+/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix helper.
  * Spin up to 0x12c frames (WaitFrames = WaitFrames/sleep) while the
  * driver-busy flag ewram_2003000 is still set.
  */

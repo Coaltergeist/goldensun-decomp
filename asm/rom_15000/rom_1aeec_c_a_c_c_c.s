@@ -1,21 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_801c930  @ 0x0801c930
-	push	{lr}
-	ldr	r1, =0x1004
-	mov	r0, #0x13
-	bl	galloc_ewram
-	mov	r2, r0
-	mov	r3, #0
-	add	r2, #0x46
-	strh	r3, [r2]
-	ldr	r2, =0x352
-	add	r0, r2
-	strh	r3, [r0]
-	pop	{r0}
-	bx	r0
-.func_end Func_801c930
-
 .thumb_func_start Func_801c954  @ 0x0801c954
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e9c

@@ -5,7 +5,7 @@
  * asm/rom_9000/rom_11568_a.o and asm/rom_9000/rom_11568_c.o in
  * goldensun/stage1.ld.
  */
-/* Func_80118a8 — halfword 0 at element i (12-byte stride) + 0x22 of the array
+/* Func_80118a8; halfword 0 at element i (12-byte stride) + 0x22 of the array
  * at *iwram_3001e70. base temp forces the deref early; the separate element
  * pointer keeps base the add accumulator and 0x22 the strh immediate; tarpman
  * var forces `movs` for the stored 0. */

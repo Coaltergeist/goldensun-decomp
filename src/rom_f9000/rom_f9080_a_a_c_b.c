@@ -5,7 +5,7 @@
  * asm/rom_f9000/rom_f9080_a_a_c_a.o and asm/rom_f9000/rom_f9080_a_a_c_c.o in
  * goldensun/stage1.ld.
  */
-/* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix wrapper.
+/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix wrapper.
  * BGM tempo control: m4aMPlayTempoControl = m4aMPlayTempoControl(MP2KPlayerState*, u16).
  */
 extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);

@@ -3,7 +3,7 @@
  *
  * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
  * Candidate: tools/runs/run_20260606T194103Z/OvlFunc_956_20081b4-iter-6.c
- * TODO(residual): pure scheduling — ROM does `movs r1,#200; lsls r1,#4; ldr r0`,
+ * TODO(residual): pure scheduling; ROM does `movs r1,#200; lsls r1,#4; ldr r0`,
  *   candidate interleaves the `ldr r0` before the `lsls`. Overlay fn -> permutable.
  */
 extern void __StartTask(void *arg, int val);

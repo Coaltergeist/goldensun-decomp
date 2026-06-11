@@ -4,7 +4,7 @@
  * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
  * Candidate: tools/runs/run_20260606T194103Z/OvlFunc_common0_0-iter-8.c
  * TODO(residual): two codegen-shape diffs vs the ROM (`bx lr` leaf, so the harness
- *   CAN match this — not an interwork case):
+ *   CAN match this; not an interwork case):
  *     1. const synth: ROM does `movs r3,#13; negs r3` (synthesize -13 = 0xfffffff3);
  *        every literal-mask form here narrows the AND to QImode -> `movs r3,#0xf3`.
  *     2. scheduling: the ROM computes `(val & 3)` BEFORE the mask.

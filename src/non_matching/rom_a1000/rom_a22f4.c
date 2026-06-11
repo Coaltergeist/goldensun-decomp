@@ -4,7 +4,7 @@
  * Parked: logic faithful, does NOT byte-match. HAND-ONLY (idiom mismatch, not a
  * schedule the permuter can reach).
  * Candidate: tools/runs/run_20260606T194103Z/Func_80a22f4-iter-5.c
- * TODO(residual): the ROM does NOT call a DMA copy helper — it writes the DMA3
+ * TODO(residual): the ROM does NOT call a DMA copy helper; it writes the DMA3
  *   registers inline as two 3-word block stores:
  *       ldr r3,=0x040000d4        ; &REG_DMA3SAD
  *       stmia r3!,{src,dst,cnt}   ; SAD/DAD/CNT, then subs r3,#12 to rewind
