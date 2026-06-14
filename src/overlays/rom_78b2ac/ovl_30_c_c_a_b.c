@@ -5,7 +5,7 @@
  * asm/overlays/rom_78b2ac/ovl_30_c_c_a_a.o and asm/overlays/rom_78b2ac/ovl_30_c_c_a_c.o in
  * goldensun/overlays/rom_78b2ac/overlay.ld.
  */
-/* OvlFunc_890_200822c — *(vu16*)0x05000000 = 0.
+/* OvlFunc_890_200822c; *(vu16*)0x05000000 = 0.
  * Address (0xa0<<19) and value (0) both synthesized. Value var FIRST -> r2,
  * address pointer -> r3 (matching strh r2,[r3]). */
 

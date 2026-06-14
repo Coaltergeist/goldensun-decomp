@@ -5,7 +5,7 @@
  * asm/rom_8a000/rom_8a5f8_a_a.o and asm/rom_8a000/rom_8a5f8_a_c.o in
  * goldensun/stage1.ld.
  */
-/* GetMapArea (GetMapArea) — signed byte at offset 2 of an 8-byte-stride table
+/* GetMapArea (GetMapArea); signed byte at offset 2 of an 8-byte-stride table
  * element. Forming the element pointer (base + map*8) first keeps the +2 a
  * `ldrb [.,#2]` immediate (Thumb ldrsb has no immediate form, so gcc then
  * sign-extends via lsl#24/asr#24) instead of folding into a register-indexed

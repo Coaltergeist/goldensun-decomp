@@ -1,4 +1,4 @@
-/* BIOS syscall wrappers — three trampolines that issue ARM SWIs.
+/* BIOS syscall wrappers; three trampolines that issue ARM SWIs.
  *
  * SWI 0x0B = CpuSet (memory copy via CPU; arg layout in r0/r1/r2 set by caller).
  * SWI 0x19 = LZ77UnCompVram. The two flavors below preset r0 to 0 / 1 before

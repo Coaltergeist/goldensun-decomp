@@ -1,0 +1,289 @@
+	.include "macros.inc"
+
+.thumb_func_start OvlFunc_946_20093ac
+	push	{r5, r6, r7, lr}
+	ldr	r6, =gState
+	mov	r2, #0xe0
+	lsl	r2, #1
+	add	r5, r6, r2
+	mov	r3, #0
+	ldrsh	r0, [r5, r3]
+	ldr	r7, =0x7e
+	ldr	r3, =0x8c8
+	sub	r3, r7
+	add	r0, r3
+	bl	__GetFlag
+	cmp	r0, #0
+	bne	.L145e
+	bl	__CutsceneStart
+	mov	r2, #0
+	ldrsh	r0, [r5, r2]
+	mov	r1, #5
+	bl	__Func_8091f90
+	ldr	r3, =0x22b
+	add	r2, r6, r3
+	mov	r3, #3
+	strb	r3, [r2]
+	mov	r2, #0
+	ldrsh	r3, [r5, r2]
+	sub	r3, r7
+	cmp	r3, #8
+	bhi	.L1458
+	ldr	r2, =.L13f4
+	lsl	r3, #2
+	ldr	r3, [r3, r2]
+	mov	pc, r3
+	.align	2, 0
+.L13f4:
+	.word	.L1418
+	.word	.L141c
+	.word	.L1420
+	.word	.L1424
+	.word	.L1428
+	.word	.L1432
+	.word	.L143c
+	.word	.L1446
+	.word	.L1450
+.L1418:
+	mov	r0, #0x3f
+	b	.L142a
+.L141c:
+	mov	r0, #0x3f
+	b	.L1434
+.L1420:
+	mov	r0, #0x3f
+	b	.L143e
+.L1424:
+	mov	r0, #0x3f
+	b	.L1448
+.L1428:
+	mov	r0, #0x54
+.L142a:
+	mov	r1, #0
+	bl	__Func_8091eb0
+	b	.L1458
+.L1432:
+	mov	r0, #0x54
+.L1434:
+	mov	r1, #1
+	bl	__Func_8091eb0
+	b	.L1458
+.L143c:
+	mov	r0, #0x54
+.L143e:
+	mov	r1, #2
+	bl	__Func_8091eb0
+	b	.L1458
+.L1446:
+	mov	r0, #0x54
+.L1448:
+	mov	r1, #3
+	bl	__Func_8091eb0
+	b	.L1458
+.L1450:
+	mov	r0, #0x54
+	mov	r1, #4
+	bl	__Func_8091eb0
+.L1458:
+	bl	__CutsceneEnd
+	b	.L1474
+.L145e:
+	ldr	r0, =gOvl_0200b2bc
+	mov	r1, #0x2c
+	mov	r2, #7
+	bl	__Func_8010560
+	mov	r0, #0xb7
+	bl	__PlaySound
+	mov	r0, #3
+	bl	__Func_8091e9c
+.L1474:
+	pop	{r5, r6, r7}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_20093ac
+
+.thumb_func_start OvlFunc_946_2009494
+	push	{lr}
+	bl	__CutsceneStart
+	ldr	r1, =0x6666
+	mov	r0, #0
+	ldr	r2, =0x3333
+	bl	__MapActor_SetSpeed
+	bl	__MapTransitionIn
+	bl	__WaitMapTransition
+	ldr	r3, =gState
+	mov	r2, #0xe0
+	lsl	r2, #1
+	add	r3, r2
+	mov	r2, #0
+	ldrsh	r0, [r3, r2]
+	ldr	r2, =0x7e
+	ldr	r3, =0x8c8
+	sub	r3, r2
+	add	r0, r3
+	bl	__SetFlag
+	mov	r0, #0x1e
+	bl	__CutsceneWait
+	ldr	r0, =gOvl_0200b2bc
+	mov	r1, #0x2c
+	mov	r2, #7
+	bl	__Func_8010560
+	mov	r2, #0x10
+	mov	r1, #3
+	neg	r2, r2
+	mov	r0, #0
+	bl	__Func_8092208
+	mov	r0, #3
+	bl	__Func_8091e9c
+	bl	__CutsceneEnd
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_2009494
+
+.thumb_func_start OvlFunc_946_2009508
+	push	{r5, lr}
+	mov	r5, r0
+	mov	r0, #0xb
+	bl	__MapActor_GetActor
+	cmp	r0, #0
+	beq	.L151e
+	mov	r2, r0
+	add	r2, #0x59
+	mov	r3, #0
+	strb	r3, [r2]
+.L151e:
+	mov	r0, r5
+	bl	__MapActor_GetActor
+	mov	r1, #0
+	bl	__Actor_SetSpriteFlags
+	mov	r1, #0x98
+	mov	r2, #0xb8
+	mov	r0, #0
+	lsl	r1, #17
+	lsl	r2, #17
+	mov	r3, #0xfd
+	bl	__Func_8012078
+	mov	r0, #0x90
+	lsl	r0, #2
+	bl	__SetFlag
+	pop	{r5}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_2009508
+
+.thumb_func_start OvlFunc_946_2009548
+	push	{r5, lr}
+	mov	r5, r0
+	mov	r0, #0xc
+	bl	__MapActor_GetActor
+	cmp	r0, #0
+	beq	.L155e
+	mov	r2, r0
+	add	r2, #0x59
+	mov	r3, #0
+	strb	r3, [r2]
+.L155e:
+	mov	r0, r5
+	bl	__MapActor_GetActor
+	mov	r1, #0
+	bl	__Actor_SetSpriteFlags
+	mov	r1, #0xa0
+	mov	r2, #0xb8
+	mov	r0, #0
+	lsl	r1, #15
+	lsl	r2, #17
+	mov	r3, #0xfd
+	bl	__Func_8012078
+	ldr	r0, =0x241
+	bl	__SetFlag
+	pop	{r5}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_2009548
+
+.thumb_func_start OvlFunc_946_200958c
+	push	{r5, lr}
+	mov	r5, r0
+	mov	r0, #0xd
+	bl	__MapActor_GetActor
+	cmp	r0, #0
+	beq	.L15a2
+	mov	r2, r0
+	add	r2, #0x59
+	mov	r3, #0
+	strb	r3, [r2]
+.L15a2:
+	mov	r0, r5
+	bl	__MapActor_GetActor
+	mov	r1, #0
+	bl	__Actor_SetSpriteFlags
+	mov	r1, #0xc0
+	mov	r2, #0xa8
+	mov	r0, #0
+	lsl	r1, #15
+	lsl	r2, #17
+	mov	r3, #0xfd
+	bl	__Func_8012078
+	ldr	r0, =0x242
+	bl	__SetFlag
+	pop	{r5}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_200958c
+
+.thumb_func_start OvlFunc_946_20095d0
+	push	{r5, lr}
+	mov	r5, r0
+	mov	r0, #0xe
+	bl	__MapActor_GetActor
+	cmp	r0, #0
+	beq	.L15e6
+	mov	r2, r0
+	add	r2, #0x59
+	mov	r3, #0
+	strb	r3, [r2]
+.L15e6:
+	mov	r0, r5
+	bl	__MapActor_GetActor
+	mov	r1, #0
+	bl	__Actor_SetSpriteFlags
+	mov	r1, #0x90
+	mov	r2, #0xa0
+	mov	r0, #0
+	lsl	r1, #16
+	lsl	r2, #17
+	mov	r3, #0xfd
+	bl	__Func_8012078
+	mov	r1, #0xbc
+	mov	r2, #0xa0
+	mov	r0, #0
+	lsl	r1, #18
+	lsl	r2, #17
+	mov	r3, #0xfd
+	bl	__Func_8012078
+	ldr	r0, =0x243
+	bl	__SetFlag
+	pop	{r5}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_20095d0
+
+.thumb_func_start OvlFunc_946_2009624
+	push	{lr}
+	ldr	r0, =0x8c4
+	sub	sp, #8
+	bl	__SetFlag
+	mov	r3, #8
+	mov	r2, #0x15
+	str	r3, [sp]
+	str	r2, [sp, #4]
+	mov	r0, #0
+	mov	r1, #0
+	mov	r2, #1
+	mov	r3, #1
+	bl	__Func_8010704
+	add	sp, #8
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_946_2009624
+

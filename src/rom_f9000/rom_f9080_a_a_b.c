@@ -5,7 +5,7 @@
  * asm/rom_f9000/rom_f9080_a_a_a.o and asm/rom_f9000/rom_f9080_a_a_c.o in
  * goldensun/stage1.ld.
  */
-/* Phase 5 (SAPPY_IMPORT_PLAN) — Camelot prefix: reset the music-driver state.
+/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix: reset the music-driver state.
  * Func_80fa2a0 = m4aSoundInit. Stores follow ROM order; the 0x100/4/0
  * constants are CSE'd into the literal pool by gcc-2.96.
  */

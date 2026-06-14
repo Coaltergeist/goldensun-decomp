@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_8002f3c..Func_8002f3c extracted from goldensun/rom_c0/src/rom_2e00_c.s.
  *
  * Total .text for this TU = 4 bytes (= 0x4).
