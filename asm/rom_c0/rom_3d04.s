@@ -1,20 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8003d04  @ 0x08003d04
-	push	{lr}
-	ldr	r2, =iwram_3001d00
-	mov	r3, #0
-	mov	r1, #0x80
-	strb	r3, [r2]
-	lsl	r1, #3
-	ldr	r3, =Func_80008d4
-	ldr	r0, =gRAMLib_end
-	bl	_call_via_r3
-	pop	{r0}
-	bx	r0
-.func_end Func_8003d04
-
 .thumb_func_start Func_8003d28  @ 0x08003d28
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
