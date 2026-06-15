@@ -7,6 +7,8 @@
  */
 
 #include "gba/types.h"
+#include "libcamelot.h"
+#include "dma.h"
 
 struct SpriteSlot {
 	u16 size;
@@ -16,6 +18,7 @@ struct SpriteSlot {
 extern struct SpriteSlot gSpriteSlots[];
 extern u8 gSpriteAllocTable[];
 s32 Func_8003f04(u32 needle);
+s32 Func_8003f3c(u32 arg0);
 
 s32 Func_8003ed4(void) {
     s32 var_r1 = 0;
@@ -82,4 +85,43 @@ s32 Func_8003f78(unsigned int arg0) {
 		slot->size = 1;
 	}
 	return 0;
+}
+
+extern u32 Func_8003e58(u32, u32);
+
+u32 UploadSpriteGFX(u32 slot, u32 size, void *gfx) {
+    void *temp_r1;
+    u16 temp_r3;
+    u32 var_r5;
+    struct SpriteSlot* temp_r7;
+
+    temp_r7 = &gSpriteSlots[slot];
+    if (slot > 0x5F) return 0;
+    if (size > 0x2000) return 0;
+
+    temp_r3 = temp_r7->size;
+    if ((u32) temp_r3 > 0x10U) {
+        if (temp_r3 != size) {
+            Func_8003f3c(slot);
+            var_r5 = Func_8003e58(slot, size);
+        } else {
+            var_r5 = temp_r7->vramOffset;
+        }
+    } else {
+        var_r5 = Func_8003e58(slot, size);
+    }
+    if (var_r5 != -1U) {
+        temp_r1 = (void *)(var_r5 + 0x06010000);
+        temp_r7->size = size;
+        temp_r7->vramOffset = var_r5;
+        if (gfx != 0) {
+            if (gfx == (void *)0xFFFFFFFF) {
+                CAMELOT_MEMCLEAR(temp_r1, size);
+            } else {
+                DMA3_COPY(gfx, temp_r1, size);
+            }
+        }
+        return var_r5 >> 5;
+    }
+    return 0U;
 }
