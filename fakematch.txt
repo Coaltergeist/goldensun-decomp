@@ -10,3 +10,11 @@ Func_808ab48       src/rom_8a000/rom_8a5f8_a_c_b.c
 GetEnemyUnk        src/rom_b5000/rom_c1a34_a_a_c_c_a_b.c
 Func_80c91a4       src/rom_c9000/rom_c9048_b.c
 LoadMapCode        src/rom_c0/rom_2e00_c_b.c
+OvlFunc_883_20082a8  src/overlays/rom_780898/ovl_30_a_a_b.c
+OvlFunc_915_20082a8  src/overlays/rom_7a2bf0/ovl_30_a_a_b.c
+OvlFunc_946_20082a8  src/overlays/rom_7ced6c/ovl_30_a_a_b.c
+OvlFunc_934_200858c  src/overlays/rom_7bdeb0/ovl_314_a_a_b.c
+Func_80dbb9c       src/rom_c9000/rom_dbb24_c_b.c
+Func_80e72e0       src/rom_c9000/rom_e6638_b.c
+Func_80b3210       src/rom_b0000/rom_b0070_c_c_b.c
+Func_80c0184       src/rom_b5000/rom_bffb8_a_a_b.c
