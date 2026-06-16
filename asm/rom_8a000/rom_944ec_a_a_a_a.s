@@ -1551,21 +1551,3 @@
 	bx	r0
 .func_end StartThunder
 
-.thumb_func_start Func_8095214  @ 0x08095214
-	push	{lr}
-	ldr	r1, =0x1f88
-	mov	r0, #0x1e
-	bl	galloc_ewram
-	mov	r3, #0xfc
-	lsl	r3, #5
-	add	r2, r0, r3
-	ldr	r3, =0x7fff
-	strh	r3, [r2]
-	ldr	r3, =0x1f82
-	mov	r1, #0
-	add	r0, r3
-	strh	r1, [r0]
-	pop	{r0}
-	bx	r0
-.func_end Func_8095214
-

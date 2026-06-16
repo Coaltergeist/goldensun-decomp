@@ -1,22 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_911_2008030
-	push	{r5, lr}
-	ldr	r5, =.L3698
-	ldr	r3, [r5]
-	cmp	r3, #0
-	beq	.L44
-	mov	r1, #2
-	bl	__Actor_SetAnim
-	mov	r3, #0
-	str	r3, [r5]
-.L44:
-	mov	r0, #1
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_911_2008030
-
 .thumb_func_start OvlFunc_911_2008050
 	push	{r5, r6, lr}
 	mov	r5, r0
