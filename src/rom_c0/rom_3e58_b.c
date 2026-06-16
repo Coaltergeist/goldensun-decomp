@@ -125,3 +125,47 @@ u32 UploadSpriteGFX(u32 slot, u32 size, void *gfx) {
     }
     return 0U;
 }
+
+void ClearSprites(void) {
+    u8* currentAlloc;
+    struct SpriteSlot* currentSpriteSlot;
+    u32 i;
+    u32 limit = 0x1FF;
+
+    currentAlloc = gSpriteAllocTable;
+    for (i = 0; i <= limit; ++i) {
+        *currentAlloc = 0xFF;
+        currentAlloc++;
+    }
+
+    currentSpriteSlot = gSpriteSlots;
+    for (i = 0; i < 0x60; ++i) {
+        currentSpriteSlot->vramOffset = 0xFFFF;
+        currentSpriteSlot->size = 0;
+        currentSpriteSlot++;
+    }
+}
+
+s32 AllocSpriteSlot(void) {
+    struct SpriteSlot* current = gSpriteSlots;
+    s32 foundSlot = 0x60;
+    s32 i = 0;
+
+    while (i <= 0x5F) {
+        if (current->vramOffset == 0xFFFF) {
+            foundSlot = i;
+            break;
+        }
+        i++;
+        current++;
+    }
+    return foundSlot;
+}
+
+s32 AllocUploadSpriteGFX(u32 size) {
+    s32 slot;
+
+    slot = AllocSpriteSlot();
+    UploadSpriteGFX(slot, size, NULL);
+    return slot;
+}
