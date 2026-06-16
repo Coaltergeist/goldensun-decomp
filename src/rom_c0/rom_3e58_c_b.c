@@ -5,9 +5,77 @@
  * asm/rom_c0/rom_3e58_c_a.o and asm/rom_c0/rom_3e58_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int UploadSpriteGFX(int slot, unsigned int size, void *gfx);
-extern unsigned short gSpriteSlots[];
 
-int UploadSprite2(unsigned int param_1, void *param_2) {
-    return UploadSpriteGFX(param_1, gSpriteSlots[param_1 << 1], param_2);
+#include "gba/types.h"
+#include "task.h"
+#include "gba/io.h"
+
+void ClearTasks(void) {
+    struct Task* currentTask;
+    s32 i;
+
+    gTasksEnabled = 0;
+    currentTask = &gTasks[0];
+    iwram_3001a10 = 0;
+
+    for (i = NUM_TASKS - 1; i >= 0; --i) {
+        currentTask->taskFunc = NULL;
+        currentTask->priority = 0xFFFF;
+        currentTask->status = 0;
+        currentTask += 1;
+    }
+    gTasksEnabled = 1;
+}
+
+void Unused_memcpy32(u32 *dst, u32 *src, u32 n) {
+    u32 i;
+    n /= 4;
+    for (i = 0; i < n; i++)
+        *dst++ = *src++;
+}
+
+void SortTasks(void) {
+    s32 i;
+    s32 j;
+    struct Task* current = gTasks;
+    for (i = NUM_TASKS - 1; i > 1; --i) {
+        current = gTasks;
+        if (i > 0) {
+            j = i;
+            do {
+                if (current[1].priority > current[0].priority) {
+                    struct Task temp;
+                    __builtin_memcpy(&temp, &current[0], sizeof(struct Task));
+                    __builtin_memcpy(&current[0], &current[1], sizeof(struct Task));
+                    __builtin_memcpy(&current[1], &temp, sizeof(struct Task));
+                }
+                current++;
+                j--;
+            } while (j != 0);
+        }
+    }
+}
+
+s32 GetTaskIndex(taskfunc_t *func) {
+    s32 i;
+    s32 result;
+    struct Task* currentTask;
+    u32 savedIME;
+    result = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < 20; i++) {
+        if (currentTask->taskFunc == func) {
+            result = i;
+            break;
+        }
+        currentTask++;
+    }
+    SET_IO(REG_IME, savedIME);
+    return result;
 }

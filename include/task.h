@@ -3,7 +3,20 @@
 
 #include "gba/types.h"
 
+#define NUM_TASKS (20)
+
 typedef void taskfunc_t(void);
+
+struct Task {
+    taskfunc_t *taskFunc;
+    s16 priority;
+    u8 status;
+    u8 pad7;
+};
+
+extern struct Task gTasks[NUM_TASKS];
+extern s8 gTasksEnabled;
+extern s8 iwram_3001a10;
 
 // Currently _Func and __Func are declared here as well
 // because they are used for inter-module calls

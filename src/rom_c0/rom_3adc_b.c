@@ -8,6 +8,7 @@
 
 #include "gba/types.h"
 #include "gba/io.h"
+#include "libcamelot.h"
 
 extern vu8 iwram_3001ac0;
 extern u8 iwram_3001aec;
@@ -105,17 +106,10 @@ void Func_8003ce0(void)
     }
 }
 
-extern void Func_80008d4(void* dst, u32 size);
 extern void *gRAMLib_end;
 extern u8 iwram_3001d00;
 
 void Func_8003d04(void) {
-    u32 size;
-    void (*_mclear)(void *dst, u32 size);
-    void *dst;
     iwram_3001d00 = 0;
-    size = 0x400;
-    _mclear = Func_80008d4;
-    dst = &gRAMLib_end;
-    _mclear(dst, size);
+    CAMELOT_MEMCLEAR(&gRAMLib_end, 0x400);
 }
