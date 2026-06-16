@@ -1,38 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start GetTaskIndex  @ 0x08004198
-	push	{r5, lr}
-	mov	r5, #1
-	ldr	r4, =gTasks
-	neg	r5, r5
-	ldr	r3, =REG_IME
-	ldrh	r2, [r3]
-	strh	r3, [r3]
-	mov	r1, #0
-	ldr	r3, [r4]
-	cmp	r3, r0
-	bne	.L41b2
-	mov	r5, #0
-	b	.L41c2
-.L41b2:
-	add	r1, #1
-	add	r4, #8
-	cmp	r1, #0x13
-	bgt	.L41c2
-	ldr	r3, [r4]
-	cmp	r3, r0
-	bne	.L41b2
-	mov	r5, r1
-.L41c2:
-	ldr	r3, =REG_IME
-	strh	r2, [r3]
-	mov	r0, r5
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end GetTaskIndex
-
 .thumb_func_start StartTask  @ 0x080041d8
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001a10

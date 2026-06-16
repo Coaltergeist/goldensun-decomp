@@ -8,6 +8,7 @@
 
 #include "gba/types.h"
 #include "task.h"
+#include "gba/io.h"
 
 void ClearTasks(void) {
     struct Task* currentTask;
@@ -53,4 +54,28 @@ void SortTasks(void) {
             } while (j != 0);
         }
     }
+}
+
+s32 GetTaskIndex(taskfunc_t *func) {
+    s32 i;
+    s32 result;
+    struct Task* currentTask;
+    u32 savedIME;
+    result = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < 20; i++) {
+        if (currentTask->taskFunc == func) {
+            result = i;
+            break;
+        }
+        currentTask++;
+    }
+    SET_IO(REG_IME, savedIME);
+    return result;
 }
