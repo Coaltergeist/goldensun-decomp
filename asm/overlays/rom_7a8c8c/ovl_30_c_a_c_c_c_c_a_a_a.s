@@ -813,20 +813,3 @@
 	bx	r0
 .func_end OvlFunc_922_20095dc
 
-.thumb_func_start OvlFunc_922_200970c
-	push	{r5, lr}
-	ldr	r3, =.L3328
-	ldr	r3, [r3]
-	cmp	r3, #0
-	beq	.L1722
-	ldr	r3, =iwram_3001ee0
-	mov	r0, #0
-	ldr	r5, [r3]
-	bl	__MapActor_GetActor
-	str	r0, [r5, #0x18]
-.L1722:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_922_200970c
-
