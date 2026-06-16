@@ -1,54 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start SortTasks  @ 0x08004144
-	push	{r5, r6, lr}
-	sub	sp, #8
-	ldr	r2, =gTasks
-	mov	r4, #0x13
-	b	.L4150
-.L414e:
-	ldr	r2, =gTasks
-.L4150:
-	mov	r1, r2
-	cmp	r4, #0
-	ble	.L4184
-	mov	r0, r4
-.L4158:
-	mov	r3, #0xc
-	ldrsh	r2, [r1, r3]
-	mov	r5, #4
-	ldrsh	r3, [r1, r5]
-	cmp	r2, r3
-	ble	.L417c
-	mov	r3, r1
-	mov	r2, sp
-	ldmia	r3!, {r5, r6}
-	stmia	r2!, {r5, r6}
-	mov	r2, r1
-	mov	r1, r3
-	ldmia	r3!, {r5, r6}
-	stmia	r2!, {r5, r6}
-	mov	r3, sp
-	ldmia	r3!, {r5, r6}
-	stmia	r2!, {r5, r6}
-	b	.L417e
-.L417c:
-	add	r1, #8
-.L417e:
-	sub	r0, #1
-	cmp	r0, #0
-	bne	.L4158
-.L4184:
-	sub	r4, #1
-	cmp	r4, #1
-	bgt	.L414e
-	add	sp, #8
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end SortTasks
-
 .thumb_func_start GetTaskIndex  @ 0x08004198
 	push	{r5, lr}
 	mov	r5, #1

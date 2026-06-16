@@ -9,7 +9,7 @@ typedef void taskfunc_t(void);
 
 struct Task {
     taskfunc_t *taskFunc;
-    u16 priority;
+    s16 priority;
     u8 status;
     u8 pad7;
 };

@@ -32,3 +32,25 @@ void Unused_memcpy32(u32 *dst, u32 *src, u32 n) {
     for (i = 0; i < n; i++)
         *dst++ = *src++;
 }
+
+void SortTasks(void) {
+    s32 i;
+    s32 j;
+    struct Task* current = gTasks;
+    for (i = NUM_TASKS - 1; i > 1; --i) {
+        current = gTasks;
+        if (i > 0) {
+            j = i;
+            do {
+                if (current[1].priority > current[0].priority) {
+                    struct Task temp;
+                    __builtin_memcpy(&temp, &current[0], sizeof(struct Task));
+                    __builtin_memcpy(&current[0], &current[1], sizeof(struct Task));
+                    __builtin_memcpy(&current[1], &temp, sizeof(struct Task));
+                }
+                current++;
+                j--;
+            } while (j != 0);
+        }
+    }
+}
