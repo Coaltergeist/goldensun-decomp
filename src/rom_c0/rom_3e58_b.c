@@ -169,3 +169,9 @@ s32 AllocUploadSpriteGFX(u32 size) {
     UploadSpriteGFX(slot, size, NULL);
     return slot;
 }
+
+s32 UploadSprite2(u32 slot, void *gfx) {
+    return UploadSpriteGFX(slot, gSpriteSlots[slot].size, gfx);
+}
+
+// file boundary task.c
