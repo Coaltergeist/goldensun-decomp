@@ -1,45 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start StopTask  @ 0x08004278
-	push	{r5, lr}
-	mov	r5, #1
-	ldr	r4, =gTasks
-	neg	r5, r5
-	ldr	r3, =REG_IME
-	ldrh	r2, [r3]
-	strh	r3, [r3]
-	mov	r1, #0
-	ldr	r3, [r4]
-	cmp	r3, r0
-	bne	.L4298
-	ldr	r3, =0x7fff
-	str	r1, [r4]
-	strh	r3, [r4, #4]
-	mov	r5, #0
-	b	.L42b0
-.L4298:
-	add	r1, #1
-	add	r4, #8
-	cmp	r1, #0x13
-	bgt	.L42b0
-	ldr	r3, [r4]
-	cmp	r3, r0
-	bne	.L4298
-	mov	r3, #0
-	str	r3, [r4]
-	ldr	r3, =0x7fff
-	strh	r3, [r4, #4]
-	mov	r5, r1
-.L42b0:
-	ldr	r3, =REG_IME
-	strh	r2, [r3]
-	mov	r0, r5
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end StopTask
-
 .thumb_func_start Func_80042c8  @ 0x080042c8
 	push	{r5, r6, lr}
 	mov	r5, #1

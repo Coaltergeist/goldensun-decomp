@@ -22,12 +22,12 @@ extern s8 iwram_3001a10;
 // because they are used for inter-module calls
 // and overlays. It might be possible to auto-generate them.
 
-void StartTask(taskfunc_t *task, int priority);
-void _StartTask(taskfunc_t *task, int priority);
-void __StartTask(taskfunc_t *task, int priority);
+s32 StartTask(taskfunc_t *task, u32 priority);
+s32 _StartTask(taskfunc_t *task, u32 priority);
+s32 __StartTask(taskfunc_t *task, u32 priority);
 
-void StopTask(taskfunc_t *task);
-void _StopTask(taskfunc_t *task);
-void __StopTask(taskfunc_t *task);
+s32 StopTask(taskfunc_t *task);
+s32 _StopTask(taskfunc_t *task);
+s32 __StopTask(taskfunc_t *task);
 
 #endif // _TASK_H_

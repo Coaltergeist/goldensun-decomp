@@ -79,3 +79,72 @@ s32 GetTaskIndex(taskfunc_t *func) {
     SET_IO(REG_IME, savedIME);
     return result;
 }
+
+s32 StartTask(taskfunc_t *func, u32 priority) {
+    s32 i;
+    s32 resultIndex;
+    struct Task* currentTask;
+    u32 savedIME;
+    resultIndex = -1;
+    currentTask = gTasks;
+    *(vs8*)(&iwram_3001a10); // maybe some code originally behind #if DEBUG?
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if (currentTask->taskFunc == func) {
+            currentTask->priority = priority;
+            resultIndex = i;
+            break;
+        }
+        currentTask++;
+    }
+    currentTask = gTasks;
+    if (resultIndex == -1) {
+        for (i = 0; i < NUM_TASKS; ++i) {
+            if (currentTask->taskFunc == NULL) {
+                currentTask->taskFunc = func;
+                currentTask->priority = priority;
+                currentTask->status = 0;
+                resultIndex = i;
+                break;
+            }
+            currentTask++;
+        }
+    }
+    SortTasks();
+    SET_IO(REG_IME, savedIME);
+    return resultIndex;
+}
+
+void Func_8004270(void) {}
+void Func_8004274(void) {}
+
+s32 StopTask(taskfunc_t *func) {
+    s32 i;
+    s32 resultId;
+    struct Task* currentTask;
+    u32 savedIME;
+
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if (currentTask->taskFunc == func) {
+            currentTask->taskFunc = NULL;
+            currentTask->priority = 0x7FFF;
+            resultId = i;
+            break;
+        }
+        currentTask++;
+    }
+
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
