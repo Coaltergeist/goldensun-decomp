@@ -47,21 +47,3 @@
 	bx	r0
 .func_end Func_8091ff0
 
-.thumb_func_start Func_809202c  @ 0x0809202c
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	ldr	r2, =0xcc8
-	ldr	r3, [r3]
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r0, [r3, r2]
-	mov	r3, #1
-	neg	r3, r3
-	cmp	r0, r3
-	beq	.L92046
-	bl	_PlaySound
-.L92046:
-	pop	{r0}
-	bx	r0
-.func_end Func_809202c
-

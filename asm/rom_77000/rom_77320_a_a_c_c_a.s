@@ -74,18 +74,3 @@
 	bx	r1
 .func_end GetUnit
 
-.thumb_func_start GetEnemyInfo  @ 0x080773d8
-	push	{lr}
-	sub	r0, #8
-	cmp	r0, #0xf9
-	bls	.L773e2
-	mov	r0, #0
-.L773e2:
-	mov	r3, #0x54
-	mul	r0, r3
-	ldr	r3, =Data_80ec8
-	add	r0, r3
-	pop	{r1}
-	bx	r1
-.func_end GetEnemyInfo
-

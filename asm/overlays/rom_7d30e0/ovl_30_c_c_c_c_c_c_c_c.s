@@ -1,21 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_948_2009ec0
-	push	{lr}
-	mov	r0, #9
-	bl	__MapActor_GetActor
-	mov	r3, #0x80
-	ldr	r2, [r0, #0x10]
-	lsl	r3, #9
-	ldr	r1, [r0, #8]
-	add	r2, r3
-	mov	r0, #0x6b
-	bl	__Func_808edac
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_948_2009ec0
-
 .thumb_func_start OvlFunc_948_2009edc
 	push	{r5, lr}
 	mov	r0, #0

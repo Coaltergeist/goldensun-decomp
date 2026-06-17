@@ -1,25 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_common1_1550
-	push	{r5, lr}
-	ldr	r0, =OvlFunc_common1_1354
-	bl	__StopTask
-	ldr	r5, =.L14
-	mov	r3, #0
-	ldrsh	r0, [r5, r3]
-	bl	__Func_8003f3c
-	ldr	r3, .L156c	@ 0xffffffff
-	strh	r3, [r5]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-
-	.align	2, 0
-.L156c:
-	.word	0xffffffff
-.func_end OvlFunc_common1_1550
-
 .thumb_func_start OvlFunc_common1_1578
 	push	{r5, r6, r7, lr}
 	mov	r6, r1

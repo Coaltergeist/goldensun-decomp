@@ -585,31 +585,3 @@
 	bx	r0
 .func_end OvlFunc_891_20094b8
 
-.thumb_func_start OvlFunc_891_2009574
-	push	{lr}
-	mov	r0, #9
-	mov	r1, #0x1f
-	mov	r2, #9
-	bl	OvlFunc_891_2009be8
-	cmp	r0, #0
-	beq	.L1588
-	bl	OvlFunc_891_2009c14
-.L1588:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_891_2009574
-
-.thumb_func_start OvlFunc_891_200958c
-	push	{lr}
-	mov	r0, #0xb
-	mov	r1, #0x28
-	mov	r2, #9
-	bl	OvlFunc_891_2009be8
-	cmp	r0, #0
-	beq	.L15a0
-	bl	OvlFunc_891_2009d14
-.L15a0:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_891_200958c
-

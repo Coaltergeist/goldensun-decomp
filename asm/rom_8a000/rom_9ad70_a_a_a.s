@@ -92,20 +92,3 @@
 	bx	r0
 .func_end Func_809ade8
 
-.thumb_func_start Func_809ae3c  @ 0x0809ae3c
-	push	{r5, lr}
-	mov	r5, r0
-	bl	MapActor_GetName
-	cmp	r0, #0xff
-	bne	.L9ae4e
-	mov	r0, #1
-	neg	r0, r0
-	b	.L9ae50
-.L9ae4e:
-	mov	r0, r5
-.L9ae50:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_809ae3c
-

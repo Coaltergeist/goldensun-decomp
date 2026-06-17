@@ -86,21 +86,3 @@
 	bx	r0
 .func_end OvlFunc_957_2008a54
 
-.thumb_func_start OvlFunc_957_2008abc
-	push	{lr}
-	ldr	r2, =ewram_2001004
-	ldr	r3, =iwram_3001ebc
-	ldr	r3, [r3]
-	strb	r0, [r2]
-	ldr	r2, =0xcb8
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0
-	bne	.Lad6
-	bl	OvlFunc_957_2008a54
-.Lad6:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_957_2008abc
-
