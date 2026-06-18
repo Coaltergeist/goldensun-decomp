@@ -8,8 +8,22 @@
 typedef void taskfunc_t(void);
 
 struct Task {
-    taskfunc_t *taskFunc;
-    s16 priority;
+    union {
+        taskfunc_t *taskFunc;
+        struct {
+            u8 b1;
+            u8 b2;
+            u8 b3;
+            u8 b4;
+        };
+    };
+    union __attribute__((packed)) {
+        s16 priority;
+        struct __attribute__((packed)) {
+            u8 priorityLo;
+            u8 priorityHi;
+        };
+    };
     u8 status;
     u8 pad7;
 };

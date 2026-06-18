@@ -148,3 +148,149 @@ s32 StopTask(taskfunc_t *func) {
     SET_IO(REG_IME, savedIME);
     return resultId;
 }
+
+s32 Func_80042c8(taskfunc_t *arg0) {
+    s32 i;
+    s32 resultId;
+    struct Task* currentTask;
+    u32 savedIME;
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while(0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if ((arg0 == NULL) || (currentTask->taskFunc == arg0)) {
+            currentTask->priorityHi |= 1;
+            resultId = i;
+        }
+        currentTask += 1;
+    }
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
+
+s32 Func_800430c(void) {
+    s32 i;
+    s32 resultId;
+    struct Task* currentTask;
+    u32 savedIME;
+
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if (currentTask->b4 == 2 && !(1 & currentTask->status)) {
+            currentTask->priorityHi |= 1;
+            resultId = i;
+        }
+        currentTask += 1;
+    }
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
+
+s32 Func_8004358(taskfunc_t *func, u32 status) {
+    s32 i;
+    s32 resultId;
+    struct Task* currentTask;
+    u32 savedIME;
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if (currentTask->taskFunc == func) {
+            currentTask->status = status;
+            resultId = i;
+            break;
+        }
+        currentTask++;
+    }
+
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
+
+s32 Func_800439c(taskfunc_t *func) {
+    s32 i;
+    s32 resultId;
+    struct Task* currentTask;
+    u32 savedIME;
+
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if ((func == NULL) || (currentTask->taskFunc == func)) {
+            currentTask->priorityHi &= 0xFE;
+            resultId = i;
+        }
+        currentTask += 1;
+    }
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
+
+s32 Func_80043e0(void) {
+    s32 resultId;
+    s32 i;
+    struct Task* currentTask;
+    u32 savedIME;
+    resultId = -1;
+    currentTask = gTasks;
+
+    do {
+        savedIME = REG_IME;
+        SET_IO(REG_IME, REG_ADDR_IME);
+    } while (0);
+
+    for (i = 0; i < NUM_TASKS; ++i) {
+        if (currentTask->b4 == 2) {
+            currentTask->priorityHi &= 0xFE; // union?
+            resultId = i;
+        }
+        currentTask += 1;
+    }
+
+    SET_IO(REG_IME, savedIME);
+    return resultId;
+}
+
+void RunTasks(s32 arg0) {
+    s32 i;
+    struct Task* currentTask = gTasks;
+    arg0 >>= 8;
+
+    if (gTasksEnabled == 1) {
+        i = 0x15;
+        currentTask -= 1;
+loop:
+        i -= 1;
+        if (i != 0) {
+            currentTask += 1;
+            if (currentTask->priorityHi == (arg0)) {
+                register taskfunc_t *func asm("r0") = currentTask->taskFunc;
+                func();
+            }
+            goto loop;
+        }
+    }
+}
