@@ -11,12 +11,15 @@ stage1.o
 
 # Compiler-generated .s intermediates: Make's %.o:%.c rule writes a .s next to
 # every src/ .c, so refresh_expected.sh / a full `make` litters src/ with them.
-# Ignore all .s under src/ EXCEPT the hand-written glue (crt0/exports/imports),
-# which have no .c sibling and are tracked source-of-truth.
+# Ignore all .s under src/ EXCEPT the hand-written glue (crt0/exports/imports
+# and the lib asm call_via/m4a0), which have no .c sibling and are tracked
+# source-of-truth.
 src/**/*.s
 !src/**/crt0.s
 !src/**/exports.s
 !src/**/imports.s
+!src/**/call_via.s
+!src/**/m4a0.s
 
 # The cross-dir rule (asm/%.o: src/%.c) regenerates asm/<bank>/X.s for every
 # matched src/<bank>/X.c — build artifacts, not source-of-truth. Ignoring them
