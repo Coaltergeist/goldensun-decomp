@@ -267,27 +267,3 @@
 	bx	r1
 .func_end CreateActor
 
-.thumb_func_start Actor_SetScript  @ 0x0800c2d8
-	push	{lr}
-	cmp	r0, #0
-	beq	.Lc2fc
-	mov	r2, #0
-	strh	r2, [r0, #4]
-	ldr	r3, =0
-	mov	r2, r0
-	add	r2, #0x5b
-	str	r1, [r0]
-	strb	r3, [r2]
-	add	r2, #2
-	strb	r3, [r2]
-	sub	r2, #6
-	strb	r3, [r2]
-	b	.Lc2fc
-
-	.pool_aligned
-
-.Lc2fc:
-	pop	{r0}
-	bx	r0
-.func_end Actor_SetScript
-

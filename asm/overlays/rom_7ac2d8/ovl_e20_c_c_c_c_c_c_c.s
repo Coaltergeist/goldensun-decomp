@@ -1,16 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_924_2008f14
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x1637
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_2008f14
-
 .thumb_func_start OvlFunc_924_2008f30
 	push	{lr}
 	ldr	r3, =gState
