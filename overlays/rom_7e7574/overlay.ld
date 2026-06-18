@@ -56,7 +56,7 @@ SECTIONS {
 		asm/overlays/rom_7e7574/ovl_9dc_c_c_c_c_c_b.o(.text)
 		asm/overlays/rom_7e7574/ovl_9dc_c_c_c_c_c_c.o(.text)
 		src/overlays/rom_7e7574/imports.o(.text)
-		lib/call_via.o(.text)
+		src/lib/call_via.o(.text)
 		asm/overlays/common/common2_a.o(.text)
 		asm/overlays/common/common2_b.o(.text)
 		asm/overlays/common/common2_c_b.o(.text)

@@ -1,24 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8095268  @ 0x08095268
-	push	{lr}
-	ldr	r1, =0x1f88
-	mov	r0, #0x1e
-	bl	galloc_ewram
-	mov	r3, #0xfc
-	lsl	r3, #5
-	add	r2, r0, r3
-	mov	r3, #0x80
-	strh	r3, [r2]
-	ldr	r3, =0x1f82
-	add	r0, r3
-	mov	r3, #1
-	strh	r3, [r0]
-	pop	{r0}
-	bx	r0
-.func_end Func_8095268
-
 .thumb_func_start StartThunder2  @ 0x08095290
 	push	{r5, r6, lr}
 	mov	r6, r10

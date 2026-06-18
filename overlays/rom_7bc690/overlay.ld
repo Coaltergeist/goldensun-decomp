@@ -28,7 +28,7 @@ SECTIONS {
 		asm/overlays/rom_7bc690/ovl_18a4_b.o(.text)
 		asm/overlays/rom_7bc690/ovl_18a4_c.o(.text)
 		src/overlays/rom_7bc690/imports.o(.text)
-		lib/call_via.o(.text)
+		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {

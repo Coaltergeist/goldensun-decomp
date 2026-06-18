@@ -13,11 +13,11 @@ It builds the following ROM:
 ## Current state
 
 - :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
-- **1,801 / 5,745 Thumb functions matched as C source (30.8%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
+- **1,807 / 5,745 Thumb functions matched as C source (30.8%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
-- **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`lib/m4a/`](lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
+- **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`src/lib/m4a/`](src/lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
 
 ## Setting up the repo
 
@@ -82,7 +82,7 @@ This project builds on substantial prior work by others:
 - **Tarpman:** compiler-reproduction analysis identifying the early GCC 3.0-family lineage of Camelot's toolchain, and the source-shape repro that pinned down the small-constant literal-pool fingerprint.
 - **Karathan:** flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
 - **[pret](https://github.com/pret):** a decade of GBA decomp methodology that this project applies directly, plus the [agbcc](https://github.com/pret/agbcc) compiler (its `old_agbcc` reproduces the stock m4a audio engine) and the install-script pattern that [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) mirrors.
-- **[SAT-R/sa2](https://github.com/SAT-R/sa2) (Sonic Advance 2):** their reverse-engineering of the stock MKS4AGB ("Sappy") audio middleware is the direct source of this repo's ported [`lib/m4a/`](lib/m4a/) C; the prebuilt GBA audio engine is shared across both games.
+- **[SAT-R/sa2](https://github.com/SAT-R/sa2) (Sonic Advance 2):** their reverse-engineering of the stock MKS4AGB ("Sappy") audio middleware is the direct source of this repo's ported [`src/lib/m4a/`](src/lib/m4a/) C; the prebuilt GBA audio engine is shared across both games.
 - **[simonlindholm](https://github.com/simonlindholm):** [asm-differ](https://github.com/simonlindholm/asm-differ) and [decomp-permuter](https://github.com/simonlindholm/decomp-permuter); core matching-decomp infrastructure.
 - **The decomp community at large:** sm64, oot, mm, the [pret](https://github.com/pret) Pokémon family, [zeldaret](https://github.com/zeldaret), [SAT-R](https://github.com/SAT-R), and many others have collectively built the body of techniques this project relies on.
 

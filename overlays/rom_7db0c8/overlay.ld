@@ -40,7 +40,7 @@ SECTIONS {
 		asm/overlays/common/common1_c_b.o(.text)
 		asm/overlays/common/common1_c_c.o(.text)
 		src/overlays/rom_7db0c8/imports.o(.text)
-		lib/call_via.o(.text)
+		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {

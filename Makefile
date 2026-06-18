@@ -106,7 +106,7 @@ asm/%.o: src/%.c
 # epilogue), unique in the corpus — every other TU returns `bx`-form. Drop
 # interwork for this one stem so the epilogue byte-matches. Pattern (not explicit)
 # so it also covers the splitter's matched _b children (common2_c_b.o, …). Mirrors
-# the lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
+# the src/lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
 # without -mthumb-interwork emits `pop {pc}`.
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
 asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
@@ -114,7 +114,7 @@ asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
+# src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
 # s8 (its ROM loads are signed) without touching the rest of the unsigned-char
@@ -123,14 +123,14 @@ AGBCC_DIR     ?= tools/agbcc
 M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
 M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2
 
-lib/m4a/%.o: lib/m4a/%.c
+src/lib/m4a/%.o: src/lib/m4a/%.c
 	gcc -E $(M4A_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(M4A_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
-C_SRCS  := $(filter-out lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
+# src/lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
+C_SRCS  := $(filter-out src/lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
 C_GEN_I := $(C_SRCS:.c=.i)

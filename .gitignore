@@ -55,4 +55,4 @@ __pycache__/
 data/strings/
 
 # m4a/Sappy
-lib/m4a/m4a.s
+src/lib/m4a/m4a.s

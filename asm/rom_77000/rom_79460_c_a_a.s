@@ -123,23 +123,3 @@
 	.word	0xff
 .func_end Func_80796c4
 
-.thumb_func_start AddCoins  @ 0x08079700
-	push	{lr}
-	ldr	r1, =gState
-	ldr	r3, [r1, #0x10]
-	ldr	r2, =0xf423f
-	add	r3, r0
-	cmp	r3, r2
-	ble	.L79710
-	mov	r3, r2
-.L79710:
-	cmp	r3, #0
-	bge	.L79716
-	mov	r3, #0
-.L79716:
-	str	r3, [r1, #0x10]
-	mov	r0, r3
-	pop	{r1}
-	bx	r1
-.func_end AddCoins
-

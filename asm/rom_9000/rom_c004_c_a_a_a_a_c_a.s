@@ -94,21 +94,3 @@
 	bx	r0
 .func_end Actor_SetAnimAndSpeed
 
-.thumb_func_start Actor_SetRotation  @ 0x0800c3ec
-	push	{lr}
-	cmp	r0, #0
-	beq	.Lc404
-	mov	r3, r0
-	add	r3, #0x54
-	ldrb	r2, [r3]
-	mov	r3, #0xf
-	and	r3, r2
-	cmp	r3, #1
-	bne	.Lc404
-	ldr	r3, [r0, #0x50]
-	strh	r1, [r3, #0x1e]
-.Lc404:
-	pop	{r0}
-	bx	r0
-.func_end Actor_SetRotation
-
