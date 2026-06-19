@@ -75,6 +75,23 @@ ewram_2004c22 = 0x02004C22;
 ewram_2004c24 = 0x02004C24;
 ewram_2004c28 = 0x02004C28;
 ewram_2004c2c = 0x02004C2C;
+
+/* agb_flash library globals (src/lib/agb_flash/), pinned to their fixed EWRAM
+   slots so the matched C's pool words resolve to the same addresses the ROM
+   uses (mirrors m4a's gSoundInfo). */
+WaitForFlashWrite = 0x02004C00;
+ProgramFlashSector = 0x02004C04;
+gFlash = 0x02004C08;
+gFlashNumRemainingBytes = 0x02004C0C;
+EraseFlashChip = 0x02004C10;
+EraseFlashSector = 0x02004C14;
+gFlashMaxTime = 0x02004C18;
+PollFlashStatus = 0x02004C1C;
+sTimerNum = 0x02004C20;
+sTimerCount = 0x02004C22;
+gFlashTimeoutFlag = 0x02004C24;
+gTimerReg = 0x02004C28;
+gSavedIme = 0x02004C2C;
 ewram_200fe00 = 0x0200FE00;
 ewram_200fffa = 0x0200FFFA;
 gBuffer = 0x02010000;

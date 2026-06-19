@@ -20,6 +20,7 @@ src/**/*.s
 !src/**/imports.s
 !src/**/call_via.s
 !src/**/m4a0.s
+!src/**/agb_flash_data.s
 
 # The cross-dir rule (asm/%.o: src/%.c) regenerates asm/<bank>/X.s for every
 # matched src/<bank>/X.c — build artifacts, not source-of-truth. Ignoring them
