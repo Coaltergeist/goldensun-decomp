@@ -74,7 +74,7 @@ $(OVERLAYS): %.bin: %.elf
 # output to Camelot's original compiler (see compiler.md).
 # Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
 # Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
-# NOT needed under gcc-2.96 — the compiler naturally avoids r7 for the same
+# NOT needed under gcc-2.96; the compiler naturally avoids r7 for the same
 # allocation patterns Camelot did. Trailing .align 2, 0 is required because
 # gcc emits .align with zero-fill BETWEEN functions (via the elf.h patch)
 # but NOT AFTER the last function in a TU, so the assembler's default
@@ -91,7 +91,7 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
 # Cross-dir rule: build asm/<bank>/X.o from src/<bank>/X.c. Used by the
-# split-multifn workflow (tools/split_multifn_s.py) — matched .c source-of-
+# split-multifn workflow (tools/split_multifn_s.py); matched .c source-of-
 # truth lives at src/<bank>/X.c per the 3.5c layout, but the linker keeps
 # referencing asm/<bank>/X.o. Generates asm/<bank>/X.s as a build
 # intermediate alongside the .o; safe to commit per the existing matched-
@@ -103,10 +103,10 @@ asm/%.o: src/%.c
 
 # overlays/common/common2_c was compiled WITHOUT -mthumb-interwork in the
 # original ROM: all 14 of its functions return `pop {pc}` (the non-interwork
-# epilogue), unique in the corpus — every other TU returns `bx`-form. Drop
+# epilogue), unique in the corpus; every other TU returns `bx`-form. Drop
 # interwork for this one stem so the epilogue byte-matches. Pattern (not explicit)
-# so it also covers the splitter's matched _b children (common2_c_b.o, …). Mirrors
-# the lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
+# so it also covers the splitter's matched _b children (common2_c_b.o, ...). Mirrors
+# the src/lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
 # without -mthumb-interwork emits `pop {pc}`.
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
 asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
@@ -114,7 +114,7 @@ asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
+# src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
 # s8 (its ROM loads are signed) without touching the rest of the unsigned-char
@@ -123,14 +123,39 @@ AGBCC_DIR     ?= tools/agbcc
 M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
 M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2
 
-lib/m4a/%.o: lib/m4a/%.c
+src/lib/m4a/%.o: src/lib/m4a/%.c
 	gcc -E $(M4A_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(M4A_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
-C_SRCS  := $(filter-out lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
+# src/lib/agb_flash/ is the launch-SDK "Flash v123" save library. Like m4a it is a
+# prebuilt Nintendo lib (old_agbcc, stock r4-callee-save ABI); but -O not -O2, and
+# unsigned char (no M4A_SIGNED_CHAR). The lone gcc-2.96 holdout agb_flash_verify.c
+# (VerifyEraseSector) rides the default %.o:%.c rule instead.
+AGBFLASH_CPPFLAGS := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1
+AGBFLASH_CC1FLAGS := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O
+
+src/lib/agb_flash/agb_flash.o: src/lib/agb_flash/agb_flash.c
+	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
+src/lib/agb_flash/agb_flash_mx.o: src/lib/agb_flash/agb_flash_mx.c
+	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
+src/lib/agb_flash/agb_flash_at.o: src/lib/agb_flash/agb_flash_at.c
+	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
+# src/lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
+C_SRCS  := $(filter-out src/lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
 C_GEN_I := $(C_SRCS:.c=.i)
@@ -169,7 +194,7 @@ TOOLS := tools/pack_overlay \
 CPPFLAGS += -MMD
 CFLAGS ?= -O2 -Wall
 
-# Host tool build — explicit rules so they override the generic %.o:%.c
+# Host tool build; explicit rules so they override the generic %.o:%.c
 # (which points at the gcc-2.96 target pipeline above). The tools/ prefix
 # makes these rules more-specific than the generic ones.
 tools/%.o: tools/%.c

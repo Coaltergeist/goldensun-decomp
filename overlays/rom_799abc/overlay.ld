@@ -27,7 +27,7 @@ SECTIONS {
 		asm/overlays/rom_799abc/ovl_30_c_c_b.o(.text)
 		asm/overlays/rom_799abc/ovl_30_c_c_c.o(.text)
 		src/overlays/rom_799abc/imports.o(.text)
-		lib/call_via.o(.text)
+		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
