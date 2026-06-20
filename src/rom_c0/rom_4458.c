@@ -2,11 +2,26 @@
  * u16 truncation of (state >> 8) is what produces the lsl #8 / lsr #16
  * tail in the asm. */
 
-extern unsigned gRNGState;
+#include "gba/types.h"
+#include "math.h"
+
+extern u32 gRNGState;
 
 /* FF: u16 Random(void) */
-unsigned short Random(void) {
-    unsigned my_state = gRNGState * 0x41C64E6D + 12345;
-    gRNGState = my_state;
-    return my_state >> 8;
+u16 Random(void) {
+    u32 newState = gRNGState * 0x41C64E6D + 12345;
+    gRNGState = newState;
+    return newState >> 8;
+}
+
+void vec3_translate(fx32 mag, u32 angle, vec3_t *vec) {
+    fx32 n;
+    fx32 *res = (fx32*)vec;
+    n = sin(angle + 0x4000); // cos(angle)
+    n = fx32_multiply(mag, n);
+    *res++ += n;
+    n = sin(angle);
+    res++;
+    n = fx32_multiply(mag, n);
+    *res += n;
 }
