@@ -90,3 +90,10 @@ u32 c_sqrt(s32 x) {
     }
     return result;
 }
+
+extern fx32 Func_8000948(fx32);
+
+fx32 FastIntSqrtFP1616_RAM(fx32 x) {
+    fx32 (*f)(fx32) = Func_8000948;
+    return f(x) << 8;
+}
