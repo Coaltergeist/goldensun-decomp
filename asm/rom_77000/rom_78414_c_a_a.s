@@ -28,23 +28,3 @@
 	bx	r1
 .func_end Func_8078480
 
-.thumb_func_start GetInventoryItem  @ 0x080784b0
-	push	{r5, lr}
-	mov	r5, r1
-	bl	GetUnit
-	lsl	r5, #1
-	add	r5, #0xd8
-	ldrh	r0, [r0, r5]
-	ldr	r3, =0x1ff
-	and	r3, r0
-	lsr	r0, #11
-	add	r0, #1
-	cmp	r3, #0
-	bne	.L784cc
-	mov	r0, #0
-.L784cc:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end GetInventoryItem
-

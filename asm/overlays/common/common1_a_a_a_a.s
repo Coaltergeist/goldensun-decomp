@@ -2155,20 +2155,3 @@
 	bx	r0
 .func_end OvlFunc_common1_1254
 
-.thumb_func_start OvlFunc_common1_1314
-	push	{r5, lr}
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	bl	__Actor_Stop
-	mov	r3, #0
-	str	r3, [r5, #0x24]
-	str	r3, [r5, #0x2c]
-	mov	r3, #0x80
-	lsl	r3, #24
-	str	r3, [r5, #0x38]
-	str	r3, [r5, #0x40]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_common1_1314
-

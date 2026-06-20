@@ -1,24 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_965_2008cd0
-	push	{r5, r6, lr}
-	mov	r6, r0
-	mov	r5, #0x3c
-.Lcd6:
-	cmp	r5, #0
-	beq	.Lce8
-	mov	r0, #1
-	bl	__WaitFrames
-	ldr	r3, [r6, #0x28]
-	sub	r5, #1
-	cmp	r3, #0
-	bne	.Lcd6
-.Lce8:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_965_2008cd0
-
 .thumb_func_start OvlFunc_965_2008cf0
 	push	{r5, r6, r7, lr}
 	mov	r6, r0

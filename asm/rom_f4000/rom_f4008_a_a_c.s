@@ -1,25 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start StartLuckyDice  @ 0x080f4008
-	push	{lr}
-	ldr	r3, =0x40
-	mov	r2, #0x80
-	lsl	r2, #19
-	strh	r3, [r2]
-	mov	r0, #9
-	bl	_PlaySound
-	bl	LuckyDiceMain
-	mov	r0, #0
-	b	.Lf4024
-
-	.pool_aligned
-
-.Lf4024:
-	pop	{r1}
-	bx	r1
-.func_end StartLuckyDice
-
 .thumb_func_start Func_80f4028  @ 0x080f4028
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001e80
