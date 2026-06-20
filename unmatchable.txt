@@ -21,13 +21,14 @@
 #                 as the asm/rom_f9000/{rom_f95e0,rom_f9ef8_a}.s splits.
 
 Func_80f9ee8   veneer   bx r3 interworking thunk at 0x080f9ee8; gcc-2.96 appends its own bx lr epilogue and silently ignores __attribute__((naked)), so no C yields the bare 2-byte body. (The real _call_via_r3 is the linker veneer at 0x080072f0.)
+_call_via_\register   veneer   NOT a real function: this is the literal macro-template name the function-name scraper captures from the `call_via register / .thumb_func_start _call_via_\register` macro in src/lib/call_via.s. The expanded veneers (_call_via_r0.._call_via_lr) are the hand-asm interworking thunks (bx <reg>; nop) and already live in that committed .s. Enrolled so the loop selector stops re-picking the unexpanded template as a target each run.
 umul3232H32   m4a-asm   Thumb->ARM interworking veneer (adr r2; bx r2; .arm; umull r2,r3,r0,r1) at 0x080f95e0 (formerly Func_80f95e0); umull has no Thumb-1 encoding, so no -mthumb C produces it. Stock m4a mixer entry.
 Func_80fa1c8   m4a-asm   m4a mixer leaf at 0x080fa1c8 (in the rom_f9ef8_a.s mixer tail, < 0x080fa1fc); hand-asm (reads a byte into r3, not the r0 return reg). Stock m4a, stays asm.
 Func_80f9ab4   m4a-asm   m4a mixer body at 0x080f9ab4 (within 0x080F95E0-0x080FA1FC); ARM-only ops (e.g. `adds r3,r2,#1` with no Thumb-1 encoding); no -mthumb C assembles. Stock m4a, stays asm.
 Func_80fa1ac   m4a-asm   MP2K lfos/mod event helper at 0x080fa1ac (rom_f9ef8_a.s mixer tail, sibling of registered Func_80fa1c8); takes its track pointer in r1 with r0 live-through, and has conditional branches in a no-push leaf; gcc-2.96 (-mthumb-interwork) pushes lr in every branchy function, so no C matches. Stock m4a, stays asm.
 Func_80b09fc   tu-pool   struct-init at 0x080b09fc; body is 2 scheduler slots from C (work/fixable_drain attempt 2026-06-11), but the ROM dumps its literal pool MID-FUNCTION with a skip-branch before the epilogue (b.n; .word; pop) with NO loop to anchor it; an original-TU pool-pressure artifact a standalone TU cannot reproduce (sibling Func_80b0a20 in rom_b0070_a_a_c.s has the identical tail). Park class: tu-pool midpool.
 
-# 2026-06-17 — bulk enrollment: the remainder of the stock m4a mixer region.
+# 2026-06-17 bulk enrollment: the remainder of the stock m4a mixer region.
 #   The whole 0x080F95E0-0x080FA1FC range is hand-written assembly (the SA2
 #   m4a0.s mixer); these were being fed to the gcc-2.96 loop by name and
 #   burning permuter budget. umul3232H32/Func_80f9ab4/Func_80fa1ac/Func_80fa1c8
