@@ -164,7 +164,7 @@ s32 Func_80042c8(taskfunc_t *arg0) {
 
     for (i = 0; i < NUM_TASKS; ++i) {
         if ((arg0 == NULL) || (currentTask->taskFunc == arg0)) {
-            currentTask->priorityHi |= 1;
+            *((u8*) &currentTask->priority + 1) |= 1; // somehow this one does not match with the union...
             resultId = i;
         }
         currentTask += 1;
