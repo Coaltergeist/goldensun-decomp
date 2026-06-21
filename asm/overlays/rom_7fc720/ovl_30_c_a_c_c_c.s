@@ -1,22 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_973_20080a0
-	push	{r5, r6, lr}
-	mov	r5, r0
-	mov	r6, r1
-	bl	__GetUnit
-	ldrb	r1, [r0, #0xf]
-	mov	r0, r5
-	add	r1, r6
-	bl	__SetMinLevel
-	mov	r0, r5
-	bl	__CalcStats
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_973_20080a0
-
 .thumb_func_start OvlFunc_973_20080c0
 	push	{r5, r6, r7, lr}
 	sub	sp, #0x20

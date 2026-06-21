@@ -1,27 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start ClearVRAM  @ 0x08004760
-	sub	sp, #4
-	ldr	r3, =0xf000f000
-	mov	r0, sp
-	str	r3, [r0]
-	ldr	r1, =0x6002000
-	ldr	r3, =REG_DMA3SAD
-	ldr	r2, =0x85000140
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	ldr	r2, =iwram_3001cbc
-	ldr	r3, =0x6002000
-	str	r3, [r2]
-	mov	r2, #0x80
-	ldr	r3, =REG_BG0CNT
-	lsl	r2, #3
-	strh	r2, [r3]
-	add	sp, #4
-	bx	lr
-.func_end ClearVRAM
-
 .thumb_func_start Func_800479c  @ 0x0800479c
 	push	{lr}
 	ldr	r0, =_FILE_13

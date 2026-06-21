@@ -1004,21 +1004,3 @@
 	bx	r1
 .func_end Func_808e680
 
-.thumb_func_start Func_808e96c  @ 0x0808e96c
-	push	{lr}
-	mov	r1, r0
-	sub	sp, #4
-	lsl	r1, #16
-	mov	r2, sp
-	lsr	r1, #16
-	ldr	r0, =0x70000005
-	bl	Func_808e4b4
-	mov	r3, r0
-	neg	r0, r3
-	orr	r0, r3
-	lsr	r0, #31
-	add	sp, #4
-	pop	{r1}
-	bx	r1
-.func_end Func_808e96c
-
