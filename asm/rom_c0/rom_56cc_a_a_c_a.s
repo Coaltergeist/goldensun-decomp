@@ -195,21 +195,3 @@
 	bx	r1
 .func_end Func_8005a78
 
-.thumb_func_start Func_8005ac0  @ 0x08005ac0
-	push	{lr}
-	bl	Func_8005b24
-	cmp	r0, #0xf
-	bls	.L5ace
-	mov	r0, #1
-	b	.L5ada
-.L5ace:
-	bl	Func_8005b64
-	mov	r3, r0
-	neg	r0, r3
-	orr	r0, r3
-	lsr	r0, #31
-.L5ada:
-	pop	{r1}
-	bx	r1
-.func_end Func_8005ac0
-

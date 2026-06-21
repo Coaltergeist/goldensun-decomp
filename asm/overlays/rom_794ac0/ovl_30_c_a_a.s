@@ -2216,20 +2216,3 @@
 	bx	r0
 .func_end OvlFunc_899_200b6f8
 
-.thumb_func_start OvlFunc_899_200c5cc
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	add	r2, #0x49
-	str	r2, [r3]
-	bl	__MapTransitionIn
-	bl	__WaitMapTransition
-	mov	r0, #1
-	bl	__CutsceneWait
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_899_200c5cc
-
