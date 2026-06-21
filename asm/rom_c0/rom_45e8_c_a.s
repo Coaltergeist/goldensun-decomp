@@ -1,29 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Debug_PrintHex  @ 0x080045f0
-	push	{lr}
-	ldr	r3, =iwram_3001f70
-	ldr	r4, =.L795c
-	mov	r1, #0xf
-	add	r2, r3, #7
-	mov	r12, r3
-.L45fc:
-	mov	r3, r0
-	and	r3, r1
-	ldrb	r3, [r4, r3]
-	strb	r3, [r2]
-	sub	r2, #1
-	lsr	r0, #4
-	cmp	r2, r12
-	bge	.L45fc
-	ldr	r2, =iwram_3001f70
-	mov	r3, #0
-	strb	r3, [r2, #8]
-	pop	{r0}
-	bx	r0
-.func_end Debug_PrintHex
-
 .thumb_func_start Func_8004620  @ 0x08004620
 	push	{r5, r6, r7, lr}
 	mov	r6, r0

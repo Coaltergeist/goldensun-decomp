@@ -85,7 +85,7 @@
 .func_end LoadSpritePalette
 
 	.section .rodata
-	.global .L795c
+	.global sHexDigits
 	.global .L7970
 	.global PAL_Sprites
 
@@ -94,7 +94,7 @@
 	.incrom 0x777c, 0x779c
 PAL_Sprites:
 	.incrom 0x779c, 0x795c
-.L795c:
+sHexDigits:
 	.incrom 0x795c, 0x7970
 .L7970:
 	.incrom 0x7970, 0x7994
