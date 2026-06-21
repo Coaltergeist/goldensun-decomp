@@ -51,6 +51,8 @@ typedef struct {
     fx32 x, y, z;
 } vec3_t;
 
+typedef fx32 matrix_t[4][3];
+
 #ifndef NULL
 #define NULL ( (void *) 0)
 #endif

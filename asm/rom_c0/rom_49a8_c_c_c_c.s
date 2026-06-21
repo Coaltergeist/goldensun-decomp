@@ -17,7 +17,7 @@
 .func_end MatrixLook
 
 	.section .rodata
-	.global .L7994
+	.global DistSquared
 
-.L7994:
+DistSquared:
 	.incrom 0x7994, 0x79b0
