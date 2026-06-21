@@ -86,7 +86,7 @@
 
 	.section .rodata
 	.global sHexDigits
-	.global .L7970
+	.global sPowersOfTen
 	.global PAL_Sprites
 
 .align 2,0
@@ -96,5 +96,5 @@ PAL_Sprites:
 	.incrom 0x779c, 0x795c
 sHexDigits:
 	.incrom 0x795c, 0x7970
-.L7970:
+sPowersOfTen:
 	.incrom 0x7970, 0x7994
