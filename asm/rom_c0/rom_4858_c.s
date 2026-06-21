@@ -1,42 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start galloc_iwram  @ 0x080048b0
-	push	{r5, lr}
-	ldr	r4, =gPtrs
-	lsl	r5, r0, #2
-	ldr	r0, [r4, r5]
-	cmp	r0, #0
-	bne	.L48e6
-	add	r3, r1, #3
-	lsr	r3, #2
-	ldr	r0, [r4, #4]
-	lsl	r1, r3, #2
-	ldr	r3, =iwram_30077ff
-	add	r2, r0, r1
-	cmp	r2, r3
-	bls	.L48e2
-	ldr	r0, [r4]
-	mov	r3, #0x81
-	add	r1, r0, r1
-	lsl	r3, #18
-	cmp	r1, r3
-	bcc	.L48dc
-	mov	r0, #0
-	b	.L48e6
-.L48dc:
-	str	r1, [r4]
-	str	r0, [r4, r5]
-	b	.L48e6
-.L48e2:
-	str	r2, [r4, #4]
-	str	r0, [r4, r5]
-.L48e6:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end galloc_iwram
-
 .thumb_func_start galloc_ewram  @ 0x080048f4
 	push	{r5, lr}
 	ldr	r4, =gPtrs
