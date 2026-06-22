@@ -1,43 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_964_2009510
-	push	{lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	asr	r3, #20
-	cmp	r3, #0x20
-	bne	.L1528
-	ldr	r3, [r0, #0x10]
-	asr	r3, #20
-	cmp	r3, #0x32
-	beq	.L152c
-.L1528:
-	bl	OvlFunc_964_2009348
-.L152c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_964_2009510
-
-.thumb_func_start OvlFunc_964_2009530
-	push	{lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	asr	r3, #20
-	cmp	r3, #0x1e
-	bne	.L1548
-	ldr	r3, [r0, #0x10]
-	asr	r3, #20
-	cmp	r3, #0x34
-	beq	.L154c
-.L1548:
-	bl	OvlFunc_964_2008df4
-.L154c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_964_2009530
-
 .thumb_func_start OvlFunc_964_2009550
 	push	{r5, r6, r7, lr}
 	mov	r7, r8

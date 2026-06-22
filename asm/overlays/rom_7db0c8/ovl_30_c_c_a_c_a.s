@@ -111,17 +111,3 @@
 	bx	r0
 .func_end OvlFunc_954_2008840
 
-.thumb_func_start OvlFunc_954_2008954
-	push	{lr}
-	bl	OvlFunc_common1_21c8
-	cmp	r0, #0
-	bne	.L964
-	bl	__Func_8093c00
-	b	.L968
-.L964:
-	bl	OvlFunc_954_2008238
-.L968:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_954_2008954
-

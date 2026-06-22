@@ -1,40 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80944ec  @ 0x080944ec
-	ldr	r3, =iwram_3001ed8
-	mov	r2, #0xf0
-	ldr	r0, [r3]
-	lsl	r2, #4
-	add	r3, r0, r2
-	ldrb	r2, [r3]
-	lsl	r3, r2, #4
-	sub	r3, r2
-	lsl	r3, #7
-	add	r0, r3
-	ldr	r3, =REG_DMA0SAD
-	ldr	r2, =0xc5ff
-	ldrh	r4, [r3, #0xa]
-	and	r2, r4
-	strh	r2, [r3, #0xa]
-	ldr	r2, =0x7fff
-	ldrh	r4, [r3, #0xa]
-	and	r2, r4
-	strh	r2, [r3, #0xa]
-	ldr	r1, =REG_BG1HOFS
-	ldrh	r2, [r3, #0xa]
-	ldmia	r0!, {r2}
-	str	r2, [r1]
-	ldmia	r0!, {r2}
-	str	r2, [r1]
-	ldmia	r0!, {r2}
-	str	r2, [r1]
-	ldr	r2, =0xa6600003
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	bx	lr
-.func_end Func_80944ec
-
 .thumb_func_start Func_8094544  @ 0x08094544
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

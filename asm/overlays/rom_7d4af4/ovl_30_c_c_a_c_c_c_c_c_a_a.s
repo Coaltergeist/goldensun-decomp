@@ -47,16 +47,3 @@
 	bx	r0
 .func_end OvlFunc_949_2008568
 
-.thumb_func_start OvlFunc_949_200859c
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x1fa3
-	bl	__MessageID
-	mov	r0, #0x1b
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_949_200859c
-
