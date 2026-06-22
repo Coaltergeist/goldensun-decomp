@@ -92,16 +92,3 @@
 	bx	r1
 .func_end OvlFunc_910_2008154
 
-.thumb_func_start OvlFunc_910_2008184
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x13c0
-	bl	__MessageID
-	mov	r1, #0
-	mov	r0, #9
-	bl	__Func_8093054
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_910_2008184
-

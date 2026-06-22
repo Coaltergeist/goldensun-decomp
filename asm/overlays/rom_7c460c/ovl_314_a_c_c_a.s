@@ -76,7 +76,7 @@
 	bl	__MessageID
 	b	.Laaa
 .Laa4:
-	ldr	r0, =0x1bc0
+	ldr	r0, =_MSG_1bc0
 	bl	__MessageID
 .Laaa:
 	mov	r0, #9

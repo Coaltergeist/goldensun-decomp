@@ -13,7 +13,7 @@
 	bl	__Func_809280c
 	mov	r0, #0x14
 	bl	__CutsceneWait
-	ldr	r0, =0xed0
+	ldr	r0, =_MSG_ed0
 	bl	__MessageID
 	mov	r0, #0x16
 	mov	r1, #0
@@ -92,7 +92,7 @@
 	bl	__MapActor_DoAnim
 	cmp	r5, #0
 	beq	.L17c2
-	ldr	r0, =0xe70
+	ldr	r0, =_MSG_e70
 	bl	__MessageID
 	b	.L17c8
 .L17c2:

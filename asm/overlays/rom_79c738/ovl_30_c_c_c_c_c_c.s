@@ -782,7 +782,7 @@
 	bne	.Lcb6
 	b	.Lf86
 .Lcb6:
-	ldr	r0, =0x1440
+	ldr	r0, =_MSG_1440
 	bl	__MessageID
 	ldr	r0, =0x2012
 	mov	r1, #0

@@ -107,7 +107,7 @@
 	.pool_aligned
 
 .L378:
-	ldr	r5, =0x1d20
+	ldr	r5, =_MSG_1d20
 	mov	r0, r5
 	bl	__MessageID
 	mov	r1, #0

@@ -2706,7 +2706,7 @@
 	lsl	r1, #8
 	mov	r0, #1
 	bl	__Func_8092adc
-	ldr	r0, =0x1c60
+	ldr	r0, =_MSG_1c60
 	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #0

@@ -984,7 +984,7 @@
 
 .thumb_func_start OvlFunc_967_2008eec
 	push	{lr}
-	ldr	r0, =0x2880
+	ldr	r0, =_MSG_2880
 	bl	__MessageID
 	mov	r0, #0x14
 	bl	__CutsceneWait

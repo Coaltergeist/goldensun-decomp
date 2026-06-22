@@ -26,7 +26,7 @@
 	bl	__ActorMessage
 	b	.L134
 .Lbe:
-	ldr	r0, =0x1520
+	ldr	r0, =_MSG_1520
 	bl	__MessageID
 	mov	r2, #0x14
 	mov	r0, #9

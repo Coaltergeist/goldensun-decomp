@@ -471,7 +471,7 @@
 	bl	__ActorMessage
 	b	.L622
 .L614:
-	ldr	r0, =0xeb0
+	ldr	r0, =_MSG_eb0
 	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0

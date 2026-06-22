@@ -263,7 +263,7 @@
 	bl	__MessageID
 	b	.L3fa
 .L3f4:
-	ldr	r0, =0xe30
+	ldr	r0, =_MSG_e30
 	bl	__MessageID
 .L3fa:
 	mov	r0, #0

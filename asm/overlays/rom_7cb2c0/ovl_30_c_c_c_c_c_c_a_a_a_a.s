@@ -4012,7 +4012,7 @@
 	mov	r1, #2
 	mov	r0, #8
 	bl	__Func_809259c
-	ldr	r0, =0x1e40
+	ldr	r0, =_MSG_1e40
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0

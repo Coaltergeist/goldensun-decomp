@@ -3,7 +3,7 @@
 .thumb_func_start OvlFunc_886_2008298
 	push	{lr}
 	bl	__CutsceneStart
-	ldr	r0, =0x1c40
+	ldr	r0, =_MSG_1c40
 	bl	__MessageID
 	ldr	r0, =0x800b
 	mov	r1, #0

@@ -460,7 +460,7 @@
 	mov	r2, #0x3c
 	mov	r0, #0xb
 	bl	__MapActor_Emote
-	ldr	r0, =0x1720
+	ldr	r0, =_MSG_1720
 	bl	__MessageID
 	mov	r0, #0xb
 	mov	r1, #0

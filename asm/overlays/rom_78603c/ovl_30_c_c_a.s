@@ -345,7 +345,7 @@
 	bl	__Func_8091c7c
 	cmp	r0, #0
 	bne	.L414
-	ldr	r0, =0xfb0
+	ldr	r0, =_MSG_fb0
 	bl	__MessageID
 	b	.L41a
 

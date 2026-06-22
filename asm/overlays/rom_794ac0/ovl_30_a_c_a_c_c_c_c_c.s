@@ -7,7 +7,7 @@
 	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L8ca
-	ldr	r5, =0x1360
+	ldr	r5, =_MSG_1360
 	mov	r0, r5
 	bl	__MessageID
 	mov	r0, #0x10

@@ -132,7 +132,7 @@
 	bl	__GetFlag
 	cmp	r0, #0
 	bne	.L170
-	ldr	r0, =0x1280
+	ldr	r0, =_MSG_1280
 	bl	__MessageID
 	b	.L176
 .L170:

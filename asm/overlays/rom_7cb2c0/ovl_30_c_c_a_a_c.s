@@ -185,7 +185,7 @@
 	bl	__CutsceneStart
 	mov	r0, r5
 	bl	OvlFunc_945_2009190
-	ldr	r0, =0x1ea0
+	ldr	r0, =_MSG_1ea0
 	bl	__MessageID
 	mov	r0, #0xb
 	bl	OvlFunc_945_200c86c

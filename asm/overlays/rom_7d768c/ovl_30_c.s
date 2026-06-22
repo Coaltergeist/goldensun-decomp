@@ -619,7 +619,7 @@
 .thumb_func_start OvlFunc_952_2008674
 	push	{r5, r6, lr}
 	bl	__CutsceneStart
-	ldr	r0, =0x2280
+	ldr	r0, =_MSG_2280
 	bl	__MessageID
 	mov	r0, #0
 	bl	__MapActor_GetActor

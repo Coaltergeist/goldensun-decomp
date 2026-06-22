@@ -274,7 +274,7 @@
 	bl	__GetFlag
 	cmp	r0, #0
 	beq	.L840
-	ldr	r0, =0x1cc0
+	ldr	r0, =_MSG_1cc0
 	bl	__MessageID
 	mov	r0, #0xe
 	bl	OvlFunc_901_20084b4

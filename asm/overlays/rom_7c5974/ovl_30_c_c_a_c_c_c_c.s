@@ -55,7 +55,7 @@
 	b	.L212
 .L1fc:
 	bl	__CutsceneStart
-	ldr	r0, =0x1be0
+	ldr	r0, =_MSG_1be0
 	bl	__MessageID
 	mov	r0, #0x10
 	mov	r1, #0

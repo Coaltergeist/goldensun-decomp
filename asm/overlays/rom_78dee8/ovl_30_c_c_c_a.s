@@ -1242,7 +1242,7 @@
 	bl	__Func_8091c7c
 	cmp	r0, #0
 	bne	.L1442
-	ldr	r0, =0xfe0
+	ldr	r0, =_MSG_fe0
 	bl	__MessageID
 	mov	r0, #1
 	mov	r1, #1

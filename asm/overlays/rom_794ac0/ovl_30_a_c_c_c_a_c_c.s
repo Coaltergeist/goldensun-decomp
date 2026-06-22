@@ -10,7 +10,7 @@
 	bl	__Func_80925cc
 	mov	r0, #0x14
 	bl	__CutsceneWait
-	ldr	r0, =0x12a0
+	ldr	r0, =_MSG_12a0
 	bl	__MessageID
 	mov	r0, #0x18
 	mov	r1, #0x14

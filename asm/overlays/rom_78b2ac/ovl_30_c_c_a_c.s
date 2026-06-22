@@ -620,7 +620,7 @@
 	bl	__Func_8091c7c
 	cmp	r0, #0
 	bne	.L850
-	ldr	r0, =0xff0
+	ldr	r0, =_MSG_ff0
 	bl	__MessageID
 	b	.L860
 
@@ -1015,7 +1015,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	bl	__MapActor_SetAnim
-	ldr	r0, =0x1000
+	ldr	r0, =_MSG_1000
 	bl	__MessageID
 	mov	r0, #0x81
 	lsl	r0, #4
