@@ -39,6 +39,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 │   ├── rom_9000/        #   ...
 │   ├── overlays/        #   Per-overlay matched .c + glue .s
 │   │   └── rom_XXXXXX/
+|   ├── lib/             # GBA libraries such as m4a or libagbflash
 │   └── non_matching/    #   Parked .c that decompiles but doesn't byte-match
 ├── asm/                 # Active disassembly (.s files awaiting decompilation)
 │   ├── rom_c0/          #   Decomp-target .s files per bank
@@ -52,7 +53,6 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 │       ├── orig.bin     #   Uncompressed overlay (extracted from baserom)
 │       └── overlay.lz   #   Compressed overlay binary (build output)
 ├── include/             # Assembler macros (.inc) and constants
-├── lib/                 # Shared assembly (call_via.s)
 ├── tools/               # gcc-2.96 toolchain (installed via camelot-gcc), asm-differ wrapper
 ├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names; hand-curated seed)
 ├── aliases.sym          # Merged symbol aliases
