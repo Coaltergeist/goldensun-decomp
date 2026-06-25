@@ -221,3 +221,103 @@ void MatrixRotateTransScale(s32 *angles, vec3_t *t, vec3_t *s) {
     m[3][2] = t->z;
     MatrixMultiply(&m);
 }
+
+extern fx32 FastIntSqrtFP1616_RAM(fx32 x);
+extern u32 udivsi3_RAM(u32, u32);
+extern u16 DistSquared(fx32, fx32, fx32, fx32, fx32, fx32);
+extern s32 Func_8000948(s32 n);
+
+static inline s32 sqrt(s32 n) {
+    s32 (*func)(s32) = Func_8000948;
+    return func(n);
+}
+
+#define FX_ONE 0x00010000  /* 1.0 in 16.16 */
+
+static inline u32 FastDivide(u32 a, u32 b) {
+    register u32 (*divide)(u32, u32) = udivsi3_RAM;
+    return divide(a,b);
+}
+
+#define fx_reciprocal(_x) FastDivide(0x80000000, _x)
+
+void MakeLookMatrix(vec3_t *eye, vec3_t *target, matrix_t *out)
+{
+    fx32 recip;
+    fx32 temp;
+    register fx32 neg_dx asm("r8"); // fakematch, reusing rz works as well, but flips r9 / fp
+    fx32 dx, dy, dz;
+    fx32 rx, ry, rz;
+    u8 funcBuf[28];
+    fx32 (*sumProducts)(fx32, fx32, fx32, fx32, fx32, fx32) = (fx32 (*)(fx32, fx32, fx32, fx32, fx32, fx32))funcBuf;
+    fx32 ex, ey, ez;
+    fx32 ux, uy, uz;
+
+    DMA3_COPY(DistSquared, funcBuf, sizeof(funcBuf));
+
+    dx = target->x - eye->x;
+    dy = target->y - eye->y;
+    dz = target->z - eye->z;
+
+    recip = fx_reciprocal(sqrt(sumProducts(dx >> 8, dx >> 8, dy >> 8, dy >> 8, dz >> 8, dz >> 8))) >> 15;
+    recip *= -1;
+    dx = fx32_multiply(dx, recip);
+    dy = fx32_multiply(dy, recip);
+    temp = fx32_multiply(dz, recip);
+
+    // fakematch instruction order
+
+    do {
+        neg_dx = -dx;
+    } while (0);
+    dz = temp;
+    temp = fx32_multiply(dy, dy);
+
+    recip = FX_ONE;
+    temp = FX_ONE - temp;
+    if ((temp) > 0) {
+        recip = fx_reciprocal(FastIntSqrtFP1616_RAM(temp)) << 1;
+    }
+
+    rx = fx32_multiply(dz, recip);
+    ry = 0;
+    rz = fx32_multiply(neg_dx, recip);
+
+    ux = fx32_multiply(dy, rz);
+    uy = fx32_multiply(dz, rx) - fx32_multiply(dx, rz);
+    uz = -fx32_multiply(dy, rx);
+
+    recip = fx_reciprocal(FastIntSqrtFP1616_RAM(sumProducts(ux, ux, uy, uy, uz, uz))) << 1;
+    ux = fx32_multiply(ux, recip);
+    uy = fx32_multiply(uy, recip);
+    uz = fx32_multiply(uz, recip);
+
+    ex = eye->x;
+    ey = eye->y;
+    ez = eye->z;
+
+    (*out)[0][0] = rx;
+    (*out)[1][0] = ry;
+    (*out)[2][0] = rz;
+    (*out)[3][0] = -sumProducts(ex, rx, ez, rz, ry, ry);
+
+    (*out)[0][1] = ux;
+    (*out)[1][1] = uy;
+    (*out)[2][1] = uz;
+    (*out)[3][1] = -sumProducts(ex, ux, ey, uy, ez, uz);
+
+    (*out)[0][2] = dx;
+    (*out)[1][2] = dy;
+    (*out)[2][2] = dz;
+    (*out)[3][2] = -sumProducts(ex, dx, ey, dy, ez, dz);
+}
+
+void MatrixSetLook(vec3_t *a, vec3_t *b) {
+    MakeLookMatrix(a, b, &Data_8000ac0);
+}
+
+void MatrixLook(vec3_t *a, vec3_t *b) {
+    matrix_t m;
+    MakeLookMatrix(a, b, &m);
+    MatrixMultiply(&m);
+}
