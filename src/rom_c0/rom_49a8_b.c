@@ -69,7 +69,7 @@ void MatrixPop(void) {
 }
 
 void MatrixReset(void) {
-    register fx32 *m asm("r3") = &Data_8000ac0;
+    register matrix_t *m asm("r3") = &Data_8000ac0;
     MatrixResetRaw(m);
 }
 
@@ -320,4 +320,78 @@ void MatrixLook(vec3_t *a, vec3_t *b) {
     matrix_t m;
     MakeLookMatrix(a, b, &m);
     MatrixMultiply(&m);
+}
+
+struct Projection {
+    fx32 focal;
+    fx32 zMin;
+    fx32 zMax;
+    s32 originX;
+    s32 originY;
+};
+
+extern struct Projection gPhysVec;
+extern fx32 Func_80008ac(fx32 num, fx32 denom);
+
+static inline fx32 FxDiv(fx32 num, fx32 denom) {
+    fx32 (*divide)(fx32, fx32) = Func_80008ac;
+    return divide(num, denom);
+}
+
+void Func_8005208(u32 angle, fx32 zMin, fx32 zMax) {
+    s32 f;
+    s32 argument;
+    s32 sinus;
+    s32 cosinus;
+
+    argument = (s32) angle / 2;
+    sinus = sin(argument);
+    cosinus = cos(argument);
+    f = FxDiv(sinus, cosinus * 0x50);
+    gPhysVec.zMin = zMin;
+    gPhysVec.focal = f;
+    gPhysVec.zMax = zMax;
+}
+
+void Func_8005258(fx32 focal, fx32 zMin, fx32 zMax) {
+    gPhysVec.focal = focal;
+    gPhysVec.zMin = zMin;
+    gPhysVec.zMax = zMax;
+}
+
+void Func_80009c0(vec3_t *a, vec3_t *b);
+
+static inline void Vec3Transform(vec3_t *a, vec3_t *b) {
+    void (*transform)(vec3_t *, vec3_t *) = Func_80009c0;
+    transform(a, b);
+}
+
+s32 PhysMove(vec3_t *src, vec3_t *dst) {
+    fx32 scale;
+    fx32 depth;
+    struct Projection *projection;
+    s32  result;
+    Vec3Transform(src, dst);
+
+    result = 0;
+    projection =  &gPhysVec;
+    depth = -dst->z;
+    if (depth >= projection->zMin && depth <= projection->zMax) {
+        dst->z = depth >> 16;
+
+        if (projection->focal != 0) {
+            fx32 d = (u32) depth >> 11;
+            fx32 f = projection->focal << 5;
+            scale = FastDivide(f, d);
+        } else {
+            scale = 0x151EB;
+        }
+
+        dst->x = projection->originX + fx32_multiply(dst->x, scale) / 0x10000;
+        dst->y = projection->originY - fx32_multiply(dst->y, scale) / 0x10000;
+
+        result = scale;
+    }
+
+    return result;
 }
