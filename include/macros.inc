@@ -32,6 +32,13 @@
 	.ssize	\sym
 	.endm
 
+	.macro .func_end_emit_size sym:req, sizesym:req
+		.func_end \sym
+		\sym\()_End:
+		.global \sizesym
+		\sizesym = \sym\()_End - \sym
+	.endm
+
 	.macro .incrom start, end
 	.incbin "baserom.gba", \start, \end - \start
 	.endm

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_8001b70  @ 0x08001b70
+.arm_func_start DecompressLZ1_ROM  @ 0x08001b70
 	push	{r1, r5, r6, r7, lr}
 .L1b74:
 	ldrb	r14, [r0], #1
@@ -159,7 +159,7 @@
 	pop	{r0, r5, r6, r7, r12}
 	sub	r0, r1, r0
 	bx	r12
-.func_end Func_8001b70
+.func_end_emit_size DecompressLZ1_ROM, _DECOMPRESS_LZ1_SIZE
 
 .arm_func_start Func_8001dc8  @ 0x08001dc8
 	push	{r5, r6, r7, r8, r9, lr}
@@ -221,7 +221,7 @@
 	bx	lr
 .func_end Func_8001dc8
 
-.arm_func_start Func_8001ea8  @ 0x08001ea8
+.arm_func_start BlitFade_Div4_ROM  @ 0x08001ea8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -243,9 +243,9 @@
 	bne	.L1ebc
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_8001ea8
+.func_end_emit_size BlitFade_Div4_ROM, _BLITFADE_DIV4_SIZE
 
-.arm_func_start Func_8001ef8  @ 0x08001ef8
+.arm_func_start BlitFade_Div2_ROM  @ 0x08001ef8
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -263,9 +263,9 @@
 	bne	.L1f0c
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_8001ef8
+.func_end_emit_size BlitFade_Div2_ROM, _BLITFADE_DIV2_SIZE
 
-.arm_func_start Func_8001f38  @ 0x08001f38
+.arm_func_start BlitFade_Sub_ROM  @ 0x08001f38
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -299,9 +299,9 @@
 	bne	.L1f5c
 	pop	{r5, r6, r7, r8, r12}
 	bx	r12
-.func_end Func_8001f38
+.func_end_emit_size BlitFade_Sub_ROM, _BLITFADE_SUB_SIZE
 
-.arm_func_start Func_8001fb8  @ 0x08001fb8
+.arm_func_start BlitFade_Add_ROM  @ 0x08001fb8
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -336,9 +336,9 @@
 	bne	.L1fd0
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_8001fb8
+.func_end_emit_size BlitFade_Add_ROM, _BLITFADE_ADD_SIZE
 
-.arm_func_start Func_800203c  @ 0x0800203c
+.arm_func_start BlitFadeAlt_Div4_ROM  @ 0x0800203c
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -363,9 +363,9 @@
 	bne	.L2050
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_800203c
+.func_end_emit_size BlitFadeAlt_Div4_ROM, _BLITFADE_ALT_DIV4_SIZE
 
-.arm_func_start Func_8002098  @ 0x08002098
+.arm_func_start BlitFadeAlt_Div2_ROM  @ 0x08002098
 	push	{r5, r6}
 	add	r2, r0
 	mov	r12, #0x3f00
@@ -390,9 +390,9 @@
 	bne	.L20ac
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_8002098
+.func_end_emit_size BlitFadeAlt_Div2_ROM, _BLITFADE_ALT_DIV2_SIZE
 
-.arm_func_start Func_80020f4  @ 0x080020f4
+.arm_func_start BlitFadeAlt_Sub_ROM  @ 0x080020f4
 	rsb	r12, r1, #0x80000000
 	add	r12, #0x800000
 	add	r12, #0x8000
@@ -454,9 +454,9 @@
 .L21bc:
 	pop	{r5, r6, r7, r8, r12}
 	bx	r12
-.func_end Func_80020f4
+.func_end_emit_size BlitFadeAlt_Sub_ROM, _BLITFADE_ALT_SUB_SIZE
 
-.arm_func_start Func_80021c4  @ 0x080021c4
+.arm_func_start BlitFadeAlt_Add_ROM  @ 0x080021c4
 	push	{r5, r6, r7, r8, r9}
 	mov	r8, #0x40
 	orr	r8, r8, lsl #8
@@ -519,9 +519,9 @@
 .L2290:
 	pop	{r5, r6, r7, r8, r9}
 	bx	lr
-.func_end Func_80021c4
+.func_end_emit_size BlitFadeAlt_Add_ROM, _BLITFADE_ALT_ADD_SIZE
 
-.arm_func_start Func_8002298  @ 0x08002298
+.arm_func_start DecompressLZ16_ROM  @ 0x08002298
 	mov	r3, #0x80000000
 	b	.L22a4
 .L22a0:
@@ -548,7 +548,7 @@
 	subs	r2, #1
 	bne	.L22d8
 	b	.L22a4
-.func_end Func_8002298
+.func_end_emit_size DecompressLZ16_ROM, _DECOMPRESS_LZ16_SIZE
 
 .thumb_stub __divsi3, divsi3_RAM, r3
 .thumb_stub __udivsi3, udivsi3_RAM, r3
