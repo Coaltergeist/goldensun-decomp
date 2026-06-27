@@ -1,28 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_929_2008328
-	push	{r5, lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #8
-	bne	.L33e
-	ldr	r0, =.L9c8
-	b	.L348
-.L33e:
-	ldr	r5, =.L890
-	mov	r0, r5
-	bl	__Func_808b868
-	mov	r0, r5
-.L348:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_929_2008328
-
 .thumb_func_start OvlFunc_929_200835c
 	push	{r5, lr}
 	mov	r0, #0
