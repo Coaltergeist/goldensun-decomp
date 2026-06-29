@@ -1742,19 +1742,3 @@
 	.word	0xff
 .func_end Func_80b6c08
 
-.thumb_func_start Func_80b6c90  @ 0x080b6c90
-	push	{r5, lr}
-	sub	sp, #0x1c
-	mov	r5, sp
-	mov	r1, r5
-	mov	r0, #3
-	bl	Func_80b6c08
-	mov	r0, r5
-	mov	r1, #1
-	bl	CreateBattleSpriteOverlays
-	add	sp, #0x1c
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80b6c90
-
