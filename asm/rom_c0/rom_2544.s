@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.arm_func_start Func_8002544  @ 0x08002544
+.arm_func_start DecompressLZ_ROM  @ 0x08002544
 	push	{r5, r6, r7, r9, lr}
 	ldrb	r2, [r0], #1
 	cmp	r2, #0
@@ -205,9 +205,9 @@
 	ldrb	r3, [r0], #1
 	add	r3, #0x10
 	b	.L27d8
-.func_end Func_8002544
+.func_end_emit_size DecompressLZ_ROM, _DECOMPRESS_LZ_SIZE
 
-.arm_func_start Func_8002808  @ 0x08002808
+.arm_func_start DecompressLZ2_ROM  @ 0x08002808
 	ldrb	r2, [r0], #1
 	cmp	r2, #2
 	movne	r0, #4
@@ -547,7 +547,7 @@
 	and	r8, r12, r10, lsr #28
 	lsl	r9, r10, #4
 	b	.L2c10
-.func_end Func_8002808
+.func_end_emit_size DecompressLZ2_ROM, _DECOMPRESS_LZ2_SIZE
 
 .arm_func_start Func_8002cf4  @ 0x08002cf4
 	stmfd	sp!, {r5}
@@ -582,7 +582,7 @@
 	b	.L2d3c
 .func_end Func_8002cf4
 
-.arm_func_start ROM_FixupRamCode  @ 0x08002d5c
+.arm_func_start FixupRamCode_ROM  @ 0x08002d5c
 	push	{r5, r6}
 	add	r1, r1
 	add	r2, r0, r1
@@ -616,7 +616,4 @@
 .L2dd0:
 	pop	{r5, r6}
 	bx	lr
-ROM_FixupRamCode_End:
-.func_end ROM_FixupRamCode
-.global _FIXUP_RAM_CODE_SIZE
-_FIXUP_RAM_CODE_SIZE = ROM_FixupRamCode_End - ROM_FixupRamCode
+.func_end_emit_size FixupRamCode_ROM, _FIXUP_RAM_CODE_SIZE
