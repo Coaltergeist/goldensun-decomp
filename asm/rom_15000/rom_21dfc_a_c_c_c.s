@@ -1,25 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8021e48  @ 0x08021e48
-	push	{r5, lr}
-	mov	r3, #1
-	bl	Func_8017658
-	mov	r5, r0
-	b	.L21e5a
-.L21e54:
-	mov	r0, #1
-	bl	WaitFrames
-.L21e5a:
-	bl	Func_8017364
-	cmp	r0, #0
-	beq	.L21e54
-	mov	r0, r5
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_8021e48
-
 .thumb_func_start MenuBar  @ 0x08021e6c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

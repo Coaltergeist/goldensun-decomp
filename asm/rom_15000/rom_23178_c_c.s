@@ -1,30 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start CollectDjinni  @ 0x080294d4
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r5, r1
-	mov	r8, r0
-	lsl	r0, r5, #2
-	add	r0, r5
-	mov	r6, r2
-	lsl	r0, #2
-	add	r0, r6
-	add	r0, #0x30
-	bl	_SetFlag
-	mov	r0, r8
-	mov	r1, r5
-	mov	r2, r6
-	bl	_GiveDjinni
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end CollectDjinni
-
 .thumb_func_start StartMenu  @ 0x08029504
 	push	{r5, r6, lr}
 .L29506:

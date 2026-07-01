@@ -89,37 +89,3 @@
 	bx	r1
 .func_end Func_8079664
 
-.thumb_func_start Func_80796c4  @ 0x080796c4
-	push	{r5, lr}
-	mov	r5, r0
-	mov	r0, #0
-	cmp	r5, #0
-	beq	.L796f2
-	bl	GetPartySize
-	mov	r1, #0
-	cmp	r0, #0
-	beq	.L796ee
-	ldr	r3, =gState
-	mov	r4, #0xfc
-	lsl	r4, #1
-	add	r2, r3, r4
-.L796e0:
-	ldrb	r3, [r2]
-	add	r1, #1
-	strh	r3, [r5]
-	add	r2, #1
-	add	r5, #2
-	cmp	r1, r0
-	bne	.L796e0
-.L796ee:
-	ldr	r3, .L796f8	@ 0xff
-	strh	r3, [r5]
-.L796f2:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-	.align	2, 0
-.L796f8:
-	.word	0xff
-.func_end Func_80796c4
-

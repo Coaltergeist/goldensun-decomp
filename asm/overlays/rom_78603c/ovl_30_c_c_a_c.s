@@ -1,27 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_885_20080a4
-	push	{lr}
-	ldr	r0, =0x87a
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Lb4
-	ldr	r0, =.L2028
-	b	.Lc4
-.Lb4:
-	ldr	r0, =0x834
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Lc2
-	ldr	r0, =.L1fb0
-	b	.Lc4
-.Lc2:
-	ldr	r0, =.L1efc
-.Lc4:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_885_20080a4
-
 .thumb_func_start OvlFunc_885_20080dc
 	push	{r5, lr}
 	bl	__CutsceneStart

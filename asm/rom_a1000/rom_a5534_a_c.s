@@ -1,29 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_80a5534  @ 0x080a5534
-	push	{r5, lr}
-	ldr	r3, =iwram_3001f2c
-	ldr	r5, [r3]
-	bl	AllocSpriteSlot
-	ldr	r2, =0x392
-	add	r3, r5, r2
-	strh	r0, [r3]
-	ldr	r2, =.Laebcc
-	mov	r1, #0x80
-	bl	UploadSpriteGFX
-	bl	AllocSpriteSlot
-	mov	r3, #0xe5
-	lsl	r3, #2
-	add	r5, r3
-	strh	r0, [r5]
-	ldr	r2, =.Laeb4c
-	mov	r1, #0x80
-	bl	UploadSpriteGFX
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80a5534
-
 .thumb_func_start Func_80a5578  @ 0x080a5578
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

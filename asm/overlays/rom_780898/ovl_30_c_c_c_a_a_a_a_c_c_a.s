@@ -59,21 +59,3 @@
 	bx	r0
 .func_end OvlFunc_883_2008dc0
 
-.thumb_func_start OvlFunc_883_2008df0
-	push	{lr}
-	ldr	r0, =0x801
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.Le02
-	bl	OvlFunc_883_2008fec
-	b	.Le0e
-.Le02:
-	mov	r0, #0x7b
-	bl	__PlaySound
-	mov	r0, #1
-	bl	__Func_8091e9c
-.Le0e:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_883_2008df0
-
