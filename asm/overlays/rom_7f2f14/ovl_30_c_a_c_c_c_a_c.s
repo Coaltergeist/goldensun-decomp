@@ -1,21 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_968_20099f0
-	push	{lr}
-	bl	__CutsceneStart
-	bl	OvlFunc_968_2008cc8
-	cmp	r0, #0
-	bne	.L1a0a
-	bl	OvlFunc_968_200999c
-	bl	OvlFunc_968_2008374
-	bl	OvlFunc_968_20099c0
-.L1a0a:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_968_20099f0
-
 .thumb_func_start OvlFunc_968_2009a14
 	push	{lr}
 	mov	r2, #0x23

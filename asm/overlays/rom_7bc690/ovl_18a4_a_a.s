@@ -403,38 +403,3 @@
 	bx	r0
 .func_end OvlFunc_933_20098a4
 
-.thumb_func_start OvlFunc_933_2009c1c
-	push	{r5, lr}
-	ldr	r1, =.L2730
-	ldr	r0, =OvlData_933_2009fa0
-	bl	__DecompressLZ
-	ldr	r5, =.L26d0
-	bl	__AllocSpriteSlot
-	mov	r1, #0x90
-	strh	r0, [r5]
-	lsl	r0, #16
-	lsl	r1, #3
-	mov	r2, #0
-	asr	r0, #16
-	bl	__UploadSpriteGFX
-	ldr	r2, .L1c50	@ 0
-	ldr	r3, =.L26be
-	strh	r2, [r3]
-	ldr	r3, =.L3030
-	ldr	r1, =0xc76
-	strh	r2, [r3]
-	ldr	r0, =OvlFunc_933_20098a4
-	bl	__StartTask
-	b	.L1c70
-
-	.align	2, 0
-.L1c50:
-	.word	0
-	.pool
-
-.L1c70:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_933_2009c1c
-

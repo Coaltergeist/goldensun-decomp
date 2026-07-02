@@ -169,30 +169,3 @@
 	bx	r0
 .func_end Func_8099920
 
-.thumb_func_start Func_80999a8  @ 0x080999a8
-	push	{r5, r6, lr}
-	mov	r6, r0
-	ldr	r2, =0xffffb334
-	ldr	r3, [r6, #0xc]
-	add	r3, r2
-	str	r3, [r6, #0xc]
-	bl	Random
-	mov	r5, r0
-	bl	Random
-	ldr	r3, [r6, #8]
-	sub	r5, r0
-	add	r3, r5
-	str	r3, [r6, #8]
-	ldr	r2, [r6, #0xc]
-	ldr	r3, [r6, #0x14]
-	cmp	r2, r3
-	bgt	.L999d6
-	ldr	r1, =Data_9f0b0
-	mov	r0, r6
-	bl	_Actor_SetScript
-.L999d6:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_80999a8
-
