@@ -265,28 +265,3 @@
 	bx	r1
 .func_end Func_80a40ac
 
-.thumb_func_start Func_80a4110  @ 0x080a4110
-	push	{lr}
-	cmp	r0, #2
-	bgt	.La4122
-	cmp	r1, #2
-	bgt	.La4122
-	cmp	r0, #0
-	blt	.La4122
-	cmp	r1, #0
-	bge	.La4126
-.La4122:
-	mov	r0, #0
-	b	.La4132
-.La4126:
-	lsl	r2, r1, #1
-	add	r2, r1
-	add	r2, r0
-	ldr	r3, =.Laf2e4
-	lsl	r2, #2
-	ldr	r0, [r3, r2]
-.La4132:
-	pop	{r1}
-	bx	r1
-.func_end Func_80a4110
-
