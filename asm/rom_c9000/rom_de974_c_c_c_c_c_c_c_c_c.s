@@ -1,29 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Anim_Blizzard  @ 0x080dea3c
-	push	{r5, r6, lr}
-	mov	r6, r0
-	ldr	r0, [r6, #8]
-	bl	_GetBattleActor
-	ldr	r5, [r0]
-	mov	r1, #2
-	mov	r0, r5
-	bl	_Actor_SetAnim
-	mov	r0, r5
-	mov	r1, #0x30
-	bl	_Actor_SetAnimSpeed
-	mov	r0, r6
-	mov	r1, #9
-	bl	BaseAnim_ParticleSpray
-	mov	r0, r5
-	mov	r1, #0x10
-	bl	_Actor_SetAnimSpeed
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Anim_Blizzard
-
 .thumb_func_start BaseAnim_ParticleSpray  @ 0x080dea70
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

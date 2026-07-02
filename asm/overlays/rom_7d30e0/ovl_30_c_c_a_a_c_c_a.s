@@ -210,31 +210,3 @@
 	bx	r0
 .func_end OvlFunc_948_2009bc4
 
-.thumb_func_start OvlFunc_948_2009c28
-	push	{lr}
-	mov	r0, #9
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	cmp	r3, #0
-	bge	.L1c3a
-	ldr	r2, =0xfffff
-	add	r3, r2
-.L1c3a:
-	ldr	r0, [r0, #0x10]
-	asr	r3, #20
-	cmp	r0, #0
-	bge	.L1c46
-	ldr	r2, =0xfffff
-	add	r0, r2
-.L1c46:
-	asr	r0, #20
-	cmp	r3, #0x2d
-	bne	.L1c54
-	cmp	r0, #0x2b
-	bne	.L1c54
-	bl	OvlFunc_948_2009bc4
-.L1c54:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_948_2009c28
-

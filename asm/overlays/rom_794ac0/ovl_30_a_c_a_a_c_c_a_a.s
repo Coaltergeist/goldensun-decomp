@@ -31,34 +31,3 @@
 	bx	r0
 .func_end OvlFunc_899_2008378
 
-.thumb_func_start OvlFunc_899_20083bc
-	push	{r5, lr}
-	mov	r5, r0
-	mov	r1, #0
-	mov	r2, #2
-	bl	OvlFunc_899_200c624
-	mov	r1, #0
-	mov	r0, r5
-	bl	__Func_8092c40
-	mov	r0, #0
-	mov	r1, #0
-	bl	__Func_8091c7c
-	cmp	r0, #0
-	beq	.L3ec
-	ldr	r3, =iwram_3001ebc
-	ldr	r2, [r3]
-	mov	r3, #0xec
-	lsl	r3, #1
-	add	r2, r3
-	ldrh	r3, [r2]
-	add	r3, #1
-	strh	r3, [r2]
-.L3ec:
-	mov	r0, r5
-	mov	r1, #0
-	bl	__ActorMessage
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_899_20083bc
-
