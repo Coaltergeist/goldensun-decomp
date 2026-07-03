@@ -1461,30 +1461,3 @@
 	bx	r0
 .func_end Func_8017248
 
-.thumb_func_start Func_8017364  @ 0x08017364
-	push	{lr}
-	ldr	r3, =iwram_3001e8c
-	mov	r1, #0xc4
-	ldr	r3, [r3]
-	lsl	r1, #3
-	add	r2, r3, r1
-	mov	r1, #0
-.L17372:
-	ldr	r3, [r2]
-	cmp	r3, #0
-	beq	.L17380
-	ldrh	r3, [r3, #0x14]
-	mov	r0, #0
-	cmp	r3, #0
-	beq	.L1738a
-.L17380:
-	add	r1, #1
-	add	r2, #0x28
-	cmp	r1, #3
-	bne	.L17372
-	mov	r0, #1
-.L1738a:
-	pop	{r1}
-	bx	r1
-.func_end Func_8017364
-

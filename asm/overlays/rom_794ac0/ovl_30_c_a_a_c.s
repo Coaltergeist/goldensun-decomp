@@ -1,32 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_899_200af98
-	push	{lr}
-	bl	__Func_80bf65c
-	mov	r0, #2
-	bl	__GetUnit
-	add	r0, #0xf8
-	ldr	r3, [r0]
-	mov	r2, #1
-	and	r3, r2
-	cmp	r3, #0
-	beq	.L2fce
-	mov	r1, #0
-	mov	r2, #0
-	mov	r3, #0
-	mov	r0, #2
-	bl	__Func_807a498
-	mov	r0, #0x7e
-	bl	__PlaySound
-	mov	r0, #0
-	bl	__CalcStats
-	mov	r0, #2
-	bl	__CalcStats
-.L2fce:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_899_200af98
-
 .thumb_func_start OvlFunc_899_200afd4
 	push	{r5, r6, lr}
 	mov	r0, #0xc

@@ -994,34 +994,3 @@
 	bx	r1
 .func_end OvlFunc_945_2009280
 
-.thumb_func_start OvlFunc_945_20092dc
-	push	{r5, lr}
-	ldr	r0, =0x92b
-	mov	r5, #0
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L12ee
-	mov	r5, #3
-	b	.L1308
-.L12ee:
-	ldr	r0, =0x92a
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L12fc
-	mov	r5, #2
-	b	.L1308
-.L12fc:
-	ldr	r0, =0x929
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L1308
-	mov	r5, #1
-.L1308:
-	mov	r0, r5
-	mov	r1, #1
-	bl	OvlFunc_945_200cfa8
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_945_20092dc
-

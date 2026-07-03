@@ -1,34 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_945_200c8ac
-	push	{r5, r6, lr}
-	mov	r5, r3
-	mov	r3, #1
-	bic	r3, r5
-	bl	__Func_80933f8
-	mov	r3, #0x80
-	ldr	r6, =0x1111
-	lsl	r3, #21
-	and	r3, r5
-	and	r6, r5
-	cmp	r3, #0
-	beq	.L48ca
-	bl	__Func_8093530
-.L48ca:
-	mov	r3, #0x80
-	lsl	r3, #17
-	and	r3, r5
-	cmp	r3, #0
-	beq	.L48d8
-	bl	__Func_800fe9c
-.L48d8:
-	mov	r0, r6
-	bl	__CutsceneWait
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_945_200c8ac
-
 .thumb_func_start OvlFunc_945_200c8e8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10

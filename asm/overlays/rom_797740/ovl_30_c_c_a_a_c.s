@@ -1,43 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_900_2008044
-	push	{lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xa
-	bne	.L5a
-	ldr	r0, =.L3bc
-	b	.L5c
-.L5a:
-	ldr	r0, =gOvl_0200835c
-.L5c:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_900_2008044
-
-.thumb_func_start OvlFunc_900_200806c
-	push	{lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xa
-	bne	.L82
-	ldr	r0, =MapEntrance_ARRAY_937__020084a0
-	b	.L84
-.L82:
-	ldr	r0, =.L3ec
-.L84:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_900_200806c
-
 .thumb_func_start OvlFunc_900_2008094
 	push	{lr}
 	bl	__CutsceneStart

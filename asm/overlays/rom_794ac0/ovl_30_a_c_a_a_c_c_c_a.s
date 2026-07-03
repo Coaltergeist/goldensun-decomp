@@ -55,24 +55,3 @@
 	bx	r0
 .func_end OvlFunc_899_2008454
 
-.thumb_func_start OvlFunc_899_20084bc
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x855
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L4d4
-	ldr	r0, =0x1243
-	bl	__MessageID
-	b	.L4da
-.L4d4:
-	ldr	r0, =0x1353
-	bl	__MessageID
-.L4da:
-	mov	r0, #9
-	bl	OvlFunc_899_2008354
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_899_20084bc
-
