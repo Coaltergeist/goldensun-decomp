@@ -1,45 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8005e88  @ 0x08005e88
-	ldr	r0, =REG_IME
-	ldr	r4, .L5eb4	@ 0
-	ldr	r1, =REG_IE
-	strh	r4, [r0]
-	ldr	r3, =0xff3f
-	ldrh	r2, [r1]
-	and	r3, r2
-	strh	r3, [r1]
-	ldr	r3, .L5eb8	@ 1
-	ldr	r2, =REG_SIOCNT
-	strh	r3, [r0]
-	ldr	r3, .L5ebc	@ 0x2003
-	strh	r3, [r2]
-	ldr	r3, =0xc963
-	sub	r2, #0x1c
-	str	r3, [r2]
-	ldr	r3, .L5ec0	@ 0xc0
-	add	r2, #0xf6
-	strh	r3, [r2]
-	ldr	r3, =ewram_2002240
-	strb	r4, [r3, #8]
-	b	.L5edc
-
-	.align	2, 0
-.L5eb4:
-	.word	0
-.L5eb8:
-	.word	1
-.L5ebc:
-	.word	0x2003
-.L5ec0:
-	.word	0xc0
-	.pool
-
-.L5edc:
-	bx	lr
-.func_end Func_8005e88
-
 .thumb_func_start Func_8005ee0  @ 0x08005ee0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8

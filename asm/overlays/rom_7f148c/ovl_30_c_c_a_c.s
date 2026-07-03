@@ -1,20 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_966_2008054
-	push	{lr}
-	ldr	r0, =0x9a7
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L64
-	ldr	r0, =.L1a98
-	b	.L66
-.L64:
-	ldr	r0, =.L1900
-.L66:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_966_2008054
-
 .thumb_func_start OvlFunc_966_2008078
 	push	{r5, r6, lr}
 	mov	r6, r0
