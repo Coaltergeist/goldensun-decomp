@@ -1,31 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079ae8  @ 0x08079ae8
-	push	{r5, r6, lr}
-	mov	r5, r0
-	bl	GetUnit
-	mov	r2, #0x94
-	mov	r6, r0
-	lsl	r2, #1
-	add	r3, r6, r2
-	mov	r1, r6
-	add	r1, #0xf8
-	ldrb	r0, [r3]
-	bl	Func_80799b0
-	ldr	r2, =0x129
-	add	r3, r6, r2
-	strb	r0, [r3]
-	mov	r0, r5
-	bl	Func_8078bf0
-	mov	r1, r6
-	add	r1, #0x24
-	mov	r0, r5
-	bl	Func_80798e0
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_8079ae8
-
 .thumb_func_start Func_8079b24  @ 0x08079b24
 	push	{r5, r6, r7, lr}
 	mov	r7, r8

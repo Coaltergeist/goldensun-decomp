@@ -1,31 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start ActorCmd_Unused  @ 0x0800dac0
-	push	{r5, lr}
-	sub	sp, #0xc
-	mov	r5, r0
-	mov	r0, sp
-	ldr	r3, [r0]
-	ldr	r1, [r5, #8]
-	ldr	r2, [r5, #0xc]
-	add	r1, r3
-	ldr	r3, [r0, #4]
-	ldr	r0, [r0, #8]
-	add	r2, r3
-	ldr	r3, [r5, #0x10]
-	add	r3, r0
-	mov	r0, r5
-	bl	Actor_TravelTo
-	ldrh	r3, [r5, #4]
-	add	r3, #3
-	mov	r0, #1
-	strh	r3, [r5, #4]
-	add	sp, #0xc
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end ActorCmd_Unused
-
 .thumb_func_start ActorCmd_Camera  @ 0x0800daf0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

@@ -1,28 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_800f9cc  @ 0x0800f9cc
-	push	{lr}
-	mov	r3, #1
-	sub	r1, #1
-	neg	r3, r3
-	ldr	r2, =Data_97b8
-	cmp	r1, r3
-	beq	.Lf9ea
-	mov	r12, r3
-.Lf9dc:
-	ldrb	r3, [r0]
-	ldrb	r3, [r2, r3]
-	sub	r1, #1
-	strb	r3, [r0]
-	add	r0, #1
-	cmp	r1, r12
-	bne	.Lf9dc
-.Lf9ea:
-	pop	{r0}
-	bx	r0
-.func_end Func_800f9cc
-
 .thumb_func_start DecodeMetatileset  @ 0x0800f9f4
 	push	{r5, r6, r7, lr}
 	sub	r3, r0, #1
