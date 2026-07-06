@@ -93,29 +93,3 @@
 	bx	r0
 .func_end OvlFunc_922_2009b1c
 
-.thumb_func_start OvlFunc_922_2009b9c
-	push	{r5, lr}
-	bl	__CutsceneStart
-	ldr	r5, =.L2488
-	ldr	r0, [r5]
-	cmp	r0, #0
-	beq	.L1bb0
-	mov	r1, #3
-	bl	__Func_808f140
-.L1bb0:
-	mov	r1, #0
-	mov	r0, #0xe6
-	bl	__Func_8091a58
-	ldr	r0, =0xf13
-	bl	__SetFlag
-	ldr	r0, [r5]
-	cmp	r0, #0
-	beq	.L1bc8
-	bl	__DeleteActor
-.L1bc8:
-	bl	__CutsceneEnd
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_922_2009b9c
-

@@ -91,38 +91,3 @@
 	bx	r1
 .func_end OvlFunc_931_200811c
 
-.thumb_func_start OvlFunc_931_200815c
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x18bd
-	bl	__MessageID
-	mov	r1, #0
-	mov	r0, #8
-	bl	__Func_8092c40
-	mov	r0, #0
-	mov	r1, #0
-	bl	__Func_8091c7c
-	cmp	r0, #1
-	bne	.L186
-	mov	r0, #8
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.L19e
-.L186:
-	ldr	r3, =iwram_3001ebc
-	ldr	r2, [r3]
-	mov	r3, #0xec
-	lsl	r3, #1
-	add	r2, r3
-	ldrh	r3, [r2]
-	add	r3, #1
-	strh	r3, [r2]
-	mov	r0, #8
-	mov	r1, #0
-	bl	__Func_8093054
-.L19e:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_931_200815c
-

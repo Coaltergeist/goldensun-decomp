@@ -1070,27 +1070,3 @@
 	bx	r0
 .func_end OvlFunc_887_2008e34
 
-.thumb_func_start OvlFunc_887_2008ef8
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r2, #0xa
-	mov	r1, #0
-	mov	r0, #0x10
-	bl	__Func_809280c
-	ldr	r0, =0x1c13
-	bl	__MessageID
-	mov	r0, #0x10
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r1, #0xb0
-	lsl	r1, #8
-	mov	r2, #0xa
-	mov	r0, #0x10
-	bl	__Func_8092adc
-	ldr	r0, =0x301
-	bl	__SetFlag
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_887_2008ef8
-

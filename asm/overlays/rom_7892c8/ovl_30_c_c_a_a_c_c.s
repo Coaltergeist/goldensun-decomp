@@ -1,43 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_888_200b2d0
-	push	{lr}
-	bl	OvlFunc_888_200b2a8
-	cmp	r0, #0
-	beq	.L32e2
-	mov	r0, #8
-	bl	__UI_Sanctum
-	b	.L331c
-.L32e2:
-	bl	__CutsceneStart
-	ldr	r0, =0x87a
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L32f8
-	ldr	r0, =0x1bfc
-	bl	__MessageID
-	b	.L3310
-.L32f8:
-	ldr	r0, =0x815
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L330a
-	ldr	r0, =0x119d
-	bl	__MessageID
-	b	.L3310
-.L330a:
-	ldr	r0, =0x1035
-	bl	__MessageID
-.L3310:
-	mov	r0, #8
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-.L331c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_888_200b2d0
-
 .thumb_func_start OvlFunc_888_200b334
 	push	{lr}
 	bl	OvlFunc_888_200b2a8

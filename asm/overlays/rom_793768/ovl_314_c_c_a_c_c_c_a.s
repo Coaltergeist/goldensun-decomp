@@ -218,25 +218,3 @@
 	bx	r0
 .func_end OvlFunc_898_2008bec
 
-.thumb_func_start OvlFunc_898_2008c54
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x137f
-	bl	__MessageID
-	mov	r2, #2
-	mov	r0, #0x14
-	mov	r1, #0
-	bl	OvlFunc_898_200973c
-	mov	r1, #3
-	mov	r0, #0x14
-	bl	__MapActor_DoAnim
-	mov	r0, #0x14
-	bl	__CutsceneWait
-	mov	r0, #0x14
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_898_2008c54
-
