@@ -1,27 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_936_2009610
-	push	{lr}
-	ldr	r0, =OvlFunc_936_200b90c
-	bl	__StopTask
-	mov	r0, #1
-	bl	__WaitFrames
-	mov	r2, #0
-	mov	r1, #0
-	mov	r0, #0x1a
-	bl	__MapActor_SetPos
-	ldr	r0, =0x916
-	bl	__SetFlag
-	mov	r0, #0xb5
-	mov	r1, #3
-	bl	__Func_808f1c0
-	mov	r1, #0
-	mov	r0, #0xb5
-	bl	__Func_8091a58
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_936_2009610
-
 .thumb_func_start OvlFunc_936_200964c
 	push	{lr}
 	ldr	r0, =0x87a

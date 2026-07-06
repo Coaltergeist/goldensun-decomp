@@ -27,23 +27,3 @@
 	bx	r0
 .func_end OvlFunc_914_20089f8
 
-.thumb_func_start OvlFunc_914_2008a2c
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r2, #0
-	mov	r1, #0
-	mov	r0, #0xb
-	bl	__MapActor_SetPos
-	ldr	r0, =0xfd3
-	bl	__SetFlag
-	mov	r0, #0xb5
-	mov	r1, #3
-	bl	__Func_808f1c0
-	mov	r1, #0
-	mov	r0, #0xb5
-	bl	__Func_8091a58
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_914_2008a2c
-

@@ -1,25 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_898_20087b8
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x1235
-	bl	__MessageID
-	mov	r0, #0x13
-	mov	r1, #0
-	bl	__MapActor_SetAnim
-	mov	r2, #2
-	mov	r0, #0x13
-	mov	r1, #0
-	bl	OvlFunc_898_200973c
-	mov	r0, #0x13
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_898_20087b8
-
 .thumb_func_start OvlFunc_898_20087ec
 	push	{r5, r6, lr}
 	mov	r6, r8

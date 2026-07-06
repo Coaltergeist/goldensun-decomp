@@ -1,39 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_886_2008190
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0xf6d
-	bl	__MessageID
-	mov	r2, #6
-	mov	r0, #0
-	mov	r1, #0xf
-	bl	__Func_8092848
-	mov	r1, #0
-	mov	r0, #0xf
-	bl	__Func_8093054
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_886_2008190
-
-.thumb_func_start OvlFunc_886_20081bc
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0xf73
-	bl	__MessageID
-	mov	r2, #6
-	mov	r0, #0
-	mov	r1, #0x13
-	bl	__Func_8092848
-	mov	r1, #0
-	mov	r0, #0x13
-	bl	__Func_8093054
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_886_20081bc
-
 .thumb_func_start OvlFunc_886_20081e8
 	push	{r5, lr}
 	bl	__CutsceneStart
