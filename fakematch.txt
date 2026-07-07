@@ -21,3 +21,4 @@ Func_80c0184       src/rom_b5000/rom_bffb8_a_a_b.c
 RunTasks           src/rom_3e58_c_b.c
 OvlFunc_908_20083f4  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_c_c_a_b.c
 OvlFunc_908_2008430  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_c_c_a_c_b.c
+OvlFunc_953_20084c8  src/overlays/rom_7d95dc/ovl_30_c_c_c_a_a_a_c_a_b.c
