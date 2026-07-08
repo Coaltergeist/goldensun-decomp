@@ -1,35 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_969_200a11c
-	push	{r5, r6, lr}
-	ldr	r5, =iwram_3001e40
-	ldr	r3, [r5]
-	mov	r2, #1
-	and	r3, r2
-	mov	r6, r0
-	cmp	r3, #0
-	beq	.L213e
-	ldr	r0, [r5]
-	mov	r1, #6
-	lsr	r0, #1
-	bl	_umodsi3_RAM
-	mov	r1, r0
-	mov	r0, r6
-	bl	__Actor_SetColorswap
-.L213e:
-	ldr	r0, [r5]
-	mov	r1, #0xf
-	bl	_umodsi3_RAM
-	cmp	r0, #0
-	bne	.L2150
-	mov	r0, r6
-	bl	OvlFunc_969_200a200
-.L2150:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_969_200a11c
-
 .thumb_func_start OvlFunc_969_200a15c
 	push	{r5, r6, lr}
 	mov	r5, r0

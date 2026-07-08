@@ -26,3 +26,4 @@ OvlFunc_908_20081e0  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_a_b.c
 OvlFunc_943_20080b4  src/overlays/rom_7c7b9c/ovl_30_a_a_a_b.c
 Func_80944ec       src/rom_8a000/rom_944ec_a_a_a_a_b.c
 Func_80a8904       src/rom_a1000/rom_a8604_a_a_b.c
+OvlFunc_909_20082cc  src/overlays/rom_79c738/ovl_30_c_c_a_c_a_b.c
