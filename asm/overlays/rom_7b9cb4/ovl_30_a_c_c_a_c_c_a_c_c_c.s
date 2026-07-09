@@ -1,38 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_932_200ad08
-	push	{lr}
-	mov	r0, #0x18
-	mov	r1, #1
-	bl	__Func_8096fb0
-	mov	r0, #0xa
-	mov	r1, #9
-	bl	__Func_80970f8
-	bl	__Func_809728c
-	mov	r1, #2
-	mov	r0, #0xa
-	bl	__Func_8092950
-	mov	r0, #1
-	bl	__FieldMove
-	mov	r0, #0xa
-	mov	r1, #2
-	bl	__Func_8092950
-	bl	__Func_8097174
-	mov	r1, #2
-	mov	r0, #0xa
-	bl	__Func_8092950
-	bl	__Func_8097194
-	mov	r0, #0x90
-	lsl	r0, #1
-	bl	__PlaySound
-	mov	r0, #0xa
-	mov	r1, #2
-	bl	__Func_8092950
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_932_200ad08
-
 .thumb_func_start OvlFunc_932_200ad58
 	push	{r5, r6, lr}
 	mov	r6, r8
