@@ -1,44 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_940_2008374
-	push	{r5, lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	ldrh	r5, [r0, #6]
-	ldr	r0, =0x941
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L3b4
-	ldr	r2, =0xffff5fff
-	add	r3, r5, r2
-	ldr	r2, =0x3ffe
-	cmp	r3, r2
-	bhi	.L39c
-	mov	r0, #0x1e
-	mov	r1, #0xf
-	bl	__Func_80b0278
-	b	.L3c2
-.L39c:
-	bl	__CutsceneStart
-	ldr	r0, =0x24f7
-	bl	__MessageID
-	mov	r0, #0xf
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-	b	.L3c2
-.L3b4:
-	ldr	r0, =0x1bce
-	bl	__MessageID
-	mov	r0, #0xf
-	mov	r1, #0
-	bl	__ActorMessage
-.L3c2:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_940_2008374
-
 .thumb_func_start OvlFunc_940_20083dc
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc

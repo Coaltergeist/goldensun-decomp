@@ -1,33 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_969_200b8dc
-	push	{lr}
-	bl	__CutsceneStart
-	bl	OvlFunc_969_200c8d8
-	bl	OvlFunc_969_200cb28
-	mov	r0, #0x8d
-	lsl	r0, #1
-	bl	__SetFlag
-	ldr	r3, =iwram_3001ebc
-	ldr	r1, [r3]
-	mov	r3, #0xe0
-	lsl	r3, #1
-	add	r2, r1, r3
-	add	r3, #0x40
-	str	r3, [r2]
-	sub	r3, #0x38
-	add	r2, r1, r3
-	mov	r3, #0x18
-	str	r3, [r2]
-	bl	__MapTransitionOut
-	bl	__WaitMapTransition
-	mov	r0, #1
-	bl	__Func_8091e9c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_969_200b8dc
-
 .thumb_func_start OvlFunc_969_200b924
 	push	{r5, r6, lr}
 	mov	r6, r10
