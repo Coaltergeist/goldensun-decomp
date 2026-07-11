@@ -50,6 +50,8 @@ extern int _MSG_ff0;
 #define MSG_ff0 ((int)&_MSG_ff0)
 extern int _MSG_1000;
 #define MSG_1000 ((int)&_MSG_1000)
+extern int _MSG_1120;
+#define MSG_1120 ((int)&_MSG_1120)
 extern int _MSG_1280;
 #define MSG_1280 ((int)&_MSG_1280)
 extern int _MSG_12a0;

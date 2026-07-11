@@ -18,6 +18,7 @@ _MSG_fb0 = 0xfb0;
 _MSG_fe0 = 0xfe0;
 _MSG_ff0 = 0xff0;
 _MSG_1000 = 0x1000;
+_MSG_1120 = 0x1120;
 _MSG_1280 = 0x1280;
 _MSG_12a0 = 0x12a0;
 _MSG_12c0 = 0x12c0;
