@@ -1,9 +1,9 @@
 // fakematch
-/* Cluster Func_800383c..Func_800383c extracted from goldensun/asm/rom_c0/rom_3650_c.s.
+/* Cluster Func_80039fc..Func_80039fc extracted from goldensun/asm/rom_c0/rom_3650_c_c_c_c_c_c_c.s.
  *
- * Total .text for this TU computed at build time from expected/.../.o.
+ * Total .text for this TU = 64 bytes (= 0x40).
  * Preserves the original ROM layout when slotted between
- * asm/rom_c0/rom_3650_c_a.o and asm/rom_c0/rom_3650_c_c.o in
+ * asm/rom_c0/rom_3650_c_c_c_c_c_c_c_a.o and asm/rom_c0/rom_3650_c_c_c_c_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
 #include "gba/types.h"
@@ -12,7 +12,7 @@ struct DmaTransfer { const void *src; void *dest; u32 control; };
 struct DmaQueue { u16 count; struct DmaTransfer tasks[32]; };
 extern struct DmaQueue gDMATaskCount;
 
-void Func_800383c(void *dest, const void *src)
+void Func_80039fc(void *dest, const void *src)
 {
     register struct DmaQueue *queue __asm__("r4");
     register void *d __asm__("r6");
@@ -33,7 +33,7 @@ void Func_800383c(void *dest, const void *src)
         *task++ = (u32)s;
         queue->count = count + 1;
         *task++ = (u32)d;
-        *task = 0x10000;
+        *task = 0xa0000;
     }
     SET_IO(REG_IME, savedIme);
 }

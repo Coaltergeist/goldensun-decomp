@@ -549,7 +549,7 @@
 	b	.L2c10
 .func_end_emit_size DecompressLZ2_ROM, _DECOMPRESS_LZ2_SIZE
 
-.arm_func_start UploadPalette_ROM  @ 0x08002cf4
+.arm_func_start Func_8002cf4  @ 0x08002cf4
 	stmfd	sp!, {r5}
 	add	r0, #4
 .L2cfc:
@@ -580,7 +580,7 @@
 	add	r12, #0xd4
 	stm	r12, {r2, r3, r4}
 	b	.L2d3c
-.func_end_emit_size UploadPalette_ROM, _UPLOAD_PALETTE_SIZE
+.func_end Func_8002cf4
 
 .arm_func_start FixupRamCode_ROM  @ 0x08002d5c
 	push	{r5, r6}

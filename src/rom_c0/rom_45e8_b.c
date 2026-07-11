@@ -8,7 +8,6 @@
 
 #include "gba/types.h"
 #include "dma.h"
-#include "palette.h"
 #include "file_table.h"
 
 extern u16 PAL_Sprites[];
@@ -138,6 +137,13 @@ void ClearVRAM(void) {
     iwram_3001cbc = (u16 *)0x06002000;
     SET_IO(REG_BG0CNT, 0x400);
 }
+
+// TODO: move to header
+#define SET_PALETTE(id, value) \
+do { \
+    u32 _value = value; \
+    *((u16*)(0x05000000) + id) = _value; \
+} while (0)
 
 void Func_800479c(void) {
     void *gfx = GetFile(FILE_GFX_UI);
