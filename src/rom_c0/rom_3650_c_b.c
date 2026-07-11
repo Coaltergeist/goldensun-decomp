@@ -8,6 +8,7 @@
  */
 #include "gba/types.h"
 #include "gba/io.h"
+#include "dma.h"
 
 struct DmaTransfer {
     const void *src;
@@ -81,4 +82,21 @@ void Func_80039fc(void *dest, const void *src) {
 
 void Func_8003a3c(void *dest, const void *src) {
     ScheduleDmaTransfer(dest, src, 0xB0000);
+}
+
+extern void UploadPalette_ROM(struct DmaQueue *queue, u32 count);
+
+extern int _UPLOAD_PALETTE_SIZE;
+
+void UploadPalette(void) {
+    u32 count = gDMATaskCount.count;
+    if (count != 0) {
+        u32 size = (u32)&_UPLOAD_PALETTE_SIZE;
+        u32 funcBuffer[size / 4];
+        void (*func)(struct DmaQueue *, u32);
+        DMA3_COPY(UploadPalette_ROM, funcBuffer, size);
+        func = (void (*)(struct DmaQueue *, u32))funcBuffer;
+        func(&gDMATaskCount, count);
+        gDMATaskCount.count = 0;
+    }
 }
