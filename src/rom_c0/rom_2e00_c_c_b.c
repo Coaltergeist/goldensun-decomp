@@ -8,8 +8,9 @@
 
 #include "dma.h"
 #include "interrupt.h"
+#include "task.h"
+#include "palette.h"
 #include "gba/types.h"
-
 #include "gba/io.h"
 
 // forward declarations
@@ -174,4 +175,277 @@ void SetIntrHandler(u32 intrNo, u32 dispStat, intrfunc_t *handler)
         }
         SET_IO(REG_IME, imeBackup);
     }
+}
+
+void Func_8003d04(void);
+void Func_8003e10(void *);
+u32 Func_8005fcc(void);
+void Func_8006868(void);
+void Func_8006870(void);
+void RunTasks(u32);
+void UpdateKeyPressRepeat(void);
+void *galloc_iwram(u32, u32);
+void gfree(u32);
+extern s16 ewram_2002000;
+extern u8 ewram_2002240[];
+extern u8 ewram_20023b0[];
+extern u8 gDebugMode;
+extern s32 gIWRAMHeap_end;
+extern vs32 gKeyHeld;
+extern vs32 gKeyRepeat;
+extern vu8 gSleepMode;
+extern u8 gSoftReset;
+extern u32 iwram_3001804;
+extern u32 iwram_3001af0;
+extern s32 iwram_3001c9c;
+extern vu8 iwram_3001ca0;
+extern u32 iwram_3001ca4;
+extern u16 iwram_3001cb0;
+extern u16 iwram_3001ccc;
+extern u16 iwram_3001cd0;
+extern u8 iwram_3001d08;
+extern u8 iwram_3001d20;
+extern vu16 iwram_3001d24;
+extern vu16 iwram_3001d28;
+extern s32 iwram_3001e40;
+extern s8 iwram_3001e44;
+extern u8 iwram_3001f58;
+extern vu16 iwram_3001f5c;
+extern u8 iwram_3007a00[];
+
+static inline void VBlankIntrWait(void) {
+    iwram_3001d28 &= 0xFFFE;
+    do {
+        __asm__ volatile ("swi 0x2");
+    } while ((iwram_3001d28 & 1) == 0);
+}
+
+static inline void Halt(void) {
+    __asm__ volatile ("swi 0x3");
+}
+
+void WaitFrames(u32 frames)
+{
+    s32 i;
+    register u32 *deltaPtr asm ("r2");
+    register u32 newStack asm("r4");
+
+    u32 sp ;
+    __asm__ volatile ("mov %0, sp" : "+r" (sp) :: "memory" );
+    if (sp <= 0x030079FF) {
+        newStack = (u32)iwram_3007a00;
+        iwram_3001804 = newStack - sp;
+        DMA3_COPY((void *)sp, (void *)ewram_20023b0, iwram_3001804);
+        __asm__ volatile ("mov sp, %0"  :: "r" (newStack) : "memory" );
+    }
+
+    for (i = 0; i < frames; i++) {
+        iwram_3001a10 = 1;
+        RunTasks(0xC80);
+        iwram_3001a10 = 0;
+
+        Func_8003e10(galloc_iwram(0x34, 0x400));
+        iwram_3001e44 = 1;
+
+        if (iwram_3001f58) {
+            u32 sample = (*(u16 *)REG_ADDR_VCOUNT); // not sure if VCOUNT is just generally defined as non volatile or if this is fake
+            if (sample > 0x9F) {
+                sample -= 0xA0;
+            } else {
+                sample += 0x44;
+            }
+            sample = sample + ((iwram_3001ccc - 1) << 8);
+            if (iwram_3001af0 == 0) {
+                iwram_3001ca4 = iwram_3001af0;
+            } else {
+                iwram_3001af0--;
+            }
+            if (iwram_3001ca4 < sample) {
+                iwram_3001ca4 = sample;
+                iwram_3001af0 = 30;
+            }
+        }
+
+        if (iwram_3001ca0 == 0) {
+            if (iwram_3001d08) {
+                if (gKeyHeld != 0) {
+                    iwram_3001d24 = 0;
+                } else {
+                    iwram_3001d24++;
+                    if (iwram_3001d24 > 0x2A30) {
+                        gSleepMode = 1;
+                    }
+                }
+            }
+            if (gKeyHeld == (L_BUTTON | R_BUTTON)) {
+                iwram_3001f5c++;
+                if (iwram_3001f5c > 0xB3) {
+                    iwram_3001f5c = 0;
+                    gSleepMode = 1;
+                }
+            } else {
+                iwram_3001f5c = 0;
+            }
+        }
+
+        if (gDebugMode) {
+            for (;;) {
+                if (iwram_3001d20) {
+                    if (gKeyRepeat & (A_BUTTON | B_BUTTON | SELECT_BUTTON)) break;
+                    if (gKeyHeld & (DPAD_RIGHT | DPAD_LEFT | DPAD_UP | DPAD_DOWN)) break;
+                    if (gKeyRepeat & START_BUTTON) { iwram_3001d20 = 0; break; }
+                } else {
+                    if (gKeyHeld != (SELECT_BUTTON | START_BUTTON)) break;
+                    iwram_3001d20 = 1;
+                }
+                VBlankIntrWait();
+                UpdateKeyPressRepeat();
+                if (gSoftReset) {
+                    void (*entry)(void) = (void (*)(void))0x08000000;
+                    gSoftReset = 0;
+                    gIWRAMHeap_end = 0x19670704;
+                    SET_IO(REG_IME, 0);
+                    entry();
+                }
+            }
+        }
+
+        iwram_3001cd0 = iwram_3001ccc;
+        iwram_3001ccc = 0;
+        VBlankIntrWait();
+
+        gfree(0x34);
+        Func_8003d04();
+        iwram_3001e40++;
+        iwram_3001c9c++;
+        UpdateKeyPressRepeat();
+
+        if (iwram_3001cb0) {
+            Func_8005fcc();
+            if (ewram_2002240[0]) ewram_2002240[8] = 1;
+        }
+
+        if (gSleepMode && iwram_3001ca0 == 0) {
+            s32 n;
+            u16 savedDispcnt = REG_DISPCNT;
+            u16 savedBackdrop = *((vu16 *) 0x05000000);
+
+            if (gSleepMode == 1) {
+                SET_IO(REG_DISPCNT, 0);
+                SET_PALETTE(0, 0x7FFF);
+                for (n = 0; n <= 0x3B; n++) VBlankIntrWait();
+
+                ewram_2002000 = 1;
+                SET_IO(REG_KEYCNT, 0xC300);
+                Func_8006868();
+                Halt();
+                Func_8006870();
+                SET_IO(REG_KEYCNT, 0xC00F);
+                ewram_2002000 = 0;
+
+                SET_IO(REG_DISPCNT, savedDispcnt);
+                SET_PALETTE(0, savedBackdrop);
+                for (n = 0; n <= 9; n++) VBlankIntrWait();
+
+                gSleepMode    = 0;
+                iwram_3001d24 = 0;
+            } else {
+                gSleepMode--;
+            }
+        }
+
+        if (gSoftReset) {
+            register void (*entry)(void) asm("r0") = (void (*)(void))0x08000000;
+            gSoftReset = 0;
+            gIWRAMHeap_end = 0x19670704;
+            SET_IO(REG_IME, 0);
+            entry();
+        }
+    }
+    deltaPtr = &iwram_3001804;
+    if (*deltaPtr != 0) {
+        vu32 *dma;
+        __asm__ volatile ("mov %0, sp" : "+r" (sp) :: "memory");
+        sp -= *deltaPtr;
+        __asm__ volatile ("mov sp, %0" : "+r" (sp) :: "memory");
+        DMA3_COPY(ewram_20023b0, (void *)(sp), iwram_3001804);
+        dma = (vu32*)&REG_DMA3SAD;
+        while (dma[2] & 0x80000000) ;
+        iwram_3001804 = 0;
+    }
+}
+
+extern s32 iwram_3001b00;
+
+void Func_800352c(void) {
+    iwram_3001b00 = 0x13;
+}
+
+extern s32 gKeyPress;
+extern vs32 iwram_3001afc;
+extern s32 iwram_3001cf4;
+extern vs32 iwram_3001d04;
+
+void UpdateKeyPressRepeat(void) {
+
+    u32 mask;
+    u32 dpadCount;
+    s32 repeat;
+    s32 temp = 0;
+
+    if (iwram_3001b00 <= 0) {
+        gKeyRepeat = gKeyHeld;
+        repeat = gKeyRepeat;
+
+        if (iwram_3001b00 == 0) {
+            iwram_3001b00 = 6;
+        } else {
+            iwram_3001b00 = 19;
+        }
+    } else {
+        gKeyRepeat = 0;
+        repeat = gKeyRepeat;
+    }
+    if (repeat != 0) {
+        dpadCount = 0;
+        if (DPAD_UP & repeat) dpadCount += 1;
+        if (DPAD_DOWN & repeat) dpadCount += 1;
+        if (DPAD_LEFT & repeat) dpadCount += 1;
+        if (DPAD_RIGHT & repeat) dpadCount += 1;
+        iwram_3001afc = repeat;
+        switch (dpadCount) {
+        case 0:
+            iwram_3001d04 = DPAD_LEFT | DPAD_RIGHT;
+            break;
+        case 1:
+            iwram_3001d04 = repeat & (DPAD_DOWN | DPAD_UP | DPAD_LEFT | DPAD_RIGHT);
+            break;
+        case 2:
+            if ((iwram_3001d04 & iwram_3001afc) == 0) {
+                iwram_3001d04 = DPAD_LEFT | DPAD_RIGHT;
+            }
+            iwram_3001afc &= iwram_3001d04 ^ 0xFFFF;
+            break;
+        case 3:
+            if (iwram_3001d04 & (DPAD_LEFT | DPAD_RIGHT)) {
+                temp = DPAD_LEFT | DPAD_RIGHT;
+            }
+            if (iwram_3001d04 & (DPAD_DOWN | DPAD_UP)) {
+                temp = DPAD_DOWN | DPAD_UP;
+            }
+            mask = temp ^ 0xFFFF;
+            iwram_3001d04 = repeat & mask;
+            iwram_3001afc &= mask;
+            break;
+        default:
+            iwram_3001d04 = DPAD_LEFT | DPAD_RIGHT;
+            mask = 0xFF0F;
+            iwram_3001afc &= mask;
+            break;
+        }
+    } else {
+        iwram_3001afc = repeat;
+    }
+    gKeyPress = (gKeyHeld ^ iwram_3001cf4) & gKeyHeld;
+    iwram_3001cf4 = gKeyHeld;
 }
