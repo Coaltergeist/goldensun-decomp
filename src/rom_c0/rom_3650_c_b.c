@@ -8,13 +8,22 @@
  */
 #include "gba/types.h"
 #include "gba/io.h"
-struct DmaTransfer { const void *src; void *dest; u32 control; };
-struct DmaQueue { u16 count; struct DmaTransfer tasks[32]; };
+
+struct DmaTransfer {
+    const void *src;
+    void *dest;
+    u32 control;
+};
+
+struct DmaQueue {
+    u16 count;
+    struct DmaTransfer tasks[32];
+};
+
 extern struct DmaQueue gDMATaskCount;
 
-void Func_800383c(void *dest, const void *src)
-{
-    register struct DmaQueue *queue __asm__("r4");
+static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 cnt) {
+    struct DmaQueue *queue;
     register void *d __asm__("r6");
     register const void *s __asm__("r0");
     u32 savedIme;
@@ -29,11 +38,47 @@ void Func_800383c(void *dest, const void *src)
     SET_IO(REG_IME, REG_ADDR_IME);
     count = queue->count;
     if (count < 32) {
-        task = (u32 *)((u32)count * 12 + (u32)queue + 4);
+        task = (u32 *)(count * 12 + (u32)queue + 4);
         *task++ = (u32)s;
         queue->count = count + 1;
         *task++ = (u32)d;
-        *task = 0x10000;
+        *task = cnt;
     }
     SET_IO(REG_IME, savedIme);
+}
+
+void Func_800383c(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x10000);
+}
+
+void SetRegAnimDest(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x20000);
+}
+
+void Func_80038bc(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x30000);
+}
+
+void Func_80038fc(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x50000);
+}
+
+void Func_800393c(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x60000);
+}
+
+void Func_800397c(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x70000);
+}
+
+void Func_80039bc(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0x90000);
+}
+
+void Func_80039fc(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0xA0000);
+}
+
+void Func_8003a3c(void *dest, const void *src) {
+    ScheduleDmaTransfer(dest, src, 0xB0000);
 }
