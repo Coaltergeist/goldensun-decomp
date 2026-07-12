@@ -1753,44 +1753,8 @@
 	bx	r0
 .func_end BaseAnim_ParticleSpray
 
-.thumb_func_start Func_80df8b8  @ 0x080df8b8
-	push	{r5, r6, lr}
-	bl	_GetBattleActor
-	mov	r6, r0
-	ldr	r5, [r6]
-	mov	r3, #0x80
-	lsl	r3, #10
-	str	r3, [r5, #0x34]
-	mov	r3, #0x80
-	lsl	r3, #12
-	str	r3, [r5, #0x30]
-	mov	r3, #0x80
-	lsl	r3, #11
-	str	r3, [r5, #0x28]
-	ldr	r3, =0xab85
-	mov	r2, r5
-	str	r3, [r5, #0x48]
-	add	r2, #0x5a
-	mov	r3, #0
-	str	r3, [r5, #0x44]
-	strb	r3, [r2]
-	sub	r2, #2
-	mov	r3, #1
-	strb	r3, [r2]
-	mov	r0, r5
-	bl	_Actor_Stop
-	ldr	r1, [r6, #0xc]
-	mov	r0, r5
-	ldr	r3, [r6, #0x10]
-	mov	r2, #0
-	bl	_Actor_TravelTo
-	mov	r0, r5
-	mov	r1, #1
-	bl	_Actor_SetAnim
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_80df8b8
+
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_80df90c  @ 0x080df90c
 	push	{r5, r6, lr}
