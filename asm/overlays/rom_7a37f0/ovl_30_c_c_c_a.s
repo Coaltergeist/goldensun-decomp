@@ -382,28 +382,7 @@
 	bx	r0
 .func_end OvlFunc_916_200836c
 
-.thumb_func_start OvlFunc_916_20083c0
-	ldr	r3, =iwram_3001ad4
-	ldr	r2, =.L20d0
-	ldmia	r3!, {r1}
-	stmia	r2!, {r1}
-	ldmia	r3!, {r1}
-	stmia	r2!, {r1}
-	ldr	r3, [r3]
-	str	r3, [r2]
-	ldr	r2, =.L20d0
-	ldrh	r3, [r2, #2]
-	add	r3, #0xb0
-	strh	r3, [r2, #2]
-	ldrh	r3, [r2, #6]
-	add	r3, #0xb0
-	strh	r3, [r2, #6]
-	ldrh	r3, [r2, #0xa]
-	add	r3, #0xb0
-	strh	r3, [r2, #0xa]
-	bx	lr
-.func_end OvlFunc_916_20083c0
-
+	.section .text.20083f0, "ax", %progbits
 .thumb_func_start OvlFunc_916_20083f0
 	push	{r5, r6, lr}
 	sub	sp, #0xc
@@ -1701,4 +1680,3 @@
 	pop	{r1}
 	bx	r1
 .func_end OvlFunc_916_2008ecc
-

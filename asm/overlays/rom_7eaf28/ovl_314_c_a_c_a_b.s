@@ -1,38 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_960_20083ac
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0xa4
-	cmp	r2, r3
-	bne	.L3c4
-	ldr	r0, =.L1610
-	b	.L3da
-.L3c4:
-	ldr	r3, =0xa5
-	cmp	r2, r3
-	bne	.L3ce
-	ldr	r0, =gScript_930__020096b8
-	b	.L3da
-.L3ce:
-	ldr	r3, =0xa6
-	cmp	r2, r3
-	bne	.L3d8
-	ldr	r0, =.L1790
-	b	.L3da
-.L3d8:
-	ldr	r0, =.L15f8
-.L3da:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_960_20083ac
-
 .thumb_func_start OvlFunc_960_2008400
 	push	{r5, r6, lr}
 	ldr	r3, =gState
@@ -177,4 +145,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_960_2008464
-
