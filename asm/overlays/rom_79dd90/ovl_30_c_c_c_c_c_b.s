@@ -1,56 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_910_200890c
-	push	{r5, r6, r7, lr}
-	mov	r6, r0
-	ldr	r0, [r6, #0x30]
-	ldr	r7, [r6, #0x50]
-	bl	__sin
-	lsl	r5, r0, #1
-	cmp	r5, #0
-	ble	.L920
-	neg	r5, r5
-.L920:
-	ldr	r0, [r6, #0x30]
-	bl	__cos
-	ldr	r3, [r6, #0x38]
-	lsl	r0, #1
-	add	r3, r0
-	str	r3, [r6, #8]
-	ldr	r0, [r6, #0x30]
-	ldr	r3, [r6, #0x3c]
-	mov	r2, #0x80
-	lsl	r2, #8
-	add	r3, r5
-	add	r0, r2
-	str	r3, [r6, #0xc]
-	bl	__cos
-	cmp	r0, #0
-	bge	.L946
-	add	r0, #7
-.L946:
-	asr	r3, r0, #3
-	strh	r3, [r7, #0x1e]
-	bl	__Random
-	mov	r5, r0
-	bl	__Random
-	lsl	r5, #9
-	lsl	r0, #9
-	ldr	r3, [r6, #0x30]
-	lsr	r0, #16
-	lsr	r5, #16
-	add	r5, r0
-	mov	r2, #0x80
-	add	r3, r5
-	lsl	r2, #3
-	add	r3, r2
-	str	r3, [r6, #0x30]
-	mov	r0, #0
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_910_200890c
-
 .thumb_func_start OvlFunc_910_2008974
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
