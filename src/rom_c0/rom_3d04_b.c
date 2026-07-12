@@ -38,3 +38,44 @@ void Func_8003e10(void *arg0) {
         free(func);
     } while (0);
 }
+
+struct SpriteSlot {
+	u16 size;
+	u16 vramOffset;
+};
+
+extern struct SpriteSlot gSpriteSlots[];
+extern u8 gSpriteAllocTable[];
+
+s32 Func_8003e58(u32 id, u32 size) {
+    u32 blocks = size >> 6;
+    int i;
+    s32 start;
+
+    if (id >= 0x60)
+        return -1;
+    i = 0;
+    for (;;) {
+        if (i >= 512)
+            return -1;
+
+        if (gSpriteAllocTable[i] == 0xFF) {
+            u32 end;
+            u32 j;
+            start = i;
+            end = blocks + start;
+            while (i < end) {
+                if (gSpriteAllocTable[i] != 0xFF)
+                    goto occupied;
+                i++;
+            }
+
+            for (j = 0; j < blocks; j++)
+                gSpriteAllocTable[start + j] = id;
+            break;
+        }
+    occupied:
+        i += gSpriteSlots[gSpriteAllocTable[i]].size >> 6;
+    }
+    return start << 6;
+}
