@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster OvlFunc_902_2008098..OvlFunc_902_2008098 extracted from goldensun/asm/overlays/rom_7987ac/ovl_30_c_c_a_a_c_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
@@ -5,7 +6,6 @@
  * asm/overlays/rom_7987ac/ovl_30_c_c_a_a_c_a_a.o and asm/overlays/rom_7987ac/ovl_30_c_c_a_a_c_a_c.o in
  * goldensun/overlays/rom_7987ac/overlay.ld.
  */
-// fakematch
 
 void OvlFunc_902_2008098(unsigned int arg0)
 {

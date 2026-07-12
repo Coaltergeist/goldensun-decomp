@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster OvlFunc_882_2008240..OvlFunc_882_2008240 extracted from goldensun/asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_a.s.
  *
  * Total .text for this TU = 56 bytes (= 0x38).
@@ -5,7 +6,6 @@
  * asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_a_a.o and asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_a_c.o in
  * goldensun/overlays/rom_77dd1c/overlay.ld.
  */
-// fakematch
 extern unsigned char L578a[] __asm__(".L578a");
 
 void OvlFunc_882_2008240(void)
