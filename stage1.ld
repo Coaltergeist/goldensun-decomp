@@ -438,6 +438,7 @@ SECTIONS {
 		asm/rom_77000/rom_78a8c_c_b.o(.text)
 		asm/rom_77000/rom_78a8c_c_c.o(.text)
 		asm/rom_77000/rom_78b9c_a_b.o(.text)
+		asm/rom_77000/rom_78b9c_a_c_a.o(.text)
 		asm/rom_77000/rom_78b9c_a_c.o(.text)
 		asm/rom_77000/rom_78b9c_b.o(.text)
 		asm/rom_77000/rom_78b9c_c.o(.text)

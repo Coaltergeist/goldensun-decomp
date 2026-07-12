@@ -1,29 +1,4 @@
-	.include "macros.inc"
-
-.thumb_func_start OvlFunc_899_2008048
-	push	{r5, lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0x11
-	bgt	.L62
-	cmp	r3, #0xf
-	blt	.L62
-	ldr	r5, =.L5cc8
-	b	.L64
-.L62:
-	ldr	r5, =.L5ab8
-.L64:
-	mov	r0, r5
-	bl	__Func_808b868
-	mov	r0, r5
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_899_2008048
+.include "macros.inc"
 
 .thumb_func_start OvlFunc_899_2008080
 	push	{lr}
@@ -83,4 +58,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_899_2008080
-

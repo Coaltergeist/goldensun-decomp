@@ -1,39 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_967_20084b0
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0xb4
-	cmp	r2, r3
-	bne	.L4d6
-	ldr	r0, =0x9a7
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L4d2
-	ldr	r0, =.L2010
-	b	.L4e6
-.L4d2:
-	ldr	r0, =.L1eb4
-	b	.L4e6
-.L4d6:
-	ldr	r0, =0x9a7
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L4e4
-	ldr	r0, =gScript_887__02009ca4
-	b	.L4e6
-.L4e4:
-	ldr	r0, =.L1a94
-.L4e6:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_967_20084b0
-
 .thumb_func_start OvlFunc_967_2008508
 	push	{lr}
 	bl	__CutsceneStart

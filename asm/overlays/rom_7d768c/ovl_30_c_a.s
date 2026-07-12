@@ -1,40 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_952_2008070
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x8b
-	cmp	r2, r3
-	bne	.L88
-	ldr	r0, =.L4b3c
-	b	.La8
-.L88:
-	mov	r0, #0x95
-	lsl	r0, #4
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L98
-	ldr	r0, =.L4e6c
-	b	.La8
-.L98:
-	ldr	r0, =0x962
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.La6
-	ldr	r0, =.L4d64
-	b	.La8
-.La6:
-	ldr	r0, =.L4b84
-.La8:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_952_2008070
-
 .thumb_func_start OvlFunc_952_20080c8
 	push	{r5, r6, lr}
 	ldr	r5, =0x1ff1
@@ -6259,36 +6224,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_952_200bf84
-
-.thumb_func_start OvlFunc_952_200bfc4
-	push	{r5, r6, lr}
-	ldr	r6, =0x22a3
-	mov	r5, r0
-	mov	r0, r6
-	bl	__MessageID
-	mov	r1, #0
-	mov	r0, r5
-	bl	__Func_8092c40
-	mov	r0, #0
-	mov	r1, #0
-	bl	__Func_8091c7c
-	cmp	r0, #0
-	bne	.L3ff4
-	add	r0, r6, #1
-	bl	__MessageID
-	mov	r0, r5
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.L4002
-.L3ff4:
-	add	r0, r6, #2
-	bl	__MessageID
-	mov	r0, r5
-	mov	r1, #0
-	bl	__ActorMessage
-.L4002:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_952_200bfc4
-

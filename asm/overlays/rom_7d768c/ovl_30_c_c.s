@@ -1,55 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_952_200c034
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x8b
-	cmp	r2, r3
-	bne	.L406a
-	mov	r0, #0x95
-	lsl	r0, #4
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L4058
-	ldr	r0, =.L5ad8
-	b	.L408a
-.L4058:
-	ldr	r0, =0x962
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L4066
-	ldr	r0, =.L5a48
-	b	.L408a
-.L4066:
-	ldr	r0, =.L59e8
-	b	.L408a
-.L406a:
-	mov	r0, #0x95
-	lsl	r0, #4
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L407a
-	ldr	r0, =.L5688
-	b	.L408a
-.L407a:
-	ldr	r0, =0x962
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L4088
-	ldr	r0, =.L5394
-	b	.L408a
-.L4088:
-	ldr	r0, =.L5004
-.L408a:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_952_200c034
-
 .thumb_func_start OvlFunc_952_200c0b4
 	push	{r5, r6, r7, lr}
 	mov	r0, #1
