@@ -518,6 +518,8 @@ SECTIONS {
 		asm/rom_8a000/rom_8b674_c_c_b.o(.text)
 		asm/rom_8a000/rom_8b674_c_c_c.o(.text)
 		asm/rom_8a000/rom_8ba38_a_a.o(.text)
+		asm/rom_8a000/rom_8ba38_a_a_b.o(.text)
+		asm/rom_8a000/rom_8ba38_a_a_c.o(.text)
 		asm/rom_8a000/rom_8ba38_a_b.o(.text)
 		asm/rom_8a000/rom_8ba38_a_c.o(.text)
 		asm/rom_8a000/rom_8ba38_b.o(.text)
