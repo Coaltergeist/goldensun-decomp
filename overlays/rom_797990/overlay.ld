@@ -36,6 +36,7 @@ SECTIONS {
 		asm/overlays/rom_797990/ovl_314_c_c_a_a_c_c_c_a.o(.text)
 		asm/overlays/rom_797990/ovl_314_c_c_a_b.o(.text)
 		asm/overlays/rom_797990/ovl_314_c_c_a_c_a.o(.text)
+		asm/overlays/rom_797990/ovl_314_c_c_a_c_a_b.o(.text)
 		asm/overlays/rom_797990/ovl_314_c_c_a_c_b.o(.text)
 		asm/overlays/rom_797990/ovl_314_c_c_b.o(.text)
 		asm/overlays/rom_797990/ovl_314_c_c_c.o(.text)
