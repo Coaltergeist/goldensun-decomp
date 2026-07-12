@@ -1,20 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_968_2009024
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x2682
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_968_2009024
-
 .thumb_func_start OvlFunc_968_2009048
 	push	{r5, r6, lr}
 	ldr	r0, =0x161

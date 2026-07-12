@@ -366,17 +366,3 @@
 	bx	r0
 .func_end OvlFunc_964_200a300
 
-.thumb_func_start OvlFunc_964_200a330
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x268b
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_964_200a330
-

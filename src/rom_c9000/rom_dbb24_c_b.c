@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_80dbb9c..Func_80dbb9c extracted from goldensun/asm/rom_c9000/rom_dbb24_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
@@ -5,7 +6,6 @@
  * asm/rom_c9000/rom_dbb24_c_a.o and asm/rom_c9000/rom_dbb24_c_c.o in
  * goldensun/stage1.ld.
  */
-// fakematch
 extern unsigned char iwram_3001eec[];
 
 void Func_80dbb9c(void) {

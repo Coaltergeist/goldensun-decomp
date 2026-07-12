@@ -1,26 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_882_2008240
-	push	{lr}
-	mov	r0, #0x9e
-	bl	__PlaySound
-	ldr	r0, =.L578a
-	mov	r1, #0x36
-	mov	r2, #0x20
-	bl	__Func_8010560
-	mov	r1, #0xcb
-	lsl	r1, #1
-	ldr	r2, =0x2d7
-	mov	r0, #0
-	bl	__Func_809218c
-	mov	r0, #3
-	bl	__CutsceneWait
-	mov	r0, #5
-	bl	OvlFunc_882_200815c
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_882_2008240
-
 .thumb_func_start OvlFunc_882_2008278
 	push	{lr}
 	ldr	r0, =0x206

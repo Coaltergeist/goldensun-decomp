@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_80c0184..Func_80c0184 extracted from goldensun/asm/rom_b5000/rom_bffb8_a_a.s.
  *
  * Total .text for this TU = 56 bytes (= 0x38).
@@ -5,7 +6,6 @@
  * asm/rom_b5000/rom_bffb8_a_a_a.o and asm/rom_b5000/rom_bffb8_a_a_c.o in
  * goldensun/stage1.ld.
  */
-// fakematch
 #include "dma.h"
 extern unsigned char iwram_3001ef8[];
 extern unsigned char Lc5a30[] __asm__(".Lc5a30");

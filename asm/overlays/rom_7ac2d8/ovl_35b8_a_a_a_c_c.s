@@ -1,34 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_924_200b5b8
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x1576
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_200b5b8
-
-.thumb_func_start OvlFunc_924_200b5dc
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x953
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_200b5dc
-
 .thumb_func_start OvlFunc_924_200b600
 	push	{lr}
 	bl	__CutsceneStart

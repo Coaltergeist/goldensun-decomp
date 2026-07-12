@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster OvlFunc_934_200858c..OvlFunc_934_200858c extracted from goldensun/asm/overlays/rom_7bdeb0/ovl_314_a_a.s.
  *
  * Total .text for this TU = 164 bytes (= 0xa4).
@@ -5,7 +6,6 @@
  * asm/overlays/rom_7bdeb0/ovl_314_a_a_a.o and asm/overlays/rom_7bdeb0/ovl_314_a_a_c.o in
  * goldensun/overlays/rom_7bdeb0/overlay.ld.
  */
-// fakematch
 extern unsigned int L1e48[] __asm__(".L1e48");
 extern int ActorCmd_ARRAY_933__02009e88[];
 extern void *OvlFunc_934_2008350(int *, void *);
