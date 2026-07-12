@@ -201,9 +201,9 @@
 	b	.L1e20
 .L1e54:
 	add	r0, r9, #6
-	ldr	r2, =iwram_3001d00
+	ldr	r2, =sOamMatrixCount
 	ldrb	r4, [r2]
-	ldr	r1, =iwram_3001d40
+	ldr	r1, =sOamMatrices
 	cmp	r4, #0
 	beq	.L1e90
 .L1e6c:
