@@ -23,6 +23,8 @@ extern int _MSG_0d;
 #define MSG_0d ((int)&_MSG_0d)
 extern int _MSG_14;
 #define MSG_14 ((int)&_MSG_14)
+extern int _MSG_16;
+#define MSG_16 ((int)&_MSG_16)
 extern int _MSG_17;
 #define MSG_17 ((int)&_MSG_17)
 extern int _MSG_18;

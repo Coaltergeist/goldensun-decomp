@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster OvlFunc_939_2008a90..OvlFunc_939_2008a90 extracted from goldensun/asm/overlays/rom_7c460c/ovl_314_a_c_c_a.s.
  *
  * Total .text for this TU = 52 bytes (= 0x34).
@@ -5,7 +6,6 @@
  * asm/overlays/rom_7c460c/ovl_314_a_c_c_a_a.o and asm/overlays/rom_7c460c/ovl_314_a_c_c_a_c.o in
  * goldensun/overlays/rom_7c460c/overlay.ld.
  */
-// fakematch
 extern int _MSG_1bc0;
 
 void OvlFunc_939_2008a90(void)

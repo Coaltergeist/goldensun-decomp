@@ -51,3 +51,15 @@ Func_800397c       src/rom_c0/rom_3650_c_c_c_c_c_b.c
 Func_80039bc       src/rom_c0/rom_3650_c_c_c_c_c_c_b.c
 Func_80039fc       src/rom_c0/rom_3650_c_c_c_c_c_c_c_b.c
 Func_8003a3c       src/rom_c0/rom_3650_c_c_c_c_c_c_c_c_b.c
+OvlFunc_939_2008a90  src/overlays/rom_7c460c/ovl_314_a_c_c_a_b.c
+OvlFunc_939_20089d4  src/overlays/rom_7c460c/ovl_314_a_c_c_a_a_b.c
+OvlFunc_949_2008528  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_b.c
+OvlFunc_949_2008568  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_c_b.c
+OvlFunc_945_200c0e8  src/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_a_a_a_a_b.c
+OvlFunc_882_20096cc  src/overlays/rom_77dd1c/ovl_30_c_c_c_c_a_a_a_b.c
+Func_801fb48         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_a_b.c
+Func_801fc84         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_c_b.c
+OvlFunc_917_2008088  src/overlays/rom_7a4370/ovl_30_c_c_a_b.c
+OvlFunc_899_2009e80  src/overlays/rom_794ac0/ovl_30_a_c_c_c_a_c_c_b.c
+OvlFunc_882_200973c  src/overlays/rom_77dd1c/ovl_30_c_c_c_c_a_a_a_c_b.c
+OvlFunc_899_200882c  src/overlays/rom_794ac0/ovl_30_a_c_a_c_c_c_c_c_b.c
