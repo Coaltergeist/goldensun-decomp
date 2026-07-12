@@ -1,83 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_958_2008d20
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x98
-	cmp	r2, r3
-	bne	.Ld46
-	ldr	r0, =0x96f
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Ld42
-	ldr	r0, =.L19d4
-	b	.Ld5c
-.Ld42:
-	ldr	r0, =.L1974
-	b	.Ld5c
-.Ld46:
-	ldr	r3, =0x9d
-	cmp	r2, r3
-	bne	.Ld50
-	ldr	r0, =gScript_970__02009a4c
-	b	.Ld5c
-.Ld50:
-	ldr	r3, =0x9e
-	cmp	r2, r3
-	bne	.Ld5a
-	ldr	r0, =.L1aac
-	b	.Ld5c
-.Ld5a:
-	ldr	r0, =.L195c
-.Ld5c:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_958_2008d20
-
-.thumb_func_start OvlFunc_958_2008d88
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x98
-	cmp	r2, r3
-	bne	.Ldae
-	ldr	r0, =0x96f
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Ldaa
-	ldr	r0, =.L1bcc
-	b	.Ldc4
-.Ldaa:
-	ldr	r0, =.L1b48
-	b	.Ldc4
-.Ldae:
-	ldr	r3, =0x9d
-	cmp	r2, r3
-	bne	.Ldb8
-	ldr	r0, =.L1c80
-	b	.Ldc4
-.Ldb8:
-	ldr	r3, =0x9e
-	cmp	r2, r3
-	bne	.Ldc2
-	ldr	r0, =gScript_885__02009ce0
-	b	.Ldc4
-.Ldc2:
-	ldr	r0, =.L1b3c
-.Ldc4:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_958_2008d88
-
 .thumb_func_start OvlFunc_958_2008df0
 	push	{lr}
 	ldr	r0, =0x98a
@@ -319,4 +241,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_958_2008fd0
-
