@@ -1,0 +1,50 @@
+extern void __Func_809280c(int actor, int arg1, int arg2);
+extern void __MapActor_Emote(int actor, int emote, int duration);
+extern void __MessageID(int message);
+extern void __ActorMessage(int actor, int message);
+extern void __Func_8092adc(int actor, int arg1, int arg2);
+extern void __CutsceneWait(int duration);
+extern void __MapActor_DoAnim(int actor, int animation);
+extern void __Func_8092c40(int actor, int arg1);
+extern int __Func_8091c7c(int arg0, int arg1);
+
+int OvlFunc_941_2009394(void) {
+    register int arg0 asm("r0");
+    register int arg1 asm("r1");
+    register int arg2 asm("r2");
+    register int message asm("r5");
+
+    __Func_809280c(2, 0, 0);
+    arg1 = 0x81;
+    arg2 = 0x3c;
+    arg1 <<= 1;
+    arg0 = 2;
+    asm volatile("" : "+r"(arg0), "+r"(arg1), "+r"(arg2));
+    __MapActor_Emote(arg0, arg1, arg2);
+    message = 0x255e;
+    asm volatile("" : "+r"(message));
+    arg0 = message;
+    asm volatile("" : "+r"(arg0));
+    __MessageID(arg0);
+    __ActorMessage(2, 0);
+    __Func_8092adc(0xc, 0x3000, 0);
+    __CutsceneWait(0x1e);
+    __MapActor_DoAnim(0xc, 4);
+    __MessageID(message + 1);
+    __ActorMessage(0xc, 0);
+    arg1 = 0x81;
+    arg2 = 0x3c;
+    arg1 <<= 1;
+    arg0 = 3;
+    message += 2;
+    asm volatile("" : "+r"(arg0), "+r"(arg1), "+r"(arg2), "+r"(message));
+    __MapActor_Emote(arg0, arg1, arg2);
+    arg0 = message;
+    asm volatile("" : "+r"(arg0));
+    __MessageID(arg0);
+    arg1 = 0;
+    arg0 = 3;
+    asm volatile("" : "+r"(arg0), "+r"(arg1));
+    __Func_8092c40(arg0, arg1);
+    return !__Func_8091c7c(0, 0);
+}

@@ -1,26 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_951_20081a8
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0xbd
-	cmp	r2, r3
-	bne	.L1c0
-	ldr	r0, =Events_TolbiSpring
-	b	.L1c2
-.L1c0:
-	ldr	r0, =Events_GameBuildings
-.L1c2:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_951_20081a8
-
 .thumb_func_start OvlFunc_951_20081d8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
@@ -1347,4 +1327,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_951_2008dd0
-

@@ -357,25 +357,7 @@
 	bx	r1
 .func_end OvlFunc_960_2008dc8
 
-.thumb_func_start OvlFunc_960_2008e5c
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0xa6
-	cmp	r2, r3
-	bne	.Le74
-	ldr	r0, =.L19c4
-	b	.Le76
-.Le74:
-	ldr	r0, =.L17b4
-.Le76:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_960_2008e5c
+	.section .text.2008e8c, "ax", %progbits
 
 .thumb_func_start OvlFunc_960_2008e8c
 	push	{r5, r6, r7, lr}

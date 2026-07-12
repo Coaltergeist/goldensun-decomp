@@ -119,36 +119,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_965_200a738
-
-.thumb_func_start OvlFunc_965_200a7a0
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0xb0
-	cmp	r2, r3
-	bne	.L27b8
-	ldr	r0, =.L391c
-	b	.L27ce
-.L27b8:
-	ldr	r3, =0xaf
-	cmp	r2, r3
-	bne	.L27c2
-	ldr	r0, =.L39e8
-	b	.L27ce
-.L27c2:
-	ldr	r3, =0xae
-	cmp	r2, r3
-	bne	.L27cc
-	ldr	r0, =.L3ac0
-	b	.L27ce
-.L27cc:
-	ldr	r0, =.L3c28
-.L27ce:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_965_200a7a0
-

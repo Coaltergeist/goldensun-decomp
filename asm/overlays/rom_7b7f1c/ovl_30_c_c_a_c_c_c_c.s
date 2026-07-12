@@ -444,19 +444,7 @@
 	bx	r0
 .func_end OvlFunc_930_2008c30
 
-.thumb_func_start OvlFunc_930_2008fcc
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x1a12
-	mov	r1, #1
-	bl	__Func_801776c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_930_2008fcc
+	.section .text.2008ff0, "ax", %progbits
 
 .thumb_func_start OvlFunc_930_2008ff0
 	push	{lr}
@@ -541,4 +529,3 @@
 	pop	{r1}
 	bx	r1
 .func_end OvlFunc_930_2009060
-
