@@ -426,41 +426,7 @@
 	bx	r1
 .func_end DrawInventoryIcon
 
-.thumb_func_start LoadInventoryIcon  @ 0x0801a2a4
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	mov	r8, r1
-	mov	r1, #0xc1
-	mov	r6, r0
-	lsl	r1, #3
-	mov	r0, #0x11
-	mov	r10, r2
-	bl	galloc_iwram
-	mov	r1, r8
-	mov	r5, r0
-	mov	r0, r6
-	bl	DrawInventoryIcon
-	mov	r3, #0x80
-	lsl	r3, #3
-	add	r5, r3
-	mov	r1, #0x80
-	mov	r2, r5
-	mov	r0, r10
-	bl	UploadSpriteGFX
-	mov	r0, #0x11
-	bl	gfree
-	mov	r0, #1
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end LoadInventoryIcon
-
-	.section .text.after_load_status_icon, "ax", %progbits
+.section .text.after_load_status_icon, "ax", %progbits
 
 .thumb_func_start LoadUIBanner  @ 0x0801a32c
 	push	{lr}

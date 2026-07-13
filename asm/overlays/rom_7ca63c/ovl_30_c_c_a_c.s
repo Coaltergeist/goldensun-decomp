@@ -178,42 +178,6 @@
 	bx	r1
 .func_end OvlFunc_944_2008240
 
-.thumb_func_start OvlFunc_944_200840c
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #1
-	mov	r1, #1
-	mov	r2, #1
-	neg	r1, r1
-	neg	r2, r2
-	mov	r3, #0
-	neg	r0, r0
-	bl	__Func_80933f8
-	mov	r0, #1
-	bl	__WaitFrames
-	bl	__Func_8093554
-	mov	r3, #0
-	add	r0, #0x55
-	strb	r3, [r0]
-	mov	r1, #0x80
-	mov	r0, #0xa4
-	lsl	r1, #15
-	ldr	r2, =0x1410000
-	lsl	r0, #16
-	bl	__Func_80933f8
-	bl	__Func_800fe9c
-	mov	r0, #1
-	bl	__WaitFrames
-	mov	r0, #0
-	mov	r1, #0
-	mov	r2, #0
-	bl	__MapActor_SetPos
-	bl	OvlFunc_944_20084b0
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_944_200840c
-
 .section .text.after_84b0, "ax", %progbits
 
 .thumb_func_start OvlFunc_944_20084b0
@@ -774,55 +738,7 @@
 	bx	r0
 .func_end OvlFunc_944_20087b0
 
-.thumb_func_start OvlFunc_944_2008a84
-	push	{r5, r6, lr}
-	mov	r5, r0
-	bl	__MapActor_GetActor
-	mov	r1, #1
-	mov	r6, r0
-	mov	r0, r5
-	bl	__Func_8092b08
-	mov	r2, r6
-	add	r2, #0x55
-	mov	r3, #0
-	strb	r3, [r2]
-	bl	__Random
-	mov	r3, r6
-	add	r3, #0x64
-	lsr	r0, #15
-	strh	r0, [r3]
-	bl	__Random
-	mov	r3, r6
-	add	r3, #0x66
-	lsr	r0, #15
-	strh	r0, [r3]
-	bl	__Random
-	lsl	r0, #2
-	lsr	r0, #16
-	mov	r2, #0xc0
-	lsl	r2, #11
-	lsl	r0, #16
-	add	r0, r2
-	str	r0, [r6, #0xc]
-	bl	__Random
-	lsl	r3, r0, #1
-	add	r3, r0
-	ldr	r2, =0xffffd000
-	lsl	r3, #13
-	lsr	r3, #16
-	add	r3, r2
-	str	r3, [r6, #0x4c]
-	mov	r3, #0xa0
-	lsl	r3, #9
-	str	r3, [r6, #0x18]
-	str	r3, [r6, #0x1c]
-	ldr	r1, =gScript_944__020093a4
-	mov	r0, r5
-	bl	__MapActor_SetBehavior
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_944_2008a84
+	.section .text.after_8a84
 
 .thumb_func_start OvlFunc_944_2008af8
 	push	{r5, r6, r7, lr}
@@ -1361,61 +1277,4 @@
 	bx	r0
 .func_end OvlFunc_944_2008e78
 
-.thumb_func_start OvlFunc_944_20090a0
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	ldr	r3, =iwram_3001e70
-	ldr	r6, =.L1940
-	ldr	r3, [r3]
-	ldr	r0, [r6]
-	ldr	r5, [r3]
-	bl	__cos
-	ldr	r2, =.L1928
-	mov	r10, r0
-	ldr	r0, [r2]
-	mov	r8, r2
-	bl	__sin
-	ldr	r3, [r5]
-	add	r3, r10
-	stmia	r5!, {r3}
-	ldr	r3, [r5]
-	lsl	r0, #2
-	add	r3, r0
-	str	r3, [r5]
-	ldr	r2, =.L1924
-	ldr	r3, [r2]
-	add	r3, r10
-	str	r3, [r2]
-	ldr	r2, =.L1920
-	ldr	r3, [r2]
-	add	r3, r0
-	str	r3, [r2]
-	bl	__Random
-	lsl	r3, r0, #1
-	add	r3, r0
-	ldr	r2, [r6]
-	lsl	r3, #7
-	lsr	r3, #16
-	add	r2, r3
-	str	r2, [r6]
-	bl	__Random
-	mov	r2, r8
-	ldr	r3, [r2]
-	lsl	r0, #9
-	ldrh	r2, [r6]
-	lsr	r0, #16
-	ldr	r1, =0xffff
-	add	r3, r0
-	str	r2, [r6]
-	and	r3, r1
-	mov	r2, r8
-	str	r3, [r2]
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_944_20090a0
+	.section .text.after_90a0

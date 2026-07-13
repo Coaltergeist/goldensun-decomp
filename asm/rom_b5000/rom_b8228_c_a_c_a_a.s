@@ -93,38 +93,7 @@
 	bx	r1
 .func_end Func_80b84c0
 
-.thumb_func_start Func_80b8530  @ 0x080b8530
-	push	{r5, lr}
-	mov	r5, r0
-	bl	_GetUnit
-	mov	r3, #0x94
-	lsl	r3, #1
-	add	r0, r3
-	ldrb	r0, [r0]
-	bl	GetEnemyHeight
-	lsl	r0, #24
-	lsr	r3, r0, #8
-	cmp	r3, #0
-	bne	.Lb856a
-	mov	r0, r5
-	bl	_GetUnit
-	mov	r3, #0x94
-	lsl	r3, #1
-	add	r0, r3
-	ldrb	r0, [r0]
-	bl	Func_80c23c0
-	mov	r3, #0xc0
-	lsl	r3, #13
-	cmp	r0, #0
-	bne	.Lb856a
-	mov	r3, #0xc0
-	lsl	r3, #14
-.Lb856a:
-	mov	r0, r3
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_80b8530
+	.section .text.after_b8530, "ax", %progbits
 
 .thumb_func_start Func_80b8574  @ 0x080b8574
 	push	{r5, r6, r7, lr}
@@ -449,4 +418,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_80b874c
-

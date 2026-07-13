@@ -877,6 +877,8 @@ gScript_968__0200d508:
 	.incbin "overlays/rom_7c7b9c/orig.bin", 0x59d0, (0x5a54-0x59d0)
 .L5a54:
 	.incbin "overlays/rom_7c7b9c/orig.bin", 0x5a54, (0x5b08-0x5a54)
+	.global gOvl943FlagResults
+gOvl943FlagResults:
 .L5b08:
 	.incbin "overlays/rom_7c7b9c/orig.bin", 0x5b08
 

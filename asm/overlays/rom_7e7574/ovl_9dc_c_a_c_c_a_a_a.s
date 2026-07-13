@@ -418,36 +418,7 @@
 	bx	r0
 .func_end OvlFunc_959_2009c4c
 
-.thumb_func_start OvlFunc_959_2009ca4
-	push	{r5, r6, lr}
-	ldr	r5, =0x2421
-	mov	r6, r0
-	mov	r0, r5
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r0, r6
-	mov	r1, #1
-	bl	__Func_80925cc
-	add	r0, r5, #1
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	add	r5, #2
-	mov	r0, r6
-	mov	r1, #4
-	bl	__MapActor_DoAnim
-	mov	r0, r5
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_2009ca4
+.section .text.after_9ca4, "ax", %progbits
 
 .thumb_func_start OvlFunc_959_2009cf0
 	push	{r5, r6, lr}
@@ -983,4 +954,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_959_200a1c4
-

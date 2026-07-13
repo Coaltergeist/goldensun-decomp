@@ -1,51 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_944_200915c
-	push	{r5, r6, lr}
-	mov	r6, #0
-	cmp	r0, #1
-	beq	.L1176
-	cmp	r0, #1
-	bcc	.L1172
-	cmp	r0, #2
-	beq	.L117a
-	cmp	r0, #3
-	beq	.L1186
-	b	.L118a
-.L1172:
-	ldr	r6, =0x92c
-	b	.L118a
-.L1176:
-	ldr	r6, =0x935
-	b	.L118a
-.L117a:
-	ldr	r6, =0x917
-	b	.L118a
-.L117e:
-	ldr	r3, =.L18f8
-	lsl	r2, r5, #2
-	ldr	r0, [r3, r2]
-	b	.L119e
-.L1186:
-	mov	r6, #0x99
-	lsl	r6, #4
-.L118a:
-	mov	r5, #0
-.L118c:
-	add	r0, r6, r5
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L117e
-	add	r5, #1
-	cmp	r5, #8
-	bls	.L118c
-	mov	r0, #0
-.L119e:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_944_200915c
-
 	.section .data
 	.global .L16f4
 	.global .L1844
@@ -107,6 +61,8 @@ gOvl_0200976c:
 	.global gOvl_0200988c
 gOvl_0200988c:
 	.incbin "overlays/rom_7ca63c/orig.bin", 0x188c, (0x18f8-0x188c)
+	.global gOvl944FlagResults
+gOvl944FlagResults:
 .L18f8:
 	.incbin "overlays/rom_7ca63c/orig.bin", 0x18f8
 

@@ -2555,36 +2555,3 @@
 	pop	{r1}
 	bx	r1
 .func_end OvlFunc_926_200be58
-
-.thumb_func_start OvlFunc_926_200c0dc
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r6, r0
-	mov	r0, #0xa0
-	lsl	r0, #1
-	mov	r8, r1
-	bl	__SetFlag
-	mov	r0, #0x8d
-	mov	r1, #1
-	bl	__Func_8096fb0
-	ldr	r3, =iwram_3001f30
-	ldr	r5, [r3]
-	mov	r0, r6
-	mov	r1, r8
-	bl	__Func_80970f8
-	add	r5, #0x23
-	mov	r3, #0
-	strb	r3, [r5]
-	bl	__Func_809728c
-	mov	r0, #1
-	bl	__FieldMove
-	mov	r0, #1
-	bl	__WaitFrames
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_926_200c0dc
-

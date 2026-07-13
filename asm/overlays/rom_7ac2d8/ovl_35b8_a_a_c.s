@@ -2606,67 +2606,7 @@
 	bx	r0
 .func_end OvlFunc_924_200cc68
 
-.thumb_func_start OvlFunc_924_200cf44
-	push	{r5, lr}
-	ldr	r3, =iwram_3001f30
-	mov	r1, #0xd2
-	mov	r2, #0x96
-	lsl	r2, #18
-	mov	r0, #0xb
-	lsl	r1, #18
-	ldr	r5, [r3]
-	bl	__MapActor_SetPos
-	mov	r0, #0x5d
-	mov	r1, #1
-	bl	__Func_8096fb0
-	mov	r1, #0xb
-	mov	r0, #3
-	bl	__Func_80970f8
-	ldr	r3, =0x71c
-	add	r5, r3
-	ldrb	r2, [r5]
-	mov	r3, #8
-	orr	r3, r2
-	strb	r3, [r5]
-	bl	__Func_809728c
-	mov	r0, #1
-	bl	__FieldMove
-	bl	__Func_8097174
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_200cf44
-
-.thumb_func_start OvlFunc_924_200cf90
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r6, r0
-	mov	r8, r1
-	bl	__CheckPartyItem
-	mov	r7, #1
-	mov	r5, r0
-	neg	r7, r7
-	cmp	r5, r7
-	beq	.L4fc2
-	mov	r1, r6
-	bl	__CheckItem
-	mov	r6, r0
-	cmp	r6, r7
-	beq	.L4fc2
-	mov	r0, r5
-	bl	__GetUnit
-	lsl	r3, r6, #1
-	add	r3, #0xd8
-	mov	r2, r8
-	strh	r2, [r0, r3]
-.L4fc2:
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_924_200cf90
+.section .text.after_cf90, "ax", %progbits
 
 .thumb_func_start OvlFunc_924_200cfcc
 	push	{r5, r6, r7, lr}
@@ -2895,40 +2835,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_924_200d158
-
-.thumb_func_start OvlFunc_924_200d1b0
-	push	{r5, r6, lr}
-	mov	r5, r0
-	mov	r2, r5
-	add	r2, #0x64
-	ldrh	r3, [r2]
-	add	r3, #1
-	ldr	r6, [r5, #0x68]
-	strh	r3, [r2]
-	lsl	r3, #16
-	asr	r0, r3, #16
-	cmp	r0, #0x1f
-	ble	.L51cc
-	mov	r0, #0
-	b	.L51ea
-.L51cc:
-	lsl	r0, #10
-	bl	__sin
-	str	r0, [r5, #0x18]
-	str	r0, [r5, #0x1c]
-	ldr	r3, [r6, #8]
-	mov	r2, #0x80
-	str	r3, [r5, #8]
-	ldr	r3, [r5, #0xc]
-	lsl	r2, #9
-	add	r3, r2
-	str	r3, [r5, #0xc]
-	ldr	r3, [r6, #0x10]
-	str	r3, [r5, #0x10]
-	mov	r0, #1
-.L51ea:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_924_200d1b0
-

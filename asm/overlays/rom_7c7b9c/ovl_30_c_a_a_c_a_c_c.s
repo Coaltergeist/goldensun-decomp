@@ -1,58 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_943_2008c28
-	push	{r5, r6, lr}
-	ldr	r3, =iwram_3001ebc
-	ldr	r6, [r3]
-	bl	__CutsceneStart
-	mov	r2, #0xb6
-	lsl	r2, #1
-	add	r3, r6, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	mov	r5, #0
-	cmp	r3, #1
-	beq	.Lc48
-	cmp	r3, #3
-	beq	.Lc50
-	b	.Lc56
-.Lc48:
-	mov	r5, #1
-	bl	OvlFunc_943_2008bb8
-	b	.Lc56
-.Lc50:
-	mov	r5, #1
-	bl	OvlFunc_943_2008bf0
-.Lc56:
-	cmp	r5, #0
-	beq	.Lc78
-	mov	r0, #0
-	ldr	r1, =0x9999
-	ldr	r2, =0x4ccc
-	bl	__MapActor_SetSpeed
-	mov	r2, #0xa
-	mov	r0, #0
-	mov	r1, #1
-	neg	r2, r2
-	bl	__Func_8092208
-	mov	r0, #0xa
-	bl	__CutsceneWait
-	b	.Lc7e
-.Lc78:
-	mov	r0, #0x7b
-	bl	__PlaySound
-.Lc7e:
-	mov	r2, #0xb6
-	lsl	r2, #1
-	add	r3, r6, r2
-	mov	r2, #0
-	ldrsh	r0, [r3, r2]
-	bl	__Func_8091e9c
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_943_2008c28
-
 .thumb_func_start OvlFunc_943_2008ca0
 	push	{r5, r6, lr}
 	mov	r6, r11
@@ -725,48 +672,7 @@
 	bx	r0
 .func_end OvlFunc_943_20092f0
 
-.thumb_func_start OvlFunc_943_20093d4
-	push	{r5, r6, lr}
-	ldr	r6, =iwram_3001e70
-	mov	r2, #0x82
-	ldr	r5, [r6]
-	mov	r0, #0x8e
-	lsl	r2, #1
-	lsl	r0, #1
-	add	r5, r2
-	bl	__ClearFlag
-	ldr	r3, [r6, #0x4c]
-	mov	r2, #0xe0
-	lsl	r2, #1
-	add	r3, r2
-	mov	r6, #0
-	add	r2, #0x49
-	str	r2, [r3]
-	str	r6, [r5, #0x1c]
-	ldr	r5, =.L5b58
-	bl	__Random
-	lsl	r0, #16
-	lsr	r0, #16
-	str	r0, [r5]
-	ldr	r5, =.L5b38
-	bl	__Random
-	ldr	r3, =.L5b50
-	lsl	r0, #16
-	lsr	r0, #16
-	str	r0, [r5]
-	str	r6, [r3]
-	str	r6, [r3, #4]
-	ldr	r3, =.L5b60
-	str	r6, [r3]
-	bl	__Func_800fe9c
-	mov	r0, #1
-	bl	__WaitFrames
-	bl	OvlFunc_943_2009444
-	mov	r0, #0
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_943_20093d4
+	.section .text.after_93d4
 
 .thumb_func_start OvlFunc_943_2009444
 	push	{r5, lr}
@@ -3598,52 +3504,7 @@
 	bx	r0
 .func_end OvlFunc_943_200ac84
 
-.thumb_func_start OvlFunc_943_200b150
-	push	{r5, r6, r7, lr}
-	mov	r6, #0
-	mov	r7, #0x17
-	cmp	r0, #1
-	beq	.L316c
-	cmp	r0, #1
-	bcc	.L3168
-	cmp	r0, #2
-	beq	.L3170
-	cmp	r0, #3
-	beq	.L3178
-	b	.L317c
-.L3168:
-	ldr	r6, =0x92c
-	b	.L317c
-.L316c:
-	ldr	r6, =0x935
-	b	.L317c
-.L3170:
-	ldr	r6, =0x917
-	b	.L317c
-.L3174:
-	mov	r0, r7
-	b	.L3194
-.L3178:
-	mov	r6, #0x99
-	lsl	r6, #4
-.L317c:
-	mov	r5, #0
-.L317e:
-	mov	r0, r6
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L3174
-	add	r5, #1
-	add	r6, #1
-	add	r7, #1
-	cmp	r5, #8
-	bls	.L317e
-	mov	r0, #0
-.L3194:
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_943_200b150
+	.section .text.after_b150
 
 .thumb_func_start OvlFunc_943_200b1a8
 	push	{r5, r6, lr}
@@ -3926,48 +3787,4 @@
 	bx	r0
 .func_end OvlFunc_943_200b3b8
 
-.thumb_func_start OvlFunc_943_200b464
-	push	{r5, r6, lr}
-	mov	r6, #0
-	cmp	r0, #1
-	beq	.L347e
-	cmp	r0, #1
-	bcc	.L347a
-	cmp	r0, #2
-	beq	.L3482
-	cmp	r0, #3
-	beq	.L348e
-	b	.L3492
-.L347a:
-	ldr	r6, =0x92c
-	b	.L3492
-.L347e:
-	ldr	r6, =0x935
-	b	.L3492
-.L3482:
-	ldr	r6, =0x917
-	b	.L3492
-.L3486:
-	ldr	r3, =.L5b08
-	lsl	r2, r5, #2
-	ldr	r0, [r3, r2]
-	b	.L34a6
-.L348e:
-	mov	r6, #0x99
-	lsl	r6, #4
-.L3492:
-	mov	r5, #0
-.L3494:
-	add	r0, r6, r5
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L3486
-	add	r5, #1
-	cmp	r5, #8
-	bls	.L3494
-	mov	r0, #0
-.L34a6:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_943_200b464
+	.section .text.after_b464
