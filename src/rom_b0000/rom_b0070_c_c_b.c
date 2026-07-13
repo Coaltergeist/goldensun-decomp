@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster Func_80b3210..Func_80b3210 extracted from goldensun/asm/rom_b0000/rom_b0070_c_c.s.
  *
  * Total .text for this TU = 116 bytes (= 0x74).
@@ -5,7 +6,6 @@
  * asm/rom_b0000/rom_b0070_c_c_a.o and asm/rom_b0000/rom_b0070_c_c_c.o in
  * goldensun/stage1.ld.
  */
-// fakematch
 extern unsigned char iwram_3001f2c[];
 extern int _GetUnit(int);
 extern signed char Lb4ab6[] __asm__(".Lb4ab6");

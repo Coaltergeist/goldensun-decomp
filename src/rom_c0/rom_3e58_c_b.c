@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster UploadSprite2..UploadSprite2 extracted from goldensun/asm/rom_c0/rom_3e58_c.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
