@@ -29,6 +29,8 @@ SECTIONS {
 		asm/overlays/rom_798dc4/ovl_314_c_b.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_c_c_b.o(.text)
 		asm/overlays/rom_798dc4/ovl_314_c_c_c.o(.text)
+		src/overlays/rom_798dc4/ovl_314_c_c_c_8f8c.o(.text)
+		asm/overlays/rom_798dc4/ovl_314_c_c_c.o(.text.after_8f8c)
 		src/overlays/rom_798dc4/imports.o(.text)
 	} > overlay
 

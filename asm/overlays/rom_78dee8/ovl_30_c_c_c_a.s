@@ -126,29 +126,7 @@
 	bx	r0
 .func_end OvlFunc_895_20087d0
 
-.thumb_func_start OvlFunc_895_20088f4
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x13
-	cmp	r2, r3
-	bne	.L90e
-	bl	OvlFunc_895_200892c
-	b	.L918
-.L90e:
-	ldr	r3, =0x10
-	cmp	r2, r3
-	bne	.L918
-	bl	OvlFunc_895_2008a24
-.L918:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_895_20088f4
+	.section .text.after_88f4, "ax", %progbits
 
 .thumb_func_start OvlFunc_895_200892c
 	push	{r5, lr}
@@ -1912,4 +1890,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_895_20097c0
-

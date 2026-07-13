@@ -80,66 +80,8 @@
 	bx	r0
 .func_end Func_8021a18
 
-.thumb_func_start Func_8021ab0  @ 0x08021ab0
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r8, r1
-	mov	r1, #0xc1
-	mov	r6, r0
-	lsl	r1, #3
-	mov	r0, #0x11
-	bl	galloc_ewram
-	mov	r5, r0
-	mov	r0, r6
-	bl	DecompressStatusIcon
-	mov	r3, #0x80
-	lsl	r3, #3
-	add	r5, r3
-	mov	r1, r5
-	mov	r0, r8
-	bl	UploadSprite2
-	mov	r5, r0
-	mov	r0, #0x11
-	bl	gfree
-	mov	r0, r5
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_8021ab0
+	.section .text.after_21af0, "ax", %progbits
 
-.thumb_func_start Func_8021af0  @ 0x08021af0
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r8, r1
-	mov	r1, #0xc1
-	mov	r6, r0
-	lsl	r1, #3
-	mov	r0, #0x11
-	bl	galloc_ewram
-	mov	r1, #0x1a
-	mov	r5, r0
-	mov	r0, r6
-	bl	DrawInventoryIcon
-	mov	r3, #0x80
-	lsl	r3, #3
-	add	r5, r3
-	mov	r1, r5
-	mov	r0, r8
-	bl	UploadSprite2
-	mov	r5, r0
-	mov	r0, #0x11
-	bl	gfree
-	mov	r0, r5
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_8021af0
 
 .thumb_func_start Func_8021b30  @ 0x08021b30
 	push	{r5, r6, lr}
@@ -218,4 +160,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_8021b80
-

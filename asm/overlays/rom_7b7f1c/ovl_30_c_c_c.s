@@ -59,31 +59,6 @@
 	bx	r0
 .func_end OvlFunc_930_20090b8
 
-.thumb_func_start OvlFunc_930_2009144
-	push	{lr}
-	sub	sp, #8
-	bl	__CutsceneStart
-	mov	r3, #0x15
-	mov	r2, #0xb
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r1, #6
-	mov	r2, #1
-	mov	r3, #2
-	mov	r0, #0xe
-	bl	__Func_8010704
-	mov	r0, #0xf
-	bl	__MapActor_GetActor
-	mov	r3, #0xfe
-	add	r0, #0x59
-	strb	r3, [r0]
-	ldr	r0, =0x201
-	bl	__SetFlag
-	bl	__CutsceneEnd
-	add	sp, #8
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_930_2009144
 
 	.section .text.20091b0, "ax", %progbits
 

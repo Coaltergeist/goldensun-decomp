@@ -8,7 +8,7 @@
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);
 extern int StopTask(void *task);
-extern void Task_BlitPreAnim(void);
+extern void *Task_BlitPreAnim(void);
 extern void Func_80c11ec(void);
 
 int Func_80c16d0(void) {

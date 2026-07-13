@@ -1,37 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_917_20092b4
-	push	{r5, lr}
-	ldr	r5, =.L1dd4
-	ldr	r3, [r5]
-	cmp	r3, #0
-	bne	.L12cc
-	mov	r0, #0
-	bl	OvlFunc_917_20098b8
-	mov	r0, #0x14
-	bl	__Func_8091254
-	b	.L12dc
-.L12cc:
-	cmp	r3, #0x14
-	bne	.L12dc
-	mov	r0, #1
-	bl	OvlFunc_917_20098b8
-	mov	r0, #8
-	bl	__Func_8091254
-.L12dc:
-	ldr	r3, [r5]
-	add	r3, #1
-	str	r3, [r5]
-	cmp	r3, #0x1e
-	bne	.L12ea
-	mov	r3, #0
-	str	r3, [r5]
-.L12ea:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_917_20092b4
+	.section .text.after_92b4, "ax", %progbits
 
 .thumb_func_start OvlFunc_917_20092f4
 	push	{lr}
@@ -476,36 +446,7 @@
 	bx	r0
 .func_end OvlFunc_917_20095a0
 
-.thumb_func_start OvlFunc_917_200972c
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r6, r0
-	mov	r8, r1
-	bl	__CheckPartyItem
-	mov	r7, #1
-	mov	r5, r0
-	neg	r7, r7
-	cmp	r5, r7
-	beq	.L175e
-	mov	r1, r6
-	bl	__CheckItem
-	mov	r6, r0
-	cmp	r6, r7
-	beq	.L175e
-	mov	r0, r5
-	bl	__GetUnit
-	lsl	r3, r6, #1
-	add	r3, #0xd8
-	mov	r2, r8
-	strh	r2, [r0, r3]
-.L175e:
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_917_200972c
+	.section .text.after_972c, "ax", %progbits
 
 .thumb_func_start OvlFunc_917_2009768
 	push	{r5, r6, r7, lr}

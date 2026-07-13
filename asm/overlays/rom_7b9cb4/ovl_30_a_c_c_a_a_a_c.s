@@ -93,35 +93,7 @@
 	bx	r0
 .func_end OvlFunc_932_200847c
 
-.thumb_func_start OvlFunc_932_20084cc
-	push	{r5, lr}
-	mov	r0, #9
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	mov	r3, #0x11
-	mov	r2, #0xd
-	mov	r5, r0
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0x1d
-	mov	r1, #1
-	mov	r2, #3
-	mov	r3, #1
-	bl	__Func_8010704
-	cmp	r5, #0
-	beq	.L4f8
-	mov	r2, r5
-	add	r2, #0x55
-	mov	r3, #2
-	strb	r3, [r2]
-.L4f8:
-	ldr	r0, =0x201
-	bl	__SetFlag
-	add	sp, #8
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_932_20084cc
+	.section .text.after_84cc, "ax", %progbits
 
 .thumb_func_start OvlFunc_932_200850c
 	push	{r5, lr}
@@ -311,34 +283,7 @@
 	bx	r0
 .func_end OvlFunc_932_2008650
 
-.thumb_func_start OvlFunc_932_20086a0
-	push	{r5, r6, lr}
-	mov	r6, #0x80
-	lsl	r6, #19
-	ldrh	r2, [r6]
-	ldr	r3, =0xfdff
-	and	r3, r2
-	lsl	r3, #16
-	asr	r5, r3, #16
-	bl	__Random
-	mov	r3, #0x64
-	mul	r3, r0
-	ldr	r2, =.L5238
-	ldrh	r2, [r2]
-	lsr	r3, #16
-	cmp	r3, r2
-	bcc	.L6c8
-	mov	r3, #0x80
-	lsl	r3, #2
-	orr	r5, r3
-.L6c8:
-	lsl	r3, r5, #16
-	lsr	r3, #16
-	strh	r3, [r6]
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_932_20086a0
+	.section .text.after_86a0, "ax", %progbits
 
 .thumb_func_start OvlFunc_932_20086dc
 	push	{r5, r6, r7, lr}
