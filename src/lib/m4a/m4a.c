@@ -1,8 +1,5 @@
-#include <string.h>
 #include "gba/types.h"
 #include "lib/m4a/m4a_internal.h"
-
-#include <stdio.h>
 
 #if !PLATFORM_GBA
 #include "platform/shared/audio/cgb_audio.h"

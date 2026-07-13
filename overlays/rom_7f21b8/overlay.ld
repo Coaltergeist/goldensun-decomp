@@ -29,6 +29,7 @@ SECTIONS {
 	} > overlay
 
 	.data : {
+		asm/overlays/rom_7f21b8/ovl_30_c_c_c_c_a.o(.data)
 		asm/overlays/rom_7f21b8/ovl_30_c_c_c_c.o(.data)
 	} > overlay
 

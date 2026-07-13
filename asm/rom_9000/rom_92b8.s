@@ -778,7 +778,7 @@ Data_8009d9c:
 	bge	.La7ac
 	str	r1, [sp, #0xc]
 	ldr	r3, [r5, #0x44]
-	smull	r2, r3, r3, r2
+	.word	0xe0c32293  @ smull r2, r3, r3, r2 (ARM7TDMI permits the overlap)
 	lsl	r3, #16
 	orr	r3, r2, lsr #16
 	rsb	r3, #0

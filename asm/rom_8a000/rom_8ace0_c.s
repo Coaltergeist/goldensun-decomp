@@ -10,6 +10,7 @@
 	.global .L9e1d8
 	.global .L9e270
 	.global .L9e488
+	.global Data_809e4ce
 
 .L9c610:
 	.incrom 0x9c610, 0x9d170
@@ -29,3 +30,5 @@
 	.incrom 0x9e270, 0x9e488
 .L9e488:
 	.incrom 0x9e488, 0x9e4ce
+Data_809e4ce:
+	.incrom 0x9e4ce, 0x9e680

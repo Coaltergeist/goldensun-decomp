@@ -1408,7 +1408,7 @@
 	mov	r1, #0
 	mov	r2, #1
 	mov	r9, r1
-	ldr	r0, =.L9e4ce
+	ldr	r0, =Data_809e4ce
 	ldr	r1, =0x6001a00
 	sub	sp, #0xc
 	mov	r10, r2
@@ -1857,4 +1857,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_808d394
-

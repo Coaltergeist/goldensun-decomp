@@ -3986,23 +3986,7 @@
 	bx	r1
 .func_end Func_8025180
 
-.thumb_func_start Func_80251d4  @ 0x080251d4
-	mov	r3, r0
-	ldr	r0, =0x3ff
-	mov	r2, #0xc0
-	and	r1, r0
-	and	r0, r3
-	lsl	r2, #19
-	lsl	r0, #5
-	lsl	r1, #5
-	add	r0, r2
-	add	r1, r2
-	ldr	r3, =REG_DMA3SAD
-	ldr	r2, =0x84000008
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	bx	lr
-.func_end Func_80251d4
+	.section .text.after_251d4, "ax", %progbits
 
 .thumb_func_start Func_8025200  @ 0x08025200
 	push	{r5, r6, r7, lr}
@@ -7830,28 +7814,7 @@
 	bx	r1
 .func_end GetMoveDisplayEffect
 
-.thumb_func_start Func_80270ac  @ 0x080270ac
-	push	{r5, lr}
-	mov	r5, r9
-	push	{r5}
-	sub	sp, #8
-	mov	r5, sp
-	mov	r3, r9
-	str	r3, [sp, #4]
-	mov	r0, r5
-	mov	r3, #0xff
-	strh	r3, [r5]
-	bl	Func_802281c
-	mov	r0, r5
-	mov	r1, #1
-	bl	_Func_80c10e8
-	add	sp, #8
-	pop	{r3}
-	mov	r9, r3
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80270ac
+	.section .text.after_270ac, "ax", %progbits
 
 .thumb_func_start Func_80270d8  @ 0x080270d8
 	push	{r5, r6, lr}
@@ -11322,4 +11285,3 @@
 .L28d70:
 	.word	0xc76
 .func_end DataTransferMenu
-

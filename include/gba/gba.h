@@ -6,7 +6,11 @@
 // is decompiled.
 
 #include "gba/types.h"
-#include <stdint.h>   // intptr_t / uintptr_t (m4a); agbcc-only, so kept out of the shared gba/types.h
+
+/* GBA pointers are 32-bit.  Keep the freestanding SDK build host-independent. */
+typedef s32 intptr_t;
+typedef u32 uintptr_t;
+
 #include "gba/defines.h"
 #include "gba/io.h"
 #include "gba/syscall.h"

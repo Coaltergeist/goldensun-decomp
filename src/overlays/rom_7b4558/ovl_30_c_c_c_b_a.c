@@ -2,10 +2,10 @@ extern unsigned char gState[];
 extern unsigned char Value_44[] asm("0x44");
 extern unsigned char Value_45[] asm("0x45");
 extern unsigned char Value_46[] asm("0x46");
-extern unsigned char Result_44[] asm(".L3a48");
-extern unsigned char Result_45[] asm(".L3b20");
-extern unsigned char Result_46[] asm(".L3c1c");
-extern unsigned char Result_default[] asm(".L3d54");
+extern unsigned char Result_44[] asm("OvlData_927_3a48");
+extern unsigned char Result_45[] asm("OvlData_927_3b20");
+extern unsigned char Result_46[] asm("OvlData_927_3c1c");
+extern unsigned char Result_default[] asm("OvlData_927_3d54");
 
 void *OvlFunc_927_200a4ac(void) {
     register unsigned int address asm("r3") = (unsigned int)gState;

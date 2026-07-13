@@ -1,4 +1,4 @@
-extern unsigned short WeaponTypeTable[] asm(".Lc593c");
+extern unsigned short WeaponTypeTable[] asm("WeaponTypeTable_80c593c");
 
 int GetWeaponType(int item)
 {

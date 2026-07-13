@@ -7,6 +7,9 @@
 	.global .L2f3c
 	.global .L2f84
 	.global .L2fcc
+	.global OvlData_947_3174
+	.global OvlData_947_3264
+	.global OvlData_947_32dc
 
 .L2e7c:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x2e7c, (0x2eac-0x2e7c)
@@ -29,9 +32,9 @@ gOvl_0200b06c:
 	.global gOvl_0200b0e4
 gOvl_0200b0e4:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x30e4, (0x3174-0x30e4)
-.L3174:
+OvlData_947_3174:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x3174, (0x3264-0x3174)
-.L3264:
+OvlData_947_3264:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x3264, (0x32dc-0x3264)
-.L32dc:
+OvlData_947_32dc:
 	.incbin "overlays/rom_7d0e88/orig.bin", 0x32dc, (0x339c-0x32dc)

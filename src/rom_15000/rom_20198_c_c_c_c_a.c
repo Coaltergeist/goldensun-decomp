@@ -1,5 +1,7 @@
 #include "ui.h"
 
+/* Preserve the original section-relative relocation. */
+asm(".section .rodata\n.text");
 extern unsigned char Rom20198Rodata[] asm(".rodata");
 
 struct UIBox *CreateTimeLabelBox(void)

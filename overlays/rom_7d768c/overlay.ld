@@ -31,6 +31,8 @@ SECTIONS {
 	} > overlay
 
 	.data : {
+		/* Zero-sized anchor for section-relative script pointers in c_c_a. */
+		src/overlays/rom_7d768c/ovl_30_c_c_a.o(.data)
 		asm/overlays/rom_7d768c/ovl_30_c_c.o(.data)
 	} > overlay
 

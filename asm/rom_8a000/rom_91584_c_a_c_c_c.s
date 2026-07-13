@@ -1,42 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091814  @ 0x08091814
-	push	{r5, r6, lr}
-	lsr	r5, r0, #10
-	mov	r3, #0xf
-	ldr	r6, =0x3ff
-	and	r5, r3
-	and	r6, r0
-	cmp	r5, #7
-	ble	.L9182a
-	mov	r0, #1
-	neg	r0, r0
-	b	.L9184e
-.L9182a:
-	mov	r0, r5
-	bl	_GetFlag
-	cmp	r0, #0
-	bne	.L9183a
-	mov	r0, #2
-	neg	r0, r0
-	b	.L9184e
-.L9183a:
-	mov	r0, r5
-	mov	r1, r6
-	bl	_HasMove
-	cmp	r0, #0
-	bne	.L9184c
-	mov	r0, #3
-	neg	r0, r0
-	b	.L9184e
-.L9184c:
-	mov	r0, #0
-.L9184e:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_8091814
-
 	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_8091890  @ 0x08091890

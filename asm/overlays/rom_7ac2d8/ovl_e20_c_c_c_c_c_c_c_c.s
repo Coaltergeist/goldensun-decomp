@@ -10,6 +10,10 @@
 	.global .L623c
 	.global .L635c
 	.global .L650c
+	.global OvlData_924_6ad8
+	.global OvlData_924_6c10
+	.global OvlData_924_6d60
+	.global OvlData_924_6ec8
 
 .L60ec:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x60ec, (0x623c-0x60ec)
@@ -32,11 +36,11 @@ gScript_883__0200e614:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6838, (0x6988-0x6838)
 .L6988:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6988, (0x6ad8-0x6988)
-.L6ad8:
+OvlData_924_6ad8:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6ad8, (0x6c10-0x6ad8)
-.L6c10:
+OvlData_924_6c10:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6c10, (0x6d60-0x6c10)
-.L6d60:
+OvlData_924_6d60:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6d60, (0x6ec8-0x6d60)
-.L6ec8:
+OvlData_924_6ec8:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6ec8

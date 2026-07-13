@@ -145,11 +145,15 @@ gOvl_0200b5bc:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x38b0, (0x3a30-0x38b0)
 .L3a30:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3a30, (0x3a48-0x3a30)
-.L3a48:
+	.global OvlData_927_3a48
+OvlData_927_3a48:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3a48, (0x3b20-0x3a48)
-.L3b20:
+	.global OvlData_927_3b20
+OvlData_927_3b20:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3b20, (0x3c1c-0x3b20)
-.L3c1c:
+	.global OvlData_927_3c1c
+OvlData_927_3c1c:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3c1c, (0x3d54-0x3c1c)
-.L3d54:
+	.global OvlData_927_3d54
+OvlData_927_3d54:
 	.incbin "overlays/rom_7b4558/orig.bin", 0x3d54

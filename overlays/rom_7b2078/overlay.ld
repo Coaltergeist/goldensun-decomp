@@ -51,6 +51,7 @@ SECTIONS {
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
+		asm/overlays/rom_7b2078/ovl_314_c_c_c_c_c_c_c.o(.data)
 		asm/overlays/rom_7b2078/ovl_314_c_c_c_c_c_c_c_c.o(.data)
 	} > overlay
 
