@@ -1,21 +1,5 @@
 	.include "macros.inc"
 	.include "gba.inc"
-
-.thumb_func_start OvlFunc_919_20081d4
-	push	{lr}
-	ldr	r3, =gKeyHeld
-	ldr	r0, =.L590
-	ldr	r3, [r3]
-	strh	r3, [r0]
-	ldr	r3, =gKeyRepeat
-	ldr	r3, [r3]
-	ldr	r1, =.L5b0
-	strh	r3, [r0, #2]
-	bl	__Func_8005ee0
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_919_20081d4
-
 .thumb_func_start OvlFunc_919_2008200
 	push	{r5, lr}
 	ldr	r5, =iwram_3001ebc
@@ -107,4 +91,3 @@
 	strh	r2, [r1]
 	bx	lr
 .func_end OvlFunc_919_20082a0
-

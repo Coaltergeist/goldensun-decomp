@@ -1,32 +1,6 @@
 .include "macros.inc"
 .include "gba.inc"
 
-.thumb_func_start OvlFunc_970_20083f8
-	push	{r5, lr}
-	mov	r0, #3
-	ldr	r5, =gOvl_02009814
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #0xc]
-	mov	r0, #0
-	str	r3, [r5]
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_970_20083f8
-
-.thumb_func_start OvlFunc_970_2008414
-	push	{r5, lr}
-	mov	r0, #2
-	ldr	r5, =.L1818
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #0xc]
-	mov	r0, #0
-	str	r3, [r5]
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_970_2008414
-
 .thumb_func_start OvlFunc_970_2008430
 	push	{r5, r6, lr}
 	sub	sp, #8
