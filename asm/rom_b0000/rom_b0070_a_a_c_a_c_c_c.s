@@ -1,55 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b0694  @ 0x080b0694
-	push	{lr}
-	mov	r2, #0xd2
-	lsl	r2, #2
-	ldr	r4, =0x39e
-	add	r3, r0, r2
-	ldr	r2, [r3]
-	add	r3, r0, r4
-	ldrh	r3, [r3]
-	mov	r1, #0
-	cmp	r3, #0
-	beq	.Lb06b6
-	add	r3, r0, r4
-	ldrh	r0, [r3]
-.Lb06ae:
-	add	r1, #1
-	ldr	r2, [r2, #4]
-	cmp	r1, r0
-	bne	.Lb06ae
-.Lb06b6:
-	mov	r0, r2
-	pop	{r1}
-	bx	r1
-.func_end Func_80b0694
-
-.thumb_func_start Func_80b06c0  @ 0x080b06c0
-	push	{lr}
-	lsl	r3, r1, #4
-	add	r1, r3, #1
-	cmp	r0, #0
-	ble	.Lb06e4
-	ldr	r4, =.Lb4100
-.Lb06cc:
-	ldrh	r3, [r4]
-	sub	r0, #1
-	add	r3, r2, r3
-	add	r4, #2
-	strb	r1, [r3, #4]
-	strb	r1, [r3, #8]
-	strb	r1, [r3, #0xc]
-	strb	r1, [r3, #0x10]
-	strb	r1, [r3, #0x14]
-	strb	r1, [r3, #0x18]
-	cmp	r0, #0
-	bne	.Lb06cc
-.Lb06e4:
-	pop	{r0}
-	bx	r0
-.func_end Func_80b06c0
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_80b06ec  @ 0x080b06ec
 	push	{lr}
@@ -231,4 +183,3 @@
 	pop	{r0}
 	bx	r0
 .func_end Func_80b0840
-

@@ -5,18 +5,18 @@
  * asm/rom_77000/rom_78414_c_c_a_a.o and asm/rom_77000/rom_78414_c_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned char *GetUnit(int unit);
+#include "unit.h"
 
-int CheckItem(int pc, int item)
+int CheckItem(int unitId, int itemId)
 {
-    unsigned char *u;
-    unsigned short *p;
+    struct Unit *unit;
+    unsigned short *inventory;
     int i;
 
-    u = GetUnit(pc);
-    p = (unsigned short *)(u + 0xd8);
+    unit = GetUnit(unitId);
+    inventory = unit->inventory;
     for (i = 0; i <= 0xe; i++) {
-        if ((p[i] & 0x1ff) == item)
+        if ((inventory[i] & 0x1ff) == itemId)
             return i;
     }
     return -1;

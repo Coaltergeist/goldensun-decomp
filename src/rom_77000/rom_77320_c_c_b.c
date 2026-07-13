@@ -1,15 +1,16 @@
-extern unsigned char *GetUnit(unsigned int unit_id);
+#include "unit.h"
+
 extern void UpdateStatBarPercent(unsigned int unit_id);
 
 int ModifyHP(unsigned int unit_id, int amount)
 {
-    unsigned char *unit = GetUnit(unit_id);
+    struct Unit *unit = GetUnit(unit_id);
     register int value asm("r3");
     register int maximum asm("r2");
     register int clamped asm("r1");
 
-    value = *(short *)(unit + 0x38);
-    maximum = *(short *)(unit + 0x34);
+    value = unit->hp;
+    maximum = unit->maxHP;
     value += amount;
 
     clamped = maximum;
@@ -21,9 +22,9 @@ int ModifyHP(unsigned int unit_id, int amount)
     clamped = value;
 
 store_hp:
-    *(short *)(unit + 0x38) = clamped;
+    unit->hp = clamped;
     UpdateStatBarPercent(unit_id);
-    return *(short *)(unit + 0x38);
+    return unit->hp;
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
@@ -31,13 +32,13 @@ asm(".align 2, 0\n.size ModifyHP, .-ModifyHP");
 
 int ModifyPP(unsigned int unit_id, int amount)
 {
-    unsigned char *unit = GetUnit(unit_id);
+    struct Unit *unit = GetUnit(unit_id);
     register int value asm("r3");
     register int maximum asm("r2");
     register int clamped asm("r1");
 
-    value = *(short *)(unit + 0x3a);
-    maximum = *(short *)(unit + 0x36);
+    value = unit->pp;
+    maximum = unit->maxPP;
     value += amount;
 
     clamped = maximum;
@@ -49,9 +50,9 @@ int ModifyPP(unsigned int unit_id, int amount)
     clamped = value;
 
 store_pp:
-    *(short *)(unit + 0x3a) = clamped;
+    unit->pp = clamped;
     UpdateStatBarPercent(unit_id);
-    return *(short *)(unit + 0x3a);
+    return unit->pp;
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */

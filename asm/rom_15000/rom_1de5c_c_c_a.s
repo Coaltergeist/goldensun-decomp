@@ -308,83 +308,7 @@
 	bx	r0
 .func_end UIDrawText
 
-.thumb_func_start Func_801e9a0  @ 0x0801e9a0
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	sub	sp, #0x10
-	mov	r4, r0
-	ldr	r7, [sp, #0x24]
-	mov	r5, r1
-	mov	r8, r3
-	mov	r1, r4
-	mov	r6, r2
-	mov	r0, sp
-	mov	r2, r5
-	bl	PrintNum
-	mov	r1, r6
-	mov	r2, r8
-	mov	r3, r7
-	bl	Func_801e858
-	add	sp, #0x10
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_801e9a0
-
-.thumb_func_start Func_801e9d4  @ 0x0801e9d4
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	sub	sp, #0x10
-	mov	r4, r0
-	ldr	r7, [sp, #0x24]
-	mov	r5, r1
-	mov	r8, r3
-	mov	r1, r4
-	mov	r6, r2
-	mov	r0, sp
-	mov	r2, r5
-	bl	PrintNum
-	mov	r1, r6
-	mov	r2, r8
-	mov	r3, r7
-	bl	Func_801e8b0
-	add	sp, #0x10
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_801e9d4
-
-.thumb_func_start Func_801ea08  @ 0x0801ea08
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	sub	sp, #0x10
-	mov	r4, r0
-	ldr	r7, [sp, #0x24]
-	mov	r5, r1
-	mov	r8, r3
-	mov	r1, r4
-	mov	r6, r2
-	mov	r0, sp
-	mov	r2, r5
-	bl	PrintNum
-	mov	r1, r6
-	mov	r2, r8
-	mov	r3, r7
-	bl	UIDrawText
-	add	sp, #0x10
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_801ea08
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_801ea3c  @ 0x0801ea3c
 	push	{r5, r6, r7, lr}
@@ -525,4 +449,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_801eadc
-

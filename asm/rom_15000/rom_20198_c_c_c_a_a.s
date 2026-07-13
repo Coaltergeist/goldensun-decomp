@@ -1250,34 +1250,7 @@
 	bx	r0
 .func_end Func_8021488
 
-.thumb_func_start Func_80215e0  @ 0x080215e0
-	push	{r5, r6, r7, lr}
-	mov	r7, r1
-	mov	r1, #0x80
-	mov	r5, r0
-	lsl	r1, #3
-	mov	r0, #0xe
-	bl	galloc_ewram
-	ldr	r3, =Data_31864
-	lsl	r5, #2
-	mov	r6, r0
-	ldr	r0, [r3, r5]
-	cmp	r7, #0x5f
-	bgt	.L21614
-	mov	r1, r6
-	bl	DecompressLZ1
-	mov	r1, #0x80
-	lsl	r1, #2
-	mov	r0, r7
-	mov	r2, r6
-	bl	UploadSpriteGFX
-	mov	r0, #0xe
-	bl	gfree
-.L21614:
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_80215e0
+	.section .text.after_15e0, "ax", %progbits
 
 .thumb_func_start Func_8021620  @ 0x08021620
 	push	{r5, r6, r7, lr}
@@ -1351,30 +1324,7 @@
 	bx	r1
 .func_end Func_8021620
 
-.thumb_func_start Func_80216b4  @ 0x080216b4
-	push	{r5, lr}
-	ldr	r4, =iwram_3001800
-	ldr	r3, [r4]
-	ldr	r5, =.L37226
-	mov	r1, #7
-	lsr	r3, #2
-	and	r3, r1
-	ldrb	r2, [r0, #8]
-	ldrb	r3, [r5, r3]
-	add	r2, r3
-	ldr	r3, [r4]
-	strb	r2, [r0, #0x14]
-	lsr	r3, #2
-	ldr	r0, [r0]
-	and	r3, r1
-	ldrb	r2, [r0, #8]
-	ldrb	r3, [r5, r3]
-	add	r2, r3
-	strb	r2, [r0, #0x14]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80216b4
+	.section .text.after_16b4, "ax", %progbits
 
 .thumb_func_start StartMenu_AddOption  @ 0x080216e8
 	push	{r5, r6, r7, lr}

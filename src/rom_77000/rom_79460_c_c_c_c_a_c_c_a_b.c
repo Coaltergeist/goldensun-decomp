@@ -1,7 +1,8 @@
+#include "unit.h"
+
 extern int Func_8079b24(int value, int mode);
-extern unsigned char *GetUnit(unsigned int unit_id);
-extern int Func_80798b4(unsigned char *unit);
-extern unsigned char *Func_807882c(unsigned char *unit, int slot);
+extern int Func_80798b4(struct Unit *unit);
+extern unsigned char *Func_807882c(struct Unit *unit, int slot);
 
 int Func_8079bf8(int arg0, int arg1, int arg2, int arg3)
 {
@@ -38,16 +39,16 @@ int Func_8079c5c(int arg0, int arg1, int arg2)
 
 int Func_8079c8c(unsigned int unit_id)
 {
-	unsigned char *unit = GetUnit(unit_id);
-	unsigned char *item;
+	struct Unit *unit = GetUnit(unit_id);
+	unsigned char *equippedItem;
 
-	if (unit[0x129] == 0) {
+	if (unit->classId == 0) {
 		return Func_80798b4(unit);
 	}
 
-	item = Func_807882c(unit, 1);
-	if (item != 0) {
-		return *(int *)(item + 0x14);
+	equippedItem = Func_807882c(unit, 1);
+	if (equippedItem != 0) {
+		return *(int *)(equippedItem + 0x14);
 	}
 
 	return 4;

@@ -81,31 +81,7 @@
 	bx	r0
 .func_end LoadOldUIIcon
 
-.thumb_func_start LoadOldMoveIcon  @ 0x08019f98
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	sub	sp, #4
-	ldr	r5, [sp, #0x18]
-	mov	r6, r1
-	mov	r8, r2
-	mov	r10, r3
-	bl	_GetMoveInfo
-	mov	r1, r6
-	ldrb	r0, [r0, #4]
-	mov	r2, r8
-	mov	r3, r10
-	str	r5, [sp]
-	bl	LoadItemIconID
-	add	sp, #4
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end LoadOldMoveIcon
+	.section .text.after_old_move_icon, "ax", %progbits
 
 .thumb_func_start LoadItemIconID  @ 0x08019fcc
 	push	{r5, r6, r7, lr}
@@ -484,35 +460,7 @@
 	bx	r1
 .func_end LoadInventoryIcon
 
-.thumb_func_start LoadStatusIcon  @ 0x0801a2ec
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r1, #0xc1
-	mov	r6, r0
-	lsl	r1, #3
-	mov	r0, #0x11
-	mov	r8, r2
-	bl	galloc_iwram
-	mov	r5, r0
-	mov	r0, r6
-	bl	DecompressStatusIcon
-	mov	r3, #0x80
-	lsl	r3, #3
-	add	r5, r3
-	mov	r1, #0x80
-	mov	r2, r5
-	mov	r0, r8
-	bl	UploadSpriteGFX
-	mov	r0, #0x11
-	bl	gfree
-	mov	r0, #1
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end LoadStatusIcon
+	.section .text.after_load_status_icon, "ax", %progbits
 
 .thumb_func_start LoadUIBanner  @ 0x0801a32c
 	push	{lr}
@@ -596,31 +544,7 @@
 	bx	r0
 .func_end LoadItemIcon
 
-.thumb_func_start LoadMoveIcon  @ 0x0801a3d0
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	sub	sp, #4
-	ldr	r5, [sp, #0x18]
-	mov	r6, r1
-	mov	r8, r2
-	mov	r10, r3
-	bl	_GetMoveInfo
-	mov	r1, r6
-	ldrb	r0, [r0, #4]
-	mov	r2, r8
-	mov	r3, r10
-	str	r5, [sp]
-	bl	LoadMoveIconID
-	add	sp, #4
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end LoadMoveIcon
+	.section .text.after_load_move_icon, "ax", %progbits
 
 .thumb_func_start LoadMoveIconID  @ 0x0801a404
 	push	{r5, r6, r7, lr}
@@ -709,30 +633,7 @@
 	bx	r0
 .func_end LoadMoveIconID
 
-.thumb_func_start DecompressStatusIcon  @ 0x0801a4c0
-	push	{lr}
-	ldr	r3, =iwram_3001e94
-	ldr	r1, [r3]
-	ldr	r3, =0x604
-	add	r2, r1, r3
-	ldr	r3, =.L308a0
-	lsl	r0, #2
-	ldr	r3, [r3, r0]
-	mov	r0, #0xc0
-	lsl	r0, #3
-	str	r3, [r2]
-	add	r3, r1, r0
-	mov	r2, #2
-	add	r0, #2
-	strh	r2, [r3]
-	add	r3, r1, r0
-	strh	r2, [r3]
-	mov	r0, r1
-	mov	r1, #0
-	bl	LoadIcon
-	pop	{r0}
-	bx	r0
-.func_end DecompressStatusIcon
+	.section .text.after_decompress_status_icon, "ax", %progbits
 
 .thumb_func_start LoadPortrait  @ 0x0801a4fc
 	push	{r5, r6, r7, lr}
@@ -804,4 +705,3 @@
 	pop	{r0}
 	bx	r0
 .func_end LoadPortrait
-

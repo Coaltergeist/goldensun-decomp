@@ -5,22 +5,23 @@
  * asm/rom_77000/rom_78a8c_c_a.o and asm/rom_77000/rom_78a8c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_80796c4(unsigned short *buf);
-extern int Func_8078af8(unsigned short val, unsigned int arg);
+#include "unit.h"
 
-unsigned int Func_8078b60(unsigned int arg0)
+extern int Func_80796c4(unsigned short *unitIds);
+
+u32 CountPartyItemQuantity(u32 itemId)
 {
-    unsigned short buf[16];
-    int count;
-    int sum;
+    unsigned short partyUnitIds[16];
+    int partySize;
+    int quantity;
     int i;
 
-    sum = 0;
-    count = Func_80796c4(buf);
-    if (sum < count) {
-        for (i = 0; i < count; i++) {
-            sum += Func_8078af8(buf[i], arg0);
+    quantity = 0;
+    partySize = Func_80796c4(partyUnitIds);
+    if (quantity < partySize) {
+        for (i = 0; i < partySize; i++) {
+            quantity += CountUnitItemQuantity(partyUnitIds[i], itemId);
         }
     }
-    return sum;
+    return quantity;
 }

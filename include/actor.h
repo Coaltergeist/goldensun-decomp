@@ -21,9 +21,10 @@ struct Actor {
     fx32 speed;
     fx32 bounce;
     fx32 gravity;
-    fx32 __unk4C;
+    fx32 __unk3C;
+    u8 __unk40[0x10];
     void *sprite; // struct Sprite
-    bool8 visible;
+    u8 spriteMode;
     u8 __unk55;
     u8 __unk56;
     u8 scriptVar;
@@ -36,13 +37,12 @@ struct Actor {
     u16 waitTimer;
     u32 __unk60;
     u32 __unk64;
-    u32 __unk68;
-    actorfun_t *update;
-
-// GS1 only
-
-    vec3_t __unk70;
-    u32 __unk7C;
+    struct Actor *target;
+    actorfun_t update;
 };
+
+typedef char Actor_size_must_be_0x70[
+    sizeof(struct Actor) == 0x70 ? 1 : -1
+];
 
 #endif // _ACTOR_H_

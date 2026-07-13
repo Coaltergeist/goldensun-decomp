@@ -1,16 +1,13 @@
-typedef unsigned char u8;
+#include "unit.h"
 
-extern u8 *_GetUnit(int unitId);
-
-int Func_80bf574(int unitId)
+int TickUnitEffectTimer(int unitId)
 {
-    u8 *unit = _GetUnit(unitId);
-    u8 *timer = unit + 0x146;
+    struct Unit *unit = _GetUnit(unitId);
 
-    if (*timer != 0) {
-        (*timer)--;
-        if (*timer == 0) {
-            unit[0x147] = 0;
+    if (unit->effectTimer != 0) {
+        unit->effectTimer--;
+        if (unit->effectTimer == 0) {
+            unit->effectState = 0;
             return 1;
         }
     }
