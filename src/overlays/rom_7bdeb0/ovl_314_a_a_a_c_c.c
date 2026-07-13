@@ -3,7 +3,10 @@
 extern u8 iwram_3001e70[];
 extern u8 gBuffer[];
 
-int OvlFunc_934_2008528(
+#define MapAttrRectSet OvlFunc_934_2008528
+
+/* 指定範囲のマップ属性を設定 */
+int MapAttrRectSet(
     u32 bufferIndex,
     u32 tileX,
     u32 tileY,

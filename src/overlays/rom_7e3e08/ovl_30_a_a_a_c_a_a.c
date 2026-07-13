@@ -14,7 +14,10 @@ struct OverlayActorTable {
     struct Actor *actors[66];
 };
 
-struct Actor *OvlFunc_957_200806c(
+#define MapChrPosSearch OvlFunc_957_200806c
+
+/* 指定座標のマップキャラを検索（除外キャラは除く） */
+struct Actor *MapChrPosSearch(
     const struct ActorPosition *position,
     const struct Actor *excludedActor)
 {
