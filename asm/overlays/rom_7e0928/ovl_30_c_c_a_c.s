@@ -1,63 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_956_2008a44
-	push	{r5, lr}
-	mov	r0, #0x1e
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	mov	r2, r5
-	add	r2, #0x55
-	mov	r3, #0
-	strb	r3, [r2]
-	ldr	r3, =0x19999
-	mov	r1, #2
-	str	r3, [r5, #0x34]
-	str	r3, [r5, #0x30]
-	bl	__Actor_SetAnim
-	mov	r0, r5
-	ldr	r1, =gScript_956__0200cc48
-	bl	__Actor_SetScript
-	ldr	r0, =0x363
-	bl	__SetFlag
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_956_2008a44
-
-.thumb_func_start OvlFunc_956_2008a84
-	push	{r5, lr}
-	mov	r0, #0x1c
-	bl	__Func_809ad90
-	ldr	r0, =0x361
-	bl	__SetFlag
-	mov	r0, #0xa
-	bl	__WaitFrames
-	ldr	r2, =.L5480
-	ldr	r3, [r2]
-	cmp	r3, #1
-	beq	.Lab6
-	cmp	r3, #3
-	beq	.Lab6
-	mov	r5, r2
-.Laa6:
-	mov	r0, #1
-	bl	__WaitFrames
-	ldr	r3, [r5]
-	cmp	r3, #1
-	beq	.Lab6
-	cmp	r3, #3
-	bne	.Laa6
-.Lab6:
-	mov	r0, #1
-	bl	__WaitFrames
-	ldr	r0, =OvlFunc_956_200804c
-	bl	__StopTask
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_956_2008a84
-
 .thumb_func_start OvlFunc_956_2008ad4
 	push	{r5, r6, lr}
 	ldr	r6, =gState

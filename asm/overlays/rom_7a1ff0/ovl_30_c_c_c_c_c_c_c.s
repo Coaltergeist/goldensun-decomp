@@ -1,108 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_914_2008bcc
-	push	{lr}
-	ldr	r3, =iwram_3001ed0
-	ldr	r4, [r3]
-	mov	r0, #0xa0
-	ldr	r3, =REG_DMA3SAD
-	lsl	r0, #19
-	mov	r1, r4
-	ldr	r2, =0x84000070
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r2, #0xe0
-	lsl	r2, #1
-	add	r1, r4, r2
-	ldr	r0, =0x5000200
-	ldr	r2, =0x84000070
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r0, #0x80
-	lsl	r0, #9
-	mov	r1, #0
-	bl	__Func_8091220
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_914_2008bcc
-
-.thumb_func_start OvlFunc_914_2008c0c
-	push	{lr}
-	ldr	r3, =iwram_3001ed0
-	ldr	r1, [r3]
-	cmp	r0, #0
-	beq	.Lc1c
-	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L17b0
-	b	.Lc20
-.Lc1c:
-	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L10b0
-.Lc20:
-	ldr	r2, =0x840000e0
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r0, #0x80
-	lsl	r0, #9
-	mov	r1, #0
-	bl	__Func_8091200
-	bl	OvlFunc_914_2008bcc
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_914_2008c0c
-
-.thumb_func_start OvlFunc_914_2008c4c
-	push	{r5, r6, r7, lr}
-	mov	r6, r0
-	ldr	r0, [r6, #0x30]
-	ldr	r7, [r6, #0x50]
-	bl	__sin
-	lsl	r5, r0, #1
-	cmp	r5, #0
-	ble	.Lc60
-	neg	r5, r5
-.Lc60:
-	ldr	r0, [r6, #0x30]
-	bl	__cos
-	ldr	r3, [r6, #0x38]
-	lsl	r0, #1
-	add	r3, r0
-	str	r3, [r6, #8]
-	ldr	r0, [r6, #0x30]
-	ldr	r3, [r6, #0x3c]
-	mov	r2, #0x80
-	lsl	r2, #8
-	add	r3, r5
-	add	r0, r2
-	str	r3, [r6, #0xc]
-	bl	__cos
-	cmp	r0, #0
-	bge	.Lc86
-	add	r0, #7
-.Lc86:
-	asr	r3, r0, #3
-	strh	r3, [r7, #0x1e]
-	bl	__Random
-	mov	r5, r0
-	bl	__Random
-	lsl	r5, #9
-	lsl	r0, #9
-	ldr	r3, [r6, #0x30]
-	lsr	r0, #16
-	lsr	r5, #16
-	add	r5, r0
-	mov	r2, #0x80
-	add	r3, r5
-	lsl	r2, #3
-	add	r3, r2
-	str	r3, [r6, #0x30]
-	mov	r0, #0
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_914_2008c4c
-
 .thumb_func_start OvlFunc_914_2008cb4
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
@@ -229,6 +127,8 @@ gOvl_02009068:
 	.incbin "overlays/rom_7a1ff0/orig.bin", 0x1068
 
 	.section .bss
+	.global .L10b0
+	.global .L17b0
 	.global .L17b0
 	.global .L10b0
 
