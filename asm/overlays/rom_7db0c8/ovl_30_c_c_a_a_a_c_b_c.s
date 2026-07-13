@@ -1,30 +1,5 @@
-	.include "macros.inc"
-	.include "gba.inc"
-
-.thumb_func_start OvlFunc_954_2008178
-	push	{r5, r6, lr}
-	mov	r0, #0xa
-	bl	__WaitFrames
-	ldr	r2, =.L441c
-	ldr	r3, [r2]
-	mov	r5, #0
-	cmp	r3, #0x16
-	beq	.L19e
-	mov	r6, r2
-.L18c:
-	mov	r0, #1
-	add	r5, #1
-	bl	__WaitFrames
-	cmp	r5, #0x77
-	bgt	.L19e
-	ldr	r3, [r6]
-	cmp	r3, #0x16
-	bne	.L18c
-.L19e:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_954_2008178
+.include "macros.inc"
+.include "gba.inc"
 
 .thumb_func_start OvlFunc_954_20081a8
 	push	{r5, lr}

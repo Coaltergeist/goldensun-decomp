@@ -1,57 +1,5 @@
-	.include "macros.inc"
-	.include "gba.inc"
-
-.thumb_func_start OvlFunc_881_200a858
-	push	{lr}
-	bl	__CutsceneStart
-	bl	__Func_808c44c
-	ldr	r0, =0x2643
-	bl	__MessageID
-	ldr	r3, =.L679c
-	mov	r1, #0
-	ldr	r0, [r3]
-	bl	__ActorMessage
-	bl	__Func_808c4c0
-	mov	r1, #0x80
-	mov	r2, #0x80
-	mov	r0, #0
-	lsl	r1, #9
-	lsl	r2, #8
-	bl	__MapActor_SetSpeed
-	mov	r0, #0
-	ldr	r1, =0x1778
-	ldr	r2, =0xd48
-	bl	__Func_80921c4
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_881_200a858
-
-.thumb_func_start OvlFunc_881_200a8a8
-	push	{lr}
-	bl	__CutsceneStart
-	bl	__Func_808c44c
-	ldr	r0, =0x264c
-	mov	r1, #1
-	bl	__Func_801776c
-	mov	r0, #0x8d
-	lsl	r0, #2
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L28d4
-	ldr	r3, =iwram_3001ebc
-	mov	r1, #0xb9
-	ldr	r3, [r3]
-	lsl	r1, #1
-	add	r2, r3, r1
-	mov	r3, #1
-	strh	r3, [r2]
-.L28d4:
-	bl	__Func_808c4c0
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_881_200a8a8
+.include "macros.inc"
+.include "gba.inc"
 
 .thumb_func_start OvlFunc_881_200a8e8
 	push	{r5, r6, r7, lr}

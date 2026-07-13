@@ -570,6 +570,8 @@ SECTIONS {
 		asm/rom_8a000/rom_8d9a4_c_c_a_a.o(.text)
 		asm/rom_8a000/rom_8d9a4_c_c_a_b.o(.text)
 		asm/rom_8a000/rom_8d9a4_c_c_a_c.o(.text)
+		src/rom_8a000/rom_8d9a4_c_c_a_c_b.o(.text)
+		asm/rom_8a000/rom_8d9a4_c_c_a_c.o(.text.after)
 		asm/rom_8a000/rom_8d9a4_c_c_b.o(.text)
 		asm/rom_8a000/rom_8d9a4_c_c_c_a_a_a.o(.text)
 		asm/rom_8a000/rom_8d9a4_c_c_c_a_a_b.o(.text)
@@ -1320,6 +1322,8 @@ SECTIONS {
 		src/rom_f6000/exports.o(.text)
 		asm/rom_f6000/rom_f6008_b.o(.text)
 		asm/rom_f6000/rom_f6008_c.o(.text)
+		src/rom_f6000/rom_f6008_c_b.o(.text)
+		asm/rom_f6000/rom_f6008_c.o(.text.after)
 
 		asm/rom_f6000/rom_f6008_c.o(.rodata)
 	} > rom
