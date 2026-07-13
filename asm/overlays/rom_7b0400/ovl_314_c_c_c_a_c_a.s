@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_969_20084bc
+.thumb_func_start OvlFunc_925_20088cc
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -16,28 +16,28 @@
 	mov	r10, r0
 	mov	r6, #8
 	add	r5, #0x34
-.L4dc:
+.L8ec:
 	ldmia	r5!, {r1}
 	cmp	r1, #0
-	beq	.L500
+	beq	.L910
 	ldr	r3, [r1, #0x50]
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0xf2
-	bne	.L500
+	bne	.L910
 	mov	r0, r10
 	add	r1, #8
 	add	r0, #8
-	bl	OvlFunc_969_2008480
+	bl	OvlFunc_925_2008890
 	cmp	r0, r7
-	bge	.L500
+	bge	.L910
 	mov	r7, r0
 	mov	r8, r6
-.L500:
+.L910:
 	add	r6, #1
 	cmp	r6, #0x41
-	bls	.L4dc
+	bls	.L8ec
 	mov	r0, r8
 	pop	{r3, r5}
 	mov	r8, r3
@@ -45,9 +45,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_969_20084bc
+.func_end OvlFunc_925_20088cc
 
-.thumb_func_start OvlFunc_969_2008518
+.thumb_func_start OvlFunc_925_2008928
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -88,18 +88,20 @@
 	mov	r1, r6
 	bl	__TestCollision
 	cmp	r0, #0
-	bne	.L5dc
+	bne	.L9ec
 	mov	r0, #0x94
 	lsl	r0, #2
 	bl	__ClearFlag
-	bl	OvlFunc_969_20086c0
+	bl	OvlFunc_925_2008ad0
 	mov	r1, #6
 	mov	r0, r5
 	bl	__Actor_SetAnim
 	mov	r0, #6
 	bl	__WaitFrames
-	mov	r1, #7
+	mov	r0, #0x98
+	bl	__PlaySound
 	mov	r0, r5
+	mov	r1, #7
 	bl	__Actor_SetAnim
 	mov	r3, #0xc0
 	lsl	r3, #10
@@ -107,8 +109,6 @@
 	mov	r3, #0x80
 	lsl	r3, #10
 	str	r3, [r5, #0x34]
-	mov	r0, #0x98
-	bl	__PlaySound
 	mov	r3, #0x80
 	lsl	r3, #11
 	str	r3, [r5, #0x28]
@@ -133,26 +133,26 @@
 	bl	__Actor_SetSpriteFlags
 	mov	r3, r8
 	strb	r3, [r7]
-.L5dc:
+.L9ec:
 	add	sp, #0xc
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_969_2008518
+.func_end OvlFunc_925_2008928
 
-.thumb_func_start OvlFunc_969_20085ec
+.thumb_func_start OvlFunc_925_20089fc
 	push	{r5, r6, r7, lr}
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r7, r0
 	bl	__CutsceneStart
-	bl	OvlFunc_969_20084bc
-	ldr	r5, =.L66e8
+	bl	OvlFunc_925_20088cc
+	ldr	r5, =.L3c50
 	str	r0, [r5]
 	cmp	r0, #0
-	beq	.L6a8
+	beq	.Lab8
 	mov	r0, #0x94
 	lsl	r0, #2
 	bl	__SetFlag
@@ -228,47 +228,10 @@
 	ldr	r3, [r7, #0x14]
 	add	r3, r2
 	str	r3, [r7, #0x14]
-.L6a8:
+.Lab8:
 	bl	__CutsceneEnd
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_969_20085ec
-
-.thumb_func_start OvlFunc_969_20086c0
-	push	{r5, lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r3, #3
-	add	r0, #0x55
-	strb	r3, [r0]
-	mov	r0, #0xc
-	bl	__MapActor_GetActor
-	mov	r5, #4
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0xd
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0xe
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0xf
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x10
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x11
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_969_20086c0
+.func_end OvlFunc_925_20089fc
 
