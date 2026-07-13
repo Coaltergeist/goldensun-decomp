@@ -1,43 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_961_200822c
-	push	{lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0x5a
-	bne	.L244
-	ldr	r0, =0x96f
-	bl	__SetFlag
-.L244:
-	ldr	r3, =iwram_3001ebc
-	ldr	r1, [r3]
-	mov	r3, #0xe0
-	lsl	r3, #1
-	add	r2, r1, r3
-	sub	r3, #0xc0
-	str	r3, [r2]
-	add	r3, #0xc8
-	add	r2, r1, r3
-	mov	r3, #0x18
-	str	r3, [r2]
-	ldr	r0, =0x201
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L270
-	bl	OvlFunc_961_20080f8
-	mov	r0, #0x10
-	mov	r1, #4
-	bl	__MapActor_SetAnim
-.L270:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_961_200822c
-
 	.section .data
 	.global .L5d0
 	.global .L5e8

@@ -187,37 +187,3 @@
 	pop	{r1}
 	bx	r1
 .func_end Func_80228e4
-
-.thumb_func_start Func_8022a38  @ 0x08022a38
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	sub	sp, #4
-	mov	r8, r0
-	mov	r10, r1
-	mov	r7, r2
-	mov	r6, r3
-	bl	AllocSpriteSlot
-	mov	r5, r0
-	cmp	r5, #0x60
-	beq	.L22a6c
-	mov	r1, r5
-	mov	r0, r6
-	bl	Func_8021b30
-	mov	r1, #0x80
-	lsl	r1, #23
-	mov	r0, r5
-	mov	r2, r8
-	mov	r3, r10
-	str	r7, [sp]
-	bl	Func_801eadc
-.L22a6c:
-	add	sp, #4
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end Func_8022a38

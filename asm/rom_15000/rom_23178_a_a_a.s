@@ -10226,30 +10226,7 @@
 	bx	r0
 .func_end Func_8028194
 
-.thumb_func_start Func_80284dc  @ 0x080284dc
-	push	{r5, lr}
-	mov	r1, #0x98
-	mov	r0, #0x3a
-	sub	sp, #4
-	bl	galloc_ewram
-	mov	r3, #0
-	mov	r5, r0
-	mov	r0, sp
-	str	r3, [r0]
-	mov	r1, r5
-	ldr	r3, =REG_DMA3SAD
-	ldr	r2, =0x85000026
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	ldr	r1, =0xc76
-	ldr	r0, =Func_8028194
-	bl	StartTask
-	mov	r0, r5
-	add	sp, #4
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end Func_80284dc
+	.section .text.after_284dc, "ax", %progbits
 
 .thumb_func_start Func_802851c  @ 0x0802851c
 	push	{r5, r6, r7, lr}
@@ -10528,39 +10505,7 @@
 	bx	r1
 .func_end Func_80286a0
 
-.thumb_func_start LoadUIIcon  @ 0x0802875c
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	mov	r3, #0x80
-	lsl	r3, #3
-	mov	r8, r3
-	mov	r10, r0
-	mov	r0, r8
-	mov	r5, r1
-	bl	Func_8004938
-	mov	r6, r0
-	ldr	r0, =_FILE_f1
-	bl	GetFile
-	lsl	r5, #1
-	ldrh	r3, [r5, r0]
-	mov	r1, r6
-	add	r0, r3
-	bl	DecompressLZ1
-	mov	r0, r10
-	mov	r1, r8
-	mov	r2, r6
-	bl	UploadSpriteGFX
-	mov	r0, r6
-	bl	free
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end LoadUIIcon
+	.section .text.after_load_ui_icon, "ax", %progbits
 
 .thumb_func_start AddMenuBarOption  @ 0x080287a8
 	push	{r5, r6, r7, lr}
@@ -10807,35 +10752,7 @@
 	bx	r1
 .func_end Func_8028920
 
-.thumb_func_start Func_802899c  @ 0x0802899c
-	push	{r5, r6, lr}
-	mov	r6, r1
-	mov	r5, r0
-	bl	Func_801c2d0
-	bl	Func_80284dc
-	mov	r0, #1
-	bl	AddMenuBarOption
-	mov	r0, #0xf
-	bl	AddMenuBarOption
-	mov	r0, #2
-	bl	AddMenuBarOption
-	mov	r0, #7
-	bl	AddMenuBarOption
-	mov	r2, #0
-	mov	r0, #0x11
-	mov	r1, #7
-	bl	Func_8028808
-	sub	r1, r6, #1
-	mov	r0, r5
-	bl	Func_80286a0
-	mov	r6, r0
-	bl	Func_802851c
-	bl	Func_801c2e4
-	mov	r0, r6
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_802899c
+	.section .text.after_2899c, "ax", %progbits
 
 .thumb_func_start Func_80289e8  @ 0x080289e8
 	push	{r5, r6, lr}

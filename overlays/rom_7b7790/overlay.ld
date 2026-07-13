@@ -27,7 +27,7 @@ SECTIONS {
 		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_b.o(.text)
 		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_a.o(.text)
 		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_c.o(.text)
+		src/overlays/rom_7b7790/ovl_314_c_c_c_c_c_c_func.o(.text)
 		src/overlays/rom_7b7790/imports.o(.text)
 	} > overlay
 
