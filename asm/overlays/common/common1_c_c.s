@@ -251,6 +251,8 @@
 	.global .L2
 	.global .L3
 	.global .L6
+	.global gHexMoji
+	.set gHexMoji, .L6
 
 .L1:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x3e44, (0x3e4e-0x3e44)

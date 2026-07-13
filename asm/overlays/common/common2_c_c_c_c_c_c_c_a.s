@@ -1,35 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_common2_41c
-	push	{r4, r5, r6, lr}
-	mov	r6, r2
-	cmp	r6, #0
-	beq	.L44a
-	mov	r3, #0x20
-	sub	r3, r6
-	cmp	r3, #0
-	bgt	.L436
-	neg	r3, r3
-	mov	r4, r1
-	mov	r5, #0
-	lsr	r4, r3
-	b	.L446
-.L436:
-	mov	r2, r1
-	lsl	r2, r3
-	mov	r3, r0
-	lsr	r3, r6
-	mov	r5, r1
-	mov	r4, r3
-	lsr	r5, r6
-	orr	r4, r2
-.L446:
-	mov	r1, r5
-	mov	r0, r4
-.L44a:
-	pop	{r4, r5, r6, pc}
-.func_end OvlFunc_common2_41c
-
+	.section .text.after_41c, "ax", %progbits
 .thumb_func_start OvlFunc_common2_44c
 	push	{r4, r5, r6, r7, lr}
 	mov	r7, r10
@@ -241,4 +212,3 @@
 	mov	r10, r4
 	pop	{r4, r5, r6, r7, pc}
 .func_end OvlFunc_common2_44c
-

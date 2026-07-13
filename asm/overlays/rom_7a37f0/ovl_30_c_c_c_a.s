@@ -1118,51 +1118,7 @@
 	bx	r0
 .func_end OvlFunc_916_2008a90
 
-.thumb_func_start OvlFunc_916_2008b3c
-	push	{r5, r6, r7, lr}
-	mov	r2, #0
-	ldrsh	r3, [r0, r2]
-	mov	r2, #1
-	neg	r2, r2
-	mov	r6, r1
-	cmp	r3, r2
-	beq	.Lb82
-	ldr	r7, =gBuffer
-	mov	r12, r2
-.Lb50:
-	mov	r3, #2
-	ldrsh	r4, [r0, r3]
-	mov	r3, #4
-	ldrsh	r2, [r0, r3]
-	mov	r3, #6
-	ldrsh	r5, [r0, r3]
-	mov	r1, #3
-.Lb5e:
-	lsl	r3, r2, #7
-	add	r3, r4, r3
-	lsl	r3, #2
-	add	r3, r7
-	strb	r6, [r3, #2]
-	cmp	r5, #0
-	bne	.Lb70
-	add	r4, #1
-	b	.Lb72
-.Lb70:
-	add	r2, #1
-.Lb72:
-	sub	r1, #1
-	cmp	r1, #0
-	bge	.Lb5e
-	add	r0, #0xc
-	mov	r2, #0
-	ldrsh	r3, [r0, r2]
-	cmp	r3, r12
-	bne	.Lb50
-.Lb82:
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_916_2008b3c
+	.section .text.after_8b3c, "ax", %progbits
 
 .thumb_func_start OvlFunc_916_2008b8c
 	push	{r5, r6, lr}
@@ -1217,46 +1173,7 @@
 	bx	r1
 .func_end OvlFunc_916_2008b8c
 
-.thumb_func_start OvlFunc_916_2008be4
-	push	{r5, r6, r7, lr}
-	ldr	r7, =gBuffer
-	ldr	r6, =ewram_202c000
-	mov	r5, r2
-	mov	r2, #0
-.Lbee:
-	lsl	r3, r1, #7
-	add	r3, r0, r3
-	lsl	r3, #2
-	add	r4, r3, r7
-	ldrb	r3, [r4, #2]
-	cmp	r3, #0xff
-	beq	.Lc06
-	ldrb	r3, [r4, #3]
-	lsl	r3, #2
-	ldrb	r3, [r3, r6]
-	cmp	r3, #0
-	beq	.Lc0c
-.Lc06:
-	mov	r0, #1
-	neg	r0, r0
-	b	.Lc1e
-.Lc0c:
-	cmp	r5, #0
-	bne	.Lc14
-	add	r0, #1
-	b	.Lc16
-.Lc14:
-	add	r1, #1
-.Lc16:
-	add	r2, #1
-	cmp	r2, #3
-	ble	.Lbee
-	mov	r0, #0
-.Lc1e:
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_916_2008be4
+	.section .text.after_8be4, "ax", %progbits
 
 .thumb_func_start OvlFunc_916_2008c2c
 	push	{r5, r6, r7, lr}

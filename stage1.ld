@@ -1246,6 +1246,7 @@ SECTIONS {
 		asm/rom_b5000/rom_bffb8_c_a_b.o(.text)
 		asm/rom_b5000/rom_bffb8_c_b.o(.text)
 		asm/rom_b5000/rom_bffb8_c_c.o(.text)
+		src/rom_b5000/rom_bffb8_c_c_1014.o(.text)
 		src/rom_b5000/rom_bffb8_c_c_b.o(.text)
 		asm/rom_b5000/rom_bffb8_c_c.o(.text.after_1054)
 		asm/rom_b5000/rom_c10e8_a_a_a.o(.text)
