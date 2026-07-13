@@ -1,49 +1,4 @@
 	.include "macros.inc"
-
-.thumb_func_start OvlFunc_936_2009ea4
-	push	{r5, r6, lr}
-	mov	r6, r0
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	mov	r3, r5
-	add	r3, #0x64
-	strh	r6, [r3]
-	bl	__Random
-	lsl	r3, r0, #2
-	add	r3, r0
-	mov	r2, r5
-	lsr	r3, #12
-	add	r2, #0x66
-	strh	r3, [r2]
-	ldr	r1, =gScript_936__0200beac
-	mov	r0, r5
-	bl	__Actor_SetScript
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_936_2009ea4
-
-.thumb_func_start OvlFunc_936_2009ed8
-	push	{lr}
-	ldr	r3, =.L5144
-	mov	r2, #0
-	str	r2, [r3]
-	mov	r0, #0x14
-	ldr	r1, =0x19999
-	ldr	r2, =0xcccc
-	bl	__MapActor_SetSpeed
-	mov	r0, #0x15
-	ldr	r1, =0x19999
-	ldr	r2, =0xcccc
-	bl	__MapActor_SetSpeed
-	mov	r1, #0xc8
-	lsl	r1, #4
-	ldr	r0, =OvlFunc_936_2009f14
-	bl	__StartTask
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_936_2009ed8
-
 .thumb_func_start OvlFunc_936_2009f14
 	push	{lr}
 	ldr	r3, =.L5144
@@ -1908,4 +1863,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_200a6c0
-
