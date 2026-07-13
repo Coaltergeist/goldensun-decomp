@@ -1,87 +1,6 @@
-	.include "macros.inc"
+.include "macros.inc"
 
-.thumb_func_start OvlFunc_964_2008a4c
-	push	{r5, r6, lr}
-	mov	r4, r0
-	mov	r5, r1
-	mov	r6, r2
-	mov	r0, r3
-	mov	r2, r5
-	mov	r1, r4
-	mov	r3, r6
-	bl	__CreateActor
-	mov	r5, r0
-	cmp	r5, #0
-	beq	.Laa6
-	ldr	r1, [r5, #0x50]
-	mov	r3, #0xd
-	ldrb	r2, [r1, #9]
-	neg	r3, r3
-	and	r3, r2
-	mov	r2, #4
-	orr	r3, r2
-	mov	r2, r5
-	strb	r3, [r1, #9]
-	add	r2, #0x55
-	mov	r3, #0
-	strb	r3, [r2]
-	add	r2, #4
-	mov	r3, #8
-	strb	r3, [r2]
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r0, r5
-	mov	r1, #0xf
-	bl	__Func_80929d8
-	mov	r1, r5
-	add	r1, #0x23
-	ldrb	r2, [r1]
-	mov	r3, #0xfe
-	and	r3, r2
-	mov	r2, #2
-	orr	r3, r2
-	strb	r3, [r1]
-	mov	r0, r5
-	b	.Laa8
-.Laa6:
-	mov	r0, #0
-.Laa8:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_964_2008a4c
-
-.thumb_func_start OvlFunc_964_2008ab0
-	ldr	r3, [r0, #8]
-	ldr	r2, [r0, #0x44]
-	add	r3, r2
-	str	r3, [r0, #8]
-	ldr	r2, [r0, #0x48]
-	ldr	r3, [r0, #0xc]
-	add	r3, r2
-	str	r3, [r0, #0xc]
-	ldr	r2, [r0, #0x4c]
-	ldr	r3, [r0, #0x10]
-	add	r3, r2
-	str	r3, [r0, #0x10]
-	ldr	r2, [r0, #0x30]
-	ldr	r3, [r0, #0x18]
-	add	r3, r2
-	str	r3, [r0, #0x18]
-	ldr	r2, [r0, #0x34]
-	ldr	r3, [r0, #0x1c]
-	add	r3, r2
-	str	r3, [r0, #0x1c]
-	ldr	r1, [r0, #0x50]
-	add	r0, #0x64
-	ldrh	r3, [r1, #0x1e]
-	ldrh	r2, [r0]
-	add	r3, r2
-	strh	r3, [r1, #0x1e]
-	bx	lr
-.func_end OvlFunc_964_2008ab0
-
-.thumb_func_start OvlFunc_964_2008ae8
+.thumb_func_start OvlFunc_965_2008ae8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -133,7 +52,7 @@
 	mov	r0, r6
 	bl	__Actor_SetAnim
 	mov	r3, r10
-	ldr	r2, =.L336c
+	ldr	r2, =.L3134
 	and	r3, r5
 	lsl	r3, #2
 	ldr	r1, [r2, r3]
@@ -147,7 +66,7 @@
 	mov	r3, r8
 	add	r3, #0x26
 	strb	r0, [r3]
-	ldr	r3, =OvlFunc_964_2008ab0
+	ldr	r3, =OvlFunc_965_2008ab0
 	str	r3, [r6, #0x6c]
 	ldr	r3, [sp, #4]
 	str	r3, [r6, #0x44]
@@ -233,7 +152,7 @@
 	and	r3, r1
 	cmp	r3, #0
 	beq	.Lc52
-	ldr	r3, =.L336c
+	ldr	r3, =.L3134
 	mov	r1, r11
 	ldr	r5, [r3, r1]
 	cmp	r2, #0
@@ -315,4 +234,4 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_964_2008ae8
+.func_end OvlFunc_965_2008ae8
