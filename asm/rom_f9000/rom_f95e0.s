@@ -545,6 +545,8 @@
 
 .thumb_func_start Func_80f9a98  @ 0x080f9a98
 	ldrb	r3, [r2]
+	.global	M4aValidatePointer
+M4aValidatePointer:
 .Lf9a9a:
 	push	{r0}
 	lsr	r0, r2, #25
@@ -564,14 +566,7 @@
 .Lf9ab0:
 	.word	.Lfb7a0
 
-.thumb_func_start Func_80f9ab4  @ 0x080f9ab4
-	ldr	r2, [r1, #0x40]
-.Lf9ab6:
-	add	r3, r2, #1
-	str	r3, [r1, #0x40]
-	ldrb	r3, [r2]
-	b	.Lf9a9a
-.func_end Func_80f9ab4
+	.section .text.after_9ab4, "ax", %progbits
 
 .thumb_func_start ply_goto  @ 0x080f9ac0
 	push	{lr}
@@ -609,19 +604,7 @@
 	b	ply_fine
 .func_end ply_patt
 
-.thumb_func_start ply_pend  @ 0x080f9afc
-	ldrb	r2, [r1, #2]
-	cmp	r2, #0
-	beq	.Lf9b0e
-	sub	r2, #1
-	strb	r2, [r1, #2]
-	lsl	r2, #2
-	add	r3, r1, r2
-	ldr	r2, [r3, #0x44]
-	str	r2, [r1, #0x40]
-.Lf9b0e:
-	bx	lr
-.func_end ply_pend
+	.section .text.after_9afc, "ax", %progbits
 
 .thumb_func_start ply_rept  @ 0x080f9b10
 	push	{lr}
@@ -631,7 +614,7 @@
 	bne	.Lf9b20
 	add	r2, #1
 	str	r2, [r1, #0x40]
-	b	.Lf9ac2
+	.hword	0xe7d0	@ b .Lf9ac2 across split sections
 .Lf9b20:
 	ldrb	r3, [r1, #3]
 	add	r3, #1
@@ -640,7 +623,7 @@
 	bl	Func_80f9ab4
 	cmp	r12, r3
 	bcs	.Lf9b32
-	b	.Lf9ac2
+	.hword	0xe7c7	@ b .Lf9ac2 across split sections
 .Lf9b32:
 	mov	r3, #0
 	strb	r3, [r1, #3]
@@ -657,28 +640,7 @@
 	bx	r12
 .func_end ply_prio
 
-.thumb_func_start ply_tempo  @ 0x080f9b4c
-	mov	r12, lr
-	bl	Func_80f9ab4
-	lsl	r3, #1
-	strh	r3, [r0, #0x1c]
-	ldrh	r2, [r0, #0x1e]
-	mul	r3, r2
-	lsr	r3, #8
-	strh	r3, [r0, #0x20]
-	bx	r12
-.func_end ply_tempo
-
-.thumb_func_start ply_keysh  @ 0x080f9b60
-	mov	r12, lr
-	bl	Func_80f9ab4
-	strb	r3, [r1, #0xa]
-	ldrb	r3, [r1]
-	mov	r2, #0xc
-	orr	r3, r2
-	strb	r3, [r1]
-	bx	r12
-.func_end ply_keysh
+	.section .text.after_9b60, "ax", %progbits
 
 .thumb_func_start ply_voice  @ 0x080f9b74
 	mov	r12, lr
@@ -703,16 +665,7 @@
 	bx	r12
 .func_end ply_voice
 
-.thumb_func_start ply_vol  @ 0x080f9ba4
-	mov	r12, lr
-	bl	Func_80f9ab4
-	strb	r3, [r1, #0x12]
-	ldrb	r3, [r1]
-	mov	r2, #3
-	orr	r3, r2
-	strb	r3, [r1]
-	bx	r12
-.func_end ply_vol
+	.section .text.after_9ba4, "ax", %progbits
 
 .thumb_func_start ply_pan  @ 0x080f9bb8
 	mov	r12, lr
@@ -756,6 +709,8 @@
 	bx	r12
 .func_end ply_lfodl
 
+	.section .text.after_9bf4, "ax", %progbits
+
 .thumb_func_start ply_modt  @ 0x080f9c00
 	mov	r12, lr
 	bl	Func_80f9ab4
@@ -790,7 +745,7 @@
 	add	r2, #1
 	ldr	r0, =REG_SOUND1CNT_L
 	add	r0, r3
-	bl	.Lf9ab6
+	bl	M4aReadNext
 	strb	r3, [r0]
 	bx	r12
 .func_end ply_port

@@ -3,38 +3,6 @@
 
 	.section .text.after, "ax", %progbits
 
-.thumb_func_start Func_80063bc  @ 0x080063bc
-	push	{r5, r6, r7, lr}
-	ldr	r5, =ewram_2002080
-	ldr	r4, [r5]
-	mov	r6, r1
-	ldr	r7, =ewram_2002220
-	cmp	r4, #0
-	beq	.L63d0
-	mov	r0, #1
-	neg	r0, r0
-	b	.L63ec
-.L63d0:
-	ldr	r2, =REG_IME
-	ldrh	r1, [r2]
-	strh	r2, [r2]
-	mov	r3, #0x80
-	strb	r3, [r7, #1]
-	ldr	r3, =ewram_2002008
-	strh	r6, [r3]
-	ldr	r3, =ewram_20023a4
-	strb	r4, [r3]
-	mov	r3, #1
-	str	r0, [r5]
-	strb	r3, [r7]
-	strh	r1, [r2]
-	mov	r0, #0
-.L63ec:
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end Func_80063bc
-
 .thumb_func_start Func_8006408  @ 0x08006408
 	push	{r5, r6, lr}
 	ldr	r5, =ewram_20023ac

@@ -384,31 +384,7 @@
 	bx	lr
 .func_end MP2K_event_endtie
 
-.thumb_func_start Func_80fa1ac  @ 0x080fa1ac
-	mov	r2, #0
-	strb	r2, [r1, #0x16]
-	strb	r2, [r1, #0x1a]
-	ldrb	r2, [r1, #0x18]
-	cmp	r2, #0
-	bne	.Lfa1bc
-	mov	r2, #0xc
-	b	.Lfa1be
-.Lfa1bc:
-	mov	r2, #3
-.Lfa1be:
-	ldrb	r3, [r1]
-	orr	r3, r2
-	strb	r3, [r1]
-	bx	lr
-.func_end Func_80fa1ac
-
-.thumb_func_start Func_80fa1c8  @ 0x080fa1c8
-	ldr	r2, [r1, #0x40]
-	add	r3, r2, #1
-	str	r3, [r1, #0x40]
-	ldrb	r3, [r2]
-	bx	lr
-.func_end Func_80fa1c8
+	.section .text.after_a1c8, "ax", %progbits
 
 .thumb_func_start MP2K_event_lfos  @ 0x080fa1d4
 	mov	r12, lr
@@ -431,4 +407,3 @@
 .Lfa1f8:
 	bx	r12
 .func_end MP2K_event_mod
-

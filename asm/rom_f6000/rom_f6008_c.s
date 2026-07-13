@@ -1,63 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80f6038  @ 0x080f6038
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r7, r0
-	mov	r6, r1
-	mov	r5, r2
-	cmp	r3, #0
-	ble	.Lf6094
-	mov	r1, #0x1f
-	mov	r8, r1
-	mov	r2, #0xf8
-	mov	r1, #0xf8
-	lsl	r2, #2
-	lsl	r1, #7
-	mov	r14, r2
-	mov	r12, r1
-	mov	r0, r3
-.Lf605a:
-	ldrh	r4, [r7]
-	mov	r2, r8
-	mov	r3, r4
-	and	r3, r2
-	mov	r1, r14
-	mov	r2, r4
-	and	r2, r1
-	mul	r3, r5
-	mov	r1, r12
-	mul	r2, r5
-	and	r1, r4
-	mul	r1, r5
-	lsr	r4, r3, #16
-	mov	r3, r8
-	and	r4, r3
-	lsr	r2, #16
-	mov	r3, r14
-	and	r2, r3
-	orr	r4, r2
-	lsr	r1, #16
-	mov	r2, r12
-	and	r1, r2
-	orr	r4, r1
-	sub	r0, #1
-	strh	r4, [r6]
-	add	r7, #2
-	add	r6, #2
-	cmp	r0, #0
-	bne	.Lf605a
-.Lf6094:
-	mov	r0, #0
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end Func_80f6038
-
 .thumb_func_start Task_BlitLuckyWheelsAnim  @ 0x080f60a0
 	push	{r5, lr}
 	ldr	r0, =iwram_3001eec
@@ -3668,70 +3611,6 @@
 	bx	r0
 .func_end LuckyWheelsMain
 
-.thumb_func_start Func_80f7db4  @ 0x080f7db4
-	push	{lr}
-	ldr	r3, =ewram_2004c00
-	ldr	r3, [r3]
-	ldr	r0, =0x3ff
-	mov	r2, #0
-	mov	r1, #0
-	add	r3, #4
-.Lf7dc2:
-	str	r2, [r3, #4]
-	add	r2, #1
-	str	r1, [r3]
-	add	r3, #0xc
-	cmp	r2, r0
-	ble	.Lf7dc2
-	ldr	r3, =ewram_2004c00
-	mov	r2, #0xc0
-	ldr	r3, [r3]
-	lsl	r2, #6
-	add	r3, r2
-	mov	r1, #0
-	mov	r2, #0xff
-.Lf7ddc:
-	sub	r2, #1
-	stmia	r3!, {r1}
-	cmp	r2, #0
-	bge	.Lf7ddc
-	pop	{r0}
-	bx	r0
-.func_end Func_80f7db4
-
-.thumb_func_start Func_80f7df0  @ 0x080f7df0
-	push	{r5, lr}
-	ldr	r3, =ewram_2004c00
-	lsl	r1, r0, #1
-	ldr	r4, [r3]
-	ldr	r3, =0x3404
-	add	r1, r0
-	lsl	r0, #2
-	add	r0, r3
-	ldr	r2, [r4, r0]
-	mov	r0, #0xc0
-	lsl	r2, #2
-	lsl	r1, #2
-	add	r3, r4, r2
-	lsl	r0, #6
-	add	r3, r0
-	add	r5, r1, #4
-	str	r3, [r4, r5]
-	add	r2, r0
-	ldr	r3, [r4, r2]
-	str	r3, [r4, r1]
-	add	r3, r4, r1
-	str	r3, [r4, r2]
-	ldr	r2, [r3]
-	cmp	r2, #0
-	beq	.Lf7e24
-	str	r3, [r2, #4]
-.Lf7e24:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80f7df0
-
 	.section .text.after, "ax", %progbits
 .thumb_func_start Func_80f7e60  @ 0x080f7e60
 	push	{r5, r6, r7, lr}
@@ -3831,40 +3710,7 @@
 	bx	r0
 .func_end Func_80f7e60
 
-.thumb_func_start Func_80f7f30  @ 0x080f7f30
-	push	{r5, r6, lr}
-	ldr	r3, =ewram_2004c00
-	ldr	r1, =0x4404
-	ldr	r2, [r3]
-	add	r3, r2, r1
-	ldr	r3, [r3]
-	mov	r6, r0
-	mov	r0, #0
-	cmp	r3, #0
-	beq	.Lf7f64
-	ldr	r3, =0x443c
-	add	r4, r2, r3
-	sub	r3, #0x34
-	add	r5, r2, r1
-	add	r1, r2, r3
-.Lf7f4e:
-	ldrb	r3, [r1]
-	ldr	r2, [r4]
-	strb	r3, [r6, r2]
-	ldr	r3, [r4]
-	add	r3, #1
-	str	r3, [r4]
-	ldr	r3, [r5]
-	add	r0, #1
-	add	r1, #1
-	cmp	r0, r3
-	bne	.Lf7f4e
-.Lf7f64:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_80f7f30
-
+	.section .text.after_f7f30, "ax", %progbits
 .thumb_func_start Func_80f7f78  @ 0x080f7f78
 	push	{r5, r6, r7, lr}
 	mov	r7, r11

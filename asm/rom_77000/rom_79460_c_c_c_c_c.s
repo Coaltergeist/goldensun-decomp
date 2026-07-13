@@ -58,37 +58,7 @@
 	bx	r1
 .func_end GetNumDjinn
 
-.thumb_func_start Func_807a628  @ 0x0807a628
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r7, r0
-	mov	r8, r1
-	bl	GetUnit
-	mov	r1, r8
-	mov	r5, r0
-	mov	r0, r7
-	bl	GiveItemTo
-	mov	r6, #0
-	add	r5, #0xd8
-.L7a644:
-	ldrh	r3, [r5]
-	add	r5, #2
-	cmp	r3, r8
-	bne	.L7a654
-	mov	r0, r7
-	mov	r1, r6
-	bl	EquipItem
-.L7a654:
-	add	r6, #1
-	cmp	r6, #0xe
-	ble	.L7a644
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_807a628
+	.section .text.after_628, "ax", %progbits
 
 .thumb_func_start Func_807a664  @ 0x0807a664
 	push	{r5, r6, r7, lr}
