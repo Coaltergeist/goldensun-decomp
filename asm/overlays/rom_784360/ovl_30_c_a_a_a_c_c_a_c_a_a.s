@@ -360,33 +360,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_884_20084d4
-
-.thumb_func_start OvlFunc_884_20085e8
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0x10
-	mov	r1, #0
-	mov	r2, #0xa
-	bl	__Func_8092848
-	mov	r0, #0x84
-	lsl	r0, #4
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L614
-	ldr	r0, =0xeb1
-	bl	__MessageID
-	mov	r0, #0x10
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.L622
-.L614:
-	ldr	r0, =_MSG_eb0
-	bl	__MessageID
-	mov	r0, #0x10
-	mov	r1, #0
-	bl	__ActorMessage
-.L622:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_884_20085e8
