@@ -1,34 +1,4 @@
-	.include "macros.inc"
-
-.thumb_func_start OvlFunc_891_2008054
-	push	{lr}
-	ldr	r0, =0x818
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L6e
-	ldr	r0, =0x813
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L82
-	mov	r0, #3
-	b	.L7a
-.L6e:
-	ldr	r0, =0x812
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L82
-	mov	r0, #4
-.L7a:
-	bl	__Func_8091e9c
-	mov	r0, #1
-	b	.L86
-.L82:
-	mov	r0, #1
-	neg	r0, r0
-.L86:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_891_2008054
+.include "macros.inc"
 
 .thumb_func_start OvlFunc_891_2008098
 	push	{r5, r6, r7, lr}
@@ -1585,4 +1555,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_891_2008eb0
-

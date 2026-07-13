@@ -1,28 +1,4 @@
-	.include "macros.inc"
-
-.thumb_func_start OvlFunc_891_200901c
-	push	{lr}
-	ldr	r0, =0x80b
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L104c
-	bl	__CutsceneStart
-	mov	r0, #9
-	bl	__MapActor_GetActor
-	mov	r0, #9
-	ldr	r1, =0x3333
-	ldr	r2, =0x1999
-	bl	__MapActor_SetSpeed
-	mov	r1, #0xfc
-	mov	r0, #9
-	lsl	r1, #1
-	mov	r2, #0x98
-	bl	__Func_80921c4
-	bl	__CutsceneEnd
-.L104c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_891_200901c
+.include "macros.inc"
 
 .thumb_func_start OvlFunc_891_200905c
 	push	{r5, r6, lr}
@@ -584,4 +560,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_891_20094b8
-

@@ -94,30 +94,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_902_2008204
-
-.thumb_func_start OvlFunc_902_20082fc
-	push	{r5, lr}
-	bl	__CutsceneStart
-	mov	r1, #1
-	mov	r0, #0x10
-	bl	__Func_80925cc
-	bl	__CutsceneEnd
-	mov	r0, #0x10
-	bl	__MapActor_GetActor
-	mov	r3, #1
-	add	r0, #0x5b
-	strb	r3, [r0]
-	bl	OvlFunc_902_200811c
-	mov	r0, #0x10
-	bl	__MapActor_GetActor
-	mov	r5, #0
-	add	r0, #0x5b
-	strb	r5, [r0]
-	mov	r1, #2
-	mov	r0, #0x10
-	bl	__MapActor_SetBehavior
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_902_20082fc
-
