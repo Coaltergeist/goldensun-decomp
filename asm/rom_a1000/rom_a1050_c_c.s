@@ -421,46 +421,7 @@
 	bx	r0
 .func_end Func_80a112c
 
-.thumb_func_start Func_80a14f0  @ 0x080a14f0
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	sub	sp, #4
-	mov	r7, r0
-	mov	r10, r1
-	mov	r6, r2
-	mov	r8, r3
-	mov	r5, #1
-	b	.La1508
-.La1506:
-	add	r5, #1
-.La1508:
-	cmp	r5, #0xf
-	bgt	.La1516
-	mov	r1, #0xa
-	bl	__divsi3
-	cmp	r0, #9
-	bgt	.La1506
-.La1516:
-	add	r5, #1
-	lsl	r3, r5, #3
-	sub	r6, r3
-	mov	r3, r8
-	str	r3, [sp]
-	mov	r0, r7
-	mov	r1, r5
-	mov	r2, r10
-	mov	r3, r6
-	bl	_Func_801e9d4
-	add	sp, #4
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_80a14f0
+	.section .text.after_a14f0, "ax", %progbits
 
 .thumb_func_start Func_80a153c  @ 0x080a153c
 	push	{r5, r6, r7, lr}

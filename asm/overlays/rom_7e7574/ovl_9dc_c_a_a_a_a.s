@@ -39,46 +39,7 @@
 	bx	r0
 .func_end OvlFunc_959_20090a8
 
-.thumb_func_start OvlFunc_959_2009108
-	push	{lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #0x10]
-	cmp	r3, #0
-	bge	.L111a
-	ldr	r2, =0xfffff
-	add	r3, r2
-.L111a:
-	ldr	r0, [r0, #8]
-	asr	r2, r3, #20
-	cmp	r0, #0
-	bge	.L1126
-	ldr	r3, =0xfffff
-	add	r0, r3
-.L1126:
-	sub	r3, r2, #5
-	asr	r0, #20
-	cmp	r3, #2
-	bhi	.L1136
-	cmp	r0, #0xa
-	bgt	.L1136
-	mov	r0, #1
-	b	.L1146
-.L1136:
-	mov	r3, r0
-	sub	r3, #8
-	cmp	r3, #1
-	bhi	.L1144
-	mov	r0, #1
-	cmp	r2, #0x16
-	bgt	.L1146
-.L1144:
-	mov	r0, #0
-.L1146:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_959_2009108
-
+	.section .text.after_9108, "ax", %progbits
 .thumb_func_start OvlFunc_959_2009150
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
@@ -261,4 +222,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_959_2009150
-

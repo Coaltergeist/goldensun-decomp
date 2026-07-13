@@ -189,38 +189,3 @@
 	bx	r1
 .func_end OvlFunc_915_2008aac
 
-.thumb_func_start OvlFunc_915_2008ba4
-	push	{r5, lr}
-	ldr	r3, =gState
-	mov	r2, #0xfa
-	lsl	r2, #1
-	add	r3, r2
-	ldr	r0, [r3]
-	sub	sp, #0xc
-	bl	__MapActor_GetActor
-	ldr	r5, =0xfff00000
-	ldr	r2, [r0, #8]
-	mov	r4, #0x80
-	lsl	r4, #12
-	and	r2, r5
-	mov	r1, sp
-	add	r3, r2, r4
-	str	r3, [r1]
-	ldr	r3, [r0, #0xc]
-	str	r3, [r1, #4]
-	ldr	r3, [r0, #0x10]
-	and	r3, r5
-	add	r3, r4
-	str	r3, [r1, #8]
-	mov	r3, #0xa0
-	lsl	r3, #14
-	add	r2, r3
-	str	r2, [r1]
-	mov	r0, r1
-	bl	OvlFunc_915_2008aac
-	add	sp, #0xc
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_915_2008ba4
-

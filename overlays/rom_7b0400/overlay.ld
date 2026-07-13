@@ -14,7 +14,10 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7b0400/exports.o(.text)
+		src/overlays/common/common0_func_0.o(.text)
 		asm/overlays/common/common0.o(.text)
+		src/overlays/common/common0_func_70_d4.o(.text)
+		asm/overlays/common/common0.o(.text.after_d4)
 		asm/overlays/rom_7b0400/ovl_314_a.o(.text)
 		asm/overlays/rom_7b0400/ovl_314_b.o(.text)
 		asm/overlays/rom_7b0400/ovl_314_c_b.o(.text)
