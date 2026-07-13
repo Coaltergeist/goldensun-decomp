@@ -94,25 +94,7 @@
 	bx	r0
 .func_end OvlFunc_937_2008240
 
-.thumb_func_start OvlFunc_937_2008308
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r1, [r3]
-	ldr	r3, =0x209
-	lsl	r2, #1
-	str	r3, [r1, r2]
-	ldr	r3, =gState
-	ldrsh	r2, [r3, r2]
-	ldr	r3, =0x64
-	cmp	r2, r3
-	bne	.L324
-	bl	OvlFunc_937_200833c
-.L324:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_937_2008308
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start OvlFunc_937_200833c
 	push	{lr}
