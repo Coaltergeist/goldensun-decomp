@@ -1,51 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_925_20088cc
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0
-	mov	r0, #0
-	ldr	r5, [r3]
-	mov	r8, r2
-	bl	__MapActor_GetActor
-	mov	r7, #0xa0
-	lsl	r7, #2
-	mov	r10, r0
-	mov	r6, #8
-	add	r5, #0x34
-.L8ec:
-	ldmia	r5!, {r1}
-	cmp	r1, #0
-	beq	.L910
-	ldr	r3, [r1, #0x50]
-	ldr	r3, [r3, #0x28]
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xf2
-	bne	.L910
-	mov	r0, r10
-	add	r1, #8
-	add	r0, #8
-	bl	OvlFunc_925_2008890
-	cmp	r0, r7
-	bge	.L910
-	mov	r7, r0
-	mov	r8, r6
-.L910:
-	add	r6, #1
-	cmp	r6, #0x41
-	bls	.L8ec
-	mov	r0, r8
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_925_20088cc
+.section .text.after_88cc, "ax", %progbits
 
 .thumb_func_start OvlFunc_925_2008928
 	push	{r5, r6, r7, lr}
@@ -235,42 +190,7 @@
 	bx	r0
 .func_end OvlFunc_925_20089fc
 
-.thumb_func_start OvlFunc_925_2008ad0
-	push	{r5, lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r3, #3
-	add	r0, #0x55
-	strb	r3, [r0]
-	mov	r0, #0xe
-	bl	__MapActor_GetActor
-	mov	r5, #4
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0xf
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x10
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x11
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x12
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0x13
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_925_2008ad0
+.section .text.after_8ad0, "ax", %progbits
 
 .thumb_func_start OvlFunc_925_2008b24
 	push	{r5, r6, lr}
@@ -4495,4 +4415,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_925_200b324
-

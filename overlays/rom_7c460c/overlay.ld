@@ -15,9 +15,8 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7c460c/exports.o(.text)
 		src/overlays/common/common0_func_0.o(.text)
-		asm/overlays/common/common0.o(.text)
 		src/overlays/common/common0_func_70_d4.o(.text)
-		asm/overlays/common/common0.o(.text.after_d4)
+		src/overlays/common/common0_func_10c.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_a_a.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_a_b.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_a_c_a_a_a.o(.text)
@@ -48,13 +47,13 @@ SECTIONS {
 		src/overlays/rom_7c460c/ovl_314_c_b.o(.text)
 		asm/overlays/rom_7c460c/ovl_314_c_c_a.o(.text)
 		src/overlays/rom_7c460c/ovl_314_c_c_b.o(.text)
-		asm/overlays/rom_7c460c/ovl_314_c_c_c.o(.text)
+		src/overlays/rom_7c460c/ovl_314_c_c_c_9840.o(.text)
 		src/overlays/rom_7c460c/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		src/overlays/common/common0_func_10c.o(.data)
+		src/overlays/common/common0_func_10c.o(.data1)
 		asm/overlays/rom_7c460c/ovl_314_c_c_c.o(.data)
 	} > overlay
 

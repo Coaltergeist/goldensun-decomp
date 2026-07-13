@@ -396,37 +396,7 @@
 	bx	r0
 .func_end OvlFunc_common1_5e4
 
-.thumb_func_start OvlFunc_common1_850
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r7, r0
-	mov	r8, r1
-	bl	__GetUnit
-	mov	r1, r8
-	mov	r5, r0
-	mov	r0, r7
-	bl	__GiveItemTo
-	mov	r6, #0
-	add	r5, #0xd8
-.L86c:
-	ldrh	r3, [r5]
-	add	r5, #2
-	cmp	r3, r8
-	bne	.L87c
-	mov	r0, r7
-	mov	r1, r6
-	bl	__EquipItem
-.L87c:
-	add	r6, #1
-	cmp	r6, #0xe
-	ble	.L86c
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_common1_850
+	.section .text.after_850, "ax", %progbits
 
 .thumb_func_start OvlFunc_common1_88c
 	push	{r5, r6, r7, lr}

@@ -501,85 +501,7 @@
 	bx	r0
 .func_end OvlFunc_959_2009d60
 
-.thumb_func_start OvlFunc_959_2009dc4
-	push	{lr}
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	mov	r0, #0x71
-	bl	__PlaySound
-	mov	r1, #0x80
-	lsl	r1, #1
-	mov	r2, #0x3c
-	mov	r0, #0xf
-	bl	__MapActor_Emote
-	mov	r0, #0xf
-	bl	OvlFunc_959_2009be4
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	add	r2, #0x40
-	str	r2, [r3]
-	ldr	r3, =gState
-	add	r2, #0x2b
-	add	r3, r2
-	mov	r2, #3
-	strb	r2, [r3]
-	mov	r0, #0x62
-	mov	r1, #2
-	bl	__Func_8091eb0
-	mov	r0, #0xf
-	mov	r1, #0
-	mov	r2, #0
-	bl	__MapActor_SetPos
-	bl	__CutsceneEnd
-	ldr	r0, =0x94c
-	bl	__SetFlag
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_2009dc4
-
-.thumb_func_start OvlFunc_959_2009e2c
-	push	{lr}
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	mov	r0, #0x71
-	bl	__PlaySound
-	mov	r1, #0x80
-	lsl	r1, #1
-	mov	r2, #0x3c
-	mov	r0, #0xb
-	bl	__MapActor_Emote
-	mov	r0, #0xb
-	bl	OvlFunc_959_2009be4
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	add	r2, #0x40
-	str	r2, [r3]
-	ldr	r3, =gState
-	add	r2, #0x2b
-	add	r3, r2
-	mov	r2, #3
-	strb	r2, [r3]
-	mov	r0, #0x62
-	mov	r1, #2
-	bl	__Func_8091eb0
-	mov	r0, #0xb
-	mov	r1, #0
-	mov	r2, #0
-	bl	__MapActor_SetPos
-	bl	__CutsceneEnd
-	ldr	r0, =0x949
-	bl	__SetFlag
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_2009e2c
+.section .text.after_9e2c, "ax", %progbits
 
 .thumb_func_start OvlFunc_959_2009e94
 	push	{r5, lr}
@@ -797,45 +719,7 @@
 	bx	r0
 .func_end OvlFunc_959_200a06c
 
-.thumb_func_start OvlFunc_959_200a0cc
-	push	{lr}
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	mov	r0, #0x71
-	bl	__PlaySound
-	mov	r1, #0x80
-	lsl	r1, #1
-	mov	r2, #0x3c
-	mov	r0, #0x10
-	bl	__MapActor_Emote
-	mov	r0, #0x10
-	bl	OvlFunc_959_2009be4
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	add	r2, #0x40
-	str	r2, [r3]
-	ldr	r3, =gState
-	add	r2, #0x2b
-	add	r3, r2
-	mov	r2, #3
-	strb	r2, [r3]
-	mov	r0, #0x62
-	mov	r1, #2
-	bl	__Func_8091eb0
-	mov	r0, #0x10
-	mov	r1, #0
-	mov	r2, #0
-	bl	__MapActor_SetPos
-	bl	__CutsceneEnd
-	ldr	r0, =0x94b
-	bl	__SetFlag
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_200a0cc
+.section .text.after_a0cc, "ax", %progbits
 
 .thumb_func_start OvlFunc_959_200a134
 	push	{r5, lr}

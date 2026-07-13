@@ -77,68 +77,7 @@
 	bx	r0
 .func_end OvlFunc_922_2009fac
 
-.thumb_func_start OvlFunc_922_200a014
-	push	{r5, lr}
-	mov	r5, r0
-	mov	r2, r5
-	add	r2, #0x64
-	mov	r0, #0
-	ldrsh	r1, [r2, r0]
-	ldrh	r3, [r2]
-	cmp	r1, #0
-	beq	.L202c
-	sub	r3, #1
-	strh	r3, [r2]
-	b	.L2082
-.L202c:
-	mov	r3, r5
-	add	r3, #0x5a
-	strb	r1, [r3]
-	ldr	r3, =gKeyHeld
-	ldr	r3, [r3]
-	mov	r2, #0xf
-	lsr	r3, #4
-	and	r3, r2
-	ldr	r1, =.L2424
-	lsl	r3, #1
-	mov	r0, #1
-	ldrsh	r3, [r1, r3]
-	neg	r0, r0
-	cmp	r3, r0
-	bne	.L2054
-	mov	r0, r5
-	mov	r1, #9
-	bl	__Actor_SetAnim
-	b	.L2082
-.L2054:
-	ldrh	r1, [r5, #6]
-	sub	r3, r1
-	lsl	r3, #16
-	mov	r2, #0x80
-	asr	r3, #16
-	lsl	r2, #5
-	cmp	r3, r2
-	ble	.L2066
-	mov	r3, r2
-.L2066:
-	ldr	r2, =0xfffff000
-	cmp	r3, r2
-	bge	.L206e
-	mov	r3, r2
-.L206e:
-	add	r3, r1, r3
-	mov	r0, r5
-	mov	r1, #2
-	strh	r3, [r5, #6]
-	bl	__Actor_SetAnim
-	mov	r0, r5
-	mov	r1, #0x30
-	bl	__Actor_SetAnimSpeed
-.L2082:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_922_200a014
+.section .text.after_a014, "ax", %progbits
 
 .thumb_func_start OvlFunc_922_200a094
 	push	{r5, r6, r7, lr}
@@ -375,6 +314,7 @@
 
 .L2418:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2418, (0x2424-0x2418)
+	.global .L2424
 .L2424:
 	.incbin "overlays/rom_7a8c8c/orig.bin", 0x2424, (0x2464-0x2424)
 .L2464:

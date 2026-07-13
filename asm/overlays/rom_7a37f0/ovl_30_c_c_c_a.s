@@ -317,39 +317,6 @@
 	bx	r0
 .func_end OvlFunc_916_2008194
 
-.thumb_func_start OvlFunc_916_200836c
-	push	{r5, r6, lr}
-	ldr	r3, =REG_VCOUNT
-	ldrh	r3, [r3]
-	ldr	r5, =iwram_3001ad4
-	ldr	r6, =REG_BG1HOFS
-	cmp	r3, #0xe3
-	beq	.L37e
-	cmp	r3, #0x34
-	bhi	.L392
-.L37e:
-	bl	__Random
-	mov	r3, #0x64
-	mul	r3, r0
-	ldr	r2, =.L20dc
-	ldr	r2, [r2]
-	lsr	r3, #16
-	cmp	r3, r2
-	bcs	.L392
-	ldr	r5, =.L20d0
-.L392:
-	ldmia	r5!, {r3}
-	str	r3, [r6]
-	ldr	r6, =REG_BG2HOFS
-	ldmia	r5!, {r3}
-	stmia	r6!, {r3}
-	ldr	r3, [r5]
-	str	r3, [r6]
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_916_200836c
-
 	.section .text.20083f0, "ax", %progbits
 .thumb_func_start OvlFunc_916_20083f0
 	push	{r5, r6, lr}

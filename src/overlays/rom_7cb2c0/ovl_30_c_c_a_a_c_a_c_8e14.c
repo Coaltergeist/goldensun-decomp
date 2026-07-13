@@ -1,0 +1,9 @@
+#define CUTSCENE_FUNCTION OvlFunc_945_2008e14
+#define CUTSCENE_ACTOR 0x0d
+#define CUTSCENE_MAIN_MESSAGE 0x1ea3
+#define CUTSCENE_ALT_MESSAGE 0x1e88
+#define CUTSCENE_FLAG_1 0x995
+#define CUTSCENE_FLAG_2 0x91c
+#define CUTSCENE_FLAG_3 0x93a
+#define CUTSCENE_FLAG_DEFAULT 0x931
+#include "../cutscene_actor_message.inc"

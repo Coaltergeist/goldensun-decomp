@@ -1,0 +1,5 @@
+#define FIND_MOVE_ACTOR_FUNC OvlFunc_958_2008630
+#define MOVE_DIRECTION_CODE_TABLE ".L1700"
+#define MOVE_COLLISION_BOUNDS_TABLE ".L1718"
+#define MOVE_FACING_OFFSET_TABLE ".L16c0"
+#include "../find_move_actor.inc"

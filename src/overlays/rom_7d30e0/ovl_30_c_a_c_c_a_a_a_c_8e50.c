@@ -1,0 +1,8 @@
+#define SYNC_MAP_ACTOR_FUNCTION OvlFunc_948_2008e50
+#define SYNC_MAP_ACTOR_FLAG 0x9ca
+#define SYNC_EXCLUDED_MAP 15
+#define SYNC_MAP_ACTOR_ID 15
+#define SYNC_SECOND_SOURCE_OFFSET 0x30
+#define SYNC_MOVEMENT_BASE 0x1e
+#define SYNC_MOVEMENT_TABLE_ASM ".L2808"
+#include "../sync_map_actor_position.inc"
