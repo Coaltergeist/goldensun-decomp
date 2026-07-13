@@ -367,26 +367,6 @@
 	bx	r0
 .func_end OvlFunc_932_200b9c8
 
-.thumb_func_start OvlFunc_932_200ba44
-	push	{lr}
-	ldr	r2, =0
-	ldr	r3, =.L5260
-	strh	r2, [r3]
-	ldr	r3, =.L525c
-	mov	r1, #0xc8
-	strh	r2, [r3]
-	lsl	r1, #4
-	ldr	r0, =OvlFunc_932_200b9c8
-	bl	__StartTask
-	b	.L3a6c
-
-	.pool_aligned
-
-.L3a6c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_932_200ba44
-
 	.section .data
 	.global gScript_932__0200bd34
 	.global gScript_932__0200bd48
@@ -546,6 +526,8 @@ gScript_881__0200cebc:
 	.global .L5238
 	.global .L523c
 	.global .L5240
+	.global .L525c
+	.global .L5260
 
 	.lcomm	.L5238, 4
 	.lcomm	.L523c, 4

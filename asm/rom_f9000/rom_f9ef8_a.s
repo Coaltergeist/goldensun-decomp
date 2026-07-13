@@ -383,27 +383,3 @@
 	pop	{r4, r5}
 	bx	lr
 .func_end MP2K_event_endtie
-
-	.section .text.after_a1c8, "ax", %progbits
-
-.thumb_func_start MP2K_event_lfos  @ 0x080fa1d4
-	mov	r12, lr
-	bl	Func_80fa1c8
-	strb	r3, [r1, #0x19]
-	cmp	r3, #0
-	bne	.Lfa1e4
-	bl	Func_80fa1ac
-.Lfa1e4:
-	bx	r12
-.func_end MP2K_event_lfos
-
-.thumb_func_start MP2K_event_mod  @ 0x080fa1e8
-	mov	r12, lr
-	bl	Func_80fa1c8
-	strb	r3, [r1, #0x17]
-	cmp	r3, #0
-	bne	.Lfa1f8
-	bl	Func_80fa1ac
-.Lfa1f8:
-	bx	r12
-.func_end MP2K_event_mod
