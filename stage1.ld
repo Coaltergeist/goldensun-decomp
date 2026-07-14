@@ -424,6 +424,7 @@ SECTIONS {
 		asm/rom_15000/rom_1aeec_c_b.o(.text)
 		asm/rom_15000/rom_1aeec_c_c_a.o(.text)
 		asm/rom_15000/rom_1ca1c_a_a.o(.text)
+		src/rom_15000/rom_1ca1c_a_a_cbd4.o(.text)
 		src/rom_15000/rom_1ca1c_a_a_cc50.o(.text)
 		asm/rom_15000/rom_1ca1c_a_a.o(.text.after_cc50)
 		src/rom_15000/rom_1ca1c_a_a_b.o(.text)
