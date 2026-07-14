@@ -1087,6 +1087,8 @@ SECTIONS {
 		asm/rom_a1000/rom_a1814_c_a_a_c_a_c.o(.text)
 		src/rom_a1000/rom_a1814_c_a_a_c_a_c_1cb0.o(.text)
 		asm/rom_a1000/rom_a1814_c_a_a_c_a_c.o(.text.after_a1cb0)
+		src/rom_a1000/rom_a1814_c_a_a_c_a_c_a1f74.o(.text)
+		asm/rom_a1000/rom_a1814_c_a_a_c_a_c.o(.text.after_a1f74)
 		src/rom_a1000/rom_a1814_c_a_a_c_a_c_tile_palette.o(.text)
 		src/rom_a1000/rom_a1814_c_a_a_c_a_c_dma.o(.text)
 		asm/rom_a1000/rom_a1814_c_a_a_c_a_c.o(.text.after_22f4)
