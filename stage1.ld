@@ -1349,7 +1349,7 @@ SECTIONS {
 		src/rom_b5000/rom_b8228_c_a_c_c_a_90ac.o(.text)
 		asm/rom_b5000/rom_b8228_c_a_c_c_a.o(.text.after)
 		asm/rom_b5000/rom_b8228_c_a_c_c_b.o(.text)
-		asm/rom_b5000/rom_b8228_c_a_c_c_c.o(.text)
+		src/rom_b5000/rom_b8228_c_a_c_c_c_9a70.o(.text)
 		src/rom_b5000/rom_b8228_c_a_c_c_c_9acc.o(.text)
 		asm/rom_b5000/rom_b8228_c_b.o(.text)
 		asm/rom_b5000/rom_b8228_c_c.o(.text)
