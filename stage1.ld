@@ -670,7 +670,7 @@ SECTIONS {
 		asm/rom_77000/rom_79460_c_c_c_c_a_c_b.o(.text)
 		asm/rom_77000/rom_79460_c_c_c_c_a_c_c_a.o(.text)
 		src/rom_77000/rom_79460_c_c_c_c_a_c_c_a_b.o(.text)
-		asm/rom_77000/rom_79460_c_c_c_c_a_c_c_a.o(.text.after)
+		src/rom_77000/rom_79460_c_c_c_c_a_c_c_a_79cbc.o(.text)
 		src/rom_77000/rom_79460_c_c_c_c_a_c_c_a_9d1c.o(.text)
 		asm/rom_77000/rom_79460_c_c_c_c_a_c_c_a.o(.text.after_79d1c)
 		src/rom_77000/rom_79460_c_c_c_c_a_c_c_a_79e9c.o(.text)
