@@ -1118,61 +1118,6 @@
 	bx	r0
 .func_end OvlFunc_916_2008a90
 
-	.section .text.after_8b3c, "ax", %progbits
-
-.thumb_func_start OvlFunc_916_2008b8c
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r5, r1
-	mov	r4, #1
-	mov	r1, r2
-	mov	r2, #0
-	ldrsh	r3, [r0, r2]
-	neg	r4, r4
-	cmp	r3, r4
-	beq	.Lbd8
-	mov	r8, r4
-.Lba4:
-	mov	r3, #2
-	ldrsh	r4, [r0, r3]
-	mov	r6, #4
-	ldrsh	r2, [r0, r6]
-	mov	r6, #6
-	ldrsh	r3, [r0, r6]
-	mov	r12, r4
-	mov	r14, r2
-	cmp	r3, #0
-	bne	.Lbbc
-	add	r4, #3
-	b	.Lbbe
-.Lbbc:
-	add	r2, #3
-.Lbbe:
-	cmp	r5, r12
-	blt	.Lbce
-	cmp	r5, r4
-	bgt	.Lbce
-	cmp	r1, r14
-	blt	.Lbce
-	cmp	r1, r2
-	ble	.Lbda
-.Lbce:
-	add	r0, #0xc
-	mov	r2, #0
-	ldrsh	r3, [r0, r2]
-	cmp	r3, r8
-	bne	.Lba4
-.Lbd8:
-	mov	r0, #0
-.Lbda:
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_916_2008b8c
-
 	.section .text.after_8be4, "ax", %progbits
 
 .thumb_func_start OvlFunc_916_2008c2c
