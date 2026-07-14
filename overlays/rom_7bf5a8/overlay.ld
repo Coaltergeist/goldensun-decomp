@@ -57,6 +57,7 @@ SECTIONS {
 		asm/overlays/common/common2_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_c_a.o(.text)
+		src/overlays/common/common2_c_c_c_c_a_380.o(.text)
 		asm/overlays/common/common2_c_c_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_c_c_c_b.o(.text)
