@@ -16,7 +16,7 @@ SECTIONS {
 		src/overlays/rom_794ac0/exports.o(.text)
 		asm/overlays/rom_794ac0/ovl_30_a_b.o(.text)
 		src/overlays/rom_794ac0/ovl_30_a_c_a_a_a_a_a.o(.text)
-		asm/overlays/rom_794ac0/ovl_30_a_c_a_a_a_a_c.o(.text)
+		src/overlays/rom_794ac0/ovl_30_a_c_a_a_a_a_c_8080.o(.text)
 		asm/overlays/rom_794ac0/ovl_30_a_c_a_a_a_b.o(.text)
 		asm/overlays/rom_794ac0/ovl_30_a_c_a_a_a_c_b.o(.text)
 		asm/overlays/rom_794ac0/ovl_30_a_c_a_a_a_c_c_b.o(.text)

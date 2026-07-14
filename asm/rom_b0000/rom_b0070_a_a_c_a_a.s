@@ -84,46 +84,7 @@
 	bx	r0
 .func_end Func_80b010c
 
-.thumb_func_start Func_80b0204  @ 0x080b0204
-	push	{r5, lr}
-	ldr	r3, =iwram_3001f2c
-	ldr	r0, =Func_80b00f4
-	ldr	r5, [r3]
-	bl	StopTask
-	bl	_Func_8019a54
-	mov	r2, #0xe4
-	lsl	r2, #2
-	add	r3, r5, r2
-	ldrh	r0, [r3]
-	bl	Func_8003f3c
-	ldr	r2, =0x392
-	add	r3, r5, r2
-	ldrh	r0, [r3]
-	bl	Func_8003f3c
-	mov	r2, #0xe5
-	lsl	r2, #2
-	add	r3, r5, r2
-	ldrh	r0, [r3]
-	bl	Func_8003f3c
-	ldr	r2, =0x396
-	add	r3, r5, r2
-	ldrh	r0, [r3]
-	bl	Func_8003f3c
-	mov	r2, #0xe6
-	lsl	r2, #2
-	add	r3, r5, r2
-	ldrh	r0, [r3]
-	bl	Func_8003f3c
-	ldr	r3, =0x39a
-	add	r5, r3
-	ldrh	r0, [r5]
-	bl	Func_8003f3c
-	mov	r0, #0x37
-	bl	gfree
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end Func_80b0204
+	.section .text.after_0204, "ax", %progbits
 
 .thumb_func_start Func_80b0278  @ 0x080b0278
 	push	{r5, r6, r7, lr}
