@@ -365,7 +365,7 @@ SECTIONS {
 		asm/rom_15000/rom_19ebc_a_c_c.o(.text.after_old_move_icon)
 		src/rom_15000/rom_19ebc_a_c_c_load_inventory_icon.o(.text)
 		src/rom_15000/load_status_icon.o(.text)
-		asm/rom_15000/rom_19ebc_a_c_c.o(.text.after_load_status_icon)
+		src/rom_15000/rom_19ebc_a_c_c_load_ui_banner.o(.text)
 		src/rom_15000/load_item_icon.o(.text)
 		src/rom_15000/load_move_icon.o(.text)
 		asm/rom_15000/rom_19ebc_a_c_c.o(.text.after_load_move_icon)
