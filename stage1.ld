@@ -48,7 +48,6 @@ SECTIONS {
 		asm/rom_c0/rom_49a8_b.o(.text)
 		asm/rom_c0/rom_49a8_c_c_c_c_c.o(.text)
 		asm/rom_c0/rom_52f4.o(.text)
-		asm/rom_c0/rom_56cc_a_a_a.o(.text)
 		asm/rom_c0/rom_56cc_a_a_b.o(.text)
 		asm/rom_c0/rom_56cc_a_a_c_a.o(.text)
 		asm/rom_c0/rom_56cc_a_a_c_b.o(.text)

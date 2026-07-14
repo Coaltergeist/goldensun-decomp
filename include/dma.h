@@ -106,4 +106,13 @@ static inline u16 UnknownDMAPrefix(void) {
     return dma[5];
 }
 
+// wait until enable goes to low, used to "wait" for DMA transfers to complete.
+// DMA transfers on the GBA stall the CPU, so this should not be necessary.
+
+static inline void WaitForDma3(void) {
+    vu32 *dma = &REG_DMA3SAD;
+    while (dma[2] & 0x80000000) ;
+    return;
+}
+
 #endif // _DMA_H_
