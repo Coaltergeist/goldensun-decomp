@@ -378,7 +378,7 @@ SECTIONS {
 		src/rom_15000/rom_1a66c_a_1a7c0.o(.text)
 		asm/rom_15000/rom_1a66c_a.o(.text.after_1a7c0)
 		asm/rom_15000/rom_1a66c_b.o(.text)
-		asm/rom_15000/rom_1a66c_c_a_a.o(.text)
+		src/rom_15000/rom_1a66c_c_a_a_1a910.o(.text)
 		asm/rom_15000/rom_1a66c_c_a_b.o(.text)
 		asm/rom_15000/rom_1a66c_c_b.o(.text)
 		asm/rom_15000/rom_1a66c_c_c.o(.text)
