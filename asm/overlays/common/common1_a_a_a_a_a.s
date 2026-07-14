@@ -1,59 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_common1_0
-	push	{r5, r6, lr}
-	mov	r0, #0xe0
-	lsl	r0, #2
-	bl	__GetFlagByte
-	mov	r5, r0
-	mov	r0, #0xe2
-	lsl	r0, #2
-	bl	__GetFlagByte
-	mov	r6, #0x80
-	lsl	r6, #12
-	mov	r2, r0
-	lsl	r5, #20
-	add	r5, r6
-	lsl	r2, #20
-	add	r2, r6
-	mov	r1, r5
-	mov	r0, #1
-	bl	__MapActor_SetPos
-	mov	r0, #0xe4
-	lsl	r0, #2
-	bl	__GetFlagByte
-	mov	r5, r0
-	mov	r0, #0xe6
-	lsl	r0, #2
-	bl	__GetFlagByte
-	lsl	r5, #20
-	mov	r2, r0
-	add	r5, r6
-	lsl	r2, #20
-	add	r2, r6
-	mov	r1, r5
-	mov	r0, #2
-	bl	__MapActor_SetPos
-	mov	r0, #0xe8
-	lsl	r0, #2
-	bl	__GetFlagByte
-	mov	r5, r0
-	mov	r0, #0xea
-	lsl	r0, #2
-	bl	__GetFlagByte
-	lsl	r5, #20
-	mov	r2, r0
-	add	r5, r6
-	lsl	r2, #20
-	add	r2, r6
-	mov	r0, #3
-	mov	r1, r5
-	bl	__MapActor_SetPos
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_common1_0
+	.section .text.after_0, "ax", %progbits
 
 .thumb_func_start OvlFunc_common1_78
 	push	{r5, lr}

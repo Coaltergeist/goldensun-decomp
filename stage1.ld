@@ -903,6 +903,7 @@ SECTIONS {
 		asm/rom_8a000/rom_92950_c_c_c_c.o(.text)
 		src/rom_8a000/rom_93304_a_a_a_a_a_3304.o(.text)
 		asm/rom_8a000/rom_93304_a_a_a_a_a.o(.text.before)
+		src/rom_8a000/rom_93304_a_a_a_a_a_335c.o(.text)
 		asm/rom_8a000/rom_93304_a_a_a_a_b.o(.text)
 		asm/rom_8a000/rom_93304_a_a_a_a_c.o(.text)
 		asm/rom_8a000/rom_93304_a_a_a_b.o(.text)
