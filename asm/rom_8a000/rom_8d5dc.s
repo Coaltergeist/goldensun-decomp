@@ -235,43 +235,7 @@
 	bx	r1
 .func_end Func_808d5dc
 
-.thumb_func_start Func_808d7d8  @ 0x0808d7d8
-	push	{r5, r6, r7, lr}
-	mov	r7, r0
-	mov	r1, r7
-	mov	r0, #6
-	bl	FindMapActorEvent
-	mov	r6, #1
-	mov	r5, r0
-	neg	r6, r6
-	cmp	r5, #0
-	beq	.L8d81e
-	ldr	r3, [r5, #8]
-	cmp	r3, #0
-	beq	.L8d81e
-	mov	r2, #0x80
-	lsl	r2, #9
-	cmp	r3, r2
-	bge	.L8d816
-	bl	CutsceneStart
-	ldr	r0, [r5, #8]
-	bl	MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	ActorMessage
-	mov	r6, #0
-	bl	CutsceneEnd
-	b	.L8d81e
-.L8d816:
-	mov	r0, r7
-	bl	_call_via_r3
-	mov	r6, #0
-.L8d81e:
-	mov	r0, r6
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end Func_808d7d8
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_808d828  @ 0x0808d828
 	push	{r5, r6, r7, lr}

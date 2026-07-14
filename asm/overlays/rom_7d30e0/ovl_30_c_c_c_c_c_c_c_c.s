@@ -74,46 +74,7 @@
 	bx	r0
 .func_end OvlFunc_948_2009edc
 
-.thumb_func_start OvlFunc_948_2009f78
-	push	{r5, lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r1, [r3]
-	mov	r3, #0x81
-	lsl	r2, #1
-	lsl	r3, #2
-	str	r3, [r1, r2]
-	ldr	r3, =gState
-	add	r5, r3, r2
-	mov	r3, #0
-	ldrsh	r2, [r5, r3]
-	ldr	r3, =0x75
-	ldrh	r1, [r5]
-	cmp	r2, r3
-	bne	.L1f9e
-	bl	OvlFunc_948_200a188
-	ldrh	r1, [r5]
-.L1f9e:
-	lsl	r3, r1, #16
-	ldr	r2, =0x76
-	asr	r3, #16
-	cmp	r3, r2
-	bne	.L1fae
-	bl	OvlFunc_948_200a290
-	ldrh	r1, [r5]
-.L1fae:
-	lsl	r3, r1, #16
-	ldr	r2, =0x78
-	asr	r3, #16
-	cmp	r3, r2
-	bne	.L1fbc
-	bl	OvlFunc_948_200a334
-.L1fbc:
-	mov	r0, #0
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_948_2009f78
+.section .text.after_9f78, "ax", %progbits
 
 .thumb_func_start OvlFunc_948_2009fd8
 	push	{lr}

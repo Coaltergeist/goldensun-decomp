@@ -113,48 +113,6 @@
 	bx	r0
 .func_end OvlFunc_970_20091c4
 
-.thumb_func_start OvlFunc_970_20092ac
-	push	{r5, r6, lr}
-	mov	r0, #0x80
-	lsl	r0, #1
-	sub	sp, #4
-	bl	__Func_8004970
-	ldr	r5, =.L1c1a
-	mov	r6, r0
-	bl	__AllocSpriteSlot
-	ldr	r3, =0x11111111
-	strh	r0, [r5]
-	mov	r0, sp
-	str	r3, [r0]
-	mov	r1, r6
-	ldr	r3, =REG_DMA3SAD
-	ldr	r2, =0x85000040
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r1, #0x80
-	mov	r3, #0
-	ldrsh	r0, [r5, r3]
-	mov	r2, r6
-	lsl	r1, #1
-	bl	__UploadSpriteGFX
-	ldr	r2, =.L1c18
-	ldr	r3, .L12f8	@ 0x30
-	mov	r1, #0xc8
-	strh	r3, [r2]
-	lsl	r1, #4
-	ldr	r0, =OvlFunc_970_20091c4
-	bl	__StartTask
-	add	sp, #4
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-
-	.align	2, 0
-.L12f8:
-	.word	0x30
-	.pool
-.func_end OvlFunc_970_20092ac
-
 	.section .data
 	.global .L14ac
 	.global .L14c8
@@ -236,5 +194,7 @@ gScript_970__02009a4c:
 	.section .bss
 
 	.lcomm	.L1af8, 0x120
+	.global .L1c18
 	.lcomm	.L1c18, 2
+	.global .L1c1a
 	.lcomm	.L1c1a, 2

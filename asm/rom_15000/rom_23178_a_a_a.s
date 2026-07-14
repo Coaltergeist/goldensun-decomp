@@ -7777,35 +7777,6 @@
 
 	.section .text.after_270ac, "ax", %progbits
 
-.thumb_func_start Func_80270d8  @ 0x080270d8
-	push	{r5, r6, lr}
-	mov	r6, r9
-	push	{r6}
-	sub	sp, #0x84
-	mov	r2, r9
-	mov	r6, sp
-	add	r3, sp, #0x80
-	mov	r5, r2
-	str	r2, [r3]
-	mov	r1, r6
-	mov	r2, #0x34
-	sub	r5, #8
-	ldr	r0, =0x80d
-	bl	Func_801965c
-	ldr	r3, [r5]
-	mov	r0, r6
-	ldr	r1, [r3, #0x44]
-	mov	r2, #0
-	mov	r3, #4
-	bl	Func_8017aa4
-	add	sp, #0x84
-	pop	{r3}
-	mov	r9, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_80270d8
-
 .thumb_func_start Func_8027114  @ 0x08027114
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
@@ -10227,46 +10198,6 @@
 .func_end Func_8028194
 
 	.section .text.after_284dc, "ax", %progbits
-
-.thumb_func_start Func_802851c  @ 0x0802851c
-	push	{r5, r6, r7, lr}
-	ldr	r3, =iwram_3001f38
-	ldr	r5, [r3]
-	ldr	r0, =Func_8028194
-	bl	StopTask
-	ldr	r0, [r5, #0x78]
-	cmp	r0, #0
-	beq	.L28534
-	mov	r1, #2
-	bl	CloseUIBox
-.L28534:
-	mov	r2, r5
-	add	r2, #0x8e
-	mov	r1, #0
-	ldrsh	r3, [r2, r1]
-	mov	r6, #0
-	cmp	r6, r3
-	bge	.L28558
-	mov	r7, r2
-	add	r5, #0x12
-.L28546:
-	ldrh	r0, [r5]
-	bl	Func_8003f3c
-	mov	r2, #0
-	ldrsh	r3, [r7, r2]
-	add	r6, #1
-	add	r5, #0x14
-	cmp	r6, r3
-	blt	.L28546
-.L28558:
-	mov	r0, #0x3a
-	bl	gfree
-	mov	r0, #1
-	bl	WaitFrames
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_802851c
 
 .thumb_func_start Func_8028574  @ 0x08028574
 	push	{r5, r6, r7, lr}

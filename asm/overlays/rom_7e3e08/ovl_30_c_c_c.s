@@ -3696,42 +3696,7 @@
 	bx	r0
 .func_end OvlFunc_957_200ac44
 
-.thumb_func_start OvlFunc_957_200b4bc
-	push	{r5, lr}
-	bl	__CutsceneStart
-	ldr	r5, =0x217f
-	mov	r0, r5
-	bl	__MessageID
-	mov	r1, #0
-	mov	r0, #8
-	bl	__Func_8092c40
-	mov	r0, #0
-	mov	r1, #0
-	bl	__Func_8091c7c
-	cmp	r0, #0
-	bne	.L34f4
-	mov	r0, #0x14
-	bl	__CutsceneWait
-	add	r0, r5, #1
-	bl	__MessageID
-	mov	r0, #8
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.L3508
-.L34f4:
-	mov	r0, #0x14
-	bl	__CutsceneWait
-	add	r0, r5, #2
-	bl	__MessageID
-	mov	r0, #8
-	mov	r1, #0
-	bl	__ActorMessage
-.L3508:
-	bl	__CutsceneEnd
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_957_200b4bc
+.section .text.after_b4bc, "ax", %progbits
 
 .thumb_func_start OvlFunc_957_200b518
 	push	{lr}

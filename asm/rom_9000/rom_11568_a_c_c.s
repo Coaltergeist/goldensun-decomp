@@ -92,37 +92,7 @@
 	bx	r0
 .func_end Func_8011644
 
-.thumb_func_start Func_801173c  @ 0x0801173c
-	push	{lr}
-	ldr	r3, =iwram_3001e70
-	ldr	r2, =iwram_3001cfc
-	ldr	r1, [r3]
-	ldr	r3, =Func_801161c
-	str	r3, [r2]
-	mov	r3, #0x80
-	lsl	r3, #1
-	add	r2, r1, r3
-	mov	r3, #0
-	strh	r3, [r2]
-	mov	r3, #0x81
-	lsl	r3, #1
-	add	r2, r1, r3
-	mov	r3, #0x9f
-	strh	r3, [r2]
-	mov	r0, #1
-	bl	WaitFrames
-	ldr	r0, =_FILE_d5
-	bl	GetFile
-	ldr	r1, =gBuffer
-	bl	DecompressLZ
-	bl	Func_80113e4
-	ldr	r0, =Func_801179c
-	bl	Func_800439c
-	mov	r0, #1
-	bl	WaitFrames
-	pop	{r0}
-	bx	r0
-.func_end Func_801173c
+	.section .text.after, "ax", %progbits
 
 .thumb_func_start Func_801179c  @ 0x0801179c
 	push	{r5, r6, r7, lr}

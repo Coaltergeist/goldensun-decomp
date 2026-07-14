@@ -311,45 +311,6 @@
 	bx	r0
 .func_end OvlFunc_949_2008980
 
-.thumb_func_start OvlFunc_949_2008ca8
-	push	{r5, lr}
-	mov	r0, #9
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	cmp	r5, #0
-	beq	.Lcce
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r1, r5
-	mov	r2, #2
-	add	r1, #0x23
-	strb	r2, [r1]
-	mov	r2, r5
-	mov	r3, #0
-	add	r2, #0x55
-	strb	r3, [r2]
-.Lcce:
-	mov	r0, #9
-	mov	r1, #5
-	bl	__MapActor_SetAnim
-	mov	r3, #0x22
-	mov	r2, #0x10
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r1, #0x10
-	mov	r2, #1
-	mov	r3, #1
-	mov	r0, #0x24
-	bl	__Func_8010704
-	ldr	r0, =0x201
-	bl	__SetFlag
-	add	sp, #8
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_949_2008ca8
-
 	.section .data
 	.global gScript_949__02008ec0
 	.global gScript_949__02008f90

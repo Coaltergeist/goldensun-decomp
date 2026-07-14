@@ -1,42 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_947_200a15c
-	push	{r5, r6, lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	mov	r0, #0xd
-	bl	__MapActor_GetActor
-	ldr	r3, =iwram_3001f30
-	ldr	r2, [r0, #8]
-	ldr	r6, [r3]
-	ldr	r3, [r5, #8]
-	asr	r2, #20
-	asr	r3, #20
-	cmp	r2, r3
-	bne	.L2198
-	ldr	r2, [r0, #0x10]
-	ldr	r3, [r5, #0x10]
-	asr	r2, #20
-	asr	r3, #20
-	cmp	r2, r3
-	bne	.L2198
-	ldr	r0, =0x203
-	bl	__SetFlag
-	mov	r2, r6
-	add	r2, #0x35
-	mov	r3, #1
-	strb	r3, [r2]
-	b	.L219e
-.L2198:
-	ldr	r0, =0x203
-	bl	__ClearFlag
-.L219e:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_947_200a15c
+	.section .text.before, "ax", %progbits
 
 .thumb_func_start OvlFunc_947_200a1ac
 	push	{r5, r6, lr}

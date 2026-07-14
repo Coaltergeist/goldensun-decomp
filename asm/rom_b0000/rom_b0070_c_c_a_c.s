@@ -3,43 +3,6 @@
 
 	.section .text.after_2884, "ax", %progbits
 
-.thumb_func_start Func_80b28d4  @ 0x080b28d4
-	push	{r5, r6, lr}
-	ldr	r3, =iwram_3001f2c
-	mov	r2, #0xe9
-	ldr	r3, [r3]
-	lsl	r2, #2
-	add	r3, r2
-	mov	r6, r0
-	ldrh	r0, [r3]
-	bl	_GetSpriteVoice
-	mov	r5, r0
-	bl	_Func_8019a54
-	mov	r0, r6
-	bl	Func_80b2884
-	lsl	r5, #16
-	mov	r3, #0x22
-	orr	r5, r3
-	mov	r1, #5
-	mov	r2, #0
-	mov	r3, r5
-	mov	r6, r0
-	bl	_Func_8017658
-	b	.Lb290e
-.Lb2908:
-	mov	r0, #1
-	bl	WaitFrames
-.Lb290e:
-	bl	_Func_8017364
-	cmp	r0, #0
-	beq	.Lb2908
-	mov	r0, #1
-	bl	WaitFrames
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_80b28d4
-
 .thumb_func_start Func_80b2928  @ 0x080b2928
 	push	{r5, r6, r7, lr}
 	mov	r7, r10

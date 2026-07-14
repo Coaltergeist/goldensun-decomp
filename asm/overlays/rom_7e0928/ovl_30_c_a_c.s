@@ -120,46 +120,7 @@
 	bx	r1
 .func_end OvlFunc_956_20086a4
 
-.thumb_func_start OvlFunc_956_2008714
-	push	{r5, r6, lr}
-	ldr	r3, =0xffe80000
-	mov	r5, r1
-	add	r1, r5, r3
-	mov	r6, r0
-	bl	OvlFunc_956_20086a4
-	cmp	r0, #0
-	bne	.L754
-	ldr	r3, =0xfff80000
-	mov	r0, r6
-	add	r1, r5, r3
-	bl	OvlFunc_956_20086a4
-	cmp	r0, #0
-	bne	.L754
-	mov	r3, #0x80
-	lsl	r3, #12
-	add	r1, r5, r3
-	mov	r0, r6
-	bl	OvlFunc_956_20086a4
-	cmp	r0, #0
-	bne	.L754
-	mov	r3, #0xc0
-	lsl	r3, #13
-	add	r1, r5, r3
-	mov	r0, r6
-	bl	OvlFunc_956_20086a4
-	cmp	r0, #0
-	beq	.L75a
-.L754:
-	mov	r0, #1
-	neg	r0, r0
-	b	.L75c
-.L75a:
-	mov	r0, #0
-.L75c:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_956_2008714
+.section .text.after_8714, "ax", %progbits
 
 .thumb_func_start OvlFunc_956_200876c
 	push	{r5, r6, r7, lr}

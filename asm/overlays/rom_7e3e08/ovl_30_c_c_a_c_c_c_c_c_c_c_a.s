@@ -3,48 +3,6 @@
 
 .section .text.after_8d90, "ax", %progbits
 
-.thumb_func_start OvlFunc_957_2008d90
-	push	{r5, r6, lr}
-	ldr	r3, =iwram_3001f30
-	mov	r0, #0xb
-	ldr	r5, [r3]
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	add	r5, #0x35
-	ldrb	r5, [r5]
-	lsl	r5, #24
-	asr	r5, #24
-	mov	r6, r0
-	cmp	r5, #0
-	bne	.Ldd8
-	mov	r3, #0x49
-	mov	r2, #0x11
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0x4c
-	mov	r1, #0x10
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-	cmp	r6, #0
-	beq	.Ldd2
-	mov	r2, r6
-	mov	r3, #2
-	add	r2, #0x55
-	strb	r3, [r2]
-	mov	r3, r6
-	add	r3, #0x23
-	strb	r5, [r3]
-.Ldd2:
-	ldr	r0, =0x211
-	bl	__SetFlag
-.Ldd8:
-	add	sp, #8
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_957_2008d90
-
 .thumb_func_start OvlFunc_957_2008de8
 	push	{r5, r6, r7, lr}
 	mov	r7, r8

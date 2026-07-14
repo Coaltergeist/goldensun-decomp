@@ -530,46 +530,7 @@
 	bx	r0
 .func_end Func_809b450
 
-.thumb_func_start Func_809b588  @ 0x0809b588
-	push	{r5, r6, lr}
-	ldr	r3, =gState
-	mov	r2, #0xfa
-	lsl	r2, #1
-	add	r3, r2
-	ldr	r0, [r3]
-	bl	GetFieldActor
-	ldr	r3, =iwram_3001e40
-	ldr	r5, [r0, #0x50]
-	mov	r1, #5
-	ldr	r0, [r3]
-	ldr	r6, [r5, #0x28]
-	bl	__umodsi3
-	cmp	r0, #0
-	bne	.L9b5b8
-	mov	r2, r5
-	add	r2, #0x25
-	mov	r3, #1
-	strb	r3, [r2]
-	add	r2, #1
-	mov	r3, #3
-	b	.L9b5ca
-.L9b5b8:
-	cmp	r0, #2
-	bne	.L9b5cc
-	mov	r3, #0
-	mov	r2, r5
-	add	r2, #0x25
-	strb	r3, [r6, #5]
-	mov	r3, #1
-	strb	r3, [r2]
-	add	r2, #1
-.L9b5ca:
-	strb	r3, [r2]
-.L9b5cc:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_809b588
+	.section .text.after_b588, "ax", %progbits
 
 .thumb_func_start Func_809b5dc  @ 0x0809b5dc
 	push	{r5, r6, lr}
@@ -621,41 +582,6 @@
 	pop	{r0}
 	bx	r0
 .func_end Func_809b5dc
-
-.thumb_func_start Func_809b648  @ 0x0809b648
-	push	{lr}
-	ldr	r1, =gState
-	mov	r3, #0x91
-	lsl	r3, #2
-	add	r2, r1, r3
-	mov	r3, #0
-	str	r3, [r2]
-	mov	r2, #0x92
-	lsl	r2, #2
-	add	r3, r1, r2
-	ldrb	r3, [r3]
-	lsl	r3, #24
-	asr	r3, #24
-	cmp	r3, #0
-	bne	.L9b678
-	mov	r0, #0x96
-	mov	r1, #4
-	bl	_Func_8019908
-	ldr	r0, =0x923
-	mov	r1, #1
-	bl	_Func_801776c
-	b	.L9b688
-.L9b678:
-	mov	r0, #0xec
-	mov	r1, #2
-	bl	_Func_8019908
-	ldr	r0, =0x925
-	mov	r1, #1
-	bl	_Func_801776c
-.L9b688:
-	pop	{r0}
-	bx	r0
-.func_end Func_809b648
 
 	.section .rodata
 	.global .L9f160
