@@ -690,7 +690,7 @@ SECTIONS {
 		asm/rom_77000/rom_79460_c_c_c_c_a_c_c_c_c.o(.text.after_7a458)
 		src/rom_77000/rom_79460_c_c_c_c_a_c_c_c_c_7a550.o(.text)
 		asm/rom_77000/rom_79460_c_c_c_c_b.o(.text)
-		asm/rom_77000/rom_79460_c_c_c_c_c.o(.text)
+		src/rom_77000/rom_79460_c_c_c_c_c_5bc.o(.text)
 		src/rom_77000/rom_79460_c_c_c_c_c_628.o(.text)
 		asm/rom_77000/rom_79460_c_c_c_c_c.o(.text.after_628)
 
@@ -1447,7 +1447,7 @@ SECTIONS {
 		src/rom_b5000/rom_bffb8_a_a_a_0130.o(.text)
 		asm/rom_b5000/rom_bffb8_a_a_b.o(.text)
 		src/rom_b5000/rom_bffb8_a_a_c_01bc.o(.text)
-		asm/rom_b5000/rom_bffb8_a_a_c.o(.text.after_c01bc)
+		src/rom_b5000/rom_bffb8_a_a_c_0228.o(.text)
 		asm/rom_b5000/rom_bffb8_a_b.o(.text)
 		asm/rom_b5000/rom_bffb8_a_c_a.o(.text)
 		src/rom_b5000/rom_bffb8_a_c_a_0700.o(.text)
