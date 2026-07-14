@@ -1380,6 +1380,7 @@ SECTIONS {
 		src/rom_b5000/rom_bbb0c_a_c_c_a_f318.o(.text)
 		src/rom_b5000/rom_bbb0c_a_c_c_a_timers.o(.text)
 		asm/rom_b5000/rom_bbb0c_a_c_c_a.o(.text.after_timers)
+		src/rom_b5000/rom_bbb0c_a_c_c_a_f4c4.o(.text)
 		src/rom_b5000/rom_bbb0c_a_c_c_a_a.o(.text)
 		src/rom_b5000/rom_bbb0c_a_c_c_a_b.o(.text)
 		src/rom_b5000/rom_bbb0c_a_c_c_a_c.o(.text)
