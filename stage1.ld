@@ -1258,7 +1258,7 @@ SECTIONS {
 		src/rom_b0000/rom_b0070_c_a_a_2720.o(.text)
 		asm/rom_b0000/rom_b0070_c_a_b.o(.text)
 		asm/rom_b0000/rom_b0070_c_b.o(.text)
-		asm/rom_b0000/rom_b0070_c_c_a_a.o(.text)
+		src/rom_b0000/rom_b0070_c_c_a_a.o(.text)
 		src/rom_b0000/rom_b0070_c_c_a_b.o(.text)
 		src/rom_b0000/rom_b0070_c_c_a_c_2884.o(.text)
 		src/rom_b0000/rom_b0070_c_c_a_c_28d4.o(.text)
