@@ -168,90 +168,9 @@
 	bx	r1
 .func_end OvlFunc_888_200814c
 
-.thumb_func_start OvlFunc_888_200827c
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x855
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L294
-	ldr	r0, =0x1377
-	bl	__MessageID
-	b	.L29a
-.L294:
-	ldr	r0, =0x1289
-	bl	__MessageID
-.L29a:
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xb
-	bne	.L2b0
-	ldr	r0, =0x1ce9
-	bl	__MessageID
-.L2b0:
-	mov	r0, #9
-	mov	r1, #1
-	bl	__MapActor_SetAnim
-	mov	r2, #0
-	mov	r1, #0
-	mov	r0, #9
-	bl	__Func_8092848
-	mov	r0, #2
-	bl	__CutsceneWait
-	mov	r0, #9
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_888_200827c
+	.section .text.after_827c, "ax", %progbits
 
-.thumb_func_start OvlFunc_888_20082ec
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x855
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L304
-	ldr	r0, =0x128b
-	bl	__MessageID
-	b	.L30a
-.L304:
-	ldr	r0, =0x1379
-	bl	__MessageID
-.L30a:
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0xb
-	bne	.L320
-	ldr	r0, =0x1ceb
-	bl	__MessageID
-.L320:
-	mov	r0, #9
-	bl	__MapActor_SetIdle
-	mov	r1, #1
-	mov	r0, #9
-	bl	__MapActor_SetAnim
-	mov	r0, #2
-	bl	__CutsceneWait
-	mov	r0, #9
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r0, #9
-	mov	r1, #2
-	bl	__MapActor_SetBehavior
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_888_20082ec
+	.section .text.after_82ec, "ax", %progbits
 
 .thumb_func_start OvlFunc_888_2008360
 	push	{lr}

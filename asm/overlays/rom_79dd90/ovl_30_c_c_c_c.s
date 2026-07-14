@@ -244,80 +244,9 @@
 	bx	r0
 .func_end OvlFunc_910_20081e4
 
-.thumb_func_start OvlFunc_910_200845c
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0x80
-	lsl	r0, #2
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L472
-	bl	OvlFunc_910_20088e8
-.L472:
-	mov	r1, #0x80
-	mov	r2, #0x80
-	mov	r0, #0
-	lsl	r1, #8
-	lsl	r2, #7
-	bl	__MapActor_SetSpeed
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	sub	r2, #0xc0
-	str	r2, [r3]
-	mov	r0, #0
-	mov	r1, #2
-	bl	__MapActor_SetAnim
-	mov	r2, #0x10
-	mov	r1, #2
-	neg	r2, r2
-	mov	r0, #0
-	bl	__Func_8092208
-	mov	r0, #0x10
-	bl	__CutsceneWait
-	mov	r0, #2
-	bl	__Func_8091e9c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_910_200845c
+.section .text.after_845c, "ax", %progbits
 
-.thumb_func_start OvlFunc_910_20084bc
-	push	{r5, lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r5, #0xe0
-	ldr	r2, [r3]
-	mov	r3, #0x80
-	lsl	r3, #1
-	lsl	r5, #1
-	str	r3, [r2, r5]
-	mov	r0, #8
-	bl	__MapActor_GetActor
-	mov	r2, r0
-	add	r2, #0x23
-	mov	r3, #0
-	strb	r3, [r2]
-	ldr	r1, [r0, #0x50]
-	ldrb	r2, [r1, #9]
-	sub	r3, #0xd
-	and	r3, r2
-	mov	r2, #4
-	orr	r3, r2
-	strb	r3, [r1, #9]
-	ldr	r3, =gState
-	ldrsh	r2, [r3, r5]
-	ldr	r3, =0x22
-	cmp	r2, r3
-	bne	.L4f6
-	bl	OvlFunc_910_200850c
-.L4f6:
-	mov	r0, #0
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_910_20084bc
+.section .text.after_84bc, "ax", %progbits
 
 .thumb_func_start OvlFunc_910_200850c
 	push	{lr}

@@ -121,45 +121,7 @@
 	bx	r0
 .func_end OvlFunc_881_200b84c
 
-.thumb_func_start OvlFunc_881_200b8fc
-	push	{lr}
-	ldr	r0, =REG_BLDCNT
-	ldr	r1, =0x3f41
-	bl	__SetRegAnimDest
-	ldr	r3, =iwram_3001e40
-	ldr	r3, [r3]
-	mov	r2, #2
-	and	r3, r2
-	cmp	r3, #0
-	beq	.L393c
-	ldr	r3, =.L67a0
-	ldr	r1, .L3924	@ 0xc
-	ldrh	r3, [r3]
-	ldr	r0, =REG_BLDALPHA
-	orr	r1, r3
-	bl	__SetRegAnimDest
-	b	.L394a
-
-	.align	2, 0
-.L3924:
-	.word	0xc
-	.pool
-
-.L393c:
-	ldr	r3, =.L67a0
-	ldr	r1, .L3950	@ 0x10
-	ldrh	r3, [r3]
-	ldr	r0, =REG_BLDALPHA
-	orr	r1, r3
-	bl	__SetRegAnimDest
-.L394a:
-	pop	{r0}
-	bx	r0
-
-	.align	2, 0
-.L3950:
-	.word	0x10
-.func_end OvlFunc_881_200b8fc
+	.section .text.after_b8fc, "ax", %progbits
 
 .thumb_func_start OvlFunc_881_200b95c
 	push	{r5, r6, lr}

@@ -100,38 +100,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_941_20080d4
-
-.thumb_func_start OvlFunc_941_20081b0
-	push	{r5, lr}
-	mov	r0, #0xa
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	mov	r0, #0x80
-	lsl	r0, #2
-	bl	__SetFlag
-	cmp	r5, #0
-	beq	.L1d6
-	mov	r0, r5
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r2, r5
-	add	r2, #0x23
-	mov	r3, #1
-	strb	r3, [r2]
-.L1d6:
-	ldr	r0, =0x202
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L1f6
-	mov	r0, #0x9d
-	bl	__PlaySound
-	bl	OvlFunc_941_20080d4
-	mov	r0, #0x50
-	bl	__PlaySound
-	ldr	r0, =0x202
-	bl	__SetFlag
-.L1f6:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_941_20081b0

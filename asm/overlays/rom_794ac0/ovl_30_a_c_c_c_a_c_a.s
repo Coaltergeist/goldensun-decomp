@@ -2,47 +2,6 @@
 
 	.section .text.after_99a4, "ax", %progbits
 
-.thumb_func_start OvlFunc_899_20099e4
-	push	{lr}
-	mov	r1, #0x80
-	mov	r2, #0x80
-	mov	r0, #0
-	lsl	r1, #8
-	lsl	r2, #7
-	bl	__MapActor_SetSpeed
-	mov	r1, #0xba
-	mov	r2, #0xcc
-	mov	r0, #0
-	lsl	r1, #2
-	lsl	r2, #1
-	bl	__Func_80921c4
-	ldr	r0, =0x854
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L1a22
-	bl	__CutsceneStart
-	ldr	r0, =0x12c3
-	bl	__MessageID
-	mov	r0, #8
-	mov	r1, #0
-	bl	__ActorMessage
-	bl	__CutsceneEnd
-.L1a22:
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe4
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0x10
-	str	r2, [r3]
-	mov	r0, #0x7b
-	bl	__PlaySound
-	mov	r0, #0xe
-	bl	__Func_8091e9c
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_899_20099e4
-
 .thumb_func_start OvlFunc_899_2009a4c
 	push	{r5, r6, lr}
 	mov	r0, #0x18

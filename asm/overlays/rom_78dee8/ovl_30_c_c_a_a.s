@@ -157,37 +157,7 @@
 	bx	r0
 .func_end OvlFunc_895_2008154
 
-.thumb_func_start OvlFunc_895_2008200
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x81a
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L21a
-	ldr	r0, =0x1034
-	mov	r1, #1
-	bl	__Func_801776c
-	b	.L23a
-.L21a:
-	ldr	r0, =0x1031
-	mov	r1, #1
-	bl	__Func_801776c
-	ldr	r0, =0xf01
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L23a
-	ldr	r3, =iwram_3001ebc
-	mov	r1, #0xb9
-	ldr	r3, [r3]
-	lsl	r1, #1
-	add	r2, r3, r1
-	mov	r3, #1
-	strh	r3, [r2]
-.L23a:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_895_2008200
+.section .text.after_8200, "ax", %progbits
 
 .thumb_func_start OvlFunc_895_2008258
 	push	{r5, r6, lr}
@@ -331,43 +301,7 @@
 	bx	r0
 .func_end OvlFunc_895_2008258
 
-.thumb_func_start OvlFunc_895_20083bc
-	push	{r5, lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x821
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L3d6
-	ldr	r0, =0x1034
-	mov	r1, #1
-	bl	__Func_801776c
-	b	.L400
-.L3d6:
-	ldr	r0, =0xf02
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L3f8
-	ldr	r3, =iwram_3001ebc
-	ldr	r0, =0x1031
-	mov	r1, #1
-	ldr	r5, [r3]
-	bl	__Func_801776c
-	mov	r3, #0xb9
-	lsl	r3, #1
-	add	r2, r5, r3
-	mov	r3, #1
-	strh	r3, [r2]
-	b	.L400
-.L3f8:
-	ldr	r0, =0x1031
-	mov	r1, #1
-	bl	__Func_801776c
-.L400:
-	bl	__CutsceneEnd
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_895_20083bc
+.section .text.after_83bc, "ax", %progbits
 
 .thumb_func_start OvlFunc_895_2008420
 	push	{r5, r6, lr}

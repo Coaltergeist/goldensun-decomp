@@ -455,43 +455,7 @@
 	bx	r1
 .func_end OvlFunc_899_200a758
 
-.thumb_func_start OvlFunc_899_200aba0
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r6, r0
-	mov	r0, #0x18
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	mov	r0, #0x19
-	bl	__MapActor_GetActor
-	ldr	r3, [r5, #0x10]
-	mov	r8, r0
-	ldr	r0, [r6, #0x10]
-	ldr	r1, [r6, #8]
-	sub	r0, r3
-	ldr	r3, [r5, #8]
-	sub	r1, r3
-	bl	__atan2
-	strh	r0, [r5, #6]
-	mov	r2, r8
-	ldr	r3, [r2, #0x10]
-	ldr	r0, [r6, #0x10]
-	ldr	r1, [r6, #8]
-	sub	r0, r3
-	ldr	r3, [r2, #8]
-	sub	r1, r3
-	bl	__atan2
-	mov	r3, r8
-	strh	r0, [r3, #6]
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_899_200aba0
+.section .text.after_aba0, "ax", %progbits
 
 .thumb_func_start OvlFunc_899_200abf0
 	push	{r5, lr}

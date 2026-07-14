@@ -58,34 +58,3 @@
 	bx	r0
 .func_end OvlFunc_939_2008764
 
-.thumb_func_start OvlFunc_939_20087f4
-	push	{lr}
-	ldr	r0, =0x941
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L81e
-	ldr	r0, =0x85a
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L80e
-	ldr	r0, =0x1be2
-	b	.L810
-.L80e:
-	ldr	r0, =0x1ba5
-.L810:
-	bl	__MessageID
-	mov	r0, #0x12
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.L82c
-.L81e:
-	ldr	r0, =0x250c
-	bl	__MessageID
-	mov	r0, #0x12
-	mov	r1, #0
-	bl	__ActorMessage
-.L82c:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_939_20087f4
-

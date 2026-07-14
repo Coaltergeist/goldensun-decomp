@@ -304,42 +304,7 @@
 	bx	r0
 .func_end OvlFunc_907_2008584
 
-.thumb_func_start OvlFunc_907_2008890
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r1, [r3]
-	mov	r3, #0x80
-	lsl	r2, #1
-	lsl	r3, #1
-	str	r3, [r1, r2]
-	ldr	r3, =gState
-	ldrsh	r2, [r3, r2]
-	ldr	r3, =0x1e
-	cmp	r2, r3
-	bne	.L8b0
-	bl	OvlFunc_907_20088f0
-	b	.L8d0
-.L8b0:
-	ldr	r3, =0x23
-	cmp	r2, r3
-	bne	.L8c6
-	bl	OvlFunc_907_2008ae0
-	mov	r1, #0xc8
-	ldr	r0, =OvlFunc_907_2008ed8
-	lsl	r1, #4
-	bl	__StartTask
-	b	.L8d0
-.L8c6:
-	ldr	r3, =0x20
-	cmp	r2, r3
-	bne	.L8d0
-	bl	OvlFunc_907_2008d10
-.L8d0:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_907_2008890
+.section .text.after_8890, "ax", %progbits
 
 .thumb_func_start OvlFunc_907_20088f0
 	push	{lr}

@@ -723,42 +723,7 @@
 	bx	r0
 .func_end OvlFunc_926_2009160
 
-.thumb_func_start OvlFunc_926_20092e0
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r2, #0x80
-	ldrh	r3, [r0, #6]
-	lsl	r2, #7
-	cmp	r3, r2
-	bls	.L130c
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r2, #0xc0
-	ldrh	r3, [r0, #6]
-	lsl	r2, #8
-	cmp	r3, r2
-	bcs	.L130c
-	bl	OvlFunc_926_2008bf4
-	b	.L1310
-.L130c:
-	bl	OvlFunc_926_2008cd4
-.L1310:
-	ldr	r0, =0x898
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L1320
-	bl	OvlFunc_926_2009160
-	b	.L1326
-.L1320:
-	mov	r0, #0
-	bl	OvlFunc_926_200902c
-.L1326:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_926_20092e0
+.section .text.after_92e0, "ax", %progbits
 
 .thumb_func_start OvlFunc_926_2009334
 	push	{r5, lr}

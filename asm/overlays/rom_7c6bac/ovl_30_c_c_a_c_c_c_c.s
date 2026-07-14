@@ -161,47 +161,7 @@
 	bx	r0
 .func_end OvlFunc_942_20087dc
 
-.thumb_func_start OvlFunc_942_200886c
-	push	{r5, lr}
-	ldr	r5, =gState
-	mov	r1, #0xe1
-	lsl	r1, #1
-	add	r3, r5, r1
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #0x5a
-	bne	.L886
-	mov	r0, #0x95
-	lsl	r0, #4
-	bl	__SetFlag
-.L886:
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r5, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x6b
-	cmp	r2, r3
-	bne	.L89c
-	bl	OvlFunc_942_20088cc
-	b	.L8b2
-.L89c:
-	ldr	r3, =0x70
-	cmp	r2, r3
-	bne	.L8a8
-	bl	OvlFunc_942_2008958
-	b	.L8b2
-.L8a8:
-	ldr	r3, =0x6c
-	cmp	r2, r3
-	bne	.L8b2
-	bl	OvlFunc_942_2008ad4
-.L8b2:
-	mov	r0, #0
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_942_200886c
+.section .text.after, "ax", %progbits
 
 .thumb_func_start OvlFunc_942_20088cc
 	push	{r5, lr}

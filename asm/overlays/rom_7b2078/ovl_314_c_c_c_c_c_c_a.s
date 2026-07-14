@@ -1,46 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_926_200a778
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r0, #0xbc
-	bl	__PlaySound
-	mov	r1, #0x4d
-	mov	r2, #8
-	ldr	r0, =gScript_943__0200c764
-	bl	__Func_8010560
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r3, #0
-	add	r0, #0x55
-	strb	r3, [r0]
-	ldr	r1, =0xcccc
-	mov	r0, #0
-	ldr	r2, =0x6666
-	bl	__MapActor_SetSpeed
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	sub	r2, #0xc0
-	str	r2, [r3]
-	mov	r0, #0
-	mov	r1, #2
-	bl	__MapActor_SetAnim
-	mov	r2, #0x10
-	mov	r1, #0
-	neg	r2, r2
-	mov	r0, #0
-	bl	__Func_809228c
-	mov	r0, #0x10
-	bl	__CutsceneWait
-	mov	r0, #2
-	bl	__Func_8091e9c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_926_200a778
+	.section .text.before, "ax", %progbits
 
 .thumb_func_start OvlFunc_926_200a7ec
 	push	{r5, lr}

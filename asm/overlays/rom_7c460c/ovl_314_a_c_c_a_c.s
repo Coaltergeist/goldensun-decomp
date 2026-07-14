@@ -1,41 +1,6 @@
 	.include "macros.inc"
 
 
-.thumb_func_start OvlFunc_939_2008b0c
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x24cf
-	bl	__MessageID
-	mov	r0, #1
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r1, #0x81
-	mov	r2, #0x64
-	mov	r0, #0
-	lsl	r1, #1
-	bl	__MapActor_Emote
-	mov	r0, #0
-	mov	r1, #2
-	bl	__MapActor_SetAnim
-	mov	r2, #0xc
-	mov	r1, #0
-	mov	r0, #0
-	bl	__Func_809228c
-	mov	r0, #0
-	bl	__MapActor_WaitMovement
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	ldr	r0, =0x243
-	bl	__ClearFlag
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_939_2008b0c
-
 .thumb_func_start OvlFunc_939_2008b6c
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ebc
@@ -106,42 +71,7 @@
 	bx	r0
 .func_end OvlFunc_939_2008b6c
 
-.thumb_func_start OvlFunc_939_2008c10
-	push	{r5, lr}
-	ldr	r0, =0x202
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Lc5c
-	ldr	r0, =0x201
-	bl	__GetFlag
-	mov	r5, r0
-	cmp	r5, #0
-	bne	.Lc5c
-	ldr	r2, =0x1999
-	ldr	r1, =0x3333
-	mov	r0, #0
-	bl	__MapActor_SetSpeed
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r1, #2
-	mov	r0, #0
-	bl	__MapActor_SetAnim
-	mov	r2, #8
-	mov	r0, #0
-	mov	r1, #2
-	neg	r2, r2
-	bl	__Func_8092208
-	mov	r0, #0xd
-	bl	__CutsceneWait
-	mov	r0, #0xc
-	bl	__Func_8091e9c
-.Lc5c:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_939_2008c10
+	.section .text.after_8c10, "ax", %progbits
 
 .thumb_func_start OvlFunc_939_2008c74
 	push	{r5, r6, lr}

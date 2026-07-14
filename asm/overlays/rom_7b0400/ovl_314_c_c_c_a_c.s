@@ -3764,45 +3764,7 @@
 	bx	r0
 .func_end OvlFunc_925_200addc
 
-.thumb_func_start OvlFunc_925_200aeb8
-	push	{lr}
-	bl	__CutsceneStart
-	mov	r1, #0x80
-	mov	r2, #0x80
-	mov	r0, #0
-	lsl	r1, #8
-	lsl	r2, #7
-	bl	__MapActor_SetSpeed
-	mov	r0, #0
-	mov	r1, #0x68
-	mov	r2, #0x98
-	bl	__Func_80921c4
-	mov	r1, #0x80
-	mov	r2, #0x3c
-	mov	r0, #0
-	lsl	r1, #7
-	bl	__Func_8092adc
-	mov	r0, #0x11
-	mov	r1, #0
-	bl	__Func_8092b08
-	mov	r0, #0x12
-	mov	r1, #0
-	bl	__Func_8092b08
-	bl	OvlFunc_925_200b208
-	mov	r0, #1
-	mov	r1, #1
-	mov	r2, #1
-	neg	r1, r1
-	neg	r2, r2
-	mov	r3, #0
-	neg	r0, r0
-	bl	__Func_80933f8
-	mov	r0, #1
-	bl	__Func_8091e9c
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_925_200aeb8
+.section .text.after_aeb8, "ax", %progbits
 
 .thumb_func_start OvlFunc_925_200af18
 	push	{r5, r6, r7, lr}
