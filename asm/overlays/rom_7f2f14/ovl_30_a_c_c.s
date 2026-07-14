@@ -222,57 +222,7 @@
 	bx	r1
 .func_end OvlFunc_968_2008b98
 
-.thumb_func_start OvlFunc_968_2008c5c
-	push	{r5, r6, lr}
-	mov	r4, r0
-	mov	r3, r1
-	lsl	r4, #16
-	mov	r0, #0x8e
-	mov	r6, r2
-	lsl	r3, #16
-	lsl	r0, #1
-	mov	r1, r4
-	mov	r2, #0
-	bl	__CreateActor
-	mov	r5, r0
-	mov	r0, #0
-	cmp	r5, #0
-	beq	.Lcbe
-	mov	r3, #0x80
-	lsl	r3, #9
-	str	r3, [r5, #0x30]
-	str	r3, [r5, #0x34]
-	mov	r0, r5
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r0, r5
-	mov	r1, #7
-	bl	__Actor_SetAnim
-	mov	r3, r5
-	mov	r2, #0
-	add	r3, #0x55
-	strb	r2, [r3]
-	mov	r1, r5
-	add	r3, #4
-	str	r2, [r5, #0xc]
-	add	r1, #0x23
-	strb	r2, [r3]
-	mov	r3, #2
-	strb	r3, [r1]
-	ldr	r3, =OvlFunc_968_2008b98
-	str	r3, [r5, #0x6c]
-	mov	r3, r5
-	add	r3, #0x63
-	mov	r0, r5
-	strb	r2, [r3]
-	mov	r1, r6
-	bl	__Actor_SetScript
-	mov	r0, r5
-.Lcbe:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_968_2008c5c
+	.section .text.after_8c5c, "ax", %progbits
 
 .thumb_func_start OvlFunc_968_2008cc8
 	push	{r5, r6, r7, lr}

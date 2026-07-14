@@ -1527,6 +1527,7 @@ SECTIONS {
 		asm/rom_c9000/rom_ceb30_c_b.o(.text)
 		asm/rom_c9000/rom_ceb30_c_c_b.o(.text)
 		asm/rom_c9000/rom_ceb30_c_c_c.o(.text)
+		src/rom_c9000/rom_ceb30_c_c_c_ef64.o(.text)
 		asm/rom_c9000/rom_cefd4_b.o(.text)
 		asm/rom_c9000/rom_cefd4_c_b.o(.text)
 		asm/rom_c9000/rom_cefd4_c_c_b.o(.text)
