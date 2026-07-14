@@ -853,9 +853,8 @@
 	pop	{r3}
 .func_end MP2KPlayerMain
 
-.thumb_func_start Func_80f9ee8  @ 0x080f9ee8
-	bx	r3
-.func_end Func_80f9ee8
+	.include "src/rom_f9000/rom_f95e0_9ee8.inc.s"
+	.align 2, 0
 
 .Lf9eec:
 	.word	Data_fba14
