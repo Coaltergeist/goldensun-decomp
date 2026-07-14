@@ -19,7 +19,7 @@ SECTIONS {
 		src/overlays/common/common0_func_10c.o(.text)
 		asm/overlays/rom_793768/ovl_314_a_a.o(.text)
 		src/overlays/rom_793768/ovl_314_a_a_8314.o(.text)
-		asm/overlays/rom_793768/ovl_314_a_a.o(.text.after_8314)
+		src/overlays/rom_793768/ovl_314_a_a_83ac.o(.text)
 		asm/overlays/rom_793768/ovl_314_a_b.o(.text)
 		asm/overlays/rom_793768/ovl_314_b.o(.text)
 		asm/overlays/rom_793768/ovl_314_c_a_b.o(.text)
