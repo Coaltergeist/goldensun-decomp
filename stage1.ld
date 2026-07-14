@@ -1268,6 +1268,8 @@ SECTIONS {
 		asm/rom_b0000/rom_b0070_c_c_a_c.o(.text.after_2884)
 		src/rom_b0000/rom_b0070_c_c_a_c_2ed8.o(.text)
 		asm/rom_b0000/rom_b0070_c_c_a_c.o(.text.after_b2ed8)
+		src/rom_b0000/rom_b0070_c_c_a_c_2ffc.o(.text)
+		asm/rom_b0000/rom_b0070_c_c_a_c.o(.text.after_b304c)
 		asm/rom_b0000/rom_b0070_c_c_b.o(.text)
 		asm/rom_b0000/rom_b0070_c_c_c.o(.text)
 		src/rom_b0000/dummy.o(.text)
