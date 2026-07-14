@@ -872,6 +872,8 @@ SECTIONS {
 		asm/rom_8a000/rom_92950_c_a_b.o(.text)
 		src/rom_8a000/rom_92950_c_a_c_a_actor.o(.text)
 		asm/rom_8a000/rom_92950_c_a_c_a.o(.text.after_2ba8)
+		src/rom_8a000/rom_92950_c_a_c_a_92be0.o(.text)
+		asm/rom_8a000/rom_92950_c_a_c_a.o(.text.after_92c40)
 		src/rom_8a000/rom_92950_c_a_c_a_92f84.o(.text)
 		asm/rom_8a000/rom_92950_c_a_c_a.o(.text.after_92f84)
 		asm/rom_8a000/rom_92950_c_a_c_b.o(.text)
