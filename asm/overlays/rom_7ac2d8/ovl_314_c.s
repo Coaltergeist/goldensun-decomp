@@ -1,6 +1,7 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_924_2008cd0
+.section .text.reference_8cd0, "ax", %progbits
+.thumb_func_start OvlFunc_924_2008cd0_AsmReference
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -63,7 +64,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_924_2008cd0
+.func_end OvlFunc_924_2008cd0_AsmReference
 
 	.section .data
 	.global .L5d50

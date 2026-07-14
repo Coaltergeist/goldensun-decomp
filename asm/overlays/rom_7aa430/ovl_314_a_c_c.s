@@ -5,7 +5,8 @@
 
 	.section .text.after_8ba4, "ax", %progbits
 
-.thumb_func_start OvlFunc_923_2008cc0
+.section .text.reference_8cc0, "ax", %progbits
+.thumb_func_start OvlFunc_923_2008cc0_AsmReference
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -68,4 +69,4 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_923_2008cc0
+.func_end OvlFunc_923_2008cc0_AsmReference

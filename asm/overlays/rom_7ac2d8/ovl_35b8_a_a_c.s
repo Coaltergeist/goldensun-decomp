@@ -91,7 +91,8 @@
 	bx	r0
 .func_end OvlFunc_924_200b6ac
 
-.thumb_func_start OvlFunc_924_200b788
+.section .text.reference_b788, "ax", %progbits
+.thumb_func_start OvlFunc_924_200b788_AsmReference
 	push	{r5, r6, r7, lr}
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -172,7 +173,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_924_200b788
+.func_end OvlFunc_924_200b788_AsmReference
+
+	.section .text.after_b788, "ax", %progbits
 
 .thumb_func_start OvlFunc_924_200b860
 	push	{r5, r6, r7, lr}

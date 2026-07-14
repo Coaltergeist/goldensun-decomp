@@ -2,7 +2,8 @@
 	.include "gba.inc"
 
 
-.thumb_func_start OvlFunc_923_2009208
+.section .text.reference_9208, "ax", %progbits
+.thumb_func_start OvlFunc_923_2009208_AsmReference
 	push	{r5, r6, r7, lr}
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -83,7 +84,9 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end OvlFunc_923_2009208
+.func_end OvlFunc_923_2009208_AsmReference
+
+	.section .text.after_9208, "ax", %progbits
 
 .thumb_func_start OvlFunc_923_20092e0
 	push	{r5, r6, r7, lr}
