@@ -127,67 +127,6 @@
 
 	.section .text.after_8f3c, "ax", %progbits
 
-.thumb_func_start OvlFunc_907_2008fa0
-	push	{r5, lr}
-	mov	r0, #8
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	cmp	r5, #0
-	beq	.L1010
-	ldr	r3, [r5, #0x10]
-	asr	r2, r3, #20
-	cmp	r2, #6
-	bne	.Lfcc
-	mov	r3, #0xe
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #2
-	mov	r1, #0
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-	b	.Lfe0
-.Lfcc:
-	mov	r3, #0xe
-	mov	r2, #6
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0
-	mov	r1, #0
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-.Lfe0:
-	ldr	r3, [r5, #0x10]
-	asr	r0, r3, #20
-	cmp	r0, #9
-	bne	.Lffc
-	mov	r3, #0xe
-	str	r3, [sp]
-	str	r0, [sp, #4]
-	mov	r1, #0
-	mov	r0, #2
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-	b	.L1010
-.Lffc:
-	mov	r3, #0xe
-	mov	r2, #9
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #1
-	mov	r1, #0
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-.L1010:
-	add	sp, #8
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_907_2008fa0
 
 	.section .data
 	.global ActorCmd_ARRAY_907__020091c0
