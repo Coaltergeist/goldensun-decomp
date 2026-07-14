@@ -81,6 +81,8 @@ SECTIONS {
 		src/overlays/rom_7ed0a0/ovl_30_c_c_c_c_a3a0.o(.text)
 		src/overlays/rom_7ed0a0/ovl_30_c_c_c_c_a410.o(.text)
 		asm/overlays/rom_7ed0a0/ovl_30_c_c_c_c.o(.text.after_a410)
+		src/overlays/rom_7ed0a0/ovl_30_c_c_c_c_a52c.o(.text)
+		asm/overlays/rom_7ed0a0/ovl_30_c_c_c_c.o(.text.after_a52c)
 		src/overlays/rom_7ed0a0/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
