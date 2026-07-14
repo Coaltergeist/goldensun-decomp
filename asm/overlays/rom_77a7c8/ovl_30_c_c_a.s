@@ -1,52 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_881_200b7d8
-	push	{r5, lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r1, #0xc1
-	ldr	r3, [r3]
-	lsl	r1, #1
-	add	r2, r3, r1
-	mov	r1, #0
-	ldrsh	r3, [r2, r1]
-	cmp	r3, #0x63
-	bne	.L37f0
-	mov	r3, #0
-	strh	r3, [r2]
-.L37f0:
-	mov	r0, #0xbc
-	lsl	r0, #2
-	bl	__ClearFlag
-	ldr	r0, =0x2f1
-	bl	__SetFlag
-	mov	r0, #0xbe
-	lsl	r0, #2
-	mov	r1, #0
-	bl	__SetFlagByte
-	mov	r0, #0x62
-	mov	r1, #5
-	bl	__Func_8091eb0
-	ldr	r5, =gState
-	ldr	r3, =0x22b
-	add	r2, r5, r3
-	mov	r3, #3
-	strb	r3, [r2]
-	mov	r0, #0x62
-	mov	r1, #7
-	bl	__Func_8091eb0
-	mov	r1, #0xfa
-	lsl	r1, #1
-	add	r5, r1
-	ldr	r0, [r5]
-	bl	__MapActor_GetActor
-	mov	r3, #2
-	add	r0, #0x55
-	strb	r3, [r0]
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_881_200b7d8
+	.section .text.after_b7d8, "ax", %progbits
 
 .thumb_func_start OvlFunc_881_200b84c
 	push	{r5, r6, r7, lr}
@@ -797,4 +752,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_881_200b9fc
-

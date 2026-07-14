@@ -1,52 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80a1814  @ 0x080a1814
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r5, r0
-	mov	r3, #0
-	sub	sp, #8
-	mov	r8, r3
-	str	r3, [r5, #0x10]
-	mov	r6, r5
-	mov	r3, #5
-	str	r3, [sp]
-	add	r6, #0x10
-	mov	r3, #2
-	str	r3, [sp, #4]
-	mov	r0, r6
-	mov	r3, #0xd
-	mov	r1, #0
-	mov	r2, #0
-	bl	Func_80a10d0
-	ldr	r6, [r6]
-	mov	r1, #8
-	neg	r1, r1
-	mov	r0, r6
-	mov	r2, #0xb
-	bl	Func_80a1778
-	mov	r3, #0xd
-	strb	r3, [r0, #5]
-	mov	r3, #0xff
-	strb	r3, [r5, #0x1c]
-	mov	r3, r8
-	strb	r3, [r5, #0x1d]
-	mov	r3, #0xfe
-	str	r0, [r5, #0x14]
-	strb	r3, [r0, #0xf]
-	ldr	r2, [r5, #0x18]
-	sub	r3, #0xff
-	mov	r0, r6
-	strb	r3, [r2, #0xf]
-	add	sp, #8
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_80a1814
+	.section .text.after_a1814, "ax", %progbits
 
 .thumb_func_start Func_80a1870  @ 0x080a1870
 	push	{r5, r6, r7, lr}

@@ -61,52 +61,7 @@
 	bx	r0
 .func_end OvlFunc_903_2008348
 
-.thumb_func_start OvlFunc_903_20083d0
-	push	{r5, r6, lr}
-	mov	r0, #0xa
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	cmp	r3, #0
-	bge	.L3e4
-	ldr	r2, =0xfffff
-	add	r3, r2
-.L3e4:
-	asr	r6, r3, #20
-	cmp	r6, #0x17
-	bne	.L42c
-	mov	r0, #0xa
-	bl	__CutsceneWait
-	mov	r0, #0xa
-	bl	__MapActor_GetActor
-	mov	r3, #2
-	add	r0, #0x23
-	strb	r3, [r0]
-	mov	r0, #0xa
-	bl	__MapActor_GetActor
-	mov	r5, #0
-	add	r0, #0x55
-	strb	r5, [r0]
-	mov	r0, #0xa
-	bl	__MapActor_GetActor
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r3, #0x11
-	str	r3, [sp, #4]
-	mov	r0, #0x36
-	mov	r1, #0x11
-	mov	r2, #1
-	mov	r3, #1
-	str	r6, [sp]
-	bl	__Func_8010704
-	ldr	r0, =0x863
-	bl	__SetFlag
-.L42c:
-	add	sp, #8
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_903_20083d0
+	.section .text.after_83d0, "ax", %progbits
 
 .thumb_func_start OvlFunc_903_200843c
 	push	{r5, lr}
@@ -161,4 +116,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_903_200843c
-

@@ -67,43 +67,7 @@
 	bx	r0
 .func_end OvlFunc_common1_172c
 
-.thumb_func_start OvlFunc_common1_17c0
-	pushal	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r5, r0
-	mov	r2, #0x64
-	add	r2, r5
-	mov	r3, #0
-	ldrsh	r0, [r2, r3]
-	mov	r8, r2
-	bl	__MapActor_GetActor
-	ldr	r2, [r5, #0xc]
-	mov	r3, #0x90
-	lsl	r3, #14
-	add	r2, r3
-	mov	r6, r0
-	ldr	r1, [r5, #8]
-	ldr	r3, [r5, #0x10]
-	bl	__Actor_TravelTo
-	mov	r3, r6
-	add	r3, #0x55
-	mov	r5, #0
-	strb	r5, [r3]
-	ldr	r1, =.L8
-	mov	r0, r6
-	bl	__Actor_SetScript
-	mov	r0, #0x53
-	bl	__PlaySound
-	mov	r2, r8
-	strh	r5, [r2]
-	mov	r0, #0
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_common1_17c0
+	.section .text.after_17c0, "ax", %progbits
 
 .thumb_func_start OvlFunc_common1_1814
 	push	{r5, r6, r7, lr}
@@ -1027,35 +991,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_common1_1ecc
-
-.thumb_func_start OvlFunc_common1_1fb4
-	push	{r5, r6, lr}
-	ldr	r3, =iwram_3001f3c
-	ldr	r6, [r3]
-	ldr	r5, =ewram_2001000
-	bl	__GetFile
-	mov	r1, r6
-	add	r1, #0xf0
-	bl	__DecompressLZ
-	ldr	r0, =0x109
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L1fe4
-	mov	r3, #1
-	strh	r3, [r5]
-	strh	r3, [r5, #2]
-	mov	r3, r6
-	add	r3, #0xe0
-	ldrh	r3, [r3]
-	strh	r0, [r5, #8]
-	strh	r3, [r5, #4]
-	strh	r0, [r5, #6]
-.L1fe4:
-	ldr	r1, =0xc85
-	ldr	r0, =OvlFunc_common1_1928
-	bl	__StartTask
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_common1_1fb4
-

@@ -350,54 +350,7 @@
 	bx	r0
 .func_end OvlFunc_921_2008974
 
-.thumb_func_start OvlFunc_921_2008a3c
-	push	{lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	ldr	r2, =0x5fff
-	ldrh	r3, [r0, #6]
-	add	r3, r2
-	ldr	r2, =0x3ffe0000
-	lsl	r3, #16
-	cmp	r3, r2
-	bhi	.La5c
-	mov	r0, #4
-	mov	r1, #0x10
-	bl	__Func_80b3284
-	b	.Laa2
-.La5c:
-	bl	__CutsceneStart
-	mov	r0, #0x10
-	mov	r1, #0
-	mov	r2, #0xa
-	bl	__Func_809280c
-	ldr	r0, =0x881
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.La84
-	ldr	r0, =0x1653
-	bl	__MessageID
-	mov	r0, #0x10
-	mov	r1, #0
-	bl	__Func_8093054
-	b	.La92
-.La84:
-	ldr	r0, =0x154b
-	bl	__MessageID
-	mov	r0, #0x10
-	mov	r1, #0
-	bl	__ActorMessage
-.La92:
-	mov	r1, #0xc0
-	mov	r0, #0x10
-	lsl	r1, #6
-	mov	r2, #0xa
-	bl	__Func_8092adc
-	bl	__CutsceneEnd
-.Laa2:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_921_2008a3c
+	.section .text.after_8a3c, "ax", %progbits
 
 .thumb_func_start OvlFunc_921_2008abc
 	push	{lr}

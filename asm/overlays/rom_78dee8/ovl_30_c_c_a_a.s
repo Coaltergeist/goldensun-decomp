@@ -1,94 +1,8 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_895_200807c
-	push	{r5, lr}
-	ldr	r1, =gState
-	mov	r0, #0xe0
-	lsl	r0, #1
-	add	r3, r1, r0
-	mov	r0, #0
-	ldrsh	r2, [r3, r0]
-	ldr	r3, =0x10
-	cmp	r2, r3
-	bne	.Lba
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r1, r2
-	mov	r0, #0
-	ldrsh	r3, [r3, r0]
-	cmp	r3, #0xb
-	blt	.Lae
-	cmp	r3, #0xd
-	ble	.Laa
-	cmp	r3, #0x10
-	bgt	.Lae
-	ldr	r0, =.L21b8
-	b	.Lc6
-.Laa:
-	ldr	r0, =.L2050
-	b	.Lc6
-.Lae:
-	ldr	r5, =.L1fd8
-	mov	r0, r5
-	bl	__Func_808b868
-	mov	r0, r5
-	b	.Lc6
-.Lba:
-	ldr	r3, =0x13
-	cmp	r2, r3
-	bne	.Lc4
-	ldr	r0, =.L22a8
-	b	.Lc6
-.Lc4:
-	ldr	r0, =.L1fc0
-.Lc6:
-	pop	{r5}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_895_200807c
+	.section .text.after_807c, "ax", %progbits
 
-.thumb_func_start OvlFunc_895_20080ec
-	push	{lr}
-	ldr	r1, =gState
-	mov	r0, #0xe0
-	lsl	r0, #1
-	add	r3, r1, r0
-	mov	r0, #0
-	ldrsh	r2, [r3, r0]
-	ldr	r3, =0x13
-	cmp	r2, r3
-	bne	.L104
-	ldr	r0, =.L22e4
-	b	.L12e
-.L104:
-	ldr	r3, =0x10
-	cmp	r2, r3
-	bne	.L12c
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r1, r2
-	mov	r0, #0
-	ldrsh	r3, [r3, r0]
-	cmp	r3, #0xb
-	blt	.L128
-	cmp	r3, #0xd
-	ble	.L124
-	cmp	r3, #0x10
-	bgt	.L128
-	ldr	r0, =.L2524
-	b	.L12e
-.L124:
-	ldr	r0, =.L241c
-	b	.L12e
-.L128:
-	ldr	r0, =.L232c
-	b	.L12e
-.L12c:
-	ldr	r0, =.L22d8
-.L12e:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_895_20080ec
+	.section .text.after_80ec, "ax", %progbits
 
 .thumb_func_start OvlFunc_895_2008154
 	push	{r5, r6, lr}
@@ -432,4 +346,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_895_2008420
-

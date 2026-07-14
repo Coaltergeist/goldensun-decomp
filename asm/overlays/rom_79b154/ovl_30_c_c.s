@@ -124,105 +124,8 @@
 	bx	r0
 .func_end OvlFunc_907_2008db4
 
-.thumb_func_start OvlFunc_907_2008ed8
-	push	{r5, lr}
-	ldr	r3, =gState
-	mov	r1, #0xfa
-	lsl	r1, #1
-	add	r3, r1
-	ldr	r0, [r3]
-	bl	__MapActor_GetActor
-	mov	r2, #0x8e
-	ldr	r3, [r0, #8]
-	lsl	r2, #16
-	cmp	r3, r2
-	bge	.Lf28
-	mov	r1, #0x80
-	ldr	r3, [r0, #0xc]
-	lsl	r1, #12
-	cmp	r3, r1
-	bge	.Lf22
-	ldr	r5, =.L1d88
-	mov	r1, #0
-	ldrsh	r3, [r5, r1]
-	ldrh	r2, [r5]
-	cmp	r3, #0
-	bne	.Lf0e
-	bl	OvlFunc_907_2008f3c
-	ldrh	r2, [r5]
-.Lf0e:
-	add	r3, r2, #1
-	mov	r2, #0xf0
-	strh	r3, [r5]
-	lsl	r2, #13
-	lsl	r3, #16
-	cmp	r3, r2
-	bne	.Lf28
-	ldr	r3, .Lf30	@ 0
-	strh	r3, [r5]
-	b	.Lf28
-.Lf22:
-	ldr	r2, =.L1d88
-	ldr	r3, .Lf30	@ 0
-	strh	r3, [r2]
-.Lf28:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
 
-	.align	2, 0
-.Lf30:
-	.word	0
-.func_end OvlFunc_907_2008ed8
-
-.thumb_func_start OvlFunc_907_2008f3c
-	push	{r5, r6, r7, lr}
-	ldr	r1, [r0, #8]
-	ldr	r2, [r0, #0xc]
-	ldr	r3, [r0, #0x10]
-	mov	r0, #0x18
-	bl	__CreateActor
-	mov	r5, r0
-	cmp	r5, #0
-	beq	.Lf96
-	ldr	r1, =gScript_907__02009d7c
-	ldr	r6, [r5, #0x50]
-	bl	__Actor_SetScript
-	mov	r3, r5
-	add	r3, #0x55
-	mov	r7, #0
-	mov	r2, r5
-	strb	r7, [r3]
-	add	r2, #0x22
-	mov	r3, #1
-	strb	r3, [r2]
-	add	r2, #1
-	mov	r3, #2
-	strb	r3, [r2]
-	cmp	r6, #0
-	beq	.Lf96
-	mov	r0, r6
-	mov	r1, #2
-	bl	__Sprite_SetAnim
-	mov	r3, r6
-	add	r3, #0x26
-	strb	r7, [r3]
-	mov	r3, #0xd
-	ldrb	r2, [r6, #5]
-	neg	r3, r3
-	and	r3, r2
-	mov	r2, #4
-	orr	r3, r2
-	strb	r3, [r6, #5]
-	ldrb	r3, [r6, #9]
-	mov	r2, #0xc
-	orr	r3, r2
-	strb	r3, [r6, #9]
-.Lf96:
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_907_2008f3c
+	.section .text.after_8f3c, "ax", %progbits
 
 .thumb_func_start OvlFunc_907_2008fa0
 	push	{r5, lr}
@@ -299,6 +202,7 @@
 	.global .L1cf0
 	.global .L1d0c
 	.global .L1d28
+	.global .L1d88
 	.global .L11d4
 	.global .L11ec
 	.global .L130c

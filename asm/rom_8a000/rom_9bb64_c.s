@@ -805,51 +805,6 @@
 	bx	r0
 .func_end Func_809c314
 
-.thumb_func_start Func_809c3a4  @ 0x0809c3a4
-	push	{r5, r6, lr}
-	ldr	r1, =0xccc
-	mov	r0, #0x1b
-	bl	galloc_ewram
-	mov	r2, #0xcf
-	lsl	r2, #1
-	add	r3, r0, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	cmp	r3, #3
-	bne	.L9c3fe
-	bl	Func_800430c
-	bl	Func_809c314
-	bl	Func_8091660
-	mov	r1, #6
-	ldr	r0, =0x9d89
-	bl	Func_80936a0
-	ldr	r1, =gKeyHeld
-	mov	r2, #0x80
-	ldr	r3, [r1]
-	lsl	r2, #2
-	and	r3, r2
-	cmp	r3, #0
-	beq	.L9c3f0
-	mov	r6, r1
-	mov	r5, r2
-.L9c3e2:
-	mov	r0, #1
-	bl	WaitFrames
-	ldr	r3, [r6]
-	and	r3, r5
-	cmp	r3, #0
-	bne	.L9c3e2
-.L9c3f0:
-	mov	r0, #0x80
-	lsl	r0, #9
-	mov	r1, #6
-	bl	Func_80936a0
-	bl	Func_80043e0
-.L9c3fe:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_809c3a4
 
 	.section .rodata
 

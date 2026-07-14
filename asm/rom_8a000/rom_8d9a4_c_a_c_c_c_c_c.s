@@ -1,52 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808f0d8  @ 0x0808f0d8
-	push	{r5, r6, lr}
-	mov	r6, r0
-	cmp	r6, #0
-	beq	.L8f132
-	ldr	r3, =gState
-	mov	r2, #0xfa
-	lsl	r2, #1
-	add	r3, r2
-	ldr	r0, [r3]
-	bl	GetFieldActor
-	mov	r3, #0x80
-	lsl	r3, #9
-	str	r3, [r6, #0x34]
-	mov	r3, #0x80
-	lsl	r3, #10
-	mov	r2, r6
-	str	r3, [r6, #0x30]
-	add	r2, #0x55
-	mov	r3, #0
-	strb	r3, [r2]
-	mov	r5, r0
-	ldr	r2, [r5, #0xc]
-	mov	r3, #0x90
-	lsl	r3, #14
-	add	r2, r3
-	ldr	r1, [r5, #8]
-	ldr	r3, [r5, #0x10]
-	mov	r0, r6
-	bl	_Actor_TravelTo
-	mov	r0, #3
-	bl	WaitFrames
-	mov	r0, r5
-	mov	r1, #0x1c
-	bl	_Actor_SetAnim
-	ldr	r1, =.L9e75c
-	mov	r0, r6
-	bl	_Actor_SetScript
-	mov	r3, #0x80
-	lsl	r3, #7
-	strh	r3, [r5, #6]
-.L8f132:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_808f0d8
+	.section .text.after_8f0d8, "ax", %progbits
 
 .thumb_func_start Func_808f140  @ 0x0808f140
 	push	{r5, r6, r7, lr}
@@ -252,4 +207,3 @@
 	pop	{r0}
 	bx	r0
 .func_end Func_808f28c
-

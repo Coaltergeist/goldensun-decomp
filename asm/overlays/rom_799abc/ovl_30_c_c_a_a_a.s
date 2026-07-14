@@ -1,49 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_905_2008b6c
-	push	{r5, lr}
-	mov	r0, #8
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	ldr	r5, [r0, #8]
-	cmp	r5, #0
-	bge	.Lb80
-	ldr	r3, =0xfffff
-	add	r5, r3
-.Lb80:
-	asr	r5, #20
-	bl	__CutsceneStart
-	cmp	r5, #0x14
-	bne	.Lba4
-	mov	r3, #0x12
-	mov	r2, #6
-	str	r3, [sp]
-	mov	r0, #0x12
-	mov	r1, #0x28
-	mov	r3, #3
-	str	r2, [sp, #4]
-	bl	__Func_8010704
-	ldr	r0, =0x302
-	bl	__ClearFlag
-	b	.Lbbc
-.Lba4:
-	mov	r3, #0x12
-	mov	r2, #6
-	str	r3, [sp]
-	mov	r0, #0x18
-	mov	r1, #0x28
-	mov	r3, #3
-	str	r2, [sp, #4]
-	bl	__Func_8010704
-	ldr	r0, =0x302
-	bl	__SetFlag
-.Lbbc:
-	bl	__CutsceneEnd
-	add	sp, #8
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_905_2008b6c
+	.section .text.after_8b6c, "ax", %progbits
 
 .thumb_func_start OvlFunc_905_2008bd0
 	push	{r5, r6, r7, lr}
@@ -553,4 +510,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_905_2008ecc
-

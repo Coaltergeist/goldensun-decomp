@@ -522,48 +522,6 @@
 	bx	r0
 .func_end Func_80907b0
 
-.thumb_func_start Func_8090824  @ 0x08090824
-	push	{r5, r6, lr}
-	mov	r6, r8
-	push	{r6}
-	mov	r1, #0xa8
-	mov	r8, r0
-	lsl	r1, #3
-	mov	r0, #0x1f
-	sub	sp, #4
-	bl	galloc_ewram
-	mov	r6, #0
-	mov	r5, r0
-	mov	r0, sp
-	str	r6, [r0]
-	ldr	r3, =REG_DMA3SAD
-	mov	r1, r5
-	ldr	r2, =0x85000150
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r0, #0
-	bl	Func_80907b0
-	mov	r2, #0xa5
-	lsl	r2, #3
-	add	r3, r5, r2
-	mov	r2, r8
-	strh	r2, [r3]
-	ldr	r3, =0x52a
-	mov	r1, #0xc8
-	add	r5, r3
-	lsl	r1, #4
-	strh	r6, [r5]
-	ldr	r0, =Task_Transition300
-	bl	StartTask
-	mov	r0, #0x78
-	bl	WaitFrames
-	add	sp, #4
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end Func_8090824
 
 .section .text.after_9088c, "ax", %progbits
 .thumb_func_start Func_80908e0  @ 0x080908e0
@@ -1646,46 +1604,3 @@
 	pop	{r0}
 	bx	r0
 .func_end Func_8090a5c
-
-.thumb_func_start Func_8091174  @ 0x08091174
-	push	{lr}
-	ldr	r1, =0x2a04
-	mov	r0, #0x20
-	sub	sp, #4
-	bl	galloc_ewram
-	mov	r3, #0
-	mov	r4, r0
-	mov	r0, sp
-	str	r3, [r0]
-	mov	r1, r4
-	ldr	r3, =REG_DMA3SAD
-	ldr	r2, =0x85000a81
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r0, #0xa0
-	lsl	r0, #19
-	ldr	r2, =0x84000070
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r2, #0xe0
-	lsl	r2, #1
-	add	r1, r4, r2
-	ldr	r0, =0x5000200
-	ldr	r2, =0x84000070
-	stmia	r3!, {r0, r1, r2}
-	sub	r3, #0xc
-	mov	r3, #0xe0
-	lsl	r3, #4
-	mov	r0, #0x80
-	add	r2, r4, r3
-	mov	r1, r4
-	mov	r3, #0
-	lsl	r0, #9
-	bl	Func_8090a5c
-	ldr	r1, =0xc8f
-	ldr	r0, =Func_80908e0
-	bl	StartTask
-	add	sp, #4
-	pop	{r0}
-	bx	r0
-.func_end Func_8091174

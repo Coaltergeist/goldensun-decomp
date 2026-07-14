@@ -1,53 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_953_2009c6c
-	push	{lr}
-	mov	r0, #0x95
-	lsl	r0, #4
-	sub	sp, #8
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L1ca4
-	mov	r3, #2
-	str	r3, [sp]
-	str	r3, [sp, #4]
-	mov	r0, #0x40
-	mov	r1, #0
-	mov	r2, #0x30
-	mov	r3, #5
-	bl	__CopyMapTiles
-	mov	r3, #0x10
-	mov	r2, #8
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0xe
-	mov	r1, #8
-	mov	r2, #2
-	mov	r3, #1
-	bl	__Func_8010704
-	b	.L1cca
-.L1ca4:
-	mov	r0, #0x10
-	mov	r1, #2
-	bl	__Func_8092950
-	ldr	r0, =0x962
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L1cca
-	mov	r3, #0xe
-	mov	r2, #0xb
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0x1e
-	mov	r1, #0x16
-	mov	r2, #1
-	mov	r3, #2
-	bl	__Func_8010704
-.L1cca:
-	add	sp, #8
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_953_2009c6c
+	.section .text.after_9c6c, "ax", %progbits
 
 .thumb_func_start OvlFunc_953_2009cd4
 	push	{r5, r6, r7, lr}
@@ -965,51 +918,7 @@
 	bx	r0
 .func_end OvlFunc_953_200a4d8
 
-.thumb_func_start OvlFunc_953_200a5f0
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r2, =0xcccc
-	mov	r0, #0
-	ldr	r1, =0x19999
-	bl	__MapActor_SetSpeed
-	bl	__MapTransitionIn
-	mov	r0, #0
-	mov	r1, #2
-	bl	__MapActor_SetAnim
-	mov	r1, #0xc3
-	mov	r2, #0xd6
-	mov	r0, #0
-	lsl	r1, #2
-	lsl	r2, #1
-	bl	__Func_8092158
-	mov	r1, #0xdc
-	mov	r2, #0xd6
-	mov	r0, #0
-	lsl	r1, #2
-	lsl	r2, #1
-	bl	__Func_8092158
-	mov	r1, #0xf5
-	mov	r2, #0xd6
-	mov	r0, #0
-	lsl	r1, #2
-	lsl	r2, #1
-	bl	__MapActor_TravelTo
-	bl	__MapTransitionOut
-	bl	__WaitMapTransition
-	ldr	r0, =0x90f
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L2650
-	mov	r0, #0x20
-	bl	__Func_8091e9c
-	b	.L2656
-.L2650:
-	mov	r0, #0xc
-	bl	__Func_8091e9c
-.L2656:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_953_200a5f0
+	.section .text.after_a5f0, "ax", %progbits
 
 .thumb_func_start OvlFunc_953_200a668
 	push	{r5, lr}
@@ -1436,50 +1345,6 @@
 	bx	r0
 .func_end OvlFunc_953_200a964
 
-.thumb_func_start OvlFunc_953_200ab1c
-	push	{lr}
-	mov	r0, #0xc
-	mov	r1, #3
-	bl	__Func_8092950
-	mov	r0, #0xd
-	mov	r1, #0
-	bl	__Func_8092950
-	mov	r0, #0xe
-	mov	r1, #4
-	bl	__Func_8092950
-	mov	r0, #0xf
-	mov	r1, #1
-	bl	__Func_8092950
-	mov	r0, #0x10
-	mov	r1, #5
-	bl	__Func_8092950
-	mov	r0, #0x11
-	mov	r1, #2
-	bl	__Func_8092950
-	mov	r0, #0x12
-	mov	r1, #6
-	bl	__Func_8092950
-	mov	r0, #0xd
-	mov	r1, #0xa
-	bl	__MapActor_SetAnimSpeed
-	mov	r0, #0xe
-	mov	r1, #0x14
-	bl	__MapActor_SetAnimSpeed
-	mov	r0, #0xf
-	mov	r1, #0
-	bl	__MapActor_SetAnim
-	mov	r0, #0x10
-	mov	r1, #0x28
-	bl	__MapActor_SetAnimSpeed
-	mov	r0, #0x11
-	mov	r1, #0x32
-	bl	__MapActor_SetAnimSpeed
-	mov	r0, #0x12
-	mov	r1, #0x3c
-	bl	__MapActor_SetAnimSpeed
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_953_200ab1c
 
 	.section .data
 	.global ActorCmd_ARRAY_953__0200ad3c

@@ -116,48 +116,7 @@
 	bx	r1
 .func_end OvlFunc_959_2009980
 
-.thumb_func_start OvlFunc_959_20099e8
-	push	{r5, lr}
-	mov	r0, #0
-	bl	__MapActor_GetActor
-	mov	r5, r0
-	ldr	r0, =0x35b
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L1a32
-	ldr	r3, [r5, #8]
-	cmp	r3, #0
-	bge	.L1a06
-	ldr	r2, =0xfffff
-	add	r3, r2
-.L1a06:
-	ldr	r0, [r5, #0x10]
-	asr	r3, #20
-	cmp	r0, #0
-	bge	.L1a12
-	ldr	r2, =0xfffff
-	add	r0, r2
-.L1a12:
-	asr	r0, #20
-	cmp	r3, #0x2b
-	bne	.L1a32
-	cmp	r0, #0x1c
-	ble	.L1a32
-	cmp	r0, #0x1f
-	bgt	.L1a32
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xb6
-	ldr	r3, [r3]
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0x29
-	strh	r2, [r3]
-	bl	OvlFunc_959_2008f30
-.L1a32:
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_20099e8
+	.section .text.after_99e8, "ax", %progbits
 
 .thumb_func_start OvlFunc_959_2009a44
 	push	{r5, lr}
@@ -213,49 +172,7 @@
 	bx	r0
 .func_end OvlFunc_959_2009a44
 
-.thumb_func_start OvlFunc_959_2009ab0
-	push	{r5, lr}
-	bl	__CutsceneStart
-	mov	r2, #0
-	mov	r0, #9
-	mov	r1, #0
-	bl	__Func_809228c
-	mov	r1, #1
-	mov	r0, #9
-	bl	__MapActor_SetBehavior
-	mov	r0, #9
-	bl	__MapActor_SetIdle
-	mov	r0, #9
-	mov	r1, #0
-	bl	__MapActor_SetAnim
-	mov	r1, #1
-	mov	r0, #0
-	bl	__MapActor_SetBehavior
-	ldr	r5, =0x240d
-	mov	r0, r5
-	bl	__MessageID
-	mov	r0, #9
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r1, #0x81
-	mov	r2, #0x3c
-	lsl	r1, #1
-	mov	r0, #0
-	add	r5, #1
-	bl	__MapActor_Emote
-	mov	r0, r5
-	bl	__MessageID
-	mov	r1, #0
-	mov	r0, #9
-	bl	__ActorMessage
-	mov	r0, #0x3c
-	bl	__Func_8091e9c
-	bl	__MapTransitionOut
-	bl	__CutsceneEnd
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_2009ab0
+	.section .text.after_9ab0, "ax", %progbits
 
 .thumb_func_start OvlFunc_959_2009b24
 	push	{r5, r6, lr}

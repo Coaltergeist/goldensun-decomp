@@ -686,55 +686,7 @@
 	bx	r0
 .func_end OvlFunc_951_20084bc
 
-.thumb_func_start OvlFunc_951_2008880
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	ldr	r3, =iwram_3001e70
-	mov	r0, #0xd8
-	ldr	r5, [r3]
-	bl	__PlaySound
-	mov	r2, #0xb2
-	lsl	r2, #1
-	add	r5, r2
-	mov	r6, #0xf
-.L89a:
-	ldr	r3, [r5, #0xc]
-	ldr	r2, =0xffff0000
-	add	r3, r2
-	str	r3, [r5, #0xc]
-	mov	r0, #4
-	sub	r6, #1
-	bl	__WaitFrames
-	cmp	r6, #0
-	bge	.L89a
-	ldr	r3, =0x3f42
-	ldr	r2, =REG_BLDCNT
-	ldr	r5, =.L1fc0
-	ldr	r7, =REG_BLDALPHA
-	mov	r10, r3
-	mov	r8, r2
-	mov	r6, #7
-.L8bc:
-	mov	r3, r10
-	mov	r2, r8
-	strh	r3, [r2]
-	ldrh	r3, [r5]
-	add	r5, #2
-	strh	r3, [r7]
-	mov	r0, #8
-	sub	r6, #1
-	bl	__WaitFrames
-	cmp	r6, #0
-	bge	.L8bc
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_951_2008880
+	.section .text.after_8880, "ax", %progbits
 
 .thumb_func_start OvlFunc_951_20088f8
 	push	{r5, r6, r7, lr}
@@ -1219,51 +1171,7 @@
 	bx	r1
 .func_end OvlFunc_951_2008ac8
 
-.thumb_func_start OvlFunc_951_2008d70
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r7, r0
-	mov	r0, #0
-	cmp	r7, #0
-	blt	.Ldbe
-	cmp	r7, #5
-	bne	.Ld8c
-	bl	__Random
-	lsl	r3, r0, #2
-	add	r3, r0
-	lsr	r7, r3, #16
-.Ld8c:
-	ldr	r3, =gState
-	mov	r8, r3
-	mov	r3, #0x9a
-	lsl	r3, #1
-	add	r6, r7, r3
-	mov	r3, r8
-	ldrsb	r5, [r3, r6]
-	bl	__Random
-	lsl	r0, #1
-	lsr	r0, #16
-	add	r5, r0
-	add	r5, #4
-	mov	r0, r5
-	mov	r1, #3
-	bl	_modsi3_RAM
-	mov	r3, r8
-	strb	r0, [r3, r6]
-	lsl	r3, r7, #1
-	add	r3, r7
-	add	r3, r0
-	ldr	r2, =.L2018
-	lsl	r3, #2
-	ldr	r0, [r2, r3]
-.Ldbe:
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_951_2008d70
+	.section .text.after_8d70, "ax", %progbits
 
 .thumb_func_start OvlFunc_951_2008dd0
 	push	{r5, r6, r7, lr}

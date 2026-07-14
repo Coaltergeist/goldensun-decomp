@@ -290,48 +290,7 @@
 
 	.section .text.after_96af0
 
-.thumb_func_start Func_8096b28  @ 0x08096b28
-	push	{r5, r6, lr}
-	mov	r5, r0
-	mov	r6, r2
-	mov	r0, r1
-	cmp	r5, #0
-	beq	.L96b7c
-	ldr	r3, [r5, #8]
-	cmp	r3, #0
-	beq	.L96b60
-	mov	r2, #0x80
-	lsl	r2, #9
-	cmp	r3, r2
-	bge	.L96b5a
-	bl	CutsceneStart
-	ldr	r0, [r5, #8]
-	bl	MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	ActorMessage
-	bl	CutsceneEnd
-	b	.L96b60
-.L96b5a:
-	mov	r1, r6
-	bl	_call_via_r3
-.L96b60:
-	mov	r0, #0xa1
-	lsl	r0, #1
-	bl	_GetFlag
-	cmp	r0, #0
-	beq	.L96b7c
-	bl	CutsceneStart
-	ldr	r0, =0x927
-	mov	r1, #1
-	bl	_Func_801776c
-	bl	CutsceneEnd
-.L96b7c:
-	mov	r0, #0
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_8096b28
+	.section .text.after_96b28, "ax", %progbits
 
 .thumb_func_start Func_8096b88  @ 0x08096b88
 	push	{r5, r6, r7, lr}

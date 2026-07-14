@@ -1,50 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_883_2008b28
-	push	{lr}
-	bl	__CutsceneStart
-	ldr	r0, =0x815
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.Lb48
-	ldr	r0, =0x11c9
-	bl	__MessageID
-	mov	r0, #0xe
-	mov	r1, #0
-	bl	__ActorMessage
-	b	.Lb8a
-.Lb48:
-	ldr	r0, =0x806
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.Lb72
-	ldr	r0, =0x806
-	bl	__SetFlag
-	ldr	r0, =0xf7c
-	bl	__MessageID
-	mov	r0, #0xe
-	mov	r1, #0
-	mov	r2, #4
-	bl	__Func_8092848
-	mov	r0, #0xe
-	mov	r1, #0
-	bl	__Func_8093054
-	b	.Lb8a
-.Lb72:
-	ldr	r0, =0xf7e
-	bl	__MessageID
-	mov	r0, #0xe
-	mov	r1, #0
-	mov	r2, #4
-	bl	__Func_8092848
-	mov	r0, #0xe
-	mov	r1, #0
-	bl	__ActorMessage
-.Lb8a:
-	bl	__CutsceneEnd
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_883_2008b28
+	.section .text.after_8b28, "ax", %progbits
 
 .thumb_func_start OvlFunc_883_2008ba8
 	push	{lr}
@@ -116,4 +72,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_883_2008ba8
-
