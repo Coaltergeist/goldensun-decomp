@@ -1,52 +1,8 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_8020b14  @ 0x08020b14
-	push	{lr}
-	ldr	r3, =iwram_3001e8c
-	ldr	r4, [r3]
-	ldrb	r3, [r0]
-	sub	sp, #8
-	mov	r1, #0
-	cmp	r3, #0
-	beq	.L20b3a
-	mov	r3, #0xeb
-	lsl	r3, #4
-	add	r2, r4, r3
-.L20b2a:
-	ldrb	r3, [r0]
-	strh	r3, [r2]
-	add	r0, #1
-	ldrb	r3, [r0]
-	add	r2, #2
-	add	r1, #1
-	cmp	r3, #0
-	bne	.L20b2a
-.L20b3a:
-	mov	r2, #0xeb
-	lsl	r3, r1, #1
-	lsl	r2, #4
-	add	r3, r2
-	ldr	r2, .L20b58	@ 0
-	add	r1, sp, #4
-	strh	r2, [r4, r3]
-	mov	r0, #0
-	mov	r2, sp
-	mov	r3, #0
-	bl	Func_8018850
-	ldr	r0, [sp, #4]
-	add	sp, #8
-	b	.L20b60
+	.section .text.after_0b14, "ax", %progbits
 
-	.align	2, 0
-.L20b58:
-	.word	0
-	.pool
-
-.L20b60:
-	pop	{r1}
-	bx	r1
-.func_end Func_8020b14
 
 .thumb_func_start Func_8020b64  @ 0x08020b64
 	push	{r5, r6, lr}
@@ -1374,48 +1330,7 @@
 	bx	r0
 .func_end StartMenu_AddOption
 
-.thumb_func_start Func_8021750  @ 0x08021750
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	sub	sp, #4
-	mov	r6, r0
-	mov	r7, r1
-	mov	r8, r2
-	mov	r10, r3
-	bl	AllocSpriteSlot
-	mov	r5, r0
-	mov	r0, #0
-	cmp	r5, #0x60
-	beq	.L21796
-	mov	r0, r6
-	mov	r1, r5
-	mov	r2, r7
-	bl	StartMenu_AddOption
-	ldr	r3, [sp, #0x1c]
-	mov	r1, #0x80
-	str	r3, [sp]
-	mov	r2, r8
-	mov	r3, r10
-	lsl	r1, #24
-	mov	r0, r5
-	bl	Func_801eadc
-	ldrb	r3, [r0, #0x15]
-	mov	r2, #0x20
-	orr	r3, r2
-	strb	r3, [r0, #0x15]
-	mov	r3, #0xfb
-	strb	r3, [r0, #0xf]
-.L21796:
-	add	sp, #4
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end Func_8021750
+	.section .text.after_1750, "ax", %progbits
 
 .thumb_func_start Func_80217a4  @ 0x080217a4
 	push	{r5, lr}

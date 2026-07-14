@@ -37,6 +37,7 @@ SECTIONS {
 		asm/overlays/rom_791794/ovl_30_c_c_c_b.o(.text)
 		asm/overlays/rom_791794/ovl_30_c_c_c_c_b.o(.text)
 		asm/overlays/rom_791794/ovl_30_c_c_c_c_c.o(.text)
+		src/overlays/rom_791794/ovl_30_particle_wave_setup.o(.text)
 		src/overlays/rom_791794/imports.o(.text)
 	} > overlay
 
