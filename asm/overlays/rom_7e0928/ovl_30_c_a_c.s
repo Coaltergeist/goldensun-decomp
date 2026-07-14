@@ -60,65 +60,6 @@
 
 .section .text.after_8658, "ax", %progbits
 
-.thumb_func_start OvlFunc_956_20086a4
-	push	{r5, r6, lr}
-	mov	r5, r0
-	mov	r6, r1
-	mov	r0, #0
-	mov	r1, r5
-	mov	r2, r6
-	bl	__Func_8012038
-	cmp	r0, #0xff
-	bne	.L6be
-	mov	r0, #2
-	neg	r0, r0
-	b	.L70c
-.L6be:
-	mov	r0, #0xf
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	asr	r5, #20
-	asr	r3, #20
-	asr	r6, #20
-	cmp	r3, r5
-	bne	.L6d8
-	ldr	r3, [r0, #0x10]
-	asr	r3, #20
-	cmp	r3, r6
-	beq	.L704
-.L6d8:
-	mov	r0, #0x10
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	asr	r3, #20
-	cmp	r3, r5
-	bne	.L6ee
-	ldr	r3, [r0, #0x10]
-	asr	r3, #20
-	cmp	r3, r6
-	beq	.L704
-.L6ee:
-	mov	r0, #0x11
-	bl	__MapActor_GetActor
-	ldr	r3, [r0, #8]
-	asr	r3, #20
-	cmp	r3, r5
-	bne	.L70a
-	ldr	r3, [r0, #0x10]
-	asr	r3, #20
-	cmp	r3, r6
-	bne	.L70a
-.L704:
-	mov	r0, #1
-	neg	r0, r0
-	b	.L70c
-.L70a:
-	mov	r0, #0
-.L70c:
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_956_20086a4
 
 .section .text.after_8714, "ax", %progbits
 

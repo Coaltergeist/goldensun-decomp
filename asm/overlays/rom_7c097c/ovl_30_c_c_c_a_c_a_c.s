@@ -1,48 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_936_200964c
-	push	{lr}
-	ldr	r0, =0x87a
-	bl	__SetFlag
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x63
-	cmp	r2, r3
-	bne	.L166c
-	bl	OvlFunc_936_20096bc
-	b	.L169a
-.L166c:
-	ldr	r3, =0x66
-	cmp	r2, r3
-	bne	.L1678
-	bl	OvlFunc_936_20097e8
-	b	.L169a
-.L1678:
-	ldr	r3, =0x99
-	cmp	r2, r3
-	bne	.L1684
-	bl	OvlFunc_936_2009858
-	b	.L169a
-.L1684:
-	ldr	r3, =0x9b
-	cmp	r2, r3
-	bne	.L1690
-	bl	OvlFunc_936_20098a4
-	b	.L169a
-.L1690:
-	ldr	r3, =0x9c
-	cmp	r2, r3
-	bne	.L169a
-	bl	OvlFunc_936_2009930
-.L169a:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_936_200964c
+	.section .text.after_964c, "ax", %progbits
 
 .thumb_func_start OvlFunc_936_20096bc
 	push	{r5, r6, r7, lr}
@@ -167,4 +125,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_936_20096bc
-
