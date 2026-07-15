@@ -968,6 +968,7 @@ SECTIONS {
 		asm/rom_8a000/rom_93304_a_c_c_b.o(.text)
 		src/rom_8a000/rom_93304_a_c_c_c_actor_behavior.o(.text)
 		asm/rom_8a000/rom_93304_a_c_c_c.o(.text.after_actor_behavior)
+		src/rom_8a000/rom_93304_a_c_c_c_func_8094154.o(.text)
 		asm/rom_8a000/rom_93304_b.o(.text)
 		asm/rom_8a000/rom_93304_c_a.o(.text)
 		src/rom_8a000/rom_93304_c_a_942e0.o(.text)
