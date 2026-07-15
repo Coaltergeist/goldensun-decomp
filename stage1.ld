@@ -505,6 +505,7 @@ SECTIONS {
 		asm/rom_15000/rom_20198_a_b.o(.text)
 		asm/rom_15000/rom_20198_b.o(.text)
 		asm/rom_15000/rom_20198_c_a.o(.text)
+		src/rom_15000/rom_20198_c_a_209d0.o(.text)
 		src/rom_15000/rom_20198_c_a_tile_palette.o(.text)
 		asm/rom_15000/rom_20198_c_b.o(.text)
 		asm/rom_15000/rom_20198_c_c_b.o(.text)
