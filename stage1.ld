@@ -1479,6 +1479,8 @@ SECTIONS {
 		asm/rom_b5000/rom_b9b30_c.o(.text)
 		src/rom_b5000/rom_b9b30_c_ba918.o(.text)
 		asm/rom_b5000/rom_b9b30_c.o(.text.after_ba918)
+		src/rom_b5000/rom_b9b30_c_babdc.o(.text)
+		asm/rom_b5000/rom_b9b30_c.o(.text.after_babdc)
 		asm/rom_b5000/rom_bb588_a.o(.text)
 		asm/rom_b5000/rom_bb588_b.o(.text)
 		asm/rom_b5000/rom_bb588_c_a_b.o(.text)
