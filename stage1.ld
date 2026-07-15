@@ -1392,6 +1392,7 @@ SECTIONS {
 		asm/rom_b5000/rom_b7410_a_a_c_a.o(.text)
 		asm/rom_b5000/rom_b7410_a_a_c_b.o(.text)
 		asm/rom_b5000/rom_b7410_a_a_c_c_a.o(.text)
+		src/rom_b5000/rom_b7410_a_a_c_c_a_7aac.o(.text)
 		asm/rom_b5000/rom_b7410_a_a_c_c_b.o(.text)
 		asm/rom_b5000/rom_b7410_a_a_c_c_c_a.o(.text)
 		asm/rom_b5000/rom_b7410_a_a_c_c_c_b.o(.text)
