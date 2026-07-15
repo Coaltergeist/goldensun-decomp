@@ -128,7 +128,7 @@ SECTIONS {
 		src/rom_9000/rom_b798_c_c_delete_sprite.o(.text)
 		asm/rom_9000/rom_b798_c_c.o(.text.after_delete_sprite)
 		src/rom_9000/rom_b798_c_c_be20.o(.text)
-		asm/rom_9000/rom_be70_a.o(.text)
+		src/rom_9000/rom_be70_a.o(.text)
 		asm/rom_9000/rom_be70_b.o(.text)
 		src/rom_9000/rom_be70_c_bf34.o(.text)
 		src/rom_9000/rom_be70_c_bfa4.o(.text)

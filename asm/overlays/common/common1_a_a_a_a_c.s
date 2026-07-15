@@ -1013,64 +1013,7 @@
 	bx	r0
 .func_end OvlFunc_common1_920
 
-.thumb_func_start OvlFunc_common1_e10
-	push	{r5, r6, lr}
-	ldr	r3, =.L33
-	mov	r5, r0
-	mov	r6, r1
-	ldr	r2, =.L22
-	strh	r5, [r3]
-	mov	r1, #0xc8
-	lsl	r3, r6, #4
-	lsl	r1, #4
-	strh	r3, [r2]
-	ldr	r0, =OvlFunc_common1_920
-	bl	__StartTask
-	ldr	r1, =.L11
-	cmp	r5, #2
-	bne	.Le32
-	ldr	r1, =.L2
-.Le32:
-	cmp	r5, #4
-	bne	.Le38
-	ldr	r1, =.L12
-.Le38:
-	cmp	r5, #3
-	bne	.Le62
-	cmp	r6, #0
-	beq	.Le60
-	ldr	r1, =.L3
-	b	.Le62
-
-	.pool_aligned
-
-.Le60:
-	ldr	r1, =.L13
-.Le62:
-	ldr	r2, .Le7c	@ 0
-	ldr	r3, =.L36
-	strh	r2, [r3]
-	ldr	r3, =.L37
-	str	r1, [r3]
-	ldr	r3, =.L46
-	strh	r2, [r3]
-	ldr	r3, =.L24
-	strh	r2, [r3]
-	ldr	r2, =.L25
-	mov	r3, #0
-	str	r3, [r2]
-	b	.Le98
-
-	.align	2, 0
-.Le7c:
-	.word	0
-	.pool
-
-.Le98:
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_common1_e10
+	.section .text.after_e10, "ax", %progbits
 
 .thumb_func_start OvlFunc_common1_ea0
 	push	{r5, lr}
