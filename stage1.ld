@@ -704,6 +704,7 @@ SECTIONS {
 		src/rom_77000/rom_79460_c_c_c_c_c_5bc.o(.text)
 		src/rom_77000/rom_79460_c_c_c_c_c_628.o(.text)
 		asm/rom_77000/rom_79460_c_c_c_c_c.o(.text.after_628)
+		src/rom_77000/rom_79460_c_c_c_c_c_7a0.o(.text)
 
 		asm/rom_77000/rom_77320_c_c.o(.rodata)
 		asm/rom_77000/rom_79008_c.o(.rodata)
