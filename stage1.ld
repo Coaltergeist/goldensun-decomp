@@ -1118,6 +1118,7 @@ SECTIONS {
 		asm/rom_8a000/rom_9bb64_a.o(.text)
 		asm/rom_8a000/rom_9bb64_b.o(.text)
 		asm/rom_8a000/rom_9bb64_c.o(.text)
+		src/rom_8a000/rom_9bb64_c_c314.o(.text)
 		src/rom_8a000/rom_9bb64_c_c3a4.o(.text)
 
 		asm/rom_8a000/rom_96cdc_c_c.o(.rodata)
