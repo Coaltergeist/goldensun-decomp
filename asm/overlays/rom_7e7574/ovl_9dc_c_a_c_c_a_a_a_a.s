@@ -383,38 +383,3 @@
 	bx	r0
 .func_end OvlFunc_959_2009be4
 
-.thumb_func_start OvlFunc_959_2009c4c
-	push	{r5, r6, lr}
-	mov	r1, #1
-	mov	r6, r0
-	bl	__Func_80925cc
-	ldr	r5, =0x241e
-	mov	r0, r5
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	mov	r1, #0x81
-	mov	r2, #0x3c
-	mov	r0, r6
-	lsl	r1, #1
-	bl	__MapActor_Emote
-	add	r0, r5, #1
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	add	r5, #2
-	mov	r0, r6
-	mov	r1, #4
-	bl	__MapActor_DoAnim
-	mov	r0, r5
-	bl	__MessageID
-	mov	r0, r6
-	mov	r1, #0
-	bl	__ActorMessage
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_959_2009c4c
-

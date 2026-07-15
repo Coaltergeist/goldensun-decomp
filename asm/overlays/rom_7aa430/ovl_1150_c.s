@@ -1,17 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_923_2009150
-	push	{lr}
-	ldr	r0, =0x205
-	bl	__ClearFlag
-	ldr	r1, =gScript_923__0200a820
-	mov	r0, #8
-	bl	__MapActor_SetBehavior
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_923_2009150
-
 .thumb_func_start OvlFunc_923_200916c
 	push	{r5, lr}
 	mov	r0, #0

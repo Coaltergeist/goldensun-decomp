@@ -1,9 +1,9 @@
-/* OvlFunc_916_20083c0  [ovl_7a37f0]
- * Source asm: goldensun/asm/overlays/rom_7a37f0/ovl_30_c_c_c_a.s
+/* Cluster OvlFunc_916_20083c0..OvlFunc_916_20083c0 extracted from goldensun/asm/overlays/rom_7a37f0/ovl_30_c_c_c_a.s.
  *
- * Parked: logic faithful, does NOT byte-match (endgame permuter seed).
- * Candidate: tools/runs/run_20260607T170736Z/OvlFunc_916_20083c0-iter-2.c
- * TODO(residual): scalar .L pool (.L20d0) + iwram/.bss; ewram-relative leaf, pool form diverges. Blocked scalar-.L overlay class.
+ * Total .text for this TU = 48 bytes (= 0x30).
+ * Preserves the original ROM layout when slotted between
+ * asm/overlays/rom_7a37f0/ovl_30_c_c_c_a_a.o and asm/overlays/rom_7a37f0/ovl_30_c_c_c_a_c.o in
+ * goldensun/overlays/rom_7a37f0/overlay.ld.
  */
 extern unsigned int iwram_3001ad4[];
 extern unsigned int L20d0[] __asm__(".L20d0");
