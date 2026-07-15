@@ -1,59 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_931_2008874
-	push	{lr}
-	ldr	r0, =0x8fd
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L888
-	mov	r0, #0x90
-	lsl	r0, #2
-	bl	__SetFlag
-.L888:
-	ldr	r0, =0x8fe
-	bl	__GetFlag
-	cmp	r0, #0
-	bne	.L89c
-	ldr	r0, =0x907
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L8a2
-.L89c:
-	ldr	r0, =0x241
-	bl	__SetFlag
-.L8a2:
-	ldr	r0, =0x8fe
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L8bc
-	ldr	r0, =0x907
-	bl	__GetFlag
-	cmp	r0, #0
-	beq	.L8bc
-	ldr	r0, =0x242
-	bl	__SetFlag
-.L8bc:
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x4b
-	cmp	r2, r3
-	bne	.L8d4
-	bl	OvlFunc_931_2008904
-	b	.L8de
-.L8d4:
-	ldr	r3, =0x4c
-	cmp	r2, r3
-	bne	.L8de
-	bl	OvlFunc_931_2008b2c
-.L8de:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_931_2008874
+	.section .text.after_8874, "ax", %progbits
 
 .thumb_func_start OvlFunc_931_2008904
 	push	{r5, r6, r7, lr}
