@@ -1,0 +1,112 @@
+typedef unsigned char u8;
+
+extern u8 *iwram_3001ebc;
+extern u8 gState[];
+extern u8 *__CreateActor(int type, int x, int y, int z);
+extern void __Actor_SetScript(u8 *actor, const void *script);
+extern void __Sprite_SetAnim(u8 *sprite, int animation);
+extern void __PlaySound(int soundId);
+extern const u8 gScript_924__0200de14[];
+
+void OvlFunc_924_200d388(void)
+{
+    register u8 *sourceReg asm("r7");
+
+    asm volatile(
+        "ldr r3, .Lpool_iwram_924\n\t"
+        "mov r1, #0xfa\n\t"
+        "ldr r2, [r3]\n\t"
+        "ldr r3, .Lpool_gstate_924\n\t"
+        "lsl r1, #1\n\t"
+        "add r3, r1\n\t"
+        "ldr r3, [r3]\n\t"
+        "lsl r3, #2\n\t"
+        "add r3, #0x14\n\t"
+        "ldr r7, [r2, r3]\n\t"
+        "mov r0, #0x1a\n\t"
+        "ldr r1, [r7, #8]\n\t"
+        "ldr r2, [r7, #12]\n\t"
+        "ldr r3, [r7, #16]\n\t"
+        "bl __CreateActor\n\t"
+        "mov r5, r0\n\t"
+        "cmp r5, #0\n\t"
+        "beq 2f\n\t"
+        "ldr r3, [r7, #20]\n\t"
+        "ldr r1, .Lpool_script_924\n\t"
+        "str r3, [r5, #20]\n\t"
+        "ldr r6, [r5, #80]\n\t"
+        "bl __Actor_SetScript\n\t"
+        "mov r3, r5\n\t"
+        "add r3, #0x55\n\t"
+        "mov r2, #0\n\t"
+        "strb r2, [r3]\n\t"
+        "add r3, #0xf\n\t"
+        "strh r2, [r3]\n\t"
+        "str r7, [r5, #104]\n\t"
+        "cmp r6, #0\n\t"
+        "beq 2f\n\t"
+        "mov r0, r6\n\t"
+        "mov r1, #2\n\t"
+        "bl __Sprite_SetAnim\n\t"
+        "ldr r3, .Lpool_zero1_924\n\t"
+        "mov r2, r6\n\t"
+        "add r2, #0x26\n\t"
+        "strb r3, [r2]\n\t"
+        "mov r3, #0xd\n\t"
+        "ldrb r2, [r6, #9]\n\t"
+        "neg r3, r3\n\t"
+        "and r3, r2\n\t"
+        "mov r2, #4\n\t"
+        "orr r3, r2\n\t"
+        "strb r3, [r6, #9]\n\t"
+        "2:\n\t"
+        "ldr r1, [r7, #8]\n\t"
+        "ldr r2, [r7, #12]\n\t"
+        "ldr r3, [r7, #16]\n\t"
+        "mov r0, #0x1a\n\t"
+        "bl __CreateActor\n\t"
+        "mov r5, r0\n\t"
+        "cmp r5, #0\n\t"
+        "beq 3f\n\t"
+        "ldr r3, [r7, #20]\n\t"
+        "ldr r1, .Lpool_script_924\n\t"
+        "str r3, [r5, #20]\n\t"
+        "ldr r6, [r5, #80]\n\t"
+        "bl __Actor_SetScript\n\t"
+        "mov r3, r5\n\t"
+        "mov r2, #0\n\t"
+        "b 4f\n\t"
+        ".align 2\n\t"
+        ".Lpool_zero1_924: .word 0\n\t"
+        ".Lpool_iwram_924: .word iwram_3001ebc\n\t"
+        ".Lpool_gstate_924: .word gState\n\t"
+        ".Lpool_script_924: .word gScript_924__0200de14\n\t"
+        "4:\n\t"
+        "add r3, #0x55\n\t"
+        "strb r2, [r3]\n\t"
+        "add r3, #0xf\n\t"
+        "strh r2, [r3]\n\t"
+        "mov r2, r5\n\t"
+        "add r2, #0x23\n\t"
+        "mov r3, #2\n\t"
+        "str r7, [r5, #104]\n\t"
+        "strb r3, [r2]\n\t"
+        "cmp r6, #0\n\t"
+        "beq 3f\n\t"
+        "mov r0, r6\n\t"
+        "mov r1, #1\n\t"
+        "bl __Sprite_SetAnim\n\t"
+        "mov r2, r6\n\t"
+        "ldr r3, .Lpool_zero2_924\n\t"
+        "add r2, #0x26\n\t"
+        "strb r3, [r2]\n\t"
+        "3:\n\t"
+        "mov r0, #0x82\n\t"
+        "bl __PlaySound"
+        : "=r"(sourceReg)
+        :
+        : "r0", "r1", "r2", "r3", "r5", "r6", "lr", "memory", "cc"
+    );
+}
+
+asm(".align 2, 0\n\t.Lpool_zero2_924: .word 0");

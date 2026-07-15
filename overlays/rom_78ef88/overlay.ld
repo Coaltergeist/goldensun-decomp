@@ -36,6 +36,7 @@ SECTIONS {
 		asm/overlays/rom_78ef88/ovl_314_c_c_c_c.o(.text)
 		src/overlays/rom_78ef88/ovl_314_c_c_c_c_c328.o(.text)
 		asm/overlays/rom_78ef88/ovl_314_c_c_c_c.o(.text.after_c328)
+		src/overlays/rom_78ef88/ovl_314_c_c_c_c_c49c.o(.text)
 		src/overlays/rom_78ef88/ovl_314_particle_wave_setup.o(.text)
 		src/overlays/rom_78ef88/imports.o(.text)
 	} > overlay

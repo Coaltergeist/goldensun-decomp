@@ -58,7 +58,7 @@ SECTIONS {
 		src/overlays/common/common1_a_c_c_1578.o(.text)
 		asm/overlays/common/common1_a_c_c.o(.text.between_1578_16cc)
 		src/overlays/common/common1_a_c_c_15b8.o(.text)
-		asm/overlays/common/common1_a_c_c.o(.text.after_15b8)
+		src/overlays/common/common1_a_c_c_1608.o(.text)
 		src/overlays/common/common1_a_c_c_16cc.o(.text)
 		asm/overlays/common/common1_b.o(.text)
 		asm/overlays/common/common1_c_a_b.o(.text)
