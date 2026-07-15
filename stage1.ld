@@ -400,6 +400,8 @@ SECTIONS {
 		asm/rom_15000/rom_1aeec_a_a_c_a_c.o(.text)
 		src/rom_15000/rom_1aeec_a_a_c_a_c_a.o(.text)
 		asm/rom_15000/rom_1aeec_a_a_c_a_c.o(.text.after)
+		src/rom_15000/rom_1aeec_a_a_c_a_c_1b398.o(.text)
+		asm/rom_15000/rom_1aeec_a_a_c_a_c.o(.text.after_1b398)
 		src/rom_15000/rom_1aeec_a_a_c_a_c_1b9a8.o(.text)
 		src/rom_15000/rom_1aeec_a_a_c_a_c_1b9ec.o(.text)
 		asm/rom_15000/rom_1aeec_a_a_c_b.o(.text)
