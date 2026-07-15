@@ -67,6 +67,7 @@ SECTIONS {
 		asm/rom_c0/rom_56cc_b.o(.text)
 		asm/rom_c0/rom_56cc_c_b.o(.text)
 		asm/rom_c0/rom_56cc_c_c.o(.text)
+		src/rom_c0/rom_56cc_c_c_5c68.o(.text)
 		asm/rom_c0/rom_5cf8_a_a_a_a_b.o(.text)
 		asm/rom_c0/rom_5cf8_a_a_a_a_c.o(.text)
 		asm/rom_c0/rom_5cf8_a_a_a_b.o(.text)
