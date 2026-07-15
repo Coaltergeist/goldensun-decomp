@@ -3,65 +3,7 @@
 
 	.section .text.after_2884, "ax", %progbits
 
-.thumb_func_start Func_80b2928  @ 0x080b2928
-	push	{r5, r6, r7, lr}
-	mov	r7, r10
-	mov	r6, r8
-	push	{r6, r7}
-	ldr	r3, =iwram_3001f2c
-	ldr	r3, [r3]
-	mov	r6, #0xe0
-	mov	r8, r3
-	lsl	r6, #2
-	add	r6, r8
-	ldr	r3, [r6]
-	ldrb	r3, [r3, #5]
-	mov	r10, r3
-	mov	r3, #0xe9
-	lsl	r3, #2
-	add	r3, r8
-	mov	r7, r0
-	ldrh	r0, [r3]
-	bl	_GetSpriteVoice
-	mov	r5, r0
-	mov	r0, r7
-	bl	Func_80b2884
-	ldr	r2, [r6]
-	mov	r3, #0xd
-	strb	r3, [r2, #5]
-	mov	r7, r0
-	lsl	r5, #16
-	bl	_Func_8019a54
-	mov	r3, #0x22
-	orr	r5, r3
-	mov	r0, r7
-	mov	r1, #5
-	mov	r2, #0
-	mov	r3, r5
-	bl	_Func_8017658
-	b	.Lb297e
-.Lb2978:
-	mov	r0, #1
-	bl	WaitFrames
-.Lb297e:
-	bl	_Func_8017364
-	cmp	r0, #0
-	beq	.Lb2978
-	mov	r0, #1
-	bl	WaitFrames
-	mov	r3, #0xe0
-	lsl	r3, #2
-	add	r3, r8
-	ldr	r3, [r3]
-	mov	r2, r10
-	strb	r2, [r3, #5]
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end Func_80b2928
+	.section .text.after_b2928, "ax", %progbits
 
 .thumb_func_start UI_Sanctum  @ 0x080b29a8
 	push	{r5, r6, r7, lr}
