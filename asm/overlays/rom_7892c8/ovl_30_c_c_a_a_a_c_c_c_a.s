@@ -4,69 +4,7 @@
 
 	.section .text.after_a6f0, "ax", %progbits
 
-.thumb_func_start OvlFunc_888_200a750
-	push	{r5, r6, r7, lr}
-	mov	r7, r8
-	push	{r7}
-	mov	r8, r1
-	bl	__MapActor_GetActor
-	mov	r7, r0
-	cmp	r7, #0
-	beq	.L27c8
-	ldr	r2, [r7, #0xc]
-	mov	r3, #0xb4
-	lsl	r3, #14
-	add	r2, r3
-	ldr	r1, [r7, #8]
-	ldr	r3, [r7, #0x10]
-	ldr	r0, =0x11d
-	bl	__CreateActor
-	mov	r6, r0
-	cmp	r6, #0
-	beq	.L27c8
-	ldr	r1, =gScript_888__0200c15c
-	ldr	r5, [r6, #0x50]
-	bl	__Actor_SetScript
-	mov	r3, r6
-	mov	r2, #0
-	add	r3, #0x55
-	strb	r2, [r3]
-	add	r3, #0xf
-	strh	r2, [r3]
-	add	r3, #2
-	mov	r2, r8
-	strh	r2, [r3]
-	ldr	r3, =OvlFunc_888_200a6f0
-	ldr	r1, .L27b8	@ 0
-	str	r3, [r6, #0x6c]
-	mov	r3, r5
-	add	r3, #0x26
-	strb	r1, [r3]
-	ldr	r3, [r7, #0x50]
-	ldrb	r3, [r3, #9]
-	mov	r2, #0xc
-	and	r2, r3
-	ldrb	r1, [r5, #9]
-	mov	r3, #0xd
-	neg	r3, r3
-	and	r3, r1
-	orr	r3, r2
-	str	r7, [r6, #0x68]
-	strb	r3, [r5, #9]
-	b	.L27c8
-
-	.align	2, 0
-.L27b8:
-	.word	0
-	.pool
-
-.L27c8:
-	pop	{r3}
-	mov	r8, r3
-	pop	{r5, r6, r7}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_888_200a750
+	.section .text.after_a750, "ax", %progbits
 
 .thumb_func_start OvlFunc_888_200a7d4
 	push	{r5, r6, r7, lr}
@@ -1025,65 +963,7 @@
 	bx	r0
 .func_end OvlFunc_888_200b098
 
-.thumb_func_start OvlFunc_888_200b144
-	push	{lr}
-	mov	r3, r0
-	add	r3, #0x64
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, [r0, #0xc]
-	lsl	r2, #12
-	add	r3, r2
-	str	r3, [r0, #0xc]
-	str	r3, [r0, #0x3c]
-	mov	r1, r0
-	add	r1, #0x66
-	ldrh	r3, [r1]
-	lsl	r3, #16
-	asr	r2, r3, #18
-	ldr	r3, =3
-	and	r2, r3
-	mov	r4, #0
-	cmp	r2, #1
-	beq	.L318a
-	cmp	r2, #1
-	bgt	.L3176
-	cmp	r2, #0
-	beq	.L3184
-	b	.L3190
-.L3176:
-	cmp	r2, #2
-	beq	.L318e
-	cmp	r2, #3
-	beq	.L318a
-	b	.L3190
-
-	.pool_aligned
-
-.L3184:
-	mov	r4, #0x80
-	lsl	r4, #9
-	b	.L3190
-.L318a:
-	ldr	r4, =0xcccc
-	b	.L3190
-.L318e:
-	ldr	r4, =0x9999
-.L3190:
-	str	r4, [r0, #0x18]
-	str	r4, [r0, #0x1c]
-	ldrh	r3, [r1]
-	sub	r3, #1
-	strh	r3, [r1]
-	lsl	r3, #16
-	cmp	r3, #0
-	bgt	.L31a6
-	ldr	r1, =gScript_888__0200c18c
-	bl	__Actor_SetScript
-.L31a6:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_888_200b144
+	.section .text.after_b144, "ax", %progbits
 
 .thumb_func_start OvlFunc_888_200b1b8
 	push	{r5, r6, r7, lr}
