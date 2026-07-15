@@ -275,6 +275,7 @@ SECTIONS {
 		asm/rom_9000/rom_1219c_a_c_c_c.o(.text)
 		asm/rom_9000/rom_1219c_b.o(.text)
 		asm/rom_9000/rom_1219c_c_a.o(.text)
+		src/rom_9000/rom_1219c_c_a_12d70.o(.text)
 		asm/rom_9000/rom_1219c_c_b.o(.text)
 		asm/rom_9000/rom_1219c_c_c.o(.text)
 
