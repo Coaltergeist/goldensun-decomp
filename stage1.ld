@@ -1260,6 +1260,8 @@ SECTIONS {
 		asm/rom_a1000/rom_a8604_c_a.o(.text)
 		asm/rom_a1000/rom_a8604_c_b.o(.text)
 		asm/rom_a1000/rom_a8604_c_c_a_a.o(.text)
+		src/rom_a1000/rom_a8604_c_c_a_a_9a5c.o(.text)
+		asm/rom_a1000/rom_a8604_c_c_a_a.o(.text.after_a9a5c)
 		src/rom_a1000/rom_a8604_c_c_a_a_9b94.o(.text)
 		asm/rom_a1000/rom_a8604_c_c_a_b.o(.text)
 		asm/rom_a1000/rom_a8604_c_c_a_c_a.o(.text)
