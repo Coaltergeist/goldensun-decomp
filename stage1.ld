@@ -458,6 +458,7 @@ SECTIONS {
 		src/rom_15000/rom_1de5c_c_c_a_ui_draw_text.o(.text)
 		src/rom_15000/rom_1de5c_c_c_a_b.o(.text)
 		asm/rom_15000/rom_1de5c_c_c_a.o(.text.after)
+		src/rom_15000/rom_1de5c_c_c_a_eadc.o(.text)
 		asm/rom_15000/rom_1de5c_c_c_b.o(.text)
 		src/rom_15000/rom_1de5c_c_c_c_a_a_icons.o(.text)
 		asm/rom_15000/rom_1de5c_c_c_c_a_a.o(.text)
