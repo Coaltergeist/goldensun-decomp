@@ -1471,6 +1471,8 @@ SECTIONS {
 		asm/rom_b5000/rom_b8228_c_b.o(.text)
 		asm/rom_b5000/rom_b8228_c_c.o(.text)
 		asm/rom_b5000/rom_b9b30_a.o(.text)
+		src/rom_b5000/rom_b9b30_a_init_context.o(.text)
+		asm/rom_b5000/rom_b9b30_a.o(.text.after_init_anim_context)
 		asm/rom_b5000/rom_b9b30_b.o(.text)
 		asm/rom_b5000/rom_b9b30_c.o(.text)
 		src/rom_b5000/rom_b9b30_c_ba918.o(.text)
