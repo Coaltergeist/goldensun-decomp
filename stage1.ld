@@ -525,6 +525,7 @@ SECTIONS {
 		src/rom_15000/rom_20198_c_c_c_a_a_16e8.o(.text)
 		src/rom_15000/rom_20198_c_c_c_a_a_21750.o(.text)
 		asm/rom_15000/rom_20198_c_c_c_a_a.o(.text.after_1750)
+		src/rom_15000/rom_20198_c_c_c_a_a_func_80218dc.o(.text)
 		src/rom_15000/rom_20198_c_c_c_a_a_func_8021950.o(.text)
 		asm/rom_15000/rom_20198_c_c_c_a_b.o(.text)
 		asm/rom_15000/rom_20198_c_c_c_a_c.o(.text)

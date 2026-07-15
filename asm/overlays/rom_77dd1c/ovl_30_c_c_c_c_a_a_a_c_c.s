@@ -830,55 +830,8 @@
 
 .section .text.after_a09c, "ax", %progbits
 
-.thumb_func_start OvlFunc_882_200a0fc
-	push	{lr}
-	ldr	r3, =iwram_3001e40
-	ldr	r2, =.L57fc
-	ldr	r3, [r3]
-	ldr	r2, [r2]
-	lsr	r3, r2
-	mov	r2, #3
-	and	r3, r2
-	cmp	r3, #0
-	beq	.L2142
-	mov	r0, #0x20
-	bl	__MapActor_GetActor
-	mov	r1, #1
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x21
-	bl	__MapActor_GetActor
-	mov	r1, #1
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x1e
-	bl	__MapActor_GetActor
-	mov	r1, #1
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x1d
-	bl	__MapActor_GetActor
-	mov	r1, #1
-	bl	OvlFunc_882_200a09c
-	b	.L2172
-.L2142:
-	mov	r0, #0x20
-	bl	__MapActor_GetActor
-	mov	r1, #8
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x21
-	bl	__MapActor_GetActor
-	mov	r1, #8
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x1e
-	bl	__MapActor_GetActor
-	mov	r1, #8
-	bl	OvlFunc_882_200a09c
-	mov	r0, #0x1d
-	bl	__MapActor_GetActor
-	mov	r1, #8
-	bl	OvlFunc_882_200a09c
-.L2172:
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_882_200a0fc
+
+.section .text.after_a0fc, "ax", %progbits
 
 .thumb_func_start OvlFunc_882_200a180
 	push	{r5, r6, lr}
@@ -3675,4 +3628,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_882_200bce4
-
