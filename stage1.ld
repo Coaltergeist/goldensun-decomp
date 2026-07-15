@@ -434,7 +434,7 @@ SECTIONS {
 		asm/rom_15000/rom_1aeec_c_a_a_a_a_a_c_b.o(.text)
 		asm/rom_15000/rom_1aeec_c_a_a_a_a_a_c_c_b.o(.text)
 		src/rom_15000/rom_1aeec_c_a_a_a_a_a_c_c_c_1c304.o(.text)
-		asm/rom_15000/rom_1aeec_c_a_a_a_a_a_c_c_c.o(.text)
+		src/rom_15000/rom_1aeec_c_a_a_a_a_a_c_c_c_1c34c.o(.text)
 		asm/rom_15000/rom_1aeec_c_a_a_a_a_b.o(.text)
 		asm/rom_15000/rom_1aeec_c_a_a_a_b.o(.text)
 		asm/rom_15000/rom_1aeec_c_a_a_b.o(.text)
