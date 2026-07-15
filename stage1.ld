@@ -470,6 +470,7 @@ SECTIONS {
 		asm/rom_15000/rom_1de5c_c_b.o(.text)
 		src/rom_15000/rom_1de5c_c_c_a_e74c.o(.text)
 		asm/rom_15000/rom_1de5c_c_c_a.o(.text.after_draw_small_text)
+		src/rom_15000/rom_1de5c_c_c_a_e7c0.o(.text)
 		src/rom_15000/rom_1de5c_c_c_a_e858.o(.text)
 		asm/rom_15000/rom_1de5c_c_c_a.o(.text.after_1e858)
 		src/rom_15000/rom_1de5c_c_c_a_ui_draw_text.o(.text)
