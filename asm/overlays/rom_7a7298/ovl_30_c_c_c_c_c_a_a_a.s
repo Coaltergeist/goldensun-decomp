@@ -1620,15 +1620,3 @@
 	bx	r0
 .func_end OvlFunc_921_20095b4
 
-.thumb_func_start OvlFunc_921_20096ac
-	push	{lr}
-	ldr	r1, =gScript_921__0200a5ec
-	mov	r0, #9
-	bl	__MapActor_SetBehavior
-	mov	r0, #9
-	mov	r1, #0
-	bl	__ActorMessage
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_921_20096ac
-

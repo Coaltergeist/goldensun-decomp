@@ -114,6 +114,26 @@ asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
+# Two overlay TUs verify byte-exact only at -O1 (probed 2026-07-15: the same
+# C bodies sit at a stable 2-line diff under -O2 and byte-match the ROM the
+# moment -O2 becomes -O1; every other candidate in the corpus stays a fail at
+# -O1/-Os, so this is a per-file flag choice in the original build, not a
+# global alternative). Pattern form covers the splitter's future children of
+# these stems, mirroring the common2_c precedent above.
+O1_CFLAGS := $(subst -O2,-O1,$(GCC296_CFLAGS))
+asm/overlays/rom_7ed0a0/ovl_30_c_c_c_a_a%.o: src/overlays/rom_7ed0a0/ovl_30_c_c_c_a_a%.c
+	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+asm/overlays/rom_7f2f14/ovl_30_c_a_c_a_c_c%.o: src/overlays/rom_7f2f14/ovl_30_c_a_c_a_c_c%.c
+	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+asm/overlays/rom_7ed0a0/ovl_30_a_c_a_a%.o: src/overlays/rom_7ed0a0/ovl_30_a_c_a_a%.c
+	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
 # src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed

@@ -343,24 +343,3 @@
 	bx	r0
 .func_end OvlFunc_968_20098f8
 
-.thumb_func_start OvlFunc_968_200996c
-	push	{lr}
-	sub	sp, #8
-	bl	__CutsceneStart
-	mov	r3, #0xc
-	mov	r2, #0x2c
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #0x13
-	mov	r1, #0x2c
-	mov	r2, #4
-	mov	r3, #1
-	bl	__Func_8010704
-	bl	OvlFunc_968_2008374
-	bl	OvlFunc_968_20098f8
-	bl	__CutsceneEnd
-	add	sp, #8
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_968_200996c
-

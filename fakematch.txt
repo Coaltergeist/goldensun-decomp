@@ -4,10 +4,8 @@ Func_80b5ad4       src/rom_b5000/rom_b5a0c_a_a_b.c
 Func_800651c       src/rom_c0/rom_5cf8_a_c_b.c           
 ToggleFlag         src/rom_77000/rom_79338_b.c           
 SetFlagNybble      src/rom_77000/rom_79338_c_b.c         
-Func_808b9f8       src/rom_8a000/rom_8b674_c_b.c         
 Func_80f40b4       src/rom_f4000/rom_f4008_a_b.c         
 Func_808ab48       src/rom_8a000/rom_8a5f8_a_c_b.c     
-GetEnemyUnk        src/rom_b5000/rom_c1a34_a_a_c_c_a_b.c
 Func_80c91a4       src/rom_c9000/rom_c9048_b.c
 LoadMapCode        src/rom_c0/rom_2e00_c_b.c
 OvlFunc_883_20082a8  src/overlays/rom_780898/ovl_30_a_a_b.c
@@ -23,7 +21,6 @@ OvlFunc_908_20083f4  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_c_c_a_b.c
 OvlFunc_908_2008430  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_c_c_a_c_b.c
 OvlFunc_953_20084c8  src/overlays/rom_7d95dc/ovl_30_c_c_c_a_a_a_c_a_b.c
 OvlFunc_908_20081e0  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_a_b.c
-OvlFunc_943_20080b4  src/overlays/rom_7c7b9c/ovl_30_a_a_a_b.c
 Func_80944ec       src/rom_8a000/rom_944ec_a_a_a_a_b.c
 Func_80a8904       src/rom_a1000/rom_a8604_a_a_b.c
 OvlFunc_909_20082cc  src/overlays/rom_79c738/ovl_30_c_c_a_c_a_b.c
@@ -62,9 +59,7 @@ Func_801fc84         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_c_b.c
 OvlFunc_917_2008088  src/overlays/rom_7a4370/ovl_30_c_c_a_b.c
 OvlFunc_899_2009e80  src/overlays/rom_794ac0/ovl_30_a_c_c_c_a_c_c_b.c
 OvlFunc_882_200973c  src/overlays/rom_77dd1c/ovl_30_c_c_c_c_a_a_a_c_b.c
-OvlFunc_899_200882c  src/overlays/rom_794ac0/ovl_30_a_c_a_c_c_c_c_c_b.c
 OvlFunc_908_2008250  src/overlays/rom_79c0c4/ovl_30_c_c_c_a_a_c_b.c
-OvlFunc_882_2008240  src/overlays/rom_77dd1c/ovl_30_c_c_c_a_a_b.c
 OvlFunc_882_2008328  src/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_b.c
 OvlFunc_882_2008360  src/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_c_b.c
 OvlFunc_883_2008fbc  src/overlays/rom_780898/ovl_30_c_c_c_a_a_a_c_c_c_a_b.c
@@ -97,3 +92,7 @@ OvlFunc_958_2009080  src/overlays/rom_7e636c/ovl_cc0_c_a_c_c_a_b.c
 OvlFunc_959_200969c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_a_b.c
 OvlFunc_944_200840c  src/overlays/rom_7ca63c/ovl_30_c_c_a_c_b.c
 OvlFunc_959_2009c4c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_a_b.c
+OvlFunc_964_200a300  src/overlays/rom_7ed0a0/ovl_30_c_c_c_a_a_b.c
+OvlFunc_968_200996c  src/overlays/rom_7f2f14/ovl_30_c_a_c_a_c_c_b.c
+OvlFunc_964_2009318  src/overlays/rom_7ed0a0/ovl_30_a_c_a_a_b.c
+OvlFunc_964_2009374  src/overlays/rom_7ed0a0/ovl_30_a_c_a_a_c_b.c

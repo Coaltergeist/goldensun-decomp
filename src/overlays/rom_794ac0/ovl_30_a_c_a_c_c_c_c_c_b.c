@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster OvlFunc_899_200882c..OvlFunc_899_200882c extracted from goldensun/asm/overlays/rom_794ac0/ovl_30_a_c_a_c_c_c_c_c.s.
  *
  * Total .text for this TU = 240 bytes (= 0xf0).
@@ -6,6 +5,8 @@
  * asm/overlays/rom_794ac0/ovl_30_a_c_a_c_c_c_c_c_a.o and asm/overlays/rom_794ac0/ovl_30_a_c_a_c_c_c_c_c_c.o in
  * goldensun/overlays/rom_794ac0/overlay.ld.
  */
+extern int bytes(int);
+
 extern int __GetFlag(int);
 extern void __SetFlag(int);
 extern int __MessageID(int);
@@ -43,8 +44,7 @@ void OvlFunc_899_200882c(void) {
         __CutsceneWait(0x1e);
         OvlFunc_899_200c624(0, 0x10, 0x14);
         {
-            register unsigned int p2 __asm__("r2") = 0x14;
-            __asm__ volatile ("" : : "r" (p2));
+            unsigned int p2 = 0x14;
             OvlFunc_899_200c63c(0x10, 3, p2);
         }
         b = iwram_3001ebc;
