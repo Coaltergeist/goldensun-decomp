@@ -39,6 +39,7 @@ SECTIONS {
 		asm/overlays/common/common1_a_a_a_a_a.o(.text.after_0)
 		src/overlays/common/common1_a_a_a_a_a_148.o(.text)
 		asm/overlays/common/common1_a_a_a_a_a.o(.text.after_148)
+		src/overlays/common/common1_a_a_a_a_a_3e4.o(.text)
 		asm/overlays/common/common1_a_a_a_a_b.o(.text)
 		asm/overlays/common/common1_a_a_a_a_c.o(.text)
 		src/overlays/common/common1_a_a_a_a_c_588.o(.text)
@@ -70,6 +71,7 @@ SECTIONS {
 		asm/overlays/common/common1_c_b.o(.text)
 		src/overlays/common/common1_c_c_2018.o(.text)
 		asm/overlays/common/common1_c_c.o(.text.after_2018)
+		src/overlays/common/common1_c_c_21c8.o(.text)
 		src/overlays/rom_7db0c8/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay

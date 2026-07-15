@@ -61,7 +61,8 @@ SECTIONS {
 		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_b.o(.text)
 		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_b.o(.text)
 		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c.o(.text)
+		src/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c_95f0.o(.text)
+		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c.o(.text.after_95f0)
 		src/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c_97ac.o(.text)
 		src/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c_9838.o(.text)
 		asm/overlays/rom_7d30e0/ovl_30_c_a_c_c_a_b.o(.text)
@@ -97,6 +98,8 @@ SECTIONS {
 		asm/overlays/rom_7d30e0/ovl_30_c_c_c_c_c_c_c_c.o(.text.after_9f78)
 		src/overlays/rom_7d30e0/ovl_30_c_c_c_c_c_c_c_c_a0c4.o(.text)
 		asm/overlays/rom_7d30e0/ovl_30_c_c_c_c_c_c_c_c.o(.text.after_a0c4)
+		src/overlays/rom_7d30e0/ovl_30_c_c_c_c_c_c_c_c_a290.o(.text)
+		asm/overlays/rom_7d30e0/ovl_30_c_c_c_c_c_c_c_c.o(.text.after_a290)
 		src/overlays/rom_7d30e0/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
