@@ -257,7 +257,7 @@ SECTIONS {
 		asm/rom_9000/rom_11ce0_a_c_c_b.o(.text)
 		asm/rom_9000/rom_11ce0_a_c_c_c_b.o(.text)
 		asm/rom_9000/rom_11ce0_b.o(.text)
-		asm/rom_9000/rom_11ce0_c_a.o(.text)
+		src/rom_9000/rom_11ce0_c_a.o(.text)
 		src/rom_9000/rom_11ce0_c_a_1fd8.o(.text)
 		src/rom_9000/rom_11ce0_c_a_map_pixel.o(.text)
 		asm/rom_9000/rom_11ce0_c_b.o(.text)
