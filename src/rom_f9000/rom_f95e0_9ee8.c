@@ -1,4 +1,4 @@
-void __attribute__((section(".text.after_9c2c"))) Func_80f9ee8(void)
+void __attribute__((section(".text.after_vsync"))) Func_80f9ee8(void)
 {
     asm volatile ("bx r3\n.if 0");
 }
