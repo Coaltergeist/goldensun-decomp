@@ -39,6 +39,7 @@ SECTIONS {
 		asm/overlays/rom_7bdeb0/ovl_d20_c_c_a_c.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_d20_c_c_b.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_d20_c_c_c.o(.text)
+		src/overlays/rom_7bdeb0/ovl_d20_c_c_c_9258.o(.text)
 		src/overlays/rom_7bdeb0/ovl_1300_a_9300.o(.text)
 		src/overlays/rom_7bdeb0/ovl_1300_b.o(.text)
 		asm/overlays/rom_7bdeb0/ovl_1300_c.o(.text)
