@@ -1259,6 +1259,7 @@ SECTIONS {
 		src/rom_a1000/rom_a7380_847c.o(.text)
 		src/rom_a1000/rom_a7380_8508.o(.text)
 		asm/rom_a1000/rom_a7380.o(.text.after_a8508)
+		src/rom_a1000/rom_a7380_func_80a8578.o(.text)
 		asm/rom_a1000/rom_a8604_a_a_a.o(.text)
 		asm/rom_a1000/rom_a8604_a_a_b.o(.text)
 		asm/rom_a1000/rom_a8604_a_a_c.o(.text)
