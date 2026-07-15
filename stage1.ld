@@ -1412,6 +1412,7 @@ SECTIONS {
 		src/rom_b5000/rom_b5a0c_c_c_a_a_a_a_6378.o(.text)
 		src/rom_b5000/rom_b5a0c_c_c_a_a_a_b.o(.text)
 		asm/rom_b5000/rom_b5a0c_c_c_a_a_a_c.o(.text)
+		src/rom_b5000/rom_b5a0c_c_c_a_a_a_c_func_80b6a60.o(.text)
 		src/rom_b5000/rom_b5a0c_c_c_a_a_a_c_6ae0.o(.text)
 		asm/rom_b5000/rom_b5a0c_c_c_a_a_a_c.o(.text.after_b6ae0)
 		asm/rom_b5000/rom_b5a0c_c_c_a_a_b.o(.text)
