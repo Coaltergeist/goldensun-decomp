@@ -53,7 +53,7 @@ SECTIONS {
 		src/overlays/rom_7aa430/ovl_1150_91b4.o(.text)
 		src/overlays/rom_7aa430/ovl_1150_9208.o(.text)
 		asm/overlays/rom_7aa430/ovl_1150.o(.text.after_9208)
-		asm/overlays/rom_7aa430/ovl_1a3c_a_a.o(.text)
+		src/overlays/rom_7aa430/ovl_1a3c_a_a_9a3c.o(.text)
 		src/overlays/rom_7aa430/ovl_1a3c_a_a_9bc8.o(.text)
 		src/overlays/rom_7aa430/ovl_1a3c_a_a_9c20.o(.text)
 		asm/overlays/rom_7aa430/ovl_1a3c_a_b.o(.text)

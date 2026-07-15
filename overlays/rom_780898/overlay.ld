@@ -83,7 +83,7 @@ SECTIONS {
 		asm/overlays/rom_780898/ovl_30_c_c_c_c_c_c_a_b.o(.text)
 		asm/overlays/rom_780898/ovl_30_c_c_c_c_c_c_b.o(.text)
 		src/overlays/rom_780898/ovl_30_c_c_c_c_c_c_c_head.o(.text)
-		asm/overlays/rom_780898/ovl_30_c_c_c_c_c_c_c.o(.text)
+		src/overlays/rom_780898/ovl_30_c_c_c_c_c_c_c_dd68.o(.text)
 		src/overlays/rom_780898/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
