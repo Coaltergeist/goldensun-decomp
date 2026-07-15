@@ -1432,6 +1432,8 @@ SECTIONS {
 		src/rom_b5000/rom_b8228_c_a_c_c_a_8fd4.o(.text)
 		src/rom_b5000/rom_b8228_c_a_c_c_a_90ac.o(.text)
 		asm/rom_b5000/rom_b8228_c_a_c_c_a.o(.text.after)
+		src/rom_b5000/rom_b8228_c_a_c_c_a_920c.o(.text)
+		asm/rom_b5000/rom_b8228_c_a_c_c_a.o(.text.after_b920c)
 		asm/rom_b5000/rom_b8228_c_a_c_c_b.o(.text)
 		src/rom_b5000/rom_b8228_c_a_c_c_c_9a70.o(.text)
 		src/rom_b5000/rom_b8228_c_a_c_c_c_9acc.o(.text)
