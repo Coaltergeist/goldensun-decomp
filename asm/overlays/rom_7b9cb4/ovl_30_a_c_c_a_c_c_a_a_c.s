@@ -881,74 +881,7 @@
 	bx	r0
 .func_end OvlFunc_932_2009d0c
 
-.thumb_func_start OvlFunc_932_200a020
-	push	{lr}
-	ldr	r3, =iwram_3001ebc
-	mov	r2, #0xe0
-	ldr	r1, [r3]
-	mov	r3, #0x81
-	lsl	r2, #1
-	lsl	r3, #2
-	str	r3, [r1, r2]
-	ldr	r3, =gState
-	ldrsh	r2, [r3, r2]
-	ldr	r3, =0x4d
-	cmp	r2, r3
-	bne	.L2040
-	bl	OvlFunc_932_200a0d0
-	b	.L209e
-.L2040:
-	ldr	r3, =0x4f
-	cmp	r2, r3
-	bne	.L204c
-	bl	OvlFunc_932_200a310
-	b	.L209e
-.L204c:
-	ldr	r3, =0x50
-	cmp	r2, r3
-	bne	.L2058
-	bl	OvlFunc_932_200a428
-	b	.L209e
-.L2058:
-	ldr	r3, =0x51
-	cmp	r2, r3
-	bne	.L2064
-	bl	OvlFunc_932_200a490
-	b	.L209e
-.L2064:
-	ldr	r3, =0x52
-	cmp	r2, r3
-	bne	.L2070
-	bl	OvlFunc_932_200a5c0
-	b	.L209e
-.L2070:
-	ldr	r3, =0x53
-	cmp	r2, r3
-	bne	.L207c
-	bl	OvlFunc_932_200a6c0
-	b	.L209e
-.L207c:
-	ldr	r3, =0x55
-	cmp	r2, r3
-	bne	.L2088
-	bl	OvlFunc_932_200a804
-	b	.L209e
-.L2088:
-	ldr	r3, =0x56
-	cmp	r2, r3
-	bne	.L2094
-	bl	OvlFunc_932_200a934
-	b	.L209e
-.L2094:
-	ldr	r3, =0x57
-	cmp	r2, r3
-	bne	.L209e
-	bl	OvlFunc_932_200a9dc
-.L209e:
-	mov	r0, #0
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_932_200a020
+	.section .text.after_a020, "ax", %progbits
 
 .thumb_func_start OvlFunc_932_200a0d0
 	push	{r5, r6, lr}
