@@ -25,6 +25,7 @@ SECTIONS {
 		src/overlays/rom_7a37f0/ovl_30_c_c_c_a_836c.o(.text)
 		asm/overlays/rom_7a37f0/ovl_30_c_c_c_a_b.o(.text)
 		asm/overlays/rom_7a37f0/ovl_30_c_c_c_a.o(.text.20083f0)
+		src/overlays/rom_7a37f0/ovl_30_c_c_c_a_8a90.o(.text)
 		src/overlays/rom_7a37f0/ovl_30_c_c_c_a_8b3c.o(.text)
 		src/overlays/rom_7a37f0/ovl_30_c_c_c_a_8b8c.o(.text)
 		src/overlays/rom_7a37f0/ovl_30_c_c_c_a_8be4.o(.text)
