@@ -619,6 +619,8 @@ SECTIONS {
 		asm/rom_77000/rom_77320_a_a_c_c_b.o(.text)
 		asm/rom_77000/rom_77320_a_b.o(.text)
 		asm/rom_77000/rom_77320_a_c_a.o(.text)
+		src/rom_77000/rom_77320_a_c_a_func_8077cb8.o(.text)
+		asm/rom_77000/rom_77320_a_c_a.o(.text.after_77cb8)
 		asm/rom_77000/rom_77320_a_c_b.o(.text)
 		asm/rom_77000/rom_77320_a_c_c.o(.text)
 		asm/rom_77000/rom_77320_b.o(.text)
