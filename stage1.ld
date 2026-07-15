@@ -1354,6 +1354,7 @@ SECTIONS {
 		src/rom_b5000/exports.o(.text)
 		asm/rom_b5000/rom_b5138.o(.text)
 		asm/rom_b5000/rom_b5368.o(.text)
+		src/rom_b5000/rom_b5368_5864.o(.text)
 		src/rom_b5000/rom_b5368_595c.o(.text)
 		asm/rom_b5000/rom_b5a0c_a_a_a.o(.text)
 		asm/rom_b5000/rom_b5a0c_a_a_b.o(.text)
