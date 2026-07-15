@@ -648,6 +648,7 @@ SECTIONS {
 		asm/rom_77000/rom_78414_c_c_a_c.o(.text.after_882c)
 		src/rom_77000/rom_78414_c_c_a_c_8870.o(.text)
 		asm/rom_77000/rom_78414_c_c_a_c.o(.text.after_8870)
+		src/rom_77000/rom_78414_c_c_a_c_func_80788c4.o(.text)
 		src/rom_77000/rom_78414_c_c_a_c_8948.o(.text)
 		asm/rom_77000/rom_78414_c_c_a_c.o(.text.after_8948)
 		src/rom_77000/rom_78414_c_c_a_c_8980.o(.text)
@@ -1160,6 +1161,8 @@ SECTIONS {
 		asm/rom_a1000/rom_a1814_a.o(.text.after_a1814)
 		src/rom_a1000/rom_a1814_a_spriteend.o(.text)
 		asm/rom_a1000/rom_a1814_a.o(.text.after_a195c)
+		src/rom_a1000/rom_a1814_a_func_80a1a40.o(.text)
+		asm/rom_a1000/rom_a1814_a.o(.text.after_a1a40)
 		asm/rom_a1000/rom_a1814_b.o(.text)
 		asm/rom_a1000/rom_a1814_c_a_a_b.o(.text)
 		asm/rom_a1000/rom_a1814_c_a_a_c_a_a.o(.text)
@@ -1333,7 +1336,7 @@ SECTIONS {
 
 	rom_b0000 : ALIGN(0x1000) {
 		src/rom_b0000/exports.o(.text)
-		asm/rom_b0000/rom_b0070_a_a_a.o(.text)
+		src/rom_b0000/rom_b0070_a_a_a_func_80b0070.o(.text)
 		asm/rom_b0000/rom_b0070_a_a_b.o(.text)
 		asm/rom_b0000/rom_b0070_a_a_c_a_a.o(.text)
 		src/rom_b0000/rom_b0070_a_a_c_a_a_0204.o(.text)
