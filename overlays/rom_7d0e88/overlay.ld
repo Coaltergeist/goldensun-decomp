@@ -71,7 +71,8 @@ SECTIONS {
 		asm/overlays/rom_7d0e88/ovl_2580_a.o(.text)
 		src/overlays/rom_7d0e88/ovl_2580_a_b.o(.text)
 		asm/overlays/rom_7d0e88/ovl_2580_b.o(.text)
-		asm/overlays/rom_7d0e88/ovl_2580_c.o(.text)
+		src/overlays/rom_7d0e88/ovl_2580_c_a6b8.o(.text)
+		asm/overlays/rom_7d0e88/ovl_2580_c.o(.text.after_a6b8)
 		src/overlays/rom_7d0e88/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
