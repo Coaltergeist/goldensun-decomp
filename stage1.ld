@@ -78,7 +78,7 @@ SECTIONS {
 		asm/rom_c0/rom_5cf8_a_a_b.o(.text)
 		src/rom_c0/rom_5cf8_a_a_c_a_a.o(.text)
 		src/rom_c0/rom_5cf8_a_a_c_a_func_80063bc.o(.text)
-		asm/rom_c0/rom_5cf8_a_a_c_a.o(.text.after)
+		src/rom_c0/rom_5cf8_a_a_c_a_func_8006408.o(.text)
 		asm/rom_c0/rom_5cf8_a_a_c_b.o(.text)
 		asm/rom_c0/rom_5cf8_a_a_c_c.o(.text)
 		asm/rom_c0/rom_5cf8_a_b.o(.text)
