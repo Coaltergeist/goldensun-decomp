@@ -217,3 +217,13 @@ u32 SomethingSaveHeader(u32 slot, const void *data) {
     ctx->counter[newSector] = header.counter;
     return 0;
 }
+
+s32 Func_8005a78(s32 arg0, void *arg2) {
+    struct FlashWork *ctx = iwram_3001f1c;
+    u32 res = Func_8005b24(arg0);
+    if (res > 15) return 1;
+    Func_80058ac(res);
+    DMA3_COPY(&ctx->sector[0x10], arg2, 0x3FC * 4);
+    WaitForDma3();
+    return 0;
+}
