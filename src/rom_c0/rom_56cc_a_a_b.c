@@ -34,8 +34,9 @@ extern void WaitFrames(u32 n);
 
 extern u8 sCamelotString[];
 
-u32 Func_80056cc(void)
-{
+s32 Func_80058ac(u32 arg0);
+
+u32 Func_80056cc(void) {
     struct FlashWork *work;
     struct FlashSectorHeader header;
     u8 *src;
@@ -82,11 +83,11 @@ u32 Func_80056cc(void)
     return 0;
 }
 
-u32 Func_8005b24(void);
-u32 Random();
+u32 Func_8005b24(u32);
+u32 Random(void);
 extern void* iwram_3001f1c;
 
-u32 Func_8005810(void) {
+u32 Func_8005810(u32 arg0) {
     u32 buf[16];
     u8 *ptr = iwram_3001f1c;
     u32 count = 0;
@@ -101,7 +102,7 @@ u32 Func_8005810(void) {
     if (count != 0) {
         if (count == 1) {
             slot = buf[0];
-            if (Func_8005b24() == 16)
+            if (Func_8005b24(arg0) == 16)
                 slot = 16;
         } else {
             slot = Random() % count;
@@ -115,7 +116,7 @@ s32 VerifyFlashSector(u16, s32);
 extern s32 (*ewram_2004c04)(u16, s32);
 
 
-u32 Func_8005868(u16 arg0) {
+u32 Func_8005868(u32 arg0) {
     s32 temp_r0;
     s32 temp_r6;
     u16 temp_r5;
@@ -133,7 +134,7 @@ u16 Func_8005ae0(void);
 void ReadFlash(u16 sectorNum, u32 offset, void *dest, u32 size);
 
 
-s32 Func_80058ac(u16 arg0) {
+s32 Func_80058ac(u32 arg0) {
     u16 buf[8];
     void *temp_r5 = iwram_3001f1c + 0x3C;
     ReadFlash(arg0, 0, temp_r5 + 4, 0x1000);
@@ -146,4 +147,73 @@ extern u16 (*ewram_2004c14)(u16);
 
 u16 Func_8005904(u16 arg) {
     return ewram_2004c14(arg);
+}
+
+extern u16 Func_8005c2c(u32 slot);
+extern u32 Func_8005868(u32 sector);
+extern u32 Func_8005b64(u32 sector);
+extern const u8 sCamelotString2[];
+
+// something with DMA is not lining up, this does not match with DMA3_CLEAR
+static inline void ClearSectorBuf(struct FlashWork *ctx) {
+    u32 tmp;
+    u32 zero = 0;
+    register u32 *_src __asm__("r0") = &tmp;
+    register u32 _dst __asm__("r1") = (u32)ctx->sector;
+    *_src = zero;
+    {
+        register vu32 *_base __asm__("r3") = &REG_DMA3SAD;
+        register u32 _cnt __asm__("r2") = 0x85000000 | (0x1000 / 4);
+        __asm__ volatile (
+            "stmia\t%0!, {%1, %2, %3}\n\t"
+            "sub\t%0, #0xc"
+            :
+            : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt)
+            : "memory"
+        );
+    }
+}
+
+u32 SomethingSaveHeader(u32 slot, const void *data) {
+    struct FlashSectorHeader header;
+    struct FlashWork *ctx = iwram_3001f1c; // *((struct FlashWork **)&gPtrs[0x33]) works too
+    u32 oldSector, newSector;
+    ClearSectorBuf(ctx);
+    WaitForDma3();
+
+    oldSector = Func_8005b24(slot);   // r7
+    newSector = Func_8005810(slot);   // r6
+    if (newSector > 15) return 1;
+
+    DMA3_COPY(data, ctx->sector + 0x10, 0xFF0);
+    WaitForDma3();
+
+    DMA3_COPY(sCamelotString2, &header, 8);
+    WaitForDma3();
+
+    header.slot = slot;
+    header.checksum = Func_8005ae0();
+    header.counter = Func_8005c2c(slot) + 1;
+
+    DMA3_COPY(&header, ctx->sector, sizeof(struct FlashSectorHeader));
+    WaitForDma3();
+
+    if (Func_8005868(newSector) != 0) return 1;
+    if (oldSector <= 15) {
+        if (Func_8005b64(oldSector) != 0) return 1;
+    }
+
+    if (header.counter > 0xFDE8) {
+        header.counter = 1;
+        DMA3_COPY(&header, ctx->sector, sizeof(struct FlashSectorHeader));
+        WaitForDma3();
+        if (Func_8005868(oldSector) != 0) return 1;
+        if (Func_8005b64(newSector) != 0) return 1;
+        newSector = oldSector;
+    }
+
+    ctx->valid[newSector] = 1;
+    ctx->slot[newSector] = slot;
+    ctx->counter[newSector] = header.counter;
+    return 0;
 }

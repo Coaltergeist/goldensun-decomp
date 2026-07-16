@@ -24,7 +24,7 @@
 	cmp	r3, #0
 	bne	.L5b84
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =.L79b8
+	ldr	r0, =sCamelotString2
 	add	r1, sp, #4
 	ldr	r2, =0x84000002
 	stmia	r3!, {r0, r1, r2}

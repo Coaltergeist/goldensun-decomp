@@ -72,9 +72,17 @@
 
 	.section .rodata
 	.global sCamelotString
-	.global .L79b8
+	.global sCamelotString2
 
 sCamelotString:
 	.ascii "CAMELOT\0"
-.L79b8:
-	.incrom 0x79b8, 0x7a0c
+sCamelotString2:
+	.ascii "CAMELOTT\0"
+
+.align 2, 0
+
+.ascii "Trans Data A: This is a pen.\0"
+.align 2, 0
+.ascii "Trans Data B: Hello world.\0"
+.align 2, 0
+.ascii "FLASH_V123\0"
