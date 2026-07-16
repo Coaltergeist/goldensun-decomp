@@ -13,4 +13,3 @@ void OvlFunc_936_20095e0(void)
     bit |= flags;
     *actor = bit;
 }
-asm(".align 2, 0\n.size OvlFunc_936_20095e0, . - OvlFunc_936_20095e0");

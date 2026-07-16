@@ -23,5 +23,3 @@ void OvlFunc_942_2008b68(int actor_id)
     value |= (unsigned int)status;
     *actor = value;
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_942_2008b68, . - OvlFunc_942_2008b68");

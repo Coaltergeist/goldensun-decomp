@@ -10,7 +10,6 @@ void OvlFunc_920_2008148(void)
     asm volatile("" : "+r"(sourceX), "+r"(sourceY));
     __Func_8010704(1, 0, 1, 1, sourceX, sourceY);
 }
-asm(".align 2, 0\n.size OvlFunc_920_2008148, . - OvlFunc_920_2008148");
 
 void OvlFunc_920_2008168(void)
 {
@@ -21,4 +20,3 @@ void OvlFunc_920_2008168(void)
     asm volatile("" : "+r"(sourceX), "+r"(sourceY));
     __Func_8010704(0, 0, 1, 1, sourceX, sourceY);
 }
-asm(".align 2, 0\n.size OvlFunc_920_2008168, . - OvlFunc_920_2008168");

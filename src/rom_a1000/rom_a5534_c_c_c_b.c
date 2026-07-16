@@ -27,4 +27,3 @@ done:
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
-asm(".align 2, 0\n.size Func_80a735c, .-Func_80a735c");

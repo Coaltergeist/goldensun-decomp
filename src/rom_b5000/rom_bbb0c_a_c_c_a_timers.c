@@ -21,7 +21,6 @@ int Func_80bf37c(int unitId)
     }
     return 0;
 }
-asm(".align 2, 0\n.size Func_80bf37c, . - Func_80bf37c");
 
 int Func_80bf3bc(int unitId)
 {
@@ -38,7 +37,6 @@ int Func_80bf3bc(int unitId)
     }
     return 0;
 }
-asm(".align 2, 0\n.size Func_80bf3bc, . - Func_80bf3bc");
 
 int Func_80bf400(int unitId)
 {
@@ -55,7 +53,6 @@ int Func_80bf400(int unitId)
     }
     return 0;
 }
-asm(".align 2, 0\n.size Func_80bf400, . - Func_80bf400");
 
 int Func_80bf440(int unitId)
 {
@@ -72,7 +69,6 @@ int Func_80bf440(int unitId)
     }
     return 0;
 }
-asm(".align 2, 0\n.size Func_80bf440, . - Func_80bf440");
 
 int Func_80bf484(int unitId)
 {
@@ -89,4 +85,3 @@ int Func_80bf484(int unitId)
     }
     return 0;
 }
-asm(".align 2, 0\n.size Func_80bf484, . - Func_80bf484");

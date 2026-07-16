@@ -86,4 +86,3 @@ void OvlFunc_968_20080e0(unsigned char *actor)
 }
 
 /* Count the original zero-fill alignment in the function's ELF size. */
-asm(".align 2, 0\n.size OvlFunc_968_20080e0, . - OvlFunc_968_20080e0");

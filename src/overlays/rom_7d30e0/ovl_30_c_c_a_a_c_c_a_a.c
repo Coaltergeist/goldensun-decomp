@@ -16,7 +16,6 @@ void OvlFunc_948_2009a70(void) {
     actor = __MapActor_GetActor(8);
     actor[0x23] = 2;
 }
-asm(".align 2, 0\n.size OvlFunc_948_2009a70, . - OvlFunc_948_2009a70");
 
 void OvlFunc_948_2009a9c(void) {
     register int arg4 asm("r3");
@@ -30,4 +29,3 @@ void OvlFunc_948_2009a9c(void) {
     actor = __MapActor_GetActor(8);
     actor[0x23] = 2;
 }
-asm(".align 2, 0\n.size OvlFunc_948_2009a9c, . - OvlFunc_948_2009a9c");

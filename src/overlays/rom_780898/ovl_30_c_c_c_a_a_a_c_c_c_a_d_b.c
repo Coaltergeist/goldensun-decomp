@@ -26,7 +26,6 @@ void OvlFunc_883_2009244(void)
 }
 
 /* Count the original alignment halfword in the function symbol size. */
-asm(".align 2, 0\n.size OvlFunc_883_2009244, . - OvlFunc_883_2009244");
 
 void OvlFunc_883_2009280(void)
 {
@@ -51,4 +50,3 @@ void OvlFunc_883_2009280(void)
 }
 
 /* Count the original alignment halfword in the function symbol size. */
-asm(".align 2, 0\n.size OvlFunc_883_2009280, . - OvlFunc_883_2009280");

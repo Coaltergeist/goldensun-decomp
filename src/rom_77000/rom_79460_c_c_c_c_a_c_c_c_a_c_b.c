@@ -27,4 +27,3 @@ int Func_807a2bc(unsigned int unit_id, unsigned int element, unsigned int bit)
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
-asm(".align 2, 0\n.size Func_807a2bc, .-Func_807a2bc");

@@ -28,4 +28,3 @@ int LoadStatusIcon(unsigned int status_id, unsigned int unused,
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
-asm(".align 2, 0\n.size LoadStatusIcon, .-LoadStatusIcon");

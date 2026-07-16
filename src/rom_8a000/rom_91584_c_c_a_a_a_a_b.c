@@ -28,4 +28,3 @@ void MapActor_WaitAnim(unsigned int actor_id, unsigned int expected_animation)
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
-asm(".align 2, 0\n.size MapActor_WaitAnim, .-MapActor_WaitAnim");

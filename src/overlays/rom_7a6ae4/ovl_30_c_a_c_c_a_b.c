@@ -14,7 +14,6 @@ void OvlFunc_920_2008280(void)
     __MapActor_DoAnim(0xf, 6);
     __CutsceneEnd();
 }
-asm(".align 2, 0\n.size OvlFunc_920_2008280, . - OvlFunc_920_2008280");
 
 void OvlFunc_920_20082ac(void)
 {
@@ -25,7 +24,6 @@ void OvlFunc_920_20082ac(void)
     __MapActor_DoAnim(0x10, 6);
     __CutsceneEnd();
 }
-asm(".align 2, 0\n.size OvlFunc_920_20082ac, . - OvlFunc_920_20082ac");
 
 void OvlFunc_920_20082d8(void)
 {
@@ -36,4 +34,3 @@ void OvlFunc_920_20082d8(void)
     __MapActor_DoAnim(0x11, 6);
     __CutsceneEnd();
 }
-asm(".align 2, 0\n.size OvlFunc_920_20082d8, . - OvlFunc_920_20082d8");

@@ -10,7 +10,6 @@ void Func_801e9a0(unsigned int value, unsigned int digits, void *box, int x,
 
     Func_801e858(PrintNum(text, value, digits), box, x, y);
 }
-asm(".align 2, 0\n.size Func_801e9a0, . - Func_801e9a0");
 
 void Func_801e9d4(unsigned int value, unsigned int digits, void *box, int x,
                   int y)
@@ -19,7 +18,6 @@ void Func_801e9d4(unsigned int value, unsigned int digits, void *box, int x,
 
     Func_801e8b0(PrintNum(text, value, digits), box, x, y);
 }
-asm(".align 2, 0\n.size Func_801e9d4, . - Func_801e9d4");
 
 void Func_801ea08(unsigned int value, unsigned int digits, void *box, int x,
                   int y)
@@ -28,4 +26,3 @@ void Func_801ea08(unsigned int value, unsigned int digits, void *box, int x,
 
     UIDrawText(PrintNum(text, value, digits), box, x, y);
 }
-asm(".align 2, 0\n.size Func_801ea08, . - Func_801ea08");

@@ -17,5 +17,3 @@ void OvlFunc_945_200b7b4(void)
         *flags = value;
     } while (actor_id <= 0x23);
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_945_200b7b4, . - OvlFunc_945_200b7b4");

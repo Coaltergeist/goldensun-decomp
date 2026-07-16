@@ -26,4 +26,3 @@ unsigned int OvlFunc_882_2008030(unsigned char *actor)
 }
 
 /* Count the original alignment halfword in the function symbol size. */
-asm(".align 2, 0\n.size OvlFunc_882_2008030, . - OvlFunc_882_2008030");

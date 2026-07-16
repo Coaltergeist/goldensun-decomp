@@ -14,5 +14,3 @@ void OvlFunc_927_20089dc(unsigned char *actor, int value)
     mask |= value;
     sprite[9] = mask;
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_927_20089dc, . - OvlFunc_927_20089dc");

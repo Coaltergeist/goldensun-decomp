@@ -21,5 +21,3 @@ void OvlFunc_930_2008870(void)
     y <<= 16;
     __MapActor_SetPos(actor, x, y);
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_930_2008870, . - OvlFunc_930_2008870");

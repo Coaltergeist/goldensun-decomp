@@ -29,4 +29,3 @@ int OvlFunc_938_2008230(void)
         OvlFunc_938_2008264();
     return 0;
 }
-asm(".align 2, 0\n.size OvlFunc_938_2008230, . - OvlFunc_938_2008230");

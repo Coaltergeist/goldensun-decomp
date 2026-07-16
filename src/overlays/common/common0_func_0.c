@@ -60,4 +60,3 @@ unsigned char *OvlFunc_common0_18(int x, int y, int z, int actor_id)
 }
 
 /* Preserve the aligned size used by the original common overlay object. */
-asm(".align 2, 0\n.size OvlFunc_common0_18, . - OvlFunc_common0_18");

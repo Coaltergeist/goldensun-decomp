@@ -56,4 +56,3 @@ int OvlFunc_888_2008848(unsigned char *actorArg)
 
     return 0;
 }
-asm(".align 2, 0\n.size OvlFunc_888_2008848, . - OvlFunc_888_2008848");

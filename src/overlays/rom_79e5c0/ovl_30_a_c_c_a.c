@@ -23,5 +23,3 @@ void OvlFunc_911_20080a0(unsigned char *actor)
         entry += 0x18;
     } while (index <= 8);
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_911_20080a0, . - OvlFunc_911_20080a0");

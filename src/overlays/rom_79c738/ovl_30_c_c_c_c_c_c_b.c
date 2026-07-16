@@ -16,7 +16,6 @@ void OvlFunc_909_2009958(void)
     SET_ACTOR_VALUE(3, 0x80);
 }
 
-__asm__(".align 2, 0\n.size OvlFunc_909_2009958, . - OvlFunc_909_2009958");
 
 void OvlFunc_909_2009984(void)
 {
@@ -24,5 +23,3 @@ void OvlFunc_909_2009984(void)
     SET_ACTOR_VALUE(2, 0xc0);
     SET_ACTOR_VALUE(3, 0xa0);
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_909_2009984, . - OvlFunc_909_2009984");

@@ -21,4 +21,3 @@ void OvlFunc_964_200970c(void)
     *actor = mask;
     __SetFlag(0x200);
 }
-asm(".align 2, 0\n.size OvlFunc_964_200970c, . - OvlFunc_964_200970c");

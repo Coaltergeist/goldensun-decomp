@@ -25,7 +25,6 @@ void OvlFunc_920_2008188(void)
                        destinationX, destinationY);
     }
 }
-asm(".align 2, 0\n.size OvlFunc_920_2008188, . - OvlFunc_920_2008188");
 
 void OvlFunc_920_20081bc(void)
 {
@@ -46,4 +45,3 @@ void OvlFunc_920_20081bc(void)
                        destinationX, destinationY);
     }
 }
-asm(".align 2, 0\n.size OvlFunc_920_20081bc, . - OvlFunc_920_20081bc");

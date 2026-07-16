@@ -47,4 +47,3 @@ unsigned char *OvlFunc_965_20089f4(int x, int y, int z, int actor_id)
 }
 
 /* Count the original zero-fill alignment in the function's ELF size. */
-asm(".align 2, 0\n.size OvlFunc_965_20089f4, . - OvlFunc_965_20089f4");
