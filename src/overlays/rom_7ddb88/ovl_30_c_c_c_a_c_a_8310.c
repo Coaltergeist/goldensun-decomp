@@ -1,52 +1,62 @@
 typedef unsigned char u8;
 
-extern u8 gState[];
-extern u8 *__MapActor_GetActor(int);
-extern void __CutsceneStart(void);
-extern void __CutsceneEnd(void);
-extern void __Actor_TravelTo(u8 *, int, int, int);
-extern void __Actor_SetAnim(u8 *, int);
-extern void __PlaySound(int);
-extern void __Actor_WaitMovement(u8 *);
+typedef struct {
+    int pad0;
+    int pad4;
+    int x;
+    int y;
+    int z;
+    u8 pad14[0x1c];
+    int speed;
+    int field34;
+} Actor;
 
-void OvlFunc_955_2008310(int actorId, int deltaX, int deltaZ)
+typedef struct {
+    u8 pad0[0x1f4];
+    int mapActor;
+} GameState;
+
+extern GameState gState;
+extern Actor *__MapActor_GetActor(int);
+extern void __CutsceneStart(void);
+extern void __Actor_TravelTo(Actor *, int, int, int);
+extern void __Actor_SetAnim(Actor *, int);
+extern void __PlaySound(int);
+extern void __Actor_WaitMovement(Actor *);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_955_2008310(int actorId, int dx, int dz)
 {
-    int offset;
-    int xDelta;
-    int zDelta;
-    u8 *primary;
-    u8 *actor;
+    Actor *first;
+    Actor *second;
     int x;
     int z;
 
-    offset = 0xfa;
-    offset <<= 1;
-    primary = __MapActor_GetActor(*(int *)(gState + offset));
-    actor = __MapActor_GetActor(actorId);
+    first = __MapActor_GetActor(gState.mapActor);
+    second = __MapActor_GetActor(actorId);
     __CutsceneStart();
 
-    xDelta = deltaX << 16;
-    x = ((*(int *)(primary + 8) + xDelta) & 0xfff00000) + 0x80000;
-    zDelta = deltaZ << 16;
-    z = ((*(int *)(primary + 0x10) + zDelta) & 0xfff00000) + 0x80000;
-    *(int *)(primary + 0x30) = 0x10000;
-    *(int *)(primary + 0x34) = 0x8000;
-    __Actor_TravelTo(primary, x, *(int *)(primary + 0xc), z);
-    __Actor_SetAnim(primary, 0x1b);
+    x = ((first->x + (dx << 16)) & 0xfff00000) + 0x80000;
+    z = ((first->z + (dz << 16)) & 0xfff00000) + 0x80000;
+    first->speed = 0x10000;
+    first->field34 = 0x8000;
+    __Actor_TravelTo(first, x, first->y, z);
+    __Actor_SetAnim(first, 0x1b);
 
-    x = ((*(int *)(actor + 8) + xDelta) & 0xfff00000) + 0x80000;
-    z = ((*(int *)(actor + 0x10) + zDelta) & 0xfff00000) + 0x80000;
-    *(int *)(actor + 0x30) = 0x10000;
-    *(int *)(actor + 0x34) = 0x8000;
-    __Actor_TravelTo(actor, x, *(int *)(actor + 0xc), z);
-    if (deltaX < 0 || deltaZ < 0) {
-        __Actor_SetAnim(actor, 4);
-    } else {
-        __Actor_SetAnim(actor, 3);
-    }
+    x = ((second->x + (dx << 16)) & 0xfff00000) + 0x80000;
+    z = ((second->z + (dz << 16)) & 0xfff00000) + 0x80000;
+    second->speed = 0x10000;
+    second->field34 = 0x8000;
+    __Actor_TravelTo(second, x, second->y, z);
+
+    if (dx < 0 || dz < 0)
+        __Actor_SetAnim(second, 4);
+    else
+        __Actor_SetAnim(second, 3);
+
     __PlaySound(0xe2);
-    __Actor_WaitMovement(primary);
+    __Actor_WaitMovement(first);
     __PlaySound(0x120);
-    __Actor_SetAnim(actor, 2);
+    __Actor_SetAnim(second, 2);
     __CutsceneEnd();
 }
