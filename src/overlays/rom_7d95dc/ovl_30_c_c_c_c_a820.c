@@ -43,7 +43,7 @@ static __inline__ void TravelAlt(s32 actor, u8 x, u8 z)
 void OvlFunc_953_200a820(void)
 {
     u8 *actor;
-    int facing;
+    s32 facing;
 
     if (__GetFlag(5) != 0) {
         __SetFlag(0x16d);
