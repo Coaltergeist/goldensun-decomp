@@ -7,30 +7,6 @@
  */
 extern unsigned int iwram_3001f1c;
 
-unsigned int Func_8005ae0(void) {
-    unsigned char *base;
-    unsigned char *p;
-    unsigned int sum;
-    unsigned int i;
-
-    base = (unsigned char *)iwram_3001f1c;
-    sum = 0;
-    i = 0;
-    p = base + 0x50;
-    do {
-        sum += p[0];
-        sum += p[1];
-        sum += p[2];
-        sum += p[3];
-        sum += p[4];
-        sum += p[5];
-        sum += p[6];
-        sum += p[7];
-        i += 8;
-        p += 8;
-    } while (i <= 0xfe7);
-    return sum;
-}
 unsigned int Func_8005b24(unsigned int arg0)
 {
     unsigned char *base;

@@ -85,11 +85,11 @@ u32 Func_80056cc(void) {
 
 u32 Func_8005b24(u32);
 u32 Random(void);
-extern void* iwram_3001f1c;
+extern struct FlashWork* iwram_3001f1c;
 
 u32 Func_8005810(u32 arg0) {
     u32 buf[16];
-    u8 *ptr = iwram_3001f1c;
+    u8 *ptr = &iwram_3001f1c->valid[0];
     u32 count = 0;
     u32 slot;
 
@@ -112,35 +112,29 @@ u32 Func_8005810(u32 arg0) {
     return slot;
 }
 
-s32 VerifyFlashSector(u16, s32);
-extern s32 (*ewram_2004c04)(u16, s32);
+s32 VerifyFlashSector(u16, u8 *);
+extern s32 (*ewram_2004c04)(u16, u8 *);
 
 
 u32 Func_8005868(u32 arg0) {
-    s32 temp_r0;
-    s32 temp_r6;
-    u16 temp_r5;
-
-    temp_r5 = arg0;
-    temp_r6 = iwram_3001f1c + 0x3C;
-    if ((ewram_2004c04(temp_r5, temp_r6 + 4) << 0x10) != 0) {
-        return 1U;
-    }
-    temp_r0 = VerifyFlashSector(temp_r5, temp_r6 + 4);
-    return (u32) ((0 - temp_r0) | temp_r0) >> 0x1F;
+    s32 res;
+    struct FlashWork *ctx = iwram_3001f1c;
+    if ((ewram_2004c04(arg0, ctx->sector) << 0x10) != 0) return 1;
+    res = VerifyFlashSector(arg0, ctx->sector);
+    return (u32) ((0 - res) | res) >> 0x1F;
 }
 
-u16 Func_8005ae0(void);
+u32 Func_8005ae0(void);
 void ReadFlash(u16 sectorNum, u32 offset, void *dest, u32 size);
 
 
 s32 Func_80058ac(u32 arg0) {
     u16 buf[8];
-    void *temp_r5 = iwram_3001f1c + 0x3C;
-    ReadFlash(arg0, 0, temp_r5 + 4, 0x1000);
-    DMA3_COPY(temp_r5 + 4, buf, 16);
+    struct FlashWork *ctx = iwram_3001f1c;
+    ReadFlash(arg0, 0, ctx->sector, 0x1000);
+    DMA3_COPY(ctx->sector, buf, 16);
     WaitForDma3();
-    return Func_8005ae0() - buf[4];
+    return (u16)Func_8005ae0() - buf[4];
 }
 
 extern u16 (*ewram_2004c14)(u16);
@@ -234,4 +228,26 @@ u32 Func_8005ac0(u32 arg0) {
     if (res > 15) return 1;
     temp_r0 = Func_8005b64(res);
     return (u32) ((-temp_r0) | temp_r0) >> 0x1F;
+}
+
+u32 Func_8005ae0(void) {
+    u8 *p;
+    u32 sum;
+    u32 i;
+    sum = 0;
+    i = 0;
+    p = &iwram_3001f1c->sector[0x10];
+    do {
+        sum += p[0];
+        sum += p[1];
+        sum += p[2];
+        sum += p[3];
+        sum += p[4];
+        sum += p[5];
+        sum += p[6];
+        sum += p[7];
+        i += 8;
+        p += 8;
+    } while (i < 0xfe8);
+    return sum;
 }
