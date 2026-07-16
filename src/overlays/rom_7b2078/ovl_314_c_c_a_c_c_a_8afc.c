@@ -1,0 +1,112 @@
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void *__MapActor_GetActor(int id);
+extern void __WaitFrames(int count);
+extern void __Func_809280c(int a, int b, int c);
+extern int __GetFlag(int flag);
+extern void __MessageID(int id);
+extern void __ActorMessage(int id, int arg);
+extern void __MapActor_SetBehavior(int id, void *script);
+extern int gScript_926__0200c638;
+
+void OvlFunc_926_2008afc(void)
+{
+    register int zero asm("r5");
+
+    asm volatile(
+        "bl\t__CutsceneStart\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "mov\tr3, #0\n\t"
+        "add\tr0, #0x5b\n\t"
+        "strb\tr3, [r0]\n\t"
+        "b\t2f\n\t"
+        "1:\n\t"
+        "mov\tr0, #1\n\t"
+        "bl\t__WaitFrames\n\t"
+        "2:\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "ldr\tr3, [r0, #0xc]\n\t"
+        "cmp\tr3, #0\n\t"
+        "bgt\t1b\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "mov\tr5, #0\n\t"
+        "str\tr5, [r0, #0xc]\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "mov\tr3, #0x80\n\t"
+        "lsl\tr3, #24\n\t"
+        "str\tr3, [r0, #0x3c]\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "str\tr5, [r0, #0x28]\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "mov\tr3, #1\n\t"
+        "add\tr0, #0x5b\n\t"
+        "strb\tr3, [r0]\n\t"
+        "mov\tr1, #0\n\t"
+        "mov\tr0, #0xc\n\t"
+        "mov\tr2, #0\n\t"
+        "bl\t__Func_809280c\n\t"
+        "ldr\tr0, 11f\n\t"
+        "bl\t__GetFlag\n\t"
+        "cmp\tr0, #0\n\t"
+        "beq\t3f\n\t"
+        "ldr\tr0, 12f\n\t"
+        "bl\t__MessageID\n\t"
+        "b\t5f\n\t"
+        "3:\n\t"
+        "ldr\tr0, 13f\n\t"
+        "bl\t__GetFlag\n\t"
+        "cmp\tr0, #0\n\t"
+        "beq\t4f\n\t"
+        "ldr\tr0, 14f\n\t"
+        "bl\t__MessageID\n\t"
+        "b\t5f\n\t"
+        ".align\t2, 0\n\t"
+        "11:\n\t"
+        ".word\t0x895\n\t"
+        "12:\n\t"
+        ".word\t0x1a5b\n\t"
+        "13:\n\t"
+        ".word\t0x89b\n\t"
+        "14:\n\t"
+        ".word\t0x189e\n\t"
+        "4:\n\t"
+        "ldr\tr0, 15f\n\t"
+        "bl\t__MessageID\n\t"
+        "5:\n\t"
+        "mov\tr1, #0\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__ActorMessage\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "mov\tr3, #0x80\n\t"
+        "lsl\tr3, #7\n\t"
+        "strh\tr3, [r0, #6]\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_GetActor\n\t"
+        "ldr\tr5, 16f\n\t"
+        "add\tr0, #0x5b\n\t"
+        "strb\tr5, [r0]\n\t"
+        "ldr\tr1, 17f\n\t"
+        "mov\tr0, #0xc\n\t"
+        "bl\t__MapActor_SetBehavior\n\t"
+        "bl\t__CutsceneEnd\n\t"
+        "b\t8f\n\t"
+        ".align\t2, 0\n\t"
+        "16:\n\t"
+        ".word\t0\n\t"
+        "15:\n\t"
+        ".word\t0x182a\n\t"
+        "17:\n\t"
+        ".word\tgScript_926__0200c638\n\t"
+        "8:\n\t"
+        : "=r"(zero)
+        :
+        : "r0", "r1", "r2", "r3", "r4", "lr", "cc", "memory");
+    (void)zero;
+}
