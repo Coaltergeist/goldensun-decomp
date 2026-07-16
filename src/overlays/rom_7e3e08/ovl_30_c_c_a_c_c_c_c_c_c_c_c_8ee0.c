@@ -38,4 +38,3 @@ void OvlFunc_957_2008ee0(struct OvlActor957_8ee0 *actor)
 }
 
 /* Include the original trailing alignment in the function symbol size. */
-asm(".size OvlFunc_957_2008ee0, 48");

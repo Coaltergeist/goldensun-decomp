@@ -15,5 +15,3 @@ int Func_80bf524(int unitId)
 
     return 0;
 }
-
-asm(".size Func_80bf524, 40");

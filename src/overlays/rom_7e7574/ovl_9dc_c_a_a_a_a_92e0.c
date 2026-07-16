@@ -18,5 +18,3 @@ void OvlFunc_959_20092e0(void)
     OvlFunc_959_2009b24(10);
     __CutsceneEnd();
 }
-
-asm(".size OvlFunc_959_20092e0, 68");

@@ -6,4 +6,3 @@ unsigned int OvlFunc_968_2008594(unsigned int actor) {
 }
 
 /* The original function-size directive includes its two alignment bytes. */
-asm(".size OvlFunc_968_2008594, 24");

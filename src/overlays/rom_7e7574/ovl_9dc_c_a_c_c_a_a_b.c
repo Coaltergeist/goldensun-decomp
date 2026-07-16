@@ -16,5 +16,3 @@ void OvlFunc_959_200a2a0(void)
 }
 
 /* Include the original trailing alignment in the function symbol sizes. */
-asm(".size OvlFunc_959_200a26c, 52");
-asm(".size OvlFunc_959_200a2a0, 52");

@@ -33,7 +33,6 @@ void Func_80c0e38(void)
     } while (step <= 0x10);
 }
 
-asm(".size Func_80c0e38, 56");
 
 void Func_80c0e70(void)
 {
@@ -65,5 +64,3 @@ void Func_80c0e70(void)
         step += 2;
     } while (step <= 0x10);
 }
-
-asm(".size Func_80c0e70, 56");

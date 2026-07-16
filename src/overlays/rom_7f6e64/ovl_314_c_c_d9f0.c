@@ -29,5 +29,3 @@ void OvlFunc_969_200d9f0(unsigned char *object)
         }
     }
 }
-
-asm(".size OvlFunc_969_200d9f0, 56");

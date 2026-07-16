@@ -14,5 +14,3 @@ void Func_8092848(int firstActorId, int secondActorId, int waitFrames)
         CutsceneWait(waitFrames);
     }
 }
-
-asm(".size Func_8092848, 48");

@@ -25,4 +25,3 @@ void OvlFunc_964_2008dc8(void)
 }
 
 /* The original function-size directive includes its two alignment bytes. */
-asm(".size OvlFunc_964_2008dc8, 44");

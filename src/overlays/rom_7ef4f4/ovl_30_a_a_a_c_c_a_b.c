@@ -33,4 +33,3 @@ void OvlFunc_965_20089dc(MapActor *actor, int value)
 }
 
 /* Include the original trailing alignment in the function symbol size. */
-asm(".size OvlFunc_965_20089dc, 24");

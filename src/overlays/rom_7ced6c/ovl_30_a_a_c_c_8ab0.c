@@ -9,5 +9,3 @@ void OvlFunc_946_2008ab0(unsigned char *object)
     *(unsigned short *)(*(unsigned char **)(object + 0x50) + 0x1e) +=
         *(unsigned short *)(object + 0x64);
 }
-
-asm(".size OvlFunc_946_2008ab0, 56");

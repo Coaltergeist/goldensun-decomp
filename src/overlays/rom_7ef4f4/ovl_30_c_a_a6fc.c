@@ -34,5 +34,3 @@ void OvlFunc_965_200a6fc(void)
 nearby:
     OvlFunc_965_20080c4();
 }
-
-asm(".size OvlFunc_965_200a6fc, 60");

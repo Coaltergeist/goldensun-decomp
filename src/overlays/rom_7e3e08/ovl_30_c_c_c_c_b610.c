@@ -29,4 +29,3 @@ void OvlFunc_957_200b610(unsigned char *actor)
 }
 
 /* Include the original trailing alignment in the function symbol size. */
-asm(".size OvlFunc_957_200b610, 52");

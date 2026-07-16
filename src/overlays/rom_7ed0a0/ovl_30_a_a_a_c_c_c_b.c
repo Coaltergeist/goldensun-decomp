@@ -36,4 +36,3 @@ void OvlFunc_964_2008ab0(Actor *actor)
 }
 
 /* The original Thumb symbol includes its two-byte alignment padding. */
-asm(".size OvlFunc_964_2008ab0, 56");
