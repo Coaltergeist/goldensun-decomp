@@ -11,4 +11,3 @@ void OvlFunc_888_200a660(void)
 }
 
 /* Count the original alignment halfword in the function symbol size. */
-asm(".align 2, 0\n.size OvlFunc_888_200a660, . - OvlFunc_888_200a660");

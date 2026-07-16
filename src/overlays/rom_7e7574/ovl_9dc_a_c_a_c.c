@@ -18,4 +18,3 @@ void OvlFunc_959_2008b4c(void)
         actor[0x23] = 2;
     }
 }
-asm(".align 2, 0\n.size OvlFunc_959_2008b4c, . - OvlFunc_959_2008b4c");

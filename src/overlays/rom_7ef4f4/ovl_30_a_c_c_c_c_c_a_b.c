@@ -17,4 +17,3 @@ void OvlFunc_965_200a4b0(void)
 }
 
 /* Count the original zero-fill alignment in the function's ELF size. */
-asm(".align 2, 0\n.size OvlFunc_965_200a4b0, . - OvlFunc_965_200a4b0");

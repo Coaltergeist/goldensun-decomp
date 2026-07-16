@@ -8,4 +8,3 @@ void OvlFunc_934_2009378(void)
     __MapActor_SetAnim(8, 0);
     __CutsceneEnd();
 }
-asm(".align 2, 0\n.size OvlFunc_934_2009378, . - OvlFunc_934_2009378");

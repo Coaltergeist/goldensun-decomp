@@ -8,5 +8,3 @@ void OvlFunc_932_200b724(unsigned char *actor)
     *state = value;
     __PlaySound(0x120);
 }
-
-__asm__(".align 2, 0\n.size OvlFunc_932_200b724, . - OvlFunc_932_200b724");

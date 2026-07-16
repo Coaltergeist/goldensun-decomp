@@ -38,4 +38,3 @@ int OvlFunc_927_200aba4(FloatingItemActor *actor)
     actor->phase += ((randomA << 9) >> 16) + ((randomB << 9) >> 16) + 0x400;
     return 0;
 }
-asm(".align 2, 0\n.size OvlFunc_927_200aba4, . - OvlFunc_927_200aba4");

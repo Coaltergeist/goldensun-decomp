@@ -8,4 +8,3 @@ void OvlFunc_948_2008ec8(void)
     __MapActor_SetAnim(0xf, 0);
     __CutsceneEnd();
 }
-asm(".align 2, 0\n.size OvlFunc_948_2008ec8, . - OvlFunc_948_2008ec8");

@@ -12,4 +12,3 @@ void LoadOldMoveIcon(unsigned int move_id, unsigned int variant,
 }
 
 /* Camelot counted the trailing zero-fill halfword in the function size. */
-asm(".align 2, 0\n.size LoadOldMoveIcon, .-LoadOldMoveIcon");
