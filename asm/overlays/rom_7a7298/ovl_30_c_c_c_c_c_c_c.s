@@ -519,6 +519,8 @@
 	.section .data
 	.global .L3190
 	.global .L31a8
+	.global L3190
+	.global L31a8
 	.global .L31c0
 	.global .L31d6
 	.global gScript_921__0200a4f4
@@ -582,8 +584,10 @@ gOvl_0200aa58:
 .L2db8:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x2db8, (0x3190-0x2db8)
 .L3190:
+L3190:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x3190, (0x31a8-0x3190)
 .L31a8:
+L31a8:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x31a8, (0x31c0-0x31a8)
 .L31c0:
 	.incbin "overlays/rom_7a7298/orig.bin", 0x31c0, (0x31d6-0x31c0)
