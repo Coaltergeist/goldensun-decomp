@@ -1,11 +1,17 @@
+--langdef=asmgs{base=asm}
+--kinddef-asmgs=f,fnmacro,functions
+--kinddef-asmgs=s,syms,symbols
+
 # Functions defined via `.thumb_func_start` are duplicated in tags, each with a variant starting with `_`.
 # This lets stubs point to the original function. Although there will be false positives with this, it shouldn't hinder
 # jump-to-definition behavior.
-
---langdef=asmgs{base=asm}
---kinddef-asmgs=f,fnmacro,functions
 --regex-asmgs=/^.thumb_func_start[[:blank:]]*([a-zA-Z0-9_]*).*$/\1/f
 --regex-asmgs=/^.thumb_func_start[[:blank:]]*([a-zA-Z0-9_]*).*$/_\1/f
+
+--regex-asmgs=/^.arm_func_start[[:blank:]]*([a-zA-Z0-9_]*).*$/\1/f
+--regex-asmgs=/^.thumb_stub[[:blank:]]*([a-zA-Z0-9_]*).*$/\1/f
+
+--regex-asmgs=/^.func_end_emit_size[[:blank:]]*([a-zA-Z0-9_]*),[[:blank:]]*([a-zA-Z0-9_]*).*$/\2/s
 
 --langdef=gssym
 --map-gssym=+.sym
