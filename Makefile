@@ -203,9 +203,11 @@ clean::
 
 # Builds ctags using custom parsing on top of asm.
 # Ensure https://github.com/universal-ctags/ctags is installed to use.
-# Generates build artifact `tags`.
+# Generates build artifact `tags`. .PHONY so the index refreshes as
+# matches land (the recipe writes a file literally named `tags`).
+.PHONY: tags
 tags:
-	ctags -R --options=.opts.ctags **/* *
+	ctags -R --options=.opts.ctags .
 
 # Tools are compiled for the host and used during the build.
 
