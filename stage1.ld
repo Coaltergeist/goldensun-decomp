@@ -1837,7 +1837,7 @@ SECTIONS {
 		asm/rom_c9000/rom_d5258_c_c_c_c_c_c_c.o(.text)
 		asm/rom_c9000/rom_d6504_a_a.o(.text)
 		asm/rom_c9000/rom_d6504_a_b.o(.text)
-		asm/rom_c9000/rom_d6504_a_c.o(.text)
+		src/rom_c9000/rom_d6504_a_c_d6578.o(.text)
 		src/rom_c9000/rom_d6504_a_c_b.o(.text)
 		asm/rom_c9000/rom_d6504_a_c.o(.text.after)
 		src/rom_c9000/rom_d6504_a_c_d66cc.o(.text)
