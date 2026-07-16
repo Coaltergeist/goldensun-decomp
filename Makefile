@@ -16,11 +16,9 @@ compare-overlays: $(COMPARE_OVERLAYS)
 $(COMPARE_OVERLAYS): compare-%: %/orig.bin %/overlay.bin
 	cmp $*/orig.bin $*/overlay.bin
 
-
 # Empty clean target. Recipes will be added below.
 .PHONY: clean
 clean::
-
 
 # The ROM image includes compressed code overlays.
 # The overlays reference symbols defined in the main executable.
@@ -198,11 +196,16 @@ DEPS := $(SRCS:.s=.d)
 LDS  := $(wildcard *.ld */*/*.ld)
 MAPS := $(LDS:.ld=.map)
 clean::
-	-$(RM) $(ROM) $(OVERLAYS) $(ELFS) $(MAPS)
+	-$(RM) $(ROM) $(OVERLAYS) $(ELFS) $(MAPS) tags
 	-find asm src overlays -type f \( -name '*.o' -o -name '*.d' -o -name '*.i' \) -delete 2>/dev/null
 	-find src -name '*.c' -printf '%P\n' 2>/dev/null | sed 's|\.c$$|.s|' | \
 	    while read rel; do $(RM) "src/$$rel" "asm/$$rel"; done
 
+# Builds ctags using custom parsing on top of asm.
+# Ensure https://github.com/universal-ctags/ctags is installed to use.
+# Generates build artifact `tags`.
+tags:
+	ctags -R --options=.opts.ctags **/* *
 
 # Tools are compiled for the host and used during the build.
 
