@@ -205,14 +205,14 @@ gCommon1SpriteGfxLz:
 	.global .L15
 	.global .L16
 	.global .L10
-	.global .L11
+	.global gCommon1DefaultTransitionEffectScript
 	.global .L12
 	.global .L13
 	.global .L14
 
 .L10:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x457c, (0x457e-0x457c)
-.L11:
+gCommon1DefaultTransitionEffectScript:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x457e, (0x45aa-0x457e)
 .L12:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x45aa, (0x4628-0x45aa)

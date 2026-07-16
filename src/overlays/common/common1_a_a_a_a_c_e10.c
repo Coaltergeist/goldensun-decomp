@@ -47,7 +47,7 @@ extern void *L37 asm(".L37");
 extern u16 L46 asm(".L46");
 extern u16 L24 asm(".L24");
 extern int L25 asm(".L25");
-extern const char L11[] asm(".L11");
+extern u16 gCommon1DefaultTransitionEffectScript[22];
 extern const char L2[] asm(".L2");
 extern const char L12[] asm(".L12");
 extern const char L3[] asm(".L3");
@@ -64,7 +64,7 @@ void OvlFunc_common1_e10(int type, int direction)
     L22 = direction << 4;
     __StartTask(OvlFunc_common1_920, 0xc80);
 
-    data = L11;
+    data = (const char *)gCommon1DefaultTransitionEffectScript;
     if (type == 2)
         data = L2;
     if (type == 4)
