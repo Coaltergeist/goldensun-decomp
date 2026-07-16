@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster GetEnemyUnk..GetEnemyUnk extracted from goldensun/asm/rom_b5000/rom_c1a34_a_a_c_c_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
@@ -6,6 +5,10 @@
  * asm/rom_b5000/rom_c1a34_a_a_c_c_a_a.o and asm/rom_b5000/rom_c1a34_a_a_c_c_a_c.o in
  * goldensun/stage1.ld.
  */
+extern int park(int, int);
+extern int r2(int);
+extern int reg(int, int, int);
+
 /* GetEnemyUnk @ 0x080c2434  (was Func_80c2434; renamed by the weekend alias pass)
  * [asm/rom_b5000/rom_c1a34_a_a_c_c_a.s]
  *
@@ -18,17 +21,14 @@ extern unsigned char Lc7420[] __asm__(".Lc7420");
 
 unsigned int GetEnemyUnk(unsigned int param_1)
 {
-    register unsigned char *t __asm__("r3");
-    register unsigned int idx __asm__("r2");
-    register unsigned char *p __asm__("r2");
+    unsigned char *t;
+    unsigned int idx;
+    unsigned char *p;
 
     if (param_1 > 0xab)
         return 0;
     t = Lc7420;
-    __asm__ volatile ("" : : "r" (t));
     idx = param_1 << 3;
-    __asm__ volatile ("" : : "r" (idx));
     p = (unsigned char *)(idx + (unsigned int)t);
-    __asm__ volatile ("" : : "r" (p));
     return ((unsigned int)p[3] << 31) >> 31;
 }
