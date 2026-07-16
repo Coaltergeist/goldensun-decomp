@@ -1,5 +1,5 @@
 extern unsigned int __Random(void);
-extern unsigned short threshold asm(".L5238");
+extern unsigned short gOvl932FlashThreshold;
 
 void OvlFunc_932_20086a0(void)
 {
@@ -8,7 +8,7 @@ void OvlFunc_932_20086a0(void)
     register int flag asm("r3");
     register unsigned int stored asm("r3");
 
-    if (((__Random() * 100) >> 16) >= threshold) {
+    if (((__Random() * 100) >> 16) >= gOvl932FlashThreshold) {
         flag = 0x80;
         asm("" : "+r" (flag));
         flag <<= 2;

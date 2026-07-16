@@ -468,13 +468,13 @@ gScript_881__0200cebc:
 	.incbin "overlays/rom_7b9cb4/orig.bin", 0x51b4
 
 	.section .bss
-	.global .L5238
+	.global gOvl932FlashThreshold
 	.global .L523c
 	.global .L5240
 	.global .L525c
 	.global .L5260
 
-	.lcomm	.L5238, 4
+	.lcomm	gOvl932FlashThreshold, 4
 	.lcomm	.L523c, 4
 	.lcomm	.L5240, 0x1c
 	.lcomm	.L525c, 4
