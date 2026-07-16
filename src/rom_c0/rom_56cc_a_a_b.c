@@ -251,3 +251,23 @@ u32 Func_8005ae0(void) {
     } while (i < 0xfe8);
     return sum;
 }
+
+u32 Func_8005b24(u32 slot) {
+    u16 *counter;
+    struct FlashWork *ctx;
+    u32 i;
+    u32 best;
+    u32 result;
+
+    ctx = iwram_3001f1c;
+    counter = &ctx->counter[0];
+    best = 0;
+    result = 16;
+    for (i = 0; i < 16; i++) {
+        if (ctx->valid[i] != 0 && slot == ctx->slot[i] && best < counter[i]) {
+            best = counter[i];
+            result = i;
+        }
+    }
+    return result;
+}
