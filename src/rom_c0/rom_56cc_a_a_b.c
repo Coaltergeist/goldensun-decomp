@@ -66,7 +66,7 @@ u32 Func_80056cc(void) {
         result = Func_80058ac(i);
         DMA3_COPY(src, &header, sizeof(header));
         WaitForDma3();
-        if (Func_8005c08(&header, sCamelotString, 7) != 0) continue;
+        if (Func_8005c08(&header.magic, sCamelotString, 7) != 0) continue;
         work->counter[i] = header.counter;
         if (header.slot > 0xF || result != 0) continue;
         work->valid[i] = 1;
@@ -205,7 +205,7 @@ u32 SomethingSaveHeader(u32 slot, const void *data) {
 
     if (header.counter > 0xFDE8) {
         header.counter = 1;
-        DMA3_COPY(&header, ctx->sector, sizeof(struct FlashSectorHeader));
+        DMA3_COPY(&header.magic, ctx->sector, sizeof(struct FlashSectorHeader));
         WaitForDma3();
         if (Func_8005868(oldSector) != 0) return 1;
         if (Func_8005b64(newSector) != 0) return 1;
