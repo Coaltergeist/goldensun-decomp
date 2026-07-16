@@ -227,3 +227,11 @@ s32 Func_8005a78(s32 arg0, void *arg2) {
     WaitForDma3();
     return 0;
 }
+
+u32 Func_8005ac0(u32 arg0) {
+    u32 temp_r0;
+    u32 res = Func_8005b24(arg0);
+    if (res > 15) return 1;
+    temp_r0 = Func_8005b64(res);
+    return (u32) ((-temp_r0) | temp_r0) >> 0x1F;
+}
