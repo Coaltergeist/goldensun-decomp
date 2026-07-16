@@ -1338,6 +1338,7 @@ SECTIONS {
 		asm/rom_a1000/rom_a5534_c_c_a.o(.text)
 		src/rom_a1000/rom_a5534_c_c_a_b.o(.text)
 		asm/rom_a1000/rom_a5534_c_c_a.o(.text.after)
+		src/rom_a1000/rom_a5534_c_c_a_a6794.o(.text)
 		asm/rom_a1000/rom_a5534_c_c_b.o(.text)
 		asm/rom_a1000/rom_a5534_c_c_c.o(.text)
 		src/rom_a1000/rom_a5534_c_c_c_actoruse.o(.text)
