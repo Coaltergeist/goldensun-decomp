@@ -1,75 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_888_2008070
-	push	{lr}
-	ldr	r3, =gState
-	mov	r2, #0xe1
-	lsl	r2, #1
-	add	r3, r2
-	mov	r2, #0
-	ldrsh	r3, [r3, r2]
-	sub	r3, #1
-	cmp	r3, #0x22
-	bhi	.L128
-	ldr	r2, =.L8c
-	lsl	r3, #2
-	ldr	r3, [r3, r2]
-	mov	pc, r3
-	.align	2, 0
-.L8c:
-	.word	.L118
-	.word	.L118
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L11c
-	.word	.L11c
-	.word	.L11c
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L120
-	.word	.L120
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L128
-	.word	.L124
-	.word	.L128
-	.word	.L128
-	.word	.L124
-	.word	.L128
-	.word	.L128
-	.word	.L11c
-.L118:
-	ldr	r0, =.L3c0c
-	b	.L12a
-.L11c:
-	ldr	r0, =.L3ccc
-	b	.L12a
-.L120:
-	ldr	r0, =.L3d2c
-	b	.L12a
-.L124:
-	ldr	r0, =.L3e04
-	b	.L12a
-.L128:
-	ldr	r0, =.L3bf4
-.L12a:
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_888_2008070
+	.section .text.after_8070, "ax", %progbits
 
 .thumb_func_start OvlFunc_888_200814c
 	push	{lr}
@@ -329,4 +260,3 @@
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_888_2008360
-
