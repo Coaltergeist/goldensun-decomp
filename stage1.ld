@@ -1997,6 +1997,7 @@ SECTIONS {
 		src/rom_f0000/rom_f0254_a_grid.o(.text)
 		asm/rom_f0000/rom_f0254_b.o(.text)
 		asm/rom_f0000/rom_f0254_c.o(.text)
+		src/rom_f0000/rom_f0254_c_f0538.o(.text)
 		src/rom_f0000/rom_f0254_c_0614.o(.text)
 		asm/rom_f0000/rom_f0254_c.o(.text.after_f0614)
 
