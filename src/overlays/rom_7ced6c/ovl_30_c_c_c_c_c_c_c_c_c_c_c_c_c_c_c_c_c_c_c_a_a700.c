@@ -1,0 +1,85 @@
+typedef unsigned char u8;
+typedef unsigned int u32;
+
+typedef struct {
+    u8 pad00[8];
+    int x;
+    int y;
+    int z;
+} Actor;
+
+extern Actor *__MapActor_GetActor(int);
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+extern void __Func_8010704(int, int, int, int, int, int);
+
+void OvlFunc_946_200a700(void)
+{
+    int x;
+    u32 z;
+    int other_x;
+    int third_x;
+    int fourth_x;
+    int final_z;
+    int new_x;
+
+    x = __MapActor_GetActor(9)->x >> 20;
+    z = __MapActor_GetActor(9)->z >> 20;
+    other_x = __MapActor_GetActor(0x13)->x >> 20;
+    third_x = __MapActor_GetActor(0xe)->x >> 20;
+    fourth_x = __MapActor_GetActor(0x10)->x >> 20;
+
+    if (z == 0x13) {
+        if ((u32)(other_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x10);
+        else if ((u32)(third_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x40);
+        else if ((u32)(fourth_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x70);
+        else {
+            OvlFunc_946_2009774(9, 0, -0x50);
+            OvlFunc_946_2009774(9, 0, -0x60);
+        }
+    } else if (z == 0x12) {
+        if ((u32)(other_x - 9) <= 2)
+            return;
+        if ((u32)(third_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x30);
+        else if ((u32)(fourth_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x60);
+        else {
+            OvlFunc_946_2009774(9, 0, -0x60);
+            OvlFunc_946_2009774(9, 0, -0x40);
+        }
+    } else if (z == 0xf) {
+        if ((u32)(third_x - 9) <= 2)
+            return;
+        if ((u32)(fourth_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x30);
+        else
+            OvlFunc_946_2009774(9, 0, -0x70);
+    } else if (z == 0xe) {
+        if ((u32)(third_x - 9) <= 2)
+            return;
+        if ((u32)(fourth_x - 9) <= 2)
+            OvlFunc_946_2009774(9, 0, -0x20);
+        else
+            OvlFunc_946_2009774(9, 0, -0x60);
+    } else if (z == 0xc) {
+        if ((u32)(fourth_x - 9) <= 2)
+            return;
+        OvlFunc_946_2009774(9, 0, -0x40);
+    } else if (z == 0xb) {
+        if ((u32)(fourth_x - 9) <= 2)
+            return;
+        OvlFunc_946_2009774(9, 0, -0x30);
+    } else if (z <= 9) {
+        return;
+    }
+
+    __WaitFrames(2);
+    final_z = __MapActor_GetActor(9)->z >> 20;
+    new_x = x - 1;
+    __Func_8010704(new_x, z, 3, 1, new_x, final_z);
+    __Func_8010704(0, 0, 3, 1, new_x, z);
+}
