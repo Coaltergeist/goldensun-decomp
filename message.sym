@@ -10,7 +10,7 @@ _MSG_18 = 0x18;
 _MSG_19 = 0x19;
 _MSG_1a = 0x1a;
 
-/* Shiftable __MessageID values; semantic names are not yet reconstructed. */
+# shiftable __MessageID IDs (named by value; pending semantic names)
 _MSG_e30 = 0xe30;
 _MSG_e70 = 0xe70;
 _MSG_eb0 = 0xeb0;
