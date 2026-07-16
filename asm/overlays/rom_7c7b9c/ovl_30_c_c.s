@@ -890,7 +890,7 @@ gOvl943FlagResults:
 	.global .L5b58
 	.global .L5b60
 	.global .L5b70
-	.global .L5b90
+	.global gOvl943ActorXPositions
 
 	.lcomm	.L5b30, 8
 	.lcomm	.L5b38, 4
@@ -903,4 +903,4 @@ gOvl943FlagResults:
 	.lcomm	.Lunused_5b68, 4
 	.lcomm	.Lunused_5b6c, 4
 	.lcomm	.L5b70, 0x20
-	.lcomm	.L5b90, 4
+	.lcomm	gOvl943ActorXPositions, 0x20

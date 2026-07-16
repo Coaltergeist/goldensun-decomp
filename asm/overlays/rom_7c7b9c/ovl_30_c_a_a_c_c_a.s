@@ -102,7 +102,7 @@
 	mov	r3, r11
 	asr	r0, #5
 	strh	r0, [r3, #0x1e]
-	ldr	r3, =.L5b90
+	ldr	r3, =gOvl943ActorXPositions
 	mov	r1, r8
 	ldr	r3, [r3, r1]
 	lsl	r2, r7, #2
@@ -123,7 +123,7 @@
 	mov	r1, r11
 	asr	r0, #5
 	strh	r0, [r1, #0x1e]
-	ldr	r3, =.L5b90
+	ldr	r3, =gOvl943ActorXPositions
 	mov	r1, r8
 	ldr	r3, [r3, r1]
 	lsl	r2, r7, #2
@@ -194,7 +194,7 @@
 	mov	r0, #8
 	mov	r8, r2
 	bl	__MapActor_GetActor
-	ldr	r3, =.L5b90
+	ldr	r3, =gOvl943ActorXPositions
 	mov	r10, r3
 	ldr	r3, [r0, #0x10]
 	mov	r2, r10
