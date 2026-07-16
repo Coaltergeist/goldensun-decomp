@@ -214,6 +214,11 @@
 	.global .L17a4
 	.global .L17ba
 	.global .L17d0
+	.global gOvlData_928__02009778
+	.global gOvlData_928__0200978e
+	.global gOvlData_928__020097a4
+	.global gOvlData_928__020097ba
+	.global gOvlData_928__020097d0
 	.global .L1900
 	.global .L1740
 	.global gOvl_020097e8
@@ -227,14 +232,19 @@ gScript_928__020096a0:
 .L1740:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x1740, (0x1778-0x1740)
 .L1778:
+gOvlData_928__02009778:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x1778, (0x178e-0x1778)
 .L178e:
+gOvlData_928__0200978e:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x178e, (0x17a4-0x178e)
 .L17a4:
+gOvlData_928__020097a4:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17a4, (0x17ba-0x17a4)
 .L17ba:
+gOvlData_928__020097ba:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17ba, (0x17d0-0x17ba)
 .L17d0:
+gOvlData_928__020097d0:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17d0, (0x17e8-0x17d0)
 gOvl_020097e8:
 	.incbin "overlays/rom_7b6668/orig.bin", 0x17e8, (0x18d8-0x17e8)
