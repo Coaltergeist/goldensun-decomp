@@ -25,6 +25,15 @@
 	.global .L4038
 	.global .L4080
 	.global .L40ec
+	.global gOvlData_888__0200be34
+	.global gOvlData_888__0200be70
+	.global gOvlData_888__0200bec4
+	.global gOvlData_888__0200bf0c
+	.global gOvlData_888__0200bf78
+	.global gOvlData_888__0200bfd8
+	.global gOvlData_888__0200c038
+	.global gOvlData_888__0200c080
+	.global gOvlData_888__0200c0ec
 	.global .L411c
 	.global gScript_888__0200c15c
 	.global gScript_888__0200c18c
@@ -61,22 +70,31 @@ gOvlData_888__0200bd2c:
 gOvlData_888__0200be04:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3e04, (0x3e34-0x3e04)
 .L3e34:
+gOvlData_888__0200be34:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3e34, (0x3e70-0x3e34)
 .L3e70:
+gOvlData_888__0200be70:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3e70, (0x3ec4-0x3e70)
 .L3ec4:
+gOvlData_888__0200bec4:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3ec4, (0x3f0c-0x3ec4)
 .L3f0c:
+gOvlData_888__0200bf0c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3f0c, (0x3f78-0x3f0c)
 .L3f78:
+gOvlData_888__0200bf78:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3f78, (0x3fd8-0x3f78)
 .L3fd8:
+gOvlData_888__0200bfd8:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x3fd8, (0x4038-0x3fd8)
 .L4038:
+gOvlData_888__0200c038:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x4038, (0x4080-0x4038)
 .L4080:
+gOvlData_888__0200c080:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x4080, (0x40ec-0x4080)
 .L40ec:
+gOvlData_888__0200c0ec:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x40ec, (0x411c-0x40ec)
 .L411c:
 	.incbin "overlays/rom_7892c8/orig.bin", 0x411c, (0x415c-0x411c)
