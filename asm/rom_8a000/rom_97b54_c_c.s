@@ -942,6 +942,7 @@
 	.global .L9f0b4
 	.global .L9f0bc
 	.global .L9f0d4
+	.global gScript_0809f0d4
 	.global .L9f0f8
 	.global .L9f118
 	.global .L9f11c
@@ -951,6 +952,7 @@
 	.incrom 0x9f0b4, 0x9f0bc
 .L9f0bc:
 	.incrom 0x9f0bc, 0x9f0d4
+gScript_0809f0d4:
 .L9f0d4:
 	.incrom 0x9f0d4, 0x9f0f8
 .L9f0f8:

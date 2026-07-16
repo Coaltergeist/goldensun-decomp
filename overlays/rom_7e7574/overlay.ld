@@ -145,7 +145,7 @@ SECTIONS {
 		asm/overlays/common/common2_c_c_c_c_c_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_c_c_c_c_c_b.o(.text)
 		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.text)
+		src/overlays/common/common2_c_c_c_c_c_c_c_c_c_c_618.o(.text)
 	} > overlay
 
 	.data : {
