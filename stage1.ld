@@ -534,7 +534,7 @@ SECTIONS {
 		asm/rom_15000/rom_1fe2c.o(.text)
 		src/rom_15000/rom_1fe2c_b.o(.text)
 		src/rom_15000/rom_1fe2c_c_func_801ff58.o(.text)
-		asm/rom_15000/rom_1fe2c_c.o(.text)
+		src/rom_15000/rom_1fe2c_c_1ffd8.o(.text)
 		src/rom_15000/rom_1fe2c_d.o(.text)
 		src/rom_15000/rom_1fe2c_e_200cc.o(.text)
 		src/rom_15000/rom_1fe2c_e_20150.o(.text)
@@ -651,6 +651,7 @@ SECTIONS {
 		asm/rom_15000/rom_73812.o(.rodata)
 		/* Zero-sized anchor used by rom_1fe2c_c's section-relative table load. */
 		asm/rom_15000/rom_1fe2c_c.o(.rodata)
+		src/rom_15000/rom_1fe2c_c_1ffd8.o(.rodata)
 		asm/rom_15000/rom_1fe2c_e.o(.rodata)
 		asm/rom_15000/rom_73864.o(.rodata)
 
