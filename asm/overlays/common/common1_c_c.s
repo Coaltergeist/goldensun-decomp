@@ -170,7 +170,7 @@
 
 	.section .data
 	.global .L4
-	.global .L5
+	.global gCommon1SpriteGfxLz
 	.global .L7
 	.global .L8
 	.global .L1
@@ -188,7 +188,7 @@
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x3e76, (0x3ef4-0x3e76)
 .L4:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x3ef4, (0x3f14-0x3ef4)
-.L5:
+gCommon1SpriteGfxLz:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x3f14, (0x3fd0-0x3f14)
 .L6:
 	.incbin "overlays/rom_7db0c8/orig.bin", 0x3fd0, (0x3fe4-0x3fd0)

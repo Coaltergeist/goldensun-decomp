@@ -92,6 +92,7 @@ SECTIONS {
 		src/overlays/common/common1_c_a_c_c_172c.o(.text)
 		src/overlays/common/common1_c_a_c_c_17c0.o(.text)
 		asm/overlays/common/common1_c_a_c_c.o(.text.after_17c0)
+		src/overlays/common/common1_c_a_c_c_1ecc.o(.text)
 		src/overlays/common/common1_c_a_c_c_1fb4.o(.text)
 		asm/overlays/common/common1_c_b.o(.text)
 		src/overlays/common/common1_c_c_2018.o(.text)
