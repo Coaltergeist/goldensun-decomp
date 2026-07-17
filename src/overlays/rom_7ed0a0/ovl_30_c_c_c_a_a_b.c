@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster OvlFunc_964_200a300..OvlFunc_964_200a300 extracted from goldensun/asm/overlays/rom_7ed0a0/ovl_30_c_c_c_a_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
@@ -13,8 +12,8 @@ void OvlFunc_964_200a300(void)
 {
   __CutsceneStart();
   {
-    register unsigned int t1 __asm__("r3") = 0x13;
-    register unsigned int t2 __asm__("r2") = 0x2d;
+    unsigned int t1 = 0x13;
+    unsigned int t2 = 0x2d;
     __Func_8010704(0x53, 0x2d, 0xb, 8, t1, t2);
   }
   OvlFunc_964_20080c4();

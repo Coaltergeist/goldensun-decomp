@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster OvlFunc_930_2009144..OvlFunc_930_2009144 extracted from goldensun/asm/overlays/rom_7b7f1c/ovl_30_c_c_c.s.
  *
  * Total .text for this TU = 60 bytes (= 0x3c).
@@ -12,8 +11,8 @@ void OvlFunc_930_2009144(void)
 
   __CutsceneStart();
   {
-    register unsigned int t1 __asm__("r3") = 0x15;
-    register unsigned int t2 __asm__("r2") = 0xb;
+    unsigned int t1 = 0x15;
+    unsigned int t2 = 0xb;
     __Func_8010704(0xe, 6, 1, 2, t1, t2);
   }
   p = (unsigned char *)__MapActor_GetActor(0xf);
