@@ -1155,7 +1155,7 @@ SECTIONS {
 		src/rom_8a000/rom_97b54_a_c_c_c_99678.o(.text)
 		src/rom_8a000/rom_97b54_a_c_c_c_99738.o(.text)
 		asm/rom_8a000/rom_97b54_b.o(.text)
-		asm/rom_8a000/rom_97b54_c_a_a.o(.text)
+		src/rom_8a000/rom_97b54_c_a_a_99838.o(.text)
 		src/rom_8a000/rom_97b54_c_a_a_9920.o(.text)
 		asm/rom_8a000/rom_97b54_c_a_b.o(.text)
 		asm/rom_8a000/rom_97b54_c_b.o(.text)
