@@ -15,7 +15,7 @@ It builds the following ROM:
 ## Current state
 
 - :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
-- **2,310 / 5,745 Thumb functions matched as C source (40.00%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
+- **~2,836 / 5,572 Thumb functions matched as genuine pure C (~51%);** the remaining ~2,736 are kept as honest assembly (`.s`): hand-written disassembly plus functions that only reproduced the original bytes through inline asm. With a single documented exception (`src/lib/m4a/ply_fine.c`, the ported Sappy audio mixer), every function is either compiled from pure C or kept as `.s` — no inline-asm "matches" pad the count. (The 51 ARM-mode functions are handwritten assembly, separate non-targets.)
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
@@ -30,6 +30,8 @@ See [INSTALL.md](INSTALL.md).
 Contributions are welcome; the decomp is in its early stages and benefits from any matched function, no matter how small.
 
 A function is matched when its `.c` file (in [`src/`](src/)) compiles to an object that's byte-identical to the corresponding original `.s` (in [`asm/`](asm/)). Verify your work with `make compare-rom` (which fails the build if the ROM SHA1 drifts).
+
+Matches must be genuine C. Inline assembly (`asm volatile` barriers and register-pinned locals like `register T x asm("rN")`) is not accepted: it reproduces the bytes without expressing the logic as C. A function that only byte-matches through inline asm is kept as honest `.s` until it can be written in pure C. Functions awaiting such a rewrite are listed in [docs/REMATCH_CANDIDATES.md](docs/REMATCH_CANDIDATES.md).
 
 Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form, organized by bank (`asm/rom_<bank>/`) or overlay (`asm/overlays/rom_<addr>/`). Pick one, write its C in the parallel `src/` location, iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the canonical references for the workflow.
 
