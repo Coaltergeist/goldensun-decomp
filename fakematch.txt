@@ -87,3 +87,8 @@ OvlFunc_959_2009cf0  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_c_a_b.c
 Func_80215e0         src/rom_15000/rom_20198_c_c_c_a_a_b.c
 Func_802899c         src/rom_15000/rom_23178_a_a_a_b.c
 WaitFrames           src/rom_c0/rom_2e00_c_c_b.c
+OvlFunc_926_200c0dc  src/overlays/rom_7b2078/ovl_314_c_c_c_c_c_c_a_b.c
+OvlFunc_952_2008348  src/overlays/rom_7d768c/ovl_30_c_a_a_b.c
+OvlFunc_974_2008244  src/overlays/rom_7fcd20/ovl_30_c_c_a_c_a_b.c
+OvlFunc_883_200da40  src/overlays/rom_780898/ovl_30_c_c_c_c_c_a_c_c_a_b.c
+OvlFunc_971_20082d8  src/overlays/rom_7fb4a8/ovl_30_a_c_c_c_a_a_b.c

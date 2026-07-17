@@ -1,40 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_974_2008244
-	push	{r5, lr}
-	ldr	r0, =0xc1a
-	mov	r1, #1
-	bl	__Func_801776c
-	ldr	r5, =.L1684
-	mov	r0, #0
-	ldr	r1, [r5]
-	bl	__SetMinLevel
-	ldr	r1, [r5]
-	mov	r0, #1
-	bl	__SetMinLevel
-	ldr	r1, [r5]
-	mov	r0, #3
-	bl	__SetMinLevel
-	ldr	r1, [r5]
-	mov	r0, #2
-	bl	__SetMinLevel
-	ldr	r3, [r5]
-	add	r3, #0xa
-	str	r3, [r5]
-	mov	r0, #0
-	bl	__CalcStats
-	mov	r0, #1
-	bl	__CalcStats
-	mov	r0, #3
-	bl	__CalcStats
-	mov	r0, #2
-	bl	__CalcStats
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_974_2008244
-
 .thumb_func_start OvlFunc_974_200829c
 	push	{lr}
 	ldr	r0, =0xc1e

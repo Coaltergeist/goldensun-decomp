@@ -138,7 +138,15 @@ asm/overlays/rom_7ed0a0/ovl_30_a_c_a_a%.o: src/overlays/rom_7ed0a0/ovl_30_a_c_a_
 # children of a stem; exact-file form is used where a sibling under the
 # same stem verifies only at -O2 (per-file flag mixing).
 # TODO: consolidate the TUs 
-asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_c%.o: src/overlays/rom_77dd1c/ovl_30_c_c_c_a_c%.c
+# Exact-file form (2026-07-17): the pattern ovl_30_c_c_c_a_c% swallowed the
+# new split child ovl_30_c_c_c_a_c_c_c_b.c, whose match verifies only at -O2
+# (judge -O2 pass, in-tree -O1 build failed compare-rom); per-file flag
+# mixing inside this chain, so the TU boundary sits between _c_c_b and _c_c_c.
+asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_b.o: src/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_b.c
+	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_c_b.o: src/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_c_b.c
 	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)

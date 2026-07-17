@@ -1,40 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_935_2008c50
-	push	{r5, r6, lr}
-	mov	r6, #0xb
-	mov	r5, #0
-.Lc56:
-	mov	r0, r6
-	bl	__MapActor_GetActor
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	mov	r0, r6
-	bl	__MapActor_GetActor
-	ldr	r3, =0x1999
-	str	r3, [r0, #0x44]
-	mov	r3, #0
-	str	r3, [r0, #0x48]
-	mov	r3, #0xff
-	lsl	r3, #16
-	str	r3, [r0, #0xc]
-	mov	r0, r5
-	add	r0, #0xb
-	mov	r1, #1
-	add	r5, #1
-	bl	__Func_8092b08
-	add	r6, #1
-	cmp	r5, #3
-	ble	.Lc56
-	mov	r1, #0xc8
-	lsl	r1, #4
-	ldr	r0, =OvlFunc_935_20089c0
-	bl	__StartTask
-	pop	{r5, r6}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_935_2008c50
-
 .thumb_func_start OvlFunc_935_2008ca0
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
