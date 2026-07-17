@@ -316,6 +316,9 @@ COMMON0_ASM_OBJS := $(patsubst %.s,%.o,$(filter-out $(CROSS_DIR_GENERATED_S),$(w
 COMMON1_ASM_OBJS := $(patsubst %.s,%.o,$(filter-out $(CROSS_DIR_GENERATED_S),$(wildcard asm/overlays/common/common1*.s)))
 COMMON2_ASM_OBJS := $(patsubst %.s,%.o,$(filter-out $(CROSS_DIR_GENERATED_S),$(wildcard asm/overlays/common/common2*.s)))
 
+# common0_func_10c.c embeds overlay bytes via inline asm .incbin, so its
+# object needs the extracted orig.bin like the hand-asm children above.
+src/overlays/common/common0_func_10c.o: overlays/rom_78ef88/orig.bin
 $(COMMON0_ASM_OBJS): overlays/rom_78ef88/orig.bin
 $(COMMON1_ASM_OBJS): overlays/rom_7db0c8/orig.bin
 $(COMMON2_ASM_OBJS): overlays/rom_7bf5a8/orig.bin
