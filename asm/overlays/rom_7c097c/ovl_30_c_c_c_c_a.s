@@ -10,7 +10,7 @@
 	sub	sp, #0xc
 	bl	__MapActor_GetActor
 	ldrh	r3, [r0, #6]
-	ldr	r2, =.L3d84
+	ldr	r2, =gOvl936ActorTravelOffsets
 	lsr	r3, #12
 	lsl	r5, r3, #2
 	ldr	r3, [r2, r5]

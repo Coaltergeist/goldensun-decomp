@@ -1,6 +1,6 @@
 
 	.section .data
-	.global .L3d84
+	.global gOvl936ActorTravelOffsets
 	.global gScript_936__0200bdc4
 	.global gScript_936__0200be00
 	.global gScript_936__0200beac
@@ -34,7 +34,7 @@
 	.global .L4580
 	.global gScript_943__0200c628
 
-.L3d84:
+gOvl936ActorTravelOffsets:
 	.incbin "overlays/rom_7c097c/orig.bin", 0x3d84, (0x3dc4-0x3d84)
 gScript_936__0200bdc4:
 	.incbin "overlays/rom_7c097c/orig.bin", 0x3dc4, (0x3e00-0x3dc4)
