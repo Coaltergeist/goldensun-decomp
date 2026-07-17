@@ -6,6 +6,8 @@
 
 This is a work-in-progress matching decompilation of Golden Sun (GBA, 2001).
 
+It is a fork of [**Coaltergeist/goldensun-decomp**](https://github.com/Coaltergeist/goldensun-decomp) and continues the matching work started there by Coaltergeist and [SBird1337](https://github.com/SBird1337); their commit history is preserved intact. See [Credits](#credits).
+
 It builds the following ROM:
 
 * **goldensun.gba** `sha1: 5c4695205413df7db52b9a184815a07783999971` (USA)
@@ -77,6 +79,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
 
 This project builds on substantial prior work by others:
 
+- **[Coaltergeist](https://github.com/Coaltergeist) & [SBird1337](https://github.com/SBird1337):** this repository is a fork of [Coaltergeist/goldensun-decomp](https://github.com/Coaltergeist/goldensun-decomp). The matching-decompilation project, its structure, build system, tooling, matched functions, and the [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) compiler packaging all originate there. This fork continues that work; every commit they authored is preserved.
 - **[gsret](https://github.com/gsret):** original disassembly ([gsret/goldensun](https://github.com/gsret/goldensun)) that is the foundation of this entire repo. Every `.s` file traces back to their labeling and structuring work.
 - **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals. Also contributed the extensive [GS-headers](https://github.com/FutureFractal/GS-headers) repository
 - **Tarpman:** compiler-reproduction analysis identifying the early GCC 3.0-family lineage of Camelot's toolchain, and the source-shape repro that pinned down the small-constant literal-pool fingerprint.
