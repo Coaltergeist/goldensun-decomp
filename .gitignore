@@ -23,7 +23,7 @@ src/**/*.s
 !src/**/agb_flash_data.s
 
 # The cross-dir rule (asm/%.o: src/%.c) regenerates asm/<bank>/X.s for every
-# matched src/<bank>/X.c — build artifacts, not source-of-truth. Ignoring them
+# matched src/<bank>/X.c build artifacts, not source-of-truth. Ignoring them
 # does NOT untrack the committed raw disassembly .s (those stay tracked since
 # git never untracks tracked files). NOTE: a genuinely new raw-disassembly .s
 # (e.g. a fresh split) must be added with `git add -f`.
