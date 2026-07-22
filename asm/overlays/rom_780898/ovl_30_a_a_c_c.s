@@ -1,362 +1,6 @@
 	.include "macros.inc"
-	.include "gba.inc"
 
-.thumb_func_start OvlFunc_915_200834c
-	push	{r5, r6, r7, lr}
-	mov	r7, r11
-	mov	r6, r10
-	mov	r5, r9
-	push	{r5, r6, r7}
-	mov	r7, r8
-	push	{r7}
-	sub	sp, #0x18
-	str	r0, [sp, #0x14]
-	str	r1, [sp, #0x10]
-	str	r2, [sp, #0xc]
-	ldr	r3, =iwram_3001ebc
-	mov	r0, #0
-	ldr	r5, [r3]
-	bl	__MapActor_GetActor
-	ldrh	r3, [r0, #6]
-	ldr	r1, [sp, #0x14]
-	lsr	r3, #12
-	mov	r2, #8
-	str	r3, [r1]
-	add	r5, #0x34
-	str	r2, [sp, #8]
-	mov	r9, r0
-	mov	r11, r5
-.L37e:
-	mov	r3, r11
-	ldr	r3, [r3]
-	mov	r10, r3
-	ldr	r3, [r3, #0x50]
-	ldr	r3, [r3, #0x28]
-	mov	r2, #0
-	ldrsh	r1, [r3, r2]
-	ldr	r3, =.Lf50
-	mov	r4, #0
-	str	r1, [sp, #4]
-	ldr	r0, =.Lf68
-	str	r3, [sp]
-	mov	r8, r4
-.L398:
-	ldr	r1, [sp]
-	ldmia	r1!, {r3}
-	ldr	r2, [sp, #4]
-	mov	r4, r1
-	str	r4, [sp]
-	cmp	r2, r3
-	bne	.L436
-	ldr	r4, [sp, #0xc]
-	mov	r3, r8
-	str	r3, [r4]
-	ldr	r2, [sp, #0x14]
-	ldr	r3, [r2]
-	ldr	r4, =.Lf10
-	lsl	r3, #2
-	mov	r1, r9
-	ldr	r2, [r4, r3]
-	ldr	r1, [r1, #8]
-	asr	r3, r2, #16
-	mov	r14, r1
-	asr	r1, #16
-	add	r1, r3
-	asr	r7, r1, #4
-	mov	r1, r9
-	ldr	r1, [r1, #0x10]
-	lsl	r2, #16
-	asr	r2, #16
-	asr	r3, r1, #16
-	add	r3, r2
-	asr	r5, r3, #4
-	mov	r3, r10
-	mov	r12, r1
-	mov	r2, #0xa
-	ldrsh	r1, [r3, r2]
-	ldr	r3, [r0]
-	add	r3, r1, r3
-	asr	r6, r3, #4
-	mov	r3, r10
-	mov	r4, #0x12
-	ldrsh	r2, [r3, r4]
-	ldr	r3, [r0, #4]
-	add	r3, r2, r3
-	asr	r4, r3, #4
-	ldr	r3, [r0, #8]
-	add	r1, r3
-	ldr	r3, [r0, #0xc]
-	add	r2, r3
-	asr	r1, #4
-	asr	r2, #4
-	cmp	r6, r7
-	bgt	.L436
-	cmp	r7, r1
-	bge	.L436
-	cmp	r4, r5
-	bgt	.L436
-	cmp	r5, r2
-	bge	.L436
-	mov	r3, #1
-	mov	r1, r8
-	and	r3, r1
-	cmp	r3, #0
-	beq	.L424
-	mov	r2, r14
-	asr	r3, r2, #20
-	cmp	r6, r3
-	beq	.L436
-	ldr	r3, [sp, #8]
-	ldr	r4, [sp, #0x10]
-	mov	r0, r10
-	str	r3, [r4]
-	b	.L452
-.L424:
-	mov	r1, r12
-	asr	r3, r1, #20
-	cmp	r4, r3
-	beq	.L436
-	ldr	r2, [sp, #8]
-	ldr	r3, [sp, #0x10]
-	mov	r0, r10
-	str	r2, [r3]
-	b	.L452
-.L436:
-	mov	r4, #1
-	add	r8, r4
-	mov	r1, r8
-	add	r0, #0x10
-	cmp	r1, #5
-	bls	.L398
-	ldr	r3, [sp, #8]
-	mov	r2, #4
-	add	r3, #1
-	add	r11, r2
-	str	r3, [sp, #8]
-	cmp	r3, #0x41
-	bls	.L37e
-	mov	r0, #0
-.L452:
-	add	sp, #0x18
-	pop	{r3, r5, r6, r7}
-	mov	r8, r3
-	mov	r9, r5
-	mov	r10, r6
-	mov	r11, r7
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_915_200834c
-
-.thumb_func_start OvlFunc_915_2008474
-	push	{r5, r6, r7, lr}
-	mov	r7, r11
-	mov	r6, r10
-	mov	r5, r9
-	push	{r5, r6, r7}
-	mov	r7, r8
-	push	{r7}
-	mov	r6, r0
-	sub	sp, #0x20
-	mov	r3, #0
-	add	r0, sp, #0x10
-	add	r1, r6, #4
-	mov	r2, r6
-	str	r3, [r6, #0x14]
-	bl	OvlFunc_915_200834c
-	mov	r10, r0
-	cmp	r0, #0
-	bne	.L49e
-	mov	r0, #0
-	b	.L5e8
-.L49e:
-	mov	r0, r10
-	add	r0, #0x22
-	mov	r3, #2
-	str	r0, [sp, #4]
-	strb	r3, [r0]
-	ldr	r3, [r6]
-	mov	r1, #0
-	str	r1, [sp, #0xc]
-	ldr	r5, =.Lf68
-	lsl	r1, r3, #4
-	add	r3, r1, #4
-	ldr	r2, [r5, r3]
-	cmp	r2, #0
-	bge	.L4bc
-	neg	r2, r2
-.L4bc:
-	mov	r3, r1
-	add	r3, #0xc
-	ldr	r3, [r5, r3]
-	cmp	r3, #0
-	bge	.L4c8
-	neg	r3, r3
-.L4c8:
-	add	r3, r2, r3
-	asr	r3, #4
-	str	r3, [sp, #8]
-	ldr	r2, [r5, r1]
-	cmp	r2, #0
-	bge	.L4d6
-	neg	r2, r2
-.L4d6:
-	mov	r3, r1
-	add	r3, #8
-	ldr	r3, [r5, r3]
-	cmp	r3, #0
-	bge	.L4e2
-	neg	r3, r3
-.L4e2:
-	add	r3, r2, r3
-	asr	r3, #4
-	mov	r9, r3
-	ldr	r3, [sp, #0x10]
-	ldr	r1, =.Lf10
-	add	r2, sp, #0x14
-	lsl	r3, #2
-	mov	r8, r2
-	ldr	r2, [r1, r3]
-	ldr	r3, =0xffff0000
-	mov	r4, r10
-	and	r2, r3
-	ldr	r3, [r4, #8]
-	mov	r0, r8
-	add	r3, r2
-	str	r3, [r0]
-	ldr	r0, [r4, #0xc]
-	mov	r2, r8
-	str	r0, [r2, #4]
-	ldr	r3, [sp, #0x10]
-	lsl	r3, #2
-	ldr	r2, [r1, r3]
-	ldr	r3, [r4, #0x10]
-	lsl	r2, #16
-	mov	r4, r8
-	add	r3, r2
-	str	r3, [r4, #8]
-	mov	r4, r6
-	str	r0, [r6, #0xc]
-	add	r4, #8
-	mov	r11, r8
-.L520:
-	ldr	r3, [r6]
-	ldr	r0, =.Lf68
-	lsl	r3, #4
-	add	r3, #4
-	ldr	r2, [r0, r3]
-	mov	r1, r8
-	ldr	r3, [r1, #8]
-	lsl	r2, #16
-	add	r3, r2
-	ldr	r2, [sp, #8]
-	mov	r7, #0
-	str	r3, [r6, #0x10]
-	cmp	r7, r2
-	bge	.L586
-.L53c:
-	ldr	r3, [r6]
-	ldr	r0, =.Lf68
-	lsl	r3, #4
-	ldr	r2, [r0, r3]
-	mov	r1, r8
-	ldr	r3, [r1]
-	lsl	r2, #16
-	add	r3, r2
-	mov	r5, #0
-	str	r3, [r6, #8]
-	cmp	r5, r9
-	bge	.L574
-.L554:
-	mov	r1, r4
-	mov	r0, r10
-	str	r4, [sp]
-	bl	__TestCollision
-	ldr	r4, [sp]
-	cmp	r0, #2
-	beq	.L5b0
-	ldr	r3, [r4]
-	mov	r2, #0x80
-	lsl	r2, #13
-	add	r3, r2
-	add	r5, #1
-	str	r3, [r4]
-	cmp	r5, r9
-	blt	.L554
-.L574:
-	ldr	r3, [r6, #0x10]
-	mov	r0, #0x80
-	lsl	r0, #13
-	ldr	r1, [sp, #8]
-	add	r3, r0
-	add	r7, #1
-	str	r3, [r6, #0x10]
-	cmp	r7, r1
-	blt	.L53c
-.L586:
-	ldr	r2, [sp, #0xc]
-	ldr	r3, [sp, #0x10]
-	add	r2, #1
-	str	r2, [sp, #0xc]
-	ldr	r0, =.Lf10
-	lsl	r3, #2
-	ldr	r2, [r0, r3]
-	ldr	r3, =0xffff0000
-	mov	r1, r11
-	and	r2, r3
-	ldr	r3, [r1]
-	add	r3, r2
-	str	r3, [r1]
-	ldr	r3, [sp, #0x10]
-	lsl	r3, #2
-	ldr	r2, [r0, r3]
-	ldr	r3, [r1, #8]
-	lsl	r2, #16
-	add	r3, r2
-	str	r3, [r1, #8]
-	b	.L520
-.L5b0:
-	ldr	r2, [sp, #4]
-	mov	r3, #0
-	strb	r3, [r2]
-	ldr	r3, [sp, #0xc]
-	mov	r0, #0
-	cmp	r3, #0
-	beq	.L5e8
-	ldr	r3, [sp, #0x10]
-	ldr	r2, =.Lf10
-	lsl	r3, #2
-	ldr	r2, [r2, r3]
-	ldr	r3, =0xffff0000
-	ldr	r4, [sp, #0xc]
-	and	r3, r2
-	mov	r1, r4
-	mul	r1, r3
-	lsl	r2, #16
-	mul	r2, r4
-	mov	r0, r10
-	ldr	r3, [r0, #8]
-	add	r3, r1
-	str	r3, [r6, #8]
-	ldr	r3, [r0, #0xc]
-	str	r3, [r6, #0xc]
-	ldr	r3, [r0, #0x10]
-	add	r3, r2
-	str	r3, [r6, #0x10]
-	mov	r0, #1
-.L5e8:
-	add	sp, #0x20
-	pop	{r3, r5, r6, r7}
-	mov	r8, r3
-	mov	r9, r5
-	mov	r10, r6
-	mov	r11, r7
-	pop	{r5, r6, r7}
-	pop	{r1}
-	bx	r1
-.func_end OvlFunc_915_2008474
-
-.thumb_func_start OvlFunc_915_2008608
+.thumb_func_start OvlFunc_883_2008608
 	sub	sp, #0x10
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
@@ -381,7 +25,7 @@
 	mov	r8, r3
 	bl	__MapActor_GetActor
 	ldr	r3, [sp, #0x48]
-	ldr	r4, =.Lf68
+	ldr	r4, =.L61e8
 	lsl	r1, r3, #4
 	add	r3, r1, #4
 	ldr	r2, [r4, r3]
@@ -449,7 +93,7 @@
 	str	r3, [sp, #4]
 	mov	r0, #0
 	mov	r3, r9
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	mov	r2, r5
 	mov	r0, #0
 	mov	r1, r6
@@ -483,7 +127,7 @@
 	bl	__Func_809228c
 	mov	r0, #0
 	bl	__MapActor_GetActor
-	ldr	r3, =OvlFunc_915_20082a8
+	ldr	r3, =OvlFunc_883_20082a8
 	str	r3, [r0, #0x6c]
 	mov	r0, #4
 	bl	__CutsceneWait
@@ -516,7 +160,7 @@
 	ldr	r1, =0x4ccc
 	ldr	r2, =0x1999
 	bl	__MapActor_SetSpeed
-	ldr	r2, =.Lf10
+	ldr	r2, =.L6190
 	mov	r1, r8
 	lsl	r3, r1, #2
 	ldr	r0, [r2, r3]
@@ -565,7 +209,7 @@
 	mov	r1, #1
 	bl	__Actor_SetAnim
 	ldr	r2, [sp, #0x48]
-	ldr	r4, =.Lf68
+	ldr	r4, =.L61e8
 	lsl	r2, #4
 	ldr	r3, [r4, r2]
 	ldr	r0, [sp, #0x50]
@@ -612,7 +256,7 @@
 	mov	r3, r9
 	mov	r0, #0
 	str	r5, [sp, #4]
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	ldr	r3, [sp, #8]
 	ldr	r1, [sp, #0x50]
 	ldr	r2, [sp, #0x58]
@@ -620,7 +264,7 @@
 	mov	r0, #2
 	mov	r3, r9
 	str	r5, [sp, #4]
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	ldr	r2, [sp, #0x48]
 	mov	r4, r10
 	lsl	r2, #4
@@ -656,7 +300,7 @@
 	str	r3, [sp]
 	mov	r3, r9
 	str	r4, [sp, #4]
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	bl	__Func_809202c
 	add	sp, #0x28
 	pop	{r3, r5, r6, r7}
@@ -668,9 +312,9 @@
 	pop	{r3}
 	add	sp, #0x10
 	bx	r3
-.func_end OvlFunc_915_2008608
+.func_end OvlFunc_883_2008608
 
-.thumb_func_start OvlFunc_915_20088c0
+.thumb_func_start OvlFunc_883_20088c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -684,7 +328,7 @@
 	ldr	r3, [r3, #0x28]
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
-	ldr	r1, =.Lf50
+	ldr	r1, =.L61d0
 	mov	r5, #0
 	ldr	r3, [r1, r5]
 	cmp	r2, r3
@@ -727,7 +371,7 @@
 	ldr	r0, [r0, #0x10]
 	lsl	r1, r2, #4
 	str	r0, [r7, #0x10]
-	ldr	r4, =.Lf68
+	ldr	r4, =.L61e8
 	add	r5, r1, #4
 	ldr	r2, [r4, r5]
 	mov	r14, r0
@@ -795,7 +439,7 @@
 	mov	r0, #0
 	mov	r3, r6
 	str	r5, [sp, #4]
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	mov	r3, r8
 	ldr	r1, [r7, #8]
 	ldr	r2, [r7, #0x10]
@@ -803,7 +447,7 @@
 	str	r3, [sp]
 	mov	r3, r6
 	str	r5, [sp, #4]
-	bl	OvlFunc_915_2008244
+	bl	OvlFunc_883_2008244
 	mov	r0, #1
 .L9c2:
 	add	sp, #0x20
@@ -813,5 +457,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_915_20088c0
+.func_end OvlFunc_883_20088c0
 
