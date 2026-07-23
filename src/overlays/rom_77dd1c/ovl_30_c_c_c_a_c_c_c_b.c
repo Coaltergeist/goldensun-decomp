@@ -1,3 +1,4 @@
+// fakematch
 /* Cluster OvlFunc_882_2008ec4..OvlFunc_882_2008ec4 extracted from goldensun/asm/overlays/rom_77dd1c/ovl_30_c_c_c_a_c_c_c.s.
  *
  * Total .text for this TU = 116 bytes (= 0x74).
