@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster Func_802899c..Func_802899c extracted from goldensun/asm/rom_15000/rom_23178_a_a_a.s.
  *
  * Total .text for this TU = 76 bytes (= 0x4c).
@@ -14,12 +13,11 @@ extern unsigned int Func_80286a0(unsigned int arg0, unsigned int arg1);
 extern void Func_802851c(void);
 extern void Func_801c2e4(void);
 
-unsigned int Func_802899c(unsigned int arg0, unsigned int arg1)
+unsigned int Func_802899c(unsigned int r0, unsigned int r1)
 {
-    register unsigned int p0 __asm__("r5") = arg0;
-    register unsigned int p1 __asm__("r6") = arg1;
-    register unsigned int result __asm__("r6");
+    unsigned int r5;
 
+    r5 = r0;
     Func_801c2d0();
     Func_80284dc();
     AddMenuBarOption(1);
@@ -27,8 +25,8 @@ unsigned int Func_802899c(unsigned int arg0, unsigned int arg1)
     AddMenuBarOption(2);
     AddMenuBarOption(7);
     Func_8028808(0x11, 7, 0);
-    result = Func_80286a0(p0, p1 - 1);
+    r1 = Func_80286a0(r5, r1 - 1);
     Func_802851c();
     Func_801c2e4();
-    return result;
+    return r1;
 }
