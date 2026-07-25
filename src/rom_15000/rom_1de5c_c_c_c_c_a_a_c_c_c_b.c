@@ -1,4 +1,3 @@
-// fakematch
 /* Cluster Func_801fc84..Func_801fc84 extracted from goldensun/asm/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_c.s.
  *
  * Total .text for this TU = 176 bytes (= 0xb0).
@@ -9,7 +8,6 @@
 extern int Func_80056cc(void);
 extern void Func_8005c68(void);
 extern int Func_8020244(int, int);
-extern void Func_8017658(int, int, int, int);
 extern int Func_8017364(void);
 extern void WaitFrames(int);
 extern int YesNoMenu(int, int, int, int);
@@ -26,7 +24,6 @@ int Func_801fc84(void) {
     int r5;
     int r6;
     int r7;
-    int a, b, c;
 
     r5 = Func_80056cc();
     r7 = 0;
@@ -39,11 +36,7 @@ int Func_801fc84(void) {
         if (r6 == -1) {
             r7 = r6;
         } else {
-            a = 8;
-            b = 1;
-            c = 2;
-            __asm__ volatile ("" : : "r"(a), "r"(b), "r"(c));
-            Func_8017658((int)&_MSG_16, a, b, c);
+            Func_8017658((int)&_MSG_16, 8, 1, 2);
             while (Func_8017364() == 0) {
                 WaitFrames(1);
             }
