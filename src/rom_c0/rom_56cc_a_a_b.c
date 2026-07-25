@@ -272,3 +272,27 @@ u32 Func_8005b24(u32 slot) {
     }
     return result;
 }
+
+u32 Func_8005b64(u32 index) {
+    struct FlashWork *ctx = (*((struct FlashWork **)&gPtrs[0x33]));
+    struct FlashSectorHeader header;
+
+    DMA3_CLEAR(&header, sizeof(header));
+    WaitForDma3();
+
+    DMA3_COPY(sCamelotString2, &header, 8);
+    WaitForDma3();
+    header.slot = 16; // MAX_SLOT?
+    header.counter = 0;
+
+    DMA3_COPY(&header, ctx->sector, sizeof(header));
+    WaitForDma3();
+
+    if (Func_8005868(index) != 0)
+        return 1;
+
+    ctx->valid[index]   = 0;
+    ctx->slot[index]    = 0x10;
+    ctx->counter[index] = 0;
+    return 0;
+}
