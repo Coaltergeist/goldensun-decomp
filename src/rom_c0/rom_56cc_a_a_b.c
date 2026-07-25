@@ -296,3 +296,34 @@ u32 Func_8005b64(u32 index) {
     ctx->counter[index] = 0;
     return 0;
 }
+
+// strncmp?
+s32 Func_8005c08(char *str1, char *str2, u32 num) {
+    s32 diff;
+    diff = 0;
+    while (num != 0) {
+        diff = *str1 - *str2;
+        if (diff != 0)
+            break;
+        num--;
+        str1++;
+        str2++;
+    }
+    return diff;
+}
+
+u16 Func_8005c2c(u32 slot) {
+    struct FlashWork *ctx;
+    u32 max;
+    u32 i;
+
+    ctx = (*((struct FlashWork **)&gPtrs[0x33]));
+    max = 0;
+    for (i = 0; i < 16; ++i) {
+        if (ctx->valid[i] && slot == ctx->slot[i]) {
+            if (max < ctx->counter[i])
+                max = ctx->counter[i];
+        }
+    }
+    return max;
+}
