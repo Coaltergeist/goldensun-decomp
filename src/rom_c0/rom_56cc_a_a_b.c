@@ -11,6 +11,8 @@
 #include "gba/io.h"
 #include "interrupt.h"
 
+extern void *gPtrs[];
+
 struct FlashSectorHeader {
     /* 0x0 */ u8  magic[7];   /* "CAMELOT" */
     /* 0x7 */ u8  slot;
@@ -85,11 +87,10 @@ u32 Func_80056cc(void) {
 
 u32 Func_8005b24(u32);
 u32 Random(void);
-extern struct FlashWork* iwram_3001f1c;
 
 u32 Func_8005810(u32 arg0) {
     u32 buf[16];
-    u8 *ptr = &iwram_3001f1c->valid[0];
+    u8 *ptr = &(*((struct FlashWork **)&gPtrs[0x33]))->valid[0];
     u32 count = 0;
     u32 slot;
 
@@ -118,7 +119,7 @@ extern s32 (*ewram_2004c04)(u16, u8 *);
 
 u32 Func_8005868(u32 arg0) {
     s32 res;
-    struct FlashWork *ctx = iwram_3001f1c;
+    struct FlashWork *ctx = (*((struct FlashWork **)&gPtrs[0x33]));
     if ((ewram_2004c04(arg0, ctx->sector) << 0x10) != 0) return 1;
     res = VerifyFlashSector(arg0, ctx->sector);
     return (u32) ((0 - res) | res) >> 0x1F;
@@ -130,7 +131,7 @@ void ReadFlash(u16 sectorNum, u32 offset, void *dest, u32 size);
 
 s32 Func_80058ac(u32 arg0) {
     u16 buf[8];
-    struct FlashWork *ctx = iwram_3001f1c;
+    struct FlashWork *ctx = *((struct FlashWork **)&gPtrs[0x33]);
     ReadFlash(arg0, 0, ctx->sector, 0x1000);
     DMA3_COPY(ctx->sector, buf, 16);
     WaitForDma3();
@@ -170,7 +171,7 @@ static inline void ClearSectorBuf(struct FlashWork *ctx) {
 
 u32 SomethingSaveHeader(u32 slot, const void *data) {
     struct FlashSectorHeader header;
-    struct FlashWork *ctx = iwram_3001f1c; // *((struct FlashWork **)&gPtrs[0x33]) works too
+    struct FlashWork *ctx = *((struct FlashWork **)&gPtrs[0x33]);
     u32 oldSector, newSector;
     ClearSectorBuf(ctx);
     WaitForDma3();
@@ -213,7 +214,7 @@ u32 SomethingSaveHeader(u32 slot, const void *data) {
 }
 
 s32 Func_8005a78(s32 arg0, void *arg2) {
-    struct FlashWork *ctx = iwram_3001f1c;
+    struct FlashWork *ctx = *((struct FlashWork **)&gPtrs[0x33]);
     u32 res = Func_8005b24(arg0);
     if (res > 15) return 1;
     Func_80058ac(res);
@@ -236,7 +237,7 @@ u32 Func_8005ae0(void) {
     u32 i;
     sum = 0;
     i = 0;
-    p = &iwram_3001f1c->sector[0x10];
+    p = &(*((struct FlashWork **)&gPtrs[0x33]))->sector[0x10];
     do {
         sum += p[0];
         sum += p[1];
@@ -259,7 +260,7 @@ u32 Func_8005b24(u32 slot) {
     u32 best;
     u32 result;
 
-    ctx = iwram_3001f1c;
+    ctx = *((struct FlashWork **)&gPtrs[0x33]);
     counter = &ctx->counter[0];
     best = 0;
     result = 16;
