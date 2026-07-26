@@ -1,44 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_932_2008650
-	push	{r5, lr}
-	mov	r0, #0xc
-	sub	sp, #8
-	bl	__MapActor_GetActor
-	mov	r3, #0x1a
-	mov	r2, #0xf
-	mov	r5, r0
-	str	r3, [sp]
-	str	r2, [sp, #4]
-	mov	r0, #1
-	mov	r1, #0
-	mov	r2, #1
-	mov	r3, #1
-	bl	__Func_8010704
-	cmp	r5, #0
-	beq	.L68c
-	mov	r0, r5
-	mov	r1, #0
-	bl	__Actor_SetSpriteFlags
-	ldr	r3, [r5, #0xc]
-	ldr	r2, =0xffe00000
-	add	r3, r2
-	mov	r2, r5
-	str	r3, [r5, #0xc]
-	add	r2, #0x23
-	mov	r3, #2
-	strb	r3, [r2]
-.L68c:
-	mov	r0, #0x81
-	lsl	r0, #2
-	bl	__SetFlag
-	add	sp, #8
-	pop	{r5}
-	pop	{r0}
-	bx	r0
-.func_end OvlFunc_932_2008650
-
 .thumb_func_start OvlFunc_932_20086a0
 	push	{r5, r6, lr}
 	mov	r6, #0x80
