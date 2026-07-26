@@ -1,49 +1,6 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_80b845c  @ 0x080b845c
-	push	{r5, r6, lr}
-	mov	r6, r10
-	mov	r5, r8
-	push	{r5, r6}
-	sub	sp, #0xc
-	mov	r8, r1
-	mov	r10, r0
-	bl	GetBattleActor
-	ldr	r5, [r0]
-	mov	r1, #0
-	mov	r0, r5
-	bl	Func_80b7f70
-	add	r5, #8
-	mov	r6, r0
-	bl	Func_80b7ed8
-	mov	r1, r8
-	mov	r0, r5
-	bl	PhysMove
-	ldr	r5, =Func_8000888
-	ldr	r1, [r6, #0x18]
-	.call_via r5
-	mov	r6, r0
-	mov	r0, r10
-	bl	Func_80b8530
-	mov	r1, r0
-	asr	r1, #16
-	mov	r0, r6
-	.call_via r5
-	mov	r2, r8
-	ldr	r3, [r2, #4]
-	sub	r3, r0
-	str	r3, [r2, #4]
-	mov	r0, #0
-	add	sp, #0xc
-	pop	{r3, r5}
-	mov	r8, r3
-	mov	r10, r5
-	pop	{r5, r6}
-	pop	{r1}
-	bx	r1
-.func_end Func_80b845c
-
 .thumb_func_start Func_80b84c0  @ 0x080b84c0
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
