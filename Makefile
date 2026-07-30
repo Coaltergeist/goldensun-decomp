@@ -166,7 +166,7 @@ asm/overlays/rom_7b4558/ovl_30_c_c_a_c_a%.o: src/overlays/rom_7b4558/ovl_30_c_c_
 	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
-asm/overlays/rom_7b7f1c/ovl_30_c_c_a_c_c_c_a%.o: src/overlays/rom_7b7f1c/ovl_30_c_c_a_c_c_c_a%.c
+asm/overlays/rom_7b7f1c/ovl_30_c_c_a_c_c_c_a_b.o: src/overlays/rom_7b7f1c/ovl_30_c_c_a_c_c_c_a_b.c
 	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
