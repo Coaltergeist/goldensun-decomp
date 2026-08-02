@@ -78,4 +78,37 @@ struct Sprite {
     struct SpriteLayer *layers[4];  // 0x28
 };                                  // 0x38
 
+// --- Sprite data tables --------------------------------------------------
+// Small sprite-system table entries, each size-pinned by a global array; the
+// gstypes layout sums to the pin. SpriteSlot/SpriteVoice also appear in
+// GS-headers.
+
+// VRAM allocation-table slot: a sprite's byte size + its VRAM offset. sizeof 4.
+struct SpriteSlot {
+    u16 size;        // width*height*bpp/8
+    u16 vramOffset;
+};
+
+// Sprite-ID -> battle voice mapping. sizeof 4.
+struct SpriteVoice {
+    u16 sprite;      // sprite ID
+    u8 voice;        // voice ID
+    u8 __unk03;      // gstypes: "name" (unverified)
+};
+
+// Sprite-ID -> graphics file-ID mapping. sizeof 4.
+struct SpriteGFXFileID {
+    u16 fileID;
+    u16 spriteID;
+};
+
+// Per-enemy sprite metadata. sizeof 8. colorswap/deathSFX pack into byte 0x03.
+struct EnemySpriteInfo {
+    u16 sprite;          // 0x00  sprite ID
+    u8 attackAnim;       // 0x02
+    u8 colorswap : 5;    // 0x03  bits 0-4
+    u8 deathSFX : 3;     // 0x03  bits 5-7
+    u32 height;          // 0x04
+};
+
 #endif // _SPRITE_H_

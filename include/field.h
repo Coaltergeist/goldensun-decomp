@@ -88,4 +88,66 @@ struct MapSpecialExit {
     u16 exitID;
 };
 
+// --- Map / field data tables ---------------------------------------------
+// The following are static data-table entry types. Each is size-pinned by a
+// global array (see struct_asserts.c) and its gstypes layout sums exactly to
+// that pin; Map and MapData additionally agree with GS-headers. Single-source
+// entries keep gstypes field names; unproven fields stay __unk.
+
+// One map's header entry (the global map table, keyed by map ID). sizeof 8.
+struct Map {
+    u16 scriptFile;   // 0x00  (GS-headers: "mapcode")
+    u8 area;          // 0x02
+    u8 type;          // 0x03
+    u16 mapdata;      // 0x04  index into the MapData table
+    u16 __unk06;      // 0x06  (GS-headers: "unkFile4")
+};
+
+// Tileset/graphics references for a map. sizeof 12. gstypes+GS-headers agree.
+struct MapData {
+    u16 file;         // 0x00
+    u16 palette;      // 0x02
+    u16 tilesets[3];  // 0x04
+    u16 tilesetAnim;  // 0x0A
+};
+
+// Battle-background reference for a map. sizeof 8.
+struct MapBattleBG {
+    u32 bgFile;       // 0x00
+    u32 mapID;        // 0x04
+};
+
+// Per-map random-encounter descriptor. sizeof 8.
+struct MapEncounters {
+    u16 mapID;              // 0x00
+    u16 doorID;             // 0x02
+    u16 flagID;             // 0x04
+    u8 encounterTableID;    // 0x06
+    u8 __unk07;             // 0x07
+};
+
+// Per-world-map-tile random-encounter descriptor. sizeof 8.
+struct WorldMapEncounters {
+    u16 area;               // 0x00
+    u16 terrain;            // 0x02
+    u16 flagID;             // 0x04
+    u16 encounterTableID;   // 0x06
+};
+
+// A usable field-move's range parameters. sizeof 8.
+struct FieldMoveRange {
+    u16 fieldMoveID;   // 0x00
+    u16 radius;        // 0x02
+    u16 height;        // 0x04
+    u16 angleRange;    // 0x06
+};
+
+// A random-encounter table (enemy groups + weighted rates). sizeof 28.
+struct EncounterTable {
+    u16 encounterRate;        // 0x00
+    u16 level;                // 0x02
+    u16 enemyGroups[8];       // 0x04
+    u8 enemyGroupRates[8];    // 0x14
+};
+
 #endif // _FIELD_H_
