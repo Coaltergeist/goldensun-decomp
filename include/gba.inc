@@ -1,3 +1,5 @@
+.ifndef GBA_INC
+.set GBA_INC, 1
 	.set REG_DISPSTAT,    0x04000004
 	.set REG_VCOUNT,      0x04000006
 	.set REG_BG0CNT,      0x04000008
@@ -54,3 +56,4 @@
 	.set REG_IF,          0x04000202
 	.set REG_WAITCNT,     0x04000204
 	.set REG_IME,         0x04000208
+.endif

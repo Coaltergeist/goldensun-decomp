@@ -1,3 +1,5 @@
+.ifndef MACROS_INC
+.set MACROS_INC, 1
 	.macro .ssize sym
 	.size	\sym, . - \sym
 	.endm
@@ -83,3 +85,4 @@
 		.section .rodata.mft
 		.word \sym
 	.endm
+.endif
