@@ -95,6 +95,7 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 # intermediate alongside the .o; safe to commit per the existing matched-
 # corpus convention, or leave as a build artifact (regenerable from the .c).
 asm/%.o: src/%.c
+	mkdir -p $(dir $@)
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
