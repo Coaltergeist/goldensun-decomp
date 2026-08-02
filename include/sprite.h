@@ -111,4 +111,19 @@ struct EnemySpriteInfo {
     u32 height;          // 0x04
 };
 
+// Cached decompressed sprite graphics. sizeof 8 (computed: u32 + ptr).
+struct SpriteCachedGFX {
+    u32 spriteID;     // 0x00
+    const u8 **gfx;   // 0x04
+};
+
+// Scratch buffer for building an item/menu icon. sizeof 1544 (computed;
+// gstypes+GS-headers). 1536-byte pixel buffer + dims + source pointer.
+struct IconBuffer {
+    u8 buffer[1536];  // 0x000
+    u16 width;        // 0x600
+    u16 height;       // 0x602
+    void *src;        // 0x604
+};                    // 0x608 = 1544
+
 #endif // _SPRITE_H_

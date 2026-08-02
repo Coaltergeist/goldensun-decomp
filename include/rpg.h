@@ -83,4 +83,27 @@ struct Unit {
     u16 ID;                    // 0x14A  UnitID: PC ID, or enemy type ID + 8
 };                             // 0x14C = 332
 
+// A summon's move ID + its per-element djinn cost. sizeof 8 (pin).
+struct Summon {
+    u16 move;          // 0x00
+    u8 __unk2;         // 0x02
+    u8 __unk3;         // 0x03
+    u8 djinnCost[4];   // 0x04
+};
+
+// An equipment stat/status effect. sizeof 4 (computed; gstypes+GS-headers).
+struct EquipEffect {
+    u8 type;           // 0x00  EquipEffectType
+    u8 value;          // 0x01
+    u16 __unk2;        // 0x02
+};
+
+// A queued djinn-unset action. sizeof 4 (computed; gstypes+GS-headers).
+struct UnsetDjinni {
+    u8 element;        // 0x00
+    u8 djinni;         // 0x01
+    u8 pc;             // 0x02
+    u8 turns;          // 0x03
+};
+
 #endif // _RPG_H_

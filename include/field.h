@@ -150,4 +150,69 @@ struct EncounterTable {
     u8 enemyGroupRates[8];    // 0x14
 };
 
+// Djinn-encounter table reference. sizeof 4 (pin).
+struct DjinnEncounter {
+    u16 encounterTableID;
+    u16 groupIndex;
+};
+
+// Per-area background music table entry. sizeof 8 (pin); flagID is u16.
+struct AreaMusic {
+    u16 area;
+    u16 door;
+    u16 flagID;     // gstypes: enum FlagID (u16 storage)
+    u16 music;
+};
+
+// Per-area name-string table entry. sizeof 8 (pin).
+struct AreaName {
+    u16 area;
+    u16 door;
+    u16 stringID;
+    u16 __unk06;    // gstypes: Alignment padding
+};
+
+// Enemy-group -> battle-music table entry. sizeof 4 (pin).
+struct EnemyBattleMusic {
+    u16 music;
+    u16 enemyGroup;
+};
+
+// One scrolling map background layer. sizeof 56 (computed; gstypes+GS-headers
+// agree). Embedded as layers[3] in the field state.
+struct MapLayer {
+    vec2_t screenPos;   // 0x00
+    vec2_t offset;      // 0x08
+    vec2_t parallax;    // 0x10
+    vec2_t __unk18;     // 0x18
+    vec2_t __unk20;     // 0x20
+    u16 __unk28;        // 0x28
+    u16 startOffset;    // 0x2A
+    u16 __unk2C;        // 0x2C
+    u16 __unk2E;        // 0x2E
+    u32 *tilemap;       // 0x30
+    u8 *heightmap;      // 0x34
+};                      // 0x38 = 56
+
+// Field camera position + clamp bounds. sizeof 24 (computed; gstypes+GS-headers).
+struct FieldCamera {
+    vec2_t pos;   // 0x00
+    vec2_t min;   // 0x08
+    vec2_t max;   // 0x10
+};
+
+// A 2D field particle. sizeof 20 (computed; gstypes+GS-headers).
+struct Particle2D {
+    vec2_t pos;      // 0x00
+    vec2_t motion;   // 0x08
+    u32 aux;         // 0x10
+};
+
+// A 3D field particle. sizeof 28 (computed; gstypes+GS-headers).
+struct Particle3D {
+    vec3_t pos;      // 0x00
+    vec3_t motion;   // 0x0C
+    fx32 aux;        // 0x18
+};
+
 #endif // _FIELD_H_
