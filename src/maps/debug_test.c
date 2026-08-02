@@ -1,10 +1,4 @@
-/* rom_7fc618 (overlay file 972) — consolidated from the ovl_30 split fragments.
- * Ten functions in ascending address order, OvlFunc_972_2008030 ..
- * OvlFunc_972_20080b4. The overlay's data (gOvl_*) stays in
- * asm/overlays/rom_7fc618/ovl_30_c_c.s and its glue in
- * src/overlays/rom_7fc618/{exports,imports}.s; the linker pulls this TU as
- * asm/maps/debug_test.o(.text) from overlay.ld.
- */
+/* rom_7fc618 (overlay file 972): consolidated TU */
 
 extern unsigned char gOvl_020081a8[];
 extern unsigned char gOvl_020081d8[];

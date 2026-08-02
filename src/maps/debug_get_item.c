@@ -1,12 +1,4 @@
-/* rom_7fc720 (overlay file 973) — consolidated TU.
- * Eighteen functions in ascending address order, OvlFunc_973_2008030 ..
- * OvlFunc_973_20087d4. Eleven are matched C; seven remain raw asm, embedded
- * per-function via INCLUDE_ASM so the whole overlay is one file regardless of
- * match state. Data (the gOvl_ and .L symbols) stays in
- * asm/overlays/rom_7fc720/ovl_30_c_c_c_c.s and the glue in
- * src/overlays/rom_7fc720/{exports,imports}.s; linked as
- * asm/maps/debug_get_item.o(.text) from overlay.ld.
- */
+/* rom_7fc720 (overlay file 973): consolidated TU */
 
 #include "nonmatching.h"
 
