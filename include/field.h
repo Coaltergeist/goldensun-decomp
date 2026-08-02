@@ -73,4 +73,19 @@ struct MapEntrance {
     u8 __unk17;
 };
 
+// A rectangular special-exit trigger volume (elements of a map's special-exit
+// table). gstypes and GS-headers are byte-identical here; 8 contiguous u16 =>
+// sizeof 16. No size pin or disassembly yet, but the all-u16 layout is
+// structurally unambiguous.
+struct MapSpecialExit {
+    u16 minX;
+    u16 minY;
+    u16 minZ;
+    u16 maxX;
+    u16 maxY;
+    u16 maxZ;
+    u16 flagID;
+    u16 exitID;
+};
+
 #endif // _FIELD_H_

@@ -2,6 +2,7 @@
 #define _ACTOR_H_
 
 #include "gba/types.h"
+#include "sprite.h"
 
 // Layout is GS1: sizeof(struct Actor) == 112 (0x70). GS2 appends a tail after
 // `update` (vec3 + u32, offsets 0x70/0x7C); add it under `#if !GS1` when GS2
@@ -28,7 +29,7 @@ struct Actor {
     fx32 bounce;
     fx32 gravity;
     fx32 __unk4C;
-    void *sprite; // struct Sprite
+    struct Sprite *sprite;
     bool8 visible;
     u8 __unk55;
     u8 __unk56;
