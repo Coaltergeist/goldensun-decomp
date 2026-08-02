@@ -3,6 +3,10 @@
 
 #include "gba/types.h"
 
+// Layout is GS1: sizeof(struct Actor) == 112 (0x70). GS2 appends a tail after
+// `update` (vec3 + u32, offsets 0x70/0x7C); add it under `#if !GS1` when GS2
+// support lands rather than assuming this struct is version-shared.
+
 struct Actor;
 
 typedef void (*actorfun_t)(struct Actor *actor);
@@ -19,6 +23,8 @@ struct Actor {
     u8 flags;
     vec3_t motion;
     fx32 speed;
+    fx32 accel;
+    vec3_t prevPos;
     fx32 bounce;
     fx32 gravity;
     fx32 __unk4C;
@@ -38,11 +44,6 @@ struct Actor {
     u32 __unk64;
     u32 __unk68;
     actorfun_t *update;
-
-// GS1 only
-
-    vec3_t __unk70;
-    u32 __unk7C;
 };
 
 #endif // _ACTOR_H_
