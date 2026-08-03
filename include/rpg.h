@@ -3,17 +3,8 @@
 
 #include "gba/types.h"
 
-// A Unit is one party member's or enemy's full stat block. sizeof == 332
-// (0x14C): hard-pinned by the global gPartyStatus (Unit[8] @ 0x02000500, size
-// 2656 => stride 332). The gstypes and GS-headers definitions agree field for
-// field and the layout sums to exactly 332, with two reconciliations:
-//   * baseHPRegen/basePPRegen are u16 (GS-headers), NOT the u8+u16 "field_34"
-//     split Ghidra guessed; they mirror the current-stat HPRegen/PPRegen
-//     (both u16) exactly, one block up.
-//   * `ID` is a u16 (a UnitID); rendering it as `enum` would be 4 bytes here
-//     (no -fshort-enums) and overshoot 332. The pad byte at 0x149 is explicit.
-// Element stats are the flat gstypes form u16[2][4] ([stat][element]) to avoid
-// pulling in GS-headers' ElemStats sub-struct; same 16 bytes.
+// A unit's full stat block: one party member or one enemy. Element stats are
+// a flat u16[2][4], indexed [power/resist][element].
 struct Unit {
     char name[15];             // 0x000
     u8 level;                  // 0x00F
@@ -47,7 +38,7 @@ struct Unit {
     u32 setDjinn[4];           // 0x108  per-element djinn-Set bitflags
     u8 numDjinn[4];            // 0x118
     u8 numSetDjinn[4];         // 0x11C
-    u32 aiMove;                // 0x120  (enemy AI only; gstypes _unk120)
+    u32 aiMove;                // 0x120  (enemy AI only)
     u32 exp;                   // 0x124
     u8 pcID;                   // 0x128
     u8 curClass;               // 0x129
@@ -79,11 +70,11 @@ struct Unit {
     u8 agilityModTurns;        // 0x146
     u8 agilityMod;             // 0x147
     u8 challenge;              // 0x148
-    u8 __unk149;               // 0x149  padding (gstypes: field_329)
+    u8 __unk149;               // 0x149  padding
     u16 ID;                    // 0x14A  UnitID: PC ID, or enemy type ID + 8
 };                             // 0x14C = 332
 
-// A summon's move ID + its per-element djinn cost. sizeof 8 (pin).
+// A summon's move ID and its per-element djinn cost.
 struct Summon {
     u16 move;          // 0x00
     u8 __unk2;         // 0x02
@@ -91,19 +82,77 @@ struct Summon {
     u8 djinnCost[4];   // 0x04
 };
 
-// An equipment stat/status effect. sizeof 4 (computed; gstypes+GS-headers).
+// An equipment stat/status effect.
 struct EquipEffect {
     u8 type;           // 0x00  EquipEffectType
     u8 value;          // 0x01
     u16 __unk2;        // 0x02
 };
 
-// A queued djinn-unset action. sizeof 4 (computed; gstypes+GS-headers).
+// A queued djinn-unset action.
 struct UnsetDjinni {
     u8 element;        // 0x00
     u8 djinni;         // 0x01
     u8 pc;             // 0x02
     u8 turns;          // 0x03
 };
+
+// One item's data record (equipment, consumables, and their effects).
+struct Item {
+    u16 price;                          // 0x00
+    u8 type;                            // 0x02  ItemType
+    u8 flags;                           // 0x03  ItemFlags
+    u16 canEquip;                       // 0x04  who can equip (class/PC mask)
+    u16 icon;                           // 0x06
+    u16 attack;                         // 0x08
+    u8 defense;                         // 0x0A
+    u8 unleashRate;                     // 0x0B
+    u8 useEffect;                       // 0x0C
+    u8 __unk0D;                         // 0x0D
+    u16 __unk0E;                        // 0x0E
+    u32 __unk10;                        // 0x10
+    u32 __unk14;                        // 0x14
+    struct EquipEffect equipEffects[4]; // 0x18
+    u16 bestow;                         // 0x28  psynergy bestowed when equipped
+    u16 __unk2A;                        // 0x2A
+};                                      // 0x2C = 44
+
+// A djinni: its unleash move and the stat boosts it grants when Set.
+struct Djinni {
+    u32 unleash;       // 0x00  move ID unleashed in battle
+    u8 HP;             // 0x04
+    u8 PP;             // 0x05
+    u8 attack;         // 0x06
+    u8 defense;        // 0x07
+    u8 agility;        // 0x08
+    u8 luck;           // 0x09
+};                     // 0x0C
+
+// A class definition (element levels, name, psynergy progression, ...).
+// Layout not yet resolved; kept opaque.
+struct Class {
+    u8 __unk00[84];    // 0x00
+};                     // 0x54
+
+// Per-playable-character growth template: base stats, per-level growth tables,
+// and starting kit.
+struct PCStats {
+    u8 __unk00[80];        // 0x00
+    u16 baseHP;            // 0x50
+    u16 HPGrowth[5];       // 0x52
+    u16 basePP;            // 0x5C
+    u16 PPGrowth[5];       // 0x5E
+    u16 baseAttack;        // 0x68
+    u16 attackGrowth[5];   // 0x6A
+    u16 baseDefense;       // 0x74
+    u16 defenseGrowth[5];  // 0x76
+    u16 baseAgility;       // 0x80
+    u16 agilityGrowth[5];  // 0x82
+    u8 baseLuck;           // 0x8C
+    u8 luckGrowth[5];      // 0x8D
+    u8 baseElemStats[4];   // 0x92
+    u8 startLevel;         // 0x96  (1 pad byte @ 0x97)
+    u16 startItems[14];    // 0x98
+};                         // 0xB4
 
 #endif // _RPG_H_

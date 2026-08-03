@@ -4,9 +4,8 @@
 #include "gba/types.h"
 #include "sprite.h"
 
-// Layout is GS1: sizeof(struct Actor) == 112 (0x70). GS2 appends a tail after
-// `update` (vec3 + u32, offsets 0x70/0x7C); add it under `#if !GS1` when GS2
-// support lands rather than assuming this struct is version-shared.
+// A field-map actor (GS1). GS2 appends a tail after `update` (vec3 + u32); add
+// it under `#if !GS1` when GS2 support lands.
 
 struct Actor;
 

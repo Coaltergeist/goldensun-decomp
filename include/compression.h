@@ -4,8 +4,7 @@
 #include "gba/types.h"
 
 // Huffman decode support types (Golden Sun stores game text Huffman-coded).
-// HuffTableEntry/HuffTreeRoot are size-pinned by global arrays (sizeof 8 each);
-// HuffContext is the decoder's running state (computed: u32 + ptr + u32 = 12).
+// HuffContext is the decoder's running state.
 
 struct HuffTableEntry {
     const u8 *data;      // 0x00

@@ -106,8 +106,7 @@ static inline u16 UnknownDMAPrefix(void) {
     return dma[5];
 }
 
-// A queued DMA copy (the gDMATasks[33] table). sizeof 12: pinned by
-// gDMATasks (DMATask[33] = 396). gstypes+GS-headers agree.
+// A queued DMA copy (the gDMATasks[33] table).
 struct DMATask {
     void *src;      // 0x00
     void *dest;     // 0x04
