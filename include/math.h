@@ -24,7 +24,7 @@ static inline fx32 fx32_multiply(fx32 a, fx32 b) {
 	return r0;
 }
 
-// Integer division result (quotient + remainder). sizeof 8 (computed).
+// Integer division result (quotient + remainder).
 struct div_t {
     u32 div;
     u32 mod;
