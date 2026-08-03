@@ -3,11 +3,13 @@
 
 #include "gba/types.h"
 
+// The active map's runtime state block (reached through the map subsystem's
+// current-state pointer).
 struct MapState {
-    const void * loadActors; // MapActorInfo
+    const void * loadActors;  // MapActorInfo*
     u8 __unk004[0xC];
-    const void * events; // MapEvent
-    const void * actors[65]; // Actor
+    const void * events;      // MapEvent*
+    const void * actors[65];  // Actor*
     u8 __unk118[0x46];
     bool16 startPressed;
     u8 __unk160[0x1E];
@@ -19,7 +21,7 @@ struct MapState {
     u16 __unk1C4;
     u16 __unk1C6;
     u32 transitionSpeed;
-    const void *cameraActor; // Actor
+    const void *cameraActor;  // Actor*
 };
 
 // One map-actor placement record (an element of a map's actor table).
