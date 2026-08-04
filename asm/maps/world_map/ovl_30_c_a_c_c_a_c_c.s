@@ -5,43 +5,43 @@
 	push	{r5, r6, lr}
 	mov	r6, #0
 	cmp	r0, #1
-	beq	.L3462
+	beq	.Lm881_3462
 	cmp	r0, #1
-	bcc	.L345e
+	bcc	.Lm881_345e
 	cmp	r0, #2
-	beq	.L3466
+	beq	.Lm881_3466
 	cmp	r0, #3
-	beq	.L3472
-	b	.L3476
-.L345e:
+	beq	.Lm881_3472
+	b	.Lm881_3476
+.Lm881_345e:
 	ldr	r6, =0x92c
-	b	.L3476
-.L3462:
+	b	.Lm881_3476
+.Lm881_3462:
 	ldr	r6, =0x935
-	b	.L3476
-.L3466:
+	b	.Lm881_3476
+.Lm881_3466:
 	ldr	r6, =0x917
-	b	.L3476
-.L346a:
-	ldr	r3, =.L6718
+	b	.Lm881_3476
+.Lm881_346a:
+	ldr	r3, =.Lm881_6718
 	lsl	r2, r5, #2
 	ldr	r0, [r3, r2]
-	b	.L348a
-.L3472:
+	b	.Lm881_348a
+.Lm881_3472:
 	mov	r6, #0x99
 	lsl	r6, #4
-.L3476:
+.Lm881_3476:
 	mov	r5, #0
-.L3478:
+.Lm881_3478:
 	add	r0, r6, r5
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L346a
+	bne	.Lm881_346a
 	add	r5, #1
 	cmp	r5, #8
-	bls	.L3478
+	bls	.Lm881_3478
 	mov	r0, #0
-.L348a:
+.Lm881_348a:
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
@@ -54,7 +54,7 @@
 	mov	r2, #0xf
 	and	r3, r2
 	cmp	r3, #0
-	bne	.L3566
+	bne	.Lm881_3566
 	mov	r0, #8
 	bl	__MapActor_GetActor
 	mov	r6, r0
@@ -69,7 +69,7 @@
 	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
-	beq	.L3566
+	beq	.Lm881_3566
 	mov	r3, #0x80
 	lsl	r3, #8
 	str	r3, [r5, #0x18]
@@ -79,7 +79,7 @@
 	lsl	r0, #1
 	lsr	r0, #16
 	cmp	r0, #0
-	beq	.L3502
+	beq	.Lm881_3502
 	bl	__Random
 	lsl	r2, r0, #1
 	add	r2, r0
@@ -92,8 +92,8 @@
 	str	r3, [r5, #8]
 	ldr	r3, [r5, #0x10]
 	sub	r3, r2
-	b	.L3518
-.L3502:
+	b	.Lm881_3518
+.Lm881_3502:
 	bl	__Random
 	lsl	r0, #5
 	ldr	r3, [r5, #8]
@@ -104,7 +104,7 @@
 	ldr	r3, [r5, #0x10]
 	asr	r0, #1
 	add	r3, r0
-.L3518:
+.Lm881_3518:
 	str	r3, [r5, #0x10]
 	mov	r2, r7
 	add	r2, #0x26
@@ -141,7 +141,7 @@
 	ldr	r1, =gScript_881__0200e73c
 	mov	r0, r5
 	bl	__Actor_SetScript
-.L3566:
+.Lm881_3566:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -219,7 +219,7 @@
 	ldr	r2, [r5]
 	mov	r3, #0x10
 	str	r3, [r2, r6]
-	ldr	r3, .L3648	@ 0x7fff
+	ldr	r3, .Lm881_3648	@ 0x7fff
 	mov	r2, #0xa0
 	lsl	r2, #19
 	strh	r3, [r2]
@@ -227,14 +227,14 @@
 	bl	__WaitMapTransition
 	mov	r0, #0x6f
 	bl	__Func_8091e9c
-	b	.L3670
+	b	.Lm881_3670
 
 	.align	2, 0
-.L3648:
+.Lm881_3648:
 	.word	0x7fff
 	.pool
 
-.L3670:
+.Lm881_3670:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -259,23 +259,23 @@
 	bl	__GetFlagByte
 	mov	r5, r0
 	cmp	r5, #0
-	beq	.L36c0
+	beq	.Lm881_36c0
 	cmp	r5, #1
-	bne	.L36b2
+	bne	.Lm881_36b2
 	mov	r3, #0xc1
 	lsl	r3, #1
 	add	r2, r6, r3
 	mov	r3, #0x63
 	strh	r3, [r2]
-	b	.L36c0
-.L36b2:
+	b	.Lm881_36c0
+.Lm881_36b2:
 	mov	r0, #0x83
 	lsl	r0, #1
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L36c0
+	bne	.Lm881_36c0
 	sub	r5, #1
-.L36c0:
+.Lm881_36c0:
 	mov	r0, #0xbe
 	lsl	r0, #2
 	mov	r1, r5
@@ -305,7 +305,7 @@
 	bl	__GetFlag
 	mov	r8, r0
 	cmp	r0, #0
-	bne	.L37a0
+	bne	.Lm881_37a0
 	bl	__CutsceneStart
 	mov	r0, r6
 	ldr	r1, =0x101
@@ -316,14 +316,14 @@
 	mov	r0, r7
 	bl	__MapActor_GetActor
 	cmp	r0, #0
-	beq	.L3734
+	beq	.Lm881_3734
 	mov	r3, #0xa
 	ldrsh	r1, [r0, r3]
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	mov	r0, r6
 	bl	__MapActor_TravelTo
-.L3734:
+.Lm881_3734:
 	mov	r0, r6
 	bl	__MapActor_WaitMovement
 	mov	r0, #0xf4
@@ -370,7 +370,7 @@
 	add	r3, r2
 	mov	r2, r8
 	strh	r2, [r3]
-.L37a0:
+.Lm881_37a0:
 	pop	{r3, r5}
 	mov	r8, r3
 	mov	r10, r5

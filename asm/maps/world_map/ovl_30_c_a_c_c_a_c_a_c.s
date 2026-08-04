@@ -12,7 +12,7 @@
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L28d4
+	beq	.Lm881_28d4
 	ldr	r3, =iwram_3001ebc
 	mov	r1, #0xb9
 	ldr	r3, [r3]
@@ -20,7 +20,7 @@
 	add	r2, r3, r1
 	mov	r3, #1
 	strh	r3, [r2]
-.L28d4:
+.Lm881_28d4:
 	bl	__Func_808c4c0
 	bl	__CutsceneEnd
 	pop	{r0}
@@ -67,30 +67,30 @@
 	ldr	r3, [r5, #0x10]
 	ldr	r2, =0xd680000
 	cmp	r3, r2
-	ble	.L2964
+	ble	.Lm881_2964
 	ldr	r3, [r5, #8]
 	ldr	r1, =0x176e0000
 	cmp	r3, r1
-	ble	.L297c
+	ble	.Lm881_297c
 	mov	r0, r5
 	ldr	r2, [r5, #0xc]
 	ldr	r3, =0xd7d0000
 	bl	__Actor_TravelTo
 	mov	r0, r5
 	bl	__Actor_WaitMovement
-	b	.L297c
-.L2964:
+	b	.Lm881_297c
+.Lm881_2964:
 	ldr	r3, [r5, #8]
 	ldr	r1, =0x177a0000
 	cmp	r3, r1
-	ble	.L297c
+	ble	.Lm881_297c
 	mov	r0, r5
 	ldr	r2, [r7, #0xc]
 	ldr	r3, =0xd480000
 	bl	__Actor_TravelTo
 	mov	r0, r5
 	bl	__Actor_WaitMovement
-.L297c:
+.Lm881_297c:
 	ldr	r3, =0xd680000
 	mov	r2, #0
 	ldr	r1, =0x17690000
@@ -125,7 +125,7 @@
 	bl	__CreateActor
 	mov	r7, r0
 	cmp	r7, #0
-	beq	.L2a30
+	beq	.Lm881_2a30
 	mov	r1, #0
 	add	r0, #0x55
 	strb	r1, [r0]
@@ -166,8 +166,8 @@
 	mov	r0, #0x50
 	str	r3, [r7, #0x6c]
 	bl	__CutsceneWait
-.L2a30:
-	ldr	r6, =.L679c
+.Lm881_2a30:
+	ldr	r6, =.Lm881_679c
 	ldr	r0, [r6]
 	bl	__MapActor_GetActor
 	mov	r3, #0xc0
@@ -192,10 +192,10 @@
 	mov	r2, #0x50
 	bl	__ActorMessage_Wait
 	cmp	r7, #0
-	beq	.L2a74
+	beq	.Lm881_2a74
 	mov	r0, r7
 	bl	__DeleteActor
-.L2a74:
+.Lm881_2a74:
 	mov	r1, #1
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -360,14 +360,14 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
-	beq	.L2c20
+	beq	.Lm881_2c20
 	mov	r2, #0xa
 	ldrsh	r1, [r0, r2]
 	mov	r3, #0x12
 	ldrsh	r2, [r0, r3]
 	ldr	r0, [r6]
 	bl	__MapActor_TravelTo
-.L2c20:
+.Lm881_2c20:
 	ldr	r0, [r6]
 	bl	__MapActor_WaitMovement
 	mov	r2, #0
@@ -660,7 +660,7 @@
 	ldr	r1, =gScript_881__0200d0a8
 	mov	r0, #5
 	bl	__MapActor_SetBehavior
-.L2f4a:
+.Lm881_2f4a:
 	mov	r0, #0xa
 	mov	r1, #6
 	bl	__MapActor_SetAnim
@@ -675,7 +675,7 @@
 	mov	r1, #0
 	ldrsh	r3, [r0, r1]
 	cmp	r3, #0
-	beq	.L2f4a
+	beq	.Lm881_2f4a
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -793,11 +793,11 @@
 	mov	r1, #0xa
 	bl	__SetDestMap
 	add	sp, #0x1c
-	b	.L3128
+	b	.Lm881_3128
 
 	.pool_aligned
 
-.L3128:
+.Lm881_3128:
 	pop	{r5}
 	pop	{r0}
 	bx	r0
@@ -900,7 +900,7 @@
 	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
-	beq	.L3270
+	beq	.Lm881_3270
 	ldr	r5, [r6, #0x50]
 	bl	__Random
 	ldr	r3, =0x13333
@@ -929,53 +929,53 @@
 	ldr	r1, =gScript_881__0200d14c
 	mov	r0, r6
 	bl	__Actor_SetScript
-.L3270:
+.Lm881_3270:
 	ldr	r3, =iwram_3001e40
 	mov	r1, #3
 	ldr	r0, [r3]
 	bl	_umodsi3_RAM
 	cmp	r0, #0
-	bne	.L32c6
+	bne	.Lm881_32c6
 	bl	__Random
 	lsl	r0, #2
 	lsr	r0, #16
 	cmp	r0, #1
-	beq	.L329e
+	beq	.Lm881_329e
 	cmp	r0, #1
-	bcc	.L3298
+	bcc	.Lm881_3298
 	cmp	r0, #2
-	beq	.L32a8
+	beq	.Lm881_32a8
 	cmp	r0, #3
-	beq	.L32b8
-	b	.L32c6
-.L3298:
+	beq	.Lm881_32b8
+	b	.Lm881_32c6
+.Lm881_3298:
 	mov	r1, #1
 	ldr	r0, =0x17c70000
-	b	.L32ac
-.L329e:
+	b	.Lm881_32ac
+.Lm881_329e:
 	mov	r1, #1
 	ldr	r0, =0x17c90000
 	neg	r1, r1
 	ldr	r2, =0xc670000
-	b	.L32b0
-.L32a8:
+	b	.Lm881_32b0
+.Lm881_32a8:
 	mov	r1, #1
 	ldr	r0, =0x17c90000
-.L32ac:
+.Lm881_32ac:
 	neg	r1, r1
 	ldr	r2, =0xc690000
-.L32b0:
+.Lm881_32b0:
 	mov	r3, #1
 	bl	__Func_80933f8
-	b	.L32c6
-.L32b8:
+	b	.Lm881_32c6
+.Lm881_32b8:
 	mov	r1, #1
 	ldr	r0, =0x17c70000
 	neg	r1, r1
 	ldr	r2, =0xc670000
 	mov	r3, #1
 	bl	__Func_80933f8
-.L32c6:
+.Lm881_32c6:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

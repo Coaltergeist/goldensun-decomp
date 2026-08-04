@@ -19,12 +19,12 @@
 	bl	_divsi3_RAM
 	ldr	r3, [r7]
 	cmp	r3, r0
-	blt	.L7a
+	blt	.Lm881_7a
 	bl	__Random
 	mov	r2, #0x80
 	lsl	r2, #8
 	cmp	r0, r2
-	bcs	.L76
+	bcs	.Lm881_76
 	ldr	r0, =0x808
 	mov	r1, #3
 	bl	__Func_8091f14
@@ -33,11 +33,11 @@
 	add	r2, r6, r3
 	mov	r3, #0
 	str	r3, [r2]
-	b	.L7a
-.L76:
+	b	.Lm881_7a
+.Lm881_76:
 	ldr	r3, [r5]
 	str	r3, [r7]
-.L7a:
+.Lm881_7a:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -60,7 +60,7 @@
 	bl	_divsi3_RAM
 	ldr	r3, [r5]
 	cmp	r3, r0
-	blt	.Lc2
+	blt	.Lm881_c2
 	ldr	r0, =0x809
 	mov	r1, #0x2a
 	bl	__Func_8091f14
@@ -69,7 +69,7 @@
 	add	r2, r6, r3
 	mov	r3, #0
 	str	r3, [r2]
-.Lc2:
+.Lm881_c2:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -92,7 +92,7 @@
 	bl	_divsi3_RAM
 	ldr	r3, [r5]
 	cmp	r3, r0
-	blt	.L10a
+	blt	.Lm881_10a
 	ldr	r0, =0x80a
 	mov	r1, #0x18
 	bl	__Func_8091f14
@@ -101,7 +101,7 @@
 	add	r2, r6, r3
 	mov	r3, #0
 	str	r3, [r2]
-.L10a:
+.Lm881_10a:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -115,13 +115,13 @@
 	ldrsh	r3, [r2, r4]
 	ldrh	r1, [r2]
 	cmp	r3, #0
-	bgt	.L132
+	bgt	.Lm881_132
 	add	r3, r1, #1
 	strh	r3, [r2]
-	b	.L136
-.L132:
+	b	.Lm881_136
+.Lm881_132:
 	bl	__DeleteActor
-.L136:
+.Lm881_136:
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_881_200811c
@@ -133,13 +133,13 @@
 	mov	r2, #4
 	and	r3, r2
 	cmp	r3, #0
-	beq	.L14e
+	beq	.Lm881_14e
 	ldr	r3, =0x14ccc
-	b	.L152
-.L14e:
+	b	.Lm881_152
+.Lm881_14e:
 	mov	r3, #0x80
 	lsl	r3, #9
-.L152:
+.Lm881_152:
 	str	r3, [r0, #0x18]
 	str	r3, [r0, #0x1c]
 	ldr	r3, =iwram_3001e40
@@ -147,7 +147,7 @@
 	mov	r2, #2
 	and	r3, r2
 	cmp	r3, #0
-	beq	.L1ac
+	beq	.Lm881_1ac
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0xc]
 	ldr	r3, [r0, #0x10]
@@ -157,7 +157,7 @@
 	mov	r0, #0xf6
 	bl	__PlaySound
 	cmp	r6, #0
-	beq	.L1ac
+	beq	.Lm881_1ac
 	mov	r3, r6
 	add	r3, #0x55
 	mov	r5, #0
@@ -181,7 +181,7 @@
 	strh	r5, [r3]
 	ldr	r3, =OvlFunc_881_200811c
 	str	r3, [r6, #0x6c]
-.L1ac:
+.Lm881_1ac:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0
@@ -195,21 +195,21 @@
 	and	r3, r2
 	mov	r6, r0
 	cmp	r3, #0
-	beq	.L1dc
+	beq	.Lm881_1dc
 	mov	r1, #0xa
 	bl	__Actor_SetColorswap
-	b	.L1e4
-.L1dc:
+	b	.Lm881_1e4
+.Lm881_1dc:
 	mov	r0, r6
 	mov	r1, #7
 	bl	__Actor_SetColorswap
-.L1e4:
+.Lm881_1e4:
 	mov	r3, r6
 	add	r3, #0x66
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #0
-	bne	.L23c
+	bne	.Lm881_23c
 	ldr	r3, =0x15d00000
 	mov	r5, r6
 	str	r3, [r6, #8]
@@ -245,7 +245,7 @@
 	lsl	r2, #3
 	add	r3, r2
 	strh	r3, [r5]
-.L23c:
+.Lm881_23c:
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

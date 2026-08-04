@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_881_20086ec
-	.export_func OvlFunc_881_2008290
-	.export_func OvlFunc_881_200829c
-	.export_func OvlFunc_881_200837c
-	.export_func OvlFunc_881_2008590
-	.export_func OvlFunc_881_2008298
+	.export_func WorldMap_MapInit
+	.export_func WorldMap_GetEntrances
+	.export_func WorldMap_GetExits
+	.export_func WorldMap_GetActors
+	.export_func WorldMap_GetEvents
+	.export_func WorldMap_GetSpecialExits

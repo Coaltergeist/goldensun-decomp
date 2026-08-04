@@ -9,7 +9,7 @@
 	add	r2, r1
 	ldr	r3, [r0, #0x50]
 	ldrh	r2, [r2]
-	ldr	r1, .L2e8	@ 0
+	ldr	r1, .Lm881_2e8	@ 0
 	strh	r2, [r3, #0x1e]
 	add	r3, #0x26
 	strb	r1, [r3]
@@ -17,7 +17,7 @@
 	bx	lr
 
 	.align	2, 0
-.L2e8:
+.Lm881_2e8:
 	.word	0
 .func_end OvlFunc_881_20082cc
 
@@ -55,12 +55,12 @@
 	lsl	r0, #4
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L344
+	beq	.Lm881_344
 	ldr	r0, =0x2f1
 	bl	__SetFlag
 	str	r6, [r5, #8]
 	str	r6, [r5, #0xc]
-.L344:
+.Lm881_344:
 	mov	r0, #0
 	pop	{r5, r6}
 	pop	{r1}

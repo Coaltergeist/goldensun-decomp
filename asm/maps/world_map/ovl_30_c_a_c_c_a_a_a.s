@@ -47,30 +47,30 @@
 	mov	r9, r2
 	mov	r10, r1
 	mov	r6, #8
-.L5f4:
+.Lm881_5f4:
 	mov	r0, r6
 	bl	__GetFieldActor
 	mov	r5, r0
 	cmp	r5, #0
-	beq	.L684
+	beq	.Lm881_684
 	ldr	r3, [r5, #8]
 	ldr	r1, [sp, #4]
 	ldr	r2, [r5, #0x10]
 	cmp	r3, r1
-	blt	.L616
+	blt	.Lm881_616
 	cmp	r3, r11
-	bgt	.L616
+	bgt	.Lm881_616
 	cmp	r2, r9
-	blt	.L616
+	blt	.Lm881_616
 	cmp	r2, r10
-	ble	.L620
-.L616:
+	ble	.Lm881_620
+.Lm881_616:
 	mov	r2, r5
 	add	r2, #0x54
 	mov	r3, #0
 	strb	r3, [r2]
-	b	.L684
-.L620:
+	b	.Lm881_684
+.Lm881_620:
 	mov	r2, r5
 	mov	r3, #1
 	add	r2, #0x54
@@ -78,21 +78,21 @@
 	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	cmp	r3, #0
-	beq	.L63a
+	beq	.Lm881_63a
 	ldr	r0, =0x163
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L684
-.L63a:
+	bne	.Lm881_684
+.Lm881_63a:
 	ldr	r3, [r5, #0x50]
 	ldr	r2, [r5, #8]
 	ldr	r1, [r3, #0x18]
 	ldr	r3, [r7, #8]
 	sub	r4, r2, r3
 	cmp	r4, #0
-	bge	.L64a
+	bge	.Lm881_64a
 	sub	r4, r3, r2
-.L64a:
+.Lm881_64a:
 	ldrh	r3, [r5, #0x20]
 	mul	r3, r1
 	ldr	r1, [sp]
@@ -101,32 +101,32 @@
 	ldr	r1, [r7, #0x10]
 	sub	r3, r0, r1
 	cmp	r3, #0
-	blt	.L664
+	blt	.Lm881_664
 	add	r3, r4, r3
 	cmp	r3, r2
-	blt	.L66c
-	b	.L684
-.L664:
+	blt	.Lm881_66c
+	b	.Lm881_684
+.Lm881_664:
 	sub	r3, r1, r0
 	add	r3, r4, r3
 	cmp	r3, r2
-	bge	.L684
-.L66c:
+	bge	.Lm881_684
+.Lm881_66c:
 	mov	r0, #0x82
 	lsl	r0, #1
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L684
+	bne	.Lm881_684
 	mov	r3, #0xb6
 	mov	r2, r6
 	lsl	r3, #1
 	add	r2, #0x64
 	add	r3, r8
 	strh	r2, [r3]
-.L684:
+.Lm881_684:
 	add	r6, #1
 	cmp	r6, #0x41
-	bls	.L5f4
+	bls	.Lm881_5f4
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

@@ -94,13 +94,13 @@
 	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__MapActor_SetBehavior
-.L18f6:
+.Lm881_18f6:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0
-	beq	.L18f6
+	beq	.Lm881_18f6
 	bl	__MapTransitionOut
 	bl	__WaitMapTransition
 	ldr	r0, =0x927
@@ -158,13 +158,13 @@
 	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__MapActor_SetBehavior
-.L19a6:
+.Lm881_19a6:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0
-	beq	.L19a6
+	beq	.Lm881_19a6
 	bl	__MapTransitionOut
 	bl	__WaitMapTransition
 	ldr	r0, =0x927
@@ -222,13 +222,13 @@
 	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__MapActor_SetBehavior
-.L1a56:
+.Lm881_1a56:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0
-	beq	.L1a56
+	beq	.Lm881_1a56
 	bl	__MapTransitionOut
 	bl	__WaitMapTransition
 	ldr	r0, =0x927
@@ -285,22 +285,22 @@
 	strh	r3, [r5]
 	bl	OvlFunc_881_200b41c
 	cmp	r0, #0xb
-	bne	.L1b10
+	bne	.Lm881_1b10
 	ldr	r1, =gScript_881__0200d1b8
 	mov	r0, #8
 	bl	__MapActor_SetBehavior
-	b	.L1b18
-.L1b10:
+	b	.Lm881_1b18
+.Lm881_1b10:
 	ldr	r1, =gScript_881__0200d158
 	mov	r0, #8
 	bl	__MapActor_SetBehavior
-.L1b18:
+.Lm881_1b18:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r2, #0
 	ldrsh	r3, [r5, r2]
 	cmp	r3, #0
-	beq	.L1b18
+	beq	.Lm881_1b18
 	bl	__MapTransitionOut
 	bl	__WaitMapTransition
 	ldr	r0, =0x927
@@ -459,9 +459,9 @@
 	mov	r10, r3
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L1cf8
-	b	.L2080
-.L1cf8:
+	beq	.Lm881_1cf8
+	b	.Lm881_2080
+.Lm881_1cf8:
 	mov	r0, #1
 	bl	__Func_807808c
 	mov	r0, #0xb7
@@ -471,12 +471,12 @@
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
-	beq	.L1d1e
+	beq	.Lm881_1d1e
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #8
 	bl	__MapActor_SetPos
-.L1d1e:
+.Lm881_1d1e:
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0
@@ -539,7 +539,7 @@
 	mov	r7, #0x80
 	lsl	r7, #4
 	mov	r5, #0xf
-.L1db8:
+.Lm881_1db8:
 	ldr	r3, [r6, #0x18]
 	add	r3, r7
 	str	r3, [r6, #0x18]
@@ -550,7 +550,7 @@
 	sub	r5, #1
 	bl	__WaitFrames
 	cmp	r5, #0
-	bge	.L1db8
+	bge	.Lm881_1db8
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
@@ -579,37 +579,37 @@
 	bl	__Func_8096fb0
 	ldr	r7, =iwram_3001e40
 	mov	r5, #0x3b
-.L1e16:
+.Lm881_1e16:
 	ldr	r3, [r7]
 	mov	r2, #2
 	and	r3, r2
 	cmp	r3, #0
-	beq	.L1e48
+	beq	.Lm881_1e48
 	mov	r0, r6
 	mov	r1, #7
 	bl	__Actor_SetColorswap
-	b	.L1e50
+	b	.Lm881_1e50
 
 	.pool_aligned
 
-.L1e48:
+.Lm881_1e48:
 	mov	r0, r6
 	mov	r1, #0
 	bl	__Actor_SetColorswap
-.L1e50:
+.Lm881_1e50:
 	ldr	r3, [r7]
 	mov	r2, #0xf
 	and	r3, r2
 	cmp	r3, #0
-	bne	.L1e60
+	bne	.Lm881_1e60
 	mov	r0, r6
 	bl	OvlFunc_881_200c058
-.L1e60:
+.Lm881_1e60:
 	mov	r0, #1
 	sub	r5, #1
 	bl	__WaitFrames
 	cmp	r5, #0
-	bge	.L1e16
+	bge	.Lm881_1e16
 	bl	__Func_8097194
 	mov	r0, r6
 	mov	r1, #0
@@ -689,9 +689,9 @@
 	lsl	r2, #13
 	mov	r3, r10
 	bl	__Actor_TravelTo
-	ldr	r7, .L1f6c	@ 0x1000
+	ldr	r7, .Lm881_1f6c	@ 0x1000
 	mov	r5, #0xf
-.L1f38:
+.Lm881_1f38:
 	ldrh	r3, [r6, #6]
 	add	r3, r7
 	strh	r3, [r6, #6]
@@ -699,7 +699,7 @@
 	sub	r5, #1
 	bl	__WaitFrames
 	cmp	r5, #0
-	bge	.L1f38
+	bge	.Lm881_1f38
 	mov	r0, #0
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -710,19 +710,19 @@
 	mov	r3, #2
 	mov	r1, r8
 	strb	r3, [r1]
-	ldr	r7, .L1f6c	@ 0x1000
+	ldr	r7, .Lm881_1f6c	@ 0x1000
 	str	r2, [r6, #0x28]
 	str	r2, [r6, #0x14]
-	b	.L1f74
+	b	.Lm881_1f74
 
 	.align	2, 0
-.L1f6c:
+.Lm881_1f6c:
 	.word	0x1000
 	.pool
 
-.L1f74:
+.Lm881_1f74:
 	mov	r5, #7
-.L1f76:
+.Lm881_1f76:
 	ldrh	r3, [r6, #6]
 	add	r3, r7
 	strh	r3, [r6, #6]
@@ -730,7 +730,7 @@
 	sub	r5, #1
 	bl	__WaitFrames
 	cmp	r5, #0
-	bge	.L1f76
+	bge	.Lm881_1f76
 	mov	r0, #0
 	mov	r1, #0x16
 	bl	__MapActor_SetAnim
@@ -760,12 +760,12 @@
 	mov	r1, #0
 	bl	__ShowActorMessage_NoWait
 	mov	r5, #0
-.L1fd2:
+.Lm881_1fd2:
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
 	cmp	r0, #1
-	bne	.L201a
+	bne	.Lm881_201a
 	mov	r0, #8
 	mov	r1, #2
 	mov	r2, #0x14
@@ -775,14 +775,14 @@
 	mov	r2, #0x14
 	bl	__MapActor_Jump
 	cmp	r5, #6
-	bne	.L2006
+	bne	.Lm881_2006
 	ldr	r0, =0xc62
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
-	b	.L2044
-.L2006:
+	b	.Lm881_2044
+.Lm881_2006:
 	ldr	r0, =0xc5c
 	add	r0, r5, r0
 	bl	__MessageID
@@ -790,8 +790,8 @@
 	mov	r1, #0
 	bl	__ShowActorMessage_NoWait
 	add	r5, #1
-	b	.L1fd2
-.L201a:
+	b	.Lm881_1fd2
+.Lm881_201a:
 	mov	r0, #0
 	mov	r1, #0x16
 	bl	__MapActor_SetAnim
@@ -808,7 +808,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
-.L2044:
+.Lm881_2044:
 	mov	r0, #0x96
 	mov	r1, #4
 	lsl	r0, #1
@@ -831,18 +831,18 @@
 	bl	__ActorMessage
 	mov	r0, #9
 	bl	__PlaySound
-	b	.L21a6
-.L2080:
+	b	.Lm881_21a6
+.Lm881_2080:
 	bl	__CutsceneStart
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
-	beq	.L2098
+	beq	.Lm881_2098
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #8
 	bl	__MapActor_SetPos
-.L2098:
+.Lm881_2098:
 	mov	r3, #0xa0
 	lsl	r3, #12
 	mov	r1, r9
@@ -920,7 +920,7 @@
 	mov	r1, #0
 	bl	__Func_8091c7c
 	cmp	r0, #1
-	bne	.L21b0
+	bne	.Lm881_21b0
 	mov	r0, #0
 	mov	r1, #0x16
 	bl	__MapActor_SetAnim
@@ -936,7 +936,7 @@
 	mov	r1, #0
 	bl	__Func_8091c7c
 	cmp	r0, #1
-	beq	.L21b0
+	beq	.Lm881_21b0
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
@@ -946,11 +946,11 @@
 	mov	r0, #8
 	asr	r2, r3, #16
 	bl	__MapActor_TravelToAnimWait
-.L21a6:
+.Lm881_21a6:
 	bl	OvlFunc_881_2009c08
 	bl	__Func_808c4c0
-	b	.L223c
-.L21b0:
+	b	.Lm881_223c
+.Lm881_21b0:
 	mov	r1, #0x16
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -1002,7 +1002,7 @@
 	bl	__ClearFlag
 	ldr	r0, =0x171
 	bl	__ClearFlag
-.L223c:
+.Lm881_223c:
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3
 	mov	r9, r5
@@ -1198,7 +1198,7 @@
 	mov	r6, r8
 	push	{r6}
 	bl	__CutsceneStart
-	ldr	r6, =.L679c
+	ldr	r6, =.Lm881_679c
 	mov	r3, #0x37
 	str	r3, [r6]
 	mov	r0, #0x37
@@ -1210,12 +1210,12 @@
 	bl	__MapActor_GetActor
 	mov	r3, r0
 	cmp	r3, #0
-	beq	.L24e0
+	beq	.Lm881_24e0
 	ldr	r0, [r6]
 	ldr	r1, [r3, #8]
 	ldr	r2, [r3, #0x10]
 	bl	__MapActor_SetPos
-.L24e0:
+.Lm881_24e0:
 	ldr	r0, [r6]
 	ldr	r1, =0x19999
 	ldr	r2, =0xcccc
@@ -1312,24 +1312,24 @@
 	mov	r1, #0
 	mov	r2, #0xa
 	bl	__ActorMessage_Wait
-	b	.L25de
-.L25d8:
+	b	.Lm881_25de
+.Lm881_25d8:
 	mov	r0, #1
 	bl	__WaitFrames
-.L25de:
+.Lm881_25de:
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	add	r0, #0x64
 	mov	r2, #0
 	ldrsh	r3, [r0, r2]
 	cmp	r3, #0
-	beq	.L25d8
+	beq	.Lm881_25d8
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #7
 	mov	r2, #0x14
 	bl	__Func_8092adc
-	ldr	r6, =.L679c
+	ldr	r6, =.Lm881_679c
 	mov	r1, #0x83
 	ldr	r0, [r6]
 	mov	r2, #0
@@ -1462,26 +1462,26 @@
 	mov	r1, #4
 	mov	r2, #0
 	mov	r14, r3
-.L277e:
+.Lm881_277e:
 	ldr	r3, [r2, r4]
 	cmp	r3, #1
-	bne	.L2792
+	bne	.Lm881_2792
 	ldrsh	r3, [r0, r1]
 	cmp	r3, #0x8a
-	bne	.L2792
+	bne	.Lm881_2792
 	add	r3, r1, #4
 	str	r7, [r0, r2]
 	str	r6, [r0, r3]
 	mov	r0, r12
-.L2792:
+.Lm881_2792:
 	ldr	r3, [r2, r4]
 	cmp	r3, r14
-	beq	.L279e
+	beq	.Lm881_279e
 	add	r1, #0xc
 	add	r2, #0xc
-	b	.L277e
-.L279e:
-	ldr	r0, =.L5b84
+	b	.Lm881_277e
+.Lm881_279e:
+	ldr	r0, =.Lm881_5b84
 	mov	r6, #0xc0
 	mov	r2, r0
 	ldr	r4, =0x17940000
@@ -1489,20 +1489,20 @@
 	lsl	r6, #6
 	add	r2, #8
 	mov	r1, #0
-.L27ae:
+.Lm881_27ae:
 	ldrsh	r3, [r1, r0]
 	cmp	r3, #0x39
-	bne	.L27c0
+	bne	.Lm881_27c0
 	str	r4, [r2]
 	str	r5, [r2, #8]
 	strh	r6, [r2, #0xc]
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.L27c0:
+.Lm881_27c0:
 	add	r2, #0x18
 	add	r1, #0x18
-	b	.L27ae
+	b	.Lm881_27ae
 .func_end OvlFunc_881_200a768
 
 .thumb_func_start OvlFunc_881_200a7dc
@@ -1516,26 +1516,26 @@
 	mov	r2, #0
 	mov	r12, r3
 	neg	r4, r4
-.L27f0:
+.Lm881_27f0:
 	ldr	r3, [r2, r0]
 	cmp	r3, #2
-	bne	.L2806
+	bne	.Lm881_2806
 	mov	r5, #0
 	ldrsh	r3, [r1, r5]
 	cmp	r3, #0x8a
-	bne	.L2806
+	bne	.Lm881_2806
 	mov	r3, r12
 	str	r6, [r2, r7]
 	str	r3, [r1, #4]
-	b	.L2812
-.L2806:
+	b	.Lm881_2812
+.Lm881_2806:
 	ldr	r3, [r2, r0]
 	cmp	r3, r4
-	beq	.L2812
+	beq	.Lm881_2812
 	add	r1, #0xc
 	add	r2, #0xc
-	b	.L27f0
-.L2812:
+	b	.Lm881_27f0
+.Lm881_2812:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
@@ -1550,7 +1550,7 @@
 	bl	__MapActor_Face
 	ldr	r0, =0x2642
 	bl	__MessageID
-	ldr	r3, =.L679c
+	ldr	r3, =.Lm881_679c
 	mov	r1, #0
 	ldr	r0, [r3]
 	bl	__ActorMessage
