@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start OvlFunc_879_2008054
+.thumb_func_start Title_MapInit
 	push	{r5, r6, lr}
 	ldr	r2, =gState
 	mov	r1, #0xe1
@@ -141,7 +141,7 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_879_2008054
+.func_end Title_MapInit
 
 .thumb_func_start OvlFunc_879_20081c0
 	push	{r5, r6, lr}
