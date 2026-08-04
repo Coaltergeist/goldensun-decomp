@@ -421,7 +421,7 @@
 	bx	r1
 .func_end OvlFunc_880_2008384
 
-.thumb_func_start OvlFunc_880_20083cc
+.thumb_func_start MainMenu_MapInit
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1429,7 +1429,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_880_20083cc
+.func_end MainMenu_MapInit
 
 .thumb_func_start OvlFunc_880_2008cfc
 	push	{r5, r6, r7, lr}
@@ -1832,7 +1832,7 @@
 	mov	r7, #0
 	mov	r8, r0
 	add	r5, r11
-.Lfe2:
+.Lmm_fe2:
 	mov	r1, r8
 	ldrh	r0, [r1, r4]
 	str	r4, [sp]
@@ -1875,7 +1875,7 @@
 	add	r7, #1
 	add	r8, r0
 	cmp	r7, #0xf
-	bne	.Lfe2
+	bne	.Lmm_fe2
 	mov	r1, #1
 	add	r9, r1
 	mov	r2, r9
