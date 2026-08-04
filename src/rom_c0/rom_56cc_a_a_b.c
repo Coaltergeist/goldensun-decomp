@@ -34,8 +34,6 @@ extern void SetFlashTimerIntr(u32, intrfunc_t **);
 u16 IdentifyFlash(void);
 extern void WaitFrames(u32 n);
 
-extern u8 sCamelotString[];
-
 s32 Func_80058ac(u32 arg0);
 
 u32 Func_80056cc(void) {
@@ -68,7 +66,7 @@ u32 Func_80056cc(void) {
         result = Func_80058ac(i);
         DMA3_COPY(src, &header, sizeof(header));
         WaitForDma3();
-        if (Func_8005c08(&header.magic, sCamelotString, 7) != 0) continue;
+        if (Func_8005c08(&header.magic, "CAMELOT", 7) != 0) continue;
         work->counter[i] = header.counter;
         if (header.slot > 0xF || result != 0) continue;
         work->valid[i] = 1;
@@ -147,7 +145,6 @@ u16 Func_8005904(u16 arg) {
 extern u16 Func_8005c2c(u32 slot);
 extern u32 Func_8005868(u32 sector);
 extern u32 Func_8005b64(u32 sector);
-extern const u8 sCamelotString2[];
 
 // something with DMA is not lining up, this does not match with DMA3_CLEAR
 static inline void ClearSectorBuf(struct FlashWork *ctx) {
@@ -183,7 +180,7 @@ u32 SomethingSaveHeader(u32 slot, const void *data) {
     DMA3_COPY(data, ctx->sector + 0x10, 0xFF0);
     WaitForDma3();
 
-    DMA3_COPY(sCamelotString2, &header, 8);
+    DMA3_COPY("CAMELOTT", &header, 8);
     WaitForDma3();
 
     header.slot = slot;
@@ -280,7 +277,7 @@ u32 Func_8005b64(u32 index) {
     DMA3_CLEAR(&header, sizeof(header));
     WaitForDma3();
 
-    DMA3_COPY(sCamelotString2, &header, 8);
+    DMA3_COPY("CAMELOTT", &header, 8);
     WaitForDma3();
     header.slot = 16; // MAX_SLOT?
     header.counter = 0;
@@ -326,4 +323,31 @@ u16 Func_8005c2c(u32 slot) {
         }
     }
     return max;
+}
+
+u32 Func_8005c68(void) {
+    u8 *dst = &(*((struct FlashWork **)&gPtrs[0x33]))->sector[0x1000];
+    u32 i;
+    u32 count = 0;
+
+    for (i = 0; i <= 2; i++) {
+        u32 slot;
+
+        DMA3_CLEAR(dst, 0x40);
+
+        slot = Func_8005b24(i);
+        if (slot < 16) {
+            ReadFlash(slot, 0, dst, 0x40);
+            count++;
+        }
+        slot = Func_8005b24(i + 3);
+        if (slot < 16) {
+            ReadFlash(slot, 0x110, dst + 0x38, 4);
+        } else {
+            *(u32 *)(dst + 0x38) = 0;
+        }
+
+        dst += 0x40;
+    }
+    return count;
 }
