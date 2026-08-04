@@ -13,6 +13,6 @@ void OvlFunc_932_2008b0c(void) {
     __PlaySound(0x7d);
     OvlFunc_932_2008a94();
     __WaitFrames(0x14);
-    __Func_809202c();
+    __MapActor_PlayPendingSound();
     __CutsceneEnd();
 }

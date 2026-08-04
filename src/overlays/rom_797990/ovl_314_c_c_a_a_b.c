@@ -17,6 +17,6 @@ void OvlFunc_901_200850c(void)
  do { } while (0);
   b = 0;
   c = 2;
-  __Func_8092848(a, b, c);
+  __MapActor_TurnToFaceActor(a, b, c);
   OvlFunc_901_20084b4(0xb);
 }

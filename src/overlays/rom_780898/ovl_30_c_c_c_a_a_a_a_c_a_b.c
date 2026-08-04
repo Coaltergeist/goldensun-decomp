@@ -45,7 +45,7 @@ void OvlFunc_883_2008cd0(void)
   __asm__ volatile ("" : "+r" (g));
   h = 0;
   i = 0x14;
-  __Func_8093040(g, h, i);
+  __ActorMessage_Wait(g, h, i);
 
   {
     register unsigned int p2 __asm__("r2") = 0x14;

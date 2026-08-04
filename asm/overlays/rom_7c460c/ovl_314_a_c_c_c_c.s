@@ -194,11 +194,11 @@
 	mov	r0, #8
 	mov	r1, #0x98
 	mov	r2, #0xa8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r2, #0xa8
 	mov	r1, #0xa8
 	mov	r0, #9
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #8
 	bl	__MapActor_WaitMovement
 	mov	r0, #9

@@ -86,7 +86,7 @@
 	mov	r1, #0x10
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x80
@@ -100,7 +100,7 @@
 	mov	r1, #0
 	neg	r2, r2
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x80

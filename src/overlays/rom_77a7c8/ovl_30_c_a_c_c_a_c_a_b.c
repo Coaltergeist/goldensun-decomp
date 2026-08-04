@@ -34,7 +34,7 @@ void OvlFunc_881_200a858(void)
         register unsigned int rq2 __asm__("r0") = 0;
         register unsigned long r1val __asm__("r1") = 0x1778;
         __asm__ volatile ("" : : "r" (rq2), "r" (r1val));
-        __Func_80921c4(rq2, r1val, 0xd48);
+        __MapActor_TravelToAnimWait(rq2, r1val, 0xd48);
     }
     __CutsceneEnd();
 }

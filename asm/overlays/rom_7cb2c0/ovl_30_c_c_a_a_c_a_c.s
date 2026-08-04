@@ -165,7 +165,7 @@
 	mov	r2, #0x3c
 	mov	r0, #9
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #9
 	mov	r1, #1
 	bl	__Func_80925cc
@@ -680,7 +680,7 @@
 	lsl	r2, #16
 	asr	r2, #16
 	mov	r0, r5
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, r5
 	bl	__MapActor_WaitMovement
 	mov	r0, r5

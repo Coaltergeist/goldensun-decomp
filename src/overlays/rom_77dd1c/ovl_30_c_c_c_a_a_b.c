@@ -8,7 +8,7 @@
 void OvlFunc_882_200815c(int);
 void __CutsceneWait(int);
 void __Func_8010560(void *, int, int);
-void __Func_809218c(int, int, int);
+void __MapActor_TravelToAnim(int, int, int);
 extern void __PlaySound(int a);
 extern unsigned char L578a[] __asm__(".L578a");
 
@@ -16,7 +16,7 @@ void OvlFunc_882_2008240(void)
 {
     __PlaySound(0x9e);
     __Func_8010560(L578a, 0x36, 0x20);
-    __Func_809218c(0, 0x196, 0x2d7);
+    __MapActor_TravelToAnim(0, 0x196, 0x2d7);
     __CutsceneWait(3);
     OvlFunc_882_200815c(5);
 }

@@ -33,7 +33,7 @@
 	mov	r2, #6
 	neg	r1, r1
 	mov	r0, #0xa
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, #0xf0
@@ -128,7 +128,7 @@
 	mov	r3, #2
 	ldrsh	r1, [r5, r3]
 	mov	r0, #0
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, r6
 	mov	r1, #6
 	bl	__Actor_SetAnim

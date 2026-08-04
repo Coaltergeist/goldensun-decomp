@@ -442,7 +442,7 @@
 	ldrsh	r2, [r7, r3]
 	mov	r3, #2
 	ldrsh	r1, [r7, r3]
-	bl	Func_8092158
+	bl	MapActor_TravelToWait
 	mov	r0, r6
 	mov	r1, #6
 	bl	_Actor_SetAnim
@@ -635,7 +635,7 @@
 	ldr	r0, [r2]
 	mov	r1, r10
 	mov	r2, r9
-	bl	Func_8092158
+	bl	MapActor_TravelToWait
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r6, #0x30]
@@ -819,7 +819,7 @@
 	mov	r2, r10
 	ldr	r0, [r1]
 	mov	r1, r8
-	bl	Func_8092158
+	bl	MapActor_TravelToWait
 	mov	r1, #6
 	mov	r0, r7
 	bl	_Actor_SetAnim

@@ -25,7 +25,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #4
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__Func_8093054
@@ -36,7 +36,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #4
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0xe
 	mov	r1, #0
 	bl	__ActorMessage
@@ -64,11 +64,11 @@
 	mov	r0, #0
 	mov	r1, #0x12
 	mov	r2, #0x14
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #6
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x80
 	mov	r0, #0x12
 	lsl	r1, #8
@@ -81,11 +81,11 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #6
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x12
 	ldr	r1, =0x103
 	mov	r2, #0
@@ -93,7 +93,7 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x81
 	mov	r0, #0
 	lsl	r1, #1
@@ -110,7 +110,7 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 .Lc48:
 	bl	__CutsceneEnd
 	pop	{r0}

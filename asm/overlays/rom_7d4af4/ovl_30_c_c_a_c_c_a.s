@@ -74,11 +74,11 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r2, #0xa
 	mov	r0, #0x10
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r3, r8
 	strh	r3, [r7, #6]
 	mov	r0, #1
@@ -169,11 +169,11 @@
 	mov	r0, #0x11
 	mov	r1, #0
 	mov	r2, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r2, #0xa
 	mov	r0, #0x11
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r3, r8
 	strh	r3, [r7, #6]
 	mov	r0, #1

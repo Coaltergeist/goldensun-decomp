@@ -14,7 +14,7 @@ void OvlFunc_882_2008328(void)
         unsigned char *rq = L57a0;
         __Func_8010560(rq, 0x31, 0x45);
     }
-    __Func_809218c(0, 0xa3 << 1, 0x466);
+    __MapActor_TravelToAnim(0, 0xa3 << 1, 0x466);
     __CutsceneWait(3);
     OvlFunc_882_200815c(8);
 }

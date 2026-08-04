@@ -123,7 +123,7 @@
 .La86:
 	asr	r2, #16
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #0
@@ -341,10 +341,10 @@
 	mov	r1, #0
 	mov	r2, #0x14
 	mov	r0, #0xe
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r0, =0x202
 	bl	__SetFlag
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 .Lc9c:
 	add	sp, #0x44

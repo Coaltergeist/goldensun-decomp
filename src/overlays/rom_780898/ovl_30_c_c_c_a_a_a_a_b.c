@@ -7,7 +7,7 @@
  */
 void OvlFunc_883_2008c9c(void) {
     __CutsceneStart();
-    __Func_8092848(0, 0xa, 0x14);
+    __MapActor_TurnToFaceActor(0, 0xa, 0x14);
     __MessageID(0x1c8d);
     __ActorMessage(0xa, 0);
     __SetFlag(0x81f);

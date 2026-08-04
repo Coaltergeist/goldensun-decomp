@@ -72,7 +72,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #8
 	ldr	r1, =0x13333
 	ldr	r2, =0x9999
@@ -82,7 +82,7 @@
 	mov	r0, #8
 	lsl	r1, #1
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	lsl	r1, #8
 	mov	r2, #0

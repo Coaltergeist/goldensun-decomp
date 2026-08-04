@@ -69,7 +69,7 @@
 	mov	r0, #0
 	mov	r3, #0xa
 	ldrsh	r2, [r6, r3]
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, r5
 	mov	r1, #6
 	bl	__Actor_SetAnim

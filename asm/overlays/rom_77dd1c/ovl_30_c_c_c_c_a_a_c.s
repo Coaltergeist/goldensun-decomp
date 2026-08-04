@@ -84,7 +84,7 @@
 	mov	r2, #0x14
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #8
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -163,7 +163,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	lsl	r2, #3
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #0
@@ -220,7 +220,7 @@
 	ldr	r0, =0x1016
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0xc0
 	mov	r2, #0x14
 	mov	r0, #0x16
@@ -232,7 +232,7 @@
 	ldr	r0, =0x1016
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x80
 	mov	r2, #0x14
 	mov	r0, #0x16
@@ -250,12 +250,12 @@
 	mov	r0, #0x16
 	mov	r1, #0xa5
 	ldr	r2, =0x514
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0xb3
 	mov	r0, #0x16
 	mov	r1, #0xc3
 	lsl	r2, #3
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	ldr	r0, =0x842
 	bl	__SetFlag
 	pop	{r0}

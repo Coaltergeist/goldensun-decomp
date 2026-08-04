@@ -11,7 +11,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r0, =0x3c1
 	bl	__GetFlag
 	cmp	r0, #0
@@ -31,7 +31,7 @@
 	mov	r2, #0x14
 	mov	r0, #0x11
 	mov	r1, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #4
 	mov	r0, #0x11
 	bl	__MapActor_SetAnim

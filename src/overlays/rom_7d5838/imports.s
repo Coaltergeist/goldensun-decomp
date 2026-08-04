@@ -14,7 +14,7 @@
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetSpeed
-	.export_func _Func_80921c4
+	.export_func _MapActor_TravelToAnimWait
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
 	.export_func _MapActor_DoAnim

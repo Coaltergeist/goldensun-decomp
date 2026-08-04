@@ -421,7 +421,7 @@
 	bl	_Func_801776c
 .L8dd50:
 	bl	CutsceneEnd
-	bl	Func_809202c
+	bl	MapActor_PlayPendingSound
 	b	.L8dd6a
 .L8dd5a:
 	ldr	r0, =0x92d

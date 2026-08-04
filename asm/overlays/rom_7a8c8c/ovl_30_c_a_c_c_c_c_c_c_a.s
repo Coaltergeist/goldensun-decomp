@@ -14,7 +14,7 @@
 	mov	r1, r5
 	mov	r2, r6
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #4

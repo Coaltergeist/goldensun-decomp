@@ -44,7 +44,7 @@
 	mov	r0, #0
 	ldr	r1, =0x121
 	mov	r2, #0x9e
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r3, #0xc0

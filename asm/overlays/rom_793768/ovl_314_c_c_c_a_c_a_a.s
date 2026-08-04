@@ -56,7 +56,7 @@
 	mov	r2, r6
 	mov	r0, #0
 	mov	r1, r5
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe4
 	ldr	r3, [r3]

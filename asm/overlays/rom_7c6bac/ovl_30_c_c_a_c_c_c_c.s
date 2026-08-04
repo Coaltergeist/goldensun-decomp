@@ -133,7 +133,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	lsl	r2, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	ldr	r0, =gScript_930__020096b8
 	mov	r1, #0x4e
 	mov	r2, #0x56
@@ -146,7 +146,7 @@
 	mov	r0, #0
 	mov	r1, #0xf8
 	mov	r2, #0xc0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	ldr	r0, =.L16ce
 	mov	r1, #0x4a
 	mov	r2, #9

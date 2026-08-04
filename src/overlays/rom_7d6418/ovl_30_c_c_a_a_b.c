@@ -27,7 +27,7 @@ void OvlFunc_951_2008104(void)
         OvlFunc_951_2008880();
     }
     __CutsceneStart();
-    __Func_80921c4(v, 0x78, 0x98);
+    __MapActor_TravelToAnimWait(v, 0x78, 0x98);
     __Func_8092adc(v, 0x4000, 0);
     OvlFunc_951_2008ac8();
     __CutsceneEnd();

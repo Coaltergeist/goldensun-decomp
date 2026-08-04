@@ -20,7 +20,7 @@
 	mov	r0, #0
 	mov	r1, #0xc8
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	lsl	r1, #8
 	mov	r2, #0
@@ -60,7 +60,7 @@
 	mov	r0, #8
 	mov	r1, #9
 	mov	r2, #0x3c
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0xc0
 	mov	r2, #0
 	lsl	r1, #6
@@ -76,7 +76,7 @@
 	mov	r2, #0x1e
 	mov	r0, #8
 	mov	r1, #9
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #3
 	mov	r0, #9
 	bl	__MapActor_DoAnim

@@ -15,16 +15,16 @@
 	.export_func _MapActor_SetBehavior
 	.export_func _MapActor_WaitScript
 	.export_func _MapActor_TravelTo
-	.export_func _Func_8092158
-	.export_func _Func_809218c
-	.export_func _Func_80921c4
+	.export_func _MapActor_TravelToWait
+	.export_func _MapActor_TravelToAnim
+	.export_func _MapActor_TravelToAnimWait
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
 	.export_func _MapActor_DoAnim
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
 	.export_func _MapActor_Face
-	.export_func _Func_8092848
+	.export_func _MapActor_TurnToFaceActor
 	.export_func _MessageID
 	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage

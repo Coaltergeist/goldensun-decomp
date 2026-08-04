@@ -1,4 +1,4 @@
-/* Cluster Func_8093040..Func_8093040 extracted from goldensun/asm/rom_8a000/rom_92950_c_a_c.s.
+/* Cluster ActorMessage_Wait..ActorMessage_Wait extracted from goldensun/asm/rom_8a000/rom_92950_c_a_c.s.
  *
  * Total .text for this TU = 20 bytes (= 0x14).
  * Preserves the original ROM layout when slotted between
@@ -8,7 +8,7 @@
 extern void ActorMessage(unsigned int actor);
 extern void CutsceneWait(unsigned int param_1);
 
-void Func_8093040(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
+void ActorMessage_Wait(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     ActorMessage(arg0);
     CutsceneWait(arg2);
 }

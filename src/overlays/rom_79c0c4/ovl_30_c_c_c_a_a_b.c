@@ -22,7 +22,7 @@ void OvlFunc_908_20081e0(void)
     __MessageID(0x13f0);
     u = 0x18;
     do { u = (unsigned short) u; } while (0);
-    __Func_8093040(u, 0, 0x14);
+    __ActorMessage_Wait(u, 0, 0x14);
     __MapActor_Face(0x18, 0, 0);
     __CutsceneWait(10);
     __ShowActorMessage_NoWait(0x18, 0);

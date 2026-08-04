@@ -86,7 +86,7 @@
 	add	r2, #8
 	add	r1, #8
 	mov	r0, #0
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, r6
 	mov	r1, #6
 	bl	__Actor_SetAnim

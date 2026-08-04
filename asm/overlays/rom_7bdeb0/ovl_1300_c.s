@@ -50,7 +50,7 @@
 	mov	r2, #0
 	neg	r1, r1
 	ldr	r0, [r7, #4]
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	ldr	r0, [r7, #4]
 	bl	__MapActor_WaitMovement
 	ldr	r0, [r7, #4]
@@ -68,7 +68,7 @@
 	mov	r2, #0
 	neg	r1, r1
 	ldr	r0, [r7, #4]
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	ldr	r0, [r7, #4]
 	bl	__MapActor_GetActor
 	bl	OvlFunc_934_2008cd0
@@ -151,7 +151,7 @@
 	mov	r1, #8
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #4
 	bl	__CutsceneWait
 	mov	r0, #0x90
@@ -178,7 +178,7 @@
 	str	r6, [r0, #0x44]
 	mov	r1, #0xc
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #1
@@ -202,7 +202,7 @@
 	mov	r2, #0
 	mov	r1, #6
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #9
 	bl	__MapActor_GetActor
 	bl	OvlFunc_934_2008cd0
@@ -274,7 +274,7 @@
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #0xb
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x2d
 	bl	__CutsceneWait
 	mov	r0, #0xf0

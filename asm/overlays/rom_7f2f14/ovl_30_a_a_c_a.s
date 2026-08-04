@@ -108,7 +108,7 @@
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0xf
@@ -203,7 +203,7 @@
 	mov	r3, #3
 	strb	r3, [r7]
 	str	r6, [r5, #0x6c]
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 .L886:
 	pop	{r5, r6, r7}

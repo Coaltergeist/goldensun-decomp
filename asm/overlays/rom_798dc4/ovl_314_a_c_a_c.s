@@ -32,11 +32,11 @@
 	mov	r1, r5
 	mov	r0, #0
 	mov	r2, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r2, #0
 	mov	r1, r5
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #9
@@ -47,7 +47,7 @@
 	mov	r1, #1
 	bl	__MapActor_SetAnim
 	bl	OvlFunc_903_2008348
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}

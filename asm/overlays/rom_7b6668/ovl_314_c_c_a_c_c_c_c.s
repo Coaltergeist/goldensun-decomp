@@ -195,7 +195,7 @@
 	bl	__ActorMessage
 	ldr	r0, =0x203
 	bl	__SetFlag
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 	add	sp, #0x10
 	pop	{r3, r5, r6}
@@ -264,12 +264,12 @@
 	mov	r0, #0x12
 	lsl	r1, #1
 	mov	r2, #0xe8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r1, #0x94
 	lsl	r1, #1
 	mov	r2, #0xe8
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x12
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x80

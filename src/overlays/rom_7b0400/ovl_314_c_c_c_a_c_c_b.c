@@ -36,7 +36,7 @@ void OvlFunc_925_200aeb8(void)
 
   z = 0;
   __asm__ volatile ("" : "+r" (z));
-  __Func_80921c4(z, 0x68, 0x98);
+  __MapActor_TravelToAnimWait(z, 0x68, 0x98);
 
   c = 0x80;
   __asm__ volatile ("" : "+r" (c));

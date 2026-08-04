@@ -15,7 +15,7 @@ void OvlFunc_885_2008ba8(void)
     }
     {
         unsigned int rq = 0;
-        __Func_809218c(rq, 0xe5, 0xd9);
+        __MapActor_TravelToAnim(rq, 0xe5, 0xd9);
     }
     __Func_8091e9c(3);
 }

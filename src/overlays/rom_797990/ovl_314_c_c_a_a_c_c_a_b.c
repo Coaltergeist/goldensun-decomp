@@ -14,6 +14,6 @@ void OvlFunc_901_2008784(void)
   __SetFlag(0x306);
   __SetFlag(0x868);
   __MessageID(0x1caf);
- do { __Func_8093040(0xc, 0, 0x14); } while (0);
+ do { __ActorMessage_Wait(0xc, 0, 0x14); } while (0);
   __CutsceneEnd();
 }

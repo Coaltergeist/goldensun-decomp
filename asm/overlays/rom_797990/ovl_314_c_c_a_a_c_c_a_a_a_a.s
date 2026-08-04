@@ -26,7 +26,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__GetFlag
@@ -45,11 +45,11 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__SetFlag
@@ -59,7 +59,7 @@
 	mov	r1, #0
 	mov	r0, #0xe
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, r8
 	strh	r2, [r5, #6]
 	mov	r0, #1
@@ -104,11 +104,11 @@
 	mov	r0, #0xf
 	mov	r1, #0
 	mov	r2, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r0, #0xf
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, r8
 	strh	r2, [r5, #6]
 	mov	r0, #1

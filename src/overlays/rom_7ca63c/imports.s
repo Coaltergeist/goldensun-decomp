@@ -21,14 +21,14 @@
 	.export_func _MapActor_SetBehavior
 	.export_func _MapActor_SetIdle
 	.export_func _MapActor_TravelTo
-	.export_func _Func_80921c4
+	.export_func _MapActor_TravelToAnimWait
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_Jump
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
 	.export_func _Func_8092950
 	.export_func _MessageID
-	.export_func _Func_8093040
+	.export_func _ActorMessage_Wait
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
 	.export_func _MapActor_Emote

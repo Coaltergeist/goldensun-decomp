@@ -45,7 +45,7 @@
 	.export_func _Func_8091c7c
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetSpeed
-	.export_func _Func_809218c
+	.export_func _MapActor_TravelToAnim
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_Face
 	.export_func _MessageID

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092848  @ 0x08092848
+.thumb_func_start MapActor_TurnToFaceActor  @ 0x08092848
 	push	{r5, r6, r7, lr}
 	mov	r5, r1
 	mov	r7, r2
@@ -14,16 +14,16 @@
 	cmp	r1, #0
 	beq	.L92870
 	mov	r0, r6
-	bl	Func_8092878
+	bl	MapActor_RotateToward
 	mov	r0, r7
 	bl	CutsceneWait
 .L92870:
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8092848
+.func_end MapActor_TurnToFaceActor
 
-.thumb_func_start Func_8092878  @ 0x08092878
+.thumb_func_start MapActor_RotateToward  @ 0x08092878
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
@@ -115,5 +115,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8092878
+.func_end MapActor_RotateToward
 

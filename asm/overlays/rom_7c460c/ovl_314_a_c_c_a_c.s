@@ -54,7 +54,7 @@
 	mov	r2, #0xc
 	mov	r1, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #1

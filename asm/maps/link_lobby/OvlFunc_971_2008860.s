@@ -165,13 +165,13 @@
 	mov	r1, #0xd8
 	mov	r2, #0xb8
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #0
 	mov	r1, #0xd8
 	mov	r2, #0xa8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	b	.Lab6
@@ -185,7 +185,7 @@
 	mov	r1, #0xd8
 	mov	r2, #0xc8
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #0
@@ -195,7 +195,7 @@
 	mov	r0, #0
 	mov	r1, #0xd8
 	mov	r2, #0xa8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	bl	OvlFunc_971_20087b0
 	cmp	r0, #0
 	bge	.Laa2
@@ -208,7 +208,7 @@
 	mov	r2, #0xc8
 	mov	r1, #0xd8
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #5
 	bl	__Func_80118a8
 	mov	r0, #8

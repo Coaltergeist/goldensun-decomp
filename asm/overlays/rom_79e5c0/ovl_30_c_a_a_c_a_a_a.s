@@ -41,7 +41,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	neg	r2, r2
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe4
 	ldr	r3, [r3]
@@ -115,7 +115,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #8
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe4
 	ldr	r3, [r3]
@@ -197,7 +197,7 @@
 	mov	r0, #0
 	mov	r1, #0xae
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xe0
 	mov	r2, #0x14
 	mov	r0, #0
@@ -244,7 +244,7 @@
 	mov	r1, #0xe0
 	mov	r2, #0xc5
 	mov	r0, #8
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0xb0
 	bl	__PlaySound
 	mov	r0, #0xa
@@ -252,7 +252,7 @@
 	mov	r1, #0xea
 	mov	r2, #0xc8
 	mov	r0, #8
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r0, #0xc6

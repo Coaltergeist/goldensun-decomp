@@ -33,12 +33,12 @@
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xf8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x98
 	lsl	r1, #1
 	mov	r2, #0xd8
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #4

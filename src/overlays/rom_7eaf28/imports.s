@@ -25,8 +25,8 @@
 	.export_func _MapActor_SetBehavior
 	.export_func _MapActor_SetIdle
 	.export_func _MapActor_TravelTo
-	.export_func _Func_809218c
-	.export_func _Func_80921c4
+	.export_func _MapActor_TravelToAnim
+	.export_func _MapActor_TravelToAnimWait
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim

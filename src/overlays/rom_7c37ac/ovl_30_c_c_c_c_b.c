@@ -18,7 +18,7 @@ void OvlFunc_938_2008114(void)
   t1 = 10;
   do { t1 = (unsigned long) t1; } while (0);
   v1 = t1;
-  __Func_8093040(8, 0, v1);
+  __ActorMessage_Wait(8, 0, v1);
 
   t2 = 8;
   do { t2 = (unsigned short) t2; } while (0);
@@ -27,7 +27,7 @@ void OvlFunc_938_2008114(void)
   t1 = 10;
   do { t1 = (unsigned long) t1; } while (0);
   v1 = t1;
-  __Func_8093040(8, 0, v1);
+  __ActorMessage_Wait(8, 0, v1);
 
   t2 = 8;
   do { t2 = (unsigned short) t2; } while (0);
@@ -36,13 +36,13 @@ void OvlFunc_938_2008114(void)
   t1 = 10;
   do { t1 = (unsigned long) t1; } while (0);
   v1 = t1;
-  __Func_8093040(8, 0, v1);
+  __ActorMessage_Wait(8, 0, v1);
 
   t2 = 8;
   do { t2 = (unsigned short) t2; } while (0);
   __MapActor_DoAnim(t2, 3);
 
-  __Func_8093040(8, 0, 10);
+  __ActorMessage_Wait(8, 0, 10);
   __SetFlag(0x913);
   __CutsceneEnd();
 }

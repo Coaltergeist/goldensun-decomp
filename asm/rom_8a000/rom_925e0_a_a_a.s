@@ -251,7 +251,7 @@
 .L927ec:
 	mov	r0, #2
 	bl	WaitFrames
-	bl	Func_809202c
+	bl	MapActor_PlayPendingSound
 .L927f6:
 	pop	{r3, r5, r6}
 	mov	r8, r3

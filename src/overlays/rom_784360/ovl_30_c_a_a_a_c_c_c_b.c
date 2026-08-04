@@ -21,7 +21,7 @@ void OvlFunc_884_2008750(void)
 		register unsigned int rq __asm__("r0") = 0;
 		register unsigned int r1v __asm__("r1") = 0xf8;
 		__asm__ volatile ("" : : "r" (rq), "r" (r1v));
-		__Func_809218c(rq, r1v, 0x117);
+		__MapActor_TravelToAnim(rq, r1v, 0x117);
 	}
 	OvlFunc_884_2008714(1);
 }

@@ -10,7 +10,7 @@ extern unsigned char *iwram_3001ebc;
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
-extern void __Func_8092848(int, int, int);
+extern void __MapActor_TurnToFaceActor(int, int, int);
 extern void __CutsceneWait(int);
 extern void __ActorMessage(int, int);
 extern int __CheckPartyItem(int);
@@ -26,7 +26,7 @@ void OvlFunc_901_2008e90(void) {
     __CutsceneStart();
     __MessageID(0x1342);
     __MapActor_SetAnim(0x12, 0);
-    __Func_8092848(0x12, 0, 0);
+    __MapActor_TurnToFaceActor(0x12, 0, 0);
     __CutsceneWait(2);
     __ActorMessage(0x12, 0);
     __MapActor_SetAnim(0x12, 1);

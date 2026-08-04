@@ -39,7 +39,7 @@ void OvlFunc_926_200a778(void)
     register int p1 __asm__("r1") = 0;
     __asm__ volatile ("" : : "r" (p1));
     t = -t;
-    __Func_809228c(0, p1, t);
+    __MapActor_TravelBy(0, p1, t);
   }
   __CutsceneWait(0x10);
   __Func_8091e9c(2);

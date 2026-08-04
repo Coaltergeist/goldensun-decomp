@@ -10,5 +10,5 @@ extern void OvlFunc_902_2008098(unsigned int arg0);
 void OvlFunc_902_20080dc(void)
 {
   __MessageID(0x1ccd);
- do { __Func_8092848(0xb, 0, 2); OvlFunc_902_2008098(0xb); } while (0);
+ do { __MapActor_TurnToFaceActor(0xb, 0, 2); OvlFunc_902_2008098(0xb); } while (0);
 }

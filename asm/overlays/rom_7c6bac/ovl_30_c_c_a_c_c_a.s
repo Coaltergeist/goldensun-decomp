@@ -33,7 +33,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	b	.L660
 .L56e:
 	ldr	r7, =iwram_3001ebc

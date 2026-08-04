@@ -129,7 +129,7 @@
 	mov	r2, #0
 	ldr	r1, [r5]
 	mov	r0, r7
-	bl	Func_8092848
+	bl	MapActor_TurnToFaceActor
 .L8d6ee:
 	ldr	r3, [r6, #8]
 .L8d6f0:

@@ -228,7 +228,7 @@
 	mov	r2, #6
 	mov	r1, #0x12
 	mov	r0, #0x1f
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r1, #8

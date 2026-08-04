@@ -145,7 +145,7 @@
 	sub	r2, #0x10
 	mov	r1, r9
 	mov	r0, #0xd
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	add	r0, #0x5a
@@ -157,7 +157,7 @@
 	sub	r2, #0x28
 	strb	r5, [r0]
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #1
 	bl	__CutsceneWait
 	mov	r0, #0

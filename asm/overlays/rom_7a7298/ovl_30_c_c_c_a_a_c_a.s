@@ -157,7 +157,7 @@
 	mov	r2, #0x14
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r1, =gScript_921__0200a564
 	mov	r0, #0
 	bl	__MapActor_SetBehavior
@@ -186,7 +186,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0xc0
 	mov	r2, #0x14
 	mov	r0, #8

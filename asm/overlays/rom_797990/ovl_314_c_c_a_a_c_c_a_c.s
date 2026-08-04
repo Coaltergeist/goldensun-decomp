@@ -115,7 +115,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r0, #0x10
 	bl	__ShowActorMessage_NoWait
@@ -199,7 +199,7 @@
 	mov	r0, r5
 	mov	r1, r6
 	mov	r2, r8
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r3, r8
 	lsl	r3, #16
 	mov	r8, r3
@@ -276,12 +276,12 @@
 	mov	r0, #0x15
 	lsl	r1, #1
 	mov	r2, #0x68
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xcc
 	mov	r0, #0x15
 	lsl	r1, #1
 	mov	r2, #0x78
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	ldr	r0, =0x867
 	bl	__SetFlag
 .La72:
@@ -306,7 +306,7 @@
 	mov	r2, r6
 	mov	r0, #0
 	mov	r1, r5
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe4
 	ldr	r3, [r3]

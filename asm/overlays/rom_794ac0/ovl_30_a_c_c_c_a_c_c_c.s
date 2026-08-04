@@ -35,7 +35,7 @@
 	mov	r0, #0
 	mov	r1, #2
 	mov	r2, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x18
 	mov	r1, #2
 	mov	r2, #0
@@ -321,7 +321,7 @@
 	mov	r0, #0
 	mov	r1, #2
 	mov	r2, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #1
 	mov	r1, #2
 	mov	r2, #0x1e
@@ -341,7 +341,7 @@
 	mov	r2, #0
 	mov	r0, #0x18
 	mov	r1, #0x19
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r0, #0
 	bl	__SetCameraTarget
@@ -566,7 +566,7 @@
 	mov	r0, #1
 	mov	r1, #2
 	mov	r2, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r2, #0xa
 	mov	r0, #0
 	mov	r1, #2
@@ -582,12 +582,12 @@
 	mov	r0, #2
 	mov	r1, #0xf8
 	lsl	r2, #2
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r2, #0xb6
 	mov	r0, #1
 	mov	r1, #0xf8
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0

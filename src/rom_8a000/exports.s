@@ -27,11 +27,11 @@ Exports_8a000:
 	.export_func MapActor_SetIdle
 	.export_func MapActor_RunScript
 	.export_func MapActor_TravelTo
-	.export_func Func_8092158
-	.export_func Func_809218c
-	.export_func Func_80921c4
+	.export_func MapActor_TravelToWait
+	.export_func MapActor_TravelToAnim
+	.export_func MapActor_TravelToAnimWait
 	.export_func Func_8092208
-	.export_func Func_809228c
+	.export_func MapActor_TravelBy
 	.export_func MapActor_WaitMovement
 	.export_func MapActor_SetPos
 	.export_func MapActor_SetPos3D
@@ -45,14 +45,14 @@ Exports_8a000:
 	.export_func Func_80925cc
 	.export_func Func_8092708
 	.export_func MapActor_Face
-	.export_func Func_8092848
+	.export_func MapActor_TurnToFaceActor
 	.export_func Func_8092950
 	.export_func Func_80929d8
 	.export_func Func_8092a1c
 	.export_func MessageID
 	.export_func ShowActorMessage_NoWait
 	.export_func ActorMessage
-	.export_func Func_8093040
+	.export_func ActorMessage_Wait
 	.export_func Func_8093054
 	.export_func Func_80930b8
 	.export_func Func_80930bc
@@ -192,7 +192,7 @@ Exports_8a000:
 	.export_func GetLocationName
 	.export_func Actor_SetBehavior
 	.export_func Func_8091ff0
-	.export_func Func_809202c
+	.export_func MapActor_PlayPendingSound
 	.export_func Func_808b3d0
 
 	.ssize	Exports_8a000

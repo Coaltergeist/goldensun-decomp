@@ -22,11 +22,11 @@
 	.export_func _MapActor_SetAnim
 	.export_func _MapActor_DoAnim
 	.export_func _Func_80925cc
-	.export_func _Func_8092848
+	.export_func _MapActor_TurnToFaceActor
 	.export_func _MessageID
 	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
-	.export_func _Func_8093040
+	.export_func _ActorMessage_Wait
 	.export_func _Func_8092adc
 	.export_func _MapActor_Emote
 	.export_func _Func_808f1c0

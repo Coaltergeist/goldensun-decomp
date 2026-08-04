@@ -12,6 +12,6 @@ void OvlFunc_902_20080fc(void)
   int r1;
   int r2;
  do { __MessageID(0x1cd0); r1 = 0; r2 = 2; } while (0);
-  __Func_8092848(0xc, r1, r2);
+  __MapActor_TurnToFaceActor(0xc, r1, r2);
   OvlFunc_902_2008098(0xc);
 }

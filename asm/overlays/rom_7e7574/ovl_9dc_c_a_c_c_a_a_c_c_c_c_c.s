@@ -6,7 +6,7 @@
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	mov	r1, #1
 	bl	__MapActor_SetBehavior
@@ -61,7 +61,7 @@
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	mov	r1, #1
 	bl	__MapActor_SetBehavior

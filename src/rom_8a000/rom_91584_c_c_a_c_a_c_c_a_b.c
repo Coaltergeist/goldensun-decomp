@@ -1,4 +1,4 @@
-/* Cluster Func_809202c..Func_809202c extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c_a_c_c_a.s.
+/* Cluster MapActor_PlayPendingSound..MapActor_PlayPendingSound extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c_a_c_c_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned char iwram_3001ebc[];
 
-void Func_809202c(void) {
+void MapActor_PlayPendingSound(void) {
     short v;
     unsigned int p;
     p = *(unsigned int *)iwram_3001ebc + 0xcc8;

@@ -76,12 +76,12 @@
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, #0xc4
 	mov	r0, #0
 	mov	r1, #0xa8
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	lsl	r1, #8
 	mov	r2, #0x14
@@ -169,7 +169,7 @@
 	bl	OvlFunc_common0_10c
 	mov	r0, #0x1e
 	bl	__CutsceneWait
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	mov	r3, #0xa
 	mov	r2, #0x16
 	str	r3, [sp]
@@ -239,7 +239,7 @@
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, #0x14
 	mov	r0, #9
 	mov	r1, #0
@@ -252,7 +252,7 @@
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r3, #0xa
 	mov	r2, #0x18
 	str	r3, [sp]
@@ -281,7 +281,7 @@
 	mov	r1, #0xa8
 	lsl	r2, #1
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #5
 	bl	__CutsceneWait
 	mov	r1, #0xc0
@@ -327,7 +327,7 @@
 	mov	r1, #0xa8
 	lsl	r2, #1
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #5
 	bl	__CutsceneWait
 	mov	r1, #0xc0
@@ -504,7 +504,7 @@
 	mov	r1, #0xa8
 	lsl	r2, #1
 	mov	r0, #8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -515,7 +515,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x81
 	mov	r0, #0
 	lsl	r1, #1
@@ -525,7 +525,7 @@
 	mov	r0, #8
 	mov	r1, #0xa8
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 .L9a8:
 	mov	r1, #0
 	mov	r0, #8
@@ -603,7 +603,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r0, =0x891
 	bl	__SetFlag
 .La7c:

@@ -841,7 +841,7 @@
 .L15a0:
 	asr	r2, #16
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #2
@@ -871,7 +871,7 @@
 	mov	r0, #8
 	mov	r1, #0xa8
 	mov	r2, #0x68
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	mov	r2, #0x80
 	mov	r0, #8
@@ -881,7 +881,7 @@
 	mov	r0, #8
 	mov	r1, #0xa8
 	mov	r2, #0x5c
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r3, r8
 	strh	r3, [r7]
 	mov	r0, #0
@@ -1160,7 +1160,7 @@
 	mov	r0, #8
 	mov	r1, #0xa8
 	mov	r2, #0x60
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #8
 	mov	r1, #2
 	bl	__MapActor_SetAnim

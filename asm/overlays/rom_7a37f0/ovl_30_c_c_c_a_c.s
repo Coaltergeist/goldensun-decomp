@@ -470,7 +470,7 @@
 	mov	r2, #0
 	neg	r1, r1
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x18
 	bl	__CutsceneWait
 	mov	r1, #1
@@ -552,7 +552,7 @@
 	mov	r2, #0
 	mov	r1, #8
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x18
 	bl	__CutsceneWait
 	mov	r1, #1
@@ -1165,7 +1165,7 @@
 	ldr	r3, =.L116c
 	mov	r0, #0
 	ldrsb	r2, [r3, r5]
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x18
 	bl	__CutsceneWait
 	mov	r1, #1

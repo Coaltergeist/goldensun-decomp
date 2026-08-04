@@ -181,7 +181,7 @@
 	mov	r1, #1
 	mov	r2, #0
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #9
 	bl	__MapActor_WaitMovement
 	mov	r0, #0xa
@@ -189,7 +189,7 @@
 	mov	r1, #2
 	mov	r2, #0
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #9
 	bl	__MapActor_WaitMovement
 	mov	r0, #9

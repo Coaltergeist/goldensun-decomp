@@ -140,7 +140,7 @@
 	bl	OvlFunc_932_200b850
 	mov	r0, #0x14
 	bl	__WaitFrames
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0

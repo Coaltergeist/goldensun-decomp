@@ -19,7 +19,7 @@ void OvlFunc_926_2009d50(void) {
         __CutsceneWait(0x14);
         t = 0x12;
         do { t = (unsigned short) t; } while (0);
-        __Func_8093040(t, 0, 0x14);
+        __ActorMessage_Wait(t, 0, 0x14);
         __SetFlag(0x898);
         __CutsceneEnd();
     } else {
@@ -29,7 +29,7 @@ void OvlFunc_926_2009d50(void) {
         *r2 = r3;
         t = 0x12;
         do { t = (unsigned short) t; } while (0);
-        __Func_8093040(t, 0, 0x14);
+        __ActorMessage_Wait(t, 0, 0x14);
         __CutsceneEnd();
     }
 }

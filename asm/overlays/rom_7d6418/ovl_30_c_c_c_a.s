@@ -159,7 +159,7 @@
 	mov	r2, #0x70
 	mov	r0, #0
 	mov	r1, #0x78
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	ldr	r3, =ewram_2001000
@@ -897,11 +897,11 @@
 	mov	r0, #0
 	mov	r1, #0x78
 	mov	r2, #0x80
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0
 	mov	r1, #0x78
 	mov	r2, #0x98
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	lsl	r1, #8
 	mov	r2, #0

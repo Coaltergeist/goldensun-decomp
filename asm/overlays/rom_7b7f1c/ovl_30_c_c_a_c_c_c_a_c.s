@@ -101,7 +101,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xa
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #2
 	mov	r0, #0
 	bl	__Func_80925cc
@@ -121,7 +121,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xc8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 .L986:
 	mov	r1, #0x80
 	mov	r2, #0x80
@@ -136,7 +136,7 @@
 	lsl	r1, #1
 	mov	r2, #0xd8
 	mov	r0, #0xa
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__MapActor_GetActor
 	add	r0, #0x23
@@ -154,7 +154,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xa
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0xa
 	mov	r1, #2
 	bl	__Func_809259c
@@ -167,7 +167,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xa
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r1, =gScript_930__0200962c
 	mov	r0, #0xa
 	bl	__MapActor_SetBehavior
@@ -230,7 +230,7 @@
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	bl	__CutsceneEnd
 .La9e:
 	pop	{r5}

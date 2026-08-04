@@ -12,7 +12,7 @@
 	ldr	r1, =0x101
 	lsl	r2, #1
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #3
 	bl	__CutsceneWait
 	mov	r0, #0xb

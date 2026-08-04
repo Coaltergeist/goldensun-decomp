@@ -37,7 +37,7 @@
 	mov	r0, r6
 	mov	r1, r8
 	mov	r2, r10
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r3, r8
 	lsl	r3, #16
 	mov	r8, r3

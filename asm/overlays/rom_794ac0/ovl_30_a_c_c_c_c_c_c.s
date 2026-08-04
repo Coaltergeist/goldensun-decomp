@@ -133,13 +133,13 @@
 	mov	r0, #0xb
 	lsl	r1, #2
 	lsl	r2, #1
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r1, #0xc6
 	mov	r2, #0xe4
 	lsl	r1, #2
 	lsl	r2, #1
 	mov	r0, #0xc
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xc
 	bl	__MapActor_WaitMovement
 	mov	r1, #0

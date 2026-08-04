@@ -64,7 +64,7 @@
 	mov	r2, #0
 	mov	r0, #0x11
 	mov	r1, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #0
 	mov	r0, #0x11
 	bl	__Func_8093054
@@ -261,11 +261,11 @@
 	mov	r0, #0
 	mov	r1, #0x52
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0x1e
 	mov	r1, #0
 	mov	r0, #0xf
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	ldr	r0, =0xeae
 	bl	__MessageID
 	mov	r0, #0xf
@@ -349,7 +349,7 @@
 	mov	r2, #0x1e
 	mov	r0, #0
 	mov	r1, #0xf
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	__ActorMessage
@@ -367,7 +367,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x84
 	lsl	r0, #4
 	bl	__GetFlag
@@ -449,7 +449,7 @@
 	mov	r0, #0x15
 	mov	r1, #0
 	mov	r2, #0x28
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, #0x14
 	mov	r0, #0x15
 	mov	r1, #0

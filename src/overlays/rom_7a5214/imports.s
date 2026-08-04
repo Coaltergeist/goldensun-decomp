@@ -43,7 +43,7 @@
 	.export_func _MessageID
 	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
-	.export_func _Func_8093040
+	.export_func _ActorMessage_Wait
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
 	.export_func _MapActor_Emote

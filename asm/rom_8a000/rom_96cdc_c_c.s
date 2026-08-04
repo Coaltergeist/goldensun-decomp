@@ -103,7 +103,7 @@
 	mov	r3, #1
 	strh	r3, [r2]
 .L97256:
-	bl	Func_809202c
+	bl	MapActor_PlayPendingSound
 	mov	r0, #0x38
 	bl	gfree
 .L97260:

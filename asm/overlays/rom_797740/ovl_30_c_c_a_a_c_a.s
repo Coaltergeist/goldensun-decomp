@@ -31,7 +31,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #1

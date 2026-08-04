@@ -11,7 +11,7 @@
 	mov	r1, #0
 	mov	r2, #0x28
 	mov	r0, #0x11
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	ldr	r0, =0x206f
 	bl	__MessageID
 	mov	r0, #0x11
@@ -179,7 +179,7 @@
 	lsl	r2, #2
 	mov	r1, #0xa4
 	mov	r0, #0x10
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #9
@@ -201,12 +201,12 @@
 	mov	r0, #0x10
 	mov	r1, #0xa4
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0xe6
 	mov	r0, #0x10
 	mov	r1, #0xb9
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	mov	r0, #0x10
 	lsl	r1, #8
@@ -216,7 +216,7 @@
 	lsl	r2, #2
 	mov	r0, #0x10
 	mov	r1, #0xb9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xb
 	mov	r0, #0x10
 	bl	__MapActor_SetAnim
@@ -363,11 +363,11 @@
 	mov	r0, #0x10
 	mov	r1, #0xa2
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	ldr	r2, =0x37a
 	mov	r0, #0x10
 	mov	r1, #0xa2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x13
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -377,12 +377,12 @@
 	mov	r0, #0x10
 	mov	r1, #0xb8
 	ldr	r2, =0x35f
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0xc7
 	mov	r0, #0x10
 	mov	r1, #0xb8
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0
@@ -555,7 +555,7 @@
 	lsl	r2, #2
 	mov	r1, #0xa4
 	mov	r0, #0x11
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #9
@@ -577,12 +577,12 @@
 	mov	r0, #0x11
 	mov	r1, #0xa4
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0xe6
 	mov	r0, #0x11
 	mov	r1, #0xb9
 	lsl	r2, #2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	mov	r0, #0x11
 	lsl	r1, #8
@@ -592,7 +592,7 @@
 	lsl	r2, #2
 	mov	r0, #0x11
 	mov	r1, #0xb9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xb
 	mov	r0, #0x11
 	bl	__MapActor_SetAnim
@@ -748,7 +748,7 @@
 	mov	r1, #0xd0
 	lsl	r2, #2
 	mov	r0, #0x11
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x5c
 	bl	__PlaySound
 	mov	r1, #0xc0

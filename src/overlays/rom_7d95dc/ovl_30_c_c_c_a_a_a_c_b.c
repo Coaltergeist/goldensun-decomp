@@ -13,7 +13,7 @@ void OvlFunc_953_20085f0(void)
   int new_var;
   int new_var2;
   __CutsceneStart();
-  __Func_8092848(0x11, 0, 0x14);
+  __MapActor_TurnToFaceActor(0x11, 0, 0x14);
   __MessageID(0x211f);
   OvlFunc_953_2009c48(0x11);
  do { new_var = 0; new_var2 = 0x11; } while (0);

@@ -129,7 +129,7 @@
 	sub	r1, #8
 	mov	r0, #0
 	mov	r2, #0xe8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r7, #1
 	b	.L750
 .L72a:
@@ -148,7 +148,7 @@
 	add	r1, #0x18
 	mov	r0, #0
 	mov	r2, #0xe8
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 .L750:
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
@@ -258,8 +258,8 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
-	bl	__Func_809202c
+	bl	__ActorMessage_Wait
+	bl	__MapActor_PlayPendingSound
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	ldr	r3, [r0, #8]
@@ -298,7 +298,7 @@
 	mov	r1, #0
 	mov	r0, #0
 	mov	r2, #0x10
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #0
@@ -321,13 +321,13 @@
 	mov	r3, #0xa
 	ldrsh	r1, [r0, r3]
 	mov	r0, #0x12
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 .L8ee:
 	mov	r1, #0x8c
 	mov	r2, #0xe8
 	lsl	r1, #1
 	mov	r0, #0x12
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x80
 	lsl	r0, #2
 	bl	__SetFlag

@@ -12,7 +12,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	ldr	r2, =0x2d7
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #5
 	bl	__Func_8091e9c
 	pop	{r0}
@@ -31,7 +31,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	ldr	r2, =0x325
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #6
 	bl	__Func_8091e9c
 	pop	{r0}
@@ -62,7 +62,7 @@
 	mov	r0, #0x15
 	mov	r1, #0
 	mov	r2, #0x3c
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0x15
 	mov	r1, #0
 	bl	__ActorMessage
@@ -96,7 +96,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	lsl	r2, #2
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #7
 	bl	__Func_8091e9c
 .Lf44:
@@ -116,7 +116,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	ldr	r2, =0x466
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #8
 	bl	__Func_8091e9c
 	pop	{r0}
@@ -135,7 +135,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	ldr	r2, =0x4d6
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #9
 	bl	__Func_8091e9c
 	pop	{r0}

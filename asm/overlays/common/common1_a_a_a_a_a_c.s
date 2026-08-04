@@ -426,18 +426,18 @@
 	add	r2, #0x40
 	mov	r1, r7
 	mov	r0, r5
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xf
 	bl	__CutsceneWait
 	mov	r0, #0
 	mov	r1, r7
 	mov	r2, r6
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, r6
 	mov	r0, #0
 	add	r2, #0x20
 	mov	r1, r7
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	bl	__MapTransitionOut
 	bl	__WaitMapTransition
 	mov	r0, #0xb

@@ -308,15 +308,15 @@
 	add	r6, #0x10
 	mov	r0, r8
 	mov	r1, r9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, r6
 	mov	r2, r5
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0x1e
 	mov	r0, r8
 	mov	r1, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, r8
 	mov	r1, #3
 	bl	__MapActor_SetAnim
@@ -327,18 +327,18 @@
 	mov	r2, r5
 	mov	r0, r10
 	mov	r1, r9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, r5
 	mov	r1, r6
 	mov	r0, r10
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	mov	r1, r8
 	bl	__MapActor_SetExtra
 	mov	r2, r5
 	mov	r0, r8
 	mov	r1, r9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, r10
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -351,15 +351,15 @@
 	sub	r2, #0x30
 	mov	r0, r8
 	mov	r1, r9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, r5
 	mov	r0, r10
 	mov	r1, r9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, r9
 	mov	r2, r11
 	mov	r0, r10
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, r8
 	bl	__Func_8079664
 	mov	r3, #0x80

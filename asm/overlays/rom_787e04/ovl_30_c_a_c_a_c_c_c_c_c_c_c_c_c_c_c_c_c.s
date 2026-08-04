@@ -11,7 +11,7 @@
 	mov	r0, #0
 	ldr	r1, =0x239
 	ldr	r2, =0x189
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	mov	r2, #0x28
 	mov	r0, #0
@@ -25,7 +25,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0x50
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, #0x3c
 	mov	r0, #8
 	ldr	r1, =0x101
@@ -36,7 +36,7 @@
 	mov	r2, #0x3c
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #2
 	mov	r0, #8
 	bl	__Func_80925cc
@@ -69,7 +69,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0x28
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x84
 	mov	r0, #8
 	lsl	r1, #1
@@ -78,7 +78,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0x28
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r2, #0x3c
 	mov	r0, #0
 	ldr	r1, =0x105
@@ -98,7 +98,7 @@
 	mov	r2, #0x28
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #1
 	mov	r0, #8
 	bl	__Func_80925cc
@@ -107,7 +107,7 @@
 	mov	r2, #0x14
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0xc
 	mov	r0, #8
 	bl	__MapActor_DoAnim
@@ -215,7 +215,7 @@
 	mov	r2, #0x28
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #1
 	mov	r0, #8
 	bl	__Func_80925cc
@@ -224,7 +224,7 @@
 	mov	r2, #0x28
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #2
 	mov	r0, #8
 	bl	__Func_80925cc
@@ -259,7 +259,7 @@
 	ldr	r1, =0x24a
 	lsl	r2, #1
 	mov	r0, #8
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r1, #0x91
@@ -267,7 +267,7 @@
 	mov	r0, #8
 	lsl	r1, #2
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	lsl	r1, #8
 	mov	r2, #0x28
@@ -314,7 +314,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0x28
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #8
 	ldr	r1, =0x6666
 	ldr	r2, =0x3333
@@ -324,11 +324,11 @@
 	mov	r0, #8
 	lsl	r1, #2
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r2, #0x14
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #3
 	mov	r0, #0
 	bl	__MapActor_DoAnim
@@ -380,7 +380,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0x28
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, r5
 	mov	r1, #1
 	bl	__Func_801776c
@@ -509,17 +509,17 @@
 	mov	r0, #0x12
 	lsl	r1, #1
 	mov	r2, #0xb0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xd2
 	mov	r0, #0x12
 	lsl	r1, #1
 	mov	r2, #0xa4
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xa3
 	mov	r0, #0x12
 	lsl	r1, #1
 	mov	r2, #0xb9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	mov	r2, #0xa
 	mov	r0, #0x12

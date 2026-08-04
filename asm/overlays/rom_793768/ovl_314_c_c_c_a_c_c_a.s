@@ -30,7 +30,7 @@
 	mov	r0, r5
 	mov	r1, r6
 	mov	r2, r8
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r3, r8
 	lsl	r3, #16
 	mov	r8, r3
@@ -107,12 +107,12 @@
 	mov	r0, #0x17
 	lsl	r1, #1
 	mov	r2, #0x68
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xcc
 	mov	r0, #0x17
 	lsl	r1, #1
 	mov	r2, #0x78
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	ldr	r0, =0x867
 	bl	__SetFlag
 .L12b2:
@@ -139,7 +139,7 @@
 	mov	r1, #0xd8
 	lsl	r2, #1
 	mov	r0, #0x13
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -169,7 +169,7 @@
 	mov	r1, #0xd8
 	lsl	r2, #1
 	mov	r0, #0x13
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -312,7 +312,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	bl	__MapTransitionIn
 	bl	__WaitMapTransition
 	mov	r0, #0x1e
@@ -325,7 +325,7 @@
 	mov	r2, #0x14
 	mov	r0, #2
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0
 	mov	r1, #3
 	bl	__MapActor_DoAnim
@@ -399,7 +399,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #2
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	bl	__MapTransitionIn
 	bl	__WaitMapTransition
 	mov	r0, #0x1e
@@ -412,7 +412,7 @@
 	mov	r2, #0x14
 	mov	r0, #2
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0
 	mov	r1, #3
 	bl	__MapActor_DoAnim

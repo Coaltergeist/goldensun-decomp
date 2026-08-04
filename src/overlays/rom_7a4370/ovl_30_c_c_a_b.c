@@ -13,7 +13,7 @@ extern void __ActorMessage(int, int);
 extern void __CutsceneStart(void);
 extern void __CutsceneEnd(void);
 extern void __CutsceneWait(int);
-extern void __Func_8093040(int, int, int);
+extern void __ActorMessage_Wait(int, int, int);
 extern void __MapActor_DoAnim(int, int);
 extern void OvlFunc_917_20092f4(int, int);
 extern int _MSG_1520;
@@ -30,19 +30,19 @@ void OvlFunc_917_2008088(void) {
         __ActorMessage(9, 0);
     } else {
         __MessageID((int) (&_MSG_1520));
-        __Func_8093040(9, 0, 0x14);
+        __ActorMessage_Wait(9, 0, 0x14);
         OvlFunc_917_20092f4(0xb, 0);
         __CutsceneWait(0x3c);
         OvlFunc_917_20092f4(0xb, 1);
-        __Func_8093040(9, 0, 0xa);
+        __ActorMessage_Wait(9, 0, 0xa);
         __MapActor_DoAnim(0, 3);
         __CutsceneWait(0x28);
         __ActorMessage(9, 0);
         OvlFunc_917_20092f4(0xb, 0);
         __CutsceneWait(0x50);
-        __Func_8093040(9, 0, 0x14);
+        __ActorMessage_Wait(9, 0, 0x14);
         OvlFunc_917_20092f4(0xb, 1);
-        __Func_8093040(9, 0, 0x14);
+        __ActorMessage_Wait(9, 0, 0x14);
         __SetFlag(0x84c);
     }
     OvlFunc_917_20092f4(0xb, 0);

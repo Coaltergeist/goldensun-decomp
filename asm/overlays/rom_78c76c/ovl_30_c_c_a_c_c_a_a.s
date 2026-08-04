@@ -17,7 +17,7 @@
 	mov	r0, #9
 	lsl	r1, #1
 	mov	r2, #0x98
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	bl	__CutsceneEnd
 .L104c:
 	pop	{r0}

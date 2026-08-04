@@ -59,7 +59,7 @@
 .Lbba:
 	mov	r0, #0x14
 	bl	__WaitFrames
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}
@@ -124,7 +124,7 @@
 .Lc56:
 	mov	r0, #0x14
 	bl	__WaitFrames
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r0}

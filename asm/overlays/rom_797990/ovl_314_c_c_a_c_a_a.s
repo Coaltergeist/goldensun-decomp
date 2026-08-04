@@ -18,7 +18,7 @@
 	mov	r1, #0xd8
 	lsl	r2, #1
 	mov	r0, #0x12
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -48,7 +48,7 @@
 	mov	r1, #0xd8
 	lsl	r2, #1
 	mov	r0, #0x12
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x80

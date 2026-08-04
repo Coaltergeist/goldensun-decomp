@@ -16,7 +16,7 @@ void OvlFunc_901_20086b4(void)
     __MessageID(0x1cb5);
     t0 = 0x10;
     do { t0 = (unsigned short) t0; } while (0);
-    __Func_8092848(t0, 0, 2);
+    __MapActor_TurnToFaceActor(t0, 0, 2);
     __ShowActorMessage_NoWait(0x10, 0);
     if (__Func_8091c7c(0, 0)) {
         p = (unsigned short *)(iwram_3001ebc + (0xec << 1));

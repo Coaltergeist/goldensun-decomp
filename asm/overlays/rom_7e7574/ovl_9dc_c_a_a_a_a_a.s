@@ -7,7 +7,7 @@
 	lsl	r1, #1
 	lsl	r2, #2
 	mov	r0, #0
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x80

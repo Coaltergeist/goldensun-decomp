@@ -10,7 +10,7 @@ void OvlFunc_963_20087ac(void) {
 
     __CutsceneStart();
     __MessageID(0x266d);
-    __Func_8093040(0xa, 0, 0xa);
+    __ActorMessage_Wait(0xa, 0, 0xa);
     r5 = 0;
     do {
         __Func_8092950(0xa, 0);

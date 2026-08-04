@@ -6,7 +6,7 @@
 	mov	r0, #0x12
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	ldr	r0, =0x85b
 	bl	__GetFlag
 	cmp	r0, #0

@@ -50,7 +50,7 @@ void OvlFunc_928_2008de8(unsigned int arg0)
             p1 = 0;
             __asm__ volatile ("" : "+r" (p0), "+r" (p1));
             p2 = -p2;
-            __Func_809228c(p0, p1, p2);
+            __MapActor_TravelBy(p0, p1, p2);
         }
     } else {
         register int p0 __asm__("r0");

@@ -666,7 +666,7 @@
 	add	r3, #4
 	ldr	r2, [r3]
 	ldr	r0, [r5]
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	add	r0, #0x5a

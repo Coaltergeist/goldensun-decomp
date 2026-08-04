@@ -39,7 +39,7 @@ void OvlFunc_934_2009300(void)
             tbl = L1f00;
             idx = (r5 - 0x2d) << 3;
             idx2 = idx + 4;
-            __Func_809218c(8, *(int *)(tbl + idx), *(int *)(tbl + idx2));
+            __MapActor_TravelToAnim(8, *(int *)(tbl + idx), *(int *)(tbl + idx2));
         }
     }
 }

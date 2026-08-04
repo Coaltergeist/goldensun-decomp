@@ -28,7 +28,7 @@ void OvlFunc_922_20097a8(void)
     register int zero2 __asm__("r0") = 0;
     __asm__ volatile ("" : : "r" (zero2));
     arg2 <<= 1;
-    __Func_8092158(zero2, arg2, 0xc4);
+    __MapActor_TravelToWait(zero2, arg2, 0xc4);
   }
   __CutsceneEnd();
 }

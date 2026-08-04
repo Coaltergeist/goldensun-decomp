@@ -79,7 +79,7 @@
 	mov	r1, #0x68
 	mov	r2, #0x88
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x10
@@ -428,11 +428,11 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r1, #2
 	mov	r2, #0
 	mov	r0, #3
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r0, #0xa

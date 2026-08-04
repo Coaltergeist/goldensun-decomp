@@ -13,7 +13,7 @@ void OvlFunc_953_200850c(void)
   __CutsceneStart();
   __MessageID(0x2118);
   OvlFunc_953_2009c48(0xf);
-  __Func_8092848(0xf, 0, 0x14);
+  __MapActor_TurnToFaceActor(0xf, 0, 0x14);
   OvlFunc_953_2009c48(0xf);
  do { __MapActor_DoAnim(0xf, 3); __MapActor_SetAnim(0xf, 0); } while (0);
   OvlFunc_953_2009c48(0xf);

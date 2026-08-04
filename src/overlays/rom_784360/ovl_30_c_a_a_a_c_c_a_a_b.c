@@ -14,7 +14,7 @@ void OvlFunc_884_20081f0(void)
   __MessageID(0xf3f);
  do { new_var = (unsigned long) new_var; } while (0);
   new_var2 = new_var;
-  __Func_8092848(0x18, 0, new_var2);
+  __MapActor_TurnToFaceActor(0x18, 0, new_var2);
   __Func_8093054(0x18, 0);
   __CutsceneEnd();
 }

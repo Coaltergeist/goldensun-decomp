@@ -8,7 +8,7 @@
 extern void __CutsceneStart(void);
 extern int __GetFlag(int a);
 extern void __MessageID(int a);
-extern void __Func_8093040(volatile unsigned long a, int b, int c);
+extern void __ActorMessage_Wait(volatile unsigned long a, int b, int c);
 extern void __Func_8092adc(int a, int b, int c);
 extern void __CutsceneEnd(void);
 
@@ -25,7 +25,7 @@ void OvlFunc_890_200a924(void)
   {
     __MessageID(0xfff);
   }
-  __Func_8093040(0x10, 0, 0xa);
+  __ActorMessage_Wait(0x10, 0, 0xa);
   __Func_8092adc(0x10, new_var, 0xa);
   __CutsceneEnd();
 }

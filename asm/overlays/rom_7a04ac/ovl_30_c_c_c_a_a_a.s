@@ -187,7 +187,7 @@
 	mov	r0, #0
 	mov	r1, #0xfe
 	ldr	r2, =0x251
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #1
 	ldr	r1, =0x9999
 	ldr	r2, =0x4ccc
@@ -481,7 +481,7 @@
 	mov	r2, #0
 	mov	r0, #3
 	neg	r1, r1
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	ldr	r1, =gScript_913__0200af48
 	mov	r0, #3
 	bl	__MapActor_SetBehavior
@@ -991,7 +991,7 @@
 	mov	r2, #0
 	mov	r0, #1
 	neg	r1, r1
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #1
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -1105,7 +1105,7 @@
 	mov	r2, #0
 	mov	r0, #3
 	neg	r1, r1
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #3
 	mov	r1, #1
 	bl	__MapActor_SetAnim

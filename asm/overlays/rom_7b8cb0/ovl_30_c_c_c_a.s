@@ -22,7 +22,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	ldr	r0, =0x8ff
 	bl	__GetFlag
 	mov	r6, r0

@@ -10,6 +10,6 @@ extern void OvlFunc_901_20084b4(int);
 void OvlFunc_901_200856c(void)
 {
  do { __MessageID(0x1cb0); } while (0);
-  __Func_8092848(0xd, 0, 2);
+  __MapActor_TurnToFaceActor(0xd, 0, 2);
   OvlFunc_901_20084b4(0xd);
 }

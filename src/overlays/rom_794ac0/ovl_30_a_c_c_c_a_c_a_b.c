@@ -34,7 +34,7 @@ void OvlFunc_899_20099e4(void)
         w2 <<= 2;
         __asm__ volatile ("" : "+r" (w2));
         z2 <<= 1;
-        __Func_80921c4(rq, w2, z2);
+        __MapActor_TravelToAnimWait(rq, w2, z2);
     }
 
     if (__GetFlag(0x854) == 0) {

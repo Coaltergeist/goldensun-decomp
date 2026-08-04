@@ -13,7 +13,7 @@ extern void OvlFunc_959_20082a8(void);
 extern void OvlFunc_959_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
-extern void __Func_809228c(unsigned int, int, int);
+extern void __MapActor_TravelBy(unsigned int, int, int);
 extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
@@ -76,7 +76,7 @@ void OvlFunc_959_2008608(struct Pk arg)
     __MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
-    __Func_809228c(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
+    __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
     *(int *)(__MapActor_GetActor(0) + 0x6c) = (int)OvlFunc_959_20082a8;
     __CutsceneWait(4);
     if (dir - 6 <= 7)
@@ -96,7 +96,7 @@ void OvlFunc_959_2008608(struct Pk arg)
         __asm__ volatile ("" : : "r"(r2v));
         __MapActor_SetSpeed(r0z, r1v, r2v);
     }
-    __Func_809228c(0, (short)(L5ed8[dir] >> 16) / 2, (short)(L5ed8[dir]) / 2);
+    __MapActor_TravelBy(0, (short)(L5ed8[dir] >> 16) / 2, (short)(L5ed8[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
     __MapActor_WaitMovement(0);
@@ -135,5 +135,5 @@ void OvlFunc_959_2008608(struct Pk arg)
     camz += ap[2];
     __Func_8010704(camx, camz, w, h, ap[0], ap[2]);
     OvlFunc_959_2008244(2, ap[0], ap[2], w, h, 0);
-    __Func_809202c();
+    __MapActor_PlayPendingSound();
 }

@@ -48,7 +48,7 @@
 	mov	r0, #2
 	lsl	r1, #1
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	b	.L534
 .L50c:
 	ldr	r0, =0xcccc
@@ -65,13 +65,13 @@
 	mov	r0, #2
 	mov	r1, #0xe0
 	mov	r2, #0xa2
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	bl	__Func_8093530
 .L534:
 	mov	r1, #2
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	ldr	r0, =0x1327
@@ -79,7 +79,7 @@
 	ldr	r0, =0x9002
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0
 	mov	r1, #3
 	bl	__MapActor_DoAnim

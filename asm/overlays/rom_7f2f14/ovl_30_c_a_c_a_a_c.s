@@ -15,7 +15,7 @@
 	mov	r2, #0x14
 	mov	r6, #0xa
 	mov	r5, #8
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 .Lf5c:
 	mov	r1, #0xf
 	mov	r0, #8
@@ -64,7 +64,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xb
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0xb
 	mov	r1, #2
 	bl	__Func_80925cc

@@ -37,7 +37,7 @@
 	mov	r1, #0
 	mov	r2, #0x18
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #4
 	bl	__CutsceneWait
 	mov	r0, #0xbc
@@ -45,7 +45,7 @@
 	mov	r1, #0
 	mov	r2, #0x10
 	mov	r0, #0xa
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x84
@@ -107,7 +107,7 @@
 	mov	r0, #0xb
 	mov	r1, #8
 	mov	r2, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 .L16f4:
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -133,7 +133,7 @@
 	mov	r0, #0xb
 	neg	r1, r1
 	mov	r2, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 .L1728:
 	mov	r0, #0xb
 	bl	__MapActor_WaitMovement
@@ -153,7 +153,7 @@
 	mov	r1, #0
 	mov	r2, #0x18
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #4
 	bl	__CutsceneWait
 	mov	r0, #0xbc
@@ -161,7 +161,7 @@
 	mov	r1, #0
 	mov	r2, #0x10
 	mov	r0, #0xb
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0xac
@@ -275,13 +275,13 @@
 	mov	r1, #0
 	mov	r2, #0x18
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0xbc
 	bl	__PlaySound
 	mov	r1, #0
 	mov	r2, #0x10
 	mov	r0, #0xc
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0x9c

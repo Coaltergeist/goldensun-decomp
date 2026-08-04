@@ -9,7 +9,7 @@ extern void __CutsceneStart(void);
 extern int __GetFlag(int);
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
-extern void __Func_8092848(int, int, int);
+extern void __MapActor_TurnToFaceActor(int, int, int);
 extern void __Func_8093054(int, int);
 extern void __CutsceneEnd(void);
 
@@ -20,7 +20,7 @@ void OvlFunc_883_2008adc(void) {
         __ActorMessage(0xa, 0);
     } else {
         __MessageID(0xf81);
-        __Func_8092848(0xa, 0, 4);
+        __MapActor_TurnToFaceActor(0xa, 0, 4);
         __Func_8093054(0xa, 0);
     }
     __CutsceneEnd();

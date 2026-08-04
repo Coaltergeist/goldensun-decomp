@@ -33,8 +33,8 @@
 	.export_func _Func_8091a58
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetSpeed
-	.export_func _Func_8092158
-	.export_func _Func_809228c
+	.export_func _MapActor_TravelToWait
+	.export_func _MapActor_TravelBy
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetAnim
 	.export_func _MapActor_Jump

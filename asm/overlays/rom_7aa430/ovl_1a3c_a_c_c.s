@@ -275,7 +275,7 @@
 	mov	r0, #0xa
 	ldrsh	r2, [r3, r0]
 	mov	r0, #0
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r1, #6
 	mov	r0, r7
 	bl	__Actor_SetAnim

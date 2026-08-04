@@ -27,9 +27,9 @@
 	.export_func _MapActor_SetIdle
 	.export_func _MapActor_RunScript
 	.export_func _MapActor_TravelTo
-	.export_func _Func_8092158
-	.export_func _Func_80921c4
-	.export_func _Func_809228c
+	.export_func _MapActor_TravelToWait
+	.export_func _MapActor_TravelToAnimWait
+	.export_func _MapActor_TravelBy
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
@@ -51,5 +51,5 @@
 	.export_func _MapTransitionIn
 	.export_func _WaitMapTransition
 	.export_func _PlayMapMusic
-	.export_func _Func_809202c
+	.export_func _MapActor_PlayPendingSound
 	.export_func _PlaySound

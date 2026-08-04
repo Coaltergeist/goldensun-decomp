@@ -19,7 +19,7 @@ void OvlFunc_953_2008468(void)
   actor = __MapActor_GetActor(0xd);
   __CutsceneStart();
   __MapActor_SetIdle(0xd);
-  __Func_8092848(0xd, 0, 0x14);
+  __MapActor_TurnToFaceActor(0xd, 0, 0x14);
   __MessageID(0x2114);
   OvlFunc_953_2009c48(0xd);
   __Func_80925cc(0xd, 1);

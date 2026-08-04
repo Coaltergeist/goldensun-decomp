@@ -128,7 +128,7 @@
 	mov	r0, #1
 	mov	r1, #0xe8
 	lsl	r2, #3
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	mov	r0, #1
 	lsl	r1, #8
@@ -183,7 +183,7 @@
 	mov	r0, #8
 	lsl	r1, #1
 	lsl	r2, #3
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	lsl	r1, #8
 	mov	r2, #0
@@ -246,7 +246,7 @@
 	mov	r0, #1
 	lsl	r1, #1
 	lsl	r2, #3
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
@@ -387,7 +387,7 @@
 	mov	r0, #0
 	mov	r1, #0xd8
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	lsl	r1, #6
 	mov	r2, #0

@@ -29,7 +29,7 @@
 	lsl	r2, #1
 	mov	r0, #0
 	lsl	r1, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0
 	mov	r1, #3
 	bl	__Func_8092b08
@@ -38,7 +38,7 @@
 	lsl	r1, #1
 	lsl	r2, #1
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #2
 	bl	OvlFunc_884_2008714
 	add	sp, #8

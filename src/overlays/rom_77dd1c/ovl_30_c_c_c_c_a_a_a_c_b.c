@@ -11,9 +11,9 @@ extern void __ActorMessage(int, int);
 extern void __CutsceneWait(int);
 extern void __SetFlag(int);
 extern void __ShowActorMessage_NoWait(int, int);
-extern void __Func_8092848(int, int, int);
+extern void __MapActor_TurnToFaceActor(int, int, int);
 extern int __Func_8091c7c(int, int);
-extern void __Func_8093040(int, int, int);
+extern void __ActorMessage_Wait(int, int, int);
 extern void __MapActor_Surprise(int, int);
 extern void __MapActor_SetAnim(int, int);
 extern void __MapActor_DoAnim(int, int);
@@ -36,7 +36,7 @@ void OvlFunc_882_200973c(void) {
         __asm__ volatile ("" : : "r" (zp));
         __ShowActorMessage_NoWait(0x16, zp);
     }
-    __Func_8092848(0, 0x16, 0);
+    __MapActor_TurnToFaceActor(0, 0x16, 0);
     r5v = 0;
     if (__Func_8091c7c(0, 0) == 0) {
         __MessageID(0xee5);
@@ -47,7 +47,7 @@ void OvlFunc_882_200973c(void) {
     __CutsceneWait(0x14);
     z = 0x28;
     __asm__ volatile ("" : : "r" (z));
-    __Func_8093040(0x16, 0, z);
+    __ActorMessage_Wait(0x16, 0, z);
     w = 0x80;
     {
         register unsigned int rq __asm__("r0") = 0x16;

@@ -55,7 +55,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	neg	r2, r2
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	b	.L3be
 .L3b2:
 	mov	r2, #0x10

@@ -43,9 +43,9 @@
 	.export_func _MapActor_SetIdle
 	.export_func _MapActor_RunScript
 	.export_func _MapActor_TravelTo
-	.export_func _Func_8092158
-	.export_func _Func_809218c
-	.export_func _Func_80921c4
+	.export_func _MapActor_TravelToWait
+	.export_func _MapActor_TravelToAnim
+	.export_func _MapActor_TravelToAnimWait
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
@@ -59,7 +59,7 @@
 	.export_func _MessageID
 	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
-	.export_func _Func_8093040
+	.export_func _ActorMessage_Wait
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
 	.export_func _MapActor_Emote
@@ -85,5 +85,5 @@
 	.export_func _Func_808e118
 	.export_func _PlayMapMusic
 	.export_func _Func_8091ff0
-	.export_func _Func_809202c
+	.export_func _MapActor_PlayPendingSound
 	.export_func _PlaySound

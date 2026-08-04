@@ -73,7 +73,7 @@
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0x2d
 	bl	__CutsceneWait
 	mov	r1, #8

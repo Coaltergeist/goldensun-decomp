@@ -15,6 +15,6 @@ void OvlFunc_901_2008710(void) {
     __MessageID(0x1cab);
     u = 8;
     do { u = (unsigned short) u; } while (0);
-    __Func_8093040(u, 0, 0x14);
+    __ActorMessage_Wait(u, 0, 0x14);
     __CutsceneEnd();
 }

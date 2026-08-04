@@ -1,4 +1,4 @@
-/* Cluster MapActor_TravelTo..Func_80921c4 extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c.s.
+/* Cluster MapActor_TravelTo..MapActor_TravelToAnimWait extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c.s.
  *
  * Total .text for this TU = 224 bytes (= 0xe0).
  * Preserves the original ROM layout when slotted between
@@ -25,7 +25,7 @@ void MapActor_TravelTo(unsigned int param_1, int param_2, int param_3) {
         _Actor_TravelTo((int)actor, param_2 << 16, *(int *)(actor + 0xc), param_3 << 16);
     }
 }
-void Func_8092158(int actorID, int arg1, int arg2) {
+void MapActor_TravelToWait(int actorID, int arg1, int arg2) {
     unsigned char *actor;
 
     actor = (unsigned char *)GetFieldActor(actorID);
@@ -36,7 +36,7 @@ void Func_8092158(int actorID, int arg1, int arg2) {
         _Actor_WaitMovement((int)actor);
     }
 }
-void Func_809218c(int actorID, int arg1, int arg2) {
+void MapActor_TravelToAnim(int actorID, int arg1, int arg2) {
     unsigned char *actor;
 
     actor = (unsigned char *)GetFieldActor(actorID);
@@ -47,7 +47,7 @@ void Func_809218c(int actorID, int arg1, int arg2) {
         _Actor_TravelTo((int)actor, arg1 << 16, *(int *)(actor + 0xc), arg2 << 16);
     }
 }
-void Func_80921c4(int actorID, int arg1, int arg2) {
+void MapActor_TravelToAnimWait(int actorID, int arg1, int arg2) {
     unsigned char *actor;
 
     actor = (unsigned char *)GetFieldActor(actorID);

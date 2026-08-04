@@ -135,7 +135,7 @@
 	mov	r2, #0x62
 	mov	r0, #0
 	mov	r1, #0x78
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0
 	mov	r1, #2
 	bl	__MapActor_SetAnim
@@ -143,7 +143,7 @@
 	mov	r1, #0
 	neg	r2, r2
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	bl	__MapTransitionOut

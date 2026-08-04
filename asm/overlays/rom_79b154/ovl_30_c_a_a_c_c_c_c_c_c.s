@@ -70,7 +70,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	neg	r2, r2
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	b	.L3cc
 .L3c0:
 	mov	r2, #0x10
@@ -156,12 +156,12 @@
 	mov	r0, #0xb
 	mov	r1, #0x6f
 	mov	r2, #0xc4
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r2, #0xb9
 	mov	r1, #0x80
 	mov	r0, #0
 	str	r5, [r7, #0x18]
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0x81
@@ -175,12 +175,12 @@
 	mov	r0, #0xb
 	mov	r1, #0x79
 	mov	r2, #0xbe
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r2, #0xbd
 	mov	r1, #0x8d
 	mov	r0, #0
 	str	r5, [r7, #0x18]
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0x81
@@ -194,7 +194,7 @@
 	mov	r1, #0x84
 	mov	r2, #0xba
 	mov	r0, #0xb
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	str	r5, [r7, #0x18]
 	mov	r0, #0
 	bl	__MapActor_GetActor
@@ -210,7 +210,7 @@
 	mov	r0, #0
 	mov	r1, #0xa6
 	mov	r2, #0xb9
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x80
 	mov	r2, #0x14
 	mov	r0, #0

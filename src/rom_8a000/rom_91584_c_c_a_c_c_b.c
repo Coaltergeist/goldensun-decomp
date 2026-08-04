@@ -1,4 +1,4 @@
-/* Cluster Func_809228c..Func_809228c extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c_c.s.
+/* Cluster MapActor_TravelBy..MapActor_TravelBy extracted from goldensun/asm/rom_8a000/rom_91584_c_c_a_c_c.s.
  *
  * Total .text for this TU = 56 bytes (= 0x38).
  * Preserves the original ROM layout when slotted between
@@ -9,7 +9,7 @@ extern int GetFieldActor(int actorID);
 extern void _Actor_Stop(void);
 extern void _Actor_TravelTo(int a, int b, int c, int d);
 
-void Func_809228c(int arg0, int arg1, int arg2) {
+void MapActor_TravelBy(int arg0, int arg1, int arg2) {
     unsigned char *actor;
 
     actor = (unsigned char *)GetFieldActor(arg0);

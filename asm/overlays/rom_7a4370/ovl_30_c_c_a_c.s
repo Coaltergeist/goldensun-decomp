@@ -66,7 +66,7 @@
 	mov	r2, #0xa
 	ldr	r0, =0x200e
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0
 	mov	r1, #2
 	bl	__Func_80925cc

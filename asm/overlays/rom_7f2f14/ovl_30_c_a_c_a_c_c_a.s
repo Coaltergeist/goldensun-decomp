@@ -165,7 +165,7 @@
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0xe0
 	mov	r2, #0
 	mov	r0, #0xa
@@ -226,7 +226,7 @@
 	mov	r3, #0xa
 	ldrsh	r1, [r5, r3]
 	mov	r0, #0
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x16

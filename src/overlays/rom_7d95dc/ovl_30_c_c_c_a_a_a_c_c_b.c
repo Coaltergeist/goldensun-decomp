@@ -14,7 +14,7 @@ void OvlFunc_953_20086bc(void)
     unsigned long v2;
 
     __CutsceneStart();
-    __Func_8092848(8, 0, 0x14);
+    __MapActor_TurnToFaceActor(8, 0, 0x14);
     __MessageID(0x2125);
     __ShowActorMessage_NoWait(8, 0);
     if (__Func_8091c7c(0, 0)) {

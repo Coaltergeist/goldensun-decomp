@@ -20,7 +20,7 @@
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0xf
@@ -61,7 +61,7 @@
 	neg	r2, r2
 	mov	r1, #0
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	mov	r1, #0

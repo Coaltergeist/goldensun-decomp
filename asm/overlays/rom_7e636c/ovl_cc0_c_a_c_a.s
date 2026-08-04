@@ -113,7 +113,7 @@
 	neg	r1, r1
 	mov	r2, #0x10
 	mov	r0, #0xb
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0xb
 	bl	__MapActor_WaitMovement
 	mov	r1, #0xd0
@@ -143,7 +143,7 @@
 	mov	r2, #0xe8
 	mov	r1, #0x98
 	mov	r0, #0xb
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0x9a
 	lsl	r0, #4
 	bl	__ClearFlag
@@ -204,7 +204,7 @@
 	mov	r1, #0
 	mov	r0, #0
 	mov	r2, #0x10
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r0, #0
@@ -236,7 +236,7 @@
 	mov	r2, #0
 	mov	r1, #0xb
 	mov	r0, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	ldr	r0, =0x23d9
 	bl	__MessageID
 	mov	r0, #0xb

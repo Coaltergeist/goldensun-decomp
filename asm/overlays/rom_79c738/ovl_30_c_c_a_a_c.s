@@ -18,7 +18,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xe
@@ -28,7 +28,7 @@
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0xb0
 	mov	r0, #0xe
 	lsl	r1, #8

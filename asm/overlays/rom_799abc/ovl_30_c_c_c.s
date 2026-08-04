@@ -117,18 +117,18 @@
 	mov	r0, #0xd
 	lsl	r1, #2
 	mov	r2, #0xd8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x96
 	mov	r0, #0xd
 	lsl	r1, #2
 	mov	r2, #0xf8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0x8e
 	mov	r2, #0x94
 	mov	r0, #0xd
 	lsl	r1, #2
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xd
@@ -293,7 +293,7 @@
 	lsl	r1, #1
 	mov	r0, #9
 	mov	r2, #0xc0
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	bl	OvlFunc_905_2008ce0

@@ -118,7 +118,7 @@
 	mov	r1, #0
 	mov	r2, #0x28
 	mov	r0, #3
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0x1b
 	bl	OvlFunc_945_200c86c
 	mov	r1, #0x80
@@ -225,7 +225,7 @@
 	mov	r2, #0x86
 	mov	r0, #0x1b
 	lsl	r1, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	lsl	r1, #6
 	mov	r0, #0x1b
@@ -345,7 +345,7 @@
 	lsl	r1, #1
 	mov	r2, #0x86
 	mov	r5, #0x80
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	lsl	r5, #8
 	mov	r2, #0
 	mov	r0, #0x1b
@@ -603,12 +603,12 @@
 	mov	r0, #0x1b
 	lsl	r1, #1
 	mov	r2, #0x84
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xcc
 	mov	r0, #0x1b
 	lsl	r1, #1
 	mov	r2, #0x8e
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	mov	r2, #0x14
 	mov	r0, #0x1b
@@ -746,12 +746,12 @@
 	mov	r0, #0x1b
 	lsl	r1, #1
 	mov	r2, #0x84
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xde
 	mov	r0, #0x1b
 	lsl	r1, #1
 	mov	r2, #0x84
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x1b
 	bl	__DeleteFieldActor
 	mov	r0, #0x28
@@ -1054,22 +1054,22 @@
 	mov	r0, r8
 	lsl	r1, #1
 	mov	r2, #0xac
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r1, #0xcd
 	mov	r0, r6
 	lsl	r1, #1
 	mov	r2, #0xac
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r1, #0xeb
 	mov	r0, r5
 	lsl	r1, #1
 	mov	r2, #0xcc
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r1, #0xcd
 	mov	r2, #0xcc
 	mov	r0, r10
 	lsl	r1, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, r8
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -1153,12 +1153,12 @@
 	mov	r1, r9
 	mov	r0, #0x1b
 	mov	r2, #0x84
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xde
 	mov	r0, #0x1b
 	lsl	r1, #1
 	mov	r2, #0x84
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x1b
 	mov	r1, #0
 	mov	r2, #0

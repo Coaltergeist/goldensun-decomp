@@ -37,6 +37,6 @@ void OvlFunc_930_2008ac0(void) {
     __CutsceneWait(0x14);
     t2 = 10;
     do { t2 = (unsigned short) t2; } while (0);
-    __Func_8093040(t2, 0, 0x14);
+    __ActorMessage_Wait(t2, 0, 0x14);
     __CutsceneEnd();
 }

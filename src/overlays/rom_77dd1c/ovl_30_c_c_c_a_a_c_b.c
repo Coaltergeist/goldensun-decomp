@@ -27,7 +27,7 @@ void OvlFunc_882_2008278(void)
             register unsigned int rq __asm__("r0") = 0;
             __asm__ volatile ("" : : "r" (rq));
             w <<= 1;
-            __Func_809218c(rq, w, 0x325);
+            __MapActor_TravelToAnim(rq, w, 0x325);
         }
         __CutsceneWait(3);
         OvlFunc_882_200815c(6);

@@ -11,7 +11,7 @@ void OvlFunc_953_2008334(void) {
         __Func_80925cc(0xe, 2);
         __MessageID(0x2256);
         OvlFunc_953_2009c48(0xe);
-        __Func_8092848(0xe, 0, 0);
+        __MapActor_TurnToFaceActor(0xe, 0, 0);
         __CutsceneWait(0x14);
         __Func_8093054(0xe, 0);
         OvlFunc_953_2009c5c(0xe, 0);

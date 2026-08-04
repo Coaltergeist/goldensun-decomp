@@ -81,7 +81,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	lsl	r2, #2
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r1, #0xe0
 	lsl	r1, #8
 	mov	r2, #0xa

@@ -23,10 +23,10 @@
 	.export_func _CutsceneEnd
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetSpeed
-	.export_func _Func_8092158
-	.export_func _Func_809218c
-	.export_func _Func_80921c4
-	.export_func _Func_809228c
+	.export_func _MapActor_TravelToWait
+	.export_func _MapActor_TravelToAnim
+	.export_func _MapActor_TravelToAnimWait
+	.export_func _MapActor_TravelBy
 	.export_func _MapActor_WaitMovement
 	.export_func _MapActor_SetPos
 	.export_func _MapActor_SetAnim
@@ -40,5 +40,5 @@
 	.export_func _Func_8093530
 	.export_func _Func_8091e9c
 	.export_func _Func_80955b0
-	.export_func _Func_809202c
+	.export_func _MapActor_PlayPendingSound
 	.export_func _PlaySound

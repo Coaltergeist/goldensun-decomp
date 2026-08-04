@@ -12,6 +12,6 @@ void OvlFunc_924_200a814(void)
   __CutsceneWait(0x14);
   __MessageID(0x157d);
  do { } while (0);
-  __Func_8093040(3, 0, 0x14);
+  __ActorMessage_Wait(3, 0, 0x14);
   __CutsceneEnd();
 }

@@ -107,7 +107,7 @@
 	mov	r3, #3
 	strb	r3, [r7]
 	str	r6, [r5, #0x6c]
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	bl	__CutsceneEnd
 .L12c6:
 	pop	{r5, r6, r7}
@@ -630,7 +630,7 @@
 	mov	r2, #0xa8
 	mov	r1, #0x98
 	mov	r0, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r1, =gScript_923__0200a8c8
@@ -656,7 +656,7 @@
 	mov	r2, #0xb8
 	mov	r1, #0x88
 	mov	r0, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, r7
@@ -675,7 +675,7 @@
 	mov	r2, #0xa8
 	mov	r1, #0x78
 	mov	r0, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #5
 	bl	__CutsceneWait
 	ldr	r1, =gScript_884__0200a874
@@ -703,7 +703,7 @@
 	mov	r2, #0xb8
 	mov	r1, #0x88
 	mov	r0, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xf
 	bl	__CutsceneWait
 	mov	r1, r7
@@ -743,7 +743,7 @@
 	mov	r0, #0
 	mov	r1, #0x88
 	lsl	r2, #1
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	bl	__Func_8093530
 	mov	r3, #7
 	mov	r2, #9
@@ -818,7 +818,7 @@
 	mov	r2, #0x48
 	mov	r1, #0x88
 	mov	r0, #3
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r1, #1

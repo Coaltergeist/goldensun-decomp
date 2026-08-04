@@ -8,14 +8,14 @@
 	mov	r2, #2
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x10
 	mov	r1, #1
 	bl	__MapActor_SetAnim
 	mov	r2, #0x14
 	mov	r0, #0x10
 	mov	r1, #0
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #4
 	mov	r0, #0x10
 	bl	__MapActor_DoAnim
@@ -24,7 +24,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x81
 	mov	r0, #0x10
 	lsl	r1, #1
@@ -33,7 +33,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0x1e
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0
 	mov	r0, #0x10
 	bl	__ShowActorMessage_NoWait
@@ -54,7 +54,7 @@
 	mov	r1, #0
 	mov	r2, #0x14
 	mov	r0, #0x10
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__SetFlag

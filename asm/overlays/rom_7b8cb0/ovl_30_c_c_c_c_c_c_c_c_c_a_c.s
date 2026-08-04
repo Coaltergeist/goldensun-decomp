@@ -151,7 +151,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	neg	r2, r2
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 .L66a:
 	mov	r0, #0xa
 	bl	__CutsceneWait
@@ -327,12 +327,12 @@
 	mov	r0, #0x12
 	mov	r1, #0x1c
 	lsl	r2, #1
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r2, #0xe0
 	mov	r1, #0x18
 	lsl	r2, #1
 	mov	r0, #0x12
-	bl	__Func_8092158
+	bl	__MapActor_TravelToWait
 	mov	r0, #0xe5
 	bl	__PlaySound
 	mov	r0, #0x12

@@ -23,7 +23,7 @@
 	mov	r2, #0x74
 	lsl	r1, #1
 	mov	r0, #0
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r0, #0x94
 	bl	__PlaySound
 	mov	r1, #0xc8

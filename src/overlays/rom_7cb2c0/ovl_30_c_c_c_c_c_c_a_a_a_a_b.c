@@ -12,7 +12,7 @@ extern void __CutsceneWait(int);
 extern void __Func_8092adc(int, int, int);
 extern void __Func_80925cc(int, int);
 extern void __Func_809259c(int, int);
-extern void __Func_8093040(int, int, int);
+extern void __ActorMessage_Wait(int, int, int);
 extern void OvlFunc_945_200c8e8(int, int, int);
 extern int _MSG_1e40;
 
@@ -33,6 +33,6 @@ void OvlFunc_945_200c0e8(void) {
     }
     __Func_809259c(8, 2);
     __MessageID((int) (&_MSG_1e40));
-    __Func_8093040(8, 0, 0x14);
+    __ActorMessage_Wait(8, 0, 0x14);
     OvlFunc_945_200c8e8(9, 0xe, 0);
 }

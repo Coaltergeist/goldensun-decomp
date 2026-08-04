@@ -190,7 +190,7 @@
 	bl	__Actor_TravelTo
 	mov	r0, r6
 	bl	__Actor_WaitMovement
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	ldr	r3, [r7]
 	str	r3, [r6, #8]
 	ldr	r3, [r7, #8]

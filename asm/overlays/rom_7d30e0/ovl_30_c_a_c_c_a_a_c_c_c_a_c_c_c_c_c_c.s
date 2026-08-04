@@ -91,7 +91,7 @@
 	mov	r1, #0
 	mov	r2, #0x18
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #4
 	bl	__CutsceneWait
 	mov	r0, #0xbc
@@ -99,7 +99,7 @@
 	mov	r1, #0
 	mov	r2, #0x10
 	mov	r0, #8
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r1, #0xb4
@@ -205,7 +205,7 @@
 	mov	r1, #0
 	mov	r2, #0x18
 	mov	r0, #0
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0xbc
 	bl	__PlaySound
 	mov	r0, #4
@@ -213,7 +213,7 @@
 	mov	r1, #0
 	mov	r2, #0x10
 	mov	r0, #9
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 	mov	r0, #0
 	bl	__MapActor_WaitMovement
 	mov	r2, #0x84
@@ -291,7 +291,7 @@
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #8
-	bl	__Func_809228c
+	bl	__MapActor_TravelBy
 .L15aa:
 	mov	r0, #0
 	bl	__MapActor_WaitMovement

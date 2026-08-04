@@ -14,11 +14,11 @@
 	mov	r0, #0
 	mov	r1, #0x10
 	mov	r2, #0xa
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #6
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	mov	r1, #0x81
 	mov	r2, #0
 	mov	r0, #0x10
@@ -59,7 +59,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #4
-	bl	__Func_8093040
+	bl	__ActorMessage_Wait
 	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0

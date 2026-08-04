@@ -1101,7 +1101,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xe8
-	bl	__Func_80921c4
+	bl	__MapActor_TravelToAnimWait
 	mov	r1, #0xc0
 	lsl	r1, #8
 	mov	r2, #0

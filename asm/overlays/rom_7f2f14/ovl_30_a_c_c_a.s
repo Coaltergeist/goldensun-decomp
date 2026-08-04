@@ -163,7 +163,7 @@
 	mov	r0, #0
 	lsl	r1, #1
 	bl	__MapActor_Surprise
-	bl	__Func_809202c
+	bl	__MapActor_PlayPendingSound
 	mov	r3, #0x80
 	lsl	r3, #9
 	str	r3, [r7, #0x48]

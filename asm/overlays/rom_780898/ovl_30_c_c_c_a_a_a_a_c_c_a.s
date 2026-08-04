@@ -52,7 +52,7 @@
 	mov	r0, #0
 	ldr	r1, =0x101
 	lsl	r2, #1
-	bl	__Func_809218c
+	bl	__MapActor_TravelToAnim
 	mov	r0, #0xb
 	bl	__Func_8091e9c
 	pop	{r0}

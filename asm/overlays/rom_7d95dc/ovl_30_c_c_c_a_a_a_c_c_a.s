@@ -6,7 +6,7 @@
 	mov	r1, #0
 	mov	r2, #0x14
 	mov	r0, #0x12
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	ldr	r0, =0x2122
 	bl	__MessageID
 	mov	r0, #0x12
@@ -29,7 +29,7 @@
 	mov	r2, #0x14
 	mov	r1, #0
 	mov	r0, #0x12
-	bl	__Func_8092848
+	bl	__MapActor_TurnToFaceActor
 	mov	r0, #0x12
 	bl	OvlFunc_953_2009c48
 	mov	r1, #3
