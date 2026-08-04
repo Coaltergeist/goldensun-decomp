@@ -43,20 +43,18 @@ static inline void DMA3_SET(const void *src, void *dst, u32 cnt) {
 // inline functions and had some sort of common DMAN_SET
 
 static inline void DMA3_CLEAR(void *dst, unsigned size) {
-    u32 value;
-    register u32 * _src  __asm__("r0") = (&value);
-    *_src = 0;
+    vu32 value;
+    vu32 *src = &value;
+    *src = 0;
     {
         register vu32 *_base __asm__("r3") = &REG_DMA3SAD;
-        register unsigned _dst  __asm__("r1") = (unsigned)(dst);
-        register unsigned _cnt  __asm__("r2") = (unsigned)(0x85000000 | (size / 4));
+        register vu32  *_src  __asm__("r0") = src;
+        register unsigned _dst __asm__("r1") = (unsigned)dst;
+        register unsigned _cnt __asm__("r2") = (unsigned)(0x85000000 | (size / 4));
         __asm__ volatile (
             "stmia\t%0!, {%1, %2, %3}\n\t"
             "sub\t%0, #0xc"
-            :
-            : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt)
-            : "memory"
-        );
+            : : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt) : "memory");
     }
 }
 
