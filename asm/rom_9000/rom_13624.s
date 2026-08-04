@@ -31,7 +31,7 @@ Data_8013624:
 	.word	ActorCmd_Player
 	.word	ActorCmd_Player_Climb
 	.word	ActorCmd_Player_World
-	.word	Func_800d8e8
+	.word	ActorCmd_Delete
 	.word	ActorCmd_Anim
 	.word	ActorCmd_Nop
 	.word	ActorCmd_Sound

@@ -17,7 +17,7 @@ Exports_77000:
 	.export_func Func_80788c4
 	.export_func BreakItem
 	.export_func RepairItem
-	.export_func Func_8078a8c
+	.export_func GetPsynergyItemTarget
 	.export_func Func_8078870
 	.export_func GetMoveInfo
 	.export_func GiveInnateMove

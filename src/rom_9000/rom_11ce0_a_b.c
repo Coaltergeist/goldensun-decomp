@@ -1,4 +1,4 @@
-/* Cluster Func_8011ce0..Func_8011ce0 extracted from goldensun/rom_9000/src/rom_11ce0_a.s.
+/* Cluster HeightTile_0..HeightTile_0 extracted from goldensun/rom_9000/src/rom_11ce0_a.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -6,6 +6,6 @@
  * goldensun/stage1.ld.
  */
 /* FF: int HeightTile_0(char * param_1) */
-unsigned int Func_8011ce0(unsigned char *arg0) {
+unsigned int HeightTile_0(unsigned char *arg0) {
     return (*arg0 << 24) >> 24 << 19;
 }

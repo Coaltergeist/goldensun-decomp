@@ -14,11 +14,11 @@ void CpuSet(void) {
 }
 
 /* FF: void SoundBias0(void) */
-void Func_8006868(void) {
+void SoundBias0(void) {
     asm("mov r0, #0\n\tswi 0x19");
 }
 
 /* FF: void SoundBias1(void) */
-void Func_8006870(void) {
+void SoundBias1(void) {
     asm("mov r0, #1\n\tswi 0x19");
 }

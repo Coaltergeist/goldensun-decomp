@@ -181,8 +181,8 @@ void SetIntrHandler(u32 intrNo, u32 dispStat, intrfunc_t *handler)
 void Func_8003d04(void);
 void Func_8003e10(void *);
 u32 Func_8005fcc(void);
-void Func_8006868(void);
-void Func_8006870(void);
+void SoundBias0(void);
+void SoundBias1(void);
 void RunTasks(u32);
 void UpdateKeyPressRepeat(void);
 void *galloc_iwram(u32, u32);
@@ -338,9 +338,9 @@ void WaitFrames(u32 frames)
 
                 ewram_2002000 = 1;
                 SET_IO(REG_KEYCNT, 0xC300);
-                Func_8006868();
+                SoundBias0();
                 Halt();
-                Func_8006870();
+                SoundBias1();
                 SET_IO(REG_KEYCNT, 0xC00F);
                 ewram_2002000 = 0;
 
