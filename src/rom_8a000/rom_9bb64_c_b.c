@@ -10,7 +10,7 @@ extern KeyState32 gKeyHeld;
 extern void *galloc_ewram(int index, unsigned int size);
 extern void Func_800430c(void);
 extern void Func_809c314(void);
-extern void Func_8091660(void);
+extern void ResetPlayerSpeed(void);
 extern void Func_80936a0(int a, int b);
 extern void WaitFrames(unsigned int nframes);
 extern void Func_80043e0(void);
@@ -23,7 +23,7 @@ void Func_809c3a4(void)
     if (*(short *)((char *)base + 0x19e) == 3) {
         Func_800430c();
         Func_809c314();
-        Func_8091660();
+        ResetPlayerSpeed();
         Func_80936a0(0x9d89, 6);
         while ((*(unsigned int *)&gKeyHeld & 0x200) != 0) {
             WaitFrames(1);

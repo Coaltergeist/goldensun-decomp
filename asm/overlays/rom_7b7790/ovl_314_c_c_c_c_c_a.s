@@ -12,13 +12,13 @@
 	mov	r1, #0xa
 	mov	r2, #0
 	mov	r0, #9
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #9
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #9

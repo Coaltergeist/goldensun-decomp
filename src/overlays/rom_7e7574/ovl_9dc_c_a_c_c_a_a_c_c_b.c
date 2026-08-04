@@ -9,7 +9,7 @@ typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
 void OvlFunc_959_2009be4(int a1);
-void __Func_8091eb0(int a1, int a2);
+void __StartMapBattle(int a1, int a2);
 
 void OvlFunc_959_2009dc4(void)
 {
@@ -24,7 +24,7 @@ void OvlFunc_959_2009dc4(void)
     *(unsigned int *)((char *)p + 0x1c0) = 0x200;
     gs = &gState;
     *(unsigned char *)((char *)gs + 0x22b) = 3;
-    __Func_8091eb0(0x62, 2);
+    __StartMapBattle(0x62, 2);
     {
         unsigned short t = 0xf;
         do { t = (unsigned short) t; } while (0);

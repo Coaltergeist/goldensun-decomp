@@ -110,7 +110,7 @@
 .L198c:
 	mov	r0, #0x90
 	lsl	r0, #4
-	bl	__Func_8004938
+	bl	__alloc_iwram
 	mov	r9, r0
 	ldr	r3, =REG_DMA3SAD
 	ldr	r0, =OvlData_933_2009f80

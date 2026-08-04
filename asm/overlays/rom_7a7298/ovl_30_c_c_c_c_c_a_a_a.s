@@ -122,7 +122,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xc
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x164b
@@ -210,7 +210,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xd
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x164d
@@ -298,7 +298,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xf
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x164f
 	bl	__MessageID
 	mov	r0, #0xf
@@ -333,7 +333,7 @@
 	mov	r2, #0xa
 	mov	r1, #0
 	mov	r0, #0xe
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x1547
 	bl	__MessageID
 	mov	r0, #0xe
@@ -370,7 +370,7 @@
 	mov	r0, #0x10
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x881
 	bl	__GetFlag
 	cmp	r0, #0

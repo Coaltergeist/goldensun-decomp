@@ -10,7 +10,7 @@
 	mov	r10, r1
 	ldr	r5, =0x60
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2

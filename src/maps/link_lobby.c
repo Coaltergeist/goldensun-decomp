@@ -75,7 +75,7 @@ unsigned int OvlFunc_971_20082d8(void)
         if (result == 0) {
             __CutsceneStart();
             __MessageID(0x292e);
-            __Func_8092c40(8, 0);
+            __ShowActorMessage_NoWait(8, 0);
             __WaitFrames(5);
             __SetFlag(0x200);
             result = __CutsceneEnd();
@@ -101,7 +101,7 @@ unsigned int OvlFunc_971_2008340(void) {
     v = 0;
     *p = v;
     __MessageID(0x2927);
-    __Func_8092c40(8, 0);
+    __ShowActorMessage_NoWait(8, 0);
     __ClearFlag(0x205);
     return __CutsceneEnd();
 }
@@ -150,7 +150,7 @@ unsigned int OvlFunc_971_20090e8(unsigned int actor)
     {
         register unsigned int r0v __asm__("r0") = actor;
         __asm__ volatile ("" : "+r" (r0v));
-        __Func_809280c(r0v, *(unsigned int *)p, 0);
+        __MapActor_Face(r0v, *(unsigned int *)p, 0);
     }
     flag1 = 0x204;
     __asm__ ("" : "+r" (flag1));
@@ -172,7 +172,7 @@ unsigned int OvlFunc_971_20090e8(unsigned int actor)
         __ClearFlag(flag3);
     }
     __MessageID(msgId);
-    __Func_8092c40(actor, 0);
+    __ShowActorMessage_NoWait(actor, 0);
     return __CutsceneEnd();
 }
 
@@ -189,7 +189,7 @@ unsigned int OvlFunc_971_2009158(unsigned int arg0)
     r2 = 0xfa;
     r2 <<= 1;
     r3 = r5 + r2;
-    __Func_809280c(r6, *(unsigned int *)r3, 0);
+    __MapActor_Face(r6, *(unsigned int *)r3, 0);
     r3 = 0xaa;
     r3 <<= 2;
     r2 = r5 + r3;
@@ -199,7 +199,7 @@ unsigned int OvlFunc_971_2009158(unsigned int arg0)
     } else {
         __MessageID(0x298b);
     }
-    __Func_8092c40(r6, 0);
+    __ShowActorMessage_NoWait(r6, 0);
     return __CutsceneEnd();
 }
 

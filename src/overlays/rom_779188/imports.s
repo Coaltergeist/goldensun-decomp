@@ -2,7 +2,7 @@
 
 	.export_func _WaitFrames
 	.export_func _StartTask
-	.export_func _Func_8004970
+	.export_func _alloc_ewram
 	.export_func _free
 	.export_func _DecompressLZ
 	.export_func _UploadSpriteGFX

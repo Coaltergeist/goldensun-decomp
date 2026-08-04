@@ -476,7 +476,7 @@
 	mov	r1, #0
 	mov	r2, #4
 	mov	r8, r0
-	bl	Func_80a1778
+	bl	LoadUIHandCursorGFX
 	mov	r3, #0xd
 	strb	r3, [r0, #5]
 	mov	r3, r10

@@ -5,7 +5,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x80
 	lsl	r0, #5
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r6, =ewram_2002004
 	mov	r5, r0
 	mov	r3, #0

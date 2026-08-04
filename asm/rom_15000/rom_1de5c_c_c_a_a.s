@@ -146,7 +146,7 @@
 	mov	r8, r2
 	mov	r10, r3
 	mov	r7, r1
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldrb	r3, [r5]
 	mov	r6, r0
 	mov	r2, r6
@@ -194,7 +194,7 @@
 	mov	r10, r2
 	mov	r8, r3
 	mov	r7, r1
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, =iwram_3001e8c
 	mov	r6, r0
 	ldr	r0, [r3]
@@ -268,7 +268,7 @@
 	mov	r7, r2
 	mov	r8, r3
 	mov	r10, r1
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldrb	r3, [r5]
 	mov	r6, r0
 	mov	r2, r6

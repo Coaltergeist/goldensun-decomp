@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8091eb0  @ 0x08091eb0
+.thumb_func_start StartMapBattle  @ 0x08091eb0
 	push	{r5, r6, r7, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r6, r1
@@ -42,5 +42,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_8091eb0
+.func_end StartMapBattle
 

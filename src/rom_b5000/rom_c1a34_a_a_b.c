@@ -1,4 +1,4 @@
-/* Cluster Func_80c2368..Func_80c2368 extracted from goldensun/asm/rom_b5000/rom_c1a34_a_a.s.
+/* Cluster GetEnemyDeathSFX..GetEnemyDeathSFX extracted from goldensun/asm/rom_b5000/rom_c1a34_a_a.s.
  *
  * Total .text for this TU = 28 bytes (= 0x1c).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned char Lc7420[] __asm__(".Lc7420");
 
-int Func_80c2368(int arg0)
+int GetEnemyDeathSFX(int arg0)
 {
     unsigned char *p;
     int v;

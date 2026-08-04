@@ -10,14 +10,14 @@ extern int __MessageID(int);
 extern void __ActorMessage(int, int);
 extern void __CutsceneWait(int);
 extern void __SetFlag(int);
-extern void __Func_8092c40(int, int);
+extern void __ShowActorMessage_NoWait(int, int);
 extern void __Func_8092848(int, int, int);
 extern int __Func_8091c7c(int, int);
 extern void __Func_8093040(int, int, int);
 extern void __MapActor_Surprise(int, int);
 extern void __MapActor_SetAnim(int, int);
 extern void __MapActor_DoAnim(int, int);
-extern void __Func_809280c(int, int, int);
+extern void __MapActor_Face(int, int, int);
 extern int __MapActor_GetActor(int);
 extern void __MapActor_TravelTo(int, int, int);
 extern void __MapActor_WaitMovement(int);
@@ -34,7 +34,7 @@ void OvlFunc_882_200973c(void) {
     {
         register unsigned int zp __asm__("r1") = 0;
         __asm__ volatile ("" : : "r" (zp));
-        __Func_8092c40(0x16, zp);
+        __ShowActorMessage_NoWait(0x16, zp);
     }
     __Func_8092848(0, 0x16, 0);
     r5v = 0;
@@ -58,7 +58,7 @@ void OvlFunc_882_200973c(void) {
     __MapActor_SetAnim(0x15, 3);
     __MapActor_SetAnim(0x16, 1);
     __CutsceneWait(0x28);
-    __Func_809280c(0x16, 0, 0);
+    __MapActor_Face(0x16, 0, 0);
     __CutsceneWait(0x14);
     __MapActor_DoAnim(0x16, 3);
     if (r5v != 0) {

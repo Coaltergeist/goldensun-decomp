@@ -17,7 +17,7 @@ extern void WaitFrames(u32 n);
 extern void ClearSprites(void);
 extern void ClearTasks(void); 
 extern void ClearVRAM(void);
-extern void Func_800479c(void);
+extern void LoadStaticUIGFX(void);
 extern void ClearHeap(void);
 extern void InitRAMLib(void);
 extern void SetIntrHandler(u32 intrNo, u32 vCount, intrfunc_t *handler);
@@ -46,7 +46,7 @@ void AgbMain(void) {
     gDebugMode = 0;
     iwram_3001f58 = 0;
     SetRAMBuildDate();
-    Func_800479c();
+    LoadStaticUIGFX();
     ClearVRAM();
     REG_DISPCNT = 0x140;
     SetIntrHandler(0, 1, VBlank);

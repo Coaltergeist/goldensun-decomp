@@ -26,7 +26,7 @@ void OvlFunc_926_2008414(void)
     r3 += 4;
     base[0xec] = r3;
   }
-  __Func_8092c40(8, new_var);
+  __ShowActorMessage_NoWait(8, new_var);
   if (__Func_8091c7c(0, 0) == new_var)
   {
     t = 0x890;

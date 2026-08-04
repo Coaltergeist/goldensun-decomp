@@ -55,7 +55,7 @@ void ROM_Unused_DecodeThumbBranchLink(unsigned short *code, int len)
 extern unsigned DecompressLZ(void *src, void *dst);
 extern int _FIXUP_RAM_CODE_SIZE;
 extern unsigned short FixupRamCode_ROM[];
-extern void *Func_8004938(unsigned size); //IWramMalloc
+extern void *alloc_iwram(unsigned size); //IWramMalloc
 extern void free(void *mem);
 
 void LoadMapCode(int file, void *dst) {
@@ -67,7 +67,7 @@ void LoadMapCode(int file, void *dst) {
     // literal pool before saving decompressedSize
     __asm__ volatile("");
 
-    func = Func_8004938((int)&_FIXUP_RAM_CODE_SIZE);
+    func = alloc_iwram((int)&_FIXUP_RAM_CODE_SIZE);
     DMA3_COPY(FixupRamCode_ROM, func, (int)&_FIXUP_RAM_CODE_SIZE);
     func(dst, decompressedSize);
     free(func);

@@ -83,11 +83,11 @@
 	mov	r0, #0x1d
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0x1e
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0x81
@@ -108,7 +108,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0x1d
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0x19
 	bl	__CutsceneWait
 	add	r5, #3

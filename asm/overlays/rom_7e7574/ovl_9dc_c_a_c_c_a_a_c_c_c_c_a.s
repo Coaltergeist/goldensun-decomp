@@ -26,7 +26,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xc
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r5, =0x2438
 	mov	r0, r5
 	bl	__MessageID
@@ -46,15 +46,15 @@
 	mov	r0, #0xd
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xe
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0xd
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x41
 	bl	__CutsceneWait
 	mov	r1, #0xa0
@@ -109,11 +109,11 @@
 	mov	r0, #0xd
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xe
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x46
 	bl	__CutsceneWait
 	mov	r1, #0xa8
@@ -126,7 +126,7 @@
 	mov	r2, #0
 	mov	r0, #0xc
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #3
 	mov	r0, #0xc
 	bl	__MapActor_DoAnim
@@ -155,7 +155,7 @@
 	strb	r2, [r3]
 	mov	r0, #0x62
 	mov	r1, #3
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	mov	r0, #0xc
 	mov	r1, #0
 	mov	r2, #0
@@ -209,7 +209,7 @@
 	mov	r0, #0
 	mov	r1, #0xd
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	bl	__CutsceneEnd
 	bl	__MapTransitionIn
 	pop	{r0}

@@ -10,7 +10,7 @@
 	.export_func _vec3_translate
 	.export_func _galloc_iwram
 	.export_func _gfree
-	.export_func _Func_8004970
+	.export_func _alloc_ewram
 	.export_func _free
 	.export_func _DecompressLZ
 	.export_func _Func_8003f3c
@@ -67,11 +67,11 @@
 	.export_func _MapActor_Jump
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8092adc
@@ -84,7 +84,7 @@
 	.export_func _Func_8093530
 	.export_func _SetDestMap
 	.export_func _Func_8091e9c
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f14
 	.export_func _Func_8091200
 	.export_func _Func_8091220

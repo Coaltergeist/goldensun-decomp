@@ -22,10 +22,10 @@ Exports_c0:
 	.export_func galloc_iwram
 	.export_func galloc_ewram
 	.export_func gfree
-	.export_func Func_800488c
-	.export_func Func_80048a0
-	.export_func Func_8004938
-	.export_func Func_8004970
+	.export_func avail_iwram
+	.export_func avail_ewram
+	.export_func alloc_iwram
+	.export_func alloc_ewram
 	.export_func free
 	.export_func Func_80046c4
 	.export_func Func_8004718
@@ -41,7 +41,7 @@ Exports_c0:
 	.export_func ClearVRAM
 	.export_func Func_8003d28
 	.export_func Func_8003dec
-	.export_func Func_800479c
+	.export_func LoadStaticUIGFX
 	.export_func LoadSpritePalette
 	.export_func InitMatrixStack
 	.export_func MatrixReset

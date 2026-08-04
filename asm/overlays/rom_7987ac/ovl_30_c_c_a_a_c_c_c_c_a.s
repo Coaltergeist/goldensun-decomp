@@ -15,14 +15,14 @@
 	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	b	.L23c
 .L22e:
 	ldr	r0, =0x1385
 	bl	__MessageID
 	mov	r0, #0x12
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L23c:
 	mov	r0, #0
 	mov	r1, #0

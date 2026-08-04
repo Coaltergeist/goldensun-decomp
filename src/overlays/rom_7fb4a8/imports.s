@@ -7,7 +7,7 @@
 	.export_func _StopTask
 	.export_func _galloc_ewram
 	.export_func _gfree
-	.export_func _Func_8004970
+	.export_func _alloc_ewram
 	.export_func _free
 	.export_func _Func_8005d10
 	.export_func _Func_8006358
@@ -47,12 +47,12 @@
 	.export_func _MapActor_SetSpeed
 	.export_func _Func_809218c
 	.export_func _MapActor_WaitMovement
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _SetDestMap
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f90
 	.export_func _Func_8091fa8
 	.export_func _MapTransitionIn

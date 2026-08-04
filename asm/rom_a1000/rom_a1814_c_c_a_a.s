@@ -68,7 +68,7 @@
 	lsl	r5, #1
 	mov	r11, r0
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, r5
 	ldr	r3, =Func_8001af8
 	mov	r1, r11
@@ -143,7 +143,7 @@
 	lsl	r5, #1
 	mov	r11, r0
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, r5
 	ldr	r3, =Func_8001af8
 	mov	r1, r11

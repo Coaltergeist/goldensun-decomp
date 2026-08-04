@@ -488,7 +488,7 @@
 	mov	r1, #1
 	neg	r2, r2
 	sub	r3, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcf6de:
 	ldr	r4, [sp, #0x18]
 	ldr	r3, [sp, #0x2c]
@@ -505,7 +505,7 @@
 	neg	r2, r2
 	sub	r3, #1
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r4, [sp, #8]
 .Lcf702:
 	ldr	r3, [r6, #8]

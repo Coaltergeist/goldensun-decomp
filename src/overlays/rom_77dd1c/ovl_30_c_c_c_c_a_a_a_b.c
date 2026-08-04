@@ -12,7 +12,7 @@ extern void __ActorMessage(int, int);
 extern void __CutsceneStart(void);
 extern void __CutsceneEnd(void);
 extern void __CutsceneWait(int);
-extern void __Func_809280c(int, int, int);
+extern void __MapActor_Face(int, int, int);
 extern void __Func_8092adc(int, int, int);
 extern void OvlFunc_882_200973c(void);
 extern int _MSG_ed0;
@@ -21,7 +21,7 @@ void OvlFunc_882_20096cc(void) {
     unsigned int w;
     if (__GetFlag(0x841)) {
         __CutsceneStart();
-        __Func_809280c(0x16, 0, 0);
+        __MapActor_Face(0x16, 0, 0);
         __CutsceneWait(0x14);
         __MessageID((int) (&_MSG_ed0));
         __ActorMessage(0x16, 0);

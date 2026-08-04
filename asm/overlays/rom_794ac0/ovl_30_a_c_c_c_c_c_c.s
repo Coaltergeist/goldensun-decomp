@@ -245,7 +245,7 @@
 	mov	r0, #8
 	mov	r1, #0xa
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r5, =iwram_3001ebc
 	ldr	r3, =0x209
 	ldr	r2, [r5]
@@ -350,7 +350,7 @@
 	strb	r2, [r3]
 	mov	r0, #0xc
 	mov	r1, #5
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r5, r6}
 	pop	{r0}
 	bx	r0

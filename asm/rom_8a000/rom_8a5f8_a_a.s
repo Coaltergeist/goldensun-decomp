@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808a5f8  @ 0x0808a5f8
+.thumb_func_start InitMapSomething  @ 0x0808a5f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -115,7 +115,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_808a5f8
+.func_end InitMapSomething
 
 .thumb_func_start RespawnAtSanctum  @ 0x0808a6e4
 	push	{r5, r6, lr}

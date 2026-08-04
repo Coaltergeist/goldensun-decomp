@@ -22,7 +22,7 @@
 	mov	r2, #2
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x305
 	bl	__SetFlag
 	ldr	r0, =0x1cab

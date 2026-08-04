@@ -58,15 +58,15 @@
 	mov	r0, #0x16
 	mov	r1, #8
 	mov	r2, #0x28
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x16
 	mov	r1, #9
 	mov	r2, #0x28
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0x28
 	mov	r1, #8
 	mov	r0, #0x16
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #2
@@ -88,7 +88,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0x16
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0
 	mov	r0, #0
 	bl	__Func_8091c7c
@@ -107,7 +107,7 @@
 	mov	r2, #0x1e
 	mov	r0, #0x16
 	mov	r1, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #2
 	mov	r0, #0x16
 	bl	__Func_80925cc
@@ -154,11 +154,11 @@
 	mov	r0, #0x16
 	mov	r1, #9
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0x1e
 	mov	r0, #0
 	mov	r1, #9
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #1
 	mov	r0, #9
 	bl	__MapActor_SetAnim
@@ -216,7 +216,7 @@
 	mov	r2, #0x14
 	mov	r0, #0x16
 	mov	r1, #9
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0
 	mov	r0, #0x16
 	bl	__ActorMessage
@@ -415,11 +415,11 @@
 	mov	r0, #0x16
 	mov	r1, #8
 	mov	r2, #0x28
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x16
 	mov	r1, #9
 	mov	r2, #0x28
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x80
 	mov	r2, #0
 	lsl	r1, #7
@@ -454,7 +454,7 @@
 	mov	r2, #0x1e
 	mov	r1, #9
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #2
@@ -475,7 +475,7 @@
 	mov	r0, #0
 	mov	r1, #8
 	mov	r2, #0x46
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x80
 	lsl	r1, #7
 	mov	r2, #0
@@ -583,7 +583,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -944,7 +944,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1277,11 +1277,11 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #2
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0

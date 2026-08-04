@@ -126,12 +126,12 @@
 	mov	r1, #0xb
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x23da
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xb
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -223,11 +223,11 @@
 	mov	r0, #0xb
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #0xb
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #1
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -279,7 +279,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

@@ -12,7 +12,7 @@
 	lsl	r0, #2
 	ldr	r6, [r3]
 	mov	r8, r1
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r10, r0
 	mov	r1, r10
 	mov	r0, r8

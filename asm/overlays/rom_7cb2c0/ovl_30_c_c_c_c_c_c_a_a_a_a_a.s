@@ -10,7 +10,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -171,7 +171,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x3e
 	mov	r1, #0
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L19e6
 .L19b0:
 	ldr	r0, =0x929
@@ -183,7 +183,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x3e
 	mov	r1, #1
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L19e6
 .L19cc:
 	ldr	r0, =0x92a
@@ -195,7 +195,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x3e
 	mov	r1, #2
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 .L19e6:
 	bl	__CutsceneEnd
 	pop	{r0}
@@ -1513,7 +1513,7 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x80
 	mov	r2, #0x28
 	mov	r0, #8
@@ -1572,7 +1572,7 @@
 	bl	__Func_80925cc
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1906,7 +1906,7 @@
 	bl	OvlFunc_945_200c880
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -2124,7 +2124,7 @@
 	bl	OvlFunc_945_200c880
 	mov	r1, #0
 	ldr	r0, =0x1008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

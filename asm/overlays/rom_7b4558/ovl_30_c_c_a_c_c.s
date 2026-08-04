@@ -233,7 +233,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r3, r6
@@ -244,7 +244,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r3, r6
@@ -255,7 +255,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r3, r6
@@ -266,7 +266,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0
@@ -347,7 +347,7 @@
 	mov	r1, #0xd
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0xfc
@@ -359,7 +359,7 @@
 	mov	r1, #0xd
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r5, #0xe0
 	mov	r0, #6
 	bl	__CutsceneWait
@@ -373,7 +373,7 @@
 	mov	r1, #0xd
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0x92
@@ -385,7 +385,7 @@
 	mov	r1, #0xd
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0
@@ -510,7 +510,7 @@
 	mov	r1, #0xe
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0xa4
@@ -522,7 +522,7 @@
 	mov	r1, #0xe
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0x90
@@ -534,7 +534,7 @@
 	mov	r1, #0xe
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0x80
@@ -546,7 +546,7 @@
 	mov	r2, #0
 	mov	r1, #0xe
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r0, #0

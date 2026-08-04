@@ -111,7 +111,7 @@
 	lsl	r2, #5
 	sub	r3, #0x50
 	strh	r2, [r3]
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	ldr	r2, =iwram_3001d18
 	mov	r3, #1
@@ -285,7 +285,7 @@
 	mov	r0, #0x80
 	lsl	r0, #3
 	sub	sp, #4
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r5, =ewram_2004c0c
 	mov	r4, sp
 	mov	r3, #0
@@ -454,7 +454,7 @@
 	mov	r0, r6
 	str	r1, [sp, #8]
 	mov	r7, r2
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r1, #0
 	mov	r2, #0xc0
 	mov	r3, r10

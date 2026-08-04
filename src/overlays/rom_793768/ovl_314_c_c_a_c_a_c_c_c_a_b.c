@@ -14,6 +14,6 @@ void OvlFunc_898_20088cc(void) {
     OvlFunc_898_200973c(0x15, 0, 2);
     __MapActor_Emote(0x15, 0x103, 0);
     __CutsceneWait(0x1e);
-    __Func_8092c40(0x15, 0);
+    __ShowActorMessage_NoWait(0x15, 0);
     __CutsceneEnd();
 }

@@ -2313,7 +2313,7 @@
 	neg	r3, r3
 	mov	r1, #0xe
 	mov	r2, #5
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
 	add	r7, #1

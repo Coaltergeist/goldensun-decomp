@@ -93,7 +93,7 @@
 	bl	Func_808df1c
 	bl	Func_809ae3c
 	mov	r5, r0
-	bl	Func_808d5a4
+	bl	FindSpeakEvent
 	cmp	r0, #0
 	beq	.L96906
 	mov	r2, r8

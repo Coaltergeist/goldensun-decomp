@@ -320,7 +320,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, r8
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lca488:
 	ldr	r3, [r5]
 	mov	r2, #1
@@ -361,7 +361,7 @@
 	mov	r1, #7
 	mov	r2, r10
 	mov	r3, r8
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lca4da:
 	ldr	r3, [r5]
 	mov	r1, #1

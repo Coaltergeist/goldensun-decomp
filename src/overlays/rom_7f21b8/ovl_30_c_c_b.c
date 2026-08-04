@@ -16,7 +16,7 @@ void OvlFunc_967_20083f4(void) {
     __MessageID(0x288b);
     __ActorMessage(0xc, 0);
     __CutsceneWait(0xa);
-    __Func_809280c(0, 0xc, 0);
+    __MapActor_Face(0, 0xc, 0);
     __CutsceneWait(0x1e);
     __MapActor_DoAnim(0, 3);
     __CutsceneWait(0x1e);

@@ -5,11 +5,11 @@
  * asm/rom_8a000/rom_8d9a4_a_c_a_a.o and asm/rom_8a000/rom_8d9a4_a_c_a_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_808e14c(unsigned short);
+extern int FindFieldItemEvent(unsigned short);
 
 unsigned int Func_808e990(unsigned short a)
 {
     int r3;
-    r3 = Func_808e14c(a);
+    r3 = FindFieldItemEvent(a);
     return (unsigned int)(-r3 | r3) >> 31;
 }

@@ -21,7 +21,7 @@
 	.export_func _MapActor_Jump
 	.export_func _Func_80925cc
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _MapActor_Emote

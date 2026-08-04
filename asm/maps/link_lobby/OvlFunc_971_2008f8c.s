@@ -21,7 +21,7 @@
 	mov	r0, r6
 	ldr	r1, [r3]
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xc1
 	lsl	r0, #2
 	bl	__GetFlag

@@ -25,7 +25,7 @@ void OvlFunc_930_2008ac0(void) {
     __asm__ volatile ("" : "+r" (a1));
     a2 = 0x3c;
     __MapActor_Emote(a0, a1, a2);
-    __Func_8092c40(10, 0);
+    __ShowActorMessage_NoWait(10, 0);
     if (__Func_8091c7c(0, 0) == 1) {
         r2 = (unsigned short *)(*(unsigned int *)iwram_3001ebc + (0xec << 1));
         r3 = *r2;

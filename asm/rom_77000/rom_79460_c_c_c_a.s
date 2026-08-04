@@ -22,7 +22,7 @@
 	bx	r1
 .func_end Func_80798b4
 
-.thumb_func_start Func_80798e0  @ 0x080798e0
+.thumb_func_start InitEnemyElemStats  @ 0x080798e0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r9
@@ -123,9 +123,9 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80798e0
+.func_end InitEnemyElemStats
 
-.thumb_func_start Func_80799b0  @ 0x080799b0
+.thumb_func_start GetClassFromDjinn  @ 0x080799b0
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -279,5 +279,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80799b0
+.func_end GetClassFromDjinn
 

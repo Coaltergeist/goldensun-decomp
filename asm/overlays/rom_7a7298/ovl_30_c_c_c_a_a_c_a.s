@@ -26,7 +26,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xa
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0
 	mov	r0, #0xa
 	bl	__Func_8093054
@@ -59,7 +59,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xa
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	mov	r1, #0
 	bl	__ActorMessage
@@ -87,7 +87,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #9
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x1644

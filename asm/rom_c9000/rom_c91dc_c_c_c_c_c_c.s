@@ -508,7 +508,7 @@
 	neg	r1, r1
 	mov	r2, #5
 	sub	r3, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r1, =.Ledee8
 .Lca0ca:
 	ldr	r3, [sp, #0x20]
@@ -538,7 +538,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	ldr	r3, [sp, #0x38]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lca106:
 	ldr	r3, [sp, #0xc]
 	add	r3, #0x28
@@ -553,7 +553,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	ldr	r3, [sp, #0x38]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lca124:
 	ldr	r1, =.Ledee8
 .Lca126:

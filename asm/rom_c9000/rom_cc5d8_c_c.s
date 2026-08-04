@@ -220,7 +220,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lccdfa:
 	ldr	r0, =0x77a8
 	mov	r3, #8
@@ -506,7 +506,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	mov	r3, r5
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcd0ac:
 	ldr	r2, =0x7828
 	ldr	r3, [r7, r2]

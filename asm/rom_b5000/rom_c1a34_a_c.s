@@ -353,7 +353,7 @@
 	str	r0, [sp, #0x10]
 	mov	r0, #0xa6
 	lsl	r0, #1
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r11, r0
 	ldr	r0, [sp, #0x10]
 	mov	r3, #0

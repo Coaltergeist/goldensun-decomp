@@ -35,7 +35,7 @@
 	bne	.Lb9b74
 	mov	r0, r8
 	mov	r1, #1
-	bl	Func_80bd424
+	bl	LoadEnemy
 .Lb9b74:
 	ldr	r2, =iwram_3001f00
 	ldr	r7, [r2]

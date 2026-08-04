@@ -578,7 +578,7 @@
 	sub	sp, #4
 	mov	r6, r1
 	mov	r9, r2
-	bl	Func_8004938
+	bl	alloc_iwram
 	ldr	r3, =iwram_3001e70
 	mov	r10, r0
 	ldr	r7, [r3]

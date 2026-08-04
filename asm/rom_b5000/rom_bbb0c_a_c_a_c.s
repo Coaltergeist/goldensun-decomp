@@ -1636,7 +1636,7 @@
 	lsl	r1, #1
 	add	r3, r2, r1
 	ldrb	r0, [r3]
-	bl	Func_80c23e8
+	bl	GetEnemyAttackAnim
 	ldr	r3, [sp, #8]
 	ldr	r2, [r3]
 	mov	r3, #0x80

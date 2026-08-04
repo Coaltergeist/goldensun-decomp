@@ -427,7 +427,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #9
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

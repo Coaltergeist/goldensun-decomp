@@ -1,4 +1,4 @@
-/* Cluster Func_80a1778..Func_80a1778 extracted from goldensun/asm/rom_a1000/rom_a172c_a_c.s.
+/* Cluster LoadUIHandCursorGFX..LoadUIHandCursorGFX extracted from goldensun/asm/rom_a1000/rom_a172c_a_c.s.
  *
  * Total .text for this TU = 76 bytes (= 0x4c).
  * Preserves the original ROM layout when slotted between
@@ -11,7 +11,7 @@ extern int UploadSpriteGFX(unsigned int a, unsigned int b, unsigned char *c);
 extern int _Func_801eadc(unsigned int a, unsigned int b, unsigned int c, unsigned int d, unsigned int e);
 extern unsigned char Laea4c[] __asm__(".Laea4c");
 
-unsigned int Func_80a1778(unsigned int arg0, unsigned int arg1, unsigned int arg2)
+unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
     int slot;
     register unsigned int ret __asm__("r6");

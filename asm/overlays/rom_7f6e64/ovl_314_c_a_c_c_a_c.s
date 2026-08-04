@@ -864,7 +864,7 @@
 	bl	OvlFunc_969_2008894
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #0
@@ -1600,7 +1600,7 @@
 	bl	OvlFunc_969_20088a8
 	mov	r1, #0
 	mov	r0, #0x14
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0x80
 	mov	r0, #1
 	lsl	r1, #6
@@ -1679,7 +1679,7 @@
 	bl	__MapActor_Emote
 	mov	r1, #0
 	mov	r0, #0x14
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0x80
 	mov	r0, #1
 	lsl	r1, #6
@@ -2341,7 +2341,7 @@
 	bl	__Func_8091fa8
 	mov	r0, #0x62
 	mov	r1, #1
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	mov	r0, #0xd4
 	lsl	r0, #2
 	bl	__SetFlag

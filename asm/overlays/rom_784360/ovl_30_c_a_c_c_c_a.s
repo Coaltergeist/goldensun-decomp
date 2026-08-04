@@ -459,7 +459,7 @@
 	bl	__Func_80925cc
 	mov	r1, #0
 	ldr	r0, =0x4013
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1061,7 +1061,7 @@
 	mov	r5, #0xd0
 	mov	r1, #0
 	mov	r0, #0x17
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	lsl	r5, #8
 	mov	r0, #0x19
 	ldr	r1, =0x101
@@ -1197,7 +1197,7 @@
 	bl	__Func_8091fa8
 	mov	r0, #0xc
 	mov	r1, #4
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	mov	r0, #0x8d
 	lsl	r0, #1
 	bl	__SetFlag

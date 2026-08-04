@@ -10,7 +10,7 @@ void OvlFunc_901_2008784(void)
   __CutsceneStart();
   __Func_80925cc(0xc, 1);
   __CutsceneWait(0x14);
-  __Func_809280c(0xc, 0, 0x14);
+  __MapActor_Face(0xc, 0, 0x14);
   __SetFlag(0x306);
   __SetFlag(0x868);
   __MessageID(0x1caf);

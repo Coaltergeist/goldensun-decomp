@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8092ba8  @ 0x08092ba8
+.thumb_func_start GetActorSpriteID  @ 0x08092ba8
 	push	{lr}
 	ldr	r3, =iwram_3001ebc
 	ldr	r2, [r3]
@@ -26,7 +26,7 @@
 	mov	r0, r1
 	pop	{r1}
 	bx	r1
-.func_end Func_8092ba8
+.func_end GetActorSpriteID
 
 .thumb_func_start Func_8092be0  @ 0x08092be0
 	push	{r5, lr}
@@ -79,7 +79,7 @@
 	bx	r1
 .func_end Func_8092be0
 
-.thumb_func_start Func_8092c40  @ 0x08092c40
+.thumb_func_start ShowActorMessage_NoWait  @ 0x08092c40
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -97,7 +97,7 @@
 	str	r3, [sp, #0x1c]
 	mov	r10, r2
 	mov	r9, r2
-	bl	Func_8092ba8
+	bl	GetActorSpriteID
 	mov	r2, #0xf0
 	lsl	r2, #8
 	mov	r3, #0
@@ -504,7 +504,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_8092c40
+.func_end ShowActorMessage_NoWait
 
 .thumb_func_start ActorMessage  @ 0x08092f84
 	push	{r5, r6, r7, lr}
@@ -516,12 +516,12 @@
 	ldr	r3, [r3]
 	mov	r7, r0
 	mov	r9, r3
-	bl	Func_8092c40
+	bl	ShowActorMessage_NoWait
 	mov	r10, r0
 	mov	r0, #1
 	bl	WaitFrames
 	mov	r0, r7
-	bl	Func_8092ba8
+	bl	GetActorSpriteID
 	mov	r5, #0
 	mov	r8, r0
 	cmp	r7, #7

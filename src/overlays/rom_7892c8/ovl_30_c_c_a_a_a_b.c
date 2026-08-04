@@ -14,10 +14,10 @@ void OvlFunc_888_2008574(void) {
     unsigned long v;
 
     __CutsceneStart();
-    __Func_809280c(10, 0, 0);
+    __MapActor_Face(10, 0, 0);
     __CutsceneWait(10);
     __MessageID(0x119f);
-    __Func_8092c40(10, 0);
+    __ShowActorMessage_NoWait(10, 0);
     if (__Func_8091c7c(0, 0) == 1) {
         r2 = (unsigned short *)(*(unsigned int *)iwram_3001ebc + (0xec << 1));
         r3 = *r2;

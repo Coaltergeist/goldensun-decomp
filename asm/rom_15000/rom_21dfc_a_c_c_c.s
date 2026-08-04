@@ -24,7 +24,7 @@
 	mov	r1, #0
 	lsl	r0, #1
 	str	r1, [sp, #0x28]
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r9, r0
 	mov	r3, r9
 	mov	r2, #0xff

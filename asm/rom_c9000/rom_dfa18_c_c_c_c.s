@@ -269,7 +269,7 @@
 	mov	r2, #5
 	mov	r1, #7
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r4, [sp, #8]
 	ldr	r3, [r4]
 	mov	r1, #0x24
@@ -749,7 +749,7 @@
 	mov	r3, r4
 	mov	r1, #7
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #6
 	ldrsh	r0, [r3, r6]
@@ -1136,7 +1136,7 @@
 	mov	r3, r4
 	mov	r2, #5
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #6
 	ldrsh	r0, [r3, r6]

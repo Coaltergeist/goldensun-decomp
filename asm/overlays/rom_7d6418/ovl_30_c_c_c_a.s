@@ -780,7 +780,7 @@
 	bl	__Func_8019908
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -794,7 +794,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	b	.L96e
 .L95c:
 	cmp	r5, #6
@@ -803,7 +803,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L96e:
 	cmp	r5, #6
 	bgt	.L9b4
@@ -824,7 +824,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -872,7 +872,7 @@
 	bl	__MessageID
 	mov	r0, #9
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	b	.Laa6
 .La20:
 	ldr	r3, =ewram_2001000
@@ -885,7 +885,7 @@
 	bl	__Func_8019908
 	mov	r1, #0
 	mov	r0, #9
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -965,7 +965,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r3, #2
 	str	r3, [sp]
 	mov	r1, #0
@@ -1053,7 +1053,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	neg	r0, r0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

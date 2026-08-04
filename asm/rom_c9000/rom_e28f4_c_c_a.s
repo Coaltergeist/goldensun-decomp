@@ -534,7 +534,7 @@
 	mov	r3, #0
 	mov	r2, #5
 	str	r6, [sp]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [sp, #0x34]
 	sub	r3, #1
 	cmp	r8, r3
@@ -1770,7 +1770,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, r7
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le3816:
 	mov	r2, r8
 	cmp	r2, #0

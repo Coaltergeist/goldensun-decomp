@@ -8,7 +8,7 @@
 	mov	r5, r0
 	mov	r0, #0xe5
 	lsl	r0, #5
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	ldr	r7, =.L10
 	mov	r2, #0
 	ldrsh	r3, [r7, r2]
@@ -949,7 +949,7 @@
 	mov	r0, #0
 	mov	r1, r5
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r4, =gDMATaskCount
 	ldr	r6, =REG_IME
 	ldrh	r3, [r6]

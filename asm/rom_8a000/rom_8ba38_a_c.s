@@ -387,7 +387,7 @@
 	beq	.L8c86e
 	b	.L8c9d4
 .L8c86e:
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	bl	Func_808c44c
 	mov	r3, #0xc2
 	lsl	r3, #1
@@ -562,7 +562,7 @@
 	ldr	r3, =0xfffffc88
 	cmp	r0, r3
 	bne	.L8c9e6
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	ldr	r0, =0x1b
 	bl	Func_809c138
 	b	.L8c9fa
@@ -570,11 +570,11 @@
 	ldr	r4, =0xfffffc87
 	cmp	r0, r4
 	bne	.L8c9f6
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	bl	Func_809c3a4
 	b	.L8c9fa
 .L8c9f6:
-	bl	Func_808d7d8
+	bl	CallMapEventType6
 .L8c9fa:
 	ldr	r3, =0xcb6
 	mov	r1, r11
@@ -595,7 +595,7 @@
 	cmp	r7, #0
 	beq	.L8ca5e
 	str	r1, [sp, #4]
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	bl	Func_808ba38
 	ldr	r2, =0x21e
 	ldr	r3, =0xffff
@@ -679,7 +679,7 @@
 	mov	r6, #0
 	cmp	r5, r2
 	beq	.L8caf6
-	bl	Func_808d5a4
+	bl	FindSpeakEvent
 	cmp	r0, #0
 	beq	.L8caf4
 	mov	r0, #1
@@ -742,7 +742,7 @@
 	cmp	r7, #0
 	beq	.L8cbe4
 	bl	_Func_801c428
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	mov	r0, #0x6f
 	bl	_PlaySound
 	bl	Func_808c44c
@@ -811,7 +811,7 @@
 	ldrh	r3, [r5]
 	ldr	r0, =0xfff
 	and	r0, r3
-	bl	Func_808d5dc
+	bl	HandleActorEvents
 	b	.L8cc42
 .L8cc02:
 	mov	r5, #0xbd
@@ -841,7 +841,7 @@
 	bl	Func_808c44c
 	mov	r1, #0
 	ldrsh	r0, [r5, r1]
-	bl	Func_808e680
+	bl	UseFieldMove
 .L8cc42:
 	bl	Func_808c4c0
 	strh	r7, [r5]
@@ -877,7 +877,7 @@
 	beq	.L8cd76
 	mov	r0, #0x6f
 	bl	_PlaySound
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	bl	Func_808c44c
 	mov	r0, #0x83
 	lsl	r0, #1
@@ -1762,7 +1762,7 @@
 	ldr	r4, [sp]
 	b	.L8d1a2
 .L8d370:
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	add	sp, #0xc
 	pop	{r3, r5, r6, r7}

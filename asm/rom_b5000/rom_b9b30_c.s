@@ -1132,7 +1132,7 @@
 	bl	GetBattleActor
 	mov	r5, r0
 	mov	r0, r7
-	bl	Func_80b6cd0
+	bl	GetUnitDefaultColor
 	mov	r1, r0
 	ldr	r0, [r5]
 	bl	Func_80ba918

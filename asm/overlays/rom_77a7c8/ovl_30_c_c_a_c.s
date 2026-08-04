@@ -202,7 +202,7 @@
 	mov	r8, r0
 	mov	r0, #0x80
 	lsl	r0, #7
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r7, r0
 	mov	r0, #1
 	bl	__WaitFrames

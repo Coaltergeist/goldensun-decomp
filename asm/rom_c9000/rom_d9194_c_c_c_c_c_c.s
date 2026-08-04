@@ -511,7 +511,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	ldr	r3, [sp, #0x34]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Ld95f6:
 	ldr	r0, [sp, #0x10]
 	cmp	r11, r0

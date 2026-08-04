@@ -17,7 +17,7 @@ extern void __CutsceneEnd(void);
 extern void __CutsceneWait(int);
 extern void __Func_8092adc(int, int, int);
 extern void __Func_80925cc(int, int);
-extern void __Func_8092c40(int, int);
+extern void __ShowActorMessage_NoWait(int, int);
 extern int __Func_8091c7c(int, int);
 extern int __Func_8078500(void);
 extern void __Func_8091a58(int, int);
@@ -61,7 +61,7 @@ void OvlFunc_899_200882c(void) {
         __Func_8091a58(0xbd, 0);
     }
     __MessageID(0x1364);
-    __Func_8092c40(0x10, 0);
+    __ShowActorMessage_NoWait(0x10, 0);
     __CutsceneWait(0x14);
     if (__Func_8091c7c(0, 0) != 0) {
         b = iwram_3001ebc;

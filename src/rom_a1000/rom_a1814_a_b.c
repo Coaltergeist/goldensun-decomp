@@ -6,7 +6,7 @@
  * goldensun/stage1.ld.
  */
 extern void Func_80a10d0(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
-extern unsigned int Func_80a1778(unsigned int, unsigned int, unsigned int);
+extern unsigned int LoadUIHandCursorGFX(unsigned int, unsigned int, unsigned int);
 
 unsigned int Func_80a1814(unsigned int arg0)
 {
@@ -21,7 +21,7 @@ unsigned int Func_80a1814(unsigned int arg0)
     *(unsigned int *)(arg0 + 0x10) = zero;
     Func_80a10d0(arg0 + 0x10, 0, 0, 0xd, 5, 2);
     box = *(unsigned int *)(arg0 + 0x10);
-    ret = Func_80a1778(box, -8, 0xb);
+    ret = LoadUIHandCursorGFX(box, -8, 0xb);
     *(unsigned char *)(ret + 5) = 0xd;
     *(unsigned char *)(arg0 + 0x1c) = 0xff;
     *(unsigned char *)(arg0 + 0x1d) = zero;

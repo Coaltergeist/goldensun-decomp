@@ -41,7 +41,7 @@
 	mov	r0, #0xd
 	lsl	r1, #8
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0xdc
 	mov	r2, #0x9d
 	mov	r0, #0

@@ -177,7 +177,7 @@
 	mov	r0, #0x7b
 	strh	r2, [r3]
 	bl	_PlaySound
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	b	.L8bea4
 .L8be90:
 	ldr	r3, =iwram_3001ebc

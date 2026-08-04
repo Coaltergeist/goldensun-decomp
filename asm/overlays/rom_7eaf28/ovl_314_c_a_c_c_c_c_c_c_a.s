@@ -132,7 +132,7 @@
 	lsl	r1, #7
 	mov	r2, #0
 	mov	r0, #0xd
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xd
 	bl	__MapActor_GetActor
 	add	r0, #0x5a

@@ -41,7 +41,7 @@
 	mov	r1, #1
 	lsl	r0, #3
 	mov	r11, r1
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r1, #0x8c
 	mov	r7, r0
 	mov	r0, #0

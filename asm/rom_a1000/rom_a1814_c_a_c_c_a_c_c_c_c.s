@@ -14,7 +14,7 @@
 	mov	r9, r1
 	mov	r0, r9
 	sub	sp, #0x10
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r1, #0xa7
 	mov	r7, r0
 	lsl	r1, #4
@@ -30,7 +30,7 @@
 	mov	r0, #0
 	mov	r2, #0x1e
 	mov	r3, #0x14
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	mov	r0, #0
@@ -119,7 +119,7 @@
 	mov	r2, #0x1e
 	mov	r3, #0x14
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	bl	Func_80ae8dc
 	mov	r0, #0x37
 	bl	gfree
@@ -1042,10 +1042,10 @@
 	lsl	r5, #1
 	str	r0, [sp, #8]
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r11, r0
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, r5
 	ldr	r1, [sp, #0xc]
 	mov	r8, r0

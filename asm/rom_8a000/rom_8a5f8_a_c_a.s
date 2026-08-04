@@ -164,7 +164,7 @@
 	b	.L8aaa0
 .L8aa52:
 	mov	r0, #0x40
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r9
@@ -177,7 +177,7 @@
 	b	.L8aa88
 .L8aa6e:
 	mov	r0, #0x40
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r5, r0
 	ldr	r3, =REG_DMA3SAD
 	mov	r0, r9
@@ -259,7 +259,7 @@
 	bl	Func_808ab48
 	mov	r0, r6
 	bl	FieldMain
-	bl	Func_808a5f8
+	bl	InitMapSomething
 	b	.L8a96e
 .func_end GameStart
 

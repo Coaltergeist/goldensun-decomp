@@ -38,7 +38,7 @@
 	.export_func _Func_80929d8
 	.export_func _Func_8092b08
 	.export_func _Func_8091e9c
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f90
 	.export_func _MapTransitionIn
 	.export_func _WaitMapTransition

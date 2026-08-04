@@ -14,10 +14,10 @@
 	mov	r10, r2
 	mov	r8, r1
 	ldr	r5, [r3]
-	bl	Func_8092ba8
+	bl	GetActorSpriteID
 	mov	r11, r0
 	mov	r0, r6
-	bl	Func_8092ba8
+	bl	GetActorSpriteID
 	mov	r7, r0
 	mov	r0, r11
 	bl	GetSpriteVoice

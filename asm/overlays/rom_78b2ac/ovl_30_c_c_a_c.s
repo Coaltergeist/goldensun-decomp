@@ -614,7 +614,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0x10
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -893,7 +893,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -939,7 +939,7 @@
 	bl	__MapActor_SetAnim
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

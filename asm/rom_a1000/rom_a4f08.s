@@ -539,7 +539,7 @@
 	lsl	r5, #1
 	bl	Func_80a3ef0
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	ldr	r3, =Func_8001af8
 	ldr	r1, [sp, #4]
 	mov	r2, r5

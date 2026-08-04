@@ -57,7 +57,7 @@
 	mov	r5, r0
 	add	r3, r5, r2
 	ldrb	r0, [r3]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	mov	r2, #0x1b
 	cmp	r0, #0
 	bne	.Lb749c
@@ -98,7 +98,7 @@
 	lsl	r2, #1
 	add	r0, r2
 	ldrb	r0, [r0]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	mov	r2, #0x1b
 	cmp	r0, #0
 	bne	.Lb74ec

@@ -20,7 +20,7 @@
 	mov	r6, r0
 	mov	r0, r5
 	mov	r11, r3
-	bl	Func_8004938
+	bl	alloc_iwram
 	str	r0, [sp, #8]
 	ldr	r0, =0x13
 	bl	GetFile

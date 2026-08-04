@@ -17,7 +17,7 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, r7
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r3, =0xffff5fff
 	ldr	r2, =0x3ffe
 	add	r5, r3

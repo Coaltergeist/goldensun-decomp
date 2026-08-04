@@ -18,7 +18,7 @@
  *   LoadVFXFile LoadVFXFile         StartTask StartTask
  *   StopTask StopTask            Random Random
  *   __umodsi3 umod         GetBattleActorPos2 GetBattleActorPos2
- *   Func_80d6888 BattleActor_SetState  UpdateScreenShake UpdateScreenShake
+ *   SetBattleActorState BattleActor_SetState  UpdateScreenShake UpdateScreenShake
  *   Func_80cd52c ResetAllActors      WaitFrames WaitFrames
  *   AnimEnd AnimEnd             gfree gfree
  *   _PlaySound PlaySound          Task_BlitAnim Task_BlitAnim
@@ -71,7 +71,7 @@ extern void StartTask(void (*task)(void), int mode);
 extern void StopTask(void (*task)(void));
 extern unsigned Random(void);
 extern void GetBattleActorPos2(int target, vec3 *out);
-extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
+extern void SetBattleActorState(int t, int color, int sanim, int idx, int dur);
 extern void UpdateScreenShake(int x, int y);
 extern void Func_80cd52c(void);
 extern void WaitFrames(int n);
@@ -171,7 +171,7 @@ void Anim_Unused_SabreRain(AnimContext *context)
         }
 
         if ((u32)(frame - 0x17) <= 0x40 && (frame & 3) == 0) {
-            Func_80d6888(STATE_CONTEXT(state)->targets[0], 7, 5, 0, 2);
+            SetBattleActorState(STATE_CONTEXT(state)->targets[0], 7, 5, 0, 2);
             STATE_SHAKE(state) = 1;
             if ((frame & 7) == 0)
                 _PlaySound(0x85);       /* PlaySound(SFX_ATTACK) */

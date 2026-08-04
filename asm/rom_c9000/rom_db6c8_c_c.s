@@ -413,7 +413,7 @@
 	str	r3, [sp]
 	mov	r2, #5
 	mov	r3, r8
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	ldrsh	r0, [r3, r6]
 	mov	r1, #2
@@ -453,7 +453,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, r8
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Ldbaa6:
 	mov	r2, #1
 	add	r8, r2

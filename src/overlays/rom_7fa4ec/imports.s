@@ -7,7 +7,7 @@
 	.export_func _Random
 	.export_func _sin
 	.export_func _galloc_ewram
-	.export_func _Func_8004970
+	.export_func _alloc_ewram
 	.export_func _UploadSpriteGFX
 	.export_func _AllocSpriteSlot
 	.export_func _Func_8003dec
@@ -34,7 +34,7 @@
 	.export_func _MapActor_DoAnim
 	.export_func _Func_80925cc
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _MapActor_Emote

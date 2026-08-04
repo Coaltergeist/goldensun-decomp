@@ -16,7 +16,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xc
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x71
 	bl	__PlaySound
 	mov	r1, #0x80
@@ -83,11 +83,11 @@
 	mov	r0, #0x15
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0xd
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r5, =0x240d
 	mov	r0, r5
 	bl	__MessageID

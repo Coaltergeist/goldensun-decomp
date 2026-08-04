@@ -13,7 +13,7 @@
 	lsl	r5, #1
 	mov	r0, r5
 	sub	sp, #0x20
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	add	r5, sp, #0x10
 	mov	r1, #0
 	mov	r8, r0
@@ -156,7 +156,7 @@
 	lsl	r5, #1
 	bl	__free
 	mov	r0, r5
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r8, r0
 	mov	r0, #0
 	bl	__Func_8077330

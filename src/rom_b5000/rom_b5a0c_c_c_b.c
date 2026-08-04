@@ -1,4 +1,4 @@
-/* Cluster Func_80b6cd0..Func_80b6cd0 extracted from goldensun/asm/rom_b5000/rom_b5a0c_c_c.s.
+/* Cluster GetUnitDefaultColor..GetUnitDefaultColor extracted from goldensun/asm/rom_b5000/rom_b5a0c_c_c.s.
  *
  * Total .text for this TU = 12 bytes (= 0xc).
  * Preserves the original ROM layout when slotted between
@@ -7,7 +7,7 @@
  */
 extern unsigned int GetBattleActor(void);
 
-unsigned int Func_80b6cd0(void) {
+unsigned int GetUnitDefaultColor(void) {
     unsigned int r0;
     unsigned int r1;
 

@@ -276,7 +276,7 @@
 	mov	r2, r8
 	cmp	r2, #0
 	bge	.Lc18e8
-	bl	_Func_80ccbdc
+	bl	_EndAnim_UnleashIntro
 	b	.Lc199e
 .Lc1958:
 	cmp	r5, #2

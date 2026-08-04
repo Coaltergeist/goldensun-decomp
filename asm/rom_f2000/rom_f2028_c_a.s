@@ -101,7 +101,7 @@
 	ldr	r2, =0x84000004
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	ldr	r3, .Lf2c80	@ 0x1540
 	mov	r2, #0x80
@@ -302,7 +302,7 @@
 	ldr	r2, =0x84000004
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	mov	r0, #1
 	bl	Func_8003c3c

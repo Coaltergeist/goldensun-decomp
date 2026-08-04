@@ -16,7 +16,7 @@ void OvlFunc_942_20082dc(void)
     if (__GetFlag(0x8a9))
     {
       __MessageID(0x1d23);
-      __Func_8092c40(0xc, 0);
+      __ShowActorMessage_NoWait(0xc, 0);
       __Func_8092adc(0xc, new_var, 0);
     }
   }

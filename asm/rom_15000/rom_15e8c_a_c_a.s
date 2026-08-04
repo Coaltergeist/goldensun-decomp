@@ -349,7 +349,7 @@
 	mov	r1, r6
 	mov	r2, r7
 	mov	r3, r8
-	bl	Func_80170f8
+	bl	FillUIRegion
 	mov	r1, #0xf0
 	ldr	r3, =Func_80008d8
 	ldr	r0, =0x6002500
@@ -378,7 +378,7 @@
 	mov	r1, r6
 	mov	r2, r7
 	mov	r3, r8
-	bl	Func_80170f8
+	bl	FillUIRegion
 .L162a8:
 	ldr	r2, =0xea3
 	mov	r3, #1

@@ -800,7 +800,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xc0
 	mov	r0, #0
 	lsl	r1, #7
@@ -904,7 +904,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0x80
 	mov	r0, #2
 	lsl	r1, #8
@@ -1100,7 +1100,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #1
 	mov	r1, #1
 	bl	__Func_809259c
@@ -1637,7 +1637,7 @@
 	bl	__Func_80925cc
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xe0
 	mov	r0, #1
 	lsl	r1, #8
@@ -2173,7 +2173,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r5, #1
@@ -2343,7 +2343,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

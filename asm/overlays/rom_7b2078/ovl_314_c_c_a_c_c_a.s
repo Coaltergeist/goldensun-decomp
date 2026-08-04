@@ -38,7 +38,7 @@
 	mov	r1, #0
 	mov	r0, #0xc
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x895
 	bl	__GetFlag
 	cmp	r0, #0

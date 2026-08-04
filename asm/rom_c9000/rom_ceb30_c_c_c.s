@@ -286,7 +286,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	ldr	r3, [sp, #0x30]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcedcc:
 	ldr	r3, [sp, #0x34]
 	cmp	r3, r11

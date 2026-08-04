@@ -504,7 +504,7 @@
 	ldrh	r1, [r5, #0xe]
 	ldrh	r2, [r5, #8]
 	ldrh	r3, [r5, #0xa]
-	bl	Func_80170f8
+	bl	FillUIRegion
 .L16c12:
 	ldrh	r3, [r6, #0x1e]
 	mov	r2, #0
@@ -1086,7 +1086,7 @@
 	mov	r0, r9
 	mov	r1, r6
 	mov	r2, r11
-	bl	Func_80170f8
+	bl	FillUIRegion
 	ldr	r3, [sp]
 	cmp	r3, #0
 	beq	.L170ac
@@ -1135,7 +1135,7 @@
 	bx	r1
 .func_end Func_80170c4
 
-.thumb_func_start Func_80170f8  @ 0x080170f8
+.thumb_func_start FillUIRegion  @ 0x080170f8
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -1308,7 +1308,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80170f8
+.func_end FillUIRegion
 
 .thumb_func_start Func_8017248  @ 0x08017248
 	push	{r5, r6, r7, lr}

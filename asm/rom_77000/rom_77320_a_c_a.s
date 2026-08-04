@@ -9,7 +9,7 @@
 	mov	r5, r0
 	mov	r0, #0x60
 	sub	sp, #4
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r6, r0
 	mov	r0, r5
 	bl	GetUnit

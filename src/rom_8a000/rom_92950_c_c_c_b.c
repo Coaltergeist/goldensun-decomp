@@ -5,11 +5,11 @@
  * asm/rom_8a000/rom_92950_c_c_c_a.o and asm/rom_8a000/rom_92950_c_c_c_c.o in
  * goldensun/stage1.ld.
  */
-extern int Func_8092ba8(void);
+extern int GetActorSpriteID(void);
 
 void Func_80931d4(void)
 {
-    if (Func_8092ba8() == -1)
+    if (GetActorSpriteID() == -1)
         return;
     _Func_8019e48();
 }

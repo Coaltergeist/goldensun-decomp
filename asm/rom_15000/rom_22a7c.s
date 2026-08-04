@@ -155,15 +155,15 @@
 	b	.L23134
 .L22bb2:
 	mov	r0, #0x80
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r5, #0xa6
 	lsl	r5, #1
 	str	r0, [sp, #0x30]
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	str	r0, [sp, #0x34]
 	mov	r0, #0x60
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r2, r5
 	str	r0, [sp, #0x18]
 	ldr	r3, =Func_8001af8

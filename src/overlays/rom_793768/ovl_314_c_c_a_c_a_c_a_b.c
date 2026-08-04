@@ -21,7 +21,7 @@ void OvlFunc_898_2008674(void) {
     } while (0);
     __MapActor_SetAnim((unsigned short) t, 1);
     OvlFunc_898_200973c(0xd, 0, 2);
-    __Func_8092c40(0xd, 0);
+    __ShowActorMessage_NoWait(0xd, 0);
     if (__Func_8091c7c(0, 0)) {
         p = (unsigned short *)(*(unsigned char **)iwram_3001ebc + (0xec << 1));
         *p = *p + 1;

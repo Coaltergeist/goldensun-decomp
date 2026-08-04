@@ -5,7 +5,7 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x81
 	mov	r2, #0x3c
 	lsl	r1, #1
@@ -42,7 +42,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #3
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0
 	mov	r0, #0
 	bl	__Func_8091c7c

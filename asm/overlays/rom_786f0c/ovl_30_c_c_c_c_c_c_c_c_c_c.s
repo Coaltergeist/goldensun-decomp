@@ -840,7 +840,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	ldr	r0, =0x4008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xa0
 	mov	r0, #0xa
 	lsl	r1, #7

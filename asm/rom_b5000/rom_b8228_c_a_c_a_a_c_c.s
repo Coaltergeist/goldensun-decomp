@@ -20,7 +20,7 @@
 	lsl	r3, #1
 	add	r0, r3
 	ldrb	r0, [r0]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	mov	r3, #0xc0
 	lsl	r3, #13
 	cmp	r0, #0

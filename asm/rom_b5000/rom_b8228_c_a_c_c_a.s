@@ -373,10 +373,10 @@
 	sub	sp, #0x10
 	str	r0, [sp, #0xc]
 	mov	r0, #0x11
-	bl	Func_8004970
+	bl	alloc_ewram
 	str	r0, [sp, #8]
 	mov	r0, #9
-	bl	Func_8004970
+	bl	alloc_ewram
 	str	r0, [sp, #4]
 	ldr	r1, [sp, #4]
 	mov	r0, #1
@@ -651,7 +651,7 @@
 	mov	r0, r5
 	mov	r1, #0
 	str	r4, [sp]
-	bl	Func_80bd424
+	bl	LoadEnemy
 	ldr	r4, [sp]
 .Lb943c:
 	ldr	r2, [sp, #0xc]
@@ -1067,7 +1067,7 @@
 	lsl	r3, #2
 	mov	r0, #0x28
 	str	r3, [sp, #0xc]
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, [r7]
 	add	r5, sp, #0x10
 	mov	r10, r5

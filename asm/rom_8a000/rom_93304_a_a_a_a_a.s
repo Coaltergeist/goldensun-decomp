@@ -15,7 +15,7 @@
 	strh	r2, [r3]
 	b	.L9333c
 .L9331e:
-	bl	Func_8092ba8
+	bl	GetActorSpriteID
 	bl	GetSpriteVoice
 	ldr	r3, =gState
 	mov	r1, #0x83

@@ -60,7 +60,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0x18
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x18
 	bl	__MapActor_WaitMovement
 	add	r0, r5, #1
@@ -74,7 +74,7 @@
 	mov	r2, #0
 	mov	r1, #0x18
 	mov	r0, #0x19
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	add	r0, r5, #2
 	bl	__MessageID
 	mov	r1, #0

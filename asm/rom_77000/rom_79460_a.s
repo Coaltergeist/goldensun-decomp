@@ -180,7 +180,7 @@
 	strb	r3, [r5]
 	add	r1, #0x24
 	mov	r0, r9
-	bl	Func_80798e0
+	bl	InitEnemyElemStats
 	mov	r0, r9
 	bl	CalcStats
 	mov	r3, #0x95

@@ -494,7 +494,7 @@
 	bl	OvlFunc_945_200c880
 	mov	r1, #0
 	mov	r0, #0x1b
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

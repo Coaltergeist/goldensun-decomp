@@ -1091,7 +1091,7 @@
 	mov	r1, #0xe
 	sub	r3, #1
 	mov	r2, #5
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r7, #1
 	ldr	r3, [r3, #0x14]

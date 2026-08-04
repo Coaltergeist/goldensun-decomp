@@ -340,7 +340,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	ldr	r0, =0x1001
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

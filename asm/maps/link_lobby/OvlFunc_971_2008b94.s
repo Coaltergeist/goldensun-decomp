@@ -12,7 +12,7 @@
 	mov	r0, #8
 	ldr	r1, [r3]
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0
 	bl	OvlFunc_971_200808c
 	cmp	r0, #0
@@ -35,7 +35,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -82,7 +82,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	ldr	r0, =0x202
 	bl	__ClearFlag
 	ldr	r0, =0x173
@@ -99,7 +99,7 @@
 .Lc7a:
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	b	.Ld3c
 .Lc84:
 	ldr	r0, =0x201
@@ -115,7 +115,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__SetFlag
@@ -137,7 +137,7 @@
 .Lcd2:
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -178,7 +178,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .Ld3c:
 	bl	__CutsceneEnd
 	pop	{r5, r6, r7}

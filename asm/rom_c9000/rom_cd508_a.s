@@ -48,7 +48,7 @@
 	mov	r2, r8
 	mov	r3, r8
 	str	r4, [sp, #4]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r4, [sp, #4]
 .Lcd572:
 	add	r4, #1

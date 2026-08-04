@@ -80,7 +80,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x35
 	mov	r1, #3
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_200af10

@@ -186,7 +186,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	mov	r3, #0x80
 	mov	r1, r9
 	lsl	r3, #12
@@ -700,7 +700,7 @@
 	mov	r2, #5
 	mov	r3, #0
 	mov	r1, #7
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r2, =0x77a8
 	mov	r3, #1
 	add	r2, r11
@@ -966,7 +966,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	b	.Lcba08
 
 	.align	2, 0
@@ -1553,7 +1553,7 @@
 	mov	r1, #7
 	mov	r2, #3
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	mov	r0, #0
 	str	r0, [sp, #0x20]
 .Lcbf16:
@@ -1584,7 +1584,7 @@
 	str	r2, [sp]
 	mov	r1, r3
 	mov	r2, #3
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcbf50:
 	ldr	r0, [sp, #0x20]
 	cmp	r0, #0x20
@@ -2323,7 +2323,7 @@
 	str	r2, [sp]
 	mov	r1, r3
 	mov	r2, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r1, =0x77a0
 	ldr	r0, [sp, #0x28]
 	add	r3, r0, r1

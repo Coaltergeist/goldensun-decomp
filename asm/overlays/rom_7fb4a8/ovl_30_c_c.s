@@ -269,13 +269,13 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x293e
 	add	r0, r5, r0
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -315,7 +315,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	bl	OvlFunc_971_2009228
 	b	.L1498
 .L148a:
@@ -323,7 +323,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L1498:
 	mov	r0, #0
 	bl	OvlFunc_971_2008128
@@ -347,7 +347,7 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r3, =0x2aa
 	add	r5, r6, r3
 	ldrh	r0, [r5]
@@ -365,7 +365,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	bl	OvlFunc_971_2009228
 	b	.L150e
 .L1500:
@@ -373,7 +373,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L150e:
 	ldr	r3, =gState
 	ldr	r2, =0x2aa
@@ -513,7 +513,7 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x2929
 	bl	__MessageID
 	mov	r0, #8

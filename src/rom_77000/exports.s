@@ -74,11 +74,11 @@ Exports_77000:
 	.export_func Func_807845c
 	.export_func GetEquippedItem
 	.export_func AddCoins
-	.export_func Func_8078480
+	.export_func GetItemEquipSlot
 	.export_func Func_8078ad0
 	.export_func FindEmptyInventorySlot
 	.export_func Func_8078500
-	.export_func Func_8079008
+	.export_func GetPCStatGrowth
 	.export_func Func_807808c
 	.export_func Func_8078144
 	.export_func Func_8077f40

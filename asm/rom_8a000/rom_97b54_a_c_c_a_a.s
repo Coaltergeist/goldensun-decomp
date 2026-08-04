@@ -352,7 +352,7 @@
 	ldr	r0, =0x50000005
 	add	r2, sp, #0xc
 	mov	r1, #4
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	cmp	r0, #0
 	beq	.L98fd6
 	ldr	r3, =gState

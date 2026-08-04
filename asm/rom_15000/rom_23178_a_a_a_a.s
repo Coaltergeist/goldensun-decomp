@@ -1212,7 +1212,7 @@
 .L23b42:
 	mov	r0, #0x80
 	lsl	r0, #1
-	bl	Func_8004938
+	bl	alloc_iwram
 	ldr	r3, [sp, #0x68]
 	str	r0, [sp, #0x24]
 	cmp	r3, #0xd
@@ -1237,7 +1237,7 @@
 	lsl	r4, #1
 	mov	r8, r4
 	mov	r0, r8
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r4, #0
 	str	r4, [sp, #4]
 	mov	r1, r9
@@ -1361,7 +1361,7 @@
 	mov	r1, r3
 	add	r1, #1
 	ldr	r0, [sp, #0x54]
-	bl	_Func_8079008
+	bl	_GetPCStatGrowth
 	mov	r3, #0x92
 	lsl	r3, #1
 	add	r3, r9
@@ -1598,7 +1598,7 @@
 	str	r0, [sp, #0x3c]
 	mov	r0, #0xa8
 	lsl	r0, #1
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r2, [sp, #0x40]
 	mov	r1, #0
 	mov	r3, #0x2a
@@ -8129,7 +8129,7 @@
 	cmp	r6, #7
 	bne	.L27340
 	mov	r0, #0xc
-	bl	Func_8004938
+	bl	alloc_iwram
 	ldr	r3, =gDebugMode
 	ldrb	r3, [r3]
 	mov	r6, r0
@@ -8337,7 +8337,7 @@
 
 .L274c8:
 	mov	r0, #0xc
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r5, r0
 	mov	r1, r5
 	mov	r0, #1
@@ -10615,7 +10615,7 @@
 	mov	r10, r0
 	mov	r0, r8
 	mov	r5, r1
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r6, r0
 	ldr	r0, =_FILE_f1
 	bl	GetFile

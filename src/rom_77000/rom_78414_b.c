@@ -5,12 +5,12 @@
  * asm/rom_77000/rom_78414_a.o and asm/rom_77000/rom_78414_c.o in
  * goldensun/stage1.ld.
  */
-extern unsigned int Func_8078480(unsigned int item);
+extern unsigned int GetItemEquipSlot(unsigned int item);
 extern unsigned int CanEquipItem(unsigned int unit, unsigned int item);
 
 unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
 {
-	if (!Func_8078480(arg1))
+	if (!GetItemEquipSlot(arg1))
 		return 1;
 	return CanEquipItem(arg0, arg1);
 }

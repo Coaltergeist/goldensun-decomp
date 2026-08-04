@@ -413,7 +413,7 @@
 	mov	r2, #5
 	mov	r3, r9
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r4, [sp, #8]
 .Ld1a80:
 	mov	r2, #1

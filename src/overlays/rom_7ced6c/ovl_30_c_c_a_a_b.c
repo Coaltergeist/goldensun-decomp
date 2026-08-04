@@ -18,6 +18,6 @@ void OvlFunc_946_2008e88(void)
   int idx;
   __CutsceneStart();
  new_var2 = (unsigned char *) (&gState); do { idx = *((short *) (((char *) (&gState)) + (0xe0 * 2))); __Func_8091f90(idx, 5); new_var = new_var2 + 0x22b; *new_var = 3; } while (0);
-  __Func_8091eb0(0x54, 5);
+  __StartMapBattle(0x54, 5);
   __CutsceneEnd();
 }

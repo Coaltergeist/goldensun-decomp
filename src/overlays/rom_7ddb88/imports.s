@@ -10,7 +10,7 @@
 	.export_func _galloc_iwram
 	.export_func _galloc_ewram
 	.export_func _gfree
-	.export_func _Func_8004970
+	.export_func _alloc_ewram
 	.export_func _free
 	.export_func _DecompressLZ
 	.export_func _Func_8003f3c
@@ -68,11 +68,11 @@
 	.export_func _MapActor_DoAnim
 	.export_func _Func_80925cc
 	.export_func _Func_8092708
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_8092848
 	.export_func _Func_8092950
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8093054
 	.export_func _Func_8092adc
@@ -84,7 +84,7 @@
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8091e9c
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f90
 	.export_func _Func_8091fa8
 	.export_func _Func_8093c00

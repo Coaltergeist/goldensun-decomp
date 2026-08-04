@@ -1145,7 +1145,7 @@
 	mov	r3, r10
 	neg	r2, r2
 	str	r7, [sp]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	mov	r0, #0x86
 	bl	_PlaySound
 	ldr	r3, =0x77a8
@@ -2909,7 +2909,7 @@
 	mov	r1, #9
 	mov	r2, #5
 	sub	r3, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Ld8172:
 	mov	r2, #1
 	add	r8, r2

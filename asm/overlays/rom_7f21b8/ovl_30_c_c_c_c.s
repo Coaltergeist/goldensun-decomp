@@ -209,7 +209,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0x32
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r1, =0x105
 	mov	r2, #0x3c
 	mov	r0, #0
@@ -254,7 +254,7 @@
 	bl	__MapActor_Emote
 	mov	r1, #0
 	mov	r0, #0xc
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0
 	mov	r0, #0
 	bl	__Func_8091c7c
@@ -310,10 +310,10 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0x1e
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x2002
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L7f2:
 	ldr	r0, =0x2861
 	bl	__MessageID
@@ -327,7 +327,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1001,7 +1001,7 @@
 	mov	r0, #1
 	mov	r1, #0
 	mov	r2, #0x32
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r1, =0x105
 	mov	r2, #0x3c
 	mov	r0, #0
@@ -1100,10 +1100,10 @@
 	mov	r0, #2
 	mov	r1, #0
 	mov	r2, #0x1e
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0
 	ldr	r0, =0x2002
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_967_2008eec

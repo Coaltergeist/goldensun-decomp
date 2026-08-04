@@ -8,7 +8,7 @@
 void OvlFunc_899_20082a4(void)
 {
   int a;
-  __Func_8091660();
+  __ResetPlayerSpeed();
   __MessageID(0x12bb);
  do { a = 0; } while (0);
   __ActorMessage(1, a);

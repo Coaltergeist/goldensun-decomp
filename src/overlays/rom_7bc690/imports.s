@@ -5,7 +5,7 @@
 	.export_func _StartTask
 	.export_func _Random
 	.export_func _vec3_translate
-	.export_func _Func_8004938
+	.export_func _alloc_iwram
 	.export_func _free
 	.export_func _DecompressLZ
 	.export_func _Func_8003f78
@@ -41,14 +41,14 @@
 	.export_func _MapActor_SetAnimSpeed
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_80929d8
 	.export_func _MessageID
 	.export_func _ActorMessage
 	.export_func _MapActor_Emote
 	.export_func _MapActor_Surprise
 	.export_func _Func_8091e9c
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f90
 	.export_func _Func_8094730
 	.export_func _Func_80947e4

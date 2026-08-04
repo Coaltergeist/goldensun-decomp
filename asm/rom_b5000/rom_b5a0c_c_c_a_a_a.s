@@ -9,7 +9,7 @@
 	mov	r0, #0xaa
 	lsl	r0, #1
 	sub	sp, #0x30
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r2, #0
 	mov	r8, r0
 	mov	r10, r2
@@ -98,7 +98,7 @@
 	bl	free
 	mov	r0, #0xa0
 	lsl	r0, #1
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r8, r0
 	mov	r0, #1
 	bl	_Func_8077330
@@ -135,7 +135,7 @@
 	lsl	r5, #1
 	mov	r0, r5
 	sub	sp, #0x10
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, =iwram_3001e74
 	ldr	r3, [r3]
 	mov	r6, r0
@@ -228,7 +228,7 @@
 	lsl	r5, #1
 	bl	free
 	mov	r0, r5
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r6, r0
 	mov	r0, #0
 	bl	_Func_8077330
@@ -872,7 +872,7 @@
 	str	r3, [r1, #0x20]
 	mov	r2, r8
 	ldr	r0, [r2]
-	bl	Func_80c1ffc
+	bl	LoadEnemyGroup
 	mov	r6, r0
 	mov	r0, #0xb6
 	lsl	r0, #1
@@ -1140,13 +1140,13 @@
 	bl	_GetFlag
 	cmp	r0, #0
 	bne	.Lb67ac
-	bl	Func_800488c
-	bl	Func_80048a0
+	bl	avail_iwram
+	bl	avail_ewram
 	mov	r0, r5
 	bl	Func_80b9934
 	mov	r5, r0
-	bl	Func_800488c
-	bl	Func_80048a0
+	bl	avail_iwram
+	bl	avail_ewram
 	b	.Lb67b4
 .Lb67ac:
 	mov	r0, r5
@@ -1173,8 +1173,8 @@
 	mov	r3, r8
 	ldrsh	r3, [r6, r3]
 	mov	r10, r3
-	bl	Func_800488c
-	bl	Func_80048a0
+	bl	avail_iwram
+	bl	avail_ewram
 	mov	r0, #0xb5
 	lsl	r0, #1
 	bl	_GetFlag
@@ -1199,8 +1199,8 @@
 	bne	.Lb6814
 	b	.Lb6a00
 .Lb6814:
-	bl	Func_800488c
-	bl	Func_80048a0
+	bl	avail_iwram
+	bl	avail_ewram
 	mov	r0, #1
 	mov	r1, #0
 	bl	Func_80b6b40

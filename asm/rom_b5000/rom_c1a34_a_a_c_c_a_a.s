@@ -19,7 +19,7 @@
 	bx	r1
 .func_end Func_80c23a0
 
-.thumb_func_start Func_80c23c0  @ 0x080c23c0
+.thumb_func_start GetEnemyAttackAnimUnk  @ 0x080c23c0
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc23ca
@@ -40,9 +40,9 @@
 .Lc23de:
 	pop	{r1}
 	bx	r1
-.func_end Func_80c23c0
+.func_end GetEnemyAttackAnimUnk
 
-.thumb_func_start Func_80c23e8  @ 0x080c23e8
+.thumb_func_start GetEnemyAttackAnim  @ 0x080c23e8
 	push	{lr}
 	cmp	r0, #0xab
 	bls	.Lc23f2
@@ -62,7 +62,7 @@
 .Lc2406:
 	pop	{r1}
 	bx	r1
-.func_end Func_80c23e8
+.func_end GetEnemyAttackAnim
 
 .thumb_func_start GetEnemyAttackAnimParam  @ 0x080c2410
 	push	{lr}

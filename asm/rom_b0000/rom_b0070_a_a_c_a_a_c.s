@@ -12,7 +12,7 @@
 	mov	r8, r0
 	sub	sp, #4
 	mov	r10, r1
-	bl	Func_80b26c8
+	bl	NumShops
 	cmp	r8, r0
 	bge	.Lb029a
 	mov	r2, r8

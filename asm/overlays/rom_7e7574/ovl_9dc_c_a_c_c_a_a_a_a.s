@@ -280,7 +280,7 @@
 	mov	r0, r5
 	mov	r2, #0
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0
 	mov	r1, #1
 	bl	__MapActor_SetAnim
@@ -308,7 +308,7 @@
 	mov	r1, r5
 	mov	r0, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x81
 	mov	r2, #0x3c
 	lsl	r1, #1
@@ -336,11 +336,11 @@
 	mov	r5, r0
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, r5
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r3, =.L5fa4
 	ldr	r2, [r3]
 	mov	r3, #3

@@ -1055,7 +1055,7 @@
 	mov	r2, #5
 	mov	r1, #7
 	ldr	r3, [sp, #0x80]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	mov	r2, r8
 	cmp	r2, #7
 	beq	.Ldf31c

@@ -10,7 +10,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xb
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	ldr	r0, =0x1f1c
@@ -31,7 +31,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xb
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	ldr	r0, =0x1f18
@@ -52,7 +52,7 @@
 	bl	__MapActor_Emote
 	mov	r1, #0
 	mov	r0, #0xb
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c

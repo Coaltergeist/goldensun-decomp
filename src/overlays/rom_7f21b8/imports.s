@@ -18,10 +18,10 @@
 	.export_func _MapActor_DoAnim
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_8092848
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _MapActor_Emote

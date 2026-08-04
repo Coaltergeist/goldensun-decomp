@@ -5,7 +5,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r0, #0x20
 	sub	sp, #0xc
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r7, =gBuffer
 	mov	r1, r7
 	add	r1, #0x20

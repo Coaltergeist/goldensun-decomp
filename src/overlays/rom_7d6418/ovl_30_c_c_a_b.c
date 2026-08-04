@@ -8,6 +8,6 @@
 void OvlFunc_951_2008154(void) {
     __CutsceneStart();
     __MessageID(0xe34);
-    __Func_8092c40(-1, 0);
+    __ShowActorMessage_NoWait(-1, 0);
     __CutsceneEnd();
 }

@@ -44,13 +44,13 @@ Exports_8a000:
 	.export_func Func_809259c
 	.export_func Func_80925cc
 	.export_func Func_8092708
-	.export_func Func_809280c
+	.export_func MapActor_Face
 	.export_func Func_8092848
 	.export_func Func_8092950
 	.export_func Func_80929d8
 	.export_func Func_8092a1c
 	.export_func MessageID
-	.export_func Func_8092c40
+	.export_func ShowActorMessage_NoWait
 	.export_func ActorMessage
 	.export_func Func_8093040
 	.export_func Func_8093054
@@ -77,7 +77,7 @@ Exports_8a000:
 	.export_func SetDestMap
 	.export_func SetRespawnMap
 	.export_func Func_8091e9c
-	.export_func Func_8091eb0
+	.export_func StartMapBattle
 	.export_func Func_8091f14
 	.export_func Func_8091f90
 	.export_func Func_8091fa8
@@ -90,7 +90,7 @@ Exports_8a000:
 	.export_func Func_8093c00
 	.export_func Func_8093e28
 	.export_func Func_8093fa0
-	.export_func Func_8091660
+	.export_func ResetPlayerSpeed
 	.export_func StartRain
 	.export_func StartThunder
 	.export_func Func_8095214
@@ -184,7 +184,7 @@ Exports_8a000:
 	.export_func Func_809ad90
 	.export_func Func_809ade8
 	.export_func Func_8092be0
-	.export_func Func_8092ba8
+	.export_func GetActorSpriteID
 	.export_func Func_808ba38
 	.export_func Func_808bb2c
 	.export_func Func_80936a0

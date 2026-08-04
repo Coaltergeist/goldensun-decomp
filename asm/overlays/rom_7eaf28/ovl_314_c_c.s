@@ -45,7 +45,7 @@
 	bl	__SetFlagByte
 	mov	r0, #0x62
 	mov	r1, #5
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	ldr	r1, =gState
 	ldr	r3, =0x22b
 	add	r2, r1, r3
@@ -64,14 +64,14 @@
 	bne	.Lbaa
 	mov	r0, #0x62
 	mov	r1, #7
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.Lbc6
 .Lbaa:
 	cmp	r6, #0xc
 	bne	.Lbc6
 	mov	r1, #6
 	mov	r0, #0x62
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	mov	r0, #0xc
 	bl	__MapActor_SetIdle
 	mov	r0, #0xc

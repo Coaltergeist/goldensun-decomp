@@ -32,7 +32,7 @@
 	.export_func _MapActor_SetAnim
 	.export_func _MapActor_DoAnim
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_80929d8
 	.export_func _MessageID
 	.export_func _ActorMessage
@@ -42,7 +42,7 @@
 	.export_func _MapActor_Surprise
 	.export_func _Func_80933f8
 	.export_func _SetDestMap
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f14
 	.export_func _MapTransitionOut
 	.export_func _WaitMapTransition

@@ -12,7 +12,7 @@ void OvlFunc_899_20083bc(unsigned int arg0) {
     unsigned char *r5 = (unsigned char *)arg0;
 
     OvlFunc_899_200c624((unsigned int)r5, 0, 2);
-    __Func_8092c40(r5, 0);
+    __ShowActorMessage_NoWait(r5, 0);
     if (__Func_8091c7c(0, 0)) {
         unsigned short *p;
         p = (unsigned short *)(*(unsigned char **)iwram_3001ebc + (0xec << 1));

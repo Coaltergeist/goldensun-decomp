@@ -120,7 +120,7 @@
 	mov	r5, #0x80
 	lsl	r5, #8
 	mov	r0, r5
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, =Func_8001af8
 	ldr	r1, =gBuffer
 	mov	r2, r5
@@ -128,7 +128,7 @@
 	bl	_call_via_r3
 	ldr	r5, =0x9c
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -431,7 +431,7 @@
 	lsl	r2, #7
 	mov	r11, r2
 	mov	r0, r11
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r7, r0
 	cmp	r7, #0
 	beq	.Lfe42

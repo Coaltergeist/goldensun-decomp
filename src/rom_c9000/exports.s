@@ -11,6 +11,6 @@ Exports_c9000:
 	.export_func Anim_ScreenShatter
 	.export_func Anim_DjinnSet
 	.export_func Anim_UnleashIntro
-	.export_func Func_80ccbdc
+	.export_func EndAnim_UnleashIntro
 
 	.ssize	Exports_c9000

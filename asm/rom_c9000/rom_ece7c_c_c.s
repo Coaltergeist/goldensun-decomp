@@ -383,7 +383,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Led26a:
 	mov	r3, r9
 	cmp	r3, #7

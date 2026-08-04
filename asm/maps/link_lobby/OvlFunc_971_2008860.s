@@ -148,12 +148,12 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x293b
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0x2d
 	bl	__WaitFrames
 	mov	r1, #0x80
@@ -288,7 +288,7 @@
 	strb	r2, [r3]
 	mov	r0, #1
 	mov	r1, #1
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	ldr	r2, =ewram_2002224
 	ldr	r3, .Lb64	@ 0x58
 	ldr	r1, .Lb68	@ 0x45

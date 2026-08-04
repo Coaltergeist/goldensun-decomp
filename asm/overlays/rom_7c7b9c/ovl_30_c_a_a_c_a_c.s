@@ -124,7 +124,7 @@
 	mov	r2, #0xa
 	mov	r0, #0
 	mov	r1, #0x14
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x19999
 	ldr	r1, =0x3333
 	bl	__Func_80933d4
@@ -740,7 +740,7 @@
 	mov	r2, #0xa
 	mov	r0, #0
 	mov	r1, #0x14
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	mov	r1, #4
 	bl	__MapActor_DoAnim
@@ -755,7 +755,7 @@
 	mov	r2, #0x14
 	mov	r0, #0x14
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #2
 	mov	r0, #0x14
 	bl	__Func_809259c
@@ -2864,7 +2864,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x3e
 	mov	r1, #3
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}

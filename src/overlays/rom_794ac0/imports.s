@@ -51,10 +51,10 @@
 	.export_func _MapActor_Jump
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_8092848
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08
@@ -65,11 +65,11 @@
 	.export_func _Func_8093530
 	.export_func _Func_80935b0
 	.export_func _Func_8091e9c
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f90
 	.export_func _Func_8091fa8
 	.export_func _Func_8093c00
-	.export_func _Func_8091660
+	.export_func _ResetPlayerSpeed
 	.export_func _MapTransitionIn
 	.export_func _MapTransitionOut
 	.export_func _WaitMapTransition

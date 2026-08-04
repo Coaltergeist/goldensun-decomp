@@ -355,7 +355,7 @@
 	bx	r0
 .func_end Func_80d67dc
 
-.thumb_func_start Func_80d6888  @ 0x080d6888
+.thumb_func_start SetBattleActorState  @ 0x080d6888
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -420,7 +420,7 @@
 	bne	.Ld690e
 	ldr	r0, [sp, #0x10]
 	str	r2, [sp]
-	bl	_Func_80b6cd0
+	bl	_GetUnitDefaultColor
 	strb	r0, [r5, #5]
 	ldr	r2, [sp]
 	b	.Ld6912
@@ -465,5 +465,5 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80d6888
+.func_end SetBattleActorState
 

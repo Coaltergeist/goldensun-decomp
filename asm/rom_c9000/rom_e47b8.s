@@ -1409,58 +1409,58 @@
 	.word	.Le547c
 .Le547c:
 	ldr	r0, =_FILE_53
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le5484:
 	ldr	r0, =_FILE_6f
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le548c:
 	ldr	r0, =_FILE_79
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le5494:
 	ldr	r0, =_FILE_c3
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le549c:
 	ldr	r0, =_FILE_8d
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le54a4:
 	ldr	r0, =_FILE_bb
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le54ac:
 	ldr	r0, =_FILE_b9
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le54b4:
 	ldr	r0, =_FILE_c0
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le54bc:
 	ldr	r0, =_FILE_a4
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le54c4:
 	ldr	r0, =_FILE_a3
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 
 	.pool_aligned
 
 .Le5504:
 	ldr	r0, =_FILE_b4
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le550c:
 	ldr	r0, =_FILE_a0
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 	b	.Le551a
 .Le5514:
 	ldr	r0, =_FILE_7d
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 .Le551a:
 	ldr	r1, [sp, #0x60]
 	cmp	r1, #0xb
@@ -1604,7 +1604,7 @@
 	str	r2, [sp]
 	mov	r1, #7
 	mov	r2, r3
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le563c:
 	ldr	r2, [sp, #0x54]
 	cmp	r2, #0x4f
@@ -1620,7 +1620,7 @@
 	str	r2, [sp]
 	mov	r1, #0
 	mov	r2, r3
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le565c:
 	ldr	r1, [sp, #0x54]
 	cmp	r1, #0xc
@@ -2991,7 +2991,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le61c6:
 	mov	r2, #1
 	add	r10, r2
@@ -3412,7 +3412,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le6530:
 	ldr	r3, [sp, #0x54]
 	cmp	r3, #0xe
@@ -3428,7 +3428,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Le6550:
 	mov	r1, #8
 	mov	r0, #8

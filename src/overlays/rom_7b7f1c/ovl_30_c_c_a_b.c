@@ -13,7 +13,7 @@ void OvlFunc_930_20080e8(void) {
 
     __CutsceneStart();
     __MessageID(0x1958);
-    __Func_8092c40(0xa, 0);
+    __ShowActorMessage_NoWait(0xa, 0);
     if (__Func_8091c7c(0, 0) == 1) {
         __CutsceneWait(0x14);
         __ActorMessage(0xa, 0);

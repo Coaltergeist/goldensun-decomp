@@ -17,7 +17,7 @@
 	mov	r0, #0x14
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x227
 	bl	__GetFlag
 	cmp	r0, #0
@@ -71,7 +71,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0x14
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -81,7 +81,7 @@
 	bl	__MessageID
 	mov	r0, #0x14
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	ldr	r0, =0x226
 	bl	__SetFlag
 	b	.L4ce4
@@ -90,7 +90,7 @@
 	bl	__MessageID
 	mov	r0, #0x14
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L4ce4:
 	ldr	r0, =0x227
 	bl	__SetFlag

@@ -16,7 +16,7 @@ void OvlFunc_952_2008348(unsigned int actor)
     a = actor;
 
     __MessageID(msg);
-    __Func_8092c40(a, 0);
+    __ShowActorMessage_NoWait(a, 0);
     r = __Func_8091c7c(0, 0);
     if (r == 0) {
         __CutsceneWait(10);

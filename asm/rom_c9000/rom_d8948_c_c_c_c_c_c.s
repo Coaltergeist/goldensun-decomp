@@ -652,7 +652,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	ldr	r3, [sp, #0x3c]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Ld8f10:
 	cmp	r11, r9
 	bgt	.Ld8f16

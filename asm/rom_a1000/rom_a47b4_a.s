@@ -156,7 +156,7 @@
 	mov	r1, #0
 	mov	r2, #0x11
 	mov	r3, #0xa
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, r6
 	add	sp, #4
 	pop	{r3, r5, r6}

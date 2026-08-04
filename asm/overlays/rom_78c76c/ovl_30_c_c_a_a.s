@@ -754,11 +754,11 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #5
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r0, #8
@@ -950,7 +950,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #7

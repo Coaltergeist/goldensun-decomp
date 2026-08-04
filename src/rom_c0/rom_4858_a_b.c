@@ -1,4 +1,4 @@
-/* Cluster Func_800488c..Func_800488c extracted from goldensun/asm/rom_c0/rom_4858_a.s.
+/* Cluster avail_iwram..avail_iwram extracted from goldensun/asm/rom_c0/rom_4858_a.s.
  *
  * Total .text for this TU computed at build time from expected/.../.o.
  * Preserves the original ROM layout when slotted between
@@ -21,11 +21,11 @@ void ClearHeap(void) {
     gPtrs[0] = gEWRAMHeap;
 }
 
-u32 Func_800488c(void) {
+u32 avail_iwram(void) {
     return (void *)&gIWRAMHeap_end - gPtrs[1];
 }
 
-u32 Func_80048a0(void) {
+u32 avail_ewram(void) {
     return (void*)(0x02040000) - gPtrs[0];
 }
 
@@ -77,7 +77,7 @@ void *galloc_ewram(s32 index, u32 size) {
     return ptr;
 }
 
-void *Func_8004938(u32 size) {
+void *alloc_iwram(u32 size) {
     void *ptr;
 
     ptr = gPtrs[1];
@@ -94,7 +94,7 @@ void *Func_8004938(u32 size) {
     return ptr;
 }
 
-void *Func_8004970(u32 size) {
+void *alloc_ewram(u32 size) {
     void *ptr;
 
     ptr = gPtrs[0];

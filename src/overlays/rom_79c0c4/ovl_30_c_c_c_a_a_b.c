@@ -23,9 +23,9 @@ void OvlFunc_908_20081e0(void)
     u = 0x18;
     do { u = (unsigned short) u; } while (0);
     __Func_8093040(u, 0, 0x14);
-    __Func_809280c(0x18, 0, 0);
+    __MapActor_Face(0x18, 0, 0);
     __CutsceneWait(10);
-    __Func_8092c40(0x18, 0);
+    __ShowActorMessage_NoWait(0x18, 0);
     r = __Func_8091c7c(0, 0);
     if (r != 0) {
         p = (unsigned short *)(iwram_3001ebc + (0xec << 1));

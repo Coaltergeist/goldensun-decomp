@@ -15,7 +15,7 @@ void OvlFunc_885_20099a4(void)
     *(unsigned int *)((char *)p + 0x1c0) = 0x200;
     *(unsigned int *)((char *)p + 0x1c8) = 0x40;
     __SetFlag(0x87d);
-    __Func_8091eb0(0xc, 0);
+    __StartMapBattle(0xc, 0);
     __SetFlag(0x900);
     __CutsceneEnd();
 }

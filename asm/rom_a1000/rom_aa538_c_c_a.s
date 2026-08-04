@@ -31,13 +31,13 @@
 	mov	r2, #0x1e
 	mov	r3, #0x14
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	mov	r0, #0
 	bl	Func_80a1090
 	ldr	r0, =0x2130
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r2, #0xc2
 	lsl	r2, #1
 	add	r3, r7, r2
@@ -153,7 +153,7 @@
 	mov	r2, #0x1e
 	mov	r0, #0
 	mov	r3, #0x14
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	ldr	r3, =iwram_3001e68
 	ldr	r3, [r3]
 	strh	r5, [r3, #4]

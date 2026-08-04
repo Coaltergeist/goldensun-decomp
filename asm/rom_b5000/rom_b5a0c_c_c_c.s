@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_80b6cdc  @ 0x080b6cdc
 	push	{r5, lr}
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	ldr	r3, =iwram_3001e74
 	ldr	r4, [r3]
 	mov	r2, #4
@@ -63,7 +63,7 @@
 	lsl	r5, #1
 	add	r5, r9
 	ldrb	r0, [r5]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	mov	r1, #0
 	mov	r8, r0
 	ldrb	r0, [r5]

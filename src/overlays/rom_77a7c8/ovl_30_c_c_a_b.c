@@ -36,14 +36,14 @@ void OvlFunc_881_200b7d8(void)
 
     t1 = 0x62;
     do { t1 = (unsigned long) t1; } while (0);
-    __Func_8091eb0((unsigned long) t1, 5);
+    __StartMapBattle((unsigned long) t1, 5);
 
     gs = (unsigned char *)&gState;
     gs[0x22b] = 3;
 
     a0_b = 0x62;
     do { a0_b = (unsigned short) a0_b; } while (0);
-    __Func_8091eb0(a0_b, 7);
+    __StartMapBattle(a0_b, 7);
 
     gs += (0xfa << 1);
     arg0 = *(unsigned int *)gs;

@@ -10,7 +10,7 @@
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
-extern void __Func_809280c(int, int, int);
+extern void __MapActor_Face(int, int, int);
 extern void __Func_8092adc(int, int, int);
 extern void __CutsceneEnd(void);
 
@@ -22,7 +22,7 @@ void OvlFunc_908_2008430(void)
   __CutsceneStart();
   __MessageID(0x1705);
   __ActorMessage(0x17, 0);
-  __Func_809280c(0x17, 0, 0);
+  __MapActor_Face(0x17, 0, 0);
   __ActorMessage(0x17, 0);
   r1v = 0xc0;
   __asm__ volatile ("" : : "r" (r1v));

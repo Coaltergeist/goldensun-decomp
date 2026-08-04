@@ -58,7 +58,7 @@
 	mov	r1, #0xa
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r3, r5
@@ -69,7 +69,7 @@
 	mov	r1, #0xa
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r3, r5
@@ -80,7 +80,7 @@
 	mov	r1, #0xa
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r0, #0xc0
@@ -181,7 +181,7 @@
 	strb	r2, [r3]
 	mov	r0, #0x35
 	mov	r1, #0
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	bl	__CutsceneEnd
 	add	sp, #0x10
 	pop	{r5}
@@ -251,7 +251,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0x9e
@@ -263,7 +263,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	mov	r1, #0xaa
@@ -275,7 +275,7 @@
 	mov	r1, #0xc
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #6
 	bl	__CutsceneWait
 	ldr	r0, =0x302

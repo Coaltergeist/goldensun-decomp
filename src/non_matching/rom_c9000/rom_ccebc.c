@@ -14,7 +14,7 @@
  *   LoadVFXFile LoadVFXFile       StartTask StartTask
  *   StopTask StopTask          _PlaySound PlaySound (ARM veneer)
  *   _Func_80bd7dc SetDamageSFX     BuildDraw2DFuncEx BuildDraw2DFuncEx
- *   gfree gfree             Func_80d6888 BattleActor_SetState
+ *   gfree gfree             SetBattleActorState BattleActor_SetState
  *   Func_80cd52c ResetAllActors    WaitFrames WaitFrames
  *   AnimEnd AnimEnd           Task_BlitAnim Task_BlitAnim
  */
@@ -56,7 +56,7 @@ extern void _PlaySound(int sfx);
 extern void _Func_80bd7dc(int sfx);
 extern void BuildDraw2DFuncEx(int idx, int a, int b, int flags, int e);
 extern void gfree(int idx);
-extern void Func_80d6888(int t, int color, int sanim, int idx, int dur);
+extern void SetBattleActorState(int t, int color, int sanim, int idx, int dur);
 extern void Func_80cd52c(void);
 extern void WaitFrames(int n);
 extern void AnimEnd(void);
@@ -116,7 +116,7 @@ void Anim_SpiderWeb(AnimContext *context)
 
         for (i = 0; i != STATE_CONTEXT(state)->numTargets; i++) {
             if (frame == 0xa)
-                Func_80d6888(STATE_CONTEXT(state)->targets[i], 7, -1, i, 8);
+                SetBattleActorState(STATE_CONTEXT(state)->targets[i], 7, -1, i, 8);
         }
 
         Func_80cd52c();                       /* ResetAllActors */

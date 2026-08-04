@@ -77,7 +77,7 @@
 	bx	r0
 .func_end Func_808e118
 
-.thumb_func_start Func_808e14c  @ 0x0808e14c
+.thumb_func_start FindFieldItemEvent  @ 0x0808e14c
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -196,7 +196,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808e14c
+.func_end FindFieldItemEvent
 
 .thumb_func_start Func_808e23c  @ 0x0808e23c
 	push	{r5, r6, r7, lr}
@@ -295,7 +295,7 @@
 	b	.L8e470
 .L8e2f0:
 	mov	r0, r11
-	bl	Func_808e14c
+	bl	FindFieldItemEvent
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L8e376
@@ -472,7 +472,7 @@
 	bx	r1
 .func_end Func_808e23c
 
-.thumb_func_start Func_808e4b4  @ 0x0808e4b4
+.thumb_func_start FindFieldMoveEvent  @ 0x0808e4b4
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -615,7 +615,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808e4b4
+.func_end FindFieldMoveEvent
 
 .thumb_func_start Func_808e5d8  @ 0x0808e5d8
 	push	{r5, r6, lr}
@@ -647,12 +647,12 @@
 	mov	r1, r9
 	mov	r2, r10
 	ldr	r0, =0x30000005
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	mov	r2, r10
 	mov	r11, r0
 	mov	r1, r9
 	ldr	r0, =0x20000005
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	mov	r1, #0
 	mov	r10, r0
 	mov	r0, r8
@@ -684,7 +684,7 @@
 	bx	r1
 .func_end Func_808e5d8
 
-.thumb_func_start Func_808e680  @ 0x0808e680
+.thumb_func_start UseFieldMove  @ 0x0808e680
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -717,7 +717,7 @@
 	bl	GetFieldActor
 	mov	r2, #0
 	str	r2, [sp]
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	ldr	r0, =0x145
 	bl	_ClearFlag
 	cmp	r6, #0xf
@@ -861,17 +861,17 @@
 	mov	r2, r5
 	mov	r1, r11
 	ldr	r0, =0x10000005
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	mov	r2, r5
 	str	r0, [sp, #4]
 	mov	r1, r11
 	mov	r0, #5
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	mov	r2, r5
 	mov	r1, r11
 	mov	r8, r0
 	ldr	r0, =0x50000005
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	ldr	r5, =0x141
 	mov	r7, r0
 	mov	r3, #1
@@ -1002,5 +1002,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808e680
+.func_end UseFieldMove
 

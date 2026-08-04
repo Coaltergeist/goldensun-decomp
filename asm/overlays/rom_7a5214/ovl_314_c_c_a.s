@@ -237,7 +237,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x24
 	mov	r1, #0
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	bl	__CutsceneEnd
 	pop	{r5, r6}
 	pop	{r0}
@@ -598,7 +598,7 @@
 	bl	OvlFunc_918_2009424
 	mov	r1, #0
 	ldr	r0, =0x8009
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xe0
 	mov	r0, #1
 	lsl	r1, #8

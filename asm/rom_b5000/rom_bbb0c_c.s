@@ -764,7 +764,7 @@
 	lsl	r5, #1
 	mov	r10, r0
 	mov	r0, r5
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r2, r5
 	ldr	r3, =Func_8001af8
 	ldr	r1, [sp, #8]

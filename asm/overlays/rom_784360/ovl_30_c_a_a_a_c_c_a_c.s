@@ -38,7 +38,7 @@
 .L294:
 	mov	r1, #0
 	mov	r0, #0x11
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -156,7 +156,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #0xf
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -210,11 +210,11 @@
 	mov	r0, #0x1a
 	mov	r1, #0
 	mov	r2, #0x14
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0x28
 	mov	r1, #0x15
 	mov	r0, #0x1a
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x11c7
 	bl	__MessageID
 	mov	r0, #0x1a
@@ -240,7 +240,7 @@
 	mov	r2, #0xa
 	mov	r0, #0x1a
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x1a
 	mov	r1, #0x28
 	bl	OvlFunc_884_200a2c8
@@ -453,7 +453,7 @@
 	mov	r2, #0x14
 	mov	r0, #0x15
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x15
 	mov	r1, #2
 	bl	__Func_809259c

@@ -19,7 +19,7 @@
 	ldr	r6, [r3]
 	cmp	r5, #5
 	bhi	.L8d9e6
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	ldr	r3, =.L9e680
 	ldrb	r3, [r3, r5]
 	ldr	r0, =0x928
@@ -56,7 +56,7 @@
 	bne	.L8da2c
 	cmp	r5, #0
 	beq	.L8da2c
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	ldr	r0, =0x928
 	mov	r1, #1
 	add	r0, r5, r0
@@ -446,7 +446,7 @@
 	bx	r1
 .func_end Func_808d9a4
 
-.thumb_func_start Func_808ddb8  @ 0x0808ddb8
+.thumb_func_start GetFieldMoveRange  @ 0x0808ddb8
 	push	{lr}
 	ldr	r2, =.L9e686
 	mov	r4, #0
@@ -473,7 +473,7 @@
 	mov	r0, r1
 	pop	{r1}
 	bx	r1
-.func_end Func_808ddb8
+.func_end GetFieldMoveRange
 
 .thumb_func_start Func_808ddec  @ 0x0808ddec
 	push	{r5, r6, r7, lr}
@@ -639,7 +639,7 @@
 	neg	r1, r1
 	mov	r0, r8
 	str	r1, [sp, #4]
-	bl	Func_808ddb8
+	bl	GetFieldMoveRange
 	str	r0, [sp]
 	ldr	r0, [sp, #8]
 	bl	GetFieldActor

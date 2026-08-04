@@ -6,7 +6,7 @@
  * goldensun/overlays/rom_787e04/overlay.ld.
  */
 extern void __CutsceneStart(void);
-extern void __Func_809280c(int a, int b, int c);
+extern void __MapActor_Face(int a, int b, int c);
 extern void __MessageID(int id);
 extern void __ActorMessage(int a, int b);
 extern void __Func_8092adc(int a, int b, int c);
@@ -15,7 +15,7 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_887_2008ef8(void) {
     __CutsceneStart();
-    __Func_809280c(0x10, 0, 0xa);
+    __MapActor_Face(0x10, 0, 0xa);
     __MessageID(0x1c13);
     __ActorMessage(0x10, 0);
     __Func_8092adc(0x10, 0xb000, 0xa);

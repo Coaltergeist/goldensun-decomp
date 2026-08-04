@@ -16,7 +16,7 @@ Exports_b5000:
 	.export_func GetEnemyHeight
 	.export_func GetEnemyUnk
 	.export_func GetEnemyAttackAnimParam
-	.export_func Func_80c23c0
+	.export_func GetEnemyAttackAnimUnk
 	.export_func Func_80b8530
 	.export_func Func_80b82c4
 	.export_func Func_80b81c8
@@ -35,7 +35,7 @@ Exports_b5000:
 	.export_func Func_80bd7dc
 	.export_func UploadBGPalette
 	.export_func Func_80bf5a8
-	.export_func Func_80b6cd0
+	.export_func GetUnitDefaultColor
 	.export_func Func_80bf65c
 	.export_func Debug_LoadPresetParty
 	.export_func Func_80b6c90

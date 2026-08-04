@@ -214,7 +214,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	b	.Lcc7e4
 
 	.align	2, 0
@@ -392,7 +392,7 @@
 	bx	r0
 .func_end Anim_DjinnSet
 
-.thumb_func_start Func_80cc960  @ 0x080cc960
+.thumb_func_start Task_Anim_UnleashIntro  @ 0x080cc960
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -574,7 +574,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80cc960
+.func_end Task_Anim_UnleashIntro
 
 .thumb_func_start Anim_UnleashIntro  @ 0x080ccaec
 	push	{r5, r6, lr}
@@ -657,7 +657,7 @@
 	mov	r1, #0xc8
 	str	r3, [r2]
 	lsl	r1, #4
-	ldr	r0, =Func_80cc960
+	ldr	r0, =Task_Anim_UnleashIntro
 	bl	StartTask
 	mov	r1, #0x90
 	lsl	r1, #3
@@ -668,9 +668,9 @@
 	bx	r0
 .func_end Anim_UnleashIntro
 
-.thumb_func_start Func_80ccbdc  @ 0x080ccbdc
+.thumb_func_start EndAnim_UnleashIntro  @ 0x080ccbdc
 	push	{lr}
-	ldr	r0, =Func_80cc960
+	ldr	r0, =Task_Anim_UnleashIntro
 	bl	StopTask
 	ldr	r0, =Task_BlitAnim
 	bl	StopTask
@@ -687,5 +687,5 @@
 	bl	gfree
 	pop	{r0}
 	bx	r0
-.func_end Func_80ccbdc
+.func_end EndAnim_UnleashIntro
 

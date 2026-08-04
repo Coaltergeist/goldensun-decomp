@@ -43,7 +43,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r6
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -164,7 +164,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -240,7 +240,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -286,7 +286,7 @@
 	bl	__MessageID
 	mov	r0, r5
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 .L32e:
 	bl	__CutsceneEnd
 	pop	{r5, r6}

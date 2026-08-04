@@ -119,7 +119,7 @@
 	mov	r0, #0x80
 	sub	sp, #0x10
 	mov	r9, r2
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r5, sp
 	mov	r3, #0
 	mov	r10, r0
@@ -289,7 +289,7 @@
 	str	r0, [sp, #8]
 	mov	r0, #0x24
 	mov	r10, r1
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r9, r0
 	ldr	r0, [sp, #8]
 	bl	_GetUnit
@@ -757,7 +757,7 @@
 	bx	r1
 .func_end Func_80c1fa8
 
-.thumb_func_start Func_80c1ffc  @ 0x080c1ffc
+.thumb_func_start LoadEnemyGroup  @ 0x080c1ffc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -836,7 +836,7 @@
 	ldrb	r0, [r1, r7]
 	add	r0, #8
 	str	r4, [sp]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	neg	r3, r0
 	orr	r3, r0
 	mov	r2, #2
@@ -883,7 +883,7 @@
 	ldr	r1, [sp, #8]
 	ldrb	r0, [r1, r7]
 	add	r0, #8
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	neg	r1, r0
 	orr	r1, r0
 	lsr	r1, #31
@@ -929,7 +929,7 @@
 	beq	.Lc2178
 	str	r1, [sp, #4]
 	str	r4, [sp]
-	bl	Func_80c23c0
+	bl	GetEnemyAttackAnimUnk
 	neg	r3, r0
 	orr	r3, r0
 	lsr	r3, #31
@@ -1205,5 +1205,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_80c1ffc
+.func_end LoadEnemyGroup
 

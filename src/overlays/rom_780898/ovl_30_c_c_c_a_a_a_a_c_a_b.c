@@ -53,7 +53,7 @@ void OvlFunc_883_2008cd0(void)
     g = 0x11;
     __asm__ volatile ("" : "+r" (g));
     h = 0;
-    __Func_809280c(g, h, p2);
+    __MapActor_Face(g, h, p2);
   }
 
   g = 0x11;

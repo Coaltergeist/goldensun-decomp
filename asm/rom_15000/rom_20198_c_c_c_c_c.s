@@ -26,7 +26,7 @@
 	bl	DecompressLZ1
 	mov	r0, #0x80
 	lsl	r0, #3
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, #0
 	mov	r14, r0
 	mov	r5, r14

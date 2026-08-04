@@ -22,7 +22,7 @@ void OvlFunc_908_20083f4(void) {
     __asm__ volatile ("" : : "r" (p0));
     p1 = 0;
     __asm__ volatile ("" : : "r" (p1));
-    __Func_809280c(p0, p1, p2);
+    __MapActor_Face(p0, p1, p2);
 
     a = 0x16;
     do { a = (unsigned short) a; } while (0);

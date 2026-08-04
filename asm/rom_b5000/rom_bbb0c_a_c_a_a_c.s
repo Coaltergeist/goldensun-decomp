@@ -359,7 +359,7 @@
 	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r0, [r7, r5]
-	bl	Func_80b6cd0
+	bl	GetUnitDefaultColor
 	mov	r1, r0
 	ldr	r0, [r6]
 	bl	Func_80ba918
@@ -621,7 +621,7 @@
 	bl	GetBattleActor
 	mov	r6, r0
 	ldr	r0, [r5]
-	bl	Func_80b6cd0
+	bl	GetUnitDefaultColor
 	mov	r1, r0
 	ldr	r0, [r6]
 	bl	Func_80ba918
@@ -699,7 +699,7 @@
 	lsl	r3, #1
 	add	r0, r3
 	ldrb	r0, [r0]
-	bl	Func_80c2368
+	bl	GetEnemyDeathSFX
 	cmp	r0, #0
 	blt	.Lbde10
 	sub	r0, #1
@@ -738,7 +738,7 @@
 	lsl	r2, #1
 	add	r0, r2
 	ldrb	r0, [r0]
-	bl	Func_80c2368
+	bl	GetEnemyDeathSFX
 	cmp	r0, #0
 	blt	.Lbde54
 	add	r0, #0x92

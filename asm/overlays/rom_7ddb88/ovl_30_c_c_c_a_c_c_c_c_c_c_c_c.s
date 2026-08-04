@@ -166,7 +166,7 @@
 	sub	r1, r6
 	add	r1, #1
 	mov	r0, #0x48
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	ldr	r3, =gState
 	ldr	r2, =0x22b
 	add	r3, r2

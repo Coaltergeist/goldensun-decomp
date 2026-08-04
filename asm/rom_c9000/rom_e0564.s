@@ -265,7 +265,7 @@
 	mov	r3, r4
 	mov	r1, #7
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #6
 	ldrsh	r0, [r3, r6]
@@ -771,7 +771,7 @@
 	mov	r1, #7
 	mov	r3, r7
 	mov	r2, #5
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	ldrsh	r0, [r3, r6]
 	mov	r1, #6
@@ -1136,7 +1136,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r2, [sp, #8]
 	ldr	r3, [r2]
 	mov	r1, #3
@@ -1410,7 +1410,7 @@
 	cmp	r1, #0x10
 	ble	.Le1198
 	ldr	r0, =_FILE_a7
-	bl	Func_80e46f0
+	bl	BlendVFXPaletteFile
 .Le1198:
 	ldr	r6, =0x7828
 	add	r6, r9
@@ -1798,7 +1798,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #4
 	mov	r2, #0x24
@@ -3072,7 +3072,7 @@
 	mov	r2, #5
 	mov	r3, r9
 	mov	r1, #7
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #4
 	ldrsh	r0, [r3, r6]
@@ -3248,7 +3248,7 @@
 	str	r3, [sp]
 	mov	r2, #5
 	mov	r3, r8
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r1, #4
 	ldrsh	r0, [r3, r6]
@@ -4084,7 +4084,7 @@
 	mov	r2, #5
 	mov	r3, r8
 	mov	r1, #7
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	mov	r2, #1
 	ldr	r3, [r3, #0x14]

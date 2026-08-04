@@ -36,7 +36,7 @@ void OvlFunc_959_200a0cc(void)
 
     t = 0x62;
     do { t = (unsigned short)t; } while (0);
-    __Func_8091eb0(t, 2);
+    __StartMapBattle(t, 2);
 
     t = 0x10;
     do { t = (unsigned short)t; } while (0);

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start Func_808d5a4  @ 0x0808d5a4
+.thumb_func_start FindSpeakEvent  @ 0x0808d5a4
 	push	{r5, r6, lr}
 	mov	r5, r0
 	mov	r1, r5
@@ -25,7 +25,7 @@
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end Func_808d5a4
+.func_end FindSpeakEvent
 
 	.section .rodata
 	.global .L9e4ce

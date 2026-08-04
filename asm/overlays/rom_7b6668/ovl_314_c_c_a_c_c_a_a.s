@@ -29,7 +29,7 @@
 	mov	r2, #0
 	ldrh	r5, [r0, #6]
 	mov	r0, #0x12
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	ldr	r0, =0x17fb
@@ -102,7 +102,7 @@
 	mov	r2, #0
 	mov	r1, #0x12
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #5
 	bl	__CutsceneWait
 	mov	r0, #0
@@ -241,7 +241,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0x12
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r2, #0

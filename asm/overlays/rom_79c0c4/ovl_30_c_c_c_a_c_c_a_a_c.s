@@ -42,7 +42,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x1702
 	bl	__MessageID
 	mov	r0, #0x15

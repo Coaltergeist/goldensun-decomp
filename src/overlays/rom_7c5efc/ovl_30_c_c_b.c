@@ -6,10 +6,10 @@
  * goldensun/overlays/rom_7c5efc/overlay.ld.
  */
 extern int __MessageID();
-extern int __Func_8092c40();
+extern int __ShowActorMessage_NoWait();
 
 unsigned int OvlFunc_941_200934c(void) {
     __MessageID(0x255d);
-    __Func_8092c40(1, 0);
+    __ShowActorMessage_NoWait(1, 0);
     return 1;
 }

@@ -132,7 +132,7 @@ Exports_15000:
 	.export_func Func_8021bc8
 	.export_func Func_80175c0
 	.export_func Func_801f730
-	.export_func Func_80170f8
+	.export_func FillUIRegion
 	.export_func ClearUIRegion
 	.export_func Func_80219c8
 	.export_func Func_8021390

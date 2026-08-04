@@ -449,7 +449,7 @@
 	mov	r2, #0
 	mov	r1, r8
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r1, #0x81
@@ -535,7 +535,7 @@
 	str	r3, [r0, #0x6c]
 	mov	r1, #4
 	mov	r0, #0x35
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}
@@ -788,7 +788,7 @@
 	mov	r2, #0
 	mov	r1, #8
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r0, #0

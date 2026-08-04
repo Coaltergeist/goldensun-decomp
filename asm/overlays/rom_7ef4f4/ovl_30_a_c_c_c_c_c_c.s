@@ -307,7 +307,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -451,7 +451,7 @@
 	bl	__MapActor_Emote
 	mov	r1, #0
 	mov	r0, #0xe
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -578,7 +578,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0xa
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1378,7 +1378,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0xe
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r2, #0
@@ -1509,7 +1509,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0xe
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0x28
 	bl	__CutsceneWait
 	mov	r1, #0xa0

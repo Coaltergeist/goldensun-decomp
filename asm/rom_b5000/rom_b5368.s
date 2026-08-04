@@ -451,7 +451,7 @@
 .Lb56f6:
 	mov	r5, #0xb5
 	lsl	r5, #1
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	bl	ClearTasks
 	bl	ClearHeap
@@ -600,7 +600,7 @@
 	bl	_SetFlag
 	mov	r0, r6
 	bl	BattleMain
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	bl	ClearTasks
 	bl	ClearHeap

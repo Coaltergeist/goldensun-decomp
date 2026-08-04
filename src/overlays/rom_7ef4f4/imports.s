@@ -45,7 +45,7 @@
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8092adc
 	.export_func _Func_8092b08

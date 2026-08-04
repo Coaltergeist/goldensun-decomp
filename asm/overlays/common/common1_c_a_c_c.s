@@ -543,7 +543,7 @@
 	sub	r3, #0xc
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r5, r0
 	mov	r1, r5
 	ldr	r0, =.L5
@@ -945,7 +945,7 @@
 	mov	r7, r0
 	mov	r0, #0x80
 	lsl	r0, #2
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r3, r7
 	add	r3, #0xde
 	mov	r2, r8

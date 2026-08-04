@@ -4,7 +4,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r6, r1
 	mov	r5, r0
-	bl	Func_8092c40
+	bl	ShowActorMessage_NoWait
 	ldr	r3, =gState
 	mov	r2, #0xfa
 	lsl	r2, #1

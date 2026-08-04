@@ -13,7 +13,7 @@ extern unsigned int Func_80b7f70(unsigned int arg0, unsigned int arg1);
 extern int Func_80b7ed8(void);
 extern s32 PhysMove(vec3_t *src, vec3_t *dst);
 extern unsigned char *_GetUnit(unsigned int arg0);
-extern int Func_80c23c0(unsigned int arg0);
+extern int GetEnemyAttackAnimUnk(unsigned int arg0);
 
 int Func_80b84c0(unsigned int unitID, vec3_t *dest)
 {
@@ -27,7 +27,7 @@ int Func_80b84c0(unsigned int unitID, vec3_t *dest)
     Func_80b7ed8();
     tmp = fx32_multiply(PhysMove(&actor->pos, dest), tbl[6]);
     unit = _GetUnit(unitID);
-    if (Func_80c23c0(*(unsigned char *)(unit + 0x128)) != 0) {
+    if (GetEnemyAttackAnimUnk(*(unsigned char *)(unit + 0x128)) != 0) {
         dest->y -= fx32_multiply(tmp, 0x18);
     } else {
         dest->y -= fx32_multiply(tmp, 0x30);

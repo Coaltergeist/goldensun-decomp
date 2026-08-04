@@ -198,7 +198,7 @@
 	mov	r0, #9
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x80
 	lsl	r1, #1
 	mov	r2, #0

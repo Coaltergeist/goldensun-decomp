@@ -118,7 +118,7 @@
 	mov	r0, #0x80
 	lsl	r0, #1
 	sub	sp, #4
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	ldr	r5, =.L1c1a
 	mov	r6, r0
 	bl	__AllocSpriteSlot

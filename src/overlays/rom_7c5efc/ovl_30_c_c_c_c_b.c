@@ -9,7 +9,7 @@ unsigned int OvlFunc_941_200941c(void)
 {
     unsigned int r3;
     __MessageID(0x255c);
-    __Func_8092c40(1, 0);
+    __ShowActorMessage_NoWait(1, 0);
     r3 = __Func_8091c7c(0, 0);
     return 1 - ((unsigned int)(-r3 | r3) >> 31);
 }

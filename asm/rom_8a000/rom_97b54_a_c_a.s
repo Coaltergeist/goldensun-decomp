@@ -1001,7 +1001,7 @@
 	ldr	r0, =0x50000005
 	mov	r2, sp
 	mov	r1, #8
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	cmp	r0, #0
 	beq	.L9841c
 	mov	r2, r10
@@ -1118,7 +1118,7 @@
 	ldr	r0, =0x40000005
 	mov	r2, sp
 	mov	r1, #8
-	bl	Func_808e4b4
+	bl	FindFieldMoveEvent
 	cmp	r0, #0
 	beq	.L9854c
 	ldr	r3, =gState

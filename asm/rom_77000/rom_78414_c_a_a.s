@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8078480  @ 0x08078480
+.thumb_func_start GetItemEquipSlot  @ 0x08078480
 	push	{lr}
 	bl	GetItemInfo
 	ldrb	r3, [r0, #2]
@@ -26,5 +26,5 @@
 	mov	r0, r2
 	pop	{r1}
 	bx	r1
-.func_end Func_8078480
+.func_end GetItemEquipSlot
 

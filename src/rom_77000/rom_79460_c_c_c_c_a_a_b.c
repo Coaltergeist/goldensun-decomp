@@ -6,9 +6,9 @@
  * goldensun/stage1.ld.
  */
 extern unsigned char *GetUnit(unsigned int unit);
-extern unsigned int Func_80799b0(unsigned char a, unsigned char *b);
+extern unsigned int GetClassFromDjinn(unsigned char a, unsigned char *b);
 extern void Func_8078bf0(unsigned int a);
-extern void Func_80798e0(unsigned int a, unsigned char *b);
+extern void InitEnemyElemStats(unsigned int a, unsigned char *b);
 
 void Func_8079ae8(unsigned int arg0) {
     unsigned char *unit;
@@ -17,8 +17,8 @@ void Func_8079ae8(unsigned int arg0) {
 
     unit = GetUnit(arg0);
     v = *(unsigned char *)(unit + 0x94 * 2);
-    result = Func_80799b0(v, unit + 0xf8);
+    result = GetClassFromDjinn(v, unit + 0xf8);
     *(unsigned char *)(unit + 0x129) = result;
     Func_8078bf0(arg0);
-    Func_80798e0(arg0, unit + 0x24);
+    InitEnemyElemStats(arg0, unit + 0x24);
 }

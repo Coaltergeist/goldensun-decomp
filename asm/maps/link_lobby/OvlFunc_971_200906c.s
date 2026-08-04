@@ -27,7 +27,7 @@
 	mov	r0, r5
 	ldr	r1, [r3]
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xc1
 	lsl	r0, #2
 	bl	__GetFlag
@@ -46,7 +46,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, r5
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	bl	__CutsceneEnd
 	pop	{r5, r6, r7}
 	pop	{r1}

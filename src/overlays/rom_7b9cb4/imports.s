@@ -57,7 +57,7 @@
 	.export_func _Func_80929d8
 	.export_func _Func_8092a1c
 	.export_func _MessageID
-	.export_func _Func_8092c40
+	.export_func _ShowActorMessage_NoWait
 	.export_func _ActorMessage
 	.export_func _Func_8093040
 	.export_func _Func_8092adc
@@ -69,7 +69,7 @@
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8093554
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f14
 	.export_func _Func_8091f90
 	.export_func _MapTransitionIn

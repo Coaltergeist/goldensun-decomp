@@ -365,7 +365,7 @@
 	mov	r2, #5
 	mov	r3, r6
 	str	r4, [sp, #8]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r4, [sp, #8]
 .Ldd5c6:
 	ldr	r3, [r5]
@@ -710,7 +710,7 @@
 	mov	r1, #7
 	mov	r3, r6
 	mov	r2, #5
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
 	add	r6, #1
@@ -1180,7 +1180,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, r6
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lddca0:
 	ldr	r3, [r5]
 	ldr	r3, [r3, #0x14]
@@ -1519,7 +1519,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	ldr	r3, [sp, #0x2c]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	ldr	r3, [r5]
 	ldr	r1, [sp, #0x10]
 	ldrsh	r0, [r3, r1]
@@ -2285,7 +2285,7 @@
 	neg	r2, r2
 	mov	r1, #7
 	neg	r3, r3
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lde62e:
 	mov	r7, r10
 	cmp	r7, #0x18
@@ -2301,7 +2301,7 @@
 	mov	r1, #0
 	neg	r2, r2
 	sub	r3, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lde64e:
 	mov	r4, r10
 	neg	r4, r4

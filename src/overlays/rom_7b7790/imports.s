@@ -14,7 +14,7 @@
 	.export_func _Func_808b868
 	.export_func _MapActor_GetActor
 	.export_func _MapActor_SetAnim
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_80929d8
 	.export_func _MessageID
 	.export_func _ActorMessage

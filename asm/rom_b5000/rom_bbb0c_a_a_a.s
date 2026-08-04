@@ -25,7 +25,7 @@
 	mov	r0, r5
 	str	r3, [sp, #0x38]
 	mov	r6, r1
-	bl	Func_8004938
+	bl	alloc_iwram
 	str	r0, [sp, #0x10]
 	ldr	r1, [sp, #0x50]
 	ldrb	r1, [r1]

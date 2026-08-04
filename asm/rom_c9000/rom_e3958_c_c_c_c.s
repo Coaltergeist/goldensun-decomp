@@ -1471,7 +1471,7 @@
 	bx	r0
 .func_end Anim_CriticalHit
 
-.thumb_func_start Func_80e46f0  @ 0x080e46f0
+.thumb_func_start BlendVFXPaletteFile  @ 0x080e46f0
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -1575,7 +1575,7 @@
 	pop	{r5, r6, r7}
 	pop	{r0}
 	bx	r0
-.func_end Func_80e46f0
+.func_end BlendVFXPaletteFile
 
 	.section .rodata
 

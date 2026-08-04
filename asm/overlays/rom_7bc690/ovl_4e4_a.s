@@ -852,7 +852,7 @@
 	strb	r2, [r3]
 	mov	r0, #0x35
 	mov	r1, #5
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_933_2008c38

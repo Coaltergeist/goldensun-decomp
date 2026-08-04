@@ -138,7 +138,7 @@
 	mov	r3, #1
 	str	r3, [sp, #0xc]
 	mov	r9, r3
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	mov	r5, #2
 	mov	r1, #6
 	mov	r2, #0x18

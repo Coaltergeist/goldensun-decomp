@@ -169,7 +169,7 @@
 	mov	r2, #0
 	mov	r0, #0xe
 	mov	r1, #0x13
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #2
 	mov	r0, #0xe
 	bl	__Func_80925cc

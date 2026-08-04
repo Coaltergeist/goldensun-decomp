@@ -113,7 +113,7 @@
 	mov	r0, r6
 	mov	r1, r7
 	mov	r10, r3
-	bl	Func_80170f8
+	bl	FillUIRegion
 	ldrh	r3, [r5, #0x14]
 	ldr	r2, =0xffff
 	add	r3, r2
@@ -133,7 +133,7 @@
 	mov	r1, r11
 	ldr	r2, [sp, #4]
 	ldr	r3, [sp]
-	bl	Func_80170f8
+	bl	FillUIRegion
 .L198c4:
 	add	sp, #8
 	pop	{r3, r5, r6, r7}

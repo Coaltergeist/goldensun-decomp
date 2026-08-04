@@ -785,7 +785,7 @@
 	mov	r1, #7
 	mov	r3, #0
 	str	r5, [sp]
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lce392:
 	mov	r2, #0
 	ldr	r6, =gBuffer
@@ -1163,7 +1163,7 @@
 	mov	r1, #7
 	mov	r2, #5
 	mov	r3, r11
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lce6ec:
 	mov	r2, r11
 	lsl	r2, #3
@@ -1522,7 +1522,7 @@
 	mov	r1, #0
 	mov	r2, #5
 	sub	r3, #1
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcea10:
 	ldr	r3, [r6, #8]
 	mov	r1, r9

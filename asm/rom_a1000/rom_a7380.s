@@ -17,7 +17,7 @@
 	mov	r0, #0
 	mov	r3, #0x14
 	mov	r2, #0x1e
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	mov	r0, #0
@@ -130,12 +130,12 @@
 	bl	galloc_iwram
 	mov	r7, r0
 	mov	r0, #0x40
-	bl	Func_8004970
+	bl	alloc_ewram
 	mov	r6, #0x80
 	lsl	r6, #6
 	mov	r9, r0
 	mov	r0, r6
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, =iwram_3001e68
 	ldr	r2, [r3]
 	mov	r3, #1
@@ -145,7 +145,7 @@
 	mov	r2, #0x1e
 	mov	r3, #0x14
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	bl	Func_80a1070
@@ -288,7 +288,7 @@
 	mov	r1, #0
 	mov	r2, #0x1e
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	bl	_Func_801e318
@@ -321,7 +321,7 @@
 	mov	r2, #0x1e
 	mov	r3, #0x14
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #0x37
 	bl	gfree
 	mov	r3, r5
@@ -2193,7 +2193,7 @@
 	ldrb	r1, [r5, #0xf]
 	ldrb	r0, [r6]
 	add	r1, #1
-	bl	_Func_8079008
+	bl	_GetPCStatGrowth
 	mov	r2, #0x92
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -2204,7 +2204,7 @@
 .La85c4:
 	mov	r0, #0x80
 	lsl	r0, #1
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r5, r0
 	ldr	r0, =0xbe6
 	mov	r1, r5

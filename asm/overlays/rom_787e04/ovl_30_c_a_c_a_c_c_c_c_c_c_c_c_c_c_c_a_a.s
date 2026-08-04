@@ -537,7 +537,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	ldr	r0, =0x8008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1022,7 +1022,7 @@
 	mov	r0, #0xd
 	mov	r1, #0
 	mov	r2, #0xa
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__GetFlag

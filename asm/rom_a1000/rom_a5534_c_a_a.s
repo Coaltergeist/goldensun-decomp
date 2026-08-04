@@ -530,7 +530,7 @@
 	mov	r2, #0x1e
 	mov	r8, r1
 	mov	r1, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #1
 	bl	WaitFrames
 	mov	r0, #0
@@ -602,7 +602,7 @@
 	mov	r2, #0x1e
 	mov	r3, #0x14
 	mov	r0, #0
-	bl	_Func_80170f8
+	bl	_FillUIRegion
 	mov	r0, #0x37
 	bl	gfree
 	mov	r3, r8
@@ -1364,7 +1364,7 @@
 	strb	r3, [r1]
 .La62b2:
 	mov	r0, #0x40
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r6, r0
 	mov	r1, r6
 	ldr	r0, [sp, #0xc]

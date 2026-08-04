@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_808d5dc  @ 0x0808d5dc
+.thumb_func_start HandleActorEvents  @ 0x0808d5dc
 	push	{r5, r6, r7, lr}
 	mov	r7, r11
 	mov	r6, r10
@@ -148,7 +148,7 @@
 	bl	CutsceneEnd
 	b	.L8d722
 .L8d716:
-	bl	Func_8091660
+	bl	ResetPlayerSpeed
 	ldr	r3, [r6, #8]
 	mov	r0, r7
 	bl	_call_via_r3
@@ -233,5 +233,5 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end Func_808d5dc
+.func_end HandleActorEvents
 

@@ -2916,7 +2916,7 @@
 	lsr	r2, #16
 	mov	r0, r5
 	str	r2, [sp, #0x18]
-	bl	Func_8004938
+	bl	alloc_iwram
 	ldr	r3, =Func_8001af8
 	ldr	r1, [sp, #0x34]
 	str	r0, [sp, #0x30]

@@ -24,7 +24,7 @@ extern char _DECOMPRESS_LZ_SIZE[];
 u32 DecompressLZ(const void *src, void *dst) {
     u32 result;
     do {
-        u32 (*func)(const void *, void *) = Func_8004938(DECOMPRESS_LZ_SIZE);
+        u32 (*func)(const void *, void *) = alloc_iwram(DECOMPRESS_LZ_SIZE);
         DMA3_SET(DecompressLZ_ROM, func, 0x84000000 | (DECOMPRESS_LZ_SIZE / 4));
         do {
             result = func(src, dst);
@@ -41,7 +41,7 @@ extern char _DECOMPRESS_LZ2_SIZE[];
 u32 DecompressLZ2(const void *src, void *dst) {
     u32 result;
     do {
-        u32 (*func)(const void *, void *) = Func_8004938(DECOMPRESS_LZ2_SIZE);
+        u32 (*func)(const void *, void *) = alloc_iwram(DECOMPRESS_LZ2_SIZE);
         DMA3_SET(DecompressLZ2_ROM, func, 0x84000000 | (DECOMPRESS_LZ2_SIZE / 4));
         do {
             result = func(src, dst);
@@ -58,7 +58,7 @@ extern char _DECOMPRESS_LZ1_SIZE[];
 u32 DecompressLZ1(const void *src, void *dst) {
     u32 result;
     do {
-        u32 (*func)(const void *, void *) = Func_8004938(DECOMPRESS_LZ1_SIZE);
+        u32 (*func)(const void *, void *) = alloc_iwram(DECOMPRESS_LZ1_SIZE);
         DMA3_SET(DecompressLZ1_ROM, func, 0x84000000 | (DECOMPRESS_LZ1_SIZE / 4));
         do {
             result = func(src, dst);

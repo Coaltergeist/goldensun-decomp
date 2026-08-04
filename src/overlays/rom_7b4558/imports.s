@@ -38,7 +38,7 @@
 	.export_func _MapActor_SetAnim
 	.export_func _Func_809259c
 	.export_func _Func_80925cc
-	.export_func _Func_809280c
+	.export_func _MapActor_Face
 	.export_func _Func_8092848
 	.export_func _Func_8092950
 	.export_func _Func_80929d8
@@ -51,7 +51,7 @@
 	.export_func _Func_80933f8
 	.export_func _Func_8093530
 	.export_func _Func_8093500
-	.export_func _Func_8091eb0
+	.export_func _StartMapBattle
 	.export_func _Func_8091f14
 	.export_func _Func_8091f90
 	.export_func _MapTransitionIn

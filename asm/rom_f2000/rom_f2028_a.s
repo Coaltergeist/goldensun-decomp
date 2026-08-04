@@ -1141,7 +1141,7 @@
 .Lf29ea:
 	cmp	r7, #0x13
 	bls	.Lf29c4
-	bl	Func_800479c
+	bl	LoadStaticUIGFX
 	bl	ClearVRAM
 	ldr	r1, [sp, #0xc]
 	cmp	r1, #0

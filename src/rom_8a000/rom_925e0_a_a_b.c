@@ -1,4 +1,4 @@
-/* Cluster Func_809280c..Func_809280c extracted from goldensun/asm/rom_8a000/rom_925e0_a_a.s.
+/* Cluster MapActor_Face..MapActor_Face extracted from goldensun/asm/rom_8a000/rom_925e0_a_a.s.
  *
  * Total .text for this TU = 60 bytes (= 0x3c).
  * Preserves the original ROM layout when slotted between
@@ -9,7 +9,7 @@ extern unsigned int GetFieldActor(unsigned int actorID);
 extern int atan2(int y, int x);
 extern void CutsceneWait(unsigned int param_1);
 
-void Func_809280c(unsigned int arg0, unsigned int arg1, unsigned int arg2)
+void MapActor_Face(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
     unsigned char *a;
     unsigned char *b;

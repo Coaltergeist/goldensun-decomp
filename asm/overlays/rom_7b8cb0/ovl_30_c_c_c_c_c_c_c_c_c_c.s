@@ -560,7 +560,7 @@
 	mov	r0, #0
 	mov	r1, #0x12
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x80
 	mov	r0, #0
 	lsl	r1, #7

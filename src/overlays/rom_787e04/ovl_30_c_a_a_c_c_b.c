@@ -12,9 +12,9 @@ void OvlFunc_887_2008284(void) {
     unsigned short r3;
 
     __CutsceneStart();
-    __Func_809280c(0xe, 0, 0xa);
+    __MapActor_Face(0xe, 0, 0xa);
     __MessageID(0x11aa);
-    __Func_8092c40(0xe, 0);
+    __ShowActorMessage_NoWait(0xe, 0);
     if (__Func_8091c7c(0, 0) == 0) {
         __ActorMessage(0xe, 0);
     } else {

@@ -177,7 +177,7 @@
 	mov	r1, #7
 	neg	r2, r2
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 	b	.Lcf1a4
 .Lcf18a:
 	ldr	r3, =0x7828
@@ -191,7 +191,7 @@
 	mov	r1, #0xa
 	neg	r2, r2
 	mov	r3, #0
-	bl	Func_80d6888
+	bl	SetBattleActorState
 .Lcf1a4:
 	cmp	r7, #0x18
 	bne	.Lcf1ae

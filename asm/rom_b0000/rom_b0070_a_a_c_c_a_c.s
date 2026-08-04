@@ -326,7 +326,7 @@
 	mov	r1, r7
 	bl	Func_80b11c4
 	ldrh	r0, [r5]
-	bl	_Func_8078480
+	bl	_GetItemEquipSlot
 	cmp	r0, #0
 	bne	.Lb0d68
 	ldrh	r2, [r5]

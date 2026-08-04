@@ -522,7 +522,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	ldr	r0, =0x8008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xc0
 	mov	r0, #0
 	lsl	r1, #8
@@ -746,7 +746,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1169,7 +1169,7 @@
 	bl	OvlFunc_917_20092f4
 	mov	r1, #0
 	ldr	r0, =0x8008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r1, #0xc0
 	mov	r0, #0
 	lsl	r1, #8

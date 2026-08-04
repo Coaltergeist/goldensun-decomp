@@ -8,7 +8,7 @@
  * Reconciled conflicting decls of Func_807905c: kept `extern unsigned int Func_807905c(unsigned int arg0, unsigned int arg1);`, dropped `extern void Func_807905c(int pcID, int *buf);`.
  */
 extern unsigned char *GetUnit(unsigned int unit);
-extern unsigned int Func_8079008(unsigned int arg0, unsigned int arg1);
+extern unsigned int GetPCStatGrowth(unsigned int arg0, unsigned int arg1);
 extern unsigned int Func_807905c(unsigned int arg0, unsigned int arg1);
 extern void CalcStats(int pc);
 
@@ -17,7 +17,7 @@ unsigned int Func_80792c4(unsigned int arg0, unsigned int arg1)
     unsigned char *unit;
 
     unit = GetUnit(arg0);
-    if (*(unsigned int *)(unit + 0x124) >= Func_8079008(arg0, *(unsigned char *)(unit + 0xf) + 1))
+    if (*(unsigned int *)(unit + 0x124) >= GetPCStatGrowth(arg0, *(unsigned char *)(unit + 0xf) + 1))
     {
         if (Func_807905c(arg0, arg1))
             return arg1;

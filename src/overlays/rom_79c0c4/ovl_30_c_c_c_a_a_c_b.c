@@ -15,9 +15,9 @@ void OvlFunc_908_2008250(void)
 
     __CutsceneStart();
     __MessageID(0x13f6);
-    __Func_809280c(0x1b, 0, 0);
+    __MapActor_Face(0x1b, 0, 0);
     __CutsceneWait(10);
-    __Func_8092c40(0x1b, 0);
+    __ShowActorMessage_NoWait(0x1b, 0);
     if (__Func_8091c7c(0, 0) != 0) {
         p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
         *p = *p + 1;

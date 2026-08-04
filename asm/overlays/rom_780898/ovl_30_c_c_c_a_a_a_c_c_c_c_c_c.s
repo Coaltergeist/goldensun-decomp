@@ -563,7 +563,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -617,7 +617,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1161,7 +1161,7 @@
 	bl	__CutsceneWait
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r5, #0
@@ -2276,7 +2276,7 @@
 	mov	r2, #0x14
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r5, =0x1c45
 	mov	r0, r5
 	bl	__MessageID
@@ -2370,7 +2370,7 @@
 	bl	__Func_80925cc
 	mov	r1, #0
 	ldr	r0, =0x4008
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -2676,7 +2676,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #1
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -2837,7 +2837,7 @@
 	mov	r2, #0x14
 	mov	r0, #0xb
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xb
 	mov	r1, #0
 	bl	__ActorMessage
@@ -3873,7 +3873,7 @@
 	mov	r2, #0x28
 	mov	r0, #5
 	mov	r1, #1
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #2
 	mov	r0, #1
 	bl	__Func_80925cc
@@ -4830,7 +4830,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -4888,7 +4888,7 @@
 	bl	__Func_8092adc
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -5408,7 +5408,7 @@
 	bl	__MapActor_DoAnim
 	mov	r1, #0
 	mov	r0, #0x15
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	mov	r6, #0

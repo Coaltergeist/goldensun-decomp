@@ -470,7 +470,7 @@
 	bl	__MapActor_Emote
 	mov	r1, #0
 	mov	r0, #2
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, r6
 	mov	r2, #0

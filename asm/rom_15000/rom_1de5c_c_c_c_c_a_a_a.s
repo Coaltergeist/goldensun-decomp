@@ -30,7 +30,7 @@
 .L1ee24:
 	ldr	r5, =0x214
 	mov	r0, r5
-	bl	Func_8004938
+	bl	alloc_iwram
 	mov	r2, #0x84
 	mov	r6, r0
 	lsr	r5, #2
@@ -712,7 +712,7 @@
 	ldrh	r1, [r6, #6]
 	ldrh	r2, [r6, #8]
 	ldrh	r3, [r6, #0xa]
-	bl	Func_80170f8
+	bl	FillUIRegion
 	mov	r0, r8
 	mov	r1, r11
 	bl	Func_801ef68

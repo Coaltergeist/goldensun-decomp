@@ -21,7 +21,7 @@
 	add	r3, r8
 	mov	r5, #0
 	ldrsb	r5, [r3, r5]
-	bl	_Func_8078480
+	bl	_GetItemEquipSlot
 	cmp	r5, r0
 	bne	.Lb00b0
 	mov	r0, r6

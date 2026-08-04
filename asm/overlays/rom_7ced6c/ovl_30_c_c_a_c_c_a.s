@@ -60,30 +60,30 @@
 	mov	r0, #0x54
 .L142a:
 	mov	r1, #0
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L1458
 .L1432:
 	mov	r0, #0x54
 .L1434:
 	mov	r1, #1
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L1458
 .L143c:
 	mov	r0, #0x54
 .L143e:
 	mov	r1, #2
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L1458
 .L1446:
 	mov	r0, #0x54
 .L1448:
 	mov	r1, #3
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	b	.L1458
 .L1450:
 	mov	r0, #0x54
 	mov	r1, #4
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 .L1458:
 	bl	__CutsceneEnd
 	b	.L1474

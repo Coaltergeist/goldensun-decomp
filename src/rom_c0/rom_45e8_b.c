@@ -139,7 +139,7 @@ void ClearVRAM(void) {
     SET_IO(REG_BG0CNT, 0x400);
 }
 
-void Func_800479c(void) {
+void LoadStaticUIGFX(void) {
     void *gfx = GetFile(FILE_GFX_UI);
     DMA3_COPY(gfx, (u16*)0x06000000, 0x800*4);
     DMA3_COPY16(PAL_Ui, (u16*)(0x050001E0), 16*4);

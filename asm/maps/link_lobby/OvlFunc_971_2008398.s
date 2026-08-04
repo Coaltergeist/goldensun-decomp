@@ -14,7 +14,7 @@
 	mov	r8, r2
 	mov	r0, r8
 	sub	sp, #0x30
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r7, #0xe1
 	mov	r3, #0
 	mov	r11, r0
@@ -188,7 +188,7 @@
 	lsl	r3, #1
 	mov	r8, r3
 	mov	r0, r8
-	bl	__Func_8004970
+	bl	__alloc_ewram
 	mov	r11, r0
 	mov	r0, #1
 	bl	__Func_8077330

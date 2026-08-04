@@ -13,7 +13,7 @@
 	ldr	r1, [r3]
 	mov	r2, #0
 	mov	r0, r5
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x989
 	bl	__MessageID
 	mov	r0, r5

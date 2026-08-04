@@ -11,7 +11,7 @@ extern int __MessageID(int);
 extern void __ActorMessage(int, int);
 extern void __SetFlag(int);
 extern void __Func_8097608(void);
-extern void __Func_809280c(int, int, int);
+extern void __MapActor_Face(int, int, int);
 extern void __Func_809259c(int, int);
 extern void __MapActor_Emote(int, int, int);
 typedef struct { unsigned char _bytes[704]; } GlobalState;
@@ -37,7 +37,7 @@ void OvlFunc_939_20089d4(void) {
         if (!x) {
             *(unsigned short *)(iwram_3001ebc + (0xbf << 1)) = x;
             __Func_8097608();
-            __Func_809280c(8, 0, 0);
+            __MapActor_Face(8, 0, 0);
             v = 8;
             __asm__ __volatile__("" : "+r"(v));
             __MapActor_Emote(v, 0x101, 0x3c);

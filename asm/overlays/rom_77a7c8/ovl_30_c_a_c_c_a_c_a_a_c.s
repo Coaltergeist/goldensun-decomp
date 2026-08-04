@@ -416,7 +416,7 @@
 	bl	__CutsceneWait
 	mov	r0, #0xc
 	mov	r1, #6
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_881_2009c08
@@ -489,7 +489,7 @@
 	mov	r1, #8
 	mov	r2, #0
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0xa
 	bl	__CutsceneWait
 	mov	r0, #0
@@ -503,7 +503,7 @@
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x10
 	bl	__WaitFrames
 	ldr	r0, =0xc4f
@@ -554,11 +554,11 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r1, #8
 	mov	r0, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #0x10
 	bl	__WaitFrames
 	mov	r3, #0
@@ -745,7 +745,7 @@
 	mov	r2, #0
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #8
 	mov	r1, #2
 	bl	__Func_80925cc
@@ -758,7 +758,7 @@
 	bl	__MapActor_Jump
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r5, #0
 .L1fd2:
 	mov	r0, #0
@@ -788,7 +788,7 @@
 	bl	__MessageID
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	add	r5, #1
 	b	.L1fd2
 .L201a:
@@ -857,11 +857,11 @@
 	mov	r0, #8
 	mov	r1, #0
 	mov	r2, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r2, #0
 	mov	r0, #0
 	mov	r1, #8
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #0x16
 	mov	r0, #0
 	bl	__MapActor_SetAnim
@@ -909,13 +909,13 @@
 	mov	r2, #0
 	mov	r0, #8
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r0, #8
 	mov	r1, #0
 	bl	__ActorMessage
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -931,7 +931,7 @@
 	bl	__MessageID
 	mov	r1, #0
 	mov	r0, #8
-	bl	__Func_8092c40
+	bl	__ShowActorMessage_NoWait
 	mov	r0, #0
 	mov	r1, #0
 	bl	__Func_8091c7c
@@ -1547,7 +1547,7 @@
 	mov	r2, #0
 	mov	r1, #0
 	mov	r0, #0x37
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	ldr	r0, =0x2642
 	bl	__MessageID
 	ldr	r3, =.L679c

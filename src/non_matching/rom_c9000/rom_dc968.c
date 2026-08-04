@@ -25,7 +25,7 @@
  *   FUN_0814CC4C         Func_80d6750      UpdateSprite         _UpdateSprite
  *   GetFile              Func_8002f40      PlaySound            _PlaySound
  *   LoadVFXFile          LoadVFXFile      BattleActor_GetPos2  GetBattleActorPos2
- *   BuildDraw2DFunc      BuildDraw2DFuncEx      BattleActor_SetState Func_80d6888
+ *   BuildDraw2DFunc      BuildDraw2DFuncEx      BattleActor_SetState SetBattleActorState
  *   WaitFrames           WaitFrames      BattleActor_Knockbk  _SetBattleActorKnockback
  *   RestoreBattleBG      Func_80d67dc      UpdateScreenShake    UpdateScreenShake
  *   DeleteSprite         _DeleteSprite     ResetAllActors       Func_80cd52c
@@ -110,7 +110,7 @@ extern void  Func_80e3944(vec3 *in, vec3 *out);       /* PhysMove */
 extern void  _UpdateSprite(void *sprite, int *coords, void *dims, int z); /* UpdateSprite */
 extern void  _PlaySound(int sfx);                  /* PlaySound */
 extern void  GetBattleActorPos2(int target, vec3 *out);     /* BattleActor_GetPos2 */
-extern void  Func_80d6888(int t, int a, int b, int c, int d); /* BattleActor_SetState */
+extern void  SetBattleActorState(int t, int a, int b, int c, int d); /* BattleActor_SetState */
 extern void  _SetBattleActorKnockback(int t, int v);             /* BattleActor_SetKnockback */
 extern void  UpdateScreenShake(int a, int b);              /* UpdateScreenShake */
 extern void  Func_80cd52c(void);                      /* ResetAllActors */
@@ -421,7 +421,7 @@ void Anim_Atalanta(AnimContext *context)
                         {
                             int slot = i % 6;  /* i % 6 */
                             if (slot < (int)STATE_CONTEXT(state)->numTargets) {
-                                Func_80d6888(STATE_CONTEXT(state)->targets[slot], 7, 5, slot, 8);
+                                SetBattleActorState(STATE_CONTEXT(state)->targets[slot], 7, 5, slot, 8);
                                 _SetBattleActorKnockback(STATE_CONTEXT(state)->targets[slot], 1);
                             }
                         }

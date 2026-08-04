@@ -158,7 +158,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x35
 	mov	r1, #2
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_2008388
@@ -175,7 +175,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x35
 	mov	r1, #2
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_20083b4
@@ -192,7 +192,7 @@
 	bl	__Func_8091f90
 	mov	r0, #0x35
 	mov	r1, #2
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	pop	{r0}
 	bx	r0
 .func_end OvlFunc_932_20083e0

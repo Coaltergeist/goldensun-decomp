@@ -26,7 +26,7 @@
 	strb	r2, [r3]
 	mov	r0, #0x24
 	mov	r1, #1
-	bl	__Func_8091eb0
+	bl	__StartMapBattle
 	bl	__CutsceneEnd
 	pop	{r0}
 	bx	r0
@@ -809,7 +809,7 @@
 	mov	r2, #0
 	mov	r0, #3
 	mov	r1, #0
-	bl	__Func_809280c
+	bl	__MapActor_Face
 	mov	r1, #3
 	mov	r0, #3
 	bl	__MapActor_DoAnim

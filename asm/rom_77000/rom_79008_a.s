@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start Func_8079008  @ 0x08079008
+.thumb_func_start GetPCStatGrowth  @ 0x08079008
 	push	{r5, lr}
 	mov	r5, r1
 	bl	GetUnit
@@ -39,7 +39,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end Func_8079008
+.func_end GetPCStatGrowth
 
 .thumb_func_start Func_807905c  @ 0x0807905c
 	push	{r5, r6, r7, lr}
@@ -54,7 +54,7 @@
 	bl	GetUnit
 	mov	r10, r0
 	mov	r0, #0x2c
-	bl	Func_8004970
+	bl	alloc_ewram
 	ldr	r3, =0x129
 	add	r3, r10
 	ldrb	r3, [r3]
@@ -85,7 +85,7 @@
 	strh	r3, [r6]
 	ldrb	r1, [r0, #0xf]
 	mov	r0, r11
-	bl	Func_8079008
+	bl	GetPCStatGrowth
 	mov	r3, #1
 	neg	r3, r3
 	cmp	r0, r3
