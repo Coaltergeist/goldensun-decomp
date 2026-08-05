@@ -106,3 +106,4 @@ OvlFunc_881_20097a4  src/overlays/rom_77a7c8/ovl_30_c_a_c_c_a_c_a_a_b.c
 OvlFunc_907_2008d10  src/overlays/rom_79b154/ovl_30_c_a_c_b.c
 OvlFunc_959_2008e80  src/overlays/rom_7e7574/ovl_9dc_a_c_c_a_a_b.c
 Func_8005ee0  src/rom_c0/rom_5cf8_a_a_a_b.c
+Func_8005fcc  src/rom_c0/rom_5cf8_a_a_a_b.c

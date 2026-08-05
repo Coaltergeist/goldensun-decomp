@@ -179,3 +179,47 @@ u32 Func_8005ee0(void *a, void *b) {
 
     return result;
 }
+
+u32 Func_8005fcc(void) {
+    vu32 *siocntPtr = (vu32 *)REG_ADDR_SIOCNT;
+    u32 siocnt = *siocntPtr;
+    u32 result;
+    register u32 fakeResult asm("r2"); // fakematch
+    u32 temp;
+    u8 err;
+
+    if (ewram_2002240.unk_01 == 0) {
+        err = siocnt & 0x88;
+        if (err == 8) {
+            err = siocnt & 4;
+            if (err == 0 && ewram_2002240.unk_14 == -1) {
+                SET_IO(REG_IME, 0);
+                temp = REG_IE;
+                SET_IO(REG_IE, (temp & ~0x80) | 0x40);
+                SET_IO(REG_IME, 1);
+                do {
+                    s32 sioH = ((vu8 *)siocntPtr)[1] & ~0x40;
+                    ((vu8 *)siocntPtr)[1] = sioH;
+                } while (0);
+
+                REG_IF = 0xC0;
+                *(vu32 *)REG_ADDR_TM3CNT = 0xC963;
+
+                ewram_2002240.unk_00 = siocnt & 0x88;
+            }
+            ewram_2002240.unk_01 = 1;
+        }
+        ewram_2002240.unk_0B++;
+    }
+
+    fakeResult = ewram_2002240.unk_03;
+    fakeResult |= ewram_2002240.unk_02 << 8;
+    if (ewram_2002240.unk_00 == 8)
+        fakeResult |= 0x80;
+    result = fakeResult;
+    if (ewram_2002240.unk_09)
+        result |= 0x1000;
+    if (((siocnt << 26) >> 30) > 1)
+        result |= 0x2000;
+    return result;
+}
