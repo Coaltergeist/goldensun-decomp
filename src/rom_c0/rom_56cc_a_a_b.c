@@ -351,3 +351,11 @@ u32 Func_8005c68(void) {
     }
     return count;
 }
+
+extern void SetIntrHandler(u32 intr, u32 dispstat, intrfunc_t *vector);
+extern s32 gfree(u32 index);
+
+s32 Func_8005cf8(void) {
+    SetIntrHandler(INTR_ID_TIMER2, 0, NULL);
+    return gfree(0x33);
+}
