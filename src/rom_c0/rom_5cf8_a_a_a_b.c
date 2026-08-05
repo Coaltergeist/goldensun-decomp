@@ -12,7 +12,15 @@
 #include "gba/io.h"
 
 struct LinkState {
-    /* 0x00 */ u8  unk_00[0x14];
+    /* 0x00 */ u8  unk_00;
+    /* 0x01 */ u8  unk_01;
+    /* 0x02 */ u8  unk_02;
+    /* 0x03 */ u8  unk_03;
+    /* 0x04 */ u8  unk_04[5];
+    /* 0x09 */ u8  unk_09;
+    /* 0x0A */ u8  unk_0A;
+    /* 0x0B */ u8  unk_0B;
+    /* 0x0C */ u8  unk_0C[8];
     /* 0x14 */ s32 unk_14;
     /* 0x18 */ u8  unk_18[0x10];
     /* 0x28 */ u8 *unk_28;
@@ -99,8 +107,8 @@ void Func_8005d10(void) {
 }
 
 void Func_8005e70(void) {
-    if (ewram_2002240.unk_00[0]) {
-        ewram_2002240.unk_00[8] = 1;
+    if (ewram_2002240.unk_00) {
+        ewram_2002240.unk_04[4] = 1;
     }
 }
 
@@ -111,5 +119,63 @@ void Func_8005e88(void) {
     REG_SIOCNT = 0x2003;
     REG_TM3CNT = 0xC963;
     REG_IF = 0xC0;
-    ewram_2002240.unk_00[8] = 0;
+    ewram_2002240.unk_04[4] = 0;
+}
+
+extern void Func_80060e8(void *);
+extern void Func_800615c(u16 *);
+
+u32 Func_8005ee0(void *a, void *b) {
+    vu32 *siocntPtr = (vu32 *)REG_ADDR_SIOCNT;
+    u32 siocnt = *siocntPtr;
+    u32 result;
+    u32 temp;
+    u8 err;
+    register u32 fakeResult asm("r2"); // fakematch
+
+    switch (ewram_2002240.unk_01) {
+    case 0:
+    err = siocnt & 0x30;
+    if ((err) == 0) {
+        err = siocnt & 0x88;
+        if (err != 8)
+            break;
+
+        err = siocnt & 4;
+        if (err == 0 && ewram_2002240.unk_14 == -1) {
+            SET_IO(REG_IME, 0);
+            temp = REG_IE;
+            SET_IO(REG_IE, (temp & ~0x80) | 0x40);
+            SET_IO(REG_IME, 1);
+            do {
+                s32 sioH = ((vu8 *)siocntPtr)[1] & ~0x40;
+                ((vu8 *)siocntPtr)[1] = sioH;
+            } while (0);
+
+            REG_IF = 0xC0;
+            *(vu32 *)REG_ADDR_TM3CNT = 0xC963;
+
+            ewram_2002240.unk_00 = siocnt & 0x88;
+        }
+    }
+    ewram_2002240.unk_01 = 1;
+
+    /* fallthrough */
+    case 1:
+        Func_800615c(b);
+        Func_80060e8(a);
+    }
+
+    ewram_2002240.unk_0B++;
+    fakeResult = ewram_2002240.unk_03;
+    fakeResult |= (ewram_2002240.unk_02 << 8);
+    if (ewram_2002240.unk_00 == 8)
+        fakeResult |= 0x80;
+    result = fakeResult;
+    if (ewram_2002240.unk_09)
+        result |= 0x1000;
+    if (((siocnt << 26) >> 30) > 1)
+        result |= 0x2000;
+
+    return result;
 }
