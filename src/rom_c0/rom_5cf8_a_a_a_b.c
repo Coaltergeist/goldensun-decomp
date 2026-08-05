@@ -160,7 +160,7 @@ u32 Func_8005ee0(void *a, void *b) {
     }
     ewram_2002240.unk_01 = 1;
 
-    /* fallthrough */
+    // fallthrough
     case 1:
         Func_800615c(b);
         Func_80060e8(a);
@@ -221,5 +221,29 @@ u32 Func_8005fcc(void) {
         result |= 0x1000;
     if (((siocnt << 26) >> 30) > 1)
         result |= 0x2000;
+    return result;
+}
+
+u32 Func_8006088(void* arg0, u16* arg1) {
+    u32 siocnt = *(vu32 *)REG_ADDR_SIOCNT;
+    u32 result;
+    register u32 fakeResult asm ("r2"); // fakematch
+
+    if (ewram_2002240.unk_01 == 1) {
+        Func_800615c(arg1);
+        Func_80060e8(arg0);
+        ewram_2002240.unk_0B++;
+    }
+    fakeResult = ewram_2002240.unk_03 | (ewram_2002240.unk_02 << 8);
+    if (ewram_2002240.unk_00 == 8) {
+        fakeResult |= 0x80;
+    }
+    result = fakeResult;
+    if (ewram_2002240.unk_09 != 0) {
+        result |= 0x1000;
+    }
+    if ((u32) ((u32) (siocnt << 0x1A) >> 0x1E) > 1U) {
+        result |= 0x2000;
+    }
     return result;
 }
