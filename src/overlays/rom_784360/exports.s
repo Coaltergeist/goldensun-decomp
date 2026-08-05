@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_884_2008940
-	.export_func OvlFunc_884_2008088
-	.export_func OvlFunc_884_2008094
-	.export_func OvlFunc_884_20080b8
-	.export_func OvlFunc_884_2008158
-	.export_func OvlFunc_884_2008090
+	.export_func ValePlaza_MapInit
+	.export_func ValePlaza_GetEntrances
+	.export_func ValePlaza_GetExits
+	.export_func ValePlaza_GetActors
+	.export_func ValePlaza_GetEvents
+	.export_func ValePlaza_GetSpecialExits

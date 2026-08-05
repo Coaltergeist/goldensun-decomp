@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_889_2008054
-	.export_func OvlFunc_889_2008030
-	.export_func OvlFunc_889_200803c
-	.export_func OvlFunc_889_2008044
-	.export_func OvlFunc_889_200804c
-	.export_func OvlFunc_889_2008038
+	.export_func ValeRiverEruption_MapInit
+	.export_func ValeRiverEruption_GetEntrances
+	.export_func ValeRiverEruption_GetExits
+	.export_func ValeRiverEruption_GetActors
+	.export_func ValeRiverEruption_GetEvents
+	.export_func ValeRiverEruption_GetSpecialExits

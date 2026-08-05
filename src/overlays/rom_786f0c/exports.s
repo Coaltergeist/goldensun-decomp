@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_886_2008368
-	.export_func OvlFunc_886_20080cc
-	.export_func OvlFunc_886_20080d8
-	.export_func OvlFunc_886_20080fc
-	.export_func OvlFunc_886_2008140
-	.export_func OvlFunc_886_20080d4
+	.export_func ValeRooms1_MapInit
+	.export_func ValeRooms1_GetEntrances
+	.export_func ValeRooms1_GetExits
+	.export_func ValeRooms1_GetActors
+	.export_func ValeRooms1_GetEvents
+	.export_func ValeRooms1_GetSpecialExits

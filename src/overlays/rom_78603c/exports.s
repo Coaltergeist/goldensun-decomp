@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_885_200950c
-	.export_func OvlFunc_885_2008088
-	.export_func OvlFunc_885_2008094
-	.export_func OvlFunc_885_200809c
-	.export_func OvlFunc_885_20080a4
-	.export_func OvlFunc_885_2008090
+	.export_func ValeKraden_MapInit
+	.export_func ValeKraden_GetEntrances
+	.export_func ValeKraden_GetExits
+	.export_func ValeKraden_GetActors
+	.export_func ValeKraden_GetEvents
+	.export_func ValeKraden_GetSpecialExits

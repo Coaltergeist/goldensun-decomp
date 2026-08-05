@@ -333,11 +333,22 @@ $(patsubst %.s,%.o,$(wildcard asm/$(strip $(1))*.s)): %.o: $(strip $(1))orig.bin
 endef
 $(foreach overlay_dir,$(OVERLAY_DIRS),$(eval $(call overlay_orig_deps, $(overlay_dir))))
 
-asm/overlays/common/common0.o: overlays/rom_78ef88/orig.bin
+# Every common0/1/2 object AND its splitter children .incbin the same orig.bin;
+# wildcard so the children get the dep too (a bare base-object dep left the
+# children racing the extraction under `make clean && make -j`).
+$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common0*.s)): overlays/rom_78ef88/orig.bin
+$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common1*.s)): overlays/rom_7db0c8/orig.bin
+$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common2*.s)): overlays/rom_7bf5a8/orig.bin
 
-asm/overlays/common/common1_c.o: overlays/rom_7db0c8/orig.bin
-
-asm/overlays/common/common2.o: overlays/rom_7bf5a8/orig.bin
+# Consolidated map TUs (src/maps/<name>.c) pull their unmatched .data/.bss via an
+# INCLUDE_ASM'd asm/maps/<name>/*.s body that .incbin's the overlay's orig.bin.
+# The object is asm/maps/<name>.o, not under asm/overlays/, so the macro above
+# does not reach it; declare the dep by scanning each body for its incbin target
+# (empty for bodies that don't incbin -> harmless). Fixes `make clean && make`.
+define map_orig_deps
+asm/maps/$(1).o: $(shell grep -hoE 'overlays/rom_[0-9a-f]+/orig\.bin' asm/maps/$(1)/*.s 2>/dev/null | sort -u)
+endef
+$(foreach n,$(patsubst src/maps/%.c,%,$(wildcard src/maps/*.c)),$(eval $(call map_orig_deps,$(n))))
 
 overlays/rom_%/orig.bin: baserom.gba tools/unpack_overlay
 	tools/unpack_overlay -r $< -a 0x$* -o $@

@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_890_200a108
-	.export_func OvlFunc_890_2008030
-	.export_func OvlFunc_890_200803c
-	.export_func OvlFunc_890_2008044
-	.export_func OvlFunc_890_200804c
-	.export_func OvlFunc_890_2008038
+	.export_func SolSanctum1_MapInit
+	.export_func SolSanctum1_GetEntrances
+	.export_func SolSanctum1_GetExits
+	.export_func SolSanctum1_GetActors
+	.export_func SolSanctum1_GetEvents
+	.export_func SolSanctum1_GetSpecialExits

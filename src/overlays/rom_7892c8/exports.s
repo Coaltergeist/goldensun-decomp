@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_888_20085cc
-	.export_func OvlFunc_888_200805c
-	.export_func OvlFunc_888_2008068
-	.export_func OvlFunc_888_2008070
-	.export_func OvlFunc_888_200814c
-	.export_func OvlFunc_888_2008064
+	.export_func ValeSanctum_MapInit
+	.export_func ValeSanctum_GetEntrances
+	.export_func ValeSanctum_GetExits
+	.export_func ValeSanctum_GetActors
+	.export_func ValeSanctum_GetEvents
+	.export_func ValeSanctum_GetSpecialExits
