@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_904_2008054
-	.export_func OvlFunc_904_2008030
-	.export_func OvlFunc_904_200803c
-	.export_func OvlFunc_904_2008044
-	.export_func OvlFunc_904_200804c
-	.export_func OvlFunc_904_2008038
+	.export_func GomaCave1_MapInit
+	.export_func GomaCave1_GetEntrances
+	.export_func GomaCave1_GetExits
+	.export_func GomaCave1_GetActors
+	.export_func GomaCave1_GetEvents
+	.export_func GomaCave1_GetSpecialExits

@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_921_2008b70
-	.export_func OvlFunc_921_2008130
-	.export_func OvlFunc_921_2008164
-	.export_func OvlFunc_921_200816c
-	.export_func OvlFunc_921_20081ec
-	.export_func OvlFunc_921_2008160
+	.export_func Imil_MapInit
+	.export_func Imil_GetEntrances
+	.export_func Imil_GetExits
+	.export_func Imil_GetActors
+	.export_func Imil_GetEvents
+	.export_func Imil_GetSpecialExits

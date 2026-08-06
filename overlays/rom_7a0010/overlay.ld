@@ -14,22 +14,12 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7a0010/exports.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_a_a.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_a_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_a_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_a_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_a_c_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_a_c_c_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_a_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_b.o(.text)
-		asm/overlays/rom_7a0010/ovl_30_c_c_c.o(.text)
+		asm/maps/kolima_rooms.o(.text)
 		src/overlays/rom_7a0010/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7a0010/ovl_30_c_c_c.o(.data)
+		asm/maps/kolima_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

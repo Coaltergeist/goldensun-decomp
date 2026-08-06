@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_908_20084c8
-	.export_func OvlFunc_908_2008030
-	.export_func OvlFunc_908_200803c
-	.export_func OvlFunc_908_2008044
-	.export_func OvlFunc_908_200811c
-	.export_func OvlFunc_908_2008038
+	.export_func BilibinRooms_MapInit
+	.export_func BilibinRooms_GetEntrances
+	.export_func BilibinRooms_GetExits
+	.export_func BilibinRooms_GetActors
+	.export_func BilibinRooms_GetEvents
+	.export_func BilibinRooms_GetSpecialExits

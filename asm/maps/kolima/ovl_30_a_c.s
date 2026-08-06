@@ -1,0 +1,196 @@
+	.include "macros.inc"
+
+.thumb_func_start OvlFunc_911_2008050
+	push	{r5, r6, lr}
+	mov	r5, r0
+	bl	__Random
+	mov	r3, #0x64
+	mov	r2, r0
+	mul	r2, r3
+	mov	r6, r5
+	add	r6, #0x64
+	ldrh	r3, [r6]
+	lsr	r2, #16
+	add	r3, r2
+	mov	r2, #0xfa
+	strh	r3, [r6]
+	lsl	r2, #18
+	lsl	r3, #16
+	cmp	r3, r2
+	ble	.Lm911_7e
+	mov	r0, r5
+	mov	r1, #7
+	bl	__Func_80929d8
+	b	.Lm911_86
+.Lm911_7e:
+	mov	r0, r5
+	mov	r1, #0xa
+	bl	__Func_80929d8
+.Lm911_86:
+	mov	r2, #0
+	ldrsh	r3, [r6, r2]
+	mov	r2, #0x96
+	lsl	r2, #3
+	cmp	r3, r2
+	ble	.Lm911_96
+	mov	r3, #0
+	strh	r3, [r6]
+.Lm911_96:
+	mov	r0, #1
+	pop	{r5, r6}
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_911_2008050
+
+.thumb_func_start OvlFunc_911_20080a0
+	push	{r5, r6, lr}
+	add	r0, #0x48
+	mov	r2, #0
+	mov	r6, #0x69
+	mov	r5, #0x6e
+	mov	r4, #2
+	mov	r1, #1
+.Lm911_ae:
+	sub	r3, r2, #6
+	strh	r6, [r0]
+	cmp	r3, #1
+	bhi	.Lm911_b8
+	strh	r5, [r0]
+.Lm911_b8:
+	add	r2, #1
+	strb	r4, [r0, #0x16]
+	str	r1, [r0, #4]
+	add	r0, #0x18
+	cmp	r2, #8
+	bls	.Lm911_ae
+	pop	{r5, r6}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_911_20080a0
+
+.thumb_func_start OvlFunc_911_20080cc
+	push	{lr}
+	ldr	r3, [r0, #8]
+	ldr	r2, [r0, #0x24]
+	add	r3, r2
+	str	r3, [r0, #8]
+	ldr	r2, [r0, #0x2c]
+	ldr	r3, [r0, #0x10]
+	add	r3, r2
+	str	r3, [r0, #0x10]
+	ldr	r3, =0xfffff5c3
+	add	r2, r3
+	str	r2, [r0, #0x2c]
+	ldr	r3, [r0, #0x18]
+	mov	r2, #0xc0
+	lsl	r2, #3
+	add	r3, r2
+	str	r3, [r0, #0x18]
+	ldr	r3, [r0, #0x1c]
+	add	r3, r2
+	str	r3, [r0, #0x1c]
+	mov	r2, r0
+	add	r2, #0x64
+	ldrh	r3, [r2]
+	sub	r3, #1
+	strh	r3, [r2]
+	lsl	r3, #16
+	cmp	r3, #0
+	bne	.Lm911_108
+	bl	__DeleteActor
+.Lm911_108:
+	mov	r0, #1
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_911_20080cc
+
+.thumb_func_start OvlFunc_911_2008114
+	push	{r5, lr}
+	mov	r5, r0
+	ldr	r1, [r5, #0x68]
+	cmp	r1, #0
+	beq	.Lm911_15e
+	add	r0, #0x5a
+	ldrb	r2, [r0]
+	mov	r3, #0xfe
+	and	r3, r2
+	strb	r3, [r0]
+	ldr	r0, [r1, #0x10]
+	ldr	r3, [r5, #0x10]
+	ldr	r1, [r1, #8]
+	sub	r0, r3
+	ldr	r3, [r5, #8]
+	sub	r1, r3
+	bl	__atan2
+	ldrh	r3, [r5, #6]
+	lsl	r0, #16
+	lsr	r0, #16
+	sub	r0, r3
+	lsl	r0, #16
+	asr	r0, #16
+	cmp	r0, #0
+	beq	.Lm911_15e
+	mov	r2, #0x80
+	lsl	r2, #5
+	cmp	r0, r2
+	ble	.Lm911_152
+	mov	r0, r2
+.Lm911_152:
+	ldr	r2, =0xfffff000
+	cmp	r0, r2
+	bge	.Lm911_15a
+	mov	r0, r2
+.Lm911_15a:
+	add	r3, r0
+	strh	r3, [r5, #6]
+.Lm911_15e:
+	mov	r0, #1
+	pop	{r5}
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_911_2008114
+
+.thumb_func_start Kolima_GetEntrances
+	push	{lr}
+	ldr	r3, =gState
+	mov	r1, #0xe0
+	lsl	r1, #1
+	add	r3, r1
+	mov	r1, #0
+	ldrsh	r2, [r3, r1]
+	ldr	r3, =0x27
+	cmp	r2, r3
+	bne	.Lm911_184
+	ldr	r0, =.Lm911_2f80
+	b	.Lm911_190
+.Lm911_184:
+	ldr	r3, =0x26
+	cmp	r2, r3
+	bne	.Lm911_18e
+	ldr	r0, =gScript_913__0200afc8
+	b	.Lm911_190
+.Lm911_18e:
+	ldr	r0, =.Lm911_2e60
+.Lm911_190:
+	pop	{r1}
+	bx	r1
+.func_end Kolima_GetEntrances
+
+.thumb_func_start Kolima_GetSpecialExits
+	push	{lr}
+	ldr	r3, =gState
+	mov	r1, #0xe0
+	lsl	r1, #1
+	add	r3, r1
+	mov	r1, #0
+	ldrsh	r2, [r3, r1]
+	ldr	r3, =0x26
+	mov	r0, #0
+	cmp	r2, r3
+	bne	.Lm911_1c4
+	ldr	r0, =.Lm911_3010
+.Lm911_1c4:
+	pop	{r1}
+	bx	r1
+.func_end Kolima_GetSpecialExits
+

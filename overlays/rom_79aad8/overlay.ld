@@ -15,22 +15,14 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_79aad8/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_a.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_b.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_a_b.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_a_c_a.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_a_c_b.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_a_c_c.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_b.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_c_b.o(.text)
-		asm/overlays/rom_79aad8/ovl_314_c_c_c.o(.text)
+		asm/maps/goma_cave.o(.text)
 		src/overlays/rom_79aad8/imports.o(.text)
 	} > overlay
 
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_79aad8/ovl_314_c_c_c.o(.data)
+		asm/maps/goma_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

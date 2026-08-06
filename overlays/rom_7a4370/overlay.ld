@@ -14,28 +14,16 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7a4370/exports.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_a_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_a_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_a_c.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_a_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_a_c.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_a.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_c_c.o(.text)
+		asm/maps/kolima_forest_5.o(.text)
 		src/overlays/rom_7a4370/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_c_c.o(.data)
+		asm/maps/kolima_forest_5.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7a4370/ovl_30_c_c_c_c_c_c.o(.bss)
+		asm/maps/kolima_forest_5.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

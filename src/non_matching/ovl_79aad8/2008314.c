@@ -1,8 +1,8 @@
-/* OvlFunc_906_2008314 == GetEntrances(void)  [overlay rom_79aad8 / ovl_314]
+/* GomaCave_GetEntrances == GetEntrances(void)  [overlay rom_79aad8 / ovl_314]
  * Source asm: goldensun/asm/overlays/rom_79aad8/ovl_314_a.s
  *
  * Logic is faithful; this does NOT yet byte-match. Two residual codegen-shape
- * diffs remain (see `tools/judge.sh … OvlFunc_906_2008314`):
+ * diffs remain (see `tools/judge.sh … GomaCave_GetEntrances`):
  *
  *   1. gState field at +0x1c0: the ROM loads &gState with reloc addend 0 and
  *      computes 0x1c0 at runtime (`movs #224; lsls #1; adds`), then ldrsh.
@@ -23,7 +23,7 @@ extern unsigned char gState[];                 /* &gState (GlobalState, 0x020002
 extern unsigned char L818[] __asm__(".L818");
 extern unsigned char L8d8[] __asm__(".L8d8");
 
-unsigned char *OvlFunc_906_2008314(void) {
+unsigned char *GomaCave_GetEntrances(void) {
     if (*(short *)((int)gState + 0x1c0) == 0x1d)
         return L8d8;
     return L818;

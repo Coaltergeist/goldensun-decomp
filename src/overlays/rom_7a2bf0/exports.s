@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_915_2008bf8
-	.export_func OvlFunc_915_20089dc
-	.export_func OvlFunc_915_20089e8
-	.export_func OvlFunc_915_20089f0
-	.export_func OvlFunc_915_2008bf0
-	.export_func OvlFunc_915_20089e4
+	.export_func KolimaForest3_MapInit
+	.export_func KolimaForest3_GetEntrances
+	.export_func KolimaForest3_GetExits
+	.export_func KolimaForest3_GetActors
+	.export_func KolimaForest3_GetEvents
+	.export_func KolimaForest3_GetSpecialExits
