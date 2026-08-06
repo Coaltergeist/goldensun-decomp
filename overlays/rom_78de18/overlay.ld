@@ -14,15 +14,12 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_78de18/exports.o(.text)
-		asm/overlays/rom_78de18/ovl_30_a_b.o(.text)
-		asm/overlays/rom_78de18/ovl_30_b.o(.text)
-		asm/overlays/rom_78de18/ovl_30_c_b.o(.text)
-		asm/overlays/rom_78de18/ovl_30_c_c.o(.text)
+		asm/maps/sol_sanctum_5.o(.text)
 		src/overlays/rom_78de18/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_78de18/ovl_30_c_c.o(.data)
+		asm/maps/sol_sanctum_5.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

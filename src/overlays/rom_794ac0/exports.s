@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_899_200a758
-	.export_func OvlFunc_899_2008030
-	.export_func OvlFunc_899_2008040
-	.export_func OvlFunc_899_2008048
-	.export_func OvlFunc_899_2008310
-	.export_func OvlFunc_899_2008038
+	.export_func VaultRooms1_MapInit
+	.export_func VaultRooms1_GetEntrances
+	.export_func VaultRooms1_GetExits
+	.export_func VaultRooms1_GetActors
+	.export_func VaultRooms1_GetEvents
+	.export_func VaultRooms1_GetSpecialExits

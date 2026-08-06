@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_896_200bf24
-	.export_func OvlFunc_896_200836c
-	.export_func OvlFunc_896_2008378
-	.export_func OvlFunc_896_2008380
-	.export_func OvlFunc_896_2008388
-	.export_func OvlFunc_896_2008374
+	.export_func ElementalStars_MapInit
+	.export_func ElementalStars_GetEntrances
+	.export_func ElementalStars_GetExits
+	.export_func ElementalStars_GetActors
+	.export_func ElementalStars_GetEvents
+	.export_func ElementalStars_GetSpecialExits
