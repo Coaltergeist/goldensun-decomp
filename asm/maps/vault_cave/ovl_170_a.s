@@ -1,0 +1,154 @@
+	.include "macros.inc"
+
+.thumb_func_start OvlFunc_935_2008170
+	push	{r5, r6, r7, lr}
+	mov	r7, r10
+	mov	r6, r9
+	mov	r5, r8
+	push	{r5, r6, r7}
+	mov	r0, #0
+	sub	sp, #0xc
+	bl	__MapActor_GetActor
+	ldrh	r3, [r0, #6]
+	mov	r2, #0xa
+	ldrsh	r1, [r0, r2]
+	lsr	r3, #12
+	ldr	r2, =.Lm935_1844
+	lsl	r3, #2
+	mov	r10, r3
+	ldr	r3, [r2, r3]
+	asr	r2, r3, #16
+	add	r1, r2
+	mov	r8, r0
+	asr	r0, r1, #4
+	mov	r1, r8
+	mov	r4, #0x12
+	ldrsh	r2, [r1, r4]
+	lsl	r3, #16
+	asr	r3, #16
+	add	r2, r3
+	asr	r1, r2, #4
+	bl	OvlFunc_935_2008134
+	mov	r6, r0
+	mov	r3, r6
+	add	r3, #0x59
+	ldrb	r3, [r3]
+	cmp	r3, #0
+	beq	.Lm935_29e
+	cmp	r6, #0
+	beq	.Lm935_29e
+	mov	r5, #0
+.Lm935_1be:
+	mov	r0, r5
+	add	r0, #0xb
+	bl	__MapActor_GetActor
+	cmp	r6, r0
+	beq	.Lm935_29e
+	add	r5, #1
+	cmp	r5, #3
+	ble	.Lm935_1be
+	ldr	r5, =.Lm935_1844
+	mov	r4, r10
+	ldr	r3, [r5, r4]
+	mov	r2, #0xa
+	ldrsh	r1, [r6, r2]
+	asr	r2, r3, #16
+	add	r1, r2
+	asr	r0, r1, #4
+	lsl	r3, #16
+	mov	r1, #0x12
+	ldrsh	r2, [r6, r1]
+	asr	r3, #16
+	add	r2, r3
+	asr	r1, r2, #4
+	bl	OvlFunc_935_2008134
+	cmp	r0, #0
+	beq	.Lm935_202
+	mov	r3, r0
+	add	r3, #0x59
+	ldrb	r2, [r3]
+	mov	r3, #1
+	and	r3, r2
+	cmp	r3, #0
+	bne	.Lm935_29e
+.Lm935_202:
+	mov	r3, #0
+	mov	r2, r6
+	add	r2, #0x22
+	mov	r9, r3
+	mov	r3, #2
+	strb	r3, [r2]
+	mov	r4, r10
+	ldr	r1, [r5, r4]
+	ldr	r2, =0xffff0000
+	ldr	r3, [r6, #8]
+	and	r2, r1
+	mov	r7, sp
+	add	r3, r2
+	str	r3, [r7]
+	ldr	r3, [r6, #0xc]
+	str	r3, [r7, #4]
+	ldr	r3, [r6, #0x10]
+	lsl	r1, #16
+	add	r3, r1
+	str	r3, [r7, #8]
+	mov	r0, r6
+	mov	r1, r7
+	bl	__TestCollision
+	cmp	r0, #0
+	bgt	.Lm935_29e
+	mov	r1, #8
+	mov	r0, r8
+	bl	__Actor_SetAnim
+	ldr	r5, =0x3333
+	mov	r0, #0xf
+	bl	__WaitFrames
+	mov	r0, #0xee
+	bl	__PlaySound
+	str	r5, [r6, #0x30]
+	str	r5, [r6, #0x34]
+	ldr	r1, [r7]
+	ldr	r2, [r7, #4]
+	ldr	r3, [r7, #8]
+	mov	r0, r6
+	bl	__Actor_TravelTo
+	mov	r0, r8
+	str	r5, [r0, #0x30]
+	str	r5, [r0, #0x34]
+	ldr	r1, [r7]
+	ldr	r2, [r7, #4]
+	ldr	r3, [r7, #8]
+	bl	__Actor_TravelTo
+	mov	r0, r6
+	bl	__Actor_WaitMovement
+	mov	r0, #0x90
+	lsl	r0, #1
+	bl	__PlaySound
+	ldr	r3, [r7]
+	str	r3, [r6, #8]
+	ldr	r3, [r7, #8]
+	str	r3, [r6, #0x10]
+	mov	r3, #0x80
+	mov	r1, r9
+	mov	r2, r8
+	lsl	r3, #24
+	str	r1, [r6, #0x24]
+	str	r1, [r6, #0x2c]
+	mov	r0, r8
+	str	r1, [r2, #0x24]
+	str	r1, [r2, #0x2c]
+	str	r3, [r2, #0x38]
+	str	r3, [r2, #0x40]
+	mov	r1, #1
+	bl	__Actor_SetAnim
+.Lm935_29e:
+	add	sp, #0xc
+	pop	{r3, r5, r6}
+	mov	r8, r3
+	mov	r9, r5
+	mov	r10, r6
+	pop	{r5, r6, r7}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_935_2008170
+

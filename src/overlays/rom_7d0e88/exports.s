@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_947_200a74c
-	.export_func OvlFunc_947_2009440
-	.export_func OvlFunc_947_20094bc
-	.export_func OvlFunc_947_20094c4
-	.export_func OvlFunc_947_200a580
-	.export_func OvlFunc_947_20094b8
+	.export_func CrossboneIsleDungeon2_MapInit
+	.export_func CrossboneIsleDungeon2_GetEntrances
+	.export_func CrossboneIsleDungeon2_GetExits
+	.export_func CrossboneIsleDungeon2_GetActors
+	.export_func CrossboneIsleDungeon2_GetEvents
+	.export_func CrossboneIsleDungeon2_GetSpecialExits

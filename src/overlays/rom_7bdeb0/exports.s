@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_934_20096f0
-	.export_func OvlFunc_934_2008d20
-	.export_func OvlFunc_934_2008d78
-	.export_func OvlFunc_934_2008d80
-	.export_func OvlFunc_934_200969c
-	.export_func OvlFunc_934_2008d74
+	.export_func ValeCave_MapInit
+	.export_func ValeCave_GetEntrances
+	.export_func ValeCave_GetExits
+	.export_func ValeCave_GetActors
+	.export_func ValeCave_GetEvents
+	.export_func ValeCave_GetSpecialExits

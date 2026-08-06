@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_923_20092e0
-	.export_func OvlFunc_923_2008e90
-	.export_func OvlFunc_923_2008e9c
-	.export_func OvlFunc_923_2008ea4
-	.export_func OvlFunc_923_2008fd0
-	.export_func OvlFunc_923_2008e98
+	.export_func MercuryLighthouseEntrance_MapInit
+	.export_func MercuryLighthouseEntrance_GetEntrances
+	.export_func MercuryLighthouseEntrance_GetExits
+	.export_func MercuryLighthouseEntrance_GetActors
+	.export_func MercuryLighthouseEntrance_GetEvents
+	.export_func MercuryLighthouseEntrance_GetSpecialExits

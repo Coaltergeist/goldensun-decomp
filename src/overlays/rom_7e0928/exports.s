@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_956_2008da4
-	.export_func OvlFunc_956_2008030
-	.export_func OvlFunc_956_200803c
-	.export_func OvlFunc_956_2008044
-	.export_func OvlFunc_956_2008d9c
-	.export_func OvlFunc_956_2008038
+	.export_func ColosseumFinal3_MapInit
+	.export_func ColosseumFinal3_GetEntrances
+	.export_func ColosseumFinal3_GetExits
+	.export_func ColosseumFinal3_GetActors
+	.export_func ColosseumFinal3_GetEvents
+	.export_func ColosseumFinal3_GetSpecialExits

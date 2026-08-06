@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_933_2009638
-	.export_func OvlFunc_933_20083ac
-	.export_func OvlFunc_933_2008414
-	.export_func OvlFunc_933_200841c
-	.export_func OvlFunc_933_20084dc
-	.export_func OvlFunc_933_2008410
+	.export_func LamakanDesert_MapInit
+	.export_func LamakanDesert_GetEntrances
+	.export_func LamakanDesert_GetExits
+	.export_func LamakanDesert_GetActors
+	.export_func LamakanDesert_GetEvents
+	.export_func LamakanDesert_GetSpecialExits

@@ -15,36 +15,22 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7bc690/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_a_a_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_a_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_a_c.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_c_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_c_c_a.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_c_c_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_314_c_c_c.o(.text)
-		asm/overlays/rom_7bc690/ovl_4e4_a.o(.text)
-		asm/overlays/rom_7bc690/ovl_4e4_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_4e4_c.o(.text)
-		asm/overlays/rom_7bc690/ovl_18a4_a_a.o(.text)
-		asm/overlays/rom_7bc690/ovl_18a4_a_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_18a4_b.o(.text)
-		asm/overlays/rom_7bc690/ovl_18a4_c.o(.text)
+		asm/maps/lamakan_desert.o(.text)
 		src/overlays/rom_7bc690/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
 		asm/overlays/common/common0.o(.data)
-		asm/overlays/rom_7bc690/ovl_4e4_c.o(.data)
-		asm/overlays/rom_7bc690/ovl_1f80.o(.data)
+		asm/maps/lamakan_desert.o(.data)
+		asm/maps/lamakan_desert.o(.mdata1)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_7bc690/ovl_314_c_c_c.o(.data)
-		asm/overlays/rom_7bc690/ovl_18a4_c.o(.data)
+		asm/maps/lamakan_desert.o(.mdata2)
+		asm/maps/lamakan_desert.o(.mdata3)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7bc690/ovl_18a4_c.o(.bss)
+		asm/maps/lamakan_desert.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

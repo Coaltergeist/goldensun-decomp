@@ -14,7 +14,13 @@
  * one per function (asm/ mirrors src/). Paths are resolved by
  * arm-none-eabi-as relative to the repo root (the make CWD), matching the
  * .incbin convention used by the overlay data fragments.
+ *
+ * The trailing `.text` makes the macro SECTION-NEUTRAL: a fragment that ends
+ * in .data/.bss (an overlay-owned data blob) would otherwise leave the
+ * assembler in that section, so the C function following the include would be
+ * emitted there instead of .text. Resetting to .text keeps the merged TU's
+ * function stream contiguous. Byte-neutral -- a .text directive emits nothing.
  */
-#define INCLUDE_ASM(path) __asm__(".include \"" path "\"\n")
+#define INCLUDE_ASM(path) __asm__(".include \"" path "\"\n\t.text\n")
 
 #endif /* GUARD_NONMATCHING_H */
