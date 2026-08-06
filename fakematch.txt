@@ -53,7 +53,7 @@ OvlFunc_959_200975c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_c_b.c
 OvlFunc_959_20097bc  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_c_c_b.c
 OvlFunc_common1_1578  src/overlays/common/common1_a_c_c_b.c
 OvlFunc_925_200aeb8  src/maps/mercury_lighthouse_aerie.c
-OvlFunc_952_200bdf8  src/overlays/rom_7d768c/ovl_30_c_a_b.c
+OvlFunc_952_200bdf8  src/maps/babis_palace.c
 OvlFunc_958_2009080  src/overlays/rom_7e636c/ovl_cc0_c_a_c_c_a_b.c
 OvlFunc_959_200969c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_a_b.c
 OvlFunc_944_200840c  src/maps/tolbi_bound_ship_top.c
@@ -66,8 +66,8 @@ OvlFunc_959_2009cf0  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_c_a_b.c
 Func_80215e0         src/rom_15000/rom_20198_c_c_c_a_a_b.c
 WaitFrames           src/rom_c0/rom_2e00_c_c_b.c
 OvlFunc_926_200c0dc  src/maps/fuchin_temple.c
-OvlFunc_952_2008348  src/overlays/rom_7d768c/ovl_30_c_a_a_b.c
-OvlFunc_974_2008244  src/overlays/rom_7fcd20/ovl_30_c_c_a_c_a_b.c
+OvlFunc_952_2008348  src/maps/babis_palace.c
+OvlFunc_974_2008244  src/maps/menu_test.c
 OvlFunc_883_200da40  src/maps/vale_river.c
 OvlFunc_971_20082d8  src/maps/link_lobby.c
 OvlFunc_882_2008ec4  src/maps/vale_river_prologue.c
@@ -81,7 +81,7 @@ OvlFunc_924_20088ec  src/overlays/rom_7ac2d8/ovl_314_a_c_c_c_b.c
 OvlFunc_934_20088ec  src/overlays/rom_7bdeb0/ovl_314_a_a_c_c_b.c
 OvlFunc_946_2008608  src/maps/crossbone_isle.c
 OvlFunc_948_2008608  src/maps/crossbone_isle_dungeon_4.c
-OvlFunc_957_2008608  src/overlays/rom_7e3e08/ovl_30_a_a_a_c_c_c_b.c
+OvlFunc_957_2008608  src/maps/altmiller_cave.c
 OvlFunc_964_2008608  src/maps/tunnel_ruins.c
 OvlFunc_965_2008608  src/maps/babi_lighthouse.c
 OvlFunc_947_20088ec  src/overlays/rom_7d0e88/ovl_314_a_c_c_c_b.c

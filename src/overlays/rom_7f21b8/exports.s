@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_967_200904c
-	.export_func OvlFunc_967_2008044
-	.export_func OvlFunc_967_200807c
-	.export_func OvlFunc_967_2008084
-	.export_func OvlFunc_967_20084b0
-	.export_func OvlFunc_967_200804c
+	.export_func LaliveroRooms_MapInit
+	.export_func LaliveroRooms_GetEntrances
+	.export_func LaliveroRooms_GetExits
+	.export_func LaliveroRooms_GetActors
+	.export_func LaliveroRooms_GetEvents
+	.export_func LaliveroRooms_GetSpecialExits

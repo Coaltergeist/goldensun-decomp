@@ -14,20 +14,12 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7ec968/exports.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_a_b.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_a_c.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_b.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_b.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_c_a_a.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_c_a_b.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_c_a_c.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_c_b.o(.text)
-		asm/overlays/rom_7ec968/ovl_30_c_c_c.o(.text)
+		asm/maps/suhalla_gate_1.o(.text)
 		src/overlays/rom_7ec968/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7ec968/ovl_30_c_c_c.o(.data)
+		asm/maps/suhalla_gate_1.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

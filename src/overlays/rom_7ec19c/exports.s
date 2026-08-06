@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_962_2008a78
-	.export_func OvlFunc_962_2008030
-	.export_func OvlFunc_962_2008040
-	.export_func OvlFunc_962_2008048
-	.export_func OvlFunc_962_2008a54
-	.export_func OvlFunc_962_2008038
+	.export_func SuhallaRooms_MapInit
+	.export_func SuhallaRooms_GetEntrances
+	.export_func SuhallaRooms_GetExits
+	.export_func SuhallaRooms_GetActors
+	.export_func SuhallaRooms_GetEvents
+	.export_func SuhallaRooms_GetSpecialExits

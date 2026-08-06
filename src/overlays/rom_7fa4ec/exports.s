@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_970_2008da4
-	.export_func OvlFunc_970_2008030
-	.export_func OvlFunc_970_200803c
-	.export_func OvlFunc_970_2008044
-	.export_func OvlFunc_970_20080a8
-	.export_func OvlFunc_970_2008038
+	.export_func LaliveroShip_MapInit
+	.export_func LaliveroShip_GetEntrances
+	.export_func LaliveroShip_GetExits
+	.export_func LaliveroShip_GetActors
+	.export_func LaliveroShip_GetEvents
+	.export_func LaliveroShip_GetSpecialExits

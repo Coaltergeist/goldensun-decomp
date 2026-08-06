@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_952_200c0b4
-	.export_func OvlFunc_952_2008030
-	.export_func OvlFunc_952_2008068
-	.export_func OvlFunc_952_2008070
-	.export_func OvlFunc_952_200c034
-	.export_func OvlFunc_952_2008060
+	.export_func BabisPalace_MapInit
+	.export_func BabisPalace_GetEntrances
+	.export_func BabisPalace_GetExits
+	.export_func BabisPalace_GetActors
+	.export_func BabisPalace_GetEvents
+	.export_func BabisPalace_GetSpecialExits

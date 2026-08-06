@@ -15,34 +15,7 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7f6e64/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_a_a_a.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_a_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_a_a_c.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_a_c_a.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_a_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_a_a_a.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_a_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_a_c.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_a_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_a_a_c.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_a_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_a.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_c_a.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_a_c_c_c_c_c_c_c_c.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_b.o(.text)
-		asm/overlays/rom_7f6e64/ovl_314_c_c.o(.text)
+		asm/maps/venus_lighthouse_aerie.o(.text)
 		src/overlays/rom_7f6e64/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
@@ -50,11 +23,11 @@ SECTIONS {
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_7f6e64/ovl_314_c_c.o(.data)
+		asm/maps/venus_lighthouse_aerie.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7f6e64/ovl_314_c_c.o(.bss)
+		asm/maps/venus_lighthouse_aerie.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {
