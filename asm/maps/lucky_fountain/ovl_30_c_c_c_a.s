@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start TolbiRooms2_GetEvents
+.thumb_func_start LuckyFountain_GetEvents
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -19,9 +19,9 @@
 .Lm951_1c2:
 	pop	{r1}
 	bx	r1
-.func_end TolbiRooms2_GetEvents
+.func_end LuckyFountain_GetEvents
 
-.thumb_func_start TolbiRooms2_MapInit
+.thumb_func_start LuckyFountain_MapInit
 	push	{r5, r6, r7, lr}
 	mov	r7, r10
 	mov	r6, r8
@@ -317,7 +317,7 @@
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
-.func_end TolbiRooms2_MapInit
+.func_end LuckyFountain_MapInit
 
 .thumb_func_start OvlFunc_951_20084bc
 	push	{r5, r6, lr}

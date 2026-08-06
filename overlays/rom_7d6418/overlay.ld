@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tolbi_rooms_2.o(.text)
+		asm/maps/lucky_fountain.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/tolbi_rooms_2.o(.data)
+		asm/maps/lucky_fountain.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/tolbi_rooms_2.o(.bss)
+		asm/maps/lucky_fountain.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

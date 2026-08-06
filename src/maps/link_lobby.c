@@ -208,3 +208,5 @@ extern unsigned char gOvl_02009e14[];
 void *OvlFunc_971_20091b4(void) {
     return (void *)gOvl_02009e14;
 }
+
+INCLUDE_ASM("asm/maps/link_lobby/ovl_30_c_c.s");

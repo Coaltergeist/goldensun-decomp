@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/world_map.o(.text)
+		asm/maps/world_map_cutscenes.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/world_map.o(.data)
+		asm/maps/world_map_cutscenes.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/world_map.o(.bss)
+		asm/maps/world_map_cutscenes.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

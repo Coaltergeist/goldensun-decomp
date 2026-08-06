@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start WorldMap_MapInit
+.thumb_func_start WorldMapCutscenes_MapInit
 	push	{r5, lr}
 	ldr	r3, =gState
 	mov	r1, #0xe1
@@ -320,7 +320,7 @@
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end WorldMap_MapInit
+.func_end WorldMapCutscenes_MapInit
 
 .thumb_func_start OvlFunc_881_2008a8c
 	push	{lr}

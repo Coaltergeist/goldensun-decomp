@@ -97,3 +97,5 @@ int OvlFunc_973_20087d4(void) {
 }
 
 INCLUDE_ASM("asm/maps/debug_get_item/imports.s");
+
+INCLUDE_ASM("asm/maps/debug_get_item/ovl_30_c_c_c_c.s");

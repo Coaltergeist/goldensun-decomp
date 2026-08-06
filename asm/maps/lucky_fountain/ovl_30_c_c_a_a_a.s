@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start TolbiRooms2_GetActors
+.thumb_func_start LuckyFountain_GetActors
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -19,7 +19,7 @@
 .Lm951_5e:
 	pop	{r1}
 	bx	r1
-.func_end TolbiRooms2_GetActors
+.func_end LuckyFountain_GetActors
 
 .thumb_func_start OvlFunc_951_2008074
 	push	{r5, r6, lr}

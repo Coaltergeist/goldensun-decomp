@@ -44,7 +44,7 @@ OvlFunc_884_2008750  src/maps/vale_plaza.c
 OvlFunc_884_20087ec  src/maps/vale_plaza.c
 OvlFunc_884_200884c  src/maps/vale_plaza.c
 OvlFunc_884_200887c  src/maps/vale_plaza.c
-OvlFunc_881_200a858  src/maps/world_map.c
+OvlFunc_881_200a858  src/maps/world_map_cutscenes.c
 OvlFunc_882_2008278  src/maps/vale_river_prologue.c
 OvlFunc_883_2008cd0  src/maps/vale_river.c
 OvlFunc_899_200aba0  src/maps/vault_rooms_1.c
@@ -58,7 +58,7 @@ OvlFunc_959_200969c  src/maps/lunpa_fortress.c
 OvlFunc_944_200840c  src/maps/tolbi_bound_ship_top.c
 OvlFunc_959_2009c4c  src/maps/lunpa_fortress.c
 OvlFunc_941_20081b0  src/maps/west_lunpa_cave.c
-OvlFunc_951_2008104  src/maps/tolbi_rooms_2.c
+OvlFunc_951_2008104  src/maps/lucky_fountain.c
 OvlFunc_899_200882c  src/maps/vault_rooms_1.c
 OvlFunc_946_20095d0  src/maps/crossbone_isle.c
 OvlFunc_959_2009cf0  src/maps/lunpa_fortress.c
@@ -97,7 +97,7 @@ OvlFunc_928_2008de8  src/maps/xian.c
 OvlFunc_common1_850  src/maps/common/common1.c
 OvlFunc_903_2008f8c  src/maps/goma_cave_entry.c
 Func_807a628  src/rom_77000/rom_79460_c_c_c_c_c_b.c
-OvlFunc_881_20097a4  src/maps/world_map.c
+OvlFunc_881_20097a4  src/maps/world_map_cutscenes.c
 OvlFunc_907_2008d10  src/maps/bilibin.c
 OvlFunc_959_2008e80  src/maps/lunpa_fortress.c
 OvlFunc_927_2008608  src/maps/mogall_forest.c

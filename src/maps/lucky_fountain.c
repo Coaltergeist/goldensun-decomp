@@ -1,27 +1,27 @@
 // fakematch
-/* rom_7d6418 (overlay file 951): consolidated TU — tolbi_rooms_2 map overlay. */
+/* rom_7d6418 (overlay file 951): consolidated TU — lucky_fountain map overlay. */
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_2/exports.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/exports.s");
 
 extern unsigned char gOvl_02009a08[];
 
-unsigned int TolbiRooms2_GetEntrances(void) {
+unsigned int LuckyFountain_GetEntrances(void) {
     return (unsigned int)gOvl_02009a08;
 }
 
-unsigned int TolbiRooms2_GetSpecialExits(void) {
+unsigned int LuckyFountain_GetSpecialExits(void) {
     return 0;
 }
 
 extern unsigned char gOvl_02009ac8[];
 
-void *TolbiRooms2_GetExits(void) {
+void *LuckyFountain_GetExits(void) {
     return (void *)gOvl_02009ac8;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_2/ovl_30_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_a_a_a.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -70,7 +70,7 @@ void OvlFunc_951_200819c(void) {
     OvlFunc_951_20088f8(0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_2/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_c_a.s");
 
 extern unsigned char *__MapActor_GetActor(int actor);
 
@@ -83,6 +83,6 @@ void OvlFunc_951_2008e44(int actor, int visible) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_2/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_c_c.s");
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_2/imports.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/imports.s");

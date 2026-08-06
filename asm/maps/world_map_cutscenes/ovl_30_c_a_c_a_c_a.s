@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-.thumb_func_start WorldMap_GetActors
+.thumb_func_start WorldMapCutscenes_GetActors
 	push	{lr}
 	ldr	r3, =gState
 	mov	r2, #0xe1
@@ -93,7 +93,7 @@
 .Lm881_45e:
 	pop	{r1}
 	bx	r1
-.func_end WorldMap_GetActors
+.func_end WorldMapCutscenes_GetActors
 
 .thumb_func_start OvlFunc_881_20084a0
 	push	{r5, r6, r7, lr}

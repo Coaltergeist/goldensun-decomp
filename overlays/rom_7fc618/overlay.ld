@@ -15,12 +15,11 @@ SECTIONS {
 	.text : {
 		asm/maps/debug_test/exports.o(.text)
 		asm/maps/debug_test.o(.text)
-		asm/overlays/rom_7fc618/ovl_30_c_c.o(.text)
 		asm/maps/debug_test/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7fc618/ovl_30_c_c.o(.data)
+		asm/maps/debug_test.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

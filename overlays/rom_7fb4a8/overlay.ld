@@ -15,17 +15,16 @@ SECTIONS {
 	.text : {
 		asm/maps/link_lobby/exports.o(.text)
 		asm/maps/link_lobby.o(.text)
-		asm/overlays/rom_7fb4a8/ovl_30_c_c.o(.text)
 		asm/maps/link_lobby/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7fb4a8/ovl_30_c_c.o(.data)
+		asm/maps/link_lobby.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/overlays/rom_7fb4a8/ovl_30_c_c.o(.bss)
+		asm/maps/link_lobby.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

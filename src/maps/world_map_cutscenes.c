@@ -1,11 +1,11 @@
 // fakematch
-/* rom_77a7c8 (overlay file 881): consolidated TU — world_map map overlay. */
+/* rom_77a7c8 (overlay file 881): consolidated TU — world_map_cutscenes map overlay. */
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/world_map/exports.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_a_a_a.s");
 
 
 unsigned int OvlFunc_881_2008250(unsigned int arg0) {
@@ -29,17 +29,17 @@ unsigned int OvlFunc_881_2008250(unsigned int arg0) {
 }
 
 
-unsigned int WorldMap_GetEntrances(void) {
+unsigned int WorldMapCutscenes_GetEntrances(void) {
     extern unsigned char gOvl_0200d27c[];
     return (unsigned int)gOvl_0200d27c;
 }
 
-int WorldMap_GetSpecialExits(void) {
+int WorldMapCutscenes_GetSpecialExits(void) {
     return 0;
 }
 
 
-unsigned int WorldMap_GetExits(void) {
+unsigned int WorldMapCutscenes_GetExits(void) {
     extern unsigned char gOvl_0200da2c[];
     return (unsigned int)gOvl_0200da2c;
 }
@@ -58,7 +58,7 @@ unsigned int OvlFunc_881_20082a4(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_a_a_c.s");
 
 
 unsigned int OvlFunc_881_2008350(unsigned char *actor)
@@ -71,7 +71,7 @@ unsigned int OvlFunc_881_2008350(unsigned char *actor)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_a_c_a.s");
 
 
 void OvlFunc_881_2008540(void) {
@@ -104,12 +104,12 @@ void OvlFunc_881_2008580(void) {
 }
 
 
-unsigned int WorldMap_GetEvents(void) {
+unsigned int WorldMapCutscenes_GetEvents(void) {
     extern unsigned char gOvl_0200e3f4[];
     return (unsigned int)gOvl_0200e3f4;
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_a_a.s");
 
 void OvlFunc_881_20086b4(void) {
     if (__GetFlag(0x85a) == 0) {
@@ -129,7 +129,7 @@ void OvlFunc_881_20086dc(void)
 	__Func_8091e9c(0x4a);
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_c_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_a_a.s");
 
 void OvlFunc_881_20097a4(void)
 {
@@ -165,7 +165,7 @@ void OvlFunc_881_20097a4(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_a_c.s");
 
 
 void OvlFunc_881_200a858(void)
@@ -200,7 +200,7 @@ void OvlFunc_881_200a858(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_c.s");
 
 
 unsigned int OvlFunc_881_200b41c(void)
@@ -217,7 +217,7 @@ unsigned int OvlFunc_881_200b41c(void)
     return r6;
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_a_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_c.s");
 
 
 void OvlFunc_881_200b7bc(void) {
@@ -280,7 +280,7 @@ void OvlFunc_881_200b7d8(void)
     actor[0x55] = 2;
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_c_a_c.s");
 
 
 void OvlFunc_881_200bf10(unsigned int arg0)
@@ -323,6 +323,6 @@ void OvlFunc_881_200bf88(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_c_c_c.s");
 
-INCLUDE_ASM("asm/maps/world_map/imports.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/imports.s");

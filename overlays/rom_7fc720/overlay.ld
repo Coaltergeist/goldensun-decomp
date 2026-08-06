@@ -14,11 +14,10 @@ MEMORY {
 SECTIONS {
 	.text : {
 		asm/maps/debug_get_item.o(.text)
-		asm/overlays/rom_7fc720/ovl_30_c_c_c_c.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7fc720/ovl_30_c_c_c_c.o(.data)
+		asm/maps/debug_get_item.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

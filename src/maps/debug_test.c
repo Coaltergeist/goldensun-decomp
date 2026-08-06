@@ -1,5 +1,7 @@
 /* rom_7fc618 (overlay file 972): consolidated TU */
 
+#include "nonmatching.h"
+
 extern unsigned char gOvl_020081a8[];
 extern unsigned char gOvl_020081d8[];
 extern unsigned char gOvl_020081ec[];
@@ -55,3 +57,5 @@ unsigned int OvlFunc_972_20080ac(void) {
 unsigned int OvlFunc_972_20080b4(void) {
     return 0;
 }
+
+INCLUDE_ASM("asm/maps/debug_test/ovl_30_c_c.s");
