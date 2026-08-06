@@ -8,7 +8,7 @@
 	mov	r0, r5
 	bl	OvlFunc_927_2008474
 	cmp	r0, #0
-	beq	.L1510
+	beq	.Lm927_1510
 	mov	r3, sp
 	add	r2, sp, #0x18
 	ldmia	r2!, {r0, r1}
@@ -20,11 +20,11 @@
 	bl	OvlFunc_927_2008608
 	ldr	r3, [r5, #4]
 	cmp	r3, #8
-	bne	.L14a0
+	bne	.Lm927_14a0
 	ldr	r3, [r5, #0x10]
 	asr	r3, #20
 	cmp	r3, #0x17
-	bne	.L14a0
+	bne	.Lm927_14a0
 	mov	r3, #0x23
 	mov	r2, #0x44
 	str	r3, [sp]
@@ -34,15 +34,15 @@
 	mov	r2, #4
 	mov	r3, #1
 	bl	__Func_8010704
-	b	.L1510
-.L14a0:
+	b	.Lm927_1510
+.Lm927_14a0:
 	ldr	r3, [r5, #4]
 	cmp	r3, #0xa
-	bne	.L1510
+	bne	.Lm927_1510
 	ldr	r3, [r5, #8]
 	asr	r3, #20
 	cmp	r3, #0x23
-	bne	.L1510
+	bne	.Lm927_1510
 	ldr	r0, =0x311
 	bl	__SetFlag
 	mov	r0, #0xa
@@ -83,7 +83,7 @@
 	mov	r3, #1
 	str	r5, [sp, #4]
 	bl	OvlFunc_927_2008244
-.L1510:
+.Lm927_1510:
 	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
@@ -148,9 +148,9 @@
 	str	r6, [sp]
 	bl	OvlFunc_927_2008244
 	cmp	r5, #0x24
-	bne	.L15ba
+	bne	.Lm927_15ba
 	cmp	r7, #0x18
-	bne	.L15ba
+	bne	.Lm927_15ba
 	mov	r0, #0xb
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -160,7 +160,7 @@
 	ldr	r3, =0xfffe0000
 	str	r3, [r0, #0x14]
 	str	r3, [r0, #0xc]
-.L15ba:
+.Lm927_15ba:
 	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3}
@@ -580,7 +580,7 @@
 	mov	r6, #0
 	bl	OvlFunc_927_2008474
 	cmp	r0, #0
-	beq	.L1ab2
+	beq	.Lm927_1ab2
 	mov	r2, sp
 	add	r3, sp, #0x18
 	ldmia	r3!, {r0, r1}
@@ -592,11 +592,11 @@
 	bl	OvlFunc_927_2008608
 	ldr	r3, [r5, #4]
 	cmp	r3, #9
-	beq	.L19ee
+	beq	.Lm927_19ee
 	cmp	r3, #0xb
-	bne	.L1a98
-	b	.L1a30
-.L19ee:
+	bne	.Lm927_1a98
+	b	.Lm927_1a30
+.Lm927_19ee:
 	ldr	r3, [r5, #8]
 	mov	r2, #0x44
 	asr	r3, #20
@@ -610,7 +610,7 @@
 	ldr	r3, [r5, #8]
 	asr	r2, r3, #20
 	cmp	r2, #0x2a
-	bne	.L1a5a
+	bne	.Lm927_1a5a
 	mov	r3, #0x17
 	str	r2, [sp]
 	str	r3, [sp, #4]
@@ -625,12 +625,12 @@
 	ldr	r0, =0x312
 	mov	r6, #1
 	bl	__SetFlag
-	b	.L1a5a
-.L1a30:
+	b	.Lm927_1a5a
+.Lm927_1a30:
 	ldr	r3, [r5, #8]
 	asr	r2, r3, #20
 	cmp	r2, #0x28
-	bne	.L1a5a
+	bne	.Lm927_1a5a
 	mov	r3, #0x20
 	str	r2, [sp]
 	str	r3, [sp, #4]
@@ -645,12 +645,12 @@
 	ldr	r0, =0x313
 	mov	r6, #1
 	bl	__SetFlag
-.L1a5a:
+.Lm927_1a5a:
 	cmp	r6, #0
-	bne	.L1a64
+	bne	.Lm927_1a64
 	bl	__CutsceneEnd
-	b	.L1ab6
-.L1a64:
+	b	.Lm927_1ab6
+.Lm927_1a64:
 	ldr	r0, [r5, #4]
 	mov	r1, #3
 	bl	__MapActor_SetAnim
@@ -670,10 +670,10 @@
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
-	b	.L1ab2
-.L1a98:
+	b	.Lm927_1ab2
+.Lm927_1a98:
 	cmp	r3, #8
-	bne	.L1ab2
+	bne	.Lm927_1ab2
 	ldr	r3, [r5, #8]
 	mov	r2, #0x31
 	asr	r3, #20
@@ -684,9 +684,9 @@
 	mov	r2, #1
 	mov	r3, #4
 	bl	__Func_8010704
-.L1ab2:
+.Lm927_1ab2:
 	bl	__CutsceneEnd
-.L1ab6:
+.Lm927_1ab6:
 	add	sp, #0x20
 	pop	{r5, r6}
 	pop	{r0}

@@ -15,7 +15,7 @@
 	mov	r8, r3
 	bl	__TestCollision
 	cmp	r0, #0
-	bne	.Ld5e
+	bne	.Lm927_d5e
 	bl	__CutsceneStart
 	mov	r1, #6
 	mov	r0, r5
@@ -59,10 +59,10 @@
 	strb	r3, [r6]
 	bl	__CutsceneEnd
 	mov	r0, #1
-	b	.Ld60
-.Ld5e:
+	b	.Lm927_d60
+.Lm927_d5e:
 	mov	r0, #0
-.Ld60:
+.Lm927_d60:
 	pop	{r3}
 	mov	r8, r3
 	pop	{r5, r6, r7}

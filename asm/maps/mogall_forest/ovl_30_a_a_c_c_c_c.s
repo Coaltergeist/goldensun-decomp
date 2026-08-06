@@ -14,24 +14,24 @@
 	ldr	r3, [r3, #0x28]
 	mov	r1, #0
 	ldrsh	r2, [r3, r1]
-	ldr	r1, =.L2f38
+	ldr	r1, =.Lm927_2f38
 	mov	r5, #0
 	ldr	r3, [r1, r5]
 	cmp	r2, r3
-	bne	.L8ea
+	bne	.Lm927_8ea
 	add	r7, sp, #8
-	b	.L90c
-.L8ea:
+	b	.Lm927_90c
+.Lm927_8ea:
 	add	r7, sp, #8
 	mov	r12, r7
 	mov	r6, #7
 	mov	r4, r1
-.L8f2:
+.Lm927_8f2:
 	mov	r3, r12
 	add	r5, #1
 	str	r6, [r3]
 	cmp	r5, #5
-	bhi	.L90e
+	bhi	.Lm927_90e
 	ldr	r3, [r0, #0x50]
 	ldr	r3, [r3, #0x28]
 	add	r4, #4
@@ -39,16 +39,16 @@
 	ldrsh	r2, [r3, r1]
 	ldr	r3, [r4]
 	cmp	r2, r3
-	bne	.L8f2
-.L90c:
+	bne	.Lm927_8f2
+.Lm927_90c:
 	str	r5, [r7]
-.L90e:
+.Lm927_90e:
 	ldr	r2, [r7]
 	cmp	r2, #6
-	bls	.L918
+	bls	.Lm927_918
 	mov	r0, #0
-	b	.L9c2
-.L918:
+	b	.Lm927_9c2
+.Lm927_918:
 	ldr	r3, [r0, #8]
 	str	r3, [r7, #8]
 	mov	r12, r3
@@ -62,32 +62,32 @@
 	ldr	r2, [r4, r5]
 	mov	r14, r0
 	cmp	r2, #0
-	bge	.L936
+	bge	.Lm927_936
 	neg	r2, r2
-.L936:
+.Lm927_936:
 	mov	r3, r1
 	add	r3, #0xc
 	ldr	r3, [r4, r3]
 	cmp	r3, #0
-	bge	.L942
+	bge	.Lm927_942
 	neg	r3, r3
-.L942:
+.Lm927_942:
 	add	r3, r2, r3
 	ldr	r0, [r4, r1]
 	asr	r3, #4
 	mov	r8, r3
 	mov	r6, r0
 	cmp	r0, #0
-	bge	.L952
+	bge	.Lm927_952
 	neg	r6, r0
-.L952:
+.Lm927_952:
 	mov	r3, r1
 	add	r3, #8
 	ldr	r3, [r4, r3]
 	cmp	r3, #0
-	bge	.L95e
+	bge	.Lm927_95e
 	neg	r3, r3
-.L95e:
+.Lm927_95e:
 	lsl	r0, #16
 	add	r0, r12
 	str	r0, [r7, #8]
@@ -135,7 +135,7 @@
 	str	r5, [sp, #4]
 	bl	OvlFunc_927_2008244
 	mov	r0, #1
-.L9c2:
+.Lm927_9c2:
 	add	sp, #0x20
 	pop	{r3, r5}
 	mov	r8, r3
@@ -171,7 +171,7 @@
 	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
-	beq	.La42
+	beq	.Lm927_a42
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -194,10 +194,10 @@
 	mov	r1, #1
 	bl	__Func_800c548
 	mov	r0, r5
-	b	.La44
-.La42:
+	b	.Lm927_a44
+.Lm927_a42:
 	mov	r0, #0
-.La44:
+.Lm927_a44:
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
@@ -215,7 +215,7 @@
 	bl	__CreateActor
 	mov	r5, r0
 	cmp	r5, #0
-	beq	.Laa6
+	beq	.Lm927_aa6
 	ldr	r1, [r5, #0x50]
 	mov	r3, #0xd
 	ldrb	r2, [r1, #9]
@@ -245,10 +245,10 @@
 	orr	r3, r2
 	strb	r3, [r1]
 	mov	r0, r5
-	b	.Laa8
-.Laa6:
+	b	.Lm927_aa8
+.Lm927_aa6:
 	mov	r0, #0
-.Laa8:
+.Lm927_aa8:
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
@@ -308,25 +308,25 @@
 	and	r3, r2
 	mov	r9, r0
 	cmp	r3, #0
-	beq	.Lb26
+	beq	.Lm927_b26
 	cmp	r7, #0
-	beq	.Lb26
+	beq	.Lm927_b26
 	mov	r3, #0x18
 	ldrsh	r0, [r7, r3]
 	mov	r2, r6
-	b	.Lb2a
-.Lb26:
+	b	.Lm927_b2a
+.Lm927_b26:
 	mov	r2, r6
 	mov	r0, #0xde
-.Lb2a:
+.Lm927_b2a:
 	mov	r1, r5
 	mov	r3, r8
 	bl	__CreateActor
 	mov	r6, r0
 	cmp	r6, #0
-	bne	.Lb3a
-	b	.Lca2
-.Lb3a:
+	bne	.Lm927_b3a
+	b	.Lm927_ca2
+.Lm927_b3a:
 	ldr	r1, [r6, #0x50]
 	mov	r8, r1
 	mov	r1, r10
@@ -336,7 +336,7 @@
 	mov	r0, r6
 	bl	__Actor_SetAnim
 	mov	r3, r10
-	ldr	r2, =.L3058
+	ldr	r2, =.Lm927_3058
 	and	r3, r5
 	lsl	r3, #2
 	ldr	r1, [r2, r3]
@@ -384,24 +384,24 @@
 	and	r3, r1
 	mov	r5, #3
 	cmp	r3, #0
-	beq	.Lca2
+	beq	.Lm927_ca2
 	cmp	r7, #0
-	beq	.Lca2
+	beq	.Lm927_ca2
 	mov	r3, #0x80
 	lsl	r3, #9
 	and	r3, r1
 	cmp	r3, #0
-	beq	.Lbc8
+	beq	.Lm927_bc8
 	ldr	r1, [r7, #4]
 	mov	r0, r6
 	bl	__Func_80929d8
-.Lbc8:
+.Lm927_bc8:
 	mov	r3, #0x80
 	lsl	r3, #10
 	mov	r2, r10
 	and	r3, r2
 	cmp	r3, #0
-	beq	.Lbf4
+	beq	.Lm927_bf4
 	mov	r1, r6
 	add	r1, #0x23
 	ldrb	r2, [r1]
@@ -418,29 +418,29 @@
 	orr	r3, r2
 	mov	r1, r8
 	strb	r3, [r1, #9]
-.Lbf4:
+.Lm927_bf4:
 	mov	r2, #0x80
 	lsl	r2, #12
 	mov	r3, r10
 	and	r2, r3
 	cmp	r2, #0
-	beq	.Lc08
+	beq	.Lm927_c08
 	ldr	r3, [r7, #8]
 	str	r3, [r6, #0x18]
 	ldr	r3, [r7, #0xc]
 	str	r3, [r6, #0x1c]
-.Lc08:
+.Lm927_c08:
 	mov	r3, #0x80
 	lsl	r3, #11
 	mov	r1, r10
 	and	r3, r1
 	cmp	r3, #0
-	beq	.Lc52
-	ldr	r3, =.L3058
+	beq	.Lm927_c52
+	ldr	r3, =.Lm927_3058
 	mov	r1, r11
 	ldr	r5, [r3, r1]
 	cmp	r2, #0
-	beq	.Lc36
+	beq	.Lm927_c36
 	ldr	r0, [r7, #0x10]
 	ldr	r3, [r6, #0x18]
 	ldr	r1, [r5, #0xc]
@@ -451,8 +451,8 @@
 	ldr	r3, [r6, #0x1c]
 	ldr	r1, [r5, #0xc]
 	sub	r0, r3
-	b	.Lc4c
-.Lc36:
+	b	.Lm927_c4c
+.Lm927_c36:
 	ldr	r0, [r7, #0x10]
 	ldr	r2, =0xffff0000
 	ldr	r1, [r5, #0xc]
@@ -463,52 +463,52 @@
 	ldr	r3, =0xffff0000
 	ldr	r1, [r5, #0xc]
 	add	r0, r3
-.Lc4c:
+.Lm927_c4c:
 	bl	_divsi3_RAM
 	str	r0, [r6, #0x34]
-.Lc52:
+.Lm927_c52:
 	mov	r3, #0x80
 	lsl	r3, #14
 	mov	r1, r10
 	and	r3, r1
 	cmp	r3, #0
-	beq	.Lc6e
+	beq	.Lm927_c6e
 	mov	r0, r6
 	mov	r1, #1
 	bl	__Actor_SetAnim
 	ldr	r1, [r7, #0x1c]
 	mov	r0, r6
 	bl	__Actor_SetScript
-.Lc6e:
+.Lm927_c6e:
 	mov	r3, #0x80
 	lsl	r3, #15
 	mov	r2, r10
 	and	r3, r2
 	cmp	r3, #0
-	beq	.Lc80
+	beq	.Lm927_c80
 	ldrh	r3, [r7, #0x20]
 	mov	r1, r8
 	strh	r3, [r1, #0x1e]
-.Lc80:
+.Lm927_c80:
 	mov	r3, #0x80
 	lsl	r3, #16
 	mov	r2, r10
 	and	r3, r2
 	cmp	r3, #0
-	beq	.Lc92
+	beq	.Lm927_c92
 	ldrh	r3, [r7, #0x22]
 	ldr	r1, [sp]
 	strh	r3, [r1]
-.Lc92:
+.Lm927_c92:
 	mov	r3, #0x80
 	lsl	r3, #17
 	mov	r2, r10
 	and	r3, r2
 	cmp	r3, #0
-	beq	.Lca2
+	beq	.Lm927_ca2
 	ldr	r3, [r7, #0x24]
 	str	r3, [r6, #0x6c]
-.Lca2:
+.Lm927_ca2:
 	add	sp, #8
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

@@ -81,7 +81,7 @@
 	mov	r9, r1
 	mov	r8, r2
 	add	r7, sp, #0x38
-.Le3e:
+.Lm927_e3e:
 	mov	r3, r8
 	lsl	r5, r3, #12
 	mov	r0, r5
@@ -120,7 +120,7 @@
 	add	r8, r1
 	mov	r2, r8
 	cmp	r2, #0x10
-	bls	.Le3e
+	bls	.Lm927_e3e
 	add	sp, #0x44
 	pop	{r3, r5, r6}
 	mov	r8, r3

@@ -157,7 +157,7 @@
 	mov	r1, #0
 	bl	__Func_8091c7c
 	cmp	r0, #0
-	bne	.L400
+	bne	.Lm930_400
 	mov	r0, #0x14
 	bl	__CutsceneWait
 	mov	r0, #3
@@ -207,11 +207,11 @@
 	ldrh	r3, [r2]
 	add	r3, #2
 	strh	r3, [r2]
-	b	.L464
+	b	.Lm930_464
 
 	.pool_aligned
 
-.L400:
+.Lm930_400:
 	ldr	r2, [r5]
 	mov	r3, #0xec
 	lsl	r3, #1
@@ -253,7 +253,7 @@
 	mov	r1, #0
 	mov	r2, #0x14
 	bl	__ActorMessage_Wait
-.L464:
+.Lm930_464:
 	mov	r1, #2
 	mov	r0, #8
 	bl	__Func_80925cc
@@ -344,7 +344,7 @@
 	bl	__Func_8092adc
 	mov	r0, #0xbc
 	bl	__PlaySound
-	ldr	r0, =.L1788
+	ldr	r0, =.Lm930_1788
 	mov	r1, #0x43
 	mov	r2, #6
 	bl	__Func_8010560
@@ -364,7 +364,7 @@
 	bl	__PlaySound
 	mov	r2, #6
 	mov	r1, #0x43
-	ldr	r0, =.L179e
+	ldr	r0, =.Lm930_179e
 	bl	__Func_8010560
 	mov	r0, #0x3c
 	bl	__CutsceneWait

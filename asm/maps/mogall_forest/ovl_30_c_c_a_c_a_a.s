@@ -30,7 +30,7 @@
 	str	r3, [r0, #8]
 	bl	OvlFunc_927_2008cd0
 	cmp	r0, #0
-	beq	.L1118
+	beq	.Lm927_1118
 	bl	__CutsceneStart
 	mov	r3, #0
 	mov	r1, #7
@@ -73,7 +73,7 @@
 	mov	r3, r8
 	strb	r3, [r7]
 	bl	__CutsceneEnd
-.L1118:
+.Lm927_1118:
 	add	sp, #0xc
 	pop	{r3}
 	mov	r8, r3

@@ -64,17 +64,17 @@
 	add	r5, r3
 	ldr	r3, =0x3ffe
 	cmp	r5, r3
-	bhi	.L900
+	bhi	.Lm930_900
 	mov	r0, #0xf
 	bl	__UI_Sanctum
-	b	.L90e
-.L900:
+	b	.Lm930_90e
+.Lm930_900:
 	ldr	r0, =0x1a1e
 	bl	__MessageID
 	mov	r0, #0xf
 	mov	r1, #0
 	bl	__ActorMessage
-.L90e:
+.Lm930_90e:
 	bl	__CutsceneEnd
 	pop	{r5}
 	pop	{r0}
@@ -86,9 +86,9 @@
 	ldr	r0, =0x89a
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L932
-	b	.La9e
-.L932:
+	bne	.Lm930_932
+	b	.Lm930_a9e
+.Lm930_932:
 	bl	__CutsceneStart
 	mov	r1, #0x86
 	mov	r2, #0xd8
@@ -116,13 +116,13 @@
 	ldr	r3, [r0, #0x10]
 	asr	r3, #20
 	cmp	r3, #0xd
-	bne	.L986
+	bne	.Lm930_986
 	mov	r1, #0xdc
 	mov	r0, #0
 	lsl	r1, #1
 	mov	r2, #0xc8
 	bl	__MapActor_TravelToAnimWait
-.L986:
+.Lm930_986:
 	mov	r1, #0x80
 	mov	r2, #0x80
 	lsl	r2, #9
@@ -232,7 +232,7 @@
 	mov	r2, #0x14
 	bl	__ActorMessage_Wait
 	bl	__CutsceneEnd
-.La9e:
+.Lm930_a9e:
 	pop	{r5}
 	pop	{r0}
 	bx	r0

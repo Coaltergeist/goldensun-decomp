@@ -57,9 +57,9 @@
 	str	r6, [sp]
 	bl	OvlFunc_927_2008244
 	cmp	r5, #0x2d
-	bne	.L1c1e
+	bne	.Lm927_1c1e
 	cmp	r7, #6
-	bne	.L1c1e
+	bne	.Lm927_1c1e
 	mov	r0, #0xd
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -69,7 +69,7 @@
 	ldr	r3, =0xfffe0000
 	str	r3, [r0, #0x14]
 	str	r3, [r0, #0xc]
-.L1c1e:
+.Lm927_1c1e:
 	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3}
@@ -140,7 +140,7 @@
 	ldr	r3, [r0, #0x10]
 	asr	r3, #20
 	cmp	r3, #0x1b
-	bne	.L1cee
+	bne	.Lm927_1cee
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r3, r0
@@ -161,7 +161,7 @@
 	mov	r2, #0x17
 	mov	r3, #1
 	bl	OvlFunc_927_2008244
-.L1cee:
+.Lm927_1cee:
 	bl	__CutsceneEnd
 	add	sp, #8
 	pop	{r3, r5}
@@ -876,7 +876,7 @@
 	mov	r7, #0
 	add	r6, sp, #0x10
 	mov	r8, r2
-.L23d4:
+.Lm927_23d4:
 	lsl	r5, r7, #12
 	mov	r0, r5
 	bl	__cos
@@ -907,7 +907,7 @@
 	add	r7, #1
 	bl	OvlFunc_927_2008ae8
 	cmp	r7, #0x10
-	bls	.L23d4
+	bls	.Lm927_23d4
 	mov	r0, #0x1e
 	bl	__CutsceneWait
 	mov	r0, #1
@@ -961,7 +961,7 @@
 	bx	r0
 .func_end OvlFunc_927_200a2c0
 
-.thumb_func_start OvlFunc_927_200a4ac
+.thumb_func_start MogallForest_GetEvents
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -971,29 +971,29 @@
 	ldrsh	r2, [r3, r1]
 	ldr	r3, =0x44
 	cmp	r2, r3
-	bne	.L24c4
-	ldr	r0, =.L3a48
-	b	.L24da
-.L24c4:
+	bne	.Lm927_24c4
+	ldr	r0, =.Lm927_3a48
+	b	.Lm927_24da
+.Lm927_24c4:
 	ldr	r3, =0x45
 	cmp	r2, r3
-	bne	.L24ce
-	ldr	r0, =.L3b20
-	b	.L24da
-.L24ce:
+	bne	.Lm927_24ce
+	ldr	r0, =.Lm927_3b20
+	b	.Lm927_24da
+.Lm927_24ce:
 	ldr	r3, =0x46
 	cmp	r2, r3
-	bne	.L24d8
-	ldr	r0, =.L3c1c
-	b	.L24da
-.L24d8:
-	ldr	r0, =.L3d54
-.L24da:
+	bne	.Lm927_24d8
+	ldr	r0, =.Lm927_3c1c
+	b	.Lm927_24da
+.Lm927_24d8:
+	ldr	r0, =.Lm927_3d54
+.Lm927_24da:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_927_200a4ac
+.func_end MogallForest_GetEvents
 
-.thumb_func_start OvlFunc_927_200a500
+.thumb_func_start MogallForest_MapInit
 	push	{r5, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -1007,34 +1007,34 @@
 	ldr	r3, =0x44
 	sub	sp, #8
 	cmp	r2, r3
-	beq	.L251e
-	b	.L26fa
-.L251e:
+	beq	.Lm927_251e
+	b	.Lm927_26fa
+.Lm927_251e:
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r1, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #1
-	bge	.L252e
-	b	.L2b56
-.L252e:
+	bge	.Lm927_252e
+	b	.Lm927_2b56
+.Lm927_252e:
 	cmp	r3, #4
-	ble	.L2540
+	ble	.Lm927_2540
 	cmp	r3, #9
-	ble	.L2538
-	b	.L2b56
-.L2538:
+	ble	.Lm927_2538
+	b	.Lm927_2b56
+.Lm927_2538:
 	cmp	r3, #7
-	bge	.L253e
-	b	.L2b56
-.L253e:
-	b	.L2622
-.L2540:
+	bge	.Lm927_253e
+	b	.Lm927_2b56
+.Lm927_253e:
+	b	.Lm927_2622
+.Lm927_2540:
 	ldr	r0, =0x89c
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L25f0
+	bne	.Lm927_25f0
 	bl	__CutsceneStart
 	mov	r0, #1
 	bl	__WaitFrames
@@ -1096,20 +1096,20 @@
 	mov	r0, #0x3c
 	bl	__CutsceneWait
 	bl	__CutsceneEnd
-.L25f0:
+.Lm927_25f0:
 	ldr	r0, =0x109
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L25fc
-	b	.L2b56
-.L25fc:
+	bne	.Lm927_25fc
+	b	.Lm927_2b56
+.Lm927_25fc:
 	mov	r0, #0xc0
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L260a
-	b	.L2b56
-.L260a:
+	beq	.Lm927_260a
+	b	.Lm927_2b56
+.Lm927_260a:
 	mov	r0, #0xa
 	mov	r1, #0xf
 	bl	__Func_8092950
@@ -1119,17 +1119,17 @@
 	lsl	r1, #16
 	lsl	r2, #15
 	bl	__MapActor_SetPos
-	b	.L2b56
-.L2622:
+	b	.Lm927_2b56
+.Lm927_2622:
 	mov	r0, #0
 	bl	__MapActor_GetActor
 	cmp	r0, #0
-	beq	.L2636
+	beq	.Lm927_2636
 	ldr	r1, [r0, #8]
 	ldr	r2, [r0, #0x10]
 	mov	r0, #0x10
 	bl	__MapActor_SetPos
-.L2636:
+.Lm927_2636:
 	mov	r0, #0x10
 	bl	__MapActor_GetActor
 	mov	r3, #0
@@ -1137,13 +1137,13 @@
 	ldr	r0, =0x109
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L2656
+	beq	.Lm927_2656
 	mov	r0, #0x10
 	bl	__MapActor_GetActor
 	mov	r3, #0x80
 	lsl	r3, #14
 	str	r3, [r0, #0xc]
-.L2656:
+.Lm927_2656:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r1, #0x9e
@@ -1155,10 +1155,10 @@
 	ldr	r0, =0xfd4
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L267a
+	bne	.Lm927_267a
 	mov	r0, #0x10
 	bl	OvlFunc_927_200ac0c
-.L267a:
+.Lm927_267a:
 	mov	r0, #0xb
 	mov	r1, #0xf
 	bl	__Func_8092950
@@ -1179,11 +1179,11 @@
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L26bc
+	bne	.Lm927_26bc
 	mov	r0, #9
 	bl	OvlFunc_927_20088c0
-	b	.L2b56
-.L26bc:
+	b	.Lm927_2b56
+.Lm927_26bc:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r1, #0x84
@@ -1209,38 +1209,38 @@
 	mov	r3, #2
 	add	r0, #0x23
 	strb	r3, [r0]
-	b	.L2b56
-.L26fa:
+	b	.Lm927_2b56
+.Lm927_26fa:
 	ldr	r3, =0x45
 	cmp	r2, r3
-	beq	.L2702
-	b	.L288c
-.L2702:
+	beq	.Lm927_2702
+	b	.Lm927_288c
+.Lm927_2702:
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r1, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #3
-	bge	.L2712
-	b	.L2b56
-.L2712:
+	bge	.Lm927_2712
+	b	.Lm927_2b56
+.Lm927_2712:
 	cmp	r3, #6
-	ble	.L2724
+	ble	.Lm927_2724
 	cmp	r3, #0xc
-	ble	.L271c
-	b	.L2b56
-.L271c:
+	ble	.Lm927_271c
+	b	.Lm927_2b56
+.Lm927_271c:
 	cmp	r3, #0xa
-	bge	.L2722
-	b	.L2b56
-.L2722:
-	b	.L275c
-.L2724:
+	bge	.Lm927_2722
+	b	.Lm927_2b56
+.Lm927_2722:
+	b	.Lm927_275c
+.Lm927_2724:
 	ldr	r0, =0x303
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L2742
+	bne	.Lm927_2742
 	mov	r1, #0xf
 	mov	r0, #0xc
 	bl	__Func_8092950
@@ -1248,28 +1248,28 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
-.L2742:
+.Lm927_2742:
 	mov	r0, #0xc1
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L2750
-	b	.L2b56
-.L2750:
+	beq	.Lm927_2750
+	b	.Lm927_2b56
+.Lm927_2750:
 	mov	r1, #0xf
 	mov	r0, #0xd
 	bl	__Func_8092950
 	mov	r0, #0xd
-	b	.L2962
-.L275c:
+	b	.Lm927_2962
+.Lm927_275c:
 	ldr	r0, =0x311
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L276e
+	bne	.Lm927_276e
 	mov	r0, #0xa
 	bl	OvlFunc_927_20088c0
-	b	.L27be
-.L276e:
+	b	.Lm927_27be
+.Lm927_276e:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r1, #0x8a
@@ -1304,7 +1304,7 @@
 	mov	r3, #1
 	str	r5, [sp, #4]
 	bl	OvlFunc_927_2008244
-.L27be:
+.Lm927_27be:
 	mov	r0, #8
 	bl	OvlFunc_927_20088c0
 	mov	r0, #9
@@ -1340,9 +1340,9 @@
 	ldr	r0, =0x306
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L281a
-	b	.L2b56
-.L281a:
+	beq	.Lm927_281a
+	b	.Lm927_2b56
+.Lm927_281a:
 	mov	r1, #0xf
 	mov	r0, #0xe
 	bl	__Func_8092950
@@ -1353,9 +1353,9 @@
 	ldr	r0, =0x305
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L283a
-	b	.L2b56
-.L283a:
+	bne	.Lm927_283a
+	b	.Lm927_2b56
+.Lm927_283a:
 	mov	r1, #0xd4
 	mov	r2, #0xf0
 	mov	r0, #0xe
@@ -1368,16 +1368,16 @@
 	lsl	r1, #17
 	lsl	r2, #17
 	bl	__MapActor_SetPos
-	b	.L2b56
+	b	.Lm927_2b56
 
 	.pool_aligned
 
-.L288c:
+.Lm927_288c:
 	ldr	r3, =0x46
 	cmp	r2, r3
-	beq	.L2894
-	b	.L2b56
-.L2894:
+	beq	.Lm927_2894
+	b	.Lm927_2b56
+.Lm927_2894:
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r1, r2
@@ -1385,35 +1385,35 @@
 	ldrsh	r3, [r3, r2]
 	sub	r3, #3
 	cmp	r3, #0xc
-	bls	.L28a6
-	b	.L2b56
-.L28a6:
-	ldr	r2, =.L28b0
+	bls	.Lm927_28a6
+	b	.Lm927_2b56
+.Lm927_28a6:
+	ldr	r2, =.Lm927_28b0
 	lsl	r3, #2
 	ldr	r3, [r3, r2]
 	mov	pc, r3
 	.align	2, 0
-.L28b0:
-	.word	.L28e4
-	.word	.L28e4
-	.word	.L28e4
-	.word	.L28e4
-	.word	.L296e
-	.word	.L29ba
-	.word	.L29ba
-	.word	.L29ba
-	.word	.L29ba
-	.word	.L2b2c
-	.word	.L2b2c
-	.word	.L2b56
-	.word	.L2b50
-.L28e4:
+.Lm927_28b0:
+	.word	.Lm927_28e4
+	.word	.Lm927_28e4
+	.word	.Lm927_28e4
+	.word	.Lm927_28e4
+	.word	.Lm927_296e
+	.word	.Lm927_29ba
+	.word	.Lm927_29ba
+	.word	.Lm927_29ba
+	.word	.Lm927_29ba
+	.word	.Lm927_2b2c
+	.word	.Lm927_2b2c
+	.word	.Lm927_2b56
+	.word	.Lm927_2b50
+.Lm927_28e4:
 	mov	r0, #1
 	bl	__WaitFrames
 	ldr	r0, =0x307
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L2914
+	bne	.Lm927_2914
 	mov	r1, #0xf
 	mov	r0, #0xf
 	bl	__Func_8092950
@@ -1425,12 +1425,12 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
-.L2914:
+.Lm927_2914:
 	mov	r0, #0xc2
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L2940
+	bne	.Lm927_2940
 	mov	r1, #0xf
 	mov	r0, #0x10
 	bl	__Func_8092950
@@ -1442,13 +1442,13 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
-.L2940:
+.Lm927_2940:
 	ldr	r0, =0x309
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L294c
-	b	.L2b56
-.L294c:
+	beq	.Lm927_294c
+	b	.Lm927_2b56
+.Lm927_294c:
 	mov	r1, #0xf
 	mov	r0, #0x11
 	bl	__Func_8092950
@@ -1457,12 +1457,12 @@
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
 	mov	r0, #0x15
-.L2962:
+.Lm927_2962:
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
-	b	.L2b56
-.L296e:
+	b	.Lm927_2b56
+.Lm927_296e:
 	mov	r0, #0xd
 	bl	__MapActor_GetActor
 	ldr	r5, [r0, #8]
@@ -1493,8 +1493,8 @@
 	strb	r3, [r0]
 	mov	r0, #8
 	bl	OvlFunc_927_20088c0
-	b	.L2b56
-.L29ba:
+	b	.Lm927_2b56
+.Lm927_29ba:
 	mov	r5, #0xb9
 	lsl	r5, #17
 	mov	r1, #0
@@ -1514,11 +1514,11 @@
 	ldr	r0, =0x312
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L29f4
+	bne	.Lm927_29f4
 	mov	r0, #9
 	bl	OvlFunc_927_20088c0
-	b	.L2a54
-.L29f4:
+	b	.Lm927_2a54
+.Lm927_29f4:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r0, #9
@@ -1558,15 +1558,15 @@
 	bl	__MapActor_GetActor
 	mov	r1, #0
 	bl	__Actor_SetSpriteFlags
-.L2a54:
+.Lm927_2a54:
 	ldr	r0, =0x313
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L2a66
+	bne	.Lm927_2a66
 	mov	r0, #0xb
 	bl	OvlFunc_927_20088c0
-	b	.L2a9e
-.L2a66:
+	b	.Lm927_2a9e
+.Lm927_2a66:
 	mov	r0, #1
 	bl	__WaitFrames
 	mov	r0, #0xb
@@ -1590,7 +1590,7 @@
 	mov	r2, #2
 	mov	r3, #4
 	bl	__Func_8010704
-.L2a9e:
+.Lm927_2a9e:
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	ldr	r5, [r0, #8]
@@ -1622,7 +1622,7 @@
 	ldr	r0, =0x30b
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L2b26
+	bne	.Lm927_2b26
 	mov	r1, #0xf
 	mov	r0, #0x12
 	bl	__Func_8092950
@@ -1633,7 +1633,7 @@
 	ldr	r0, =0x30a
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L2b26
+	beq	.Lm927_2b26
 	mov	r1, #0xba
 	mov	r2, #0xfc
 	mov	r0, #0x16
@@ -1646,32 +1646,32 @@
 	lsl	r1, #18
 	lsl	r2, #17
 	bl	__MapActor_SetPos
-.L2b26:
+.Lm927_2b26:
 	bl	OvlFunc_927_2009c34
-	b	.L2b56
-.L2b2c:
+	b	.Lm927_2b56
+.Lm927_2b2c:
 	mov	r0, #0x12
 	ldr	r1, =gScript_927__0200b084
 	bl	__MapActor_SetBehavior
 	ldr	r0, =0x893
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L2b56
+	beq	.Lm927_2b56
 	ldr	r0, =0x89e
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L2b56
+	beq	.Lm927_2b56
 	ldr	r0, =0x88f
 	bl	__SetFlag
-	b	.L2b56
-.L2b50:
+	b	.Lm927_2b56
+.Lm927_2b50:
 	ldr	r0, =0x89e
 	bl	__SetFlag
-.L2b56:
+.Lm927_2b56:
 	mov	r0, #0
 	add	sp, #8
 	pop	{r5}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_927_200a500
+.func_end MogallForest_MapInit
 

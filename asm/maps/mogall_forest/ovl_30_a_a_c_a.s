@@ -11,38 +11,38 @@
 	mov	r5, #8
 	asr	r7, r3, #20
 	add	r1, #0x34
-.L80:
+.Lm927_80:
 	ldmia	r1!, {r0}
 	ldr	r3, [r0, #8]
 	asr	r3, #20
 	cmp	r7, r3
-	bne	.Lae
+	bne	.Lm927_ae
 	ldr	r3, [r4, #4]
 	cmp	r3, #0
-	bge	.L92
+	bge	.Lm927_92
 	add	r3, r6
-.L92:
+.Lm927_92:
 	asr	r2, r3, #16
 	ldr	r3, [r0, #0xc]
 	cmp	r3, #0
-	bge	.L9c
+	bge	.Lm927_9c
 	add	r3, r6
-.L9c:
+.Lm927_9c:
 	asr	r3, #16
 	cmp	r2, r3
-	bne	.Lae
+	bne	.Lm927_ae
 	ldr	r2, [r4, #8]
 	ldr	r3, [r0, #0x10]
 	asr	r2, #20
 	asr	r3, #20
 	cmp	r2, r3
-	beq	.Lb6
-.Lae:
+	beq	.Lm927_b6
+.Lm927_ae:
 	add	r5, #1
 	cmp	r5, #0x41
-	bls	.L80
+	bls	.Lm927_80
 	mov	r0, #0
-.Lb6:
+.Lm927_b6:
 	pop	{r5, r6, r7}
 	pop	{r1}
 	bx	r1
@@ -60,7 +60,7 @@
 	ldrh	r3, [r0, #6]
 	mov	r8, r0
 	lsr	r3, #12
-	ldr	r0, =.L2ef8
+	ldr	r0, =.Lm927_2ef8
 	lsl	r5, r3, #2
 	ldr	r2, =0xffff0000
 	ldr	r1, [r0, r5]
@@ -85,9 +85,9 @@
 	bl	OvlFunc_927_200806c
 	mov	r6, r0
 	cmp	r6, #0
-	bne	.L114
-	b	.L226
-.L114:
+	bne	.Lm927_114
+	b	.Lm927_226
+.Lm927_114:
 	mov	r2, r9
 	ldr	r1, [r2, r5]
 	mov	r3, r10
@@ -106,15 +106,15 @@
 	mov	r1, r6
 	bl	OvlFunc_927_200806c
 	cmp	r0, #0
-	beq	.L14a
+	beq	.Lm927_14a
 	mov	r3, r0
 	add	r3, #0x59
 	ldrb	r2, [r3]
 	mov	r3, #1
 	and	r3, r2
 	cmp	r3, #0
-	bne	.L226
-.L14a:
+	bne	.Lm927_226
+.Lm927_14a:
 	ldr	r3, [r6, #8]
 	str	r3, [r7]
 	mov	r0, #0x80
@@ -128,15 +128,15 @@
 	mov	r1, r6
 	bl	OvlFunc_927_200806c
 	cmp	r0, #0
-	beq	.L176
+	beq	.Lm927_176
 	mov	r3, r0
 	add	r3, #0x59
 	ldrb	r2, [r3]
 	mov	r3, #1
 	and	r3, r2
 	cmp	r3, #0
-	bne	.L226
-.L176:
+	bne	.Lm927_226
+.Lm927_176:
 	mov	r2, r6
 	add	r2, #0x22
 	mov	r3, #2
@@ -159,13 +159,13 @@
 	mov	r1, r7
 	bl	__TestCollision
 	cmp	r0, #0
-	bgt	.L226
+	bgt	.Lm927_226
 	mov	r3, r6
 	add	r3, #0x62
 	ldrb	r3, [r3]
 	mov	r10, r3
 	cmp	r3, #0
-	bne	.L226
+	bne	.Lm927_226
 	mov	r1, #8
 	mov	r0, r8
 	bl	__Actor_SetAnim
@@ -216,7 +216,7 @@
 	mov	r0, r8
 	mov	r1, #1
 	bl	__Actor_SetAnim
-.L226:
+.Lm927_226:
 	add	sp, #0xc
 	pop	{r3, r5, r6}
 	mov	r8, r3
@@ -238,9 +238,9 @@
 	ldr	r2, [r3]
 	ldr	r5, [sp, #0x10]
 	cmp	r2, #0
-	beq	.L298
+	beq	.Lm927_298
 	cmp	r0, #2
-	bhi	.L26e
+	bhi	.Lm927_26e
 	lsl	r3, r0, #1
 	add	r3, r0
 	mov	r0, #0x98
@@ -248,34 +248,34 @@
 	lsl	r3, #4
 	add	r3, r0
 	ldr	r0, [r2, r3]
-	b	.L270
-.L26e:
+	b	.Lm927_270
+.Lm927_26e:
 	ldr	r0, =gBuffer
-.L270:
+.Lm927_270:
 	lsl	r3, r1, #7
 	add	r3, r6, r3
 	lsl	r3, #2
 	mov	r1, #0
 	add	r0, r3
 	cmp	r1, r12
-	bcs	.L298
-.L27e:
+	bcs	.Lm927_298
+.Lm927_27e:
 	lsl	r3, r1, #9
 	mov	r2, #0
 	add	r3, r0, r3
 	cmp	r2, r4
-	bcs	.L292
-.L288:
+	bcs	.Lm927_292
+.Lm927_288:
 	add	r2, #1
 	strb	r5, [r3, #2]
 	add	r3, #4
 	cmp	r2, r4
-	bcc	.L288
-.L292:
+	bcc	.Lm927_288
+.Lm927_292:
 	add	r1, #1
 	cmp	r1, r12
-	bcc	.L27e
-.L298:
+	bcc	.Lm927_27e
+.Lm927_298:
 	mov	r0, #0
 	pop	{r5, r6}
 	pop	{r1}

@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_930_2009180
+.thumb_func_start AlpineCrossing_GetEvents
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -10,17 +10,17 @@
 	ldrsh	r2, [r3, r1]
 	ldr	r3, =0x4a
 	cmp	r2, r3
-	bne	.L1198
-	ldr	r0, =.L1c9c
-	b	.L119a
-.L1198:
-	ldr	r0, =.L1b10
-.L119a:
+	bne	.Lm930_1198
+	ldr	r0, =.Lm930_1c9c
+	b	.Lm930_119a
+.Lm930_1198:
+	ldr	r0, =.Lm930_1b10
+.Lm930_119a:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_930_2009180
+.func_end AlpineCrossing_GetEvents
 
-.thumb_func_start OvlFunc_930_20091b0
+.thumb_func_start AlpineCrossing_MapInit
 	push	{r5, r6, lr}
 	ldr	r3, =iwram_3001ebc
 	mov	r2, #0xe0
@@ -34,7 +34,7 @@
 	ldr	r3, =0x58
 	sub	sp, #8
 	cmp	r2, r3
-	bne	.L1252
+	bne	.Lm930_1252
 	mov	r0, #0xa9
 	bl	__Func_8091ff0
 	mov	r0, #0xb
@@ -59,7 +59,7 @@
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L1224
+	beq	.Lm930_1224
 	mov	r1, #0x88
 	mov	r2, #0x80
 	mov	r0, #0xd
@@ -70,36 +70,36 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__Func_8092adc
-.L1224:
+.Lm930_1224:
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r5, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #2
-	bne	.L123a
+	bne	.Lm930_123a
 	ldr	r0, =0x12f
 	bl	__ClearFlag
-	b	.L1456
-.L123a:
+	b	.Lm930_1456
+.Lm930_123a:
 	cmp	r3, #3
-	beq	.L1240
-	b	.L1456
-.L1240:
+	beq	.Lm930_1240
+	b	.Lm930_1456
+.Lm930_1240:
 	ldr	r0, =0x109
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L124c
-	b	.L1456
-.L124c:
+	beq	.Lm930_124c
+	b	.Lm930_1456
+.Lm930_124c:
 	bl	OvlFunc_930_20081ec
-	b	.L1456
-.L1252:
+	b	.Lm930_1456
+.Lm930_1252:
 	ldr	r3, =0x4a
 	cmp	r2, r3
-	beq	.L125a
-	b	.L1456
-.L125a:
+	beq	.Lm930_125a
+	b	.Lm930_1456
+.Lm930_125a:
 	mov	r0, #0xe
 	bl	__MapActor_GetActor
 	mov	r1, #0
@@ -115,21 +115,21 @@
 	lsl	r0, #2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L128e
+	beq	.Lm930_128e
 	mov	r0, #0xe
 	mov	r1, #5
 	bl	__MapActor_SetAnim
 	bl	OvlFunc_930_20090b8
-.L128e:
+.Lm930_128e:
 	ldr	r0, =0x201
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L12a4
+	beq	.Lm930_12a4
 	mov	r0, #0xf
 	mov	r1, #4
 	bl	__MapActor_SetAnim
 	bl	OvlFunc_930_2009144
-.L12a4:
+.Lm930_12a4:
 	mov	r2, #0xe1
 	lsl	r2, #1
 	add	r3, r5, r2
@@ -139,35 +139,35 @@
 	lsl	r3, #16
 	lsl	r2, #9
 	cmp	r3, r2
-	bhi	.L12be
+	bhi	.Lm930_12be
 	ldr	r0, =0x12f
 	bl	__ClearFlag
-.L12be:
+.Lm930_12be:
 	ldr	r0, =0x89a
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L12e6
+	bne	.Lm930_12e6
 	ldr	r0, =0x895
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L12e6
+	bne	.Lm930_12e6
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L12e6
+	bne	.Lm930_12e6
 	mov	r0, #0xa
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-.L12e6:
+.Lm930_12e6:
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L132a
+	bne	.Lm930_132a
 	ldr	r0, =0x895
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L132a
+	beq	.Lm930_132a
 	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
@@ -175,7 +175,7 @@
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #2
-	bne	.L132a
+	bne	.Lm930_132a
 	mov	r1, #0
 	mov	r2, #0
 	mov	r0, #0xb
@@ -188,11 +188,11 @@
 	mov	r1, #0
 	mov	r2, #0
 	bl	__MapActor_SetPos
-.L132a:
+.Lm930_132a:
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L137e
+	beq	.Lm930_137e
 	mov	r3, #2
 	str	r3, [sp, #4]
 	mov	r5, #1
@@ -226,15 +226,15 @@
 	mov	r3, #1
 	str	r6, [sp, #4]
 	bl	__Func_8010704
-.L137e:
+.Lm930_137e:
 	ldr	r0, =0x895
 	bl	__GetFlag
 	cmp	r0, #0
-	beq	.L13fa
+	beq	.Lm930_13fa
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L13fa
+	bne	.Lm930_13fa
 	mov	r0, #0xc
 	mov	r1, #0
 	mov	r2, #0
@@ -278,11 +278,11 @@
 	bl	__MapActor_GetActor
 	ldr	r3, =0xffff0000
 	str	r3, [r0, #0x18]
-.L13fa:
+.Lm930_13fa:
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L1424
+	bne	.Lm930_1424
 	mov	r1, #0xa4
 	mov	r2, #0x8c
 	lsl	r2, #17
@@ -296,7 +296,7 @@
 	bl	__MapActor_GetActor
 	ldr	r3, =0xffff0000
 	str	r3, [r0, #0x18]
-.L1424:
+.Lm930_1424:
 	ldr	r3, =gState
 	mov	r2, #0xe1
 	lsl	r2, #1
@@ -304,37 +304,37 @@
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
 	cmp	r3, #5
-	bne	.L1456
+	bne	.Lm930_1456
 	ldr	r0, =0x8b1
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L1456
+	bne	.Lm930_1456
 	ldr	r0, =0x109
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L1456
+	bne	.Lm930_1456
 	ldr	r0, =0x8b2
 	bl	__GetFlag
 	cmp	r0, #0
-	bne	.L1456
+	bne	.Lm930_1456
 	bl	OvlFunc_930_2008b2c
-.L1456:
+.Lm930_1456:
 	mov	r0, #0
 	add	sp, #8
 	pop	{r5, r6}
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_930_20091b0
+.func_end AlpineCrossing_MapInit
 
 	.section .data
 	.global gScript_930__0200962c
 	.global gScript_930__020096b8
-	.global .L1788
-	.global .L179e
-	.global .L1918
-	.global .L1a38
-	.global .L17b4
-	.global .L1844
+	.global .Lm930_1788
+	.global .Lm930_179e
+	.global .Lm930_1918
+	.global .Lm930_1a38
+	.global .Lm930_17b4
+	.global .Lm930_1844
 
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1620, (0x162c-0x1620)
 gScript_930__0200962c:
@@ -344,22 +344,22 @@ gScript_930__020096b8:
 	.global gScript_930__02009730
 gScript_930__02009730:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1730, (0x1788-0x1730)
-.L1788:
+.Lm930_1788:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1788, (0x179e-0x1788)
-.L179e:
+.Lm930_179e:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x179e, (0x17b4-0x179e)
-.L17b4:
+.Lm930_17b4:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x17b4, (0x1844-0x17b4)
-.L1844:
+.Lm930_1844:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1844, (0x18ec-0x1844)
 	.global gOvl_020098ec
 gOvl_020098ec:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x18ec, (0x1918-0x18ec)
-.L1918:
+.Lm930_1918:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1918, (0x1a38-0x1918)
-.L1a38:
+.Lm930_1a38:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1a38, (0x1b10-0x1a38)
-.L1b10:
+.Lm930_1b10:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1b10, (0x1c9c-0x1b10)
-.L1c9c:
+.Lm930_1c9c:
 	.incbin "overlays/rom_7b7f1c/orig.bin", 0x1c9c

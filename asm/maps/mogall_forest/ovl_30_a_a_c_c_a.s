@@ -25,7 +25,7 @@
 	str	r2, [sp, #8]
 	mov	r9, r0
 	mov	r11, r5
-.L37e:
+.Lm927_37e:
 	mov	r3, r11
 	ldr	r3, [r3]
 	mov	r10, r3
@@ -33,26 +33,26 @@
 	ldr	r3, [r3, #0x28]
 	mov	r2, #0
 	ldrsh	r1, [r3, r2]
-	ldr	r3, =.L2f38
+	ldr	r3, =.Lm927_2f38
 	mov	r4, #0
 	str	r1, [sp, #4]
 	ldr	r0, =gScript_884__0200af50
 	str	r3, [sp]
 	mov	r8, r4
-.L398:
+.Lm927_398:
 	ldr	r1, [sp]
 	ldmia	r1!, {r3}
 	ldr	r2, [sp, #4]
 	mov	r4, r1
 	str	r4, [sp]
 	cmp	r2, r3
-	bne	.L436
+	bne	.Lm927_436
 	ldr	r4, [sp, #0xc]
 	mov	r3, r8
 	str	r3, [r4]
 	ldr	r2, [sp, #0x14]
 	ldr	r3, [r2]
-	ldr	r4, =.L2ef8
+	ldr	r4, =.Lm927_2ef8
 	lsl	r3, #2
 	mov	r1, r9
 	ldr	r2, [r4, r3]
@@ -89,53 +89,53 @@
 	asr	r1, #4
 	asr	r2, #4
 	cmp	r6, r7
-	bgt	.L436
+	bgt	.Lm927_436
 	cmp	r7, r1
-	bge	.L436
+	bge	.Lm927_436
 	cmp	r4, r5
-	bgt	.L436
+	bgt	.Lm927_436
 	cmp	r5, r2
-	bge	.L436
+	bge	.Lm927_436
 	mov	r3, #1
 	mov	r1, r8
 	and	r3, r1
 	cmp	r3, #0
-	beq	.L424
+	beq	.Lm927_424
 	mov	r2, r14
 	asr	r3, r2, #20
 	cmp	r6, r3
-	beq	.L436
+	beq	.Lm927_436
 	ldr	r3, [sp, #8]
 	ldr	r4, [sp, #0x10]
 	mov	r0, r10
 	str	r3, [r4]
-	b	.L452
-.L424:
+	b	.Lm927_452
+.Lm927_424:
 	mov	r1, r12
 	asr	r3, r1, #20
 	cmp	r4, r3
-	beq	.L436
+	beq	.Lm927_436
 	ldr	r2, [sp, #8]
 	ldr	r3, [sp, #0x10]
 	mov	r0, r10
 	str	r2, [r3]
-	b	.L452
-.L436:
+	b	.Lm927_452
+.Lm927_436:
 	mov	r4, #1
 	add	r8, r4
 	mov	r1, r8
 	add	r0, #0x10
 	cmp	r1, #5
-	bls	.L398
+	bls	.Lm927_398
 	ldr	r3, [sp, #8]
 	mov	r2, #4
 	add	r3, #1
 	add	r11, r2
 	str	r3, [sp, #8]
 	cmp	r3, #0x41
-	bls	.L37e
+	bls	.Lm927_37e
 	mov	r0, #0
-.L452:
+.Lm927_452:
 	add	sp, #0x18
 	pop	{r3, r5, r6, r7}
 	mov	r8, r3

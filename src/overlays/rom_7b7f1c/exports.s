@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_930_20091b0
-	.export_func OvlFunc_930_200807c
-	.export_func OvlFunc_930_20080b0
-	.export_func OvlFunc_930_20080b8
-	.export_func OvlFunc_930_2009180
-	.export_func OvlFunc_930_20080ac
+	.export_func AlpineCrossing_MapInit
+	.export_func AlpineCrossing_GetEntrances
+	.export_func AlpineCrossing_GetExits
+	.export_func AlpineCrossing_GetActors
+	.export_func AlpineCrossing_GetEvents
+	.export_func AlpineCrossing_GetSpecialExits

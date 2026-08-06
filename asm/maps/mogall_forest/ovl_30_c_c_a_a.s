@@ -1,6 +1,6 @@
 	.include "macros.inc"
 
-.thumb_func_start OvlFunc_927_2008f40
+.thumb_func_start MogallForest_GetActors
 	push	{lr}
 	ldr	r3, =gState
 	mov	r1, #0xe0
@@ -10,27 +10,27 @@
 	ldrsh	r2, [r3, r1]
 	ldr	r3, =0x44
 	cmp	r2, r3
-	bne	.Lf58
-	ldr	r0, =.L36a0
-	b	.Lf6e
-.Lf58:
+	bne	.Lm927_f58
+	ldr	r0, =.Lm927_36a0
+	b	.Lm927_f6e
+.Lm927_f58:
 	ldr	r3, =0x45
 	cmp	r2, r3
-	bne	.Lf62
-	ldr	r0, =.L3790
-	b	.Lf6e
-.Lf62:
+	bne	.Lm927_f62
+	ldr	r0, =.Lm927_3790
+	b	.Lm927_f6e
+.Lm927_f62:
 	ldr	r3, =0x46
 	cmp	r2, r3
-	bne	.Lf6c
-	ldr	r0, =.L38b0
-	b	.Lf6e
-.Lf6c:
-	ldr	r0, =.L3a30
-.Lf6e:
+	bne	.Lm927_f6c
+	ldr	r0, =.Lm927_38b0
+	b	.Lm927_f6e
+.Lm927_f6c:
+	ldr	r0, =.Lm927_3a30
+.Lm927_f6e:
 	pop	{r1}
 	bx	r1
-.func_end OvlFunc_927_2008f40
+.func_end MogallForest_GetActors
 
 .thumb_func_start OvlFunc_927_2008f94
 	push	{r5, lr}
@@ -40,7 +40,7 @@
 	mov	r0, r5
 	bl	OvlFunc_927_2008474
 	cmp	r0, #0
-	beq	.L1030
+	beq	.Lm927_1030
 	mov	r3, sp
 	add	r2, sp, #0x18
 	ldmia	r2!, {r0, r1}
@@ -52,11 +52,11 @@
 	bl	OvlFunc_927_2008608
 	ldr	r3, [r5, #4]
 	cmp	r3, #9
-	bne	.L1030
+	bne	.Lm927_1030
 	ldr	r3, [r5, #0x10]
 	asr	r3, #20
 	cmp	r3, #0x1a
-	bne	.L1030
+	bne	.Lm927_1030
 	mov	r0, #0xc4
 	lsl	r0, #2
 	bl	__SetFlag
@@ -98,7 +98,7 @@
 	mov	r2, #4
 	mov	r3, #2
 	bl	__Func_8010704
-.L1030:
+.Lm927_1030:
 	bl	__CutsceneEnd
 	add	sp, #0x20
 	pop	{r5}
