@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_931_2008874
-	.export_func OvlFunc_931_2008030
-	.export_func OvlFunc_931_2008074
-	.export_func OvlFunc_931_200807c
-	.export_func OvlFunc_931_200811c
-	.export_func OvlFunc_931_2008070
+	.export_func Altin_MapInit
+	.export_func Altin_GetEntrances
+	.export_func Altin_GetExits
+	.export_func Altin_GetActors
+	.export_func Altin_GetEvents
+	.export_func Altin_GetSpecialExits

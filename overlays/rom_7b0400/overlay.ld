@@ -15,20 +15,7 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7b0400/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_a.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_a_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_a.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_c_a.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_c_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_c_c_a.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_c_c_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_a_c_c_c.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_b.o(.text)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_c.o(.text)
+		asm/maps/mercury_lighthouse_aerie.o(.text)
 		src/overlays/rom_7b0400/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
@@ -36,7 +23,7 @@ SECTIONS {
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_7b0400/ovl_314_c_c_c_c.o(.data)
+		asm/maps/mercury_lighthouse_aerie.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

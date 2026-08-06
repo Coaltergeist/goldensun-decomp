@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_922_2009750
-	.export_func OvlFunc_922_2008050
-	.export_func OvlFunc_922_20080f0
-	.export_func OvlFunc_922_20080f8
-	.export_func OvlFunc_922_2008f30
-	.export_func OvlFunc_922_20080ec
+	.export_func ImilFallsCave_MapInit
+	.export_func ImilFallsCave_GetEntrances
+	.export_func ImilFallsCave_GetExits
+	.export_func ImilFallsCave_GetActors
+	.export_func ImilFallsCave_GetEvents
+	.export_func ImilFallsCave_GetSpecialExits

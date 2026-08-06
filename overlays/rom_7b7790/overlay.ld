@@ -15,26 +15,14 @@ SECTIONS {
 	.text : {
 		src/overlays/rom_7b7790/exports.o(.text)
 		asm/overlays/common/common0.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_a_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_a_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_a_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_a_a_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_a_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_a.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_c.o(.text)
+		asm/maps/xian_rooms.o(.text)
 		src/overlays/rom_7b7790/imports.o(.text)
 	} > overlay
 
 	.data : {
 		asm/overlays/common/common0.o(.data)
 		asm/overlays/common/common0.o(.data1)
-		asm/overlays/rom_7b7790/ovl_314_c_c_c_c_c_c.o(.data)
+		asm/maps/xian_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

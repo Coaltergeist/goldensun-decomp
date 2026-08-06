@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_928_2009148
-	.export_func OvlFunc_928_200859c
-	.export_func OvlFunc_928_20085a8
-	.export_func OvlFunc_928_20085b0
-	.export_func OvlFunc_928_2009140
-	.export_func OvlFunc_928_20085a4
+	.export_func Xian_MapInit
+	.export_func Xian_GetEntrances
+	.export_func Xian_GetExits
+	.export_func Xian_GetActors
+	.export_func Xian_GetEvents
+	.export_func Xian_GetSpecialExits

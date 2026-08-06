@@ -1,0 +1,300 @@
+// fakematch
+/* rom_7b2078 (overlay file 926): consolidated TU — fuchin_temple map overlay. */
+
+#include "nonmatching.h"
+
+extern void __Actor_SetSpriteFlags();
+
+unsigned int OvlFunc_926_2008314(void) {
+    int r0_in;
+    __Actor_SetSpriteFlags(r0_in, 0);
+    return 0;
+}
+
+int OvlFunc_926_2008324(int arg0) {
+    int actor = (int)__MapActor_GetActor(0);
+    *(unsigned short *)(arg0 + 6) = __atan2(
+        *(int *)(actor + 16) - *(int *)(arg0 + 16),
+        *(int *)(actor + 8) - *(int *)(arg0 + 8));
+    return 0;
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_a_c_c.s");
+
+unsigned int FuchinTemple_GetSpecialExits(void) {
+    return 0;
+}
+
+extern unsigned char gOvl_0200c8c8[];
+
+void *FuchinTemple_GetExits(void) {
+    return (void *)gOvl_0200c8c8;
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_a_a.s");
+
+extern unsigned char iwram_3001ebc[];
+
+void OvlFunc_926_2008414(void)
+{
+  unsigned short *base;
+  int new_var;
+  int a;
+  unsigned short r3;
+  unsigned long long t;
+  unsigned short v;
+  __CutsceneStart();
+  new_var = 0;
+  __MessageID(0x178a);
+  if (__GetFlag(0x890) != new_var)
+  {
+    base = *((unsigned short **) iwram_3001ebc);
+    v = base[0xec];
+    r3 = v;
+    r3 += 4;
+    base[0xec] = r3;
+  }
+  __ShowActorMessage_NoWait(8, new_var);
+  if (__Func_8091c7c(0, 0) == new_var)
+  {
+    t = 0x890;
+    do
+    {
+      t = (unsigned long) t;
+    }
+    while (new_var);
+    v = t;
+    __SetFlag(v);
+  }
+  else
+  {
+    base = *((unsigned short **) iwram_3001ebc);
+    r3 = base[0xec];
+    r3 += 1;
+    base[0xec] = r3;
+  }
+  t = 8;
+  do
+  {
+    t = (unsigned long) t;
+  }
+  while (new_var);
+  a = t;
+  __ActorMessage(a, 0);
+  __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_a_c.s");
+
+void OvlFunc_926_2008abc(void) {
+    __CutsceneStart();
+    __MessageID(0x17b1);
+    __Func_8093054(8, 0);
+    __CutsceneEnd();
+}
+
+void OvlFunc_926_2008adc(void) {
+    __CutsceneStart();
+    __MessageID(0x1825);
+    __Func_8093054(9, 0);
+    __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_a.s");
+
+void OvlFunc_926_2008bd4(void) {
+    __CutsceneStart();
+    __MessageID(0x182d);
+    __Func_8093054(0xf, 0);
+    __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_a_a.s");
+
+extern void OvlFunc_926_2008bf4(void);
+extern void OvlFunc_926_2008cd4(void);
+extern void OvlFunc_926_2009160(void);
+extern void OvlFunc_926_200902c(int arg0);
+
+void OvlFunc_926_20092e0(void)
+{
+  int actor;
+
+  __CutsceneStart();
+  actor = __MapActor_GetActor(0);
+  if (*(unsigned short *)(actor + 6) > 0x4000 &&
+      (actor = __MapActor_GetActor(0), *(unsigned short *)(actor + 6) < 0xc000))
+  {
+    OvlFunc_926_2008bf4();
+  }
+  else
+  {
+    OvlFunc_926_2008cd4();
+  }
+  if (__GetFlag(0x898) != 0)
+  {
+    OvlFunc_926_2009160();
+  }
+  else
+  {
+    OvlFunc_926_200902c(0);
+  }
+  __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_a_c.s");
+
+
+void OvlFunc_926_2009d50(void) {
+    unsigned short *r2;
+    unsigned short r3;
+    unsigned short t;
+
+    __CutsceneStart();
+    __MessageID(0x186e);
+    __ShowActorMessage_NoWait(0x12, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(0x14);
+        t = 0x12;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage_Wait(t, 0, 0x14);
+        __SetFlag(0x898);
+        __CutsceneEnd();
+    } else {
+        r2 = (unsigned short *)(*(unsigned int *)iwram_3001ebc + (0xec << 1));
+        r3 = *r2;
+        r3 += 1;
+        *r2 = r3;
+        t = 0x12;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage_Wait(t, 0, 0x14);
+        __CutsceneEnd();
+    }
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_c.s");
+
+void OvlFunc_926_200a464(void) {
+    __CutsceneStart();
+    __MessageID(0x1a58);
+    __Func_8093054(0xb, 0);
+    __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_c_a.s");
+
+void OvlFunc_926_200a54c(void)
+{
+  int new_var;
+  int new_var2;
+  __CutsceneStart();
+  new_var = 0;
+  __Func_80925cc(8, 2);
+  __MessageID(0x17df);
+ do { new_var2 = new_var; __ActorMessage(8, new_var2); } while (0);
+  __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_c_c.s");
+
+extern void OvlFunc_926_200a68c(int a, int b);
+
+void OvlFunc_926_200a65c(void) {
+    OvlFunc_926_200a68c(0, -0x20);
+}
+
+
+void OvlFunc_926_200a66c(void) {
+    OvlFunc_926_200a68c(0, 0x20);
+}
+
+
+void OvlFunc_926_200a67c(void) {
+    OvlFunc_926_200a68c(-0x20, 0);
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_a.s");
+
+extern void __PlaySound(int);
+extern void __Func_8091e9c(int);
+
+void OvlFunc_926_200a764(void) {
+    __PlaySound(0x7b);
+    __Func_8091e9c(1);
+}
+
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_943__0200c764[17];
+extern unsigned char *iwram_3001ebc__a2 __asm__("iwram_3001ebc");
+
+void OvlFunc_926_200a778(void)
+{
+  int actorAddr;
+  int t;
+  unsigned int w, z;
+
+  __CutsceneStart();
+  __PlaySound(0xbc);
+  __Func_8010560(gScript_943__0200c764, 0x4d, 8);
+  actorAddr = __MapActor_GetActor(0);
+  *(unsigned char *)(actorAddr + 0x55) = 0;
+  w = 0xcccc;
+  {
+    register unsigned int rq __asm__("r0") = 0;
+    __asm__ volatile ("" : : "r" (rq));
+    z = 0x6666;
+    __MapActor_SetSpeed(rq, w, z);
+  }
+  *(unsigned int *)(iwram_3001ebc__a2 + 0x1c0) = 0x100;
+  {
+    register unsigned int rq __asm__("r0") = 0;
+    __asm__ volatile ("" : : "r" (rq));
+    __MapActor_SetAnim(rq, 2);
+  }
+  t = 0x10;
+  {
+    register int p1 __asm__("r1") = 0;
+    __asm__ volatile ("" : : "r" (p1));
+    t = -t;
+    __MapActor_TravelBy(0, p1, t);
+  }
+  __CutsceneWait(0x10);
+  __Func_8091e9c(2);
+  __CutsceneEnd();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_c_a_a_c.s");
+
+extern unsigned char *iwram_3001f30;
+
+void OvlFunc_926_200c0dc(unsigned int arg0, unsigned int arg1)
+{
+    unsigned char *p;
+    unsigned short t1;
+
+    __SetFlag(0x140);
+    t1 = 1;
+    do { t1 = (unsigned short) t1; } while (0);
+    __Func_8096fb0(0x8d, t1);
+    p = iwram_3001f30;
+    __asm__ volatile ("" : : "r" (p));
+    {
+        register unsigned int p0 __asm__("r0") = arg0;
+        __asm__ volatile ("" : : "r" (p0));
+        __Func_80970f8(p0, arg1);
+    }
+    p += 0x23;
+    *p = 0;
+    __Func_809728c();
+    __FieldMove(1);
+    __WaitFrames(1);
+}
+
+void OvlFunc_926_200c128(void)
+{
+	__MapActor_SetAnim(0, 1);
+	__FieldMove(2);
+	__Func_8097174();
+}
+
+INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_c_c.s");
