@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_939_2009668
-	.export_func OvlFunc_939_2008314
-	.export_func OvlFunc_939_2008350
-	.export_func OvlFunc_939_2008388
-	.export_func OvlFunc_939_20086e4
-	.export_func OvlFunc_939_200834c
+	.export_func Lunpa_MapInit
+	.export_func Lunpa_GetEntrances
+	.export_func Lunpa_GetExits
+	.export_func Lunpa_GetActors
+	.export_func Lunpa_GetEvents
+	.export_func Lunpa_GetSpecialExits

@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_964_200a59c
-	.export_func OvlFunc_964_2009270
-	.export_func OvlFunc_964_20092d8
-	.export_func OvlFunc_964_20092e0
-	.export_func OvlFunc_964_200a370
-	.export_func OvlFunc_964_20092b0
+	.export_func TunnelRuins_MapInit
+	.export_func TunnelRuins_GetEntrances
+	.export_func TunnelRuins_GetExits
+	.export_func TunnelRuins_GetActors
+	.export_func TunnelRuins_GetEvents
+	.export_func TunnelRuins_GetSpecialExits

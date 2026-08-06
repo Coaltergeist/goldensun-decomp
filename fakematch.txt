@@ -29,8 +29,8 @@ Func_800397c  src/rom_c0/rom_3650_c_b.c
 Func_80039bc  src/rom_c0/rom_3650_c_b.c
 Func_80039fc  src/rom_c0/rom_3650_c_b.c
 Func_8003a3c  src/rom_c0/rom_3650_c_b.c
-OvlFunc_939_2008a90  src/overlays/rom_7c460c/ovl_314_a_c_c_a_b.c
-OvlFunc_939_20089d4  src/overlays/rom_7c460c/ovl_314_a_c_c_a_a_b.c
+OvlFunc_939_2008a90  src/maps/lunpa.c
+OvlFunc_939_20089d4  src/maps/lunpa.c
 OvlFunc_949_2008528  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_b.c
 OvlFunc_949_2008568  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_c_b.c
 OvlFunc_945_200c0e8  src/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_a_a_a_a_b.c
@@ -58,7 +58,7 @@ OvlFunc_958_2009080  src/overlays/rom_7e636c/ovl_cc0_c_a_c_c_a_b.c
 OvlFunc_959_200969c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_a_b.c
 OvlFunc_944_200840c  src/overlays/rom_7ca63c/ovl_30_c_c_a_c_b.c
 OvlFunc_959_2009c4c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_a_b.c
-OvlFunc_941_20081b0  src/overlays/rom_7c5efc/ovl_30_c_a_c_c_a_c_b.c
+OvlFunc_941_20081b0  src/maps/west_lunpa_cave.c
 OvlFunc_951_2008104  src/overlays/rom_7d6418/ovl_30_c_c_a_a_b.c
 OvlFunc_899_200882c  src/maps/vault_rooms_1.c
 OvlFunc_946_20095d0  src/overlays/rom_7ced6c/ovl_30_c_c_a_c_c_b.c
@@ -82,8 +82,8 @@ OvlFunc_934_20088ec  src/overlays/rom_7bdeb0/ovl_314_a_a_c_c_b.c
 OvlFunc_946_2008608  src/overlays/rom_7ced6c/ovl_30_a_a_c_c_b.c
 OvlFunc_948_2008608  src/overlays/rom_7d30e0/ovl_30_a_a_a_c_c_c_b.c
 OvlFunc_957_2008608  src/overlays/rom_7e3e08/ovl_30_a_a_a_c_c_c_b.c
-OvlFunc_964_2008608  src/overlays/rom_7ed0a0/ovl_30_a_a_a_c_c_c_b.c
-OvlFunc_965_2008608  src/overlays/rom_7ef4f4/ovl_30_a_a_a_c_c_c_b.c
+OvlFunc_964_2008608  src/maps/tunnel_ruins.c
+OvlFunc_965_2008608  src/maps/babi_lighthouse.c
 OvlFunc_947_20088ec  src/overlays/rom_7d0e88/ovl_314_a_c_c_c_b.c
 OvlFunc_958_20088ec  src/overlays/rom_7e636c/ovl_314_c_c_c_b.c
 OvlFunc_959_2008608  src/overlays/rom_7e7574/ovl_30_c_c_c_b.c

@@ -14,19 +14,12 @@ MEMORY {
 SECTIONS {
 	.text : {
 		src/overlays/rom_7c37ac/exports.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_a.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_b.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_b.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_c_a.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_c_b.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_c_c_b.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_c_c_c_b.o(.text)
-		asm/overlays/rom_7c37ac/ovl_30_c_c_c_c_c.o(.text)
+		asm/maps/hammet_palace.o(.text)
 		src/overlays/rom_7c37ac/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/rom_7c37ac/ovl_30_c_c_c_c_c.o(.data)
+		asm/maps/hammet_palace.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

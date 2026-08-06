@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_937_2008308
-	.export_func OvlFunc_937_2008030
-	.export_func OvlFunc_937_2008074
-	.export_func OvlFunc_937_200807c
-	.export_func OvlFunc_937_20080e4
-	.export_func OvlFunc_937_2008070
+	.export_func KalayRooms_MapInit
+	.export_func KalayRooms_GetEntrances
+	.export_func KalayRooms_GetExits
+	.export_func KalayRooms_GetActors
+	.export_func KalayRooms_GetEvents
+	.export_func KalayRooms_GetSpecialExits

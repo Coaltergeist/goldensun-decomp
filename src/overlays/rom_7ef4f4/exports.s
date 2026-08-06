@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_965_200a8a0
-	.export_func OvlFunc_965_2008f58
-	.export_func OvlFunc_965_2008fd4
-	.export_func OvlFunc_965_2008fdc
-	.export_func OvlFunc_965_200a7a0
-	.export_func OvlFunc_965_2008fac
+	.export_func BabiLighthouse_MapInit
+	.export_func BabiLighthouse_GetEntrances
+	.export_func BabiLighthouse_GetExits
+	.export_func BabiLighthouse_GetActors
+	.export_func BabiLighthouse_GetEvents
+	.export_func BabiLighthouse_GetSpecialExits
