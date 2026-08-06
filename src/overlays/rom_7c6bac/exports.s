@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_942_200886c
-	.export_func OvlFunc_942_2008040
-	.export_func OvlFunc_942_2008098
-	.export_func OvlFunc_942_20080a0
-	.export_func OvlFunc_942_200819c
-	.export_func OvlFunc_942_2008094
+	.export_func KalayDocks_MapInit
+	.export_func KalayDocks_GetEntrances
+	.export_func KalayDocks_GetExits
+	.export_func KalayDocks_GetActors
+	.export_func KalayDocks_GetEvents
+	.export_func KalayDocks_GetSpecialExits

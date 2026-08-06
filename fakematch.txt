@@ -31,8 +31,8 @@ Func_80039fc  src/rom_c0/rom_3650_c_b.c
 Func_8003a3c  src/rom_c0/rom_3650_c_b.c
 OvlFunc_939_2008a90  src/maps/lunpa.c
 OvlFunc_939_20089d4  src/maps/lunpa.c
-OvlFunc_949_2008528  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_b.c
-OvlFunc_949_2008568  src/overlays/rom_7d4af4/ovl_30_c_c_a_c_c_c_c_c_a_a_c_b.c
+OvlFunc_949_2008528  src/maps/tolbi.c
+OvlFunc_949_2008568  src/maps/tolbi.c
 OvlFunc_945_200c0e8  src/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_a_a_a_a_b.c
 OvlFunc_882_20096cc  src/maps/vale_river_prologue.c
 Func_801fb48         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_a_b.c
@@ -56,12 +56,12 @@ OvlFunc_925_200aeb8  src/maps/mercury_lighthouse_aerie.c
 OvlFunc_952_200bdf8  src/overlays/rom_7d768c/ovl_30_c_a_b.c
 OvlFunc_958_2009080  src/overlays/rom_7e636c/ovl_cc0_c_a_c_c_a_b.c
 OvlFunc_959_200969c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_a_a_b.c
-OvlFunc_944_200840c  src/overlays/rom_7ca63c/ovl_30_c_c_a_c_b.c
+OvlFunc_944_200840c  src/maps/tolbi_bound_ship_top.c
 OvlFunc_959_2009c4c  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_a_b.c
 OvlFunc_941_20081b0  src/maps/west_lunpa_cave.c
-OvlFunc_951_2008104  src/overlays/rom_7d6418/ovl_30_c_c_a_a_b.c
+OvlFunc_951_2008104  src/maps/tolbi_rooms_2.c
 OvlFunc_899_200882c  src/maps/vault_rooms_1.c
-OvlFunc_946_20095d0  src/overlays/rom_7ced6c/ovl_30_c_c_a_c_c_b.c
+OvlFunc_946_20095d0  src/maps/crossbone_isle.c
 OvlFunc_959_2009cf0  src/overlays/rom_7e7574/ovl_9dc_c_a_c_c_a_a_c_a_b.c
 Func_80215e0         src/rom_15000/rom_20198_c_c_c_a_a_b.c
 WaitFrames           src/rom_c0/rom_2e00_c_c_b.c
@@ -79,8 +79,8 @@ OvlFunc_915_2008608  src/maps/kolima_forest_3.c
 OvlFunc_923_20088ec  src/overlays/rom_7aa430/ovl_314_a_c_c_c_b.c
 OvlFunc_924_20088ec  src/overlays/rom_7ac2d8/ovl_314_a_c_c_c_b.c
 OvlFunc_934_20088ec  src/overlays/rom_7bdeb0/ovl_314_a_a_c_c_b.c
-OvlFunc_946_2008608  src/overlays/rom_7ced6c/ovl_30_a_a_c_c_b.c
-OvlFunc_948_2008608  src/overlays/rom_7d30e0/ovl_30_a_a_a_c_c_c_b.c
+OvlFunc_946_2008608  src/maps/crossbone_isle.c
+OvlFunc_948_2008608  src/maps/crossbone_isle_dungeon_4.c
 OvlFunc_957_2008608  src/overlays/rom_7e3e08/ovl_30_a_a_a_c_c_c_b.c
 OvlFunc_964_2008608  src/maps/tunnel_ruins.c
 OvlFunc_965_2008608  src/maps/babi_lighthouse.c

@@ -1,8 +1,8 @@
 	.include "macros.inc"
 
-	.export_func OvlFunc_944_2008240
-	.export_func OvlFunc_944_20081c8
-	.export_func OvlFunc_944_20081d8
-	.export_func OvlFunc_944_20081e0
-	.export_func OvlFunc_944_20081e8
-	.export_func OvlFunc_944_20081d0
+	.export_func TolbiBoundShipTop_MapInit
+	.export_func TolbiBoundShipTop_GetEntrances
+	.export_func TolbiBoundShipTop_GetExits
+	.export_func TolbiBoundShipTop_GetActors
+	.export_func TolbiBoundShipTop_GetEvents
+	.export_func TolbiBoundShipTop_GetSpecialExits
