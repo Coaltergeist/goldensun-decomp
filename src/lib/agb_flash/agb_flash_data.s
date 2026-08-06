@@ -12,11 +12,15 @@
 
 	.section .rodata
 	.align	2, 0
+	.global gAgbFlashIdent
 	.global	gSetup512KInfos
 	.global	DefaultFlash512K
 	.global	gFlashChip2
 	.global	gFlashChip3
 
+gAgbFlashIdent:
+	.ascii "FLASH_V123\0"
+.align 2, 0
 gSetup512KInfos:
 	.incrom 0x7a0c, 0x7abc
 DefaultFlash512K:

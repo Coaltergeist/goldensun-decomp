@@ -201,9 +201,9 @@
 	b	.L1e20
 .L1e54:
 	add	r0, r9, #6
-	ldr	r2, =iwram_3001d00
+	ldr	r2, =sOamMatrixCount
 	ldrb	r4, [r2]
-	ldr	r1, =iwram_3001d40
+	ldr	r1, =sOamMatrices
 	cmp	r4, #0
 	beq	.L1e90
 .L1e6c:
@@ -219,7 +219,7 @@
 .L1e90:
 	pop	{r5, r6, r7, r8, r9, lr}
 	bx	lr
-.func_end Func_8001dc8
+.func_end_emit_size Func_8001dc8, _Func_8001dc8_SIZE
 
 .arm_func_start BlitFade_Div4_ROM  @ 0x08001ea8
 	push	{r5, r6}

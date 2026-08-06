@@ -365,13 +365,11 @@ void WaitFrames(u32 frames)
     }
     deltaPtr = &iwram_3001804;
     if (*deltaPtr != 0) {
-        vu32 *dma;
         __asm__ volatile ("mov %0, sp" : "+r" (sp) :: "memory");
         sp -= *deltaPtr;
         __asm__ volatile ("mov sp, %0" : "+r" (sp) :: "memory");
         DMA3_COPY(ewram_20023b0, (void *)(sp), iwram_3001804);
-        dma = (vu32*)&REG_DMA3SAD;
-        while (dma[2] & 0x80000000) ;
+        WaitForDma3();
         iwram_3001804 = 0;
     }
 }
