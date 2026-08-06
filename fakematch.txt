@@ -32,7 +32,7 @@ OvlFunc_939_2008a90  src/maps/lunpa.c
 OvlFunc_939_20089d4  src/maps/lunpa.c
 OvlFunc_949_2008528  src/maps/tolbi.c
 OvlFunc_949_2008568  src/maps/tolbi.c
-OvlFunc_945_200c0e8  src/overlays/rom_7cb2c0/ovl_30_c_c_c_c_c_c_a_a_a_a_b.c
+OvlFunc_945_200c0e8  src/maps/tolbi_bound_ship_hull.c
 OvlFunc_882_20096cc  src/maps/vale_river_prologue.c
 Func_801fb48         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_a_b.c
 OvlFunc_917_2008088  src/maps/kolima_forest_5.c
@@ -103,4 +103,4 @@ OvlFunc_959_2008e80  src/maps/lunpa_fortress.c
 OvlFunc_927_2008608  src/maps/mogall_forest.c
 OvlFunc_930_2008ac0  src/maps/alpine_crossing.c
 OvlFunc_930_2008180  src/maps/alpine_crossing.c
-OvlFunc_953_20084c8  src/overlays/rom_7d95dc/ovl_30_c_c_c_a_a_a_c_a_b.c
+OvlFunc_953_20084c8  src/maps/colosseum.c
