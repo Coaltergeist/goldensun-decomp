@@ -13,10 +13,10 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7fb4a8/exports.o(.text)
+		asm/maps/link_lobby/exports.o(.text)
 		asm/maps/link_lobby.o(.text)
 		asm/overlays/rom_7fb4a8/ovl_30_c_c.o(.text)
-		src/overlays/rom_7fb4a8/imports.o(.text)
+		asm/maps/link_lobby/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

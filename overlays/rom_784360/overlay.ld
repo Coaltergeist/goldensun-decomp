@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_784360/exports.o(.text)
 		asm/maps/vale_plaza.o(.text)
-		src/overlays/rom_784360/imports.o(.text)
 	} > overlay
 
 	.data : {

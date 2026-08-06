@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_78ef88/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/elemental_stars/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/elemental_stars.o(.text)
-		src/overlays/rom_78ef88/imports.o(.text)
+		asm/maps/elemental_stars/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/elemental_stars.o(.data)
 	} > overlay
 

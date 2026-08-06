@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7ced6c/exports.o(.text)
 		asm/maps/crossbone_isle.o(.text)
-		src/overlays/rom_7ced6c/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

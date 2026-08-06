@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/exports.s");
+
 extern int OvlFunc_948_20082a8();
 extern void OvlFunc_948_2009c28();
 extern void OvlFunc_948_2009d64();
@@ -753,3 +755,5 @@ void OvlFunc_948_2009ec0(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/imports.s");

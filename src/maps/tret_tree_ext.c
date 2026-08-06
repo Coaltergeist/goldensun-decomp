@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tret_tree_ext/exports.s");
+
 extern void __Func_8091f14(int a, int b);
 
 void OvlFunc_919_2008030(void) {
@@ -126,3 +128,5 @@ void OvlFunc_919_20082e0(void)
 }
 
 INCLUDE_ASM("asm/maps/tret_tree_ext/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/tret_tree_ext/imports.s");

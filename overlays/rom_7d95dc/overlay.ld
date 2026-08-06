@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7d95dc/exports.o(.text)
 		asm/maps/colosseum.o(.text)
-		src/overlays/rom_7d95dc/imports.o(.text)
 	} > overlay
 
 	.data : {

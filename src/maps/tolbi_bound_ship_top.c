@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/exports.s");
+
 /* __Random unsigned so `(__Random(..) << 6) >> 16` is a logical shift (empty
  * parens: fragments call it with 0 and 1 args). */
 extern unsigned int __Random();
@@ -225,3 +227,5 @@ unsigned int OvlFunc_944_2009130(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/imports.s");

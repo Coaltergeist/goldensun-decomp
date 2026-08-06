@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_rooms_2/exports.s");
+
 INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_a_a.s");
 
 extern unsigned char gLuckyFountainPrizes[];
@@ -328,3 +330,5 @@ void OvlFunc_887_20097e4(void)
 }
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_rooms_2/imports.s");

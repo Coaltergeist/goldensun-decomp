@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kalay/exports.s");
+
 /* forward decl hoisted to TU top: used as a function pointer (line ~133) before
  * its definition; reconcile re-emitted it below the use instead of here. */
 extern void OvlFunc_936_200b90c(void);
@@ -307,3 +309,5 @@ int OvlFunc_936_200b9d4(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kalay/imports.s");

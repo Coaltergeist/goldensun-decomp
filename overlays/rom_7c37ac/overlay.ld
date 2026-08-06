@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7c37ac/exports.o(.text)
 		asm/maps/hammet_palace.o(.text)
-		src/overlays/rom_7c37ac/imports.o(.text)
 	} > overlay
 
 	.data : {

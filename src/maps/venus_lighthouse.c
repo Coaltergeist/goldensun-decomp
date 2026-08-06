@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/venus_lighthouse/exports.s");
+
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __Actor_SetSpriteFlags();
 extern void __CutsceneEnd();
@@ -461,3 +463,5 @@ void OvlFunc_968_200c600(void) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/venus_lighthouse/imports.s");

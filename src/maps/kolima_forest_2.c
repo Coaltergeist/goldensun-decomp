@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kolima_forest_2/exports.s");
+
 /* Cluster OvlFunc_914_2008030..OvlFunc_914_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
  *
  * Total .text for this TU = 60 bytes (= 0x3c).
@@ -426,3 +428,5 @@ int OvlFunc_914_2008c4c(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kolima_forest_2/imports.s");

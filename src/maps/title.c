@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/title/exports.s");
+
 extern unsigned char gOvl_020085f8[];
 
 unsigned int Title_GetEntrances(void) {
@@ -31,3 +33,5 @@ void *Title_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/title/title_body.s");
+
+INCLUDE_ASM("asm/maps/title/imports.s");

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7b4558/exports.o(.text)
 		asm/maps/mogall_forest.o(.text)
-		src/overlays/rom_7b4558/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/suhalla/exports.s");
+
 extern void OvlFunc_961_20080f8();
 
 extern unsigned char gOvl_020082f0[];
@@ -91,3 +93,5 @@ int Suhalla_MapInit(void)
 }
 
 INCLUDE_ASM("asm/maps/suhalla/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/suhalla/imports.s");

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_797740/exports.o(.text)
 		asm/maps/jail.o(.text)
-		src/overlays/rom_797740/imports.o(.text)
 	} > overlay
 
 	.data : {

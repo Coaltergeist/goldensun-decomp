@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/lunpa_rooms/exports.s");
+
 extern unsigned char gOvl_020084f8[];
 
 unsigned int LunpaRooms_GetEntrances(void) {
@@ -190,3 +192,5 @@ void OvlFunc_940_2008454(void)
 }
 
 INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/lunpa_rooms/imports.s");

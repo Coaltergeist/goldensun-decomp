@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7b7790/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/xian_rooms/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/xian_rooms.o(.text)
-		src/overlays/rom_7b7790/imports.o(.text)
+		asm/maps/xian_rooms/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/xian_rooms.o(.data)
 	} > overlay
 

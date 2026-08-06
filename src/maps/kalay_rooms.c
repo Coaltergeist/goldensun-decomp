@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kalay_rooms/exports.s");
+
 INCLUDE_ASM("asm/maps/kalay_rooms/ovl_30_a.s");
 
 int KalayRooms_GetSpecialExits(void) {
@@ -53,3 +55,5 @@ void OvlFunc_937_200818c(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay_rooms/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kalay_rooms/imports.s");

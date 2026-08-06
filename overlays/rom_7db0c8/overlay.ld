@@ -13,39 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7db0c8/exports.o(.text)
+		asm/maps/colosseum_final_1/exports.o(.text)
 		asm/maps/colosseum_final_1.o(.text)
-		asm/overlays/common/common1_a_a_a_a_a_b.o(.text)
-		asm/overlays/common/common1_a_a_a_a_a_c.o(.text)
-		asm/overlays/common/common1_a_a_a_a_b.o(.text)
-		asm/overlays/common/common1_a_a_a_a_c_a.o(.text)
-		asm/overlays/common/common1_a_a_a_a_c_b.o(.text)
-		asm/overlays/common/common1_a_a_a_a_c_c.o(.text)
-		asm/overlays/common/common1_a_a_a_b.o(.text)
-		asm/overlays/common/common1_a_a_b.o(.text)
-		asm/overlays/common/common1_a_a_c.o(.text)
-		asm/overlays/common/common1_a_b.o(.text)
-		asm/overlays/common/common1_a_c_b.o(.text)
-		asm/overlays/common/common1_a_c_c_b.o(.text)
-		asm/overlays/common/common1_a_c_c_c.o(.text)
-		asm/overlays/common/common1_b.o(.text)
-		asm/overlays/common/common1_c_a_b.o(.text)
-		asm/overlays/common/common1_c_a_c_b.o(.text)
-		asm/overlays/common/common1_c_a_c_c.o(.text)
-		asm/overlays/common/common1_c_b.o(.text)
-		asm/overlays/common/common1_c_c.o(.text)
-		src/overlays/rom_7db0c8/imports.o(.text)
+		asm/maps/common/common1.o(.text)
+		asm/maps/colosseum_final_1/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common1_c_c.o(.data)
+		asm/maps/common/common1.o(.data)
 		asm/maps/colosseum_final_1.o(.data)
-		asm/overlays/common/common1_c_c.o(.data1)
+		asm/maps/common/common1.o(.data1)
 	} > overlay
 
 	.bss : {
-		asm/overlays/common/common1_c_c.o(.bss)
+		asm/maps/common/common1.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

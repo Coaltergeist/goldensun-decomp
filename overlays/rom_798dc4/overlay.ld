@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_798dc4/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/goma_cave_entry/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/goma_cave_entry.o(.text)
-		src/overlays/rom_798dc4/imports.o(.text)
+		asm/maps/goma_cave_entry/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/goma_cave_entry.o(.data)
 	} > overlay
 

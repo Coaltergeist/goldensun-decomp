@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/ovl_30_a_a_a_a.s");
 
 extern int bytes(int);
@@ -175,3 +177,5 @@ void OvlFunc_943_200ba00(int a, int b) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/imports.s");

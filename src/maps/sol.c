@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/sol/exports.s");
+
 INCLUDE_ASM("asm/maps/sol/ovl_30_a.s");
 
 int Sol_GetSpecialExits(void) {
@@ -80,3 +82,5 @@ void OvlFunc_895_2009aac(void)
 }
 
 INCLUDE_ASM("asm/maps/sol/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/sol/imports.s");

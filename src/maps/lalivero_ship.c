@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/lalivero_ship/exports.s");
+
 extern void OvlFunc_970_2009188();
 
 extern unsigned char gOvl_020096c8[];
@@ -92,3 +94,5 @@ void OvlFunc_970_2009188(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero_ship/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/lalivero_ship/imports.s");

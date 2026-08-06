@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7c5efc/exports.o(.text)
 		asm/maps/west_lunpa_cave.o(.text)
-		src/overlays/rom_7c5efc/imports.o(.text)
 	} > overlay
 
 	.data : {

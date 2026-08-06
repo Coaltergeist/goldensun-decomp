@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_sanctum/exports.s");
+
 int OvlFunc_888_2008030(int arg0) {
     int *r2;
     int r3;
@@ -141,3 +143,5 @@ void OvlFunc_888_200b4f0(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_sanctum/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_sanctum/imports.s");

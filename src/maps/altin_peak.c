@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/altin_peak/exports.s");
+
 extern void __Func_8091f14(int, int);
 
 void OvlFunc_932_2008030(void) {
@@ -443,3 +445,5 @@ void OvlFunc_932_200b724(struct Foo_b* arg0) {
 }
 
 INCLUDE_ASM("asm/maps/altin_peak/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/altin_peak/imports.s");

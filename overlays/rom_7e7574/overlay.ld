@@ -13,29 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7e7574/exports.o(.text)
+		asm/maps/lunpa_fortress/exports.o(.text)
 		asm/maps/lunpa_fortress.o(.text)
-		src/overlays/rom_7e7574/imports.o(.text)
+		asm/maps/lunpa_fortress/imports.o(.text)
 		src/lib/call_via.o(.text)
-		asm/overlays/common/common2_a.o(.text)
-		asm/overlays/common/common2_b.o(.text)
-		asm/overlays/common/common2_c_b.o(.text)
-		asm/overlays/common/common2_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_a.o(.text)
-		asm/overlays/common/common2_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_a.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.text)
+		asm/maps/common/common2.o(.text)
 	} > overlay
 
 	.data : {
 		asm/maps/lunpa_fortress.o(.data)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.data)
+		asm/maps/common/common2.o(.data)
 		asm/maps/lunpa_fortress.o(.mdata1)
 	} > overlay
 

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a67d8/exports.o(.text)
 		asm/maps/tret_tree_ext.o(.text)
-		src/overlays/rom_7a67d8/imports.o(.text)
 	} > overlay
 
 	.data : {

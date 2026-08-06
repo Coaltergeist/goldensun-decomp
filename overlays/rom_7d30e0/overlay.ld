@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7d30e0/exports.o(.text)
 		asm/maps/crossbone_isle_dungeon_4.o(.text)
-		src/overlays/rom_7d30e0/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

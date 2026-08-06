@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/imil_falls_cave/exports.s");
+
 extern void OvlFunc_922_2008bc8();
 
 extern void __Func_80955b0(int a, int b, int c);
@@ -743,3 +745,5 @@ void OvlFunc_922_2009f58(void) {
 }
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/imil_falls_cave/imports.s");

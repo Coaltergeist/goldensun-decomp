@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/menu_test/exports.s");
+
 extern unsigned char gOvl_020093c8[];
 
 unsigned int MenuTest_GetEntrances(void) {
@@ -121,3 +123,5 @@ unsigned int OvlFunc_974_200917c(void) {
 }
 
 INCLUDE_ASM("asm/maps/menu_test/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/menu_test/imports.s");

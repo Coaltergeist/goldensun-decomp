@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_river_prologue/exports.s");
+
 INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_a_a.s");
 
 extern unsigned char gOvl_0200d0e4[];
@@ -453,3 +455,5 @@ void OvlFunc_882_200c618(void)
 }
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_river_prologue/imports.s");

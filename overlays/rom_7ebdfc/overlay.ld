@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7ebdfc/exports.o(.text)
 		asm/maps/suhalla.o(.text)
-		src/overlays/rom_7ebdfc/imports.o(.text)
 	} > overlay
 
 	.data : {

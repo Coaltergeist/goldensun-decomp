@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tunnel_ruins/exports.s");
+
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __Actor_SetAnim();
 extern void __Actor_WaitMovement();
@@ -669,3 +671,5 @@ void OvlFunc_964_200a354(void)
 }
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/tunnel_ruins/imports.s");

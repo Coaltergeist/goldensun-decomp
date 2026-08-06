@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_79dd90/exports.o(.text)
 		asm/maps/mccoys_palace_ext.o(.text)
-		src/overlays/rom_79dd90/imports.o(.text)
 	} > overlay
 
 	.data : {

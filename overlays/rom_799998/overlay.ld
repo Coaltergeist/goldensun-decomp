@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_799998/exports.o(.text)
 		asm/maps/goma_cave_1.o(.text)
-		src/overlays/rom_799998/imports.o(.text)
 	} > overlay
 
 	.data : {

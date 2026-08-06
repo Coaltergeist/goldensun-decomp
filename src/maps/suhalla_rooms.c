@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/suhalla_rooms/exports.s");
+
 extern unsigned char MapEntrance_ARRAY_962__02008c3c[];
 
 void *SuhallaRooms_GetEntrances(void) {
@@ -54,3 +56,5 @@ unsigned int *SuhallaRooms_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/suhalla_rooms/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/suhalla_rooms/imports.s");

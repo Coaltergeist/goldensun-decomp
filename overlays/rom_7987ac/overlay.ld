@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7987ac/exports.o(.text)
 		asm/maps/vault_rooms_2.o(.text)
-		src/overlays/rom_7987ac/imports.o(.text)
 	} > overlay
 
 	.data : {

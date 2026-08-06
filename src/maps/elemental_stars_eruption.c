@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/exports.s");
+
 extern unsigned char gOvl_0200b6d4[];
 
 unsigned int ElementalStarsEruption_GetEntrances(void) {
@@ -208,3 +210,5 @@ void OvlFunc_897_200b00c(void) {
 }
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/imports.s");

@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7b2078/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/fuchin_temple/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/fuchin_temple.o(.text)
-		src/overlays/rom_7b2078/imports.o(.text)
+		asm/maps/fuchin_temple/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/fuchin_temple.o(.data)
 	} > overlay
 

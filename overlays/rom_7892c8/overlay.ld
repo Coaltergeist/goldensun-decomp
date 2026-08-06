@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7892c8/exports.o(.text)
 		asm/maps/vale_sanctum.o(.text)
-		src/overlays/rom_7892c8/imports.o(.text)
 	} > overlay
 
 	.data : {

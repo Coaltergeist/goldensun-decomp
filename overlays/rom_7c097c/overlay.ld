@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7c097c/exports.o(.text)
 		asm/maps/kalay.o(.text)
-		src/overlays/rom_7c097c/imports.o(.text)
 	} > overlay
 
 	.data : {

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7b7f1c/exports.o(.text)
 		asm/maps/alpine_crossing.o(.text)
-		src/overlays/rom_7b7f1c/imports.o(.text)
 	} > overlay
 
 	.data : {

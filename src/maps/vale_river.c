@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_river/exports.s");
+
 /* Cluster OvlFunc_883_2008030..OvlFunc_883_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
  *
  * Total .text for this TU = 60 bytes (= 0x3c).
@@ -852,3 +854,5 @@ void OvlFunc_883_200dc98(int arg0)
 }
 
 INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_river/imports.s");

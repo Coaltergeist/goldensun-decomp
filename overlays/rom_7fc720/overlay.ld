@@ -13,10 +13,8 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7fc720/exports.o(.text)
 		asm/maps/debug_get_item.o(.text)
 		asm/overlays/rom_7fc720/ovl_30_c_c_c_c.o(.text)
-		src/overlays/rom_7fc720/imports.o(.text)
 	} > overlay
 
 	.data : {

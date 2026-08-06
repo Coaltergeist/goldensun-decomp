@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tolbi/exports.s");
+
 extern void __Func_80955b0(int a, int b, int c);
 
 void OvlFunc_949_2008030(void) {
@@ -238,3 +240,5 @@ void OvlFunc_949_2008ca8(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/tolbi/imports.s");

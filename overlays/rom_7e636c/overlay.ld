@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7e636c/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/gondowan/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/gondowan.o(.text)
-		src/overlays/rom_7e636c/imports.o(.text)
+		asm/maps/gondowan/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
+		asm/maps/common/common0.o(.data)
 		asm/maps/gondowan.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/gondowan.o(.mdata1)
 	} > overlay
 

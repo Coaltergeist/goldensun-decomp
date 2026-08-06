@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/suhalla_gate_1/exports.s");
+
 extern void __Func_8091f14(int a, int b);
 
 void OvlFunc_963_2008030(void) {
@@ -72,3 +74,5 @@ void OvlFunc_963_20087ac(void) {
 }
 
 INCLUDE_ASM("asm/maps/suhalla_gate_1/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/suhalla_gate_1/imports.s");

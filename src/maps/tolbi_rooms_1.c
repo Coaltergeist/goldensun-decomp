@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/exports.s");
+
 extern unsigned char gOvl_02008bb4[];
 
 unsigned int TolbiRooms1_GetEntrances(void) {
@@ -72,3 +74,5 @@ void OvlFunc_950_200885c(void) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/imports.s");

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a7298/exports.o(.text)
 		asm/maps/imil.o(.text)
-		src/overlays/rom_7a7298/imports.o(.text)
 	} > overlay
 
 	.data : {

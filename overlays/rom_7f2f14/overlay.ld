@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7f2f14/exports.o(.text)
 		asm/maps/venus_lighthouse.o(.text)
-		src/overlays/rom_7f2f14/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_78dc80/exports.o(.text)
 		asm/maps/sol_sanctum_3.o(.text)
-		src/overlays/rom_78dc80/imports.o(.text)
 	} > overlay
 
 	.data : {

@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7bc690/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/lamakan_desert/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/lamakan_desert.o(.text)
-		src/overlays/rom_7bc690/imports.o(.text)
+		asm/maps/lamakan_desert/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
+		asm/maps/common/common0.o(.data)
 		asm/maps/lamakan_desert.o(.data)
 		asm/maps/lamakan_desert.o(.mdata1)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/lamakan_desert.o(.mdata2)
 		asm/maps/lamakan_desert.o(.mdata3)
 	} > overlay

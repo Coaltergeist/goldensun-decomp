@@ -100,32 +100,15 @@ asm/%.o: src/%.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
-# overlays/common/common2_c was compiled WITHOUT -mthumb-interwork in the
-# original ROM: all 14 of its functions return `pop {pc}` (the non-interwork
-# epilogue), unique in the corpus; every other TU returns `bx`-form. Drop
-# interwork for this one stem so the epilogue byte-matches. Pattern (not explicit)
-# so it also covers the splitter's matched _b children (common2_c_b.o, ...). Mirrors
-# the src/lib/m4a/%.o per-file override precedent below. Verified: a common2 fn compiled
-# without -mthumb-interwork emits `pop {pc}`.
+# The common2 shared object was compiled WITHOUT -mthumb-interwork in the original
+# ROM: its common2_c* functions return `pop {pc}` (the non-interwork epilogue),
+# unique in the corpus; every other TU returns `bx`-form. The rest of the
+# consolidated TU (common2_b) is interwork-INSENSITIVE (byte-identical either way,
+# verified), so the whole common2.c compiles non-interwork. Mirrors the
+# src/lib/m4a/%.o per-file override precedent below.
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
-asm/overlays/common/common2_c%.o: src/overlays/common/common2_c%.c
+asm/maps/common/common2.o: src/maps/common/common2.c
 	$(GCC296_CC) $(COMMON2_CFLAGS) -S -o $(@:.o=.s) $<
-	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
-
-# -O1 overlay rules. Delete these two the moment that structural
-# blocker is solved and they consolidate.
-O1_CFLAGS := $(subst -O2,-O1,$(GCC296_CFLAGS))
-asm/overlays/rom_7aa430/ovl_e90_c_c_a_a%.o: src/overlays/rom_7aa430/ovl_e90_c_c_a_a%.c
-	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
-	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
-asm/overlays/rom_7ac2d8/ovl_35b8_a_a_a_b.o: src/overlays/rom_7ac2d8/ovl_35b8_a_a_a_b.c
-	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
-	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
-asm/overlays/rom_7ac2d8/ovl_35b8_a_a_a_c_b.o: src/overlays/rom_7ac2d8/ovl_35b8_a_a_a_c_b.c
-	$(GCC296_CC) $(O1_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
@@ -266,12 +249,12 @@ $(patsubst %.s,%.o,$(wildcard asm/$(strip $(1))*.s)): %.o: $(strip $(1))orig.bin
 endef
 $(foreach overlay_dir,$(OVERLAY_DIRS),$(eval $(call overlay_orig_deps, $(overlay_dir))))
 
-# Every common0/1/2 object AND its splitter children .incbin the same orig.bin;
-# wildcard so the children get the dep too (a bare base-object dep left the
-# children racing the extraction under `make clean && make -j`).
-$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common0*.s)): overlays/rom_78ef88/orig.bin
-$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common1*.s)): overlays/rom_7db0c8/orig.bin
-$(patsubst %.s,%.o,$(wildcard asm/overlays/common/common2*.s)): overlays/rom_7bf5a8/orig.bin
+# The shared common objects .incbin an overlay's orig.bin (common0 directly;
+# common1/common2 via the data fragment INCLUDE_ASM'd into their consolidated TU),
+# so each needs that orig.bin extracted before it assembles under `make -j`.
+asm/maps/common/common0.o: overlays/rom_78ef88/orig.bin
+asm/maps/common/common1.o: overlays/rom_7db0c8/orig.bin
+asm/maps/common/common2.o: overlays/rom_7bf5a8/orig.bin
 
 # Consolidated map TUs (src/maps/<name>.c) pull their unmatched .data/.bss via an
 # INCLUDE_ASM'd asm/maps/<name>/*.s body that .incbin's the overlay's orig.bin.

@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a5214/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/tret_tree/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/tret_tree.o(.text)
-		src/overlays/rom_7a5214/imports.o(.text)
+		asm/maps/tret_tree/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
+		asm/maps/common/common0.o(.data)
 		asm/maps/tret_tree.o(.data)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/tret_tree.o(.mdata1)
 	} > overlay
 

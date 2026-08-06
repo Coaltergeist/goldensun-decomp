@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7c5974/exports.o(.text)
 		asm/maps/lunpa_rooms.o(.text)
-		src/overlays/rom_7c5974/imports.o(.text)
 	} > overlay
 
 	.data : {

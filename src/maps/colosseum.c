@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/colosseum/exports.s");
+
 INCLUDE_ASM("asm/maps/colosseum/ovl_30_a.s");
 
 int Colosseum_GetSpecialExits(void) {
@@ -247,3 +249,5 @@ void OvlFunc_953_2009c5c(int a, unsigned short b) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/colosseum/imports.s");

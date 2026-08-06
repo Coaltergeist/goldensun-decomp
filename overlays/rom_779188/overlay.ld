@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_779188/exports.o(.text)
 		asm/maps/title.o(.text)
-		src/overlays/rom_779188/imports.o(.text)
 	} > overlay
 
 	.data : {

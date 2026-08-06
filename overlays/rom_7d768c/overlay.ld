@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7d768c/exports.o(.text)
 		asm/maps/babis_palace.o(.text)
-		src/overlays/rom_7d768c/imports.o(.text)
 	} > overlay
 
 	.data : {

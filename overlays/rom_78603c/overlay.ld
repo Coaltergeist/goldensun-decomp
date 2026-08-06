@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_78603c/exports.o(.text)
 		asm/maps/vale_kraden.o(.text)
-		src/overlays/rom_78603c/imports.o(.text)
 	} > overlay
 
 	.data : {

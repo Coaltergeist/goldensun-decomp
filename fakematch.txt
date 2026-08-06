@@ -50,7 +50,7 @@ OvlFunc_883_2008cd0  src/maps/vale_river.c
 OvlFunc_899_200aba0  src/maps/vault_rooms_1.c
 OvlFunc_959_200975c  src/maps/lunpa_fortress.c
 OvlFunc_959_20097bc  src/maps/lunpa_fortress.c
-OvlFunc_common1_1578  src/overlays/common/common1_a_c_c_b.c
+OvlFunc_common1_1578  src/maps/common/common1.c
 OvlFunc_925_200aeb8  src/maps/mercury_lighthouse_aerie.c
 OvlFunc_952_200bdf8  src/maps/babis_palace.c
 OvlFunc_958_2009080  src/maps/gondowan.c
@@ -94,7 +94,7 @@ OvlFunc_955_20088ec  src/maps/colosseum_final_2.c
 OvlFunc_926_200a778  src/maps/fuchin_temple.c
 OvlFunc_971_20090e8  src/maps/link_lobby.c
 OvlFunc_928_2008de8  src/maps/xian.c
-OvlFunc_common1_850  src/overlays/common/common1_a_a_a_a_c_b.c
+OvlFunc_common1_850  src/maps/common/common1.c
 OvlFunc_903_2008f8c  src/maps/goma_cave_entry.c
 Func_807a628  src/rom_77000/rom_79460_c_c_c_c_c_b.c
 OvlFunc_881_20097a4  src/maps/world_map.c

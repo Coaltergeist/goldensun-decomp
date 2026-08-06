@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/goma_cave_1/exports.s");
+
 extern unsigned char gOvl_02008108[];
 
 unsigned int GomaCave1_GetEntrances(void) {
@@ -29,3 +31,5 @@ void *GomaCave1_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/goma_cave_1/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/goma_cave_1/imports.s");

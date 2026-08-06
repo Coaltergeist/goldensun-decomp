@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/mccoys_palace/exports.s");
+
 INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_a_a.s");
 
 extern unsigned char gOvl_0200a638[];
@@ -163,3 +165,5 @@ void OvlFunc_909_20084c0(void) {
 }
 
 INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/mccoys_palace/imports.s");

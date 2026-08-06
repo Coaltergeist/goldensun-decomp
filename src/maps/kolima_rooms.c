@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kolima_rooms/exports.s");
+
 INCLUDE_ASM("asm/maps/kolima_rooms/ovl_30_a_a.s");
 
 extern unsigned char gOvl_02008318[];
@@ -111,3 +113,5 @@ void *KolimaRooms_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_rooms/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kolima_rooms/imports.s");

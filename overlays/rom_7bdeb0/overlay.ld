@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7bdeb0/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/vale_cave/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/vale_cave.o(.text)
-		src/overlays/rom_7bdeb0/imports.o(.text)
+		asm/maps/vale_cave/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
+		asm/maps/common/common0.o(.data)
 		asm/maps/vale_cave.o(.data)
 		asm/maps/vale_cave.o(.mdata1)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/vale_cave.o(.mdata2)
 		asm/maps/vale_cave.o(.mdata3)
 	} > overlay

@@ -13,29 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7bf5a8/exports.o(.text)
+		asm/maps/vault_cave/exports.o(.text)
 		asm/maps/vault_cave.o(.text)
-		src/overlays/rom_7bf5a8/imports.o(.text)
-		asm/overlays/common/common2_a.o(.text)
-		asm/overlays/common/common2_b.o(.text)
-		asm/overlays/common/common2_c_b.o(.text)
-		asm/overlays/common/common2_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_a.o(.text)
-		asm/overlays/common/common2_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_a.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_b.o(.text)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.text)
+		asm/maps/vault_cave/imports.o(.text)
+		asm/maps/common/common2.o(.text)
 	} > overlay
 
 	.data : {
 		asm/maps/vault_cave.o(.data)
 		asm/maps/vault_cave.o(.mdata1)
-		asm/overlays/common/common2_c_c_c_c_c_c_c_c_c_c.o(.data)
+		asm/maps/common/common2.o(.data)
 		asm/maps/vault_cave.o(.mdata2)
 		asm/maps/vault_cave.o(.mdata3)
 	} > overlay

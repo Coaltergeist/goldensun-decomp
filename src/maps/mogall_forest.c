@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/mogall_forest/exports.s");
+
 /* void veneers left implicit by every source fragment: without the correct
  * void return type the -O2 arg-setup scheduler swaps the mov order (was masked
  * by the old -O1 build rule). See work/o1_diag/. */
@@ -486,3 +488,5 @@ int OvlFunc_927_200aba4(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/mogall_forest/imports.s");

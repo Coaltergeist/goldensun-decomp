@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7d4af4/exports.o(.text)
 		asm/maps/tolbi.o(.text)
-		src/overlays/rom_7d4af4/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

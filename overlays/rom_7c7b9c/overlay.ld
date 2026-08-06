@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7c7b9c/exports.o(.text)
 		asm/maps/tolbi_bound_ship_deck.o(.text)
-		src/overlays/rom_7c7b9c/imports.o(.text)
 	} > overlay
 
 	.data : {

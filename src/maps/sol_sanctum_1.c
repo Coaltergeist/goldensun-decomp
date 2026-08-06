@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/sol_sanctum_1/exports.s");
+
 extern unsigned char gOvl_0200aafc[];
 
 unsigned int SolSanctum1_GetEntrances(void) {
@@ -93,3 +95,5 @@ void OvlFunc_890_200a924(void)
 }
 
 INCLUDE_ASM("asm/maps/sol_sanctum_1/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/sol_sanctum_1/imports.s");

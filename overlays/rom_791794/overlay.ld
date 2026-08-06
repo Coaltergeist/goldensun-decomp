@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_791794/exports.o(.text)
 		asm/maps/elemental_stars_eruption.o(.text)
-		src/overlays/rom_791794/imports.o(.text)
 	} > overlay
 
 	.data : {

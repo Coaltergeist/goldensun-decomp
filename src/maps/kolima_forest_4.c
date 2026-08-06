@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kolima_forest_4/exports.s");
+
 extern unsigned char gOvl_02009170[];
 
 unsigned int KolimaForest4_GetEntrances(void) {
@@ -76,3 +78,5 @@ void OvlFunc_916_2008f54(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_4/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kolima_forest_4/imports.s");

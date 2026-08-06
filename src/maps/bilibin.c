@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/bilibin/exports.s");
+
 INCLUDE_ASM("asm/maps/bilibin/ovl_30_a.s");
 
 extern unsigned char gOvl_0200942c[];
@@ -169,3 +171,5 @@ unsigned int OvlFunc_907_2008d80(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/bilibin/imports.s");

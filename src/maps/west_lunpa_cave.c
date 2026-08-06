@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/west_lunpa_cave/exports.s");
+
 extern unsigned char gOvl_02009c34[];
 
 unsigned int WestLunpaCave_GetEntrances(void) {
@@ -143,3 +145,5 @@ unsigned int OvlFunc_941_200941c(void)
 }
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/west_lunpa_cave/imports.s");

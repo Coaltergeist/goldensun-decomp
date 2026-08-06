@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7fcd20/exports.o(.text)
 		asm/maps/menu_test.o(.text)
-		src/overlays/rom_7fcd20/imports.o(.text)
 	} > overlay
 
 	.data : {

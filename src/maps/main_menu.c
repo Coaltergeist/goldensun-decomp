@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/main_menu/exports.s");
+
 extern unsigned char gOvl_02009658[];
 
 unsigned int MainMenu_GetEntrances(void) {
@@ -31,3 +33,5 @@ void *MainMenu_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/main_menu/main_menu_body.s");
+
+INCLUDE_ASM("asm/maps/main_menu/imports.s");

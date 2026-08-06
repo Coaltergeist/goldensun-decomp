@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a6ae4/exports.o(.text)
 		asm/maps/bilibin_cave.o(.text)
-		src/overlays/rom_7a6ae4/imports.o(.text)
 	} > overlay
 
 	.data : {

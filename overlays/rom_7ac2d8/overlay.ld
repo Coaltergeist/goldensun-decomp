@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7ac2d8/exports.o(.text)
-		asm/overlays/common/common0.o(.text)
+		asm/maps/mercury_lighthouse/exports.o(.text)
+		asm/maps/common/common0.o(.text)
 		asm/maps/mercury_lighthouse.o(.text)
-		src/overlays/rom_7ac2d8/imports.o(.text)
+		asm/maps/mercury_lighthouse/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/overlays/common/common0.o(.data)
+		asm/maps/common/common0.o(.data)
 		asm/maps/mercury_lighthouse.o(.data)
 		asm/maps/mercury_lighthouse.o(.mdata1)
-		asm/overlays/common/common0.o(.data1)
+		asm/maps/common/common0.o(.data1)
 		asm/maps/mercury_lighthouse.o(.mdata2)
 		asm/maps/mercury_lighthouse.o(.mdata3)
 		asm/maps/mercury_lighthouse.o(.mdata4)

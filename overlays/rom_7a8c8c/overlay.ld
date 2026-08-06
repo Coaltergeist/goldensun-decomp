@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a8c8c/exports.o(.text)
 		asm/maps/imil_falls_cave.o(.text)
-		src/overlays/rom_7a8c8c/imports.o(.text)
 	} > overlay
 
 	.data : {

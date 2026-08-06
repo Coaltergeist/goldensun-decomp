@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_77dd1c/exports.o(.text)
 		asm/maps/vale_river_prologue.o(.text)
-		src/overlays/rom_77dd1c/imports.o(.text)
 	} > overlay
 
 	.data : {

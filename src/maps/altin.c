@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/altin/exports.s");
+
 INCLUDE_ASM("asm/maps/altin/ovl_30_a.s");
 
 int Altin_GetSpecialExits(void) {
@@ -133,3 +135,5 @@ void OvlFunc_931_200884c(void) {
 }
 
 INCLUDE_ASM("asm/maps/altin/ovl_30_c_c_c_c_c_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/altin/imports.s");

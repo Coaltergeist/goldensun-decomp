@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_78ac38/exports.o(.text)
 		asm/maps/vale_river_eruption.o(.text)
-		src/overlays/rom_78ac38/imports.o(.text)
 	} > overlay
 
 	.data : {

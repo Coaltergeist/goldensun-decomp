@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7a04ac/exports.o(.text)
 		asm/maps/kolima_forest_1.o(.text)
-		src/overlays/rom_7a04ac/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

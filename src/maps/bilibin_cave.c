@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/bilibin_cave/exports.s");
+
 extern int __Actor_SetSpriteFlags();
 
 unsigned int OvlFunc_920_2008030(void) {
@@ -114,3 +116,5 @@ INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_a_c.s");
 void OvlFunc_920_2008904(void) {}
 
 INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/bilibin_cave/imports.s");

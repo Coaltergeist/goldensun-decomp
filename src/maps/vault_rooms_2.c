@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vault_rooms_2/exports.s");
+
 extern void OvlFunc_902_2008098();
 
 extern int *__MapActor_GetActor(int idx);
@@ -240,3 +242,5 @@ void *VaultRooms2_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vault_rooms_2/imports.s");

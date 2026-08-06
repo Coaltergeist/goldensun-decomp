@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/world_map/exports.s");
+
 INCLUDE_ASM("asm/maps/world_map/ovl_30_a_a_a.s");
 
 
@@ -322,3 +324,5 @@ void OvlFunc_881_200bf88(int arg0)
 }
 
 INCLUDE_ASM("asm/maps/world_map/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/world_map/imports.s");

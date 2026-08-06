@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/debug_get_item/exports.s");
+
 extern unsigned char gOvl_02008920[];
 extern unsigned char gOvl_02008964[];
 extern unsigned char gOvl_02008994[];
@@ -93,3 +95,5 @@ int OvlFunc_973_20087c8(void) {
 int OvlFunc_973_20087d4(void) {
     return __Debug_FaceTest();
 }
+
+INCLUDE_ASM("asm/maps/debug_get_item/imports.s");

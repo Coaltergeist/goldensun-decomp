@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kolima/exports.s");
+
 extern unsigned char L3698[] __asm__(".Lm911_3698");
 
 unsigned int OvlFunc_911_2008030(unsigned int arg0)
@@ -101,3 +103,5 @@ unsigned int OvlFunc_911_200a6a4(int a)
 }
 
 INCLUDE_ASM("asm/maps/kolima/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/kolima/imports.s");

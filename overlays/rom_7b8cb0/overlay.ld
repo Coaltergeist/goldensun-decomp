@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7b8cb0/exports.o(.text)
 		asm/maps/altin.o(.text)
-		src/overlays/rom_7b8cb0/imports.o(.text)
 	} > overlay
 
 	.data : {

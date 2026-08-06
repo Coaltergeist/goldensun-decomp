@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/lalivero/exports.s");
+
 extern void __Func_80955b0(int a, int b, int c);
 
 void OvlFunc_966_2008030(void) {
@@ -85,3 +87,5 @@ unsigned int *Lalivero_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/lalivero/imports.s");

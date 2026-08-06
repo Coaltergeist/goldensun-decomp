@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_river_eruption/exports.s");
+
 extern unsigned char gOvl_02008cf0[];
 
 unsigned int ValeRiverEruption_GetEntrances(void) {
@@ -48,3 +50,5 @@ int ValeRiverEruption_MapInit(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_river_eruption/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_river_eruption/imports.s");

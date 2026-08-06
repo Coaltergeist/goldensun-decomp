@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/bilibin_rooms/exports.s");
+
 extern unsigned char gOvl_02008598[];
 
 unsigned int BilibinRooms_GetEntrances(void) {
@@ -262,3 +264,5 @@ void OvlFunc_908_2008490(void) {
 }
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/bilibin_rooms/imports.s");

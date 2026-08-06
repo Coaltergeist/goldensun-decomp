@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/jail/exports.s");
+
 extern unsigned char gOvl_020082d0[];
 
 unsigned int Jail_GetEntrances(void) {
@@ -113,3 +115,5 @@ void OvlFunc_900_20081d0(void) {
 }
 
 INCLUDE_ASM("asm/maps/jail/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/jail/imports.s");

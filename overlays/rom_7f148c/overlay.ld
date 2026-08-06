@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7f148c/exports.o(.text)
 		asm/maps/lalivero.o(.text)
-		src/overlays/rom_7f148c/imports.o(.text)
 	} > overlay
 
 	.data : {

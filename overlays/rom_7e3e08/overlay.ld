@@ -13,9 +13,7 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		src/overlays/rom_7e3e08/exports.o(.text)
 		asm/maps/altmiller_cave.o(.text)
-		src/overlays/rom_7e3e08/imports.o(.text)
 		src/lib/call_via.o(.text)
 	} > overlay
 

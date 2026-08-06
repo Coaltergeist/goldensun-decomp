@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/vale_kraden/exports.s");
+
 /* Explicit void return: implicit `int` perturbs the -O2 scheduler into the
    wrong arg-setup order for the call in OvlFunc_885_2008ba8. */
 extern void __MapActor_TravelToAnim();
@@ -97,3 +99,5 @@ void OvlFunc_885_2009a2c(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/vale_kraden/imports.s");

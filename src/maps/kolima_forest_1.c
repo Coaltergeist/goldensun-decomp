@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/kolima_forest_1/exports.s");
+
 extern int OvlFunc_913_20082a8();
 
 /* Cluster OvlFunc_913_2008030..OvlFunc_913_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
@@ -426,3 +428,5 @@ unsigned int OvlFunc_913_200a864(int a) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/ovl_30_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/kolima_forest_1/imports.s");

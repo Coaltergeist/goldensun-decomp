@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/hammet_palace/exports.s");
+
 INCLUDE_ASM("asm/maps/hammet_palace/ovl_30_a.s");
 
 unsigned int HammetPalace_GetSpecialExits(void) {
@@ -73,3 +75,5 @@ void OvlFunc_938_2008114(void)
 }
 
 INCLUDE_ASM("asm/maps/hammet_palace/ovl_30_c_c_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/hammet_palace/imports.s");

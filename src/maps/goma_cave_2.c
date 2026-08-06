@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/goma_cave_2/exports.s");
+
 extern int OvlFunc_905_20082a8();
 
 extern int Func_8000948(int);
@@ -390,3 +392,5 @@ void *GomaCave2_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_c_c_c.s");
+
+INCLUDE_ASM("asm/maps/goma_cave_2/imports.s");

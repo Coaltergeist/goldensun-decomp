@@ -3,6 +3,8 @@
 
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/maps/babi_lighthouse/exports.s");
+
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __Actor_SetAnim();
 extern void __Actor_WaitMovement();
@@ -502,3 +504,5 @@ void OvlFunc_965_200a7f4(void)
 }
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_c_c.s");
+
+INCLUDE_ASM("asm/maps/babi_lighthouse/imports.s");
