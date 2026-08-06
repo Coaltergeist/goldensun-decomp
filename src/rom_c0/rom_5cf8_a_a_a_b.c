@@ -399,3 +399,46 @@ void Func_8006358(void) {
     SetIntrHandler(INTR_ID_SERIAL, 0, NULL);
     SetIntrHandler(INTR_ID_TIMER3, 0, NULL);
 }
+
+void WaitFrames(u32 n);
+extern vu16 iwram_3001f64;
+
+u32 Func_8006384(s32 arg0) {
+    u32 temp = iwram_3001f64;
+    if ((arg0 & temp) != arg0) {
+        do {
+            WaitFrames(1);
+        } while ((arg0 & iwram_3001f64) != arg0);
+    }
+    return (u32)(*(vu32 *)REG_ADDR_SIOCNT << 0x1A) >> 0x1E;
+}
+
+extern u8 ewram_20023a4;
+extern u8 ewram_2002220[]; // something is off when this field is involved
+
+// fakematch
+s32 Func_80063bc(u32 arg0, u32 arg1) {
+    u32 ime;
+    register u32 *p asm("r5") = &ewram_2002080;
+    u32 prev = *p;
+    register u32 tempArg1 asm("r6") = arg1;
+    register u32 one asm("r3");
+    u8 *ptr = ewram_2002220;
+    if (prev != 0)
+        return -1;
+
+    ime = REG_IME;
+    SET_IO(REG_IME, REG_ADDR_IME);
+
+    ptr[1] = 0x80;
+
+    ewram_2002008 = tempArg1;
+    ewram_20023a4 = prev;
+        one = 1;
+    __asm__ volatile("");
+    *p = arg0;
+    __asm__ volatile("");
+    ptr[0] = one;
+    REG_IME = ime;
+    return 0;
+}
