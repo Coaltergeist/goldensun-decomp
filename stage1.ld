@@ -980,12 +980,8 @@ SECTIONS {
 		src/battle_anim/moves/meteor.o(.text)
 		src/battle_anim/moves/judgment.o(.text)
 		src/battle_anim/moves/kirin.o(.text)
-		asm/rom_c9000/rom_ece7c_a_b.o(.text)
-		asm/rom_c9000/rom_ece7c_a_c_b.o(.text)
-		asm/rom_c9000/rom_ece7c_b.o(.text)
-		asm/rom_c9000/rom_ece7c_c_b.o(.text)
-		asm/rom_c9000/rom_ece7c_c_c.o(.text)
-		asm/rom_c9000/rom_ed408.o(.text)
+		src/battle_anim/moves/thrash.o(.text)
+		src/render/draw2D.o(.text)
 
 		asm/rom_c9000/rom_eda78.o(.rodata)
 		src/battle_anim/moves/ice.o(.rodata)
@@ -1019,18 +1015,16 @@ SECTIONS {
 		src/battle_anim/moves/meteor.o(.rodata)
 		src/battle_anim/moves/judgment.o(.rodata)
 		src/battle_anim/moves/kirin.o(.rodata)
-		asm/rom_c9000/rom_ece7c_c_c.o(.rodata)
-		asm/rom_c9000/rom_ed408.o(.rodata)
+		src/battle_anim/moves/thrash.o(.rodata)
+		src/render/draw2D.o(.rodata)
 	} > rom
 
 	rom_f0000 : ALIGN(0x1000) {
 		src/rom_f0000/exports.o(.text)
 		asm/rom_f0000/rom_f0008.o(.text)
-		asm/rom_f0000/rom_f0254_a.o(.text)
-		asm/rom_f0000/rom_f0254_b.o(.text)
-		asm/rom_f0000/rom_f0254_c.o(.text)
+		src/ending.o(.text)
 
-		asm/rom_f0000/rom_f0254_c.o(.rodata)
+		src/ending.o(.rodata)
 	} > rom
 
 	rom_f2000 : ALIGN(0x1000) {
@@ -1055,22 +1049,16 @@ SECTIONS {
 
 	rom_f4000 : ALIGN(0x1000) {
 		src/rom_f4000/exports.o(.text)
-		asm/rom_f4000/rom_f4008_a_a_b.o(.text)
-		asm/rom_f4000/rom_f4008_a_a_c.o(.text)
-		asm/rom_f4000/rom_f4008_a_b.o(.text)
-		asm/rom_f4000/rom_f4008_b.o(.text)
-		asm/rom_f4000/rom_f4008_c_b.o(.text)
-		asm/rom_f4000/rom_f4008_c_c.o(.text)
+		src/lucky_dice.o(.text)
 
-		asm/rom_f4000/rom_f4008_c_c.o(.rodata)
+		src/lucky_dice.o(.rodata)
 	} > rom
 
 	rom_f6000 : ALIGN(0x1000) {
 		src/rom_f6000/exports.o(.text)
-		asm/rom_f6000/rom_f6008_b.o(.text)
-		asm/rom_f6000/rom_f6008_c.o(.text)
+		src/lucky_wheels.o(.text)
 
-		asm/rom_f6000/rom_f6008_c.o(.rodata)
+		src/lucky_wheels.o(.rodata)
 	} > rom
 
 	rom_f9000 : ALIGN(0x1000) {
@@ -1100,8 +1088,7 @@ SECTIONS {
 
 	rom_185000 : ALIGN(0x1000) {
 		src/rom_185000/exports.o(.text)
-		asm/rom_185000/rom_185008_b.o(.text)
-		asm/rom_185000/rom_185008_c.o(.text)
+		src/sprite/sprite_info.o(.text)
 
 		asm/rom_185000/rom_185008_c.o(.rodata)
 

@@ -1,10 +1,6 @@
-/* Cluster StartLuckyWheels..StartLuckyWheels extracted from goldensun/asm/rom_f6000/rom_f6008.s.
- *
- * Total .text for this TU = 48 bytes (= 0x30).
- * Preserves the original ROM layout when slotted between
- * asm/rom_f6000/rom_f6008_a.o and asm/rom_f6000/rom_f6008_c.o in
- * goldensun/stage1.ld.
- */
+/* lucky_wheels.c -- consolidated TU. */
+#include "nonmatching.h"
+
 extern volatile unsigned short iwram_disp;
 extern unsigned int gState[];
 extern unsigned int gRNGState;
@@ -19,3 +15,5 @@ int StartLuckyWheels(void)
     LuckyWheelsMain();
     return 0;
 }
+
+INCLUDE_ASM("asm/lucky_wheels/rom_f6008_c.s");

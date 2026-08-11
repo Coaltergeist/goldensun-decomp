@@ -1,11 +1,20 @@
 // fakematch
-/* Cluster Func_80f40b4..Func_80f40b4 extracted from goldensun/asm/rom_f4000/rom_f4008_a.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_f4000/rom_f4008_a_a.o and asm/rom_f4000/rom_f4008_a_c.o in
- * goldensun/stage1.ld.
- */
+/* lucky_dice.c -- consolidated TU. */
+#include "nonmatching.h"
+
+extern void _PlaySound(int);
+extern void LuckyDiceMain(void);
+
+int StartLuckyDice(void)
+{
+    *(unsigned short *)(0x80 << 19) = 0x40;
+    _PlaySound(9);
+    LuckyDiceMain();
+    return 0;
+}
+
+INCLUDE_ASM("asm/lucky_dice/rom_f4008_a_a_c.s");
+
 /* Func_80f40b4 @ 0x080f40b4  [asm/rom_f4000/rom_f4008_a.s]
  * Fixed-point multiply: (s16)((a*b)/256); the /256 truncating division gives
  * the +0xff negative bias; the final lsl#8/asr#16 is the s16 return cast.
@@ -32,3 +41,13 @@ short Func_80f40b4(short a, short b)
     __asm__ volatile ("" : : "r" (v));
     return (short)v;
 }
+
+short Func_80f40d0(short a, short b) {
+    return ((a << 8) / b);
+}
+
+short Func_80f40e8(short arg0) {
+    return 0x10000 / arg0;
+}
+
+INCLUDE_ASM("asm/lucky_dice/rom_f4008_c_c.s");
