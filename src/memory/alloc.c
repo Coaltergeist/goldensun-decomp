@@ -1,10 +1,5 @@
-/* Cluster avail_iwram..avail_iwram extracted from goldensun/asm/rom_c0/rom_4858_a.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_c0/rom_4858_a_a.o and asm/rom_c0/rom_4858_a_c.o in
- * goldensun/stage1.ld.
- */
+/* memory/alloc.c -- consolidated TU. */
+#include "nonmatching.h"
 
 #include "gba/types.h"
 #include "dma.h"

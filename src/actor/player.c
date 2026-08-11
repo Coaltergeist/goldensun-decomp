@@ -1,10 +1,8 @@
-/* Cluster ActorCmd_Camera2..ActorCmd_Camera2 extracted from goldensun/asm/rom_9000/rom_ebec.s.
- *
- * Total .text for this TU = 24 bytes (= 0x18).
- * Preserves the original ROM layout when slotted between
- * asm/rom_9000/rom_ebec_a.o and asm/rom_9000/rom_ebec_c.o in
- * goldensun/stage1.ld.
- */
+/* actor/player.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/actor/player/rom_ebec_a.s");
+
 extern unsigned int Func_800eaf8(unsigned int);
 
 unsigned int ActorCmd_Camera2(unsigned int arg0) {
@@ -18,3 +16,5 @@ unsigned int ActorCmd_Camera2(unsigned int arg0) {
     *(unsigned short *)((char *)r5 + 4) = r3;
     return 1;
 }
+
+INCLUDE_ASM("asm/actor/player/rom_ebec_c.s");
