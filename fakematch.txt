@@ -2,8 +2,8 @@ MatrixReset        src/rom_c0/rom_49a8_b.c
 Func_80c0eb8       src/rom_b5000/rom_bffb8_c_a_b.c       
 Func_80b5ad4       src/rom_b5000/rom_b5a0c_a_a_b.c       
 Func_800651c       src/save.c
-ToggleFlag         src/rom_77000/rom_79338_b.c           
-SetFlagNybble      src/rom_77000/rom_79338_c_b.c         
+ToggleFlag         src/flags.c
+SetFlagNybble      src/flags.c
 Func_80f40b4       src/rom_f4000/rom_f4008_a_b.c         
 Func_808ab48       src/rom_8a000/rom_8a5f8_a_c_b.c     
 Func_80c91a4       src/rom_c9000/rom_c9048_b.c
