@@ -1,11 +1,9 @@
 // fakematch
-/* Cluster Func_80e72e0..Func_80e72e0 extracted from goldensun/asm/rom_c9000/rom_e6638.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_c9000/rom_e6638_a.o and asm/rom_c9000/rom_e6638_c.o in
- * goldensun/stage1.ld.
- */
+/* battle_anim/moves/torch.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/battle_anim/moves/torch/rom_e6638_a.s");
+
 extern unsigned char iwram_3001eec[];
 
 void Func_80e72e0(void) {
