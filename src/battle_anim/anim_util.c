@@ -1,10 +1,10 @@
-/* Cluster Func_80cdd14..Func_80cdd14 extracted from goldensun/asm/rom_c9000/rom_cd508.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_c9000/rom_cd508_a.o and asm/rom_c9000/rom_cd508_c.o in
- * goldensun/stage1.ld.
- */
+/* battle_anim/anim_util.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd260.s");
+
+INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd508_a.s");
+
 extern unsigned char iwram_3001f00[];
 extern void SetRegAnimDest(int a, int b);
 extern void WaitFrames(unsigned int nframes);
@@ -23,3 +23,5 @@ void Func_80cdd14(void)
     _Func_80c0774(2, *r5h, 0);
     WaitFrames(1);
 }
+
+INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd508_c.s");
