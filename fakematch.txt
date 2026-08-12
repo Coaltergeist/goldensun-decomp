@@ -96,7 +96,7 @@ OvlFunc_971_20090e8  src/maps/link_lobby.c
 OvlFunc_928_2008de8  src/maps/xian.c
 OvlFunc_common1_850  src/maps/common/common1.c
 OvlFunc_903_2008f8c  src/maps/goma_cave_entry.c
-Func_807a628  src/rom_77000/rom_79460_c_c_c_c_c_b.c
+Func_807a628       src/rpg/pc.c
 OvlFunc_881_20097a4  src/maps/world_map_cutscenes.c
 OvlFunc_907_2008d10  src/maps/bilibin.c
 OvlFunc_959_2008e80  src/maps/lunpa_fortress.c

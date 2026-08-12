@@ -23,4 +23,18 @@
  */
 #define INCLUDE_ASM(path) __asm__(".include \"" path "\"\n\t.text\n")
 
+/* Interleaved-TU section control. When a foreign object splits this TU's .text
+ * run in the ROM (e.g. src/flags.o sits between two chunks of rpg/pc), the
+ * seg-2 functions/fragments must land in a DISTINCT named text section so the
+ * linker can place the foreign object between the two. SECTION() switches the
+ * assembler once at the seg boundary; because gcc emits no `.text` directive
+ * before a function it already believes is in text, every following C function
+ * lands in that section too. INCLUDE_ASM_SECTION resets to the same section
+ * (not .text) after an embedded fragment so the stream stays in seg-2.
+ * Both are byte-neutral -- a `.section` directive emits no bytes.
+ */
+#define SECTION(sec) __asm__(".section " sec ",\"ax\",%progbits\n")
+#define INCLUDE_ASM_SECTION(path, sec) \
+    __asm__(".include \"" path "\"\n\t.section " sec ",\"ax\",%progbits\n")
+
 #endif /* GUARD_NONMATCHING_H */
