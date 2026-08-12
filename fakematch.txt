@@ -1,6 +1,6 @@
 MatrixReset        src/rom_c0/rom_49a8_b.c
-Func_80c0eb8       src/rom_b5000/rom_bffb8_c_a_b.c       
-Func_80b5ad4       src/rom_b5000/rom_b5a0c_a_a_b.c       
+Func_80c0eb8       src/battle/mechanics.c
+Func_80b5ad4       src/battle/battle.c
 Func_800651c       src/save.c
 ToggleFlag         src/flags.c
 SetFlagNybble      src/flags.c
@@ -11,7 +11,7 @@ LoadMapCode        src/main.c
 Func_80dbb9c       src/rom_c9000/rom_dbb24_c_b.c
 Func_80e72e0       src/battle_anim/moves/torch.c
 Func_80b3210       src/ui/shop.c
-Func_80c0184       src/rom_b5000/rom_bffb8_a_a_b.c
+Func_80c0184       src/battle/mechanics.c
 RunTasks           src/video.c
 OvlFunc_908_20083f4  src/maps/bilibin_rooms.c
 OvlFunc_908_2008430  src/maps/bilibin_rooms.c
