@@ -60,7 +60,7 @@ SECTIONS {
 
 	rom_9000 : ALIGN(0x1000) {
 		src/rom_9000/exports.o(.text)
-		asm/rom_9000/rom_92b8.o(.text)
+		src/sprite/draw_sprite.o(.text)
 		src/decompress/sprite_lz.o(.text)
 		src/sprite/sprite.o(.text)
 		src/actor/actor.o(.text)
@@ -208,7 +208,7 @@ SECTIONS {
 
 	rom_b5000 : ALIGN(0x1000) {
 		src/rom_b5000/exports.o(.text)
-		asm/rom_b5000/rom_b5138.o(.text)
+		src/decompress/battle_bg.o(.text)
 		src/battle/debug_battle_test.o(.text)
 		src/battle/battle.o(.text)
 		src/battle/mechanics.o(.text)
@@ -313,7 +313,7 @@ SECTIONS {
 
 	rom_f0000 : ALIGN(0x1000) {
 		src/rom_f0000/exports.o(.text)
-		asm/rom_f0000/rom_f0008.o(.text)
+		src/other/sub_80f0008.o(.text)
 		src/ending.o(.text)
 
 		src/ending.o(.rodata)
