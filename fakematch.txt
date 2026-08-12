@@ -1,4 +1,4 @@
-MatrixReset        src/rom_c0/rom_49a8_b.c
+MatrixReset        src/unknown/sub_80049a8.c
 Func_80c0eb8       src/battle/mechanics.c
 Func_80b5ad4       src/battle/battle.c
 Func_800651c       src/save.c
@@ -6,9 +6,9 @@ ToggleFlag         src/flags.c
 SetFlagNybble      src/flags.c
 Func_80f40b4       src/lucky_dice.c
 Func_808ab48       src/field/map_load.c
-Func_80c91a4       src/rom_c9000/rom_c9048_b.c
+Func_80c91a4       src/unknown/sub_80c9048.c
 LoadMapCode        src/main.c
-Func_80dbb9c       src/rom_c9000/rom_dbb24_c_b.c
+Func_80dbb9c       src/sprite/summon.c
 Func_80e72e0       src/battle_anim/moves/torch.c
 Func_80b3210       src/ui/shop.c
 Func_80c0184       src/battle/mechanics.c

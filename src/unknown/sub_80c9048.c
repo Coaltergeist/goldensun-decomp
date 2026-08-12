@@ -1,11 +1,9 @@
 // fakematch
-/* Cluster Func_80c91a4..Func_80c91a4 extracted from goldensun/asm/rom_c9000/rom_c9048.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_c9000/rom_c9048_a.o and asm/rom_c9000/rom_c9048_c.o in
- * goldensun/stage1.ld.
- */
+/* unknown/sub_80c9048.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/unknown/sub_80c9048/rom_c9048_a.s");
+
 extern unsigned char gBuffer[65536];
 
 void Func_80c91a4(void) {

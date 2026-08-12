@@ -1,10 +1,8 @@
-/* Cluster Func_80c16d0..Func_80c16d0 extracted from goldensun/asm/rom_b5000/rom_c10e8_a_a.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_b5000/rom_c10e8_a_a_a.o and asm/rom_b5000/rom_c10e8_a_a_c.o in
- * goldensun/stage1.ld.
- */
+/* unknown/sub_80c0a24.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/unknown/sub_80c0a24/rom_c10e8_a_a_a.s");
+
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);
 extern int StopTask(void *task);
@@ -24,4 +22,18 @@ int Func_80c16d0(void) {
     *p = 0x1341;
     StopTask(Task_BlitPreAnim);
     return StopTask(Func_80c11ec);
+}
+
+INCLUDE_ASM("asm/unknown/sub_80c0a24/rom_c10e8_a_a_c.s");
+
+extern void Func_80c0700(int a, int b);
+
+void Func_80c1a14(void) {
+    Func_80c0700(0, 0);
+}
+
+extern void SetIntrHandler(unsigned int, unsigned int, void *);
+
+void ClearVCountIntr(void) {
+    SetIntrHandler(2, 0, (void *)0);
 }

@@ -1,10 +1,20 @@
-/* Cluster Func_809c3a4..Func_809c3a4 extracted from goldensun/asm/rom_8a000/rom_9bb64_c.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_8a000/rom_9bb64_c_a.o and asm/rom_8a000/rom_9bb64_c_c.o in
- * goldensun/stage1.ld.
- */
+/* unknown/sub_809b804.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/unknown/sub_809b804/rom_9bb64_a.s");
+
+extern unsigned char gBuffer[65536];
+
+void Func_809bcd4(void) {
+    unsigned int r5;
+    r5 = (unsigned int)&gBuffer;
+    Func_8003f3c(*(unsigned short *)r5);
+    Func_8003f3c(*(unsigned short *)(r5 + 2));
+    _CloseUIBox(*(unsigned int *)(r5 + 0x1c), 2);
+}
+
+INCLUDE_ASM("asm/unknown/sub_809b804/rom_9bb64_c_a.s");
+
 typedef struct { unsigned char _bytes[4]; } KeyState32;
 extern KeyState32 gKeyHeld;
 extern void *galloc_ewram(int index, unsigned int size);

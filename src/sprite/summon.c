@@ -1,11 +1,11 @@
 // fakematch
-/* Cluster Func_80dbb9c..Func_80dbb9c extracted from goldensun/asm/rom_c9000/rom_dbb24_c.s.
- *
- * Total .text for this TU computed at build time from expected/.../.o.
- * Preserves the original ROM layout when slotted between
- * asm/rom_c9000/rom_dbb24_c_a.o and asm/rom_c9000/rom_dbb24_c_c.o in
- * goldensun/stage1.ld.
- */
+/* sprite/summon.c -- consolidated TU. */
+#include "nonmatching.h"
+
+INCLUDE_ASM("asm/sprite/summon/rom_dbb24_a.s");
+
+void Func_80dbb98(void) {}
+
 extern unsigned char iwram_3001eec[];
 
 void Func_80dbb9c(void) {
