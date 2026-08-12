@@ -21,7 +21,7 @@ SECTIONS {
 	} > rom
 
 	rom_c0 : {
-		src/rom_c0/exports.o(.text)
+		exports/rom_c0/exports.o(.text)
 		src/rom_c0/crt0.o(.text)
 	} > rom
 
@@ -59,7 +59,7 @@ SECTIONS {
 	} > rom
 
 	rom_9000 : ALIGN(0x1000) {
-		src/rom_9000/exports.o(.text)
+		exports/rom_9000/exports.o(.text)
 		src/sprite/draw_sprite.o(.text)
 		src/decompress/sprite_lz.o(.text)
 		src/sprite/sprite.o(.text)
@@ -85,7 +85,7 @@ SECTIONS {
 	} > rom
 
 	rom_15000 : ALIGN(0x1000) {
-		src/rom_15000/exports.o(.text)
+		exports/rom_15000/exports.o(.text)
 		asm/decompress/huffman.o(.text)
 		src/ui/window.o(.text)
 		src/ui/ui.o(.text)
@@ -121,7 +121,7 @@ SECTIONS {
 	} > rom
 
 	rom_77000 : ALIGN(0x1000) {
-		src/rom_77000/exports.o(.text)
+		exports/rom_77000/exports.o(.text)
 		src/rpg/party.o(.text)
 		src/rpg/item.o(.text)
 		src/rpg/move.o(.text)
@@ -141,7 +141,7 @@ SECTIONS {
 	} > rom
 
 	rom_8a000 : ALIGN(0x1000) {
-		src/rom_8a000/exports.o(.text)
+		exports/rom_8a000/exports.o(.text)
 		src/field/map_load.o(.text)
 		src/field/room_load.o(.text)
 		src/field/map_actor.o(.text)
@@ -182,7 +182,7 @@ SECTIONS {
 	} > rom
 
 	rom_a1000 : ALIGN(0x1000) {
-		src/rom_a1000/exports.o(.text)
+		exports/rom_a1000/exports.o(.text)
 		src/ui/party_menu.o(.text)
 
 		asm/rom_a1000/rom_a172c_c.o(.rodata)
@@ -200,14 +200,14 @@ SECTIONS {
 	} > rom
 
 	rom_b0000 : ALIGN(0x1000) {
-		src/rom_b0000/exports.o(.text)
+		exports/rom_b0000/exports.o(.text)
 		src/ui/shop.o(.text)
 
 		src/ui/shop.o(.rodata)
 	} > rom
 
 	rom_b5000 : ALIGN(0x1000) {
-		src/rom_b5000/exports.o(.text)
+		exports/rom_b5000/exports.o(.text)
 		src/decompress/battle_bg.o(.text)
 		src/battle/debug_battle_test.o(.text)
 		src/battle/battle.o(.text)
@@ -233,7 +233,7 @@ SECTIONS {
 	} > rom
 
 	rom_c9000 : ALIGN(0x1000) {
-		src/rom_c9000/exports.o(.text)
+		exports/rom_c9000/exports.o(.text)
 		src/render/window_effect.o(.text)
 		src/battle_anim/moves/ice.o(.text)
 		src/battle_anim/moves/spore.o(.text)
@@ -312,7 +312,7 @@ SECTIONS {
 	} > rom
 
 	rom_f0000 : ALIGN(0x1000) {
-		src/rom_f0000/exports.o(.text)
+		exports/rom_f0000/exports.o(.text)
 		src/other/sub_80f0008.o(.text)
 		src/ending.o(.text)
 
@@ -320,28 +320,28 @@ SECTIONS {
 	} > rom
 
 	rom_f2000 : ALIGN(0x1000) {
-		src/rom_f2000/exports.o(.text)
+		exports/rom_f2000/exports.o(.text)
 		src/title.o(.text)
 
 		asm/rom_f2000/rom_f2028_c_c_c_c.o(.rodata)
 	} > rom
 
 	rom_f4000 : ALIGN(0x1000) {
-		src/rom_f4000/exports.o(.text)
+		exports/rom_f4000/exports.o(.text)
 		src/lucky_dice.o(.text)
 
 		src/lucky_dice.o(.rodata)
 	} > rom
 
 	rom_f6000 : ALIGN(0x1000) {
-		src/rom_f6000/exports.o(.text)
+		exports/rom_f6000/exports.o(.text)
 		src/lucky_wheels.o(.text)
 
 		src/lucky_wheels.o(.rodata)
 	} > rom
 
 	rom_f9000 : ALIGN(0x1000) {
-		src/rom_f9000/exports.o(.text)
+		exports/rom_f9000/exports.o(.text)
 		src/sound.o(.text)
 		src/other/sub_80f95e0.o(.text)
 		src/lib/m4a/m4a.o(.text)
@@ -353,7 +353,7 @@ SECTIONS {
 	} > rom
 
 	rom_185000 : ALIGN(0x1000) {
-		src/rom_185000/exports.o(.text)
+		exports/rom_185000/exports.o(.text)
 		src/sprite/sprite_info.o(.text)
 
 		asm/rom_185000/rom_185008_c.o(.rodata)
