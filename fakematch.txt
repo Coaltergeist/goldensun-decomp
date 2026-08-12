@@ -5,12 +5,12 @@ Func_800651c       src/save.c
 ToggleFlag         src/flags.c
 SetFlagNybble      src/flags.c
 Func_80f40b4       src/lucky_dice.c
-Func_808ab48       src/rom_8a000/rom_8a5f8_a_c_b.c     
+Func_808ab48       src/field/map_load.c
 Func_80c91a4       src/rom_c9000/rom_c9048_b.c
 LoadMapCode        src/main.c
 Func_80dbb9c       src/rom_c9000/rom_dbb24_c_b.c
 Func_80e72e0       src/battle_anim/moves/torch.c
-Func_80b3210       src/rom_b0000/rom_b0070_c_c_b.c
+Func_80b3210       src/ui/shop.c
 Func_80c0184       src/rom_b5000/rom_bffb8_a_a_b.c
 RunTasks           src/video.c
 OvlFunc_908_20083f4  src/maps/bilibin_rooms.c
@@ -34,7 +34,7 @@ OvlFunc_949_2008528  src/maps/tolbi.c
 OvlFunc_949_2008568  src/maps/tolbi.c
 OvlFunc_945_200c0e8  src/maps/tolbi_bound_ship_hull.c
 OvlFunc_882_20096cc  src/maps/vale_river_prologue.c
-Func_801fb48         src/rom_15000/rom_1de5c_c_c_c_c_a_a_c_c_a_b.c
+Func_801fb48       src/ui/text.c
 OvlFunc_917_2008088  src/maps/kolima_forest_5.c
 OvlFunc_899_2009e80  src/maps/vault_rooms_1.c
 OvlFunc_882_200973c  src/maps/vale_river_prologue.c
