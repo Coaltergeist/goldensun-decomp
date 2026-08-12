@@ -233,7 +233,7 @@ OVERLAY_LZS := $(OVERLAYS:.bin=.lz)
 $(OVERLAY_LZS): %.lz: %.bin tools/pack_overlay
 	tools/pack_overlay -i $< -o $@
 
-asm/rom_320000/rom_320000.s: $(OVERLAY_LZS)
+data/rom_320000/rom_320000.s: $(OVERLAY_LZS)
 
 clean::
 	-$(RM) -r data/strings $(OVERLAY_LZS)
