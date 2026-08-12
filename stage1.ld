@@ -202,7 +202,6 @@ SECTIONS {
 	rom_b0000 : ALIGN(0x1000) {
 		src/rom_b0000/exports.o(.text)
 		src/ui/shop.o(.text)
-		src/rom_b0000/dummy.o(.text)
 
 		src/ui/shop.o(.rodata)
 	} > rom
