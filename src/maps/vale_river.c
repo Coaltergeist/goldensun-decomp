@@ -5,13 +5,6 @@
 
 INCLUDE_ASM("asm/maps/vale_river/exports.s");
 
-/* Cluster OvlFunc_883_2008030..OvlFunc_883_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_883_2008030(int *a, int *b)
@@ -673,14 +666,6 @@ void OvlFunc_883_200d600(void) {
     OvlFunc_883_200dc98();
 }
 
-/* Cluster OvlFunc_883_200d610..OvlFunc_883_200d610 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
-
 int OvlFunc_883_200d610(int *a, int *b)
 {
   int dx;
@@ -837,13 +822,6 @@ void OvlFunc_883_200dc5c(unsigned int arg0)
     }
 }
 
-/* Cluster OvlFunc_883_200dc98..OvlFunc_883_200dc98 extracted from goldensun/asm/overlays/rom_787e04/ovl_30_c.s.
- *
- * Total .text for this TU = 44 bytes (= 0x2c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_787e04/ovl_30_c_a.o and asm/overlays/rom_787e04/ovl_30_c_c.o in
- * goldensun/overlays/rom_787e04/overlay.ld.
- */
 extern volatile unsigned int iwram_3001e40__a3 __asm__("iwram_3001e40");
 
 void OvlFunc_883_200dc98(int arg0)

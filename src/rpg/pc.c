@@ -191,13 +191,6 @@ int Func_807987c(unsigned int arg0, int arg1)
 
 INCLUDE_ASM_SECTION("asm/rpg/pc/rom_79460_c_c_c_a.s", ".text.rpg_pc_2");
 
-/* GetClassInfo; &table[classID], 0x54-byte stride.
- * asm: mov r3,#0x54; mul r0,r3; ldr r3,=.L84b1c; add r0,r3
- * .L84b1c is a FILE-LOCAL rodata label (not .global), so the ROM reloc is
- * section-relative (.rodata + 0x90). Reach it via its global sibling
- * .L84a8c (.L84b1c = .L84a8c + 0x90). This FAILS judge (reloc names .L84a8c,
- * not .rodata) but matches at ROM level; gate on compare-rom (the =.L class,
- * cf. NumItemIcons/ed0). */
 extern unsigned char L84a8c[] __asm__(".L84a8c");
 
 unsigned char *GetClassInfo(int classID) {
@@ -233,9 +226,6 @@ unsigned short RPGRandom(void) {
 
 
 unsigned short RPGRandom2(void) {
-    /* This fragment saw RPGRandom as `int` (the TU defines it `unsigned short`);
-     * the signed view keeps `>> 16` as the return-narrowing (no extra mask).
-     * Alias to the same symbol with the original view -> byte-identical. */
     extern int RPGRandom_i(void) __asm__("RPGRandom");
     return RPGRandom_i() * 0x64 >> 16;
 }
@@ -300,9 +290,6 @@ INCLUDE_ASM_SECTION("asm/rpg/pc/rom_79460_c_c_c_c_a_c_c_c_c.s", ".text.rpg_pc_2"
 
 
 unsigned short Func_807a5b0(void) {
-    /* This fragment called GetDjinniInfo with no args (r0/r1 already live);
-     * the TU's own 2-arg definition would force arg setup. Alias to the same
-     * symbol with the original 0-arg view -> byte-identical. */
     extern unsigned int GetDjinniInfo_0() __asm__("GetDjinniInfo");
     unsigned int ptr = GetDjinniInfo_0();
     return *(unsigned short *)ptr;
@@ -315,8 +302,6 @@ void Func_807a628(unsigned int arg0, unsigned int arg1in)
     register unsigned int arg1 __asm__("r8") = arg1in;
     unsigned short *unit;
     int i;
-    /* This fragment called GetUnit 2-arg (implicit decl); the TU keeps a 1-arg
-     * prototype. Alias to the same symbol with the original view. Byte-neutral. */
     extern unsigned char *GetUnit_2() __asm__("GetUnit");
 
     unit = (unsigned short *)GetUnit_2(arg0, arg1);

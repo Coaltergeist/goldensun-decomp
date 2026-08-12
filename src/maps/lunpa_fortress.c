@@ -8,13 +8,6 @@ extern unsigned int OvlFunc_959_20098e4();
 extern void OvlFunc_959_20097bc();
 extern void OvlFunc_959_200975c();
 
-/* Cluster OvlFunc_959_2008030..OvlFunc_959_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_959_2008030(int *a, int *b)
@@ -924,13 +917,6 @@ void OvlFunc_959_200cbc4(void)
  do { b = 0; } while (0);
   __ActorMessage(a, b);
 }
-
-/* OvlFunc_959_200cbe4  [asm/overlays/rom_7e7574/ovl_9dc_c_c_a_c_a_c.s]
- * MessageID(0x2459); Func_8093054(0x12, 0). Test specimen for the
- * undeclared-import theory: if the declared form misallocates, drop the
- * extern decls (C89 implicit int) and re-judge.
- * Name audit: __Func_8092b94 is now __MessageID.
- */
 
 void OvlFunc_959_200cbe4(void)
 {

@@ -5,13 +5,6 @@
 
 extern int OvlFunc_947_200858c();
 
-/* Cluster OvlFunc_947_2008314..OvlFunc_947_2008314 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_947_2008314(int *a, int *b)
@@ -529,12 +522,6 @@ INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_c_c_c_c_c.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_2580_a.s");
 
-/* OvlFunc_947_200a694  [asm/overlays/rom_7d0e88/ovl_2580.s]
-* a = MapActor_GetActor(arg0); a->u8[0x22] = 2; a->u8[0x55] = 0;
- * a->fnptr@0x6c = OvlFunc_947_2009aa8. Result kept in r1, byte addresses
- * computed via mov+add #imm8 (offsets exceed the strb imm5 range).
- * Name audit: __Func_8092054 is now __MapActor_GetActor.
- */
 extern void OvlFunc_947_2009aa8(void);
 struct Actor947 {
 unsigned char pad0[0x22];

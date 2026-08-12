@@ -5,22 +5,12 @@
 
 INCLUDE_ASM("asm/maps/mogall_forest/exports.s");
 
-/* void veneers left implicit by every source fragment: without the correct
- * void return type the -O2 arg-setup scheduler swaps the mov order (was masked
- * by the old -O1 build rule). See work/o1_diag/. */
 extern void __CutsceneStart();
 extern void __CutsceneEnd();
 extern void __Func_801776c();
 
 extern int OvlFunc_927_20082a8();
 
-/* Cluster OvlFunc_927_2008030..OvlFunc_927_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_927_2008030(int *a, int *b)

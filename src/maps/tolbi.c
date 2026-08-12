@@ -11,13 +11,6 @@ void OvlFunc_949_2008030(void) {
     __Func_80955b0(0x1f, 2, 4);
 }
 
-/* Cluster OvlFunc_949_2008040..OvlFunc_949_2008040 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_949_2008040(int *a, int *b)

@@ -20,12 +20,6 @@ int GetMapArea(int map) {
 
 INCLUDE_ASM("asm/field/map_load/rom_8a5f8_a_c_a.s");
 
-/* Func_808ab48 @ 0x0808ab48  [asm/rom_8a000/rom_8a5f8_a_c.s]
- * LoadMapCode(((s16*)((char*)&.L9f1a8 + idx*8))[0], __start_overlay) where
- * idx = *(s16*)(gState+0x1c0). `.L9f1a8` via the bundle-section-8 extern-asm
- * alias; judge cannot gate the .L reloc form; compare-rom is the gate.
- * Name audit: seed used the old ewram_2000240 base; current name is gState.
- */
 extern short LoadMapCode();
 extern unsigned char gState[];
 extern unsigned char __start_overlay[];

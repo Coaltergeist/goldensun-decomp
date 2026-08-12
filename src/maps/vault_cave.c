@@ -212,14 +212,6 @@ void OvlFunc_935_2008640(void)
   __SetFlag(0x204);
 }
 
-/* Cluster OvlFunc_935_2008690..OvlFunc_935_2008690 extracted from goldensun/asm/overlays/rom_7bf5a8/ovl_2e0_c_c_a_a_c_c_c.s.
- *
- * Total .text for this TU = 84 bytes (= 0x54).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_7bf5a8/ovl_2e0_c_c_a_a_c_c_c_a.o and asm/overlays/rom_7bf5a8/ovl_2e0_c_c_a_a_c_c_c_c.o in
- * goldensun/overlays/rom_7bf5a8/overlay.ld.
- */
-
 void OvlFunc_935_2008690(void)
 {
   struct Actor935 *actor;

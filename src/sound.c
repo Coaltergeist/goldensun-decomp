@@ -3,10 +3,6 @@
 
 INCLUDE_ASM("asm/sound/rom_f9080_a_a_a.s");
 
-/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix: reset the music-driver state.
- * Func_80fa2a0 = m4aSoundInit. Stores follow ROM order; the 0x100/4/0
- * constants are CSE'd into the literal pool by gcc-2.96.
- */
 extern void m4aSoundInit(void);
 extern unsigned char ewram_200303c;
 extern unsigned char ewram_2003000;
@@ -40,9 +36,6 @@ void InitSoundEngine(void) {
         ewram_2003020[i] = 0;
 }
 
-/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix wrapper.
- * BGM tempo control: m4aMPlayTempoControl = m4aMPlayTempoControl(MP2KPlayerState*, u16).
- */
 extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);
 extern void *gMPlayInfo_BGM;
 
@@ -50,11 +43,6 @@ void SetMusicTempo(unsigned short tempo) {
     m4aMPlayTempoControl(&gMPlayInfo_BGM, tempo);
 }
 
-/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix wrapper.
- * BGM pitch control: m4aMPlayPitchControl = m4aMPlayPitchControl(MP2KPlayerState*, u16 trackBits, s16 pitch).
- * trackBits = 0xff (all tracks). Param is int + (short) cast at the call site
- * (matches the ROM's lsl/ldr/asr scheduling; a plain short param does not).
- */
 extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, short pitch);
 
 void SetMusicPitch(int pitch) {
@@ -118,10 +106,6 @@ unsigned int Func_80f9594(void) {
     return ewram_200303c;
 }
 
-/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix helper.
- * Spin up to 0x12c frames (WaitFrames = WaitFrames/sleep) while the
- * driver-busy flag ewram_2003000 is still set.
- */
 extern void WaitFrames(int frames);
 
 void Func_80f95a0(void) {
@@ -134,11 +118,6 @@ void Func_80f95a0(void) {
             break;
     }
 }
-
-/* Phase 5 (SAPPY_IMPORT_PLAN); Camelot prefix helper.
- * Maps song ids 0x46/0x4b/0x43 -> sfx mode 3, everything else -> 2.
- * (Identical logic to the inline block at PlaySound+0xe4.)
- */
 
 int GetSoundReverbType(int songId) {
     if (songId == 0x46 || songId == 0x4b || songId == 0x43)

@@ -5,13 +5,6 @@
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/exports.s");
 
-/* Cluster OvlFunc_915_2008030..OvlFunc_915_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_915_2008030(int *a, int *b)

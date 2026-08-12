@@ -28,13 +28,6 @@ extern int OvlFunc_924_200858c();
 extern void OvlFunc_924_200d578();
 extern void OvlFunc_924_200a2c4();
 
-/* Cluster OvlFunc_924_2008314..OvlFunc_924_2008314 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_924_2008314(int *a, int *b)
@@ -338,12 +331,6 @@ void OvlFunc_924_2008cc0(void) {
 INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_314_c.s");
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_d58_a.s");
-
-/* OvlFunc_924_2008dfc  [asm/overlays/rom_7ac2d8/ovl_d58.s]
- * Zero 7 palette u16s walking down from 0x50000de. ROM has a POOLED zero
- * (ldr r1,=0) and the early branch-over-pool; same artifact family as
- * Func_80b09fc. Byte-identical twin: OvlFunc_923_2008e3c (keep in sync).
- */
 
 void OvlFunc_924_2008dfc(void)
 {

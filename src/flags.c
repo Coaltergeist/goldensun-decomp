@@ -4,10 +4,6 @@
 
 INCLUDE_ASM("asm/flags/rom_79338_a.s");
 
-/* ToggleFlag @ 0x08079390  (was Func_8079390)  [asm/rom_77000/rom_79338.s]
- * gFlags[(id&0xfff)>>3] ^= 1<<(id&7); return new bit state (the -v|v >> 31
- * != 0 idiom). Leaf, r4 scratch with no push (-fcall-used-r4).
- */
 extern unsigned char gFlags[];
 
 int ToggleFlag(int flagID)
@@ -37,11 +33,6 @@ int ToggleFlag(int flagID)
 }
 
 INCLUDE_ASM("asm/flags/rom_79338_c_a.s");
-
-/* SetFlagNybble @ 0x08079434  (was Func_8079434)  [asm/rom_77000/rom_79338.s]
- * gFlags[(id&0xfff)>>3]: replace the nybble selected by (id&4) with value&0xf
- * (bic+orr). push {r5,r6,lr}; r4 scratch unsaved (-fcall-used-r4).
- */
 
 void SetFlagNybble(int flagID, int value)
 {

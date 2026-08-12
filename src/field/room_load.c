@@ -38,11 +38,6 @@ INCLUDE_ASM("asm/field/room_load/rom_8b674_c_a.s");
 
 extern int store(int);
 
-/* Func_808b9f8 @ 0x0808b9f8  [asm/rom_8a000/rom_8b674_c.s]
- * Zero 0x42 words walking DOWN from *iwram_3001ebc + 0x118 (0x8c<<1).
- * Loop decrements the counter BEFORE the store (sub; str; sub; cmp; bge).
- */
-
 void Func_808b9f8(void)
 {
     unsigned int base = iwram_3001ebc;
@@ -61,11 +56,6 @@ void Func_808b9f8(void)
         p--;
     } while (i >= 0);
 }
-
-/* GetFieldActor @ 0x0808ba1c  (was Func_808ba1c)  [asm/rom_8a000/rom_8b674_c.s]
- * Bounds-checked actor-table lookup off *iwram_3001ebc (table deref'd EAGERLY,
- * before the bounds check). pop {r1}; bx r1 = returns a value.
- */
 
 unsigned int GetFieldActor(unsigned int actorID)
 {

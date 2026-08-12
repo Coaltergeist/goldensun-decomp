@@ -174,13 +174,6 @@ unsigned char f23;
   __SetFlag(0x201);
 }
 
-/* Cluster OvlFunc_932_2008650..OvlFunc_932_2008650 extracted from goldensun/asm/overlays/rom_7b9cb4/ovl_30_a_c_c_a_a_a.s.
- *
- * Total .text for this TU = 80 bytes (= 0x50).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_7b9cb4/ovl_30_a_c_c_a_a_a_a.o and asm/overlays/rom_7b9cb4/ovl_30_a_c_c_a_a_a_c.o in
- * goldensun/overlays/rom_7b9cb4/overlay.ld.
- */
 void OvlFunc_932_2008650(void)
 {
 struct Actor932

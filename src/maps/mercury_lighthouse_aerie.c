@@ -47,13 +47,6 @@ void *MercuryLighthouseAerie_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_a_a.s");
 
-/* Cluster OvlFunc_925_2008890..OvlFunc_925_2008890 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_925_2008890(int *a, int *b)

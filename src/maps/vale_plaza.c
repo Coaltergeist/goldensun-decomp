@@ -314,13 +314,6 @@ void OvlFunc_884_200a334(arg0) int arg0;
     }
 }
 
-/* Cluster OvlFunc_884_200a370..OvlFunc_884_200a370 extracted from goldensun/asm/overlays/rom_787e04/ovl_30_c.s.
- *
- * Total .text for this TU = 44 bytes (= 0x2c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_787e04/ovl_30_c_a.o and asm/overlays/rom_787e04/ovl_30_c_c.o in
- * goldensun/overlays/rom_787e04/overlay.ld.
- */
 extern volatile unsigned int iwram_3001e40__a2 __asm__("iwram_3001e40");
 
 void OvlFunc_884_200a370(arg0) int arg0;

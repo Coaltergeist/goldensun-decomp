@@ -37,10 +37,6 @@ int *Func_80197b4(int *p) {
 
 INCLUDE_ASM("asm/ui/ui/rom_1908c_c_a_c.s");
 
-/* Func_8019ba0; forwards its incoming stringID (r0) unchanged to
- * BufferString(stringID, 1). The param must be int (not u16): the ROM does NOT
- * zero-extend r0, so a u16 param's lsl#16/lsr#16 narrowing diverges. */
-
 int Func_8019ba0(int stringID) {
     return BufferString(stringID, 1);
 }

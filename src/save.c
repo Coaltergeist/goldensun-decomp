@@ -113,16 +113,6 @@ unsigned int Func_8005c2c(unsigned int arg0)
 
 INCLUDE_ASM("asm/save/rom_56cc_c_c.s");
 
-/* Func_8005cf8 @ 0x08005cf8  [asm/rom_c0/rom_5cf8_a_a_a_a.s]
- *
- * pop {r1}; bx r1 is the gcc-2.96 -mthumb-interwork NON-void return idiom: the
- * asm tail-returns gfree(0x33), so gfree must be seen as value-returning here
- * (other TUs declare it void; the local int decl coaxes r0 live at return ->
- * pop {r1} instead of pop {r0}).
- * Post-rename audit: the asm calls SetIntrHandler + gfree (was Func_800307c /
- * Func_8002dd8 in the stale seed). SetIntrHandler decl mirrors matched sibling
- * src/rom_c0/rom_5cf8_a_a_b.c.
- */
 extern void SetIntrHandler(int intr, unsigned int dispstat, void *vector);
 extern int  gfree(int index);
 
@@ -215,23 +205,6 @@ unsigned int Func_80064f4(void)
     return result;
 }
 
-/* Func_800651c @ 0x0800651c  [asm/rom_c0/rom_5cf8_a_c.s]
- *
- * IME save / disable / restore around a set of ewram zero-inits, using the
- * IME-disable peephole (strh r0,[r0] -- storing the even register address
- * instead of materializing 0; here `*ime = (u32)ime`), per the matched
- * SetIntrHandler (src/rom_c0/rom_2e00_c_c_b.c:142-147,175).
- *   ewram_2002220[1] = 0x80;  then zero 2002080(u32) 2002008(u16) 20023ac(u32)
- *   2002220[3] 2002220[2] 2002238(u16); restore REG_IME.
- * The ROM allocation (r1 = &ewram_2002220 loaded FIRST, r0 = &REG_IME held the
- * whole function, r4 = backup with no push -- r4 is call-clobbered via the
- * Makefile -fcall-used-r4, r2 = ONE shared zero for every store width, r3
- * scratch, leaf bx lr) is unreachable from unpinned C: gcc rehomes the
- * pointers, pushes r5, and rematerializes a QImode zero from the pool for the
- * strb pair. Register-asm pins + the zero-byte empty-asm barriers (each pins
- * its variable materialized, in r-order, at that sequence point) reproduce it
- * exactly; the shared `zero` local keeps the byte stores on r2.
- */
 #include "dma.h"
 #include "gba/io.h"
 extern unsigned char  ewram_2002220[];

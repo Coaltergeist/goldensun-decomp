@@ -15,12 +15,6 @@ int StartLuckyDice(void)
 
 INCLUDE_ASM("asm/lucky_dice/rom_f4008_a_a_c.s");
 
-/* Func_80f40b4 @ 0x080f40b4  [asm/rom_f4000/rom_f4008_a.s]
- * Fixed-point multiply: (s16)((a*b)/256); the /256 truncating division gives
- * the +0xff negative bias; the final lsl#8/asr#16 is the s16 return cast.
- * NOTE: ROM pushes lr in a leaf (pop {r1}; bx r1 return); watch the diff.
- */
-
 short Func_80f40b4(short a, short b)
 {
     register int x __asm__("r0");

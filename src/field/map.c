@@ -600,15 +600,6 @@ int Func_8091d84(int a) {
     return _YesNoMenu(a, 0, 0, 0);
 }
 
-/* LearnInnateMove = LearnInnateMove @ 0x08091D94
- *
- * Sieve decompilation with the single FP#9 fix applied: the 0x1e message ID is
- * the absolute symbol MSG_LEARN_INNATE_MOVE (message.h / message.sym), following
- * the file_table.h convention. The ((int)&_MSG_*) macro forces gcc-2.96 to
- * materialize it from the literal pool, matching the ROM `ldr r0, =...` (where
- * stock gcc would emit an inline `mov`). See FP9_PLAN.md / COMPILER_NOTES.md
- * (FP#9). Original model output (literal 0x1e) preserved in the sibling .response.
- */
 #include "message.h"
 
 extern void _GiveInnateMove(void);
@@ -669,14 +660,6 @@ void WaitMapTransition(void) {
     WaitFrames(*(unsigned int *)((char *)iwram_3001ebc__a11 + 0x1c8));
 }
 
-/* SetDestMap @ 0x08091e3c  (was Func_8091e3c; renamed by the weekend alias pass)
- * [asm/rom_8a000/rom_91584_c_c_a_a_c_c_a.s]
- *
- * Twin of SetRespawnMap (landed src/rom_8a000/rom_91584_c_c_a_a_c_c_b.c) with
- * gState__a2 offsets 0xe0/0xe1 instead of 0xe2/0xe3; same q/v/s staging: q burns
- * r2 as offset scratch and dies, v (pooled 0x3e7) reuses r2, then gState__a2
- * reuses it again; any other order lets gcc CSE the second offset.
- */
 extern unsigned int iwram_3001ebc__a12 __asm__("iwram_3001ebc");
 
 void SetDestMap(unsigned short map, unsigned short door)
@@ -692,26 +675,6 @@ void SetDestMap(unsigned short map, unsigned short door)
     s[0xe1] = door;
 }
 
-/* SetRespawnMap @ 0x08091e6c  (was Func_8091e6c; renamed by the weekend alias pass)
- * [asm/rom_8a000/rom_91584_c_c_a_a_c_c.s]
- *
- * *(u16*)(*iwram_3001ebc__a12 + 0xb8*2) = 0x3e7;
- * *(u16*)(gState + 0xe2*2) = map;
- * *(u16*)(gState + 0xe3*2) = door;
- * Seed's offsets were correct; it used the wrong base symbol (ewram_2000240).
- * The asm base is gState. iwram_3001ebc__a12 holds a pointer (ldr; ldr [r3]).
- *
- * Diff-driven fix (diag 2026-06-10): byte-pointer constant arithmetic folded
- * gState+0x1c4 into a single pooled word (then strh [r3,#2] for the second
- * store). ROM pools bare gState, keeps it in r2, and computes each offset at
- * runtime (movs #0xe2/#0xe3; lsls #1; adds) -- u16-array indexing through the
- * named-temp s. The q/v staging matters: q (the computed first address) burns
- * r2 as offset scratch and dies, v (the pooled 0x3e7) then reuses r2, then
- * gState reuses it again -- declared in any other order, gcc holds 0x170 live
- * in r4 and CSEs the second offset as 0x170+0x54, which the ROM does not do.
- * Pool order iwram/0x3e7/gState = decl order. The r4 offset scratch with no
- * push is normal: r4 is call-clobbered (Makefile -fcall-used-r4).
- */
 extern unsigned int iwram_3001ebc__a13 __asm__("iwram_3001ebc");
 
 void SetRespawnMap(unsigned short map, unsigned short door)

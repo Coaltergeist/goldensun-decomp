@@ -22,8 +22,6 @@ extern void MapActor_WaitScript(unsigned int actorID);
 
 void Func_80925cc(unsigned int arg0)
 {
-	/* Original view was 0-arg (the TU defines Func_809259c 2-arg); alias to the
-	 * same symbol with that view -> byte-identical. */
 	extern void Func_809259c_0(void) __asm__("Func_809259c");
 	Func_809259c_0();
 	MapActor_WaitScript(arg0);

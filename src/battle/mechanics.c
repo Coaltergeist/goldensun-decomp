@@ -248,12 +248,6 @@ unsigned int Func_80bb928(unsigned int arg0) {
 
 INCLUDE_ASM("asm/battle/mechanics/rom_bb588_c_c_a_a.s");
 
-/* Func_80bbabc @ 0x080bbabc  [asm/rom_b5000/rom_bb588_c_c_a.s]
- * Queue push off *iwram_3001e74: byte array at +0x6b8 (0xd7<<3), word array
- * at +0x6f8 (= base+0x40), count at +0x7fc. pop {r1}; bx r1 with r0 = arg0
- * untouched -> function returns arg0.
- */
-
 unsigned int Func_80bbabc(unsigned int arg0, unsigned int arg1)
 {
     unsigned char *base;
@@ -416,19 +410,6 @@ INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_a_c_c.s");
 void Func_80c0ea8(void) {
     REG_BLDCNT = 0xbf;
 }
-
-/* Func_80c0eb8 @ 0x080c0eb8  [asm/rom_b5000/rom_bffb8_c_a.s]
- *
- * Same {0x10000,0,0,0}x3 stmia block as MatrixReset -- see
- * src/rom_c0/rom_49a8_c_c_c_a_b.c for why this needs the Dma3Raw-style
- * register-asm idiom + empty-asm barriers (the struct-by-value form goes
- * through the stack; 2026-06-10 diag). The original was likely a shared
- * macro/static inline; the definition here must stay identical.
- * Then m[1] = old + m[0], with old read BEFORE the block (m[0] is 0x10000
- * after it). ROM allocation: m -> r5 (live across the r0-clobbering asm),
- * old -> r6, push {r5,r6,lr} only (r4 is call-clobbered via the Makefile
- * -fcall-used-r4).
- */
 
 static inline void MatrixResetRaw(int *dst)
 {

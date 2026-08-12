@@ -548,13 +548,6 @@ void OvlFunc_898_2009198(void) {
 
 INCLUDE_ASM("asm/maps/vault_1/ovl_314_c_c_c_a_c_c_a.s");
 
-/* Cluster OvlFunc_898_2009638..OvlFunc_898_2009638 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_898_2009638(int *a, int *b)

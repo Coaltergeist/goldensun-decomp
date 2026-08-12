@@ -197,11 +197,6 @@ void Func_801c924(void) {
     Func_801c49c();
 }
 
-/* Func_801c930 @ 0x0801c930  [asm/rom_15000/rom_1aeec_c_a_c_c.s]
- * p = galloc_ewram(0x13, 0x1004); zero u16s at p+0x46 and p+0x352 (0x352
- * pooled, added into the dying p reg). Name audit: seed called the old
- * Func_80048f4 alias; asm bl target is galloc_ewram.
- */
 extern unsigned char *galloc_ewram(int index, unsigned int size);
 
 void Func_801c930(void)
@@ -244,11 +239,6 @@ void Func_801c9c4(void) {}
 INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_c.s");
 
 INCLUDE_ASM("asm/ui/menu/rom_1ca1c_a_a.s");
-
-/* Func_801ce6c @ 0x0801ce6c  [asm/rom_15000/rom_1ca1c_a.s]
- * u16 counter at arg0+0x574: increment; if (new<<16) > 0x20000 (i.e. > 2 as
- * u16) reset to 0. 0x20000 built as 0x80<<10 interleaved with the add/strh.
- */
 
 void Func_801ce6c(unsigned char *p)
 {

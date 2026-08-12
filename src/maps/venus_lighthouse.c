@@ -39,13 +39,6 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/ovl_30_a_a_a_c_a.s");
 
-/* Cluster OvlFunc_968_20082f0..OvlFunc_968_20082f0 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_968_20082f0(int *a, int *b)
@@ -101,13 +94,6 @@ void OvlFunc_968_20088b8(void) {
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/ovl_30_a_c_a_a.s");
 
-/* Cluster OvlFunc_968_2008910..OvlFunc_968_2008910 extracted from goldensun/asm/overlays/rom_7ed0a0/ovl_30_a_a_c.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_7ed0a0/ovl_30_a_a_c_a.o and asm/overlays/rom_7ed0a0/ovl_30_a_a_c_c.o in
- * goldensun/overlays/rom_7ed0a0/overlay.ld.
- */
 extern void __WaitFrames(unsigned int a);
 
 void OvlFunc_968_2008910(unsigned int arg0, unsigned int arg1)

@@ -24,13 +24,6 @@ extern void __WaitFrames();
 extern int OvlFunc_965_20082a8();
 extern void OvlFunc_965_20090f4();
 
-/* Cluster OvlFunc_965_2008030..OvlFunc_965_2008030 extracted from goldensun/asm/overlays/rom_799abc/ovl_30_a_a_a.s.
- *
- * Total .text for this TU = 60 bytes (= 0x3c).
- * Preserves the original ROM layout when slotted between
- * asm/overlays/rom_799abc/ovl_30_a_a_a_a.o and asm/overlays/rom_799abc/ovl_30_a_a_a_c.o in
- * goldensun/overlays/rom_799abc/overlay.ld.
- */
 extern int Func_8000948(int);
 
 int OvlFunc_965_2008030(int *a, int *b)
@@ -416,9 +409,6 @@ void OvlFunc_965_200919c(void) {
 }
 
 
-/* drifting internal return type: this caller matched with OvlFunc_965_20089f4
- * declared value-returning (reconcile's TU-wide `void` keep-first perturbs the
- * -O2 scheduler here). Alias to the value-returning signature its fragment used. */
 extern unsigned int OvlFunc_965_20089f4__u(long, long, long, long) __asm__("OvlFunc_965_20089f4");
 
 void OvlFunc_965_20091c4(void)

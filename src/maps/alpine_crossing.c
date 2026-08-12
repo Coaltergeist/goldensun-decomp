@@ -5,9 +5,6 @@
 
 INCLUDE_ASM("asm/maps/alpine_crossing/exports.s");
 
-/* void veneers left implicit by every source fragment: without the correct
- * void return type the -O2 arg-setup scheduler swaps the mov order (was masked
- * by the old -O1 build rule). See work/o1_diag/. */
 extern void __CutsceneStart();
 extern void __CutsceneEnd();
 extern void __Func_801776c();

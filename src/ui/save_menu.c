@@ -85,8 +85,6 @@ unsigned int Func_8021750(unsigned int arg0, unsigned int arg1, unsigned int arg
 
 INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_a_c_c_a.s");
 
-/* Cluster Func_80218dc..Func_80218dc extracted from goldensun/asm/rom_15000/rom_20198_c_c_c_a_a_c_c.s.
- */
 extern void Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 int Func_80218dc(unsigned int a0, unsigned int a1, unsigned int a2, unsigned int a3)

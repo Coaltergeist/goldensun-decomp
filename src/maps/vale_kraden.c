@@ -4,8 +4,6 @@
 
 INCLUDE_ASM("asm/maps/vale_kraden/exports.s");
 
-/* Explicit void return: implicit `int` perturbs the -O2 scheduler into the
-   wrong arg-setup order for the call in OvlFunc_885_2008ba8. */
 extern void __MapActor_TravelToAnim();
 
 INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_a_a.s");
