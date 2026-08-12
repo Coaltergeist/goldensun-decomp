@@ -16,8 +16,8 @@ RunTasks           src/video.c
 OvlFunc_908_20083f4  src/maps/bilibin_rooms.c
 OvlFunc_908_2008430  src/maps/bilibin_rooms.c
 OvlFunc_908_20081e0  src/maps/bilibin_rooms.c
-Func_80944ec       src/rom_8a000/rom_944ec_a_a_a_a_b.c
-Func_80a8904       src/rom_a1000/rom_a8604_a_a_b.c
+Func_80944ec       src/field/weather.c
+Func_80a8904       src/unknown/sub_80a1050.c
 OvlFunc_909_20082cc  src/maps/mccoys_palace.c
 OvlFunc_922_20097a8  src/maps/imil_falls_cave.c
 Func_800383c       src/intr/intr.c
@@ -62,7 +62,7 @@ OvlFunc_951_2008104  src/maps/lucky_fountain.c
 OvlFunc_899_200882c  src/maps/vault_rooms_1.c
 OvlFunc_946_20095d0  src/maps/crossbone_isle.c
 OvlFunc_959_2009cf0  src/maps/lunpa_fortress.c
-Func_80215e0         src/rom_15000/rom_20198_c_c_c_a_a_b.c
+Func_80215e0       src/ui/save_menu.c
 WaitFrames         src/main.c
 OvlFunc_926_200c0dc  src/maps/fuchin_temple.c
 OvlFunc_952_2008348  src/maps/babis_palace.c
@@ -86,7 +86,7 @@ OvlFunc_965_2008608  src/maps/babi_lighthouse.c
 OvlFunc_947_20088ec  src/maps/crossbone_isle_dungeon_2.c
 OvlFunc_958_20088ec  src/maps/gondowan.c
 OvlFunc_959_2008608  src/maps/lunpa_fortress.c
-LoadUIHandCursorGFX  src/rom_a1000/rom_a172c_a_c_b.c
+LoadUIHandCursorGFX src/unknown/sub_80a1050.c
 OvlFunc_899_20099e4  src/maps/vault_rooms_1.c
 OvlFunc_902_20082fc  src/maps/vault_rooms_2.c
 OvlFunc_910_200845c  src/maps/mccoys_palace_ext.c
