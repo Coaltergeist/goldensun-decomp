@@ -1,4 +1,4 @@
-/* battle_anim/moves/nereid.c -- consolidated TU. */
+/* battle_anim/moves/nereid.c */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/battle_anim/moves/nereid/rom_d2d98.s");
+INCLUDE_ASM("asm/battle_anim/moves/nereid/Anim_Nereid.s");
