@@ -123,7 +123,7 @@
 	bx	r0
 .func_end Func_80931ec
 
-	.section .rodata
+	.section .rodata.rom_92950_c_c_c_c
 	.global .L9ed80
 
 .L9ed80:

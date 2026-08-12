@@ -161,7 +161,7 @@
 	bx	r1
 .func_end Func_8094428
 
-	.section .rodata
+	.section .rodata.rom_93304_c_c_c
 	.global .L9fc28
 	.global .L9fc2c
 	.global .L9fd38

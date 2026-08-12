@@ -1,8 +1,0 @@
-/* Cluster Func_80930b8..Func_80930b8 extracted from goldensun/rom_8a000/src/rom_92950_c.s.
- *
- * Total .text for this TU = 4 bytes (= 0x4).
- * Preserves the original ROM layout when slotted between
- * rom_8a000/src/rom_92950_c_a.o and rom_8a000/src/rom_92950_c_c.o in
- * goldensun/stage1.ld.
- */
-void Func_80930b8(void) {}
