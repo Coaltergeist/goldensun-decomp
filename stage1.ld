@@ -39,7 +39,7 @@ SECTIONS {
 		src/random.o(.text)
 		src/sprite/palette.o(.text)
 		src/memory/alloc.o(.text)
-		src/unknown/sub_80049a8.o(.text)
+		src/render/matrix.o(.text)
 		src/decompress/lz.o(.text)
 		src/save.o(.text)
 		src/other/sub_8006864.o(.text)
@@ -148,15 +148,15 @@ SECTIONS {
 		src/field/map.o(.text)
 		src/field/map_actor_api.o(.text)
 		src/field/weather.o(.text)
-		src/unknown/sub_8096c24.o(.text)
+		src/field/actor_move.o(.text)
 		src/field/psynergy.o(.text)
 		src/field/moves/move.o(.text)
 		src/field/moves/carry.o(.text)
 		src/field/moves/halt.o(.text)
 		src/field/moves/avoid.o(.text)
-		src/unknown/sub_809b804.o(.text)
+		src/field/transition.o(.text)
 
-		src/unknown/sub_8096c24.o(.rodata)
+		src/field/actor_move.o(.rodata)
 		src/field/moves/avoid.o(.rodata)
 		asm/rom_8a000/rom_8ace0_c.o(.rodata)
 		src/field/map_actor.o(.rodata)
@@ -183,20 +183,20 @@ SECTIONS {
 
 	rom_a1000 : ALIGN(0x1000) {
 		src/rom_a1000/exports.o(.text)
-		src/unknown/sub_80a1050.o(.text)
+		src/ui/party_menu.o(.text)
 
 		asm/rom_a1000/rom_a172c_c.o(.rodata)
-		src/unknown/sub_80a1050.o(.rodata.rom_a5534_c_c_c)
-		src/unknown/sub_80a1050.o(.rodata.rom_ae88c_c_c_c)
-		src/unknown/sub_80a1050.o(.rodata.rom_a4f08)
-		src/unknown/sub_80a1050.o(.rodata.rom_a1050_c_c_c)
+		src/ui/party_menu.o(.rodata.rom_a5534_c_c_c)
+		src/ui/party_menu.o(.rodata.rom_ae88c_c_c_c)
+		src/ui/party_menu.o(.rodata.rom_a4f08)
+		src/ui/party_menu.o(.rodata.rom_a1050_c_c_c)
 		asm/rom_a1000/rom_a47b4_c_c_c_c_c_c.o(.rodata)
 		asm/rom_a1000/rom_a8604_c_c_c_c_c.o(.rodata)
 		asm/rom_a1000/rom_af26c.o(.rodata)
-		src/unknown/sub_80a1050.o(.rodata.rom_aa538_c_c_c)
-		src/unknown/sub_80a1050.o(.rodata.rom_a1814_c_c_c)
-		src/unknown/sub_80a1050.o(.rodata.rom_a7380)
-		src/unknown/sub_80a1050.o(.rodata.rom_ad274_c_c)
+		src/ui/party_menu.o(.rodata.rom_aa538_c_c_c)
+		src/ui/party_menu.o(.rodata.rom_a1814_c_c_c)
+		src/ui/party_menu.o(.rodata.rom_a7380)
+		src/ui/party_menu.o(.rodata.rom_ad274_c_c)
 	} > rom
 
 	rom_b0000 : ALIGN(0x1000) {
@@ -212,7 +212,7 @@ SECTIONS {
 		src/battle/debug_battle_test.o(.text)
 		src/battle/battle.o(.text)
 		src/battle/mechanics.o(.text)
-		src/unknown/sub_80c0a24.o(.text)
+		src/battle_anim/cast.o(.text)
 		src/battle/enemy.o(.text)
 
 		asm/rom_b5000/rom_c2a0c.o(.rodata)
@@ -234,7 +234,7 @@ SECTIONS {
 
 	rom_c9000 : ALIGN(0x1000) {
 		src/rom_c9000/exports.o(.text)
-		src/unknown/sub_80c9048.o(.text)
+		src/render/window_effect.o(.text)
 		src/battle_anim/moves/ice.o(.text)
 		src/battle_anim/moves/spore.o(.text)
 		src/battle_anim/moves/bite_sting.o(.text)

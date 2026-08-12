@@ -1,7 +1,7 @@
 /* unknown/sub_80c0a24.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/unknown/sub_80c0a24/rom_c10e8_a_a_a.s");
+INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_a.s");
 
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);
@@ -24,7 +24,7 @@ int Func_80c16d0(void) {
     return StopTask(Func_80c11ec);
 }
 
-INCLUDE_ASM("asm/unknown/sub_80c0a24/rom_c10e8_a_a_c.s");
+INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_c.s");
 
 extern void Func_80c0700(int a, int b);
 
