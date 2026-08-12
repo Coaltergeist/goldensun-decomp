@@ -22,4 +22,4 @@ void Anim_Unused_Weaken(void *context) {
     BaseAnim_StatDown(context, 3);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/stat_down/rom_d9ab8_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/stat_down/BaseAnim_StatDown.s");

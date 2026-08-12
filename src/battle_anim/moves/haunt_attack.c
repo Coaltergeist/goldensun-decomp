@@ -17,4 +17,4 @@ void Anim_Haunting(void *context) {
     BaseAnim_HauntAttack(context, 2);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/haunt_attack/rom_ceb30_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/haunt_attack/BaseAnim_HauntAttack.s");

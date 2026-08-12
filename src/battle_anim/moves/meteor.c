@@ -12,4 +12,6 @@ void Anim_OuterSpace(void *context) {
     BaseAnim_Meteor(context, 1);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/meteor/rom_e7320_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/meteor/Func_80e7338.s");
+INCLUDE_ASM("asm/battle_anim/moves/meteor/Func_80e73a0.s");
+INCLUDE_ASM("asm/battle_anim/moves/meteor/BaseAnim_Meteor.s");

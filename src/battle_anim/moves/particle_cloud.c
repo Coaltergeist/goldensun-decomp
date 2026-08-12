@@ -48,4 +48,4 @@ void Anim_Drown(void *context) {
     BaseAnim_ParticleCloud(context, 6);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/particle_cloud/rom_d5258_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/particle_cloud/BaseAnim_ParticleCloud.s");

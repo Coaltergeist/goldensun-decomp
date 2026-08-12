@@ -12,4 +12,4 @@ void Anim_Dynamite(void *context) {
     BaseAnim_Nova(context, 1);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/nova/rom_d45ec_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/nova/BaseAnim_Nova.s");

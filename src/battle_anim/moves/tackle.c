@@ -22,4 +22,4 @@ void Anim_Headbutt(void *context) {
     BaseAnim_Tackle(context, 3);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/tackle/rom_dfa18_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/tackle/BaseAnim_Tackle.s");

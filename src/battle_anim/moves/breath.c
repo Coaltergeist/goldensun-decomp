@@ -37,4 +37,4 @@ void Anim_DeadlyGas(void *context) {
     BaseAnim_Breath(context, 4);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/breath/rom_dbbdc_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/breath/BaseAnim_Breath.s");

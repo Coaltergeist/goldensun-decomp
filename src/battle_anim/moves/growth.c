@@ -12,4 +12,4 @@ void Anim_Punji(void *context) {
     BaseAnim_Growth(context, 1);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/growth/rom_dd2ac_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/growth/BaseAnim_Growth.s");
