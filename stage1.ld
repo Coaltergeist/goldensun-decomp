@@ -22,7 +22,7 @@ SECTIONS {
 
 	rom_c0 : {
 		exports/rom_c0/exports.o(.text)
-		src/rom_c0/crt0.o(.text)
+		src/crt0.o(.text)
 	} > rom
 
 	rom_770 : {
