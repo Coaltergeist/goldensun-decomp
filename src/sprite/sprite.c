@@ -142,4 +142,5 @@ void Func_800befc(unsigned int arg0) {
     } while (i <= 0x7f);
 }
 
-INCLUDE_ASM("asm/sprite/sprite/rom_be70_c.s");
+INCLUDE_ASM("asm/sprite/sprite/Func_800bf34.s");
+INCLUDE_ASM("asm/sprite/sprite/rom_be70_c.rodata.s");

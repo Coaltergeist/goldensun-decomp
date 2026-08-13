@@ -247,6 +247,7 @@ SECTIONS {
 		src/battle_anim/epower_up.o(.text)
 		src/battle_anim/screen_shatter.o(.text)
 		src/battle_anim/djinn_set.o(.text)
+		src/battle_anim/unleash_intro.o(.text)
 		src/battle_anim/moves/tentacle.o(.text)
 		src/battle_anim/moves/spider_web.o(.text)
 		src/battle_anim/transition_out.o(.text)

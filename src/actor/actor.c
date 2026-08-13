@@ -3,6 +3,7 @@
 
 extern void Actor_SetScript();
 
+INCLUDE_ASM("asm/actor/actor/Func_800bfa4.s");
 INCLUDE_ASM("asm/actor/actor/rom_c004_a.s");
 
 void Func_800c0c4(void) {}
