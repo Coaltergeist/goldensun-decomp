@@ -55,7 +55,7 @@ SECTIONS {
 		src/lib/agb_flash/agb_flash_at.o(.text)
 		src/lib/call_via.o(.text)
 
-		src/main.o(.rodata)
+		src/intr/intr.o(.rodata)
 		data/rom_c0/rom_45e8_c_c_c_c_c.o(.rodata)
 		data/rom_c0/rom_49a8_c_c_c_c_c.o(.rodata)
 		src/save.o(.rodata)
