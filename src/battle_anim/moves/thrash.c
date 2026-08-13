@@ -37,4 +37,4 @@ void Anim_VorpalSlash(void *context) {
     BaseAnim_FullScreenSlash(context, 2);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/thrash/rom_ece7c_c_c.s");
+

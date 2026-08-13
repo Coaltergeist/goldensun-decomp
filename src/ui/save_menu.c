@@ -386,4 +386,4 @@ void CollectDjinni(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     _GiveDjinni(arg0, r5, r6);
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_c_c.s");
+INCLUDE_ASM("asm/ui/save_menu/rom_23178_c_c.rodata.s");

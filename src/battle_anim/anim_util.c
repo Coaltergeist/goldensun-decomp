@@ -24,4 +24,5 @@ void Func_80cdd14(void)
     WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd508_c.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/InitRenderTilemapBG1.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/DrawLine.s");

@@ -93,6 +93,8 @@ SECTIONS {
 		src/ui/menu.o(.text)
 		src/ui/text.o(.text)
 		src/ui/save_menu.o(.text)
+		src/ui/menus/debug_flag_editor.o(.text)
+		src/ui/debug/icon_test.o(.text)
 
 		data/rom_15000/rom_29910.o(.rodata)
 		src/ui/icon.o(.rodata)
@@ -243,7 +245,13 @@ SECTIONS {
 		src/battle_anim/epower_up.o(.text)
 		src/battle_anim/screen_shatter.o(.text)
 		src/battle_anim/djinn_set.o(.text)
+		src/battle_anim/moves/tentacle.o(.text)
+		src/battle_anim/moves/spider_web.o(.text)
+		src/battle_anim/transition_out.o(.text)
 		src/battle_anim/anim_util.o(.text)
+		src/battle_anim/moves/planet_diver.o(.text)
+		src/battle_anim/moves/haunt.o(.text)
+		src/battle_anim/moves/confuse.o(.text)
 		src/battle_anim/moves/haunt_attack.o(.text)
 		src/render/draw2D_util.o(.text)
 		src/battle_anim/moves/spasm.o(.text)
@@ -321,6 +329,8 @@ SECTIONS {
 		src/battle_anim/moves/judgment.o(.text)
 		src/battle_anim/moves/kirin.o(.text)
 		src/battle_anim/moves/thrash.o(.text)
+		src/battle_anim/moves/fullscreen_slash.o(.text)
+		src/battle_anim/moves/undead_sword.o(.text)
 		src/render/draw2D.o(.text)
 
 		data/rom_c9000/rom_eda78.o(.rodata)
@@ -384,6 +394,7 @@ SECTIONS {
 		src/battle_anim/moves/judgment.o(.rodata)
 		src/battle_anim/moves/kirin.o(.rodata)
 		src/battle_anim/moves/thrash.o(.rodata)
+		src/battle_anim/moves/undead_sword.o(.rodata)
 		src/render/draw2D.o(.rodata)
 	} > rom
 
