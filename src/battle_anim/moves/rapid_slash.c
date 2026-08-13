@@ -1,4 +1,4 @@
-/* battle_anim/moves/rapid_slash.c -- consolidated TU. */
+/* battle_anim/moves/rapid_slash.c */
 #include "nonmatching.h"
 
 extern void BaseAnim_RapidSlash(void *context, int subanim);
@@ -46,13 +46,4 @@ void Anim_SwiftStrike(void *context) {
     }
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/rom_e28f4_c_c_a.s");
-
-extern int PhysMove(unsigned int src, unsigned int dest);
-
-int Func_80e3944(unsigned int arg0, unsigned int arg1)
-{
-	int r = PhysMove(arg0, arg1);
-	*(int *)(arg1 + 4) -= 0x10;
-	return r;
-}
+INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/BaseAnim_RapidSlash.s");
