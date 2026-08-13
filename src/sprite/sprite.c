@@ -1,6 +1,8 @@
 /* sprite/sprite.c -- consolidated TU. */
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/sprite/sprite/UpdateSpriteAnim.s");
+
 INCLUDE_ASM("asm/sprite/sprite/rom_b074_a.s");
 
 void Sprite_SetColorswap(unsigned char *sprite, int colorswap) {

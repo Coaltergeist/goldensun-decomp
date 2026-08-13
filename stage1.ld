@@ -67,7 +67,7 @@ SECTIONS {
 	rom_9000 : ALIGN(0x1000) {
 		exports/rom_9000/exports.o(.text)
 		src/sprite/draw_sprite.o(.text)
-		src/decompress/sprite_lz.o(.text)
+		src/decompress/unknown_a97c.o(.text)
 		src/sprite/sprite.o(.text)
 		src/actor/actor.o(.text)
 		src/actor/actor_script.o(.text)
@@ -77,7 +77,7 @@ SECTIONS {
 
 		src/sprite/sprite.o(.rodata.rom_b798_c_c)
 		src/sprite/sprite.o(.rodata.rom_b074_c)
-		src/decompress/sprite_lz.o(.rodata)
+		src/sprite/sprite.o(.rodata)
 		src/sprite/sprite.o(.rodata.rom_be70_c)
 		src/actor/actor.o(.rodata)
 		src/actor/actor_script.o(.rodata)
@@ -94,7 +94,7 @@ SECTIONS {
 	rom_15000 : ALIGN(0x1000) {
 		exports/rom_15000/exports.o(.text)
 		asm/decompress/huffman.o(.text)
-		src/ui/window.o(.text)
+		src/ui/unknown_15e8c.o(.text)
 		src/ui/ui.o(.text)
 		src/ui/icon.o(.text)
 		src/ui/menu.o(.text)
