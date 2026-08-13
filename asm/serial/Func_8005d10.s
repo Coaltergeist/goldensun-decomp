@@ -157,4 +157,3 @@
 	pop	{r0}
 	bx	r0
 .func_end Func_8005d10
-
