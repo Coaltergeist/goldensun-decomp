@@ -1,13 +1,17 @@
-/* unknown/sub_80c0a24.c -- consolidated TU. */
+/* battle_anim/cast.c */
 #include "nonmatching.h"
-
-INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_a.s");
 
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);
 extern int StopTask(void *task);
 extern void Task_BlitPreAnim(void);
 extern void Func_80c11ec(void);
+
+INCLUDE_ASM("asm/battle_anim/cast/Func_80c11ec.s");
+
+INCLUDE_ASM("asm/battle_anim/cast/Task_BlitPreAnim.s");
+
+INCLUDE_ASM("asm/battle_anim/cast/Anim_Cast.s");
 
 int Func_80c16d0(void) {
     void (*fn)(int, int) = Func_80008d4;
@@ -22,18 +26,4 @@ int Func_80c16d0(void) {
     *p = 0x1341;
     StopTask(Task_BlitPreAnim);
     return StopTask(Func_80c11ec);
-}
-
-INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_c.s");
-
-extern void Func_80c0700(int a, int b);
-
-void Func_80c1a14(void) {
-    Func_80c0700(0, 0);
-}
-
-extern void SetIntrHandler(unsigned int, unsigned int, void *);
-
-void ClearVCountIntr(void) {
-    SetIntrHandler(2, 0, (void *)0);
 }

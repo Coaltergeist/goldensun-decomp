@@ -1,67 +1,15 @@
-// fakematch
-/* field/weather.c -- consolidated TU. */
+/* field/weather.c */
 #include "nonmatching.h"
 
-extern void Func_80944ec();
-
-extern unsigned char iwram_3001ed8[];
-
-void Func_80944ec(void)
-{
-  unsigned int ptr;
-  volatile unsigned int *new_var2;
-  unsigned char idx;
-  unsigned int off;
-  unsigned int src;
-  volatile unsigned short *dmareg;
-  unsigned short r4;
-  volatile unsigned int *bgofs;
-  unsigned int v;
-  unsigned int new_var;
-  ptr = *((unsigned int *) iwram_3001ed8);
-  idx = *((unsigned char *) (ptr + (0xf0 << 4)));
-  new_var = ((unsigned int) idx) << 4;
-  off = new_var - idx;
-  off <<= 7;
-  new_var2 = (volatile unsigned int *) 0x04000014;
-  src = ptr + off;
-  dmareg = (volatile unsigned short *) 0x040000b0;
-  {
-    unsigned int m1 = 0xc5ff;
-    r4 = dmareg[5];
-    dmareg[5] = m1 & r4;
-  }
-  {
-    unsigned int m2 = 0x7fff;
-    r4 = dmareg[5];
-    dmareg[5] = m2 & r4;
-  }
-  bgofs = new_var2;
-  {
-    unsigned short scratch = dmareg[5];
-    v = *((unsigned int *) src);
-    src += 4;
-    bgofs[0] = v;
-    v = *((unsigned int *) src);
-    src += 4;
-    bgofs[0] = v;
-    v = *((unsigned int *) src);
-    src += 4;
-    bgofs[0] = v;
-    (void) scratch;
-  }
-  {
-    register unsigned int s asm("r0") = src;
-    register unsigned int d asm("r1") = (unsigned int) bgofs;
-    register unsigned int c asm("r2") = 0xa6600003;
-    register volatile unsigned short *p asm("r3") = dmareg;
-    asm volatile("stmia %0!, {%1, %2, %3}\n\tsub %0, #0xc" : "+r"(p) : "r"(s), "r"(d), "r"(c) : "memory");
-  }
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_a_a_c_a.s");
-
 extern void Func_8094544(void);
+extern void Func_80944ec();
+extern void *galloc_ewram(int index, unsigned int size);
+extern unsigned int iwram_3001f30;
+extern void Func_809b804(unsigned char *p);
+
+INCLUDE_ASM("asm/field/weather/Func_8094544.s");
+
+INCLUDE_ASM("asm/field/weather/Func_8094730.s");
 
 void Func_80947e4(void)
 {
@@ -85,9 +33,21 @@ void Func_80947e4(void)
   r3 = *((volatile unsigned short *) (new_var + 0xa));
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_a_a_c_c.s");
+INCLUDE_ASM("asm/field/weather/Task_Rain.s");
 
-extern void *galloc_ewram(int index, unsigned int size);
+INCLUDE_ASM("asm/field/weather/Task_Thunder.s");
+
+INCLUDE_ASM("asm/field/weather/StartRain.s");
+
+INCLUDE_ASM("asm/field/weather/Task_Snow.s");
+
+INCLUDE_ASM("asm/field/weather/StartSnow.s");
+
+INCLUDE_ASM("asm/field/weather/Task_Earthquake.s");
+
+INCLUDE_ASM("asm/field/weather/StartEarthquake.s");
+
+INCLUDE_ASM("asm/field/weather/StartThunder.s");
 
 void Func_8095214(void)
 {
@@ -98,7 +58,6 @@ void Func_8095214(void)
   *r2 = v;
   *((unsigned short *)(base + 0x1f82)) = z;
 }
-
 
 void Func_8095240(void)
 {
@@ -111,7 +70,6 @@ void Func_8095240(void)
   *r2 = new_var2;
   *((unsigned short *)(base + 0x1f82)) = new_var;
 }
-
 
 void Func_8095268(void)
 {
@@ -127,7 +85,7 @@ void Func_8095268(void)
   *((unsigned short *) new_var) = v1;
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_c_c_a.s");
+INCLUDE_ASM("asm/field/weather/StartThunder2.s");
 
 void Func_8095348(int *p)
 {
@@ -146,10 +104,13 @@ void Func_8095348(int *p)
   *((int *) (((char *) p) + 0x10)) = v;
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_c_c_c.s");
+INCLUDE_ASM("asm/field/weather/Func_809537c.s");
 
-extern unsigned int iwram_3001f30;
-extern void Func_809b804(unsigned char *p);
+INCLUDE_ASM("asm/field/weather/Func_80955b0.s");
+
+INCLUDE_ASM("asm/field/weather/Func_8095680.s");
+
+INCLUDE_ASM("asm/field/weather/Func_8095778.s");
 
 void Func_8095884(void) {
     unsigned char *p;
@@ -162,7 +123,9 @@ void Func_8095884(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_a_a.s");
+INCLUDE_ASM("asm/field/weather/Func_80958a8.s");
+
+INCLUDE_ASM("asm/field/weather/Func_80958e4.s");
 
 void Func_809592c(unsigned int arg0) {
     unsigned short val;
@@ -170,205 +133,3 @@ void Func_809592c(unsigned int arg0) {
     val += 0x2000;
     *((unsigned short *)((char *)arg0 + 6)) = val;
 }
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_a_c.s");
-
-extern void _DeleteActor(void);
-
-void Func_8095bac(unsigned int arg0)
-{
-    short *p;
-    unsigned int v2;
-    unsigned short v3;
-
-    p = (short *)((char *)arg0 + 0x64);
-    v2 = (unsigned int)((*p * 5) << 4);
-    v3 = *(unsigned short *)((char *)arg0 + 6);
-    *(unsigned short *)((char *)arg0 + 6) = v3 + v2 + 0x1000;
-    if (v2 < 0x1000)
-        (*(unsigned short *)p)++;
-}
-void Func_8095bd8(unsigned char *p)
-{
-    int v1c;
-    int v18;
-    unsigned short v6;
-
-    v1c = *(int *)(p + 0x1c) + (int)0xfffffe40;
-    v18 = *(int *)(p + 0x18) + (int)0xfffffe40;
-    *(int *)(p + 0x1c) = v1c;
-    v6 = *(unsigned short *)(p + 6) + (0x80 << 6);
-    *(unsigned short *)(p + 6) = v6;
-    *(int *)(p + 0x18) = v18;
-    if (v18 < (0xc0 << 6))
-        _DeleteActor();
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_c_a.s");
-
-
-void Func_8095f9c(unsigned char *p)
-{
-    int v1c;
-    int v18;
-    unsigned short h6;
-    int limit;
-
-    v1c = *(int *)(p + 0x1c) - 0x400;
-    v18 = *(int *)(p + 0x18) - 0x400;
-    *(int *)(p + 0x1c) = v1c;
-    h6 = *(unsigned short *)(p + 6) + (0x80 << 6);
-    *(unsigned short *)(p + 6) = h6;
-    limit = 0xc0 << 6;
-    *(int *)(p + 0x18) = v18;
-    if (v18 < limit)
-        _DeleteActor();
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_c_c_a.s");
-
-void Func_8096574(int *p)
-{
-  int *new_var3;
-  int new_var2;
-  int *r4 = ((int **) p)[26];
-  int cur;
-  int new_var;
-  int diff;
-  unsigned char sign;
-  cur = p[2];
-  new_var2 = 31;
-  diff = r4[2] - cur;
-  sign = ((unsigned int) diff) >> 31;
-  diff = (diff + sign) >> 1;
-  cur += diff;
-  p[2] = cur;
-  new_var3 = &diff;
-  cur = p[3];
-  diff = r4[3] - cur;
-  sign = ((unsigned int) (*new_var3)) >> 31;
-  diff = (diff + sign) >> 1;
-  cur += diff;
-  p[3] = cur;
-  cur = (new_var = p[4]);
-  diff = r4[4] - cur;
-  sign = ((unsigned int) diff) >> new_var2;
-  diff = (diff + sign) >> 1;
-  cur += diff;
-  p[4] = cur;
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_c_c_c.s");
-
-extern void FieldMove_NoTarget(void);
-extern void FieldMove_Target(void);
-extern void Func_8096ab0(void);
-extern void Func_8096af0(void);
-
-void FieldMove(int param_1)
-{
-	if (param_1 == 0)
-		FieldMove_NoTarget();
-	else if (param_1 == 1)
-		FieldMove_Target();
-	else if (param_1 == 2)
-		Func_8096ab0();
-	else if (param_1 == 3)
-		Func_8096af0();
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_c_a_a.s");
-
-extern void CutsceneStart(void);
-extern void MessageID(unsigned int stringID);
-extern void ActorMessage(unsigned int actor, unsigned int arg1);
-extern void CutsceneEnd(void);
-extern int _call_via_r3(void);
-extern int _GetFlag(unsigned int flag);
-extern void _Func_801776c(unsigned int, unsigned int);
-
-int Func_8096b28(int *arg0, int arg1, int arg2)
-{
-    int (*f)(int, int);
-
-    if (arg0 != 0) {
-        if (arg0[2] != 0) {
-            if (arg0[2] < 0x10000) {
-                CutsceneStart();
-                MessageID(arg0[2]);
-                ActorMessage(arg2, 0);
-                CutsceneEnd();
-            } else {
-                f = (int (*)(int, int)) arg0[2];
-                f(arg1, arg2);
-            }
-        }
-        if (_GetFlag(0x142)) {
-            CutsceneStart();
-            _Func_801776c(0x927, 1);
-            CutsceneEnd();
-        }
-    }
-    return 0;
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_c_a_c.s");
-
-extern int vec3_translate();
-extern int _Actor_TravelTo();
-
-void Func_8096bec(unsigned int arg0, unsigned int arg1, unsigned int arg2)
-{
-    unsigned int v[3];
-
-    if (arg0 != 0) {
-        v[0] = *(unsigned int *)((char *)arg0 + 8);
-        v[1] = *(unsigned int *)((char *)arg0 + 0xc);
-        v[2] = *(unsigned int *)((char *)arg0 + 0x10);
-        vec3_translate(arg1, arg2, v);
-        _Actor_TravelTo(arg0, v[0], v[1], v[2]);
-    }
-}
-
-extern unsigned char gSpriteAllocTable[512];
-
-unsigned int Func_8096c24(void)
-{
-    unsigned char *p;
-    unsigned int count;
-    int i;
-
-    p = gSpriteAllocTable;
-    count = 0;
-    for (i = 0x200; i != 0; i--) {
-        unsigned char v = *p;
-        p++;
-        if (v == 0xff)
-            count++;
-    }
-    return count;
-}
-
-extern unsigned int Func_8003f3c(unsigned int);
-
-unsigned int Func_8096c48(unsigned int arg0, unsigned int arg1)
-{
-	unsigned char *p5 = (unsigned char *)arg0;
-	unsigned char *p6 = (unsigned char *)arg1;
-
-	if (!arg0)
-		return 0;
-
-	if (!arg1) {
-		p5[0x1d] |= 1;
-	} else {
-		Func_8003f3c(p5[0x1c]);
-		p5[0x1c] = p6[0x1c];
-		p5[0x1d] |= 1;
-		p5 = p6;
-	}
-
-	return (unsigned int)p5;
-}
-
-INCLUDE_ASM("asm/field/weather/rom_944ec_c_c.s");

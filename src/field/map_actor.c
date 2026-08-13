@@ -1,9 +1,16 @@
-/* field/map_actor.c -- consolidated TU. */
+/* field/map_actor.c */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/map_actor/rom_8ba38_a_a_a.s");
-
 extern unsigned char iwram_3001ebc[];
+extern void *galloc_ewram(unsigned int index, unsigned int size);
+extern void _Func_8011590(void);
+extern void _Func_8011644(void);
+
+INCLUDE_ASM("asm/field/map_actor/Func_808ba38.s");
+
+INCLUDE_ASM("asm/field/map_actor/Func_808bb2c.s");
+
+INCLUDE_ASM("asm/field/map_actor/Func_808bc44.s");
 
 int Func_808bc9c(void)
 {
@@ -25,10 +32,17 @@ int Func_808bc9c(void)
            *(short *)((char *)r1 + 0xc1 * 2);
 }
 
-INCLUDE_ASM("asm/field/map_actor/rom_8ba38_a_a_c_a.s");
+INCLUDE_ASM("asm/field/map_actor/Func_808bd24.s");
 
-extern void *galloc_ewram(unsigned int index, unsigned int size);
-extern void _Func_8011590(void);
+INCLUDE_ASM("asm/field/map_actor/CheckSpecialExits.s");
+
+INCLUDE_ASM("asm/field/map_actor/Func_808bec0.s");
+
+INCLUDE_ASM("asm/field/map_actor/Func_808c2dc.s");
+
+INCLUDE_ASM("asm/field/map_actor/Func_808c30c.s");
+
+INCLUDE_ASM("asm/field/map_actor/UpdatePoison.s");
 
 void Func_808c44c(void)
 {
@@ -51,8 +65,6 @@ void Func_808c44c(void)
     }
 }
 
-extern void _Func_8011644(void);
-
 void Func_808c4c0(void)
 {
     void *base;
@@ -65,42 +77,3 @@ void Func_808c4c0(void)
         *(unsigned char *)(*(unsigned int *)((char *)base + (0xf0 << 1)) + 0x5b) = 0;
     }
 }
-
-INCLUDE_ASM("asm/field/map_actor/rom_8ba38_a_c.s");
-
-extern int _GetFlag(void);
-
-unsigned int Func_808d428(int x)
-{
-    int v;
-    if (x == -1)
-        return 1;
-    if (x & 0x1000)
-        return _GetFlag();
-    v = _GetFlag();
-    return 1 - (((unsigned int)(-v | v)) >> 31);
-}
-unsigned int Func_808d458(unsigned int arg0, unsigned int arg1)
-{
-    unsigned int a;
-    unsigned int b;
-
-    if ((arg0 & 0xf) != 3)
-        return 0;
-    if ((arg0 & 0x1ff) == 3)
-        return 0;
-    a = (arg1 & 0xfff00000) ^ (0xa0 << 15);
-    b = -a;
-    return (b | a) >> 31;
-}
-
-INCLUDE_ASM("asm/field/map_actor/rom_8ba38_c_a.s");
-
-extern unsigned int __start_overlay[];
-
-void InitMap(void) {
-    extern void _call_via_r0(void (*)(void));
-    _call_via_r0((void (*)(void))__start_overlay[1]);
-}
-
-INCLUDE_ASM("asm/field/map_actor/rom_8ba38_c_c.s");
