@@ -1,12 +1,24 @@
-/* field/moves/carry.c -- consolidated TU. */
+/* field/moves/carry.c */
 #include "nonmatching.h"
-
-INCLUDE_ASM("asm/field/moves/carry/rom_9a44c_a_a.s");
 
 extern void Func_809a65c(void);
 extern int cos(int);
 extern int sin(int);
 extern void Func_809a484(int, int, int, int, int, int, int, int *);
+
+INCLUDE_ASM("asm/field/moves/carry/Func_8099d18.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Field_Carry_Target.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Field_Carry.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Func_809a3c4.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Func_809a44c.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Func_809a484.s");
+
+INCLUDE_ASM("asm/field/moves/carry/Func_809a65c.s");
 
 void Func_809a6b8(unsigned int arg0)
 {
@@ -32,41 +44,3 @@ void Func_809a6b8(unsigned int arg0)
   }
   while (r7 <= 0x10);
 }
-
-INCLUDE_ASM("asm/field/moves/carry/rom_9a44c_a_c.s");
-
-extern void _Actor_SetPos();
-
-void Func_809a890(unsigned int arg0)
-{
-    int r3;
-    r3 = *(int *)(arg0 + 0x18);
-    r3 -= 0x80;
-    *(int *)(arg0 + 0x1c) = r3;
-    *(int *)(arg0 + 0x18) = r3;
-    if (r3 < (0x80 << 8)) {
-        _Actor_SetPos(arg0, 0, 0, 0);
-        *(int *)(arg0 + 0x6c) = 0;
-    }
-}
-
-extern void Field_Whirlwind(void);
-
-void Field_Whirlwind_Target(void) {
-    Field_Whirlwind();
-}
-
-INCLUDE_ASM("asm/field/moves/carry/rom_9a44c_c_c_a.s");
-
-extern unsigned char **iwram_3001f30;
-extern void Field_Halt(void);
-
-void Field_Halt_Target(void) {
-    unsigned char *p;
-
-    p = iwram_3001f30[5];
-    p[0x5b] = 1;
-    Field_Halt();
-}
-
-INCLUDE_ASM("asm/field/moves/carry/rom_9a44c_c_c_c.s");

@@ -1,44 +1,58 @@
-/* field/moves/avoid.c -- consolidated TU. */
+/* field/moves/avoid.c */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/moves/avoid/rom_9b698_a_a.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char iwram_3001e40[];
 
-unsigned int Func_809ba34(unsigned char *arg0)
+INCLUDE_ASM("asm/field/moves/avoid/Func_809b364.s");
+
+INCLUDE_ASM("asm/field/moves/avoid/Func_809b3d8.s");
+
+INCLUDE_ASM("asm/field/moves/avoid/Func_809b450.s");
+
+void Func_809b588(void)
 {
-    signed char v;
-    unsigned int x;
+    unsigned char *gs;
+    unsigned int arg0;
+    unsigned char *pAVar1;
+    unsigned char *sprite;
+    unsigned char *layer;
+    unsigned char *p;
+    unsigned int uVar2;
+    unsigned char flag;
 
-    v = *(signed char *)(arg0 + 0x41);
-    if (v == 0)
-        return 0;
-    x = *(unsigned int *)(arg0 + 0xc) ^ 0x80000000;
-    return ((unsigned int)(-(int)x | x)) >> 31;
+    gs = (unsigned char *)&gState;
+    gs += (0xfa << 1);
+    arg0 = *(unsigned int *)gs;
+    pAVar1 = (unsigned char *)GetFieldActor(arg0);
+    sprite = *(unsigned char **)(pAVar1 + 0x50);
+    layer = *(unsigned char **)(sprite + 0x28);
+    uVar2 = *(unsigned int *)iwram_3001e40 % 5;
+    if (uVar2 == 0) {
+        p = sprite;
+        p += 0x25;
+        flag = 1;
+        *p = flag;
+        p += 1;
+        flag = 3;
+    } else if (uVar2 == 2) {
+        p = sprite;
+        p += 0x25;
+        layer[5] = 0;
+        flag = 1;
+        *p = flag;
+        p += 1;
+    } else {
+        return;
+    }
+    *p = flag;
 }
 
-void Func_809ba5c(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
-    unsigned int v3;
-    v3 = 0x80 << 24;
-    *(unsigned int *)(arg0 + 12) = v3;
-    *(unsigned int *)(arg0 + 16) = v3;
-    *(unsigned int *)(arg0 + 4) = arg1;
-    *(unsigned int *)(arg0 + 8) = arg2;
-    *(unsigned int *)(arg0 + 28) = 0;
-}
+INCLUDE_ASM("asm/field/moves/avoid/Func_809b5dc.s");
 
-extern void _Sprite_SetAnim(unsigned int);
+INCLUDE_ASM("asm/field/moves/avoid/Func_809b648.s");
 
-void Func_809ba70(unsigned int *p) {
-    _Sprite_SetAnim(*p);
-}
+INCLUDE_ASM("asm/field/moves/avoid/Field_Avoid.s");
 
-void Func_809ba7c(unsigned int arg0, unsigned int arg1) {
-    unsigned int r3 = 0;
-    unsigned int r2 = 0;
-    *(unsigned int *)(arg0 + 0x34) = arg1;
-    *(unsigned short *)(arg0 + 0x3a) = r3;
-    *(unsigned short *)(arg0 + 0x38) = r3;
-    arg0 += 0x40;
-    *(unsigned char *)arg0 = r2;
-}
-
-INCLUDE_ASM("asm/field/moves/avoid/rom_9b698_c_c.s");
+INCLUDE_ASM("asm/field/moves/avoid/rodata.s");
