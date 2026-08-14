@@ -162,34 +162,34 @@
 .func_end Func_8094428
 
 	.section .rodata.rom_93304_c_c_c
-	.global .L9fc28
-	.global .L9fc2c
-	.global .L9fd38
-	.global .L9fd44
-	.global .L9fe00
-	.global .L9fe04
-	.global .L9fe10
-	.global .L9fecc
-	.global .L9ff18
-	.global .L9ff2c
+	.global X9fc28
+	.global X9fc2c
+	.global X9fd38
+	.global X9fd44
+	.global X9fe00
+	.global X9fe04
+	.global X9fe10
+	.global X9fecc
+	.global X9ff18
+	.global X9ff2c
 
-.L9fc28:
+X9fc28:
 	.incrom 0x9fc28, 0x9fc2c
-.L9fc2c:
+X9fc2c:
 	.incrom 0x9fc2c, 0x9fd38
-.L9fd38:
+X9fd38:
 	.incrom 0x9fd38, 0x9fd44
-.L9fd44:
+X9fd44:
 	.incrom 0x9fd44, 0x9fe00
-.L9fe00:
+X9fe00:
 	.incrom 0x9fe00, 0x9fe04
-.L9fe04:
+X9fe04:
 	.incrom 0x9fe04, 0x9fe10
-.L9fe10:
+X9fe10:
 	.incrom 0x9fe10, 0x9fecc
-.L9fecc:
+X9fecc:
 	.incrom 0x9fecc, 0x9ff18
-.L9ff18:
+X9ff18:
 	.incrom 0x9ff18, 0x9ff2c
-.L9ff2c:
+X9ff2c:
 	.incrom 0x9ff2c, 0x9ff40

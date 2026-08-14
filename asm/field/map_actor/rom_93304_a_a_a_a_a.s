@@ -23,7 +23,7 @@
 	add	r3, r1
 	ldrb	r3, [r3]
 	ldr	r1, =0x12f4
-	ldr	r2, =.L9fc28
+	ldr	r2, =X9fc28
 	ldrb	r2, [r2, r3]
 	add	r3, r5, r1
 	add	r1, #2

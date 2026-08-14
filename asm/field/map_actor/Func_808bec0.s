@@ -1,0 +1,516 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start Func_808bec0  @ 0x0808bec0
+	push	{r5, r6, r7, lr}
+	mov	r7, r11
+	mov	r6, r10
+	mov	r5, r9
+	push	{r5, r6, r7}
+	mov	r7, r8
+	push	{r7}
+	sub	sp, #0x2c
+	str	r2, [sp, #0x18]
+	mov	r9, r3
+	ldr	r3, =iwram_3001ebc
+	mov	r11, r0
+	ldr	r0, [r3]
+	sub	r3, #0x4c
+	ldr	r3, [r3]
+	mov	r10, r1
+	ldr	r7, =gState
+	mov	r1, #0xfa
+	str	r3, [sp, #0x14]
+	lsl	r1, #1
+	add	r3, r7, r1
+	ldr	r3, [r3]
+	str	r3, [sp, #0x10]
+	lsl	r3, #2
+	add	r3, #0x14
+	ldr	r3, [r0, r3]
+	mov	r2, #0
+	mov	r8, r0
+	str	r3, [sp, #0xc]
+	str	r2, [sp, #4]
+	cmp	r0, #0
+	bne	.L8bf02
+	b	.L8c2ac
+.L8bf02:
+	bl	_GetPartySize
+	mov	r6, #0
+	str	r0, [sp, #8]
+	cmp	r6, r0
+	bcs	.L8bf2c
+	mov	r3, #0xfc
+	lsl	r3, #1
+	add	r5, sp, #0x1c
+	add	r7, r3
+.L8bf16:
+	ldrb	r0, [r7]
+	bl	_GetUnit
+	ldrh	r3, [r0, #0x38]
+	strh	r3, [r5]
+	ldr	r4, [sp, #8]
+	add	r6, #1
+	add	r7, #1
+	add	r5, #2
+	cmp	r6, r4
+	bcc	.L8bf16
+.L8bf2c:
+	mov	r3, #0xcf
+	lsl	r3, #1
+	add	r3, r8
+	mov	r0, #0
+	ldrsh	r3, [r3, r0]
+	cmp	r3, #3
+	bne	.L8bf64
+	mov	r3, r10
+	cmp	r3, #0
+	bge	.L8bf44
+	ldr	r3, =0x1fffff
+	add	r3, r10
+.L8bf44:
+	asr	r2, r3, #21
+	mov	r1, #0x1f
+	mov	r3, r9
+	and	r2, r1
+	cmp	r3, #0
+	bge	.L8bf54
+	ldr	r3, =0x1fffff
+	add	r3, r9
+.L8bf54:
+	asr	r3, #21
+	and	r3, r1
+	lsl	r3, #5
+	add	r3, r2, r3
+	ldr	r1, =ewram_2020000
+	lsl	r3, #2
+	add	r0, r3, r1
+	b	.L8bf9e
+.L8bf64:
+	mov	r2, r11
+	cmp	r2, #2
+	bhi	.L8bf7c
+	lsl	r3, r2, #1
+	add	r3, r11
+	mov	r4, #0x98
+	lsl	r3, #4
+	lsl	r4, #1
+	ldr	r1, [sp, #0x14]
+	add	r3, r4
+	ldr	r0, [r1, r3]
+	b	.L8bf7e
+.L8bf7c:
+	ldr	r0, =gBuffer
+.L8bf7e:
+	mov	r3, r10
+	cmp	r3, #0
+	bge	.L8bf88
+	ldr	r3, =0xfffff
+	add	r3, r10
+.L8bf88:
+	asr	r2, r3, #20
+	mov	r3, r9
+	cmp	r3, #0
+	bge	.L8bf94
+	ldr	r3, =0xfffff
+	add	r3, r9
+.L8bf94:
+	asr	r3, #20
+	lsl	r3, #7
+	add	r3, r2, r3
+	lsl	r3, #2
+	add	r0, r3
+.L8bf9e:
+	mov	r2, #0xdc
+	lsl	r2, #1
+	add	r2, r8
+	mov	r1, #0xde
+	ldr	r3, [r2]
+	lsl	r1, #1
+	ldrb	r6, [r0, #2]
+	add	r1, r8
+	str	r3, [r1]
+	str	r0, [r2]
+	cmp	r6, #0
+	beq	.L8bfc0
+	mov	r0, r10
+	ldr	r1, [sp, #0x18]
+	mov	r2, r9
+	bl	CheckSpecialExits
+.L8bfc0:
+	sub	r3, r6, #1
+	cmp	r3, #0xee
+	bhi	.L8bfce
+	mov	r3, #0xb6
+	lsl	r3, #1
+	add	r3, r8
+	strh	r6, [r3]
+.L8bfce:
+	mov	r3, r6
+	sub	r3, #0xfc
+	cmp	r3, #2
+	bhi	.L8bfde
+	mov	r3, #0xb7
+	lsl	r3, #1
+	add	r3, r8
+	strh	r6, [r3]
+.L8bfde:
+	ldr	r4, =gState
+	mov	r2, #0xf9
+	lsl	r2, #1
+	add	r3, r4, r2
+	ldrb	r3, [r3]
+	cmp	r3, #0
+	beq	.L8bfee
+	b	.L8c17a
+.L8bfee:
+	ldr	r3, [sp, #0xc]
+	cmp	r3, #0
+	bne	.L8bff6
+	b	.L8c17a
+.L8bff6:
+	mov	r0, #0x80
+	ldr	r3, [r3, #0x38]
+	lsl	r0, #24
+	cmp	r3, r0
+	bne	.L8c002
+	b	.L8c17a
+.L8c002:
+	ldr	r1, [sp, #0xc]
+	ldr	r0, =0x167
+	ldr	r5, [r1, #0x30]
+	bl	_GetFlag
+	cmp	r0, #0
+	beq	.L8c012
+	lsl	r5, #1
+.L8c012:
+	mov	r3, #0xcf
+	lsl	r3, #1
+	add	r3, r8
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #3
+	bne	.L8c034
+	ldr	r0, [sp, #0xc]
+	mov	r1, r5
+	add	r0, #8
+	bl	Func_808b048
+	mov	r3, #0xbe
+	lsl	r3, #1
+	add	r3, r8
+	mov	r7, #1
+	b	.L8c062
+.L8c034:
+	mov	r3, r6
+	sub	r3, #0xf0
+	cmp	r3, #1
+	bhi	.L8c04c
+	mov	r3, r6
+	mov	r0, r6
+	add	r3, #0xb1
+	mov	r4, r8
+	sub	r0, #0xef
+	mov	r1, r5
+	ldrb	r7, [r4, r3]
+	b	.L8c058
+.L8c04c:
+	mov	r3, #0xd0
+	lsl	r3, #1
+	add	r3, r8
+	mov	r0, #0
+	mov	r1, r5
+	ldrb	r7, [r3]
+.L8c058:
+	bl	Func_808b02c
+	mov	r3, #0xbe
+	lsl	r3, #1
+	add	r3, r8
+.L8c062:
+	strh	r0, [r3]
+	mov	r3, #0xd8
+	ldr	r2, [sp, #0xc]
+	lsl	r3, #1
+	add	r3, r8
+	ldr	r4, =Func_8000888
+	ldr	r0, [r3]
+	ldr	r1, [r2, #0x30]
+	.call_via r4
+	cmp	r7, #0
+	bne	.L8c082
+	lsr	r3, r0, #31
+	add	r3, r0, r3
+	asr	r0, r3, #1
+.L8c082:
+	mov	r2, #0xda
+	lsl	r2, #1
+	add	r2, r8
+	ldr	r3, [r2]
+	add	r0, r3, r0
+	ldr	r3, =0xffff
+	str	r0, [r2]
+	cmp	r0, r3
+	ble	.L8c0c2
+	mov	r1, r0
+	cmp	r0, #0
+	bge	.L8c09c
+	add	r1, r0, r3
+.L8c09c:
+	and	r0, r3
+	asr	r1, #16
+	str	r0, [r2]
+	mov	r0, r1
+	mov	r1, #0
+	bl	Func_808c2dc
+	bl	_Func_80bf5a8
+	cmp	r0, #0
+	beq	.L8c0b8
+	mov	r0, #0x8b
+	bl	_PlaySound
+.L8c0b8:
+	bl	Func_8091858
+	bl	UpdatePoison
+	str	r0, [sp, #4]
+.L8c0c2:
+	ldr	r4, =gState
+	ldr	r0, =0x22e
+	add	r3, r4, r0
+	mov	r1, #0
+	ldrsh	r3, [r3, r1]
+	cmp	r3, #0
+	bne	.L8c140
+	cmp	r6, #0xfa
+	bne	.L8c140
+	mov	r3, #0xde
+	lsl	r3, #1
+	add	r3, r8
+	ldr	r3, [r3]
+	ldrb	r3, [r3, #2]
+	cmp	r3, #0xfa
+	bne	.L8c128
+	ldr	r2, =0x232
+	ldr	r3, [sp, #0xc]
+	add	r1, r4, r2
+	ldr	r2, [r3, #0x30]
+	cmp	r2, #0
+	bge	.L8c0f2
+	ldr	r0, =0xffff
+	add	r2, r0
+.L8c0f2:
+	ldrh	r3, [r1]
+	asr	r2, #16
+	add	r3, r2
+	strh	r3, [r1]
+	b	.L8c140
+
+	.pool_aligned
+
+.L8c128:
+	mov	r1, #0x8b
+	lsl	r1, #2
+	add	r3, r4, r1
+	ldrh	r3, [r3]
+	lsl	r3, #16
+	asr	r2, r3, #16
+	ldr	r0, =0x232
+	lsr	r3, #31
+	add	r2, r3
+	asr	r2, #1
+	add	r3, r4, r0
+	strh	r2, [r3]
+.L8c140:
+	mov	r2, #0x91
+	lsl	r2, #2
+	add	r1, r4, r2
+	ldr	r2, [r1]
+	cmp	r2, #0
+	beq	.L8c17a
+	ldr	r0, =0x23e
+	add	r3, r4, r0
+	mov	r0, #0
+	ldrsh	r3, [r3, r0]
+	cmp	r3, #2
+	beq	.L8c17a
+	ldr	r0, [sp, #0xc]
+	ldr	r3, [r0, #0x30]
+	sub	r3, r2, r3
+	str	r3, [r1]
+	cmp	r3, #0
+	bgt	.L8c17a
+	mov	r3, #1
+	mov	r2, #0xbf
+	str	r3, [r1]
+	lsl	r2, #1
+	add	r2, r8
+	mov	r1, #0
+	ldrsh	r3, [r2, r1]
+	cmp	r3, #0
+	bne	.L8c17a
+	ldr	r3, =0x2096
+	strh	r3, [r2]
+.L8c17a:
+	ldr	r2, =0x22e
+	add	r3, r4, r2
+	mov	r0, #0
+	ldrsh	r3, [r3, r0]
+	cmp	r3, #1
+	bne	.L8c1d0
+	ldr	r1, =0x232
+	add	r5, r4, r1
+	ldrh	r3, [r5]
+	add	r3, #1
+	strh	r3, [r5]
+	sub	r2, #2
+	add	r6, r4, r2
+	ldrh	r0, [r6]
+	lsl	r2, r0, #16
+	asr	r1, r2, #16
+	lsr	r2, #31
+	add	r1, r2
+	lsl	r3, #16
+	asr	r3, #16
+	asr	r1, #1
+	cmp	r3, r1
+	bne	.L8c1b6
+	ldr	r0, [sp, #0x10]
+	ldr	r1, =0x101
+	str	r4, [sp]
+	bl	MapActor_Surprise
+	ldrh	r0, [r6]
+	ldr	r4, [sp]
+.L8c1b6:
+	mov	r3, #0
+	ldrsh	r2, [r5, r3]
+	lsl	r3, r0, #16
+	asr	r3, #16
+	cmp	r2, r3
+	bne	.L8c1d0
+	mov	r1, #0x80
+	lsl	r1, #1
+	ldr	r0, [sp, #0x10]
+	str	r4, [sp]
+	bl	MapActor_Surprise
+	ldr	r4, [sp]
+.L8c1d0:
+	ldr	r1, =0x232
+	mov	r2, #0x8b
+	lsl	r2, #2
+	add	r0, r4, r1
+	add	r3, r4, r2
+	mov	r1, #0
+	ldrsh	r3, [r3, r1]
+	mov	r1, #0
+	ldrsh	r2, [r0, r1]
+	cmp	r2, r3
+	blt	.L8c20e
+	mov	r2, #0x8c
+	lsl	r2, #2
+	add	r3, r4, r2
+	mov	r2, #0
+	ldrsh	r1, [r3, r2]
+	mov	r3, #0
+	strh	r3, [r0]
+	mov	r0, #0xff
+	mov	r3, #0x80
+	lsl	r3, #1
+	and	r0, r1
+	neg	r0, r0
+	and	r1, r3
+	str	r4, [sp]
+	bl	Func_808c30c
+	ldr	r3, [sp, #4]
+	add	r3, #1
+	str	r3, [sp, #4]
+	ldr	r4, [sp]
+.L8c20e:
+	ldr	r0, [sp, #4]
+	cmp	r0, #0
+	beq	.L8c2ac
+	mov	r3, #0xc2
+	lsl	r3, #1
+	mov	r2, #0
+	add	r3, r8
+	strh	r2, [r3]
+	mov	r3, #0xc3
+	lsl	r3, #1
+	add	r3, r8
+	strh	r2, [r3]
+	ldr	r1, [sp, #0xc]
+	mov	r3, #0x80
+	lsl	r3, #11
+	str	r3, [r1, #0x28]
+	mov	r1, #0x81
+	lsl	r1, #1
+	ldr	r0, [sp, #0x10]
+	str	r4, [sp]
+	bl	MapActor_Surprise
+	ldr	r2, [sp, #8]
+	mov	r6, #0
+	ldr	r4, [sp]
+	cmp	r6, r2
+	bcs	.L8c2ac
+	mov	r3, #0xc1
+	lsl	r3, #1
+	mov	r7, #0xc3
+	mov	r0, #0xfc
+	add	r3, r8
+	lsl	r7, #1
+	lsl	r0, #1
+	mov	r10, r3
+	add	r7, r8
+	add	r5, r4, r0
+.L8c258:
+	ldrb	r0, [r5]
+	bl	_GetUnit
+	mov	r1, #0x38
+	ldrsh	r3, [r0, r1]
+	cmp	r3, #0
+	ble	.L8c26e
+	ldrh	r3, [r7]
+	add	r3, #1
+	strh	r3, [r7]
+	b	.L8c2a2
+.L8c26e:
+	add	r3, sp, #0x1c
+	lsl	r2, r6, #1
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #0
+	beq	.L8c2a2
+	mov	r1, #0xc2
+	lsl	r1, #1
+	add	r1, r8
+	ldrh	r3, [r1]
+	add	r2, r3, #1
+	strh	r2, [r1]
+	lsl	r3, #16
+	mov	r1, #0xc4
+	lsl	r1, #1
+	ldrb	r2, [r5]
+	asr	r3, #15
+	add	r3, r1
+	mov	r4, r8
+	strh	r2, [r4, r3]
+	ldr	r3, =0xffff
+	mov	r1, r10
+	strh	r3, [r1]
+	ldr	r3, =0x131
+	add	r2, r0, r3
+	mov	r3, #0
+	strb	r3, [r2]
+.L8c2a2:
+	ldr	r4, [sp, #8]
+	add	r6, #1
+	add	r5, #1
+	cmp	r6, r4
+	bcc	.L8c258
+.L8c2ac:
+	add	sp, #0x2c
+	pop	{r3, r5, r6, r7}
+	mov	r8, r3
+	mov	r9, r5
+	mov	r10, r6
+	mov	r11, r7
+	pop	{r5, r6, r7}
+	pop	{r0}
+	bx	r0
+.func_end Func_808bec0
