@@ -141,6 +141,10 @@ SECTIONS {
 		src/rpg/pc.o(.text)
 		src/flags.o(.text)
 		src/rpg/pc.o(.text.rpg_pc_2)
+		src/rpg/summon.o(.text)
+		src/rpg/random.o(.text)
+		src/rpg/unknown_79bf8.o(.text)
+		src/rpg/djinni.o(.text)
 
 		src/rpg/unknown_80773d8.o(.rodata)
 		data/rom_77000/rom_79008_c.o(.rodata)
@@ -150,7 +154,7 @@ SECTIONS {
 		data/rom_77000/rom_78b9c_c.o(.rodata)
 		data/rom_77000/rom_80ec8.o(.rodata)
 		data/rom_77000/rom_78ed8_c.o(.rodata)
-		src/rpg/pc.o(.rodata)
+		src/rpg/djinni.o(.rodata)
 	} > rom
 
 	rom_8a000 : ALIGN(0x1000) {

@@ -4,7 +4,7 @@
 	push	{r5, r6, r7, lr}
 	mov	r7, r8
 	push	{r7}
-	ldr	r5, =.L89258
+	ldr	r5, =X89258
 	mov	r8, r1
 	mov	r1, #0
 	ldrsh	r2, [r5, r1]

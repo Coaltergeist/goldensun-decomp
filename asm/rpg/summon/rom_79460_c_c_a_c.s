@@ -15,7 +15,7 @@
 .L79814:
 	lsl	r3, r1, #1
 	add	r3, r1
-	ldr	r2, =.L88e38
+	ldr	r2, =X88e38
 	lsl	r3, #3
 	add	r3, r2
 	mov	r5, #0

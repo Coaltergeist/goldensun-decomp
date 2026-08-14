@@ -14,7 +14,7 @@
 	mov	r1, #0
 .L798cc:
 	lsl	r2, r1, #1
-	ldr	r3, =.L88e38
+	ldr	r3, =X88e38
 	add	r2, r1
 	lsl	r2, #3
 	ldr	r0, [r3, r2]
@@ -49,7 +49,7 @@
 	mov	r0, #0
 .L79914:
 	lsl	r3, r0, #1
-	ldr	r2, =.L88e38
+	ldr	r2, =X88e38
 	add	r3, r0
 	lsl	r3, #3
 	add	r3, r2
@@ -75,7 +75,7 @@
 	add	r1, #0xf8
 	mov	r2, r8
 	bl	Func_80797fc
-	ldr	r0, =.L88df8
+	ldr	r0, =X88df8
 	mov	r4, #0
 	mov	r10, r0
 	mov	r7, #3
@@ -208,7 +208,7 @@
 .L79a46:
 	mov	r0, r5
 	bl	Func_80797ec
-	ldr	r3, =.L84b1c
+	ldr	r3, =X84b1c
 	ldr	r7, =0x424c
 	mov	r10, r3
 	mov	r14, r10
