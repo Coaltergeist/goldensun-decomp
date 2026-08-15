@@ -1,11 +1,25 @@
-/* actor/actor_script.c -- consolidated TU. */
+/* actor/actor_script.c */
 #include "nonmatching.h"
 
-extern int Actor_FindScriptMarker();
+extern void WaitFrames(unsigned int nframes);
+extern int Actor_IsNotMoving(void *actor);
 extern void Actor_SetPos();
+extern int Actor_FindScriptMarker();
+/* ActorCmd_Stop (ActorCmd_Stop); actor[0] = &.L13240; *(u16*)(actor+4) = 0;
+ * return 0. Scoping the tarpman zero in a nested block after the pointer store
+ * keeps its `movs` from being hoisted ahead of the str (so r3 is reused). */
+extern unsigned char L13240[] __asm__(".L13240");
+extern int _GetFlag(int);
+extern void _SetFlag(int);
+extern void _ClearFlag(int flag);
+extern void Actor_SetAnim(void *actor, unsigned int anim);
+extern void DeleteActor(void);
+/* FF: bool ActorCmd_Delete(Actor * actor) */
+extern void Actor_TravelTo(void *, int, int, int);
+extern int atan2(int y, int x);
 extern void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int param);
 
-INCLUDE_ASM("asm/actor/actor_script/rom_ca2c_a.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_SetScript.s");
 
 unsigned int ActorCmd_Hide(unsigned int arg0) {
     unsigned char *ptr;
@@ -14,6 +28,7 @@ unsigned int ActorCmd_Hide(unsigned int arg0) {
     *(unsigned short *)(ptr + 4) += 1;
     return 1;
 }
+
 unsigned int ActorCmd_Show(unsigned int arg0) {
     unsigned char *ptr;
     ptr = (unsigned char *)arg0;
@@ -21,9 +36,6 @@ unsigned int ActorCmd_Show(unsigned int arg0) {
     *(unsigned short *)(ptr + 4) += 1;
     return 1;
 }
-
-extern void WaitFrames(unsigned int nframes);
-extern int Actor_IsNotMoving(void *actor);
 
 void Actor_WaitMovement(void *actor)
 {
@@ -35,7 +47,9 @@ void Actor_WaitMovement(void *actor)
     }
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_ca6c_a_c.s");
+INCLUDE_ASM("asm/actor/actor_script/Actor_IsNotMoving.s");
+
+INCLUDE_ASM("asm/actor/actor_script/UpdateActors.s");
 
 void Actor_SetPos(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3) {
     unsigned int val;
@@ -51,7 +65,11 @@ void Actor_SetPos(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsig
     *(unsigned int *)(arg0 + 0x2c) = 0;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_ca6c_c.s");
+INCLUDE_ASM("asm/actor/actor_script/Actor_TravelTo.s");
+
+INCLUDE_ASM("asm/actor/actor_script/Func_800d304.s");
+
+INCLUDE_ASM("asm/actor/actor_script/Func_800d340.s");
 
 int ActorCmd_Wait(unsigned char *actor)
 {
@@ -64,7 +82,6 @@ int ActorCmd_Wait(unsigned char *actor)
     *(unsigned short *)(actor + 4) = *(unsigned short *)(actor + 4) + 2;
     return 0;
 }
-
 
 int ActorCmd_WaitMovement(unsigned char *actor)
 {
@@ -83,7 +100,7 @@ inc:
 	return 0;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_d654_a_c_a_a_a_a.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_CallNative.s");
 
 int Actor_FindScriptMarker(unsigned int arg0, unsigned int arg1)
 {
@@ -114,8 +131,7 @@ int Actor_FindScriptMarker(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_d654_a_c_a_a_a_c.s");
-
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_Loop.s");
 
 int ActorCmd_Goto(int actor) {
     int idx;
@@ -129,12 +145,9 @@ int ActorCmd_Goto(int actor) {
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_d654_a_c_a_a_c.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_GotoIfNZ.s");
 
-/* ActorCmd_Stop (ActorCmd_Stop); actor[0] = &.L13240; *(u16*)(actor+4) = 0;
- * return 0. Scoping the tarpman zero in a nested block after the pointer store
- * keeps its `movs` from being hoisted ahead of the str (so r3 is reused). */
-extern unsigned char L13240[] __asm__(".L13240");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_GotoIfZ.s");
 
 int ActorCmd_Stop(int *actor) {
     actor[0] = (int)L13240;
@@ -144,8 +157,6 @@ int ActorCmd_Stop(int *actor) {
     }
     return 0;
 }
-
-extern int _GetFlag(int);
 
 int ActorCmd_GetFlag(unsigned char *r5)
 {
@@ -160,8 +171,6 @@ int ActorCmd_GetFlag(unsigned char *r5)
     *(unsigned short *)(r5 + 4) = cnt + 2;
     return 1;
 }
-
-extern void _SetFlag(int);
 
 int ActorCmd_SetFlag(void *actor)
 {
@@ -181,8 +190,6 @@ int ActorCmd_SetFlag(void *actor)
     return 1;
 }
 
-extern void _ClearFlag(int flag);
-
 int ActorCmd_ClearFlag(unsigned char *arg0)
 {
     short idx;
@@ -197,7 +204,6 @@ int ActorCmd_ClearFlag(unsigned char *arg0)
     *(unsigned short *)(arg0 + 4) += 2;
     return 1;
 }
-
 
 int ActorCmd_ToggleFlag(unsigned char *actor)
 {
@@ -222,8 +228,6 @@ int ActorCmd_ToggleFlag(unsigned char *actor)
     return 1;
 }
 
-extern void Actor_SetAnim(void *actor, unsigned int anim);
-
 int ActorCmd_Anim(void *actor)
 {
     int r3;
@@ -241,9 +245,6 @@ int ActorCmd_Anim(void *actor)
     return 1;
 }
 
-extern void DeleteActor(void);
-
-/* FF: bool ActorCmd_Delete(Actor * actor) */
 unsigned int ActorCmd_Delete(void) {
     DeleteActor();
     return 0;
@@ -272,8 +273,9 @@ int ActorCmd_Sound(unsigned char *r5_arg)
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_d924_a_a.s");
+INCLUDE_ASM("asm/actor/actor_script/Func_800d924.s");
 
+INCLUDE_ASM("asm/actor/actor_script/Func_800d98c.s");
 
 int ActorCmd_SetPos(void *r5)
 {
@@ -292,8 +294,6 @@ int ActorCmd_SetPos(void *r5)
     return 1;
 }
 
-extern void Actor_TravelTo(void *, int, int, int);
-
 int ActorCmd_TravelTo(void *a)
 {
     short idx;
@@ -311,7 +311,6 @@ int ActorCmd_TravelTo(void *a)
     *(unsigned short *)((char *)a + 4) += 4;
     return 1;
 }
-
 
 int ActorCmd_Travel(void *actor)
 {
@@ -335,8 +334,6 @@ int ActorCmd_Travel(void *actor)
     return 1;
 }
 
-extern int atan2(int y, int x);
-
 int ActorCmd_FaceTarget(unsigned char *arg0)
 {
     unsigned char *p;
@@ -351,7 +348,6 @@ int ActorCmd_FaceTarget(unsigned char *arg0)
     return 1;
 }
 
-
 int ActorCmd_FollowTarget(unsigned char *actor)
 {
     int *p = *(int **)(actor + 0x68);
@@ -359,7 +355,6 @@ int ActorCmd_FollowTarget(unsigned char *actor)
     *(unsigned short *)(actor + 4) += 1;
     return 1;
 }
-
 
 int ActorCmd_Unused(void *r0)
 {
@@ -374,7 +369,13 @@ int ActorCmd_Unused(void *r0)
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_d924_c_c.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_Camera.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_FollowTargetWait.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_Wander.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_Unk9.s");
 
 void ActorAttrOp_script(unsigned char *actor, unsigned int op, unsigned int param)
 {
@@ -388,6 +389,7 @@ void ActorAttrOp_script(unsigned char *actor, unsigned int op, unsigned int para
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_scriptPos(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
@@ -400,6 +402,7 @@ void ActorAttrOp_scriptPos(unsigned char *actor, unsigned int op, unsigned int p
         actor[0x57] = eq;
     }
 }
+
 void ActorAttrOp_facing(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned short v;
@@ -414,6 +417,7 @@ void ActorAttrOp_facing(unsigned char *actor, unsigned int op, unsigned int para
         actor[0x57] = v;
     }
 }
+
 void ActorAttrOp_x(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
@@ -426,6 +430,7 @@ void ActorAttrOp_x(unsigned char *actor, unsigned int op, unsigned int param)
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_y(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
@@ -440,6 +445,7 @@ void ActorAttrOp_y(unsigned char *actor, unsigned int op, unsigned int param)
         *(actor + 0x57) = eq;
     }
 }
+
 void ActorAttrOp_z(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -455,8 +461,7 @@ void ActorAttrOp_z(unsigned char *actor, unsigned int op, unsigned int param)
     }
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_e220_a_c.s");
-
+INCLUDE_ASM("asm/actor/actor_script/ActorAttrOp_width.s");
 
 void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int param)
 {
@@ -473,6 +478,7 @@ void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int para
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_scaleY(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -487,6 +493,7 @@ void ActorAttrOp_scaleY(unsigned int *actor, unsigned int op, unsigned int param
         *((unsigned char *)actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_motionX(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -502,6 +509,7 @@ void ActorAttrOp_motionX(unsigned char *actor, unsigned int op, unsigned int par
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_motionY(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char eq;
@@ -514,6 +522,7 @@ void ActorAttrOp_motionY(unsigned int *actor, unsigned int op, unsigned int para
         *((unsigned char *)actor + 0x57) = eq;
     }
 }
+
 void ActorAttrOp_motionZ(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -525,6 +534,7 @@ void ActorAttrOp_motionZ(unsigned int *actor, unsigned int op, unsigned int para
         *((unsigned char *)actor + 0x57) = b;
     }
 }
+
 void ActorAttrOp_speed(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -539,6 +549,7 @@ void ActorAttrOp_speed(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_accel(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
@@ -554,6 +565,7 @@ void ActorAttrOp_accel(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_prevPosX(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char r1;
@@ -566,6 +578,7 @@ void ActorAttrOp_prevPosX(unsigned int *actor, unsigned int op, unsigned int par
         *((unsigned char *)actor + 0x57) = r1;
     }
 }
+
 void ActorAttrOp_prevPosY(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned int v;
@@ -578,6 +591,7 @@ void ActorAttrOp_prevPosY(unsigned char *actor, unsigned int op, unsigned int pa
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_prevPosZ(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -593,6 +607,7 @@ void ActorAttrOp_prevPosZ(unsigned char *actor, unsigned int op, unsigned int pa
         actor[0x57] = val;
     }
 }
+
 void ActorAttrOp_bounce(unsigned int *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -608,6 +623,7 @@ void ActorAttrOp_bounce(unsigned int *actor, unsigned int op, unsigned int param
         *(unsigned char *)((char *)actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_gravity(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -622,6 +638,7 @@ void ActorAttrOp_gravity(unsigned int *actor, unsigned int op, unsigned int para
         *(unsigned char *)((char *)actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_floorPos(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -636,6 +653,7 @@ void ActorAttrOp_floorPos(unsigned int *actor, unsigned int op, unsigned int par
         *((unsigned char *)actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_unk4C(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -649,6 +667,7 @@ void ActorAttrOp_unk4C(unsigned char *actor, unsigned int op, unsigned int param
         *(actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_sprite(unsigned char *actor, unsigned int op, unsigned int param)
 {
     int flag;
@@ -663,6 +682,7 @@ void ActorAttrOp_sprite(unsigned char *actor, unsigned int op, unsigned int para
         *(unsigned char *)(actor + 0x57) = flag;
     }
 }
+
 void ActorAttrOp_unk54(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char result;
@@ -677,6 +697,7 @@ void ActorAttrOp_unk54(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
+
 void ActorAttrOp_unk55(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char tmp;
@@ -692,6 +713,7 @@ void ActorAttrOp_unk55(unsigned char *actor, unsigned int op, unsigned int param
         actor[0x57] = tmp;
     }
 }
+
 void ActorAttrOp_unk56(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -706,6 +728,7 @@ void ActorAttrOp_unk56(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
+
 void ActorAttrOp_scriptVar(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -717,6 +740,7 @@ void ActorAttrOp_scriptVar(unsigned char *actor, unsigned int op, unsigned int p
             (*(unsigned char *)(actor + 0x57) == (unsigned char)param);
     }
 }
+
 void ActorAttrOp_unk58(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -732,6 +756,7 @@ void ActorAttrOp_unk58(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = val;
     }
 }
+
 void ActorAttrOp_unk59(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char result;
@@ -746,6 +771,7 @@ void ActorAttrOp_unk59(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = result;
     }
 }
+
 void ActorAttrOp_unk5A(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -763,6 +789,7 @@ void ActorAttrOp_unk5A(unsigned char *actor, unsigned int op, unsigned int param
         actor[0x57] = result;
     }
 }
+
 void ActorAttrOp_unk5B(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char r1;
@@ -778,6 +805,7 @@ void ActorAttrOp_unk5B(unsigned char *actor, unsigned int op, unsigned int param
         actor[0x57] = r1;
     }
 }
+
 void ActorAttrOp_unk5D(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -793,7 +821,11 @@ void ActorAttrOp_unk5D(unsigned char *actor, unsigned int op, unsigned int param
     }
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_e220_c_a.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorAttrOp_waitTimer.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorAttrOp_unk64.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorAttrOp_unk66.s");
 
 void ActorAttrOp_extra(unsigned char *actor, unsigned int op, unsigned int param)
 {
@@ -809,6 +841,7 @@ void ActorAttrOp_extra(unsigned char *actor, unsigned int op, unsigned int param
         *(unsigned char *)(actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_updateFn(unsigned int *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -823,6 +856,7 @@ void ActorAttrOp_updateFn(unsigned int *actor, unsigned int op, unsigned int par
         *(unsigned char *)((char *)actor + 0x57) = v;
     }
 }
+
 void ActorAttrOp_unk62(unsigned char *actor, unsigned int op, unsigned int param)
 {
     unsigned char val;
@@ -836,6 +870,7 @@ void ActorAttrOp_unk62(unsigned char *actor, unsigned int op, unsigned int param
         actor[0x57] = val;
     }
 }
+
 void ActorAttrOp_unk63(unsigned char *actor, unsigned int op, unsigned int param)
 {
     if (op == 0) {
@@ -851,7 +886,11 @@ void ActorAttrOp_unk63(unsigned char *actor, unsigned int op, unsigned int param
     }
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_e220_c_c.s");
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_SetAttr.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_IncAttr.s");
+
+INCLUDE_ASM("asm/actor/actor_script/ActorCmd_CmpAttr.s");
 
 void Actor_SetUpdateFunc(unsigned int actor, unsigned int func) {
     if (actor != 0) {
@@ -859,4 +898,4 @@ void Actor_SetUpdateFunc(unsigned int actor, unsigned int func) {
     }
 }
 
-INCLUDE_ASM("asm/actor/actor_script/rom_ea54_c.s");
+INCLUDE_ASM("asm/actor/actor_script/rodata.s");

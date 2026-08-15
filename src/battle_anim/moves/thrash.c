@@ -25,16 +25,3 @@ void Anim_SevereBlow(unsigned char *r5)
   *(int *)(r5 + 0x18) = 3;
   BaseAnim_Nova(r5, 2);
 }
-
-extern void BaseAnim_FullScreenSlash(void *context, int subanim);
-
-void Anim_QuickStrike(void *context) {
-    BaseAnim_FullScreenSlash(context, 1);
-}
-
-
-void Anim_VorpalSlash(void *context) {
-    BaseAnim_FullScreenSlash(context, 2);
-}
-
-

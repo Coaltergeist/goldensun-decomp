@@ -1,6 +1,13 @@
 /* actor/player.c -- consolidated TU. */
 #include "nonmatching.h"
 
+INCLUDE_ASM("asm/actor/player/Func_800ea60.s");
+
+INCLUDE_ASM("asm/actor/player/Func_800eaf8.s");
+
+INCLUDE_ASM("asm/actor/player/Func_800eba0.s");
+
+
 INCLUDE_ASM("asm/actor/player/rom_ebec_a.s");
 
 extern unsigned int Func_800eaf8(unsigned int);
