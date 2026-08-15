@@ -1,4 +1,4 @@
-/* other/sub_8006864.c -- consolidated TU. */
+/* lib/libagbsyscall.c -- launch-SDK BIOS/sound syscall wrappers (old_agbcc). */
 #include "nonmatching.h"
 
 /* FF: void CpuSet(void * src, void * dest, u32 length) */

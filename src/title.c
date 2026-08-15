@@ -1,7 +1,5 @@
-/* title.c -- consolidated TU. */
+/* title.c -- Nintendo/Camelot logo + title intro sequence. */
 #include "nonmatching.h"
-
-INCLUDE_ASM("asm/title/rom_f2028_a.s");
 
 void Func_80f2b6c(void) {}
 

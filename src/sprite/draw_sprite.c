@@ -1,4 +1,4 @@
-/* rom_9000/rom_92b8.s -- consolidated TU. GSHC: _DrawSprite @ 0x08009bb8 (asm). */
+/* sprite/draw_sprite.S -- _DrawSprite (ARM sprite rasterizer). */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/sprite/draw_sprite/rom_92b8.s");
+INCLUDE_ASM("asm/sprite/draw_sprite/_DrawSprite.s");

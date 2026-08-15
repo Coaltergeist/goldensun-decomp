@@ -152,6 +152,15 @@ src/lib/agb_flash/agb_flash_at.o: src/lib/agb_flash/agb_flash_at.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
+# src/lib/libagbsyscall.c is the launch-SDK CpuSet/SoundBias syscall wrappers, a
+# prebuilt Nintendo lib (old_agbcc). Pure inline-asm, so it builds byte-exact; the
+# agbcc rule marks it as SDK-lib provenance. Reuses the agb_flash flags (-O, unsigned).
+src/lib/libagbsyscall.o: src/lib/libagbsyscall.c
+	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
 # src/lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
 C_SRCS  := $(filter-out src/lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)

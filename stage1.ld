@@ -48,7 +48,7 @@ SECTIONS {
 		src/render/blit_fade.o(.text)
 		src/save.o(.text)
 		src/serial.o(.text)
-		src/other/sub_8006864.o(.text)
+		src/lib/libagbsyscall.o(.text)
 		src/lib/agb_flash/agb_flash.o(.text)
 		src/lib/agb_flash/agb_flash_mx.o(.text)
 		src/lib/agb_flash/agb_flash_verify.o(.text)
@@ -67,6 +67,11 @@ SECTIONS {
 	rom_9000 : ALIGN(0x1000) {
 		exports/rom_9000/exports.o(.text)
 		src/sprite/draw_sprite.o(.text)
+		src/sprite/raster_texture.o(.text)
+		src/sprite/affine_scanline.o(.text)
+		src/engine/unpack_tilemap.o(.text)
+		src/sprite/copy_strided.o(.text)
+		src/sprite/object_update.o(.text)
 		src/decompress/unknown_a97c.o(.text)
 		src/sprite/sprite.o(.text)
 		src/actor/actor.o(.text)
@@ -145,6 +150,7 @@ SECTIONS {
 		src/rpg/random.o(.text)
 		src/rpg/unknown_79bf8.o(.text)
 		src/rpg/djinni.o(.text)
+		src/rpg/give_item.o(.text)
 
 		src/rpg/unknown_80773d8.o(.rodata)
 		data/rom_77000/rom_79008_c.o(.rodata)
@@ -453,7 +459,8 @@ SECTIONS {
 
 	rom_f0000 : ALIGN(0x1000) {
 		exports/rom_f0000/exports.o(.text)
-		src/other/sub_80f0008.o(.text)
+		src/decompress/unknown_80f0008.o(.text)
+		src/decompress/bg_credits.o(.text)
 		src/ending.o(.text)
 
 		src/ending.o(.rodata)
@@ -461,6 +468,7 @@ SECTIONS {
 
 	rom_f2000 : ALIGN(0x1000) {
 		exports/rom_f2000/exports.o(.text)
+		src/title_screen.o(.text)
 		src/title.o(.text)
 
 		data/rom_f2000/rom_f2028_c_c_c_c.o(.rodata)
@@ -476,18 +484,26 @@ SECTIONS {
 	rom_f6000 : ALIGN(0x1000) {
 		exports/rom_f6000/exports.o(.text)
 		src/lucky_wheels.o(.text)
+		src/lucky_wheels_list.o(.text)
 
 		src/lucky_wheels.o(.rodata)
 	} > rom
 
 	rom_f9000 : ALIGN(0x1000) {
 		exports/rom_f9000/exports.o(.text)
-		src/sound.o(.text)
-		src/other/sub_80f95e0.o(.text)
+		src/sound/play_sound.o(.text)
+		src/sound/update_music_settings.o(.text)
+		src/sound/debug_sound_test.o(.text)
+		src/sound/init_sound_engine.o(.text)
+		src/sound/music_control.o(.text)
+		src/sound/sound_state.o(.text)
+		src/sound/wait_music.o(.text)
+		src/sound/sound_reverb.o(.text)
+		src/lib/m4a/m4a_1.o(.text)
 		src/lib/m4a/m4a.o(.text)
 
 		data/rom_f9000/rom_f9080_c_c_c_c.o(.rodata)
-		src/other/sub_80f95e0.o(.rodata)
+		src/lib/m4a/m4a_1.o(.rodata)
 		data/rom_f9000/rom_f9ef8_c_c_c.o(.rodata)
 		data/rom_f9000/rom_fc624.o(.rodata)
 	} > rom
