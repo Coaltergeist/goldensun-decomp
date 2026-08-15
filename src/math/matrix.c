@@ -1,14 +1,22 @@
 // fakematch
-/* unknown/sub_80049a8.c -- consolidated TU. */
+/* math/matrix.c */
 #include "nonmatching.h"
-
 #include "gba/types.h"
 #include "dma.h"
 #include "math.h"
 
+/* rom_49a8 (anonymous [?] stub, addr 0x080049A8): folded in ahead of the matrix TU */
 void Func_80049a8(void) {}
 
 extern matrix_t Data_8000ac0;
+extern void *galloc_ewram(u32, u32);
+extern matrix_t *gMatrixStack;
+extern s32 gMatrixStackSize;
+extern void Func_8000a30(matrix_t *m);
+extern fx32 FastIntSqrtFP1616_RAM(fx32 x);
+extern u32 udivsi3_RAM(u32, u32);
+extern u16 DistSquared(fx32, fx32, fx32, fx32, fx32, fx32);
+extern s32 Func_8000948(s32 n);
 
 #define MatrixResetRaw(_m) \
     __asm__ volatile( \
@@ -26,10 +34,23 @@ extern matrix_t Data_8000ac0;
         : "r0","r1","r2","r3","r4", "memory" \
     ); \
 
-extern void *galloc_ewram(u32, u32);
+#define FX_ONE 0x00010000  /* 1.0 in 16.16 */
+#define fx_reciprocal(_x) FastDivide(0x80000000, _x)
 
-extern matrix_t *gMatrixStack;
-extern s32 gMatrixStackSize;
+static inline void MatrixMultiply(matrix_t *m) {
+    void (*mul)(matrix_t *m) = Func_8000a30;
+    mul(m);
+}
+
+static inline s32 sqrt(s32 n) {
+    s32 (*func)(s32) = Func_8000948;
+    return func(n);
+}
+
+static inline u32 FastDivide(u32 a, u32 b) {
+    register u32 (*divide)(u32, u32) = udivsi3_RAM;
+    return divide(a,b);
+}
 
 void InitMatrixStack(void) {
     register matrix_t *m asm("r3");
@@ -67,13 +88,6 @@ void MatrixPop(void) {
 void MatrixReset(void) {
     register matrix_t *m asm("r3") = &Data_8000ac0;
     MatrixResetRaw(m);
-}
-
-extern void Func_8000a30(matrix_t *m);
-
-static inline void MatrixMultiply(matrix_t *m) {
-    void (*mul)(matrix_t *m) = Func_8000a30;
-    mul(m);
 }
 
 void MatrixRotate(s32 *angles) {
@@ -218,25 +232,6 @@ void MatrixRotateTransScale(s32 *angles, vec3_t *t, vec3_t *s) {
     MatrixMultiply(&m);
 }
 
-extern fx32 FastIntSqrtFP1616_RAM(fx32 x);
-extern u32 udivsi3_RAM(u32, u32);
-extern u16 DistSquared(fx32, fx32, fx32, fx32, fx32, fx32);
-extern s32 Func_8000948(s32 n);
-
-static inline s32 sqrt(s32 n) {
-    s32 (*func)(s32) = Func_8000948;
-    return func(n);
-}
-
-#define FX_ONE 0x00010000  /* 1.0 in 16.16 */
-
-static inline u32 FastDivide(u32 a, u32 b) {
-    register u32 (*divide)(u32, u32) = udivsi3_RAM;
-    return divide(a,b);
-}
-
-#define fx_reciprocal(_x) FastDivide(0x80000000, _x)
-
 void MakeLookMatrix(vec3_t *eye, vec3_t *target, matrix_t *out)
 {
     fx32 recip;
@@ -316,78 +311,4 @@ void MatrixLook(vec3_t *a, vec3_t *b) {
     matrix_t m;
     MakeLookMatrix(a, b, &m);
     MatrixMultiply(&m);
-}
-
-struct Projection {
-    fx32 focal;
-    fx32 zMin;
-    fx32 zMax;
-    s32 originX;
-    s32 originY;
-};
-
-extern struct Projection gPhysVec;
-extern fx32 Func_80008ac(fx32 num, fx32 denom);
-
-static inline fx32 FxDiv(fx32 num, fx32 denom) {
-    fx32 (*divide)(fx32, fx32) = Func_80008ac;
-    return divide(num, denom);
-}
-
-void Func_8005208(u32 angle, fx32 zMin, fx32 zMax) {
-    s32 f;
-    s32 argument;
-    s32 sinus;
-    s32 cosinus;
-
-    argument = (s32) angle / 2;
-    sinus = sin(argument);
-    cosinus = cos(argument);
-    f = FxDiv(sinus, cosinus * 0x50);
-    gPhysVec.zMin = zMin;
-    gPhysVec.focal = f;
-    gPhysVec.zMax = zMax;
-}
-
-void Func_8005258(fx32 focal, fx32 zMin, fx32 zMax) {
-    gPhysVec.focal = focal;
-    gPhysVec.zMin = zMin;
-    gPhysVec.zMax = zMax;
-}
-
-void Func_80009c0(vec3_t *a, vec3_t *b);
-
-static inline void Vec3Transform(vec3_t *a, vec3_t *b) {
-    void (*transform)(vec3_t *, vec3_t *) = Func_80009c0;
-    transform(a, b);
-}
-
-s32 PhysMove(vec3_t *src, vec3_t *dst) {
-    fx32 scale;
-    fx32 depth;
-    struct Projection *projection;
-    s32  result;
-    Vec3Transform(src, dst);
-
-    result = 0;
-    projection =  &gPhysVec;
-    depth = -dst->z;
-    if (depth >= projection->zMin && depth <= projection->zMax) {
-        dst->z = depth >> 16;
-
-        if (projection->focal != 0) {
-            fx32 d = (u32) depth >> 11;
-            fx32 f = projection->focal << 5;
-            scale = FastDivide(f, d);
-        } else {
-            scale = 0x151EB;
-        }
-
-        dst->x = projection->originX + fx32_multiply(dst->x, scale) / 0x10000;
-        dst->y = projection->originY - fx32_multiply(dst->y, scale) / 0x10000;
-
-        result = scale;
-    }
-
-    return result;
 }
