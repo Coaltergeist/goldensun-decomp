@@ -235,17 +235,17 @@ int HeightTile_9(signed char *param_1, int param_2, unsigned int param_3)
 
 INCLUDE_ASM("asm/field/map_data/rom_11ce0_a_c_c_a_c_c.s");
 
-extern unsigned char L133fc[] __asm__(".L133fc");
+extern unsigned char gScript_080133fc[] __asm__("gScript_080133fc");
 
 int HeightTile_C(int param_1, int param_2, int param_3)
 {
-    return *(signed char *)(param_1 + L133fc[param_2 + (param_3 << 4)]) << 19;
+    return *(signed char *)(param_1 + gScript_080133fc[param_2 + (param_3 << 4)]) << 19;
 }
 
 
 int HeightTile_D(int param_1, int param_2, int param_3)
 {
-    return ((signed char *)param_1)[L133fc[(param_3 << 4) - param_2 + 15]] << 19;
+    return ((signed char *)param_1)[gScript_080133fc[(param_3 << 4) - param_2 + 15]] << 19;
 }
 
 /* FF: int HeightTile_E(char * param_1) */

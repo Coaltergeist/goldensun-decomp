@@ -23,45 +23,42 @@
 .func_end GetSpriteVoiceEntry
 
 	.section .rodata
-	.global .L9e8ee
-	.global .L9e92e
-	.global .L9e96e
-	.global .L9e9ae
-	.global .L9e8a0
-	.global .L9e8ac
-	.global .L9e8ce
-	.global .L9e6c0
-	.global .L9e75c
-	.global .L9e87c
-	.global .L9e680
-	.global .L9e686
-	.global .L9e6b8
+	.global gScript_0809e8ee
+	.global gScript_0809e92e
+	.global gScript_0809e96e
+	.global gScript_0809e9ae
+	.global gScript_0809e8a0
+	.global gScript_0809e8ac
+	.global gScript_0809e8ce
+	.global gScript_0809e6c0
+	.global gScript_0809e75c
+	.global gScript_0809e87c
+	.global gScript_0809e680
+	.global gFieldMoveRanges
 
-.L9e680:
+gScript_0809e680:
 	.incrom 0x9e680, 0x9e686
-.L9e686:
-	.incrom 0x9e686, 0x9e6b8
-.L9e6b8:
-	.incrom 0x9e6b8, 0x9e6c0
-.L9e6c0:
+gFieldMoveRanges:
+	.incrom 0x9e686, 0x9e6c0
+gScript_0809e6c0:
 	.incrom 0x9e6c0, 0x9e75c
-.L9e75c:
+gScript_0809e75c:
 	.incrom 0x9e75c, 0x9e87c
-.L9e87c:
+gScript_0809e87c:
 	.incrom 0x9e87c, 0x9e8a0
-.L9e8a0:
+gScript_0809e8a0:
 	.incrom 0x9e8a0, 0x9e8ac
-.L9e8ac:
+gScript_0809e8ac:
 	.incrom 0x9e8ac, 0x9e8ce
-.L9e8ce:
+gScript_0809e8ce:
 	.incrom 0x9e8ce, 0x9e8ee
-.L9e8ee:
+gScript_0809e8ee:
 	.incrom 0x9e8ee, 0x9e92e
-.L9e92e:
+gScript_0809e92e:
 	.incrom 0x9e92e, 0x9e96e
-.L9e96e:
+gScript_0809e96e:
 	.incrom 0x9e96e, 0x9e9ae
-.L9e9ae:
+gScript_0809e9ae:
 	.incrom 0x9e9ae, 0x9e9f0
 .L9e9f0:
 	.incrom 0x9e9f0, 0x9ebfc

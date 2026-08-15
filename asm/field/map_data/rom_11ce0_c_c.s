@@ -59,7 +59,7 @@
 	and	r3, r0
 	lsl	r3, #2
 	mov	r12, r3
-	ldr	r4, =.L134fc
+	ldr	r4, =gHeightTileFuncs
 	ldr	r3, =ewram_202c001
 	and	r5, r2
 	and	r6, r2
@@ -93,15 +93,15 @@
 .func_end TestCollision
 
 	.section .rodata.rom_11ce0_c_c
-	.global .L134fc
-	.global .L132fc
-	.global .L133fc
+	.global gHeightTileFuncs
+	.global gScript_080132fc
+	.global gScript_080133fc
 
-.L132fc:
+gScript_080132fc:
 	.incrom 0x132fc, 0x133fc
-.L133fc:
+gScript_080133fc:
 	.incrom 0x133fc, 0x134fc
-.L134fc:
+gHeightTileFuncs:
 	.word	HeightTile_0
 	.word	HeightTile_1
 	.word	HeightTile_2

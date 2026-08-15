@@ -162,34 +162,34 @@
 .func_end Func_8094428
 
 	.section .rodata.rom_93304_c_c_c
-	.global .L9fc28
-	.global .L9fc2c
-	.global .L9fd38
-	.global .L9fd44
-	.global .L9fe00
-	.global .L9fe04
-	.global .L9fe10
-	.global .L9fecc
-	.global .L9ff18
-	.global .L9ff2c
+	.global gScript_0809fc28
+	.global gScript_EmoteBubble
+	.global gScript_0809fd38
+	.global gScript_Act_Unk2
+	.global gScript_Act_Stop
+	.global gScript_Unk_Act7
+	.global gScript_Unk_Act3
+	.global gScript_Unk_Act4
+	.global gScript_Unk_Act5
+	.global gScript_Unk_Act6
 
-.L9fc28:
+gScript_0809fc28:
 	.incrom 0x9fc28, 0x9fc2c
-.L9fc2c:
+gScript_EmoteBubble:
 	.incrom 0x9fc2c, 0x9fd38
-.L9fd38:
+gScript_0809fd38:
 	.incrom 0x9fd38, 0x9fd44
-.L9fd44:
+gScript_Act_Unk2:
 	.incrom 0x9fd44, 0x9fe00
-.L9fe00:
+gScript_Act_Stop:
 	.incrom 0x9fe00, 0x9fe04
-.L9fe04:
+gScript_Unk_Act7:
 	.incrom 0x9fe04, 0x9fe10
-.L9fe10:
+gScript_Unk_Act3:
 	.incrom 0x9fe10, 0x9fecc
-.L9fecc:
+gScript_Unk_Act4:
 	.incrom 0x9fecc, 0x9ff18
-.L9ff18:
+gScript_Unk_Act5:
 	.incrom 0x9ff18, 0x9ff2c
-.L9ff2c:
+gScript_Unk_Act6:
 	.incrom 0x9ff2c, 0x9ff40

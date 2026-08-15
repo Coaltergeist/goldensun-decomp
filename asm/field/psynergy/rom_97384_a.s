@@ -97,7 +97,7 @@
 	beq	.L97440
 	mov	r5, #7
 .L97440:
-	ldr	r3, =.La0108
+	ldr	r3, =gScript_080a0108
 	lsl	r2, r5, #2
 	ldr	r0, [r3, r2]
 	mov	r1, #1

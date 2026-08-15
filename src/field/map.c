@@ -236,7 +236,7 @@ extern unsigned char gState[];
 extern void *GetFieldActor(unsigned int actorID);
 extern void _Actor_TravelTo(void *actor, int a1, int a2, int a3);
 extern void _Actor_SetScript(void *actor, void *script);
-extern unsigned char L9e75c[] __asm__(".L9e75c");
+extern unsigned char gScript_0809e75c[] __asm__("gScript_0809e75c");
 
 void Func_808f0d8(unsigned int arg0)
 {
@@ -260,7 +260,7 @@ void Func_808f0d8(unsigned int arg0)
         _Actor_TravelTo(r6, *(int *)(r5 + 8), *(int *)(r5 + 0xc) + (0x90 << 14), *(int *)(r5 + 0x10));
         WaitFrames(3);
         _Actor_SetAnim(r5, 0x1c);
-        _Actor_SetScript(r6, L9e75c);
+        _Actor_SetScript(r6, gScript_0809e75c);
 
         facing = 0x80 << 7;
         *(unsigned short *)(r5 + 6) = facing;

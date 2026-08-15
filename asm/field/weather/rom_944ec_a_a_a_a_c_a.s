@@ -94,7 +94,7 @@
 	mov	r2, #0xff
 	asr	r3, r6, #16
 	and	r3, r2
-	ldr	r1, =.L9ed84
+	ldr	r1, =gScript_0809ed84
 	lsl	r3, #1
 	ldrsh	r0, [r1, r3]
 	mov	r1, r8
@@ -190,7 +190,7 @@
 	asr	r3, r6, #16
 	mov	r2, #0xff
 	and	r3, r2
-	ldr	r2, =.L9ed84
+	ldr	r2, =gScript_0809ed84
 	lsl	r3, #1
 	ldrsh	r0, [r2, r3]
 	mov	r1, r8

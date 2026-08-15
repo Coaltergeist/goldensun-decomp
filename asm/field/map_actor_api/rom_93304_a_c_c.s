@@ -139,19 +139,19 @@
 	.word	.L93ab0
 	.word	.L93ac4
 .L93a9c:
-	ldr	r1, =.L9fe00
+	ldr	r1, =gScript_Act_Stop
 	b	.L93ac6
 .L93aa0:
-	ldr	r1, =.L9fd44
+	ldr	r1, =gScript_Act_Unk2
 	b	.L93ac6
 .L93aa4:
-	ldr	r1, =.L9fe10
+	ldr	r1, =gScript_Unk_Act3
 	b	.L93ac6
 .L93aa8:
-	ldr	r1, =.L9fecc
+	ldr	r1, =gScript_Unk_Act4
 	b	.L93ac6
 .L93aac:
-	ldr	r1, =.L9ff18
+	ldr	r1, =gScript_Unk_Act5
 	b	.L93ac6
 .L93ab0:
 	ldr	r3, =gState
@@ -160,11 +160,11 @@
 	add	r3, r2
 	ldr	r0, [r3]
 	bl	MapActor_GetActor
-	ldr	r1, =.L9ff2c
+	ldr	r1, =gScript_Unk_Act6
 	str	r0, [r5, #0x68]
 	b	.L93ac6
 .L93ac4:
-	ldr	r1, =.L9fe04
+	ldr	r1, =gScript_Unk_Act7
 .L93ac6:
 	mov	r0, r5
 	bl	_Actor_SetScript

@@ -47,16 +47,16 @@
 .func_end CreateParticleActor
 
 	.section .rodata
-	.global .L9ed84
-	.global .L9ef84
-	.global .L9f024
-	.global .L9f0a4
+	.global gScript_0809ed84
+	.global gScript_0809ef84
+	.global gScript_0809f024
+	.global gScript_0809f0a4
 
-.L9ed84:
+gScript_0809ed84:
 	.incrom 0x9ed84, 0x9ef84
-.L9ef84:
+gScript_0809ef84:
 	.incrom 0x9ef84, 0x9f024
-.L9f024:
+gScript_0809f024:
 	.incrom 0x9f024, 0x9f0a4
-.L9f0a4:
+gScript_0809f0a4:
 	.incrom 0x9f0a4, 0x9f0b0

@@ -21,7 +21,7 @@
 	mov	r0, r5
 	mov	r1, #0
 	bl	_Actor_SetSpriteFlags
-	ldr	r1, =.L9e6c0
+	ldr	r1, =gScript_0809e6c0
 	mov	r0, r5
 	bl	_Actor_SetScript
 	mov	r3, #0x80
@@ -186,7 +186,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8f2f4
-	ldr	r1, =.L9e87c
+	ldr	r1, =gScript_0809e87c
 	bl	_Actor_SetScript
 	mov	r1, #0
 	mov	r0, r5

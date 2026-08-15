@@ -124,7 +124,7 @@
 .func_end Func_80931ec
 
 	.section .rodata.rom_92950_c_c_c_c
-	.global .L9ed80
+	.global gScript_0809ed80
 
-.L9ed80:
+gScript_0809ed80:
 	.incrom 0x9ed80, 0x9ed84

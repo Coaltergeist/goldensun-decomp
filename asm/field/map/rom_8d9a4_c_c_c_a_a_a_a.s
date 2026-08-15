@@ -401,7 +401,7 @@
 	mov	r3, #0x1f
 	and	r3, r0
 	lsl	r0, r3, #1
-	ldr	r3, =.L9e8ee
+	ldr	r3, =gScript_0809e8ee
 	mov	r7, #0x3f
 	mov	r4, #0
 	mov	r12, r3

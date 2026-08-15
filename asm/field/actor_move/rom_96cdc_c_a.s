@@ -135,7 +135,7 @@
 	lsl	r0, #16
 	lsl	r1, #1
 	asr	r0, #16
-	ldr	r2, =.L9c410
+	ldr	r2, =GFX_PsynergyRing
 	bl	UploadSpriteGFX
 	mov	r1, #0xc8
 	ldr	r0, =Func_8096f8c

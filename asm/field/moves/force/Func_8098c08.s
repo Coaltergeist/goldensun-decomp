@@ -48,7 +48,7 @@
 	mov	r6, r0
 	cmp	r6, #0
 	beq	.L98ca0
-	ldr	r1, =.L9f0d4
+	ldr	r1, =gScript_0809f0d4
 	bl	_Actor_SetScript
 	bl	Random
 	mov	r2, r6

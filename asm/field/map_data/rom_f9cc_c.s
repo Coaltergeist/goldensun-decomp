@@ -666,7 +666,7 @@
 .func_end Func_8010230
 
 	.section .rodata.rom_f9cc_c
-	.global .L13784
+	.global gMapData
 
-.L13784:
+gMapData:
 	.incrom 0x13784, 0x1404c

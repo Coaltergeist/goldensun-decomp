@@ -24,7 +24,7 @@
 	ldr	r1, [sp, #0x1c]
 	str	r7, [r1, #0x68]
 	ldr	r0, [sp, #0x1c]
-	ldr	r1, =.L9f0bc
+	ldr	r1, =gScript_0809f0bc
 	bl	_Actor_SetScript
 	mov	r3, r11
 	ldr	r0, [r3, #4]
@@ -430,7 +430,7 @@
 	str	r1, [sp, #4]
 	cmp	r6, #0
 	beq	.L9a1a2
-	ldr	r1, =.L9f0d4
+	ldr	r1, =gScript_0809f0d4
 	bl	_Actor_SetScript
 	bl	Random
 	mov	r3, r9

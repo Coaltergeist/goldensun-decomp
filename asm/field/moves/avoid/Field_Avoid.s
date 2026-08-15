@@ -30,7 +30,7 @@
 	mov	r1, #0x80
 	lsl	r0, #16
 	lsl	r1, #1
-	ldr	r2, =.L9c510
+	ldr	r2, =GFX_AvoidRing
 	asr	r0, #16
 	bl	UploadSpriteGFX
 	ldr	r5, =gState

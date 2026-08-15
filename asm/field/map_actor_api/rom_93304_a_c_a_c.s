@@ -28,7 +28,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L93860
-	ldr	r1, =.L9fc2c
+	ldr	r1, =gScript_EmoteBubble
 	bl	_Actor_SetScript
 	mov	r1, #0xf
 	and	r1, r7
@@ -156,7 +156,7 @@
 	mov	r0, r5
 	mov	r1, #2
 	bl	_Actor_SetAnim
-	ldr	r1, =.L9fd38
+	ldr	r1, =gScript_0809fd38
 	mov	r0, r5
 	bl	_Actor_SetScript
 	mov	r2, r5

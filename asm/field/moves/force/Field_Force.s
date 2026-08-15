@@ -243,7 +243,7 @@
 	mov	r0, r6
 	ldr	r3, [r3, #8]
 	bl	_Actor_TravelTo
-	ldr	r1, =.L9f12c
+	ldr	r1, =gScript_0809f12c
 	mov	r0, r6
 	bl	_Actor_SetScript
 	ldr	r0, [sp, #4]
@@ -266,7 +266,7 @@
 	ldr	r3, [r7, #8]
 	bl	_Actor_TravelTo
 	mov	r0, r5
-	ldr	r1, =.L9f0b4
+	ldr	r1, =gScript_0809f0b4
 	bl	_Actor_SetScript
 .L98f14:
 	mov	r0, #1

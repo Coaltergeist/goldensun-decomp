@@ -173,7 +173,7 @@
 	sub	sp, #0xc
 	bl	Func_8003bb4
 	lsl	r3, r6, #1
-	ldr	r2, =.L13784
+	ldr	r2, =gMapData
 	add	r3, r6
 	mov	r6, #0xca
 	lsl	r6, #1

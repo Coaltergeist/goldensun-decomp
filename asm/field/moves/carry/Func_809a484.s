@@ -53,7 +53,7 @@
 	mov	r0, r6
 	bl	_Actor_SetAnim
 	mov	r3, r10
-	ldr	r2, =.La012c
+	ldr	r2, =gScript_080a012c
 	and	r3, r5
 	lsl	r3, #2
 	ldr	r1, [r2, r3]
@@ -153,7 +153,7 @@
 	and	r3, r1
 	cmp	r3, #0
 	beq	.L9a5ee
-	ldr	r3, =.La012c
+	ldr	r3, =gScript_080a012c
 	mov	r1, r11
 	ldr	r5, [r3, r1]
 	cmp	r2, #0

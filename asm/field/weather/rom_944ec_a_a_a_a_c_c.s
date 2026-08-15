@@ -50,7 +50,7 @@
 	ldrh	r2, [r7, #0x1c]
 	lsl	r3, r2, #2
 	add	r3, r2
-	ldr	r2, =.L9ef84
+	ldr	r2, =gScript_0809ef84
 	lsl	r3, #1
 	add	r4, r3, r2
 	ldr	r5, [sp, #8]
@@ -808,7 +808,7 @@
 	strh	r3, [r7, #0x1c]
 .L94ed6:
 	ldrh	r3, [r7, #0x1c]
-	ldr	r2, =.L9f024
+	ldr	r2, =gScript_0809f024
 	lsr	r3, #1
 	lsl	r3, #2
 	add	r6, r3, r2

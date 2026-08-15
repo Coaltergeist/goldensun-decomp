@@ -44,7 +44,7 @@
 	mov	r2, #0xf
 	ldrb	r0, [r0]
 	mov	r3, r2
-	ldr	r4, =.L134fc
+	ldr	r4, =gHeightTileFuncs
 	and	r3, r0
 	ldr	r7, =ewram_202c001
 	and	r5, r2
