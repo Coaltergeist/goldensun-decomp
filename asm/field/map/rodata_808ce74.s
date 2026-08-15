@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L9e4ce
+	.global GFX_Debug_PaletteEditor
 
-.L9e4ce:
+GFX_Debug_PaletteEditor:
 	.incrom 0x9e4ce, 0x9e680

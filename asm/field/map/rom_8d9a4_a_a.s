@@ -20,7 +20,7 @@
 	cmp	r5, #5
 	bhi	.L8d9e6
 	bl	ResetPlayerSpeed
-	ldr	r3, =.L9e680
+	ldr	r3, =gScript_0809e680
 	ldrb	r3, [r3, r5]
 	ldr	r0, =0x928
 	mov	r8, r3
@@ -448,7 +448,7 @@
 
 .thumb_func_start GetFieldMoveRange  @ 0x0808ddb8
 	push	{lr}
-	ldr	r2, =.L9e686
+	ldr	r2, =gFieldMoveRanges
 	mov	r4, #0
 	ldrsh	r3, [r2, r4]
 	mov	r4, #1

@@ -140,7 +140,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L8f44a
-	ldr	r1, =.L9e8a0
+	ldr	r1, =gScript_0809e8a0
 	bl	_Actor_SetScript
 	mov	r0, r5
 	mov	r1, #0
@@ -489,7 +489,7 @@
 	mov	r3, #0x1f
 	and	r5, r3
 .L8f7e8:
-	ldr	r3, =.L9e8ac
+	ldr	r3, =gScript_0809e8ac
 	ldrb	r5, [r3, r5]
 	mov	r7, #0
 	mov	r3, #0xf1
@@ -1034,7 +1034,7 @@
 	bge	.L8fc02
 	mov	r3, #0x1f
 	mov	r5, r9
-	ldr	r1, =.L9e8ce
+	ldr	r1, =gScript_0809e8ce
 	and	r3, r5
 	ldrsb	r3, [r1, r3]
 	sub	r6, r3

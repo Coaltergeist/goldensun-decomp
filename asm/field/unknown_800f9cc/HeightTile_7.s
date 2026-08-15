@@ -8,7 +8,7 @@
 	mov	r4, #1
 	ldrsb	r4, [r3, r4]
 	lsl	r2, #4
-	ldr	r3, =.L132fc
+	ldr	r3, =gScript_080132fc
 	add	r1, r2
 	lsl	r0, #19
 	ldrb	r3, [r3, r1]

@@ -12,7 +12,7 @@
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
 	ldr	r0, [r0, #0x50]
-	ldr	r1, =.L9ed80
+	ldr	r1, =gScript_0809ed80
 	lsr	r3, #1
 	mov	r2, #3
 	and	r3, r2

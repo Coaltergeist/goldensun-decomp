@@ -17,7 +17,7 @@
 	bne	.L8e0d8
 	ldr	r3, =iwram_3001e40
 	ldr	r3, [r3]
-	ldr	r1, =.L9e6b8
+	ldr	r1, =gFieldMoveRanges + 0x32
 	lsr	r3, #1
 	mov	r2, #7
 	and	r3, r2

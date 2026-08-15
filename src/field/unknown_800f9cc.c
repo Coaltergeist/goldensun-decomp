@@ -41,7 +41,7 @@ extern void gfree();
 extern void Func_8011bf4();
 extern int StartTask(void *task, int priority);
 /* FF: int HeightTile_0(char * param_1) */
-extern unsigned char L133fc[] __asm__(".L133fc");
+extern unsigned char gScript_080133fc[] __asm__("gScript_080133fc");
 /* FF: int HeightTile_E(char * param_1) */
 /* FF: int HeightTile_F(char * param_1) */
 extern unsigned int Func_8012204(unsigned int);
@@ -282,12 +282,12 @@ INCLUDE_ASM("asm/field/unknown_800f9cc/HeightTile_B.s");
 
 int HeightTile_C(int param_1, int param_2, int param_3)
 {
-    return *(signed char *)(param_1 + L133fc[param_2 + (param_3 << 4)]) << 19;
+    return *(signed char *)(param_1 + gScript_080133fc[param_2 + (param_3 << 4)]) << 19;
 }
 
 int HeightTile_D(int param_1, int param_2, int param_3)
 {
-    return ((signed char *)param_1)[L133fc[(param_3 << 4) - param_2 + 15]] << 19;
+    return ((signed char *)param_1)[gScript_080133fc[(param_3 << 4) - param_2 + 15]] << 19;
 }
 
 unsigned int HeightTile_E(unsigned int arg0) {

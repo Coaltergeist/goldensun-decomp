@@ -230,7 +230,7 @@
 .func_end Func_809728c
 
 	.section .rodata
-	.global .L9c410
+	.global GFX_PsynergyRing
 
-.L9c410:
+GFX_PsynergyRing:
 	.incrom 0x9c410, 0x9c510

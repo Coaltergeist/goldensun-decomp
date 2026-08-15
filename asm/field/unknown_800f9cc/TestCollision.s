@@ -60,7 +60,7 @@
 	and	r3, r0
 	lsl	r3, #2
 	mov	r12, r3
-	ldr	r4, =.L134fc
+	ldr	r4, =gHeightTileFuncs
 	ldr	r3, =ewram_202c001
 	and	r5, r2
 	and	r6, r2

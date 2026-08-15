@@ -145,7 +145,7 @@
 	mov	r1, #7
 	bl	_Actor_SetAnim
 	mov	r0, r6
-	ldr	r1, =.L9f0b4
+	ldr	r1, =gScript_0809f0b4
 	bl	_Actor_SetScript
 	mov	r0, r6
 	mov	r1, #1

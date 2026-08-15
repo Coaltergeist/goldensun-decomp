@@ -31,7 +31,7 @@
 	ldr	r2, [sp, #0x14]
 	str	r6, [r2, #0x68]
 	ldr	r0, [sp, #0x14]
-	ldr	r1, =.L9f0bc
+	ldr	r1, =gScript_0809f0bc
 	bl	_Actor_SetScript
 	ldr	r0, [sp, #0x14]
 	bl	Func_8098070
@@ -250,7 +250,7 @@
 	mov	r1, r8
 	str	r3, [sp, #0xc]
 	sub	r3, r0, r1
-	ldr	r2, =.L9f118
+	ldr	r2, =gScript_0809f118
 	lsl	r3, #16
 	lsr	r3, #30
 	ldrb	r1, [r2, r3]

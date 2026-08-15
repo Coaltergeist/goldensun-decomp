@@ -2,11 +2,11 @@
 #include "nonmatching.h"
 
 extern unsigned int gKeyHeld;
-extern unsigned short L9f0f8[] __asm__(".L9f0f8");
+extern unsigned short gScript_0809f0f8[] __asm__("gScript_0809f0f8");
 
 unsigned short Func_8097b54(void)
 {
-    return L9f0f8[(gKeyHeld >> 4) & 0xf];
+    return gScript_0809f0f8[(gKeyHeld >> 4) & 0xf];
 }
 
 INCLUDE_ASM("asm/field/moves/move/Func_8097b70.s");

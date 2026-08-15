@@ -40,7 +40,7 @@
 	mov	r5, r0
 	cmp	r5, #0
 	beq	.L98660
-	ldr	r1, =.L9f11c
+	ldr	r1, =gScript_0809f11c
 	bl	_Actor_SetScript
 	mov	r2, r5
 	add	r2, #0x55

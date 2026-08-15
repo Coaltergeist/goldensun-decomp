@@ -388,7 +388,7 @@
 	b	.L9115e
 .L90b92:
 	mov	r1, #0x1f
-	ldr	r2, =.L9e96e
+	ldr	r2, =gScript_0809e96e
 	mov	r11, r1
 .L90b98:
 	mov	r3, r10
@@ -510,21 +510,21 @@
 	bl	Func_8091294
 	mov	r5, r0
 .L90c7e:
-	ldr	r2, =.L9e9ae
+	ldr	r2, =gScript_0809e9ae
 	lsl	r3, r5, #1
 	ldrh	r3, [r2, r3]
 	mov	r1, r8
 	mov	r2, #2
 	strh	r3, [r1]
 	add	r8, r2
-	ldr	r2, =.L9e96e
+	ldr	r2, =gScript_0809e96e
 	lsl	r3, r7, #1
 	ldrh	r3, [r2, r3]
 	mov	r1, r8
 	mov	r2, #2
 	strh	r3, [r1]
 	add	r8, r2
-	ldr	r2, =.L9e92e
+	ldr	r2, =gScript_0809e92e
 	lsl	r3, r6, #1
 	ldrh	r3, [r2, r3]
 	mov	r1, r8
@@ -545,7 +545,7 @@
 	bcc	.L90cc0
 	b	.L9115e
 .L90cc0:
-	ldr	r1, =.L9e92e
+	ldr	r1, =gScript_0809e92e
 	mov	r11, r1
 .L90cc4:
 	mov	r2, r10
@@ -628,7 +628,7 @@
 	bcc	.L90d5a
 	b	.L9115e
 .L90d5a:
-	ldr	r1, =.L9e9ae
+	ldr	r1, =gScript_0809e9ae
 	mov	r11, r1
 .L90d5e:
 	mov	r2, r10
@@ -719,7 +719,7 @@
 	sub	r7, r0
 	mov	r0, r5
 	bl	__divsi3
-	ldr	r1, =.L9e92e
+	ldr	r1, =gScript_0809e92e
 	sub	r5, r0
 	lsl	r3, r5, #1
 	ldrh	r3, [r1, r3]
@@ -729,7 +729,7 @@
 	ldrh	r3, [r1, r3]
 	mov	r1, r8
 	strh	r3, [r1, #2]
-	ldr	r2, =.L9e96e
+	ldr	r2, =gScript_0809e96e
 	lsl	r3, r6, #1
 	ldrh	r3, [r2, r3]
 	mov	r2, r8
@@ -784,18 +784,18 @@
 	mov	r7, r0
 	mov	r0, r5
 	bl	Func_8091294
-	ldr	r2, =.L9e9ae
+	ldr	r2, =gScript_0809e9ae
 	mov	r5, r0
 	lsl	r3, r5, #1
 	ldrh	r3, [r2, r3]
 	mov	r1, r8
 	strh	r3, [r1]
-	ldr	r2, =.L9e96e
+	ldr	r2, =gScript_0809e96e
 	lsl	r3, r7, #1
 	ldrh	r3, [r2, r3]
 	mov	r2, r8
 	strh	r3, [r2, #2]
-	ldr	r2, =.L9e92e
+	ldr	r2, =gScript_0809e92e
 	lsl	r3, r6, #1
 	ldrh	r3, [r2, r3]
 	strh	r3, [r1, #4]
@@ -1022,7 +1022,7 @@
 	mov	r6, r0
 	lsr	r0, r5, #16
 	bl	Func_8091294
-	ldr	r1, =.L9e92e
+	ldr	r1, =gScript_0809e92e
 	mov	r5, r0
 	lsl	r3, r5, #1
 	ldrh	r3, [r1, r3]
@@ -1034,7 +1034,7 @@
 	ldrh	r3, [r1, r3]
 	mov	r1, r8
 	strh	r3, [r1]
-	ldr	r1, =.L9e92e
+	ldr	r1, =gScript_0809e92e
 	mov	r2, #2
 	lsl	r3, r7, #1
 	ldrh	r3, [r1, r3]

@@ -15,7 +15,7 @@
 	bl	Func_8097384
 	mov	r0, r5
 	str	r7, [r5, #0x68]
-	ldr	r1, =.L9f0bc
+	ldr	r1, =gScript_0809f0bc
 	bl	_Actor_SetScript
 	ldr	r0, [r6, #4]
 	add	r5, sp, #8

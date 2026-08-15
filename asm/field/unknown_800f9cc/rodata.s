@@ -1,23 +1,23 @@
 	.include "macros.inc"
 
 	.section .rodata.rom_f9cc_c
-	.global .L13784
+	.global gMapData
 
-.L13784:
+gMapData:
 	.incrom 0x13784, 0x1404c
 	.section .rodata.rom_108e4
 .L132cc:
 	.incrom 0x132cc, 0x132fc
 	.section .rodata.rom_11ce0_c_c
-	.global .L134fc
-	.global .L132fc
-	.global .L133fc
+	.global gHeightTileFuncs
+	.global gScript_080132fc
+	.global gScript_080133fc
 
-.L132fc:
+gScript_080132fc:
 	.incrom 0x132fc, 0x133fc
-.L133fc:
+gScript_080133fc:
 	.incrom 0x133fc, 0x134fc
-.L134fc:
+gHeightTileFuncs:
 	.word	HeightTile_0
 	.word	HeightTile_1
 	.word	HeightTile_2

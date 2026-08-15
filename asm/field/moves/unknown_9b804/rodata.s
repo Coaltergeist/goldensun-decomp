@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L9c510
+	.global GFX_AvoidRing
 
-.L9c510:
+GFX_AvoidRing:
 	.incrom 0x9c510, 0x9c610
