@@ -1,7 +1,13 @@
-/* battle/actor_pos.c -- consolidated TU. */
+/* battle/actor_pos.c -- consolidated [?] residual (attack TU extracted) */
+#include "nonmatching.h"
+
 #include "nonmatching.h"
 
 extern void Func_80e3994(int unit, int *dest);
+extern void _Func_80b845c(unsigned int unit, int *dest);
+extern void _Func_80b7f20(int unit, int *dest);
+extern int iwram_3001eec;
+extern volatile unsigned int gKeyHeld;
 
 void GetBattleActorPos(int unit, int *dest)
 {
@@ -9,15 +15,11 @@ void GetBattleActorPos(int unit, int *dest)
 	dest[1] -= 0x10;
 }
 
-extern void _Func_80b845c(unsigned int unit, int *dest);
-
 void GetBattleActorPos2(unsigned int unit, int *dest)
 {
 	_Func_80b845c(unit, dest);
 	dest[1] -= 16;
 }
-
-extern void _Func_80b7f20(int unit, int *dest);
 
 void GetBattleActorPos3(int unit, int *dest)
 {
@@ -25,10 +27,7 @@ void GetBattleActorPos3(int unit, int *dest)
 	dest[1] -= 0x10;
 }
 
-INCLUDE_ASM("asm/battle/actor_pos/rom_e3958_c_c_c_a.s");
-
-extern int iwram_3001eec;
-extern volatile unsigned int gKeyHeld;
+INCLUDE_ASM("asm/battle/actor_pos/Func_80e3994.s");
 
 void Func_80e3a14(void)
 {
@@ -38,4 +37,10 @@ void Func_80e3a14(void)
         gKeyHeld;
 }
 
-INCLUDE_ASM("asm/battle/actor_pos/rom_e3958_c_c_c_c.s");
+SECTION(".text.actor_pos_2");
+
+#include "nonmatching.h"
+
+INCLUDE_ASM_SECTION("asm/battle/actor_pos/BlendVFXPaletteFile.s", ".text.actor_pos_2");
+
+INCLUDE_ASM_SECTION("asm/battle/actor_pos/rodata.s", ".text.actor_pos_2");

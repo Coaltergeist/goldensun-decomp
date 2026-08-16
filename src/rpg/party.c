@@ -1,17 +1,18 @@
-/* rpg/party.c -- consolidated TU. */
+/* rpg/party.c -- consolidated [?] residual (get_unit TU extracted) */
+#include "nonmatching.h"
+
 #include "nonmatching.h"
 
 extern void GameInit(void);
 extern void _GameStart(int);
+extern void *GetUnit(int unit);
+extern unsigned char ewram_200024c[];
 
 void Debug_StartGame(void)
 {
 	GameInit();
 	_GameStart(0);
 }
-
-extern void *GetUnit(int unit);
-extern unsigned char ewram_200024c[];
 
 void *Func_8077330(int r0) {
     if (r0 != 0) {
@@ -20,9 +21,17 @@ void *Func_8077330(int r0) {
     return ewram_200024c;
 }
 
-INCLUDE_ASM("asm/rpg/party/rom_77320_a_a_c_c_a.s");
+INCLUDE_ASM("asm/rpg/party/Func_8077348.s");
+
+SECTION(".text.party_2");
+
+#include "nonmatching.h"
 
 extern unsigned char Data_80ec8;
+extern void SetFlag(unsigned int flagID);
+extern void Func_8079ae8(unsigned int arg0);
+extern void CalcStats(unsigned int pc);
+extern void *GetUnit(int unit);
 
 unsigned int GetEnemyInfo(int param) {
     unsigned int idx;
@@ -54,11 +63,13 @@ void Func_80773f4(unsigned char *arg0, unsigned char *arg1, int arg2, int arg3)
 	}
 }
 
-INCLUDE_ASM("asm/rpg/party/rom_77320_a_c_a.s");
+INCLUDE_ASM_SECTION("asm/rpg/party/CalcStats.s", ".text.party_2");
 
-extern void SetFlag(unsigned int flagID);
-extern void Func_8079ae8(unsigned int arg0);
-extern void CalcStats(unsigned int pc);
+INCLUDE_ASM_SECTION("asm/rpg/party/CheckLure.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_8077cb8.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/GameInit.s", ".text.party_2");
 
 void Func_8077f40(void)
 {
@@ -71,10 +82,13 @@ void Func_8077f40(void)
 	CalcStats(5);
 }
 
-INCLUDE_ASM("asm/rpg/party/rom_77320_a_c_c.s");
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_8077f70.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_807808c.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_8078144.s", ".text.party_2");
 
 void Func_8078228(void) {}
-
 
 void UpdateStatBarPercent(unsigned int unit) {
     void *r5;
@@ -145,4 +159,12 @@ label_0x6c:
     return;
 }
 
-INCLUDE_ASM("asm/rpg/party/rom_77320_c_c.s");
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_80782a0.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/Func_8078320.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/ModifyHP.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/ModifyPP.s", ".text.party_2");
+
+INCLUDE_ASM_SECTION("asm/rpg/party/rodata.s", ".text.party_2");

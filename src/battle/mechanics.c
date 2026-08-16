@@ -1,14 +1,56 @@
-// fakematch
-/* battle/mechanics.c -- consolidated TU. */
+/* battle/mechanics.c -- consolidated [?] residual (transition_in TU extracted) */
 #include "nonmatching.h"
 
-extern int Func_80b8808();
-
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_a_a.s");
+#include "nonmatching.h"
 
 extern void *GetBattleActor();
 extern void _Actor_Stop(void *);
 extern void _Actor_SetAnim(void *, int);
+extern unsigned char *_Sprite_AddLayer(unsigned int a, unsigned int b);
+extern void _SpriteLayer_SetAnim(unsigned char *p, unsigned int b);
+extern void WaitFrames(unsigned int nframes);
+#include "gba/types.h"
+#include "actor.h"
+#include "math.h"
+extern unsigned int Func_80b7f70(unsigned int arg0, unsigned int arg1);
+extern int Func_80b7ed8(void);
+extern s32 PhysMove(vec3_t *src, vec3_t *dst);
+extern int Func_80b8530(unsigned int unit);
+extern unsigned char *_GetUnit();
+extern int GetEnemyAttackAnimUnk(unsigned int arg0);
+extern void _Func_80198dc(void);
+extern void _Func_8019908(unsigned int arg0, unsigned int arg1);
+extern void _Func_80175a0(unsigned int arg0);
+extern void _Sprite_SetAnim(unsigned char *, unsigned int);
+extern void _Func_800befc(unsigned char *);
+extern void Func_80b7e60(unsigned int);
+extern unsigned int iwram_3001e74;
+extern void Func_80c10e8(unsigned int arg0, unsigned int arg1);
+extern void WaitTextPrompt(void);
+extern void Func_80bbb0c(unsigned char *arg0, unsigned int arg1);
+extern void Func_80bb938(void);
+extern unsigned int iwram_3001ee4;
+extern void _Func_80782a0(unsigned char *base, int arg1);
+extern void Func_80bac6c(unsigned int arg0);
+extern void _DeleteActor(unsigned int arg0);
+extern unsigned char iwram_3001e74__a3[] __asm__("iwram_3001e74");
+extern void Func_80bd898(void);
+extern short StartTask(void *task, unsigned int priority);
+extern unsigned char iwram_3001e74__a4[] __asm__("iwram_3001e74");
+extern int _RPGRandom(void);
+extern void Func_80bf5a8(void);
+#include "dma.h"
+extern unsigned char iwram_3001ef8[];
+extern unsigned char Lc5a30[] __asm__(".Lc5a30");
+extern void gfree(int index);
+extern int Func_80b8808();
+
+#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
+#define REG_BLDCNT (*(volatile unsigned short *)0x04000050)
+
+INCLUDE_ASM("asm/battle/mechanics/SetBattleActorKnockback.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b82c4.s");
 
 void Func_80b8394(void) {
     void *r5;
@@ -19,11 +61,7 @@ void Func_80b8394(void) {
 
 void Func_80b83b0(void) {}
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_a.s");
-
-extern unsigned char *_Sprite_AddLayer(unsigned int a, unsigned int b);
-extern void _SpriteLayer_SetAnim(unsigned char *p, unsigned int b);
-extern void WaitFrames(unsigned int nframes);
+INCLUDE_ASM("asm/battle/mechanics/Func_80b83b4.s");
 
 void Func_80b8418(void) {
     unsigned char *actor;
@@ -39,14 +77,6 @@ void Func_80b8418(void) {
     }
 }
 
-#include "gba/types.h"
-#include "actor.h"
-#include "math.h"
-extern unsigned int Func_80b7f70(unsigned int arg0, unsigned int arg1);
-extern int Func_80b7ed8(void);
-extern s32 PhysMove(vec3_t *src, vec3_t *dst);
-extern int Func_80b8530(unsigned int unit);
-
 int Func_80b845c(unsigned int unitID, vec3_t *dest)
 {
     fx32 *tbl;
@@ -60,12 +90,6 @@ int Func_80b845c(unsigned int unitID, vec3_t *dest)
     dest->y -= fx32_multiply(fx32_multiply(PhysMove(&actor->pos, dest), tbl[6]), Func_80b8530(unitID) >> 16);
     return 0;
 }
-
-#include "gba/types.h"
-#include "actor.h"
-#include "math.h"
-extern unsigned char *_GetUnit();
-extern int GetEnemyAttackAnimUnk(unsigned int arg0);
 
 int Func_80b84c0(unsigned int unitID, vec3_t *dest)
 {
@@ -87,7 +111,13 @@ int Func_80b84c0(unsigned int unitID, vec3_t *dest)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_c_a_a_c_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8530.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8574.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b86ec.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b874c.s");
 
 int Func_80b8808(unsigned int r0)
 {
@@ -103,11 +133,7 @@ int Func_80b8808(unsigned int r0)
 	return -1;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_c_a_c_a.s");
-
-extern void _Func_80198dc(void);
-extern void _Func_8019908(unsigned int arg0, unsigned int arg1);
-extern void _Func_80175a0(unsigned int arg0);
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8824.s");
 
 unsigned int Func_80b8888(short *arg0)
 {
@@ -128,11 +154,13 @@ unsigned int Func_80b8888(short *arg0)
 	return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_c_a_c_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80b88d0.s");
 
-extern void _Sprite_SetAnim(unsigned char *, unsigned int);
-extern void _Func_800befc(unsigned char *);
-extern void Func_80b7e60(unsigned int);
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8b48.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8c1c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8db8.s");
 
 void Func_80b8ec4(unsigned int arg0) {
     unsigned char *p;
@@ -158,9 +186,31 @@ void Func_80b8ec4(unsigned int arg0) {
     }
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_c_c_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8f08.s");
 
-extern unsigned int iwram_3001e74;
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8f58.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b8fd4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b90ac.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b90f8.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b920c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9324.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9470.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9554.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9604.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9724.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b98b4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9934.s");
 
 short Func_80b9a44(unsigned int arg0)
 {
@@ -177,16 +227,19 @@ short Func_80b9a44(unsigned int arg0)
     return *(short *)(base + off);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b8228_c_a_c_c_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9a70.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9acc.s");
 
 void Func_80b9b2c(void) {}
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b9b30_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9b30.s");
 
-extern void Func_80c10e8(unsigned int arg0, unsigned int arg1);
-extern void WaitTextPrompt(void);
-extern void Func_80bbb0c(unsigned char *arg0, unsigned int arg1);
-extern void Func_80bb938(void);
+INCLUDE_ASM("asm/battle/mechanics/InitAnimContext.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9dc4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80b9ec0.s");
 
 unsigned int Func_80ba27c(unsigned char *arg0)
 {
@@ -209,20 +262,36 @@ unsigned int Func_80ba27c(unsigned char *arg0)
 	WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_b9b30_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80ba2c0.s");
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bb588_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80ba584.s");
 
-extern unsigned int iwram_3001ee4;
+INCLUDE_ASM("asm/battle/mechanics/Func_80ba6ac.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80ba918.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80ba978.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80babdc.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bac6c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bace8.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bad7c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bae40.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bb588.s");
+
+INCLUDE_ASM("asm/battle/mechanics/WaitTextPrompt.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bb7c0.s");
 
 void Func_80bb8d8(void) {
     unsigned int *ptr = (unsigned int *)iwram_3001ee4;
     ptr[2] = 1;
 }
-
-extern void _Func_80782a0(unsigned char *base, int arg1);
-extern void Func_80bac6c(unsigned int arg0);
-extern void _DeleteActor(unsigned int arg0);
 
 unsigned int Func_80bb8e8(unsigned int arg0) {
     unsigned char *r5;
@@ -246,7 +315,7 @@ unsigned int Func_80bb928(unsigned int arg0) {
     return arg0 + (0xb6 << 1);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bb588_c_c_a_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bb938.s");
 
 unsigned int Func_80bbabc(unsigned int arg0, unsigned int arg1)
 {
@@ -277,7 +346,7 @@ unsigned int Func_80bbae8(int x)
 	return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_a_a_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bbb0c.s");
 
 unsigned int Func_80bd3c8(int arg0)
 {
@@ -289,8 +358,11 @@ unsigned int Func_80bd3c8(int arg0)
 	return (unsigned int)(-r3 | r3) >> 31;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_a_a_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bd3e4.s");
 
+INCLUDE_ASM("asm/battle/mechanics/LoadEnemy.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bd7a4.s");
 
 void Func_80bd7dc(int arg)
 {
@@ -304,10 +376,6 @@ void Func_80bd7dc(int arg)
     }
 }
 
-extern unsigned char iwram_3001e74__a3[] __asm__("iwram_3001e74");
-extern void Func_80bd898(void);
-extern short StartTask(void *task, unsigned int priority);
-
 volatile unsigned int Func_80bd808(unsigned int arg0)
 {
   unsigned char *base;
@@ -320,9 +388,9 @@ volatile unsigned int Func_80bd808(unsigned int arg0)
   StartTask((void *) Func_80bd898, 0xc80);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bd850.s");
 
-extern unsigned char iwram_3001e74__a4[] __asm__("iwram_3001e74");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bd898.s");
 
 void Func_80bdfec(void) {
     unsigned int *r2;
@@ -336,9 +404,15 @@ void Func_80bdfec(void) {
     *(unsigned int *)((char *)r2 + 0x824) = 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_a_c_a_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80be02c.s");
 
-extern int _RPGRandom(void);
+INCLUDE_ASM("asm/battle/mechanics/Func_80be070.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80be0b4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80be18c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80be378.s");
 
 unsigned int Func_80bf208(int arg0, int arg1, int arg2)
 {
@@ -355,9 +429,31 @@ unsigned int Func_80bf208(int arg0, int arg1, int arg2)
 	return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_a_c_c_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf250.s");
 
-extern void Func_80bf5a8(void);
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf2b4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf318.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf37c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf3bc.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf400.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf440.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf484.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf4c4.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf524.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf54c.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf574.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf5a8.s");
 
 unsigned int Func_80bf65c(void) {
     register int i;
@@ -369,13 +465,17 @@ unsigned int Func_80bf65c(void) {
 
 void Func_80bf674(void) {}
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bbb0c_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bf678.s");
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_a_a_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bfba4.s");
 
-#include "dma.h"
-extern unsigned char iwram_3001ef8[];
-extern unsigned char Lc5a30[] __asm__(".Lc5a30");
+INCLUDE_ASM("asm/battle/mechanics/Func_80bffb8.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80c0098.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80c00d8.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80c0130.s");
 
 void Func_80c0184(void)
 {
@@ -386,30 +486,35 @@ void Func_80c0184(void)
     }
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_a_a_c.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80c01bc.s");
 
-#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
+INCLUDE_ASM("asm/battle/mechanics/Func_80c0228.s");
 
 void Func_80c0298(void) {
     unsigned short value = 0;
     REG_BG0VOFS = value;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_a_c_a.s");
+INCLUDE_ASM("asm/battle/mechanics/Func_80c02a4.s");
 
-extern void gfree(int index);
+INCLUDE_ASM("asm/battle/mechanics/Func_80c0700.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80c0774.s");
+
+INCLUDE_ASM("asm/battle/mechanics/Func_80c08a8.s");
 
 void Func_80c08e0(void) {
     gfree(10);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_a_c_c.s");
+INCLUDE_ASM("asm/battle/mechanics/rodata.s");
 
+SECTION(".text.mechanics_2");
+
+#include "nonmatching.h"
+
+#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
 #define REG_BLDCNT (*(volatile unsigned short *)0x04000050)
-
-void Func_80c0ea8(void) {
-    REG_BLDCNT = 0xbf;
-}
 
 static inline void MatrixResetRaw(int *dst)
 {
@@ -437,6 +542,22 @@ static inline void MatrixResetRaw(int *dst)
     );
 }
 
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0a24.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0be4.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0cec.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0df4.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0e38.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0e70.s", ".text.mechanics_2");
+
+void Func_80c0ea8(void) {
+    REG_BLDCNT = 0xbf;
+}
+
 void Func_80c0eb8(int *m)
 {
     int old = m[0];
@@ -450,4 +571,14 @@ int Func_80c0edc(int x)
     return x / 16;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/rom_bffb8_c_c.s");
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0eec.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0f98.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1014.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1054.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1084.s", ".text.mechanics_2");
+
+INCLUDE_ASM_SECTION("asm/battle/mechanics/80c0a24_rodata.s", ".text.mechanics_2");

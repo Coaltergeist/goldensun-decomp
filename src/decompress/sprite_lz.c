@@ -1,4 +1,4 @@
-/* decompress/sprite_lz.c -- consolidated TU. */
+/* decompress/unknown_a97c.c */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/decompress/sprite_lz/rom_a97c.s");
+INCLUDE_ASM("asm/decompress/sprite_lz/DecompressSpriteLZ.s");

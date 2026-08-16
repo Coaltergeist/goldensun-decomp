@@ -1,16 +1,61 @@
-// fakematch
-/* ui/save_menu.c -- consolidated TU. */
+/* ui/save_menu.c -- consolidated [?] residual */
 #include "nonmatching.h"
-
-extern int Func_8021b30();
-
-INCLUDE_ASM("asm/ui/save_menu/rom_1fe2c.s");
-
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_a_a.s");
 
 extern unsigned int AllocSpriteSlot(void);
 extern void UploadSpriteGFX(unsigned int, unsigned int, unsigned char *);
 extern unsigned char Data_310a4[];
+extern int Data_310a4__a1 __asm__("Data_310a4");
+extern unsigned char Data_317e4[];
+extern void *galloc_ewram(int index, unsigned int size);
+extern void DecompressLZ1(void *src, void *dest);
+extern void gfree(int index);
+extern unsigned char *Data_31864[];
+extern void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned int unk);
+extern unsigned int Func_801eadc(unsigned int name, unsigned int flags, unsigned int arg2, unsigned int arg3, unsigned int arg4);
+extern void Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+extern unsigned char iwram_3001e40[];
+extern unsigned char L37280[] __asm__(".L37280");
+extern void Func_8021950(int arg0, void *arg1, void *arg2, int arg3);
+extern void DecompressStatusIcon(unsigned int iconID);
+extern int UploadSprite2(unsigned int slot, void *gfx);
+extern void DrawInventoryIcon(unsigned int itemStack, unsigned int flags);
+extern void LoadMoveIcon(unsigned int move, int box, int *slot, int *unk, int unk2);
+extern int Func_8021b30();
+extern unsigned int Data_73968[];
+extern void *galloc_iwram(int index, unsigned int size);
+extern void *GetFile(int index);
+extern int _FILE_f1;
+#define FILE_f1 ((int)&_FILE_f1)
+#include "gba/io.h"
+#include "interrupt.h"
+extern void SetIntrHandler(unsigned int, unsigned int, void *);
+extern unsigned int Func_8017658(unsigned int, unsigned int, unsigned int, unsigned int);
+extern unsigned int Func_8017364(void);
+extern void WaitFrames(unsigned int);
+extern unsigned int FormatDecimalString(unsigned int arg0);
+extern unsigned char gStringBuffer;
+
+INCLUDE_ASM("asm/ui/save_menu/Func_801fe2c.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_801ff14.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_801ff58.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_801ffd8.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8020088.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_80200cc.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8020150.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8020198.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8020244.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Menu_Save.s");
+
+INCLUDE_ASM("asm/ui/save_menu/SystemMsgBox.s");
 
 unsigned int Func_80209b0(unsigned int arg0) {
     unsigned int r5;
@@ -22,27 +67,34 @@ unsigned int Func_80209b0(unsigned int arg0) {
 
 int Func_80209cc(void) { return 1; }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_a.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_80209d0.s");
 
-extern int Data_310a4__a1 __asm__("Data_310a4");
+INCLUDE_ASM("asm/ui/save_menu/Func_8020a60.s");
 
 void Func_8020aec(int slot) {
     UploadSpriteGFX(slot, 0x80, (unsigned char *)&Data_310a4__a1);
 }
-
-extern unsigned char Data_317e4[];
 
 void Func_8020b00(int arg0)
 {
     UploadSpriteGFX(arg0, 0x80, Data_317e4);
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8020b14.s");
 
-extern void *galloc_ewram(int index, unsigned int size);
-extern void DecompressLZ1(void *src, void *dest);
-extern void gfree(int index);
-extern unsigned char *Data_31864[];
+INCLUDE_ASM("asm/ui/save_menu/Func_8020b64.s");
+
+INCLUDE_ASM("asm/ui/save_menu/UI_NameEntry.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_802106c.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8021228.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8021360.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8021390.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_8021488.s");
 
 void Func_80215e0(int param_1, unsigned int param_2)
 {
@@ -62,10 +114,11 @@ void Func_80215e0(int param_1, unsigned int param_2)
     }
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8021620.s");
 
-extern void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned int unk);
-extern unsigned int Func_801eadc(unsigned int name, unsigned int flags, unsigned int arg2, unsigned int arg3, unsigned int arg4);
+INCLUDE_ASM("asm/ui/save_menu/Func_80216b4.s");
+
+INCLUDE_ASM("asm/ui/save_menu/StartMenu_AddOption.s");
 
 unsigned int Func_8021750(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4)
 {
@@ -83,9 +136,9 @@ unsigned int Func_8021750(unsigned int arg0, unsigned int arg1, unsigned int arg
     return ret;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_a_c_c_a.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_80217a4.s");
 
-extern void Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+INCLUDE_ASM("asm/ui/save_menu/Func_8021848.s");
 
 int Func_80218dc(unsigned int a0, unsigned int a1, unsigned int a2, unsigned int a3)
 {
@@ -94,11 +147,7 @@ int Func_80218dc(unsigned int a0, unsigned int a1, unsigned int a2, unsigned int
     Func_8019000(a0, a3 * 2 + 0xf315, a1 + 2, a2, 0);
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_a_c_c_c.s");
-
-extern unsigned char iwram_3001e40[];
-extern unsigned char L37280[] __asm__(".L37280");
-extern void Func_8021950(int arg0, void *arg1, void *arg2, int arg3);
+INCLUDE_ASM("asm/ui/save_menu/Func_8021950.s");
 
 void Func_80219c8(unsigned int arg0)
 {
@@ -119,10 +168,7 @@ void Func_80219c8(unsigned int arg0)
     Func_8021950(0x6000240, r5, (void *)(arg0 + 0x20), r6);
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_c_a.s");
-
-extern void DecompressStatusIcon(unsigned int iconID);
-extern int UploadSprite2(unsigned int slot, void *gfx);
+INCLUDE_ASM("asm/ui/save_menu/Func_8021a18.s");
 
 int Func_8021ab0(unsigned int iconID, unsigned int slot)
 {
@@ -136,8 +182,6 @@ int Func_8021ab0(unsigned int iconID, unsigned int slot)
     return result;
 }
 
-extern void DrawInventoryIcon(unsigned int itemStack, unsigned int flags);
-
 unsigned int Func_8021af0(unsigned int arg0, unsigned int arg1)
 {
     unsigned char *buf;
@@ -149,8 +193,6 @@ unsigned int Func_8021af0(unsigned int arg0, unsigned int arg1)
     gfree(0x11);
     return result;
 }
-
-extern void LoadMoveIcon(unsigned int move, int box, int *slot, int *unk, int unk2);
 
 int Func_8021b30(unsigned int move, unsigned int arg1)
 {
@@ -167,9 +209,7 @@ int Func_8021b30(unsigned int move, unsigned int arg1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_a_c_c_c_c.s");
-
-extern unsigned int Data_73968[];
+INCLUDE_ASM("asm/ui/save_menu/Func_8021b80.s");
 
 unsigned int Func_8021bc8(int idx) {
     if (idx != 0)
@@ -177,12 +217,9 @@ unsigned int Func_8021bc8(int idx) {
     return Data_73968[idx];
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_c_a.s");
+INCLUDE_ASM("asm/ui/save_menu/DecompressIcon.s");
 
-extern void *galloc_iwram(int index, unsigned int size);
-extern void *GetFile(int index);
-extern int _FILE_f1;
-#define FILE_f1 ((int)&_FILE_f1)
+INCLUDE_ASM("asm/ui/save_menu/Func_8021c34.s");
 
 unsigned int Func_8021c64(unsigned int arg0, unsigned int index)
 {
@@ -203,31 +240,22 @@ unsigned int Func_8021c64(unsigned int arg0, unsigned int index)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_20198_c_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8021cb8.s");
 
-#include "gba/io.h"
+INCLUDE_ASM("asm/ui/save_menu/Func_8021d88.s");
 
 void Func_8021dfc(void) {
     do { u32 _value = (~3 & REG_BG1CNT) | 3; REG_BG1CNT = _value; } while (0);
 }
 
-#include "gba/io.h"
-#include "interrupt.h"
-
 void Func_8021e14(void) {
     SET_IO(REG_BG1CNT, (REG_BG1CNT & ~3));
 }
-
-extern void SetIntrHandler(unsigned int, unsigned int, void *);
 
 void Func_8021e28(void) {
     SET_IO(REG_BG0VOFS, 0);
     SetIntrHandler((1 << INTR_ID_HBLANK), 0x88, Func_8021e14);
 }
-
-extern unsigned int Func_8017658(unsigned int, unsigned int, unsigned int, unsigned int);
-extern unsigned int Func_8017364(void);
-extern void WaitFrames(unsigned int);
 
 unsigned int Func_8021e48(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     unsigned int r5;
@@ -238,10 +266,11 @@ unsigned int Func_8021e48(unsigned int arg0, unsigned int arg1, unsigned int arg
     return r5;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_21dfc_a_c_c_c.s");
+INCLUDE_ASM("asm/ui/save_menu/MenuBar.s");
 
-extern unsigned int FormatDecimalString(unsigned int arg0);
-extern unsigned char gStringBuffer;
+INCLUDE_ASM("asm/ui/save_menu/Func_8022768.s");
+
+INCLUDE_ASM("asm/ui/save_menu/Func_802281c.s");
 
 unsigned int Func_80228bc(unsigned short *arg0, unsigned int arg1) {
     unsigned char *p;
@@ -258,8 +287,7 @@ unsigned int Func_80228bc(unsigned short *arg0, unsigned int arg1) {
     return r;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_21dfc_c_a.s");
-
+INCLUDE_ASM("asm/ui/save_menu/Func_80228e4.s");
 
 int Func_8022a38(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3)
 {
@@ -272,118 +300,49 @@ int Func_8022a38(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsign
     }
 }
 
-INCLUDE_ASM("asm/ui/save_menu/rom_22a7c.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8022a7c.s");
 
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_a_a_a_a.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8022b44.s");
 
-extern void Func_801c2d0(void);
-extern void Func_80284dc(void);
-extern void AddMenuBarOption(unsigned int option);
-extern void Func_8028808(unsigned int arg0, unsigned int arg1, unsigned int arg2);
-extern unsigned int Func_80286a0(unsigned int arg0, unsigned int arg1);
-extern void Func_802851c(void);
-extern void Func_801c2e4(void);
+INCLUDE_ASM("asm/ui/save_menu/Func_8023178.s");
 
-unsigned int Func_802899c(unsigned int r0, unsigned int r1)
-{
-    unsigned int r5;
+INCLUDE_ASM("asm/ui/save_menu/Func_8023e70.s");
 
-    r5 = r0;
-    Func_801c2d0();
-    Func_80284dc();
-    AddMenuBarOption(1);
-    AddMenuBarOption(0xf);
-    AddMenuBarOption(2);
-    AddMenuBarOption(7);
-    Func_8028808(0x11, 7, 0);
-    r1 = Func_80286a0(r5, r1 - 1);
-    Func_802851c();
-    Func_801c2e4();
-    return r1;
-}
+INCLUDE_ASM("asm/ui/save_menu/Func_8024934.s");
 
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_a_a_a_c.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_8025180.s");
 
-extern unsigned int Func_8028574(unsigned int arg0);
+INCLUDE_ASM("asm/ui/save_menu/Func_80251d4.s");
 
-unsigned int ShopMenu(unsigned int r0)
-{
-    unsigned int r5;
+INCLUDE_ASM("asm/ui/save_menu/Func_8025200.s");
 
-    r5 = r0;
-    Func_80284dc();
-    AddMenuBarOption(0x11);
-    AddMenuBarOption(0x12);
-    AddMenuBarOption(0x13);
-    AddMenuBarOption(0x14);
-    Func_8028808(0x11, 7, 0);
-    r5 = Func_8028574(r5);
-    Func_802851c();
-    return r5;
-}
+INCLUDE_ASM("asm/ui/save_menu/Func_802592c.s");
 
+INCLUDE_ASM("asm/ui/save_menu/Func_8026080.s");
 
-unsigned int SanctumMenu(unsigned int r0)
-{
-    unsigned int r5;
+INCLUDE_ASM("asm/ui/save_menu/Func_8026e80.s");
 
-    r5 = r0;
-    Func_80284dc();
-    AddMenuBarOption(0x19);
-    AddMenuBarOption(0x1a);
-    AddMenuBarOption(0x1b);
-    AddMenuBarOption(0x1c);
-    Func_8028808(0x11, 0xa, 0);
-    r5 = Func_8028574(r5);
-    Func_802851c();
-    return r5;
-}
+INCLUDE_ASM("asm/ui/save_menu/Func_8026fa8.s");
 
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_a_a_c_c_a.s");
+INCLUDE_ASM("asm/ui/save_menu/GetMoveDisplayEffect.s");
 
+INCLUDE_ASM("asm/ui/save_menu/Func_80270ac.s");
 
-unsigned int LuckyFountainMenu(unsigned int arg0)
-{
-    unsigned int r5;
+INCLUDE_ASM("asm/ui/save_menu/Func_80270d8.s");
 
-    Func_80284dc();
-    AddMenuBarOption(0x20);
-    AddMenuBarOption(0x21);
-    Func_8028808(0x11, 9, 0);
-    r5 = Func_8028574(arg0);
-    Func_802851c();
-    return r5;
-}
+INCLUDE_ASM("asm/ui/save_menu/Func_8027114.s");
 
-extern int StartTask(void *task, int priority);
-extern void Debug_WarpMenu(void);
+INCLUDE_ASM("asm/ui/save_menu/Func_8028194.s");
 
-void Func_8028edc(void) {
-    StartTask(Debug_WarpMenu, 0xc8 << 4);
-}
+INCLUDE_ASM("asm/ui/save_menu/Func_80284dc.s");
 
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_a_c.s");
+INCLUDE_ASM("asm/ui/save_menu/Func_802851c.s");
 
-void Func_80294d0(void) {}
+INCLUDE_ASM("asm/ui/save_menu/Func_8028574.s");
 
-extern void _SetFlag(unsigned int);
-extern void _GiveDjinni(unsigned int, unsigned int, unsigned int);
+INCLUDE_ASM("asm/ui/save_menu/Func_80286a0.s");
 
-void CollectDjinni(unsigned int arg0, unsigned int arg1, unsigned int arg2)
-{
-    unsigned int r5;
-    unsigned int r6;
-    unsigned int r0;
-
-    r5 = arg1;
-    r6 = arg2;
-    r0 = r5 << 2;
-    r0 += r5;
-    r0 <<= 2;
-    r0 += r6;
-    r0 += 0x30;
-    _SetFlag(r0);
-    _GiveDjinni(arg0, r5, r6);
-}
-
-INCLUDE_ASM("asm/ui/save_menu/rom_23178_c_c.rodata.s");
+INCLUDE_ASM("asm/ui/save_menu/rodata_rom_1fe2c.s");
+INCLUDE_ASM("asm/ui/save_menu/rodata_rom_20198_c_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/save_menu/rodata_rom_22a7c.s");
+INCLUDE_ASM("asm/ui/save_menu/rodata_rom_23178_c_c.s");

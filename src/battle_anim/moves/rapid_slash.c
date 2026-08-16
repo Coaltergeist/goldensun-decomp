@@ -1,4 +1,6 @@
-/* battle_anim/moves/rapid_slash.c -- consolidated TU. */
+/* battle_anim/moves/rapid_slash.c -- consolidated [?] residual (gaia TU extracted) */
+#include "nonmatching.h"
+
 #include "nonmatching.h"
 
 extern void BaseAnim_RapidSlash(void *context, int subanim);
@@ -46,7 +48,15 @@ void Anim_SwiftStrike(void *context) {
     }
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/rom_e28f4_c_c_a.s");
+INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/rapid_slash_BaseAnim_RapidSlash.s");
+
+SECTION(".text.rapid_slash_2");
+
+#include "nonmatching.h"
+
+INCLUDE_ASM_SECTION("asm/battle_anim/moves/rapid_slash/Func_80e38b8.s", ".text.rapid_slash_2");
+
+INCLUDE_ASM_SECTION("asm/battle_anim/moves/rapid_slash/Func_80e3908.s", ".text.rapid_slash_2");
 
 extern int PhysMove(unsigned int src, unsigned int dest);
 

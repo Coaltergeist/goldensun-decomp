@@ -1,9 +1,9 @@
-/* battle_anim/camera.c -- consolidated TU. */
+/* battle_anim/camera.c -- consolidated [?] residual (anims TU extracted) */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/battle_anim/camera/rom_d6504_a_a.s");
-
 extern void Func_80dbb98(void);
+
+INCLUDE_ASM("asm/battle_anim/camera/Task_SpinCamera.s");
 
 void Unk_080D655C(unsigned int r0)
 {
@@ -20,10 +20,18 @@ void Unk_080D655C(unsigned int r0)
     }
 }
 
-INCLUDE_ASM("asm/battle_anim/camera/rom_d6504_a_c.s");
+SECTION(".text.camera_2");
 
 extern void Func_80cdb24(int);
 extern void AnimEnd(void);
+
+INCLUDE_ASM_SECTION("asm/battle_anim/camera/Func_80d66cc.s", ".text.camera_2");
+
+INCLUDE_ASM_SECTION("asm/battle_anim/camera/Func_80d6750.s", ".text.camera_2");
+
+INCLUDE_ASM_SECTION("asm/battle_anim/camera/Func_80d67dc.s", ".text.camera_2");
+
+INCLUDE_ASM_SECTION("asm/battle_anim/camera/SetBattleActorState.s", ".text.camera_2");
 
 void Func_80d6960(void)
 {

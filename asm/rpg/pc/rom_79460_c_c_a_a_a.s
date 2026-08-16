@@ -28,7 +28,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r7, =.L84a8c
+	ldr	r7, =X84a8c
 	mov	r3, #0xf
 	add	r3, r7
 	mov	r10, r3

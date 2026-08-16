@@ -1,9 +1,53 @@
-/* field/map_data.c -- consolidated TU. */
+/* field/map_data.c -- consolidated [?] residual (sprite_test TU extracted) */
+#include "nonmatching.h"
+
 #include "nonmatching.h"
 
 extern void Func_801161c();
-
 extern unsigned char Data_97b8[];
+extern int *iwram_3001e70;
+extern void Func_8010230(unsigned int a, unsigned int b);
+extern void UpdateFieldScreen(void);
+#include "gba/io.h"
+#include "dma.h"
+extern unsigned char gBuffer[];
+extern unsigned char ewram_2038000[];
+extern unsigned char *iwram_3001e70__a1 __asm__("iwram_3001e70");
+extern void (*iwram_3001cfc)(void);
+extern void Func_80113e4(void);
+extern void Func_801179c(void);
+extern void Func_800439c(void *func);
+extern void WaitFrames(unsigned int nframes);
+extern void *GetFile(int index);
+extern void DecompressLZ(void *src, void *dst);
+extern unsigned char gBuffer__a1[65536] __asm__("gBuffer");
+extern int _FILE_d5;
+typedef struct {
+unsigned char pad[0x100];
+unsigned short f100;
+unsigned short f102;
+} FieldState;
+/* Func_80118a8; halfword 0 at element i (12-byte stride) + 0x22 of the array
+ * at *iwram_3001e70__a1. base temp forces the deref early; the separate element
+ * pointer keeps base the add accumulator and 0x22 the strh immediate; tarpman
+ * var forces `movs` for the stored 0. */
+extern unsigned char *iwram_3001e70__a2 __asm__("iwram_3001e70");
+/* Func_80118c0; twin of Func_80118a8 but stores 1 (`movs r3,#1`). */
+extern unsigned char *iwram_3001e70__a3 __asm__("iwram_3001e70");
+extern unsigned char iwram_3001e70__a4[] __asm__("iwram_3001e70");
+extern void Func_80042c8(void *);
+extern unsigned char iwram_3001e70__a5[] __asm__("iwram_3001e70");
+extern void Func_80119cc(void);
+extern void StopTask();
+extern void gfree();
+extern void Func_8011bf4();
+extern int StartTask(void *task, int priority);
+/* FF: int HeightTile_0(char * param_1) */
+extern unsigned char gScript_080133fc[] __asm__("gScript_080133fc");
+/* FF: int HeightTile_E(char * param_1) */
+/* FF: int HeightTile_F(char * param_1) */
+extern unsigned int Func_8012204(unsigned int);
+extern unsigned char iwram_3001e70__a6[] __asm__("iwram_3001e70");
 
 void Func_800f9cc(unsigned char *p, int count)
 {
@@ -19,11 +63,13 @@ void Func_800f9cc(unsigned char *p, int count)
     }
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_f9cc_a_c.s");
+INCLUDE_ASM("asm/field/map_data/DecodeMetatileset.s");
 
-extern int *iwram_3001e70;
-extern void Func_8010230(unsigned int a, unsigned int b);
-extern void UpdateFieldScreen(void);
+INCLUDE_ASM("asm/field/map_data/Func_800fa8c.s");
+
+INCLUDE_ASM("asm/field/map_data/UnpackTilemap.s");
+
+INCLUDE_ASM("asm/field/map_data/LoadMapData.s");
 
 void Func_800fe9c(void)
 {
@@ -45,49 +91,59 @@ void Func_800fe9c(void)
     UpdateFieldScreen();
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_f9cc_c.s");
+INCLUDE_ASM("asm/field/map_data/UpdateScreenEdge_V.s");
 
-INCLUDE_ASM("asm/field/map_data/rom_10424.s");
+INCLUDE_ASM("asm/field/map_data/UpdateScreenEdge_H.s");
 
-INCLUDE_ASM("asm/field/map_data/rom_108e4.s");
+INCLUDE_ASM("asm/field/map_data/UpdateFieldScreen.s");
 
-#include "gba/io.h"
-#include "dma.h"
-extern unsigned char gBuffer[];
+INCLUDE_ASM("asm/field/map_data/Func_8010230.s");
+
+INCLUDE_ASM("asm/field/map_data/CopyMapTiles.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010560.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80105d4.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010704.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010788.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80108c4.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80108e4.s");
+
+INCLUDE_ASM("asm/field/map_data/InitWorldMap.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010d48.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010e14.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8010ff0.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80110e0.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8011164.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80111b4.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80113e4.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_80114a0.s");
 
 void Func_8011568(void) {
     do { u32 _value = 0x682; REG_BG1CNT = _value; } while (0);
     DMA3_COPY(gBuffer, (void *)0x6006a00, 0x9600);
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_a_c_a.s");
-
-#include "gba/io.h"
-#include "dma.h"
-extern unsigned char ewram_2038000[];
+INCLUDE_ASM("asm/field/map_data/Func_8011590.s");
 
 void Func_801161c(void) {
     do { u32 _value = 0x501; REG_BG1CNT = _value; } while (0);
     DMA3_COPY(ewram_2038000, (void *)0x6008000, 0x8000);
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_a_c_c_a.s");
-
-extern unsigned char *iwram_3001e70__a1 __asm__("iwram_3001e70");
-extern void (*iwram_3001cfc)(void);
-extern void Func_80113e4(void);
-extern void Func_801179c(void);
-extern void Func_800439c(void *func);
-extern void WaitFrames(unsigned int nframes);
-extern void *GetFile(int index);
-extern void DecompressLZ(void *src, void *dst);
-extern unsigned char gBuffer__a1[65536] __asm__("gBuffer");
-extern int _FILE_d5;
-typedef struct {
-unsigned char pad[0x100];
-unsigned short f100;
-unsigned short f102;
-} FieldState;
+INCLUDE_ASM("asm/field/map_data/Func_8011644.s");
 
 void Func_801173c(void)
 {
@@ -104,13 +160,7 @@ void Func_801173c(void)
     WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_a_c_c_c.s");
-
-/* Func_80118a8; halfword 0 at element i (12-byte stride) + 0x22 of the array
- * at *iwram_3001e70__a1. base temp forces the deref early; the separate element
- * pointer keeps base the add accumulator and 0x22 the strh immediate; tarpman
- * var forces `movs` for the stored 0. */
-extern unsigned char *iwram_3001e70__a2 __asm__("iwram_3001e70");
+INCLUDE_ASM("asm/field/map_data/Func_801179c.s");
 
 void Func_80118a8(int i) {
     unsigned char *base = iwram_3001e70__a2;
@@ -119,9 +169,6 @@ void Func_80118a8(int i) {
     *(unsigned short *)(p + 0x22) = v;
 }
 
-/* Func_80118c0; twin of Func_80118a8 but stores 1 (`movs r3,#1`). */
-extern unsigned char *iwram_3001e70__a3 __asm__("iwram_3001e70");
-
 void Func_80118c0(int i) {
     unsigned char *base = iwram_3001e70__a3;
     unsigned char *p = base + i * 12;
@@ -129,10 +176,7 @@ void Func_80118c0(int i) {
     *(unsigned short *)(p + 0x22) = v;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_c_c_a_a.s");
-
-extern unsigned char iwram_3001e70__a4[] __asm__("iwram_3001e70");
-extern void Func_80042c8(void *);
+INCLUDE_ASM("asm/field/map_data/Func_80118d8.s");
 
 void Func_8011984(void) {
     signed char r3;
@@ -141,8 +185,6 @@ void Func_8011984(void) {
         Func_80042c8(Func_801179c);
     }
 }
-
-extern unsigned char iwram_3001e70__a5[] __asm__("iwram_3001e70");
 
 void Func_80119a8(void) {
     signed char r3;
@@ -155,39 +197,33 @@ void Func_80119a8(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_c_c_a_c_c.s");
+INCLUDE_ASM("asm/field/map_data/Func_80119cc.s");
 
-extern void Func_80119cc(void);
+INCLUDE_ASM("asm/field/map_data/Func_8011a84.s");
 
 void Func_8011ae0(void) {
     Func_80042c8(Func_80119cc);
 }
 
-
 void Func_8011af0(void) {
     Func_800439c(Func_80119cc);
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/field/map_data/Func_8011b00.s");
 
-extern void StopTask();
-extern void gfree();
-extern void Func_8011bf4();
+INCLUDE_ASM("asm/field/map_data/Func_8011b54.s");
 
 void Func_8011bc8(void) {
     StopTask(Func_8011bf4);
     gfree(0x1c);
 }
 
-extern int StartTask(void *task, int priority);
-
 void Func_8011be0(void) {
     StartTask(Func_8011bf4, 200 << 4);
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11568_c_c_c_c_c.s");
+INCLUDE_ASM("asm/field/map_data/Func_8011bf4.s");
 
-/* FF: int HeightTile_0(char * param_1) */
 unsigned int HeightTile_0(unsigned char *arg0) {
     return (*arg0 << 24) >> 24 << 19;
 }
@@ -201,6 +237,7 @@ int HeightTile_1(signed char *param_1, int param_2)
     b = param_1[1] << 19;
     return a + ((b - a) * param_2) / 16;
 }
+
 int HeightTile_2(signed char *param_1, int param_2, int param_3) {
     int a;
     int b;
@@ -210,7 +247,15 @@ int HeightTile_2(signed char *param_1, int param_2, int param_3) {
     return a + ((b - a) * param_3) / 16;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11ce0_a_c_c_a_a.s");
+INCLUDE_ASM("asm/field/map_data/HeightTile_3.s");
+
+INCLUDE_ASM("asm/field/map_data/HeightTile_4.s");
+
+INCLUDE_ASM("asm/field/map_data/HeightTile_5.s");
+
+INCLUDE_ASM("asm/field/map_data/HeightTile_6.s");
+
+INCLUDE_ASM("asm/field/map_data/HeightTile_7.s");
 
 int HeightTile_8(unsigned char *param_1, unsigned int param_2)
 {
@@ -233,33 +278,36 @@ int HeightTile_9(signed char *param_1, int param_2, unsigned int param_3)
     return v << 19;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11ce0_a_c_c_a_c_c.s");
+INCLUDE_ASM("asm/field/map_data/HeightTile_A.s");
 
-extern unsigned char gScript_080133fc[] __asm__("gScript_080133fc");
+INCLUDE_ASM("asm/field/map_data/HeightTile_B.s");
 
 int HeightTile_C(int param_1, int param_2, int param_3)
 {
     return *(signed char *)(param_1 + gScript_080133fc[param_2 + (param_3 << 4)]) << 19;
 }
 
-
 int HeightTile_D(int param_1, int param_2, int param_3)
 {
     return ((signed char *)param_1)[gScript_080133fc[(param_3 << 4) - param_2 + 15]] << 19;
 }
 
-/* FF: int HeightTile_E(char * param_1) */
 unsigned int HeightTile_E(unsigned int arg0) {
     return ((*(unsigned char *)arg0 << 24) >> 24) << 19;
 }
-/* FF: int HeightTile_F(char * param_1) */
+
 unsigned int HeightTile_F(unsigned char *arg0) {
     unsigned char value = *arg0;
     return (value << 24) >> 24 << 19;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11ce0_c_a.s");
+INCLUDE_ASM("asm/field/map_data/Func_8011f54.s");
 
+INCLUDE_ASM("asm/field/map_data/Func_8011fd8.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8012038.s");
+
+INCLUDE_ASM("asm/field/map_data/Func_8012078.s");
 
 unsigned int Func_80120b4(int x, int y)
 {
@@ -271,11 +319,11 @@ unsigned int Func_80120b4(int x, int y)
     return (unsigned int)p[1] >> 6;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_11ce0_c_c.s");
+INCLUDE_ASM("asm/field/map_data/TestCollision.s");
 
-INCLUDE_ASM("asm/field/map_data/rom_1219c_a_a.s");
+INCLUDE_ASM("asm/field/map_data/Func_801219c.s");
 
-extern unsigned int Func_8012204(unsigned int);
+INCLUDE_ASM("asm/field/map_data/Func_8012204.s");
 
 unsigned int Func_80122ac(unsigned int arg0, unsigned int arg1)
 {
@@ -288,9 +336,7 @@ unsigned int Func_80122ac(unsigned int arg0, unsigned int arg1)
 	return -1;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_1219c_a_c_a.s");
-
-extern unsigned char iwram_3001e70__a6[] __asm__("iwram_3001e70");
+INCLUDE_ASM("asm/field/map_data/Func_80122c8.s");
 
 void Func_8012330(int arg0, int arg1, int arg2)
 {
@@ -304,91 +350,10 @@ void Func_8012330(int arg0, int arg1, int arg2)
         r3[3] = arg2;
 }
 
-INCLUDE_ASM("asm/field/map_data/rom_1219c_a_c_c_a.s");
+INCLUDE_ASM("asm/field/map_data/Func_8012350.s");
 
-extern void *_GetSpriteInfo(int spriteId);
+INCLUDE_ASM("asm/field/map_data/Func_8012388.s");
 
-unsigned int SpriteTest_ChangeVar(int arg0, int arg1)
-{
-  int r5;
-  int r6;
-  unsigned char *r0;
-  r5 = arg0;
-  r6 = arg1;
-  L12afe:
-  r5 = r5 + r6;
+INCLUDE_ASM("asm/field/map_data/Func_80123f4.s");
 
-  if (r5 < 0)
-  {
-    r6++;
-    r6--;
-    r5 = 0x200;
-    goto L12afe;
-  }
-  if (r5 >= 0x200)
-  {
-    r5 = -1;
-    goto L12afe;
-  }
-  r0 = (unsigned char *) _GetSpriteInfo(r5);
-  if (r0[0] == 0)
-  {
-    goto L12afe;
-  }
-  return (unsigned int) r5;
-}
-
-INCLUDE_ASM("asm/field/map_data/rom_1219c_a_c_c_c.s");
-
-extern unsigned int iwram_3001e60;
-
-void SpriteTest_SetLayerColorswap(unsigned int layer, unsigned int colorswap) {
-    unsigned int base;
-    unsigned int off;
-    int i;
-
-    base = iwram_3001e60;
-    off = ((layer & 3) << 2) + 0x28;
-    for (i = 9; i >= 0; i--) {
-        unsigned int e;
-        e = *(unsigned int *)((char *)base + off);
-        *(unsigned char *)((char *)e + 5) = colorswap;
-        base += 0x38;
-    }
-}
-void SpriteTest_SetLayerPriority(int layer, int value) {
-    unsigned char **p;
-    int idx;
-    int i;
-
-    p = (unsigned char **)iwram_3001e60;
-    idx = ((layer & 3) << 2) + 0x28;
-    for (i = 9; i >= 0; i--) {
-        *(unsigned char *)(*(unsigned char **)((char *)p + idx) + 6) = value;
-        p = (unsigned char **)((char *)p + 0x38);
-    }
-}
-
-INCLUDE_ASM("asm/field/map_data/rom_1219c_c_a.s");
-
-extern unsigned int *iwram_3001e60__a1 __asm__("iwram_3001e60");
-extern void InitSpriteLayer(unsigned int layer);
-
-void Func_8012de8(unsigned int arg0, unsigned int arg1)
-{
-    unsigned char *p;
-    int off;
-    int i;
-
-    p = (unsigned char *)iwram_3001e60__a1;
-    _GetSpriteInfo(arg1);
-    off = ((arg0 & 3) << 2) + 0x28;
-    for (i = 9; i >= 0; i--) {
-        unsigned short *t = *(unsigned short **)(p + off);
-        *t = arg1;
-        InitSpriteLayer(*(unsigned int *)(p + off));
-        p += 0x38;
-    }
-}
-
-INCLUDE_ASM("asm/field/map_data/rom_1219c_c_c.s");
+INCLUDE_ASM("asm/field/map_data/rodata.s");
