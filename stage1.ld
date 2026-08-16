@@ -30,8 +30,13 @@ SECTIONS {
 	} > iwram AT > rom
 
 	rom_1b70 : {
-		asm/decompress/lz1.o(.text)
-		asm/decompress/lz_data.o(.text)
+		src/decompress/lz1.o(.text)
+		src/render/blit_fade_rom.o(.text)
+		src/render/blit_fade_alt.o(.text)
+		src/decompress/lz16.o(.text)
+		src/decompress/lz_rom.o(.text)
+		src/decompress/lz2.o(.text)
+		src/fixup_ram_code.o(.text)
 		src/memory/free.o(.text)
 		src/main.o(.text)
 		src/intr/intr.o(.text)
@@ -66,6 +71,8 @@ SECTIONS {
 	rom_9000 : ALIGN(0x1000) {
 		exports/rom_9000/exports.o(.text)
 		src/sprite/draw_sprite.o(.text)
+		src/engine/unpack_tilemap.o(.text)
+		src/sprite/draw_sprite.o(.text.draw_sprite_2)
 		src/decompress/sprite_lz.o(.text)
 		src/sprite/sprite.o(.text)
 		src/actor/actor.o(.text)
@@ -245,6 +252,8 @@ SECTIONS {
 		src/battle_anim/transition_in.o(.text)
 		src/battle/mechanics.o(.text.mechanics_2)
 		src/battle_anim/cast.o(.text)
+		src/battle_anim/move_intro.o(.text)
+		src/battle_anim/cast.o(.text.cast_2)
 		src/battle/enemy.o(.text)
 
 		data/rom_b5000/rom_c2a0c.o(.rodata)
@@ -444,6 +453,7 @@ SECTIONS {
 	rom_f0000 : ALIGN(0x1000) {
 		exports/rom_f0000/exports.o(.text)
 		src/other/sub_80f0008.o(.text)
+		src/decompress/bg-credits.o(.text)
 		src/ending.o(.text)
 
 		src/ending.o(.rodata)

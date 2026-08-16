@@ -24,7 +24,7 @@ int Func_80c16d0(void) {
     return StopTask(Func_80c11ec);
 }
 
-INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_c.s");
+SECTION(".text.cast_2");
 
 extern void Func_80c0700(int a, int b);
 
