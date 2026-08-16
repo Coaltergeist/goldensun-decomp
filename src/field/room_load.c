@@ -56,14 +56,3 @@ void Func_808b9f8(void)
         p--;
     } while (i >= 0);
 }
-
-unsigned int GetFieldActor(unsigned int actorID)
-{
-    unsigned int base = iwram_3001ebc;
-    unsigned int ofs;
-
-    if (actorID > 0xbf)
-        return 0;
-    ofs = (actorID << 2) + 0x14;
-    return *(unsigned int *)(base + ofs);
-}
