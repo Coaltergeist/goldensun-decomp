@@ -1,4 +1,4 @@
-MatrixReset        src/render/matrix.c
+MatrixReset        src/math/matrix.c
 Func_80c0eb8       src/battle/mechanics.c
 Func_80b5ad4       src/battle/battle.c
 Func_800651c       src/save.c

@@ -1,13 +1,13 @@
-/* field/moves/unknown_9b804.c */
+/* field/field_effect.c */
 #include "nonmatching.h"
 
 extern void _Sprite_SetAnim(unsigned int);
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/Func_809b804.s");
+INCLUDE_ASM("asm/field/field_effect/Func_809b804.s");
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/Func_809b86c.s");
+INCLUDE_ASM("asm/field/field_effect/Func_809b86c.s");
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/Func_809b8f4.s");
+INCLUDE_ASM("asm/field/field_effect/Func_809b8f4.s");
 
 unsigned int Func_809ba34(unsigned char *arg0)
 {
@@ -45,8 +45,8 @@ void Func_809ba7c(unsigned int arg0, unsigned int arg1) {
     *(unsigned char *)arg0 = r2;
 }
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/Func_809ba90.s");
+INCLUDE_ASM("asm/field/field_effect/Func_809ba90.s");
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/Func_809bb34.s");
+INCLUDE_ASM("asm/field/field_effect/Func_809bb34.s");
 
-INCLUDE_ASM("asm/field/moves/unknown_9b804/rodata.s");
+INCLUDE_ASM("asm/field/field_effect/rodata.s");
