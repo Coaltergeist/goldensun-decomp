@@ -31,7 +31,7 @@
 	bl	galloc_iwram
 	ldr	r2, =Data_8009d9c
 	mov	r1, r0
-	ldr	r0, =Func_8009bb8
+	ldr	r0, =_DrawSprite
 	mov	r4, #0x84
 	sub	r2, r0
 	lsl	r4, #24

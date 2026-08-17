@@ -24,7 +24,7 @@
 	lsl	r2, #24
 	mov	r1, r0
 	ldr	r3, =REG_DMA3SAD
-	ldr	r0, =Func_8009bb8
+	ldr	r0, =_DrawSprite
 	orr	r2, r5
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc

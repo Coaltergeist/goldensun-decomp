@@ -74,7 +74,7 @@ SECTIONS {
 		exports/rom_9000/exports.o(.text)
 		src/sprite/draw_sprite.o(.text)
 		src/engine/unpack_tilemap.o(.text)
-		src/sprite/draw_sprite.o(.text.draw_sprite_2)
+		src/sprite/rom_a418.o(.text)
 		src/decompress/sprite_lz.o(.text)
 		src/sprite/sprite.o(.text)
 		src/actor/actor.o(.text)
