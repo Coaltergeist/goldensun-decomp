@@ -179,6 +179,7 @@ SECTIONS {
 		src/field/map_actor_api.o(.text)
 		src/field/weather.o(.text)
 		src/field/djinni.o(.text)
+		src/field/field_move.o(.text)
 		src/field/weather.o(.text.weather_2)
 		src/field/actor_move.o(.text)
 		src/field/psynergy.o(.text)
