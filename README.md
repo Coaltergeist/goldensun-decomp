@@ -13,9 +13,9 @@ It builds the following ROM:
 ## Current state
 
 - :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
-- **2,539 / 5,745 Thumb functions matched as C source (44.2%):** the 51 ARM-mode functions are handwritten assembly, not C-decompilation targets
+- **2,526 / 5,747 Thumb functions matched as C source (44%):** the 53 ARM-mode functions are handwritten assembly, not C-decompilation targets
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
-- Main-ROM and overlay banks structurally separated (97 overlay banks, 16 main-ROM banks)
+- Source organized into a subsystem tree (`src/field/`, `src/battle/`, `src/ui/`, `src/rpg/`, …), mirrored one-to-one by `asm/`; the 96 code overlays are each consolidated into a single translation unit under `src/maps/`
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
 - **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`src/lib/m4a/`](src/lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
 
@@ -29,33 +29,29 @@ Contributions are welcome; the decomp is in its early stages and benefits from a
 
 A function is matched when its `.c` file (in [`src/`](src/)) compiles to an object that's byte-identical to the corresponding original `.s` (in [`asm/`](asm/)). Verify your work with `make compare-rom` (which fails the build if the ROM SHA1 drifts).
 
-Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form, organized by bank (`asm/rom_<bank>/`) or overlay (`asm/overlays/rom_<addr>/`). Pick one, write its C in the parallel `src/` location, iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the canonical references for the workflow.
+Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form — one `.s` per function, organized by subsystem (`asm/<subsystem>/<Func>.s`) so that `asm/` mirrors `src/`. Pick one, write its C in the parallel `src/` location (it stays embedded via `INCLUDE_ASM` until it matches), iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the canonical references for the workflow.
 
 ### Layout
 
 ```
-├── src/                 # Matched C + permanent .s glue (crt0, exports, imports)
-│   ├── rom_c0/          #   Main ROM banks
-│   ├── rom_9000/        #   ...
-│   ├── overlays/        #   Per-overlay matched .c + glue .s
-│   │   └── rom_XXXXXX/
-|   ├── lib/             #   GBA libraries such as m4a or libagbflash
+├── src/                 # Matched C + hand-written .s glue (crt0, exports, imports)
+│   ├── field/ battle/   #   Engine subsystems: actor, sprite, rpg, ui,
+│   ├── battle_anim/     #     decompress, render, math, memory, intr, ...
+│   ├── maps/            #   Consolidated code overlays (one .c per overlay)
+│   ├── lib/             #   Prebuilt GBA libraries (m4a, agb_flash, libagbsyscall)
 │   └── non_matching/    #   Parked .c that decompiles but doesn't byte-match
-├── asm/                 # Active disassembly (.s files awaiting decompilation)
-│   ├── rom_c0/          #   Decomp-target .s files per bank
-│   ├── ...
-│   └── overlays/        #   Per-overlay decomp-target .s
-│       └── rom_XXXXXX/
-├── data/                # Build-generated data (gitignored; produced from baserom.gba)
-├── overlays/            # Overlay build outputs + per-overlay linker scripts (97 banks)
+├── asm/                 # Active disassembly, mirroring src/: one .s per unmatched
+│   └── <subsystem>/     #   function (asm/<path>/<Func>.s), INCLUDE_ASM'd from src/
+├── data/                # Raw data-fragment .s (tracked) + build outputs (gitignored)
+├── overlays/            # Overlay build outputs + per-overlay linker scripts (96 banks)
 │   └── rom_XXXXXX/
 │       ├── overlay.ld   #   Per-overlay linker script
-│       ├── orig.bin     #   Uncompressed overlay (extracted from baserom)
-│       └── overlay.lz   #   Compressed overlay binary (build output)
-├── include/             # Assembler macros (.inc) and constants
-├── tools/               # gcc-2.96 toolchain (installed via camelot-gcc), asm-differ wrapper
+│       ├── orig.bin     #   Uncompressed overlay (extracted from baserom; gitignored)
+│       └── overlay.lz   #   Compressed overlay binary (build output; gitignored)
+├── include/             # Assembler macros (macros.inc/gba.inc) + C type/struct headers
+├── tools/               # Host build tools; the compiler toolchain installs here (gitignored)
 ├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names; hand-curated seed)
-├── aliases.sym          # Merged symbol aliases
+├── aliases.txt          # Merged symbol aliases
 ├── stage1.ld            # Stage-1 partial link of main ROM
 ├── goldensun.ld         # Final link (main ROM + linked-in overlay blobs)
 └── Makefile

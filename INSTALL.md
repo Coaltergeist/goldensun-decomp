@@ -67,6 +67,7 @@ make
 ```
 
 To speed up the build on multi-core machines, pass `-j<N>` where `N` is the number of cores. For example: `make -j8`.
+ALERT: multi-core building is currently very finnicky and should be avoided if possible. Working on a fix.
 
 ### 5. Verify byte-identical match
 
