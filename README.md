@@ -29,7 +29,7 @@ Contributions are welcome; the decomp is in its early stages and benefits from a
 
 A function is matched when its `.c` file (in [`src/`](src/)) compiles to an object that's byte-identical to the corresponding original `.s` (in [`asm/`](asm/)). Verify your work with `make compare-rom` (which fails the build if the ROM SHA1 drifts).
 
-Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form — one `.s` per function, organized by subsystem (`asm/<subsystem>/<Func>.s`) so that `asm/` mirrors `src/`. Pick one, write its C in the parallel `src/` location (it stays embedded via `INCLUDE_ASM` until it matches), iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the canonical references for the workflow.
+Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form; one `.s` per function, organized by subsystem (`asm/<subsystem>/<Func>.s`) so that `asm/` mirrors `src/`. Pick one, write its C in the parallel `src/` location (it stays embedded via `INCLUDE_ASM` until it matches), iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the go-to references for the workflow.
 
 ### Layout
 
