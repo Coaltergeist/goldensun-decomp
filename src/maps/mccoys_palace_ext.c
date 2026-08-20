@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/exports.s");
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008030.s");
 
 extern unsigned char gOvl_02008c08[];
 
@@ -23,7 +23,7 @@ void *MccoysPalaceExt_GetExits(void) {
     return (void *)gOvl_02008c50;
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_GetActors.s");
 
 void OvlFunc_910_20080f8(void)
 {
@@ -56,7 +56,7 @@ void OvlFunc_910_200812c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_GetEvents.s");
 
 #include "message.h"
 
@@ -82,7 +82,7 @@ void OvlFunc_910_20081c4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20081e4.s");
 
 // fakematch
 extern unsigned char *iwram_3001ebc;
@@ -124,7 +124,10 @@ void OvlFunc_910_200845c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_c_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_MapInit.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_200850c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20085dc.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20088e8.s");
 
 int OvlFunc_910_200890c(int *actor)
 {
@@ -154,6 +157,6 @@ int OvlFunc_910_200890c(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008974.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/imports.s");

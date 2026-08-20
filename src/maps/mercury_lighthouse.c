@@ -50,7 +50,9 @@ int OvlFunc_924_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_314_a_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008350.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20083a8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008528.s");
 
 extern unsigned int L5d50[] __asm__(".Lm924_5d50");
 extern int L5d90[] __asm__(".Lm924_5d90");
@@ -105,7 +107,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_314_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008630.s");
 
 extern int L5da8[] __asm__(".Lm924_5da8");
 extern void *OvlFunc_924_2008630(int *, void *, void *);
@@ -320,7 +322,7 @@ void OvlFunc_924_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_314_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ba4.s");
 
 extern void __Func_8091f14(int a, int b);
 
@@ -328,9 +330,9 @@ void OvlFunc_924_2008cc0(void) {
     __Func_8091f14(12, 21);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_314_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008cd0.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_d58_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008d58.s");
 
 void OvlFunc_924_2008dfc(void)
 {
@@ -346,7 +348,7 @@ void OvlFunc_924_2008dfc(void)
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_d58_c.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_e20_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetEntrances.s");
 
 int MercuryLighthouse_GetSpecialExits(void) {
     return 0;
@@ -358,7 +360,7 @@ void *MercuryLighthouse_GetExits(void) {
     return (void *)gScript_883__0200e614;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_e20_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetActors.s");
 
 extern void OvlFunc_924_200d900(void);
 
@@ -391,9 +393,10 @@ void OvlFunc_924_2008f14(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_e20_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetEvents.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_f84_a_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008f84.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ffc.s");
 
 extern int *iwram_3001ebc;
 extern int OvlFunc_924_2008f84(int);
@@ -430,7 +433,9 @@ void OvlFunc_924_20090a0(void) {
     OvlFunc_924_2008f84(val - 0x32);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_f84_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20090c0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009164.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009340.s");
 
 extern void OvlFunc_924_20083a8(void);
 extern void OvlFunc_924_2009420(void);
@@ -442,7 +447,11 @@ void OvlFunc_924_2009408(void) {
     OvlFunc_924_2009420();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_f84_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009420.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20094cc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009568.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20095e0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20096c4.s");
 
 extern void OvlFunc_924_200bb24(unsigned int a, int b, int c);
 
@@ -450,7 +459,9 @@ void OvlFunc_924_2009790(void) {
     OvlFunc_924_200bb24(0x2b20000, 0, 0x92 << 18);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_f84_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20097a8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20098f8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20099b8.s");
 
 extern void OvlFunc_924_2009bf0(void);
 
@@ -461,9 +472,13 @@ void OvlFunc_924_2009bd8(void) {
     OvlFunc_924_2009bf0();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_f84_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009bf0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009c9c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009d3c.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_1db4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009db4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a030.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a1cc.s");
 
 #include "task.h"
 #include "actor.h"
@@ -486,7 +501,7 @@ unsigned int OvlFunc_924_200a304(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_22c4_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a318.s");
 
 extern void OvlFunc_924_200a51c(void);
 
@@ -497,7 +512,7 @@ void OvlFunc_924_200a504(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_22c4_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a51c.s");
 
 void OvlFunc_924_200a600(void)
 {
@@ -523,7 +538,8 @@ void OvlFunc_924_200a600(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_22c4_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a648.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a684.s");
 
 void OvlFunc_924_200a814(void)
 {
@@ -536,9 +552,13 @@ void OvlFunc_924_200a814(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_22c4_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a844.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a8b0.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_2dcc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200adcc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200ae08.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200ae6c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200af68.s");
 
 void OvlFunc_924_200b5b8(void)
 {
@@ -624,7 +644,22 @@ void OvlFunc_924_200b660(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_35b8_a_a_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b6ac.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b788.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b860.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b948.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200ba64.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bb24.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bbd4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bc48.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_MapInit.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200ca08.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cc68.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf44.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf90.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cfcc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d158.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d1b0.s");
 
 unsigned int OvlFunc_924_200d1f0(unsigned int arg0)
 {
@@ -655,7 +690,9 @@ unsigned int OvlFunc_924_200d218(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_35b8_a_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d244.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d388.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d458.s");
 
 extern unsigned int iwram_3001edc;
 extern unsigned int gScript_924__0200de2c;
@@ -680,7 +717,8 @@ void OvlFunc_924_200d578(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_35b8_a_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d5c0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d900.s");
 
 extern void *__galloc_ewram(int a, int b);
 extern void __DeleteActor(void *p);

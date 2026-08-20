@@ -7,7 +7,7 @@ extern unsigned int Func_80b7f70();
 extern void Func_80b7e04();
 extern int Func_80b7ed8();
 
-INCLUDE_ASM("asm/battle/battle/rom_b5a0c_a_a_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5a0c.s");
 
 #include "dma.h"
 extern int _call_via_r3(void);
@@ -45,11 +45,24 @@ void ResetBG0VOFS(void) {
 
 void Func_80b5b14(void) {}
 
-INCLUDE_ASM("asm/battle/battle/rom_b5a0c_c_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5b18.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5c08.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5d3c.s");
 
 void Func_80b5e10(void) {}
 
-INCLUDE_ASM("asm/battle/battle/rom_b5a0c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5e14.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b5f0c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b606c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b60a0.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6148.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6378.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b63b0.s");
+INCLUDE_ASM("asm/battle/battle/BattleMain.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6a60.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6ae0.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6b40.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6c08.s");
 
 extern void Func_80b6c08(int, unsigned int *);
 extern void CreateBattleSpriteOverlays(unsigned int *, int);
@@ -79,13 +92,15 @@ unsigned int GetUnitDefaultColor(void) {
     return r1;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b5a0c_c_c_c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6cdc.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6d30.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6e30.s");
 
-INCLUDE_ASM("asm/battle/battle/rom_b6e7c.s");
+INCLUDE_ASM("asm/battle/battle/GetWeaponType.s");
 
-INCLUDE_ASM("asm/battle/battle/rom_b6eb4.s");
+INCLUDE_ASM("asm/battle/battle/GetWeaponSpriteID.s");
 
-INCLUDE_ASM("asm/battle/battle/rom_b6f44.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b6f44.s");
 
 extern signed char Lc2a62[] __asm__(".Lc2a62");
 
@@ -95,7 +110,7 @@ void Func_80b7410(int idx, int *out1, int *out2)
     *out2 = Lc2a62[idx * 2 + 1];
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_a_a_a_c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7424.s");
 
 extern unsigned char *_GetUnit(int);
 
@@ -115,7 +130,8 @@ int Func_80b7514(void)
     return r6;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_a_a_c_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7548.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b75dc.s");
 
 unsigned int Func_80b770c(short *p, int x)
 {
@@ -139,7 +155,10 @@ unsigned int Func_80b770c(short *p, int x)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_a_a_c_c_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7738.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b78e4.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7994.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7aac.s");
 
 extern void _DeleteSprite(void);
 
@@ -167,7 +186,7 @@ void Func_80b7b30(void) {
     *(unsigned int *)((char *)r5 + 0x50) = 0;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_a_a_c_c_c_a.s");
+INCLUDE_ASM("asm/battle/battle/CreateBattleSpriteOverlays.s");
 
 extern unsigned int iwram_3001e74;
 
@@ -244,7 +263,7 @@ int Func_80b7e60(int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_a_c_c_c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7e7c.s");
 
 
 unsigned int Func_80b7eb4(unsigned int arg0, unsigned int *arg1) {
@@ -328,7 +347,8 @@ unsigned int Func_80b7f70(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_c_c_a_a.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b7f9c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b8000.s");
 
 extern void _Actor_Stop(void *actor);
 extern void _Actor_TravelTo(void *actor, int dist, int a2, int a3);
@@ -354,7 +374,7 @@ void Func_80b8064(unsigned int arg0)
     _Actor_SetAnim((void *)r5, 1);
 }
 
-INCLUDE_ASM("asm/battle/battle/rom_b7410_c_c_a_c.s");
+INCLUDE_ASM("asm/battle/battle/Func_80b80b8.s");
 
 void Func_80b8144(unsigned int arg0) {
     unsigned int base;

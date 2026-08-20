@@ -5,11 +5,14 @@ extern void Func_801b228();
 extern void Func_801a968();
 extern void Func_801c3e8();
 
-INCLUDE_ASM("asm/ui/menu/rom_1a66c_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a66c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a778.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a7c0.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a7f4.s");
 
 void Func_801a90c(void) {}
 
-INCLUDE_ASM("asm/ui/menu/rom_1a66c_c_a_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a910.s");
 
 extern int StartTask(void *task, int priority);
 extern void Func_801a98c(void);
@@ -24,9 +27,11 @@ void Func_801a97c(void) {
     StopTask(Func_801a98c);
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1a66c_c_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801a98c.s");
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_a_a_a.s");
+INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b010.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b148.s");
 
 extern unsigned int iwram_3001e98;
 
@@ -57,7 +62,16 @@ void Func_801b228(void) {
     DisplayMenuArrowCursor2(r5, 1);
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_a_a_c_a_c.s");
+INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor2.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b36c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b398.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b424.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b4ec.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b5c0.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b664.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b810.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b9a8.s");
+INCLUDE_ASM("asm/ui/menu/Func_801b9ec.s");
 
 extern void _Func_80c10e8(unsigned short *buf, int arg);
 
@@ -76,7 +90,11 @@ void Func_801ba34(unsigned int base) {
     _Func_80c10e8(list, 0);
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_a_a_c_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801ba68.s");
+INCLUDE_ASM("asm/ui/menu/UploadIcon.s");
+INCLUDE_ASM("asm/ui/menu/Func_801bcd4.s");
+INCLUDE_ASM("asm/ui/menu/Func_801bd98.s");
+INCLUDE_ASM("asm/ui/menu/Func_801be80.s");
 
 void stub_0801C0C4(void) {}
 
@@ -86,7 +104,8 @@ void Func_801c0d0(void) {}
 void Func_801c0d4(void) {}
 void Func_801c0d8(void) {}
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_a_a_a_a_a_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c0dc.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c154.s");
 
 extern void Func_8003f3c();
 
@@ -94,7 +113,9 @@ void Func_801c17c(void) {
     Func_8003f3c();
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_a_a_a_a_a_c_a_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c188.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c21c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c244.s");
 
 extern void Func_801ef08(int);
 extern void WaitFrames(unsigned int);
@@ -148,7 +169,7 @@ int Func_801c304(unsigned short param_1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_a_a_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c34c.s");
 
 extern unsigned int iwram_3001ebc;
 extern void CloseUIBox(void *box, int noanim);
@@ -189,7 +210,10 @@ unsigned int Func_801c458(unsigned int arg0, unsigned int arg1) {
 
 int Func_801c468(void) { return 1; }
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_a_c_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c46c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c49c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c7fc.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c8a0.s");
 
 extern void Func_801c49c(void);
 
@@ -236,9 +260,14 @@ void Func_801c9bc(void) {}
 void Func_801c9c0(void) {}
 void Func_801c9c4(void) {}
 
-INCLUDE_ASM("asm/ui/menu/rom_1aeec_c_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801c9c8.s");
 
-INCLUDE_ASM("asm/ui/menu/rom_1ca1c_a_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801ca1c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801cae0.s");
+INCLUDE_ASM("asm/ui/menu/Func_801cbd4.s");
+INCLUDE_ASM("asm/ui/menu/Func_801cc50.s");
+INCLUDE_ASM("asm/ui/menu/SetUIColor.s");
+INCLUDE_ASM("asm/ui/menu/Func_801ce48.s");
 
 void Func_801ce6c(unsigned char *p)
 {
@@ -252,11 +281,13 @@ void Func_801ce6c(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1ca1c_a_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801ce90.s");
+INCLUDE_ASM("asm/ui/menu/Func_801cee0.s");
 
 void Func_801cf44(void) {}
 
-INCLUDE_ASM("asm/ui/menu/rom_1ca1c_c_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801cf48.s");
+INCLUDE_ASM("asm/ui/menu/Func_801d014.s");
 
 extern void Func_801cf48(void);
 
@@ -265,7 +296,10 @@ void Func_801d0f0(void) {
     gfree(0x14);
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1ca1c_c_c_a.s");
+INCLUDE_ASM("asm/ui/menu/Func_801d108.s");
+INCLUDE_ASM("asm/ui/menu/Menu_Settings.s");
+INCLUDE_ASM("asm/ui/menu/Func_801d94c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801d980.s");
 
 extern void Func_801d94c(void);
 
@@ -274,4 +308,6 @@ void Func_801d9bc(void) {
     gfree(0x14);
 }
 
-INCLUDE_ASM("asm/ui/menu/rom_1ca1c_c_c_c.s");
+INCLUDE_ASM("asm/ui/menu/Func_801d9d4.s");
+INCLUDE_ASM("asm/ui/menu/StartMenu_Main.s");
+INCLUDE_ASM("asm/ui/menu/Func_801dd28.s");

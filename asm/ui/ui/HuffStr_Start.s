@@ -1,0 +1,36 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start HuffStr_Start  @ 0x08019bac
+	push	{r5, r6, lr}
+	mov	r6, r10
+	mov	r5, r8
+	push	{r5, r6}
+	mov	r8, r0
+	mov	r10, r1
+	ldr	r5, =0x60
+	mov	r0, r5
+	bl	alloc_iwram
+	mov	r2, #0x84
+	mov	r6, r0
+	lsr	r5, #2
+	lsl	r2, #24
+	ldr	r3, =REG_DMA3SAD
+	ldr	r0, =Func_8015570
+	mov	r1, r6
+	orr	r2, r5
+	stmia	r3!, {r0, r1, r2}
+	sub	r3, #0xc
+	mov	r0, r8
+	mov	r1, r10
+	bl	_call_via_r6
+	mov	r0, r6
+	bl	free
+	pop	{r3, r5}
+	mov	r8, r3
+	mov	r10, r5
+	pop	{r5, r6}
+	pop	{r0}
+	bx	r0
+.func_end HuffStr_Start
+

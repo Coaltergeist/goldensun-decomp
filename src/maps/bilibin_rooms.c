@@ -77,7 +77,8 @@ void *BilibinRooms_GetEvents(void) {
     return (void *)gOvl_020088f0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/ovl_30_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_2008124.s");
+INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_20081a8.s");
 
 // fakematch
 extern unsigned char *iwram_3001ebc;
@@ -182,7 +183,7 @@ void OvlFunc_908_20082f4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/ovl_30_c_c_c_a_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_200835c.s");
 
 void OvlFunc_908_20083f4(void) {
     unsigned short a;
@@ -263,6 +264,6 @@ void OvlFunc_908_2008490(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/bilibin_rooms/BilibinRooms_MapInit.s");
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/imports.s");

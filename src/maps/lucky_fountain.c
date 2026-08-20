@@ -21,7 +21,9 @@ void *LuckyFountain_GetExits(void) {
     return (void *)gOvl_02009ac8;
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_GetActors.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008074.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20080bc.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -70,7 +72,15 @@ void OvlFunc_951_200819c(void) {
     OvlFunc_951_20088f8(0);
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_GetEvents.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_MapInit.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20084bc.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008880.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20088f8.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20089f8.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008ac8.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008d70.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008dd0.s");
 
 extern unsigned char *__MapActor_GetActor(int actor);
 
@@ -83,6 +93,8 @@ void OvlFunc_951_2008e44(int actor, int visible) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008e5c.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20096a8.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_200973c.s");
 
 INCLUDE_ASM("asm/maps/lucky_fountain/imports.s");

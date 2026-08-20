@@ -23,7 +23,7 @@ unsigned int OvlFunc_960_200833c(unsigned int arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/ovl_314_a_c.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetEntrances.s");
 
 int SuhallaDesert_GetSpecialExits(void) {
     return 0;
@@ -35,7 +35,9 @@ unsigned int SuhallaDesert_GetExits(void) {
     return (unsigned int)gOvl_020095c0;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/ovl_314_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetActors.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008400.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008464.s");
 
 extern void OvlFunc_960_2008464(int);
 
@@ -63,7 +65,7 @@ void OvlFunc_960_2008588(void) {
     OvlFunc_960_2008464(12);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/ovl_314_c_a_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008594.s");
 
 extern void OvlFunc_960_2008594(int);
 
@@ -91,7 +93,9 @@ void OvlFunc_960_200882c(void) {
     OvlFunc_960_2008594(12);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/ovl_314_c_a_c_c_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008838.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_20089cc.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008adc.s");
 
 extern unsigned int iwram_3001f30;
 
@@ -101,4 +105,12 @@ void OvlFunc_960_2008b14(void) {
     *((unsigned char *)(ptr + 0x34)) = 1;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/ovl_314_c_c.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008b24.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008ce4.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008dc8.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetEvents.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_MapInit.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008f50.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2009094.s");

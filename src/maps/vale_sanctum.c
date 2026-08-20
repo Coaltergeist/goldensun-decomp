@@ -32,7 +32,12 @@ void *ValeSanctum_GetExits(void) {
     return (void *)gOvl_0200bbc8;
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ovl_30_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_GetActors.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_GetEvents.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200827c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20082ec.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008360.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20084e8.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -60,7 +65,23 @@ void OvlFunc_888_2008574(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ovl_30_c_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20086e8.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200874c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008848.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200888c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200987c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a5c4.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a660.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a67c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a6f0.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a90c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b098.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b144.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b1b8.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b270.s");
 
 unsigned int OvlFunc_888_200b2a8(void)
 {
@@ -99,7 +120,7 @@ void OvlFunc_888_200b2d0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ovl_30_c_c_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b334.s");
 
 
 void OvlFunc_888_200b45c(void) {

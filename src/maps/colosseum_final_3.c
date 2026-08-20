@@ -26,7 +26,7 @@ unsigned int ColosseumFinal3_GetActors(void) {
     return (unsigned int)gScript_881__0200d0a8;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200804c.s");
 
 extern unsigned char L5484[] __asm__(".Lm956_5484");
 extern unsigned char L5480[] __asm__(".Lm956_5480");
@@ -43,7 +43,14 @@ void OvlFunc_956_2008188(void)
     r5();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20081b4.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20081c8.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008204.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200824c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008274.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20082f8.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008404.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20084a4.s");
 
 extern void OvlFunc_common1_2060(void);
 extern void OvlFunc_956_20084a4(void);
@@ -54,7 +61,7 @@ void OvlFunc_956_200857c(void)
 	OvlFunc_956_20084a4();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200858c.s");
 
 void OvlFunc_956_20085d0(void) {}
 
@@ -63,7 +70,8 @@ void OvlFunc_956_20085d4(void) {
     OvlFunc_common1_2060();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20085e0.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008658.s");
 
 #include "actor.h"
 
@@ -100,7 +108,7 @@ int OvlFunc_956_2008714(int arg0, int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200876c.s");
 
 extern void __Func_80118c0(unsigned int);
 extern void __Func_80118a8(unsigned int);
@@ -114,7 +122,7 @@ unsigned int OvlFunc_956_2008a20(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008a44.s");
 
 
 void OvlFunc_956_2008a84(void) {
@@ -132,7 +140,7 @@ void OvlFunc_956_2008a84(void) {
   __StopTask(OvlFunc_956_200804c);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008ad4.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -163,7 +171,8 @@ void OvlFunc_956_2008b30(void)
 
 void OvlFunc_956_2008ba0(void) {}
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008ba4.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008c5c.s");
 
 extern unsigned int OvlFunc_common1_21c8(void);
 
@@ -189,7 +198,15 @@ void *ColosseumFinal3_GetEvents(void) {
     return (void *)gScript_968__0200d488;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/ColosseumFinal3_MapInit.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200937c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20093c0.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009474.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009a0c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009c20.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009df8.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009f90.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a0f0.s");
 
 extern int __GetFieldActor(void);
 extern void __Actor_Stop(void);
@@ -219,4 +236,5 @@ void OvlFunc_956_200a2f4(unsigned int arg0, unsigned int arg1, unsigned int arg2
     }
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a330.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a4d0.s");

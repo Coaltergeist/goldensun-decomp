@@ -49,6 +49,6 @@ int ValeRiverEruption_MapInit(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river_eruption/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river_eruption/OvlFunc_889_2008074.s");
 
 INCLUDE_ASM("asm/maps/vale_river_eruption/imports.s");

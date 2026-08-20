@@ -208,7 +208,7 @@ void Func_8003d04(void) {
     CAMELOT_MEMCLEAR(&gRAMLib_end, 0x400);
 }
 
-INCLUDE_ASM("asm/video/rom_3d04_a.s");
+INCLUDE_ASM("asm/video/Func_8003d28.s");
 
 extern unsigned int gRAMLib_end__a1[248] __asm__("gRAMLib_end");
 
@@ -225,9 +225,9 @@ void Func_8003dec(unsigned int *arg0, int index)
     *arg0 = old;
 }
 
-INCLUDE_ASM("asm/video/rom_3d04_c.s");
+INCLUDE_ASM("asm/video/Func_8003e10.s");
 
-INCLUDE_ASM("asm/video/rom_3e58_a.s");
+INCLUDE_ASM("asm/video/Func_8003e58.s");
 
 #include "gba/types.h"
 #include "libcamelot.h"

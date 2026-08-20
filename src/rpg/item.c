@@ -7,7 +7,7 @@ unsigned char *GetItemInfo(unsigned int itemID) {
     return L7b6a8 + (itemID & 0x1ff) * 0x2c;
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78414_a_c.s");
+INCLUDE_ASM("asm/rpg/item/CanEquipItem.s");
 
 
 unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
@@ -19,7 +19,7 @@ unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
 	return CanEquipItem(arg0, arg1);
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78414_c_a_a.s");
+INCLUDE_ASM("asm/rpg/item/GetItemEquipSlot.s");
 
 
 int GetInventoryItem(int unit, int slot)
@@ -68,7 +68,10 @@ int FindEmptyInventorySlot(int unit)
     return count;
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78414_c_c_a_a.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078500.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078550.s");
+INCLUDE_ASM("asm/rpg/item/GiveItemTo.s");
+INCLUDE_ASM("asm/rpg/item/GiveItem.s");
 
 
 int CheckItem(int pc, int item)
@@ -87,7 +90,14 @@ int CheckItem(int pc, int item)
     return -1;
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78414_c_c_a_c.s");
+INCLUDE_ASM("asm/rpg/item/CheckPartyItem.s");
+INCLUDE_ASM("asm/rpg/item/EquipItem.s");
+INCLUDE_ASM("asm/rpg/item/GetEquippedItem.s");
+INCLUDE_ASM("asm/rpg/item/Func_807882c.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078870.s");
+INCLUDE_ASM("asm/rpg/item/Func_80788c4.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078948.s");
+INCLUDE_ASM("asm/rpg/item/CanRemoveItem.s");
 
 
 unsigned int Func_80789dc(unsigned int arg0)
@@ -119,7 +129,7 @@ unsigned int Func_8078a08(unsigned int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78414_c_c_c_a.s");
+INCLUDE_ASM("asm/rpg/item/BreakItem.s");
 
 
 int RepairItem(int unit, int item)
@@ -158,7 +168,9 @@ unsigned int GetPsynergyItemTarget(unsigned int item) {
     return *(unsigned char *)result;
 }
 
-INCLUDE_ASM("asm/rpg/item/rom_78a8c_c_a.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078aa0.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078ad0.s");
+INCLUDE_ASM("asm/rpg/item/Func_8078af8.s");
 
 
 unsigned int Func_8078b60(unsigned int arg0)

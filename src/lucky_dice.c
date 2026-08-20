@@ -13,7 +13,7 @@ int StartLuckyDice(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/lucky_dice/rom_f4008_a_a_c.s");
+INCLUDE_ASM("asm/lucky_dice/Func_80f4028.s");
 
 short Func_80f40b4(short a, short b)
 {
@@ -44,4 +44,5 @@ short Func_80f40e8(short arg0) {
     return 0x10000 / arg0;
 }
 
-INCLUDE_ASM("asm/lucky_dice/rom_f4008_c_c.s");
+INCLUDE_ASM("asm/lucky_dice/Func_80f4100.s");
+INCLUDE_ASM("asm/lucky_dice/LuckyDiceMain.s");

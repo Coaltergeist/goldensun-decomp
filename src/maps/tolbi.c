@@ -33,7 +33,8 @@ int OvlFunc_949_2008040(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_200807c.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008170.s");
 
 extern unsigned char gOvl_02009060[];
 
@@ -56,7 +57,9 @@ void *Tolbi_GetActors(void) {
     return (void *)gOvl_02009238;
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008224.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008260.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_200828c.s");
 
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
@@ -72,7 +75,8 @@ void OvlFunc_949_20082d4(void) {
     __ActorMessage(-1, 0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20082f0.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20083d0.s");
 
 extern unsigned char L1a9c[] __asm__(".Lm949_1a9c");
 extern unsigned char L14a8[] __asm__(".Lm949_14a8");
@@ -172,7 +176,11 @@ void OvlFunc_949_20085bc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20085dc.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008644.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20086e8.s");
+INCLUDE_ASM("asm/maps/tolbi/Tolbi_MapInit.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008894.s");
 
 extern void __Func_8091e9c(int x);
 
@@ -197,7 +205,7 @@ void OvlFunc_949_2008964(void) {
     __Func_8091e9c(r0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_2008980.s");
 
 struct Actor949
 {

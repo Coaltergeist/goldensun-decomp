@@ -90,7 +90,7 @@ void OvlFunc_902_20080fc(void)
   OvlFunc_902_2008098(0xc);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/ovl_30_c_c_a_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_200811c.s");
 
 
 void OvlFunc_902_20081c4(void)
@@ -112,7 +112,7 @@ void OvlFunc_902_20081e4(void)
   OvlFunc_902_2008098(r4);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/ovl_30_c_c_a_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008204.s");
 
 extern void OvlFunc_902_200811c(void);
 
@@ -241,6 +241,7 @@ void *VaultRooms2_GetEvents(void) {
     return (void *)gOvl_0200898c;
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_2/VaultRooms2_MapInit.s");
+INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008570.s");
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/imports.s");

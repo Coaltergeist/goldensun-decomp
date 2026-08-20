@@ -32,7 +32,8 @@ unsigned int *Suhalla_GetActors(void)
     return (unsigned int *)L3f0;
 }
 
-INCLUDE_ASM("asm/maps/suhalla/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008068.s");
+INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_20080b0.s");
 
 void OvlFunc_961_20080f8(void)
 {
@@ -50,7 +51,8 @@ void OvlFunc_961_20080f8(void)
   __SetFlag(0x201);
 }
 
-INCLUDE_ASM("asm/maps/suhalla/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008120.s");
+INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008194.s");
 
 extern unsigned char L758[] __asm__(".Lm961_758");
 extern unsigned char L614[] __asm__(".Lm961_614");

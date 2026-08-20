@@ -33,7 +33,9 @@ int OvlFunc_948_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200806c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20080c4.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008244.s");
 
 extern unsigned int L2644[] __asm__(".Lm948_2644");
 extern int L2684[] __asm__(".Lm948_2684");
@@ -88,7 +90,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200834c.s");
 
 extern int L269c[] __asm__(".Lm948_269c");
 extern void *OvlFunc_948_200834c(int *, void *, void *);
@@ -303,7 +305,7 @@ void OvlFunc_948_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20088c0.s");
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -313,7 +315,7 @@ void OvlFunc_948_20089dc(void) {
 
 void OvlFunc_948_20089ec(void) {}
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_GetEntrances.s");
 
 int CrossboneIsleDungeon4_GetSpecialExits(void) {
     return 0;
@@ -325,7 +327,7 @@ unsigned int CrossboneIsleDungeon4_GetExits(void) {
     return (unsigned int)gOvl_0200a970;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_GetActors.s");
 
 void OvlFunc_948_2008aa4(void) {}
 
@@ -338,7 +340,9 @@ int OvlFunc_948_2008aa8(int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ad0.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008b68.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ccc.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;
@@ -379,7 +383,8 @@ void OvlFunc_948_2008e50(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ec8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_GetEvents.s");
 
 extern void __Func_8093c00(void);
 
@@ -387,7 +392,10 @@ void OvlFunc_948_2008f34(void) {
     __Func_8093c00();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008f40.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008fdc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009070.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20090b8.s");
 
 extern void OvlFunc_948_20090b8(int);
 
@@ -400,7 +408,8 @@ void OvlFunc_948_2009114(void) {
     OvlFunc_948_20090b8(1);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009120.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200915c.s");
 
 void OvlFunc_948_2009198(void)
 {
@@ -424,7 +433,7 @@ void OvlFunc_948_2009198(void)
   __CutsceneWait(1);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_c_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20091d8.s");
 
 void OvlFunc_948_2009204(void)
 {
@@ -546,7 +555,11 @@ void OvlFunc_948_20092d4(void)
   __SetFlag(0xeeb);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_c_c_c_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009308.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200938c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200941c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200949c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200952c.s");
 
 extern void OvlFunc_948_200952c(int);
 
@@ -564,7 +577,10 @@ void OvlFunc_948_20095e4(void) {
     OvlFunc_948_200952c(2);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_a_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20095f0.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009694.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20097ac.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009838.s");
 
 /* OvlFunc_948_20098c0; REG_BLDALPHA (0x04000052) = 0xd00.
  * Value synthesized (0xd0<<4). Value var declared FIRST so it lands in r2 and
@@ -583,7 +599,7 @@ void OvlFunc_948_20098d0(void) {
     REG_BLDALPHA = value;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20098e0.s");
 
 void OvlFunc_948_2009980(void) {}
 
@@ -628,7 +644,7 @@ void OvlFunc_948_20099cc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20099e8.s");
 
 void OvlFunc_948_2009a48(void) {
     void *r0;
@@ -637,7 +653,11 @@ void OvlFunc_948_2009a48(void) {
     *(unsigned char *)((char *)r0 + 0x23) = 2;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009a70.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009a9c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009ac8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009b60.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009bc4.s");
 
 extern void OvlFunc_948_2009bc4(void);
 
@@ -661,7 +681,10 @@ void OvlFunc_948_2009c5c(void)
 	OvlFunc_948_2009c28();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009c6c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009ca0.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009ccc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009cf8.s");
 
 extern void OvlFunc_948_2009c6c(void);
 extern void OvlFunc_948_2009cf8(void);
@@ -684,7 +707,8 @@ void OvlFunc_948_2009d78(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009da0.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009df8.s");
 
 extern void OvlFunc_948_2009df8(void);
 
@@ -747,6 +771,12 @@ void OvlFunc_948_2009ec0(void) {
     __Func_808edac(0x6b, r1, r2);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/ovl_30_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009edc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_MapInit.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009fd8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a0c4.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a188.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a290.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a334.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/imports.s");

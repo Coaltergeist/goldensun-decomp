@@ -30,7 +30,7 @@ void *KolimaForest4_GetEvents(void) {
     return (void *)gOvl_02009240;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008054.s");
 
 extern void __Func_8093c00(void);
 
@@ -38,7 +38,10 @@ void OvlFunc_916_200808c(void) {
     __Func_8093c00();
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/ovl_30_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008098.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008150.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008194.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_200836c.s");
 
 extern unsigned int iwram_3001ad4[];
 extern unsigned int L20d0[] __asm__(".Lm916_20d0");
@@ -60,7 +63,17 @@ void OvlFunc_916_20083c0(void) {
     h[5] += 0xb0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/ovl_30_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20083f0.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20087e0.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20088b0.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/KolimaForest4_MapInit.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008a90.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008b3c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008b8c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008be4.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008c2c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008e64.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008ecc.s");
 
 #include "dma.h"
 extern void *iwram_3001ed0;
@@ -77,6 +90,7 @@ void OvlFunc_916_2008f54(void) {
     DMA3_COPY(iwram_3001ed0, L19d0, 0x380);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008f74.s");
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008fb4.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_4/imports.s");

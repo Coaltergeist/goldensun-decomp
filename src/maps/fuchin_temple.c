@@ -19,7 +19,7 @@ int OvlFunc_926_2008324(int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_a_c_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetEntrances.s");
 
 unsigned int FuchinTemple_GetSpecialExits(void) {
     return 0;
@@ -31,7 +31,7 @@ void *FuchinTemple_GetExits(void) {
     return (void *)gOvl_0200c8c8;
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetActors.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -84,7 +84,10 @@ void OvlFunc_926_2008414(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008484.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008518.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008658.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200871c.s");
 
 void OvlFunc_926_2008abc(void) {
     __CutsceneStart();
@@ -100,7 +103,7 @@ void OvlFunc_926_2008adc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008afc.s");
 
 void OvlFunc_926_2008bd4(void) {
     __CutsceneStart();
@@ -109,7 +112,13 @@ void OvlFunc_926_2008bd4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008bf4.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008cd4.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008db4.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008e94.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008f80.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200902c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009160.s");
 
 extern void OvlFunc_926_2008bf4(void);
 extern void OvlFunc_926_2008cd4(void);
@@ -142,7 +151,9 @@ void OvlFunc_926_20092e0(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009334.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_20093b8.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009494.s");
 
 
 void OvlFunc_926_2009d50(void) {
@@ -172,7 +183,7 @@ void OvlFunc_926_2009d50(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009dbc.s");
 
 void OvlFunc_926_200a464(void) {
     __CutsceneStart();
@@ -181,7 +192,8 @@ void OvlFunc_926_200a464(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a484.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a508.s");
 
 void OvlFunc_926_200a54c(void)
 {
@@ -195,7 +207,8 @@ void OvlFunc_926_200a54c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetEvents.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a5b8.s");
 
 extern void OvlFunc_926_200a68c(int a, int b);
 
@@ -213,7 +226,8 @@ void OvlFunc_926_200a67c(void) {
     OvlFunc_926_200a68c(-0x20, 0);
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a68c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a6d8.s");
 
 extern void __PlaySound(int);
 extern void __Func_8091e9c(int);
@@ -263,7 +277,9 @@ void OvlFunc_926_200a778(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a7ec.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200aad0.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_MapInit.s");
 
 extern unsigned char *iwram_3001f30;
 
@@ -297,4 +313,6 @@ void OvlFunc_926_200c128(void)
 	__Func_8097174();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/ovl_314_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c140.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c1c4.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c1ec.s");

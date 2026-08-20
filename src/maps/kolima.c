@@ -17,7 +17,12 @@ unsigned int OvlFunc_911_2008030(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008050.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080a0.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080cc.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008114.s");
+INCLUDE_ASM("asm/maps/kolima/Kolima_GetEntrances.s");
+INCLUDE_ASM("asm/maps/kolima/Kolima_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200b040[];
 
@@ -25,7 +30,8 @@ void *Kolima_GetExits(void) {
     return (void *)gOvl_0200b040;
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/kolima/Kolima_GetActors.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008230.s");
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -33,7 +39,12 @@ void OvlFunc_911_2008274(void) {
     __Func_80955b0(0x1b, 0, 1);
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_c_a_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/kolima/Kolima_GetEvents.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20082b4.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008304.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20083c8.s");
+INCLUDE_ASM("asm/maps/kolima/Kolima_MapInit.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008800.s");
 
 void OvlFunc_911_20088ac(unsigned int arg0, unsigned int arg1)
 {
@@ -52,7 +63,7 @@ void OvlFunc_911_20088d8(void)
 	__Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20088ec.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 extern void __CutsceneWait(unsigned int arg0);
@@ -87,7 +98,7 @@ unsigned int OvlFunc_911_200a5d8(int *p) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_c_a_c.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a608.s");
 
 extern int __Func_80929d8(int a, int b);
 extern unsigned int iwram_3001e40;
@@ -102,6 +113,8 @@ unsigned int OvlFunc_911_200a6a4(int a)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a6cc.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a7ac.s");
+INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a910.s");
 
 INCLUDE_ASM("asm/maps/kolima/imports.s");

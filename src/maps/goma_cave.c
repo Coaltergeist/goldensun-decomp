@@ -2,7 +2,7 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/goma_cave/ovl_314_a.s");
+INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetEntrances.s");
 
 unsigned int GomaCave_GetSpecialExits(void) {
     return 0;
@@ -14,7 +14,7 @@ void *GomaCave_GetExits(void) {
     return (void *)gOvl_02008920;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/ovl_314_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetActors.s");
 
 extern void OvlFunc_906_20084f4(int a);
 
@@ -50,7 +50,8 @@ void OvlFunc_906_2008380(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/ovl_314_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetEvents.s");
+INCLUDE_ASM("asm/maps/goma_cave/GomaCave_MapInit.s");
 
 void OvlFunc_906_20084c4(unsigned int arg0) {
     unsigned int r2;
@@ -79,4 +80,4 @@ void OvlFunc_906_20084d4(int arg0, int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/ovl_314_c_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave/OvlFunc_906_20084f4.s");

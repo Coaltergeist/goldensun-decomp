@@ -30,7 +30,9 @@ int OvlFunc_957_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200806c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20080c4.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008244.s");
 
 extern unsigned int L3eb4[] __asm__(".Lm957_3eb4");
 extern int L3ef4[] __asm__(".Lm957_3ef4");
@@ -85,7 +87,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200834c.s");
 
 extern int L3f0c[] __asm__(".Lm957_3f0c");
 extern void *OvlFunc_957_200834c(int *, void *, void *);
@@ -300,7 +302,7 @@ void OvlFunc_957_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20088c0.s");
 
 extern void __Func_8091f14(int a, int b);
 
@@ -324,7 +326,8 @@ void *AltmillerCave_GetExits(void) {
     return (void *)gOvl_0200c138;
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_GetActors.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008a54.s");
 
 extern unsigned char ewram_2001004[];
 extern unsigned char iwram_3001ebc[];
@@ -369,7 +372,11 @@ void OvlFunc_957_2008b24(void) {
     OvlFunc_957_2008abc(5);
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_c_c_a_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008b30.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008bc8.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c2c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c98.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008cf8.s");
 
 extern void OvlFunc_957_20080c4(void);
 extern void OvlFunc_957_2008cf8(void);
@@ -380,7 +387,7 @@ void OvlFunc_957_2008d48(void)
 	OvlFunc_957_2008cf8();
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_c_c_a_c_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008d58.s");
 
 extern unsigned char *iwram_3001f30;
 
@@ -411,7 +418,10 @@ void OvlFunc_957_2008d90(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_c_c_a_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008de8.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008eac.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008ee0.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008f10.s");
 
 extern void OvlFunc_957_2008f10(int a, int b, int c);
 
@@ -424,6 +434,16 @@ void OvlFunc_957_2008f6c(int arg0) {
     }
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008f94.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200909c.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20093f8.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ac44.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b4bc.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b518.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_GetEvents.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b610.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_MapInit.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ba30.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200bad4.s");
 
 INCLUDE_ASM("asm/maps/altmiller_cave/imports.s");

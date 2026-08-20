@@ -1,15 +1,20 @@
 /* title.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/title/rom_f2028_a.s");
+INCLUDE_ASM("asm/title/Func_80f2028.s");
+INCLUDE_ASM("asm/title/LoadGS1TitleGFX.s");
+INCLUDE_ASM("asm/title/StartTitleScreen.s");
 
 void Func_80f2b6c(void) {}
 
-INCLUDE_ASM("asm/title/rom_f2028_c_a.s");
+INCLUDE_ASM("asm/title/NintendoLogo.s");
+INCLUDE_ASM("asm/title/CamelotLogo.s");
 
 void Func_80f2eb8(void) {}
 
-INCLUDE_ASM("asm/title/rom_f2028_c_c_a_a_a.s");
+INCLUDE_ASM("asm/title/Func_80f2ebc.s");
+INCLUDE_ASM("asm/title/Func_80f2f10.s");
+INCLUDE_ASM("asm/title/Func_80f3078.s");
 
 #include "dma.h"
 #include "task.h"
@@ -65,7 +70,7 @@ void Func_80f3844(int arg0)
         *p = arg0;
 }
 
-INCLUDE_ASM("asm/title/rom_f2028_c_c_c_a_a.s");
+INCLUDE_ASM("asm/title/Func_80f3858.s");
 
 int Func_80f3898(int arg0) {
     if (arg0 > 0x1f)

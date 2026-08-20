@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/kalay_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/kalay_rooms/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetEntrances.s");
 
 int KalayRooms_GetSpecialExits(void) {
     return 0;
@@ -16,7 +16,8 @@ void *KalayRooms_GetExits(void) {
     return (void *)gOvl_02008728;
 }
 
-INCLUDE_ASM("asm/maps/kalay_rooms/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetActors.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetEvents.s");
 
 void OvlFunc_937_2008144(void) {
     __CutsceneStart();
@@ -54,6 +55,9 @@ void OvlFunc_937_200818c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay_rooms/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_20081fc.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_2008240.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_200833c.s");
 
 INCLUDE_ASM("asm/maps/kalay_rooms/imports.s");

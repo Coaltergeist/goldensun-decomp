@@ -25,7 +25,7 @@ void *ColosseumFinal1_GetActors(void) {
     return (void *)gOvl_0200c1f4;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_200804c.s");
 
 extern unsigned char L441c[] __asm__(".Lm954_441c");
 extern void OvlFunc_954_200804c(void);
@@ -37,7 +37,9 @@ void OvlFunc_954_2008134(void)
     ((void (*)(void))OvlFunc_954_200804c)();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008158.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008178.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20081a8.s");
 
 extern void OvlFunc_common1_2060(void);
 extern void OvlFunc_954_20081a8(void);
@@ -58,7 +60,11 @@ void OvlFunc_954_2008248(void)
   __SetFlag(0x303);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008270.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_200833c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_200842c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008490.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008540.s");
 
 extern void __SetFlag(int);
 
@@ -66,7 +72,7 @@ void OvlFunc_954_2008830(void) {
     __SetFlag(0xc0 << 2);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008840.s");
 
 extern int OvlFunc_common1_21c8(void);
 
@@ -84,7 +90,7 @@ void *ColosseumFinal1_GetEvents(void) {
     return (void *)gOvl_0200c420;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008974.s");
 
 extern int __MapActor_GetActor();
 
@@ -107,4 +113,9 @@ void OvlFunc_954_2008a10(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/ColosseumFinal1_MapInit.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008db8.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2009214.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20093e4.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20095e0.s");
+INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20096ec.s");

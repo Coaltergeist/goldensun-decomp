@@ -32,6 +32,10 @@ void *Title_GetEvents(void) {
     return (void *)gOvl_02008644;
 }
 
-INCLUDE_ASM("asm/maps/title/title_body.s");
+INCLUDE_ASM("asm/maps/title/Title_MapInit.s");
+INCLUDE_ASM("asm/maps/title/OvlFunc_879_20081c0.s");
+INCLUDE_ASM("asm/maps/title/OvlFunc_879_2008238.s");
+INCLUDE_ASM("asm/maps/title/OvlFunc_879_20082e8.s");
+INCLUDE_ASM("asm/maps/title/OvlFunc_879_2008454.s");
 
 INCLUDE_ASM("asm/maps/title/imports.s");

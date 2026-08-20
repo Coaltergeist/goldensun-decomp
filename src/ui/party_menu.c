@@ -31,7 +31,8 @@ unsigned int Func_80a1070(void) {
     return Func_800430c();
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1050_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1090.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a10d0.s");
 
 extern void _CloseUIBox();
 
@@ -42,7 +43,7 @@ void Func_80a1114(arg0) unsigned int *arg0; {
     }
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1050_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a112c.s");
 
 extern void _Func_801e9d4(int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4);
 
@@ -63,7 +64,8 @@ void Func_80a14f0(int arg0, unsigned int arg1, unsigned int arg2, unsigned int a
     _Func_801e9d4(arg0, i, arg1, arg2, arg3);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1050_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a153c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a15f0.s");
 
 extern unsigned char Laea4c[] __asm__(".Laea4c");
 extern void *AllocSpriteSlot(void);
@@ -100,7 +102,7 @@ unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned 
     return ret;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a172c_a_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a17c4.s");
 
 extern void _Func_801ed40();
 
@@ -137,7 +139,11 @@ unsigned int Func_80a1814(unsigned int arg0)
     return box;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_a_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1870.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a195c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a19a0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1a40.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1ac0.s");
 
 void Func_80a1bc8(void) {}
 
@@ -147,7 +153,7 @@ void Func_80a1bcc(void) {
     Func_80a1bdc(0x6c, 0x28, 8);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_a_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1bdc.s");
 
 extern void Func_80a17c4(unsigned char *);
 
@@ -242,7 +248,11 @@ void Func_80a24c4(void) {
     _SetTextColor(4);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_c_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a24d0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a2680.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a32b8.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3354.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a33d4.s");
 
 extern unsigned int iwram_3001f2c;
 
@@ -262,7 +272,7 @@ void Func_80a345c(void) {
     }
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3480.s");
 
 extern void Func_80a195c(void);
 extern void WaitFrames(unsigned int nframes);
@@ -296,7 +306,8 @@ void Func_80a34c0(void) {
     Func_80a1114(r5 + 0x40, 1);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a355c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a35f8.s");
 
 extern unsigned char iwram_3001f2c__a2[] __asm__("iwram_3001f2c");
 extern void Func_80a9cbc(void);
@@ -313,7 +324,10 @@ void Func_80a38a8(unsigned int arg0) {
     Func_80a9a5c(*(unsigned int *)((char *)r5 + 0x20), r6, 0);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_c_c_c_c_a_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a38d0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3c08.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3c98.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3ce4.s");
 
 
 void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
@@ -327,7 +341,11 @@ void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
     _Func_801e7c0(r6, *(unsigned int *)r5, 0, 0);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3d24.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3d6c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3d9c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3ddc.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3e28.s");
 
 extern unsigned char *iwram_3001f2c__a4 __asm__("iwram_3001f2c");
 extern unsigned int _GetUnit(unsigned int arg0);
@@ -360,7 +378,8 @@ void Func_80a3e88(unsigned int arg0, unsigned int arg1) {
 
 void Func_80a3eec(void) {}
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a3ef0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a40ac.s");
 
 extern unsigned int Laf2e4[] __asm__(".Laf2e4");
 
@@ -378,9 +397,16 @@ int Func_80a413c(int arg0, int arg1)
     return 0x26;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a414c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a448c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a45cc.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a46b4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a4754.s");
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a47b4_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a47b4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a4800.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a4924.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a4db4.s");
 
 extern unsigned char iwram_3001f2c__a5[] __asm__("iwram_3001f2c");
 
@@ -443,7 +469,10 @@ void Func_80a4ee0(void) {
     Func_80a23f4(r0, 0xd, 0, 0x11, 3);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a4f08.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a4f08.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a51d0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a524c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5388.s");
 
 extern unsigned char iwram_3001f2c__a11[] __asm__("iwram_3001f2c");
 extern unsigned char Laebcc[] __asm__(".Laebcc");
@@ -463,7 +492,9 @@ void Func_80a5534(void) {
     UploadSpriteGFX(r0, 0x80, Laeb4c);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a5534_a_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5578.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5614.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a56c8.s");
 
 /* FF: int stub_080A5780(void) */
 unsigned int Func_80a5780(void) {
@@ -471,7 +502,12 @@ unsigned int Func_80a5780(void) {
 }
 void Func_80a5784(void) {}
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a5534_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5788.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5b94.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5cc0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a5fe0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a602c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a60d4.s");
 
 extern unsigned char *iwram_3001f2c__a12 __asm__("iwram_3001f2c");
 
@@ -502,7 +538,10 @@ unsigned int Func_80a63dc(void) {
 }
 void Func_80a63e0(void) {}
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a5534_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a63e4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a65e4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6614.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6794.s");
 
 extern unsigned char iwram_3001f2c__a13[] __asm__("iwram_3001f2c");
 
@@ -521,11 +560,31 @@ void Func_80a6874(void)
     _CloseUIBox(*(unsigned int *)r5, 1);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a5534_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a68a8.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a68ec.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6a00.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6a98.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6b64.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a6ccc.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a735c.s");
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a7380.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7380.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7440.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7478.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a76d0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a77a4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7850.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7a34.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7d68.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a7f44.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8034.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8088.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8114.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a847c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8508.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8578.s");
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_a_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8604.s");
 
 void Func_80a8904(void) {
     register int i;
@@ -534,7 +593,10 @@ void Func_80a8904(void) {
     }
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_a_a_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8914.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8b10.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8b8c.s");
+INCLUDE_ASM("asm/ui/party_menu/LoadMoveRangeIcons.s");
 
 extern void _Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
@@ -545,7 +607,9 @@ void Func_80a8cc0(unsigned int a0, unsigned int a1, unsigned int a2, unsigned in
     _Func_8019000(a0, a3 * 2 + 0xf281, a1 + 2, a2, 0);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_a_a_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8d34.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a8f40.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a90bc.s");
 
 /* FF: int stub_080A9370(void) */
 unsigned int Func_80a9370(void) {
@@ -566,14 +630,19 @@ void Func_80a9374(unsigned int arg0, unsigned int arg1) {
 void Func_80a939c(void) {}
 void Func_80a93a0(void) {}
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a93a4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9598.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a96d8.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a99b0.s");
 
 /* FF: int stub_080A9A58(void) */
 unsigned int Func_80a9a58(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9a5c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9aec.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9b94.s");
 
 
 void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4) {
@@ -584,7 +653,12 @@ void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4) {
     Func_80a17c4(p);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_c_a_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9c18.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9cbc.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9cf8.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9d3c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9d84.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9dc4.s");
 
 extern void Func_80a22f4(void);
 extern void Func_80a2144(int);
@@ -596,14 +670,14 @@ void Func_80a9e34(void) {
 
 void Func_80a9e44(void) {}
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9e48.s");
 
 /* FF: int stub_080A9F0C(void) */
 unsigned int Func_80a9f0c(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a9f10.s");
 
 extern int _GetItemInfo(void);
 extern void Func_80aa460(int);
@@ -613,7 +687,7 @@ void Func_80aa448(void) {
     Func_80aa460(*(unsigned short *)(p + 0x28) & 0x3fff);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a8604_c_c_c_c_a_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aa460.s");
 
 int Func_80aa534(void) { return 0; }
 
@@ -640,7 +714,15 @@ unsigned int Func_80aa544(unsigned int arg0)
     return arg0;
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_aa538_c_c_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aa56c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aa768.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aac84.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aad10.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aae14.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aaf58.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aafb8.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ab1f4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ab21c.s");
 
 extern void Func_80ab21c(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
@@ -661,9 +743,13 @@ void Func_80ab2ec(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsig
     );
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_aa538_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ab314.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ab5e4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ac8fc.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80aca04.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80acab8.s");
 
-INCLUDE_ASM("asm/ui/party_menu/rom_ad274_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad274.s");
 
 extern int _DeleteSprite(int task);
 extern int Func_80ad35c;
@@ -682,7 +768,11 @@ void Func_80ad318(void) {
     StopTask((int)&Func_80ad35c);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_ad274_c_a_a.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad35c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad40c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad508.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad5b4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad5f4.s");
 
 extern unsigned char iwram_3001f2c__b1[] __asm__("iwram_3001f2c");   /* @ 0x03001F2C */
 extern unsigned int Laf304[] __asm__(".Laf304");
@@ -726,7 +816,12 @@ void Func_80ad658(void)
     StopTask((void *)&Func_80ad40c);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_ad274_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad69c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ad6d4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae2f4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae714.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae778.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae7fc.s");
 
 extern unsigned char iwram_3001f2c__a17[] __asm__("iwram_3001f2c");
 extern unsigned char Laed4c[] __asm__(".Laed4c");
@@ -792,4 +887,5 @@ unsigned int Func_80ae958(unsigned int arg0, unsigned int arg1, unsigned int arg
 	return _Func_801eadc(slot, 0x40000000, arg0, arg1, arg2);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_ae88c_c_c_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae99c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80ae9f0.s");

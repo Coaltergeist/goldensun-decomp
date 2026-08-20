@@ -4,11 +4,15 @@
 
 extern unsigned int Func_801f704();
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801de5c.s");
+INCLUDE_ASM("asm/ui/text/Func_801e260.s");
+INCLUDE_ASM("asm/ui/text/Func_801e318.s");
+INCLUDE_ASM("asm/ui/text/Func_801e3c8.s");
 
 void Func_801e418(void) {}
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801e41c.s");
+INCLUDE_ASM("asm/ui/text/SetTextColor.s");
 
 extern unsigned int iwram_3001e8c;
 
@@ -18,7 +22,11 @@ void SetTextBold(unsigned short arg0) {
     *(unsigned short *)ptr = arg0;
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/text/DrawSmallText.s");
+INCLUDE_ASM("asm/ui/text/Func_801e7c0.s");
+INCLUDE_ASM("asm/ui/text/Func_801e858.s");
+INCLUDE_ASM("asm/ui/text/Func_801e8b0.s");
+INCLUDE_ASM("asm/ui/text/UIDrawText.s");
 
 unsigned char *PrintNum(unsigned char *dest, unsigned int num, unsigned int param_3);
 void Func_801e858(unsigned char *dest, unsigned int arg2, unsigned int arg3, unsigned int arg4);
@@ -54,7 +62,8 @@ void Func_801ea08(int arg0, unsigned int arg1, unsigned int arg2, unsigned int a
     UIDrawText(pcVar1, arg2, arg3, arg4);
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/ui/text/Func_801ea3c.s");
+INCLUDE_ASM("asm/ui/text/Func_801eadc.s");
 
 extern int UploadIcon(unsigned int param_1, unsigned int param_2);
 extern int Func_801eadc(unsigned int a, unsigned int b, unsigned int c, unsigned int d, unsigned int e);
@@ -81,7 +90,7 @@ unsigned int Func_801eb90(unsigned int arg0, unsigned int arg1, unsigned int arg
     return Func_801eadc(slot, 0x80 << 23, arg2, arg3, arg4);
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801ebd8.s");
 
 int LoadUIBanner(unsigned int, unsigned int, unsigned int);
 
@@ -99,7 +108,8 @@ int Func_801ec24(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsign
 	return ret;
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_a_a_c_c.s");
+INCLUDE_ASM("asm/ui/text/Func_801ec6c.s");
+INCLUDE_ASM("asm/ui/text/Func_801ed40.s");
 
 void Func_801edcc(unsigned int arg0, int arg1)
 {
@@ -118,7 +128,13 @@ void Func_801eddc(unsigned int arg0, unsigned int arg1) {
     }
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801edec.s");
+INCLUDE_ASM("asm/ui/text/Func_801ee68.s");
+INCLUDE_ASM("asm/ui/text/Func_801eea0.s");
+INCLUDE_ASM("asm/ui/text/Func_801ef08.s");
+INCLUDE_ASM("asm/ui/text/Func_801ef68.s");
+INCLUDE_ASM("asm/ui/text/Func_801f088.s");
+INCLUDE_ASM("asm/ui/text/Func_801f200.s");
 
 extern unsigned char iwram_3001e90[];
 extern void CloseUIBox(void *, int);
@@ -130,7 +146,8 @@ void Func_801f5d4(void) {
     gfree(0x10);
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_a_a_c_a_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801f5f0.s");
+INCLUDE_ASM("asm/ui/text/Func_801f680.s");
 
 extern unsigned char iwram_3001f1c[];
 
@@ -151,7 +168,10 @@ unsigned int Func_801f704(void) {
     return r0;
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/ui/text/Func_801f730.s");
+INCLUDE_ASM("asm/ui/text/Func_801f77c.s");
+INCLUDE_ASM("asm/ui/text/PrepareSaveHeader.s");
+INCLUDE_ASM("asm/ui/text/Func_801f9b4.s");
 
 extern int Func_80056cc(void);
 extern int Func_801776c(int, int);
@@ -185,7 +205,7 @@ unsigned int Func_801fa3c(unsigned int arg0) {
     return (unsigned int)r8;
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_a_a_c_c_a_a.s");
+INCLUDE_ASM("asm/ui/text/Func_801faa8.s");
 
 extern int Func_8017364(void);
 extern void WaitFrames(int);
@@ -314,7 +334,7 @@ int Func_801fc84(void) {
     return r7;
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/text/Func_801fd34.s");
 
 extern void Func_801fd34(void);
 extern void StartTask(void (*task)(void), int priority);
@@ -331,4 +351,4 @@ void Func_801fd98(void) {
     StopTask(Func_801fd34);
 }
 
-INCLUDE_ASM("asm/ui/text/rom_1de5c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/ui/text/Func_801fda8.s");

@@ -1,7 +1,7 @@
 /* unknown/sub_809b804.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/transition/rom_9bb64_a.s");
+INCLUDE_ASM("asm/field/transition/Func_809bb64.s");
 
 extern unsigned char gBuffer[65536];
 
@@ -13,7 +13,9 @@ void Func_809bcd4(void) {
     _CloseUIBox(*(unsigned int *)(r5 + 0x1c), 2);
 }
 
-INCLUDE_ASM("asm/field/transition/rom_9bb64_c_a.s");
+INCLUDE_ASM("asm/field/transition/Func_809bcf8.s");
+INCLUDE_ASM("asm/field/transition/Func_809c138.s");
+INCLUDE_ASM("asm/field/transition/Func_809c314.s");
 
 typedef struct { unsigned char _bytes[4]; } KeyState32;
 extern KeyState32 gKeyHeld;

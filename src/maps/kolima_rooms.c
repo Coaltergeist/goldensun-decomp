@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/kolima_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/kolima_rooms/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/kolima_rooms/OvlFunc_912_2008030.s");
 
 extern unsigned char gOvl_02008318[];
 
@@ -112,6 +112,6 @@ void *KolimaRooms_GetEvents(void) {
     return (void *)gOvl_02008658;
 }
 
-INCLUDE_ASM("asm/maps/kolima_rooms/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/kolima_rooms/KolimaRooms_MapInit.s");
 
 INCLUDE_ASM("asm/maps/kolima_rooms/imports.s");

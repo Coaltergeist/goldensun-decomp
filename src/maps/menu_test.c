@@ -40,7 +40,14 @@ void OvlFunc_974_200804c(unsigned int arg0) {
     __WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/maps/menu_test/ovl_30_a_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200807c.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008130.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008148.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008160.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008180.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008198.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20081b8.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20081d8.s");
 
 extern void __Debug_TestEquipAndStatus(int);
 
@@ -100,7 +107,11 @@ void OvlFunc_974_2008244(void)
   __CalcStats(2);
 }
 
-INCLUDE_ASM("asm/maps/menu_test/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200829c.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20088c4.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008b10.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008bb8.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008cf4.s");
 
 extern void OvlFunc_974_2008cf4(void);
 
@@ -108,7 +119,8 @@ void OvlFunc_974_2008f08(void) {
     OvlFunc_974_2008cf4();
 }
 
-INCLUDE_ASM("asm/maps/menu_test/ovl_30_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008f14.s");
+INCLUDE_ASM("asm/maps/menu_test/MenuTest_MapInit.s");
 
 extern int __Debug_IconTest(unsigned int actorID);
 

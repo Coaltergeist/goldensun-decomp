@@ -29,7 +29,9 @@ int OvlFunc_905_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200806c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20080c4.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008244.s");
 
 extern unsigned int L1554[] __asm__(".Lm905_1554");
 extern int L1594[] __asm__(".Lm905_1594");
@@ -84,7 +86,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200834c.s");
 
 extern int L15ac[] __asm__(".Lm905_15ac");
 extern void *OvlFunc_905_200834c(int *, void *, void *);
@@ -299,7 +301,9 @@ void OvlFunc_905_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20088c0.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20089dc.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008a00.s");
 
 extern void __Func_80929d8(int a, int b);
 
@@ -308,7 +312,7 @@ unsigned int OvlFunc_905_2008a58(int a) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_a_a_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008a68.s");
 
 extern unsigned char gOvl_02009690[];
 
@@ -360,7 +364,9 @@ void OvlFunc_905_2008b6c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_c_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008bd0.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008ce0.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008ecc.s");
 
 extern void OvlFunc_905_2008ecc(void);
 
@@ -391,6 +397,8 @@ void *GomaCave2_GetEvents(void) {
     return (void *)gOvl_02009814;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20090c8.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200915c.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/GomaCave2_MapInit.s");
 
 INCLUDE_ASM("asm/maps/goma_cave_2/imports.s");

@@ -27,7 +27,9 @@ int OvlFunc_958_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_314_c_a.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008350.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20083a8.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008528.s");
 
 extern unsigned int L16c0[] __asm__(".Lm958_16c0");
 extern int L1700[] __asm__(".Lm958_1700");
@@ -82,7 +84,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_314_c_c_a.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008630.s");
 
 extern int L1718[] __asm__(".Lm958_1718");
 extern void *OvlFunc_958_2008630(int *, void *, void *);
@@ -297,9 +299,9 @@ void OvlFunc_958_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_314_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008ba4.s");
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_cc0_a.s");
+INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetEntrances.s");
 
 int Gondowan_GetSpecialExits(void) {
     return 0;
@@ -311,7 +313,11 @@ unsigned int Gondowan_GetExits(void) {
     return (unsigned int)gOvl_0200991c;
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_cc0_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetActors.s");
+INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetEvents.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008df0.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008f44.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008fd0.s");
 
 extern int __GetFlag(int);
 extern int __MessageID(int);
@@ -405,7 +411,7 @@ void OvlFunc_958_2009148(void)
 	OvlFunc_958_2009158();
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_cc0_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2009158.s");
 
 void OvlFunc_958_20091c4(void) {}
 
@@ -438,7 +444,7 @@ void OvlFunc_958_20091d8(unsigned int arg0, int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_cc0_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20091f8.s");
 
 void OvlFunc_958_2009380(void) {}
 
@@ -448,4 +454,4 @@ void OvlFunc_958_2009384(void) {
     __MapActor_SetPos(12, 0, 0);
 }
 
-INCLUDE_ASM("asm/maps/gondowan/ovl_cc0_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/gondowan/Gondowan_MapInit.s");

@@ -27,7 +27,9 @@ int OvlFunc_883_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200806c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20080c4.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008244.s");
 
 extern unsigned int L6190[] __asm__(".Lm883_6190");
 extern int L61d0[] __asm__(".Lm883_61d0");
@@ -82,7 +84,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200834c.s");
 
 extern int L61e8[] __asm__(".Lm883_61e8");
 extern void *OvlFunc_883_200834c(int *, void *, void *);
@@ -297,7 +299,7 @@ void OvlFunc_883_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_a_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20088c0.s");
 
 extern unsigned char gOvl_0200e708[];
 
@@ -416,7 +418,8 @@ void OvlFunc_883_2008adc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008b28.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008ba8.s");
 
 
 void OvlFunc_883_2008c60(void) {
@@ -508,7 +511,9 @@ void OvlFunc_883_2008d2c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008d70.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008d98.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008dc0.s");
 
 extern void OvlFunc_883_2008fec(void);
 
@@ -542,7 +547,11 @@ void OvlFunc_883_2008e40(void) {
     __Func_8091e9c(2);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_a_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008e54.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008e84.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008eb4.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008f5c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008f8c.s");
 
 extern unsigned char L755a[] __asm__(".Lm883_755a");
 
@@ -563,7 +572,12 @@ void OvlFunc_883_2008fbc(void)
 	__Func_8091e9c(0xa);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_a_a_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008fec.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20090d8.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20091d8.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2009244.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2009280.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20092bc.s");
 
 extern unsigned char L763c[] __asm__(".Lm883_763c");
 extern unsigned char L76cc[] __asm__(".Lm883_76cc");
@@ -582,7 +596,7 @@ void OvlFunc_883_2009454(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_a_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2009490.s");
 
 extern unsigned char L7748[] __asm__(".Lm883_7748");
 extern unsigned char L77c4[] __asm__(".Lm883_77c4");
@@ -616,7 +630,16 @@ void OvlFunc_883_2009590(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_a_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20095dc.s");
+INCLUDE_ASM("asm/maps/vale_river/ValeRiver_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200acb0.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200af14.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b1b4.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b2b0.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b380.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b45c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b4c8.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200bfb0.s");
 
 extern void __Func_8096fb0(int a, int b);
 
@@ -686,7 +709,7 @@ int OvlFunc_883_200d610(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_a_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d64c.s");
 
 extern void OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
 
@@ -705,7 +728,8 @@ unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d75c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d7fc.s");
 
 extern void __vec3_translate(unsigned int a, unsigned int b, unsigned int *c);
 
@@ -721,7 +745,8 @@ void OvlFunc_883_200d8f0(unsigned int *arg0, unsigned int arg1, unsigned int arg
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d928.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d950.s");
 
 extern unsigned int iwram_3001e40;
 
@@ -762,7 +787,7 @@ void OvlFunc_883_200da40(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_c_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200da94.s");
 
 int OvlFunc_883_200dae0(int *actor)
 {
@@ -792,7 +817,7 @@ int OvlFunc_883_200dae0(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200db48.s");
 
 extern void __Actor_SetColorswap(unsigned int arg0, unsigned int arg1);
 extern void OvlFunc_883_200dd68(unsigned int arg0);
@@ -831,6 +856,8 @@ void OvlFunc_883_200dc98(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/ovl_30_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dcc4.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd14.s");
+INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd68.s");
 
 INCLUDE_ASM("asm/maps/vale_river/imports.s");

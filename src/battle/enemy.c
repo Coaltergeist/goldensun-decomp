@@ -1,7 +1,14 @@
 /* battle/enemy.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/battle/enemy/rom_c1a34_a_a_a.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1a34.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1afc.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1c54.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1df4.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1ebc.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1f50.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c1fa8.s");
+INCLUDE_ASM("asm/battle/enemy/LoadEnemyGroup.s");
 
 extern unsigned char Lc7420[] __asm__(".Lc7420");
 
@@ -25,7 +32,10 @@ unsigned int Func_80c2384(unsigned int n)
     return Lc7420__a1[n * 4];
 }
 
-INCLUDE_ASM("asm/battle/enemy/rom_c1a34_a_a_c_c_a_a.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c23a0.s");
+INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnimUnk.s");
+INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnim.s");
+INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnimParam.s");
 
 extern int park(int, int);
 extern int r2(int);
@@ -75,6 +85,8 @@ unsigned int Func_80c2470(unsigned int arg0) {
 	return r5;
 }
 
-INCLUDE_ASM("asm/battle/enemy/rom_c1a34_a_c.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c24b0.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c24f0.s");
+INCLUDE_ASM("asm/battle/enemy/Func_80c2724.s");
 
 void Func_80c2a08(void) {}

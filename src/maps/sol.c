@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/sol/exports.s");
 
-INCLUDE_ASM("asm/maps/sol/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/sol/Sol_GetEntrances.s");
 
 int Sol_GetSpecialExits(void) {
     return 0;
@@ -16,7 +16,11 @@ void *Sol_GetExits(void) {
     return (void *)gOvl_02009f14;
 }
 
-INCLUDE_ASM("asm/maps/sol/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/sol/Sol_GetActors.s");
+INCLUDE_ASM("asm/maps/sol/Sol_GetEvents.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008154.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008200.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008258.s");
 
 extern unsigned char *iwram_3001ebc;
 
@@ -41,7 +45,15 @@ void OvlFunc_895_20083bc(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/sol/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008420.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200856c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20085ac.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20085ec.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008634.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200867c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20086c4.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200870c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008754.s");
 
 
 unsigned int OvlFunc_895_200879c(unsigned int arg0, unsigned int arg1)
@@ -66,7 +78,14 @@ unsigned int OvlFunc_895_200879c(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/sol/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20087d0.s");
+INCLUDE_ASM("asm/maps/sol/Sol_MapInit.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200892c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008a24.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008d1c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008f8c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200961c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20097c0.s");
 
 void OvlFunc_895_2009aac(void)
 {
@@ -81,6 +100,6 @@ void OvlFunc_895_2009aac(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/sol/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2009ac8.s");
 
 INCLUDE_ASM("asm/maps/sol/imports.s");

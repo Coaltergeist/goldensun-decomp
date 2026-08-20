@@ -27,7 +27,8 @@ unsigned int VaultRooms1_GetExits(void) {
     return (unsigned int)gOvl_0200da80;
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/VaultRooms1_GetActors.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008080.s");
 
 void OvlFunc_899_20080fc(void)
 {
@@ -160,7 +161,7 @@ void OvlFunc_899_20082e8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_a_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/VaultRooms1_GetEvents.s");
 
 
 void OvlFunc_899_2008354(unsigned int arg0)
@@ -173,7 +174,7 @@ void OvlFunc_899_2008354(unsigned int arg0)
 	__ActorMessage(r5, 0);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008378.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -199,7 +200,7 @@ void OvlFunc_899_2008400(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008428.s");
 
 extern int *__MapActor_GetActor(int a);
 extern void __Func_80b0278(int a, int b);
@@ -251,7 +252,7 @@ void OvlFunc_899_20084f4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200852c.s");
 
 
 void OvlFunc_899_200859c(void) {
@@ -261,7 +262,8 @@ void OvlFunc_899_200859c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_20085bc.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008690.s");
 
 
 void OvlFunc_899_20087cc(void) {
@@ -342,7 +344,7 @@ void OvlFunc_899_200882c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200891c.s");
 
 extern void OvlFunc_899_2008378(int n);
 
@@ -405,7 +407,9 @@ void OvlFunc_899_2008af4(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008b48.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008de4.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009348.s");
 
 extern void __PlaySound(int);
 extern void __Func_8091e9c(int);
@@ -415,7 +419,7 @@ void OvlFunc_899_2009990(void) {
     __Func_8091e9c(0xb);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_20099a4.s");
 
 // fakematch
 
@@ -462,7 +466,8 @@ void OvlFunc_899_20099e4(void)
     __Func_8091e9c(0xe);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009a4c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009ba0.s");
 
 extern void OvlFunc_899_200cb2c(void);
 
@@ -542,7 +547,9 @@ void OvlFunc_899_2009e80(void) {
     __Func_8010704(0xe, 0x30, 4, 1, 0xe, n6);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009f50.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200a1c8.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200a564.s");
 
 
 void OvlFunc_899_200a6e4(unsigned int arg0, int arg1, unsigned int arg2, unsigned int arg3) {
@@ -573,7 +580,7 @@ void OvlFunc_899_200a71c(void)
         __ClearFlag(0x94 << 2);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/VaultRooms1_MapInit.s");
 
 void OvlFunc_899_200aba0(void)
 {
@@ -589,7 +596,8 @@ void OvlFunc_899_200aba0(void)
     *(short *)((char *)r8 + 6) = __atan2(*(int *)((char *)r6 + 0x10) - r3, *(int *)((char *)r6 + 8) - *(int *)((char *)r8 + 8));
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200abf0.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200adb4.s");
 
 extern unsigned int __GetUnit(unsigned int);
 
@@ -613,7 +621,8 @@ unsigned int OvlFunc_899_200af98(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200afd4.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200b6f8.s");
 
 
 void OvlFunc_899_200c5cc(void)
@@ -681,12 +690,18 @@ void OvlFunc_899_200c684(void)
 	__Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c698.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c704.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c754.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7bc.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7fc.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c840.s");
 
 void OvlFunc_899_200c8a4(int arg0, unsigned char *p) {
     __Actor_TravelTo(arg0, ((int)p[0] << 19) + (0x90 << 15), 0, ((int)p[1] << 19) + (0x9e << 18));
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/ovl_30_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c8c8.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200cb2c.s");
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/imports.s");

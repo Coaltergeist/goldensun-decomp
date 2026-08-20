@@ -5,7 +5,9 @@
 
 INCLUDE_ASM("asm/maps/bilibin/exports.s");
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008030.s");
+INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetEntrances.s");
+INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200942c[];
 
@@ -19,7 +21,7 @@ void OvlFunc_907_200810c(void) {
     __Func_80955b0(9, 3, 0);
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_a_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetActors.s");
 
 extern void __CutsceneStart();
 extern void __Func_801776c();
@@ -32,7 +34,7 @@ void OvlFunc_907_2008170(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_a_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetEvents.s");
 
 void OvlFunc_907_20081ec(void)
 {
@@ -59,7 +61,7 @@ void OvlFunc_907_2008224(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_a_a_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008240.s");
 
 void OvlFunc_907_2008288(void) {
     __CutsceneStart();
@@ -96,7 +98,8 @@ void OvlFunc_907_2008308(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_a_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008328.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008404.s");
 
 extern void __Func_8093c00(void);
 
@@ -104,7 +107,12 @@ void OvlFunc_907_2008578(void) {
     __Func_8093c00();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008584.s");
+INCLUDE_ASM("asm/maps/bilibin/Bilibin_MapInit.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_20088f0.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_20089cc.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ae0.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008cb4.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern unsigned char *iwram_3001ebc;
@@ -170,6 +178,9 @@ unsigned int OvlFunc_907_2008d80(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008db4.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ed8.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008f3c.s");
+INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008fa0.s");
 
 INCLUDE_ASM("asm/maps/bilibin/imports.s");

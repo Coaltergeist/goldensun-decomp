@@ -1,7 +1,9 @@
 /* sound.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/sound/rom_f9080_a_a_a.s");
+INCLUDE_ASM("asm/sound/PlaySound.s");
+INCLUDE_ASM("asm/sound/UpdateMusicSettings.s");
+INCLUDE_ASM("asm/sound/Debug_SoundTest.s");
 
 extern void m4aSoundInit(void);
 extern unsigned char ewram_200303c;

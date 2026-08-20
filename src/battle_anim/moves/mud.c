@@ -37,4 +37,4 @@ void Anim_RottenBlood(void *context) {
     BaseAnim_Blob(context, 3);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/mud/rom_cf88c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/mud/BaseAnim_Blob.s");

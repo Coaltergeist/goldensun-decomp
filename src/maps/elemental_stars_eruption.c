@@ -30,7 +30,8 @@ unsigned int ElementalStarsEruption_GetEvents(void) {
     return (unsigned int)gOvl_0200b998;
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_a_c_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2008054.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2008e30.s");
 
 void OvlFunc_897_2008f28(void) {}
 void OvlFunc_897_2008f2c(void) {}
@@ -66,7 +67,7 @@ unsigned int OvlFunc_897_2008f54(unsigned int arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2008f64.s");
 
 extern unsigned char L3b68[] __asm__(".Lm897_3b68");
 extern unsigned char L3b00[] __asm__(".Lm897_3b00");
@@ -94,7 +95,9 @@ void OvlFunc_897_2009084(void)
     } while (cnt <= 0xf);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_20090c4.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200935c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2009410.s");
 
 void OvlFunc_897_200a820(unsigned int arg0)
 {
@@ -111,7 +114,8 @@ void OvlFunc_897_200a820(unsigned int arg0)
   __Func_8092b08(arg0, 3);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a84c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a8dc.s");
 
 extern unsigned char iwram_3001e40[];
 extern void OvlFunc_897_200a84c(int arg0);
@@ -141,7 +145,10 @@ void OvlFunc_897_200a970(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a9a4.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aba0.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ac1c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ac9c.s");
 
 extern void __PlaySound(unsigned int arg0);
 extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
@@ -188,7 +195,9 @@ void OvlFunc_897_200add0(arg0) unsigned int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae0c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae5c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
 
 extern void __Func_8096fb0(int a, int b);
 
@@ -209,6 +218,7 @@ void OvlFunc_897_200b00c(void) {
     OvlFunc_897_200add0();
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b01c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b30c.s");
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/imports.s");

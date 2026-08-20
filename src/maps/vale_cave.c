@@ -27,7 +27,9 @@ int OvlFunc_934_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_314_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008350.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20083a8.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008528.s");
 
 extern unsigned int L1e48[] __asm__(".Lm934_1e48");
 extern int ActorCmd_ARRAY_933__02009e88[];
@@ -82,7 +84,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_314_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008630.s");
 
 extern int L1ea0[] __asm__(".Lm934_1ea0");
 extern void *OvlFunc_934_2008630(int *, void *, void *);
@@ -297,7 +299,7 @@ void OvlFunc_934_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_314_a_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008ba4.s");
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -333,7 +335,7 @@ int OvlFunc_934_2008cf8(int arg0)
 
 INCLUDE_ASM("asm/maps/vale_cave/ovl_314_c_c.s");
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_d20_a.s");
+INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetEntrances.s");
 
 int ValeCave_GetSpecialExits(void) {
     return 0;
@@ -345,7 +347,11 @@ void *ValeCave_GetExits(void) {
     return (void *)gOvl_0200a1dc;
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_d20_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetActors.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008dcc.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008de8.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008e04.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008f78.s");
 
 extern void OvlFunc_934_20083a8(void);
 extern void OvlFunc_934_2008f78(void);
@@ -357,7 +363,9 @@ void OvlFunc_934_20090c8(void) {
     OvlFunc_934_2008f78();
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_d20_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20090e0.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20091a0.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009258.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;
@@ -398,9 +406,13 @@ void OvlFunc_934_2009300(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_1300_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009378.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009390.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20094ac.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20095cc.s");
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_169c_a_a_a.s");
+INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetEvents.s");
+INCLUDE_ASM("asm/maps/vale_cave/ValeCave_MapInit.s");
 
 
 void OvlFunc_934_2009748(void)
@@ -420,7 +432,8 @@ void OvlFunc_934_2009748(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_169c_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009770.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20097d8.s");
 
 extern void OvlFunc_934_20097d8(int, int, int);
 extern void OvlFunc_934_2009770(void);
@@ -446,7 +459,8 @@ void OvlFunc_934_20098f4(void) {
     __PlaySound(0x121);
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_169c_a_c_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009938.s");
+INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009984.s");
 
 
 void OvlFunc_934_2009bfc(void)

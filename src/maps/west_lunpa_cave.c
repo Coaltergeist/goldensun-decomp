@@ -21,7 +21,7 @@ unsigned int WestLunpaCave_GetExits(void) {
     return (unsigned int)gOvl_02009cac;
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/WestLunpaCave_GetActors.s");
 
 extern unsigned char gOvl_02009dd4[];
 
@@ -39,7 +39,8 @@ void OvlFunc_941_200807c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_a_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008094.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20080d4.s");
 
 struct Actor {
 unsigned char pad[0x23];
@@ -73,7 +74,13 @@ void OvlFunc_941_2008200(void) {
     __SetFlag(0x203);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008210.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_200833c.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008384.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008460.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20084a8.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008828.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20091b8.s");
 
 extern int __Func_8091c7c(int a, int b);
 
@@ -133,7 +140,7 @@ unsigned int OvlFunc_941_2009368(void)
     return 1 - ((unsigned int)(-r3 | r3) >> 31);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009394.s");
 
 unsigned int OvlFunc_941_200941c(void)
 {
@@ -144,6 +151,8 @@ unsigned int OvlFunc_941_200941c(void)
     return 1 - ((unsigned int)(-r3 | r3) >> 31);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009448.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009760.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/WestLunpaCave_MapInit.s");
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/imports.s");

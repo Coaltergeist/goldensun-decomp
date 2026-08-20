@@ -5,7 +5,8 @@
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008030.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008064.s");
 
 extern unsigned char gOvl_0200d0e4[];
 
@@ -33,7 +34,8 @@ void *ValeRiverPrologue_GetEvents(void) {
     return (void *)gOvl_0200d558;
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200810c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008134.s");
 
 extern int __GetFlag(int);
 extern void __Func_8095214(void);
@@ -54,7 +56,7 @@ void OvlFunc_882_200815c(unsigned int arg0) {
     __Func_8091e9c(arg0);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008198.s");
 
 extern void __PlaySound(int);
 
@@ -167,7 +169,12 @@ void OvlFunc_882_2008360(void)
     OvlFunc_882_200815c(9);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008398.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20083cc.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008400.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/ValeRiverPrologue_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008a10.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008d5c.s");
 
 extern void __Func_8010704(int a, int b, int c, int d, int e, int f);
 
@@ -186,7 +193,14 @@ void OvlFunc_882_2008ec4(void)
 	__Func_8010704(0x1c, 0x14, 1, 1, b, a);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008f38.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20090a4.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009154.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20092f0.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009348.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009498.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200950c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009600.s");
 
 extern void __CutsceneStart(void);
 extern void __Func_80925cc(int, int);
@@ -303,7 +317,19 @@ void OvlFunc_882_200973c(void) {
     __SetFlag(0x837);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_a_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009828.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200998c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009a64.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009b18.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a09c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a0fc.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a180.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a8a4.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200ad28.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200adec.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200b1ac.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200bc48.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200bce4.s");
 
 extern unsigned int iwram_3001e40;
 
@@ -319,7 +345,9 @@ void OvlFunc_882_200be18(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200be48.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200bfb0.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c0f0.s");
 
 extern unsigned char iwram_3001ebc__a1[] __asm__("iwram_3001ebc");
 
@@ -397,7 +425,9 @@ void OvlFunc_882_200c34c(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c378.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c3c8.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c41c.s");
 
 extern void __Func_8096fb0(int, int);
 
@@ -427,7 +457,7 @@ void OvlFunc_882_200c5a8(void)
 	OvlFunc_882_200c34c();
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c5b8.s");
 
 void OvlFunc_882_200c5fc(void)
 {

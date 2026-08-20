@@ -25,7 +25,7 @@ int OvlFunc_930_2008054(char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_a_c_c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetEntrances.s");
 
 int AlpineCrossing_GetSpecialExits(void) {
     return 0;
@@ -37,7 +37,7 @@ void *AlpineCrossing_GetExits(void) {
     return (void *)gOvl_020098ec;
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetActors.s");
 
 extern unsigned int iwram_3001ebc;
 
@@ -115,7 +115,7 @@ void OvlFunc_930_2008180(void)
   __Func_8091e9c(2);
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_a_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20081ec.s");
 
 void OvlFunc_930_200884c(void)
 {
@@ -131,7 +131,10 @@ void OvlFunc_930_200884c(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_a_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008870.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088a8.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088e0.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008924.s");
 
 // fakematch
 extern unsigned char iwram_3001ebc__a2[] __asm__("iwram_3001ebc");
@@ -168,7 +171,8 @@ void OvlFunc_930_2008ac0(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008b2c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008c30.s");
 
 void OvlFunc_930_2008fcc(void)
 {
@@ -184,7 +188,9 @@ void OvlFunc_930_2008fcc(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008ff0.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2009028.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2009060.s");
 
 extern unsigned char *__MapActor_GetActor(int idx);
 extern void __Func_8092b08(int idx, int val);
@@ -200,7 +206,7 @@ void OvlFunc_930_2009090(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20090b8.s");
 
 void OvlFunc_930_2009144(void)
 {
@@ -218,6 +224,7 @@ void OvlFunc_930_2009144(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetEvents.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_MapInit.s");
 
 INCLUDE_ASM("asm/maps/alpine_crossing/imports.s");

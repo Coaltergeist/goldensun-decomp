@@ -3,7 +3,7 @@
 
 extern void Func_809748c();
 
-INCLUDE_ASM("asm/field/psynergy/rom_97384_a.s");
+INCLUDE_ASM("asm/field/psynergy/Func_8097384.s");
 
 extern unsigned int iwram_3001ebc;
 extern int Func_8091200(unsigned int a, unsigned int b);
@@ -54,4 +54,8 @@ void Func_8097948(unsigned int r0, unsigned int r1, unsigned int r2, unsigned in
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/psynergy/rom_97384_c_c.s", ".text.psynergy_2");
+INCLUDE_ASM_SECTION("asm/field/psynergy/Func_80979a4.s", ".text.psynergy_2");
+INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a10.s", ".text.psynergy_2");
+INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a54.s", ".text.psynergy_2");
+INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a7c.s", ".text.psynergy_2");
+INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097adc.s", ".text.psynergy_2");

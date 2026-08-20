@@ -55,7 +55,7 @@ INCLUDE_ASM("asm/field/map/FindSpeakEvent.s");
 
 INCLUDE_ASM("asm/field/map/rodata_808ce74.s");
 
-INCLUDE_ASM("asm/field/map/rom_8d5dc_a.s");
+INCLUDE_ASM("asm/field/map/HandleActorEvents.s");
 
 extern void *FindMapActorEvent(int a, int b);
 extern void CutsceneStart(void);
@@ -85,9 +85,13 @@ int CallMapEventType6(int arg0)
     return ret;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d5dc_c.s");
+INCLUDE_ASM("asm/field/map/Func_808d828.s");
+INCLUDE_ASM("asm/field/map/Func_808d8f0.s");
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_a_a.s");
+INCLUDE_ASM("asm/field/map/Func_808d9a4.s");
+INCLUDE_ASM("asm/field/map/GetFieldMoveRange.s");
+INCLUDE_ASM("asm/field/map/Func_808ddec.s");
+INCLUDE_ASM("asm/field/map/Func_808df1c.s");
 
 extern void _PlaySound(unsigned int arg0);
 extern void _Actor_SetAnim(unsigned int arg0, unsigned int arg1);
@@ -110,7 +114,13 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
     return ret;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_a_c_a_a_a.s");
+INCLUDE_ASM("asm/field/map/Func_808e0b0.s");
+INCLUDE_ASM("asm/field/map/Func_808e118.s");
+INCLUDE_ASM("asm/field/map/FindFieldItemEvent.s");
+INCLUDE_ASM("asm/field/map/Func_808e23c.s");
+INCLUDE_ASM("asm/field/map/FindFieldMoveEvent.s");
+INCLUDE_ASM("asm/field/map/Func_808e5d8.s");
+INCLUDE_ASM("asm/field/map/UseFieldMove.s");
 
 extern unsigned int FindFieldMoveEvent(unsigned int, unsigned int, unsigned int *);
 
@@ -144,7 +154,7 @@ void Func_808e9a8(unsigned int arg0)
     *(int *)(p + 0x14) = r;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_a_c_a_c_c.s");
+INCLUDE_ASM("asm/field/map/Func_808e9c0.s");
 
 extern unsigned char *iwram_3001ebc;
 
@@ -251,7 +261,7 @@ void Func_808ed1c(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/field/map/Func_808ed4c.s");
 
 extern unsigned int iwram_3001ebc__a5 __asm__("iwram_3001ebc");
 
@@ -268,7 +278,10 @@ void Func_808ed78(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/field/map/Func_808edac.s");
+INCLUDE_ASM("asm/field/map/Func_808ee0c.s");
+INCLUDE_ASM("asm/field/map/Func_808eee4.s");
+INCLUDE_ASM("asm/field/map/Func_808ef70.s");
 
 extern void _DeleteActor(void *actor);
 
@@ -313,7 +326,9 @@ void Func_808f0d8(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/field/map/Func_808f140.s");
+INCLUDE_ASM("asm/field/map/Func_808f1c0.s");
+INCLUDE_ASM("asm/field/map/Func_808f28c.s");
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 
@@ -336,7 +351,10 @@ unsigned int Func_808f304(void) {
     return r0;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_a_a.s");
+INCLUDE_ASM("asm/field/map/Func_808f32c.s");
+INCLUDE_ASM("asm/field/map/Func_808f498.s");
+INCLUDE_ASM("asm/field/map/Task_ScreenWindowTransition.s");
+INCLUDE_ASM("asm/field/map/Func_808fe38.s");
 
 extern void Func_80042c8(void (*)(void));
 extern void Task_ScreenWindowTransition(void);
@@ -347,7 +365,9 @@ void Func_808feb0(void) {
     Func_80042c8(Func_808f498);
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_a_c.s");
+INCLUDE_ASM("asm/field/map/AllocGlobal1F.s");
+INCLUDE_ASM("asm/field/map/ScreenTransitionIn.s");
+INCLUDE_ASM("asm/field/map/ScreenTransitionOut.s");
 
 extern unsigned char *iwram_3001e70;
 
@@ -364,7 +384,11 @@ void Func_8090378(unsigned int a, unsigned int b, unsigned int c) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/field/map/Func_80903bc.s");
+INCLUDE_ASM("asm/field/map/Func_8090488.s");
+INCLUDE_ASM("asm/field/map/Func_8090584.s");
+INCLUDE_ASM("asm/field/map/Task_Transition300.s");
+INCLUDE_ASM("asm/field/map/Func_80907b0.s");
 
 #include "dma.h"
 extern void *galloc_ewram(int index, unsigned int size);
@@ -384,7 +408,9 @@ void Func_8090824(unsigned int arg0)
     WaitFrames(0x78);
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_c_a_a_a_c_a.s");
+INCLUDE_ASM("asm/field/map/Func_809088c.s");
+INCLUDE_ASM("asm/field/map/Func_80908e0.s");
+INCLUDE_ASM("asm/field/map/Func_8090a5c.s");
 
 #include "dma.h"
 #include "task.h"
@@ -450,7 +476,7 @@ void Func_8091240(int arg0)
         *p = arg0;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/field/map/Func_8091254.s");
 
 int Func_8091294(int arg0) {
     if (arg0 > 0x1f)
@@ -469,7 +495,8 @@ int Func_80912a8(int arg0) {
     return arg0;
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_c_a_c_c.s");
+INCLUDE_ASM("asm/field/map/Func_80912b8.s");
+INCLUDE_ASM("asm/field/map/Func_8091494.s");
 
 extern void Func_80912b8(void);
 
@@ -483,7 +510,7 @@ void Func_8091550(void) {
     Func_800439c(Func_80912b8);
 }
 
-INCLUDE_ASM("asm/field/map/rom_8d9a4_c_c_c_c_c.s");
+INCLUDE_ASM("asm/field/map/GetSpriteVoiceEntry.s");
 
 
 unsigned int MapActor_GetSpriteID(actorID) unsigned int actorID; {
@@ -506,7 +533,7 @@ unsigned int MapActor_GetSpriteID(actorID) unsigned int actorID; {
     return *(short *)v0;
 }
 
-INCLUDE_ASM("asm/field/map/rom_91584_a_c_a_a.s");
+INCLUDE_ASM("asm/field/map/GetSpriteVoice.s");
 
 extern unsigned int GetSpriteVoiceEntry(void);
 

@@ -23,7 +23,7 @@ void *TretTree_GetActors(void) {
     return (void *)gOvl_0200aa58;
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/ovl_314_c_a_a.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2008334.s");
 
 extern void OvlFunc_918_2008334(int a, int b, int c, int d);
 
@@ -145,7 +145,10 @@ void *TretTree_GetEvents(void) {
     return (void *)gOvl_0200aae8;
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/ovl_314_c_c_a.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200869c.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2008918.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2008f58.s");
+INCLUDE_ASM("asm/maps/tret_tree/TretTree_MapInit.s");
 
 /* OvlFunc_918_2009224; inline DMA3: SAD=0x05000000 (palette RAM, built as
  * 0xa0<<19), DAD=*iwram_3001ed0, CNT=0x84000070 (DMA_ENABLE|32bit, 0x70 words
@@ -157,9 +160,12 @@ void OvlFunc_918_2009224(void) {
     DMA3_COPY((void *)(0xa0 << 19), iwram_3001ed0, 0x1c0);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/ovl_314_c_c_c.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2009244.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2009424.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20095ac.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200962c.s");
 
-INCLUDE_ASM("asm/maps/tret_tree/ovl_17ec_a.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20097ec.s");
 
 extern void __StopTask(void (*fn)(void));
 extern void OvlFunc_918_2009244(void);
@@ -168,4 +174,5 @@ void OvlFunc_918_200984c(void) {
     __StopTask(OvlFunc_918_2009244);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/ovl_17ec_c.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200985c.s");
+INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20098b8.s");

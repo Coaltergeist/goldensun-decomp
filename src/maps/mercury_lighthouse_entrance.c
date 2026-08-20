@@ -41,7 +41,9 @@ int OvlFunc_923_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_314_a_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008350.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20083a8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.s");
 
 extern unsigned int L2700[] __asm__(".Lm923_2700");
 extern int L2740[] __asm__(".Lm923_2740");
@@ -96,7 +98,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_314_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008630.s");
 
 extern int L2758[] __asm__(".Lm923_2758");
 extern void *OvlFunc_923_2008630(int *, void *, void *);
@@ -311,7 +313,8 @@ void OvlFunc_923_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_314_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008ba4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008cc0.s");
 
 extern void __PlaySound(unsigned int);
 
@@ -320,9 +323,9 @@ unsigned int OvlFunc_923_2008d48(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_314_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d58.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_d98_a_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.s");
 
 void OvlFunc_923_2008e3c(void)
 {
@@ -396,7 +399,8 @@ void OvlFunc_923_2008eac(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_e90_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008ed0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008f48.s");
 
 extern void OvlFunc_923_2008ed0(int);
 
@@ -420,7 +424,7 @@ void *MercuryLighthouseEntrance_GetEvents(void) {
     return (void *)gOvl_0200ad60;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_e90_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008fd8.s");
 
 extern void __Func_8091e9c(int);
 
@@ -462,9 +466,15 @@ void OvlFunc_923_200916c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_1150_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20091b4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009208.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/MercuryLighthouseEntrance_MapInit.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009730.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200996c.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_1a3c_a_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009a3c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009bc8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009c20.s");
 
 unsigned int OvlFunc_923_2009c60(unsigned int arg0)
 {
@@ -499,7 +509,9 @@ unsigned int OvlFunc_923_2009c88(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_1a3c_a_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009cb4.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009df8.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009ec8.s");
 
 extern unsigned int iwram_3001edc;
 extern unsigned int gScript_923__0200a7dc;
@@ -524,7 +536,8 @@ void OvlFunc_923_2009fe8(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_1a3c_a_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a030.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a370.s");
 
 extern unsigned int *__galloc_ewram(int a, int b);
 extern void __DeleteActor(int a);

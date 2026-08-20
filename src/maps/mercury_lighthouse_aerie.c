@@ -45,7 +45,8 @@ void *MercuryLighthouseAerie_GetEvents(void) {
     return (void *)gOvl_0200bbe4;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/MercuryLighthouseAerie_MapInit.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200856c.s");
 
 extern int Func_8000948(int);
 
@@ -69,7 +70,9 @@ int OvlFunc_925_2008890(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_20088cc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_2008928.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_20089fc.s");
 
 void OvlFunc_925_2008ad0(void) {
     *(unsigned char *)(__MapActor_GetActor(0) + 0x55) = 3;
@@ -81,7 +84,9 @@ void OvlFunc_925_2008ad0(void) {
     *(unsigned char *)(__MapActor_GetActor(0x13) + 0x55) = 4;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_2008b24.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_2009af0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200addc.s");
 
 void OvlFunc_925_200aeb8(void)
 {
@@ -151,7 +156,11 @@ void OvlFunc_925_200aeb8(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200af18.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b060.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b1c0.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b208.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b324.s");
 
 void OvlFunc_925_200b438(void)
 {
@@ -174,4 +183,5 @@ void OvlFunc_925_200b438(void)
   __Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/ovl_314_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b460.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b4bc.s");

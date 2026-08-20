@@ -4,7 +4,8 @@
 
 extern int GetEncounterGroup();
 
-INCLUDE_ASM("asm/field/map_load/rom_8a5f8_a_a.s");
+INCLUDE_ASM("asm/field/map_load/InitMapSomething.s");
+INCLUDE_ASM("asm/field/map_load/RespawnAtSanctum.s");
 
 /* GetMapArea (GetMapArea); signed byte at offset 2 of an 8-byte-stride table
  * element. Forming the element pointer (base + map*8) first keeps the +2 a
@@ -18,7 +19,7 @@ int GetMapArea(int map) {
     return p[2];
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8a5f8_a_c_a.s");
+INCLUDE_ASM("asm/field/map_load/GameStart.s");
 
 extern short LoadMapCode();
 extern unsigned char gState[];
@@ -38,7 +39,7 @@ void Func_808ab48(void)
     LoadMapCode(*(short *)(L9f1a8 + idx * 8), __start_overlay);
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8a5f8_a_c_c.s");
+INCLUDE_ASM("asm/field/map_load/InitMapFlags.s");
 
 extern void *_PlaySound(short arg0);
 extern unsigned int gState__a1 __asm__("gState");
@@ -58,7 +59,9 @@ void PlayMapMusic(void) {
     r3 = r3;
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8ace0_a_a_a.s");
+INCLUDE_ASM("asm/field/map_load/InitEncounters.s");
+INCLUDE_ASM("asm/field/map_load/Func_808adf0.s");
+INCLUDE_ASM("asm/field/map_load/Func_808ae74.s");
 
 #include "gba/types.h"
 #include "field.h"
@@ -99,7 +102,9 @@ unsigned int Func_808b074(int index)
     return GetEncounterGroup(p[0], p[1]);
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8ace0_a_a_c_a_c.s");
+INCLUDE_ASM("asm/field/map_load/Func_808b090.s");
+INCLUDE_ASM("asm/field/map_load/GetLocationName.s");
+INCLUDE_ASM("asm/field/map_load/UpdateRespawnMap.s");
 
 extern unsigned short gState__a2[] __asm__("gState");
 
@@ -107,7 +112,9 @@ short Func_808b248(void) {
     return gState__a2[235];
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8ace0_a_a_c_c.s");
+INCLUDE_ASM("asm/field/map_load/Func_808b25c.s");
+INCLUDE_ASM("asm/field/map_load/Func_808b2b0.s");
+INCLUDE_ASM("asm/field/map_load/Func_808b320.s");
 
 extern int _GetFlag(int arg0);
 
@@ -139,7 +146,7 @@ int Func_808b3d0(int arg0, int arg1)
     return arg0;
 }
 
-INCLUDE_ASM("asm/field/map_load/rom_8ace0_a_c_c.s");
+INCLUDE_ASM("asm/field/map_load/LoadMapActors.s");
 
 extern unsigned int iwram_3001ebc__a1 __asm__("iwram_3001ebc");
 extern int GetFieldActor(int actor);

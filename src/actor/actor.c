@@ -4,12 +4,14 @@
 extern void Actor_SetScript();
 
 INCLUDE_ASM("asm/actor/actor/Func_800bfa4.s");
-INCLUDE_ASM("asm/actor/actor/rom_c004_a.s");
+INCLUDE_ASM("asm/actor/actor/InitActors.s");
 
 void Func_800c0c4(void) {}
 void Func_800c0c8(void) {}
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_a_a_a_a_a_a.s");
+INCLUDE_ASM("asm/actor/actor/NewActor.s");
+INCLUDE_ASM("asm/actor/actor/DeleteActor.s");
+INCLUDE_ASM("asm/actor/actor/CreateActor.s");
 
 void Actor_SetScript(unsigned int *actor, unsigned int script)
 {
@@ -55,7 +57,8 @@ void Actor_SetAnim(unsigned char *p, unsigned int animID) {
     }
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_a_a_a_a_c_a.s");
+INCLUDE_ASM("asm/actor/actor/Actor_SetAnimSpeed.s");
+INCLUDE_ASM("asm/actor/actor/Actor_SetAnimAndSpeed.s");
 
 void Actor_SetRotation(int actor, int rotation)
 {
@@ -136,7 +139,7 @@ void Actor_Stop(void *actor) {
     Actor_SetScript(actor, L13620);
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_a_a_c_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/actor/actor/Camera_SetTarget.s");
 
 extern void WaitFrames(unsigned int nframes);
 
@@ -167,7 +170,8 @@ void Actor_SetSpriteFlags(unsigned char *actor, unsigned int flags) {
     }
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_a_c_a.s");
+INCLUDE_ASM("asm/actor/actor/Func_800c548.s");
+INCLUDE_ASM("asm/actor/actor/Func_800c570.s");
 
 extern void Sprite_SetColorswap(void *, int);
 
@@ -182,7 +186,7 @@ void Actor_SetColorswap(void *actor, int colorswap)
     Sprite_SetColorswap(*(void **)((unsigned char *)actor + 0x50), colorswap);
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_a_c_c_a.s");
+INCLUDE_ASM("asm/actor/actor/Func_800c5b4.s");
 
 extern void Func_800439c(void *);
 extern void Func_800c62c(void);
@@ -208,11 +212,11 @@ unsigned int Func_800c628(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c004_c_c_a.s");
+INCLUDE_ASM("asm/actor/actor/Func_800c62c.s");
 
 /* FF: int stub_0800C87C(void) */
 unsigned int Func_800c87c(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/actor/rom_c880.s");
+INCLUDE_ASM("asm/actor/actor/Func_800c880.s");

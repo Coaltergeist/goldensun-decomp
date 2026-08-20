@@ -4,7 +4,7 @@
 
 extern void OvlFunc_935_2008734();
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetEntrances.s");
 
 extern unsigned char gOvl_02009c5c[];
 
@@ -12,7 +12,8 @@ void *VaultCave_GetSpecialExits(void) {
     return (void *)gOvl_02009c5c;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_30_c_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetExits.s");
+INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetActors.s");
 
 extern unsigned int iwram_3001ebc;
 
@@ -40,7 +41,7 @@ unsigned int OvlFunc_935_2008134(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/vault_cave/ovl_30_c_c.s");
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_170_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008170.s");
 
 extern void __SetFlag(int);
 
@@ -56,7 +57,7 @@ void OvlFunc_935_20082cc(void) {
 
 INCLUDE_ASM("asm/maps/vault_cave/ovl_170_c_c.s");
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_a_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetEvents.s");
 
 extern unsigned char *__MapActor_GetActor(int);
 
@@ -72,11 +73,13 @@ unsigned int OvlFunc_935_2008334(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_a_c.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008368.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008398.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20083e0.s");
 
 void OvlFunc_935_200840c(void) {}
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008410.s");
 
 
 unsigned int OvlFunc_935_2008458(void)
@@ -92,11 +95,11 @@ unsigned int OvlFunc_935_2008458(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_a_c.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_200848c.s");
 
 void OvlFunc_935_20084cc(void) {}
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20084d0.s");
 
 struct Actor935
 {
@@ -249,7 +252,7 @@ void OvlFunc_935_20086e4(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008704.s");
 
 void OvlFunc_935_2008734(void)
 {
@@ -271,7 +274,11 @@ void OvlFunc_935_2008734(void)
   while (i >= 0);
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008754.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20088a8.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008944.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20089c0.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008aa0.s");
 
 extern void __vec3_translate(unsigned int arg0, unsigned int arg1, unsigned int *arg2);
 extern void __Actor_TravelTo(unsigned char *arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
@@ -290,7 +297,7 @@ void OvlFunc_935_2008b54(unsigned char *arg0, unsigned int arg1, unsigned int ar
 
 INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_c_c.s");
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_b8c_a.s");
+INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008b8c.s");
 
 extern void OvlFunc_935_2008aa0(void);
 
@@ -339,4 +346,4 @@ void OvlFunc_935_2008c50(void)
     __StartTask(OvlFunc_935_20089c0, 0xc80);
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_b8c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_cave/VaultCave_MapInit.s");

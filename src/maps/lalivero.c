@@ -36,7 +36,10 @@ unsigned int *Lalivero_GetActors(void)
     return (unsigned int *)L1900;
 }
 
-INCLUDE_ASM("asm/maps/lalivero/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2008078.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_20080c4.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_200810c.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2008158.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -50,7 +53,9 @@ void OvlFunc_966_20081f0(void) {
     __Func_8091e9c(r3);
 }
 
-INCLUDE_ASM("asm/maps/lalivero/ovl_30_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2008218.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_20087c4.s");
+INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2009090.s");
 
 void OvlFunc_966_20091bc(void)
 {
@@ -86,6 +91,6 @@ unsigned int *Lalivero_GetEvents(void)
     return (unsigned int *)L1d04;
 }
 
-INCLUDE_ASM("asm/maps/lalivero/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lalivero/Lalivero_MapInit.s");
 
 INCLUDE_ASM("asm/maps/lalivero/imports.s");

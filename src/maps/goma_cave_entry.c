@@ -33,7 +33,7 @@ unsigned int GomaCaveEntry_GetActors(void) {
     return (unsigned int)gOvl_02009368;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/ovl_314_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008348.s");
 
 void OvlFunc_903_20083d0(void)
 {
@@ -67,7 +67,7 @@ void OvlFunc_903_20083d0(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/ovl_314_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_200843c.s");
 
 void OvlFunc_903_20084cc(void) {}
 
@@ -85,7 +85,10 @@ void *GomaCaveEntry_GetEvents(void) {
     return (void *)gOvl_02009488;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/ovl_314_c_a_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/GomaCaveEntry_MapInit.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_200867c.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008d04.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008d68.s");
 
 void OvlFunc_903_2008da8(unsigned int arg0) {
     unsigned int r2;
@@ -111,7 +114,7 @@ void OvlFunc_903_2008db8(unsigned char *arg0, int arg1) {
     }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/ovl_314_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008dd8.s");
 
 void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1in)
 {
@@ -131,4 +134,4 @@ void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1in)
     }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/ovl_314_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008fc8.s");

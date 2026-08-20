@@ -17,11 +17,12 @@ PCStats *GetPCBaseStats(unsigned int idx) {
     return base + idx;
 }
 
-INCLUDE_ASM("asm/rpg/pc/rom_78ee8_a.s");
+INCLUDE_ASM("asm/rpg/pc/ResetPCs.s");
 
 void Func_8079004(void) {}
 
-INCLUDE_ASM("asm/rpg/pc/rom_79008_a.s");
+INCLUDE_ASM("asm/rpg/pc/GetPCStatGrowth.s");
+INCLUDE_ASM("asm/rpg/pc/Func_807905c.s");
 
 extern unsigned char *GetUnit(unsigned int unit);
 extern unsigned int GetPCStatGrowth(unsigned int arg0, unsigned int arg1);
@@ -56,7 +57,7 @@ void SetMinLevel(int pcID, unsigned int level) {
 
 SECTION(".text.rpg_pc_2");
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/rom_79460_a.s", ".text.rpg_pc_2");
+INCLUDE_ASM_SECTION("asm/rpg/pc/InitEnemyUnit.s", ".text.rpg_pc_2");
 
 extern int GetFlag(int flagID);
 
@@ -72,7 +73,8 @@ int GetPartySize(void) {
     return count;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/rom_79460_c_a_a_a.s", ".text.rpg_pc_2");
+INCLUDE_ASM_SECTION("asm/rpg/pc/AddPartyMember.s", ".text.rpg_pc_2");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079664.s", ".text.rpg_pc_2");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -151,13 +153,21 @@ unsigned int AddCoinsSpent(int coins)
     return val;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/rom_79460_c_c_a_a_a.s", ".text.rpg_pc_2");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079754.s", ".text.rpg_pc_2");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_807977c.s", ".text.rpg_pc_2");
 
 SECTION(".text.rpg_pc_3");
 
 #include "nonmatching.h"
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/79bf8_rom_79460_c_c_c_c_a_c_c_a.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079bf8.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c30.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c5c.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c8c.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/CheckEquipmentCritBoost.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d1c.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d7c.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079e9c.s", ".text.rpg_pc_3");
 
 int Func_8079ef8(int arg0)
 {
@@ -167,7 +177,7 @@ int Func_8079ef8(int arg0)
 	return 0;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/79bf8_rom_79460_c_c_c_c_a_c_c_c_a_a.s", ".text.rpg_pc_3");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079f10.s", ".text.rpg_pc_3");
 
 SECTION(".text.rpg_pc_4");
 
@@ -194,4 +204,5 @@ void Func_807a628(unsigned int arg0, unsigned int arg1in)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/rom_7a664.s", ".text.rpg_pc_4");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_807a664.s", ".text.rpg_pc_4");
+INCLUDE_ASM_SECTION("asm/rpg/pc/Func_807a7a0.s", ".text.rpg_pc_4");

@@ -2,7 +2,9 @@
 /* unknown/sub_80c9048.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/render/window_effect/rom_c9048_a.s");
+INCLUDE_ASM("asm/render/window_effect/Func_80c9048.s");
+INCLUDE_ASM("asm/render/window_effect/Func_80c90e4.s");
+INCLUDE_ASM("asm/render/window_effect/Func_80c9138.s");
 
 extern unsigned char gBuffer[65536];
 

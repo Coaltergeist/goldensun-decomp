@@ -8,7 +8,8 @@ INCLUDE_ASM("asm/actor/player/Func_800eaf8.s");
 INCLUDE_ASM("asm/actor/player/Func_800eba0.s");
 
 
-INCLUDE_ASM("asm/actor/player/rom_ebec_a.s");
+INCLUDE_ASM("asm/actor/player/ActorCmd_Player.s");
+INCLUDE_ASM("asm/actor/player/ActorCmd_Player_World.s");
 
 extern unsigned int Func_800eaf8(unsigned int);
 
@@ -24,4 +25,4 @@ unsigned int ActorCmd_Camera2(unsigned int arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/actor/player/rom_ebec_c.s");
+INCLUDE_ASM("asm/actor/player/ActorCmd_Player_Climb.s");

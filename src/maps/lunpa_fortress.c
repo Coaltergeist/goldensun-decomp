@@ -30,7 +30,9 @@ int OvlFunc_959_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_30_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200806c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20080c4.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008244.s");
 
 extern unsigned int L5ed8[] __asm__(".Lm959_5ed8");
 extern int L5f18[] __asm__(".Lm959_5f18");
@@ -85,7 +87,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200834c.s");
 
 extern int L5f30[] __asm__(".Lm959_5f30");
 extern void *OvlFunc_959_200834c(int *, void *, void *);
@@ -300,15 +302,18 @@ void OvlFunc_959_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20088c0.s");
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetEntrances.s");
 
 int LunpaFortress_GetSpecialExits(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_a_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetExits.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetActors.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetEvents.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008b4c.s");
 
 extern void OvlFunc_959_20080c4(void);
 
@@ -316,7 +321,14 @@ void OvlFunc_959_2008ba0(void) {
     OvlFunc_959_20080c4();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_a_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008bac.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008bec.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c78.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c90.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008ce0.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008d54.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008dcc.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008e30.s");
 
 // fakematch
 extern unsigned char iwram_3001ebc[];
@@ -360,7 +372,8 @@ void OvlFunc_959_2008e80(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_a_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008ee0.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008f30.s");
 
 void OvlFunc_959_2008f94(void)
 {
@@ -409,14 +422,14 @@ void OvlFunc_959_200901c(void)
         __SetFlag(0xf2d);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009038.s");
 
 void OvlFunc_959_2009098(void) {}
 void OvlFunc_959_200909c(void) {}
 void OvlFunc_959_20090a0(void) {}
 void OvlFunc_959_20090a4(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20090a8.s");
 
 unsigned int OvlFunc_959_2009108(void) {
     int *p;
@@ -432,7 +445,8 @@ unsigned int OvlFunc_959_2009108(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009150.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20092e0.s");
 
 unsigned int OvlFunc_959_2009324(void) {
     int *r5;
@@ -453,7 +467,7 @@ unsigned int OvlFunc_959_2009324(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200938c.s");
 
 extern void OvlFunc_959_2009b24(int);
 extern void __CutsceneEnd(void);
@@ -478,7 +492,7 @@ unsigned int OvlFunc_959_20094cc(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009528.s");
 
 
 void OvlFunc_959_2009650(void) {
@@ -540,7 +554,7 @@ void OvlFunc_959_2009708(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009718.s");
 
 extern unsigned int iwram_3001ebc__a2 __asm__("iwram_3001ebc");
 
@@ -605,7 +619,8 @@ void OvlFunc_959_20097bc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200981c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009880.s");
 
 extern int OvlFunc_959_2009980(void);
 extern int OvlFunc_959_200981c(unsigned int arg0);
@@ -622,7 +637,13 @@ unsigned int OvlFunc_959_20098e4(unsigned int arg0)
 	return (unsigned int)(-v | v) >> 31;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009918.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009980.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20099e8.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009a44.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009ab0.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009b24.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009be4.s");
 
 void OvlFunc_959_2009c4c(unsigned int actor)
 {
@@ -782,7 +803,8 @@ void OvlFunc_959_2009e2c(void)
     __SetFlag(0x949);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_c_c_a_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009e94.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a06c.s");
 
 extern int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 
@@ -821,7 +843,15 @@ void OvlFunc_959_200a0cc(void)
     __SetFlag(0x94b);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_a_c_c_a_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a134.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a1c4.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a26c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2a0.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2d4.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a308.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a38c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a410.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a468.s");
 
 void OvlFunc_959_200a4c0(void)
 {
@@ -852,7 +882,15 @@ void OvlFunc_959_200a504(void)
 
 void OvlFunc_959_200a528(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a52c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a5f8.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a69c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a718.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a7b0.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200b054.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c638.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c704.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c794.s");
 
 extern int __GetFlag(int);
 extern void __MessageID(int);
@@ -878,7 +916,7 @@ void OvlFunc_959_200c964(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c9a0.s");
 
 extern void __Func_80955b0(int a, int b, int c);
 extern void __SetFlag(int a);
@@ -924,7 +962,7 @@ void OvlFunc_959_200cbe4(void)
     __Func_8093054(0x12, 0);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_a_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200cbfc.s");
 
 extern void __Func_8097608(void);
 extern void OvlFunc_959_200cbfc(void);
@@ -945,7 +983,7 @@ void OvlFunc_959_200cd0c(void) {
 
 void OvlFunc_959_200cd4c(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200cd50.s");
 
 
 void OvlFunc_959_200cd88(void) {
@@ -953,7 +991,10 @@ void OvlFunc_959_200cd88(void) {
     __ActorMessage(0xd, 0);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_MapInit.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200cf60.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d0e4.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d324.s");
 
 extern void OvlFunc_959_2008ee0(int);
 

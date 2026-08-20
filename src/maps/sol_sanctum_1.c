@@ -30,7 +30,10 @@ void *SolSanctum1_GetEvents(void) {
     return (void *)gOvl_0200ad34;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008054.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008108.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008150.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20081ec.s");
 
 /* OvlFunc_890_200822c; *(vu16*)0x05000000 = 0.
  * Address (0xa0<<19) and value (0) both synthesized. Value var FIRST -> r2,
@@ -42,7 +45,25 @@ void OvlFunc_890_200822c(void) {
     *p = v;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008238.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20082cc.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008360.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20083f4.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008488.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20089f4.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008c00.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008d9c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008ef8.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_200901c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009140.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009264.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009380.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009510.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009790.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009a58.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009be8.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009ca8.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/SolSanctum1_MapInit.s");
 
 extern int __GetFlag(int);
 
@@ -68,7 +89,7 @@ void OvlFunc_890_200a5fc(unsigned int arg0, unsigned int arg1)
 	__CutsceneWait(arg1);
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_200a614.s");
 
 extern void __CutsceneStart(void);
 extern void __MessageID(int a);

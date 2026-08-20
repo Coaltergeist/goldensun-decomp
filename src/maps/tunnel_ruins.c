@@ -44,7 +44,9 @@ int OvlFunc_964_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200806c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20080c4.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008244.s");
 
 extern unsigned int L31f0[] __asm__(".Lm964_31f0");
 extern int L3230[] __asm__(".Lm964_3230");
@@ -99,7 +101,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200834c.s");
 
 extern int L3248[] __asm__(".Lm964_3248");
 extern void *OvlFunc_964_200834c(int *, void *, void *);
@@ -314,7 +316,12 @@ void OvlFunc_964_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20088c0.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20089dc.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20089f4.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008a4c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ab0.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ae8.s");
 
 extern void __Actor_SetSpriteFlags();
 
@@ -324,7 +331,11 @@ unsigned int OvlFunc_964_2008cc0(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008cd0.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008dc8.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008df4.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008e20.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ec8.s");
 
 extern void __WaitFrames(unsigned int a);
 
@@ -361,7 +372,14 @@ void OvlFunc_964_2008f10(unsigned int arg0, unsigned int arg1)
   }
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008f4c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008fe8.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetEntrances.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200b85c[];
 
@@ -369,7 +387,7 @@ void *TunnelRuins_GetExits(void) {
     return (void *)gOvl_0200b85c;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetActors.s");
 
 extern void OvlFunc_964_20080c4(void);
 extern void OvlFunc_964_200a3a0(void);
@@ -387,7 +405,7 @@ void OvlFunc_964_2009318(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009348.s");
 
 extern void OvlFunc_964_200a410(void);
 
@@ -410,7 +428,8 @@ void OvlFunc_964_20093a4(void) {
     __Func_8092708(0, 6, 0);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20093b4.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20093e0.s");
 
 extern int OvlFunc_964_2008cd0(unsigned int *);
 extern void OvlFunc_964_20093e0(void);
@@ -428,7 +447,8 @@ void OvlFunc_964_2009424(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009458.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20094ac.s");
 
 extern void __SetFlag(int);
 
@@ -458,7 +478,7 @@ void OvlFunc_964_2009530(void)
         OvlFunc_964_2008df4();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_c_a_c_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009550.s");
 
 extern void OvlFunc_964_2009550(void);
 
@@ -469,7 +489,8 @@ void OvlFunc_964_20096f4(void) {
     OvlFunc_964_2009550();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_c_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200970c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009744.s");
 
 extern void OvlFunc_964_2009744(void);
 
@@ -558,7 +579,7 @@ void OvlFunc_964_20099e4(void)
     *(void **)((char *)r4 + 0x6c) = &OvlFunc_964_2008fe8;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009a10.s");
 
 
 unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
@@ -580,7 +601,9 @@ unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_c_a_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009abc.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009c2c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009d04.s");
 
 
 void OvlFunc_964_2009f5c(void) {
@@ -619,7 +642,9 @@ void OvlFunc_964_2009fc4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009fdc.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a040.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a0a4.s");
 
 extern void OvlFunc_964_200a0a4(void);
 
@@ -663,6 +688,11 @@ void OvlFunc_964_200a354(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetEvents.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a3a0.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a410.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a480.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a52c.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_MapInit.s");
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/imports.s");

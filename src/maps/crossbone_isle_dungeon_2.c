@@ -27,7 +27,9 @@ int OvlFunc_947_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008350.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20083a8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008528.s");
 
 extern unsigned int L2ca0[] __asm__(".Lm947_2ca0");
 extern int L2ce0[] __asm__(".Lm947_2ce0");
@@ -82,7 +84,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008630.s");
 
 extern int gScript_884__0200acf8[];
 extern void *OvlFunc_947_2008630(int *, void *, void *);
@@ -297,7 +299,8 @@ void OvlFunc_947_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008ba4.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008cc0.s");
 
 extern void __WaitFrames(unsigned int);
 
@@ -339,7 +342,12 @@ void OvlFunc_947_2008da8(unsigned int arg0, unsigned int arg1)
     r5[15] = 0x80 << 24;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_c_a_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008ddc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008ec8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008f58.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008fcc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200901c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009074.s");
 
 void OvlFunc_947_2009174(unsigned int arg0)
 {
@@ -363,7 +371,9 @@ void OvlFunc_947_2009174(unsigned int arg0)
 
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_c_a_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20091c4.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009268.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20093b0.s");
 
 extern void __Func_80929d8(unsigned int a, int b);
 
@@ -374,7 +384,7 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_c_c.s");
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1440_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_GetEntrances.s");
 
 unsigned int CrossboneIsleDungeon2_GetSpecialExits(void) {
     return 0;
@@ -386,7 +396,7 @@ void *CrossboneIsleDungeon2_GetExits(void) {
     return (void *)gOvl_0200b014;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1440_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_GetActors.s");
 
 extern int OvlFunc_947_2009268(void);
 extern void OvlFunc_947_20083a8(void);
@@ -400,7 +410,8 @@ void OvlFunc_947_2009528(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009544.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009578.s");
 
 extern unsigned int iwram_3001ad4;
 extern unsigned char L372c[] __asm__(".Lm947_372c");
@@ -422,7 +433,14 @@ void OvlFunc_947_20095cc(void) {
     *(unsigned short *)((char *)h + 0xa) += 0xc0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_a_a_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20095fc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200975c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20099f0.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009aa8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009be8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009d84.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009fd4.s");
 
 extern void __Func_8093fa0(void);
 
@@ -430,7 +448,7 @@ void OvlFunc_947_200a034(void) {
     __Func_8093fa0();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_a_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a040.s");
 
 extern unsigned char *iwram_3001ee0;
 
@@ -468,7 +486,7 @@ unsigned int OvlFunc_947_200a0b8(unsigned char *arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a0f0.s");
 
 extern void OvlFunc_947_200a0f0(int);
 
@@ -501,7 +519,10 @@ void OvlFunc_947_200a15c(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a1ac.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a230.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a2d8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a384.s");
 
 
 void OvlFunc_947_200a498(void)
@@ -518,9 +539,12 @@ void OvlFunc_947_200a498(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_1528_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a4cc.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a53c.s");
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_2580_a.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_GetEvents.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a5f8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a63c.s");
 
 extern void OvlFunc_947_2009aa8(void);
 struct Actor947 {
@@ -542,7 +566,8 @@ void OvlFunc_947_200a694(int arg0)
     p->fn6c = OvlFunc_947_2009aa8;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_2580_c.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a6b8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_MapInit.s");
 
 /* overlay-owned data blobs (no .text) */
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_2d64.s");

@@ -1,9 +1,18 @@
 /* battle_anim/anim_util.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd260.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim_BG1Wide.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd418.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd488.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd4b4.s");
 
-INCLUDE_ASM("asm/battle_anim/anim_util/rom_cd508_a.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd508.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd52c.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart2.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cdb24.s");
+INCLUDE_ASM("asm/battle_anim/anim_util/AnimEnd.s");
 
 extern unsigned char iwram_3001f00[];
 extern void SetRegAnimDest(int a, int b);

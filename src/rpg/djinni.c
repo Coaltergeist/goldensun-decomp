@@ -15,7 +15,11 @@ unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
     return L8926c + r3 * 12;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/rom_79460_c_c_c_c_a_c_c_c_a_c.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a0f4.s");
+INCLUDE_ASM("asm/rpg/djinni/GiveDjinni.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a1f8.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a2bc.s");
+INCLUDE_ASM("asm/rpg/djinni/SetDjinni.s");
 
 extern unsigned int Func_807a2bc(unsigned int, unsigned int, unsigned int);
 
@@ -48,7 +52,10 @@ unsigned int Func_807a350(unsigned int arg0, unsigned int arg1, unsigned int arg
     return r8;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/rom_79460_c_c_c_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a3a8.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a458.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a498.s");
+INCLUDE_ASM("asm/rpg/djinni/Func_807a550.s");
 
 
 unsigned short Func_807a5b0(void) {
@@ -57,7 +64,7 @@ unsigned short Func_807a5b0(void) {
     return *(unsigned short *)ptr;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/rom_79460_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/rpg/djinni/GetNumDjinn.s");
 
 /* Shared rpg-region rodata pool (djinni tables incl. .L8926c used by
    GetDjinniInfo); trails the region's text in ROM. */

@@ -4,7 +4,8 @@
 
 extern void OvlFunc_969_200a11c();
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_a_a_a.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008314.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.s");
 
 void OvlFunc_969_2008400(unsigned char *p)
 {
@@ -22,7 +23,7 @@ void OvlFunc_969_2008400(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_a_a_c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008424.s");
 
 extern unsigned char gOvl_0200e3d4[];
 
@@ -67,7 +68,9 @@ int OvlFunc_969_2008480(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20084bc.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008518.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20085ec.s");
 
 void OvlFunc_969_20086c0(void) {
     ((unsigned char *) __MapActor_GetActor(0))[0x55] = 3;
@@ -85,7 +88,7 @@ unsigned int VenusLighthouseAerie_GetEvents(void) {
     return (unsigned int)gOvl_0200e6ec;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/VenusLighthouseAerie_MapInit.s");
 
 extern void __ActorMessage(int a, int b);
 extern void __CutsceneWait(int a);
@@ -101,7 +104,9 @@ void OvlFunc_969_20088a8(int a, int b) {
     __Func_8092adc(a, b, 10);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20088b4.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2009280.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20092c8.s");
 
 extern unsigned int iwram_3001e40;
 extern void __Actor_SetColorswap(unsigned int, unsigned int);
@@ -132,7 +137,9 @@ void OvlFunc_969_200a11c(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a15c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a1ac.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a200.s");
 
 extern void __Func_8096fb0(int a, int b);
 
@@ -153,7 +160,7 @@ void OvlFunc_969_200a350(void) {
     OvlFunc_969_200a11c();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a360.s");
 
 void OvlFunc_969_200b5c4(void) {
     __PlaySound(0xbb);
@@ -165,7 +172,10 @@ void OvlFunc_969_200b5c4(void) {
     __WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b600.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b660.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b6d0.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b7c4.s");
 
 extern void OvlFunc_969_200bbc8(void);
 extern void OvlFunc_969_200be9c(void);
@@ -199,7 +209,13 @@ void OvlFunc_969_200b8dc(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_a_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b924.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200bbc8.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200be9c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c23c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c8d8.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200cb28.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200cbec.s");
 
 void OvlFunc_969_200d688(unsigned int arg0) {
     unsigned int r3;
@@ -214,4 +230,7 @@ void OvlFunc_969_200d688(unsigned int arg0) {
     *(unsigned short *)(arg0 + 0x64) = r3;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/ovl_314_c_c.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d6a0.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d9f0.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200da28.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200db90.s");

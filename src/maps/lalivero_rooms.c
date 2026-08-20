@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/lalivero_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008030.s");
 
 extern unsigned char gOvl_02009438[];
 
@@ -12,7 +12,7 @@ void *LaliveroRooms_GetEntrances(void) {
     return (void *)gOvl_02009438;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/ovl_30_c_a.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetSpecialExits.s");
 
 extern unsigned char gOvl_020096d0[];
 
@@ -20,7 +20,13 @@ void *LaliveroRooms_GetExits(void) {
     return (void *)gOvl_020096d0;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetActors.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_20080c8.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_200815c.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_20081c8.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008234.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_200829c.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008308.s");
 
 void OvlFunc_967_20083f4(void) {
     __SetFlag(0x9bc);
@@ -64,6 +70,9 @@ void OvlFunc_967_200848c(void)
     __PlaySound(0x7b);
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetEvents.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008508.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008eec.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_MapInit.s");
 
 INCLUDE_ASM("asm/maps/lalivero_rooms/imports.s");

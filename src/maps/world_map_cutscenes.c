@@ -5,7 +5,12 @@
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008030.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200808c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20080d4.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200811c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200813c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20081c4.s");
 
 
 unsigned int OvlFunc_881_2008250(unsigned int arg0) {
@@ -58,7 +63,9 @@ unsigned int OvlFunc_881_20082a4(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082cc.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082f0.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008314.s");
 
 
 unsigned int OvlFunc_881_2008350(unsigned char *actor)
@@ -71,7 +78,9 @@ unsigned int OvlFunc_881_2008350(unsigned char *actor)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/WorldMapCutscenes_GetActors.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20084a0.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20084f0.s");
 
 
 void OvlFunc_881_2008540(void) {
@@ -109,7 +118,7 @@ unsigned int WorldMapCutscenes_GetEvents(void) {
     return (unsigned int)gOvl_0200e3f4;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008598.s");
 
 void OvlFunc_881_20086b4(void) {
     if (__GetFlag(0x85a) == 0) {
@@ -129,7 +138,11 @@ void OvlFunc_881_20086dc(void)
 	__Func_8091e9c(0x4a);
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/WorldMapCutscenes_MapInit.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008a8c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008c28.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200955c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009680.s");
 
 void OvlFunc_881_20097a4(void)
 {
@@ -165,7 +178,19 @@ void OvlFunc_881_20097a4(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20097fc.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009888.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009938.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20099e8.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009a98.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009b5c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009c08.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009ca4.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a274.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a4a8.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a768.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a7dc.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a81c.s");
 
 
 void OvlFunc_881_200a858(void)
@@ -200,7 +225,12 @@ void OvlFunc_881_200a858(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8a8.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8e8.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200acb4.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b130.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b1fc.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b2f0.s");
 
 
 unsigned int OvlFunc_881_200b41c(void)
@@ -217,7 +247,11 @@ unsigned int OvlFunc_881_200b41c(void)
     return r6;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_a_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b448.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b4a0.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b57c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b678.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b6dc.s");
 
 
 void OvlFunc_881_200b7bc(void) {
@@ -280,7 +314,10 @@ void OvlFunc_881_200b7d8(void)
     actor[0x55] = 2;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b84c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b8fc.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b95c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b9fc.s");
 
 
 void OvlFunc_881_200bf10(unsigned int arg0)
@@ -323,6 +360,8 @@ void OvlFunc_881_200bf88(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200bfb4.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c004.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c058.s");
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/imports.s");

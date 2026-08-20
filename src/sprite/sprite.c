@@ -3,7 +3,9 @@
 
 INCLUDE_ASM("asm/sprite/sprite/UpdateSpriteAnim.s");
 
-INCLUDE_ASM("asm/sprite/sprite/rom_b074_a.s");
+INCLUDE_ASM("asm/sprite/sprite/Func_800b074.s");
+INCLUDE_ASM("asm/sprite/sprite/UpdateSprite.s");
+INCLUDE_ASM("asm/sprite/sprite/Func_800b388.s");
 
 void Sprite_SetColorswap(unsigned char *sprite, int colorswap) {
     unsigned char count;
@@ -26,7 +28,7 @@ void Sprite_SetColorswap(unsigned char *sprite, int colorswap) {
     sprite[0x25] = 1;
 }
 
-INCLUDE_ASM("asm/sprite/sprite/rom_b074_c.s");
+INCLUDE_ASM("asm/sprite/sprite/PreloadSpriteGFX.s");
 
 extern unsigned int iwram_3001e68;
 
@@ -46,7 +48,11 @@ unsigned char **GetCachedSpriteGFX(unsigned int spriteID)
     return (unsigned char **)0;
 }
 
-INCLUDE_ASM("asm/sprite/sprite/rom_b798_c_a_a.s");
+INCLUDE_ASM("asm/sprite/sprite/InitSprite.s");
+INCLUDE_ASM("asm/sprite/sprite/InitSpriteLayer.s");
+INCLUDE_ASM("asm/sprite/sprite/Sprite_AddLayer.s");
+INCLUDE_ASM("asm/sprite/sprite/Sprite_DeleteLayer.s");
+INCLUDE_ASM("asm/sprite/sprite/Sprite_DeleteLayerIndex.s");
 
 extern void *_GetSpriteInfo(int id);
 
@@ -80,7 +86,7 @@ void SpriteLayer_SetAnim(void *self, int anim) {
     *(unsigned short *)(r5 + 2) = r7;
 }
 
-INCLUDE_ASM("asm/sprite/sprite/rom_b798_c_a_c.s");
+INCLUDE_ASM("asm/sprite/sprite/Sprite_SetAnim.s");
 
 unsigned int Sprite_SetAnimTimer(unsigned char *sprite, unsigned int timer)
 {
@@ -123,9 +129,14 @@ void Sprite_SetAnimSpeed(unsigned char *sprite, int speed) {
     } while (i != 0);
 }
 
-INCLUDE_ASM("asm/sprite/sprite/rom_b798_c_c.s");
+INCLUDE_ASM("asm/sprite/sprite/InitSprites.s");
+INCLUDE_ASM("asm/sprite/sprite/CreateSpriteLayer.s");
+INCLUDE_ASM("asm/sprite/sprite/DeleteSpriteLayer.s");
+INCLUDE_ASM("asm/sprite/sprite/CreateSprite.s");
+INCLUDE_ASM("asm/sprite/sprite/DeleteSprite.s");
+INCLUDE_ASM("asm/sprite/sprite/Func_800be20.s");
 
-INCLUDE_ASM("asm/sprite/sprite/rom_be70_a.s");
+INCLUDE_ASM("asm/sprite/sprite/Func_800be70.s");
 
 extern void Func_800be70(unsigned int arg0, unsigned int arg1);
 extern void WaitFrames(unsigned int nframes);

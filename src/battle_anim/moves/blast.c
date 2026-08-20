@@ -12,4 +12,4 @@ void Anim_Blast(void *context) {
     BaseAnim_Blast(context, 0);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/blast/rom_db6c8_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/blast/BaseAnim_Blast.s");

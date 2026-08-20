@@ -6,7 +6,7 @@ INCLUDE_ASM("asm/maps/vale_kraden/exports.s");
 
 extern void __MapActor_TravelToAnim();
 
-INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_2008030.s");
 
 extern unsigned char gOvl_02009cf4[];
 
@@ -41,7 +41,9 @@ unsigned char *ValeKraden_GetEvents(void) {
     return L1efc;
 }
 
-INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_20080dc.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_2008170.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_2008964.s");
 
 extern unsigned char L20ac[] __asm__(".Lm885_20ac");
 
@@ -58,7 +60,10 @@ void OvlFunc_885_2008ba8(void)
     __Func_8091e9c(3);
 }
 
-INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_2008be0.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_20092a0.s");
+INCLUDE_ASM("asm/maps/vale_kraden/ValeKraden_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_kraden/OvlFunc_885_2009760.s");
 
 extern unsigned char iwram_3001ebc[];
 

@@ -1,7 +1,7 @@
 /* field/room_load.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/room_load/rom_8b674_a_a.s");
+INCLUDE_ASM("asm/field/room_load/InitMapActors.s");
 
 extern unsigned int iwram_3001ebc;
 
@@ -34,7 +34,9 @@ unsigned int GetMapActorSlot(unsigned int arg0) {
     return iwram_3001ebc + (arg0 << 2) + 0x14;
 }
 
-INCLUDE_ASM("asm/field/room_load/rom_8b674_c_a.s");
+INCLUDE_ASM("asm/field/room_load/Func_808b868.s");
+INCLUDE_ASM("asm/field/room_load/Func_808b8e8.s");
+INCLUDE_ASM("asm/field/room_load/Func_808b98c.s");
 
 extern int store(int);
 

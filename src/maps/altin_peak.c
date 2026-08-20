@@ -10,7 +10,7 @@ void OvlFunc_932_2008030(void) {
     __Func_8091f14(0xe, 0x17);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_a_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008040.s");
 
 extern unsigned int __MapActor_GetActor(unsigned int arg0);
 
@@ -36,7 +36,8 @@ unsigned int OvlFunc_932_20080bc(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetEntrances.s");
+INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200c85c[];
 
@@ -44,7 +45,12 @@ unsigned int AltinPeak_GetExits(void) {
     return (unsigned int)gOvl_0200c85c;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetActors.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20082cc.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008388.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083b4.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083e0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200840c.s");
 
 void OvlFunc_932_200847c(void)
 {
@@ -72,7 +78,7 @@ unsigned char f23;
   __SetFlag(0x200);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20084cc.s");
 
 void OvlFunc_932_200850c(void)
 {
@@ -200,7 +206,11 @@ unsigned char f23;
   __SetFlag(0x204);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_a_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20086a0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20086dc.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20087e8.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20088d4.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20089ec.s");
 
 extern void OvlFunc_932_20089ec(void);
 
@@ -214,7 +224,7 @@ void OvlFunc_932_2008a64(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008a94.s");
 
 extern void OvlFunc_932_2008a94(void);
 
@@ -228,7 +238,8 @@ void OvlFunc_932_2008b0c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008b3c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008bd8.s");
 
 
 void OvlFunc_932_2008c74(void) {
@@ -246,7 +257,27 @@ void OvlFunc_932_2008c88(void) {
     p[0x23] = 1;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008c9c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008d2c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008ec0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009398.s");
+INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetEvents.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009770.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009838.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009d0c.s");
+INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_MapInit.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a0d0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a310.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a428.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a490.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a5c0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a6c0.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a804.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a934.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a9dc.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200aa10.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200aa48.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ab58.s");
 
 extern unsigned char L5240[] __asm__(".Lm932_5240");
 extern unsigned char L523c[] __asm__(".Lm932_523c");
@@ -264,7 +295,7 @@ void OvlFunc_932_200abb0(unsigned int arg0, unsigned int arg1, unsigned int arg2
     __StartTask(OvlFunc_932_200ab58, 0xc8 << 4);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200abe0.s");
 
 extern unsigned char iwram_3001e40[];   /* @ 0x03001E40 */
 
@@ -319,7 +350,7 @@ void OvlFunc_932_200ad08(void)
     __Func_8092950(t, 2);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_c_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ad58.s");
 
 extern unsigned char *iwram_3001ebc;
 
@@ -384,7 +415,7 @@ void OvlFunc_932_200aeec(void)
     *p = 0;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200af10.s");
 
 extern unsigned int iwram_3001e40__s __asm__("iwram_3001e40");
 extern void __Func_8092950(int a, int b);
@@ -398,7 +429,7 @@ void OvlFunc_932_200affc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b028.s");
 
 struct Foo_a {
 unsigned char pad[0x17D];
@@ -410,7 +441,7 @@ void OvlFunc_932_200b410(void) {
     iwram_3001ebc__a2->unk17E = 0x1018;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b428.s");
 
 void OvlFunc_932_200b460(unsigned int arg0) {
     unsigned char *p;
@@ -420,11 +451,12 @@ void OvlFunc_932_200b460(unsigned int arg0) {
     __Func_8012078(0, *(int *)(p + 8), *(int *)(p + 0x10), 0xff);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b484.s");
 
 void OvlFunc_932_200b5a8(void) {}
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_c_a.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b5ac.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b668.s");
 
 void __PlaySound(unsigned int snd);
 struct Foo_b {
@@ -437,6 +469,9 @@ void OvlFunc_932_200b724(struct Foo_b* arg0) {
     __PlaySound(0x120);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b738.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b850.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b9c8.s");
+INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ba44.s");
 
 INCLUDE_ASM("asm/maps/altin_peak/imports.s");

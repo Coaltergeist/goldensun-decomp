@@ -1,0 +1,270 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start OvlFunc_943_20080c4
+	push	{r5, r6, r7, lr}
+	mov	r7, r8
+	push	{r7}
+	mov	r5, r0
+	mov	r6, r5
+	add	r6, #0x62
+	ldrb	r1, [r6]
+	mov	r8, r1
+	cmp	r1, #0
+	bne	.Lm943_da
+	b	.Lm943_21a
+.Lm943_da:
+	mov	r3, r1
+	sub	r3, #1
+	cmp	r3, #7
+	bls	.Lm943_e4
+	b	.Lm943_2b2
+.Lm943_e4:
+	ldr	r2, =.Lm943_ec
+	lsl	r3, #2
+	ldr	r3, [r3, r2]
+	mov	pc, r3
+	.align	2, 0
+.Lm943_ec:
+	.word	.Lm943_10c
+	.word	.Lm943_1d4
+	.word	.Lm943_12c
+	.word	.Lm943_1d4
+	.word	.Lm943_1aa
+	.word	.Lm943_1d4
+	.word	.Lm943_1dc
+	.word	.Lm943_214
+.Lm943_10c:
+	mov	r3, #0x80
+	lsl	r3, #11
+	str	r3, [r5, #0x30]
+	mov	r3, #0x80
+	lsl	r3, #10
+	str	r3, [r5, #0x34]
+	mov	r1, #0x86
+	mov	r2, #0xa0
+	mov	r3, #0xad
+	lsl	r3, #18
+	mov	r0, r5
+	lsl	r1, #17
+	lsl	r2, #13
+	bl	__Actor_TravelTo
+	b	.Lm943_1d4
+.Lm943_12c:
+	mov	r2, #0x80
+	ldr	r3, [r5, #0x38]
+	lsl	r2, #24
+	cmp	r3, r2
+	beq	.Lm943_138
+	b	.Lm943_2b2
+.Lm943_138:
+	ldr	r2, [r5, #0x3c]
+	cmp	r2, r3
+	beq	.Lm943_140
+	b	.Lm943_2b2
+.Lm943_140:
+	ldr	r3, [r5, #0x40]
+	cmp	r3, r2
+	beq	.Lm943_148
+	b	.Lm943_2b2
+.Lm943_148:
+	ldrb	r3, [r6]
+	mov	r0, #0x92
+	add	r3, #1
+	strb	r3, [r6]
+	bl	__PlaySound
+	mov	r3, r5
+	add	r3, #0x63
+	ldrb	r3, [r3]
+	cmp	r3, #0
+	beq	.Lm943_16c
+	mov	r1, #0xd0
+	mov	r0, #0x15
+	lsl	r1, #8
+	mov	r2, #0
+	bl	__Func_8092adc
+	b	.Lm943_178
+.Lm943_16c:
+	mov	r1, #0xb0
+	mov	r0, #0x15
+	lsl	r1, #8
+	mov	r2, #0
+	bl	__Func_8092adc
+.Lm943_178:
+	bl	__Random
+	lsl	r0, #2
+	lsr	r0, #16
+	cmp	r0, #0
+	beq	.Lm943_192
+	mov	r0, #0x15
+	bl	__MapActor_GetActor
+	mov	r3, #0x80
+	lsl	r3, #10
+	str	r3, [r0, #0x28]
+	b	.Lm943_2b2
+.Lm943_192:
+	mov	r0, #0x15
+	ldr	r1, =0x103
+	mov	r2, #0
+	bl	__MapActor_Emote
+	mov	r0, #0x15
+	bl	__MapActor_GetActor
+	mov	r3, #0xc0
+	lsl	r3, #11
+	str	r3, [r0, #0x28]
+	b	.Lm943_2b2
+.Lm943_1aa:
+	mov	r3, r5
+	add	r3, #0x63
+	ldrb	r3, [r3]
+	cmp	r3, #0
+	beq	.Lm943_1c4
+	mov	r1, #0x8d
+	mov	r0, r5
+	lsl	r1, #17
+	mov	r2, #0
+	ldr	r3, =0x2920000
+	bl	__Actor_TravelTo
+	b	.Lm943_1d4
+.Lm943_1c4:
+	mov	r1, #0xfe
+	mov	r3, #0xa7
+	mov	r0, r5
+	lsl	r1, #16
+	mov	r2, #0
+	lsl	r3, #18
+	bl	__Actor_TravelTo
+.Lm943_1d4:
+	ldrb	r3, [r6]
+	add	r3, #1
+	strb	r3, [r6]
+	b	.Lm943_2b2
+.Lm943_1dc:
+	mov	r1, #0x80
+	ldr	r3, [r5, #0x38]
+	lsl	r1, #24
+	cmp	r3, r1
+	bne	.Lm943_2b2
+	ldr	r2, [r5, #0x3c]
+	cmp	r2, r3
+	bne	.Lm943_2b2
+	ldr	r3, [r5, #0x40]
+	cmp	r3, r2
+	bne	.Lm943_2b2
+	mov	r3, #0x80
+	lsl	r3, #10
+	str	r3, [r5, #0x30]
+	mov	r3, #0x80
+	lsl	r3, #9
+	str	r3, [r5, #0x34]
+	mov	r3, r5
+	mov	r2, #0
+	add	r3, #0x64
+	strh	r2, [r3]
+	add	r3, #2
+	strh	r2, [r3]
+	ldrb	r3, [r6]
+	add	r3, #1
+	strb	r3, [r6]
+	str	r2, [r5, #0x4c]
+	b	.Lm943_2b2
+.Lm943_214:
+	mov	r3, #0
+	strb	r3, [r6]
+	b	.Lm943_2b2
+.Lm943_21a:
+	mov	r7, r5
+	add	r7, #0x64
+	mov	r2, #0
+	ldrsh	r3, [r7, r2]
+	cmp	r3, #0
+	beq	.Lm943_240
+	bl	__Random
+	ldr	r3, [r5, #0x4c]
+	lsl	r0, #12
+	lsr	r0, #16
+	ldr	r1, =0xffffc000
+	sub	r3, r0
+	str	r3, [r5, #0x4c]
+	cmp	r3, r1
+	bge	.Lm943_25a
+	mov	r2, r8
+	strh	r2, [r7]
+	b	.Lm943_25a
+.Lm943_240:
+	bl	__Random
+	ldr	r3, [r5, #0x4c]
+	lsl	r0, #12
+	lsr	r0, #16
+	mov	r1, #0x80
+	add	r3, r0
+	lsl	r1, #7
+	str	r3, [r5, #0x4c]
+	cmp	r3, r1
+	ble	.Lm943_25a
+	mov	r3, #1
+	strh	r3, [r7]
+.Lm943_25a:
+	ldr	r1, =0xff07ffff
+	ldr	r2, [r5, #8]
+	add	r3, r2, r1
+	ldr	r1, =0x2bfffe
+	cmp	r3, r1
+	bhi	.Lm943_26c
+	ldr	r3, [r5, #0x4c]
+	add	r3, r2, r3
+	str	r3, [r5, #8]
+.Lm943_26c:
+	mov	r7, r5
+	add	r7, #0x66
+	mov	r2, #0
+	ldrsh	r3, [r7, r2]
+	cmp	r3, #0
+	beq	.Lm943_292
+	bl	__Random
+	ldr	r3, [r5, #0xc]
+	lsl	r0, #15
+	lsr	r0, #16
+	ldr	r1, =0xffff8000
+	sub	r3, r0
+	add	r3, r1
+	str	r3, [r5, #0xc]
+	cmp	r3, #0
+	bge	.Lm943_2b2
+	mov	r3, #0
+	b	.Lm943_2b0
+.Lm943_292:
+	bl	__Random
+	ldr	r3, [r5, #0xc]
+	lsl	r0, #15
+	lsr	r0, #16
+	mov	r2, #0x80
+	add	r3, r0
+	lsl	r2, #8
+	mov	r1, #0x80
+	add	r3, r2
+	lsl	r1, #12
+	str	r3, [r5, #0xc]
+	cmp	r3, r1
+	ble	.Lm943_2b2
+	mov	r3, #1
+.Lm943_2b0:
+	strh	r3, [r7]
+.Lm943_2b2:
+	bl	__Random
+	mov	r3, #0x64
+	mul	r3, r0
+	lsr	r3, #16
+	cmp	r3, #0
+	bne	.Lm943_2c4
+	mov	r3, #1
+	strb	r3, [r6]
+.Lm943_2c4:
+	mov	r0, #1
+	pop	{r3}
+	mov	r8, r3
+	pop	{r5, r6, r7}
+	pop	{r1}
+	bx	r1
+.func_end OvlFunc_943_20080c4
+

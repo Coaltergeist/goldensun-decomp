@@ -10,7 +10,9 @@ unsigned char *GetMoveInfo(int moveID) {
     return L7ee58 + (idx << 4);
 }
 
-INCLUDE_ASM("asm/rpg/move/rom_78b9c_a_c.s");
+INCLUDE_ASM("asm/rpg/move/HasMove.s");
+INCLUDE_ASM("asm/rpg/move/Func_8078bf0.s");
+INCLUDE_ASM("asm/rpg/move/GiveInnateMove.s");
 
 extern int Func_80792c4(void);
 

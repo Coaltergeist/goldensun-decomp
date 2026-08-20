@@ -1,0 +1,242 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start Func_80a63e4  @ 0x080a63e4
+	push	{r5, r6, r7, lr}
+	mov	r7, r11
+	mov	r6, r10
+	mov	r5, r9
+	push	{r5, r6, r7}
+	mov	r7, r8
+	push	{r7}
+	sub	sp, #0xc
+	str	r0, [sp, #8]
+	ldr	r3, =iwram_3001f2c
+	ldr	r6, [r3]
+	ldr	r2, =0x219
+	mov	r1, #0x1d
+	ldrsb	r1, [r6, r1]
+	add	r3, r6, r2
+	ldrb	r3, [r3]
+	mov	r8, r1
+	mov	r1, #0
+	str	r1, [sp, #4]
+	str	r1, [sp]
+	mov	r11, r3
+	mov	r3, #1
+	mov	r9, r3
+	mov	r3, #0x1c
+	ldrsb	r3, [r6, r3]
+	sub	r2, #0x11
+	lsl	r3, #1
+	add	r3, r2
+	ldrh	r0, [r6, r3]
+	bl	_GetUnit
+	mov	r3, r8
+	lsl	r3, #1
+	mov	r10, r3
+	mov	r0, r10
+	add	r0, r8
+	lsl	r0, #3
+	sub	r0, #0xa
+	mov	r1, #0x10
+	bl	Func_80a1ac0
+	b	.La6582
+
+	.pool_aligned
+
+.La6440:
+	mov	r1, r9
+	cmp	r1, #0
+	beq	.La6500
+	mov	r0, r8
+	mov	r2, #0
+	mov	r1, r11
+	add	r0, r11
+	mov	r9, r2
+	bl	__modsi3
+	mov	r8, r0
+	mov	r3, r8
+	lsl	r3, #1
+	mov	r7, #0x82
+	mov	r10, r3
+	lsl	r7, #2
+	add	r7, r10
+	ldrh	r0, [r6, r7]
+	bl	_GetUnit
+	ldr	r3, [r6, #0x10]
+	mov	r1, r10
+	ldrh	r2, [r3, #0xc]
+	add	r1, r8
+	add	r2, r1
+	ldr	r5, [r6, #0x18]
+	ldr	r3, =0xffff
+	lsl	r2, #3
+	sub	r2, #2
+	strh	r2, [r5, #6]
+	and	r2, r3
+	ldr	r3, =0x1ff
+	ldr	r1, =0xfffffe00
+	and	r2, r3
+	ldrh	r3, [r5, #0x16]
+	and	r3, r1
+	orr	r3, r2
+	strh	r3, [r5, #0x16]
+	ldr	r1, [sp, #8]
+	cmp	r1, #0
+	bne	.La6506
+	b	.La64a0
+
+	.pool_aligned
+
+.La64a0:
+	ldr	r0, [r6, #0x24]
+	ldrh	r1, [r6, r7]
+	mov	r2, #0
+	mov	r3, #0
+	bl	Func_80a112c
+	mov	r0, r6
+	ldrh	r1, [r6, r7]
+	bl	Func_80a1804
+	ldr	r0, =0x151
+	bl	_GetFlag
+	cmp	r0, #0
+	bne	.La64ea
+	ldr	r2, [sp]
+	cmp	r2, #0
+	bne	.La64ea
+	ldr	r0, [r6, #0x2c]
+	bl	_Func_8016498
+	mov	r1, #0xbc
+	lsl	r1, #1
+	add	r3, r6, r1
+	ldrh	r3, [r3]
+	ldr	r0, .La64f4	@ 0x3fff
+	and	r0, r3
+	ldr	r3, =0x53a
+	mov	r2, #0
+	add	r0, r3
+	ldr	r1, [r6, #0x2c]
+	mov	r3, #0
+	bl	_Func_801e7c0
+	mov	r2, #1
+	str	r2, [sp]
+	b	.La6506
+.La64ea:
+	ldr	r0, =0x151
+	bl	_ClearFlag
+	b	.La6506
+
+	.align	2, 0
+.La64f4:
+	.word	0x3fff
+	.pool
+
+.La6500:
+	mov	r3, r8
+	lsl	r3, #1
+	mov	r10, r3
+.La6506:
+	mov	r0, r10
+	add	r0, r8
+	lsl	r0, #3
+	mov	r1, #0x10
+	sub	r0, #0xa
+	bl	Func_80a1a40
+	mov	r0, #1
+	bl	WaitFrames
+	ldr	r1, =gKeyPress
+	ldr	r3, [r1]
+	mov	r2, #1
+	and	r3, r2
+	cmp	r3, #0
+	beq	.La6538
+	mov	r0, #0x70
+	bl	_PlaySound
+	mov	r3, #0x82
+	lsl	r3, #2
+	add	r3, r10
+	ldrh	r3, [r6, r3]
+	str	r3, [sp, #4]
+	b	.La6596
+.La6538:
+	ldr	r3, [r1]
+	mov	r2, #2
+	and	r3, r2
+	cmp	r3, #0
+	beq	.La6550
+	mov	r0, #0x71
+	bl	_PlaySound
+	mov	r1, #1
+	neg	r1, r1
+	str	r1, [sp, #4]
+	b	.La6596
+.La6550:
+	ldr	r5, =gKeyRepeat
+	ldr	r3, [r5]
+	mov	r2, #0x20
+	and	r3, r2
+	cmp	r3, #0
+	beq	.La656c
+	mov	r0, #0x6f
+	bl	_PlaySound
+	mov	r2, #1
+	neg	r2, r2
+	mov	r3, #1
+	add	r8, r2
+	mov	r9, r3
+.La656c:
+	ldr	r3, [r5]
+	mov	r2, #0x10
+	and	r3, r2
+	cmp	r3, #0
+	beq	.La6582
+	mov	r0, #0x6f
+	bl	_PlaySound
+	mov	r1, #1
+	add	r8, r1
+	mov	r9, r1
+.La6582:
+	mov	r0, #0xa8
+	lsl	r0, #1
+	bl	_GetFlag
+	cmp	r0, #0
+	bne	.La6590
+	b	.La6440
+.La6590:
+	mov	r2, r8
+	lsl	r2, #1
+	mov	r10, r2
+.La6596:
+	ldr	r5, [r6, #0x18]
+	mov	r3, r8
+	strb	r3, [r6, #0x1d]
+	mov	r0, r5
+	bl	Func_80a17c4
+	mov	r3, #0xd
+	strb	r3, [r5, #5]
+	mov	r0, #1
+	bl	WaitFrames
+	mov	r1, r8
+	mov	r2, #0x82
+	strb	r1, [r6, #0x1d]
+	lsl	r2, #2
+	add	r2, r10
+	ldrh	r3, [r6, r2]
+	str	r3, [r6, #8]
+	ldr	r1, =0x21b
+	ldrh	r2, [r6, r2]
+	add	r3, r6, r1
+	strb	r2, [r3]
+	ldr	r0, [sp, #4]
+	add	sp, #0xc
+	pop	{r3, r5, r6, r7}
+	mov	r8, r3
+	mov	r9, r5
+	mov	r10, r6
+	mov	r11, r7
+	pop	{r5, r6, r7}
+	pop	{r1}
+	bx	r1
+.func_end Func_80a63e4
+

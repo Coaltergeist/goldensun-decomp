@@ -2,7 +2,7 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/elemental_stars/ovl_314_a_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008314.s");
 
 extern unsigned char gOvl_0200cd88[];
 
@@ -30,7 +30,8 @@ void *ElementalStars_GetEvents(void) {
     return (void *)gOvl_0200cfa4;
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars/ovl_314_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008390.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_20086f4.s");
 
 extern void OvlFunc_896_2008a98(void);
 extern void OvlFunc_896_2008d5c(void);
@@ -53,7 +54,16 @@ void OvlFunc_896_2008a64(void) {
     OvlFunc_896_200a27c();
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars/ovl_314_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008a98.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008d5c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008f8c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2009450.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200978c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2009d04.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a27c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a400.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a674.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a6e0.s");
 
 void OvlFunc_896_200a74c(void)
 {
@@ -110,7 +120,8 @@ void OvlFunc_896_200a7ec(void) {
     __Func_8093c00();
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars/ovl_314_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a7f8.s");
+INCLUDE_ASM("asm/maps/elemental_stars/ElementalStars_MapInit.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 extern void __CutsceneWait(unsigned int arg0);
@@ -121,4 +132,8 @@ void OvlFunc_896_200c248(unsigned int arg0, unsigned int arg1)
 	__CutsceneWait(arg1);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars/ovl_314_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c260.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c328.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c3bc.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c49c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c78c.s");

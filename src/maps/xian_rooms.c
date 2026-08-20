@@ -143,7 +143,7 @@ void OvlFunc_929_2008504(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/xian_rooms/ovl_314_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/xian_rooms/OvlFunc_929_2008524.s");
 
 extern unsigned char Ld4c[] __asm__(".Lm929_d4c");
 extern unsigned char La28[] __asm__(".Lm929_a28");
@@ -163,4 +163,4 @@ unsigned int XianRooms_GetEvents(void) {
     return (unsigned int)La28;
 }
 
-INCLUDE_ASM("asm/maps/xian_rooms/ovl_314_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/xian_rooms/XianRooms_MapInit.s");

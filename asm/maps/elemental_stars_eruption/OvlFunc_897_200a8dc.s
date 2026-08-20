@@ -1,0 +1,50 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start OvlFunc_897_200a8dc
+	push	{r5, lr}
+	sub	sp, #8
+	cmp	r0, #0
+	beq	.Lm897_290a
+	mov	r5, #2
+	mov	r0, #9
+	mov	r1, #0x2d
+	mov	r2, #0x41
+	mov	r3, #5
+	str	r5, [sp]
+	str	r5, [sp, #4]
+	bl	__CopyMapTiles
+	mov	r3, #1
+	str	r3, [sp]
+	mov	r0, #0xb
+	mov	r1, #0x2e
+	mov	r2, #0x43
+	mov	r3, #6
+	str	r5, [sp, #4]
+	bl	__CopyMapTiles
+	b	.Lm897_292e
+.Lm897_290a:
+	mov	r5, #2
+	mov	r0, #0x59
+	mov	r1, #2
+	mov	r2, #0x41
+	mov	r3, #5
+	str	r5, [sp]
+	str	r5, [sp, #4]
+	bl	__CopyMapTiles
+	mov	r3, #1
+	str	r3, [sp]
+	mov	r0, #0x66
+	mov	r1, #0x20
+	mov	r2, #0x43
+	mov	r3, #6
+	str	r5, [sp, #4]
+	bl	__CopyMapTiles
+.Lm897_292e:
+	bl	__Func_800fe9c
+	add	sp, #8
+	pop	{r5}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_897_200a8dc
+

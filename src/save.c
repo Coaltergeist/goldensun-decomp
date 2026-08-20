@@ -4,7 +4,10 @@
 
 extern unsigned int Func_8005b24();
 
-INCLUDE_ASM("asm/save/rom_56cc_a_a_a.s");
+INCLUDE_ASM("asm/save/Func_80056cc.s");
+INCLUDE_ASM("asm/save/Func_8005810.s");
+INCLUDE_ASM("asm/save/Func_8005868.s");
+INCLUDE_ASM("asm/save/Func_80058ac.s");
 
 extern unsigned short (*ewram_2004c14)(unsigned short);
 
@@ -13,7 +16,8 @@ unsigned short Func_8005904(unsigned short arg)
     return ewram_2004c14(arg);
 }
 
-INCLUDE_ASM("asm/save/rom_56cc_a_a_c_a.s");
+INCLUDE_ASM("asm/save/SomethingSaveHeader.s");
+INCLUDE_ASM("asm/save/Func_8005a78.s");
 
 extern unsigned int Func_8005b64(void);
 
@@ -73,7 +77,7 @@ unsigned int Func_8005b24(unsigned int arg0)
     return result;
 }
 
-INCLUDE_ASM("asm/save/rom_56cc_a_c.s");
+INCLUDE_ASM("asm/save/Func_8005b64.s");
 
 int Func_8005c08(unsigned char *arg0, unsigned char *arg1, unsigned int arg2)
 {
@@ -111,7 +115,7 @@ unsigned int Func_8005c2c(unsigned int arg0)
     return max;
 }
 
-INCLUDE_ASM("asm/save/rom_56cc_c_c.s");
+INCLUDE_ASM("asm/save/Func_8005c68.s");
 
 extern void SetIntrHandler(int intr, unsigned int dispstat, void *vector);
 extern int  gfree(int index);

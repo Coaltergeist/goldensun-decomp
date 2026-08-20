@@ -14,7 +14,9 @@ void OvlFunc_936_2008030(void) {
     __Func_80955b0(12, 2, 3);
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
+INCLUDE_ASM("asm/maps/kalay/Kalay_GetEntrances.s");
 
 int Kalay_GetSpecialExits(void) {
     return 0;
@@ -26,7 +28,7 @@ void *Kalay_GetExits(void) {
     return (void *)gOvl_0200c6b8;
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/kalay/Kalay_GetActors.s");
 
 extern void __CutsceneStart();
 extern void __Func_801776c();
@@ -59,7 +61,7 @@ void OvlFunc_936_200820c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/kalay/Kalay_GetEvents.s");
 
 void OvlFunc_936_20082c8(void) {
     __CutsceneStart();
@@ -68,7 +70,7 @@ void OvlFunc_936_20082c8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20082e8.s");
 
 void OvlFunc_936_2008374(void) {
     __CutsceneStart();
@@ -98,7 +100,7 @@ void OvlFunc_936_2008394(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20083d8.s");
 
 void OvlFunc_936_2008420(void)
 {
@@ -118,7 +120,12 @@ void OvlFunc_936_2008420(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008464.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008504.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008590.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200958c.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095b4.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095e0.s");
 
 
 void OvlFunc_936_20095f8(void) {
@@ -149,7 +156,8 @@ void OvlFunc_936_2009610(void)
   __Func_8091a58(0xb5, 0);
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/kalay/Kalay_MapInit.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
 
 extern unsigned int gState;
 
@@ -187,7 +195,9 @@ void OvlFunc_936_20097e8(void) {
     OvlFunc_936_200a008();
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009858.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20098a4.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009930.s");
 
 extern void OvlFunc_936_2009ea4(unsigned int);
 
@@ -203,7 +213,11 @@ void OvlFunc_936_2009e6c(void)
     OvlFunc_936_2009ea4(0x22);
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ea4.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ed8.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009f14.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a008.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a6c0.s");
 
 extern unsigned int iwram_3001ebc;
 
@@ -228,7 +242,11 @@ unsigned int OvlFunc_936_200b184(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b1b8.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b2a4.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b768.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b864.s");
 
 void OvlFunc_936_200b90c(void)
 {
@@ -308,6 +326,6 @@ int OvlFunc_936_200b9d4(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/kalay/ovl_30_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200ba3c.s");
 
 INCLUDE_ASM("asm/maps/kalay/imports.s");

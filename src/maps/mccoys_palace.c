@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/maps/mccoys_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008030.s");
 
 extern unsigned char gOvl_0200a638[];
 
@@ -23,7 +23,8 @@ void *MccoysPalace_GetExits(void) {
     return (void *)gOvl_0200a920;
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_GetActors.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_GetEvents.s");
 
 #include "message.h"
 
@@ -39,7 +40,8 @@ void OvlFunc_909_2008130(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008150.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20081b4.s");
 
 void OvlFunc_909_20081f4(void) {
     __CutsceneStart();
@@ -75,7 +77,7 @@ void OvlFunc_909_2008214(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_a_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200828c.s");
 
 void OvlFunc_909_20082cc(void) {
     unsigned long long t;
@@ -98,7 +100,7 @@ void OvlFunc_909_20082cc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008338.s");
 
 void OvlFunc_909_20083ec(void)
 {
@@ -164,6 +166,15 @@ void OvlFunc_909_20084c0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/ovl_30_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20084ec.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008568.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20085f4.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_MapInit.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20088c0.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200979c.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009958.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009984.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20099b0.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200a1bc.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace/imports.s");

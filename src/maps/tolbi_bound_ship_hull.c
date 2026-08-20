@@ -27,7 +27,7 @@ unsigned int OvlFunc_945_2008030(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_a_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008058.s");
 
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
@@ -59,7 +59,11 @@ void OvlFunc_945_20080d8(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_a_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008284.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetEntrances.s");
 
 int TolbiBoundShipHull_GetSpecialExits(void) {
     return 0;
@@ -71,7 +75,9 @@ void *TolbiBoundShipHull_GetExits(void) {
     return (void *)gOvl_0200eb94;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetActors.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetEvents.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008670.s");
 
 void OvlFunc_945_2008708(void) {
     __CutsceneStart();
@@ -80,7 +86,8 @@ void OvlFunc_945_2008708(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008728.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20087f8.s");
 
 
 void OvlFunc_945_20088a8(void) {
@@ -101,7 +108,8 @@ void OvlFunc_945_20088a8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_a_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20088ec.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20089b4.s");
 
 
 void OvlFunc_945_2008a80(void) {
@@ -157,7 +165,15 @@ void OvlFunc_945_2008a80(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008b84.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008cc8.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008e14.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008ee0.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008fac.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009078.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009144.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009190.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009280.s");
 
 
 unsigned int OvlFunc_945_20092dc(void)
@@ -456,7 +472,26 @@ void OvlFunc_945_20097c8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_a_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009804.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009894.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009978.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009a08.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009a60.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009b34.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009f3c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200a7d8.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_MapInit.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b364.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b51c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b66c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7b4.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7d8.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b8ac.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bd10.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bdec.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200be34.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200beec.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bf94.s");
 
 
 void OvlFunc_945_200c0e8(void) {
@@ -489,7 +524,8 @@ void OvlFunc_945_200c0e8(void) {
     OvlFunc_945_200c8e8(9, 0xe, 0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_a_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c13c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c198.s");
 
 
 void OvlFunc_945_200c218(void) {
@@ -504,7 +540,10 @@ void OvlFunc_945_200c218(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_a_a_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c254.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c5d0.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c670.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c7cc.s");
 
 
 void OvlFunc_945_200c86c(int a) {
@@ -546,7 +585,8 @@ void OvlFunc_945_200c8ac(unsigned int arg0, unsigned int arg1, unsigned int arg2
     __CutsceneWait(r6);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c8e8.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200cfa8.s");
 
 
 void OvlFunc_945_200d004(void) {
@@ -576,7 +616,9 @@ void OvlFunc_945_200d038(unsigned int arg0, unsigned int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d068.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d0e4.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d2f4.s");
 
 
 void OvlFunc_945_200d684(void)
@@ -598,7 +640,7 @@ void OvlFunc_945_200d684(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d6dc.s");
 
 
 void OvlFunc_945_200d780(void)
@@ -620,6 +662,11 @@ void OvlFunc_945_200d780(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/ovl_30_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d7ec.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dc48.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dca4.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dd10.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e110.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e3ac.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/imports.s");

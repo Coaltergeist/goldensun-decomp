@@ -1,7 +1,9 @@
 /* ending.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/ending/rom_f0254_a.s");
+INCLUDE_ASM("asm/ending/Func_80f0254.s");
+INCLUDE_ASM("asm/ending/LoadGS1CreditsBG.s");
+INCLUDE_ASM("asm/ending/Func_80f037c.s");
 
 extern unsigned int iwram_3001800;
 extern unsigned short iwram_3001ad0;
@@ -15,4 +17,8 @@ void Func_80f03c0(void) {
     }
 }
 
-INCLUDE_ASM("asm/ending/rom_f0254_c.s");
+INCLUDE_ASM("asm/ending/StartGS1Credits.s");
+INCLUDE_ASM("asm/ending/Func_80f0538.s");
+INCLUDE_ASM("asm/ending/Func_80f0614.s");
+INCLUDE_ASM("asm/ending/Func_80f0678.s");
+INCLUDE_ASM("asm/ending/Func_80f07f0.s");

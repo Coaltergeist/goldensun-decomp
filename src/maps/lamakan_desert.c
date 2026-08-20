@@ -23,7 +23,8 @@ void OvlFunc_933_2008324(unsigned int *arg0, int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_314_a_c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008344.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_GetEntrances.s");
 
 int LamakanDesert_GetSpecialExits(void) {
     return 0;
@@ -35,7 +36,8 @@ void *LamakanDesert_GetExits(void) {
     return (void *)gOvl_0200a36c;
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_314_c_c_a.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_GetActors.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008498.s");
 
 extern unsigned char gOvl_0200a500[];
 
@@ -45,7 +47,11 @@ void *LamakanDesert_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/lamakan_desert/ovl_314_c_c_c.s");
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_4e4_a.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20084e4.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_200888c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008c38.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008c6c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008cd0.s");
 
 extern int Func_8000948(int);
 
@@ -71,9 +77,15 @@ int OvlFunc_933_2008e00(int *a, int *b)
   return r4;
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_4e4_c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008e2c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009054.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009180.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20092fc.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20094b0.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_MapInit.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009874.s");
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_18a4_a_a.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20098a4.s");
 
 extern unsigned char L2730[] __asm__(".Lm933_2730");
 extern unsigned char L26d0[] __asm__(".Lm933_26d0");

@@ -10,7 +10,7 @@ extern void MapActor_SetAnim();
 extern void CutsceneWait();
 extern unsigned char gState[];
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_a_c_a_c_a.s");
+INCLUDE_ASM("asm/field/cutscene/Task_Cutscene.s");
 
 extern unsigned char iwram_3001ebc__a7[] __asm__("iwram_3001ebc");
 
@@ -25,7 +25,8 @@ void CutsceneWait(unsigned int arg0) {
     }
 }
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_a_c_a_c_c.s");
+INCLUDE_ASM("asm/field/cutscene/ResetPlayerSpeed.s");
+INCLUDE_ASM("asm/field/cutscene/CutsceneStart.s");
 
 extern void Task_Cutscene(void);
 extern void SetCameraTarget(unsigned int, unsigned char);
@@ -128,12 +129,17 @@ unsigned int Func_8091814(unsigned int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091858.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091890.s");
+INCLUDE_ASM("asm/field/cutscene/Func_80919d8.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091a58.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091c1c.s");
 
 void Func_8091c3c(void) {}
 void Func_8091c40(void) {}
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/field/cutscene/MapActor_WaitAnim.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091c7c.s");
 
 extern int _YesNoMenu(int a, int b, int c, int d);
 
@@ -244,7 +250,7 @@ unsigned int Func_8091e9c(unsigned int arg0) {
     return arg0;
 }
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_c_c_a_c_a_a_a.s");
+INCLUDE_ASM("asm/field/cutscene/StartMapBattle.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern void *iwram_3001ebc__a15 __asm__("iwram_3001ebc");
@@ -320,7 +326,7 @@ void SetDestMap2(int arg0, int arg1)
   *new_var = new_var2;
 }
 
-INCLUDE_ASM("asm/field/cutscene/rom_91584_c_c_a_c_a_c_c_a_a_c.s");
+INCLUDE_ASM("asm/field/cutscene/Func_8091ff0.s");
 
 extern unsigned char iwram_3001ebc__a17[] __asm__("iwram_3001ebc");
 

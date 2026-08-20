@@ -4,7 +4,8 @@
 
 INCLUDE_ASM("asm/maps/vale_rooms_1/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_rooms_1/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_2008030.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_2008088.s");
 
 extern unsigned char gOvl_02009478[];
 
@@ -87,7 +88,7 @@ void OvlFunc_886_20081bc(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_1/ovl_30_c_a_c_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20081e8.s");
 
 void OvlFunc_886_2008258(void) {
     __CutsceneStart();
@@ -176,6 +177,11 @@ void OvlFunc_886_200835c(void) {
     OvlFunc_886_20082bc(8);
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_1/ovl_30_c_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/ValeRooms1_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20084dc.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_200855c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20085d4.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_2008658.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20090c0.s");
 
 INCLUDE_ASM("asm/maps/vale_rooms_1/imports.s");

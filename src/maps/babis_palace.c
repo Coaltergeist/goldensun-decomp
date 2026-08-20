@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/maps/babis_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/babis_palace/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_GetEntrances.s");
 
 extern unsigned char gOvl_0200ca7c[];
 
@@ -18,7 +18,10 @@ void *BabisPalace_GetExits(void) {
     return (void *)gOvl_0200ca8c;
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/ovl_30_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_GetActors.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20080c8.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008264.s");
 
 void OvlFunc_952_2008348(unsigned int actor)
 {
@@ -54,7 +57,17 @@ void OvlFunc_952_2008348(unsigned int actor)
     __ActorMessage(a, 0);
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/ovl_30_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20083b0.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200849c.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008524.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008564.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20085a4.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008674.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008af8.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008ff8.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20097e8.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200a014.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bd40.s");
 
 extern unsigned char L4550[] __asm__(".Lm952_4550");
 
@@ -81,7 +94,9 @@ void OvlFunc_952_200bdf8(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/ovl_30_c_a_c.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200be40.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bf84.s");
+INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bfc4.s");
 
 extern void __CutsceneStart();
 extern void __Func_801776c();
@@ -94,6 +109,7 @@ void OvlFunc_952_200c00c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_GetEvents.s");
+INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_MapInit.s");
 
 INCLUDE_ASM("asm/maps/babis_palace/imports.s");

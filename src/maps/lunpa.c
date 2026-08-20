@@ -3,13 +3,14 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetEntrances.s");
 
 unsigned int Lunpa_GetSpecialExits(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetExits.s");
+INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetActors.s");
 
 void OvlFunc_939_20083c0(void)
 {
@@ -31,7 +32,10 @@ void OvlFunc_939_20083c0(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20083f4.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008468.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_200849c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20085f0.s");
 
 extern void __CutsceneStart();
 extern void __Func_801776c();
@@ -44,7 +48,7 @@ void OvlFunc_939_20086bc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetEvents.s");
 
 void OvlFunc_939_2008738(void) {
     __CutsceneStart();
@@ -54,7 +58,8 @@ void OvlFunc_939_2008738(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008764.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20087f4.s");
 
 void OvlFunc_939_2008844(void) {
     __CutsceneStart();
@@ -96,7 +101,7 @@ void OvlFunc_939_20088cc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20088ec.s");
 
 extern unsigned char gState;
 extern void __MessageID(int);
@@ -188,7 +193,11 @@ void OvlFunc_939_2008a90(void)
   __ActorMessage(v, 0);
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008ac4.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008b0c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008b6c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008c10.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008c74.s");
 
 extern void __Func_8093c00(void);
 
@@ -202,11 +211,20 @@ void OvlFunc_939_2008d14(void) {
     __PlaySound(0x53);
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008d30.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008eb0.s");
 
 void OvlFunc_939_2008f9c(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008fa0.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008ff0.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_200918c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20091d0.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2009240.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20092a4.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_200931c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20095bc.s");
+INCLUDE_ASM("asm/maps/lunpa/Lunpa_MapInit.s");
 
 int OvlFunc_939_20097d8(int *actor)
 {
@@ -236,4 +254,4 @@ int OvlFunc_939_20097d8(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa/ovl_314_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2009840.s");

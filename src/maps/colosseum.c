@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/maps/colosseum/exports.s");
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetEntrances.s");
 
 int Colosseum_GetSpecialExits(void) {
     return 0;
@@ -17,7 +17,8 @@ void *Colosseum_GetExits(void) {
     return (void *)gOvl_0200b2bc;
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetActors.s");
+INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetEvents.s");
 
 
 void OvlFunc_953_20082a0(void) {
@@ -75,7 +76,7 @@ void OvlFunc_953_2008334(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_a_a_a_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200839c.s");
 
 
 void OvlFunc_953_2008468(void)
@@ -170,7 +171,7 @@ void OvlFunc_953_200850c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_a_a_a_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200855c.s");
 
 
 void OvlFunc_953_20085f0(void)
@@ -194,7 +195,7 @@ void OvlFunc_953_20085f0(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2008648.s");
 
 
 void OvlFunc_953_20086bc(void)
@@ -219,7 +220,8 @@ void OvlFunc_953_20086bc(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_a_a_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2008710.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2008dcc.s");
 
 
 void OvlFunc_953_20091ac(void) {
@@ -231,7 +233,12 @@ void OvlFunc_953_20091ac(void) {
     __SetFlag(val);
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_20091c4.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009298.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200960c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009688.s");
+INCLUDE_ASM("asm/maps/colosseum/Colosseum_MapInit.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009a4c.s");
 
 
 void OvlFunc_953_2009c48(void) {
@@ -248,6 +255,15 @@ void OvlFunc_953_2009c5c(int a, unsigned short b) {
     __Func_8092adc(a, b, 0xa);
 }
 
-INCLUDE_ASM("asm/maps/colosseum/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009c6c.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009cd4.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a3e0.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a4d8.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a5f0.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a668.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a820.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a904.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a964.s");
+INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200ab1c.s");
 
 INCLUDE_ASM("asm/maps/colosseum/imports.s");

@@ -59,7 +59,8 @@ void Func_80944ec(void)
   }
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_a_a_c_a.s");
+INCLUDE_ASM("asm/field/weather/Func_8094544.s");
+INCLUDE_ASM("asm/field/weather/Func_8094730.s");
 
 extern void Func_8094544(void);
 
@@ -85,7 +86,14 @@ void Func_80947e4(void)
   r3 = *((volatile unsigned short *) (new_var + 0xa));
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_a_a_c_c.s");
+INCLUDE_ASM("asm/field/weather/Task_Rain.s");
+INCLUDE_ASM("asm/field/weather/Task_Thunder.s");
+INCLUDE_ASM("asm/field/weather/StartRain.s");
+INCLUDE_ASM("asm/field/weather/Task_Snow.s");
+INCLUDE_ASM("asm/field/weather/StartSnow.s");
+INCLUDE_ASM("asm/field/weather/Task_Earthquake.s");
+INCLUDE_ASM("asm/field/weather/StartEarthquake.s");
+INCLUDE_ASM("asm/field/weather/StartThunder.s");
 
 extern void *galloc_ewram(int index, unsigned int size);
 
@@ -127,7 +135,7 @@ void Func_8095268(void)
   *((unsigned short *) new_var) = v1;
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_c_c_a.s");
+INCLUDE_ASM("asm/field/weather/StartThunder2.s");
 
 void Func_8095348(int *p)
 {
@@ -146,7 +154,10 @@ void Func_8095348(int *p)
   *((int *) (((char *) p) + 0x10)) = v;
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_a_c_c_c.s");
+INCLUDE_ASM("asm/field/weather/Func_809537c.s");
+INCLUDE_ASM("asm/field/weather/Func_80955b0.s");
+INCLUDE_ASM("asm/field/weather/Func_8095680.s");
+INCLUDE_ASM("asm/field/weather/Func_8095778.s");
 
 extern unsigned int iwram_3001f30;
 extern void Func_809b804(unsigned char *p);
@@ -162,7 +173,8 @@ void Func_8095884(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/weather/rom_944ec_a_c_a_a_a.s");
+INCLUDE_ASM("asm/field/weather/Func_80958a8.s");
+INCLUDE_ASM("asm/field/weather/Func_80958e4.s");
 
 void Func_809592c(unsigned int arg0) {
     unsigned short val;
@@ -214,4 +226,4 @@ unsigned int Func_8096c48(unsigned int arg0, unsigned int arg1)
 	return (unsigned int)p5;
 }
 
-INCLUDE_ASM_SECTION("asm/field/weather/rom_944ec_c_c.s", ".text.weather_2");
+INCLUDE_ASM_SECTION("asm/field/weather/CreateParticleActor.s", ".text.weather_2");

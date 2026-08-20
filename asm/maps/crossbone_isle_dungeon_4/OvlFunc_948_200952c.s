@@ -1,0 +1,76 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start OvlFunc_948_200952c
+	push	{r5, r6, r7, lr}
+	mov	r7, r10
+	mov	r6, r8
+	push	{r6, r7}
+	mov	r7, r0
+	mov	r0, #0
+	bl	__MapActor_GetActor
+	ldr	r1, [r0, #8]
+	cmp	r1, #0
+	bge	.Lm948_1546
+	ldr	r2, =0xfffff
+	add	r1, r2
+.Lm948_1546:
+	ldr	r0, [r0, #0x10]
+	asr	r6, r1, #20
+	cmp	r0, #0
+	bge	.Lm948_1552
+	ldr	r3, =0xfffff
+	add	r0, r3
+.Lm948_1552:
+	ldr	r2, =0x24a
+	ldr	r3, =gState
+	add	r3, r2
+	mov	r5, r7
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	asr	r0, #20
+	add	r5, #0xa
+	mov	r10, r0
+	cmp	r3, r5
+	beq	.Lm948_15b0
+	ldr	r3, =.Lm948_2f74
+	lsl	r7, #2
+	mov	r8, r3
+	ldr	r3, [r3, r7]
+	cmp	r6, r3
+	beq	.Lm948_15b0
+	mov	r1, #0x90
+	mov	r2, #0x90
+	lsl	r1, #11
+	lsl	r2, #10
+	mov	r0, r5
+	bl	__MapActor_SetSpeed
+	mov	r0, #0xbc
+	bl	__PlaySound
+	lsl	r1, r6, #4
+	mov	r2, #0xb4
+	lsl	r2, #1
+	add	r1, #8
+	mov	r0, r5
+	bl	__MapActor_TravelTo
+	mov	r2, r8
+	mov	r3, r10
+	str	r6, [r2, r7]
+	cmp	r3, #0x16
+	bgt	.Lm948_15aa
+	mov	r0, #0
+	mov	r1, #0
+	mov	r2, #8
+	bl	__MapActor_TravelBy
+.Lm948_15aa:
+	mov	r0, #0
+	bl	__MapActor_WaitMovement
+.Lm948_15b0:
+	pop	{r3, r5}
+	mov	r8, r3
+	mov	r10, r5
+	pop	{r5, r6, r7}
+	pop	{r0}
+	bx	r0
+.func_end OvlFunc_948_200952c
+

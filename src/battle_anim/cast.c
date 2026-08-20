@@ -1,7 +1,10 @@
 /* unknown/sub_80c0a24.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/battle_anim/cast/rom_c10e8_a_a_a.s");
+INCLUDE_ASM("asm/battle_anim/cast/Func_80c10e8.s");
+INCLUDE_ASM("asm/battle_anim/cast/Func_80c11ec.s");
+INCLUDE_ASM("asm/battle_anim/cast/Task_BlitPreAnim.s");
+INCLUDE_ASM("asm/battle_anim/cast/Anim_Cast.s");
 
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);

@@ -26,4 +26,6 @@ void Func_8097608(void)
     gfree(0x16);
 }
 
-INCLUDE_ASM("asm/field/moves/mind_read/rom_97384_c_a_c.s");
+INCLUDE_ASM("asm/field/moves/mind_read/Task_08097644.s");
+INCLUDE_ASM("asm/field/moves/mind_read/Func_8097868.s");
+INCLUDE_ASM("asm/field/moves/mind_read/Func_80978c4.s");

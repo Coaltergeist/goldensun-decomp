@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/maps/vale_plaza/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008030.s");
 
 extern unsigned char gOvl_0200afa0[];
 
@@ -138,7 +138,13 @@ void OvlFunc_884_200821c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_a_a_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008248.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20083b4.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008444.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20084d4.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20085e8.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008634.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008674.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -174,7 +180,7 @@ void OvlFunc_884_2008750(void)
 	OvlFunc_884_2008714(1);
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_a_a_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008780.s");
 
 
 void OvlFunc_884_20087ec(void)
@@ -194,7 +200,7 @@ void OvlFunc_884_20087ec(void)
 	OvlFunc_884_2008714(3);
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_a_a_a_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200881c.s");
 
 
 void OvlFunc_884_200884c(void)
@@ -232,7 +238,7 @@ void OvlFunc_884_200887c(void)
     OvlFunc_884_2008714(6);
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_a_a_a_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20088ac.s");
 
 extern void __PlaySound(int a);
 
@@ -266,7 +272,12 @@ void OvlFunc_884_2008930(void) {
     __SetFlag(0x90d);
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/vale_plaza/ValePlaza_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008bbc.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2009084.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2009274.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20095b4.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20097c8.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 extern void __CutsceneWait(unsigned int arg0);
@@ -323,7 +334,9 @@ void OvlFunc_884_200a370(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a39c.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a3ec.s");
+INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a440.s");
 
 extern void __Func_8096fb0(int a, int b);
 

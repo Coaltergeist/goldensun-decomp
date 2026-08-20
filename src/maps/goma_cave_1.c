@@ -30,6 +30,6 @@ void *GomaCave1_GetEvents(void) {
     return (void *)gOvl_020081c4;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_1/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/goma_cave_1/GomaCave1_MapInit.s");
 
 INCLUDE_ASM("asm/maps/goma_cave_1/imports.s");

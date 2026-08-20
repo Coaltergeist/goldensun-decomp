@@ -1,7 +1,9 @@
 /* field/djinni.c -- djinni-get table + supporting field tasks. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/djinni/rom_944ec_a_c_a_a_c.s");
+INCLUDE_ASM("asm/field/djinni/Func_8095938.s");
+INCLUDE_ASM("asm/field/djinni/GetJupiterDjinni.s");
+INCLUDE_ASM("asm/field/djinni/Func_8095b8c.s");
 
 extern void _DeleteActor(void);
 
@@ -34,7 +36,8 @@ void Func_8095bd8(unsigned char *p)
         _DeleteActor();
 }
 
-INCLUDE_ASM("asm/field/djinni/rom_944ec_a_c_a_c_a.s");
+INCLUDE_ASM("asm/field/djinni/Func_8095c08.s");
+INCLUDE_ASM("asm/field/djinni/GetMarsDjinni.s");
 
 
 void Func_8095f9c(unsigned char *p)
@@ -55,7 +58,10 @@ void Func_8095f9c(unsigned char *p)
         _DeleteActor();
 }
 
-INCLUDE_ASM("asm/field/djinni/rom_944ec_a_c_a_c_c_a.s");
+INCLUDE_ASM("asm/field/djinni/Func_8095fcc.s");
+INCLUDE_ASM("asm/field/djinni/Func_8096048.s");
+INCLUDE_ASM("asm/field/djinni/GetVenusDjinni.s");
+INCLUDE_ASM("asm/field/djinni/Func_809641c.s");
 
 void Func_8096574(int *p)
 {
@@ -88,4 +94,4 @@ void Func_8096574(int *p)
   p[4] = cur;
 }
 
-INCLUDE_ASM("asm/field/djinni/rom_944ec_a_c_a_c_c_c.s");
+INCLUDE_ASM("asm/field/djinni/GetMercuryDjinni.s");

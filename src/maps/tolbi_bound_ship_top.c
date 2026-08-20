@@ -12,7 +12,7 @@ extern unsigned int __Random();
 
 
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_a_a_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_2008030.s");
 
 
 unsigned int OvlFunc_944_200807c(unsigned char *arg0)
@@ -42,7 +42,7 @@ void OvlFunc_944_20080a4(int *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_a_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_20080c0.s");
 
 unsigned int OvlFunc_944_2008180(int *p)
 {
@@ -125,7 +125,7 @@ void OvlFunc_944_20081fc(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/TolbiBoundShipTop_MapInit.s");
 
 extern void OvlFunc_944_20084b0(void);
 
@@ -184,7 +184,10 @@ void OvlFunc_944_200840c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_2008468.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_20084b0.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_2008564.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_20087b0.s");
 
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_944__020093a4[2];
@@ -210,7 +213,9 @@ void OvlFunc_944_2008a84(unsigned int arg0)
     __MapActor_SetBehavior(arg0, gScript_944__020093a4);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_2008af8.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_2008e78.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_20090a0.s");
 
 extern unsigned int OvlFunc_944_200915c(unsigned int);
 
@@ -226,6 +231,6 @@ unsigned int OvlFunc_944_2009130(void)
     return r6 - r5;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_200915c.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/imports.s");

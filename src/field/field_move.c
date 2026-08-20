@@ -18,7 +18,10 @@ void FieldMove(int param_1)
 		Func_8096af0();
 }
 
-INCLUDE_ASM("asm/field/field_move/rom_944ec_a_c_c_a_a.s");
+INCLUDE_ASM("asm/field/field_move/FieldMove_NoTarget.s");
+INCLUDE_ASM("asm/field/field_move/FieldMove_Target.s");
+INCLUDE_ASM("asm/field/field_move/Func_8096ab0.s");
+INCLUDE_ASM("asm/field/field_move/Func_8096af0.s");
 
 extern void CutsceneStart(void);
 extern void MessageID(unsigned int stringID);
@@ -53,7 +56,7 @@ int Func_8096b28(int *arg0, int arg1, int arg2)
     return 0;
 }
 
-INCLUDE_ASM("asm/field/field_move/rom_944ec_a_c_c_a_c.s");
+INCLUDE_ASM("asm/field/field_move/Func_8096b88.s");
 
 extern int vec3_translate();
 extern int _Actor_TravelTo();

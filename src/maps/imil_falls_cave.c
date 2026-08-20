@@ -19,7 +19,7 @@ void OvlFunc_922_2008040(void) {
     __Func_8091f14(0xb, 0x3e);
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_a_c_c.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_GetEntrances.s");
 
 unsigned int ImilFallsCave_GetSpecialExits(void) {
     return 0;
@@ -31,7 +31,8 @@ unsigned int ImilFallsCave_GetExits(void) {
     return (unsigned int)gOvl_0200a8f4;
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_GetActors.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008180.s");
 
 extern void OvlFunc_922_2008180(int, int, int);
 extern void OvlFunc_922_2009050(void);
@@ -205,7 +206,7 @@ void OvlFunc_922_2008568(void) {
     OvlFunc_922_2009154();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_a_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20085b8.s");
 
 extern void OvlFunc_922_20092cc(void);
 
@@ -287,7 +288,7 @@ void OvlFunc_922_2008768(void) {
     OvlFunc_922_20092cc();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_a_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20087f0.s");
 
 
 void OvlFunc_922_20088cc(void) {
@@ -302,7 +303,7 @@ void OvlFunc_922_20088cc(void) {
     OvlFunc_922_20092cc();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_a_a_c_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008920.s");
 
 
 void OvlFunc_922_20089d0(void) {
@@ -562,7 +563,8 @@ void OvlFunc_922_2008ec0(void)
 	__MapActor_SetAnim(0xb, 2);
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008ed8.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_GetEvents.s");
 
 void OvlFunc_922_2008fcc(void) {
     unsigned int r0;
@@ -584,7 +586,11 @@ void OvlFunc_922_2008ff8(void) {
     OvlFunc_922_200a094();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009004.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009050.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009154.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20092cc.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20095dc.s");
 
 extern unsigned char L3328[] __asm__(".Lm922_3328");
 extern unsigned char iwram_3001ee0[];
@@ -609,7 +615,7 @@ void OvlFunc_922_2009730(void)
 	}
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_MapInit.s");
 
 void OvlFunc_922_20097a8(void)
 {
@@ -638,7 +644,9 @@ void OvlFunc_922_20097a8(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20097e4.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009948.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009a34.s");
 
 extern void OvlFunc_922_2009ad0(int a, int b);
 
@@ -651,7 +659,8 @@ void OvlFunc_922_2009ac0(void) {
     OvlFunc_922_2009ad0(-0x20, 0);
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_a_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009ad0.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009b1c.s");
 
 extern unsigned char L2488[] __asm__(".Lm922_2488");
 
@@ -690,7 +699,9 @@ unsigned int OvlFunc_922_2009c08(int arg) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009c18.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009d78.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009e08.s");
 
 void OvlFunc_922_2009f04(void)
 {
@@ -744,6 +755,8 @@ void OvlFunc_922_2009f58(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ovl_30_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009fac.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_200a014.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_200a094.s");
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/imports.s");

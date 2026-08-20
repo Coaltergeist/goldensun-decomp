@@ -1,0 +1,119 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start Func_8097194  @ 0x08097194
+	push	{r5, r6, r7, lr}
+	mov	r7, r11
+	mov	r6, r10
+	mov	r5, r9
+	push	{r5, r6, r7}
+	mov	r7, r8
+	push	{r7}
+	ldr	r3, =iwram_3001f30
+	ldr	r1, [r3]
+	mov	r2, r3
+	sub	r2, #0x74
+	sub	r3, #0xc0
+	mov	r8, r1
+	ldr	r2, [r2]
+	ldr	r3, [r3]
+	mov	r7, r8
+	mov	r6, r8
+	mov	r11, r2
+	mov	r9, r3
+	add	r7, #0x9d
+	add	r6, #0x58
+	mov	r5, #0x17
+.L971c0:
+	ldrb	r3, [r7]
+	lsl	r3, #24
+	add	r7, #0x48
+	cmp	r3, #0
+	beq	.L971d0
+	mov	r0, r6
+	bl	Func_809bb34
+.L971d0:
+	sub	r5, #1
+	add	r6, #0x48
+	cmp	r5, #0
+	bge	.L971c0
+	ldr	r3, =0xcc6
+	add	r3, r11
+	ldrb	r3, [r3]
+	lsl	r3, #24
+	asr	r3, #24
+	cmp	r3, #0
+	bne	.L97260
+	ldr	r2, =Func_8096d84
+	ldr	r7, =Func_8096d2c
+	mov	r6, #0
+	mov	r10, r2
+.L971ee:
+	ldr	r3, =iwram_3001e64
+	ldr	r3, [r3]
+	mov	r1, #0
+	mov	r5, #0
+.L971f6:
+	cmp	r5, #0x3f
+	bgt	.L9720a
+	ldr	r2, [r3, #0x6c]
+	cmp	r2, r10
+	beq	.L97208
+	add	r5, #1
+	add	r3, #0x70
+	cmp	r2, r7
+	bne	.L971f6
+.L97208:
+	mov	r1, #1
+.L9720a:
+	cmp	r1, #0
+	beq	.L9721a
+	mov	r0, #1
+	add	r6, #1
+	bl	WaitFrames
+	cmp	r6, #0x1d
+	ble	.L971ee
+.L9721a:
+	ldr	r2, =0xcc7
+	mov	r3, #0
+	add	r2, r11
+	strb	r3, [r2]
+	ldr	r0, =Func_8096f8c
+	bl	StopTask
+	mov	r3, r8
+	add	r3, #0x46
+	mov	r1, #0
+	ldrsh	r0, [r3, r1]
+	bl	Func_8003f3c
+	mov	r2, r8
+	ldr	r3, [r2, #0x4c]
+	mov	r1, r9
+	str	r3, [r1, #4]
+	ldr	r3, [r2, #0x50]
+	str	r3, [r1, #8]
+	ldr	r3, [r2, #0x54]
+	str	r3, [r1, #0xc]
+	mov	r1, #0x1e
+	ldrsh	r3, [r2, r1]
+	cmp	r3, #8
+	beq	.L97256
+	mov	r2, #0xcc
+	lsl	r2, #4
+	add	r2, r11
+	mov	r3, #1
+	strh	r3, [r2]
+.L97256:
+	bl	MapActor_PlayPendingSound
+	mov	r0, #0x38
+	bl	gfree
+.L97260:
+	pop	{r3, r5, r6, r7}
+	mov	r8, r3
+	mov	r9, r5
+	mov	r10, r6
+	mov	r11, r7
+	pop	{r5, r6, r7}
+	pop	{r0}
+	bx	r0
+.func_end Func_8097194
+

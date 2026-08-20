@@ -2,7 +2,9 @@
 /* flags.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/flags/rom_79338_a.s");
+INCLUDE_ASM("asm/flags/GetFlag.s");
+INCLUDE_ASM("asm/flags/SetFlag.s");
+INCLUDE_ASM("asm/flags/ClearFlag.s");
 
 extern unsigned char gFlags[];
 
@@ -32,7 +34,11 @@ int ToggleFlag(int flagID)
     return (unsigned int)(-v | v) >> 31;
 }
 
-INCLUDE_ASM("asm/flags/rom_79338_c_a.s");
+INCLUDE_ASM("asm/flags/GetFlagByte.s");
+INCLUDE_ASM("asm/flags/SetFlagByte.s");
+INCLUDE_ASM("asm/flags/IncFlagByte.s");
+INCLUDE_ASM("asm/flags/DecFlagByte.s");
+INCLUDE_ASM("asm/flags/GetFlagNybble.s");
 
 void SetFlagNybble(int flagID, int value)
 {

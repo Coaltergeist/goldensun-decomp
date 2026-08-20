@@ -32,4 +32,4 @@ void Anim_Zephyr(void *context) {
     BaseAnim_StatUp(context, 4);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/stat_up/rom_d9194_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/stat_up/BaseAnim_StatUp.s");

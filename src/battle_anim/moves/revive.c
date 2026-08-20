@@ -12,4 +12,4 @@ void Anim_Dew(void *context) {
     BaseAnim_Revive(context, 1);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/revive/rom_cf2a0_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/revive/BaseAnim_Revive.s");

@@ -2,7 +2,7 @@
 /* sprite/summon.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/sprite/summon/rom_dbb24_a.s");
+INCLUDE_ASM("asm/sprite/summon/CreateSummonSprite.s");
 
 void Func_80dbb98(void) {}
 

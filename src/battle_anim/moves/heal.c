@@ -44,4 +44,4 @@ void Anim_Ember(void *context) {
     BaseAnim_Heal(context, 6);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/heal/rom_d8948_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/heal/BaseAnim_Heal.s");

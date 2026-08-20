@@ -1,0 +1,150 @@
+	.include "macros.inc"
+	.include "gba.inc"
+
+.thumb_func_start SuhallaGate1_MapInit
+	push	{r5, r6, lr}
+	ldr	r0, =0x89f
+	sub	sp, #8
+	bl	__GetFlag
+	cmp	r0, #0
+	beq	.Lm963_148
+	ldr	r1, =gState
+	mov	r0, #0xe2
+	ldr	r3, =0x69
+	lsl	r0, #1
+	add	r2, r1, r0
+	strh	r3, [r2]
+	mov	r3, #0xe3
+	lsl	r3, #1
+	add	r2, r1, r3
+	mov	r3, #0xa
+	strh	r3, [r2]
+.Lm963_148:
+	ldr	r5, =gState
+	mov	r0, #0xe0
+	lsl	r0, #1
+	add	r3, r5, r0
+	mov	r2, #0
+	ldrsh	r6, [r3, r2]
+	ldr	r3, =0xa9
+	cmp	r6, r3
+	bne	.Lm963_200
+	ldr	r0, =0x897
+	bl	__GetFlag
+	cmp	r0, #0
+	beq	.Lm963_16e
+	mov	r0, #0xa
+	mov	r1, #0
+	mov	r2, #0
+	bl	__MapActor_SetPos
+.Lm963_16e:
+	mov	r0, #0xe1
+	lsl	r0, #1
+	add	r3, r5, r0
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #3
+	bne	.Lm963_1b6
+	ldr	r0, =0x8fb
+	bl	__GetFlag
+	cmp	r0, #0
+	beq	.Lm963_196
+	mov	r0, #0x90
+	lsl	r0, #2
+	add	r3, r5, r0
+	strh	r6, [r3]
+	ldr	r3, =0x242
+	add	r2, r5, r3
+	mov	r3, #1
+	strh	r3, [r2]
+.Lm963_196:
+	ldr	r0, =0x8fc
+	bl	__GetFlag
+	cmp	r0, #0
+	beq	.Lm963_1b0
+	mov	r0, #0x90
+	lsl	r0, #2
+	add	r3, r5, r0
+	strh	r6, [r3]
+	ldr	r3, =0x242
+	add	r2, r5, r3
+	mov	r3, #5
+	strh	r3, [r2]
+.Lm963_1b0:
+	ldr	r0, =0x12f
+	bl	__ClearFlag
+.Lm963_1b6:
+	ldr	r5, =gState
+	mov	r0, #0xe1
+	lsl	r0, #1
+	add	r3, r5, r0
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #1
+	bne	.Lm963_1ea
+	ldr	r0, =0x8fb
+	bl	__SetFlag
+	ldr	r0, =0x96f
+	bl	__GetFlag
+	cmp	r0, #0
+	bne	.Lm963_1ea
+	mov	r3, #8
+	mov	r2, #0x1b
+	str	r3, [sp]
+	str	r2, [sp, #4]
+	mov	r0, #6
+	mov	r1, #0
+	mov	r2, #2
+	mov	r3, #1
+	bl	__Func_8010704
+.Lm963_1ea:
+	mov	r0, #0xe1
+	lsl	r0, #1
+	add	r3, r5, r0
+	mov	r2, #0
+	ldrsh	r3, [r3, r2]
+	cmp	r3, #5
+	bne	.Lm963_24c
+	ldr	r0, =0x8fc
+	bl	__SetFlag
+	b	.Lm963_24c
+.Lm963_200:
+	ldr	r3, =0xaa
+	cmp	r6, r3
+	bne	.Lm963_24c
+	mov	r0, #8
+	mov	r1, #4
+	bl	__MapActor_SetAnim
+	mov	r0, #9
+	mov	r1, #4
+	bl	__MapActor_SetAnim
+	mov	r0, #0xa
+	mov	r1, #3
+	bl	__MapActor_SetAnim
+	mov	r0, #0xb
+	mov	r1, #4
+	bl	__MapActor_SetAnim
+	mov	r1, #3
+	mov	r0, #0xc
+	bl	__MapActor_SetAnim
+	mov	r0, #0xf
+	bl	__MapActor_GetActor
+	ldr	r3, =0x19999
+	mov	r2, #0x38
+	str	r3, [r0, #0x1c]
+	mov	r3, #0x66
+	str	r3, [sp]
+	str	r2, [sp, #4]
+	mov	r0, #0x6c
+	mov	r1, #0x26
+	mov	r2, #1
+	mov	r3, #1
+	bl	__Func_8010704
+.Lm963_24c:
+	mov	r0, #0
+	add	sp, #8
+	pop	{r5, r6}
+	pop	{r1}
+	bx	r1
+.func_end SuhallaGate1_MapInit
+

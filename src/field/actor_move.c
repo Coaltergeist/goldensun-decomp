@@ -23,7 +23,9 @@ void Func_8096cdc(unsigned char *arg0, unsigned int arg1, int arg2)
     } while (i <= 0x42);
 }
 
-INCLUDE_ASM("asm/field/actor_move/rom_96cdc_a_a_c.s");
+INCLUDE_ASM("asm/field/actor_move/Func_8096d2c.s");
+INCLUDE_ASM("asm/field/actor_move/Func_8096d84.s");
+INCLUDE_ASM("asm/field/actor_move/Func_8096ddc.s");
 
 extern unsigned int iwram_3001e40;
 extern void _Actor_SetColorswap(unsigned int a, unsigned int b);
@@ -67,7 +69,8 @@ void Func_8096f8c(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/actor_move/rom_96cdc_c_a.s");
+INCLUDE_ASM("asm/field/actor_move/Func_8096fb0.s");
+INCLUDE_ASM("asm/field/actor_move/Func_80970f8.s");
 
 extern unsigned char iwram_3001f30__a1[] __asm__("iwram_3001f30");
 extern void WaitFrames(int nframes);
@@ -84,4 +87,5 @@ void Func_8097174(void)
     WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/field/actor_move/rom_96cdc_c_c.s");
+INCLUDE_ASM("asm/field/actor_move/Func_8097194.s");
+INCLUDE_ASM("asm/field/actor_move/Func_809728c.s");

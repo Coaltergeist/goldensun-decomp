@@ -32,6 +32,16 @@ void *MainMenu_GetEvents(void) {
     return (void *)gOvl_020096a4;
 }
 
-INCLUDE_ASM("asm/maps/main_menu/main_menu_body.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008054.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008154.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20081fc.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20082f4.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008384.s");
+INCLUDE_ASM("asm/maps/main_menu/MainMenu_MapInit.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008cfc.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008d74.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008de4.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20091e4.s");
+INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20092c8.s");
 
 INCLUDE_ASM("asm/maps/main_menu/imports.s");

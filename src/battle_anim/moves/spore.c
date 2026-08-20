@@ -12,4 +12,4 @@ void Anim_SoothingStar(void *context) {
     BaseAnim_Spore(context, 0);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/spore/rom_ca1e4_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/spore/BaseAnim_Spore.s");

@@ -59,7 +59,7 @@ unsigned int Jail_GetEvents(void) {
     return (unsigned int)L3ec;
 }
 
-INCLUDE_ASM("asm/maps/jail/ovl_30_c_c_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/jail/OvlFunc_900_2008094.s");
 
 void OvlFunc_900_2008110(void)
 {
@@ -114,6 +114,6 @@ void OvlFunc_900_20081d0(void) {
     __Func_8091e9c(1);
 }
 
-INCLUDE_ASM("asm/maps/jail/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/jail/Jail_MapInit.s");
 
 INCLUDE_ASM("asm/maps/jail/imports.s");

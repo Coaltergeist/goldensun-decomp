@@ -27,7 +27,9 @@ int OvlFunc_914_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_200806c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_20080c4.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008244.s");
 
 extern unsigned int Lec8[] __asm__(".Lm914_ec8");
 extern int Lf08[] __asm__(".Lm914_f08");
@@ -82,7 +84,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_200834c.s");
 
 extern int Lf20[] __asm__(".Lm914_f20");
 extern void *OvlFunc_914_200834c(int *, void *, void *);
@@ -297,7 +299,7 @@ void OvlFunc_914_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_20088c0.s");
 
 extern unsigned char gOvl_02008f80[];
 
@@ -320,7 +322,7 @@ void *KolimaForest2_GetActors(void) {
     return (void *)gOvl_02008ff0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_20089f8.s");
 
 void OvlFunc_914_2008a2c(void)
 {
@@ -371,7 +373,8 @@ int KolimaForest2_MapInit(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008abc.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008b24.s");
 
 #include "dma.h"
 extern unsigned int iwram_3001ed0;
@@ -390,7 +393,8 @@ void OvlFunc_914_2008bac(void) {
     DMA3_COPY((void *)iwram_3001ed0, L17b0, 0x380);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008bcc.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008c0c.s");
 
 int OvlFunc_914_2008c4c(int *actor)
 {
@@ -420,6 +424,6 @@ int OvlFunc_914_2008c4c(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/ovl_30_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008cb4.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_2/imports.s");

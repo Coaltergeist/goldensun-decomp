@@ -33,7 +33,9 @@ int OvlFunc_927_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200806c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20080c4.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008244.s");
 
 extern unsigned int L2ef8[] __asm__(".Lm927_2ef8");
 extern int L2f38[] __asm__(".Lm927_2f38");
@@ -88,7 +90,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200834c.s");
 
 extern int gScript_884__0200af50[];
 extern void *OvlFunc_927_200834c(int *, void *, void *);
@@ -303,7 +305,12 @@ void OvlFunc_927_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20088c0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089dc.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089f4.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008a4c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008ab0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008ae8.s");
 
 extern void __Func_8091f14(int a, int b);
 
@@ -311,7 +318,7 @@ void OvlFunc_927_2008cc0(void) {
     __Func_8091f14(0x12, 2);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008cd0.s");
 
 extern void __Func_80929d8(int a, int b);
 
@@ -328,7 +335,8 @@ unsigned int OvlFunc_927_2008d80(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008d90.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008e18.s");
 
 extern void OvlFunc_927_2008e18(unsigned int arg0);
 
@@ -344,7 +352,7 @@ void OvlFunc_927_2008ea8(unsigned int arg0, unsigned int arg1)
   __Func_8092950(arg0, arg1);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_a_c_c_c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetEntrances.s");
 
 unsigned int MogallForest_GetSpecialExits(void) {
     return 0;
@@ -356,7 +364,8 @@ void *MogallForest_GetExits(void) {
     return (void *)gOvl_0200b5bc;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetActors.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008f94.s");
 
 extern void *OvlFunc_927_2008cd0(unsigned int *arr);
 
@@ -371,7 +380,7 @@ void OvlFunc_927_200903c(void)
     OvlFunc_927_2008cd0(arr);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009078.s");
 
 void OvlFunc_927_200912c(void)
 {
@@ -387,7 +396,9 @@ void OvlFunc_927_200912c(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009150.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009244.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009328.s");
 
 void OvlFunc_927_2009420(void)
 {
@@ -409,7 +420,13 @@ void OvlFunc_927_2009420(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009454.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009520.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20095d0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20096f0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009818.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009880.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20099b8.s");
 
 
 void OvlFunc_927_2009ac8(void) {
@@ -447,7 +464,17 @@ void OvlFunc_927_2009ac8(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009b84.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009c34.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009d04.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009de0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009ef0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a004.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a078.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a1b0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a2c0.s");
+INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetEvents.s");
+INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_MapInit.s");
 
 int OvlFunc_927_200aba4(int *actor)
 {
@@ -477,6 +504,6 @@ int OvlFunc_927_200aba4(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200ac0c.s");
 
 INCLUDE_ASM("asm/maps/mogall_forest/imports.s");

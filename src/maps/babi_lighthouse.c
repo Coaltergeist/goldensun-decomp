@@ -46,7 +46,9 @@ int OvlFunc_965_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_a_a_c_a.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200806c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20080c4.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008244.s");
 
 extern unsigned int L2fd4[] __asm__(".Lm965_2fd4");
 extern int gOvl_0200b014[];
@@ -101,7 +103,7 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_a_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200834c.s");
 
 extern int L302c[] __asm__(".Lm965_302c");
 extern void *OvlFunc_965_200834c(int *, void *, void *);
@@ -316,7 +318,12 @@ void OvlFunc_965_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_a_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20088c0.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089dc.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089f4.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008a4c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008ab0.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008ae8.s");
 
 extern void __Func_8091f14(int a, int b);
 
@@ -338,7 +345,11 @@ void OvlFunc_965_2008cd0(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_a_c_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008cf0.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008d4c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008eac.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetEntrances.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200b5f8[];
 
@@ -346,7 +357,8 @@ unsigned int BabiLighthouse_GetExits(void) {
     return (unsigned int)gOvl_0200b5f8;
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_c_a.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetActors.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009030.s");
 
 extern void OvlFunc_965_20080c4(void);
 extern void OvlFunc_965_2009030(void);
@@ -386,7 +398,7 @@ LAB:
     __Func_8093e28();
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009158.s");
 
 extern void OvlFunc_965_2009158(void);
 
@@ -444,7 +456,14 @@ void OvlFunc_965_2009214(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_a_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009238.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009b10.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a46c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a4b0.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a4d0.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a548.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a5c8.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a660.s");
 
 extern unsigned int iwram_3001f30;
 
@@ -475,7 +494,9 @@ void OvlFunc_965_200a6b8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_c_a_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a6fc.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a738.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetEvents.s");
 
 extern void __WaitFrames(int a);
 extern void __SetFlag(int a);
@@ -493,6 +514,7 @@ void OvlFunc_965_200a7f4(void)
   __SetFlag(0xc0 << 2);
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a820.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_MapInit.s");
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/imports.s");

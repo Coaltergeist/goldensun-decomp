@@ -30,6 +30,6 @@ void *SolSanctum4_GetEvents(void) {
     return (void *)gOvl_02008148;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_4/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_4/SolSanctum4_MapInit.s");
 
 INCLUDE_ASM("asm/maps/sol_sanctum_4/imports.s");

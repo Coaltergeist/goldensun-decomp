@@ -31,7 +31,7 @@ unsigned int TretTreeExt_GetActors(void) {
     return (unsigned int)gOvl_02008474;
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/ovl_30_a_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200805c.s");
 
 extern void OvlFunc_919_200805c(int, int);
 
@@ -79,7 +79,7 @@ void OvlFunc_919_2008138(void)
     __Func_8091e9c(*(short *)(r5 + 0));
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/ovl_30_a_c_c_c_a_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200815c.s");
 
 extern unsigned char gOvl_020084a4[];
 
@@ -111,7 +111,9 @@ void OvlFunc_919_20081d4(void) {
     __Func_8005ee0(L590, L5b0);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/ovl_30_c_a_c.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/TretTreeExt_MapInit.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200826c.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_20082a0.s");
 
 extern void OvlFunc_919_200826c(void);
 extern void OvlFunc_919_20082a0(void);

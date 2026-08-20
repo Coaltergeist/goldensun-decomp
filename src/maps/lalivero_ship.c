@@ -66,7 +66,20 @@ void *LaliveroShip_GetEvents(void) {
     return (void *)gOvl_020097ac;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_ship/ovl_30_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20080b0.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008100.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008168.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008194.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083c0.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083dc.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083f8.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008414.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008430.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008b34.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/LaliveroShip_MapInit.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008f30.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008f80.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20090d4.s");
 
 extern void OvlFunc_970_2008f30(void);
 extern void OvlFunc_970_2008f80(void);
@@ -93,6 +106,7 @@ void OvlFunc_970_2009188(void)
   r3 = *((volatile unsigned short *) (new_var + 0xa));
 }
 
-INCLUDE_ASM("asm/maps/lalivero_ship/ovl_30_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20092ac.s");
 
 INCLUDE_ASM("asm/maps/lalivero_ship/imports.s");

@@ -48,7 +48,7 @@ unsigned int LunpaRooms_GetEvents(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_200808c.s");
 
 void OvlFunc_940_20080fc(void) {
     __CutsceneStart();
@@ -73,7 +73,7 @@ void OvlFunc_940_200814c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_a_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_200816c.s");
 
 extern int _MSG_1be0;
 
@@ -95,7 +95,7 @@ void OvlFunc_940_20081d8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_2008224.s");
 
 extern int __GetFlag(int);
 extern void __MessageID(int);
@@ -173,7 +173,7 @@ void OvlFunc_940_2008374(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/lunpa_rooms/LunpaRooms_MapInit.s");
 
 extern unsigned char *__MapActor_GetActor(int);
 extern void __UI_Sanctum(int);

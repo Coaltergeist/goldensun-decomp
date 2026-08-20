@@ -10,7 +10,7 @@ void OvlFunc_963_2008030(void) {
     __Func_8091f14(0xd, 0x1a);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_gate_1/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_GetEntrances.s");
 
 unsigned int SuhallaGate1_GetSpecialExits(void) {
     return 0;
@@ -22,7 +22,10 @@ void *SuhallaGate1_GetExits(void) {
     return (void *)gOvl_02008b48;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_gate_1/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_GetActors.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_GetEvents.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_MapInit.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/OvlFunc_963_2008288.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -40,7 +43,9 @@ void OvlFunc_963_20082f8(void)
     __Func_8091e9c(r5);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_gate_1/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/OvlFunc_963_2008334.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/OvlFunc_963_20083c4.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/OvlFunc_963_2008730.s");
 
 void OvlFunc_963_20087ac(void) {
     unsigned int r5;

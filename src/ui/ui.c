@@ -8,7 +8,9 @@ extern void Func_8015ec0();
 extern void Func_801789c();
 extern unsigned int Func_8017364();
 
-INCLUDE_ASM("asm/ui/ui/rom_16178.s");
+INCLUDE_ASM("asm/ui/ui/ClearUIRegion.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016230.s");
+INCLUDE_ASM("asm/ui/ui/CreateUIBox.s");
 
 extern void WaitFrames(unsigned int nframes);
 
@@ -21,7 +23,7 @@ void UIBox_WaitAnim(unsigned char *box)
     }
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_a_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/ui/ui/CloseUIBox.s");
 
 
 void Func_8016478(void *arg0) {
@@ -68,7 +70,7 @@ void Func_80164ac(unsigned int *arg0)
     } while (r0 != (unsigned int *)0);
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_a_c_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/ui/ui/Func_80164d4.s");
 
 void Func_801656c(int *arg0) {
     int *r2;
@@ -106,7 +108,12 @@ void Func_8016594(unsigned char *arg0) {
     arg0[5] = 0;
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_a_c_c_c.s");
+INCLUDE_ASM("asm/ui/ui/Func_80165d8.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016670.s");
+INCLUDE_ASM("asm/ui/ui/Func_801671c.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016738.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016758.s");
+INCLUDE_ASM("asm/ui/ui/Func_80167ac.s");
 
 void Func_80167d8(unsigned int r0) {
     unsigned short r3;
@@ -114,7 +121,14 @@ void Func_80167d8(unsigned int r0) {
     *(unsigned short *)(r0 + 0x1c) = r3;
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_c_a_a_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_80167e0.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016868.s");
+INCLUDE_ASM("asm/ui/ui/AdvanceMsgText.s");
+INCLUDE_ASM("asm/ui/ui/Func_8016f2c.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017004.s");
+INCLUDE_ASM("asm/ui/ui/Func_80170c4.s");
+INCLUDE_ASM("asm/ui/ui/FillUIRegion.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017248.s");
 
 extern unsigned char iwram_3001e8c__a2[] __asm__("iwram_3001e8c");
 
@@ -147,7 +161,8 @@ unsigned int Func_8017394(unsigned char *box)
     return 0;
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_80173ac.s");
+INCLUDE_ASM("asm/ui/ui/Func_80173f4.s");
 
 extern void *iwram_3001e8c__a3 __asm__("iwram_3001e8c");
 extern int UploadSpriteGFX(int slot, unsigned int size, unsigned char *gfx);
@@ -203,7 +218,7 @@ void Func_80174d8(void) {
     }
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/ui/ui/PrintBattleText.s");
 
 extern void PrintBattleText(void);
 
@@ -215,7 +230,7 @@ void Func_80175a0(void) {
     WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_c_a_c_c_c.s");
+INCLUDE_ASM("asm/ui/ui/Func_80175c0.s");
 
 extern unsigned char *iwram_3001e8c__a4 __asm__("iwram_3001e8c");
 
@@ -230,7 +245,8 @@ void Func_8017620(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_15e8c_c_c_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017658.s");
+INCLUDE_ASM("asm/ui/ui/Func_801776c.s");
 
 extern void Func_8016f2c(void);
 extern void Func_8016868(void);
@@ -241,9 +257,16 @@ void Func_801789c(void) {
     Func_8016868();
     Func_80191cc();
 }
-INCLUDE_ASM("asm/ui/ui/rom_178b0.s");
+INCLUDE_ASM("asm/ui/ui/DrawMsgGlyph.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017a64.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017aa4.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017c1c.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017c8c.s");
+INCLUDE_ASM("asm/ui/ui/PrintNum.s");
 
-INCLUDE_ASM("asm/ui/ui/rom_17e88_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_8017e88.s");
+INCLUDE_ASM("asm/ui/ui/BufferString.s");
+INCLUDE_ASM("asm/ui/ui/Func_801868c.s");
 
 extern int BufferString(unsigned int, int);
 extern void Func_8018850(int, unsigned int, unsigned int, int);
@@ -255,11 +278,17 @@ void Func_8018790(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     Func_8018850(BufferString(arg0, 0), r5, r6, 0);
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_17e88_c.s");
+INCLUDE_ASM("asm/ui/ui/TextBox.s");
+INCLUDE_ASM("asm/ui/ui/DialogueBox.s");
+INCLUDE_ASM("asm/ui/ui/Func_8018850.s");
+INCLUDE_ASM("asm/ui/ui/Func_8018a50.s");
 
-INCLUDE_ASM("asm/ui/ui/rom_18cac.s");
+INCLUDE_ASM("asm/ui/ui/DrawText.s");
+INCLUDE_ASM("asm/ui/ui/Func_8018efc.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019000.s");
+INCLUDE_ASM("asm/ui/ui/Func_801908c.s");
 
-INCLUDE_ASM("asm/ui/ui/rom_1908c_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_80191cc.s");
 
 extern void DecompressString(unsigned int param_1, unsigned int param_2, int param_3);
 
@@ -267,7 +296,8 @@ void DecompressString2(unsigned int param_1, unsigned int param_2) {
     DecompressString(param_1, param_2, 0x7fffffff);
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_1908c_c_a_a.s");
+INCLUDE_ASM("asm/ui/ui/Func_801965c.s");
+INCLUDE_ASM("asm/ui/ui/DecompressString.s");
 
 int *Func_80197b4(int *p) {
     if (*p != 0)
@@ -275,12 +305,24 @@ int *Func_80197b4(int *p) {
     return p;
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_1908c_c_a_c.s");
+INCLUDE_ASM("asm/ui/ui/Func_80197c4.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
+INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019908.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019944.s");
+INCLUDE_ASM("asm/ui/ui/Func_801999c.s");
+INCLUDE_ASM("asm/ui/ui/Func_80199ec.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019a54.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019aa0.s");
 
 int Func_8019ba0(int stringID) {
     return BufferString(stringID, 1);
 }
 
-INCLUDE_ASM("asm/ui/ui/rom_1908c_c_c.s");
+INCLUDE_ASM("asm/ui/ui/HuffStr_Start.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019bfc.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019d0c.s");
 
-INCLUDE_ASM("asm/ui/ui/rom_19d2c.s");
+INCLUDE_ASM("asm/ui/ui/GetPortrait.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019da8.s");
+INCLUDE_ASM("asm/ui/ui/Func_8019e48.s");

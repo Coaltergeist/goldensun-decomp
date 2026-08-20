@@ -80,7 +80,7 @@ void Anim_Blizzard(void *context)
     _Actor_SetAnimSpeed(actor, 0x10);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/projectile/rom_de974_c_c_c_c_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/battle_anim/moves/projectile/BaseAnim_ParticleSpray.s");
 
 extern void _Actor_Stop(void *actor);
 extern void _Actor_TravelTo(void *actor, int dist, int a2, int a3);
@@ -105,4 +105,5 @@ void Func_80df8b8(unsigned int arg0)
     _Actor_SetAnim((void *)r5, 1);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/projectile/rom_de974_c_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/projectile/Func_80df90c.s");
+INCLUDE_ASM("asm/battle_anim/moves/projectile/Func_80df9d0.s");

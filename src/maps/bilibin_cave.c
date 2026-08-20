@@ -12,7 +12,7 @@ unsigned int OvlFunc_920_2008030(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_GetEntrances.s");
 
 unsigned int BilibinCave_GetSpecialExits(void) {
     return 0;
@@ -24,7 +24,12 @@ unsigned int BilibinCave_GetExits(void) {
     return (unsigned int)gOvl_02008bcc;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_GetActors.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_GetEvents.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008148.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008168.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008188.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20081bc.s");
 
 void OvlFunc_920_20081f0(void) {
     __CutsceneStart();
@@ -33,7 +38,11 @@ void OvlFunc_920_20081f0(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008214.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008280.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20082ac.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20082d8.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008304.s");
 
 void OvlFunc_920_2008424(void)
 {
@@ -67,7 +76,8 @@ void OvlFunc_920_200845c(void) {
     ((unsigned char *)ptr)[0x17] = 0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_MapInit.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20084b4.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -88,7 +98,7 @@ void OvlFunc_920_20084e8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008538.s");
 
 extern unsigned char iwram_3001ebc__a1 __asm__("iwram_3001ebc");
 
@@ -111,7 +121,7 @@ unsigned int OvlFunc_920_20087c4(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20087f8.s");
 
 void OvlFunc_920_2008904(void) {}
 

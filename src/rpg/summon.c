@@ -19,7 +19,7 @@ unsigned int Func_80797ec(unsigned int arg0, unsigned int arg1)
     return L88db8[(arg0 << 2) + arg1];
 }
 
-INCLUDE_ASM("asm/rpg/summon/rom_79460_c_c_a_c.s");
+INCLUDE_ASM("asm/rpg/summon/Func_80797fc.s");
 
 extern int Func_80797fc(unsigned int a, unsigned char *b, unsigned char *c);
 
@@ -38,7 +38,9 @@ int Func_807987c(unsigned int arg0, int arg1)
     return ret;
 }
 
-INCLUDE_ASM("asm/rpg/summon/rom_79460_c_c_c_a.s");
+INCLUDE_ASM("asm/rpg/summon/Func_80798b4.s");
+INCLUDE_ASM("asm/rpg/summon/InitEnemyElemStats.s");
+INCLUDE_ASM("asm/rpg/summon/GetClassFromDjinn.s");
 
 extern unsigned char L84a8c[] __asm__("X84a8c");
 
@@ -63,4 +65,4 @@ void Func_8079ae8(unsigned int arg0) {
     InitEnemyElemStats(arg0, unit + 0x24);
 }
 
-INCLUDE_ASM("asm/rpg/summon/rom_79460_c_c_c_c_a_a_c.s");
+INCLUDE_ASM("asm/rpg/summon/Func_8079b24.s");

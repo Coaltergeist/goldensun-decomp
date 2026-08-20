@@ -10,7 +10,7 @@ void OvlFunc_942_2008030(void) {
     __Func_80955b0(14, 0, 5);
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_a_c.s");
+INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetEntrances.s");
 
 unsigned int KalayDocks_GetSpecialExits(void) {
     return 0;
@@ -22,7 +22,9 @@ void *KalayDocks_GetExits(void) {
     return (void *)gOvl_020098a0;
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetActors.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008144.s");
+INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetEvents.s");
 
 void OvlFunc_942_2008240(void) {
     __CutsceneStart();
@@ -31,7 +33,7 @@ void OvlFunc_942_2008240(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008260.s");
 
 void OvlFunc_942_20082dc(void)
 {
@@ -50,7 +52,7 @@ void OvlFunc_942_20082dc(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_a_c_a_c.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008328.s");
 
 void OvlFunc_942_20084b8(void) {
     __CutsceneStart();
@@ -67,7 +69,7 @@ void OvlFunc_942_20084b8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_a_c_c_a.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_200851c.s");
 
 void OvlFunc_942_2008688(void) {
     __CutsceneStart();
@@ -83,7 +85,11 @@ void OvlFunc_942_20086a8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_a_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20086c8.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20087dc.s");
+INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_MapInit.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20088cc.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008958.s");
 
 extern unsigned int iwram_3001ebc;
 extern void __ClearFlag(int);
@@ -93,6 +99,9 @@ void OvlFunc_942_2008ad4(void) {
     __ClearFlag(0x12f);
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008af8.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008b68.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008ba0.s");
+INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008e40.s");
 
 INCLUDE_ASM("asm/maps/kalay_docks/imports.s");

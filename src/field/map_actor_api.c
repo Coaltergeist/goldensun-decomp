@@ -1,7 +1,7 @@
 /* field/map_actor_api.c -- [?] tail (BattleIntro / Player_EnterStairs) */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/map_actor_api/rom_93304_a_c_c_tail.s");
+INCLUDE_ASM("asm/field/map_actor_api/Func_8094154.s");
 
 void Func_80941dc(void) {}
 
@@ -21,4 +21,5 @@ void Player_EnterStairsDown(void) {
     _SetFlag(0x121);
 }
 
-INCLUDE_ASM("asm/field/map_actor_api/rom_93304_c_c_c.s");
+INCLUDE_ASM("asm/field/map_actor_api/Player_ExitStairs.s");
+INCLUDE_ASM("asm/field/map_actor_api/Func_8094428.s");

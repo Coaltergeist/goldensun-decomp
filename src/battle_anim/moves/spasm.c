@@ -17,4 +17,4 @@ void Anim_Recovery(void *context) {
     BaseAnim_Spasm(context, 2);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/spasm/rom_cefd4_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/spasm/BaseAnim_Spasm.s");

@@ -30,7 +30,12 @@ void *SolSanctum2_GetEvents(void) {
     return (void *)gOvl_0200a80c;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008054.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008098.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008150.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008614.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008c8c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008eb0.s");
 
 void OvlFunc_891_2008fe4(void) {
     unsigned char *p;
@@ -48,7 +53,9 @@ void OvlFunc_891_2009000(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200901c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/SolSanctum2_MapInit.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20094b8.s");
 
 extern void OvlFunc_891_2009c14(void);
 
@@ -93,7 +100,9 @@ void OvlFunc_891_20095bc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_a_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20095d4.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20095fc.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009624.s");
 
 
 void OvlFunc_891_200966c(void)
@@ -133,7 +142,8 @@ void OvlFunc_891_20096a4(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_a_c_c_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20096dc.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200995c.s");
 
 extern void OvlFunc_891_2009b44(int, int, int, int, int);
 
@@ -224,7 +234,7 @@ void OvlFunc_891_2009b1c(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009b44.s");
 
 
 unsigned int OvlFunc_891_2009be8(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
@@ -239,7 +249,13 @@ unsigned int OvlFunc_891_2009be8(unsigned int arg0, unsigned int arg1, unsigned 
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/ovl_30_c_c_c_c_c_a.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009c14.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009d14.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009e10.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009f0c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009ff4.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200a244.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200a2f4.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 extern void __CutsceneWait(unsigned int arg0);

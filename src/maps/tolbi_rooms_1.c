@@ -45,7 +45,15 @@ unsigned char *TolbiRooms1_GetEvents(void)
 	return gScript_886__02009310;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/ovl_30_c_c_a_c_a.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200809c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20080c0.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200813c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008328.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/TolbiRooms1_MapInit.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008500.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20085a8.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200866c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20086ec.s");
 
 void OvlFunc_950_200873c(unsigned int arg0)
 {
@@ -55,7 +63,8 @@ void OvlFunc_950_200873c(unsigned int arg0)
  do { __CutsceneEnd(); } while (0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/ovl_30_c_c_a_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008760.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20087b0.s");
 
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
@@ -73,6 +82,8 @@ void OvlFunc_950_200885c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008898.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20088cc.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200891c.s");
 
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/imports.s");

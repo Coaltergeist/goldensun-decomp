@@ -48,7 +48,7 @@ void Anim_SwiftStrike(void *context) {
     }
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/rapid_slash_BaseAnim_RapidSlash.s");
+INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/BaseAnim_RapidSlash.s");
 
 SECTION(".text.rapid_slash_2");
 

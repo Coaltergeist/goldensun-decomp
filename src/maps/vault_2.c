@@ -24,7 +24,8 @@ int OvlFunc_901_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_a_a_c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008350.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008400.s");
 
 extern unsigned char gScript_944__02009450[];
 
@@ -47,7 +48,8 @@ void *Vault2_GetActors(void) {
     return (void *)gOvl_020095d8;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_a_a.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20084b4.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20084d8.s");
 
 extern void OvlFunc_901_20084b4(int);
 
@@ -90,7 +92,8 @@ void OvlFunc_901_200856c(void)
   OvlFunc_901_20084b4(0xd);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_a_c_c_a_a_a_a.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_200858c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008640.s");
 
 extern unsigned char *iwram_3001ebc;
 
@@ -128,7 +131,7 @@ void OvlFunc_901_2008710(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_a_c_c_a_a_c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008754.s");
 
 void OvlFunc_901_2008784(void)
 {
@@ -143,7 +146,15 @@ void OvlFunc_901_2008784(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20087d4.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008804.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20089f8.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008a80.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008ac8.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008af0.s");
 
 extern int gOvl_0200976c;
 extern void OvlFunc_901_2008a80(int, int, int);
@@ -209,7 +220,11 @@ void OvlFunc_901_2008b9c(void)
   OvlFunc_901_2008a80(0x94 << 1, 0xb0, 9);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_a_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008bf8.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008cc8.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d24.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d4c.s");
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -217,7 +232,9 @@ void OvlFunc_901_2008d74(void) {
     __Func_80955b0(0x15, 0, 4);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_a_c_a_a.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d84.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e30.s");
+INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e60.s");
 
 
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
@@ -267,4 +284,4 @@ void *Vault2_GetEvents(void) {
     return (void *)gOvl_020097dc;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/ovl_314_c_c_c.s");
+INCLUDE_ASM("asm/maps/vault_2/Vault2_MapInit.s");

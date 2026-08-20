@@ -30,7 +30,10 @@ unsigned int *SuhallaRooms_GetActors(void)
     return (unsigned int *)Le08;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_rooms/ovl_30_c_a_c.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/OvlFunc_962_200806c.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/OvlFunc_962_2008100.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/OvlFunc_962_200816c.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/OvlFunc_962_20081d4.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -43,7 +46,7 @@ void OvlFunc_962_200821c(void)
     __PlaySound(0x7b);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_rooms/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/OvlFunc_962_2008240.s");
 
 extern unsigned char L11ec[] __asm__(".Lm962_11ec");
 extern unsigned char L1090[] __asm__(".Lm962_1090");
@@ -55,6 +58,6 @@ unsigned int *SuhallaRooms_GetEvents(void)
     return (unsigned int *)L1090;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_rooms/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/SuhallaRooms_MapInit.s");
 
 INCLUDE_ASM("asm/maps/suhalla_rooms/imports.s");

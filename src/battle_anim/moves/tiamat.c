@@ -12,4 +12,4 @@ void Anim_Tiamat(void *context) {
     BaseAnim_Tiamat(context, 0);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/tiamat/rom_d244c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/tiamat/BaseAnim_Tiamat.s");

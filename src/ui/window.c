@@ -1,7 +1,7 @@
 /* ui/unknown_15e8c.c */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/ui/window/rom_15e8c_a_a.s");
+INCLUDE_ASM("asm/ui/window/Func_8015e8c.s");
 
 extern unsigned int iwram_3001e8c;
 
@@ -40,4 +40,7 @@ void Func_8015ef4(void)
     *(unsigned int **)(base + 0xd9c) = p;
 }
 
-INCLUDE_ASM("asm/ui/window/rom_15e8c_a_c_a.s");
+INCLUDE_ASM("asm/ui/window/Func_8015f30.s");
+INCLUDE_ASM("asm/ui/window/Func_8015fb8.s");
+INCLUDE_ASM("asm/ui/window/Func_8016018.s");
+INCLUDE_ASM("asm/ui/window/Func_80160fc.s");

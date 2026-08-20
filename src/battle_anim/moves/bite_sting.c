@@ -62,4 +62,4 @@ void Anim_DrainFang(void *context) {
     BaseAnim_Bite_Sting(context, 11);
 }
 
-INCLUDE_ASM("asm/battle_anim/moves/bite_sting/rom_ca57c_c_c_c_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/battle_anim/moves/bite_sting/BaseAnim_Bite_Sting.s");

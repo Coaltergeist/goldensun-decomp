@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_a_a.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008030.s");
 
 extern unsigned char gLuckyFountainPrizes[];
 
@@ -56,7 +56,7 @@ unsigned char * ValeRooms2_GetActors(void) {
     return r5;
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_a_a_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008118.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState__a1 __asm__("gState");
@@ -93,7 +93,7 @@ unsigned int ValeRooms2_GetEvents(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_a_a_c_c_a_c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20081e0.s");
 
 extern unsigned char iwram_3001ebc[];
 
@@ -204,7 +204,10 @@ void OvlFunc_887_20083e4(void) {
     OvlFunc_887_20082e0(0xb);
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_a_c_a_c_c_c_c_c_c_c_c_c_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/ValeRooms2_MapInit.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008578.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008a0c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008e34.s");
 
 extern void __CutsceneStart(void);
 extern void __MapActor_Face(int a, int b, int c);
@@ -240,7 +243,10 @@ void OvlFunc_887_2008f64(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_a_c_a_c_c_c_c_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008f90.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200933c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093b4.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093e4.s");
 
 extern unsigned int iwram_3001e40;
 extern void __Actor_SetColorswap(unsigned int a, unsigned int b);
@@ -280,7 +286,9 @@ void OvlFunc_887_20095bc(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_c_a_a.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20095e8.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2009638.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200968c.s");
 
 extern void __Func_8096fb0(int a, int b);
 

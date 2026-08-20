@@ -209,4 +209,7 @@ void *OvlFunc_971_20091b4(void) {
     return (void *)gOvl_02009e14;
 }
 
-INCLUDE_ASM("asm/maps/link_lobby/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20091bc.s");
+INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009228.s");
+INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009294.s");
+INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20092e0.s");

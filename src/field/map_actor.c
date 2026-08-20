@@ -141,7 +141,7 @@ void MapActor_SetBehavior(int actorID, int behavior)
   }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_91584_c_c_a_c_a_c_c_c_c_a_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_SetIdle.s", ".text.map_actor_2");
 
 extern unsigned int Data_9ff40[];
 
@@ -237,7 +237,7 @@ void MapActor_TravelToAnimWait(int actorID, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_91584_c_c_a_c_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092208.s", ".text.map_actor_2");
 
 
 void MapActor_TravelBy(int arg0, int arg1, int arg2) {
@@ -283,7 +283,7 @@ void Func_8092304(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_91584_c_c_a_c_c_c_c_c_a_a_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809233c.s", ".text.map_actor_2");
 
 
 void MapActor_WaitMovement(int arg0)
@@ -297,7 +297,8 @@ void MapActor_WaitMovement(int arg0)
     _Actor_SetAnim(r5, 1);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_91584_c_c_a_c_c_c_c_c_a_a_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_SetPos.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_SetPos3D.s", ".text.map_actor_2");
 
 
 void MapActor_SetAnim(int actorID, int anim)
@@ -327,7 +328,7 @@ void MapActor_SetAnimSpeed(int actorID, int speed)
     _Actor_SetAnimSpeed(r0, r5);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_91584_c_c_a_c_c_c_c_c_a_c_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092504.s", ".text.map_actor_2");
 
 extern void Func_8092504(int actorID);
 
@@ -380,7 +381,9 @@ void Func_80925cc(unsigned int arg0)
 	MapActor_WaitScript(arg0);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_925e0_a_a_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80925e0.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092624.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092708.s", ".text.map_actor_2");
 
 extern int atan2(int y, int x);
 
@@ -399,7 +402,8 @@ void MapActor_Face(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_925e0_a_a_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_TurnToFaceActor.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_RotateToward.s", ".text.map_actor_2");
 
 extern void _DeleteActor(void);
 extern unsigned int iwram_3001ebc__a1 __asm__("iwram_3001ebc");
@@ -436,7 +440,9 @@ void Func_8092950(unsigned int arg0, unsigned int arg1) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_a_a_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092980.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80929d8.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092a1c.s", ".text.map_actor_2");
 
 unsigned int Func_8092a74(unsigned int arg0)
 {
@@ -491,7 +497,8 @@ void Func_8092adc(int arg0, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_a_c_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b08.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b54.s", ".text.map_actor_2");
 
 void Func_8092b90(void) {}
 
@@ -506,7 +513,10 @@ void MessageID(unsigned short stringID) {
     *(unsigned short *)(r3) = stringID;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_c_a_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/GetActorSpriteID.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092be0.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/ShowActorMessage_NoWait.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/ActorMessage.s", ".text.map_actor_2");
 
 extern void ActorMessage(unsigned int actor);
 
@@ -515,11 +525,11 @@ void ActorMessage_Wait(unsigned int arg0, unsigned int arg1, unsigned int arg2) 
     CutsceneWait(arg2);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_c_a_c_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093054.s", ".text.map_actor_2");
 
 void Func_80930b8(void) {}
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_c_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80930bc.s", ".text.map_actor_2");
 
 extern void Func_8093168(void);
 
@@ -527,7 +537,7 @@ void Func_809315c(void) {
     Func_8093168();
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_c_c_c_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093168.s", ".text.map_actor_2");
 
 extern int GetActorSpriteID(void);
 
@@ -538,9 +548,10 @@ void Func_80931d4(void)
     _Func_8019e48();
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_92950_c_c_c_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80931ec.s", ".text.map_actor_2");
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_93304_a_a_a_a_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093304.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/SetCameraTarget.s", ".text.map_actor_2");
 
 
 void Func_80933d4(unsigned int a0, unsigned int a1) {
@@ -560,7 +571,7 @@ void Func_80933d4(unsigned int a0, unsigned int a1) {
     *(unsigned int *)(r3 + 0x34) = r6;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_93304_a_a_a_a_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80933f8.s", ".text.map_actor_2");
 
 extern void Func_80933f8(int a, int b, int c, int d);
 
@@ -632,7 +643,8 @@ void Func_80935b0(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsig
     ptr[0x3e] = arg3;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_93304_a_c_a_a_a.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80935d4.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80936a0.s", ".text.map_actor_2");
 
 extern void WaitFrames(unsigned int nframes);
 
@@ -688,7 +700,8 @@ int Update_EmoteBubble(unsigned char *r5)
   return 0;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_93304_a_c_a_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_Emote.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_Surprise.s", ".text.map_actor_2");
 
 extern void _Actor_SetSpriteFlags(unsigned int arg, int b);
 
@@ -699,4 +712,10 @@ unsigned int Func_8093964(unsigned int arg0)
     return 0;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/rom_93304_a_c_c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809397c.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093a14.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Actor_SetBehavior.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093af8.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093c00.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093e28.s", ".text.map_actor_2");
+INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093fa0.s", ".text.map_actor_2");

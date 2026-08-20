@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/maps/hammet_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/hammet_palace/ovl_30_a.s");
+INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetEntrances.s");
 
 unsigned int HammetPalace_GetSpecialExits(void) {
     return 0;
@@ -16,7 +16,8 @@ void *HammetPalace_GetExits(void) {
     return (void *)gScript_917__02009d9c;
 }
 
-INCLUDE_ASM("asm/maps/hammet_palace/ovl_30_c_c_a.s");
+INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetActors.s");
+INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetEvents.s");
 
 void OvlFunc_938_20080d4(void) {
     __CutsceneStart();
@@ -74,6 +75,12 @@ void OvlFunc_938_2008114(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/hammet_palace/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2008184.s");
+INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_MapInit.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2008264.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2008360.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_200940c.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009450.s");
+INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009494.s");
 
 INCLUDE_ASM("asm/maps/hammet_palace/imports.s");
