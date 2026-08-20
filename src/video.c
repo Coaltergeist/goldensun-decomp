@@ -201,14 +201,69 @@ void Func_8003ce0(void)
 }
 
 extern void *gRAMLib_end;
-extern u8 iwram_3001d00;
+extern u8 sOamMatrixCount;
 
 void Func_8003d04(void) {
-    iwram_3001d00 = 0;
+    sOamMatrixCount = 0;
     CAMELOT_MEMCLEAR(&gRAMLib_end, 0x400);
 }
 
-INCLUDE_ASM("asm/video/Func_8003d28.s");
+#include "math.h"
+
+struct ObjAffineSrc {
+    s16 xScale; //fx8.8?
+    s16 yScale; //fx8.8?
+    u16 angle;
+};
+
+struct OamMatrix {
+    s16 pa;
+    s16 pb;
+    s16 pc;
+    s16 pd;
+};
+
+extern struct OamMatrix sOamMatrices[32];
+
+s32 divsi3_RAM(s32, s32);
+
+static inline u32 FastDivideSigned(s32 a, s32 b) {
+    s32 (*divide)(s32, s32) = divsi3_RAM;
+    return divide(a,b);
+}
+
+u32 Func_8003d28(struct ObjAffineSrc *src)
+{
+    s32 x = src->xScale;
+    u32 i = sOamMatrixCount;
+    s32 y = src->yScale;
+    u32 angle = src->angle;
+    s16 *p;
+
+    if (i > 31)
+        return 0;
+
+    p = (s16 *)&sOamMatrices[i];
+    if ((x == y || -x == y) && angle == 0) {
+        s32 d = FastDivideSigned(0x10000, y);
+        s32 a = (-x == y) ? -d : d;
+        // somewhat optimized way to write
+        // pa = a, pb = 0;
+        // pc = 0, pd = d;
+        ((u32 *)p)[0] = (u16)a;
+        ((u32 *)p)[1] = (u32)d << 16;
+    } else {
+        s32 s = sin(angle);
+        s32 c = cos(angle);
+        *p++ = c / x;  //pa
+        *p++ = s / x;  //pb
+        *p++ = -s / y; //pc
+        *p++ = c / y;  //pd
+    }
+
+    sOamMatrixCount = i + 1;
+    return i;
+}
 
 extern unsigned int gRAMLib_end__a1[248] __asm__("gRAMLib_end");
 
@@ -225,10 +280,6 @@ void Func_8003dec(unsigned int *arg0, int index)
     *arg0 = old;
 }
 
-INCLUDE_ASM("asm/video/Func_8003e10.s");
-
-INCLUDE_ASM("asm/video/Func_8003e58.s");
-
 #include "gba/types.h"
 #include "libcamelot.h"
 #include "dma.h"
@@ -240,6 +291,41 @@ struct SpriteSlot {
 
 extern struct SpriteSlot gSpriteSlots[];
 extern u8 gSpriteAllocTable[];
+
+INCLUDE_ASM("asm/video/Func_8003e10.s");
+
+s32 Func_8003e58(u32 id, u32 size) {
+    u32 blocks = size >> 6;
+    int i;
+    s32 start;
+
+    if (id >= 0x60)
+        return -1;
+    i = 0;
+    for (;;) {
+        if (i >= 512)
+            return -1;
+
+        if (gSpriteAllocTable[i] == 0xFF) {
+            u32 end;
+            u32 j;
+            start = i;
+            end = blocks + start;
+            while (i < end) {
+                if (gSpriteAllocTable[i] != 0xFF)
+                    goto occupied;
+                i++;
+            }
+
+            for (j = 0; j < blocks; j++)
+                gSpriteAllocTable[start + j] = id;
+            break;
+        }
+    occupied:
+        i += gSpriteSlots[gSpriteAllocTable[i]].size >> 6;
+    }
+    return start << 6;
+}
 
 s32 Func_8003ed4(void) {
     s32 var_r1 = 0;
@@ -307,8 +393,6 @@ s32 Func_8003f78(unsigned int arg0) {
 	}
 	return 0;
 }
-
-extern u32 Func_8003e58(u32, u32);
 
 u32 UploadSpriteGFX(u32 slot, u32 size, void *gfx) {
     void *temp_r1;
