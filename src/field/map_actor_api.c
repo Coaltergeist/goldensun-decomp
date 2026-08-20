@@ -5,7 +5,8 @@ INCLUDE_ASM("asm/field/map_actor_api/Func_8094154.s");
 
 void Func_80941dc(void) {}
 
-INCLUDE_ASM("asm/field/map_actor_api/rom_93304_c_a.s");
+INCLUDE_ASM("asm/field/map_actor_api/BattleIntro.s");
+INCLUDE_ASM("asm/field/map_actor_api/Func_942e0.s");
 
 extern void Func_942e0(unsigned int anim);
 extern void _SetFlag(int x);

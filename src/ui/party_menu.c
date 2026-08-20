@@ -169,7 +169,18 @@ void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4)
     Func_80a17c4(p);
 }
 
-INCLUDE_ASM("asm/ui/party_menu/rom_a1814_c_a_a_c_a_c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_a1c6c.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1cb0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1d08.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1e38.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_a1f74.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a1fd4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a2144.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a21b0.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a2268.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a22f4.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a2324.s");
+INCLUDE_ASM("asm/ui/party_menu/Func_80a23c0.s");
 
 void Func_80a23f4(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4)
 {
