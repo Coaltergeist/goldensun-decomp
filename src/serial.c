@@ -1,3 +1,4 @@
+// fakematch
 /* serial.c */
 #include "nonmatching.h"
 #include "gba/types.h"

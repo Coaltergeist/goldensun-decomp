@@ -1,7 +1,7 @@
 MatrixReset        src/math/matrix.c
 Func_80c0eb8       src/battle/mechanics.c
 Func_80b5ad4       src/battle/battle.c
-Func_800651c       src/save.c
+Func_800651c       src/serial.c
 ToggleFlag         src/flags.c
 SetFlagNybble      src/flags.c
 Func_80f40b4       src/lucky_dice.c
@@ -104,3 +104,7 @@ OvlFunc_927_2008608  src/maps/mogall_forest.c
 OvlFunc_930_2008ac0  src/maps/alpine_crossing.c
 OvlFunc_930_2008180  src/maps/alpine_crossing.c
 OvlFunc_953_20084c8  src/maps/colosseum.c
+Func_8005ee0       src/serial.c
+Func_8005fcc       src/serial.c
+Func_8006088       src/serial.c
+Func_80063bc       src/serial.c
