@@ -219,5 +219,5 @@
 .L1e90:
 	pop	{r5, r6, r7, r8, r9, lr}
 	bx	lr
-.func_end Func_8001dc8
+.func_end_emit_size Func_8001dc8, _Func_8001dc8_SIZE
 

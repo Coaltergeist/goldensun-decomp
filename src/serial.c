@@ -329,7 +329,64 @@ u8 Func_800615c(u16 *arg0) {
     return ewram_2002240.unk_03;
 }
 
-INCLUDE_ASM("asm/serial/Func_8006240.s");
+void Func_8006240(void) {
+    u16 recv[4];
+    s32 i;
+    vu16 *sio;
+
+    *(u64 *)recv = *(volatile u64 *)&REG_SIODATA32;
+    sio = (vu16 *)&REG_SIOCNT;
+    ewram_2002240.unk_09 = (*(vu32 *)sio << 25) >> 31;
+
+    if (ewram_2002240.unk_14 == -1) {
+        u32 ioData = 0xFEFE;
+        u8 *tmp = ewram_2002240.unk_2C;
+        u8 *tmp2;
+        SET_IO(sio[1], ioData);
+        tmp2 = ewram_2002240.unk_28;
+        ewram_2002240.unk_28 = tmp;
+        ewram_2002240.unk_2C = tmp2;
+
+    } else if (ewram_2002240.unk_14 >= 0) {
+        sio[1] = ((u16 *)ewram_2002240.unk_2C)[ewram_2002240.unk_14];
+    }
+
+    if (ewram_2002240.unk_14 <= 14) {
+        ewram_2002240.unk_14++;
+    }
+
+    for (i = 0; i < 2; i++) {
+        if (recv[i] == 0xFEFE && ewram_2002240.unk_18[i] > 13) {
+            ewram_2002240.unk_18[i] = -1;
+        } else {
+            u8 *buf = ewram_2002240.unk_30[i];
+            s32 idx = ewram_2002240.unk_18[i];
+
+            ((u16 *)buf)[idx] = recv[i];
+
+            if (idx == 13) {
+                u8 *tmp = ewram_2002240.unk_40[i];
+                ewram_2002240.unk_40[i] = buf;
+                ewram_2002240.unk_30[i] = tmp;
+                ewram_2002240.unk_04[i] |= 1;
+            }
+        }
+
+        if (ewram_2002240.unk_09 != 0) {
+            ewram_2002240.unk_04[i] |= 2;
+        }
+
+        if (ewram_2002240.unk_18[i] <= 14) {
+            ewram_2002240.unk_18[i]++;
+        }
+    }
+
+    if (ewram_2002240.unk_00 == 8) {
+        REG_TM3CNT_H = 0;
+        REG_SIOCNT |= 0x80;
+        REG_TM3CNT_H = 0xC0;
+    }
+}
 
 void Func_8006358(void) {
     iwram_3001cb0 = 0;

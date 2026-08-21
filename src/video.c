@@ -292,7 +292,20 @@ struct SpriteSlot {
 extern struct SpriteSlot gSpriteSlots[];
 extern u8 gSpriteAllocTable[];
 
-INCLUDE_ASM("asm/video/Func_8003e10.s");
+extern u8 _Func_8001dc8_SIZE[];
+extern void *alloc_iwram(u32 size);
+extern void free(void *mem);
+extern void Func_8001dc8(void *a);
+
+void Func_8003e10(void *arg0) {
+    do {
+        void (*func)(void*);
+        func = alloc_iwram((u32)_Func_8001dc8_SIZE);
+        DMA3_COPY(Func_8001dc8, func, (u32)_Func_8001dc8_SIZE);
+        func(arg0);
+        free(func);
+    } while (0);
+}
 
 s32 Func_8003e58(u32 id, u32 size) {
     u32 blocks = size >> 6;
