@@ -49,7 +49,7 @@
 	ldr	r2, [sp, #4]
 	lsl	r3, r2, #3
 	sub	r3, r2
-	ldr	r2, =.L9c610
+	ldr	r2, =gEncounterTables
 	lsl	r3, #2
 	add	r3, r2
 	ldrh	r7, [r3]

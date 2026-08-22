@@ -9,7 +9,7 @@
 	add	r3, r5, r2
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
-	ldr	r2, =.L9f1a8
+	ldr	r2, =gMaps
 	lsl	r3, #3
 	add	r3, r2
 	mov	r6, #2
@@ -121,7 +121,7 @@
 	add	r3, r5, r1
 	mov	r2, #0
 	ldrsh	r3, [r3, r2]
-	ldr	r2, =.L9f1a8
+	ldr	r2, =gMaps
 	lsl	r3, #3
 	add	r3, r2
 	mov	r2, #3

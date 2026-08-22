@@ -9,7 +9,7 @@
 	asr	r7, r0, #16
 	mov	r0, #0xb6
 	lsl	r0, #1
-	ldr	r5, =.L9e488
+	ldr	r5, =gEnemyBattleMusic
 	bl	_GetFlag
 	cmp	r0, #0
 	beq	.L8b33c

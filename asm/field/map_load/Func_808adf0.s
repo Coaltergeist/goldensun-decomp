@@ -8,7 +8,7 @@
 	push	{r6, r7}
 	sub	sp, #4
 	mov	r1, sp
-	ldr	r5, =.L9d7a8
+	ldr	r5, =gWorldMapEncounters
 	bl	_Func_80122c8
 	mov	r1, #0
 	mov	r10, r1

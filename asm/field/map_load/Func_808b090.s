@@ -20,7 +20,7 @@
 	mov	r11, r1
 	mov	r1, #0xe1
 	lsl	r1, #1
-	ldr	r5, =.L9d9f0
+	ldr	r5, =gAreaMusic
 	add	r3, r4, r1
 	add	r1, #0xa
 	mov	r2, #0

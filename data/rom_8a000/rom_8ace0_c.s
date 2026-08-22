@@ -1,31 +1,31 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L9c610
-	.global .L9d170
-	.global .L9d7a8
-	.global .L9d8b0
-	.global .L9d9f0
-	.global .L9ddd8
-	.global .L9e1d8
-	.global .L9e270
-	.global .L9e488
+	.global gEncounterTables
+	.global gMapEncounters
+	.global gWorldMapEncounters
+	.global gDjinniEncounters
+	.global gAreaMusic
+	.global gAreaNames
+	.global gRespawns
+	.global gMapBattleBGs
+	.global gEnemyBattleMusic
 
-.L9c610:
+gEncounterTables:
 	.incrom 0x9c610, 0x9d170
-.L9d170:
+gMapEncounters:
 	.incrom 0x9d170, 0x9d7a8
-.L9d7a8:
+gWorldMapEncounters:
 	.incrom 0x9d7a8, 0x9d8b0
-.L9d8b0:
+gDjinniEncounters:
 	.incrom 0x9d8b0, 0x9d9f0
-.L9d9f0:
+gAreaMusic:
 	.incrom 0x9d9f0, 0x9ddd8
-.L9ddd8:
+gAreaNames:
 	.incrom 0x9ddd8, 0x9e1d8
-.L9e1d8:
+gRespawns:
 	.incrom 0x9e1d8, 0x9e270
-.L9e270:
+gMapBattleBGs:
 	.incrom 0x9e270, 0x9e488
-.L9e488:
+gEnemyBattleMusic:
 	.incrom 0x9e488, 0x9e4ce

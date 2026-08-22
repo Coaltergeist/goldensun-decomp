@@ -30,7 +30,7 @@
 	mov	r3, #0
 	mov	r9, r1
 	add	r6, r10
-	ldr	r5, =.L9d170
+	ldr	r5, =gMapEncounters
 	mov	r7, #0
 	str	r3, [sp, #4]
 	cmp	r0, #0

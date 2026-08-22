@@ -11,7 +11,7 @@
 	lsl	r4, #1
 	mov	r2, #0
 	ldrsh	r6, [r3, r2]
-	ldr	r2, =.L9e1d8
+	ldr	r2, =gRespawns
 	add	r3, r0, r4
 	mov	r7, #0
 	ldrsh	r5, [r3, r7]

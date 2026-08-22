@@ -7,7 +7,7 @@
 	mov	r3, #0xe0
 	mov	r12, r2
 	lsl	r3, #1
-	ldr	r4, =.L9e270
+	ldr	r4, =gMapBattleBGs
 	add	r3, r12
 	mov	r2, #0
 	ldrsh	r0, [r3, r2]

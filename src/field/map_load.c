@@ -11,11 +11,11 @@ INCLUDE_ASM("asm/field/map_load/RespawnAtSanctum.s");
  * element. Forming the element pointer (base + map*8) first keeps the +2 a
  * `ldrb [.,#2]` immediate (Thumb ldrsb has no immediate form, so gcc then
  * sign-extends via lsl#24/asr#24) instead of folding into a register-indexed
- * ldrsb. .L9f1a8 is a .global asm-label (§8). */
-extern unsigned char L9f1a8[] __asm__(".L9f1a8");
+ * ldrsb. gMaps is a .global asm-label (§8). */
+extern unsigned char gMaps[] __asm__("gMaps");
 
 int GetMapArea(int map) {
-    signed char *p = (signed char *)(L9f1a8 + map * 8);
+    signed char *p = (signed char *)(gMaps + map * 8);
     return p[2];
 }
 
@@ -36,7 +36,7 @@ void Func_808ab48(void)
     z0 = 0;
     __asm__ volatile ("" : : "r" (z0));
     idx = *(short *)((unsigned char *)sp + z0);
-    LoadMapCode(*(short *)(L9f1a8 + idx * 8), __start_overlay);
+    LoadMapCode(*(short *)(gMaps + idx * 8), __start_overlay);
 }
 
 INCLUDE_ASM("asm/field/map_load/InitMapFlags.s");
@@ -81,7 +81,7 @@ s32 Func_808b048(s32 *arg1, s32 arg2) {
     Func_808ae74(foo, arg2);
 }
 
-extern unsigned short L9c610[] __asm__(".L9c610");
+extern unsigned short gEncounterTables[] __asm__("gEncounterTables");
 
 int GetEncounterGroup(int encounterID, int group)
 {
@@ -89,16 +89,16 @@ int GetEncounterGroup(int encounterID, int group)
     int idx;
 
     idx = (encounterID * 7) * 2 + group;
-    base = (unsigned char *)L9c610;
+    base = (unsigned char *)gEncounterTables;
     idx = idx * 2 + 4;
     return *(unsigned short *)(base + idx);
 }
 
-extern unsigned char L9d8b0[] __asm__(".L9d8b0");
+extern unsigned char gDjinniEncounters[] __asm__("gDjinniEncounters");
 
 unsigned int Func_808b074(int index)
 {
-    unsigned short *p = (unsigned short *)(L9d8b0 + (index << 2));
+    unsigned short *p = (unsigned short *)(gDjinniEncounters + (index << 2));
     return GetEncounterGroup(p[0], p[1]);
 }
 

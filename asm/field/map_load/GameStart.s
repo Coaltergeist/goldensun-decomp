@@ -10,7 +10,7 @@
 	mov	r7, r8
 	push	{r7}
 	ldr	r3, =gDebugMode
-	ldr	r1, =.L9f1a8
+	ldr	r1, =gMaps
 	ldrb	r3, [r3]
 	mov	r11, r1
 	cmp	r3, #0

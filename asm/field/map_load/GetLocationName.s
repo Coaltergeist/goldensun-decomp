@@ -7,7 +7,7 @@
 	push	{r7}
 	mov	r3, #0
 	mov	r6, r1
-	ldr	r5, =.L9ddd8
+	ldr	r5, =gAreaNames
 	mov	r8, r3
 	mov	r7, r0
 	bl	GetMapArea

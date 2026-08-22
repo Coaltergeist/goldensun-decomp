@@ -2,7 +2,7 @@
 	.include "gba.inc"
 
 	.section .rodata
-	.global .L9f1a8
+	.global gMaps
 
-.L9f1a8:
+gMaps:
 	.incrom 0x9f1a8, 0x9f810
