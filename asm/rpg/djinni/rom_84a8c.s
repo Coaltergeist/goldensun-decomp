@@ -2,7 +2,7 @@
 
 	.section .rodata
 	.global X89258
-	.global .L8926c
+	.global gDjinn
 	.global X84a8c
 	.global X84b1c
 	.global X88df8
@@ -26,5 +26,5 @@ X88e38:
 	.incrom 0x88e38, 0x89258
 X89258:
 	.incrom 0x89258, 0x8926c
-.L8926c:
+gDjinn:
 	.incrom 0x8926c, 0x89624

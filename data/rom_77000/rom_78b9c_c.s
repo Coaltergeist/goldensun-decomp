@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L7ee58
+	.global gMoves
 
-.L7ee58:
+gMoves:
 	.incrom 0x7ee58, 0x80ec8

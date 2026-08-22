@@ -4,7 +4,7 @@
 extern unsigned char *GetUnit(unsigned int unit);
 extern void Func_8079ae8();
 
-extern unsigned char L8926c[] __asm__(".L8926c");
+extern unsigned char gDjinn[] __asm__("gDjinn");
 
 unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
     unsigned int r3;
@@ -12,7 +12,7 @@ unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
     if (arg0 <= 3 && arg1 <= 0x13) {
         r3 = arg0 * 20 + arg1;
     }
-    return L8926c + r3 * 12;
+    return gDjinn + r3 * 12;
 }
 
 INCLUDE_ASM("asm/rpg/djinni/Func_807a0f4.s");
@@ -66,6 +66,6 @@ unsigned short Func_807a5b0(void) {
 
 INCLUDE_ASM("asm/rpg/djinni/GetNumDjinn.s");
 
-/* Shared rpg-region rodata pool (djinni tables incl. .L8926c used by
+/* Shared rpg-region rodata pool (djinni tables incl. gDjinn used by
    GetDjinniInfo); trails the region's text in ROM. */
 INCLUDE_ASM("asm/rpg/djinni/rom_84a8c.s");

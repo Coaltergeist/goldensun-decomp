@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L7b490
+	.global gArtifacts
 
-.L7b490:
+gArtifacts:
 	.incrom 0x7b490, 0x7b690

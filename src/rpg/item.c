@@ -3,8 +3,8 @@
 
 
 unsigned char *GetItemInfo(unsigned int itemID) {
-    extern unsigned char L7b6a8[] __asm__(".L7b6a8");
-    return L7b6a8 + (itemID & 0x1ff) * 0x2c;
+    extern unsigned char gItems[] __asm__("gItems");
+    return gItems + (itemID & 0x1ff) * 0x2c;
 }
 
 INCLUDE_ASM("asm/rpg/item/CanEquipItem.s");

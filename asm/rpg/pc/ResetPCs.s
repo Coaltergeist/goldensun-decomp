@@ -7,7 +7,7 @@
 	mov	r5, r8
 	push	{r5, r6, r7}
 	sub	sp, #0x20
-	ldr	r1, =.L7b690
+	ldr	r1, =gPCIDs
 	mov	r10, sp
 	mov	r8, r1
 	mov	r6, #0

@@ -1,13 +1,13 @@
 /* rpg/move.c -- consolidated TU. */
 #include "nonmatching.h"
 
-extern unsigned char L7ee58[] __asm__(".L7ee58");
+extern unsigned char gMoves[] __asm__("gMoves");
 
 unsigned char *GetMoveInfo(int moveID) {
     unsigned int idx = moveID & 0x3fff;
     if (idx >= 0x208)
         idx = 0;
-    return L7ee58 + (idx << 4);
+    return gMoves + (idx << 4);
 }
 
 INCLUDE_ASM("asm/rpg/move/HasMove.s");

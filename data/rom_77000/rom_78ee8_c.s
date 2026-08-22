@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L7b690
+	.global gPCIDs
 
-.L7b690:
+gPCIDs:
 	.incrom 0x7b690, 0x7b6a8
