@@ -124,7 +124,7 @@
 	ldr	r2, [sp]
 	mov	r3, r11
 	bl	Actor_SetPos
-	ldr	r3, =.L1358c
+	ldr	r3, =gScript_Idle
 	str	r3, [r6]
 	mov	r3, #0x80
 	lsl	r3, #10

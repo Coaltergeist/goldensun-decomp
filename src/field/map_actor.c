@@ -359,7 +359,7 @@ void MapActor_Jump(int actor, int height, unsigned int holdTime) {
     }
 }
 
-extern unsigned char L9ebfc[] __asm__(".L9ebfc");
+extern unsigned char gScript_0809ebfc[] __asm__("gScript_0809ebfc");
 extern void _Actor_SetScript(int actor, unsigned char *script);
 
 void Func_809259c(int arg0, int arg1) {
@@ -370,7 +370,7 @@ void Func_809259c(int arg0, int arg1) {
     if (!actor) return;
     if (r5 <= 0) return;
     if (r5 > 3) r5 = 3;
-    _Actor_SetScript(actor, L9ebfc + (3 - r5) * 128);
+    _Actor_SetScript(actor, gScript_0809ebfc + (3 - r5) * 128);
 }
 
 

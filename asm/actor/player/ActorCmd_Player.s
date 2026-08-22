@@ -133,7 +133,7 @@
 	ldr	r3, [r5]
 	mov	r2, #0xf
 	lsr	r3, #4
-	ldr	r1, =.L13254
+	ldr	r1, =sDPadAngles
 	and	r3, r2
 	lsl	r3, #1
 	ldrsh	r3, [r1, r3]
@@ -768,7 +768,7 @@
 	cmp	r6, #0
 	beq	.Lf2d8
 	ldr	r3, [r7, #0x14]
-	ldr	r1, =.L13274
+	ldr	r1, =gScript_08013274
 	str	r3, [r6, #0x14]
 	ldr	r5, [r6, #0x50]
 	bl	Actor_SetScript

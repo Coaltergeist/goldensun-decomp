@@ -1532,7 +1532,7 @@
 	cmp	r11, r2
 	bhi	.Lbf11e
 	ldr	r3, [sp, #8]
-	ldr	r2, =.Lc2da0
+	ldr	r2, =gMoveAnims
 	ldr	r1, [r3]
 	mov	r4, r11
 	lsl	r3, r4, #2

@@ -41,7 +41,7 @@
 	mov	r0, r6
 	mov	r1, r7
 	bl	MapActor_TravelBy
-	ldr	r1, =.L9fbcc
+	ldr	r1, =gScript_0809fbcc
 	mov	r0, r5
 	bl	_Actor_SetScript
 	mov	r3, r5

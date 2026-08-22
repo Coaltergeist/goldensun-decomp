@@ -1447,8 +1447,8 @@
 	bne	.Ldf5e6
 	b	.Ldf772
 .Ldf5e6:
-	ldr	r1, =.Leec44
-	ldr	r2, =.Leec28
+	ldr	r1, =gVFX_SlashHit_Offsets
+	ldr	r2, =gVFX_SlashHit_LongDims
 	ldr	r7, =gBuffer
 	mov	r9, r1
 	mov	r10, r2
@@ -1484,7 +1484,7 @@
 	ldrb	r0, [r3, r6]
 	ldr	r3, [r7, #4]
 	str	r4, [sp]
-	ldr	r4, =.Leec2f
+	ldr	r4, =gVFX_SlashHit_ShortDims
 	sub	r3, r0
 	ldrb	r0, [r4, r6]
 	str	r0, [sp, #4]
@@ -1513,7 +1513,7 @@
 	ldrb	r0, [r4, r6]
 	mov	r2, r9
 	ldrh	r1, [r2, r5]
-	ldr	r4, =.Leec2f
+	ldr	r4, =gVFX_SlashHit_ShortDims
 	ldr	r2, [r7]
 	str	r0, [sp]
 	ldrb	r0, [r4, r6]
@@ -1552,7 +1552,7 @@
 	ldr	r3, [r7, #4]
 	sub	r3, r4
 	mov	r12, r3
-	ldr	r3, =.Leec2f
+	ldr	r3, =gVFX_SlashHit_ShortDims
 	ldrb	r0, [r3, r6]
 	str	r4, [sp, #4]
 	str	r0, [sp]
@@ -1581,7 +1581,7 @@
 	ldr	r4, =.Leec3d
 	add	r2, r3
 	ldrb	r3, [r4, r6]
-	ldr	r4, =.Leec2f
+	ldr	r4, =gVFX_SlashHit_ShortDims
 	ldrb	r0, [r4, r6]
 	sub	r2, r3
 	ldr	r3, [r7, #4]

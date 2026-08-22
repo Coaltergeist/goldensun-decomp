@@ -4,7 +4,7 @@
 .thumb_func_start Camera_SetTarget  @ 0x0800c4bc
 	push	{r5, r6, lr}
 	mov	r6, r1
-	ldr	r1, =.L135f0
+	ldr	r1, =gScript_080135f0
 	mov	r5, r0
 	bl	Actor_SetScript
 	cmp	r6, #0

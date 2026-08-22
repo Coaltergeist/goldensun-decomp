@@ -102,41 +102,41 @@ void Actor_AddSpriteLayer(unsigned char *actor, int spriteID) {
     }
 }
 
-extern unsigned char L13608[] __asm__(".L13608");
+extern unsigned char gScript_08013608[] __asm__("gScript_08013608");
 
 void Actor_Ride(unsigned char *actor, unsigned char *other) {
-    Actor_SetScript(actor, L13608);
+    Actor_SetScript(actor, gScript_08013608);
     *(unsigned char **)(actor + 0x68) = other;
 }
 
-extern unsigned char L13590[] __asm__(".L13590");
+extern unsigned char gScript_08013590[] __asm__("gScript_08013590");
 
 void Func_800c46c(unsigned int actor) {
-    Actor_SetScript(actor, L13590);
+    Actor_SetScript(actor, gScript_08013590);
 }
 
-extern unsigned char L135a8[] __asm__(".L135a8");
+extern unsigned char gScript_080135a8[] __asm__("gScript_080135a8");
 
 void Func_800c47c(int actor) {
-    Actor_SetScript(actor, L135a8);
+    Actor_SetScript(actor, gScript_080135a8);
 }
 
-extern unsigned char L135c0[] __asm__(".L135c0");
+extern unsigned char gScript_080135c0[] __asm__("gScript_080135c0");
 
 void Func_800c48c(void *actor) {
-    Actor_SetScript(actor, L135c0);
+    Actor_SetScript(actor, gScript_080135c0);
 }
 
-extern unsigned char L135d8[] __asm__(".L135d8");
+extern unsigned char gScript_080135d8[] __asm__("gScript_080135d8");
 
 void Func_800c49c(unsigned char *actor) {
-    Actor_SetScript(actor, L135d8);
+    Actor_SetScript(actor, gScript_080135d8);
 }
 
-extern unsigned char L13620[] __asm__(".L13620");
+extern unsigned char gScript_08013620[] __asm__("gScript_08013620");
 
 void Actor_Stop(void *actor) {
-    Actor_SetScript(actor, L13620);
+    Actor_SetScript(actor, gScript_08013620);
 }
 
 INCLUDE_ASM("asm/actor/actor/Camera_SetTarget.s");

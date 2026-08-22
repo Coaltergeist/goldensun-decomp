@@ -24,7 +24,7 @@
 	mov	r0, r6
 	mov	r1, #2
 	bl	_Actor_SetAnim
-	ldr	r1, =.L9fbec
+	ldr	r1, =gScript_0809fbec
 	mov	r0, r6
 	bl	_Actor_SetScript
 	b	.L92674
@@ -35,7 +35,7 @@
 	mov	r0, r6
 	mov	r1, #1
 	bl	_Actor_SetAnim
-	ldr	r1, =.L9fc04
+	ldr	r1, =gScript_0809fc04
 	mov	r0, r6
 	bl	_Actor_SetScript
 .L92674:

@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L9ebfc
+	.global gScript_0809ebfc
 
-.L9ebfc:
+gScript_0809ebfc:
 	.incrom 0x9ebfc, 0x9ed80

@@ -14,7 +14,7 @@
 	.global .Lc2b88
 	.global .Lc2b90
 	.global .Lc2b98
-	.global .Lc2da0
+	.global gMoveAnims
 
 .Lc2ab8:
 	.incrom 0xc2ab8, 0xc2ac0
@@ -42,7 +42,7 @@
 	.incrom 0xc2b90, 0xc2b98
 .Lc2b98:
 	.incrom 0xc2b98, 0xc2da0
-.Lc2da0:
+gMoveAnims:
 	.incrom 0xc2da0, 0xc35bc
 .Lc35bc:
 	.incrom 0xc35bc, 0xc3604

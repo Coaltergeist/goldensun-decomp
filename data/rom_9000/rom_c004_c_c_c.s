@@ -2,28 +2,28 @@
 	.include "gba.inc"
 
 	.section .rodata
-	.global .L1358c
-	.global .L13590
-	.global .L135a8
-	.global .L135c0
-	.global .L135d8
-	.global .L135f0
-	.global .L13608
-	.global .L13620
+	.global gScript_Idle
+	.global gScript_08013590
+	.global gScript_080135a8
+	.global gScript_080135c0
+	.global gScript_080135d8
+	.global gScript_080135f0
+	.global gScript_08013608
+	.global gScript_08013620
 
-.L1358c:
+gScript_Idle:
 	.incrom 0x1358c, 0x13590
-.L13590:
+gScript_08013590:
 	.incrom 0x13590, 0x135a8
-.L135a8:
+gScript_080135a8:
 	.incrom 0x135a8, 0x135c0
-.L135c0:
+gScript_080135c0:
 	.incrom 0x135c0, 0x135d8
-.L135d8:
+gScript_080135d8:
 	.incrom 0x135d8, 0x135f0
-.L135f0:
+gScript_080135f0:
 	.incrom 0x135f0, 0x13608
-.L13608:
+gScript_08013608:
 	.incrom 0x13608, 0x13620
-.L13620:
+gScript_08013620:
 	.incrom 0x13620, 0x13624

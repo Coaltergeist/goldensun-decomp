@@ -18,7 +18,7 @@
 	mov	r2, #0xf
 	lsr	r3, #4
 	and	r3, r2
-	ldr	r1, =.L13254
+	ldr	r1, =sDPadAngles
 	lsl	r3, #1
 	ldrsh	r3, [r1, r3]
 	mov	r0, #0xc
@@ -233,16 +233,16 @@
 .func_end ActorCmd_Player_Climb
 
 	.section .rodata
-	.global .L13254
-	.global .L13274
-	.global .L13280
+	.global sDPadAngles
+	.global gScript_08013274
+	.global gScript_08013280
 	.global .L1328c
 
-.L13254:
+sDPadAngles:
 	.incrom 0x13254, 0x13274
-.L13274:
+gScript_08013274:
 	.incrom 0x13274, 0x13280
-.L13280:
+gScript_08013280:
 	.incrom 0x13280, 0x1328c
 .L1328c:
 	.incrom 0x1328c, 0x132cc
