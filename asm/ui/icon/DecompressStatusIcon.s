@@ -7,7 +7,7 @@
 	ldr	r1, [r3]
 	ldr	r3, =0x604
 	add	r2, r1, r3
-	ldr	r3, =.L308a0
+	ldr	r3, =gStatusIcons
 	lsl	r0, #2
 	ldr	r3, [r3, r0]
 	mov	r0, #0xc0

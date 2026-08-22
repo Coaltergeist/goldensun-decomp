@@ -100,35 +100,35 @@
 	.global .Lb4ab6
 	.global .Lb41ac
 	.global .Lb3940
-	.global .Lb39c0
-	.global .Lb3a40
-	.global .Lb3ac0
-	.global .Lb3b40
-	.global .Lb3bc0
-	.global .Lb3d40
-	.global .Lb3e80
-	.global .Lb3f80
+	.global GFX_Party_ScrollSide_Copy2
+	.global GFX_Equip_StatDown_Copy2
+	.global GFX_Equip_StatUp_Copy2
+	.global GFX_Party_ScrollUp_Copy2
+	.global GFX_Party_ScrollDown_Copy2
+	.global GFX_PriceDigits
+	.global GFX_PriceTag
+	.global GFX_BuyCountMeter
 	.global .Lb4100
 	.global .Lb413c
 	.global .Lb4146
 
 .Lb3940:
 	.incrom 0xb3940, 0xb39c0
-.Lb39c0:
+GFX_Party_ScrollSide_Copy2:
 	.incrom 0xb39c0, 0xb3a40
-.Lb3a40:
+GFX_Equip_StatDown_Copy2:
 	.incrom 0xb3a40, 0xb3ac0
-.Lb3ac0:
+GFX_Equip_StatUp_Copy2:
 	.incrom 0xb3ac0, 0xb3b40
-.Lb3b40:
+GFX_Party_ScrollUp_Copy2:
 	.incrom 0xb3b40, 0xb3bc0
-.Lb3bc0:
+GFX_Party_ScrollDown_Copy2:
 	.incrom 0xb3bc0, 0xb3d40
-.Lb3d40:
+GFX_PriceDigits:
 	.incrom 0xb3d40, 0xb3e80
-.Lb3e80:
+GFX_PriceTag:
 	.incrom 0xb3e80, 0xb3f80
-.Lb3f80:
+GFX_BuyCountMeter:
 	.incrom 0xb3f80, 0xb4100
 .Lb4100:
 	.incrom 0xb4100, 0xb413c

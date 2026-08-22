@@ -19,7 +19,7 @@
 	mov	r3, #0
 	mov	r6, r0
 	mov	r9, r3
-	ldr	r0, =.Lb3e80
+	ldr	r0, =GFX_PriceTag
 	ldr	r3, =REG_DMA3SAD
 	mov	r1, r6
 	ldr	r2, =0x84000040

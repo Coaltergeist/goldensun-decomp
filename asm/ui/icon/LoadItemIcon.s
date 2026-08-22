@@ -14,13 +14,13 @@
 	ldr	r2, =0x604
 	ldrh	r3, [r0, #6]
 	add	r1, r6, r2
-	ldr	r2, =.L29ee4
+	ldr	r2, =gItemIcons
 	lsl	r3, #2
 	ldr	r3, [r2, r3]
 	str	r3, [r1]
 	b	.L1a39e
 .L1a394:
-	ldr	r2, =.L29ee4
+	ldr	r2, =gItemIcons
 	ldr	r1, =0x604
 	ldr	r2, [r2]
 	add	r3, r6, r1

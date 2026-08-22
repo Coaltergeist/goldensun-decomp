@@ -486,8 +486,8 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80a524c.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a5388.s");
 
 extern unsigned char iwram_3001f2c__a11[] __asm__("iwram_3001f2c");
-extern unsigned char Laebcc[] __asm__(".Laebcc");
-extern unsigned char Laeb4c[] __asm__(".Laeb4c");
+extern unsigned char GFX_Equip_StatUp_Copy[] __asm__("GFX_Equip_StatUp_Copy");
+extern unsigned char GFX_Equip_StatDown_Copy[] __asm__("GFX_Equip_StatDown_Copy");
 
 void Func_80a5534(void) {
     unsigned char *r5;
@@ -496,11 +496,11 @@ void Func_80a5534(void) {
     r5 = *(unsigned char **)iwram_3001f2c__a11;
     r0 = AllocSpriteSlot();
     *(unsigned short *)(r5 + 0x392) = r0;
-    UploadSpriteGFX(r0, 0x80, Laebcc);
+    UploadSpriteGFX(r0, 0x80, GFX_Equip_StatUp_Copy);
     r0 = AllocSpriteSlot();
     r5 += 0xe5 << 2;
     *(unsigned short *)r5 = r0;
-    UploadSpriteGFX(r0, 0x80, Laeb4c);
+    UploadSpriteGFX(r0, 0x80, GFX_Equip_StatDown_Copy);
 }
 
 INCLUDE_ASM("asm/ui/party_menu/Func_80a5578.s");
@@ -835,8 +835,8 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80ae778.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80ae7fc.s");
 
 extern unsigned char iwram_3001f2c__a17[] __asm__("iwram_3001f2c");
-extern unsigned char Laed4c[] __asm__(".Laed4c");
-extern unsigned char Laedcc[] __asm__(".Laedcc");
+extern unsigned char GFX_Djinn_StatUp_Copy[] __asm__("GFX_Djinn_StatUp_Copy");
+extern unsigned char GFX_Djinn_StatDown_Copy[] __asm__("GFX_Djinn_StatDown_Copy");
 
 void Func_80ae88c(void) {
     unsigned char *r5;
@@ -846,12 +846,12 @@ void Func_80ae88c(void) {
     r0 = AllocSpriteSlot();
     *(unsigned short *)(r5 + 0x392) = r0;
     if (r0 != -1) {
-        UploadSpriteGFX(r0, 0x80, Laed4c);
+        UploadSpriteGFX(r0, 0x80, GFX_Djinn_StatUp_Copy);
     }
     r0 = AllocSpriteSlot();
     *(unsigned short *)(r5 + (0xe5 << 2)) = r0;
     if (r0 != -1) {
-        UploadSpriteGFX(r0, 0x80, Laedcc);
+        UploadSpriteGFX(r0, 0x80, GFX_Djinn_StatDown_Copy);
     }
 }
 

@@ -14,7 +14,7 @@ extern void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned i
 extern unsigned int Func_801eadc(unsigned int name, unsigned int flags, unsigned int arg2, unsigned int arg3, unsigned int arg4);
 extern void Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 extern unsigned char iwram_3001e40[];
-extern unsigned char L37280[] __asm__(".L37280");
+extern unsigned char GFX_PageNumberArrows[] __asm__("GFX_PageNumberArrows");
 extern void Func_8021950(int arg0, void *arg1, void *arg2, int arg3);
 extern void DecompressStatusIcon(unsigned int iconID);
 extern int UploadSprite2(unsigned int slot, void *gfx);
@@ -161,7 +161,7 @@ void Func_80219c8(unsigned int arg0)
     if (r6 <= 0) {
         r6 = 1;
     }
-    r5 = L37280;
+    r5 = GFX_PageNumberArrows;
     r6 = r6 + 1;
     Func_8021950(0x6000220, r5, (void *)arg0, -r6);
     r5 += 0x20;

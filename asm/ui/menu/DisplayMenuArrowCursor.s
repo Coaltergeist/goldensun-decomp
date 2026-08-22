@@ -44,7 +44,7 @@
 	beq	.L1af5c
 	ldrh	r2, [r6, #0x3c]
 	mov	r3, r2
-	ldr	r1, =.L342f8
+	ldr	r1, =GFX_MenuArrowCursor_R
 	cmp	r3, #0
 	beq	.L1af76
 	lsl	r3, r0, #23
@@ -57,7 +57,7 @@
 .L1af5c:
 	ldrh	r2, [r6, #8]
 	mov	r3, r2
-	ldr	r1, =.L33ef8
+	ldr	r1, =GFX_MenuArrowCursor_L
 	cmp	r3, #0
 	beq	.L1af76
 	lsl	r3, r0, #23

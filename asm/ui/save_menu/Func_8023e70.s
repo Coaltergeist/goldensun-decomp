@@ -1235,7 +1235,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	beq	.L2487e
-	ldr	r5, =.L37308
+	ldr	r5, =GFX_ClassChangeArrow
 	mov	r2, #0x20
 	mov	r1, r5
 	ldr	r6, =Func_8001af8
@@ -1254,7 +1254,7 @@
 	bl	_call_via_r3
 	ldr	r3, =Func_8001af8
 	ldr	r0, =0x6006520
-	ldr	r1, =.L37308
+	ldr	r1, =GFX_ClassChangeArrow
 	mov	r2, #0x20
 	bl	_call_via_r3
 .L24896:

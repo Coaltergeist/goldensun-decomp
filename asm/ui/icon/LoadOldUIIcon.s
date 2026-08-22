@@ -18,7 +18,7 @@
 	str	r3, [sp]
 	mov	r11, r2
 	bl	galloc_iwram
-	ldr	r3, =.L29a10
+	ldr	r3, =gIconBoxes
 	lsl	r5, #2
 	ldr	r2, =0x604
 	ldr	r3, [r3, r5]
@@ -40,7 +40,7 @@
 	strh	r5, [r2]
 	mov	r1, #0
 	bl	LoadIcon
-	ldr	r3, =.L29e00
+	ldr	r3, =gOldUIIcons
 	lsl	r6, #2
 	ldr	r3, [r3, r6]
 	mov	r2, r9

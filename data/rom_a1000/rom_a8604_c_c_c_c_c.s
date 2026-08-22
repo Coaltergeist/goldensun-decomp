@@ -5,7 +5,7 @@
 	.global .Laf230
 	.global .Laf234
 	.global .Laf238
-	.global .Laf23c
+	.global GFX_MoveRangeIcons_Copy
 
 .Laf22c:
 	.incrom 0xaf22c, 0xaf230
@@ -15,5 +15,5 @@
 	.incrom 0xaf234, 0xaf238
 .Laf238:
 	.incrom 0xaf238, 0xaf23c
-.Laf23c:
+GFX_MoveRangeIcons_Copy:
 	.incrom 0xaf23c, 0xaf26c

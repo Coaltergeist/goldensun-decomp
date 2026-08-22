@@ -41,7 +41,7 @@
 	ldr	r2, =0x392
 	add	r3, r5, r2
 	strh	r0, [r3]
-	ldr	r2, =.Lb3b40
+	ldr	r2, =GFX_Party_ScrollUp_Copy2
 	mov	r1, #0x80
 	bl	UploadSpriteGFX
 	bl	AllocSpriteSlot
@@ -49,28 +49,28 @@
 	lsl	r2, #2
 	add	r3, r5, r2
 	strh	r0, [r3]
-	ldr	r2, =.Lb3bc0
+	ldr	r2, =GFX_Party_ScrollDown_Copy2
 	mov	r1, #0x80
 	bl	UploadSpriteGFX
 	bl	AllocSpriteSlot
 	ldr	r2, =0x396
 	add	r3, r5, r2
 	strh	r0, [r3]
-	ldr	r2, =.Lb39c0
+	ldr	r2, =GFX_Party_ScrollSide_Copy2
 	mov	r1, #0x80
 	bl	UploadSpriteGFX
 	bl	AllocSpriteSlot
 	ldr	r2, =0x39a
 	add	r3, r5, r2
 	strh	r0, [r3]
-	ldr	r2, =.Lb3a40
+	ldr	r2, =GFX_Equip_StatDown_Copy2
 	mov	r1, #0x80
 	bl	UploadSpriteGFX
 	bl	AllocSpriteSlot
 	mov	r3, #0xe6
 	lsl	r3, #2
 	add	r5, r3
-	ldr	r2, =.Lb3ac0
+	ldr	r2, =GFX_Equip_StatUp_Copy2
 	strh	r0, [r5]
 	mov	r1, #0x80
 	bl	UploadSpriteGFX

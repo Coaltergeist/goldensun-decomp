@@ -8,8 +8,8 @@
 	.global .L37216
 	.global .L37226
 	.global .L37230
-	.global .L37250
-	.global .L37280
+	.global GFX_MoveRangeIcons
+	.global GFX_PageNumberArrows
 	.global .L372c0
 	.global .L371e0
 
@@ -27,9 +27,9 @@
 	.incrom 0x37226, 0x37230
 .L37230:
 	.incrom 0x37230, 0x37250
-.L37250:
+GFX_MoveRangeIcons:
 	.incrom 0x37250, 0x37280
-.L37280:
+GFX_PageNumberArrows:
 	.incrom 0x37280, 0x372c0
 .L372c0:
 	.incrom 0x372c0, 0x37300

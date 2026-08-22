@@ -27,7 +27,7 @@
 	beq	.L1a45a
 	ldr	r3, =0x604
 	add	r2, r5, r3
-	ldr	r3, =.L29a10
+	ldr	r3, =gIconBoxes
 	mov	r1, #0xc0
 	ldr	r3, [r3, #8]
 	lsl	r1, #3
@@ -45,7 +45,7 @@
 	mov	r8, r2
 .L1a45a:
 	ldr	r3, =0x604
-	ldr	r2, =.L2de88
+	ldr	r2, =gMoveIcons
 	add	r1, r5, r3
 	lsl	r3, r6, #2
 	ldr	r3, [r2, r3]

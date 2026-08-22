@@ -6,7 +6,7 @@
 	.global .L37450
 	.global .L37458
 	.global .L37460
-	.global .L37308
+	.global GFX_ClassChangeArrow
 	.global .L37328
 	.global .L373a8
 	.global .L373b8
@@ -23,7 +23,7 @@
 	.global .L37428
 	.global .L3742c
 
-.L37308:
+GFX_ClassChangeArrow:
 	.incrom 0x37308, 0x37328
 .L37328:
 	.incrom 0x37328, 0x373a8

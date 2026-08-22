@@ -5,7 +5,7 @@
 	push	{r5, r6, lr}
 	mov	r6, r8
 	push	{r6}
-	ldr	r3, =.L342f8
+	ldr	r3, =GFX_MenuArrowCursor_R
 	mov	r5, r0
 	mov	r8, r3
 	mov	r6, r1

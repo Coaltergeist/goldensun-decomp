@@ -3,7 +3,7 @@
 
 .thumb_func_start Func_80b06ec  @ 0x080b06ec
 	push	{lr}
-	ldr	r3, =.Lb3d40
+	ldr	r3, =GFX_PriceDigits
 	lsl	r0, #5
 	add	r0, r3
 	ldr	r3, =.Lb413c

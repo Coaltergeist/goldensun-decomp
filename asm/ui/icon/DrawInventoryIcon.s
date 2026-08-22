@@ -35,7 +35,7 @@
 	beq	.L1a0ec
 	ldr	r3, =0x604
 	add	r2, r5, r3
-	ldr	r3, =.L29a10
+	ldr	r3, =gIconBoxes
 	mov	r1, #0xc0
 	ldr	r3, [r3, #8]
 	lsl	r1, #3
@@ -57,7 +57,7 @@
 	add	r3, r5
 	mov	r9, r3
 	ldrh	r3, [r1, #6]
-	ldr	r2, =.L29ee4
+	ldr	r2, =gItemIcons
 	lsl	r3, #2
 	ldr	r3, [r2, r3]
 	mov	r2, r9
@@ -86,7 +86,7 @@
 	and	r3, r2
 	cmp	r3, #0
 	beq	.L1a148
-	ldr	r3, =.L29acc
+	ldr	r3, =gIconOverlays
 	ldr	r3, [r3, #4]
 	mov	r1, r9
 	mov	r2, r8
@@ -110,7 +110,7 @@
 	beq	.L1a180
 	ldr	r3, =0x604
 	add	r2, r5, r3
-	ldr	r3, =.L29acc
+	ldr	r3, =gIconOverlays
 	mov	r1, #0xc0
 	ldr	r3, [r3]
 	lsl	r1, #3
@@ -149,7 +149,7 @@
 	beq	.L1a1cc
 	ldr	r3, =0x604
 	add	r2, r5, r3
-	ldr	r3, =.L29acc
+	ldr	r3, =gIconOverlays
 	ldr	r3, [r3, #8]
 	str	r3, [r2]
 	mov	r2, #0xc0
@@ -204,7 +204,7 @@
 	mov	r1, #0xa
 	mov	r0, r10
 	bl	__modsi3
-	ldr	r3, =.L29b68
+	ldr	r3, =gItemDigits
 	lsl	r0, #2
 	ldr	r2, =0x604
 	mov	r11, r3

@@ -49,10 +49,10 @@
 .func_end Func_80ae9f0
 
 	.section .rodata.rom_ae88c_c_c_c
-	.global .Laed4c
-	.global .Laedcc
+	.global GFX_Djinn_StatUp_Copy
+	.global GFX_Djinn_StatDown_Copy
 
-.Laed4c:
+GFX_Djinn_StatUp_Copy:
 	.incrom 0xaed4c, 0xaedcc
-.Laedcc:
+GFX_Djinn_StatDown_Copy:
 	.incrom 0xaedcc, 0xaf08c

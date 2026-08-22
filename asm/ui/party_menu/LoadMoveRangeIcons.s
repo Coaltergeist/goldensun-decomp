@@ -6,7 +6,7 @@
 	mov	r7, r10
 	mov	r6, r8
 	push	{r6, r7}
-	ldr	r2, =.Laf23c
+	ldr	r2, =GFX_MoveRangeIcons_Copy
 	ldr	r3, =Func_80008d8
 	mov	r7, #0
 	mov	r8, r2

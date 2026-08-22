@@ -31,7 +31,7 @@
 	lsl	r3, #2
 	add	r0, r6, r3
 	ldrh	r3, [r0]
-	ldr	r5, =.L342f8
+	ldr	r5, =GFX_MenuArrowCursor_R
 	cmp	r3, #0
 	beq	.L1b28a
 	sub	r2, r3
@@ -57,7 +57,7 @@
 .L1b2ac:
 	ldr	r2, =0x396
 	add	r3, r6, r2
-	ldr	r0, =.L33ef8
+	ldr	r0, =GFX_MenuArrowCursor_L
 	ldrh	r3, [r3]
 	ldr	r4, =0xfff7
 	mov	r11, r0

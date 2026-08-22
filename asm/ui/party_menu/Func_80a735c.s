@@ -23,10 +23,10 @@
 .func_end Func_80a735c
 
 	.section .rodata.rom_a5534_c_c_c
-	.global .Laeb4c
-	.global .Laebcc
+	.global GFX_Equip_StatDown_Copy
+	.global GFX_Equip_StatUp_Copy
 
-.Laeb4c:
+GFX_Equip_StatDown_Copy:
 	.incrom 0xaeb4c, 0xaebcc
-.Laebcc:
+GFX_Equip_StatUp_Copy:
 	.incrom 0xaebcc, 0xaed4c

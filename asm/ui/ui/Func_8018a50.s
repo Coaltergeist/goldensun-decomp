@@ -297,7 +297,7 @@
 .func_end Func_8018a50
 
 	.section .rodata.rom_17e88_c
-	.global .L33e40
+	.global sItemArticles
 
-.L33e40:
+sItemArticles:
 	.incrom 0x33e40, 0x33e60

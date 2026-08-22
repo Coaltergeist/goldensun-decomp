@@ -115,7 +115,7 @@
 	ldr	r3, =REG_DMA3SAD
 	mov	r7, r0
 	mov	r1, r8
-	ldr	r0, =.Lb3f80
+	ldr	r0, =GFX_BuyCountMeter
 	ldr	r2, =0x84000040
 	stmia	r3!, {r0, r1, r2}
 	sub	r3, #0xc

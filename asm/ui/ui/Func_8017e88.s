@@ -54,7 +54,7 @@
 
 .L17ee8:
 	mov	r9, sp
-	ldr	r3, =.L33e40
+	ldr	r3, =sItemArticles
 	mov	r1, #0
 	mov	r2, r9
 	mov	r12, r1

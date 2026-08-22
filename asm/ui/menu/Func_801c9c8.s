@@ -43,11 +43,11 @@
 .func_end Func_801c9c8
 
 	.section .rodata.rom_1aeec_c_c
-	.global .L342f8
-	.global .L33ef8
-	.global .L342f8
+	.global GFX_MenuArrowCursor_R
+	.global GFX_MenuArrowCursor_L
+	.global GFX_MenuArrowCursor_R
 
-.L33ef8:
+GFX_MenuArrowCursor_L:
 	.incrom 0x33ef8, 0x342f8
-.L342f8:
+GFX_MenuArrowCursor_R:
 	.incrom 0x342f8, 0x346f8
