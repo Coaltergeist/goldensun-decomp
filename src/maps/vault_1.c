@@ -119,6 +119,7 @@ unsigned char *Vault1_GetEvents(void)
 
 extern unsigned char *iwram_3001ebc;
 
+// fakematch
 void OvlFunc_898_2008614(void)
 {
     unsigned short *p;

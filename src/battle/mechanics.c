@@ -503,6 +503,7 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80c0774.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80c08a8.s");
 
+// fakematch
 void Func_80c08e0(void) {
     gfree(10);
 }

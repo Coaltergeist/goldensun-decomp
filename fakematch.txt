@@ -1,5 +1,5 @@
 MatrixReset        src/math/matrix.c
-Func_80c0eb8       src/battle/mechanics.c
+Func_80c08e0       src/battle/mechanics.c
 Func_80b5ad4       src/battle/battle.c
 Func_800651c       src/serial.c
 ToggleFlag         src/flags.c
@@ -11,7 +11,6 @@ LoadMapCode        src/main.c
 Func_80dbb9c       src/sprite/summon.c
 Func_80e72e0       src/battle_anim/moves/torch.c
 Func_80b3210       src/ui/shop.c
-Func_80c0184       src/battle/mechanics.c
 RunTasks           src/video.c
 OvlFunc_908_20083f4  src/maps/bilibin_rooms.c
 OvlFunc_908_2008430  src/maps/bilibin_rooms.c
@@ -108,3 +107,7 @@ Func_8005ee0       src/serial.c
 Func_8005fcc       src/serial.c
 Func_8006088       src/serial.c
 Func_80063bc       src/serial.c
+Func_80e72e0       src/battle_anim/summon_sprite.c
+OvlFunc_898_2008614 src/maps/vault_1.c
+SomethingSaveHeader src/save.c
+RunTasks           src/task.c

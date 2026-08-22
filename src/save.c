@@ -167,6 +167,7 @@ static inline void ClearSectorBuf(struct FlashWork *ctx) {
     }
 }
 
+// fakematch
 u32 SomethingSaveHeader(u32 slot, const void *data) {
     struct FlashSectorHeader header;
     struct FlashWork *ctx = *((struct FlashWork **)&gPtrs[0x33]);

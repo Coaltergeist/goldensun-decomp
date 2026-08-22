@@ -96,6 +96,7 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8021390.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8021488.s");
 
+// fakematch
 void Func_80215e0(int param_1, unsigned int param_2)
 {
     unsigned char *gfx;
