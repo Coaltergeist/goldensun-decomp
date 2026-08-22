@@ -67,7 +67,7 @@ void Func_80a14f0(int arg0, unsigned int arg1, unsigned int arg2, unsigned int a
 INCLUDE_ASM("asm/ui/party_menu/Func_80a153c.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a15f0.s");
 
-extern unsigned char Laea4c[] __asm__(".Laea4c");
+extern unsigned char GFX_UICursor_Copy[] __asm__("GFX_UICursor_Copy");
 extern void *AllocSpriteSlot(void);
 extern void UploadSpriteGFX(int slot, unsigned int size, unsigned char *gfx);
 extern unsigned int _Func_801eadc(void *slot, unsigned int mode, unsigned int arg0, unsigned int arg2, unsigned int arg3);
@@ -80,7 +80,7 @@ unsigned int Func_80a172c(unsigned int arg0, unsigned int arg1, unsigned int arg
     result = 0;
     slot = AllocSpriteSlot();
     if (slot != 0) {
-        UploadSpriteGFX((int)slot, 0x80, Laea4c);
+        UploadSpriteGFX((int)slot, 0x80, GFX_UICursor_Copy);
         result = _Func_801eadc(slot, 0x40000000, arg0, arg2, arg3);
     }
     return result;
@@ -96,7 +96,7 @@ unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned 
     slot = AllocSpriteSlot();
     __asm__ volatile ("movs %0, #0" : "=r" (ret) : "r" (slot));
     if (slot != 0) {
-        UploadSpriteGFX(slot, 0x80, Laea4c);
+        UploadSpriteGFX(slot, 0x80, GFX_UICursor_Copy);
         ret = _Func_801eadc(slot, 0x80 << 23, arg0, arg1, arg2);
     }
     return ret;

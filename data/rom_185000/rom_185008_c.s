@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .L185024
+	.global gSpriteInfo
 
-.L185024:
+gSpriteInfo:
 	.incrom 0x185024, 0x31efd4

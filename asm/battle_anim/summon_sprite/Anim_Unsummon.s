@@ -232,18 +232,18 @@
 	bge	.Le7092
 	mov	r4, #0
 .Le7092:
-	ldr	r2, =.Leee66
+	ldr	r2, =gVFX_UnsummonFlash_Offsets
 	lsl	r3, r4, #1
 	ldrh	r1, [r2, r3]
 	mov	r3, r11
 	asr	r2, r3, #16
-	ldr	r3, =.Leee56
+	ldr	r3, =gVFX_UnsummonFlash_Widths
 	ldrb	r5, [r3, r4]
 	ldr	r0, [sp, #0x1c]
 	lsr	r3, r5, #1
 	sub	r2, r3
 	asr	r3, r0, #16
-	ldr	r0, =.Leee5e
+	ldr	r0, =gVFX_UnsummonFlash_Heights
 	ldrb	r4, [r0, r4]
 	lsr	r0, r4, #1
 	sub	r3, r0

@@ -261,7 +261,7 @@
 	mov	r7, #0
 	mov	r8, r0
 .Lcc830:
-	ldr	r3, =.Lee060
+	ldr	r3, =sDjinnSetMirrorFlags
 	ldrb	r2, [r3, r7]
 	mov	r3, #3
 	orr	r3, r2

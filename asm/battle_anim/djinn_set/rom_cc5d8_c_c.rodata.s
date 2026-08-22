@@ -9,13 +9,13 @@
 	.global .Lee088
 	.global .Lee058
 	.global .Lee05c
-	.global .Lee060
+	.global sDjinnSetMirrorFlags
 
 .Lee058:
 	.incrom 0xee058, 0xee05c
 .Lee05c:
 	.incrom 0xee05c, 0xee060
-.Lee060:
+sDjinnSetMirrorFlags:
 	.incrom 0xee060, 0xee064
 .Lee064:
 	.incrom 0xee064, 0xee06a

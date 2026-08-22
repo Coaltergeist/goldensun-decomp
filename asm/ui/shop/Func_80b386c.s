@@ -99,7 +99,7 @@
 	.global .Lb4ab2
 	.global .Lb4ab6
 	.global .Lb41ac
-	.global .Lb3940
+	.global GFX_UICursor_Copy2
 	.global GFX_Party_ScrollSide_Copy2
 	.global GFX_Equip_StatDown_Copy2
 	.global GFX_Equip_StatUp_Copy2
@@ -112,7 +112,7 @@
 	.global .Lb413c
 	.global .Lb4146
 
-.Lb3940:
+GFX_UICursor_Copy2:
 	.incrom 0xb3940, 0xb39c0
 GFX_Party_ScrollSide_Copy2:
 	.incrom 0xb39c0, 0xb3a40

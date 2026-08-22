@@ -13,9 +13,9 @@
 	.global .Leee3e
 	.global .Leee46
 	.global .Leee4e
-	.global .Leee56
-	.global .Leee5e
-	.global .Leee66
+	.global gVFX_UnsummonFlash_Widths
+	.global gVFX_UnsummonFlash_Heights
+	.global gVFX_UnsummonFlash_Offsets
 
 .Leedf4:
 	.incrom 0xeedf4, 0xeedfb
@@ -39,9 +39,9 @@
 	.incrom 0xeee46, 0xeee4e
 .Leee4e:
 	.incrom 0xeee4e, 0xeee56
-.Leee56:
+gVFX_UnsummonFlash_Widths:
 	.incrom 0xeee56, 0xeee5e
-.Leee5e:
+gVFX_UnsummonFlash_Heights:
 	.incrom 0xeee5e, 0xeee66
-.Leee66:
+gVFX_UnsummonFlash_Offsets:
 	.incrom 0xeee66, 0xeee76

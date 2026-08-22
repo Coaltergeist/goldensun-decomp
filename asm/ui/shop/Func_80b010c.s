@@ -34,7 +34,7 @@
 	lsl	r2, #2
 	add	r3, r5, r2
 	strh	r0, [r3]
-	ldr	r2, =.Lb3940
+	ldr	r2, =GFX_UICursor_Copy2
 	mov	r1, #0x80
 	bl	UploadSpriteGFX
 	bl	AllocSpriteSlot

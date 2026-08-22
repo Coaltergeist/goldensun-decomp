@@ -1,7 +1,7 @@
 	.include "macros.inc"
 
 	.section .rodata
-	.global .Laea4c
+	.global GFX_UICursor_Copy
 
-.Laea4c:
+GFX_UICursor_Copy:
 	.incrom 0xaea4c, 0xaeb4c
