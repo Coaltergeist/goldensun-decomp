@@ -224,7 +224,20 @@ void OvlFunc_930_2009144(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_4a[];
+extern unsigned char Lm930_1c9c[] __asm__(".Lm930_1c9c");
+extern unsigned char Lm930_1b10[] __asm__(".Lm930_1b10");
+
+int AlpineCrossing_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    if (*(short *)((char *)p + 0x1c0) == (int)_EVENT_4a)
+        return (int)Lm930_1c9c;
+    return (int)Lm930_1b10;
+}
+
 INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_MapInit.s");
 
 INCLUDE_ASM("asm/maps/alpine_crossing/imports.s");

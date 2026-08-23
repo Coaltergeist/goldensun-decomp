@@ -261,7 +261,46 @@ INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008c9c.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008d2c.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008ec0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009398.s");
-INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern int __GetFlag();
+extern unsigned char _EVENT_4d[], _EVENT_4e[], _EVENT_4f[], _EVENT_50[],
+    _EVENT_51[], _EVENT_52[], _EVENT_53[], _EVENT_54[], _EVENT_55[],
+    _EVENT_56[], _EVENT_57[];
+extern unsigned char gScript_882__0200cd6c[], gScript_882__0200ce5c[],
+    gScript_881__0200cebc[];
+extern unsigned char Lm932_4d24[] __asm__(".Lm932_4d24");
+extern unsigned char Lm932_4d9c[] __asm__(".Lm932_4d9c");
+extern unsigned char Lm932_4dc0[] __asm__(".Lm932_4dc0");
+extern unsigned char Lm932_4f34[] __asm__(".Lm932_4f34");
+extern unsigned char Lm932_4fb8[] __asm__(".Lm932_4fb8");
+extern unsigned char Lm932_506c[] __asm__(".Lm932_506c");
+extern unsigned char Lm932_50cc[] __asm__(".Lm932_50cc");
+extern unsigned char Lm932_512c[] __asm__(".Lm932_512c");
+extern unsigned char Lm932_5150[] __asm__(".Lm932_5150");
+extern unsigned char Lm932_4d18[] __asm__(".Lm932_4d18");
+
+int AltinPeak_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_4d) {
+        if (__GetFlag(0x8fd))
+            return (int)gScript_882__0200cd6c;
+        return (int)Lm932_4d24;
+    }
+    if (ev == (int)_EVENT_4e) return (int)Lm932_4d9c;
+    if (ev == (int)_EVENT_4f) return (int)Lm932_4dc0;
+    if (ev == (int)_EVENT_50) return (int)gScript_882__0200ce5c;
+    if (ev == (int)_EVENT_51) return (int)gScript_881__0200cebc;
+    if (ev == (int)_EVENT_52) return (int)Lm932_4f34;
+    if (ev == (int)_EVENT_53) return (int)Lm932_4fb8;
+    if (ev == (int)_EVENT_54) return (int)Lm932_506c;
+    if (ev == (int)_EVENT_55) return (int)Lm932_50cc;
+    if (ev == (int)_EVENT_56) return (int)Lm932_512c;
+    if (ev == (int)_EVENT_57) return (int)Lm932_5150;
+    return (int)Lm932_4d18;
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009770.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009838.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009d0c.s");

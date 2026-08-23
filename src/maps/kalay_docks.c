@@ -24,7 +24,38 @@ void *KalayDocks_GetExits(void) {
 
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetActors.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008144.s");
-INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern int __GetFlag(int);
+extern unsigned char _EVENT_6b[], _EVENT_70[], _EVENT_6c[];
+extern unsigned char GFX_Thermometer[];
+extern unsigned char Lm942_1e80[] __asm__(".Lm942_1e80");
+extern unsigned char Lm942_2120[] __asm__(".Lm942_2120");
+extern unsigned char Lm942_2018[] __asm__(".Lm942_2018");
+extern unsigned char Lm942_2390[] __asm__(".Lm942_2390");
+extern unsigned char Lm942_230c[] __asm__(".Lm942_230c");
+extern unsigned char Lm942_224c[] __asm__(".Lm942_224c");
+extern unsigned char Lm942_1e74[] __asm__(".Lm942_1e74");
+
+int KalayDocks_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_6b) {
+        if (__GetFlag(0x93e)) return (int)GFX_Thermometer;
+        return (int)Lm942_1e80;
+    }
+    if (ev == (int)_EVENT_70) {
+        if (__GetFlag(0x950)) return (int)Lm942_2120;
+        return (int)Lm942_2018;
+    }
+    if (ev == (int)_EVENT_6c) {
+        if (__GetFlag(0x950)) return (int)Lm942_2390;
+        if (__GetFlag(0x93e)) return (int)Lm942_230c;
+        return (int)Lm942_224c;
+    }
+    return (int)Lm942_1e74;
+}
 
 void OvlFunc_942_2008240(void) {
     __CutsceneStart();

@@ -28,7 +28,19 @@ void OvlFunc_921_20081e0(void) {
     OvlFunc_921_2009fa4();
 }
 
-INCLUDE_ASM("asm/maps/imil/Imil_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_33[];
+extern unsigned char Lm921_2db8[] __asm__(".Lm921_2db8");
+extern unsigned char Lm921_2c80[] __asm__(".Lm921_2c80");
+
+int Imil_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_33) return (int)Lm921_2db8;
+    return (int)Lm921_2c80;
+}
 
 extern void __CutsceneStart(void);
 extern int __GetFlag(int);

@@ -61,7 +61,29 @@ void OvlFunc_936_200820c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay/Kalay_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState__ge __asm__("gState");
+extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
+extern unsigned char Lm936_4bf4[] __asm__(".Lm936_4bf4");
+extern unsigned char gScript_882__0200ce88[];
+extern unsigned char gScript_882__0200cedc[];
+extern unsigned char Lm936_4f24[] __asm__(".Lm936_4f24");
+extern unsigned char Lm936_4f54[] __asm__(".Lm936_4f54");
+extern unsigned char Lm936_4f9c[] __asm__(".Lm936_4f9c");
+extern unsigned char Lm936_4be8[] __asm__(".Lm936_4be8");
+
+int Kalay_GetEvents(void)
+{
+    GlobalState *p = &gState__ge;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_63) return (int)Lm936_4bf4;
+    if (ev == (int)_EVENT_66) return (int)gScript_882__0200ce88;
+    if (ev == (int)_EVENT_99) return (int)gScript_882__0200cedc;
+    if (ev == (int)_EVENT_9a) return (int)Lm936_4f24;
+    if (ev == (int)_EVENT_9b) return (int)Lm936_4f54;
+    if (ev == (int)_EVENT_9c) return (int)Lm936_4f9c;
+    return (int)Lm936_4be8;
+}
 
 void OvlFunc_936_20082c8(void) {
     __CutsceneStart();

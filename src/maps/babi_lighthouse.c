@@ -496,7 +496,23 @@ void OvlFunc_965_200a6b8(void)
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a6fc.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a738.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];
+extern unsigned char Lm965_391c[] __asm__(".Lm965_391c");
+extern unsigned char Lm965_39e8[] __asm__(".Lm965_39e8");
+extern unsigned char Lm965_3ac0[] __asm__(".Lm965_3ac0");
+extern unsigned char Lm965_3c28[] __asm__(".Lm965_3c28");
+
+int BabiLighthouse_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b0) return (int)Lm965_391c;
+    if (ev == (int)_EVENT_af) return (int)Lm965_39e8;
+    if (ev == (int)_EVENT_ae) return (int)Lm965_3ac0;
+    return (int)Lm965_3c28;
+}
 
 extern void __WaitFrames(int a);
 extern void __SetFlag(int a);

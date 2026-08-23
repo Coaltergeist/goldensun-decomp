@@ -17,7 +17,21 @@ void *Altin_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/altin/Altin_GetActors.s");
-INCLUDE_ASM("asm/maps/altin/Altin_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_4b[], _EVENT_4c[];
+extern unsigned char gScript_930__02009730[];
+extern unsigned char Lm931_19f4[] __asm__(".Lm931_19f4");
+extern unsigned char Lm931_1724[] __asm__(".Lm931_1724");
+
+int Altin_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_4b) return (int)gScript_930__02009730;
+    if (ev == (int)_EVENT_4c) return (int)Lm931_19f4;
+    return (int)Lm931_1724;
+}
 
 extern unsigned char iwram_3001ebc[];
 

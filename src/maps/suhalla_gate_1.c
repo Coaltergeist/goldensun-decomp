@@ -23,7 +23,21 @@ void *SuhallaGate1_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_GetActors.s");
-INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_aa[], _EVENT_ab[];
+extern unsigned char Lm963_ddc[] __asm__(".Lm963_ddc");
+extern unsigned char Lm963_e54[] __asm__(".Lm963_e54");
+extern unsigned char Lm963_d10[] __asm__(".Lm963_d10");
+
+int SuhallaGate1_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_aa) return (int)Lm963_ddc;
+    if (ev == (int)_EVENT_ab) return (int)Lm963_e54;
+    return (int)Lm963_d10;
+}
 INCLUDE_ASM("asm/maps/suhalla_gate_1/SuhallaGate1_MapInit.s");
 INCLUDE_ASM("asm/maps/suhalla_gate_1/OvlFunc_963_2008288.s");
 

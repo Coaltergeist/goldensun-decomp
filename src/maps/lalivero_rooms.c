@@ -70,7 +70,26 @@ void OvlFunc_967_200848c(void)
     __PlaySound(0x7b);
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern int __GetFlag(int);
+extern unsigned char _EVENT_b4[];
+extern unsigned char Lm967_2010[] __asm__(".Lm967_2010");
+extern unsigned char Lm967_1eb4[] __asm__(".Lm967_1eb4");
+extern unsigned char gScript_887__02009ca4[];
+extern unsigned char Lm967_1a94[] __asm__(".Lm967_1a94");
+
+int LaliveroRooms_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b4) {
+        if (__GetFlag(0x9a7)) return (int)Lm967_2010;
+        return (int)Lm967_1eb4;
+    }
+    if (__GetFlag(0x9a7)) return (int)gScript_887__02009ca4;
+    return (int)Lm967_1a94;
+}
 INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008508.s");
 INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008eec.s");
 INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_MapInit.s");

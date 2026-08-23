@@ -50,7 +50,19 @@ void OvlFunc_906_2008380(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_1d[];
+extern unsigned char Lm906_9f0[] __asm__(".Lm906_9f0");
+extern unsigned char Lm906_990[] __asm__(".Lm906_990");
+
+int GomaCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_1d) return (int)Lm906_9f0;
+    return (int)Lm906_990;
+}
 INCLUDE_ASM("asm/maps/goma_cave/GomaCave_MapInit.s");
 
 void OvlFunc_906_20084c4(unsigned int arg0) {

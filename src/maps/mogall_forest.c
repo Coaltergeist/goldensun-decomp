@@ -473,7 +473,23 @@ INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a004.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a078.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a1b0.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a2c0.s");
-INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_44[], _EVENT_45[], _EVENT_46[];
+extern unsigned char Lm927_3a48[] __asm__(".Lm927_3a48");
+extern unsigned char Lm927_3b20[] __asm__(".Lm927_3b20");
+extern unsigned char Lm927_3c1c[] __asm__(".Lm927_3c1c");
+extern unsigned char Lm927_3d54[] __asm__(".Lm927_3d54");
+
+int MogallForest_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_44) return (int)Lm927_3a48;
+    if (ev == (int)_EVENT_45) return (int)Lm927_3b20;
+    if (ev == (int)_EVENT_46) return (int)Lm927_3c1c;
+    return (int)Lm927_3d54;
+}
 INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_MapInit.s");
 
 int OvlFunc_927_200aba4(int *actor)

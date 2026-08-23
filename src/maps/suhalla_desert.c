@@ -110,7 +110,19 @@ INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008ce4.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008dc8.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_a6[];
+extern unsigned char Lm960_19c4[] __asm__(".Lm960_19c4");
+extern unsigned char Lm960_17b4[] __asm__(".Lm960_17b4");
+
+int SuhallaDesert_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_a6) return (int)Lm960_19c4;
+    return (int)Lm960_17b4;
+}
 INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_MapInit.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008f50.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2009094.s");

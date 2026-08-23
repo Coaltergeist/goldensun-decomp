@@ -207,7 +207,20 @@ void OvlFunc_926_200a54c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_3c[];
+extern unsigned char Lm926_4b90[] __asm__(".Lm926_4b90");
+extern unsigned char Lm926_5184[] __asm__(".Lm926_5184");
+extern unsigned char Lm926_4d40[] __asm__(".Lm926_4d40");
+
+int FuchinTemple_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    if (*(short *)((char *)p + 0x1c0) == (int)_EVENT_3c) return (int)Lm926_4b90;
+    if (*(short *)((char *)p + 0x1c2) == 3) return (int)Lm926_5184;
+    return (int)Lm926_4d40;
+}
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a5b8.s");
 
 extern void OvlFunc_926_200a68c(int a, int b);

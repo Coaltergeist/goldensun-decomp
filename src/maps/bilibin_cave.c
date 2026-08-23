@@ -25,7 +25,23 @@ unsigned int BilibinCave_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_GetActors.s");
-INCLUDE_ASM("asm/maps/bilibin_cave/BilibinCave_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_31[], _EVENT_30[], _EVENT_2f[];
+extern unsigned char Lm920_ea8[] __asm__(".Lm920_ea8");
+extern unsigned char Lm920_efc[] __asm__(".Lm920_efc");
+extern unsigned char gOvl_02008f80[];
+extern unsigned char Lm920_e9c[] __asm__(".Lm920_e9c");
+
+int BilibinCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_31) return (int)Lm920_ea8;
+    if (ev == (int)_EVENT_30) return (int)Lm920_efc;
+    if (ev == (int)_EVENT_2f) return (int)gOvl_02008f80;
+    return (int)Lm920_e9c;
+}
 INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008148.s");
 INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008168.s");
 INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008188.s");

@@ -48,7 +48,27 @@ void OvlFunc_939_20086bc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState__a1 __asm__("gState");
+extern int __GetFlag(int);
+extern unsigned char _EVENT_9f[], _EVENT_68[];
+extern unsigned char Lm939_23b4[] __asm__(".Lm939_23b4");
+extern unsigned char Lm939_21bc[] __asm__(".Lm939_21bc");
+extern unsigned char Lm939_1fc4[] __asm__(".Lm939_1fc4");
+
+int Lunpa_GetEvents(void)
+{
+    GlobalState *p = &gState__a1;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_9f) {
+        __GetFlag(0x941);
+        return (int)Lm939_23b4;
+    }
+    if (ev == (int)_EVENT_68) {
+        if (__GetFlag(0x941)) return (int)Lm939_21bc;
+    }
+    return (int)Lm939_1fc4;
+}
 
 void OvlFunc_939_2008738(void) {
     __CutsceneStart();
@@ -132,8 +152,6 @@ extern void __Func_8097608(void);
 extern void __MapActor_Face(int, int, int);
 extern void __Func_809259c(int, int);
 extern void __MapActor_Emote(int, int, int);
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState__a1 __asm__("gState");
 extern unsigned int iwram_3001ebc;
 
 void OvlFunc_939_20089d4(void) {

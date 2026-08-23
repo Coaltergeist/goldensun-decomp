@@ -39,7 +39,19 @@ void OvlFunc_911_2008274(void) {
     __Func_80955b0(0x1b, 0, 1);
 }
 
-INCLUDE_ASM("asm/maps/kolima/Kolima_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_27[];
+extern unsigned char Lm911_3590[] __asm__(".Lm911_3590");
+extern unsigned char Lm911_33b0[] __asm__(".Lm911_33b0");
+
+int Kolima_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_27) return (int)Lm911_3590;
+    return (int)Lm911_33b0;
+}
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20082b4.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008304.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20083c8.s");

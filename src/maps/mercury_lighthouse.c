@@ -393,7 +393,24 @@ void OvlFunc_924_2008f14(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_36[], _EVENT_37[], _EVENT_38[];
+extern unsigned char Lm924_6ad8[] __asm__(".Lm924_6ad8");
+extern unsigned char Lm924_6c10[] __asm__(".Lm924_6c10");
+extern unsigned char Lm924_6d60[] __asm__(".Lm924_6d60");
+extern unsigned char Lm924_6ec8[] __asm__(".Lm924_6ec8");
+
+int MercuryLighthouse_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_36) return (int)Lm924_6ad8;
+    if (ev == (int)_EVENT_37) return (int)Lm924_6c10;
+    if (ev == (int)_EVENT_38) return (int)Lm924_6d60;
+    return (int)Lm924_6ec8;
+}
+INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_60ec_c.s");
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008f84.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ffc.s");

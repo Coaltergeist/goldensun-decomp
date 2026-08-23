@@ -57,7 +57,23 @@ void OvlFunc_935_20082cc(void) {
 
 INCLUDE_ASM("asm/maps/vault_cave/ovl_170_c_c.s");
 
-INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
+extern unsigned char Lm935_1f98[] __asm__(".Lm935_1f98");
+extern unsigned char Lm935_2064[] __asm__(".Lm935_2064");
+extern unsigned char Lm935_2190[] __asm__(".Lm935_2190");
+extern unsigned char Lm935_1f8c[] __asm__(".Lm935_1f8c");
+
+int VaultCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return (int)Lm935_1f98;
+    if (ev == (int)_EVENT_61) return (int)Lm935_2064;
+    if (ev == (int)_EVENT_62) return (int)Lm935_2190;
+    return (int)Lm935_1f8c;
+}
 
 extern unsigned char *__MapActor_GetActor(int);
 

@@ -440,7 +440,27 @@ INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20093f8.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ac44.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b4bc.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b518.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_93[], _EVENT_94[], _EVENT_95[], _EVENT_96[], _EVENT_97[];
+extern unsigned char Lm957_4688[] __asm__(".Lm957_4688");
+extern unsigned char Lm957_4724[] __asm__(".Lm957_4724");
+extern unsigned char Lm957_476c[] __asm__(".Lm957_476c");
+extern unsigned char Lm957_4808[] __asm__(".Lm957_4808");
+extern unsigned char Lm957_4850[] __asm__(".Lm957_4850");
+extern unsigned char Lm957_45e0[] __asm__(".Lm957_45e0");
+
+int AltmillerCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_93) return (int)Lm957_4688;
+    if (ev == (int)_EVENT_94) return (int)Lm957_4724;
+    if (ev == (int)_EVENT_95) return (int)Lm957_476c;
+    if (ev == (int)_EVENT_96) return (int)Lm957_4808;
+    if (ev == (int)_EVENT_97) return (int)Lm957_4850;
+    return (int)Lm957_45e0;
+}
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b610.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_MapInit.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ba30.s");

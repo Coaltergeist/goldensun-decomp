@@ -344,7 +344,25 @@ void OvlFunc_946_2008e88(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_GetEvents.s");
+extern unsigned char _EVENT_71[], _EVENT_72[], _EVENT_7b[], _EVENT_7c[], _EVENT_7d[];
+extern unsigned char Lm946_3904[] __asm__(".Lm946_3904");
+extern unsigned char Lm946_38e0[] __asm__(".Lm946_38e0");
+extern unsigned char Lm946_39f4[] __asm__(".Lm946_39f4");
+extern unsigned char gScript_932__0200bd48[];
+extern unsigned char Lm946_3d6c[] __asm__(".Lm946_3d6c");
+extern unsigned char Lm946_3880[] __asm__(".Lm946_3880");
+
+int CrossboneIsle_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_71) return (int)Lm946_3904;
+    if (ev == (int)_EVENT_72) return (int)Lm946_38e0;
+    if (ev == (int)_EVENT_7b) return (int)Lm946_39f4;
+    if (ev == (int)_EVENT_7c) return (int)gScript_932__0200bd48;
+    if (ev == (int)_EVENT_7d) return (int)Lm946_3d6c;
+    return (int)Lm946_3880;
+}
 
 void OvlFunc_946_2008f3c(void)
 {

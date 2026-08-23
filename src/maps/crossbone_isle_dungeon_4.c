@@ -384,7 +384,21 @@ void OvlFunc_948_2008e50(void)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ec8.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_GetEvents.s");
+extern unsigned char _EVENT_75[], _EVENT_76[], _EVENT_78[];
+extern unsigned char Lm948_2bb4[] __asm__(".Lm948_2bb4");
+extern unsigned char Lm948_2cb0[] __asm__(".Lm948_2cb0");
+extern unsigned char gScript_953__0200adac[];
+extern unsigned char Lm948_2ba8[] __asm__(".Lm948_2ba8");
+
+int CrossboneIsleDungeon4_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_75) return (int)Lm948_2bb4;
+    if (ev == (int)_EVENT_76) return (int)Lm948_2cb0;
+    if (ev == (int)_EVENT_78) return (int)gScript_953__0200adac;
+    return (int)Lm948_2ba8;
+}
 
 extern void __Func_8093c00(void);
 

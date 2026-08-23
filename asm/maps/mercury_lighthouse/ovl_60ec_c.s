@@ -1,37 +1,5 @@
 	.include "macros.inc"
 
-.thumb_func_start MercuryLighthouse_GetEvents
-	push	{lr}
-	ldr	r3, =gState
-	mov	r1, #0xe0
-	lsl	r1, #1
-	add	r3, r1
-	mov	r1, #0
-	ldrsh	r2, [r3, r1]
-	ldr	r3, =0x36
-	cmp	r2, r3
-	bne	.Lm924_f48
-	ldr	r0, =.Lm924_6ad8
-	b	.Lm924_f5e
-.Lm924_f48:
-	ldr	r3, =0x37
-	cmp	r2, r3
-	bne	.Lm924_f52
-	ldr	r0, =.Lm924_6c10
-	b	.Lm924_f5e
-.Lm924_f52:
-	ldr	r3, =0x38
-	cmp	r2, r3
-	bne	.Lm924_f5c
-	ldr	r0, =.Lm924_6d60
-	b	.Lm924_f5e
-.Lm924_f5c:
-	ldr	r0, =.Lm924_6ec8
-.Lm924_f5e:
-	pop	{r1}
-	bx	r1
-.func_end MercuryLighthouse_GetEvents
-
 	.section .mdata7, "aw", %progbits
 	.global .Lm924_66e8
 	.global .Lm924_6700

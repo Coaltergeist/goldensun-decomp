@@ -688,7 +688,19 @@ void OvlFunc_964_200a354(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_ac[];
+extern unsigned char Lm964_3c0c[] __asm__(".Lm964_3c0c");
+extern unsigned char Lm964_3ef4[] __asm__(".Lm964_3ef4");
+
+int TunnelRuins_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_ac) return (int)Lm964_3c0c;
+    return (int)Lm964_3ef4;
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a3a0.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a410.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a480.s");

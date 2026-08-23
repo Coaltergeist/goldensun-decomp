@@ -411,7 +411,21 @@ INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009390.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20094ac.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20095cc.s");
 
-INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetEvents.s");
+extern unsigned char _EVENT_5d[], _EVENT_5e[], _EVENT_5f[];
+extern unsigned char Lm934_2420[] __asm__(".Lm934_2420");
+extern unsigned char Lm934_2450[] __asm__(".Lm934_2450");
+extern unsigned char Lm934_2624[] __asm__(".Lm934_2624");
+extern unsigned char Lm934_2414[] __asm__(".Lm934_2414");
+
+int ValeCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_5d) return (int)Lm934_2420;
+    if (ev == (int)_EVENT_5e) return (int)Lm934_2450;
+    if (ev == (int)_EVENT_5f) return (int)Lm934_2624;
+    return (int)Lm934_2414;
+}
 INCLUDE_ASM("asm/maps/vale_cave/ValeCave_MapInit.s");
 
 

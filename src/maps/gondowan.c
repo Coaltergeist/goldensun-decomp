@@ -314,7 +314,28 @@ unsigned int Gondowan_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetActors.s");
-INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern int __GetFlag(int);
+extern unsigned char _EVENT_98[], _EVENT_9d[], _EVENT_9e[];
+extern unsigned char Lm958_1bcc[] __asm__(".Lm958_1bcc");
+extern unsigned char Lm958_1b48[] __asm__(".Lm958_1b48");
+extern unsigned char Lm958_1c80[] __asm__(".Lm958_1c80");
+extern unsigned char gScript_885__02009ce0[];
+extern unsigned char Lm958_1b3c[] __asm__(".Lm958_1b3c");
+
+int Gondowan_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_98) {
+        if (__GetFlag(0x96f)) return (int)Lm958_1bcc;
+        return (int)Lm958_1b48;
+    }
+    if (ev == (int)_EVENT_9d) return (int)Lm958_1c80;
+    if (ev == (int)_EVENT_9e) return (int)gScript_885__02009ce0;
+    return (int)Lm958_1b3c;
+}
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008df0.s");
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008f44.s");
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008fd0.s");

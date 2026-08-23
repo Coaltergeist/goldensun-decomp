@@ -72,7 +72,17 @@ void OvlFunc_951_200819c(void) {
     OvlFunc_951_20088f8(0);
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_GetEvents.s");
+extern unsigned char _EVENT_bd[];
+extern unsigned char Events_TolbiSpring[];
+extern unsigned char Events_GameBuildings[];
+
+int LuckyFountain_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_bd) return (int)Events_TolbiSpring;
+    return (int)Events_GameBuildings;
+}
 INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_MapInit.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20084bc.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008880.s");

@@ -24,7 +24,19 @@ void *MccoysPalace_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_GetActors.s");
-INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_21[];
+extern unsigned char Lm909_2ca8[] __asm__(".Lm909_2ca8");
+extern unsigned char Lm909_2c9c[] __asm__(".Lm909_2c9c");
+
+int MccoysPalace_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_21) return (int)Lm909_2ca8;
+    return (int)Lm909_2c9c;
+}
 
 #include "message.h"
 

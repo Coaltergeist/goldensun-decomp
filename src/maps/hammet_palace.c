@@ -17,7 +17,19 @@ void *HammetPalace_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetActors.s");
-INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_67[];
+extern unsigned char Lm938_1f38[] __asm__(".Lm938_1f38");
+extern unsigned char Lm938_1f2c[] __asm__(".Lm938_1f2c");
+
+int HammetPalace_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_67) return (int)Lm938_1f38;
+    return (int)Lm938_1f2c;
+}
 
 void OvlFunc_938_20080d4(void) {
     __CutsceneStart();

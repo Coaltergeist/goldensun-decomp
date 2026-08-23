@@ -312,7 +312,23 @@ int LunpaFortress_GetSpecialExits(void) {
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetExits.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetActors.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetEvents.s");
+extern unsigned char _EVENT_a0[], _EVENT_a1[], _EVENT_a2[];
+extern unsigned char Lm959_6ff4[] __asm__(".Lm959_6ff4");
+extern unsigned char Lm959_7258[] __asm__(".Lm959_7258");
+extern unsigned char Lm959_7528[] __asm__(".Lm959_7528");
+extern unsigned char Lm959_763c[] __asm__(".Lm959_763c");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+int LunpaFortress_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_a0) return (int)Lm959_6ff4;
+    if (ev == (int)_EVENT_a1) return (int)Lm959_7258;
+    if (ev == (int)_EVENT_a2) return (int)Lm959_7528;
+    return (int)Lm959_763c;
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008b4c.s");
 
 extern void OvlFunc_959_20080c4(void);
@@ -513,9 +529,7 @@ unsigned int OvlFunc_959_2009660(void) {
     return 1;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern unsigned char *iwram_3001ebc__a1 __asm__("iwram_3001ebc");
-extern GlobalState gState;
 
 void OvlFunc_959_200969c(void)
 {

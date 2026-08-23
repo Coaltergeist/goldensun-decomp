@@ -56,7 +56,19 @@ void OvlFunc_910_200812c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_22[];
+extern unsigned char Lm910_d30[] __asm__(".Lm910_d30");
+extern unsigned char Lm910_d24[] __asm__(".Lm910_d24");
+
+int MccoysPalaceExt_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_22) return (int)Lm910_d30;
+    return (int)Lm910_d24;
+}
 
 #include "message.h"
 

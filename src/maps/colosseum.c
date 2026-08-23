@@ -18,7 +18,27 @@ void *Colosseum_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetActors.s");
-INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_8d[], _EVENT_8c[], _EVENT_8e[];
+extern unsigned char Lm953_3e70[] __asm__(".Lm953_3e70");
+extern unsigned char Lm953_4110[] __asm__(".Lm953_4110");
+extern unsigned char Lm953_3e94[] __asm__(".Lm953_3e94");
+extern unsigned char Lm953_3f60[] __asm__(".Lm953_3f60");
+extern unsigned char Lm953_3e64[] __asm__(".Lm953_3e64");
+
+int Colosseum_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_8d) return (int)Lm953_3e70;
+    if (ev == (int)_EVENT_8c) {
+        if (*(short *)((char *)p + 0x1c2) == 0xc) return (int)Lm953_4110;
+        return (int)Lm953_3e94;
+    }
+    if (ev == (int)_EVENT_8e) return (int)Lm953_3f60;
+    return (int)Lm953_3e64;
+}
 
 
 void OvlFunc_953_20082a0(void) {

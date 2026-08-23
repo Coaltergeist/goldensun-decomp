@@ -542,7 +542,27 @@ void OvlFunc_947_200a498(void)
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a4cc.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a53c.s");
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];
+extern unsigned char Lm947_33a8[] __asm__(".Lm947_33a8");
+extern unsigned char Lm947_3438[] __asm__(".Lm947_3438");
+extern unsigned char Lm947_3498[] __asm__(".Lm947_3498");
+extern unsigned char Lm947_351c[] __asm__(".Lm947_351c");
+extern unsigned char Lm947_3618[] __asm__(".Lm947_3618");
+extern unsigned char Lm947_339c[] __asm__(".Lm947_339c");
+
+int CrossboneIsleDungeon2_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_73) return (int)Lm947_33a8;
+    if (ev == (int)_EVENT_74) return (int)Lm947_3438;
+    if (ev == (int)_EVENT_77) return (int)Lm947_3498;
+    if (ev == (int)_EVENT_79) return (int)Lm947_351c;
+    if (ev == (int)_EVENT_7a) return (int)Lm947_3618;
+    return (int)Lm947_339c;
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a5f8.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a63c.s");
 
