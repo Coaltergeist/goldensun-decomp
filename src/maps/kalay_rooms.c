@@ -17,7 +17,32 @@ void *KalayRooms_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetActors.s");
-INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_64[], _EVENT_65[];
+extern unsigned char Lm937_c88[] __asm__(".Lm937_c88");
+extern unsigned char Lm937_a48[] __asm__(".Lm937_a48");
+extern unsigned char Lm937_eb0[] __asm__(".Lm937_eb0");
+extern unsigned char Lm937_a3c[] __asm__(".Lm937_a3c");
+
+int KalayRooms_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_64) {
+        int f1 = *(short *)((char *)p + 0x1c2);
+        switch (f1) {
+        case 9: case 0xa: case 0xb: case 0xc: case 0xd: case 0xe: case 0xf:
+        case 0x11:
+            return (int)Lm937_c88;
+        default:
+            return (int)Lm937_a48;
+        }
+    }
+    if (ev == (int)_EVENT_65)
+        return (int)Lm937_eb0;
+    return (int)Lm937_a3c;
+}
 
 void OvlFunc_937_2008144(void) {
     __CutsceneStart();

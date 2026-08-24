@@ -17,7 +17,34 @@ void *Sol_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/sol/Sol_GetActors.s");
-INCLUDE_ASM("asm/maps/sol/Sol_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_13[], _EVENT_10[];
+extern unsigned char Lm895_22e4[] __asm__(".Lm895_22e4");
+extern unsigned char Lm895_241c[] __asm__(".Lm895_241c");
+extern unsigned char Lm895_2524[] __asm__(".Lm895_2524");
+extern unsigned char Lm895_232c[] __asm__(".Lm895_232c");
+extern unsigned char Lm895_22d8[] __asm__(".Lm895_22d8");
+
+int Sol_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_13)
+        return (int)Lm895_22e4;
+    if (ev == (int)_EVENT_10) {
+        int f1 = *(short *)((char *)p + 0x1c2);
+        switch (f1) {
+        case 0xb: case 0xc: case 0xd:
+            return (int)Lm895_241c;
+        case 0xe: case 0xf: case 0x10:
+            return (int)Lm895_2524;
+        default:
+            return (int)Lm895_232c;
+        }
+    }
+    return (int)Lm895_22d8;
+}
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008154.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008200.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008258.s");

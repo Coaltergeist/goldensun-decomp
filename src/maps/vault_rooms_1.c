@@ -161,7 +161,24 @@ void OvlFunc_899_20082e8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/VaultRooms1_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm899_61fc[] __asm__(".Lm899_61fc");
+extern unsigned char Lm899_6250[] __asm__(".Lm899_6250");
+extern unsigned char Lm899_5e30[] __asm__(".Lm899_5e30");
+
+int VaultRooms1_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 0xf: case 0x10: case 0x11:
+        return (int)Lm899_61fc;
+    default:
+        if (__GetFlag(0x855)) return (int)Lm899_6250;
+        return (int)Lm899_5e30;
+    }
+}
 
 
 void OvlFunc_899_2008354(unsigned int arg0)
