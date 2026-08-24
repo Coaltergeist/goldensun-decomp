@@ -49,7 +49,21 @@ void *Vault2_GetActors(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20084b4.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20084d8.s");
+extern void __CutsceneStart(void);
+extern void __MapActor_Face(int a, int b, int c);
+extern void __SetFlag(int flag);
+extern void __MessageID(int id);
+extern void __ActorMessage(int a, int b);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_901_20084d8(void) {
+    __CutsceneStart();
+    __MapActor_Face(8, 0, 2);
+    __SetFlag(0x305);
+    __MessageID(0x1cab);
+    __ActorMessage(8, 0);
+    __CutsceneEnd();
+}
 
 extern void OvlFunc_901_20084b4(int);
 
@@ -66,13 +80,6 @@ void OvlFunc_901_200850c(void)
   __MapActor_TurnToFaceActor(a, b, c);
   OvlFunc_901_20084b4(0xb);
 }
-
-extern void __CutsceneStart(void);
-extern void __MapActor_Face(int a, int b, int c);
-extern void __SetFlag(int flag);
-extern void __MessageID(int id);
-extern void __ActorMessage(int a, int b);
-extern void __CutsceneEnd(void);
 
 void OvlFunc_901_200852c(void) {
     __CutsceneStart();
