@@ -34,11 +34,30 @@ int ToggleFlag(int flagID)
     return (unsigned int)(-v | v) >> 31;
 }
 
-INCLUDE_ASM("asm/flags/GetFlagByte.s");
-INCLUDE_ASM("asm/flags/SetFlagByte.s");
-INCLUDE_ASM("asm/flags/IncFlagByte.s");
-INCLUDE_ASM("asm/flags/DecFlagByte.s");
-INCLUDE_ASM("asm/flags/GetFlagNybble.s");
+unsigned char GetFlagByte(unsigned int id) {
+    id = (id << 20) >> 23;
+    return gFlags[id];
+}
+void SetFlagByte(unsigned int id, unsigned char val) {
+    id = (id << 20) >> 23;
+    gFlags[id] = val;
+}
+unsigned char IncFlagByte(unsigned int id) {
+    id = (id << 20) >> 23;
+    if (gFlags[id] <= 0xfe) gFlags[id]++;
+    return gFlags[id];
+}
+unsigned char DecFlagByte(unsigned int id) {
+    id = (id << 20) >> 23;
+    if (gFlags[id] != 0) gFlags[id]--;
+    return gFlags[id];
+}
+int GetFlagNybble(unsigned int id) {
+    unsigned int sh = id & 4;
+    int mask = 0xf << sh;
+    id = (id << 20) >> 23;
+    return (gFlags[id] & mask) >> sh;
+}
 
 void SetFlagNybble(int flagID, int value)
 {
