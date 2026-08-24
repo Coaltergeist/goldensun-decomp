@@ -16,10 +16,36 @@ void *Sol_GetExits(void) {
     return (void *)gOvl_02009f14;
 }
 
-INCLUDE_ASM("asm/maps/sol/Sol_GetActors.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
 extern unsigned char _EVENT_13[], _EVENT_10[];
+extern unsigned char Lm895_21b8[] __asm__(".Lm895_21b8");
+extern unsigned char Lm895_2050[] __asm__(".Lm895_2050");
+extern unsigned char Lm895_1fd8[] __asm__(".Lm895_1fd8");
+extern unsigned char Lm895_22a8[] __asm__(".Lm895_22a8");
+extern unsigned char Lm895_1fc0[] __asm__(".Lm895_1fc0");
+
+int Sol_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int type = *(short *)((char *)p + 0x1c0);
+
+    if (type == (int)_EVENT_10) {
+        int sub = *(short *)((char *)p + 0x1c2);
+        switch (sub) {
+        case 0xb: case 0xc: case 0xd:
+            return (int)Lm895_2050;
+        case 0xe: case 0xf: case 0x10:
+            return (int)Lm895_21b8;
+        default:
+            __Func_808b868(Lm895_1fd8);
+            return (int)Lm895_1fd8;
+        }
+    }
+    if (type == (int)_EVENT_13)
+        return (int)Lm895_22a8;
+    return (int)Lm895_1fc0;
+}
 extern unsigned char Lm895_22e4[] __asm__(".Lm895_22e4");
 extern unsigned char Lm895_241c[] __asm__(".Lm895_241c");
 extern unsigned char Lm895_2524[] __asm__(".Lm895_2524");

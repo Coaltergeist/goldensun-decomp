@@ -27,7 +27,32 @@ unsigned int VaultRooms1_GetExits(void) {
     return (unsigned int)gOvl_0200da80;
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/VaultRooms1_GetActors.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm899_5cc8[] __asm__(".Lm899_5cc8");
+extern unsigned char Lm899_5ab8[] __asm__(".Lm899_5ab8");
+
+unsigned char *VaultRooms1_GetActors(void)
+{
+    unsigned char *r5;
+    GlobalState *p;
+    int f1;
+
+    p = &gState;
+    f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 15:
+    case 16:
+    case 17:
+        r5 = Lm899_5cc8;
+        break;
+    default:
+        r5 = Lm899_5ab8;
+        break;
+    }
+    __Func_808b868(r5);
+    return r5;
+}
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008080.s");
 
 void OvlFunc_899_20080fc(void)
@@ -161,8 +186,6 @@ void OvlFunc_899_20082e8(void) {
     __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char Lm899_61fc[] __asm__(".Lm899_61fc");
 extern unsigned char Lm899_6250[] __asm__(".Lm899_6250");
 extern unsigned char Lm899_5e30[] __asm__(".Lm899_5e30");

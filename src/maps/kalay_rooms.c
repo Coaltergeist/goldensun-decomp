@@ -16,9 +16,50 @@ void *KalayRooms_GetExits(void) {
     return (void *)gOvl_02008728;
 }
 
-INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetActors.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_906__0200879c[14];
+
+extern unsigned char Lm937_8d4[] __asm__(".Lm937_8d4");
+extern unsigned char Lm937_a0c[] __asm__(".Lm937_a0c");
+extern unsigned char Lm937_784[] __asm__(".Lm937_784");
+
+extern unsigned char Lconst_64[] __asm__(".Lconst_64");
+extern unsigned char Lconst_65[] __asm__(".Lconst_65");
+__asm__(".equ .Lconst_64, 0x64");
+__asm__(".equ .Lconst_65, 0x65");
+
+unsigned char *KalayRooms_GetActors(void)
+{
+    char *base;
+    char *addr;
+    short a;
+    short b;
+    unsigned char *r;
+
+    base = (char *)&gState;
+    addr = base + (0xe0 << 1);
+    a = *(short *)addr;
+    if (a == (int)Lconst_64) {
+        addr = base + (0xe1 << 1);
+        b = *(short *)addr;
+        switch (b) {
+        case 9 ... 15:
+        case 17:
+            r = Lm937_8d4;
+            break;
+        default:
+            r = (unsigned char *)gScript_906__0200879c;
+            break;
+        }
+        __Func_808b868(r);
+        return r;
+    } else if (a == (int)Lconst_65) {
+        return Lm937_a0c;
+    }
+    return Lm937_784;
+}
 extern unsigned char _EVENT_64[], _EVENT_65[];
 extern unsigned char Lm937_c88[] __asm__(".Lm937_c88");
 extern unsigned char Lm937_a48[] __asm__(".Lm937_a48");
