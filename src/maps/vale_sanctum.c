@@ -32,8 +32,54 @@ void *ValeSanctum_GetExits(void) {
     return (void *)gOvl_0200bbc8;
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_GetActors.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm888_3c0c[] __asm__(".Lm888_3c0c");
+extern unsigned char Lm888_3ccc[] __asm__(".Lm888_3ccc");
+extern unsigned char Lm888_3d2c[] __asm__(".Lm888_3d2c");
+extern unsigned char Lm888_3e04[] __asm__(".Lm888_3e04");
+extern unsigned char Lm888_3bf4[] __asm__(".Lm888_3bf4");
+
+int ValeSanctum_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 1: case 2: return (int)Lm888_3c0c;
+    case 0xa: case 0xb: case 0xc: case 0x23: return (int)Lm888_3ccc;
+    case 0x14: case 0x15: return (int)Lm888_3d2c;
+    case 0x1d: case 0x20: return (int)Lm888_3e04;
+    default: return (int)Lm888_3bf4;
+    }
+}
+
+extern unsigned char Lm888_3e70[] __asm__(".Lm888_3e70");
+extern unsigned char Lm888_3ec4[] __asm__(".Lm888_3ec4");
+extern unsigned char Lm888_3f0c[] __asm__(".Lm888_3f0c");
+extern unsigned char Lm888_40ec[] __asm__(".Lm888_40ec");
+extern unsigned char Lm888_4038[] __asm__(".Lm888_4038");
+extern unsigned char Lm888_4080[] __asm__(".Lm888_4080");
+extern unsigned char Lm888_3fd8[] __asm__(".Lm888_3fd8");
+extern unsigned char Lm888_3f78[] __asm__(".Lm888_3f78");
+extern unsigned char Lm888_3e34[] __asm__(".Lm888_3e34");
+
+int ValeSanctum_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 0xa: case 0xc: return (int)Lm888_3e70;
+    case 0xb: return (int)Lm888_3ec4;
+    case 0x14: case 0x15: case 0x32: return (int)Lm888_3f0c;
+    case 0x20: return (int)Lm888_40ec;
+    case 0x1d: return (int)Lm888_4038;
+    case 0x23: return (int)Lm888_4080;
+    default:
+        if (__GetFlag(0x87a)) return (int)Lm888_3fd8;
+        if (__GetFlag(0x815)) return (int)Lm888_3f78;
+        return (int)Lm888_3e34;
+    }
+}
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200827c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20082ec.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008360.s");

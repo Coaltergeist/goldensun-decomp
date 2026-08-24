@@ -76,7 +76,44 @@ void *TolbiBoundShipHull_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetActors.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetEvents.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm945_76fc[] __asm__(".Lm945_76fc");
+extern unsigned char Lm945_7570[] __asm__(".Lm945_7570");
+extern unsigned char Lm945_7444[] __asm__(".Lm945_7444");
+extern unsigned char Lm945_7edc[] __asm__(".Lm945_7edc");
+extern unsigned char Lm945_79c0[] __asm__(".Lm945_79c0");
+extern unsigned char Lm945_7930[] __asm__(".Lm945_7930");
+extern unsigned char Lm945_7984[] __asm__(".Lm945_7984");
+extern unsigned char Lm945_781c[] __asm__(".Lm945_781c");
+extern unsigned char Lm945_7b58[] __asm__(".Lm945_7b58");
+extern unsigned char Lm945_7d44[] __asm__(".Lm945_7d44");
+extern unsigned char Lm945_7420[] __asm__(".Lm945_7420");
+
+int TolbiBoundShipHull_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 1: case 2:
+        if (__GetFlag(0x8a0)) return (int)Lm945_76fc;
+        if (__GetFlag(0x928)) { if (!__GetFlag(0x93e)) return (int)Lm945_7570; }
+        return (int)Lm945_7444;
+    case 4: case 0x17:
+        if (__GetFlag(0x93e)) return (int)Lm945_7edc;
+        return (int)Lm945_79c0;
+    case 5:
+        if (__GetFlag(0x8a0)) return (int)Lm945_7930;
+        if (__GetFlag(0x93e)) return (int)Lm945_7984;
+        return (int)Lm945_781c;
+    case 0xf: case 0x11: case 0x13:
+        return (int)Lm945_7b58;
+    case 0x15:
+        return (int)Lm945_7d44;
+    default:
+        return (int)Lm945_7420;
+    }
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008670.s");
 
 void OvlFunc_945_2008708(void) {
