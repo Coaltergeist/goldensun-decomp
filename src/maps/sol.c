@@ -131,7 +131,77 @@ unsigned int OvlFunc_895_200879c(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20087d0.s");
+extern unsigned int OvlFunc_895_200879c(unsigned int, unsigned int);
+extern void OvlFunc_895_200856c(void);
+extern void OvlFunc_895_20085ac(void);
+extern void OvlFunc_895_20085ec(void);
+extern void OvlFunc_895_2008634(void);
+extern void OvlFunc_895_200867c(void);
+extern void OvlFunc_895_20086c4(void);
+extern void OvlFunc_895_200870c(void);
+extern void OvlFunc_895_2008754(void);
+
+extern unsigned int Lm895_265c[] __asm__(".Lm895_265c");
+
+void OvlFunc_895_20087d0(void)
+{
+    unsigned char *isaac;
+    unsigned char *obj;
+    unsigned int idx;
+    unsigned int t2;
+    int stk[3];
+    int col;
+    int sub;
+    GlobalState *p;
+    int zero;
+
+    isaac = (unsigned char *)__MapActor_GetActor(0);
+    idx = (*(unsigned short *)(isaac + 6)) >> 12;
+    obj = (unsigned char *)OvlFunc_895_200879c(
+        (*(short *)(isaac + 0xa) + ((int)(Lm895_265c[idx]) >> 16)) >> 4,
+        (*(short *)(isaac + 0x12) + (short)(Lm895_265c[idx])) >> 4);
+    if (obj != 0) {
+        zero = 0;
+        *(obj + 0x22) = 2;
+        stk[0] = *(int *)(obj + 8) + (Lm895_265c[idx] & 0xffff0000);
+        stk[1] = *(int *)(obj + 0xc);
+        stk[2] = *(int *)(obj + 0x10) + (Lm895_265c[idx] << 16);
+        col = __TestCollision(obj, stk);
+        if (col <= 0) {
+            __Actor_SetAnim(isaac, 8);
+            __WaitFrames(0xf);
+            __PlaySound(0xb9);
+            *(int *)(obj + 0x30) = 0x3333;
+            *(int *)(obj + 0x34) = 0x3333;
+            __Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+            *(int *)(isaac + 0x30) = 0x3333;
+            *(int *)(isaac + 0x34) = 0x3333;
+            __Actor_TravelTo(isaac, stk[0], stk[1], stk[2]);
+            __Actor_WaitMovement(obj);
+            *(int *)(obj + 8) = stk[0];
+            *(int *)(obj + 0x10) = stk[2];
+            *(int *)(obj + 0x24) = zero;
+            *(int *)(obj + 0x2c) = zero;
+            __Actor_SetAnim(isaac, 1);
+            p = &gState;
+            sub = *(short *)((char *)p + 0x1c2);
+            switch (sub) {
+            case 0xb: case 0xc: case 0xd:
+                OvlFunc_895_200856c();
+                OvlFunc_895_20085ac();
+                break;
+            case 0xe: case 0xf: case 0x10:
+                OvlFunc_895_20085ec();
+                OvlFunc_895_2008634();
+                OvlFunc_895_200867c();
+                OvlFunc_895_20086c4();
+                OvlFunc_895_200870c();
+                OvlFunc_895_2008754();
+                break;
+            }
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/sol/Sol_MapInit.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200892c.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008a24.s");

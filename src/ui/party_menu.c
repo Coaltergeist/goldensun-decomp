@@ -338,7 +338,14 @@ void Func_80a38a8(unsigned int arg0) {
 INCLUDE_ASM("asm/ui/party_menu/Func_80a38d0.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a3c08.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a3c98.s");
-INCLUDE_ASM("asm/ui/party_menu/Func_80a3ce4.s");
+unsigned int Func_80a3ce4(int x)
+{
+	switch (x) {
+	case 0xc1 ... 0xc4:
+		return 1;
+	}
+	return 0;
+}
 
 
 void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
