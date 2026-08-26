@@ -52,7 +52,114 @@ INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20083f4.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008488.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20089f4.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008c00.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008d9c.s");
+extern unsigned char Lm890_2de8[] __asm__(".Lm890_2de8");
+int  __Random(void);
+void __PlaySound(int sound);
+void __CopyMapTiles(int a, int b, int c, int d, int e, int f);
+void __Func_8012330(int a, int b, int c);
+
+extern unsigned char Lm890_2de4[] __asm__(".Lm890_2de4");
+void OvlFunc_890_2008d9c(void)
+{
+    unsigned int r;
+    unsigned short *p;
+    int v;
+    unsigned short five;
+
+    r = __Random();
+    if ((r & 3) == 0) {
+        goto eaa;
+    }
+
+    p = (unsigned short *)Lm890_2de4;
+    v = *p;
+    switch (v) {
+    case 0:
+        __PlaySound(0xbb);
+        {
+            unsigned short t1 = 1;
+            unsigned short t2 = 5;
+            __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x21, t1, t2);
+        }
+        goto end;
+    case 1:
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x21, v, v);
+        five = 5;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x22, v, five);
+        goto end;
+    case 2:
+        v = 1;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x22, v, v);
+        five = 5;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x23, v, five);
+        goto end;
+    case 3:
+        v = 1;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x23, v, v);
+        five = 5;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x24, v, five);
+        goto end;
+    case 4:
+        *(int *)Lm890_2de8 = 2;
+        v = 1;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x24, v, v);
+        five = 5;
+        __CopyMapTiles(0x2e, 0x3b, 0x1e, 0x25, v, five);
+        goto end;
+    case 0x50:
+        {
+            unsigned short t1 = 1;
+            unsigned short t2 = 10;
+            __CopyMapTiles(0x2e, 0x31, 0x1e, 0x21, t1, t2);
+        }
+        goto end;
+    default:
+        goto end;
+    }
+
+end:
+    *p = *p + 1;
+    v = *p;
+    r = __Random();
+    if ((unsigned int)v > (r * 40 >> 16) + 90) {
+        *p = 0;
+    }
+
+eaa:
+    {
+        int *ctr = (int *)Lm890_2de8;
+        if (*ctr != 0) {
+            if (*ctr == 2) {
+                register unsigned int a __asm__("r0");
+                register unsigned int b __asm__("r1");
+                register unsigned int c __asm__("r2");
+                a = 0x80;
+                b = 0x80;
+                c = 0x80;
+                a <<= 9;
+                __asm__ volatile ("" : "+r" (a));
+                b <<= 9;
+                __asm__ volatile ("" : "+r" (b));
+                c <<= 9;
+                __Func_8012330(a, b, c);
+            } else if (*ctr == 1) {
+                register int d __asm__("r0");
+                register int e __asm__("r1");
+                register unsigned int f __asm__("r2");
+                d = 1;
+                e = 1;
+                __asm__ volatile ("" : "+r" (d), "+r" (e));
+                d = -d;
+                e = -e;
+                f = 0xe666;
+                __asm__ volatile ("" : "+r" (f));
+                __Func_8012330(d, e, f);
+            }
+            __asm__ volatile ("" ::: "memory");
+            *ctr = *ctr - 1;
+        }
+    }
+}
 /* PROBE: 2008ef8 best near-miss (base_14.c, diff=8) + COMPLETE prototypes.
    Tests §2.4/§2.5-caveat: whole-function arg-order should collapse the
    4-site r0-position residual once every callee has a full prototype.
@@ -62,7 +169,6 @@ void __PlaySound(int sound);
 void __CopyMapTiles(int a, int b, int c, int d, int e, int f);
 
 extern unsigned char Lm890_2ddc[] __asm__(".Lm890_2ddc");
-extern unsigned char Lm890_2de8[] __asm__(".Lm890_2de8");
 
 void OvlFunc_890_2008ef8(void)
 {
