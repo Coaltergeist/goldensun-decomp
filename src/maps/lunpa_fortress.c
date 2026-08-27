@@ -445,7 +445,27 @@ void OvlFunc_959_200909c(void) {}
 void OvlFunc_959_20090a0(void) {}
 void OvlFunc_959_20090a4(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20090a8.s");
+extern void __SetFlag(int a);
+void __MapActor_TravelToAnim(int, int, int);
+void __Func_8092adc(int, int, int);
+void __CutsceneWait(int);
+void __Func_808f1c0(int, int);
+void __Func_8091a58(int, int);
+void __MapActor_SetPos(int, int, int);
+
+void OvlFunc_959_20090a8(void)
+{
+    __MapActor_TravelToAnim(0, 0x108, 0x318);
+    __MapActor_WaitMovement(0);
+    __Func_8092adc(0, 0x4000, 0);
+    __CutsceneWait(10);
+    __MapActor_SetAnim(0, 1);
+    __Func_808f1c0(0xea, 3);
+    __MapActor_SetAnim(0, 1);
+    __Func_8091a58(0xea, 0);
+    __SetFlag(0xf2e);
+    __MapActor_SetPos(8, 0, 0);
+}
 
 unsigned int OvlFunc_959_2009108(void) {
     int *p;
@@ -933,7 +953,6 @@ void OvlFunc_959_200c964(void) {
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c9a0.s");
 
 extern void __Func_80955b0(int a, int b, int c);
-extern void __SetFlag(int a);
 
 void OvlFunc_959_200cb68(void) {
     __Func_80955b0(0x1a, 1, 5);
