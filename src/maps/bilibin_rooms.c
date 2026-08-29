@@ -214,7 +214,6 @@ void OvlFunc_908_20083f4(void) {
     __CutsceneEnd();
 }
 
-// fakematch
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
@@ -224,23 +223,14 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_908_2008430(void)
 {
-  register int r1v __asm__("r1");
-  register int r0v __asm__("r0");
-  register int r2v __asm__("r2");
+  int r1v = 0xc0 << 8;
+  do { } while (r1v == 0);
   __CutsceneStart();
   __MessageID(0x1705);
   __ActorMessage(0x17, 0);
   __MapActor_Face(0x17, 0, 0);
   __ActorMessage(0x17, 0);
-  r1v = 0xc0;
-  __asm__ volatile ("" : : "r" (r1v));
-  r0v = 0x17;
-  __asm__ volatile ("" : : "r" (r0v));
-  r1v = r1v << 8;
-  __asm__ volatile ("" : : "r" (r1v));
-  r2v = 10;
-  __asm__ volatile ("" : : "r" (r2v));
-  __Func_8092adc(r0v, r1v, r2v);
+  __Func_8092adc(0x17, r1v, 10);
   __CutsceneEnd();
 }
 

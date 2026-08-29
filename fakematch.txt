@@ -13,7 +13,6 @@ Func_80e72e0       src/battle_anim/moves/torch.c
 Func_80b3210       src/ui/shop.c
 RunTasks           src/video.c
 OvlFunc_908_20083f4  src/maps/bilibin_rooms.c
-OvlFunc_908_2008430  src/maps/bilibin_rooms.c
 OvlFunc_908_20081e0  src/maps/bilibin_rooms.c
 Func_80944ec       src/field/weather.c
 Func_80a8904       src/ui/party_menu.c

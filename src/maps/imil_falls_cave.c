@@ -683,7 +683,25 @@ void OvlFunc_922_2009ac0(void) {
     OvlFunc_922_2009ad0(-0x20, 0);
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009ad0.s");
+void OvlFunc_922_2009ad0(int arg0, int arg1) {
+    extern void __CutsceneStart(void);
+    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_TravelBy(int, unsigned int, unsigned int);
+    extern void __MapActor_Jump(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void __MapActor_WaitMovement(int);
+    extern void __CutsceneEnd(void);
+    int a = 0xa0 << 10, b = 0xa0 << 9;
+    do { } while (a == 0);
+    __CutsceneStart();
+    __MapActor_SetSpeed(0, a, b);
+    __MapActor_TravelBy(0, arg0, arg1);
+    __MapActor_Jump(0, 4, 0);
+    __MapActor_SetAnim(0, 7);
+    __MapActor_WaitMovement(0);
+    __MapActor_SetAnim(0, 6);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009b1c.s");
 
 extern unsigned char L2488[] __asm__(".Lm922_2488");

@@ -701,7 +701,27 @@ void OvlFunc_945_200d780(void)
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d7ec.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dc48.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dca4.s");
+void OvlFunc_945_200dca4(void) {
+    extern void __CutsceneStart(void);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+    extern void __Func_80925cc(int, int);
+    extern void __CutsceneWait(int);
+    extern void __Func_8092adc(int, int, int);
+    extern void __MapActor_DoAnim(int, int);
+    int d = 0xd000;
+    do { } while (d == 0);
+    __CutsceneStart();
+    OvlFunc_945_200c8e8(0xf, 1, 0);
+    OvlFunc_945_200c890(9, 0x1d4, 0x268, 0x8000);
+    OvlFunc_945_200c8e8(8, 1, 0x14);
+    __Func_80925cc(9, 2);
+    __CutsceneWait(0x14);
+    __Func_8092adc(8, d, 0x50);
+    __Func_8092adc(8, 0, 0x14);
+    __MapActor_DoAnim(8, 3);
+    __CutsceneWait(0x14);
+    OvlFunc_945_200c8e8(9, 0x15, 0);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dd10.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e110.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e3ac.s");

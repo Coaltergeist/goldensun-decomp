@@ -337,7 +337,22 @@ void OvlFunc_959_2008ba0(void) {
     OvlFunc_959_20080c4();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008bac.s");
+void OvlFunc_959_2008bac(void) {
+    extern void __MapActor_TravelTo(int, int, int);
+    extern void __PlaySound(int);
+    extern void __CutsceneWait(int);
+    extern void OvlFunc_959_2008b4c(void);
+    extern void __SetFlag(int);
+    int a = 0x10000, b = 0x8000, c = 0x178;
+    do { } while (a == 0);
+    __MapActor_SetSpeed(0xc, a, b);
+    __MapActor_TravelTo(0xc, 0xf8, c);
+    __MapActor_WaitMovement(0xc);
+    __PlaySound(0xd7);
+    __CutsceneWait(0x3c);
+    OvlFunc_959_2008b4c();
+    __SetFlag(0x943);
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008bec.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c78.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c90.s");
@@ -482,7 +497,23 @@ unsigned int OvlFunc_959_2009108(void) {
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009150.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20092e0.s");
+extern void OvlFunc_959_2009b24(int);
+extern void __CutsceneEnd(void);
+extern void __CutsceneStart(void);
+extern void __MapActor_SetIdle(int);
+extern void __MapActor_Face(int, int, int);
+extern void __MapActor_Emote(int, int, int);
+void OvlFunc_959_20092e0(void)
+{
+    __CutsceneStart();
+    __MapActor_SetIdle(9);
+    __MapActor_TravelBy(9, 0, 0);
+    __MapActor_SetAnim(9, 0);
+    __MapActor_Face(9, 0, 0);
+    __MapActor_Emote(9, 0x100, 0);
+    OvlFunc_959_2009b24(10);
+    __CutsceneEnd();
+}
 
 unsigned int OvlFunc_959_2009324(void) {
     int *r5;
@@ -505,8 +536,6 @@ unsigned int OvlFunc_959_2009324(void) {
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200938c.s");
 
-extern void OvlFunc_959_2009b24(int);
-extern void __CutsceneEnd(void);
 
 void OvlFunc_959_20094bc(void) {
     OvlFunc_959_2009b24(0x11);
@@ -838,7 +867,22 @@ void OvlFunc_959_2009e2c(void)
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009e94.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a06c.s");
+void OvlFunc_959_200a06c(void) {
+    extern void __MapTransitionIn(void);
+    int x1 = 0x2b00000, x2 = 0x2c00000, x3 = 0x2d00000;
+    int y1 = 0x580000, y3 = 0x600000;
+    do { } while (x1 == 0);
+    __CutsceneStart();
+    __MapActor_SetPos(0xc, x1, y1);
+    __MapActor_SetPos(0xd, x2, y1);
+    __MapActor_SetPos(0xe, x3, y3);
+    __MapActor_SetAnim(0xc, 5);
+    __MapActor_SetAnim(0xd, 5);
+    __MapActor_SetAnim(0xe, 5);
+    __MapActor_Face(0, 0xd, 0);
+    __CutsceneEnd();
+    __MapTransitionIn();
+}
 
 extern int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 
