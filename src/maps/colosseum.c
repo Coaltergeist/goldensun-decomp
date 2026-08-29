@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7d95dc (overlay file 953): consolidated TU — colosseum map overlay. */
 
 #include "nonmatching.h"
@@ -137,41 +136,26 @@ void OvlFunc_953_2008468(void)
   __CutsceneEnd();
 }
 
-// fakematch
-
 void OvlFunc_953_20084c8(void) {
-    register int flag __asm__("r1");
-    register int actor __asm__("r0");
-    register int arg2 __asm__("r2");
-    unsigned long long ta;
-    unsigned long msgactor;
-
+    extern void __CutsceneStart(void);
+    extern void __MapActor_Surprise(int, int);
+    extern void __Func_80925cc(int, int);
+    extern void __MessageID(int);
+    extern unsigned long long OvlFunc_953_2009c48(int);
+    extern void __MapActor_Emote(int, int, int);
+    extern void __ActorMessage(int, int);
+    extern void __CutsceneEnd(void);
+    int flag;
+    unsigned long msgactor = 0xe;
+    flag = 0x102;
+    do { } while (flag == 0);
     __CutsceneStart();
-
-    flag = 0x81;
-    __asm__ volatile ("" : "+r"(flag));
-    actor = 0xe;
-    __asm__ volatile ("" : "+r"(actor));
-    flag <<= 1;
-    __MapActor_Surprise(actor, flag);
-
-    __Func_80925cc(0xe, 2);
+    __MapActor_Surprise(msgactor, flag);
+    __Func_80925cc(msgactor, 2);
     __MessageID(0x2116);
-    OvlFunc_953_2009c48(0xe);
-
-    flag = 0x81;
-    __asm__ volatile ("" : "+r"(flag));
-    arg2 = 0x28;
-    actor = 0xe;
-    __asm__ volatile ("" : "+r"(actor));
-    flag <<= 1;
-    __MapActor_Emote(actor, flag, arg2);
-
-    ta = 0xe;
-    do { ta = (unsigned long) ta; } while (0);
-    msgactor = ta;
+    OvlFunc_953_2009c48(msgactor);
+    __MapActor_Emote(msgactor, flag, 0x28);
     __ActorMessage(msgactor, 0);
-
     __CutsceneEnd();
 }
 

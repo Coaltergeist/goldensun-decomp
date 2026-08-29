@@ -17,7 +17,6 @@ OvlFunc_908_20081e0  src/maps/bilibin_rooms.c
 Func_80944ec       src/field/weather.c
 Func_80a8904       src/ui/party_menu.c
 OvlFunc_909_20082cc  src/maps/mccoys_palace.c
-OvlFunc_922_20097a8  src/maps/imil_falls_cave.c
 Func_800383c       src/intr/intr.c
 Func_80038bc       src/intr/intr.c
 Func_80038fc       src/intr/intr.c
@@ -101,7 +100,6 @@ OvlFunc_959_2008e80  src/maps/lunpa_fortress.c
 OvlFunc_927_2008608  src/maps/mogall_forest.c
 OvlFunc_930_2008ac0  src/maps/alpine_crossing.c
 OvlFunc_930_2008180  src/maps/alpine_crossing.c
-OvlFunc_953_20084c8  src/maps/colosseum.c
 Func_8005ee0       src/serial.c
 Func_8005fcc       src/serial.c
 Func_8006088       src/serial.c

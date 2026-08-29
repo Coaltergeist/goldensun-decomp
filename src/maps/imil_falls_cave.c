@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7a8c8c (overlay file 922): consolidated TU — imil_falls_cave map overlay. */
 
 #include "nonmatching.h"
@@ -643,28 +642,28 @@ INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_MapInit.s");
 
 void OvlFunc_922_20097a8(void)
 {
+  extern void __CutsceneStart(void);
+  extern int __MapActor_GetActor(int);
+  extern void __Actor_SetSpriteFlags(int, int);
+  extern void __MapTransitionIn(void);
+  extern void __MapActor_SetSpeed(int, int, int);
+  extern void __MapActor_TravelToWait(int, int, int);
+  extern void __CutsceneEnd(void);
   int actor;
   int speed;
+  int s3;
   int arg2;
 
+  speed = 0x80 << 10;
+  s3 = 0x1999;
+  arg2 = 0x84 << 1;
+  do { } while (speed == 0);
   __CutsceneStart();
   actor = __MapActor_GetActor(8);
   __Actor_SetSpriteFlags(actor, 0);
   __MapTransitionIn();
-  speed = 0x80;
-  {
-    register int zero __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (zero));
-    speed <<= 10;
-    __MapActor_SetSpeed(zero, speed, 0x1999);
-  }
-  arg2 = 0x84;
-  {
-    register int zero2 __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (zero2));
-    arg2 <<= 1;
-    __MapActor_TravelToWait(zero2, arg2, 0xc4);
-  }
+  __MapActor_SetSpeed(0, speed, s3);
+  __MapActor_TravelToWait(0, arg2, 0xc4);
   __CutsceneEnd();
 }
 
