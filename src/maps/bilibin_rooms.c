@@ -77,7 +77,33 @@ void *BilibinRooms_GetEvents(void) {
     return (void *)gOvl_020088f0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_2008124.s");
+void OvlFunc_908_2008124(void)
+{
+    int a = 0x3000;
+    unsigned char *p;
+    int v5;
+
+    do { } while (a == 0);
+
+    p = __MapActor_GetActor(0);
+    v5 = *(unsigned short *)(p + 6);
+    __CutsceneStart();
+    if ((v5 + 0xffff5fff) <= 0x3ffe) {
+        __Func_80b0278(8, 0x11);
+    } else {
+        if (!__GetFlag(0x845)) {
+            __MessageID(0x13e5);
+            __MapActor_Face(0x11, 0, 0);
+            __CutsceneWait(10);
+            __Func_8093054(0x11, 0);
+            __Func_8092adc(0x11, a, 10);
+        } else {
+            __MessageID(0x16f7);
+            __ActorMessage(0x11, 0);
+        }
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_20081a8.s");
 
 // fakematch

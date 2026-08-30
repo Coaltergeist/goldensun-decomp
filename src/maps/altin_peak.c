@@ -207,7 +207,71 @@ unsigned char f23;
 }
 
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20086a0.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20086dc.s");
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern void *iwram_3001e70;
+extern ActorCmd gScript_932__0200bd48[];
+extern void OvlFunc_932_20086a0(void);
+extern unsigned char Lm932_5238[] __asm__(".Lm932_5238");
+
+void __Func_8012330(int, int, int);
+void __CutsceneWait(int);
+void __WaitFrames(int);
+void __MapActor_SetPos(int, int, int);
+void __MapActor_SetBehavior(int, void *);
+void __SetIntrHandler(int, int, void *);
+void __Func_8010704(int, int, int, int, int, int);
+void __SetFlag(int);
+
+void OvlFunc_932_20086dc(void) {
+    int a = 0x20000;
+    int b = 0x20000;
+    int c = 0x10000;
+    int u = -1;
+    int v = -1;
+    int w = 0xe666;
+    char *field;
+    char *layer;
+    void *actor;
+    int i;
+    int s1, s2;
+
+    do { } while (a == 0);
+
+    field = (char *)iwram_3001e70;
+    __PlaySound(0xe6);
+    __Func_8012330(a, b, c);
+    __CutsceneWait(10);
+
+    layer = field + (0xb2 << 1);
+    for (i = 0; i <= 23; i++) {
+        *(int *)(layer + 0xc) += 0xffff0000;
+        __WaitFrames(4);
+        if (i == 8) {
+            actor = (void *)__MapActor_GetActor(8);
+            *(int *)((char *)actor + 0x18) = 0x1999;
+            actor = (void *)__MapActor_GetActor(8);
+            *(int *)((char *)actor + 0x1c) = 0x1999;
+            __MapActor_SetPos(8, 0x980000, 0xd80000);
+            __MapActor_SetBehavior(8, gScript_932__0200bd48);
+        }
+    }
+
+    __SetIntrHandler(1, 0, OvlFunc_932_20086a0);
+    *(unsigned short *)Lm932_5238 = 0;
+    do {
+        __WaitFrames(1);
+    } while (++*(unsigned short *)Lm932_5238 <= 100);
+
+    __WaitFrames(1);
+    __SetIntrHandler(1, 0, 0);
+    __PlaySound(0x121);
+    __Func_8012330(u, v, w);
+    __CutsceneWait(0x1e);
+    s1 = 3;
+    s2 = 0xe;
+    __Func_8010704(0, 0, 1, 2, s1, s2);
+    __SetFlag(0x8fd);
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20087e8.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20088d4.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20089ec.s");
@@ -257,7 +321,43 @@ void OvlFunc_932_2008c88(void) {
     p[0x23] = 1;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008c9c.s");
+void __CutsceneStart(void);
+void __MapActor_SetSpeed(int, int, int);
+void __MapActor_SetAnim(int, int);
+void __MapActor_TravelTo(int, int, int);
+void __MapActor_WaitMovement(int);
+void OvlFunc_932_200840c(void);
+void __CutsceneEnd(void);
+
+void OvlFunc_932_2008c9c(void)
+{
+    int a = 0x3333;
+    int b = 0x1999;
+    int x1 = 0x190;
+    int y = 0x1a8;
+    int x2 = 0x198;
+    unsigned char *actor;
+    int s1, s2;
+
+    do { } while (a == 0);
+
+    __CutsceneStart();
+    s1 = 0x18;
+    s2 = 0x1a;
+    __Func_8010704(0x18, 0x1b, 2, 1, s1, s2);
+    __PlaySound(0xb9);
+    __MapActor_SetSpeed(10, a, b);
+    __MapActor_SetSpeed(0, a, b);
+    actor = (unsigned char *)__MapActor_GetActor(10);
+    actor[0x5a] &= 0xfe;
+    __MapActor_SetAnim(0, 8);
+    __MapActor_TravelTo(0, x1, y);
+    __MapActor_TravelTo(10, x2, y);
+    __MapActor_WaitMovement(10);
+    __MapActor_SetAnim(0, 1);
+    OvlFunc_932_200840c();
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008d2c.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008ec0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009398.s");
@@ -306,10 +406,162 @@ INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009838.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009d0c.s");
 INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_MapInit.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a0d0.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a310.s");
+extern void __Func_8092950(int a, int b);
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+extern void OvlFunc_932_200ba44(void);
+void OvlFunc_932_200a310(void)
+{
+    unsigned int r3;
+    unsigned int r2;
+    int s1;
+    int s2;
+
+    if (__GetFlag(0x8fe) != 0) {
+        *(unsigned short *)(iwram_3001e70 + 0x14) &= 0xfdff;
+        __MapActor_SetPos(9, 0, 0);
+    } else {
+        OvlFunc_932_200ba44();
+        if (__GetFlag(0x109) == 0 && (r3 = (unsigned int)&gState, r2 = 0xe1, r2 <<= 1, r3 += r2, *(short *)r3 == 0x63)) {
+            OvlFunc_932_200ae1c();
+        } else {
+            s1 = 0x25;
+            s2 = 0x18;
+            __Func_8010704(0x26, 0x18, 1, 2, s1, s2);
+            s1 = 0x2d;
+            s2 = 0x17;
+            __Func_8010704(0x2c, 0x17, 1, 2, s1, s2);
+            if (__GetFlag(0x8fe) == 0) {
+                __Func_8092950(9, 2);
+                __MapActor_SetAnim(9, 3);
+                OvlFunc_932_200abb0(0xee << 16, 0, 0xd1 << 17, 0x80 << 8);
+            }
+        }
+    }
+
+    if (__GetFlag(0x323) != 0) {
+        s1 = 0x18;
+        s2 = 0x50;
+        __Func_8010704(0, 0, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(0, 1, 0x18, 0xb, s1, s2);
+    } else {
+        s1 = 0x18;
+        s2 = 0x50;
+        __Func_8010704(2, 0, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(2, 1, 0x18, 0xb, s1, s2);
+    }
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a428.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a490.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a5c0.s");
+void OvlFunc_932_200a490(void)
+{
+    unsigned int r3;
+    unsigned int r2;
+    int s1;
+    int s2;
+
+    if (__GetFlag(0x907) != 0) {
+        *(unsigned short *)(iwram_3001e70 + 0x14) &= 0xfdff;
+        __MapActor_SetPos(10, 0, 0);
+    } else {
+        if (__GetFlag(0x109) == 0 && (r3 = (unsigned int)&gState, r2 = 0xe1, r2 <<= 1, r3 += r2, *(short *)r3 == 0x63)) {
+            OvlFunc_932_200ae84();
+        }
+        OvlFunc_932_200ba44();
+        if (__GetFlag(0x907) == 0) {
+            __Func_8092950(10, 2);
+            __MapActor_SetAnim(10, 3);
+            OvlFunc_932_200abb0(0xbb << 18, 0x80 << 12, 0x8c << 17, 0x80 << 8);
+        }
+    }
+
+    OvlFunc_932_200b460(9);
+    if (__GetFlag(0x80 << 2) != 0) {
+        __MapActor_SetAnim(9, 5);
+        s1 = 0x19;
+        s2 = 0xd;
+        __Func_8010704(0x17, 0xd, 1, 1, s1, s2);
+        {
+            unsigned char *p = (unsigned char *)__MapActor_GetActor(9) + 0x23;
+            unsigned int val = *p;
+            unsigned int bit = 2;
+            bit |= val;
+            *p = bit;
+        }
+    }
+
+    if (__GetFlag(0x325) != 0) {
+        s1 = 0xb;
+        s2 = 0x49;
+        __Func_8010704(10, 0x48, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(0x31, 0x20, 0xb, 4, s1, s2);
+    } else {
+        s1 = 0xb;
+        s2 = 0x49;
+        __Func_8010704(12, 0x48, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(0x30, 0x20, 0xb, 4, s1, s2);
+    }
+}
+void OvlFunc_932_200a5c0(void)
+{
+    int pos_x = 0xb3 << 17;
+    int pos_y = 0xd0 << 15;
+    unsigned int r3;
+    unsigned int r2;
+    unsigned char *actor;
+    unsigned int val;
+    unsigned int bit;
+    int s1;
+    int s2;
+
+    do {} while (pos_x == 0);
+
+    if ((r3 = (unsigned int)&gState, r2 = 0xe1, r2 <<= 1, r3 += r2, *(short *)r3 == 2) && __GetFlag(0x109) == 0) {
+        __MapActor_SetPos(8, pos_x, pos_y);
+    }
+
+    OvlFunc_932_200b460(9);
+
+    if (__GetFlag(0x80 << 2) != 0) {
+        actor = (unsigned char *)__MapActor_GetActor(9);
+        __MapActor_SetAnim(9, 5);
+        s1 = 0x2b;
+        s2 = 0x29;
+        __Func_8010704(0x2d, 0x29, 1, 1, s1, s2);
+        actor += 0x23;
+        val = *actor;
+        bit = 2;
+        bit |= val;
+        *actor = bit;
+    }
+
+    if (__GetFlag(0x907) != 0) {
+        *(unsigned short *)(iwram_3001e70 + 0x14) &= 0xfdff;
+    }
+
+    if (__GetFlag(0x326) != 0) {
+        s1 = 0x10;
+        s2 = 0x5c;
+        __Func_8010704(0x11, 0x5d, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(0x2e, 0x1d, 0x10, 0x1c, s1, s2);
+    } else {
+        s1 = 0x10;
+        s2 = 0x5c;
+        __Func_8010704(0xf, 0x5d, 1, 1, s1, s2);
+        s1 = 1;
+        s2 = 2;
+        __CopyMapTiles(0x2f, 0x1d, 0x10, 0x1c, s1, s2);
+    }
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a6c0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a804.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a934.s");
@@ -457,7 +709,6 @@ void OvlFunc_932_200aeec(void)
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200af10.s");
 
 extern unsigned int iwram_3001e40__s __asm__("iwram_3001e40");
-extern void __Func_8092950(int a, int b);
 
 void OvlFunc_932_200affc(void)
 {

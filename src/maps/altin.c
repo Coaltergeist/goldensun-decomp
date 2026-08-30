@@ -61,7 +61,50 @@ void OvlFunc_931_20081b0(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altin/OvlFunc_931_20081d0.s");
+extern void __MessageID(int);
+extern void __Func_8093054(int, int);
+extern void __ActorMessage_Wait(int, int, int);
+extern unsigned char *__Func_8093554(void);
+extern void __Func_80933d4(int, int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __Func_8093530(void);
+extern void __MapActor_DoAnim(int, int);
+void OvlFunc_931_20081d0(void) {
+    int flag;
+    int *actor;
+    int *isaac;
+    int dir = 0x4000;
+
+    do { } while (dir == 0);
+
+    __CutsceneStart();
+    if (__GetFlag(0x909)) {
+        __MessageID(0x191f);
+        __Func_8093054(0xe, 0);
+    } else {
+        __MapActor_SetAnim(0xe, 4);
+        __MessageID(0x18c7);
+        __ActorMessage_Wait(0xe, 0, 10);
+        flag = __GetFlag(0x8ff);
+        if (flag == 0) {
+            actor = __MapActor_GetActor(0x12);
+            __Func_8093554()[0x55] = flag;
+            __Func_80933d4(0x10000, 0x2000);
+            __Func_80933f8(actor[2], actor[3], actor[4], 1);
+            __MapActor_Face(0, dir, 0);
+            __Func_8092adc(0xe, 0x3000, 0);
+            __Func_8093530();
+            __CutsceneWait(0x78);
+            isaac = __MapActor_GetActor(0);
+            __Func_80933f8(isaac[2], isaac[3], isaac[4], 1);
+            __Func_8093530();
+        }
+        __MapActor_DoAnim(0xe, 4);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_931_2008298(void) {
     __CutsceneStart();
