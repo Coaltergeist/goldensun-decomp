@@ -179,7 +179,40 @@ void OvlFunc_908_20082f4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_200835c.s");
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __CutsceneEnd(void);
+extern int __GetFlag(int);
+extern void __Func_809259c(int, int);
+extern void __MapActor_Surprise(int, int);
+extern void __SetFlag(int);
+void OvlFunc_908_200835c(void) {
+    int flag = 0xc0 << 2;
+    int a = 0x80 << 8;
+    int b = 0xc0 << 8;
+    do { } while (flag == 0);
+    __CutsceneStart();
+    if (!__GetFlag(flag)) {
+        __MessageID(0x16ff);
+        __ActorMessage(0x15, 0);
+        __Func_8092adc(0x15, a, 0x14);
+        __ActorMessage(0x15, 0);
+        __Func_809259c(0x16, 2);
+        __MapActor_Surprise(0x16, 0x102);
+        __CutsceneWait(0x3c);
+        __ActorMessage(0x16, 0);
+        __CutsceneWait(0xa);
+        __SetFlag(flag);
+    }
+    __MapActor_Face(0x15, 0, 0);
+    __MessageID(0x1702);
+    __ActorMessage(0x15, 0);
+    __Func_8092adc(0x15, b, 0xa);
+    __CutsceneEnd();
+}
 
 void OvlFunc_908_20083f4(void) {
     unsigned short a;
@@ -210,12 +243,6 @@ void OvlFunc_908_20083f4(void) {
     __CutsceneEnd();
 }
 
-extern void __CutsceneStart(void);
-extern void __MessageID(int);
-extern void __ActorMessage(int, int);
-extern void __MapActor_Face(int, int, int);
-extern void __Func_8092adc(int, int, int);
-extern void __CutsceneEnd(void);
 
 void OvlFunc_908_2008430(void)
 {
@@ -237,7 +264,6 @@ void OvlFunc_908_2008470(void) {
     __CutsceneEnd();
 }
 
-extern int __GetFlag(int);
 
 void OvlFunc_908_2008490(void) {
     __CutsceneStart();

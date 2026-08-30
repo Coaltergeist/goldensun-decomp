@@ -52,7 +52,57 @@ void OvlFunc_952_2008348(unsigned int actor)
     __ActorMessage(actor, 0);
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20083b0.s");
+extern void __CutsceneStart();
+extern void __CutsceneEnd();
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_952__0200c570[41];
+
+void *__MapActor_GetActor(unsigned int);
+void __MapActor_SetBehavior(unsigned int, ActorCmd *);
+void __MapActor_SetIdle(unsigned int);
+void __Func_80925cc(unsigned int, unsigned int);
+void __Func_8092adc(unsigned int, unsigned int, unsigned int);
+void OvlFunc_952_20083b0(unsigned int actor)
+{
+    unsigned int *p;
+    int scale;
+    int anim = 0xe000;
+
+    do { } while (anim == 0);
+
+    p = (unsigned int *)__MapActor_GetActor(actor);
+    __CutsceneStart();
+    __MapActor_SetBehavior(actor, gScript_952__0200c570);
+    __MessageID(0x2009);
+    __ActorMessage(actor, 0);
+    scale = 0x80;
+    __MapActor_SetIdle(actor);
+    scale <<= 9;
+    p[7] = scale;
+    p[6] = scale;
+    __CutsceneWait(0x1e);
+    __Func_80925cc(actor, 2);
+    __CutsceneWait(0x1e);
+    __Func_80925cc(actor, 2);
+    __CutsceneWait(0x3c);
+    __ActorMessage(actor, 0);
+    __CutsceneWait(0x14);
+    __MapActor_Emote(actor, 0x81 << 1, 0x3c);
+    __Func_80925cc(actor, 2);
+    __CutsceneWait(0x1e);
+    __Func_80925cc(actor, 2);
+    __CutsceneWait(0x1e);
+    __Func_80925cc(actor, 2);
+    __CutsceneWait(0x1e);
+    __MapActor_SetBehavior(actor, gScript_952__0200c570);
+    __ActorMessage(actor, 0);
+    __Func_8092adc(actor, anim, 0);
+    __CutsceneWait(10);
+    p[7] = scale;
+    p[6] = scale;
+    __MapActor_SetBehavior(actor, gScript_952__0200c570);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200849c.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008524.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008564.s");
@@ -62,7 +112,50 @@ INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008af8.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008ff8.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20097e8.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200a014.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bd40.s");
+extern unsigned char iwram_3001ebc[];
+
+extern void __PlaySound(int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __Func_80118a8(int);
+extern void __MapActor_TravelBy(int, int, int);
+extern void __Func_8092208(int, int, int);
+extern void __Func_8091e9c(int);
+extern void __Func_80118c0(int);
+void OvlFunc_952_200bd40(void)
+{
+    unsigned char *map = *(unsigned char **)iwram_3001ebc;
+    int sp1 = 0x8000;
+    int sp2 = 0x4000;
+    int step = -16;
+
+    do { } while (sp1 == 0);
+
+    __CutsceneStart();
+    __PlaySound(0x9e);
+    __MapActor_SetSpeed(0, sp1, sp2);
+    __MapActor_SetAnim(0, 2);
+
+    if (*(short *)(map + 0x16c) == 0x20) {
+        __Func_80118a8(1);
+        __CutsceneWait(10);
+        __MapActor_TravelBy(0, 0, step);
+    } else if (*(short *)(map + 0x16c) == 0x1e) {
+        __Func_80118a8(4);
+        __CutsceneWait(10);
+        __Func_8092208(0, 3, step);
+    } else {
+        __Func_80118a8(2);
+        __CutsceneWait(10);
+        __Func_8092208(0, 3, step);
+    }
+    __CutsceneWait(16);
+    __Func_8091e9c(*(short *)(map + 0x16c));
+    __Func_80118c0(1);
+    __Func_80118c0(2);
+    __Func_80118c0(4);
+    __CutsceneEnd();
+}
 
 extern unsigned char L4550[] __asm__(".Lm952_4550");
 
@@ -93,9 +186,7 @@ INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200be40.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bf84.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bfc4.s");
 
-extern void __CutsceneStart();
 extern void __Func_801776c();
-extern void __CutsceneEnd();
 
 void OvlFunc_952_200c00c(void) {
     __CutsceneStart();

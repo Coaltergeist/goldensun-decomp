@@ -139,7 +139,97 @@ void OvlFunc_931_20084bc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008524.s");
+struct TableEntry {
+    int unk0;
+    short unk4;
+    short unk6;
+};
+
+extern struct TableEntry Lm931_1e70[] __asm__(".Lm931_1e70");
+
+void __CutsceneStart(void);
+int __MapActor_GetActor(int);
+void __PlaySound(int);
+void __CopyMapTiles(int, int, int, int, int, int);
+void __CutsceneWait(int);
+void __Func_8010560(int, int, int);
+void __MapActor_SetSpeed(int, int, int);
+void __MapActor_SetAnim(int, int);
+void __Func_8092208(int, int, int);
+void __Func_8092b08(int, int);
+void __MapActor_TravelBy(int, int, int);
+void __Func_8091e9c(int);
+void __MapTransitionOut(void);
+void __WaitMapTransition(void);
+void __CutsceneEnd(void);
+
+void OvlFunc_931_2008524(void)
+{
+    int speed_x = 0x8000;
+    int speed_y = 0x4000;
+    int step = -4;
+    unsigned char *base;
+    unsigned int i;
+    int actor;
+    short index;
+    short r8_val;
+    short r7_val;
+    int r6_val;
+    int t1, t2;
+
+    do { } while (speed_x == 0);
+
+    base = *(unsigned char **)iwram_3001ebc;
+    __CutsceneStart();
+    for (i = 8; i <= 0x41; i++) {
+        actor = __MapActor_GetActor(i);
+        if (actor != 0) {
+            *(unsigned char *)(actor + 0x55) = 0;
+        }
+    }
+    index = *(short *)(base + (0xb6 << 1)) - 2;
+    r8_val = Lm931_1e70[index].unk4;
+    r7_val = Lm931_1e70[index].unk6;
+
+    if (index == 1) {
+        __PlaySound(0xbc);
+        __CopyMapTiles(0x2a, 0x21, r8_val, r7_val, 2, 2);
+        r6_val = r8_val + 2;
+        __CopyMapTiles(0x2a, 0x23, r6_val, r7_val, 2, 2);
+        __CutsceneWait(4);
+        __CopyMapTiles(0x28, 0x21, r8_val, r7_val, 2, 2);
+        __CopyMapTiles(0x28, 0x23, r6_val, r7_val, 2, 2);
+        __CutsceneWait(4);
+    } else {
+        __PlaySound(0x9e);
+        if (index == 3) {
+            t1 = 1;
+            t2 = 2;
+            __CopyMapTiles(0x21, 0x2a, 8, 0x11, t1, t2);
+        }
+        __Func_8010560(Lm931_1e70[index].unk0, r8_val, r7_val);
+    }
+
+    __MapActor_SetSpeed(0, speed_x, speed_y);
+    *(int *)(*(unsigned char **)iwram_3001ebc + (0xe0 << 1)) = 0x80 << 1;
+    *(unsigned char *)(__MapActor_GetActor(0) + 0x55) = 0;
+    __MapActor_SetAnim(0, 2);
+
+    if (index == 6) {
+        __Func_8092208(0, 2, 0);
+    } else if (index != 1) {
+        __Func_8092208(0, 2, step);
+    } else {
+        __Func_8092b08(0, 2);
+        __MapActor_TravelBy(0, 0, step);
+    }
+
+    __CutsceneWait(10);
+    __Func_8091e9c(*(short *)(base + (0xb6 << 1)));
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_20086a4.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_20086f0.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_20087b8.s");
@@ -156,7 +246,59 @@ void OvlFunc_931_200884c(void) {
 
 INCLUDE_ASM("asm/maps/altin/Altin_MapInit.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008904.s");
-INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008b2c.s");
+struct Actor {
+    char pad0[6];
+    unsigned short facing;
+    char pad8[0x59 - 8];
+    unsigned char unk59;
+};
+
+int __GetFlag(int);
+void __MapActor_SetPos(int, int, int);
+void OvlFunc_931_2008b2c(void)
+{
+    int p_3280 = 0x3280000;
+    int p_2d70 = 0x2d70000;
+    int p_31a0 = 0x31a0000;
+    int p_3390 = 0x3390000;
+    int p_2300 = 0x2300000;
+    int p_2c60 = 0x2c60000;
+    int p_2400 = 0x2400000;
+    int p_1270 = 0x1270000;
+    int p_2e80 = 0x2e80000;
+    struct Actor *actor;
+
+    do { } while (p_3280 == 0);
+
+    if (__GetFlag(0x240) == 0) {
+        __MapActor_SetPos(8, p_3280, p_2d70);
+        actor = __MapActor_GetActor(8);
+        actor->facing = 0x3000;
+        __MapActor_SetPos(9, p_31a0, p_3390);
+    }
+    if (__GetFlag(0x241) == 0) {
+        __MapActor_SetPos(10, p_2300, p_2c60);
+        actor = __MapActor_GetActor(10);
+        actor->facing = 0x1000;
+        __MapActor_SetPos(11, p_2400, p_2c60);
+    }
+    if (__GetFlag(0x242) == 0) {
+        __MapActor_SetPos(15, p_1270, p_2e80);
+        actor = __MapActor_GetActor(15);
+        actor->facing = 0xb000;
+    } else {
+        actor = __MapActor_GetActor(15);
+        actor->unk59 |= 4;
+    }
+    actor = __MapActor_GetActor(0x11);
+    if (actor != 0) {
+        actor->unk59 |= 4;
+    }
+    actor = __MapActor_GetActor(0x10);
+    if (actor != 0) {
+        actor->unk59 |= 4;
+    }
+}
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008c0c.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008c44.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008d08.s");

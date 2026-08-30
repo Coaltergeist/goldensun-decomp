@@ -113,7 +113,80 @@ void OvlFunc_907_2008308(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008328.s");
+extern unsigned char *iwram_3001ebc;
+extern unsigned char *__MapActor_GetActor(int);
+extern short Lm907_1d0c[] __asm__(".Lm907_1d0c");
+extern void *Lm907_1cf0[] __asm__(".Lm907_1cf0");
+
+void __PlaySound(int);
+void __Func_8010560(void *, int, int);
+void __MapActor_SetSpeed(int, int, int);
+void __MapActor_SetAnim(int, int);
+void __MapActor_TravelBy(int, int, int);
+void __Func_8092208(int, int, int);
+void __Func_8092b08(int, int);
+void __CutsceneWait(int);
+void __Func_8091e9c(int);
+void OvlFunc_907_2008328(void)
+{
+    unsigned char *map;
+    int iVar5;
+    unsigned int uVar4;
+    unsigned char *actor;
+    int spd1 = 0x8000;
+    int spd2 = 0x4000;
+    int neg4 = -4;
+    int neg16 = -0x10;
+    int val;
+    int arg1, arg2;
+
+    do { } while (spd1 == 0);
+
+    map = iwram_3001ebc;
+    __CutsceneStart();
+
+    for (uVar4 = 8; uVar4 <= 0x41; uVar4++) {
+        actor = (unsigned char *)__MapActor_GetActor(uVar4);
+        if (actor != 0) {
+            actor[0x55] = 0;
+        }
+    }
+
+    val = *(unsigned short *)(map + 0x16c);
+    iVar5 = (short)(val - 3);
+
+    if (iVar5 == 6) {
+        __PlaySound(0xbc);
+    } else {
+        __PlaySound(0x9e);
+    }
+
+    arg1 = Lm907_1d0c[iVar5 * 2];
+    arg2 = Lm907_1d0c[iVar5 * 2 + 1];
+    __Func_8010560(Lm907_1cf0[iVar5], arg1, arg2);
+    __MapActor_SetSpeed(0, spd1, spd2);
+
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
+
+    *(int *)(iwram_3001ebc + 0x1c0) = 0x100;
+
+    if (iVar5 == 6) {
+        __MapActor_SetAnim(0, 2);
+        __MapActor_TravelBy(0, 0, neg4);
+    } else {
+        __Func_8092208(0, 3, neg16);
+    }
+
+    if (iVar5 == 4) {
+        __Func_8092b08(0, 3);
+    } else {
+        __Func_8092b08(0, 2);
+    }
+
+    __CutsceneWait(0x10);
+    __Func_8091e9c(iVar5 + 3);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008404.s");
 
 extern void __Func_8093c00(void);
@@ -129,10 +202,8 @@ INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_20089cc.s");
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ae0.s");
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008cb4.s");
 
-extern unsigned char *iwram_3001ebc;
 extern void OvlFunc_907_2008fa0(void);
 extern int __GetFlag(int);
-extern unsigned char *__MapActor_GetActor(int);
 extern void __Func_80933f8(int, int, int, int);
 extern void __Func_800fe9c(void);
 extern void __WaitFrames(int);

@@ -60,13 +60,66 @@ void OvlFunc_954_2008248(void)
   __SetFlag(0x303);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008270.s");
+extern void __SetFlag(int);
+extern int __MapActor_GetActor();
+#include "actor.h"
+
+void __CutsceneStart(void);
+void __Func_80933d4(int, int);
+void __Func_80933f8(int, int, int, int);
+void __Actor_SetAnim(struct Actor *, int);
+void __Func_8093530(void);
+void __Actor_TravelTo(struct Actor *, fx32, fx32, fx32);
+void __Actor_WaitMovement(struct Actor *);
+void __CutsceneWait(int);
+void __Func_8010704(int, int, int, int, int, int);
+void __CutsceneEnd(void);
+
+void OvlFunc_954_2008270(void)
+{
+    struct Actor *actor1;
+    struct Actor *actor2;
+    int speed;
+    int accel;
+    int zero;
+    int y1 = 0x80000;
+    int y2 = 0x200000;
+    int a;
+    int b;
+
+    do { } while (y1 == 0);
+
+    __SetFlag(0x301);
+    actor1 = __MapActor_GetActor(0xd);
+    __CutsceneStart();
+    __Func_80933d4(0x80 << 10, 0x80 << 7);
+    __Func_80933f8(0x96 << 18, -1, 0xc8 << 16, 1);
+    __Actor_SetAnim(actor1, 3);
+    __Func_8093530();
+    zero = 0;
+    actor1->__unk55 = zero;
+    speed = 0xcccc;
+    accel = 0x6666;
+    actor1->accel = accel;
+    actor1->speed = speed;
+    __Actor_TravelTo(actor1, actor1->pos.x, y1, actor1->pos.z);
+    actor2 = __MapActor_GetActor(0xe);
+    actor2->__unk55 = zero;
+    actor2->speed = speed;
+    actor2->accel = accel;
+    __Actor_TravelTo(actor2, actor2->pos.x, y2, actor2->pos.z);
+    __Actor_WaitMovement(actor2);
+    __CutsceneWait(0x2d);
+    a = 0x29;
+    b = 0xc;
+    __Func_8010704(0x2b, b, 1, 1, a, b);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_200833c.s");
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_200842c.s");
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008490.s");
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008540.s");
 
-extern void __SetFlag(int);
 
 void OvlFunc_954_2008830(void) {
     __SetFlag(0xc0 << 2);
@@ -92,7 +145,6 @@ void *ColosseumFinal1_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008974.s");
 
-extern int __MapActor_GetActor();
 
 void OvlFunc_954_2008a10(void) {
     int res;

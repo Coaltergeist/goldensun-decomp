@@ -340,7 +340,77 @@ void OvlFunc_965_2008cd0(unsigned int arg0)
 }
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008cf0.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008d4c.s");
+extern void __WaitFrames(int a);
+void __Func_80933f8(int, int, int, int);
+void __Func_800fe9c(void);
+void __MapTransitionIn(void);
+void __WaitMapTransition(void);
+int __cos(int);
+int __sin(int);
+void OvlFunc_965_2008cf0(void);
+void OvlFunc_965_2008ae8(int, int, int, int, int, int, int, int *);
+void __MapActor_Surprise(int, int);
+void __Func_8012330(int, int, int);
+void __Func_8012350(void);
+void OvlFunc_965_2008d4c(void)
+{
+    int s[10];
+    int a[3];
+    unsigned int r7;
+    int theta;
+    int *actor;
+    unsigned long actor_id = 0;
+    int surprise_flag = 0x101;
+    int neg1 = -1;
+    int c1 = 0xa0 << 11;
+    int c2 = 0xa0 << 11;
+    int c3 = 0x80 << 9;
+    int neg2 = -1;
+    int neg3 = -1;
+    int c_e666 = 0xe666;
+
+    while (c1 == 0) {}
+
+    __CutsceneStart();
+    __Func_80933f8(neg1, neg1, neg1, 0);
+    __Func_800fe9c();
+    __WaitFrames(1);
+    ((int *)__MapActor_GetActor(0))[3] = 0x82 << 16;
+    ((int *)__MapActor_GetActor(0))[18] = 0x80 << 8;
+    ((int *)__MapActor_GetActor(0))[17] = 0;
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
+    __MapTransitionIn();
+    __WaitMapTransition();
+    __CutsceneWait(30);
+    __PlaySound(0xcc);
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 3;
+    __CutsceneWait(24);
+    actor = (int *)__MapActor_GetActor(0);
+    s[1] = 7;
+    s[9] = (int)OvlFunc_965_2008cf0;
+    s[2] = 0xcccc;
+    s[3] = 0xcccc;
+    r7 = 0;
+    do
+    {
+        theta = r7 << 12;
+        a[0] = __cos(theta);
+        a[2] = __sin(theta + (a[1] = 0));
+        a[0] += a[0] / 2;
+        OvlFunc_965_2008ae8(actor[2], actor[3], actor[4], a[0], a[1], a[2], 0x1090001, s);
+        r7++;
+    } while (r7 <= 0x10);
+    __PlaySound(0xbc);
+    __MapActor_Surprise(actor_id, surprise_flag);
+    __MapActor_SetAnim(actor_id, 0x16);
+    __Func_8012330(c1, c2, c3);
+    __Func_8012330(neg2, neg3, c_e666);
+    __Func_8012350();
+    __MapActor_Surprise(0, 0x80 << 1);
+    ((int *)__MapActor_GetActor(0))[18] = 0x80 << 9;
+    ((int *)__MapActor_GetActor(0))[17] = 0x80 << 7;
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008eac.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetEntrances.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetSpecialExits.s");
@@ -454,8 +524,64 @@ INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009238.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009b10.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a46c.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a4b0.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a4d0.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a548.s");
+extern void __SetFlag(int a);
+extern int __GetFlag(int);
+extern void __MapActor_TravelTo(int, int, int);
+extern void OvlFunc_965_2009b10(void);
+
+void OvlFunc_965_200a4d0(void)
+{
+    int i;
+    int a5;
+    int a6;
+
+    for (i = 0; i < 1; i++) {
+        if (__GetFlag(0x985) == 0) {
+            __SetFlag(0x985);
+            __PlaySound(0x9d);
+            __CutsceneStart();
+            __MapActor_TravelTo(8, 0x8c << 1, 0xf0);
+            __MapActor_TravelTo(9, 0xa4 << 1, 0xf0);
+            __MapActor_WaitMovement(8);
+            __MapActor_WaitMovement(9);
+            a5 = 0x11;
+            a6 = 0xe;
+            __Func_8010704(0x51, 0xe, 4, 1, a5, a6);
+            __CutsceneEnd();
+            if (__GetFlag(0x989) == 0) {
+                OvlFunc_965_2009b10();
+            }
+        }
+    }
+}
+extern void __ClearFlag(int);
+void OvlFunc_965_200a548(void)
+{
+    int i;
+    int a5;
+    int a6;
+
+    for (i = 0; i < 1; i++) {
+        if (__GetFlag(0x985) != 0) {
+            __ClearFlag(0x985);
+            __PlaySound(0x9d);
+            __CutsceneStart();
+            __MapActor_TravelTo(8, 0x94 << 1, 0xf0);
+            __MapActor_TravelTo(9, 0x9c << 1, 0xf0);
+            __MapActor_WaitMovement(8);
+            __MapActor_WaitMovement(9);
+            a5 = 0x11;
+            a6 = 0xe;
+            __Func_8010704(0, 0xe, 4, 1, a5, a6);
+            __CutsceneEnd();
+            if (__GetFlag(0x301) != 0) {
+                __ClearFlag(0x301);
+            } else {
+                __SetFlag(0x301);
+            }
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a5c8.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a660.s");
 
@@ -508,8 +634,6 @@ int BabiLighthouse_GetEvents(void)
     return (int)Lm965_3c28;
 }
 
-extern void __WaitFrames(int a);
-extern void __SetFlag(int a);
 
 void OvlFunc_965_200a7f4(void)
 {

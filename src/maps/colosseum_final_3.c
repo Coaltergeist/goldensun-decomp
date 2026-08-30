@@ -203,7 +203,121 @@ INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200937c.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20093c0.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009474.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009a0c.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009c20.s");
+extern void __Actor_TravelTo(int a, int b, int c, int d);
+extern void __Actor_WaitMovement(unsigned int arg0);
+#include "actor.h"
+
+void OvlFunc_common1_2c4(void);
+int OvlFunc_common1_4cc(void *, int);
+void OvlFunc_common1_1490(int, int, int);
+void OvlFunc_common1_14f4(int, int, int);
+void OvlFunc_common1_1550(void);
+void OvlFunc_common1_588(void *, int);
+
+void __CutsceneStart(void);
+void __CutsceneEnd(void);
+void __MessageID(int);
+void __Func_80933d4(int, int);
+void __Func_80933f8(int, int, int, int);
+void __Func_8093530(void);
+void __CutsceneWait(int);
+void __ActorMessage(void *, int);
+void __WaitFrames(int);
+struct Actor *__MapActor_GetActor(int);
+void __SetCameraTarget(int, int);
+
+void OvlFunc_956_2009c20(void *arg0)
+{
+    unsigned int r3;
+    unsigned int r2;
+    int r6;
+    int y1 = 0x80 << 11;
+    int y2 = 0x80 << 14;
+
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    if (*(short *)r3 == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    do { } while (y1 == 0);
+
+    __CutsceneStart();
+    r6 = OvlFunc_common1_4cc(arg0, 1);
+    if (r6 == 0) {
+        __MessageID(0x20b2);
+        __Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        __Func_80933f8(0x98 << 16, -1, 0xc8 << 16, 1);
+        __Func_8093530();
+        __CutsceneWait(0x1e);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1490(0x68, 0x44, 0);
+        __CutsceneWait(0x3c);
+        OvlFunc_common1_14f4(0xa8, 0x60, 0xa);
+        __CutsceneWait(0x46);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1550();
+        __WaitFrames(2);
+
+        {
+            struct Actor *a = __MapActor_GetActor(0xa);
+            a->__unk55 = r6;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            __Actor_TravelTo(a, a->pos.x, y1, a->pos.z);
+        }
+
+        {
+            struct Actor *a = __MapActor_GetActor(0xb);
+            a->__unk55 = r6;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            __Actor_TravelTo(a, a->pos.x, y2, a->pos.z);
+            __Actor_WaitMovement(a);
+            __CutsceneWait(0x2d);
+        }
+
+        {
+            struct Actor *a = __MapActor_GetActor(0xa);
+            a->__unk55 = r6;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            __Actor_TravelTo(a, a->pos.x, y2, a->pos.z);
+        }
+
+        {
+            struct Actor *a = __MapActor_GetActor(0xb);
+            a->__unk55 = r6;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            __Actor_TravelTo(a, a->pos.x, y1, a->pos.z);
+            __Actor_WaitMovement(a);
+            __CutsceneWait(0xf);
+        }
+
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1490(0x68, 0x44, 0);
+        __CutsceneWait(0x1e);
+        OvlFunc_common1_14f4(0xa8, 0x60, 0xa);
+        __CutsceneWait(0x28);
+        OvlFunc_common1_14f4(0x68, 0x44, 0xa);
+        __CutsceneWait(0x46);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1550();
+        __WaitFrames(2);
+        __SetCameraTarget(0, 0);
+        OvlFunc_common1_588(arg0, 1);
+    } else if (r6 == 1) {
+        __MessageID(0x20b1);
+        __ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(r6, arg0, 1);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009df8.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009f90.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a0f0.s");
@@ -211,8 +325,6 @@ INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a0f0.s");
 extern int __GetFieldActor(void);
 extern void __Actor_Stop(void);
 extern void __Actor_SetAnim(int a, int b);
-extern void __Actor_TravelTo(int a, int b, int c, int d);
-extern void __Actor_WaitMovement(unsigned int arg0);
 
 void OvlFunc_956_200a2c4(int arg0, int arg1, int arg2) {
     int r5;
