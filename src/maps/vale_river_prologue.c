@@ -106,23 +106,19 @@ extern void OvlFunc_882_200950c(void);
 
 void OvlFunc_882_2008278(void)
 {
-    unsigned int f = 0x206;
-    __asm__ ("" : "+r" (f));
+    int f = 0x206;
+    int pos = 0x106;
+    int anim = 0x325;
+    do { } while (f == 0);
     if (!__GetFlag(f)) {
         __PlaySound(0x9e);
         __Func_8010560(L57a0, 0x2d, 0x27);
     }
     if (!__GetFlag(0x835) && !__GetFlag(0x831)) {
         OvlFunc_882_200950c();
-        __SetFlag(0x206);
+        __SetFlag(f);
     } else {
-        unsigned int w = 0x83;
-        {
-            register unsigned int rq __asm__("r0") = 0;
-            __asm__ volatile ("" : : "r" (rq));
-            w <<= 1;
-            __MapActor_TravelToAnim(rq, w, 0x325);
-        }
+        __MapActor_TravelToAnim(0, pos, anim);
         __CutsceneWait(3);
         OvlFunc_882_200815c(6);
     }
@@ -226,20 +222,17 @@ extern void __Func_8092adc(int, int, int);
 extern int _MSG_ed0;
 
 void OvlFunc_882_20096cc(void) {
-    unsigned int w;
+    int w = 0xe000;
+
+    do { } while (w == 0);
+
     if (__GetFlag(0x841)) {
         __CutsceneStart();
         __MapActor_Face(0x16, 0, 0);
         __CutsceneWait(0x14);
         __MessageID((int) (&_MSG_ed0));
         __ActorMessage(0x16, 0);
-        w = 0xe0;
-        {
-            register unsigned int rq __asm__("r0") = 0x16;
-            __asm__ volatile ("" : : "r" (rq));
-            w <<= 8;
-            __Func_8092adc(rq, w, 0xa);
-        }
+        __Func_8092adc(0x16, w, 0xa);
         __CutsceneEnd();
     } else if (!__GetFlag(0x837)) {
         __CutsceneStart();
@@ -267,14 +260,16 @@ extern int _MSG_e70;
 void OvlFunc_882_200973c(void) {
     int r5v;
     int a;
-    unsigned int w;
-    unsigned int z;
+    unsigned long long t = 0;
+    unsigned long z;
+    int w = 0x100;
 
-    {
-        register unsigned int zp __asm__("r1") = 0;
-        __asm__ volatile ("" : : "r" (zp));
-        __ShowActorMessage_NoWait(0x16, zp);
-    }
+    do { t = (unsigned long) t; } while (0);
+    z = t;
+
+    do { } while (w == 0);
+
+    __ShowActorMessage_NoWait(0x16, z);
     __MapActor_TurnToFaceActor(0, 0x16, 0);
     r5v = 0;
     if (__Func_8091c7c(0, 0) == 0) {
@@ -284,16 +279,8 @@ void OvlFunc_882_200973c(void) {
         __MessageID(0xee6);
     }
     __CutsceneWait(0x14);
-    z = 0x28;
-    __asm__ volatile ("" : : "r" (z));
-    __ActorMessage_Wait(0x16, 0, z);
-    w = 0x80;
-    {
-        register unsigned int rq __asm__("r0") = 0x16;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 1;
-        __MapActor_Surprise(rq, w);
-    }
+    __ActorMessage_Wait(0x16, 0, 0x28);
+    __MapActor_Surprise(0x16, w);
     __MapActor_SetAnim(0x15, 3);
     __MapActor_SetAnim(0x16, 1);
     __CutsceneWait(0x28);

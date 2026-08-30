@@ -193,35 +193,33 @@ INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a7dc.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a81c.s");
 
 
+extern void __CutsceneStart(void);
+extern void __Func_808c44c(void);
+extern void __MessageID(int);
+extern void __ActorMessage(unsigned long, int);
+extern void __Func_808c4c0(void);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __CutsceneEnd(void);
+
 void OvlFunc_881_200a858(void)
 {
     extern unsigned char L679c[] __asm__(".Lm881_679c");
-    unsigned long msgactor;
-    unsigned int speedx;
-    unsigned int speedy;
+    int speedx = 0x10000;
+    int speedy = 0x8000;
+    int target_x = 0x1778;
+    int target_y = 0xd48;
+    int zero = 0;
+
+    do { } while (speedx == 0);
 
     __CutsceneStart();
     __Func_808c44c();
     __MessageID(0x2643);
-    msgactor = *(unsigned long *)L679c;
-    __ActorMessage(msgactor, 0);
+    __ActorMessage(*(unsigned long *)L679c, 0);
     __Func_808c4c0();
-    speedx = 0x80;
-    speedy = 0x80;
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        __asm__ volatile ("" : : "r" (rq));
-        speedx <<= 9;
-        __asm__ volatile ("" : "+r" (speedx));
-        speedy <<= 8;
-        __MapActor_SetSpeed(rq, speedx, speedy);
-    }
-    {
-        register unsigned int rq2 __asm__("r0") = 0;
-        register unsigned long r1val __asm__("r1") = 0x1778;
-        __asm__ volatile ("" : : "r" (rq2), "r" (r1val));
-        __MapActor_TravelToAnimWait(rq2, r1val, 0xd48);
-    }
+    __MapActor_SetSpeed(zero, speedx, speedy);
+    __MapActor_TravelToAnimWait(zero, target_x, target_y);
     __CutsceneEnd();
 }
 

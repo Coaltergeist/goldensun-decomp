@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7ed0a0 (overlay file 964): consolidated TU — tunnel_ruins map overlay. */
 
 #include "nonmatching.h"
@@ -208,6 +207,8 @@ void (*arg5)(void);
 void OvlFunc_964_2008608(struct Pk arg)
 {
     int va[3];
+    int sp1 = 0x4ccc;
+    int sp2 = 0x1999;
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -228,6 +229,7 @@ void OvlFunc_964_2008608(struct Pk arg)
     int u1;
     int u2;
 
+    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -265,15 +267,7 @@ void OvlFunc_964_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    {
-        register unsigned int r0z __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x4ccc;
-        register unsigned int r2v __asm__("r2") = 0x1999;
-        __asm__ volatile ("" : : "r"(r0z));
-        __asm__ volatile ("" : : "r"(r1v));
-        __asm__ volatile ("" : : "r"(r2v));
-        __MapActor_SetSpeed(r0z, r1v, r2v);
-    }
+    __MapActor_SetSpeed(0, sp1, sp2);
     __MapActor_TravelBy(0, (short)(L31f0__a2[dir] >> 16) / 2, (short)(L31f0__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();

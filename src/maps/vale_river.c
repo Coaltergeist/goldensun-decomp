@@ -191,6 +191,8 @@ void (*arg5)(void);
 void OvlFunc_883_2008608(struct Pk arg)
 {
     int va[3];
+    int sp1 = 0x4ccc;
+    int sp2 = 0x1999;
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -211,6 +213,7 @@ void OvlFunc_883_2008608(struct Pk arg)
     int u1;
     int u2;
 
+    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -248,15 +251,7 @@ void OvlFunc_883_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    {
-        register unsigned int r0z __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x4ccc;
-        register unsigned int r2v __asm__("r2") = 0x1999;
-        __asm__ volatile ("" : : "r"(r0z));
-        __asm__ volatile ("" : : "r"(r1v));
-        __asm__ volatile ("" : : "r"(r2v));
-        __MapActor_SetSpeed(r0z, r1v, r2v);
-    }
+    __MapActor_SetSpeed(0, sp1, sp2);
     __MapActor_TravelBy(0, (short)(L6190__a2[dir] >> 16) / 2, (short)(L6190__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -405,6 +400,12 @@ extern void __MapActor_TurnToFaceActor(int, int, int);
 extern void __Func_8093054(int, int);
 extern void __CutsceneEnd(void);
 
+extern void __Func_8012330(int, int, int);
+extern void __WaitFrames(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Face(int, int, int);
+
+
 void OvlFunc_883_2008adc(void) {
     __CutsceneStart();
     if (__GetFlag(0x815)) {
@@ -444,60 +445,22 @@ void OvlFunc_883_2008c9c(void) {
 
 void OvlFunc_883_2008cd0(void)
 {
-  unsigned int a;
-  unsigned int b;
-  unsigned int c;
-  int d;
-  int e;
-  unsigned int f;
-  unsigned int g;
-  unsigned int h;
-  unsigned int i;
+    int a = 0x30000;
+    int b = 0x10000;
+    int neg1 = -1;
+    int c = 0xe666;
 
-  __CutsceneStart();
+    while (a == 0) {}
 
-  a = 0xc0;
-  __asm__ volatile ("" : "+r" (a));
-  b = 0xc0;
-  c = 0x80;
-  b <<= 10;
-  c <<= 9;
-  a <<= 10;
-  __Func_8012330(a, b, c);
-
-  __WaitFrames(10);
-
-  d = 1;
-  __asm__ volatile ("" : "+r" (d));
-  e = 1;
-  e = -e;
-  f = 0xe666;
-  d = -d;
-  __Func_8012330(d, e, f);
-
-  __MessageID(0x1c9a);
-
-  g = 0x11;
-  __asm__ volatile ("" : "+r" (g));
-  h = 0;
-  i = 0x14;
-  __ActorMessage_Wait(g, h, i);
-
-  {
-    register unsigned int p2 __asm__("r2") = 0x14;
-    __asm__ volatile ("" : : "r" (p2));
-    g = 0x11;
-    __asm__ volatile ("" : "+r" (g));
-    h = 0;
-    __MapActor_Face(g, h, p2);
-  }
-
-  g = 0x11;
-  __asm__ volatile ("" : "+r" (g));
-  h = 0;
-  __ActorMessage(g, h);
-
-  __CutsceneEnd();
+    __CutsceneStart();
+    __Func_8012330(a, a, b);
+    __WaitFrames(10);
+    __Func_8012330(neg1, neg1, c);
+    __MessageID(0x1c9a);
+    __ActorMessage_Wait(0x11, 0, 0x14);
+    __MapActor_Face(0x11, 0, 0x14);
+    __ActorMessage(0x11, 0);
+    __CutsceneEnd();
 }
 
 void OvlFunc_883_2008d2c(void) {
@@ -554,23 +517,20 @@ INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008f5c.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008f8c.s");
 
 extern unsigned char L755a[] __asm__(".Lm883_755a");
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_883_2008fbc(void)
 {
-	__PlaySound(0x9e);
-	{
-		register unsigned char *rp __asm__("r0") = L755a;
-		__asm__ volatile ("" : : "r" (rp));
-		__Func_8010560(rp, 0x23, 0x4a);
-	}
-	{
-		register unsigned int rq __asm__("r0") = 0;
-		register unsigned int r1v __asm__("r1") = 0x66;
-		__asm__ volatile ("" : : "r" (rq), "r" (r1v));
-		__MapActor_TravelToAnim(rq, r1v, 0x4b6);
-	}
-	__Func_8091e9c(0xa);
+    int anim = 0x4b6;
+    do { } while (anim == 0);
+    __PlaySound(0x9e);
+    __Func_8010560(L755a, 0x23, 0x4a);
+    __MapActor_TravelToAnim(0, 0x66, anim);
+    __Func_8091e9c(0xa);
 }
+
 
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008fec.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20090d8.s");

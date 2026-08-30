@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7b6668 (overlay file 928): consolidated TU — xian map overlay. */
 
 #include "nonmatching.h"
@@ -121,65 +120,33 @@ void OvlFunc_928_2008cec(void) {
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008d0c.s");
 
 extern unsigned char iwram_3001ebc[];
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __MapActor_TravelBy(int, int, int);
+extern void __Func_8092208(int, int, int);
+extern void __Func_8091e9c(unsigned int);
 
 void OvlFunc_928_2008de8(unsigned int arg0)
 {
+    int sp1 = 0x8000;
+    int sp2 = 0x4000;
+    int dist = -0x10;
     unsigned char *actor;
-    unsigned int w1, z1;
-    unsigned int r3;
 
-    actor = (unsigned char *) __MapActor_GetActor(0);
-    {
-        unsigned char *p;
-        unsigned char v;
-        p = actor + 0x55;
-        v = 0;
-        __asm__ volatile ("" : "+r" (p), "+r" (v));
-        w1 = 0x80;
-        __asm__ volatile ("" : "+r" (w1) : : "memory");
-        z1 = 0x80;
-        __asm__ volatile ("" : "+r" (z1) : : "memory");
-        *p = v;
-        w1 <<= 8;
-        {
-            register unsigned int rq __asm__("r0") = 0;
-            __asm__ volatile ("" : : "r" (rq));
-            z1 <<= 7;
-            __MapActor_SetSpeed(rq, w1, z1);
-        }
-    }
+    do { } while (sp1 == 0);
+
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    actor[0x55] = 0;
+    __MapActor_SetSpeed(0, sp1, sp2);
 
     if (arg0 == 6) {
-        {
-            register int rq __asm__("r0") = 0;
-            __asm__ volatile ("" : : "r" (rq));
-            __MapActor_SetAnim(rq, 2);
-        }
-        {
-            register int p0 __asm__("r0");
-            register int p1 __asm__("r1");
-            register int p2 __asm__("r2") = 0x10;
-            __asm__ volatile ("" : "+r" (p2));
-            p0 = 0;
-            p1 = 0;
-            __asm__ volatile ("" : "+r" (p0), "+r" (p1));
-            p2 = -p2;
-            __MapActor_TravelBy(p0, p1, p2);
-        }
+        __MapActor_SetAnim(0, 2);
+        __MapActor_TravelBy(0, 0, dist);
     } else {
-        register int p0 __asm__("r0");
-        register int p1 __asm__("r1");
-        register int p2 __asm__("r2") = 0x10;
-        __asm__ volatile ("" : "+r" (p2));
-        p0 = 0;
-        p1 = 2;
-        __asm__ volatile ("" : "+r" (p0), "+r" (p1));
-        p2 = -p2;
-        __Func_8092208(p0, p1, p2);
+        __Func_8092208(0, 2, dist);
     }
 
-    r3 = *(unsigned int *)iwram_3001ebc;
-    *(unsigned int *)(r3 + (0xe4 << 1)) = 0x10;
+    *(unsigned int *)(*(unsigned int *)iwram_3001ebc + 0x1c8) = 0x10;
     __Func_8091e9c(arg0);
 }
 

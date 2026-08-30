@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7cb2c0 (overlay file 945): consolidated TU — tolbi_bound_ship_hull map overlay. */
 
 #include "nonmatching.h"
@@ -532,7 +531,7 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bf94.s");
 
 
 void OvlFunc_945_200c0e8(void) {
-    extern int __MessageID(int);
+    extern void __MessageID(int);
     extern void __CutsceneStart(void);
     extern void __CutsceneWait(int);
     extern void __Func_8092adc(int, int, int);
@@ -541,20 +540,15 @@ void OvlFunc_945_200c0e8(void) {
     extern void __ActorMessage_Wait(int, int, int);
     extern void OvlFunc_945_200c8e8(int, int, int);
     extern int _MSG_1e40;
-    unsigned int w;
-    unsigned int z;
+    int w = 0xc0 << 6;
+
+    do { } while (w == 0);
+
     __CutsceneStart();
     OvlFunc_945_200c8e8(0xf, 1, 1);
     __Func_80925cc(8, 1);
     __CutsceneWait(0xa);
-    w = 0xc0;
-    z = 0x14;
-    {
-        register unsigned int rq __asm__("r0") = 8;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 6;
-        __Func_8092adc(rq, w, z);
-    }
+    __Func_8092adc(8, w, 0x14);
     __Func_809259c(8, 2);
     __MessageID((int) (&_MSG_1e40));
     __ActorMessage_Wait(8, 0, 0x14);

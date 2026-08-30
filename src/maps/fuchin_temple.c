@@ -1,7 +1,17 @@
-// fakematch
 /* rom_7b2078 (overlay file 926): consolidated TU — fuchin_temple map overlay. */
 
 #include "nonmatching.h"
+
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern unsigned char *__MapActor_GetActor(int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __MapActor_TravelBy(int, int, int);
+extern void __CutsceneWait(int);
+extern void __Func_8091e9c(int);
 
 extern void __Actor_SetSpriteFlags();
 
@@ -256,38 +266,25 @@ extern unsigned char *iwram_3001ebc__a2 __asm__("iwram_3001ebc");
 
 void OvlFunc_926_200a778(void)
 {
-  int actorAddr;
-  int t;
-  unsigned int w, z;
+    int sp1 = 0xcccc;
+    int sp2 = 0x6666;
+    int dist = -0x10;
+    unsigned char *actor;
 
-  __CutsceneStart();
-  __PlaySound(0xbc);
-  __Func_8010560(gScript_943__0200c764, 0x4d, 8);
-  actorAddr = __MapActor_GetActor(0);
-  *(unsigned char *)(actorAddr + 0x55) = 0;
-  w = 0xcccc;
-  {
-    register unsigned int rq __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (rq));
-    z = 0x6666;
-    __MapActor_SetSpeed(rq, w, z);
-  }
-  *(unsigned int *)(iwram_3001ebc__a2 + 0x1c0) = 0x100;
-  {
-    register unsigned int rq __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (rq));
-    __MapActor_SetAnim(rq, 2);
-  }
-  t = 0x10;
-  {
-    register int p1 __asm__("r1") = 0;
-    __asm__ volatile ("" : : "r" (p1));
-    t = -t;
-    __MapActor_TravelBy(0, p1, t);
-  }
-  __CutsceneWait(0x10);
-  __Func_8091e9c(2);
-  __CutsceneEnd();
+    do { } while (sp1 == 0);
+
+    __CutsceneStart();
+    __PlaySound(0xbc);
+    __Func_8010560(gScript_943__0200c764, 0x4d, 8);
+    actor = __MapActor_GetActor(0);
+    actor[0x55] = 0;
+    __MapActor_SetSpeed(0, sp1, sp2);
+    *(unsigned int *)(*(int *)iwram_3001ebc + 0x1c0) = 0x100;
+    __MapActor_SetAnim(0, 2);
+    __MapActor_TravelBy(0, 0, dist);
+    __CutsceneWait(0x10);
+    __Func_8091e9c(2);
+    __CutsceneEnd();
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a7ec.s");
@@ -295,25 +292,22 @@ INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200aad0.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_MapInit.s");
 
 extern unsigned char *iwram_3001f30;
+extern void __SetFlag(int);
+extern void __Func_8096fb0(int, int);
+extern void __Func_80970f8(unsigned int, unsigned int);
+extern void __Func_809728c(void);
+extern void __FieldMove(int);
+extern void __WaitFrames(int);
 
 void OvlFunc_926_200c0dc(unsigned int arg0, unsigned int arg1)
 {
     unsigned char *p;
-    unsigned short t1;
 
     __SetFlag(0x140);
-    t1 = 1;
-    do { t1 = (unsigned short) t1; } while (0);
-    __Func_8096fb0(0x8d, t1);
+    __Func_8096fb0(0x8d, 1);
     p = iwram_3001f30;
-    __asm__ volatile ("" : : "r" (p));
-    {
-        register unsigned int p0 __asm__("r0") = arg0;
-        __asm__ volatile ("" : : "r" (p0));
-        __Func_80970f8(p0, arg1);
-    }
-    p += 0x23;
-    *p = 0;
+    __Func_80970f8(arg0, arg1);
+    p[0x23] = 0;
     __Func_809728c();
     __FieldMove(1);
     __WaitFrames(1);

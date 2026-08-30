@@ -1,4 +1,3 @@
-// fakematch
 /* rom_79dd90 (overlay file 910): consolidated TU — mccoys_palace_ext map overlay. */
 
 #include "nonmatching.h"
@@ -96,41 +95,33 @@ void OvlFunc_910_20081c4(void) {
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20081e4.s");
 
-// fakematch
+extern void __CutsceneStart(void);
+extern int __GetFlag(int);
+extern void OvlFunc_910_20088e8(void);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __Func_8092208(int, int, int);
+extern void __CutsceneWait(int);
+extern void __Func_8091e9c(int);
+extern void __CutsceneEnd(void);
 extern unsigned char *iwram_3001ebc;
 
 void OvlFunc_910_200845c(void)
 {
-  int t;
-  unsigned int w, z;
+  int sp1 = 0x8000;
+  int sp2 = 0x4000;
+  int t = -0x10;
+
+  do { } while (sp1 == 0);
 
   __CutsceneStart();
   if (__GetFlag(0x200) == 0) {
     OvlFunc_910_20088e8();
   }
-  w = 0x80;
-  z = 0x80;
-  {
-    register unsigned int rq __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (rq));
-    w <<= 8;
-    __asm__ volatile ("" : "+r" (w));
-    z <<= 7;
-    __MapActor_SetSpeed(rq, w, z);
-  }
+  __MapActor_SetSpeed(0, sp1, sp2);
   *(unsigned int *)(iwram_3001ebc + 0x1c0) = 0x100;
-  {
-    register unsigned int rq __asm__("r0") = 0;
-    __asm__ volatile ("" : : "r" (rq));
-    __MapActor_SetAnim(rq, 2);
-  }
-  t = 0x10;
-  {
-    register int p1 __asm__("r1") = 2;
-    __asm__ volatile ("" : : "r" (p1));
-    t = -t;
-    __Func_8092208(0, p1, t);
-  }
+  __MapActor_SetAnim(0, 2);
+  __Func_8092208(0, 2, t);
   __CutsceneWait(0x10);
   __Func_8091e9c(2);
   __CutsceneEnd();

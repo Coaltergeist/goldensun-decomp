@@ -1,4 +1,3 @@
-// fakematch
 /* rom_784360 (overlay file 884): consolidated TU — vale_plaza map overlay. */
 
 #include "nonmatching.h"
@@ -103,7 +102,7 @@ void OvlFunc_884_20081c4(void)
   __CutsceneStart();
   new_var = 2;
   __MessageID(0xf3c);
- do { new_var = (unsigned long) new_var; } while (0);
+  do { new_var = (unsigned long) new_var; } while (0);
   new_var2 = new_var;
   __MapActor_TurnToFaceActor(0x17, 0, new_var2);
   __Func_8093054(0x17, 0);
@@ -117,7 +116,7 @@ void OvlFunc_884_20081f0(void)
   __CutsceneStart();
   new_var = 2;
   __MessageID(0xf3f);
- do { new_var = (unsigned long) new_var; } while (0);
+  do { new_var = (unsigned long) new_var; } while (0);
   new_var2 = new_var;
   __MapActor_TurnToFaceActor(0x18, 0, new_var2);
   __Func_8093054(0x18, 0);
@@ -131,7 +130,7 @@ void OvlFunc_884_200821c(void)
   __CutsceneStart();
   new_var = 2;
   __MessageID(0xf44);
- do { new_var = (unsigned long) new_var; } while (0);
+  do { new_var = (unsigned long) new_var; } while (0);
   new_var2 = new_var;
   __MapActor_TurnToFaceActor(0xf, 0, new_var2);
   __Func_8093054(0xf, 0);
@@ -162,79 +161,65 @@ void OvlFunc_884_2008714(unsigned int arg0)
 }
 
 extern unsigned char L3eb4[] __asm__(".Lm884_3eb4");
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_2008750(void)
 {
-	__PlaySound(0x9e);
-	{
-		register unsigned char *rp __asm__("r0") = L3eb4;
-		__asm__ volatile ("" : : "r" (rp));
-		__Func_8010560(rp, 0x2c, 7);
-	}
-	{
-		register unsigned int rq __asm__("r0") = 0;
-		register unsigned int r1v __asm__("r1") = 0xf8;
-		__asm__ volatile ("" : : "r" (rq), "r" (r1v));
-		__MapActor_TravelToAnim(rq, r1v, 0x117);
-	}
-	OvlFunc_884_2008714(1);
+    int anim = 0x117;
+    do { } while (anim == 0);
+    __PlaySound(0x9e);
+    __Func_8010560(L3eb4, 0x2c, 7);
+    __MapActor_TravelToAnim(0, 0xf8, anim);
+    OvlFunc_884_2008714(1);
 }
 
 INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008780.s");
 
 
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+
 void OvlFunc_884_20087ec(void)
 {
-	__PlaySound(0x9e);
-	{
-		register unsigned char *rp __asm__("r0") = L3eb4;
-		__asm__ volatile ("" : : "r" (rp));
-		__Func_8010560(rp, 0x2b, 0xf);
-	}
-	{
-		register unsigned int rq __asm__("r0") = 0;
-		register unsigned int r1v __asm__("r1") = 0xe6;
-		__asm__ volatile ("" : : "r" (rq), "r" (r1v));
-		__MapActor_TravelToAnim(rq, r1v, 0x197);
-	}
-	OvlFunc_884_2008714(3);
+    int anim = 0x197;
+    do { } while (anim == 0);
+    __PlaySound(0x9e);
+    __Func_8010560(L3eb4, 0x2b, 0xf);
+    __MapActor_TravelToAnim(0, 0xe6, anim);
+    OvlFunc_884_2008714(3);
 }
 
 INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200881c.s");
 
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_200884c(void)
 {
+    int anim = 0x222;
+    do { } while (anim == 0);
     __PlaySound(0x9e);
-    {
-        register unsigned char *rp __asm__("r0") = L3eb4;
-        __asm__ volatile ("" : : "r" (rp));
-        __Func_8010560(rp, 0x29, 0x20);
-    }
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0xc8;
-        __asm__ volatile ("" : : "r" (rq), "r" (r1v));
-        __MapActor_TravelToAnim(rq, r1v, 0x222);
-    }
+    __Func_8010560(L3eb4, 0x29, 0x20);
+    __MapActor_TravelToAnim(0, 0xc8, anim);
     OvlFunc_884_2008714(5);
 }
 
 
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+
 void OvlFunc_884_200887c(void)
 {
+    int anim = 0x263;
+    do { } while (anim == 0);
     __PlaySound(0x9e);
-    {
-        register unsigned char *rp __asm__("r0") = L3eb4;
-        __asm__ volatile ("" : : "r" (rp));
-        __Func_8010560(rp, 0x23, 0x24);
-    }
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x66;
-        __asm__ volatile ("" : : "r" (rq), "r" (r1v));
-        __MapActor_TravelToAnim(rq, r1v, 0x263);
-    }
+    __Func_8010560(L3eb4, 0x23, 0x24);
+    __MapActor_TravelToAnim(0, 0x66, anim);
     OvlFunc_884_2008714(6);
 }
 

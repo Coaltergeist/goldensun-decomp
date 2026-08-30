@@ -1,4 +1,3 @@
-// fakematch
 /* rom_79b154 (overlay file 907): consolidated TU — bilibin map overlay. */
 
 #include "nonmatching.h"
@@ -132,6 +131,11 @@ INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008cb4.s");
 
 extern unsigned char *iwram_3001ebc;
 extern void OvlFunc_907_2008fa0(void);
+extern int __GetFlag(int);
+extern unsigned char *__MapActor_GetActor(int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __Func_800fe9c(void);
+extern void __WaitFrames(int);
 
 void OvlFunc_907_2008d10(void)
 {
@@ -158,12 +162,8 @@ void OvlFunc_907_2008d10(void)
             __CutsceneStart();
             y = 0x80;
             y <<= 13;
-            {
-                register int rq __asm__("r0") = *(int *)(actor + 8);
-                __asm__ volatile ("" : : "r" (rq));
-                *(int *)(actor + 0xc) = y;
-                __Func_80933f8(rq, y, *(int *)(actor + 0x10), 0);
-            }
+            *(int *)(actor + 0xc) = y;
+            __Func_80933f8(*(int *)(actor + 8), y, *(int *)(actor + 0x10), 0);
             __Func_800fe9c();
             __CutsceneEnd();
             __WaitFrames(1);

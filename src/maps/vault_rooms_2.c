@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7987ac (overlay file 902): consolidated TU — vault_rooms_2 map overlay. */
 
 #include "nonmatching.h"
@@ -68,7 +67,7 @@ void OvlFunc_902_20080bc(void)
 {
   int new_var;
   int x;
- do { __MessageID(0x1cc9); x = 9; new_var = 2; } while (0);
+  do { __MessageID(0x1cc9); x = 9; new_var = 2; } while (0);
   __MapActor_TurnToFaceActor(x, 0, new_var);
   OvlFunc_902_2008098(x);
 }
@@ -77,7 +76,7 @@ void OvlFunc_902_20080bc(void)
 void OvlFunc_902_20080dc(void)
 {
   __MessageID(0x1ccd);
- do { __MapActor_TurnToFaceActor(0xb, 0, 2); OvlFunc_902_2008098(0xb); } while (0);
+  do { __MapActor_TurnToFaceActor(0xb, 0, 2); OvlFunc_902_2008098(0xb); } while (0);
 }
 
 
@@ -85,7 +84,7 @@ void OvlFunc_902_20080fc(void)
 {
   int r1;
   int r2;
- do { __MessageID(0x1cd0); r1 = 0; r2 = 2; } while (0);
+  do { __MessageID(0x1cd0); r1 = 0; r2 = 2; } while (0);
   __MapActor_TurnToFaceActor(0xc, r1, r2);
   OvlFunc_902_2008098(0xc);
 }
@@ -96,7 +95,7 @@ INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_200811c.s");
 void OvlFunc_902_20081c4(void)
 {
   unsigned short new_var;
- do { __MessageID(0x1cda); } while (0);
+  do { __MessageID(0x1cda); } while (0);
   new_var = 0;
   __MapActor_TurnToFaceActor(0x10, new_var, 2);
   OvlFunc_902_2008098(0x10);
@@ -107,7 +106,7 @@ void OvlFunc_902_20081e4(void)
 {
   int r4 = 0x17;
   __MessageID(0x1cee);
- do { } while (0);
+  do { } while (0);
   __MapActor_TurnToFaceActor(r4, 0, 2);
   OvlFunc_902_2008098(r4);
 }
@@ -118,20 +117,13 @@ extern void OvlFunc_902_200811c(void);
 
 void OvlFunc_902_20082fc(void)
 {
+  int zero = 0;
   __CutsceneStart();
   __Func_80925cc(0x10, 1);
   __CutsceneEnd();
   *((unsigned char *)__MapActor_GetActor(0x10) + 0x5b) = 1;
   OvlFunc_902_200811c();
-  {
-    register unsigned char *p __asm__("r0");
-    register unsigned char z __asm__("r5");
-    p = (unsigned char *)__MapActor_GetActor(0x10);
-    __asm__ volatile ("" : : "r" (p));
-    z = 0;
-    __asm__ volatile ("" : : "r" (z));
-    p[0x5b] = z;
-  }
+  *((unsigned char *)__MapActor_GetActor(0x10) + 0x5b) = zero;
   __MapActor_SetBehavior(0x10, 2);
 }
 

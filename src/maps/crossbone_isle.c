@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7ced6c (overlay file 946): consolidated TU — crossbone_isle map overlay. */
 
 #include "nonmatching.h"
@@ -194,6 +193,8 @@ void (*arg5)(void);
 void OvlFunc_946_2008608(struct Pk arg)
 {
     int va[3];
+    int sp1 = 0x4ccc;
+    int sp2 = 0x1999;
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -214,6 +215,7 @@ void OvlFunc_946_2008608(struct Pk arg)
     int u1;
     int u2;
 
+    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -251,15 +253,7 @@ void OvlFunc_946_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    {
-        register unsigned int r0z __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x4ccc;
-        register unsigned int r2v __asm__("r2") = 0x1999;
-        __asm__ volatile ("" : : "r"(r0z));
-        __asm__ volatile ("" : : "r"(r1v));
-        __asm__ volatile ("" : : "r"(r2v));
-        __MapActor_SetSpeed(r0z, r1v, r2v);
-    }
+    __MapActor_SetSpeed(0, sp1, sp2);
     __MapActor_TravelBy(0, (short)(L315c__a2[dir] >> 16) / 2, (short)(L315c__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -417,10 +411,16 @@ unsigned char pad[0x59];
 unsigned char unk59;
 };
 
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Func_8012078(int, int, int, int);
+
 void OvlFunc_946_20095d0(unsigned int param_1) {
     struct Actor *actor;
-    unsigned int w;
-    unsigned int z;
+    int w1 = 0x90 << 16;
+    int w2 = 0xbc << 18;
+    int z = 0xa0 << 17;
+
+    do { } while (w1 == 0);
 
     actor = __MapActor_GetActor(0xe);
     if (actor != 0) {
@@ -429,27 +429,8 @@ void OvlFunc_946_20095d0(unsigned int param_1) {
     actor = __MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
 
-    w = 0x90;
-    z = 0xa0;
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 16;
-        __asm__ volatile ("" : "+r" (w));
-        z <<= 17;
-        __Func_8012078(rq, w, z, 0xfd);
-    }
-
-    w = 0xbc;
-    z = 0xa0;
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 18;
-        __asm__ volatile ("" : "+r" (w));
-        z <<= 17;
-        __Func_8012078(rq, w, z, 0xfd);
-    }
+    __Func_8012078(0, w1, z, 0xfd);
+    __Func_8012078(0, w2, z, 0xfd);
 
     __SetFlag(0x243);
 }

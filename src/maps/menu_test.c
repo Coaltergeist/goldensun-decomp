@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7fcd20 (overlay file 974): consolidated TU — menu_test map overlay. */
 
 #include "nonmatching.h"
@@ -87,24 +86,23 @@ void *MenuTest_GetEvents(void) {
     return (void *)Events;
 }
 
+extern void __Func_801776c(int, int);
+extern void __SetMinLevel(int, unsigned int);
+extern void __CalcStats(int);
 extern unsigned int L1684 __asm__(".Lm974_1684");
 
 void OvlFunc_974_2008244(void)
 {
-  {
-    register unsigned int rp __asm__("r0") = 0xc1a;
-    __asm__ volatile ("" : : "r" (rp));
-    __Func_801776c(rp, 1);
-  }
-  __SetMinLevel(0, L1684);
-  __SetMinLevel(1, L1684);
-  __SetMinLevel(3, L1684);
-  __SetMinLevel(2, L1684);
-  L1684 = L1684 + 10;
-  __CalcStats(0);
-  __CalcStats(1);
-  __CalcStats(3);
-  __CalcStats(2);
+    __Func_801776c(0xc1a, 1);
+    __SetMinLevel(0, L1684);
+    __SetMinLevel(1, L1684);
+    __SetMinLevel(3, L1684);
+    __SetMinLevel(2, L1684);
+    L1684 = L1684 + 10;
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
 }
 
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200829c.s");

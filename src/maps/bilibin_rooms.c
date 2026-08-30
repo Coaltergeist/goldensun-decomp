@@ -82,48 +82,54 @@ INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_20081a8.s");
 
 // fakematch
 extern unsigned char *iwram_3001ebc;
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __CutsceneWait(int);
+extern int __Func_8091c7c(int, int);
+extern void __ActorMessage(int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __CutsceneEnd(void);
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __CutsceneWait(int);
+extern int __Func_8091c7c(int, int);
+extern void __ActorMessage(int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __CutsceneEnd(void);
 
 void OvlFunc_908_20081e0(void)
 {
+    int w = 0x80 << 7;
     unsigned short *p;
-    int r;
-    unsigned short u;
-    unsigned long long t2;
-    unsigned long v2;
-    unsigned int w;
+
+    do { } while (w == 0);
 
     __CutsceneStart();
     __MessageID(0x13f0);
-    u = 0x18;
-    do { u = (unsigned short) u; } while (0);
-    __ActorMessage_Wait(u, 0, 0x14);
+    __ActorMessage_Wait(0x18, 0, 0x14);
     __MapActor_Face(0x18, 0, 0);
     __CutsceneWait(10);
     __ShowActorMessage_NoWait(0x18, 0);
-    r = __Func_8091c7c(0, 0);
-    if (r != 0) {
+    if (__Func_8091c7c(0, 0) != 0) {
         p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
         *p = *p + 1;
     }
-    t2 = 0x18;
-    do { t2 = (unsigned long) t2; } while (0);
-    v2 = t2;
-    __ActorMessage(v2, 0);
-    w = 0x80;
-    {
-        register unsigned int rq __asm__("r0") = 0x18;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 7;
-        __Func_8092adc(rq, w, 10);
-    }
+    __ActorMessage(0x18, 0);
+    __Func_8092adc(0x18, w, 10);
     __CutsceneEnd();
 }
 
 
 void OvlFunc_908_2008250(void)
 {
+    int w = 0x80 << 7;
     unsigned short *p;
-    unsigned int w;
+
+    do { } while (w == 0);
 
     __CutsceneStart();
     __MessageID(0x13f6);
@@ -134,18 +140,8 @@ void OvlFunc_908_2008250(void)
         p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
         *p = *p + 1;
     }
-    {
-        register unsigned int rq __asm__("r0") = 0x1b;
-        __asm__ volatile ("" : : "r" (rq));
-        __ActorMessage(rq, 0);
-    }
-    w = 0x80;
-    {
-        register unsigned int rq __asm__("r0") = 0x1b;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 7;
-        __Func_8092adc(rq, w, 10);
-    }
+    __ActorMessage(0x1b, 0);
+    __Func_8092adc(0x1b, w, 10);
     __CutsceneEnd();
 }
 

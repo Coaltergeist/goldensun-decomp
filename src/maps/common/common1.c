@@ -179,30 +179,27 @@ void OvlFunc_common1_1550(void) {
     *(short *)r5 = -1;
 }
 
+extern unsigned char *__GetFieldActor(unsigned int);
+extern void __Actor_Stop(void);
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_TravelTo(void *, int, int, int);
+
 void OvlFunc_common1_1578(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     unsigned char *actor;
     int v;
-    unsigned short five;
+    unsigned char zero;
 
-    actor = (unsigned char *)__GetFieldActor(arg0);
+    actor = __GetFieldActor(arg0);
     if (actor != (unsigned char *)0) {
+        zero = 0;
         v = 0x80 << 10;
         *(int *)(actor + 0x30) = v;
         v >>= 1;
         *(int *)(actor + 0x34) = v;
-        __asm__ volatile ("" ::: "memory");
-        {
-            register unsigned char *rp __asm__("r3") = actor;
-            register unsigned int rz __asm__("r2") = 0;
-            __asm__ volatile ("" : : "r" (rp), "r" (rz));
-            rp += 0x5b;
-            *rp = rz;
-        }
+        actor[0x5b] = zero;
         __Actor_Stop();
-        five = 5;
-        do { five = (unsigned short) five; } while (0);
-        __Actor_SetAnim((int)actor, five);
-        __Actor_TravelTo((int)actor, arg1 << 16, *(int *)(actor + 0xc), arg2 << 16);
+        __Actor_SetAnim(actor, 5);
+        __Actor_TravelTo(actor, arg1 << 16, *(int *)(actor + 0xc), arg2 << 16);
     }
 }
 

@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7ddb88 (overlay file 955): consolidated TU — colosseum_final_2 map overlay. */
 
 #include "nonmatching.h"
@@ -129,61 +128,30 @@ INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008714.s");
 extern void OvlFunc_955_2008714(void);
 extern unsigned int L4838[] __asm__(".Lm955_4838");
 extern unsigned int L4834[] __asm__(".Lm955_4834");
+extern void __StopTask(void (*)(void));
+extern void __MapActor_SetPos(int, int, int);
 extern void __MapActor_SetAnim(int, int);
 
 void OvlFunc_955_20088ec(void)
 {
-  unsigned int w, z;
+    int w1 = 0xea << 18;
+    int w2 = 0xf2 << 18;
+    int w3 = 0xfa << 18;
+    int w4 = 0x81 << 19;
+    int z = 0xd8 << 16;
 
-  L4838[0] = 0;
-  L4834[0] = 0;
-  __StopTask(OvlFunc_955_2008714);
+    do { } while (w1 == 0);
 
-  w = 0xea;
-  z = 0xd8;
-  {
-    register unsigned int rq __asm__("r0") = 0x16;
-    __asm__ volatile ("" : : "r" (rq));
-    w <<= 18;
-    __asm__ volatile ("" : "+r" (w));
-    z <<= 16;
-    __MapActor_SetPos(rq, w, z);
-  }
+    L4838[0] = 0;
+    L4834[0] = 0;
+    __StopTask(OvlFunc_955_2008714);
 
-  w = 0xf2;
-  z = 0xd8;
-  {
-    register unsigned int rq __asm__("r0") = 0x17;
-    __asm__ volatile ("" : : "r" (rq));
-    w <<= 18;
-    __asm__ volatile ("" : "+r" (w));
-    z <<= 16;
-    __MapActor_SetPos(rq, w, z);
-  }
+    __MapActor_SetPos(0x16, w1, z);
+    __MapActor_SetPos(0x17, w2, z);
+    __MapActor_SetPos(0x18, w3, z);
+    __MapActor_SetPos(0x19, w4, z);
 
-  w = 0xfa;
-  z = 0xd8;
-  {
-    register unsigned int rq __asm__("r0") = 0x18;
-    __asm__ volatile ("" : : "r" (rq));
-    w <<= 18;
-    __asm__ volatile ("" : "+r" (w));
-    z <<= 16;
-    __MapActor_SetPos(rq, w, z);
-  }
-
-  w = 0x81;
-  z = 0xd8;
-  {
-    register unsigned int rq __asm__("r0") = 0x19;
-    __asm__ volatile ("" : : "r" (rq));
-    w <<= 19;
-    __asm__ volatile ("" : "+r" (w));
-    z <<= 16;
-    __MapActor_SetPos(rq, w, z);
-  }
-
-  __MapActor_SetAnim(0x1f, 10);
+    __MapActor_SetAnim(0x1f, 10);
 }
 
 extern void __StartTask(void (*f)(void), int x);

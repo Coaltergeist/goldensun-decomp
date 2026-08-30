@@ -463,41 +463,30 @@ INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_20099a4.s");
 
 // fakematch
 
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+
 void OvlFunc_899_20099e4(void)
 {
+    int speed1;
+    int speed2;
+    int target_x;
+    int target_y;
     unsigned int r3;
-    unsigned int w1, z1;
-    unsigned int w2, z2;
-    unsigned short t3;
 
-    w1 = 0x80;
-    z1 = 0x80;
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        __asm__ volatile ("" : : "r" (rq));
-        w1 <<= 8;
-        __asm__ volatile ("" : "+r" (w1));
-        z1 <<= 7;
-        __MapActor_SetSpeed(rq, w1, z1);
-    }
+    speed1 = 0x80 << 8;
+    speed2 = 0x80 << 7;
+    target_x = 0xba << 2;
+    target_y = 0xcc << 1;
+    do { } while (speed1 == 0);
 
-    w2 = 0xba;
-    z2 = 0xcc;
-    {
-        register unsigned int rq __asm__("r0") = 0;
-        __asm__ volatile ("" : : "r" (rq));
-        w2 <<= 2;
-        __asm__ volatile ("" : "+r" (w2));
-        z2 <<= 1;
-        __MapActor_TravelToAnimWait(rq, w2, z2);
-    }
+    __MapActor_SetSpeed(0, speed1, speed2);
+    __MapActor_TravelToAnimWait(0, target_x, target_y);
 
     if (__GetFlag(0x854) == 0) {
         __CutsceneStart();
         __MessageID(0x12c3);
-        t3 = 8;
-        do { t3 = (unsigned short) t3; } while (0);
-        __ActorMessage(t3, 0);
+        __ActorMessage(8, 0);
         __CutsceneEnd();
     }
     r3 = *(unsigned int *)iwram_3001ebc;

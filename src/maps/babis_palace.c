@@ -23,38 +23,33 @@ INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20080c8.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008264.s");
 
+extern unsigned char Msg2006[] __asm__(".Lm952_2006");
+__asm__(".equ .Lm952_2006, 0x2006");
+
+extern void __MessageID(int);
+extern int __Func_8091c7c(int, int);
+extern void __CutsceneWait(int);
+extern void __MapActor_Emote(int, int, int);
+extern void __ActorMessage(int, int);
+
 void OvlFunc_952_2008348(unsigned int actor)
 {
     int r;
-    unsigned int msg = 0x2006;
-    register unsigned int a __asm__("r5");
-
-    __asm__ __volatile__ ("" : "+r" (msg));
-    a = actor;
+    unsigned int msg = (unsigned int)Msg2006;
 
     __MessageID(msg);
-    __ShowActorMessage_NoWait(a, 0);
+    __ShowActorMessage_NoWait(actor, 0);
     r = __Func_8091c7c(0, 0);
     if (r == 0) {
         __CutsceneWait(10);
-        {
-            unsigned int w = 0x81;
-            register unsigned int rq __asm__("r0") = a;
-            __asm__ volatile ("" : : "r" (rq));
-            w <<= 1;
-            __MapActor_Emote(rq, w, 0x28);
-        }
+        __MapActor_Emote(actor, 0x102, 0x28);
         __MessageID(msg + 1);
     } else {
         __CutsceneWait(10);
-        {
-            register unsigned int rq __asm__("r0") = a;
-            __asm__ volatile ("" : : "r" (rq));
-            __MapActor_Emote(rq, 0x105, 0x28);
-        }
+        __MapActor_Emote(actor, 0x105, 0x28);
         __MessageID(msg + 2);
     }
-    __ActorMessage(a, 0);
+    __ActorMessage(actor, 0);
 }
 
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20083b0.s");

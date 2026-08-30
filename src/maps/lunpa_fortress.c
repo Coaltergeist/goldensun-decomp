@@ -194,6 +194,8 @@ void (*arg5)(void);
 void OvlFunc_959_2008608(struct Pk arg)
 {
     int va[3];
+    int sp1 = 0x4ccc;
+    int sp2 = 0x1999;
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -214,6 +216,7 @@ void OvlFunc_959_2008608(struct Pk arg)
     int u1;
     int u2;
 
+    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -251,15 +254,7 @@ void OvlFunc_959_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    {
-        register unsigned int r0z __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x4ccc;
-        register unsigned int r2v __asm__("r2") = 0x1999;
-        __asm__ volatile ("" : : "r"(r0z));
-        __asm__ volatile ("" : : "r"(r1v));
-        __asm__ volatile ("" : : "r"(r2v));
-        __MapActor_SetSpeed(r0z, r1v, r2v);
-    }
+    __MapActor_SetSpeed(0, sp1, sp2);
     __MapActor_TravelBy(0, (short)(L5ed8__a2[dir] >> 16) / 2, (short)(L5ed8__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -361,14 +356,22 @@ INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008d54.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008dcc.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008e30.s");
 
-// fakematch
 extern unsigned char iwram_3001ebc[];
 extern void OvlFunc_959_2008e30(int a);
+extern int __CheckPartyItem(int);
+extern void __PlaySound(int);
+extern void __Func_8012330(int, int, int);
+extern void __SetFlag(int);
 
 void OvlFunc_959_2008e80(void) {
     unsigned int r5;
     short *p;
     short v;
+    int a = 0x30000;
+    int b = 0x10000;
+    int c = 0xe666;
+
+    while (a == 0) {}
 
     r5 = *(unsigned int *)iwram_3001ebc;
     if (__CheckPartyItem(0xea) != -1) {
@@ -376,29 +379,8 @@ void OvlFunc_959_2008e80(void) {
         v = *p;
         OvlFunc_959_2008e30(v - 0x28);
         __PlaySound(0x9d);
-        {
-            register unsigned int p0 __asm__("r0") = 0xc0;
-            register unsigned int p1 __asm__("r1") = 0xc0;
-            register unsigned int p2 __asm__("r2") = 0x80;
-            __asm__ volatile ("" : "+r" (p0), "+r" (p1), "+r" (p2));
-            p0 <<= 10;
-            __asm__ volatile ("" : "+r" (p0));
-            p1 <<= 10;
-            p2 <<= 9;
-            __Func_8012330(p0, p1, p2);
-        }
-        {
-            register int q0 __asm__("r0");
-            register int q1 __asm__("r1");
-            q0 = -1;
-            q1 = -1;
-            __asm__ volatile ("" : "+r" (q0), "+r" (q1));
-            {
-                register unsigned int q2 __asm__("r2") = 0xe666;
-                __asm__ volatile ("" : "+r" (q2));
-                __Func_8012330(q0, q1, q2);
-            }
-        }
+        __Func_8012330(a, a, b);
+        __Func_8012330(-1, -1, c);
         __SetFlag(v + 0x330);
     }
 }

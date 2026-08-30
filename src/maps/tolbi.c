@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7d4af4 (overlay file 949): consolidated TU — tolbi map overlay. */
 
 #include "nonmatching.h"
@@ -114,27 +113,14 @@ extern void __Func_8092adc(int, int, int);
 extern int _MSG_1fa0;
 
 void OvlFunc_949_2008528(void) {
-    unsigned int w;
-    unsigned int z;
+    int w1 = 0xc0 << 8;
+    int w2 = 0x80 << 8;
+    do { } while (w1 == 0);
     __CutsceneStart();
-    __MessageID((int) (&_MSG_1fa0));
-    w = 0xc0;
-    z = 0;
-    {
-        register unsigned int rq __asm__("r0") = 0x19;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 8;
-        __Func_8092adc(rq, w, z);
-    }
+    __MessageID((int)(&_MSG_1fa0));
+    __Func_8092adc(0x19, w1, 0);
     __ActorMessage(0x19, 0);
-    w = 0x80;
-    z = 0;
-    {
-        register unsigned int rq __asm__("r0") = 0x19;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 8;
-        __Func_8092adc(rq, w, z);
-    }
+    __Func_8092adc(0x19, w2, 0);
     __ActorMessage(0x19, 0);
     __CutsceneEnd();
 }
@@ -142,17 +128,10 @@ void OvlFunc_949_2008528(void) {
 extern void __Func_809259c(int, int);
 
 void OvlFunc_949_2008568(void) {
-    unsigned int w;
-    unsigned int z;
+    int w = 0x80 << 7;
+    do { } while (w == 0);
     __CutsceneStart();
-    w = 0x80;
-    z = 0;
-    {
-        register unsigned int rq __asm__("r0") = 0x1a;
-        __asm__ volatile ("" : : "r" (rq));
-        w <<= 7;
-        __Func_8092adc(rq, w, z);
-    }
+    __Func_8092adc(0x1a, w, 0);
     __Func_809259c(0x1a, 2);
     __MessageID(0x1fa2);
     __ActorMessage(0x1a, 0);
@@ -166,7 +145,7 @@ void OvlFunc_949_200859c(void)
   __CutsceneStart();
   __MessageID(0x1fa3);
   b = 0;
- do { a = 0x1b; __ActorMessage(a, b); __CutsceneEnd(); } while (0);
+  do { a = 0x1b; __ActorMessage(a, b); __CutsceneEnd(); } while (0);
 }
 
 void OvlFunc_949_20085bc(void) {
