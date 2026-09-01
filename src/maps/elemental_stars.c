@@ -134,6 +134,58 @@ void OvlFunc_896_200c248(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c260.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c328.s");
-INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c3bc.s");
+#include "actor.h"
+
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+void OvlFunc_896_200c3bc(void)
+{
+    struct Actor *actor;
+    unsigned int i;
+    int x;
+    int y;
+    struct EffectData data;
+
+    actor = __MapActor_GetActor(0xe);
+    __PlaySound(0xbe);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0xe), 0);
+
+    data.unk0 = 1;
+    data.unk4 = 5;
+    data.unk18 = 0x8e << 1;
+    data.unk8 = 0x6666;
+    data.unkc = 0xc0 << 10;
+
+    i = 0;
+    do {
+        __CutsceneWait(1);
+        if ((i & 1) == 0) {
+            x = actor->pos.x + (((unsigned int)(__Random() * 24) >> 16) << 16) + 0xfff40000;
+            y = actor->pos.y + (((unsigned int)(__Random() << 5) >> 16) << 16) + (0x80 << 14);
+            OvlFunc_common0_10c(x, y, actor->pos.z, 0, 0xfffc0000, 0, 0xd8 << 13, &data);
+        }
+        if (i == 0x14) {
+            __Func_8092950(0xe, 0x80 << 1);
+        }
+        i++;
+    } while (i <= 0x1f);
+
+    __Func_8092950(0xe, 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0xe), 1);
+}
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c49c.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c78c.s");

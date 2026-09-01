@@ -400,7 +400,38 @@ void OvlFunc_948_2008f34(void) {
     __Func_8093c00();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008f40.s");
+void __PlaySound(int);
+void __Func_8012330(int, int, int);
+void __Func_80105d4(int, int, int, int, int, int);
+void __WaitFrames(int);
+static inline void Func_8012330_pos(int x, int y, int z) {
+    __Func_8012330(x << 10, y << 10, z << 9);
+}
+
+static inline void Func_8012330_neg(int x, int y, int z) {
+    __Func_8012330(-x, -y, z);
+}
+
+void OvlFunc_948_2008f40(unsigned int param_1)
+{
+    int base;
+    int var1;
+    int var2;
+
+    base = (param_1 & 0xff) * 4;
+    var2 = base + 0x4d;
+    var1 = base + 0xd;
+    if ((param_1 & 0x100) != 0) {
+        __PlaySound(0x9d);
+        Func_8012330_pos(0x80, 0x80, 0x80);
+        Func_8012330_neg(1, 1, 0xe666);
+        __Func_80105d4(0x4f, 0x1d, 1, 3, var2, 0x28);
+        __WaitFrames(0x28);
+    }
+    __Func_80105d4(0x50, 0x1d, 1, 3, var2, 0x28);
+    __Func_8010704(var1, 0x28, 1, 1, var1, 0x29);
+    __Func_8010704(var1, 0x28, 1, 1, var1, 0x2a);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008fdc.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009070.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20090b8.s");
@@ -566,10 +597,72 @@ void OvlFunc_948_20092d4(void)
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009308.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200938c.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200941c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200949c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200952c.s");
+void __CutsceneStart(void);
+void __MapActor_TravelTo(int, int, int);
+void __CutsceneWait(int);
+void __CutsceneEnd(void);
+void __ClearFlag(int);
 
-extern void OvlFunc_948_200952c(int);
+void OvlFunc_948_200949c(void)
+{
+    int sp1 = 0x1b333;
+    int sp2 = 0xd999;
+    int dest_z = 0x108;
+    int flag = 0x220;
+    void *actor;
+
+    do { } while (sp1 == 0);
+
+    __CutsceneStart();
+    __MapActor_SetSpeed(0, sp1, sp2);
+    __MapActor_SetSpeed(9, sp1, sp2);
+    __PlaySound(0xbc);
+    actor = __MapActor_GetActor(0);
+    if (actor != 0) {
+        __MapActor_TravelTo(9, *(short *)((char *)actor + 10), *(short *)((char *)actor + 18));
+    }
+    __MapActor_WaitMovement(9);
+    __MapActor_TravelBy(0, 0, 0x18);
+    __PlaySound(0xbc);
+    __CutsceneWait(4);
+    __MapActor_TravelBy(9, 0, 0x10);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelTo(9, 0xa8, dest_z);
+    __MapActor_WaitMovement(9);
+    __CutsceneEnd();
+    __ClearFlag(flag);
+}
+extern int Lm948_2f74[] __asm__(".Lm948_2f74");
+
+void OvlFunc_948_200952c(int arg0)
+{
+    void *actor;
+    int x;
+    int z;
+    int actorId;
+    unsigned char *gs;
+
+    actor = (void *)__MapActor_GetActor(0);
+    x = *(int *)((char *)actor + 8) / 0x100000;
+    z = *(int *)((char *)actor + 0x10) / 0x100000;
+
+    gs = (unsigned char *)&gState;
+    gs += 0x24a;
+
+    actorId = arg0 + 10;
+    if (*(short *)gs != actorId && x != Lm948_2f74[arg0]) {
+        __MapActor_SetSpeed(actorId, 0x48000, 0x24000);
+        __PlaySound(0xbc);
+        __MapActor_TravelTo(actorId, (x << 4) + 8, 0x168);
+        Lm948_2f74[arg0] = x;
+        if (z <= 0x16) {
+            __MapActor_TravelBy(0, 0, 8);
+        }
+        __MapActor_WaitMovement(0);
+    }
+}
+
+extern void OvlFunc_948_200952c(int arg0);
 
 void OvlFunc_948_20095cc(void) {
     OvlFunc_948_200952c(0);
@@ -585,8 +678,96 @@ void OvlFunc_948_20095e4(void) {
     OvlFunc_948_200952c(2);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20095f0.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009694.s");
+void OvlFunc_948_20095f0(void)
+{
+    unsigned int r3;
+    unsigned int r2;
+    short val;
+    void *actor;
+    int spd1 = 0x1b333, spd2 = 0xd999;
+
+    do {} while (spd1 == 0);
+
+    r3 = (unsigned int)&gState;
+    r2 = 0x24a;
+    r3 += r2;
+    r2 = 0;
+    val = *(short *)((char *)r3 + r2);
+
+    if (val != 10) {
+        __CutsceneStart();
+        __MapActor_SetSpeed(0, spd1, spd2);
+        __MapActor_SetSpeed(10, spd1, spd2);
+        __PlaySound(0xbc);
+        actor = __MapActor_GetActor(0);
+        if (actor != 0) {
+            __MapActor_TravelTo(10, *(short *)((char *)actor + 10), *(short *)((char *)actor + 18));
+        }
+        __MapActor_WaitMovement(10);
+        __MapActor_TravelBy(0, 0, 0x18);
+        __CutsceneWait(4);
+        __PlaySound(0xbc);
+        __MapActor_TravelBy(10, 0, 0x10);
+        __MapActor_WaitMovement(0);
+        __MapActor_TravelTo(10, 0x84 << 1, 0xb4 << 1);
+        __MapActor_WaitMovement(10);
+        __CutsceneWait(10);
+        __CutsceneEnd();
+    }
+}
+void OvlFunc_948_2009694(void)
+{
+    unsigned char *gs;
+    char *actor;
+    int x0;
+    int x11;
+    int spd1 = 0x1b333;
+    int spd2 = 0xd999;
+    int neg8 = -8;
+
+    while (spd1 == 0) {}
+
+    gs = (unsigned char *)&gState;
+    gs += 0x24a;
+    if (*(short *)gs == 11) {
+        return;
+    }
+
+    __CutsceneStart();
+    __MapActor_SetSpeed(0, spd1, spd2);
+    __MapActor_SetSpeed(11, spd1, spd2);
+    __PlaySound(0xbc);
+
+    x0 = *(int *)((char *)__MapActor_GetActor(0) + 8) / 0x100000;
+    x11 = *(int *)((char *)__MapActor_GetActor(11) + 8) / 0x100000;
+    if (x0 > x11) {
+        __MapActor_TravelBy(11, 8, 0);
+    }
+
+    x0 = *(int *)((char *)__MapActor_GetActor(0) + 8) / 0x100000;
+    x11 = *(int *)((char *)__MapActor_GetActor(11) + 8) / 0x100000;
+    if (x0 < x11) {
+        __MapActor_TravelBy(11, neg8, 0);
+    }
+
+    __MapActor_WaitMovement(11);
+
+    actor = (char *)__MapActor_GetActor(0);
+    if (actor != 0) {
+        __MapActor_TravelTo(11, *(short *)(actor + 10), *(short *)(actor + 18));
+    }
+
+    __MapActor_WaitMovement(11);
+    __MapActor_TravelBy(0, 0, 0x18);
+    __CutsceneWait(4);
+    __PlaySound(0xbc);
+    __MapActor_TravelBy(11, 0, 0x10);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelTo(11, 0x158, 0x168);
+    __MapActor_WaitMovement(11);
+    __CutsceneWait(10);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20097ac.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009838.s");
 

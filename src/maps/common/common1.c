@@ -41,8 +41,165 @@ void OvlFunc_common1_0(void)
 
 INCLUDE_ASM("asm/maps/common/OvlFunc_common1_78.s");
 INCLUDE_ASM("asm/maps/common/OvlFunc_common1_148.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_190.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_2c4.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern unsigned char iwram_3001ebc[];
+extern GlobalState gState;
+
+void OvlFunc_common1_190(void)
+{
+    unsigned char *iw;
+    int min_dist;
+    int best_actor;
+    int off;
+    int r7;
+    void *target_actor;
+    int i;
+    void *actor;
+    int diff_x;
+    int diff_y;
+    int dx;
+    int dist;
+    int val2;
+
+    iw = *(unsigned char **)iwram_3001ebc;
+    min_dist = 0x80;
+    best_actor = 8;
+    min_dist <<= 13;
+
+    off = 0xfa;
+    r7 = *(int *)((char *)&gState + (off << 1));
+    target_actor = (void *)__MapActor_GetActor(r7);
+    __CutsceneStart();
+
+    for (i = 8; i <= 66; i++) {
+        actor = (void *)__MapActor_GetActor(i);
+        if (!actor)
+            continue;
+
+        if (*(unsigned char *)((char *)actor + 0x54) != 1)
+            continue;
+
+        if (*(short *)(*(int *)(*(int *)((char *)actor + 0x50) + 0x28)) != 165)
+            continue;
+
+        diff_x = (*(int *)((char *)target_actor + 8) - *(int *)((char *)actor + 8)) / 65536;
+        diff_y = (*(int *)((char *)target_actor + 0x10) - *(int *)((char *)actor + 0x10)) / 65536;
+
+        if (diff_y > 0)
+            continue;
+
+        dx = diff_x;
+        if (dx < 0)
+            dx = -dx;
+
+        if (diff_y < 0)
+            diff_y = -diff_y;
+
+        dist = dx + diff_y;
+        if (dist < min_dist) {
+            best_actor = i;
+            min_dist = dist;
+        }
+    }
+
+    __MessageID(0x2085);
+    __ActorMessage(best_actor, 0);
+
+    *(int *)(iw + 0x1c0) = 512;
+    *(int *)(iw + 0x1c8) = 15;
+
+    __CutsceneWait(20);
+    __MapTransitionOut();
+    __WaitMapTransition();
+
+    __SetFlagByte((r7 << 4) + 880, *(int *)((char *)target_actor + 8) >> 20);
+    val2 = *(int *)((char *)target_actor + 0x10) >> 20;
+    __SetFlagByte((r7 << 4) + 888, val2);
+    r7++;
+
+    if (r7 > 3) {
+        __Func_8091e9c(10);
+        __SetFlag(282);
+    } else {
+        OvlFunc_common1_78(r7);
+        __MapTransitionIn();
+        __WaitMapTransition();
+        *(int *)(iw + 0x1c0) = 0;
+    }
+
+    __CutsceneEnd();
+}
+extern void OvlFunc_common1_78(int);
+extern unsigned char Msg2086[] __asm__("0x2086");
+
+void OvlFunc_common1_2c4(unsigned int arg0)
+{
+    unsigned char *ptr;
+    int *actor;
+    int r6;
+    unsigned int msg;
+    int res;
+    int off;
+    int *p;
+    int val1;
+    int val;
+    unsigned char *b;
+    unsigned short zero;
+    int v;
+
+    ptr = *(unsigned char **)iwram_3001ebc;
+    __MapActor_GetActor(arg0);
+    __MapActor_GetActor(arg0);
+
+    off = 0xfa;
+    r6 = *(int *)((char *)&gState + (off << 1));
+    actor = (int *)__MapActor_GetActor(r6);
+
+    __CutsceneStart();
+    msg = (unsigned int)Msg2086;
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(arg0, 0);
+
+    b = *(unsigned char **)iwram_3001ebc;
+    val1 = 0x2089;
+    *(unsigned short *)(b + 0xcc2) = val1;
+    b += 0xcc4;
+    val = 4;
+    *(unsigned short *)b = val;
+
+    res = __Func_8091c7c(r6, 0);
+    if (res == 0) {
+        __MessageID(msg + 1);
+        zero = 0;
+        do { zero = (unsigned short)zero; } while (0);
+        __ActorMessage(arg0, zero);
+        off = 0xe0;
+        p = (int *)(ptr + (off << 1));
+        *p = 0x80 << 2;
+        *(int *)(ptr + (0xe4 << 1)) = 15;
+        __MapTransitionOut();
+        __WaitMapTransition();
+        v = *(int *)((char *)actor + 8);
+        __SetFlagByte((r6 << 4) + (0xdc << 2), v >> 20);
+        v = *(int *)((char *)actor + 0x10);
+        v >>= 20;
+        __SetFlagByte((r6 << 4) + (0xde << 2), v);
+        r6++;
+        if (r6 > 3) {
+            __Func_8091e9c(10);
+            __SetFlag(0x8d << 1);
+        } else {
+            OvlFunc_common1_78(r6);
+            __MapTransitionIn();
+            __WaitMapTransition();
+            *p = res;
+        }
+    } else {
+        __MessageID(msg + 2);
+        __ActorMessage(arg0, 0);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/common/OvlFunc_common1_3e4.s");
 
 void OvlFunc_common1_488(void)

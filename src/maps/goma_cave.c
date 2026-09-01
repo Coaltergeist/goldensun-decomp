@@ -63,7 +63,47 @@ int GomaCave_GetEvents(void)
     if (ev == (int)_EVENT_1d) return (int)Lm906_9f0;
     return (int)Lm906_990;
 }
-INCLUDE_ASM("asm/maps/goma_cave/GomaCave_MapInit.s");
+extern unsigned char iwram_3001ebc[];
+extern unsigned char Lconst_1c[] __asm__(".Lconst_1c");
+__asm__(".equ .Lconst_1c, 0x1c");
+
+int GomaCave_MapInit(void) {
+    unsigned int r2;
+    unsigned int r3;
+    unsigned char *r1;
+    unsigned char *p;
+    unsigned char v;
+    int arg5, arg6;
+
+    r2 = 0xe0;
+    r1 = *(unsigned char **)iwram_3001ebc;
+    r3 = 0x81 << 2;
+    r2 <<= 1;
+    *(int *)(r1 + r2) = r3;
+    if (*(short *)((char *)&gState + r2) == (int)Lconst_1c) {
+        r2 = 0xe1;
+        r2 <<= 1;
+        if (*(short *)((char *)&gState + r2) == 5) {
+            __ClearFlag(0x12f);
+        } else {
+            p = (unsigned char *)__MapActor_GetActor(8);
+            p += 0x59;
+            v = 0x10;
+            v |= *p;
+            *p = v;
+            if (__GetFlag(0x864) != 0) {
+                __MapActor_SetPos(8, 0xad << 17, 0x92 << 17);
+                __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+                *(unsigned char *)(__MapActor_GetActor(8) + 0x23) |= 2;
+                __MapActor_SetAnim(8, 2);
+                arg5 = 0x13;
+                arg6 = 0x11;
+                __Func_8010704(0x13, 0x4a, 9, 3, arg5, arg6);
+            }
+        }
+    }
+    return 0;
+}
 
 void OvlFunc_906_20084c4(unsigned int arg0) {
     unsigned int r2;

@@ -147,12 +147,39 @@ void OvlFunc_897_200a970(void)
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a9a4.s");
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aba0.s");
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ac1c.s");
+extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
+extern void __Func_8091254(unsigned int arg0);
+unsigned int *__Func_8093554(void);
+void __Func_80933f8(int, int, int, int);
+void __WaitFrames(int);
+void __Func_800fe9c(void);
+
+void OvlFunc_897_200ac1c(int arg0, int arg1) {
+    int *r5;
+
+    r5 = (int *)__Func_8093554();
+    arg1 <<= 16;
+    arg0 <<= 16;
+    __Func_80933f8(arg0, -1, arg1, 1);
+    __Func_8091200(0, 0);
+    __Func_8091254(0x14);
+    __WaitFrames(0x28);
+    *(int *)((char *)r5 + 8) = arg0;
+    *(int *)((char *)r5 + 0x10) = arg1;
+    *(int *)((char *)r5 + 0x38) = 0x80 << 24;
+    *(int *)((char *)r5 + 0x40) = 0x80 << 24;
+    *(int *)((char *)r5 + 0x24) = 0;
+    *(int *)((char *)r5 + 0x2c) = 0;
+    __WaitFrames(5);
+    __Func_800fe9c();
+    __WaitFrames(5);
+    __Func_8091200(0x80 << 9, 0);
+    __Func_8091254(0x14);
+    __WaitFrames(0x1e);
+}
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ac9c.s");
 
 extern void __PlaySound(unsigned int arg0);
-extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
-extern void __Func_8091254(unsigned int arg0);
 extern void __CutsceneWait(unsigned int arg0);
 extern unsigned int iwram_3001e40__a2 __asm__("iwram_3001e40");
 extern void __Actor_SetColorswap(unsigned int a, unsigned int b);

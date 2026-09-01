@@ -123,7 +123,33 @@ void OvlFunc_926_2008bd4(void) {
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008bf4.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008cd4.s");
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, int);
+
+void OvlFunc_926_2008cd4(void)
+{
+    unsigned char *actor;
+    unsigned int i;
+    int theta;
+    unsigned char *sprite;
+
+    actor = __MapActor_GetActor(0x13);
+    for (i = 8; i <= 12; i++)
+    {
+        sprite = *(unsigned char **)(actor + 0x50);
+        theta = i << 12;
+        *(unsigned short *)(sprite + 0x1e) = theta;
+        __WaitFrames((12 - i) * 2);
+        *(int *)(actor + 8) -= __cos(theta) * 6;
+        *(int *)(actor + 0x10) -= __sin(theta) * 6;
+    }
+    *(int *)(actor + 0xc) = 0x120000;
+    *(int *)(actor + 0x3c) = 0x120000;
+    *(int *)(actor + 0x18) = 0xffff3334;
+    __PlaySound(0xe3);
+    OvlFunc_common0_10c(*(int *)(actor + 8) - 0xc0000, *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, 0x10000, 0x3333, 0, 0, 0);
+    OvlFunc_common0_10c(*(int *)(actor + 8), *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, 0xcccc, 0x4ccc, 0, 0, 0);
+    OvlFunc_common0_10c(*(int *)(actor + 8) + 0xa0000, *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, 0x3333, 0x6666, 0, 0, 0);
+}
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008db4.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008e94.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008f80.s");
@@ -162,7 +188,74 @@ void OvlFunc_926_20092e0(void)
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009334.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_20093b8.s");
+extern void OvlFunc_926_2008e94(void);
+extern void OvlFunc_926_2008db4(void);
+extern void __Func_80933d4(int, int);
+extern void __Func_8093500(int, int);
+extern void __Func_8093530(void);
+extern int __GetFlag(int);
+extern void OvlFunc_926_2009494(void);
+extern void OvlFunc_926_2009dbc(void);
+
+void OvlFunc_926_20093b8(void)
+{
+    unsigned char *actor;
+    unsigned short facing;
+
+    actor = __MapActor_GetActor(0);
+    __CutsceneStart();
+    facing = *(unsigned short *)(actor + 6);
+    if ((unsigned short)(facing - 0x2000) <= 0x3fff)
+    {
+        OvlFunc_926_2008e94();
+    }
+    else if ((unsigned short)(facing - 0x6000) <= 0x3fff)
+    {
+        OvlFunc_926_2008bf4();
+    }
+    else if ((unsigned short)(facing + 0x6000) <= 0x3fff)
+    {
+        OvlFunc_926_2008db4();
+    }
+    else
+    {
+        OvlFunc_926_2008cd4();
+    }
+    __Func_80933d4(0x10000, 0x2000);
+    __Func_8093500(0x14, 1);
+    __Func_8093530();
+    if (*(short *)(actor + 0x12) <= 0xd1)
+    {
+        if (__GetFlag(0x89a) == 0 || __GetFlag(0x89b) != 0)
+        {
+            OvlFunc_926_200902c(0);
+        }
+        else
+        {
+            OvlFunc_926_2009160();
+        }
+        __CutsceneEnd();
+    }
+    else
+    {
+        if (__GetFlag(0x89b) != 0)
+        {
+            OvlFunc_926_200902c(2);
+        }
+        else
+        {
+            if (__GetFlag(0x89a) == 0)
+            {
+                OvlFunc_926_2009494();
+            }
+            else
+            {
+                OvlFunc_926_2009dbc();
+            }
+        }
+        __CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009494.s");
 
 
@@ -202,7 +295,36 @@ void OvlFunc_926_200a464(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a484.s");
+extern void __PlaySound(int);
+extern void __Func_8091e9c(int);
+extern void __Func_801776c(int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern unsigned char Lm926_477a[] __asm__(".Lm926_477a");
+
+void OvlFunc_926_200a484(void)
+{
+    int s1 = 0x8000;
+    int s2 = 0x4000;
+    int pos = 0x132;
+
+    do { } while (s1 == 0);
+
+    __CutsceneStart();
+    if (!__GetFlag(0x89a) && !__GetFlag(0x895)) {
+        __Func_801776c(0x18ad, 1);
+        __CutsceneEnd();
+    } else {
+        __PlaySound(0x9e);
+        __Func_8010560(Lm926_477a, 0x4e, 0xd);
+        __MapActor_SetSpeed(0, s1, s2);
+        __MapActor_TravelToAnimWait(0, pos, 0xf8);
+        __MapActor_TravelToAnim(0, 0x130, 0xd8);
+        __CutsceneWait(0x14);
+        __Func_8091e9c(4);
+        __CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a508.s");
 
 void OvlFunc_926_200a54c(void)
@@ -233,7 +355,7 @@ int FuchinTemple_GetEvents(void)
 }
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a5b8.s");
 
-extern void OvlFunc_926_200a68c(int a, int b);
+extern void OvlFunc_926_200a68c(int param_1, int param_2);
 
 void OvlFunc_926_200a65c(void) {
     OvlFunc_926_200a68c(0, -0x20);
@@ -249,11 +371,26 @@ void OvlFunc_926_200a67c(void) {
     OvlFunc_926_200a68c(-0x20, 0);
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a68c.s");
+void __MapActor_Jump(int, int, int);
+void __MapActor_WaitMovement(int);
+void OvlFunc_926_200a68c(int param_1, int param_2)
+{
+    int speed_x = 0x28000;
+    int speed_y = 0x14000;
+
+    do { } while (speed_x == 0);
+
+    __CutsceneStart();
+    __MapActor_SetSpeed(0, speed_x, speed_y);
+    __MapActor_TravelBy(0, param_1, param_2);
+    __MapActor_Jump(0, 4, 0);
+    __MapActor_SetAnim(0, 7);
+    __MapActor_WaitMovement(0);
+    __MapActor_SetAnim(0, 6);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a6d8.s");
 
-extern void __PlaySound(int);
-extern void __Func_8091e9c(int);
 
 void OvlFunc_926_200a764(void) {
     __PlaySound(0x7b);

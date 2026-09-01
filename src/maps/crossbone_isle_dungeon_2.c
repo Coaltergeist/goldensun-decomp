@@ -514,9 +514,111 @@ void OvlFunc_947_200a15c(void)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a1ac.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a230.s");
+extern volatile unsigned int iwram_3001e40;
+extern void OvlFunc_947_20093b0(void);
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+struct EffectData {
+    int pad0;
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    int pad18;
+    int pad1c;
+    short f;
+    short pad22;
+    void (*g)(void);
+};
+
+void OvlFunc_947_200a230(void)
+{
+    struct EffectData data;
+    int r;
+    int r2;
+    int mask;
+    int rnd_val;
+    unsigned int rnd;
+
+    if ((iwram_3001e40 & 2) == 0) {
+        if ((iwram_3001e40 & 7) == 0) {
+            __PlaySound(0x88);
+        }
+        data.a = 10;
+        data.b = 0x8000;
+        data.c = 0x8000;
+        data.d = 0x19999;
+        data.e = 0x19999;
+        rnd_val = __Random();
+        mask = 0xffff000;
+        data.f = mask & rnd_val;
+        data.g = OvlFunc_947_20093b0;
+        rnd = __Random();
+        r = -((int)(((rnd * 5) >> 16) << 16) + 0x60000) / 2;
+        rnd = __Random();
+        r2 = -((int)(((rnd * 5) >> 16) << 16) + 0x50000);
+        OvlFunc_common0_10c(0x1440000, 0x300000, 0xe40000, r,
+                            r2,
+                            0, 0x14d0000, &data);
+    }
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a2d8.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a384.s");
+extern void OvlFunc_947_200a2d8(void);
+
+void __Func_80933d4(int, int);
+void __CopyMapTiles(int, int, int, int, int, int);
+void __Func_8092950(int, int);
+
+void OvlFunc_947_200a384(void)
+{
+    int flag;
+    int f201 = 0x201;
+    int r3;
+    int r2;
+    unsigned char *actor;
+
+    do { } while (f201 == 0);
+
+    flag = __GetFlag(0x203);
+    if (flag == 0) {
+        __SetFlag(0x202);
+        __CutsceneStart();
+        __Func_80933d4(0x9999, 0x1333);
+        __Func_80933f8(0x1380000, -1, 0xb80000, 1);
+        __Func_8093530();
+        __CutsceneWait(0x14);
+        r3 = 1;
+        r2 = 2;
+        __CopyMapTiles(0x49, 10, 0x3c, 10, r3, r2);
+        __CutsceneWait(0x14);
+        __StartTask(OvlFunc_947_200a230, 0xc80);
+        __CutsceneWait(0x28);
+        if (__GetFlag(f201) != 0) {
+            actor = (unsigned char *)__MapActor_GetActor(0xc);
+            *(void **)(actor + 0x6c) = OvlFunc_947_200a2d8;
+            __MapActor_SetAnim(0xc, 6);
+            __Func_8092504(0xc);
+            actor = (unsigned char *)__MapActor_GetActor(0xc);
+            r3 = 0x12;
+            r2 = 0xd;
+            *(int *)(actor + 0x6c) = flag;
+            __Func_8010704(0x11, 0xd, 1, 1, r3, r2);
+            __ClearFlag(f201);
+            __Func_8092950(0xc, 0);
+            __MapActor_SetBehavior(0xc, 1);
+        } else {
+            __CutsceneWait(0x3c);
+        }
+        __StopTask(OvlFunc_947_200a230);
+        __CutsceneWait(0x14);
+        r3 = 1;
+        r2 = 2;
+        __CopyMapTiles(0x48, 10, 0x3c, 10, r3, r2);
+        __CutsceneWait(0x14);
+        __CutsceneEnd();
+    }
+}
 
 
 void OvlFunc_947_200a498(void)
