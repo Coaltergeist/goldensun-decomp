@@ -117,13 +117,102 @@ void OvlFunc_942_20086a8(void) {
 }
 
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20086c8.s");
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20087dc.s");
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_930__020096b8[30];
+extern unsigned char Lm942_16ce[] __asm__(".Lm942_16ce");
+
+extern unsigned char Lconst_6b[] __asm__(".Lconst_6b");
+__asm__(".equ .Lconst_6b, 0x6b");
+
+extern unsigned char Lconst_70[] __asm__(".Lconst_70");
+__asm__(".equ .Lconst_70, 0x70");
+
+extern void __CutsceneStart(void);
+extern void __PlaySound(int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __Func_8092b08(int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __Func_8010560(void *, int, int);
+extern void __CutsceneWait(int);
+extern void __Func_8091e9c(int);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_942_20087dc(void)
+{
+    int s1 = 0x80 << 8;
+    int s2 = 0x80 << 7;
+    int off = 0xe0 << 1;
+    int a1 = 0x98 << 1;
+    int a2 = 0xae << 3;
+
+    do { } while (s1 == 0);
+
+    __CutsceneStart();
+    __PlaySound(0x9e);
+    __MapActor_SetSpeed(0, s1, s2);
+    __Func_8092b08(0, 3);
+    if (*(short *)((char *)&gState + off) == (int)Lconst_6b) {
+        __MapActor_TravelToAnim(0, a1, a2);
+        __Func_8010560(gScript_930__020096b8, 0x4e, 0x56);
+    } else if (*(short *)((char *)&gState + off) == (int)Lconst_70) {
+        __MapActor_TravelToAnim(0, 0xf8, 0xc0);
+        __Func_8010560(Lm942_16ce, 0x4a, 9);
+    }
+    __CutsceneWait(0x10);
+    __Func_8091e9c(3);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_MapInit.s");
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20088cc.s");
+extern void __ClearFlag(int);
+void __SetFlag(int);
+void OvlFunc_942_2008ba0(void);
+void __MapActor_SetPos(int, int, int);
+void __Func_8092adc(int, int, int);
+
+void OvlFunc_942_20088cc(void) {
+    int pos_x = 0xb0 << 15;
+    int pos_y = 0xa3 << 19;
+    int f8ac = 0x8ac;
+    int f109 = 0x109;
+    int f8a9 = 0x8a9;
+    int f911 = 0x911;
+    unsigned int r2;
+    unsigned int r3;
+    GlobalState *state = &gState;
+
+    do { } while (pos_x == 0);
+
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 = (unsigned int)state + r2;
+    r2 = 0;
+    if (*(short *)((char *)r3 + r2) == 1) {
+        if (!__GetFlag(f8ac)) {
+            __SetFlag(f8ac);
+            OvlFunc_942_2008ba0();
+        }
+    }
+
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 = (unsigned int)state + r2;
+    r2 = 0;
+    if (*(short *)((char *)r3 + r2) == 2) {
+        if (!__GetFlag(f109)) {
+            __ClearFlag(f8a9);
+        }
+    }
+
+    if (__GetFlag(f911)) {
+        if (!__GetFlag(f8a9)) {
+            __MapActor_SetPos(0xc, pos_x, pos_y);
+            __Func_8092adc(0xc, 0, 0);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008958.s");
 
 extern unsigned int iwram_3001ebc;
-extern void __ClearFlag(int);
 
 void OvlFunc_942_2008ad4(void) {
     *(unsigned int *)((char *)iwram_3001ebc + 0x1c0) = 0x1c0 + 0x49;

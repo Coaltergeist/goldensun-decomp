@@ -611,8 +611,156 @@ void OvlFunc_922_2008ff8(void) {
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009004.s");
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009050.s");
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009154.s");
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20092cc.s");
+void __Func_8010704(int, int, int, int, int, int);
+void OvlFunc_922_2009004(int, int, int);
+
+void OvlFunc_922_2009154(void)
+{
+    int a;
+    int b;
+    int c;
+    int s1;
+    int s2;
+
+    s1 = 0xc;
+    s2 = 8;
+    __Func_8010704(0, 0x1c, 10, 0x12, s1, s2);
+    if (__GetFlag(0x304) != 0) {
+        OvlFunc_922_2009004(8, 0x15, 0x14);
+        s1 = 0xd;
+        s2 = 0x13;
+        __Func_8010704(0x14, 0x13, 1, 3, s1, s2);
+    } else {
+        OvlFunc_922_2009004(8, 0xd, 0x14);
+        s1 = 0x15;
+        s2 = 0x13;
+        __Func_8010704(0x14, 0x13, 1, 3, s1, s2);
+    }
+
+    if (__GetFlag(0x305) != 0) {
+        OvlFunc_922_2009004(8, 0xc, 0x14);
+        a = 0x13;
+        b = 0xc;
+        __Func_8010704(5, 0x13, 1, 3, b, a);
+        c = 0xd;
+        __Func_8010704(0x14, 0x13, 1, 3, c, a);
+        if (__GetFlag(0x304) != 0) {
+            OvlFunc_922_2009004(8, 0x15, 0x14);
+            __Func_8010704(0x14, 0x13, 1, 3, c, a);
+            __Func_8010704(0x14, 0x13, 1, 3, b, a);
+        }
+    }
+
+    if (__GetFlag(0x306) != 0) {
+        OvlFunc_922_2009004(9, 0xf, 0x15);
+        s1 = 0xe;
+        s2 = 0x11;
+        __Func_8010704(0xe, 0x12, 3, 1, s1, s2);
+    } else {
+        OvlFunc_922_2009004(9, 0xf, 0x11);
+        s1 = 0xe;
+        s2 = 0x15;
+        __Func_8010704(0xe, 0x12, 3, 1, s1, s2);
+    }
+
+    if (__GetFlag(0x307) != 0) {
+        OvlFunc_922_2009004(10, 0x13, 8);
+        s1 = 0x12;
+        s2 = 0x19;
+        __Func_8010704(0xe, 0x12, 3, 1, s1, s2);
+    } else {
+        OvlFunc_922_2009004(10, 0x13, 0x19);
+        s1 = 0x12;
+        s2 = 8;
+        __Func_8010704(0xe, 0x12, 3, 1, s1, s2);
+    }
+}
+void OvlFunc_922_20092cc(void)
+{
+    {
+        int a = 0xc;
+        int b = 0x15;
+        __Func_8010704(0xc, 3, 9, 0x10, a, b);
+    }
+
+    if (__GetFlag(0x308) != 0) {
+        int a, b;
+        OvlFunc_922_2009004(8, 0xe, 0x19);
+        a = 0x14;
+        b = 0x18;
+        __Func_8010704(0x10, 0x18, 1, 3, a, b);
+    } else if (__GetFlag(0x309) != 0) {
+        int b;
+        OvlFunc_922_2009004(8, 0x11, 0x19);
+        b = 0x18;
+        __Func_8010704(0x12, 0x18, 1, 3, 0x14, b);
+        __Func_8010704(0x12, 0x18, 1, 3, 0xe, b);
+        __Func_8010704(8, 0x29, 1, 3, 0x11, b);
+    } else {
+        int a, b;
+        OvlFunc_922_2009004(8, 0x14, 0x19);
+        a = 0xe;
+        b = 0x18;
+        __Func_8010704(0x10, 0x18, 1, 3, a, b);
+    }
+
+    if (__GetFlag(0x30a) != 0) {
+        int a, b;
+        OvlFunc_922_2009004(9, 0xd, 0x23);
+        a = 0xf;
+        b = 0x22;
+        __Func_8010704(0xe, 0x22, 1, 3, a, b);
+    } else {
+        int a, b;
+        OvlFunc_922_2009004(9, 0xf, 0x23);
+        a = 0xd;
+        b = 0x22;
+        __Func_8010704(0xe, 0x22, 1, 3, a, b);
+    }
+
+    if (__GetFlag(0x30b) != 0) {
+        OvlFunc_922_2009004(0xa, 0xf, 0x16);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1e);
+        __Func_8010704(5, 0x29, 3, 1, 0xe, 0x16);
+    } else if (__GetFlag(0x30c) != 0) {
+        OvlFunc_922_2009004(0xa, 0xf, 0x17);
+        __Func_8010704(5, 0x2a, 3, 1, 0xe, 0x17);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1e);
+        __Func_8010704(0xa, 0x2c, 3, 1, 0xe, 0x15);
+    } else if (__GetFlag(0x30d) != 0) {
+        OvlFunc_922_2009004(0xa, 0xf, 0x1a);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x16);
+        __Func_8010704(5, 0x2b, 3, 1, 0xe, 0x1a);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1e);
+    } else if (__GetFlag(0x30e) != 0) {
+        OvlFunc_922_2009004(0xa, 0xf, 0x1b);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x16);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1e);
+        __Func_8010704(5, 0x2c, 3, 1, 0xe, 0x1b);
+    } else {
+        OvlFunc_922_2009004(0xa, 0xf, 0x1e);
+    }
+
+    if (__GetFlag(0x30f) != 0) {
+        OvlFunc_922_2009004(0xb, 0xf, 0x17);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1f);
+        __Func_8010704(0xa, 0x28, 3, 1, 0xe, 0x17);
+    } else if (__GetFlag(0x310) != 0) {
+        OvlFunc_922_2009004(0xb, 0xf, 0x18);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1f);
+        __Func_8010704(0xa, 0x29, 3, 1, 0xe, 0x18);
+    } else if (__GetFlag(0x311) != 0) {
+        OvlFunc_922_2009004(0xb, 0xf, 0x1b);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1f);
+        __Func_8010704(0xa, 0x2a, 3, 1, 0xe, 0x1b);
+    } else if (__GetFlag(0x312) != 0) {
+        OvlFunc_922_2009004(0xb, 0xf, 0x1c);
+        __Func_8010704(0xe, 0x1d, 3, 1, 0xe, 0x1f);
+        __Func_8010704(0xa, 0x2b, 3, 1, 0xe, 0x1c);
+    } else {
+        OvlFunc_922_2009004(0xb, 0xf, 0x1f);
+    }
+}
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20095dc.s");
 
 extern unsigned char L3328[] __asm__(".Lm922_3328");
@@ -701,7 +849,39 @@ void OvlFunc_922_2009ad0(int arg0, int arg1) {
     __MapActor_SetAnim(0, 6);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009b1c.s");
+extern void *Lm922_2488 __asm__(".Lm922_2488");
+
+void OvlFunc_922_2009b1c(void)
+{
+    int a = 0xf80000;
+    int b = 0x80000;
+    int c = 0x980000;
+    int mask = ~0x20;
+    int zero;
+    unsigned char *actor;
+    unsigned char *sprite;
+    unsigned char *buf;
+
+    do { } while (a == 0);
+
+    zero = 0;
+    actor = (unsigned char *)__CreateActor(0x16, a, b, c);
+    if (actor != 0) {
+        sprite = *(unsigned char **)(actor + 0x50);
+        sprite[0x26] = zero;
+        sprite[0x27] = zero;
+        sprite[5] = sprite[5] & mask;
+        sprite[9] = sprite[9] & 0xf;
+        actor[0x55] = zero;
+        actor[0x5c] = 1;
+        buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+        __LoadItemIcon(0xe6);
+        buf += 0x400;
+        __UploadSpriteGFX(sprite[0x1c], 0x80, buf);
+        __gfree(0x11);
+        Lm922_2488 = actor;
+    }
+}
 
 extern unsigned char L2488[] __asm__(".Lm922_2488");
 
@@ -741,7 +921,40 @@ unsigned int OvlFunc_922_2009c08(int arg) {
 }
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009c18.s");
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009d78.s");
+extern volatile unsigned int iwram_3001e40;
+extern void OvlFunc_922_2009c18(int, int, int, int, int, int, int, void *);
+
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+};
+
+void OvlFunc_922_2009d78(void)
+{
+    struct EffectData data;
+    int r;
+    int r2;
+    int mask;
+
+    mask = iwram_3001e40 & 3;
+    if (mask == 0) {
+        data.unk4 = 10;
+        data.unk8 = 0x8000;
+        data.unkc = 0x8000;
+        data.unk10 = 0x1cccc;
+        data.unk14 = 0x1cccc;
+        if ((iwram_3001e40 & 7) == 0) {
+            __PlaySound(0x88);
+        }
+        r = 0xffff0000 - ((((unsigned int)__Random() * 2) >> 16) << 16);
+        r2 = -((int)(((((unsigned int)__Random() * 3) >> 16)) * 0x3333));
+        OvlFunc_922_2009c18(0x1340000, 0x400000, 0xde0000, r, r2, mask, 0xd0001, &data);
+    }
+}
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009e08.s");
 
 void OvlFunc_922_2009f04(void)

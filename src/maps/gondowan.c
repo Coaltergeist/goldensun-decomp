@@ -427,7 +427,38 @@ void OvlFunc_958_2009148(void)
 	OvlFunc_958_2009158();
 }
 
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2009158.s");
+extern void __MapActor_SetPos(int a, int b, int c);
+void __CutsceneStart(void);
+void __CutsceneWait(int);
+void __PlaySound(int);
+void __SetFlag(int);
+void __CutsceneEnd(void);
+
+void OvlFunc_958_2009158(void)
+{
+    int pos_x = 0x2b80000;
+    int pos_y = 0x1200000;
+    void *a;
+    int new_var;
+    int new_var3;
+
+    do { } while (pos_x == 0);
+
+    __CutsceneStart();
+    a = __MapActor_GetActor(9);
+    if (*(int *)((char *)a + 8) >> 20 > 0x2a) {
+        new_var = 0x6b;
+        new_var3 = 0x11;
+        __Func_8010704(0x6c, 0x11, 1, 1, new_var, new_var3);
+        __CutsceneWait(8);
+        __MapActor_SetPos(9, 0, 0);
+        __MapActor_SetPos(10, pos_x, pos_y);
+        __MapActor_SetAnim(10, 3);
+        __PlaySound(0x9a);
+        __SetFlag(0x9a5);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_958_20091c4(void) {}
 
@@ -464,7 +495,6 @@ INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20091f8.s");
 
 void OvlFunc_958_2009380(void) {}
 
-extern void __MapActor_SetPos(int a, int b, int c);
 
 void OvlFunc_958_2009384(void) {
     __MapActor_SetPos(12, 0, 0);

@@ -52,7 +52,35 @@ void OvlFunc_909_2008130(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008150.s");
+extern void __CutsceneStart(void);
+extern void __MapActor_Emote(int, int, int);
+extern void __Func_80925cc(int, int);
+extern void __CutsceneWait(int);
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_909_2008150(void)
+{
+    int emote = 0x81 << 1;
+    int unk = 0xb0 << 8;
+
+    do { } while (emote == 0);
+
+    __CutsceneStart();
+    __MapActor_Emote(0xe, emote, 0);
+    __Func_80925cc(0xe, 2);
+    __CutsceneWait(0x28);
+    __MessageID(0x1764);
+    __ActorMessage_Wait(0xe, 0, 0x14);
+    __MapActor_Face(0xe, 0, 0);
+    __CutsceneWait(0x14);
+    __ActorMessage_Wait(0xe, 0, 0xa);
+    __Func_8092adc(0xe, unk, 0xa);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20081b4.s");
 
 void OvlFunc_909_20081f4(void) {

@@ -117,7 +117,63 @@ void OvlFunc_974_2008f08(void) {
     OvlFunc_974_2008cf4();
 }
 
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008f14.s");
+void OvlFunc_974_2008f14(void)
+{
+    __Func_801776c(0xc1c, 1);
+
+    __GiveItemTo(0, 0xb8);
+    __GiveItemTo(0, 0xcc);
+    __GiveItemTo(0, 0xdc);
+    __GiveItemTo(0, 0xdd);
+    __GiveItemTo(0, 0xde);
+    __GiveItemTo(0, 0xdf);
+    __GiveItemTo(0, 0xe0);
+
+    __GiveItemTo(1, 0xe2);
+    __GiveItemTo(1, 0xe3);
+    __GiveItemTo(1, 0xe6);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe4);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe5);
+    __GiveItemTo(1, 0xe8);
+    __GiveItemTo(1, 0xe7);
+    __GiveItemTo(1, 0xed);
+
+    __GiveItemTo(2, 0xf2);
+    __GiveItemTo(2, 0x102);
+    __GiveItemTo(2, 0x10b);
+    __GiveItemTo(2, 0x109);
+    __GiveItemTo(2, 0xfc);
+
+    __GiveItemTo(3, 0xbd);
+    __GiveItemTo(3, 0xc8);
+    __GiveItemTo(3, 0xc9);
+    __GiveItemTo(3, 0xca);
+    __GiveItemTo(3, 0xcb);
+    __GiveItemTo(3, 0xcc);
+    __GiveItemTo(3, 0xcf);
+
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+}
 INCLUDE_ASM("asm/maps/menu_test/MenuTest_MapInit.s");
 
 extern int __Debug_IconTest(unsigned int actorID);

@@ -143,7 +143,33 @@ void OvlFunc_936_2008420(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008464.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008504.s");
+void OvlFunc_936_2008504(void) {
+    int size;
+    unsigned char *actor;
+    int a = 0x8000;
+    int b = 0x4000;
+    int c = -8;
+
+    do { } while (a == 0);
+
+    __CutsceneStart();
+    __PlaySound(0xbc);
+    size = 2;
+    __CopyMapTiles(0x24, 0x17, 0x2b, 0xc, size, size);
+    __WaitFrames(5);
+    __CopyMapTiles(0x27, 0x17, 0x2b, 0xc, size, size);
+    __WaitFrames(5);
+    __MapActor_SetSpeed(0, a, b);
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    actor[0x55] = 0;
+    __MapActor_SetAnim(0, 2);
+    __MapActor_TravelBy(0, 0, c);
+    __CutsceneWait(10);
+    __Func_8091e9c(2);
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008590.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200958c.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095b4.s");

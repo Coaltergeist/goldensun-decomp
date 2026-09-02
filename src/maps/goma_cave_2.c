@@ -360,7 +360,45 @@ void OvlFunc_905_2008b6c(void)
 
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008bd0.s");
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008ce0.s");
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008ecc.s");
+extern void OvlFunc_905_2008a68(int, int, int, int, int, int, int);
+
+void OvlFunc_905_2008ecc(void)
+{
+    int val;
+    int x;
+
+    x = *(int *)(__MapActor_GetActor(10) + 8);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    val = x >> 20;
+
+    x = *(int *)(__MapActor_GetActor(10) + 0x10);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    x >>= 20;
+
+    if (val == 0x26 && x == 0xe) {
+        *(int *)(__MapActor_GetActor(10) + 0xc) = 0xfffe0000;
+        *(int *)(__MapActor_GetActor(10) + 0x3c) = *(int *)(__MapActor_GetActor(10) + 0xc);
+        __PlaySound(0xbc);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), 0x8000, 0, 0, 1);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), 0x6666, 0x6666, 0, 1);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), -0x6666, 0x6666, 0, 1);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), -0x8000, 0, 0, 1);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), 0x6666, -0x6666, 0, 1);
+
+        OvlFunc_905_2008a68(*(int *)(__MapActor_GetActor(10) + 8), *(int *)(__MapActor_GetActor(10) + 0xc), *(int *)(__MapActor_GetActor(10) + 0x10), -0x6666, -0x6666, 0, 1);
+
+        __SetFlag(0x301);
+    }
+}
 
 extern void OvlFunc_905_2008ecc(void);
 
@@ -391,7 +429,54 @@ void *GomaCave2_GetEvents(void) {
     return (void *)gOvl_02009814;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20090c8.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern unsigned char iwram_3001ebc[];
+extern GlobalState gState;
+extern int gOvl_020098ec;
+
+extern void __Func_8092adc(int, int, int);
+extern void __MapActor_Emote(int, int, int);
+extern void __Func_809259c(int, int);
+extern void __MapActor_Jump(int, int, int);
+void OvlFunc_905_20090c8(void)
+{
+    unsigned char *base;
+    unsigned char *gs;
+    unsigned char *p;
+    int val;
+    int a;
+    short v;
+
+    a = 0x2000;
+    do { } while (a == 0);
+
+    base = *(unsigned char **)iwram_3001ebc;
+    val = ++gOvl_020098ec;
+    switch (val) {
+    case 0x3c:
+        __Func_8092adc(0xd, a, 0);
+        __MapActor_Emote(0xd, 2, 0);
+        break;
+    case 0xb4:
+        __Func_809259c(0xd, 3);
+        break;
+    case 0xf0:
+    case 0x10e:
+        __MapActor_Jump(0xd, 4, 0);
+        break;
+    case 0x1e0:
+        __MapActor_SetAnim(0xd, 4);
+        break;
+    }
+
+    gs = (unsigned char *)&gState;
+    gs += 0x234;
+    if (*(short *)gs == 0) {
+        p = base + 0x182;
+        v = 0x63;
+        *(short *)p = v;
+    }
+}
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200915c.s");
 INCLUDE_ASM("asm/maps/goma_cave_2/GomaCave2_MapInit.s");
 

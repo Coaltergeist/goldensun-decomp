@@ -241,7 +241,44 @@ INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20091d0.s");
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2009240.s");
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20092a4.s");
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_200931c.s");
-INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20095bc.s");
+extern void __MapTransitionIn(void);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __MapActor_WaitMovement(int);
+extern void __CutsceneWait(int);
+extern void __Func_8096fb0(int, int);
+extern void __Func_80970f8(int, int);
+extern void __Func_809728c(void);
+extern void __FieldMove(int);
+extern void __Func_8097174(void);
+void OvlFunc_939_20095bc(void)
+{
+    int y = 0x120;
+    while (y == 0) {}
+
+    __CutsceneStart();
+    __MapTransitionIn();
+    __MapActor_TravelToAnim(0, 0x98, 0xa8);
+    __MapActor_WaitMovement(0);
+    __CutsceneWait(0x14);
+    __Func_8096fb0(0x92, 1);
+    __Func_80970f8(0, 0);
+    __Func_809728c();
+    __FieldMove(1);
+    __Func_8097174();
+    __MapActor_TravelToAnim(0, 0x90, 0xb8);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelToAnim(0, 0x58, 0xb8);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelToAnim(0, 0x58, 0xc8);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelToAnim(0, 0x48, 0xc8);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelToAnim(0, 0x48, y);
+    __MapActor_WaitMovement(0);
+    __MapActor_TravelToAnim(0, 0x58, y);
+    __MapActor_WaitMovement(0);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/lunpa/Lunpa_MapInit.s");
 
 int OvlFunc_939_20097d8(int *actor)

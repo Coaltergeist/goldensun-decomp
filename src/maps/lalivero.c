@@ -38,7 +38,30 @@ unsigned int *Lalivero_GetActors(void)
 
 INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2008078.s");
 INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_20080c4.s");
-INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_200810c.s");
+void __SetFlag(int);
+void __MessageID(int);
+void __ActorMessage(int, int);
+void __MapActor_SetSpeed(int, int, int);
+void __Func_8092304(int, int, int);
+void __Func_8092adc(int, int, int);
+void __CutsceneWait(int);
+
+void OvlFunc_966_200810c(void)
+{
+    int a = 0x10000;
+    int b = 0x8000;
+    int c = -0x10;
+
+    do { } while (a == 0);
+
+    __SetFlag(0x9bb);
+    __MessageID(0x28b8);
+    __ActorMessage(0x12, 0);
+    __MapActor_SetSpeed(0x12, a, b);
+    __Func_8092304(0x12, c, 0);
+    __Func_8092adc(0x12, 0, 0);
+    __CutsceneWait(10);
+}
 INCLUDE_ASM("asm/maps/lalivero/OvlFunc_966_2008158.s");
 
 extern unsigned char iwram_3001ebc[];

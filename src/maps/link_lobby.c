@@ -111,7 +111,113 @@ INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_200853c.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008580.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20087b0.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008860.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008b94.s");
+extern unsigned char MsgBase[] __asm__(".Lmsg_base");
+__asm__(".equ .Lmsg_base, 0x2930");
+
+void __MapActor_Face(int, int, int);
+int OvlFunc_971_200808c(int);
+unsigned int OvlFunc_971_2008b94(void)
+{
+    unsigned int r7;
+    unsigned int r6;
+    unsigned int r5;
+    unsigned int r2;
+    unsigned int r3;
+    unsigned int msg;
+    unsigned int flag173 = 0x173;
+    unsigned int flag300 = 0x300;
+
+    while (flag173 == 0) { }
+
+    r6 = (unsigned int)MsgBase;
+    __CutsceneStart();
+    r7 = (unsigned int)&gState;
+    r2 = 0xfa;
+    r2 <<= 1;
+    r3 = r7 + r2;
+    __MapActor_Face(8, *(int *)r3, 0);
+    if (OvlFunc_971_200808c(0) == 0) {
+        __WaitFrames(1);
+    }
+    if (OvlFunc_971_200808c(0) == 0) {
+        OvlFunc_971_2008128(5);
+        OvlFunc_971_200803c();
+        if (__GetFlag(flag173) == 0) {
+            __MessageID(r6 + 5);
+            __ShowActorMessage_NoWait(8, 0);
+            r5 = __Func_8091c7c(0, 0);
+            if (r5 == 0) {
+                __SetFlagByte(0x3e8, 0);
+                __SetFlag(flag173);
+                __ClearFlag(0x172);
+                __ClearFlag(0x16c);
+                __SetFlag(0x202);
+                msg = r6 + 7;
+                *(unsigned short *)(r7 + 0x2aa) = r5;
+                goto show_msg_id;
+            } else {
+                __ClearFlag(flag173);
+                __SetFlag(0x16c);
+                OvlFunc_971_2008128(0);
+                msg = r6 + 6;
+                goto show_msg_id;
+            }
+        } else {
+            goto msg_plus_3;
+        }
+    } else {
+        if (__GetFlag(flag173) != 0) {
+            OvlFunc_971_2008128(0);
+            __MessageID(0x293d);
+            __ShowActorMessage_NoWait(8, 0);
+            __ClearFlag(0x202);
+            __ClearFlag(flag173);
+        }
+        if (__GetFlag(0x202) != 0) {
+msg_plus_3:
+            msg = r6 + 3;
+show_msg_id:
+            __MessageID(msg);
+show_msg_wait:
+            __ShowActorMessage_NoWait(8, 0);
+            goto end;
+        }
+        if (__GetFlag(0x201) == 0 && __GetFlag(flag300) == 0) {
+            __MessageID(r6);
+            __ShowActorMessage_NoWait(8, 0);
+            __SetFlag(flag300);
+            goto end;
+        }
+        __SetFlag(flag300);
+        if (__GetFlag(0x201) != 0) {
+            __MessageID(r6 + 2);
+        } else {
+            __MessageID(r6 + 1);
+        }
+        __ShowActorMessage_NoWait(8, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            if (OvlFunc_971_200808c(0) != 0) {
+                __SetFlag(0x16c);
+                __SetFlag(0x172);
+                if (__GetFlag(0x201) != 0) {
+                    __MessageID(r6 + 3);
+                } else {
+                    __MessageID(r6 + 4);
+                }
+                OvlFunc_971_2008128(1);
+                __SetFlag(0x202);
+                goto show_msg_wait;
+            } else {
+                __SetFlag(0x205);
+            }
+        } else {
+            __MessageID(r6);
+            __ShowActorMessage_NoWait(8, 0);
+        }
+    }
+end:
+    return __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008d68.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008e10.s");
 

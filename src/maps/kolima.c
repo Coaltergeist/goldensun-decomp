@@ -53,7 +53,65 @@ int Kolima_GetEvents(void)
     return (int)Lm911_33b0;
 }
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20082b4.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008304.s");
+void __CutsceneStart(void);
+void __PlaySound(int);
+void *__MapActor_GetActor(int);
+void __MapActor_SetSpeed(int, int, int);
+void __MapActor_TravelBy(int, int, int);
+void __Func_8091e9c(int);
+void __CutsceneEnd(void);
+void __Func_8010560(void *, int, int);
+void OvlFunc_911_20082b4(int);
+
+extern unsigned char iwram_3001ebc[];
+extern unsigned char Lm911_2e48[] __asm__(".Lm911_2e48");
+
+static inline void MapActor_SetSpeed(int actor, int x, int y)
+{
+    __MapActor_SetSpeed(actor, x << 8, y << 7);
+}
+
+void OvlFunc_911_2008304(void)
+{
+    unsigned char *map;
+    unsigned char *actor;
+    int a = 0;
+    int b = 0;
+
+    map = *(unsigned char **)iwram_3001ebc;
+    __CutsceneStart();
+    __PlaySound(0x9e);
+    switch (*(short *)(map + 0x16c)) {
+    case 5:
+        a = 0x47;
+        b = 9;
+        break;
+    case 6:
+        a = 0x49;
+        b = 0x11;
+        break;
+    case 7:
+        a = 0x50;
+        b = 0x15;
+        break;
+    case 8:
+        a = 0x54;
+        b = 0xc;
+        break;
+    case 9:
+        actor = (unsigned char *)__MapActor_GetActor(0);
+        actor[0x55] = 0;
+        MapActor_SetSpeed(0, 0x80, 0x80);
+        __MapActor_TravelBy(0, 0, 8);
+        *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c8) = 0x10;
+        __Func_8091e9c(9);
+        __CutsceneEnd();
+        return;
+    }
+    __Func_8010560(Lm911_2e48, a, b);
+    OvlFunc_911_20082b4(*(short *)(map + 0x16c));
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20083c8.s");
 INCLUDE_ASM("asm/maps/kolima/Kolima_MapInit.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008800.s");

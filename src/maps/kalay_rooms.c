@@ -122,7 +122,66 @@ void OvlFunc_937_200818c(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_20081fc.s");
-INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_2008240.s");
+extern unsigned char iwram_3001ebc[];
+
+struct TableEntry {
+    void *unk0;
+    unsigned short unk4;
+    unsigned short unk6;
+};
+
+extern struct TableEntry Lm937_ef8[] __asm__(".Lm937_ef8");
+
+void OvlFunc_937_2008240(void)
+{
+    unsigned char *map;
+    unsigned char *actor;
+    unsigned int i;
+    int index;
+    int arg1, arg2;
+
+    map = *(unsigned char **)iwram_3001ebc;
+    __CutsceneStart();
+
+    for (i = 8; i <= 0x41; i++) {
+        actor = (unsigned char *)__MapActor_GetActor(i);
+        if (actor != 0) {
+            actor[0x55] = 0;
+        }
+    }
+
+    switch (*(short *)(map + 0x16c)) {
+    case 12:
+        index = 0;
+        break;
+    case 13:
+        index = 1;
+        break;
+    case 16:
+        index = 2;
+        break;
+    case 19:
+        index = 3;
+        break;
+    default:
+        return;
+    }
+
+    __PlaySound(0x9e);
+    arg1 = Lm937_ef8[index].unk4;
+    arg2 = Lm937_ef8[index].unk6;
+    __Func_8010560(Lm937_ef8[index].unk0, arg1, arg2);
+
+    __MapActor_SetSpeed(0, 0x8000, 0x4000);
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
+    __MapActor_SetAnim(0, 2);
+    __Func_8092208(0, 3, -8);
+    __CutsceneWait(10);
+    __Func_8091e9c(*(short *)(map + 0x16c));
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_MapInit.s");
 INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_200833c.s");
 
