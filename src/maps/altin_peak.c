@@ -273,7 +273,57 @@ void OvlFunc_932_20086dc(void) {
     __SetFlag(0x8fd);
 }
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20087e8.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20088d4.s");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+void __PlaySound(unsigned int snd);
+void OvlFunc_932_20088d4(void)
+{
+    int a = 0x20000;
+    int b = 0x20000;
+    int c = 0x10000;
+    int u = -1;
+    int v = -1;
+    int w = 0xe666;
+    char *field;
+    int one;
+    int two;
+    char *layer;
+    int i;
+    int s1, s2;
+
+    do { } while (a == 0);
+
+    one = 1;
+    field = (char *)iwram_3001e70;
+    __CopyMapTiles(0x71, 0x1f, 0x67, 0x11, one, one);
+    two = 2;
+    __CopyMapTiles(0x6f, 0x20, 0x68, 0x12, 3, two);
+    __CopyMapTiles(0x40, 0x20, 0x67, 0x12, one, two);
+    __PlaySound(0xe6);
+    __Func_8012330(a, b, c);
+    __CutsceneWait(10);
+
+    layer = field + (0xb2 << 1);
+    for (i = 23; i >= 0; i--) {
+        *(int *)(layer + 0xc) += 0xffff0000;
+        __WaitFrames(4);
+    }
+
+    __SetIntrHandler(1, 0, OvlFunc_932_20086a0);
+    *(unsigned short *)Lm932_5238 = 0;
+    do {
+        __WaitFrames(1);
+    } while (++*(unsigned short *)Lm932_5238 <= 100);
+
+    __WaitFrames(1);
+    __SetIntrHandler(1, 0, 0);
+    __PlaySound(0x121);
+    __Func_8012330(u, v, w);
+    __CutsceneWait(0x1e);
+    s1 = 4;
+    s2 = 3;
+    __CopyMapTiles(0x67, 0xe, 0x67, 0x11, s1, s2);
+    __SetFlag(0x907);
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20089ec.s");
 
 extern void OvlFunc_932_20089ec(void);
@@ -407,7 +457,6 @@ INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009d0c.s");
 INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_MapInit.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a0d0.s");
 extern void __Func_8092950(int a, int b);
-extern void __CopyMapTiles(int, int, int, int, int, int);
 
 extern void OvlFunc_932_200ba44(void);
 void OvlFunc_932_200a310(void)
@@ -748,7 +797,6 @@ void OvlFunc_932_200b5a8(void) {}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b5ac.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b668.s");
 
-void __PlaySound(unsigned int snd);
 struct Foo_b {
 unsigned char pad[0x65];
 unsigned short unk66;

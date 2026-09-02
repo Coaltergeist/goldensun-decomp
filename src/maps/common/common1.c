@@ -200,7 +200,54 @@ void OvlFunc_common1_2c4(unsigned int arg0)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_3e4.s");
+unsigned char *__MapActor_GetActor(unsigned int);
+void __CutsceneStart(void);
+int __GetPartySize(void);
+void __MessageID(int);
+int __Func_8093054(int, int);
+void __MapActor_SetSpeed(int, int, int);
+void __MapActor_TravelToAnim(int, int, int);
+void __CutsceneWait(int);
+void __MapActor_TravelToAnimWait(int, int, int);
+void __MapTransitionOut(void);
+void __WaitMapTransition(void);
+void __Func_8091e9c(int);
+void __ActorMessage(int, int);
+void __CutsceneEnd(void);
+
+static inline void MapActor_SetSpeed(int actor, int x, int y) {
+    __MapActor_SetSpeed(actor, x << 9, y << 8);
+}
+
+void OvlFunc_common1_3e4(unsigned int arg0)
+{
+    int r7;
+    int r6;
+    unsigned char *actor;
+
+    actor = __MapActor_GetActor(arg0);
+    r7 = *(short *)(actor + 10);
+    r6 = *(short *)(actor + 18);
+    __CutsceneStart();
+    if (__GetPartySize() <= 1) {
+        __MessageID(0x20e5);
+        if (__Func_8093054(arg0, 0) == 0) {
+            MapActor_SetSpeed(0, 0x80, 0x80);
+            MapActor_SetSpeed(arg0, 0x80, 0x80);
+            __MapActor_TravelToAnim(arg0, r7, r6 + 0x40);
+            __CutsceneWait(15);
+            __MapActor_TravelToAnimWait(0, r7, r6);
+            __MapActor_TravelToAnimWait(0, r7, r6 + 0x20);
+            __MapTransitionOut();
+            __WaitMapTransition();
+            __Func_8091e9c(11);
+        }
+    } else {
+        __MessageID(0x20e8);
+        __ActorMessage(arg0, 0);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_common1_488(void)
 {

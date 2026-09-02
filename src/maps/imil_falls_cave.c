@@ -205,9 +205,23 @@ void OvlFunc_922_2008568(void) {
     OvlFunc_922_2009154();
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20085b8.s");
-
 extern void OvlFunc_922_20092cc(void);
+void OvlFunc_922_20085b8(void) {
+    __PlaySound(0xf1);
+    if (__GetFlag(0xc4 << 2) != 0 || __GetFlag(0x30d) != 0) {
+        OvlFunc_922_2008180(8, -0x30, 0);
+        __ClearFlag(0xc2 << 2);
+        __SetFlag(0x309);
+    } else {
+        OvlFunc_922_2008180(8, -0x60, 0);
+        __SetFlag(0xc2 << 2);
+        __ClearFlag(0x309);
+    }
+    __PlaySound(0x121);
+    __WaitFrames(2);
+    OvlFunc_922_20092cc();
+}
+
 
 void OvlFunc_922_200862c(void) {
     __PlaySound(0xf1);

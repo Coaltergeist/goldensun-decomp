@@ -329,7 +329,34 @@ unsigned int OvlFunc_927_2008d80(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008d90.s");
+void __PlaySound(int);
+void __Func_8092b08(int, int);
+void __MapActor_SetPos(int, int, int);
+#include "actor.h"
+
+extern void __MapActor_TravelToWait(int, int, int);
+static inline void MapActor_SetSpeed(int actor, int speed, int accel) {
+    __MapActor_SetSpeed(actor, speed << 10, accel << 9);
+}
+
+void OvlFunc_927_2008d90(int arg0, int arg1, int arg2, int arg3) {
+    struct Actor *actor;
+
+    actor = __MapActor_GetActor(arg0);
+    __Func_8092b08(arg0, 1);
+    MapActor_SetSpeed(arg0, 0xc0, 0xc0);
+    __PlaySound(0x98);
+    actor->motion.y = arg3;
+    actor->gravity = 0x8000;
+    actor->bounce = 0;
+    __Actor_SetSpriteFlags(actor, 0);
+    __MapActor_TravelToWait(arg0, arg1, arg2);
+    arg1 <<= 16;
+    arg2 <<= 16;
+    __MapActor_SetPos(arg0, arg1, arg2);
+    __Actor_SetSpriteFlags(actor, 1);
+    actor->gravity = 0x10000;
+}
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008e18.s");
 
 extern void OvlFunc_927_2008e18(unsigned int arg0);
@@ -361,8 +388,6 @@ void *MogallForest_GetExits(void) {
 INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetActors.s");
 void __SetFlag(int);
 void __CutsceneWait(int);
-void __PlaySound(int);
-void __Func_8092b08(int, int);
 void OvlFunc_927_2008f94(void)
 {
     int sp1 = 0x4000;
@@ -426,14 +451,13 @@ void OvlFunc_927_200912c(void)
 
 #include "actor.h"
 
-void OvlFunc_927_2008d90(int, int, int, int);
+extern void OvlFunc_927_2008d90(int arg0, int arg1, int arg2, int arg3);
 void OvlFunc_927_2008ae8(int, int, int, int, int, int, int, int);
 void __SetCameraTarget(int, int);
 void __MapActor_TurnToFaceActor(int, int, int);
 void __Func_809259c(int, int);
 void __MapActor_Surprise(int, int);
 void __MapActor_Face(int, int, int);
-void __MapActor_SetPos(int, int, int);
 void OvlFunc_927_2009150(void)
 {
     struct Actor *actor;

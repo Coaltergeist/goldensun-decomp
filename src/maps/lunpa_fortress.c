@@ -348,13 +348,49 @@ void OvlFunc_959_2008bac(void) {
     OvlFunc_959_2008b4c();
     __SetFlag(0x943);
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008bec.s");
+extern void __Func_8012330(int, int, int);
+struct Actor959 {
+    unsigned char pad[0x10];
+    int f0x10;
+    unsigned char pad2[0x23 - 0x14];
+    unsigned char f0x23;
+};
+
+static inline void Func_8012330_shift(int a, int b, int c)
+{
+    __Func_8012330(a << 11, b << 11, c << 9);
+}
+
+static inline void Func_8012330_neg(int a, int b, int c)
+{
+    __Func_8012330(-a, -b, c);
+}
+
+void OvlFunc_959_2008bec(void)
+{
+    struct Actor959 *actor;
+    int s;
+
+    if (((struct Actor959 *)__MapActor_GetActor(0xc))->f0x10 >> 20 > 0x16) {
+        Func_8012330_shift(0x80, 0x80, 0x80);
+        Func_8012330_neg(1, 1, 0xe666);
+        __PlaySound(0x90);
+        s = 0xf;
+        __Func_8010704(0xf, 0x14, 1, 1, s, 0x16);
+        __Func_8010704(0x11, 0x17, 1, 3, s, 0x17);
+        actor = (struct Actor959 *)__MapActor_GetActor(0xc);
+        if (actor != 0) {
+            __Actor_SetSpriteFlags(actor, 0);
+            actor->f0x23 = 2;
+        }
+        __SetFlag(0x943);
+    }
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c78.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c90.s");
 extern unsigned char iwram_3001ebc[];
 extern int __CheckPartyItem(int);
 extern void __PlaySound(int);
-extern void __Func_8012330(int, int, int);
 extern void __SetFlag(int);
 extern void __SetFlag(int a);
 extern int __GetFlag(int);

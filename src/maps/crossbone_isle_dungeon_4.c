@@ -432,7 +432,28 @@ void OvlFunc_948_2008f40(unsigned int param_1)
     __Func_8010704(var1, 0x28, 1, 1, var1, 0x29);
     __Func_8010704(var1, 0x28, 1, 1, var1, 0x2a);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008fdc.s");
+void OvlFunc_948_2008fdc(unsigned int param_1)
+{
+    int s1;
+    int s2;
+    int var1;
+
+    if ((param_1 & 0x100) != 0) {
+        __PlaySound(0x9d);
+        Func_8012330_pos(0x80, 0x80, 0x80);
+        Func_8012330_neg(1, 1, 0xe666);
+        s1 = 0x46;
+        s2 = 0x31;
+        __Func_80105d4(0x54, 0x1d, 1, 3, s1, s2);
+        __WaitFrames(0x3c);
+    }
+    s1 = 0x46;
+    s2 = 0x31;
+    __Func_80105d4(0x55, 0x1d, 1, 3, s1, s2);
+    var1 = 6;
+    __Func_8010704(var1, 0x31, 1, 1, var1, 0x32);
+    __Func_8010704(var1, 0x31, 1, 1, var1, 0x33);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009070.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20090b8.s");
 
