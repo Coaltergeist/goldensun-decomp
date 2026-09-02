@@ -274,7 +274,51 @@ void OvlFunc_925_200af18(void)
     __MapActor_SetPos(0x16, 0, 0);
     __MapActor_SetPos(0x18, 0, 0);
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b060.s");
+#include "actor.h"
+
+void OvlFunc_925_200b060(void)
+{
+    struct Actor *actor1;
+    struct Actor *actor2;
+    unsigned int i;
+    struct EffectData data;
+
+    actor1 = __MapActor_GetActor(0x16);
+    actor2 = __MapActor_GetActor(0x18);
+    __PlaySound(0xbe);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x16), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+
+    data.unk0 = 1;
+    data.unk4 = 5;
+    data.unk18 = 0x8e << 1;
+    data.unk8 = 0x6666;
+    data.unkc = 0xc0 << 10;
+
+    i = 0;
+    do {
+        __CutsceneWait(1);
+        if (i & 1) {
+            int x = actor1->pos.x + (((unsigned int)(__Random() * 24) >> 16) << 16) + 0xfff40000;
+            int y = actor1->pos.y + (((unsigned int)(__Random() << 5) >> 16) << 16) + (0x80 << 14);
+            OvlFunc_common0_10c(x, y, actor1->pos.z, 0, 0xfffc0000, 0, 0xd8 << 13, &data);
+        } else {
+            int x = actor2->pos.x + (((unsigned int)(__Random() * 24) >> 16) << 16) + 0xfff40000;
+            int y = actor2->pos.y + (((unsigned int)(__Random() << 5) >> 16) << 16) + (0x80 << 14);
+            OvlFunc_common0_10c(x, y, actor2->pos.z, 0, 0xfffc0000, 0, 0xd8 << 13, &data);
+        }
+        if (i == 0x14) {
+            call_8092950(0x16, 0x80);
+            call_8092950(0x18, 0x80);
+        }
+        i++;
+    } while (i <= 0x1f);
+
+    __Func_8092950(0x16, 0);
+    __Func_8092950(0x18, 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x16), 1);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 1);
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b1c0.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b208.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b324.s");
