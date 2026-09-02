@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7d768c (overlay file 952): consolidated TU — babis_palace map overlay. */
 
 #include "nonmatching.h"
@@ -161,25 +160,22 @@ extern unsigned char L4550[] __asm__(".Lm952_4550");
 
 void OvlFunc_952_200bdf8(void)
 {
-  unsigned short v;
-  int t;
+    int sp1 = 0x8000;
+    int sp2 = 0x4000;
+    int step = -16;
+    unsigned short v = 0xa;
 
-  __CutsceneStart();
-  __MapActor_SetSpeed(0, 0x8000, 0x4000);
-  __PlaySound(0x9e);
-  v = 0xa;
-  do { v = (unsigned short) v; } while (0);
-  __Func_8010560(L4550, 0x24, v);
-  t = 0x10;
-  {
-    register int p1 __asm__("r1") = 2;
-    __asm__ volatile ("" : : "r" (p1));
-    t = -t;
-    __Func_8092208(0, p1, t);
-  }
-  __CutsceneWait(0x10);
-  __Func_8091e9c(2);
-  __CutsceneEnd();
+    do { } while (sp1 == 0);
+
+    __CutsceneStart();
+    __MapActor_SetSpeed(0, sp1, sp2);
+    __PlaySound(0x9e);
+    do { v = (unsigned short) v; } while (0);
+    __Func_8010560(L4550, 0x24, v);
+    __Func_8092208(0, 2, step);
+    __CutsceneWait(16);
+    __Func_8091e9c(2);
+    __CutsceneEnd();
 }
 
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200be40.s");

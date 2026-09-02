@@ -472,7 +472,75 @@ void OvlFunc_924_2009790(void) {
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20097a8.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20098f8.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20099b8.s");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+extern int __GetFlag(int);
+extern void __Func_80933d4(int, int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __Func_8093530(void);
+
+extern void OvlFunc_924_200b860(void);
+extern void OvlFunc_924_200b948(void);
+extern void OvlFunc_924_20097a8(int);
+extern void OvlFunc_924_20098f8(void);
+extern void OvlFunc_924_20096c4(int);
+
+void OvlFunc_924_20099b8(void)
+{
+    struct Pk pk;
+    int flag = 0x307;
+
+    __CutsceneStart();
+    if (OvlFunc_924_2008758(&pk) != 0) {
+        if (pk.b == 8) {
+            if ((pk.x >> 20) == 11) {
+                OvlFunc_924_20088ec(pk);
+                __CutsceneWait(30);
+                __PlaySound(0xd3);
+                OvlFunc_924_200b860();
+                __CopyMapTiles(0x4c, 0x3c, 0x4a, 0x26, 3, 1);
+                __CopyMapTiles(0x4d, 0x3c, 0x4c, 0x26, 2, 1);
+                __CopyMapTiles(0x4b, 0x3a, 0x56, 0x29, 1, 3);
+                __CopyMapTiles(0x4b, 0x3b, 0x56, 0x2b, 1, 2);
+                __CopyMapTiles(0x4c, 0x3b, 0x50, 0x31, 2, 1);
+                __CopyMapTiles(0x4d, 0x3b, 0x52, 0x31, 2, 1);
+                __SetFlag(0x302);
+            } else {
+                pk.arg5 = OvlFunc_924_200b948;
+                __CopyMapTiles(0x4b, 0x39, 0x56, 0x29, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x56, 0x2a, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x56, 0x2b, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x56, 0x2c, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x50, 0x31, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x51, 0x31, 1, 1);
+                __CopyMapTiles(0x47, 0x3b, 0x52, 0x31, 1, 1);
+                __CopyMapTiles(0x4e, 0x3a, 0x53, 0x31, 1, 1);
+                OvlFunc_924_20088ec(pk);
+                __ClearFlag(0x302);
+            }
+        } else if (pk.b == 10) {
+            if ((pk.z >> 20) == 0x28) {
+                OvlFunc_924_20088ec(pk);
+                if (!__GetFlag(flag)) {
+                    __Func_80933d4(0xc0 << 9, 0xc0 << 6);
+                    __Func_80933f8(0x2ca0000, -1, 0x94 << 18, 1);
+                    __Func_8093530();
+                    __SetFlag(flag);
+                    OvlFunc_924_20097a8(5);
+                    __CutsceneWait(50);
+                } else {
+                    OvlFunc_924_20097a8(5);
+                }
+                __SetFlag(0x306);
+            } else if ((pk.z >> 20) == 0x2a) {
+                pk.arg5 = OvlFunc_924_20098f8;
+                OvlFunc_924_20088ec(pk);
+                OvlFunc_924_20096c4(5);
+                __ClearFlag(0x306);
+            }
+        }
+    }
+    __CutsceneEnd();
+}
 
 extern void OvlFunc_924_2009bf0(void);
 
@@ -523,7 +591,68 @@ void OvlFunc_924_200a504(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a51c.s");
+void OvlFunc_924_200a51c(void)
+{
+    int i;
+    int flag;
+    int x;
+    int val;
+    int base;
+    int new_var;
+    int new_var2;
+
+    __CutsceneStart();
+    i = 0;
+    flag = 0xcc << 2;
+    for (; i < 4; i++) {
+        x = *(int *)(__MapActor_GetActor(i + 15) + 8);
+        if (x < 0) {
+            x += 0xfffff;
+        }
+        val = x >> 20;
+        base = i << 2;
+        if (val == base + 0x27) {
+            __SetFlag(flag);
+            __ClearFlag(flag + 1);
+        } else {
+            base += 0x29;
+            if (val == base) {
+                __SetFlag(flag + 1);
+                __ClearFlag(flag);
+            } else {
+                __ClearFlag(flag);
+                __ClearFlag(flag + 1);
+            }
+        }
+        flag += 2;
+    }
+
+    x = *(int *)(__MapActor_GetActor(0x13) + 8);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    val = x >> 20;
+    if (val == 0x39) {
+        __SetFlag(0xce << 2);
+        __ClearFlag(0x339);
+        new_var = 0x3a;
+        new_var2 = 7;
+        __Func_8010704(0x35, 10, 1, 1, new_var, new_var2);
+    } else if (val == 0x3b) {
+        __SetFlag(0x339);
+        __ClearFlag(0xce << 2);
+        new_var = 0x3a;
+        new_var2 = 7;
+        __Func_8010704(0x35, 10, 1, 1, new_var, new_var2);
+    } else {
+        __ClearFlag(0xce << 2);
+        __ClearFlag(0x339);
+        new_var = 0x3a;
+        new_var2 = 7;
+        __Func_8010704(0x35, 11, 1, 1, new_var, new_var2);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_924_200a600(void)
 {
@@ -658,7 +787,56 @@ void OvlFunc_924_200b660(void)
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b6ac.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b788.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b860.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200b948.s");
+void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+void OvlFunc_924_200b948(void)
+{
+    struct EffectData data;
+    unsigned int uVar2;
+    unsigned int uVar3;
+    int iVar4;
+
+    __CopyMapTiles(0x4c, 0x3d, 0x4a, 0x26, 1, 1);
+    data.unk4 = 5;
+    data.unk8 = 0x8000;
+    data.unkc = 0x8000;
+    uVar3 = 0;
+    do {
+        uVar2 = 1;
+        iVar4 = -0x20000;
+        do {
+            if ((uVar2 & 1) != 0) {
+                if ((uVar2 & 2) != 0) {
+                    OvlFunc_common0_10c((0x69 - (__Random() * 5 >> 16)) << 16, 0,
+                                        iVar4 - (uVar3 << 19) + 0x22e0000, 0, 0, 0xffffc000, 0x90000, &data);
+                } else {
+                    OvlFunc_common0_10c(((uVar3 * 4 + uVar2) << 17) + 0xb70000, 0,
+                                        (0x26c - (__Random() * 5 >> 16)) << 16, 0x4000, 0, 0, 0x90000, &data);
+                }
+                __CutsceneWait(1);
+            }
+            uVar2++;
+            iVar4 -= 0x20000;
+        } while (uVar2 <= 7);
+        __CopyMapTiles(0x47, 0x3b, 0x46, 0x22 - uVar3, 1, 1);
+        __CopyMapTiles(0x47, 0x3b, uVar3 + 0x4b, 0x26, 1, 1);
+        uVar3++;
+    } while (uVar3 <= 2);
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200ba64.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bb24.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bbd4.s");

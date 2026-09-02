@@ -424,7 +424,90 @@ void *MercuryLighthouseEntrance_GetEvents(void) {
     return (void *)gOvl_0200ad60;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008fd8.s");
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+extern void OvlFunc_923_2008d98();
+extern unsigned char Lm923_2f4c[] __asm__(".Lm923_2f4c");
+extern int _divsi3_RAM(int, int);
+extern void __CopyMapTiles(int, int, int, int, int, int);
+void OvlFunc_923_2008fd8(void)
+{
+    int val;
+    int x;
+    unsigned int i;
+    int rx;
+    int ry;
+    int rz;
+    int div;
+    int s1;
+    int s2;
+    struct EffectData data;
+
+    x = *(int *)(__MapActor_GetActor(0) + 8);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    val = x >> 20;
+
+    x = *(int *)(__MapActor_GetActor(0) + 0x10);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    x >>= 20;
+
+    if (val == 0xc && x == 0x20) {
+        __CutsceneStart();
+        __Func_8091200(0x10000, 0);
+        __Func_8091254(0x3c);
+        __CutsceneWait(0x78);
+        __Func_8091200(0x10005, 1);
+        __Func_8091254(0x3c);
+        __CutsceneWait(0x28);
+
+        for (i = 0; i <= 14; i++) {
+            data.unk0 = 1;
+            data.unk18 = 0x8f << 1;
+            data.unk1c = (int)Lm923_2f4c;
+            __PlaySound(0xf6);
+
+            rx = 0xd0 - (((unsigned int)__Random() * 16) >> 16);
+            ry = (0x8c << 2) - (((unsigned int)__Random() * 16) >> 16);
+            rz = ((unsigned int)__Random() * 4) >> 16;
+            div = _divsi3_RAM((rz * 15 << 16) + (0xf0 << 14), 0x64);
+
+            OvlFunc_common0_10c(rx << 16, 0, ry << 16, 0, div, 0, 0x320001, &data);
+            __CutsceneWait(4);
+        }
+
+        __PlaySound(0xdc);
+        __CutsceneWait(0x3c);
+        __SetFlag(0x875);
+        __StartTask(OvlFunc_923_2008d98, 0xc8 << 4);
+        s1 = 5;
+        s2 = 3;
+        __CopyMapTiles(0x25, 0x62, 0xa, 0x61, s1, s2);
+        s1 = 6;
+        s2 = 0x20;
+        __Func_8010704(0x46, 0x20, 0xd, 7, s1, s2);
+        __Func_8091200(0x10000, 0);
+        __Func_8091254(0x3c);
+        __CutsceneWait(0x78);
+        __CutsceneEnd();
+    }
+}
 
 extern void __Func_8091e9c(int);
 

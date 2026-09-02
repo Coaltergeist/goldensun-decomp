@@ -28,12 +28,10 @@ OvlFunc_939_2008a90  src/maps/lunpa.c
 OvlFunc_939_20089d4  src/maps/lunpa.c
 Func_801fb48       src/ui/text.c
 OvlFunc_917_2008088  src/maps/kolima_forest_5.c
-OvlFunc_899_2009e80  src/maps/vault_rooms_1.c
 OvlFunc_899_200aba0  src/maps/vault_rooms_1.c
 OvlFunc_959_200975c  src/maps/lunpa_fortress.c
 OvlFunc_959_20097bc  src/maps/lunpa_fortress.c
 OvlFunc_925_200aeb8  src/maps/mercury_lighthouse_aerie.c
-OvlFunc_952_200bdf8  src/maps/babis_palace.c
 OvlFunc_958_2009080  src/maps/gondowan.c
 OvlFunc_959_200969c  src/maps/lunpa_fortress.c
 OvlFunc_944_200840c  src/maps/tolbi_bound_ship_top.c
