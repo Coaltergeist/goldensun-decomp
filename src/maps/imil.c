@@ -204,8 +204,44 @@ void OvlFunc_921_2008688(void) {
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20086c0.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20087a4.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200888c.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008974.s");
 extern void *__MapActor_GetActor(int);
+void OvlFunc_921_2008974(void)
+{
+    int w1 = 0x80 << 7;
+    int w2 = 0xa0 << 7;
+    int id1 = 0xf;
+    int id2 = 0xe;
+    short facing;
+
+    do { } while (w1 == 0);
+
+    facing = *(short *)((char *)__MapActor_GetActor(0) + 6);
+    if (__GetFlag(0x881) != 0) {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __Func_80b0278(0xc, 0xf);
+        } else {
+            __CutsceneStart();
+            __MapActor_Face(id1, 0, 0);
+            __MessageID(0x164f);
+            __ActorMessage(id1, 0);
+            __Func_8092adc(id1, w1, 0);
+            __CutsceneEnd();
+        }
+    } else {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __CutsceneStart();
+            __MessageID(0x1546);
+            __ActorMessage(id2, 0);
+            __Func_80b0278(0xc, 0xe);
+            __CutsceneEnd();
+        } else {
+            __MapActor_Face(id2, 0, 0xa);
+            __MessageID(0x1547);
+            __ActorMessage(id2, 0);
+            __Func_8092adc(id2, w2, 0xa);
+        }
+    }
+}
 extern void __Func_80b3284(int, int);
 void OvlFunc_921_2008a3c(void)
 {
