@@ -459,4 +459,81 @@ void OvlFunc_926_200c128(void)
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c140.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c1c4.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c1ec.s");
+INCLUDE_ASM("asm/maps/fuchin_temple/fuchin_temple_data.s");
+void __Func_8091220(int, int);
+void __Func_8091200(int, int);
+void __Func_8091254(int);
+unsigned int __Random(void);
+void __Func_8092950(int, int);
+
+extern void OvlFunc_926_200c1c4(void);
+struct Actor {
+    int pad0;
+    int pad4;
+    int x;
+    int y;
+    int z;
+    char pad14[0x58];
+    void (*update)(void);
+};
+
+struct EffectData {
+    int a;
+    int b;
+    int pad8;
+    int padc;
+    int pad10;
+    int pad14;
+    short f;
+    short pad1a;
+    int pad1c;
+    int pad20;
+    int pad24;
+};
+
+void OvlFunc_926_200c1ec(void)
+{
+    struct EffectData data;
+    struct Actor *actor;
+    unsigned int r7;
+    int x;
+    int y;
+    int z_offset;
+
+    __PlaySound(0x83);
+    ((struct Actor *)__MapActor_GetActor(8))->update = OvlFunc_926_200c1c4;
+    __CutsceneWait(0x28);
+    __Func_8091220(0x10000, 0);
+    __Func_8091200(0x205c54, 1);
+    __Func_8091254(0x3c);
+    __CutsceneWait(0x28);
+    __PlaySound(0x83);
+    ((struct Actor *)__MapActor_GetActor(2))->update = OvlFunc_926_200c1c4;
+    __CutsceneWait(0x78);
+    actor = (struct Actor *)__MapActor_GetActor(8);
+
+    data.a = 1;
+    data.b = 2;
+    data.f = 0x11d;
+
+    for (r7 = 0; r7 <= 0x3f; r7++) {
+        if ((r7 & 3) == 0) {
+            __PlaySound(0xf6);
+        }
+        x = actor->x + ((((__Random() * 3) << 4) >> 16) << 16) - 0xc0000;
+        y = actor->y + (((__Random() << 5) >> 16) << 16) - 0x100000;
+        z_offset = ((((__Random() * 4) >> 16) << 15) + 0x8000);
+        OvlFunc_common0_10c(x, y, actor->z, 0, z_offset, 0, 0x130000, &data);
+        __WaitFrames(2);
+    }
+
+    __PlaySound(0xdc);
+    __CutsceneWait(0x1e);
+    __Func_8091200(0x10000, 1);
+    __Func_8091254(0x3c);
+    __CutsceneWait(0x28);
+    ((struct Actor *)__MapActor_GetActor(8))->update = 0;
+    ((struct Actor *)__MapActor_GetActor(2))->update = 0;
+    __Func_8092950(8, 0);
+    __Func_8092950(2, 0);
+}

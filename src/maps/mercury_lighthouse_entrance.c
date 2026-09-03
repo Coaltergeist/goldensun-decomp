@@ -362,7 +362,6 @@ void OvlFunc_923_2008e84(void) {
     OvlFunc_923_2009ec8();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_d98_c_c_c_c.s");
 
 extern unsigned char gOvl_0200a928[];
 
@@ -515,7 +514,6 @@ void OvlFunc_923_2009144(void) {
     __Func_8091e9c(0x3f);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_e90_c_c_c_c.s");
 
 extern void __ClearFlag(int);
 extern void __MapActor_SetBehavior(int, void *);
@@ -553,7 +551,54 @@ INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20091b4.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009208.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/MercuryLighthouseEntrance_MapInit.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009730.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200996c.s");
+extern unsigned char iwram_3001ebc[];
+
+extern int __GetFlag(int);
+extern void __MapActor_SetPos(int, int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __MapTransitionIn(void);
+extern void __WaitMapTransition(void);
+extern void __MapActor_Face(int, int, int);
+extern void __MapActor_DoAnim(int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __Func_80925cc(int, int);
+void OvlFunc_923_200996c(void)
+{
+    int flag = 0x250;
+    int x = 0x880000;
+    int y = 0x900000;
+    unsigned char *actor;
+
+    do { } while (flag == 0);
+
+    if (!__GetFlag(flag)) {
+        __SetFlag(flag);
+        __CutsceneStart();
+        actor = (unsigned char *)__MapActor_GetActor(12);
+        *(int *)(actor + 0x18) = 0xffff0000;
+        actor = (unsigned char *)__MapActor_GetActor(13);
+        *(int *)(actor + 0x18) = 0xffff0000;
+        actor = (unsigned char *)__MapActor_GetActor(14);
+        *(int *)(actor + 0x18) = 0xffff0000;
+        __MapActor_SetPos(3, x, y);
+        __Func_8092adc(3, 0x4000, 10);
+        *(int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x201;
+        __MapTransitionIn();
+        __WaitMapTransition();
+        __CutsceneWait(60);
+        __MapActor_Face(3, 0, 0);
+        __MapActor_DoAnim(3, 3);
+        __CutsceneWait(30);
+        __MapActor_TravelToAnim(3, 0x88, 0x48);
+        __CutsceneWait(40);
+        __Func_80925cc(0, 1);
+        __MapActor_WaitMovement(3);
+        __MapActor_SetPos(3, 0, 0);
+        __SetFlag(0x872);
+        *(int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x204;
+        __CutsceneEnd();
+    }
+}
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009a3c.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009bc8.s");
@@ -639,4 +684,4 @@ void OvlFunc_923_200a3b8(void) {
     *(unsigned int *)((char *)r5 + 0x14) = 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/ovl_1a3c_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/mercury_lighthouse_entrance_data.s");

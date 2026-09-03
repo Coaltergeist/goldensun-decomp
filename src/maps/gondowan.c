@@ -492,6 +492,7 @@ void OvlFunc_958_20091d8(unsigned int arg0, int arg1)
 }
 
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20091f8.s");
+INCLUDE_ASM("asm/maps/gondowan/gondowan_data.s");
 
 void OvlFunc_958_2009380(void) {}
 
@@ -500,4 +501,63 @@ void OvlFunc_958_2009384(void) {
     __MapActor_SetPos(12, 0, 0);
 }
 
-INCLUDE_ASM("asm/maps/gondowan/Gondowan_MapInit.s");
+extern unsigned char Lconst_98[] __asm__(".Lconst_98");
+__asm__(".equ .Lconst_98, 0x98");
+
+extern unsigned char Lconst_9e[] __asm__(".Lconst_9e");
+__asm__(".equ .Lconst_9e, 0x9e");
+
+void __Actor_SetSpriteFlags(void *, int);
+int Gondowan_MapInit(void) {
+    int pos1_x = 0xdc << 17;
+    int pos1_y = 0x9a << 17;
+    int pos2_x = 0xae << 18;
+    int pos2_y = 0x90 << 17;
+    int actor8 = 8;
+    int actor9 = 9;
+    int actor10 = 10;
+    unsigned int r1;
+    unsigned int r2;
+    int arg5, arg6;
+
+    do {} while (pos1_x == 0);
+
+    r1 = 0xe0;
+    r1 <<= 1;
+    if (*(short *)((char *)&gState + r1) == (int)Lconst_98) {
+        __SetFlag(0x144);
+        if (__GetFlag(0x9a0) != 0) {
+            __MapActor_SetPos(0xb, 0, 0);
+        }
+    }
+
+    r2 = 0xe0;
+    r2 <<= 1;
+    if (*(short *)((char *)&gState + r2) == (int)Lconst_9e) {
+        r2 = 0xe1;
+        r2 <<= 1;
+        if (*(short *)((char *)&gState + r2) == 1) {
+            arg5 = 0x6b;
+            arg6 = 0x11;
+            __Func_8010704(0x6c, 0x11, 1, 1, arg5, arg6);
+        }
+
+        if (__GetFlag(0x9a2) != 0) {
+            __MapActor_SetPos(actor8, pos1_x, pos1_y);
+            __MapActor_SetAnim(actor8, 2);
+            arg5 = 0x1b;
+            arg6 = 0x13;
+            __Func_8010704(0x1d, 0x13, 1, 1, arg5, arg6);
+        }
+
+        if (__GetFlag(0x9a5) != 0) {
+            __MapActor_SetPos(actor9, 0, 0);
+            __MapActor_SetPos(actor10, pos2_x, pos2_y);
+            __MapActor_SetAnim(actor10, 2);
+        }
+
+        __Actor_SetSpriteFlags(__MapActor_GetActor(0xc), 0);
+    }
+
+    return 0;
+}

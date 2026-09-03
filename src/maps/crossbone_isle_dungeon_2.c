@@ -376,7 +376,6 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_314_c_c.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_GetEntrances.s");
 
@@ -683,7 +682,188 @@ void OvlFunc_947_200a694(int arg0)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a6b8.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/CrossboneIsleDungeon2_MapInit.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/crossbone_isle_dungeon_2_data.s");
+extern unsigned char iwram_3001ebc[];
+struct Bss36d0Entry {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+};
+extern struct Bss36d0Entry bss_36d0[];
+
+extern unsigned char Const74[] __asm__(".Lconst_74");
+__asm__(".equ .Lconst_74, 0x74");
+extern unsigned char Const77[] __asm__(".Lconst_77");
+__asm__(".equ .Lconst_77, 0x77");
+extern unsigned char Const79[] __asm__(".Lconst_79");
+__asm__(".equ .Lconst_79, 0x79");
+extern unsigned char Const7A[] __asm__(".Lconst_7a");
+__asm__(".equ .Lconst_7a, 0x7a");
+
+extern void OvlFunc_947_2008ba4(int);
+extern void __Func_80105d4();
+extern int __GetFlag();
+extern void OvlFunc_947_2008ec8(int);
+extern void OvlFunc_common0_70(int, int, int, int);
+extern void __Func_8091494();
+extern void OvlFunc_947_2009d84(void);
+extern void __CutsceneWait();
+extern void __StartTask();
+extern void OvlFunc_947_200a6b8(void);
+extern void OvlFunc_947_200a4cc(void);
+extern void OvlFunc_947_200a5f8(int);
+extern void OvlFunc_947_200a63c(int);
+
+int CrossboneIsleDungeon2_MapInit(void)
+{
+    unsigned int i;
+    unsigned int r5;
+    int off;
+    int base;
+    int val;
+    int val0;
+    int val40;
+    int val1;
+    int val2;
+    int val18;
+    int val8;
+    int val16;
+    int val10;
+    int zero;
+    int val_c0;
+    int val_c;
+    int x;
+    int y;
+    int mapId;
+    unsigned char v;
+    unsigned char *actor;
+    unsigned char *ptr;
+
+    off = 0xe0;
+    base = *(int *)iwram_3001ebc;
+    val = 0x81 << 2;
+    off <<= 1;
+    *(int *)(base + off) = val;
+
+    mapId = *(short *)((char *)&gState + off);
+    if (mapId == (int)Const74) {
+        OvlFunc_947_2008ba4(8);
+        OvlFunc_947_2008ba4(9);
+        OvlFunc_947_2008ba4(10);
+        OvlFunc_947_2008ba4(11);
+        OvlFunc_947_2008ba4(12);
+    } else if (mapId == (int)Const77) {
+        val0 = 0;
+        val40 = 0x40;
+        __Func_80105d4(0x20, 0, 0x40, 0x20, val0, val40);
+        OvlFunc_947_2008ba4(8);
+        OvlFunc_947_2008ba4(9);
+        OvlFunc_947_2008ba4(10);
+        OvlFunc_947_2008ba4(11);
+        OvlFunc_947_2008ba4(12);
+        OvlFunc_947_2008ba4(13);
+        OvlFunc_947_2008ba4(14);
+        OvlFunc_947_2008ba4(15);
+        if (__GetFlag(0x109) != 0) {
+            if (__GetFlag(0x80 << 2) != 0) {
+                val1 = 1;
+                val2 = 2;
+                __CopyMapTiles(0x4f, 0x22, 0x54, 0x18, val1, val2);
+                __CopyMapTiles(0, 0x20, 0x20, 0, 0x20, 0x20);
+                __CopyMapTiles(0x20, 0x20, 0x40, 0, 0x20, 0x20);
+                OvlFunc_947_2008ec8(9);
+                OvlFunc_947_2008ec8(10);
+                OvlFunc_947_2008ec8(11);
+                OvlFunc_947_2008ec8(12);
+                OvlFunc_947_2008ec8(13);
+                OvlFunc_947_2008ec8(14);
+                OvlFunc_947_2008ec8(15);
+                val18 = 0x18;
+                val8 = 8;
+                __Func_8010704(0x18, 3, 1, 1, val18, val8);
+            }
+        }
+    } else if (mapId == (int)Const79) {
+        OvlFunc_common0_70(0x92 << 18, 0, 0xc8 << 16, 0xdf);
+        if (__GetFlag(0x109) == 0) {
+            ((unsigned char *)__MapActor_GetActor(0))[0x62] = 1;
+        }
+        __Func_8091494(0);
+        if (((unsigned char *)__MapActor_GetActor(0))[0x62] == 0) {
+            OvlFunc_947_200a09c();
+        }
+        OvlFunc_947_200a694(8);
+        OvlFunc_947_200a694(9);
+        OvlFunc_947_200a694(10);
+        OvlFunc_947_200a694(11);
+
+        val = 0x80;
+        for (i = 0; i <= 3; i++) {
+            bss_36d0[i].unk0 = 0;
+            bss_36d0[i].unk4 = 0;
+            bss_36d0[i].unk8 = 0;
+            bss_36d0[i].unk10 = i + (val << 2);
+        }
+
+        OvlFunc_947_2009d84();
+        __CutsceneWait(1);
+        __StartTask(OvlFunc_947_200a6b8, 0xc8 << 4);
+
+        if (__GetFlag(0x109) != 0) {
+            for (r5 = 8; ; r5++) {
+                if (r5 > 11) break;
+                actor = (unsigned char *)__MapActor_GetActor(r5);
+                x = *(int *)(actor + 8) >> 20;
+                if (x == 0x25) {
+                    y = *(int *)(actor + 0x10) >> 20;
+                    if (y == 9) {
+                        __Func_8010704(0x1b, 8, 1, 1, x, y);
+                        break;
+                    }
+                }
+            }
+        }
+    } else {
+        off = 0xe0 << 1;
+        if (*(short *)((char *)&gState + off) == (int)Const7A) {
+            zero = 0;
+            __MapActor_SetAnim(10, 2);
+            __Func_8092950(10, 6);
+            OvlFunc_947_2008ba4(8);
+            OvlFunc_947_2008ba4(9);
+            ((unsigned char *)__MapActor_GetActor(8))[0x55] = zero;
+            ((unsigned char *)__MapActor_GetActor(9))[0x55] = zero;
+            OvlFunc_947_200a4cc();
+            OvlFunc_947_200a5f8(11);
+            OvlFunc_947_200a5f8(12);
+            OvlFunc_947_200a5f8(13);
+            OvlFunc_947_200a63c(11);
+            OvlFunc_947_200a63c(12);
+            OvlFunc_947_200a63c(13);
+            *(int *)((char *)__MapActor_GetActor(13) + 0x6c) = zero;
+            OvlFunc_947_200a5f8(14);
+            ptr = (unsigned char *)__MapActor_GetActor(14);
+            ptr += 0x59;
+            v = 8;
+            v |= *ptr;
+            *ptr = v;
+            if (__GetFlag(0x202) == 0) {
+                val_c0 = 0xc0 << 9;
+                *(int *)((char *)__MapActor_GetActor(13) + 0x18) = val_c0;
+                *(int *)((char *)__MapActor_GetActor(13) + 0x1c) = val_c0;
+                val_c = 0xc;
+                *(unsigned char *)(*(int *)((char *)__MapActor_GetActor(13) + 0x50) + 9) |= val_c;
+                *(unsigned char *)(*(int *)((char *)__MapActor_GetActor(14) + 0x50) + 9) |= val_c;
+                val16 = 0x16;
+                val10 = 0x10;
+                __Func_8010704(0x1a, 0xc, 1, 1, val16, val10);
+            }
+        }
+    }
+
+    return 0;
+}
 
 /* overlay-owned data blobs (no .text) */
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/ovl_2d64.s");

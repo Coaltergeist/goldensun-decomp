@@ -349,4 +349,49 @@ void OvlFunc_956_200a2f4(unsigned int arg0, unsigned int arg1, unsigned int arg2
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a330.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a4d0.s");
+INCLUDE_ASM("asm/maps/colosseum_final_3/colosseum_final_3_data.s");
+void OvlFunc_956_200a4d0(void *arg0)
+{
+    unsigned int r3;
+    unsigned int r2;
+    int r6;
+
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    if (*(short *)r3 == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    __CutsceneStart();
+    r6 = OvlFunc_common1_4cc(arg0, 6);
+    if (r6 == 0) {
+        __MessageID(0x20c7);
+        __Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        __Func_80933f8(0xa1 << 19, -1, 0x98 << 16, 1);
+        __Func_8093530();
+        __CutsceneWait(0x1e);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1490(0xb4, 0x58, 0);
+        __CutsceneWait(0x3c);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_14f4(0x20, 0x54, 10);
+        __CutsceneWait(0x1e);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_14f4(0x60, 0x54, 0x1e);
+        __CutsceneWait(0x3c);
+        __ActorMessage(arg0, 0);
+        OvlFunc_common1_1550();
+        __CutsceneWait(2);
+        __SetCameraTarget(0, 0);
+        OvlFunc_common1_588(arg0, 6);
+    } else if (r6 == 1) {
+        __MessageID(0x20c6);
+        __ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(r6, arg0, 6);
+    __CutsceneEnd();
+}

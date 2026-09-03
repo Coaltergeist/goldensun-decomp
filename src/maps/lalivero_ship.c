@@ -107,6 +107,29 @@ void OvlFunc_970_2009188(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20092ac.s");
+#include "dma.h"
+
+extern short Lm970_1c18 __asm__(".Lm970_1c18");
+extern short Lm970_1c1a __asm__(".Lm970_1c1a");
+
+extern void OvlFunc_970_20091c4(void);
+
+static inline void *alloc_ewram_helper(int size)
+{
+    return __alloc_ewram(size << 1);
+}
+
+void OvlFunc_970_20092ac(void)
+{
+    void *gfx;
+
+    gfx = alloc_ewram_helper(0x80);
+    Lm970_1c1a = __AllocSpriteSlot();
+    DMA3_FILL(gfx, 0x11111111, 0x100);
+    __UploadSpriteGFX(Lm970_1c1a, 0x80 << 1, gfx);
+    Lm970_1c18 = 0x30;
+    __StartTask(OvlFunc_970_20091c4, 0xc80);
+}
 
 INCLUDE_ASM("asm/maps/lalivero_ship/imports.s");
+INCLUDE_ASM("asm/maps/lalivero_ship/lalivero_ship_data.s");
