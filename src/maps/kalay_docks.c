@@ -116,7 +116,74 @@ void OvlFunc_942_20086a8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_20086c8.s");
+extern void __CutsceneStart(void);
+extern void __CutsceneWait(int);
+extern void __CutsceneEnd(void);
+void __SetFlag(int);
+void __Func_8092adc(int, int, int);
+extern void __MapActor_Face(int, int, int);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __MapActor_Emote(int, int, int);
+extern int __Func_8091c7c(int, int);
+void OvlFunc_942_20086c8(void)
+{
+    extern unsigned int iwram_3001ebc;
+  int emote1 = 0x80 << 1;
+  int emote2 = 0x81 << 1;
+  int flag = 0x8a8;
+  int id = 0xb;
+  unsigned short *base;
+
+  do { } while (emote1 == 0);
+
+  __CutsceneStart();
+  if (__GetFlag(flag) != 0)
+  {
+    __MapActor_Face(id, 0, 0);
+    __CutsceneWait(0x14);
+    __MessageID(0x1f1c);
+    __ActorMessage(id, 0);
+    __CutsceneEnd();
+    return;
+  }
+
+  __CutsceneWait(0x14);
+  __MapActor_Emote(id, emote1, 0x32);
+  __MapActor_Face(id, 0, 0);
+  __CutsceneWait(0x14);
+  __MessageID(0x1f18);
+  __ActorMessage(id, 0);
+  if (__GetFlag(0x8a6) != 0)
+  {
+    __CutsceneWait(0x14);
+    __MapActor_Emote(id, emote2, 0x28);
+    __ShowActorMessage_NoWait(id, 0);
+    if (__Func_8091c7c(0, 0) == 0)
+    {
+      __CutsceneWait(0x14);
+      __ActorMessage(id, 0);
+      __SetFlag(flag);
+    }
+    else
+    {
+      __CutsceneWait(10);
+      base = (unsigned short *)iwram_3001ebc;
+      base[0xec] += 1;
+      __ActorMessage(id, 0);
+      __CutsceneWait(10);
+      __Func_8092adc(id, 0, 0);
+      __CutsceneWait(0x1e);
+    }
+  }
+  else
+  {
+    __CutsceneWait(10);
+    __Func_8092adc(id, 0, 0);
+    __CutsceneWait(0x1e);
+  }
+  __CutsceneEnd();
+}
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_930__020096b8[30];
 extern unsigned char Lm942_16ce[] __asm__(".Lm942_16ce");
@@ -127,15 +194,12 @@ __asm__(".equ .Lconst_6b, 0x6b");
 extern unsigned char Lconst_70[] __asm__(".Lconst_70");
 __asm__(".equ .Lconst_70, 0x70");
 
-extern void __CutsceneStart(void);
 extern void __PlaySound(int);
 extern void __MapActor_SetSpeed(int, int, int);
 extern void __Func_8092b08(int, int);
 extern void __MapActor_TravelToAnim(int, int, int);
 extern void __Func_8010560(void *, int, int);
-extern void __CutsceneWait(int);
 extern void __Func_8091e9c(int);
-extern void __CutsceneEnd(void);
 
 void OvlFunc_942_20087dc(void)
 {
@@ -164,10 +228,8 @@ void OvlFunc_942_20087dc(void)
 }
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_MapInit.s");
 extern void __ClearFlag(int);
-void __SetFlag(int);
 void OvlFunc_942_2008ba0(void);
 void __MapActor_SetPos(int, int, int);
-void __Func_8092adc(int, int, int);
 
 void OvlFunc_942_20088cc(void) {
     int pos_x = 0xb0 << 15;
