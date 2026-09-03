@@ -208,7 +208,64 @@ void OvlFunc_909_20084c0(void) {
 
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20084ec.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008568.s");
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20085f4.s");
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __MapActor_DoAnim(int, int);
+extern void __MapActor_SetPos(int, int, int);
+extern void __SetFlag(int);
+void OvlFunc_909_20085f4(void)
+{
+    extern int __GetFlag(int);
+    extern void __CutsceneStart(void);
+    extern void __MapActor_Face(int, int, int);
+    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_TravelToAnimWait(int, int, int);
+    extern void __Func_8092adc(int, int, int);
+    extern void __MapActor_DoAnim(int, int);
+    extern void __CutsceneWait(int);
+    extern void __MessageID(int);
+    extern void __ActorMessage_Wait(int, int, int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __SetFlag(int);
+    extern void __CutsceneEnd(void);
+
+    unsigned char *base;
+    int sp1_1 = 0x9999;
+    int sp2_1 = 0x4ccc;
+    int x1 = 0x26e;
+    int y1 = 0x2fc;
+    int val = 0xf000;
+    int sp1_2 = 0xcccc;
+    int sp2_2 = 0x6666;
+    int x2 = 0x23a;
+    int y2 = 0x2f6;
+    int actor = 0x13;
+
+    if (__GetFlag(0x84e) != 0) {
+        do { } while (sp1_1 == 0);
+        __CutsceneStart();
+        __MapActor_Face(0, actor, 0);
+        __MapActor_SetSpeed(actor, sp1_1, sp2_1);
+        __MapActor_TravelToAnimWait(actor, x1, y1);
+        __Func_8092adc(actor, val, 0x14);
+        __MapActor_DoAnim(actor, 3);
+        __MapActor_DoAnim(0x11, 3);
+        __CutsceneWait(0x14);
+        __MapActor_Face(actor, 0, 0);
+        __CutsceneWait(0x14);
+        __MapActor_DoAnim(actor, 3);
+        __MessageID(0x1749);
+        __ActorMessage_Wait(actor, 0, 0xa);
+        __MapActor_SetSpeed(actor, sp1_2, sp2_2);
+        __MapActor_TravelToAnimWait(actor, x2, y2);
+        __MapActor_SetPos(actor, 0, 0);
+        base = iwram_3001ebc;
+        *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+        __SetFlag(0x85e);
+        __SetFlag(0x333);
+        __CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_MapInit.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20088c0.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200979c.s");

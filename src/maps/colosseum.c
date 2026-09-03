@@ -175,7 +175,47 @@ void OvlFunc_953_200850c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200855c.s");
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_TurnToFaceActor(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+void OvlFunc_953_200855c(void) {
+    extern void __CutsceneStart(void);
+    extern void __Func_80925cc(int, int);
+    extern void __MessageID(int);
+    extern void __ActorMessage_Wait(int, int, int);
+    extern int __GetFlag(int);
+    extern void __CutsceneWait(int);
+    extern void OvlFunc_953_2009c5c(int, int);
+    extern void OvlFunc_953_2009c48(int);
+    extern void __MapActor_TurnToFaceActor(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void __MapActor_Emote(int, int, int);
+    extern void __SetFlag(int);
+    extern void __CutsceneEnd(void);
+
+    int flag = 0x3c1;
+    do { } while (flag == 0);
+
+    __CutsceneStart();
+    __Func_80925cc(0x10, 2);
+    __MessageID(0x211b);
+    __ActorMessage_Wait(0x10, 0, 0x14);
+    if (__GetFlag(flag)) {
+        __CutsceneWait(0x14);
+    } else {
+        OvlFunc_953_2009c5c(0x11, 0);
+        __Func_80925cc(0x11, 1);
+        OvlFunc_953_2009c48(0x11);
+        __MapActor_TurnToFaceActor(0x11, 0, 0x14);
+        __MapActor_SetAnim(0x11, 4);
+        OvlFunc_953_2009c48(0x11);
+        __MapActor_Emote(0x11, 0x105, 0x28);
+        OvlFunc_953_2009c48(0x11);
+        OvlFunc_953_2009c5c(0x11, 0x5000);
+        __SetFlag(flag);
+    }
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_953_20085f0(void)
@@ -199,7 +239,38 @@ void OvlFunc_953_20085f0(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2008648.s");
+extern void __MapActor_DoAnim(int, int);
+void OvlFunc_953_2008648(void)
+{
+    extern void __CutsceneStart(void);
+    extern void __MapActor_TurnToFaceActor(int, int, int);
+    extern void __MessageID(int);
+    extern void OvlFunc_953_2009c48(int);
+    extern void __Func_8092adc(int, int, int);
+    extern void __MapActor_DoAnim(int, int);
+    extern void OvlFunc_953_2009c5c(int, int);
+    extern void __CutsceneEnd(void);
+
+    int a = 0xd0 << 8;
+    int b = 0xb0 << 8;
+    int c = 0x80 << 8;
+
+    do { } while (a == 0);
+
+    __CutsceneStart();
+    __MapActor_TurnToFaceActor(0x12, 0, 0x14);
+    __MessageID(0x2122);
+    OvlFunc_953_2009c48(0x12);
+    __Func_8092adc(0x12, a, 0x14);
+    __Func_8092adc(0x12, b, 0x14);
+    __Func_8092adc(0x12, c, 0x28);
+    __MapActor_TurnToFaceActor(0x12, 0, 0x14);
+    OvlFunc_953_2009c48(0x12);
+    __MapActor_DoAnim(0x12, 3);
+    OvlFunc_953_2009c48(0x12);
+    OvlFunc_953_2009c5c(0x12, 0x5000);
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_953_20086bc(void)
