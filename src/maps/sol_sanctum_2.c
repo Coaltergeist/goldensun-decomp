@@ -499,7 +499,39 @@ void OvlFunc_891_200a244(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200a2f4.s");
+void OvlFunc_891_200a2f4(void)
+{
+    extern void OvlFunc_891_2008098(void);
+
+    int f817 = 0x817;
+    int f816 = 0x816;
+
+    do { } while (f817 == 0);
+
+    __CutsceneStart();
+    if (__GetFlag(0x818) == 0 && __GetFlag(f817) == 0) {
+        __Func_80933d4(0x80 << 10, 0x80 << 7);
+        __Func_80933f8(0x11e0000, -1, 0x920000, 1);
+        __Func_8093530();
+        __PlaySound(0xba);
+        {
+            unsigned short t1 = 4;
+            unsigned short t2 = 3;
+            __CopyMapTiles(4, 0x3b, 0x11, 0x26, t1, t2);
+        }
+        if (__GetFlag(f816) != 0) {
+            unsigned short t1 = 2;
+            __CopyMapTiles(8, 0x3c, 0x11, 0x27, t1, t1);
+        }
+        __Func_8092adc(0, 0x8000, 0);
+        __CutsceneWait(0x1e);
+        __SetFlag(f817);
+        if (__GetFlag(f816) != 0) {
+            OvlFunc_891_2008098();
+        }
+    }
+    __CutsceneEnd();
+}
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 

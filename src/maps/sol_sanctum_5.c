@@ -30,6 +30,30 @@ void *SolSanctum5_GetEvents(void) {
     return (void *)gOvl_02008148;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_5/SolSanctum5_MapInit.s");
+extern unsigned char iwram_3001ebc[];
+
+int __GetFlag(int);
+void __Func_8091ff0(int);
+void __Func_8012330(int, int, int);
+void __StartEarthquake(void);
+
+static inline void Func_8012330_pos(int x, int y, int z) {
+    __Func_8012330(x << 9, y << 9, z << 9);
+}
+
+int SolSanctum5_MapInit(void) {
+    unsigned char *base;
+
+    base = *(unsigned char **)iwram_3001ebc;
+    *(int *)(base + 0x1c0) = 0x204;
+    *(int *)(base + 0x1c8) = 0x10;
+    if (__GetFlag(0x814) != 0) {
+        __Func_8091ff0(0x8d);
+        Func_8012330_pos(0x80, 0x80, 0x80);
+        __StartEarthquake();
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/maps/sol_sanctum_5/imports.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_5/sol_sanctum_5_data.s");

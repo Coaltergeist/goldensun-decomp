@@ -203,7 +203,48 @@ void OvlFunc_895_20087d0(void)
     }
 }
 INCLUDE_ASM("asm/maps/sol/Sol_MapInit.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200892c.s");
+extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
+extern unsigned char Lm895_269c_arr[] __asm__(".Lm895_269c");
+extern void OvlFunc_895_2009ac8(void);
+
+void __SetFlag(int);
+int __GetFlag(int);
+void __StartTask(void *, int);
+void __Func_8010704(int, int, int, int, int, int);
+void __MapActor_SetPos(int, int, int);
+
+void OvlFunc_895_200892c(void) {
+    extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
+    extern unsigned char Lm895_269c_arr[] __asm__(".Lm895_269c");
+    extern void OvlFunc_895_2009ac8(void);
+
+    int x = 0x780000;
+    int y = 0xe80000;
+    int s;
+
+    do { } while (x == 0);
+
+    __SetFlag(0x144);
+    *(int *)(*(unsigned char **)iwram_3001ebc_arr + 0x1c0) = 0x100;
+    if (__GetFlag(0x814) != 0) {
+        int zero = 0;
+        *(int *)Lm895_269c_arr = zero;
+        __StartTask(OvlFunc_895_2009ac8, 0xc80);
+    }
+    if (__GetFlag(0x879) != 0) {
+        __Func_8010704(5, 6, 1, 1, 6, 6);
+        __Func_8010704(5, 6, 1, 1, 7, 6);
+        __Func_8010704(5, 6, 1, 1, 8, 6);
+        __Func_8010704(0, 1, 3, 1, 6, 5);
+    }
+    if (__GetFlag(0x815) != 0) {
+        __MapActor_SetPos(8, x, y);
+        s = 14;
+        __Func_8010704(2, 10, 1, 1, 6, s);
+        __Func_8010704(2, 10, 1, 1, 7, s);
+        __Func_8010704(2, 10, 1, 1, 8, s);
+    }
+}
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008a24.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008d1c.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008f8c.s");
@@ -223,6 +264,35 @@ void OvlFunc_895_2009aac(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2009ac8.s");
+extern int Lm895_269c_i __asm__(".Lm895_269c");
+extern void __Func_8012330(int, int, int);
+extern unsigned int __Random(void);
+
+static inline void Func_8012330_shift(int a, int b, int c)
+{
+    __Func_8012330(a << 9, b << 10, c << 9);
+}
+
+static inline void Func_8012330_neg(int a, int b, int c)
+{
+    __Func_8012330(-a, -b, c);
+}
+
+void OvlFunc_895_2009ac8(void)
+{
+    if (Lm895_269c_i != 0) {
+        Lm895_269c_i--;
+        if (Lm895_269c_i == 0x28) {
+            Func_8012330_neg(1, 1, 0xe666);
+        }
+    } else {
+        if (((__Random() * 0x78) >> 16) == 0) {
+            __PlaySound(0x8a);
+            Func_8012330_shift(0x80, 0x80, 0x80);
+            Lm895_269c_i = 0x50;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/maps/sol/imports.s");
+INCLUDE_ASM("asm/maps/sol/sol_data.s");
