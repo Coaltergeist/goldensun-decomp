@@ -142,7 +142,60 @@ void OvlFunc_936_2008420(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008464.s");
+struct TableEntry {
+    void *unk0;
+    unsigned short unk4;
+    unsigned short unk6;
+};
+extern struct TableEntry Lm936_50e0[] __asm__(".Lm936_50e0");
+
+void OvlFunc_936_2008464(void) {
+    /* iwram_3001ebc is a file-scope unsigned int scalar (:270); this fn needs the
+       array view of the same symbol. Callees are left implicit, matching the
+       standalone match (implicit decls are block-scoped, no sibling leak). */
+    extern unsigned char iwram_3001ebc__arr[] __asm__("iwram_3001ebc");
+    unsigned int map;
+    unsigned int i;
+    unsigned char *actor;
+    short *p;
+    int v;
+    int arg1, arg2;
+    int a = 0x8000;
+    int b = 0x4000;
+    int c = -8;
+
+    while (a == 0) {}
+
+    map = *(unsigned int *)iwram_3001ebc__arr;
+    __CutsceneStart();
+
+    for (i = 8; i <= 0x41; i++) {
+        actor = (unsigned char *)__MapActor_GetActor(i);
+        if (actor != 0) {
+            *(actor + 0x55) = 0;
+        }
+    }
+
+    p = (short *)(map + (0xb6 << 1));
+    v = *p - 1;
+    __PlaySound(0x9e);
+
+    arg1 = Lm936_50e0[v].unk4;
+    arg2 = Lm936_50e0[v].unk6;
+    __Func_8010560(Lm936_50e0[v].unk0, arg1, arg2);
+
+    __MapActor_SetSpeed(0, a, b);
+
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
+
+    __MapActor_SetAnim(0, 2);
+    __Func_8092208(0, 2, c);
+    __CutsceneWait(10);
+    __Func_8091e9c(*p);
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 void OvlFunc_936_2008504(void) {
     int size;
     unsigned char *actor;

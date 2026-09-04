@@ -114,7 +114,110 @@ void OvlFunc_920_20084e8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_2008538.s");
+void OvlFunc_920_2008538(void)
+{
+    /* iwram_3001ebc is a file-scope array (:98); this fn needs the pointer view of
+       the same symbol (one load of the stored pointer). __Actor_SetSpriteFlags is
+       declared file-scope (:7) and OvlFunc_920_2008904 is defined below (:142) as
+       a no-arg stub; both are left to those (calls are codegen-identical). */
+    extern void *iwram_3001ebc__ptr __asm__("iwram_3001ebc");
+    void *__MapActor_GetActor(int);
+    void __MapActor_SetAnim(int, int);
+    void __MapActor_SetPos(int, int, int);
+    int __GetFlag(int);
+    void __Func_8092b08(int, int);
+    void __Func_8010704(int, int, int, int, int, int);
+
+    unsigned char *ptr;
+    int mask = 2;
+    int a, b;
+    int pos_y = 0x23a0000;
+    int pos_z = 0x1780000;
+    do { } while (pos_z == 0);
+
+    *(int *)((char *)iwram_3001ebc__ptr + 0x1c0) = 0x204;
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x12), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x13), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x14), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x15), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x16), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x17), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x19), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x1a), 0);
+
+    __MapActor_SetAnim(0x12, 5);
+    __MapActor_SetAnim(0x13, 5);
+    __MapActor_SetAnim(0x14, 5);
+    __MapActor_SetAnim(0x15, 5);
+    __MapActor_SetAnim(0x16, 5);
+    __MapActor_SetAnim(0x17, 3);
+    __MapActor_SetAnim(0x18, 3);
+    __MapActor_SetAnim(0x19, 3);
+    __MapActor_SetAnim(0x1a, 3);
+
+    __MapActor_SetAnim(9, 2);
+    __MapActor_SetAnim(10, 2);
+    __MapActor_SetAnim(11, 2);
+    __MapActor_SetAnim(12, 2);
+    __MapActor_SetAnim(13, 2);
+    __MapActor_SetAnim(14, 2);
+
+    OvlFunc_920_2008904(0x12);
+    OvlFunc_920_2008904(0x13);
+    OvlFunc_920_2008904(0x14);
+    OvlFunc_920_2008904(0x15);
+    OvlFunc_920_2008904(0x16);
+    OvlFunc_920_2008904(0x17);
+    OvlFunc_920_2008904(0x18);
+    OvlFunc_920_2008904(0x19);
+    OvlFunc_920_2008904(0x1a);
+
+    OvlFunc_920_2008904(9);
+    OvlFunc_920_2008904(10);
+    OvlFunc_920_2008904(11);
+    OvlFunc_920_2008904(12);
+    OvlFunc_920_2008904(13);
+    OvlFunc_920_2008904(14);
+
+    if (__GetFlag(0x883)) {
+        __MapActor_SetPos(8, 0, 0);
+        __MapActor_SetAnim(0xf, 5);
+        *(unsigned char *)((char *)__MapActor_GetActor(0xf) + 0x55) = 0;
+        *(int *)((char *)__MapActor_GetActor(0xf) + 0xc) = 0xfffc0000;
+        ptr = (unsigned char *)__MapActor_GetActor(0xf) + 0x23;
+        *ptr = mask | *ptr;
+        __Func_8092b08(0xf, 2);
+        a = 0x12;
+        b = 0xe;
+        __Func_8010704(0, 0, 1, 1, a, b);
+    } else {
+        __MapActor_SetAnim(8, 2);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+        __MapActor_SetAnim(0xf, 1);
+    }
+
+    __MapActor_SetAnim(0x10, 1);
+
+    if (__GetFlag(0x302)) {
+        __MapActor_SetAnim(0x11, 1);
+        __Func_8010704(0, 1, 1, 1, 0x24, 0x16);
+        __Func_8010704(0, 2, 1, 1, 0x24, 0x18);
+    } else {
+        __MapActor_SetAnim(0x11, 5);
+        __Func_8010704(1, 1, 1, 1, 0x24, 0x16);
+        __Func_8010704(1, 2, 1, 1, 0x24, 0x18);
+    }
+
+    if (__GetFlag(0x303)) {
+        __MapActor_SetPos(0xb, pos_y, pos_z);
+    }
+
+    if (__GetFlag(0x304)) {
+        __MapActor_SetPos(0xc, pos_y, pos_z);
+    }
+}
 
 extern unsigned char iwram_3001ebc__a1 __asm__("iwram_3001ebc");
 

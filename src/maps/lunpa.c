@@ -308,7 +308,73 @@ void OvlFunc_939_2008b0c(void)
     __ClearFlag(0x243);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008b6c.s");
+struct TableEntry {
+    void *unk0;
+    unsigned short unk4;
+    unsigned short unk6;
+};
+extern struct TableEntry Lm939_250c[] __asm__(".Lm939_250c");
+
+static inline void CallFunc(int unk4, int unk6, void *unk0) {
+    __Func_8010560(unk0, unk4, unk6);
+}
+
+void OvlFunc_939_2008b6c(void)
+{
+    /* Block-scoped decls keep these prototypes out of the sibling C fns below.
+       __MapActor_GetActor is declared file-scope above (unsigned char*, :39).
+       iwram_3001ebc is an unsigned int scalar at file scope (:230); this fn
+       needs the array view of the same symbol (single pointer load). */
+    extern void __CutsceneStart(void);
+    extern void __PlaySound(int);
+    extern void __Func_8010560(void *, int, int);
+    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void __Func_8092208(int, int, int);
+    extern void __CutsceneWait(int);
+    extern void __Func_8091e9c(int);
+    extern void __MapTransitionOut(void);
+    extern void __WaitMapTransition(void);
+    extern void __CutsceneEnd(void);
+    extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
+
+    int speed_x = 0x8000;
+    int speed_y = 0x4000;
+    int step = -8;
+    unsigned char *base;
+    unsigned int i;
+    int actor;
+    short *p;
+    int index;
+
+    do { } while (speed_x == 0);
+
+    base = *(unsigned char **)iwram_3001ebc_arr;
+    __CutsceneStart();
+    for (i = 8; i <= 0x41; i++) {
+        actor = __MapActor_GetActor(i);
+        if (actor != 0) {
+            *(unsigned char *)(actor + 0x55) = 0;
+        }
+    }
+    __PlaySound(0x9e);
+    p = (short *)(base + (0xb6 << 1));
+    index = *p - 4;
+    CallFunc(Lm939_250c[index].unk4, Lm939_250c[index].unk6, Lm939_250c[index].unk0);
+
+    __MapActor_SetSpeed(0, speed_x, speed_y);
+    *(unsigned char *)(__MapActor_GetActor(0) + 0x55) = 0;
+    __MapActor_SetAnim(0, 2);
+
+    if (index != 6) {
+        __Func_8092208(0, 2, step);
+        __CutsceneWait(10);
+    }
+    __Func_8091e9c(*p);
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008c10.s");
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008c74.s");
 

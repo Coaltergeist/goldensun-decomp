@@ -168,7 +168,73 @@ unsigned int OvlFunc_911_200a5d8(int *p) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a608.s");
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_911__0200b5d8[5];
+extern unsigned char Lm911_36a0[] __asm__(".Lm911_36a0");
+
+struct Sprite {
+    unsigned char _pad0[9];
+    unsigned char attr;
+    unsigned char _pad1[0x26 - 10];
+    unsigned char flags;
+};
+
+struct Actor {
+    unsigned char _pad0[0x18];
+    unsigned int scaleX;
+    unsigned char _pad1[0x23 - 0x1c];
+    unsigned char unk23;
+    unsigned char _pad2[0x30 - 0x24];
+    unsigned int speed;
+    unsigned int accel;
+    unsigned char _pad3[0x50 - 0x38];
+    struct Sprite *sprite;
+    unsigned char _pad4[0x55 - 0x54];
+    unsigned char unk55;
+};
+
+void OvlFunc_911_200a608(void)
+{
+    /* iwram_3001e40 is a file-scope unsigned int scalar (:174); this fn needs the
+       array view of the same symbol. */
+    extern unsigned char iwram_3001e40__arr[] __asm__("iwram_3001e40");
+    void __PlaySound(int);
+    struct Actor *__CreateActor(int, int, int, int);
+    void __Actor_SetAnim(struct Actor *, int);
+    void __Actor_TravelTo(struct Actor *, int, int, int);
+    void __Actor_SetScript(struct Actor *, ActorCmd *);
+
+    unsigned int r6;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int a = 0x620000;
+    int b = 0x690000;
+    int c = ~0xc;
+    int d = 0x10d0000;
+
+    do { } while (a == 0);
+
+    r6 = *(unsigned int *)iwram_3001e40__arr & 7;
+    if (r6 == 0) {
+        if (*(unsigned int *)Lm911_36a0 != 0) {
+            __PlaySound(0xc8);
+        }
+        actor = __CreateActor(0x1a, a, 0, b);
+        if (actor != 0) {
+            sprite = actor->sprite;
+            sprite->flags = r6;
+            actor->unk23 &= 0xfe;
+            sprite->attr = (sprite->attr & c) | 4;
+            actor->scaleX = 0x1999;
+            actor->speed = 0x80000;
+            actor->accel = 0x80000;
+            actor->unk55 = r6;
+            __Actor_SetAnim(actor, 2);
+            __Actor_TravelTo(actor, a, 0, d);
+            __Actor_SetScript(actor, gScript_911__0200b5d8);
+        }
+    }
+}
 
 extern int __Func_80929d8(int a, int b);
 extern unsigned int iwram_3001e40;

@@ -1,6 +1,7 @@
 /* rom_7e3e08 (overlay file 957): consolidated TU — altmiller_cave map overlay. */
 
 #include "nonmatching.h"
+#include "dma.h"
 
 INCLUDE_ASM("asm/maps/altmiller_cave/exports.s");
 
@@ -368,7 +369,28 @@ void OvlFunc_957_2008b24(void) {
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008b30.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008bc8.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c2c.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c98.s");
+void OvlFunc_957_2008c98(void)
+{
+    /* iwram_3001f30 is a file-scope unsigned char* pointer (:385); this fn needs
+       the array view of the same symbol. Callees left implicit (standalone match). */
+    extern unsigned char iwram_3001f30__arr[] __asm__("iwram_3001f30");
+    unsigned char *p;
+    unsigned char *actor;
+    unsigned char *new_actor;
+
+    p = *(unsigned char **)iwram_3001f30__arr;
+    actor = *(unsigned char **)(p + 0x10);
+    __Func_8092adc(*(short *)(p + 0x18), 0x4000, 0);
+    __Actor_SetColorswap(actor, 0);
+    __CutsceneWait(0x14);
+    new_actor = (unsigned char *)__CreateActor(0, *(int *)(actor + 8), *(int *)(actor + 0xc), *(int *)(actor + 0x10));
+    if (new_actor != 0) {
+        DMA3_COPY(actor, new_actor, 0x70);
+        *(int *)(actor + 0x6c) = 0;
+        *(unsigned char **)(p + 0x10) = new_actor;
+        *(actor + 0x54) = 0;
+    }
+}
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008cf8.s");
 
 extern void OvlFunc_957_20080c4(void);

@@ -690,7 +690,64 @@ void OvlFunc_932_200ad08(void)
     __Func_8092950(t, 2);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ad58.s");
+void OvlFunc_932_200ad58(void)
+{
+    /* Block-scoped decls keep these prototypes out of the sibling C fns below.
+       __MapActor_GetActor (unsigned int, :15), ActorCmd (:210),
+       gScript_882__0200cd6c (:420) and iwram_3001ebc (unsigned char*, :695) are
+       already declared file-scope; iwram needs the array view here. */
+    extern void __CutsceneStart(void);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __MapTransitionIn(void);
+    extern void __WaitMapTransition(void);
+    extern void __CutsceneWait(int);
+    extern void __Func_808f1c0(int, int);
+    extern void __Func_8091a58(int, int);
+    extern unsigned char *__Func_8093554(void);
+    extern void __Func_80933d4(int, int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern void __Func_8093530(void);
+    extern void OvlFunc_932_20086dc(void);
+    extern void __SetMapEvents(ActorCmd *);
+    extern void __CutsceneEnd(void);
+    extern unsigned char iwram_3001ebc__arr[] __asm__("iwram_3001ebc");
+
+    int c8 = 0xc8 << 15;
+    int f9 = 0xf9 << 16;
+    int *actor;
+    int off;
+
+    do {} while (c8 == 0);
+
+    actor = (int *)__MapActor_GetActor(0);
+    __CutsceneStart();
+    __MapActor_SetPos(10, 0, 0);
+    __MapActor_SetPos(8, 0, 0);
+
+    off = 0xe0 << 1;
+    *(int *)(*(unsigned char **)iwram_3001ebc__arr + off) = 0x201;
+
+    __MapTransitionIn();
+    __WaitMapTransition();
+    __CutsceneWait(0x14);
+    __Func_808f1c0(0xca, 3);
+    __Func_8091a58(0xca, 0);
+
+    __Func_8093554()[0x55] = 0;
+
+    __Func_80933d4(0x19999, 0x3333);
+    __Func_80933f8(c8, 0, f9, 1);
+    __Func_8093530();
+    __CutsceneWait(0x14);
+
+    OvlFunc_932_20086dc();
+    __Func_80933f8(actor[2], actor[3], actor[4], 1);
+    __Func_8093530();
+
+    __SetMapEvents(gScript_882__0200cd6c);
+    *(int *)(*(unsigned char **)iwram_3001ebc__arr + off) = 0x81 << 2;
+    __CutsceneEnd();
+}
 
 extern unsigned char *iwram_3001ebc;
 
