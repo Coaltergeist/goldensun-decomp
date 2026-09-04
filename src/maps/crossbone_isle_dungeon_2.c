@@ -427,7 +427,110 @@ void OvlFunc_947_20095cc(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20095fc.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200975c.s");
+extern unsigned char Lm947_2da8[] __asm__(".Lm947_2da8");
+extern unsigned char Lm947_2dfc[] __asm__(".Lm947_2dfc");
+extern unsigned char Lm947_2e50[] __asm__(".Lm947_2e50");
+extern unsigned char Lm947_2dd2[] __asm__(".Lm947_2dd2");
+extern unsigned char Lm947_2e26[] __asm__(".Lm947_2e26");
+
+void OvlFunc_947_200975c(void)
+{
+    /* Block-scoped decls: keep these prototypes out of the sibling C fns below,
+       which compile on implicit decls. __MapActor_GetActor/__MapActor_SetAnim/
+       __Func_8010704 already have file-scope decls above (175/177/178). */
+    extern void __CutsceneStart(void);
+    extern void __Func_80933d4(int, int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern void __Func_8093530(void);
+    extern void __Func_801776c(int, int);
+    extern int __GetFlag(int);
+    extern void __PlaySound(int);
+    extern void __Func_8010560(void *, int, int);
+    extern void __CutsceneWait(int);
+    extern void __Func_8092b08(int, int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __CopyMapTiles(int, int, int, int, int, int);
+    extern void __SetFlag(int);
+    extern void __ClearFlag(int);
+    extern void __CutsceneEnd(void);
+    extern void OvlFunc_947_20095fc(void);
+    extern void OvlFunc_947_2008ec8(int);
+    extern void OvlFunc_947_2008f58(int);
+
+    int a = 0x80 << 9;
+    int b = 0x80 << 6;
+    int c = 0xd8 << 17;
+    int flag_id = 0x80 << 2;
+    int posX = 0x88 << 17;
+    int posY1 = 0xd0 << 17;
+    int posY2 = 0xda << 17;
+    int s1;
+    int s2;
+    int flag;
+
+    do { } while (a == 0);
+
+    __CutsceneStart();
+    __Func_80933d4(a, b);
+    __Func_80933f8(0x1190000, -1, c, 1);
+    __Func_8093530();
+    __Func_801776c(0x1528, 1);
+    flag = __GetFlag(flag_id);
+    if (!flag) {
+        __PlaySound(0xe8);
+        __Func_8010560(Lm947_2da8, 0x54, 0x18);
+        __CutsceneWait(0x1e);
+        __PlaySound(0xf0);
+        __Func_8092b08(0x10, 1);
+        ((unsigned char *)__MapActor_GetActor(0x10))[0x55] = flag;
+        *(int *)((char *)__MapActor_GetActor(0x10) + 0xc) = 0xffe00000;
+        __MapActor_SetPos(0x10, posX, posY1);
+        __MapActor_SetAnim(0x10, 1);
+        __Func_8010560(Lm947_2dfc, 0x50, 0x18);
+        __Func_8010560(Lm947_2e50, 0x50, 0x1c);
+        s1 = 2;
+        s2 = 4;
+        __CopyMapTiles(0x41, 0x28, 0x10, 0x1b, s1, s2);
+        OvlFunc_947_20095fc();
+        OvlFunc_947_2008ec8(9);
+        OvlFunc_947_2008ec8(10);
+        OvlFunc_947_2008ec8(11);
+        OvlFunc_947_2008ec8(12);
+        OvlFunc_947_2008ec8(13);
+        OvlFunc_947_2008ec8(14);
+        OvlFunc_947_2008ec8(15);
+        s1 = 0x18;
+        s2 = 8;
+        __Func_8010704(0x18, 3, 1, 1, s1, s2);
+        __SetFlag(flag_id);
+    } else {
+        __PlaySound(0xe8);
+        __Func_8010560(Lm947_2dd2, 0x54, 0x18);
+        __CutsceneWait(0x1e);
+        __PlaySound(0xe6);
+        ((unsigned char *)__MapActor_GetActor(0x10))[0x55] = 0;
+        *(int *)((char *)__MapActor_GetActor(0x10) + 0xc) = 0xffe00000;
+        __MapActor_SetPos(0x10, posX, posY2);
+        __MapActor_SetAnim(0x10, 2);
+        s1 = 2;
+        s2 = 4;
+        __CopyMapTiles(0x41, 0x2d, 0x10, 0x1b, s1, s2);
+        __Func_8010560(Lm947_2e26, 0x50, 0x18);
+        OvlFunc_947_20095fc();
+        OvlFunc_947_2008f58(9);
+        OvlFunc_947_2008f58(10);
+        OvlFunc_947_2008f58(11);
+        OvlFunc_947_2008f58(12);
+        OvlFunc_947_2008f58(13);
+        OvlFunc_947_2008f58(14);
+        OvlFunc_947_2008f58(15);
+        s1 = 0x18;
+        s2 = 8;
+        __Func_8010704(0x18, 4, 1, 1, s1, s2);
+        __ClearFlag(flag_id);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20099f0.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009aa8.s");
