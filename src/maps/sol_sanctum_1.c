@@ -510,13 +510,161 @@ void OvlFunc_890_2009264(void)
 }
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009380.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009510.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009790.s");
+extern int __GetFlag(int);
+extern void __CutsceneStart(void);
+extern void __MessageID(int a);
+extern void __Func_8092adc(int a, int b, int c);
+extern void OvlFunc_890_200a5fc(unsigned int arg0, unsigned int arg1);
+extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
+
+void __MapActor_Jump(int, int, int);
+void __Func_8093530(void);
+void OvlFunc_890_20082cc(void);
+void OvlFunc_890_20083f4(void);
+void __MapActor_DoAnim(int, int);
+void __MapTransitionOut(void);
+void __Func_8091e9c(int);
+
+void OvlFunc_890_2009790(void)
+{
+    int i;
+    int r3;
+    int r2;
+    int msg;
+    unsigned char *base;
+    int c4000 = 0x4000;
+    int f826 = 0x826;
+    int f827 = 0x827;
+    int f828 = 0x828;
+    int f829 = 0x829;
+
+    do { } while (c4000 == 0);
+
+    __CutsceneStart();
+
+    if (__GetFlag(0x80b) && __GetFlag(f826)) {
+        __ClearFlag(f826);
+        r3 = 2;
+        r2 = 1;
+        __CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, r3, r2);
+    } else if (__GetFlag(0x80b) && !__GetFlag(f826)) {
+        __SetFlag(f826);
+    }
+
+    if (__GetFlag(0x80c) && __GetFlag(f827)) {
+        __ClearFlag(f827);
+        r3 = 2;
+        r2 = 1;
+        __CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, r3, r2);
+    } else if (__GetFlag(0x80c) && !__GetFlag(f827)) {
+        __SetFlag(f827);
+    }
+
+    if (__GetFlag(0x80d) && __GetFlag(f828)) {
+        __ClearFlag(f828);
+        r3 = 2;
+        r2 = 1;
+        __CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, r3, r2);
+    } else if (__GetFlag(0x80d) && !__GetFlag(f828)) {
+        __SetFlag(f828);
+    }
+
+    if (__GetFlag(0x80e) && __GetFlag(f829)) {
+        __ClearFlag(f829);
+        r3 = 2;
+        r2 = 1;
+        __CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, r3, r2);
+    } else if (__GetFlag(0x80e) && !__GetFlag(f829)) {
+        __SetFlag(f829);
+    }
+
+    OvlFunc_890_2009264();
+    __Func_8092adc(0x10, c4000, 0x14);
+    __MapActor_Jump(0x10, 6, 0x1e);
+    __Func_80933f8(0x23e0000, -1, 0xae0000, 1);
+    __Func_8093530();
+    __CutsceneWait(0x1e);
+
+    i = 0;
+    do {
+        __PlaySound(0xf6);
+        OvlFunc_890_20082cc();
+        __CutsceneWait(12);
+        __PlaySound(0xf6);
+        i++;
+        OvlFunc_890_20083f4();
+        __CutsceneWait(12);
+    } while (i != 4);
+
+    i = 0;
+    do {
+        __PlaySound(0xf6);
+        OvlFunc_890_20082cc();
+        __CutsceneWait(8);
+        __PlaySound(0xf6);
+        i++;
+        OvlFunc_890_20083f4();
+        __CutsceneWait(8);
+    } while (i != 6);
+
+    i = 0;
+    do {
+        __PlaySound(0xf6);
+        OvlFunc_890_20082cc();
+        __CutsceneWait(6);
+        __PlaySound(0xf6);
+        i++;
+        OvlFunc_890_20083f4();
+        __CutsceneWait(6);
+    } while (i != 8);
+
+    i = 0;
+    do {
+        __PlaySound(0xf6);
+        OvlFunc_890_20082cc();
+        __CutsceneWait(4);
+        __PlaySound(0xf6);
+        i++;
+        OvlFunc_890_20083f4();
+        __CutsceneWait(4);
+    } while (i != 10);
+
+    i = 0;
+    do {
+        __PlaySound(0xf6);
+        OvlFunc_890_20082cc();
+        __CutsceneWait(2);
+        __PlaySound(0xf6);
+        i++;
+        OvlFunc_890_20083f4();
+        __CutsceneWait(2);
+    } while (i != 12);
+
+    __PlaySound(0xf6);
+    OvlFunc_890_20082cc();
+    __CutsceneWait(6);
+
+    if (__GetFlag(0x822) == 0) {
+        msg = 0x8010;
+        __MessageID(0x1025);
+        OvlFunc_890_200a5fc(msg, 6);
+        __MapActor_DoAnim(0x10, 3);
+        OvlFunc_890_200a5fc(msg, 6);
+    }
+
+    base = *(unsigned char **)iwram_3001ebc_arr;
+    *(int *)(base + 0x1c0) = 0x100;
+    *(int *)(base + 0x1c8) = 0x20;
+
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __Func_8091e9c(5);
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009a58.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009be8.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009ca8.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/SolSanctum1_MapInit.s");
 
-extern int __GetFlag(int);
 
 unsigned int OvlFunc_890_200a5b0(void) {
     unsigned int r5 = 1;
@@ -541,10 +689,7 @@ void OvlFunc_890_200a5fc(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_200a614.s");
 
-extern void __CutsceneStart(void);
-extern void __MessageID(int a);
 extern void __ActorMessage_Wait(volatile unsigned long a, int b, int c);
-extern void __Func_8092adc(int a, int b, int c);
 extern void __CutsceneEnd(void);
 
 void OvlFunc_890_200a924(void)
