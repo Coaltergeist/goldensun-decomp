@@ -109,9 +109,53 @@ INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008b24.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008ce4.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008dc8.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
+extern unsigned char Const_A5[] __asm__(".Lconst_a5");
+__asm__(".equ .Lconst_a5, 0xa5");
+
+extern void OvlFunc_960_2008ce4(void);
+
+extern unsigned char *__MapActor_GetActor(int);
+extern void __MapActor_SetPos(int, int, int);
+extern void __Func_8010704(int, int, int, int, int, int);
+extern void __Func_808edac(int, int, int);
+extern void __Func_808ee0c(void);
+extern void __StartTask(void *, int);
+
+static inline void MapActor_SetPos(int actor, int x, int y) {
+    __MapActor_SetPos(actor, x << 16, y << 18);
+}
+
+static inline void Func_808edac(int a, int b, int c)
+{
+    __Func_808edac(a, -b, -c);
+}
+
+int OvlFunc_960_2008dc8(void)
+{
+    int off;
+    int zero;
+    unsigned int t1, t2;
+    unsigned int t3, t4;
+
+    off = 0xe0 << 1;
+    if (*(short *)((char *)&gState + off) == (int)Const_A5) {
+        ((unsigned char *)__MapActor_GetActor(0xe))[0x23] = 2;
+        zero = 0;
+        ((unsigned char *)__MapActor_GetActor(0xe))[0x55] = zero;
+        MapActor_SetPos(0xe, 0xf8, 0xb2);
+        t1 = 0xf;
+        t2 = 0x2c;
+        __Func_8010704(0x1f, 0x5f, 1, 1, t1, t2);
+        Func_808edac(100, 1, 1);
+        __Func_808ee0c();
+        t3 = 0xc;
+        t4 = 0x47;
+        __Func_8010704(0x7f, 0x7f, 1, 1, t3, t4);
+        __StartTask(OvlFunc_960_2008ce4, 0xc8 << 4);
+    }
+}
 extern unsigned char _EVENT_a6[];
 extern unsigned char Lm960_19c4[] __asm__(".Lm960_19c4");
 extern unsigned char Lm960_17b4[] __asm__(".Lm960_17b4");
