@@ -30,9 +30,74 @@ void *SolSanctum1_GetEvents(void) {
     return (void *)gOvl_0200ad34;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008054.s");
+void OvlFunc_890_2008054(void)
+{
+    int f201 = 0x201;
+    int f200 = 0x200;
+
+    do { } while (f201 == 0);
+
+    if (OvlFunc_890_200a5b0()) {
+        if (!__GetFlag(f201)) {
+            __CutsceneStart();
+            __Func_8091200(0x2051cc, 1);
+            __Func_8091254(0x14);
+            __SetFlag(f201);
+            __ClearFlag(f200);
+            __ClearFlag(0x202);
+            if (!__GetFlag(0x80a)) {
+                OvlFunc_890_20089f4();
+            }
+            if (OvlFunc_890_200a5b0() && !__GetFlag(0x811)) {
+                OvlFunc_890_2009be8();
+            }
+            __CutsceneEnd();
+        }
+    } else {
+        if (!__GetFlag(f200)) {
+            __CutsceneStart();
+            __Func_8091200(0x10000, 1);
+            __Func_8091254(0x14);
+            __SetFlag(f200);
+            __ClearFlag(f201);
+            __ClearFlag(0x202);
+            __CutsceneEnd();
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008108.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008150.s");
+void OvlFunc_890_2008150(void)
+{
+    int flag1 = 0x200;
+    int flag2 = 0x201;
+
+    do { } while (flag1 == 0);
+
+    if (OvlFunc_890_200a5b0()) {
+        if (!__GetFlag(flag1)) {
+            __CutsceneStart();
+            __Func_8091200(0x10000, 1);
+            __Func_8091254(0x14);
+            __SetFlag(flag1);
+            __ClearFlag(flag2);
+            __ClearFlag(0x202);
+            __CutsceneEnd();
+        }
+    } else {
+        if (!__GetFlag(flag2)) {
+            __CutsceneStart();
+            __Func_8091200(0x2051cc, 1);
+            __Func_8091254(0x14);
+            __SetFlag(flag2);
+            __ClearFlag(flag1);
+            __ClearFlag(0x202);
+            if (!__GetFlag(0x80a)) {
+                OvlFunc_890_20089f4();
+            }
+            __CutsceneEnd();
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20081ec.s");
 
 /* OvlFunc_890_200822c; *(vu16*)0x05000000 = 0.
@@ -384,7 +449,65 @@ end:
         *p = 0;
     }
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009264.s");
+extern void __CutsceneWait(unsigned int arg0);
+typedef struct {
+    unsigned char _pad0[0x1c0];
+    int transition;
+    unsigned char _pad1[4];
+    int transitionSpeed;
+} MapState;
+
+extern MapState *iwram_3001ebc;
+
+void __Func_80933f8(int, int, int, int);
+void __Func_800fe9c(void);
+void __MapActor_SetPos(int, int, int);
+void __WaitFrames(int);
+void __Func_8091200(int, int);
+void __Func_8091254(int);
+void __SetFlag(int);
+void __ClearFlag(int);
+void __MapTransitionIn(void);
+void __WaitMapTransition(void);
+void OvlFunc_890_2009264(void)
+{
+    MapState *map;
+    int neg1 = -1;
+    int c_23e = 0x23e0000;
+    int c_9e = 0x9e << 16;
+    int c_f0 = 0xf0 << 15;
+    int c_2051cc = 0x2051cc;
+
+    while (c_23e == 0) {}
+
+    __Func_80933f8(neg1, neg1, neg1, 0);
+    __CopyMapTiles(0x1e, 0x2b, 0x20, 0x28, 8, 3);
+    __CopyMapTiles(0x1e, 0x2b, 0x21, 0x27, 8, 1);
+    __CopyMapTiles(0x1e, 0x2b, 0x24, 0x26, 3, 3);
+    __CopyMapTiles(0xe, 0x29, 0x20, 0x29, 8, 4);
+    __Func_80933f8(c_23e, neg1, c_9e, 0);
+    __Func_800fe9c();
+    __MapActor_SetPos(0x10, c_23e, c_f0);
+    __MapActor_SetPos(0, 0, 0);
+    __WaitFrames(1);
+    __Func_8091200(c_2051cc, 1);
+    __Func_8091254(0x14);
+    __SetFlag(0x201);
+    __ClearFlag(0x200);
+    __ClearFlag(0x202);
+    map = iwram_3001ebc;
+    map->transition = 0x100;
+    map->transitionSpeed = 0x20;
+    __MapTransitionIn();
+    __WaitMapTransition();
+    __CutsceneWait(0x28);
+    __PlaySound(0xab);
+    __Func_8091200(0x10005, 1);
+    __Func_8091254(8);
+    __CutsceneWait(0x20);
+    __Func_8091200(c_2051cc, 1);
+    __Func_8091254(0x18);
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009380.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009510.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009790.s");
@@ -409,7 +532,6 @@ unsigned int OvlFunc_890_200a5b0(void) {
 }
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
-extern void __CutsceneWait(unsigned int arg0);
 
 void OvlFunc_890_200a5fc(unsigned int arg0, unsigned int arg1)
 {

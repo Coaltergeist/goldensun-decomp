@@ -249,16 +249,259 @@ unsigned int OvlFunc_891_2009be8(unsigned int arg0, unsigned int arg1, unsigned 
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009c14.s");
+extern int Lm891_2980[] __asm__(".Lm891_2980");
+extern void OvlFunc_891_2009ff4(void);
+
+void OvlFunc_891_2009c14(void)
+{
+    Lm891_2980[0] = 0;
+    Lm891_2980[1] = 0x37;
+    Lm891_2980[2] = 0x20;
+    Lm891_2980[3] = 0x28;
+    Lm891_2980[4] = 4;
+    Lm891_2980[5] = 3;
+    Lm891_2980[6] = 2;
+    Lm891_2980[7] = 0x1e;
+    Lm891_2980[8] = 0x22;
+    Lm891_2980[9] = 10;
+    Lm891_2980[10] = 2;
+    Lm891_2980[11] = 1;
+    Lm891_2980[12] = 2;
+    Lm891_2980[13] = 0x1c;
+    Lm891_2980[14] = 0x22;
+    Lm891_2980[15] = 10;
+    Lm891_2980[16] = 2;
+    Lm891_2980[17] = 1;
+    Lm891_2980[18] = 2;
+    Lm891_2980[19] = 0x1e;
+    Lm891_2980[20] = 0x10;
+    Lm891_2980[21] = 10;
+    Lm891_2980[22] = 2;
+    Lm891_2980[23] = 1;
+    Lm891_2980[24] = 0x80b;
+    Lm891_2980[25] = 0x4000;
+    Lm891_2980[26] = 500;
+    Lm891_2980[27] = 0x84;
+    Lm891_2980[28] = 8;
+    Lm891_2980[29] = 0x37;
+    Lm891_2980[30] = 0x20;
+    Lm891_2980[31] = 0x28;
+    Lm891_2980[32] = 4;
+    Lm891_2980[33] = 3;
+    Lm891_2980[34] = 2;
+    Lm891_2980[35] = 0x1e;
+    Lm891_2980[36] = 0x22;
+    Lm891_2980[37] = 10;
+    Lm891_2980[38] = 2;
+    Lm891_2980[39] = 1;
+    Lm891_2980[40] = 2;
+    Lm891_2980[41] = 0x1c;
+    Lm891_2980[42] = 0x10;
+    Lm891_2980[43] = 10;
+    Lm891_2980[44] = 2;
+    Lm891_2980[45] = 1;
+    Lm891_2980[46] = 9;
+    Lm891_2980[47] = 0x1e8;
+    Lm891_2980[48] = 0x98;
+
+    OvlFunc_891_2009ff4();
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009d14.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009e10.s");
+void OvlFunc_891_2009e10(void)
+{
+    Lm891_2980[0] = 0;
+    Lm891_2980[1] = 0x3a;
+    Lm891_2980[2] = 0x20;
+    Lm891_2980[3] = 0x2b;
+    Lm891_2980[4] = 4;
+    Lm891_2980[5] = 1;
+    Lm891_2980[6] = 2;
+    Lm891_2980[7] = 0x1f;
+    Lm891_2980[8] = 0x22;
+    Lm891_2980[9] = 0xb;
+    Lm891_2980[10] = 2;
+    Lm891_2980[11] = 1;
+    Lm891_2980[12] = 2;
+    Lm891_2980[13] = 0x1d;
+    Lm891_2980[14] = 0x22;
+    Lm891_2980[15] = 0xb;
+    Lm891_2980[16] = 2;
+    Lm891_2980[17] = 1;
+    Lm891_2980[18] = 2;
+    Lm891_2980[19] = 0x1f;
+    Lm891_2980[20] = 0x10;
+    Lm891_2980[21] = 0xb;
+    Lm891_2980[22] = 2;
+    Lm891_2980[23] = 1;
+    Lm891_2980[24] = 0x80d;
+    Lm891_2980[25] = 0xc000;
+    Lm891_2980[26] = 500;
+    Lm891_2980[27] = 0xd8;
+    Lm891_2980[28] = 8;
+    Lm891_2980[29] = 0x3a;
+    Lm891_2980[30] = 0x20;
+    Lm891_2980[31] = 0x2b;
+    Lm891_2980[32] = 4;
+    Lm891_2980[33] = 1;
+    Lm891_2980[34] = 2;
+    Lm891_2980[35] = 0x1f;
+    Lm891_2980[36] = 0x22;
+    Lm891_2980[37] = 0xb;
+    Lm891_2980[38] = 2;
+    Lm891_2980[39] = 1;
+    Lm891_2980[40] = 2;
+    Lm891_2980[41] = 0x1d;
+    Lm891_2980[42] = 0x10;
+    Lm891_2980[43] = 0xb;
+    Lm891_2980[44] = 2;
+    Lm891_2980[45] = 1;
+    Lm891_2980[46] = 0xd;
+    Lm891_2980[47] = 488;
+    Lm891_2980[48] = 200;
+    OvlFunc_891_2009ff4();
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009f0c.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009ff4.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200a244.s");
+extern void __CutsceneWait(unsigned int arg0);
+extern void __CutsceneStart(void);
+extern int __GetFlag(int);
+extern void __Func_80933d4(int, int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __Func_8093530(void);
+extern void __PlaySound(int);
+extern void __CopyMapTiles(int, int, int, int, int, int);
+extern void __SetFlag(int);
+extern int OvlFunc_891_2008054(void);
+extern void __SetCameraTarget(int, int);
+extern void *__MapActor_GetActor(int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_Jump(int, int, int);
+extern void __MapActor_TravelTo(int, int, int);
+extern void __MapActor_TravelToWait(int, int, int);
+extern void __ClearFlag(int);
+extern void OvlFunc_891_2008c8c(void);
+extern void __Func_8091e9c(int);
+extern void __MapTransitionOut(void);
+extern void __WaitMapTransition(void);
+extern void __CutsceneEnd(void);
+
+static inline void MapActor_SetSpeed(int actor, int x, int y)
+{
+    __MapActor_SetSpeed(actor, x << 10, y << 10);
+}
+
+static inline void CopyMapTiles(int x1, int y1, int x2, int y2, int w, int h)
+{
+    __CopyMapTiles(x1, y1, x2, y2, w, h);
+}
+
+void OvlFunc_891_2009ff4(void)
+{
+    int flag_80f = 0x80f;
+    int transition;
+    int i;
+    int one;
+    unsigned char *actor;
+
+    do { } while (flag_80f == 0);
+
+    transition = 0;
+    __CutsceneStart();
+    if (!__GetFlag(flag_80f)) {
+        __Func_80933d4(0x80 << 10, 0x80 << 7);
+        __Func_80933f8(0x90 << 18, -1, 0xac << 16, 1);
+        __Func_8093530();
+        __PlaySound(0xba);
+        CopyMapTiles(Lm891_2980[0], Lm891_2980[1], Lm891_2980[2], Lm891_2980[3], Lm891_2980[4], Lm891_2980[5]);
+        i = 0;
+        do {
+            __PlaySound(0xf6);
+            CopyMapTiles(Lm891_2980[6], Lm891_2980[7], Lm891_2980[8], Lm891_2980[9], Lm891_2980[10], Lm891_2980[11]);
+            __CutsceneWait(4);
+            __PlaySound(0xf6);
+            i++;
+            CopyMapTiles(Lm891_2980[12], Lm891_2980[13], Lm891_2980[14], Lm891_2980[15], Lm891_2980[16], Lm891_2980[17]);
+            __CutsceneWait(4);
+        } while (i != 20);
+        CopyMapTiles(Lm891_2980[18], Lm891_2980[19], Lm891_2980[20], Lm891_2980[21], Lm891_2980[22], Lm891_2980[23]);
+        __SetFlag(Lm891_2980[24]);
+        transition = OvlFunc_891_2008054();
+        if (transition == -1) {
+            if (!__GetFlag(0x818)) {
+                __SetCameraTarget(0, 1);
+                actor = (unsigned char *)__MapActor_GetActor(0);
+                *(unsigned short *)(actor + 6) = Lm891_2980[25];
+                MapActor_SetSpeed(0, 0x80, 0x80);
+                actor = (unsigned char *)__MapActor_GetActor(0) + 0x5a;
+                *actor &= 0xfe;
+                __MapActor_Jump(0, 4, 0);
+                __MapActor_TravelTo(0, Lm891_2980[26], Lm891_2980[27]);
+                CopyMapTiles(Lm891_2980[28], Lm891_2980[29], Lm891_2980[30], Lm891_2980[31], Lm891_2980[32], Lm891_2980[33]);
+                CopyMapTiles(Lm891_2980[34], Lm891_2980[35], Lm891_2980[36], Lm891_2980[37], Lm891_2980[38], Lm891_2980[39]);
+                CopyMapTiles(Lm891_2980[40], Lm891_2980[41], Lm891_2980[42], Lm891_2980[43], Lm891_2980[44], Lm891_2980[45]);
+                actor = (unsigned char *)__MapActor_GetActor(Lm891_2980[46]) + 0x5a;
+                *actor &= 0xfe;
+                __MapActor_TravelToWait(Lm891_2980[46], Lm891_2980[47], Lm891_2980[48]);
+                actor = (unsigned char *)__MapActor_GetActor(0) + 0x5a;
+                one = 1;
+                one |= *actor;
+                *actor = one;
+                __ClearFlag(Lm891_2980[24]);
+            }
+        } else if (transition == 0) {
+            if (__GetFlag(0x818)) {
+                if (__GetFlag(0x80b) && __GetFlag(0x80d) && __GetFlag(0x80e)) {
+                    if (!__GetFlag(flag_80f)) {
+                        __SetFlag(flag_80f);
+                        OvlFunc_891_2008c8c();
+                    }
+                } else if (__GetFlag(0x812)) {
+                    __Func_8091e9c(5);
+                    transition = 1;
+                }
+            }
+        }
+    }
+    if (transition == 1) {
+        __MapTransitionOut();
+        __WaitMapTransition();
+    }
+    __CutsceneEnd();
+}
+extern void __Func_8092adc(int, int, int);
+extern void OvlFunc_891_2008098(void);
+void OvlFunc_891_200a244(void)
+{
+    int f816 = 0x816;
+    int f817 = 0x817;
+    int r3;
+    int r2;
+
+    do { } while (f816 == 0);
+
+    __CutsceneStart();
+    if (__GetFlag(0x818) == 0 && __GetFlag(f816) == 0) {
+        __Func_80933d4(0x20000, 0x4000);
+        __Func_80933f8(0x11e0000, -1, 0x920000, 1);
+        __Func_8093530();
+        __PlaySound(0xba);
+        r3 = 4;
+        r2 = 3;
+        __CopyMapTiles(0, 0x3b, 0xf, 0x26, r3, r2);
+        if (__GetFlag(f817) != 0) {
+            __CopyMapTiles(8, 0x3c, 0x11, 0x27, 2, 2);
+        }
+        __Func_8092adc(0, 0, 0);
+        __CutsceneWait(0x1e);
+        __SetFlag(f816);
+        if (__GetFlag(f817) != 0) {
+            OvlFunc_891_2008098();
+        }
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200a2f4.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
-extern void __CutsceneWait(unsigned int arg0);
 
 void OvlFunc_891_200a3a4(unsigned int arg0, unsigned int arg1)
 {
