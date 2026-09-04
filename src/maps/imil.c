@@ -201,7 +201,83 @@ void OvlFunc_921_2008688(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20086c0.s");
+extern unsigned char iwram_3001ebc[];
+extern short Lm921_31a8[] __asm__(".Lm921_31a8");
+extern void *Lm921_3190[] __asm__(".Lm921_3190");
+
+void OvlFunc_921_20086c0(void)
+{
+    /* Block-scoped decls: __MapActor_GetActor is declared file-scope below as
+       void* (:207); the unsigned char* view here (needed for the direct index)
+       stays local and out of the sibling C fns. */
+    extern void __CutsceneStart(void);
+    extern unsigned char *__MapActor_GetActor(int);
+    extern void __PlaySound(int);
+    extern void __Func_8010560(void *, int, int);
+    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void __Func_8092b08(int, int);
+    extern void __MapActor_TravelBy(int, int, int);
+    extern void __Func_8092208(int, int, int);
+    extern void __CutsceneWait(int);
+    extern void __Func_8091e9c(int);
+    extern void __CutsceneEnd(void);
+
+    unsigned char *map;
+    int iVar5;
+    unsigned int uVar4;
+    unsigned char *actor;
+    int spd1 = 0x8000;
+    int spd2 = 0x4000;
+    int spd3 = 0x3333;
+    int spd4 = 0x1999;
+    int neg8 = -8;
+    int neg16 = -0x10;
+    int val;
+    int arg1, arg2;
+
+    do { } while (spd1 == 0);
+
+    map = *(unsigned char **)iwram_3001ebc;
+    __CutsceneStart();
+
+    for (uVar4 = 8; uVar4 <= 0x41; uVar4++) {
+        actor = __MapActor_GetActor(uVar4);
+        if (actor != 0) {
+            actor[0x55] = 0;
+        }
+    }
+
+    val = *(unsigned short *)(map + 0x16c);
+    iVar5 = (short)(val - 0x32);
+
+    if (iVar5 == 6) {
+        __PlaySound(0xbc);
+    } else {
+        __PlaySound(0x9e);
+    }
+
+    arg1 = Lm921_31a8[(iVar5 - 1) * 2];
+    arg2 = Lm921_31a8[(iVar5 - 1) * 2 + 1];
+    __Func_8010560(Lm921_3190[iVar5 - 1], arg1, arg2);
+    __MapActor_SetSpeed(0, spd1, spd2);
+
+    *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c0) = 0x100;
+
+    if (iVar5 == 6) {
+        __MapActor_SetSpeed(0, spd3, spd4);
+        __MapActor_SetAnim(0, 2);
+        __Func_8092b08(0, 3);
+        __MapActor_TravelBy(0, 0, neg8);
+    } else {
+        (__MapActor_GetActor(0))[0x55] = 0;
+        __Func_8092208(0, 3, neg16);
+    }
+
+    __CutsceneWait(0x10);
+    __Func_8091e9c(iVar5);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20087a4.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200888c.s");
 extern void *__MapActor_GetActor(int);

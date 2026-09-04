@@ -344,7 +344,39 @@ void OvlFunc_931_2008b2c(void)
 }
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008c0c.s");
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008c44.s");
-INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008d08.s");
+extern unsigned char iwram_3001e40[];
+extern void OvlFunc_931_2008c44(void);
+
+/* Private layout — the TU's file-scope struct Actor (:292) is a different view. */
+struct Actor931 {
+    char pad[0x64];
+    unsigned short unk64;
+    unsigned short unk66;
+    int extra;
+    void *func;
+};
+
+void OvlFunc_931_2008d08(void) {
+    int a = 0x400000;
+    int b = 0x1900000;
+    struct Actor931 *actor;
+    int flags;
+
+    do { } while (a == 0);
+
+    flags = *(int *)iwram_3001e40 & 3;
+    if (flags == 0) {
+        actor = (struct Actor931 *)__CreateActor(0xde, a, 0, b);
+        if (actor != 0) {
+            actor->unk64 = 0x14;
+            actor->unk66 = flags;
+            actor->extra = 0x14;
+            OvlFunc_931_2008c0c(actor);
+            actor->func = OvlFunc_931_2008c44;
+            __Actor_SetAnim(actor, 1);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008d58.s");
 
 INCLUDE_ASM("asm/maps/altin/imports.s");

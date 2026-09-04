@@ -87,7 +87,72 @@ INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_MapInit.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20084bc.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008880.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20088f8.s");
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20089f8.s");
+extern unsigned char ewram_2001000[];
+extern unsigned char iwram_3001ebc[];
+extern unsigned char const_89[] __asm__(".Lconst_89");
+__asm__(".equ .Lconst_89, 0x89");
+
+/* Private coins-view of gState (the TU's file-scope GlobalState at :28 is opaque
+   704B); a member access keeps the `ldr [base, #16]` form the ref codegen wants. */
+struct GS951 { unsigned char _pad[16]; unsigned int coins; };
+
+void OvlFunc_951_20089f8(void) {
+    extern struct GS951 gState951 __asm__("gState");
+    extern int __Func_8077348(void);
+    extern void __CutsceneStart(void);
+    extern void __MessageID(int);
+    extern void __ShowActorMessage_NoWait(int, int);
+    extern void __Func_808ba38(void);
+    extern void __Func_8019908(int, int);
+    extern int __Func_8091c7c(int, int);
+    extern void __ActorMessage(int, int);
+    extern void __MapActor_TravelToAnimWait(int, int, int);
+    extern void __Func_8092adc(int, int, int);
+    extern void __CutsceneWait(int);
+    extern void __SetDestMap2(int, int);
+    extern void __Func_8091f90(int, int);
+    extern void __CutsceneEnd(void);
+
+    unsigned int val;
+    unsigned int coins;
+    unsigned int r2;
+    unsigned short r3;
+    unsigned long long t0;
+    unsigned int zero;
+
+    val = __Func_8077348() * 10;
+    __CutsceneStart();
+    coins = gState951.coins;
+    if (coins < val) {
+        __MessageID(0xe12);
+        __ShowActorMessage_NoWait(9, 0);
+    } else {
+        *(unsigned int *)ewram_2001000 = coins;
+        __Func_808ba38();
+        __MessageID(0xe0e);
+        __Func_8019908(val, 5);
+        t0 = 0;
+        do { t0 = (unsigned long) t0; } while (0);
+        zero = t0;
+        __ShowActorMessage_NoWait(9, zero);
+        if (__Func_8091c7c(0, 0) == 0) {
+            __ActorMessage(9, 0);
+            __MapActor_TravelToAnimWait(0, 0x78, 0x80);
+            __MapActor_TravelToAnimWait(0, 0x78, 0x98);
+            __Func_8092adc(0, 0x8000, 0);
+            __CutsceneWait(0x14);
+            __SetDestMap2(0x1fd, 0);
+            __Func_8091f90((int)const_89, 0xd);
+        } else {
+            r2 = *(unsigned int *)iwram_3001ebc;
+            r3 = *(unsigned short *)(r2 + (0xec << 1));
+            r3 += 1;
+            *(unsigned short *)(r2 + (0xec << 1)) = r3;
+            __ActorMessage(9, 0);
+        }
+        __CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008ac8.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008d70.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008dd0.s");

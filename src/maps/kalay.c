@@ -344,7 +344,149 @@ unsigned int OvlFunc_936_200b184(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b1b8.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b2a4.s");
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_936__0200c268[12];
+
+/* Local layout; the game's struct Actor / u8..s32 arrive via actor.h below (:524)
+   so this fn uses plain types + a private struct name to avoid the redefinition. */
+struct Actor936 {
+    unsigned char _pad[8];
+    int pos_x;
+    unsigned char _pad2[12];
+    int field_18;
+    int field_1c;
+};
+
+void OvlFunc_936_200b2a4(void)
+{
+    extern void *__MapActor_GetActor(int);
+    extern int __GetFlag(int);
+    extern void __SetFlag(int);
+    extern void __CutsceneStart(void);
+    extern void __CutsceneEnd(void);
+    extern void __CutsceneWait(int);
+    extern void __CopyMapTiles(int, int, int, int, int, int);
+    extern void __Func_8010704(int, int, int, int, int, int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __MapActor_SetBehavior(int, void *);
+    extern void OvlFunc_936_20095b4(void);
+
+    struct Actor936 *actor8;
+    struct Actor936 *actor9;
+    struct Actor936 *actor11;
+    int flag;
+    unsigned int i;
+    unsigned int five;
+    unsigned int one;
+    int pos_x = 0x96 << 16;
+    int pos_y = 0xb6 << 18;
+    unsigned int a4;
+    unsigned int a5;
+
+    do { } while (pos_x == 0);
+
+    actor8 = (struct Actor936 *)__MapActor_GetActor(8);
+    actor9 = (struct Actor936 *)__MapActor_GetActor(9);
+    flag = __GetFlag(0x302);
+    if (!flag) {
+        if ((actor8->pos_x >> 19) <= 0x1d) {
+            actor11 = (struct Actor936 *)__MapActor_GetActor(0xb);
+            __CutsceneStart();
+            __Func_8010704(7, 0x2c, 1, 1, flag, 1);
+            for (i = 0x43, one = 1, five = 5; i <= 0x4a; i++) {
+                __CopyMapTiles(i, 0x3a, 0x4e, 0x29, one, five);
+                __CutsceneWait(4);
+                if (i == 0x46) {
+                    __SetFlag(0x302);
+                }
+            }
+            i = 2;
+            __CopyMapTiles(0x10, 0x6d, 0xd, 0x6d, 3, i);
+            __CutsceneWait(0x28);
+            actor11->field_18 = 0x1999;
+            actor11->field_1c = 0x1999;
+            __MapActor_SetPos(0xb, pos_x, pos_y);
+            __MapActor_SetBehavior(0xb, gScript_936__0200c268);
+            five = 1;
+            __CopyMapTiles(0x43, 0x40, 0x47, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x40, 0x48, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x44, 0x49, 0x2b, five, i);
+            __CopyMapTiles(0x43, 0x44, 0x4a, 0x2b, five, i);
+            __CopyMapTiles(0x43, 0x40, 0x4b, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x42, 0x4c, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x40, 0x4d, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x40, 0x4e, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x40, 0x4f, 0x2c, five, i);
+            __CopyMapTiles(0x43, 0x42, 0x50, 0x2c, five, i);
+            __CopyMapTiles(2, 0, 9, 0x2a, i, i);
+            __CutsceneWait(0x28);
+            __CopyMapTiles(0x44, 0x40, 0x47, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x40, 0x48, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x44, 0x49, 0x2b, five, i);
+            __CopyMapTiles(0x44, 0x44, 0x4a, 0x2b, five, i);
+            __CopyMapTiles(0x44, 0x40, 0x4b, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x42, 0x4c, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x40, 0x4d, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x40, 0x4e, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x40, 0x4f, 0x2c, five, i);
+            __CopyMapTiles(0x44, 0x42, 0x50, 0x2c, five, i);
+            __CopyMapTiles(4, 0, 9, 0x2a, i, i);
+            __CutsceneWait(0x28);
+            i = 10;
+            __CopyMapTiles(7, 0xb, 7, 0x2a, i, 8);
+            __CopyMapTiles(0x47, 0xc, 0x47, 0x2b, i, 13);
+            i = 0x2c;
+            __Func_8010704(6, 0xd, 0xc, 0xc, 6, i);
+            __CutsceneWait(0x28);
+            OvlFunc_936_20095b4();
+            __Func_8010704(0, 1, 1, 1, 7, i);
+            __CutsceneEnd();
+        }
+    }
+    if (!__GetFlag(0x303)) {
+        if ((actor9->pos_x >> 19) <= 0x57) {
+            __CutsceneStart();
+            for (i = 0x43, one = 1, five = 5; i <= 0x4a; i++) {
+                __CopyMapTiles(i, 0x3a, 0x6b, 0x29, one, five);
+                __CutsceneWait(4);
+                if (i == 0x46) {
+                    __SetFlag(0x303);
+                }
+            }
+            five = 2;
+            __CopyMapTiles(0x2d, 0x6d, 0x2a, 0x6d, 3, five);
+            __CutsceneWait(0x28);
+            i = 1;
+            __CopyMapTiles(0x43, 0x40, 0x66, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x40, 0x67, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x40, 0x68, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x42, 0x69, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x40, 0x6a, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x40, 0x6b, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x40, 0x6c, 0x2c, i, five);
+            __CopyMapTiles(0x43, 0x42, 0x6d, 0x2c, i, five);
+            __CutsceneWait(0x28);
+            __CopyMapTiles(0x44, 0x40, 0x66, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x40, 0x67, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x40, 0x68, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x42, 0x69, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x40, 0x6a, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x40, 0x6b, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x40, 0x6c, 0x2c, i, five);
+            __CopyMapTiles(0x44, 0x42, 0x6d, 0x2c, i, five);
+            __CutsceneWait(0x28);
+            i = 8;
+            __CopyMapTiles(0x26, 0xe, 0x26, 0x2c, i, 4);
+            __CopyMapTiles(0x66, 0xe, 0x66, 0x2c, i, 12);
+            a4 = 0x25;
+            a5 = 0x2b;
+            __Func_8010704(0x25, 0xd, 0xa, 0xc, a4, a5);
+            __CutsceneWait(0x28);
+            OvlFunc_936_20095b4();
+            __CutsceneEnd();
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b768.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b864.s");

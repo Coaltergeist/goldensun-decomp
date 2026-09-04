@@ -477,7 +477,79 @@ void OvlFunc_924_20090c0(void)
         __ClearFlag(0x876);
     }
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009164.s");
+void OvlFunc_924_2009164(void)
+{
+    /* struct Pk / OvlFunc_924_20088ec are file-scope above (:204/:213); pk is
+       passed by value so the TU's struct Pk layout must be the one used here. */
+    extern void __ClearFlag();
+    extern void __CutsceneEnd();
+    extern void __CutsceneStart();
+    extern void __CutsceneWait();
+    extern void __SetFlag();
+    extern void __CopyMapTiles(int, int, int, int, int, int);
+    extern int __GetFlag();
+    extern int OvlFunc_924_2008758(void *arg0);
+    extern void OvlFunc_924_200bc48();
+    extern void OvlFunc_924_20090c0();
+
+    struct Pk pk;
+
+    __CutsceneStart();
+    if (OvlFunc_924_2008758(&pk)) {
+        switch ((unsigned int)pk.b) {  /* TU's struct Pk has int b; this fn's ref uses an unsigned switch */
+        case 9:
+            if ((pk.z >> 20) == 8) {
+                OvlFunc_924_20088ec(pk);
+                __CutsceneWait(20);
+                __CopyMapTiles(0x77, 9, 0x6d, 11, 1, 1);
+                OvlFunc_924_200bc48(0x2d60000, 0, 0xb40000, 0x8000);
+                __SetFlag(0x310);
+            } else {
+                __CopyMapTiles(0x75, 9, 0x68, 7, 1, 1);
+                __CopyMapTiles(0x77, 8, 0x6d, 11, 1, 1);
+                __CopyMapTiles(0x76, 8, 0x68, 13, 1, 1);
+                OvlFunc_924_20088ec(pk);
+                __ClearFlag(0x310);
+            }
+            break;
+        case 10: {
+            int flag = 0x310;
+            if ((pk.z >> 20) == 12) {
+                OvlFunc_924_20088ec(pk);
+                __CutsceneWait(10);
+                if (__GetFlag(flag)) {
+                    __CopyMapTiles(0x76, 9, 0x68, 13, 1, 1);
+                    OvlFunc_924_200bc48(0x2840000, 0, 0xd20000, 0x4000);
+                }
+                __SetFlag(0x311);
+            } else {
+                int f = 0x311;
+                __CopyMapTiles(0x77, 8, 0x6d, 11, 1, 1);
+                if (__GetFlag(flag)) {
+                    __CopyMapTiles(0x77, 9, 0x6d, 11, 1, 1);
+                    __CopyMapTiles(0x76, 8, 0x68, 13, 1, 1);
+                }
+                OvlFunc_924_20088ec(pk);
+                __ClearFlag(f);
+            }
+            break;
+        }
+        case 11: {
+            int flag = 0x312;
+            if ((pk.x >> 20) == 40) {
+                OvlFunc_924_20088ec(pk);
+                __SetFlag(flag);
+            } else {
+                OvlFunc_924_20088ec(pk);
+                __ClearFlag(flag);
+            }
+            break;
+        }
+        }
+        OvlFunc_924_20090c0();
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009340.s");
 
 extern void OvlFunc_924_20083a8(void);
@@ -587,8 +659,134 @@ INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009c9c.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009d3c.s");
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009db4.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a030.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a1cc.s");
+/* Private name — the TU's struct EffectData (:919) is a separate def below. */
+struct EffectData924 {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    int unk18;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+void OvlFunc_924_200a030(int arg0)
+{
+    extern void __CopyMapTiles(int, int, int, int, int, int);
+    extern void __PlaySound(int);
+    extern unsigned int __Random(void);
+    extern void __CutsceneWait(int);
+    extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+    struct EffectData924 data;
+    unsigned int i;
+    unsigned int j;
+
+    __CopyMapTiles(0x70, 0x39, 0x71, 0x2a, 1, 1);
+    __CopyMapTiles(0x75, 0x3a, 0x70, 0x2e, 1, 1);
+    __CopyMapTiles(0x75, 0x39, 0x74, 0x2c, 1, 1);
+    __PlaySound(0x121);
+
+    data.unk4 = 5;
+    data.unk8 = 0x8000;
+    data.unkc = 0x8000;
+
+    for (i = 0; i <= 2; i++) {
+        for (j = 1; j <= 7; j++) {
+            if (j & 1) {
+                if (arg0 == 0) {
+                    OvlFunc_common0_10c((0x319 - ((__Random() * 5) >> 16)) << 16,
+                                        0,
+                                        0x2b70000 + (((i * 4) + j) << 17),
+                                        0,
+                                        arg0,
+                                        0x4000,
+                                        0x90000,
+                                        &data);
+                } else if (arg0 == 1) {
+                    OvlFunc_common0_10c(0x3120000 + (((i * 4) + j) << 17),
+                                        0,
+                                        (0xba << 18) + (((__Random() * 5) >> 16) << 16),
+                                        0x4000,
+                                        0,
+                                        0,
+                                        0x90000,
+                                        &data);
+                } else {
+                    OvlFunc_common0_10c(-(j << 17) - (i << 19) + (0xce << 18),
+                                        0,
+                                        (0xb2 << 18) + (((__Random() * 5) >> 16) << 16),
+                                        0x4000,
+                                        0,
+                                        0,
+                                        0x90000,
+                                        &data);
+                }
+                __CutsceneWait(1);
+            }
+        }
+
+        if (arg0 == 0) {
+            __CopyMapTiles(0x70, 0x3a, 0x71, i + 0x2b, 1, 1);
+        } else if (arg0 == 1) {
+            __CopyMapTiles(0x70, 0x3a, i + 0x71, 0x2e, 1, 1);
+        } else {
+            __CopyMapTiles(0x70, 0x3a, 0x73 - i, 0x2c, 1, 1);
+        }
+    }
+}
+#include "actor.h"
+
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_924__0200df20[16];
+extern ActorCmd gScript_924__0200df60[18];
+extern ActorCmd gScript_924__0200dff0[5];
+extern ActorCmd gScript_924__0200dfa8[18];
+
+int OvlFunc_924_200a1cc(void)
+{
+    /* __MapActor_GetActor is declared file-scope as unsigned char* (:201);
+       cast to the actor.h struct Actor for the pos accesses. */
+    extern void __Func_80933d4(int, int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern void __Func_8093530(void);
+    extern int __GetFlag(int);
+    extern void __MapActor_SetBehavior(int, ActorCmd *);
+    extern void __CutsceneWait(int);
+
+    int x;
+    int z;
+
+    x = ((struct Actor *)__MapActor_GetActor(9))->pos.x / 0x100000;
+    z = ((struct Actor *)__MapActor_GetActor(9))->pos.z / 0x100000;
+
+    __Func_80933d4(0xa0 << 11, 0xa0 << 8);
+    __Func_80933f8(0xcc << 18, -1, 0xb2 << 18, 1);
+    __Func_8093530();
+
+    if (!__GetFlag(0x877)) {
+        if (x == 0x32 && __GetFlag(0x319)) {
+            __MapActor_SetBehavior(9, gScript_924__0200df20);
+        } else if (x == 0x31) {
+            if (z == 0x2c && !__GetFlag(0x319) && !__GetFlag(0x31a) && !__GetFlag(0x31b)) {
+                __MapActor_SetBehavior(9, gScript_924__0200df60);
+            } else if (z == 0x2c && __GetFlag(0x319)) {
+                __MapActor_SetBehavior(9, gScript_924__0200dff0);
+            } else if (z == 0x2e && __GetFlag(0x31a)) {
+                __MapActor_SetBehavior(9, gScript_924__0200dfa8);
+                __CutsceneWait(0x1e);
+                return 1;
+            }
+        }
+    }
+
+    __CutsceneWait(0x1e);
+    return 0;
+}
+INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a1cc_data.s");
 
 #include "task.h"
 #include "actor.h"

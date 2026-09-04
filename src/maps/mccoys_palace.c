@@ -140,7 +140,64 @@ void OvlFunc_909_20082cc(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008338.s");
+void OvlFunc_909_2008338(void)
+{
+    /* iwram_3001ebc is declared file-scope above as unsigned char* (:93). */
+    extern int __GetFlag(int);
+    extern void __PlaySound(int);
+    extern void __Func_80118a8(int);
+    extern void __CutsceneStart(void);
+    extern void __CutsceneWait(int);
+    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void __MapActor_TravelBy(int, int, int);
+    extern void __Func_8092208(int, int, int);
+    extern void __Func_8091e9c(int);
+    extern void __CutsceneEnd(void);
+    extern void __Func_80118c0(int);
+
+    int flag;
+    unsigned char *map;
+    int sp1 = 0x8000;
+    int sp2 = 0x4000;
+    int step = -16;
+
+    do { } while (sp1 == 0);
+
+    map = iwram_3001ebc;
+    flag = 0;
+    if (*(short *)(map + (0xb6 << 1)) == 9) {
+        if (!__GetFlag(0x200)) {
+            __PlaySound(0xbc);
+            flag = 1;
+        }
+    } else {
+        __PlaySound(0x9e);
+        flag = 1;
+    }
+
+    if (flag) {
+        __Func_80118a8(1);
+        __Func_80118a8(2);
+    }
+
+    __CutsceneStart();
+    __CutsceneWait(10);
+    __MapActor_SetSpeed(0, sp1, sp2);
+    __MapActor_SetAnim(0, 2);
+
+    if (*(short *)(map + (0xb6 << 1)) == 9) {
+        __MapActor_TravelBy(0, 0, step);
+    } else {
+        __Func_8092208(0, 3, step);
+    }
+
+    __CutsceneWait(16);
+    __Func_8091e9c(*(short *)(map + (0xb6 << 1)));
+    __CutsceneEnd();
+    __Func_80118c0(1);
+    __Func_80118c0(2);
+}
 
 void OvlFunc_909_20083ec(void)
 {
