@@ -555,7 +555,26 @@ void OvlFunc_945_200c0e8(void) {
     OvlFunc_945_200c8e8(9, 0xe, 0);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c13c.s");
+void OvlFunc_945_200c13c(void)
+{
+    extern void OvlFunc_945_200c8e8(int, int, int);
+    extern void OvlFunc_945_200c86c(int);
+    extern void __Func_8092adc(int, int, int);
+    int neg1 = -1;
+    int d = 0xd000;
+
+    do { } while (d == 0);
+
+    __CutsceneStart();
+    __Func_80933f8(neg1, neg1, neg1, 0);
+    __WaitFrames(1);
+    OvlFunc_945_200c8e8(0xf, 1, 1);
+    __Func_80925cc(8, 1);
+    __MessageID(0x1e43);
+    OvlFunc_945_200c86c(8);
+    __Func_8092adc(8, d, 0x28);
+    OvlFunc_945_200c8e8(9, 0xf, 0);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c198.s");
 
 
@@ -572,7 +591,41 @@ void OvlFunc_945_200c218(void) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c254.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c5d0.s");
+extern void *Lm945_6968 __asm__(".Lm945_6968");
+
+void *OvlFunc_945_200c5d0(void)
+{
+    int flag_id = 0x200;
+    int flag;
+    int mask;
+    unsigned char *actor;
+    unsigned char *sprite;
+    unsigned char *buf;
+
+    do { } while (flag_id == 0);
+
+    flag = __GetFlag(flag_id);
+    if (flag != 0) {
+        return Lm945_6968;
+    }
+
+    actor = (unsigned char *)__CreateActor(0x16, 0x1c70000, 0x40000, 0x2200000);
+    actor[0x55] = flag;
+    actor[0x5c] = 1;
+    sprite = *(unsigned char **)(actor + 0x50);
+    sprite[0x27] = flag;
+    mask = ~0x20;
+    sprite[5] = sprite[5] & mask;
+    sprite[9] = sprite[9] & 0xf;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xe8);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite[0x1c], 0x80, buf);
+    __gfree(0x11);
+    __SetFlag(flag_id);
+    Lm945_6968 = actor;
+    return actor;
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c670.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c7cc.s");
 

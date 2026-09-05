@@ -48,8 +48,125 @@ unsigned char *TolbiRooms1_GetEvents(void)
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200809c.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20080c0.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200813c.s");
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008328.s");
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/TolbiRooms1_MapInit.s");
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern void __CutsceneEnd(void);
+extern void __CutsceneWait(int);
+extern void __MapActor_Jump(int, int, int);
+extern void __MapActor_Emote(int, int, int);
+extern void __MapActor_DoAnim(int, int);
+extern void __Func_80925cc(int, int);
+void OvlFunc_950_2008328(void)
+{
+    __CutsceneStart();
+    __MessageID(0x23a4);
+    __CutsceneWait(0x1e);
+    __MapActor_Jump(0x1f, 4, 0xd);
+    __MapActor_Jump(0x1f, 4, 0x1e);
+    __ActorMessage(0x1f, 0);
+    __CutsceneWait(10);
+    __MapActor_Emote(0x20, 0x102, 0x32);
+    __CutsceneWait(10);
+    __MapActor_DoAnim(0x20, 3);
+    __CutsceneWait(0x1e);
+    __ActorMessage(0x20, 0);
+    __CutsceneWait(10);
+    __MapActor_DoAnim(0x21, 4);
+    __CutsceneWait(0x14);
+    __ActorMessage(0x21, 0);
+    __CutsceneWait(10);
+    __Func_80925cc(0x1f, 2);
+    __CutsceneWait(0x14);
+    __ActorMessage(0x1f, 0);
+    __CutsceneWait(10);
+    __MapActor_DoAnim(0x20, 3);
+    __CutsceneWait(0x1e);
+    __CutsceneEnd();
+}
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern unsigned char iwram_3001ebc[];
+extern GlobalState gState;
+
+void __MapActor_SetPos(int, int, int);
+extern void OvlFunc_950_200813c(void);
+struct Actor {
+    unsigned char pad1[0x23];
+    unsigned char f23;
+    unsigned char pad2[0x50 - 0x24];
+    unsigned char *sprite;
+};
+
+int TolbiRooms1_MapInit(void)
+{
+    int pos_x = 0x8c << 18;
+    int pos_y = 0xaa << 18;
+    int speed = 0x80 << 8;
+    int flag_8bc = 0x8bc;
+    int flag_300 = 0x300;
+    unsigned char *base;
+    struct Actor *actor;
+    GlobalState *state;
+    short *p;
+    int s1;
+    int s2;
+    int r2;
+    int mask;
+    int set;
+
+    do {} while (pos_x == 0);
+
+    base = *(unsigned char **)iwram_3001ebc;
+    *(int *)(base + 0x1c0) = 0x209;
+
+    if (__GetFlag(0x95 << 4)) {
+        s1 = 0x33;
+        s2 = 0x2d;
+        __Func_8010704(0x33, 0x2f, 3, 1, s1, s2);
+
+        mask = -13;
+        set = 8;
+
+        actor = (struct Actor *)__MapActor_GetActor(0x1f);
+        actor->f23 = 0;
+        actor->sprite[9] = (actor->sprite[9] & mask) | set;
+
+        actor = (struct Actor *)__MapActor_GetActor(0x20);
+        actor->f23 = 0;
+        actor->sprite[9] = (actor->sprite[9] & mask) | set;
+
+        if (__GetFlag(flag_8bc)) {
+            __MapActor_SetPos(0x19, pos_x, pos_y);
+            __Func_8092adc(0x19, speed, 0);
+        }
+
+        state = &gState;
+        r2 = 0xe1;
+        r2 <<= 1;
+        p = (short *)((char *)state + r2);
+        if (*p == 0x13 && !__GetFlag(flag_8bc)) {
+            __SetFlag(flag_8bc);
+            __MapTransitionIn();
+            OvlFunc_950_200813c();
+        }
+
+        r2 = 0xe1;
+        r2 <<= 1;
+        p = (short *)((char *)state + r2);
+        if (*p == 0x10 && !__GetFlag(flag_300)) {
+            __SetFlag(flag_300);
+            __MapTransitionIn();
+            OvlFunc_950_2008328();
+        }
+
+        if (__GetFlag(0x8ab)) {
+            __MapActor_SetPos(0x23, 0, 0);
+            __MapActor_SetPos(0x24, 0, 0);
+        }
+    }
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008500.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20085a8.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200866c.s");
@@ -66,10 +183,6 @@ void OvlFunc_950_200873c(unsigned int arg0)
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008760.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20087b0.s");
 
-extern void __CutsceneStart(void);
-extern void __MessageID(int);
-extern void __ActorMessage(int, int);
-extern void __CutsceneEnd(void);
 
 void OvlFunc_950_200885c(void) {
     __CutsceneStart();
