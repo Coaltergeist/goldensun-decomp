@@ -113,7 +113,46 @@ int TolbiBoundShipHull_GetEvents(void)
         return (int)Lm945_7420;
     }
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008670.s");
+extern void __Func_808e118(void);
+extern int __Func_8091c7c(int, int);
+extern void OvlFunc_945_2009f3c(void);
+void OvlFunc_945_2008670(void) {
+    extern void __CutsceneStart(void);
+    extern void __Func_808e118(void);
+    extern int __GetFlag(int);
+    extern void __MessageID(int);
+    extern void __ActorMessage(int, int);
+    extern int __Func_8091c7c(int, int);
+    extern void OvlFunc_945_2009f3c(void);
+    extern void __Func_809259c(int, int);
+    extern void __Func_8092adc(int, int, int);
+    extern void __CutsceneEnd(void);
+
+    int w = 0xd000;
+
+    do { } while (w == 0);
+
+    __CutsceneStart();
+    __Func_808e118();
+    if (__GetFlag(0x921)) {
+        __MessageID(0x1dd4);
+        __ActorMessage(10, 0);
+    } else if (__GetFlag(0x922)) {
+        __MessageID(0x1d91);
+        __ShowActorMessage_NoWait(10, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            OvlFunc_945_2009f3c();
+        } else {
+            __Func_809259c(10, 2);
+            __ActorMessage(10, 0);
+            __Func_8092adc(10, w, 0);
+        }
+    } else {
+        __MessageID(0x1d31);
+        __ActorMessage(10, 0);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_945_2008708(void) {
     __CutsceneStart();
@@ -122,7 +161,47 @@ void OvlFunc_945_2008708(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008728.s");
+extern void OvlFunc_945_200c86c(int a);
+extern unsigned char *iwram_3001ebc;
+void OvlFunc_945_2008728(void)
+{
+    extern void OvlFunc_945_200c86c(int);
+    extern void __Func_8092adc(int, int, int);
+
+    int flag_925 = 0x925;
+    int c_d000 = 0xd000;
+    unsigned char *b;
+    unsigned short *addr;
+    unsigned short v;
+
+    while (c_d000 == 0) { }
+
+    __CutsceneStart();
+    if (__GetFlag(0x928) != 0) {
+        __MessageID(0x1eb2);
+        OvlFunc_945_200c86c(8);
+        __Func_8092adc(8, c_d000, 0x3c);
+        __MapActor_DoAnim(8, 4);
+        OvlFunc_945_200c86c(8);
+        __MapActor_DoAnim(8, 3);
+    } else if (__GetFlag(flag_925) != 0) {
+        __MessageID(0x1e06);
+        __ActorMessage(8, 0);
+    } else if (__GetFlag(0x921) != 0) {
+        __MessageID(0x1dcd);
+        __ActorMessage(8, 0);
+        if (__GetFlag(flag_925) == 0 && __GetFlag(0x924) != 0) {
+            b = iwram_3001ebc;
+            addr = (unsigned short *)(b + (0xb9 << 1));
+            v = 1;
+            *addr = v;
+        }
+    } else {
+        __MessageID(0x1d30);
+        __ActorMessage(8, 0);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20087f8.s");
 
 
@@ -524,10 +603,90 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7b4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7d8.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b8ac.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bd10.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bdec.s");
+void OvlFunc_945_200bdec(void) {
+    extern void __CutsceneStart(void);
+    extern void __Func_8092adc(int, int, int);
+    extern void __Func_809259c(int, int);
+    extern void __MessageID(int);
+    extern void __ActorMessage_Wait(int, int, int);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+
+    int w = 0x5000;
+
+    do { } while (w == 0);
+
+    __CutsceneStart();
+    OvlFunc_945_200c8e8(0xf, 1, 1);
+    __Func_8092adc(8, w, 0x28);
+    __Func_809259c(8, 2);
+    __MessageID(0x1e3d);
+    __ActorMessage_Wait(8, 0, 0x14);
+    OvlFunc_945_200c8e8(9, 0xb, 0);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200be34.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200beec.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200bf94.s");
+extern void OvlFunc_945_200c670(int);
+extern void __Func_80933d4(int, int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __PlaySound(int);
+extern void __Func_8091e9c(int);
+
+void OvlFunc_945_200bf94(void)
+{
+    extern void __CutsceneStart(void);
+    extern void __MapActor_SetAnim(int, int);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void OvlFunc_945_200c670(int);
+    extern void __Func_80933d4(int, int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern void __CutsceneWait(int);
+    extern void __PlaySound(int);
+    extern int __GetFlag(int);
+    extern void __Func_8091e9c(int);
+
+    __CutsceneStart();
+    __MapActor_SetAnim(9, 5);
+    OvlFunc_945_200c8e8(0x18, 1, 0);
+    __MapActor_SetPos(0, 0, 0);
+    OvlFunc_945_200c8e8(0x11, 0, 0);
+    OvlFunc_945_200c670(0);
+    OvlFunc_945_200c8e8(8, 1, 0x14);
+    __Func_80933d4(0x6666, 0xccc);
+    __Func_80933f8(0xdc << 17, -1, 0xb0 << 16, 1);
+    __CutsceneWait(0x14);
+    __MapActor_SetAnim(9, 7);
+    __CutsceneWait(0x1e);
+    __PlaySound(0xbc);
+    __CutsceneWait(0x1e);
+    OvlFunc_945_200c670(0x10);
+    __CutsceneWait(0x50);
+    OvlFunc_945_200c670(0);
+    __CutsceneWait(0x3c);
+    __MapActor_SetAnim(9, 7);
+    __CutsceneWait(0x1e);
+    __PlaySound(0xbc);
+    __CutsceneWait(0x1e);
+    OvlFunc_945_200c670(0x10);
+    __CutsceneWait(0x50);
+    OvlFunc_945_200c670(0);
+    __CutsceneWait(0x5a);
+    __PlaySound(0xbc);
+    __CutsceneWait(0x1e);
+    *(int *)((char *)iwram_3001ebc + 0x1c0) = 0x203;
+    OvlFunc_945_200c8e8(9, 0, 0);
+    if (__GetFlag(0x92b) != 0) {
+        __Func_8091e9c(0x14);
+    } else if (__GetFlag(0x92a) != 0) {
+        __Func_8091e9c(0x12);
+    } else if (__GetFlag(0x929) != 0) {
+        __Func_8091e9c(0x11);
+    } else if (__GetFlag(0x928) != 0) {
+        __Func_8091e9c(0x10);
+    } else {
+        __Func_8091e9c(0xd);
+    }
+}
 
 
 void OvlFunc_945_200c0e8(void) {
@@ -747,7 +906,36 @@ void OvlFunc_945_200d780(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d7ec.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dc48.s");
+extern int Lm945_7f84_i __asm__(".Lm945_7f84");
+extern void __Func_8012330(int, int, int);
+static inline void Func_8012330_pos(int x, int y, int z)
+{
+    __Func_8012330(x << 10, y << 10, z << 9);
+}
+
+static inline void Func_8012330_neg(int x, int y, int z)
+{
+    __Func_8012330(-x, -y, z);
+}
+
+void OvlFunc_945_200dc48(void)
+{
+    extern void __Func_8012330(int, int, int);
+    extern unsigned int __Random(void);
+
+    if (Lm945_7f84_i != 0) {
+        Lm945_7f84_i--;
+        if (Lm945_7f84_i == 0x46) {
+            Func_8012330_neg(1, 1, 0xe666);
+        }
+    } else {
+        if (((__Random() * 0x78) >> 16) == 0) {
+            __PlaySound(0xb5);
+            Func_8012330_pos(0x80, 0x80, 0x80);
+            Lm945_7f84_i = 0x50;
+        }
+    }
+}
 void OvlFunc_945_200dca4(void) {
     extern void __CutsceneStart(void);
     extern void OvlFunc_945_200c8e8(int, int, int);

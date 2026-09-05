@@ -131,7 +131,44 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20092f0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/TolbiBoundShipDeck_MapInit.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009444.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009684.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20097a0.s");
+struct Actor {
+    char _pad[6];
+    unsigned short facing;
+    char _pad2[0x59 - 8];
+    unsigned char unk59;
+};
+extern void __MapActor_SetPos(int, int, int);
+extern void *__MapActor_GetActor(int);
+void __Func_8092b08(int, int);
+
+void OvlFunc_943_20097a0(void) {
+    void __MapActor_SetPos(int, int, int);
+    void *__MapActor_GetActor(int);
+    void __Func_8092b08(int, int);
+
+    struct Actor *actor;
+
+    __MapActor_SetPos(0x15, 0x1060000, 0x2c20000);
+    actor = (struct Actor *)__MapActor_GetActor(0x15);
+    actor->facing = 0x5000;
+    __MapActor_SetPos(0x18, 0xa40000, 0x2880000);
+    actor = (struct Actor *)__MapActor_GetActor(0x18);
+    actor->facing = 0;
+    __Func_8092b08(0x18, 1);
+    __MapActor_SetPos(0x19, 0xc60000, 0x2990000);
+    actor = (struct Actor *)__MapActor_GetActor(0x19);
+    actor->facing = 0x8000;
+    __Func_8092b08(0x19, 1);
+    __MapActor_SetPos(0x1a, 0xbc0000, 0x2a60000);
+    actor = (struct Actor *)__MapActor_GetActor(0x1a);
+    actor->facing = 0xb000;
+    __MapActor_SetPos(0x1b, 0xba0000, 0x27b0000);
+    actor = (struct Actor *)__MapActor_GetActor(0x1b);
+    actor->facing = 0x5000;
+    __MapActor_SetPos(0x16, 0, 0);
+    __MapActor_SetPos(0x17, 0, 0);
+    __MapActor_SetPos(0x14, 0, 0);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200985c.s");
 #include "nonmatching.h"
 
@@ -144,19 +181,11 @@ extern void OvlFunc_943_200c218(void);
 extern void __CutsceneStart(void);
 extern void __LoadFieldActors(void *);
 extern void __WaitFrames(int);
-extern void __MapActor_SetPos(int, int, int);
-extern void *__MapActor_GetActor(int);
 extern void __MapActor_SetBehavior(int, void *);
 extern void __MapActor_SetSpeed(int, int, int);
 extern int __GetFlag(int);
 extern void __CutsceneEnd(void);
 
-struct Actor {
-    char _pad[6];
-    unsigned short facing;
-    char _pad2[0x59 - 8];
-    unsigned char unk59;
-};
 
 void OvlFunc_943_2009920(void)
 {
@@ -186,7 +215,50 @@ void OvlFunc_943_2009920(void)
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20099c0.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009a98.s");
+extern void OvlFunc_943_2009c14(int a, int b);
+#include "nonmatching.h"
+
+void __Func_80933f8(int, int, int, int);
+void __Func_800fe9c(void);
+void OvlFunc_943_2009a98(void)
+{
+    void __CutsceneStart(void);
+    void __Func_80933f8(int, int, int, int);
+    void __WaitFrames(int);
+    void __MapActor_SetPos(int, int, int);
+    void *__MapActor_GetActor(int);
+    void __Func_800fe9c(void);
+    void OvlFunc_943_2009c14(int, int);
+
+    int pos_x = 0xe8 << 16;
+    int pos_y = 0x28a0000;
+    int target_y = 0x9f << 18;
+    int neg = -1;
+    struct Actor *actor;
+
+    do {} while (pos_x == 0);
+
+    __CutsceneStart();
+    __Func_80933f8(neg, neg, neg, 0);
+    __WaitFrames(1);
+    __MapActor_SetPos(0x14, 0, 0);
+    __MapActor_SetPos(0x16, 0, 0);
+    __MapActor_SetPos(0x18, 0, 0);
+    __MapActor_SetPos(0x19, 0, 0);
+    __MapActor_SetPos(0x1a, 0, 0);
+    __MapActor_SetPos(0x1b, 0, 0);
+    __MapActor_SetPos(0, 0, 0);
+    __MapActor_SetPos(0x17, 0, 0);
+    actor = (struct Actor *)__MapActor_GetActor(0x17);
+    actor->facing = 0xc0 << 6;
+    __MapActor_SetPos(0x15, pos_x, pos_y);
+    actor = (struct Actor *)__MapActor_GetActor(0x15);
+    actor->facing = 0xb0 << 8;
+    __Func_80933f8(pos_x, neg, target_y, 0);
+    __Func_800fe9c();
+    __WaitFrames(1);
+    OvlFunc_943_2009c14(0x17, 0x15);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009b58.s");
 extern void __CutsceneWait(int a);
 extern void __Func_8092adc();

@@ -46,7 +46,44 @@ unsigned char *TolbiRooms1_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200809c.s");
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20080c0.s");
+extern unsigned char iwram_3001ebc[];
+struct TableEntry {
+    void *unk0;
+    unsigned short unk4;
+    unsigned short unk6;
+};
+
+extern struct TableEntry Lm950_1dcc[] __asm__(".Lm950_1dcc");
+
+void OvlFunc_950_20080c0(void)
+{
+    unsigned char *map;
+    unsigned char *actor;
+    unsigned int i;
+    int index;
+    int arg1, arg2;
+
+    map = *(unsigned char **)iwram_3001ebc;
+
+    for (i = 8; i <= 0x41; i++) {
+        actor = (unsigned char *)__MapActor_GetActor(i);
+        if (actor != 0) {
+            actor[0x55] = 0;
+        }
+    }
+
+    map += 0x16c;
+    index = *(short *)map - 0xe;
+    __PlaySound(0x9e);
+    arg1 = Lm950_1dcc[index].unk4;
+    arg2 = Lm950_1dcc[index].unk6;
+    __Func_8010560(Lm950_1dcc[index].unk0, arg1, arg2);
+
+    __MapActor_SetSpeed(0, 0x8000, 0x4000);
+    ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
+    __MapActor_SetAnim(0, 2);
+    __Func_8091e9c(*(short *)map);
+}
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200813c.s");
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
@@ -85,7 +122,6 @@ void OvlFunc_950_2008328(void)
     __CutsceneEnd();
 }
 typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
 
 void __MapActor_SetPos(int, int, int);
