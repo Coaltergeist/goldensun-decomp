@@ -162,7 +162,7 @@ static inline void ClearSectorBuf(struct FlashWork *ctx) {
             "sub\t%0, #0xc"
             :
             : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt)
-            : "memory"
+            : "memory", "r3"
         );
     }
 }

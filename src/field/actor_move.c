@@ -1,5 +1,6 @@
 /* unknown/sub_8096c24.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "actor.h"
 
 extern int GetFieldActor(int actorID);
 extern void _Actor_SetAnimSpeed(int actor, int speed);
@@ -23,7 +24,29 @@ void Func_8096cdc(unsigned char *arg0, unsigned int arg1, int arg2)
     } while (i <= 0x42);
 }
 
-INCLUDE_ASM("asm/field/actor_move/Func_8096d2c.s");
+extern int sin(int);
+extern void _Actor_SetScript(void *actor, void *script);
+extern unsigned char Data_9f0b0[];
+
+void Func_8096d2c(struct Actor *actor)
+{
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        _Actor_SetScript(actor, Data_9f0b0);
+    } else {
+        sinVal = sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z + (0x10000 - sinVal) * 5 + 0x90000;
+    }
+}
+
 INCLUDE_ASM("asm/field/actor_move/Func_8096d84.s");
 INCLUDE_ASM("asm/field/actor_move/Func_8096ddc.s");
 

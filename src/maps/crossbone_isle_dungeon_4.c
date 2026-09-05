@@ -377,7 +377,15 @@ void OvlFunc_948_2008e50(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ec8.s");
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_948_2008ec8(void)
+{
+    __CutsceneStart();
+    __MapActor_SetAnim(0xf, 0);
+    __CutsceneEnd();
+}
 extern unsigned char _EVENT_75[], _EVENT_76[], _EVENT_78[];
 extern unsigned char Lm948_2bb4[] __asm__(".Lm948_2bb4");
 extern unsigned char Lm948_2cb0[] __asm__(".Lm948_2cb0");

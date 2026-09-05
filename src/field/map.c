@@ -533,7 +533,27 @@ unsigned int MapActor_GetSpriteID(actorID) unsigned int actorID; {
     return *(short *)v0;
 }
 
-INCLUDE_ASM("asm/field/map/GetSpriteVoice.s");
+extern unsigned int GetSpriteVoiceEntry();
+
+unsigned int GetSpriteVoice(unsigned int spriteID)
+{
+    unsigned char *p;
+    unsigned int entry;
+
+    p = gState;
+    p += 0x20a;
+    if (*p == 0) {
+        return 0;
+    }
+
+    entry = GetSpriteVoiceEntry(spriteID);
+    entry = *(unsigned char *)(entry + 2);
+    if (entry == 0xff) {
+        return 0;
+    }
+
+    return entry + 0x100;
+}
 
 extern unsigned int GetSpriteVoiceEntry(void);
 

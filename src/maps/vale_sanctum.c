@@ -118,7 +118,17 @@ INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008848.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200888c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200987c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a5c4.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a660.s");
+
+extern void __MapActor_SetPos(int, int, int);
+
+void OvlFunc_888_200a660(void) {
+    unsigned char *r0;
+
+    r0 = (unsigned char *)__MapActor_GetActor(0xe);
+    *(int *)(r0 + 0x6c) = 0;
+    __MapActor_SetPos(0xe, 0, 0);
+}
+
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a67c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a6f0.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
