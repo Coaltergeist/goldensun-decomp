@@ -4,7 +4,16 @@
 
 INCLUDE_ASM("asm/maps/lalivero_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008030.s");
+extern void __MapActor_Surprise(int actor, int flag);
+
+unsigned int OvlFunc_967_2008030(void) {
+    int flag;
+    unsigned long actor = 0xe;
+    flag = 0x102;
+    do { } while (flag == 0);
+    __MapActor_Surprise(actor, flag);
+    return 0;
+}
 
 extern unsigned char gOvl_02009438[];
 
