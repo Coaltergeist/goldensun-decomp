@@ -219,6 +219,6 @@ void OvlFunc_949_2008ca8(void)
   __SetFlag(0x201);
 }
 
-INCLUDE_ASM("asm/maps/tolbi/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/tolbi/tolbi_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi/imports.s");

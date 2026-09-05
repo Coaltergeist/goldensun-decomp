@@ -101,6 +101,6 @@ void OvlFunc_885_2009a2c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_kraden/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_kraden/vale_kraden_data.s");
 
 INCLUDE_ASM("asm/maps/vale_kraden/imports.s");

@@ -209,6 +209,6 @@ void OvlFunc_888_200b4f0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_sanctum/vale_sanctum_data.s");
 
 INCLUDE_ASM("asm/maps/vale_sanctum/imports.s");

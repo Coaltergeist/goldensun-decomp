@@ -1343,4 +1343,4 @@ void OvlFunc_959_200d520(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/ovl_9dc_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_fortress/lunpa_fortress_data.s");

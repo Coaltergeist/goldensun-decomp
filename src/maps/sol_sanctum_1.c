@@ -710,6 +710,6 @@ void OvlFunc_890_200a924(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/sol_sanctum_1/sol_sanctum_1_data.s");
 
 INCLUDE_ASM("asm/maps/sol_sanctum_1/imports.s");

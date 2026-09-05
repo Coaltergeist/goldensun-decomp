@@ -94,6 +94,6 @@ int Suhalla_MapInit(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/suhalla/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/suhalla/suhalla_data.s");
 
 INCLUDE_ASM("asm/maps/suhalla/imports.s");

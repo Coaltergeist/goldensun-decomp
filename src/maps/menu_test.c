@@ -188,6 +188,6 @@ unsigned int OvlFunc_974_200917c(void) {
     return __UI_Sanctum();
 }
 
-INCLUDE_ASM("asm/maps/menu_test/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/menu_test/menu_test_data.s");
 
 INCLUDE_ASM("asm/maps/menu_test/imports.s");

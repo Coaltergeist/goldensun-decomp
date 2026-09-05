@@ -191,6 +191,6 @@ void OvlFunc_940_2008454(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/ovl_30_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/lunpa_rooms/lunpa_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/lunpa_rooms/imports.s");

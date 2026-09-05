@@ -29,6 +29,11 @@ src/**/*.s
 # disassembly (git never untracks tracked files).
 asm/**/*.s
 
+# Overlay data blobs (asm/maps/<tu>/<tu>_data.s) are hand-maintained source, not
+# compiler output (which lands at asm/<rel>.s, never inside the per-TU dir), so
+# they are tracked directly without a force-add.
+!asm/**/*_data.s
+
 # Per-machine expected disassembly cache
 expected/
 

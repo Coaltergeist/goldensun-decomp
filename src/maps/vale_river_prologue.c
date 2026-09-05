@@ -464,6 +464,6 @@ void OvlFunc_882_200c618(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/ovl_30_c_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_river_prologue/vale_river_prologue_data.s");
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/imports.s");

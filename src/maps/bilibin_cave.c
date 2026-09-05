@@ -244,6 +244,6 @@ INCLUDE_ASM("asm/maps/bilibin_cave/OvlFunc_920_20087f8.s");
 
 void OvlFunc_920_2008904(void) {}
 
-INCLUDE_ASM("asm/maps/bilibin_cave/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/bilibin_cave/bilibin_cave_data.s");
 
 INCLUDE_ASM("asm/maps/bilibin_cave/imports.s");

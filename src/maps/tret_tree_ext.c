@@ -129,6 +129,6 @@ void OvlFunc_919_20082e0(void)
   __StartTask(OvlFunc_919_20082a0, 0xc8 << 4);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/tret_tree_ext/tret_tree_ext_data.s");
 
 INCLUDE_ASM("asm/maps/tret_tree_ext/imports.s");

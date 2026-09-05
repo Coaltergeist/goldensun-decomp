@@ -362,6 +362,6 @@ void OvlFunc_884_200a5b0(void) {
     __Func_8091e9c(0x28);
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/ovl_30_c_c_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_plaza/vale_plaza_data.s");
 
 INCLUDE_ASM("asm/maps/vale_plaza/imports.s");

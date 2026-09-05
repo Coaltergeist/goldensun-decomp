@@ -58,4 +58,4 @@ unsigned int OvlFunc_972_20080b4(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/debug_test/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/debug_test/debug_test_data.s");

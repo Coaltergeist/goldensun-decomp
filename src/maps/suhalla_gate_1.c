@@ -92,6 +92,6 @@ void OvlFunc_963_20087ac(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/suhalla_gate_1/ovl_30_c_c_c.s");
+INCLUDE_ASM("asm/maps/suhalla_gate_1/suhalla_gate_1_data.s");
 
 INCLUDE_ASM("asm/maps/suhalla_gate_1/imports.s");

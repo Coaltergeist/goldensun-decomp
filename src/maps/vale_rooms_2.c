@@ -337,6 +337,6 @@ void OvlFunc_887_20097e4(void)
   __Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ovl_30_c_c_c_c_c_c.s");
+INCLUDE_ASM("asm/maps/vale_rooms_2/vale_rooms_2_data.s");
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/imports.s");
