@@ -421,5 +421,6 @@ unsigned int OvlFunc_913_200a864(int a) {
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a88c.s");
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a974.s");
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200aad8.s");
+INCLUDE_ASM("asm/maps/kolima_forest_1/kolima_forest_1_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/imports.s");

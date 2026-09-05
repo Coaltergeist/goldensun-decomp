@@ -330,5 +330,6 @@ INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009958.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009984.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20099b0.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200a1bc.s");
+INCLUDE_ASM("asm/maps/mccoys_palace/mccoys_palace_data.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace/imports.s");

@@ -252,5 +252,6 @@ unsigned int OvlFunc_911_200a6a4(int a)
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a6cc.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a7ac.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a910.s");
+INCLUDE_ASM("asm/maps/kolima/kolima_data.s");
 
 INCLUDE_ASM("asm/maps/kolima/imports.s");

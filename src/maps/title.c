@@ -108,5 +108,6 @@ void OvlFunc_879_20082e8(void) {
     *(int *)(*(char **)iwram_3001ebc + off) = 0x3c;
 }
 INCLUDE_ASM("asm/maps/title/OvlFunc_879_2008454.s");
+INCLUDE_ASM("asm/maps/title/title_data.s");
 
 INCLUDE_ASM("asm/maps/title/imports.s");

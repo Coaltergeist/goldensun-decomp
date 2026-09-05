@@ -267,5 +267,6 @@ INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008db4.s");
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ed8.s");
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008f3c.s");
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008fa0.s");
+INCLUDE_ASM("asm/maps/bilibin/bilibin_data.s");
 
 INCLUDE_ASM("asm/maps/bilibin/imports.s");

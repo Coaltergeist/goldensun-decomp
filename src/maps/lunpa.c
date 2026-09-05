@@ -511,3 +511,4 @@ int OvlFunc_939_20097d8(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2009840.s");
+INCLUDE_ASM("asm/maps/lunpa/lunpa_data.s");

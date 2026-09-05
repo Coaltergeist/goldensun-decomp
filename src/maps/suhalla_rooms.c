@@ -59,5 +59,6 @@ unsigned int *SuhallaRooms_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/suhalla_rooms/SuhallaRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/suhalla_rooms/suhalla_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/suhalla_rooms/imports.s");

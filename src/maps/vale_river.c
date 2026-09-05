@@ -819,5 +819,6 @@ void OvlFunc_883_200dc98(int arg0)
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dcc4.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd14.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd68.s");
+INCLUDE_ASM("asm/maps/vale_river/vale_river_data.s");
 
 INCLUDE_ASM("asm/maps/vale_river/imports.s");

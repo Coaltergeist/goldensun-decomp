@@ -198,5 +198,6 @@ void OvlFunc_967_2008eec(void)
     __ShowActorMessage_NoWait(0x2002, 0);
 }
 INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/lalivero_rooms/lalivero_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/lalivero_rooms/imports.s");

@@ -235,5 +235,6 @@ void *VaultRooms2_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/VaultRooms2_MapInit.s");
 INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008570.s");
+INCLUDE_ASM("asm/maps/vault_rooms_2/vault_rooms_2_data.s");
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/imports.s");

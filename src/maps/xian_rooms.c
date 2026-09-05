@@ -164,3 +164,4 @@ unsigned int XianRooms_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/xian_rooms/XianRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/xian_rooms/xian_rooms_data.s");

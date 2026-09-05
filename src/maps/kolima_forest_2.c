@@ -419,5 +419,6 @@ int OvlFunc_914_2008c4c(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008cb4.s");
+INCLUDE_ASM("asm/maps/kolima_forest_2/kolima_forest_2_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_2/imports.s");

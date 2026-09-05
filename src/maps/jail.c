@@ -115,5 +115,6 @@ void OvlFunc_900_20081d0(void) {
 }
 
 INCLUDE_ASM("asm/maps/jail/Jail_MapInit.s");
+INCLUDE_ASM("asm/maps/jail/jail_data.s");
 
 INCLUDE_ASM("asm/maps/jail/imports.s");

@@ -484,5 +484,6 @@ INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20099bc.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20099e8.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009f24.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009fa4.s");
+INCLUDE_ASM("asm/maps/imil/imil_data.s");
 
 INCLUDE_ASM("asm/maps/imil/imports.s");

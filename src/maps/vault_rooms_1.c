@@ -715,5 +715,6 @@ void OvlFunc_899_200c8a4(int arg0, unsigned char *p) {
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c8c8.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200cb2c.s");
+INCLUDE_ASM("asm/maps/vault_rooms_1/vault_rooms_1_data.s");
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/imports.s");

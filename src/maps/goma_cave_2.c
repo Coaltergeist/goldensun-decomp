@@ -479,5 +479,6 @@ void OvlFunc_905_20090c8(void)
 }
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200915c.s");
 INCLUDE_ASM("asm/maps/goma_cave_2/GomaCave2_MapInit.s");
+INCLUDE_ASM("asm/maps/goma_cave_2/goma_cave_2_data.s");
 
 INCLUDE_ASM("asm/maps/goma_cave_2/imports.s");

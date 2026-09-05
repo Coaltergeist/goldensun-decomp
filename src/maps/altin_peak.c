@@ -868,5 +868,6 @@ INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b738.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b850.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b9c8.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ba44.s");
+INCLUDE_ASM("asm/maps/altin_peak/altin_peak_data.s");
 
 INCLUDE_ASM("asm/maps/altin_peak/imports.s");

@@ -161,5 +161,6 @@ int OvlFunc_910_200890c(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008974.s");
+INCLUDE_ASM("asm/maps/mccoys_palace_ext/mccoys_palace_ext_data.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/imports.s");

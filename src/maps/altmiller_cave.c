@@ -480,5 +480,6 @@ INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b610.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_MapInit.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ba30.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200bad4.s");
+INCLUDE_ASM("asm/maps/altmiller_cave/altmiller_cave_data.s");
 
 INCLUDE_ASM("asm/maps/altmiller_cave/imports.s");

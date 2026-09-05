@@ -595,3 +595,4 @@ void OvlFunc_898_200973c(unsigned int arg0, unsigned int arg1, unsigned int arg2
 
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2009754.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_20097ac.s");
+INCLUDE_ASM("asm/maps/vault_1/vault_1_data.s");

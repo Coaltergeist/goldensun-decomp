@@ -183,3 +183,4 @@ INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2009538.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20096d4.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2009898.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20099bc.s");
+INCLUDE_ASM("asm/maps/colosseum_final_2/colosseum_final_2_data.s");

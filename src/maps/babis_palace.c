@@ -216,5 +216,6 @@ int BabisPalace_GetEvents(void)
     return (int)Lm952_5004;
 }
 INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_MapInit.s");
+INCLUDE_ASM("asm/maps/babis_palace/babis_palace_data.s");
 
 INCLUDE_ASM("asm/maps/babis_palace/imports.s");

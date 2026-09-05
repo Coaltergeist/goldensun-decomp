@@ -85,5 +85,6 @@ void OvlFunc_950_200885c(void) {
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_2008898.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20088cc.s");
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200891c.s");
+INCLUDE_ASM("asm/maps/tolbi_rooms_1/tolbi_rooms_1_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/imports.s");

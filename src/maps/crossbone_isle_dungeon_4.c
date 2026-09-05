@@ -988,5 +988,6 @@ INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a0c4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a188.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a290.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a334.s");
+INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/crossbone_isle_dungeon_4_data.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/imports.s");

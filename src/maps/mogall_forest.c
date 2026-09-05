@@ -821,5 +821,6 @@ int OvlFunc_927_200aba4(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200ac0c.s");
+INCLUDE_ASM("asm/maps/mogall_forest/mogall_forest_data.s");
 
 INCLUDE_ASM("asm/maps/mogall_forest/imports.s");

@@ -645,5 +645,6 @@ int OvlFunc_946_200ae70(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200aed8.s");
+INCLUDE_ASM("asm/maps/crossbone_isle/crossbone_isle_data.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle/imports.s");

@@ -161,3 +161,4 @@ void *Xian_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/xian/Xian_MapInit.s");
+INCLUDE_ASM("asm/maps/xian/xian_data.s");

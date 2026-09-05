@@ -319,3 +319,4 @@ INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20091bc.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009228.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009294.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20092e0.s");
+INCLUDE_ASM("asm/maps/link_lobby/link_lobby_data.s");

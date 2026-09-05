@@ -570,5 +570,6 @@ int OvlFunc_936_200b9d4(int *actor)
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200ba3c.s");
+INCLUDE_ASM("asm/maps/kalay/kalay_data.s");
 
 INCLUDE_ASM("asm/maps/kalay/imports.s");

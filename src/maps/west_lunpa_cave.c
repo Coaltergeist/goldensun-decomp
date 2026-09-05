@@ -154,5 +154,6 @@ unsigned int OvlFunc_941_200941c(void)
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009448.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009760.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/WestLunpaCave_MapInit.s");
+INCLUDE_ASM("asm/maps/west_lunpa_cave/west_lunpa_cave_data.s");
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/imports.s");

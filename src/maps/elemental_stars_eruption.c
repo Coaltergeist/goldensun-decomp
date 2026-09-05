@@ -247,5 +247,6 @@ void OvlFunc_897_200b00c(void) {
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b01c.s");
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b30c.s");
+INCLUDE_ASM("asm/maps/elemental_stars_eruption/elemental_stars_eruption_data.s");
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/imports.s");

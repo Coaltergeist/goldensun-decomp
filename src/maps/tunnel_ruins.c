@@ -700,5 +700,6 @@ INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a410.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a480.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a52c.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_MapInit.s");
+INCLUDE_ASM("asm/maps/tunnel_ruins/tunnel_ruins_data.s");
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/imports.s");

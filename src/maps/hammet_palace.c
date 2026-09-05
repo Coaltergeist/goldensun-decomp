@@ -201,5 +201,6 @@ INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2008360.s");
 INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_200940c.s");
 INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009450.s");
 INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009494.s");
+INCLUDE_ASM("asm/maps/hammet_palace/hammet_palace_data.s");
 
 INCLUDE_ASM("asm/maps/hammet_palace/imports.s");

@@ -361,5 +361,6 @@ void OvlFunc_881_200bf88(int arg0)
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200bfb4.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c004.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c058.s");
+INCLUDE_ASM("asm/maps/world_map_cutscenes/world_map_cutscenes_data.s");
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/imports.s");

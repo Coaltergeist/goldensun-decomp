@@ -115,5 +115,6 @@ unsigned int *Lalivero_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero/Lalivero_MapInit.s");
+INCLUDE_ASM("asm/maps/lalivero/lalivero_data.s");
 
 INCLUDE_ASM("asm/maps/lalivero/imports.s");

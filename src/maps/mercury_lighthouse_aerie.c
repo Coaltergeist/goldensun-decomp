@@ -346,3 +346,4 @@ void OvlFunc_925_200b438(void)
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b460.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b4bc.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/mercury_lighthouse_aerie_data.s");

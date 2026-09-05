@@ -303,5 +303,6 @@ void OvlFunc_908_2008490(void) {
 }
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/BilibinRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/bilibin_rooms/bilibin_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/imports.s");

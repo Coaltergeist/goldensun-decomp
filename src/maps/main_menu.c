@@ -43,5 +43,6 @@ INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008d74.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008de4.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20091e4.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20092c8.s");
+INCLUDE_ASM("asm/maps/main_menu/main_menu_data.s");
 
 INCLUDE_ASM("asm/maps/main_menu/imports.s");

@@ -512,5 +512,6 @@ INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c7c0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c968.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200ca2c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200cbd8.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse/venus_lighthouse_data.s");
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/imports.s");

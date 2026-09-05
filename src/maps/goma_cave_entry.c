@@ -135,3 +135,4 @@ void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1in)
 }
 
 INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008fc8.s");
+INCLUDE_ASM("asm/maps/goma_cave_entry/goma_cave_entry_data.s");

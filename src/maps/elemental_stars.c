@@ -189,3 +189,4 @@ void OvlFunc_896_200c3bc(void)
 }
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c49c.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c78c.s");
+INCLUDE_ASM("asm/maps/elemental_stars/elemental_stars_data.s");

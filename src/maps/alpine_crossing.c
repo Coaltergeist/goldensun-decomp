@@ -220,5 +220,6 @@ int AlpineCrossing_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_MapInit.s");
+INCLUDE_ASM("asm/maps/alpine_crossing/alpine_crossing_data.s");
 
 INCLUDE_ASM("asm/maps/alpine_crossing/imports.s");

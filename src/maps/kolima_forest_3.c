@@ -368,5 +368,6 @@ void OvlFunc_915_2008d7c(void) {
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008d9c.s");
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008ddc.s");
+INCLUDE_ASM("asm/maps/kolima_forest_3/kolima_forest_3_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/imports.s");

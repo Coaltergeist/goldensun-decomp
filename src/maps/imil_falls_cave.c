@@ -1026,5 +1026,6 @@ void OvlFunc_922_2009f58(void) {
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009fac.s");
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_200a014.s");
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_200a094.s");
+INCLUDE_ASM("asm/maps/imil_falls_cave/imil_falls_cave_data.s");
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/imports.s");

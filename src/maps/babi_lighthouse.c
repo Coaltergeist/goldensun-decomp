@@ -650,5 +650,6 @@ void OvlFunc_965_200a7f4(void)
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a820.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_MapInit.s");
+INCLUDE_ASM("asm/maps/babi_lighthouse/babi_lighthouse_data.s");
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/imports.s");

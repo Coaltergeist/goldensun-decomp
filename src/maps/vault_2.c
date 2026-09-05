@@ -292,3 +292,4 @@ void *Vault2_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_2/Vault2_MapInit.s");
+INCLUDE_ASM("asm/maps/vault_2/vault_2_data.s");

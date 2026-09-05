@@ -234,3 +234,4 @@ INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d6a0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d9f0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200da28.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200db90.s");
+INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/venus_lighthouse_aerie_data.s");

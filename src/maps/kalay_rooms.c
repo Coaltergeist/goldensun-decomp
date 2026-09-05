@@ -184,5 +184,6 @@ void OvlFunc_937_2008240(void)
 }
 INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_MapInit.s");
 INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_200833c.s");
+INCLUDE_ASM("asm/maps/kalay_rooms/kalay_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/kalay_rooms/imports.s");

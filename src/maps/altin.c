@@ -378,5 +378,6 @@ void OvlFunc_931_2008d08(void) {
     }
 }
 INCLUDE_ASM("asm/maps/altin/OvlFunc_931_2008d58.s");
+INCLUDE_ASM("asm/maps/altin/altin_data.s");
 
 INCLUDE_ASM("asm/maps/altin/imports.s");

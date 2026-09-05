@@ -285,5 +285,6 @@ INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008af8.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008b68.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008ba0.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008e40.s");
+INCLUDE_ASM("asm/maps/kalay_docks/kalay_docks_data.s");
 
 INCLUDE_ASM("asm/maps/kalay_docks/imports.s");

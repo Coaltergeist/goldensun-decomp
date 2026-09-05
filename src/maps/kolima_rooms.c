@@ -113,5 +113,6 @@ void *KolimaRooms_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_rooms/KolimaRooms_MapInit.s");
+INCLUDE_ASM("asm/maps/kolima_rooms/kolima_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_rooms/imports.s");

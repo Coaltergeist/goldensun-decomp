@@ -340,5 +340,6 @@ INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a820.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a904.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a964.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200ab1c.s");
+INCLUDE_ASM("asm/maps/colosseum/colosseum_data.s");
 
 INCLUDE_ASM("asm/maps/colosseum/imports.s");

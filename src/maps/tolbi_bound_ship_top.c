@@ -232,5 +232,6 @@ unsigned int OvlFunc_944_2009130(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_200915c.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/tolbi_bound_ship_top_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/imports.s");

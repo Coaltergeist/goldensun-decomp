@@ -719,5 +719,6 @@ void OvlFunc_945_200dca4(void) {
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dd10.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e110.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e3ac.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/tolbi_bound_ship_hull_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/imports.s");

@@ -170,3 +170,4 @@ int SuhallaDesert_GetEvents(void)
 INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_MapInit.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008f50.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2009094.s");
+INCLUDE_ASM("asm/maps/suhalla_desert/suhalla_desert_data.s");

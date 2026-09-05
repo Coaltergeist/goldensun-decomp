@@ -218,5 +218,6 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200ba0c.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200bc88.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200bf30.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200c218.s");
+INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/tolbi_bound_ship_deck_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/imports.s");

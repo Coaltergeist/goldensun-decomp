@@ -183,5 +183,6 @@ INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_200855c.s");
 INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20085d4.s");
 INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_2008658.s");
 INCLUDE_ASM("asm/maps/vale_rooms_1/OvlFunc_886_20090c0.s");
+INCLUDE_ASM("asm/maps/vale_rooms_1/vale_rooms_1_data.s");
 
 INCLUDE_ASM("asm/maps/vale_rooms_1/imports.s");

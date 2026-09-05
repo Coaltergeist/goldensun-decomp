@@ -214,5 +214,6 @@ void OvlFunc_951_20096a8(void)
     __StartTask(OvlFunc_951_2008e5c, 0xc83);
 }
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_200973c.s");
+INCLUDE_ASM("asm/maps/lucky_fountain/lucky_fountain_data.s");
 
 INCLUDE_ASM("asm/maps/lucky_fountain/imports.s");
