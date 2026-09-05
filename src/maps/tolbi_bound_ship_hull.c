@@ -587,7 +587,50 @@ void OvlFunc_945_20097c8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009804.s");
+extern void OvlFunc_945_200c86c(int a);
+extern unsigned char iwram_3001ebc__a[] __asm__("iwram_3001ebc");
+extern void __SetFlag(int);
+void OvlFunc_945_2009804(int param_1, int param_2, int param_3)
+{
+    extern void OvlFunc_945_200c86c(int);
+    extern void __CutsceneStart(void);
+    extern void __MessageID(int);
+    extern int __Func_8091c7c(int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern int __MapActor_GetActor(int);
+    extern void __MapActor_TravelTo(int, int, int);
+    extern void __MapActor_WaitMovement(int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __SetFlag(int);
+    extern void __CutsceneEnd(void);
+
+    int a;
+    unsigned short *r2;
+    unsigned short r3;
+
+    __CutsceneStart();
+    __MessageID(param_2);
+    __ShowActorMessage_NoWait(param_1, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        OvlFunc_945_200c86c(param_1);
+        __MapActor_SetAnim(param_1, 2);
+        a = __MapActor_GetActor(0);
+        if (a != 0) {
+            __MapActor_TravelTo(param_1, *(short *)(a + 0xa), *(short *)(a + 0x12));
+        }
+        __MapActor_WaitMovement(param_1);
+        __MapActor_SetPos(param_1, 0, 0);
+        __SetFlag(0xc0 << 2);
+        __SetFlag(param_3);
+    } else {
+        r2 = (unsigned short *)(*(unsigned int *)iwram_3001ebc__a + (0xec << 1));
+        r3 = *r2;
+        r3 += 1;
+        *r2 = r3;
+        OvlFunc_945_200c86c(param_1);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009894.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009978.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009a08.s");
@@ -598,7 +641,61 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200a7d8.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_MapInit.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b364.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b51c.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b66c.s");
+extern void OvlFunc_945_200c890(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
+extern void __WaitFrames(int);
+extern void OvlFunc_945_200b7b4(void);
+extern void OvlFunc_945_200c254(int);
+extern void OvlFunc_945_200b8ac(void);
+
+void OvlFunc_945_200b66c(void) {
+    extern void __WaitFrames(int);
+    extern int __GetFlag(int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void OvlFunc_945_200b7b4(void);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+    extern void OvlFunc_945_200c890(unsigned int, unsigned int, unsigned int, unsigned int);
+    extern void OvlFunc_945_200c254(int);
+    extern void OvlFunc_945_200b8ac(void);
+
+    int pos_x = 0xec << 17;
+    int pos_y = 0x98 << 16;
+
+    do { } while (pos_x == 0);
+
+    __WaitFrames(1);
+    OvlFunc_945_200b7b4();
+    if (__GetFlag(0x93e)) {
+        OvlFunc_945_200c8e8(4, 4, 0);
+        OvlFunc_945_200c890(8, 0x19c, 0xde, 0x3000);
+        OvlFunc_945_200c890(9, 0x1ca, 0xa1, 0x8000);
+    } else if (__GetFlag(0x8a0)) {
+        __MapActor_SetPos(8, pos_x, pos_y);
+        __MapActor_SetAnim(9, 5);
+        OvlFunc_945_200c8e8(4, 4, 0);
+    } else if (__GetFlag(0x92b)) {
+        OvlFunc_945_200c8e8(0x10, 0, 0);
+        OvlFunc_945_200c8e8(4, 4, 0);
+        OvlFunc_945_200c254(3);
+    } else if (__GetFlag(0x92a)) {
+        OvlFunc_945_200c8e8(0x10, 0, 0);
+        OvlFunc_945_200c8e8(4, 3, 0);
+        OvlFunc_945_200c254(2);
+    } else if (__GetFlag(0x929)) {
+        OvlFunc_945_200c8e8(0x10, 0, 0);
+        OvlFunc_945_200c8e8(4, 2, 0);
+        OvlFunc_945_200c254(1);
+    } else if (__GetFlag(0x928)) {
+        OvlFunc_945_200c8e8(0x10, 0, 0);
+        __MapActor_SetPos(0xa, 0, 0);
+        OvlFunc_945_200c254(0);
+    } else {
+        __MapActor_SetAnim(9, 5);
+        if (__GetFlag(0x925) && !__GetFlag(0x926)) {
+            OvlFunc_945_200b8ac();
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7b4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b7d8.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b8ac.s");
