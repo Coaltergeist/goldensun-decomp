@@ -45,7 +45,7 @@ void *LamakanDesert_GetEvents(void) {
     return (void *)gOvl_0200a500;
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_314_c_c_c.s");
+INCLUDE_ASM("asm/maps/lamakan_desert/lamakan_desert_data.s");
 
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20084e4.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_200888c.s");
@@ -115,7 +115,5 @@ void OvlFunc_933_2009c78(unsigned short x) {
     L3030__a1 = x;
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_18a4_c.s");
 
 /* overlay-owned data blobs (no .text) */
-INCLUDE_ASM("asm/maps/lamakan_desert/ovl_1f80.s");

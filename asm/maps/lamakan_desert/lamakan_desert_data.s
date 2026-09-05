@@ -1,4 +1,5 @@
 	.include "macros.inc"
+	.include "gba.inc"
 
 	.section .mdata2, "aw", %progbits
 	.global .Lm933_23b0
@@ -35,3 +36,38 @@ gOvl_0200a36c:
 	.global gOvl_0200a500
 gOvl_0200a500:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x2500, (0x26bc-0x2500)
+
+	.section .mdata3, "aw", %progbits
+	.global gOvl_0200a6bc
+	.global .Lm933_26be
+	.global .Lm933_26c0
+
+gOvl_0200a6bc:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x26bc, (0x26be-0x26bc)
+.Lm933_26be:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x26be, (0x26c0-0x26be)
+.Lm933_26c0:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x26c0
+
+	.section .bss
+	.global .Lm933_26d0
+	.global .Lm933_26e0
+	.global .Lm933_2730
+	.global .Lm933_3030
+
+	.lcomm	.Lm933_unused_26c8, 8
+	.lcomm	.Lm933_26d0, 0x10
+	.lcomm	.Lm933_26e0, 0x50
+	.lcomm	.Lm933_2730, 0x900
+	.lcomm	.Lm933_3030, 4
+
+	.section .mdata1, "aw", %progbits
+	.global	OvlData_933_2009f80
+OvlData_933_2009f80:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x1f80, (0x1fa0-0x1f80)
+	.ssize	OvlData_933_2009fa0
+
+	.global	OvlData_933_2009fa0
+OvlData_933_2009fa0:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x1fa0, (0x2120-0x1fa0)
+	.ssize	OvlData_933_2009fa0

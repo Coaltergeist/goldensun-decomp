@@ -340,7 +340,7 @@ void OvlFunc_924_2008dfc(void)
     } while (i <= 6);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_d58_c.s");
+INCLUDE_ASM("asm/maps/mercury_lighthouse/mercury_lighthouse_data.s");
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetEntrances.s");
 
@@ -404,7 +404,6 @@ int MercuryLighthouse_GetEvents(void)
     if (ev == (int)_EVENT_38) return (int)Lm924_6d60;
     return (int)Lm924_6ec8;
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_60ec_c.s");
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008f84.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ffc.s");
@@ -1357,4 +1356,3 @@ void OvlFunc_924_200d948(void) {
     *(void **)(q + 0x14) = (void *)0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/ovl_35b8_c.s");

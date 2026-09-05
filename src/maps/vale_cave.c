@@ -327,7 +327,7 @@ int OvlFunc_934_2008cf8(int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_314_c_c.s");
+INCLUDE_ASM("asm/maps/vale_cave/vale_cave_data.s");
 
 INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetEntrances.s");
 
@@ -477,4 +477,3 @@ void OvlFunc_934_2009bfc(void)
 	__MapActor_SetAnim(0xb, 2);
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/ovl_169c_c.s");
