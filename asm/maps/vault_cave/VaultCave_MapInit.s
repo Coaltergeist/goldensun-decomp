@@ -391,7 +391,3 @@
 	bx	r1
 .func_end VaultCave_MapInit
 
-	.section .mdata1, "aw", %progbits
-	.global gScript_935__02009884
-gScript_935__02009884:
-	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1884, (0x1888-0x1884)

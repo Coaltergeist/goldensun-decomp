@@ -74,3 +74,50 @@ gScript_924__0200de38:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5e38, (0x5e44-0x5e38)
 .Lm924_5e44:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5e44, (0x5e64-0x5e44)
+
+	.section .data
+	.global .Lm924_5d50
+	.global .Lm924_5d90
+	.global .Lm924_5da8
+
+.Lm924_5d50:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5d50, (0x5d90-0x5d50)
+.Lm924_5d90:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5d90, (0x5da8-0x5d90)
+.Lm924_5da8:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5da8, (0x5e08-0x5da8)
+
+	.section .mdata5, "aw", %progbits
+	.global .Lm924_6010
+	.global .Lm924_603a
+
+.Lm924_6010:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6010, (0x603a-0x6010)
+.Lm924_603a:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x603a, (0x6064-0x603a)
+.Lm924_6064:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6064, (0x608e-0x6064)
+.Lm924_608e:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x608e, (0x60b8-0x608e)
+
+	.section .mdata6, "aw", %progbits
+.Lm924_60b8:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x60b8, (0x60ec-0x60b8)
+
+	.section .mdata2, "aw", %progbits
+.Lm924_5e70:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5e70, (0x5f20-0x5e70)
+
+	.section .mdata3, "aw", %progbits
+	.global gScript_924__0200df20
+gScript_924__0200df20:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5f20, (0x5f60-0x5f20)
+	.global gScript_924__0200df60
+gScript_924__0200df60:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5f60, (0x5fa8-0x5f60)
+	.global gScript_924__0200dfa8
+gScript_924__0200dfa8:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5fa8, (0x5ff0-0x5fa8)
+	.global gScript_924__0200dff0
+gScript_924__0200dff0:
+	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5ff0, (0x6004-0x5ff0)

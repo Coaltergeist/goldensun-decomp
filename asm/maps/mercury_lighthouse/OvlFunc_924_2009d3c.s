@@ -49,15 +49,3 @@
 	bx	r0
 .func_end OvlFunc_924_2009d3c
 
-	.section .mdata5, "aw", %progbits
-	.global .Lm924_6010
-	.global .Lm924_603a
-
-.Lm924_6010:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6010, (0x603a-0x6010)
-.Lm924_603a:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x603a, (0x6064-0x603a)
-.Lm924_6064:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6064, (0x608e-0x6064)
-.Lm924_608e:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x608e, (0x60b8-0x608e)

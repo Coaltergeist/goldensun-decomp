@@ -32,39 +32,3 @@
 	bx	r0
 .func_end OvlFunc_947_200a53c
 
-	.section .mdata2, "aw", %progbits
-	.global .Lm947_2da8
-	.global .Lm947_2dd2
-	.global .Lm947_2dfc
-	.global .Lm947_2e26
-	.global .Lm947_2e50
-
-.Lm947_2da8:
-	.incbin "overlays/rom_7d0e88/orig.bin", 0x2da8, (0x2dd2-0x2da8)
-.Lm947_2dd2:
-	.incbin "overlays/rom_7d0e88/orig.bin", 0x2dd2, (0x2dfc-0x2dd2)
-.Lm947_2dfc:
-	.incbin "overlays/rom_7d0e88/orig.bin", 0x2dfc, (0x2e26-0x2dfc)
-.Lm947_2e26:
-	.incbin "overlays/rom_7d0e88/orig.bin", 0x2e26, (0x2e50-0x2e26)
-.Lm947_2e50:
-	.incbin "overlays/rom_7d0e88/orig.bin", 0x2e50, (0x2e7c-0x2e50)
-
-	.section .bss
-	.global .Lm947_3720
-	.global .Lm947_372c
-	.global .Lm947_3738
-
-	.space	4
-
-	.global	bss_36d0
-bss_36d0:
-	.space	0x50
-	.ssize	bss_36d0
-
-.Lm947_3720:
-	.space	0xc
-.Lm947_372c:
-	.space	0xc
-.Lm947_3738:
-	.space	4

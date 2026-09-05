@@ -646,6 +646,3 @@
 	bx	r0
 .func_end OvlFunc_924_200af68
 
-	.section .mdata2, "aw", %progbits
-.Lm924_5e70:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5e70, (0x5f20-0x5e70)

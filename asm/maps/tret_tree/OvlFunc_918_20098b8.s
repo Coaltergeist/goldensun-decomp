@@ -140,8 +140,3 @@
 	bx	r0
 .func_end OvlFunc_918_20098b8
 
-	.section .data
-	.global .Lm918_1ca8
-
-.Lm918_1ca8:
-	.incbin "overlays/rom_7a5214/orig.bin", 0x1ca8, (0x1da8-0x1ca8)

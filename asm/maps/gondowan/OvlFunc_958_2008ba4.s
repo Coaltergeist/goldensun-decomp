@@ -145,18 +145,3 @@
 	bx	r1
 .func_end OvlFunc_958_2008ba4
 
-	.section .data
-	.global .Lm958_16c0
-	.global .Lm958_1718
-	.global .Lm958_16c0
-	.global .Lm958_1700
-	.global .Lm958_1718
-	.global .Lm958_16c0
-	.global .Lm958_1700
-
-.Lm958_16c0:
-	.incbin "overlays/rom_7e636c/orig.bin", 0x16c0, (0x1700-0x16c0)
-.Lm958_1700:
-	.incbin "overlays/rom_7e636c/orig.bin", 0x1700, (0x1718-0x1700)
-.Lm958_1718:
-	.incbin "overlays/rom_7e636c/orig.bin", 0x1718, (0x1778-0x1718)

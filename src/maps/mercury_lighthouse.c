@@ -785,7 +785,6 @@ int OvlFunc_924_200a1cc(void)
     __CutsceneWait(0x1e);
     return 0;
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a1cc_data.s");
 
 #include "task.h"
 #include "actor.h"

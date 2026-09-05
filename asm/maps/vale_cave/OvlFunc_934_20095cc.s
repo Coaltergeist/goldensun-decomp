@@ -91,7 +91,3 @@
 	bx	r0
 .func_end OvlFunc_934_20095cc
 
-	.section .mdata1, "aw", %progbits
-	.global .Lm934_1f00
-.Lm934_1f00:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x1f00, (0x1f60-0x1f00)

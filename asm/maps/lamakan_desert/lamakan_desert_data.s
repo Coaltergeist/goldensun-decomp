@@ -71,3 +71,13 @@ OvlData_933_2009f80:
 OvlData_933_2009fa0:
 	.incbin "overlays/rom_7bc690/orig.bin", 0x1fa0, (0x2120-0x1fa0)
 	.ssize	OvlData_933_2009fa0
+
+	.section .data
+
+	.global Events_TolbiSpring
+Events_TolbiSpring:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x1f30, (0x1f48-0x1f30)
+.Lm933_1f48:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x1f48, (0x1f70-0x1f48)
+.Lm933_1f70:
+	.incbin "overlays/rom_7bc690/orig.bin", 0x1f70, (0x1f80-0x1f70)

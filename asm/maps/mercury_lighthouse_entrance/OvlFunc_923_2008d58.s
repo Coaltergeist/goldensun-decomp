@@ -34,14 +34,3 @@
 	bx	r1
 .func_end OvlFunc_923_2008d58
 
-	.section .data
-	.global .Lm923_2700
-	.global .Lm923_2740
-	.global .Lm923_2758
-
-.Lm923_2700:
-	.incbin "overlays/rom_7aa430/orig.bin", 0x2700, (0x2740-0x2700)
-.Lm923_2740:
-	.incbin "overlays/rom_7aa430/orig.bin", 0x2740, (0x2758-0x2740)
-.Lm923_2758:
-	.incbin "overlays/rom_7aa430/orig.bin", 0x2758, (0x27b8-0x2758)

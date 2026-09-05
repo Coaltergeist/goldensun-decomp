@@ -67,29 +67,3 @@
 	bx	r0
 .func_end OvlFunc_934_2009258
 
-	.section .mdata2, "aw", %progbits
-	.global .Lm934_2234
-	.global .Lm934_22c4
-	.global .Lm934_239c
-	.global .Lm934_1f6c
-	.global .Lm934_1f9c
-	.global .Lm934_2014
-	.global .Lm934_2134
-
-.Lm934_1f6c:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x1f6c, (0x1f9c-0x1f6c)
-.Lm934_1f9c:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x1f9c, (0x2014-0x1f9c)
-.Lm934_2014:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2014, (0x2134-0x2014)
-.Lm934_2134:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2134, (0x21dc-0x2134)
-	.global gOvl_0200a1dc
-gOvl_0200a1dc:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x21dc, (0x2234-0x21dc)
-.Lm934_2234:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x2234, (0x22c4-0x2234)
-.Lm934_22c4:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x22c4, (0x239c-0x22c4)
-.Lm934_239c:
-	.incbin "overlays/rom_7bdeb0/orig.bin", 0x239c, (0x2414-0x239c)

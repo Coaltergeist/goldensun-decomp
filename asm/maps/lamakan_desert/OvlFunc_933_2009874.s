@@ -23,12 +23,3 @@
 	bx	r0
 .func_end OvlFunc_933_2009874
 
-	.section .data
-
-	.global Events_TolbiSpring
-Events_TolbiSpring:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f30, (0x1f48-0x1f30)
-.Lm933_1f48:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f48, (0x1f70-0x1f48)
-.Lm933_1f70:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f70, (0x1f80-0x1f70)

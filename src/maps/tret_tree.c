@@ -176,3 +176,4 @@ void OvlFunc_918_200984c(void) {
 
 INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200985c.s");
 INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20098b8.s");
+INCLUDE_ASM("asm/maps/tret_tree/tret_tree_data.s");

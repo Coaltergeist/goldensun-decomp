@@ -64,3 +64,15 @@ gOvl_0200ad60:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x2d60, (0x2f4c-0x2d60)
 .Lm923_2f4c:
 	.incbin "overlays/rom_7aa430/orig.bin", 0x2f4c
+
+	.section .data
+	.global .Lm923_2700
+	.global .Lm923_2740
+	.global .Lm923_2758
+
+.Lm923_2700:
+	.incbin "overlays/rom_7aa430/orig.bin", 0x2700, (0x2740-0x2700)
+.Lm923_2740:
+	.incbin "overlays/rom_7aa430/orig.bin", 0x2740, (0x2758-0x2740)
+.Lm923_2758:
+	.incbin "overlays/rom_7aa430/orig.bin", 0x2758, (0x27b8-0x2758)

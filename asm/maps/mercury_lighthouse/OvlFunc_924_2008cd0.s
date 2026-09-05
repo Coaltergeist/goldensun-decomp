@@ -65,14 +65,3 @@
 	bx	r1
 .func_end OvlFunc_924_2008cd0
 
-	.section .data
-	.global .Lm924_5d50
-	.global .Lm924_5d90
-	.global .Lm924_5da8
-
-.Lm924_5d50:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5d50, (0x5d90-0x5d50)
-.Lm924_5d90:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5d90, (0x5da8-0x5d90)
-.Lm924_5da8:
-	.incbin "overlays/rom_7ac2d8/orig.bin", 0x5da8, (0x5e08-0x5da8)

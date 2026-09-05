@@ -78,3 +78,8 @@ gScript_887__02009ecc:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x222c, (0x2230-0x222c)
 .Lm935_2230:
 	.incbin "overlays/rom_7bf5a8/orig.bin", 0x2230
+
+	.section .mdata1, "aw", %progbits
+	.global gScript_935__02009884
+gScript_935__02009884:
+	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1884, (0x1888-0x1884)

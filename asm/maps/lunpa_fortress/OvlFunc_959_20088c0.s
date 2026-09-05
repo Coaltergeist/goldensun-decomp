@@ -145,18 +145,3 @@
 	bx	r1
 .func_end OvlFunc_959_20088c0
 
-	.section .data
-	.global .Lm959_5ed8
-	.global .Lm959_5f30
-	.global .Lm959_5ed8
-	.global .Lm959_5f18
-	.global .Lm959_5f30
-	.global .Lm959_5ed8
-	.global .Lm959_5f18
-
-.Lm959_5ed8:
-	.incbin "overlays/rom_7e7574/orig.bin", 0x5ed8, (0x5f18-0x5ed8)
-.Lm959_5f18:
-	.incbin "overlays/rom_7e7574/orig.bin", 0x5f18, (0x5f30-0x5f18)
-.Lm959_5f30:
-	.incbin "overlays/rom_7e7574/orig.bin", 0x5f30, (0x5f90-0x5f30)

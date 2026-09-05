@@ -48,3 +48,19 @@ gScript_970__02009a4c:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1c80, (0x1ce0-0x1c80)
 gScript_885__02009ce0:
 	.incbin "overlays/rom_7e636c/orig.bin", 0x1ce0
+
+	.section .data
+	.global .Lm958_16c0
+	.global .Lm958_1718
+	.global .Lm958_16c0
+	.global .Lm958_1700
+	.global .Lm958_1718
+	.global .Lm958_16c0
+	.global .Lm958_1700
+
+.Lm958_16c0:
+	.incbin "overlays/rom_7e636c/orig.bin", 0x16c0, (0x1700-0x16c0)
+.Lm958_1700:
+	.incbin "overlays/rom_7e636c/orig.bin", 0x1700, (0x1718-0x1700)
+.Lm958_1718:
+	.incbin "overlays/rom_7e636c/orig.bin", 0x1718, (0x1778-0x1718)
