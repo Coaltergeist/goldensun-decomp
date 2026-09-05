@@ -39,7 +39,7 @@ unsigned int OvlFunc_935_2008134(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_30_c_c.s");
+INCLUDE_ASM("asm/maps/vault_cave/vault_cave_data.s");
 
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008170.s");
 
@@ -55,7 +55,6 @@ void OvlFunc_935_20082cc(void) {
     __Func_801776c(0x953, 1);
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_170_c_c.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -311,7 +310,6 @@ void OvlFunc_935_2008b54(unsigned char *arg0, unsigned int arg1, unsigned int ar
     }
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/ovl_2e0_c_c_c.s");
 
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008b8c.s");
 
