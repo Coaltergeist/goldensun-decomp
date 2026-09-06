@@ -7,23 +7,21 @@ extern GlobalState gState;
 extern unsigned char Lconst_1d[] __asm__(".Lconst_1d");
 __asm__(".equ .Lconst_1d, 0x1d");
 
-extern unsigned char Lm906_818[] __asm__(".Lm906_818");
 extern unsigned char Lm906_8d8[] __asm__(".Lm906_8d8");
+extern unsigned char Lm906_818[] __asm__(".Lm906_818");
 
-unsigned int *GomaCave_GetEntrances(void)
+void *GomaCave_GetEntrances(void)
 {
-    unsigned int r3;
-    unsigned int r1;
+    int offset;
+    short a;
 
-    r3 = (unsigned int)&gState;
-    r1 = 0xe0;
-    r1 <<= 1;
-    r3 += r1;
-    r1 = 0;
-    if (*(short *)((char *)r3 + r1) == (int)Lconst_1d) {
-        return (unsigned int *)Lm906_8d8;
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_1d) {
+        return Lm906_8d8;
     }
-    return (unsigned int *)Lm906_818;
+    return Lm906_818;
 }
 
 unsigned int GomaCave_GetSpecialExits(void) {
@@ -36,23 +34,21 @@ void *GomaCave_GetExits(void) {
     return (void *)gOvl_02008920;
 }
 
-extern unsigned char Lm906_948[] __asm__(".Lm906_948");
 extern unsigned char Lm906_978[] __asm__(".Lm906_978");
+extern unsigned char Lm906_948[] __asm__(".Lm906_948");
 
-unsigned int *GomaCave_GetActors(void)
+void *GomaCave_GetActors(void)
 {
-    unsigned int r3;
-    unsigned int r1;
+    int offset;
+    short a;
 
-    r3 = (unsigned int)&gState;
-    r1 = 0xe0;
-    r1 <<= 1;
-    r3 += r1;
-    r1 = 0;
-    if (*(short *)((char *)r3 + r1) == (int)Lconst_1d) {
-        return (unsigned int *)Lm906_978;
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_1d) {
+        return Lm906_978;
     }
-    return (unsigned int *)Lm906_948;
+    return Lm906_948;
 }
 
 extern void OvlFunc_906_20084f4(int a);

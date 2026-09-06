@@ -143,7 +143,26 @@ void OvlFunc_929_2008504(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/xian_rooms/OvlFunc_929_2008524.s");
+void __CutsceneStart(void);
+void __MessageID(int);
+void __ActorMessage_Wait(int, int, int);
+void __MapActor_Face(int, int, int);
+void __CutsceneWait(int);
+void __ActorMessage(int, int);
+void __CutsceneEnd(void);
+
+void OvlFunc_929_2008524(void)
+{
+    __CutsceneStart();
+    __MessageID(0x1a64);
+    __ActorMessage_Wait(9, 0, 0x14);
+    __MapActor_Face(9, 10, 0);
+    __CutsceneWait(0x3c);
+    __MapActor_Face(9, 0, 0);
+    __CutsceneWait(0x14);
+    __ActorMessage(9, 0);
+    __CutsceneEnd();
+}
 
 extern unsigned char Ld4c[] __asm__(".Lm929_d4c");
 extern unsigned char La28[] __asm__(".Lm929_a28");
@@ -163,5 +182,36 @@ unsigned int XianRooms_GetEvents(void) {
     return (unsigned int)La28;
 }
 
-INCLUDE_ASM("asm/maps/xian_rooms/XianRooms_MapInit.s");
+extern unsigned char *iwram_3001ebc;
+void __ClearFlag(int);
+void __MapActor_SetAnim(int, int);
+
+int XianRooms_MapInit(void) {
+    unsigned char *base;
+    unsigned int r2;
+    unsigned int r3;
+    int val;
+    int r5;
+
+    base = iwram_3001ebc;
+    *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    r2 = 0;
+    val = *(short *)((char *)r3 + r2);
+
+    if (val == 4 || val == 7) {
+        OvlFunc_common0_70(0xf8 << 16, 0, 0x1a10000, 0x14);
+    } else if (val == 6) {
+        r5 = 0x8e << 18;
+        OvlFunc_common0_70(0xe6 << 17, 0, r5, 0x14);
+        OvlFunc_common0_70(0xf2 << 17, 0, r5, 0x14);
+    } else if (val == 8) {
+        __ClearFlag(0x12f);
+        __MapActor_SetAnim(10, 6);
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/xian_rooms/xian_rooms_data.s");
