@@ -2,6 +2,13 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm930_17b4[] __asm__(".Lm930_17b4");
+extern unsigned char Lm930_1844[] __asm__(".Lm930_1844");
+extern unsigned char Lconst_4a[] __asm__(".Lconst_4a");
+__asm__(".equ .Lconst_4a, 0x4a");
+
 INCLUDE_ASM("asm/maps/alpine_crossing/exports.s");
 
 extern void __CutsceneStart();
@@ -33,7 +40,21 @@ int OvlFunc_930_2008054(char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetEntrances.s");
+unsigned int *AlpineCrossing_GetEntrances(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_4a) {
+        return (unsigned int *)Lm930_1844;
+    }
+    return (unsigned int *)Lm930_17b4;
+}
 
 int AlpineCrossing_GetSpecialExits(void) {
     return 0;
@@ -45,7 +66,24 @@ void *AlpineCrossing_GetExits(void) {
     return (void *)gOvl_020098ec;
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/AlpineCrossing_GetActors.s");
+extern unsigned char Lm930_1918[] __asm__(".Lm930_1918");
+extern unsigned char Lm930_1a38[] __asm__(".Lm930_1a38");
+
+unsigned int *AlpineCrossing_GetActors(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_4a) {
+        return (unsigned int *)Lm930_1a38;
+    }
+    return (unsigned int *)Lm930_1918;
+}
 
 extern unsigned int iwram_3001ebc;
 
@@ -205,8 +243,6 @@ void OvlFunc_930_2009144(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_4a[];
 extern unsigned char Lm930_1c9c[] __asm__(".Lm930_1c9c");
 extern unsigned char Lm930_1b10[] __asm__(".Lm930_1b10");

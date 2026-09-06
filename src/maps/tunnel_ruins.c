@@ -2,6 +2,12 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gScript_888__0200b81c[];
+extern unsigned char Lconst_ad[] __asm__(".Lconst_ad");
+__asm__(".equ .Lconst_ad, 0xad");
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/exports.s");
 
 /* auto void-veneer protos (add_void_protos.py) */
@@ -373,7 +379,21 @@ INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetEntrances.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetSpecialExits.s");
+unsigned int *TunnelRuins_GetSpecialExits(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_ad) {
+        return (unsigned int *)gScript_888__0200b81c;
+    }
+    return 0;
+}
 
 extern unsigned char gOvl_0200b85c[];
 
@@ -682,8 +702,6 @@ void OvlFunc_964_200a354(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_ac[];
 extern unsigned char Lm964_3c0c[] __asm__(".Lm964_3c0c");
 extern unsigned char Lm964_3ef4[] __asm__(".Lm964_3ef4");

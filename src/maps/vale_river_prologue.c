@@ -34,8 +34,33 @@ void *ValeRiverPrologue_GetEvents(void) {
     return (void *)gOvl_0200d558;
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200810c.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008134.s");
+extern void __SetFlag(int);
+extern void __ClearFlag(int);
+extern void __Func_8010704(int a, int b, int c, int d, int e, int f);
+
+void OvlFunc_882_200810c(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __SetFlag(0x84 << 2);
+    a = 0xa;
+    b = 0x54;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x28, 0x54, 7, 4, a, b);
+}
+
+void OvlFunc_882_2008134(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __ClearFlag(0x84 << 2);
+    a = 0xa;
+    b = 0x54;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x28, 0x59, 7, 4, a, b);
+}
 
 extern int __GetFlag(int);
 extern void __Func_8095214(void);
@@ -56,7 +81,35 @@ void OvlFunc_882_200815c(unsigned int arg0) {
     __Func_8091e9c(arg0);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008198.s");
+extern unsigned char L5774[] __asm__(".Lm882_5774");
+
+void OvlFunc_882_2008198(void)
+{
+    register int zero __asm__("r0");
+    register int x __asm__("r1");
+    register int y __asm__("r2");
+
+    __PlaySound(0x9e);
+    {
+        register unsigned char *script __asm__("r0");
+        register int a __asm__("r1");
+        register int b __asm__("r2");
+
+        script = L5774;
+        a = 0x2d;
+        b = 0xb;
+        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
+        __Func_8010560(script, a, b);
+    }
+    y = 0xd2;
+    x = 0x101;
+    y <<= 1;
+    zero = 0;
+    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
+    __MapActor_TravelToAnim(zero, x, y);
+    __CutsceneWait(3);
+    OvlFunc_882_200815c(0xb);
+}
 
 extern void __PlaySound(int);
 
@@ -165,9 +218,74 @@ void OvlFunc_882_2008360(void)
     OvlFunc_882_200815c(9);
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008398.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20083cc.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008400.s");
+void OvlFunc_882_2008398(void)
+{
+    register int zero __asm__("r0");
+    register int x __asm__("r1");
+    register int y __asm__("r2");
+
+    __PlaySound(0x9e);
+    __Func_8010560(L578a, 0x23, 0x4a);
+    x = 0x66;
+    y = 0x4b6;
+    zero = 0;
+    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
+    __MapActor_TravelToAnim(zero, x, y);
+    __CutsceneWait(3);
+    OvlFunc_882_200815c(0xa);
+}
+void OvlFunc_882_20083cc(void)
+{
+    register int zero __asm__("r0");
+    register int x __asm__("r1");
+    register int y __asm__("r2");
+
+    __PlaySound(0x9e);
+    {
+        register unsigned char *script __asm__("r0");
+        register int a __asm__("r1");
+        register int b __asm__("r2");
+
+        script = L578a;
+        a = 0x23;
+        b = 0x49;
+        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
+        __Func_8010560(script, a, b);
+    }
+    x = 0x66;
+    y = 0x4b6;
+    zero = 0;
+    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
+    __MapActor_TravelToAnim(zero, x, y);
+    __CutsceneWait(3);
+    OvlFunc_882_200815c(0xc);
+}
+void OvlFunc_882_2008400(void)
+{
+    register int zero __asm__("r0");
+    register int x __asm__("r1");
+    register int y __asm__("r2");
+
+    __PlaySound(0x9e);
+    {
+        register unsigned char *script __asm__("r0");
+        register int a __asm__("r1");
+        register int b __asm__("r2");
+
+        script = L57a0;
+        a = 0x26;
+        b = 0x48;
+        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
+        __Func_8010560(script, a, b);
+    }
+    x = 0x92;
+    y = 0x49e;
+    zero = 0;
+    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
+    __MapActor_TravelToAnim(zero, x, y);
+    __CutsceneWait(3);
+    OvlFunc_882_200815c(0xd);
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/ValeRiverPrologue_MapInit.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008a10.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008d5c.s");

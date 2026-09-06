@@ -2,6 +2,13 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm945_696c[] __asm__(".Lm945_696c");
+extern unsigned char Lm945_6984[] __asm__(".Lm945_6984");
+extern unsigned char Lconst_6f[] __asm__(".Lconst_6f");
+__asm__(".equ .Lconst_6f, 0x6f");
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/exports.s");
 
 extern void OvlFunc_945_200c8ac();
@@ -62,7 +69,21 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008284.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetEntrances.s");
+unsigned int *TolbiBoundShipHull_GetEntrances(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_6f) {
+        return (unsigned int *)Lm945_6984;
+    }
+    return (unsigned int *)Lm945_696c;
+}
 
 int TolbiBoundShipHull_GetSpecialExits(void) {
     return 0;
@@ -75,8 +96,6 @@ void *TolbiBoundShipHull_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char Lm945_76fc[] __asm__(".Lm945_76fc");
 extern unsigned char Lm945_7570[] __asm__(".Lm945_7570");
 extern unsigned char Lm945_7444[] __asm__(".Lm945_7444");

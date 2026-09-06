@@ -3,6 +3,13 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm951_1aec[] __asm__(".Lm951_1aec");
+extern unsigned char Lm951_1cfc[] __asm__(".Lm951_1cfc");
+extern unsigned char Lconst_bd[] __asm__(".Lconst_bd");
+__asm__(".equ .Lconst_bd, 0xbd");
+
 INCLUDE_ASM("asm/maps/lucky_fountain/exports.s");
 
 extern unsigned char gOvl_02009a08[];
@@ -21,12 +28,25 @@ void *LuckyFountain_GetExits(void) {
     return (void *)gOvl_02009ac8;
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_GetActors.s");
+unsigned int *LuckyFountain_GetActors(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_bd) {
+        return (unsigned int *)Lm951_1aec;
+    }
+    return (unsigned int *)Lm951_1cfc;
+}
+
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008074.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20080bc.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern void OvlFunc_951_2008880(void);
 extern void OvlFunc_951_2008ac8(void);
 

@@ -4,7 +4,28 @@
 
 INCLUDE_ASM("asm/maps/hammet_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gScript_887__02009c04[];
+extern unsigned char Lm938_1bd4[] __asm__(".Lm938_1bd4");
+extern unsigned char Lconst_67[] __asm__(".Lconst_67");
+__asm__(".equ .Lconst_67, 0x67");
+
+unsigned int *HammetPalace_GetEntrances(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_67) {
+        return (unsigned int *)gScript_887__02009c04;
+    }
+    return (unsigned int *)Lm938_1bd4;
+}
 
 unsigned int HammetPalace_GetSpecialExits(void) {
     return 0;
@@ -17,8 +38,6 @@ void *HammetPalace_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_67[];
 extern unsigned char Lm938_1f38[] __asm__(".Lm938_1f38");
 extern unsigned char Lm938_1f2c[] __asm__(".Lm938_1f2c");

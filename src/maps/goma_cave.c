@@ -2,7 +2,29 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lconst_1d[] __asm__(".Lconst_1d");
+__asm__(".equ .Lconst_1d, 0x1d");
+
+extern unsigned char Lm906_818[] __asm__(".Lm906_818");
+extern unsigned char Lm906_8d8[] __asm__(".Lm906_8d8");
+
+unsigned int *GomaCave_GetEntrances(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_1d) {
+        return (unsigned int *)Lm906_8d8;
+    }
+    return (unsigned int *)Lm906_818;
+}
 
 unsigned int GomaCave_GetSpecialExits(void) {
     return 0;
@@ -14,7 +36,24 @@ void *GomaCave_GetExits(void) {
     return (void *)gOvl_02008920;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/GomaCave_GetActors.s");
+extern unsigned char Lm906_948[] __asm__(".Lm906_948");
+extern unsigned char Lm906_978[] __asm__(".Lm906_978");
+
+unsigned int *GomaCave_GetActors(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_1d) {
+        return (unsigned int *)Lm906_978;
+    }
+    return (unsigned int *)Lm906_948;
+}
 
 extern void OvlFunc_906_20084f4(int a);
 
@@ -50,8 +89,6 @@ void OvlFunc_906_2008380(void)
   }
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_1d[];
 extern unsigned char Lm906_9f0[] __asm__(".Lm906_9f0");
 extern unsigned char Lm906_990[] __asm__(".Lm906_990");
