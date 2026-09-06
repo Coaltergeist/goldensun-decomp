@@ -32,8 +32,41 @@ unsigned int *Suhalla_GetActors(void)
     return (unsigned int *)L3f0;
 }
 
-INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008068.s");
-INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_20080b0.s");
+extern unsigned char Lconst_25b8[] __asm__(".Lconst_25b8");
+__asm__(".equ .Lconst_25b8, 0x25b8");
+
+void OvlFunc_961_2008068(int a)
+{
+    int msg = (int)Lconst_25b8;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(10);
+        __MessageID(msg + 1);
+    } else {
+        __MessageID(msg + 2);
+    }
+    __ActorMessage(a, 0);
+}
+
+extern unsigned char Lconst_25dc[] __asm__(".Lconst_25dc");
+__asm__(".equ .Lconst_25dc, 0x25dc");
+
+void OvlFunc_961_20080b0(int a)
+{
+    int msg = (int)Lconst_25dc;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(10);
+        __MessageID(msg + 1);
+    } else {
+        __MessageID(msg + 2);
+    }
+    __ActorMessage(a, 0);
+}
 
 void OvlFunc_961_20080f8(void)
 {
@@ -51,7 +84,20 @@ void OvlFunc_961_20080f8(void)
   __SetFlag(0x201);
 }
 
+typedef struct { unsigned char _pad0[0x1c0]; int transition; unsigned char _pad1[4]; int transitionSpeed; } MapState;
+extern MapState *iwram_3001ebc;
+
+extern short Lm961_5d0[][2] __asm__(".Lm961_5d0");
+extern unsigned char Lm961_5e8[] __asm__(".Lm961_5e8");
+
+extern void __PlaySound(int);
+extern int __Func_8010560(void *, unsigned short, unsigned short);
+extern int __Func_80922c4(int, int, int);
+extern void __Func_8091e9c(int);
+
 INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008120.s");
+extern unsigned char Lm961_5fe[] __asm__(".Lm961_5fe");
+
 INCLUDE_ASM("asm/maps/suhalla/OvlFunc_961_2008194.s");
 
 extern unsigned char L758[] __asm__(".Lm961_758");
@@ -66,8 +112,7 @@ unsigned int *Suhalla_GetEvents(void)
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
-typedef struct { unsigned char _pad0[0x1c0]; int transition; unsigned char _pad1[4]; int transitionSpeed; } MapState;
-extern MapState *iwram_3001ebc;
+
 
 int Suhalla_MapInit(void)
 {

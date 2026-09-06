@@ -89,7 +89,45 @@ void OvlFunc_902_20080fc(void)
   OvlFunc_902_2008098(0xc);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_200811c.s");
+extern unsigned char *iwram_3001ebc;
+extern void __ActorMessage_Wait(volatile unsigned long, int, int);
+extern void __MapActor_Emote(int, int, int);
+extern void __MapActor_TurnToFaceActor(volatile unsigned long, int, int);
+
+void OvlFunc_902_200811c(void)
+{
+    int emote = 0x81 << 1;
+    unsigned short t1;
+    unsigned short *p;
+    unsigned long long t2 = 2;
+    unsigned long v2;
+
+    do { } while (emote == 0);
+
+    __CutsceneStart();
+    __MessageID(0x1cd4);
+    do { t2 = (unsigned long)t2; } while (0);
+    v2 = t2;
+    __MapActor_TurnToFaceActor(0x10, 0, v2);
+    t1 = 0x10;
+    do { t1 = (unsigned short)t1; } while (0);
+    __MapActor_SetAnim(t1, 1);
+    __ActorMessage_Wait(0x10, 0, 0x14);
+    __MapActor_DoAnim(0x10, 4);
+    __CutsceneWait(0x14);
+    __ActorMessage_Wait(0x10, 0, 0x14);
+    __MapActor_Emote(0x10, emote, 0x3c);
+    __ActorMessage_Wait(0x10, 0, 0x1e);
+    __ShowActorMessage_NoWait(0x10, 0);
+    if (__Func_8091c7c(0, 0) != 0) {
+        p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+        *p += 1;
+    }
+    __ActorMessage_Wait(0x10, 0, 0x14);
+    __SetFlag(0xc0 << 2);
+    __SetFlag(0x868);
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_902_20081c4(void)
@@ -110,6 +148,14 @@ void OvlFunc_902_20081e4(void)
   __MapActor_TurnToFaceActor(r4, 0, 2);
   OvlFunc_902_2008098(r4);
 }
+
+extern int __GetFlag(int);
+extern int __Func_8091c7c(int, int);
+extern void __Func_80925cc(int, int);
+extern int __Func_8078500(void);
+extern void __Func_808f1c0(int, int);
+extern void __Func_8091a58(int, int);
+extern void __Func_8092adc(int, int, int);
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008204.s");
 
@@ -233,8 +279,70 @@ void *VaultRooms2_GetEvents(void) {
     return (void *)gOvl_0200898c;
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/VaultRooms2_MapInit.s");
-INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008570.s");
+extern unsigned char *iwram_3001ebc;
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+void OvlFunc_902_2008570(int, int, int, int);
+
+int VaultRooms2_MapInit(void)
+{
+    unsigned char *base;
+    unsigned int r2;
+    unsigned int r3;
+    int val;
+    int w;
+    char *actor;
+    int zero;
+
+    base = iwram_3001ebc;
+    *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    r2 = 0;
+    val = *(short *)((char *)r3 + r2);
+
+    if (val == 5) {
+        w = 4;
+        r2 = 3;
+        __CopyMapTiles(0, 0x78, 8, 0x43, w, r2);
+        actor = (char *)__MapActor_GetActor(8);
+        zero = 0;
+        actor[0x55] = zero;
+        *(int *)((char *)__MapActor_GetActor(8) + 0xc) = zero;
+        *(int *)((char *)__MapActor_GetActor(8) + 0x14) = zero;
+    } else if (val == 7 || val == 11) {
+        OvlFunc_902_2008570(0xe7, 0x8e << 18, 0x80 << 13, 0xa8 << 18);
+        __StartTask(OvlFunc_902_2008030, 0xc8 << 4);
+    }
+    return 0;
+}
+void OvlFunc_902_2008570(int item, int x, int y, int z)
+{
+    int mask = ~0x20;
+    int zero;
+    unsigned char *actor;
+    unsigned char *sprite;
+    unsigned char *buf;
+
+    zero = 0;
+    actor = (unsigned char *)__CreateActor(0x16, x, y, z);
+    if (actor != 0) {
+        sprite = *(unsigned char **)(actor + 0x50);
+        sprite[0x26] = zero;
+        sprite[0x27] = zero;
+        sprite[5] = sprite[5] & mask;
+        sprite[9] = sprite[9] & 0xf;
+        actor[0x55] = zero;
+        actor[0x5c] = 1;
+        buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+        __LoadItemIcon(item);
+        buf += 0x400;
+        __UploadSpriteGFX(sprite[0x1c], 0x80, buf);
+        __gfree(0x11);
+    }
+}
 INCLUDE_ASM("asm/maps/vault_rooms_2/vault_rooms_2_data.s");
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/imports.s");

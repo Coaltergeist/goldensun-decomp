@@ -59,7 +59,35 @@ unsigned int Jail_GetEvents(void) {
     return (unsigned int)L3ec;
 }
 
-INCLUDE_ASM("asm/maps/jail/OvlFunc_900_2008094.s");
+void __CutsceneStart(void);
+void __MapActor_Face(int, int, int);
+void __CutsceneWait(int);
+void __MessageID(int);
+void __ActorMessage(int, int);
+void __Func_809259c(int, int);
+void __Func_80925cc(int, int);
+void __MapActor_TurnToFaceActor(int, int, int);
+void __CutsceneEnd(void);
+
+void OvlFunc_900_2008094(void)
+{
+    __CutsceneStart();
+    __MapActor_Face(8, 9, 0);
+    __CutsceneWait(0x28);
+    __MapActor_Face(8, 0xa, 0);
+    __CutsceneWait(0x28);
+    __MessageID(0x138a);
+    __ActorMessage(8, 0);
+    __Func_809259c(9, 2);
+    __Func_80925cc(0xa, 2);
+    __CutsceneWait(0x14);
+    __MapActor_TurnToFaceActor(8, 0, 0);
+    __CutsceneWait(0x14);
+    __Func_80925cc(8, 1);
+    __CutsceneWait(0x14);
+    __ActorMessage(8, 0);
+    __CutsceneEnd();
+}
 
 void OvlFunc_900_2008110(void)
 {
@@ -114,7 +142,46 @@ void OvlFunc_900_20081d0(void) {
     __Func_8091e9c(1);
 }
 
-INCLUDE_ASM("asm/maps/jail/Jail_MapInit.s");
+extern unsigned char *iwram_3001ebc;
+void __ClearFlag(int);
+unsigned char *__MapActor_GetActor(int);
+
+int Jail_MapInit(void) {
+    unsigned char *base;
+    unsigned int r2;
+    unsigned int r3;
+    int val;
+    unsigned char *p;
+    unsigned char u;
+    unsigned char v;
+
+    base = iwram_3001ebc;
+    *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    r2 = 0;
+    val = *(short *)((char *)r3 + r2);
+
+    if (val == 2) {
+        __ClearFlag(0x12f);
+    } else if (val == 10) {
+        p = __MapActor_GetActor(8) + 0x59;
+        u = 0x14;
+        u |= *p;
+        *p = u;
+    } else {
+        p = __MapActor_GetActor(8) + 0x59;
+        *p |= 0x14;
+        p = __MapActor_GetActor(9) + 0x59;
+        *p |= 0x14;
+        p = __MapActor_GetActor(10) + 0x59;
+        v = 0x14 | *p;
+        *p = v;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/jail/jail_data.s");
 
 INCLUDE_ASM("asm/maps/jail/imports.s");
