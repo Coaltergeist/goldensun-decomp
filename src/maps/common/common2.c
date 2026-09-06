@@ -2,9 +2,9 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_0.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_254.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_28c.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_0.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_254.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_28c.s");
 
 
 const void *OvlFunc_common2_2cc(void) {
@@ -33,8 +33,8 @@ unsigned int OvlFunc_common2_2f4(int *p)
     return result;
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_304.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_380.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_304.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_380.s");
 
 unsigned int OvlFunc_common2_3ec(int *p) {
     return (unsigned int)*p < 2;
@@ -55,8 +55,8 @@ unsigned int OvlFunc_common2_40c(unsigned int *p) {
     return r2;
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_41c.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_44c.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_41c.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_44c.s");
 
 unsigned int OvlFunc_common2_5e8(unsigned int *p) {
     return *p <= 1;
@@ -73,4 +73,4 @@ unsigned int OvlFunc_common2_608(unsigned int *p) {
     return *p == 2;
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common2_618.s");
+INCLUDE_ASM("asm/maps/common/common2/OvlFunc_common2_618.s");

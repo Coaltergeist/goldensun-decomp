@@ -39,8 +39,8 @@ void OvlFunc_common1_0(void)
   __MapActor_SetPos(3, x3, y3);
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_78.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_148.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_78.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_148.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
@@ -285,9 +285,9 @@ void OvlFunc_common1_488(void)
     __SetFlagByte(v, 0);
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_4cc.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_588.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_5e4.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_4cc.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_588.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_5e4.s");
 
 void OvlFunc_common1_850(unsigned int arg0, unsigned int arg1in)
 {
@@ -307,13 +307,13 @@ void OvlFunc_common1_850(unsigned int arg0, unsigned int arg1in)
     }
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_88c.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_920.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_e10.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_ea0.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_fac.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1078.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1254.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_88c.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_920.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_e10.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_ea0.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_fac.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1078.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1254.s");
 
 void OvlFunc_common1_1314(unsigned int arg0) {
     unsigned int r5;
@@ -348,8 +348,8 @@ void OvlFunc_common1_1334(void)
     *(short *)r5 = __Func_80209b0();
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1354.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1490.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1354.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1490.s");
 
 
 void OvlFunc_common1_14f4(unsigned int arg0, unsigned int arg1, unsigned int arg2)
@@ -407,9 +407,9 @@ void OvlFunc_common1_1578(unsigned int arg0, unsigned int arg1, unsigned int arg
     }
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_15b8.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1608.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_16cc.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_15b8.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1608.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_16cc.s");
 
 void OvlFunc_common1_16f8(void) {
 }
@@ -432,13 +432,13 @@ void OvlFunc_common1_1708(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_172c.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_17c0.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1814.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1928.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1b08.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1ecc.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_1fb4.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_172c.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_17c0.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1814.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1928.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1b08.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1ecc.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1fb4.s");
 
 
 void OvlFunc_common1_2008(unsigned short arg0) {
@@ -447,6 +447,6 @@ void OvlFunc_common1_2008(unsigned short arg0) {
     *((unsigned short *)(ptr + 0xdc)) = arg0;
 }
 
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_2018.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_2060.s");
-INCLUDE_ASM("asm/maps/common/OvlFunc_common1_21c8.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_2018.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_2060.s");
+INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_21c8.s");
