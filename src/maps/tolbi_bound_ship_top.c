@@ -125,7 +125,118 @@ void OvlFunc_944_20081fc(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/TolbiBoundShipTop_MapInit.s");
+extern void OvlFunc_944_200840c(void);
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern unsigned char iwram_3001ebc[];
+extern short gState[];
+
+extern unsigned char Lm944_1940[] __asm__(".Lm944_1940");
+extern unsigned char Lm944_1928[] __asm__(".Lm944_1928");
+
+extern unsigned char Lconst_6f[] __asm__(".Lconst_6f");
+__asm__(".equ .Lconst_6f, 0x6f");
+
+extern void OvlFunc_944_20090a0(void);
+extern void OvlFunc_944_2008468(void);
+extern void OvlFunc_944_2008564(void);
+extern void OvlFunc_944_20087b0(void);
+extern void OvlFunc_944_2008af8(void);
+extern void OvlFunc_944_2008e78(void);
+
+void __SetFlag(int);
+int __GetFlag(int);
+void __StartTask(void *, int);
+void __MapActor_SetPos(int, int, int);
+void *__MapActor_GetActor(int);
+void __CutsceneStart(void);
+void __Func_8093fa0(void);
+void __Func_80933f8(int, int, int, int);
+void __WaitFrames(int);
+void __SetCameraTarget(int, int);
+void __Func_800fe9c(void);
+void __CutsceneEnd(void);
+
+static inline void MapActor_SetPos(int actor, int x, int y) {
+    __MapActor_SetPos(actor, x << 16, y << 17);
+}
+
+static inline void Func_80933f8(int a, int b, int c, int d) {
+    __Func_80933f8(-a, -b, -c, d);
+}
+
+static inline short get_state(int off) {
+    return *(short *)((char *)gState + (off << 1));
+}
+
+unsigned int TolbiBoundShipTop_MapInit(void)
+{
+    void *actor;
+    unsigned int *rnd_ptr;
+    int a;
+    unsigned int off;
+    short v;
+
+    __SetFlag(0x144);
+    *(int *)((char *)*(void **)iwram_3001ebc + (0xe0 << 1)) = 0x209;
+
+    if (__GetFlag(0x927) != 0 || __GetFlag(0x928) != 0) {
+        if (__GetFlag(0x93e) == 0 && __GetFlag(0x8a0) == 0) {
+            rnd_ptr = (unsigned int *)Lm944_1940;
+            *rnd_ptr = (unsigned short)__Random();
+            rnd_ptr = (unsigned int *)Lm944_1928;
+            *rnd_ptr = (unsigned short)__Random();
+            __StartTask(OvlFunc_944_20090a0, 0xc8 << 4);
+        }
+    }
+
+    if (__GetFlag(0x925) != 0 && __GetFlag(0x93e) == 0) {
+        MapActor_SetPos(8, 0xa4, 0xa4);
+    }
+
+    switch (get_state(0xe1)) {
+    case 1:
+        if (__GetFlag(0x109) == 0) {
+            actor = (void *)__MapActor_GetActor(0);
+            __CutsceneStart();
+            __Func_8093fa0();
+            *(int *)((char *)actor + 0xc) = 0xe0 << 14;
+            Func_80933f8(1, 1, 1, 0);
+            __WaitFrames(1);
+            __SetCameraTarget(0, 0);
+            __Func_800fe9c();
+            __WaitFrames(1);
+            __CutsceneEnd();
+        }
+        break;
+    case 10:
+        if (__GetFlag(0x928) != 0) {
+            OvlFunc_944_2008468();
+        } else {
+            OvlFunc_944_200840c();
+        }
+        break;
+    case 11:
+        gState[0xe2] = (int)Lconst_6f;
+        gState[0xe3] = 0x1e;
+        OvlFunc_944_2008564();
+        break;
+    case 12:
+        gState[0xe2] = (int)Lconst_6f;
+        gState[0xe3] = 0x1e;
+        OvlFunc_944_20087b0();
+        break;
+    case 13:
+        gState[0xe2] = (int)Lconst_6f;
+        gState[0xe3] = 0x1e;
+        OvlFunc_944_2008af8();
+        break;
+    case 14:
+        OvlFunc_944_2008e78();
+        break;
+    }
+
+    return 0;
+}
 
 extern void OvlFunc_944_20084b0(void);
 
