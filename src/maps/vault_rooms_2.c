@@ -157,7 +157,48 @@ extern void __Func_808f1c0(int, int);
 extern void __Func_8091a58(int, int);
 extern void __Func_8092adc(int, int, int);
 
-INCLUDE_ASM("asm/maps/vault_rooms_2/OvlFunc_902_2008204.s");
+void OvlFunc_902_2008204(void)
+{
+    extern void __CutsceneEnd(void);
+    unsigned short *p;
+    int pos = 0x80 << 7;
+
+    __CutsceneStart();
+    __MapActor_TurnToFaceActor(0x12, 0, 0);
+    if (__GetFlag(0x85b) == 0) {
+        __MessageID(0x137c);
+        __ShowActorMessage_NoWait(0x12, 0);
+    } else {
+        __MessageID(0x1385);
+        __ShowActorMessage_NoWait(0x12, 0);
+    }
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(0x14);
+        __ActorMessage(0x12, 0);
+        __CutsceneWait(0x14);
+        __Func_80925cc(0x12, 2);
+        __CutsceneWait(0x14);
+        if (__Func_8078500() == 0) {
+            __MapActor_DoAnim(0x12, 4);
+            __CutsceneWait(0x14);
+            __MessageID(0x1384);
+            __ActorMessage(0x12, 0);
+        } else {
+            __Func_808f1c0(0xe7, 3);
+            __Func_8091a58(0xe7, 0);
+            __SetFlag(0x85b);
+        }
+    } else {
+        p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+        *p += 1;
+        __CutsceneWait(0x14);
+        __MapActor_DoAnim(0x12, 3);
+        __CutsceneWait(0x14);
+        __ActorMessage(0x12, 0);
+    }
+    __Func_8092adc(0x12, pos, 0);
+    __CutsceneEnd();
+}
 
 extern void OvlFunc_902_200811c(void);
 
