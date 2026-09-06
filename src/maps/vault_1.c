@@ -477,8 +477,33 @@ void OvlFunc_898_2008e84(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ea4.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ecc.s");
+extern void __SetFlag(int);
+extern void __ClearFlag(int);
+extern void __Func_8010704(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5);
+
+void OvlFunc_898_2008ea4(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __SetFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x37, 0x1a, 4, 2, a, b);
+}
+
+void OvlFunc_898_2008ecc(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __ClearFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x17, 0x17, 4, 2, a, b);
+}
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ef4.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f3c.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f64.s");

@@ -88,7 +88,28 @@ unsigned int OvlFunc_935_2008334(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008368.s");
+extern int __GetFlag(int);
+extern void __PlaySound(int);
+extern void OvlFunc_935_2008170(void);
+extern void OvlFunc_935_2008398(void);
+
+void OvlFunc_935_2008368(void)
+{
+    register int flag __asm__("r0");
+
+    flag = 0x9a9;
+    __asm__ ("" : "+r" (flag));
+    if (__GetFlag(flag) == 0) {
+        OvlFunc_935_2008170();
+        if (OvlFunc_935_2008334() != 0) {
+            flag = 0x9a9;
+            __asm__ ("" : "+r" (flag));
+            __SetFlag(flag);
+            __PlaySound(0x50);
+            OvlFunc_935_2008398();
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008398.s");
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20083e0.s");
 

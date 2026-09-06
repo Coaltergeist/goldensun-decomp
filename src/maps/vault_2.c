@@ -138,7 +138,23 @@ void OvlFunc_901_2008710(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008754.s");
+extern void *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_901_2008754(void)
+{
+    register unsigned char *actor __asm__("r0");
+    register int zero __asm__("r5");
+
+    __MessageID(0x1cbd);
+    actor = (unsigned char *)__MapActor_GetActor(0xb);
+    actor += 0x5b;
+    *actor = 1;
+    OvlFunc_901_20084b4(0xb);
+    actor = (unsigned char *)__MapActor_GetActor(0xb);
+    zero = 0;
+    actor += 0x5b;
+    *actor = zero;
+}
 
 void OvlFunc_901_2008784(void)
 {
@@ -230,8 +246,30 @@ void OvlFunc_901_2008b9c(void)
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008bf8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008cc8.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d24.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d4c.s");
+void OvlFunc_901_2008d24(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __SetFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x37, 0x1a, 4, 2, a, b);
+}
+extern void __ClearFlag(int);
+
+void OvlFunc_901_2008d4c(void)
+{
+    register int a __asm__("r3");
+    register int b __asm__("r2");
+
+    __ClearFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+    __asm__ ("" : "+r" (a), "+r" (b));
+    __Func_8010704(0x17, 0x17, 4, 2, a, b);
+}
 
 extern void __Func_80955b0(int a, int b, int c);
 

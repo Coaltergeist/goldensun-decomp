@@ -226,7 +226,20 @@ void OvlFunc_968_2008f1c(void)
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008f38.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008fbc.s");
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __Func_80925cc(int, int);
+extern void __ActorMessage(int, int);
+
+void OvlFunc_968_2008fbc(void)
+{
+    __CutsceneStart();
+    __MessageID(0x2670);
+    __ActorMessage_Wait(0xb, 0, 0x14);
+    __Func_80925cc(0xb, 2);
+    __ActorMessage(0xb, 0);
+    __CutsceneEnd();
+}
 
 extern void __CutsceneStart(void);
 extern void __SetFlag(int);
