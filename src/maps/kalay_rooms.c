@@ -4,7 +4,34 @@
 
 INCLUDE_ASM("asm/maps/kalay_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+extern unsigned char Lconst_64[] __asm__(".Lconst_64");
+extern unsigned char Lconst_65[] __asm__(".Lconst_65");
+__asm__(".equ .Lconst_64, 0x64");
+__asm__(".equ .Lconst_65, 0x65");
+
+extern unsigned char Lm937_4d0[] __asm__(".Lm937_4d0");
+extern unsigned char Lm937_6c8[] __asm__(".Lm937_6c8");
+extern unsigned char MapEntrance_ARRAY_937__020084a0[];
+
+void *KalayRooms_GetEntrances(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_64) {
+        return Lm937_4d0;
+    }
+    if (a == (int)Lconst_65) {
+        return Lm937_6c8;
+    }
+    return MapEntrance_ARRAY_937__020084a0;
+}
 
 int KalayRooms_GetSpecialExits(void) {
     return 0;
@@ -16,19 +43,12 @@ void *KalayRooms_GetExits(void) {
     return (void *)gOvl_02008728;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_906__0200879c[14];
 
 extern unsigned char Lm937_8d4[] __asm__(".Lm937_8d4");
 extern unsigned char Lm937_a0c[] __asm__(".Lm937_a0c");
 extern unsigned char Lm937_784[] __asm__(".Lm937_784");
-
-extern unsigned char Lconst_64[] __asm__(".Lconst_64");
-extern unsigned char Lconst_65[] __asm__(".Lconst_65");
-__asm__(".equ .Lconst_64, 0x64");
-__asm__(".equ .Lconst_65, 0x65");
 
 unsigned char *KalayRooms_GetActors(void)
 {
@@ -121,7 +141,22 @@ void OvlFunc_937_200818c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_20081fc.s");
+void __ActorMessage(int, int);
+
+void OvlFunc_937_20081fc(void)
+{
+    unsigned short v;
+
+    v = *(unsigned short *)((char *)__MapActor_GetActor(0) + 6) + 0x5fff;
+    if (v <= 0x3ffe) {
+        __UI_Sanctum(8);
+    } else {
+        __CutsceneStart();
+        __MessageID(0x1a8f);
+        __ActorMessage(8, 0);
+        __CutsceneEnd();
+    }
+}
 extern unsigned char iwram_3001ebc[];
 
 struct TableEntry {
@@ -182,8 +217,64 @@ void OvlFunc_937_2008240(void)
     __WaitMapTransition();
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/kalay_rooms/KalayRooms_MapInit.s");
-INCLUDE_ASM("asm/maps/kalay_rooms/OvlFunc_937_200833c.s");
+void OvlFunc_937_200833c(void);
+
+int KalayRooms_MapInit(void)
+{
+    char *map;
+    int offset;
+
+    map = *(char **)iwram_3001ebc;
+    offset = 0xe0;
+    offset <<= 1;
+    *(int *)(map + offset) = 0x209;
+    if (*(short *)((char *)&gState + offset) == (int)Lconst_64) {
+        OvlFunc_937_200833c();
+    }
+    return 0;
+}
+void __Func_8092950(int, int);
+
+void OvlFunc_937_200833c(void)
+{
+    int offset;
+    short val;
+    int w, h;
+
+    offset = 0xe1;
+    offset <<= 1;
+    val = *(short *)((char *)&gState + offset);
+
+    switch (val) {
+    case 3:
+        w = 4;
+        h = 2;
+        __CopyMapTiles(0x1e, 0xe, 0x1e, 0x10, w, h);
+        break;
+    case 9 ... 15:
+    case 17:
+        if (__GetFlag(0x911) != 0) {
+            __DeleteFieldActor(0xa);
+            __DeleteFieldActor(0xb);
+            __DeleteFieldActor(0xc);
+            __DeleteFieldActor(0xd);
+            __DeleteFieldActor(0xe);
+            __DeleteFieldActor(0x11);
+            __DeleteFieldActor(0x12);
+            __DeleteFieldActor(0x13);
+            __DeleteFieldActor(0xf);
+        } else {
+            __Func_8092950(0xd, 2);
+        }
+        break;
+    default:
+        if (__GetFlag(0x911) != 0) {
+            __DeleteFieldActor(0x10);
+            __DeleteFieldActor(0x11);
+        }
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/kalay_rooms/kalay_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/kalay_rooms/imports.s");
