@@ -62,74 +62,7 @@ void *FuchinTemple_GetExits(void) {
     return (void *)gOvl_0200c8c8;
 }
 
-extern unsigned char Lm926_48f0[] __asm__(".Lm926_48f0");
-extern unsigned char Lm926_4998[] __asm__(".Lm926_4998");
-extern unsigned char Lm926_4ae8[] __asm__(".Lm926_4ae8");
-extern unsigned char Lconst_895[] __asm__(".Lconst_895");
-__asm__(".equ .Lconst_895, 0x895");
-extern int __GetFlag(int);
-extern void __Func_808b868(unsigned char *p);
-
-unsigned char *FuchinTemple_GetActors(void)
-{
-    register unsigned int r0 asm("r0");
-    register unsigned int r1 asm("r1");
-    register unsigned int r2 asm("r2");
-    register unsigned int r3 asm("r3");
-    register unsigned int r5 asm("r5");
-
-    r1 = (unsigned int)&gState;
-    r0 = 0xe0;
-    r0 <<= 1;
-    r3 = r1 + r0;
-    r0 = 0;
-    r2 = *(short *)(r3 + r0);
-    if (r2 == (int)Lconst_3c) {
-        return Lm926_48f0;
-    }
-    r2 = 0xe1;
-    r2 <<= 1;
-    r3 = r1 + r2;
-    r0 = 0;
-    r3 = *(short *)(r3 + r0);
-    if (r3 == 3) {
-        return Lm926_4ae8;
-    }
-    r0 = (unsigned int)Lconst_895;
-    if (__GetFlag(r0) != 0) {
-        r0 = (unsigned int)Lm926_4998;
-        r1 = (int)Lconst_895;
-        r3 = r0;
-        r3 += 0x7a;
-        *(unsigned short *)r3 = r1;
-        r3 += 0x30;
-        __asm__ volatile ("" : "+r" (r3));
-        *(unsigned short *)r3 = r1;
-        r2 = r0;
-        r3 = 0x90;
-        r2 += 0xc8;
-        r3 <<= 17;
-        *(unsigned int *)r2 = r3;
-        r3 = 0xf8;
-        r2 += 8;
-        __asm__ volatile ("" : "+r" (r2));
-        r3 <<= 16;
-        *(unsigned int *)r2 = r3;
-        r2 = 0x85;
-        r2 <<= 1;
-        r3 = r0 + r2;
-        r2 += 0x18;
-        *(unsigned short *)r3 = r1;
-        r3 = r0 + r2;
-        __asm__ volatile ("" : "+r" (r3));
-        *(unsigned short *)r3 = r1;
-    }
-    r5 = (unsigned int)Lm926_4998;
-    r0 = r5;
-    __Func_808b868((unsigned char *)r0);
-    r0 = r5;
-    return (unsigned char *)r0;
-}
+INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetActors.s");
 
 extern unsigned char iwram_3001ebc[];
 
