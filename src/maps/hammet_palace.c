@@ -4,7 +4,26 @@
 
 INCLUDE_ASM("asm/maps/hammet_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gScript_887__02009c04[];
+extern unsigned char Lm938_1bd4[] __asm__(".Lm938_1bd4");
+extern unsigned char Lconst_67[] __asm__(".Lconst_67");
+__asm__(".equ .Lconst_67, 0x67");
+
+void *HammetPalace_GetEntrances(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_67) {
+        return gScript_887__02009c04;
+    }
+    return Lm938_1bd4;
+}
 
 unsigned int HammetPalace_GetSpecialExits(void) {
     return 0;
@@ -16,9 +35,25 @@ void *HammetPalace_GetExits(void) {
     return (void *)gScript_917__02009d9c;
 }
 
-INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
+extern unsigned char Lm938_1df4[] __asm__(".Lm938_1df4");
+extern unsigned char gScript_918__02009ddc[];
+
+void *HammetPalace_GetActors(void)
+{
+    int offset;
+    short a;
+    unsigned char *r;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_67) {
+        r = Lm938_1df4;
+        __Func_808b868(r);
+        return r;
+    }
+    return gScript_918__02009ddc;
+}
 extern unsigned char _EVENT_67[];
 extern unsigned char Lm938_1f38[] __asm__(".Lm938_1f38");
 extern unsigned char Lm938_1f2c[] __asm__(".Lm938_1f2c");
@@ -130,7 +165,23 @@ void OvlFunc_938_2008184(void)
     __Func_80118c0(2);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/hammet_palace/HammetPalace_MapInit.s");
+void OvlFunc_938_2008264(void);
+
+int HammetPalace_MapInit(void)
+{
+    char *map;
+    int offset;
+
+    map = *(char **)iwram_3001ebc;
+    offset = 0xe0;
+    offset <<= 1;
+    *(int *)(map + offset) = 0x209;
+    if (*(short *)((char *)&gState + offset) == (int)Lconst_67) {
+        OvlFunc_938_2008264();
+    }
+    return 0;
+}
+
 extern int __GetFlag(int);
 extern void *__MapActor_GetActor(int);
 extern void __MapActor_SetPos(int, int, int);
@@ -197,10 +248,310 @@ void OvlFunc_938_2008264(void)
         break;
     }
 }
+
+extern unsigned char ActorCmd_ARRAY_938__02009b94[];
+extern void OvlFunc_938_200940c(int);
+extern void OvlFunc_938_2009450(int);
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void __Func_80933f8(int, int, int, int);
+extern void __Func_8091220(int, int);
+extern void __Func_8091200(int, int);
+extern void __Func_8091254(int);
+extern void __MapTransitionIn(void);
+extern void __WaitMapTransition(void);
+extern void __CutsceneWait(int);
+extern void __MapActor_SetAnim(int, int);
+extern void __MapActor_DoAnim(int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __MapActor_Emote(int, int, int);
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __ActorMessage(int, int);
+extern void __MapActor_Surprise(int, int);
+extern void __Func_80925cc(int, int);
+extern void __Func_809259c(int, int);
+extern void __Func_8093054(int, int);
+extern int __Func_8091c7c(int, int);
+extern void __MapActor_SetBehavior(int, void *);
+extern void __MapActor_RunScript(int, void *);
+extern void __ClearFlag(int);
+extern void __SetFlag(int);
+
 INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2008360.s");
-INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_200940c.s");
-INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009450.s");
-INCLUDE_ASM("asm/maps/hammet_palace/OvlFunc_938_2009494.s");
+
+static inline void SetDir(int actor, int dir) {
+    __Func_8092adc(actor, dir, 0);
+}
+
+void OvlFunc_938_200940c(int wait)
+{
+    SetDir(0, 0x6000);
+    SetDir(1, 0xe000);
+    SetDir(2, 0x2000);
+    SetDir(3, 0xa000);
+    if (wait != 0) {
+        __CutsceneWait(wait);
+    }
+}
+void OvlFunc_938_2009450(int wait)
+{
+    SetDir(0, 0xc000);
+    SetDir(1, 0xc000);
+    SetDir(2, 0xc000);
+    SetDir(3, 0xc000);
+    if (wait != 0) {
+        __CutsceneWait(wait);
+    }
+}
+extern unsigned char ActorCmd_ARRAY_938__02009b94[];
+
+extern void __CutsceneStart(void);
+extern void __Func_80933f8(int, int, int, int);
+extern void __MapTransitionIn(void);
+extern void __Func_80933d4(int, int);
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __CutsceneWait(int);
+extern void __MapActor_Emote(int, int, int);
+extern void __MessageID(int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Surprise(int, int);
+extern void __Func_80925cc(int, int);
+extern int __Func_8091c7c(int, int);
+extern void __Func_809259c(int, int);
+extern void __MapActor_DoAnim(int, int);
+extern void __MapActor_SetBehavior(int, void *);
+extern void __MapActor_RunScript(int, void *);
+extern void __ClearFlag(int);
+extern void __SetFlag(int);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_938_2009494(void)
+{
+    unsigned char *act;
+    char **map_ptr;
+    int neg = -1;
+    int x1 = 0xd8 << 18;
+    int z1 = 0x86 << 18;
+    int z2 = 0x2760000;
+    int z3 = 0xec << 17;
+    int sp1 = 0xcccc;
+    int sp2 = 0x6666;
+    int sp3 = 0xccc;
+    int c_d8_2 = 0xd8 << 2;
+    int c_d6_2 = 0xd6 << 2;
+    int c_d4_2 = 0xd4 << 2;
+    int c_da_2 = 0xda << 2;
+    int c_dc_2 = 0xdc << 2;
+    int c_f9_1 = 0xf9 << 1;
+    int c_f3_1 = 0xf3 << 1;
+    int c_fb_1 = 0xfb << 1;
+    int c_81_1 = 0x81 << 1;
+    int c_84_1 = 0x84 << 1;
+    int c_a0_7 = 0xa0 << 7;
+    int c_c0_6 = 0xc0 << 6;
+    int c_e0_7 = 0xe0 << 7;
+    int c_80_5 = 0x80 << 5;
+    int c_c0_7 = 0xc0 << 7;
+    int c_c0_8 = 0xc0 << 8;
+    int c_80_8 = 0x80 << 8;
+    int c_a0_8 = 0xa0 << 8;
+    int c_e0_8 = 0xe0 << 8;
+    int msg_2588 = 0x2588;
+    int msg_2009 = 0x2009;
+    int msg_2002 = 0x2002;
+    int msg_6002 = 0x6002;
+    int em_107 = 0x107;
+    int em_105 = 0x105;
+    int em_101 = 0x101;
+    int fl_12f = 0x12f;
+    int fl_914 = 0x914;
+    int emote;
+    int flag;
+    void *actor_cmd;
+
+    do { } while (z2 == 0);
+
+    __CutsceneStart();
+    __Func_80933f8(neg, neg, neg, 0);
+    __WaitFrames(1);
+    __Func_80933f8(x1, neg, z1, 0);
+    __Func_800fe9c();
+    __WaitFrames(1);
+    __MapActor_SetPos(0, x1, z2);
+
+    map_ptr = (char **)iwram_3001ebc;
+    emote = 0x80 << 1;
+    *(int *)(*map_ptr + (0xe0 << 1)) = emote;
+    *(int *)(*map_ptr + (0xe4 << 1)) = 0x28;
+    __MapTransitionIn();
+
+    __Func_80933d4(sp2, sp3);
+    __Func_80933f8(x1, neg, z3, 1);
+
+    __MapActor_SetSpeed(0, sp1, sp2);
+    __MapActor_SetSpeed(1, sp1, sp2);
+    __MapActor_SetSpeed(2, sp1, sp2);
+    __MapActor_SetSpeed(3, sp1, sp2);
+
+    __MapActor_TravelToAnimWait(0, c_d8_2, c_f9_1);
+
+    act = (unsigned char *)__MapActor_GetActor(0);
+    if (act != 0) {
+        __MapActor_SetPos(1, *(int *)(act + 8), *(int *)(act + 0x10));
+    }
+    act = (unsigned char *)__MapActor_GetActor(0);
+    if (act != 0) {
+        __MapActor_SetPos(2, *(int *)(act + 8), *(int *)(act + 0x10));
+    }
+    act = (unsigned char *)__MapActor_GetActor(0);
+    if (act != 0) {
+        __MapActor_SetPos(3, *(int *)(act + 8), *(int *)(act + 0x10));
+    }
+
+    __MapActor_TravelToAnim(0, c_d6_2, c_f3_1);
+    __MapActor_TravelToAnim(1, c_d4_2, c_fb_1);
+    __MapActor_TravelToAnim(2, c_da_2, c_f3_1);
+    __MapActor_TravelToAnimWait(3, c_dc_2, c_fb_1);
+
+    __MapActor_SetAnim(0, 1);
+    __MapActor_SetAnim(1, 1);
+    __MapActor_SetAnim(2, 1);
+    __CutsceneWait(10);
+    OvlFunc_938_2009450(10);
+
+    __MapActor_Emote(9, emote, 0x14);
+    __Func_8092adc(9, c_a0_7, 0x14);
+    __MessageID(msg_2588);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __MapActor_Emote(8, emote, 0x14);
+    __Func_8092adc(8, c_c0_6, 0x14);
+    __ActorMessage_Wait(8, 0, 0x14);
+    __MapActor_Emote(8, em_107, 0x3c);
+    __ActorMessage_Wait(8, 0, 10);
+
+    __MapActor_Surprise(0, c_81_1);
+    __MapActor_Surprise(1, c_81_1);
+    __MapActor_Surprise(2, c_81_1);
+    __MapActor_Surprise(3, c_81_1);
+    __CutsceneWait(0x3c);
+    __MapActor_Emote(9, c_81_1, 0x3c);
+
+    __Func_8092adc(9, c_e0_7, 10);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __Func_8092adc(8, c_80_5, 10);
+    __MapActor_Emote(8, c_84_1, 0x14);
+    __ActorMessage_Wait(8, 0, 0x28);
+    __Func_80925cc(8, 2);
+    __ActorMessage_Wait(8, 0, 0x14);
+    __Func_8092adc(8, c_c0_6, 10);
+    __ShowActorMessage_NoWait(8, 0);
+
+    flag = 1;
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(10);
+        __MapActor_SetAnim(8, 3);
+    } else {
+        __CutsceneWait(10);
+        *(unsigned short *)(*map_ptr + (0xec << 1)) += 1;
+        __MapActor_SetAnim(8, 4);
+        flag = 0;
+    }
+    __ActorMessage_Wait(8, 0, 10);
+    if (flag != 0) {
+        *(unsigned short *)(*(char **)iwram_3001ebc + (0xec << 1)) += 1;
+    }
+
+    __Func_809259c(9, 2);
+    __MapActor_Surprise(9, c_81_1);
+    __CutsceneWait(0x50);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __Func_8092adc(8, c_80_5, 10);
+    __MapActor_Emote(8, em_107, 0x28);
+    __Func_80925cc(2, 3);
+    __ActorMessage_Wait(msg_2002, 0, 0x14);
+    __MapActor_Emote(8, em_105, 0x3c);
+    __Func_8092adc(8, c_c0_6, 0x3c);
+    __ActorMessage_Wait(8, 0, 10);
+    __Func_809259c(1, 2);
+    __ActorMessage_Wait(1, 0, 10);
+    __Func_8092adc(9, c_a0_7, 0);
+    __Func_8092adc(2, c_c0_7, 10);
+    __Func_809259c(2, 2);
+    __ActorMessage_Wait(msg_6002, 0, 10);
+    __Func_8092adc(2, c_c0_8, 10);
+    __Func_809259c(2, 2);
+    __ActorMessage_Wait(msg_2002, 0, 0x14);
+    __MapActor_DoAnim(8, 3);
+    __ActorMessage_Wait(8, 0, 0x14);
+    __Func_8092adc(2, c_80_8, 0x14);
+    __ActorMessage_Wait(msg_6002, 0, 10);
+    __Func_8092adc(3, c_a0_8, 10);
+    __MapActor_Emote(3, em_105, 0x28);
+    __ActorMessage_Wait(3, 0, 10);
+    __Func_80925cc(2, 2);
+    __CutsceneWait(0x50);
+    __MapActor_DoAnim(2, 3);
+    __CutsceneWait(0x14);
+    __Func_8092adc(1, c_e0_8, 10);
+    __MapActor_DoAnim(1, 4);
+
+    __ShowActorMessage_NoWait(1, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(0x14);
+        *(unsigned short *)(*(char **)iwram_3001ebc + (0xec << 1)) += 1;
+    } else {
+        __CutsceneWait(0x14);
+        __ActorMessage_Wait(1, 0, 10);
+    }
+
+    __MapActor_SetAnim(2, 3);
+    __MapActor_DoAnim(3, 3);
+    OvlFunc_938_2009450(0x14);
+    __Func_80925cc(9, 2);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __Func_80925cc(3, 2);
+    __ActorMessage_Wait(3, 0, 10);
+    __Func_8092adc(9, c_c0_6, 10);
+    __MapActor_DoAnim(9, 3);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __MapActor_Emote(2, em_101, 0x3c);
+    __ActorMessage_Wait(msg_2002, 0, 10);
+    __Func_80925cc(9, 1);
+    __Func_8092adc(9, c_a0_7, 10);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __Func_80925cc(1, 2);
+    __ActorMessage_Wait(1, 0, 10);
+    __MapActor_DoAnim(9, 4);
+    __ActorMessage_Wait(msg_2009, 0, 10);
+    __Func_80925cc(3, 1);
+    __ActorMessage_Wait(3, 0, 10);
+    __Func_80925cc(8, 1);
+    __CutsceneWait(0x14);
+    __ActorMessage_Wait(8, 0, 10);
+    __MapActor_SetAnim(0, 3);
+    __MapActor_SetAnim(1, 3);
+    __MapActor_SetAnim(2, 3);
+    __MapActor_DoAnim(3, 3);
+    __CutsceneWait(0x14);
+
+    actor_cmd = ActorCmd_ARRAY_938__02009b94;
+    __MapActor_SetBehavior(1, actor_cmd);
+    __MapActor_SetBehavior(2, actor_cmd);
+    __MapActor_RunScript(3, actor_cmd);
+
+    *(int *)(*(char **)iwram_3001ebc + (0xe4 << 1)) = 0x10;
+    *(int *)(*(char **)iwram_3001ebc + (0xe0 << 1)) = 0x209;
+    __ClearFlag(fl_12f);
+    __SetFlag(fl_914);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/hammet_palace/hammet_palace_data.s");
 
 INCLUDE_ASM("asm/maps/hammet_palace/imports.s");

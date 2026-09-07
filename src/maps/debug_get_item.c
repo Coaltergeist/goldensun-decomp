@@ -71,7 +71,22 @@ void OvlFunc_973_20080a0(int r0, int r1) {
     __CalcStats(r5);
 }
 
-INCLUDE_ASM("asm/maps/debug_get_item/OvlFunc_973_20080c0.s");
+
+static inline int GetPartyMembers(unsigned short *buf) {
+    return __Func_80796c4(buf);
+}
+
+void OvlFunc_973_20080c0(int r0)
+{
+    unsigned short buf[16];
+    int count;
+    int i;
+
+    count = GetPartyMembers(buf);
+    for (i = 0; i < count; i++) {
+        OvlFunc_973_20080a0(buf[i], r0);
+    }
+}
 #include "dma.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
