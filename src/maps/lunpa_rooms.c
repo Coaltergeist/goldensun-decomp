@@ -48,7 +48,29 @@ unsigned int LunpaRooms_GetEvents(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_200808c.s");
+void OvlFunc_940_200808c(void) {
+    unsigned short t;
+
+    if ((unsigned int)(*(unsigned short *)((char *)__MapActor_GetActor(0) + 6) + 0xffff5fff) <= 0x3ffe && __GetFlag(0x941) != 0) {
+        t = 8;
+        do { t = (unsigned short) t; } while (0);
+        __Func_80b3284(t, 0x11);
+    } else {
+        __CutsceneStart();
+        if (__GetFlag(0x941) != 0) {
+            __MessageID(0x24fb);
+            t = 0x11;
+            do { t = (unsigned short) t; } while (0);
+            __Func_8093054(t, 0);
+        } else {
+            __MessageID(0x1bd0);
+            t = 0x11;
+            do { t = (unsigned short) t; } while (0);
+            __Func_8093054(t, 0);
+        }
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_940_20080fc(void) {
     __CutsceneStart();
@@ -73,7 +95,27 @@ void OvlFunc_940_200814c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_200816c.s");
+void OvlFunc_940_200816c(void) {
+    unsigned short t;
+
+    if ((unsigned int)(*(unsigned short *)((char *)__MapActor_GetActor(0) + 6) + 0xffff5fff) <= 0x3ffe) {
+        __UI_Sanctum(0x15);
+    } else if (__GetFlag(0x941) != 0) {
+        __CutsceneStart();
+        __MessageID(0x2507);
+        t = 0x15;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage(t, 0);
+        __CutsceneEnd();
+    } else {
+        __CutsceneStart();
+        __MessageID(0x1bdc);
+        t = 0x15;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage(t, 0);
+        __CutsceneEnd();
+    }
+}
 
 extern int _MSG_1be0;
 
@@ -95,7 +137,29 @@ void OvlFunc_940_20081d8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/OvlFunc_940_2008224.s");
+void OvlFunc_940_2008224(void) {
+    unsigned short t;
+
+    if ((unsigned int)(*(unsigned short *)((char *)__MapActor_GetActor(0) + 6) + 0xffff5fff) <= 0x3ffe) {
+        t = 0x19;
+        do { t = (unsigned short) t; } while (0);
+        __Func_80b0278(t, 0x10);
+    } else if (__GetFlag(0x941) != 0) {
+        __CutsceneStart();
+        __MessageID(0x24f9);
+        t = 0x10;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage(t, 0);
+        __CutsceneEnd();
+    } else {
+        __CutsceneStart();
+        __MessageID(0x1bcf);
+        t = 0x10;
+        do { t = (unsigned short) t; } while (0);
+        __ActorMessage(t, 0);
+        __CutsceneEnd();
+    }
+}
 
 extern int __GetFlag(int);
 extern void __MessageID(int);
@@ -173,9 +237,52 @@ void OvlFunc_940_2008374(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_rooms/LunpaRooms_MapInit.s");
-
+extern unsigned char iwram_3001ebc[];
+extern void __ClearFlag(int);
 extern unsigned char *__MapActor_GetActor(int);
+extern void __Actor_SetSpriteFlags(unsigned char *, int);
+
+extern unsigned char Lconst_69[] __asm__(".Lconst_69");
+__asm__(".equ .Lconst_69, 0x69");
+
+int LunpaRooms_MapInit(void) {
+    int r1;
+    int r2;
+    char *r3;
+    short r6;
+
+    r3 = *(char **)iwram_3001ebc;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r2 = 0x209;
+    *(int *)r3 = r2;
+
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 = (char *)&gState + r2;
+    r1 = 0;
+    r6 = *(short *)(r3 + r1);
+    if (r6 == 0xa) {
+        __ClearFlag(0x12f);
+        r1 = 0xe2;
+        r2 = (int)Lconst_69;
+        r1 <<= 1;
+        r3 = (char *)&gState + r1;
+        *(short *)r3 = r2;
+        r2 = 0xe3;
+        r2 <<= 1;
+        r3 = (char *)&gState + r2;
+        *(short *)r3 = r6;
+    }
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x17), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x19), 0);
+
+    return 0;
+}
+
 extern void __UI_Sanctum(int);
 
 void OvlFunc_940_2008454(void)

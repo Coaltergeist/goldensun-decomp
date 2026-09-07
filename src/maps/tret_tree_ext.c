@@ -31,9 +31,58 @@ unsigned int TretTreeExt_GetActors(void) {
     return (unsigned int)gOvl_02008474;
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200805c.s");
+extern int gState;
+extern unsigned int iwram_3001ebc;
+extern unsigned char *__MapActor_GetActor(int);
+extern int __Func_8011f54(int);
 
-extern void OvlFunc_919_200805c(int, int);
+void OvlFunc_919_200805c(int arg0, int arg1)
+{
+    register unsigned char *r8 __asm__("r8");
+    register int r1 __asm__("r1");
+    register int r2 __asm__("r2");
+    register int r3 __asm__("r3");
+    unsigned char *r5;
+
+    r8 = (unsigned char *)iwram_3001ebc;
+    r2 = 0xfa;
+    r3 = (int)&gState;
+    r2 <<= 1;
+    r3 += r2;
+    r5 = __MapActor_GetActor(*(int *)r3);
+    arg0 <<= 20;
+    arg1 <<= 20;
+    if (r5 != 0) {
+        r1 = *(int *)(r5 + 8);
+        r2 = *(int *)(r5 + 0x10);
+        r1 += arg0;
+        r2 += arg1;
+        *(int *)(r5 + 8) = r1;
+        *(int *)(r5 + 0x10) = r2;
+        {
+            register int r0 __asm__("r0") = __Func_8011f54(*(unsigned char *)(r5 + 0x22));
+            *(int *)(r5 + 0xc) = r0;
+            *(int *)(r5 + 0x14) = r0;
+        }
+    }
+    r3 = 0xf0;
+    r3 <<= 1;
+    r3 += (int)r8;
+    r5 = *(unsigned char **)r3;
+    if (r5 != 0) {
+        r1 = *(int *)(r5 + 8);
+        r2 = *(int *)(r5 + 0x10);
+        r1 += arg0;
+        r2 += arg1;
+        *(int *)(r5 + 8) = r1;
+        *(int *)(r5 + 0x10) = r2;
+        {
+            register int r0 __asm__("r0") = __Func_8011f54(*(unsigned char *)(r5 + 0x22));
+            *(int *)(r5 + 0xc) = r0;
+            *(int *)(r5 + 0x14) = r0;
+        }
+    }
+}
 
 void OvlFunc_919_20080d8(void) {
     OvlFunc_919_200805c(0, 5);
@@ -79,7 +128,31 @@ void OvlFunc_919_2008138(void)
     __Func_8091e9c(*(short *)(r5 + 0));
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200815c.s");
+extern void __Func_808fe38(int);
+extern unsigned int iwram_3001ecc;
+
+void OvlFunc_919_200815c(void)
+{
+    unsigned char *r2;
+    unsigned char *r1;
+    short v;
+
+    __Func_808fe38(9);
+    *(volatile unsigned short *)0x04000050 = 0x3f42;
+    *(volatile unsigned short *)0x04000052 = 0xc04;
+    r2 = (unsigned char *)iwram_3001ecc;
+    r1 = r2 + 0x534;
+    {
+        int c = 0x3f3f;
+        *(unsigned short *)r1 = c;
+    }
+    r1 = r2 + 0x536;
+    v = 0x1f;
+    *(unsigned short *)r1 = v;
+    r2 += 0x52a;
+    v = 0xa;
+    *(unsigned short *)r2 = v;
+}
 
 extern unsigned char gOvl_020084a4[];
 
@@ -111,9 +184,82 @@ void OvlFunc_919_20081d4(void) {
     __Func_8005ee0(L590, L5b0);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree_ext/TretTreeExt_MapInit.s");
-INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_200826c.s");
-INCLUDE_ASM("asm/maps/tret_tree_ext/OvlFunc_919_20082a0.s");
+extern void OvlFunc_919_20082e0(void);
+
+int TretTreeExt_MapInit(void)
+{
+    unsigned int *r5 = &iwram_3001ebc;
+    {
+        unsigned char *r3;
+        int r2;
+
+        r2 = 0xe0;
+        r3 = (unsigned char *)r5[0];
+        r2 <<= 1;
+        r3 += r2;
+        *(int *)r3 = 0x100;
+    }
+    __Func_808fe38(9);
+    *(volatile unsigned short *)0x04000050 = 0x3f42;
+    *(volatile unsigned short *)0x04000052 = 0xc04;
+    {
+        unsigned char *r2;
+        unsigned char *r1;
+        short v;
+
+        r2 = (unsigned char *)r5[4];
+        r1 = r2 + 0x534;
+        {
+            int c = 0x3f3f;
+            *(unsigned short *)r1 = c;
+        }
+        r1 = r2 + 0x536;
+        v = 0x1f;
+        *(unsigned short *)r1 = v;
+        r2 += 0x52a;
+        v = 0xa;
+        *(unsigned short *)r2 = v;
+    }
+    OvlFunc_919_20082e0();
+    return 0;
+}
+extern int L610 __asm__(".Lm919_610");
+extern short L614 __asm__(".Lm919_614");
+extern short L616 __asm__(".Lm919_616");
+
+void OvlFunc_919_200826c(void)
+{
+    unsigned short *ptr;
+    unsigned int val;
+
+    if (*(volatile unsigned short *)0x04000006 >= L610) {
+        ptr = (unsigned short *)&L614;
+    } else {
+        ptr = (unsigned short *)&L616;
+    }
+    val = *ptr;
+    *(volatile unsigned short *)0x0400001c = val;
+}
+extern unsigned int iwram_3001e70;
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_919_20082a0(void)
+{
+    unsigned int *pe70 = &iwram_3001e70;
+    int r1 = 0x82;
+    unsigned char *r2 = (unsigned char *)*pe70;
+    short *p614;
+    short r2s;
+
+    r1 <<= 1;
+    r2 += r1;
+    L610 = 0xc0 - *(short *)(r2 + 6);
+    p614 = &L614;
+    do {} while (0);
+    r2s = *(short *)(r2 + 2);
+    *p614 = r2s;
+    L616 = r2s - (iwram_3001e40 >> 2);
+}
 
 extern void OvlFunc_919_200826c(void);
 extern void OvlFunc_919_20082a0(void);

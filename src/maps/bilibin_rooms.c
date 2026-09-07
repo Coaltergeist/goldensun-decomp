@@ -104,7 +104,25 @@ void OvlFunc_908_2008124(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/bilibin_rooms/OvlFunc_908_20081a8.s");
+extern void __CutsceneStart(void);
+extern void __MessageID(int);
+extern void __MapActor_Face(int, int, int);
+extern void __ActorMessage(int, int);
+extern void __Func_8092adc(int, int, int);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_908_20081a8(void) {
+    int r1v = 0xc0 << 8;
+    do { } while (r1v == 0);
+
+    __CutsceneStart();
+    __MessageID(0x13ed);
+    __MapActor_Face(0x15, 0, 0);
+    __ActorMessage(0x15, 0);
+    __Func_8092adc(0x15, r1v, 10);
+    __CutsceneEnd();
+}
+
 
 // fakematch
 extern unsigned char *iwram_3001ebc;
@@ -302,7 +320,26 @@ void OvlFunc_908_2008490(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin_rooms/BilibinRooms_MapInit.s");
+int BilibinRooms_MapInit(void) {
+    unsigned char *base;
+    unsigned char *actor;
+    unsigned char *sprite;
+    unsigned char *ptr;
+    int zero;
+
+    base = iwram_3001ebc;
+    *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+    actor = (unsigned char *)__MapActor_GetActor(0x1b);
+    ptr = actor + 0x23;
+    zero = 0;
+    *ptr = zero;
+    sprite = *(unsigned char **)(actor + 0x50);
+    zero -= 0xd;
+    sprite[9] = (sprite[9] & zero) | 8;
+    return 0;
+}
+
+
 INCLUDE_ASM("asm/maps/bilibin_rooms/bilibin_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/imports.s");
