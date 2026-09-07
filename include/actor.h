@@ -41,8 +41,9 @@ struct Actor {
     u8 scriptLoop;
     u16 waitTimer;
     u32 __unk60;
-    u32 __unk64;
-    u32 __unk68;
+    s16 waveCounter;
+    u16 __unk66;
+    struct Actor *linkedActor;
     actorfun_t *update;
 };
 

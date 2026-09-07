@@ -38,7 +38,28 @@ int Func_807987c(unsigned int arg0, int arg1)
     return ret;
 }
 
-INCLUDE_ASM("asm/rpg/summon/Func_80798b4.s");
+extern unsigned int GetEnemyInfo(int param);
+
+struct EnemyElemStats {
+    unsigned int base;       // 0x00
+    unsigned char unk04[4];  // 0x04
+    unsigned int unk08[4];   // 0x08
+};                            // 0x18
+
+extern struct EnemyElemStats L88e38[] __asm__("X88e38");
+
+unsigned int Func_80798b4(unsigned char *unit)
+{
+    unsigned char *classInfo;
+    unsigned char idx;
+
+    classInfo = (unsigned char *)GetEnemyInfo(unit[0x128]);
+    idx = classInfo[0x34];
+    if (idx > 0x2b)
+        idx = 0;
+    return L88e38[idx].base;
+}
+
 INCLUDE_ASM("asm/rpg/summon/InitEnemyElemStats.s");
 INCLUDE_ASM("asm/rpg/summon/GetClassFromDjinn.s");
 

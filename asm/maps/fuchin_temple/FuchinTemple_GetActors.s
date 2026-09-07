@@ -61,4 +61,3 @@
 	pop	{r1}
 	bx	r1
 .func_end FuchinTemple_GetActors
-

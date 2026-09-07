@@ -95,7 +95,23 @@ void OvlFunc_960_200882c(void) {
 
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008838.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_20089cc.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008adc.s");
+extern int __GetFlag(int);
+extern void __SetFlag(int);
+extern void __MapActor_SetBehavior(int, void *);
+extern void __MapActor_SetPos(int, int, int);
+typedef struct { unsigned char _bytes[4]; } ActorCmd;
+extern ActorCmd gScript_960__020097a8[];
+
+void OvlFunc_960_2008adc(void) {
+    int x = 0x780000;
+    int y = 0x3380000;
+
+    if (__GetFlag(0x9b7) == 0) {
+        __SetFlag(0x20e);
+        __MapActor_SetPos(0xc, x, y);
+        __MapActor_SetBehavior(0xc, gScript_960__020097a8);
+    }
+}
 
 extern unsigned int iwram_3001f30;
 

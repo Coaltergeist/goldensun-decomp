@@ -3,6 +3,13 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm941_1cc0[] __asm__(".Lm941_1cc0");
+extern unsigned char Lm941_1cd8[] __asm__(".Lm941_1cd8");
+extern unsigned char Lconst_6a[] __asm__(".Lconst_6a");
+__asm__(".equ .Lconst_6a, 0x6a");
+
 INCLUDE_ASM("asm/maps/west_lunpa_cave/exports.s");
 
 extern unsigned char gOvl_02009c34[];
@@ -21,7 +28,21 @@ unsigned int WestLunpaCave_GetExits(void) {
     return (unsigned int)gOvl_02009cac;
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/WestLunpaCave_GetActors.s");
+unsigned int *WestLunpaCave_GetActors(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_6a) {
+        return (unsigned int *)Lm941_1cd8;
+    }
+    return (unsigned int *)Lm941_1cc0;
+}
 
 extern unsigned char gOvl_02009dd4[];
 

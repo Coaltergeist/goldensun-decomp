@@ -475,7 +475,16 @@ void OvlFunc_883_2008d2c(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008d70.s");
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008d98.s");
+void OvlFunc_883_2008d98(void)
+{
+    __ClearFlag(0x210);
+    {
+        unsigned int arg4 = 0xa;
+        unsigned int arg5 = 0x54;
+
+        __Func_8010704(0x28, 0x59, 7, 4, arg4, arg5);
+    }
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008dc0.s");
 
 extern void OvlFunc_883_2008fec(void);

@@ -45,7 +45,76 @@ unsigned int AltinPeak_GetExits(void) {
     return (unsigned int)gOvl_0200c85c;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetActors.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char Lm932_4928[] __asm__(".Lm932_4928");
+extern unsigned char Lm932_4940[] __asm__(".Lm932_4940");
+extern unsigned char Lm932_49a0[] __asm__(".Lm932_49a0");
+extern unsigned char gScript_882__0200ca00[];
+extern unsigned char Lm932_4a60[] __asm__(".Lm932_4a60");
+extern unsigned char Lm932_4aa8[] __asm__(".Lm932_4aa8");
+extern unsigned char Lm932_4b68[] __asm__(".Lm932_4b68");
+extern unsigned char Lm932_4b98[] __asm__(".Lm932_4b98");
+extern unsigned char Lm932_4c40[] __asm__(".Lm932_4c40");
+extern unsigned char Lm932_4cd0[] __asm__(".Lm932_4cd0");
+extern unsigned char Lconst_4d[] __asm__(".Lconst_4d");
+extern unsigned char Lconst_4f[] __asm__(".Lconst_4f");
+extern unsigned char Lconst_51[] __asm__(".Lconst_51");
+extern unsigned char Lconst_52[] __asm__(".Lconst_52");
+extern unsigned char Lconst_53[] __asm__(".Lconst_53");
+extern unsigned char Lconst_54[] __asm__(".Lconst_54");
+extern unsigned char Lconst_55[] __asm__(".Lconst_55");
+extern unsigned char Lconst_56[] __asm__(".Lconst_56");
+extern unsigned char Lconst_57[] __asm__(".Lconst_57");
+__asm__(".equ .Lconst_4d, 0x4d");
+__asm__(".equ .Lconst_4f, 0x4f");
+__asm__(".equ .Lconst_51, 0x51");
+__asm__(".equ .Lconst_52, 0x52");
+__asm__(".equ .Lconst_53, 0x53");
+__asm__(".equ .Lconst_54, 0x54");
+__asm__(".equ .Lconst_55, 0x55");
+__asm__(".equ .Lconst_56, 0x56");
+__asm__(".equ .Lconst_57, 0x57");
+
+unsigned int *AltinPeak_GetActors(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_4d) {
+        return (unsigned int *)Lm932_4940;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_4f) {
+        return (unsigned int *)Lm932_49a0;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_51) {
+        return (unsigned int *)gScript_882__0200ca00;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_52) {
+        return (unsigned int *)Lm932_4a60;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_53) {
+        return (unsigned int *)Lm932_4aa8;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_54) {
+        return (unsigned int *)Lm932_4b68;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_55) {
+        return (unsigned int *)Lm932_4b98;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_56) {
+        return (unsigned int *)Lm932_4c40;
+    }
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_57) {
+        return (unsigned int *)Lm932_4cd0;
+    }
+    return (unsigned int *)Lm932_4928;
+}
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20082cc.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008388.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083b4.s");
@@ -411,8 +480,6 @@ void OvlFunc_932_2008c9c(void)
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008d2c.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008ec0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009398.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern int __GetFlag();
 extern unsigned char _EVENT_4d[], _EVENT_4e[], _EVENT_4f[], _EVENT_50[],
     _EVENT_51[], _EVENT_52[], _EVENT_53[], _EVENT_54[], _EVENT_55[],

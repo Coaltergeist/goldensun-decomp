@@ -29,7 +29,28 @@ int OvlFunc_926_2008324(int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/FuchinTemple_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gScript_943__0200c7a8[];
+extern unsigned char Lm926_4838[] __asm__(".Lm926_4838");
+extern unsigned char Lconst_3c[] __asm__(".Lconst_3c");
+__asm__(".equ .Lconst_3c, 0x3c");
+
+unsigned int *FuchinTemple_GetEntrances(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_3c) {
+        return (unsigned int *)gScript_943__0200c7a8;
+    }
+    return (unsigned int *)Lm926_4838;
+}
 
 unsigned int FuchinTemple_GetSpecialExits(void) {
     return 0;
@@ -339,12 +360,10 @@ void OvlFunc_926_200a54c(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
-extern unsigned char _EVENT_3c[];
 extern unsigned char Lm926_4b90[] __asm__(".Lm926_4b90");
 extern unsigned char Lm926_5184[] __asm__(".Lm926_5184");
 extern unsigned char Lm926_4d40[] __asm__(".Lm926_4d40");
+extern unsigned char _EVENT_3c[];
 
 int FuchinTemple_GetEvents(void)
 {

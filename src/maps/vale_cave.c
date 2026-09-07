@@ -400,7 +400,15 @@ void OvlFunc_934_2009300(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009378.s");
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_934_2009378(void)
+{
+    __CutsceneStart();
+    __MapActor_SetAnim(8, 0);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009390.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20094ac.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20095cc.s");

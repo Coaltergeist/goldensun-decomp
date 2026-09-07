@@ -141,7 +141,20 @@ void MapActor_SetBehavior(int actorID, int behavior)
   }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_SetIdle.s", ".text.map_actor_2");
+extern void _Actor_Stop(void);
+
+void MapActor_SetIdle(int actorID)
+{
+    unsigned char *actor;
+    int new_var;
+    actor = GetFieldActor(actorID);
+    if (actor != ((unsigned char *) 0))
+    {
+        new_var = actor[0x5a] | 1;
+        actor[0x5a] = new_var;
+        _Actor_Stop();
+    }
+}
 
 extern unsigned int Data_9ff40[];
 

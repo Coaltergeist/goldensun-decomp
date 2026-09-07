@@ -3,7 +3,22 @@
 
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState__entr;
+extern GlobalState__entr gState__entr __asm__("gState");
+extern unsigned char _EVENT_9f[], _EVENT_68[];
+extern unsigned char Lm939_1bec[] __asm__(".Lm939_1bec");
+extern unsigned char gOvl_02009d3c[];
+
+void *Lunpa_GetEntrances(void)
+{
+    GlobalState__entr *p = &gState__entr;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_68) goto default_case;
+    if (ev != (int)_EVENT_9f) goto default_case;
+    return (void *)gOvl_02009d3c;
+default_case:
+    return (void *)Lm939_1bec;
+}
 
 unsigned int Lunpa_GetSpecialExits(void) {
     return 0;

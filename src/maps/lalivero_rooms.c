@@ -2,9 +2,25 @@
 
 #include "nonmatching.h"
 
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gOvl_02009690[];
+extern unsigned char Lm967_16b0[] __asm__(".Lm967_16b0");
+extern unsigned char Lconst_b3[] __asm__(".Lconst_b3");
+__asm__(".equ .Lconst_b3, 0xb3");
+
 INCLUDE_ASM("asm/maps/lalivero_rooms/exports.s");
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_2008030.s");
+extern void __MapActor_Surprise(int actor, int flag);
+
+unsigned int OvlFunc_967_2008030(void) {
+    int flag;
+    unsigned long actor = 0xe;
+    flag = 0x102;
+    do { } while (flag == 0);
+    __MapActor_Surprise(actor, flag);
+    return 0;
+}
 
 extern unsigned char gOvl_02009438[];
 
@@ -12,7 +28,21 @@ void *LaliveroRooms_GetEntrances(void) {
     return (void *)gOvl_02009438;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetSpecialExits.s");
+unsigned int *LaliveroRooms_GetSpecialExits(void)
+{
+    unsigned int r3;
+    unsigned int r1;
+
+    r3 = (unsigned int)&gState;
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 += r1;
+    r1 = 0;
+    if (*(short *)((char *)r3 + r1) == (int)Lconst_b3) {
+        return (unsigned int *)gOvl_02009690;
+    }
+    return (unsigned int *)Lm967_16b0;
+}
 
 extern unsigned char gOvl_020096d0[];
 
@@ -125,8 +155,6 @@ void OvlFunc_967_200848c(void)
     __PlaySound(0x7b);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern int __GetFlag(int);
 extern unsigned char _EVENT_b4[];
 extern unsigned char Lm967_2010[] __asm__(".Lm967_2010");

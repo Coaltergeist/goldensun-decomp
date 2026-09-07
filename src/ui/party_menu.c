@@ -790,7 +790,15 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80ad35c.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80ad40c.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80ad508.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80ad5b4.s");
-INCLUDE_ASM("asm/ui/party_menu/Func_80ad5f4.s");
+extern unsigned int *iwram_3001f2c__c1 __asm__("iwram_3001f2c");
+
+void Func_80ad5f4(unsigned int arg0, unsigned int arg1)
+{
+    unsigned int idx;
+    unsigned int *base = iwram_3001f2c__c1;
+    idx = (arg0 + 0x91) * 4;
+    *(unsigned int *)((char *)base + idx) = arg1;
+}
 
 extern unsigned char iwram_3001f2c__b1[] __asm__("iwram_3001f2c");   /* @ 0x03001F2C */
 extern unsigned int Laf304[] __asm__(".Laf304");
