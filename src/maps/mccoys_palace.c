@@ -81,7 +81,22 @@ void OvlFunc_909_2008150(void)
     __Func_8092adc(0xe, unk, 0xa);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20081b4.s");
+void OvlFunc_909_20081b4(void)
+{
+    extern int __GetFlag(int);
+    extern void __SetFlag(int);
+    int i;
+    for (i = 0; i < 1; i++) {
+        __CutsceneStart();
+        __MessageID(0x1750);
+        if (__GetFlag(0x302)) {
+            __MessageID(0x1768);
+        }
+        __ActorMessage(0xf, 0);
+        __SetFlag(0x302);
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_909_20081f4(void) {
     __CutsceneStart();
