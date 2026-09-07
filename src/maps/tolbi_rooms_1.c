@@ -65,6 +65,7 @@ struct TableEntry {
 };
 
 extern struct TableEntry Lm950_1dcc[] __asm__(".Lm950_1dcc");
+extern void __MapActor_SetSpeed(int, int, int);
 
 void OvlFunc_950_20080c0(void)
 {
@@ -104,7 +105,6 @@ extern void __MapActor_TravelToAnimWait(int, int, int);
 extern void __Func_8092adc(int, int, int);
 extern void __Func_8092304(int, int, int);
 
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_200813c.s");
 extern void __CutsceneStart(void);
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
@@ -114,6 +114,88 @@ extern void __MapActor_Jump(int, int, int);
 extern void __MapActor_Emote(int, int, int);
 extern void __MapActor_DoAnim(int, int);
 extern void __Func_80925cc(int, int);
+extern void __MapActor_SetPos(int, int, int);
+
+void OvlFunc_950_200813c(void)
+{
+    void *actor;
+    int c_8e_1 = 0x8e << 1;
+    int c_96_18 = 0x96 << 18;
+    int c_ce_18 = 0xce << 18;
+    int emote_80 = 0x80 << 1;
+    int speed_9 = 0x80 << 9;
+    int speed_8 = 0x80 << 8;
+    int x_96 = 0x96 << 2;
+    int y_d4 = 0xd4 << 2;
+    int step_c0 = 0xc0 << 8;
+    int x_8e = 0x8e << 2;
+    int emote_84 = 0x84 << 1;
+    int step_c0_6 = 0xc0 << 6;
+    int emote_81 = 0x81 << 1;
+    int sp1 = 0x16666;
+    int sp2 = 0xb333;
+    int sp3 = 0x1cccc;
+    int sp4 = 0xe666;
+    int dy = -16;
+
+    do {} while (c_8e_1 == 0);
+
+    __CutsceneStart();
+    __MessageID(0x2394);
+    __CutsceneWait(0x28);
+    actor = __CreateActor(c_8e_1, c_96_18, 0, c_ce_18);
+    __Actor_SetSpriteFlags(actor, 0);
+    __Actor_SetAnim(actor, 6);
+    __CutsceneWait(10);
+    __Actor_SetAnim(actor, 1);
+    __CutsceneWait(0x28);
+    __DeleteActor(actor);
+    __CutsceneWait(2);
+    __MapActor_Emote(0x19, emote_80, 0x32);
+    __MapActor_SetSpeed(0x19, speed_9, speed_8);
+    __MapActor_TravelToAnimWait(0x19, x_96, y_d4);
+    __Func_8092adc(0x19, step_c0, 0);
+    __CutsceneWait(0x28);
+    __ActorMessage(0x19, 0);
+    __Func_80925cc(0x19, 2);
+    __CutsceneWait(0x1e);
+    __MapActor_TravelToAnimWait(0x19, x_8e, y_d4);
+    __Func_8092adc(0x19, step_c0, 0);
+    __CutsceneWait(0x1e);
+    __MapActor_Emote(0x19, emote_84, 0x32);
+    __CutsceneWait(0x14);
+    __Func_8092304(0, 0, dy);
+    __CutsceneWait(0x14);
+    __Func_8092adc(0x19, step_c0_6, 0);
+    __CutsceneWait(0x1e);
+    __Func_80925cc(0x19, 2);
+    __CutsceneWait(0x14);
+    __ActorMessage(0x19, 0);
+    __CutsceneWait(0x14);
+    __MapActor_Emote(0, 0x101, 0x32);
+    __CutsceneWait(0x14);
+    __MapActor_DoAnim(0x19, 4);
+    __CutsceneWait(0x14);
+    __ActorMessage(0x19, 0);
+    __CutsceneWait(0x1e);
+    __MapActor_Emote(0x19, emote_81, 0x32);
+    __ActorMessage(0x19, 0);
+    __MapActor_SetSpeed(0x19, sp1, sp2);
+    __Func_8092304(0x19, 16, 0);
+    __Func_8092304(0x19, 0, 32);
+    __CutsceneWait(0x14);
+    __MapActor_DoAnim(0x19, 3);
+    __CutsceneWait(0x14);
+    __ActorMessage(0x19, 0);
+    __Func_8092304(0, 16, 0);
+    __Func_8092adc(0, speed_8, 0);
+    __CutsceneWait(0x14);
+    __MapActor_SetSpeed(0x19, sp3, sp4);
+    __Func_8092304(0x19, 0, 48);
+    __MapActor_SetPos(0x19, 0, 0);
+    __CutsceneEnd();
+}
+
 void OvlFunc_950_2008328(void)
 {
     __CutsceneStart();
@@ -361,7 +443,40 @@ void OvlFunc_950_2008760(int a)
     __ActorMessage(a, 0);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/tolbi_rooms_1/OvlFunc_950_20087b0.s");
+extern unsigned char Lconst_2399[] __asm__(".Lconst_2399");
+__asm__(".equ .Lconst_2399, 0x2399");
+
+void OvlFunc_950_20087b0(int a)
+{
+    int msg;
+    int flag = 0x8be;
+
+    __CutsceneStart();
+    if (__GetFlag(0x8bd) == 0) {
+        msg = (int)Lconst_2399;
+        __MessageID(msg);
+        __ShowActorMessage_NoWait(a, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            __CutsceneWait(10);
+            __MessageID(msg + 1);
+        } else {
+            __MessageID(msg + 2);
+        }
+        __ActorMessage(a, 0);
+    } else {
+        if (__GetFlag(flag) == 0) {
+            __SetFlag(flag);
+            __MessageID(0x239c);
+            __ActorMessage(a, 0);
+            __CutsceneWait(10);
+            __Func_80925cc(a, 2);
+            __CutsceneWait(20);
+        }
+        __MessageID(0x239d);
+        __ActorMessage(a, 0);
+    }
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_950_200885c(void) {
