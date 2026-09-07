@@ -199,18 +199,9 @@ void OvlFunc_879_2008238(void) {
 }
 #include "gba/io.h"
 
-struct DmaTransfer {
-    const void *src;
-    void *dest;
-    unsigned int control;
-};
-
-struct DmaQueue {
-    unsigned short count;
-    struct DmaTransfer tasks[32];
-};
-
-extern struct DmaQueue gDMATaskCount;
+/* DMA task queue: a u16 task count followed (at +4) by 12-byte
+   {src, dest, control} entries, walked as u32 words. */
+extern unsigned short gDMATaskCount;
 extern unsigned char iwram_3001ebc[];
 extern unsigned char L68c[] __asm__(".L68c");
 
@@ -223,10 +214,10 @@ extern void OvlFunc_879_2008238(void);
     int count; \
     unsigned int *task; \
     SET_IO(REG_IME, REG_ADDR_IME); \
-    count = (queue)->count; \
+    count = *(queue); \
     if (count < 32) { \
-        task = (unsigned int *)((unsigned int)(queue) + (unsigned int)count * 12 + 4); \
-        *(volatile unsigned short *)&(queue)->count = count + 1; \
+        task = (unsigned int *)((queue) + 2) + count * 3; \
+        *(queue) = count + 1; \
         *task++ = (unsigned int)(src); \
         *task++ = (unsigned int)(dest); \
         *task = 0x20000; \
@@ -235,7 +226,7 @@ extern void OvlFunc_879_2008238(void);
 } while (0)
 
 void OvlFunc_879_20082e8(void) {
-    struct DmaQueue *queue;
+    unsigned short *queue;
     int i;
     int off;
     char *base;
