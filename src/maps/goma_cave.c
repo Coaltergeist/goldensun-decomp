@@ -1,6 +1,9 @@
-/* rom_79aad8 (overlay file 906): consolidated TU — goma_cave map overlay. */
+/* rom_79aad8 (overlay file 906): consolidated TU — goma_cave map overlay.
+ * Built with -fno-strict-aliasing (per-file Makefile rule): OvlFunc_906_20084f4
+ * only matches the ROM with type-based alias analysis off. */
 
 #include "nonmatching.h"
+#include "actor.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -166,5 +169,99 @@ void OvlFunc_906_20084d4(int arg0, int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave/OvlFunc_906_20084f4.s");
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_TravelTo(int, int, int);
+extern void __MapActor_WaitMovement(int);
+extern void __PlaySound(int);
+extern void __Func_8012330(int, int, int);
+extern void __Func_8012350(void);
+extern void __MapActor_SetAnim(int, int);
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+extern void OvlFunc_906_20084c4(unsigned int arg0);
+extern void OvlFunc_906_20084d4(int arg0, int arg1);
+
+static inline void Func_8012330_macro(int a, int b, int c)
+{
+    __Func_8012330(-a, -b, c);
+}
+
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+void OvlFunc_906_20084f4(int id)
+{
+    struct Actor *actor;
+    unsigned int i;
+    int v[3];
+    struct EffectData data;
+    int amp = 0xa0 << 11;
+    int sx = 0xc0 << 10;
+    int sy = 0xc0 << 9;
+    int tx = 0xbc << 1;
+    int ty = 0x90 << 1;
+    int tx2 = 0xad << 1;
+    int ty2 = 0x92 << 1;
+
+    actor = __MapActor_GetActor(id);
+    actor->__unk55 = 0;
+    
+    for (i = 0; i <= 17; i++) {
+        __WaitFrames(1);
+        actor->sprite->rotation -= 0x100;
+        actor->pos.x -= __cos(actor->sprite->rotation) / 2; 
+        actor->prevPos.x = 0x80 << 24;
+    }
+    
+    actor->update = (actorfun_t *)OvlFunc_906_20084c4;
+    __MapActor_SetSpeed(id, sx, sy);
+    __MapActor_TravelTo(id, tx, ty);
+    actor->gravity = 0xcccc;
+    actor->__unk55 = 3;
+    actor->layer = 0;
+    __MapActor_WaitMovement(id);
+    OvlFunc_906_20084d4((int)actor, 0);
+    __PlaySound(0xbc);
+    __Func_8012330(amp, amp, 0x80 << 9);
+    __PlaySound(0x8d);
+    Func_8012330_macro(1, 1, 0xe666);
+    
+    for (i = 0; i <= 16; i++) {
+        v[0] = __cos(i << 12);
+        v[1] = 0;
+        v[2] = __sin(i << 12);
+        v[0] -= v[0] / 4;
+        v[2] -= v[2] / 2;
+        OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z, v[0], v[1], v[2], 0, 0);
+    }
+    
+    actor->motion.y = 0xa0 << 11;
+    __MapActor_TravelTo(id, tx2, ty2);
+    __MapActor_WaitMovement(id);
+    OvlFunc_906_20084d4((int)actor, 0);
+    actor->update = 0;
+    actor->sprite->rotation = 0x80 << 5;
+    
+    data.unk18 = 0xd6;
+    data.unk8 = 0x80 << 8;
+    data.unkc = 0xcccc;
+    data.unk10 = 0xc0 << 9;
+    data.unk14 = 0x13333;
+    
+    OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z, 0, 0, 0, 0xe0 << 13, &data);
+    __PlaySound(0x9a);
+    __MapActor_SetAnim(id, 3);
+    __Func_8012350();
+}
 INCLUDE_ASM("asm/maps/goma_cave/goma_cave_data.s");

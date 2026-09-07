@@ -110,6 +110,19 @@ asm/maps/common/common2.o: src/maps/common/common2.c
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 
+# The goma_cave overlay TU was compiled WITH -fno-strict-aliasing: the ROM
+# schedule of OvlFunc_906_20084f4 keeps its actor-field stores in source order
+# where type-based alias analysis would lift the sprite load past them, and no
+# natural spelling reproduces that with the flag off. The flag is per-file, NOT
+# global; several other matched TUs (and three no-common map overlays) contain
+# type-based load lifts that require strict aliasing ON. Same per-file override
+# shape as common2.o above. Add more TUs as needed
+GOMA_CAVE_CFLAGS := $(GCC296_CFLAGS) -fno-strict-aliasing
+asm/maps/goma_cave.o: src/maps/goma_cave.c
+	$(GCC296_CC) $(GOMA_CAVE_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+
 # src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
