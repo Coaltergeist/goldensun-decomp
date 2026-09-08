@@ -153,7 +153,19 @@ void OvlFunc_901_2008784(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20087d4.s");
+extern void *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_901_20087d4(void)
+{
+  int flag;
+
+  __MessageID(0x1cbf);
+  ((unsigned char *) __MapActor_GetActor(0xd))[0x5b] = 1;
+  OvlFunc_901_20084b4(0xd);
+  flag = 0;
+  ((unsigned char *) __MapActor_GetActor(0xd))[0x5b] = flag;
+}
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008804.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");

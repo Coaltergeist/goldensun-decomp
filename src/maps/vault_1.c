@@ -478,7 +478,17 @@ void OvlFunc_898_2008e84(void) {
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ea4.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ecc.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ef4.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f3c.s");
+extern unsigned char L2828[] __asm__(".Lm898_2828");
+extern void __Func_8010560(unsigned char *arg0, int arg1, int arg2);
+extern void OvlFunc_898_2008ef4(int, int, int);
+
+void OvlFunc_898_2008f3c(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L2828, 0x38, 0x13);
+  OvlFunc_898_2008ef4(0xcc << 1, 0xa0 << 1, 5);
+}
+
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f64.s");
 
 extern unsigned char L2854[] __asm__(".Lm898_2854");

@@ -500,7 +500,23 @@ void OvlFunc_948_2009198(void)
   __CutsceneWait(1);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20091d8.s");
+extern void __MapActor_SetPos(int, int, int);
+
+static inline void MapActor_SetPos12(int actor, int x, int y)
+{
+  __MapActor_SetPos(actor, x << 12, y << 12);
+}
+
+void OvlFunc_948_20091d8(void)
+{
+  int new_var;
+  int new_var2;
+
+  new_var = 0x19;
+  new_var2 = 0x30;
+  __Func_80105d4(0x18, 0x30, 1, 2, new_var, new_var2);
+  MapActor_SetPos12(0xc, 0x80, 0x80);
+}
 
 void OvlFunc_948_2009204(void)
 {

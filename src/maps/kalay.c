@@ -221,7 +221,21 @@ void OvlFunc_936_2008504(void) {
 }
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008590.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200958c.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095b4.s");
+extern unsigned char iwram_3001ee0[];
+
+void OvlFunc_936_20095b4(void) {
+    unsigned int *r5;
+    int flag = 0x200;
+
+    do { } while (flag == 0);
+
+    if (!__GetFlag(flag)) {
+        r5 = *(unsigned int **)iwram_3001ee0;
+        r5[6] = (unsigned int)__MapActor_GetActor(0);
+        __SetFlag(flag);
+    }
+}
+
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095e0.s");
 
 
@@ -311,7 +325,28 @@ void OvlFunc_936_2009e6c(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ea4.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ed8.s");
+extern int Lm936_5144 __asm__(".Lm936_5144");
+extern void __MapActor_SetSpeed(unsigned int, int, int);
+extern void __StartTask(void *, int);
+extern void OvlFunc_936_2009f14(void);
+
+void OvlFunc_936_2009ed8(void)
+{
+    int speed1 = 0x19999;
+    int speed2 = 0xcccc;
+
+    do {
+        int zero = 0;
+        Lm936_5144 = zero;
+    } while (speed1 == 0);
+    __MapActor_SetSpeed(0x14, speed1, speed2);
+    __MapActor_SetSpeed(0x15, speed1, speed2);
+    {
+        int prio = 0xc8 << 4;
+        __StartTask(OvlFunc_936_2009f14, prio);
+    }
+}
+
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009f14.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a008.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a6c0.s");

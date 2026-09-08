@@ -522,7 +522,15 @@ void OvlFunc_965_2009214(void)
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009238.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009b10.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a46c.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a4b0.s");
+extern void __Func_8010788(int, int, int, int, int, int);
+
+void OvlFunc_965_200a4b0(void)
+{
+    int e = 0x11;
+    int f = 0x4e;
+    __Func_8010788(0x20, 0x4e, 1, 2, e, f);
+}
+
 extern void __SetFlag(int a);
 extern int __GetFlag(int);
 extern void __MapActor_TravelTo(int, int, int);

@@ -26,7 +26,20 @@ unsigned int Lunpa_GetSpecialExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetExits.s");
-INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetActors.s");
+
+extern unsigned char gOvl_02009e14[];
+extern unsigned char Lm939_1f64[] __asm__(".Lm939_1f64");
+
+void *Lunpa_GetActors(void)
+{
+    GlobalState__entr *p = &gState__entr;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_68) goto default_case;
+    if (ev != (int)_EVENT_9f) goto default_case;
+    return (void *)Lm939_1f64;
+default_case:
+    return (void *)gOvl_02009e14;
+}
 
 void OvlFunc_939_20083c0(void)
 {

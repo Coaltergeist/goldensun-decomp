@@ -431,7 +431,16 @@ void OvlFunc_964_2009318(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009348.s");
+void OvlFunc_964_2009348(void) {
+    unsigned int args[3];
+    unsigned char *base;
+
+    base = __MapActor_GetActor(0);
+    args[0] = *(unsigned int *)(base + 8) + 0xffe00000;
+    args[1] = *(unsigned int *)(base + 0xc);
+    args[2] = *(unsigned int *)(base + 0x10);
+    OvlFunc_964_2008cd0(args);
+}
 
 extern void OvlFunc_964_200a410(void);
 

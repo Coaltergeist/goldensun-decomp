@@ -341,7 +341,14 @@ void *ValeCave_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetActors.s");
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008dcc.s");
+
+extern void __Func_80105d4(int, int, int, int, int, int);
+
+void OvlFunc_934_2008dcc(void)
+{
+    __Func_80105d4(0x10, 0xf, 1, 1, 0xf, 0xf);
+}
+
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008de8.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008e04.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008f78.s");

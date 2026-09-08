@@ -68,7 +68,19 @@ void *LaliveroShip_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20080b0.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008100.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008168.s");
+extern int Lm970_17f4[] __asm__(".Lm970_17f4");
+extern int Lm970_17f0[] __asm__(".Lm970_17f0");
+
+void OvlFunc_970_2008168(void)
+{
+    if (++Lm970_17f4[0] == 0x28) {
+        if (Lm970_17f0[0] > 4) {
+            Lm970_17f0[0] -= 1;
+            Lm970_17f4[0] = 0;
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008194.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083c0.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083dc.s");

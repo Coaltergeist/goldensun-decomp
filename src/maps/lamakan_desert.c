@@ -83,7 +83,21 @@ INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009180.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20092fc.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20094b0.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_MapInit.s");
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009874.s");
+extern void __MapActor_SetSpeed(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+
+void OvlFunc_933_2009874(void) {
+    int c_80_8 = 0x80 << 8;
+    int c_80_7 = 0x80 << 7;
+
+    do { } while (c_80_8 == 0);
+
+    __MapActor_SetSpeed(8, c_80_8, c_80_7);
+    __MapActor_SetAnim(8, 1);
+    __MapActor_TravelToAnimWait(8, 0xa8, 0x60);
+    __MapActor_SetAnim(8, 2);
+}
 
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20098a4.s");
 
