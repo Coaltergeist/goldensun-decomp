@@ -191,7 +191,19 @@ void OvlFunc_951_2008e44(int actor, int visible) {
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008e5c.s");
 extern unsigned char Lm951_2070[] __asm__(".Lm951_2070");
 extern unsigned char Lm951_205a[] __asm__(".Lm951_205a");
-extern unsigned char Lm951_20d0[] __asm__(".Lm951_20d0");
+struct Foo {
+    signed int unk_00;
+    signed int unk_04;
+    signed int unk_08;
+    signed short unk_0c;
+    signed short unk_0e;
+    signed short unk_10;
+    signed short unk_12;
+    signed short unk_14;
+    signed short unk_16;
+};
+
+extern struct Foo Lm951_20d0[] __asm__(".Lm951_20d0");
 extern unsigned short Lm951_2062[] __asm__(".Lm951_2062");
 extern unsigned char Lm951_205e[] __asm__(".Lm951_205e");
 extern void OvlFunc_951_2008e5c(void);
@@ -201,26 +213,25 @@ void OvlFunc_951_20096a8(void)
     int i = 0;
     unsigned char *r0 = Lm951_2070;
     unsigned char *r6 = Lm951_205a;
-    unsigned char *r2 = Lm951_20d0;
+    struct Foo *r2 = Lm951_20d0;
     unsigned short *r5 = Lm951_2062;
     unsigned char *r4 = Lm951_205e;
-
-    do {
-        *(int *)r2 = (int)*r6 << 16;
-        *(int *)(r2 + 8) = (int)*r4 << 16;
-        *(int *)(r2 + 4) = 0;
-        *(unsigned short *)(r2 + 0xc) = *r5;
-        *(unsigned short *)(r2 + 0xe) = 0;
-        *(unsigned short *)(r2 + 0x10) = 0;
-        *(unsigned short *)(r2 + 0x12) = 0;
-        *(unsigned short *)(r2 + 0x14) = 0;
+    for (i = 0; i != 4; ++i) {
+        unsigned int tmp;
+        r2->unk_00 = *r6 << 16;
+        r2->unk_08 = *r4 << 16;
+        tmp = *r5;
+        r2->unk_04 = 0;
+        r2->unk_0c = tmp;
+        r2->unk_0e = 0;
+        r2->unk_10 = 0;
+        r2->unk_12 = 0;
+        r2->unk_14 = 0;
         r6++;
         r4++;
         r5++;
-        r2 += 0x18;
-        i++;
-    } while (i != 4);
-
+        r2++;
+    }
     *(int *)(r0 + 4) = 0xffe20000;
     *(int *)(r0 + 8) = 0;
     *(int *)(r0 + 0xc) = 0x640000;
@@ -228,7 +239,6 @@ void OvlFunc_951_20096a8(void)
     *(int *)(r0 + 0x44) = 0;
     *(int *)(r0 + 0x48) = 0;
     *(int *)(r0 + 0x4c) = 0;
-
     __Actor_SetAnim(__MapActor_GetActor(0x14), 2);
     __Actor_SetAnim(__MapActor_GetActor(0x15), 2);
     __StartTask(OvlFunc_951_2008e5c, 0xc83);

@@ -330,13 +330,24 @@ u8 Func_800615c(u16 *arg0) {
     return ewram_2002240.unk_03;
 }
 
+static inline vu16 *ReceiveCopy(u16 *recv) {
+    u64 data;
+    vu16 *sio;
+
+    data = *(volatile u64 *)&REG_SIODATA32;
+    do {
+        sio = (vu16 *)&REG_SIOCNT;
+    } while (0);
+    *(u64 *)recv = data;
+    return sio;
+}
+
 void Func_8006240(void) {
     u16 recv[4];
     s32 i;
     vu16 *sio;
 
-    *(u64 *)recv = *(volatile u64 *)&REG_SIODATA32;
-    sio = (vu16 *)&REG_SIOCNT;
+    sio = ReceiveCopy(recv);
     ewram_2002240.unk_09 = (*(vu32 *)sio << 25) >> 31;
 
     if (ewram_2002240.unk_14 == -1) {

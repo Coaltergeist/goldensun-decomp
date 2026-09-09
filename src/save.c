@@ -29,7 +29,7 @@ struct FlashWork {
     /* 0x40 */ u8  sector[0x10C0];
 };  /* 0x1100 bytes */
 
-extern void *galloc_ewram(s32 index, u32 size);
+extern void *galloc_ewram(s32 index, u32 size) __attribute__((__malloc__));
 extern intrfunc_t *Data_8000864[];
 extern void SetFlashTimerIntr(u32, intrfunc_t **);
 u16 IdentifyFlash(void);
@@ -41,24 +41,25 @@ u32 Func_80056cc(void) {
     struct FlashWork *work;
     struct FlashSectorHeader header;
     u8 *src;
-    u32 i, j;
+    u32 i;
     s32 result;
 
     work = galloc_ewram(0x33, 0x1100);
     DMA3_CLEAR(work, 0x1100);
     SetFlashTimerIntr(2, Data_8000864);
 
-    for (i = 0; ; i++) {
-        if (i > 7)
-            break;
+    for (i = 0; i < 8; i++) {
         if (IdentifyFlash() == 0)
             break;
         WaitFrames(1);
     }
-    if (i > 7)
+
+    if (i > 7) {
         return 1;
+    }
 
     src = work->sector;
+
     for (i = 0; i < 16; i++) {
         work->valid[i] = 0;
         work->slot[i] = 0x10;
@@ -67,20 +68,32 @@ u32 Func_80056cc(void) {
         result = Func_80058ac(i);
         DMA3_COPY(src, &header, sizeof(header));
         WaitForDma3();
-        if (Func_8005c08(&header.magic, sMagic, 7) != 0) continue;
+
+        if (Func_8005c08(header.magic, sMagic, 7) != 0) {
+            continue;
+        }
+
         work->counter[i] = header.counter;
-        if (header.slot > 0xF || result != 0) continue;
+
+        if (header.slot > 0xF || result != 0) {
+            continue;
+        }
+
         work->valid[i] = 1;
         work->slot[i] = header.slot;
-        for (; result < i; result++) {
-            if (work->slot[result] != header.slot) continue;
 
-            if (work->counter[result] < header.counter)
+        for (; result < i; result++) {
+            if (work->slot[result] != header.slot)
+                continue;
+
+            if (work->counter[result] < header.counter) {
                 work->valid[result] = 0;
-            else
+            } else {
                 work->valid[i] = 0;
+            }
         }
     }
+
     return 0;
 }
 
@@ -272,11 +285,21 @@ u32 Func_8005b24(u32 slot) {
     return result;
 }
 
-u32 Func_8005b64(u32 index) {
-    struct FlashWork *ctx = (*((struct FlashWork **)&gPtrs[0x33]));
-    struct FlashSectorHeader header;
+static inline struct FlashWork *PrepareSaveHeader(struct FlashSectorHeader *header) {
+    void **entry;
+    struct FlashWork *ctx;
 
-    DMA3_CLEAR(&header, sizeof(header));
+    entry = &gPtrs[0x33];
+    do {
+        ctx = (struct FlashWork *)*entry;
+    } while (0);
+    DMA3_CLEAR(header, sizeof(*header));
+    return ctx;
+}
+
+u32 Func_8005b64(u32 index) {
+    struct FlashSectorHeader header;
+    struct FlashWork *ctx = PrepareSaveHeader(&header);
     WaitForDma3();
 
     DMA3_COPY(sMagicT, &header, 8);

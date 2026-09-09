@@ -195,45 +195,48 @@ struct Actor {
 
 void OvlFunc_911_200a608(void)
 {
-    /* iwram_3001e40 is a file-scope unsigned int scalar (:174); this fn needs the
-       array view of the same symbol. */
-    extern unsigned char iwram_3001e40__arr[] __asm__("iwram_3001e40");
-    void __PlaySound(int);
-    struct Actor *__CreateActor(int, int, int, int);
-    void __Actor_SetAnim(struct Actor *, int);
-    void __Actor_TravelTo(struct Actor *, int, int, int);
-    void __Actor_SetScript(struct Actor *, ActorCmd *);
+  extern unsigned char iwram_3001e40__arr[] asm("iwram_3001e40");
+  void __PlaySound(int);
+  struct Actor *__CreateActor(int, int, int, int);
+  void __Actor_SetAnim(struct Actor *, int);
+  void __Actor_TravelTo(struct Actor *, int, int, int);
+  void __Actor_SetScript(struct Actor *, ActorCmd *);
+  unsigned int r6;
+  struct Actor *actor;
+  struct Sprite *sprite;
+  int a = 0x620000;
+  int b = 0x690000;
+  int c = ~0xc;
+  int d = 0x10d0000;
 
-    unsigned int r6;
-    struct Actor *actor;
-    struct Sprite *sprite;
-    int a = 0x620000;
-    int b = 0x690000;
-    int c = ~0xc;
-    int d = 0x10d0000;
-
-    do { } while (a == 0);
-
-    r6 = *(unsigned int *)iwram_3001e40__arr & 7;
-    if (r6 == 0) {
-        if (*(unsigned int *)Lm911_36a0 != 0) {
-            __PlaySound(0xc8);
-        }
-        actor = __CreateActor(0x1a, a, 0, b);
-        if (actor != 0) {
-            sprite = actor->sprite;
-            sprite->flags = r6;
-            actor->unk23 &= 0xfe;
-            sprite->attr = (sprite->attr & c) | 4;
-            actor->scaleX = 0x1999;
-            actor->speed = 0x80000;
-            actor->accel = 0x80000;
-            actor->unk55 = r6;
-            __Actor_SetAnim(actor, 2);
-            __Actor_TravelTo(actor, a, 0, d);
-            __Actor_SetScript(actor, gScript_911__0200b5d8);
-        }
+  r6 = (*((unsigned int *) iwram_3001e40__arr)) & 7;
+  if (r6 == 0)
+  {
+    if ((*((unsigned int *) Lm911_36a0)) != 0)
+    {
+      __PlaySound(0xc8);
     }
+    actor = __CreateActor(0x1a, a, 0, b);
+    if (actor != 0)
+    {
+      sprite = actor->sprite;
+      {
+        unsigned char flags[1] = {actor->unk23};
+        sprite->flags = r6;
+        actor->unk23 = flags[0] & 0xfe;
+      }
+      do {
+        sprite->attr = (sprite->attr & c) | 4;
+        actor->scaleX = 0x1999;
+        actor->speed = 0x80000;
+        actor->accel = 0x80000;
+      } while (0);
+      actor->unk55 = r6;
+      __Actor_SetAnim(actor, 2);
+      __Actor_TravelTo(actor, a, 0, d);
+      __Actor_SetScript(actor, gScript_911__0200b5d8);
+    }
+  }
 }
 
 extern int __Func_80929d8(int a, int b);

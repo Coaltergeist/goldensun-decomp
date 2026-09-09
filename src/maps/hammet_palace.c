@@ -388,8 +388,11 @@ void OvlFunc_938_2009494(void)
 
     map_ptr = (char **)iwram_3001ebc;
     emote = 0x80 << 1;
-    *(int *)(*map_ptr + (0xe0 << 1)) = emote;
-    *(int *)(*map_ptr + (0xe4 << 1)) = 0x28;
+    {
+        char *map = *map_ptr;
+        *(int *)(map + (0xe0 << 1)) = emote;
+        *(int *)(map + (0xe4 << 1)) = 0x28;
+    }
     __MapTransitionIn();
 
     __Func_80933d4(sp2, sp3);
@@ -546,8 +549,11 @@ void OvlFunc_938_2009494(void)
     __MapActor_SetBehavior(2, actor_cmd);
     __MapActor_RunScript(3, actor_cmd);
 
-    *(int *)(*(char **)iwram_3001ebc + (0xe4 << 1)) = 0x10;
-    *(int *)(*(char **)iwram_3001ebc + (0xe0 << 1)) = 0x209;
+    {
+        char *map = *(char **)iwram_3001ebc;
+        *(int *)(map + (0xe4 << 1)) = 0x10;
+        *(int *)(map + (0xe0 << 1)) = 0x209;
+    }
     __ClearFlag(fl_12f);
     __SetFlag(fl_914);
     __CutsceneEnd();

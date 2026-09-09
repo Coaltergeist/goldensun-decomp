@@ -207,7 +207,9 @@ int TretTreeExt_MapInit(void)
         unsigned char *r1;
         short v;
 
-        r2 = (unsigned char *)r5[4];
+        do {
+            r2 = (unsigned char *)r5[4];
+        } while (0);
         r1 = r2 + 0x534;
         {
             int c = 0x3f3f;

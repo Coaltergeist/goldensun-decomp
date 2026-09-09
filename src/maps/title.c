@@ -212,13 +212,41 @@ extern void OvlFunc_879_2008238(void);
 #define SetRegAnimDest(queue, dest, src) do { \
     unsigned int savedIme = REG_IME; \
     int count; \
-    unsigned int *task; \
+    unsigned int *task; int slot; \
     SET_IO(REG_IME, REG_ADDR_IME); \
-    count = *(queue); \
+    count = *queue; \
     if (count < 32) { \
-        task = (unsigned int *)((queue) + 2) + count * 3; \
-        *(queue) = count + 1; \
+        do { \
+        slot = count * 12; \
+        count++; \
+        } while (0); \
+        task = (unsigned int *)((char *)queue + slot); \
+        *queue = count; \
+        task++; \
         *task++ = (unsigned int)(src); \
+        *task++ = (unsigned int)(dest); \
+        *task = 0x20000; \
+    } \
+    SET_IO(REG_IME, savedIme); \
+} while (0)
+
+#define SetRegAnimDestWrapped(queue, dest, src) do { \
+    unsigned int savedIme = REG_IME; \
+    int count; \
+    unsigned int *task; int slot; \
+    SET_IO(REG_IME, REG_ADDR_IME); \
+    count = *queue; \
+    if (count < 32) { \
+        do { \
+        slot = count * 12; \
+        count++; \
+        } while (0); \
+        task = (unsigned int *)((char *)queue + slot); \
+        *queue = count; \
+        task++; \
+        do { \
+        *task++ = (unsigned int)(src); \
+        } while (0); \
         *task++ = (unsigned int)(dest); \
         *task = 0x20000; \
     } \
@@ -240,7 +268,7 @@ void OvlFunc_879_20082e8(void) {
     queue = &gDMATaskCount;
     SetRegAnimDest(queue, (void *)(0x80 << 19), (void *)(0xaa << 5));
     SetRegAnimDest(queue, (void *)REG_ADDR_BLDCNT, (void *)0x2fce);
-    SetRegAnimDest(queue, (void *)REG_ADDR_BLDY, (void *)0x10);
+    SetRegAnimDestWrapped(queue, (void *)REG_ADDR_BLDY, (void *)0x10);
     SetRegAnimDest(queue, (void *)REG_ADDR_BLDALPHA, (void *)0x1010);
 
     __CutsceneWait(0x78);

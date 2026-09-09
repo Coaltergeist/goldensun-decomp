@@ -83,7 +83,7 @@ void Func_8012de8(unsigned int arg0, unsigned int arg1)
     for (i = 9; i >= 0; i--) {
         unsigned short *t = *(unsigned short **)(p + off);
         *t = arg1;
-        InitSpriteLayer(*(unsigned int *)(p + off));
+        InitSpriteLayer((unsigned int)t);
         p += 0x38;
     }
 }

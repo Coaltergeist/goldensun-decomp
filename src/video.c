@@ -172,6 +172,18 @@ void Func_8003c3c(u32 arg0) {
     iwram_3001ac0 = iwram_3001c98;
 }
 
+static inline vu8 *PrepareVideoByte(u32 value) {
+    vu8 *q;
+    vu8 *p;
+
+    do {
+        q = &iwram_3001ca8;
+    } while (0);
+    p = &iwram_3001c98;
+    *q = value;
+    return p;
+}
+
 void Func_8003c80(u8 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4) {
     vu8 *r2;
     vu8 *r1;
@@ -182,9 +194,8 @@ void Func_8003c80(u8 arg0, u32 arg1, u32 arg2, u32 arg3, u32 arg4) {
     } else {
         iwram_3001aec = (u8) arg2;
     }
-    iwram_3001ca8 = arg3;
+    r2 = PrepareVideoByte(arg3);
     r1 = &iwram_3001ac0;
-    r2 = &iwram_3001c98;
     *r2 = arg4;
     *r1 = *r2;
 }

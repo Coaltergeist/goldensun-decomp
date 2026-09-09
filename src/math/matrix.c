@@ -54,8 +54,11 @@ static inline u32 FastDivide(u32 a, u32 b) {
 
 void InitMatrixStack(void) {
     register matrix_t *m asm("r3");
-    gMatrixStack = galloc_ewram(2, 48);
+    matrix_t **dest = &gMatrixStack;
+    matrix_t *allocated = galloc_ewram(2, 48);
+
     gMatrixStackSize = 0;
+    *dest = allocated;
     m = &Data_8000ac0;
     MatrixResetRaw(m);
 }

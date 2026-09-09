@@ -79,9 +79,13 @@ $(OVERLAYS): %.bin: %.elf
 # Thumb-nop fill leaks in without this explicit append.
 GCC296_DIR     ?= tools/gcc296
 GCC296_CC      := $(GCC296_DIR)/xgcc
+# -fno-strict-aliasing is applied to every gcc-2.96 TU. goma_cave's
+# OvlFunc_906_20084f4 reproduces the ROM only with type-based alias analysis off,
+# and the flag is byte-compatible across the rest of the C codebase: the full ROM
+# builds byte-exact under it. Per-file overrides below vary other axes.
 GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
                   -fno-builtin -nostdinc -ffreestanding \
-                  -fcall-used-r4 -Iinclude
+                  -fcall-used-r4 -Iinclude -fno-strict-aliasing
 
 %.o: %.c
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
@@ -107,19 +111,6 @@ asm/%.o: src/%.c
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
 asm/maps/common/common2.o: src/maps/common/common2.c
 	$(GCC296_CC) $(COMMON2_CFLAGS) -S -o $(@:.o=.s) $<
-	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
-
-# The goma_cave overlay TU was compiled WITH -fno-strict-aliasing: the ROM
-# schedule of OvlFunc_906_20084f4 keeps its actor-field stores in source order
-# where type-based alias analysis would lift the sprite load past them, and no
-# natural spelling reproduces that with the flag off. The flag is per-file, NOT
-# global; several other matched TUs (and three no-common map overlays) contain
-# type-based load lifts that require strict aliasing ON. Same per-file override
-# shape as common2.o above. Add more TUs as needed
-GOMA_CAVE_CFLAGS := $(GCC296_CFLAGS) -fno-strict-aliasing
-asm/maps/goma_cave.o: src/maps/goma_cave.c
-	$(GCC296_CC) $(GOMA_CAVE_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
 

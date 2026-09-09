@@ -106,8 +106,14 @@ extern signed char Lc2a62[] __asm__(".Lc2a62");
 
 void Func_80b7410(int idx, int *out1, int *out2)
 {
-    *out1 = Lc2a62[idx * 2];
-    *out2 = Lc2a62[idx * 2 + 1];
+    int off = idx * 2;
+    int value = Lc2a62[off];
+
+    do {
+        off++;
+        *out1 = value;
+    } while (0);
+    *out2 = Lc2a62[off];
 }
 
 INCLUDE_ASM("asm/battle/battle/Func_80b7424.s");
