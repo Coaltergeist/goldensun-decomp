@@ -226,10 +226,6 @@ eaa:
         }
     }
 }
-/* PROBE: 2008ef8 best near-miss (base_14.c, diff=8) + COMPLETE prototypes.
-   Tests §2.4/§2.5-caveat: whole-function arg-order should collapse the
-   4-site r0-position residual once every callee has a full prototype.
-   Body is base_14.c verbatim; only the three prototypes are added. */
 int  __Random(void);
 void __PlaySound(int sound);
 void __CopyMapTiles(int a, int b, int c, int d, int e, int f);

@@ -88,3 +88,13 @@ This project builds on substantial prior work by others:
 - **The decomp community at large:** sm64, oot, mm, the [pret](https://github.com/pret) Pokémon family, [zeldaret](https://github.com/zeldaret), [SAT-R](https://github.com/SAT-R), and many others have collectively built the body of techniques this project relies on.
 
 If you've contributed and aren't listed here, please open an issue.
+
+Component attribution and notice locations: [ATTRIBUTION.md](ATTRIBUTION.md).
+
+## Repository checks
+
+The workflow checks tracked source/INCLUDE_ASM paths, registry definitions, original-function identity uniqueness and the public Python tests.
+The GitHub workflow uses Ubuntu 22.04 and requires no game ROM or repository
+secrets. A successful run does not certify game byte matching or source semantics.
+Full-game contributions still require the fresh serial ROM/all-overlay gate and
+source review. New fakematches are not accepted.

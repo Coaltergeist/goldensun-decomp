@@ -1,3 +1,6 @@
+@ Historical SA2 assembly reference; not an input to the Golden Sun build.
+@ Upstream include paths are retained. See src/lib/m4a/README.md.
+
 	.include "asm/macros.inc"
 	.include "constants/gba_constants.inc"
 	.include "constants/m4a_constants.inc"

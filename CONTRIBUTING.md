@@ -59,3 +59,14 @@ concern. Review callers when changing shared macros or inline helpers. Remove a
 registry row only after its specific concern is resolved; a byte match alone
 cannot clear a semantic concern. Correcting an overlooked concern in existing
 code is still appropriate accounting, not an exception for new fakematches.
+
+The ROM-free repository checks run in CI and can also be run locally:
+
+```sh
+python3 tools/check_repository.py 2>&1 | tee output.txt
+python3 -m unittest discover -s tools/tests -v 2>&1 | tee -a output.txt
+```
+
+These checks validate structure and tooling, not complete scaffold detection or
+game output. The fresh full comparison and semantic source review remain required.
+See [ATTRIBUTION.md](ATTRIBUTION.md) for existing credits and component notices.
