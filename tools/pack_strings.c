@@ -1,6 +1,5 @@
 #define _GNU_SOURCE
 
-#include <assert.h>
 #include <limits.h>
 #include <stdarg.h>
 #include <stdbool.h>
@@ -9,6 +8,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
+/* These checks include I/O and must remain active in release builds. */
+#define CHECK(condition) do { \
+	if (!(condition)) { \
+		fprintf(stderr, "%s:%d: %s failed\n", __FILE__, __LINE__, #condition); \
+		exit(EXIT_FAILURE); \
+	} \
+} while (0)
 
 #define NUM_CHARS (1 << 8)
 #define NUM_NODES (2 * NUM_CHARS)
@@ -50,7 +57,7 @@ static FILE *open_input_file(void) {
 	if (input_path == NULL) return stdin;
 
 	FILE *fp;
-	assert((fp = fopen(input_path, "rb")) != NULL);
+	CHECK((fp = fopen(input_path, "rb")) != NULL);
 	return fp;
 }
 
@@ -58,11 +65,11 @@ static FILE *open_output_file(const char *template, ...) {
 	char *path;
 	va_list args;
 	va_start(args, template);
-	assert(vasprintf(&path, template, args) != -1);
+	CHECK(vasprintf(&path, template, args) != -1);
 	va_end(args);
 
 	FILE *fp;
-	assert((fp = fopen(path, "wb")) != NULL);
+	CHECK((fp = fopen(path, "wb")) != NULL);
 	free(path);
 	return fp;
 }
@@ -72,21 +79,21 @@ static void read_strings(FILE *fp) {
 
 	unsigned nchars = 0;
 	int c;
-	char chr;
+	char chr = '\0';
 
 	while ((c = fgetc(fp)) != EOF) {
-		assert(c >= 0 && c <= CHAR_MAX);
+		CHECK(c >= 0 && c <= CHAR_MAX);
 		chr = c;
 
 		if (nchars == text_len) {
 			text_len += 4096;
 			text = realloc(text, text_len);
-			assert(text != NULL);
+			CHECK(text != NULL);
 		}
 
 		if (chr == '\\') {
-			assert((c = fgetc(fp)) == 'x');
-			assert(fscanf(fp, "%02hhx", &chr) == 1);
+			CHECK((c = fgetc(fp)) == 'x');
+			CHECK(fscanf(fp, "%02hhx", &chr) == 1);
 		} else if (chr == '\n') {
 			chr = '\0';
 			nstrings++;
@@ -95,7 +102,10 @@ static void read_strings(FILE *fp) {
 		text[nchars++] = chr;
 	}
 
+	CHECK(!ferror(fp));
 	if (chr != '\0') {
+		text = realloc(text, nchars + 1);
+		CHECK(text != NULL);
 		text[nchars++] = '\0';
 		nstrings++;
 	}
@@ -161,7 +171,7 @@ static bool sorted(const struct node *n1, const struct node *n2) {
 }
 
 static void queue_push(struct queue *queue, struct node *node) {
-	assert(queue->len < NUM_NODES);
+	CHECK(queue->len < NUM_NODES);
 
 	/* find insertion point */
 	unsigned pos;
@@ -260,7 +270,7 @@ static void bit_writer_init(struct bit_writer *writer, uint8_t *buf, unsigned bu
 
 static void bit_writer_flush(struct bit_writer *writer) {
 	if (writer->bits_pending) {
-		assert(writer->bytes_written < writer->buflen);
+		CHECK(writer->bytes_written < writer->buflen);
 		writer->buf[writer->bytes_written++] = writer->bits;
 		writer->bits = 0;
 		writer->bits_pending = 0;
@@ -339,13 +349,13 @@ static void serialize_tree(const struct tree *tree, struct serialized_tree *seri
 
 static void write_offsets(uint16_t offsets[ITEMS_PER_FILE], unsigned count) {
 	FILE *fp = open_output_file("huffman_tree_offsets.bin");
-	assert(fwrite(offsets, sizeof(uint16_t), count, fp) == count);
-	assert(fclose(fp) == 0);
+	CHECK(fwrite(offsets, sizeof(uint16_t), count, fp) == count);
+	CHECK(fclose(fp) == 0);
 }
 
 static void write_trees(void) {
 	/* TODO: support 12-bit chars; write trees to multiple files, 256 per */
-	assert(ntrees <= ITEMS_PER_FILE);
+	CHECK(ntrees <= ITEMS_PER_FILE);
 
 	FILE *fp = open_output_file("huffman_trees.bin");
 	uint16_t offsets[ITEMS_PER_FILE];
@@ -360,11 +370,11 @@ static void write_trees(void) {
 		offsets[i] = serialized.leaf_array_len ? pos : 0x8000;
 		pos += serialized.topology_len;
 
-		assert(fwrite(serialized.leaf_array, 1, serialized.leaf_array_len, fp) == serialized.leaf_array_len);
-		assert(fwrite(serialized.topology, 1, serialized.topology_len, fp) == serialized.topology_len);
+		CHECK(fwrite(serialized.leaf_array, 1, serialized.leaf_array_len, fp) == serialized.leaf_array_len);
+		CHECK(fwrite(serialized.topology, 1, serialized.topology_len, fp) == serialized.topology_len);
 	}
 
-	assert(fclose(fp) == 0);
+	CHECK(fclose(fp) == 0);
 
 	write_offsets(offsets, ntrees);
 }
@@ -375,7 +385,7 @@ static void compress_char(uint8_t prev_chr, uint8_t next_chr, struct bit_writer 
 	/* start at the leaf node that holds next_chr */
 	const struct tree *tree = &trees[prev_chr];
 	const struct node *node = &tree->nodes[next_chr];
-	assert(node->chr == next_chr);
+	CHECK(node->chr == next_chr);
 
 	/* store bits into array from leaf to root */
 	unsigned pos = 0;
@@ -383,7 +393,7 @@ static void compress_char(uint8_t prev_chr, uint8_t next_chr, struct bit_writer 
 
 	/* the leaf node can itself be the root (if there is only one output char) */
 	while ((parent = node->parent) != NULL) {
-		assert(pos < sizeof(char_bits));
+		CHECK(pos < sizeof(char_bits));
 		/* write 0 if node is parent's left child, 1 if right */
 		char_bits[pos++] = (node == parent->children[1]);
 		node = parent;
@@ -406,7 +416,7 @@ static unsigned compress_string(const uint8_t **ptr, FILE *fp) {
 	const uint8_t *my_p = *ptr;
 
 	do {
-		assert(my_p < (text + text_len));
+		CHECK(my_p < (text + text_len));
 		uint8_t next_chr = *(my_p++);
 		compress_char(prev_chr, next_chr, &bit_writer);
 		prev_chr = next_chr;
@@ -415,7 +425,7 @@ static unsigned compress_string(const uint8_t **ptr, FILE *fp) {
 	bit_writer_flush(&bit_writer);
 
 	unsigned count = bit_writer.bytes_written;
-	assert(fwrite(compressed, 1, count, fp) == count);
+	CHECK(fwrite(compressed, 1, count, fp) == count);
 
 	*ptr = my_p;
 	return count;
@@ -427,11 +437,11 @@ static void write_string_lengths(uint16_t lengths[ITEMS_PER_FILE], unsigned file
 
 	for (unsigned i = 0; i < count; i++) {
 		unsigned length = lengths[i];
-		assert(length < 255);
-		fputc(length, fp);
+		CHECK(length < 255);
+		CHECK(fputc(length, fp) != EOF);
 	}
 
-	assert(fclose(fp) == 0);
+	CHECK(fclose(fp) == 0);
 }
 
 static void compress_strings_chunk(const uint8_t **ptr, unsigned file_id, unsigned count) {
@@ -442,7 +452,7 @@ static void compress_strings_chunk(const uint8_t **ptr, unsigned file_id, unsign
 		lengths[i] = compress_string(ptr, fp);
 	}
 
-	assert(fclose(fp) == 0);
+	CHECK(fclose(fp) == 0);
 
 	write_string_lengths(lengths, file_id, count);
 }
@@ -506,7 +516,7 @@ static void write_asm(const char *progname) {
 	}
 	fprintf(fp, "\t.size\tStringPointers, . - StringPointers\n\n");
 
-	assert(fclose(fp) == 0);
+	CHECK(fclose(fp) == 0);
 }
 
 int main(int argc, char *argv[]) {
@@ -518,7 +528,7 @@ int main(int argc, char *argv[]) {
 
 	FILE *input_file = open_input_file();
 	read_strings(input_file);
-	fclose(input_file);
+	CHECK(fclose(input_file) == 0);
 
 	if (output_path != NULL) {
 		if (chdir(output_path) != 0) {

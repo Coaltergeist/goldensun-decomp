@@ -273,3 +273,9 @@ overlays/rom_%/orig.bin: baserom.gba tools/unpack_overlay
 
 clean::
 	-$(RM) $(addsuffix orig.bin,$(OVERLAY_DIRS))
+
+# Machine-readable compilation settings for external comparison tools.
+# SOURCE is the original src/... C path, even when compiling a scratch copy.
+.PHONY: print-compile-contract
+print-compile-contract:
+	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS))' '$(AGBCC_DIR)/bin/old_agbcc' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'
