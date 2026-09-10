@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7ca63c (overlay file 944): consolidated TU — tolbi_bound_ship_top map overlay. */
 
 #include "nonmatching.h"
@@ -242,10 +241,6 @@ extern void OvlFunc_944_20084b0(void);
 
 void OvlFunc_944_200840c(void)
 {
-  int d;
-  int e;
-  int f;
-  unsigned int g;
   unsigned int a;
   unsigned int b;
   unsigned int h;
@@ -255,17 +250,7 @@ void OvlFunc_944_200840c(void)
 
   __CutsceneStart();
 
-  d = 1;
-  __asm__ volatile ("" : "+r" (d));
-  e = 1;
-  __asm__ volatile ("" : "+r" (e));
-  f = 1;
-  __asm__ volatile ("" : "+r" (f));
-  e = -e;
-  f = -f;
-  g = 0;
-  d = -d;
-  __Func_80933f8(d, e, f, g);
+  Func_80933f8(1, 1, 1, 0);
 
   __WaitFrames(1);
 

@@ -1,4 +1,3 @@
-// fakematch
 /* rom_798dc4 (overlay file 903): consolidated TU — goma_cave_entry map overlay. */
 
 #include "nonmatching.h"
@@ -116,13 +115,15 @@ void OvlFunc_903_2008db8(unsigned char *arg0, int arg1) {
 
 INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008dd8.s");
 
-void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1in)
+void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1)
 {
-    register unsigned int arg1 __asm__("r8") = arg1in;
+    extern unsigned char *__GetUnit(unsigned int unit);
+    extern int __GiveItemTo(unsigned int unit, unsigned int item);
+    extern int __EquipItem(unsigned int unit, unsigned int slot);
     unsigned short *unit;
     int i;
 
-    unit = (unsigned short *)__GetUnit(arg0, arg1);
+    unit = (unsigned short *)__GetUnit(arg0);
     __GiveItemTo(arg0, arg1);
     i = 0;
     unit = (unsigned short *)((char *)unit + 0xd8);

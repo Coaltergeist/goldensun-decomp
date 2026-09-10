@@ -882,6 +882,11 @@ void OvlFunc_959_2009ca4(unsigned int arg0)
     __ActorMessage(arg0, 0);
 }
 
+static inline void ShowActorEmote(unsigned int actor, unsigned int emote, unsigned int frames)
+{
+    __MapActor_Emote(actor, emote, frames);
+}
+
 void OvlFunc_959_2009cf0(unsigned int actor)
 {
     unsigned int msg = 0x2424;
@@ -894,10 +899,10 @@ void OvlFunc_959_2009cf0(unsigned int actor)
     __ActorMessage(actor, z);
     __CutsceneWait(0x78);
     {
-        register unsigned int p2 __asm__("r2") = 0x3c;
-        register unsigned int p0 __asm__("r0") = actor;
-        __asm__ volatile ("" : : "r" (p2), "r" (p0));
-        __MapActor_Emote(p0, 0x101, p2);
+        unsigned int frames = 0x3c;
+        unsigned int actorId = actor;
+
+        ShowActorEmote(actorId, 0x101, frames);
     }
     __MessageID(msg+1);
     __ActorMessage(actor, 0);

@@ -1,4 +1,3 @@
-// fakematch
 /* ui/text.c -- consolidated TU. */
 #include "nonmatching.h"
 
@@ -223,7 +222,7 @@ int Func_801fb48(void) {
     a = 8;
     b = 0xc;
     c = 2;
-    __asm__ volatile ("" : : "r"(a), "r"(b), "r"(c));
+
     Func_8017658((int)&_MSG_14, a, b, c);
     while (Func_8017364() == 0) {
         WaitFrames(1);

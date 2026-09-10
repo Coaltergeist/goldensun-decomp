@@ -603,7 +603,7 @@ void OvlFunc_899_200aba0(void)
     r8 = __MapActor_GetActor(0x19);
     r3 = *(int *)((char *)r5 + 0x10);
     *(short *)((char *)r5 + 6) = __atan2(*(int *)((char *)r6 + 0x10) - r3, *(int *)((char *)r6 + 8) - *(int *)((char *)r5 + 8));
-    __asm__ volatile ("" ::: "memory");
+
     r3 = *(int *)((char *)r8 + 0x10);
     *(short *)((char *)r8 + 6) = __atan2(*(int *)((char *)r6 + 0x10) - r3, *(int *)((char *)r6 + 8) - *(int *)((char *)r8 + 8));
 }

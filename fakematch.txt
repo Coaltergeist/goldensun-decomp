@@ -12,38 +12,28 @@ SetFlagNybble src/flags.c
 ToggleFlag src/flags.c
 WaitFrames src/intr/intr.c
 Func_80f40b4 src/lucky_dice.c
-LoadMapCode src/main.c
 OvlFunc_908_20083f4 src/maps/bilibin_rooms.c
-OvlFunc_common1_850 src/maps/common/common1.c
-OvlFunc_903_2008f8c src/maps/goma_cave_entry.c
 OvlFunc_958_2009080 src/maps/gondowan.c
 OvlFunc_917_2008088 src/maps/kolima_forest_5.c
 OvlFunc_971_20082d8 src/maps/link_lobby.c
 OvlFunc_971_20090e8 src/maps/link_lobby.c
 OvlFunc_951_2008104 src/maps/lucky_fountain.c
-OvlFunc_939_20089d4 src/maps/lunpa.c
 OvlFunc_939_2008a90 src/maps/lunpa.c # Non-asm scheduler shaping: artificial 64-bit temporary and do/while truncation.
 OvlFunc_959_200969c src/maps/lunpa_fortress.c
 OvlFunc_959_200975c src/maps/lunpa_fortress.c
 OvlFunc_959_20097bc src/maps/lunpa_fortress.c
 OvlFunc_959_2009c4c src/maps/lunpa_fortress.c
-OvlFunc_959_2009cf0 src/maps/lunpa_fortress.c
 OvlFunc_909_20082cc src/maps/mccoys_palace.c # Non-asm scheduler shaping: artificial 64-bit temporary and do/while truncation.
 OvlFunc_925_200aeb8 src/maps/mercury_lighthouse_aerie.c
 OvlFunc_923_20088ec src/maps/mercury_lighthouse_entrance.c
 OvlFunc_890_2008d9c src/maps/sol_sanctum_1.c
-OvlFunc_944_200840c src/maps/tolbi_bound_ship_top.c
 OvlFunc_919_200805c src/maps/tret_tree_ext.c
 OvlFunc_883_200da40 src/maps/vale_river.c
-OvlFunc_882_200810c src/maps/vale_river_prologue.c
-OvlFunc_882_2008134 src/maps/vale_river_prologue.c
-OvlFunc_882_2008198 src/maps/vale_river_prologue.c
 OvlFunc_882_2008398 src/maps/vale_river_prologue.c
 OvlFunc_882_20083cc src/maps/vale_river_prologue.c
 OvlFunc_882_2008400 src/maps/vale_river_prologue.c
 OvlFunc_882_2008ec4 src/maps/vale_river_prologue.c
 OvlFunc_899_200882c src/maps/vault_rooms_1.c
-OvlFunc_899_200aba0 src/maps/vault_rooms_1.c
 OvlFunc_941_20081b0 src/maps/west_lunpa_cave.c
 OvlFunc_881_20097a4 src/maps/world_map_cutscenes.c
 InitMatrixStack src/math/matrix.c
@@ -55,7 +45,6 @@ MatrixScalev src/math/matrix.c
 MatrixTranslatev src/math/matrix.c
 MatrixYaw src/math/matrix.c
 Func_80c91a4 src/render/window_effect.c
-Func_807a628 src/rpg/pc.c
 SomethingSaveHeader src/save.c
 Func_8005ee0 src/serial.c
 Func_8005fcc src/serial.c
@@ -66,9 +55,7 @@ Func_80dbb9c src/sprite/summon.c
 RunTasks src/task.c
 Func_80a8904 src/ui/party_menu.c
 LoadUIHandCursorGFX src/ui/party_menu.c
-Func_80215e0 src/ui/save_menu.c
 Func_80b3210 src/ui/shop.c # Legacy non-asm entry: no pin/barrier remains; semantic/source-provenance review pending. Retained conservatively.
-Func_801fb48 src/ui/text.c
 Func_800383c src/video.c
 Func_80038bc src/video.c
 Func_80038fc src/video.c

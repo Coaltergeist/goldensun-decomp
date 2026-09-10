@@ -1,4 +1,3 @@
-// fakematch
 /* common1: consolidated shared-overlay TU (linked by the 3 overlays that reference it). */
 
 #include "nonmatching.h"
@@ -289,13 +288,15 @@ INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_4cc.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_588.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_5e4.s");
 
-void OvlFunc_common1_850(unsigned int arg0, unsigned int arg1in)
+void OvlFunc_common1_850(unsigned int arg0, unsigned int arg1)
 {
-    register unsigned int arg1 __asm__("r8") = arg1in;
+    extern unsigned char *__GetUnit(unsigned int unit);
+    extern int __GiveItemTo(unsigned int unit, unsigned int item);
+    extern int __EquipItem(unsigned int unit, unsigned int slot);
     unsigned short *unit;
     int i;
 
-    unit = (unsigned short *)__GetUnit(arg0, arg1);
+    unit = (unsigned short *)__GetUnit(arg0);
     __GiveItemTo(arg0, arg1);
     i = 0;
     unit = (unsigned short *)((char *)unit + 0xd8);

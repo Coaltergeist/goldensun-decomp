@@ -181,18 +181,18 @@ INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079f10.s", ".text.rpg_pc_3");
 
 SECTION(".text.rpg_pc_4");
 
-// fakematch
 /* rpg/give_item.c -- give item to a party member (equip + stat/flag update). */
 #include "nonmatching.h"
 
-void Func_807a628(unsigned int arg0, unsigned int arg1in)
+void Func_807a628(unsigned int arg0, unsigned int arg1)
 {
-    register unsigned int arg1 __asm__("r8") = arg1in;
+    extern int GiveItemTo(unsigned int unit, unsigned int item);
+    extern int EquipItem(unsigned int unit, unsigned int slot);
     unsigned short *unit;
     int i;
-    extern unsigned char *GetUnit_2() __asm__("GetUnit");
+    extern unsigned char *GetUnit_2(unsigned int unit) __asm__("GetUnit");
 
-    unit = (unsigned short *)GetUnit_2(arg0, arg1);
+    unit = (unsigned short *)GetUnit_2(arg0);
     GiveItemTo(arg0, arg1);
     i = 0;
     unit = (unsigned short *)((char *)unit + 0xd8);

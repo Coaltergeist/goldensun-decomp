@@ -96,7 +96,6 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8021390.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8021488.s");
 
-// fakematch
 void Func_80215e0(int param_1, unsigned int param_2)
 {
     unsigned char *gfx;
@@ -106,10 +105,12 @@ void Func_80215e0(int param_1, unsigned int param_2)
     gfx = galloc_ewram(0xe, 0x400);
     src = Data_31864[param_1];
     if ((int)param_2 < 0x60) {
-        DecompressLZ1(src, gfx);
-        size = 0x80;
-        size <<= 2;
-        __asm__ volatile ("" : "+r" (size));
+        do {
+            DecompressLZ1(src, gfx);
+            size = 0x80;
+            size <<= 2;
+        } while (0);
+
         UploadSpriteGFX(param_2, size, gfx);
         gfree(0xe);
     }

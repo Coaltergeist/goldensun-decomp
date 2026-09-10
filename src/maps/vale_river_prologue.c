@@ -40,25 +40,25 @@ extern void __Func_8010704(int a, int b, int c, int d, int e, int f);
 
 void OvlFunc_882_200810c(void)
 {
-    register int a __asm__("r3");
-    register int b __asm__("r2");
+    int a;
+    int b;
 
     __SetFlag(0x84 << 2);
     a = 0xa;
     b = 0x54;
-    __asm__ ("" : "+r" (a), "+r" (b));
+
     __Func_8010704(0x28, 0x54, 7, 4, a, b);
 }
 
 void OvlFunc_882_2008134(void)
 {
-    register int a __asm__("r3");
-    register int b __asm__("r2");
+    int a;
+    int b;
 
     __ClearFlag(0x84 << 2);
     a = 0xa;
     b = 0x54;
-    __asm__ ("" : "+r" (a), "+r" (b));
+
     __Func_8010704(0x28, 0x59, 7, 4, a, b);
 }
 
@@ -85,27 +85,29 @@ extern unsigned char L5774[] __asm__(".Lm882_5774");
 
 void OvlFunc_882_2008198(void)
 {
-    register int zero __asm__("r0");
-    register int x __asm__("r1");
-    register int y __asm__("r2");
+    int zero;
+    int x;
+    int y;
 
-    __PlaySound(0x9e);
+    do {
+        __PlaySound(0x9e);
+    } while (0);
     {
-        register unsigned char *script __asm__("r0");
-        register int a __asm__("r1");
-        register int b __asm__("r2");
+        unsigned char *script;
+        int a;
+        int b;
 
         script = L5774;
         a = 0x2d;
         b = 0xb;
-        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
+
         __Func_8010560(script, a, b);
     }
     y = 0xd2;
     x = 0x101;
     y <<= 1;
     zero = 0;
-    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
+
     __MapActor_TravelToAnim(zero, x, y);
     __CutsceneWait(3);
     OvlFunc_882_200815c(0xb);

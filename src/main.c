@@ -1,4 +1,3 @@
-// fakematch
 /* main.c -- consolidated TU. */
 #include "nonmatching.h"
 
@@ -128,11 +127,10 @@ extern void free(void *mem);
 void LoadMapCode(int file, void *dst) {
     void *src = GetFile(file);
     void (*func)(unsigned short *, int);
-    unsigned decompressedSize = DecompressLZ(src, dst);
-
-    // FAKE MATCH, the compiler wants to load _FIXUP_RAM_CODE_SIZE from the
-    // literal pool before saving decompressedSize
-    __asm__ volatile("");
+    unsigned decompressedSize;
+    do {
+        decompressedSize = DecompressLZ(src, dst);
+    } while (0);
 
     func = alloc_iwram((int)&_FIXUP_RAM_CODE_SIZE);
     DMA3_COPY(FixupRamCode_ROM, func, (int)&_FIXUP_RAM_CODE_SIZE);
