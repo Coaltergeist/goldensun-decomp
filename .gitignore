@@ -68,3 +68,6 @@ data/strings/
 
 # m4a/Sappy
 src/lib/m4a/m4a.s
+
+# Build command/tool fingerprints
+.build/

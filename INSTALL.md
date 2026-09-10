@@ -120,3 +120,13 @@ Pull may have introduced new `.c` files alongside removed `.s` files. Run `make 
 ```bash
 make clean && make
 ```
+
+## Incremental build dependencies
+
+The build records target C headers and assembler include/incbin inputs, follows
+recursive linker `INCLUDE` files, and fingerprints installed compiler/binutils
+contents and command settings. Changing these inputs invalidates the affected
+objects or links. Fingerprints live in ignored `.build/`; `make clean` removes them.
+The legacy compiler's generated `.s` files never take precedence over their C source.
+Use serial `make compare` to check both the ROM and every overlay. A fresh
+`make clean && make compare` remains the final gate for landing source conversions.

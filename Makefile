@@ -27,16 +27,17 @@ clean::
 
 ARM_LDFLAGS :=
 ARM_LDLIBS :=
+LINK_BASE_FLAGS := $(ARM_LDFLAGS) $(ARM_LDLIBS)
 
 # Partially linked relocatable object
 STAGE1 := stage1.o
 $(STAGE1): %.o: %.ld
-$(STAGE1): ARM_LDFLAGS += -r
+$(STAGE1): private ARM_LDFLAGS += -r
 
 # Overlays reference symbols defined in main code
 OVERLAY_ELFS := $(OVERLAYS:.bin=.elf)
 $(OVERLAY_ELFS): %.elf: %.ld $(STAGE1)
-$(OVERLAY_ELFS): ARM_LDLIBS += -R $(STAGE1)
+$(OVERLAY_ELFS): private ARM_LDLIBS += -R $(STAGE1)
 
 # Final fully linked executable
 ELF := $(ROM:.gba=.elf)
@@ -47,12 +48,24 @@ ELFS := $(STAGE1) $(ELF) $(OVERLAY_ELFS)
 $(ELFS):
 	arm-none-eabi-ld $(ARM_LDFLAGS) -T $< $(ARM_LDLIBS) -Map $(<:.ld=.map) -o $@
 
-# Read dependencies from the linker scripts
-define elf_deps
-$(1): $(shell grep -o '[A-Za-z0-9/_-]\+\.o' $(addsuffix .ld,$(basename $(1))))
-endef
-$(foreach elf,$(ELFS),$(eval $(call elf_deps,$(elf))))
+# Include recursive linker-script inputs as well as explicitly linked objects.
+# Querying compiler settings and cleaning do not need a configured build tree.
+ifneq ($(filter-out clean print-compile-contract,$(MAKECMDGOALS)),)
+READ_BUILD_DEPS := 1
+else ifeq ($(MAKECMDGOALS),)
+READ_BUILD_DEPS := 1
+endif
+ifeq ($(READ_BUILD_DEPS),1)
+define newline
 
+
+endef
+LINK_DEP_RULES := $(shell python3 tools/build_deps.py linker $(ELFS))
+ifneq ($(.SHELLSTATUS),0)
+$(error Failed to read linker dependencies)
+endif
+$(eval $(subst |,$(newline),$(LINK_DEP_RULES)))
+endif
 
 # Convert executables to free-standing binaries
 $(ROM) $(OVERLAYS):
@@ -63,13 +76,9 @@ $(ROM): %.gba: %.elf
 $(OVERLAYS): %.bin: %.elf
 
 
-# Assemble ARM code and generate dependencies
-%.o: %.s
-	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -MD $(@:.o=.d) -o $@ $<
-
 # Compile target C with the patched gcc-2.96 build from the camelot-gcc
-# submodule (install via camelot-gcc/install-296.sh). Produces byte-identical
-# output to Camelot's original compiler (see compiler.md).
+# submodule (install via camelot-gcc/install.sh). Produces byte-identical
+# output for the reconstructed sources (see INSTALL.md).
 # Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
 # Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
 # NOT needed under gcc-2.96; the compiler naturally avoids r7 for the same
@@ -87,20 +96,24 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
                   -fno-builtin -nostdinc -ffreestanding \
                   -fcall-used-r4 -Iinclude -fno-strict-aliasing
 
-%.o: %.c
+%.o: %.c .build/gcc296.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ $(GCC296_CC) $(GCC296_CFLAGS) -M $<
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
 # Cross-dir rule: build asm/<path>/X.o from src/<path>/X.c. Load-bearing for the
 # consolidated map overlays: each overlays/rom_*/overlay.ld references
 # asm/maps/<name>.o, whose matched-C source-of-truth lives at src/maps/<name>.c.
 # Generates asm/<path>/X.s as a build intermediate alongside the .o.
-asm/%.o: src/%.c
+asm/%.o: src/%.c .build/gcc296.stamp .build/binutils.stamp
 	mkdir -p $(dir $@)
+	python3 tools/build_deps.py c $@ $(GCC296_CC) $(GCC296_CFLAGS) -M $<
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
 # The common2 shared object was compiled WITHOUT -mthumb-interwork in the original
 # ROM: its common2_c* functions return `pop {pc}` (the non-interwork epilogue),
@@ -109,10 +122,12 @@ asm/%.o: src/%.c
 # verified), so the whole common2.c compiles non-interwork. Mirrors the
 # src/lib/m4a/%.o per-file override precedent below.
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
-asm/maps/common/common2.o: src/maps/common/common2.c
+asm/maps/common/common2.o: src/maps/common/common2.c .build/gcc296.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ $(GCC296_CC) $(COMMON2_CFLAGS) -M $<
 	$(GCC296_CC) $(COMMON2_CFLAGS) -S -o $(@:.o=.s) $<
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
 # src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
@@ -123,11 +138,13 @@ AGBCC_DIR     ?= tools/agbcc
 M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
 M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2
 
-src/lib/m4a/%.o: src/lib/m4a/%.c
+src/lib/m4a/%.o: src/lib/m4a/%.c .build/agbcc.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ gcc $(M4A_CPPFLAGS) -M $<
 	gcc -E $(M4A_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(M4A_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
 # src/lib/agb_flash/ is the launch-SDK "Flash v123" save library. Like m4a it is a
 # prebuilt Nintendo lib (old_agbcc, stock r4-callee-save ABI); but -O not -O2, and
@@ -136,23 +153,35 @@ src/lib/m4a/%.o: src/lib/m4a/%.c
 AGBFLASH_CPPFLAGS := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1
 AGBFLASH_CC1FLAGS := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O
 
-src/lib/agb_flash/agb_flash.o: src/lib/agb_flash/agb_flash.c
+src/lib/agb_flash/agb_flash.o: src/lib/agb_flash/agb_flash.c .build/agbcc.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ gcc $(AGBFLASH_CPPFLAGS) -M $<
 	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
-src/lib/agb_flash/agb_flash_mx.o: src/lib/agb_flash/agb_flash_mx.c
+src/lib/agb_flash/agb_flash_mx.o: src/lib/agb_flash/agb_flash_mx.c .build/agbcc.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ gcc $(AGBFLASH_CPPFLAGS) -M $<
 	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
 
-src/lib/agb_flash/agb_flash_at.o: src/lib/agb_flash/agb_flash_at.c
+src/lib/agb_flash/agb_flash_at.o: src/lib/agb_flash/agb_flash_at.c .build/agbcc.stamp .build/binutils.stamp
+	python3 tools/build_deps.py c $@ gcc $(AGBFLASH_CPPFLAGS) -M $<
 	gcc -E $(AGBFLASH_CPPFLAGS) $< -o $(@:.o=.i)
 	$(AGBCC_DIR)/bin/old_agbcc $(AGBFLASH_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
 	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
-	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -o $@ $(@:.o=.s)
+	arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
+# Assemble ARM code and generate dependencies
+%.o: %.s .build/binutils.stamp
+	arm-none-eabi-as -mcpu=arm7tdmi -Iinclude -MD $(@:.o=.d) -o $@ $<
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
 
 # src/lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
 C_SRCS  := $(filter-out src/lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
@@ -160,12 +189,11 @@ C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
 C_GEN_I := $(C_SRCS:.c=.i)
 
-# Read additional dependencies (besides .o => .s) from .d files
-# generated by the assembler.
-SRCS := $(wildcard *.s */*.s */*/*.s)
-DEPS := $(SRCS:.s=.d)
+# Both compiler and assembler dependencies, at arbitrary source depth.
+ifeq ($(READ_BUILD_DEPS),1)
+DEPS := $(shell find asm src data exports overlays -name '*.d' -type f 2>/dev/null)
 -include $(DEPS)
-
+endif
 
 # Clean target.
 #
@@ -204,7 +232,7 @@ CFLAGS ?= -O2 -Wall
 # Host tool build; explicit rules so they override the generic %.o:%.c
 # (which points at the gcc-2.96 target pipeline above). The tools/ prefix
 # makes these rules more-specific than the generic ones.
-tools/%.o: tools/%.c
+tools/%.o: tools/%.c .build/host.stamp
 	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
 
 tools/%: tools/%.o
@@ -215,6 +243,7 @@ $(TOOLS):
 TOOL_SRCS := $(wildcard tools/*.c)
 TOOL_OBJS := $(TOOL_SRCS:.c=.o)
 TOOL_DEPS := $(TOOL_OBJS:.o=.d)
+.SECONDARY: $(TOOL_OBJS)
 
 -include $(TOOL_DEPS)
 
@@ -279,3 +308,23 @@ clean::
 .PHONY: print-compile-contract
 print-compile-contract:
 	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS))' '$(AGBCC_DIR)/bin/old_agbcc' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'
+
+# Fingerprints change only when tool contents or command settings change.
+# A phony prerequisite runs the inexpensive check each invocation; unchanged
+# stamp mtimes do not rebuild their consumers. Failed recipes cannot leave a
+# newly truncated object that a later invocation treats as current.
+.DELETE_ON_ERROR:
+.PHONY: FORCE
+FORCE:
+.build/gcc296.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(GCC296_CC) --tool $(GCC296_DIR)/cc1 --tool $(GCC296_DIR)/cpp --tool $(GCC296_DIR)/tradcpp --value='$(GCC296_CFLAGS)' --value='$(COMMON2_CFLAGS)'
+.build/agbcc.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(AGBCC_DIR)/bin/old_agbcc --tool gcc --value='$(M4A_CPPFLAGS) $(M4A_CC1FLAGS)' --value='$(AGBFLASH_CPPFLAGS) $(AGBFLASH_CC1FLAGS)'
+.build/binutils.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool arm-none-eabi-as --tool arm-none-eabi-ld --tool arm-none-eabi-objcopy --value='$(LINK_BASE_FLAGS)'
+.build/host.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(firstword $(CC)) --value='$(CC) $(CPPFLAGS) $(CFLAGS)'
+$(ELFS): .build/binutils.stamp
+$(TOOLS): .build/host.stamp
+clean::
+	-$(RM) -r .build
