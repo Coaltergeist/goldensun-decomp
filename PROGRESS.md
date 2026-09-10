@@ -35,3 +35,8 @@ The fakematch registry lists original-function callers of scaffolded macros and
 inline helpers, as well as explicit non-asm concerns. Shared hardware intrinsics
 are not inherently fakematches. A successful object match or ROM comparison alone
 does not remove an entry: the source concern must also be resolved.
+
+New fakematches are not accepted. Existing registered functions are active cleanup
+debt, not a precedent for new contributions. Finding an overlooked concern in
+existing code may require a registry correction; adding that record is accounting,
+not permission to introduce a new fakematch. See [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -16,7 +16,7 @@ It builds the following ROM:
 - **2,883 / 5,741 known original Thumb functions have matching C (50.22%)**, including **75 registered fakematches**. Excluding those entries: **2,808 / 5,741 (48.91%)**. The 53 ARM functions remain assembly. This 2026-09-09 snapshot uses fixed original addresses, excludes compiler call trampolines, and counts shared overlay implementations once. See [progress accounting](PROGRESS.md); run `python3 tools/progress.py` after a fresh build for current counts.
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Source organized into a subsystem tree (`src/field/`, `src/battle/`, `src/ui/`, `src/rpg/`, …), mirrored one-to-one by `asm/`; the 96 code overlays are each consolidated into a single translation unit under `src/maps/`
-- Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
+- Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used for the stock m4a audio engine and most Flash library C (see below). See [INSTALL.md](INSTALL.md) for setup.
 - **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`src/lib/m4a/`](src/lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
 
 ## Setting up the repo
@@ -25,11 +25,16 @@ See [INSTALL.md](INSTALL.md).
 
 ## Contributing
 
-Contributions are welcome; the decomp is in its early stages and benefits from any matched function, no matter how small.
+Contributions are welcome, including small matches and cleanup of existing fakematches.
+**New fakematches are not accepted.** Matching C must preserve the original behavior
+without register pins, artificial assembly barriers, handwritten instruction
+substitutes, or other constructs added solely to force matching code generation.
+Existing entries in `fakematch.txt` are cleanup debt; we are actively de-hacking
+them, and they are not examples of acceptable new contributions.
 
-A function is matched when its `.c` file (in [`src/`](src/)) compiles to an object that's byte-identical to the corresponding original `.s` (in [`asm/`](asm/)). Verify your work with `make compare-rom` (which fails the build if the ROM SHA1 drifts).
-
-Functions awaiting decompilation live under [`asm/`](asm/) in active assembly form; one `.s` per function, organized by subsystem (`asm/<subsystem>/<Func>.s`) so that `asm/` mirrors `src/`. Pick one, write its C in the parallel `src/` location (it stays embedded via `INCLUDE_ASM` until it matches), iterate against `./run-diff.sh -o <Func_XXXX>`, and submit. The [pret](https://github.com/pret) projects and [decomp.me](https://decomp.me) are the go-to references for the workflow.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for source requirements, object comparison,
+and the required fresh serial ROM and all-overlay verification. See
+[INSTALL.md](INSTALL.md) for compiler and diff setup.
 
 ### Layout
 
@@ -66,7 +71,7 @@ Functions awaiting decompilation live under [`asm/`](asm/) in active assembly fo
     - [pret/pokeemerald](https://github.com/pret/pokeemerald) and [pret/pokefirered](https://github.com/pret/pokefirered): the canonical GBA-decomp methodology references
 - Useful tooling references:
     - [decomp.me](https://decomp.me): matching-decomp sandbox
-    - [simonlindholm/asm-differ](https://github.com/simonlindholm/asm-differ): the diff harness bundled here
+    - [simonlindholm/asm-differ](https://github.com/simonlindholm/asm-differ): the optional diff viewer installed via INSTALL.md
     - [simonlindholm/decomp-permuter](https://github.com/simonlindholm/decomp-permuter): random-mutation matcher for stuck functions
 
 ## Credits

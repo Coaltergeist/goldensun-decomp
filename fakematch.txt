@@ -1,4 +1,5 @@
 # Function-level fakematch registry: FUNCTION SOURCE [# review reason].
+# Existing cleanup debt only: new fakematches are not accepted (CONTRIBUTING.md).
 # Includes pins/barriers, handwritten instruction asm, and retained non-asm concerns.
 # Inline helper/macro scaffolds are attributed to their original-function callers.
 # This is not a list of all C definitions or a progress denominator.

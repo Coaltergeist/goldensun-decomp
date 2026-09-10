@@ -77,7 +77,7 @@ $(OVERLAYS): %.bin: %.elf
 
 
 # Compile target C with the patched gcc-2.96 build from the camelot-gcc
-# submodule (install via camelot-gcc/install.sh). Produces byte-identical
+# repository (install via camelot-gcc/install.sh). Produces byte-identical
 # output for the reconstructed sources (see INSTALL.md).
 # Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
 # Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
@@ -133,7 +133,7 @@ asm/maps/common/common2.o: src/maps/common/common2.c .build/gcc296.stamp .build/
 # old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
 # sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
 # s8 (its ROM loads are signed) without touching the rest of the unsigned-char
-# corpus. See SAPPY_IMPORT_PLAN.md.
+# corpus. See INSTALL.md for compiler setup.
 AGBCC_DIR     ?= tools/agbcc
 M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
 M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2

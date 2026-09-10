@@ -10,7 +10,7 @@
 stage1.o
 
 # Compiler-generated .s intermediates: Make's %.o:%.c rule writes a .s next to
-# every src/ .c, so refresh_expected.sh / a full `make` litters src/ with them.
+# every src/ .c, so a full `make` creates intermediates under src/.
 # Ignore all .s under src/ EXCEPT the hand-written glue (crt0/exports/imports
 # and the lib asm call_via/m4a0), which have no .c sibling and are tracked
 # source-of-truth.
@@ -71,3 +71,9 @@ src/lib/m4a/m4a.s
 
 # Build command/tool fingerprints
 .build/
+
+# Immutable local diff snapshots and verification logs
+.diff-baselines/
+
+# Local command transcripts from INSTALL.md
+output.txt
