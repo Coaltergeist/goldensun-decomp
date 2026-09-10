@@ -12,8 +12,8 @@ It builds the following ROM:
 
 ## Current state
 
-- :white_check_mark: Build verifies byte-identical at HEAD (`make compare-rom` → `goldensun.gba: OK`)
-- **2,914 / 5,749 Thumb functions matched as C source (50.7%):** the 53 ARM-mode functions are handwritten assembly, not C-decompilation targets
+- :white_check_mark: Build verification: serial `make clean && make compare` checks the ROM and all overlays
+- **2,883 / 5,741 known original Thumb functions have matching C (50.22%)**, including **75 registered fakematches**. Excluding those entries: **2,808 / 5,741 (48.91%)**. The 53 ARM functions remain assembly. This 2026-09-09 snapshot uses fixed original addresses, excludes compiler call trampolines, and counts shared overlay implementations once. See [progress accounting](PROGRESS.md); run `python3 tools/progress.py` after a fresh build for current counts.
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Source organized into a subsystem tree (`src/field/`, `src/battle/`, `src/ui/`, `src/rpg/`, …), mirrored one-to-one by `asm/`; the 96 code overlays are each consolidated into a single translation unit under `src/maps/`
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used only for the stock m4a audio engine (see below). See [INSTALL.md](INSTALL.md) for setup.
