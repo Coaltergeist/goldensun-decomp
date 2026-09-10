@@ -17,6 +17,12 @@ expresses the original behavior.
 - Genuine hardware operations and ABI glue (for example BIOS calls and required
   interworking) can require assembly. Preserve their real constraints and
   clobbers; explain new or changed low-level glue in the contribution.
+- Assembler-name declarations for data and literal-pool symbols are allowed,
+  such as `extern unsigned char Lm930_17b4[] __asm__(".Lm930_17b4");` in
+  [`src/maps/alpine_crossing.c`](src/maps/alpine_crossing.c). These name a symbol
+  for C to reference; they do not emit handwritten instructions. Symbol-only
+  `.equ` definitions for evidenced absolute constants are also allowed. These
+  exceptions do not permit register pins, barriers, or instruction substitutes.
 - Use the production compiler and per-file settings from the Makefile. A match
   under experimental flags is a diagnostic result, not a finished conversion.
 - Preserve existing credits and assembly evidence. Do not submit ROMs, extracted
