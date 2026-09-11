@@ -17,23 +17,18 @@ INCLUDE_ASM("asm/lucky_dice/Func_80f4028.s");
 
 short Func_80f40b4(short a, short b)
 {
-    register int x __asm__("r0");
-    register int y __asm__("r3");
-    register int v __asm__("r0");
-    int sa, sb;
+    int product = (int)b * a;
+    int rounded;
 
-    sa = a << 16;
-    sb = b << 16;
-    sb >>= 16;
-    sa >>= 16;
-    x = sa * sb;
-    __asm__ ("" : "=r" (y) : "0" (x));
-    if (x < 0)
-        y += 0xff;
-    v = y << 8;
-    v >>= 16;
-    __asm__ volatile ("" : : "r" (v));
-    return (short)v;
+    do {
+        if (product >= 0) {
+            rounded = product;
+            break;
+        }
+        rounded = product + 0xff;
+    } while (0);
+
+    return (short)(rounded >> 8);
 }
 
 short Func_80f40d0(short a, short b) {
