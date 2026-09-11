@@ -135,8 +135,7 @@ void OvlFunc_909_2008214(void)
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200828c.s");
 
 void OvlFunc_909_20082cc(void) {
-    unsigned long long t;
-    unsigned long v;
+    extern void __ActorMessage(unsigned int, int);
     __CutsceneStart();
     if (__GetFlag(0x202) != 0) {
         __MessageID(0x174c);
@@ -148,10 +147,7 @@ void OvlFunc_909_20082cc(void) {
             __MessageID(0x176f);
         }
     }
-    t = 0x11;
-    do { t = (unsigned long) t; } while (0);
-    v = t;
-    __ActorMessage(v, 0);
+    __ActorMessage(0x11, 0);
     __CutsceneEnd();
 }
 
