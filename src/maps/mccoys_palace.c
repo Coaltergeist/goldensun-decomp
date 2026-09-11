@@ -2,6 +2,7 @@
 /* rom_79c738 (overlay file 909): consolidated TU — mccoys_palace map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/mccoys_palace/exports.s");
 
@@ -64,13 +65,8 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_909_2008150(void)
 {
-    int emote = 0x81 << 1;
-    int unk = 0xb0 << 8;
-
-    do { } while (emote == 0);
-
     __CutsceneStart();
-    __MapActor_Emote(0xe, emote, 0);
+    API_MapActor_Emote(0xe, 0x102, 0);
     __Func_80925cc(0xe, 2);
     __CutsceneWait(0x28);
     __MessageID(0x1764);
@@ -78,7 +74,7 @@ void OvlFunc_909_2008150(void)
     __MapActor_Face(0xe, 0, 0);
     __CutsceneWait(0x14);
     __ActorMessage_Wait(0xe, 0, 0xa);
-    __Func_8092adc(0xe, unk, 0xa);
+    API_Func_8092adc(0xe, 0xb000, 0xa);
     __CutsceneEnd();
 }
 void OvlFunc_909_20081b4(void)
@@ -169,11 +165,6 @@ void OvlFunc_909_2008338(void)
 
     int flag;
     unsigned char *map;
-    int sp1 = 0x8000;
-    int sp2 = 0x4000;
-    int step = -16;
-
-    do { } while (sp1 == 0);
 
     map = iwram_3001ebc;
     flag = 0;
@@ -194,13 +185,13 @@ void OvlFunc_909_2008338(void)
 
     __CutsceneStart();
     __CutsceneWait(10);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     __MapActor_SetAnim(0, 2);
 
     if (*(short *)(map + (0xb6 << 1)) == 9) {
-        __MapActor_TravelBy(0, 0, step);
+        API_MapActor_TravelBy(0, 0, -16);
     } else {
-        __Func_8092208(0, 3, step);
+        API_Func_8092208(0, 3, -16);
     }
 
     __CutsceneWait(16);
@@ -298,35 +289,24 @@ void OvlFunc_909_20085f4(void)
     extern void __CutsceneEnd(void);
 
     unsigned char *base;
-    int sp1_1 = 0x9999;
-    int sp2_1 = 0x4ccc;
-    int x1 = 0x26e;
-    int y1 = 0x2fc;
-    int val = 0xf000;
-    int sp1_2 = 0xcccc;
-    int sp2_2 = 0x6666;
-    int x2 = 0x23a;
-    int y2 = 0x2f6;
-    int actor = 0x13;
 
     if (__GetFlag(0x84e) != 0) {
-        do { } while (sp1_1 == 0);
         __CutsceneStart();
-        __MapActor_Face(0, actor, 0);
-        __MapActor_SetSpeed(actor, sp1_1, sp2_1);
-        __MapActor_TravelToAnimWait(actor, x1, y1);
-        __Func_8092adc(actor, val, 0x14);
-        __MapActor_DoAnim(actor, 3);
-        __MapActor_DoAnim(0x11, 3);
+        API_MapActor_Face(0, 0x13, 0);
+        API_MapActor_SetSpeed(0x13, 0x9999, 0x4ccc);
+        API_MapActor_TravelToAnimWait(0x13, 0x26e, 0x2fc);
+        API_Func_8092adc(0x13, 0xf000, 0x14);
+        API_MapActor_DoAnim(0x13, 3);
+        API_MapActor_DoAnim(0x11, 3);
         __CutsceneWait(0x14);
-        __MapActor_Face(actor, 0, 0);
+        API_MapActor_Face(0x13, 0, 0);
         __CutsceneWait(0x14);
-        __MapActor_DoAnim(actor, 3);
+        API_MapActor_DoAnim(0x13, 3);
         __MessageID(0x1749);
-        __ActorMessage_Wait(actor, 0, 0xa);
-        __MapActor_SetSpeed(actor, sp1_2, sp2_2);
-        __MapActor_TravelToAnimWait(actor, x2, y2);
-        __MapActor_SetPos(actor, 0, 0);
+        API_ActorMessage_Wait(0x13, 0, 0xa);
+        API_MapActor_SetSpeed(0x13, 0xcccc, 0x6666);
+        API_MapActor_TravelToAnimWait(0x13, 0x23a, 0x2f6);
+        API_MapActor_SetPos(0x13, 0, 0);
         base = iwram_3001ebc;
         *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
         __SetFlag(0x85e);

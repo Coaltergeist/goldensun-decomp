@@ -1,6 +1,7 @@
 /* rom_7b7f1c (overlay file 930): consolidated TU — alpine_crossing map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -125,21 +126,16 @@ extern unsigned char L1788[] __asm__(".Lm930_1788");
 
 void OvlFunc_930_2008180(void)
 {
-    int sp1 = 0xcccc;
-    int sp2 = 0x6666;
-    int dist = -0x10;
     unsigned char *actor;
-
-    do { } while (sp1 == 0);
 
     __PlaySound(0xbc);
     __Func_8010560(L1788, 0x43, 6);
     actor = __MapActor_GetActor(0);
     actor[0x55] = 0;
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
     *(unsigned int *)(iwram_3001ebc + 0x1c0) = 0x100;
     __MapActor_SetAnim(0, 2);
-    __MapActor_TravelBy(0, 0, dist);
+    API_MapActor_TravelBy(0, 0, -16);
     __CutsceneWait(0x10);
     __Func_8091e9c(2);
 }
@@ -166,17 +162,13 @@ INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088e0.s");
 INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008924.s");
 
 void OvlFunc_930_2008ac0(void) {
-    int actor = 10;
-    int emote = 0x105;
     unsigned int r2;
     unsigned short r3;
 
-    do { } while (emote == 0);
-
     __CutsceneStart();
     __MessageID(0x18b9);
-    __MapActor_Emote(actor, emote, 0x3c);
-    __ShowActorMessage_NoWait(actor, 0);
+    API_MapActor_Emote(10, 0x105, 0x3c);
+    __ShowActorMessage_NoWait(10, 0);
     if (__Func_8091c7c(0, 0) == 1) {
         r2 = iwram_3001ebc;
         r3 = *(unsigned short *)(r2 + (0xec << 1));
@@ -184,9 +176,9 @@ void OvlFunc_930_2008ac0(void) {
         *(unsigned short *)(r2 + (0xec << 1)) = r3;
     }
     __CutsceneWait(0x14);
-    __MapActor_DoAnim(actor, 4);
+    API_MapActor_DoAnim(10, 4);
     __CutsceneWait(0x14);
-    __ActorMessage_Wait(actor, 0, 0x14);
+    API_ActorMessage_Wait(10, 0, 0x14);
     __CutsceneEnd();
 }
 

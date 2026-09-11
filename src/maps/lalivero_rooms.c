@@ -1,6 +1,7 @@
 /* rom_7f21b8 (overlay file 967): consolidated TU — lalivero_rooms map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -14,11 +15,9 @@ INCLUDE_ASM("asm/maps/lalivero_rooms/exports.s");
 extern void __MapActor_Surprise(int actor, int flag);
 
 unsigned int OvlFunc_967_2008030(void) {
-    int flag;
     unsigned long actor = 0xe;
-    flag = 0x102;
-    do { } while (flag == 0);
-    __MapActor_Surprise(actor, flag);
+
+    API_MapActor_Surprise(actor, 0x102);
     return 0;
 }
 
@@ -78,9 +77,6 @@ void __CutsceneEnd(void);
 void OvlFunc_967_2008308(void) {
     void *r0;
     short r5;
-    int emote = 0x102;
-
-    do { } while (emote == 0);
 
     r0 = __MapActor_GetActor(0);
     r5 = (*(unsigned short *)((char *)r0 + 6) + 0x2000) & (int)0xffffc000;
@@ -89,7 +85,7 @@ void OvlFunc_967_2008308(void) {
     __Func_808e118();
     __MessageID(0x26ec);
     __CutsceneWait(0x32);
-    __MapActor_Emote(0xe, emote, 0x32);
+    API_MapActor_Emote(0xe, 0x102, 0x32);
     __MapActor_Face(0xe, 0, 0x14);
     __ActorMessage(0xe, 0);
     __CutsceneWait(10);

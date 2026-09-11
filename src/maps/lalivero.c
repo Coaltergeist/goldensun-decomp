@@ -1,6 +1,7 @@
 /* rom_7f148c (overlay file 966): consolidated TU — lalivero map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/lalivero/exports.s");
 
@@ -41,15 +42,11 @@ void __Func_8092adc(int, int, int);
 
 void OvlFunc_966_2008078(int a)
 {
-    int speed = 0xc000;
-
-    do { } while (speed == 0);
-
     *(int *)((char *)__MapActor_GetActor(a) + 0x18) = 0x10000;
     *(int *)((char *)__MapActor_GetActor(a) + 0x1c) = 0x10000;
     __MessageID(0x26af);
     __ActorMessage(a, 0);
-    __Func_8092adc(a, speed, 0);
+    API_Func_8092adc(a, 0xc000, 0);
     __CutsceneWait(0x14);
     __MapActor_SetBehavior(a, ActorCmd_ARRAY_966__02009638);
 }
@@ -80,17 +77,11 @@ void __CutsceneWait(int);
 
 void OvlFunc_966_200810c(void)
 {
-    int a = 0x10000;
-    int b = 0x8000;
-    int c = -0x10;
-
-    do { } while (a == 0);
-
     __SetFlag(0x9bb);
     __MessageID(0x28b8);
     __ActorMessage(0x12, 0);
-    __MapActor_SetSpeed(0x12, a, b);
-    __Func_8092304(0x12, c, 0);
+    API_MapActor_SetSpeed(0x12, 0x10000, 0x8000);
+    API_Func_8092304(0x12, -16, 0);
     __Func_8092adc(0x12, 0, 0);
     __CutsceneWait(10);
 }
@@ -109,9 +100,6 @@ void OvlFunc_966_2008158(void)
 {
     short r7;
     short r5, r6;
-    int n = -16;
-
-    do { } while (n == 0);
 
     r7 = *(short *)((char *)*(unsigned int *)iwram_3001ebc + 0xb6 * 2);
     r5 = L1ca8[r7][0];
@@ -120,10 +108,10 @@ void OvlFunc_966_2008158(void)
     __PlaySound(0x9e);
     if (r7 == 6) {
         __Func_8010560(L1cee, r5, r6);
-        __Func_80922c4(0, 0, n);
+        API_Func_80922c4(0, 0, -16);
     } else {
         __Func_8010560(L1cd8, r5, r6);
-        __Func_8092208(0, 2, n);
+        API_Func_8092208(0, 2, -16);
     }
     __CutsceneWait(10);
     *(unsigned int *)((char *)*(unsigned int *)iwram_3001ebc + 0xe4 * 2) = 0x10;

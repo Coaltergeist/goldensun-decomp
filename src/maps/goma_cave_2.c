@@ -1,6 +1,7 @@
 /* rom_799abc (overlay file 905): consolidated TU — goma_cave_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/goma_cave_2/exports.s");
 
@@ -192,8 +193,7 @@ void (*arg5)(void);
 void OvlFunc_905_2008608(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -214,7 +214,6 @@ void OvlFunc_905_2008608(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -238,7 +237,7 @@ void OvlFunc_905_2008608(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_905_2008244(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -252,7 +251,7 @@ void OvlFunc_905_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L1554__a2[dir] >> 16) / 2, (short)(L1554__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -444,17 +443,14 @@ void OvlFunc_905_20090c8(void)
     unsigned char *gs;
     unsigned char *p;
     int val;
-    int a;
-    short v;
 
-    a = 0x2000;
-    do { } while (a == 0);
+    short v;
 
     base = *(unsigned char **)iwram_3001ebc;
     val = ++gOvl_020098ec;
     switch (val) {
     case 0x3c:
-        __Func_8092adc(0xd, a, 0);
+        API_Func_8092adc(0xd, 0x2000, 0);
         __MapActor_Emote(0xd, 2, 0);
         break;
     case 0xb4:

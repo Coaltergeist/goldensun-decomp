@@ -1,6 +1,7 @@
 /* rom_799998 (overlay file 904): consolidated TU — goma_cave_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/goma_cave_1/exports.s");
 
@@ -47,19 +48,15 @@ struct Actor {
 };
 
 int GomaCave1_MapInit(void) {
-    int pos_x = 0xd8 << 16;
-    int pos_y = 0x88 << 16;
     unsigned char *base;
     int s1;
     int s2;
-
-    do {} while (pos_x == 0);
 
     base = *(unsigned char **)iwram_3001ebc;
     *(int *)(base + 0x1c0) = 0x204;
     *(int *)(base + 0x1c8) = 0x18;
     if (__GetFlag(0x300) != 0) {
-        __MapActor_SetPos(8, pos_x, pos_y);
+        API_MapActor_SetPos(8, 0xd80000, 0x880000);
         __MapActor_SetAnim(8, 2);
         __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
         ((struct Actor *)__MapActor_GetActor(8))->f23 = 2;

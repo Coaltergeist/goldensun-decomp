@@ -1,6 +1,7 @@
 /* rom_7a04ac (overlay file 913): consolidated TU — kolima_forest_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/exports.s");
 
@@ -192,8 +193,7 @@ void (*arg5)(void);
 void OvlFunc_913_2008608(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -214,7 +214,6 @@ void OvlFunc_913_2008608(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -238,7 +237,7 @@ void OvlFunc_913_2008608(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_913_2008244(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -252,7 +251,7 @@ void OvlFunc_913_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L2d68__a2[dir] >> 16) / 2, (short)(L2d68__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();

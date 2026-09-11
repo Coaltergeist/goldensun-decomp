@@ -1,6 +1,7 @@
 /* rom_7b9cb4 (overlay file 932): consolidated TU — altin_peak map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/altin_peak/exports.s");
 
@@ -292,23 +293,15 @@ void __Func_8010704(int, int, int, int, int, int);
 void __SetFlag(int);
 
 void OvlFunc_932_20086dc(void) {
-    int a = 0x20000;
-    int b = 0x20000;
-    int c = 0x10000;
-    int u = -1;
-    int v = -1;
-    int w = 0xe666;
     char *field;
     char *layer;
     void *actor;
     int i;
     int s1, s2;
 
-    do { } while (a == 0);
-
     field = (char *)iwram_3001e70;
     __PlaySound(0xe6);
-    __Func_8012330(a, b, c);
+    API_Func_8012330(0x20000, 0x20000, 0x10000);
     __CutsceneWait(10);
 
     layer = field + (0xb2 << 1);
@@ -334,7 +327,7 @@ void OvlFunc_932_20086dc(void) {
     __WaitFrames(1);
     __SetIntrHandler(1, 0, 0);
     __PlaySound(0x121);
-    __Func_8012330(u, v, w);
+    API_Func_8012330(-1, -1, 0xe666);
     __CutsceneWait(0x1e);
     s1 = 3;
     s2 = 0xe;
@@ -346,20 +339,12 @@ extern void __CopyMapTiles(int, int, int, int, int, int);
 void __PlaySound(unsigned int snd);
 void OvlFunc_932_20088d4(void)
 {
-    int a = 0x20000;
-    int b = 0x20000;
-    int c = 0x10000;
-    int u = -1;
-    int v = -1;
-    int w = 0xe666;
     char *field;
     int one;
     int two;
     char *layer;
     int i;
     int s1, s2;
-
-    do { } while (a == 0);
 
     one = 1;
     field = (char *)iwram_3001e70;
@@ -368,7 +353,7 @@ void OvlFunc_932_20088d4(void)
     __CopyMapTiles(0x6f, 0x20, 0x68, 0x12, 3, two);
     __CopyMapTiles(0x40, 0x20, 0x67, 0x12, one, two);
     __PlaySound(0xe6);
-    __Func_8012330(a, b, c);
+    API_Func_8012330(0x20000, 0x20000, 0x10000);
     __CutsceneWait(10);
 
     layer = field + (0xb2 << 1);
@@ -386,7 +371,7 @@ void OvlFunc_932_20088d4(void)
     __WaitFrames(1);
     __SetIntrHandler(1, 0, 0);
     __PlaySound(0x121);
-    __Func_8012330(u, v, w);
+    API_Func_8012330(-1, -1, 0xe666);
     __CutsceneWait(0x1e);
     s1 = 4;
     s2 = 3;
@@ -450,28 +435,21 @@ void __CutsceneEnd(void);
 
 void OvlFunc_932_2008c9c(void)
 {
-    int a = 0x3333;
-    int b = 0x1999;
-    int x1 = 0x190;
-    int y = 0x1a8;
-    int x2 = 0x198;
     unsigned char *actor;
     int s1, s2;
-
-    do { } while (a == 0);
 
     __CutsceneStart();
     s1 = 0x18;
     s2 = 0x1a;
     __Func_8010704(0x18, 0x1b, 2, 1, s1, s2);
     __PlaySound(0xb9);
-    __MapActor_SetSpeed(10, a, b);
-    __MapActor_SetSpeed(0, a, b);
+    API_MapActor_SetSpeed(10, 0x3333, 0x1999);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
     actor = (unsigned char *)__MapActor_GetActor(10);
     actor[0x5a] &= 0xfe;
     __MapActor_SetAnim(0, 8);
-    __MapActor_TravelTo(0, x1, y);
-    __MapActor_TravelTo(10, x2, y);
+    API_MapActor_TravelTo(0, 0x190, 0x1a8);
+    API_MapActor_TravelTo(10, 0x198, 0x1a8);
     __MapActor_WaitMovement(10);
     __MapActor_SetAnim(0, 1);
     OvlFunc_932_200840c();
@@ -627,8 +605,6 @@ void OvlFunc_932_200a490(void)
 }
 void OvlFunc_932_200a5c0(void)
 {
-    int pos_x = 0xb3 << 17;
-    int pos_y = 0xd0 << 15;
     unsigned int r3;
     unsigned int r2;
     unsigned char *actor;
@@ -637,10 +613,8 @@ void OvlFunc_932_200a5c0(void)
     int s1;
     int s2;
 
-    do {} while (pos_x == 0);
-
     if ((r3 = (unsigned int)&gState, r2 = 0xe1, r2 <<= 1, r3 += r2, *(short *)r3 == 2) && __GetFlag(0x109) == 0) {
-        __MapActor_SetPos(8, pos_x, pos_y);
+        API_MapActor_SetPos(8, 0x1660000, 0x680000);
     }
 
     OvlFunc_932_200b460(9);
@@ -779,12 +753,8 @@ void OvlFunc_932_200ad58(void)
     extern void __CutsceneEnd(void);
     extern unsigned char iwram_3001ebc__arr[] __asm__("iwram_3001ebc");
 
-    int c8 = 0xc8 << 15;
-    int f9 = 0xf9 << 16;
     int *actor;
     int off;
-
-    do {} while (c8 == 0);
 
     actor = (int *)__MapActor_GetActor(0);
     __CutsceneStart();
@@ -803,12 +773,12 @@ void OvlFunc_932_200ad58(void)
     __Func_8093554()[0x55] = 0;
 
     __Func_80933d4(0x19999, 0x3333);
-    __Func_80933f8(c8, 0, f9, 1);
+    API_Func_80933f8(0x640000, 0, 0xf90000, 1);
     __Func_8093530();
     __CutsceneWait(0x14);
 
     OvlFunc_932_20086dc();
-    __Func_80933f8(actor[2], actor[3], actor[4], 1);
+    API_Func_80933f8(actor[2], actor[3], actor[4], 1);
     __Func_8093530();
 
     __SetMapEvents(gScript_882__0200cd6c);

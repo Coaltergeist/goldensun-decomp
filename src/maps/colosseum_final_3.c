@@ -1,6 +1,7 @@
 /* rom_7e0928 (overlay file 956): consolidated TU — colosseum_final_3 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern int OvlFunc_956_20086a4();
 extern void OvlFunc_956_200857c();
@@ -231,8 +232,6 @@ void OvlFunc_956_2009c20(void *arg0)
     unsigned int r3;
     unsigned int r2;
     int r6;
-    int y1 = 0x80 << 11;
-    int y2 = 0x80 << 14;
 
     r3 = (unsigned int)&gState;
     r2 = 0xe1;
@@ -242,8 +241,6 @@ void OvlFunc_956_2009c20(void *arg0)
         OvlFunc_common1_2c4();
         return;
     }
-
-    do { } while (y1 == 0);
 
     __CutsceneStart();
     r6 = OvlFunc_common1_4cc(arg0, 1);
@@ -267,7 +264,7 @@ void OvlFunc_956_2009c20(void *arg0)
             a->__unk55 = r6;
             a->accel = 0x6666;
             a->speed = 0xcccc;
-            __Actor_TravelTo(a, a->pos.x, y1, a->pos.z);
+            API_Actor_TravelTo(a, a->pos.x, 0x40000, a->pos.z);
         }
 
         {
@@ -275,7 +272,7 @@ void OvlFunc_956_2009c20(void *arg0)
             a->__unk55 = r6;
             a->accel = 0x6666;
             a->speed = 0xcccc;
-            __Actor_TravelTo(a, a->pos.x, y2, a->pos.z);
+            API_Actor_TravelTo(a, a->pos.x, 0x200000, a->pos.z);
             __Actor_WaitMovement(a);
             __CutsceneWait(0x2d);
         }
@@ -285,7 +282,7 @@ void OvlFunc_956_2009c20(void *arg0)
             a->__unk55 = r6;
             a->accel = 0x6666;
             a->speed = 0xcccc;
-            __Actor_TravelTo(a, a->pos.x, y2, a->pos.z);
+            API_Actor_TravelTo(a, a->pos.x, 0x200000, a->pos.z);
         }
 
         {
@@ -293,7 +290,7 @@ void OvlFunc_956_2009c20(void *arg0)
             a->__unk55 = r6;
             a->accel = 0x6666;
             a->speed = 0xcccc;
-            __Actor_TravelTo(a, a->pos.x, y1, a->pos.z);
+            API_Actor_TravelTo(a, a->pos.x, 0x40000, a->pos.z);
             __Actor_WaitMovement(a);
             __CutsceneWait(0xf);
         }

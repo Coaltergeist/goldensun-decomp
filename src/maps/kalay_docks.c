@@ -1,6 +1,7 @@
 /* rom_7c6bac (overlay file 942): consolidated TU — kalay_docks map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/kalay_docks/exports.s");
 
@@ -129,57 +130,52 @@ extern int __Func_8091c7c(int, int);
 void OvlFunc_942_20086c8(void)
 {
     extern unsigned int iwram_3001ebc;
-  int emote1 = 0x80 << 1;
-  int emote2 = 0x81 << 1;
-  int flag = 0x8a8;
-  int id = 0xb;
+
   unsigned short *base;
 
-  do { } while (emote1 == 0);
-
   __CutsceneStart();
-  if (__GetFlag(flag) != 0)
+  if (API_GetFlag(0x8a8) != 0)
   {
-    __MapActor_Face(id, 0, 0);
+    API_MapActor_Face(11, 0, 0);
     __CutsceneWait(0x14);
     __MessageID(0x1f1c);
-    __ActorMessage(id, 0);
+    API_ActorMessage(11, 0);
     __CutsceneEnd();
     return;
   }
 
   __CutsceneWait(0x14);
-  __MapActor_Emote(id, emote1, 0x32);
-  __MapActor_Face(id, 0, 0);
+  API_MapActor_Emote(11, 0x100, 0x32);
+  API_MapActor_Face(11, 0, 0);
   __CutsceneWait(0x14);
   __MessageID(0x1f18);
-  __ActorMessage(id, 0);
-  if (__GetFlag(0x8a6) != 0)
+  API_ActorMessage(11, 0);
+  if (API_GetFlag(0x8a6) != 0)
   {
     __CutsceneWait(0x14);
-    __MapActor_Emote(id, emote2, 0x28);
-    __ShowActorMessage_NoWait(id, 0);
+    API_MapActor_Emote(11, 0x102, 0x28);
+    __ShowActorMessage_NoWait(11, 0);
     if (__Func_8091c7c(0, 0) == 0)
     {
       __CutsceneWait(0x14);
-      __ActorMessage(id, 0);
-      __SetFlag(flag);
+      API_ActorMessage(11, 0);
+      API_SetFlag(0x8a8);
     }
     else
     {
       __CutsceneWait(10);
       base = (unsigned short *)iwram_3001ebc;
       base[0xec] += 1;
-      __ActorMessage(id, 0);
+      API_ActorMessage(11, 0);
       __CutsceneWait(10);
-      __Func_8092adc(id, 0, 0);
+      API_Func_8092adc(11, 0, 0);
       __CutsceneWait(0x1e);
     }
   }
   else
   {
     __CutsceneWait(10);
-    __Func_8092adc(id, 0, 0);
+    API_Func_8092adc(11, 0, 0);
     __CutsceneWait(0x1e);
   }
   __CutsceneEnd();
@@ -203,23 +199,17 @@ extern void __Func_8091e9c(int);
 
 void OvlFunc_942_20087dc(void)
 {
-    int s1 = 0x80 << 8;
-    int s2 = 0x80 << 7;
     int off = 0xe0 << 1;
-    int a1 = 0x98 << 1;
-    int a2 = 0xae << 3;
-
-    do { } while (s1 == 0);
 
     __CutsceneStart();
     __PlaySound(0x9e);
-    __MapActor_SetSpeed(0, s1, s2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     __Func_8092b08(0, 3);
     if (*(short *)((char *)&gState + off) == (int)Lconst_6b) {
-        __MapActor_TravelToAnim(0, a1, a2);
+        API_MapActor_TravelToAnim(0, 0x130, 0x570);
         __Func_8010560(gScript_930__020096b8, 0x4e, 0x56);
     } else if (*(short *)((char *)&gState + off) == (int)Lconst_70) {
-        __MapActor_TravelToAnim(0, 0xf8, 0xc0);
+        API_MapActor_TravelToAnim(0, 0xf8, 0xc0);
         __Func_8010560(Lm942_16ce, 0x4a, 9);
     }
     __CutsceneWait(0x10);
@@ -232,25 +222,17 @@ void OvlFunc_942_2008ba0(void);
 void __MapActor_SetPos(int, int, int);
 
 void OvlFunc_942_20088cc(void) {
-    int pos_x = 0xb0 << 15;
-    int pos_y = 0xa3 << 19;
-    int f8ac = 0x8ac;
-    int f109 = 0x109;
-    int f8a9 = 0x8a9;
-    int f911 = 0x911;
     unsigned int r2;
     unsigned int r3;
     GlobalState *state = &gState;
-
-    do { } while (pos_x == 0);
 
     r2 = 0xe1;
     r2 <<= 1;
     r3 = (unsigned int)state + r2;
     r2 = 0;
     if (*(short *)((char *)r3 + r2) == 1) {
-        if (!__GetFlag(f8ac)) {
-            __SetFlag(f8ac);
+        if (!API_GetFlag(0x8ac)) {
+            API_SetFlag(0x8ac);
             OvlFunc_942_2008ba0();
         }
     }
@@ -260,14 +242,14 @@ void OvlFunc_942_20088cc(void) {
     r3 = (unsigned int)state + r2;
     r2 = 0;
     if (*(short *)((char *)r3 + r2) == 2) {
-        if (!__GetFlag(f109)) {
-            __ClearFlag(f8a9);
+        if (!API_GetFlag(0x109)) {
+            API_ClearFlag(0x8a9);
         }
     }
 
-    if (__GetFlag(f911)) {
-        if (!__GetFlag(f8a9)) {
-            __MapActor_SetPos(0xc, pos_x, pos_y);
+    if (API_GetFlag(0x911)) {
+        if (!API_GetFlag(0x8a9)) {
+            API_MapActor_SetPos(0xc, 0x580000, 0x5180000);
             __Func_8092adc(0xc, 0, 0);
         }
     }

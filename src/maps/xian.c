@@ -1,6 +1,7 @@
 /* rom_7b6668 (overlay file 928): consolidated TU — xian map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -128,22 +129,17 @@ extern void __Func_8091e9c(unsigned int);
 
 void OvlFunc_928_2008de8(unsigned int arg0)
 {
-    int sp1 = 0x8000;
-    int sp2 = 0x4000;
-    int dist = -0x10;
     unsigned char *actor;
-
-    do { } while (sp1 == 0);
 
     actor = (unsigned char *)__MapActor_GetActor(0);
     actor[0x55] = 0;
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
 
     if (arg0 == 6) {
         __MapActor_SetAnim(0, 2);
-        __MapActor_TravelBy(0, 0, dist);
+        API_MapActor_TravelBy(0, 0, -16);
     } else {
-        __Func_8092208(0, 2, dist);
+        API_Func_8092208(0, 2, -16);
     }
 
     *(unsigned int *)(*(unsigned int *)iwram_3001ebc + 0x1c8) = 0x10;

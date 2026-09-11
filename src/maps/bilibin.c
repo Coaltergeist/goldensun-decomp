@@ -1,6 +1,7 @@
 /* rom_79b154 (overlay file 907): consolidated TU — bilibin map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/bilibin/exports.s");
 
@@ -133,14 +134,9 @@ void OvlFunc_907_2008328(void)
     int iVar5;
     unsigned int uVar4;
     unsigned char *actor;
-    int spd1 = 0x8000;
-    int spd2 = 0x4000;
-    int neg4 = -4;
-    int neg16 = -0x10;
+
     int val;
     int arg1, arg2;
-
-    do { } while (spd1 == 0);
 
     map = iwram_3001ebc;
     __CutsceneStart();
@@ -164,7 +160,7 @@ void OvlFunc_907_2008328(void)
     arg1 = Lm907_1d0c[iVar5 * 2];
     arg2 = Lm907_1d0c[iVar5 * 2 + 1];
     __Func_8010560(Lm907_1cf0[iVar5], arg1, arg2);
-    __MapActor_SetSpeed(0, spd1, spd2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
 
     ((unsigned char *)__MapActor_GetActor(0))[0x55] = 0;
 
@@ -172,9 +168,9 @@ void OvlFunc_907_2008328(void)
 
     if (iVar5 == 6) {
         __MapActor_SetAnim(0, 2);
-        __MapActor_TravelBy(0, 0, neg4);
+        API_MapActor_TravelBy(0, 0, -4);
     } else {
-        __Func_8092208(0, 3, neg16);
+        API_Func_8092208(0, 3, -16);
     }
 
     if (iVar5 == 4) {

@@ -1,6 +1,7 @@
 /* rom_7fc720 (overlay file 973): consolidated TU */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/debug_get_item/exports.s");
 
@@ -43,10 +44,8 @@ unsigned int OvlFunc_973_2008044(void) {
 
 void OvlFunc_973_200804c(void)
 {
-    int emote = 0x102;
-    do {} while (emote == 0);
     __MessageID(0x23cd);
-    __MapActor_Emote(0xd, emote, 0);
+    API_MapActor_Emote(0xd, 0x102, 0);
     do { { int arg0 = 0xd; __ActorMessage(arg0, 0); } } while (0);
 }
 

@@ -2,6 +2,7 @@
 /* rom_7c460c (overlay file 939): consolidated TU — lunpa map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState__entr;
 extern GlobalState__entr gState__entr __asm__("gState");
@@ -307,15 +308,11 @@ extern void __MapActor_SetAnim(int, int);
 extern void __MapActor_TravelBy(int, int, int);
 void OvlFunc_939_2008b0c(void)
 {
-    int emote = 0x102;
-
-    do { } while (emote == 0);
-
     __CutsceneStart();
     __MapActor_SetAnim(0, 1);
     __MessageID(0x24cf);
     __ActorMessage(1, 0);
-    __MapActor_Emote(0, emote, 100);
+    API_MapActor_Emote(0, 0x102, 100);
     __MapActor_SetAnim(0, 2);
     __MapActor_TravelBy(0, 0, 0xc);
     __MapActor_WaitMovement(0);
@@ -353,16 +350,11 @@ void OvlFunc_939_2008b6c(void)
     extern void __CutsceneEnd(void);
     extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
 
-    int speed_x = 0x8000;
-    int speed_y = 0x4000;
-    int step = -8;
     unsigned char *base;
     unsigned int i;
     int actor;
     short *p;
     int index;
-
-    do { } while (speed_x == 0);
 
     base = *(unsigned char **)iwram_3001ebc_arr;
     __CutsceneStart();
@@ -377,12 +369,12 @@ void OvlFunc_939_2008b6c(void)
     index = *p - 4;
     CallFunc(Lm939_250c[index].unk4, Lm939_250c[index].unk6, Lm939_250c[index].unk0);
 
-    __MapActor_SetSpeed(0, speed_x, speed_y);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     *(unsigned char *)(__MapActor_GetActor(0) + 0x55) = 0;
     __MapActor_SetAnim(0, 2);
 
     if (index != 6) {
-        __Func_8092208(0, 2, step);
+        API_Func_8092208(0, 2, -8);
         __CutsceneWait(10);
     }
     __Func_8091e9c(*p);

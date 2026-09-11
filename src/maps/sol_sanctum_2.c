@@ -1,6 +1,7 @@
 /* rom_78c76c (overlay file 891): consolidated TU — sol_sanctum_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/sol_sanctum_2/exports.s");
 
@@ -396,17 +397,14 @@ static inline void CopyMapTiles(int x1, int y1, int x2, int y2, int w, int h)
 
 void OvlFunc_891_2009ff4(void)
 {
-    int flag_80f = 0x80f;
     int transition;
     int i;
     int one;
     unsigned char *actor;
 
-    do { } while (flag_80f == 0);
-
     transition = 0;
     __CutsceneStart();
-    if (!__GetFlag(flag_80f)) {
+    if (!API_GetFlag(0x80f)) {
         __Func_80933d4(0x80 << 10, 0x80 << 7);
         __Func_80933f8(0x90 << 18, -1, 0xac << 16, 1);
         __Func_8093530();
@@ -423,10 +421,10 @@ void OvlFunc_891_2009ff4(void)
             __CutsceneWait(4);
         } while (i != 20);
         CopyMapTiles(Lm891_2980[18], Lm891_2980[19], Lm891_2980[20], Lm891_2980[21], Lm891_2980[22], Lm891_2980[23]);
-        __SetFlag(Lm891_2980[24]);
+        API_SetFlag(Lm891_2980[24]);
         transition = OvlFunc_891_2008054();
         if (transition == -1) {
-            if (!__GetFlag(0x818)) {
+            if (!API_GetFlag(0x818)) {
                 __SetCameraTarget(0, 1);
                 actor = (unsigned char *)__MapActor_GetActor(0);
                 *(unsigned short *)(actor + 6) = Lm891_2980[25];
@@ -448,13 +446,13 @@ void OvlFunc_891_2009ff4(void)
                 __ClearFlag(Lm891_2980[24]);
             }
         } else if (transition == 0) {
-            if (__GetFlag(0x818)) {
-                if (__GetFlag(0x80b) && __GetFlag(0x80d) && __GetFlag(0x80e)) {
-                    if (!__GetFlag(flag_80f)) {
-                        __SetFlag(flag_80f);
+            if (API_GetFlag(0x818)) {
+                if (API_GetFlag(0x80b) && __GetFlag(0x80d) && __GetFlag(0x80e)) {
+                    if (!API_GetFlag(0x80f)) {
+                        API_SetFlag(0x80f);
                         OvlFunc_891_2008c8c();
                     }
-                } else if (__GetFlag(0x812)) {
+                } else if (API_GetFlag(0x812)) {
                     __Func_8091e9c(5);
                     transition = 1;
                 }
@@ -471,15 +469,11 @@ extern void __Func_8092adc(int, int, int);
 extern void OvlFunc_891_2008098(void);
 void OvlFunc_891_200a244(void)
 {
-    int f816 = 0x816;
-    int f817 = 0x817;
     int r3;
     int r2;
 
-    do { } while (f816 == 0);
-
     __CutsceneStart();
-    if (__GetFlag(0x818) == 0 && __GetFlag(f816) == 0) {
+    if (API_GetFlag(0x818) == 0 && API_GetFlag(0x816) == 0) {
         __Func_80933d4(0x20000, 0x4000);
         __Func_80933f8(0x11e0000, -1, 0x920000, 1);
         __Func_8093530();
@@ -487,13 +481,13 @@ void OvlFunc_891_200a244(void)
         r3 = 4;
         r2 = 3;
         __CopyMapTiles(0, 0x3b, 0xf, 0x26, r3, r2);
-        if (__GetFlag(f817) != 0) {
+        if (API_GetFlag(0x817) != 0) {
             __CopyMapTiles(8, 0x3c, 0x11, 0x27, 2, 2);
         }
         __Func_8092adc(0, 0, 0);
         __CutsceneWait(0x1e);
-        __SetFlag(f816);
-        if (__GetFlag(f817) != 0) {
+        API_SetFlag(0x816);
+        if (API_GetFlag(0x817) != 0) {
             OvlFunc_891_2008098();
         }
     }
@@ -503,13 +497,8 @@ void OvlFunc_891_200a2f4(void)
 {
     extern void OvlFunc_891_2008098(void);
 
-    int f817 = 0x817;
-    int f816 = 0x816;
-
-    do { } while (f817 == 0);
-
     __CutsceneStart();
-    if (__GetFlag(0x818) == 0 && __GetFlag(f817) == 0) {
+    if (API_GetFlag(0x818) == 0 && API_GetFlag(0x817) == 0) {
         __Func_80933d4(0x80 << 10, 0x80 << 7);
         __Func_80933f8(0x11e0000, -1, 0x920000, 1);
         __Func_8093530();
@@ -519,14 +508,14 @@ void OvlFunc_891_200a2f4(void)
             unsigned short t2 = 3;
             __CopyMapTiles(4, 0x3b, 0x11, 0x26, t1, t2);
         }
-        if (__GetFlag(f816) != 0) {
+        if (API_GetFlag(0x816) != 0) {
             unsigned short t1 = 2;
             __CopyMapTiles(8, 0x3c, 0x11, 0x27, t1, t1);
         }
         __Func_8092adc(0, 0x8000, 0);
         __CutsceneWait(0x1e);
-        __SetFlag(f817);
-        if (__GetFlag(f816) != 0) {
+        API_SetFlag(0x817);
+        if (API_GetFlag(0x816) != 0) {
             OvlFunc_891_2008098();
         }
     }

@@ -1,6 +1,7 @@
 /* rom_784360 (overlay file 884): consolidated TU — vale_plaza map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/vale_plaza/exports.s");
 
@@ -167,11 +168,9 @@ extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_2008750(void)
 {
-    int anim = 0x117;
-    do { } while (anim == 0);
     __PlaySound(0x9e);
     __Func_8010560(L3eb4, 0x2c, 7);
-    __MapActor_TravelToAnim(0, 0xf8, anim);
+    API_MapActor_TravelToAnim(0, 0xf8, 0x117);
     OvlFunc_884_2008714(1);
 }
 
@@ -184,11 +183,9 @@ extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_20087ec(void)
 {
-    int anim = 0x197;
-    do { } while (anim == 0);
     __PlaySound(0x9e);
     __Func_8010560(L3eb4, 0x2b, 0xf);
-    __MapActor_TravelToAnim(0, 0xe6, anim);
+    API_MapActor_TravelToAnim(0, 0xe6, 0x197);
     OvlFunc_884_2008714(3);
 }
 
@@ -200,11 +197,9 @@ extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_200884c(void)
 {
-    int anim = 0x222;
-    do { } while (anim == 0);
     __PlaySound(0x9e);
     __Func_8010560(L3eb4, 0x29, 0x20);
-    __MapActor_TravelToAnim(0, 0xc8, anim);
+    API_MapActor_TravelToAnim(0, 0xc8, 0x222);
     OvlFunc_884_2008714(5);
 }
 
@@ -215,11 +210,9 @@ extern void __MapActor_TravelToAnim(int, int, int);
 
 void OvlFunc_884_200887c(void)
 {
-    int anim = 0x263;
-    do { } while (anim == 0);
     __PlaySound(0x9e);
     __Func_8010560(L3eb4, 0x23, 0x24);
-    __MapActor_TravelToAnim(0, 0x66, anim);
+    API_MapActor_TravelToAnim(0, 0x66, 0x263);
     OvlFunc_884_2008714(6);
 }
 

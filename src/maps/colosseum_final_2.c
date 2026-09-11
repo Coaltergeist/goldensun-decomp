@@ -1,6 +1,7 @@
 /* rom_7ddb88 (overlay file 955): consolidated TU — colosseum_final_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern unsigned char gOvl_0200c414[];
 
@@ -134,22 +135,14 @@ extern void __MapActor_SetAnim(int, int);
 
 void OvlFunc_955_20088ec(void)
 {
-    int w1 = 0xea << 18;
-    int w2 = 0xf2 << 18;
-    int w3 = 0xfa << 18;
-    int w4 = 0x81 << 19;
-    int z = 0xd8 << 16;
-
-    do { } while (w1 == 0);
-
     L4838[0] = 0;
     L4834[0] = 0;
     __StopTask(OvlFunc_955_2008714);
 
-    __MapActor_SetPos(0x16, w1, z);
-    __MapActor_SetPos(0x17, w2, z);
-    __MapActor_SetPos(0x18, w3, z);
-    __MapActor_SetPos(0x19, w4, z);
+    API_MapActor_SetPos(0x16, 0x3a80000, 0xd80000);
+    API_MapActor_SetPos(0x17, 0x3c80000, 0xd80000);
+    API_MapActor_SetPos(0x18, 0x3e80000, 0xd80000);
+    API_MapActor_SetPos(0x19, 0x4080000, 0xd80000);
 
     __MapActor_SetAnim(0x1f, 10);
 }

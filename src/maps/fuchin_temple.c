@@ -1,6 +1,7 @@
 /* rom_7b2078 (overlay file 926): consolidated TU — fuchin_temple map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void __CutsceneStart(void);
 extern void __CutsceneEnd(void);
@@ -325,12 +326,6 @@ extern unsigned char Lm926_477a[] __asm__(".Lm926_477a");
 
 void OvlFunc_926_200a484(void)
 {
-    int s1 = 0x8000;
-    int s2 = 0x4000;
-    int pos = 0x132;
-
-    do { } while (s1 == 0);
-
     __CutsceneStart();
     if (!__GetFlag(0x89a) && !__GetFlag(0x895)) {
         __Func_801776c(0x18ad, 1);
@@ -338,8 +333,8 @@ void OvlFunc_926_200a484(void)
     } else {
         __PlaySound(0x9e);
         __Func_8010560(Lm926_477a, 0x4e, 0xd);
-        __MapActor_SetSpeed(0, s1, s2);
-        __MapActor_TravelToAnimWait(0, pos, 0xf8);
+        API_MapActor_SetSpeed(0, 0x8000, 0x4000);
+        API_MapActor_TravelToAnimWait(0, 0x132, 0xf8);
         __MapActor_TravelToAnim(0, 0x130, 0xd8);
         __CutsceneWait(0x14);
         __Func_8091e9c(4);
@@ -394,13 +389,8 @@ void __MapActor_Jump(int, int, int);
 void __MapActor_WaitMovement(int);
 void OvlFunc_926_200a68c(int param_1, int param_2)
 {
-    int speed_x = 0x28000;
-    int speed_y = 0x14000;
-
-    do { } while (speed_x == 0);
-
     __CutsceneStart();
-    __MapActor_SetSpeed(0, speed_x, speed_y);
+    API_MapActor_SetSpeed(0, 0x28000, 0x14000);
     __MapActor_TravelBy(0, param_1, param_2);
     __MapActor_Jump(0, 4, 0);
     __MapActor_SetAnim(0, 7);
@@ -422,22 +412,17 @@ extern unsigned char *iwram_3001ebc__a2 __asm__("iwram_3001ebc");
 
 void OvlFunc_926_200a778(void)
 {
-    int sp1 = 0xcccc;
-    int sp2 = 0x6666;
-    int dist = -0x10;
     unsigned char *actor;
-
-    do { } while (sp1 == 0);
 
     __CutsceneStart();
     __PlaySound(0xbc);
     __Func_8010560(gScript_943__0200c764, 0x4d, 8);
     actor = __MapActor_GetActor(0);
     actor[0x55] = 0;
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
     *(unsigned int *)(*(int *)iwram_3001ebc + 0x1c0) = 0x100;
     __MapActor_SetAnim(0, 2);
-    __MapActor_TravelBy(0, 0, dist);
+    API_MapActor_TravelBy(0, 0, -16);
     __CutsceneWait(0x10);
     __Func_8091e9c(2);
     __CutsceneEnd();

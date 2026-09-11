@@ -1,6 +1,7 @@
 /* rom_7ac2d8 (overlay file 924): consolidated TU — mercury_lighthouse map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __ActorMessage_Wait();
@@ -213,8 +214,7 @@ void (*arg5)(void);
 void OvlFunc_924_20088ec(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -235,7 +235,6 @@ void OvlFunc_924_20088ec(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -259,7 +258,7 @@ void OvlFunc_924_20088ec(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_924_2008528(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -273,7 +272,7 @@ void OvlFunc_924_20088ec(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L5d50__a2[dir] >> 16) / 2, (short)(L5d50__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -1180,17 +1179,11 @@ extern void __CalcStats(int);
 extern void __MapActor_SetPos(int, int, int);
 void OvlFunc_924_200ca08(void)
 {
-    int c_8000 = 0x8000;
-    int c_cccc = 0xcccc;
-    int c_6666 = 0x6666;
-    int c_105 = 0x105;
     int msg;
     int next_msg;
     int arg5;
     int arg6;
     char *actor;
-
-    do { } while (c_8000 == 0);
 
     if (*(int *)((char *)__MapActor_GetActor(8) + 8) / 0x100000 == 0x30) {
         __CutsceneStart();
@@ -1198,7 +1191,7 @@ void OvlFunc_924_200ca08(void)
         __MessageID(msg);
         __CutsceneWait(0x14);
         __Func_80925cc(3, 1);
-        __Func_8092adc(0, c_8000, 0x14);
+        API_Func_8092adc(0, 0x8000, 0x14);
         __ActorMessage_Wait(3, 0, 0x14);
         __MapActor_DoAnim(3, 3);
         __CutsceneWait(0x14);
@@ -1236,7 +1229,7 @@ void OvlFunc_924_200ca08(void)
             }
         }
         __MessageID(0x1597);
-        __MapActor_SetSpeed(3, c_cccc, c_6666);
+        API_MapActor_SetSpeed(3, 0xcccc, 0x6666);
         __MapActor_TravelToAnimWait(3, 0xb6 << 2, 0x9e << 2);
         __CutsceneWait(0x14);
         __ActorMessage_Wait(3, 0, 0x14);
@@ -1247,7 +1240,7 @@ void OvlFunc_924_200ca08(void)
         __MapActor_DoAnim(3, 4);
         __CutsceneWait(0x14);
         __ActorMessage_Wait(3, 0, 0x14);
-        __MapActor_Emote(3, c_105, 0x5a);
+        API_MapActor_Emote(3, 0x105, 0x5a);
         __MapActor_DoAnim(3, 3);
         __CutsceneWait(0x14);
         __ActorMessage_Wait(3, 0, 0x14);

@@ -1,6 +1,7 @@
 /* rom_78dee8 (overlay file 895): consolidated TU — sol map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/sol/exports.s");
 
@@ -218,11 +219,7 @@ void OvlFunc_895_200892c(void) {
     extern unsigned char Lm895_269c_arr[] __asm__(".Lm895_269c");
     extern void OvlFunc_895_2009ac8(void);
 
-    int x = 0x780000;
-    int y = 0xe80000;
     int s;
-
-    do { } while (x == 0);
 
     __SetFlag(0x144);
     *(int *)(*(unsigned char **)iwram_3001ebc_arr + 0x1c0) = 0x100;
@@ -238,7 +235,7 @@ void OvlFunc_895_200892c(void) {
         __Func_8010704(0, 1, 3, 1, 6, 5);
     }
     if (__GetFlag(0x815) != 0) {
-        __MapActor_SetPos(8, x, y);
+        API_MapActor_SetPos(8, 0x780000, 0xe80000);
         s = 14;
         __Func_8010704(2, 10, 1, 1, 6, s);
         __Func_8010704(2, 10, 1, 1, 7, s);

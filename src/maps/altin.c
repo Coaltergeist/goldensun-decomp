@@ -1,6 +1,7 @@
 /* rom_7b8cb0 (overlay file 931): consolidated TU — altin map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/altin/exports.s");
 
@@ -75,9 +76,6 @@ void OvlFunc_931_20081d0(void) {
     int flag;
     int *actor;
     int *isaac;
-    int dir = 0x4000;
-
-    do { } while (dir == 0);
 
     __CutsceneStart();
     if (__GetFlag(0x909)) {
@@ -93,7 +91,7 @@ void OvlFunc_931_20081d0(void) {
             __Func_8093554()[0x55] = flag;
             __Func_80933d4(0x10000, 0x2000);
             __Func_80933f8(actor[2], actor[3], actor[4], 1);
-            __MapActor_Face(0, dir, 0);
+            API_MapActor_Face(0, 0x4000, 0);
             __Func_8092adc(0xe, 0x3000, 0);
             __Func_8093530();
             __CutsceneWait(0x78);
@@ -208,9 +206,6 @@ void __CutsceneEnd(void);
 
 void OvlFunc_931_2008524(void)
 {
-    int speed_x = 0x8000;
-    int speed_y = 0x4000;
-    int step = -4;
     unsigned char *base;
     unsigned int i;
     int actor;
@@ -219,8 +214,6 @@ void OvlFunc_931_2008524(void)
     short r7_val;
     int r6_val;
     int t1, t2;
-
-    do { } while (speed_x == 0);
 
     base = *(unsigned char **)iwram_3001ebc;
     __CutsceneStart();
@@ -253,18 +246,18 @@ void OvlFunc_931_2008524(void)
         __Func_8010560(Lm931_1e70[index].unk0, r8_val, r7_val);
     }
 
-    __MapActor_SetSpeed(0, speed_x, speed_y);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     *(int *)(*(unsigned char **)iwram_3001ebc + (0xe0 << 1)) = 0x80 << 1;
     *(unsigned char *)(__MapActor_GetActor(0) + 0x55) = 0;
     __MapActor_SetAnim(0, 2);
 
     if (index == 6) {
-        __Func_8092208(0, 2, 0);
+        API_Func_8092208(0, 2, 0);
     } else if (index != 1) {
-        __Func_8092208(0, 2, step);
+        API_Func_8092208(0, 2, -4);
     } else {
         __Func_8092b08(0, 2);
-        __MapActor_TravelBy(0, 0, step);
+        API_MapActor_TravelBy(0, 0, -4);
     }
 
     __CutsceneWait(10);
@@ -300,33 +293,22 @@ int __GetFlag(int);
 void __MapActor_SetPos(int, int, int);
 void OvlFunc_931_2008b2c(void)
 {
-    int p_3280 = 0x3280000;
-    int p_2d70 = 0x2d70000;
-    int p_31a0 = 0x31a0000;
-    int p_3390 = 0x3390000;
-    int p_2300 = 0x2300000;
-    int p_2c60 = 0x2c60000;
-    int p_2400 = 0x2400000;
-    int p_1270 = 0x1270000;
-    int p_2e80 = 0x2e80000;
     struct Actor *actor;
 
-    do { } while (p_3280 == 0);
-
     if (__GetFlag(0x240) == 0) {
-        __MapActor_SetPos(8, p_3280, p_2d70);
+        API_MapActor_SetPos(8, 0x3280000, 0x2d70000);
         actor = __MapActor_GetActor(8);
         actor->facing = 0x3000;
-        __MapActor_SetPos(9, p_31a0, p_3390);
+        API_MapActor_SetPos(9, 0x31a0000, 0x3390000);
     }
     if (__GetFlag(0x241) == 0) {
-        __MapActor_SetPos(10, p_2300, p_2c60);
+        API_MapActor_SetPos(10, 0x2300000, 0x2c60000);
         actor = __MapActor_GetActor(10);
         actor->facing = 0x1000;
-        __MapActor_SetPos(11, p_2400, p_2c60);
+        API_MapActor_SetPos(11, 0x2400000, 0x2c60000);
     }
     if (__GetFlag(0x242) == 0) {
-        __MapActor_SetPos(15, p_1270, p_2e80);
+        API_MapActor_SetPos(15, 0x1270000, 0x2e80000);
         actor = __MapActor_GetActor(15);
         actor->facing = 0xb000;
     } else {
@@ -357,16 +339,12 @@ struct Actor931 {
 };
 
 void OvlFunc_931_2008d08(void) {
-    int a = 0x400000;
-    int b = 0x1900000;
     struct Actor931 *actor;
     int flags;
 
-    do { } while (a == 0);
-
     flags = *(int *)iwram_3001e40 & 3;
     if (flags == 0) {
-        actor = (struct Actor931 *)__CreateActor(0xde, a, 0, b);
+        actor = (struct Actor931 *)API_CreateActor(0xde, 0x400000, 0, 0x1900000);
         if (actor != 0) {
             actor->unk64 = 0x14;
             actor->unk66 = flags;

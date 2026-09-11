@@ -1,6 +1,7 @@
 /* rom_7ec968 (overlay file 963): consolidated TU — suhalla_gate_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/suhalla_gate_1/exports.s");
 
@@ -153,10 +154,8 @@ void OvlFunc_963_2008288(void)
 {
     int r5;
     short r6;
-    int step = -0x10;
-    unsigned char *base;
 
-    do { } while (step == 0);
+    unsigned char *base;
 
     base = *(unsigned char **)iwram_3001ebc;
     base += 0xb6 << 1;
@@ -168,7 +167,7 @@ void OvlFunc_963_2008288(void)
     __WaitFrames(4);
     __CopyMapTiles(0x44, 0x24, 0x47, 8, r5, r5);
     __WaitFrames(4);
-    __Func_8092208(0, 3, step);
+    API_Func_8092208(0, 3, -16);
     __Func_8091e9c(r6);
 }
 
@@ -195,21 +194,15 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_963_2008334(void)
 {
-    int speed1 = 0x80 << 9;
-    int speed2 = 0x80 << 8;
-    int y = 0xc0 << 1;
-    int step = 0x80 << 7;
     int r5;
 
-    do { } while (speed1 == 0);
-
     __CutsceneStart();
-    __MapActor_SetSpeed(8, speed1, speed2);
-    __MapActor_SetSpeed(9, speed1, speed2);
-    __MapActor_TravelToAnim(8, 0x88, y);
-    __MapActor_TravelToAnimWait(9, 0x98, y);
-    __Func_8092adc(8, step, 0);
-    __Func_8092adc(9, step, 0);
+    API_MapActor_SetSpeed(8, 0x10000, 0x8000);
+    API_MapActor_SetSpeed(9, 0x10000, 0x8000);
+    API_MapActor_TravelToAnim(8, 0x88, 0x180);
+    API_MapActor_TravelToAnimWait(9, 0x98, 0x180);
+    API_Func_8092adc(8, 0x4000, 0);
+    API_Func_8092adc(9, 0x4000, 0);
     __MapActor_SetAnim(8, 1);
     r5 = 7;
     __Func_8010704(6, 0x1b, 1, 1, r5, 0x1b);
@@ -229,73 +222,58 @@ extern void __MapActor_SetPos(int, int, int);
 
 void OvlFunc_963_20083c4(void)
 {
-    int speed1 = 0x19999;
-    int speed2 = 0xcccc;
-    int y1 = 0xdb << 1;
-    int step_c0 = 0xc0 << 8;
-    int step_d0 = 0xd0 << 8;
-    int step_e0 = 0xe0 << 8;
-    int step_b0 = 0xb0 << 8;
-    int step_a0 = 0xa0 << 7;
-    int emote = 0x80 << 1;
-    int surprise = 0x81 << 1;
-    int y2 = 0xd2 << 1;
-    int y3 = 0xd0 << 1;
-    int y_1af = 0x1af;
     int r5;
     void *act;
     unsigned char *base;
 
-    do { } while (speed1 == 0);
-
     __CutsceneStart();
-    __MapActor_SetSpeed(0, speed1, speed2);
-    __MapActor_TravelToAnimWait(0, 0x78, y1);
-    __Func_8092adc(0, step_c0, 0);
+    API_MapActor_SetSpeed(0, 0x19999, 0xcccc);
+    API_MapActor_TravelToAnimWait(0, 0x78, 0x1b6);
+    API_Func_8092adc(0, 0xc000, 0);
     act = __MapActor_GetActor(0);
     if (act != 0) {
         __MapActor_SetPos(0xb, *(int *)((char *)act + 8), *(int *)((char *)act + 0x10));
     }
     __WaitFrames(1);
-    __MapActor_SetSpeed(0xb, speed1, speed2);
-    __MapActor_TravelToAnimWait(0xb, 0x6c, y_1af);
-    __Func_8092adc(0xb, step_d0, 0xa);
-    __MapActor_Emote(0xb, emote, 0x14);
-    __Func_8092adc(0xb, step_d0, 0x14);
-    __Func_8092adc(0xb, 0, 0x28);
-    __Func_8092adc(0xb, step_d0, 0x28);
-    __Func_8092adc(0xb, 0, 0x14);
+    API_MapActor_SetSpeed(0xb, 0x19999, 0xcccc);
+    API_MapActor_TravelToAnimWait(0xb, 0x6c, 0x1af);
+    API_Func_8092adc(0xb, 0xd000, 0xa);
+    API_MapActor_Emote(0xb, 0x100, 0x14);
+    API_Func_8092adc(0xb, 0xd000, 0x14);
+    API_Func_8092adc(0xb, 0, 0x28);
+    API_Func_8092adc(0xb, 0xd000, 0x28);
+    API_Func_8092adc(0xb, 0, 0x14);
     __Func_809259c(0xb, 2);
     __MessageID(0x2654);
     __ActorMessage_Wait(0xb, 0, 0x28);
-    __MapActor_Emote(8, emote, 0);
+    API_MapActor_Emote(8, 0x100, 0);
     __Func_80925cc(8, 2);
     __ActorMessage_Wait(8, 0, 0xa);
-    __MapActor_TravelToAnimWait(0xb, 0x84, y2);
-    __Func_8092adc(0xb, step_d0, 0);
-    __Func_8092adc(0, step_e0, 0);
-    __MapActor_TravelToAnimWait(0xb, 0x8a, y3);
-    __Func_8092adc(0xb, step_b0, 0xa);
+    API_MapActor_TravelToAnimWait(0xb, 0x84, 0x1a4);
+    API_Func_8092adc(0xb, 0xd000, 0);
+    API_Func_8092adc(0, 0xe000, 0);
+    API_MapActor_TravelToAnimWait(0xb, 0x8a, 0x1a0);
+    API_Func_8092adc(0xb, 0xb000, 0xa);
     __Func_809259c(0xb, 2);
     __ActorMessage_Wait(0xb, 0, 0x28);
     __Func_80925cc(8, 2);
     __ActorMessage_Wait(8, 0, 0x28);
-    __MapActor_Emote(9, emote, 0x14);
+    API_MapActor_Emote(9, 0x100, 0x14);
     __Func_80925cc(9, 2);
     __ActorMessage_Wait(9, 0, 0x14);
-    __Func_8092adc(0, step_c0, 0);
-    __MapActor_TravelToAnimWait(0xb, 0x90, y2);
+    API_Func_8092adc(0, 0xc000, 0);
+    API_MapActor_TravelToAnimWait(0xb, 0x90, 0x1a4);
     __CutsceneWait(0x14);
     __Func_80925cc(9, 2);
     __ActorMessage_Wait(9, 0, 0x14);
-    __MapActor_Surprise(9, surprise);
+    API_MapActor_Surprise(9, 0x102);
     __Func_809259c(9, 3);
     __ActorMessage_Wait(9, 0, 0x14);
-    __Func_8092adc(0xb, step_a0, 0x14);
+    API_Func_8092adc(0xb, 0x5000, 0x14);
     __Func_8093054(0xb, 0);
     if (__GetFlag(0x9b << 4)) {
-        __Func_8092adc(0xb, step_d0, 0x28);
-        __MapActor_Surprise(0xb, surprise);
+        API_Func_8092adc(0xb, 0xd000, 0x28);
+        API_MapActor_Surprise(0xb, 0x102);
         __CutsceneWait(0x28);
         __ActorMessage_Wait(0xb, 0, 0xa);
     } else {
@@ -303,22 +281,22 @@ void OvlFunc_963_20083c4(void)
         base += 0xec << 1;
         *(short *)base += 1;
     }
-    __Func_8092adc(0xb, step_a0, 0xa);
+    API_Func_8092adc(0xb, 0x5000, 0xa);
     __ActorMessage_Wait(0xb, 0, 0x28);
-    __MapActor_Emote(0xb, emote, 0x28);
-    __Func_8092adc(0xb, step_b0, 0xa);
+    API_MapActor_Emote(0xb, 0x100, 0x28);
+    API_Func_8092adc(0xb, 0xb000, 0xa);
     __ActorMessage_Wait(0xb, 0, 0xa);
-    __MapActor_TravelToAnimWait(0xb, 0x8a, y3);
-    __Func_8092adc(0xb, step_b0, 0x14);
+    API_MapActor_TravelToAnimWait(0xb, 0x8a, 0x1a0);
+    API_Func_8092adc(0xb, 0xb000, 0x14);
     __Func_809259c(8, 2);
     __ActorMessage_Wait(8, 0, 0xa);
-    __MapActor_Surprise(0xb, surprise);
+    API_MapActor_Surprise(0xb, 0x102);
     __Func_80925cc(0xb, 1);
     __CutsceneWait(0x14);
     __ActorMessage_Wait(0xb, 0, 0x14);
     __Func_80925cc(9, 2);
     __CutsceneWait(0x14);
-    __Func_8092adc(0, step_e0, 0xa);
+    API_Func_8092adc(0, 0xe000, 0xa);
     __Func_80925cc(9, 1);
     __CutsceneWait(0x14);
     __ActorMessage_Wait(9, 0, 0xa);
@@ -327,7 +305,7 @@ void OvlFunc_963_20083c4(void)
     __Func_80925cc(0xb, 1);
     __CutsceneWait(0x14);
     __ActorMessage_Wait(0xb, 0, 0x14);
-    __Func_8092adc(0xb, step_a0, 0xa);
+    API_Func_8092adc(0xb, 0x5000, 0xa);
     __ActorMessage_Wait(0xb, 0, 0xa);
     __MapActor_SetAnim(0xb, 2);
     act = __MapActor_GetActor(0);

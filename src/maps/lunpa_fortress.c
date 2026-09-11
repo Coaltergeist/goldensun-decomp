@@ -194,8 +194,7 @@ void (*arg5)(void);
 void OvlFunc_959_2008608(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -216,7 +215,6 @@ void OvlFunc_959_2008608(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -240,7 +238,7 @@ void OvlFunc_959_2008608(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_959_2008244(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -254,7 +252,7 @@ void OvlFunc_959_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L5ed8__a2[dir] >> 16) / 2, (short)(L5ed8__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -1059,9 +1057,6 @@ void OvlFunc_959_200a528(void) {}
 void OvlFunc_959_200a52c(void)
 {
     int *actor;
-    int a = 0xb333, b = 0x5999;
-    int x1 = 0x1c8, x2 = 0x1b8;
-    do { } while (a == 0);
 
     actor = (int *)__MapActor_GetActor(0);
     if (actor != 0) {
@@ -1076,12 +1071,12 @@ void OvlFunc_959_200a52c(void)
         __MapActor_SetPos(1, actor[2], actor[4]);
     }
     __Func_8092adc(0, 0, 0);
-    __MapActor_SetSpeed(2, a, b);
-    __MapActor_TravelToAnim(2, x1, 0xc0);
-    __MapActor_SetSpeed(3, a, b);
-    __MapActor_TravelToAnim(3, x2, 0xb8);
-    __MapActor_SetSpeed(1, a, b);
-    __MapActor_TravelToAnim(1, 0x1c0, 0xf0);
+    API_MapActor_SetSpeed(2, 0xb333, 0x5999);
+    API_MapActor_TravelToAnim(2, 0x1c8, 0xc0);
+    API_MapActor_SetSpeed(3, 0xb333, 0x5999);
+    API_MapActor_TravelToAnim(3, 0x1b8, 0xb8);
+    API_MapActor_SetSpeed(1, 0xb333, 0x5999);
+    API_MapActor_TravelToAnim(1, 0x1c0, 0xf0);
     __MapActor_WaitMovement(2);
     __MapActor_Face(2, 0xc, 0);
     __MapActor_WaitMovement(1);
@@ -1177,13 +1172,11 @@ extern int __Func_8091c7c(int, int);
 
 void OvlFunc_959_200cbfc(void)
 {
-    int flag1 = 0x226;
     int msg;
     unsigned long long ull;
     unsigned long zero;
-    do { } while (flag1 == 0);
 
-    if (__GetFlag(flag1)) {
+    if (API_GetFlag(0x226)) {
         __MessageID(0x2434);
         __ActorMessage(0x14, 0);
         return;
@@ -1191,7 +1184,7 @@ void OvlFunc_959_200cbfc(void)
 
     __CutsceneStart();
     __MapActor_Face(0x14, 0, 0);
-    if (!__GetFlag(0x227)) {
+    if (!API_GetFlag(0x227)) {
         __MapActor_Jump(0x14, 4, 0);
         __MapActor_SetIdle(0x14);
         __MapActor_WaitScript(0x14);
@@ -1219,12 +1212,12 @@ void OvlFunc_959_200cbfc(void)
     if (__Func_8091c7c(0, 0) == 0) {
         __MessageID(msg + 2);
         __ShowActorMessage_NoWait(0x14, 0);
-        __SetFlag(flag1);
+        API_SetFlag(0x226);
     } else {
         __MessageID(msg + 3);
         __ShowActorMessage_NoWait(0x14, 0);
     }
-    __SetFlag(0x227);
+    API_SetFlag(0x227);
     __CutsceneEnd();
 }
 

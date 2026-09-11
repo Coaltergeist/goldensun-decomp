@@ -79,11 +79,8 @@ void *BilibinRooms_GetEvents(void) {
 
 void OvlFunc_908_2008124(void)
 {
-    int a = 0x3000;
     unsigned char *p;
     int v5;
-
-    do { } while (a == 0);
 
     p = __MapActor_GetActor(0);
     v5 = *(unsigned short *)(p + 6);
@@ -96,7 +93,7 @@ void OvlFunc_908_2008124(void)
             __MapActor_Face(0x11, 0, 0);
             __CutsceneWait(10);
             __Func_8093054(0x11, 0);
-            __Func_8092adc(0x11, a, 10);
+            API_Func_8092adc(0x11, 0x3000, 10);
         } else {
             __MessageID(0x16f7);
             __ActorMessage(0x11, 0);
@@ -112,14 +109,11 @@ extern void __Func_8092adc(int, int, int);
 extern void __CutsceneEnd(void);
 
 void OvlFunc_908_20081a8(void) {
-    int r1v = 0xc0 << 8;
-    do { } while (r1v == 0);
-
     __CutsceneStart();
     __MessageID(0x13ed);
     __MapActor_Face(0x15, 0, 0);
     __ActorMessage(0x15, 0);
-    __Func_8092adc(0x15, r1v, 10);
+    API_Func_8092adc(0x15, 0xc000, 10);
     __CutsceneEnd();
 }
 
@@ -146,10 +140,7 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_908_20081e0(void)
 {
-    int w = 0x80 << 7;
     unsigned short *p;
-
-    do { } while (w == 0);
 
     __CutsceneStart();
     __MessageID(0x13f0);
@@ -162,16 +153,13 @@ void OvlFunc_908_20081e0(void)
         *p = *p + 1;
     }
     __ActorMessage(0x18, 0);
-    __Func_8092adc(0x18, w, 10);
+    API_Func_8092adc(0x18, 0x4000, 10);
     __CutsceneEnd();
 }
 
 void OvlFunc_908_2008250(void)
 {
-    int w = 0x80 << 7;
     unsigned short *p;
-
-    do { } while (w == 0);
 
     __CutsceneStart();
     __MessageID(0x13f6);
@@ -183,7 +171,7 @@ void OvlFunc_908_2008250(void)
         *p = *p + 1;
     }
     __ActorMessage(0x1b, 0);
-    __Func_8092adc(0x1b, w, 10);
+    API_Func_8092adc(0x1b, 0x4000, 10);
     __CutsceneEnd();
 }
 
@@ -232,27 +220,23 @@ extern void __Func_809259c(int, int);
 extern void __MapActor_Surprise(int, int);
 extern void __SetFlag(int);
 void OvlFunc_908_200835c(void) {
-    int flag = 0xc0 << 2;
-    int a = 0x80 << 8;
-    int b = 0xc0 << 8;
-    do { } while (flag == 0);
     __CutsceneStart();
-    if (!__GetFlag(flag)) {
+    if (!API_GetFlag(0x300)) {
         __MessageID(0x16ff);
         __ActorMessage(0x15, 0);
-        __Func_8092adc(0x15, a, 0x14);
+        API_Func_8092adc(0x15, 0x8000, 0x14);
         __ActorMessage(0x15, 0);
         __Func_809259c(0x16, 2);
         __MapActor_Surprise(0x16, 0x102);
         __CutsceneWait(0x3c);
         __ActorMessage(0x16, 0);
         __CutsceneWait(0xa);
-        __SetFlag(flag);
+        API_SetFlag(0x300);
     }
     __MapActor_Face(0x15, 0, 0);
     __MessageID(0x1702);
     __ActorMessage(0x15, 0);
-    __Func_8092adc(0x15, b, 0xa);
+    API_Func_8092adc(0x15, 0xc000, 0xa);
     __CutsceneEnd();
 }
 

@@ -1,6 +1,7 @@
 /* rom_794ac0 (overlay file 899): consolidated TU — vault_rooms_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/exports.s");
 
@@ -472,20 +473,10 @@ extern void __MapActor_TravelToAnimWait(int, int, int);
 
 void OvlFunc_899_20099e4(void)
 {
-    int speed1;
-    int speed2;
-    int target_x;
-    int target_y;
     unsigned int r3;
 
-    speed1 = 0x80 << 8;
-    speed2 = 0x80 << 7;
-    target_x = 0xba << 2;
-    target_y = 0xcc << 1;
-    do { } while (speed1 == 0);
-
-    __MapActor_SetSpeed(0, speed1, speed2);
-    __MapActor_TravelToAnimWait(0, target_x, target_y);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
+    API_MapActor_TravelToAnimWait(0, 0x2e8, 0x198);
 
     if (__GetFlag(0x854) == 0) {
         __CutsceneStart();
@@ -523,13 +514,6 @@ void OvlFunc_899_2009e80(void) {
     int a;
     unsigned short v;
     int n6;
-    int surprise_spd = 0x81 << 1;
-    int spd1a = 0x80 << 11;
-    int spd1b = 0x80 << 10;
-    int spd2a = 0xe0 << 10;
-    int spd2b = 0xe0 << 9;
-
-    do { } while (surprise_spd == 0);
 
     __CutsceneWait(0x1e);
     __Func_80925cc(0x18, 1);
@@ -537,14 +521,14 @@ void OvlFunc_899_2009e80(void) {
     __MessageID((int) (&_MSG_12a0));
     OvlFunc_899_200c5f4(0x18, 0x14);
     __Func_8092adc(0x19, 0, 0x14);
-    __MapActor_Surprise(0x19, surprise_spd);
+    API_MapActor_Surprise(0x19, 0x102);
     __Func_80925cc(0x19, 2);
     OvlFunc_899_200c5f4(0x19, 0x14);
     __MapActor_DoAnim(0x18, 4);
     __CutsceneWait(0x14);
     OvlFunc_899_200c5f4(0x18, 0x14);
-    __MapActor_SetSpeed(0x18, spd1a, spd1b);
-    __MapActor_SetSpeed(0x19, spd2a, spd2b);
+    API_MapActor_SetSpeed(0x18, 0x40000, 0x20000);
+    API_MapActor_SetSpeed(0x19, 0x38000, 0x1c000);
     __MapActor_SetBehavior(0x19, (int) gScript_899__0200d830);
     __MapActor_SetBehavior(0x18, (int) gScript_899__0200d560);
     __MapActor_WaitScript(0x18);

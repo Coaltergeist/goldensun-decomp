@@ -1,6 +1,7 @@
 /* rom_7db0c8 (overlay file 954): consolidated TU — colosseum_final_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void OvlFunc_954_2008238();
 
@@ -82,12 +83,9 @@ void OvlFunc_954_2008270(void)
     int speed;
     int accel;
     int zero;
-    int y1 = 0x80000;
-    int y2 = 0x200000;
+
     int a;
     int b;
-
-    do { } while (y1 == 0);
 
     __SetFlag(0x301);
     actor1 = __MapActor_GetActor(0xd);
@@ -102,12 +100,12 @@ void OvlFunc_954_2008270(void)
     accel = 0x6666;
     actor1->accel = accel;
     actor1->speed = speed;
-    __Actor_TravelTo(actor1, actor1->pos.x, y1, actor1->pos.z);
+    API_Actor_TravelTo(actor1, actor1->pos.x, 0x80000, actor1->pos.z);
     actor2 = __MapActor_GetActor(0xe);
     actor2->__unk55 = zero;
     actor2->speed = speed;
     actor2->accel = accel;
-    __Actor_TravelTo(actor2, actor2->pos.x, y2, actor2->pos.z);
+    API_Actor_TravelTo(actor2, actor2->pos.x, 0x200000, actor2->pos.z);
     __Actor_WaitMovement(actor2);
     __CutsceneWait(0x2d);
     a = 0x29;

@@ -1,6 +1,7 @@
 /* rom_793768 (overlay file 898): consolidated TU — vault_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void OvlFunc_898_200973c();
 extern void OvlFunc_898_200890c();
@@ -123,10 +124,7 @@ extern void __Func_8092adc(int, int, int);
 
 void OvlFunc_898_2008614(void)
 {
-    int w = 0xa0 << 7;
     unsigned short *p;
-
-    do { } while (w == 0);
 
     __CutsceneStart();
     __MessageID(0x1223);
@@ -137,7 +135,7 @@ void OvlFunc_898_2008614(void)
         *p = *p + 1;
     }
     __ActorMessage(9, 0);
-    __Func_8092adc(9, w, 0);
+    API_Func_8092adc(9, 0x5000, 0);
     __CutsceneEnd();
 }
 

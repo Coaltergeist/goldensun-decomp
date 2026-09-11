@@ -828,19 +828,14 @@ extern void *Lm922_2488 __asm__(".Lm922_2488");
 
 void OvlFunc_922_2009b1c(void)
 {
-    int a = 0xf80000;
-    int b = 0x80000;
-    int c = 0x980000;
     int mask = ~0x20;
     int zero;
     unsigned char *actor;
     unsigned char *sprite;
     unsigned char *buf;
 
-    do { } while (a == 0);
-
     zero = 0;
-    actor = (unsigned char *)__CreateActor(0x16, a, b, c);
+    actor = (unsigned char *)API_CreateActor(0x16, 0xf80000, 0x80000, 0x980000);
     if (actor != 0) {
         sprite = *(unsigned char **)(actor + 0x50);
         sprite[0x26] = zero;

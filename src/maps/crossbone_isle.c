@@ -1,6 +1,7 @@
 /* rom_7ced6c (overlay file 946): consolidated TU — crossbone_isle map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/crossbone_isle/exports.s");
 
@@ -193,8 +194,7 @@ void (*arg5)(void);
 void OvlFunc_946_2008608(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -215,7 +215,6 @@ void OvlFunc_946_2008608(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -239,7 +238,7 @@ void OvlFunc_946_2008608(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_946_2008244(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -253,7 +252,7 @@ void OvlFunc_946_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L315c__a2[dir] >> 16) / 2, (short)(L315c__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -416,11 +415,6 @@ extern void __Func_8012078(int, int, int, int);
 
 void OvlFunc_946_20095d0(unsigned int param_1) {
     struct Actor *actor;
-    int w1 = 0x90 << 16;
-    int w2 = 0xbc << 18;
-    int z = 0xa0 << 17;
-
-    do { } while (w1 == 0);
 
     actor = __MapActor_GetActor(0xe);
     if (actor != 0) {
@@ -429,8 +423,8 @@ void OvlFunc_946_20095d0(unsigned int param_1) {
     actor = __MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
 
-    __Func_8012078(0, w1, z, 0xfd);
-    __Func_8012078(0, w2, z, 0xfd);
+    API_Func_8012078(0, 0x900000, 0x1400000, 0xfd);
+    API_Func_8012078(0, 0x2f00000, 0x1400000, 0xfd);
 
     __SetFlag(0x243);
 }

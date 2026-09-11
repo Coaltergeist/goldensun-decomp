@@ -1,6 +1,7 @@
 /* rom_79dd90 (overlay file 910): consolidated TU — mccoys_palace_ext map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/exports.s");
 
@@ -108,20 +109,14 @@ extern unsigned char *iwram_3001ebc;
 
 void OvlFunc_910_200845c(void)
 {
-  int sp1 = 0x8000;
-  int sp2 = 0x4000;
-  int t = -0x10;
-
-  do { } while (sp1 == 0);
-
   __CutsceneStart();
   if (__GetFlag(0x200) == 0) {
     OvlFunc_910_20088e8();
   }
-  __MapActor_SetSpeed(0, sp1, sp2);
+  API_MapActor_SetSpeed(0, 0x8000, 0x4000);
   *(unsigned int *)(iwram_3001ebc + 0x1c0) = 0x100;
   __MapActor_SetAnim(0, 2);
-  __Func_8092208(0, 2, t);
+  API_Func_8092208(0, 2, -16);
   __CutsceneWait(0x10);
   __Func_8091e9c(2);
   __CutsceneEnd();

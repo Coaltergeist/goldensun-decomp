@@ -1,6 +1,7 @@
 /* rom_7ebdfc (overlay file 961): consolidated TU — suhalla map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/suhalla/exports.s");
 
@@ -99,15 +100,13 @@ void OvlFunc_961_2008120(void)
 {
     short idx;
     unsigned short x, y;
-    int n = -16;
 
-    do { } while (n == 0);
     idx = *(short *)((char *)iwram_3001ebc + 0x16c);
     x = Lm961_5d0[idx][0];
     y = Lm961_5d0[idx][1];
     __PlaySound(0x9e);
     __Func_8010560(Lm961_5e8, x, y);
-    __Func_80922c4(0, 0, n);
+    API_Func_80922c4(0, 0, -16);
     iwram_3001ebc->transitionSpeed = 0x10;
     __Func_8091e9c(idx);
 }
@@ -117,15 +116,13 @@ void OvlFunc_961_2008194(void)
 {
     short idx;
     unsigned short x, y;
-    int n = -16;
 
-    do { } while (n == 0);
     idx = *(short *)((char *)iwram_3001ebc + 0x16c);
     x = Lm961_5d0[idx][0];
     y = Lm961_5d0[idx][1];
     __PlaySound(0x9e);
     __Func_8010560(Lm961_5fe, x, y);
-    __Func_80922c4(0, 0, n);
+    API_Func_80922c4(0, 0, -16);
     iwram_3001ebc->transitionSpeed = 0x10;
     __Func_8091e9c(idx);
 }

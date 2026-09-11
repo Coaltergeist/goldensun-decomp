@@ -1,6 +1,7 @@
 /* rom_7b4558 (overlay file 927): consolidated TU — mogall_forest map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/mogall_forest/exports.s");
 
@@ -196,8 +197,7 @@ void (*arg5)(void);
 void OvlFunc_927_2008608(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -218,7 +218,6 @@ void OvlFunc_927_2008608(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -242,7 +241,7 @@ void OvlFunc_927_2008608(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_927_2008244(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -256,7 +255,7 @@ void OvlFunc_927_2008608(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L2ef8__a2[dir] >> 16) / 2, (short)(L2ef8__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -390,28 +389,23 @@ void __SetFlag(int);
 void __CutsceneWait(int);
 void OvlFunc_927_2008f94(void)
 {
-    int sp1 = 0x4000;
-    int sp2 = 0x8000;
-    int id = 9;
     int s1;
     int s2;
     struct Pk pk;
-
-    do { } while (sp1 == 0);
 
     __CutsceneStart();
     if (OvlFunc_927_2008474(&pk)) {
         OvlFunc_927_2008608(pk);
         if (pk.b == 9 && (pk.z >> 20) == 0x1a) {
             __SetFlag(0x310);
-            __MapActor_SetAnim(id, 3);
-            __MapActor_SetSpeed(id, sp1, sp2);
-            __MapActor_TravelBy(id, 0, -0x10);
+            API_MapActor_SetAnim(9, 3);
+            API_MapActor_SetSpeed(9, 0x4000, 0x8000);
+            API_MapActor_TravelBy(9, 0, -0x10);
             __CutsceneWait(0x2d);
-            __MapActor_SetAnim(id, 8);
+            API_MapActor_SetAnim(9, 8);
             __PlaySound(0xf0);
-            __Func_8092b08(id, 1);
-            *((char *)__MapActor_GetActor(id) + 0x23) = 2;
+            __Func_8092b08(9, 1);
+            *((char *)__MapActor_GetActor(9) + 0x23) = 2;
             s2 = 0x19;
             s1 = 0x1f;
             __Func_8010704(0x26, 0x1b, 4, 2, s1, s2);
@@ -629,10 +623,6 @@ extern void __Func_8092950(int, int);
 void OvlFunc_927_2009818(void)
 {
     struct Actor *actor;
-    int x = 0x1a80000;
-    int y = 0x1e00000;
-
-    do { } while (x == 0);
 
     __CutsceneStart();
     OvlFunc_927_2008ea8(0xe, 1);
@@ -644,7 +634,7 @@ void OvlFunc_927_2009818(void)
     __Actor_SetSpriteFlags(actor, 0);
     __CutsceneWait(0x1e);
     __SetFlag(0x305);
-    __MapActor_SetPos(0x11, x, y);
+    API_MapActor_SetPos(0x11, 0x1a80000, 0x1e00000);
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009880.s");

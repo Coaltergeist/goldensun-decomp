@@ -1,6 +1,7 @@
 /* rom_7d0e88 (overlay file 947): consolidated TU — crossbone_isle_dungeon_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern int OvlFunc_947_200858c();
 
@@ -190,8 +191,7 @@ void (*arg5)(void);
 void OvlFunc_947_20088ec(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -212,7 +212,6 @@ void OvlFunc_947_20088ec(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -236,7 +235,7 @@ void OvlFunc_947_20088ec(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_947_2008528(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -250,7 +249,7 @@ void OvlFunc_947_20088ec(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L2ca0__a2[dir] >> 16) / 2, (short)(L2ca0__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -457,25 +456,16 @@ void OvlFunc_947_200975c(void)
     extern void OvlFunc_947_2008ec8(int);
     extern void OvlFunc_947_2008f58(int);
 
-    int a = 0x80 << 9;
-    int b = 0x80 << 6;
-    int c = 0xd8 << 17;
-    int flag_id = 0x80 << 2;
-    int posX = 0x88 << 17;
-    int posY1 = 0xd0 << 17;
-    int posY2 = 0xda << 17;
     int s1;
     int s2;
     int flag;
 
-    do { } while (a == 0);
-
     __CutsceneStart();
-    __Func_80933d4(a, b);
-    __Func_80933f8(0x1190000, -1, c, 1);
+    API_Func_80933d4(0x10000, 0x2000);
+    API_Func_80933f8(0x1190000, -1, 0x1b00000, 1);
     __Func_8093530();
     __Func_801776c(0x1528, 1);
-    flag = __GetFlag(flag_id);
+    flag = API_GetFlag(0x200);
     if (!flag) {
         __PlaySound(0xe8);
         __Func_8010560(Lm947_2da8, 0x54, 0x18);
@@ -484,7 +474,7 @@ void OvlFunc_947_200975c(void)
         __Func_8092b08(0x10, 1);
         ((unsigned char *)__MapActor_GetActor(0x10))[0x55] = flag;
         *(int *)((char *)__MapActor_GetActor(0x10) + 0xc) = 0xffe00000;
-        __MapActor_SetPos(0x10, posX, posY1);
+        API_MapActor_SetPos(0x10, 0x1100000, 0x1a00000);
         __MapActor_SetAnim(0x10, 1);
         __Func_8010560(Lm947_2dfc, 0x50, 0x18);
         __Func_8010560(Lm947_2e50, 0x50, 0x1c);
@@ -502,7 +492,7 @@ void OvlFunc_947_200975c(void)
         s1 = 0x18;
         s2 = 8;
         __Func_8010704(0x18, 3, 1, 1, s1, s2);
-        __SetFlag(flag_id);
+        API_SetFlag(0x200);
     } else {
         __PlaySound(0xe8);
         __Func_8010560(Lm947_2dd2, 0x54, 0x18);
@@ -510,7 +500,7 @@ void OvlFunc_947_200975c(void)
         __PlaySound(0xe6);
         ((unsigned char *)__MapActor_GetActor(0x10))[0x55] = 0;
         *(int *)((char *)__MapActor_GetActor(0x10) + 0xc) = 0xffe00000;
-        __MapActor_SetPos(0x10, posX, posY2);
+        API_MapActor_SetPos(0x10, 0x1100000, 0x1b40000);
         __MapActor_SetAnim(0x10, 2);
         s1 = 2;
         s2 = 4;
@@ -527,7 +517,7 @@ void OvlFunc_947_200975c(void)
         s1 = 0x18;
         s2 = 8;
         __Func_8010704(0x18, 4, 1, 1, s1, s2);
-        __ClearFlag(flag_id);
+        API_ClearFlag(0x200);
     }
     __CutsceneEnd();
 }
@@ -675,14 +665,12 @@ void __Func_8092950(int, int);
 void OvlFunc_947_200a384(void)
 {
     int flag;
-    int f201 = 0x201;
+
     int r3;
     int r2;
     unsigned char *actor;
 
-    do { } while (f201 == 0);
-
-    flag = __GetFlag(0x203);
+    flag = API_GetFlag(0x203);
     if (flag == 0) {
         __SetFlag(0x202);
         __CutsceneStart();
@@ -696,7 +684,7 @@ void OvlFunc_947_200a384(void)
         __CutsceneWait(0x14);
         __StartTask(OvlFunc_947_200a230, 0xc80);
         __CutsceneWait(0x28);
-        if (__GetFlag(f201) != 0) {
+        if (API_GetFlag(0x201) != 0) {
             actor = (unsigned char *)__MapActor_GetActor(0xc);
             *(void **)(actor + 0x6c) = OvlFunc_947_200a2d8;
             __MapActor_SetAnim(0xc, 6);
@@ -706,7 +694,7 @@ void OvlFunc_947_200a384(void)
             r2 = 0xd;
             *(int *)(actor + 0x6c) = flag;
             __Func_8010704(0x11, 0xd, 1, 1, r3, r2);
-            __ClearFlag(f201);
+            API_ClearFlag(0x201);
             __Func_8092950(0xc, 0);
             __MapActor_SetBehavior(0xc, 1);
         } else {

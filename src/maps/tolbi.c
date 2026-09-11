@@ -1,6 +1,7 @@
 /* rom_7d4af4 (overlay file 949): consolidated TU — tolbi map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/tolbi/exports.s");
 
@@ -113,14 +114,11 @@ extern void __Func_8092adc(int, int, int);
 extern int _MSG_1fa0;
 
 void OvlFunc_949_2008528(void) {
-    int w1 = 0xc0 << 8;
-    int w2 = 0x80 << 8;
-    do { } while (w1 == 0);
     __CutsceneStart();
     __MessageID((int)(&_MSG_1fa0));
-    __Func_8092adc(0x19, w1, 0);
+    API_Func_8092adc(0x19, 0xc000, 0);
     __ActorMessage(0x19, 0);
-    __Func_8092adc(0x19, w2, 0);
+    API_Func_8092adc(0x19, 0x8000, 0);
     __ActorMessage(0x19, 0);
     __CutsceneEnd();
 }
@@ -128,10 +126,8 @@ void OvlFunc_949_2008528(void) {
 extern void __Func_809259c(int, int);
 
 void OvlFunc_949_2008568(void) {
-    int w = 0x80 << 7;
-    do { } while (w == 0);
     __CutsceneStart();
-    __Func_8092adc(0x1a, w, 0);
+    API_Func_8092adc(0x1a, 0x4000, 0);
     __Func_809259c(0x1a, 2);
     __MessageID(0x1fa2);
     __ActorMessage(0x1a, 0);

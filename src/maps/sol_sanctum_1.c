@@ -2,6 +2,7 @@
 /* rom_78b2ac (overlay file 890): consolidated TU — sol_sanctum_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/sol_sanctum_1/exports.s");
 
@@ -33,35 +34,30 @@ void *SolSanctum1_GetEvents(void) {
 
 void OvlFunc_890_2008054(void)
 {
-    int f201 = 0x201;
-    int f200 = 0x200;
-
-    do { } while (f201 == 0);
-
     if (OvlFunc_890_200a5b0()) {
-        if (!__GetFlag(f201)) {
+        if (!API_GetFlag(0x201)) {
             __CutsceneStart();
             __Func_8091200(0x2051cc, 1);
             __Func_8091254(0x14);
-            __SetFlag(f201);
-            __ClearFlag(f200);
-            __ClearFlag(0x202);
-            if (!__GetFlag(0x80a)) {
+            API_SetFlag(0x201);
+            API_ClearFlag(0x200);
+            API_ClearFlag(0x202);
+            if (!API_GetFlag(0x80a)) {
                 OvlFunc_890_20089f4();
             }
-            if (OvlFunc_890_200a5b0() && !__GetFlag(0x811)) {
+            if (OvlFunc_890_200a5b0() && !API_GetFlag(0x811)) {
                 OvlFunc_890_2009be8();
             }
             __CutsceneEnd();
         }
     } else {
-        if (!__GetFlag(f200)) {
+        if (!API_GetFlag(0x200)) {
             __CutsceneStart();
             __Func_8091200(0x10000, 1);
             __Func_8091254(0x14);
-            __SetFlag(f200);
-            __ClearFlag(f201);
-            __ClearFlag(0x202);
+            API_SetFlag(0x200);
+            API_ClearFlag(0x201);
+            API_ClearFlag(0x202);
             __CutsceneEnd();
         }
     }
@@ -69,30 +65,25 @@ void OvlFunc_890_2008054(void)
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008108.s");
 void OvlFunc_890_2008150(void)
 {
-    int flag1 = 0x200;
-    int flag2 = 0x201;
-
-    do { } while (flag1 == 0);
-
     if (OvlFunc_890_200a5b0()) {
-        if (!__GetFlag(flag1)) {
+        if (!API_GetFlag(0x200)) {
             __CutsceneStart();
             __Func_8091200(0x10000, 1);
             __Func_8091254(0x14);
-            __SetFlag(flag1);
-            __ClearFlag(flag2);
-            __ClearFlag(0x202);
+            API_SetFlag(0x200);
+            API_ClearFlag(0x201);
+            API_ClearFlag(0x202);
             __CutsceneEnd();
         }
     } else {
-        if (!__GetFlag(flag2)) {
+        if (!API_GetFlag(0x201)) {
             __CutsceneStart();
             __Func_8091200(0x2051cc, 1);
             __Func_8091254(0x14);
-            __SetFlag(flag2);
-            __ClearFlag(flag1);
-            __ClearFlag(0x202);
-            if (!__GetFlag(0x80a)) {
+            API_SetFlag(0x201);
+            API_ClearFlag(0x200);
+            API_ClearFlag(0x202);
+            if (!API_GetFlag(0x80a)) {
                 OvlFunc_890_20089f4();
             }
             __CutsceneEnd();
@@ -529,54 +520,47 @@ void OvlFunc_890_2009790(void)
     int r2;
     int msg;
     unsigned char *base;
-    int c4000 = 0x4000;
-    int f826 = 0x826;
-    int f827 = 0x827;
-    int f828 = 0x828;
-    int f829 = 0x829;
-
-    do { } while (c4000 == 0);
 
     __CutsceneStart();
 
-    if (__GetFlag(0x80b) && __GetFlag(f826)) {
-        __ClearFlag(f826);
+    if (API_GetFlag(0x80b) && API_GetFlag(0x826)) {
+        API_ClearFlag(0x826);
         r3 = 2;
         r2 = 1;
         __CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, r3, r2);
-    } else if (__GetFlag(0x80b) && !__GetFlag(f826)) {
-        __SetFlag(f826);
+    } else if (API_GetFlag(0x80b) && !API_GetFlag(0x826)) {
+        API_SetFlag(0x826);
     }
 
-    if (__GetFlag(0x80c) && __GetFlag(f827)) {
-        __ClearFlag(f827);
+    if (API_GetFlag(0x80c) && API_GetFlag(0x827)) {
+        API_ClearFlag(0x827);
         r3 = 2;
         r2 = 1;
         __CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, r3, r2);
-    } else if (__GetFlag(0x80c) && !__GetFlag(f827)) {
-        __SetFlag(f827);
+    } else if (API_GetFlag(0x80c) && !API_GetFlag(0x827)) {
+        API_SetFlag(0x827);
     }
 
-    if (__GetFlag(0x80d) && __GetFlag(f828)) {
-        __ClearFlag(f828);
+    if (API_GetFlag(0x80d) && API_GetFlag(0x828)) {
+        API_ClearFlag(0x828);
         r3 = 2;
         r2 = 1;
         __CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, r3, r2);
-    } else if (__GetFlag(0x80d) && !__GetFlag(f828)) {
-        __SetFlag(f828);
+    } else if (API_GetFlag(0x80d) && !API_GetFlag(0x828)) {
+        API_SetFlag(0x828);
     }
 
-    if (__GetFlag(0x80e) && __GetFlag(f829)) {
-        __ClearFlag(f829);
+    if (API_GetFlag(0x80e) && API_GetFlag(0x829)) {
+        API_ClearFlag(0x829);
         r3 = 2;
         r2 = 1;
         __CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, r3, r2);
-    } else if (__GetFlag(0x80e) && !__GetFlag(f829)) {
-        __SetFlag(f829);
+    } else if (API_GetFlag(0x80e) && !API_GetFlag(0x829)) {
+        API_SetFlag(0x829);
     }
 
     OvlFunc_890_2009264();
-    __Func_8092adc(0x10, c4000, 0x14);
+    API_Func_8092adc(0x10, 0x4000, 0x14);
     __MapActor_Jump(0x10, 6, 0x1e);
     __Func_80933f8(0x23e0000, -1, 0xae0000, 1);
     __Func_8093530();
@@ -641,7 +625,7 @@ void OvlFunc_890_2009790(void)
     OvlFunc_890_20082cc();
     __CutsceneWait(6);
 
-    if (__GetFlag(0x822) == 0) {
+    if (API_GetFlag(0x822) == 0) {
         msg = 0x8010;
         __MessageID(0x1025);
         OvlFunc_890_200a5fc(msg, 6);

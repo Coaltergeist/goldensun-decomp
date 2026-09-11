@@ -1,6 +1,7 @@
 /* rom_7d768c (overlay file 952): consolidated TU — babis_palace map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/babis_palace/exports.s");
 
@@ -65,9 +66,6 @@ void OvlFunc_952_20083b0(unsigned int actor)
 {
     unsigned int *p;
     int scale;
-    int anim = 0xe000;
-
-    do { } while (anim == 0);
 
     p = (unsigned int *)__MapActor_GetActor(actor);
     __CutsceneStart();
@@ -95,7 +93,7 @@ void OvlFunc_952_20083b0(unsigned int actor)
     __CutsceneWait(0x1e);
     __MapActor_SetBehavior(actor, gScript_952__0200c570);
     __ActorMessage(actor, 0);
-    __Func_8092adc(actor, anim, 0);
+    API_Func_8092adc(actor, 0xe000, 0);
     __CutsceneWait(10);
     p[7] = scale;
     p[6] = scale;
@@ -124,29 +122,24 @@ extern void __Func_80118c0(int);
 void OvlFunc_952_200bd40(void)
 {
     unsigned char *map = *(unsigned char **)iwram_3001ebc;
-    int sp1 = 0x8000;
-    int sp2 = 0x4000;
-    int step = -16;
-
-    do { } while (sp1 == 0);
 
     __CutsceneStart();
     __PlaySound(0x9e);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     __MapActor_SetAnim(0, 2);
 
     if (*(short *)(map + 0x16c) == 0x20) {
         __Func_80118a8(1);
         __CutsceneWait(10);
-        __MapActor_TravelBy(0, 0, step);
+        API_MapActor_TravelBy(0, 0, -16);
     } else if (*(short *)(map + 0x16c) == 0x1e) {
         __Func_80118a8(4);
         __CutsceneWait(10);
-        __Func_8092208(0, 3, step);
+        API_Func_8092208(0, 3, -16);
     } else {
         __Func_80118a8(2);
         __CutsceneWait(10);
-        __Func_8092208(0, 3, step);
+        API_Func_8092208(0, 3, -16);
     }
     __CutsceneWait(16);
     __Func_8091e9c(*(short *)(map + 0x16c));
@@ -160,19 +153,14 @@ extern unsigned char L4550[] __asm__(".Lm952_4550");
 
 void OvlFunc_952_200bdf8(void)
 {
-    int sp1 = 0x8000;
-    int sp2 = 0x4000;
-    int step = -16;
     unsigned short v = 0xa;
 
-    do { } while (sp1 == 0);
-
     __CutsceneStart();
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     __PlaySound(0x9e);
     do { v = (unsigned short) v; } while (0);
     __Func_8010560(L4550, 0x24, v);
-    __Func_8092208(0, 2, step);
+    API_Func_8092208(0, 2, -16);
     __CutsceneWait(16);
     __Func_8091e9c(2);
     __CutsceneEnd();

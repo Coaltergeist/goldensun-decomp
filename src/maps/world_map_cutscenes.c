@@ -1,6 +1,7 @@
 /* rom_77a7c8 (overlay file 881): consolidated TU — world_map_cutscenes map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
@@ -210,21 +211,14 @@ extern void __CutsceneEnd(void);
 void OvlFunc_881_200a858(void)
 {
     extern unsigned char L679c[] __asm__(".Lm881_679c");
-    int speedx = 0x10000;
-    int speedy = 0x8000;
-    int target_x = 0x1778;
-    int target_y = 0xd48;
-    int zero = 0;
-
-    do { } while (speedx == 0);
 
     __CutsceneStart();
     __Func_808c44c();
     __MessageID(0x2643);
     __ActorMessage(*(unsigned long *)L679c, 0);
     __Func_808c4c0();
-    __MapActor_SetSpeed(zero, speedx, speedy);
-    __MapActor_TravelToAnimWait(zero, target_x, target_y);
+    API_MapActor_SetSpeed(0, 0x10000, 0x8000);
+    API_MapActor_TravelToAnimWait(0, 0x1778, 0xd48);
     __CutsceneEnd();
 }
 

@@ -1,6 +1,7 @@
 /* rom_7c097c (overlay file 936): consolidated TU — kalay map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/kalay/exports.s");
 
@@ -199,11 +200,6 @@ void OvlFunc_936_2008464(void) {
 void OvlFunc_936_2008504(void) {
     int size;
     unsigned char *actor;
-    int a = 0x8000;
-    int b = 0x4000;
-    int c = -8;
-
-    do { } while (a == 0);
 
     __CutsceneStart();
     __PlaySound(0xbc);
@@ -212,11 +208,11 @@ void OvlFunc_936_2008504(void) {
     __WaitFrames(5);
     __CopyMapTiles(0x27, 0x17, 0x2b, 0xc, size, size);
     __WaitFrames(5);
-    __MapActor_SetSpeed(0, a, b);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
     actor = (unsigned char *)__MapActor_GetActor(0);
     actor[0x55] = 0;
     __MapActor_SetAnim(0, 2);
-    __MapActor_TravelBy(0, 0, c);
+    API_MapActor_TravelBy(0, 0, -8);
     __CutsceneWait(10);
     __Func_8091e9c(2);
     __MapTransitionOut();
@@ -378,12 +374,9 @@ void OvlFunc_936_200b2a4(void)
     unsigned int i;
     unsigned int five;
     unsigned int one;
-    int pos_x = 0x96 << 16;
-    int pos_y = 0xb6 << 18;
+
     unsigned int a4;
     unsigned int a5;
-
-    do { } while (pos_x == 0);
 
     actor8 = (struct Actor936 *)__MapActor_GetActor(8);
     actor9 = (struct Actor936 *)__MapActor_GetActor(9);
@@ -405,7 +398,7 @@ void OvlFunc_936_200b2a4(void)
             __CutsceneWait(0x28);
             actor11->field_18 = 0x1999;
             actor11->field_1c = 0x1999;
-            __MapActor_SetPos(0xb, pos_x, pos_y);
+            API_MapActor_SetPos(0xb, 0x960000, 0x2d80000);
             __MapActor_SetBehavior(0xb, gScript_936__0200c268);
             five = 1;
             __CopyMapTiles(0x43, 0x40, 0x47, 0x2c, five, i);

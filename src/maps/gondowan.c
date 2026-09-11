@@ -1,6 +1,7 @@
 /* rom_7e636c (overlay file 958): consolidated TU — gondowan map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern int OvlFunc_958_200858c();
 
@@ -190,8 +191,7 @@ void (*arg5)(void);
 void OvlFunc_958_20088ec(struct Pk arg)
 {
     int va[3];
-    int sp1 = 0x4ccc;
-    int sp2 = 0x1999;
+
     int vb[3];
     unsigned char *env;
     unsigned char *actor;
@@ -212,7 +212,6 @@ void OvlFunc_958_20088ec(struct Pk arg)
     int u1;
     int u2;
 
-    do { } while (sp1 == 0);
     env = (unsigned char *)*(int *)iwram_3001e70;
     dir = *(unsigned short *)(__MapActor_GetActor(0) + 6) >> 12;
     actor = (unsigned char *)__MapActor_GetActor(arg.b);
@@ -236,7 +235,7 @@ void OvlFunc_958_20088ec(struct Pk arg)
     vb[0] = vb[0] >> 20;
     vb[2] = zz >> 20;
     OvlFunc_958_2008528(0, vb[0], vb[2], w, h, 0);
-    __MapActor_SetSpeed(0, 0x8000, 0x1999);
+    API_MapActor_SetSpeed(0, 0x8000, 0x1999);
     __MapActor_SetAnim(0, 8);
     __CutsceneWait(15);
     __MapActor_TravelBy(0, (arg.x - ap[0]) / 0x20000, (arg.z - ap[2]) / 0x20000);
@@ -250,7 +249,7 @@ void OvlFunc_958_20088ec(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    __MapActor_SetSpeed(0, sp1, sp2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L16c0__a2[dir] >> 16) / 2, (short)(L16c0__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();
@@ -429,13 +428,9 @@ void __CutsceneEnd(void);
 
 void OvlFunc_958_2009158(void)
 {
-    int pos_x = 0x2b80000;
-    int pos_y = 0x1200000;
     void *a;
     int new_var;
     int new_var3;
-
-    do { } while (pos_x == 0);
 
     __CutsceneStart();
     a = __MapActor_GetActor(9);
@@ -444,8 +439,8 @@ void OvlFunc_958_2009158(void)
         new_var3 = 0x11;
         __Func_8010704(0x6c, 0x11, 1, 1, new_var, new_var3);
         __CutsceneWait(8);
-        __MapActor_SetPos(9, 0, 0);
-        __MapActor_SetPos(10, pos_x, pos_y);
+        API_MapActor_SetPos(9, 0, 0);
+        API_MapActor_SetPos(10, 0x2b80000, 0x1200000);
         __MapActor_SetAnim(10, 3);
         __PlaySound(0x9a);
         __SetFlag(0x9a5);
@@ -502,25 +497,16 @@ __asm__(".equ .Lconst_9e, 0x9e");
 
 void __Actor_SetSpriteFlags(void *, int);
 int Gondowan_MapInit(void) {
-    int pos1_x = 0xdc << 17;
-    int pos1_y = 0x9a << 17;
-    int pos2_x = 0xae << 18;
-    int pos2_y = 0x90 << 17;
-    int actor8 = 8;
-    int actor9 = 9;
-    int actor10 = 10;
     unsigned int r1;
     unsigned int r2;
     int arg5, arg6;
-
-    do {} while (pos1_x == 0);
 
     r1 = 0xe0;
     r1 <<= 1;
     if (*(short *)((char *)&gState + r1) == (int)Lconst_98) {
         __SetFlag(0x144);
         if (__GetFlag(0x9a0) != 0) {
-            __MapActor_SetPos(0xb, 0, 0);
+            API_MapActor_SetPos(0xb, 0, 0);
         }
     }
 
@@ -536,17 +522,17 @@ int Gondowan_MapInit(void) {
         }
 
         if (__GetFlag(0x9a2) != 0) {
-            __MapActor_SetPos(actor8, pos1_x, pos1_y);
-            __MapActor_SetAnim(actor8, 2);
+            API_MapActor_SetPos(8, 0x1b80000, 0x1340000);
+            API_MapActor_SetAnim(8, 2);
             arg5 = 0x1b;
             arg6 = 0x13;
             __Func_8010704(0x1d, 0x13, 1, 1, arg5, arg6);
         }
 
         if (__GetFlag(0x9a5) != 0) {
-            __MapActor_SetPos(actor9, 0, 0);
-            __MapActor_SetPos(actor10, pos2_x, pos2_y);
-            __MapActor_SetAnim(actor10, 2);
+            API_MapActor_SetPos(9, 0, 0);
+            API_MapActor_SetPos(10, 0x2b80000, 0x1200000);
+            API_MapActor_SetAnim(10, 2);
         }
 
         __Actor_SetSpriteFlags(__MapActor_GetActor(0xc), 0);

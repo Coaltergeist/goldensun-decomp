@@ -1,6 +1,7 @@
 /* rom_7987ac (overlay file 902): consolidated TU — vault_rooms_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/vault_rooms_2/exports.s");
 
@@ -96,13 +97,10 @@ extern void __MapActor_TurnToFaceActor(volatile unsigned long, int, int);
 
 void OvlFunc_902_200811c(void)
 {
-    int emote = 0x81 << 1;
     unsigned short t1;
     unsigned short *p;
     unsigned long long t2 = 2;
     unsigned long v2;
-
-    do { } while (emote == 0);
 
     __CutsceneStart();
     __MessageID(0x1cd4);
@@ -116,7 +114,7 @@ void OvlFunc_902_200811c(void)
     __MapActor_DoAnim(0x10, 4);
     __CutsceneWait(0x14);
     __ActorMessage_Wait(0x10, 0, 0x14);
-    __MapActor_Emote(0x10, emote, 0x3c);
+    API_MapActor_Emote(0x10, 0x102, 0x3c);
     __ActorMessage_Wait(0x10, 0, 0x1e);
     __ShowActorMessage_NoWait(0x10, 0);
     if (__Func_8091c7c(0, 0) != 0) {

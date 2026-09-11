@@ -1,6 +1,7 @@
 /* rom_7c7b9c (overlay file 943): consolidated TU — tolbi_bound_ship_deck map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
 
@@ -299,25 +300,19 @@ extern void __CutsceneEnd(void);
 
 void OvlFunc_943_2009920(void)
 {
-    int pos_x = 0xee << 16;
-    int pos_y = 0x2720000;
-    int speed_x = 0xcccc;
-    int speed_y = 0x6666;
     struct Actor *actor;
-
-    do {} while (pos_x == 0);
 
     __CutsceneStart();
     __LoadFieldActors(Lm943_5160);
     __WaitFrames(1);
-    __MapActor_SetPos(0x14, 0, 0);
-    __MapActor_SetPos(0x17, pos_x, pos_y);
-    __MapActor_SetPos(0x16, 0x86 << 17, 0x2a60000);
+    API_MapActor_SetPos(0x14, 0, 0);
+    API_MapActor_SetPos(0x17, 0xee0000, 0x2720000);
+    API_MapActor_SetPos(0x16, 0x86 << 17, 0x2a60000);
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->facing = 0;
     __MapActor_SetBehavior(0x16, gScript_943__0200c980);
     ((struct Actor *)__MapActor_GetActor(0x15))->unk59 |= 0x80;
-    __MapActor_SetSpeed(0x15, speed_x, speed_y);
+    API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
         OvlFunc_943_200c218();
@@ -340,31 +335,25 @@ void OvlFunc_943_2009a98(void)
     void __Func_800fe9c(void);
     void OvlFunc_943_2009c14(int, int);
 
-    int pos_x = 0xe8 << 16;
-    int pos_y = 0x28a0000;
-    int target_y = 0x9f << 18;
-    int neg = -1;
     struct Actor *actor;
 
-    do {} while (pos_x == 0);
-
     __CutsceneStart();
-    __Func_80933f8(neg, neg, neg, 0);
+    API_Func_80933f8(-1, -1, -1, 0);
     __WaitFrames(1);
-    __MapActor_SetPos(0x14, 0, 0);
-    __MapActor_SetPos(0x16, 0, 0);
-    __MapActor_SetPos(0x18, 0, 0);
-    __MapActor_SetPos(0x19, 0, 0);
-    __MapActor_SetPos(0x1a, 0, 0);
-    __MapActor_SetPos(0x1b, 0, 0);
-    __MapActor_SetPos(0, 0, 0);
-    __MapActor_SetPos(0x17, 0, 0);
+    API_MapActor_SetPos(0x14, 0, 0);
+    API_MapActor_SetPos(0x16, 0, 0);
+    API_MapActor_SetPos(0x18, 0, 0);
+    API_MapActor_SetPos(0x19, 0, 0);
+    API_MapActor_SetPos(0x1a, 0, 0);
+    API_MapActor_SetPos(0x1b, 0, 0);
+    API_MapActor_SetPos(0, 0, 0);
+    API_MapActor_SetPos(0x17, 0, 0);
     actor = (struct Actor *)__MapActor_GetActor(0x17);
     actor->facing = 0xc0 << 6;
-    __MapActor_SetPos(0x15, pos_x, pos_y);
+    API_MapActor_SetPos(0x15, 0xe80000, 0x28a0000);
     actor = (struct Actor *)__MapActor_GetActor(0x15);
     actor->facing = 0xb0 << 8;
-    __Func_80933f8(pos_x, neg, target_y, 0);
+    API_Func_80933f8(0xe80000, -1, 0x27c0000, 0);
     __Func_800fe9c();
     __WaitFrames(1);
     OvlFunc_943_2009c14(0x17, 0x15);
@@ -388,17 +377,12 @@ void OvlFunc_943_2009b58(void)
     void __MapActor_SetIdle(int);
     void OvlFunc_943_2009c14(int, int);
 
-    int pos_x = 0xe8 << 16;
-    int pos_y = 0x28a0000;
-    int target_y = 0x9f << 18;
     struct Actor *actor;
-
-    do {} while (pos_x == 0);
 
     __CutsceneStart();
     __LoadFieldActors(Lm943_5160);
     __WaitFrames(1);
-    __MapActor_SetPos(0, pos_x, target_y);
+    API_MapActor_SetPos(0, 0xe80000, 0x27c0000);
     __Func_8092950(0, 0xf);
     actor = (struct Actor *)__MapActor_GetActor(0);
     __Actor_SetSpriteFlags(actor, 0);
@@ -409,12 +393,12 @@ void OvlFunc_943_2009b58(void)
     __MapActor_SetIdle(0x16);
     __MapActor_SetIdle(0x15);
     __WaitFrames(1);
-    __MapActor_SetPos(0x16, 0, 0);
-    __MapActor_SetPos(0x15, 0, 0);
-    __MapActor_SetPos(0x14, 0, 0);
+    API_MapActor_SetPos(0x16, 0, 0);
+    API_MapActor_SetPos(0x15, 0, 0);
+    API_MapActor_SetPos(0x14, 0, 0);
     actor = (struct Actor *)__MapActor_GetActor(0x14);
     actor->facing = 0xc0 << 6;
-    __MapActor_SetPos(0x17, pos_x, pos_y);
+    API_MapActor_SetPos(0x17, 0xe80000, 0x28a0000);
     actor = (struct Actor *)__MapActor_GetActor(0x17);
     actor->facing = 0xb0 << 8;
     __WaitFrames(1);
@@ -438,37 +422,22 @@ void __Func_8091e9c(int);
 
 void OvlFunc_943_2009c14(int a, int b)
 {
-    int pos_x;
-    int pos_y;
-    int anim1;
-    int anim2;
-    int anim3;
-    int speed;
-
     *(unsigned int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x100;
     __MapTransitionIn();
-
-    pos_x = 0xd8 << 16;
-    pos_y = 0x93 << 18;
-    anim1 = 0x96 << 2;
-    anim2 = 0x97 << 2;
-    anim3 = 0x26a;
-    speed = 0xa0 << 7;
-    do {} while (pos_x == 0);
 
     __WaitMapTransition();
     __CutsceneWait(0x14);
     OvlFunc_943_2008bb8();
-    __MapActor_SetPos(a, pos_x, pos_y);
+    API_MapActor_SetPos(a, 0xd80000, 0x24c0000);
     __MapActor_SetSpeed(a, 0xcccc, 0x6666);
-    __MapActor_TravelToAnimWait(a, 0xd8, anim1);
-    __MapActor_TravelToAnimWait(a, 0xda, anim2);
-    __MapActor_TravelToAnimWait(a, 0xea, anim2);
-    __MapActor_TravelToAnimWait(a, 0xec, anim3);
-    __Func_8092adc(a, speed, 0x14);
+    API_MapActor_TravelToAnimWait(a, 0xd8, 0x258);
+    API_MapActor_TravelToAnimWait(a, 0xda, 0x25c);
+    API_MapActor_TravelToAnimWait(a, 0xea, 0x25c);
+    API_MapActor_TravelToAnimWait(a, 0xec, 0x26a);
+    API_Func_8092adc(a, 0x5000, 0x14);
     __MapActor_DoAnim(a, 3);
     __CutsceneWait(0x14);
-    OvlFunc_943_200ba00(b, speed);
+    OvlFunc_943_200ba00(b, 0x5000);
     __MapActor_Jump(b, 4, 0x28);
     __Func_809259c(b, 2);
     __MessageID(0x1e39);

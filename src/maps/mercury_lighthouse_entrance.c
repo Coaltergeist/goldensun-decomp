@@ -1,6 +1,7 @@
 /* rom_7aa430 (overlay file 923): consolidated TU — mercury_lighthouse_entrance map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __Actor_SetAnim();
@@ -559,15 +560,10 @@ extern void __MapActor_TravelToAnim(int, int, int);
 extern void __Func_80925cc(int, int);
 void OvlFunc_923_200996c(void)
 {
-    int flag = 0x250;
-    int x = 0x880000;
-    int y = 0x900000;
     unsigned char *actor;
 
-    do { } while (flag == 0);
-
-    if (!__GetFlag(flag)) {
-        __SetFlag(flag);
+    if (!API_GetFlag(0x250)) {
+        API_SetFlag(0x250);
         __CutsceneStart();
         actor = (unsigned char *)__MapActor_GetActor(12);
         *(int *)(actor + 0x18) = 0xffff0000;
@@ -575,7 +571,7 @@ void OvlFunc_923_200996c(void)
         *(int *)(actor + 0x18) = 0xffff0000;
         actor = (unsigned char *)__MapActor_GetActor(14);
         *(int *)(actor + 0x18) = 0xffff0000;
-        __MapActor_SetPos(3, x, y);
+        API_MapActor_SetPos(3, 0x880000, 0x900000);
         __Func_8092adc(3, 0x4000, 10);
         *(int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x201;
         __MapTransitionIn();
@@ -588,8 +584,8 @@ void OvlFunc_923_200996c(void)
         __CutsceneWait(40);
         __Func_80925cc(0, 1);
         __MapActor_WaitMovement(3);
-        __MapActor_SetPos(3, 0, 0);
-        __SetFlag(0x872);
+        API_MapActor_SetPos(3, 0, 0);
+        API_SetFlag(0x872);
         *(int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x204;
         __CutsceneEnd();
     }

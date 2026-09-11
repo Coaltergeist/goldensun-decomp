@@ -67,4 +67,15 @@ static inline void API_Func_8012330(int a, int b, int c) { extern void __Func_80
 
 static inline int API_GetFlag(int a) { extern int __GetFlag(int); return __GetFlag(a); }
 
+static inline void API_MapActor_TravelBy(int a, int b, int c) { extern void __MapActor_TravelBy(int, int, int); __MapActor_TravelBy(a, b, c); }
+static inline void API_Func_8092208(int a, int b, int c) { extern void __Func_8092208(int, int, int); __Func_8092208(a, b, c); }
+static inline void API_Func_80933d4(unsigned int a, unsigned int b) { extern void __Func_80933d4(unsigned int, unsigned int); __Func_80933d4(a, b); }
+
+static inline void *API_CreateActor(int a, int x, int y, int z) { extern void *__CreateActor(int, int, int, int); return __CreateActor(a, x, y, z); }
+static inline void API_Actor_TravelTo(void *actor, int x, int y, int z) { extern void __Actor_TravelTo(void *, int, int, int); __Actor_TravelTo(actor, x, y, z); }
+static inline void API_Func_8012078(int a, int b, int c, int d) { extern void __Func_8012078(int, int, int, int); __Func_8012078(a, b, c, d); }
+static inline void API_Func_80922c4(int a, int b, int c) { extern void __Func_80922c4(int, int, int); __Func_80922c4(a, b, c); }
+static inline void API_Func_8092304(unsigned int a, unsigned int b, unsigned int c) { extern void __Func_8092304(unsigned int, unsigned int, unsigned int); __Func_8092304(a, b, c); }
+static inline void API_Func_809233c(int a, int b, int c, int d) { extern void __Func_809233c(int, int, int, int); __Func_809233c(a, b, c, d); }
+
 #endif /* GUARD_API_H */

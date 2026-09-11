@@ -1,6 +1,7 @@
 /* rom_7a6ae4 (overlay file 920): consolidated TU — bilibin_cave map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/bilibin_cave/exports.s");
 
@@ -227,26 +228,24 @@ void OvlFunc_920_2008304(void) {
     int *p1;
     int *p2;
     int tile_x;
-    int flag = 0x302;
-    do { } while (flag == 0);
 
     p1 = (int *)__MapActor_GetActor(0xb);
     p2 = (int *)__MapActor_GetActor(0xc);
 
     if (p1[2] >> 20 == 0x23 && p1[4] >> 20 == 0x17) {
-        __SetFlag(0x303);
+        API_SetFlag(0x303);
     } else {
-        __ClearFlag(0x303);
+        API_ClearFlag(0x303);
     }
 
     if (p2[2] >> 20 == 0x23 && p2[4] >> 20 == 0x17) {
-        __SetFlag(0x304);
+        API_SetFlag(0x304);
     } else {
-        __ClearFlag(0x304);
+        API_ClearFlag(0x304);
     }
 
-    if (__GetFlag(0x303) != 0 || __GetFlag(0x304) != 0) {
-        if (__GetFlag(flag) == 0) {
+    if (API_GetFlag(0x303) != 0 || __GetFlag(0x304) != 0) {
+        if (API_GetFlag(0x302) == 0) {
             __CutsceneStart();
             __CutsceneWait(0x28);
             __PlaySound(0xd2);
@@ -256,9 +255,9 @@ void OvlFunc_920_2008304(void) {
             __Func_8010704(0, 2, 1, 1, tile_x, 0x18);
             __CutsceneEnd();
         }
-        __SetFlag(flag);
+        API_SetFlag(0x302);
     } else {
-        if (__GetFlag(flag) != 0) {
+        if (API_GetFlag(0x302) != 0) {
             __CutsceneStart();
             __CutsceneWait(0x28);
             __PlaySound(0xdc);
@@ -268,7 +267,7 @@ void OvlFunc_920_2008304(void) {
             __Func_8010704(1, 2, 1, 1, tile_x, 0x18);
             __CutsceneEnd();
         }
-        __ClearFlag(flag);
+        API_ClearFlag(0x302);
     }
 }
 
@@ -372,11 +371,8 @@ void OvlFunc_920_2008538(void)
     void __Func_8010704(int, int, int, int, int, int);
 
     unsigned char *ptr;
-    int mask = 2;
+    unsigned char actor_flags = 2;
     int a, b;
-    int pos_y = 0x23a0000;
-    int pos_z = 0x1780000;
-    do { } while (pos_z == 0);
 
     *(int *)((char *)iwram_3001ebc__ptr + 0x1c0) = 0x204;
 
@@ -425,12 +421,12 @@ void OvlFunc_920_2008538(void)
     OvlFunc_920_2008904(14);
 
     if (__GetFlag(0x883)) {
-        __MapActor_SetPos(8, 0, 0);
+        API_MapActor_SetPos(8, 0, 0);
         __MapActor_SetAnim(0xf, 5);
         *(unsigned char *)((char *)__MapActor_GetActor(0xf) + 0x55) = 0;
         *(int *)((char *)__MapActor_GetActor(0xf) + 0xc) = 0xfffc0000;
         ptr = (unsigned char *)__MapActor_GetActor(0xf) + 0x23;
-        *ptr = mask | *ptr;
+        *ptr = actor_flags | *ptr;
         __Func_8092b08(0xf, 2);
         a = 0x12;
         b = 0xe;
@@ -454,11 +450,11 @@ void OvlFunc_920_2008538(void)
     }
 
     if (__GetFlag(0x303)) {
-        __MapActor_SetPos(0xb, pos_y, pos_z);
+        API_MapActor_SetPos(0xb, 0x23a0000, 0x1780000);
     }
 
     if (__GetFlag(0x304)) {
-        __MapActor_SetPos(0xc, pos_y, pos_z);
+        API_MapActor_SetPos(0xc, 0x23a0000, 0x1780000);
     }
 }
 

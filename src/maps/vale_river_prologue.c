@@ -2,6 +2,7 @@
 /* rom_77dd1c (overlay file 882): consolidated TU — vale_river_prologue map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/exports.s");
 
@@ -161,19 +162,15 @@ extern void OvlFunc_882_200950c(void);
 
 void OvlFunc_882_2008278(void)
 {
-    int f = 0x206;
-    int pos = 0x106;
-    int anim = 0x325;
-    do { } while (f == 0);
-    if (!__GetFlag(f)) {
+    if (!API_GetFlag(0x206)) {
         __PlaySound(0x9e);
         __Func_8010560(L57a0, 0x2d, 0x27);
     }
-    if (!__GetFlag(0x835) && !__GetFlag(0x831)) {
+    if (!API_GetFlag(0x835) && !__GetFlag(0x831)) {
         OvlFunc_882_200950c();
-        __SetFlag(f);
+        API_SetFlag(0x206);
     } else {
-        __MapActor_TravelToAnim(0, pos, anim);
+        API_MapActor_TravelToAnim(0, 0x106, 0x325);
         __CutsceneWait(3);
         OvlFunc_882_200815c(6);
     }
@@ -302,17 +299,13 @@ extern void __Func_8092adc(int, int, int);
 extern int _MSG_ed0;
 
 void OvlFunc_882_20096cc(void) {
-    int w = 0xe000;
-
-    do { } while (w == 0);
-
     if (__GetFlag(0x841)) {
         __CutsceneStart();
         __MapActor_Face(0x16, 0, 0);
         __CutsceneWait(0x14);
         __MessageID((int) (&_MSG_ed0));
         __ActorMessage(0x16, 0);
-        __Func_8092adc(0x16, w, 0xa);
+        API_Func_8092adc(0x16, 0xe000, 0xa);
         __CutsceneEnd();
     } else if (!__GetFlag(0x837)) {
         __CutsceneStart();
@@ -342,12 +335,9 @@ void OvlFunc_882_200973c(void) {
     int a;
     unsigned long long t = 0;
     unsigned long z;
-    int w = 0x100;
 
     do { t = (unsigned long) t; } while (0);
     z = t;
-
-    do { } while (w == 0);
 
     __ShowActorMessage_NoWait(0x16, z);
     __MapActor_TurnToFaceActor(0, 0x16, 0);
@@ -360,7 +350,7 @@ void OvlFunc_882_200973c(void) {
     }
     __CutsceneWait(0x14);
     __ActorMessage_Wait(0x16, 0, 0x28);
-    __MapActor_Surprise(0x16, w);
+    API_MapActor_Surprise(0x16, 0x100);
     __MapActor_SetAnim(0x15, 3);
     __MapActor_SetAnim(0x16, 1);
     __CutsceneWait(0x28);

@@ -1,6 +1,7 @@
 /* rom_7d5838 (overlay file 950): consolidated TU — tolbi_rooms_1 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/tolbi_rooms_1/exports.s");
 
@@ -119,31 +120,11 @@ extern void __MapActor_SetPos(int, int, int);
 void OvlFunc_950_200813c(void)
 {
     void *actor;
-    int c_8e_1 = 0x8e << 1;
-    int c_96_18 = 0x96 << 18;
-    int c_ce_18 = 0xce << 18;
-    int emote_80 = 0x80 << 1;
-    int speed_9 = 0x80 << 9;
-    int speed_8 = 0x80 << 8;
-    int x_96 = 0x96 << 2;
-    int y_d4 = 0xd4 << 2;
-    int step_c0 = 0xc0 << 8;
-    int x_8e = 0x8e << 2;
-    int emote_84 = 0x84 << 1;
-    int step_c0_6 = 0xc0 << 6;
-    int emote_81 = 0x81 << 1;
-    int sp1 = 0x16666;
-    int sp2 = 0xb333;
-    int sp3 = 0x1cccc;
-    int sp4 = 0xe666;
-    int dy = -16;
-
-    do {} while (c_8e_1 == 0);
 
     __CutsceneStart();
     __MessageID(0x2394);
     __CutsceneWait(0x28);
-    actor = __CreateActor(c_8e_1, c_96_18, 0, c_ce_18);
+    actor = API_CreateActor(0x11c, 0x2580000, 0, 0x3380000);
     __Actor_SetSpriteFlags(actor, 0);
     __Actor_SetAnim(actor, 6);
     __CutsceneWait(10);
@@ -151,47 +132,47 @@ void OvlFunc_950_200813c(void)
     __CutsceneWait(0x28);
     __DeleteActor(actor);
     __CutsceneWait(2);
-    __MapActor_Emote(0x19, emote_80, 0x32);
-    __MapActor_SetSpeed(0x19, speed_9, speed_8);
-    __MapActor_TravelToAnimWait(0x19, x_96, y_d4);
-    __Func_8092adc(0x19, step_c0, 0);
+    API_MapActor_Emote(0x19, 0x100, 0x32);
+    API_MapActor_SetSpeed(0x19, 0x10000, 0x8000);
+    API_MapActor_TravelToAnimWait(0x19, 0x258, 0x350);
+    API_Func_8092adc(0x19, 0xc000, 0);
     __CutsceneWait(0x28);
     __ActorMessage(0x19, 0);
     __Func_80925cc(0x19, 2);
     __CutsceneWait(0x1e);
-    __MapActor_TravelToAnimWait(0x19, x_8e, y_d4);
-    __Func_8092adc(0x19, step_c0, 0);
+    API_MapActor_TravelToAnimWait(0x19, 0x238, 0x350);
+    API_Func_8092adc(0x19, 0xc000, 0);
     __CutsceneWait(0x1e);
-    __MapActor_Emote(0x19, emote_84, 0x32);
+    API_MapActor_Emote(0x19, 0x108, 0x32);
     __CutsceneWait(0x14);
-    __Func_8092304(0, 0, dy);
+    API_Func_8092304(0, 0, -16);
     __CutsceneWait(0x14);
-    __Func_8092adc(0x19, step_c0_6, 0);
+    API_Func_8092adc(0x19, 0x3000, 0);
     __CutsceneWait(0x1e);
     __Func_80925cc(0x19, 2);
     __CutsceneWait(0x14);
     __ActorMessage(0x19, 0);
     __CutsceneWait(0x14);
-    __MapActor_Emote(0, 0x101, 0x32);
+    API_MapActor_Emote(0, 0x101, 0x32);
     __CutsceneWait(0x14);
     __MapActor_DoAnim(0x19, 4);
     __CutsceneWait(0x14);
     __ActorMessage(0x19, 0);
     __CutsceneWait(0x1e);
-    __MapActor_Emote(0x19, emote_81, 0x32);
+    API_MapActor_Emote(0x19, 0x102, 0x32);
     __ActorMessage(0x19, 0);
-    __MapActor_SetSpeed(0x19, sp1, sp2);
-    __Func_8092304(0x19, 16, 0);
-    __Func_8092304(0x19, 0, 32);
+    API_MapActor_SetSpeed(0x19, 0x16666, 0xb333);
+    API_Func_8092304(0x19, 16, 0);
+    API_Func_8092304(0x19, 0, 32);
     __CutsceneWait(0x14);
     __MapActor_DoAnim(0x19, 3);
     __CutsceneWait(0x14);
     __ActorMessage(0x19, 0);
-    __Func_8092304(0, 16, 0);
-    __Func_8092adc(0, speed_8, 0);
+    API_Func_8092304(0, 16, 0);
+    API_Func_8092adc(0, 0x8000, 0);
     __CutsceneWait(0x14);
-    __MapActor_SetSpeed(0x19, sp3, sp4);
-    __Func_8092304(0x19, 0, 48);
+    API_MapActor_SetSpeed(0x19, 0x1cccc, 0xe666);
+    API_Func_8092304(0x19, 0, 48);
     __MapActor_SetPos(0x19, 0, 0);
     __CutsceneEnd();
 }
@@ -237,11 +218,6 @@ struct Actor {
 
 int TolbiRooms1_MapInit(void)
 {
-    int pos_x = 0x8c << 18;
-    int pos_y = 0xaa << 18;
-    int speed = 0x80 << 8;
-    int flag_8bc = 0x8bc;
-    int flag_300 = 0x300;
     unsigned char *base;
     struct Actor *actor;
     GlobalState *state;
@@ -252,12 +228,10 @@ int TolbiRooms1_MapInit(void)
     int mask;
     int set;
 
-    do {} while (pos_x == 0);
-
     base = *(unsigned char **)iwram_3001ebc;
     *(int *)(base + 0x1c0) = 0x209;
 
-    if (__GetFlag(0x95 << 4)) {
+    if (API_GetFlag(0x95 << 4)) {
         s1 = 0x33;
         s2 = 0x2d;
         __Func_8010704(0x33, 0x2f, 3, 1, s1, s2);
@@ -273,17 +247,17 @@ int TolbiRooms1_MapInit(void)
         actor->f23 = 0;
         actor->sprite[9] = (actor->sprite[9] & mask) | set;
 
-        if (__GetFlag(flag_8bc)) {
-            __MapActor_SetPos(0x19, pos_x, pos_y);
-            __Func_8092adc(0x19, speed, 0);
+        if (API_GetFlag(0x8bc)) {
+            API_MapActor_SetPos(0x19, 0x2300000, 0x2a80000);
+            API_Func_8092adc(0x19, 0x8000, 0);
         }
 
         state = &gState;
         r2 = 0xe1;
         r2 <<= 1;
         p = (short *)((char *)state + r2);
-        if (*p == 0x13 && !__GetFlag(flag_8bc)) {
-            __SetFlag(flag_8bc);
+        if (*p == 0x13 && !API_GetFlag(0x8bc)) {
+            API_SetFlag(0x8bc);
             __MapTransitionIn();
             OvlFunc_950_200813c();
         }
@@ -291,15 +265,15 @@ int TolbiRooms1_MapInit(void)
         r2 = 0xe1;
         r2 <<= 1;
         p = (short *)((char *)state + r2);
-        if (*p == 0x10 && !__GetFlag(flag_300)) {
-            __SetFlag(flag_300);
+        if (*p == 0x10 && !API_GetFlag(0x300)) {
+            API_SetFlag(0x300);
             __MapTransitionIn();
             OvlFunc_950_2008328();
         }
 
-        if (__GetFlag(0x8ab)) {
-            __MapActor_SetPos(0x23, 0, 0);
-            __MapActor_SetPos(0x24, 0, 0);
+        if (API_GetFlag(0x8ab)) {
+            API_MapActor_SetPos(0x23, 0, 0);
+            API_MapActor_SetPos(0x24, 0, 0);
         }
     }
 

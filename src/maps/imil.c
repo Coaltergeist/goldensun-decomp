@@ -1,6 +1,7 @@
 /* rom_7a7298 (overlay file 921): consolidated TU — imil map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/imil/exports.s");
 
@@ -84,9 +85,6 @@ void __MapActor_SetAnim(int, int);
 void __MapActor_Face(int, int, int);
 void __Func_8092adc(int, int, int);
 void OvlFunc_921_20082b8(void) {
-    int a = 0x3000;
-    do { } while (a == 0);
-
     __CutsceneStart();
     if (__GetFlag(0x881)) {
         __MessageID(0x163c);
@@ -97,7 +95,7 @@ void OvlFunc_921_20082b8(void) {
         __CutsceneWait(0x14);
         __MapActor_Face(10, 0, 0x14);
         __Func_8093054(10, 0);
-        __Func_8092adc(10, a, 10);
+        API_Func_8092adc(10, 0x3000, 10);
         __MapActor_SetAnim(10, 9);
     } else {
         __MessageID(0x152d);
@@ -108,7 +106,7 @@ void OvlFunc_921_20082b8(void) {
         __CutsceneWait(0x14);
         __MapActor_Face(10, 0, 0x14);
         __ActorMessage(10, 0);
-        __Func_8092adc(10, a, 10);
+        API_Func_8092adc(10, 0x3000, 10);
         __MapActor_SetAnim(10, 9);
     }
     __CutsceneEnd();
@@ -227,16 +225,9 @@ void OvlFunc_921_20086c0(void)
     int iVar5;
     unsigned int uVar4;
     unsigned char *actor;
-    int spd1 = 0x8000;
-    int spd2 = 0x4000;
-    int spd3 = 0x3333;
-    int spd4 = 0x1999;
-    int neg8 = -8;
-    int neg16 = -0x10;
+
     int val;
     int arg1, arg2;
-
-    do { } while (spd1 == 0);
 
     map = *(unsigned char **)iwram_3001ebc;
     __CutsceneStart();
@@ -260,18 +251,18 @@ void OvlFunc_921_20086c0(void)
     arg1 = Lm921_31a8[(iVar5 - 1) * 2];
     arg2 = Lm921_31a8[(iVar5 - 1) * 2 + 1];
     __Func_8010560(Lm921_3190[iVar5 - 1], arg1, arg2);
-    __MapActor_SetSpeed(0, spd1, spd2);
+    API_MapActor_SetSpeed(0, 0x8000, 0x4000);
 
     *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c0) = 0x100;
 
     if (iVar5 == 6) {
-        __MapActor_SetSpeed(0, spd3, spd4);
+        API_MapActor_SetSpeed(0, 0x3333, 0x1999);
         __MapActor_SetAnim(0, 2);
         __Func_8092b08(0, 3);
-        __MapActor_TravelBy(0, 0, neg8);
+        API_MapActor_TravelBy(0, 0, -8);
     } else {
         (__MapActor_GetActor(0))[0x55] = 0;
-        __Func_8092208(0, 3, neg16);
+        API_Func_8092208(0, 3, -16);
     }
 
     __CutsceneWait(0x10);
@@ -283,13 +274,7 @@ INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200888c.s");
 extern void *__MapActor_GetActor(int);
 void OvlFunc_921_2008974(void)
 {
-    int w1 = 0x80 << 7;
-    int w2 = 0xa0 << 7;
-    int id1 = 0xf;
-    int id2 = 0xe;
     short facing;
-
-    do { } while (w1 == 0);
 
     facing = *(short *)((char *)__MapActor_GetActor(0) + 6);
     if (__GetFlag(0x881) != 0) {
@@ -297,34 +282,31 @@ void OvlFunc_921_2008974(void)
             __Func_80b0278(0xc, 0xf);
         } else {
             __CutsceneStart();
-            __MapActor_Face(id1, 0, 0);
+            API_MapActor_Face(15, 0, 0);
             __MessageID(0x164f);
-            __ActorMessage(id1, 0);
-            __Func_8092adc(id1, w1, 0);
+            API_ActorMessage(15, 0);
+            API_Func_8092adc(15, 0x4000, 0);
             __CutsceneEnd();
         }
     } else {
         if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
             __CutsceneStart();
             __MessageID(0x1546);
-            __ActorMessage(id2, 0);
+            API_ActorMessage(14, 0);
             __Func_80b0278(0xc, 0xe);
             __CutsceneEnd();
         } else {
-            __MapActor_Face(id2, 0, 0xa);
+            API_MapActor_Face(14, 0, 0xa);
             __MessageID(0x1547);
-            __ActorMessage(id2, 0);
-            __Func_8092adc(id2, w2, 0xa);
+            API_ActorMessage(14, 0);
+            API_Func_8092adc(14, 0x5000, 0xa);
         }
     }
 }
 extern void __Func_80b3284(int, int);
 void OvlFunc_921_2008a3c(void)
 {
-    int w = 0xc0 << 6;
     unsigned short v;
-
-    do { } while (w == 0);
 
     v = *(unsigned short *)((char *)__MapActor_GetActor(0) + 6) + 0x5fff;
     if (v <= 0x3ffe) {
@@ -339,40 +321,36 @@ void OvlFunc_921_2008a3c(void)
             __MessageID(0x154b);
             __ActorMessage(0x10, 0);
         }
-        __Func_8092adc(0x10, w, 10);
+        API_Func_8092adc(0x10, 0x3000, 10);
         __CutsceneEnd();
     }
 }
 void OvlFunc_921_2008abc(void)
 {
-    int a = 0x3000;
-    int flag = 0x82d;
     unsigned char *actor;
-
-    do { } while (a == 0);
 
     actor = (unsigned char *)__MapActor_GetActor(0);
     if ((unsigned short)(*(unsigned short *)(actor + 6) + 0x5fff) <= 0x3ffe) {
         __CutsceneStart();
-        if (!__GetFlag(flag)) {
+        if (!API_GetFlag(0x82d)) {
             __MessageID(0x1553);
             __ActorMessage(0x13, 0);
-            __SetFlag(flag);
+            API_SetFlag(0x82d);
         }
         __CutsceneEnd();
         __UI_Sanctum(0x13);
     } else {
         __CutsceneStart();
-        if (__GetFlag(0x881)) {
+        if (API_GetFlag(0x881)) {
             __MessageID(0x1671);
             __ActorMessage(0x13, 0);
-        } else if (__GetFlag(3)) {
+        } else if (API_GetFlag(3)) {
             __MessageID(0x1572);
             __ActorMessage(0x13, 0);
         } else {
             __MessageID(0x1554);
             __Func_8093054(0x13, 0);
-            __Func_8092adc(0x13, a, 10);
+            API_Func_8092adc(0x13, 0x3000, 10);
         }
         __CutsceneEnd();
     }
@@ -417,38 +395,34 @@ extern unsigned char iwram_3001e70[];
 
 void OvlFunc_921_20098c4(void)
 {
-    int flag1 = 0x80 << 2;
-    int flag2 = 0x201;
     int *actor;
     int r4;
     int r2;
     int r1;
     int f;
 
-    do { } while (flag1 == 0);
-
     actor = (int *)__MapActor_GetActor(0);
     r4 = actor[2];
     r2 = r4 >> 19;
     if ((unsigned int)(r2 - 0x18) <= 7 ||
         ((r1 = actor[4]), (unsigned int)((r1 >> 19) - 0x24) <= 9 && (unsigned int)(r2 - 0x16) <= 9)) {
-        if (__GetFlag(flag1) != 0)
+        if (API_GetFlag(0x200) != 0)
             return;
         (*(unsigned char **)iwram_3001e70)[0x17] = 0;
-        __SetFlag(flag1);
-        __ClearFlag(flag2);
+        API_SetFlag(0x200);
+        API_ClearFlag(0x201);
     } else if (r4 > (0xe8 << 16) && actor[3] > (0xf0 << 13) && r1 > (0xd4 << 16)) {
-        f = flag1;
+        f = 0x200;
         (*(unsigned char **)iwram_3001e70)[0x17] = 0;
-        __SetFlag(f);
-        __ClearFlag(flag2);
+        API_SetFlag(f);
+        API_ClearFlag(0x201);
     } else {
-        if (__GetFlag(flag2) != 0)
+        if (API_GetFlag(0x201) != 0)
             return;
-        f = flag2;
+        f = 0x201;
         (*(unsigned char **)iwram_3001e70)[0x17] = 1;
-        __SetFlag(f);
-        __ClearFlag(flag1);
+        API_SetFlag(f);
+        API_ClearFlag(0x200);
     }
 }
 
