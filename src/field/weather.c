@@ -1,6 +1,6 @@
-// fakematch
 /* field/weather.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "dma0.h"
 
 extern void Func_80944ec();
 
@@ -51,11 +51,7 @@ void Func_80944ec(void)
     (void) scratch;
   }
   {
-    register unsigned int s asm("r0") = src;
-    register unsigned int d asm("r1") = (unsigned int) bgofs;
-    register unsigned int c asm("r2") = 0xa6600003;
-    register volatile unsigned short *p asm("r3") = dmareg;
-    asm volatile("stmia %0!, {%1, %2, %3}\n\tsub %0, #0xc" : "+r"(p) : "r"(s), "r"(d), "r"(c) : "memory");
+    DMA0_SET((const void *)(src), (void *)(bgofs), 0xa6600003);
   }
 }
 

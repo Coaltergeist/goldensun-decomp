@@ -160,32 +160,11 @@ extern u16 Func_8005c2c(u32 slot);
 extern u32 Func_8005868(u32 sector);
 extern u32 Func_8005b64(u32 sector);
 
-// something with DMA is not lining up, this does not match with DMA3_CLEAR
-static inline void ClearSectorBuf(struct FlashWork *ctx) {
-    u32 tmp;
-    u32 zero = 0;
-    register u32 *_src __asm__("r0") = &tmp;
-    register u32 _dst __asm__("r1") = (u32)ctx->sector;
-    *_src = zero;
-    {
-        register vu32 *_base __asm__("r3") = &REG_DMA3SAD;
-        register u32 _cnt __asm__("r2") = 0x85000000 | (0x1000 / 4);
-        __asm__ volatile (
-            "stmia\t%0!, {%1, %2, %3}\n\t"
-            "sub\t%0, #0xc"
-            :
-            : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt)
-            : "memory", "r3"
-        );
-    }
-}
-
-// fakematch
 u32 SomethingSaveHeader(u32 slot, const void *data) {
     struct FlashSectorHeader header;
     struct FlashWork *ctx = *((struct FlashWork **)&gPtrs[0x33]);
     u32 oldSector, newSector;
-    ClearSectorBuf(ctx);
+    DMA3_CLEAR_REGION(ctx, 0x40, 0x1000);
     WaitForDma3();
 
     oldSector = Func_8005b24(slot);   // r7

@@ -4,8 +4,6 @@
 # Inline helper/macro scaffolds are attributed to their original-function callers.
 # This is not a list of all C definitions or a progress denominator.
 Func_80c0eb8 src/battle/mechanics.c
-Func_80e72e0 src/battle_anim/summon_sprite.c
-Func_80944ec src/field/weather.c
 SetFlagNybble src/flags.c
 ToggleFlag src/flags.c
 WaitFrames src/intr/intr.c
@@ -21,14 +19,11 @@ MatrixRoll src/math/matrix.c
 MatrixScalev src/math/matrix.c
 MatrixTranslatev src/math/matrix.c
 MatrixYaw src/math/matrix.c
-Func_80c91a4 src/render/window_effect.c
-SomethingSaveHeader src/save.c
 Func_8005ee0 src/serial.c
 Func_8005fcc src/serial.c
 Func_8006088 src/serial.c
 Func_80063bc src/serial.c
 Func_800651c src/serial.c
-Func_80dbb9c src/sprite/summon.c
 RunTasks src/task.c
 Func_80a8904 src/ui/party_menu.c
 Func_800383c src/video.c

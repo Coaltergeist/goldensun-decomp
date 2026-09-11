@@ -117,4 +117,26 @@ struct DMATask {
     u32 dmacnt;     // 0x08
 };
 
+/* DMA3 zero-fill of a byte range within a buffer. This variant preserves
+ * the save routine's conservative r3 clobber; it is intentionally not replaced
+ * by DMA3_CLEAR, whose asm contract differs. Offset and size are in bytes. */
+static inline void DMA3_CLEAR_REGION(void *base, unsigned int offset, unsigned int size) {
+    u32 tmp;
+    u32 zero = 0;
+    register u32 *_src __asm__("r0") = &tmp;
+    register u32 _dst __asm__("r1") = (u32)base + offset;
+    *_src = zero;
+    {
+        register vu32 *_base __asm__("r3") = (vu32 *)0x040000d4;
+        register u32 _cnt __asm__("r2") = 0x85000000 | (size / 4);
+        __asm__ volatile (
+            "stmia\t%0!, {%1, %2, %3}\n\t"
+            "sub\t%0, #0xc"
+            :
+            : "l" (_base), "l" (_src), "l" (_dst), "l" (_cnt)
+            : "memory", "r3"
+        );
+    }
+}
+
 #endif // _DMA_H_
