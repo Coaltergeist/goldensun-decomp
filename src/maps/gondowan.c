@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7e636c (overlay file 958): consolidated TU — gondowan map overlay. */
 
 #include "nonmatching.h"
@@ -350,32 +349,26 @@ void OvlFunc_958_2009040(void) {
 
 extern unsigned char iwram_3001ebc[];
 
+static inline void ClearFlag(int flag)
+{
+    extern void __ClearFlag(int);
+    __ClearFlag(flag);
+}
+
 void OvlFunc_958_2009080(void) {
     int r5;
     int r3;
     int r2;
-    int a;
-    int b;
-    int c;
-    int d;
 
     r5 = *(int *)iwram_3001ebc;
     __CutsceneStart();
     if (__GetFlag(0x204) != 0) {
-        __ClearFlag(0x9a3);
-        a = 0x9a5;
-        __asm__ ("" : "+r" (a));
-        __ClearFlag(a);
-        b = 0x9a4;
-        __asm__ ("" : "+r" (b));
-        __ClearFlag(b);
-        __ClearFlag(0x9a6);
-        c = 0x9a5;
-        __asm__ ("" : "+r" (c));
-        __SetFlag(c);
-        d = 0x9a4;
-        __asm__ ("" : "+r" (d));
-        __SetFlag(d);
+        ClearFlag(0x9a3);
+        ClearFlag(0x9a5);
+        ClearFlag(0x9a4);
+        ClearFlag(0x9a6);
+        __SetFlag(0x9a5);
+        __SetFlag(0x9a4);
     }
     r2 = 0xb6;
     r2 <<= 1;

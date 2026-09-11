@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7d6418 (overlay file 951): consolidated TU — lucky_fountain map overlay. */
 
 #include "nonmatching.h"
@@ -50,19 +49,21 @@ INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20080bc.s");
 extern void OvlFunc_951_2008880(void);
 extern void OvlFunc_951_2008ac8(void);
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_951_2008104(void)
 {
     unsigned char *base;
     unsigned long v;
-    unsigned int x;
 
     base = (unsigned char *)&gState;
     v = *(unsigned long *)(base + (0xfa * 2));
-    if (__GetFlag(0x200) == 0) {
-        x = 0x80;
-        __asm__ ("" : "+r" (x));
-        x <<= 2;
-        __SetFlag(x);
+    if (GetFlag(0x200) == 0) {
+        __SetFlag(0x200);
         OvlFunc_951_2008880();
     }
     __CutsceneStart();

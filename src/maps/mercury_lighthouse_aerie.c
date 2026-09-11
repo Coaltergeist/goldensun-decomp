@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7b0400 (overlay file 925): consolidated TU — mercury_lighthouse_aerie map overlay. */
 
 #include "nonmatching.h"
@@ -142,72 +141,43 @@ void OvlFunc_925_200addc(void)
     __CutsceneEnd();
 }
 
+extern void __MapActor_SetSpeed(unsigned int, int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+extern void __Func_8092adc(int, int, int);
+extern unsigned int __Func_8091e9c(unsigned int);
+extern void OvlFunc_925_200b208(void);
+static inline void MapActor_SetSpeed(unsigned int actor, int speed, int accel)
+{
+    __MapActor_SetSpeed(actor, speed << 8, accel << 7);
+}
+static inline void Func_8092adc(int actor, int value, int frames)
+{
+    __Func_8092adc(actor, value << 7, frames);
+}
+static inline void Func_80933f8(int x, int y, int z, int mode)
+{
+    __Func_80933f8(-x, -y, -z, mode);
+}
+
 void OvlFunc_925_200aeb8(void)
 {
-  unsigned int a;
-  unsigned int b;
-  unsigned int h0;
-  unsigned int z;
-  unsigned int c;
-  unsigned int r2val;
-  unsigned int r0val;
-  unsigned int h1;
-  unsigned int h2;
-  int d;
-  int e;
-  int f;
-  unsigned int g;
+    unsigned int actor;
+    unsigned int firstActor;
+    unsigned int secondActor;
 
-  __CutsceneStart();
-
-  a = 0x80;
-  __asm__ volatile ("" : "+r" (a));
-  b = 0x80;
-  __asm__ volatile ("" : "+r" (b));
-  h0 = 0;
-  __asm__ volatile ("" : "+r" (h0));
-  a <<= 8;
-  b <<= 7;
-  __MapActor_SetSpeed(h0, a, b);
-
-  z = 0;
-  __asm__ volatile ("" : "+r" (z));
-  __MapActor_TravelToAnimWait(z, 0x68, 0x98);
-
-  c = 0x80;
-  __asm__ volatile ("" : "+r" (c));
-  r2val = 0x3c;
-  __asm__ volatile ("" : "+r" (r2val));
-  r0val = 0;
-  __asm__ volatile ("" : "+r" (r0val));
-  c <<= 7;
-  __Func_8092adc(r0val, c, r2val);
-
-  h1 = 0x11;
-  __asm__ volatile ("" : "+r" (h1));
-  __Func_8092b08(h1, 0);
-
-  h2 = 0x12;
-  __asm__ volatile ("" : "+r" (h2));
-  __Func_8092b08(h2, 0);
-
-  OvlFunc_925_200b208();
-
-  d = 1;
-  __asm__ volatile ("" : "+r" (d));
-  e = 1;
-  __asm__ volatile ("" : "+r" (e));
-  f = 1;
-  __asm__ volatile ("" : "+r" (f));
-  e = -e;
-  f = -f;
-  g = 0;
-  d = -d;
-  __Func_80933f8(d, e, f, g);
-
-  __Func_8091e9c(1);
-
-  __CutsceneEnd();
+    __CutsceneStart();
+    MapActor_SetSpeed(0, 0x80, 0x80);
+    actor = 0;
+    __MapActor_TravelToAnimWait(actor, 0x68, 0x98);
+    Func_8092adc(0, 0x80, 0x3c);
+    firstActor = 0x11;
+    __Func_8092b08(firstActor, 0);
+    secondActor = 0x12;
+    __Func_8092b08(secondActor, 0);
+    OvlFunc_925_200b208();
+    Func_80933f8(1, 1, 1, 0);
+    __Func_8091e9c(1);
+    __CutsceneEnd();
 }
 
 #include "actor.h"

@@ -91,10 +91,10 @@ unsigned int Func_80a172c(unsigned int arg0, unsigned int arg1, unsigned int arg
 unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned int arg2)
 {
     int slot;
-    register unsigned int ret __asm__("r6");
+    unsigned int ret;
 
+    ret = 0;
     slot = AllocSpriteSlot();
-    __asm__ volatile ("movs %0, #0" : "=r" (ret) : "r" (slot));
     if (slot != 0) {
         UploadSpriteGFX(slot, 0x80, GFX_UICursor_Copy);
         ret = _Func_801eadc(slot, 0x80 << 23, arg0, arg1, arg2);

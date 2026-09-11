@@ -21,22 +21,23 @@ int GetMapArea(int map) {
 
 INCLUDE_ASM("asm/field/map_load/GameStart.s");
 
-extern short LoadMapCode();
+extern void LoadMapCode(int file, void *dst);
 extern unsigned char gState[];
 extern unsigned char __start_overlay[];
 
+static inline short CurrentMapFile(unsigned char *state, unsigned char *maps)
+{
+    int index;
+    short file;
+
+    index = *(short *)(state + 0x1c0);
+    file = *(short *)(maps + index * 8);
+    return file;
+}
+
 void Func_808ab48(void)
 {
-    unsigned char *g = gState;
-    short *sp;
-    register int z0 __asm__("r1");
-    int idx;
-
-    sp = (short *)(g + 0xe0 * 2);
-    z0 = 0;
-    __asm__ volatile ("" : : "r" (z0));
-    idx = *(short *)((unsigned char *)sp + z0);
-    LoadMapCode(*(short *)(gMaps + idx * 8), __start_overlay);
+    LoadMapCode(CurrentMapFile(gState, gMaps), __start_overlay);
 }
 
 INCLUDE_ASM("asm/field/map_load/InitMapFlags.s");

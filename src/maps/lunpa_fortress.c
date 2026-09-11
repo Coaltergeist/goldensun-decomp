@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7e7574 (overlay file 959): consolidated TU — lunpa_fortress map overlay. */
 
 #include "nonmatching.h"
@@ -645,15 +644,20 @@ unsigned int OvlFunc_959_2009660(void) {
 
 extern unsigned char *iwram_3001ebc__a1 __asm__("iwram_3001ebc");
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_959_200969c(void)
 {
     unsigned char *r5;
     unsigned int r3;
     unsigned int r2;
-    int x;
 
     r5 = iwram_3001ebc__a1;
-    if ((({ x = 0x214; __asm__ ("" : "+r" (x)); __GetFlag(x); })) == 0) {
+    if ((GetFlag(0x214)) == 0) {
         if (OvlFunc_959_2009660() == 0) {
             r3 = (unsigned int)&gState;
             r2 = 0x93;
@@ -662,10 +666,10 @@ void OvlFunc_959_200969c(void)
             if (*(short *)r3 == 0) {
                 if (OvlFunc_959_20098e4(0x11) != 0) {
                     __SetFlag(0x215);
-                    (({ x = 0x214; __asm__ ("" : "+r" (x)); __SetFlag(x); }));
+                    __SetFlag(0x214);
                 }
             }
-            if ((({ x = 0x214; __asm__ ("" : "+r" (x)); __GetFlag(x); })) != 0) {
+            if ((GetFlag(0x214)) != 0) {
                 r3 = 0xc1;
                 r3 <<= 1;
                 r2 = (unsigned int)(r5 + r3);
@@ -692,10 +696,9 @@ void OvlFunc_959_200975c(void)
     unsigned int r2;
     unsigned char *r5;
     int r0;
-    int x;
 
     r5 = (unsigned char *)iwram_3001ebc__a2;
-    r0 = ({ x = 0x225; __asm__("" : "+r"(x)); __GetFlag(x); });
+    r0 = GetFlag(0x225);
     if (r0 == 0) {
         r0 = OvlFunc_959_20098e4(0xd);
         if (r0 != 0) {
@@ -724,10 +727,9 @@ void OvlFunc_959_20097bc(void)
     unsigned char *r5;
     unsigned int r3;
     unsigned int r2;
-    int x;
 
     r5 = iwram_3001ebc__a3;
-    if ((({ x = 0x225; __asm__ ("" : "+r" (x)); __GetFlag(x); })) == 0) {
+    if ((GetFlag(0x225)) == 0) {
         if (OvlFunc_959_20098e4(0x15) != 0) {
             r3 = (unsigned int)&gState;
             r2 = 0x93;
@@ -832,29 +834,25 @@ void OvlFunc_959_2009b24(int actor) {
 }
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009be4.s");
 
+static inline void MapActor_EmoteScaled(unsigned int actor, unsigned int emote, unsigned int frames)
+{
+    __MapActor_Emote(actor, emote << 1, frames);
+}
 void OvlFunc_959_2009c4c(unsigned int actor)
 {
     unsigned int msg;
     unsigned short t2;
-    unsigned short e;
 
     __Func_80925cc(actor, 1);
     do { msg = 0x241e; } while (0);
     __MessageID(msg);
     __ActorMessage(actor, 0);
-    e = 0x81;
-    {
-        register unsigned int p2 __asm__("r2") = 0x3c;
-        register unsigned int p0 __asm__("r0") = actor;
-        __asm__ volatile ("" : : "r" (p2), "r" (p0));
-        e <<= 1;
-        __MapActor_Emote(p0, e, p2);
-    }
-    __MessageID(msg+1);
+    MapActor_EmoteScaled(actor, 0x81, 0x3c);
+    __MessageID(msg + 1);
     __ActorMessage(actor, 0);
     msg += 2;
     t2 = 4;
-    do { t2 = (unsigned short) t2; } while (0);
+    do { t2 = (unsigned short)t2; } while (0);
     __MapActor_DoAnim(actor, t2);
     __MessageID(msg);
     __ActorMessage(actor, 0);

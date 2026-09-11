@@ -290,8 +290,6 @@ extern int _MSG_1bc0;
 
 void OvlFunc_939_2008a90(void)
 {
-  unsigned long long t;
-  unsigned long v;
   if (__GetFlag(0x941))
   {
     __MessageID(0x24e8);
@@ -300,10 +298,7 @@ void OvlFunc_939_2008a90(void)
   {
     __MessageID((int) (&_MSG_1bc0));
   }
-  t = 9;
-  do { t = (unsigned long) t; } while (0);
-  v = t;
-  __ActorMessage(v, 0);
+  __ActorMessage(9, 0);
 }
 
 INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008ac4.s");

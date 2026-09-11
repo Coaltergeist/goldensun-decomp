@@ -1,4 +1,3 @@
-// fakematch
 /* rom_794ac0 (overlay file 899): consolidated TU — vault_rooms_1 map overlay. */
 
 #include "nonmatching.h"
@@ -339,13 +338,18 @@ extern int __Func_8091c7c(int, int);
 extern unsigned char *iwram_3001ebc__a1 __asm__("iwram_3001ebc");
 extern int _MSG_1360;
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_899_200882c(void) {
     unsigned char *m;
     unsigned char *b;
-    int x;
 
     __CutsceneStart();
-    if (!({ x = 0x857; __asm__("" : "+r"(x)); __GetFlag(x); })) {
+    if (!GetFlag(0x857)) {
         m = (unsigned char *)&_MSG_1360;
         __MessageID((int)m);
         OvlFunc_899_200c5f4(0x10, 0x14);

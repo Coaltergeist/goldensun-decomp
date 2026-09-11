@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7c5efc (overlay file 941): consolidated TU — west_lunpa_cave map overlay. */
 
 #include "nonmatching.h"
@@ -69,9 +68,14 @@ unsigned char unk23;
 };
 void OvlFunc_941_20080d4(void);
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_941_20081b0(void) {
     struct Actor *actor;
-    int flag;
 
     actor = __MapActor_GetActor(10);
     __SetFlag(0x80 << 2);
@@ -79,9 +83,8 @@ void OvlFunc_941_20081b0(void) {
         __Actor_SetSpriteFlags(actor, 0);
         actor->unk23 = 1;
     }
-    flag = 0x202;
-    __asm__ volatile ("" : "+r" (flag));
-    if (__GetFlag(flag) == 0) {
+
+    if (GetFlag(0x202) == 0) {
         __PlaySound(0x9d);
         OvlFunc_941_20080d4();
         __PlaySound(0x50);

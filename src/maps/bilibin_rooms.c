@@ -1,4 +1,3 @@
-// fakematch
 /* rom_79c0c4 (overlay file 908): consolidated TU — bilibin_rooms map overlay. */
 
 #include "nonmatching.h"
@@ -258,32 +257,14 @@ void OvlFunc_908_200835c(void) {
     __CutsceneEnd();
 }
 
-void OvlFunc_908_20083f4(void) {
-    unsigned short a;
-    int p0, p1, p2;
+void OvlFunc_908_20083f4(void)
+{
     __CutsceneStart();
     __MessageID(0x1703);
-
-    a = 0x16;
-    do { a = (unsigned short) a; } while (0);
-    __ActorMessage(a, 0);
-
-    p2 = 0;
-    __asm__ volatile ("" : : "r" (p2));
-    p0 = 0x16;
-    __asm__ volatile ("" : : "r" (p0));
-    p1 = 0;
-    __asm__ volatile ("" : : "r" (p1));
-    __MapActor_Face(p0, p1, p2);
-
-    a = 0x16;
-    do { a = (unsigned short) a; } while (0);
-    __ActorMessage(a, 0);
-
-    a = 0x16;
-    do { a = (unsigned short) a; } while (0);
-    __Func_8092adc(a, 0, 0xa);
-
+    __ActorMessage(0x16, 0);
+    __MapActor_Face(0x16, 0, 0);
+    __ActorMessage(0x16, 0);
+    __Func_8092adc(0x16, 0, 0xa);
     __CutsceneEnd();
 }
 

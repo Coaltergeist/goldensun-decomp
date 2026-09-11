@@ -1,4 +1,3 @@
-// fakematch
 /* battle/battle.c -- consolidated TU. */
 #include "nonmatching.h"
 
@@ -11,29 +10,18 @@ INCLUDE_ASM("asm/battle/battle/Func_80b5a0c.s");
 
 #include "dma.h"
 extern int _call_via_r3(void);
-extern void Func_80008d4(int dst, int size);
-static inline void Dma3Raw(const void *src, void *dst, u32 cnt)
-{
-register vu32 *_base __asm__("r3") = &REG_DMA3SAD;
-register const void *_src __asm__("r0") = src;
-register void *_dst __asm__("r1") = dst;
-register u32 _cnt __asm__("r2") = cnt;
-    __asm__ volatile (
-        "stmia\tr3!, {r0, r1, r2}\n\t"
-        "sub\tr3, #0xc"
-        :
-        : "r" (_base), "r" (_src), "r" (_dst), "r" (_cnt)
-        : "r0", "r1", "r2", "memory"
-    );
-}
+/* The ARM routine leaves r0 at the end of the cleared word range. */
+extern void *Func_80008d4(void *dst, unsigned int size);
+extern unsigned char BattleClearStart[] __asm__(".Lbattle_clear_start");
+__asm__(".equ .Lbattle_clear_start, 0x0600028c");
 
 int Func_80b5ad4(void)
 {
-    int (*f)(int, int);
+    void *(*clear)(void *, unsigned int);
 
-    Dma3Raw((void *)0x6000290, (void *)0x6000280, 0x80000008);
-    f = (int (*)(int, int))Func_80008d4;
-    return f(0x600028c, 20);
+    DMA3_SET((void *)0x6000290, (void *)0x6000280, 0x80000008);
+    clear = Func_80008d4;
+    return (int)clear(BattleClearStart, 20);
 }
 
 #define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)

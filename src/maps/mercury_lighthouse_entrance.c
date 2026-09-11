@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7aa430 (overlay file 923): consolidated TU — mercury_lighthouse_entrance map overlay. */
 
 #include "nonmatching.h"
@@ -202,6 +201,10 @@ int z;
 void (*arg5)(void);
 };
 
+static inline void SetActorSpeed(int actor, int speed, int accel)
+{
+    __MapActor_SetSpeed(actor, speed, accel);
+}
 void OvlFunc_923_20088ec(struct Pk arg)
 {
     int va[3];
@@ -262,15 +265,7 @@ void OvlFunc_923_20088ec(struct Pk arg)
     __Actor_TravelTo(actor, arg.x, arg.y, arg.z);
     __MapActor_WaitMovement(0);
     __MapActor_SetAnim(0, 2);
-    {
-        register unsigned int r0z __asm__("r0") = 0;
-        register unsigned int r1v __asm__("r1") = 0x4ccc;
-        register unsigned int r2v __asm__("r2") = 0x1999;
-        __asm__ volatile ("" : : "r"(r0z));
-        __asm__ volatile ("" : : "r"(r1v));
-        __asm__ volatile ("" : : "r"(r2v));
-        __MapActor_SetSpeed(r0z, r1v, r2v);
-    }
+    SetActorSpeed(0, 0x4ccc, 0x1999);
     __MapActor_TravelBy(0, (short)(L2700__a2[dir] >> 16) / 2, (short)(L2700__a2[dir]) / 2);
     if (arg.arg5)
         arg.arg5();

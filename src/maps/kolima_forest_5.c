@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7a4370 (overlay file 917): consolidated TU — kolima_forest_5 map overlay. */
 
 #include "nonmatching.h"
@@ -60,14 +59,19 @@ extern void __MapActor_DoAnim(int, int);
 extern void OvlFunc_917_20092f4(int, int);
 extern int _MSG_1520;
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_917_2008088(void) {
-    int x;
     __CutsceneStart();
     OvlFunc_917_20092f4(0xb, 1);
-    if (__GetFlag(0x845)) {
+    if (GetFlag(0x845)) {
         __MessageID(0x151d);
         __ActorMessage(9, 0);
-    } else if (({ x = 0x84c; __asm__("" : "+r"(x)); __GetFlag(x); })) {
+    } else if (GetFlag(0x84c)) {
         __MessageID(0x1525);
         __ActorMessage(9, 0);
     } else {

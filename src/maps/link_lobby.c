@@ -1,4 +1,3 @@
-// fakematch
 /* rom_7fb4a8 (overlay file 971): consolidated TU.
  * gState is declared with divergent per-TU views in the originals (a struct
  * for the address-taking functions, a short[] for the one that indexes it);
@@ -57,21 +56,25 @@ INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008148.s");
 
 extern unsigned long L1f50 __asm__(".L1f50");
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 unsigned int OvlFunc_971_20082d8(void)
 {
     unsigned int result;
-    unsigned int f;
 
-    result = __GetFlag(0x203);
+    result = GetFlag(0x203);
     if (result == 0) {
         L1f50 = L1f50 + 1;
         if (L1f50 == 300) {
             L1f50 = 0;
             __ClearFlag(0x200);
         }
-        f = 0x200;
-        __asm__ ("" : "+r" (f));
-        result = __GetFlag(f);
+
+        result = GetFlag(0x200);
         if (result == 0) {
             __CutsceneStart();
             __MessageID(0x292e);
@@ -238,44 +241,44 @@ INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008f8c.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009050.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_200906c.s");
 
+extern unsigned char LobbyMessage_298d[] __asm__(".Llobby_message_298d");
+__asm__(".equ .Llobby_message_298d, 0x298d");
+extern unsigned char LobbyMessage_298c[] __asm__(".Llobby_message_298c");
+__asm__(".equ .Llobby_message_298c, 0x298c");
 unsigned int OvlFunc_971_20090e8(unsigned int actor)
 {
     unsigned int msgId;
-    unsigned int flag1, flag2, flag3;
     unsigned int idx;
     unsigned char *p;
 
     __CutsceneStart();
     {
-        register unsigned char *basep __asm__("r3") = (unsigned char *)&gState;
-        __asm__ volatile ("" : "+r" (basep));
+        unsigned char *basep = (unsigned char *)&gState;
+
         idx = 0xfa;
-        __asm__ ("" : "+r" (idx));
+
         p = basep + (idx << 1);
     }
     {
-        register unsigned int r0v __asm__("r0") = actor;
-        __asm__ volatile ("" : "+r" (r0v));
-        __MapActor_Face(r0v, *(unsigned int *)p, 0);
+        unsigned int actorId = actor;
+
+        __MapActor_Face(actorId, *(unsigned int *)p, 0);
     }
-    flag1 = 0x204;
-    __asm__ ("" : "+r" (flag1));
-    if (__GetFlag(flag1) == 0) {
+
+    if (GetFlag(0x204) == 0) {
         if (__GetPartySize() <= 3) {
-            msgId = 0x298d;
-            __asm__ ("" : "+r" (msgId));
+            msgId = (unsigned int)LobbyMessage_298d;
+
         } else {
-            msgId = 0x298c;
-            __asm__ ("" : "+r" (msgId));
+            msgId = (unsigned int)LobbyMessage_298c;
+
         }
-        flag2 = 0x204;
-        __asm__ ("" : "+r" (flag2));
-        __SetFlag(flag2);
+
+        __SetFlag(0x204);
     } else {
         msgId = 0x298e;
-        flag3 = 0x204;
-        __asm__ ("" : "+r" (flag3));
-        __ClearFlag(flag3);
+
+        __ClearFlag(0x204);
     }
     __MessageID(msgId);
     __ShowActorMessage_NoWait(actor, 0);

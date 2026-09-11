@@ -1,4 +1,3 @@
-// fakematch
 /* rom_780898 (overlay file 883): consolidated TU — vale_river map overlay. */
 
 #include "nonmatching.h"
@@ -731,27 +730,28 @@ void OvlFunc_883_200da24(void)
   __CutsceneEnd();
 }
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 void OvlFunc_883_200da40(void)
 {
     int flag106;
-    int f;
 
-    f = 0x241;
-    __asm__ ("" : "+r" (f));
-    if (__GetFlag(f) != 0) {
-        flag106 = __GetFlag(0x106);
+    if (GetFlag(0x241) != 0) {
+        flag106 = GetFlag(0x106);
         if (flag106 == 0) {
             ((unsigned char *)__MapActor_GetActor(0x16))[0x5b] = flag106;
-            f = 0x241;
-            __asm__ ("" : "+r" (f));
-            __ClearFlag(f);
+
+            __ClearFlag(0x241);
         }
     } else {
-        if (__GetFlag(0x106) != 0) {
+        if (GetFlag(0x106) != 0) {
             ((unsigned char *)__MapActor_GetActor(0x16))[0x5b] = 1;
-            f = 0x241;
-            __asm__ ("" : "+r" (f));
-            __SetFlag(f);
+
+            __SetFlag(0x241);
         }
     }
 }

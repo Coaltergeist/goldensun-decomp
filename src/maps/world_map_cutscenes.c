@@ -1,4 +1,3 @@
-// fakematch
 /* rom_77a7c8 (overlay file 881): consolidated TU — world_map_cutscenes map overlay. */
 
 #include "nonmatching.h"
@@ -144,6 +143,18 @@ INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008c28.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200955c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009680.s");
 
+static inline int GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
+static inline void SetActorAnim(unsigned char *actor, int anim)
+{
+    extern void __Actor_SetAnim(unsigned char *, unsigned int);
+    __Actor_SetAnim(actor, anim);
+}
+
 void OvlFunc_881_20097a4(void)
 {
     unsigned char *actor;
@@ -155,21 +166,15 @@ void OvlFunc_881_20097a4(void)
     *(unsigned int *)(actor + 8) = *(unsigned int *)(other + 8);
     *(unsigned int *)(actor + 0x10) = *(unsigned int *)(other + 0x10);
     if (*(int *)(actor + 0xc) < 0xa0000) {
-        register int p0 __asm__("r0");
-        p0 = 0x80;
+
         *(unsigned int *)(actor + 0xc) = 0xa0000;
-        __asm__ volatile ("" : "+r" (p0));
-        p0 <<= 2;
-        flag = __GetFlag(p0);
+
+        flag = GetFlag(0x200);
         if (flag == 0) {
             unsigned short *p;
             unsigned short v;
             __PlaySound(0x91);
-            {
-                register unsigned char *pp0 __asm__("r0") = actor;
-                __asm__ volatile ("" : : "r" (pp0));
-                __Actor_SetAnim(pp0, 3);
-            }
+            SetActorAnim(actor, 3);
             __SetFlag(0x80 << 2);
             p = (unsigned short *)(actor + 0x64);
             v = 1;

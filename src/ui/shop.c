@@ -278,48 +278,50 @@ INCLUDE_ASM("asm/ui/shop/Func_80b3050.s");
 extern unsigned char iwram_3001f2c__a5[] __asm__("iwram_3001f2c");
 extern signed char Lb4ab6[] __asm__(".Lb4ab6");
 
-int Func_80b3210(int param)
+int Func_80b3210(int priceIndex)
 {
-  unsigned char *r6;
-  signed char r10;
-  signed char *new_var;
-  signed char max;
-  int count;
-  int new_var2;
-  int r7;
-  int r5;
-  unsigned char *r8;
-  int unit;
-  int field;
-  r6 = *((unsigned char **) iwram_3001f2c__a5);
-  new_var = Lb4ab6;
-  r10 = new_var[param];
-  new_var2 = (int) r10;
-  max = *((signed char *) (r6 + 0x3a7));
-  count = 0;
-  r7 = 0;
-  if (count >= ((int) max))
+  extern unsigned char *_GetUnit(unsigned int unitID);
+  unsigned char *shop;
+  signed char priceByte;
+  signed char *prices;
+  signed char partyCount;
+  int livingCount;
+  int price;
+  int memberIndex;
+  int memberOffset;
+  unsigned char *members;
+  int unitID;
+  unsigned char *unit;
+  int hp;
+  shop = *((unsigned char **) iwram_3001f2c__a5);
+  prices = Lb4ab6;
+  priceByte = prices[priceIndex];
+  price = (int) priceByte;
+  partyCount = *((signed char *) (shop + 0x3a7));
+  livingCount = 0;
+  memberIndex = 0;
+  if (livingCount >= ((int) partyCount))
   {
     goto done;
   }
-  r8 = r6 + 2;
-  r5 = 0xdb << 2;
+  members = shop + 2;
+  memberOffset = 0xdb << 2;
   do
   {
-    unit = *((short *) (r8 + r5));
-    unit = _GetUnit(unit);
-    field = *((short *) (((char *) unit) + 0x38));
-    if (field != 0)
+    unitID = *((short *) (members + memberOffset));
+    unit = _GetUnit(unitID);
+    hp = *((short *) (unit + 0x38));
+    if (hp != 0)
     {
-      count++;
+      livingCount++;
     }
-    max = *((signed char *) (r6 + 0x3a7));
-    r7++;
-    r5 += 2;
+    partyCount = *((signed char *) (shop + 0x3a7));
+    memberIndex++;
+    memberOffset += 2;
   }
-  while (r7 < ((int) max));
+  while (memberIndex < ((int) partyCount));
   done:
-  return new_var2 * count;
+  return price * livingCount;
 
 }
 

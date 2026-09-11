@@ -220,71 +220,31 @@ void OvlFunc_882_2008360(void)
     OvlFunc_882_200815c(9);
 }
 
+static inline void TravelActor(int actor, int x, int y)
+{
+    __MapActor_TravelToAnim(actor, x, y);
+}
 void OvlFunc_882_2008398(void)
 {
-    register int zero __asm__("r0");
-    register int x __asm__("r1");
-    register int y __asm__("r2");
-
     __PlaySound(0x9e);
     __Func_8010560(L578a, 0x23, 0x4a);
-    x = 0x66;
-    y = 0x4b6;
-    zero = 0;
-    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
-    __MapActor_TravelToAnim(zero, x, y);
+    TravelActor(0, 0x66, 0x4b6);
     __CutsceneWait(3);
     OvlFunc_882_200815c(0xa);
 }
 void OvlFunc_882_20083cc(void)
 {
-    register int zero __asm__("r0");
-    register int x __asm__("r1");
-    register int y __asm__("r2");
-
     __PlaySound(0x9e);
-    {
-        register unsigned char *script __asm__("r0");
-        register int a __asm__("r1");
-        register int b __asm__("r2");
-
-        script = L578a;
-        a = 0x23;
-        b = 0x49;
-        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
-        __Func_8010560(script, a, b);
-    }
-    x = 0x66;
-    y = 0x4b6;
-    zero = 0;
-    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
-    __MapActor_TravelToAnim(zero, x, y);
+    __Func_8010560(L578a, 0x23, 0x49);
+    TravelActor(0, 0x66, 0x4b6);
     __CutsceneWait(3);
     OvlFunc_882_200815c(0xc);
 }
 void OvlFunc_882_2008400(void)
 {
-    register int zero __asm__("r0");
-    register int x __asm__("r1");
-    register int y __asm__("r2");
-
     __PlaySound(0x9e);
-    {
-        register unsigned char *script __asm__("r0");
-        register int a __asm__("r1");
-        register int b __asm__("r2");
-
-        script = L57a0;
-        a = 0x26;
-        b = 0x48;
-        __asm__ ("" : "+r" (script), "+r" (a), "+r" (b));
-        __Func_8010560(script, a, b);
-    }
-    x = 0x92;
-    y = 0x49e;
-    zero = 0;
-    __asm__ ("" : "+r" (zero), "+r" (x), "+r" (y));
-    __MapActor_TravelToAnim(zero, x, y);
+    __Func_8010560(L57a0, 0x26, 0x48);
+    TravelActor(0, 0x92, 0x49e);
     __CutsceneWait(3);
     OvlFunc_882_200815c(0xd);
 }
@@ -294,19 +254,19 @@ INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008d5c.s");
 
 extern void __Func_8010704(int a, int b, int c, int d, int e, int f);
 
+static inline void CopyMapTileAttributes(int srcX, int srcY, int width, int height,
+                                         int destX, int destY)
+{
+    __Func_8010704(srcX, srcY, width, height, destX, destY);
+}
+
 void OvlFunc_882_2008ec4(void)
 {
-	unsigned int b = 0x15;
-	register unsigned int a __asm__("r8") = 0x39;
-	unsigned int z;
-
-	__Func_8010704(0x1d, 0x40, 1, 1, b, a);
-	z = 0x3a;
-	__Func_8010704(0x1d, 0x40, 1, 1, b, z);
-	__Func_8010704(0x1d, 0x40, 1, 1, 0x16, z);
-	b = 0x14;
-	__Func_8010704(0x1d, 0x40, 1, 1, b, z);
-	__Func_8010704(0x1c, 0x14, 1, 1, b, a);
+    __Func_8010704(0x1d, 0x40, 1, 1, 0x15, 0x39);
+    CopyMapTileAttributes(0x1d, 0x40, 1, 1, 0x15, 0x3a);
+    __Func_8010704(0x1d, 0x40, 1, 1, 0x16, 0x3a);
+    __Func_8010704(0x1d, 0x40, 1, 1, 0x14, 0x3a);
+    __Func_8010704(0x1c, 0x14, 1, 1, 0x14, 0x39);
 }
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008f38.s");
