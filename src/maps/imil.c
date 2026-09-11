@@ -9,7 +9,18 @@ extern void OvlFunc_921_20096ac();
 
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008030.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20080d8.s");
-INCLUDE_ASM("asm/maps/imil/Imil_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_33[];
+extern unsigned char Lm921_28a0[] __asm__(".Lm921_28a0");
+extern unsigned char Lm921_2798[] __asm__(".Lm921_2798");
+void *Imil_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_33) return Lm921_28a0;
+    return Lm921_2798;
+}
 
 unsigned int Imil_GetSpecialExits(void) {
     return 0;
@@ -29,8 +40,6 @@ void OvlFunc_921_20081e0(void) {
     OvlFunc_921_2009fa4();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_33[];
 extern unsigned char Lm921_2db8[] __asm__(".Lm921_2db8");
 extern unsigned char Lm921_2c80[] __asm__(".Lm921_2c80");

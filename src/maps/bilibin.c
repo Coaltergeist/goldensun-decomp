@@ -6,7 +6,23 @@
 INCLUDE_ASM("asm/maps/bilibin/exports.s");
 
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008030.s");
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_1e[], _EVENT_23[], _EVENT_20[];
+extern unsigned char Lm907_11ec[] __asm__(".Lm907_11ec");
+extern unsigned char Lm907_130c[] __asm__(".Lm907_130c");
+extern unsigned char Lm907_136c[] __asm__(".Lm907_136c");
+extern unsigned char Lm907_11d4[] __asm__(".Lm907_11d4");
+void *Bilibin_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_1e) return Lm907_11ec;
+    if (ev == (int)_EVENT_23) return Lm907_130c;
+    if (ev == (int)_EVENT_20) return Lm907_136c;
+    return Lm907_11d4;
+}
+
 INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200942c[];
@@ -39,8 +55,6 @@ extern unsigned char Lm907_1744[] __asm__(".Lm907_1744");
 extern unsigned char Lm907_1a2c[] __asm__(".Lm907_1a2c");
 extern unsigned char Lm907_1bc4[] __asm__(".Lm907_1bc4");
 extern unsigned char Lm907_1738[] __asm__(".Lm907_1738");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 
 int Bilibin_GetEvents(void)
 {

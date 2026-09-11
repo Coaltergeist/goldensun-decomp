@@ -5,7 +5,20 @@
 
 INCLUDE_ASM("asm/maps/babis_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_8b[];
+extern unsigned char Lm952_4a1c[] __asm__(".Lm952_4a1c");
+extern unsigned char Lm952_4614[] __asm__(".Lm952_4614");
+void *BabisPalace_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_8b) {
+        return Lm952_4a1c;
+    } else {
+        return Lm952_4614;
+    }
+}
 
 extern unsigned char gOvl_0200ca7c[];
 
@@ -179,8 +192,6 @@ void OvlFunc_952_200c00c(void) {
     __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern int __GetFlag(int);
 extern unsigned char _EVENT_8b[];
 extern unsigned char Lm952_5ad8[] __asm__(".Lm952_5ad8");

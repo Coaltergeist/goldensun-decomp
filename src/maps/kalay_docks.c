@@ -11,7 +11,23 @@ void OvlFunc_942_2008030(void) {
     __Func_80955b0(14, 0, 5);
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_6b[], _EVENT_70[], _EVENT_6c[];
+extern unsigned char Lm942_1738[] __asm__(".Lm942_1738");
+extern unsigned char Lm942_17c8[] __asm__(".Lm942_17c8");
+extern unsigned char Lm942_1840[] __asm__(".Lm942_1840");
+extern unsigned char Lm942_1708[] __asm__(".Lm942_1708");
+
+void *KalayDocks_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_6b) return Lm942_1738;
+    if (ev == (int)_EVENT_70) return Lm942_17c8;
+    if (ev == (int)_EVENT_6c) return Lm942_1840;
+    return Lm942_1708;
+}
+
 
 unsigned int KalayDocks_GetSpecialExits(void) {
     return 0;
@@ -25,8 +41,7 @@ void *KalayDocks_GetExits(void) {
 
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetActors.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008144.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
+
 extern int __GetFlag(int);
 extern unsigned char _EVENT_6b[], _EVENT_70[], _EVENT_6c[];
 extern unsigned char GFX_Thermometer[];

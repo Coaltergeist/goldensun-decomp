@@ -328,7 +328,22 @@ int OvlFunc_934_2008cf8(int arg0)
 
 INCLUDE_ASM("asm/maps/vale_cave/vale_cave_data.s");
 
-INCLUDE_ASM("asm/maps/vale_cave/ValeCave_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_5d[], _EVENT_5e[], _EVENT_5f[];
+extern unsigned char Lm934_1f9c[] __asm__(".Lm934_1f9c");
+extern unsigned char Lm934_2014[] __asm__(".Lm934_2014");
+extern unsigned char Lm934_2134[] __asm__(".Lm934_2134");
+extern unsigned char Lm934_1f6c[] __asm__(".Lm934_1f6c");
+
+void *ValeCave_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_5d) return Lm934_1f9c;
+    if (ev == (int)_EVENT_5e) return Lm934_2014;
+    if (ev == (int)_EVENT_5f) return Lm934_2134;
+    return Lm934_1f6c;
+}
 
 int ValeCave_GetSpecialExits(void) {
     return 0;
@@ -367,10 +382,8 @@ INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20090e0.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20091a0.s");
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009258.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;
 extern unsigned char iwram_3001ebc[];
-extern GlobalState gState;
 extern unsigned char L1f00[] __asm__(".Lm934_1f00");
 
 void OvlFunc_934_2009300(void)

@@ -24,7 +24,25 @@ void OvlFunc_933_2008324(unsigned int *arg0, int arg1)
 }
 
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008344.s");
-INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_59[], _EVENT_5a[], _EVENT_5b[], _EVENT_5c[];
+extern unsigned char Lm933_2174[] __asm__(".Lm933_2174");
+extern unsigned char Lm933_21d4[] __asm__(".Lm933_21d4");
+extern unsigned char Lm933_2234[] __asm__(".Lm933_2234");
+extern unsigned char Lm933_22dc[] __asm__(".Lm933_22dc");
+extern unsigned char Lm933_212c[] __asm__(".Lm933_212c");
+
+void *LamakanDesert_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_59) return Lm933_2174;
+    if (ev == (int)_EVENT_5a) return Lm933_21d4;
+    if (ev == (int)_EVENT_5b) return Lm933_2234;
+    if (ev == (int)_EVENT_5c) return Lm933_22dc;
+    return Lm933_212c;
+}
 
 int LamakanDesert_GetSpecialExits(void) {
     return 0;

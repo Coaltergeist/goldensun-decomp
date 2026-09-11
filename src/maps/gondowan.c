@@ -294,7 +294,21 @@ void OvlFunc_958_20088ec(struct Pk arg)
 
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008ba4.s");
 
-INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_98[], _EVENT_9d[], _EVENT_9e[];
+extern unsigned char Lm958_17b4[] __asm__(".Lm958_17b4");
+extern unsigned char Lm958_17fc[] __asm__(".Lm958_17fc");
+extern unsigned char Lm958_1874[] __asm__(".Lm958_1874");
+extern unsigned char Lm958_1784[] __asm__(".Lm958_1784");
+void *Gondowan_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_98) return Lm958_17b4;
+    if (ev == (int)_EVENT_9d) return Lm958_17fc;
+    if (ev == (int)_EVENT_9e) return Lm958_1874;
+    return Lm958_1784;
+}
 
 int Gondowan_GetSpecialExits(void) {
     return 0;
@@ -307,8 +321,6 @@ unsigned int Gondowan_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern int __GetFlag(int);
 extern unsigned char _EVENT_98[], _EVENT_9d[], _EVENT_9e[];
 extern unsigned char Lm958_1bcc[] __asm__(".Lm958_1bcc");

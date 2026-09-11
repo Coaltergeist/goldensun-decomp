@@ -4,7 +4,22 @@
 
 extern void OvlFunc_935_2008734();
 
-INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
+extern unsigned char Lm935_18cc[] __asm__(".Lm935_18cc");
+extern unsigned char Lm935_1a34[] __asm__(".Lm935_1a34");
+extern unsigned char Lm935_1b9c[] __asm__(".Lm935_1b9c");
+extern unsigned char Lm935_189c[] __asm__(".Lm935_189c");
+
+void *VaultCave_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return Lm935_18cc;
+    if (ev == (int)_EVENT_61) return Lm935_1a34;
+    if (ev == (int)_EVENT_62) return Lm935_1b9c;
+    return Lm935_189c;
+}
 
 extern unsigned char gOvl_02009c5c[];
 
@@ -56,8 +71,6 @@ void OvlFunc_935_20082cc(void) {
 }
 
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
 extern unsigned char Lm935_1f98[] __asm__(".Lm935_1f98");
 extern unsigned char Lm935_2064[] __asm__(".Lm935_2064");

@@ -5,7 +5,24 @@
 
 INCLUDE_ASM("asm/maps/altin/exports.s");
 
-INCLUDE_ASM("asm/maps/altin/Altin_GetEntrances.s");
+// INCLUDE_ASM("asm/maps/altin/Altin_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+extern unsigned char _EVENT_4b[], _EVENT_4c[];
+extern unsigned char Lm931_1120[] __asm__(".Lm931_1120");
+extern unsigned char Lm931_1288[] __asm__(".Lm931_1288");
+extern unsigned char Lm931_10f0[] __asm__(".Lm931_10f0");
+
+void *Altin_GetEntrances(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_4b) return Lm931_1120;
+    if (ev == (int)_EVENT_4c) return Lm931_1288;
+    return Lm931_10f0;
+}
+
 
 int Altin_GetSpecialExits(void) {
     return 0;
@@ -18,8 +35,6 @@ void *Altin_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/altin/Altin_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_4b[], _EVENT_4c[];
 extern unsigned char gScript_930__02009730[];
 extern unsigned char Lm931_19f4[] __asm__(".Lm931_19f4");

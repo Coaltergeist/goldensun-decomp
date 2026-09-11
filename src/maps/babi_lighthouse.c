@@ -411,7 +411,22 @@ void OvlFunc_965_2008d4c(void)
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008eac.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];
+extern unsigned char Lm965_3270[] __asm__(".Lm965_3270");
+extern unsigned char Lm965_3330[] __asm__(".Lm965_3330");
+extern unsigned char Lm965_34f8[] __asm__(".Lm965_34f8");
+extern unsigned char Lm965_3558[] __asm__(".Lm965_3558");
+void *BabiLighthouse_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b0) return Lm965_3270;
+    if (ev == (int)_EVENT_af) return Lm965_3330;
+    if (ev == (int)_EVENT_ae) return Lm965_34f8;
+    return Lm965_3558;
+}
+
 INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200b5f8[];
@@ -623,8 +638,6 @@ void OvlFunc_965_200a6b8(void)
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a6fc.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a738.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];
 extern unsigned char Lm965_391c[] __asm__(".Lm965_391c");
 extern unsigned char Lm965_39e8[] __asm__(".Lm965_39e8");

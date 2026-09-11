@@ -21,7 +21,22 @@ INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008050.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080a0.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080cc.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008114.s");
-INCLUDE_ASM("asm/maps/kolima/Kolima_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_27[], _EVENT_26[];
+extern unsigned char Lm911_2f80[] __asm__(".Lm911_2f80");
+extern unsigned char gScript_913__0200afc8[];
+extern unsigned char Lm911_2e60[] __asm__(".Lm911_2e60");
+
+void *Kolima_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_27) return Lm911_2f80;
+    if (ev == (int)_EVENT_26) return gScript_913__0200afc8;
+    return Lm911_2e60;
+}
+
 INCLUDE_ASM("asm/maps/kolima/Kolima_GetSpecialExits.s");
 
 extern unsigned char gOvl_0200b040[];
@@ -39,8 +54,6 @@ void OvlFunc_911_2008274(void) {
     __Func_80955b0(0x1b, 0, 1);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_27[];
 extern unsigned char Lm911_3590[] __asm__(".Lm911_3590");
 extern unsigned char Lm911_33b0[] __asm__(".Lm911_33b0");

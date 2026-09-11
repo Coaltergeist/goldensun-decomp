@@ -17,7 +17,30 @@ void OvlFunc_936_2008030(void) {
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
-INCLUDE_ASM("asm/maps/kalay/Kalay_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
+extern unsigned char Lm936_42c8[] __asm__(".Lm936_42c8");
+extern unsigned char Lm936_4448[] __asm__(".Lm936_4448");
+extern unsigned char Lm936_44a8[] __asm__(".Lm936_44a8");
+extern unsigned char Lm936_4520[] __asm__(".Lm936_4520");
+extern unsigned char Lm936_4580[] __asm__(".Lm936_4580");
+extern unsigned char gScript_943__0200c628[];
+extern unsigned char Lm936_4298[] __asm__(".Lm936_4298");
+
+
+void *Kalay_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_63) return Lm936_42c8;
+    if (ev == (int)_EVENT_66) return Lm936_4448;
+    if (ev == (int)_EVENT_99) return Lm936_44a8;
+    if (ev == (int)_EVENT_9a) return Lm936_4520;
+    if (ev == (int)_EVENT_9b) return Lm936_4580;
+    if (ev == (int)_EVENT_9c) return gScript_943__0200c628;
+    return Lm936_4298;
+}
 
 int Kalay_GetSpecialExits(void) {
     return 0;
@@ -62,8 +85,6 @@ void OvlFunc_936_200820c(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState__ge __asm__("gState");
 extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
 extern unsigned char Lm936_4bf4[] __asm__(".Lm936_4bf4");
 extern unsigned char gScript_882__0200ce88[];
@@ -75,7 +96,7 @@ extern unsigned char Lm936_4be8[] __asm__(".Lm936_4be8");
 
 int Kalay_GetEvents(void)
 {
-    GlobalState *p = &gState__ge;
+    GlobalState *p = &gState;
     int ev = *(short *)((char *)p + 0x1c0);
     if (ev == (int)_EVENT_63) return (int)Lm936_4bf4;
     if (ev == (int)_EVENT_66) return (int)gScript_882__0200ce88;
@@ -269,8 +290,6 @@ void OvlFunc_936_2009610(void)
 
 INCLUDE_ASM("asm/maps/kalay/Kalay_MapInit.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
-
-extern unsigned int gState;
 
 void OvlFunc_936_20097e8(void) {
     unsigned int r3;
