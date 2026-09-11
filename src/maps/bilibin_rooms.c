@@ -1,6 +1,7 @@
 /* rom_79c0c4 (overlay file 908): consolidated TU — bilibin_rooms map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/exports.s");
 
@@ -122,7 +123,6 @@ void OvlFunc_908_20081a8(void) {
     __CutsceneEnd();
 }
 
-
 // fakematch
 extern unsigned char *iwram_3001ebc;
 extern void __CutsceneStart(void);
@@ -165,7 +165,6 @@ void OvlFunc_908_20081e0(void)
     __Func_8092adc(0x18, w, 10);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_908_2008250(void)
 {
@@ -268,17 +267,16 @@ void OvlFunc_908_20083f4(void)
     __CutsceneEnd();
 }
 
-
 void OvlFunc_908_2008430(void)
 {
-  int r1v = 0xc0 << 8;
-  do { } while (r1v == 0);
+
+  
   __CutsceneStart();
   __MessageID(0x1705);
   __ActorMessage(0x17, 0);
   __MapActor_Face(0x17, 0, 0);
   __ActorMessage(0x17, 0);
-  __Func_8092adc(0x17, r1v, 10);
+  API_Func_8092adc(0x17, (0xc0 << 8), 10);
   __CutsceneEnd();
 }
 
@@ -288,7 +286,6 @@ void OvlFunc_908_2008470(void) {
     __Func_8093054(0x1b, 0);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_908_2008490(void) {
     __CutsceneStart();
@@ -319,7 +316,6 @@ int BilibinRooms_MapInit(void) {
     sprite[9] = (sprite[9] & zero) | 8;
     return 0;
 }
-
 
 INCLUDE_ASM("asm/maps/bilibin_rooms/bilibin_rooms_data.s");
 

@@ -1,6 +1,7 @@
 /* rom_7cb2c0 (overlay file 945): consolidated TU — tolbi_bound_ship_hull map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -34,7 +35,6 @@ unsigned int OvlFunc_945_2008030(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008058.s");
-
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
     extern unsigned int __Random(unsigned int);
@@ -88,7 +88,6 @@ unsigned int *TolbiBoundShipHull_GetEntrances(void)
 int TolbiBoundShipHull_GetSpecialExits(void) {
     return 0;
 }
-
 
 void *TolbiBoundShipHull_GetExits(void) {
     extern unsigned char gOvl_0200eb94[];
@@ -271,7 +270,6 @@ void OvlFunc_945_20087f8(void)
     __CutsceneEnd();
 }
 
-
 void OvlFunc_945_20088a8(void) {
     extern void __CutsceneStart(void);
     extern int __GetFlag(int);
@@ -292,7 +290,6 @@ void OvlFunc_945_20088a8(void) {
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20088ec.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20089b4.s");
-
 
 void OvlFunc_945_2008a80(void) {
     extern int __GetFlag(int);
@@ -506,7 +503,6 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009144.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009190.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009280.s");
 
-
 unsigned int OvlFunc_945_20092dc(void)
 {
     extern unsigned int OvlFunc_945_200cfa8(unsigned int arg0, unsigned int arg1);
@@ -522,7 +518,6 @@ unsigned int OvlFunc_945_20092dc(void)
     }
     return OvlFunc_945_200cfa8(r5, 1);
 }
-
 
 void OvlFunc_945_2009324(void) {
     extern void __CutsceneStart(void);
@@ -576,7 +571,6 @@ void OvlFunc_945_20093cc(void) {
     __CutsceneEnd();
 }
 
-
 void OvlFunc_945_2009420(void) {
     extern void __CutsceneStart(void);
     extern int __GetFlag(int id);
@@ -592,7 +586,6 @@ void OvlFunc_945_2009420(void) {
     __ActorMessage(0x15, 0);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_945_200945c(void) {
     extern void __CutsceneStart(void);
@@ -646,7 +639,6 @@ void OvlFunc_945_2009504(void) {
     __CutsceneEnd();
 }
 
-
 void OvlFunc_945_2009558(void) {
     extern void __CutsceneStart(void);
     extern int __GetFlag(int);
@@ -662,7 +654,6 @@ void OvlFunc_945_2009558(void) {
     __ActorMessage(0x19, 0);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_945_2009594(void) {
     extern void __CutsceneStart(void);
@@ -716,7 +707,6 @@ void OvlFunc_945_200963c(void) {
     __CutsceneEnd();
 }
 
-
 void OvlFunc_945_2009690(void) {
     extern void __CutsceneStart(void);
     extern int __GetFlag(int id);
@@ -732,7 +722,6 @@ void OvlFunc_945_2009690(void) {
     __ActorMessage(0x15, 0);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_945_20096cc(void) {
     extern void __CutsceneStart(void);
@@ -785,7 +774,6 @@ void OvlFunc_945_2009774(void) {
     __ActorMessage(0x18, 0);
     __CutsceneEnd();
 }
-
 
 void OvlFunc_945_20097c8(void) {
     extern void __CutsceneStart(void);
@@ -998,7 +986,6 @@ void OvlFunc_945_200bf94(void)
     }
 }
 
-
 void OvlFunc_945_200c0e8(void) {
     extern void __MessageID(int);
     extern void __CutsceneStart(void);
@@ -1045,7 +1032,6 @@ void OvlFunc_945_200c13c(void)
     OvlFunc_945_200c8e8(9, 0xf, 0);
 }
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c198.s");
-
 
 void OvlFunc_945_200c218(void) {
     extern void OvlFunc_945_200c8e8(int, int, int);
@@ -1098,14 +1084,12 @@ void *OvlFunc_945_200c5d0(void)
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c670.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c7cc.s");
 
-
 void OvlFunc_945_200c86c(int a) {
     extern void __ActorMessage(int a, int b);
     extern void __CutsceneWait(int a);
     __ActorMessage(a, 0);
     __CutsceneWait(10);
 }
-
 
 void OvlFunc_945_200c880(int a, unsigned short b) {
     extern void __Func_8092adc(int a, unsigned short b, int c);
@@ -1121,7 +1105,6 @@ void OvlFunc_945_200c890(unsigned int arg0, unsigned int arg1, unsigned int arg2
     r6 = arg3;
     *(unsigned short *)((char *)__MapActor_GetActor(r5) + 6) = r6;
 }
-
 
 void OvlFunc_945_200c8ac(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3)
 {
@@ -1141,7 +1124,6 @@ void OvlFunc_945_200c8ac(unsigned int arg0, unsigned int arg1, unsigned int arg2
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c8e8.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200cfa8.s");
 
-
 void OvlFunc_945_200d004(void) {
     extern void OvlFunc_945_200d038(int, int);
     OvlFunc_945_200d038(8, 0x92c);
@@ -1149,7 +1131,6 @@ void OvlFunc_945_200d004(void) {
     OvlFunc_945_200d038(8, 0x917);
     OvlFunc_945_200d038(8, 0x99 << 4);
 }
-
 
 void OvlFunc_945_200d038(unsigned int arg0, unsigned int arg1)
 {
@@ -1173,7 +1154,6 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d068.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d0e4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d2f4.s");
 
-
 void OvlFunc_945_200d684(void)
 {
     extern int OvlFunc_945_200cfa8(int a, int b);
@@ -1194,7 +1174,6 @@ void OvlFunc_945_200d684(void)
 }
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200d6dc.s");
-
 
 void OvlFunc_945_200d780(void)
 {
@@ -1253,16 +1232,16 @@ void OvlFunc_945_200dca4(void) {
     extern void __CutsceneWait(int);
     extern void __Func_8092adc(int, int, int);
     extern void __MapActor_DoAnim(int, int);
-    int d = 0xd000;
-    do { } while (d == 0);
+
+    
     __CutsceneStart();
     OvlFunc_945_200c8e8(0xf, 1, 0);
     OvlFunc_945_200c890(9, 0x1d4, 0x268, 0x8000);
     OvlFunc_945_200c8e8(8, 1, 0x14);
     __Func_80925cc(9, 2);
     __CutsceneWait(0x14);
-    __Func_8092adc(8, d, 0x50);
-    __Func_8092adc(8, 0, 0x14);
+    API_Func_8092adc(8, (0xd000), 0x50);
+    API_Func_8092adc(8, 0, 0x14);
     __MapActor_DoAnim(8, 3);
     __CutsceneWait(0x14);
     OvlFunc_945_200c8e8(9, 0x15, 0);

@@ -1,6 +1,7 @@
 /* rom_7a8c8c (overlay file 922): consolidated TU — imil_falls_cave map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/exports.s");
 
@@ -46,7 +47,6 @@ void OvlFunc_922_200825c(void) {
     OvlFunc_922_2009050();
 }
 
-
 void OvlFunc_922_200829c(void) {
     unsigned int r5;
     r5 = 0x70;
@@ -60,7 +60,6 @@ void OvlFunc_922_200829c(void) {
     OvlFunc_922_2009050();
 }
 
-
 void OvlFunc_922_20082e0(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(9, 0, 0x40);
@@ -69,7 +68,6 @@ void OvlFunc_922_20082e0(void) {
     __WaitFrames(2);
     OvlFunc_922_2009050();
 }
-
 
 void OvlFunc_922_2008314(void)
 {
@@ -81,7 +79,6 @@ void OvlFunc_922_2008314(void)
     OvlFunc_922_2009050();
 }
 
-
 void OvlFunc_922_200834c(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, 0x40);
@@ -90,7 +87,6 @@ void OvlFunc_922_200834c(void) {
     __WaitFrames(2);
     OvlFunc_922_2009050();
 }
-
 
 void OvlFunc_922_2008380(void) {
     __PlaySound(0xf1);
@@ -112,7 +108,6 @@ void OvlFunc_922_20083b8(void) {
     OvlFunc_922_2009154();
 }
 
-
 void OvlFunc_922_20083ec(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(8, -0x90, 0);
@@ -122,7 +117,6 @@ void OvlFunc_922_20083ec(void) {
     __WaitFrames(2);
     OvlFunc_922_2009154();
 }
-
 
 void OvlFunc_922_200842c(void) {
     __PlaySound(0xf1);
@@ -153,7 +147,6 @@ void OvlFunc_922_2008464(void) {
     OvlFunc_922_2009154();
 }
 
-
 void OvlFunc_922_20084bc(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(9, 0, 0x40);
@@ -162,7 +155,6 @@ void OvlFunc_922_20084bc(void) {
     __WaitFrames(2);
     OvlFunc_922_2009154();
 }
-
 
 void OvlFunc_922_20084f0(void)
 {
@@ -174,7 +166,6 @@ void OvlFunc_922_20084f0(void)
     OvlFunc_922_2009154();
 }
 
-
 void OvlFunc_922_2008528(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, 0x90);
@@ -184,7 +175,6 @@ void OvlFunc_922_2008528(void) {
     __WaitFrames(2);
     OvlFunc_922_2009154();
 }
-
 
 void OvlFunc_922_2008568(void) {
     int r5;
@@ -222,7 +212,6 @@ void OvlFunc_922_20085b8(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_200862c(void) {
     __PlaySound(0xf1);
     __ClearFlag(0xc2 << 2);
@@ -232,7 +221,6 @@ void OvlFunc_922_200862c(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008668(void)
 {
@@ -249,7 +237,6 @@ void OvlFunc_922_2008668(void)
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_20086c0(void) {
     __PlaySound(0xf1);
     __ClearFlag(0xc2 << 2);
@@ -260,7 +247,6 @@ void OvlFunc_922_20086c0(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_20086fc(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(9, -0x20, 0);
@@ -270,7 +256,6 @@ void OvlFunc_922_20086fc(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_2008734(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(9, 0x20, 0);
@@ -279,7 +264,6 @@ void OvlFunc_922_2008734(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008768(void) {
     __PlaySound(0xf1);
@@ -303,7 +287,6 @@ void OvlFunc_922_2008768(void) {
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_20087f0.s");
 
-
 void OvlFunc_922_20088cc(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, -0x10);
@@ -318,7 +301,6 @@ void OvlFunc_922_20088cc(void) {
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008920.s");
 
-
 void OvlFunc_922_20089d0(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, -0x40);
@@ -328,7 +310,6 @@ void OvlFunc_922_20089d0(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008a10(void) {
     __PlaySound(0xf1);
@@ -342,7 +323,6 @@ void OvlFunc_922_2008a10(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_2008a60(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, -0x50);
@@ -355,7 +335,6 @@ void OvlFunc_922_2008a60(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_2008ab4(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0, 0x40);
@@ -367,7 +346,6 @@ void OvlFunc_922_2008ab4(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008b04(void) {
     unsigned int v0;
@@ -423,7 +401,6 @@ void OvlFunc_922_2008bc8(void) {
     __ClearFlag(0x312);
 }
 
-
 void OvlFunc_922_2008bf4(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xb, 0, 0x80);
@@ -432,7 +409,6 @@ void OvlFunc_922_2008bf4(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008c24(void) {
     __PlaySound(0xf1);
@@ -446,7 +422,6 @@ void OvlFunc_922_2008c24(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_2008c78(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xb, 0, 0x70);
@@ -455,7 +430,6 @@ void OvlFunc_922_2008c78(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008ca8(void) {
     __PlaySound(0xf1);
@@ -466,7 +440,6 @@ void OvlFunc_922_2008ca8(void) {
     OvlFunc_922_20092cc();
 }
 
-
 void OvlFunc_922_2008cd8(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xb, 0, 0x50);
@@ -475,7 +448,6 @@ void OvlFunc_922_2008cd8(void) {
     __WaitFrames(2);
     OvlFunc_922_20092cc();
 }
-
 
 void OvlFunc_922_2008d08(void) {
     __PlaySound(0xf1);
@@ -497,7 +469,6 @@ void OvlFunc_922_2008d38(void) {
     OvlFunc_922_20095dc();
 }
 
-
 void OvlFunc_922_2008d6c(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(8, 0, -0x70);
@@ -506,7 +477,6 @@ void OvlFunc_922_2008d6c(void) {
     __WaitFrames(2);
     OvlFunc_922_20095dc();
 }
-
 
 void OvlFunc_922_2008da4(void) {
     __PlaySound(0xf1);
@@ -517,7 +487,6 @@ void OvlFunc_922_2008da4(void) {
     OvlFunc_922_20095dc();
 }
 
-
 void OvlFunc_922_2008dd8(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(9, 0x80, 0);
@@ -527,7 +496,6 @@ void OvlFunc_922_2008dd8(void) {
     OvlFunc_922_20095dc();
 }
 
-
 void OvlFunc_922_2008e0c(void) {
     __PlaySound(0xf1);
     OvlFunc_922_2008180(0xa, 0xa0, 0);
@@ -536,7 +504,6 @@ void OvlFunc_922_2008e0c(void) {
     __WaitFrames(2);
     OvlFunc_922_20095dc();
 }
-
 
 void OvlFunc_922_2008e40(void) {
     __PlaySound(0xf1);
@@ -555,20 +522,17 @@ void OvlFunc_922_2008e78(void)
 	__MapActor_SetAnim(8, 2);
 }
 
-
 void OvlFunc_922_2008e90(void)
 {
 	__MapActor_SetAnim(9, 1);
 	__MapActor_SetAnim(9, 2);
 }
 
-
 void OvlFunc_922_2008ea8(void)
 {
 	__MapActor_SetAnim(0xa, 1);
 	__MapActor_SetAnim(0xa, 2);
 }
-
 
 void OvlFunc_922_2008ec0(void)
 {
@@ -812,20 +776,18 @@ void OvlFunc_922_20097a8(void)
   extern void __MapActor_TravelToWait(int, int, int);
   extern void __CutsceneEnd(void);
   int actor;
-  int speed;
-  int s3;
-  int arg2;
 
-  speed = 0x80 << 10;
-  s3 = 0x1999;
-  arg2 = 0x84 << 1;
-  do { } while (speed == 0);
+  
+
+  
+
+  
   __CutsceneStart();
   actor = __MapActor_GetActor(8);
   __Actor_SetSpriteFlags(actor, 0);
   __MapTransitionIn();
-  __MapActor_SetSpeed(0, speed, s3);
-  __MapActor_TravelToWait(0, arg2, 0xc4);
+  API_MapActor_SetSpeed(0, (0x80 << 10), (0x1999));
+  API_MapActor_TravelToWait(0, (0x84 << 1), 0xc4);
   __CutsceneEnd();
 }
 
@@ -839,7 +801,6 @@ void OvlFunc_922_2009ab0(void) {
     OvlFunc_922_2009ad0(0, -0x20);
 }
 
-
 void OvlFunc_922_2009ac0(void) {
     OvlFunc_922_2009ad0(-0x20, 0);
 }
@@ -852,10 +813,10 @@ void OvlFunc_922_2009ad0(int arg0, int arg1) {
     extern void __MapActor_SetAnim(int, int);
     extern void __MapActor_WaitMovement(int);
     extern void __CutsceneEnd(void);
-    int a = 0xa0 << 10, b = 0xa0 << 9;
-    do { } while (a == 0);
+
+    
     __CutsceneStart();
-    __MapActor_SetSpeed(0, a, b);
+    API_MapActor_SetSpeed(0, (0xa0 << 10), (0xa0 << 9));
     __MapActor_TravelBy(0, arg0, arg1);
     __MapActor_Jump(0, 4, 0);
     __MapActor_SetAnim(0, 7);
