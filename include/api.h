@@ -57,4 +57,14 @@ static inline void API_Func_809259c(int a0,int a1) { extern void __Func_809259c(
 static inline void API_ClearFlag(int a0) { extern void __ClearFlag(int); __ClearFlag(a0); }
 static inline void API_SetFlag(int a0) { extern void __SetFlag(int); __SetFlag(a0); }
 
+static inline void API_MapActor_Face(int a, int b, int c) { extern void __MapActor_Face(int, int, int); __MapActor_Face(a, b, c); }
+static inline void API_MapActor_WaitMovement(int a) { extern void __MapActor_WaitMovement(int); __MapActor_WaitMovement(a); }
+static inline void API_MapActor_Jump(int a, int b, int c) { extern void __MapActor_Jump(int, int, int); __MapActor_Jump(a, b, c); }
+static inline void API_MapActor_TurnToFaceActor(int a, int b, int c) { extern void __MapActor_TurnToFaceActor(int, int, int); __MapActor_TurnToFaceActor(a, b, c); }
+static inline void API_Func_80917d0(int a, int b) { extern void __Func_80917d0(int, int); __Func_80917d0(a, b); }
+static inline void API_Func_8010704(int a, int b, int c, int d, int e, int f) { extern void __Func_8010704(int, int, int, int, int, int); __Func_8010704(a, b, c, d, e, f); }
+static inline void API_Func_8012330(int a, int b, int c) { extern void __Func_8012330(int, int, int); __Func_8012330(a,b,c); }
+
+static inline int API_GetFlag(int a) { extern int __GetFlag(int); return __GetFlag(a); }
+
 #endif /* GUARD_API_H */
