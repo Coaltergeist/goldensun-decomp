@@ -1,6 +1,7 @@
 /* rom_7bc690 (overlay file 933): consolidated TU — lamakan_desert map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -24,7 +25,25 @@ void OvlFunc_933_2008324(unsigned int *arg0, int arg1)
 }
 
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008344.s");
-INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_59[], _EVENT_5a[], _EVENT_5b[], _EVENT_5c[];
+extern unsigned char Lm933_2174[] __asm__(".Lm933_2174");
+extern unsigned char Lm933_21d4[] __asm__(".Lm933_21d4");
+extern unsigned char Lm933_2234[] __asm__(".Lm933_2234");
+extern unsigned char Lm933_22dc[] __asm__(".Lm933_22dc");
+extern unsigned char Lm933_212c[] __asm__(".Lm933_212c");
+
+void *LamakanDesert_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_59) return Lm933_2174;
+    if (ev == (int)_EVENT_5a) return Lm933_21d4;
+    if (ev == (int)_EVENT_5b) return Lm933_2234;
+    if (ev == (int)_EVENT_5c) return Lm933_22dc;
+    return Lm933_212c;
+}
 
 int LamakanDesert_GetSpecialExits(void) {
     return 0;
@@ -83,7 +102,15 @@ INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009180.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20092fc.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20094b0.s");
 INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_MapInit.s");
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009874.s");
+extern void __MapActor_SetAnim(int, int);
+extern void __MapActor_TravelToAnimWait(int, int, int);
+
+void OvlFunc_933_2009874(void) {
+    API_MapActor_SetSpeed(8, 0x8000, 0x4000);
+    __MapActor_SetAnim(8, 1);
+    __MapActor_TravelToAnimWait(8, 0xa8, 0x60);
+    __MapActor_SetAnim(8, 2);
+}
 
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20098a4.s");
 

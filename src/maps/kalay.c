@@ -17,7 +17,30 @@ void OvlFunc_936_2008030(void) {
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
-INCLUDE_ASM("asm/maps/kalay/Kalay_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
+extern unsigned char Lm936_42c8[] __asm__(".Lm936_42c8");
+extern unsigned char Lm936_4448[] __asm__(".Lm936_4448");
+extern unsigned char Lm936_44a8[] __asm__(".Lm936_44a8");
+extern unsigned char Lm936_4520[] __asm__(".Lm936_4520");
+extern unsigned char Lm936_4580[] __asm__(".Lm936_4580");
+extern unsigned char gScript_943__0200c628[];
+extern unsigned char Lm936_4298[] __asm__(".Lm936_4298");
+
+
+void *Kalay_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_63) return Lm936_42c8;
+    if (ev == (int)_EVENT_66) return Lm936_4448;
+    if (ev == (int)_EVENT_99) return Lm936_44a8;
+    if (ev == (int)_EVENT_9a) return Lm936_4520;
+    if (ev == (int)_EVENT_9b) return Lm936_4580;
+    if (ev == (int)_EVENT_9c) return gScript_943__0200c628;
+    return Lm936_4298;
+}
 
 int Kalay_GetSpecialExits(void) {
     return 0;
@@ -62,8 +85,6 @@ void OvlFunc_936_200820c(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState__ge __asm__("gState");
 extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
 extern unsigned char Lm936_4bf4[] __asm__(".Lm936_4bf4");
 extern unsigned char gScript_882__0200ce88[];
@@ -75,7 +96,7 @@ extern unsigned char Lm936_4be8[] __asm__(".Lm936_4be8");
 
 int Kalay_GetEvents(void)
 {
-    GlobalState *p = &gState__ge;
+    GlobalState *p = &gState;
     int ev = *(short *)((char *)p + 0x1c0);
     if (ev == (int)_EVENT_63) return (int)Lm936_4bf4;
     if (ev == (int)_EVENT_66) return (int)gScript_882__0200ce88;
@@ -221,7 +242,21 @@ void OvlFunc_936_2008504(void) {
 }
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008590.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200958c.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095b4.s");
+extern unsigned char iwram_3001ee0[];
+
+void OvlFunc_936_20095b4(void) {
+    unsigned int *r5;
+    int flag = 0x200;
+
+    do { } while (flag == 0);
+
+    if (!__GetFlag(flag)) {
+        r5 = *(unsigned int **)iwram_3001ee0;
+        r5[6] = (unsigned int)__MapActor_GetActor(0);
+        __SetFlag(flag);
+    }
+}
+
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095e0.s");
 
 
@@ -255,8 +290,6 @@ void OvlFunc_936_2009610(void)
 
 INCLUDE_ASM("asm/maps/kalay/Kalay_MapInit.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
-
-extern unsigned int gState;
 
 void OvlFunc_936_20097e8(void) {
     unsigned int r3;
@@ -311,7 +344,28 @@ void OvlFunc_936_2009e6c(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ea4.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ed8.s");
+extern int Lm936_5144 __asm__(".Lm936_5144");
+extern void __MapActor_SetSpeed(unsigned int, int, int);
+extern void __StartTask(void *, int);
+extern void OvlFunc_936_2009f14(void);
+
+void OvlFunc_936_2009ed8(void)
+{
+    int speed1 = 0x19999;
+    int speed2 = 0xcccc;
+
+    do {
+        int zero = 0;
+        Lm936_5144 = zero;
+    } while (speed1 == 0);
+    __MapActor_SetSpeed(0x14, speed1, speed2);
+    __MapActor_SetSpeed(0x15, speed1, speed2);
+    {
+        int prio = 0xc8 << 4;
+        __StartTask(OvlFunc_936_2009f14, prio);
+    }
+}
+
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009f14.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a008.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a6c0.s");

@@ -304,7 +304,26 @@ INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008ae8.s");
 
 void OvlFunc_946_2008cc0(void) {}
 
-INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_71[], _EVENT_72[], _EVENT_7b[], _EVENT_7c[], _EVENT_7d[];
+extern unsigned char Lm946_3310[] __asm__(".Lm946_3310");
+extern unsigned char Lm946_3358[] __asm__(".Lm946_3358");
+extern unsigned char Lm946_33a0[] __asm__(".Lm946_33a0");
+extern unsigned char Lm946_3400[] __asm__(".Lm946_3400");
+extern unsigned char Lm946_3448[] __asm__(".Lm946_3448");
+extern unsigned char Lm946_3478[] __asm__(".Lm946_3478");
+
+void *CrossboneIsle_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_71) return Lm946_3310;
+    if (ev == (int)_EVENT_72) return Lm946_3358;
+    if (ev == (int)_EVENT_7b) return Lm946_33a0;
+    if (ev == (int)_EVENT_7c) return Lm946_3400;
+    if (ev == (int)_EVENT_7d) return Lm946_3448;
+    return Lm946_3478;
+}
 
 unsigned int CrossboneIsle_GetSpecialExits(void) {
     return 0;
@@ -319,12 +338,6 @@ void *CrossboneIsle_GetExits(void) {
 INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_GetActors.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008da4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008e00.s");
-
-typedef struct
-{
-unsigned char _bytes[704];
-} GlobalState;
-extern GlobalState gState;
 
 void OvlFunc_946_2008e88(void)
 {

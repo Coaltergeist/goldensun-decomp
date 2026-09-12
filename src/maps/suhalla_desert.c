@@ -23,7 +23,23 @@ unsigned int OvlFunc_960_200833c(unsigned int arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_a4[], _EVENT_a5[], _EVENT_a6[];
+extern unsigned char gOvl_02009488[];
+extern unsigned char Lm960_14d0[] __asm__(".Lm960_14d0");
+extern unsigned char Lm960_1548[] __asm__(".Lm960_1548");
+extern unsigned char Lm960_1458[] __asm__(".Lm960_1458");
+
+void *SuhallaDesert_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_a4) return gOvl_02009488;
+    if (ev == (int)_EVENT_a5) return Lm960_14d0;
+    if (ev == (int)_EVENT_a6) return Lm960_1548;
+    return Lm960_1458;
+}
+
 
 int SuhallaDesert_GetSpecialExits(void) {
     return 0;
@@ -125,8 +141,6 @@ INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008b24.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008ce4.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char Const_A5[] __asm__(".Lconst_a5");
 __asm__(".equ .Lconst_a5, 0xa5");
 

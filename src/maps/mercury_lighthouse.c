@@ -341,7 +341,23 @@ void OvlFunc_924_2008dfc(void)
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/mercury_lighthouse_data.s");
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_39[], _EVENT_38[], _EVENT_37[];
+extern unsigned char Lm924_650c[] __asm__(".Lm924_650c");
+extern unsigned char Lm924_635c[] __asm__(".Lm924_635c");
+extern unsigned char Lm924_623c[] __asm__(".Lm924_623c");
+extern unsigned char Lm924_60ec[] __asm__(".Lm924_60ec");
+
+void *MercuryLighthouse_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_39) return Lm924_650c;
+    if (ev == (int)_EVENT_38) return Lm924_635c;
+    if (ev == (int)_EVENT_37) return Lm924_623c;
+    return Lm924_60ec;
+}
+
 
 int MercuryLighthouse_GetSpecialExits(void) {
     return 0;
@@ -386,8 +402,6 @@ void OvlFunc_924_2008f14(void)
   __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_36[], _EVENT_37[], _EVENT_38[];
 extern unsigned char Lm924_6ad8[] __asm__(".Lm924_6ad8");
 extern unsigned char Lm924_6c10[] __asm__(".Lm924_6c10");

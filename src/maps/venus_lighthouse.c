@@ -202,7 +202,28 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008cc8.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/VenusLighthouse_GetEntrances.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_b5[], _EVENT_b7[], _EVENT_b8[], _EVENT_b9[], _EVENT_ba[];
+extern unsigned char Lm968_5d68[] __asm__(".Lm968_5d68");
+extern unsigned char Lm968_6020[] __asm__(".Lm968_6020");
+extern unsigned char Lm968_6230[] __asm__(".Lm968_6230");
+extern unsigned char Lm968_6350[] __asm__(".Lm968_6350");
+extern unsigned char Lm968_6548[] __asm__(".Lm968_6548");
+extern unsigned char Lm968_5dc8[] __asm__(".Lm968_5dc8");
+
+void *VenusLighthouse_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b5) return Lm968_5d68;
+    if (ev == (int)_EVENT_b7) return Lm968_6020;
+    if (ev == (int)_EVENT_b8) return Lm968_6230;
+    if (ev == (int)_EVENT_b9) return Lm968_6350;
+    if (ev == (int)_EVENT_ba) return Lm968_6548;
+    return Lm968_5dc8;
+}
+
 
 int VenusLighthouse_GetSpecialExits(void) {
     return 0;
@@ -414,8 +435,6 @@ INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a90c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200ab14.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200aee4.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200af30.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_b5[], _EVENT_b6[], _EVENT_b7[], _EVENT_b8[], _EVENT_b9[], _EVENT_ba[];
 extern unsigned char Lm968_6e44[] __asm__(".Lm968_6e44");
 extern unsigned char Lm968_6f1c[] __asm__(".Lm968_6f1c");

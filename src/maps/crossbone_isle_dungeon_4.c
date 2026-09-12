@@ -308,7 +308,21 @@ void OvlFunc_948_20089dc(void) {
 
 void OvlFunc_948_20089ec(void) {}
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/CrossboneIsleDungeon4_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_75[], _EVENT_76[], _EVENT_78[];
+extern unsigned char Lm948_2898[] __asm__(".Lm948_2898");
+extern unsigned char Lm948_28e0[] __asm__(".Lm948_28e0");
+extern unsigned char gOvl_0200a928[];
+extern unsigned char Lm948_2868[] __asm__(".Lm948_2868");
+void *CrossboneIsleDungeon4_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_75) return Lm948_2898;
+    if (ev == (int)_EVENT_76) return Lm948_28e0;
+    if (ev == (int)_EVENT_78) return gOvl_0200a928;
+    return Lm948_2868;
+}
 
 int CrossboneIsleDungeon4_GetSpecialExits(void) {
     return 0;
@@ -337,10 +351,8 @@ INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ad0.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008b68.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ccc.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;
 extern unsigned char iwram_3001ebc[];
-extern GlobalState gState;
 extern unsigned char L2808[] __asm__(".Lm948_2808");
 
 void OvlFunc_948_2008e50(void)
@@ -500,7 +512,23 @@ void OvlFunc_948_2009198(void)
   __CutsceneWait(1);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20091d8.s");
+extern void __MapActor_SetPos(int, int, int);
+
+static inline void MapActor_SetPos12(int actor, int x, int y)
+{
+  __MapActor_SetPos(actor, x << 12, y << 12);
+}
+
+void OvlFunc_948_20091d8(void)
+{
+  int new_var;
+  int new_var2;
+
+  new_var = 0x19;
+  new_var2 = 0x30;
+  __Func_80105d4(0x18, 0x30, 1, 2, new_var, new_var2);
+  MapActor_SetPos12(0xc, 0x80, 0x80);
+}
 
 void OvlFunc_948_2009204(void)
 {

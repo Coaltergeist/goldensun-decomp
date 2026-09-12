@@ -5,7 +5,22 @@
 
 INCLUDE_ASM("asm/maps/colosseum/exports.s");
 
-INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+extern unsigned char _EVENT_8c[], _EVENT_8e[];
+extern unsigned char Lm953_3094[] __asm__(".Lm953_3094");
+extern unsigned char Lm953_3274[] __asm__(".Lm953_3274");
+extern unsigned char Lm953_3034[] __asm__(".Lm953_3034");
+
+void *Colosseum_GetEntrances(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_8c) return Lm953_3094;
+    if (ev == (int)_EVENT_8e) return Lm953_3274;
+    return Lm953_3034;
+}
 
 int Colosseum_GetSpecialExits(void) {
     return 0;
@@ -17,9 +32,7 @@ void *Colosseum_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
-extern unsigned char _EVENT_8d[], _EVENT_8c[], _EVENT_8e[];
+extern unsigned char _EVENT_8d[];
 extern unsigned char Lm953_3e70[] __asm__(".Lm953_3e70");
 extern unsigned char Lm953_4110[] __asm__(".Lm953_4110");
 extern unsigned char Lm953_3e94[] __asm__(".Lm953_3e94");

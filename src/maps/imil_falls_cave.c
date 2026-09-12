@@ -19,7 +19,29 @@ void OvlFunc_922_2008040(void) {
     __Func_8091f14(0xb, 0x3e);
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/ImilFallsCave_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_34[], _EVENT_3e[], _EVENT_3f[], _EVENT_40[], _EVENT_41[], _EVENT_42[], _EVENT_43[];
+extern unsigned char Lm922_24bc[] __asm__(".Lm922_24bc");
+extern unsigned char Lm922_2504[] __asm__(".Lm922_2504");
+extern unsigned char Lm922_25f4[] __asm__(".Lm922_25f4");
+extern unsigned char Lm922_263c[] __asm__(".Lm922_263c");
+extern unsigned char Lm922_26cc[] __asm__(".Lm922_26cc");
+extern unsigned char Lm922_2744[] __asm__(".Lm922_2744");
+extern unsigned char Lm922_27bc[] __asm__(".Lm922_27bc");
+extern unsigned char Lm922_248c[] __asm__(".Lm922_248c");
+void *ImilFallsCave_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_34) return Lm922_24bc;
+    if (ev == (int)_EVENT_3e) return Lm922_2504;
+    if (ev == (int)_EVENT_3f) return Lm922_25f4;
+    if (ev == (int)_EVENT_40) return Lm922_263c;
+    if (ev == (int)_EVENT_41) return Lm922_26cc;
+    if (ev == (int)_EVENT_42) return Lm922_2744;
+    if (ev == (int)_EVENT_43) return Lm922_27bc;
+    return Lm922_248c;
+}
 
 unsigned int ImilFallsCave_GetSpecialExits(void) {
     return 0;
@@ -541,8 +563,6 @@ void OvlFunc_922_2008ec0(void)
 }
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008ed8.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern unsigned char _EVENT_34[], _EVENT_3e[], _EVENT_3f[], _EVENT_40[], _EVENT_41[], _EVENT_42[], _EVENT_43[];
 extern unsigned char Lm922_2bd8[] __asm__(".Lm922_2bd8");
 extern unsigned char gScript_911__0200ac08[];

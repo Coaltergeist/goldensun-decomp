@@ -390,7 +390,21 @@ INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetEntrances.s");
+
+extern unsigned char _EVENT_ac[], _EVENT_ad[];
+extern unsigned char Lm964_3474[] __asm__(".Lm964_3474");
+extern unsigned char Lm964_3654[] __asm__(".Lm964_3654");
+extern unsigned char Lm964_342c[] __asm__(".Lm964_342c");
+
+void *TunnelRuins_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_ac) return Lm964_3474;
+    if (ev == (int)_EVENT_ad) return Lm964_3654;
+    return Lm964_342c;
+}
+
+
 unsigned int *TunnelRuins_GetSpecialExits(void)
 {
     unsigned int r3;
@@ -431,7 +445,16 @@ void OvlFunc_964_2009318(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009348.s");
+void OvlFunc_964_2009348(void) {
+    unsigned int args[3];
+    unsigned char *base;
+
+    base = __MapActor_GetActor(0);
+    args[0] = *(unsigned int *)(base + 8) + 0xffe00000;
+    args[1] = *(unsigned int *)(base + 0xc);
+    args[2] = *(unsigned int *)(base + 0x10);
+    OvlFunc_964_2008cd0(args);
+}
 
 extern void OvlFunc_964_200a410(void);
 

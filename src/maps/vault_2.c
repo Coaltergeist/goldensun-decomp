@@ -153,7 +153,19 @@ void OvlFunc_901_2008784(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20087d4.s");
+extern void *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_901_20087d4(void)
+{
+  int flag;
+
+  __MessageID(0x1cbf);
+  ((unsigned char *) __MapActor_GetActor(0xd))[0x5b] = 1;
+  OvlFunc_901_20084b4(0xd);
+  flag = 0;
+  ((unsigned char *) __MapActor_GetActor(0xd))[0x5b] = flag;
+}
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008804.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
@@ -240,7 +252,22 @@ void OvlFunc_901_2008d74(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d84.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e30.s");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+void OvlFunc_901_2008e30(void)
+{
+    unsigned int s1;
+    unsigned int s2;
+    unsigned int s3;
+    unsigned int s4;
+
+    s1 = 0xd;
+    s2 = 0x19;
+    __Func_8010704(0x29, 0x2b, 1, 1, s1, s2);
+    s3 = 3;
+    s4 = 3;
+    __CopyMapTiles(0x28, 0x2a, 0xc, 0x16, s3, s4);
+}
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e60.s");
 
 
