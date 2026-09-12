@@ -744,7 +744,7 @@ void OvlFunc_948_2009694(void)
     int spd2 = 0xd999;
     int neg8 = -8;
 
-    while (spd1 == 0) {}
+
 
     gs = (unsigned char *)&gState;
     gs += 0x24a;

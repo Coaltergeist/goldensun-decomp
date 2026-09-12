@@ -165,7 +165,7 @@ void OvlFunc_936_2008464(void) {
     int b = 0x4000;
     int c = -8;
 
-    while (a == 0) {}
+
 
     map = *(unsigned int *)iwram_3001ebc__arr;
     __CutsceneStart();

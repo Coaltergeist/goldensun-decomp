@@ -188,7 +188,7 @@ void OvlFunc_945_2008728(void)
     unsigned short *addr;
     unsigned short v;
 
-    while (c_d000 == 0) { }
+
 
     __CutsceneStart();
     if (__GetFlag(0x928) != 0) {

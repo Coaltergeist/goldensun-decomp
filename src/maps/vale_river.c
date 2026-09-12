@@ -443,17 +443,10 @@ void OvlFunc_883_2008c9c(void) {
 
 void OvlFunc_883_2008cd0(void)
 {
-    int a = 0x30000;
-    int b = 0x10000;
-    int neg1 = -1;
-    int c = 0xe666;
-
-    while (a == 0) {}
-
     __CutsceneStart();
-    __Func_8012330(a, a, b);
+    API_Func_8012330(0x30000, 0x30000, 0x10000);
     __WaitFrames(10);
-    __Func_8012330(neg1, neg1, c);
+    API_Func_8012330(-1, -1, 0xe666);
     __MessageID(0x1c9a);
     __ActorMessage_Wait(0x11, 0, 0x14);
     __MapActor_Face(0x11, 0, 0x14);

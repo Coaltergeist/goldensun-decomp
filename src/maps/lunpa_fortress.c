@@ -392,7 +392,7 @@ void OvlFunc_959_2008ce0(void) {
     int b = 0x10000;
     int c = 0xe666;
 
-    while (a == 0) {}
+
 
     r5 = *(unsigned int *)iwram_3001ebc;
     if (__CheckPartyItem(0xea) != -1) {
@@ -418,7 +418,7 @@ void OvlFunc_959_2008dcc(void) {
     int b = 0x10000;
     int c = 0xe666;
 
-    while (a == 0) {}
+
 
     r5 = *(unsigned int *)iwram_3001ebc;
     if (__CheckPartyItem(0xea) != -1) {
@@ -443,7 +443,7 @@ void OvlFunc_959_2008e80(void) {
     int b = 0x10000;
     int c = 0xe666;
 
-    while (a == 0) {}
+
 
     r5 = *(unsigned int *)iwram_3001ebc;
     if (__CheckPartyItem(0xea) != -1) {
