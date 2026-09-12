@@ -23,7 +23,30 @@ void *MccoysPalaceExt_GetExits(void) {
     return (void *)gOvl_02008c50;
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_GetActors.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_22[];
+extern int __GetFlag(int);
+extern unsigned char gScript_889__02008c64[];
+extern unsigned char Lm910_c7c[] __asm__(".Lm910_c7c");
+extern unsigned char Lm910_actorsevent22[] __asm__(".Lm910_actorsevent22");
+__asm__(".equ .Lm910_actorsevent22, 0x22");
+
+int MccoysPalaceExt_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)Lm910_actorsevent22) {
+        if (__GetFlag(0x84f)) {
+            Lm910_c7c[0x76] = 1;
+        }
+        if (__GetFlag(0x845)) {
+            Lm910_c7c[0x46] = 0;
+        }
+        return (int)Lm910_c7c;
+    }
+    return (int)gScript_889__02008c64;
+}
 
 void OvlFunc_910_20080f8(void)
 {
@@ -56,9 +79,6 @@ void OvlFunc_910_200812c(void) {
     __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
-extern unsigned char _EVENT_22[];
 extern unsigned char Lm910_d30[] __asm__(".Lm910_d30");
 extern unsigned char Lm910_d24[] __asm__(".Lm910_d24");
 
@@ -125,7 +145,16 @@ void OvlFunc_910_200845c(void)
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_MapInit.s");
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_200850c.s");
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20085dc.s");
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20088e8.s");
+extern void __PlaySound(int);
+extern void __Func_8010560(unsigned char *, int, int);
+extern unsigned char Lm910_bd4[] __asm__(".Lm910_bd4");
+
+void OvlFunc_910_20088e8(void)
+{
+    __PlaySound(0xbc);
+    __Func_8010560(Lm910_bd4, 0x34, 0xb);
+    __SetFlag(0x200);
+}
 
 int OvlFunc_910_200890c(int *actor)
 {
@@ -154,6 +183,13 @@ int OvlFunc_910_200890c(int *actor)
   *((int *) (((char *) actor) + 0x30)) = ((*((int *) (((char *) actor) + 0x30))) + (((a << 9) >> 16) + ((b << 9) >> 16))) + 0x400;
   return 0;
 }
+
+extern void *__MapActor_GetActor(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void *__galloc_iwram(int, int);
+extern void __LoadItemIcon(int);
+extern int __UploadSpriteGFX(int, int, void *);
+extern void __gfree(int);
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008974.s");
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/mccoys_palace_ext_data.s");

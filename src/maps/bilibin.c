@@ -5,9 +5,78 @@
 
 INCLUDE_ASM("asm/maps/bilibin/exports.s");
 
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008030.s");
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetEntrances.s");
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetSpecialExits.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char gOvl_020093fc[];
+
+extern unsigned short __atan2(int, int);
+
+int OvlFunc_907_2008030(unsigned char *actor)
+{
+    unsigned char *target;
+    int delta;
+    int facing;
+    int angle;
+
+    target = *(unsigned char **)(actor + 0x68);
+    if (target != 0) {
+        actor[0x5a] &= 0xfe;
+        angle = __atan2(*(int *)(target + 0x10) - *(int *)(actor + 0x10),
+                        *(int *)(target + 8) - *(int *)(actor + 8));
+        facing = *(unsigned short *)(actor + 6);
+        delta = (short)(angle - facing);
+        if (delta != 0) {
+            if (delta > 0x1000) {
+                delta = 0x1000;
+            }
+            if (delta < -0x1000) {
+                delta = -0x1000;
+            }
+            *(unsigned short *)(actor + 6) = facing + delta;
+        }
+    }
+    return 1;
+}
+extern unsigned char Lconst_1e[] __asm__(".Lconst_1e");
+__asm__(".equ .Lconst_1e, 0x1e");
+extern unsigned char Lconst_23[] __asm__(".Lconst_23");
+__asm__(".equ .Lconst_23, 0x23");
+extern unsigned char Lconst_20[] __asm__(".Lconst_20");
+__asm__(".equ .Lconst_20, 0x20");
+extern unsigned char Lm907_11ec[] __asm__(".Lm907_11ec");
+extern unsigned char Lm907_130c[] __asm__(".Lm907_130c");
+extern unsigned char Lm907_136c[] __asm__(".Lm907_136c");
+extern unsigned char Lm907_11d4[] __asm__(".Lm907_11d4");
+
+void *Bilibin_GetEntrances(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_1e) return Lm907_11ec;
+    if (a == (int)Lconst_23) return Lm907_130c;
+    if (a == (int)Lconst_20) return Lm907_136c;
+    return Lm907_11d4;
+}
+
+void *Bilibin_GetSpecialExits(void)
+{
+    int offset;
+    short a;
+    void *ret;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    ret = 0;
+    if (a == (int)Lconst_20) {
+        ret = gOvl_020093fc;
+    }
+    return ret;
+}
 
 extern unsigned char gOvl_0200942c[];
 
@@ -21,7 +90,24 @@ void OvlFunc_907_200810c(void) {
     __Func_80955b0(9, 3, 0);
 }
 
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetActors.s");
+extern unsigned char Lm907_1498[] __asm__(".Lm907_1498");
+extern unsigned char Lm907_1600[] __asm__(".Lm907_1600");
+extern unsigned char Lm907_16f0[] __asm__(".Lm907_16f0");
+extern unsigned char gScript_944__02009480[];
+
+void *Bilibin_GetActors(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_1e) return Lm907_1498;
+    if (a == (int)Lconst_23) return Lm907_1600;
+    if (a == (int)Lconst_20) return Lm907_16f0;
+    return gScript_944__02009480;
+}
 
 extern void __CutsceneStart();
 extern void __Func_801776c();
@@ -39,8 +125,7 @@ extern unsigned char Lm907_1744[] __asm__(".Lm907_1744");
 extern unsigned char Lm907_1a2c[] __asm__(".Lm907_1a2c");
 extern unsigned char Lm907_1bc4[] __asm__(".Lm907_1bc4");
 extern unsigned char Lm907_1738[] __asm__(".Lm907_1738");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
+
 
 int Bilibin_GetEvents(void)
 {
@@ -77,7 +162,22 @@ void OvlFunc_907_2008224(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008240.s");
+extern unsigned char *iwram_3001ebc;
+
+void OvlFunc_907_2008240(void)
+{
+    unsigned short *p;
+
+    __CutsceneStart();
+    __MessageID(0x13ae);
+    if (API_GetFlag(0x301) != 0) {
+        p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+        *p = *p + 1;
+    }
+    __ActorMessage(9, 0);
+    API_SetFlag(0x301);
+    __CutsceneEnd();
+}
 
 void OvlFunc_907_2008288(void) {
     __CutsceneStart();
@@ -191,12 +291,112 @@ void OvlFunc_907_2008578(void) {
     __Func_8093c00();
 }
 
+extern void *ActorCmd_ARRAY_907__020091c0;
+extern void __Func_8093530(void);
+extern void __Func_801776c(int, int);
+extern void __Func_808f1c0(int, int);
+extern void __Func_8091a58(int, int);
+extern void __Func_8092a1c(int, int, void *);
+
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008584.s");
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_MapInit.s");
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_20088f0.s");
+extern void OvlFunc_907_20088f0(void);
+extern void OvlFunc_907_2008ae0(void);
+extern void OvlFunc_907_2008ed8(void);
+extern void OvlFunc_907_2008d10(void);
+extern void __StartTask(void *, int);
+
+int Bilibin_MapInit(void)
+{
+    unsigned char *base;
+    int offset;
+    short a;
+
+    base = iwram_3001ebc;
+    offset = 0xe0;
+    offset <<= 1;
+    *(int *)(base + offset) = 0x80 << 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_1e) {
+        OvlFunc_907_20088f0();
+    } else if (a == (int)Lconst_23) {
+        OvlFunc_907_2008ae0();
+        __StartTask(OvlFunc_907_2008ed8, 0xc8 << 4);
+    } else if (a == (int)Lconst_20) {
+        OvlFunc_907_2008d10();
+    }
+    return 0;
+}
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void OvlFunc_907_20089cc(void);
+
+void OvlFunc_907_20088f0(void)
+{
+    unsigned char *actor;
+    int offset;
+    short state_val;
+
+    if (API_GetFlag(0x845) != 0) {
+        API_MapActor_SetPos(9, 0, 0);
+        API_Func_8092adc(0xe, 0xc0 << 6, 0);
+        API_Func_8092adc(0xf, 0xa0 << 7, 0);
+    } else {
+        __Actor_SetSpriteFlags(__MapActor_GetActor(9), 0);
+        API_MapActor_SetPos(0x15, 0, 0);
+    }
+    actor = (unsigned char *)__MapActor_GetActor(8);
+    *(int *)(actor + 0x1c) = 0xc0 << 9;
+    offset = 0xe1;
+    offset <<= 1;
+    state_val = *(short *)((char *)&gState + offset);
+    if (state_val == 10) {
+        API_MapActor_SetPos(8, 0, 0);
+    } else if (state_val == 9) {
+        API_ClearFlag(0x12f);
+    }
+    if (API_GetFlag(0x109) == 0) {
+        offset = 0xe1;
+        offset <<= 1;
+        if (*(short *)((char *)&gState + offset) == 11) {
+            API_MapActor_SetPos(0x14, 0xf8 << 16, 0xd8 << 16);
+        }
+    }
+    OvlFunc_907_20089cc();
+    if (API_GetFlag(0x84a) != 0 && API_GetFlag(0x84b) == 0) {
+        API_SetFlag(0xc1 << 2);
+    }
+}
+
+
+extern void __Func_8010704(int, int, int, int, int, int);
+
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_20089cc.s");
+extern void __CopyMapTiles();
+extern void OvlFunc_907_2008cb4(void);
+
 INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ae0.s");
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008cb4.s");
+extern unsigned char Lm907_1d28[] __asm__(".Lm907_1d28");
+
+void OvlFunc_907_2008cb4(void)
+{
+    unsigned char *actor;
+    int x;
+    int z;
+    unsigned char *ptr;
+    unsigned int i;
+    int b, a;
+
+    actor = (unsigned char *)__MapActor_GetActor(8);
+    x = *(int *)(actor + 8) >> 20;
+    z = *(int *)(actor + 0x10) >> 20;
+    ptr = Lm907_1d28;
+    for (i = 0; i < 20; i += 2) {
+        a = ptr[0];
+        b = ptr[1];
+        __Func_8010704(1, 0, 1, 1, a, b);
+        ptr += 2;
+    }
+    __Func_8010704(0, 0, 1, 1, x, z);
+}
 
 extern void OvlFunc_907_2008fa0(void);
 extern int __GetFlag(int);
@@ -259,10 +459,160 @@ unsigned int OvlFunc_907_2008d80(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008db4.s");
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ed8.s");
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008f3c.s");
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008fa0.s");
+extern unsigned int gOvl_02009d3c[];
+extern int __TestCollision(void *, void *);
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_TravelTo(void *, int, int, int);
+extern void __Actor_WaitMovement(void *);
+
+void OvlFunc_907_2008db4(void)
+{
+    unsigned char *isaac;
+    unsigned char *obj;
+    unsigned int idx;
+    int stk[3];
+    int col;
+    int zero;
+    int x, y;
+    int offset;
+    short state;
+
+    isaac = (unsigned char *)__MapActor_GetActor(0);
+    idx = (*(unsigned short *)(isaac + 6)) >> 12;
+    x = (*(short *)(isaac + 0xa) + ((int)(gOvl_02009d3c[idx]) >> 16)) >> 4;
+    y = (*(short *)(isaac + 0x12) + (short)(gOvl_02009d3c[idx])) >> 4;
+    obj = (unsigned char *)OvlFunc_907_2008d80(x, y);
+    if (obj != 0) {
+        zero = 0;
+        *(obj + 0x22) = 2;
+        stk[0] = *(int *)(obj + 8) + (gOvl_02009d3c[idx] & 0xffff0000);
+        stk[1] = *(int *)(obj + 0xc);
+        stk[2] = *(int *)(obj + 0x10) + (gOvl_02009d3c[idx] << 16);
+        col = __TestCollision(obj, stk);
+        if (col <= 0) {
+            __Actor_SetAnim(isaac, 8);
+            __WaitFrames(15);
+            __PlaySound(0xb9);
+            *(int *)(obj + 0x30) = 0x3333;
+            *(int *)(obj + 0x34) = 0x3333;
+            __Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+            *(int *)(isaac + 0x30) = 0x3333;
+            *(int *)(isaac + 0x34) = 0x3333;
+            __Actor_TravelTo(isaac, stk[0], stk[1], stk[2]);
+            __Actor_WaitMovement(obj);
+            *(int *)(obj + 8) = stk[0];
+            *(int *)(obj + 0x10) = stk[2];
+            *(int *)(obj + 0x24) = zero;
+            *(int *)(obj + 0x2c) = zero;
+            __Actor_SetAnim(isaac, 1);
+            offset = 0xe0;
+            offset <<= 1;
+            state = *(short *)((char *)&gState + offset);
+            if (state == (int)Lconst_23) {
+                OvlFunc_907_2008cb4();
+            } else if (state == (int)Lconst_1e) {
+                OvlFunc_907_20089cc();
+            } else if (state == (int)Lconst_20) {
+                OvlFunc_907_2008fa0();
+            }
+        }
+    }
+}
+extern unsigned short Lm907_1d88[] __asm__(".Lm907_1d88");
+extern void OvlFunc_907_2008f3c(unsigned char *);
+
+void OvlFunc_907_2008ed8(void)
+{
+    unsigned int off;
+    unsigned int lim_x;
+    unsigned int lim_y;
+    unsigned char *actor;
+    short *ps;
+    unsigned short *pu;
+    int val;
+    int limit;
+
+    off = 0xfa;
+    off <<= 1;
+    actor = (unsigned char *)__MapActor_GetActor(*(int *)((char *)&gState + off));
+    lim_x = 0x8e;
+    lim_x <<= 16;
+    if (*(int *)(actor + 8) < (int)lim_x) {
+        lim_y = 0x80;
+        lim_y <<= 12;
+        if (*(int *)(actor + 0xc) < (int)lim_y) {
+            ps = (short *)Lm907_1d88;
+            pu = Lm907_1d88;
+            val = *pu;
+            if (*ps == 0) {
+                OvlFunc_907_2008f3c(actor);
+                val = *pu;
+            }
+            *pu = val + 1;
+            if ((unsigned short)(val + 1) == 30) {
+                *pu = 0;
+            }
+        } else {
+            *(unsigned short *)Lm907_1d88 = 0;
+        }
+    }
+}
+extern unsigned char gScript_907__02009d7c[];
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetScript(void *, void *);
+extern void __Sprite_SetAnim(void *, int);
+
+void OvlFunc_907_2008f3c(unsigned char *actor)
+{
+    unsigned char *new_actor;
+    unsigned char *sprite;
+    int mask;
+
+    new_actor = (unsigned char *)__CreateActor(0x18, *(int *)(actor + 8), *(int *)(actor + 0xc), *(int *)(actor + 0x10));
+    if (new_actor != 0) {
+        sprite = *(unsigned char **)(new_actor + 0x50);
+        __Actor_SetScript(new_actor, gScript_907__02009d7c);
+        new_actor[0x55] = 0;
+        new_actor[0x22] = 1;
+        new_actor[0x23] = 2;
+        if (sprite != 0) {
+            __Sprite_SetAnim(sprite, 2);
+            sprite[0x26] = 0;
+            mask = 0xd;
+            mask = -mask;
+            sprite[5] = (sprite[5] & mask) | 4;
+            sprite[9] |= 0xc;
+        }
+    }
+}
+void OvlFunc_907_2008fa0(void)
+{
+    unsigned char *actor;
+    int z1;
+    int b1, a1;
+    int z2;
+    int b2, a2;
+
+    actor = (unsigned char *)__MapActor_GetActor(8);
+    if (actor != 0) {
+        z1 = *(int *)(actor + 0x10) >> 20;
+        if (z1 == 6) {
+            __Func_8010704(2, 0, 1, 1, 14, z1);
+        } else {
+            a1 = 14;
+            b1 = 6;
+            __Func_8010704(0, 0, 1, 1, a1, b1);
+        }
+        z2 = *(int *)(actor + 0x10) >> 20;
+        if (z2 == 9) {
+            __Func_8010704(2, 0, 1, 1, 14, z2);
+        } else {
+            a2 = 14;
+            b2 = 9;
+            __Func_8010704(1, 0, 1, 1, a2, b2);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/bilibin/bilibin_data.s");
 
 INCLUDE_ASM("asm/maps/bilibin/imports.s");

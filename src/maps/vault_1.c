@@ -263,7 +263,23 @@ void OvlFunc_898_200890c(int arg0)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008938.s");
+void OvlFunc_898_2008938(int arg0)
+{
+  unsigned char *actor;
+  unsigned char *guard;
+  unsigned char save;
+
+  actor = (unsigned char *)__MapActor_GetActor(arg0);
+  guard = actor + 0x5b;
+  save = 0;
+  *guard = 1;
+  __CutsceneStart();
+  __MapActor_SetAnim(arg0, 1);
+  __CutsceneWait(2);
+  __ActorMessage(arg0, 0);
+  __CutsceneEnd();
+  *guard = save;
+}
 
 extern unsigned int iwram_3001ebc__a4 __asm__("iwram_3001ebc");
 
@@ -465,7 +481,28 @@ void OvlFunc_898_2008dd4(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008e0c.s");
+void OvlFunc_898_2008e0c(void)
+{
+  unsigned char *actor;
+  unsigned char *guard;
+
+  actor = (unsigned char *)__MapActor_GetActor(0x13);
+  guard = actor + 0x5b;
+  *guard = 1;
+  __CutsceneStart();
+  if (__GetFlag(0x855) == 0) {
+    __MessageID(0x1241);
+    __MapActor_SetAnim(0x13, 0);
+    __CutsceneWait(2);
+  } else if (__GetFlag(0x858) != 0) {
+    __MessageID(0x13ab);
+  } else {
+    __MessageID(0x134e);
+  }
+  __ActorMessage(0x13, 0);
+  __CutsceneEnd();
+  *guard = 0;
+}
 
 
 void OvlFunc_898_2008e84(void) {
@@ -477,9 +514,38 @@ void OvlFunc_898_2008e84(void) {
 
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ea4.s");
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ecc.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ef4.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f3c.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008f64.s");
+extern void __MapActor_TravelToAnim(int, int, int);
+extern void __Func_8091e9c(int);
+
+void OvlFunc_898_2008ef4(int arg0, int arg1, int arg2)
+{
+  int *p;
+
+  API_MapActor_SetSpeed(0, 0x80 << 8, 0x80 << 7);
+  __MapActor_TravelToAnim(0, arg0, arg1);
+  p = (int *)(iwram_3001ebc + (0xe4 << 1));
+  *p = 0x10;
+  __Func_8091e9c(arg2);
+}
+extern unsigned char L2828[] __asm__(".Lm898_2828");
+extern void __Func_8010560(unsigned char *arg0, int arg1, int arg2);
+extern void OvlFunc_898_2008ef4(int, int, int);
+
+void OvlFunc_898_2008f3c(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L2828, 0x38, 0x13);
+  OvlFunc_898_2008ef4(0xcc << 1, 0xa0 << 1, 5);
+}
+
+extern unsigned char L283e[] __asm__(".Lm898_283e");
+
+void OvlFunc_898_2008f64(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L283e, 0x32, 0x12);
+  OvlFunc_898_2008ef4(0x9c << 1, 0x98 << 1, 6);
+}
 
 extern unsigned char L2854[] __asm__(".Lm898_2854");
 extern void OvlFunc_898_2008ef4(int, int, int);
@@ -537,9 +603,37 @@ void OvlFunc_898_2009010(void)
   OvlFunc_898_2008ef4(0x94 << 1, 0xb0, 9);
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_200906c.s");
+extern unsigned char L2896[] __asm__(".Lm898_2896");
+
+void OvlFunc_898_200906c(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L2896, 0x26, 6);
+  OvlFunc_898_2008ef4(0x78, 0x90, 0xa);
+}
+
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2009090.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_200913c.s");
+extern unsigned char L28ac[] __asm__(".Lm898_28ac");
+
+void OvlFunc_898_200913c(void)
+{
+  unsigned char *actor;
+  unsigned char *sprite;
+  int s1;
+  int s2;
+
+  actor = (unsigned char *) __MapActor_GetActor(0);
+  sprite = *(unsigned char **)(actor + 0x50);
+  __PlaySound(0x9e);
+  __Func_8010560(L28ac, 0x23, 9);
+  s1 = 4;
+  s2 = 0xa;
+  __Func_8010704(0x21, 0x14, 1, 3, s1, s2);
+  actor += 0x23;
+  *actor = *actor & 0xfe;
+  sprite[9] = sprite[9] | 0xc;
+  OvlFunc_898_2008ef4(0x48, 0xa0, 0xc);
+}
 
 
 void OvlFunc_898_2009198(void) {

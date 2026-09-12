@@ -27,13 +27,140 @@ int OvlFunc_958_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008350.s");
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20083a8.s");
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008528.s");
+extern unsigned char iwram_3001ebc[];
+
+void *OvlFunc_958_2008350(int *coords, void **p)
+{
+    unsigned char *base;
+    unsigned int i;
+    int cx;
+
+    base = *(unsigned char **)iwram_3001ebc;
+    i = 8;
+    cx = coords[0] >> 20;
+    p = (void **)(base + 0x34);
+    for (; i <= 0x41; i++) {
+        void *actor = *p++;
+        if (cx == *(int *)((char *)actor + 8) >> 20) {
+            if (coords[1] / 0x10000 == *(int *)((char *)actor + 0xc) / 0x10000) {
+                if (coords[2] >> 20 == *(int *)((char *)actor + 0x10) >> 20) {
+                    return actor;
+                }
+            }
+        }
+    }
+    return 0;
+}
+extern unsigned int L16c0[] __asm__(".Lm958_16c0");
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __Actor_TravelTo(void *, int, int, int);
+extern int __TestCollision(void *, int *);
+extern void __WaitFrames(int);
+extern void __Actor_SetAnim(void *, unsigned int);
+
+void OvlFunc_958_20083a8(void)
+{
+    void *player;
+    int stk[3];
+    unsigned int dir;
+    void *res;
+    void *res2;
+
+    player = __MapActor_GetActor(0);
+    dir = *(unsigned short *)((char *)player + 6) >> 12;
+    stk[0] = *(int *)((char *)player + 8) + (L16c0[dir] & 0xffff0000);
+    stk[1] = *(int *)((char *)player + 12);
+    stk[2] = *(int *)((char *)player + 16) + (L16c0[dir] << 16);
+    res = OvlFunc_958_2008350(stk, player);
+    if (res == 0)
+        return;
+
+    stk[0] = *(int *)((char *)res + 8) + (L16c0[dir] & 0xffff0000);
+    stk[1] = *(int *)((char *)res + 12);
+    stk[2] = *(int *)((char *)res + 16) + (L16c0[dir] << 16);
+    res2 = OvlFunc_958_2008350(stk, res);
+    if (res2 != 0) {
+        if (*((unsigned char *)res2 + 0x59) & 1)
+            return;
+    }
+
+    stk[0] = *(int *)((char *)res + 8);
+    stk[1] = *(int *)((char *)res + 12) + (0x80 << 13);
+    stk[2] = *(int *)((char *)res + 16);
+    res2 = OvlFunc_958_2008350(stk, res);
+    if (res2 != 0) {
+        if (*((unsigned char *)res2 + 0x59) & 1)
+            return;
+    }
+
+    *((unsigned char *)res + 0x22) = 2;
+    stk[0] = *(int *)((char *)res + 8) + (L16c0[dir] & 0xffff0000);
+    stk[1] = *(int *)((char *)res + 12);
+    stk[2] = *(int *)((char *)res + 16) + (L16c0[dir] << 16);
+    if (__TestCollision(res, stk) > 0)
+        return;
+    if (*((unsigned char *)res + 0x62) != 0)
+        return;
+
+    __Actor_SetAnim(player, 8);
+    __WaitFrames(15);
+    __PlaySound(0xb9);
+    *(int *)((char *)res + 0x30) = 0x3333;
+    *(int *)((char *)res + 0x34) = 0x3333;
+    __Actor_TravelTo(res, stk[0], stk[1], stk[2]);
+    *(int *)((char *)player + 0x30) = 0x3333;
+    *(int *)((char *)player + 0x34) = 0x3333;
+    __Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(res);
+    __MapActor_PlayPendingSound();
+    *(int *)((char *)res + 8) = stk[0];
+    *(int *)((char *)res + 0x10) = stk[2];
+    *(int *)((char *)res + 0x24) = 0;
+    *(int *)((char *)res + 0x2c) = 0;
+    *(int *)((char *)player + 0x38) = 0x80 << 24;
+    *(int *)((char *)player + 0x40) = 0x80 << 24;
+    *(int *)((char *)player + 0x24) = 0;
+    *(int *)((char *)player + 0x2c) = 0;
+    *(int *)((char *)player + 8) = *(short *)((char *)player + 10) << 16;
+    *(int *)((char *)player + 0x10) = *(short *)((char *)player + 18) << 16;
+    __Actor_SetAnim(player, 1);
+}
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[65536];
+
+unsigned int OvlFunc_958_2008528(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4, unsigned int arg5)
+{
+    unsigned char *ptr;
+    unsigned char *base;
+    unsigned char *row;
+    unsigned int i, j;
+    int off;
+
+    ptr = *(unsigned char **)iwram_3001e70;
+    if (ptr == (unsigned char *)0) {
+        return 0;
+    }
+    if (arg0 <= 2) {
+        off = 0x98;
+        off <<= 1;
+        off += (arg0 * 3) << 4;
+        base = *(unsigned char **)((char *)ptr + off);
+    } else {
+        base = gBuffer;
+    }
+    base = base + ((arg1 + (arg2 << 7)) << 2);
+    for (i = 0; i < arg4; i++) {
+        row = base + (i << 9);
+        for (j = 0; j < arg3; j++) {
+            *(row + 2) = arg5;
+            row += 4;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L16c0[] __asm__(".Lm958_16c0");
 extern int L1700[] __asm__(".Lm958_1700");
-extern void *OvlFunc_958_2008350(int *, void *);
 extern int __TestCollision(void *, int *);
 
 int OvlFunc_958_200858c(void *arg0)
@@ -169,9 +296,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L16c0__a2[] __asm__(".Lm958_16c0");
-extern void OvlFunc_958_2008528(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -294,7 +419,40 @@ void OvlFunc_958_20088ec(struct Pk arg)
 
 INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008ba4.s");
 
-INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetEntrances.s");
+extern unsigned char Lconst_98[] __asm__(".Lconst_98");
+__asm__(".equ .Lconst_98, 0x98");
+extern unsigned char Lconst_9d[] __asm__(".Lconst_9d");
+__asm__(".equ .Lconst_9d, 0x9d");
+extern unsigned char Lconst_9e[] __asm__(".Lconst_9e");
+__asm__(".equ .Lconst_9e, 0x9e");
+
+extern unsigned char Lm958_17b4[] __asm__(".Lm958_17b4");
+extern unsigned char Lm958_17fc[] __asm__(".Lm958_17fc");
+extern unsigned char Lm958_1874[] __asm__(".Lm958_1874");
+extern unsigned char Lm958_1784[] __asm__(".Lm958_1784");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+void *Gondowan_GetEntrances(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_98) {
+        return Lm958_17b4;
+    }
+    if (a == (int)Lconst_9d) {
+        return Lm958_17fc;
+    }
+    if (a == (int)Lconst_9e) {
+        return Lm958_1874;
+    }
+    return Lm958_1784;
+}
 
 int Gondowan_GetSpecialExits(void) {
     return 0;
@@ -306,10 +464,35 @@ unsigned int Gondowan_GetExits(void) {
     return (unsigned int)gOvl_0200991c;
 }
 
-INCLUDE_ASM("asm/maps/gondowan/Gondowan_GetActors.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 extern int __GetFlag(int);
+extern unsigned char Lm958_19d4[] __asm__(".Lm958_19d4");
+extern unsigned char Lm958_1974[] __asm__(".Lm958_1974");
+extern unsigned char gScript_970__02009a4c[];
+extern unsigned char Lm958_1aac[] __asm__(".Lm958_1aac");
+extern unsigned char Lm958_195c[] __asm__(".Lm958_195c");
+
+void *Gondowan_GetActors(void)
+{
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_98) {
+        if (__GetFlag(0x96f)) {
+            return Lm958_19d4;
+        }
+        return Lm958_1974;
+    }
+    if (a == (int)Lconst_9d) {
+        return gScript_970__02009a4c;
+    }
+    if (a == (int)Lconst_9e) {
+        return Lm958_1aac;
+    }
+    return Lm958_195c;
+}
 extern unsigned char _EVENT_98[], _EVENT_9d[], _EVENT_9e[];
 extern unsigned char Lm958_1bcc[] __asm__(".Lm958_1bcc");
 extern unsigned char Lm958_1b48[] __asm__(".Lm958_1b48");
@@ -329,9 +512,118 @@ int Gondowan_GetEvents(void)
     if (ev == (int)_EVENT_9e) return (int)gScript_885__02009ce0;
     return (int)Lm958_1b3c;
 }
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008df0.s");
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008f44.s");
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008fd0.s");
+extern unsigned char Lconst_88[] __asm__(".Lconst_88");
+__asm__(".equ .Lconst_88, 0x88");
+
+void OvlFunc_958_2008df0(void)
+{
+    unsigned char *actor;
+    int r0, r1, r2, r3;
+
+    if (API_GetFlag(0x98a))
+        return;
+    if (!API_GetFlag(0x9a << 4))
+        return;
+
+    __CutsceneStart();
+    API_MapActor_SetSpeed(0xb, 0x80 << 9, 0x80 << 8);
+    actor = __MapActor_GetActor(0);
+    if (actor != 0) {
+        __MapActor_SetPos(0xb, *(int *)(actor + 8), *(int *)(actor + 16));
+    }
+    API_MapActor_TravelBy(0xb, -8, 0x10);
+    __MapActor_WaitMovement(0xb);
+    API_Func_8092adc(0xb, 0xd0 << 8, 0);
+    __CutsceneWait(10);
+    API_MapActor_Face(0, 0xb, 0);
+    __MessageID(0x23da);
+    __ShowActorMessage_NoWait(0xb, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_ActorMessage(0xb, 0);
+        API_MapActor_TravelToAnim(0xb, 0x98, 0xe8);
+        API_ClearFlag(0x9a << 4);
+        __MapActor_WaitMovement(0xb);
+        API_MapActor_SetAnim(0xb, 1);
+        r1 = (int)&gState;
+        r0 = 0xe2;
+        r3 = (int)Lconst_88;
+        r0 <<= 1;
+        r2 = r1 + r0;
+        *(short *)r2 = r3;
+        r3 = 0xe3;
+        r3 <<= 1;
+        r2 = r1 + r3;
+        r3 = 0x1e;
+        *(short *)r2 = r3;
+    } else {
+        r3 = (int)iwram_3001ebc;
+        r0 = 0xec;
+        r2 = *(int *)r3;
+        r0 <<= 1;
+        r2 += r0;
+        r3 = *(unsigned short *)r2;
+        r3++;
+        *(unsigned short *)r2 = r3;
+        API_ActorMessage(0xb, 0);
+        API_MapActor_SetAnim(0xb, 2);
+        actor = __MapActor_GetActor(0);
+        if (actor != 0) {
+            __MapActor_TravelTo(0xb, *(short *)(actor + 10), *(short *)(actor + 18));
+        }
+        __MapActor_WaitMovement(0xb);
+        API_MapActor_SetPos(0xb, 0, 0);
+        __CutsceneWait(30);
+        API_MapActor_SetAnim(0, 2);
+        API_MapActor_TravelBy(0, 0, 0x10);
+        __MapActor_WaitMovement(0);
+        __MapActor_SetAnim(0, 1);
+    }
+    __CutsceneEnd();
+}
+void OvlFunc_958_2008f44(void)
+{
+    unsigned char *actor;
+
+    __CutsceneStart();
+    API_MapActor_Face(0xb, 0, 0);
+    API_MapActor_Face(0, 0xb, 0);
+    __MapActor_SetAnim(0, 1);
+    __CutsceneWait(10);
+    API_MapActor_TurnToFaceActor(0, 0xb, 0);
+    __MessageID(0x23d9);
+    API_ActorMessage(0xb, 0);
+    __MapActor_SetAnim(0xb, 2);
+    actor = __MapActor_GetActor(0);
+    if (actor != 0) {
+        __MapActor_TravelTo(0xb, *(short *)(actor + 10), *(short *)(actor + 18));
+    }
+    __MapActor_WaitMovement(0xb);
+    __MapActor_SetPos(0xb, 0, 0);
+    __CutsceneWait(20);
+    __SetFlag(0x9a << 4);
+    __CutsceneEnd();
+}
+extern unsigned char Lmsg_23cc[] __asm__(".Lmsg_23cc");
+__asm__(".equ .Lmsg_23cc, 0x23cc");
+
+void OvlFunc_958_2008fd0(void)
+{
+    int msg = (int)Lmsg_23cc;
+    unsigned short *p;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(8, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        if (__GetFlag(0x95 << 4) && !__GetFlag(0x96f)) {
+            __MessageID(msg + 8);
+        }
+        __ActorMessage(8, 0);
+    } else {
+        p = (unsigned short *)(*(char **)iwram_3001ebc + (0xec << 1));
+        *p = *p + 1;
+        __ActorMessage(8, 0);
+    }
+}
 
 extern int __GetFlag(int);
 extern int __MessageID(int);
@@ -489,11 +781,7 @@ void OvlFunc_958_2009384(void) {
     __MapActor_SetPos(12, 0, 0);
 }
 
-extern unsigned char Lconst_98[] __asm__(".Lconst_98");
-__asm__(".equ .Lconst_98, 0x98");
 
-extern unsigned char Lconst_9e[] __asm__(".Lconst_9e");
-__asm__(".equ .Lconst_9e, 0x9e");
 
 void __Actor_SetSpriteFlags(void *, int);
 int Gondowan_MapInit(void) {

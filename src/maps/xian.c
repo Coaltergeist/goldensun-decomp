@@ -4,6 +4,7 @@
 #include "api.h"
 
 extern void __Func_80955b0(int a, int b, int c);
+extern unsigned char iwram_3001ebc[];
 
 void OvlFunc_928_2008314(void) {
     __Func_80955b0(0x16, 1, 2);
@@ -108,7 +109,35 @@ void OvlFunc_928_200894c(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008968.s");
+extern void __StartTask(void *, int);
+extern void __Func_8010704(int, int, int, int, int, int);
+extern void __Func_8092b08(int, int);
+extern void __CutsceneEnd(void);
+
+void OvlFunc_928_2008968(void)
+{
+    unsigned char *flags;
+    int zero = 0;
+    int x;
+    int z;
+
+    __CutsceneStart();
+
+    flags = (unsigned char *)__MapActor_GetActor(0x14) + 0x23;
+    *flags &= 0xfd;
+
+    flags = (unsigned char *)__MapActor_GetActor(0x14) + 0x55;
+    *flags = zero;
+
+    x = *(int *)((char *)__MapActor_GetActor(0x14) + 8);
+    z = *(int *)((char *)__MapActor_GetActor(0x14) + 16);
+    __Func_8010704(3, 0x11, 1, 1, x >> 20, z >> 20);
+
+    __StartTask(OvlFunc_928_2008324, 0xc8 << 4);
+    API_SetFlag(0x201);
+    __Func_8092b08(0x14, 2);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_20089dc.s");
 
 void OvlFunc_928_2008cec(void) {
@@ -120,7 +149,7 @@ void OvlFunc_928_2008cec(void) {
 
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008d0c.s");
 
-extern unsigned char iwram_3001ebc[];
+
 extern void __MapActor_SetSpeed(int, int, int);
 extern void __MapActor_SetAnim(int, int);
 extern void __MapActor_TravelBy(int, int, int);
@@ -146,9 +175,92 @@ void OvlFunc_928_2008de8(unsigned int arg0)
     __Func_8091e9c(arg0);
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008e4c.s");
+extern unsigned char L1778[] __asm__(".Lm928_1778");
+extern unsigned char L178e[] __asm__(".Lm928_178e");
+extern unsigned char L17a4[] __asm__(".Lm928_17a4");
+extern unsigned char L17ba[] __asm__(".Lm928_17ba");
+extern unsigned char L17d0[] __asm__(".Lm928_17d0");
+
+extern void __PlaySound(int);
+extern void __Func_8010560(void *, int, int);
+
+void OvlFunc_928_2008e4c(void)
+{
+    short *p = *(short **)iwram_3001ebc;
+    __CutsceneStart();
+    switch (p[182]) {
+    case 1:
+        __PlaySound(0x9e);
+        __Func_8010560(L1778, 0x51, 0x12);
+        break;
+    case 2:
+        __PlaySound(0x9e);
+        __Func_8010560(L178e, 0x53, 11);
+        break;
+    case 3:
+        __PlaySound(0x9e);
+        __Func_8010560(L178e, 0x56, 11);
+        break;
+    case 4:
+        __PlaySound(0x9e);
+        __Func_8010560(L17a4, 0x54, 0x18);
+        break;
+    case 5:
+        __PlaySound(0x9e);
+        __Func_8010560(L17a4, 0x48, 7);
+        break;
+    case 6:
+        __PlaySound(0xbc);
+        __Func_8010560(L17ba, 0x45, 11);
+        break;
+    case 7:
+        __PlaySound(0x9e);
+        __Func_8010560(L17d0, 0x53, 7);
+        break;
+    }
+    OvlFunc_928_2008de8(p[182]);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008f30.s");
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2009060.s");
+
+extern unsigned char gScript_928__020095b0[];
+extern int OvlFunc_928_2008500(unsigned char *);
+extern void __MapActor_SetBehavior(int, void *);
+
+void OvlFunc_928_2009060(void)
+{
+    int zero;
+    int c;
+
+    __CutsceneStart();
+    __MapActor_SetBehavior(0x12, (void *)1);
+
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x6c) = zero = 0;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x38) = c = 0x80 << 24;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x40) = c;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x24) = zero;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x2c) = zero;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x30) = zero;
+    *(int *)((char *)__MapActor_GetActor(0x12) + 0x34) = zero;
+
+    API_MapActor_Emote(0x12, 0x103, 0);
+    API_Func_809259c(0x12, 2);
+    API_CutsceneWait(60);
+
+    API_MapActor_SetSpeed(0x12, 0xc0 << 9, 0xc0 << 8);
+    API_MapActor_SetSpeed(0, 0xc0 << 9, 0xc0 << 8);
+
+    API_MapActor_TravelToAnim(0x12, 0x8c << 1, 0xe8);
+    API_MapActor_TravelToAnimWait(0, 0x94 << 1, 0xe8);
+    API_MapActor_WaitMovement(0x12);
+
+    API_Func_8092adc(0, 0x80 << 8, 0x14);
+    API_MapActor_Emote(0, 0x81 << 1, 60);
+
+    __MapActor_SetBehavior(0x12, gScript_928__020095b0);
+    *(void **)((char *)__MapActor_GetActor(0x12) + 0x6c) = OvlFunc_928_2008500;
+    __CutsceneEnd();
+}
 
 extern unsigned char gOvl_02009ac8[];
 

@@ -50,8 +50,55 @@ unsigned char *OvlFunc_971_2008060(void)
 	return L19f4;
 }
 
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_200808c.s");
+extern unsigned short iwram_3001f64;
+extern unsigned char ewram_2002024[];
+extern const unsigned char L1940[] __asm__(".L1940");
+extern unsigned int CHAR_ARRAY_ARRAY_971__02009928[];
+extern unsigned int ewram_2002224[];
+extern int __ActorMessage(int, int);
+
+int OvlFunc_971_200808c(int arg0)
+{
+    int r5;
+    unsigned int reg;
+
+    r5 = -1;
+    if ((iwram_3001f64 & 3) == 3) {
+        reg = *(unsigned int *)0x04000128;
+        r5 = (reg << 26) >> 30;
+        __SetFlag(0x303);
+    } else {
+        __ClearFlag(0x303);
+    }
+
+    while (r5 >= 0 && __GetFlag(0x303) != 0) {
+        int flag;
+        unsigned int *ptr;
+
+        unsigned char *p;
+
+        ptr = &CHAR_ARRAY_ARRAY_971__02009928[arg0];
+        if (r5 != 0)
+            __SetFlag(0x302);
+        else
+            __ClearFlag(0x302);
+
+        flag = __GetFlag(0x302) ^ 1;
+        p = ewram_2002024 + flag * 24;
+        if (*(unsigned int *)(p + (L1940[arg0] << 2)) != *ptr)
+            break;
+        return 1;
+    }
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008128.s");
+extern unsigned char iwram_3001ebc[];
+extern int L1f4c __asm__(".L1f4c");
+extern void Func_80008d4(void *, unsigned int);
+extern void OvlFunc_971_2008128(int a);
+extern unsigned char *__MapActor_GetActor(int);
+
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008148.s");
 
 extern unsigned long L1f50 __asm__(".L1f50");
@@ -110,7 +157,35 @@ unsigned int OvlFunc_971_2008340(void) {
 }
 
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008398.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_200853c.s");
+int OvlFunc_971_200853c(unsigned short *arg0)
+{
+    int count;
+    unsigned char *p;
+    int i;
+    unsigned char v;
+    unsigned int off;
+
+    count = __GetPartySize();
+    if (count > 3) count = 3;
+    if (count > 0) {
+        off = 0xfc;
+        p = (unsigned char *)&gState + (off << 1);
+        i = count;
+        do {
+            v = *p;
+            p++;
+            if (arg0 != 0) {
+                *arg0 = v;
+                arg0++;
+            }
+            i--;
+        } while (i != 0);
+    }
+    if (arg0 != 0) {
+        *arg0 = 0xff;
+    }
+    return count;
+}
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008580.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20087b0.s");
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008860.s");
@@ -130,7 +205,6 @@ unsigned int OvlFunc_971_2008b94(void)
     unsigned int flag173 = 0x173;
     unsigned int flag300 = 0x300;
 
-    while (flag173 == 0) { }
 
     r6 = (unsigned int)MsgBase;
     __CutsceneStart();
@@ -233,13 +307,100 @@ int OvlFunc_971_2008f18(int actor)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008f30.s");
+int OvlFunc_971_2008f30(int arg0)
+{
+    int party_size;
+    int max;
+    int i;
+    unsigned char *p;
+    unsigned char *src;
+    int off;
+
+    party_size = __GetPartySize();
+    max = 3;
+    if (__GetFlag(0xb9 << 1) == 0)
+        max = 4;
+    if (party_size > max)
+        party_size = max;
+
+    i = 0;
+    if (i < party_size) {
+        off = 0xfc;
+        off <<= 1;
+        p = (unsigned char *)&gState + off;
+        src = p;
+        do {
+            if (*src++ == 0xff)
+                break;
+            if (*p == arg0)
+                return 1;
+            i++;
+            p++;
+        } while (i < party_size);
+    }
+    return 0;
+}
 
 void OvlFunc_971_2008f88(void) {}
 
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2008f8c.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009050.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_200906c.s");
+extern unsigned char Lconst_1[] __asm__(".Lconst_1");
+__asm__(".equ .Lconst_1, 1");
+
+int OvlFunc_971_2009050(void)
+{
+    int map;
+
+    __Func_8006358();
+    __SetSoundFXMode(2);
+    do {
+        map = (int)Lconst_1;
+    } while (0);
+    return __SetDestMap(map, 1);
+}
+extern unsigned char Msg_2985[] __asm__(".Lmsg_2985");
+__asm__(".equ .Lmsg_2985, 0x2985");
+extern unsigned char Msg_297f[] __asm__(".Lmsg_297f");
+__asm__(".equ .Lmsg_297f, 0x297f");
+extern unsigned char Msg_2982[] __asm__(".Lmsg_2982");
+__asm__(".equ .Lmsg_2982, 0x2982");
+
+unsigned int OvlFunc_971_200906c(int actor)
+{
+    unsigned int msg;
+    int r6;
+    int off;
+    unsigned char *p;
+
+    r6 = 0;
+    __CutsceneStart();
+    if (actor != 13) {
+        if (actor <= 13) {
+            if (actor == 12) {
+                msg = (unsigned int)Msg_2985;
+                goto done;
+            }
+        }
+    } else {
+        msg = (unsigned int)Msg_297f;
+        goto done;
+    }
+    msg = (unsigned int)Msg_2982;
+done:
+
+    off = 0xfa;
+    off <<= 1;
+    p = (unsigned char *)&gState + off;
+    __MapActor_Face(actor, *(int *)p, 0);
+
+    if (__GetFlag(0xc1 << 2) != 0) {
+        r6 = 2 - (__GetFlag(0x305) != 0);
+    }
+
+    __MessageID(msg + r6);
+    __ShowActorMessage_NoWait(actor, 0);
+    return __CutsceneEnd();
+}
 
 extern unsigned char LobbyMessage_298d[] __asm__(".Llobby_message_298d");
 __asm__(".equ .Llobby_message_298d, 0x298d");
@@ -318,8 +479,68 @@ void *OvlFunc_971_20091b4(void) {
     return (void *)gOvl_02009e14;
 }
 
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20091bc.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009228.s");
-INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_2009294.s");
+extern int __CloseUIBox(void *, int);
+extern void __Func_801faa8(void);
+
+int OvlFunc_971_20091bc(void)
+{
+    void *box;
+
+    __PlaySound(0x55);
+    box = (void *)__Func_8017658(0x292a, 5, 4, 1);
+    while (__Func_8017364() == 0) {
+        __WaitFrames(1);
+    }
+    __Func_801faa8();
+    do {
+        __CloseUIBox(box, 1);
+    } while (0);
+    __WaitFrames(1);
+    box = (void *)__Func_8017658(0x292b, 5, 4, 1);
+    while (__Func_8017364() == 0) {
+        __WaitFrames(1);
+    }
+    return __CloseUIBox(box, 1);
+}
+int OvlFunc_971_2009228(void)
+{
+    void *box;
+
+    __PlaySound(0x55);
+    box = (void *)__Func_8017658(0x292c, 5, 4, 1);
+    while (__Func_8017364() == 0) {
+        __WaitFrames(1);
+    }
+    __Func_801faa8();
+    do {
+        __CloseUIBox(box, 1);
+    } while (0);
+    __WaitFrames(1);
+    box = (void *)__Func_8017658(0x292d, 5, 4, 1);
+    while (__Func_8017364() == 0) {
+        __WaitFrames(1);
+    }
+    return __CloseUIBox(box, 1);
+}
+extern int _modsi3_RAM(int, int);
+extern int _divsi3_RAM(int, int);
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+int OvlFunc_971_2009294(int val)
+{
+    int i;
+    int one;
+
+    if (val > 0x3e7)
+        val = 0x3e7;
+
+    i = 0;
+    one = 1;
+    for (; i <= 2; i++) {
+        __CopyMapTiles(0x1b, _modsi3_RAM(val, 10), 0x10 - i, 8, one, one);
+        val = _divsi3_RAM(val, 10);
+    }
+    return __Func_800fe9c();
+}
 INCLUDE_ASM("asm/maps/link_lobby/OvlFunc_971_20092e0.s");
 INCLUDE_ASM("asm/maps/link_lobby/link_lobby_data.s");
