@@ -5,7 +5,21 @@
 
 INCLUDE_ASM("asm/maps/sol/exports.s");
 
-INCLUDE_ASM("asm/maps/sol/Sol_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState__entr;
+extern GlobalState__entr gState__entr __asm__("gState");
+extern unsigned char _EVENT_13[], _EVENT_10[];
+extern unsigned char Lm895_1d04[] __asm__(".Lm895_1d04");
+extern unsigned char Lm895_1d64[] __asm__(".Lm895_1d64");
+extern unsigned char MapEntrance_ARRAY_895__02009cd4[];
+
+void *Sol_GetEntrances(void)
+{
+    GlobalState__entr *p = &gState__entr;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_13) return Lm895_1d04;
+    if (ev == (int)_EVENT_10) return Lm895_1d64;
+    return MapEntrance_ARRAY_895__02009cd4;
+}
 
 int Sol_GetSpecialExits(void) {
     return 0;

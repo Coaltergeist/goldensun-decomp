@@ -37,7 +37,19 @@ void *Kolima_GetEntrances(void) {
     return Lm911_2e60;
 }
 
-INCLUDE_ASM("asm/maps/kolima/Kolima_GetSpecialExits.s");
+extern unsigned char Lm911_3010[] __asm__(".Lm911_3010");
+
+void *Kolima_GetSpecialExits(void)
+{
+    GlobalState *p = &gState;
+    int room = *(short *)((char *)p + 0x1c0);
+    void *result = 0;
+
+    if (room == (int)_EVENT_26) {
+        result = Lm911_3010;
+    }
+    return result;
+}
 
 extern unsigned char gOvl_0200b040[];
 

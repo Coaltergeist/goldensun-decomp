@@ -25,7 +25,19 @@ unsigned int Lunpa_GetSpecialExits(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa/Lunpa_GetExits.s");
+extern unsigned char gScript_918__02009e04[];
+extern unsigned char Lm939_1dcc[] __asm__(".Lm939_1dcc");
+
+void *Lunpa_GetExits(void)
+{
+    GlobalState__entr *p = &gState__entr;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_68) goto default_case;
+    if (ev != (int)_EVENT_9f) goto default_case;
+    return (void *)gScript_918__02009e04;
+default_case:
+    return (void *)Lm939_1dcc;
+}
 
 extern unsigned char gOvl_02009e14[];
 extern unsigned char Lm939_1f64[] __asm__(".Lm939_1f64");

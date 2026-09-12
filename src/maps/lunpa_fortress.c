@@ -297,7 +297,23 @@ void OvlFunc_959_2008608(struct Pk arg)
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20088c0.s");
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetEntrances.s");
+typedef struct { unsigned char _bytes[704]; } GlobalState__entr;
+extern GlobalState__entr gState__entr __asm__("gState");
+extern unsigned char _EVENT_a0[], _EVENT_a1[], _EVENT_a2[];
+extern unsigned char Lm959_62a4[] __asm__(".Lm959_62a4");
+extern unsigned char Lm959_64b4[] __asm__(".Lm959_64b4");
+extern unsigned char Lm959_6754[] __asm__(".Lm959_6754");
+extern unsigned char Lm959_6814[] __asm__(".Lm959_6814");
+
+void *LunpaFortress_GetEntrances(void)
+{
+    GlobalState__entr *p = &gState__entr;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_a0) return Lm959_62a4;
+    if (ev == (int)_EVENT_a1) return Lm959_64b4;
+    if (ev == (int)_EVENT_a2) return Lm959_6754;
+    return Lm959_6814;
+}
 
 int LunpaFortress_GetSpecialExits(void) {
     return 0;

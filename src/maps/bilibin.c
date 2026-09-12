@@ -23,7 +23,19 @@ void *Bilibin_GetEntrances(void) {
     return Lm907_11d4;
 }
 
-INCLUDE_ASM("asm/maps/bilibin/Bilibin_GetSpecialExits.s");
+extern unsigned char gOvl_020093fc[];
+
+void *Bilibin_GetSpecialExits(void)
+{
+    GlobalState *p = &gState;
+    int room = *(short *)((char *)p + 0x1c0);
+    void *result = 0;
+
+    if (room == (int)_EVENT_20) {
+        result = gOvl_020093fc;
+    }
+    return result;
+}
 
 extern unsigned char gOvl_0200942c[];
 

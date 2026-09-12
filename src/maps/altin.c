@@ -33,7 +33,36 @@ void *Altin_GetExits(void) {
     return (void *)gOvl_02009390;
 }
 
-INCLUDE_ASM("asm/maps/altin/Altin_GetActors.s");
+extern unsigned char Lm931_140c[] __asm__(".Lm931_140c");
+extern unsigned char Lm931_15bc[] __asm__(".Lm931_15bc");
+extern unsigned char Lm931_13f4[] __asm__(".Lm931_13f4");
+extern void __Func_808b868(unsigned char *p);
+
+unsigned char *Altin_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int room = *(short *)((char *)p + 0x1c0);
+
+    if (room == (int)_EVENT_4b) {
+        if (__GetFlag(0x909)) {
+            Lm931_140c[0x8e] = 0;
+            Lm931_140c[0xa6] = 0;
+        }
+        return Lm931_140c;
+    }
+    if (room == (int)_EVENT_4c) {
+        if (__GetFlag(0x8fd)) {
+            Lm931_15bc[0x2e] = 1;
+        }
+        if (__GetFlag(0x8fe) || __GetFlag(0x907)) {
+            Lm931_15bc[0x5e] = 1;
+        }
+        __Func_808b868(Lm931_15bc);
+        return Lm931_15bc;
+    }
+    return Lm931_13f4;
+}
+
 extern unsigned char _EVENT_4b[], _EVENT_4c[];
 extern unsigned char gScript_930__02009730[];
 extern unsigned char Lm931_19f4[] __asm__(".Lm931_19f4");

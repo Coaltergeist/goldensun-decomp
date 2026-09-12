@@ -70,7 +70,24 @@ void *AltinPeak_GetEntrances(void) {
     return gScript_936__0200c164;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetSpecialExits.s");
+extern unsigned char gScript_943__0200c80c[];
+extern unsigned char gOvl_0200c83c[];
+
+void *AltinPeak_GetSpecialExits(void)
+{
+    GlobalState *p = &gState;
+    int room = *(short *)((char *)p + 0x1c0);
+    void *result;
+
+    if (room == (int)_EVENT_55) {
+        return gScript_943__0200c80c;
+    }
+    result = 0;
+    if (room == (int)_EVENT_56) {
+        result = gOvl_0200c83c;
+    }
+    return result;
+}
 
 extern unsigned char gOvl_0200c85c[];
 

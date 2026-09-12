@@ -427,7 +427,19 @@ void *BabiLighthouse_GetEntrances(void) {
     return Lm965_3558;
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetSpecialExits.s");
+extern unsigned char Lm965_35b8[] __asm__(".Lm965_35b8");
+
+void *BabiLighthouse_GetSpecialExits(void)
+{
+    GlobalState *p = &gState;
+    int room = *(short *)((char *)p + 0x1c0);
+    void *result = 0;
+
+    if (room == (int)_EVENT_b0) {
+        result = Lm965_35b8;
+    }
+    return result;
+}
 
 extern unsigned char gOvl_0200b5f8[];
 

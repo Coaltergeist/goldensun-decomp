@@ -27,7 +27,20 @@ void *VaultCave_GetSpecialExits(void) {
     return (void *)gOvl_02009c5c;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetExits.s");
+extern unsigned char Lm935_1c80[] __asm__(".Lm935_1c80");
+extern unsigned char Lm935_1cc0[] __asm__(".Lm935_1cc0");
+extern unsigned char Lm935_1cfc[] __asm__(".Lm935_1cfc");
+extern unsigned char Lm935_1c7c[] __asm__(".Lm935_1c7c");
+
+void *VaultCave_GetExits(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return Lm935_1c80;
+    if (ev == (int)_EVENT_61) return Lm935_1cc0;
+    if (ev == (int)_EVENT_62) return Lm935_1cfc;
+    return Lm935_1c7c;
+}
 INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetActors.s");
 
 extern unsigned int iwram_3001ebc;
