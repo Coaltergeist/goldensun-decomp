@@ -252,7 +252,22 @@ void OvlFunc_901_2008d74(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d84.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e30.s");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+void OvlFunc_901_2008e30(void)
+{
+    unsigned int s1;
+    unsigned int s2;
+    unsigned int s3;
+    unsigned int s4;
+
+    s1 = 0xd;
+    s2 = 0x19;
+    __Func_8010704(0x29, 0x2b, 1, 1, s1, s2);
+    s3 = 3;
+    s4 = 3;
+    __CopyMapTiles(0x28, 0x2a, 0xc, 0x16, s3, s4);
+}
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e60.s");
 
 

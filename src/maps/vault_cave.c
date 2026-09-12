@@ -1,6 +1,7 @@
 /* rom_7bf5a8 (overlay file 935): consolidated TU — vault_cave map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern void OvlFunc_935_2008734();
 
@@ -114,13 +115,73 @@ unsigned int OvlFunc_935_2008334(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008368.s");
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008398.s");
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20083e0.s");
+extern void __PlaySound(unsigned int);
+extern void OvlFunc_935_2008170(void);
+extern void OvlFunc_935_2008398(void);
+
+void OvlFunc_935_2008368(void)
+{
+    if (API_GetFlag(0x9a9) == 0) {
+        OvlFunc_935_2008170();
+        if (OvlFunc_935_2008334() != 0) {
+            API_SetFlag(0x9a9);
+            __PlaySound(0x50);
+            OvlFunc_935_2008398();
+        }
+    }
+}
+
+extern void __Func_80105d4(int, int, int, int, int, int);
+extern void __Func_8010704(int, int, int, int, int, int);
+
+void OvlFunc_935_2008398(void)
+{
+    int a;
+    int b;
+    int s1;
+    int s2;
+    int s3;
+
+    a = 0x50;
+    b = 0x32;
+    __Func_80105d4(0x57, 0x32, 2, 4, a, b);
+    s1 = 0x10;
+    s2 = 0x34;
+    __Func_80105d4(0x17, 0x34, 1, 2, s1, s2);
+    s3 = 0x35;
+    __Func_8010704(0x10, 0x34, 1, 1, s1, s3);
+}
+
+void OvlFunc_935_20083e0(void)
+{
+    if (API_GetFlag(0x9a9) == 0) {
+        if (OvlFunc_935_2008334() != 0) {
+            API_SetFlag(0x9a9);
+            __PlaySound(0x50);
+            OvlFunc_935_2008398();
+        }
+    }
+}
 
 void OvlFunc_935_200840c(void) {}
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008410.s");
+void OvlFunc_935_2008410(void)
+{
+    int a;
+    int b;
+    int s1;
+    int s2;
+    int s3;
+
+    a = 0x50;
+    b = 9;
+    __Func_80105d4(0x5a, 9, 2, 3, a, b);
+    s1 = 0x11;
+    s2 = 0xa;
+    __Func_80105d4(0x1b, 0xa, 1, 2, s1, s2);
+    s3 = 0xb;
+    __Func_8010704(0x11, 0xa, 1, 1, s1, s3);
+}
 
 
 unsigned int OvlFunc_935_2008458(void)
@@ -136,11 +197,34 @@ unsigned int OvlFunc_935_2008458(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_200848c.s");
+void OvlFunc_935_200848c(void)
+{
+    OvlFunc_935_2008170();
+    if (API_GetFlag(0x9aa) == 0) {
+        if (OvlFunc_935_2008458() != 0) {
+            if (API_GetFlag(0x207) == 0) {
+                __PlaySound(0x50);
+                OvlFunc_935_2008410();
+                API_SetFlag(0x9aa);
+            }
+        }
+    }
+}
 
 void OvlFunc_935_20084cc(void) {}
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20084d0.s");
+void OvlFunc_935_20084d0(void)
+{
+    if (API_GetFlag(0x9aa) == 0) {
+        if (OvlFunc_935_2008458() != 0) {
+            if (API_GetFlag(0x207) == 0) {
+                __PlaySound(0x50);
+                OvlFunc_935_2008410();
+                API_SetFlag(0x9aa);
+            }
+        }
+    }
+}
 
 struct Actor935
 {
