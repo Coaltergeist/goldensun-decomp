@@ -246,14 +246,11 @@ extern unsigned char iwram_3001ee0[];
 
 void OvlFunc_936_20095b4(void) {
     unsigned int *r5;
-    int flag = 0x200;
 
-    do { } while (flag == 0);
-
-    if (!__GetFlag(flag)) {
+    if (!API_GetFlag(0x200)) {
         r5 = *(unsigned int **)iwram_3001ee0;
         r5[6] = (unsigned int)__MapActor_GetActor(0);
-        __SetFlag(flag);
+        API_SetFlag(0x200);
     }
 }
 

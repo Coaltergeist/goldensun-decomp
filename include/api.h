@@ -78,4 +78,16 @@ static inline void API_Func_80922c4(int a, int b, int c) { extern void __Func_80
 static inline void API_Func_8092304(unsigned int a, unsigned int b, unsigned int c) { extern void __Func_8092304(unsigned int, unsigned int, unsigned int); __Func_8092304(a, b, c); }
 static inline void API_Func_809233c(int a, int b, int c, int d) { extern void __Func_809233c(int, int, int, int); __Func_809233c(a, b, c, d); }
 
+static inline void API_Func_801776c(int a, int b)
+{
+    extern void __Func_801776c(int, int);
+    __Func_801776c(a, b);
+}
+
+static inline void API_CutsceneEnd(void)
+{
+    extern void __CutsceneEnd(void);
+    __CutsceneEnd();
+}
+
 #endif /* GUARD_API_H */

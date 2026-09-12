@@ -460,25 +460,18 @@ void __WaitMapTransition(void);
 void OvlFunc_890_2009264(void)
 {
     MapState *map;
-    int neg1 = -1;
-    int c_23e = 0x23e0000;
-    int c_9e = 0x9e << 16;
-    int c_f0 = 0xf0 << 15;
-    int c_2051cc = 0x2051cc;
 
-    while (c_23e == 0) {}
-
-    __Func_80933f8(neg1, neg1, neg1, 0);
+    API_Func_80933f8(-1, -1, -1, 0);
     __CopyMapTiles(0x1e, 0x2b, 0x20, 0x28, 8, 3);
     __CopyMapTiles(0x1e, 0x2b, 0x21, 0x27, 8, 1);
     __CopyMapTiles(0x1e, 0x2b, 0x24, 0x26, 3, 3);
     __CopyMapTiles(0xe, 0x29, 0x20, 0x29, 8, 4);
-    __Func_80933f8(c_23e, neg1, c_9e, 0);
+    API_Func_80933f8(0x23e0000, -1, 0x9e << 16, 0);
     __Func_800fe9c();
-    __MapActor_SetPos(0x10, c_23e, c_f0);
-    __MapActor_SetPos(0, 0, 0);
+    API_MapActor_SetPos(0x10, 0x23e0000, 0xf0 << 15);
+    API_MapActor_SetPos(0, 0, 0);
     __WaitFrames(1);
-    __Func_8091200(c_2051cc, 1);
+    API_Func_8091200(0x2051cc, 1);
     __Func_8091254(0x14);
     __SetFlag(0x201);
     __ClearFlag(0x200);
@@ -490,10 +483,10 @@ void OvlFunc_890_2009264(void)
     __WaitMapTransition();
     __CutsceneWait(0x28);
     __PlaySound(0xab);
-    __Func_8091200(0x10005, 1);
+    API_Func_8091200(0x10005, 1);
     __Func_8091254(8);
     __CutsceneWait(0x20);
-    __Func_8091200(c_2051cc, 1);
+    API_Func_8091200(0x2051cc, 1);
     __Func_8091254(0x18);
 }
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009380.s");

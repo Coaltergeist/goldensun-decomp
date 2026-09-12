@@ -264,15 +264,9 @@ INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20097c0.s");
 
 void OvlFunc_895_2009aac(void)
 {
-  int new_var;
-  int a0 = 0x953;
-  int new_var2;
-  new_var = 1;
-  __CutsceneStart();
-  new_var2 = 0;
- do { } while (new_var2);
-  __Func_801776c(a0, new_var);
-  __CutsceneEnd();
+    __CutsceneStart();
+    API_Func_801776c(0x953, 1);
+    API_CutsceneEnd();
 }
 
 extern int Lm895_269c_i __asm__(".Lm895_269c");

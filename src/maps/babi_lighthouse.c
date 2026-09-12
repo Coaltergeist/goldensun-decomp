@@ -358,20 +358,9 @@ void OvlFunc_965_2008d4c(void)
     unsigned int r7;
     int theta;
     int *actor;
-    unsigned long actor_id = 0;
-    int surprise_flag = 0x101;
-    int neg1 = -1;
-    int c1 = 0xa0 << 11;
-    int c2 = 0xa0 << 11;
-    int c3 = 0x80 << 9;
-    int neg2 = -1;
-    int neg3 = -1;
-    int c_e666 = 0xe666;
-
-    while (c1 == 0) {}
 
     __CutsceneStart();
-    __Func_80933f8(neg1, neg1, neg1, 0);
+    API_Func_80933f8(-1, -1, -1, 0);
     __Func_800fe9c();
     __WaitFrames(1);
     ((int *)__MapActor_GetActor(0))[3] = 0x82 << 16;
@@ -400,12 +389,12 @@ void OvlFunc_965_2008d4c(void)
         r7++;
     } while (r7 <= 0x10);
     __PlaySound(0xbc);
-    __MapActor_Surprise(actor_id, surprise_flag);
-    __MapActor_SetAnim(actor_id, 0x16);
-    __Func_8012330(c1, c2, c3);
-    __Func_8012330(neg2, neg3, c_e666);
+    API_MapActor_Surprise(0, 0x101);
+    __MapActor_SetAnim(0, 0x16);
+    API_Func_8012330(0xa0 << 11, 0xa0 << 11, 0x80 << 9);
+    API_Func_8012330(-1, -1, 0xe666);
     __Func_8012350();
-    __MapActor_Surprise(0, 0x80 << 1);
+    API_MapActor_Surprise(0, 0x80 << 1);
     ((int *)__MapActor_GetActor(0))[18] = 0x80 << 9;
     ((int *)__MapActor_GetActor(0))[17] = 0x80 << 7;
     __CutsceneEnd();
