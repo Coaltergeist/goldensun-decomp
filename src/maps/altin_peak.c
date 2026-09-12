@@ -37,7 +37,6 @@ unsigned int OvlFunc_932_20080bc(unsigned int arg0) {
     return 0;
 }
 
-// INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_GetEntrances.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
 extern unsigned char _EVENT_4d[], _EVENT_4e[], _EVENT_4f[], _EVENT_50[], _EVENT_51[], _EVENT_52[], _EVENT_53[], _EVENT_54[], _EVENT_55[], _EVENT_56[], _EVENT_57[];

@@ -203,7 +203,6 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008cc8.s");
 
-// INCLUDE_ASM("asm/maps/venus_lighthouse/VenusLighthouse_GetEntrances.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
 extern unsigned char _EVENT_b5[], _EVENT_b7[], _EVENT_b8[], _EVENT_b9[], _EVENT_ba[];

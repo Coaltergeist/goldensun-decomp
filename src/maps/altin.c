@@ -5,7 +5,6 @@
 
 INCLUDE_ASM("asm/maps/altin/exports.s");
 
-// INCLUDE_ASM("asm/maps/altin/Altin_GetEntrances.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
 
