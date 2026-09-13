@@ -52,7 +52,17 @@ void OvlFunc_956_20081b4(void) {
 }
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20081c8.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008204.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200824c.s");
+
+void OvlFunc_956_200824c(void) {
+    int a;
+    int b;
+    API_SetFlag(0xd8 << 2);
+    a = 0x31;
+    b = 0x3d;
+	API_Func_8010704(0x2f, 0x3d, 1, 4, a, b);
+}
+
+
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008274.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20082f8.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008404.s");
@@ -128,7 +138,23 @@ unsigned int OvlFunc_956_2008a20(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008a44.s");
+extern unsigned char gScript_956__0200cc48[];
+extern struct Actor *__MapActor_GetActor(int);
+extern void __Actor_SetAnim(int, int);
+extern void __Actor_SetScript(struct Actor *, void *);
+
+void OvlFunc_956_2008a44(void)
+{
+    struct Actor *actor;
+
+    actor = __MapActor_GetActor(0x1e);
+    actor->__unk55 = 0;
+    actor->accel = 0x19999;
+    actor->speed = 0x19999;
+    __Actor_SetAnim((int)actor, 2);
+    __Actor_SetScript(actor, gScript_956__0200cc48);
+    API_SetFlag(0x363);
+}
 
 
 void OvlFunc_956_2008a84(void) {

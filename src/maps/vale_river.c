@@ -465,7 +465,15 @@ void OvlFunc_883_2008d2c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008d70.s");
+void OvlFunc_883_2008d70(void) {
+    int a;
+    int b;
+    API_SetFlag(0x84 << 2);
+    a = 0xa;
+    b = 0x54;
+    API_Func_8010704(0x28, 0x54, 7, 4, a, b);
+}
+
 void OvlFunc_883_2008d98(void)
 {
     __ClearFlag(0x210);
@@ -476,7 +484,17 @@ void OvlFunc_883_2008d98(void)
         __Func_8010704(0x28, 0x59, 7, 4, arg4, arg5);
     }
 }
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008dc0.s");
+
+extern unsigned char Lm883_7544[] __asm__(".Lm883_7544");
+
+void OvlFunc_883_2008dc0(void) {
+	API_PlaySound(0xbc);
+    CallFunc_8010560(0x2d, 0xb, Lm883_7544);
+	API_MapActor_TravelToAnim(0, 0x101, 0xd2 << 1);
+    __Func_8091e9c(0xb);
+}
+
+
 
 extern void OvlFunc_883_2008fec(void);
 
@@ -703,7 +721,18 @@ void OvlFunc_883_200d8f0(unsigned int *arg0, unsigned int arg1, unsigned int arg
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d928.s");
+extern void OvlFunc_883_20080c4(void);
+extern void OvlFunc_883_200d950(void);
+void OvlFunc_883_200d928(void) {
+    int a;
+    int b;
+    a = 0x16;
+    b = 0x24;
+    API_Func_8010704(0x11, 0, 3, 1, a, b);
+    OvlFunc_883_20080c4();
+    OvlFunc_883_200d950();
+}
+
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d950.s");
 
 extern unsigned int iwram_3001e40;

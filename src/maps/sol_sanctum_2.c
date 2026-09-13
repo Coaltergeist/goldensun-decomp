@@ -101,8 +101,23 @@ void OvlFunc_891_20095bc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20095d4.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20095fc.s");
+void OvlFunc_891_20095d4(void) {
+	API_Func_8012078(2, 0xd0 << 16, 0xe0 << 15, 0);
+	if (OvlFunc_891_2009be8(0xa, 0xe, 7) != 0) {
+        OvlFunc_891_200a244();
+    }
+}
+
+extern void OvlFunc_891_200a2f4(void);
+
+void OvlFunc_891_20095fc(void) {
+    API_Func_8012078(2, 0xb0 << 17, 0xe0 << 15, 0);
+    if (OvlFunc_891_2009be8(0xc, 0x15, 7) != 0) {
+        OvlFunc_891_200a2f4();
+    }
+}
+
+
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009624.s");
 
 

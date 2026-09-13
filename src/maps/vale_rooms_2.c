@@ -325,7 +325,13 @@ void OvlFunc_887_200933c(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093b4.s");
+
+extern void __CopyMapTiles(int, int, int, int, int, int);
+void OvlFunc_887_20093b4(void) {
+	__CopyMapTiles(0x16, 0x55, 0x19, 0x55, 2, 2);
+	API_Func_8010704(0x19, 0xf, 2, 2, 0x19, 0x19);
+}
+
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093e4.s");
 
 extern unsigned int iwram_3001e40;

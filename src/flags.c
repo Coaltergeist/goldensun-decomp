@@ -4,36 +4,44 @@
 
 extern unsigned char gFlags[];
 
-int GetFlag(int id)
+int GetFlag(int flagID)
 {
-    int bit = id & 7;
-    int mask = 1;
+    unsigned int bit;
     unsigned int index;
     int value;
 
-    mask <<= bit;
-    index = (unsigned int)id << 20;
-    id = index >> 23;
-    value = gFlags[id] & mask;
+    bit = 1u << (flagID & 7);
+    flagID = ((unsigned int)flagID << 20) >> 23;
+    index = flagID;
+    value = gFlags[index] & bit;
     return (unsigned int)(-value | value) >> 31;
 }
+
 void SetFlag(int flagID)
 {
-    unsigned int bit = 1u << (flagID & 7);
-    unsigned char *table = gFlags;
+    unsigned int bit;
+    unsigned int index;
+    unsigned char *table;
 
+    bit = 1u << (flagID & 7);
+    table = gFlags;
     flagID = ((unsigned int)flagID << 20) >> 23;
-    table[flagID] |= bit;
+    index = flagID;
+    table[index] |= bit;
 }
+
 void ClearFlag(int flagID)
 {
-    unsigned int bit = 1u << (flagID & 7);
-    unsigned char *table = gFlags;
+    unsigned int bit;
+    unsigned int index;
+    unsigned char *table;
 
+    bit = 1u << (flagID & 7);
+    table = gFlags;
     flagID = ((unsigned int)flagID << 20) >> 23;
-    table[flagID] &= ~ bit;
+    index = flagID;
+    table[index] &= ~bit;
 }
-
 
 int ToggleFlag(int flagID)
 {

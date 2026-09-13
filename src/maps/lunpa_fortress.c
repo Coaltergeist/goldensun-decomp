@@ -353,7 +353,7 @@ void OvlFunc_959_2008bac(void) {
     extern void OvlFunc_959_2008b4c(void);
     extern void __SetFlag(int);
 
-    
+
     API_MapActor_SetSpeed(0xc, (0x10000), (0x8000));
     API_MapActor_TravelTo(0xc, 0xf8, (0x178));
     __MapActor_WaitMovement(0xc);
@@ -390,7 +390,13 @@ void OvlFunc_959_2008bec(void)
         __SetFlag(0x943);
     }
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c78.s");
+void OvlFunc_959_2008c78(void)
+{
+    extern void OvlFunc_959_2008b4c(void);
+    API_MapActor_SetPos(0xc, 0xf8 << 16, 0xbc << 17);
+    OvlFunc_959_2008b4c();
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c90.s");
 extern unsigned char iwram_3001ebc[];
 extern int __CheckPartyItem(int);
@@ -980,7 +986,7 @@ INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009e94.s");
 void OvlFunc_959_200a06c(void) {
     extern void __MapTransitionIn(void);
 
-    
+
 
     __CutsceneStart();
     API_MapActor_SetPos(0xc, (0x2b00000), (0x580000));

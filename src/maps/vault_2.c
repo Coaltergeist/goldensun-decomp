@@ -1,6 +1,7 @@
 /* rom_797990 (overlay file 901): consolidated TU — vault_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 extern int Func_8000948(int);
 
@@ -48,7 +49,13 @@ void *Vault2_GetActors(void) {
     return (void *)gOvl_020095d8;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20084b4.s");
+void OvlFunc_901_20084b4(int a) {
+  __CutsceneStart();
+  API_MapActor_SetAnim(a, 1);
+  API_ActorMessage(a, 0);
+  __CutsceneEnd();
+}
+
 extern void __CutsceneStart(void);
 extern void __MapActor_Face(int a, int b, int c);
 extern void __SetFlag(int flag);
@@ -181,7 +188,26 @@ INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008804.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20089f8.s");
+
+void OvlFunc_901_20089f8(void) {
+  __CutsceneStart();
+	API_PlaySound(0x64);
+	API_CutsceneWait(0x28);
+  if (API_GetFlag(0x867) == 0) {
+    API_MapActor_Surprise(0x15, 0x81 << 1);
+    API_MapActor_Jump(0x15, 4, 0);
+    API_CutsceneWait(0xc);
+    API_MapActor_Jump(0x15, 4, 0);
+    API_CutsceneWait(0x14);
+    OvlFunc_901_2008970(0x15, 0xc4 << 1, 0x68, 0xe0 << 11);
+    API_CutsceneWait(0x14);
+    API_MapActor_TravelToAnimWait(0x15, 0xcc << 1, 0x68);
+    API_MapActor_TravelToAnimWait(0x15, 0xcc << 1, 0x78);
+    API_SetFlag(0x867);
+  }
+  __CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008a80.s");
 extern unsigned char L1740[] __asm__(".Lm901_1740");
 extern void __PlaySound(unsigned int);
@@ -277,8 +303,29 @@ void OvlFunc_901_2008bf8(void)
 }
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008cc8.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d24.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d4c.s");
+
+void OvlFunc_901_2008d24(void) {
+  int a;
+  int b;
+  API_SetFlag(0x80 << 2);
+  a = 0x17;
+  b = 0x1a;
+  API_Func_8010704(0x37, 0x1a, 4, 2, a, b);
+}
+
+extern void __ClearFlag(int);
+
+void OvlFunc_901_2008d4c(void)
+{
+    int a;
+    int b;
+
+    __ClearFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+
+    __Func_8010704(0x17, 0x17, 4, 2, a, b);
+}
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -286,7 +333,28 @@ void OvlFunc_901_2008d74(void) {
     __Func_80955b0(0x15, 0, 4);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d84.s");
+void OvlFunc_901_2008d84(void) {
+  __Func_8078a08(0xe7);
+  API_CutsceneStart();
+  API_CutsceneWait(0xa);
+  API_Func_80925cc(0x12, 2);
+  API_MapActor_SetSpeed(0x12, 0xcccc, 0x6666);
+  API_MapActor_TravelToAnimWait(0x12, 0xd8, 0xcc << 1);
+  API_CutsceneWait(0xa);
+  API_Func_8092adc(0x12, 0x80 << 7, 0x14);
+  API_MapActor_Jump(0x12, 6, 0);
+  API_CutsceneWait(0x1e);
+	API_MapActor_Jump(0x12, 6, 0);
+  API_CutsceneWait(0x1e);
+  API_MapActor_Jump(0x12, 6, 0);
+  API_CutsceneWait(0x1e);
+  API_MapActor_TravelToAnimWait(0x12, 0xd8, 0xc4 << 1);
+  API_CutsceneWait(0xa);
+	API_Func_8092adc(0x12, 0x80 << 7, 0x14);
+	API_SetFlag(0x858);
+  __CutsceneEnd();
+}
+
 extern void __CopyMapTiles(int, int, int, int, int, int);
 
 void OvlFunc_901_2008e30(void)

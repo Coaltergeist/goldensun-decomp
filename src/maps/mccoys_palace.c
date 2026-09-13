@@ -548,8 +548,18 @@ void OvlFunc_909_200979c(void)
     __SetFlag(0x84f);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009958.s");
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009984.s");
+void OvlFunc_909_2009958(void) {
+    API_Func_8092adc(1, 0xe0 << 8, 0);
+    API_Func_8092adc(2, 0xa0 << 8, 0);
+    API_Func_8092adc(3, 0x80 << 8, 0);
+}
+
+void OvlFunc_909_2009984(void) {
+    API_Func_8092adc(1, 0xc0 << 8, 0);
+    API_Func_8092adc(2, 0xc0 << 8, 0);
+    API_Func_8092adc(3, 0xa0 << 8, 0);
+}
+
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20099b0.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200a1bc.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/mccoys_palace_data.s");

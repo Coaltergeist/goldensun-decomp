@@ -78,6 +78,12 @@ static inline void API_Func_80922c4(int a, int b, int c) { extern void __Func_80
 static inline void API_Func_8092304(unsigned int a, unsigned int b, unsigned int c) { extern void __Func_8092304(unsigned int, unsigned int, unsigned int); __Func_8092304(a, b, c); }
 static inline void API_Func_809233c(int a, int b, int c, int d) { extern void __Func_809233c(int, int, int, int); __Func_809233c(a, b, c, d); }
 static inline void API_Func_8092a1c(int a, int b, void *c) { extern void __Func_8092a1c(int, int, void *); __Func_8092a1c(a, b, c); }
+static inline void API_Func_80118a8(int a) { extern void __Func_80118a8(int); __Func_80118a8(a); }
+static inline void API_Func_80118c0(int a) { extern void __Func_80118c0(int); __Func_80118c0(a); }
+static inline void API_DeleteActor(int a) {
+    extern void __DeleteActor(int);
+    __DeleteActor(a);
+}
 
 static inline void API_Func_801776c(int a, int b)
 {
@@ -85,6 +91,11 @@ static inline void API_Func_801776c(int a, int b)
     __Func_801776c(a, b);
 }
 
+static inline void API_CutsceneStart(void)
+{
+    extern void __CutsceneStart(void);
+    __CutsceneStart();
+}
 static inline void API_CutsceneEnd(void)
 {
     extern void __CutsceneEnd(void);
@@ -123,5 +134,10 @@ static inline void MapActor_Func_8092adc(int x, int actor, int z) {
     extern void __Func_8092adc(int, int, int);
     __Func_8092adc(actor, x << 6, z);
 }
+
+static inline void API_MapTransitionIn(void) { extern void __MapTransitionIn(void); __MapTransitionIn(); }
+static inline void API_WaitMapTransition(void) { extern void __WaitMapTransition(void); __WaitMapTransition(); }
+
+static inline void API_PlaySound(int a) { extern void __PlaySound(int a); __PlaySound(a); }
 
 #endif /* GUARD_API_H */

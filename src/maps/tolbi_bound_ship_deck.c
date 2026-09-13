@@ -233,7 +233,20 @@ void OvlFunc_943_2008b98(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008bb8.s");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+void OvlFunc_943_2008bb8(void) {
+    int a;
+    int b;
+    if (API_GetFlag(0x271) != 0) {
+        return;
+    }
+    API_PlaySound(0x9e);
+    a = 1;
+    b = 3;
+	__CopyMapTiles(0x1e, 0x5e, 0xd, 0x5e, a, b);
+	API_SetFlag(0x271);
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008bf0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008c28.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008ca0.s");
@@ -639,7 +652,20 @@ void OvlFunc_943_200ba00(int a, int b) {
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200ba0c.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200bc88.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200bf30.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200c218.s");
+
+void OvlFunc_943_200c218(void)
+{
+    struct Actor *actor;
+
+    API_Func_80933f8(0xe80000, -1, 0x2a40000, 0);
+    __Func_800fe9c();
+    API_MapActor_SetPos(0, 0xe80000, 0x2a40000);
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    actor->facing = 0x4000;
+    __WaitFrames(1);
+}
+
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/tolbi_bound_ship_deck_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/imports.s");

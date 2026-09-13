@@ -55,7 +55,16 @@ void OvlFunc_955_2008150(void) {
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008160.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008258.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200828c.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20082c0.s");
+
+void OvlFunc_955_20082c0(void)
+{
+    int s1;
+    int s2;
+    __SetFlag(0x333);
+    s1 = 0x20;
+    s2 = 0x4d;
+    API_Func_8010704(0x20, 0x25, 1, 4, s1, s2);
+}
 
 extern void __Func_8092708(unsigned int, int, int);
 extern unsigned char gState;

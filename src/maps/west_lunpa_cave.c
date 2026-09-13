@@ -1,6 +1,7 @@
 /* rom_7c5efc (overlay file 941): consolidated TU — west_lunpa_cave map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -99,7 +100,21 @@ void OvlFunc_941_2008200(void) {
 }
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008210.s");
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_200833c.s");
+
+void OvlFunc_941_200833c(void) {
+	if (API_GetFlag(0x201) != 0) {
+        return;
+    }
+	if (API_GetFlag(0x80 << 2) != 0) {
+        return;
+    }
+	API_Func_801776c(0x1528, 1);
+	API_PlaySound(0x9d);
+	OvlFunc_941_2008210();
+    API_SetFlag(0x201);
+    API_ClearFlag(0x202);
+}
+
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008384.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008460.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20084a8.s");
