@@ -605,10 +605,12 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80a8578.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a8604.s");
 
 void Func_80a8904(void) {
-    register int i;
-    for (i = 0xff; i >= 0; i--) {
-        asm("");
-    }
+    int i = 0xff;
+
+loop:
+    --i;
+    if (i >= 0)
+        goto loop;
 }
 
 INCLUDE_ASM("asm/ui/party_menu/Func_80a8914.s");
