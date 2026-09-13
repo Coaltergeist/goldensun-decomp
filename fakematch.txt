@@ -4,8 +4,6 @@
 # Inline helper/macro scaffolds are attributed to their original-function callers.
 # This is not a list of all C definitions or a progress denominator.
 Func_80c0eb8 src/battle/mechanics.c
-SetFlagNybble src/flags.c
-ToggleFlag src/flags.c
 WaitFrames src/intr/intr.c
 InitMatrixStack src/math/matrix.c
 MakeLookMatrix src/math/matrix.c
