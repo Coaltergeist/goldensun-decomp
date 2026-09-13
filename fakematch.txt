@@ -18,7 +18,6 @@ Func_8005fcc src/serial.c
 Func_8006088 src/serial.c
 Func_80063bc src/serial.c
 Func_800651c src/serial.c
-RunTasks src/task.c
 Func_80a8904 src/ui/party_menu.c
 Func_800383c src/video.c
 Func_80038bc src/video.c

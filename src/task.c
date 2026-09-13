@@ -289,8 +289,8 @@ loop:
         if (i != 0) {
             currentTask += 1;
             if (currentTask->priorityHi == (arg0)) {
-                register taskfunc_t *func asm("r0") = currentTask->taskFunc;
-                func();
+                /* integer-return callback cast matches; void callback declaration mismatch remains unresolved */
+                ((int (*)(void))currentTask->taskFunc)();
             }
             goto loop;
         }
