@@ -51,8 +51,58 @@ unsigned int SuhallaDesert_GetExits(void) {
     return (unsigned int)gOvl_020095c0;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_GetActors.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008400.s");
+extern unsigned char Lm960_1610[] __asm__(".Lm960_1610");
+extern unsigned char gScript_930__020096b8[];
+extern unsigned char Lm960_1790[] __asm__(".Lm960_1790");
+extern unsigned char Lm960_15f8[] __asm__(".Lm960_15f8");
+extern unsigned char ConstActors_a4[] __asm__(".Lconst_actors_a4");
+__asm__(".equ .Lconst_actors_a4, 0xa4");
+extern unsigned char ConstActors_a5[] __asm__(".Lconst_actors_a5");
+__asm__(".equ .Lconst_actors_a5, 0xa5");
+extern unsigned char ConstActors_a6[] __asm__(".Lconst_actors_a6");
+__asm__(".equ .Lconst_actors_a6, 0xa6");
+
+void *SuhallaDesert_GetActors(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)ConstActors_a4) return Lm960_1610;
+    if (ev == (int)ConstActors_a5) return gScript_930__020096b8;
+    if (ev == (int)ConstActors_a6) return Lm960_1790;
+    return Lm960_15f8;
+}
+extern unsigned char *__MapActor_GetActor(int);
+extern unsigned char *iwram_3001ebc;
+extern unsigned int iwram_3001e40;
+extern int __GetFlagByte(int);
+extern void __SetFlagByte(int, int);
+
+void OvlFunc_960_2008400(void)
+{
+    unsigned char *actor;
+    unsigned char *p;
+    unsigned short *ptr;
+    unsigned short val;
+    int flag;
+    int off;
+    int off2;
+
+    off = 0xfa << 1;
+    actor = __MapActor_GetActor(*(int *)((char *)&gState + off));
+    p = iwram_3001ebc;
+    *(unsigned short *)(actor + 6) = iwram_3001e40 << 12;
+    flag = __GetFlagByte(0x210);
+    if (flag == 0) {
+    } else if (flag == 1) {
+        off2 = 0xc1 << 1;
+        ptr = (unsigned short *)(p + off2);
+        val = 0x63;
+        *ptr = val;
+    } else {
+        if (__GetFlag(0x106) == 0)
+            flag -= 1;
+    }
+    __SetFlagByte(0x210, flag);
+}
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008464.s");
 
 extern void OvlFunc_960_2008464(int);
@@ -137,9 +187,27 @@ void OvlFunc_960_2008b14(void) {
     *((unsigned char *)(ptr + 0x34)) = 1;
 }
 
+extern unsigned char Const_A5[] __asm__(".Lconst_a5");
+
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008b24.s");
+extern void __PlaySound(int);
+
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008ce4.s");
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_960_2008ce4(void)
+{
+    unsigned short v;
+    unsigned int u;
+
+    v = iwram_3001e40 & 0x3f;
+    if (v > 0x1f)
+        v = 0x40 - v;
+    u = ((unsigned int)v >> 1) + 7;
+    u |= (u << 10) | (u << 5);
+    *(volatile unsigned short *)0x500019e = (u << 16) >> 16;
+}
+
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
 extern unsigned char Const_A5[] __asm__(".Lconst_a5");
 __asm__(".equ .Lconst_a5, 0xa5");
@@ -197,7 +265,53 @@ int SuhallaDesert_GetEvents(void)
     if (ev == (int)_EVENT_a6) return (int)Lm960_19c4;
     return (int)Lm960_17b4;
 }
-INCLUDE_ASM("asm/maps/suhalla_desert/SuhallaDesert_MapInit.s");
+extern unsigned char iwram_3001e70_raw[] __asm__("iwram_3001e70");
+extern void __StartTask(void *, int);
+extern void __PlaySound(int);
+extern void OvlFunc_960_2008d24(void);
+extern void OvlFunc_960_2008f50(void);
+extern void OvlFunc_960_2009094(void);
+extern unsigned short Lm960_1a00 __asm__(".Lm960_1a00");
+
+int SuhallaDesert_MapInit(void)
+{
+    unsigned char *r7;
+    unsigned int *p;
+    unsigned int *dst;
+    int ev;
+    int off;
+
+    r7 = *(unsigned char **)(iwram_3001e70_raw + 0);
+    p = *(unsigned int **)(iwram_3001e70_raw + 0x4c);
+    off = 0xe0 << 1;
+    dst = (unsigned int *)((char *)p + off);
+    *dst = 0x201;
+    if (__GetFlagByte(0x84 << 2) != 0) {
+        off = 0xf9 << 1;
+        *(unsigned char *)((char *)&gState + off) = 2;
+        __StartTask(OvlFunc_960_2008400, 0xc8 << 4);
+    }
+    off = 0xe0 << 1;
+    ev = *(short *)((char *)&gState + off);
+    if (ev == (int)ConstActors_a4 || ev == (int)Const_A5) {
+        Lm960_1a00 = *(unsigned short *)0x500019e;
+        OvlFunc_960_2008d24();
+    }
+    off = 0xe0 << 1;
+    ev = *(short *)((char *)&gState + off);
+    if (ev == (int)ConstActors_a4) {
+        OvlFunc_960_2008f50();
+    } else if (ev == (int)Const_A5) {
+        OvlFunc_960_2009094();
+    } else {
+        __PlaySound(0x90 << 1);
+    }
+    off = 0xe1 << 1;
+    if (*(short *)((char *)&gState + off) == 0) {
+        *(unsigned short *)(r7 + 0x14) &= 0xfdff;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008f50.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2009094.s");
 INCLUDE_ASM("asm/maps/suhalla_desert/suhalla_desert_data.s");

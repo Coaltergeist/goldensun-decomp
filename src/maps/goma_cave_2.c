@@ -173,7 +173,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L1554__a2[] __asm__(".Lm905_1554");
-extern void OvlFunc_905_2008244(int, int, int, int, int, int);
+extern int OvlFunc_905_2008244(unsigned int, int, int, unsigned int, unsigned int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -295,7 +295,17 @@ void OvlFunc_905_2008608(struct Pk arg)
 }
 
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20088c0.s");
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20089dc.s");
+
+extern void __Func_8091f14(int, int);
+
+void OvlFunc_905_20089dc(void)
+{
+    extern void __MapActor_Jump(int, int, int);
+    API_MapActor_Emote(0xd, 0x80 << 1, 0);
+    __MapActor_Jump(0xd, 2, 0);
+    __Func_8091f14(0xc, 0x28);
+}
+
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008a00.s");
 
 extern void __Func_80929d8(int a, int b);

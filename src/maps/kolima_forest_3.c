@@ -27,7 +27,26 @@ int OvlFunc_915_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_200806c.s");
+extern unsigned char iwram_3001ebc[];
+
+void *OvlFunc_915_200806c(int *a0, void *unused)
+{
+    void *obj;
+    unsigned int i;
+    char *base;
+
+    base = *(char **)iwram_3001ebc;
+    for (i = 8; i <= 0x41; i++) {
+        obj = ((void **)(base + 0x34))[i - 8];
+        if (a0[0] >> 20 == *(int *)((char *)obj + 8) >> 20 &&
+            a0[1] / 0x10000 == *(int *)((char *)obj + 0xc) / 0x10000 &&
+            a0[2] >> 20 == *(int *)((char *)obj + 0x10) >> 20)
+        {
+            return obj;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_20080c4.s");
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008244.s");
 
@@ -345,7 +364,37 @@ void *KolimaForest3_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/KolimaForest3_MapInit.s");
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008c8c.s");
+extern void OvlFunc_915_2008d5c(void);
+extern void OvlFunc_915_2008d9c(void);
+extern void OvlFunc_915_2008d7c(void);
+extern unsigned short OvlFunc_915_2008cf4(unsigned short, int);
+extern void __Func_8091200(int, int);
+
+void OvlFunc_915_2008c8c(int a0)
+{
+    unsigned int y;
+    unsigned int next;
+    unsigned int idx;
+    unsigned short *pltt;
+
+    pltt = (unsigned short *)0x05000000;
+    OvlFunc_915_2008d5c();
+    y = 0;
+    do {
+        idx = y >> 16;
+        if ((unsigned int)(y - 0x110000) > 0x60000) {
+            if ((unsigned int)((idx + 0xff3f) << 16) > 0x70000) {
+                pltt[idx] = OvlFunc_915_2008cf4(pltt[idx], a0);
+            }
+        }
+        next = y + 0x10000;
+        y = next;
+    } while (next <= 0xdf0000);
+    OvlFunc_915_2008d9c();
+    OvlFunc_915_2008d7c();
+    __Func_8091200(0x10000, 0);
+}
+
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008cf4.s");
 
 #include "dma.h"
@@ -365,8 +414,28 @@ void OvlFunc_915_2008d7c(void) {
     DMA3_COPY((void *)iwram_3001ed0, L17e0, 0x380);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008d9c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008ddc.s");
+extern void __Func_8091220(int, int);
+
+void OvlFunc_915_2008d9c(void)
+{
+    unsigned int base = iwram_3001ed0;
+    DMA3_COPY((void *)0x05000000, (void *)base, 0x1c0);
+    DMA3_COPY((void *)0x05000200, (void *)(base + 0x1c0), 0x1c0);
+    __Func_8091220(0x10000, 0);
+}
+
+extern void __Func_8091200(int, int);
+
+void OvlFunc_915_2008ddc(int a0)
+{
+    void *dst = (void *)iwram_3001ed0;
+    if (a0)
+        DMA3_COPY(L17e0, dst, 0x380);
+    else
+        DMA3_COPY(L10e0, dst, 0x380);
+    __Func_8091200(0x10000, 0);
+    OvlFunc_915_2008d9c();
+}
 INCLUDE_ASM("asm/maps/kolima_forest_3/kolima_forest_3_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/imports.s");

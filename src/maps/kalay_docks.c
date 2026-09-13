@@ -40,7 +40,16 @@ void *KalayDocks_GetExits(void) {
 }
 
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetActors.s");
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008144.s");
+void OvlFunc_942_2008144(void) {
+    __CutsceneStart();
+    API_SetFlag(0x8aa);
+    API_MapActor_TravelToAnimWait(0, 0x188, 0x128);
+    API_MapActor_SetSpeed(8, 0x13333, 0x9999);
+    API_MapActor_TravelToAnimWait(8, 0x198, 0x128);
+    API_Func_8092adc(8, 0x8000, 0);
+    API_CutsceneWait(0x14);
+    __CutsceneEnd();
+}
 
 extern int __GetFlag(int);
 extern unsigned char _EVENT_6b[], _EVENT_70[], _EVENT_6c[];
@@ -231,6 +240,10 @@ void OvlFunc_942_20087dc(void)
     __Func_8091e9c(3);
     __CutsceneEnd();
 }
+extern void OvlFunc_942_20088cc(void);
+extern void OvlFunc_942_2008958(void);
+extern void OvlFunc_942_2008ad4(void);
+
 INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_MapInit.s");
 extern void __ClearFlag(int);
 void OvlFunc_942_2008ba0(void);

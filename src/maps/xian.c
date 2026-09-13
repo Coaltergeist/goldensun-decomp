@@ -147,7 +147,57 @@ void OvlFunc_928_2008cec(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008d0c.s");
+extern int __TestCollision(void *, void *);
+extern void __vec3_translate(unsigned int, unsigned int, void *);
+extern void __Actor_SetAnim(int, int);
+extern void __Actor_SetSpriteFlags(int, int);
+
+void OvlFunc_928_2008d0c(void)
+{
+    unsigned char *actor;
+    unsigned char *flags;
+    unsigned char saved;
+    unsigned int buf[3];
+    unsigned int heading;
+
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    flags = actor + 0x55;
+    saved = *flags;
+
+    if (API_GetFlag(0x80 << 2)) {
+        buf[0] = (*(int *)(actor + 8) & 0xfff00000) + (0x80 << 12);
+        buf[1] = *(int *)(actor + 0xc);
+        buf[2] = (*(int *)(actor + 0x10) & 0xfff00000) + (0x80 << 12);
+
+        heading = (*(unsigned short *)(actor + 6) + (0x80 << 6)) & (0xc0 << 8);
+        __vec3_translate(0x80 << 14, heading, buf);
+
+        if (__TestCollision(actor, buf) == 0) {
+            __CutsceneStart();
+            __Actor_SetAnim((int)actor, 6);
+            API_WaitFrames(6);
+            __PlaySound(0x98);
+            __Actor_SetAnim((int)actor, 7);
+
+            *(int *)(actor + 0x30) = 0xc0 << 10;
+            *(int *)(actor + 0x34) = 0x80 << 10;
+            *(int *)(actor + 0x28) = 0x80 << 11;
+
+            *flags &= 0x7e;
+            __Actor_SetSpriteFlags((int)actor, 0);
+
+            {
+                short *sbuf = (short *)buf;
+                API_MapActor_TravelToWait(0, sbuf[1], sbuf[5]);
+            }
+
+            __Actor_SetAnim((int)actor, 6);
+            __Actor_SetSpriteFlags((int)actor, 1);
+            *flags = saved;
+            API_CutsceneEnd();
+        }
+    }
+}
 
 
 extern void __MapActor_SetSpeed(int, int, int);
@@ -221,6 +271,9 @@ void OvlFunc_928_2008e4c(void)
     OvlFunc_928_2008de8(p[182]);
     __CutsceneEnd();
 }
+extern void __MessageID(int);
+extern unsigned char gScript_928__020096a0[];
+
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008f30.s");
 
 extern unsigned char gScript_928__020095b0[];
