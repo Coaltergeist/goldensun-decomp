@@ -254,14 +254,14 @@ void WaitFrames(u32 frames)
 {
     s32 i;
     register u32 *deltaPtr asm ("r2");
-    register u32 newStack asm("r4");
+    u32 newStack;
 
     u32 sp ;
     __asm__ volatile ("mov %0, sp" : "+r" (sp) :: "memory" );
     if (sp <= 0x030079FF) {
         newStack = (u32)iwram_3007a00;
         iwram_3001804 = newStack - sp;
-        DMA3_COPY((void *)sp, (void *)ewram_20023b0, iwram_3001804);
+        DMA3_SET((void *)sp, ewram_20023b0, 0x84000000 | (iwram_3001804 / 4));
         __asm__ volatile ("mov sp, %0"  :: "r" (newStack) : "memory" );
     }
 
@@ -381,7 +381,8 @@ void WaitFrames(u32 frames)
         }
 
         if (gSoftReset) {
-            register void (*entry)(void) asm("r0") = (void (*)(void))0x08000000;
+            /* Integer-return entry type matches; the reset path does not return here. */
+            int (*entry)(void) = (int (*)(void))0x08000000;
             gSoftReset = 0;
             gIWRAMHeap_end = 0x19670704;
             SET_IO(REG_IME, 0);
