@@ -43,8 +43,39 @@ unsigned int *LuckyFountain_GetActors(void)
     return (unsigned int *)Lm951_1cfc;
 }
 
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008074.s");
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20080bc.s");
+extern unsigned char Lconst_e39[] __asm__(".Lconst_e39");
+__asm__(".equ .Lconst_e39, 0xe39");
+
+void OvlFunc_951_2008074(int actor) {
+    int msg = (int)Lconst_e39;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(actor, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(10);
+        __MessageID(msg + 1);
+    } else {
+        __MessageID(msg + 2);
+    }
+    __ActorMessage(actor, 0);
+}
+
+extern unsigned char Lconst_e19[] __asm__(".Lconst_e19");
+__asm__(".equ .Lconst_e19, 0xe19");
+
+void OvlFunc_951_20080bc(int actor) {
+    int msg = (int)Lconst_e19;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(actor, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(10);
+        __MessageID(msg + 1);
+    } else {
+        __MessageID(msg + 2);
+    }
+    __ActorMessage(actor, 0);
+}
 
 extern void OvlFunc_951_2008880(void);
 extern void OvlFunc_951_2008ac8(void);
@@ -175,7 +206,32 @@ void OvlFunc_951_20089f8(void) {
     }
 }
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008ac8.s");
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008d70.s");
+extern int Lm951_2018[] __asm__(".Lm951_2018");
+
+int OvlFunc_951_2008d70(int idx)
+{
+    extern unsigned int __Random(void);
+    extern int _modsi3_RAM(int, int);
+    signed char *p;
+    int off;
+    int val;
+    int mod;
+    int result;
+
+    result = 0;
+    if (idx >= 0) {
+        if (idx == 5) {
+            idx = (__Random() * 5) >> 16;
+        }
+        p = (signed char *)&gState;
+        off = idx + (0x9a << 1);
+        val = p[off];
+        mod = _modsi3_RAM(val + (int)((__Random() * 2) >> 16) + 4, 3);
+        p[off] = mod;
+        result = Lm951_2018[idx * 3 + mod];
+    }
+    return result;
+}
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008dd0.s");
 
 extern unsigned char *__MapActor_GetActor(int actor);

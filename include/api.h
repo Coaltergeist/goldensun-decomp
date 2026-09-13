@@ -77,6 +77,7 @@ static inline void API_Func_8012078(int a, int b, int c, int d) { extern void __
 static inline void API_Func_80922c4(int a, int b, int c) { extern void __Func_80922c4(int, int, int); __Func_80922c4(a, b, c); }
 static inline void API_Func_8092304(unsigned int a, unsigned int b, unsigned int c) { extern void __Func_8092304(unsigned int, unsigned int, unsigned int); __Func_8092304(a, b, c); }
 static inline void API_Func_809233c(int a, int b, int c, int d) { extern void __Func_809233c(int, int, int, int); __Func_809233c(a, b, c, d); }
+static inline void API_Func_8092a1c(int a, int b, void *c) { extern void __Func_8092a1c(int, int, void *); __Func_8092a1c(a, b, c); }
 
 static inline void API_Func_801776c(int a, int b)
 {

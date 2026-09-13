@@ -158,7 +158,22 @@ void OvlFunc_930_200884c(void)
 
 INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008870.s");
 INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088a8.s");
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088e0.s");
+void OvlFunc_930_20088e0(void)
+{
+    int actor;
+    unsigned int val;
+
+    actor = __MapActor_GetActor(0);
+    val = *(unsigned short *)(actor + 6);
+    __CutsceneStart();
+    if (val - 0xa001 <= 0x3ffe) {
+        __UI_Sanctum(0xf);
+    } else {
+        __MessageID(0x1a1e);
+        __ActorMessage(0xf, 0);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008924.s");
 
 void OvlFunc_930_2008ac0(void) {

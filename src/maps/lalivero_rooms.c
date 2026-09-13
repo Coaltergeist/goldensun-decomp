@@ -49,7 +49,22 @@ void *LaliveroRooms_GetExits(void) {
     return (void *)gOvl_020096d0;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_rooms/LaliveroRooms_GetActors.s");
+extern unsigned char Lm967_1974[] __asm__(".Lm967_1974");
+extern unsigned char Lm967_189c[] __asm__(".Lm967_189c");
+extern unsigned char Lm967_1734[] __asm__(".Lm967_1734");
+extern unsigned char Lconst_b4[] __asm__(".Lconst_b4");
+__asm__(".equ .Lconst_b4, 0xb4");
+
+void *LaliveroRooms_GetActors(void)
+{
+    GlobalState *p = &gState;
+    short v = *(short *)((char *)p + 0x1c0);
+    if (v == (int)Lconst_b4) {
+        if (__GetFlag(0x9a7)) return (void *)Lm967_1974;
+        return (void *)Lm967_189c;
+    }
+    return (void *)Lm967_1734;
+}
 INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_20080c8.s");
 INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_200815c.s");
 INCLUDE_ASM("asm/maps/lalivero_rooms/OvlFunc_967_20081c8.s");
