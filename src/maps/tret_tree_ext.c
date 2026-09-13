@@ -35,52 +35,50 @@ unsigned int TretTreeExt_GetActors(void) {
 extern int gState;
 extern unsigned int iwram_3001ebc;
 extern unsigned char *__MapActor_GetActor(int);
-extern int __Func_8011f54(int);
+extern int __Func_8011f54(int layer, int x, int z);
 
-void OvlFunc_919_200805c(int arg0, int arg1)
+void OvlFunc_919_200805c(int dx, int dz)
 {
-    register unsigned char *r8 __asm__("r8");
-    register int r1 __asm__("r1");
-    register int r2 __asm__("r2");
-    register int r3 __asm__("r3");
-    unsigned char *r5;
+    unsigned char *map;
+    int x;
+    int z;
+    unsigned char *address;
+    int offset;
+    unsigned char *actor;
 
-    r8 = (unsigned char *)iwram_3001ebc;
-    r2 = 0xfa;
-    r3 = (int)&gState;
-    r2 <<= 1;
-    r3 += r2;
-    r5 = __MapActor_GetActor(*(int *)r3);
-    arg0 <<= 20;
-    arg1 <<= 20;
-    if (r5 != 0) {
-        r1 = *(int *)(r5 + 8);
-        r2 = *(int *)(r5 + 0x10);
-        r1 += arg0;
-        r2 += arg1;
-        *(int *)(r5 + 8) = r1;
-        *(int *)(r5 + 0x10) = r2;
+    map = (unsigned char *)iwram_3001ebc;
+    offset = 0xfa;
+    address = (unsigned char *)&gState;
+    offset <<= 1;
+    address += offset;
+    actor = __MapActor_GetActor(*(int *)address);
+    dx = (unsigned int)dx << 20;
+    dz = (unsigned int)dz << 20;
+    if (actor != 0) {
+        x = *(int *)(actor + 8);
+        z = *(int *)(actor + 0x10);
+        x += dx;
+        z += dz;
+        *(int *)(actor + 8) = x;
+        *(int *)(actor + 0x10) = z;
         {
-            register int r0 __asm__("r0") = __Func_8011f54(*(unsigned char *)(r5 + 0x22));
-            *(int *)(r5 + 0xc) = r0;
-            *(int *)(r5 + 0x14) = r0;
+            int height = __Func_8011f54(*(unsigned char *)(actor + 0x22), x, z);
+            *(int *)(actor + 0xc) = height;
+            *(int *)(actor + 0x14) = height;
         }
     }
-    r3 = 0xf0;
-    r3 <<= 1;
-    r3 += (int)r8;
-    r5 = *(unsigned char **)r3;
-    if (r5 != 0) {
-        r1 = *(int *)(r5 + 8);
-        r2 = *(int *)(r5 + 0x10);
-        r1 += arg0;
-        r2 += arg1;
-        *(int *)(r5 + 8) = r1;
-        *(int *)(r5 + 0x10) = r2;
+    actor = *(unsigned char **)(map + 0x1e0);
+    if (actor != 0) {
+        x = *(int *)(actor + 8);
+        z = *(int *)(actor + 0x10);
+        x += dx;
+        z += dz;
+        *(int *)(actor + 8) = x;
+        *(int *)(actor + 0x10) = z;
         {
-            register int r0 __asm__("r0") = __Func_8011f54(*(unsigned char *)(r5 + 0x22));
-            *(int *)(r5 + 0xc) = r0;
-            *(int *)(r5 + 0x14) = r0;
+            int height = __Func_8011f54(*(unsigned char *)(actor + 0x22), x, z);
+            *(int *)(actor + 0xc) = height;
+            *(int *)(actor + 0x14) = height;
         }
     }
 }

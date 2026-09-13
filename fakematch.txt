@@ -8,7 +8,6 @@ SetFlagNybble src/flags.c
 ToggleFlag src/flags.c
 WaitFrames src/intr/intr.c
 OvlFunc_890_2008d9c src/maps/sol_sanctum_1.c
-OvlFunc_919_200805c src/maps/tret_tree_ext.c
 InitMatrixStack src/math/matrix.c
 MakeLookMatrix src/math/matrix.c
 MatrixPitch src/math/matrix.c
