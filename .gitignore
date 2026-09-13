@@ -21,6 +21,7 @@ src/**/*.s
 !src/**/call_via.s
 !src/**/m4a0.s
 !src/**/agb_flash_data.s
+!src/battle/shear_test.s
 
 # Raw per-function disassembly (asm/<path>/<Func>.s) is source-of-truth but
 # force-added, so a genuinely new .s (e.g. a fresh split) must be staged with

@@ -262,7 +262,7 @@ void WaitFrames(u32 frames)
         newStack = (u32)iwram_3007a00;
         iwram_3001804 = newStack - sp;
         DMA3_SET((void *)sp, ewram_20023b0, 0x84000000 | (iwram_3001804 / 4));
-        __asm__ volatile ("mov sp, %0"  :: "r" (newStack) : "memory" );
+        __asm__ volatile ("mov sp, %0"  :: "r" (newStack) : "sp", "memory" );
     }
 
     for (i = 0; i < frames; i++) {
@@ -392,10 +392,12 @@ void WaitFrames(u32 frames)
     ptr = &iwram_3001804;
     if (*ptr != 0) {
         vu32 *dma;
+        /* Matching still depends on keeping the old sp live through this read.
+         * The instruction itself only writes the operand; constraint under review. */
         __asm__ volatile ("mov %0, sp" : "+r" (sp) :: "memory");
         ptr = (u32 *)(sp - *ptr);
         sp = (u32)ptr;
-        __asm__ volatile ("mov sp, %0" :: "r" (sp) : "memory");
+        __asm__ volatile ("mov sp, %0" :: "r" (sp) : "sp", "memory");
         DMA3_COPY(ewram_20023b0, (void *)(sp), iwram_3001804);
         dma = (vu32*)&REG_DMA3SAD;
         while (dma[2] & 0x80000000) ;
