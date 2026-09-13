@@ -116,6 +116,17 @@ void __CopyMapTiles(int a, int b, int c, int d, int e, int f);
 void __Func_8012330(int a, int b, int c);
 
 extern unsigned char Lm890_2de4[] __asm__(".Lm890_2de4");
+
+static inline int *ApplySanctumEffectPhase(int *phase)
+{
+    if (*phase == 2) {
+        API_Func_8012330(0x10000, 0x10000, 0x10000);
+    } else if (*phase == 1) {
+        API_Func_8012330(-1, -1, 0xe666);
+    }
+    return phase;
+}
+
 void OvlFunc_890_2008d9c(void)
 {
     unsigned int r;
@@ -186,33 +197,7 @@ eaa:
     {
         int *ctr = (int *)Lm890_2de8;
         if (*ctr != 0) {
-            if (*ctr == 2) {
-                register unsigned int a __asm__("r0");
-                register unsigned int b __asm__("r1");
-                register unsigned int c __asm__("r2");
-                a = 0x80;
-                b = 0x80;
-                c = 0x80;
-                a <<= 9;
-                __asm__ volatile ("" : "+r" (a));
-                b <<= 9;
-                __asm__ volatile ("" : "+r" (b));
-                c <<= 9;
-                __Func_8012330(a, b, c);
-            } else if (*ctr == 1) {
-                register int d __asm__("r0");
-                register int e __asm__("r1");
-                register unsigned int f __asm__("r2");
-                d = 1;
-                e = 1;
-                __asm__ volatile ("" : "+r" (d), "+r" (e));
-                d = -d;
-                e = -e;
-                f = 0xe666;
-                __asm__ volatile ("" : "+r" (f));
-                __Func_8012330(d, e, f);
-            }
-            __asm__ volatile ("" ::: "memory");
+            ctr = ApplySanctumEffectPhase(ctr);
             *ctr = *ctr - 1;
         }
     }

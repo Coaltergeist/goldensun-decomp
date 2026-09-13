@@ -7,7 +7,6 @@ Func_80c0eb8 src/battle/mechanics.c
 SetFlagNybble src/flags.c
 ToggleFlag src/flags.c
 WaitFrames src/intr/intr.c
-OvlFunc_890_2008d9c src/maps/sol_sanctum_1.c
 InitMatrixStack src/math/matrix.c
 MakeLookMatrix src/math/matrix.c
 MatrixPitch src/math/matrix.c
