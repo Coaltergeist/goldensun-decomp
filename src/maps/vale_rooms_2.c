@@ -1,10 +1,39 @@
 /* rom_787e04 (overlay file 887): consolidated TU — vale_rooms_2 map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008030.s");
+extern int __atan2(int, int);
+
+int OvlFunc_887_2008030(struct Actor *actor)
+{
+    struct Actor *linked;
+    int dz, dx;
+    int diff;
+    unsigned short angle;
+
+    linked = actor->linkedActor;
+    if (linked != 0) {
+        actor->__unk5A &= 0xfe;
+        dz = linked->pos.z - actor->pos.z;
+        dx = linked->pos.x - actor->pos.x;
+        angle = __atan2(dz, dx);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x1000) {
+                diff = 0x1000;
+            }
+            if (diff < (int)0xfffff000) {
+                diff = (int)0xfffff000;
+            }
+            actor->facing = actor->facing + diff;
+        }
+    }
+    return 1;
+}
 
 extern unsigned char gLuckyFountainPrizes[];
 
@@ -56,7 +85,25 @@ unsigned char * ValeRooms2_GetActors(void) {
     return r5;
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008118.s");
+extern void __CutsceneWait(int);
+extern int __Func_8091c7c(int, int);
+
+extern unsigned char Lconst_22b9[] __asm__(".Lconst_22b9");
+__asm__(".equ .Lconst_22b9, 0x22b9");
+
+void OvlFunc_887_2008118(int arg0) {
+    int msg = (int)Lconst_22b9;
+
+    __MessageID(msg);
+    __ShowActorMessage_NoWait(arg0, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        __CutsceneWait(0xa);
+        __MessageID(msg + 1);
+    } else {
+        __MessageID(msg + 2);
+    }
+    __ActorMessage(arg0, 0);
+}
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState__a1 __asm__("gState");
@@ -207,6 +254,12 @@ void OvlFunc_887_20083e4(void) {
 INCLUDE_ASM("asm/maps/vale_rooms_2/ValeRooms2_MapInit.s");
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008578.s");
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008a0c.s");
+extern struct Actor *__MapActor_GetActor(int);
+extern void __Func_80b3284(int, int);
+
+static inline int GetFlagShl2(int base) { return __GetFlag(base << 2); }
+static inline void SetFlagShl2(int base) { __SetFlag(base << 2); }
+
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008e34.s");
 
 extern void __CutsceneStart(void);
@@ -244,7 +297,34 @@ void OvlFunc_887_2008f64(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008f90.s");
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200933c.s");
+extern void __Func_80925cc(int, int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __Func_801776c(int, int);
+extern unsigned char gScript_887__02009e6c[];
+extern unsigned char Lconst_1c79[] __asm__(".Lconst_1c79");
+__asm__(".equ .Lconst_1c79, 0x1c79");
+
+void OvlFunc_887_200933c(void)
+{
+    int msg;
+
+    __CutsceneStart();
+    if (__GetFlag(0x203)) {
+        API_Func_8092a1c(8, 0x10000, gScript_887__02009e6c);
+        __CutsceneWait(0x14);
+        __MessageID(0x1c77);
+        __ActorMessage(8, 0);
+    } else {
+        __Func_80925cc(8, 2);
+        __CutsceneWait(0x28);
+        msg = (int)Lconst_1c79;
+        __MessageID(msg);
+        msg++;
+        __ActorMessage_Wait(8, 0, 0x28);
+        __Func_801776c(msg, 1);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093b4.s");
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093e4.s");
 
@@ -286,7 +366,27 @@ void OvlFunc_887_20095bc(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20095e8.s");
+extern int __sin(int);
+extern void __DeleteActor(struct Actor *);
+
+void OvlFunc_887_20095e8(struct Actor *actor)
+{
+    struct Actor *linked;
+    fx32 sinVal;
+
+    linked = actor->linkedActor;
+    actor->waveCounter++;
+    if (actor->waveCounter > 0x1f) {
+        __DeleteActor(actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = sinVal;
+        actor->pos.x = linked->pos.x;
+        actor->pos.y = actor->pos.y + (0x80 << 9);
+        actor->pos.z = linked->pos.z + (0x10000 - sinVal) * 5 + (0x80 << 12);
+    }
+}
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2009638.s");
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200968c.s");
 
@@ -301,8 +401,6 @@ extern void __Func_8097194(void);
 void OvlFunc_887_20097b8(void) {
     __Func_8097194();
 }
-
-extern void __MapActor_GetActor(int);
 
 void OvlFunc_887_20097c4(void) {
     __MapActor_GetActor(8);

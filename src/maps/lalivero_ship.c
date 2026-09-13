@@ -66,8 +66,55 @@ void *LaliveroShip_GetEvents(void) {
     return (void *)gOvl_020097ac;
 }
 
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20080b0.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008100.s");
+#include "dma.h"
+
+extern unsigned short Lm970_181c __asm__(".Lm970_181c");
+extern unsigned short Lm970_14ac[] __asm__(".Lm970_14ac");
+extern unsigned int _udivsi3_RAM(unsigned int, unsigned int);
+
+void OvlFunc_970_20080b0(void)
+{
+    unsigned short idx;
+    void *src;
+
+    idx = _udivsi3_RAM(Lm970_181c, 6);
+    src = &Lm970_14ac[idx];
+    DMA3_SET(src, (void *)0x050000e8, 0x80000006);
+
+    if ((unsigned int)(++Lm970_181c << 16) > 0x230000) {
+        Lm970_181c = 0;
+    }
+}
+
+extern int __Random(void);
+extern void __Actor_SetAnim(void *actor, int anim);
+extern void __Actor_SetScript(void *actor, void *script);
+extern unsigned char gScript_970__020094c4[];
+
+void OvlFunc_970_2008100(void *actor)
+{
+    char *a = (char *)actor;
+    signed short f64s = *(signed short *)(a + 0x64);
+    int f64u = *(unsigned short *)(a + 0x64);
+
+    if (f64s != 0) {
+        f64u = f64u - 1;
+        *(unsigned short *)(a + 0x64) = f64u;
+        *(int *)(a + 8) += __Random() - __Random();
+        *(int *)(a + 0xc) += 0xcccc;
+    } else if (*(signed short *)(a + 0x66) != 0) {
+        unsigned short *animp;
+        int anim_state;
+
+        *(unsigned short *)(a + 0x66) = f64s;
+        __Actor_SetAnim(actor, 1);
+        animp = (unsigned short *)(a + 0x5e);
+        anim_state = 0x14;
+        *animp = anim_state;
+        __Actor_SetScript(actor, gScript_970__020094c4);
+    }
+}
+
 extern int Lm970_17f4[] __asm__(".Lm970_17f4");
 extern int Lm970_17f0[] __asm__(".Lm970_17f0");
 
@@ -82,16 +129,98 @@ void OvlFunc_970_2008168(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008194.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083c0.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083dc.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20083f8.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008414.s");
+extern int *__MapActor_GetActor(int idx);
+extern int Lm970_180c[] __asm__(".Lm970_180c");
+extern int Lm970_1810[] __asm__(".Lm970_1810");
+extern int Lm970_1818[] __asm__(".Lm970_1818");
+
+int OvlFunc_970_20083c0(void)
+{
+    int *dst = Lm970_180c;
+    *dst = __MapActor_GetActor(0)[3];
+    return 0;
+}
+
+int OvlFunc_970_20083dc(void)
+{
+    int *dst = Lm970_1810;
+    *dst = __MapActor_GetActor(1)[3];
+    return 0;
+}
+
+extern unsigned char gOvl_02009814[];
+
+int OvlFunc_970_20083f8(void)
+{
+    int *dst = (int *)gOvl_02009814;
+    *dst = __MapActor_GetActor(3)[3];
+    return 0;
+}
+
+int OvlFunc_970_2008414(void)
+{
+    int *dst = Lm970_1818;
+    *dst = __MapActor_GetActor(2)[3];
+    return 0;
+}
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008430.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008b34.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/LaliveroShip_MapInit.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008f30.s");
+extern unsigned char iwram_3001ed8[];
+
+#include "dma0.h"
+
+void OvlFunc_970_2008f30(void)
+{
+    unsigned char *base;
+    unsigned char idx;
+    unsigned int *entry;
+    unsigned int *bg3hofs = (unsigned int *)&REG_BG3HOFS;
+
+    base = *((unsigned char **) iwram_3001ed8);
+    idx = base[0xf00];
+    entry = (unsigned int *)(base + idx * 0x780);
+    UnknownDMAPrefix();
+    *bg3hofs = *entry++;
+    DMA0_SET(entry, (void *)bg3hofs, 0xa6600001);
+}
+
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008f80.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20090d4.s");
+extern void OvlFunc_970_2008f80(void);
+extern void *__galloc_ewram(int tag, int size);
+
+struct Wave970 {
+    unsigned char pad[0xf01];
+    unsigned char flag;
+    unsigned char pad2[0xf08 - 0xf01 - 1];
+    int val_f08;
+    int val_f0c;
+    int val_f10;
+    int val_f14;
+    int val_f18;
+    int val_f1c;
+};
+
+void OvlFunc_970_20090d4(int p0, int p1, int p2, int p3, int p4, int p5, int p6)
+{
+    struct Wave970 *task;
+
+    task = (struct Wave970 *)__galloc_ewram(0x22, 0xf20);
+    DMA3_FILL(task, 0, 0xf20);
+    WaitForDma3();
+
+    task->flag = p0;
+    task->val_f08 = p1;
+    task->val_f0c = p4;
+    task->val_f18 = p3;
+    task->val_f1c = p6;
+    task->val_f10 = p2;
+    task->val_f14 = p5;
+
+    __StartTask(OvlFunc_970_2008f80, 0xc8 << 4);
+    __StartTask(OvlFunc_970_2008f30, 0x90 << 3);
+}
+
 
 extern void OvlFunc_970_2008f30(void);
 extern void OvlFunc_970_2008f80(void);
@@ -118,11 +247,20 @@ void OvlFunc_970_2009188(void)
   r3 = *((volatile unsigned short *) (new_var + 0xa));
 }
 
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
-#include "dma.h"
-
 extern short Lm970_1c18 __asm__(".Lm970_1c18");
 extern short Lm970_1c1a __asm__(".Lm970_1c1a");
+
+struct SpriteSlot970 { short f0; short f2; };
+extern struct SpriteSlot970 gSpriteSlots[];
+
+struct OamEntry970 { int attr0; int attr1; int attr2; };
+extern struct OamEntry970 Lm970_1af8[] __asm__(".Lm970_1af8");
+
+extern void __Func_8003dec(void *entry, int a);
+
+INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
+
+#include "dma.h"
 
 extern void OvlFunc_970_20091c4(void);
 

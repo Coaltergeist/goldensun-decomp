@@ -6,7 +6,34 @@
 
 INCLUDE_ASM("asm/maps/mccoys_palace/exports.s");
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008030.s");
+extern unsigned short __atan2(int, int);
+
+int OvlFunc_909_2008030(unsigned char *actor)
+{
+    unsigned char *target;
+    int delta;
+    int facing;
+    int angle;
+
+    target = *(unsigned char **)(actor + 0x68);
+    if (target != 0) {
+        actor[0x5a] &= 0xfe;
+        angle = __atan2(*(int *)(target + 0x10) - *(int *)(actor + 0x10),
+                        *(int *)(target + 8) - *(int *)(actor + 8));
+        facing = *(unsigned short *)(actor + 6);
+        delta = (short)(angle - facing);
+        if (delta != 0) {
+            if (delta > 0x1000) {
+                delta = 0x1000;
+            }
+            if (delta < -0x1000) {
+                delta = -0x1000;
+            }
+            *(unsigned short *)(actor + 6) = facing + delta;
+        }
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_0200a638[];
 
@@ -24,9 +51,30 @@ void *MccoysPalace_GetExits(void) {
     return (void *)gOvl_0200a920;
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_GetActors.s");
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
+extern unsigned char Lm909_actorsevent21[] __asm__(".Lm909_actorsevent21");
+__asm__(".equ .Lm909_actorsevent21, 0x21");
+extern unsigned char Lm909_29b4[] __asm__(".Lm909_29b4");
+extern unsigned char Lm909_299c[] __asm__(".Lm909_299c");
+extern void __Func_808b868(void *);
+
+void *MccoysPalace_GetActors(void)
+{
+    int offset = 0xe0;
+    offset <<= 1;
+    if (*(short *)((char *)&gState + offset) == (int)Lm909_actorsevent21) {
+        __Func_808b868(Lm909_29b4);
+        if (__GetFlag(0x84e)) {
+            Lm909_29b4[0xa6] = 2;
+            Lm909_29b4[0xbe] = 0;
+            Lm909_29b4[0xd6] = 3;
+            Lm909_29b4[0xd6 + 0x18] = 1;
+        }
+        return Lm909_29b4;
+    }
+    return Lm909_299c;
+}
 extern unsigned char _EVENT_21[];
 extern unsigned char Lm909_2ca8[] __asm__(".Lm909_2ca8");
 extern unsigned char Lm909_2c9c[] __asm__(".Lm909_2c9c");
@@ -128,7 +176,17 @@ void OvlFunc_909_2008214(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200828c.s");
+void OvlFunc_909_200828c(void)
+{
+        __CutsceneStart();
+        API_MessageID(0x1756);
+        if (API_GetFlag(0x303)) {
+            API_MessageID(0x176c);
+        }
+        API_ActorMessage(0xf, 0);
+        API_SetFlag(0x303);
+        API_CutsceneEnd();
+}
 
 void OvlFunc_909_20082cc(void) {
     extern void __ActorMessage(unsigned int, int);
@@ -265,8 +323,48 @@ void OvlFunc_909_20084c0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20084ec.s");
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2008568.s");
+extern void *__Func_808e078(int, int, int);
+extern int __Func_8091a58(int, int);
+extern void __DeleteActor(void *);
+extern void __PlaySound(int);
+extern void __ClearFlag(int);
+
+void OvlFunc_909_20084ec(int a0, int a1, int a2)
+{
+    void *actor;
+    __CutsceneStart();
+    actor = __Func_808e078(0, a0, a1);
+    if (__Func_8091a58(a1, 0) != -1) {
+        __MapActor_SetAnim(a0, 2);
+        __SetFlag(0x84e);
+        __SetFlag(a2);
+        __ClearFlag(0x322);
+        __ClearFlag(0x202);
+    } else {
+        __PlaySound(0x7d);
+        __MapActor_SetAnim(a0, 5);
+    }
+    __DeleteActor(actor);
+    __CutsceneEnd();
+}
+
+void OvlFunc_909_2008568(void)
+{
+    extern void __ActorMessage();
+    if (!__GetFlag(0x84e) && __GetFlag(0x322)) {
+        __CutsceneStart();
+        API_MapActor_Emote(0x13, 0x100, 0);
+        API_Func_8092adc(0x13, 0x7000, 0xa);
+        __Func_80925cc(0x13, 2);
+        __CutsceneWait(0x14);
+        __MessageID(0x1748);
+        __ActorMessage(0x13, 0);
+        API_MapActor_SetSpeed(0, 0x10000, 0x8000);
+        API_MapActor_TravelToAnimWait(0, 0x268, 0x2fa);
+        API_Func_8092adc(0x13, 0xd000, 0xa);
+        __CutsceneEnd();
+    }
+}
 extern void __MapActor_SetSpeed(int, int, int);
 extern void __MapActor_TravelToAnimWait(int, int, int);
 extern void __MapActor_DoAnim(int, int);
@@ -314,9 +412,142 @@ void OvlFunc_909_20085f4(void)
         __CutsceneEnd();
     }
 }
-INCLUDE_ASM("asm/maps/mccoys_palace/MccoysPalace_MapInit.s");
+extern void OvlFunc_909_20088c0(void);
+extern void OvlFunc_909_200979c(void);
+extern void OvlFunc_909_20099b0(void);
+extern void OvlFunc_909_200a1bc(void);
+extern void *__MapActor_GetActor(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Func_80118c0(int);
+
+int MccoysPalace_MapInit(void)
+{
+    unsigned char *base;
+    int r6;
+    int ev;
+
+    base = iwram_3001ebc;
+    *(unsigned int *)(base + (0xe0 << 1)) = (0xe0 << 1) + 0x49;
+
+    __Func_80118c0(1);
+    __Func_80118c0(2);
+    __SetFlag(0x84b);
+    if (__GetFlag(0x109)) {
+        __ClearFlag(0x80 << 2);
+    }
+
+    if (!__GetFlag(0x84f) && !__GetFlag(0x845)) {
+        int off = 0xe1 << 1;
+        ev = *(short *)((char *)&gState + off);
+        if (ev == 0x1d) {
+            OvlFunc_909_20088c0();
+        } else if (ev == 9) {
+            if (__GetFlag(0x321)) {
+                OvlFunc_909_200979c();
+            }
+        }
+    } else {
+        r6 = __GetFlag(0x84e);
+        if (r6 == 0) {
+            int off = 0xe1 << 1;
+            ev = *(short *)((char *)&gState + off);
+            if (ev == 0x1d) {
+                if (!__GetFlag(0x85e)) {
+                    if (__GetFlag(0x845)) {
+                        OvlFunc_909_20099b0();
+                    }
+                }
+            } else if (ev == 0x1c) {
+                if (__GetFlag(0x322)) {
+                    if (__GetFlag(0x109)) {
+                        API_Func_8010704(0x26, 0x37, 4, 1, 0x26, 0x2d);
+                        API_Func_8010704(0x2a, 0x37, 4, 1, 0x26, 0x2e);
+
+                        API_MapActor_SetPos(0x15, 0x9a << 18, 0xb6 << 18);
+                        API_MapActor_SetPos(0x16, 0x9e << 18, 0xb6 << 18);
+                        API_MapActor_SetPos(0x17, 0xa2 << 18, 0xb6 << 18);
+                        API_MapActor_SetPos(0x18, 0xa6 << 18, 0xb6 << 18);
+
+                        __Actor_SetSpriteFlags(__MapActor_GetActor(0x15), 0);
+                        __Actor_SetSpriteFlags(__MapActor_GetActor(0x16), 0);
+                        __Actor_SetSpriteFlags(__MapActor_GetActor(0x17), 0);
+                        __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+
+                        ((unsigned char *)__MapActor_GetActor(0x15))[0x55] = r6;
+                        ((unsigned char *)__MapActor_GetActor(0x16))[0x55] = r6;
+                        ((unsigned char *)__MapActor_GetActor(0x17))[0x55] = r6;
+                        ((unsigned char *)__MapActor_GetActor(0x18))[0x55] = r6;
+
+                        *(int *)((char *)__MapActor_GetActor(0x15) + 0xc) = 0xfffc0000;
+                        *(int *)((char *)__MapActor_GetActor(0x16) + 0xc) = 0xfffc0000;
+                        *(int *)((char *)__MapActor_GetActor(0x17) + 0xc) = 0xfffc0000;
+                        *(int *)((char *)__MapActor_GetActor(0x18) + 0xc) = 0xfffc0000;
+                    } else {
+                        OvlFunc_909_200a1bc();
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20088c0.s");
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200979c.s");
+extern void __MapTransitionIn(void);
+extern void __WaitMapTransition(void);
+extern void __PlaySound(int);
+extern void __Func_80118a8(int);
+extern void __Func_80118c0(int);
+extern int __Func_8093054(int, int);
+
+void OvlFunc_909_200979c(void)
+{
+    __CutsceneStart();
+    __MapTransitionIn();
+    __WaitMapTransition();
+    API_Func_8092adc(0x13, 0x3000, 0);
+    API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+    API_MapActor_TravelToAnimWait(0, 0x100, 0x294);
+    __CutsceneWait(0x14);
+    API_Func_80933f8(-1, -1, -1, 0);
+    __SetFlag(0x200);
+    __PlaySound(0xbc);
+    __Func_80118a8(1);
+    __Func_80118a8(2);
+    API_MapActor_SetPos(0x13, 0x1000000, 0x2780000);
+    __WaitFrames(1);
+    API_MapActor_SetSpeed(0x13, 0x9999, 0x4ccc);
+    API_MapActor_TravelToAnimWait(0x13, 0x100, 0x284);
+    __Func_80118c0(1);
+    __Func_80118c0(2);
+    __CutsceneWait(0x14);
+    API_Func_80925cc(0x13, 2);
+    __MessageID(0x145e);
+    API_ActorMessage_Wait(0x13, 0, 0xa);
+    API_MapActor_Emote(0, 0x100, 0x28);
+    API_MapActor_TravelToAnimWait(0, 0x108, 0x294);
+    API_Func_8092adc(0, 0x8000, 0);
+    API_MapActor_TravelToAnimWait(0x13, 0xf8, 0x294);
+    API_Func_8092adc(0x13, 0x1000, 0x28);
+    API_MapActor_DoAnim(0x13, 4);
+    API_ActorMessage(0x13, 0);
+    API_MapActor_DoAnim(0x13, 3);
+    __Func_8093054(0x13, 0);
+    API_Func_80925cc(0x13, 2);
+    API_ActorMessage_Wait(0x13, 0, 0xa);
+    API_MapActor_Emote(0, 0x101, 0x3c);
+    API_MapActor_Surprise(0x13, 0x102);
+    __CutsceneWait(0x3c);
+    API_Func_80925cc(0x13, 1);
+    API_ActorMessage_Wait(0x13, 0, 0xa);
+    API_MapActor_DoAnim(0x13, 3);
+    API_ActorMessage(0x13, 0);
+    API_MapActor_SetSpeed(0x13, 0xcccc, 0x6666);
+    API_MapActor_TravelToAnimWait(0x13, 0xf8, 0x304);
+    API_MapActor_SetPos(0x13, 0, 0);
+    __ClearFlag(0x12f);
+    __SetFlag(0x84f);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009958.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_2009984.s");
 INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_20099b0.s");
