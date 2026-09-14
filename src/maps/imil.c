@@ -32,7 +32,37 @@ void *Imil_GetExits(void) {
     return (void *)gOvl_0200a990;
 }
 
-INCLUDE_ASM("asm/maps/imil/Imil_GetActors.s");
+extern void __Func_808b868(void *);
+extern int __GetFlag(int);
+
+extern unsigned char Lm921_2ad0[] __asm__(".Lm921_2ad0");
+extern unsigned char Lm921_29e0[] __asm__(".Lm921_29e0");
+extern unsigned char gOvl_0200aa58[];
+extern unsigned char TextEvent33[] __asm__(".Ltext_event33");
+__asm__(".equ .Ltext_event33, 0x33");
+
+void *Imil_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+
+    if (ev == (int)TextEvent33) {
+        unsigned char *actor = Lm921_2ad0;
+        __Func_808b868(actor);
+        if (__GetFlag(0x881)) {
+            actor[0x106] = 0;
+            *(int *)(actor + 0x50) = 0xb6 << 16;
+            *(int *)(actor + 0x58) = 0x8d << 18;
+            *(int *)(actor + 0x4c) = 2;
+        }
+        return actor;
+    }
+
+    if (__GetFlag(0x881)) {
+        return gOvl_0200aa58;
+    }
+    return Lm921_29e0;
+}
 
 extern void OvlFunc_921_2009fa4(void);
 
@@ -165,7 +195,13 @@ void OvlFunc_921_20085a4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20085dc.s");
+void OvlFunc_921_20085dc(void) {
+    __CutsceneStart();
+    __MessageID(0x156d);
+    __ActorMessage(8, 0);
+    API_Func_8092adc(8, 0xc0 << 6, 10);
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_921_2008608(void) {
@@ -398,8 +434,71 @@ void OvlFunc_921_20096c8(void)
 }
 
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009704.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200974c.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009794.s");
+extern void __DeleteActor(void *);
+
+void OvlFunc_921_200974c(void *actor)
+{
+    struct {
+        char pad1[8];
+        int f8;
+        int fc;
+        char pad2[8];
+        int f18;
+        int f1c;
+        char pad3[0x44];
+        short f64;
+        char pad4[2];
+        int f68;
+    } *a = actor;
+
+    a->f8 += (int)a->f64 * 256;
+    a->fc += 0x80 << 8;
+    a->f18 += 0x7ae;
+    a->f1c += 0x7ae;
+    a->f64 += 2;
+    a->f68 -= 1;
+    if (a->f68 == 0) {
+        __DeleteActor(actor);
+    }
+}
+extern void *__CreateActor(int, int, int, int);
+extern void OvlFunc_921_2009704(void *);
+extern void __Actor_SetAnim(void *, int);
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+extern unsigned char iwram_3001e40[];
+extern void OvlFunc_921_200974c(void *);
+
+static inline void SpawnFrog(int x, int y, int z)
+{
+    void *actor = __CreateActor(0xde, x, y, z);
+    if (actor != 0) {
+        OvlFunc_921_2009704(actor);
+        *(int *)((char *)actor + 0x68) = 0x3c;
+        *(void (**)(void *))((char *)actor + 0x6c) = OvlFunc_921_200974c;
+        __Actor_SetAnim(actor, 5);
+    }
+}
+
+void OvlFunc_921_2009794(void)
+{
+    unsigned int *base = (unsigned int *)iwram_3001e40;
+
+    if (_umodsi3_RAM(base[0], 0x3c) == 0) {
+        SpawnFrog(0x1cf0000, 0, 0x92 << 17);
+    }
+    if (_umodsi3_RAM(base[0] + 0x1e, 0x3c) == 0) {
+        SpawnFrog(0xa0 << 17, 0x80 << 14, 0xb2 << 17);
+    }
+    if (_umodsi3_RAM(base[0] + 0xa, 0x3c) == 0) {
+        SpawnFrog(0xec << 15, 0, 0x8c << 15);
+    }
+    if (_umodsi3_RAM(base[0] + 0x32, 0x3c) == 0) {
+        SpawnFrog(0xab << 17, 0, 0xf8 << 15);
+    }
+    if (_umodsi3_RAM(base[0] + 0x50, 0x3c) == 0) {
+        SpawnFrog(0x1af0000, 0, 0xab << 16);
+    }
+}
 extern unsigned char iwram_3001e70[];
 
 void OvlFunc_921_20098c4(void)
@@ -463,7 +562,14 @@ void OvlFunc_921_2009990(void) {
     __Func_8091e9c(8);
 }
 
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20099bc.s");
+void OvlFunc_921_20099bc(void)
+{
+    __CutsceneStart();
+    __MapTransitionIn();
+    API_MapActor_SetSpeed(0, 0x20000, 0x1999);
+    API_MapActor_TravelToWait(0, 0xe8, 0xcc);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20099e8.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009f24.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009fa4.s");

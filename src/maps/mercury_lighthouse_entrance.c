@@ -394,8 +394,63 @@ void OvlFunc_923_2008eac(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008ed0.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008f48.s");
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __CutsceneStart(void);
+extern void __PlaySound(unsigned int);
+extern void __MapActor_SetAnim(unsigned int, unsigned int);
+extern void __MapActor_TravelBy(unsigned int, int, int);
+extern void __MapActor_WaitMovement(unsigned int);
+extern void __Func_8092950(unsigned int, unsigned int);
+extern void __Actor_SetSpriteFlags(void *, unsigned int);
+extern void __CutsceneWait(int);
+extern void __MapTransitionOut(void);
+extern void __WaitMapTransition(void);
+extern void __Func_8091e9c(int);
+extern void __CutsceneEnd(void);
+extern void OvlFunc_923_2008cc0(void);
+
+void OvlFunc_923_2008ed0(int arg0)
+{
+    unsigned char *actor;
+
+    actor = __MapActor_GetActor(0);
+    __CutsceneStart();
+    __PlaySound(0xe4);
+    *(void (**)(void))(actor + 0x6c) = OvlFunc_923_2008cc0;
+    *(int *)(actor + 0x30) = 0x3333;
+    __MapActor_SetAnim(0, 2);
+    __MapActor_TravelBy(0, 0, -6);
+    __MapActor_WaitMovement(0);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    *(int *)(actor + 0x6c) = 0;
+    __CutsceneWait(0x1e);
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __Func_8091e9c(arg0);
+    __CutsceneEnd();
+}
+extern void __CutsceneStart(void);
+extern void __PlaySound(unsigned int);
+extern void __MapActor_SetSpeed(unsigned int, int, int);
+extern void __Func_8092b08(unsigned int, unsigned int);
+extern void __MapActor_TravelBy(unsigned int, int, int);
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __Actor_SetSpriteFlags(void *, unsigned int);
+extern void __CutsceneWait(int);
+
+void OvlFunc_923_2008f48(int arg0)
+{
+    __CutsceneStart();
+    __PlaySound(0xe4);
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    __Func_8092b08(0, 2);
+    __MapActor_TravelBy(0, 0, -8);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    __CutsceneWait(8);
+    API_MapActor_SetPos(0, (arg0 << 19) + (0x80 << 12), 0);
+    __CutsceneWait(30);
+}
 
 extern void OvlFunc_923_2008ed0(int);
 
@@ -592,8 +647,54 @@ void OvlFunc_923_200996c(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009a3c.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009bc8.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009c20.s");
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetScript(void *, void *);
+extern void __Sprite_SetAnim(void *, int);
+extern unsigned char gScript_923__0200a7b8[];
+
+void OvlFunc_923_2009bc8(int *arg0)
+{
+    unsigned char *actor;
+    unsigned char *sprite;
+
+    actor = (unsigned char *)__CreateActor(0x18, arg0[2], arg0[3], arg0[4]);
+    if (actor != 0) {
+        sprite = *(unsigned char **)(actor + 0x50);
+        __Actor_SetScript(actor, gScript_923__0200a7b8);
+        actor[0x55] = 0;
+        actor[0x22] = 1;
+        actor[0x23] = 2;
+        if (sprite != 0) {
+            __Sprite_SetAnim(sprite, 2);
+            sprite[0x26] = 0;
+            sprite[9] = sprite[9] | 0xc;
+        }
+    }
+}
+extern int __sin(int);
+
+int OvlFunc_923_2009c20(void *arg0)
+{
+    void *r6;
+    int next;
+    int val;
+    int s;
+
+    next = *(unsigned short *)((char *)arg0 + 0x64) + 1;
+    r6 = *(void **)((char *)arg0 + 0x68);
+    *(unsigned short *)((char *)arg0 + 0x64) = (unsigned short)next;
+    val = (short)next;
+    if (val > 31) {
+        return 0;
+    }
+    s = __sin(val << 10);
+    *(int *)((char *)arg0 + 0x18) = s;
+    *(int *)((char *)arg0 + 0x1c) = s;
+    *(int *)((char *)arg0 + 8) = *(int *)((char *)r6 + 8);
+    *(int *)((char *)arg0 + 0xc) += 0x80 << 9;
+    *(int *)((char *)arg0 + 0x10) = *(int *)((char *)r6 + 0x10);
+    return 1;
+}
 
 unsigned int OvlFunc_923_2009c60(unsigned int arg0)
 {
