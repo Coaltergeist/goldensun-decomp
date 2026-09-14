@@ -91,4 +91,37 @@ static inline void API_CutsceneEnd(void)
     __CutsceneEnd();
 }
 
+
+/* Map overlay coordinate and call adapters; no assembly or scheduling barriers. */
+static inline void API_Func_808edac(int a0, int a1, int a2)
+{
+    extern void __Func_808edac(int, int, int);
+    __Func_808edac(a0, a1, a2);
+}
+
+static inline void CallFunc_8010560(int b, int c, void *a) {
+    extern void __Func_8010560(void *, int, int);
+    __Func_8010560(a, b, c);
+}
+
+static inline void MapActor_SetPos17(int x, int y, int actor) {
+    extern void __MapActor_SetPos(int, int, int);
+    __MapActor_SetPos(actor, x << 17, y << 17);
+}
+
+static inline void MapActor_SetPos18(int x, int y, int actor) {
+    extern void __MapActor_SetPos(int, int, int);
+    __MapActor_SetPos(actor, x << 18, y << 18);
+}
+
+static inline void MapActor_SetPos17_15(int x, int y, int actor) {
+    extern void __MapActor_SetPos(int, int, int);
+    __MapActor_SetPos(actor, x << 17, y << 15);
+}
+
+static inline void MapActor_Func_8092adc(int x, int actor, int z) {
+    extern void __Func_8092adc(int, int, int);
+    __Func_8092adc(actor, x << 6, z);
+}
+
 #endif /* GUARD_API_H */

@@ -463,7 +463,37 @@ void OvlFunc_939_2008c10(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008c74.s");
+void OvlFunc_939_2008c74(void)
+{
+    extern void __CutsceneStart(void);
+    extern void __PlaySound(int);
+    extern void __CutsceneWait(int);
+    extern void __Func_8091e9c(int);
+    extern void __MapTransitionOut(void);
+    extern void __WaitMapTransition(void);
+    extern void __CutsceneEnd(void);
+    unsigned char *actor;
+    int r5, r6;
+
+    API_SetFlag(0x242);
+    __CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    actor = __MapActor_GetActor(0);
+    actor[0x55] = 0;
+    API_MapActor_SetAnim(0, 2);
+    API_Func_80922c4(0, 0, -8);
+    __PlaySound(0x9e);
+    r5 = 0x29;
+    r6 = 4;
+    __Func_80105d4(0x35, 4, 2, 2, r5, r6);
+    __CutsceneWait(0xa);
+    __Func_80105d4(0x35, 6, 2, 2, r5, r6);
+    __CutsceneWait(0xa);
+    __Func_8091e9c(1);
+    __MapTransitionOut();
+    __WaitMapTransition();
+    __CutsceneEnd();
+}
 
 extern void __Func_8093c00(void);
 

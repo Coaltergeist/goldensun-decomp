@@ -42,7 +42,26 @@ void *VaultCave_GetExits(void)
     if (ev == (int)_EVENT_62) return Lm935_1cfc;
     return Lm935_1c7c;
 }
-INCLUDE_ASM("asm/maps/vault_cave/VaultCave_GetActors.s");
+extern unsigned char gScript_887__02009ecc[];
+extern unsigned char Lm935_1d34[] __asm__(".Lm935_1d34");
+extern unsigned char Lm935_1d4c[] __asm__(".Lm935_1d4c");
+extern unsigned char Lm935_1d1c[] __asm__(".Lm935_1d1c");
+extern unsigned char Lm935_ev60[] __asm__(".Lm935_ev60");
+extern unsigned char Lm935_ev61[] __asm__(".Lm935_ev61");
+extern unsigned char Lm935_ev62[] __asm__(".Lm935_ev62");
+__asm__(".equ .Lm935_ev60, 0x60");
+__asm__(".equ .Lm935_ev61, 0x61");
+__asm__(".equ .Lm935_ev62, 0x62");
+
+void *VaultCave_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)Lm935_ev60) return Lm935_1d34;
+    if (ev == (int)Lm935_ev61) return Lm935_1d4c;
+    if (ev == (int)Lm935_ev62) return gScript_887__02009ecc;
+    return Lm935_1d1c;
+}
 
 extern unsigned int iwram_3001ebc;
 
@@ -400,9 +419,114 @@ void OvlFunc_935_2008734(void)
 }
 
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008754.s");
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20088a8.s");
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008944.s");
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_20089c0.s");
+
+extern void OvlFunc_935_2008754(void);
+
+void OvlFunc_935_20088a8(void)
+{
+    int a;
+    int b;
+
+    if (API_GetFlag(0x9a8) == 0) {
+        __Func_801776c(0x1528, 1);
+        API_SetFlag(0x9a8);
+        __PlaySound(0x9b);
+        a = 0x1b;
+        b = 0x5c;
+        __Func_80105d4(0x6b, 0x1b, 1, 1, b, a);
+        API_CutsceneWait(0x27);
+        __Func_80105d4(0x6c, 0x1b, 1, 1, b, a);
+        API_CutsceneWait(0x32);
+        __PlaySound(0x9c);
+        b = 0x19;
+        __Func_80105d4(1, 0x18, 1, 2, b, a);
+        API_CutsceneWait(0x28);
+        __Func_80105d4(2, 0x18, 1, 2, b, a);
+        API_CutsceneWait(0x28);
+        OvlFunc_935_2008754();
+    }
+}
+
+unsigned int OvlFunc_935_2008944(int arg0)
+{
+    unsigned char *player;
+    unsigned char *other;
+    int i;
+    int val;
+    int ca, cb, pa, pb;
+    int diff;
+
+    player = __MapActor_GetActor(arg0);
+    for (i = 0; i <= 3; i++) {
+        other = __MapActor_GetActor(i + 0xb);
+        val = *(int *)(other + 0xc);
+        if (val >= 1 && val <= 0xfffff) {
+            ca = *(int *)(other + 0x10) / 0x100000;
+            cb = *(int *)(other + 8) / 0x100000;
+            pa = *(int *)(player + 0x10) / 0x100000;
+            pb = *(int *)(player + 8) / 0x100000;
+            diff = pa - ca;
+            if (pb == cb && diff == 0) {
+                *(unsigned int *)(other + 0xc) = 0xff0000;
+                *(unsigned int *)(other + 0x48) = diff;
+                *(unsigned int *)(other + 0x28) = diff;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+extern int Lm935_2224 __asm__(".Lm935_2224");
+extern int Lm935_2228 __asm__(".Lm935_2228");
+extern int Lm935_2214[] __asm__(".Lm935_2214");
+extern void OvlFunc_935_2008b8c(unsigned char *arg0);
+
+void OvlFunc_935_20089c0(void)
+{
+    unsigned char *actor;
+    unsigned char *other;
+    int i;
+    int idx;
+
+    actor = __MapActor_GetActor(0xa);
+    if (actor[0x5b] == 0) {
+        Lm935_2224++;
+        if (Lm935_2224 > 0xbe)
+            Lm935_2224 = 0;
+        idx = Lm935_2228;
+        if (Lm935_2214[idx] == Lm935_2224) {
+            other = __MapActor_GetActor(idx + 0xb);
+            *(unsigned int *)(other + 0x48) = 0xa3d;
+            Lm935_2228++;
+            if (Lm935_2228 > 3)
+                Lm935_2228 = 0;
+        }
+        for (i = 0; i <= 3; i++) {
+            other = __MapActor_GetActor(i + 0xb);
+            if (*(int *)(other + 0x28) >= 0 && *(int *)(other + 0xc) <= 0xffff) {
+                OvlFunc_935_2008b8c(other);
+                *(unsigned int *)(other + 0xc) = 0xff0000;
+                *(unsigned int *)(other + 0x48) = 0;
+                *(unsigned int *)(other + 0x28) = 0;
+                other[0x5b] = 0;
+                __PlaySound(0x6a);
+            }
+        }
+        if (OvlFunc_935_2008944(0xa) != 0) {
+            API_MapActor_SetAnim(0xa, 1);
+            if (API_GetFlag(0x207) == 0) {
+                API_SetFlag(0x207);
+                __PlaySound(0xcc);
+            } else {
+                __PlaySound(0x6a);
+            }
+        }
+        if (OvlFunc_935_2008944(9) != 0) {
+            __PlaySound(0x6a);
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008aa0.s");
 
 extern void __vec3_translate(unsigned int arg0, unsigned int arg1, unsigned int *arg2);

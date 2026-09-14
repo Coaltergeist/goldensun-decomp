@@ -138,7 +138,18 @@ void OvlFunc_901_2008710(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008754.s");
+extern void *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_901_2008754(void)
+{
+  int flag;
+
+  __MessageID(0x1cbd);
+  ((unsigned char *) __MapActor_GetActor(0xb))[0x5b] = 1;
+  OvlFunc_901_20084b4(0xb);
+  flag = 0;
+  ((unsigned char *) __MapActor_GetActor(0xb))[0x5b] = flag;
+}
 
 void OvlFunc_901_2008784(void)
 {
@@ -172,8 +183,25 @@ INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20089f8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008a80.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008ac8.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008af0.s");
+extern unsigned char L1740[] __asm__(".Lm901_1740");
+extern void __PlaySound(unsigned int);
+extern void __Func_8010560(void *, unsigned int, unsigned int);
+extern void OvlFunc_901_2008a80(int, int, int);
+
+void OvlFunc_901_2008ac8(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L1740, 0x38, 0x13);
+  OvlFunc_901_2008a80(0xcc << 1, 0xa0 << 1, 5);
+}
+extern unsigned char L1756[] __asm__(".Lm901_1756");
+
+void OvlFunc_901_2008af0(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L1756, 0x32, 0x12);
+  OvlFunc_901_2008a80(0x9c << 1, 0x98 << 1, 6);
+}
 
 extern int gOvl_0200976c;
 extern void OvlFunc_901_2008a80(int, int, int);
@@ -239,7 +267,14 @@ void OvlFunc_901_2008b9c(void)
   OvlFunc_901_2008a80(0x94 << 1, 0xb0, 9);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008bf8.s");
+extern unsigned char L17ae[] __asm__(".Lm901_17ae");
+
+void OvlFunc_901_2008bf8(void)
+{
+  __PlaySound(0x9e);
+  __Func_8010560(L17ae, 0x26, 6);
+  OvlFunc_901_2008a80(0x78, 0x90, 0xa);
+}
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008cc8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008d24.s");
@@ -268,7 +303,20 @@ void OvlFunc_901_2008e30(void)
     s4 = 3;
     __CopyMapTiles(0x28, 0x2a, 0xc, 0x16, s3, s4);
 }
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008e60.s");
+void OvlFunc_901_2008e60(void)
+{
+    unsigned int s1;
+    unsigned int s2;
+    unsigned int s3;
+    unsigned int s4;
+
+    s1 = 0xd;
+    s2 = 0x19;
+    __Func_8010704(0x25, 0x2b, 1, 1, s1, s2);
+    s3 = 3;
+    s4 = 3;
+    __CopyMapTiles(0x24, 0x2a, 0xc, 0x16, s3, s4);
+}
 
 
 extern void __MapActor_SetAnim(unsigned int, unsigned int);

@@ -30,7 +30,20 @@ void *KolimaForest4_GetEvents(void) {
     return (void *)gOvl_02009240;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008054.s");
+extern void *L12c0 __asm__(".Lm916_12c0");
+extern void OvlFunc_916_2008c2c(void *);
+extern void __Func_8010704(int, int, int, int, int, int);
+extern void OvlFunc_916_2008150(void);
+
+void OvlFunc_916_2008054(void) {
+    /* Historical call-site declaration: the integer return is ignored.
+     * Retained for gcc-2.96 scheduling; the definition below returns void. */
+    extern int OvlFunc_916_2008b3c(void *, int);
+    OvlFunc_916_2008c2c(L12c0);
+    __Func_8010704(0, 0x40, 0x20, 0x20, 0, 0);
+    OvlFunc_916_2008b3c(L12c0, 0xff);
+    OvlFunc_916_2008150();
+}
 
 extern void __Func_8093c00(void);
 
@@ -39,12 +52,37 @@ void OvlFunc_916_200808c(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008098.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008150.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008194.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_200836c.s");
+#include "api.h"
+extern short *L12c4 __asm__(".Lm916_12c4");
 
+void OvlFunc_916_2008150(void) {
+    if (*L12c4 == 1) {
+        API_Func_8010704(0, 0, 1, 4, 4, 9);
+    } else {
+        API_Func_8010704(0, 0, 1, 4, 6, 9);
+    }
+}
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008194.s");
+extern unsigned int __Random(void);
+extern unsigned int L20dc __asm__(".Lm916_20dc");
 extern unsigned int iwram_3001ad4[];
 extern unsigned int L20d0[] __asm__(".Lm916_20d0");
+
+void OvlFunc_916_200836c(void) {
+    unsigned int vcount = *(volatile unsigned short *)0x04000006;
+    unsigned int *src = iwram_3001ad4;
+    volatile unsigned int *dst = (volatile unsigned int *)0x04000014;
+
+    if (vcount == 0xe3 || vcount <= 0x34) {
+        if (((100 * __Random()) >> 16) < L20dc) {
+            src = L20d0;
+        }
+    }
+    *dst = *src++;
+    dst = (volatile unsigned int *)0x04000018;
+    *dst++ = *src++;
+    *dst = *src;
+}
 
 void OvlFunc_916_20083c0(void) {
     unsigned int *src;
@@ -68,12 +106,122 @@ INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20087e0.s");
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20088b0.s");
 INCLUDE_ASM("asm/maps/kolima_forest_4/KolimaForest4_MapInit.s");
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008a90.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008b3c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008b8c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008be4.s");
+struct MapTileEntry_916 {
+    short id;
+    short x;
+    short y;
+    short dir;
+    short pad[2];
+};
+
+extern unsigned char gBuffer[];
+
+void OvlFunc_916_2008b3c(struct MapTileEntry_916 *entry, int val) {
+    int i;
+    int x, y, dir;
+
+    if (entry->id != -1) {
+        do {
+            x = entry->x;
+            y = entry->y;
+            dir = entry->dir;
+            for (i = 3; i >= 0; i--) {
+                unsigned char *p = gBuffer + ((x + (y << 7)) << 2);
+                p[2] = val;
+                if (dir == 0) {
+                    x++;
+                } else {
+                    y++;
+                }
+            }
+            entry++;
+        } while (entry->id != -1);
+    }
+}
+struct MapTileEntry_916 *OvlFunc_916_2008b8c(struct MapTileEntry_916 *entry, int x, int y) {
+    while (entry->id != -1) {
+        int ex = entry->x;
+        int ey = entry->y;
+        int min_x = ex;
+        int min_y = ey;
+
+        if (entry->dir == 0) {
+            ex += 3;
+        } else {
+            ey += 3;
+        }
+
+        if (x >= min_x && x <= ex && y >= min_y && y <= ey) {
+            return entry;
+        }
+        entry++;
+    }
+    return 0;
+}
+extern unsigned char ewram_202c000[];
+
+int OvlFunc_916_2008be4(int arg0, int arg1, int arg2) {
+    int i;
+
+    for (i = 0; i <= 3; i++) {
+        int off = (arg0 + (arg1 << 7)) << 2;
+        unsigned char *p = gBuffer + off;
+        if (p[2] == 0xff || (p[3] << 2)[ewram_202c000] != 0) {
+            return -1;
+        }
+        if (arg2 == 0) {
+            arg0++;
+        } else {
+            arg1++;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008c2c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008e64.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008ecc.s");
+extern void OvlFunc_916_2008f34(void);
+extern void OvlFunc_916_2008f54(void);
+extern void OvlFunc_916_2008f74(void);
+extern void __Func_8091200(int, int);
+extern unsigned short OvlFunc_916_2008ecc(unsigned short, int);
+
+void OvlFunc_916_2008e64(int arg0) {
+    unsigned int i;
+    OvlFunc_916_2008f34();
+    i = 0;
+    do {
+        unsigned int idx = i >> 16;
+        if (i + 0xffef0000 > 0x60000) {
+            if ((unsigned int)((idx + 0xff3f) << 16) > 0x70000) {
+                volatile unsigned short *pltt = (volatile unsigned short *)(0x5000000 + (idx << 1));
+                *pltt = OvlFunc_916_2008ecc(*pltt, arg0);
+            }
+        }
+        {
+            unsigned int next = i + 0x10000;
+            i = next;
+            if (next > 0xdf0000) break;
+        }
+    } while (1);
+    OvlFunc_916_2008f74();
+    OvlFunc_916_2008f54();
+    __Func_8091200(0x10000, 0);
+}
+extern int _divsi3_RAM(int, int);
+
+unsigned short OvlFunc_916_2008ecc(unsigned short c, int factor) {
+    short r = c & 0x1f;
+    short g = ((unsigned int)c >> 5) & 0x1f;
+    short b = ((unsigned int)c >> 10) & 0x1f;
+
+    r += _divsi3_RAM(r, factor * 4);
+    g -= _divsi3_RAM(g, factor);
+    b -= _divsi3_RAM(b, factor);
+
+    if (r > 0x1f) {
+        r = 0x1f;
+    }
+    return (b << 10) | (g << 5) | r;
+}
 
 #include "dma.h"
 extern void *iwram_3001ed0;
@@ -90,8 +238,26 @@ void OvlFunc_916_2008f54(void) {
     DMA3_COPY(iwram_3001ed0, L19d0, 0x380);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008f74.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008fb4.s");
+extern void __Func_8091220(int, int);
+
+void OvlFunc_916_2008f74(void) {
+    unsigned char *dst = iwram_3001ed0;
+    DMA3_COPY((void *)0x5000000, dst, 0x1c0);
+    DMA3_COPY((void *)0x5000200, dst + 0x1c0, 0x1c0);
+    __Func_8091220(0x10000, 0);
+}
+extern void __Func_8091200(int, int);
+
+void OvlFunc_916_2008fb4(int a0) {
+    void *dst = iwram_3001ed0;
+    if (a0 != 0) {
+        DMA3_COPY(L19d0, dst, 0x380);
+    } else {
+        DMA3_COPY(L12d0, dst, 0x380);
+    }
+    __Func_8091200(0x10000, 0);
+    OvlFunc_916_2008f74();
+}
 INCLUDE_ASM("asm/maps/kolima_forest_4/kolima_forest_4_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_4/imports.s");
