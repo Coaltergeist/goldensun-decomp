@@ -18,6 +18,7 @@ extern u32 udivsi3_RAM(u32, u32);
 extern u16 DistSquared(fx32, fx32, fx32, fx32, fx32, fx32);
 extern s32 Func_8000948(s32 n);
 
+// reset a 48-byte word-aligned matrix to 16.16 identity, used multiple times below
 #define MatrixResetRaw(_m) \
     __asm__ volatile( \
         "mov r0, %0\n\t" \
@@ -31,7 +32,7 @@ extern s32 Func_8000948(s32 n);
         "stmia r0!, {r1-r4}\n\t" \
         : \
         : "l" (_m) \
-        : "r0","r1","r2","r3","r4", "memory" \
+        : "r0","r1","r2","r3","r4", "cc", "memory" \
     ); \
 
 #define FX_ONE 0x00010000  /* 1.0 in 16.16 */
@@ -53,6 +54,7 @@ static inline u32 FastDivide(u32 a, u32 b) {
 }
 
 void InitMatrixStack(void) {
+    // r3 supplies the address to the explicit reset assembly.
     register matrix_t *m asm("r3");
     matrix_t **dest = &gMatrixStack;
     matrix_t *allocated = galloc_ewram(2, 48);
@@ -89,6 +91,7 @@ void MatrixPop(void) {
 }
 
 void MatrixReset(void) {
+    // r3 supplies the address to the explicit reset assembly.
     register matrix_t *m asm("r3") = &Data_8000ac0;
     MatrixResetRaw(m);
 }
