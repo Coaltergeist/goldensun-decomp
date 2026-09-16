@@ -511,7 +511,6 @@ extern void __CutsceneEnd(void);
 extern void __SetCameraTarget(int, int);
 extern void __Func_8093530(void);
 
-// INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20091a0.s");
 void OvlFunc_934_20091a0(void) {
     unsigned char *actor;
     if (API_GetFlag(0x80 << 2) != 0){
