@@ -556,7 +556,17 @@ void OvlFunc_964_20096f4(void) {
     OvlFunc_964_2009550();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200970c.s");
+void OvlFunc_964_200970c(void) {
+    unsigned char *p;
+
+    __MapActor_SetAnim(0x14, 1);
+    __Func_8092950(0x14, 0);
+    __MapActor_SetAnim(0x14, 2);
+    p = __MapActor_GetActor(0x14);
+    p += 0x23;
+    *p = *p & 0xfd;
+    __SetFlag(0x80 << 2);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009744.s");
 
 extern void OvlFunc_964_2009744(void);

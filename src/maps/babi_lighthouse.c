@@ -315,7 +315,29 @@ INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20088c0.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089dc.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089f4.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008a4c.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008ab0.s");
+void OvlFunc_965_2008ab0(unsigned int arg0)
+{
+  unsigned int r3;
+  unsigned int r2;
+  unsigned int r1;
+  unsigned short r3h;
+  unsigned short r2h;
+  r3 = *((unsigned int *) (arg0 + 8));
+  r2 = *((unsigned int *) (arg0 + 0x44));
+  r3 += r2;
+  *((unsigned int *) (arg0 + 8)) = r3;
+  r2 = *((unsigned int *) (arg0 + 0x48));
+  r3 = *((unsigned int *) (arg0 + 0xc));
+  r3 += r2;
+  *((unsigned int *) (arg0 + 0xc)) = r3;
+ do { r2 = *((unsigned int *) (arg0 + 0x4c)); r3 = *((unsigned int *) (arg0 + 0x10)); r3 += r2; *((unsigned int *) (arg0 + 0x10)) = r3; r2 = *((unsigned int *) (arg0 + 0x30)); r3 = *((unsigned int *) (arg0 + 0x18)); r3 += r2; *((unsigned int *) (arg0 + 0x18)) = r3; r2 = *((unsigned int *) (arg0 + 0x34)); r3 = *((unsigned int *) (arg0 + 0x1c)); r3 += r2; *((unsigned int *) (arg0 + 0x1c)) = r3; } while (0);
+  r1 = *((unsigned int *) (arg0 + 0x50));
+  arg0 += 0x64;
+  r3h = *((unsigned short *) (r1 + 0x1e));
+  r2h = *((unsigned short *) arg0);
+  r3h += r2h;
+  *((unsigned short *) (r1 + 0x1e)) = r3h;
+}
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008ae8.s");
 
 extern void __Func_8091f14(int a, int b);
