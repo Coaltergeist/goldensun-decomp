@@ -19,7 +19,16 @@ extern void Actor_TravelTo(void *, int, int, int);
 extern int atan2(int y, int x);
 extern void ActorAttrOp_scaleX(unsigned char *actor, unsigned int op, unsigned int param);
 
-INCLUDE_ASM("asm/actor/actor_script/ActorCmd_SetScript.s");
+unsigned char ActorCmd_SetScript(unsigned char *actor)
+{
+    *(unsigned int *)actor = *(unsigned int *)actor + (*(short *)(actor + 4) << 2) + 4;
+    {
+        unsigned int zero = 0;
+        *(unsigned short *)(actor + 4) = zero;
+    }
+    return 1;
+}
+
 
 unsigned int ActorCmd_Hide(unsigned int arg0) {
     unsigned char *ptr;

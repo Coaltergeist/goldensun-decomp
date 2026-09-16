@@ -254,7 +254,18 @@ void OvlFunc_936_20095b4(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20095e0.s");
+void OvlFunc_936_20095e0(void)
+{
+    unsigned char *p;
+
+    p = __MapActor_GetActor(0);
+    {
+        int flags = 1;
+        flags |= p[0x23];
+        p[0x23] = flags;
+    }
+}
+
 
 
 void OvlFunc_936_20095f8(void) {

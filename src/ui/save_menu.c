@@ -314,7 +314,17 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8024934.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8025180.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80251d4.s");
+#include "dma.h"
+
+void Func_80251d4(unsigned int src, unsigned int dst)
+{
+    unsigned int mask = 0x3ff;
+    unsigned int base = 0x6000000;
+
+    src &= mask;
+    dst = mask & dst;
+    DMA3_COPY((void *)(base + src * 32), (void *)(base + dst * 32), 32);
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8025200.s");
 

@@ -255,7 +255,20 @@ INCLUDE_ASM("asm/field/map_data/HeightTile_5.s");
 
 INCLUDE_ASM("asm/field/map_data/HeightTile_6.s");
 
-INCLUDE_ASM("asm/field/map_data/HeightTile_7.s");
+extern unsigned char gScript_080132fc[] __asm__("gScript_080132fc");
+
+int HeightTile_7(signed char *param_1, int param_2, int param_3)
+{
+    int i, a, b;
+
+    i = 0;
+    a = param_1[i];
+    i = 1;
+    b = param_1[i];
+    a <<= 19;
+    b <<= 19;
+    return a + (b - a) * gScript_080132fc[param_2 + param_3 * 16];
+}
 
 int HeightTile_8(unsigned char *param_1, unsigned int param_2)
 {

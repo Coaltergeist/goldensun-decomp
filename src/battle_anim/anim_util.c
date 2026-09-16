@@ -4,10 +4,27 @@
 INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim_BG1Wide.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd418.s");
-INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd488.s");
+extern unsigned int iwram_3001eec;
+
+void Func_80cd488(void)
+{
+    unsigned int base = iwram_3001eec;
+
+    *(volatile unsigned int *)0x04000028 = *(unsigned int *)(base + 0x77d0);
+    *(volatile unsigned int *)0x0400002c = *(unsigned int *)(base + 0x77d4);
+}
 INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd4b4.s");
 
-INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd508.s");
+extern unsigned int iwram_3001eec;
+extern void *Func_80008d4(void *dst, unsigned int size);
+
+void Func_80cd508(void)
+{
+    void *dst = (void *)(iwram_3001eec + 0x7818);
+    void *(*clear)(void *, unsigned int) = Func_80008d4;
+
+    clear(dst, 8);
+}
 INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd52c.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart2.s");

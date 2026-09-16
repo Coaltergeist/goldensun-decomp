@@ -110,8 +110,22 @@ void Func_8016594(unsigned char *arg0) {
 
 INCLUDE_ASM("asm/ui/ui/Func_80165d8.s");
 INCLUDE_ASM("asm/ui/ui/Func_8016670.s");
-INCLUDE_ASM("asm/ui/ui/Func_801671c.s");
-INCLUDE_ASM("asm/ui/ui/Func_8016738.s");
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
+
+void *Func_801671c(void)
+{
+    void *(*fill)(void *, unsigned int, unsigned int) = Func_80008d8;
+
+    return fill((void *)0x6002500, 0xf00, 0);
+}
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
+
+void *Func_8016738(void)
+{
+    void *(*fill)(void *, unsigned int, unsigned int) = Func_80008d8;
+
+    return fill((void *)0x6002500, 0xf00, 0x44444444);
+}
 INCLUDE_ASM("asm/ui/ui/Func_8016758.s");
 INCLUDE_ASM("asm/ui/ui/Func_80167ac.s");
 

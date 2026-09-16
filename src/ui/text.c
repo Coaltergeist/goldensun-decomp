@@ -11,7 +11,15 @@ INCLUDE_ASM("asm/ui/text/Func_801e3c8.s");
 void Func_801e418(void) {}
 
 INCLUDE_ASM("asm/ui/text/Func_801e41c.s");
-INCLUDE_ASM("asm/ui/text/SetTextColor.s");
+extern unsigned int iwram_3001e8c;
+
+void SetTextColor(int color)
+{
+    unsigned int base = iwram_3001e8c;
+    unsigned short masked = color & 15;
+
+    *(unsigned short *)(base + 0xeae) = masked;
+}
 
 extern unsigned int iwram_3001e8c;
 

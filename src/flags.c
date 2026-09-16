@@ -4,7 +4,19 @@
 
 extern unsigned char gFlags[];
 
-INCLUDE_ASM("asm/flags/GetFlag.s");
+int GetFlag(int id)
+{
+    int bit = id & 7;
+    int mask = 1;
+    unsigned int index;
+    int value;
+
+    mask <<= bit;
+    index = (unsigned int)id << 20;
+    id = index >> 23;
+    value = gFlags[id] & mask;
+    return (unsigned int)(-value | value) >> 31;
+}
 void SetFlag(int flagID)
 {
     unsigned int bit = 1u << (flagID & 7);

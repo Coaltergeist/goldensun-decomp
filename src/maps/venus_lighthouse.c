@@ -68,7 +68,13 @@ INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200832c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008374.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20084f4.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008558.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008594.s");
+extern void __Func_80929d8(unsigned int actor, int x);
+
+unsigned int OvlFunc_968_2008594(unsigned int arg0) {
+    __Func_80929d8(arg0, *(unsigned short *)(arg0 + 0x64) & 0xf);
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085ac.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085e4.s");
 

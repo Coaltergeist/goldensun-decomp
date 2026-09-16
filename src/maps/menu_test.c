@@ -40,13 +40,52 @@ void OvlFunc_974_200804c(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200807c.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008130.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008148.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008160.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008180.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008198.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20081b8.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20081d8.s");
+/* Message-ID endpoints for the debug message browser. Symbol-only absolute
+ * definitions keep endpoint references separate; they emit no instructions. */
+extern unsigned char MenuMessage_c9b[] __asm__(".Lmenu_message_c9b");
+__asm__(".equ .Lmenu_message_c9b, 0xc9b");
+extern unsigned char MenuMessage_cc6[] __asm__(".Lmenu_message_cc6");
+__asm__(".equ .Lmenu_message_cc6, 0xcc6");
+extern unsigned char MenuMessage_cf1[] __asm__(".Lmenu_message_cf1");
+__asm__(".equ .Lmenu_message_cf1, 0xcf1");
+extern unsigned char MenuMessage_d21[] __asm__(".Lmenu_message_d21");
+__asm__(".equ .Lmenu_message_d21, 0xd21");
+extern unsigned char MenuMessage_d4c[] __asm__(".Lmenu_message_d4c");
+__asm__(".equ .Lmenu_message_d4c, 0xd4c");
+extern unsigned char MenuMessage_d77[] __asm__(".Lmenu_message_d77");
+__asm__(".equ .Lmenu_message_d77, 0xd77");
+extern unsigned char MenuMessage_da2[] __asm__(".Lmenu_message_da2");
+__asm__(".equ .Lmenu_message_da2, 0xda2");
+extern void OvlFunc_974_200807c(int firstMessage, int count);
+
+void OvlFunc_974_2008130(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_c9b, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
+void OvlFunc_974_2008148(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_cc6, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
+void OvlFunc_974_2008160(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_cf1, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
+void OvlFunc_974_2008180(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_d21, (int)MenuMessage_d4c - (int)MenuMessage_d21);
+}
+void OvlFunc_974_2008198(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_d4c, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
+void OvlFunc_974_20081b8(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_d77, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
+void OvlFunc_974_20081d8(void)
+{
+    OvlFunc_974_200807c((int)MenuMessage_da2, (int)MenuMessage_cc6 - (int)MenuMessage_c9b);
+}
 
 extern void __Debug_TestEquipAndStatus(int);
 

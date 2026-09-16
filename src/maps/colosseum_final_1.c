@@ -38,7 +38,15 @@ void OvlFunc_954_2008134(void)
     ((void (*)(void))OvlFunc_954_200804c)();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008158.s");
+extern unsigned char L441c[] __asm__(".Lm954_441c");
+extern int __StartTask(void (*task)(void), unsigned int priority);
+extern void OvlFunc_954_200804c(void);
+
+void OvlFunc_954_2008158(void) {
+    int value = 0x42;
+    *(int *)L441c = value;
+    __StartTask(OvlFunc_954_200804c, 0xc8 << 4);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008178.s");
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20081a8.s");
 
