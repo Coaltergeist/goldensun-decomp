@@ -45,7 +45,13 @@ INCLUDE_ASM("asm/battle/battle/Func_80b606c.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b60a0.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6148.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6378.s");
-INCLUDE_ASM("asm/battle/battle/Func_80b63b0.s");
+void *Func_80b63b0(void)
+{
+    void *(*clear)(void *, unsigned int) = Func_80008d4;
+    extern unsigned int ewram_2002224;
+
+    return clear(&ewram_2002224, 0x10);
+}
 INCLUDE_ASM("asm/battle/battle/BattleMain.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6a60.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6ae0.s");

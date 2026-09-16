@@ -2,11 +2,26 @@
 /* flags.c -- consolidated TU. */
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/flags/GetFlag.s");
-INCLUDE_ASM("asm/flags/SetFlag.s");
-INCLUDE_ASM("asm/flags/ClearFlag.s");
-
 extern unsigned char gFlags[];
+
+INCLUDE_ASM("asm/flags/GetFlag.s");
+void SetFlag(int flagID)
+{
+    unsigned int bit = 1u << (flagID & 7);
+    unsigned char *table = gFlags;
+
+    flagID = ((unsigned int)flagID << 20) >> 23;
+    table[flagID] |= bit;
+}
+void ClearFlag(int flagID)
+{
+    unsigned int bit = 1u << (flagID & 7);
+    unsigned char *table = gFlags;
+
+    flagID = ((unsigned int)flagID << 20) >> 23;
+    table[flagID] &= ~ bit;
+}
+
 
 int ToggleFlag(int flagID)
 {
