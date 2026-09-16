@@ -1,9 +1,19 @@
 /* field/djinni.c -- djinni-get table + supporting field tasks. */
 #include "nonmatching.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/field/djinni/Func_8095938.s");
 INCLUDE_ASM("asm/field/djinni/GetJupiterDjinni.s");
-INCLUDE_ASM("asm/field/djinni/Func_8095b8c.s");
+extern unsigned int iwram_3001800;
+extern const int gScript_0809f0a4[];
+
+void Func_8095b8c(struct Actor *actor)
+{
+    const int *scales = gScript_0809f0a4;
+    int scale = scales[(iwram_3001800 >> 2) & 1];
+    actor->scale.x = scale;
+    actor->scale.y = scale;
+}
 
 extern void _DeleteActor(void);
 
