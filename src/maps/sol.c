@@ -87,10 +87,26 @@ int Sol_GetEvents(void)
     return (int)Lm895_22d8;
 }
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008154.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008200.s");
+extern unsigned char *iwram_3001ebc;
+void OvlFunc_895_2008200(void) {
+    unsigned short *p;
+    unsigned short v;
+
+    __CutsceneStart();
+    if (__GetFlag(0x81a) != 0) {
+        __Func_801776c(0x1034, 1);
+    } else {
+        __Func_801776c(0x1031, 1);
+        if (__GetFlag(0xf01) != 0) {
+            p = (unsigned short *)(iwram_3001ebc + (0xb9 << 1));
+            v = 1;
+            *p = v;
+        }
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008258.s");
 
-extern unsigned char *iwram_3001ebc;
 
 void OvlFunc_895_20083bc(void)
 {
