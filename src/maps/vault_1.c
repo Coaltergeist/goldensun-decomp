@@ -522,7 +522,17 @@ void OvlFunc_898_2008ea4(void) {
     API_Func_8010704(0x37, 0x1a, 4, 2, a, b);
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ecc.s");
+extern void __Func_8010704(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5);
+
+void OvlFunc_898_2008ecc(void) {
+	int a;
+    int b;
+	API_ClearFlag(0x80 << 2);
+	a = 0x17;
+	b = 0x1a;
+	__Func_8010704(0x17, 0x17, 4, 2, a, b);
+}
+
 extern void __MapActor_TravelToAnim(int, int, int);
 extern void __Func_8091e9c(int);
 
@@ -569,7 +579,6 @@ void OvlFunc_898_2008f8c(void)
 
 extern unsigned char L286a[] __asm__(".Lm898_286a");
 extern void __Func_8010560(unsigned char *arg0, int arg1, int arg2);
-extern void __Func_8010704(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5);
 
 void OvlFunc_898_2008fb4(void)
 {

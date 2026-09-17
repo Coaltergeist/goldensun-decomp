@@ -1,6 +1,7 @@
 /* rom_79e5c0 (overlay file 911): consolidated TU — kolima map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/kolima/exports.s");
 
@@ -57,7 +58,25 @@ void *Kolima_GetExits(void) {
     return (void *)gOvl_0200b040;
 }
 
-INCLUDE_ASM("asm/maps/kolima/Kolima_GetActors.s");
+extern unsigned char _EVENT_24[];
+extern unsigned char Lm911_3098[] __asm__(".Lm911_3098");
+extern unsigned char Lm911_3368[] __asm__(".Lm911_3368");
+extern unsigned char Lm911_3080[] __asm__(".Lm911_3080");
+extern void OvlFunc_911_20080a0(void *);
+
+void *Kolima_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_24) {
+        if (!API_GetFlag(0x845)) {
+            OvlFunc_911_20080a0(Lm911_3098);
+        }
+        return Lm911_3098;
+    }
+    if (ev == (int)_EVENT_27) return Lm911_3368;
+    return Lm911_3080;
+}
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008230.s");
 
 extern void __Func_80955b0(int a, int b, int c);

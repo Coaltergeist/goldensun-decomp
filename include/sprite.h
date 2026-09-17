@@ -12,7 +12,12 @@ struct SpriteLayer;
 // GBA OAM shadow record.
 struct SpriteOAM {
     struct SpriteOAM *dest;   // 0x00
-    u16 attrs[3];             // 0x04  GBA OAM attr0/attr1/attr2
+    u16 attr0;                // 0x04
+    u16 attr1;                // 0x06
+    u8 attr2Lo;               // 0x08  attr2 bits 0-7 (tile bits 0-7)
+    u8 tileHi : 2;            // 0x09  attr2 bits 8-9
+    u8 priority : 2;          //       attr2 bits 10-11
+    u8 palette : 4;           //       attr2 bits 12-15
 };                            // 0x0C
 
 // Per-sprite-ID metadata (the SpriteInfo[512] table).

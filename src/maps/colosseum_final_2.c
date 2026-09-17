@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern unsigned char gOvl_0200c414[];
 
@@ -53,7 +54,16 @@ void OvlFunc_955_2008150(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008160.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008258.s");
+
+extern struct Actor *__MapActor_GetActor(int);
+void OvlFunc_955_2008258(void) {
+    struct Actor *actor;
+    API_SetFlag(0x331);
+    actor = __MapActor_GetActor(0x14);
+    actor->__unk55 = 0;
+    API_Func_8010704(0x2e, 0x11, 1, 1, 0x2c, 0x11);
+}
+
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200828c.s");
 
 void OvlFunc_955_20082c0(void)

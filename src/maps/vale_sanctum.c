@@ -1,8 +1,12 @@
 /* rom_7892c8 (overlay file 888): consolidated TU — vale_sanctum map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/vale_sanctum/exports.s");
+
+extern void *__MapActor_GetActor(int);
 
 int OvlFunc_888_2008030(int arg0) {
     int *r2;
@@ -81,11 +85,56 @@ int ValeSanctum_GetEvents(void)
     }
 }
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200827c.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20082ec.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008360.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20084e8.s");
+extern void __MapActor_SetIdle(int);
+extern void __MapActor_SetBehavior(int, int);
 
+void OvlFunc_888_20082ec(void)
+{
+    GlobalState *p;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x855) == 0) {
+        API_MessageID(0x128b);
+    } else {
+        API_MessageID(0x1379);
+    }
+    p = &gState;
+    if (*(short *)((char *)p + 0x1c2) == 0xb) {
+        API_MessageID(0x1ceb);
+    }
+    __MapActor_SetIdle(9);
+    API_MapActor_SetAnim(9, 1);
+    API_CutsceneWait(2);
+    API_ActorMessage(9, 0);
+    __MapActor_SetBehavior(9, 2);
+    API_CutsceneEnd();
+}
+INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008360.s");
+extern unsigned char Lm888_3c9c[] __asm__(".Lm888_3c9c");
 extern unsigned char iwram_3001ebc[];
+extern void __LoadFieldActors(void *);
+extern int __ShowActorMessage_NoWait();
+extern int __Func_8091c7c(int, int);
+
+void OvlFunc_888_20084e8(void)
+{
+    unsigned short *a;
+
+    API_CutsceneStart();
+    __LoadFieldActors(Lm888_3c9c);
+    API_WaitFrames(1);
+    API_MessageID(0x1bfd);
+    __ShowActorMessage_NoWait(9, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_ActorMessage(9, 0);
+    } else {
+        a = (unsigned short *)(*(unsigned int *)iwram_3001ebc + (0xec << 1));
+        *a += 1;
+        API_Func_80931ec(2, 0x10, 1, 0x18, 1, 3, 7, 0x10, 1, 0xe, 0);
+        API_ActorMessage(9, 0);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_888_2008574(void) {
     unsigned short *r2;
@@ -112,9 +161,42 @@ void OvlFunc_888_2008574(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_MapInit.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_20086e8.s");
+extern void __Func_8093500(unsigned int, unsigned int);
+extern void __Func_8093530(void);
+
+void OvlFunc_888_20086e8(void) {
+    API_CutsceneStart();
+    API_Func_80933d4(0x80 << 9, 0x80 << 6);
+    __Func_8093500(1, 1);
+    __Func_8093530();
+    API_CutsceneWait(0x14);
+    API_MapActor_Face(8, 0, 0);
+    API_CutsceneWait(0xa);
+    API_MapActor_DoAnim(8, 4);
+    API_CutsceneWait(0x14);
+    API_MessageID(0x116c);
+    API_ActorMessage(8, 0);
+    API_SetFlag(0x80 << 2);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200874c.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_2008848.s");
+
+int OvlFunc_888_2008848(struct Actor *actor)
+{
+    struct Actor *a0;
+    struct Sprite *dst;
+    struct Sprite *src;
+
+    a0 = (struct Actor *)__MapActor_GetActor(0);
+    dst = actor->sprite;
+    dst->oam.priority = a0->sprite->oam.priority;
+
+    src = ((struct Actor *)__MapActor_GetActor(0))->sprite;
+    actor->sprite->shadowOAM.priority = src->oam.priority;
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200888c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200987c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a5c4.s");
@@ -137,7 +219,20 @@ INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a90c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b098.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b144.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b1b8.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b270.s");
+
+extern void __CopyMapTiles(int, int, int, int, int, int);
+void OvlFunc_888_200b270(void) {
+    int a;
+    int b;
+    a = 3;
+    b = 2;
+	__CopyMapTiles(0, 0x40, 0xb, 0x44, a, b);
+    a = 0xb;
+    b = 8;
+	API_Func_8010704(0xb, 0xa, 3, 2, a, b);
+	API_WaitFrames(1);
+}
+
 
 unsigned int OvlFunc_888_200b2a8(void)
 {

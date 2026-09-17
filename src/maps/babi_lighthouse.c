@@ -458,7 +458,20 @@ unsigned int BabiLighthouse_GetExits(void) {
     return (unsigned int)gOvl_0200b5f8;
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_GetActors.s");
+extern unsigned char Lm965_3694[] __asm__(".Lm965_3694");
+extern unsigned char Lm965_3754[] __asm__(".Lm965_3754");
+extern unsigned char Lm965_3784[] __asm__(".Lm965_3784");
+extern unsigned char Lm965_388c[] __asm__(".Lm965_388c");
+
+void *BabiLighthouse_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b0) return Lm965_3694;
+    if (ev == (int)_EVENT_af) return Lm965_3754;
+    if (ev == (int)_EVENT_ae) return Lm965_3784;
+    return Lm965_388c;
+}
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009030.s");
 
 extern void OvlFunc_965_20080c4(void);

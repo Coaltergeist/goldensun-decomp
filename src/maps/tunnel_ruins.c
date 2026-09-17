@@ -437,7 +437,23 @@ void *TunnelRuins_GetExits(void) {
     return (void *)gOvl_0200b85c;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetActors.s");
+extern unsigned char gScript_925__0200b8f4[];
+extern unsigned char Lm964_3a74[] __asm__(".Lm964_3a74");
+extern void __Func_808b868(void *);
+
+void *TunnelRuins_GetActors(void)
+{
+    void *a;
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_ac) {
+        a = gScript_925__0200b8f4;
+    } else {
+        a = Lm964_3a74;
+    }
+    __Func_808b868(a);
+    return a;
+}
 
 extern void OvlFunc_964_20080c4(void);
 extern void OvlFunc_964_200a3a0(void);

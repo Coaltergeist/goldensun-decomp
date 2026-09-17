@@ -166,7 +166,16 @@ void OvlFunc_930_2008870(void) {
 	API_MapActor_SetPos(0xe, 0xac << 17, 0x98 << 16);
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20088a8.s");
+void OvlFunc_930_20088a8(void) {
+    int a;
+    int b;
+    a = 0x15;
+	b = 9;
+	API_Func_8010704(0x15, 0x49, 1, 1, a, b);
+	API_Func_808edac(0x64, -1, -1);
+	API_MapActor_SetPos(0xe, 0, 0);
+}
+
 void OvlFunc_930_20088e0(void)
 {
     int actor;
@@ -383,9 +392,19 @@ void OvlFunc_930_2008fcc(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008ff0.s");
-
 extern void __CopyMapTiles(int, int, int, int, int, int);
+void OvlFunc_930_2008ff0(void) {
+	int a;
+    int b;
+	a = 1;
+	b = 2;
+	__CopyMapTiles(5, 0x1c, 5, 0xd, a, b);
+	a = 5;
+	b = 0xd;
+	API_Func_8010704(5, 0x1c, 1, 2, a, b);
+	API_CutsceneWait(1);
+}
+
 void OvlFunc_930_2009028(void) {
     unsigned int a5 = 1, a6 = 2;
     __CopyMapTiles(6, 0x1c, 5, 0xd, a5, a6);

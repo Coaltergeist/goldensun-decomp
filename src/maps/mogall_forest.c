@@ -438,7 +438,20 @@ void *MogallForest_GetExits(void) {
     return (void *)gOvl_0200b5bc;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/MogallForest_GetActors.s");
+extern unsigned char Lm927_36a0[] __asm__(".Lm927_36a0");
+extern unsigned char Lm927_3790[] __asm__(".Lm927_3790");
+extern unsigned char Lm927_38b0[] __asm__(".Lm927_38b0");
+extern unsigned char Lm927_3a30[] __asm__(".Lm927_3a30");
+
+void *MogallForest_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_44) return Lm927_36a0;
+    if (ev == (int)_EVENT_45) return Lm927_3790;
+    if (ev == (int)_EVENT_46) return Lm927_38b0;
+    return Lm927_3a30;
+}
 void __SetFlag(int);
 void __CutsceneWait(int);
 void OvlFunc_927_2008f94(void)

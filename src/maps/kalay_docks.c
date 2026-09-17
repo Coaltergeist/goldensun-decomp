@@ -39,7 +39,33 @@ void *KalayDocks_GetExits(void) {
     return (void *)gOvl_020098a0;
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_GetActors.s");
+extern unsigned char gOvl_02009ba4[];
+extern unsigned char Lm942_1acc[] __asm__(".Lm942_1acc");
+extern unsigned char Lm942_19c4[] __asm__(".Lm942_19c4");
+extern unsigned char gOvl_020098ec[];
+extern unsigned char Lm942_1dcc[] __asm__(".Lm942_1dcc");
+extern unsigned char Lm942_1d24[] __asm__(".Lm942_1d24");
+extern unsigned char Lm942_1c7c[] __asm__(".Lm942_1c7c");
+extern unsigned char Lm942_18d4[] __asm__(".Lm942_18d4");
+void *KalayDocks_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_6b) {
+        if (API_GetFlag(0x93e)) return gOvl_02009ba4;
+        return Lm942_1acc;
+    }
+    if (ev == (int)_EVENT_70) {
+        if (API_GetFlag(0x950)) return Lm942_19c4;
+        return gOvl_020098ec;
+    }
+    if (ev == (int)_EVENT_6c) {
+        if (API_GetFlag(0x950)) return Lm942_1dcc;
+        if (API_GetFlag(0x93e)) return Lm942_1d24;
+        return Lm942_1c7c;
+    }
+    return Lm942_18d4;
+}
 void OvlFunc_942_2008144(void) {
     __CutsceneStart();
     API_SetFlag(0x8aa);

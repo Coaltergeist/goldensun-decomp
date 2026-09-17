@@ -242,7 +242,47 @@ unsigned int VenusLighthouse_GetExits(void) {
     return (unsigned int)gOvl_0200e740;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/VenusLighthouse_GetActors.s");
+extern unsigned char _EVENT_b6[];
+extern unsigned char gScript_945__0200e904[];
+extern unsigned char Lm968_69c4[] __asm__(".Lm968_69c4");
+extern unsigned char Lm968_6b74[] __asm__(".Lm968_6b74");
+extern unsigned char Lm968_6c04[] __asm__(".Lm968_6c04");
+extern unsigned char Lm968_6c64[] __asm__(".Lm968_6c64");
+extern unsigned char Lm968_6cf4[] __asm__(".Lm968_6cf4");
+extern unsigned char Lm968_68ec[] __asm__(".Lm968_68ec");
+extern void __Func_808b868(void *);
+
+void *VenusLighthouse_GetActors(void)
+{
+    void *a;
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_b5) {
+        return gScript_945__0200e904;
+    } else if (ev == (int)_EVENT_b6) {
+        a = Lm968_69c4;
+        __Func_808b868(a);
+        return a;
+    } else if (ev == (int)_EVENT_b7) {
+        a = Lm968_6b74;
+        __Func_808b868(a);
+        return a;
+    } else if (ev == (int)_EVENT_b8) {
+        a = Lm968_6c04;
+        __Func_808b868(a);
+        return a;
+    } else if (ev == (int)_EVENT_b9) {
+        a = Lm968_6c64;
+        __Func_808b868(a);
+        return a;
+    } else if (ev == (int)_EVENT_ba) {
+        a = Lm968_6cf4;
+        __Func_808b868(a);
+        return a;
+    } else {
+        return Lm968_68ec;
+    }
+}
 
 void OvlFunc_968_2008f1c(void)
 {
@@ -426,7 +466,20 @@ void OvlFunc_968_2009f28(void){
 
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009f60.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a26c.s");
+
+void OvlFunc_968_200a26c(void) {
+    int a;
+    int b;
+    API_CutsceneStart();
+    if (OvlFunc_968_2008cc8() == 0) {
+        a = 0x2c;
+        b = 0x27;
+        __Func_8010704(0x6c, 0x27, 0xd, 7, a, b);
+        OvlFunc_968_2008374();
+    }
+    API_CutsceneEnd();
+    OvlFunc_968_2009f60();
+}
 
 
 unsigned int OvlFunc_968_200a2a4(unsigned int arg0) {

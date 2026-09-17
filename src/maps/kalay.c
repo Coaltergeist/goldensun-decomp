@@ -52,7 +52,22 @@ void *Kalay_GetExits(void) {
     return (void *)gOvl_0200c6b8;
 }
 
-INCLUDE_ASM("asm/maps/kalay/Kalay_GetActors.s");
+extern unsigned char Lm936_4768[] __asm__(".Lm936_4768");
+extern unsigned char Lm936_4a20[] __asm__(".Lm936_4a20");
+extern unsigned char Lm936_4a80[] __asm__(".Lm936_4a80");
+extern unsigned char Lm936_4b58[] __asm__(".Lm936_4b58");
+extern unsigned char gScript_926__0200c750[];
+
+void *Kalay_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_63) return Lm936_4768;
+    if (ev == (int)_EVENT_66) return Lm936_4a20;
+    if (ev == (int)_EVENT_99) return Lm936_4a80;
+    if (ev == (int)_EVENT_9c) return Lm936_4b58;
+    return gScript_926__0200c750;
+}
 
 extern void __CutsceneStart();
 extern void __Func_801776c();

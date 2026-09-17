@@ -335,7 +335,20 @@ void *CrossboneIsle_GetExits(void) {
     return (void *)gOvl_0200b508;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_GetActors.s");
+extern unsigned char _EVENT_7e[], _EVENT_86[];
+extern unsigned char gScript_911__0200b610[];
+extern unsigned char Lm946_3718[] __asm__(".Lm946_3718");
+extern unsigned char Lm946_3850[] __asm__(".Lm946_3850");
+extern unsigned char gOvl_0200b5f8[];
+void *CrossboneIsle_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_71) return gScript_911__0200b610;
+    if (ev == (int)_EVENT_7b) return Lm946_3718;
+    if (ev <= (int)_EVENT_86 && ev >= (int)_EVENT_7e) return Lm946_3850;
+    return gOvl_0200b5f8;
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008da4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008e00.s");
 
