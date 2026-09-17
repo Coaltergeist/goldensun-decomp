@@ -302,7 +302,45 @@ INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20088c0.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089dc.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089f4.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008a4c.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008ab0.s");
+void OvlFunc_927_2008ab0(unsigned int *p, int unused)
+{
+  unsigned short *new_var3;
+  unsigned int r3;
+  unsigned int r2;
+  char *new_var;
+  unsigned int new_var2;
+  r3 = *((unsigned int *) (((char *) p) + 8));
+  r2 = *((unsigned int *) (((char *) p) + 0x44));
+  r3 += r2;
+  *((unsigned int *) (((char *) p) + 8)) = r3;
+  new_var = (char *) p;
+  r2 = *((unsigned int *) (new_var + 0x48));
+  r3 = *((unsigned int *) (new_var + 0xc));
+  r3 += r2;
+  if (1)
+  {
+    *((unsigned int *) (new_var + 0xc)) = r3;
+  }
+  r2 = *((unsigned int *) (new_var + 0x4c));
+  new_var2 = *((unsigned int *) (new_var + 0x10));
+  r3 = new_var2;
+  r3 += r2;
+  *((unsigned int *) (new_var + 0x10)) = r3;
+  r2 = *((unsigned int *) (new_var + 0x30));
+  r3 = *((unsigned int *) (new_var + 0x18));
+  r3 += r2;
+  *((unsigned int *) (new_var + 0x18)) = r3;
+  r2 = *((unsigned int *) (new_var + 0x34));
+  r3 = *((unsigned int *) (new_var + 0x1c));
+  r3 += r2;
+  *((unsigned int *) (new_var + 0x1c)) = r3;
+  {
+    unsigned int r1;
+    unsigned short r3h;
+    unsigned short r2h;
+ do { r1 = *((unsigned int *) (new_var + 0x50)); p = (unsigned int *) (((char *) p) + 0x64); r3h = *((unsigned short *) (((char *) r1) + 0x1e)); r2h = *((unsigned short *) p); new_var3 = (unsigned short *) (((char *) r1) + 0x1e); r3h += r2h; *new_var3 = r3h; } while (0);
+  }
+}
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008ae8.s");
 
 extern void __Func_8091f14(int a, int b);

@@ -345,7 +345,17 @@ void OvlFunc_964_2008dc8(void) {
     OvlFunc_964_2008cd0(args);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008df4.s");
+extern int OvlFunc_964_2008cd0(unsigned int *);
+void OvlFunc_964_2008df4(void)
+{
+	unsigned int r3[3];
+	unsigned int *r0;
+	r0 = __MapActor_GetActor(0);
+	r3[0] = *(unsigned int *)((char *)r0 + 8);
+	r3[1] = *(unsigned int *)((char *)r0 + 0xc);
+	r3[2] = *(unsigned int *)((char *)r0 + 0x10) + 0xffe00000;
+	OvlFunc_964_2008cd0(r3);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008e20.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ec8.s");
 
@@ -506,7 +516,6 @@ void OvlFunc_964_20093e0(void) {
 
 
 
-extern int OvlFunc_964_2008cd0(unsigned int *);
 extern void OvlFunc_964_20093e0(void);
 
 void OvlFunc_964_2009424(void) {
@@ -564,7 +573,17 @@ void OvlFunc_964_20096f4(void) {
     OvlFunc_964_2009550();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200970c.s");
+void OvlFunc_964_200970c(void) {
+    unsigned char *p;
+
+    __MapActor_SetAnim(0x14, 1);
+    __Func_8092950(0x14, 0);
+    __MapActor_SetAnim(0x14, 2);
+    p = __MapActor_GetActor(0x14);
+    p += 0x23;
+    *p = *p & 0xfd;
+    __SetFlag(0x80 << 2);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009744.s");
 
 extern void OvlFunc_964_2009744(void);

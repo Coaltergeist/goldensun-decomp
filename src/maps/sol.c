@@ -111,7 +111,6 @@ void OvlFunc_895_2008200(void)
 }
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008258.s");
 
-extern unsigned char *iwram_3001ebc;
 
 void OvlFunc_895_20083bc(void)
 {

@@ -14,7 +14,22 @@ INCLUDE_ASM("asm/field/moves/carry/Field_Carry.s");
 
 INCLUDE_ASM("asm/field/moves/carry/Func_809a3c4.s");
 
-INCLUDE_ASM("asm/field/moves/carry/Func_809a44c.s");
+void Func_809a44c(void *arg0)
+{
+    unsigned char *base;
+    int *r1;
+    unsigned short *r0;
+
+    base = (unsigned char *)arg0;
+    *(int *)(base + 8) += *(int *)(base + 0x44);
+    *(int *)(base + 0xc) += *(int *)(base + 0x48);
+    *(int *)(base + 0x10) += *(int *)(base + 0x4c);
+    *(int *)(base + 0x18) += *(int *)(base + 0x30);
+    *(int *)(base + 0x1c) += *(int *)(base + 0x34);
+    r1 = *(int **)(base + 0x50);
+    r0 = (unsigned short *)(base + 0x64);
+    *(short *)((char *)r1 + 0x1e) += *r0;
+}
 
 INCLUDE_ASM("asm/field/moves/carry/Func_809a484.s");
 

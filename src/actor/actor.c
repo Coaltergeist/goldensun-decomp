@@ -139,7 +139,35 @@ void Actor_Stop(void *actor) {
     Actor_SetScript(actor, gScript_08013620);
 }
 
-INCLUDE_ASM("asm/actor/actor/Camera_SetTarget.s");
+extern unsigned char gScript_080135f0[];
+void Camera_SetTarget(void *actor, int target)
+{
+  unsigned char *r5;
+  int new_var2;
+  unsigned char *new_var;
+  int r6;
+  r6 = target;
+  new_var2 = 0;
+  r5 = actor;
+  Actor_SetScript(r5, (void *) gScript_080135f0);
+  if (r6 != new_var2)
+  {
+    unsigned char *r2;
+    int r3;
+    r3 = 0x80;
+    r3 <<= 8;
+    *((unsigned int *) (r5 + 0x34)) = r3;
+    r3 = 0x80;
+    r3 <<= 11;
+    r2 = r5;
+    new_var = r5 + 0x30;
+    *((unsigned int *) new_var) = r3;
+    r2 += 0x64;
+    r3 = 0;
+    *((unsigned int *) (r5 + 0x68)) = (unsigned int) r6;
+    *((unsigned short *) r2) = r3;
+  }
+}
 
 extern void WaitFrames(unsigned int nframes);
 
