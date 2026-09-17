@@ -1,6 +1,7 @@
 /* rom_7f2f14 (overlay file 968): consolidated TU — venus_lighthouse map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/exports.s");
 
@@ -406,7 +407,24 @@ void OvlFunc_968_2009a9c(void) {
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009af0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009d48.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009f28.s");
+
+void OvlFunc_968_2009f28(void){
+    int a;
+    int b;
+    __CutsceneStart();
+    if (OvlFunc_968_2008cc8() == 0)    {
+        a = 0x2d;
+        b = 0x2b;
+        API_Func_8010704(0x6d, 0x2b, 7, 5, a, b);
+        OvlFunc_968_2008374();
+    }
+
+    __CutsceneEnd();
+	OvlFunc_968_2009d48();
+}
+
+
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009f60.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a26c.s");
 
@@ -440,7 +458,23 @@ INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a6f8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a90c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200ab14.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200aee4.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200af30.s");
+
+extern void __Func_8092708(int, int, int);
+extern void __Func_8091e9c(int);
+
+void OvlFunc_968_200af30(void)
+{
+    __CutsceneStart();
+	API_MapActor_SetSpeed(0, 0x80 << 8, 0x80 << 7);
+	API_MapActor_TravelToAnimWait(0, 0x82 << 2, 0xb2 << 2)	;
+	API_Func_8092adc(0, 0x80 << 7, 0xa);
+	OvlFunc_968_2008058(0x82 << 18, 0, 0xc4 << 18, 0xdf);
+    __Func_8092708(0, 6, 0);
+    API_CutsceneWait(0x3c);
+	__Func_8091e9c(0x14);
+	__CutsceneEnd();
+}
+
 extern unsigned char _EVENT_b5[], _EVENT_b6[], _EVENT_b7[], _EVENT_b8[], _EVENT_b9[], _EVENT_ba[];
 extern unsigned char Lm968_6e44[] __asm__(".Lm968_6e44");
 extern unsigned char Lm968_6f1c[] __asm__(".Lm968_6f1c");

@@ -164,8 +164,24 @@ unsigned int *AltinPeak_GetActors(void)
     return (unsigned int *)Lm932_4928;
 }
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20082cc.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008388.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083b4.s");
+
+extern void __StartMapBattle(int, int);
+extern void __Func_8091f90(int, int);
+
+void OvlFunc_932_2008388(void) {
+    GlobalState *p = &gState;
+    *(unsigned char *)((char *)p + 0x22b) = 3;
+    __Func_8091f90((int)Lconst_4d, 0x63);
+    __StartMapBattle(0x35, 2);
+}
+
+void OvlFunc_932_20083b4(void) {
+    GlobalState *p = &gState;
+    *(unsigned char *)((char *)p + 0x22b) = 3;
+    __Func_8091f90((int)Lconst_4f, 0x63);
+	__StartMapBattle(0x35, 2);
+}
+
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083e0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200840c.s");
 
@@ -936,7 +952,26 @@ void OvlFunc_932_200b410(void) {
     iwram_3001ebc__a2->unk17E = 0x1018;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b428.s");
+extern void __Func_8092b08(int, int);
+
+void OvlFunc_932_200b428(void) {
+    struct Actor932 {
+        unsigned char pad1[0xc];
+        long f0c;
+        unsigned char pad2[0x23 - 0xc - 4];
+        unsigned char f23;
+    };
+    struct Actor932 *actor;
+
+    actor = (struct Actor932 *) __MapActor_GetActor(0);
+    if (actor->f0c > (0xc0 << 14)) {
+        struct Actor932 *actor2 = (struct Actor932 *) __MapActor_GetActor(0xb);
+        actor2->f23 |= 2;
+        __Func_8092b08(0xc, 3);
+    } else {
+        __Func_8092b08(0xc, 2);
+    }
+}
 
 void OvlFunc_932_200b460(unsigned int arg0) {
     unsigned char *p;

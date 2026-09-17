@@ -512,7 +512,15 @@ void OvlFunc_898_2008e84(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ea4.s");
+void OvlFunc_898_2008ea4(void) {
+    int a;
+    int b;
+    API_SetFlag(0x80 << 2);
+    a = 0x17;
+    b = 0x1a;
+    API_Func_8010704(0x37, 0x1a, 4, 2, a, b);
+}
+
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008ecc.s");
 extern void __MapActor_TravelToAnim(int, int, int);
 extern void __Func_8091e9c(int);

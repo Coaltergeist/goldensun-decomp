@@ -180,7 +180,18 @@ void OvlFunc_952_200bdf8(void)
 }
 
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200be40.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bf84.s");
+void OvlFunc_952_200bf84(void)
+{
+    if (API_GetFlag(0x96d) == 0) {
+        API_SetFlag(0x96d);
+        API_MessageID(0x2239);
+        API_ActorMessage(9, 0);
+    } else {
+        API_MessageID(0x223a);
+        API_ActorMessage(9, 0);
+    }
+}
+
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bfc4.s");
 
 extern void __Func_801776c();

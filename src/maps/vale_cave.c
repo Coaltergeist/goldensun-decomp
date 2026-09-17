@@ -511,9 +511,32 @@ extern void __CutsceneEnd(void);
 extern void __SetCameraTarget(int, int);
 extern void __Func_8093530(void);
 
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20091a0.s");
-
-
+void OvlFunc_934_20091a0(void) {
+    unsigned char *actor;
+    if (API_GetFlag(0x80 << 2) != 0){
+        return;
+    }
+    API_SetFlag(0x80 << 2);
+    API_CutsceneStart();
+    API_Func_80933d4(0x80 << 9, 0x80 << 6);
+    __SetCameraTarget(8, 1);
+    __Func_8093530();
+    API_CutsceneWait(0x3c);
+    API_Func_8092adc(8, 0xc0 << 8, 0x14);
+    API_MapActor_Surprise(8, 0x81 << 1);
+    API_Func_80925cc(8, 2);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(8, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnimWait(8, 0xc6 << 2, 0xf8);
+    API_PlaySound(0x98);
+    actor = __MapActor_GetActor(8);
+    *(int *)(actor + 0x28) = 0x80 << 12;
+    API_MapActor_TravelToAnimWait(8, 0xc6 << 2, 0x8c << 1);
+    API_CutsceneWait(0x14);
+    API_Func_8092adc(8, 0xc0 << 8, 0x14);
+    API_CutsceneWait(0x1e);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_934_2009258(void)
 {
@@ -635,8 +658,6 @@ void OvlFunc_934_2009390(void)
     }
     __CutsceneEnd();
 }
-
-static inline void API_PlaySound(int s) { extern void __PlaySound(int); __PlaySound(s); }
 
 void OvlFunc_934_20094ac(void)
 {

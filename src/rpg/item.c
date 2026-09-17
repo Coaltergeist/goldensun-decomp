@@ -129,7 +129,20 @@ unsigned int Func_8078a08(unsigned int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/rpg/item/BreakItem.s");
+int BreakItem(int unit, int slot)
+{
+    extern int GetUnit(int);
+    int r5;
+
+    r5 = slot;
+    unit = GetUnit(unit);
+    r5 <<= 1;
+    r5 += 0xd8;
+    if (*(unsigned short *)(unit + r5) == 0)
+        return -1;
+    *(unsigned short *)(unit + r5) |= 0x400;
+    return 0;
+}
 
 
 int RepairItem(int unit, int item)

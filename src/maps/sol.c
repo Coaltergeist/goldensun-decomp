@@ -87,18 +87,23 @@ int Sol_GetEvents(void)
     return (int)Lm895_22d8;
 }
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008154.s");
+
 extern unsigned char *iwram_3001ebc;
-void OvlFunc_895_2008200(void) {
+
+void OvlFunc_895_2008200(void)
+{
+    unsigned char *b;
     unsigned short *p;
     unsigned short v;
 
     __CutsceneStart();
-    if (__GetFlag(0x81a) != 0) {
+    if (__GetFlag(0x81a)) {
         __Func_801776c(0x1034, 1);
     } else {
         __Func_801776c(0x1031, 1);
-        if (__GetFlag(0xf01) != 0) {
-            p = (unsigned short *)(iwram_3001ebc + (0xb9 << 1));
+        if (__GetFlag(0xf01)) {
+            b = iwram_3001ebc;
+            p = (unsigned short *)(b + (0xb9 << 1));
             v = 1;
             *p = v;
         }
@@ -130,14 +135,154 @@ void OvlFunc_895_20083bc(void)
 }
 
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008420.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200856c.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20085ac.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20085ec.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008634.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200867c.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20086c4.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200870c.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008754.s");
+
+extern int __MapActor_GetActor(int);
+
+void OvlFunc_895_200856c(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(9);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x302);
+        API_ClearFlag(0x303);
+        if (gridX == 0x5d) {
+            API_SetFlag(0x303);
+        } else if (gridX == 0x5f) {
+            API_SetFlag(0x302);
+        }
+    }
+}
+
+void OvlFunc_895_20085ac(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xa);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x300);
+        API_ClearFlag(0x301);
+        if (gridX == 0x73) {
+            API_SetFlag(0x300);
+        } else if (gridX == 0x71) {
+            API_SetFlag(0x301);
+        }
+    }
+}
+
+extern void OvlFunc_895_20097c0(int);
+
+void OvlFunc_895_20085ec(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(9);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x310);
+        API_ClearFlag(0x311);
+        if (gridX == 0x63) {
+            API_SetFlag(0x311);
+        } else if (gridX == 0x65) {
+            API_SetFlag(0x310);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
+
+extern void OvlFunc_895_20097c0(int);
+
+void OvlFunc_895_2008634(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xa);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x312);
+        API_ClearFlag(0x313);
+        if (gridX == 0x67) {
+            API_SetFlag(0x313);
+        } else if (gridX == 0x69) {
+            API_SetFlag(0x312);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
+
+void OvlFunc_895_200867c(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xb);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x314);
+        API_ClearFlag(0x315);
+        if (gridX == 0x6b) {
+            API_SetFlag(0x315);
+        } else if (gridX == 0x6d) {
+            API_SetFlag(0x314);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
+
+void OvlFunc_895_20086c4(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xc);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x316);
+        API_ClearFlag(0x317);
+        if (gridX == 0x6f) {
+            API_SetFlag(0x317);
+        } else if (gridX == 0x71) {
+            API_SetFlag(0x316);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
+
+void OvlFunc_895_200870c(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xd);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x318);
+        API_ClearFlag(0x319);
+        if (gridX == 0x73) {
+            API_SetFlag(0x319);
+        } else if (gridX == 0x75) {
+            API_SetFlag(0x318);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
+
+void OvlFunc_895_2008754(void)
+{
+    unsigned char *actor = (unsigned char *)__MapActor_GetActor(0xe);
+    int gridX;
+
+    if (actor != 0) {
+        gridX = *(int *)(actor + 8) >> 20;
+        API_ClearFlag(0x31a);
+        API_ClearFlag(0x31b);
+        if (gridX == 0x77) {
+            API_SetFlag(0x31b);
+        } else if (gridX == 0x79) {
+            API_SetFlag(0x31a);
+        }
+        OvlFunc_895_20097c0(0);
+    }
+}
 
 
 unsigned int OvlFunc_895_200879c(unsigned int arg0, unsigned int arg1)
