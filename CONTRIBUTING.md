@@ -50,9 +50,9 @@ expresses the original behavior.
    succeed. Review compiler warnings and the command's exit status; the checksum
    line alone does not prove the later overlay checks passed.
 5. Describe the original function, source reasoning, compiler revision and
-   validation in your pull request. Include any remaining uncertainty. An
-   unmatched but useful investigation can be discussed without representing it
-   as a completed match.
+   validation in your pull request (if not using `camelot-gcc`). Include any 
+   remaining uncertainty. An unmatched but useful investigation can be discussed 
+   without representing it as a completed match.
 
 For de-hacking, preserve byte-identical output while removing the actual source
 concern. Review callers when changing shared macros or inline helpers. Remove a
