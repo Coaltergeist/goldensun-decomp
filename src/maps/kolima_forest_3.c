@@ -47,13 +47,99 @@ void *OvlFunc_915_200806c(int *a0, void *unused)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_20080c4.s");
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008244.s");
 
 extern unsigned int Lf10[] __asm__(".Lm915_f10");
 extern int Lf50[] __asm__(".Lm915_f50");
 extern void *OvlFunc_915_200806c(int *, void *);
 extern int __TestCollision(void *, int *);
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __Actor_SetAnim(void *, int);
+extern void __WaitFrames(int);
+extern void __PlaySound(int);
+extern void __Actor_TravelTo(void *, int, int, int);
+extern void __Actor_WaitMovement(void *);
+extern void __MapActor_PlayPendingSound(void);
+
+void OvlFunc_915_20080c4(void)
+{
+    int pos[3];
+    unsigned char *actor0;
+    unsigned char *other;
+    unsigned char *hit;
+    unsigned int dir;
+    unsigned int offset;
+    int speed;
+    int val0;
+
+    actor0 = (unsigned char *)__MapActor_GetActor(0);
+    dir = *(unsigned short *)(actor0 + 6) >> 12;
+    offset = dir << 2;
+    pos[0] = *(int *)(actor0 + 8) + (Lf10[dir] & 0xffff0000);
+    pos[1] = *(int *)(actor0 + 0xc);
+    pos[2] = *(int *)(actor0 + 0x10) + (Lf10[dir] << 16);
+
+    other = (unsigned char *)OvlFunc_915_200806c(pos, actor0);
+    if (other == 0) return;
+
+    pos[0] = *(int *)(other + 8) + (Lf10[dir] & 0xffff0000);
+    pos[1] = *(int *)(other + 0xc);
+    pos[2] = *(int *)(other + 0x10) + (Lf10[dir] << 16);
+
+    hit = (unsigned char *)OvlFunc_915_200806c(pos, other);
+    if (hit != 0) {
+        if ((*(unsigned char *)(hit + 0x59) & 1) != 0) return;
+    }
+
+    pos[0] = *(int *)(other + 8);
+    pos[1] = *(int *)(other + 0xc) + (0x80 << 13);
+    pos[2] = *(int *)(other + 0x10);
+
+    hit = (unsigned char *)OvlFunc_915_200806c(pos, other);
+    if (hit != 0) {
+        if ((*(unsigned char *)(hit + 0x59) & 1) != 0) return;
+    }
+
+    *(unsigned char *)(other + 0x22) = 2;
+    pos[0] = *(int *)(other + 8) + (Lf10[dir] & 0xffff0000);
+    pos[1] = *(int *)(other + 0xc);
+    pos[2] = *(int *)(other + 0x10) + (Lf10[dir] << 16);
+
+    if (__TestCollision(other, pos) > 0) return;
+
+    val0 = *(unsigned char *)(other + 0x62);
+    if (val0 != 0) return;
+
+    __Actor_SetAnim(actor0, 8);
+    speed = 0x3333;
+    __WaitFrames(15);
+    __PlaySound(0xb9);
+
+    *(int *)(other + 0x30) = speed;
+    *(int *)(other + 0x34) = speed;
+    __Actor_TravelTo(other, pos[0], pos[1], pos[2]);
+
+    *(int *)(actor0 + 0x30) = speed;
+    *(int *)(actor0 + 0x34) = speed;
+    __Actor_TravelTo(actor0, pos[0], pos[1], pos[2]);
+
+    __Actor_WaitMovement(other);
+    __MapActor_PlayPendingSound();
+
+    *(int *)(other + 8) = pos[0];
+    *(int *)(other + 0x10) = pos[2];
+    *(int *)(other + 0x24) = val0;
+    *(int *)(other + 0x2c) = val0;
+
+    *(int *)(actor0 + 0x38) = 0x80 << 24;
+    *(int *)(actor0 + 0x40) = 0x80 << 24;
+    *(int *)(actor0 + 0x24) = val0;
+    *(int *)(actor0 + 0x2c) = val0;
+    *(int *)(actor0 + 8) = (int)*(short *)(actor0 + 0xa) << 16;
+    *(int *)(actor0 + 0x10) = (int)*(short *)(actor0 + 0x12) << 16;
+    __Actor_SetAnim(actor0, 1);
+}
+
+INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008244.s");
 
 int OvlFunc_915_20082a8(void *arg0)
 {
@@ -190,7 +276,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int Lf10__a2[] __asm__(".Lm915_f10");
-extern void OvlFunc_915_2008244(int, int, int, int, int, int);
+extern int OvlFunc_915_2008244(unsigned int, int, int, unsigned int, unsigned int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -334,7 +420,40 @@ void *KolimaForest3_GetActors(void) {
     return (void *)gOvl_02009038;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_20089f8.s");
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void __CutsceneWait(int);
+extern void __PlaySound(int);
+extern void __SetFlag(int);
+
+void OvlFunc_915_20089f8(void) {
+    struct Pk pk;
+
+    __CutsceneStart();
+    if (OvlFunc_915_2008474(&pk) != 0) {
+        OvlFunc_915_2008608(pk);
+        if (pk.b == 10 && pk.x >> 20 == 12) {
+            char *actor;
+            int s1, s2;
+            int zero = 0;
+
+            __MapActor_SetAnim(10, 3);
+            __MapActor_TravelBy(10, -18, 6);
+            __CutsceneWait(30);
+            __PlaySound(0xf0);
+            __MapActor_SetAnim(10, 8);
+            actor = (char *)__MapActor_GetActor(10);
+            actor[0x23] = 2;
+            s2 = 16;
+            s1 = 11;
+            __Func_8010704(0x20, 0x14, 2, 4, s1, s2);
+            OvlFunc_915_2008244(2, 12, 16, 1, 4, zero);
+            __SetFlag(0x201);
+            __Actor_SetSpriteFlags(__MapActor_GetActor(10), zero);
+        }
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008aac.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
@@ -363,7 +482,35 @@ void *KolimaForest3_GetEvents(void) {
     return (void *)gOvl_02009098;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_3/KolimaForest3_MapInit.s");
+extern int OvlFunc_915_20088c0(int);
+extern int __GetFlag(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void OvlFunc_915_2008c8c(int);
+
+int KolimaForest3_MapInit(void) {
+    unsigned int *base;
+
+    base = *((unsigned int **) iwram_3001ebc);
+    *((unsigned int *) (((char *) base) + (0xe0 << 1))) = (0xe0 << 1) + 0x44;
+    OvlFunc_915_20088c0(10);
+    if (__GetFlag(0x201) != 0) {
+        int zero = 0;
+        int s1, s2;
+        char *actor = (char *)__MapActor_GetActor(10);
+        actor[0x23] = 2;
+        s2 = 16;
+        s1 = 11;
+        __Func_8010704(0x20, 0x14, 2, 4, s1, s2);
+        OvlFunc_915_2008244(2, 12, 16, 1, 4, zero);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(10), zero);
+    }
+    OvlFunc_915_20088c0(8);
+    OvlFunc_915_20088c0(9);
+    if (__GetFlag(0x845) == 0) {
+        OvlFunc_915_2008c8c(6);
+    }
+    return 0;
+}
 extern void OvlFunc_915_2008d5c(void);
 extern void OvlFunc_915_2008d9c(void);
 extern void OvlFunc_915_2008d7c(void);
@@ -395,7 +542,22 @@ void OvlFunc_915_2008c8c(int a0)
     __Func_8091200(0x10000, 0);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008cf4.s");
+extern int _divsi3_RAM(int, int);
+
+unsigned short OvlFunc_915_2008cf4(unsigned short c, int factor) {
+    short r = c & 0x1f;
+    short g = ((unsigned int)c >> 5) & 0x1f;
+    short b = ((unsigned int)c >> 10) & 0x1f;
+
+    r += _divsi3_RAM(r, factor * 4);
+    g -= _divsi3_RAM(g, factor);
+    b -= _divsi3_RAM(b, factor);
+
+    if (r > 0x1f) {
+        r = 0x1f;
+    }
+    return (b << 10) | (g << 5) | r;
+}
 
 #include "dma.h"
 extern unsigned int iwram_3001ed0;
