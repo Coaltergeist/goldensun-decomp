@@ -102,7 +102,44 @@ extern int __CheckPartyItem(int);
 extern void __Func_8091200(int, int);
 extern void __Func_8091254(int);
 
-INCLUDE_ASM("asm/maps/kolima_forest_5/OvlFunc_917_2008158.s");
+void OvlFunc_917_2008158(void) {
+    int r3;
+    int r1;
+    int r2;
+    __CutsceneStart();
+    if (__GetFlag(0x845)) {
+        OvlFunc_917_20092f4(10, 1);
+        __MessageID(0x151c);
+        __ActorMessage(8, 0);
+        OvlFunc_917_20092f4(10, 0);
+    } else if (__GetFlag(0x844)) {
+        OvlFunc_917_20092f4(10, 1);
+        __MessageID(0x14eb);
+        __ActorMessage(8, 0);
+        OvlFunc_917_20092f4(10, 0);
+        if (__CheckPartyItem(0xb8) != -1) {
+            r3 = *(int *)iwram_3001ebc;
+            r1 = 0xb9;
+            r1 <<= 1;
+            r2 = r3 + r1;
+            r3 = 1;
+            *(short *)r2 = r3;
+        }
+    } else {
+        __MessageID(0x14c9);
+        __ActorMessage(8, 0);
+        __Func_8091200(0x406218, 1);
+        __Func_8091254(0x14);
+        __WaitFrames(0x28);
+        API_ActorMessage_Wait(0x200e, 0, 10);
+        __Func_80925cc(0, 2);
+        API_ActorMessage(0x200e, 0);
+        __Func_8091200(0x80 << 9, 1);
+        __Func_8091254(0x14);
+        __WaitFrames(0x28);
+    }
+    __CutsceneEnd();
+}
 
 
 void OvlFunc_917_2008248(void) {

@@ -527,7 +527,49 @@ void OvlFunc_935_20089c0(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008aa0.s");
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+
+extern int Lm935_222c __asm__(".Lm935_222c");
+extern int Lm935_2230 __asm__(".Lm935_2230");
+
+void OvlFunc_935_2008aa0(void) {
+    unsigned char *actor;
+    int r7;
+    int i;
+
+    actor = __MapActor_GetActor(10);
+    if (actor[0x5b] != 0)
+        return;
+
+    Lm935_222c++;
+    if ((Lm935_222c & 0x3f) == 0) {
+        Lm935_2230 = _umodsi3_RAM(__Random(), 6);
+        actor = __MapActor_GetActor(Lm935_2230 + 10);
+        *(int *)(actor + 0x48) = 0xa3d;
+    }
+
+    r7 = 0xff;
+    i = 0;
+    r7 <<= 16;
+    for (; i <= 5; i++) {
+        actor = __MapActor_GetActor(i + 10);
+        if (__GetFlag(i + (0x80 << 2)) != 0) {
+            if (*(int *)(actor + 0x28) > 0 || *(int *)(actor + 0xc) <= 0x20ffff) {
+                *(int *)(actor + 0xc) = r7;
+                *(int *)(actor + 0x48) = 0;
+                *(int *)(actor + 0x28) = 0;
+                __PlaySound(0x6a);
+            }
+        } else {
+            if (*(int *)(actor + 0x28) > 0 || *(int *)(actor + 0xc) <= 0xffff) {
+                *(int *)(actor + 0x48) = 0;
+                *(int *)(actor + 0x28) = 0;
+                *(int *)(actor + 0xc) = r7;
+                __PlaySound(0x6a);
+            }
+        }
+    }
+}
 
 extern void __vec3_translate(unsigned int arg0, unsigned int arg1, unsigned int *arg2);
 extern void __Actor_TravelTo(unsigned char *arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
@@ -545,7 +587,32 @@ void OvlFunc_935_2008b54(unsigned char *arg0, unsigned int arg1, unsigned int ar
 }
 
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008b8c.s");
+extern unsigned char gScript_935__02009884[];
+extern void __Actor_SetScript(void *, void *);
+
+void OvlFunc_935_2008b8c(unsigned char *arg0) {
+    unsigned char *actor;
+    unsigned char *p;
+    int i;
+    int eight;
+
+    for (i = 0; i <= 3; i++) {
+        actor = (unsigned char *)__CreateActor(0xf0, *(int *)(arg0 + 8), *(int *)(arg0 + 0xc), *(int *)(arg0 + 0x10));
+        if (actor == 0)
+            break;
+        *(int *)(actor + 0x1c) = 0x8ccc;
+        *(int *)(actor + 0x18) = 0x8ccc;
+        actor[0x55] = 2;
+        *(int *)(actor + 0x28) = 0xffff0000;
+        *(int *)(actor + 0x30) = __Random() + 0xcccc;
+        actor[0x59] = 1;
+        OvlFunc_935_2008b54(actor, 0x80 << 14, __Random());
+        p = actor + 0x5e;
+        eight = 8;
+        *(short *)p = eight;
+        __Actor_SetScript(actor, gScript_935__02009884);
+    }
+}
 
 extern void OvlFunc_935_2008aa0(void);
 

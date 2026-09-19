@@ -107,6 +107,13 @@ void OvlFunc_901_200856c(void)
 }
 
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_200858c.s");
+struct Actor640 {
+  char pad[6];
+  short facing;
+  char pad2[0x64 - 8];
+  unsigned short flags;
+};
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008640.s");
 
 extern unsigned char *iwram_3001ebc;
@@ -184,7 +191,29 @@ void OvlFunc_901_20087d4(void)
   ((unsigned char *) __MapActor_GetActor(0xd))[0x5b] = flag;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008804.s");
+struct Actor64 {
+    char pad[0x64];
+    unsigned short f64;
+};
+
+extern int _MSG_1cc0;
+extern void OvlFunc_901_200858c(void);
+
+void OvlFunc_901_2008804(void)
+{
+  ((struct Actor64 *) __MapActor_GetActor(0xe))->f64 |= 2;
+  __CutsceneStart();
+  if (API_GetFlag(0x307) != 0) {
+    __MessageID((int) &_MSG_1cc0);
+    OvlFunc_901_20084b4(0xe);
+  } else {
+    OvlFunc_901_200858c();
+    API_SetFlag(0x307);
+  }
+  __CutsceneEnd();
+  ((struct Actor64 *) __MapActor_GetActor(0xe))->f64 = 1;
+}
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
@@ -208,7 +237,15 @@ void OvlFunc_901_20089f8(void) {
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008a80.s");
+extern void __Func_8091e9c(int);
+
+void OvlFunc_901_2008a80(int a, int b, int c)
+{
+  API_MapActor_SetSpeed(0, 0x8000, 0x4000);
+  API_MapActor_TravelToAnim(0, a, b);
+  *(int *)(iwram_3001ebc + (0xe4 << 1)) = 0x10;
+  __Func_8091e9c(c);
+}
 extern unsigned char L1740[] __asm__(".Lm901_1740");
 extern void __PlaySound(unsigned int);
 extern void __Func_8010560(void *, unsigned int, unsigned int);
@@ -302,7 +339,26 @@ void OvlFunc_901_2008bf8(void)
   OvlFunc_901_2008a80(0x78, 0x90, 0xa);
 }
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008cc8.s");
+extern unsigned char L17c4[] __asm__(".Lm901_17c4");
+
+void OvlFunc_901_2008cc8(void)
+{
+  unsigned char *actor;
+  unsigned char *sprite;
+  unsigned int s1;
+  unsigned int s2;
+
+  actor = (unsigned char *) __MapActor_GetActor(0);
+  sprite = *(unsigned char **) (actor + 0x50);
+  __PlaySound(0x9e);
+  __Func_8010560(L17c4, 0x23, 9);
+  s1 = 4;
+  s2 = 0xa;
+  __Func_8010704(0x21, 0x14, 1, 3, s1, s2);
+  actor[0x23] = actor[0x23] & 0xfe;
+  sprite[9] = sprite[9] | 0xc;
+  OvlFunc_901_2008a80(0x48, 0xa0, 0xc);
+}
 
 void OvlFunc_901_2008d24(void) {
   int a;
