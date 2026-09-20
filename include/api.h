@@ -64,6 +64,7 @@ static inline void API_MapActor_TurnToFaceActor(int a, int b, int c) { extern vo
 static inline void API_Func_80917d0(int a, int b) { extern void __Func_80917d0(int, int); __Func_80917d0(a, b); }
 static inline void API_Func_8010704(int a, int b, int c, int d, int e, int f) { extern void __Func_8010704(int, int, int, int, int, int); __Func_8010704(a, b, c, d, e, f); }
 static inline void API_Func_8012330(int a, int b, int c) { extern void __Func_8012330(int, int, int); __Func_8012330(a,b,c); }
+static inline void API_Func_80105d4(int a, int b, int c, int d, int e, int f) { extern void __Func_80105d4(int, int, int, int, int, int); __Func_80105d4(a,b,c,d,e,f); }
 
 static inline int API_GetFlag(int a) { extern int __GetFlag(int); return __GetFlag(a); }
 
@@ -140,6 +141,20 @@ static inline void MapActor_Func_8092adc(int x, int actor, int z) {
     __Func_8092adc(actor, x << 6, z);
 }
 
+static inline void API_CopyMapTiles(int a, int b, int c, int d, int e, int f) { extern void __CopyMapTiles(int, int, int, int, int, int); __CopyMapTiles(a, b, c, d, e, f); }
+static inline void API_Func_8093500(int a, int b) { extern void __Func_8093500(int, int); __Func_8093500(a, b); }
+static inline void API_Func_8092b08(int a, int b) { extern void __Func_8092b08(int, int); __Func_8092b08(a, b); }
+static inline void API_Func_8012350(void) { extern void __Func_8012350(void); __Func_8012350(); }
+static inline void API_MapActor_PlayPendingSound(void) { extern void __MapActor_PlayPendingSound(void); __MapActor_PlayPendingSound(); }
+static inline void API_SetCameraTarget(int a, int b) { extern void __SetCameraTarget(int, int); __SetCameraTarget(a, b); }
+static inline void API_MapTransitionOut(void) { extern void __MapTransitionOut(void); __MapTransitionOut(); }
+static inline void API_Func_8093530(void) { extern void __Func_8093530(void); __Func_8093530(); }
+static inline void API_Func_8091e9c(int a) { extern void __Func_8091e9c(int); __Func_8091e9c(a); }
+static inline void API_MapActor_SetIdle(int a) { extern void __MapActor_SetIdle(int); __MapActor_SetIdle(a); }
+static inline void API_MapActor_SetBehavior(int a, int b) { extern void __MapActor_SetBehavior(int, int); __MapActor_SetBehavior(a, b); }
+static inline void API_MapActor_WaitScript(int a) { extern void __MapActor_WaitScript(int); __MapActor_WaitScript(a); }
+static inline int API_StartTask(void (*task)(void), unsigned int priority) { extern int __StartTask(void (*)(void), unsigned int); return __StartTask(task, priority); }
+static inline int API_StopTask(void (*task)(void)) { extern int __StopTask(void (*)(void)); return __StopTask(task); }
 static inline void API_MapTransitionIn(void) { extern void __MapTransitionIn(void); __MapTransitionIn(); }
 static inline void API_WaitMapTransition(void) { extern void __WaitMapTransition(void); __WaitMapTransition(); }
 

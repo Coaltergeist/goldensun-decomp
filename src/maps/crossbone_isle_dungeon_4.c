@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/exports.s");
 
@@ -424,7 +425,54 @@ int OvlFunc_948_2008aa8(int arg0) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ad0.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008b68.s");
+extern void __Actor_SetAnimSpeed(struct Actor *actor, int speed);
+extern void __Actor_SetScript(struct Actor *actor, void *script);
+extern unsigned char gScript_948__0200a6fc[];
+
+void OvlFunc_948_2008b68(void)
+{
+    struct Actor *a;
+
+    if (API_GetFlag(0x9c8) == 0) {
+        return;
+    }
+    if (API_GetFlag(0x9c9) != 0) {
+        return;
+    }
+    API_SetFlag(0x9c9);
+    API_CutsceneStart();
+    API_Func_80933d4(0x80 << 10, 0x80 << 7);
+    API_Func_8093500(0xf, 1);
+    API_Func_8093530();
+    API_Func_8092adc(0xf, 0x80 << 7, 0x14);
+    API_MapActor_Surprise(0xf, 0x81 << 1);
+    API_Func_80925cc(0xf, 2);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(0xf, 0x80 << 9, 0x80 << 8);
+    API_PlaySound(0x98);
+    ((struct Actor *)__MapActor_GetActor(0xf))->motion.y = 0xa0 << 12;
+    API_MapActor_TravelToAnimWait(0xf, 0x92 << 2, 0xa6 << 2);
+    API_Func_8092adc(0xf, 0x80 << 7, 0x14);
+    API_MapActor_Surprise(0xf, 0x81 << 1);
+    API_CutsceneWait(0x1e);
+    API_MapActor_SetSpeed(0xf, 0x80 << 12, 0x80 << 7);
+    API_MapActor_TravelToAnimWait(0xf, 0xa6 << 2, 0xa6 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xba << 2, 0xa6 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xce << 2, 0xa6 << 2);
+    API_CutsceneWait(0xa);
+    API_PlaySound(0xd0);
+    API_Func_8012330(0x80 << 11, 0x80 << 10, 0x80 << 9);
+    API_CutsceneWait(0x14);
+    API_Func_8012330(-1, -1, 0xe666);
+    API_CutsceneWait(0x1e);
+    API_MapActor_SetPos(0xf, 0xde << 18, 0xa6 << 18);
+    a = (struct Actor *)__MapActor_GetActor(0xf);
+    a->sprite->rotation = 0xf8 << 8;
+    a->facing = 0;
+    __Actor_SetAnimSpeed(a, 0);
+    __Actor_SetScript(a, gScript_948__0200a6fc);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ccc.s");
 
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;

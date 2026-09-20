@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern int OvlFunc_959_20082a8();
 extern unsigned int OvlFunc_959_20098e4();
@@ -804,7 +805,27 @@ unsigned int OvlFunc_959_20098e4(unsigned int arg0)
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009918.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009980.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20099e8.s");
+
+extern void OvlFunc_959_2008f30(void);
+extern unsigned int iwram_3001ebc__a8 __asm__("iwram_3001ebc");
+
+void OvlFunc_959_20099e8(void) {
+    struct Actor *actor;
+    int x, z;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    if (__GetFlag(0x35b) == 0) {
+        x = actor->pos.x / 0x100000;
+        z = actor->pos.z / 0x100000;
+        if (x == 0x2b && z > 0x1c && z <= 0x1f) {
+            unsigned short *q = (unsigned short *)(iwram_3001ebc__a8 + (0xb6 << 1));
+            int v = 0x29;
+            *q = v;
+            OvlFunc_959_2008f30();
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009a44.s");
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);
@@ -1074,7 +1095,35 @@ void OvlFunc_959_200a0cc(void)
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a134.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a1c4.s");
+
+extern unsigned char Lconst_240d[] __asm__(".Lconst_240d");
+__asm__(".equ .Lconst_240d, 0x240d");
+
+void OvlFunc_959_200a1c4(void) {
+    int msg;
+
+    API_CutsceneStart();
+    API_MapActor_TravelBy(0, 0, 0);
+    API_MapActor_SetBehavior(0, 1);
+    API_MapActor_SetAnim(0, 1);
+    API_PlaySound(0x71);
+    API_MapActor_Emote(0x15, 0x80 << 1, 0);
+    API_MapActor_Emote(0xd, 0x80 << 1, 0x3c);
+    API_MapActor_Face(0x15, 0, 0);
+    API_MapActor_Face(0xd, 0, 0);
+    msg = (int)Lconst_240d;
+    API_MessageID(msg);
+    API_ActorMessage(0xd, 0);
+    API_MapActor_Emote(0, 0x81 << 1, 0x1e);
+    msg++;
+    API_MessageID(msg);
+    API_ActorMessage(0xd, 0);
+    API_MapTransitionOut();
+    API_CutsceneWait(0x3c);
+    API_Func_8091e9c(0x3c);
+    API_CutsceneEnd();
+    API_SetFlag(0x225);
+}
 
 void OvlFunc_959_200a26c(void) {
     __Func_80105d4(2, 0x52, 1, 2, 0x15, 0x51);
@@ -1087,7 +1136,21 @@ void OvlFunc_959_200a2a0(void) {
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2d4.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a308.s");
+
+void OvlFunc_959_200a308(void) {
+    if (*(short *)(iwram_3001ebc__a8 + 0xcb8) != 0 && API_GetFlag(0x947) == 0) {
+        __Func_801776c(0x1528, 1);
+        __PlaySound(0xbc);
+        __CutsceneWait(1);
+        API_Func_80105d4(6, 0x4d, 1, 2, 0x11, 0x52);
+        __CutsceneWait(5);
+        __Func_80105d4(7, 0x4d, 1, 2, 0x11, 0x52);
+        __CutsceneWait(1);
+        OvlFunc_959_200a26c();
+        API_SetFlag(0x947);
+    }
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a38c.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a410.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a468.s");
@@ -1152,13 +1215,85 @@ void OvlFunc_959_200a52c(void)
     __MapActor_Face(3, 0xc, 0);
     __CutsceneWait(0xf);
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a5f8.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a69c.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a718.s");
+
+void OvlFunc_959_200a5f8(void) {
+    API_Func_8012330(0x80 << 11, 0x80 << 11, 0x80 << 9);
+    API_PlaySound(0x8d);
+    API_CutsceneWait(0x50);
+    API_PlaySound(0x90 << 1);
+    API_CutsceneWait(5);
+    API_PlaySound(0x91);
+    API_Func_80105d4(0x10, 0x4b, 7, 4, 0x1a, 0x37);
+    API_Func_8012330(-1, -1, 0xe666);
+    API_MapActor_Emote(0, 0x80 << 1, 0);
+    API_MapActor_Emote(1, 0x80 << 1, 0);
+    API_MapActor_Emote(2, 0x80 << 1, 0);
+    API_MapActor_Emote(3, 0x80 << 1, 0);
+    API_MapActor_Emote(0xc, 0x80 << 1, 0);
+    API_CutsceneWait(0x3c);
+}
+
+void OvlFunc_959_200a69c(void) {
+    API_Func_8093500(0xb, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x3c);
+    API_MessageID(0x247c);
+    API_ActorMessage(0xd, 0);
+    API_MapActor_SetSpeed(0xb, 0x80 << 9, 0x80 << 8);
+    API_MapActor_SetSpeed(0xf, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnim(0xb, 0xec << 1, 0xb4);
+    API_MapActor_TravelToAnim(0xf, 0xec << 1, 0xb4);
+    API_SetCameraTarget(0xb, 1);
+    API_MapActor_WaitMovement(0xb);
+    API_MapActor_SetAnim(0xb, 4);
+    API_CutsceneWait(0x1e);
+}
+
+void OvlFunc_959_200a718(void) {
+    API_MapActor_SetSpeed(2, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnim(2, 0xfc << 1, 0xd8);
+    API_MapActor_SetSpeed(3, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnim(3, 0xdc << 1, 0xe8);
+    API_MapActor_SetSpeed(1, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnim(1, 0xf0 << 1, 0xe0);
+    __MapActor_WaitMovement(1);
+    API_Func_8092adc(1, 0xc0 << 8, 0);
+    __MapActor_WaitMovement(2);
+    API_Func_8092adc(2, 0xc0 << 8, 0);
+    __MapActor_WaitMovement(3);
+    API_Func_8092adc(3, 0xc0 << 8, 0);
+    API_Func_8092adc(0, 0xc0 << 8, 0);
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a7b0.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200b054.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c638.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c704.s");
+
+extern unsigned char Lconst_2411[] __asm__(".Lconst_2411");
+__asm__(".equ .Lconst_2411, 0x2411");
+
+void OvlFunc_959_200c704(void) {
+    int msg;
+
+    API_MapActor_Emote(0x15, 0x101, 0x1e);
+    API_Func_8092adc(0x15, 0xd0 << 8, 0);
+    API_CutsceneWait(0x32);
+    API_Func_8092adc(0x15, 0xb0 << 8, 0);
+    API_CutsceneWait(0x32);
+    API_Func_8092adc(0x15, 0xa0 << 7, 0);
+    API_CutsceneWait(0x32);
+    msg = (int)Lconst_2411;
+    API_MessageID(msg);
+    API_ActorMessage(0x15, 0);
+    API_MapActor_SetAnim(0x15, 4);
+    API_CutsceneWait(0x3c);
+    API_Func_8092adc(0x15, 0xb0 << 8, 0);
+    msg++;
+    API_CutsceneWait(0x28);
+    API_MessageID(msg);
+    API_ActorMessage(0x15, 0);
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c794.s");
 
 void OvlFunc_959_200c928(void) {
@@ -1181,7 +1316,64 @@ void OvlFunc_959_200c964(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c9a0.s");
+void OvlFunc_959_200c9a0(void) {
+    int msg;
+
+    if (API_GetFlag(0x941)) {
+        if (!API_GetFlag(0x94e) && !API_GetFlag(0xc5 << 2)) {
+            msg = 0x2561;
+            API_MessageID(msg);
+            API_ActorMessage(0x18, 0);
+            API_Func_80925cc(0x18, 1);
+            API_CutsceneWait(0x1e);
+            API_MapActor_SetSpeed(0x18, 0x1999, 0xccc);
+            API_MapActor_TravelBy(0x18, -4, 0);
+            API_MapActor_WaitMovement(0x18);
+            API_MapActor_SetAnim(0x18, 3);
+            API_CutsceneWait(0x3c);
+            API_MapActor_SetSpeed(0x18, 0x3333, 0x1999);
+            API_MapActor_TravelBy(0x18, -6, 0);
+            API_MapActor_Face(0x18, 0, 0);
+            API_MapActor_WaitMovement(0x18);
+            API_MessageID(msg + 1);
+            API_ActorMessage(0x18, 0);
+            API_Func_80925cc(0x18, 1);
+            API_MapActor_Face(0x19, 0x18, 0);
+            API_MessageID(msg + 2);
+            API_ActorMessage(0x18, 0);
+            API_CutsceneWait(0x46);
+            API_MapActor_SetAnim(0x19, 3);
+            API_CutsceneWait(0x3c);
+            API_MapActor_SetSpeed(0x19, 0x6666, 0x3333);
+            API_MapActor_TravelToAnim(0x19, 0xdc << 2, 0x70);
+            API_MapActor_WaitMovement(0x19);
+            API_Func_8092adc(0x19, 0xd0 << 8, 0);
+            API_MessageID(msg + 3);
+            API_ActorMessage(0x18, 0);
+            API_MapActor_SetAnim(0x18, 3);
+            API_CutsceneWait(0x46);
+            API_MapActor_TravelBy(0x18, 8, 0);
+            API_MapActor_WaitMovement(0x18);
+            msg += 4;
+            API_MapActor_SetAnim(0x18, 5);
+            API_MessageID(msg);
+            API_ActorMessage(0x18, 0);
+            API_MapActor_TravelToAnim(0, 0xe0 << 2, 0x78);
+            API_MapActor_WaitMovement(0);
+            API_MapActor_TurnToFaceActor(0, 0x19, 0);
+            API_CutsceneWait(0x3c);
+            API_MapActor_SetAnim(0x19, 3);
+            API_CutsceneWait(0x1e);
+            API_SetFlag(0xc5 << 2);
+        } else {
+            API_MessageID(0x2567);
+            API_ActorMessage(0x18, 0);
+        }
+    } else {
+        API_MessageID(0x244d);
+        API_ActorMessage(0x18, 0);
+    }
+}
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -1307,7 +1499,18 @@ void OvlFunc_959_200cd0c(void) {
 
 void OvlFunc_959_200cd4c(void) {}
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200cd50.s");
+extern unsigned char Lconst_256c[] __asm__(".Lconst_256c");
+__asm__(".equ .Lconst_256c, 0x256c");
+
+void OvlFunc_959_200cd50(void) {
+    int msg = (int)Lconst_256c;
+
+    API_MessageID(msg);
+    API_ActorMessage(0x800d, 0);
+    if (__CheckPartyItem(0xea) != -1) {
+        __Func_801776c(msg + 2, 1);
+    }
+}
 
 void OvlFunc_959_200cd88(void) {
     __MessageID(0x256d);
