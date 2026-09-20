@@ -96,7 +96,6 @@ int Kolima_GetEvents(void)
     if (ev == (int)_EVENT_27) return (int)Lm911_3590;
     return (int)Lm911_33b0;
 }
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20082b4.s");
 void __CutsceneStart(void);
 void __PlaySound(int);
 void *__MapActor_GetActor(int);
@@ -105,7 +104,6 @@ void __MapActor_TravelBy(int, int, int);
 void __Func_8091e9c(int);
 void __CutsceneEnd(void);
 void __Func_8010560(void *, int, int);
-void OvlFunc_911_20082b4(int);
 
 extern unsigned char iwram_3001ebc[];
 extern unsigned char Lm911_2e48[] __asm__(".Lm911_2e48");
@@ -113,6 +111,18 @@ extern unsigned char Lm911_2e48[] __asm__(".Lm911_2e48");
 static inline void MapActor_SetSpeed(int actor, int x, int y)
 {
     __MapActor_SetSpeed(actor, x << 8, y << 7);
+}
+
+void OvlFunc_911_20082b4(int arg0){
+    unsigned char *a;
+
+    a = (unsigned char *)__MapActor_GetActor(0);
+    a[0x55] = 0;
+    MapActor_SetSpeed(0, 0x80, 0x80);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -8);
+    *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c8) = 0x10;
+    __Func_8091e9c(arg0);
 }
 
 void OvlFunc_911_2008304(void)

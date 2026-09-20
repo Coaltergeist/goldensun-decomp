@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/sol_sanctum_2/exports.s");
 
@@ -118,7 +119,16 @@ void OvlFunc_891_20095fc(void) {
 }
 
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009624.s");
+void OvlFunc_891_2009624(void) {
+    int x = ((struct Actor *)__MapActor_GetActor(0))->pos.x >> 20;
+
+    if (((struct Actor *)__MapActor_GetActor(0))->pos.z >> 20 == 8) {
+        if ((unsigned int)(x - 0x11) <= 1) {
+            API_Func_8012078(2, 0x88 << 17, 0x80 << 16, 0xff);
+            API_Func_8012078(2, 0x90 << 17, 0x80 << 16, 0xff);
+        }
+    }
+}
 
 
 void OvlFunc_891_200966c(void)

@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/exports.s");
 
@@ -572,8 +573,22 @@ void OvlFunc_965_2009214(void)
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009238.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009b10.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a46c.s");
 extern void __Func_8010788(int, int, int, int, int, int);
+
+void OvlFunc_965_200a46c(void) {
+    int e;
+    int f;
+
+    if (API_GetFlag(0x985) == 0) {
+        e = 0x11;
+        f = 0x4e;
+        __Func_8010788(0x24, 0x4e, 1, 2, e, f);
+    } else {
+        e = 0x11;
+        f = 0x4e;
+        __Func_8010788(0x22, 0x4e, 1, 2, e, f);
+    }
+}
 
 void OvlFunc_965_200a4b0(void)
 {
@@ -672,7 +687,20 @@ void OvlFunc_965_200a6b8(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a6fc.s");
+extern struct Actor *OvlFunc_965_200a660(struct Actor *);
+
+void OvlFunc_965_200a6fc(void) {
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *b = OvlFunc_965_200a660(a);
+
+    if (b != 0) {
+        if ((b->pos.y - a->pos.y < 0 ? -(b->pos.y - a->pos.y) : (b->pos.y - a->pos.y)) >= 0x80000) {
+            return;
+        }
+        OvlFunc_965_20080c4();
+    }
+}
+
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a738.s");
 extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];
 extern unsigned char Lm965_391c[] __asm__(".Lm965_391c");

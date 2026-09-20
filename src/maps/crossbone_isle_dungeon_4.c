@@ -564,9 +564,20 @@ void OvlFunc_948_2009070(void)
 extern int __CheckPartyItem(int);
 extern void __Func_80789dc(int);
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20090b8.s");
+void OvlFunc_948_20090b8(int arg0) {
+    int flag;
 
-extern void OvlFunc_948_20090b8(int);
+    if (*(unsigned short *)(__MapActor_GetActor(0) + 6) == 0xc000) {
+        flag = arg0 + 0x9c0;
+        if (API_GetFlag(flag) == 0) {
+            if (__CheckPartyItem(0xf4) != -1) {
+                API_SetFlag(flag);
+                OvlFunc_948_2008f40(arg0 | 0x100);
+                __Func_80789dc(0xf4);
+            }
+        }
+    }
+}
 
 void OvlFunc_948_2009108(void) {
     OvlFunc_948_20090b8(0);

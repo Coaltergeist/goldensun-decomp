@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/altin_peak/exports.s");
 
@@ -107,6 +108,7 @@ extern unsigned char Lm932_4c40[] __asm__(".Lm932_4c40");
 extern unsigned char Lm932_4cd0[] __asm__(".Lm932_4cd0");
 extern unsigned char Lconst_4d[] __asm__(".Lconst_4d");
 extern unsigned char Lconst_4f[] __asm__(".Lconst_4f");
+extern unsigned char Lconst_50[] __asm__(".Lconst_50");
 extern unsigned char Lconst_51[] __asm__(".Lconst_51");
 extern unsigned char Lconst_52[] __asm__(".Lconst_52");
 extern unsigned char Lconst_53[] __asm__(".Lconst_53");
@@ -116,6 +118,7 @@ extern unsigned char Lconst_56[] __asm__(".Lconst_56");
 extern unsigned char Lconst_57[] __asm__(".Lconst_57");
 __asm__(".equ .Lconst_4d, 0x4d");
 __asm__(".equ .Lconst_4f, 0x4f");
+__asm__(".equ .Lconst_50, 0x50");
 __asm__(".equ .Lconst_51, 0x51");
 __asm__(".equ .Lconst_52, 0x52");
 __asm__(".equ .Lconst_53, 0x53");
@@ -182,8 +185,39 @@ void OvlFunc_932_20083b4(void) {
 	__StartMapBattle(0x35, 2);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20083e0.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200840c.s");
+void OvlFunc_932_20083e0(void) {
+    GlobalState *p = &gState;
+    *(unsigned char *)((char *)p + 0x22b) = 3;
+    __Func_8091f90((int)Lconst_51, 0x63);
+    __StartMapBattle(0x35, 2);
+}
+
+extern void __Actor_SetSpriteFlags(void *, int);
+
+void OvlFunc_932_200840c(void)
+{
+  struct Actor *a;
+  int s1;
+  int s2;
+  int x;
+
+  a = (struct Actor *) __MapActor_GetActor(0xa);
+  if (a != 0) {
+    s1 = 0x18;
+    s2 = 0x1a;
+    API_Func_8010704(0x18, 0x1b, 2, 1, s1, s2);
+    x = a->pos.x >> 20;
+    if (x == 0x19) {
+      API_Func_8010704(0, 0, 1, 1, x, s2);
+    } else {
+      API_Func_8010704(0, 0, 1, 1, s1, s2);
+    }
+    __Actor_SetSpriteFlags(a, 0);
+    a->__unk55 = 0;
+    __Func_800fe9c();
+    API_WaitFrames(1);
+  }
+}
 
 void OvlFunc_932_200847c(void)
 {
@@ -211,7 +245,21 @@ unsigned char f23;
   __SetFlag(0x200);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20084cc.s");
+void OvlFunc_932_20084cc(void)
+{
+  struct Actor *actor;
+  int s1;
+  int s2;
+
+  actor = (struct Actor *) __MapActor_GetActor(9);
+  s1 = 0x11;
+  s2 = 0xd;
+  API_Func_8010704(0x1d, 1, 3, 1, s1, s2);
+  if (actor != 0) {
+    actor->__unk55 = 2;
+  }
+  API_SetFlag(0x201);
+}
 
 void OvlFunc_932_200850c(void)
 {
@@ -469,8 +517,56 @@ void OvlFunc_932_2008b0c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008b3c.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008bd8.s");
+void OvlFunc_932_2008b3c(void) {
+  int s1;
+  int s2;
+
+  API_CutsceneStart();
+  API_Func_801776c(0x1528, 1);
+  API_PlaySound(0x7d);
+  if (API_GetFlag(0x326)) {
+    API_Func_8010704(0xf, 0x5d, 1, 1, 0x10, 0x5c);
+    s1 = 1;
+    s2 = 2;
+    __CopyMapTiles(0x2f, 0x1d, 0x10, 0x1c, s1, s2);
+    API_ClearFlag(0x326);
+  } else {
+    API_Func_8010704(0x11, 0x5d, 1, 1, 0x10, 0x5c);
+    s1 = 1;
+    s2 = 2;
+    __CopyMapTiles(0x2e, 0x1d, 0x10, 0x1c, s1, s2);
+    API_SetFlag(0x326);
+  }
+  API_WaitFrames(0x14);
+  __MapActor_PlayPendingSound();
+  API_CutsceneEnd();
+}
+
+void OvlFunc_932_2008bd8(void)
+{
+  int s1;
+  int s2;
+
+  API_CutsceneStart();
+  API_Func_801776c(0x1528, 1);
+  API_PlaySound(0x7d);
+  if (API_GetFlag(0x327)) {
+    API_Func_8010704(0x1c, 0x52, 1, 1, 0x1d, 0x51);
+    s1 = 1;
+    s2 = 2;
+    __CopyMapTiles(0x2f, 0x1c, 0x1d, 0x11, s1, s2);
+    API_ClearFlag(0x327);
+  } else {
+    API_Func_8010704(0x1e, 0x52, 1, 1, 0x1d, 0x51);
+    s1 = 1;
+    s2 = 2;
+    __CopyMapTiles(0x2e, 0x1c, 0x1d, 0x11, s1, s2);
+    API_SetFlag(0x327);
+  }
+  API_WaitFrames(0x14);
+  __MapActor_PlayPendingSound();
+  API_CutsceneEnd();
+}
 
 
 void OvlFunc_932_2008c74(void) {
@@ -562,7 +658,48 @@ int AltinPeak_GetEvents(void)
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009770.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009838.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2009d0c.s");
-INCLUDE_ASM("asm/maps/altin_peak/AltinPeak_MapInit.s");
+extern unsigned char *iwram_3001ebc;
+extern void OvlFunc_932_200a0d0(void);
+extern void OvlFunc_932_200a310(void);
+extern void OvlFunc_932_200a428(void);
+extern void OvlFunc_932_200a490(void);
+extern void OvlFunc_932_200a5c0(void);
+extern void OvlFunc_932_200a6c0(void);
+extern void OvlFunc_932_200a804(void);
+extern void OvlFunc_932_200a934(void);
+extern void OvlFunc_932_200a9dc(void);
+
+int AltinPeak_MapInit(void)
+{
+    int o;
+    short a;
+
+    *(int *)(iwram_3001ebc + (0xe0 << 1)) = 0x81 << 2;
+    o = 0xe0;
+    o <<= 1;
+    a = *(short *)((char *)&gState + o);
+    if (a == (int)Lconst_4d) {
+        OvlFunc_932_200a0d0();
+    } else if (a == (int)Lconst_4f) {
+        OvlFunc_932_200a310();
+    } else if (a == (int)Lconst_50) {
+        OvlFunc_932_200a428();
+    } else if (a == (int)Lconst_51) {
+        OvlFunc_932_200a490();
+    } else if (a == (int)Lconst_52) {
+        OvlFunc_932_200a5c0();
+    } else if (a == (int)Lconst_53) {
+        OvlFunc_932_200a6c0();
+    } else if (a == (int)Lconst_55) {
+        OvlFunc_932_200a804();
+    } else if (a == (int)Lconst_56) {
+        OvlFunc_932_200a934();
+    } else if (a == (int)Lconst_57) {
+        OvlFunc_932_200a9dc();
+    }
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a0d0.s");
 extern void __Func_8092950(int a, int b);
 
@@ -612,7 +749,24 @@ void OvlFunc_932_200a310(void)
         __CopyMapTiles(2, 1, 0x18, 0xb, s1, s2);
     }
 }
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a428.s");
+
+void OvlFunc_932_200a428(void){
+    int o;
+    int a;
+
+    if (API_GetFlag(0x8fe) != 0) {
+        *(unsigned short *)((char *)iwram_3001e70 + 0x14) &= 0xfdff;
+    } else {
+        API_Func_8010704(0x34, 0x2a, 1, 1, 0x35, 0x2a);
+    }
+
+    o = 0xe1;
+    o <<= 1;
+    a = *(unsigned short *)((char *)&gState + o);
+    if ((unsigned short)(a - 6) <= 1) {
+        API_ClearFlag(0x12f);
+    }
+}
 void OvlFunc_932_200a490(void)
 {
     unsigned int r3;
@@ -717,7 +871,44 @@ void OvlFunc_932_200a5c0(void)
 }
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a6c0.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a804.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a934.s");
+
+extern void __Func_8092b08(int, int);
+extern void OvlFunc_932_200b028(void);
+
+void OvlFunc_932_200a934(void)
+{
+    int f;
+    int o;
+    short a;
+    struct Actor *actor;
+
+    f = API_GetFlag(0x909);
+    if (f != 0) {
+        API_MapActor_SetPos(8, 0, 0);
+        API_MapActor_SetPos(9, 0, 0);
+    } else {
+        __Actor_SetSpriteFlags((void *)__MapActor_GetActor(8), 0);
+        __Func_8092b08(9, 3);
+        __Actor_SetSpriteFlags((void *)__MapActor_GetActor(9), 0);
+        ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 0;
+    }
+
+    o = 0xe1;
+    o <<= 1;
+    a = *(short *)((char *)&gState + o);
+    if (a == 1 || a == 0x62) {
+        if (API_GetFlag(0x109) == 0) {
+            actor = (struct Actor *)__MapActor_GetActor(0);
+            API_CutsceneStart();
+            actor->pos.y = 0x80 << 13;
+            API_CutsceneEnd();
+        }
+    } else if (a == 0x63) {
+        if (API_GetFlag(0x109) == 0) {
+            OvlFunc_932_200b028();
+        }
+    }
+}
 
 static inline void MapActor_SetPos(int actor, int x, int z) {
     __MapActor_SetPos(actor, x << 16, z << 17);
@@ -927,7 +1118,31 @@ void OvlFunc_932_200aeec(void)
     *p = 0;
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200af10.s");
+void OvlFunc_932_200af10(void) {
+    GlobalState *p;
+
+    API_CutsceneStart();
+    API_Func_80933d4(0x9999, 0x1333);
+    API_Func_80933f8(0xa4 << 17, -1, 0xae << 15, 1);
+    API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+    API_MapActor_TravelToAnimWait(0, 0xa4 << 1, 0x74);
+    API_PlaySound(0x94);
+    __StartTask(OvlFunc_932_200aeec, 0xc8 << 4);
+    API_Func_8012330(0x80 << 9, 0x80 << 9, 0x80 << 9);
+    API_MapActor_SetSpeed(8, 0x1999, 0xccc);
+    API_MapActor_SetSpeed(9, 0x1999, 0xccc);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelTo(8, 0xa4 << 1, 0x68);
+    API_MapActor_TravelTo(9, 0xa4 << 1, 0x6c);
+    API_CutsceneWait(0x3c);
+    API_MapActor_Emote(0, 0x80 << 1, 0);
+    API_Func_809259c(0, 2);
+    API_MapActor_WaitMovement(8);
+    p = &gState;
+    *(unsigned char *)((char *)p + 0x22b) = 3;
+    __Func_8091f90((int)Lconst_56, 0x63);
+    __StartMapBattle(0x35, 3);
+}
 
 extern unsigned int iwram_3001e40__s __asm__("iwram_3001e40");
 
