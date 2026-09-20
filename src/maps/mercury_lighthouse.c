@@ -369,7 +369,23 @@ void *MercuryLighthouse_GetExits(void) {
     return (void *)gScript_883__0200e614;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/MercuryLighthouse_GetActors.s");
+extern unsigned char _EVENT_36[];
+extern unsigned char Lm924_6700[] __asm__(".Lm924_6700");
+extern unsigned char Lm924_67a8[] __asm__(".Lm924_67a8");
+extern unsigned char Lm924_6838[] __asm__(".Lm924_6838");
+extern unsigned char Lm924_6988[] __asm__(".Lm924_6988");
+extern unsigned char Lm924_66e8[] __asm__(".Lm924_66e8");
+
+void *MercuryLighthouse_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_36) return Lm924_6700;
+    if (ev == (int)_EVENT_37) return Lm924_67a8;
+    if (ev == (int)_EVENT_38) return Lm924_6838;
+    if (ev == (int)_EVENT_39) return Lm924_6988;
+    return Lm924_66e8;
+}
 
 extern void OvlFunc_924_200d900(void);
 
@@ -402,7 +418,6 @@ void OvlFunc_924_2008f14(void)
   __CutsceneEnd();
 }
 
-extern unsigned char _EVENT_36[], _EVENT_37[], _EVENT_38[];
 extern unsigned char Lm924_6ad8[] __asm__(".Lm924_6ad8");
 extern unsigned char Lm924_6c10[] __asm__(".Lm924_6c10");
 extern unsigned char Lm924_6d60[] __asm__(".Lm924_6d60");
@@ -419,7 +434,21 @@ int MercuryLighthouse_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008f84.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ffc.s");
+
+extern void __Actor_SetSpriteFlags(unsigned char *, int);
+extern void __Func_8092b08(int, int);
+
+void OvlFunc_924_2008ffc(int a) {
+    API_CutsceneStart();
+    API_PlaySound(0xe4);
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    __Func_8092b08(0, 2);
+    API_MapActor_TravelBy(0, 0, -8);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    API_CutsceneWait(8);
+    API_MapActor_SetPos(0, (a << 19) + (0x80 << 12), 0);
+    API_CutsceneWait(0x1e);
+}
 
 extern int *iwram_3001ebc;
 extern int OvlFunc_924_2008f84(int);

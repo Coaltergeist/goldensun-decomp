@@ -1,6 +1,7 @@
 /* rom_79e5c0 (overlay file 911): consolidated TU — kolima map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/kolima/exports.s");
 
@@ -57,7 +58,25 @@ void *Kolima_GetExits(void) {
     return (void *)gOvl_0200b040;
 }
 
-INCLUDE_ASM("asm/maps/kolima/Kolima_GetActors.s");
+extern unsigned char _EVENT_24[];
+extern unsigned char Lm911_3098[] __asm__(".Lm911_3098");
+extern unsigned char Lm911_3368[] __asm__(".Lm911_3368");
+extern unsigned char Lm911_3080[] __asm__(".Lm911_3080");
+extern void OvlFunc_911_20080a0(void *);
+
+void *Kolima_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_24) {
+        if (!API_GetFlag(0x845)) {
+            OvlFunc_911_20080a0(Lm911_3098);
+        }
+        return Lm911_3098;
+    }
+    if (ev == (int)_EVENT_27) return Lm911_3368;
+    return Lm911_3080;
+}
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008230.s");
 
 extern void __Func_80955b0(int a, int b, int c);
@@ -77,7 +96,6 @@ int Kolima_GetEvents(void)
     if (ev == (int)_EVENT_27) return (int)Lm911_3590;
     return (int)Lm911_33b0;
 }
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20082b4.s");
 void __CutsceneStart(void);
 void __PlaySound(int);
 void *__MapActor_GetActor(int);
@@ -86,7 +104,6 @@ void __MapActor_TravelBy(int, int, int);
 void __Func_8091e9c(int);
 void __CutsceneEnd(void);
 void __Func_8010560(void *, int, int);
-void OvlFunc_911_20082b4(int);
 
 extern unsigned char iwram_3001ebc[];
 extern unsigned char Lm911_2e48[] __asm__(".Lm911_2e48");
@@ -94,6 +111,18 @@ extern unsigned char Lm911_2e48[] __asm__(".Lm911_2e48");
 static inline void MapActor_SetSpeed(int actor, int x, int y)
 {
     __MapActor_SetSpeed(actor, x << 8, y << 7);
+}
+
+void OvlFunc_911_20082b4(int arg0){
+    unsigned char *a;
+
+    a = (unsigned char *)__MapActor_GetActor(0);
+    a[0x55] = 0;
+    MapActor_SetSpeed(0, 0x80, 0x80);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -8);
+    *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c8) = 0x10;
+    __Func_8091e9c(arg0);
 }
 
 void OvlFunc_911_2008304(void)

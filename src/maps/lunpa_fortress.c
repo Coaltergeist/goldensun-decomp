@@ -297,9 +297,9 @@ void OvlFunc_959_2008608(struct Pk arg)
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20088c0.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState__entr;
-extern GlobalState__entr gState__entr __asm__("gState");
-extern unsigned char _EVENT_a0[], _EVENT_a1[], _EVENT_a2[];
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_6a[], _EVENT_a0[], _EVENT_a1[], _EVENT_a2[], _EVENT_a3[];
 extern unsigned char Lm959_62a4[] __asm__(".Lm959_62a4");
 extern unsigned char Lm959_64b4[] __asm__(".Lm959_64b4");
 extern unsigned char Lm959_6754[] __asm__(".Lm959_6754");
@@ -307,7 +307,7 @@ extern unsigned char Lm959_6814[] __asm__(".Lm959_6814");
 
 void *LunpaFortress_GetEntrances(void)
 {
-    GlobalState__entr *p = &gState__entr;
+    GlobalState *p = &gState;
     int ev = *(short *)((char *)p + 0x1c0);
     if (ev == (int)_EVENT_a0) return Lm959_62a4;
     if (ev == (int)_EVENT_a1) return Lm959_64b4;
@@ -319,15 +319,41 @@ int LunpaFortress_GetSpecialExits(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetExits.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_GetActors.s");
-extern unsigned char _EVENT_a0[], _EVENT_a1[], _EVENT_a2[];
+extern unsigned char Lm959_6910[] __asm__(".Lm959_6910");
+extern unsigned char Lm959_697c[] __asm__(".Lm959_697c");
+extern unsigned char Lm959_68a4[] __asm__(".Lm959_68a4");
+
+void *LunpaFortress_GetExits(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_a1) return Lm959_6910;
+    if (ev == (int)_EVENT_a2 || ev == (int)_EVENT_a3) return Lm959_697c;
+    return Lm959_68a4;
+}
+
+extern unsigned char Lm959_69d0[] __asm__(".Lm959_69d0");
+extern unsigned char Lm959_6e08[] __asm__(".Lm959_6e08");
+extern unsigned char Lm959_6c28[] __asm__(".Lm959_6c28");
+extern unsigned char Lm959_6ac0[] __asm__(".Lm959_6ac0");
+extern unsigned char Lm959_6e98[] __asm__(".Lm959_6e98");
+extern unsigned char Lm959_69b8[] __asm__(".Lm959_69b8");
+
+void *LunpaFortress_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_6a) return Lm959_69d0;
+    if (ev == (int)_EVENT_a2) return Lm959_6e08;
+    if (ev == (int)_EVENT_a1) return Lm959_6c28;
+    if (ev == (int)_EVENT_a0) return Lm959_6ac0;
+    if (ev == (int)_EVENT_a3) return Lm959_6e98;
+    return Lm959_69b8;
+}
 extern unsigned char Lm959_6ff4[] __asm__(".Lm959_6ff4");
 extern unsigned char Lm959_7258[] __asm__(".Lm959_7258");
 extern unsigned char Lm959_7528[] __asm__(".Lm959_7528");
 extern unsigned char Lm959_763c[] __asm__(".Lm959_763c");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
 
 int LunpaFortress_GetEvents(void)
 {
@@ -397,7 +423,17 @@ void OvlFunc_959_2008c78(void)
     OvlFunc_959_2008b4c();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008c90.s");
+extern int L7714[][2] __asm__(".Lm959_7714");
+extern void __Func_80105d4(int, int, int, int, int, int);
+
+void OvlFunc_959_2008c90(int idx) {
+    int x = L7714[idx][0];
+    int y = L7714[idx][1];
+    __Func_80105d4(0, 0x4d, 1, 3, x, y);
+    __Func_80105d4(1, 0x4d, 1, 1, x + 1, y);
+    __Func_80105d4(x, y - 0x30, 1, 1, x, y - 0x2e);
+}
+
 extern unsigned char iwram_3001ebc[];
 extern int __CheckPartyItem(int);
 extern void __PlaySound(int);
@@ -1039,8 +1075,17 @@ void OvlFunc_959_200a0cc(void)
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a134.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a1c4.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a26c.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2a0.s");
+
+void OvlFunc_959_200a26c(void) {
+    __Func_80105d4(2, 0x52, 1, 2, 0x15, 0x51);
+    API_Func_8010704(0x15, 0x20, 1, 1, 0x15, 0x22);
+}
+
+void OvlFunc_959_200a2a0(void) {
+    __Func_80105d4(2, 0x54, 1, 2, 6, 0x37);
+    API_Func_8010704(5, 9, 1, 1, 6, 0xa);
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2d4.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a308.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a38c.s");

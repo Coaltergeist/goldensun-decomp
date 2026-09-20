@@ -1,6 +1,7 @@
 /* rom_78ef88 (overlay file 896): consolidated TU — elemental_stars map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2008314.s");
 
@@ -62,7 +63,24 @@ INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200978c.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_2009d04.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a27c.s");
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a400.s");
-INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a674.s");
+
+void OvlFunc_896_200a674(void) {
+    API_CutsceneStart();
+    if (API_GetFlag(0x83e)) {
+        API_MessageID(0x10cb);
+        API_ActorMessage(9, 0);
+    } else {
+        if (API_GetFlag(0x83c) == 0) {
+            API_MessageID(0x1079);
+        } else {
+            API_MessageID(0x107b);
+        }
+        API_MapActor_TurnToFaceActor(9, 0, 0);
+        API_CutsceneWait(10);
+        API_ActorMessage(9, 0);
+    }
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a6e0.s");
 
 void OvlFunc_896_200a74c(void)

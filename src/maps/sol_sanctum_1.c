@@ -62,7 +62,20 @@ void OvlFunc_890_2008054(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008108.s");
+
+void OvlFunc_890_2008108(void) {
+	if (API_GetFlag(0x80 << 2) != 0) {
+        return;
+    }
+	API_CutsceneStart();
+	__Func_8091200(0x80 << 9, 1);
+	__Func_8091254(0x14);
+	API_SetFlag(0x80 << 2);
+	API_ClearFlag(0x201);
+	API_ClearFlag(0x202);
+	API_CutsceneEnd();
+}
+
 void OvlFunc_890_2008150(void)
 {
     if (OvlFunc_890_200a5b0()) {
@@ -90,7 +103,17 @@ void OvlFunc_890_2008150(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20081ec.s");
+
+void OvlFunc_890_20081ec(void) {
+	if (API_GetFlag(0x202) != 0) {
+        return;
+    }
+	API_Func_8091200(0x202db1, 1);
+	__Func_8091254(0x14);
+	API_SetFlag(0x202);
+	API_ClearFlag(0x80 << 2);
+	API_ClearFlag(0x201);
+}
 
 /* OvlFunc_890_200822c; *(vu16*)0x05000000 = 0.
  * Address (0xa0<<19) and value (0) both synthesized. Value var FIRST -> r2,
@@ -620,7 +643,30 @@ void OvlFunc_890_2009790(void)
     __Func_8091e9c(5);
 }
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009a58.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009be8.s");
+
+void OvlFunc_890_2009be8(void) {
+	API_PlaySound(0x15);
+	API_MapActor_TravelToAnimWait(0, 0xbc << 1, 0xb8);
+	API_MapActor_SetAnim(0, 0);
+	API_MapActor_SetPos(0x10, 0xbc << 17, 0xb8 << 16);
+	API_MapActor_SetSpeed(0x10, 0x80 << 9, 0x80 << 8);
+	API_MapActor_TravelToAnimWait(0x10, 0xc4 << 1, 0xa8);
+	API_Func_8092adc(0x10, 0x80 << 8, 0x1e);
+	API_MapActor_SetAnim(0x10, 1);
+	API_MessageID(0x102b);
+	API_MapActor_Jump(0x10, 4, 0x1e);
+	OvlFunc_890_200a5fc(0x10, 6);
+	API_Func_80925cc(0, 2);
+	API_CutsceneWait(6);
+	API_MapActor_DoAnim(0x10, 3);
+	OvlFunc_890_200a5fc(0x10, 6);
+	API_MapActor_TravelToAnimWait(0x10, 0xbc << 1, 0xb8);
+	API_MapActor_SetPos(0x10, 0xc9 << 19, 0xc9 << 19);
+	API_CutsceneWait(4);
+	API_SetFlag(0x811);
+}
+
+
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009ca8.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/SolSanctum1_MapInit.s");
 

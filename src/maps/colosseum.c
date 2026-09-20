@@ -157,9 +157,9 @@ void OvlFunc_953_20084c8(void) {
     extern void __ActorMessage(int, int);
     extern void __CutsceneEnd(void);
 
-    
 
-    
+
+
     __CutsceneStart();
     API_MapActor_Surprise((0xe), (0x102));
     __Func_80925cc((0xe), 2);
@@ -333,7 +333,23 @@ INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a4d8.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a5f0.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a668.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a820.s");
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a904.s");
+
+extern void __MapTransitionOut(void);
+extern void __Func_8091e9c(int);
+
+void OvlFunc_953_200a904(void) {
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x19999, 0xcccc);
+    API_MapTransitionIn();
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelToWait(0, 0x320, 0x1ac);
+    API_MapActor_TravelToWait(0, 0x2bc, 0x1ac);
+    API_MapActor_TravelTo(0, 0x258, 0x1ac);
+    __MapTransitionOut();
+    API_WaitMapTransition();
+    __Func_8091e9c(0x16);
+}
+
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a964.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200ab1c.s");
 INCLUDE_ASM("asm/maps/colosseum/colosseum_data.s");

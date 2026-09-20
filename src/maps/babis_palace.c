@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "message.h"
 
 INCLUDE_ASM("asm/maps/babis_palace/exports.s");
 
@@ -31,8 +32,35 @@ void *BabisPalace_GetExits(void) {
     return (void *)gOvl_0200ca8c;
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_GetActors.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20080c8.s");
+extern unsigned char Lm952_4b3c[] __asm__(".Lm952_4b3c");
+extern unsigned char Lm952_4e6c[] __asm__(".Lm952_4e6c");
+extern unsigned char Lm952_4d64[] __asm__(".Lm952_4d64");
+extern unsigned char Lm952_4b84[] __asm__(".Lm952_4b84");
+
+void *BabisPalace_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_8b) return Lm952_4b3c;
+    if (API_GetFlag(0x950)) return Lm952_4e6c;
+    if (API_GetFlag(0x962)) return Lm952_4d64;
+    return Lm952_4b84;
+}
+
+extern int __Func_8091c7c(int, int);
+void OvlFunc_952_20080c8(int a) {
+    int msg = MSG_1ff1;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+    } else {
+        API_MessageID(msg + 2);
+    }
+    API_ActorMessage(a, 0);
+}
+
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008264.s");
 

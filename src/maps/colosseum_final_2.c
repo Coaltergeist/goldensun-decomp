@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern unsigned char gOvl_0200c414[];
 
@@ -32,9 +33,24 @@ void OvlFunc_955_2008050(void) {
     OvlFunc_common1_2060();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200805c.s");
+extern struct Actor *__MapActor_GetActor(int);
 
-extern void OvlFunc_955_200805c(void);
+void OvlFunc_955_200805c(void) {
+    int e;
+    int f;
+
+    if (__MapActor_GetActor(0xb)->pos.x >> 20 == 0x24) {
+        API_SetFlag(0x335);
+        e = 0x23;
+        f = 0x4d;
+        API_Func_8010704(0x23, 0x4e, 1, 1, e, f);
+    } else {
+        API_ClearFlag(0x335);
+        e = 0x23;
+        f = 0x4d;
+        API_Func_8010704(0x22, 0x4d, 1, 1, e, f);
+    }
+}
 
 void OvlFunc_955_20080b0(void)
 {
@@ -53,7 +69,15 @@ void OvlFunc_955_2008150(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008160.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008258.s");
+
+void OvlFunc_955_2008258(void) {
+    struct Actor *actor;
+    API_SetFlag(0x331);
+    actor = __MapActor_GetActor(0x14);
+    actor->__unk55 = 0;
+    API_Func_8010704(0x2e, 0x11, 1, 1, 0x2c, 0x11);
+}
+
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200828c.s");
 
 void OvlFunc_955_20082c0(void)

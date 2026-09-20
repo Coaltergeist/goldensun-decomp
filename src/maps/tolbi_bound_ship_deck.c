@@ -247,7 +247,19 @@ void OvlFunc_943_2008bb8(void) {
 	API_SetFlag(0x271);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008bf0.s");
+void OvlFunc_943_2008bf0(void){
+    int a;
+    int b;
+    if (API_GetFlag(0x272) != 0)    {
+        return;
+    }
+    API_PlaySound(0x9e);
+    a = 1;
+    b = 2;
+    __CopyMapTiles(0x1e, 0x6c, 0xd, 0x6c, a, b);
+    API_SetFlag(0x272);
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008c28.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008ca0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20090a0.s");

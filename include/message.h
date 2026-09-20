@@ -44,6 +44,8 @@ extern int _MSG_eb0;
 #define MSG_eb0 ((int)&_MSG_eb0)
 extern int _MSG_ed0;
 #define MSG_ed0 ((int)&_MSG_ed0)
+extern int _MSG_f4d;
+#define MSG_f4d ((int)&_MSG_f4d)
 extern int _MSG_fb0;
 #define MSG_fb0 ((int)&_MSG_fb0)
 extern int _MSG_fe0;
@@ -82,8 +84,12 @@ extern int _MSG_1be0;
 #define MSG_1be0 ((int)&_MSG_1be0)
 extern int _MSG_1c40;
 #define MSG_1c40 ((int)&_MSG_1c40)
+extern int _MSG_1c45;
+#define MSG_1c45 ((int)&_MSG_1c45)
 extern int _MSG_1c60;
 #define MSG_1c60 ((int)&_MSG_1c60)
+extern int _MSG_1c90;
+#define MSG_1c90 ((int)&_MSG_1c90)
 extern int _MSG_1cc0;
 #define MSG_1cc0 ((int)&_MSG_1cc0)
 extern int _MSG_1d20;
@@ -98,6 +104,10 @@ extern int _MSG_1f00;
 #define MSG_1f00 ((int)&_MSG_1f00)
 extern int _MSG_1fa0;
 #define MSG_1fa0 ((int)&_MSG_1fa0)
+extern int _MSG_1ff1;
+#define MSG_1ff1 ((int)&_MSG_1ff1)
+extern int _MSG_217f;
+#define MSG_217f ((int)&_MSG_217f)
 extern int _MSG_2280;
 #define MSG_2280 ((int)&_MSG_2280)
 extern int _MSG_2440;

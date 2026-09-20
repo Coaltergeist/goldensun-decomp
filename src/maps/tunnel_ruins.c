@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -357,7 +358,21 @@ void OvlFunc_964_2008df4(void)
 	OvlFunc_964_2008cd0(r3);
 }
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008e20.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ec8.s");
+
+int OvlFunc_964_2008ec8(struct Actor *a) {
+    struct Actor *p;
+    int d;
+
+    p = (struct Actor *)__MapActor_GetActor(0);
+    a->flags |= 2;
+    if (p->pos.z < a->pos.z) {
+        d = (a->pos.z - p->pos.z) + 0x40000;
+        if (p->pos.y <= a->pos.y + d) {
+            a->flags &= 0xfd;
+        }
+    }
+    return 0;
+}
 
 extern void __WaitFrames(unsigned int a);
 
@@ -395,7 +410,24 @@ void OvlFunc_964_2008f10(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008f4c.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008fe8.s");
+
+int OvlFunc_964_2008fe8(struct Actor *a) {
+    int z;
+
+    if (((struct Actor *)__MapActor_GetActor(0))->pos.y > -0x300000
+        && ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20 == 0xa) {
+        a->pos.x = ((struct Actor *)__MapActor_GetActor(8))->pos.x;
+        a->pos.y = -0x200000;
+        z = ((struct Actor *)__MapActor_GetActor(8))->pos.z;
+    } else {
+        a->pos.x = 0;
+        a->pos.y = 0;
+        z = 0;
+    }
+    a->pos.z = z;
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
@@ -437,7 +469,23 @@ void *TunnelRuins_GetExits(void) {
     return (void *)gOvl_0200b85c;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_GetActors.s");
+extern unsigned char gScript_925__0200b8f4[];
+extern unsigned char Lm964_3a74[] __asm__(".Lm964_3a74");
+extern void __Func_808b868(void *);
+
+void *TunnelRuins_GetActors(void)
+{
+    void *a;
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_ac) {
+        a = gScript_925__0200b8f4;
+    } else {
+        a = Lm964_3a74;
+    }
+    __Func_808b868(a);
+    return a;
+}
 
 extern void OvlFunc_964_20080c4(void);
 extern void OvlFunc_964_200a3a0(void);
@@ -531,8 +579,26 @@ void OvlFunc_964_2009424(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009458.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20094ac.s");
+void OvlFunc_964_2009458(void) {
+    API_SetFlag(0x80 << 2);
+    if (API_GetFlag(0x201)) {
+        __MapActor_GetActor(0xe)[0x62] = 0;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xf7;
+    } else {
+        __MapActor_GetActor(0xe)[0x62] = 1;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 |= 8;
+    }
+}
+void OvlFunc_964_20094ac(void) {
+    API_SetFlag(0x201);
+    if (API_GetFlag(0x80 << 2)) {
+        __MapActor_GetActor(0xe)[0x62] = 0;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xf7;
+    } else {
+        __MapActor_GetActor(0xe)[0x62] = 1;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 |= 8;
+    }
+}
 
 extern void __SetFlag(int);
 
@@ -662,18 +728,34 @@ void OvlFunc_964_20099cc(void) {
 
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_964__0200b3b8__a1[13] __asm__("gScript_964__0200b3b8");
-extern void *OvlFunc_964_2008fe8;
 
 void OvlFunc_964_20099e4(void)
 {
-    void *r4;
+    struct Actor *a;
     __MapActor_SetBehavior(8, gScript_964__0200b3b8__a1);
     __SetFlag(0x203);
-    r4 = __MapActor_GetActor(9);
-    *(void **)((char *)r4 + 0x6c) = &OvlFunc_964_2008fe8;
+    a = (struct Actor *)__MapActor_GetActor(9);
+    a->update = (actorfun_t *)OvlFunc_964_2008fe8;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009a10.s");
+extern void __Func_8092b08();
+
+void OvlFunc_964_2009a10(void) {
+    API_CutsceneStart();
+    __Func_8092b08(9, 1);
+    __MapActor_SetAnim(9, 1);
+    __Func_8092950(9, 0);
+    __MapActor_SetAnim(9, 2);
+    ((struct Actor *)__MapActor_GetActor(9))->flags &= 0xfd;
+    API_SetFlag(0x81 << 2);
+    API_Func_8010704(0x1a, 8, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(9))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20
+    );
+    ((struct Actor *)__MapActor_GetActor(9))->update = (actorfun_t *)OvlFunc_964_2008ec8;
+    ((struct Actor *)__MapActor_GetActor(8))->update = (actorfun_t *)OvlFunc_964_2008ec8;
+    API_CutsceneEnd();
+}
 
 
 unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
@@ -736,7 +818,15 @@ void OvlFunc_964_2009fc4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009fdc.s");
+void OvlFunc_964_2009fdc(void) {
+    API_Func_8010704(0x48, 0x31, 1, 1, 8, 0x31);
+    API_Func_8010704(0x71, 0x2b, 1, 1, 0x31, 0x2b);
+    API_Func_808edac(0x64, 0, 0);
+    API_Func_808edac(0x65, 0, 0);
+    API_MapActor_SetPos(0xf, 0x88 << 16, 0xc6 << 18);
+    API_MapActor_SetPos(0x10, 0xc6 << 18, 0xae << 18);
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a040.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a0a4.s");
 
@@ -794,7 +884,20 @@ int TunnelRuins_GetEvents(void)
     return (int)Lm964_3ef4;
 }
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a3a0.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a410.s");
+
+void OvlFunc_964_200a410(void) {
+    API_Func_8010704(0x5d, 0x1e, 6, 5, 0x1d, 0x1e);
+    OvlFunc_964_2008f10(0xb, 0xa);
+    API_Func_8010704(2, 0x24, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(0xa))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20
+    );
+    API_Func_8010704(2, 0x24, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0xb))->pos.z >> 20
+    );
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a480.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a52c.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_MapInit.s");

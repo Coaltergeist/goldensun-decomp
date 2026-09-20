@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern int OvlFunc_956_20086a4();
 extern void OvlFunc_956_200857c();
@@ -77,7 +78,18 @@ void OvlFunc_956_200857c(void)
 	OvlFunc_956_20084a4();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200858c.s");
+extern struct Actor *__MapActor_GetActor(int);
+extern void __SetFlagByte(int, int);
+
+void OvlFunc_956_200858c(void)
+{
+    int x;
+
+    x = __MapActor_GetActor(0xd)->pos.x >> 20;
+    __SetFlagByte(0xdc << 2, x);
+    API_Func_8010704(0x12, 0xa, 3, 1, 0x12, 0xb);
+    API_Func_8010704(0x11, 0xb, 1, 1, x, 0xb);
+}
 
 void OvlFunc_956_20085d0(void) {}
 
@@ -87,9 +99,31 @@ void OvlFunc_956_20085d4(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20085e0.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008658.s");
 
-#include "actor.h"
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+void OvlFunc_956_2008658(void) {
+    unsigned int r2;
+    struct Actor *a;
+    int x;
+    int z;
+    int v;
+
+    r2 = 0xfa;
+    r2 <<= 1;
+    a = __MapActor_GetActor(*(int *)((char *)&gState + r2));
+    x = a->pos.x >> 20;
+    z = a->pos.z >> 20;
+    v = 0x17;
+    if (x == 0x51 && z == 0xc) {
+        if ((a->facing & 0xe000) == 0x4000) {
+            v = 0xfd;
+        }
+        API_Func_8012078(0, x << 20, z << 20, v);
+    }
+}
+
 
 int OvlFunc_956_20086a4(int arg0, int arg1)
 {
@@ -139,7 +173,6 @@ unsigned int OvlFunc_956_2008a20(void) {
 }
 
 extern unsigned char gScript_956__0200cc48[];
-extern struct Actor *__MapActor_GetActor(int);
 extern void __Actor_SetAnim(int, int);
 extern void __Actor_SetScript(struct Actor *, void *);
 
@@ -172,10 +205,26 @@ void OvlFunc_956_2008a84(void) {
   __StopTask(OvlFunc_956_200804c);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008ad4.s");
+extern void __Actor_TravelTo(int a, int b, int c, int d);
+extern void __Actor_WaitMovement(unsigned int arg0);
+void OvlFunc_956_2008ad4(void)
+{
+    GlobalState *p = &gState;
+    struct Actor *actor;
+    int *id;
+    unsigned int z;
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
+    id = (int *)((char *)p + 0x1f4);
+    actor = __MapActor_GetActor(*id);
+    actor->accel = 0x80 << 9;
+    actor->speed = 0x80 << 10;
+    API_MapActor_Surprise(*id, 0x81 << 1);
+    __Actor_SetAnim((int)actor, 5);
+    z = actor->pos.z & 0xfff00000;
+    API_Actor_TravelTo(actor, actor->pos.x, actor->pos.y, z + (0xc0 << 13));
+    __Actor_WaitMovement((int)actor);
+}
+
 
 void OvlFunc_956_2008b30(void)
 {
@@ -235,9 +284,6 @@ INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200937c.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20093c0.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009474.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009a0c.s");
-extern void __Actor_TravelTo(int a, int b, int c, int d);
-extern void __Actor_WaitMovement(unsigned int arg0);
-#include "actor.h"
 
 void OvlFunc_common1_2c4(void);
 int OvlFunc_common1_4cc(void *, int);
