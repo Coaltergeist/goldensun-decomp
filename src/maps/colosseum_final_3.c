@@ -99,7 +99,30 @@ void OvlFunc_956_20085d4(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20085e0.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008658.s");
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+
+void OvlFunc_956_2008658(void) {
+    unsigned int r2;
+    struct Actor *a;
+    int x;
+    int z;
+    int v;
+
+    r2 = 0xfa;
+    r2 <<= 1;
+    a = __MapActor_GetActor(*(int *)((char *)&gState + r2));
+    x = a->pos.x >> 20;
+    z = a->pos.z >> 20;
+    v = 0x17;
+    if (x == 0x51 && z == 0xc) {
+        if ((a->facing & 0xe000) == 0x4000) {
+            v = 0xfd;
+        }
+        API_Func_8012078(0, x << 20, z << 20, v);
+    }
+}
 
 
 int OvlFunc_956_20086a4(int arg0, int arg1)
@@ -184,9 +207,6 @@ void OvlFunc_956_2008a84(void) {
 
 extern void __Actor_TravelTo(int a, int b, int c, int d);
 extern void __Actor_WaitMovement(unsigned int arg0);
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-extern GlobalState gState;
-
 void OvlFunc_956_2008ad4(void)
 {
     GlobalState *p = &gState;

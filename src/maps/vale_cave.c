@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern int OvlFunc_934_200858c();
 
@@ -871,7 +872,19 @@ void OvlFunc_934_20098f4(void) {
     __PlaySound(0x121);
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009938.s");
+void OvlFunc_934_2009938(int a0, int a1, int a2) {
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(a0);
+    if (a != 0) {
+        __Func_8092b08(a0, 3);
+        a->layer = 2;
+        a->flags |= 2;
+        a->pos.x = (a1 << 20) + (0x80 << 12);
+        a->pos.z = (a2 << 20) + (0x80 << 12);
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2009984.s");
 
 

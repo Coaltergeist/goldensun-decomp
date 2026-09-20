@@ -311,7 +311,24 @@ void OvlFunc_899_20084f4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200852c.s");
+void OvlFunc_899_200852c(void) {
+    API_CutsceneStart();
+    if (API_GetFlag(0x856) != 0) {
+        if (API_GetFlag(0x851) == 0) {
+            API_MessageID(0x1276);
+            OvlFunc_899_2008354(0x10);
+            API_CutsceneWait(0xa);
+            OvlFunc_899_200c63c(0x10, 3, 0x14);
+            API_SetFlag(0x851);
+        } else {
+            API_MessageID(0x1278);
+        }
+    } else {
+        API_MessageID(0x1250);
+    }
+    OvlFunc_899_2008354(0x10);
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_899_200859c(void) {

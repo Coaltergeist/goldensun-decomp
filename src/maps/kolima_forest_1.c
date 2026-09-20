@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/exports.s");
 
@@ -173,9 +174,10 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L2d68__a2[] __asm__(".Lm913_2d68");
-extern void OvlFunc_913_2008244(int, int, int, int, int, int);
+extern int OvlFunc_913_2008244(unsigned int, int, int, unsigned int, unsigned int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
+extern void __Actor_SetAnim(void *, int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
 extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 extern unsigned char *__MapActor_GetActor(unsigned int);
@@ -308,7 +310,21 @@ unsigned int OvlFunc_913_20089dc(void *arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_20089fc.s");
+extern unsigned int __Random(void);
+extern int __Func_80929d8();
+
+unsigned int OvlFunc_913_20089fc(struct Actor *a) {
+    a->waveCounter += (__Random() * 100) >> 16;
+    if (a->waveCounter > 1000) {
+        __Func_80929d8(a, 7);
+    } else {
+        __Func_80929d8(a, 10);
+    }
+    if (a->waveCounter > 1200) {
+        a->waveCounter = 0;
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_0200b06c[];
 
@@ -331,8 +347,79 @@ void *KolimaForest1_GetActors(void) {
     return (void *)gOvl_0200b0e4;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_2008a68.s");
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_2008b1c.s");
+extern void __Actor_SetSpriteFlags(void *, int);
+
+void OvlFunc_913_2008a68(void) {
+    struct Pk pk;
+
+    API_CutsceneStart();
+    if (OvlFunc_913_2008474(&pk)) {
+        OvlFunc_913_2008608(pk);
+        if (pk.b == 10 && (pk.x >> 20) == 0x14) {
+            char *actor;
+            int s1, s2;
+            int zero = 0;
+
+            API_MapActor_SetAnim(0xa, 3);
+            API_MapActor_TravelBy(0xa, -0x12, 6);
+            API_CutsceneWait(0x1e);
+            API_PlaySound(0xf0);
+            API_MapActor_SetAnim(0xa, 8);
+            actor = (char *)__MapActor_GetActor(0xa);
+            actor[0x23] = 2;
+            s2 = 0x11;
+            s1 = 0x13;
+            __Func_8010704(0, 0x11, 2, 4, s1, s2);
+            OvlFunc_913_2008244(2, 0x14, 0x11, 1, 4, zero);
+            API_SetFlag(0x200);
+            __Actor_SetSpriteFlags(__MapActor_GetActor(0xa), zero);
+        }
+    }
+    API_CutsceneEnd();
+}
+
+int OvlFunc_913_2008b1c(int *p) {
+    struct Actor *a;
+    unsigned char *b;
+    int c;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    b = &a->__unk55;
+    c = *b;
+
+    if (!__TestCollision(a, p)) {
+        API_CutsceneStart();
+        __Actor_SetAnim(a, 6);
+        API_WaitFrames(6);
+        API_PlaySound(0x98);
+        __Actor_SetAnim(a, 7);
+        a->speed = 0xc0 << 10;
+        a->accel = 0x80 << 10;
+        a->motion.y = 0x80 << 11;
+        *b &= 0x7e;
+        __Actor_SetSpriteFlags(a, 0);
+        API_MapActor_TravelToWait(0, ((short *)p)[1], ((short *)p)[5]);
+        __Actor_SetAnim(a, 6);
+        __Actor_SetSpriteFlags(a, 1);
+        *b = 0;
+        API_MapActor_SetAnim(0xa, 7);
+        a->pos.y += -0x10000;
+        a->floorPos += -0x10000;
+        API_WaitFrames(2);
+        a->pos.y += -0x10000;
+        a->floorPos += -0x10000;
+        API_WaitFrames(0xa);
+        a->pos.y += 0x10000;
+        a->floorPos += 0x10000;
+        API_WaitFrames(4);
+        a->pos.y += 0x10000;
+        a->floorPos += 0x10000;
+        *b = c;
+        API_CutsceneEnd();
+        return 1;
+    }
+    return 0;
+}
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -363,7 +450,39 @@ void *KolimaForest1_GetEvents(void) {
     return (void *)gOvl_0200b294;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/KolimaForest1_MapInit.s");
+extern int OvlFunc_913_20088c0(int);
+extern void OvlFunc_913_2008d3c(void);
+int KolimaForest1_MapInit(void) {
+    unsigned int r2;
+
+    OvlFunc_913_20088c0(0xa);
+    if (API_GetFlag(0x200) != 0) {
+        int zero = 0;
+        int s1, s2;
+        char *actor = (char *)__MapActor_GetActor(0xa);
+        actor[0x23] = 2;
+        s2 = 0x11;
+        s1 = 0x13;
+        __Func_8010704(0, 0x11, 2, 4, s1, s2);
+        OvlFunc_913_2008244(2, 0x14, 0x11, 1, 4, zero);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(0xa), zero);
+    }
+    OvlFunc_913_20088c0(8);
+    OvlFunc_913_20088c0(9);
+    r2 = 0xe1;
+    r2 <<= 1;
+    if (*(short *)((char *)&gState + r2) == 4 && API_GetFlag(0x843) == 0) {
+        OvlFunc_913_2008d3c();
+    }
+    if (API_GetFlag(0x845) != 0) {
+        API_MapActor_SetPos(0x11, 0, 0);
+        API_MapActor_SetPos(0x12, 0, 0);
+        API_MapActor_SetPos(0x13, 0, 0);
+        API_MapActor_SetPos(0x14, 0, 0);
+        API_MapActor_SetPos(0x15, 0, 0);
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_2008d3c.s");
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
@@ -419,7 +538,48 @@ unsigned int OvlFunc_913_200a864(int a) {
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a88c.s");
 INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a974.s");
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200aad8.s");
+
+void OvlFunc_913_200aad8(void) {
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(0xd);
+    if (a != 0) {
+        a->__unk55 = 0;
+        if ((iwram_3001e40 & 1) == 0) {
+            a->pos.y = 0;
+        } else {
+            a->pos.y = 0xfa << 17;
+        }
+    }
+    a = (struct Actor *)__MapActor_GetActor(0xe);
+    if (a != 0) {
+        a->__unk55 = 0;
+        if (iwram_3001e40 & 1) {
+            a->pos.y = 0;
+        } else {
+            a->pos.y = 0xfa << 17;
+        }
+    }
+    a = (struct Actor *)__MapActor_GetActor(0xf);
+    if (a != 0) {
+        a->__unk55 = 0;
+        if ((iwram_3001e40 & 1) == 0) {
+            a->pos.y = 0;
+        } else {
+            a->pos.y = 0xfa << 17;
+        }
+    }
+    a = (struct Actor *)__MapActor_GetActor(0x10);
+    if (a != 0) {
+        a->__unk55 = 0;
+        if (iwram_3001e40 & 1) {
+            a->pos.y = 0;
+        } else {
+            a->pos.y = 0xfa << 17;
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/kolima_forest_1/kolima_forest_1_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_1/imports.s");

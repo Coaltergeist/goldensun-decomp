@@ -426,7 +426,24 @@ void OvlFunc_946_200938c(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20093ac.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009494.s");
+
+void OvlFunc_946_2009494(void) {
+    unsigned int r2;
+
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    r2 = 0xe0;
+    r2 <<= 1;
+    API_SetFlag(*(short *)((char *)&gState + r2) + (0x8c8 - (int)_EVENT_7e));
+    API_CutsceneWait(0x1e);
+    CallFunc_8010560(0x2c, 7, &gOvl_0200b2bc);
+    API_Func_8092208(0, 3, -0x10);
+    __Func_8091e9c(3);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009508.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009548.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200958c.s");
