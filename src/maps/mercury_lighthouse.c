@@ -434,7 +434,21 @@ int MercuryLighthouse_GetEvents(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008f84.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008ffc.s");
+
+extern void __Actor_SetSpriteFlags(unsigned char *, int);
+extern void __Func_8092b08(int, int);
+
+void OvlFunc_924_2008ffc(int a) {
+    API_CutsceneStart();
+    API_PlaySound(0xe4);
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    __Func_8092b08(0, 2);
+    API_MapActor_TravelBy(0, 0, -8);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    API_CutsceneWait(8);
+    API_MapActor_SetPos(0, (a << 19) + (0x80 << 12), 0);
+    API_CutsceneWait(0x1e);
+}
 
 extern int *iwram_3001ebc;
 extern int OvlFunc_924_2008f84(int);

@@ -2,7 +2,9 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 #include "dma.h"
+#include "message.h"
 
 INCLUDE_ASM("asm/maps/altmiller_cave/exports.s");
 
@@ -406,7 +408,21 @@ void OvlFunc_957_2008c98(void)
         *(actor + 0x54) = 0;
     }
 }
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008cf8.s");
+
+void OvlFunc_957_2008cf8(void) {
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(0xc);
+    if (a->pos.x >> 20 == 0x1e) {
+        if (a->pos.z >> 20 == 0x14) {
+            a->__unk55 = 2;
+            a->floorPos = 0;
+            a->flags = 2;
+            API_Func_8010704(0x1e, 0x14, 1, 1, 0x20, 0x14);
+            API_SetFlag(0x212);
+        }
+    }
+}
 
 extern void OvlFunc_957_20080c4(void);
 extern void OvlFunc_957_2008cf8(void);
@@ -469,25 +485,28 @@ INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200909c.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20093f8.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ac44.s");
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b4bc.s");
-// void OvlFunc_957_200b4bc(void) {
-// 	int mid;
-//     __CutsceneStart();
-//     mid = 0x217f;
-//     __MessageID(mid);
-//     __ShowActorMessage_NoWait(8, 0);
-//     if (__Func_8091c7c(0, 0) == 0) {
-//         API_CutsceneWait(0x14);
-//         API_MessageID(mid + 1);
-//         API_ActorMessage(8, 0);
-//     } else {
-//         API_CutsceneWait(0x14);
-//         API_MessageID(mid + 2);
-//         API_ActorMessage(8, 0);
-//     }
-//     __CutsceneEnd();
-// }
 
+extern int __Func_8091c7c(int, int);
+
+void OvlFunc_957_200b4bc(void)
+{
+    int msg;
+
+    API_CutsceneStart();
+    msg = MSG_217f;
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(8, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_CutsceneWait(0x14);
+        API_MessageID(msg + 1);
+        API_ActorMessage(8, 0);
+    } else {
+        API_CutsceneWait(0x14);
+        API_MessageID(msg + 2);
+        API_ActorMessage(8, 0);
+    }
+    API_CutsceneEnd();
+}
 
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b518.s");
 extern unsigned char Lm957_4688[] __asm__(".Lm957_4688");

@@ -3,6 +3,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/exports.s");
 
@@ -514,7 +515,14 @@ void OvlFunc_882_200c5a8(void)
 	OvlFunc_882_200c34c();
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c5b8.s");
+void OvlFunc_882_200c5b8(void)
+{
+    struct Sprite *s;
+
+    s = ((struct Actor *)__MapActor_GetActor(0))->sprite;
+    ((struct Actor *)__MapActor_GetActor(0x16))->sprite->oam.priority = s->oam.priority;
+    ((struct Actor *)__MapActor_GetActor(8))->sprite->oam.priority = s->oam.priority;
+}
 
 void OvlFunc_882_200c5fc(void)
 {

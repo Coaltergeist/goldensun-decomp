@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -357,7 +358,21 @@ void OvlFunc_964_2008df4(void)
 	OvlFunc_964_2008cd0(r3);
 }
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008e20.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ec8.s");
+
+int OvlFunc_964_2008ec8(struct Actor *a) {
+    struct Actor *p;
+    int d;
+
+    p = (struct Actor *)__MapActor_GetActor(0);
+    a->flags |= 2;
+    if (p->pos.z < a->pos.z) {
+        d = (a->pos.z - p->pos.z) + 0x40000;
+        if (p->pos.y <= a->pos.y + d) {
+            a->flags &= 0xfd;
+        }
+    }
+    return 0;
+}
 
 extern void __WaitFrames(unsigned int a);
 
@@ -547,7 +562,16 @@ void OvlFunc_964_2009424(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009458.s");
+void OvlFunc_964_2009458(void) {
+    API_SetFlag(0x80 << 2);
+    if (API_GetFlag(0x201)) {
+        __MapActor_GetActor(0xe)[0x62] = 0;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xf7;
+    } else {
+        __MapActor_GetActor(0xe)[0x62] = 1;
+        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 |= 8;
+    }
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20094ac.s");
 
 extern void __SetFlag(int);

@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kalay/exports.s");
 
@@ -348,7 +349,24 @@ void OvlFunc_936_20097e8(void) {
     OvlFunc_936_200a008();
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009858.s");
+extern void OvlFunc_936_200ba3c(int);
+extern void OvlFunc_936_200a6c0(void);
+
+void OvlFunc_936_2009858(void) {
+    GlobalState *p;
+
+    if (!API_GetFlag(0xfd6)) {
+        OvlFunc_936_200ba3c(0xc);
+    }
+    if (API_GetFlag(0x915)) {
+        ((struct Actor *)__MapActor_GetActor(8))->facing = 0;
+    }
+    p = &gState;
+    if (*(short *)((char *)p + 0x1c2) == 0xa) {
+        OvlFunc_936_200a6c0();
+    }
+}
+
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20098a4.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009930.s");
 
@@ -420,8 +438,6 @@ INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b1b8.s");
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_936__0200c268[12];
 
-/* Local layout; the game's struct Actor / u8..s32 arrive via actor.h below (:524)
-   so this fn uses plain types + a private struct name to avoid the redefinition. */
 struct Actor936 {
     unsigned char _pad[8];
     int pos_x;
@@ -586,7 +602,6 @@ void OvlFunc_936_200b90c(void)
   *((int *) (((char *) actor) + 0x30)) = ((*((int *) (((char *) actor) + 0x30))) + (((a << 9) >> 16) + ((b << 9) >> 16))) + 0x400;
 }
 
-#include "actor.h"
 
 extern void OvlFunc_936_200b90c();
 extern void __Func_8010704(int, int, int, int, int, int);

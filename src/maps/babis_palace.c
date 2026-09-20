@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "message.h"
 
 INCLUDE_ASM("asm/maps/babis_palace/exports.s");
 
@@ -45,7 +46,21 @@ void *BabisPalace_GetActors(void)
     if (API_GetFlag(0x962)) return Lm952_4d64;
     return Lm952_4b84;
 }
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20080c8.s");
+
+extern int __Func_8091c7c(int, int);
+void OvlFunc_952_20080c8(int a) {
+    int msg = MSG_1ff1;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+    } else {
+        API_MessageID(msg + 2);
+    }
+    API_ActorMessage(a, 0);
+}
+
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008264.s");
 

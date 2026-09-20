@@ -104,6 +104,10 @@ extern int _MSG_1f00;
 #define MSG_1f00 ((int)&_MSG_1f00)
 extern int _MSG_1fa0;
 #define MSG_1fa0 ((int)&_MSG_1fa0)
+extern int _MSG_1ff1;
+#define MSG_1ff1 ((int)&_MSG_1ff1)
+extern int _MSG_217f;
+#define MSG_217f ((int)&_MSG_217f)
 extern int _MSG_2280;
 #define MSG_2280 ((int)&_MSG_2280)
 extern int _MSG_2440;
