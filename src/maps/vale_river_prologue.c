@@ -475,10 +475,65 @@ INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a09c.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a0fc.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a180.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a8a4.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200ad28.s");
+
+
+void OvlFunc_882_200ad28(void) {
+    extern unsigned char gScript_882__0200cec8[];
+    extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+    extern unsigned int __Random(void);
+    struct Actor *a;
+
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0xa, 1);
+    API_CutsceneWait(0xa);
+    API_MapActor_TurnToFaceActor(0xa, 0, 0x14);
+    if (API_GetFlag(0x30d)) {
+        API_MessageID(0xea5);
+        API_ActorMessage_Wait(0xa, 0, 0xa);
+    } else {
+        API_MessageID(0xea4);
+        API_Func_809259c(0xa, 1);
+        API_ActorMessage_Wait(0xa, 0, 0xa);
+        API_Func_809259c(0xa, 2);
+        API_ActorMessage_Wait(0xa, 0, 0xa);
+    }
+    MapActor_Func_8092adc(0x80, 0xa, 0x14);
+    API_MapActor_SetAnim(0xa, 5);
+    API_CutsceneWait(0xa);
+    a = (struct Actor *)__MapActor_GetActor(0xa);
+    a->waveCounter = _umodsi3_RAM(__Random(), 0x5a) + 0x3c;
+    API_MapActor_SetBehavior(0xa, (int)gScript_882__0200cec8);
+    API_CutsceneWait(0x14);
+    API_SetFlag(0x30d);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200adec.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200b1ac.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200bc48.s");
+void OvlFunc_882_200bc48(void)
+{
+    API_WaitFrames(0x14);
+    API_SetFlag(0xb3 << 1);
+    API_Func_80118c0(0);
+    API_Func_80118c0(1);
+    API_Func_80118c0(2);
+    API_Func_80118c0(3);
+    API_Func_80118c0(4);
+    API_Func_80118c0(5);
+    API_Func_8091200(0x10003, 1);
+    API_Func_8091200(0x80 << 9, 2);
+    API_Func_8091254(1);
+    API_WaitFrames(0x78);
+    API_Func_8091200(0, 0);
+    API_Func_8091254(0x3c);
+    API_WaitFrames(0x3c);
+    API_ClearFlag(0xb3 << 1);
+    API_Func_80118a8(0);
+    API_Func_80118a8(1);
+    API_Func_80118a8(2);
+    API_Func_80118a8(3);
+    API_Func_80118a8(4);
+    API_Func_80118a8(5);
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200bce4.s");
 
 extern unsigned int iwram_3001e40;

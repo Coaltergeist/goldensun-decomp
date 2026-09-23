@@ -125,10 +125,70 @@ void OvlFunc_890_200822c(void) {
     *p = v;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008238.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20082cc.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008360.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20083f4.s");
+void OvlFunc_890_2008238(void)
+{
+    if (API_GetFlag(0x80b)) {
+        API_CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80c)) {
+        API_CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80d)) {
+        API_CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x80e)) {
+        API_CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_20082cc(void)
+{
+    if (API_GetFlag(0x826)) {
+        API_CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x827)) {
+        API_CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x828)) {
+        API_CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x829)) {
+        API_CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_2008360(void)
+{
+    if (API_GetFlag(0x80b)) {
+        API_CopyMapTiles(0x2d, 0x1e, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80c)) {
+        API_CopyMapTiles(0x2f, 0x1e, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80d)) {
+        API_CopyMapTiles(0x2d, 0x1f, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x80e)) {
+        API_CopyMapTiles(0x2f, 0x1f, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_20083f4(void)
+{
+    if (API_GetFlag(0x826)) {
+        API_CopyMapTiles(0x2d, 0x1e, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x827)) {
+        API_CopyMapTiles(0x2f, 0x1e, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x828)) {
+        API_CopyMapTiles(0x2d, 0x1f, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x829)) {
+        API_CopyMapTiles(0x2f, 0x1f, 0x24, 0xb, 2, 1);
+    }
+}
+
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008488.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20089f4.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008c00.s");

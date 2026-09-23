@@ -424,7 +424,28 @@ int OvlFunc_948_2008aa8(int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ad0.s");
+void OvlFunc_948_2008ad0(void)
+{
+    if (API_GetFlag(0x9c8) != 0) {
+        return;
+    }
+    API_SetFlag(0x9c8);
+    API_CutsceneStart();
+    API_Func_80933d4(0x80 << 10, 0x80 << 7);
+    API_Func_8093500(0xf, 1);
+    API_Func_8093530();
+    API_Func_8092adc(0xf, 0, 0x14);
+    API_MapActor_Surprise(0xf, 0x81 << 1);
+    API_Func_80925cc(0xf, 2);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(0xf, 0x80 << 9, 0x80 << 8);
+    API_PlaySound(0x98);
+    ((struct Actor *)__MapActor_GetActor(0xf))->motion.y = 0x80 << 12;
+    API_MapActor_TravelToAnimWait(0xf, 0x92 << 2, 0xaa << 2);
+    API_Func_8092adc(0xf, 0x80 << 7, 0x14);
+    API_CutsceneEnd();
+}
+
 extern void __Actor_SetAnimSpeed(struct Actor *actor, int speed);
 extern void __Actor_SetScript(struct Actor *actor, void *script);
 extern unsigned char gScript_948__0200a6fc[];

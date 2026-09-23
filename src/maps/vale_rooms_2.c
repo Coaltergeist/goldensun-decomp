@@ -140,7 +140,35 @@ unsigned int ValeRooms2_GetEvents(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20081e0.s");
+void OvlFunc_887_20081e0(void)
+{
+    extern unsigned char iwram_3001ebc[];
+    unsigned short *r2;
+    unsigned short r3;
+
+    API_CutsceneStart();
+    API_Func_809259c(0x10, 2);
+    API_CutsceneWait(0x1e);
+    API_MessageID(0xf5b);
+    API_MapActor_TurnToFaceActor(0, 0x10, 0xa);
+    API_ActorMessage_Wait(0x10, 0, 6);
+    API_MapActor_Emote(0x10, 0x81 << 1, 0);
+    API_Func_809259c(0x10, 1);
+    API_CutsceneWait(0x14);
+    API_MapActor_DoAnim(0x10, 4);
+    API_CutsceneWait(0x14);
+    __ShowActorMessage_NoWait(0x10, 0);
+    if (__Func_8091c7c(0, 0) == 1) {
+        r2 = (unsigned short *)(*(unsigned int *)iwram_3001ebc + (0xec << 1));
+        r3 = *r2;
+        r3 += 1;
+        *r2 = r3;
+    }
+    API_Func_809259c(0x10, 1);
+    API_CutsceneWait(0x14);
+    API_ActorMessage_Wait(0x10, 0, 4);
+    API_CutsceneEnd();
+}
 
 extern unsigned char iwram_3001ebc[];
 

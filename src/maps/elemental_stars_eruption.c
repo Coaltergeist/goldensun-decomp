@@ -1,6 +1,7 @@
 /* rom_791794 (overlay file 897): consolidated TU — elemental_stars_eruption map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/exports.s");
 
@@ -114,7 +115,23 @@ void OvlFunc_897_200a820(unsigned int arg0)
   __Func_8092b08(arg0, 3);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a84c.s");
+void OvlFunc_897_200a84c(int arg0)
+{
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(8, 0x2f, 0x40, 7, 1, 1);
+        API_CopyMapTiles(7, 0x30, 0x3f, 8, 2, 1);
+        API_CopyMapTiles(7, 0x31, 0x3f, 9, 2, 1);
+    } else {
+        API_CopyMapTiles(0x38, 0, 0x40, 7, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 8, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 9, 2, 1);
+        API_CopyMapTiles(0x3a, 0x19, 0x40, 8, 1, 1);
+    }
+    __Func_800fe9c();
+}
+
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a8dc.s");
 
 extern unsigned char iwram_3001e40[];

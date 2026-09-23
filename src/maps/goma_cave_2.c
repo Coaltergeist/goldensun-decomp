@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/goma_cave_2/exports.s");
 
@@ -483,7 +484,35 @@ void OvlFunc_905_20090c8(void)
         *(short *)p = v;
     }
 }
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200915c.s");
+
+void OvlFunc_905_200915c(void)
+{
+    API_StopTask(OvlFunc_905_20090c8);
+    API_CutsceneStart();
+    API_MapActor_Emote(0xd, 0x80 << 1, 0x1e);
+    API_Func_80925cc(0xd, 2);
+    API_Func_8092adc(0, 0xa0 << 8, 0);
+    API_MessageID(0x132f);
+    API_ActorMessage(0xd, 0);
+    API_MapActor_DoAnim(0xd, 3);
+    API_CutsceneWait(0x1e);
+    {
+        struct Actor *a = (struct Actor *)__MapActor_GetActor(0xa);
+        a->flags &= 0xfd;
+    }
+    API_MapActor_SetSpeed(0xd, 0x80 << 10, 0x80 << 9);
+    API_MapActor_TravelToAnimWait(0xd, 0x96 << 2, 0xd8);
+    API_MapActor_TravelToAnimWait(0xd, 0x96 << 2, 0xf8);
+    API_MapActor_TravelToAnimWait(0xd, 0x8e << 2, 0x94 << 1);
+    API_MapActor_SetPos(0xd, 0, 0);
+    {
+        struct Actor *a = (struct Actor *)__MapActor_GetActor(0xa);
+        a->flags |= 2;
+    }
+    API_SetFlag(0x869);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/goma_cave_2/GomaCave2_MapInit.s");
 INCLUDE_ASM("asm/maps/goma_cave_2/goma_cave_2_data.s");
 

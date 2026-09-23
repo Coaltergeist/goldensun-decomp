@@ -84,7 +84,29 @@ int ValeSanctum_GetEvents(void)
         return (int)Lm888_3e34;
     }
 }
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200827c.s");
+void OvlFunc_888_200827c(void)
+{
+    unsigned int r2;
+    int ev;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x855)) {
+        API_MessageID(0x1377);
+    } else {
+        API_MessageID(0x1289);
+    }
+    r2 = 0xe1;
+    r2 <<= 1;
+    ev = *(short *)((char *)&gState + r2);
+    if (ev == 0xb) {
+        API_MessageID(0x1ce9);
+    }
+    API_MapActor_SetAnim(9, 1);
+    API_MapActor_TurnToFaceActor(9, 0, 0);
+    API_CutsceneWait(2);
+    API_ActorMessage(9, 0);
+    API_CutsceneEnd();
+}
 extern void __MapActor_SetIdle(int);
 extern void __MapActor_SetBehavior(int, int);
 
