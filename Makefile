@@ -88,13 +88,19 @@ $(OVERLAYS): %.bin: %.elf
 # Thumb-nop fill leaks in without this explicit append.
 GCC296_DIR     ?= tools/gcc296
 GCC296_CC      := $(GCC296_DIR)/xgcc
-# -fno-strict-aliasing is applied to every gcc-2.96 TU. goma_cave's
+# -fno-strict-aliasing is the gcc-2.96 default. goma_cave's
 # OvlFunc_906_20084f4 reproduces the ROM only with type-based alias analysis off,
 # and the flag is byte-compatible across the rest of the C codebase: the full ROM
-# builds byte-exact under it. Per-file overrides below vary other axes.
+# builds byte-exact under it. Gaia has a documented reconstruction exception.
 GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
                   -fno-builtin -nostdinc -ffreestanding \
                   -fcall-used-r4 -Iinclude -fno-strict-aliasing
+
+# Gaia's cleaned reconstruction needs type-based alias analysis for its final
+# scale-store schedule. This is a matching exception, not evidence of Camelot's
+# original flags. Keep other animation TUs on the project default.
+GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
+src/battle_anim/moves/gaia.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
 
 %.o: %.c .build/gcc296.stamp .build/binutils.stamp
 	python3 tools/build_deps.py c $@ $(GCC296_CC) $(GCC296_CFLAGS) -M $<
@@ -307,7 +313,7 @@ clean::
 # SOURCE is the original src/... C path, even when compiling a scratch copy.
 .PHONY: print-compile-contract
 print-compile-contract:
-	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS))' '$(AGBCC_DIR)/bin/old_agbcc' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'
+	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/battle_anim/moves/gaia.c,$(SOURCE)),$(GAIA_CFLAGS),$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS)))' '$(AGBCC_DIR)/bin/old_agbcc' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'
 
 # Fingerprints change only when tool contents or command settings change.
 # A phony prerequisite runs the inexpensive check each invocation; unchanged
@@ -317,7 +323,7 @@ print-compile-contract:
 .PHONY: FORCE
 FORCE:
 .build/gcc296.stamp: FORCE
-	@python3 tools/build_deps.py stamp $@ --tool $(GCC296_CC) --tool $(GCC296_DIR)/cc1 --tool $(GCC296_DIR)/cpp --tool $(GCC296_DIR)/tradcpp --value='$(GCC296_CFLAGS)' --value='$(COMMON2_CFLAGS)'
+	@python3 tools/build_deps.py stamp $@ --tool $(GCC296_CC) --tool $(GCC296_DIR)/cc1 --tool $(GCC296_DIR)/cpp --tool $(GCC296_DIR)/tradcpp --value='$(GCC296_CFLAGS)' --value='$(COMMON2_CFLAGS)' --value='$(GAIA_CFLAGS)'
 .build/agbcc.stamp: FORCE
 	@python3 tools/build_deps.py stamp $@ --tool $(AGBCC_DIR)/bin/old_agbcc --tool gcc --value='$(M4A_CPPFLAGS) $(M4A_CC1FLAGS)' --value='$(AGBFLASH_CPPFLAGS) $(AGBFLASH_CC1FLAGS)'
 .build/binutils.stamp: FORCE
