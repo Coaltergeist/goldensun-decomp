@@ -165,7 +165,101 @@ int OvlFunc_970_2008414(void)
 }
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008430.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008b34.s");
-INCLUDE_ASM("asm/maps/lalivero_ship/LaliveroShip_MapInit.s");
+typedef unsigned char GlobalState;
+extern GlobalState gState;
+extern unsigned char iwram_3001e70[];
+extern int __GiveItemTo(int, int);
+extern void __Func_800fe9c(void);
+
+int LaliveroShip_MapInit(void)
+{
+    unsigned char *r1;
+    int r2;
+    int r3;
+    unsigned char *base;
+    char *actor;
+    int val;
+    volatile unsigned short temp;
+    volatile unsigned short *bld;
+
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 = (int)&gState + r2;
+    r2 = 0;
+    base = *(unsigned char **)iwram_3001e70;
+    if (*(short *)((char *)r3 + r2) == 0x63) {
+        __GiveItemTo(0, 0xf2);
+    }
+
+    r3 = *(int *)(iwram_3001e70 + 0x4c);
+    r2 = 0xe0;
+    r2 <<= 1;
+    r3 += r2;
+    r2 -= 0xc0;
+    *(int *)r3 = r2;
+
+    ((char *)__MapActor_GetActor(8))[0x59] = 0;
+    val = 2;
+    ((char *)__MapActor_GetActor(8))[0x23] = val;
+
+    ((char *)__MapActor_GetActor(9))[0x59] = 0;
+    ((char *)__MapActor_GetActor(9))[0x23] = val;
+
+    actor = (char *)__MapActor_GetActor(8);
+    val -= 0xf;
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+
+    actor = (char *)__MapActor_GetActor(9);
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+
+    actor = (char *)__MapActor_GetActor(0);
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+    (*(char **)(actor + 0x50))[0x15] = ((*(char **)(actor + 0x50))[0x15] & val) | 4;
+
+    actor = (char *)__MapActor_GetActor(1);
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+    (*(char **)(actor + 0x50))[0x15] = ((*(char **)(actor + 0x50))[0x15] & val) | 4;
+
+    actor = (char *)__MapActor_GetActor(2);
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+    (*(char **)(actor + 0x50))[0x15] = ((*(char **)(actor + 0x50))[0x15] & val) | 4;
+
+    actor = (char *)__MapActor_GetActor(3);
+    (*(char **)(actor + 0x50))[9] = ((*(char **)(actor + 0x50))[9] & val) | 4;
+    (*(char **)(actor + 0x50))[0x15] = ((*(char **)(actor + 0x50))[0x15] & val) | 4;
+
+    temp = (REG_BG3CNT & 0xfffc) | 2;
+    REG_BG3CNT = temp;
+    temp = (REG_BG2CNT & 0xfffc) | 3;
+    REG_BG2CNT = temp;
+    temp = (REG_BG1CNT & 0xfffc) | 3;
+    REG_BG1CNT = temp;
+
+    do {
+        r2 = 0x2648;
+        bld = (volatile unsigned short *)0x04000050;
+    } while (0);
+    *bld = r2;
+    r2 = 0x81;
+    r2 <<= 4;
+    bld++;
+    *bld = r2;
+
+    r3 = 0x9a;
+    r3 <<= 1;
+    r1 = base + r3;
+    *(int *)(r1 + 0xc) += 0xffa60000;
+
+    r3 = 0xb2;
+    r3 <<= 1;
+    r1 = base + r3;
+    *(int *)(r1 + 0xc) += 0xffa60000;
+
+    __Func_800fe9c();
+    OvlFunc_970_200807c();
+
+    return 0;
+}
 extern unsigned char iwram_3001ed8[];
 
 #include "dma0.h"
@@ -259,6 +353,7 @@ extern struct OamEntry970 Lm970_1af8[] __asm__(".Lm970_1af8");
 extern void __Func_8003dec(void *entry, int a);
 
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
+
 
 #include "dma.h"
 

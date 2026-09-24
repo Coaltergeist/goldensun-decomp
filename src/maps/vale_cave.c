@@ -29,6 +29,17 @@ int OvlFunc_934_2008314(int *a, int *b)
 }
 
 extern unsigned char iwram_3001ebc[];
+extern unsigned int L1e48[] __asm__(".Lm934_1e48");
+extern int L1ea0[] __asm__(".Lm934_1ea0");
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern int ActorCmd_ARRAY_933__02009e88[];
+extern int __TestCollision(void *, int *);
+extern void __Actor_SetAnim(void *, int);
+extern void __WaitFrames(int);
+extern void __PlaySound(int);
+extern void __Actor_TravelTo(void *, int, int, int);
+extern void __Actor_WaitMovement(void *);
+extern void __MapActor_PlayPendingSound(void);
 
 void *OvlFunc_934_2008350(int *pos, void *unused)
 {
@@ -52,7 +63,70 @@ void *OvlFunc_934_2008350(int *pos, void *unused)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_20083a8.s");
+void OvlFunc_934_20083a8(void)
+{
+    unsigned char *hero;
+    unsigned char *actor;
+    unsigned char *other;
+    int pos[3];
+    int dir;
+
+    hero = __MapActor_GetActor(0);
+    dir = *(unsigned short *)(hero + 6) >> 12;
+    pos[0] = *(int *)(hero + 8) + (L1e48[dir] & 0xffff0000);
+    pos[1] = *(int *)(hero + 12);
+    pos[2] = *(int *)(hero + 16) + (L1e48[dir] << 16);
+    actor = OvlFunc_934_2008350(pos, hero);
+    if (actor == 0)
+        return;
+
+    pos[0] = *(int *)(actor + 8) + (L1e48[dir] & 0xffff0000);
+    pos[1] = *(int *)(actor + 12);
+    pos[2] = *(int *)(actor + 16) + (L1e48[dir] << 16);
+    other = OvlFunc_934_2008350(pos, actor);
+    if (other != 0 && (other[0x59] & 1))
+        return;
+
+    pos[0] = *(int *)(actor + 8);
+    pos[1] = *(int *)(actor + 12) + (0x80 << 13);
+    pos[2] = *(int *)(actor + 16);
+    other = OvlFunc_934_2008350(pos, actor);
+    if (other != 0 && (other[0x59] & 1))
+        return;
+
+    actor[0x22] = 2;
+    pos[0] = *(int *)(actor + 8) + (L1e48[dir] & 0xffff0000);
+    pos[1] = *(int *)(actor + 12);
+    pos[2] = *(int *)(actor + 16) + (L1e48[dir] << 16);
+    if (__TestCollision(actor, pos) > 0)
+        return;
+
+    if (actor[0x62] != 0)
+        return;
+
+    __Actor_SetAnim(hero, 8);
+    __WaitFrames(15);
+    __PlaySound(0xb9);
+    *(int *)(actor + 0x30) = 0x3333;
+    *(int *)(actor + 0x34) = 0x3333;
+    __Actor_TravelTo(actor, pos[0], pos[1], pos[2]);
+    *(int *)(hero + 0x30) = 0x3333;
+    *(int *)(hero + 0x34) = 0x3333;
+    __Actor_TravelTo(hero, pos[0], pos[1], pos[2]);
+    __Actor_WaitMovement(actor);
+    __MapActor_PlayPendingSound();
+    *(int *)(actor + 8) = pos[0];
+    *(int *)(actor + 16) = pos[2];
+    *(int *)(actor + 0x24) = 0;
+    *(int *)(actor + 0x2c) = 0;
+    *(int *)(hero + 0x38) = 0x80 << 24;
+    *(int *)(hero + 0x40) = 0x80 << 24;
+    *(int *)(hero + 8) = *(short *)(hero + 10) << 16;
+    *(int *)(hero + 0x24) = 0;
+    *(int *)(hero + 0x2c) = 0;
+    *(int *)(hero + 16) = *(short *)(hero + 18) << 16;
+    __Actor_SetAnim(hero, 1);
+}
 extern unsigned char iwram_3001e70[];
 extern unsigned char gBuffer[];
 
@@ -91,10 +165,6 @@ int OvlFunc_934_2008528(unsigned int layer, int x, int y, unsigned int w, unsign
     return 0;
 }
 
-extern unsigned int L1e48[] __asm__(".Lm934_1e48");
-extern int ActorCmd_ARRAY_933__02009e88[];
-extern void *OvlFunc_934_2008350(int *, void *);
-extern int __TestCollision(void *, int *);
 
 int OvlFunc_934_200858c(void *arg0)
 {
@@ -145,9 +215,6 @@ done:
 }
 
 INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008630.s");
-
-extern int L1ea0[] __asm__(".Lm934_1ea0");
-extern void *OvlFunc_934_2008630(int *, void *, void *);
 
 int OvlFunc_934_2008758(void *arg0)
 {
@@ -235,7 +302,6 @@ void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
 extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
-extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
 struct Pk {
@@ -454,8 +520,131 @@ void OvlFunc_934_2008dcc(void) {
 void OvlFunc_934_2008de8(void) {
     __Func_80105d4(0x10, 0x11, 1, 1, 0xf, 0xf);
 }
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008e04.s");
-INCLUDE_ASM("asm/maps/vale_cave/OvlFunc_934_2008f78.s");
+struct EffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    int unk20;
+    int unk24;
+};
+
+extern int OvlFunc_common0_18(int, int, int, int);
+extern int OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+extern unsigned int __Random(void);
+
+void OvlFunc_934_2008e04(void)
+{
+    extern int __CutsceneWait(int);
+    int a1;
+    int a2;
+    unsigned int i;
+    unsigned int rnd;
+    int rx;
+    int ry;
+    int s1;
+    int s2;
+    struct EffectData data;
+    void *actor;
+
+    __CutsceneStart();
+    if (*(int *)(__MapActor_GetActor(9) + 8) >> 20 == 23) {
+        API_MapActor_TravelToWait(0, 0xb4 << 1, 0xa6 << 2);
+        __Func_8092adc(0, 0xe0 << 8, 10);
+        *(int *)(__MapActor_GetActor(9) + 8) += 0x80 << 10;
+
+        actor = __MapActor_GetActor(9);
+        a1 = OvlFunc_common0_18(*(int *)((char *)actor + 8), 0, *(int *)(__MapActor_GetActor(9) + 16) + (0xd0 << 14), 0xf1);
+        a2 = OvlFunc_common0_18(*(int *)(__MapActor_GetActor(9) + 8) + (0x80 << 13), 0, *(int *)(__MapActor_GetActor(9) + 16) + (0xd0 << 14), 0xf1);
+
+        *(unsigned char *)(__MapActor_GetActor(9) + 0x55) = 0;
+
+        data.unk8 = 0x9999;
+        data.unkc = 0x9999;
+        data.unk4 = 7;
+        __PlaySound(0xd8);
+
+        i = 0;
+        do {
+            rnd = __Random();
+            rx = (((rnd * 17) >> 16) << 16) + (0xb8 << 17);
+            rnd = __Random();
+            ry = (((rnd * 14) >> 16) << 16) + (0x9c << 18);
+            OvlFunc_common0_10c(rx, 0, ry, 0, 0, 0, 0x90 << 12, &data);
+            *(int *)(__MapActor_GetActor(9) + 12) += -0x8000;
+            i++;
+            __CutsceneWait(1);
+        } while (i <= 67);
+
+        s1 = 23;
+        s2 = 39;
+        __Func_8010704(23, 41, 1, 1, s1, s2);
+        ((struct Actor *)__MapActor_GetActor(9))->flags |= 2;
+        __SetFlag(0x80 << 2);
+        *(int *)(__MapActor_GetActor(9) + 12) = 0xfff80000;
+        __MapActor_SetAnim(9, 2);
+        __DeleteActor(a1);
+        __DeleteActor(a2);
+        __CutsceneWait(30);
+    }
+    __CutsceneEnd();
+}
+
+void OvlFunc_934_2008f78(void)
+{
+    extern int __CutsceneWait(int);
+    int a1;
+    int a2;
+    unsigned int i;
+    unsigned int rnd;
+    int rx;
+    int ry;
+    int s1;
+    int s2;
+    struct EffectData data;
+
+    __CutsceneStart();
+    if (*(int *)(__MapActor_GetActor(10) + 8) >> 20 == 27) {
+    a1 = OvlFunc_common0_18(*(int *)(__MapActor_GetActor(10) + 8) + 0xfff80000, 0, *(int *)(__MapActor_GetActor(10) + 16) + (0xd0 << 14), 0xf1);
+    a2 = OvlFunc_common0_18(*(int *)(__MapActor_GetActor(10) + 8) + (0x80 << 12), 0, *(int *)(__MapActor_GetActor(10) + 16) + (0xd0 << 14), 0xf1);
+
+        *(unsigned char *)(__MapActor_GetActor(9) + 0x55) = 0;
+
+        data.unk8 = 0x9999;
+        data.unkc = 0x9999;
+        data.unk4 = 7;
+        __PlaySound(0xd8);
+
+        i = 0;
+        do {
+            rnd = __Random();
+            rx = (((rnd * 17) >> 16) << 16) + (0xd8 << 17);
+            rnd = __Random();
+            ry = (((rnd * 14) >> 16) << 16) + (0xa4 << 18);
+            OvlFunc_common0_10c(rx, 0, ry, 0, 0, 0, 0x90 << 12, &data);
+            *(int *)(__MapActor_GetActor(10) + 12) += -0x8000;
+            i++;
+            __CutsceneWait(1);
+        } while (i <= 67);
+
+        s1 = 27;
+        s2 = 41;
+        __Func_8010704(31, 39, 2, 1, s1, s2);
+        ((struct Actor *)__MapActor_GetActor(10))->flags |= 2;
+        __SetFlag(0x201);
+        *(int *)(__MapActor_GetActor(10) + 12) = 0xfff80000;
+        __MapActor_SetAnim(10, 2);
+        __DeleteActor(a1);
+        __DeleteActor(a2);
+        __CutsceneWait(30);
+    }
+    __CutsceneEnd();
+}
 
 extern void OvlFunc_934_20083a8(void);
 extern void OvlFunc_934_2008f78(void);

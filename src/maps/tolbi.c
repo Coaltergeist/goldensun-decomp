@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/tolbi/exports.s");
 
@@ -33,9 +34,44 @@ int OvlFunc_949_2008040(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_200807c.s");
+extern int __atan2(int, int);
+extern void __Actor_SetAnim(struct Actor *, int);
+
+int OvlFunc_949_200807c(struct Actor *a, struct Actor *b, int max_dist, int flag)
+{
+    int ret = 0;
+
+    if (OvlFunc_949_2008040((int *)&b->pos, (int *)&a->pos) < max_dist || flag) {
+        int dz = b->pos.z - a->pos.z;
+        int dx = b->pos.x - a->pos.x;
+        u16 angle = __atan2(dz, dx);
+        int a_minus_2 = (angle - 0x2000) & 0xf000;
+        int a_plus_2  = (angle + 0x2000) & 0xf000;
+        int a_minus_1 = (angle - 0x1000) & 0xf000;
+        int a_plus_1  = (angle + 0x1000) & 0xf000;
+        int a_center  = angle & 0xf000;
+        int a_facing  = a->facing & 0xf000;
+
+        if (a_center == a_facing || a_plus_1 == a_facing || a_minus_1 == a_facing || flag) {
+            a->stop = 1;
+            __Actor_SetAnim(a, 1);
+            ret = 1;
+        }
+        if (b == (struct Actor *)__MapActor_GetActor(0)) {
+            if (a_plus_2 == a_facing || a_minus_2 == a_facing) {
+                a->stop = 1;
+                __Actor_SetAnim(a, 1);
+                ret = 1;
+            }
+        }
+    } else {
+        a->stop = ret;
+        __Actor_SetAnim(a, 2);
+    }
+    return ret;
+}
+
 extern unsigned int iwram_3001e8c;
-extern int OvlFunc_949_200807c(void *, void *, int, int);
 
 int OvlFunc_949_2008170(unsigned char *arg0)
 {
@@ -146,6 +182,9 @@ void OvlFunc_949_20082d4(void) {
     __MessageID(0xe37);
     __ActorMessage(-1, 0);
 }
+
+extern void __CutsceneEnd(void);
+extern int *iwram_3001ebc;
 
 INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20082f0.s");
 
@@ -294,9 +333,9 @@ void OvlFunc_949_2008644(void)
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20086e8.s");
+extern void OvlFunc_949_20086e8(struct Actor *actor);
 extern int gScript_949__02008ec0;
 extern int gScript_949__02008f90;
-extern void OvlFunc_949_20086e8(void);
 extern void OvlFunc_949_2008ca8(void);
 extern void __MapActor_SetPos(int, int, int);
 extern void __MapActor_SetBehavior(int, ...);
