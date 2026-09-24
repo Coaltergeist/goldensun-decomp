@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/exports.s");
 
@@ -728,9 +729,19 @@ extern void OvlFunc_922_200a094(void);
 void OvlFunc_922_2008ff8(void) {
     OvlFunc_922_200a094();
 }
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009004.s");
+void OvlFunc_922_2009004(int actor_id, int x, int z) {
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(actor_id);
+    if (actor != 0) {
+        int half;
+        __Func_8092b08(actor_id, 3);
+        actor->layer = 2;
+        actor->flags |= 2;
+        half = 0x80 << 12;
+        actor->pos.x = (x << 20) + half;
+        actor->pos.z = (z << 20) + half;
+    }
+}
 void __Func_8010704(int, int, int, int, int, int);
-void OvlFunc_922_2009004(int, int, int);
 
 void OvlFunc_922_2009050(void) {
     int eight = 8;
@@ -1265,18 +1276,72 @@ unsigned int OvlFunc_922_2009c08(int arg) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2009c18.s");
-extern volatile unsigned int iwram_3001e40;
-extern void OvlFunc_922_2009c18(int, int, int, int, int, int, int, void *);
-
 struct EffectData {
-    int unk0;
+    u8 unk0;
+    char pad[3];
     int unk4;
     int unk8;
     int unkc;
     int unk10;
     int unk14;
 };
+
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_SetScript(void *, void *);
+extern int _divsi3_RAM(int, int);
+
+struct Scripts_2418 {
+    void *s[3];
+};
+extern struct Scripts_2418 Lm922_2418 __asm__(".Lm922_2418");
+
+void OvlFunc_922_2009c18(int x, int y, int z, int r, int r2, int mask, int flags, struct EffectData *data) {
+    struct Scripts_2418 scripts = Lm922_2418;
+    struct Actor *actor = (struct Actor *)API_CreateActor(0xde, x, y, z);
+    if (actor != 0) {
+        int scale_flag;
+        struct Sprite *sprite = actor->sprite;
+        __Actor_SetAnim(actor, (flags + 1) & 15);
+        __Actor_SetScript(actor, scripts.s[flags & 15]);
+        actor->__unk55 = 0;
+        sprite->flags = 0;
+        actor->update = (actorfun_t *)OvlFunc_922_2009bdc;
+        *(int *)((char *)actor + 0x44) = r;
+        *(int *)((char *)actor + 0x48) = r2;
+        *(int *)((char *)actor + 0x4c) = mask;
+        actor->speed = 0;
+        actor->accel = 0;
+        sprite->oam.priority = 1;
+        if ((flags & 0xffff0000) != 0 && data != 0) {
+            if (flags & (0x80 << 9)) {
+                __Func_80929d8(actor, data->unk4);
+            }
+            if (flags & (0x80 << 10)) {
+                actor->flags &= 0xfe;
+                {
+                u8 p = data->unk0;
+                sprite->oam.priority = p;
+            }
+            }
+            scale_flag = flags & (0x80 << 12);
+            if (scale_flag) {
+                actor->scale.x = data->unk8;
+                actor->scale.y = data->unkc;
+            }
+            if (flags & (0x80 << 11)) {
+                int *script = (int *)scripts.s[flags & 15];
+                if (scale_flag) {
+                    actor->speed = _divsi3_RAM(data->unk10 - actor->scale.x, script[3]);
+                    actor->accel = _divsi3_RAM(data->unk14 - actor->scale.y, script[3]);
+                } else {
+                    actor->speed = _divsi3_RAM(data->unk10 + (int)0xffff0000, script[3]);
+                    actor->accel = _divsi3_RAM(data->unk14 + (int)0xffff0000, script[3]);
+                }
+            }
+        }
+    }
+}
+extern volatile unsigned int iwram_3001e40;
 
 void OvlFunc_922_2009d78(void)
 {
@@ -1462,7 +1527,9 @@ void OvlFunc_922_200a014(unsigned char *actor) {
         }
     }
 }
+
 INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_200a094.s");
+
 INCLUDE_ASM("asm/maps/imil_falls_cave/imil_falls_cave_data.s");
 
 INCLUDE_ASM("asm/maps/imil_falls_cave/imports.s");

@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -192,7 +193,60 @@ void OvlFunc_930_20088e0(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2008924.s");
+extern unsigned char gScript_930__0200962c[];
+extern unsigned char gScript_930__020096b8[];
+extern void __Func_8093530(void);
+extern void __MapActor_WaitScript(int);
+extern void __Func_8092b08(int, int);
+
+void OvlFunc_930_2008924(void) {
+    if (__GetFlag(0x89a) != 0) {
+        __CutsceneStart();
+        API_MapActor_SetPos(0xa, 0x86 << 18, 0xd8 << 16);
+        __MessageID(0x18b5);
+        API_ActorMessage_Wait(0xa, 0, 0x14);
+        API_Func_80925cc(0, 2);
+        API_CutsceneWait(0x14);
+        *(int *)((char *)__MapActor_GetActor(0) + 0x6c) = (int)OvlFunc_930_2008054;
+        if (*(int *)((char *)__MapActor_GetActor(0) + 0x10) >> 20 == 0xd) {
+            API_MapActor_TravelToAnimWait(0, 0xdc << 1, 0xc8);
+        }
+        API_MapActor_SetSpeed(0xa, 0x80 << 10, 0x80 << 9);
+        __Func_8092b08(0xa, 2);
+        API_MapActor_TravelToAnimWait(0xa, 0xcc << 1, 0xd8);
+        ((struct Actor *)__MapActor_GetActor(0xa))->flags |= 1;
+        API_CutsceneWait(0xa);
+        API_Func_8092adc(0xa, 0x80 << 8, 0x14);
+        API_ActorMessage_Wait(0xa, 0, 0x14);
+        API_Func_809259c(0xa, 2);
+        API_MapActor_Surprise(0xa, 0x81 << 1);
+        API_CutsceneWait(0x3c);
+        API_ActorMessage_Wait(0xa, 0, 0x14);
+        __MapActor_SetBehavior(0xa, gScript_930__0200962c);
+        API_Func_80933f8(0x94 << 17, -1, 0xac << 17, 1);
+        __SetFlag(0x8b << 4);
+        __MapActor_WaitScript(0xa);
+        __Func_8093530();
+        API_MapActor_SetSpeed(0, 0x80 << 9, 0x80 << 8);
+        __MapActor_SetBehavior(0, gScript_930__020096b8);
+        {
+            int zero = 0;
+            __MapActor_WaitScript(0);
+            API_CutsceneWait(0xa);
+            *(int *)((char *)__MapActor_GetActor(0) + 0x6c) = zero;
+        }
+        API_CutsceneWait(0x1e);
+        API_Func_80925cc(0xa, 2);
+        API_CutsceneWait(0x14);
+        API_Func_8092adc(0xa, 0xa0 << 7, 0x78);
+        API_MapActor_Emote(0xa, 0x105, 0x3c);
+        API_MapActor_Emote(0, 0x101, 0x3c);
+        API_MapActor_DoAnim(0xa, 4);
+        API_CutsceneWait(0x14);
+        API_ActorMessage_Wait(0xa, 0, 0x14);
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_930_2008ac0(void) {
     unsigned int r2;
@@ -412,7 +466,15 @@ void OvlFunc_930_2009028(void) {
     API_CutsceneWait(1);
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_2009060.s");
+int OvlFunc_930_2009060(struct Actor *arg0) {
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0);
+    if (actor->pos.y > arg0->pos.y) {
+        arg0->flags |= 2;
+    } else {
+        arg0->flags &= ~2;
+    }
+}
+
 
 extern unsigned char *__MapActor_GetActor(int idx);
 extern void __Func_8092b08(int idx, int val);
@@ -428,7 +490,23 @@ void OvlFunc_930_2009090(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/alpine_crossing/OvlFunc_930_20090b8.s");
+void OvlFunc_930_20090b8(void) {
+    extern void __Func_8010704(int, int, int, int, int, int);
+    int r5;
+    int zero = 0;
+    __CutsceneStart();
+    ((struct Actor *)__MapActor_GetActor(0xe))->flags &= 0xfd;
+    ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xfd;
+    ((struct Actor *)__MapActor_GetActor(0xe))->__unk55 = zero;
+    *(int *)((char *)__MapActor_GetActor(0xe) + 0x6c) = (int)OvlFunc_930_2009060;
+    r5 = 0x12;
+    __Func_8010704(0x37, 0x10, 1, 1, 0x38, r5);
+    __Func_8010704(0x37, 0x10, 1, 1, 0x14, r5);
+    __WaitFrames(1);
+    __SetFlag(0x80 << 2);
+    __Func_8092b08(0xe, 2);
+    __CutsceneEnd();
+}
 
 void OvlFunc_930_2009144(void)
 {
