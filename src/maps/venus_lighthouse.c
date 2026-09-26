@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/exports.s");
 
@@ -88,8 +89,70 @@ unsigned int OvlFunc_968_2008690(void) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20086a0.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008754.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20087d8.s");
+
+void OvlFunc_968_2008754(void) {
+    extern void OvlFunc_968_20086a0(struct Actor *);
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8092950(int, int);
+    extern unsigned char iwram_3001ebc[];
+    struct Actor *a;
+    short *p;
+    short val;
+
+    p = *(short **)iwram_3001ebc;
+    a = (struct Actor *)__MapActor_GetActor(0);
+    API_CutsceneStart();
+    API_PlaySound(0xe4);
+    a->update = (actorfun_t *)OvlFunc_968_20086a0;
+    a->speed = 0x3333;
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -6);
+    API_MapActor_WaitMovement(0);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    a->update = 0;
+    API_CutsceneWait(0x1e);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    val = *(short *)((char *)p + (0xb6 << 1));
+    API_Func_8091e9c(val);
+    API_CutsceneEnd();
+}
+
+void OvlFunc_968_20087d8(void)
+{
+    extern void OvlFunc_968_20086a0(struct Actor *);
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8092950(int, int);
+    struct Actor *a;
+    int flag;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    flag = API_GetFlag(0x109);
+    if (flag != 0) {
+        return;
+    }
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    a->__unk55 = flag;
+    API_MapActor_SetPos(0, ((short *)&a->pos.x)[1] << 16,
+                         (((short *)&a->pos.z)[1] << 16) + 0xfff00000);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_PlaySound(0xe4);
+    a->update = (actorfun_t *)OvlFunc_968_20086a0;
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    API_Func_8092304(0, 0, 8);
+    __Func_8092950(0, 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 1);
+    API_Func_8092304(0, 0, 8);
+    a->__unk55 = 3;
+    a->update = (actorfun_t *)flag;
+    API_MapActor_PlayPendingSound();
+    API_CutsceneEnd();
+}
 
 extern unsigned int __MapActor_GetActor(int id);
 extern unsigned int *iwram_3001ee0;
@@ -164,23 +227,6 @@ INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20089c8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b08.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b98.s");
 
-struct Actor {
-unsigned char pad0[0xc];
-int posY;
-unsigned char pad1[0x13];
-unsigned char flags;
-unsigned char pad2[0xc];
-unsigned int speed;
-unsigned int accel;
-unsigned char pad3[0x1d];
-unsigned char unk55;
-unsigned char pad4[3];
-unsigned char unk59;
-unsigned char pad5[9];
-unsigned char unk63;
-unsigned char pad6[8];
-void *update;
-};
 extern void __Actor_SetAnim(struct Actor *actor, int anim);
 extern void __Actor_SetScript(struct Actor *actor, void *script);
 extern void OvlFunc_968_2008b98(void);
@@ -198,12 +244,12 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
     actor->accel = 0x10000;
     __Actor_SetSpriteFlags(actor, 0);
     __Actor_SetAnim(actor, 7);
-    actor->unk55 = 0;
-    actor->posY = 0;
-    actor->unk59 = 0;
+    actor->__unk55 = 0;
+    actor->pos.y = 0;
+    actor->__unk59 = 0;
     actor->flags = 2;
     actor->update = (void *)OvlFunc_968_2008b98;
-    actor->unk63 = 0;
+    actor->__unk63 = 0;
     __Actor_SetScript(actor, param_3);
     return actor;
 }
@@ -293,7 +339,37 @@ void OvlFunc_968_2008f1c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008f38.s");
+void OvlFunc_968_2008f38(void) {
+    extern void __Func_8092950(int, int);
+    unsigned int wait;
+    int count;
+    int s1;
+    int s2;
+
+    API_CutsceneStart();
+    API_Func_80925cc(8, 3);
+    API_MessageID(0x266d);
+    count = 0xa;
+    wait = 8;
+    API_ActorMessage_Wait(8, 0, 0x14);
+    do {
+        __Func_8092950(8, 0xf);
+        API_WaitFrames(2);
+        __Func_8092950(8, 0);
+        API_WaitFrames(wait);
+        if (wait > 3) {
+            wait -= 1;
+        }
+        count -= 1;
+    } while (count != 0);
+    API_SetFlag(0x981);
+    API_MapActor_SetPos(8, 0, 0);
+    s1 = 7;
+    s2 = 0x10;
+    API_Func_8010704(7, 0x11, 2, 1, s1, s2);
+    API_CutsceneEnd();
+}
+
 extern void __MessageID(int);
 extern void __ActorMessage_Wait(int, int, int);
 extern void __Func_80925cc(int, int);
@@ -338,11 +414,70 @@ void OvlFunc_968_2009024(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009048.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20090cc.s");
+void OvlFunc_968_2009048(void) {
+    API_ClearFlag(0x161);
+    API_Func_8010704(0x23, 8, 1, 3, 0x17, 8);
+    API_CopyMapTiles(0x23, 8, 0x17, 8, 1, 3);
+    API_CopyMapTiles(0x63, 8, 0x57, 8, 1, 3);
+    API_Func_8010704(0x39, 0x37, 3, 3, 0x2e, 0x37);
+    API_CopyMapTiles(0x39, 0x37, 0x2e, 0x37, 3, 3);
+    API_CopyMapTiles(0x79, 0x37, 0x6e, 0x37, 3, 3);
+}
+
+void OvlFunc_968_20090cc(void)
+{
+    API_SetFlag(0x161);
+    API_Func_8010704(0x24, 8, 1, 3, 0x17, 8);
+    API_CopyMapTiles(0x24, 8, 0x17, 8, 1, 3);
+    API_CopyMapTiles(0x64, 8, 0x57, 8, 1, 3);
+    API_Func_8010704(0x35, 0x37, 3, 3, 0x2e, 0x37);
+    API_CopyMapTiles(0x35, 0x37, 0x2e, 0x37, 3, 3);
+    API_CopyMapTiles(0x75, 0x37, 0x6e, 0x37, 3, 3);
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009150.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009218.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20094f4.s");
+
+void OvlFunc_968_20094f4(void) {
+    struct Actor *a;
+
+    API_CutsceneStart();
+    a = (struct Actor *)__MapActor_GetActor(0xc);
+    if ((a->pos.x >> 20) == 0x35 && API_GetFlag(0x986) == 0) {
+        API_SetFlag(0x986);
+        a = (struct Actor *)__MapActor_GetActor(0);
+        if (a != 0) {
+            API_MapActor_SetPos(1, a->pos.x, a->pos.z);
+        }
+        API_MapActor_SetSpeed(1, 0xcccc, 0x6666);
+        API_MapActor_TravelToAnimWait(1, 0xce << 2, 0x58);
+        API_MapActor_TravelToAnimWait(1, 0xce << 2, 0x68);
+        API_MapActor_TurnToFaceActor(1, 0, 0);
+        API_CutsceneWait(0x14);
+        API_MapActor_DoAnim(1, 4);
+        API_CutsceneWait(0x14);
+        API_MessageID(0x2691);
+        API_ActorMessage_Wait(1, 0, 0x14);
+        API_Func_8092adc(1, 0, 0xa);
+        API_MapActor_Emote(1, 0x80 << 1, 0x3c);
+        API_MapActor_Face(1, 0, 0);
+        API_CutsceneWait(0x14);
+        API_Func_80925cc(1, 2);
+        API_CutsceneWait(0x14);
+        API_ActorMessage_Wait(1, 0, 0x14);
+        API_MapActor_SetAnim(0, 3);
+        API_MapActor_DoAnim(1, 3);
+        API_CutsceneWait(0x1e);
+        API_MapActor_TravelToAnimWait(1, 0xce << 2, 0x58);
+        API_MapActor_SetAnim(1, 2);
+        a = (struct Actor *)__MapActor_GetActor(0);
+        if (a != 0) {
+            API_MapActor_TravelTo(1, ((short *)&a->pos.x)[1], ((short *)&a->pos.z)[1]);
+        }
+        API_MapActor_WaitMovement(1);
+        API_MapActor_SetPos(1, 0, 0);
+        API_CutsceneEnd();
+    }
+}
 
 extern void OvlFunc_968_2008374(void);
 extern void OvlFunc_968_20094f4(void);
@@ -357,10 +492,79 @@ void OvlFunc_968_2009628(void)
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009644.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20096a4.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009780.s");
+void OvlFunc_968_20096a4(void) {
+    struct Actor *a;
+    short x;
+    short z;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    x = ((short *)&a->pos.x)[1];
+    z = ((short *)&a->pos.z)[1];
+    if ((unsigned int)(x - 0x2a4) > 7 || z < 0xc5 << 2 || z >= 0xc7 << 2) {
+        API_CopyMapTiles(0x35, 0x32, 0x2a, 0x31, 1, 1);
+        API_CopyMapTiles(0x37, 0x75, 0x29, 0x75, 3, 5);
+        API_ClearFlag(0x201);
+        a->__unk55 |= 1;
+        a->floorPos = 0;
+        a->pos.y = 0;
+    } else if (API_GetFlag(0x201) == 0) {
+        API_CutsceneStart();
+        API_CutsceneWait(5);
+        API_CopyMapTiles(0x34, 0x32, 0x2a, 0x31, 1, 1);
+        API_CopyMapTiles(0x34, 0x75, 0x29, 0x75, 3, 5);
+        API_SetFlag(0x201);
+        API_PlaySound(0xa1);
+        a->__unk55 &= 0xfe;
+        a->floorPos = 0xfffe0000;
+        a->pos.y = 0xfffe0000;
+        API_CutsceneEnd();
+    }
+}
+
+struct Foo_968_2009780 {
+    unsigned char pad[0xcb6];
+    unsigned short f_cb6;
+    unsigned char pad2[0xcba - 0xcb6 - 2];
+    unsigned short f_cba;
+};
+
+void OvlFunc_968_2009780(void) {
+    extern unsigned char iwram_3001ebc[];
+    struct Foo_968_2009780 *p;
+
+    p = *(struct Foo_968_2009780 **)iwram_3001ebc;
+    p->f_cba = 0;
+    p->f_cb6 = 1;
+    API_CutsceneStart();
+    API_MessageID(0x267d);
+    API_MapActor_Face(0xa, 0, 0);
+    API_CutsceneWait(0xa);
+    API_ActorMessage_Wait(0xa, 0, 0x14);
+    API_Func_8092adc(0xa, 0xe0 << 8, 0);
+    API_Func_80933d4(0x80 << 9, 0x80 << 6);
+    API_Func_80933f8(0xe0 << 17, -1, 0xd8 << 17, 1);
+    API_Func_8093530();
+    API_ActorMessage(0xa, 0);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009808.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20098f8.s");
+void OvlFunc_968_20098f8(void)
+{
+    struct Actor *a;
+    unsigned int i;
+
+    __MapActor_GetActor(8);
+    API_CutsceneStart();
+    API_Func_8010704(0x13, 0x2c, 4, 1, 0xc, 0x2c);
+    API_Func_8010704(0x11, 0x33, 2, 2, 0xb, 0x33);
+    for (i = 0; i < 3; i++) {
+        a = (struct Actor *)__MapActor_GetActor(i + 8);
+        API_Func_8010704(0xc, 0x32, 1, 1, a->pos.x >> 20, a->pos.z >> 20);
+    }
+    OvlFunc_968_2008910(0xa, 9);
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_968_20098f8(void);
 

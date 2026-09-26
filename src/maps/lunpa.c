@@ -355,8 +355,27 @@ void OvlFunc_939_20088cc(void) {
 }
 
 extern unsigned char gState;
+extern int gState_i32[] __asm__("gState");
+extern unsigned char Lconst_24db[] __asm__(".Lconst_24db");
+__asm__(".equ .Lconst_24db, 0x24db");
 
-INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_20088ec.s");
+void OvlFunc_939_20088ec(void) {
+    int msg;
+    if ((short)gState_i32[0x93] != 0) {
+        API_MessageID(0x2411);
+    } else if (API_GetFlag(0x941) && !API_GetFlag(0x94d)) {
+        API_MapActor_Emote(8, 0x101, 0x3c);
+        msg = (int)Lconst_24db;
+        API_MessageID(msg);
+        API_ActorMessage(8, 0);
+        API_Func_809259c(8, 1);
+        API_MessageID(msg + 1);
+        API_SetFlag(0x9af);
+    } else {
+        API_MessageID(0x1bb5);
+    }
+    API_ActorMessage(8, 0);
+}
 
 extern void __MessageID(int);
 extern void __ActorMessage(int, int);

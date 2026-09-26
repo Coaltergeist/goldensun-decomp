@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/exports.s");
 
@@ -53,7 +54,23 @@ unsigned char *VaultRooms1_GetActors(void)
     __Func_808b868(r5);
     return r5;
 }
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008080.s");
+
+void OvlFunc_899_2008080(void) {
+    extern void __Func_8093c00(void);
+
+    if (((struct Actor *)__MapActor_GetActor(0))->facing >= (0xa0 << 8) &&
+        ((struct Actor *)__MapActor_GetActor(0))->facing <= (0xe0 << 8))
+    {
+        __Func_8093c00();
+        API_Func_8010704(0x29, 0x55, 1, 1, 0x2a, 0x55);
+    }
+    else if (((struct Actor *)__MapActor_GetActor(0))->facing >= (0x80 << 6) &&
+             ((struct Actor *)__MapActor_GetActor(0))->facing <= (0xc0 << 7))
+    {
+        __Func_8093c00();
+        API_Func_8010704(0x2b, 0x55, 1, 1, 0x2a, 0x55);
+    }
+}
 
 void OvlFunc_899_20080fc(void)
 {
@@ -535,7 +552,51 @@ void OvlFunc_899_20099e4(void)
     __Func_8091e9c(0xe);
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009a4c.s");
+extern void OvlFunc_899_200c60c();
+extern void OvlFunc_899_200aba0(void);
+extern unsigned char gScript_899__0200d830[];
+extern unsigned char gScript_899__0200d560[];
+
+void OvlFunc_899_2009a4c(void) {
+    struct Actor *a;
+    struct Actor *b;
+
+    a = (struct Actor *)__MapActor_GetActor(0x18);
+    b = (struct Actor *)__MapActor_GetActor(0x19);
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
+    API_MapActor_SetSpeed(1, 0xcccc, 0x6666);
+    API_MapActor_SetSpeed(2, 0xcccc, 0x6666);
+    API_MapActor_TravelToAnimWait(0, 0xe8, 0xae << 2);
+    API_MapActor_TravelToAnimWait(0, 0xc8, 0xae << 2);
+    API_CutsceneWait(0xa);
+    API_MapActor_Emote(0x19, 0x80 << 1, 0);
+    API_MapActor_Emote(0x18, 0x80 << 1, 0);
+    API_CutsceneWait(0x3c);
+    OvlFunc_899_200c60c(0x19, 0, 0xa);
+    API_Func_80925cc(0x18, 2);
+    API_CutsceneWait(0x14);
+    API_MessageID(0x1296);
+    OvlFunc_899_200c5f4(0x18, 0x14);
+    API_MapActor_Surprise(0x19, 0x81 << 1);
+    API_CutsceneWait(0x3c);
+    OvlFunc_899_200c5f4(0x19, 0x14);
+    API_Func_80925cc(0x18, 1);
+    OvlFunc_899_200c5f4(0x18, 0x1e);
+    API_MapActor_SetSpeed(0x18, 0x80 << 11, 0x80 << 10);
+    API_MapActor_SetSpeed(0x19, 0xe0 << 10, 0xe0 << 9);
+    API_MapActor_SetBehavior(0x19, (int)gScript_899__0200d830);
+    API_MapActor_SetBehavior(0x18, (int)gScript_899__0200d560);
+    API_MapActor_WaitScript(0x18);
+    API_Func_8010704(0xe, 0x2d, 3, 1, 0xe, 0x2c);
+    API_SetFlag(0x852);
+    API_SetFlag(0xc0 << 2);
+    API_StartTask(OvlFunc_899_200aba0, 0xc8 << 4);
+    a->waveCounter = 1;
+    b->waveCounter = 3;
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009ba0.s");
 
 extern void OvlFunc_899_200cb2c(void);
@@ -548,11 +609,7 @@ void OvlFunc_899_2009e64(void) {
 
 extern void __MapActor_Surprise(int, int);
 extern void __MapActor_SetSpeed(int, int, int);
-extern void __MapActor_SetBehavior(int, int);
-extern void __MapActor_WaitScript(int);
 extern void __Func_8010704(int, int, int, int, int, int);
-extern unsigned char gScript_899__0200d830[];
-extern unsigned char gScript_899__0200d560[];
 extern int _MSG_12a0;
 
 void OvlFunc_899_2009e80(void) {

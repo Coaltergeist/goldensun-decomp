@@ -827,7 +827,14 @@ void OvlFunc_964_2009fdc(void) {
     API_MapActor_SetPos(0x10, 0xc6 << 18, 0xae << 18);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a040.s");
+void OvlFunc_964_200a040(void) {
+    API_Func_8010704(8, 0x71, 1, 1, 8, 0x31);
+    API_Func_8010704(0x31, 0x6b, 1, 1, 0x31, 0x2b);
+    API_Func_808edac(0x64, -1, -1);
+    API_Func_808edac(0x65, -1, -1);
+    API_MapActor_SetPos(0xf, 0, 0);
+    API_MapActor_SetPos(0x10, 0, 0);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a0a4.s");
 
 extern void OvlFunc_964_200a0a4(void);

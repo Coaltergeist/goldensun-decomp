@@ -422,7 +422,33 @@ void OvlFunc_965_2008d4c(void)
     ((int *)__MapActor_GetActor(0))[17] = 0x80 << 7;
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008eac.s");
+
+void __Func_8092950(int, int);
+extern void __Actor_SetSpriteFlags(void *, int);
+
+void OvlFunc_965_2008eac(unsigned int arg0)
+{
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    __Func_800fe9c();
+    API_WaitFrames(1);
+    ((struct Actor *)__MapActor_GetActor(0))->pos.y = 0x82 << 16;
+    ((struct Actor *)__MapActor_GetActor(0))->gravity = 0x80 << 7;
+    ((struct Actor *)__MapActor_GetActor(0))->bounce = 0;
+    ((struct Actor *)__MapActor_GetActor(0))->__unk55 = 0;
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(10);
+    API_PlaySound(0xcc);
+    ((struct Actor *)__MapActor_GetActor(0))->__unk55 = 3;
+    ((struct Actor *)__MapActor_GetActor(0))->motion.y = 0xfffb0000;
+    OvlFunc_965_2008cd0((unsigned int)__MapActor_GetActor(0));
+    __Func_8092950(0, 0xf);
+    API_Func_8091e9c(arg0);
+    API_CutsceneEnd();
+}
+
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
 extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];

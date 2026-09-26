@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/mogall_forest/exports.s");
 
@@ -550,7 +551,37 @@ void OvlFunc_927_2009150(void)
     __MapActor_SetPos(10, 0, 0);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009244.s");
+extern void __StartMapBattle(int, int);
+
+void OvlFunc_927_2009244(void)
+{
+    extern void __MapActor_Emote(int, int, int);
+    struct Actor *actor;
+    short x;
+    int offset;
+
+    actor = __MapActor_GetActor(0xb);
+    __CutsceneStart();
+    OvlFunc_927_2008ea8(0xb, 0);
+    OvlFunc_927_2008d90(0xb, 0xcc << 1, 0xe4 << 1, 0xc0 << 11);
+    OvlFunc_927_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z + (0xc0 << 13), 0, 0, 0, 1, 0);
+    __SetCameraTarget(0xb, 1);
+    __MapActor_TurnToFaceActor(0xb, 0, 0);
+    __CutsceneWait(0x1e);
+    __Func_809259c(0xb, 2);
+    __MapActor_Emote(0xb, 0x103, 0);
+    __PlaySound(0x93);
+    __CutsceneWait(0x3c);
+    x = ((short *)&((struct Actor *)__MapActor_GetActor(0))->pos.x)[1];
+    OvlFunc_927_2008d90(0xb, x, ((short *)&((struct Actor *)__MapActor_GetActor(0))->pos.z)[1], 0x80 << 11);
+    __CutsceneWait(0xa);
+    __SetFlag(0x301);
+    __MapActor_SetPos(0xe, 0, 0);
+    offset = 0x22b;
+    *((unsigned char *)&gState + offset) = 3;
+    __StartMapBattle(0x35, 0);
+    __CutsceneEnd();
+}
 #include "actor.h"
 
 void OvlFunc_927_2009328(void)
@@ -746,8 +777,38 @@ void OvlFunc_927_2009ac8(void) {
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009b84.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009c34.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009d04.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009de0.s");
-#include "actor.h"
+
+void OvlFunc_927_2009de0(void) {
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x10);
+    API_CutsceneStart();
+    OvlFunc_927_2008ea8(0x10, 1);
+    OvlFunc_927_2008d90(0x10, 0xe4 << 1, 0x98, 0xc0 << 11);
+    API_CutsceneWait(0xa);
+    OvlFunc_927_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z + (0x80 << 11), 0, 0, 0, 1, 0);
+    API_SetCameraTarget(0x10, 1);
+    API_MapActor_TurnToFaceActor(0x10, 0, 0);
+    API_CutsceneWait(0x14);
+    API_Func_809259c(0x10, 2);
+    API_MapActor_Surprise(0x10, 0x81 << 1);
+    API_CutsceneWait(0x3c);
+    OvlFunc_927_2008d90(0x10, 0xe0 << 1, 0xc0, 0xc0 << 10);
+    API_MapActor_Face(0, 0x10, 0);
+    API_CutsceneWait(6);
+    OvlFunc_927_2008d90(0x10, 0xd4 << 1, 0xd0, 0xc0 << 10);
+    API_MapActor_Face(0, 0x10, 0);
+    API_CutsceneWait(6);
+    OvlFunc_927_2008d90(0x10, 0xd4 << 1, 0xe0, 0xc0 << 10);
+    API_MapActor_Face(0, 0x10, 0);
+    API_CutsceneWait(6);
+    API_SetCameraTarget(0, 1);
+    API_MapActor_SetPos(0x10, 0, 0);
+    API_CutsceneWait(0x1e);
+    API_SetFlag(0xc2 << 2);
+    API_MapActor_SetPos(0x14, 0, 0);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_927_2009ef0(void)
 {
@@ -785,7 +846,24 @@ void OvlFunc_927_2009ef0(void)
     __MapActor_SetPos(0x15, 0, 0);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a004.s");
+
+void OvlFunc_927_200a004(void) {
+    struct Actor *actor;
+
+    API_CutsceneStart();
+    OvlFunc_927_2008ea8(0x12, 1);
+    API_Func_80933f8(0xba << 18, -1, 0xfc << 17, 1);
+    OvlFunc_927_2008d90(0x12, 0xba << 2, 0xfc << 1, 0x90 << 12);
+    OvlFunc_927_2008e18(0x12);
+    __Func_8092950(0x12, 0xf);
+    actor = __MapActor_GetActor(0x12);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_CutsceneWait(0x1e);
+    API_SetFlag(0x30a);
+    API_MapActor_SetPos(0x16, 0xba << 18, 0xfc << 17);
+    API_CutsceneEnd();
+}
+
 #include "actor.h"
 
 void OvlFunc_927_200a078(void)

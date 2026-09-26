@@ -143,7 +143,36 @@ void OvlFunc_910_200845c(void)
 }
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_MapInit.s");
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_200850c.s");
+
+void OvlFunc_910_200850c(void) {
+    extern void OvlFunc_910_2008974(int);
+    extern void OvlFunc_910_20085dc(void);
+    extern unsigned char gScript_910__02008bf4[];
+
+    if (API_GetFlag(0x109)) {
+        API_ClearFlag(0x80 << 2);
+    }
+    if (!API_GetFlag(0xfd2)) {
+        OvlFunc_910_2008974(0xd);
+    }
+    if (API_GetFlag(0x84a)) {
+        API_MapActor_SetPos(0xb, 0x9a << 17, 0x1070000);
+        API_MapActor_SetPos(0xc, 0xad << 17, 0x1070000);
+        if (!API_GetFlag(0x84f) && !API_GetFlag(0x845)) {
+            API_MapActor_SetPos(0xb, 0, 0);
+            API_Func_8092a1c(0xc, 0x80 << 9, gScript_910__02008bf4);
+        }
+    }
+    if (API_GetFlag(0x845)) {
+        API_MapActor_SetPos(0xa, 0xe0 << 16, 0x92 << 17);
+        API_Func_8092adc(0xa, 0x80 << 7, 0);
+        API_Func_8092adc(8, 0, 0);
+        if (!API_GetFlag(0x85e)) {
+            OvlFunc_910_20085dc();
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_20085dc.s");
 extern void __PlaySound(int);
 extern void __Func_8010560(unsigned char *, int, int);

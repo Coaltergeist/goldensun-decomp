@@ -489,7 +489,18 @@ void OvlFunc_932_20088d4(void)
     __CopyMapTiles(0x67, 0xe, 0x67, 0x11, s1, s2);
     __SetFlag(0x907);
 }
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20089ec.s");
+
+void OvlFunc_932_20089ec(void) {
+    if (API_GetFlag(0x323)) {
+        API_Func_8010704(2, 0, 1, 1, 0x18, 0x50);
+        API_CopyMapTiles(2, 1, 0x18, 0xb, 1, 2);
+        API_ClearFlag(0x323);
+    } else {
+        API_Func_8010704(0, 0, 1, 1, 0x18, 0x50);
+        API_CopyMapTiles(0, 1, 0x18, 0xb, 1, 2);
+        API_SetFlag(0x323);
+    }
+}
 
 extern void OvlFunc_932_20089ec(void);
 
@@ -503,9 +514,18 @@ void OvlFunc_932_2008a64(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008a94.s");
-
-extern void OvlFunc_932_2008a94(void);
+void OvlFunc_932_2008a94(void)
+{
+    if (API_GetFlag(0x325)) {
+        API_Func_8010704(0xc, 0x48, 1, 1, 0xb, 0x49);
+        API_CopyMapTiles(0x30, 0x20, 0xb, 4, 1, 2);
+        API_ClearFlag(0x325);
+    } else {
+        API_Func_8010704(0xa, 0x48, 1, 1, 0xb, 0x49);
+        API_CopyMapTiles(0x31, 0x20, 0xb, 4, 1, 2);
+        API_SetFlag(0x325);
+    }
+}
 
 void OvlFunc_932_2008b0c(void) {
     __CutsceneStart();

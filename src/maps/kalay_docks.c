@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kalay_docks/exports.s");
 
@@ -115,7 +116,34 @@ void OvlFunc_942_2008240(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008260.s");
+void OvlFunc_942_2008260(void) {
+    extern unsigned int iwram_3001ebc;
+    unsigned short *base;
+
+    __CutsceneStart();
+    if (API_GetFlag(0x8a6) == 0)
+    {
+        API_MessageID(0x1cfd);
+        __ShowActorMessage_NoWait(0xb, 0);
+        if (__Func_8091c7c(0, 0) == 0)
+        {
+            API_ActorMessage(0xb, 0);
+            API_SetFlag(0x8a6);
+        }
+        else
+        {
+            base = (unsigned short *)iwram_3001ebc;
+            base[0xec] += 1;
+            API_ActorMessage(0xb, 0);
+        }
+    }
+    else
+    {
+        API_MessageID(0x1cfe);
+        API_ActorMessage(0xb, 0);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_942_20082dc(void)
 {
@@ -319,7 +347,92 @@ void OvlFunc_942_2008ad4(void) {
 
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008af8.s");
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008b68.s");
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008ba0.s");
+extern struct Actor *__MapActor_GetActor(unsigned int);
+extern void __Func_808e118(void);
+
+void OvlFunc_942_2008ba0(void)
+{
+    struct Actor *actor;
+
+    __CutsceneStart();
+    __Func_808e118();
+    API_MapActor_SetPos(8, 0xa4 << 17, 0xb2 << 19);
+    __MapActor_GetActor(8)->stop = 1;
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x14);
+    API_Func_809233c(1, -0x10, 0, 0x80 << 8);
+    API_MapActor_WaitMovement(1);
+    API_Func_8092adc(0, 0xa0 << 8, 0);
+    API_CutsceneWait(0x14);
+    API_MessageID(0x1f89);
+    API_Func_8092adc(0, 0xa0 << 8, 0);
+    API_MapActor_SetSpeed(1, 0x19999, 0xcccc);
+    API_MapActor_TravelToAnimWait(1, 0xe8, 0xb2 << 3);
+    API_Func_8092adc(1, 0x80 << 8, 0);
+    API_Func_80933f8(0xb8 << 16, -1, 0xb4 << 19, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0xa);
+    API_MapActor_Jump(1, 6, 0xf);
+    API_MapActor_Jump(1, 6, 0x28);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(0x14);
+    API_Func_80933f8(0x84 << 17, -1, 0xb5 << 19, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+    API_MapActor_Emote(8, 0x80 << 1, 0x32);
+    API_MapActor_SetSpeed(8, 0x13333, 0x9999);
+    API_MapActor_TravelToAnimWait(8, 0x84 << 1, 0xb2 << 3);
+    API_Func_8092adc(8, 0x80 << 8, 0);
+    API_CutsceneWait(0xa);
+    API_Func_8092adc(1, 0, 0);
+    API_CutsceneWait(0x14);
+    API_CutsceneWait(0xa);
+    API_MapActor_DoAnim(8, 4);
+    API_CutsceneWait(0xa);
+    API_ActorMessage(8, 0);
+    API_CutsceneWait(0x14);
+    API_MapActor_Emote(1, 0x81 << 1, 0x28);
+    API_CutsceneWait(0x1e);
+    API_Func_8092adc(1, 0x80 << 8, 0);
+    API_CutsceneWait(0x32);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(0x14);
+    API_Func_8092adc(1, 0x80 << 6, 0);
+    API_CutsceneWait(0x1e);
+    API_MapActor_SetSpeed(1, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnimWait(1, 0x84 << 1, 0xb7 << 3);
+    API_Func_8092adc(1, 0, 0);
+    API_Func_8092adc(0, 0x80 << 8, 0);
+    API_Func_8092adc(8, 0x80 << 7, 0);
+    API_CutsceneWait(0x1e);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(0xa);
+    API_MapActor_DoAnim(0, 3);
+    API_CutsceneWait(0x1e);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(0x1e);
+    API_MapActor_SetSpeed(1, 0x13333, 0x9999);
+    API_MapActor_SetAnim(1, 2);
+
+    actor = __MapActor_GetActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(1, *(short *)((char *)actor + 0xa), *(short *)((char *)actor + 0x12));
+    }
+    API_MapActor_WaitMovement(1);
+    API_MapActor_SetPos(1, 0, 0);
+    API_CutsceneWait(0x14);
+
+    __MapActor_GetActor(8)->stop = 0;
+    API_MapActor_SetBehavior(8, 2);
+
+    actor = __MapActor_GetActor(8);
+    actor->waveCounter = actor->pos.x / 0x10000;
+    actor->__unk66 = actor->pos.z / 0x10000;
+
+    __CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008e40.s");
 INCLUDE_ASM("asm/maps/kalay_docks/kalay_docks_data.s");
 

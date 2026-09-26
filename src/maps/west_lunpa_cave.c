@@ -116,7 +116,21 @@ void OvlFunc_941_200833c(void) {
 }
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008384.s");
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008460.s");
+
+void OvlFunc_941_2008460(void) {
+	if (API_GetFlag(0x80 << 2) != 0) {
+        return;
+    }
+	if (API_GetFlag(0x202) != 0) {
+        return;
+    }
+	API_Func_801776c(0x1528, 1);
+	API_PlaySound(0x9d);
+	OvlFunc_941_2008384();
+    API_SetFlag(0x202);
+    API_ClearFlag(0x201);
+}
+
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20084a8.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008828.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20091b8.s");

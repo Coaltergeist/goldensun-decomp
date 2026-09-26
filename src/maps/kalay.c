@@ -160,7 +160,21 @@ void OvlFunc_936_2008394(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20083d8.s");
+void OvlFunc_936_20083d8(void)
+{
+    unsigned char *p;
+    unsigned int v;
+    p = (unsigned char *)__MapActor_GetActor(0);
+    v = (*(unsigned short *)(p + 6) + 0xffff9fff) << 16;
+    if (v <= (0x7ffe << 16)) {
+        __Func_80b0278(0x17, 0x17);
+    } else {
+        __CutsceneStart();
+        __MessageID(0x1ad1);
+        __Func_8093054(0x17, 0);
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_936_2008420(void)
 {
@@ -257,8 +271,17 @@ void OvlFunc_936_2008504(void) {
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008590.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200958c.s");
 extern unsigned char iwram_3001ee0[];
+
+void OvlFunc_936_200958c(void) {
+    unsigned int *base;
+
+    if (API_GetFlag(0x80 << 2)) {
+        base = *(unsigned int **)iwram_3001ee0;
+        base[6] = 0;
+        API_ClearFlag(0x80 << 2);
+    }
+}
 
 void OvlFunc_936_20095b4(void) {
     unsigned int *r5;

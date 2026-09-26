@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern void __CutsceneStart(void);
 extern void __CutsceneEnd(void);
@@ -117,7 +118,53 @@ void OvlFunc_926_2008414(void)
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008484.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008518.s");
+
+struct EffectData {
+    int a;
+    int b;
+    int pad8;
+    int padc;
+    int pad10;
+    int pad14;
+    short f;
+    short pad1a;
+    int pad1c;
+    int pad20;
+    int pad24;
+};
+
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+void OvlFunc_926_2008518(void) {
+    struct Actor *a;
+    struct EffectData data;
+
+    a = (struct Actor *)__MapActor_GetActor(9);
+    API_CutsceneStart();
+    API_MessageID(0x17b4);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_MapActor_TravelToAnimWait(0, 0xa8, 0xc4 << 1);
+    API_Func_8092adc(0, 0xc0 << 8, 0x14);
+    API_PlaySound(0x84);
+    ((struct Actor *)__MapActor_GetActor(9))->motion.y = 0xa0 << 13;
+    ((struct Actor *)__MapActor_GetActor(9))->gravity = 0x80 << 11;
+    API_MapActor_SetSpeed(9, 0xc0 << 10, 0xc0 << 9);
+    API_MapActor_TravelTo(9, 0x98, 0xc4 << 1);
+    API_MapActor_WaitMovement(9);
+    ((struct Actor *)__MapActor_GetActor(9))->gravity = 0x80 << 9;
+    API_Func_8092adc(9, 0, 0);
+    API_PlaySound(0x84);
+    data.b = 7;
+    OvlFunc_common0_10c(a->pos.x, a->pos.y, a->pos.z + (0x80 << 11), 0x80 << 8, 0, 0, 0x80 << 9, &data);
+    OvlFunc_common0_10c(a->pos.x, a->pos.y, a->pos.z + (0x80 << 11), 0, 0, 0, 0x80 << 9, &data);
+    OvlFunc_common0_10c(a->pos.x, a->pos.y, a->pos.z + (0x80 << 11), -0x8000, 0, 0, 0x80 << 9, &data);
+    API_CutsceneWait(0x1e);
+    API_MapActor_PlayPendingSound();
+    API_Func_8010704(0xa, 0x18, 1, 1, 0xa, 0x16);
+    API_SetFlag(0x892);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008658.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200871c.s");
 
@@ -145,7 +192,6 @@ void OvlFunc_926_2008bd4(void) {
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008bf4.s");
-extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, int);
 
 void OvlFunc_926_2008cd4(void)
 {
@@ -176,7 +222,50 @@ INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008db4.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008e94.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008f80.s");
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200902c.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009160.s");
+
+extern void OvlFunc_926_2008f80(void);
+
+void OvlFunc_926_2009160(void) {
+    API_MapActor_Face(0xd, 0x13, 0);
+    API_MapActor_Face(0xe, 0x13, 0);
+    API_MapActor_Face(0xf, 0x13, 0);
+    API_MapActor_Face(0x10, 0x13, 0);
+    API_MapActor_Face(0x12, 0x13, 0);
+    API_CutsceneWait(0x14);
+    API_Func_80925cc(0xf, 2);
+    API_CutsceneWait(0x14);
+    API_MessageID(0x187a);
+    API_ActorMessage_Wait(0xf, 0, 0x14);
+    API_ActorMessage_Wait(0x10, 0, 0x14);
+    API_MapActor_Emote(0x12, 0x105, 0x3c);
+    API_MapActor_Emote(0x10, 0x101, 0x3c);
+    API_ActorMessage_Wait(0x10, 0, 0x14);
+    API_MapActor_DoAnim(0x12, 4);
+    API_CutsceneWait(0x14);
+    API_ActorMessage_Wait(0x12, 0, 0x14);
+    API_MapActor_Emote(0x10, 0x81 << 1, 0x3c);
+    API_ActorMessage_Wait(0x10, 0, 0x14);
+    API_MapActor_TurnToFaceActor(0xf, 0x12, 0);
+    API_CutsceneWait(0x14);
+    API_MapActor_DoAnim(0x12, 3);
+    API_CutsceneWait(0x14);
+    API_MapActor_DoAnim(0xf, 3);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(0xf, 0xcccc, 0x6666);
+    OvlFunc_926_2008f80();
+    API_Func_80925cc(0xf, 3);
+    API_MapActor_SetPos(0x13, 0xe8 << 16, 0xa8 << 16);
+    API_MapActor_SetPos(0x14, 0xe8 << 16, 0xa8 << 16);
+    ((struct Actor *)__MapActor_GetActor(0x13))->pos.y = 0xc0 << 12;
+    ((struct Actor *)__MapActor_GetActor(0x13))->prevPos.y = 0x80 << 24;
+    ((struct Actor *)__MapActor_GetActor(0x13))->scale.x = 0xcccc;
+    ((struct Actor *)__MapActor_GetActor(0x13))->sprite->rotation = 0x80 << 8;
+    API_PlaySound(0x7c);
+    API_CutsceneWait(0x28);
+    API_MapActor_TravelToAnimWait(0xf, 0xd8, 0x98);
+    API_Func_8092adc(0xf, 0x80 << 7, 0x1e);
+    API_SetFlag(0x301);
+}
 
 extern void OvlFunc_926_2008bf4(void);
 extern void OvlFunc_926_2008cd4(void);
@@ -398,7 +487,30 @@ void OvlFunc_926_200a68c(int param_1, int param_2)
     __MapActor_SetAnim(0, 6);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a6d8.s");
+
+extern void OvlFunc_926_200a5b8(void);
+extern void __Func_8092950(int, int);
+
+void OvlFunc_926_200a6d8(void) {
+    void *actor;
+
+    API_CutsceneStart();
+    API_StartTask(OvlFunc_926_200a5b8, 0xc8 << 4);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    *(int *)(*(int *)iwram_3001ebc + (0xe4 << 1)) = 0x3c;
+    API_MapTransitionOut();
+    API_PlaySound(0x9a);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -6);
+    API_MapActor_WaitMovement(0);
+    __Func_8092950(0, 0xf);
+    actor = __MapActor_GetActor(0);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_StopTask(OvlFunc_926_200a5b8);
+    API_WaitMapTransition();
+    API_Func_8091e9c(3);
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_926_200a764(void) {
@@ -471,29 +583,6 @@ unsigned int __Random(void);
 void __Func_8092950(int, int);
 
 extern void OvlFunc_926_200c1c4(void);
-struct Actor {
-    int pad0;
-    int pad4;
-    int x;
-    int y;
-    int z;
-    char pad14[0x58];
-    void (*update)(void);
-};
-
-struct EffectData {
-    int a;
-    int b;
-    int pad8;
-    int padc;
-    int pad10;
-    int pad14;
-    short f;
-    short pad1a;
-    int pad1c;
-    int pad20;
-    int pad24;
-};
 
 void OvlFunc_926_200c1ec(void)
 {
@@ -505,14 +594,14 @@ void OvlFunc_926_200c1ec(void)
     int z_offset;
 
     __PlaySound(0x83);
-    ((struct Actor *)__MapActor_GetActor(8))->update = OvlFunc_926_200c1c4;
+    ((struct Actor *)__MapActor_GetActor(8))->update = (actorfun_t *)OvlFunc_926_200c1c4;
     __CutsceneWait(0x28);
     __Func_8091220(0x10000, 0);
     __Func_8091200(0x205c54, 1);
     __Func_8091254(0x3c);
     __CutsceneWait(0x28);
     __PlaySound(0x83);
-    ((struct Actor *)__MapActor_GetActor(2))->update = OvlFunc_926_200c1c4;
+    ((struct Actor *)__MapActor_GetActor(2))->update = (actorfun_t *)OvlFunc_926_200c1c4;
     __CutsceneWait(0x78);
     actor = (struct Actor *)__MapActor_GetActor(8);
 
@@ -524,10 +613,10 @@ void OvlFunc_926_200c1ec(void)
         if ((r7 & 3) == 0) {
             __PlaySound(0xf6);
         }
-        x = actor->x + ((((__Random() * 3) << 4) >> 16) << 16) - 0xc0000;
-        y = actor->y + (((__Random() << 5) >> 16) << 16) - 0x100000;
+        x = actor->pos.x + ((((__Random() * 3) << 4) >> 16) << 16) - 0xc0000;
+        y = actor->pos.y + (((__Random() << 5) >> 16) << 16) - 0x100000;
         z_offset = ((((__Random() * 4) >> 16) << 15) + 0x8000);
-        OvlFunc_common0_10c(x, y, actor->z, 0, z_offset, 0, 0x130000, &data);
+        OvlFunc_common0_10c(x, y, actor->pos.z, 0, z_offset, 0, 0x130000, &data);
         __WaitFrames(2);
     }
 

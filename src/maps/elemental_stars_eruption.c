@@ -1,6 +1,7 @@
 /* rom_791794 (overlay file 897): consolidated TU — elemental_stars_eruption map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/exports.s");
 
@@ -114,8 +115,35 @@ void OvlFunc_897_200a820(unsigned int arg0)
   __Func_8092b08(arg0, 3);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a84c.s");
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a8dc.s");
+void OvlFunc_897_200a84c(int arg0)
+{
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(8, 0x2f, 0x40, 7, 1, 1);
+        API_CopyMapTiles(7, 0x30, 0x3f, 8, 2, 1);
+        API_CopyMapTiles(7, 0x31, 0x3f, 9, 2, 1);
+    } else {
+        API_CopyMapTiles(0x38, 0, 0x40, 7, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 8, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 9, 2, 1);
+        API_CopyMapTiles(0x3a, 0x19, 0x40, 8, 1, 1);
+    }
+    __Func_800fe9c();
+}
+
+void OvlFunc_897_200a8dc(int arg0) {
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(9, 0x2d, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0xb, 0x2e, 0x43, 6, 1, 2);
+    } else {
+        API_CopyMapTiles(0x59, 2, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0x66, 0x20, 0x43, 6, 1, 2);
+    }
+    __Func_800fe9c();
+}
 
 extern unsigned char iwram_3001e40[];
 extern void OvlFunc_897_200a84c(int arg0);

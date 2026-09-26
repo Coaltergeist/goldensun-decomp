@@ -731,7 +731,59 @@ void OvlFunc_883_2009280(void) {
 	API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20092bc.s");
+extern unsigned char gScript_883__0200f59c[];
+extern unsigned char gScript_883__0200f5ec[];
+extern void __MapActor_SetBehavior(int, void *);
+extern void __MapActor_WaitScript(int);
+extern void __Func_8093054(int, int);
+extern unsigned int OvlFunc_883_200d72c(unsigned char *);
+extern unsigned char gScript_883__0200e248[];
+
+void OvlFunc_883_20092bc(void) {
+    unsigned char *p;
+
+    p = __MapActor_GetActor(0x16);
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x80 << 10, 0x80 << 10);
+    API_MapActor_Jump(0, 5, 0);
+    API_MapActor_TravelToAnim(0, 0xd7, 0x193);
+    p += 0x5a;
+    *p |= 1;
+    API_MapActor_SetPos(0x16, 0xa6 << 16, 0x1770000);
+    API_Func_8092adc(0x16, 0x80 << 6, 0x14);
+    *p ^= 1;
+    API_MapActor_SetSpeed(0x16, 0xa0 << 10, 0xa0 << 10);
+    API_MapActor_Jump(0x16, 4, 0);
+    API_MapActor_TravelToAnimWait(0x16, 0xca, 0x18b);
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneWait(0xa);
+    API_Func_8092adc(0, 0xb0 << 8, 0);
+    API_Func_8092adc(0x16, 0xc0 << 6, 0x18);
+    API_MapActor_Emote(0, 0x80 << 1, 0);
+    API_Func_809259c(0, 2);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(0x16, 0xc0 << 9, 0x80 << 9);
+    __MapActor_SetBehavior(0, (void *)gScript_883__0200f59c);
+    API_CutsceneWait(0xa);
+    API_MapActor_Emote(0x16, 0x103, 0);
+    __MapActor_SetBehavior(0x16, (void *)gScript_883__0200f5ec);
+    API_MapActor_WaitScript(0);
+    API_MapActor_TravelToAnimWait(0, 0x80 << 1, 0xed << 1);
+    API_Func_8092adc(0, 0xc0 << 8, 0);
+    API_MapActor_WaitScript(0x16);
+    API_MapActor_TravelToAnimWait(0x16, 0x80 << 1, 0xe4 << 1);
+    API_MapActor_SetAnim(0, 1);
+    API_Func_8092adc(0x16, 0x80 << 7, 0x14);
+    API_Func_809259c(0x16, 2);
+    API_CutsceneWait(0x14);
+    API_MessageID(0xfce);
+    __Func_8093054(0x16, 0);
+    ((struct Actor *)__MapActor_GetActor(0x16))->update = (actorfun_t *)OvlFunc_883_200d72c;
+    __MapActor_SetBehavior(0x16, gScript_883__0200e248);
+    API_SetFlag(0x823);
+    API_CutsceneEnd();
+}
+
 
 extern unsigned char L763c[] __asm__(".Lm883_763c");
 extern unsigned char L76cc[] __asm__(".Lm883_76cc");
@@ -905,7 +957,89 @@ void OvlFunc_883_200acb0(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200af14.s");
+extern int __Func_8091c7c(int, int);
+
+void OvlFunc_883_200af14(void) {
+    unsigned char *p;
+    unsigned int r2;
+    unsigned short r3;
+
+    API_CutsceneStart();
+    API_Func_80933f8(0x1650000, -1, 0x2e20000, 1);
+    API_MapActor_TravelToAnimWait(0, 0x16f, 0x2e9);
+    API_Func_8092adc(0, 0xa0 << 8, 0);
+    p = __MapActor_GetActor(0);
+    if (p != 0) {
+        API_MapActor_SetPos(1, *(int *)(p + 8), *(int *)(p + 0x10));
+    }
+    API_MapActor_TravelToAnimWait(1, 0xad << 1, 0x2e9);
+    API_Func_8092adc(1, 0xd0 << 8, 0x14);
+    API_MessageID(0x1c53);
+    API_ActorMessage(1, 0);
+    API_Func_80925cc(9, 2);
+    API_MapActor_Emote(9, 0x80 << 1, 0);
+    API_Func_8092adc(9, 0xc0 << 6, 0xa);
+    API_Func_8092adc(9, 0xa0 << 7, 0xa);
+    API_Func_8092adc(9, 0xc0 << 6, 0x28);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_MapActor_SetAnim(0, 3);
+    API_MapActor_DoAnim(1, 3);
+    API_Func_80925cc(9, 1);
+    API_Func_8092adc(9, 0xa0 << 7, 0xa);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_Func_809259c(1, 1);
+    API_MapActor_Emote(1, 0x103, 0x28);
+    API_ActorMessage_Wait(1, 0, 0xa);
+    API_MapActor_DoAnim(9, 3);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_Func_8092adc(0, 0x80 << 8, 0);
+    API_Func_8092adc(1, 0x80 << 5, 0x28);
+    API_MapActor_DoAnim(9, 4);
+    API_ActorMessage(9, 0);
+    API_Func_8092adc(0, 0xb0 << 8, 0);
+    API_Func_8092adc(1, 0xd0 << 8, 0xa);
+    API_Func_80925cc(1, 2);
+    API_CutsceneWait(0x14);
+    API_ActorMessage_Wait(1, 0, 0xa);
+    API_MapActor_DoAnim(9, 3);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_MapActor_Emote(0, 0x81 << 1, 0);
+    API_MapActor_Emote(1, 0x81 << 1, 0x50);
+    API_ActorMessage_Wait(1, 0, 0x14);
+    API_Func_80925cc(9, 2);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_Func_8092adc(1, 0x80 << 5, 0x14);
+    __ShowActorMessage_NoWait(1, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MapActor_Emote(1, 0x105, 0x3c);
+    } else {
+        r2 = iwram_3001ebc;
+        r3 = *(unsigned short *)(r2 + (0xec << 1));
+        r3 += 1;
+        *(unsigned short *)(r2 + (0xec << 1)) = r3;
+    }
+    API_ActorMessage_Wait(1, 0, 0x14);
+    API_Func_8092adc(1, 0xd0 << 8, 0xa);
+    API_MessageID(MSG_1c60);
+    API_ActorMessage(1, 0);
+    API_MapActor_DoAnim(9, 3);
+    API_ActorMessage_Wait(9, 0, 0x14);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(0x14);
+    API_Func_8092adc(1, 0x80 << 5, 0x14);
+    API_MapActor_DoAnim(1, 3);
+    API_MapActor_DoAnim(0, 3);
+    API_MapActor_SetAnim(1, 2);
+    p = __MapActor_GetActor(0);
+    if (p != 0) {
+        API_MapActor_TravelTo(1, *(short *)(p + 0xa), *(short *)(p + 0x12));
+    }
+    API_MapActor_WaitMovement(1);
+    API_MapActor_SetPos(1, 0, 0);
+    API_SetFlag(0xc1 << 2);
+    API_CutsceneEnd();
+}
+
 extern void __Actor_SetSpriteFlags(unsigned char *, int);
 extern unsigned char gScript_883__0200e65c[];
 
@@ -1029,7 +1163,39 @@ unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d75c.s");
+void OvlFunc_883_200d75c(struct Actor *arg0) {
+    extern void __vec3_translate(unsigned int, unsigned int, unsigned int *);
+    extern void __Actor_SetSpriteFlags(unsigned char *, int);
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern unsigned char gScript_883__0200e6e0[];
+    char *sprite;
+    struct Actor *actor;
+    unsigned int v[3];
+    unsigned int rand2;
+    unsigned int rand3;
+    int c;
+
+    c = ~0xc;
+    v[0] = arg0->pos.x;
+    v[1] = arg0->pos.y - (__Random() << 4) + 0xfff80000;
+    v[2] = arg0->pos.z;
+    rand2 = __Random();
+    rand3 = __Random();
+    __vec3_translate(rand2 * 3 << 4, rand3, v);
+    actor = (struct Actor *)API_CreateActor(0x11d, v[0], v[1], v[2]);
+    if (actor != 0) {
+        actor->__unk55 = 2;
+        actor->gravity = 0x1999;
+        actor->waitTimer = 0xc;
+        __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+        __Actor_SetAnim(actor, 0);
+        __Actor_SetScript(actor, gScript_883__0200e6e0);
+        sprite = (char *)actor->sprite;
+        *(unsigned char *)(sprite + 9) = (*(unsigned char *)(sprite + 9) & c) | 4;
+    }
+    __PlaySound(0x8a);
+}
+
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d7fc.s");
 
 extern void __vec3_translate(unsigned int a, unsigned int b, unsigned int *c);

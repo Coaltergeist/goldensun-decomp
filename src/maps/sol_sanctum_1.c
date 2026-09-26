@@ -125,10 +125,70 @@ void OvlFunc_890_200822c(void) {
     *p = v;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008238.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20082cc.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008360.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20083f4.s");
+void OvlFunc_890_2008238(void)
+{
+    if (API_GetFlag(0x80b)) {
+        API_CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80c)) {
+        API_CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80d)) {
+        API_CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x80e)) {
+        API_CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_20082cc(void)
+{
+    if (API_GetFlag(0x826)) {
+        API_CopyMapTiles(0x2d, 0x1c, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x827)) {
+        API_CopyMapTiles(0x2f, 0x1c, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x828)) {
+        API_CopyMapTiles(0x2d, 0x1d, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x829)) {
+        API_CopyMapTiles(0x2f, 0x1d, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_2008360(void)
+{
+    if (API_GetFlag(0x80b)) {
+        API_CopyMapTiles(0x2d, 0x1e, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80c)) {
+        API_CopyMapTiles(0x2f, 0x1e, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x80d)) {
+        API_CopyMapTiles(0x2d, 0x1f, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x80e)) {
+        API_CopyMapTiles(0x2f, 0x1f, 0x24, 0xb, 2, 1);
+    }
+}
+
+void OvlFunc_890_20083f4(void)
+{
+    if (API_GetFlag(0x826)) {
+        API_CopyMapTiles(0x2d, 0x1e, 0x22, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x827)) {
+        API_CopyMapTiles(0x2f, 0x1e, 0x24, 0xa, 2, 1);
+    }
+    if (API_GetFlag(0x828)) {
+        API_CopyMapTiles(0x2d, 0x1f, 0x22, 0xb, 2, 1);
+    }
+    if (API_GetFlag(0x829)) {
+        API_CopyMapTiles(0x2f, 0x1f, 0x24, 0xb, 2, 1);
+    }
+}
+
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008488.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20089f4.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008c00.s");
@@ -497,7 +557,96 @@ void OvlFunc_890_2009264(void)
     API_Func_8091200(0x2051cc, 1);
     __Func_8091254(0x18);
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009380.s");
+
+
+extern void OvlFunc_890_2008238(void);
+extern void OvlFunc_890_2008360(void);
+extern void OvlFunc_890_200a5fc(unsigned int arg0, unsigned int arg1);
+
+void OvlFunc_890_2009380(void) {
+    int i;
+    MapState *map;
+
+    API_CutsceneStart();
+    OvlFunc_890_2009264();
+    API_MessageID(0x1018);
+    API_Func_8092adc(0x10, 0x80 << 7, 0x14);
+    API_MapActor_Emote(0x10, 0x80 << 1, 0);
+    API_MapActor_Jump(0x10, 6, 0x1e);
+    API_Func_80933f8(0x23e0000, -1, 0xae << 16, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x1e);
+    OvlFunc_890_200a5fc(0x8010, 0x14);
+
+    i = 0;
+    do {
+        API_PlaySound(0xf6);
+        OvlFunc_890_2008238();
+        API_CutsceneWait(12);
+        API_PlaySound(0xf6);
+        i++;
+        OvlFunc_890_2008360();
+        API_CutsceneWait(12);
+    } while (i != 4);
+
+    i = 0;
+    do {
+        API_PlaySound(0xf6);
+        OvlFunc_890_2008238();
+        API_CutsceneWait(8);
+        API_PlaySound(0xf6);
+        i++;
+        OvlFunc_890_2008360();
+        API_CutsceneWait(8);
+    } while (i != 6);
+
+    i = 0;
+    do {
+        API_PlaySound(0xf6);
+        OvlFunc_890_2008238();
+        API_CutsceneWait(6);
+        API_PlaySound(0xf6);
+        i++;
+        OvlFunc_890_2008360();
+        API_CutsceneWait(6);
+    } while (i != 8);
+
+    i = 0;
+    do {
+        API_PlaySound(0xf6);
+        OvlFunc_890_2008238();
+        API_CutsceneWait(4);
+        API_PlaySound(0xf6);
+        i++;
+        OvlFunc_890_2008360();
+        API_CutsceneWait(4);
+    } while (i != 10);
+
+    i = 0;
+    do {
+        API_PlaySound(0xf6);
+        OvlFunc_890_2008238();
+        API_CutsceneWait(2);
+        API_PlaySound(0xf6);
+        i++;
+        OvlFunc_890_2008360();
+        API_CutsceneWait(2);
+    } while (i != 12);
+
+    OvlFunc_890_2008238();
+    API_CutsceneWait(6);
+    OvlFunc_890_200a5fc(0x8010, 6);
+    API_MapActor_SetSpeed(0x10, 0x80 << 10, 0x80 << 9);
+    API_MapActor_TravelToAnimWait(0x10, 0x90 << 2, 0x8c << 1);
+    map = iwram_3001ebc;
+    map->transition = 0x100;
+    map->transitionSpeed = 0x20;
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_SetFlag(0x813);
+    API_Func_8091e9c(3);
+}
+
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009510.s");
 extern int __GetFlag(int);
 extern void __CutsceneStart(void);

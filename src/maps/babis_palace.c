@@ -62,7 +62,45 @@ void OvlFunc_952_20080c8(int a) {
 }
 
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008264.s");
+
+extern unsigned char Lm952_2241[] __asm__(".Lm952_2241");
+__asm__(".equ .Lm952_2241, 0x2241");
+extern void __Func_808e118(void);
+
+void OvlFunc_952_2008264(unsigned int actor) {
+    int msg;
+
+    API_CutsceneStart();
+    __Func_808e118();
+    if (API_GetFlag(0x966) == 0) {
+        API_SetFlag(0x966);
+        API_SetFlag(0x967);
+        API_Func_8092adc(actor, 0x80 << 7, 0);
+        API_MapActor_TravelToAnimWait(0, 0x78, 0x60);
+        API_Func_8092adc(0, 0xc0 << 8, 0);
+        API_CutsceneWait(0x14);
+        msg = (int)Lm952_2241;
+        API_MessageID(msg);
+        __ShowActorMessage_NoWait(actor, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            API_CutsceneWait(0xa);
+            API_MessageID(msg + 1);
+        } else {
+            API_MessageID(msg + 2);
+        }
+        API_ActorMessage(actor, 0);
+        API_CutsceneWait(0xa);
+        API_MapActor_DoAnim(actor, 3);
+        API_CutsceneWait(0x14);
+        API_MapActor_SetSpeed(actor, 0x80 << 9, 0x80 << 8);
+        API_Func_8092304(actor, -0x40, 0);
+        API_Func_8092304(actor, 0, 0x30);
+    } else {
+        API_MessageID(0x2245);
+        __ShowActorMessage_NoWait(actor, 0);
+    }
+    API_CutsceneEnd();
+}
 
 extern unsigned char Msg2006[] __asm__(".Lm952_2006");
 __asm__(".equ .Lm952_2006, 0x2006");

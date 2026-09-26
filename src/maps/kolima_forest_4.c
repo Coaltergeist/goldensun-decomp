@@ -56,11 +56,6 @@ extern unsigned char gBuffer[];
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008098.s");
 #include "api.h"
 
-/* Keep the reviewed sandbox forwarder local to this overlay. */
-static inline void API_Func_80105d4(int a, int b, int c, int d, int e, int f) {
-    extern void __Func_80105d4(int, int, int, int, int, int);
-    __Func_80105d4(a, b, c, d, e, f);
-}
 
 struct MapTileEntry_916 {
     short id;

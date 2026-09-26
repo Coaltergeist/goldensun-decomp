@@ -149,7 +149,32 @@ void *ColosseumFinal1_GetEvents(void) {
     return (void *)gOvl_0200c420;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008974.s");
+extern void __DeleteFieldActor(int);
+extern void __Func_807808c(int);
+extern void OvlFunc_common1_fac(int);
+
+void OvlFunc_954_2008974(int arg0)
+{
+    __DeleteFieldActor(0x18);
+    __DeleteFieldActor(0x19);
+    __Func_807808c(1);
+    API_CutsceneStart();
+    API_MapActor_SetPos(8, 0xa5 << 19, 0xc0 << 16);
+    API_MapActor_SetPos(0, 0xa1 << 19, 0xc0 << 16);
+    API_MapActor_Face(8, 0x80 << 7, 0);
+    API_MapActor_Face(0, 0x80 << 7, 0);
+    if (arg0 < 0) {
+        API_MapActor_SetAnim(8, 0xa);
+        API_MapActor_SetAnim(0, 0x23);
+    } else {
+        API_MapActor_SetAnim(8, 8);
+        API_MapActor_SetAnim(0, 0x1c);
+    }
+    API_WaitFrames(1);
+    API_Func_80933f8(0xa3 << 19, 0, 0x80 << 16, 0);
+    OvlFunc_common1_fac(arg0);
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_954_2008a10(void) {

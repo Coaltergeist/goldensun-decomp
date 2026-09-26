@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
 
@@ -220,8 +221,55 @@ unsigned int * TolbiBoundShipDeck_GetEvents(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008a48.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008af0.s");
+void OvlFunc_943_2008a48(void)
+{
+    extern unsigned char gScript_943__0200c4d8[];
+    struct Actor *actor;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x925)) {
+        API_MessageID(0x1e08);
+        API_ActorMessage(0x15, 0);
+    } else if (API_GetFlag(0x922)) {
+        API_Func_80925cc(0x15, 2);
+        API_MessageID(0x1d6f);
+        API_ActorMessage(0x15, 0);
+        actor = (struct Actor *)__MapActor_GetActor(0x15);
+        actor->waveCounter = ((__Random0() * 0x5a) >> 16) + 0x3c;
+        API_MapActor_SetBehavior(0x15, (int)gScript_943__0200c4d8);
+    } else {
+        API_MapActor_Emote(0x15, 0x103, 0);
+        API_Func_809259c(0x15, 3);
+        API_MessageID(0x1d36);
+        API_ActorMessage(0x15, 0);
+    }
+    API_CutsceneEnd();
+}
+
+void OvlFunc_943_2008af0(void)
+{
+    extern unsigned char gScript_943__0200c4d8[];
+    struct Actor *actor;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x925)) {
+        API_MessageID(0x1e09);
+        API_ActorMessage(0x18, 0);
+    } else if (API_GetFlag(0x922)) {
+        API_Func_80925cc(0x18, 2);
+        API_MessageID(0x1d70);
+        API_ActorMessage(0x18, 0);
+        actor = (struct Actor *)__MapActor_GetActor(0x18);
+        actor->waveCounter = ((__Random0() * 0x5a) >> 16) + 0x3c;
+        API_MapActor_SetBehavior(0x18, (int)gScript_943__0200c4d8);
+    } else {
+        API_MapActor_Emote(0x18, 0x103, 0);
+        API_Func_809259c(0x18, 3);
+        API_MessageID(0x1d37);
+        API_ActorMessage(0x18, 0);
+    }
+    API_CutsceneEnd();
+}
 
 #include "message.h"
 
@@ -260,20 +308,63 @@ void OvlFunc_943_2008bf0(void){
     API_SetFlag(0x272);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008c28.s");
+void OvlFunc_943_2008c28(void) {
+    extern unsigned char iwram_3001ebc[];
+    unsigned char *map = *(unsigned char **)iwram_3001ebc;
+    int didCopy;
+
+    API_CutsceneStart();
+    didCopy = 0;
+    switch (*(short *)(map + 0x16c)) {
+    case 1:
+        didCopy = 1;
+        OvlFunc_943_2008bb8();
+        break;
+    case 3:
+        didCopy = 1;
+        OvlFunc_943_2008bf0();
+        break;
+    }
+    if (didCopy != 0) {
+        API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+        API_Func_8092208(0, 1, -10);
+        API_CutsceneWait(10);
+    } else {
+        API_PlaySound(0x7b);
+    }
+    API_Func_8091e9c(*(short *)(map + 0x16c));
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008ca0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20090a0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20091c8.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20092f0.s");
+
+void OvlFunc_943_20092f0(void) {
+    API_Func_80933d4(0x19999, 0x3333);
+    API_Func_80933f8(0xd80000, -1, 0xce << 18, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+    OvlFunc_943_2008bf0();
+    API_CopyMapTiles(0x1e, 0x6c, 0xd, 0x6c, 1, 2);
+    API_CutsceneWait(0xa);
+    API_MapActor_SetPos(0x14, 0xd80000, 0xc8 << 18);
+    API_MapActor_SetSpeed(0x14, 0x13333, 0x9999);
+    API_MapActor_TravelToAnimWait(0x14, 0xd8, 0x32e);
+    API_MapActor_Face(0, 0x14, 0xa);
+    API_MapActor_DoAnim(0x14, 4);
+    API_Func_809259c(0x14, 2);
+    API_MapActor_Emote(0x14, 0x100, 0x14);
+    API_MapActor_Face(0x14, 0, 0x14);
+    API_Func_809259c(0x14, 2);
+    API_MessageID(0x1d8d);
+    API_ActorMessage_Wait(0x14, 0, 0x14);
+    API_MapActor_Emote(0x14, 0x102, 0);
+    API_SetFlag(0x923);
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/TolbiBoundShipDeck_MapInit.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009444.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009684.s");
-struct Actor {
-    char _pad[6];
-    unsigned short facing;
-    char _pad2[0x59 - 8];
-    unsigned char unk59;
-};
 extern void __MapActor_SetPos(int, int, int);
 void __Func_8092b08(int, int);
 
@@ -305,11 +396,9 @@ void OvlFunc_943_20097a0(void) {
     __MapActor_SetPos(0x17, 0, 0);
     __MapActor_SetPos(0x14, 0, 0);
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200985c.s");
-#include "nonmatching.h"
-
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_943__0200c980[5];
+extern ActorCmd gScript_943__0200c58c[];
 extern ActorCmd gScript_943__0200c628[79];
 extern unsigned char Lm943_5160[] __asm__(".Lm943_5160");
 extern void OvlFunc_943_200c218(void);
@@ -321,6 +410,29 @@ extern void __MapActor_SetBehavior(int, void *);
 extern void __MapActor_SetSpeed(int, int, int);
 extern int __GetFlag(int);
 extern void __CutsceneEnd(void);
+
+void OvlFunc_943_200985c(void) {
+    struct Actor *actor;
+
+    API_CutsceneStart();
+    __LoadFieldActors(Lm943_5160);
+    API_WaitFrames(1);
+    API_MapActor_SetPos(0x14, 0, 0);
+    API_MapActor_SetPos(0x17, 0xee0000, 0x2720000);
+    API_MapActor_SetPos(0x16, 0xcc0000, 0x2090000);
+    actor = (struct Actor *)__MapActor_GetActor(0x16);
+    actor->pos.y = 0x80 << 13;
+    ((struct Actor *)__MapActor_GetActor(0x16))->__unk59 |= 0x80;
+    API_MapActor_SetSpeed(0x16, 0x9999, 0x4ccc);
+    __MapActor_SetBehavior(0x16, gScript_943__0200c58c);
+    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
+    API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
+    __MapActor_SetBehavior(0x15, gScript_943__0200c628);
+    if (__GetFlag(0x109) != 0) {
+        OvlFunc_943_200c218();
+    }
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_943_2009920(void)
@@ -336,7 +448,7 @@ void OvlFunc_943_2009920(void)
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->facing = 0;
     __MapActor_SetBehavior(0x16, gScript_943__0200c980);
-    ((struct Actor *)__MapActor_GetActor(0x15))->unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
@@ -472,7 +584,30 @@ void OvlFunc_943_2009c14(int a, int b)
     __WaitMapTransition();
     __Func_8091e9c(0xa);
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009d0c.s");
+void OvlFunc_943_2009d0c(void)
+{
+    extern void __Func_8092950(int, int);
+
+    API_CutsceneStart();
+    __LoadFieldActors(Lm943_5160);
+    API_WaitFrames(1);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    *(unsigned int *)(*(char **)iwram_3001ebc + (0xe0 << 1)) = (0xe0 << 1) + 0x42;
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x14);
+    API_Func_80925cc(0x14, 1);
+    API_MessageID(0x1e41);
+    API_ActorMessage_Wait(0x14, 0, 0xa);
+    OvlFunc_943_200ba00(0x16, 0xa0 << 7);
+    API_MapActor_Jump(0x16, 4, 0x14);
+    API_Func_809259c(0x16, 2);
+    API_ActorMessage_Wait(0x6016, 0, 0x14);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_Func_8091e9c(0xb);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009db0.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009f90.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200a2c0.s");
@@ -480,12 +615,146 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200a618.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200a9d4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200ab7c.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200ac84.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b150.s");
+
+unsigned int OvlFunc_943_200b150(unsigned int arg0) {
+    unsigned int actor;
+    unsigned int flag;
+    unsigned int i;
+
+    flag = 0;
+    actor = 0x17;
+    switch (arg0) {
+    case 0:
+        flag = 0x92c;
+        break;
+    case 1:
+        flag = 0x935;
+        break;
+    case 2:
+        flag = 0x917;
+        break;
+    case 3:
+        flag = 0x99 << 4;
+        break;
+    }
+
+    for (i = 0; i <= 8; i++, flag++, actor++) {
+        if (API_GetFlag(flag)) {
+            return actor;
+        }
+    }
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b1a8.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b284.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b380.s");
+
+void OvlFunc_943_200b284(void) {
+    extern void OvlFunc_943_200b380(int);
+    extern void OvlFunc_943_200b3b8(void);
+    extern unsigned char Lm943_5b90[] __asm__(".Lm943_5b90");
+    unsigned char *actor;
+    int *p90;
+
+    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 0;
+    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 0;
+    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 0;
+    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 0;
+
+    OvlFunc_943_200b380(8);
+    OvlFunc_943_200b380(9);
+    OvlFunc_943_200b380(0xa);
+    OvlFunc_943_200b380(0xb);
+    OvlFunc_943_200b380(0xc);
+    OvlFunc_943_200b380(0xd);
+    OvlFunc_943_200b380(0xe);
+    OvlFunc_943_200b380(0xf);
+
+    actor = (unsigned char *)__MapActor_GetActor(0xc);
+    p90 = (int *)Lm943_5b90;
+    p90[0] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0xd);
+    p90[1] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0xe);
+    p90[2] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0xf);
+    p90[3] = *(int *)(actor + 0x10);
+
+    OvlFunc_943_200b380(0x10);
+    OvlFunc_943_200b380(0x11);
+    OvlFunc_943_200b380(0x12);
+    OvlFunc_943_200b380(0x13);
+
+    actor = (unsigned char *)__MapActor_GetActor(0x10);
+    *(int *)(actor + 0x18) = 0xffff0000;
+
+    actor = (unsigned char *)__MapActor_GetActor(0x11);
+    *(int *)(actor + 0x18) = 0xffff0000;
+
+    actor = (unsigned char *)__MapActor_GetActor(0x12);
+    *(int *)(actor + 0x18) = 0xffff0000;
+
+    actor = (unsigned char *)__MapActor_GetActor(0x13);
+    *(int *)(actor + 0x18) = 0xffff0000;
+
+    actor = (unsigned char *)__MapActor_GetActor(0x10);
+    p90[4] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0x11);
+    p90[5] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0x12);
+    p90[6] = *(int *)(actor + 0x10);
+
+    actor = (unsigned char *)__MapActor_GetActor(0x13);
+    p90[7] = *(int *)(actor + 0x10);
+
+    OvlFunc_943_200b3b8();
+}
+
+void OvlFunc_943_200b380(int actorId) {
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(actorId);
+
+    if (actor != 0) {
+        __Func_8092b08(actorId, 3);
+        __Actor_SetSpriteFlags(actor, 0);
+        actor->__unk59 = 0;
+        actor->flags |= 2;
+    }
+}
+
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b3b8.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b464.s");
+
+unsigned int OvlFunc_943_200b464(unsigned int arg0) {
+    extern unsigned int Lm943_5b08[] __asm__(".Lm943_5b08");
+    unsigned int flag;
+    unsigned int i;
+
+    flag = 0;
+    switch (arg0) {
+    case 0:
+        flag = 0x92c;
+        break;
+    case 1:
+        flag = 0x935;
+        break;
+    case 2:
+        flag = 0x917;
+        break;
+    case 3:
+        flag = 0x99 << 4;
+        break;
+    }
+
+    for (i = 0; i <= 8; i++) {
+        if (API_GetFlag(flag + i)) {
+            return Lm943_5b08[i];
+        }
+    }
+    return 0;
+}
 
 extern void OvlFunc_943_200b558(int, int);
 extern void OvlFunc_943_200b5ec(int, int, int);
@@ -645,8 +914,21 @@ void OvlFunc_943_200b710(void)
     OvlFunc_943_200b5ec(18, 6, 3);
     OvlFunc_943_200b5ec(19, 7, 3);
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b950.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b9b8.s");
+
+void OvlFunc_943_200b950(void) {
+    API_CopyMapTiles(0x4e, 0x27, 0x4e, 0x28, 5, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x4e, 0x29, 5, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x4f, 0x2a, 4, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x52, 0x2b, 1, 1);
+    API_Func_8010704(0x11, 0x26, 5, 2, 0x11, 0x28);
+}
+
+extern void __Func_8010704(int, int, int, int, int, int);
+
+void OvlFunc_943_200b9b8(void) {
+    __CopyMapTiles(0x42, 0x3d, 0x40, 0x28, 5, 4);
+    __Func_8010704(0, 0, 5, 4, 5, 0x27);
+}
 
 extern void __ActorMessage();
 

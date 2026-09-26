@@ -66,7 +66,36 @@ void OvlFunc_956_200824c(void) {
 
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008274.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20082f8.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008404.s");
+
+void OvlFunc_956_2008404(void) {
+    extern unsigned char gState[];
+    unsigned int r2;
+    struct Actor *actor;
+    int id;
+
+    r2 = 0xfa;
+    r2 <<= 1;
+    id = *(int *)((char *)gState + r2);
+    API_MapActor_SetAnim(id, 1);
+
+    actor = (struct Actor *)__MapActor_GetActor(0xb);
+    actor->__unk55 = 0;
+    actor->accel = 0x6666;
+    actor->speed = 0xcccc;
+    API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 11, actor->pos.z);
+
+    actor = (struct Actor *)__MapActor_GetActor(0xa);
+    actor->__unk55 = 0;
+    actor->accel = 0x6666;
+    actor->speed = 0xcccc;
+    API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 14, actor->pos.z);
+
+    API_MapActor_WaitMovement(0xa);
+    API_Func_8010704(0, 0x19, 1, 1, 9, 0xc);
+    API_WaitFrames(2);
+    API_ClearFlag(0x367);
+}
+
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20084a4.s");
 
 extern void OvlFunc_common1_2060(void);

@@ -84,7 +84,29 @@ int ValeSanctum_GetEvents(void)
         return (int)Lm888_3e34;
     }
 }
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200827c.s");
+void OvlFunc_888_200827c(void)
+{
+    unsigned int r2;
+    int ev;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x855)) {
+        API_MessageID(0x1377);
+    } else {
+        API_MessageID(0x1289);
+    }
+    r2 = 0xe1;
+    r2 <<= 1;
+    ev = *(short *)((char *)&gState + r2);
+    if (ev == 0xb) {
+        API_MessageID(0x1ce9);
+    }
+    API_MapActor_SetAnim(9, 1);
+    API_MapActor_TurnToFaceActor(9, 0, 0);
+    API_CutsceneWait(2);
+    API_ActorMessage(9, 0);
+    API_CutsceneEnd();
+}
 extern void __MapActor_SetIdle(int);
 extern void __MapActor_SetBehavior(int, int);
 
@@ -211,7 +233,31 @@ void OvlFunc_888_200a660(void) {
     __MapActor_SetPos(0xe, 0, 0);
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a67c.s");
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_888_200a67c(struct Actor *arg0) {
+    struct Actor *a0 = (struct Actor *)__MapActor_GetActor(8);
+
+    arg0->prevPos.x = arg0->pos.x = a0->pos.x;
+    arg0->prevPos.y = arg0->pos.y = a0->pos.y;
+    arg0->prevPos.z = arg0->pos.z = a0->pos.z + 0xfffe0000;
+
+    switch (iwram_3001e40 & 3) {
+    case 0:
+        arg0->prevPos.x = arg0->pos.x = a0->pos.x + 0xfffc8000;
+        break;
+    case 1:
+        arg0->prevPos.x = arg0->pos.x = a0->pos.x + (0xc0 << 10);
+        break;
+    case 2:
+        arg0->prevPos.y = arg0->pos.y = a0->pos.y + (0x80 << 10);
+        break;
+    case 3:
+        arg0->prevPos.z = arg0->pos.z = a0->pos.z;
+        break;
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a6f0.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");

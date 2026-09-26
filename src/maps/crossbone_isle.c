@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/crossbone_isle/exports.s");
 
@@ -404,7 +405,31 @@ void OvlFunc_946_2008f3c(void)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_MapInit.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009214.s");
+void OvlFunc_946_2009214(void)
+{
+    extern void __Actor_SetSpriteFlags(void *, int);
+    struct Actor *a;
+    unsigned int r2;
+    int ev;
+    int flag;
+
+    a = (struct Actor *)__MapActor_GetActor(8);
+    r2 = 0xe0;
+    r2 <<= 1;
+    ev = *(short *)((char *)&gState + r2);
+    flag = API_GetFlag(ev + (0x8d2 - (int)_EVENT_7e));
+    if (flag) {
+        API_MapActor_SetPos(8, 0x28a0000, 0xa8 << 16);
+        a->pos.y = 0xffe00000;
+        __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+        API_Func_8092b08(8, 3);
+        a->__unk55 = 0;
+        a->flags |= 2;
+        API_Func_8010704(0x2a, 0xa, 1, 1, 0x28, 0xa);
+    } else {
+        ((struct Actor *)__MapActor_GetActor(8))->__unk55 = flag;
+    }
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20092b4.s");
 
 extern void OvlFunc_946_20080c4(void);
@@ -448,22 +473,17 @@ INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009508.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009548.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200958c.s");
 
-struct Actor {
-unsigned char pad[0x59];
-unsigned char unk59;
-};
-
 extern void __Actor_SetSpriteFlags(void *, int);
 extern void __Func_8012078(int, int, int, int);
 
 void OvlFunc_946_20095d0(unsigned int param_1) {
     struct Actor *actor;
 
-    actor = __MapActor_GetActor(0xe);
+    actor = (struct Actor *)__MapActor_GetActor(0xe);
     if (actor != 0) {
-        actor->unk59 = 0;
+        actor->__unk59 = 0;
     }
-    actor = __MapActor_GetActor(param_1);
+    actor = (struct Actor *)__MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
 
     API_Func_8012078(0, 0x900000, 0x1400000, 0xfd);

@@ -260,7 +260,19 @@ void OvlFunc_891_2009b1c(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2009b44.s");
+void OvlFunc_891_2009b44(int id, int a1, int a2, int a3, int a4) {
+    API_CutsceneStart();
+    API_PlaySound(0xb9);
+    API_MapActor_SetSpeed(id, 0x3333, 0x1999);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    ((struct Actor *)__MapActor_GetActor(id))->__unk5A &= 0xfe;
+    API_MapActor_SetAnim(0, 8);
+    API_MapActor_TravelTo(0, (a3 << 4) + 8, (a4 << 4) + 8);
+    API_MapActor_TravelTo(id, (a1 << 4) + 8, (a2 << 4) + 8);
+    API_MapActor_WaitMovement(id);
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneEnd();
+}
 
 
 unsigned int OvlFunc_891_2009be8(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
