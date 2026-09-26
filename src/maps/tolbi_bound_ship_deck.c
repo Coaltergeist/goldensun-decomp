@@ -914,7 +914,14 @@ void OvlFunc_943_200b710(void)
     OvlFunc_943_200b5ec(18, 6, 3);
     OvlFunc_943_200b5ec(19, 7, 3);
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b950.s");
+
+void OvlFunc_943_200b950(void) {
+    API_CopyMapTiles(0x4e, 0x27, 0x4e, 0x28, 5, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x4e, 0x29, 5, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x4f, 0x2a, 4, 1);
+    API_CopyMapTiles(0x4e, 0x27, 0x52, 0x2b, 1, 1);
+    API_Func_8010704(0x11, 0x26, 5, 2, 0x11, 0x28);
+}
 
 extern void __Func_8010704(int, int, int, int, int, int);
 

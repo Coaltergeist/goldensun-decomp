@@ -233,7 +233,31 @@ void OvlFunc_888_200a660(void) {
     __MapActor_SetPos(0xe, 0, 0);
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a67c.s");
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_888_200a67c(struct Actor *arg0) {
+    struct Actor *a0 = (struct Actor *)__MapActor_GetActor(8);
+
+    arg0->prevPos.x = arg0->pos.x = a0->pos.x;
+    arg0->prevPos.y = arg0->pos.y = a0->pos.y;
+    arg0->prevPos.z = arg0->pos.z = a0->pos.z + 0xfffe0000;
+
+    switch (iwram_3001e40 & 3) {
+    case 0:
+        arg0->prevPos.x = arg0->pos.x = a0->pos.x + 0xfffc8000;
+        break;
+    case 1:
+        arg0->prevPos.x = arg0->pos.x = a0->pos.x + (0xc0 << 10);
+        break;
+    case 2:
+        arg0->prevPos.y = arg0->pos.y = a0->pos.y + (0x80 << 10);
+        break;
+    case 3:
+        arg0->prevPos.z = arg0->pos.z = a0->pos.z;
+        break;
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a6f0.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");

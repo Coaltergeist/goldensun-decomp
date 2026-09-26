@@ -319,7 +319,23 @@ unsigned int OvlFunc_923_2008d48(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d58.s");
+extern int __atan2(int, int);
+
+int OvlFunc_923_2008d58(char *arg0) {
+    char *r5 = arg0;
+    int actor = (int)__MapActor_GetActor(0);
+
+    if ((*(int *)(actor + 0x10) >> 19) <= 0x16)
+    {
+        *(short *)(r5 + 6) = __atan2(*(int *)(actor + 0x10) - *(int *)(r5 + 0x10),
+                                      *(int *)(actor + 8) - *(int *)(r5 + 8));
+    }
+    else if (*(unsigned short *)(r5 + 6) != (0xc0 << 8))
+    {
+        API_Func_8092adc(3, 0xc0 << 8, 0);
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.s");
 

@@ -132,7 +132,18 @@ void OvlFunc_897_200a84c(int arg0)
     __Func_800fe9c();
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200a8dc.s");
+void OvlFunc_897_200a8dc(int arg0) {
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(9, 0x2d, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0xb, 0x2e, 0x43, 6, 1, 2);
+    } else {
+        API_CopyMapTiles(0x59, 2, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0x66, 0x20, 0x43, 6, 1, 2);
+    }
+    __Func_800fe9c();
+}
 
 extern unsigned char iwram_3001e40[];
 extern void OvlFunc_897_200a84c(int arg0);

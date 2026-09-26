@@ -54,7 +54,23 @@ unsigned char *VaultRooms1_GetActors(void)
     __Func_808b868(r5);
     return r5;
 }
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008080.s");
+
+void OvlFunc_899_2008080(void) {
+    extern void __Func_8093c00(void);
+
+    if (((struct Actor *)__MapActor_GetActor(0))->facing >= (0xa0 << 8) &&
+        ((struct Actor *)__MapActor_GetActor(0))->facing <= (0xe0 << 8))
+    {
+        __Func_8093c00();
+        API_Func_8010704(0x29, 0x55, 1, 1, 0x2a, 0x55);
+    }
+    else if (((struct Actor *)__MapActor_GetActor(0))->facing >= (0x80 << 6) &&
+             ((struct Actor *)__MapActor_GetActor(0))->facing <= (0xc0 << 7))
+    {
+        __Func_8093c00();
+        API_Func_8010704(0x2b, 0x55, 1, 1, 0x2a, 0x55);
+    }
+}
 
 void OvlFunc_899_20080fc(void)
 {

@@ -1094,10 +1094,32 @@ void OvlFunc_959_200a0cc(void)
     __SetFlag(0x94b);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a134.s");
-
 extern unsigned char Lconst_240d[] __asm__(".Lconst_240d");
 __asm__(".equ .Lconst_240d, 0x240d");
+
+void OvlFunc_959_200a134(void) {
+    int msg;
+
+    API_CutsceneStart();
+    API_MapActor_TravelBy(0, 0, 0);
+    API_MapActor_SetBehavior(0, 1);
+    API_MapActor_SetAnim(0, 1);
+    API_MapActor_Face(0xc, 0, 0);
+    API_PlaySound(0x71);
+    API_MapActor_Emote(0xc, 0x80 << 1, 0x3c);
+    msg = (int)Lconst_240d;
+    API_MessageID(msg);
+    API_ActorMessage(0xc, 0);
+    API_MapActor_Emote(0, 0x81 << 1, 0x32);
+    msg++;
+    API_MessageID(msg);
+    API_ActorMessage(0xc, 0);
+    API_MapTransitionOut();
+    API_CutsceneWait(0x3c);
+    API_Func_8091e9c(0x3c);
+    API_CutsceneEnd();
+    API_SetFlag(0x89 << 2);
+}
 
 void OvlFunc_959_200a1c4(void) {
     int msg;

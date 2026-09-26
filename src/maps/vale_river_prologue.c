@@ -367,7 +367,22 @@ void OvlFunc_882_2009348(void) {
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009498.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200950c.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009600.s");
+
+void OvlFunc_882_2009600(void) {
+    if (API_GetFlag(0x836) == 0 && API_GetFlag(0x837) == 0) {
+        API_CutsceneStart();
+        API_MessageID(0xe6c);
+        API_ActorMessage_Wait(0x16, 0, 0x14);
+        API_MapActor_Emote(0, 0x101, 0x28);
+        API_MapActor_TravelToAnimWait(0, 0xbf << 1, 0x26b);
+        API_MapActor_Face(0, 0x16, 0);
+        API_Func_80925cc(0, 2);
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(0x16, 0);
+        API_SetFlag(0x836);
+        API_CutsceneEnd();
+    }
+}
 
 extern void __CutsceneStart(void);
 extern void __Func_80925cc(int, int);
@@ -472,7 +487,28 @@ INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200998c.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009a64.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009b18.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a09c.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a0fc.s");
+
+extern unsigned int L57fc__a1 __asm__(".Lm882_57fc");
+extern void OvlFunc_882_200a09c(int, int);
+extern unsigned int iwram_3001e40__a1 __asm__("iwram_3001e40");
+
+void OvlFunc_882_200a0fc(void)
+{
+    if ((iwram_3001e40__a1 >> L57fc__a1) & 3)
+    {
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x20), 1);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x21), 1);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x1e), 1);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x1d), 1);
+    }
+    else
+    {
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x20), 8);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x21), 8);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x1e), 8);
+        OvlFunc_882_200a09c(__MapActor_GetActor(0x1d), 8);
+    }
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a180.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a8a4.s");
 

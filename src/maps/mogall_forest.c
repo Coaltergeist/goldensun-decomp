@@ -816,7 +816,24 @@ void OvlFunc_927_2009ef0(void)
     __MapActor_SetPos(0x15, 0, 0);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200a004.s");
+
+void OvlFunc_927_200a004(void) {
+    struct Actor *actor;
+
+    API_CutsceneStart();
+    OvlFunc_927_2008ea8(0x12, 1);
+    API_Func_80933f8(0xba << 18, -1, 0xfc << 17, 1);
+    OvlFunc_927_2008d90(0x12, 0xba << 2, 0xfc << 1, 0x90 << 12);
+    OvlFunc_927_2008e18(0x12);
+    __Func_8092950(0x12, 0xf);
+    actor = __MapActor_GetActor(0x12);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_CutsceneWait(0x1e);
+    API_SetFlag(0x30a);
+    API_MapActor_SetPos(0x16, 0xba << 18, 0xfc << 17);
+    API_CutsceneEnd();
+}
+
 #include "actor.h"
 
 void OvlFunc_927_200a078(void)

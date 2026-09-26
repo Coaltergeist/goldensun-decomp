@@ -90,6 +90,7 @@ gScript_924__0200de38:
 	.section .mdata5, "aw", %progbits
 	.global .Lm924_6010
 	.global .Lm924_603a
+	.global .Lm924_6064
 
 .Lm924_6010:
 	.incbin "overlays/rom_7ac2d8/orig.bin", 0x6010, (0x603a-0x6010)

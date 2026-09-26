@@ -89,7 +89,36 @@ unsigned int OvlFunc_968_2008690(void) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20086a0.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008754.s");
+
+void OvlFunc_968_2008754(void) {
+    extern void OvlFunc_968_20086a0(struct Actor *);
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8092950(int, int);
+    extern unsigned char iwram_3001ebc[];
+    struct Actor *a;
+    short *p;
+    short val;
+
+    p = *(short **)iwram_3001ebc;
+    a = (struct Actor *)__MapActor_GetActor(0);
+    API_CutsceneStart();
+    API_PlaySound(0xe4);
+    a->update = (actorfun_t *)OvlFunc_968_20086a0;
+    a->speed = 0x3333;
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -6);
+    API_MapActor_WaitMovement(0);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    a->update = 0;
+    API_CutsceneWait(0x1e);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    val = *(short *)((char *)p + (0xb6 << 1));
+    API_Func_8091e9c(val);
+    API_CutsceneEnd();
+}
+
 void OvlFunc_968_20087d8(void)
 {
     extern void OvlFunc_968_20086a0(struct Actor *);
@@ -491,7 +520,34 @@ void OvlFunc_968_20096a4(void) {
         API_CutsceneEnd();
     }
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009780.s");
+
+struct Foo_968_2009780 {
+    unsigned char pad[0xcb6];
+    unsigned short f_cb6;
+    unsigned char pad2[0xcba - 0xcb6 - 2];
+    unsigned short f_cba;
+};
+
+void OvlFunc_968_2009780(void) {
+    extern unsigned char iwram_3001ebc[];
+    struct Foo_968_2009780 *p;
+
+    p = *(struct Foo_968_2009780 **)iwram_3001ebc;
+    p->f_cba = 0;
+    p->f_cb6 = 1;
+    API_CutsceneStart();
+    API_MessageID(0x267d);
+    API_MapActor_Face(0xa, 0, 0);
+    API_CutsceneWait(0xa);
+    API_ActorMessage_Wait(0xa, 0, 0x14);
+    API_Func_8092adc(0xa, 0xe0 << 8, 0);
+    API_Func_80933d4(0x80 << 9, 0x80 << 6);
+    API_Func_80933f8(0xe0 << 17, -1, 0xd8 << 17, 1);
+    API_Func_8093530();
+    API_ActorMessage(0xa, 0);
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009808.s");
 void OvlFunc_968_20098f8(void)
 {

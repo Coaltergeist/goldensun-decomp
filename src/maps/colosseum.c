@@ -306,7 +306,49 @@ void OvlFunc_953_20091ac(void) {
     __SetFlag(val);
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_20091c4.s");
+void OvlFunc_953_20091c4(void) {
+    extern void __MapActor_TurnToFaceActor(int, int, int);
+    extern void __MessageID(int);
+    extern void OvlFunc_953_2009c48(int);
+    extern void __Func_809259c(int, int);
+    extern void __ActorMessage(int, int);
+    extern unsigned char *__Func_8093554(void);
+    extern void __Func_80933d4(unsigned int, unsigned int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern unsigned char *iwram_3001ebc;
+    unsigned char *base;
+    int flag;
+
+    API_CutsceneStart();
+    flag = API_GetFlag(0x8a4);
+    if (flag != 0) {
+        __MapActor_TurnToFaceActor(0x11, 0, 0x28);
+        __MessageID(0x206f);
+        OvlFunc_953_2009c48(0x11);
+        API_Func_8092adc(0x11, 0xc0 << 6, 0x14);
+    } else {
+        __Func_809259c(0x11, 2);
+        __MessageID(0x206d);
+        __ActorMessage(0x11, 0);
+        __Func_8093554()[0x55] = flag;
+        API_WaitFrames(1);
+        __Func_80933d4(0x66666, 0xcccc);
+        __Func_80933f8(0x87 << 18, -1, 0xd0 << 16, 1);
+        API_Func_8093530();
+        base = iwram_3001ebc;
+        *(unsigned int *)(base + 0x1c0) = 0x200;
+        *(unsigned int *)(base + 0x1c8) = 0x20;
+        API_MapTransitionOut();
+        API_WaitMapTransition();
+        if (API_GetFlag(0x8a3)) {
+            API_Func_8091e9c(0x46);
+        } else {
+            API_Func_8091e9c(7);
+        }
+    }
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009298.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200960c.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009688.s");
@@ -326,7 +368,24 @@ void OvlFunc_953_2009c5c(int a, unsigned short b) {
     __Func_8092adc(a, b, 0xa);
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009c6c.s");
+void OvlFunc_953_2009c6c(void) {
+    extern void __Func_8092950(int, int);
+
+    if (API_GetFlag(0x95 << 4))
+    {
+        API_CopyMapTiles(0x40, 0, 0x30, 5, 2, 2);
+        API_Func_8010704(0xe, 8, 2, 1, 0x10, 8);
+    }
+    else
+    {
+        __Func_8092950(0x10, 2);
+        if (API_GetFlag(0x962))
+        {
+            API_Func_8010704(0x1e, 0x16, 1, 2, 0xe, 0xb);
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009cd4.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a3e0.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a4d8.s");

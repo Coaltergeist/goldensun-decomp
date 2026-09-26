@@ -487,7 +487,30 @@ void OvlFunc_926_200a68c(int param_1, int param_2)
     __MapActor_SetAnim(0, 6);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a6d8.s");
+
+extern void OvlFunc_926_200a5b8(void);
+extern void __Func_8092950(int, int);
+
+void OvlFunc_926_200a6d8(void) {
+    void *actor;
+
+    API_CutsceneStart();
+    API_StartTask(OvlFunc_926_200a5b8, 0xc8 << 4);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    *(int *)(*(int *)iwram_3001ebc + (0xe4 << 1)) = 0x3c;
+    API_MapTransitionOut();
+    API_PlaySound(0x9a);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_TravelBy(0, 0, -6);
+    API_MapActor_WaitMovement(0);
+    __Func_8092950(0, 0xf);
+    actor = __MapActor_GetActor(0);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_StopTask(OvlFunc_926_200a5b8);
+    API_WaitMapTransition();
+    API_Func_8091e9c(3);
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_926_200a764(void) {

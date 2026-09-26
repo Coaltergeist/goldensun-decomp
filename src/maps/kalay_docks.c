@@ -115,7 +115,34 @@ void OvlFunc_942_2008240(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008260.s");
+void OvlFunc_942_2008260(void) {
+    extern unsigned int iwram_3001ebc;
+    unsigned short *base;
+
+    __CutsceneStart();
+    if (API_GetFlag(0x8a6) == 0)
+    {
+        API_MessageID(0x1cfd);
+        __ShowActorMessage_NoWait(0xb, 0);
+        if (__Func_8091c7c(0, 0) == 0)
+        {
+            API_ActorMessage(0xb, 0);
+            API_SetFlag(0x8a6);
+        }
+        else
+        {
+            base = (unsigned short *)iwram_3001ebc;
+            base[0xec] += 1;
+            API_ActorMessage(0xb, 0);
+        }
+    }
+    else
+    {
+        API_MessageID(0x1cfe);
+        API_ActorMessage(0xb, 0);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_942_20082dc(void)
 {

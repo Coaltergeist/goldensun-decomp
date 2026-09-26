@@ -1395,7 +1395,37 @@ int CrossboneIsleDungeon4_MapInit(void) {
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009fd8.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a0c4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a188.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a290.s");
+
+void OvlFunc_948_200a290(void) {
+    extern void OvlFunc_948_20097ac(void);
+    extern void OvlFunc_948_200941c(void);
+    extern void OvlFunc_948_2009308(void);
+    volatile unsigned short *p;
+    unsigned short val;
+
+    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 1;
+    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 1;
+    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 1;
+    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 1;
+
+    ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0xb333;
+    ((struct Actor *)__MapActor_GetActor(9))->scale.x = 0xb333;
+    ((struct Actor *)__MapActor_GetActor(0xa))->scale.x = 0xb333;
+    ((struct Actor *)__MapActor_GetActor(0xb))->scale.x = 0xb333;
+    ((struct Actor *)__MapActor_GetActor(0xc))->scale.x = 0xb333;
+
+    API_StartTask(OvlFunc_948_20097ac, 0xc8 << 4);
+    API_StartTask(OvlFunc_948_200941c, 0xc8 << 4);
+    API_StartTask(OvlFunc_948_2009308, 0xc8 << 4);
+
+    val = 0x3f42;
+    p = (volatile unsigned short *)0x4000050;
+    *p = val;
+    val = 0x607;
+    p = (volatile unsigned short *)((char *)p + 2);
+    *p = val;
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a334.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/crossbone_isle_dungeon_4_data.s");
 
