@@ -1029,7 +1029,39 @@ unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d75c.s");
+void OvlFunc_883_200d75c(struct Actor *arg0) {
+    extern void __vec3_translate(unsigned int, unsigned int, unsigned int *);
+    extern void __Actor_SetSpriteFlags(unsigned char *, int);
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern unsigned char gScript_883__0200e6e0[];
+    char *sprite;
+    struct Actor *actor;
+    unsigned int v[3];
+    unsigned int rand2;
+    unsigned int rand3;
+    int c;
+
+    c = ~0xc;
+    v[0] = arg0->pos.x;
+    v[1] = arg0->pos.y - (__Random() << 4) + 0xfff80000;
+    v[2] = arg0->pos.z;
+    rand2 = __Random();
+    rand3 = __Random();
+    __vec3_translate(rand2 * 3 << 4, rand3, v);
+    actor = (struct Actor *)API_CreateActor(0x11d, v[0], v[1], v[2]);
+    if (actor != 0) {
+        actor->__unk55 = 2;
+        actor->gravity = 0x1999;
+        actor->waitTimer = 0xc;
+        __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+        __Actor_SetAnim(actor, 0);
+        __Actor_SetScript(actor, gScript_883__0200e6e0);
+        sprite = (char *)actor->sprite;
+        *(unsigned char *)(sprite + 9) = (*(unsigned char *)(sprite + 9) & c) | 4;
+    }
+    __PlaySound(0x8a);
+}
+
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d7fc.s");
 
 extern void __vec3_translate(unsigned int a, unsigned int b, unsigned int *c);

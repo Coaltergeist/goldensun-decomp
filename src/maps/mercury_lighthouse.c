@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 /* auto void-veneer protos (add_void_protos.py) */
 extern void __ActorMessage_Wait();
@@ -604,7 +605,39 @@ void OvlFunc_924_2009408(void) {
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009420.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20094cc.s");
+
+void OvlFunc_924_20094cc(void) {
+    extern unsigned char Lm924_6010[] __asm__(".Lm924_6010");
+    extern void __CopyMapTiles(int, int, int, int, int, int);
+    extern void __Func_8010560(void *, int, int);
+    int x;
+    int z;
+
+    if (API_GetFlag(0x256)) {
+        return;
+    }
+    x = ((short *)&((struct Actor *)__MapActor_GetActor(0))->pos.x)[1];
+    z = ((short *)&((struct Actor *)__MapActor_GetActor(0))->pos.z)[1];
+    x -= 0x54;
+    if ((unsigned int)x > 7) {
+        return;
+    }
+    if (z <= 0xd3) {
+        return;
+    }
+    if (z > 0xdb) {
+        return;
+    }
+    __CutsceneStart();
+    API_SetFlag(0x256);
+    __CutsceneWait(5);
+    ((struct Actor *)__MapActor_GetActor(0))->pos.y += 0xfffe0000;
+    ((struct Actor *)__MapActor_GetActor(0))->prevPos.y = ((struct Actor *)__MapActor_GetActor(0))->pos.y;
+    __CopyMapTiles(5, 2, 5, 0xb, 1, 1);
+    __PlaySound(0xd9);
+    __Func_8010560(Lm924_6010, 9, 7);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009568.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20095e0.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20096c4.s");

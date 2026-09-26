@@ -310,7 +310,37 @@ void OvlFunc_968_2008f1c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008f38.s");
+void OvlFunc_968_2008f38(void) {
+    extern void __Func_8092950(int, int);
+    unsigned int wait;
+    int count;
+    int s1;
+    int s2;
+
+    API_CutsceneStart();
+    API_Func_80925cc(8, 3);
+    API_MessageID(0x266d);
+    count = 0xa;
+    wait = 8;
+    API_ActorMessage_Wait(8, 0, 0x14);
+    do {
+        __Func_8092950(8, 0xf);
+        API_WaitFrames(2);
+        __Func_8092950(8, 0);
+        API_WaitFrames(wait);
+        if (wait > 3) {
+            wait -= 1;
+        }
+        count -= 1;
+    } while (count != 0);
+    API_SetFlag(0x981);
+    API_MapActor_SetPos(8, 0, 0);
+    s1 = 7;
+    s2 = 0x10;
+    API_Func_8010704(7, 0x11, 2, 1, s1, s2);
+    API_CutsceneEnd();
+}
+
 extern void __MessageID(int);
 extern void __ActorMessage_Wait(int, int, int);
 extern void __Func_80925cc(int, int);
@@ -355,7 +385,16 @@ void OvlFunc_968_2009024(void)
 	__CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009048.s");
+void OvlFunc_968_2009048(void) {
+    API_ClearFlag(0x161);
+    API_Func_8010704(0x23, 8, 1, 3, 0x17, 8);
+    API_CopyMapTiles(0x23, 8, 0x17, 8, 1, 3);
+    API_CopyMapTiles(0x63, 8, 0x57, 8, 1, 3);
+    API_Func_8010704(0x39, 0x37, 3, 3, 0x2e, 0x37);
+    API_CopyMapTiles(0x39, 0x37, 0x2e, 0x37, 3, 3);
+    API_CopyMapTiles(0x79, 0x37, 0x6e, 0x37, 3, 3);
+}
+
 void OvlFunc_968_20090cc(void)
 {
     API_SetFlag(0x161);
