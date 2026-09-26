@@ -300,7 +300,67 @@ void OvlFunc_951_20096a8(void)
     __Actor_SetAnim(__MapActor_GetActor(0x15), 2);
     __StartTask(OvlFunc_951_2008e5c, 0xc83);
 }
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_200973c.s");
+extern int Lm951_20c0[] __asm__(".Lm951_20c0");
+extern int Lm951_2130 __asm__(".Lm951_2130");
+extern int Lm951_2134 __asm__(".Lm951_2134");
+extern int Lm951_2138 __asm__(".Lm951_2138");
+extern unsigned char ewram_2000434[];
+
+int OvlFunc_951_200973c(int arg0)
+{
+    unsigned char *r5 = Lm951_2070;
+    int *actor_ref;
+    int zero = 0;
+    int val_0;
+    int val_ffff;
+
+    *(int *)(r5 + 8) = zero;
+    *(int *)(r5 + 0x14) = zero;
+    *(int *)(r5 + 0x20) = zero;
+    *(int *)(r5 + 0x2c) = zero;
+    *(int *)Lm951_20c0 = arg0;
+    Lm951_2134 = zero;
+    val_ffff = 0xffff;
+    *(unsigned short *)(r5 + 2) = val_ffff;
+    actor_ref = (int *)ewram_2000434;
+    Lm951_2130 = zero;
+
+    for (; ; Lm951_2130++) {
+        if (Lm951_2130 == 0x32) {
+            __PlaySound(0x96 << 1);
+        }
+        if (Lm951_2130 == 0x10) {
+            __MapActor_SetAnim(*actor_ref, 0x1d);
+            val_0 = 0;
+            *(unsigned short *)(r5 + 2) = val_0;
+            *(int *)(r5 + 0x40) = 0x14ccc;
+            *(int *)(r5 + 0x44) = 0x80 << 11;
+            *(int *)(r5 + 0x48) = 0xfffe0000;
+            *(int *)(r5 + 4) = 0xf0 << 15;
+            *(int *)(r5 + 8) = 0x80 << 13;
+            *(int *)(r5 + 0xc) = 0x98 << 16;
+            *(int *)(r5 + 0x4c) = 0x96 << 1;
+            if (*(int *)Lm951_20c0 == 1) {
+                __Actor_SetAnim(__MapActor_GetActor(0x10), 3);
+                __Actor_SetAnim(__MapActor_GetActor(0x11), 0);
+                OvlFunc_951_2008e44(0xf, 1);
+                OvlFunc_951_2008e44(0xe, 1);
+                OvlFunc_951_2008e44(0xd, 1);
+            } else {
+                __Actor_SetAnim(__MapActor_GetActor(0xb), 3);
+                __Actor_SetAnim(__MapActor_GetActor(0xc), 0);
+                OvlFunc_951_2008e44(0xa, 1);
+                OvlFunc_951_2008e44(9, 1);
+                OvlFunc_951_2008e44(8, 1);
+            }
+        }
+        __WaitFrames(1);
+        if (Lm951_2134 == 1) {
+            break;
+        }
+    }
+    return Lm951_2138;
+}
 INCLUDE_ASM("asm/maps/lucky_fountain/lucky_fountain_data.s");
 
 INCLUDE_ASM("asm/maps/lucky_fountain/imports.s");

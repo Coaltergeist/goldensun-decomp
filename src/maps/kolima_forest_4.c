@@ -51,9 +51,27 @@ void OvlFunc_916_200808c(void) {
     __Func_8093c00();
 }
 
+extern unsigned char gBuffer[];
+
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008098.s");
 #include "api.h"
+
+/* Keep the reviewed sandbox forwarder local to this overlay. */
+static inline void API_Func_80105d4(int a, int b, int c, int d, int e, int f) {
+    extern void __Func_80105d4(int, int, int, int, int, int);
+    __Func_80105d4(a, b, c, d, e, f);
+}
+
+struct MapTileEntry_916 {
+    short id;
+    short x;
+    short y;
+    short dir;
+    void *actor;
+};
+
 extern short *L12c4 __asm__(".Lm916_12c4");
+extern short *L12c8 __asm__(".Lm916_12c8");
 
 void OvlFunc_916_2008150(void) {
     if (*L12c4 == 1) {
@@ -62,7 +80,66 @@ void OvlFunc_916_2008150(void) {
         API_Func_8010704(0, 0, 1, 4, 6, 9);
     }
 }
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008194.s");
+void OvlFunc_916_2008194(void) {
+    struct MapTileEntry_916 *entry = (struct MapTileEntry_916 *)L12c0;
+
+    if (*L12c8 != 0) {
+        API_Func_80105d4(0x41, 0x35, 2, 1, 0x4f, 29);
+        API_Func_80105d4(0x41, 0x28, 2, 4, 15, 28);
+    } else {
+        API_Func_80105d4(0x41, 0x32, 2, 5, 0x4f, 25);
+    }
+
+    if (*L12c8 != 0) {
+        API_Func_80105d4(0, 0x20, 0x20, 0x20, 0x20, 0);
+        API_Func_80105d4(0x20, 0x20, 0x20, 0x20, 0x40, 0);
+        API_Func_8010704(0, 0x20, 0x20, 0x20, 0, 0);
+    } else {
+        API_Func_80105d4(0, 0x40, 0x20, 0x20, 0x20, 0);
+        API_Func_80105d4(0x20, 0x40, 0x20, 0x20, 0x40, 0);
+        API_Func_8010704(0, 0x40, 0x20, 0x20, 0, 0);
+    }
+
+    if (entry->id != -1) {
+        int zero = 0;
+        do {
+            unsigned char *actor = (unsigned char *)entry->actor;
+
+            if (*L12c8 == 1) {
+                __Actor_SetAnim(actor, 4);
+                actor[0x23] = 3;
+                actor[0x55] = zero;
+                *(int *)(actor + 0xc) = 0x1a0000;
+                if (entry->dir != 0) {
+                    API_Func_80105d4(0x44, 0x28, 1, 4, entry->x + 0x20, entry->y);
+                } else {
+                    API_Func_80105d4(0x46, 0x28, 4, 1, entry->x + 0x20, entry->y);
+                }
+            } else {
+                unsigned char *p;
+                __Actor_SetAnim(actor, 1);
+                p = actor + 0x23;
+                *p = 1;
+                p += 0x32;
+                *p = 2;
+                *(int *)(actor + 0xc) = zero;
+            }
+            entry++;
+        } while (entry->id != -1);
+    }
+
+    API_Func_80105d4(0x46, 0x2a, 1, 1, 10, 50);
+
+    if (*L12c8 == 1) {
+        API_Func_8010704(0, 0x20, 0x20, 0x20, 0, 0);
+        OvlFunc_916_2008b3c(L12c0, 0xfe);
+    } else {
+        API_Func_8010704(0, 0x40, 0x20, 0x20, 0, 0);
+        OvlFunc_916_2008b3c(L12c0, 0xff);
+    }
+
+    OvlFunc_916_2008150();
+}
 extern unsigned int __Random(void);
 extern unsigned int L20dc __asm__(".Lm916_20dc");
 extern unsigned int iwram_3001ad4[];
@@ -102,19 +179,106 @@ void OvlFunc_916_20083c0(void) {
 }
 
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20083f0.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20087e0.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_20088b0.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/KolimaForest4_MapInit.s");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008a90.s");
-struct MapTileEntry_916 {
-    short id;
-    short x;
-    short y;
-    short dir;
-    short pad[2];
-};
+void OvlFunc_916_20087e0(void) {
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 8);
+    API_CutsceneWait(6);
+    API_PlaySound(0xef);
+    API_MapActor_SetSpeed(8, 0x8000, 0x3333);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelTo(8, 0x48, 0xb0);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x3333);
+    API_MapActor_TravelBy(0, -8, 0);
+    API_CutsceneWait(24);
+    API_MapActor_SetAnim(0, 1);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_PlaySound(0x120);
+    API_PlaySound(0xd5);
+    API_Func_8010704(5, 9, 1, 4, 6, 9);
+    API_Func_8010704(0, 0, 1, 4, 4, 9);
+    *L12c4 = 1;
+    API_CutsceneEnd();
+}
+void OvlFunc_916_20088b0(void) {
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 8);
+    API_CutsceneWait(6);
+    API_PlaySound(0xef);
+    API_MapActor_SetSpeed(8, 0x8000, 0x3333);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelTo(8, 0x68, 0xb0);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x3333);
+    API_MapActor_TravelBy(0, 8, 0);
+    API_CutsceneWait(24);
+    API_MapActor_SetAnim(0, 1);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_PlaySound(0x120);
+    API_PlaySound(0xd5);
+    API_Func_8010704(5, 9, 1, 4, 4, 9);
+    API_Func_8010704(0, 0, 1, 4, 6, 9);
+    *L12c4 = 0;
+    API_CutsceneEnd();
+}
 
-extern unsigned char gBuffer[];
+#include "dma.h"
+extern unsigned char ewram_2001000[];
+extern struct MapTileEntry_916 L111c[] __asm__(".Lm916_111c");
+extern unsigned char iwram_3001ebc[];
+extern void *__MapActor_GetActor(int);
+extern void OvlFunc_916_2008e64(int);
+
+extern void OvlFunc_916_2008a90(struct MapTileEntry_916 *);
+
+int KolimaForest4_MapInit(void) {
+    char *act;
+    unsigned short v;
+
+    do {
+        L12c4 = (short *)ewram_2001000;
+        L12c8 = (short *)(ewram_2001000 + 2);
+        L12c0 = ewram_2001000 + 4;
+    } while (0);
+
+    API_Func_80105d4(0x20, 0, 0x40, 0x20, 0, 0x40);
+    API_Func_8010704(0, 0, 0x20, 0x20, 0, 0x40);
+    API_Func_8010704(0x20, 0, 0x20, 0x20, 0, 0x20);
+
+    if (!API_GetFlag(0x109)) {
+        DMA3_COPY(L111c, L12c0, 0x48);
+        *L12c4 = 0;
+        *L12c8 = 1;
+    }
+
+    OvlFunc_916_2008a90(L12c0);
+    OvlFunc_916_2008b3c(L111c, 0xff);
+    OvlFunc_916_2008194();
+    API_MapActor_SetAnim(9, 0);
+
+    ((unsigned char *)__MapActor_GetActor(9))[0x55] = 0;
+
+    act = (char *)__MapActor_GetActor(10);
+    v = 8;
+    *(unsigned short *)(act + 0x20) = v;
+    *(int *)(act + 0x18) = 0xc000;
+    *(int *)(act + 0x1c) = 0xc000;
+
+    *(int *)(*(unsigned char **)iwram_3001ebc + (0xe0 << 1)) = 0x81 << 2;
+
+    if (!API_GetFlag(0x845)) {
+        OvlFunc_916_2008e64(4);
+    }
+    return 0;
+}
+
+
+INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008a90.s");
+
 
 void OvlFunc_916_2008b3c(struct MapTileEntry_916 *entry, int val) {
     int i;
@@ -177,6 +341,9 @@ int OvlFunc_916_2008be4(int arg0, int arg1, int arg2) {
     }
     return 0;
 }
+extern unsigned char L1164[] __asm__(".Lm916_1164");
+extern signed char L1168[] __asm__(".Lm916_1168");
+extern signed char L116c[] __asm__(".Lm916_116c");
 INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008c2c.s");
 extern void OvlFunc_916_2008f34(void);
 extern void OvlFunc_916_2008f54(void);
