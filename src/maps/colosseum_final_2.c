@@ -78,7 +78,13 @@ void OvlFunc_955_2008258(void) {
     API_Func_8010704(0x2e, 0x11, 1, 1, 0x2c, 0x11);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200828c.s");
+void OvlFunc_955_200828c(void) {
+    struct Actor *actor;
+    API_SetFlag(0x332);
+    actor = __MapActor_GetActor(0x15);
+    actor->__unk55 = 0;
+    API_Func_8010704(0x2e, 0x11, 1, 1, 0x32, 0x11);
+}
 
 void OvlFunc_955_20082c0(void)
 {

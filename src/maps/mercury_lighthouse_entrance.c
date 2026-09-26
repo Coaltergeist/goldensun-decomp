@@ -615,7 +615,50 @@ void OvlFunc_923_200916c(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20091b4.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009208.s");
+
+void OvlFunc_923_2009208(void) {
+    extern unsigned char *__MapActor_GetActor(unsigned int);
+    extern void __Func_8092950(unsigned int, unsigned int);
+    extern void __Actor_SetSpriteFlags(void *, unsigned int);
+    extern void __PlaySound(unsigned int);
+    extern void OvlFunc_923_2008cc0(void);
+    extern void __Func_8092304(unsigned int, unsigned int, unsigned int);
+    extern void __MapActor_PlayPendingSound(void);
+    unsigned char *actor;
+    unsigned char *sprite;
+    int flag;
+    int mask;
+
+    actor = __MapActor_GetActor(0);
+    flag = API_GetFlag(0x109);
+    if (flag != 0) {
+        return;
+    }
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    *(unsigned char *)(actor + 0x55) = flag;
+    API_MapActor_SetPos(0, ((short *)(actor + 8))[1] << 16,
+                         (((short *)(actor + 0x10))[1] << 16) + 0xfff00000);
+    __Func_8092950(0, 0xf);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 0);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    __PlaySound(0xe4);
+    *(void (**)(void))(actor + 0x6c) = OvlFunc_923_2008cc0;
+    API_MapActor_SetSpeed(0, 0x6666, 0x3333);
+    __Func_8092304(0, 0, 8);
+    __Func_8092950(0, 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0), 1);
+    sprite = *(unsigned char **)(actor + 0x50);
+    mask = -0xd;
+    sprite[9] = (sprite[9] & mask) | 4;
+    __Func_8092304(0, 0, 0xa);
+    *(unsigned char *)(actor + 0x55) = 3;
+    *(int *)(actor + 0x6c) = flag;
+    __MapActor_PlayPendingSound();
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/MercuryLighthouseEntrance_MapInit.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009730.s");
 extern unsigned char iwram_3001ebc[];

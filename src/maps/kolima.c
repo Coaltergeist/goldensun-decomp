@@ -20,7 +20,19 @@ unsigned int OvlFunc_911_2008030(unsigned int arg0)
 
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008050.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080a0.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080cc.s");
+unsigned int OvlFunc_911_20080cc(unsigned int arg0)
+{
+    *(int *)(arg0 + 0x08) += *(int *)(arg0 + 0x24);
+    *(int *)(arg0 + 0x10) += *(int *)(arg0 + 0x2c);
+    *(int *)(arg0 + 0x2c) += -2621;
+    *(int *)(arg0 + 0x18) += 0x600;
+    *(int *)(arg0 + 0x1c) += 0x600;
+    *(short *)(arg0 + 0x64) -= 1;
+    if (*(short *)(arg0 + 0x64) == 0) {
+        API_DeleteActor(arg0);
+    }
+    return 1;
+}
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008114.s");
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
@@ -308,7 +320,27 @@ unsigned int OvlFunc_911_200a6a4(int a)
 
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a6cc.s");
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a7ac.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a910.s");
+
+extern void __Func_800fe9c(void);
+
+void OvlFunc_911_200a910(void) {
+    if (!API_GetFlag(0x845)) {
+        API_MapActor_SetPos(8, 0, 0);
+        API_Func_8010704(9, 0x11, 5, 1, 9, 0x12);
+        __Func_800fe9c();
+        __WaitFrames(1);
+    } else {
+        API_MapActor_SetPos(9, 0, 0);
+    }
+
+    if (API_GetFlag(0x847)) {
+        API_CopyMapTiles(0x5b, 0x13, 0x48, 9, 5, 7);
+        API_Func_8010704(0x17, 0xb, 5, 7, 8, 0xb);
+        __Func_800fe9c();
+        __WaitFrames(1);
+    }
+}
+
 INCLUDE_ASM("asm/maps/kolima/kolima_data.s");
 
 INCLUDE_ASM("asm/maps/kolima/imports.s");

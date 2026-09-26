@@ -998,7 +998,42 @@ void OvlFunc_945_2009804(int param_1, int param_2, int param_3)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009894.s");
+
+void OvlFunc_945_2009894(void) {
+    extern int __MapActor_GetActor(int);
+    extern void __UI_Sanctum(int);
+    unsigned char *p;
+    unsigned int v;
+
+    p = (unsigned char *)__MapActor_GetActor(0);
+    v = (*(unsigned short *)(p + 6) + 0xffffe000) << 16;
+    if (v > (0xc0 << 24)) {
+        if (API_GetFlag(0x928) != 0 && API_GetFlag(0x93e) == 0) {
+            __UI_Sanctum(0x11);
+        } else {
+            __UI_Sanctum(0xf);
+        }
+    } else {
+        API_CutsceneStart();
+        if (API_GetFlag(0x93e)) {
+            API_MessageID(0x1f81);
+        } else if (API_GetFlag(0x8a << 4)) {
+            API_MessageID(0x1f48);
+        } else if (API_GetFlag(0x928)) {
+            API_MessageID(0x1f7f);
+        } else if (API_GetFlag(0x925)) {
+            API_MessageID(0x1f7d);
+        } else {
+            API_MessageID(0x1f7b);
+        }
+        if (API_GetFlag(0x928) != 0 && API_GetFlag(0x93e) == 0) {
+            API_ActorMessage(0x11, 0);
+        } else {
+            API_ActorMessage(0xf, 0);
+        }
+        API_CutsceneEnd();
+    }
+}
 
 void OvlFunc_945_2009978(void) {
     extern void __Func_808e118(void);

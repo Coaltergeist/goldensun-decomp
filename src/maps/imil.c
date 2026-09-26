@@ -314,9 +314,81 @@ void OvlFunc_921_20086c0(void)
     __Func_8091e9c(iVar5);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20087a4.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200888c.s");
+
+void OvlFunc_921_20087a4(void) {
+    extern unsigned char *__MapActor_GetActor(int);
+    extern void __MapActor_RunScript(int, void *);
+    extern void __CutsceneWait(int);
+    extern unsigned char gScript_921__0200a5ec[];
+    short facing;
+
+    facing = *(short *)((char *)__MapActor_GetActor(0) + 6);
+    if (__GetFlag(0x881) != 0) {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __Func_80b0278(0xa, 0xc);
+        } else {
+            __CutsceneStart();
+            API_MapActor_Face(0xc, 0, 0);
+            __CutsceneWait(0xa);
+            __MessageID(0x164b);
+            API_ActorMessage(0xc, 0);
+            API_Func_8092adc(0xc, 0x80 << 7, 0xa);
+            __CutsceneEnd();
+        }
+    } else {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __CutsceneStart();
+            API_Func_80933d4(0xc0 << 11, 0xc0 << 8);
+            API_Func_80933f8(0xd5 << 17, -1, 0xf6 << 17, 1);
+            API_Func_8093530();
+            __CutsceneWait(0x14);
+            __MapActor_RunScript(0xc, gScript_921__0200a5ec);
+            __MessageID(0x153e);
+            API_ActorMessage(0xc, 0);
+            API_Func_80933f8(0xd5 << 17, -1, 0x9a << 18, 1);
+            API_Func_8093530();
+            __CutsceneEnd();
+        }
+    }
+}
+
 extern void *__MapActor_GetActor(int);
+extern void __MapActor_RunScript(int, void *);
+
+void OvlFunc_921_200888c(void) {
+    extern unsigned char gScript_921__0200a5ec[];
+    short facing;
+
+    facing = *(short *)((char *)__MapActor_GetActor(0) + 6);
+    if (__GetFlag(0x881) != 0) {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __Func_80b0278(0xb, 0xd);
+        } else {
+            __CutsceneStart();
+            API_MapActor_Face(0xd, 0, 0);
+            __CutsceneWait(0xa);
+            __MessageID(0x164d);
+            API_ActorMessage(0xd, 0);
+            API_Func_8092adc(0xd, 0x80 << 7, 0xa);
+            __CutsceneEnd();
+        }
+    } else {
+        if ((unsigned int)((facing << 16) + 0x5fff0000) <= 0x3ffe0000) {
+            __CutsceneStart();
+            API_Func_80933d4(0xc0 << 11, 0xc0 << 8);
+            API_Func_80933f8(0xd5 << 17, -1, 0xf6 << 17, 1);
+            API_Func_8093530();
+            __CutsceneWait(0x14);
+            __MapActor_RunScript(0xd, gScript_921__0200a5ec);
+            __MessageID(0x1543);
+            API_ActorMessage(0xd, 0);
+            API_Func_80933f8(0xd5 << 17, -1, 0x9a << 18, 1);
+            API_Func_8093530();
+            __CutsceneEnd();
+        }
+    }
+}
+
 void OvlFunc_921_2008974(void)
 {
     short facing;

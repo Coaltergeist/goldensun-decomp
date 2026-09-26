@@ -391,7 +391,41 @@ INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a3e0.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a4d8.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a5f0.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a668.s");
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a820.s");
+void OvlFunc_953_200a820(void)
+{
+    extern void __Func_8079664(int);
+    extern void __AddPartyMember(int);
+    unsigned char *actor;
+    unsigned short facing;
+
+    if (API_GetFlag(5))
+    {
+        API_SetFlag(0x16d);
+        __Func_8079664(5);
+        __AddPartyMember(3);
+    }
+    API_CutsceneStart();
+    API_MapActor_SetPos(0xb, 0xd9 << 18, 0x93 << 18);
+    API_WaitFrames(1);
+    API_SetCameraTarget(0xb, 1);
+    API_MapActor_SetSpeed(0xb, 0x19999, 0xcccc);
+    API_MapActor_SetSpeed(0, 0x19999, 0xcccc);
+    actor = __MapActor_GetActor(0xb);
+    facing = 0x80;
+    *(unsigned short *)(actor + 6) = facing << 8;
+    API_MapTransitionIn();
+    API_MapActor_SetAnim(0, 2);
+    API_MapActor_SetAnim(0xb, 2);
+    API_MapActor_TravelTo(0, 0xc8 << 2, 0x93 << 2);
+    API_MapActor_TravelToWait(0xb, 0xc0 << 2, 0x93 << 2);
+    API_MapActor_TravelTo(0, 0xaf << 2, 0x93 << 2);
+    API_MapActor_TravelToWait(0xb, 0xa7 << 2, 0x93 << 2);
+    API_MapActor_TravelTo(0, 0x96 << 2, 0x93 << 2);
+    API_MapActor_TravelTo(0xb, 0x8e << 2, 0x93 << 2);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_Func_8091e9c(0x15);
+}
 
 extern void __MapTransitionOut(void);
 extern void __Func_8091e9c(int);
