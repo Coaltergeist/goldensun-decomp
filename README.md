@@ -6,11 +6,20 @@ A work-in-progress matching decompilation of Golden Sun (GBA, 2001), based on
 **Target:** USA `goldensun.gba`, SHA1
 `5c4695205413df7db52b9a184815a07783999971`.
 
+## Progress
+
+[![Functions matched](https://decomp.dev/Coaltergeist/goldensun-decomp.svg?mode=shield&measure=matched_functions_percent&label=functions%20matched)](https://decomp.dev/Coaltergeist/goldensun-decomp)
+[![Code bytes matched](https://decomp.dev/Coaltergeist/goldensun-decomp.svg?mode=shield&measure=matched_code_percent&label=code%20bytes%20matched)](https://decomp.dev/Coaltergeist/goldensun-decomp)
+
+Each rectangle represents a translation unit, sized by original code bytes and
+colored by matching progress. Click the treemap for unit and function details.
+
+[![Golden Sun matching progress by translation unit](https://decomp.dev/Coaltergeist/goldensun-decomp.svg?mode=overview)](https://decomp.dev/Coaltergeist/goldensun-decomp)
+
 ## Getting started
 
 - [Build and diff setup](INSTALL.md)
 - [Contributing and matching requirements](CONTRIBUTING.md)
-- [Live progress and TU treemap](https://decomp.dev/Coaltergeist/goldensun-decomp)
 - [Progress accounting](PROGRESS.md) and [report generation](DECOMP_DEV.md)
 
 The build uses patched GCC 2.96 from
