@@ -37,7 +37,8 @@ def generate(root=ROOT):
                     address = 0x02008000 + int(name.rsplit('_', 1)[1], 16)
                 else:
                     domain = 'rom'
-                    address = 0x080000c0 if name == '_start' else 0x08000000 + int(name.rsplit('_', 1)[1], 16)
+                    # _start follows the 0x300-byte export table in rom_c0.
+                    address = 0x080003c0 if name == '_start' else 0x08000000 + int(name.rsplit('_', 1)[1], 16)
                 identity = f'{domain}:{address:08x}'
                 functions.append({'id': identity, 'domain': domain, 'address': address,
                                   'mode': mode, 'original_name': name, 'source': member.name,

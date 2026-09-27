@@ -40,3 +40,20 @@ New fakematches are not accepted. Existing registered functions are active clean
 debt, not a precedent for new contributions. Finding an overlooked concern in
 existing code may require a registry correction; adding that record is accounting,
 not permission to introduce a new fakematch. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## decomp.dev summary reports
+
+See [DECOMP_DEV.md](DECOMP_DEV.md) for fixed original byte sizes and the
+ROM-free publication workflow. Before committing relevant source changes, run
+`python3 tools/decomp_progress.py snapshot`; it includes the fresh serial full
+comparison and writes the metadata snapshot only on success.
+`python3 tools/decomp_progress.py export` validates its freshness and generates
+`report.json` for decomp.dev. This is a different format from this document's
+legacy `tools/progress.py --json` per-function inventory.
+
+The published byte numerator excludes registered fakematches; its denominator
+includes both instruction modes. Shared code is counted once. Historical size
+corrections and the corrected `_start` address are documented in the integration
+guide. The snapshot uses preprocessed active C and linked ownership; the legacy
+reporter uses lexical C definitions, so conditional or macro-generated definitions
+can require closer comparison.

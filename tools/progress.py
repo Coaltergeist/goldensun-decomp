@@ -15,7 +15,7 @@ from c_source import parse_funcs
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def symbols(path):
+def symbol_records(path):
     data = path.read_bytes()
     if data[:7] != b'\x7fELF\x01\x01\x01':
         raise ValueError('expected ELF32 little endian: ' + str(path))
@@ -28,7 +28,7 @@ def symbols(path):
     def string(table, offset):
         return table[offset:table.index(b'\0', offset)].decode()
     names = contents(sections[h[12]])
-    found = defaultdict(set)
+    found = defaultdict(list)
     for section in sections:
         if section[1] != 2:
             continue
@@ -42,8 +42,13 @@ def symbols(path):
             # rom_770 is linked into IWRAM but the baseline records ROM load addresses.
             if section_name == 'rom_770' and 0x03000000 <= address < 0x03008000:
                 address = address - 0x03000000 + 0x08000770
-            found[address].add(string(strings, name))
+            found[address].append(dict(name=string(strings, name), size=size, section=section_name))
     return found
+
+
+def symbols(path):
+    return {address: {record["name"] for record in records}
+            for address, records in symbol_records(path).items()}
 
 
 def linked_sources(root, domain):

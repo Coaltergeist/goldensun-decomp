@@ -78,3 +78,7 @@ src/lib/m4a/m4a.s
 
 # Local command transcripts from INSTALL.md
 output.txt
+
+# Local progress verification artifacts (metadata snapshots are tracked)
+.progress/
+/report.json

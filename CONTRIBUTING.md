@@ -70,3 +70,16 @@ python3 -m unittest discover -s tools/tests -v 2>&1 | tee -a output.txt
 These checks validate structure and tooling, not complete scaffold detection or
 game output. The fresh full comparison and semantic source review remain required.
 See [ATTRIBUTION.md](ATTRIBUTION.md) for existing credits and component notices.
+
+## Refresh the public progress snapshot
+
+Before committing source, header, assembly, linker, build or accounting changes,
+run `python3 tools/decomp_progress.py snapshot` and review the updated
+`progress_snapshot.json` with your source changes. This command includes the
+fresh serial ROM/all-overlay gate above; running that gate separately first is
+not required. A failed run preserves the old snapshot, and CI rejects it if it
+is stale. Do not hand-edit classifications to force a percentage.
+
+Run `python3 tools/decomp_progress.py check` to validate publication readiness
+without a ROM or installed game compiler. See [DECOMP_DEV.md](DECOMP_DEV.md) for
+accounting scope, provenance, local verification logs, and the limits of CI.

@@ -31864,9 +31864,9 @@
       "source_sha256": "50f41b632f2b9fd9c998586ec7188630e3ef0783f3fe11e09ee159f0fe431bed"
     },
     {
-      "id": "rom:080000c0",
+      "id": "rom:080003c0",
       "domain": "rom",
-      "address": 134217920,
+      "address": 134218688,
       "mode": "arm",
       "original_name": "_start",
       "source": "rom_c0/src/crt0.s",

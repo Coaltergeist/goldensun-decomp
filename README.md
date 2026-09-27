@@ -13,11 +13,16 @@ It builds the following ROM:
 ## Current state
 
 - :white_check_mark: Build verification: serial `make clean && make compare` checks the ROM and all overlays
-- **3,504 / 5,741 known original Thumb functions have matching C (61.03%)**, including **23 registered fakematches**. Excluding those entries: **3,481 / 5,741 (60.63%)**. The 53 ARM functions remain assembly. This 2026-09-13 snapshot uses fixed original addresses, excludes compiler call trampolines, and counts shared overlay implementations once. See [progress accounting](PROGRESS.md); run `python3 tools/progress.py` after a fresh build for current counts.
+- **3,519 / 5,741 known original Thumb functions have matching C (61.30%)**, including **23 registered fakematches**. Excluding those entries: **3,496 / 5,741 (60.90%)**. The 53 ARM functions remain assembly. This 2026-09-27 snapshot uses fixed original addresses, excludes compiler call trampolines, and counts shared overlay implementations once. See [progress accounting](PROGRESS.md); run `python3 tools/progress.py` after a fresh build for current counts.
 - All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
 - Source organized into a subsystem tree (`src/field/`, `src/battle/`, `src/ui/`, `src/rpg/`, …), mirrored one-to-one by `asm/`; the 96 code overlays are each consolidated into a single translation unit under `src/maps/`
 - Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used for the stock m4a audio engine and most Flash library C (see below). See [INSTALL.md](INSTALL.md) for setup.
 - **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`src/lib/m4a/`](src/lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
+
+Aggregate byte-weighted progress reporting is prepared for decomp.dev. See
+[decomp.dev integration](DECOMP_DEV.md) for the verified snapshot workflow and
+first-publication/registration steps. Its byte denominator includes ARM and Thumb
+and differs from the Thumb function counts above.
 
 ## Setting up the repo
 
