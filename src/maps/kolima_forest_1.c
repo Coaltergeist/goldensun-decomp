@@ -30,9 +30,153 @@ int OvlFunc_913_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200806c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_20080c4.s");
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_2008244.s");
+typedef struct {
+    unsigned char _pad[0x14];
+    struct Actor *actors[66];
+} KolimaMap;
+
+extern KolimaMap *iwram_3001ebc;
+
+void *OvlFunc_913_200806c(int *pos, void *arg1)
+{
+    KolimaMap *map;
+    unsigned int i;
+    struct Actor *actor;
+    int target_x;
+
+    map = iwram_3001ebc;
+    i = 8;
+    target_x = pos[0] >> 20;
+
+    for (; i <= 0x41; i++) {
+        actor = map->actors[i];
+        if (target_x != actor->pos.x >> 20)
+            continue;
+        if (pos[1] / 0x10000 != actor->pos.y / 0x10000)
+            continue;
+        if (pos[2] >> 20 == actor->pos.z >> 20)
+            return actor;
+    }
+    return 0;
+}
+extern unsigned int L2d68[] __asm__(".Lm913_2d68");
+extern int __TestCollision(void *, int *);
+
+void OvlFunc_913_20080c4(void)
+{
+    int stk[3];
+    struct Actor *hero;
+    struct Actor *res;
+    struct Actor *a;
+    unsigned int idx;
+    unsigned int t;
+
+    hero = (struct Actor *)__MapActor_GetActor(0);
+    idx = *(unsigned short *)((char *)hero + 6) >> 12;
+    t = L2d68[idx];
+    stk[0] = hero->pos.x + (t & 0xffff0000);
+    stk[1] = hero->pos.y;
+    t <<= 16;
+    stk[2] = hero->pos.z + t;
+    res = (struct Actor *)OvlFunc_913_200806c(stk, hero);
+    if (res == 0)
+        return;
+
+    t = L2d68[idx];
+    stk[0] = res->pos.x + (t & 0xffff0000);
+    stk[1] = res->pos.y;
+    t <<= 16;
+    stk[2] = res->pos.z + t;
+    a = (struct Actor *)OvlFunc_913_200806c(stk, res);
+    if (a != 0 && (*(char *)((char *)a + 0x59) & 1))
+        return;
+
+    stk[0] = res->pos.x;
+    stk[1] = res->pos.y + 0x100000;
+    stk[2] = res->pos.z;
+    a = (struct Actor *)OvlFunc_913_200806c(stk, res);
+    if (a != 0 && (*(char *)((char *)a + 0x59) & 1))
+        return;
+
+    *(char *)((char *)res + 0x22) = 2;
+    t = L2d68[idx];
+    stk[0] = res->pos.x + (t & 0xffff0000);
+    stk[1] = res->pos.y;
+    t <<= 16;
+    stk[2] = res->pos.z + t;
+    if (__TestCollision(res, stk) > 0)
+        return;
+
+    if (*(char *)((char *)res + 0x62) != 0)
+        return;
+
+    __Actor_SetAnim(hero, 8);
+    __WaitFrames(15);
+    __PlaySound(0xb9);
+    *(int *)((char *)res + 0x30) = 0x3333;
+    *(int *)((char *)res + 0x34) = 0x3333;
+    __Actor_TravelTo(res, stk[0], stk[1], stk[2]);
+    *(int *)((char *)hero + 0x30) = 0x3333;
+    *(int *)((char *)hero + 0x34) = 0x3333;
+    __Actor_TravelTo(hero, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(res);
+    __MapActor_PlayPendingSound();
+
+    res->pos.x = stk[0];
+    res->pos.z = stk[2];
+    *(int *)((char *)res + 0x24) = 0;
+    *(int *)((char *)res + 0x2c) = 0;
+    *(int *)((char *)hero + 0x38) = 0x80 << 24;
+    *(int *)((char *)hero + 0x40) = 0x80 << 24;
+    hero->pos.x = *(short *)((char *)hero + 10) << 16;
+    *(int *)((char *)hero + 0x24) = 0;
+    *(int *)((char *)hero + 0x2c) = 0;
+    hero->pos.z = *(short *)((char *)hero + 18) << 16;
+    __Actor_SetAnim(hero, 1);
+}
+extern unsigned char gBuffer[];
+extern unsigned char iwram_3001e70[];
+
+typedef struct {
+    unsigned char *buf;
+    unsigned char _pad[0x2c];
+} LayerInfo;
+
+typedef struct {
+    unsigned char _pad[0x130];
+    LayerInfo layers[3];
+} EnvState;
+
+int OvlFunc_913_2008244(unsigned int layer, int x, int y, unsigned int width, unsigned int height, int val)
+{
+    EnvState *env;
+    unsigned char *ptr;
+    unsigned int i;
+    unsigned int j;
+    unsigned char *row;
+
+    env = *(EnvState **)iwram_3001e70;
+    if (env == 0)
+        return 0;
+
+    if (layer <= 2) {
+        ptr = env->layers[layer].buf;
+    } else {
+        ptr = gBuffer;
+    }
+
+    ptr += (x + y * 128) * 4;
+
+    for (j = 0; j < height; j++) {
+        row = ptr + j * 512;
+        for (i = 0; i < width; i++) {
+            row[2] = val;
+            row += 4;
+        }
+    }
+
+    return 0;
+}
 
 extern unsigned int L2d68[] __asm__(".Lm913_2d68");
 extern int L2da8[] __asm__(".Lm913_2da8");
@@ -87,10 +231,11 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200834c.s");
-
 extern int L2dc0[] __asm__(".Lm913_2dc0");
-extern void *OvlFunc_913_200834c(int *, void *, void *);
+
+extern unsigned char *__MapActor_GetActor(unsigned int);
+
+INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200834c.s");
 
 int OvlFunc_913_2008474(void *arg0)
 {
@@ -522,7 +667,45 @@ unsigned int OvlFunc_913_200a798(unsigned char *param)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a7c8.s");
+extern unsigned int iwram_3001e40;
+extern int L3398[] __asm__(".Lm913_3398");
+extern unsigned char gScript_913__0200b2d0[];
+
+extern struct Actor *__CreateActor(int, int, int, int);
+
+void OvlFunc_913_200a7c8(void)
+{
+    unsigned int r6;
+    struct Actor *actor;
+    unsigned char *sprite;
+    int c = ~0xc;
+
+    r6 = iwram_3001e40 & 7;
+    if (r6 == 0) {
+        if (L3398[0] != 0) {
+            __PlaySound(0xc8);
+        }
+        actor = (struct Actor *)API_CreateActor(0x1a, 0xe70000, 0, 0x1cc0000);
+        if (actor != 0) {
+            sprite = (unsigned char *)actor->sprite;
+            {
+                unsigned char flags[1] = {actor->flags};
+                sprite[0x26] = r6;
+                actor->flags = flags[0] & 0xfe;
+            }
+            do {
+                sprite[9] = (sprite[9] & c) | 4;
+                actor->scale.x = 0x1999;
+                actor->speed = 0x80000;
+                actor->accel = 0x80000;
+            } while (0);
+            actor->__unk55 = r6;
+            __Actor_SetAnim(actor, 2);
+            API_Actor_TravelTo(actor, 0xe70000, 0, 0x2700000);
+            __Actor_SetScript(actor, gScript_913__0200b2d0);
+        }
+    }
+}
 
 extern int __Func_80929d8();
 extern unsigned int iwram_3001e40;
@@ -536,8 +719,113 @@ unsigned int OvlFunc_913_200a864(int a) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a88c.s");
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_200a974.s");
+extern int L3394[] __asm__(".Lm913_3394");
+extern unsigned char gScript_913__0200b2e4[];
+
+unsigned int OvlFunc_913_200a88c(struct Actor *actor)
+{
+    extern void __PlaySound(int);
+    int x;
+
+    if (*(int *)L3394) {
+        x = actor->pos.x;
+        if (x > 0xc00000 && x < 0x1120000 && actor->pos.z > 0x2360000 && actor->pos.z < 0x2640000)
+            goto hit;
+        if (x > 0xca0000 && x < 0xff0000 && actor->pos.z > 0x2250000 && actor->pos.z < 0x2780000)
+            goto hit;
+    } else {
+        x = actor->pos.x;
+        if (x > 0xc00000 && x < 0xf40000 && actor->pos.z > 0x2250000 && actor->pos.z <= 0x248ffff)
+            goto hit;
+        if (x > 0xf40000 && x < 0x1120000 && actor->pos.z > 0x23b0000 && actor->pos.z <= 0x25cffff)
+            goto hit;
+        if (x > 0xd30000 && x < 0xff0000 && actor->pos.z > 0x2540000 && actor->pos.z < 0x2780000)
+            goto hit;
+    }
+    return 0;
+
+hit:
+    API_PlaySound(0x6a);
+    __Actor_SetScript(actor, gScript_913__0200b2e4);
+    *(int *)L3390 = 1;
+    return 0;
+}
+
+extern int L338c[] __asm__(".Lm913_338c");
+extern int L3388[] __asm__(".Lm913_3388");
+extern int L3384[] __asm__(".Lm913_3384");
+extern unsigned char gScript_913__0200b308[];
+
+void OvlFunc_913_200a974(void)
+{
+    struct Actor *actor = 0;
+    unsigned char *sprite;
+    int *base_pos;
+    int x;
+    int z;
+    int c = ~0xc;
+
+    switch (*(unsigned int *)L338c) {
+    case 1:
+        if (*(int *)L3388 <= 0x3a97)
+            *(int *)L3388 += 50;
+        if (*(int *)L3384 > 0x3c0000)
+            *(int *)L3384 -= 0x4000;
+        break;
+    case 2:
+        if (*(int *)L3388 <= 0x752f)
+            *(int *)L3388 += 50;
+        if (*(int *)L3384 > 0x180000)
+            *(int *)L3384 -= 0x4000;
+        break;
+    case 3:
+        if (*(int *)L3384 < -0x800000) {
+            *(int *)L338c = 0;
+        } else {
+            *(int *)L3388 += 50;
+            *(int *)L3384 -= 0x4000;
+        }
+        break;
+    }
+
+    if (iwram_3001e40 & 7)
+        return;
+
+    actor = (struct Actor *)__CreateActor(0x11d, 0, 0, 0);
+    if (actor == 0)
+        return;
+
+    base_pos = **(int ***)iwram_3001e70;
+    if ((iwram_3001e40 & 0x3f) == 0)
+        __PlaySound(0xf6);
+
+    if (*(int *)L338c != 0) {
+        x = base_pos[0] + (((__Random() * *(int *)L3388) >> 16) << 8) + *(int *)L3384;
+    } else {
+        x = base_pos[0] + (__Random() << 8) - 0x800000;
+    }
+
+    z = base_pos[2] + (__Random() << 8) - 0x800000;
+
+    actor->__unk55 = 0;
+    actor->pos.y = 160 << 16;
+    sprite = (unsigned char *)actor->sprite;
+    actor->scale.x = 0xe666;
+    actor->scale.y = 0xe666;
+    actor->pos.x = x;
+    actor->pos.z = z;
+    sprite[0x26] = 0;
+    {
+        unsigned char flags[1] = {actor->flags};
+        actor->flags = flags[0] & 0xfe;
+    }
+    do {
+        sprite[9] = (sprite[9] & c) | 4;
+    } while (0);
+    __Actor_SetAnim(actor, 1);
+    __Actor_SetScript(actor, gScript_913__0200b308);
+}
+
 
 void OvlFunc_913_200aad8(void) {
     struct Actor *a;

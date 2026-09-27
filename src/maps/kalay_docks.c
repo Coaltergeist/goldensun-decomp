@@ -145,6 +145,8 @@ void OvlFunc_942_2008260(void) {
     __CutsceneEnd();
 }
 
+extern struct Actor *__MapActor_GetActor(unsigned int);
+
 void OvlFunc_942_20082dc(void)
 {
   int new_var;
@@ -162,7 +164,72 @@ void OvlFunc_942_20082dc(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008328.s");
+extern unsigned char _MSG_1d20[];
+extern int __CheckPartyItem(int);
+extern int __CheckItem(int, int);
+extern void __Func_8078948(int, int);
+
+void OvlFunc_942_2008328(void) {
+    extern unsigned int iwram_3001ebc;
+    struct Actor *actor;
+    int dir;
+    int msg;
+    int unit;
+    int slot;
+    unsigned short *base;
+
+    actor = __MapActor_GetActor(0);
+    dir = (short)((actor->facing + (0x80 << 6)) & (int)0xffffc000);
+    __CutsceneStart();
+    if (API_GetFlag(0x8a7)) {
+        if (API_GetFlag(0x8a9)) {
+            __MessageID(0x1d23);
+            __ShowActorMessage_NoWait(0xc, 0);
+        } else {
+            msg = (int)_MSG_1d20;
+            __MessageID(msg);
+            __ShowActorMessage_NoWait(0xc, 0);
+            if (__Func_8091c7c(0, 0) == 0) {
+                __CutsceneWait(10);
+                __MessageID(msg + 1);
+                API_ActorMessage(0xc, 0);
+                API_MapActor_TravelToAnimWait(0xc, 0x58, 0xa1 << 3);
+                API_Func_8092adc(0xc, 0x80 << 7, 0);
+                __CutsceneWait(0x14);
+                API_SetFlag(0x8a9);
+            } else {
+                __MessageID(msg + 2);
+                API_ActorMessage(0xc, 0);
+            }
+        }
+    } else {
+        if ((dir << 16) != (0x80 << 24)) {
+            return;
+        }
+        __MessageID(0x1d16);
+        API_ActorMessage(0xc, 0);
+        if (API_GetFlag(0x8a5)) {
+            unit = __CheckPartyItem(0xeb);
+            slot = __CheckItem(unit, 0xeb);
+            API_MapActor_DoAnim(0xc, 3);
+            API_MapActor_TravelToAnimWait(0xc, 0x58, 0xa1 << 3);
+            API_Func_8092adc(0xc, 0x80 << 7, 0);
+            base = (unsigned short *)iwram_3001ebc;
+            base[0xec] += 1;
+            API_ActorMessage(0xc, 0);
+            __Func_8078948(unit, slot);
+            API_SetFlag(0x8a7);
+            actor = __MapActor_GetActor(0);
+            API_MapActor_TravelToAnimWait(0, *(short *)((char *)actor + 0xa), 0xa3 << 3);
+            API_MapActor_TravelToAnimWait(0, 0x48, 0xa3 << 3);
+            API_MapActor_TravelToAnimWait(0xc, 0x58, 0xa3 << 3);
+            API_Func_8092adc(0xc, 0, 0);
+        } else {
+            API_ActorMessage(0xc, 0);
+        }
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_942_20084b8(void) {
     __CutsceneStart();
@@ -179,7 +246,87 @@ void OvlFunc_942_20084b8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_200851c.s");
+extern void *__CreateUIBox(int, int, int, int, int);
+extern void __CloseUIBox(void *, int);
+extern void __Func_801e7c0(int, void *, int, int);
+extern void __Func_801ea08(int, int, void *, int, int);
+extern void __Func_8019908(int, int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_DoAnim(int, int);
+
+void OvlFunc_942_200851c(void) {
+    extern unsigned int iwram_3001ebc;
+    unsigned int r2;
+    unsigned int r3;
+    unsigned int cost;
+    GlobalState *state;
+    void *box;
+
+    r2 = 0x96;
+    r2 <<= 2;
+    cost = r2;
+    __CutsceneStart();
+    if (API_GetFlag(0x8a5)) {
+        __MessageID(0x1d0b);
+        API_ActorMessage(8, 0);
+        return;
+    }
+
+    __MessageID(0x1d04);
+    __ShowActorMessage_NoWait(8, 0);
+    if (__Func_8091c7c(0, 0) == 1) {
+        __ActorMessage_Wait(8, 0, 10);
+    } else {
+        r3 = 0xec;
+        r2 = iwram_3001ebc;
+        r3 <<= 1;
+        r2 += r3;
+        r3 = *(unsigned short *)r2;
+        r3 += 1;
+        *(unsigned short *)r2 = r3;
+        __Func_8019908(cost, 5);
+        __ShowActorMessage_NoWait(8, 0);
+        box = __CreateUIBox(0x13, 8, 0xb, 4, 2);
+        __Func_801e7c0(0xc8a, box, 0, 0);
+        state = &gState;
+        __Func_801ea08(*(int *)((char *)state + 0x10), 6, box, 0x18, 8);
+        if (__Func_8091c7c(-1, 0) == 1) {
+            __CloseUIBox(box, 2);
+            __MapActor_DoAnim(0, 4);
+            __CutsceneWait(10);
+            API_ActorMessage(8, 0);
+        } else if (cost > *(unsigned int *)((char *)state + 0x10)) {
+            __CloseUIBox(box, 2);
+            __MapActor_DoAnim(0, 3);
+            __CutsceneWait(10);
+            r2 = iwram_3001ebc;
+            r3 = 0xec;
+            r3 <<= 1;
+            r2 += r3;
+            r3 = *(unsigned short *)r2;
+            r3 += 1;
+            *(unsigned short *)r2 = r3;
+            API_PlaySound(0x71);
+            API_ActorMessage(8, 0);
+        } else {
+            __CloseUIBox(box, 2);
+            __MapActor_DoAnim(0, 3);
+            __CutsceneWait(10);
+            r3 = iwram_3001ebc;
+            r2 = 0xec;
+            r2 <<= 1;
+            r3 += r2;
+            r2 = *(unsigned short *)r3;
+            r2 += 3;
+            *(unsigned short *)r3 = r2;
+            API_ActorMessage(8, 0);
+            __Func_8091a58(0xeb, 0);
+            API_SetFlag(0x8a5);
+            __AddCoins(-cost);
+        }
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_942_2008688(void) {
     __CutsceneStart();
@@ -268,6 +415,9 @@ __asm__(".equ .Lconst_6b, 0x6b");
 extern unsigned char Lconst_70[] __asm__(".Lconst_70");
 __asm__(".equ .Lconst_70, 0x70");
 
+extern unsigned char Lconst_6c[] __asm__(".Lconst_6c");
+__asm__(".equ .Lconst_6c, 0x6c");
+
 extern void __PlaySound(int);
 extern void __MapActor_SetSpeed(int, int, int);
 extern void __Func_8092b08(int, int);
@@ -298,7 +448,34 @@ extern void OvlFunc_942_20088cc(void);
 extern void OvlFunc_942_2008958(void);
 extern void OvlFunc_942_2008ad4(void);
 
-INCLUDE_ASM("asm/maps/kalay_docks/KalayDocks_MapInit.s");
+int KalayDocks_MapInit(void) {
+    GlobalState *state = &gState;
+    unsigned int r1;
+    unsigned int r2;
+    unsigned int r3;
+
+    r1 = 0xe1;
+    r1 <<= 1;
+    r3 = (unsigned int)state + r1;
+    r2 = 0;
+    if (*(short *)((char *)r3 + r2) == 0x5a) {
+        __SetFlag(0x950);
+    }
+
+    r1 = 0xe0;
+    r1 <<= 1;
+    r3 = (unsigned int)state + r1;
+    r1 = 0;
+    r2 = *(short *)((char *)r3 + r1);
+    if (r2 == (int)Lconst_6b) {
+        OvlFunc_942_20088cc();
+    } else if (r2 == (int)Lconst_70) {
+        OvlFunc_942_2008958();
+    } else if (r2 == (int)Lconst_6c) {
+        OvlFunc_942_2008ad4();
+    }
+    return 0;
+}
 extern void __ClearFlag(int);
 void OvlFunc_942_2008ba0(void);
 void __MapActor_SetPos(int, int, int);
@@ -338,6 +515,7 @@ void OvlFunc_942_20088cc(void) {
 }
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008958.s");
 
+
 extern unsigned int iwram_3001ebc;
 
 void OvlFunc_942_2008ad4(void) {
@@ -345,9 +523,27 @@ void OvlFunc_942_2008ad4(void) {
     __ClearFlag(0x12f);
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008af8.s");
+extern void __Func_8010704(int, int, int, int, int, int);
+void OvlFunc_942_2008b68(int);
+
+void OvlFunc_942_2008af8(void) {
+    int x14;
+    int x15;
+    int s2;
+
+    x14 = __MapActor_GetActor(14)->pos.x;
+    x14 >>= 20;
+    x15 = __MapActor_GetActor(15)->pos.x;
+    s2 = 11;
+    __Func_8010704(5, 12, 5, 1, 5, s2);
+    __Func_8010704(1, 0, 1, 1, x15 >> 20, s2);
+    __Func_8010704(1, 0, 1, 1, x14, s2);
+    OvlFunc_942_2008b68(14);
+    OvlFunc_942_2008b68(15);
+}
+
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008b68.s");
-extern struct Actor *__MapActor_GetActor(unsigned int);
+
 extern void __Func_808e118(void);
 
 void OvlFunc_942_2008ba0(void)
@@ -434,6 +630,8 @@ void OvlFunc_942_2008ba0(void)
 }
 
 INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008e40.s");
+
+
 INCLUDE_ASM("asm/maps/kalay_docks/kalay_docks_data.s");
 
 INCLUDE_ASM("asm/maps/kalay_docks/imports.s");

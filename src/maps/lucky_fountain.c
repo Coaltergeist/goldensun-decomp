@@ -1,6 +1,7 @@
 /* rom_7d6418 (overlay file 951): consolidated TU — lucky_fountain map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
@@ -137,7 +138,43 @@ int LuckyFountain_GetEvents(void)
 }
 INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_MapInit.s");
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20084bc.s");
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008880.s");
+extern unsigned char iwram_3001e70[];
+extern unsigned short Lm951_1fc0[] __asm__(".Lm951_1fc0");
+
+#define REG_BLDALPHA (*(volatile unsigned short *)0x04000052)
+
+void OvlFunc_951_2008880(void)
+{
+    extern void __PlaySound(int);
+    extern void __WaitFrames(int);
+    unsigned char *r5;
+    int i;
+    unsigned short *src;
+    int val;
+    unsigned int reg;
+
+    r5 = *(unsigned char **)iwram_3001e70;
+    __PlaySound(0xd8);
+    r5 += 0xb2 << 1;
+    for (i = 15; i >= 0; i--) {
+        *(int *)(r5 + 0xc) += 0xffff0000;
+        __WaitFrames(4);
+    }
+
+#define SetBlendAlpha(val) do { REG_BLDALPHA = (val); } while (0)
+
+    val = 0x3f42;
+    reg = 0x04000050;
+    src = Lm951_1fc0;
+    for (i = 7; i >= 0; i--) {
+        *(volatile unsigned short *)reg = val;
+        SetBlendAlpha(*src++);
+        API_WaitFrames(8);
+    }
+}
+
+#undef SetBlendAlpha
+#undef REG_BLDALPHA
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20088f8.s");
 extern unsigned char ewram_2001000[];
 extern unsigned char iwram_3001ebc[];
