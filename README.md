@@ -1,105 +1,71 @@
 <h1 align="center">Golden Sun</h1>
 
-> :warning: **This project is in early stages and under active development.**
->
-> _This project was created as a learning exercise and a personal challenge for exploring matching decompilation, reverse-engineering, and the GBA toolchain. Contributions and corrections from anyone more experienced are very welcome, but not expected._
+A work-in-progress matching decompilation of Golden Sun (GBA, 2001), based on
+[gsret's disassembly](https://github.com/gsret/goldensun).
 
-This is a work-in-progress matching decompilation of Golden Sun (GBA, 2001).
+**Target:** USA `goldensun.gba`, SHA1
+`5c4695205413df7db52b9a184815a07783999971`.
 
-It builds the following ROM:
+## Getting started
 
-* **goldensun.gba** `sha1: 5c4695205413df7db52b9a184815a07783999971` (USA)
+- [Build and diff setup](INSTALL.md)
+- [Contributing and matching requirements](CONTRIBUTING.md)
+- [Live progress and TU treemap](https://decomp.dev/Coaltergeist/goldensun-decomp)
+- [Progress accounting](PROGRESS.md) and [report generation](DECOMP_DEV.md)
 
-## Current state
+The build uses patched GCC 2.96 from
+[camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), with `old_agbcc` for
+the stock m4a audio engine and most Flash library C. Full verification compares
+the ROM and all 96 code overlays against the reference game.
 
-- :white_check_mark: Build verification: serial `make clean && make compare` checks the ROM and all overlays
-- **3,519 / 5,741 known original Thumb functions have matching C (61.30%)**, including **23 registered fakematches**. Excluding those entries: **3,496 / 5,741 (60.90%)**. The 53 ARM functions remain assembly. This 2026-09-27 snapshot uses fixed original addresses, excludes compiler call trampolines, and counts shared overlay implementations once. See [progress accounting](PROGRESS.md); run `python3 tools/progress.py` after a fresh build for current counts.
-- All assembly extracted, disassembled, and labeled; inherited from [gsret/goldensun](https://github.com/gsret/goldensun)
-- Source organized into a subsystem tree (`src/field/`, `src/battle/`, `src/ui/`, `src/rpg/`, …), mirrored one-to-one by `asm/`; the 96 code overlays are each consolidated into a single translation unit under `src/maps/`
-- Canonical compiler identified and reproduced: **patched gcc-2.96** (arm-elf, Debian 20000731 dev snapshot; the dev branch between FSF gcc-2.95 and gcc-3.0), matching the early-GCC-3.0-family compiler Camelot used. The build uses [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), a separate repo that vendors and builds three compilers via `build.sh`/`install.sh` (mirroring the [pret/agbcc](https://github.com/pret/agbcc) pattern): the patched gcc-2.96 (the game's canonical compiler), gcc-3.0 (cross-check), and [pret/agbcc](https://github.com/pret/agbcc)'s `old_agbcc`; used for the stock m4a audio engine and most Flash library C (see below). See [INSTALL.md](INSTALL.md) for setup.
-- **The stock m4a ("Sappy") audio engine is matched as C:** the ~50-function C portion of the audio bank ([`src/lib/m4a/`](src/lib/m4a/)) is ported from the [SAT-R/sa2](https://github.com/SAT-R/sa2) reverse-engineering and compiles byte-identically.
+Contributions are welcome, including matching C, reverse-engineering findings,
+and cleanup of existing fakematches. **New fakematches are not accepted.**
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requirements.
 
-Aggregate byte-weighted progress reporting is prepared for decomp.dev. See
-[decomp.dev integration](DECOMP_DEV.md) for the verified snapshot workflow and
-first-publication/registration steps. Its byte denominator includes ARM and Thumb
-and differs from the Thumb function counts above.
+## Repository layout
 
-## Setting up the repo
+| Path | Contents |
+| --- | --- |
+| `src/` | Game C and assembly, organized by subsystem |
+| `src/maps/` | One translation unit per code overlay, plus shared modules |
+| `src/lib/` | GBA library code, including m4a and Flash support |
+| `src/non_matching/` | Parked C that does not yet match |
+| `asm/` | Active disassembly, included from the corresponding source TUs |
+| `data/` | Data assembly and generated build outputs |
+| `overlays/` | Per-overlay linker scripts and generated overlay files |
+| `include/` | C headers and assembler macros |
+| `tools/` | Build, comparison, and reporting tools |
+| `*.sym` | Symbol address maps |
+| `stage1.ld` / `goldensun.ld` | Main-ROM partial and final link scripts |
 
-See [INSTALL.md](INSTALL.md).
+## References
 
-## Contributing
-
-Contributions are welcome, including small matches and cleanup of existing fakematches.
-**New fakematches are not accepted.** Matching C must preserve the original behavior
-without register pins, artificial assembly barriers, handwritten instruction
-substitutes, or other constructs added solely to force matching code generation.
-Existing entries in `fakematch.txt` are cleanup debt; we are actively de-hacking
-them, and they are not examples of acceptable new contributions.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for source requirements, object comparison,
-and the required fresh serial ROM and all-overlay verification. See
-[INSTALL.md](INSTALL.md) for compiler and diff setup.
-
-### Layout
-
-```
-├── src/                 # Matched C + hand-written .s glue (crt0, exports, imports)
-│   ├── field/ battle/   #   Engine subsystems: actor, sprite, rpg, ui,
-│   ├── battle_anim/     #     decompress, render, math, memory, intr, ...
-│   ├── maps/            #   Consolidated code overlays (one .c per overlay)
-│   ├── lib/             #   Prebuilt GBA libraries (m4a, agb_flash, libagbsyscall)
-│   └── non_matching/    #   Parked .c that decompiles but doesn't byte-match
-├── asm/                 # Active disassembly, mirroring src/: one .s per unmatched
-│   └── <subsystem>/     #   function (asm/<path>/<Func>.s), INCLUDE_ASM'd from src/
-├── data/                # Raw data-fragment .s (tracked) + build outputs (gitignored)
-├── overlays/            # Overlay build outputs + per-overlay linker scripts (96 banks)
-│   └── rom_XXXXXX/
-│       ├── overlay.ld   #   Per-overlay linker script
-│       ├── orig.bin     #   Uncompressed overlay (extracted from baserom; gitignored)
-│       └── overlay.lz   #   Compressed overlay binary (build output; gitignored)
-├── include/             # Assembler macros (macros.inc/gba.inc) + C type/struct headers
-├── tools/               # Host build tools; the compiler toolchain installs here (gitignored)
-├── wram.sym             # IWRAM/EWRAM symbol address map (corpus names; hand-curated seed)
-├── aliases.txt          # Merged symbol aliases
-├── stage1.ld            # Stage-1 partial link of main ROM
-├── goldensun.ld         # Final link (main ROM + linked-in overlay blobs)
-└── Makefile
-```
-
-### Notable info
-
-- Upstream disassembly: [gsret/goldensun](https://github.com/gsret/goldensun)
-- Reference projects (contemporary GBA decomps):
-    - [SAT-R/sa2](https://github.com/SAT-R/sa2): Sonic Advance 1 + 2 (same era, same Sappy audio engine)
-    - [zeldaret/tmc](https://github.com/zeldaret/tmc): The Minish Cap (Sappy + GBA contemporary)
-    - [pret/pokeemerald](https://github.com/pret/pokeemerald) and [pret/pokefirered](https://github.com/pret/pokefirered): the canonical GBA-decomp methodology references
-- Useful tooling references:
-    - [decomp.me](https://decomp.me): matching-decomp sandbox
-    - [simonlindholm/asm-differ](https://github.com/simonlindholm/asm-differ): the optional diff viewer installed via INSTALL.md
-    - [simonlindholm/decomp-permuter](https://github.com/simonlindholm/decomp-permuter): random-mutation matcher for stuck functions
+- [decomp.me](https://decomp.me): function-matching sandbox.
+- [asm-differ](https://github.com/simonlindholm/asm-differ) and
+  [decomp-permuter](https://github.com/simonlindholm/decomp-permuter): comparison
+  and matching tools.
+- [SAT-R/sa2](https://github.com/SAT-R/sa2),
+  [zeldaret/tmc](https://github.com/zeldaret/tmc),
+  [pret/pokeemerald](https://github.com/pret/pokeemerald), and
+  [pret/pokefirered](https://github.com/pret/pokefirered): related GBA projects.
 
 ## Credits
 
-This project builds on substantial prior work by others:
+- **[gsret](https://github.com/gsret):** the original Golden Sun disassembly.
+- **FutureFractal:** Ghidra annotations, function and global names, and
+  [GS-headers](https://github.com/FutureFractal/GS-headers).
+- **Tarpman:** compiler-reproduction and source-shape analysis.
+- **Karathan:** compiler flag characterization, including
+  `-fcall-used-r4 -ffixed-r7`.
+- **[pret](https://github.com/pret):** GBA decompilation methodology and
+  [agbcc](https://github.com/pret/agbcc), including `old_agbcc` and the compiler
+  installation pattern used by camelot-gcc.
+- **[SAT-R/sa2](https://github.com/SAT-R/sa2):** the m4a ("Sappy") reconstruction
+  used by this project's [audio-engine C port](src/lib/m4a/).
+- **[simonlindholm](https://github.com/simonlindholm):** asm-differ and
+  decomp-permuter.
+- **The wider decompilation community:** the techniques and tooling developed
+  through sm64, oot, mm, pret, zeldaret, SAT-R, and other projects.
 
-- **[gsret](https://github.com/gsret):** original disassembly ([gsret/goldensun](https://github.com/gsret/goldensun)) that is the foundation of this entire repo. Every `.s` file traces back to their labeling and structuring work.
-- **FutureFractal:** extensive Ghidra annotation: named functions, typed globals, and a near-complete type catalog covering Camelot's engine internals. Also contributed the extensive [GS-headers](https://github.com/FutureFractal/GS-headers) repository
-- **Tarpman:** compiler-reproduction analysis identifying the early GCC 3.0-family lineage of Camelot's toolchain, and the source-shape repro that pinned down the small-constant literal-pool fingerprint.
-- **Karathan:** flag-set characterization (`-fcall-used-r4 -ffixed-r7`) that closed the compiler-identity gap.
-- **[pret](https://github.com/pret):** a decade of GBA decomp methodology that this project applies directly, plus the [agbcc](https://github.com/pret/agbcc) compiler (its `old_agbcc` reproduces the stock m4a audio engine) and the install-script pattern that [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc) mirrors.
-- **[SAT-R/sa2](https://github.com/SAT-R/sa2) (Sonic Advance 2):** their reverse-engineering of the stock MKS4AGB ("Sappy") audio middleware is the direct source of this repo's ported [`src/lib/m4a/`](src/lib/m4a/) C; the prebuilt GBA audio engine is shared across both games.
-- **[simonlindholm](https://github.com/simonlindholm):** [asm-differ](https://github.com/simonlindholm/asm-differ) and [decomp-permuter](https://github.com/simonlindholm/decomp-permuter); core matching-decomp infrastructure.
-- **The decomp community at large:** sm64, oot, mm, the [pret](https://github.com/pret) Pokémon family, [zeldaret](https://github.com/zeldaret), [SAT-R](https://github.com/SAT-R), and many others have collectively built the body of techniques this project relies on.
-
-If you've contributed and aren't listed here, please open an issue.
-
-Component attribution and notice locations: [ATTRIBUTION.md](ATTRIBUTION.md).
-
-## Repository checks
-
-The workflow checks tracked source/INCLUDE_ASM paths, registry definitions, original-function identity uniqueness and the public Python tests.
-The GitHub workflow uses Ubuntu 22.04 and requires no game ROM or repository
-secrets. A successful run does not certify game byte matching or source semantics.
-Full-game contributions still require the fresh serial ROM/all-overlay gate and
-source review. New fakematches are not accepted.
+For credit corrections, please open an issue. See
+[ATTRIBUTION.md](ATTRIBUTION.md) for component notices.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verified local progress snapshots and ROM-free decomp.dev summary reports.
+"""Verified local progress snapshots and ROM-free decomp.dev TU reports.
 
 baseline: rebuild the pinned original disassembly in an isolated cache.
 snapshot: fresh serial game verification, then capture active C ownership.
@@ -303,20 +303,145 @@ def active_definitions(root, source):
     return parse_funcs(expanded)
 
 
-def classify(manifest, domains, allowed, definitions, registered):
+
+def classify(units, definitions, registered):
+    """Classify only the active definition in the function's owning TU."""
     statuses = {}
-    for f in manifest["functions"]:
-        records = domains[f["domain"]].get(f["address"], [])
-        if not records:
-            raise ValueError("unresolved original address: " + f["id"])
-        aliases = {s["name"] for s in records}
-        candidates = {(name, source) for source in allowed[f["domain"]]
-                      for name in aliases if name in definitions.get(source, {})}
-        if len(candidates) > 1:
-            raise ValueError("ambiguous C ownership: " + f["id"] + " " + repr(sorted(candidates)))
-        statuses[f["id"]] = ("c-registered-fakematch" if candidates & registered
-                              else "c" if candidates else "assembly")
+    for source, unit in units.items():
+        for identity, entry in unit["functions"].items():
+            name = entry["name"]
+            is_c = name in definitions.get(source, {})
+            statuses[identity] = ("c-registered-fakematch" if is_c and (name, source) in registered
+                                  else "c" if is_c else "assembly")
     return statuses
+
+
+def map_sections(text):
+    """Read linked GNU ld input sections, excluding discarded input sections."""
+    marker = "Linker script and memory map"
+    if marker not in text:
+        raise ValueError("unrecognized linker map")
+    # GNU ld wraps long section names onto their own line.
+    return [(section, int(address, 16), int(size, 16), obj)
+            for section, address, size, obj in re.findall(
+                r"^[ \t]+(\.\S+)\s+(0x[0-9a-fA-F]+)\s+(0x[0-9a-fA-F]+)"
+                r"[ \t]+(\S+\.o)[ \t]*$", text.split(marker, 1)[1], re.M)]
+
+
+def object_source(root, obj):
+    """Mirror the Makefile's src/*.o and asm/*.o rules, including assembly TUs."""
+    path = PurePosixPath(obj)
+    if path.is_absolute() or ".." in path.parts or path.suffix != ".o":
+        raise ValueError("invalid TU object path: " + obj)
+    c_source = ("src/" + obj[4:] if obj.startswith("asm/") else obj)[:-2] + ".c"
+    source = c_source if (root / c_source).is_file() else obj[:-2] + ".s"
+    if not (root / source).is_file() or source.startswith("src/non_matching/"):
+        raise ValueError("missing production TU source: " + source)
+    return source
+
+
+def capture_units(root, manifest, domains, definitions):
+    """Join original addresses to input objects using linker maps and ELF symbols."""
+    maps, objects, artifacts, units = {}, {}, {}, {}
+
+    def read_object(obj):
+        if obj not in objects:
+            # Resolve through the source rule first to reject invalid object paths.
+            object_source(root, obj)
+            artifacts[obj] = digest(root / obj)
+            objects[obj] = symbol_records(root / obj)
+        return objects[obj]
+
+    for f in manifest["functions"]:
+        domain = f["domain"]
+        linked = domains[domain].get(f["address"], [])
+        if not linked:
+            raise ValueError("unresolved original address: " + f["id"])
+        aliases = {record["name"] for record in linked}
+        candidates = []
+        if domain.startswith("common:"):
+            # These relocatable modules are included in several overlays; the
+            # original census owns them once, at their section-relative offsets.
+            obj = domain_artifact(root, domain).relative_to(root).as_posix()
+            for record in read_object(obj).get(f["address"], []):
+                if record["name"] in aliases:
+                    candidates.append((obj, f["address"], record["section"], None))
+        else:
+            if domain not in maps:
+                name = ("stage1.map" if domain == "rom" else
+                        "overlays/" + domain.split(":")[1] + "/overlay.map")
+                artifacts[name] = digest(root / name)
+                maps[domain] = map_sections((root / name).read_text())
+            address = f["address"]
+            if domain == "rom" and any(record["section"] == "rom_770" for record in linked):
+                address = address - 0x08000770 + 0x03000000
+            for section, start, size, obj in maps[domain]:
+                if start <= address < start + size:
+                    candidates.append((obj, address - start, section, address))
+        owners = {}
+        for obj, offset, section, virtual_address in candidates:
+            names = {record["name"] for record in read_object(obj).get(offset, [])
+                     if record["section"] == section} & aliases
+            if names:
+                owners[(obj, offset, section, virtual_address)] = names
+        if len(owners) != 1:
+            raise ValueError("missing/ambiguous TU ownership: " + f["id"])
+        (obj, offset, section, virtual_address), names = next(iter(owners.items()))
+        source = object_source(root, obj)
+        active_names = names & definitions.get(source, {}).keys()
+        if len(active_names) > 1:
+            raise ValueError("ambiguous C ownership in TU: " + f["id"])
+        name = (next(iter(active_names)) if active_names else
+                f["original_name"] if f["original_name"] in names else sorted(names)[0])
+        entry = dict(name=name, address=offset, section=section)
+        if virtual_address is not None:
+            entry["virtual_address"] = virtual_address
+        unit = units.setdefault(source, dict(object=obj, functions={}))
+        if unit["object"] != obj:
+            raise ValueError("source built into multiple TU objects: " + source)
+        unit["functions"][f["id"]] = entry
+    return units, artifacts
+
+
+def validate_units(baseline, snapshot, inputs):
+    units = snapshot.get("units")
+    if not isinstance(units, dict) or not units:
+        raise ValueError("snapshot has no TU inventory; regenerate the snapshot")
+    seen, objects = set(), set()
+    for source, unit in units.items():
+        if (source not in inputs or PurePosixPath(source).suffix not in {".c", ".s"}
+                or source.startswith("src/non_matching/")):
+            raise ValueError("TU source is not a fingerprinted production input: " + source)
+        obj = unit["object"]
+        path = PurePosixPath(obj)
+        if (path.is_absolute() or ".." in path.parts or path.suffix != ".o"
+                or obj in objects):
+            raise ValueError("invalid/duplicate TU object: " + obj)
+        expected = {source[:-2] + ".o"}
+        if source.startswith("src/") and source.endswith(".c"):
+            expected.add("asm/" + source[4:-2] + ".o")
+        if obj not in expected:
+            raise ValueError("TU object/source mismatch: " + source)
+        objects.add(obj)
+        functions = unit["functions"]
+        if not isinstance(functions, dict) or not functions:
+            raise ValueError("empty TU: " + source)
+        names = set()
+        for identity, entry in functions.items():
+            if identity not in baseline["sizes"] or identity in seen:
+                raise ValueError("duplicate/unknown TU function: " + identity)
+            seen.add(identity)
+            name, address, section = entry["name"], entry["address"], entry["section"]
+            if (not isinstance(name, str) or not name or name in names
+                    or type(address) is not int or address < 0
+                    or not isinstance(section, str) or not section.startswith(".")):
+                raise ValueError("invalid TU function metadata: " + identity)
+            names.add(name)
+            if "virtual_address" in entry and (
+                    type(entry["virtual_address"]) is not int or entry["virtual_address"] < 0):
+                raise ValueError("invalid TU virtual address: " + identity)
+    if seen != set(baseline["sizes"]):
+        raise ValueError("TU inventory must cover every original identity exactly once")
 
 
 def installed_tools(root):
@@ -366,7 +491,9 @@ def capture(root, output):
                   (root / "fakematch.txt").read_text().splitlines() if line.split("#", 1)[0].strip()}
     if any(len(row) != 2 for row in registered):
         raise ValueError("malformed fakematch registry")
-    statuses = classify(manifest, domains, allowed, definitions, registered)
+    units, tu_artifacts = capture_units(root, manifest, domains, definitions)
+    statuses = classify(units, definitions, registered)
+    artifacts.update(tu_artifacts)
     if source_inputs(root) != before or installed_tools(root) != tools_before:
         raise ValueError("inputs changed during verification; snapshot not published")
     if any(digest(root / name) != sha for name, sha in artifacts.items()):
@@ -374,9 +501,9 @@ def capture(root, output):
     if {p.name: digest(p) for p in (root / ".build").glob("*.stamp")} != stamps:
         raise ValueError("build contracts changed during capture")
     verify_outputs(root)
-    snapshot = dict(schema=1, policy=POLICY, source_fingerprint=fingerprint(before),
+    snapshot = dict(schema=2, policy=POLICY, source_fingerprint=fingerprint(before),
                     input_count=len(before), baseline_sha256=digest(root / BASELINE),
-                    functions=statuses,
+                    functions=statuses, units=units,
                     verification=dict(rom_sha1=ROM_SHA1, overlays=overlays,
                                       artifacts=artifacts, build_stamps=stamps,
                                       gate="make -j1 clean && make -j1 compare",
@@ -388,7 +515,7 @@ def capture(root, output):
 
 def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
     validate_baseline(manifest, baseline)
-    if snapshot.get("schema") != 1 or snapshot.get("policy") != POLICY:
+    if snapshot.get("schema") != 2 or snapshot.get("policy") != POLICY:
         raise ValueError("unsupported snapshot schema/policy")
     if snapshot.get("baseline_sha256") != baseline_sha:
         raise ValueError("snapshot baseline changed")
@@ -398,6 +525,7 @@ def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
     statuses = snapshot.get("functions", {})
     if set(statuses) != set(baseline["sizes"]) or not set(statuses.values()) <= STATUSES:
         raise ValueError("snapshot must classify every original identity exactly once")
+    validate_units(baseline, snapshot, inputs)
     verification = snapshot.get("verification", {})
     overlays = verification.get("overlays", {})
     expected_overlays = {f["domain"].split(":")[1] for f in manifest["functions"]
@@ -411,27 +539,54 @@ def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
         raise ValueError("snapshot lacks complete ROM/overlay verification metadata")
 
 
-def summary(baseline, snapshot):
+def measures(baseline, snapshot, identities):
     sizes, statuses = baseline["sizes"], snapshot["functions"]
-    total = sum(sizes.values())
-    matched = sum(size for key, size in sizes.items() if statuses[key] == "c")
-    functions = sum(status == "c" for status in statuses.values())
-    # The same minimal measures format used by FE7J. Protobuf uint64 sizes are strings.
-    # No unit/complete/fuzzy/data measurements are claimed.
-    return {"version": 2, "measures": {"total_code": str(total), "matched_code": str(matched),
-                         "matched_code_percent": 100.0 * matched / total,
-                         "total_functions": len(sizes), "matched_functions": functions,
-                         "matched_functions_percent": 100.0 * functions / len(sizes)}}
+    identities = list(identities)
+    total = sum(sizes[key] for key in identities)
+    matched = sum(sizes[key] for key in identities if statuses[key] == "c")
+    functions = sum(statuses[key] == "c" for key in identities)
+    return {"total_code": str(total), "matched_code": str(matched),
+            "matched_code_percent": 100.0 * matched / total,
+            "total_functions": len(identities), "matched_functions": functions,
+            "matched_functions_percent": 100.0 * functions / len(identities)}
+
+
+def summary(baseline, snapshot):
+    return {"version": 2, "measures": measures(baseline, snapshot, baseline["sizes"])}
+
+
+def unit_report(baseline, snapshot):
+    report = summary(baseline, snapshot)
+    units = []
+    for source, unit in sorted(snapshot["units"].items()):
+        stats = measures(baseline, snapshot, unit["functions"])
+        # decomp.dev colors by fuzzy_match_percent. This conservative score grants
+        # only 0/100 per function, weighted by original bytes; no partial credit.
+        stats["fuzzy_match_percent"] = stats["matched_code_percent"]
+        functions = []
+        for identity, entry in sorted(unit["functions"].items()):
+            function = dict(name=entry["name"], size=str(baseline["sizes"][identity]),
+                            address=str(entry["address"]),
+                            fuzzy_match_percent=100.0 if snapshot["functions"][identity] == "c" else 0.0)
+            if "virtual_address" in entry:
+                function["metadata"] = dict(virtual_address=str(entry["virtual_address"]))
+            functions.append(function)
+        units.append(dict(name=source, metadata=dict(source_path=source),
+                          measures=stats, functions=functions))
+    report["units"] = units
+    report["measures"]["total_units"] = len(units)
+    report["measures"]["fuzzy_match_percent"] = report["measures"]["matched_code_percent"]
+    return report
 
 
 def export(root, output=None):
     manifest, baseline = metadata(root)
     snapshot = load(root / SNAPSHOT)
     validate_snapshot(manifest, baseline, snapshot, source_inputs(root), digest(root / BASELINE))
-    report = summary(baseline, snapshot)
+    report = unit_report(baseline, snapshot)
     if output:
         write_json(output, report)
-    print(json.dumps(report, indent=2))
+    print(json.dumps({"version": report["version"], "measures": report["measures"]}, indent=2))
     return report
 
 

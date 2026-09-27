@@ -264,7 +264,7 @@ u32 Func_8005b24(u32 slot) {
     return result;
 }
 
-static inline struct FlashWork *PrepareSaveHeader(struct FlashSectorHeader *header) {
+static inline struct FlashWork *PrepareFlashSectorHeader(struct FlashSectorHeader *header) {
     void **entry;
     struct FlashWork *ctx;
 
@@ -278,7 +278,7 @@ static inline struct FlashWork *PrepareSaveHeader(struct FlashSectorHeader *head
 
 u32 Func_8005b64(u32 index) {
     struct FlashSectorHeader header;
-    struct FlashWork *ctx = PrepareSaveHeader(&header);
+    struct FlashWork *ctx = PrepareFlashSectorHeader(&header);
     WaitForDma3();
 
     DMA3_COPY(sMagicT, &header, 8);

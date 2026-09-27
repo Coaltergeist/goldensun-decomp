@@ -1,140 +1,110 @@
 # Building Golden Sun
 
-The verified setup is Ubuntu on x86-64 Linux, including WSL2. On Windows, keep
-and build the checkout inside the WSL Linux filesystem. Other hosts have not
-been validated by this guide; compiler host patches alone do not establish a
-working macOS game build. Run these commands in Bash and use `set -o pipefail`
-so logging does not hide a failed command.
+The supported setup documented here is Ubuntu on x86-64 Linux, including WSL2.
+On Windows, keep the checkout inside the WSL Linux filesystem. Run the commands
+below in Bash.
 
 ## System requirements
 
-```sh
-set -o pipefail
-sudo apt update 2>&1 | tee output.txt
-sudo apt install build-essential binutils-arm-none-eabi python3 python3-venv git less 2>&1 | tee -a output.txt
-```
+~~~sh
+sudo apt update
+sudo apt install build-essential binutils-arm-none-eabi python3 python3-venv git less
+~~~
 
-The optional asm-differ setup below requires Python 3.9 or newer. The vendored
-compiler builds use shipped generated parser/configure files; their normal build
-does not require installing modern bison, flex or texinfo to regenerate them.
+The optional asm-differ setup requires Python 3.9 or newer.
 
 ## Clone and install the compilers
 
-```sh
-git clone https://github.com/Coaltergeist/goldensun-decomp.git 2>&1 | tee -a output.txt
-git clone https://github.com/Coaltergeist/camelot-gcc.git 2>&1 | tee -a output.txt
+~~~sh
+git clone https://github.com/Coaltergeist/goldensun-decomp.git
+git clone https://github.com/Coaltergeist/camelot-gcc.git
 cd camelot-gcc
-./build.sh gcc296 2>&1 | tee output.txt
-./install.sh ../goldensun-decomp gcc296 2>&1 | tee -a output.txt
-./build.sh agbcc 2>&1 | tee -a output.txt
-./install.sh ../goldensun-decomp agbcc 2>&1 | tee -a output.txt
+./build.sh gcc296
+./install.sh ../goldensun-decomp gcc296
+./build.sh agbcc
+./install.sh ../goldensun-decomp agbcc
 cd ../goldensun-decomp
-```
+~~~
 
-GS1 uses patched GCC 2.96 for game C and `old_agbcc` for the stock m4a engine and
-most Flash library C. GCC 3.0 is an optional research compiler, not needed for this
-build. Installed binaries and headers live under ignored `tools/gcc296/` and
-`tools/agbcc/`. Compiler revisions and manifests matter: retain their provenance
-when reporting a mismatch. See the compiler repository's README for patch scope
-and its independent regression corpus.
+Game C uses patched GCC 2.96. The stock m4a engine and most Flash library C use
+`old_agbcc`. GCC 3.0 is not required. Installed compilers and headers live under
+ignored `tools/gcc296/` and `tools/agbcc/`.
 
-## Reference ROM and full verification
+## Reference ROM and verification
 
 Place your legally obtained USA ROM at `baserom.gba` in the game checkout.
-The required SHA1 is `5c4695205413df7db52b9a184815a07783999971`. The ROM supplies
-extracted data as well as reference bytes and must never be committed.
+Its SHA1 must be `5c4695205413df7db52b9a184815a07783999971`.
 
-```sh
-sha1sum baserom.gba | tee output.txt
-(make -j1 clean && make -j1 compare) 2>&1 | tee -a output.txt
-```
+~~~sh
+sha1sum baserom.gba
+make -j1 clean && make -j1 compare
+~~~
 
-Compare the first hash with the value above. The build must exit successfully,
-print `goldensun.gba: OK`, and finish all 96 overlay comparisons without errors.
-`make compare-rom` checks only the ROM; use `make compare` for complete validation.
-Use serial game builds, including after pulling source or compiler changes.
+Check the first hash against the value above. Verification must finish
+successfully, including `goldensun.gba: OK` and all 96 overlay comparisons.
+Use serial builds. `make compare-rom` checks only the ROM.
 
-## Install the optional function diff viewer
+ROMs, extracted assets, and generated build outputs must not be committed.
 
-The following asm-differ revision was tested with this setup. Installing the local
-package also installs its Python dependencies into the virtual environment used
-by `run-diff.sh`.
+## Optional function diff viewer
 
-```sh
-git clone https://github.com/simonlindholm/asm-differ tools/asm-differ 2>&1 | tee output.txt
-git -C tools/asm-differ checkout 0dd09af8f8008f1f880327cf0aca3b26d2562ea2 2>&1 | tee -a output.txt
-python3 -m venv tools/asm-differ/.venv 2>&1 | tee -a output.txt
-tools/asm-differ/.venv/bin/python3 -m pip install ./tools/asm-differ 2>&1 | tee -a output.txt
-```
+Install the tested asm-differ revision in its own Python environment:
 
-Before changing source, create the reference objects:
+~~~sh
+git clone https://github.com/simonlindholm/asm-differ tools/asm-differ
+git -C tools/asm-differ checkout 0dd09af8f8008f1f880327cf0aca3b26d2562ea2
+python3 -m venv tools/asm-differ/.venv
+tools/asm-differ/.venv/bin/python3 -m pip install ./tools/asm-differ
+~~~
 
-```sh
-python3 tools/create_diff_baseline.py 2>&1 | tee output.txt
-```
+Before editing source, capture reference objects:
 
-This independently runs a fresh serial ROM/all-overlay comparison and copies the
-currently linked objects to `expected/`, preserving object paths. Its manifest
-records source, tools, ROM, overlay and object hashes. Logs remain under ignored
-`.diff-baselines/`. Do not edit or run another build during capture. A failed
-verification does not publish a baseline, and an existing destination is refused.
-Use a snapshot only after the command succeeds; `manifest.json` is written last
-as its completion marker. An interrupted publication is retained for inspection.
+~~~sh
+python3 tools/create_diff_baseline.py
+~~~
 
-To capture a later baseline without replacing earlier work, select a new name:
+This runs a fresh ROM/all-overlay comparison and copies the linked objects to
+`expected/`. Do not edit or build concurrently. Use the baseline only after the
+command succeeds; its `manifest.json` records verification and tool provenance.
+Logs are stored under `.diff-baselines/verification-*/build.log`.
 
-```sh
-python3 tools/create_diff_baseline.py --output .diff-baselines/before-next-change 2>&1 | tee output.txt
-export GOLDENSUN_EXPECTED_DIR=.diff-baselines/before-next-change
-```
+Existing destinations are preserved. To capture another baseline:
 
-An existing historical cache is left intact. The generator captures objects in
-the current link, not orphan per-function objects from earlier source layouts.
-The snapshot reproduces verified machine output; it does not certify existing
-fakematches as acceptable source. [New fakematches are not accepted](CONTRIBUTING.md).
-Never refresh the reference just to make a candidate's diff disappear.
+~~~sh
+python3 tools/create_diff_baseline.py --output .diff-baselines/before-change
+export GOLDENSUN_EXPECTED_DIR=.diff-baselines/before-change
+~~~
 
-## Diff a function
+### Compare a function
 
-From the game checkout, replacing `FUNCTION` with the actual symbol. Invoke the
-wrapper with Bash because it is stored without an executable bit in Git:
+From the game checkout, replace `FUNCTION` with its current symbol:
 
-```sh
-bash ./run-diff.sh -mo FUNCTION --no-pager --format plain 2>&1 | tee output.txt
-```
+~~~sh
+bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
+~~~
 
-`-m` rebuilds the current object serially; `-o` compares objects. Object mode uses
-`stage1.map` for ROM source ownership and a cached copy with GNU ld wrapped section
-rows joined for asm-differ. Binary mode retains `goldensun.map`. For interactive
-watching use `bash ./run-diff.sh -mwo FUNCTION 2>&1 | tee output.txt` and press `q` to
-leave the pager. `-3` is a three-way **watch** mode, not a static output option.
+`-m` rebuilds the current object serially; `-o` compares it with the saved
+reference object. For interactive watching, use
+`bash ./run-diff.sh -mwo FUNCTION` and press `q` to leave the pager.
 
-For overlays, use the owning overlay's map so repeated names cannot select another
-bank. For example, after substituting the bank and symbol:
+For overlays, select the owning bank's map to disambiguate reused symbols:
 
-```sh
-GOLDENSUN_DIFF_MAP=overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain 2>&1 | tee output.txt
-```
+~~~sh
+GOLDENSUN_DIFF_MAP=overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
+~~~
 
-You can bypass symbol-to-object map lookup with `-f asm/maps/MAP.o` for a known
-owning object. For a function in a custom section, also pass `--section .text.SECTION` using
-the actual section shown by `arm-none-eabi-objdump -t OBJECT | tee output.txt`.
-The expected snapshot must contain that same relative object path.
-The viewer helps diagnose differences; it is not a relocation/semantic proof or
-an acceptance gate. Finish with the fresh full comparison in
-[CONTRIBUTING.md](CONTRIBUTING.md).
+Use `-f asm/maps/MAP.o` to select a known object directly. For a custom section,
+add `--section .text.SECTION` using the name shown by
+`arm-none-eabi-objdump -t OBJECT`. The reference must contain the same relative
+object path. See [CONTRIBUTING.md](CONTRIBUTING.md) for final verification.
 
-## Incremental builds and troubleshooting
+## Troubleshooting
 
-C headers, assembler include/incbin inputs, recursive linker scripts, and compiler,
-binutils and flag fingerprints invalidate dependent outputs. Fingerprints live in
-ignored `.build/`. Generated assembly does not take precedence over its C source.
-After a toolchain change, rebuild and reinstall through `camelot-gcc` before running
-the fresh game comparison. Preserve logs when reporting failures.
+After a compiler change, rebuild and reinstall it through camelot-gcc, then run
+the full game comparison. If copying tools through Windows removes executable
+permissions, rerun the compiler install script inside WSL.
 
-If installed tools lose executable permissions while being copied through Windows,
-rerun the compiler install script inside WSL; it restores executable bits. A missing
-asm-differ environment is reported by the wrapper with a pointer to this guide.
-
-The public workflow regression checks can be run with
-`python3 -m unittest discover -s tools/tests -v 2>&1 | tee output.txt`.
+Incremental builds track headers, assembly inputs, linker scripts, and compiler
+settings. Include build logs and compiler revisions or manifests when reporting
+a mismatch. If logging through `tee`, enable `set -o pipefail` so the pipeline
+preserves failed exit statuses.

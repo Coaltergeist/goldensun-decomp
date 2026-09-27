@@ -1,59 +1,57 @@
 # Progress accounting
 
-Run serial `make clean && make compare`, then `python3 tools/progress.py`.
-Use `--json report.json` for a per-function report. The report reads existing
-linked artifacts; it does not run or replace the ROM/overlay gate.
+Progress is measured against **5,794 known original functions**: 5,741 Thumb and
+53 ARM. Each function keeps a fixed original identity and byte span, independent
+of its current name or source file.
 
-`original_functions.json` fixes the denominator to known function starts in the
-pre-decompilation snapshot identified by its full Git revision. Reproduce the
-metadata with `python3 tools/original_functions.py --output /tmp/original.json`
-and compare it with the checked-in file. The manifest stores original source
-paths and SHA256 hashes for provenance, not disassembly contents.
+## Baseline and classification
 
-Identities use the ROM load address, the overlay ROM identity plus execution
-address, or a shared common-module identity plus offset. Shared implementations
-count once; equally named functions in different overlays remain separate.
-The compiler's `call_via` macro expansions are support code and excluded. ARM
-functions are inventoried separately from the Thumb C denominator.
+`original_functions.json` records identities and source hashes from
+[the original disassembly](https://github.com/gsret/goldensun/commit/0fa7b312199c10b96544e825be86cfc476493eb7).
+`original_function_sizes.json` records the corresponding byte spans and reviewed
+size adjustments.
 
-Current linked symbol addresses join those identities to current C definitions.
-Renaming a function or moving its source does not change its identity. A new
-inline helper, macro, or parked source does not add an original function. C that
-is listed in `fakematch.txt` is reported separately from other C; the latter label
-means unregistered, not a proof of original source semantics or absence of every
-possible matching trick. Missing original addresses are errors, not silently
-removed from the denominator.
+- ROM functions use load addresses; overlay functions use the overlay identity
+  and execution address; shared modules use a module identity and offset.
+- Shared implementations count once. Compiler `call_via` support is excluded.
+- Current linked addresses and input objects identify the owning TU. Only an
+  active C definition in that TU counts as C.
+- Assembly, parked or unlinked C, and helpers without original identities do
+  not increase the matched count.
+- Registered fakematches are reported separately and excluded from matched
+  progress on decomp.dev.
+- Missing or ambiguous identities are errors. A newly discovered original
+  function requires a reviewed baseline amendment with address and provenance.
 
-The known baseline is 5,741 Thumb and 53 ARM functions. It is not a claim that
-all possible boundaries have been discovered. A newly discovered original
-function needs a reviewed manifest amendment with address and provenance;
-adding arbitrary C definitions must never grow the denominator. The earlier
-README's 2,914/5,749 came from source/assembly inventory and is superseded by this
-address-based accounting. These counts therefore describe different populations.
+The baseline covers known functions, not every possible code boundary or every
+ROM byte. Byte spans include their original literal pools and alignment;
+overlapping entry-point tails count once. Unrelated data and gaps are excluded.
+The generated size metadata records exceptions for missing sizes and overlaps.
 
-The fakematch registry lists original-function callers of scaffolded macros and
-inline helpers, as well as explicit non-asm concerns. Shared hardware intrinsics
-are not inherently fakematches. A successful object match or ROM comparison alone
-does not remove an entry: the source concern must also be resolved.
+## Local function counts
 
-New fakematches are not accepted. Existing registered functions are active cleanup
-debt, not a precedent for new contributions. Finding an overlooked concern in
-existing code may require a registry correction; adding that record is accounting,
-not permission to introduce a new fakematch. See [CONTRIBUTING.md](CONTRIBUTING.md).
+After a fresh serial `make -j1 clean && make -j1 compare`:
 
-## decomp.dev summary reports
+~~~sh
+python3 tools/progress.py
+python3 tools/progress.py --json /tmp/goldensun-functions.json
+~~~
 
-See [DECOMP_DEV.md](DECOMP_DEV.md) for fixed original byte sizes and the
-ROM-free publication workflow. Before committing relevant source changes, run
-`python3 tools/decomp_progress.py snapshot`; it includes the fresh serial full
-comparison and writes the metadata snapshot only on success.
-`python3 tools/decomp_progress.py export` validates its freshness and generates
-`report.json` for decomp.dev. This is a different format from this document's
-legacy `tools/progress.py --json` per-function inventory.
+This reads existing linked artifacts and reports Thumb function counts plus
+counts across both instruction modes. It does not run build verification.
 
-The published byte numerator excludes registered fakematches; its denominator
-includes both instruction modes. Shared code is counted once. Historical size
-corrections and the corrected `_start` address are documented in the integration
-guide. The snapshot uses preprocessed active C and linked ownership; the legacy
-reporter uses lexical C definitions, so conditional or macro-generated definitions
-can require closer comparison.
+## decomp.dev
+
+The [public report](https://decomp.dev/Coaltergeist/goldensun-decomp) measures
+matched **original bytes** across both ARM and Thumb, so its percentage differs
+from a Thumb function-count percentage. Its TU and function views partition the
+same baseline.
+
+See [DECOMP_DEV.md](DECOMP_DEV.md) for snapshot generation and treemap scoring.
+That snapshot uses preprocessed active C; the local function-count tool reads
+lexical definitions, so conditional and macro-generated functions can require
+closer comparison.
+
+Neither report proves source semantics or detects every fakematch.
+[Contribution requirements](CONTRIBUTING.md) apply regardless of the reported
+percentage.

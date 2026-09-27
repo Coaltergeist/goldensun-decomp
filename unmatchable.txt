@@ -1,66 +1,48 @@
-# Functions that cannot be expressed as byte-matching C.
-#
-# These stay as hand-written assembly permanently, No C decompilation can
-# reproduce their bytes under the production toolchain (gcc-2.96 + Karathan's
-# flags).
-#
-# This is distinct from src/non_matching/ (functions we DO have C for, but it
-# doesn't byte-match yet). Entries here have no viable C at all.
-#
-# Format: one entry per line, whitespace-separated:
-#     <FuncName>   <category>   <free-text reason>
-# Lines starting with '#' and blank lines are ignored; the first token is the
-# function name. Add to this list as such functions are identified.
+# Functions excluded from C-matching targets.
+# Format: FUNCTION CATEGORY REASON
 #
 # Categories:
-#     veneer    - compiler/linker interworking thunk (e.g. the _call_via_rN family)
-#     m4a-asm   - stock m4a (Sappy) sound-engine mixer, hand-written assembly in
-#                 the original (SA2 m4a0.s, 0x080F95E0-0x080FA1FC). It STAYS asm by
-#                 the Sappy import (SAPPY_IMPORT_PLAN.md Phase 4); decompiling it to
-#                 C would diverge from the canonical stock source. Already correct
-#                 as the asm/rom_f9000/{rom_f95e0,rom_f9ef8_a}.s splits.
+#   veneer  - ARM/Thumb interworking stubs
+#   m4a-asm - stock m4a mixer assembly
+#   tu-pool - original literal-pool placement requiring TU layout context
+#
+# These exclusions are separate from parked C in src/non_matching/.
 
-Func_80f9ee8   veneer   bx r3 interworking thunk at 0x080f9ee8; gcc-2.96 appends its own bx lr epilogue and silently ignores __attribute__((naked)), so no C yields the bare 2-byte body. (The real _call_via_r3 is the linker veneer at 0x080072f0.)
-_call_via_\register   veneer   NOT a real function: this is the literal macro-template name the function-name scraper captures from the `call_via register / .thumb_func_start _call_via_\register` macro in src/lib/call_via.s. The expanded veneers (_call_via_r0.._call_via_lr) are the hand-asm interworking thunks (bx <reg>; nop) and already live in that committed .s. Enrolled so the loop selector stops re-picking the unexpanded template as a target each run.
-umul3232H32   m4a-asm   Thumb->ARM interworking veneer (adr r2; bx r2; .arm; umull r2,r3,r0,r1) at 0x080f95e0 (formerly Func_80f95e0); umull has no Thumb-1 encoding, so no -mthumb C produces it. Stock m4a mixer entry.
-Func_80fa1c8   m4a-asm   m4a mixer leaf at 0x080fa1c8 (in the rom_f9ef8_a.s mixer tail, < 0x080fa1fc); hand-asm (reads a byte into r3, not the r0 return reg). Stock m4a, stays asm.
-Func_80f9ab4   m4a-asm   m4a mixer body at 0x080f9ab4 (within 0x080F95E0-0x080FA1FC); ARM-only ops (e.g. `adds r3,r2,#1` with no Thumb-1 encoding); no -mthumb C assembles. Stock m4a, stays asm.
-Func_80fa1ac   m4a-asm   MP2K lfos/mod event helper at 0x080fa1ac (rom_f9ef8_a.s mixer tail, sibling of registered Func_80fa1c8); takes its track pointer in r1 with r0 live-through, and has conditional branches in a no-push leaf; gcc-2.96 (-mthumb-interwork) pushes lr in every branchy function, so no C matches. Stock m4a, stays asm.
-Func_80b09fc   tu-pool   struct-init at 0x080b09fc; body is 2 scheduler slots from C (work/fixable_drain attempt 2026-06-11), but the ROM dumps its literal pool MID-FUNCTION with a skip-branch before the epilogue (b.n; .word; pop) with NO loop to anchor it; an original-TU pool-pressure artifact a standalone TU cannot reproduce (sibling Func_80b0a20 in rom_b0070_a_a_c.s has the identical tail). Park class: tu-pool midpool.
-
-# 2026-06-17 bulk enrollment: the remainder of the stock m4a mixer region.
-#   The whole 0x080F95E0-0x080FA1FC range is hand-written assembly (the SA2
-#   m4a0.s mixer); these were being fed to the gcc-2.96 loop by name and
-#   burning permuter budget. umul3232H32/Func_80f9ab4/Func_80fa1ac/Func_80fa1c8
-#   are listed above; Func_80f9ee8 is a veneer.
-SoundMain            m4a-asm   stock m4a mixer hand-asm at 0x080f95f0 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-SoundMainRAM         m4a-asm   stock m4a mixer hand-asm at 0x080f9674 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-SoundMainBTM         m4a-asm   stock m4a mixer hand-asm at 0x080f9a18 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-RealClearChain       m4a-asm   stock m4a mixer hand-asm at 0x080f9a30 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_fine             m4a-asm   stock m4a mixer hand-asm at 0x080f9a50 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MPlayJumpTableCopy   m4a-asm   stock m4a mixer hand-asm at 0x080f9a80 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-Func_80f9a98         m4a-asm   stock m4a mixer hand-asm at 0x080f9a98 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_goto             m4a-asm   stock m4a mixer hand-asm at 0x080f9ac0 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_patt             m4a-asm   stock m4a mixer hand-asm at 0x080f9ae0 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_pend             m4a-asm   stock m4a mixer hand-asm at 0x080f9afc (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_rept             m4a-asm   stock m4a mixer hand-asm at 0x080f9b10 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_prio             m4a-asm   stock m4a mixer hand-asm at 0x080f9b40 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_tempo            m4a-asm   stock m4a mixer hand-asm at 0x080f9b4c (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_keysh            m4a-asm   stock m4a mixer hand-asm at 0x080f9b60 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_voice            m4a-asm   stock m4a mixer hand-asm at 0x080f9b74 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_vol              m4a-asm   stock m4a mixer hand-asm at 0x080f9ba4 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_pan              m4a-asm   stock m4a mixer hand-asm at 0x080f9bb8 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_bend             m4a-asm   stock m4a mixer hand-asm at 0x080f9bcc (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_bendr            m4a-asm   stock m4a mixer hand-asm at 0x080f9be0 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_lfodl            m4a-asm   stock m4a mixer hand-asm at 0x080f9bf4 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_modt             m4a-asm   stock m4a mixer hand-asm at 0x080f9c00 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_tune             m4a-asm   stock m4a mixer hand-asm at 0x080f9c18 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-ply_port             m4a-asm   stock m4a mixer hand-asm at 0x080f9c2c (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-m4aSoundVSync        m4a-asm   stock m4a mixer hand-asm at 0x080f9c44 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MP2KPlayerMain       m4a-asm   stock m4a mixer hand-asm at 0x080f9c90 (rom_f95e0.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-TrackStop            m4a-asm   stock m4a mixer hand-asm at 0x080f9ef8 (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-Func_80f9f3c         m4a-asm   stock m4a mixer hand-asm at 0x080f9f3c (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MP2K_event_nxx       m4a-asm   stock m4a mixer hand-asm at 0x080f9f6c (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MP2K_event_endtie    m4a-asm   stock m4a mixer hand-asm at 0x080fa16c (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MP2K_event_lfos      m4a-asm   stock m4a mixer hand-asm at 0x080fa1d4 (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
-MP2K_event_mod       m4a-asm   stock m4a mixer hand-asm at 0x080fa1e8 (rom_f9ef8_a.s, within 0x080F95E0-0x080FA1FC); canonical SA2 source is hand-asm (m4a0.s), no byte-matching C exists.
+Func_80f9ee8          veneer    Two-byte bx r3 interworking thunk at 0x080f9ee8; the production compiler adds a return epilogue and ignores the naked attribute.
+_call_via_\register   veneer    Macro-template name from src/lib/call_via.s; the expanded register veneers are assembly interworking stubs.
+umul3232H32           m4a-asm   Stock m4a mixer entry at 0x080f95e0; switches from Thumb to ARM for umull.
+Func_80fa1c8          m4a-asm   Stock m4a mixer leaf at 0x080fa1c8; reads into r3 rather than the C return register.
+Func_80f9ab4          m4a-asm   Stock m4a mixer code at 0x080f9ab4; uses ARM instructions unavailable in Thumb-1.
+Func_80fa1ac          m4a-asm   Stock m4a helper at 0x080fa1ac; takes a pointer in r1 with r0 live-through and branches without a stack frame.
+Func_80b09fc          tu-pool   Original mid-function literal pool and skip-branch at 0x080b09fc require TU layout context; the same tail pattern occurs in Func_80b0a20.
+SoundMain             m4a-asm   Stock m4a mixer assembly at 0x080f95f0.
+SoundMainRAM          m4a-asm   Stock m4a mixer assembly at 0x080f9674.
+SoundMainBTM          m4a-asm   Stock m4a mixer assembly at 0x080f9a18.
+RealClearChain        m4a-asm   Stock m4a mixer assembly at 0x080f9a30.
+ply_fine              m4a-asm   Stock m4a mixer assembly at 0x080f9a50.
+MPlayJumpTableCopy    m4a-asm   Stock m4a mixer assembly at 0x080f9a80.
+Func_80f9a98          m4a-asm   Stock m4a mixer assembly at 0x080f9a98.
+ply_goto              m4a-asm   Stock m4a mixer assembly at 0x080f9ac0.
+ply_patt              m4a-asm   Stock m4a mixer assembly at 0x080f9ae0.
+ply_pend              m4a-asm   Stock m4a mixer assembly at 0x080f9afc.
+ply_rept              m4a-asm   Stock m4a mixer assembly at 0x080f9b10.
+ply_prio              m4a-asm   Stock m4a mixer assembly at 0x080f9b40.
+ply_tempo             m4a-asm   Stock m4a mixer assembly at 0x080f9b4c.
+ply_keysh             m4a-asm   Stock m4a mixer assembly at 0x080f9b60.
+ply_voice             m4a-asm   Stock m4a mixer assembly at 0x080f9b74.
+ply_vol               m4a-asm   Stock m4a mixer assembly at 0x080f9ba4.
+ply_pan               m4a-asm   Stock m4a mixer assembly at 0x080f9bb8.
+ply_bend              m4a-asm   Stock m4a mixer assembly at 0x080f9bcc.
+ply_bendr             m4a-asm   Stock m4a mixer assembly at 0x080f9be0.
+ply_lfodl             m4a-asm   Stock m4a mixer assembly at 0x080f9bf4.
+ply_modt              m4a-asm   Stock m4a mixer assembly at 0x080f9c00.
+ply_tune              m4a-asm   Stock m4a mixer assembly at 0x080f9c18.
+ply_port              m4a-asm   Stock m4a mixer assembly at 0x080f9c2c.
+m4aSoundVSync         m4a-asm   Stock m4a mixer assembly at 0x080f9c44.
+MP2KPlayerMain        m4a-asm   Stock m4a mixer assembly at 0x080f9c90.
+TrackStop             m4a-asm   Stock m4a mixer assembly at 0x080f9ef8.
+Func_80f9f3c          m4a-asm   Stock m4a mixer assembly at 0x080f9f3c.
+MP2K_event_nxx        m4a-asm   Stock m4a mixer assembly at 0x080f9f6c.
+MP2K_event_endtie     m4a-asm   Stock m4a mixer assembly at 0x080fa16c.
+MP2K_event_lfos       m4a-asm   Stock m4a mixer assembly at 0x080fa1d4.
+MP2K_event_mod        m4a-asm   Stock m4a mixer assembly at 0x080fa1e8.

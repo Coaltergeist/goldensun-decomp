@@ -10,8 +10,6 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import decomp_progress as dp
-import original_functions
-from progress import symbols, symbol_records
 
 
 def fixture():
@@ -26,12 +24,21 @@ def fixture():
     baseline = dict(schema=1, revision="reference", rom_sha1=dp.ROM_SHA1,
                     sizes={r["id"]: n for r, n in zip(rows, [68, 100, 200, 300, 40])})
     inputs = {"src/test.c": "a" * 64}
-    snapshot = dict(schema=1, policy=dp.POLICY, baseline_sha256="b" * 64,
+    snapshot = dict(schema=2, policy=dp.POLICY, baseline_sha256="b" * 64,
                     source_fingerprint=dp.fingerprint(inputs), input_count=1,
                     functions={r["id"]: s for r, s in zip(rows, ["assembly", "c", "c", "assembly", "c-registered-fakematch"])},
                     verification=dict(rom_sha1=dp.ROM_SHA1,
                                       gate="make -j1 clean && make -j1 compare",
                                       overlays={name: "a" * 64 for name in ["a", "b"] + [f"rom_{i:06x}" for i in range(94)]}))
+    paths = ["src/crt0.s", "src/main.c", "src/a.c", "src/b.c", "src/maps/common/common1.c"]
+    snapshot["units"] = {}
+    for row, source in zip(rows, paths):
+        inputs[source] = "a" * 64
+        obj = ("asm/" + source[4:-2] if source.startswith("src/maps/") else source[:-2]) + ".o"
+        snapshot["units"][source] = dict(object=obj, functions={
+            row["id"]: dict(name=row["original_name"], address=0, section=".text")})
+    snapshot["source_fingerprint"] = dp.fingerprint(inputs)
+    snapshot["input_count"] = len(inputs)
     return manifest, baseline, snapshot, inputs
 
 
@@ -48,32 +55,27 @@ class AccountingTests(unittest.TestCase):
         self.assertNotIn("fuzzy_match_percent", out)
         self.assertNotIn("complete_code", out)
 
-    def test_mixed_unit_and_overlay_names_are_scoped(self):
-        m, b, s, _ = fixture()
-        domains = {r["domain"]: {r["address"]: [{"name": r["original_name"]}]} for r in m["functions"]}
-        domains["rom"] = {0x080003c0: [{"name": "_start"}], 0x08001000: [{"name": "main"}]}
-        allowed = {"rom": {"src/main.c"}, "overlay:a": {"src/a.c"},
-                   "overlay:b": {"src/b.c"}, "common:common1": {"src/shared.c"}}
-        definitions = {"src/main.c": {"main": "body"}, "src/a.c": {"repeat": "body"},
-                       "src/shared.c": {"shared": "body"},
-                       # Neither a parked body nor an unlinked same-named body is ownership.
-                       "src/non_matching/b.c": {"repeat": "body"},
-                       "src/unlinked.c": {"repeat": "body"}}
-        self.assertEqual(dp.classify(m, domains, allowed, definitions, {("shared", "src/shared.c")}), s["functions"])
-        domains["rom"][0x08001000] = [{"name": "renamed"}]
-        definitions["src/main.c"] = {"renamed": "body", "new_helper": "body"}
-        self.assertEqual(dp.classify(m, domains, allowed, definitions, {("shared", "src/shared.c")}), s["functions"])
-        del domains["overlay:b"][0x02008000]
-        with self.assertRaisesRegex(ValueError, "unresolved"):
-            dp.classify(m, domains, allowed, definitions, set())
+    def test_c_definitions_are_scoped_to_the_actual_tu(self):
+        _, _, snapshot, _ = fixture()
+        definitions = {"src/main.c": {"main": "", "_start": "unrelated inline helper"},
+                       "src/a.c": {"repeat": ""},
+                       "src/maps/common/common1.c": {"shared": ""},
+                       "src/non_matching/b.c": {"repeat": ""},
+                       "src/unlinked.c": {"repeat": ""}}
+        registered = {("shared", "src/maps/common/common1.c")}
+        units = snapshot["units"]
+        self.assertEqual(dp.classify(units, definitions, registered), snapshot["functions"])
+        units["src/main.c"]["functions"]["rom:08001000"]["name"] = "renamed"
+        definitions["src/main.c"] = {"renamed": "", "new_helper": ""}
+        self.assertEqual(dp.classify(units, definitions, registered), snapshot["functions"])
 
-    def test_ambiguous_c_ownership_is_rejected(self):
-        m, _, _, _ = fixture()
-        m["functions"] = m["functions"][1:2]
-        with self.assertRaisesRegex(ValueError, "ambiguous"):
-            dp.classify(m, {"rom": {0x08001000: [{"name": "main"}]}},
-                        {"rom": {"src/a.c", "src/b.c"}},
-                        {"src/a.c": {"main": ""}, "src/b.c": {"main": ""}}, set())
+    def test_same_named_inline_helper_cannot_credit_assembly_in_another_tu(self):
+        units = {
+            "src/ui/text.c": {"functions": {"rom:0801f818": {"name": "PrepareSaveHeader"}}},
+            "src/save.c": {"functions": {"rom:08006300": {"name": "SaveGame"}}}}
+        definitions = {"src/ui/text.c": {}, "src/save.c": {"SaveGame": "", "PrepareSaveHeader": ""}}
+        self.assertEqual(dp.classify(units, definitions, set()),
+                         {"rom:0801f818": "assembly", "rom:08006300": "c"})
 
     def test_bad_coverage_sizes_and_overlaps_are_rejected(self):
         m, b, _, _ = fixture()
@@ -102,6 +104,68 @@ class AccountingTests(unittest.TestCase):
                 dp.validate_snapshot(m, b, bad, inputs, "b" * 64)
         s["functions"]["rom:08001000"] = "unresolved"
         with self.assertRaises(ValueError): dp.validate_snapshot(m, b, s, inputs, "b" * 64)
+
+
+    def test_treemap_totals_and_function_scores_preserve_strict_accounting(self):
+        _, baseline, snapshot, _ = fixture()
+        # A partially decompiled TU: original ARM assembly plus a matching C body.
+        startup = snapshot["units"].pop("src/crt0.s")["functions"]
+        snapshot["units"]["src/main.c"]["functions"].update(startup)
+        report = dp.unit_report(baseline, snapshot)
+        self.assertEqual(report["measures"]["total_units"], 4)
+        for key, value in dp.summary(baseline, snapshot)["measures"].items():
+            self.assertEqual(report["measures"][key], value)
+        self.assertEqual(sum(int(u["measures"]["total_code"]) for u in report["units"]), 708)
+        self.assertEqual(sum(int(u["measures"]["matched_code"]) for u in report["units"]), 300)
+        self.assertEqual(sum(len(u["functions"]) for u in report["units"]), 5)
+        units = {u["name"]: u for u in report["units"]}
+        partial = units["src/main.c"]
+        self.assertAlmostEqual(partial["measures"]["fuzzy_match_percent"], 100 * 100 / 168)
+        self.assertEqual({f["name"]: f["fuzzy_match_percent"] for f in partial["functions"]},
+                         {"_start": 0.0, "main": 100.0})
+        self.assertEqual(units["src/a.c"]["measures"]["fuzzy_match_percent"], 100.0)
+        self.assertEqual(units["src/b.c"]["measures"]["fuzzy_match_percent"], 0.0)
+        shared = units["src/maps/common/common1.c"]
+        self.assertEqual(shared["functions"][0]["fuzzy_match_percent"], 0.0)
+        self.assertEqual(shared["metadata"]["source_path"], shared["name"])
+        for unit in report["units"]:
+            self.assertNotIn("complete", unit["metadata"])
+            self.assertNotIn("complete_code", unit["measures"])
+            self.assertEqual(sum(int(f["size"]) for f in unit["functions"]),
+                             int(unit["measures"]["total_code"]))
+        self.assertEqual(dp.unit_report(baseline, snapshot), report)
+
+    def test_tu_inventory_rejects_missing_duplicate_and_invalid_ownership(self):
+        manifest, baseline, snapshot, inputs = fixture()
+        dp.validate_units(baseline, snapshot, inputs)
+        cases = []
+        missing = copy.deepcopy(snapshot)
+        del missing["units"]["src/main.c"]
+        cases.append(missing)
+        duplicate = copy.deepcopy(snapshot)
+        duplicate["units"]["src/a.c"]["functions"].update(
+            duplicate["units"]["src/main.c"]["functions"])
+        cases.append(duplicate)
+        unknown_source = copy.deepcopy(snapshot)
+        unknown_source["units"]["src/parked.c"] = unknown_source["units"].pop("src/a.c")
+        cases.append(unknown_source)
+        wrong_object = copy.deepcopy(snapshot)
+        wrong_object["units"]["src/main.c"]["object"] = "src/a.o"
+        cases.append(wrong_object)
+        bad_address = copy.deepcopy(snapshot)
+        bad_address["units"]["src/main.c"]["functions"]["rom:08001000"]["address"] = -1
+        cases.append(bad_address)
+        unknown = copy.deepcopy(snapshot)
+        unknown["units"]["src/main.c"]["functions"]["rom:deadbeef"] = dict(
+            name="new_helper", address=100, section=".text")
+        cases.append(unknown)
+        cases.append({**snapshot, "units": {}})
+        for i, bad in enumerate(cases):
+            with self.subTest(case=i), self.assertRaises(ValueError):
+                dp.validate_units(baseline, bad, inputs)
+        with self.assertRaisesRegex(ValueError, "schema"):
+            dp.validate_snapshot(manifest, baseline, {**snapshot, "schema": 1},
+                                 inputs, "b" * 64)
 
     def test_overlap_corrections_only_cover_reviewed_entry_points(self):
         m = dict(functions=[
@@ -192,6 +256,107 @@ BODY(active)
             definitions = dp.active_definitions(self.root, "test.c")
         self.assertIn("active", definitions)
         self.assertNotIn("parked", definitions)
+
+
+    def test_linker_map_ignores_discarded_sections_and_handles_wrapping(self):
+        sections = dp.map_sections("""
+Discarded input sections
+ .text 0x08001000 0x64 src/unused.o
+Linker script and memory map
+rom_1b70 0x08001000 0x100
+ .text          0x08001000 0x64 src/main.o
+ .text.long_section_name
+                0x08001064 0x20 src/other.o
+                0x08001065 current_symbol
+ .bss           0x02000000 0x0 src/main.o
+""")
+        self.assertEqual(sections[:2], [
+            (".text", 0x08001000, 100, "src/main.o"),
+            (".text.long_section_name", 0x08001064, 32, "src/other.o")])
+        with self.assertRaisesRegex(ValueError, "linker map"):
+            dp.map_sections("unrecognized")
+
+    def test_tu_capture_uses_linked_objects_and_scopes_overlay_names(self):
+        manifest, _, snapshot, _ = fixture()
+        root = self.root
+        for source, unit in snapshot["units"].items():
+            for name in (source, unit["object"]):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture")
+        texts = {
+            "stage1.map": """
+Linker script and memory map
+ .text 0x080003c0 0x44 src/crt0.o
+ .text 0x08001000 0x64 src/main.o
+""",
+            "overlays/a/overlay.map": """
+Linker script and memory map
+ .text 0x02008000 0xc8 src/a.o
+""",
+            "overlays/b/overlay.map": """
+Linker script and memory map
+ .text 0x02008000 0x12c src/b.o
+"""}
+        for name, value in texts.items():
+            path = root / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(value)
+        domains = {"rom": {}}
+        objects = {}
+        for row, (source, unit) in zip(manifest["functions"], snapshot["units"].items()):
+            name = "AgbMain" if row["original_name"] == "main" else row["original_name"]
+            records = [dict(name=name, section=".text")]
+            domains.setdefault(row["domain"], {})[row["address"]] = records
+            objects[unit["object"]] = {0: records, 50: [dict(name="new_helper", section=".text")]}
+        definitions = {"src/main.c": {"AgbMain": ""},
+                       "src/a.c": {"repeat": ""},
+                       "src/maps/common/common1.c": {"shared": ""},
+                       "src/unlinked.c": {"AgbMain": ""}}
+        def read(path):
+            return objects[path.relative_to(root).as_posix()]
+        with patch.object(dp, "symbol_records", side_effect=read):
+            units, artifacts = dp.capture_units(root, manifest, domains, definitions)
+            self.assertEqual(len(units), 5)
+            main = units["src/main.c"]["functions"]["rom:08001000"]
+            self.assertEqual(main["name"], "AgbMain")
+            self.assertEqual(main["address"], 0)
+            self.assertEqual(main["virtual_address"], 0x08001000)
+            shared = units["src/maps/common/common1.c"]["functions"]["common:common1:00000000"]
+            self.assertNotIn("virtual_address", shared)
+            self.assertEqual(len(units["src/a.c"]["functions"]), 1)
+            self.assertEqual(len(units["src/b.c"]["functions"]), 1)
+            self.assertIn("stage1.map", artifacts)
+            self.assertIn("src/main.o", artifacts)
+            objects["src/main.o"][0].append(dict(name="second_alias", section=".text"))
+            definitions["src/main.c"]["second_alias"] = ""
+            with self.assertRaisesRegex(ValueError, "ambiguous C ownership"):
+                dp.capture_units(root, manifest, domains, definitions)
+            objects["src/main.o"][0].pop()
+            del definitions["src/main.c"]["second_alias"]
+            del objects["src/b.o"][0]
+            with self.assertRaisesRegex(ValueError, "TU ownership"):
+                dp.capture_units(root, manifest, domains, definitions)
+
+    def test_iwram_function_uses_runtime_map_address_and_assembly_source(self):
+        source = self.root / "asm/ram.s"
+        source.parent.mkdir()
+        source.write_text("assembly")
+        source.with_suffix(".o").write_text("object")
+        (self.root / "stage1.map").write_text("""
+Linker script and memory map
+ .text 0x03000000 0x100 asm/ram.o
+""")
+        identity = "rom:08000790"
+        manifest = {"functions": [dict(id=identity, domain="rom",
+                                      address=0x08000790, original_name="ram_function")]}
+        domains = {"rom": {0x08000790: [dict(name="ram_function", section="rom_770")]}}
+        with patch.object(dp, "symbol_records", return_value={
+                0x20: [dict(name="ram_function", section=".text")]}):
+            units, _ = dp.capture_units(self.root, manifest, domains, {})
+        function = units["asm/ram.s"]["functions"][identity]
+        self.assertEqual(function["address"], 0x20)
+        self.assertEqual(function["virtual_address"], 0x03000020)
 
     def test_failed_gate_preserves_previous_snapshot(self):
         output = self.root / dp.SNAPSHOT

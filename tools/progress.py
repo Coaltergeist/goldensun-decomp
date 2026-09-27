@@ -73,15 +73,16 @@ def linked_sources(root, domain):
 
 def report(root=ROOT):
     manifest = json.loads((root / 'original_functions.json').read_text())
-    owners = defaultdict(set)
+    # Import here: decomp_progress reuses this module's ELF/linker helpers.
+    from decomp_progress import capture_units, classify
+    definitions = {}
     for path in sorted((root / 'src').rglob('*.c')):
         if 'non_matching' in path.parts:
             continue
-        for name in parse_funcs(path.read_text()):
-            owners[name].add(path.relative_to(root).as_posix())
+        definitions[path.relative_to(root).as_posix()] = parse_funcs(path.read_text())
     registered = {tuple(line.split()[:2]) for line in (root / 'fakematch.txt').read_text().splitlines()
                   if line.strip() and not line.lstrip().startswith('#')}
-    domains, allowed = {}, {}
+    domains = {}
     for f in manifest['functions']:
         domain = f['domain']
         if domain in domains:
@@ -92,16 +93,16 @@ def report(root=ROOT):
             path = root / 'asm/maps/common' / (domain.split(':')[1] + '.o')
         else:
             path = root / 'overlays' / domain.split(':')[1] / 'overlay.elf'
-        domains[domain] = symbols(path)
-        allowed[domain] = linked_sources(root, domain)
+        domains[domain] = symbol_records(path)
+    units, _ = capture_units(root, manifest, domains, definitions)
+    statuses = classify(units, definitions, registered)
+    sources = {identity: source for source, unit in units.items() for identity in unit["functions"]}
     rows = []
     for f in manifest['functions']:
-        aliases = domains[f['domain']].get(f['address'], set())
-        candidates = {(name, source) for name in aliases for source in owners.get(name, ())
-                      if source in allowed[f['domain']]}
-        status = ('unresolved' if not aliases else 'c-registered-fakematch' if candidates & registered
-                  else 'c' if candidates else 'assembly')
-        rows.append(dict(f, status=status, symbols=sorted(aliases), sources=sorted({p for _, p in candidates})))
+        aliases = {record["name"] for record in domains[f['domain']].get(f['address'], [])}
+        status = statuses[f['id']]
+        rows.append(dict(f, status=status, symbols=sorted(aliases),
+                         sources=[sources[f['id']]] if status != 'assembly' else []))
     counts = Counter(row['status'] for row in rows)
     thumb = Counter(row['status'] for row in rows if row['mode'] == 'thumb')
     return {'revision': manifest['revision'], 'scope': manifest['scope'],
