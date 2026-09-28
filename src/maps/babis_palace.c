@@ -286,7 +286,22 @@ void OvlFunc_952_200bf84(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bfc4.s");
+extern unsigned char Lconst_22a3[] __asm__(".Lconst_22a3");
+__asm__(".equ .Lconst_22a3, 0x22a3");
+
+void OvlFunc_952_200bfc4(int a) {
+    int msg = (int)Lconst_22a3;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+        API_ActorMessage(a, 0);
+    } else {
+        API_MessageID(msg + 2);
+        API_ActorMessage(a, 0);
+    }
+}
 
 extern void __Func_801776c();
 

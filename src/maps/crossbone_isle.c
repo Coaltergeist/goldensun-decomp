@@ -297,7 +297,11 @@ void OvlFunc_946_2008608(struct Pk arg)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20088c0.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20089dc.s");
+
+void OvlFunc_946_20089dc(struct Actor *actor, int priority) {
+    actor->sprite->oam.priority = priority;
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20089f4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008a4c.s");
 void OvlFunc_946_2008ab0(void *arg0)
@@ -481,7 +485,23 @@ void OvlFunc_946_2009494(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009508.s");
+void OvlFunc_946_2009508(unsigned int param_1) {
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8012078(int, int, int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0xb);
+    if (actor != 0) {
+        actor->__unk59 = 0;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(param_1);
+    __Actor_SetSpriteFlags(actor, 0);
+
+    API_Func_8012078(0, 0x98 << 17, 0xb8 << 17, 0xfd);
+
+    API_SetFlag(0x90 << 2);
+}
+
 void OvlFunc_946_2009548(unsigned int param_1) {
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void __Func_8012078(int, int, int, int);
@@ -498,7 +518,23 @@ void OvlFunc_946_2009548(unsigned int param_1) {
 
     API_SetFlag(0x241);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200958c.s");
+
+void OvlFunc_946_200958c(unsigned int param_1) {
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8012078(int, int, int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0xd);
+    if (actor != 0) {
+        actor->__unk59 = 0;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(param_1);
+    __Actor_SetSpriteFlags(actor, 0);
+
+    API_Func_8012078(0, 0xc0 << 15, 0xa8 << 17, 0xfd);
+
+    API_SetFlag(0x242);
+}
 
 extern void __Actor_SetSpriteFlags(void *, int);
 extern void __Func_8012078(int, int, int, int);

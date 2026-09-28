@@ -1097,7 +1097,19 @@ void OvlFunc_947_200a4cc(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a53c.s");
+void OvlFunc_947_200a53c(void) {
+    struct Pk pk;
+
+    __CutsceneStart();
+    if (OvlFunc_947_2008758(&pk) != 0) {
+        OvlFunc_947_20088ec(pk);
+    } else {
+        OvlFunc_947_200a498();
+        OvlFunc_947_20083a8();
+        OvlFunc_947_200a4cc();
+    }
+    __CutsceneEnd();
+}
 
 
 extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];

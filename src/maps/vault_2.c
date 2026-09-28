@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern int Func_8000948(int);
 
@@ -214,7 +215,15 @@ void OvlFunc_901_2008804(void)
   ((struct Actor64 *) __MapActor_GetActor(0xe))->f64 = 1;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008864.s");
+void OvlFunc_901_2008864(void) {
+  ((struct Actor *) __MapActor_GetActor(0xf))->waveCounter |= 2;
+  API_CutsceneStart();
+  API_MessageID(0x1cc1);
+  OvlFunc_901_20084b4(0xf);
+  API_CutsceneEnd();
+  ((struct Actor *) __MapActor_GetActor(0xf))->waveCounter = 0;
+}
+
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
 INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
 

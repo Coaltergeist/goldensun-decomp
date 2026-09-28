@@ -300,7 +300,11 @@ void OvlFunc_927_2008608(struct Pk arg)
 }
 
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20088c0.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089dc.s");
+
+void OvlFunc_927_20089dc(struct Actor *actor, int priority) {
+    actor->sprite->oam.priority = priority;
+}
+
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089f4.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008a4c.s");
 void OvlFunc_927_2008ab0(unsigned int *p, int unused)

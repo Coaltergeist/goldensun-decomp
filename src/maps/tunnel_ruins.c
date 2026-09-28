@@ -317,10 +317,23 @@ void OvlFunc_964_2008608(struct Pk arg)
 }
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20088c0.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20089dc.s");
+
+void OvlFunc_964_20089dc(struct Actor *actor, int priority) {
+    actor->sprite->oam.priority = priority;
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20089f4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008a4c.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ab0.s");
+
+void OvlFunc_964_2008ab0(struct Actor *actor) {
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008ae8.s");
 
 extern void __Actor_SetSpriteFlags();

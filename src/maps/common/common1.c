@@ -1,6 +1,7 @@
 /* common1: consolidated shared-overlay TU (linked by the 3 overlays that reference it). */
 
 #include "nonmatching.h"
+#include "api.h"
 
 
 void OvlFunc_common1_0(void)
@@ -455,8 +456,29 @@ INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1814.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1928.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1b08.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1ecc.s");
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1fb4.s");
 
+void OvlFunc_common1_1fb4(int fileID) {
+    extern void OvlFunc_common1_1928(void);
+    extern unsigned int iwram_3001f3c;
+    extern unsigned short ewram_2001000[];
+    extern void *__GetFile(int);
+    extern void __DecompressLZ(void *, void *);
+    unsigned short *e = ewram_2001000;
+    unsigned int ptr = iwram_3001f3c;
+
+    __DecompressLZ(__GetFile(fileID), (void *)(ptr + 0xf0));
+    if (API_GetFlag(0x109) == 0) {
+        unsigned short one = 1;
+        unsigned int value;
+        e[0] = one;
+        e[1] = one;
+        value = *(unsigned short *)(ptr + 0xe0);
+        e[4] = 0;
+        e[2] = value;
+        e[3] = 0;
+    }
+    API_StartTask((void (*)(void))OvlFunc_common1_1928, 0xc85);
+}
 
 void OvlFunc_common1_2008(unsigned short arg0) {
     extern unsigned int iwram_3001f3c;

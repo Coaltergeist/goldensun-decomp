@@ -41,7 +41,16 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008058.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008098.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20080e0.s");
+
+void OvlFunc_968_20080e0(struct Actor *actor) {
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008118.s");
 
 extern int Func_8000948(int);

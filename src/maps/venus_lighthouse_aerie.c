@@ -1,6 +1,7 @@
 /* rom_7f6e64 (overlay file 969): consolidated TU — venus_lighthouse_aerie map overlay. */
 
 #include "nonmatching.h"
+#include "actor.h"
 
 extern void OvlFunc_969_200a11c();
 
@@ -231,7 +232,19 @@ void OvlFunc_969_200d688(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d6a0.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200d9f0.s");
+
+void OvlFunc_969_200d9f0(struct Actor *actor) {
+    if (actor->__unk63 != 0) {
+        actor->pos.y = actor->__unk4C + ((actor->__unk62 >> 2) << 16);
+        OvlFunc_969_200d688((unsigned int)actor);
+        if (actor->__unk62 != 0) {
+            if (actor->__unk62 <= 0x1f) {
+                actor->__unk62 += 1;
+            }
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200da28.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200db90.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/venus_lighthouse_aerie_data.s");
