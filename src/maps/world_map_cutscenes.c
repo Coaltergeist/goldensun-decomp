@@ -76,7 +76,21 @@ unsigned int OvlFunc_881_20082a4(unsigned int arg0)
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082cc.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082f0.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008314.s");
+int OvlFunc_881_2008314(struct Actor *actor)
+{
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Actor_SetColorswap(unsigned int, unsigned int);
+
+    __Actor_SetSpriteFlags(actor, 0);
+    __Actor_SetColorswap((unsigned int)actor, 0xa);
+    actor->__unk59 = 0;
+    if (API_GetFlag(0x8a << 4)) {
+        API_SetFlag(0x2f1);
+        actor->pos.x = 0;
+        actor->pos.y = 0;
+    }
+    return 0;
+}
 
 
 unsigned int OvlFunc_881_2008350(unsigned char *actor)
@@ -244,7 +258,27 @@ void OvlFunc_881_200a858(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8a8.s");
+
+void OvlFunc_881_200a8a8(void) {
+    extern unsigned char iwram_3001ebc[];
+    void *base;
+    short *p;
+
+    API_CutsceneStart();
+    __Func_808c44c();
+    API_Func_801776c(0x264c, 1);
+    if (API_GetFlag(0x8d << 2)) {
+        int one;
+
+        base = *(void **)iwram_3001ebc;
+        p = (short *)((char *)base + (0xb9 << 1));
+        one = 1;
+        *p = one;
+    }
+    __Func_808c4c0();
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8e8.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200acb4.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b130.s");

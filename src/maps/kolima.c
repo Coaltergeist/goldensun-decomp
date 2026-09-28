@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kolima/exports.s");
 
@@ -19,7 +20,23 @@ unsigned int OvlFunc_911_2008030(unsigned int arg0)
 }
 
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008050.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20080a0.s");
+void OvlFunc_911_20080a0(void *arg0)
+{
+    unsigned char *p = (unsigned char *)arg0 + 0x48;
+    unsigned int i;
+
+    for (i = 0; i <= 8; i++) {
+        int v69 = 0x69;
+        *(short *)p = v69;
+        if ((unsigned int)(i - 6) <= 1) {
+            int v6e = 0x6e;
+            *(short *)p = v6e;
+        }
+        *(unsigned char *)(p + 0x16) = 2;
+        *(unsigned int *)(p + 4) = 1;
+        p += 0x18;
+    }
+}
 unsigned int OvlFunc_911_20080cc(unsigned int arg0)
 {
     *(int *)(arg0 + 0x08) += *(int *)(arg0 + 0x24);
@@ -180,7 +197,55 @@ void OvlFunc_911_2008304(void)
 }
 INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20083c8.s");
 INCLUDE_ASM("asm/maps/kolima/Kolima_MapInit.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008800.s");
+
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_911_2008800(void) {
+    void *__MapActor_GetActor(int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x13);
+    if (actor != 0) {
+        actor->__unk55 = 0;
+        if ((iwram_3001e40 & 1) == 0) {
+            actor->pos.y = 0;
+        } else {
+            actor->pos.y = 0xfa << 17;
+        }
+    }
+
+    actor = (struct Actor *)__MapActor_GetActor(0x14);
+    if (actor != 0) {
+        int zero = 0;
+        actor->__unk55 = zero;
+        if ((iwram_3001e40 & 1) != 0) {
+            actor->pos.y = zero;
+        } else {
+            actor->pos.y = 0xfa << 17;
+        }
+    }
+
+    actor = (struct Actor *)__MapActor_GetActor(0x15);
+    if (actor != 0) {
+        actor->__unk55 = 0;
+        if ((iwram_3001e40 & 1) == 0) {
+            actor->pos.y = 0;
+        } else {
+            actor->pos.y = 0xfa << 17;
+        }
+    }
+
+    actor = (struct Actor *)__MapActor_GetActor(0x16);
+    if (actor != 0) {
+        int zero = 0;
+        actor->__unk55 = zero;
+        if ((iwram_3001e40 & 1) != 0) {
+            actor->pos.y = zero;
+        } else {
+            actor->pos.y = 0xfa << 17;
+        }
+    }
+}
 
 void OvlFunc_911_20088ac(unsigned int arg0, unsigned int arg1)
 {
@@ -238,27 +303,6 @@ typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_911__0200b5d8[5];
 extern unsigned char Lm911_36a0[] __asm__(".Lm911_36a0");
 
-struct Sprite {
-    unsigned char _pad0[9];
-    unsigned char attr;
-    unsigned char _pad1[0x26 - 10];
-    unsigned char flags;
-};
-
-struct Actor {
-    unsigned char _pad0[0x18];
-    unsigned int scaleX;
-    unsigned char _pad1[0x23 - 0x1c];
-    unsigned char unk23;
-    unsigned char _pad2[0x30 - 0x24];
-    unsigned int speed;
-    unsigned int accel;
-    unsigned char _pad3[0x50 - 0x38];
-    struct Sprite *sprite;
-    unsigned char _pad4[0x55 - 0x54];
-    unsigned char unk55;
-};
-
 void OvlFunc_911_200a608(void)
 {
   extern unsigned char iwram_3001e40__arr[] asm("iwram_3001e40");
@@ -287,17 +331,17 @@ void OvlFunc_911_200a608(void)
     {
       sprite = actor->sprite;
       {
-        unsigned char flags[1] = {actor->unk23};
+        unsigned char flags[1] = {actor->flags};
         sprite->flags = r6;
-        actor->unk23 = flags[0] & 0xfe;
+        actor->flags = flags[0] & 0xfe;
       }
       do {
-        sprite->attr = (sprite->attr & c) | 4;
-        actor->scaleX = 0x1999;
+        *((unsigned char *)sprite + 9) = (*((unsigned char *)sprite + 9) & c) | 4;
+        actor->scale.x = 0x1999;
         actor->speed = 0x80000;
         actor->accel = 0x80000;
       } while (0);
-      actor->unk55 = r6;
+      actor->__unk55 = r6;
       __Actor_SetAnim(actor, 2);
       __Actor_TravelTo(actor, a, 0, d);
       __Actor_SetScript(actor, gScript_911__0200b5d8);

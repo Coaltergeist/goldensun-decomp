@@ -945,7 +945,18 @@ void OvlFunc_932_200a9dc(void)
         MapActor_SetPos(9, 0xb8, 0xa4);
     }
 }
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200aa10.s");
+
+void OvlFunc_932_200aa10(struct Actor *actor) {
+    extern void __Func_80929d8(void *, int);
+
+    actor->__unk55 = 0;
+    actor->sprite->oam.priority = 1;
+    __Func_80929d8(actor, 3);
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->scale.x = 0x4ccc;
+    actor->scale.y = 0x4ccc;
+}
+
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200aa48.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ab58.s");
 

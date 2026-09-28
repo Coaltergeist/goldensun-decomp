@@ -55,7 +55,15 @@ void OvlFunc_891_2009000(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200901c.s");
+void OvlFunc_891_200901c(void) {
+    if (!API_GetFlag(0x80b)) {
+        API_CutsceneStart();
+        __MapActor_GetActor(9);
+        API_MapActor_SetSpeed(9, 0x3333, 0x1999);
+        API_MapActor_TravelToAnimWait(9, 0xfc << 1, 0x98);
+        API_CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_2/SolSanctum2_MapInit.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20094b8.s");
 

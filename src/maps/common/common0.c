@@ -14,5 +14,17 @@
 INCLUDE_ASM("asm/maps/common/common0/OvlFunc_common0_0.s");
 INCLUDE_ASM("asm/maps/common/common0/OvlFunc_common0_18.s");
 INCLUDE_ASM("asm/maps/common/common0/OvlFunc_common0_70.s");
-INCLUDE_ASM("asm/maps/common/common0/OvlFunc_common0_d4.s");
+void OvlFunc_common0_d4(void *arg0)
+{
+    unsigned char *p = (unsigned char *)arg0;
+    unsigned char *sprite;
+
+    *(int *)(p + 8) += *(int *)(p + 0x44);
+    *(int *)(p + 0xc) += *(int *)(p + 0x48);
+    *(int *)(p + 0x10) += *(int *)(p + 0x4c);
+    *(int *)(p + 0x18) += *(int *)(p + 0x30);
+    *(int *)(p + 0x1c) += *(int *)(p + 0x34);
+    sprite = *(unsigned char **)(p + 0x50);
+    *(short *)(sprite + 0x1e) += *(short *)(p + 0x64);
+}
 INCLUDE_ASM("asm/maps/common/common0/OvlFunc_common0_10c.s");

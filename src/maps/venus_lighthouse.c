@@ -77,7 +77,20 @@ unsigned int OvlFunc_968_2008594(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085ac.s");
+int OvlFunc_968_20085ac(unsigned int actorId)
+{
+    extern unsigned char iwram_3001e40[];
+
+    if ((*(unsigned int *)iwram_3001e40 & 3) == 0) {
+        __Func_80929d8(actorId, 7);
+    } else {
+        __Func_80929d8(actorId, 0);
+    }
+    if ((*(unsigned int *)iwram_3001e40 & 7) == 0) {
+        API_PlaySound(0x8a);
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085e4.s");
 
 extern void __Actor_SetSpriteFlags();

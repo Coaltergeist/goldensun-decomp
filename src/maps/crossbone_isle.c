@@ -300,7 +300,19 @@ INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20088c0.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20089dc.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20089f4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008a4c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008ab0.s");
+void OvlFunc_946_2008ab0(void *arg0)
+{
+    unsigned char *p = (unsigned char *)arg0;
+    unsigned char *sprite;
+
+    *(int *)(p + 8) += *(int *)(p + 0x44);
+    *(int *)(p + 0xc) += *(int *)(p + 0x48);
+    *(int *)(p + 0x10) += *(int *)(p + 0x4c);
+    *(int *)(p + 0x18) += *(int *)(p + 0x30);
+    *(int *)(p + 0x1c) += *(int *)(p + 0x34);
+    sprite = *(unsigned char **)(p + 0x50);
+    *(short *)(sprite + 0x1e) += *(short *)(p + 0x64);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008ae8.s");
 
 void OvlFunc_946_2008cc0(void) {}
@@ -470,7 +482,22 @@ void OvlFunc_946_2009494(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009508.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009548.s");
+void OvlFunc_946_2009548(unsigned int param_1) {
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_8012078(int, int, int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0xc);
+    if (actor != 0) {
+        actor->__unk59 = 0;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(param_1);
+    __Actor_SetSpriteFlags(actor, 0);
+
+    API_Func_8012078(0, 0xa0 << 15, 0xb8 << 17, 0xfd);
+
+    API_SetFlag(0x241);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200958c.s");
 
 extern void __Actor_SetSpriteFlags(void *, int);
@@ -514,7 +541,17 @@ void OvlFunc_946_200966c(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200967c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009740.s");
+
+void OvlFunc_946_2009740(void) {
+    struct Pk buf;
+
+    API_CutsceneStart();
+    if (OvlFunc_946_2008474(&buf)) {
+        OvlFunc_946_2008608(buf);
+    }
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009774.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200985c.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20098b0.s");

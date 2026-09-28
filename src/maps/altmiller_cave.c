@@ -433,7 +433,22 @@ void OvlFunc_957_2008d48(void)
 	OvlFunc_957_2008cf8();
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008d58.s");
+void OvlFunc_957_2008d58(void)
+{
+    extern unsigned char *iwram_3001f30;
+    unsigned char *p;
+    void *actor;
+    int stk[3];
+
+    p = iwram_3001f30;
+    actor = __MapActor_GetActor(0xb);
+    stk[0] = *(int *)((char *)actor + 8);
+    stk[1] = *(int *)((char *)actor + 0xc);
+    stk[2] = *(int *)((char *)actor + 0x10);
+    if (__TestCollision(actor, stk) > 0) {
+        *(p + 0x35) = 1;
+    }
+}
 
 extern unsigned char *iwram_3001f30;
 
@@ -465,7 +480,17 @@ void OvlFunc_957_2008d90(void)
 }
 
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008de8.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008eac.s");
+
+void OvlFunc_957_2008eac(void) {
+    struct Pk buf;
+
+    API_CutsceneStart();
+    if (OvlFunc_957_2008474(&buf)) {
+        OvlFunc_957_2008608(buf);
+    }
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008ee0.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008f10.s");
 
@@ -527,7 +552,16 @@ int AltmillerCave_GetEvents(void)
     if (ev == (int)_EVENT_97) return (int)Lm957_4850;
     return (int)Lm957_45e0;
 }
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b610.s");
+void OvlFunc_957_200b610(struct Actor *actor)
+{
+    struct Actor *main_actor;
+
+    if (actor != 0) {
+        actor->flags = 0;
+        main_actor = (struct Actor *)__MapActor_GetActor(0);
+        actor->sprite->oam.priority = main_actor->sprite->oam.priority;
+    }
+}
 INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_MapInit.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ba30.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200bad4.s");

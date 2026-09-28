@@ -542,7 +542,22 @@ void OvlFunc_942_2008af8(void) {
     OvlFunc_942_2008b68(15);
 }
 
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008b68.s");
+extern void __Actor_SetSpriteFlags(struct Actor *, int);
+
+void OvlFunc_942_2008b68(int id) {
+    struct Actor *actor = __MapActor_GetActor(id);
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(id), 0);
+    __Func_8092b08(id, 3);
+    {
+        struct Actor *a = actor;
+        a->__unk55 = 0;
+    }
+    {
+        struct Actor *a = actor;
+        a->flags |= 2;
+    }
+}
 
 extern void __Func_808e118(void);
 
