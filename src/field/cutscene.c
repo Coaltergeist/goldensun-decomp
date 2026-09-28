@@ -133,7 +133,18 @@ INCLUDE_ASM("asm/field/cutscene/Func_8091858.s");
 INCLUDE_ASM("asm/field/cutscene/Func_8091890.s");
 INCLUDE_ASM("asm/field/cutscene/Func_80919d8.s");
 INCLUDE_ASM("asm/field/cutscene/Func_8091a58.s");
-INCLUDE_ASM("asm/field/cutscene/Func_8091c1c.s");
+
+extern int _GiveItemTo(unsigned int unit, unsigned int item);
+
+int Func_8091c1c(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
+    int result;
+
+    result = _GiveItemTo(arg2, arg0);
+    if (result >= 0) {
+        return arg2;
+    }
+    return -1;
+}
 
 void Func_8091c3c(void) {}
 void Func_8091c40(void) {}

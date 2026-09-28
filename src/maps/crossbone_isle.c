@@ -492,7 +492,10 @@ void OvlFunc_946_20095d0(unsigned int param_1) {
     __SetFlag(0x243);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009624.s");
+void OvlFunc_946_2009624(void) {
+    API_SetFlag(0x8c4);
+    API_Func_8010704(0, 0, 1, 1, 8, 0x15);
+}
 
 extern void __SetFlag(int);
 
@@ -605,9 +608,24 @@ void OvlFunc_946_2009a38(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009a44.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009b14.s");
 
 extern int OvlFunc_946_2009a44(void *, unsigned int *);
+
+int OvlFunc_946_2009b14(void) {
+    unsigned int buf[3];
+    unsigned int *r0;
+    unsigned int r3;
+
+    r0 = __MapActor_GetActor(0);
+    r3 = *(unsigned int *)((char *)r0 + 8);
+    buf[0] = r3;
+    r3 = *(unsigned int *)((char *)r0 + 0xc);
+    buf[1] = r3;
+    r3 = *(unsigned int *)((char *)r0 + 0x10);
+    r3 += 0xffe00000;
+    buf[2] = r3;
+    return OvlFunc_946_2009a44(r0, buf);
+}
 
 int OvlFunc_946_2009b40(void) {
     unsigned int buf[3];
@@ -627,7 +645,21 @@ int OvlFunc_946_2009b40(void) {
     return OvlFunc_946_2009a44(r0, buf);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009b68.s");
+int OvlFunc_946_2009b68(void) {
+    unsigned int buf[3];
+    unsigned int *r0;
+    unsigned int r3;
+
+    r0 = __MapActor_GetActor(0);
+    r3 = *(unsigned int *)((char *)r0 + 8);
+    r3 += 0xffe00000;
+    buf[0] = r3;
+    r3 = *(unsigned int *)((char *)r0 + 0xc);
+    buf[1] = r3;
+    r3 = *(unsigned int *)((char *)r0 + 0x10);
+    buf[2] = r3;
+    return OvlFunc_946_2009a44(r0, buf);
+}
 
 
 int OvlFunc_946_2009b94(void) {

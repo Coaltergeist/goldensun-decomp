@@ -410,7 +410,23 @@ void OvlFunc_common1_1578(unsigned int arg0, unsigned int arg1, unsigned int arg
 
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_15b8.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1608.s");
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_16cc.s");
+
+extern unsigned char Lc1_6[] __asm__(".Lc1_6");
+
+void OvlFunc_common1_16cc(unsigned char *buf, unsigned int val) {
+    int i;
+    unsigned char *p;
+    unsigned char z = 0;
+    p = buf;
+    p += 8;
+    *p = z;
+    p -= 1;
+    for (i = 7; i >= 0; i--) {
+        *p = Lc1_6[val & 0xf];
+        val >>= 4;
+        p -= 1;
+    }
+}
 
 void OvlFunc_common1_16f8(void) {
 }

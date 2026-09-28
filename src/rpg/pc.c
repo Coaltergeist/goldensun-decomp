@@ -161,8 +161,32 @@ SECTION(".text.rpg_pc_3");
 #include "nonmatching.h"
 
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079bf8.s", ".text.rpg_pc_3");
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c30.s", ".text.rpg_pc_3");
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c5c.s", ".text.rpg_pc_3");
+
+extern int Func_8079b24(int a, int b);
+
+int Func_8079c30(int arg0, int arg1, int arg2) {
+    int t;
+    int result;
+
+    t = Func_8079b24(arg1, 0);
+    result = (t * arg0) * arg2;
+    if (result < 0) {
+        result += 0xffff;
+    }
+    return result >> 16;
+}
+
+int Func_8079c5c(int arg0, int arg1, int arg2) {
+    extern int Func_8079b24(int a, int b);
+    int t;
+    int result;
+
+    t = Func_8079b24((arg1 << 1) - 0xc8, 0);
+    result = (t * arg0) * arg2;
+    if (result < 0) result += 0xffff;
+    return result >> 16;
+}
+
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c8c.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/CheckEquipmentCritBoost.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d1c.s", ".text.rpg_pc_3");

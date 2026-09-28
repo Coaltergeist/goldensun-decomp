@@ -539,9 +539,14 @@ LAB:
     __Func_8093e28();
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009158.s");
+extern void __Func_8092708(int, int, int);
 
-extern void OvlFunc_965_2009158(void);
+void OvlFunc_965_2009158(void) {
+    API_Func_80933f8(-1, -1, -1, 0);
+    __Func_8092708(0, 6, 0);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+}
 
 void OvlFunc_965_2009184(void)
 {

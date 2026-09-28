@@ -17,7 +17,13 @@ void Field_Halt_Target(void) {
 
 INCLUDE_ASM("asm/field/moves/halt/Field_Halt.s");
 
-INCLUDE_ASM("asm/field/moves/halt/Func_809ad70.s");
+extern unsigned int Random(void);
+extern void _Actor_SetColorswap(void *actor, int colorswap);
+extern signed char gScript_0809f160[8];
+
+void Func_809ad70(void *actor) {
+    _Actor_SetColorswap(actor, gScript_0809f160[(Random() << 3) >> 16]);
+}
 
 INCLUDE_ASM("asm/field/moves/halt/Func_809ad90.s");
 

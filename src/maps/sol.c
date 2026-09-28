@@ -378,7 +378,23 @@ void OvlFunc_895_20087d0(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/sol/Sol_MapInit.s");
+
+extern void OvlFunc_895_200892c(void);
+extern void OvlFunc_895_2008a24(void);
+
+int Sol_MapInit(void)
+{
+    GlobalState *p = &gState;
+    int a = *(short *)((char *)p + 0x1c0);
+
+    if (a == (int)_EVENT_13) {
+        OvlFunc_895_200892c();
+    } else if (a == (int)_EVENT_10) {
+        OvlFunc_895_2008a24();
+    }
+    return 0;
+}
+
 extern unsigned char iwram_3001ebc_arr[] __asm__("iwram_3001ebc");
 extern unsigned char Lm895_269c_arr[] __asm__(".Lm895_269c");
 extern void OvlFunc_895_2009ac8(void);

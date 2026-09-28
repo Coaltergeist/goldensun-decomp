@@ -1,6 +1,7 @@
 // fakematch
 /* unknown/sub_80a1050.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "dma.h"
 
 extern unsigned int LoadUIHandCursorGFX();
 extern void Func_80a2444();
@@ -31,7 +32,19 @@ unsigned int Func_80a1070(void) {
     return Func_800430c();
 }
 
-INCLUDE_ASM("asm/ui/party_menu/Func_80a1090.s");
+extern unsigned int iwram_3001f2c;
+
+void Func_80a1090(void) {
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+
+    DMA3_CLEAR(base, 0x29c * 4);
+    base[0x1c] = 0xff;
+    base[0x1e] = 1;
+    base[0x1f] = 1;
+    base[0x112] = 1;
+    base[0x113] = 1;
+}
+
 INCLUDE_ASM("asm/ui/party_menu/Func_80a10d0.s");
 
 extern void _CloseUIBox();
@@ -180,7 +193,15 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80a21b0.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a2268.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a22f4.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a2324.s");
-INCLUDE_ASM("asm/ui/party_menu/Func_80a23c0.s");
+
+void Func_80a23c0(unsigned int arg0) {
+    extern unsigned char gState[];
+    extern void _Func_801e7c0(unsigned int msg, unsigned int arg1, int arg2, int arg3);
+    unsigned char *base = gState;
+
+    _Func_801e9d4(*(unsigned int *)(base + 0x10), 7, arg0, 8, 0);
+    _Func_801e7c0(0xb0b, arg0, 0x40, 0);
+}
 
 void Func_80a23f4(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4)
 {
@@ -264,8 +285,6 @@ INCLUDE_ASM("asm/ui/party_menu/Func_80a2680.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a32b8.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a3354.s");
 INCLUDE_ASM("asm/ui/party_menu/Func_80a33d4.s");
-
-extern unsigned int iwram_3001f2c;
 
 void Func_80a345c(void) {
     unsigned int *p;

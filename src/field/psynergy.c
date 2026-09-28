@@ -56,6 +56,20 @@ void Func_8097948(unsigned int r0, unsigned int r1, unsigned int r2, unsigned in
 
 INCLUDE_ASM_SECTION("asm/field/psynergy/Func_80979a4.s", ".text.psynergy_2");
 INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a10.s", ".text.psynergy_2");
-INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a54.s", ".text.psynergy_2");
+
+extern void _Actor_SetScript(void *actor, void *script);
+extern unsigned char La0128[] __asm__(".La0128");
+
+void Func_8097a54(unsigned char *actor) {
+    unsigned int v = *(unsigned int *)(actor + 0x38);
+    if (v == (0x80u << 24)) {
+        if (*(unsigned int *)(actor + 0x3c) == v) {
+            if (*(unsigned int *)(actor + 0x40) == v) {
+                _Actor_SetScript(actor, La0128);
+            }
+        }
+    }
+}
+
 INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a7c.s", ".text.psynergy_2");
 INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097adc.s", ".text.psynergy_2");

@@ -1,5 +1,6 @@
 /* field/map.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "dma.h"
 
 extern void CutsceneEnd();
 extern int MapActor_GetActor();
@@ -115,7 +116,23 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
 }
 
 INCLUDE_ASM("asm/field/map/Func_808e0b0.s");
-INCLUDE_ASM("asm/field/map/Func_808e118.s");
+
+extern unsigned int iwram_3001ebc__a7 __asm__("iwram_3001ebc");
+extern void Func_808e5d8(unsigned int);
+
+void Func_808e118(void) {
+    unsigned char *base = (unsigned char *)iwram_3001ebc__a7;
+    unsigned short *addr;
+    int zero;
+
+    addr = (unsigned short *)(base + 0xcb6);
+    zero = 0;
+    *addr = zero;
+    if (*(short *)(base + 0xcb8) != 0) {
+        Func_808e5d8(0x2090);
+    }
+}
+
 INCLUDE_ASM("asm/field/map/FindFieldItemEvent.s");
 INCLUDE_ASM("asm/field/map/Func_808e23c.s");
 INCLUDE_ASM("asm/field/map/FindFieldMoveEvent.s");
@@ -261,7 +278,19 @@ void Func_808ed1c(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/Func_808ed4c.s");
+extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
+
+unsigned int Func_808ed4c(void) {
+    int idx;
+    unsigned char *base;
+
+    idx = GetMapActorIndex();
+    if (idx == -1) {
+        return 0;
+    }
+    base = (unsigned char *)iwram_3001ebc__a6;
+    return *(unsigned int *)(base + (idx << 3) + 0x11c);
+}
 
 extern unsigned int iwram_3001ebc__a5 __asm__("iwram_3001ebc");
 
@@ -365,7 +394,16 @@ void Func_808feb0(void) {
     Func_80042c8(Func_808f498);
 }
 
-INCLUDE_ASM("asm/field/map/AllocGlobal1F.s");
+extern void *galloc_ewram(int index, unsigned int size);
+
+void *AllocGlobal1F(void) {
+    void *p;
+
+    p = galloc_ewram(0x1f, 0xa8 << 3);
+    DMA3_CLEAR(p, 0xa8 << 3);
+    return p;
+}
+
 INCLUDE_ASM("asm/field/map/ScreenTransitionIn.s");
 INCLUDE_ASM("asm/field/map/ScreenTransitionOut.s");
 

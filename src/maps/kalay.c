@@ -407,7 +407,22 @@ void OvlFunc_936_2009e6c(void)
     OvlFunc_936_2009ea4(0x22);
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009ea4.s");
+extern void __Actor_SetScript(void *actor, void *script);
+extern unsigned char gScript_936__0200beac[] __asm__("gScript_936__0200beac");
+
+void OvlFunc_936_2009ea4(unsigned int arg0) {
+    unsigned char *actor;
+    unsigned int r;
+    unsigned short val;
+
+    actor = (unsigned char *)__MapActor_GetActor(arg0);
+    *(unsigned short *)(actor + 0x64) = arg0;
+    r = __Random();
+    val = (r * 5) >> 12;
+    *(unsigned short *)(actor + 0x66) = val;
+    __Actor_SetScript(actor, gScript_936__0200beac);
+}
+
 extern int Lm936_5144 __asm__(".Lm936_5144");
 extern void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __StartTask(void *, int);

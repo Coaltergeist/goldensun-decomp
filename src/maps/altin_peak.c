@@ -1236,7 +1236,18 @@ void OvlFunc_932_200b724(struct Foo_b* arg0) {
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b738.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b850.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b9c8.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ba44.s");
+
+extern short Lm932_5260 __asm__(".Lm932_5260");
+extern short Lm932_525c __asm__(".Lm932_525c");
+extern void OvlFunc_932_200b9c8(void);
+
+void OvlFunc_932_200ba44(void) {
+
+    Lm932_5260 = 0;
+    Lm932_525c = 0;
+    API_StartTask(OvlFunc_932_200b9c8, 0xc8 << 4);
+}
+
 INCLUDE_ASM("asm/maps/altin_peak/altin_peak_data.s");
 
 INCLUDE_ASM("asm/maps/altin_peak/imports.s");

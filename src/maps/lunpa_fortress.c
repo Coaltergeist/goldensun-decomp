@@ -1157,7 +1157,10 @@ void OvlFunc_959_200a2a0(void) {
     API_Func_8010704(5, 9, 1, 1, 6, 0xa);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2d4.s");
+void OvlFunc_959_200a2d4(void) {
+    API_Func_80105d4(2, 0x56, 1, 2, 0x1b, 0x3e);
+    API_Func_8010704(0x1a, 0x10, 1, 1, 0x1b, 0x11);
+}
 
 void OvlFunc_959_200a308(void) {
     if (*(short *)(iwram_3001ebc__a8 + 0xcb8) != 0 && API_GetFlag(0x947) == 0) {

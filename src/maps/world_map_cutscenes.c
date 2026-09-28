@@ -2,13 +2,24 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008030.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200808c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20080d4.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200811c.s");
+
+void OvlFunc_881_200811c(struct Actor *a) {
+    short *wc = &a->waveCounter;
+
+    if (*wc <= 0) {
+        *wc += 1;
+    } else {
+        API_DeleteActor(a);
+    }
+}
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200813c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20081c4.s");
 
@@ -196,7 +207,18 @@ INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a274.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a4a8.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a768.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a7dc.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a81c.s");
+
+extern unsigned char L679c[] __asm__(".Lm881_679c");
+
+void OvlFunc_881_200a81c(void) {
+
+    API_CutsceneStart();
+    API_MapActor_Face(0x37, 0, 0);
+    API_MessageID(0x2642);
+    API_ActorMessage(*(unsigned long *)L679c, 0);
+    API_Func_8092adc(0x37, 0xc0 << 6, 0);
+    API_CutsceneEnd();
+}
 
 
 extern void __CutsceneStart(void);

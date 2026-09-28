@@ -32,10 +32,72 @@ unsigned int Func_80c2384(unsigned int n)
     return Lc7420__a1[n * 4];
 }
 
-INCLUDE_ASM("asm/battle/enemy/Func_80c23a0.s");
-INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnimUnk.s");
-INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnim.s");
-INCLUDE_ASM("asm/battle/enemy/GetEnemyAttackAnimParam.s");
+struct EnemyAnimEntry {
+    unsigned char pad0[3];
+    unsigned char bit0 : 1;
+    unsigned char field : 4;
+    unsigned char rest : 3;
+    unsigned char pad1[4];
+};
+
+extern struct EnemyAnimEntry Lc7420_entries[] __asm__(".Lc7420");
+
+unsigned int Func_80c23a0(unsigned int arg0) {
+    if (arg0 > 0xab)
+        return *(unsigned short *)Lc7420_entries;
+    return Lc7420_entries[arg0].field;
+
+}
+struct EnemyAttackEntry {
+    unsigned char pad0[2];
+    unsigned char bit0 : 1;
+    unsigned char field : 4;
+    unsigned char rest : 3;
+    unsigned char pad1[5];
+};
+
+extern struct EnemyAttackEntry Lc7420_attack[] __asm__(".Lc7420");
+
+unsigned int GetEnemyAttackAnimUnk(unsigned int arg0) {
+    unsigned int result;
+
+    if (arg0 > 0xab)
+        return 0;
+    result = 0;
+    if (Lc7420_attack[arg0].bit0)
+        result = 1;
+    return result;
+}
+
+unsigned int GetEnemyAttackAnim(unsigned int arg0) {
+    unsigned int v, result;
+
+    if (arg0 > 0xab)
+        return 1;
+    v = Lc7420_attack[arg0].field;
+    if (v != 0) {
+        result = v;
+    } else {
+        unsigned int one = 1;
+        result = one;
+    }
+    return result;
+}
+
+unsigned int GetEnemyAttackAnimParam(unsigned int arg0) {
+    unsigned int v, result;
+
+    if (arg0 > 0xab)
+        return 0;
+    v = Lc7420_attack[arg0].rest;
+    if (v != 0) {
+        result = v;
+    } else {
+        unsigned int zero = 0;
+        result = zero;
+    }
+    return result;
+}
 
 extern int park(int, int);
 extern int r2(int);
