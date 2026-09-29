@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "src/ui/save_menu.c",
+  "functions": {
+    "Func_80216b4": {
+      "id": "rom:080216b4"
+    },
+    "Func_8021c34": {
+      "id": "rom:08021c34"
+    },
+    "Func_8020088": {
+      "id": "rom:08020088",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80270ac": {
+      "id": "rom:080270ac"
+    },
+    "Func_801ff14": {
+      "id": "rom:0801ff14",
+      "context": [
+        "context.h"
+      ]
+    },
+    "DecompressIcon": {
+      "id": "rom:08021be0"
+    },
+    "Func_8021360": {
+      "id": "rom:08021360"
+    },
+    "Func_80284dc": {
+      "id": "rom:080284dc"
+    }
+  }
+}

@@ -6,6 +6,7 @@ import re
 import subprocess
 import sys
 from c_source import parse_funcs
+from candidate_catalog import catalog, production_candidate_errors, markdown_index
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -62,6 +63,14 @@ def manifest_errors(manifest):
 def main():
     tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT, text=True).split("\0")
     errors = registry_errors(ROOT)
+    errors += production_candidate_errors(ROOT)
+    try:
+        candidates = catalog(ROOT)
+        index = ROOT / "src/non_matching/INDEX.md"
+        if index.is_file() and index.read_text() != markdown_index(candidates):
+            errors.append("candidate index is stale; regenerate with compare_candidate.py --list --markdown")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append("candidate collection: " + str(exc))
     errors += manifest_errors(json.loads((ROOT / "original_functions.json").read_text()))
     for name in tracked:
         if Path(name).suffix.lower() in {".gba", ".z64", ".n64", ".v64", ".nds"}:

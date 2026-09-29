@@ -72,7 +72,38 @@ def git(root, *args):
     return subprocess.check_output(["git", "--no-optional-locks", *args], cwd=root)
 
 
+def production_candidate_errors(root):
+    errors = []
+    token = re.compile(r'/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"', re.S)
+    for base in ("src", "include"):
+        for path in (root / base).rglob("*"):
+            name = path.relative_to(root).as_posix()
+            if path.suffix not in (".c", ".h") or name.startswith("src/non_matching/"):
+                continue
+            text = path.read_text().replace("\\\n", "")
+            text = token.sub(lambda m: re.sub(r"[^\n]", " ", m[0])
+                             if m[0].startswith(("/*", "//")) else m[0], text)
+            for line in re.findall(r'^\s*#\s*include(?:_next)?\b([^\n]*)', text, re.M):
+                include = re.fullmatch(r'\s*[<"]([^>"\n]+)[>"]\s*', line)
+                if include is None:
+                    errors.append("non-literal include prevents candidate isolation check: " + name)
+                    continue
+                ref = include[1]
+                targets = (path.parent / ref, root / "include" / ref, root / ref)
+                if "non_matching" in Path(ref).parts or any(
+                        t.resolve().is_relative_to((root / "src/non_matching").resolve())
+                        for t in targets):
+                    errors.append("production includes parked candidate: " + name)
+    for path in list(root.glob("*.ld")) + list((root / "overlays").glob("*/overlay.ld")):
+        if "non_matching" in path.read_text():
+            errors.append("linker references parked candidate: " + path.relative_to(root).as_posix())
+    return errors
+
+
 def source_inputs(root):
+    errors = production_candidate_errors(root)
+    if errors:
+        raise ValueError("; ".join(errors))
     names = git(root, "ls-files", "-z", "--cached", "--others", "--exclude-standard")
     result = {}
     for raw in sorted(set(names.split(b"\0")) - {b""}):
@@ -82,7 +113,7 @@ def source_inputs(root):
                 or len(path.parts) == 1 and path.suffix in {".ld", ".sym"}):
             continue
         # Tests and prose don't affect the compiled game or accounting implementation.
-        if name.startswith("tools/tests/") or path.suffix.lower() == ".md":
+        if name.startswith(("tools/tests/", "src/non_matching/")) or path.suffix.lower() == ".md":
             continue
         p = root / name
         p.resolve().relative_to(root.resolve())
@@ -111,6 +142,8 @@ def source_inputs(root):
     seen = set()
     while queue:
         name = queue.pop()
+        if name.startswith("src/non_matching/"):
+            raise ValueError("production includes parked candidate: " + name)
         if name in seen:
             continue
         seen.add(name)

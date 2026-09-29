@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/colosseum_final_2.c",
+  "functions": {
+    "OvlFunc_955_2008160": {
+      "id": "overlay:rom_7ddb88:02008160"
+    }
+  }
+}

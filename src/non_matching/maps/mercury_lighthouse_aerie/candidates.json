@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/mercury_lighthouse_aerie.c",
+  "functions": {
+    "OvlFunc_925_200b1c0": {
+      "id": "overlay:rom_7b0400:0200b1c0"
+    }
+  }
+}

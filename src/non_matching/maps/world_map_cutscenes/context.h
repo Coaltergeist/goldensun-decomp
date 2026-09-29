@@ -1,0 +1,6 @@
+#ifndef CANDIDATE_MAPS_WORLD_MAP_CUTSCENES_H
+#define CANDIDATE_MAPS_WORLD_MAP_CUTSCENES_H
+
+extern unsigned int iwram_3001e70;
+
+#endif

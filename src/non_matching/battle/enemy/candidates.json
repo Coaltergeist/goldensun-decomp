@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "source": "src/battle/enemy.c",
+  "functions": {
+    "GetEnemyAttackAnimParam": {
+      "id": "rom:080c2410"
+    },
+    "GetEnemyAttackAnim": {
+      "id": "rom:080c23e8"
+    },
+    "GetEnemyAttackAnimUnk": {
+      "id": "rom:080c23c0"
+    },
+    "Func_80c23a0": {
+      "id": "rom:080c23a0"
+    },
+    "Func_80c24b0": {
+      "id": "rom:080c24b0"
+    }
+  }
+}

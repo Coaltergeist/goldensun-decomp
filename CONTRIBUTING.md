@@ -51,6 +51,13 @@ behavior.
 6. Describe the function's behavior, relevant source reasoning, compiler version,
    and validation in the pull request. Label unmatched investigations clearly.
 
+## Unfinished candidates
+
+Park unfinished C under `src/non_matching/<TU>/<Function>.c`. See the
+[candidate workflow](src/non_matching/README.md) for metadata and isolated
+comparison commands. Keep one primary candidate per function and retain relevant
+credits. Candidates do not receive matching credit.
+
 ## Existing fakematches
 
 `fakematch.txt` records source concerns that still need cleanup. These functions

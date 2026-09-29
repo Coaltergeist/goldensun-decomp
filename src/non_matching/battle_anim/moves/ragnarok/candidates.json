@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/ragnarok.c",
+  "functions": {
+    "Anim_Ragnarok": {
+      "id": "rom:080e94b8"
+    }
+  }
+}

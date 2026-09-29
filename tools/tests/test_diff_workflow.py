@@ -29,6 +29,8 @@ class BaselineTests(unittest.TestCase):
         (self.root / ".gitignore").write_text("*.o\n*.gba\n*.bin\n.build/\nexpected/\n.diff-baselines/\n")
         (self.root / "stage1.ld").write_text("INPUT(src/example.o)\n")
         (self.root / "goldensun.ld").write_text("INPUT(stage1.o)\n")
+        (self.root / "Makefile").write_text("# fixture\n")
+        (self.root / "original_functions.json").write_text("{}\n")
         (self.root / "src").mkdir()
         (self.root / "src/example.c").write_text("unsigned example(void) { return 1; }\n")
         self.old_cwd = Path.cwd()

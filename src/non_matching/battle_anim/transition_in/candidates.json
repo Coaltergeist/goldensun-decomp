@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/transition_in.c",
+  "functions": {
+    "AnimTransitionIn": {
+      "id": "rom:080c08ec"
+    }
+  }
+}

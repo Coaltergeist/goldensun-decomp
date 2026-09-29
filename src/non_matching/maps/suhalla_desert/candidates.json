@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "source": "src/maps/suhalla_desert.c",
+  "functions": {
+    "OvlFunc_960_2008c00": {
+      "id": "overlay:rom_7eaf28:02008c00",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_960_2008b24": {
+      "id": "overlay:rom_7eaf28:02008b24",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_960_2008f50": {
+      "id": "overlay:rom_7eaf28:02008f50",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_960_2009094": {
+      "id": "overlay:rom_7eaf28:02009094",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/vale_plaza.c",
+  "functions": {
+    "OvlFunc_884_200a440": {
+      "id": "overlay:rom_784360:0200a440"
+    }
+  }
+}

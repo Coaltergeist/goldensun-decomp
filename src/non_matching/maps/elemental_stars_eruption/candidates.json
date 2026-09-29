@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/elemental_stars_eruption.c",
+  "functions": {
+    "OvlFunc_897_200a9a4": {
+      "id": "overlay:rom_791794:0200a9a4"
+    },
+    "OvlFunc_897_2008f64": {
+      "id": "overlay:rom_791794:02008f64"
+    }
+  }
+}

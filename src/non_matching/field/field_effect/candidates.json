@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/field/field_effect.c",
+  "functions": {
+    "Func_809bb34": {
+      "id": "rom:0809bb34"
+    }
+  }
+}

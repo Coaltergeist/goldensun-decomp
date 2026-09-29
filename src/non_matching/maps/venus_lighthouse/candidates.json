@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "source": "src/maps/venus_lighthouse.c",
+  "functions": {
+    "OvlFunc_968_2008058": {
+      "id": "overlay:rom_7f2f14:02008058",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_968_200832c": {
+      "id": "overlay:rom_7f2f14:0200832c"
+    },
+    "OvlFunc_968_2008098": {
+      "id": "overlay:rom_7f2f14:02008098",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}

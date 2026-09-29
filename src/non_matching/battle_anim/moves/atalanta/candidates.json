@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/atalanta.c",
+  "functions": {
+    "Anim_Atalanta": {
+      "id": "rom:080dc968",
+      "credit": "Adapted from Salenewt GS2 re_Atalanta.c."
+    }
+  }
+}

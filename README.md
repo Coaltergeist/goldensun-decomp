@@ -20,6 +20,7 @@ colored by matching progress. Click the treemap for unit and function details.
 
 - [Build and diff setup](INSTALL.md)
 - [Contributing and matching requirements](CONTRIBUTING.md)
+- [Unfinished C candidates and comparison workflow](src/non_matching/README.md)
 - [Progress accounting](PROGRESS.md) and [report generation](DECOMP_DEV.md)
 
 The build uses patched GCC 2.96 from
@@ -38,7 +39,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 | `src/` | Game C and assembly, organized by subsystem |
 | `src/maps/` | One translation unit per code overlay, plus shared modules |
 | `src/lib/` | GBA library code, including m4a and Flash support |
-| `src/non_matching/` | Parked C that does not yet match |
+| `src/non_matching/` | Unfinished C candidates, organized by TU |
 | `asm/` | Active disassembly, included from the corresponding source TUs |
 | `data/` | Data assembly and generated build outputs |
 | `overlays/` | Per-overlay linker scripts and generated overlay files |

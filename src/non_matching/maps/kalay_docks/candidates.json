@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/kalay_docks.c",
+  "functions": {
+    "OvlFunc_942_2008958": {
+      "id": "overlay:rom_7c6bac:02008958"
+    },
+    "OvlFunc_942_2008b68": {
+      "id": "overlay:rom_7c6bac:02008b68"
+    }
+  }
+}

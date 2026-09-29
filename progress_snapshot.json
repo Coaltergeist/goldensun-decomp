@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3949,
+  "input_count": 3930,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "97fc088025b31d23fc8b46c7ba1d389f7f2095e7c62303c714375c74d62c6cba",
+  "source_fingerprint": "c329b0df588ffe9a56f7b899cc0dd085e8e39ccb16d40a608fef1771c54d6cbe",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -42577,10 +42577,10 @@
       "stage1.map": "79d4bca9d7c4029675f0b5f7a8c9eb5030b863427ccf2cc2f054618b34a0ffed"
     },
     "build_stamps": {
-      "agbcc.stamp": "ef4a4b802ee621683eeb422ebac01cbefeeede90de89379a7851777cc6aef6b7",
-      "binutils.stamp": "2affac8c3966e1b763a9f85e391cd2306c299efaf5a58f8ab409557ae6322afb",
-      "gcc296.stamp": "9c87a35249a267bf03941d6ab743d69e5e2b94e54a6e3f5b7414f4f5e743e9ac",
-      "host.stamp": "751d16a3df27c96a83539f93ac0dd8179f086718846d341005e7c6b250bdc2e4"
+      "agbcc.stamp": "948f703d20a3ae0d7bda356c54978b5a807b36d392a0c669bc08e344ba0f348d",
+      "binutils.stamp": "2954c656d67d1d1cc362b32b5eea04f877fb4f0fd40110a3d5f0f18affd46746",
+      "gcc296.stamp": "ca81f30fa585f263aa0b44e3ebcade7eaf61e4d1f72921c7ceed494be9da36d8",
+      "host.stamp": "75335f64c6ef06748ef1cbd4777c32dba7bdc6eb3b74bc24dc6e4aab04bc3af2"
     },
     "gate": "make -j1 clean && make -j1 compare",
     "overlays": {

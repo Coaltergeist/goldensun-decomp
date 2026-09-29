@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/rpg/move.c",
+  "functions": {
+    "HasMove": {
+      "id": "rom:08078bc0"
+    }
+  }
+}

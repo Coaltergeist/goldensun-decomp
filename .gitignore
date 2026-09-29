@@ -82,3 +82,6 @@ output.txt
 # Local progress verification artifacts (metadata snapshots are tracked)
 .progress/
 /report.json
+
+# Isolated nonmatching candidate comparisons
+/build/non_matching/

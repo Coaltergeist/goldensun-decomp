@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/maps/fuchin_temple.c",
+  "functions": {
+    "OvlFunc_926_200c1c4": {
+      "id": "overlay:rom_7b2078:0200c1c4"
+    },
+    "OvlFunc_926_200a508": {
+      "id": "overlay:rom_7b2078:0200a508"
+    },
+    "OvlFunc_926_200c140": {
+      "id": "overlay:rom_7b2078:0200c140"
+    }
+  }
+}

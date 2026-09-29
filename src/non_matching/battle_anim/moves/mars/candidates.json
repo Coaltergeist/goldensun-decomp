@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/mars.c",
+  "functions": {
+    "Anim_Mars": {
+      "id": "rom:080e08c0"
+    }
+  }
+}

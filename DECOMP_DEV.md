@@ -36,7 +36,8 @@ previous snapshot is retained; logs are in
 `.progress/verification-*/build.log`.
 
 Include the generated snapshot with source changes. Documentation, workflow,
-and test-only changes do not require regeneration.
+test-only changes, and parked candidates in `src/non_matching/` do not require
+regeneration. Production sources must not include parked files.
 
 Check freshness without a ROM or game compiler, or export the report locally:
 

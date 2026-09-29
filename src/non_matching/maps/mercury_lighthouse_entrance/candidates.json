@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "source": "src/maps/mercury_lighthouse_entrance.c",
+  "functions": {
+    "OvlFunc_923_2008d98": {
+      "id": "overlay:rom_7aa430:02008d98",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_923_2008528": {
+      "id": "overlay:rom_7aa430:02008528"
+    },
+    "OvlFunc_923_2008cc0": {
+      "id": "overlay:rom_7aa430:02008cc0",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}

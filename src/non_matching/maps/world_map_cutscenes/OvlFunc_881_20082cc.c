@@ -1,0 +1,1 @@
+unsigned int OvlFunc_881_20082cc(unsigned char *p) { unsigned short *base = (unsigned short *)iwram_3001e70; unsigned char *q = *(unsigned char **)(p + 0x50); *(unsigned short *)(q + 0x1e) = base[0x8d]; q[0x26] = 0; return 1; }

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/vault_rooms_1.c",
+  "functions": {
+    "OvlFunc_899_200c7fc": {
+      "id": "overlay:rom_794ac0:0200c7fc"
+    },
+    "OvlFunc_899_200c7bc": {
+      "id": "overlay:rom_794ac0:0200c7bc"
+    }
+  }
+}

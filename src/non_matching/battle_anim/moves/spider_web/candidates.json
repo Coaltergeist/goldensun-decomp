@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/spider_web.c",
+  "functions": {
+    "Anim_SpiderWeb": {
+      "id": "rom:080ccebc"
+    }
+  }
+}

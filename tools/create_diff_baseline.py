@@ -16,6 +16,7 @@ import sys
 import tempfile
 
 from build_deps import linker_dependencies
+from candidate_build import production_inputs, compiler_inputs
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -62,6 +63,8 @@ def create(output):
     run = Path(tempfile.mkdtemp(prefix="verification-", dir=work))
     print("Verification log:", run / "build.log", flush=True)
     before = source_fingerprint()
+    production_before = production_inputs(ROOT)
+    compilers_before = compiler_inputs(ROOT)
     with (run / "build.log").open("w") as log:
         for target in ("clean", "compare"):
             subprocess.run(["make", "-j1", target], stdout=log, stderr=subprocess.STDOUT, check=True)
@@ -83,7 +86,10 @@ def create(output):
         shutil.copy2(source, dest)
         if sha(dest) != entries[rel]:
             raise ValueError("copy changed: " + rel)
-    manifest = dict(schema=1, verified_at=datetime.now(timezone.utc).isoformat(),
+    if production_before != production_inputs(ROOT) or compilers_before != compiler_inputs(ROOT):
+        raise ValueError("production or compiler inputs changed during verification")
+    manifest = dict(schema=2, production_inputs=production_before,
+        candidate_compilers=compilers_before, verified_at=datetime.now(timezone.utc).isoformat(),
         revision=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         dirty=bool(subprocess.check_output(["git", "status", "--porcelain"])),
         source_fingerprint=before, gate="make -j1 clean && make -j1 compare",

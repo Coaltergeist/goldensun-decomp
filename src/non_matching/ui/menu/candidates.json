@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/ui/menu.c",
+  "functions": {
+    "Func_801c9c8": {
+      "id": "rom:0801c9c8"
+    },
+    "Func_801b36c": {
+      "id": "rom:0801b36c"
+    },
+    "Func_801d94c": {
+      "id": "rom:0801d94c"
+    },
+    "Func_801ce48": {
+      "id": "rom:0801ce48"
+    },
+    "Func_801c154": {
+      "id": "rom:0801c154"
+    },
+    "Func_801c46c": {
+      "id": "rom:0801c46c"
+    }
+  }
+}

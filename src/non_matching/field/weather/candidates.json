@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/field/weather.c",
+  "functions": {
+    "Func_80958a8": {
+      "id": "rom:080958a8"
+    }
+  }
+}

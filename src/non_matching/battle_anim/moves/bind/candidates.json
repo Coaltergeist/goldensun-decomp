@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/bind.c",
+  "functions": {
+    "Anim_Bind": {
+      "id": "rom:080d05fc"
+    }
+  }
+}

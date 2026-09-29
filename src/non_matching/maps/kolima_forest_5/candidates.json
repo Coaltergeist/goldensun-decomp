@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/kolima_forest_5.c",
+  "functions": {
+    "KolimaForest5_MapInit": {
+      "id": "overlay:rom_7a4370:02009070"
+    }
+  }
+}

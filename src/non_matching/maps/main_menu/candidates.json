@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/main_menu.c",
+  "functions": {
+    "OvlFunc_880_2008384": {
+      "id": "overlay:rom_7795e8:02008384"
+    },
+    "OvlFunc_880_20092c8": {
+      "id": "overlay:rom_7795e8:020092c8"
+    }
+  }
+}

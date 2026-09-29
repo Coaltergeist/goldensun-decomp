@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/kalay.c",
+  "functions": {
+    "OvlFunc_936_20080ac": {
+      "id": "overlay:rom_7c097c:020080ac"
+    }
+  }
+}

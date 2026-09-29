@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/rapid_slash.c",
+  "functions": {
+    "Func_80e38b8": {
+      "id": "rom:080e38b8"
+    }
+  }
+}

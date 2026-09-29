@@ -1,0 +1,1 @@
+unsigned int Func_80108c4(unsigned int flags) { unsigned short *state = (unsigned short *)iwram_3001e70; unsigned int old = state[10]; unsigned int mask = 0xf1ff; unsigned int bits = flags & 0xe00; mask &= old; state[10] = mask | bits; return flags; }

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/kolima.c",
+  "functions": {
+    "OvlFunc_911_2008230": {
+      "id": "overlay:rom_79e5c0:02008230"
+    }
+  }
+}

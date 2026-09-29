@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source": "src/maps/babis_palace.c",
+  "functions": {
+    "OvlFunc_952_200bfc4": {
+      "id": "overlay:rom_7d768c:0200bfc4"
+    },
+    "OvlFunc_952_2008524": {
+      "id": "overlay:rom_7d768c:02008524"
+    },
+    "OvlFunc_952_2008564": {
+      "id": "overlay:rom_7d768c:02008564"
+    },
+    "OvlFunc_952_2008108": {
+      "id": "overlay:rom_7d768c:02008108"
+    }
+  }
+}

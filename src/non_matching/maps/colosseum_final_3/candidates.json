@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/maps/colosseum_final_3.c",
+  "functions": {
+    "OvlFunc_956_20081c8": {
+      "id": "overlay:rom_7e0928:020081c8"
+    },
+    "OvlFunc_956_200937c": {
+      "id": "overlay:rom_7e0928:0200937c"
+    },
+    "ColosseumFinal3_MapInit": {
+      "id": "overlay:rom_7e0928:02008da4"
+    }
+  }
+}

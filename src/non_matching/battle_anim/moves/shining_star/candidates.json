@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/shining_star.c",
+  "functions": {
+    "Anim_ShiningStar": {
+      "id": "rom:080d1350"
+    }
+  }
+}

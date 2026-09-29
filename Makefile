@@ -190,7 +190,7 @@ src/lib/agb_flash/agb_flash_at.o: src/lib/agb_flash/agb_flash_at.c .build/agbcc.
 
 
 # src/lib/m4a/ excluded from the default gcc296 C_SRCS (built by the rule above).
-C_SRCS  := $(filter-out src/lib/m4a/%,$(wildcard *.c */*.c */*/*.c))
+C_SRCS  := $(filter-out src/lib/m4a/% src/non_matching/% build/%,$(wildcard *.c */*.c */*/*.c))
 C_OBJS  := $(C_SRCS:.c=.o)
 C_GEN_S := $(C_SRCS:.c=.s)
 C_GEN_I := $(C_SRCS:.c=.i)

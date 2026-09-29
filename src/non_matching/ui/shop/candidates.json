@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/ui/shop.c",
+  "functions": {
+    "Func_80b09fc": {
+      "id": "rom:080b09fc"
+    },
+    "Func_80b06c0": {
+      "id": "rom:080b06c0"
+    },
+    "Func_80b0a20": {
+      "id": "rom:080b0a20"
+    }
+  }
+}

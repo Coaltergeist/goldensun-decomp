@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/vault_2.c",
+  "functions": {
+    "OvlFunc_901_2008640": {
+      "id": "overlay:rom_797990:02008640"
+    },
+    "OvlFunc_901_2008864": {
+      "id": "overlay:rom_797990:02008864"
+    }
+  }
+}

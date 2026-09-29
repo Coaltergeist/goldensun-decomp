@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/actor/player.c",
+  "functions": {
+    "Func_800eba0": {
+      "id": "rom:0800eba0"
+    }
+  }
+}

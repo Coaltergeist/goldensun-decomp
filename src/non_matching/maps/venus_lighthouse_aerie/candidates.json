@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/venus_lighthouse_aerie.c",
+  "functions": {
+    "OvlFunc_969_20083a0": {
+      "id": "overlay:rom_7f6e64:020083a0"
+    }
+  }
+}

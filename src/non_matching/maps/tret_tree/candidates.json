@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/maps/tret_tree.c",
+  "functions": {
+    "OvlFunc_918_200985c": {
+      "id": "overlay:rom_7a5214:0200985c"
+    },
+    "OvlFunc_918_20097ec": {
+      "id": "overlay:rom_7a5214:020097ec"
+    },
+    "OvlFunc_918_200962c": {
+      "id": "overlay:rom_7a5214:0200962c",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_918_2009244": {
+      "id": "overlay:rom_7a5214:02009244",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}
