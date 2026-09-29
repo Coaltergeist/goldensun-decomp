@@ -5578,7 +5578,7 @@
     "rom:080e0524": "c",
     "rom:080e0564": "assembly",
     "rom:080e08c0": "assembly",
-    "rom:080e0c84": "assembly",
+    "rom:080e0c84": "c",
     "rom:080e1040": "assembly",
     "rom:080e155c": "c",
     "rom:080e15e8": "assembly",
@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3950,
+  "input_count": 3949,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "b217306acd50bb4463858fba4aaf37cde8c21e76758ab838596da0afc1482a00",
+  "source_fingerprint": "97fc088025b31d23fc8b46c7ba1d389f7f2095e7c62303c714375c74d62c6cba",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -42168,7 +42168,7 @@
       "asm/maps/world_map_cutscenes.o": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
       "asm/maps/xian.o": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
       "asm/maps/xian_rooms.o": "98ce1de4352d4b987ec56a4d1b4f1a58d4000259885d94db094d33fc0b771753",
-      "goldensun.elf": "931bbf0ffcbb8154d95bddd9596c8569337d53c83bad329b398a6fd6a7783690",
+      "goldensun.elf": "f005d05598c442c8d94f7a461287e351282436a0a462ee8e580177c9678201cf",
       "overlays/rom_779188/overlay.elf": "3138e995aacb7e7f2346fa29afc77bd48eab8118baac8c0873e8836b21927707",
       "overlays/rom_779188/overlay.map": "60678f9c8f4bcb3775d4d88eaddf29cedd76440b4101d6343ff2d3c35130c34c",
       "overlays/rom_7795e8/overlay.elf": "a51f8505a0ffc68a37a213e617722f203897c68cd7cd6c2ad081d0f4adc5d5f7",
@@ -42405,7 +42405,7 @@
       "src/battle_anim/moves/gaia.o": "daca6ed19207d68424638f815ba1aea2d6662bc9334db414ace7bfe4df8b15f9",
       "src/battle_anim/moves/ground.o": "a3ce30c39fb0bb4c863deb59754c6ab30e42ab72a8b5f668aa0330001575a4da",
       "src/battle_anim/moves/growth.o": "f725064a8592c346dc955218ad13b2e113479f0bb4ad0d573558e8245b53e9d6",
-      "src/battle_anim/moves/hail.o": "00a8ca388cc479bbefc63d3f1eb400fdf78b28267a9dda3cad7642c458110685",
+      "src/battle_anim/moves/hail.o": "4df0d8e7c9592ea0bdddaff52b2937d2c9103eff789173bd26f8563e7f536392",
       "src/battle_anim/moves/haunt.o": "79b39d8510f5ee1fd7d32d0c1f5dd935d7361ccc4020b316afe59412919da17c",
       "src/battle_anim/moves/haunt_attack.o": "8e39ea95356fdbfb28bee7048ae3fa6fa61e5ae7fc38764b4155107f1df103ee",
       "src/battle_anim/moves/heal.o": "f45e631492df5bbba4ad57062c28f3f4739d50fed4735170f01502eba556b843",
