@@ -10,14 +10,15 @@ Each rectangle represents a current production TU. Its area is the total
 original byte size of its known functions; shared modules count once. Source
 links and function details use the current TU and symbol names.
 
-Functions count as **100%** when implemented in C and absent from the fakematch
-registry, and **0%** otherwise. A TU's score is the byte-weighted average of its
-functions. These scores populate the report's `fuzzy_match_percent` field for
-display; partially matching instructions receive no credit.
+Verified production C outside the fakematch registry contributes 100%.
+Parked candidates contribute measured objdiff similarity; remaining functions
+contribute 0%. TU and overall fuzzy scores weight each function by its original
+byte size. A function occupying 1% of known code at 98% similarity contributes
+0.98 percentage points.
 
-Green indicates that all known function bytes in the TU qualify under this
-policy. Assets, unidentified code, and separate "fully linked" completion
-measurements are outside this report's scope.
+Perfect-match counts remain limited to verified production C. Candidate scores,
+even 100%, do not promote drafts. Similarity does not prove equivalent behavior.
+Assets, unidentified code, and separate fully-linked measures are not reported.
 
 ## Updating the snapshot
 
@@ -39,7 +40,27 @@ Include the generated snapshot with source changes. Documentation, workflow,
 test-only changes, and parked candidates in `src/non_matching/` do not require
 regeneration. Production sources must not include parked files.
 
-Check freshness without a ROM or game compiler, or export the report locally:
+## Candidate scores
+
+Install the [objdiff CLI v3.8.1 release](https://github.com/encounter/objdiff/releases/tag/v3.8.1)
+and follow the [candidate comparison setup](src/non_matching/README.md#compare-a-candidate)
+for a verified reference. Then run:
+
+~~~sh
+python3 tools/score_candidates.py --expected .diff-baselines/candidates --objdiff /path/to/objdiff-cli
+~~~
+
+This compiles each candidate with its declared companions in its production TU,
+checks the unchanged control, and scores only the replaced function using
+objdiff's report settings. Original byte spans supply the report weights.
+Temporary objects and diffs stay under `build/non_matching/`.
+
+Include `candidate_scores.json` with candidate changes. Refresh it after changing
+candidate C, context headers, manifests, or `progress_snapshot.json`. Failed
+scoring retains the previous file; stale scores stop export. The CLI binary is
+checked against the pinned release checksums.
+
+Check freshness without a ROM, game compiler, or objdiff, or export locally:
 
 ~~~sh
 python3 tools/decomp_progress.py check
@@ -55,6 +76,5 @@ Pull requests, pushes to `main`, and manual workflow runs validate the snapshot
 and generate the report. Only successful pushes to `main` upload
 `report.json` as `USA_report` for decomp.dev.
 
-CI checks snapshot freshness and consistency without the ROM or game compiler.
-It does not regenerate the snapshot, rerun the game comparison, or replace
-source review.
+CI checks both snapshots and candidate freshness without the ROM or game compiler.
+It does not regenerate snapshots, rerun comparisons, or replace source review.

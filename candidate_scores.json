@@ -1,0 +1,4139 @@
+{
+  "candidate_fingerprint": "1aeda73a79b13838a747c017809838f232f07142328875199214024402b194c9",
+  "functions": {
+    "common:common0:00000000": {
+      "candidate": "src/non_matching/maps/common/common0/OvlFunc_common0_0.c",
+      "candidate_size": 22,
+      "evaluated_with": [
+        "OvlFunc_common0_0"
+      ],
+      "fuzzy_match_percent": 53.333332,
+      "name": "OvlFunc_common0_0",
+      "object_sha256": "7ebae7c06cf77754ff93aac5489ea841b0186e6ec3681db0414deda58977cdd8",
+      "reference_sha256": "9b076fcd09c594d21ecbcdca8379f2596f417187081b72afdd69be8347fe2ec4",
+      "source": "src/maps/common/common0.c",
+      "target_size": 24
+    },
+    "common:common0:000000d4": {
+      "candidate": "src/non_matching/maps/common/common0/OvlFunc_common0_d4.c",
+      "candidate_size": 54,
+      "evaluated_with": [
+        "OvlFunc_common0_d4"
+      ],
+      "fuzzy_match_percent": 90.53571,
+      "name": "OvlFunc_common0_d4",
+      "object_sha256": "391e11e69256e960f400429be9ad06ab12d4de0fb2568598ab05a8b33c89881a",
+      "reference_sha256": "9b076fcd09c594d21ecbcdca8379f2596f417187081b72afdd69be8347fe2ec4",
+      "source": "src/maps/common/common0.c",
+      "target_size": 56
+    },
+    "common:common1:00000588": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_common1_588"
+      ],
+      "fuzzy_match_percent": 81.702705,
+      "name": "OvlFunc_common1_588",
+      "object_sha256": "a8dec87315b8b6d704f55a7a7987085c8e0caf76cc371ddb338c3692f8bae44f",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 92
+    },
+    "common:common1:00000920": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_920.c",
+      "candidate_size": 1264,
+      "evaluated_with": [
+        "OvlFunc_common1_920"
+      ],
+      "fuzzy_match_percent": 74.067474,
+      "name": "OvlFunc_common1_920",
+      "object_sha256": "dde74d53e51c62fab88e950533f786106677e8e33123e36aaa1ce0f2ab6a0e71",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 1264
+    },
+    "common:common1:000015b8": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_15b8.c",
+      "candidate_size": 78,
+      "evaluated_with": [
+        "OvlFunc_common1_15b8"
+      ],
+      "fuzzy_match_percent": 78.97059,
+      "name": "OvlFunc_common1_15b8",
+      "object_sha256": "2783938163f03d41014c0cd19e4866413ce095a8f2941c167f140a80f2582324",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 80
+    },
+    "common:common1:000016cc": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_16cc.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "OvlFunc_common1_16cc"
+      ],
+      "fuzzy_match_percent": 51.095238,
+      "name": "OvlFunc_common1_16cc",
+      "object_sha256": "3cbfdcff958f759c3f031e5bce9300fd75b53e7342e9034d6cf5c96827d4a2d2",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 44
+    },
+    "common:common1:000017c0": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_17c0.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_common1_17c0"
+      ],
+      "fuzzy_match_percent": 90.91892,
+      "name": "OvlFunc_common1_17c0",
+      "object_sha256": "241a37852db10750ef6d0c95221094b0848c103bff663b06ea86b0c57fc7b884",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 84
+    },
+    "common:common1:00001b08": {
+      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_1b08.c",
+      "candidate_size": 968,
+      "evaluated_with": [
+        "OvlFunc_common1_1b08"
+      ],
+      "fuzzy_match_percent": 66.947136,
+      "name": "OvlFunc_common1_1b08",
+      "object_sha256": "4f79c47f50fd168e8c0b8f5c90ae780bae0133232c022f54e197d3687ea231ce",
+      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "source": "src/maps/common/common1.c",
+      "target_size": 964
+    },
+    "common:common2:00000254": {
+      "candidate": "src/non_matching/maps/common/common2/OvlFunc_common2_254.c",
+      "candidate_size": 50,
+      "evaluated_with": [
+        "OvlFunc_common2_254"
+      ],
+      "fuzzy_match_percent": 77.375,
+      "name": "OvlFunc_common2_254",
+      "object_sha256": "f3962a2706df085fd98febf43cb4c79c42063e113ede06df2b624e3c4d85a377",
+      "reference_sha256": "ee9b4962bd06323b3e4861b2ab256df8bf98c65e83c69856bc61d04f9084f3ca",
+      "source": "src/maps/common/common2.c",
+      "target_size": 56
+    },
+    "overlay:rom_7795e8:02008384": {
+      "candidate": "src/non_matching/maps/main_menu/OvlFunc_880_2008384.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "OvlFunc_880_2008384"
+      ],
+      "fuzzy_match_percent": 59.5625,
+      "name": "OvlFunc_880_2008384",
+      "object_sha256": "4d8e14ea86723c22d230c819a0016587cd55021ecc0e1c93b816a473362453b5",
+      "reference_sha256": "c0d200f42960c738ac59f5f758d032f681edc4dc03ee4e92729e64e011bbaec3",
+      "source": "src/maps/main_menu.c",
+      "target_size": 72
+    },
+    "overlay:rom_7795e8:020092c8": {
+      "candidate": "src/non_matching/maps/main_menu/OvlFunc_880_20092c8.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_880_20092c8"
+      ],
+      "fuzzy_match_percent": 97.138885,
+      "name": "OvlFunc_880_20092c8",
+      "object_sha256": "b36e4ef16948431679c622c69c3b3e44e723796a3e1cd9a69b6e04430ae00901",
+      "reference_sha256": "c0d200f42960c738ac59f5f758d032f681edc4dc03ee4e92729e64e011bbaec3",
+      "source": "src/maps/main_menu.c",
+      "target_size": 76
+    },
+    "overlay:rom_77a7c8:0200811c": {
+      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_200811c.c",
+      "candidate_size": 28,
+      "evaluated_with": [
+        "OvlFunc_881_200811c"
+      ],
+      "fuzzy_match_percent": 56.666668,
+      "name": "OvlFunc_881_200811c",
+      "object_sha256": "0e35a5b1100061571824bb0f195cc73a3ef287f9b85e2366fa2d5b40e1201027",
+      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "source": "src/maps/world_map_cutscenes.c",
+      "target_size": 32
+    },
+    "overlay:rom_77a7c8:020082cc": {
+      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_20082cc.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "OvlFunc_881_20082cc"
+      ],
+      "fuzzy_match_percent": 78.0625,
+      "name": "OvlFunc_881_20082cc",
+      "object_sha256": "2bee8aceb8d682e7170d9a3a70afad73f12e1c34f614dba9244daf8e60e0e636",
+      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "source": "src/maps/world_map_cutscenes.c",
+      "target_size": 36
+    },
+    "overlay:rom_77a7c8:020082f0": {
+      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_20082f0.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "OvlFunc_881_20082f0"
+      ],
+      "fuzzy_match_percent": 88.23529,
+      "name": "OvlFunc_881_20082f0",
+      "object_sha256": "659a686c125b5b64d41527a9f56c6fdce3e53cdd02f3c0b6c18d600f4996473a",
+      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "source": "src/maps/world_map_cutscenes.c",
+      "target_size": 36
+    },
+    "overlay:rom_77a7c8:02008314": {
+      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_2008314.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "OvlFunc_881_2008314"
+      ],
+      "fuzzy_match_percent": 85.52,
+      "name": "OvlFunc_881_2008314",
+      "object_sha256": "556e67b720040bee79ac966ca08e5dab1358137d7582f94e355ba0c18c5c780b",
+      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "source": "src/maps/world_map_cutscenes.c",
+      "target_size": 60
+    },
+    "overlay:rom_77a7c8:0200a81c": {
+      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_200a81c.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "OvlFunc_881_200a81c"
+      ],
+      "fuzzy_match_percent": 90.90909,
+      "name": "OvlFunc_881_200a81c",
+      "object_sha256": "c72ad10af4d5008e0fb4613f6474797ae473bf4544d91c2194c7525f68487126",
+      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "source": "src/maps/world_map_cutscenes.c",
+      "target_size": 60
+    },
+    "overlay:rom_77dd1c:02008030": {
+      "candidate": "src/non_matching/maps/vale_river_prologue/OvlFunc_882_2008030.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "OvlFunc_882_2008030"
+      ],
+      "fuzzy_match_percent": 81.73913,
+      "name": "OvlFunc_882_2008030",
+      "object_sha256": "0ad3e37cb95d63a3d2e7d228117b31651532866f804c448d36652935629975b3",
+      "reference_sha256": "5ed839c7f13bc0de65d11a471bb5fad9ff8cdccf493adc4ee3a1375f26e46eeb",
+      "source": "src/maps/vale_river_prologue.c",
+      "target_size": 52
+    },
+    "overlay:rom_77dd1c:02009498": {
+      "candidate": "src/non_matching/maps/vale_river_prologue/OvlFunc_882_2009498.c",
+      "candidate_size": 104,
+      "evaluated_with": [
+        "OvlFunc_882_2009498"
+      ],
+      "fuzzy_match_percent": 74.20755,
+      "name": "OvlFunc_882_2009498",
+      "object_sha256": "b2c11e681e3afe019c19835d5662f57140e52134bd68e56068eadaab23ae4ad0",
+      "reference_sha256": "5ed839c7f13bc0de65d11a471bb5fad9ff8cdccf493adc4ee3a1375f26e46eeb",
+      "source": "src/maps/vale_river_prologue.c",
+      "target_size": 116
+    },
+    "overlay:rom_784360:0200a440": {
+      "candidate": "src/non_matching/maps/vale_plaza/OvlFunc_884_200a440.c",
+      "candidate_size": 288,
+      "evaluated_with": [
+        "OvlFunc_884_200a440"
+      ],
+      "fuzzy_match_percent": 58.911766,
+      "name": "OvlFunc_884_200a440",
+      "object_sha256": "27d71f6f215fd88665d93f22e41e56736ad093debbb415fc51fffe406afb32da",
+      "reference_sha256": "0a7154466ba5abfd758a10c4a2ea037d105018381b8aa365826a52dfb1a2d3cc",
+      "source": "src/maps/vale_plaza.c",
+      "target_size": 292
+    },
+    "overlay:rom_787e04:02008e34": {
+      "candidate": "src/non_matching/maps/vale_rooms_2/OvlFunc_887_2008e34.c",
+      "candidate_size": 196,
+      "evaluated_with": [
+        "OvlFunc_887_2008e34"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_887_2008e34",
+      "object_sha256": "a540f3b36f344caa8252425ccc6587c81022ebbac162facebb314ece3439bf4e",
+      "reference_sha256": "a59e12d5e99cc1714364d389fa342084afe884c36053eae865186575316e6fc1",
+      "source": "src/maps/vale_rooms_2.c",
+      "target_size": 196
+    },
+    "overlay:rom_78dee8:02008258": {
+      "candidate": "src/non_matching/maps/sol/OvlFunc_895_2008258.c",
+      "candidate_size": 352,
+      "evaluated_with": [
+        "OvlFunc_895_2008258"
+      ],
+      "fuzzy_match_percent": 79.141846,
+      "name": "OvlFunc_895_2008258",
+      "object_sha256": "59f8cc1f50027a8edc2e8b77996150dfd96a7593f51138421f889992685c03a7",
+      "reference_sha256": "7b0535d6e40846f7a3fd81797a974be82fe5160312f660c301a44e035f35bf32",
+      "source": "src/maps/sol.c",
+      "target_size": 356
+    },
+    "overlay:rom_78dee8:020088f4": {
+      "candidate": "src/non_matching/maps/sol/Sol_MapInit.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Sol_MapInit"
+      ],
+      "fuzzy_match_percent": 80.391304,
+      "name": "Sol_MapInit",
+      "object_sha256": "79f66be955de136f7f4a9f6cabc0784291d25d96af67585e7dd4ae9707398b53",
+      "reference_sha256": "7b0535d6e40846f7a3fd81797a974be82fe5160312f660c301a44e035f35bf32",
+      "source": "src/maps/sol.c",
+      "target_size": 56
+    },
+    "overlay:rom_791794:02008f64": {
+      "candidate": "src/non_matching/maps/elemental_stars_eruption/OvlFunc_897_2008f64.c",
+      "candidate_size": 288,
+      "evaluated_with": [
+        "OvlFunc_897_2008f64"
+      ],
+      "fuzzy_match_percent": 92.39844,
+      "name": "OvlFunc_897_2008f64",
+      "object_sha256": "90e22d6ccb59fad03faaf1230fdd111e176900eeba9986aca44466341f1f88f8",
+      "reference_sha256": "0bc81c48a893fc13484a95fe04659feffa023a2474fa2f6b5772bf49e54a55c1",
+      "source": "src/maps/elemental_stars_eruption.c",
+      "target_size": 288
+    },
+    "overlay:rom_791794:0200a9a4": {
+      "candidate": "src/non_matching/maps/elemental_stars_eruption/OvlFunc_897_200a9a4.c",
+      "candidate_size": 504,
+      "evaluated_with": [
+        "OvlFunc_897_200a9a4"
+      ],
+      "fuzzy_match_percent": 96.331795,
+      "name": "OvlFunc_897_200a9a4",
+      "object_sha256": "7b9cae49ae6930cefa45edd0e63f800c2a570675ac7f7c36f1e9b538faad5649",
+      "reference_sha256": "0bc81c48a893fc13484a95fe04659feffa023a2474fa2f6b5772bf49e54a55c1",
+      "source": "src/maps/elemental_stars_eruption.c",
+      "target_size": 508
+    },
+    "overlay:rom_793768:02008314": {
+      "candidate": "src/non_matching/maps/vault_1/OvlFunc_898_2008314.c",
+      "candidate_size": 152,
+      "evaluated_with": [
+        "OvlFunc_898_2008314"
+      ],
+      "fuzzy_match_percent": 92.685715,
+      "name": "OvlFunc_898_2008314",
+      "object_sha256": "baa089e1dd9248a3aa64b7a89280195771be87eb1564de1a65927a37f06e9bf8",
+      "reference_sha256": "9a9c5a0b5d62347f1843ddb9ea27aaed7fa351be6517b0643b21b14e2f6ac904",
+      "source": "src/maps/vault_1.c",
+      "target_size": 152
+    },
+    "overlay:rom_793768:02008cfc": {
+      "candidate": "src/non_matching/maps/vault_1/OvlFunc_898_2008cfc.c",
+      "candidate_size": 124,
+      "evaluated_with": [
+        "OvlFunc_898_2008cfc"
+      ],
+      "fuzzy_match_percent": 99.791664,
+      "name": "OvlFunc_898_2008cfc",
+      "object_sha256": "bd8994b8a899e694bbe3d95e4f83c2f6879ebc220735acfd092fbe428d18e532",
+      "reference_sha256": "9a9c5a0b5d62347f1843ddb9ea27aaed7fa351be6517b0643b21b14e2f6ac904",
+      "source": "src/maps/vault_1.c",
+      "target_size": 124
+    },
+    "overlay:rom_794ac0:0200c7bc": {
+      "candidate": "src/non_matching/maps/vault_rooms_1/OvlFunc_899_200c7bc.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "OvlFunc_899_200c7bc"
+      ],
+      "fuzzy_match_percent": 76.935486,
+      "name": "OvlFunc_899_200c7bc",
+      "object_sha256": "662347a97781904e801fa5241a32b045a8f3e59bd9112de83da5803a2c96a733",
+      "reference_sha256": "23950e18713483a9b5f795821c372b2005d2f604b1322337e733bb30096bedb3",
+      "source": "src/maps/vault_rooms_1.c",
+      "target_size": 64
+    },
+    "overlay:rom_794ac0:0200c7fc": {
+      "candidate": "src/non_matching/maps/vault_rooms_1/OvlFunc_899_200c7fc.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "OvlFunc_899_200c7fc"
+      ],
+      "fuzzy_match_percent": 62.666668,
+      "name": "OvlFunc_899_200c7fc",
+      "object_sha256": "ec1f0b0a5479061635c64e0e5bcfe51c4ff7d8a8b86f402fd5b40bef9caa9f57",
+      "reference_sha256": "23950e18713483a9b5f795821c372b2005d2f604b1322337e733bb30096bedb3",
+      "source": "src/maps/vault_rooms_1.c",
+      "target_size": 68
+    },
+    "overlay:rom_797990:02008640": {
+      "candidate": "src/non_matching/maps/vault_2/OvlFunc_901_2008640.c",
+      "candidate_size": 116,
+      "evaluated_with": [
+        "OvlFunc_901_2008640"
+      ],
+      "fuzzy_match_percent": 85.9375,
+      "name": "OvlFunc_901_2008640",
+      "object_sha256": "58409d4db8434324c09ee8af51c95182ad932eadbccf064db97a6c479373e3d3",
+      "reference_sha256": "49ecb394e2d2e406553f5b111be576ed0b231abccd75c35b6ef954086e1ac91c",
+      "source": "src/maps/vault_2.c",
+      "target_size": 116
+    },
+    "overlay:rom_797990:02008864": {
+      "candidate": "src/non_matching/maps/vault_2/OvlFunc_901_2008864.c",
+      "candidate_size": 66,
+      "evaluated_with": [
+        "OvlFunc_901_2008864"
+      ],
+      "fuzzy_match_percent": 96.15385,
+      "name": "OvlFunc_901_2008864",
+      "object_sha256": "3c4a2d2b0cbe10b7cbde6d49967703797cc2474a3942cd1b42d8b11cd9a4dd0a",
+      "reference_sha256": "49ecb394e2d2e406553f5b111be576ed0b231abccd75c35b6ef954086e1ac91c",
+      "source": "src/maps/vault_2.c",
+      "target_size": 68
+    },
+    "overlay:rom_798dc4:020084f4": {
+      "candidate": "src/non_matching/maps/goma_cave_entry/GomaCaveEntry_MapInit.c",
+      "candidate_size": 388,
+      "evaluated_with": [
+        "GomaCaveEntry_MapInit"
+      ],
+      "fuzzy_match_percent": 95.902435,
+      "name": "GomaCaveEntry_MapInit",
+      "object_sha256": "1b49c16b185fc308ba87e4f8520541a52f1f50e3e123fedc9e117e0d6f7d7bff",
+      "reference_sha256": "1c6e4c6c231204a2a875c1cc75d3b1823a675f8b4db48879916c911ee71b53ff",
+      "source": "src/maps/goma_cave_entry.c",
+      "target_size": 392
+    },
+    "overlay:rom_798dc4:02008fc8": {
+      "candidate": "src/non_matching/maps/goma_cave_entry/OvlFunc_903_2008fc8.c",
+      "candidate_size": 188,
+      "evaluated_with": [
+        "OvlFunc_903_2008fc8"
+      ],
+      "fuzzy_match_percent": 95.39081,
+      "name": "OvlFunc_903_2008fc8",
+      "object_sha256": "05c39bb61813e8cb7e3ac25f24f4e1394118689125ef9b3ee9d5673bc5399a58",
+      "reference_sha256": "1c6e4c6c231204a2a875c1cc75d3b1823a675f8b4db48879916c911ee71b53ff",
+      "source": "src/maps/goma_cave_entry.c",
+      "target_size": 188
+    },
+    "overlay:rom_79c738:0200a1bc": {
+      "candidate": "src/non_matching/maps/mccoys_palace/OvlFunc_909_200a1bc.c",
+      "candidate_size": 584,
+      "evaluated_with": [
+        "OvlFunc_909_200a1bc"
+      ],
+      "fuzzy_match_percent": 95.48695,
+      "name": "OvlFunc_909_200a1bc",
+      "object_sha256": "0f77828951cf65b17e6b245f188478946a1826339a8b0c066f5d87d7e3a19f94",
+      "reference_sha256": "4bfed0a942339d7efad8847dfb139bfabf7607da8524d57dc390b0dc8f9c1c49",
+      "source": "src/maps/mccoys_palace.c",
+      "target_size": 588
+    },
+    "overlay:rom_79dd90:02008030": {
+      "candidate": "src/non_matching/maps/mccoys_palace_ext/OvlFunc_910_2008030.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_910_2008030"
+      ],
+      "fuzzy_match_percent": 91.78571,
+      "name": "OvlFunc_910_2008030",
+      "object_sha256": "f6bad6ada5c2cb1c1adde828189026e9e793c263977448c7bad4558e5a8e733b",
+      "reference_sha256": "b709af96ae1b8891ba836bf99be9609c0c8f78ae6c85ea458d96c9f261b899fa",
+      "source": "src/maps/mccoys_palace_ext.c",
+      "target_size": 88
+    },
+    "overlay:rom_79dd90:020084bc": {
+      "candidate": "src/non_matching/maps/mccoys_palace_ext/MccoysPalaceExt_MapInit.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "MccoysPalaceExt_MapInit"
+      ],
+      "fuzzy_match_percent": 98.28571,
+      "name": "MccoysPalaceExt_MapInit",
+      "object_sha256": "84e3542a8846ad62df385bbc0ff849ea324dbecf0936fcf8af90619e25d0f202",
+      "reference_sha256": "b709af96ae1b8891ba836bf99be9609c0c8f78ae6c85ea458d96c9f261b899fa",
+      "source": "src/maps/mccoys_palace_ext.c",
+      "target_size": 80
+    },
+    "overlay:rom_79dd90:02008974": {
+      "candidate": "src/non_matching/maps/mccoys_palace_ext/OvlFunc_910_2008974.c",
+      "candidate_size": 216,
+      "evaluated_with": [
+        "OvlFunc_910_2008974"
+      ],
+      "fuzzy_match_percent": 91.16161,
+      "name": "OvlFunc_910_2008974",
+      "object_sha256": "8c29c4ba3434a5aec6b082bba8f157a60852981b8ed8a75b824f47c4edf78d9d",
+      "reference_sha256": "b709af96ae1b8891ba836bf99be9609c0c8f78ae6c85ea458d96c9f261b899fa",
+      "source": "src/maps/mccoys_palace_ext.c",
+      "target_size": 216
+    },
+    "overlay:rom_79e5c0:02008230": {
+      "candidate": "src/non_matching/maps/kolima/OvlFunc_911_2008230.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_911_2008230"
+      ],
+      "fuzzy_match_percent": 81.2,
+      "name": "OvlFunc_911_2008230",
+      "object_sha256": "b72c9bb301a2345fe2c9f28cf987a2056f0181ff0f7dc78f05b8d547ecf5524a",
+      "reference_sha256": "bee391e9e3ef96ba43ee25e6f1cc8c91fd22dac04a267c817d596571de1ed4ca",
+      "source": "src/maps/kolima.c",
+      "target_size": 68
+    },
+    "overlay:rom_7a04ac:0200834c": {
+      "candidate": "src/non_matching/maps/kolima_forest_1/OvlFunc_913_200834c.c",
+      "candidate_size": 300,
+      "evaluated_with": [
+        "OvlFunc_913_200834c"
+      ],
+      "fuzzy_match_percent": 85.405594,
+      "name": "OvlFunc_913_200834c",
+      "object_sha256": "8b0f97ccf029deb3792c231d477b03ec664a6c579492563354285302d306bc87",
+      "reference_sha256": "279997d005f3ce6e67e338ed5b46886a325ef3ef5db2738f39a2a3512a249153",
+      "source": "src/maps/kolima_forest_1.c",
+      "target_size": 296
+    },
+    "overlay:rom_7a04ac:020088c0": {
+      "candidate": "src/non_matching/maps/kolima_forest_1/OvlFunc_913_20088c0.c",
+      "candidate_size": 284,
+      "evaluated_with": [
+        "OvlFunc_913_20088c0"
+      ],
+      "fuzzy_match_percent": 93.81481,
+      "name": "OvlFunc_913_20088c0",
+      "object_sha256": "4b8416332b8a8bf99eba54656523f6b0abfd4b8996a78549a6de567005b0408d",
+      "reference_sha256": "279997d005f3ce6e67e338ed5b46886a325ef3ef5db2738f39a2a3512a249153",
+      "source": "src/maps/kolima_forest_1.c",
+      "target_size": 284
+    },
+    "overlay:rom_7a2bf0:020088c0": {
+      "candidate": "src/non_matching/maps/kolima_forest_3/OvlFunc_915_20088c0.c",
+      "candidate_size": 284,
+      "evaluated_with": [
+        "OvlFunc_915_20088c0"
+      ],
+      "fuzzy_match_percent": 90.022224,
+      "name": "OvlFunc_915_20088c0",
+      "object_sha256": "165e7f90293cb58d8e95b5778c3ff9f754c43d319857035bc711aee670a4edc3",
+      "reference_sha256": "fe6cfff03a9f5840b916dab4d0c21edc65b0d51773ca2e14fd52f1dc26a5bbc2",
+      "source": "src/maps/kolima_forest_3.c",
+      "target_size": 284
+    },
+    "overlay:rom_7a2bf0:02008aac": {
+      "candidate": "src/non_matching/maps/kolima_forest_3/OvlFunc_915_2008aac.c",
+      "candidate_size": 248,
+      "evaluated_with": [
+        "OvlFunc_915_2008aac"
+      ],
+      "fuzzy_match_percent": 98.084114,
+      "name": "OvlFunc_915_2008aac",
+      "object_sha256": "2a2d958a6dc3f9c5e267587c063856d29f597c6fe0114f093d01cc57898f4041",
+      "reference_sha256": "fe6cfff03a9f5840b916dab4d0c21edc65b0d51773ca2e14fd52f1dc26a5bbc2",
+      "source": "src/maps/kolima_forest_3.c",
+      "target_size": 248
+    },
+    "overlay:rom_7a37f0:02008098": {
+      "candidate": "src/non_matching/maps/kolima_forest_4/OvlFunc_916_2008098.c",
+      "candidate_size": 196,
+      "evaluated_with": [
+        "OvlFunc_916_2008098"
+      ],
+      "fuzzy_match_percent": 53.081394,
+      "name": "OvlFunc_916_2008098",
+      "object_sha256": "e2ee15c0d2434c8b4530689e48554a1c6762ba894aeb57d61791e45ee369348a",
+      "reference_sha256": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
+      "source": "src/maps/kolima_forest_4.c",
+      "target_size": 184
+    },
+    "overlay:rom_7a37f0:020083f0": {
+      "candidate": "src/non_matching/maps/kolima_forest_4/OvlFunc_916_20083f0.c",
+      "candidate_size": 1006,
+      "evaluated_with": [
+        "OvlFunc_916_20083f0"
+      ],
+      "fuzzy_match_percent": 99.76303,
+      "name": "OvlFunc_916_20083f0",
+      "object_sha256": "d81026584d28b61f83a03f7c1412c9a4702d5bd24d49df73633c9291634a5e20",
+      "reference_sha256": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
+      "source": "src/maps/kolima_forest_4.c",
+      "target_size": 1008
+    },
+    "overlay:rom_7a37f0:02008a90": {
+      "candidate": "src/non_matching/maps/kolima_forest_4/OvlFunc_916_2008a90.c",
+      "candidate_size": 172,
+      "evaluated_with": [
+        "OvlFunc_916_2008a90"
+      ],
+      "fuzzy_match_percent": 95.12195,
+      "name": "OvlFunc_916_2008a90",
+      "object_sha256": "3236b7f711876d1fa1c66847b5aa2e4449465833c3db9f1e2872228cc3da946a",
+      "reference_sha256": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
+      "source": "src/maps/kolima_forest_4.c",
+      "target_size": 172
+    },
+    "overlay:rom_7a37f0:02008c2c": {
+      "candidate": "src/non_matching/maps/kolima_forest_4/OvlFunc_916_2008c2c.c",
+      "candidate_size": 568,
+      "evaluated_with": [
+        "OvlFunc_916_2008c2c"
+      ],
+      "fuzzy_match_percent": 99.196785,
+      "name": "OvlFunc_916_2008c2c",
+      "object_sha256": "8bf78213d0060da182be7e7be7d0cc5165a0ccd9c4a24e757009bd68ffe08f14",
+      "reference_sha256": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
+      "source": "src/maps/kolima_forest_4.c",
+      "target_size": 568
+    },
+    "overlay:rom_7a4370:02009070": {
+      "candidate": "src/non_matching/maps/kolima_forest_5/KolimaForest5_MapInit.c",
+      "candidate_size": 368,
+      "evaluated_with": [
+        "KolimaForest5_MapInit"
+      ],
+      "fuzzy_match_percent": 85.072845,
+      "name": "KolimaForest5_MapInit",
+      "object_sha256": "10bbda46fae4b3b49495d1d77c3bff7b7948ce809e3300a7ac2f2be926aef78e",
+      "reference_sha256": "0499b2231c7fe943b820c816050b26ff0337c88743e478e8e010a349e5e60192",
+      "source": "src/maps/kolima_forest_5.c",
+      "target_size": 376
+    },
+    "overlay:rom_7a5214:02009244": {
+      "candidate": "src/non_matching/maps/tret_tree/OvlFunc_918_2009244.c",
+      "candidate_size": 444,
+      "evaluated_with": [
+        "OvlFunc_918_2009244"
+      ],
+      "fuzzy_match_percent": 70.32445,
+      "name": "OvlFunc_918_2009244",
+      "object_sha256": "648e4312ea3a87374bf2471e4eea4da7dfad947f34105b6dc9a7355d602469d0",
+      "reference_sha256": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
+      "source": "src/maps/tret_tree.c",
+      "target_size": 480
+    },
+    "overlay:rom_7a5214:0200962c": {
+      "candidate": "src/non_matching/maps/tret_tree/OvlFunc_918_200962c.c",
+      "candidate_size": 448,
+      "evaluated_with": [
+        "OvlFunc_918_200962c"
+      ],
+      "fuzzy_match_percent": 95.66871,
+      "name": "OvlFunc_918_200962c",
+      "object_sha256": "2d3763f08ac47a55653dad9680bd27583e719894abb1a23f7ade5774299195e9",
+      "reference_sha256": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
+      "source": "src/maps/tret_tree.c",
+      "target_size": 448
+    },
+    "overlay:rom_7a5214:020097ec": {
+      "candidate": "src/non_matching/maps/tret_tree/OvlFunc_918_20097ec.c",
+      "candidate_size": 96,
+      "evaluated_with": [
+        "OvlFunc_918_20097ec"
+      ],
+      "fuzzy_match_percent": 99.51111,
+      "name": "OvlFunc_918_20097ec",
+      "object_sha256": "f1d7ec52ae64d11fee3c1096a85a957abc253e8a6348ca877c18c09a04068ecf",
+      "reference_sha256": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
+      "source": "src/maps/tret_tree.c",
+      "target_size": 96
+    },
+    "overlay:rom_7a5214:0200985c": {
+      "candidate": "src/non_matching/maps/tret_tree/OvlFunc_918_200985c.c",
+      "candidate_size": 90,
+      "evaluated_with": [
+        "OvlFunc_918_200985c"
+      ],
+      "fuzzy_match_percent": 93.333336,
+      "name": "OvlFunc_918_200985c",
+      "object_sha256": "69d1abedb977598f2d610ca57ce1991a8994edfb146cc4eec298cfdac2e275ec",
+      "reference_sha256": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
+      "source": "src/maps/tret_tree.c",
+      "target_size": 92
+    },
+    "overlay:rom_7a7298:02008030": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_2008030.c",
+      "candidate_size": 184,
+      "evaluated_with": [
+        "OvlFunc_921_2008030"
+      ],
+      "fuzzy_match_percent": 17.727272,
+      "name": "OvlFunc_921_2008030",
+      "object_sha256": "326052bcd38b1499d10bfb818e43632167bb2970ebb02066264dca9e22b53d26",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 168
+    },
+    "overlay:rom_7a7298:020080d8": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_20080d8.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_921_20080d8"
+      ],
+      "fuzzy_match_percent": 88.78571,
+      "name": "OvlFunc_921_20080d8",
+      "object_sha256": "b25fddf37538944b81de2617161dc6ea189a8db75131aa2b780250b84ad203e0",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 88
+    },
+    "overlay:rom_7a7298:02008b70": {
+      "candidate": "src/non_matching/maps/imil/Imil_MapInit.c",
+      "candidate_size": 1134,
+      "evaluated_with": [
+        "Imil_MapInit"
+      ],
+      "fuzzy_match_percent": 68.49649,
+      "name": "Imil_MapInit",
+      "object_sha256": "639401ff331cd4bad8e79cae07a4e537343be2fa384c1d39b263784f263a700a",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 1056
+    },
+    "overlay:rom_7a7298:02008f90": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_2008f90.c",
+      "candidate_size": 1476,
+      "evaluated_with": [
+        "OvlFunc_921_2008f90"
+      ],
+      "fuzzy_match_percent": 94.707016,
+      "name": "OvlFunc_921_2008f90",
+      "object_sha256": "5fd2b2b42e198e7075107acad2d0e280cac3a2d893d056dab88e76323d10ab1a",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 1468
+    },
+    "overlay:rom_7a7298:0200954c": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_200954c.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_921_200954c"
+      ],
+      "fuzzy_match_percent": 85.28571,
+      "name": "OvlFunc_921_200954c",
+      "object_sha256": "945e709899088543a4890793f993fe2a7f3d455d1e5dba09f24c5d75b8d21f63",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 104
+    },
+    "overlay:rom_7a7298:02009704": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_2009704.c",
+      "candidate_size": 78,
+      "evaluated_with": [
+        "OvlFunc_921_2009704"
+      ],
+      "fuzzy_match_percent": 79.55882,
+      "name": "OvlFunc_921_2009704",
+      "object_sha256": "87199b436435c989d64a4c49c15d3e6f0936ca893404bc8e5cb8ccd5bce1fafc",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 72
+    },
+    "overlay:rom_7a7298:020099e8": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_20099e8.c",
+      "candidate_size": 1368,
+      "evaluated_with": [
+        "OvlFunc_921_20099e8"
+      ],
+      "fuzzy_match_percent": 77.08572,
+      "name": "OvlFunc_921_20099e8",
+      "object_sha256": "2a3c9146800f4da1677ac0a13df1ca5885de981c26489bfe301c7a3069a92857",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 1340
+    },
+    "overlay:rom_7a7298:02009f24": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_2009f24.c",
+      "candidate_size": 136,
+      "evaluated_with": [
+        "OvlFunc_921_2009f24"
+      ],
+      "fuzzy_match_percent": 92.965515,
+      "name": "OvlFunc_921_2009f24",
+      "object_sha256": "e2fbd4a14e9902fc9470832d55bd4da4a7c947070884b56446d18f1cd534a17a",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 128
+    },
+    "overlay:rom_7a7298:02009fa4": {
+      "candidate": "src/non_matching/maps/imil/OvlFunc_921_2009fa4.c",
+      "candidate_size": 420,
+      "evaluated_with": [
+        "OvlFunc_921_2009fa4"
+      ],
+      "fuzzy_match_percent": 68.663315,
+      "name": "OvlFunc_921_2009fa4",
+      "object_sha256": "e58de8c90a8f6d6dd9521c06f1885bfefbb8830b7b480c6186911e1b7235a67f",
+      "reference_sha256": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "source": "src/maps/imil.c",
+      "target_size": 452
+    },
+    "overlay:rom_7a8c8c:0200a094": {
+      "candidate": "src/non_matching/maps/imil_falls_cave/OvlFunc_922_200a094.c",
+      "candidate_size": 452,
+      "evaluated_with": [
+        "OvlFunc_922_200a094"
+      ],
+      "fuzzy_match_percent": 98.99497,
+      "name": "OvlFunc_922_200a094",
+      "object_sha256": "fcfbb2db364e9de82b4f797ae854e9c1bfc7a8608a79961111170c6c5b1c988b",
+      "reference_sha256": "b82e1c993b438b1157f886dc175d84293eb3b6d0b481695c65a28977086a758e",
+      "source": "src/maps/imil_falls_cave.c",
+      "target_size": 452
+    },
+    "overlay:rom_7aa430:02008528": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.c",
+      "candidate_size": 96,
+      "evaluated_with": [
+        "OvlFunc_923_2008528"
+      ],
+      "fuzzy_match_percent": 79.0,
+      "name": "OvlFunc_923_2008528",
+      "object_sha256": "cf21abbedb2508d92524202ca0247c73aa6f73189602ab6e550de4748d5aa3e9",
+      "reference_sha256": "a8ed913f0a38e0e52ff1eb6bc3ef0ff1962ca9874ae1bba07e76a939d20852ea",
+      "source": "src/maps/mercury_lighthouse_entrance.c",
+      "target_size": 100
+    },
+    "overlay:rom_7aa430:02008cc0": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse_entrance/OvlFunc_923_2008cc0.c",
+      "candidate_size": 140,
+      "evaluated_with": [
+        "OvlFunc_923_2008cc0"
+      ],
+      "fuzzy_match_percent": 94.171875,
+      "name": "OvlFunc_923_2008cc0",
+      "object_sha256": "557dda96d81f8c2658cc0c5dd748da07c7afbef78eae587e3345900a794ea26d",
+      "reference_sha256": "a8ed913f0a38e0e52ff1eb6bc3ef0ff1962ca9874ae1bba07e76a939d20852ea",
+      "source": "src/maps/mercury_lighthouse_entrance.c",
+      "target_size": 136
+    },
+    "overlay:rom_7aa430:02008d98": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.c",
+      "candidate_size": 148,
+      "evaluated_with": [
+        "OvlFunc_923_2008d98"
+      ],
+      "fuzzy_match_percent": 70.904106,
+      "name": "OvlFunc_923_2008d98",
+      "object_sha256": "f57d98e02677d4ac1607999e47755a540324feefc140915d1ce194749d5e7b9a",
+      "reference_sha256": "a8ed913f0a38e0e52ff1eb6bc3ef0ff1962ca9874ae1bba07e76a939d20852ea",
+      "source": "src/maps/mercury_lighthouse_entrance.c",
+      "target_size": 164
+    },
+    "overlay:rom_7ac2d8:0200a648": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200a648.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "OvlFunc_924_200a648"
+      ],
+      "fuzzy_match_percent": 88.19231,
+      "name": "OvlFunc_924_200a648",
+      "object_sha256": "161923feda234c0514b1c4b5e1ccef0d432b7c1880066530287f56256dd3b6ea",
+      "reference_sha256": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 60
+    },
+    "overlay:rom_7ac2d8:0200adcc": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200adcc.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "OvlFunc_924_200adcc"
+      ],
+      "fuzzy_match_percent": 88.19231,
+      "name": "OvlFunc_924_200adcc",
+      "object_sha256": "9ac51c17101eb849c0d9c647ca90bb0ddd4339d874acf67d1cf9cdb1661df5c8",
+      "reference_sha256": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 60
+    },
+    "overlay:rom_7ac2d8:0200cf44": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200cf44.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_924_200cf44"
+      ],
+      "fuzzy_match_percent": 92.6,
+      "name": "OvlFunc_924_200cf44",
+      "object_sha256": "bd92620a76b1b92a1851ef1131f507b8ffd027a41688b4557bdfd9443b97440c",
+      "reference_sha256": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 76
+    },
+    "overlay:rom_7ac2d8:0200d1b0": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200d1b0.c",
+      "candidate_size": 70,
+      "evaluated_with": [
+        "OvlFunc_924_200d1b0"
+      ],
+      "fuzzy_match_percent": 83.80645,
+      "name": "OvlFunc_924_200d1b0",
+      "object_sha256": "145ba81de7065501a57bc5ac8a740b1dcca809caea63a63532a43bcdac5302f2",
+      "reference_sha256": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 64
+    },
+    "overlay:rom_7b0400:0200b1c0": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse_aerie/OvlFunc_925_200b1c0.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_925_200b1c0"
+      ],
+      "fuzzy_match_percent": 73.828575,
+      "name": "OvlFunc_925_200b1c0",
+      "object_sha256": "50680b27ea37743ac91d2bdbdff630be81c9899e186c000a8a113c59caef1596",
+      "reference_sha256": "705bed46cf1c576770cb1ba891e8771140a0ebf9caf0e29dfc35300ab1adb085",
+      "source": "src/maps/mercury_lighthouse_aerie.c",
+      "target_size": 72
+    },
+    "overlay:rom_7b2078:0200a508": {
+      "candidate": "src/non_matching/maps/fuchin_temple/OvlFunc_926_200a508.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_926_200a508"
+      ],
+      "fuzzy_match_percent": 74.24,
+      "name": "OvlFunc_926_200a508",
+      "object_sha256": "d33d2ce05b4b17b99da94728386d93bdaf6f32846a8790eaa38144deab7361b5",
+      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
+      "source": "src/maps/fuchin_temple.c",
+      "target_size": 68
+    },
+    "overlay:rom_7b2078:0200c140": {
+      "candidate": "src/non_matching/maps/fuchin_temple/OvlFunc_926_200c140.c",
+      "candidate_size": 132,
+      "evaluated_with": [
+        "OvlFunc_926_200c140"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_926_200c140",
+      "object_sha256": "4d093766fa97fe56442a9dbaef17a1831b6c17966e856694ab6f4b2ec62f9ced",
+      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
+      "source": "src/maps/fuchin_temple.c",
+      "target_size": 132
+    },
+    "overlay:rom_7b2078:0200c1c4": {
+      "candidate": "src/non_matching/maps/fuchin_temple/OvlFunc_926_200c1c4.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "OvlFunc_926_200c1c4"
+      ],
+      "fuzzy_match_percent": 99.411766,
+      "name": "OvlFunc_926_200c1c4",
+      "object_sha256": "82c8623349a0600390a884f3690cf5c46d42613ec3a05b2141e1b67e4b620aca",
+      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
+      "source": "src/maps/fuchin_temple.c",
+      "target_size": 40
+    },
+    "overlay:rom_7b4558:020089dc": {
+      "candidate": "src/non_matching/maps/mogall_forest/OvlFunc_927_20089dc.c",
+      "candidate_size": 22,
+      "evaluated_with": [
+        "OvlFunc_927_20089dc"
+      ],
+      "fuzzy_match_percent": 53.333332,
+      "name": "OvlFunc_927_20089dc",
+      "object_sha256": "e128f18162ce727744422370eaaf8d15cac7d30ae65ac7661cfe5fae05401dcb",
+      "reference_sha256": "5502129c73a3d72d3cac90739c798fa993176b347d1ffb2446f5be295987fdf8",
+      "source": "src/maps/mogall_forest.c",
+      "target_size": 24
+    },
+    "overlay:rom_7b6668:02008370": {
+      "candidate": "src/non_matching/maps/xian/OvlFunc_928_2008370.c",
+      "candidate_size": 92,
+      "evaluated_with": [
+        "OvlFunc_928_2008370"
+      ],
+      "fuzzy_match_percent": 92.19512,
+      "name": "OvlFunc_928_2008370",
+      "object_sha256": "0857c806ab52757d8cb41f95dca8c6cda64c8082b0bd4e7bfa77fab5bf05a831",
+      "reference_sha256": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
+      "source": "src/maps/xian.c",
+      "target_size": 92
+    },
+    "overlay:rom_7b6668:02008500": {
+      "candidate": "src/non_matching/maps/xian/OvlFunc_928_2008500.c",
+      "candidate_size": 148,
+      "evaluated_with": [
+        "OvlFunc_928_2008500"
+      ],
+      "fuzzy_match_percent": 89.432434,
+      "name": "OvlFunc_928_2008500",
+      "object_sha256": "00c36d02fbee645509a9e3911238e6bd7e9255be26b866b6b0a1d385997220d3",
+      "reference_sha256": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
+      "source": "src/maps/xian.c",
+      "target_size": 156
+    },
+    "overlay:rom_7b6668:02008f30": {
+      "candidate": "src/non_matching/maps/xian/OvlFunc_928_2008f30.c",
+      "candidate_size": 304,
+      "evaluated_with": [
+        "OvlFunc_928_2008f30"
+      ],
+      "fuzzy_match_percent": 96.99187,
+      "name": "OvlFunc_928_2008f30",
+      "object_sha256": "a059d2b88044de1a8f7d0751b8e1cf36b73b3e47cb706223137338030007e1d9",
+      "reference_sha256": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
+      "source": "src/maps/xian.c",
+      "target_size": 304
+    },
+    "overlay:rom_7b9cb4:02009770": {
+      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_2009770.c",
+      "candidate_size": 204,
+      "evaluated_with": [
+        "OvlFunc_932_2009770"
+      ],
+      "fuzzy_match_percent": 84.054344,
+      "name": "OvlFunc_932_2009770",
+      "object_sha256": "b5f7e8b06a471ff0014bedad0564c2dd026efdf453645f36bef2f698ca2eb4ac",
+      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
+      "source": "src/maps/altin_peak.c",
+      "target_size": 200
+    },
+    "overlay:rom_7b9cb4:0200aa10": {
+      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_200aa10.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "OvlFunc_932_200aa10"
+      ],
+      "fuzzy_match_percent": 97.4,
+      "name": "OvlFunc_932_200aa10",
+      "object_sha256": "f8d57d7efca4daec38817f8632db6098746546cdb1b03ce2f4aadc1b05d9fe70",
+      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
+      "source": "src/maps/altin_peak.c",
+      "target_size": 56
+    },
+    "overlay:rom_7b9cb4:0200ba44": {
+      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_200ba44.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "OvlFunc_932_200ba44"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_932_200ba44",
+      "object_sha256": "b892d651d6709d8bc40a604ed8bab9d7da30ceb354ee30a2edcbc5f7c1ec421c",
+      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
+      "source": "src/maps/altin_peak.c",
+      "target_size": 44
+    },
+    "overlay:rom_7bc690:02008344": {
+      "candidate": "src/non_matching/maps/lamakan_desert/OvlFunc_933_2008344.c",
+      "candidate_size": 104,
+      "evaluated_with": [
+        "OvlFunc_933_2008344"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_933_2008344",
+      "object_sha256": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
+      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
+      "source": "src/maps/lamakan_desert.c",
+      "target_size": 104
+    },
+    "overlay:rom_7bc690:020084e4": {
+      "candidate": "src/non_matching/maps/lamakan_desert/OvlFunc_933_20084e4.c",
+      "candidate_size": 936,
+      "evaluated_with": [
+        "OvlFunc_933_20084e4"
+      ],
+      "fuzzy_match_percent": 90.12981,
+      "name": "OvlFunc_933_20084e4",
+      "object_sha256": "47d372bae821641590c00c777128b2154f48c011d09da58b6a07ab259755650e",
+      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
+      "source": "src/maps/lamakan_desert.c",
+      "target_size": 936
+    },
+    "overlay:rom_7bc690:02008c38": {
+      "candidate": "src/non_matching/maps/lamakan_desert/OvlFunc_933_2008c38.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "OvlFunc_933_2008c38"
+      ],
+      "fuzzy_match_percent": 89.2,
+      "name": "OvlFunc_933_2008c38",
+      "object_sha256": "ad3e67bf9f51469123f59364b6e5f8b0d155a6d800bef7deca045ec03fe1ceea",
+      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
+      "source": "src/maps/lamakan_desert.c",
+      "target_size": 52
+    },
+    "overlay:rom_7bdeb0:02008630": {
+      "candidate": "src/non_matching/maps/vale_cave/OvlFunc_934_2008630.c",
+      "candidate_size": 308,
+      "evaluated_with": [
+        "OvlFunc_934_2008630"
+      ],
+      "fuzzy_match_percent": 77.34965,
+      "name": "OvlFunc_934_2008630",
+      "object_sha256": "d3fce7f1e058f9462d24fcad46602c46df19d7813ffeebfb13deb4788700b11a",
+      "reference_sha256": "dccab8ed2825a20aa5d4e0056cf225b75f8e1179680c87f34a596f9a2b59306c",
+      "source": "src/maps/vale_cave.c",
+      "target_size": 296
+    },
+    "overlay:rom_7bdeb0:02008ba4": {
+      "candidate": "src/non_matching/maps/vale_cave/OvlFunc_934_2008ba4.c",
+      "candidate_size": 276,
+      "evaluated_with": [
+        "OvlFunc_934_2008ba4"
+      ],
+      "fuzzy_match_percent": 88.21481,
+      "name": "OvlFunc_934_2008ba4",
+      "object_sha256": "289f6ab8cc9d4f9db9795977709348b9cfc396df94594768d4334e68d6a61097",
+      "reference_sha256": "dccab8ed2825a20aa5d4e0056cf225b75f8e1179680c87f34a596f9a2b59306c",
+      "source": "src/maps/vale_cave.c",
+      "target_size": 284
+    },
+    "overlay:rom_7bdeb0:02009984": {
+      "candidate": "src/non_matching/maps/vale_cave/OvlFunc_934_2009984.c",
+      "candidate_size": 624,
+      "evaluated_with": [
+        "OvlFunc_934_2009984"
+      ],
+      "fuzzy_match_percent": 92.47893,
+      "name": "OvlFunc_934_2009984",
+      "object_sha256": "874124b3ad5685b620eb38ddf0326aafb4f86e7e5649f010e0628705a5d4a3af",
+      "reference_sha256": "dccab8ed2825a20aa5d4e0056cf225b75f8e1179680c87f34a596f9a2b59306c",
+      "source": "src/maps/vale_cave.c",
+      "target_size": 632
+    },
+    "overlay:rom_7bf5a8:02008170": {
+      "candidate": "src/non_matching/maps/vault_cave/OvlFunc_935_2008170.c",
+      "candidate_size": 324,
+      "evaluated_with": [
+        "OvlFunc_935_2008170"
+      ],
+      "fuzzy_match_percent": 71.113335,
+      "name": "OvlFunc_935_2008170",
+      "object_sha256": "fa9618bce8df71d96621d6c4bd67b968d6222b3aebd4937d804b10bc957f70d4",
+      "reference_sha256": "3df847350e55e084582e5abbf0a30a6ce1f52fb9c3deef595b5dab58f5d8cc3f",
+      "source": "src/maps/vault_cave.c",
+      "target_size": 332
+    },
+    "overlay:rom_7bf5a8:02008704": {
+      "candidate": "src/non_matching/maps/vault_cave/OvlFunc_935_2008704.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "OvlFunc_935_2008704"
+      ],
+      "fuzzy_match_percent": 99.478264,
+      "name": "OvlFunc_935_2008704",
+      "object_sha256": "3dd30d7fd33d490628e10a22f8f8b9094aecc64cc917d8028f90e0b617b43e02",
+      "reference_sha256": "3df847350e55e084582e5abbf0a30a6ce1f52fb9c3deef595b5dab58f5d8cc3f",
+      "source": "src/maps/vault_cave.c",
+      "target_size": 48
+    },
+    "overlay:rom_7bf5a8:02008754": {
+      "candidate": "src/non_matching/maps/vault_cave/OvlFunc_935_2008754.c",
+      "candidate_size": 340,
+      "evaluated_with": [
+        "OvlFunc_935_2008754"
+      ],
+      "fuzzy_match_percent": 99.98582,
+      "name": "OvlFunc_935_2008754",
+      "object_sha256": "6d6947eb2de00a880cf66b467e9df996d9277d515b37b0059f78e354823acfb1",
+      "reference_sha256": "3df847350e55e084582e5abbf0a30a6ce1f52fb9c3deef595b5dab58f5d8cc3f",
+      "source": "src/maps/vault_cave.c",
+      "target_size": 340
+    },
+    "overlay:rom_7c097c:020080ac": {
+      "candidate": "src/non_matching/maps/kalay/OvlFunc_936_20080ac.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_936_20080ac"
+      ],
+      "fuzzy_match_percent": 57.466667,
+      "name": "OvlFunc_936_20080ac",
+      "object_sha256": "0f5ff830a57c4720e1497b703ed2b195ad30ee4dc710514173182107c737d03e",
+      "reference_sha256": "dace5727218fad81404876fe046a711c17717cb16384aafb3f7f043d9c7c4acd",
+      "source": "src/maps/kalay.c",
+      "target_size": 64
+    },
+    "overlay:rom_7c5efc:02008094": {
+      "candidate": "src/non_matching/maps/west_lunpa_cave/OvlFunc_941_2008094.c",
+      "candidate_size": 62,
+      "evaluated_with": [
+        "OvlFunc_941_2008094"
+      ],
+      "fuzzy_match_percent": 74.586205,
+      "name": "OvlFunc_941_2008094",
+      "object_sha256": "74d70367e636ea8e91108076dfc95eefdddbac5f329dc541e492b21b516af336",
+      "reference_sha256": "a0cd35271501987f7a9354c040a08ace398ed40fee3baa7e14d1a8b8252c8f82",
+      "source": "src/maps/west_lunpa_cave.c",
+      "target_size": 64
+    },
+    "overlay:rom_7c5efc:02009760": {
+      "candidate": "src/non_matching/maps/west_lunpa_cave/OvlFunc_941_2009760.c",
+      "candidate_size": 688,
+      "evaluated_with": [
+        "OvlFunc_941_2009760"
+      ],
+      "fuzzy_match_percent": 84.29434,
+      "name": "OvlFunc_941_2009760",
+      "object_sha256": "a2af3d40891d77af2f65cdb243678b2515176a45cae5acac800e39adbd6313de",
+      "reference_sha256": "a0cd35271501987f7a9354c040a08ace398ed40fee3baa7e14d1a8b8252c8f82",
+      "source": "src/maps/west_lunpa_cave.c",
+      "target_size": 684
+    },
+    "overlay:rom_7c6bac:02008958": {
+      "candidate": "src/non_matching/maps/kalay_docks/OvlFunc_942_2008958.c",
+      "candidate_size": 376,
+      "evaluated_with": [
+        "OvlFunc_942_2008958"
+      ],
+      "fuzzy_match_percent": 87.368095,
+      "name": "OvlFunc_942_2008958",
+      "object_sha256": "e245df7ec0905eda76de49b0f3a8262a980d7fb19e76d17aade40cf5970aacde",
+      "reference_sha256": "ae890f683c1c0ba6809431e6a5a080756a4e808dcb3c635a397877684457bee9",
+      "source": "src/maps/kalay_docks.c",
+      "target_size": 380
+    },
+    "overlay:rom_7c6bac:02008b68": {
+      "candidate": "src/non_matching/maps/kalay_docks/OvlFunc_942_2008b68.c",
+      "candidate_size": 54,
+      "evaluated_with": [
+        "OvlFunc_942_2008b68"
+      ],
+      "fuzzy_match_percent": 95.833336,
+      "name": "OvlFunc_942_2008b68",
+      "object_sha256": "a98b2a8b04f0488c3d75539dd7fd2a2ededecd0c409e2c9867871c1d19e2c499",
+      "reference_sha256": "ae890f683c1c0ba6809431e6a5a080756a4e808dcb3c635a397877684457bee9",
+      "source": "src/maps/kalay_docks.c",
+      "target_size": 56
+    },
+    "overlay:rom_7ca63c:02008564": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_top/OvlFunc_944_2008564.c",
+      "candidate_size": 588,
+      "evaluated_with": [
+        "OvlFunc_944_2008564"
+      ],
+      "fuzzy_match_percent": 98.12444,
+      "name": "OvlFunc_944_2008564",
+      "object_sha256": "4d3c2855244514ffe3a7165f508f53483c68f6ef2e08bc6141403122de418288",
+      "reference_sha256": "aa7dc4ef31de89c53a9cc10059474167845995384289d227b3e50c35994900cd",
+      "source": "src/maps/tolbi_bound_ship_top.c",
+      "target_size": 588
+    },
+    "overlay:rom_7ca63c:02008af8": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_top/OvlFunc_944_2008af8.c",
+      "candidate_size": 896,
+      "evaluated_with": [
+        "OvlFunc_944_2008af8"
+      ],
+      "fuzzy_match_percent": 98.69627,
+      "name": "OvlFunc_944_2008af8",
+      "object_sha256": "f1215dee7c2f0cf1db6e732a3d0ab22b391b0fb31f01482ddedc9b435cd32de7",
+      "reference_sha256": "aa7dc4ef31de89c53a9cc10059474167845995384289d227b3e50c35994900cd",
+      "source": "src/maps/tolbi_bound_ship_top.c",
+      "target_size": 896
+    },
+    "overlay:rom_7ca63c:020090a0": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_top/OvlFunc_944_20090a0.c",
+      "candidate_size": 144,
+      "evaluated_with": [
+        "OvlFunc_944_20090a0"
+      ],
+      "fuzzy_match_percent": 93.3871,
+      "name": "OvlFunc_944_20090a0",
+      "object_sha256": "460d818d47e0ecb8483cefe4211f662bc9fdeac32a5395e3d2959867e4fba132",
+      "reference_sha256": "aa7dc4ef31de89c53a9cc10059474167845995384289d227b3e50c35994900cd",
+      "source": "src/maps/tolbi_bound_ship_top.c",
+      "target_size": 144
+    },
+    "overlay:rom_7cb2c0:020080fc": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.c",
+      "candidate_size": 50,
+      "evaluated_with": [
+        "OvlFunc_945_20080fc"
+      ],
+      "fuzzy_match_percent": 69.208336,
+      "name": "OvlFunc_945_20080fc",
+      "object_sha256": "62631274bff64b833d3c437f0dd3716adfa6699c62da7dbf657a304817c7bad5",
+      "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "source": "src/maps/tolbi_bound_ship_hull.c",
+      "target_size": 48
+    },
+    "overlay:rom_7cb2c0:020082f4": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "OvlFunc_945_20082f4"
+      ],
+      "fuzzy_match_percent": 76.388885,
+      "name": "OvlFunc_945_20082f4",
+      "object_sha256": "546eaf36a5996a4368484ba65e1e697d6369ff4beff3765db64a6b75c00e6138",
+      "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "source": "src/maps/tolbi_bound_ship_hull.c",
+      "target_size": 76
+    },
+    "overlay:rom_7ced6c:020089dc": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_20089dc.c",
+      "candidate_size": 20,
+      "evaluated_with": [
+        "OvlFunc_946_20089dc"
+      ],
+      "fuzzy_match_percent": 60.333332,
+      "name": "OvlFunc_946_20089dc",
+      "object_sha256": "ffbc4b4dc5c99bc68c9dcf60acc94bf482914e05fbaaf96806f12c1ca2bd637c",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 24
+    },
+    "overlay:rom_7ced6c:02008ab0": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2008ab0.c",
+      "candidate_size": 54,
+      "evaluated_with": [
+        "OvlFunc_946_2008ab0"
+      ],
+      "fuzzy_match_percent": 90.53571,
+      "name": "OvlFunc_946_2008ab0",
+      "object_sha256": "f19f1a251ecffc5e20dcbb48fd43d630c593e14a3bd5c076fd6e6a1e8f403d38",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 56
+    },
+    "overlay:rom_7ced6c:02009508": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009508.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "OvlFunc_946_2009508"
+      ],
+      "fuzzy_match_percent": 92.37037,
+      "name": "OvlFunc_946_2009508",
+      "object_sha256": "a74bed88876cf3f5f6633050e8ed036286559f830a5451a7004eb424faf295d6",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 64
+    },
+    "overlay:rom_7ced6c:02009548": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009548.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "OvlFunc_946_2009548"
+      ],
+      "fuzzy_match_percent": 92.64286,
+      "name": "OvlFunc_946_2009548",
+      "object_sha256": "9b5164d1fabafb118209db74c96b3acafd3cd199f4c8caab4ad88902f8fdbcef",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 68
+    },
+    "overlay:rom_7ced6c:0200958c": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_200958c.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "OvlFunc_946_200958c"
+      ],
+      "fuzzy_match_percent": 92.64286,
+      "name": "OvlFunc_946_200958c",
+      "object_sha256": "98dfe50cb5202932bbeb020f965b6b211cf3ffd98005bd5b13c90cc088f5d44c",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 68
+    },
+    "overlay:rom_7ced6c:02009624": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009624.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "OvlFunc_946_2009624"
+      ],
+      "fuzzy_match_percent": 87.64706,
+      "name": "OvlFunc_946_2009624",
+      "object_sha256": "5c25b9c0bdd9e3adf52b011f3d7e3c2574521148973f8b60b55c35050ef6fbb0",
+      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 40
+    },
+    "overlay:rom_7d0e88:02009938": {
+      "candidate": "src/non_matching/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.c",
+      "candidate_size": 176,
+      "evaluated_with": [
+        "OvlFunc_947_2009938"
+      ],
+      "fuzzy_match_percent": 79.46067,
+      "name": "OvlFunc_947_2009938",
+      "object_sha256": "28c6ab7d309f1c82f0e0e0884da15ea0f27f74887b010a6fca7932776cc03486",
+      "reference_sha256": "1c76982a78d97c1365f4463b85ab76e527411415256e622ddf7ec6ef127a71e3",
+      "source": "src/maps/crossbone_isle_dungeon_2.c",
+      "target_size": 184
+    },
+    "overlay:rom_7d4af4:020082f0": {
+      "candidate": "src/non_matching/maps/tolbi/OvlFunc_949_20082f0.c",
+      "candidate_size": 244,
+      "evaluated_with": [
+        "OvlFunc_949_20082f0"
+      ],
+      "fuzzy_match_percent": 91.69231,
+      "name": "OvlFunc_949_20082f0",
+      "object_sha256": "8d90ef044b66d8df3e4654902f0fe50ded4f89f42af38e7b9e3c67bb643ac22f",
+      "reference_sha256": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
+      "source": "src/maps/tolbi.c",
+      "target_size": 224
+    },
+    "overlay:rom_7d4af4:020083d0": {
+      "candidate": "src/non_matching/maps/tolbi/OvlFunc_949_20083d0.c",
+      "candidate_size": 244,
+      "evaluated_with": [
+        "OvlFunc_949_20083d0"
+      ],
+      "fuzzy_match_percent": 91.69231,
+      "name": "OvlFunc_949_20083d0",
+      "object_sha256": "c4c7d9a00a0b5f9530f014bdfefe9d3dae67fd28ec9f3fd77c3281cff236cd34",
+      "reference_sha256": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
+      "source": "src/maps/tolbi.c",
+      "target_size": 224
+    },
+    "overlay:rom_7d4af4:020086e8": {
+      "candidate": "src/non_matching/maps/tolbi/OvlFunc_949_20086e8.c",
+      "candidate_size": 62,
+      "evaluated_with": [
+        "OvlFunc_949_20086e8"
+      ],
+      "fuzzy_match_percent": 96.77419,
+      "name": "OvlFunc_949_20086e8",
+      "object_sha256": "03fbe8e983d04923470a807b5becc05cc4d69017ae11d9d28a8cf5f4ba52c699",
+      "reference_sha256": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
+      "source": "src/maps/tolbi.c",
+      "target_size": 64
+    },
+    "overlay:rom_7d4af4:02008980": {
+      "candidate": "src/non_matching/maps/tolbi/OvlFunc_949_2008980.c",
+      "candidate_size": 808,
+      "evaluated_with": [
+        "OvlFunc_949_2008980"
+      ],
+      "fuzzy_match_percent": 99.36102,
+      "name": "OvlFunc_949_2008980",
+      "object_sha256": "fdbd52d919bc93f04dcd31349278e9420fbd9ffd226ed7f3023cbd99138531d1",
+      "reference_sha256": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
+      "source": "src/maps/tolbi.c",
+      "target_size": 808
+    },
+    "overlay:rom_7d6418:020084bc": {
+      "candidate": "src/non_matching/maps/lucky_fountain/OvlFunc_951_20084bc.c",
+      "candidate_size": 910,
+      "evaluated_with": [
+        "OvlFunc_951_20084bc"
+      ],
+      "fuzzy_match_percent": 76.376625,
+      "name": "OvlFunc_951_20084bc",
+      "object_sha256": "326e501519a9f4d852ce99c46ed7a27f148ad315bd4ee7e708e99e492e80ad59",
+      "reference_sha256": "73ee6dcbaf78984853f8d0d20f6c4a38ae199b9f622ff81e3f6231c726a9d736",
+      "source": "src/maps/lucky_fountain.c",
+      "target_size": 964
+    },
+    "overlay:rom_7d6418:020088f8": {
+      "candidate": "src/non_matching/maps/lucky_fountain/OvlFunc_951_20088f8.c",
+      "candidate_size": 260,
+      "evaluated_with": [
+        "OvlFunc_951_20088f8"
+      ],
+      "fuzzy_match_percent": 86.0102,
+      "name": "OvlFunc_951_20088f8",
+      "object_sha256": "32901584881e8560b1063c9a4c2c2d430f6c2291cf6c5737c329029ee8badeda",
+      "reference_sha256": "73ee6dcbaf78984853f8d0d20f6c4a38ae199b9f622ff81e3f6231c726a9d736",
+      "source": "src/maps/lucky_fountain.c",
+      "target_size": 256
+    },
+    "overlay:rom_7d6418:02008dd0": {
+      "candidate": "src/non_matching/maps/lucky_fountain/OvlFunc_951_2008dd0.c",
+      "candidate_size": 112,
+      "evaluated_with": [
+        "OvlFunc_951_2008dd0"
+      ],
+      "fuzzy_match_percent": 92.70909,
+      "name": "OvlFunc_951_2008dd0",
+      "object_sha256": "4305046958da9d9a55e5a089a66cd6ae4b13b55a9f4cc084da5387acbd553698",
+      "reference_sha256": "73ee6dcbaf78984853f8d0d20f6c4a38ae199b9f622ff81e3f6231c726a9d736",
+      "source": "src/maps/lucky_fountain.c",
+      "target_size": 116
+    },
+    "overlay:rom_7d768c:02008108": {
+      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_2008108.c",
+      "candidate_size": 348,
+      "evaluated_with": [
+        "OvlFunc_952_2008108"
+      ],
+      "fuzzy_match_percent": 82.00741,
+      "name": "OvlFunc_952_2008108",
+      "object_sha256": "6b626be0afc4648e12debc49ddc26e95ff212082fb655bc9afa19a20791ed5e8",
+      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "source": "src/maps/babis_palace.c",
+      "target_size": 348
+    },
+    "overlay:rom_7d768c:02008524": {
+      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_2008524.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_952_2008524"
+      ],
+      "fuzzy_match_percent": 65.36,
+      "name": "OvlFunc_952_2008524",
+      "object_sha256": "0f3235d20eed8119aa450206d49df6212fcb80dbf7ccce6c4e4aa91178375815",
+      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "source": "src/maps/babis_palace.c",
+      "target_size": 64
+    },
+    "overlay:rom_7d768c:02008564": {
+      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_2008564.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_952_2008564"
+      ],
+      "fuzzy_match_percent": 65.36,
+      "name": "OvlFunc_952_2008564",
+      "object_sha256": "6b913775621289b5744eca3fb5cc77249194bf581fe6ef6fbe3bcf4647b4a14a",
+      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "source": "src/maps/babis_palace.c",
+      "target_size": 64
+    },
+    "overlay:rom_7d768c:0200bfc4": {
+      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_200bfc4.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "OvlFunc_952_200bfc4"
+      ],
+      "fuzzy_match_percent": 69.42857,
+      "name": "OvlFunc_952_200bfc4",
+      "object_sha256": "9d867582b39a1c01db4abead6da4cca5a81ab1061950bf63545e2c84d21ac283",
+      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "source": "src/maps/babis_palace.c",
+      "target_size": 72
+    },
+    "overlay:rom_7d95dc:02009a14": {
+      "candidate": "src/non_matching/maps/colosseum/Colosseum_MapInit.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Colosseum_MapInit"
+      ],
+      "fuzzy_match_percent": 80.391304,
+      "name": "Colosseum_MapInit",
+      "object_sha256": "eca244af9fdc6a3b1f2f457dc9937f2f59e7d0901bf9a75ca76eb8ad0316597a",
+      "reference_sha256": "6689e6fff1a8fe79e945ee6f2c02ccce9d443a0bbc85e2c6087f15ea0c9bb959",
+      "source": "src/maps/colosseum.c",
+      "target_size": 56
+    },
+    "overlay:rom_7d95dc:0200a3e0": {
+      "candidate": "src/non_matching/maps/colosseum/OvlFunc_953_200a3e0.c",
+      "candidate_size": 256,
+      "evaluated_with": [
+        "OvlFunc_953_200a3e0"
+      ],
+      "fuzzy_match_percent": 62.410526,
+      "name": "OvlFunc_953_200a3e0",
+      "object_sha256": "8d86872b1a3fa00b9a913e4728c8d8a9628b8f1dd5ecb24412acb259e00b66c7",
+      "reference_sha256": "6689e6fff1a8fe79e945ee6f2c02ccce9d443a0bbc85e2c6087f15ea0c9bb959",
+      "source": "src/maps/colosseum.c",
+      "target_size": 248
+    },
+    "overlay:rom_7db0c8:02008178": {
+      "candidate": "src/non_matching/maps/colosseum_final_1/OvlFunc_954_2008178.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "OvlFunc_954_2008178"
+      ],
+      "fuzzy_match_percent": 88.333336,
+      "name": "OvlFunc_954_2008178",
+      "object_sha256": "bc6fbd2008e495758426a2aefc82f85995d7646173fc5d14e1501c1d0dbcf927",
+      "reference_sha256": "80647ad3c81c6ed017b19544c52c1dad1e46b664c1d285e20671627ccdef25b8",
+      "source": "src/maps/colosseum_final_1.c",
+      "target_size": 48
+    },
+    "overlay:rom_7db0c8:02008a3c": {
+      "candidate": "src/non_matching/maps/colosseum_final_1/ColosseumFinal1_MapInit.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "ColosseumFinal1_MapInit"
+      ],
+      "fuzzy_match_percent": 3.9100816,
+      "name": "ColosseumFinal1_MapInit",
+      "object_sha256": "99e26a2f45bb1b48571343d6cf4a8d25d02567aff66d5f2ee9e654e9ac96dccf",
+      "reference_sha256": "80647ad3c81c6ed017b19544c52c1dad1e46b664c1d285e20671627ccdef25b8",
+      "source": "src/maps/colosseum_final_1.c",
+      "target_size": 892
+    },
+    "overlay:rom_7ddb88:02008160": {
+      "candidate": "src/non_matching/maps/colosseum_final_2/OvlFunc_955_2008160.c",
+      "candidate_size": 248,
+      "evaluated_with": [
+        "OvlFunc_955_2008160"
+      ],
+      "fuzzy_match_percent": 89.19626,
+      "name": "OvlFunc_955_2008160",
+      "object_sha256": "6f0f550e0661ab2213d41922cef8a8e81adde3406608189edd9b9dc8f4d0a9d9",
+      "reference_sha256": "edabfbeb5f9c01407eac09d56f4ee4dbce597db3782a0e57838c071f91fe673d",
+      "source": "src/maps/colosseum_final_2.c",
+      "target_size": 248
+    },
+    "overlay:rom_7e0928:020081c8": {
+      "candidate": "src/non_matching/maps/colosseum_final_3/OvlFunc_956_20081c8.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "OvlFunc_956_20081c8"
+      ],
+      "fuzzy_match_percent": 91.88461,
+      "name": "OvlFunc_956_20081c8",
+      "object_sha256": "b58f72d1bed4ca18927d6c0ec14157451cd621cbe14916e990d3d8b641e820b0",
+      "reference_sha256": "88a5b956c94e7f0e2ac653efd0a2822d702e80308fc194844a9e723a45ea8f3b",
+      "source": "src/maps/colosseum_final_3.c",
+      "target_size": 60
+    },
+    "overlay:rom_7e0928:02008da4": {
+      "candidate": "src/non_matching/maps/colosseum_final_3/ColosseumFinal3_MapInit.c",
+      "candidate_size": 1460,
+      "evaluated_with": [
+        "ColosseumFinal3_MapInit"
+      ],
+      "fuzzy_match_percent": 89.59872,
+      "name": "ColosseumFinal3_MapInit",
+      "object_sha256": "cdfe524a36fb66c00a38794b513b686e8118e06f271e8f192a154b3b2795d491",
+      "reference_sha256": "88a5b956c94e7f0e2ac653efd0a2822d702e80308fc194844a9e723a45ea8f3b",
+      "source": "src/maps/colosseum_final_3.c",
+      "target_size": 1496
+    },
+    "overlay:rom_7e0928:0200937c": {
+      "candidate": "src/non_matching/maps/colosseum_final_3/OvlFunc_956_200937c.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "OvlFunc_956_200937c"
+      ],
+      "fuzzy_match_percent": 77.818184,
+      "name": "OvlFunc_956_200937c",
+      "object_sha256": "e4fa0ee6a39a3babc4c6ed2a972cacd5869f553259842b6001c9c8cd1704e71e",
+      "reference_sha256": "88a5b956c94e7f0e2ac653efd0a2822d702e80308fc194844a9e723a45ea8f3b",
+      "source": "src/maps/colosseum_final_3.c",
+      "target_size": 68
+    },
+    "overlay:rom_7e3e08:02008b30": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008b30.c",
+      "candidate_size": 148,
+      "evaluated_with": [
+        "OvlFunc_957_2008b30"
+      ],
+      "fuzzy_match_percent": 70.53226,
+      "name": "OvlFunc_957_2008b30",
+      "object_sha256": "ba569b65a73430712ee5d1570379de3082910700b459213cb93981b6cc70c481",
+      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 152
+    },
+    "overlay:rom_7e3e08:02008ee0": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008ee0.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "OvlFunc_957_2008ee0"
+      ],
+      "fuzzy_match_percent": 60.18182,
+      "name": "OvlFunc_957_2008ee0",
+      "object_sha256": "5858b19d4d8fd973bbffe26ea85c5060cd9ee934dda456fee0cc179d86446139",
+      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 48
+    },
+    "overlay:rom_7e3e08:0200b610": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_200b610.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "OvlFunc_957_200b610"
+      ],
+      "fuzzy_match_percent": 90.96,
+      "name": "OvlFunc_957_200b610",
+      "object_sha256": "90330bcdf4b7f1f8b5d8c1ad07757e7b3d1d9dbbf31860683e47ad4fe20afd2c",
+      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 52
+    },
+    "overlay:rom_7e636c:02008ba4": {
+      "candidate": "src/non_matching/maps/gondowan/OvlFunc_958_2008ba4.c",
+      "candidate_size": 284,
+      "evaluated_with": [
+        "OvlFunc_958_2008ba4"
+      ],
+      "fuzzy_match_percent": 90.60741,
+      "name": "OvlFunc_958_2008ba4",
+      "object_sha256": "d9541b99a6d43815f2572b78d88578c25f60fb10bda40cb2336709569fb947d6",
+      "reference_sha256": "bcac2ea08fcf7d683a02f1f0049392185c35e69a9b948aa940c6a60cfc9423eb",
+      "source": "src/maps/gondowan.c",
+      "target_size": 284
+    },
+    "overlay:rom_7e636c:020091f8": {
+      "candidate": "src/non_matching/maps/gondowan/OvlFunc_958_20091f8.c",
+      "candidate_size": 392,
+      "evaluated_with": [
+        "OvlFunc_958_20091f8"
+      ],
+      "fuzzy_match_percent": 89.7076,
+      "name": "OvlFunc_958_20091f8",
+      "object_sha256": "9b7f10ae1b01842156a35b397491e1626c57549d463b8f374722c03ad30e76aa",
+      "reference_sha256": "bcac2ea08fcf7d683a02f1f0049392185c35e69a9b948aa940c6a60cfc9423eb",
+      "source": "src/maps/gondowan.c",
+      "target_size": 392
+    },
+    "overlay:rom_7e7574:02008b4c": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2008b4c.c",
+      "candidate_size": 82,
+      "evaluated_with": [
+        "OvlFunc_959_2008b4c"
+      ],
+      "fuzzy_match_percent": 97.36842,
+      "name": "OvlFunc_959_2008b4c",
+      "object_sha256": "8a7279eff7ac7f2e9104dd4a9f1d659ef64e7d5e03f333932ce3694fa61e7740",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 84
+    },
+    "overlay:rom_7e7574:02008f30": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2008f30.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_959_2008f30"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_959_2008f30",
+      "object_sha256": "2a998cc56164a7eaa79b3c3e73511ddb9233066910390cbf02ae3cf5f75d538c",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 100
+    },
+    "overlay:rom_7e7574:0200a2d4": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a2d4.c",
+      "candidate_size": 50,
+      "evaluated_with": [
+        "OvlFunc_959_200a2d4"
+      ],
+      "fuzzy_match_percent": 95.833336,
+      "name": "OvlFunc_959_200a2d4",
+      "object_sha256": "bbbf8106bb846da60af90093719a8e3630921dbf020878ce30dba26bca54d91f",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 52
+    },
+    "overlay:rom_7e7574:0200a410": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a410.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_959_200a410"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_959_200a410",
+      "object_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 88
+    },
+    "overlay:rom_7e7574:0200a468": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a468.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_959_200a468"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "OvlFunc_959_200a468",
+      "object_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 88
+    },
+    "overlay:rom_7e7574:0200c794": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200c794.c",
+      "candidate_size": 412,
+      "evaluated_with": [
+        "OvlFunc_959_200c794"
+      ],
+      "fuzzy_match_percent": 92.789116,
+      "name": "OvlFunc_959_200c794",
+      "object_sha256": "4056a082d247d1d0432b099dca7da678e1c9eae14318362efbb1afcde2b25737",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 404
+    },
+    "overlay:rom_7e7574:0200d0e4": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200d0e4.c",
+      "candidate_size": 576,
+      "evaluated_with": [
+        "OvlFunc_959_200d0e4"
+      ],
+      "fuzzy_match_percent": 90.11215,
+      "name": "OvlFunc_959_200d0e4",
+      "object_sha256": "e177230322856fde9042b907ced419f9a28a1a7aea48230df4de5921857210e0",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 576
+    },
+    "overlay:rom_7e7574:0200d324": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200d324.c",
+      "candidate_size": 336,
+      "evaluated_with": [
+        "OvlFunc_959_200d324"
+      ],
+      "fuzzy_match_percent": 93.674416,
+      "name": "OvlFunc_959_200d324",
+      "object_sha256": "1319edfcef2850067b4c8e6ff46a7f299bd0caaca10c51929a8ecfb61e14d61e",
+      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 332
+    },
+    "overlay:rom_7eaf28:02008b24": {
+      "candidate": "src/non_matching/maps/suhalla_desert/OvlFunc_960_2008b24.c",
+      "candidate_size": 216,
+      "evaluated_with": [
+        "OvlFunc_960_2008b24"
+      ],
+      "fuzzy_match_percent": 94.445656,
+      "name": "OvlFunc_960_2008b24",
+      "object_sha256": "ba1bf42de3ce7bdfa2883a61803c084b9d646ea8a26d4321cf304bac0eb83715",
+      "reference_sha256": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
+      "source": "src/maps/suhalla_desert.c",
+      "target_size": 220
+    },
+    "overlay:rom_7eaf28:02008c00": {
+      "candidate": "src/non_matching/maps/suhalla_desert/OvlFunc_960_2008c00.c",
+      "candidate_size": 212,
+      "evaluated_with": [
+        "OvlFunc_960_2008c00"
+      ],
+      "fuzzy_match_percent": 81.29474,
+      "name": "OvlFunc_960_2008c00",
+      "object_sha256": "17f0c8a7d12a33c654e55c973d3e8ffe7a918a7ffc3b3c45177827fb525106aa",
+      "reference_sha256": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
+      "source": "src/maps/suhalla_desert.c",
+      "target_size": 228
+    },
+    "overlay:rom_7eaf28:02008f50": {
+      "candidate": "src/non_matching/maps/suhalla_desert/OvlFunc_960_2008f50.c",
+      "candidate_size": 324,
+      "evaluated_with": [
+        "OvlFunc_960_2008f50"
+      ],
+      "fuzzy_match_percent": 75.88806,
+      "name": "OvlFunc_960_2008f50",
+      "object_sha256": "e90f3c035f562af3640ba0a16657ce750de7e3ed1fef19d5ce1447dc4db336cc",
+      "reference_sha256": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
+      "source": "src/maps/suhalla_desert.c",
+      "target_size": 324
+    },
+    "overlay:rom_7eaf28:02009094": {
+      "candidate": "src/non_matching/maps/suhalla_desert/OvlFunc_960_2009094.c",
+      "candidate_size": 344,
+      "evaluated_with": [
+        "OvlFunc_960_2009094"
+      ],
+      "fuzzy_match_percent": 89.39726,
+      "name": "OvlFunc_960_2009094",
+      "object_sha256": "08e42bce0270ceea74f535c6e44cc278e15771b2192f90b7f93fb5ce79f5ad2c",
+      "reference_sha256": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
+      "source": "src/maps/suhalla_desert.c",
+      "target_size": 344
+    },
+    "overlay:rom_7ec19c:02008a78": {
+      "candidate": "src/non_matching/maps/suhalla_rooms/SuhallaRooms_MapInit.c",
+      "candidate_size": 188,
+      "evaluated_with": [
+        "SuhallaRooms_MapInit"
+      ],
+      "fuzzy_match_percent": 85.71764,
+      "name": "SuhallaRooms_MapInit",
+      "object_sha256": "ddc6faedcde1266b71f0de122be319e8b865b544b9eff6bdfbd1121deea82520",
+      "reference_sha256": "0aa4e74f09500e468650c80136fc8bc7195f5847483072ceb35c052c8a8324b2",
+      "source": "src/maps/suhalla_rooms.c",
+      "target_size": 188
+    },
+    "overlay:rom_7ed0a0:020089dc": {
+      "candidate": "src/non_matching/maps/tunnel_ruins/OvlFunc_964_20089dc.c",
+      "candidate_size": 20,
+      "evaluated_with": [
+        "OvlFunc_964_20089dc"
+      ],
+      "fuzzy_match_percent": 60.333332,
+      "name": "OvlFunc_964_20089dc",
+      "object_sha256": "63875a788ad1d21fbdde0c9ad1aa15fa999ed00cc7668622e13024c675a86c9c",
+      "reference_sha256": "ff75fc2788aafbed59733a6593e357aaf27779b5a285f69c9b8e90cbd31c619f",
+      "source": "src/maps/tunnel_ruins.c",
+      "target_size": 24
+    },
+    "overlay:rom_7ed0a0:02009038": {
+      "candidate": "src/non_matching/maps/tunnel_ruins/OvlFunc_964_2009038.c",
+      "candidate_size": 46,
+      "evaluated_with": [
+        "OvlFunc_964_2009038"
+      ],
+      "fuzzy_match_percent": 82.73913,
+      "name": "OvlFunc_964_2009038",
+      "object_sha256": "798b928fdc548eb1f134ec57fac5476f36551c77073c42611e6adb702982d10c",
+      "reference_sha256": "ff75fc2788aafbed59733a6593e357aaf27779b5a285f69c9b8e90cbd31c619f",
+      "source": "src/maps/tunnel_ruins.c",
+      "target_size": 48
+    },
+    "overlay:rom_7ef4f4:020089dc": {
+      "candidate": "src/non_matching/maps/babi_lighthouse/OvlFunc_965_20089dc.c",
+      "candidate_size": 22,
+      "evaluated_with": [
+        "OvlFunc_965_20089dc"
+      ],
+      "fuzzy_match_percent": 53.333332,
+      "name": "OvlFunc_965_20089dc",
+      "object_sha256": "75585ddde2ef76315ccf4bfa603e31e9814911c5891fe64ecf484cadec195ff5",
+      "reference_sha256": "c95648a596a92f1c6cf4b4ae575288112fb0b1b4c1f6939f933934f83dfe83f9",
+      "source": "src/maps/babi_lighthouse.c",
+      "target_size": 24
+    },
+    "overlay:rom_7ef4f4:02009158": {
+      "candidate": "src/non_matching/maps/babi_lighthouse/OvlFunc_965_2009158.c",
+      "candidate_size": 38,
+      "evaluated_with": [
+        "OvlFunc_965_2009158"
+      ],
+      "fuzzy_match_percent": 70.0,
+      "name": "OvlFunc_965_2009158",
+      "object_sha256": "ba4f63e042937411e9d7ae62232e5973d460443e67fffabda59503d90aab3af5",
+      "reference_sha256": "c95648a596a92f1c6cf4b4ae575288112fb0b1b4c1f6939f933934f83dfe83f9",
+      "source": "src/maps/babi_lighthouse.c",
+      "target_size": 44
+    },
+    "overlay:rom_7f148c:02008218": {
+      "candidate": "src/non_matching/maps/lalivero/OvlFunc_966_2008218.c",
+      "candidate_size": 1468,
+      "evaluated_with": [
+        "OvlFunc_966_2008218"
+      ],
+      "fuzzy_match_percent": 88.9353,
+      "name": "OvlFunc_966_2008218",
+      "object_sha256": "6c01771e736773deb7b196396456235ff180b6556e88d456eb43b92662dee18c",
+      "reference_sha256": "c8ec9529bdb21ca889570f1f7967f11ead6483b51f6816dfb407127729161808",
+      "source": "src/maps/lalivero.c",
+      "target_size": 1452
+    },
+    "overlay:rom_7f148c:0200920c": {
+      "candidate": "src/non_matching/maps/lalivero/Lalivero_MapInit.c",
+      "candidate_size": 720,
+      "evaluated_with": [
+        "Lalivero_MapInit"
+      ],
+      "fuzzy_match_percent": 82.29412,
+      "name": "Lalivero_MapInit",
+      "object_sha256": "ab9354ac86aeb3ca61f3425c7f8987688c261136cda8195a7658b4d570823c04",
+      "reference_sha256": "c8ec9529bdb21ca889570f1f7967f11ead6483b51f6816dfb407127729161808",
+      "source": "src/maps/lalivero.c",
+      "target_size": 716
+    },
+    "overlay:rom_7f2f14:02008058": {
+      "candidate": "src/non_matching/maps/venus_lighthouse/OvlFunc_968_2008058.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "OvlFunc_968_2008058"
+      ],
+      "fuzzy_match_percent": 64.413795,
+      "name": "OvlFunc_968_2008058",
+      "object_sha256": "ab99ea81799778d13456405bfda8bddada2397a73e96dc43d9b74e2d3bb305a8",
+      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "source": "src/maps/venus_lighthouse.c",
+      "target_size": 64
+    },
+    "overlay:rom_7f2f14:02008098": {
+      "candidate": "src/non_matching/maps/venus_lighthouse/OvlFunc_968_2008098.c",
+      "candidate_size": 70,
+      "evaluated_with": [
+        "OvlFunc_968_2008098"
+      ],
+      "fuzzy_match_percent": 82.911766,
+      "name": "OvlFunc_968_2008098",
+      "object_sha256": "e25fd1b29da6f9c8be03a843eabf12ed487ee897b83b44dba283ebcec8633f46",
+      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "source": "src/maps/venus_lighthouse.c",
+      "target_size": 72
+    },
+    "overlay:rom_7f2f14:0200832c": {
+      "candidate": "src/non_matching/maps/venus_lighthouse/OvlFunc_968_200832c.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "OvlFunc_968_200832c"
+      ],
+      "fuzzy_match_percent": 85.542854,
+      "name": "OvlFunc_968_200832c",
+      "object_sha256": "054a956a074077bbc4dbf64026fbe5c26450ceb2a5630df089a53b1b80720c0c",
+      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "source": "src/maps/venus_lighthouse.c",
+      "target_size": 72
+    },
+    "overlay:rom_7f6e64:020083a0": {
+      "candidate": "src/non_matching/maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.c",
+      "candidate_size": 98,
+      "evaluated_with": [
+        "OvlFunc_969_20083a0"
+      ],
+      "fuzzy_match_percent": 59.45652,
+      "name": "OvlFunc_969_20083a0",
+      "object_sha256": "d44c25f212b1280cfd38fb6caa45950c961d37d920da9c353b40c7be9368cf84",
+      "reference_sha256": "718a88b82a96ae3d16e15c9ef2f2414e94306667ab4c6167644d7d5f8c439773",
+      "source": "src/maps/venus_lighthouse_aerie.c",
+      "target_size": 96
+    },
+    "overlay:rom_7fa4ec:02008f80": {
+      "candidate": "src/non_matching/maps/lalivero_ship/OvlFunc_970_2008f80.c",
+      "candidate_size": 340,
+      "evaluated_with": [
+        "OvlFunc_970_2008f80"
+      ],
+      "fuzzy_match_percent": 77.01242,
+      "name": "OvlFunc_970_2008f80",
+      "object_sha256": "9a4231d22d3e2426300f8705403cf71ed4e00c9e8c3040914f8a64024afd5c7b",
+      "reference_sha256": "b6dd018cd553a4d8f93398e7993894deba4c17efa84f3af0c4092c5580d9834d",
+      "source": "src/maps/lalivero_ship.c",
+      "target_size": 340
+    },
+    "overlay:rom_7fa4ec:020091c4": {
+      "candidate": "src/non_matching/maps/lalivero_ship/OvlFunc_970_20091c4.c",
+      "candidate_size": 236,
+      "evaluated_with": [
+        "OvlFunc_970_20091c4"
+      ],
+      "fuzzy_match_percent": 85.17273,
+      "name": "OvlFunc_970_20091c4",
+      "object_sha256": "3101597ed1382200de2e97afb4683596a845c0eecfd8961af95594018c5ee108",
+      "reference_sha256": "b6dd018cd553a4d8f93398e7993894deba4c17efa84f3af0c4092c5580d9834d",
+      "source": "src/maps/lalivero_ship.c",
+      "target_size": 232
+    },
+    "overlay:rom_7fb4a8:02008128": {
+      "candidate": "src/non_matching/maps/link_lobby/OvlFunc_971_2008128.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "OvlFunc_971_2008128"
+      ],
+      "fuzzy_match_percent": 83.07692,
+      "name": "OvlFunc_971_2008128",
+      "object_sha256": "718cdafb9f56574d7c84391339dcb8d0058cd9b26ac4168ec316fab471161991",
+      "reference_sha256": "3553b78897aeb5940fd36c264fdc9dd78df7ed6ae38f2bdcdf5a8842a20b0c23",
+      "source": "src/maps/link_lobby.c",
+      "target_size": 32
+    },
+    "overlay:rom_7fb4a8:02008148": {
+      "candidate": "src/non_matching/maps/link_lobby/OvlFunc_971_2008148.c",
+      "candidate_size": 420,
+      "evaluated_with": [
+        "OvlFunc_971_2008148"
+      ],
+      "fuzzy_match_percent": 91.72455,
+      "name": "OvlFunc_971_2008148",
+      "object_sha256": "6000183f7964965dcbb275bba3b4f8b61146ad69b47d129ee5455a4b8001c683",
+      "reference_sha256": "3553b78897aeb5940fd36c264fdc9dd78df7ed6ae38f2bdcdf5a8842a20b0c23",
+      "source": "src/maps/link_lobby.c",
+      "target_size": 400
+    },
+    "overlay:rom_7fcd20:02008b10": {
+      "candidate": "src/non_matching/maps/menu_test/OvlFunc_974_2008b10.c",
+      "candidate_size": 168,
+      "evaluated_with": [
+        "OvlFunc_974_2008b10"
+      ],
+      "fuzzy_match_percent": 78.74627,
+      "name": "OvlFunc_974_2008b10",
+      "object_sha256": "a7803817175ccb6336ff2f89490301f95740450cda5f3350806e87d0085b3f79",
+      "reference_sha256": "047c0fb5a8bd46063e7f3574a34c7cd79c0a0b3b70c192ff7e73d565f2e7d478",
+      "source": "src/maps/menu_test.c",
+      "target_size": 168
+    },
+    "rom:0800bc48": {
+      "candidate": "src/non_matching/sprite/sprite/DeleteSpriteLayer.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "DeleteSpriteLayer"
+      ],
+      "fuzzy_match_percent": 63.0,
+      "name": "DeleteSpriteLayer",
+      "object_sha256": "85cbedaba8ff4edb2046f33c929f3a44f11501b00fc552513aeb30c701625d03",
+      "reference_sha256": "57ae4163c820522d2bbf6af9eca53a4bedbda451d300763c493fe5bfd32c6b27",
+      "source": "src/sprite/sprite.c",
+      "target_size": 40
+    },
+    "rom:0800c0cc": {
+      "candidate": "src/non_matching/actor/actor/NewActor.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "NewActor"
+      ],
+      "fuzzy_match_percent": 72.63158,
+      "name": "NewActor",
+      "object_sha256": "f3054d8816b29da951c01af83fc90ca8b2d8ac3bb35c9f127ebb340106391139",
+      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "source": "src/actor/actor.c",
+      "target_size": 40
+    },
+    "rom:0800c548": {
+      "candidate": "src/non_matching/actor/actor/Func_800c548.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_800c548"
+      ],
+      "fuzzy_match_percent": 72.4,
+      "name": "Func_800c548",
+      "object_sha256": "a1363d04fabb119ebae309fcadf88c2db96d79ce53a770e74fbb2aefa5add01d",
+      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "source": "src/actor/actor.c",
+      "target_size": 40
+    },
+    "rom:0800c570": {
+      "candidate": "src/non_matching/actor/actor/Func_800c570.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_800c570"
+      ],
+      "fuzzy_match_percent": 72.4,
+      "name": "Func_800c570",
+      "object_sha256": "42daf1b7579cd302ade06614c385b4e91897b5726c84aba8733b124ea04b0f54",
+      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "source": "src/actor/actor.c",
+      "target_size": 40
+    },
+    "rom:0800d304": {
+      "candidate": "src/non_matching/actor/actor_script/Func_800d304.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "Func_800d304"
+      ],
+      "fuzzy_match_percent": 57.875,
+      "name": "Func_800d304",
+      "object_sha256": "6bf2f4305006d5fb750f585b916c21a01a5a982f2971d8bcff3e3ea59cdda614",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 60
+    },
+    "rom:0800d6a4": {
+      "candidate": "src/non_matching/actor/actor_script/ActorCmd_CallNative.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "ActorCmd_CallNative"
+      ],
+      "fuzzy_match_percent": 92.0,
+      "name": "ActorCmd_CallNative",
+      "object_sha256": "09d270efbda83020c6a7677ee2e6eb708f8d0a082a389394c89d4e1ba1230fa4",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 52
+    },
+    "rom:0800e334": {
+      "candidate": "src/non_matching/actor/actor_script/ActorAttrOp_width.c",
+      "candidate_size": 54,
+      "evaluated_with": [
+        "ActorAttrOp_width"
+      ],
+      "fuzzy_match_percent": 64.833336,
+      "name": "ActorAttrOp_width",
+      "object_sha256": "5241e351a0661c42931a6c792bfcc0e6e645b5d13a30c1bbabec0a8aa71c542b",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 48
+    },
+    "rom:0800e810": {
+      "candidate": "src/non_matching/actor/actor_script/ActorAttrOp_waitTimer.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "ActorAttrOp_waitTimer"
+      ],
+      "fuzzy_match_percent": 67.1875,
+      "name": "ActorAttrOp_waitTimer",
+      "object_sha256": "b4a02062aca2b13bae2cfbd99a1e85d9cd95459ff526ed31f6b36fd7b9ce5c1f",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 64
+    },
+    "rom:0800e850": {
+      "candidate": "src/non_matching/actor/actor_script/ActorAttrOp_unk64.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "ActorAttrOp_unk64"
+      ],
+      "fuzzy_match_percent": 59.53125,
+      "name": "ActorAttrOp_unk64",
+      "object_sha256": "ac67b2baae92cc3acb340f134b3154c7041c1fd47fe351d015f8975af622dc34",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 64
+    },
+    "rom:0800e890": {
+      "candidate": "src/non_matching/actor/actor_script/ActorAttrOp_unk66.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "ActorAttrOp_unk66"
+      ],
+      "fuzzy_match_percent": 67.1875,
+      "name": "ActorAttrOp_unk66",
+      "object_sha256": "bc2c11c772012a295f6c6fa86e1495650c78ac77be1c6a4d6bd7432608e6a99e",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 64
+    },
+    "rom:0800e9a0": {
+      "candidate": "src/non_matching/actor/actor_script/ActorCmd_SetAttr.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "ActorCmd_SetAttr"
+      ],
+      "fuzzy_match_percent": 68.28571,
+      "name": "ActorCmd_SetAttr",
+      "object_sha256": "c72e9ab4cd1c9840b32e9dde77e22861a113070c4cc227f15d3a64c32d033345",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 60
+    },
+    "rom:0800e9dc": {
+      "candidate": "src/non_matching/actor/actor_script/ActorCmd_IncAttr.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "ActorCmd_IncAttr"
+      ],
+      "fuzzy_match_percent": 68.28571,
+      "name": "ActorCmd_IncAttr",
+      "object_sha256": "b11b9afea545fabda92629d12c2debbc6abf6e1cd5d034892bec551305fc50d9",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 60
+    },
+    "rom:0800ea18": {
+      "candidate": "src/non_matching/actor/actor_script/ActorCmd_CmpAttr.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "ActorCmd_CmpAttr"
+      ],
+      "fuzzy_match_percent": 68.28571,
+      "name": "ActorCmd_CmpAttr",
+      "object_sha256": "2e6b379cecf29786fade8531950472bccf63406efe9bd25983d2fb3122f42916",
+      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "source": "src/actor/actor_script.c",
+      "target_size": 60
+    },
+    "rom:0800eba0": {
+      "candidate": "src/non_matching/actor/player/Func_800eba0.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "Func_800eba0"
+      ],
+      "fuzzy_match_percent": 85.47369,
+      "name": "Func_800eba0",
+      "object_sha256": "9b092d71ac404482e2af3e9bef8124681ec4cfd9475b09638afdfd20c02482e8",
+      "reference_sha256": "0f9a2a12f4a9b52c4740a723ef7605b974475a421c50b5a78f790e797f0e4927",
+      "source": "src/actor/player.c",
+      "target_size": 76
+    },
+    "rom:0800fa8c": {
+      "candidate": "src/non_matching/field/map_data/Func_800fa8c.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "Func_800fa8c"
+      ],
+      "fuzzy_match_percent": 76.5,
+      "name": "Func_800fa8c",
+      "object_sha256": "5ee729262e9ab9770dc07f8d54167dc6b26654ed63196f154a61920a95b52e2e",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 60
+    },
+    "rom:080108c4": {
+      "candidate": "src/non_matching/field/map_data/Func_80108c4.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "Func_80108c4"
+      ],
+      "fuzzy_match_percent": 68.92857,
+      "name": "Func_80108c4",
+      "object_sha256": "e34f3b8c31a683b90940d4dc74536a8d18d19e8d2f41037a56bac506500e0c8e",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 32
+    },
+    "rom:08011164": {
+      "candidate": "src/non_matching/field/map_data/Func_8011164.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "Func_8011164"
+      ],
+      "fuzzy_match_percent": 68.48649,
+      "name": "Func_8011164",
+      "object_sha256": "39dae3f4a3f7a321d60590461eab0bc7ae7e62921b46635b420474f8b8a75dbe",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 80
+    },
+    "rom:08011d34": {
+      "candidate": "src/non_matching/field/map_data/HeightTile_3.c",
+      "candidate_size": 42,
+      "evaluated_with": [
+        "HeightTile_3"
+      ],
+      "fuzzy_match_percent": 95.22727,
+      "name": "HeightTile_3",
+      "object_sha256": "4e1ca09e720013ca2a66b5d2883fa2c2abaadebe8d4661f5a4abddf4368e0645",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 44
+    },
+    "rom:08011d60": {
+      "candidate": "src/non_matching/field/map_data/HeightTile_4.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "HeightTile_4"
+      ],
+      "fuzzy_match_percent": 80.96154,
+      "name": "HeightTile_4",
+      "object_sha256": "c5d6c14d9e660ad7354b43835fdb8d410d7a91a9aaa826026f0ad9d19c33eca7",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 52
+    },
+    "rom:08011e88": {
+      "candidate": "src/non_matching/field/map_data/HeightTile_A.c",
+      "candidate_size": 66,
+      "evaluated_with": [
+        "HeightTile_A"
+      ],
+      "fuzzy_match_percent": 83.94444,
+      "name": "HeightTile_A",
+      "object_sha256": "a74b60da98d08d29cc1b2b1874388e8848169e6bed6481b53c001d5f540f6cce",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 72
+    },
+    "rom:08011ed0": {
+      "candidate": "src/non_matching/field/map_data/HeightTile_B.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "HeightTile_B"
+      ],
+      "fuzzy_match_percent": 77.64706,
+      "name": "HeightTile_B",
+      "object_sha256": "dd25b7392a9c84fe4280d9584f930db391f44d35a8f609d3ddf81fd056b596a0",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 68
+    },
+    "rom:08012388": {
+      "candidate": "src/non_matching/field/map_data/Func_8012388.c",
+      "candidate_size": 104,
+      "evaluated_with": [
+        "Func_8012388"
+      ],
+      "fuzzy_match_percent": 83.888885,
+      "name": "Func_8012388",
+      "object_sha256": "959ef0743a6fbc93e988edbd3b966d7684a990a5f6c40fa44d070744fd1bee07",
+      "reference_sha256": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "source": "src/field/map_data.c",
+      "target_size": 108
+    },
+    "rom:08015f30": {
+      "candidate": "src/non_matching/ui/window/Func_8015f30.c",
+      "candidate_size": 140,
+      "evaluated_with": [
+        "Func_8015f30"
+      ],
+      "fuzzy_match_percent": 52.37037,
+      "name": "Func_8015f30",
+      "object_sha256": "19df7d0e3105866b791abf2c6e4e32e2dd169d32023920385c40ecb396808bf9",
+      "reference_sha256": "9c020030260a6dc2eb5fd4e9602b6572b76512f6f4c4b9677b03aec09fd691a2",
+      "source": "src/ui/window.c",
+      "target_size": 136
+    },
+    "rom:080167ac": {
+      "candidate": "src/non_matching/ui/ui/Func_80167ac.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80167ac"
+      ],
+      "fuzzy_match_percent": 67.10526,
+      "name": "Func_80167ac",
+      "object_sha256": "77f7dcd83941565d855221db40bd6f964cf60ac90c4c048003be008959a64a57",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 44
+    },
+    "rom:080170c4": {
+      "candidate": "src/non_matching/ui/ui/Func_80170c4.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80170c4"
+      ],
+      "fuzzy_match_percent": 43.32,
+      "name": "Func_80170c4",
+      "object_sha256": "dcd7eb239b27ab2d0fd3e4121a1136d0c436fafdf9b692439dcb6d457fe3336d",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 52
+    },
+    "rom:080173ac": {
+      "candidate": "src/non_matching/ui/ui/Func_80173ac.c",
+      "candidate_size": 94,
+      "evaluated_with": [
+        "Func_80173ac"
+      ],
+      "fuzzy_match_percent": 17.633333,
+      "name": "Func_80173ac",
+      "object_sha256": "409cdb19ba8a77efddf78b7c7a5b334db6185c8bc3d3e7547fb34938ea36a6b2",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 72
+    },
+    "rom:080173f4": {
+      "candidate": "src/non_matching/ui/ui/Func_80173f4.c",
+      "candidate_size": 130,
+      "evaluated_with": [
+        "Func_80173f4"
+      ],
+      "fuzzy_match_percent": 40.282608,
+      "name": "Func_80173f4",
+      "object_sha256": "228b458477b8f199fc8ed7de42bb4f78ae13fd7fbe1d79ffe63fc8714474950b",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 112
+    },
+    "rom:0801908c": {
+      "candidate": "src/non_matching/ui/ui/Func_801908c.c",
+      "candidate_size": 316,
+      "evaluated_with": [
+        "Func_801908c"
+      ],
+      "fuzzy_match_percent": 84.635765,
+      "name": "Func_801908c",
+      "object_sha256": "253ea1cd5f8d2f74418508bdd87a8e147b24442903d154dba2bc827c28c9747e",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 320
+    },
+    "rom:080198dc": {
+      "candidate": "src/non_matching/ui/ui/Func_80198dc.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80198dc"
+      ],
+      "fuzzy_match_percent": 57.85,
+      "name": "Func_80198dc",
+      "object_sha256": "6d9f00f21758305283d092d377861ef119f71356632eef3ac91993d4fbcb627a",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 44
+    },
+    "rom:08019908": {
+      "candidate": "src/non_matching/ui/ui/Func_8019908.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "Func_8019908"
+      ],
+      "fuzzy_match_percent": 47.62963,
+      "name": "Func_8019908",
+      "object_sha256": "141b3259a570d2f98c979da0c6b5d112343361293301c11a53341ea3043ea3aa",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 60
+    },
+    "rom:08019d0c": {
+      "candidate": "src/non_matching/ui/ui/Func_8019d0c.c",
+      "candidate_size": 28,
+      "evaluated_with": [
+        "Func_8019d0c"
+      ],
+      "fuzzy_match_percent": 78.46154,
+      "name": "Func_8019d0c",
+      "object_sha256": "2fdb3cefb1652c6a0ecb875689ca644efdb67c521284277b171fbcbd06c2b60b",
+      "reference_sha256": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "source": "src/ui/ui.c",
+      "target_size": 32
+    },
+    "rom:0801a4c0": {
+      "candidate": "src/non_matching/ui/icon/DecompressStatusIcon.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "DecompressStatusIcon"
+      ],
+      "fuzzy_match_percent": 89.65385,
+      "name": "DecompressStatusIcon",
+      "object_sha256": "900fd37e72563c58cb0b13c4129fce752d1c197690809df8c0826509e2172360",
+      "reference_sha256": "f59913f9cdbae72f2a2847c5ee5f44983be4e28c5fa7421fef2997a25f3483e5",
+      "source": "src/ui/icon.c",
+      "target_size": 60
+    },
+    "rom:0801b36c": {
+      "candidate": "src/non_matching/ui/menu/Func_801b36c.c",
+      "candidate_size": 38,
+      "evaluated_with": [
+        "Func_801b36c"
+      ],
+      "fuzzy_match_percent": 64.04762,
+      "name": "Func_801b36c",
+      "object_sha256": "ef0bb1532740eb7e80bfac62a81f93e747f367021ad006930d35c20922af4964",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 44
+    },
+    "rom:0801c154": {
+      "candidate": "src/non_matching/ui/menu/Func_801c154.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_801c154"
+      ],
+      "fuzzy_match_percent": 57.0,
+      "name": "Func_801c154",
+      "object_sha256": "d86f40180ac0a381669647eea2ba6aa7f4bd602d9fe14c12f13de438cba75df8",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 40
+    },
+    "rom:0801c46c": {
+      "candidate": "src/non_matching/ui/menu/Func_801c46c.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "Func_801c46c"
+      ],
+      "fuzzy_match_percent": 71.09091,
+      "name": "Func_801c46c",
+      "object_sha256": "3152c3158257ef9149cdb162cf229d97a86cb07f303192a36855121a3d1b8c78",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 48
+    },
+    "rom:0801c9c8": {
+      "candidate": "src/non_matching/ui/menu/Func_801c9c8.c",
+      "candidate_size": 92,
+      "evaluated_with": [
+        "Func_801c9c8"
+      ],
+      "fuzzy_match_percent": 87.12195,
+      "name": "Func_801c9c8",
+      "object_sha256": "a803439202eab951851c094d5f30b8dbeaf122a8dbf21fd2cd0735d05d500143",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 84
+    },
+    "rom:0801ce48": {
+      "candidate": "src/non_matching/ui/menu/Func_801ce48.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "Func_801ce48"
+      ],
+      "fuzzy_match_percent": 68.375,
+      "name": "Func_801ce48",
+      "object_sha256": "0246fffc2db63c32ec4e41643403a360858bf135f8e72c25ed2364a2aebb2f27",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 36
+    },
+    "rom:0801d94c": {
+      "candidate": "src/non_matching/ui/menu/Func_801d94c.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "Func_801d94c"
+      ],
+      "fuzzy_match_percent": 89.7619,
+      "name": "Func_801d94c",
+      "object_sha256": "39abffd8740cfe38eccb181c08abe513e9301a0ea357fec1a0fe178fe9c08302",
+      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "source": "src/ui/menu.c",
+      "target_size": 52
+    },
+    "rom:0801ee68": {
+      "candidate": "src/non_matching/ui/text/Func_801ee68.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "Func_801ee68"
+      ],
+      "fuzzy_match_percent": 77.0,
+      "name": "Func_801ee68",
+      "object_sha256": "c144b4876ce102058092617bd2b0c01e17668f434fdad1b8e66b33e0d6aae405",
+      "reference_sha256": "b9c002c71ea02cc53dc4204a5f0b3f47e87bb15de7187be01e43e7681b0e081d",
+      "source": "src/ui/text.c",
+      "target_size": 56
+    },
+    "rom:0801fd34": {
+      "candidate": "src/non_matching/ui/text/Func_801fd34.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "Func_801fd34"
+      ],
+      "fuzzy_match_percent": 84.72222,
+      "name": "Func_801fd34",
+      "object_sha256": "5b6255a24f5ec7d175e51c6d73f7c56b0cc5063b8858768b3f0553abdbca2cc4",
+      "reference_sha256": "b9c002c71ea02cc53dc4204a5f0b3f47e87bb15de7187be01e43e7681b0e081d",
+      "source": "src/ui/text.c",
+      "target_size": 80
+    },
+    "rom:0801ff14": {
+      "candidate": "src/non_matching/ui/save_menu/Func_801ff14.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "Func_801ff14"
+      ],
+      "fuzzy_match_percent": 92.0,
+      "name": "Func_801ff14",
+      "object_sha256": "e9dc5090265fda461a4199b94ee0b093fe5930375a0008898e0a119970b10218",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 68
+    },
+    "rom:08020088": {
+      "candidate": "src/non_matching/ui/save_menu/Func_8020088.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "Func_8020088"
+      ],
+      "fuzzy_match_percent": 92.0,
+      "name": "Func_8020088",
+      "object_sha256": "a761e9bb566643310f6c131969a0567c2eb36061364bd1246d885fe082fa4fdc",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 68
+    },
+    "rom:08021360": {
+      "candidate": "src/non_matching/ui/save_menu/Func_8021360.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "Func_8021360"
+      ],
+      "fuzzy_match_percent": 98.809525,
+      "name": "Func_8021360",
+      "object_sha256": "0118cdeb4b931fd77c30285fcc3994ee8673d7eb101d0b0dcc7951316fd35d65",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 48
+    },
+    "rom:080216b4": {
+      "candidate": "src/non_matching/ui/save_menu/Func_80216b4.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "Func_80216b4"
+      ],
+      "fuzzy_match_percent": 97.833336,
+      "name": "Func_80216b4",
+      "object_sha256": "e8029d49b4354dfe5913b51bf3f80c77726ba84e0faa8590527eccbdb2fa42ea",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 52
+    },
+    "rom:08021be0": {
+      "candidate": "src/non_matching/ui/save_menu/DecompressIcon.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "DecompressIcon"
+      ],
+      "fuzzy_match_percent": 57.058823,
+      "name": "DecompressIcon",
+      "object_sha256": "9bbf29d1ce804fbe8eef9c44d1963d6b4032e32eed37434cf41972be3005a66e",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 84
+    },
+    "rom:08021c34": {
+      "candidate": "src/non_matching/ui/save_menu/Func_8021c34.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "Func_8021c34"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "Func_8021c34",
+      "object_sha256": "4473704dfc31376445071bf86b5186db634f38632aeb713399b8f79238443fb1",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 48
+    },
+    "rom:080270ac": {
+      "candidate": "src/non_matching/ui/save_menu/Func_80270ac.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "Func_80270ac"
+      ],
+      "fuzzy_match_percent": 66.65,
+      "name": "Func_80270ac",
+      "object_sha256": "ad909dcdf690b975b7996a6889743153d520a773c92b92e38d8fe319f644d230",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 44
+    },
+    "rom:080284dc": {
+      "candidate": "src/non_matching/ui/save_menu/Func_80284dc.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "Func_80284dc"
+      ],
+      "fuzzy_match_percent": 75.11539,
+      "name": "Func_80284dc",
+      "object_sha256": "1b5699b1881b0639143b2ccc40e1b13d2abcf6e60b2fa8138981a12f01a58ddf",
+      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "source": "src/ui/save_menu.c",
+      "target_size": 64
+    },
+    "rom:08077394": {
+      "candidate": "src/non_matching/rpg/get_unit/GetUnit.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "GetUnit"
+      ],
+      "fuzzy_match_percent": 75.451614,
+      "name": "GetUnit",
+      "object_sha256": "d9cb0401c867fce0056d81352e933d439d834353aeb481fc2df26ae060cc23d0",
+      "reference_sha256": "2b55446d83b5fe1cdea5fa88f6c6515b49a6b6a6b94e26a220645fdabcf6e414",
+      "source": "src/rpg/get_unit.c",
+      "target_size": 68
+    },
+    "rom:08078aa0": {
+      "candidate": "src/non_matching/rpg/item/Func_8078aa0.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "Func_8078aa0"
+      ],
+      "fuzzy_match_percent": 68.86957,
+      "name": "Func_8078aa0",
+      "object_sha256": "217858cf5df9cdb612c861872afc6205b72d7766e1e32882aa0705048727cb04",
+      "reference_sha256": "52b33b9b6a027ea5728b8464ac6d9026e139f1eacfbaba1d1f3dd618f950a43d",
+      "source": "src/rpg/item.c",
+      "target_size": 48
+    },
+    "rom:08078ad0": {
+      "candidate": "src/non_matching/rpg/item/Func_8078ad0.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_8078ad0"
+      ],
+      "fuzzy_match_percent": 99.117645,
+      "name": "Func_8078ad0",
+      "object_sha256": "9faa6dc416b29297ff002ccb307cb36a43817847e2af91c9d0d51faea323a4b5",
+      "reference_sha256": "52b33b9b6a027ea5728b8464ac6d9026e139f1eacfbaba1d1f3dd618f950a43d",
+      "source": "src/rpg/item.c",
+      "target_size": 40
+    },
+    "rom:08078bc0": {
+      "candidate": "src/non_matching/rpg/move/HasMove.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "HasMove"
+      ],
+      "fuzzy_match_percent": 81.818184,
+      "name": "HasMove",
+      "object_sha256": "a54144ababc265e4e7d7c7785aa27368d13a03f0942ffe09dee78470707bd7d0",
+      "reference_sha256": "65690c376d1a23b0dae697550fead20b035a79c704bfeac82445f365d21d2423",
+      "source": "src/rpg/move.c",
+      "target_size": 48
+    },
+    "rom:0807a2bc": {
+      "candidate": "src/non_matching/rpg/djinni/Func_807a2bc.c",
+      "candidate_size": 38,
+      "evaluated_with": [
+        "Func_807a2bc"
+      ],
+      "fuzzy_match_percent": 94.73684,
+      "name": "Func_807a2bc",
+      "object_sha256": "f0899b73ffd4bbae94cdfb8087c13791d240113cee56e2c8693badd32e1c1d11",
+      "reference_sha256": "1f30952b4c7053de5654b8730ff2525d1ececf04e6fef4e52b09a75d82a3ff95",
+      "source": "src/rpg/djinni.c",
+      "target_size": 40
+    },
+    "rom:0807a458": {
+      "candidate": "src/non_matching/rpg/djinni/Func_807a458.c",
+      "candidate_size": 58,
+      "evaluated_with": [
+        "Func_807a458"
+      ],
+      "fuzzy_match_percent": 73.63333,
+      "name": "Func_807a458",
+      "object_sha256": "8734f351b5a2e13932284ce77678b4e6fbfad8ad50c060b2655a43eb615bc960",
+      "reference_sha256": "1f30952b4c7053de5654b8730ff2525d1ececf04e6fef4e52b09a75d82a3ff95",
+      "source": "src/rpg/djinni.c",
+      "target_size": 64
+    },
+    "rom:0808b868": {
+      "candidate": "src/non_matching/field/room_load/Func_808b868.c",
+      "candidate_size": 128,
+      "evaluated_with": [
+        "Func_808b868"
+      ],
+      "fuzzy_match_percent": 96.666664,
+      "name": "Func_808b868",
+      "object_sha256": "807766a46536c20a9baea3217ec57277c6c8ebb31640c82e4465879bb7978f70",
+      "reference_sha256": "14ae0ab2573bfb97c036f1b79cf516ba34682e5ba9b579d40410068a15399ce0",
+      "source": "src/field/room_load.c",
+      "target_size": 128
+    },
+    "rom:0808bc44": {
+      "candidate": "src/non_matching/field/map_actor/Func_808bc44.c",
+      "candidate_size": 92,
+      "evaluated_with": [
+        "Func_808bc44"
+      ],
+      "fuzzy_match_percent": 83.69768,
+      "name": "Func_808bc44",
+      "object_sha256": "e08e38b6bfd610bdda2fe5200add0211775a4aa3180a755ff2d6c169fcfc2a70",
+      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "source": "src/field/map_actor.c",
+      "target_size": 88
+    },
+    "rom:0808c2dc": {
+      "candidate": "src/non_matching/field/map_actor/Func_808c2dc.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_808c2dc"
+      ],
+      "fuzzy_match_percent": 60.904762,
+      "name": "Func_808c2dc",
+      "object_sha256": "d3b95528a381173237f88cbf7e0d876076471784d805cb5e8f7e0bd79e76fc7f",
+      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "source": "src/field/map_actor.c",
+      "target_size": 48
+    },
+    "rom:0808ddb8": {
+      "candidate": "src/non_matching/field/map/GetFieldMoveRange.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "GetFieldMoveRange"
+      ],
+      "fuzzy_match_percent": 83.32,
+      "name": "GetFieldMoveRange",
+      "object_sha256": "1fdc448f394018c673e746a10e3401f720a6a9c5ce645794ba67b319f0c594e5",
+      "reference_sha256": "1dcf597ca8c8dbc6fe2274c54e8af97c699b21731f9cf095404ea139031fc96c",
+      "source": "src/field/map.c",
+      "target_size": 52
+    },
+    "rom:08091254": {
+      "candidate": "src/non_matching/field/map/Func_8091254.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "Func_8091254"
+      ],
+      "fuzzy_match_percent": 79.82758,
+      "name": "Func_8091254",
+      "object_sha256": "33ba85226430cadd5e8be1b3da53ce85bb626189745b61b71f67fb4335d5b487",
+      "reference_sha256": "1dcf597ca8c8dbc6fe2274c54e8af97c699b21731f9cf095404ea139031fc96c",
+      "source": "src/field/map.c",
+      "target_size": 64
+    },
+    "rom:080915ec": {
+      "candidate": "src/non_matching/field/cutscene/Task_Cutscene.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "Task_Cutscene"
+      ],
+      "fuzzy_match_percent": 82.51351,
+      "name": "Task_Cutscene",
+      "object_sha256": "dd32ac394efd6415242007c47a3fb020ee6ef9ed5308953894fe123521854d26",
+      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
+      "source": "src/field/cutscene.c",
+      "target_size": 80
+    },
+    "rom:08091c1c": {
+      "candidate": "src/non_matching/field/cutscene/Func_8091c1c.c",
+      "candidate_size": 30,
+      "evaluated_with": [
+        "Func_8091c1c"
+      ],
+      "fuzzy_match_percent": 65.666664,
+      "name": "Func_8091c1c",
+      "object_sha256": "dddfd95070cf85ade5e4b003338a6d88bf72ab1221c7df0819ae151713f056cf",
+      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
+      "source": "src/field/cutscene.c",
+      "target_size": 32
+    },
+    "rom:08091ff0": {
+      "candidate": "src/non_matching/field/cutscene/Func_8091ff0.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_8091ff0"
+      ],
+      "fuzzy_match_percent": 80.16,
+      "name": "Func_8091ff0",
+      "object_sha256": "9cb1b149ebbf3309c133e53902bcc785d5d0e78edc3c93f6c7463709681b6acb",
+      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
+      "source": "src/field/cutscene.c",
+      "target_size": 60
+    },
+    "rom:080936a0": {
+      "candidate": "src/non_matching/field/map_actor/Func_80936a0.c",
+      "candidate_size": 112,
+      "evaluated_with": [
+        "Func_80936a0"
+      ],
+      "fuzzy_match_percent": 88.520836,
+      "name": "Func_80936a0",
+      "object_sha256": "718820c25bff7b3e6da271e9676e6ebe19ab439ef775ccee7593c371f0ce32e5",
+      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "source": "src/field/map_actor.c",
+      "target_size": 112
+    },
+    "rom:080958a8": {
+      "candidate": "src/non_matching/field/weather/Func_80958a8.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_80958a8"
+      ],
+      "fuzzy_match_percent": 83.32,
+      "name": "Func_80958a8",
+      "object_sha256": "28ee199cb63f68362f1955036f81996691afc3723097dcefdb3e550f93c42a5c",
+      "reference_sha256": "570b9e4ab1f0c6777c73eccd2894e96253af410ba675c5f59b1db03c0e2cea2a",
+      "source": "src/field/weather.c",
+      "target_size": 60
+    },
+    "rom:08096ab0": {
+      "candidate": "src/non_matching/field/field_move/Func_8096ab0.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "Func_8096ab0"
+      ],
+      "fuzzy_match_percent": 89.03571,
+      "name": "Func_8096ab0",
+      "object_sha256": "1f03a30a8843d18b51ad78a5ac9f1577a4b0870a5cafab9c526c40451f499af7",
+      "reference_sha256": "56791e8f5d456e3915e084e75dfdc9393e2f8e147a7726030264d4d4cbd7e865",
+      "source": "src/field/field_move.c",
+      "target_size": 64
+    },
+    "rom:08097868": {
+      "candidate": "src/non_matching/field/moves/mind_read/Func_8097868.c",
+      "candidate_size": 92,
+      "evaluated_with": [
+        "Func_8097868"
+      ],
+      "fuzzy_match_percent": 70.0,
+      "name": "Func_8097868",
+      "object_sha256": "b415da8c11531c5391e9298e0727c4432e53186d0ac6581bbfaab8820a2301fc",
+      "reference_sha256": "35d3c01a81191c8e3f95f52e3dac8cfa0f01f10eb3e71d245cb57b794d59b862",
+      "source": "src/field/moves/mind_read.c",
+      "target_size": 92
+    },
+    "rom:08098184": {
+      "candidate": "src/non_matching/field/moves/move/Func_8098184.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_8098184"
+      ],
+      "fuzzy_match_percent": 85.45,
+      "name": "Func_8098184",
+      "object_sha256": "a5799dc2528d67fb0f69e16b06175609024110faac6f8a2d6ecc84c97c088b7d",
+      "reference_sha256": "b55023b21072a040ccba761b01a4df4a445847df3c81a1d32c4a6024a025cec3",
+      "source": "src/field/moves/move.c",
+      "target_size": 44
+    },
+    "rom:08099128": {
+      "candidate": "src/non_matching/field/moves/frost/Field_Frost_Target.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "Field_Frost_Target"
+      ],
+      "fuzzy_match_percent": 90.76923,
+      "name": "Field_Frost_Target",
+      "object_sha256": "922a72f888d3c1e4d51c01d94588afcfb36a7b878d4fcce83d87f4477d8fe4c2",
+      "reference_sha256": "9225581246d922b359a5f44b49c43565561258edc9a9b35691494392e1c35bcb",
+      "source": "src/field/moves/frost.c",
+      "target_size": 56
+    },
+    "rom:080992f0": {
+      "candidate": "src/non_matching/field/moves/ply/Func_80992f0.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "Func_80992f0"
+      ],
+      "fuzzy_match_percent": 83.947365,
+      "name": "Func_80992f0",
+      "object_sha256": "624c67f148e5be45b001f5016fb12a546fe9d19477ba0af516d4ba731f085889",
+      "reference_sha256": "e86e635c1c13fceaca04fb7c41b80c29aa16434d88d5e9d01678898cd58d4edb",
+      "source": "src/field/moves/ply.c",
+      "target_size": 80
+    },
+    "rom:0809abb4": {
+      "candidate": "src/non_matching/field/moves/halt/Field_Halt.c",
+      "candidate_size": 452,
+      "evaluated_with": [
+        "Field_Halt"
+      ],
+      "fuzzy_match_percent": 87.93194,
+      "name": "Field_Halt",
+      "object_sha256": "399f1e5fe1a5f41ea910fb910e15e1b87d00811f9a38fe4c0887b253d61c43c3",
+      "reference_sha256": "bf37df7ad90d1820711a056bf0d11cf5ec3832ae3b39ec681600a365f34d1dc6",
+      "source": "src/field/moves/halt.c",
+      "target_size": 444
+    },
+    "rom:0809b0dc": {
+      "candidate": "src/non_matching/field/moves/retreat/Func_809b0dc.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_809b0dc"
+      ],
+      "fuzzy_match_percent": 94.3,
+      "name": "Func_809b0dc",
+      "object_sha256": "51d4b0e33174167130cce14d9ccc72378f9ba8ccf44f769edea3d259700e8392",
+      "reference_sha256": "af23c64a146841f52aaf05b01e1f418b6855452f03361c3c45d7eb6671d4d177",
+      "source": "src/field/moves/retreat.c",
+      "target_size": 64
+    },
+    "rom:0809b3d8": {
+      "candidate": "src/non_matching/field/moves/avoid/Func_809b3d8.c",
+      "candidate_size": 108,
+      "evaluated_with": [
+        "Func_809b3d8"
+      ],
+      "fuzzy_match_percent": 71.96429,
+      "name": "Func_809b3d8",
+      "object_sha256": "195ff8a7d1f864ed31ecc78619ab497aa6ba1aa6317d8c81d07212f26fdcddc8",
+      "reference_sha256": "07c00448b90e143da7a1f2f222032947f714f109ff92ca76f83522204cc826d0",
+      "source": "src/field/moves/avoid.c",
+      "target_size": 120
+    },
+    "rom:0809bb34": {
+      "candidate": "src/non_matching/field/field_effect/Func_809bb34.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "Func_809bb34"
+      ],
+      "fuzzy_match_percent": 57.857143,
+      "name": "Func_809bb34",
+      "object_sha256": "83fca6287292dab113a6016be4651ff0c5b58ffc30fdf957755541914bedbf43",
+      "reference_sha256": "df61887c23819dcb4e702bc3ca2f1612d59b1558be95ed8c7fc3ca2066f5ac47",
+      "source": "src/field/field_effect.c",
+      "target_size": 48
+    },
+    "rom:080a22f4": {
+      "candidate": "src/non_matching/ui/party_menu/Func_80a22f4.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "Func_80a22f4"
+      ],
+      "fuzzy_match_percent": 57.666668,
+      "name": "Func_80a22f4",
+      "object_sha256": "3171ca7b3d5398116156bba32f475abf824d6b842189f1b2c5e8fddeee215fe7",
+      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "source": "src/ui/party_menu.c",
+      "target_size": 48
+    },
+    "rom:080a65e4": {
+      "candidate": "src/non_matching/ui/party_menu/Func_80a65e4.c",
+      "candidate_size": 48,
+      "evaluated_with": [
+        "Func_80a65e4"
+      ],
+      "fuzzy_match_percent": 50.761906,
+      "name": "Func_80a65e4",
+      "object_sha256": "c6e51e6c2e02718d911540f6c2d2f27914336fe9cc807b28b2eb7ccc26f1c3c8",
+      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "source": "src/ui/party_menu.c",
+      "target_size": 48
+    },
+    "rom:080a735c": {
+      "candidate": "src/non_matching/ui/party_menu/Func_80a735c.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "Func_80a735c"
+      ],
+      "fuzzy_match_percent": 39.882355,
+      "name": "Func_80a735c",
+      "object_sha256": "baaefa5e9297c4f7cd6dc5a5f958fc02db059c70cf6fc926376516143dc0f48f",
+      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "source": "src/ui/party_menu.c",
+      "target_size": 36
+    },
+    "rom:080ab1f4": {
+      "candidate": "src/non_matching/ui/party_menu/Func_80ab1f4.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_80ab1f4"
+      ],
+      "fuzzy_match_percent": 89.47369,
+      "name": "Func_80ab1f4",
+      "object_sha256": "a851e2e7d4332041e862d1af0f3921dd1a738b5eddc95b795490191b4538c695",
+      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "source": "src/ui/party_menu.c",
+      "target_size": 40
+    },
+    "rom:080b06c0": {
+      "candidate": "src/non_matching/ui/shop/Func_80b06c0.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80b06c0"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "Func_80b06c0",
+      "object_sha256": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
+      "reference_sha256": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
+      "source": "src/ui/shop.c",
+      "target_size": 44
+    },
+    "rom:080b09fc": {
+      "candidate": "src/non_matching/ui/shop/Func_80b09fc.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "Func_80b09fc"
+      ],
+      "fuzzy_match_percent": 45.47059,
+      "name": "Func_80b09fc",
+      "object_sha256": "becd7cf07d90045862773c5907457e8a26c88f6d2814ef44a0b7ac58d339b1c2",
+      "reference_sha256": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
+      "source": "src/ui/shop.c",
+      "target_size": 36
+    },
+    "rom:080b0a20": {
+      "candidate": "src/non_matching/ui/shop/Func_80b0a20.c",
+      "candidate_size": 58,
+      "evaluated_with": [
+        "Func_80b0a20"
+      ],
+      "fuzzy_match_percent": 61.264706,
+      "name": "Func_80b0a20",
+      "object_sha256": "45b1054c0890604954de92b8b2fee592012f9ff9fe0a68a62eb8429d4da5215c",
+      "reference_sha256": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
+      "source": "src/ui/shop.c",
+      "target_size": 76
+    },
+    "rom:080b606c": {
+      "candidate": "src/non_matching/battle/battle/Func_80b606c.c",
+      "candidate_size": 50,
+      "evaluated_with": [
+        "Func_80b606c"
+      ],
+      "fuzzy_match_percent": 75.46154,
+      "name": "Func_80b606c",
+      "object_sha256": "dcede081b5726f2e1e5e6ddcbee90c05ec601ce96dc7566a4913c2ecb4213fd6",
+      "reference_sha256": "49d3639008eb58dc075192b8d8a298fe59f45c344a0b9e15c77418d1350426ec",
+      "source": "src/battle/battle.c",
+      "target_size": 52
+    },
+    "rom:080b6e7c": {
+      "candidate": "src/non_matching/battle/battle/GetWeaponType.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "GetWeaponType"
+      ],
+      "fuzzy_match_percent": 29.307692,
+      "name": "GetWeaponType",
+      "object_sha256": "424423e01c6eb02f24fa39500ac92a01ee315980c4c492aaf2523f6e0ee9d3a6",
+      "reference_sha256": "49d3639008eb58dc075192b8d8a298fe59f45c344a0b9e15c77418d1350426ec",
+      "source": "src/battle/battle.c",
+      "target_size": 56
+    },
+    "rom:080bd7a4": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80bd7a4.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80bd7a4"
+      ],
+      "fuzzy_match_percent": 75.76,
+      "name": "Func_80bd7a4",
+      "object_sha256": "708b5f73508f0cde974108f00f981c83e5e0e15562183b561a8a9e2838b13f49",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 56
+    },
+    "rom:080bf524": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80bf524.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_80bf524"
+      ],
+      "fuzzy_match_percent": 67.63158,
+      "name": "Func_80bf524",
+      "object_sha256": "7946ad86443bd1ec26703c6023bc4a9af961296dd82114bf6c72b9b95daf2400",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 40
+    },
+    "rom:080bf54c": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80bf54c.c",
+      "candidate_size": 40,
+      "evaluated_with": [
+        "Func_80bf54c"
+      ],
+      "fuzzy_match_percent": 73.888885,
+      "name": "Func_80bf54c",
+      "object_sha256": "7bb24d6230db3c9975d5d4718429b261395bfab5cde1df61290e278695ae3414",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 40
+    },
+    "rom:080bf574": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80bf574.c",
+      "candidate_size": 52,
+      "evaluated_with": [
+        "Func_80bf574"
+      ],
+      "fuzzy_match_percent": 71.791664,
+      "name": "Func_80bf574",
+      "object_sha256": "27109c25cf04776c50b23942987e2016ab42419a76a609230f4a9820ab862f35",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 52
+    },
+    "rom:080c0098": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80c0098.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_80c0098"
+      ],
+      "fuzzy_match_percent": 96.0,
+      "name": "Func_80c0098",
+      "object_sha256": "b4b1d8d21fb80bd3c2ec33dbea032cbe61d0cec415bda1eb0077e4e3a86fd7f2",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 64
+    },
+    "rom:080c0130": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80c0130.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "Func_80c0130"
+      ],
+      "fuzzy_match_percent": 60.89189,
+      "name": "Func_80c0130",
+      "object_sha256": "d782c7c1977dbbb60f445301e09620552d79b0b48f0c554a817f02a1693b99bc",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 84
+    },
+    "rom:080c08a8": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80c08a8.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_80c08a8"
+      ],
+      "fuzzy_match_percent": 46.791668,
+      "name": "Func_80c08a8",
+      "object_sha256": "a622e5443f1c3a74446e1189bc8d2995e352cbcf9199cf61cca55b3e0fb6bc10",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 56
+    },
+    "rom:080c08ec": {
+      "candidate": "src/non_matching/battle_anim/transition_in/AnimTransitionIn.c",
+      "candidate_size": 320,
+      "evaluated_with": [
+        "AnimTransitionIn"
+      ],
+      "fuzzy_match_percent": 84.48,
+      "name": "AnimTransitionIn",
+      "object_sha256": "bce8a0059e5283323c81c1ccb5418cf714dce8ba4af0c1afed8351af43a8e902",
+      "reference_sha256": "ad71aa0ca8b6f7c32435954e6cc6586f14122fadaaf1d7b28a6602586f60dbf5",
+      "source": "src/battle_anim/transition_in.c",
+      "target_size": 312
+    },
+    "rom:080c1014": {
+      "candidate": "src/non_matching/battle/mechanics/Func_80c1014.c",
+      "candidate_size": 64,
+      "evaluated_with": [
+        "Func_80c1014"
+      ],
+      "fuzzy_match_percent": 98.96667,
+      "name": "Func_80c1014",
+      "object_sha256": "85ff9ccddf155bd3b9363789c328daa26f02a850d862c485e53a1b0c72a172c2",
+      "reference_sha256": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "source": "src/battle/mechanics.c",
+      "target_size": 64
+    },
+    "rom:080c1438": {
+      "candidate": "src/non_matching/battle_anim/cast/Task_BlitPreAnim.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Task_BlitPreAnim"
+      ],
+      "fuzzy_match_percent": 58.32,
+      "name": "Task_BlitPreAnim",
+      "object_sha256": "eb94d7582e96c69a89b908a7ab1a18b3ac80594b1a84c88dbfa1bbb0dd8b4d7a",
+      "reference_sha256": "1fb08b84ffe35f00d6b9dd8a536570cef4c86a48d90be0ab77ff5e059f9360f8",
+      "source": "src/battle_anim/cast.c",
+      "target_size": 56
+    },
+    "rom:080c23a0": {
+      "candidate": "src/non_matching/battle/enemy/Func_80c23a0.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "Func_80c23a0"
+      ],
+      "fuzzy_match_percent": 99.666664,
+      "name": "Func_80c23a0",
+      "object_sha256": "ce63659eb846fd1cb0918f98d191b201e8c423221e93ee755763dadfc1d4ac14",
+      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "source": "src/battle/enemy.c",
+      "target_size": 32
+    },
+    "rom:080c23c0": {
+      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnimUnk.c",
+      "candidate_size": 36,
+      "evaluated_with": [
+        "GetEnemyAttackAnimUnk"
+      ],
+      "fuzzy_match_percent": 74.63158,
+      "name": "GetEnemyAttackAnimUnk",
+      "object_sha256": "6ad7d39dc08de0dd69b562f862530c9225899ce9d2272417c9d7e08794849d92",
+      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "source": "src/battle/enemy.c",
+      "target_size": 40
+    },
+    "rom:080c23e8": {
+      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnim.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "GetEnemyAttackAnim"
+      ],
+      "fuzzy_match_percent": 70.947365,
+      "name": "GetEnemyAttackAnim",
+      "object_sha256": "6e7206df90ab21397a10de6e3fa85f1278889112b4d8539e22e3525094748e17",
+      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "source": "src/battle/enemy.c",
+      "target_size": 40
+    },
+    "rom:080c2410": {
+      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnimParam.c",
+      "candidate_size": 32,
+      "evaluated_with": [
+        "GetEnemyAttackAnimParam"
+      ],
+      "fuzzy_match_percent": 71.47059,
+      "name": "GetEnemyAttackAnimParam",
+      "object_sha256": "4c86afa3ec694ac50ed5bc8cfb5ae0386677659cf24624716320eacac0ac7cd2",
+      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "source": "src/battle/enemy.c",
+      "target_size": 36
+    },
+    "rom:080c24b0": {
+      "candidate": "src/non_matching/battle/enemy/Func_80c24b0.c",
+      "candidate_size": 66,
+      "evaluated_with": [
+        "Func_80c24b0"
+      ],
+      "fuzzy_match_percent": 33.482758,
+      "name": "Func_80c24b0",
+      "object_sha256": "ab4706442b8f7b50feb9d581bb081e22c89fe7d9c8e4e7266f92c754df8dfa33",
+      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "source": "src/battle/enemy.c",
+      "target_size": 64
+    },
+    "rom:080c90e4": {
+      "candidate": "src/non_matching/render/window_effect/Func_80c90e4.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "Func_80c90e4"
+      ],
+      "fuzzy_match_percent": 68.27027,
+      "name": "Func_80c90e4",
+      "object_sha256": "aaacdb744e862a0895fbf0099955629d698621290df2766d8777f8e25d4a9bd1",
+      "reference_sha256": "05bcd73f2da584c3ec7990e98bb9e37b2396a7733aa4518ab4caefd443568446",
+      "source": "src/render/window_effect.c",
+      "target_size": 84
+    },
+    "rom:080c9138": {
+      "candidate": "src/non_matching/render/window_effect/Func_80c9138.c",
+      "candidate_size": 104,
+      "evaluated_with": [
+        "Func_80c9138"
+      ],
+      "fuzzy_match_percent": 86.723404,
+      "name": "Func_80c9138",
+      "object_sha256": "29fcde5f5c4ce609d63996fa0f61f20221cf7434685fd316c6af89d70e82594d",
+      "reference_sha256": "05bcd73f2da584c3ec7990e98bb9e37b2396a7733aa4518ab4caefd443568446",
+      "source": "src/render/window_effect.c",
+      "target_size": 108
+    },
+    "rom:080c91dc": {
+      "candidate": "src/non_matching/battle_anim/moves/ice/Anim_Ice.c",
+      "candidate_size": 1360,
+      "evaluated_with": [
+        "Anim_Ice"
+      ],
+      "fuzzy_match_percent": 84.57997,
+      "name": "Anim_Ice",
+      "object_sha256": "a145978c615002eb8d56e47c6e864c71787ee5c871d817c283d2918b26698d77",
+      "reference_sha256": "06c77c541741a277e19f8ff8e7a142bf8526598025ea88a98ba18d3c437d1305",
+      "source": "src/battle_anim/moves/ice.c",
+      "target_size": 1360
+    },
+    "rom:080c972c": {
+      "candidate": "src/non_matching/battle_anim/moves/douse/Anim_Douse.c",
+      "candidate_size": 1332,
+      "evaluated_with": [
+        "Anim_Douse"
+      ],
+      "fuzzy_match_percent": 98.65781,
+      "name": "Anim_Douse",
+      "object_sha256": "8f9e13d1f5a6f065c5da5f83dba837ff1c42f991dbc50f46428b35830d0f4494",
+      "reference_sha256": "f4aa34c7c8f19cd8ddfb09098b3f010ab89bac9244d39c1648d735445223a8cc",
+      "source": "src/battle_anim/moves/douse.c",
+      "target_size": 1332
+    },
+    "rom:080c9ca8": {
+      "candidate": "src/non_matching/battle_anim/moves/sonic_wave/BaseAnim_SonicWave.c",
+      "candidate_size": 1340,
+      "evaluated_with": [
+        "BaseAnim_SonicWave"
+      ],
+      "fuzzy_match_percent": 83.27842,
+      "name": "BaseAnim_SonicWave",
+      "object_sha256": "404cdcea0228bf929b052e234fc3326f01ce396eaec9023c39fb2a82e3d014a0",
+      "reference_sha256": "5cb16d22f67972457624f4c6c858fe5ba13262835c200a8d4ba6e8604276ca25",
+      "source": "src/battle_anim/moves/sonic_wave.c",
+      "target_size": 1340
+    },
+    "rom:080cb1a4": {
+      "candidate": "src/non_matching/battle_anim/moves/death_plunge/Anim_DeathPlunge.c",
+      "candidate_size": 840,
+      "evaluated_with": [
+        "Anim_DeathPlunge"
+      ],
+      "fuzzy_match_percent": 98.917336,
+      "name": "Anim_DeathPlunge",
+      "object_sha256": "439822866a85c0a46b5f1799eac0f0ee1da0be7245d7905430c6128bf400f798",
+      "reference_sha256": "78373a461a1b8937901ae069575507165094284bab545b45578fee9abc447376",
+      "source": "src/battle_anim/moves/death_plunge.c",
+      "target_size": 840
+    },
+    "rom:080ccbdc": {
+      "candidate": "src/non_matching/battle_anim/unleash_intro/EndAnim_UnleashIntro.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "EndAnim_UnleashIntro"
+      ],
+      "fuzzy_match_percent": 86.17391,
+      "name": "EndAnim_UnleashIntro",
+      "object_sha256": "43fe818aae55e0db2f2b7c53dc429a2446f2b8ce71516605e61dd03bf62352f9",
+      "reference_sha256": "9c9027e5ecccbb0e18f5cf671d716da20fa1d9cdebfe97fbc6a55380cb19da8e",
+      "source": "src/battle_anim/unleash_intro.c",
+      "target_size": 68
+    },
+    "rom:080ccebc": {
+      "candidate": "src/non_matching/battle_anim/moves/spider_web/Anim_SpiderWeb.c",
+      "candidate_size": 576,
+      "evaluated_with": [
+        "Anim_SpiderWeb"
+      ],
+      "fuzzy_match_percent": 91.60159,
+      "name": "Anim_SpiderWeb",
+      "object_sha256": "b0d77eedc609c627402eb040151e77610d56ddf840e6b1a258254a63c6ab7241",
+      "reference_sha256": "0188eba97e3e3cc96281e15d70ec8762ea7f10d495977d9e82e911701c373fea",
+      "source": "src/battle_anim/moves/spider_web.c",
+      "target_size": 584
+    },
+    "rom:080cd104": {
+      "candidate": "src/non_matching/battle_anim/transition_out/AnimTransitionOut.c",
+      "candidate_size": 356,
+      "evaluated_with": [
+        "AnimTransitionOut"
+      ],
+      "fuzzy_match_percent": 91.05917,
+      "name": "AnimTransitionOut",
+      "object_sha256": "082b2e9486fdc9fc5568a09db302923e47a21c1d1f3d51a22e441e9534a95d65",
+      "reference_sha256": "df2ebd87c8c1b0d2345a7ae5d22a9f1a1cdae319658443db44d0ff7ddd535a2b",
+      "source": "src/battle_anim/transition_out.c",
+      "target_size": 348
+    },
+    "rom:080cd4b4": {
+      "candidate": "src/non_matching/battle_anim/anim_util/Func_80cd4b4.c",
+      "candidate_size": 84,
+      "evaluated_with": [
+        "Func_80cd4b4"
+      ],
+      "fuzzy_match_percent": 99.97298,
+      "name": "Func_80cd4b4",
+      "object_sha256": "0c294722786d3563453cea996e053d92140a4296ddc5fa402ad8402bcea8a9ef",
+      "reference_sha256": "e53edcfa92b91071c31e9567c8ebda71f2f1b500e726ba03793a14c5625be161",
+      "source": "src/battle_anim/anim_util.c",
+      "target_size": 84
+    },
+    "rom:080ce034": {
+      "candidate": "src/non_matching/battle_anim/moves/planet_diver/Anim_PlanetDiver.c",
+      "candidate_size": 1204,
+      "evaluated_with": [
+        "Anim_PlanetDiver"
+      ],
+      "fuzzy_match_percent": 98.78625,
+      "name": "Anim_PlanetDiver",
+      "object_sha256": "d17876e3a31878038f92a16dd560f6a148604cf24e2aefe775207c214f26da8c",
+      "reference_sha256": "62bdd43042c988e04b80a779cc2d091239d63e3679b59375ff5c3c3c22c34af8",
+      "source": "src/battle_anim/moves/planet_diver.c",
+      "target_size": 1204
+    },
+    "rom:080ce4e8": {
+      "candidate": "src/non_matching/battle_anim/moves/haunt/Anim_Haunt.c",
+      "candidate_size": 884,
+      "evaluated_with": [
+        "Anim_Haunt"
+      ],
+      "fuzzy_match_percent": 92.64796,
+      "name": "Anim_Haunt",
+      "object_sha256": "27d75e495808b8d0000bd438fd0a7edb0afc3cc60a31c48416d503fc2110b676",
+      "reference_sha256": "79b39d8510f5ee1fd7d32d0c1f5dd935d7361ccc4020b316afe59412919da17c",
+      "source": "src/battle_anim/moves/haunt.c",
+      "target_size": 884
+    },
+    "rom:080ceff8": {
+      "candidate": "src/non_matching/battle_anim/moves/spasm/BaseAnim_Spasm.c",
+      "candidate_size": 680,
+      "evaluated_with": [
+        "BaseAnim_Spasm"
+      ],
+      "fuzzy_match_percent": 97.83161,
+      "name": "BaseAnim_Spasm",
+      "object_sha256": "97a03e3a326ef039e22582570e30357d263b2d999693238e470ac4a0c89df1d8",
+      "reference_sha256": "1c4e6ab1d02729e9081d42036a6a9c745230b4d78ca6a893954e7889c7c34784",
+      "source": "src/battle_anim/moves/spasm.c",
+      "target_size": 680
+    },
+    "rom:080cfef4": {
+      "candidate": "src/non_matching/battle_anim/moves/condemn/Anim_Condemn.c",
+      "candidate_size": 1392,
+      "evaluated_with": [
+        "Anim_Condemn"
+      ],
+      "fuzzy_match_percent": 83.80899,
+      "name": "Anim_Condemn",
+      "object_sha256": "1c5472aa7bad46cfc3f913c25423cad3047fa806120848ee16bc774c88384887",
+      "reference_sha256": "31619bcd25ba0f35783e528085a5f7015bb84743e910113a991492a475f0185e",
+      "source": "src/battle_anim/moves/condemn.c",
+      "target_size": 1396
+    },
+    "rom:080d0468": {
+      "candidate": "src/non_matching/battle_anim/unused_screen_melt/Anim_Unused_ScreenMelt.c",
+      "candidate_size": 404,
+      "evaluated_with": [
+        "Anim_Unused_ScreenMelt"
+      ],
+      "fuzzy_match_percent": 76.564514,
+      "name": "Anim_Unused_ScreenMelt",
+      "object_sha256": "a7a0206c984463690ddf158e0775bdb0a67a32ef015a2d6120d1fc13d8c3a674",
+      "reference_sha256": "c59402f05b39a4fe5b269dd1515dc14490dfdaa96bbf2ca1d67e1ade92401dba",
+      "source": "src/battle_anim/unused_screen_melt.c",
+      "target_size": 404
+    },
+    "rom:080d05fc": {
+      "candidate": "src/non_matching/battle_anim/moves/bind/Anim_Bind.c",
+      "candidate_size": 1240,
+      "evaluated_with": [
+        "Anim_Bind"
+      ],
+      "fuzzy_match_percent": 71.17636,
+      "name": "Anim_Bind",
+      "object_sha256": "7f6ec7709f92df83dcf9434ded929e1c687cb171707f0e55f4401f57b0afec8d",
+      "reference_sha256": "ebfcbfbdd8fe6dee77ed27a63998c1bc28a619cc091674b5f813a8c5b374e83e",
+      "source": "src/battle_anim/moves/bind.c",
+      "target_size": 1240
+    },
+    "rom:080d0ad4": {
+      "candidate": "src/non_matching/battle_anim/moves/psyphon_seal/Anim_PsyphonSeal.c",
+      "candidate_size": 1036,
+      "evaluated_with": [
+        "Anim_PsyphonSeal"
+      ],
+      "fuzzy_match_percent": 84.732025,
+      "name": "Anim_PsyphonSeal",
+      "object_sha256": "471fa169f19dc17751d878892ddf613bb02888c2605542c5e7553f83501db2f7",
+      "reference_sha256": "75d589c4e19f405af7f0a2a4ace3a1c104ac0a9f662ed926e3f28cf351b78bb3",
+      "source": "src/battle_anim/moves/psyphon_seal.c",
+      "target_size": 1036
+    },
+    "rom:080d0ee0": {
+      "candidate": "src/non_matching/battle_anim/moves/astral_blast/Anim_AstralBlast.c",
+      "candidate_size": 1188,
+      "evaluated_with": [
+        "Anim_AstralBlast"
+      ],
+      "fuzzy_match_percent": 75.20432,
+      "name": "Anim_AstralBlast",
+      "object_sha256": "db05a5d4525ebfdb4c84b43f17a6137de28d145ea59b809564c160cbefdce6cc",
+      "reference_sha256": "60acfabbd97386295101755dae862708624dd99e33bb40c819fddce42ab694bb",
+      "source": "src/battle_anim/moves/astral_blast.c",
+      "target_size": 1136
+    },
+    "rom:080d1350": {
+      "candidate": "src/non_matching/battle_anim/moves/shining_star/Anim_ShiningStar.c",
+      "candidate_size": 976,
+      "evaluated_with": [
+        "Anim_ShiningStar"
+      ],
+      "fuzzy_match_percent": 71.88657,
+      "name": "Anim_ShiningStar",
+      "object_sha256": "43dd1cfac21ae685dba67cfd6c59cc2415f3bb3f3080a85401a83c56b3071c69",
+      "reference_sha256": "8b15ef7979501c7ab32a7a40b4e3a1cf2b3d6746b829db9d7864bdef37c87ae2",
+      "source": "src/battle_anim/moves/shining_star.c",
+      "target_size": 964
+    },
+    "rom:080d33c0": {
+      "candidate": "src/non_matching/battle_anim/moves/froth/Anim_Froth.c",
+      "candidate_size": 1172,
+      "evaluated_with": [
+        "Anim_Froth"
+      ],
+      "fuzzy_match_percent": 95.05671,
+      "name": "Anim_Froth",
+      "object_sha256": "1b8093d17fe6d7e82c3a877029f6819f9d0adb5a684ac96d99b738be102606e9",
+      "reference_sha256": "9908ec0f732cf9e99d6905a8cff4d3060f2f99a0468bfc0eed36ca969ed32e67",
+      "source": "src/battle_anim/moves/froth.c",
+      "target_size": 1172
+    },
+    "rom:080d3c80": {
+      "candidate": "src/non_matching/battle_anim/moves/prism/Anim_Prism.c",
+      "candidate_size": 1092,
+      "evaluated_with": [
+        "Anim_Prism"
+      ],
+      "fuzzy_match_percent": 77.941635,
+      "name": "Anim_Prism",
+      "object_sha256": "74f816f69db529cb10d88e3b28ce9007334d467a715da1787ac6f3e6f4ec049b",
+      "reference_sha256": "6aceef8a48a7bda397e3f38cd34ac5380bc376e3942ef2de3d5b9e197f26a1e3",
+      "source": "src/battle_anim/moves/prism.c",
+      "target_size": 1132
+    },
+    "rom:080d41a4": {
+      "candidate": "src/non_matching/battle_anim/moves/plasma/Anim_Plasma.c",
+      "candidate_size": 1096,
+      "evaluated_with": [
+        "Anim_Plasma"
+      ],
+      "fuzzy_match_percent": 73.09939,
+      "name": "Anim_Plasma",
+      "object_sha256": "a0c3c39931f1f58dd4c921a7c5f12b02fc32f7b28c0a1338eeb0dee54a0833ee",
+      "reference_sha256": "1e00c1a8a041f81311f45ed8e42a5a9167d4421af6f84b54a8baedc5c289fc94",
+      "source": "src/battle_anim/moves/plasma.c",
+      "target_size": 1096
+    },
+    "rom:080d4ce8": {
+      "candidate": "src/non_matching/battle_anim/moves/volcano/Anim_Volcano.c",
+      "candidate_size": 1392,
+      "evaluated_with": [
+        "Anim_Volcano"
+      ],
+      "fuzzy_match_percent": 98.09135,
+      "name": "Anim_Volcano",
+      "object_sha256": "b12efa6c9db3e01966623762ee202c2ad6296e9d9f022695c4a0e53aef3ed150",
+      "reference_sha256": "f07144e41c71fbca1afbea62e34bf731097561cb40f81d15e818b4304c334378",
+      "source": "src/battle_anim/moves/volcano.c",
+      "target_size": 1392
+    },
+    "rom:080d59b0": {
+      "candidate": "src/non_matching/battle_anim/moves/sleep/Anim_Sleep.c",
+      "candidate_size": 664,
+      "evaluated_with": [
+        "Anim_Sleep"
+      ],
+      "fuzzy_match_percent": 98.666664,
+      "name": "Anim_Sleep",
+      "object_sha256": "059ee039b6e4d5cf4607fecab33038bdc5a9693e1041820c3fd835d170ccd750",
+      "reference_sha256": "fdc74690e52f80a788176e4066b4045fd6fe066ecc7f59c4ec49bb2f1c6c3f33",
+      "source": "src/battle_anim/moves/sleep.c",
+      "target_size": 664
+    },
+    "rom:080d5c48": {
+      "candidate": "src/non_matching/battle_anim/moves/curse/Anim_Curse.c",
+      "candidate_size": 524,
+      "evaluated_with": [
+        "Anim_Curse"
+      ],
+      "fuzzy_match_percent": 97.38197,
+      "name": "Anim_Curse",
+      "object_sha256": "df1a65cd5ce09ddb6c00512b43d05926a03d2f908b64a24bf45822a12d1ebadb",
+      "reference_sha256": "1aca50b3a499ccd2734198af5648d4ee9982fdf3e36f5f12e0dfd55319bf932b",
+      "source": "src/battle_anim/moves/curse.c",
+      "target_size": 524
+    },
+    "rom:080d6504": {
+      "candidate": "src/non_matching/battle_anim/camera/Task_SpinCamera.c",
+      "candidate_size": 84,
+      "evaluated_with": [
+        "Task_SpinCamera"
+      ],
+      "fuzzy_match_percent": 93.17073,
+      "name": "Task_SpinCamera",
+      "object_sha256": "c57cb672f630433c20099449384923ff002d4629a43bb4ef11bf222a294a858a",
+      "reference_sha256": "ab567ca2d1c57ce831b285b6ae67d03013d6b8543629cf6836b8d64bd6a1f2ec",
+      "source": "src/battle_anim/camera.c",
+      "target_size": 88
+    },
+    "rom:080d82b0": {
+      "candidate": "src/non_matching/battle_anim/moves/break/Anim_Break.c",
+      "candidate_size": 800,
+      "evaluated_with": [
+        "Anim_Break"
+      ],
+      "fuzzy_match_percent": 95.506966,
+      "name": "Anim_Break",
+      "object_sha256": "00b70ed30d6a59e6f8b87f8ab361c65941e4b6999118dc4cf1b82e688c223435",
+      "reference_sha256": "4eb57960a3e40eeb9e2d236593876a70b8a95f9a5a6678f75c577f45ef6b8324",
+      "source": "src/battle_anim/moves/break.c",
+      "target_size": 800
+    },
+    "rom:080d85d0": {
+      "candidate": "src/non_matching/battle_anim/moves/drain/Anim_Drain.c",
+      "candidate_size": 888,
+      "evaluated_with": [
+        "Anim_Drain"
+      ],
+      "fuzzy_match_percent": 95.77,
+      "name": "Anim_Drain",
+      "object_sha256": "6b83bedb2b60cd3d53de26d20023b35cba4aa952269ddbcd4bede845b8876553",
+      "reference_sha256": "c76b5eedcceade7cc55df45e4a25043a710e4b093d30835d32ce0924ab6cd9c1",
+      "source": "src/battle_anim/moves/drain.c",
+      "target_size": 888
+    },
+    "rom:080d9fc8": {
+      "candidate": "src/non_matching/battle_anim/moves/flare/Anim_Flare.c",
+      "candidate_size": 644,
+      "evaluated_with": [
+        "Anim_Flare"
+      ],
+      "fuzzy_match_percent": 99.31035,
+      "name": "Anim_Flare",
+      "object_sha256": "8fb973eae3ce332820458202669c25394e8d5076ce195d04787f21c85151b3a4",
+      "reference_sha256": "f2e28699bd84a99b6d3dc30b71ea8a5889da55bc7e346f96d915c343079e717c",
+      "source": "src/battle_anim/moves/flare.c",
+      "target_size": 644
+    },
+    "rom:080da2ac": {
+      "candidate": "src/non_matching/battle_anim/moves/quake/Anim_Quake.c",
+      "candidate_size": 1056,
+      "evaluated_with": [
+        "Anim_Quake"
+      ],
+      "fuzzy_match_percent": 91.08058,
+      "name": "Anim_Quake",
+      "object_sha256": "6f89b6ea44cd2387ee69562b4fdbcdaa1a67c7e42209ef9c0ac1eea8d1ec6aa0",
+      "reference_sha256": "ba189f30c963ddf540331058de795a62b5dde016d6039e9efe385444723a8208",
+      "source": "src/battle_anim/moves/quake.c",
+      "target_size": 1056
+    },
+    "rom:080da6cc": {
+      "candidate": "src/non_matching/battle_anim/moves/fireball/Anim_Fireball.c",
+      "candidate_size": 1200,
+      "evaluated_with": [
+        "Anim_Fireball"
+      ],
+      "fuzzy_match_percent": 95.02052,
+      "name": "Anim_Fireball",
+      "object_sha256": "c77f78557bbddde0f1b165990e9baafcf67f252f3a01bda5cb60ee70bf4a2939",
+      "reference_sha256": "ae1bd5009ad4dcdd1a72bd328be2df9419f60243721a7da0578460d036a32960",
+      "source": "src/battle_anim/moves/fireball.c",
+      "target_size": 1192
+    },
+    "rom:080db264": {
+      "candidate": "src/non_matching/battle_anim/moves/ray/Anim_Ray.c",
+      "candidate_size": 1128,
+      "evaluated_with": [
+        "Anim_Ray"
+      ],
+      "fuzzy_match_percent": 97.30303,
+      "name": "Anim_Ray",
+      "object_sha256": "5f959fc7127973872b7145f9fc21b0f9827a88143bd4f4f0b3ab4281122d6785",
+      "reference_sha256": "04c93a08e57a81a742d0e60a26999acc88d5eb262a94354898d7ff7e07bb6985",
+      "source": "src/battle_anim/moves/ray.c",
+      "target_size": 1124
+    },
+    "rom:080dc454": {
+      "candidate": "src/non_matching/battle_anim/moves/unused_skull_spin/Anim_Unused_Haunt.c",
+      "candidate_size": 620,
+      "evaluated_with": [
+        "Anim_Unused_Haunt"
+      ],
+      "fuzzy_match_percent": 88.884895,
+      "name": "Anim_Unused_Haunt",
+      "object_sha256": "198a067e7fe875301356e3416ed4f0baf2b89ddec511744689a5bbddb1ec5c33",
+      "reference_sha256": "6b8898dd612cdba11c495f05751a244c6ed4a050c7d2a479377569bef1183109",
+      "source": "src/battle_anim/moves/unused_skull_spin.c",
+      "target_size": 616
+    },
+    "rom:080dc968": {
+      "candidate": "src/non_matching/battle_anim/moves/atalanta/Anim_Atalanta.c",
+      "candidate_size": 2420,
+      "evaluated_with": [
+        "Anim_Atalanta"
+      ],
+      "fuzzy_match_percent": 60.19827,
+      "name": "Anim_Atalanta",
+      "object_sha256": "a30e2bc49b94ebed38a8aff2468fa633602dd5c796e905bafec0f8f18a2d3b07",
+      "reference_sha256": "3c8360ee9470c34aa0ee05c93b0864425475c9571f55658abce06cca4ee255d0",
+      "source": "src/battle_anim/moves/atalanta.c",
+      "target_size": 2372
+    },
+    "rom:080dd9c0": {
+      "candidate": "src/non_matching/battle_anim/moves/thorn/Anim_Thorn.c",
+      "candidate_size": 1032,
+      "evaluated_with": [
+        "Anim_Thorn"
+      ],
+      "fuzzy_match_percent": 86.81303,
+      "name": "Anim_Thorn",
+      "object_sha256": "ed3488caa93513f2edac75a405e0e82badb330bc11f60a7560c3e100beb2b832",
+      "reference_sha256": "2a1010c1d67135ab29f700bf805da2f7bc9b229793fc392d9583043aeeec0c99",
+      "source": "src/battle_anim/moves/thorn.c",
+      "target_size": 1056
+    },
+    "rom:080ddde0": {
+      "candidate": "src/non_matching/battle_anim/moves/bolt/Anim_Bolt.c",
+      "candidate_size": 1312,
+      "evaluated_with": [
+        "Anim_Bolt"
+      ],
+      "fuzzy_match_percent": 64.12607,
+      "name": "Anim_Bolt",
+      "object_sha256": "0729ee62552ae0aeaef3918a1d1cccdbb4b0b1907560519fe3c2dc78dd0973a8",
+      "reference_sha256": "c974f754d7e090f70cc6592965e4c8c4f032d7be9e9d2aa9909ee0b1ff7d23bb",
+      "source": "src/battle_anim/moves/bolt.c",
+      "target_size": 1304
+    },
+    "rom:080df9d0": {
+      "candidate": "src/non_matching/battle_anim/moves/projectile/Func_80df9d0.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "Func_80df9d0"
+      ],
+      "fuzzy_match_percent": 90.666664,
+      "name": "Func_80df9d0",
+      "object_sha256": "7507343f0795598a0b5571c2a0cec0c6b7238be16993f2b2d5c18f1966e817fd",
+      "reference_sha256": "dd41731aa08078296d53cc3d4dd05252d8ef65929059c6fef4f52cbdcadabae9",
+      "source": "src/battle_anim/moves/projectile.c",
+      "target_size": 72
+    },
+    "rom:080dfddc": {
+      "candidate": "src/non_matching/battle_anim/moves/mercury/Func_80dfddc.c",
+      "candidate_size": 78,
+      "evaluated_with": [
+        "Func_80dfddc"
+      ],
+      "fuzzy_match_percent": 97.5,
+      "name": "Func_80dfddc",
+      "object_sha256": "18560bdda15bf06ee4efd824e580bfaf03e806a7b74fc024365681da37e68248",
+      "reference_sha256": "8415ab0d35aa3e5652941d2581bfdfe2c852229c255cfdfe0bdde17a8d044da5",
+      "source": "src/battle_anim/moves/mercury.c",
+      "target_size": 80
+    },
+    "rom:080dfe2c": {
+      "candidate": "src/non_matching/battle_anim/moves/mercury/Anim_Mercury.c",
+      "candidate_size": 904,
+      "evaluated_with": [
+        "Anim_Mercury"
+      ],
+      "fuzzy_match_percent": 80.888115,
+      "name": "Anim_Mercury",
+      "object_sha256": "aff0c301a117f753bffa81b6445d93e1af827442bd68407b4444b62373f0b952",
+      "reference_sha256": "8415ab0d35aa3e5652941d2581bfdfe2c852229c255cfdfe0bdde17a8d044da5",
+      "source": "src/battle_anim/moves/mercury.c",
+      "target_size": 952
+    },
+    "rom:080e01e4": {
+      "candidate": "src/non_matching/battle_anim/moves/jupiter/Anim_Jupiter.c",
+      "candidate_size": 832,
+      "evaluated_with": [
+        "Anim_Jupiter"
+      ],
+      "fuzzy_match_percent": 96.247955,
+      "name": "Anim_Jupiter",
+      "object_sha256": "cb2420a15003311243507a8a6e3139b364326e2c1e32623181910110df157b8c",
+      "reference_sha256": "e1c22feebc6c2b98e0efffeb2f7a88c2566105677e8d323dc9f0065921d0d5aa",
+      "source": "src/battle_anim/moves/jupiter.c",
+      "target_size": 832
+    },
+    "rom:080e0564": {
+      "candidate": "src/non_matching/battle_anim/moves/venus/Anim_Venus.c",
+      "candidate_size": 860,
+      "evaluated_with": [
+        "Anim_Venus"
+      ],
+      "fuzzy_match_percent": 91.79002,
+      "name": "Anim_Venus",
+      "object_sha256": "42833d829e95ad62027cc5b078747b659fafc41f6fc73613c78a72b341b2c80a",
+      "reference_sha256": "8055a3e1e31d5103528b63c64a5cfd2ccf6ed17db646fe85a13256b0ca3d328a",
+      "source": "src/battle_anim/moves/venus.c",
+      "target_size": 860
+    },
+    "rom:080e08c0": {
+      "candidate": "src/non_matching/battle_anim/moves/mars/Anim_Mars.c",
+      "candidate_size": 964,
+      "evaluated_with": [
+        "Anim_Mars"
+      ],
+      "fuzzy_match_percent": 96.3615,
+      "name": "Anim_Mars",
+      "object_sha256": "500f3a80d96dc15ce94da206553dbfdfde986aac988f772e71be219c711c128d",
+      "reference_sha256": "e01a12a472f77d4946a6b2ee8177b48bec7b5ea99d5c5516dc0fbdce2fa3521e",
+      "source": "src/battle_anim/moves/mars.c",
+      "target_size": 964
+    },
+    "rom:080e1040": {
+      "candidate": "src/non_matching/battle_anim/moves/ground/Anim_Ground.c",
+      "candidate_size": 1324,
+      "evaluated_with": [
+        "Anim_Ground"
+      ],
+      "fuzzy_match_percent": 90.04422,
+      "name": "Anim_Ground",
+      "object_sha256": "2f9ce046bb96617632772232a78251a07bd26d817d99a1f9f6926a7ea0e207f4",
+      "reference_sha256": "a3ce30c39fb0bb4c863deb59754c6ab30e42ab72a8b5f668aa0330001575a4da",
+      "source": "src/battle_anim/moves/ground.c",
+      "target_size": 1308
+    },
+    "rom:080e2538": {
+      "candidate": "src/non_matching/battle_anim/moves/spire/Anim_Spire.c",
+      "candidate_size": 956,
+      "evaluated_with": [
+        "Anim_Spire"
+      ],
+      "fuzzy_match_percent": 95.583336,
+      "name": "Anim_Spire",
+      "object_sha256": "84960aca4865dabce7efcb43db6f6a8ac7ed4125678430b0446cbe150eedf20d",
+      "reference_sha256": "b6586033adfa12278db99fcf16796d3706a3395a7400ede53b7dffbfa3f81560",
+      "source": "src/battle_anim/moves/spire.c",
+      "target_size": 956
+    },
+    "rom:080e38b8": {
+      "candidate": "src/non_matching/battle_anim/moves/rapid_slash/Func_80e38b8.c",
+      "candidate_size": 76,
+      "evaluated_with": [
+        "Func_80e38b8"
+      ],
+      "fuzzy_match_percent": 77.375,
+      "name": "Func_80e38b8",
+      "object_sha256": "ff0f1c54473bb92e4743f764818385a7bc07780d7fc020dea2f78755076112ea",
+      "reference_sha256": "43ebafe14a093028a55760735a09b71b4c1ace82bdf292d7199dc08248f875d1",
+      "source": "src/battle_anim/moves/rapid_slash.c",
+      "target_size": 80
+    },
+    "rom:080e6638": {
+      "candidate": "src/non_matching/battle_anim/moves/torch/Anim_Torch.c",
+      "candidate_size": 784,
+      "evaluated_with": [
+        "Anim_Torch"
+      ],
+      "fuzzy_match_percent": 81.1523,
+      "name": "Anim_Torch",
+      "object_sha256": "e0ede85978066ab595226ccdc7234dd22110b62eb83177ce6efc3d43aab3d32f",
+      "reference_sha256": "0ff117700049db213dcf951b4c210ffd0d6a227bc9287ee9d99fd22b99708672",
+      "source": "src/battle_anim/moves/torch.c",
+      "target_size": 784
+    },
+    "rom:080e698c": {
+      "candidate": "src/non_matching/battle_anim/moves/helm_splitter/Anim_HelmSplitter.c",
+      "candidate_size": 944,
+      "evaluated_with": [
+        "Anim_HelmSplitter"
+      ],
+      "fuzzy_match_percent": 99.368935,
+      "name": "Anim_HelmSplitter",
+      "object_sha256": "c9a41a45237415bc74cb40dc8442710613c4d00e7c9c4d9c132cbbfe58ffd5f1",
+      "reference_sha256": "5e18698f0145c2fdd1ef09b4d1f0f7de4892318db574f8abf4d4bea7ca8ccc86",
+      "source": "src/battle_anim/moves/helm_splitter.c",
+      "target_size": 944
+    },
+    "rom:080e823c": {
+      "candidate": "src/non_matching/battle_anim/moves/ramses/Anim_Ramses.c",
+      "candidate_size": 1968,
+      "evaluated_with": [
+        "Anim_Ramses"
+      ],
+      "fuzzy_match_percent": 93.414856,
+      "name": "Anim_Ramses",
+      "object_sha256": "61ce879bb4de7a4912d1b9fc6f9777f515a8bb918e1f5793faa150349fe01b68",
+      "reference_sha256": "b1fdbd914651af06979880f0cc6665ce177c5961b997dac6280aefc1f9d94e8c",
+      "source": "src/battle_anim/moves/ramses.c",
+      "target_size": 1968
+    },
+    "rom:080e90a8": {
+      "candidate": "src/non_matching/battle_anim/moves/annihilation/Anim_Annihilation.c",
+      "candidate_size": 1040,
+      "evaluated_with": [
+        "Anim_Annihilation"
+      ],
+      "fuzzy_match_percent": 94.64706,
+      "name": "Anim_Annihilation",
+      "object_sha256": "4a34a141e73ba56f509ad6d36762b6871e83f4e544bb4f470b27bee56d63de3d",
+      "reference_sha256": "ccc0ecba4a6b35691dd75fdebbe62001524229b607161feb18907cca17cb554f",
+      "source": "src/battle_anim/moves/annihilation.c",
+      "target_size": 1040
+    },
+    "rom:080e94b8": {
+      "candidate": "src/non_matching/battle_anim/moves/ragnarok/Anim_Ragnarok.c",
+      "candidate_size": 1284,
+      "evaluated_with": [
+        "Anim_Ragnarok"
+      ],
+      "fuzzy_match_percent": 85.988014,
+      "name": "Anim_Ragnarok",
+      "object_sha256": "326ebafc30ea38d0163b5f9baecd061e9d4f48f04d830aa6055321ea7f62d605",
+      "reference_sha256": "fe78668df5332543c9bdbf0d2868c2c38c5a0150b314da902f70fab979c38b4c",
+      "source": "src/battle_anim/moves/ragnarok.c",
+      "target_size": 1288
+    },
+    "rom:080eb754": {
+      "candidate": "src/non_matching/battle_anim/moves/kirin/Anim_Kirin.c",
+      "candidate_size": 2444,
+      "evaluated_with": [
+        "Anim_Kirin"
+      ],
+      "fuzzy_match_percent": 99.76895,
+      "name": "Anim_Kirin",
+      "object_sha256": "9af4c79f31dc2ff8fddd3b696961252f3b938efa51624c20f7f2bf9d6627c2a0",
+      "reference_sha256": "1f3b1189a92798e86963e7c18f5d66be9cb5d929f709d731711cc385ba0bd53b",
+      "source": "src/battle_anim/moves/kirin.c",
+      "target_size": 2444
+    },
+    "rom:080ed104": {
+      "candidate": "src/non_matching/battle_anim/moves/undead_sword/Anim_UndeadSword.c",
+      "candidate_size": 772,
+      "evaluated_with": [
+        "Anim_UndeadSword"
+      ],
+      "fuzzy_match_percent": 99.104164,
+      "name": "Anim_UndeadSword",
+      "object_sha256": "fd48d1a893da99446ed0d8b6e20214e72916525a7d2f7cd884dc660b5fb5efe4",
+      "reference_sha256": "67f7a7786192addd4c51b6dbccf7157078925678ef0ba3ab27780e10887c55e4",
+      "source": "src/battle_anim/moves/undead_sword.c",
+      "target_size": 772
+    },
+    "rom:080f0254": {
+      "candidate": "src/non_matching/ending/Func_80f0254.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "Func_80f0254"
+      ],
+      "fuzzy_match_percent": 90.589745,
+      "name": "Func_80f0254",
+      "object_sha256": "8cc18811d4e8004cc2def79b5f082c9e9b357a75fefde9f16aed640c3e545f2d",
+      "reference_sha256": "a98bbd41dbecba62783355dc6a66fccc06417ed449019ac75b711128065411d4",
+      "source": "src/ending.c",
+      "target_size": 92
+    },
+    "rom:080f037c": {
+      "candidate": "src/non_matching/ending/Func_80f037c.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "Func_80f037c"
+      ],
+      "fuzzy_match_percent": 93.5625,
+      "name": "Func_80f037c",
+      "object_sha256": "a1a2fdf79d9633b31645a0d65d67c7da2b3e23b5fa6bedb96dc484dfb2b9d167",
+      "reference_sha256": "a98bbd41dbecba62783355dc6a66fccc06417ed449019ac75b711128065411d4",
+      "source": "src/ending.c",
+      "target_size": 68
+    },
+    "rom:080f3858": {
+      "candidate": "src/non_matching/title/Func_80f3858.c",
+      "candidate_size": 68,
+      "evaluated_with": [
+        "Func_80f3858"
+      ],
+      "fuzzy_match_percent": 79.82758,
+      "name": "Func_80f3858",
+      "object_sha256": "19d9da21b5fb9b28bf698d6d06974d817245e865d0f0ef3b2181ad535c20088c",
+      "reference_sha256": "7dd0f1f67c3e456e006e783957d8e2086018e58d2f8e2b978a13188c8fcbcab6",
+      "source": "src/title.c",
+      "target_size": 64
+    },
+    "rom:080f7db4": {
+      "candidate": "src/non_matching/lucky_wheels/Func_80f7db4.c",
+      "candidate_size": 56,
+      "evaluated_with": [
+        "Func_80f7db4"
+      ],
+      "fuzzy_match_percent": 80.57143,
+      "name": "Func_80f7db4",
+      "object_sha256": "238447926d4dcdf075e24b90c5e44d4c1fbe57b7203b5971d6b5d2b3b07e25ae",
+      "reference_sha256": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
+      "source": "src/lucky_wheels.c",
+      "target_size": 60
+    },
+    "rom:080f7df0": {
+      "candidate": "src/non_matching/lucky_wheels/Func_80f7df0.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "Func_80f7df0"
+      ],
+      "fuzzy_match_percent": 69.90625,
+      "name": "Func_80f7df0",
+      "object_sha256": "9e7dfd0a4dc53f10ae940d9347be6de22aef2c9cfd0d4e06dbea908089f7f0f2",
+      "reference_sha256": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
+      "source": "src/lucky_wheels.c",
+      "target_size": 68
+    },
+    "rom:080f7e34": {
+      "candidate": "src/non_matching/lucky_wheels/Func_80f7e34.c",
+      "candidate_size": 44,
+      "evaluated_with": [
+        "Func_80f7e34"
+      ],
+      "fuzzy_match_percent": 100.0,
+      "name": "Func_80f7e34",
+      "object_sha256": "7fbd30acb30934ead785a35dad9030215af3731a1c0c63b28eda9bfd9879c103",
+      "reference_sha256": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
+      "source": "src/lucky_wheels.c",
+      "target_size": 44
+    },
+    "rom:080f7f30": {
+      "candidate": "src/non_matching/lucky_wheels/Func_80f7f30.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "Func_80f7f30"
+      ],
+      "fuzzy_match_percent": 89.63636,
+      "name": "Func_80f7f30",
+      "object_sha256": "51a382be31dd8c5b1f44e17dfe337465ed50f87d3af659955577101714e7e52b",
+      "reference_sha256": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
+      "source": "src/lucky_wheels.c",
+      "target_size": 72
+    },
+    "rom:080f9080": {
+      "candidate": "src/non_matching/sound/PlaySound.c",
+      "candidate_size": 346,
+      "evaluated_with": [
+        "PlaySound"
+      ],
+      "fuzzy_match_percent": 92.7351,
+      "name": "PlaySound",
+      "object_sha256": "99c2006160e07b7f88a5696c22aaaf8ee92584f336cfc1e8cb28a1f405414733",
+      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
+      "source": "src/sound.c",
+      "target_size": 360
+    },
+    "rom:080f91e8": {
+      "candidate": "src/non_matching/sound/UpdateMusicSettings.c",
+      "candidate_size": 272,
+      "evaluated_with": [
+        "UpdateMusicSettings"
+      ],
+      "fuzzy_match_percent": 98.06612,
+      "name": "UpdateMusicSettings",
+      "object_sha256": "7a2aa39ab62d8bad15d64baec45573cf5d91fe1fbba334b391d49c9cf837da07",
+      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
+      "source": "src/sound.c",
+      "target_size": 276
+    },
+    "rom:080f92fc": {
+      "candidate": "src/non_matching/sound/Debug_SoundTest.c",
+      "candidate_size": 304,
+      "evaluated_with": [
+        "Debug_SoundTest"
+      ],
+      "fuzzy_match_percent": 82.678085,
+      "name": "Debug_SoundTest",
+      "object_sha256": "c35ae9ec7ae572e0c6982c59deedd77f82ed60762cc6a3eca60a0fca2436416d",
+      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
+      "source": "src/sound.c",
+      "target_size": 316
+    },
+    "rom:080f9a18": {
+      "candidate": "src/non_matching/other/sub_80f95e0/SoundMainBTM.c",
+      "candidate_size": 18,
+      "evaluated_with": [
+        "SoundMainBTM"
+      ],
+      "fuzzy_match_percent": 32.5,
+      "name": "SoundMainBTM",
+      "object_sha256": "9319645d65bb9db50af967bbd8ee8f6afce00080efa47840a45bec0a8f4070a3",
+      "reference_sha256": "185d633428ba0dd53cf214f13d615e24322ffcc175da4dac02fac6d55fc1a820",
+      "source": "src/other/sub_80f95e0.c",
+      "target_size": 24
+    },
+    "rom:080f9afc": {
+      "candidate": "src/non_matching/other/sub_80f95e0/ply_pend.c",
+      "candidate_size": 24,
+      "evaluated_with": [
+        "ply_pend"
+      ],
+      "fuzzy_match_percent": 75.5,
+      "name": "ply_pend",
+      "object_sha256": "e24082d509811096f77ea7f6cba28640bc82923cd4c55264be964d8a4734427a",
+      "reference_sha256": "185d633428ba0dd53cf214f13d615e24322ffcc175da4dac02fac6d55fc1a820",
+      "source": "src/other/sub_80f95e0.c",
+      "target_size": 20
+    }
+  },
+  "policy": "objdiff-function-scores-original-byte-weights-v1",
+  "progress_sha256": "c6531b20a6378a0d9c9b185968b33d4a699cb72ae766f5538026974d8426b077",
+  "schema": 1,
+  "scorer": {
+    "config": [
+      "function_reloc_diffs=none",
+      "combine_data_sections=true",
+      "combine_text_sections=true",
+      "ppc_calculate_pool_relocations=false"
+    ],
+    "sha256": "c8290281e82114bcc1a06ff73061110d3902a177822e750337de2537188e358f",
+    "version": "3.8.1"
+  }
+}

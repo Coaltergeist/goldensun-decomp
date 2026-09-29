@@ -68,7 +68,7 @@ def main():
         candidates = catalog(ROOT)
         index = ROOT / "src/non_matching/INDEX.md"
         if index.is_file() and index.read_text() != markdown_index(candidates):
-            errors.append("candidate index is stale; regenerate with compare_candidate.py --list --markdown")
+            errors.append("candidate index is stale; run tools/generate_candidates.py")
     except (OSError, ValueError, KeyError, TypeError) as exc:
         errors.append("candidate collection: " + str(exc))
     errors += manifest_errors(json.loads((ROOT / "original_functions.json").read_text()))

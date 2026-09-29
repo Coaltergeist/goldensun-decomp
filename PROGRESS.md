@@ -45,7 +45,8 @@ counts across both instruction modes. It does not run build verification.
 The [public report](https://decomp.dev/Coaltergeist/goldensun-decomp) measures
 matched **original bytes** across both ARM and Thumb, so its percentage differs
 from a Thumb function-count percentage. Its TU and function views partition the
-same baseline.
+same baseline. Fuzzy progress also includes measured similarity from parked C
+candidates, weighted by those original byte spans.
 
 See [DECOMP_DEV.md](DECOMP_DEV.md) for snapshot generation and treemap scoring.
 That snapshot uses preprocessed active C; the local function-count tool reads

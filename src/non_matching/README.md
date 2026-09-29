@@ -4,11 +4,25 @@ This tree mirrors `asm/`: `battle_anim/moves/kirin/Anim_Kirin.c` targets
 `asm/battle_anim/moves/kirin/Anim_Kirin.s` in `src/battle_anim/moves/kirin.c`.
 Browse the [candidate index](INDEX.md).
 
-Candidates are drafts, excluded from the game build and matching progress.
+Candidates are drafts, excluded from the game build and perfect-match progress.
 Their behavior and types still need review; compilation alone is not validation.
 Each TU has a `candidates.json` identifying its original functions. Optional
 `context` headers supply shared declarations; `requires` lists companion
 candidates that must be evaluated together.
+
+## Add a candidate
+
+Save `<Function>.c` under its mirrored TU folder, then run from the checkout:
+
+~~~sh
+python3 tools/generate_candidates.py
+~~~
+
+This creates missing manifests, adds entries to existing ones, and refreshes
+`INDEX.md`. IDs come from the function's owning TU in `progress_snapshot.json`.
+Existing metadata is preserved; invalid or stale entries stop generation.
+Use `--check` to preview pending changes without writing. Add `context` or
+`requires` manually when needed; generation does not compile or score candidates.
 
 ## Compare a candidate
 
@@ -46,5 +60,19 @@ production TU, then remove the parked copy and its manifest entry.
 Regenerate the index after changing the collection:
 
 ~~~sh
-python3 tools/compare_candidate.py --list --markdown > src/non_matching/INDEX.md
+python3 tools/generate_candidates.py
 ~~~
+
+## Fuzzy progress
+
+After adding or changing candidates, refresh the measured scores:
+
+~~~sh
+python3 tools/score_candidates.py --objdiff /path/to/objdiff-cli
+python3 tools/decomp_progress.py check
+~~~
+
+The scorer uses `GOLDENSUN_EXPECTED_DIR` or `--expected` as above. Commit the
+generated `candidate_scores.json` with candidate changes. See
+[DECOMP_DEV.md](../../DECOMP_DEV.md#candidate-scores) for the pinned objdiff release
+and original-byte weighting. Scores do not change perfect-match counts.

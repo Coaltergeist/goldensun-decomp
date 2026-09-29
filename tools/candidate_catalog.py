@@ -25,12 +25,15 @@ def sites(text):
     return list(SITE.finditer(clean))
 
 
-def catalog(root):
+def catalog(root, manifests=None):
     root = Path(root)
     snapshot = load(root / "progress_snapshot.json")
     result, identities, files = {}, set(), set()
-    for manifest in sorted((root / PARKED).rglob("candidates.json")):
-        meta = load(manifest)
+    if manifests is None:
+        manifests = {p.relative_to(root).as_posix(): load(p)
+                     for p in (root / PARKED).rglob("candidates.json")}
+    for name, meta in sorted(manifests.items()):
+        manifest = local(root, name)
         if meta.get("schema") != 1 or not meta.get("functions"):
             raise ValueError("invalid candidate manifest: " + str(manifest))
         source = meta["source"]

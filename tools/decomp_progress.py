@@ -10,6 +10,7 @@ from collections import Counter, defaultdict
 import hashlib
 import io
 import json
+import math
 import os
 import re
 from pathlib import Path, PurePosixPath
@@ -588,19 +589,30 @@ def summary(baseline, snapshot):
     return {"version": 2, "measures": measures(baseline, snapshot, baseline["sizes"])}
 
 
-def unit_report(baseline, snapshot):
+def unit_report(baseline, snapshot, scores=None):
+    scores = scores or {}
+    if any(snapshot["functions"].get(key) != "assembly" for key in scores):
+        raise ValueError("fuzzy scores may only credit original assembly identities")
+    if any(type(value) not in (int, float) or not math.isfinite(value)
+           or not 0 <= value <= 100 for value in scores.values()):
+        raise ValueError("invalid fuzzy score")
+    function_scores = {key: 100.0 if status == "c" else scores.get(key, 0.0)
+                       for key, status in snapshot["functions"].items()}
+
+    def fuzzy(identities):
+        return math.fsum(baseline["sizes"][key] * function_scores[key] for key in identities) / sum(
+            baseline["sizes"][key] for key in identities)
+
     report = summary(baseline, snapshot)
     units = []
     for source, unit in sorted(snapshot["units"].items()):
         stats = measures(baseline, snapshot, unit["functions"])
-        # decomp.dev colors by fuzzy_match_percent. This conservative score grants
-        # only 0/100 per function, weighted by original bytes; no partial credit.
-        stats["fuzzy_match_percent"] = stats["matched_code_percent"]
+        stats["fuzzy_match_percent"] = fuzzy(unit["functions"])
         functions = []
         for identity, entry in sorted(unit["functions"].items()):
             function = dict(name=entry["name"], size=str(baseline["sizes"][identity]),
                             address=str(entry["address"]),
-                            fuzzy_match_percent=100.0 if snapshot["functions"][identity] == "c" else 0.0)
+                            fuzzy_match_percent=function_scores[identity])
             if "virtual_address" in entry:
                 function["metadata"] = dict(virtual_address=str(entry["virtual_address"]))
             functions.append(function)
@@ -608,7 +620,7 @@ def unit_report(baseline, snapshot):
                           measures=stats, functions=functions))
     report["units"] = units
     report["measures"]["total_units"] = len(units)
-    report["measures"]["fuzzy_match_percent"] = report["measures"]["matched_code_percent"]
+    report["measures"]["fuzzy_match_percent"] = fuzzy(baseline["sizes"])
     return report
 
 
@@ -616,7 +628,8 @@ def export(root, output=None):
     manifest, baseline = metadata(root)
     snapshot = load(root / SNAPSHOT)
     validate_snapshot(manifest, baseline, snapshot, source_inputs(root), digest(root / BASELINE))
-    report = unit_report(baseline, snapshot)
+    from candidate_scores import read_scores
+    report = unit_report(baseline, snapshot, read_scores(root, snapshot))
     if output:
         write_json(output, report)
     print(json.dumps({"version": report["version"], "measures": report["measures"]}, indent=2))

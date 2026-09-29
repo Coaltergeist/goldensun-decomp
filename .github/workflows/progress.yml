@@ -17,8 +17,8 @@ jobs:
           persist-credentials: false
       - name: Check repository structure
         run: python3 tools/check_repository.py
-      - name: Test progress accounting
-        run: python3 -m unittest discover -s tools/tests -p test_decomp_progress.py -v
+      - name: Test progress and candidate tooling
+        run: python3 -m unittest discover -s tools/tests -v
       - name: Validate snapshot and generate report
         run: python3 tools/decomp_progress.py export
       - name: Publish USA progress
