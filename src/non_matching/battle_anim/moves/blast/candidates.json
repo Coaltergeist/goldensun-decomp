@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/blast.c",
+  "functions": {
+    "BaseAnim_Blast": {
+      "id": "rom:080db6e0"
+    }
+  }
+}

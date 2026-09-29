@@ -9,14 +9,17 @@
 | [battle/enemy](battle/enemy/) | [Func_80c23a0](battle/enemy/Func_80c23a0.c), [Func_80c24b0](battle/enemy/Func_80c24b0.c), [GetEnemyAttackAnim](battle/enemy/GetEnemyAttackAnim.c), [GetEnemyAttackAnimParam](battle/enemy/GetEnemyAttackAnimParam.c), [GetEnemyAttackAnimUnk](battle/enemy/GetEnemyAttackAnimUnk.c) |
 | [battle/mechanics](battle/mechanics/) | [Func_80bd7a4](battle/mechanics/Func_80bd7a4.c), [Func_80bf524](battle/mechanics/Func_80bf524.c), [Func_80bf54c](battle/mechanics/Func_80bf54c.c), [Func_80bf574](battle/mechanics/Func_80bf574.c), [Func_80c0098](battle/mechanics/Func_80c0098.c), [Func_80c0130](battle/mechanics/Func_80c0130.c), [Func_80c08a8](battle/mechanics/Func_80c08a8.c), [Func_80c1014](battle/mechanics/Func_80c1014.c) |
 | [battle_anim/anim_util](battle_anim/anim_util/) | [Func_80cd4b4](battle_anim/anim_util/Func_80cd4b4.c) |
+| [battle_anim/anims](battle_anim/anims/) | [Anim_Func](battle_anim/anims/Anim_Func.c) |
 | [battle_anim/camera](battle_anim/camera/) | [Task_SpinCamera](battle_anim/camera/Task_SpinCamera.c) |
 | [battle_anim/cast](battle_anim/cast/) | [Task_BlitPreAnim](battle_anim/cast/Task_BlitPreAnim.c) |
 | [battle_anim/moves/annihilation](battle_anim/moves/annihilation/) | [Anim_Annihilation](battle_anim/moves/annihilation/Anim_Annihilation.c) |
 | [battle_anim/moves/astral_blast](battle_anim/moves/astral_blast/) | [Anim_AstralBlast](battle_anim/moves/astral_blast/Anim_AstralBlast.c) |
 | [battle_anim/moves/atalanta](battle_anim/moves/atalanta/) | [Anim_Atalanta](battle_anim/moves/atalanta/Anim_Atalanta.c) |
 | [battle_anim/moves/bind](battle_anim/moves/bind/) | [Anim_Bind](battle_anim/moves/bind/Anim_Bind.c) |
+| [battle_anim/moves/blast](battle_anim/moves/blast/) | [BaseAnim_Blast](battle_anim/moves/blast/BaseAnim_Blast.c) |
 | [battle_anim/moves/bolt](battle_anim/moves/bolt/) | [Anim_Bolt](battle_anim/moves/bolt/Anim_Bolt.c) |
 | [battle_anim/moves/break](battle_anim/moves/break/) | [Anim_Break](battle_anim/moves/break/Anim_Break.c) |
+| [battle_anim/moves/breath](battle_anim/moves/breath/) | [BaseAnim_Breath](battle_anim/moves/breath/BaseAnim_Breath.c) |
 | [battle_anim/moves/condemn](battle_anim/moves/condemn/) | [Anim_Condemn](battle_anim/moves/condemn/Anim_Condemn.c) |
 | [battle_anim/moves/curse](battle_anim/moves/curse/) | [Anim_Curse](battle_anim/moves/curse/Anim_Curse.c) |
 | [battle_anim/moves/death_plunge](battle_anim/moves/death_plunge/) | [Anim_DeathPlunge](battle_anim/moves/death_plunge/Anim_DeathPlunge.c) |
@@ -25,8 +28,11 @@
 | [battle_anim/moves/fireball](battle_anim/moves/fireball/) | [Anim_Fireball](battle_anim/moves/fireball/Anim_Fireball.c) |
 | [battle_anim/moves/flare](battle_anim/moves/flare/) | [Anim_Flare](battle_anim/moves/flare/Anim_Flare.c) |
 | [battle_anim/moves/froth](battle_anim/moves/froth/) | [Anim_Froth](battle_anim/moves/froth/Anim_Froth.c) |
+| [battle_anim/moves/fullscreen_slash](battle_anim/moves/fullscreen_slash/) | [BaseAnim_FullScreenSlash](battle_anim/moves/fullscreen_slash/BaseAnim_FullScreenSlash.c) |
 | [battle_anim/moves/ground](battle_anim/moves/ground/) | [Anim_Ground](battle_anim/moves/ground/Anim_Ground.c) |
+| [battle_anim/moves/growth](battle_anim/moves/growth/) | [BaseAnim_Growth](battle_anim/moves/growth/BaseAnim_Growth.c) |
 | [battle_anim/moves/haunt](battle_anim/moves/haunt/) | [Anim_Haunt](battle_anim/moves/haunt/Anim_Haunt.c) |
+| [battle_anim/moves/haunt_attack](battle_anim/moves/haunt_attack/) | [BaseAnim_HauntAttack](battle_anim/moves/haunt_attack/BaseAnim_HauntAttack.c) |
 | [battle_anim/moves/helm_splitter](battle_anim/moves/helm_splitter/) | [Anim_HelmSplitter](battle_anim/moves/helm_splitter/Anim_HelmSplitter.c) |
 | [battle_anim/moves/ice](battle_anim/moves/ice/) | [Anim_Ice](battle_anim/moves/ice/Anim_Ice.c) |
 | [battle_anim/moves/jupiter](battle_anim/moves/jupiter/) | [Anim_Jupiter](battle_anim/moves/jupiter/Anim_Jupiter.c) |
@@ -43,12 +49,15 @@
 | [battle_anim/moves/ramses](battle_anim/moves/ramses/) | [Anim_Ramses](battle_anim/moves/ramses/Anim_Ramses.c) |
 | [battle_anim/moves/rapid_slash](battle_anim/moves/rapid_slash/) | [Func_80e38b8](battle_anim/moves/rapid_slash/Func_80e38b8.c) |
 | [battle_anim/moves/ray](battle_anim/moves/ray/) | [Anim_Ray](battle_anim/moves/ray/Anim_Ray.c) |
+| [battle_anim/moves/revive](battle_anim/moves/revive/) | [BaseAnim_Revive](battle_anim/moves/revive/BaseAnim_Revive.c) |
 | [battle_anim/moves/shining_star](battle_anim/moves/shining_star/) | [Anim_ShiningStar](battle_anim/moves/shining_star/Anim_ShiningStar.c) |
 | [battle_anim/moves/sleep](battle_anim/moves/sleep/) | [Anim_Sleep](battle_anim/moves/sleep/Anim_Sleep.c) |
 | [battle_anim/moves/sonic_wave](battle_anim/moves/sonic_wave/) | [BaseAnim_SonicWave](battle_anim/moves/sonic_wave/BaseAnim_SonicWave.c) |
 | [battle_anim/moves/spasm](battle_anim/moves/spasm/) | [BaseAnim_Spasm](battle_anim/moves/spasm/BaseAnim_Spasm.c) |
 | [battle_anim/moves/spider_web](battle_anim/moves/spider_web/) | [Anim_SpiderWeb](battle_anim/moves/spider_web/Anim_SpiderWeb.c) |
 | [battle_anim/moves/spire](battle_anim/moves/spire/) | [Anim_Spire](battle_anim/moves/spire/Anim_Spire.c) |
+| [battle_anim/moves/stat_down](battle_anim/moves/stat_down/) | [BaseAnim_StatDown](battle_anim/moves/stat_down/BaseAnim_StatDown.c) |
+| [battle_anim/moves/tackle](battle_anim/moves/tackle/) | [BaseAnim_Tackle](battle_anim/moves/tackle/BaseAnim_Tackle.c) |
 | [battle_anim/moves/thorn](battle_anim/moves/thorn/) | [Anim_Thorn](battle_anim/moves/thorn/Anim_Thorn.c) |
 | [battle_anim/moves/torch](battle_anim/moves/torch/) | [Anim_Torch](battle_anim/moves/torch/Anim_Torch.c) |
 | [battle_anim/moves/undead_sword](battle_anim/moves/undead_sword/) | [Anim_UndeadSword](battle_anim/moves/undead_sword/Anim_UndeadSword.c) |

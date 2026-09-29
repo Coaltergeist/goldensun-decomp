@@ -198,18 +198,17 @@ void Anim_Volcano(struct AnimContext *context)
                         if (q->life == 0) {
                             int speed = (Random() & 0x3ff) + 32;
                             int angle = (Random() & 0x7fff) - 0x4000;
-                            int x = screen[0], y = screen[1];
-                            q->x = x << 8;
-                            q->y = (y << 8) + 0x1000;
+                            q->x = screen[0] << 8;
+                            q->y = (screen[1] << 8) + 0x1000;
                             q->vx = (sin(angle) * speed) >> 15;
                             q->vy = -(cos(angle) * speed * 2) >> 15;
                             count++;
                             if (frame == VolcanoEruptFrames[i]) {
-                                q->life = (Random() & 7) + 48;
+                                q->life = (u8)((Random() & 7) + 48);
                                 if (count == 200)
                                     break;
                             } else {
-                                q->life = (Random() & 7) + 24;
+                                q->life = (u8)((Random() & 7) + 24);
                                 if (count == 4)
                                     break;
                             }

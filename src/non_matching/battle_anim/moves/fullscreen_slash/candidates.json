@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/fullscreen_slash.c",
+  "functions": {
+    "BaseAnim_FullScreenSlash": {
+      "id": "rom:080ecef4"
+    }
+  }
+}

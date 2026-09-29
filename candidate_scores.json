@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "1aeda73a79b13838a747c017809838f232f07142328875199214024402b194c9",
+  "candidate_fingerprint": "bd65f7bc2f566c4b83260360eae1533e0ccc9644dee2dbf35b7c375fa18e5e4c",
   "functions": {
     "common:common0:00000000": {
       "candidate": "src/non_matching/maps/common/common0/OvlFunc_common0_0.c",
@@ -3446,6 +3446,19 @@
       "source": "src/battle_anim/moves/haunt.c",
       "target_size": 884
     },
+    "rom:080ceb54": {
+      "candidate": "src/non_matching/battle_anim/moves/haunt_attack/BaseAnim_HauntAttack.c",
+      "candidate_size": 1036,
+      "evaluated_with": [
+        "BaseAnim_HauntAttack"
+      ],
+      "fuzzy_match_percent": 90.60992,
+      "name": "BaseAnim_HauntAttack",
+      "object_sha256": "cf5062248cf74104dc6a05b27f4e1d0229bbc15e5e325827962ca91412ea0c14",
+      "reference_sha256": "8e39ea95356fdbfb28bee7048ae3fa6fa61e5ae7fc38764b4155107f1df103ee",
+      "source": "src/battle_anim/moves/haunt_attack.c",
+      "target_size": 1040
+    },
     "rom:080ceff8": {
       "candidate": "src/non_matching/battle_anim/moves/spasm/BaseAnim_Spasm.c",
       "candidate_size": 680,
@@ -3458,6 +3471,19 @@
       "reference_sha256": "1c4e6ab1d02729e9081d42036a6a9c745230b4d78ca6a893954e7889c7c34784",
       "source": "src/battle_anim/moves/spasm.c",
       "target_size": 680
+    },
+    "rom:080cf2b8": {
+      "candidate": "src/non_matching/battle_anim/moves/revive/BaseAnim_Revive.c",
+      "candidate_size": 1492,
+      "evaluated_with": [
+        "BaseAnim_Revive"
+      ],
+      "fuzzy_match_percent": 99.16018,
+      "name": "BaseAnim_Revive",
+      "object_sha256": "8dfe9f43bbd1938fccb70236c7b437e3cad5da0dbaded54aa86255189097a43a",
+      "reference_sha256": "9c166c9bb8dfc4e86a50f2f8622e212115017e52532219d577584ce63dbb394d",
+      "source": "src/battle_anim/moves/revive.c",
+      "target_size": 1492
     },
     "rom:080cfef4": {
       "candidate": "src/non_matching/battle_anim/moves/condemn/Anim_Condemn.c",
@@ -3582,9 +3608,9 @@
       "evaluated_with": [
         "Anim_Volcano"
       ],
-      "fuzzy_match_percent": 98.09135,
+      "fuzzy_match_percent": 99.35897,
       "name": "Anim_Volcano",
-      "object_sha256": "b12efa6c9db3e01966623762ee202c2ad6296e9d9f022695c4a0e53aef3ed150",
+      "object_sha256": "99ca9a961bbf5eb0fed3f7a7284529af281cc64119fc340181ed90a71dafa852",
       "reference_sha256": "f07144e41c71fbca1afbea62e34bf731097561cb40f81d15e818b4304c334378",
       "source": "src/battle_anim/moves/volcano.c",
       "target_size": 1392
@@ -3628,6 +3654,19 @@
       "source": "src/battle_anim/camera.c",
       "target_size": 88
     },
+    "rom:080d6660": {
+      "candidate": "src/non_matching/battle_anim/anims/Anim_Func.c",
+      "candidate_size": 108,
+      "evaluated_with": [
+        "Anim_Func"
+      ],
+      "fuzzy_match_percent": 95.2381,
+      "name": "Anim_Func",
+      "object_sha256": "ff17e024c0e1bbc28c2a9ebd68013f4fa7c35c0eed98a07de29aa0e1616cb040",
+      "reference_sha256": "7f99d432c9d910273bfee0627ac09f158e71d346c9a3415790151aa2d6ddc484",
+      "source": "src/battle_anim/anims.c",
+      "target_size": 108
+    },
     "rom:080d82b0": {
       "candidate": "src/non_matching/battle_anim/moves/break/Anim_Break.c",
       "candidate_size": 800,
@@ -3653,6 +3692,19 @@
       "reference_sha256": "c76b5eedcceade7cc55df45e4a25043a710e4b093d30835d32ce0924ab6cd9c1",
       "source": "src/battle_anim/moves/drain.c",
       "target_size": 888
+    },
+    "rom:080d9ae8": {
+      "candidate": "src/non_matching/battle_anim/moves/stat_down/BaseAnim_StatDown.c",
+      "candidate_size": 1252,
+      "evaluated_with": [
+        "BaseAnim_StatDown"
+      ],
+      "fuzzy_match_percent": 85.34698,
+      "name": "BaseAnim_StatDown",
+      "object_sha256": "1b99b01a12c604bde3645de8decc31f49a7a59d0a234e73b86e26af37d497f78",
+      "reference_sha256": "2acf26cfa80ad874811a55112e0079b6bc060ddcd9d28bbc46138cab56548035",
+      "source": "src/battle_anim/moves/stat_down.c",
+      "target_size": 1248
     },
     "rom:080d9fc8": {
       "candidate": "src/non_matching/battle_anim/moves/flare/Anim_Flare.c",
@@ -3706,6 +3758,32 @@
       "source": "src/battle_anim/moves/ray.c",
       "target_size": 1124
     },
+    "rom:080db6e0": {
+      "candidate": "src/non_matching/battle_anim/moves/blast/BaseAnim_Blast.c",
+      "candidate_size": 1100,
+      "evaluated_with": [
+        "BaseAnim_Blast"
+      ],
+      "fuzzy_match_percent": 90.01623,
+      "name": "BaseAnim_Blast",
+      "object_sha256": "23fa30bc34857223b61225d1855f88382918c00d7f42e73ed93b1f1ca3d60734",
+      "reference_sha256": "b3d0fbdbc7b32d0f8ed1f2a1acfd1d278d6447c6b53cd0322e953d20b93f52c8",
+      "source": "src/battle_anim/moves/blast.c",
+      "target_size": 1092
+    },
+    "rom:080dbc30": {
+      "candidate": "src/non_matching/battle_anim/moves/breath/BaseAnim_Breath.c",
+      "candidate_size": 1468,
+      "evaluated_with": [
+        "BaseAnim_Breath"
+      ],
+      "fuzzy_match_percent": 99.69697,
+      "name": "BaseAnim_Breath",
+      "object_sha256": "aa5daf2c417b018e626566f1a49a2cfeac4d20b8601779982e3575b84c67cd7d",
+      "reference_sha256": "85469969890df0329c89f65e581cf74abd21e4d193b7ea8a8b2a619f3b6ede1c",
+      "source": "src/battle_anim/moves/breath.c",
+      "target_size": 1468
+    },
     "rom:080dc454": {
       "candidate": "src/non_matching/battle_anim/moves/unused_skull_spin/Anim_Unused_Haunt.c",
       "candidate_size": 620,
@@ -3731,6 +3809,19 @@
       "reference_sha256": "3c8360ee9470c34aa0ee05c93b0864425475c9571f55658abce06cca4ee255d0",
       "source": "src/battle_anim/moves/atalanta.c",
       "target_size": 2372
+    },
+    "rom:080dd2c4": {
+      "candidate": "src/non_matching/battle_anim/moves/growth/BaseAnim_Growth.c",
+      "candidate_size": 1192,
+      "evaluated_with": [
+        "BaseAnim_Growth"
+      ],
+      "fuzzy_match_percent": 83.04806,
+      "name": "BaseAnim_Growth",
+      "object_sha256": "59b1c4bdf77ae4e5c12f9c4294da0d0bf402283df74b93cf1a765598d14be99c",
+      "reference_sha256": "f725064a8592c346dc955218ad13b2e113479f0bb4ad0d573558e8245b53e9d6",
+      "source": "src/battle_anim/moves/growth.c",
+      "target_size": 1208
     },
     "rom:080dd9c0": {
       "candidate": "src/non_matching/battle_anim/moves/thorn/Anim_Thorn.c",
@@ -3770,6 +3861,19 @@
       "reference_sha256": "dd41731aa08078296d53cc3d4dd05252d8ef65929059c6fef4f52cbdcadabae9",
       "source": "src/battle_anim/moves/projectile.c",
       "target_size": 72
+    },
+    "rom:080dfa48": {
+      "candidate": "src/non_matching/battle_anim/moves/tackle/BaseAnim_Tackle.c",
+      "candidate_size": 916,
+      "evaluated_with": [
+        "BaseAnim_Tackle"
+      ],
+      "fuzzy_match_percent": 95.10448,
+      "name": "BaseAnim_Tackle",
+      "object_sha256": "0999b259468b0fc99ce76a1de902507d7ef25a42482f910cba2b1dccc3af53ee",
+      "reference_sha256": "8e3267880744a89e94c5638390a35a24d9d7115c446b85b843a50e06c89a7009",
+      "source": "src/battle_anim/moves/tackle.c",
+      "target_size": 916
     },
     "rom:080dfddc": {
       "candidate": "src/non_matching/battle_anim/moves/mercury/Func_80dfddc.c",
@@ -3952,6 +4056,19 @@
       "reference_sha256": "1f3b1189a92798e86963e7c18f5d66be9cb5d929f709d731711cc385ba0bd53b",
       "source": "src/battle_anim/moves/kirin.c",
       "target_size": 2444
+    },
+    "rom:080ecef4": {
+      "candidate": "src/non_matching/battle_anim/moves/fullscreen_slash/BaseAnim_FullScreenSlash.c",
+      "candidate_size": 532,
+      "evaluated_with": [
+        "BaseAnim_FullScreenSlash"
+      ],
+      "fuzzy_match_percent": 96.51818,
+      "name": "BaseAnim_FullScreenSlash",
+      "object_sha256": "66f09e2a659413e06b7d23dde9b0e18946cd66fb4e7386cbe8bad00815210f45",
+      "reference_sha256": "3907fe14bfe2d6e309e813496b8c651ca226a7b6d86222ee2879f62d2667bc2a",
+      "source": "src/battle_anim/moves/fullscreen_slash.c",
+      "target_size": 528
     },
     "rom:080ed104": {
       "candidate": "src/non_matching/battle_anim/moves/undead_sword/Anim_UndeadSword.c",
