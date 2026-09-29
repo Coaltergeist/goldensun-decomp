@@ -224,8 +224,62 @@ void OvlFunc_901_2008864(void) {
   ((struct Actor *) __MapActor_GetActor(0xf))->waveCounter = 0;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_20088a8.s");
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008970.s");
+void OvlFunc_901_20088a8(void) {
+    int flag;
+    unsigned short *p;
+
+    flag = API_GetFlag(0xc2 << 2);
+    if (flag == 0) {
+        API_CutsceneStart();
+        ((struct Actor *)__MapActor_GetActor(0x10))->stop = 1;
+        API_MapActor_SetAnim(0x10, 1);
+        API_Func_80925cc(0x10, 1);
+        API_CutsceneWait(0x14);
+        API_MessageID(0x1cb5);
+        API_MapActor_TurnToFaceActor(0x10, 0, 2);
+        __ShowActorMessage_NoWait(0x10, 0);
+        if (__Func_8091c7c(0, 0)) {
+            p = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+            *p = *p + 1;
+        }
+        API_ActorMessage(0x10, 0);
+        ((struct Actor *)__MapActor_GetActor(0x10))->stop = flag;
+        API_MapActor_SetBehavior(0x10, 2);
+        API_CutsceneEnd();
+        API_SetFlag(0xc2 << 2);
+    } else {
+        API_MessageID(0x1cc2);
+        ((struct Actor *)__MapActor_GetActor(0x10))->stop = 1;
+        OvlFunc_901_20084b4(0x10);
+        flag = 0;
+        ((struct Actor *)__MapActor_GetActor(0x10))->stop = flag;
+    }
+}
+extern void __Actor_SetSpriteFlags(void *, int);
+
+void OvlFunc_901_2008970(int id, int x, int y, int motionY) {
+    struct Actor *actor;
+    int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(id);
+    API_MapActor_SetSpeed(id, 0xc0 << 10, 0xc0 << 9);
+    actor->gravity = 0x80 << 8;
+    actor->bounce = 0;
+    actor->motion.y = motionY;
+    __Actor_SetSpriteFlags(actor, 0);
+    API_MapActor_TravelToWait(id, x, y);
+    API_MapActor_SetPos(id, x << 16, y << 16);
+    i = 0x3c;
+    while (i != 0) {
+        API_WaitFrames(1);
+        if (((short *)&actor->motion.y)[1] == 0) {
+            break;
+        }
+        i--;
+    }
+    __Actor_SetSpriteFlags(actor, 1);
+    actor->gravity = 0x80 << 9;
+}
 
 void OvlFunc_901_20089f8(void) {
   __CutsceneStart();

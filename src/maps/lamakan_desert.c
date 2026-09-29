@@ -42,8 +42,27 @@ struct EffectData933 {
     int unk24;
 };
 
-extern int OvlFunc_933_2008344(int *);
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008344.s");
+extern void __PlaySound(int);
+extern unsigned int __Random(void);
+
+int OvlFunc_933_2008344(int *arg0) {
+    extern volatile unsigned int iwram_3001e40;
+    struct EffectData933 data;
+    unsigned int flags;
+
+    if ((iwram_3001e40 & 7) == 0) {
+        __PlaySound(0x76);
+    }
+    flags = iwram_3001e40 & 0xf;
+    if (flags != 0) {
+        return 0;
+    }
+    data.unk8 = 0xcccc;
+    data.unkc = 0xcccc;
+    data.unk22 = (short)((((unsigned int)__Random() << 12) >> 16) + (0xf8 << 8));
+    OvlFunc_common0_10c(arg0[2], arg0[3], arg0[4], 0, flags, flags, 0x880001, &data);
+    return 0;
+}
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;
