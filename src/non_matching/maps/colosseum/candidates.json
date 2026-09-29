@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/colosseum.c",
   "functions": {
-    "Colosseum_MapInit": {
-      "id": "overlay:rom_7d95dc:02009a14"
-    },
     "OvlFunc_953_200a3e0": {
       "id": "overlay:rom_7d95dc:0200a3e0"
     }

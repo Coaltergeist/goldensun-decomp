@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/unleash_intro.c",
-  "functions": {
-    "EndAnim_UnleashIntro": {
-      "id": "rom:080ccbdc"
-    }
-  }
-}

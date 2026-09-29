@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/tunnel_ruins.c",
   "functions": {
-    "OvlFunc_964_20089dc": {
-      "id": "overlay:rom_7ed0a0:020089dc"
-    },
     "OvlFunc_964_2009038": {
       "id": "overlay:rom_7ed0a0:02009038"
     }
