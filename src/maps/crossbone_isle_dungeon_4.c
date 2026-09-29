@@ -853,7 +853,31 @@ void OvlFunc_948_20092d4(void)
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009308.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200938c.s");
+
+void OvlFunc_948_200938c(void) {
+    void *actor;
+
+    __CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x1e666, 0xf333);
+    API_MapActor_SetSpeed(8, 0x1e666, 0xf333);
+    API_PlaySound(0xbc);
+    actor = __MapActor_GetActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(8, *(short *)((char *)actor + 10), *(short *)((char *)actor + 18));
+    }
+    __MapActor_WaitMovement(8);
+    __MapActor_TravelBy(0, 0, 0x18);
+    API_CutsceneWait(4);
+    API_PlaySound(0xbc);
+    __MapActor_TravelBy(8, 0, 0x10);
+    __MapActor_WaitMovement(0);
+    API_MapActor_TravelTo(8, 0xb4 << 1, 0x98);
+    __MapActor_WaitMovement(8);
+    __CutsceneEnd();
+    API_ClearFlag(0x88 << 2);
+}
+
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200941c.s");
 void __CutsceneStart(void);
 void __MapActor_TravelTo(int, int, int);
