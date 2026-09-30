@@ -55,13 +55,9 @@ when production inputs or compilers change; candidate-only edits can reuse it.
 - **ERROR** (exit 2): invalid reference, context, or compilation; no match result.
 
 An exact comparison still needs source review and full ROM/overlay verification.
-Follow [CONTRIBUTING.md](../../CONTRIBUTING.md) to move accepted C into its
-production TU, then remove the parked copy and its manifest entry.
-Regenerate the index after changing the collection:
-
-~~~sh
-python3 tools/generate_candidates.py
-~~~
+Follow [CONTRIBUTING.md](../../CONTRIBUTING.md#matching-workflow) to move accepted
+C into production and finalize the change. Leave registered drafts and manifests
+in place for the finalizer to reconcile.
 
 ## Fuzzy progress
 

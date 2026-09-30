@@ -31,16 +31,18 @@ behavior.
 2. Replace the active `INCLUDE_ASM` in that TU with C.
 3. Compare the whole affected object, including neighboring functions, sizes,
    data, symbols, and relocations. Do not refresh the reference to hide a mismatch.
-4. Verify the game and refresh its progress snapshot:
+4. Finalize the conversion with the pinned [objdiff CLI](DECOMP_DEV.md#candidate-scores):
 
    ~~~sh
-   python3 tools/decomp_progress.py snapshot
+   set -o pipefail
+   python3 tools/finalize_progress.py --objdiff /path/to/objdiff-cli 2>&1 | tee output.txt
    ~~~
 
-   This runs a fresh serial `make -j1 clean` and `make -j1 compare`, verifying
-   the ROM and all 96 overlays. Include the generated `progress_snapshot.json`
-   with source changes. See [DECOMP_DEV.md](DECOMP_DEV.md) for report commands
-   and verification logs.
+   This verifies the ROM and all 96 overlays, reconciles landed candidates, and
+   refreshes the progress reports. Include the resulting candidate changes,
+   `progress_snapshot.json`, and `candidate_scores.json` in the PR. See
+   [DECOMP_DEV.md](DECOMP_DEV.md#finalizing-production-changes) for options and recovery.
+
 5. Run the repository checks:
 
    ~~~sh

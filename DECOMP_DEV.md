@@ -20,6 +20,26 @@ Perfect-match counts remain limited to verified production C. Candidate scores,
 even 100%, do not promote drafts. Similarity does not prove equivalent behavior.
 Assets, unidentified code, and separate fully-linked measures are not reported.
 
+## Finalizing production changes
+
+Follow the [matching workflow](CONTRIBUTING.md#matching-workflow) to run
+`tools/finalize_progress.py` with the pinned [objdiff CLI](#candidate-scores).
+It verifies the ROM and all 96 overlays, retires candidates verified as clean
+production C, updates manifests and the index, captures fresh reference objects,
+rescores remaining candidates, and exports the report.
+
+Run without concurrent edits or builds. Remaining drafts must compile with the
+updated production TU; fix any reported declaration conflicts and rerun.
+`--dry-run` previews the workflow without writes or builds; exact retirements
+require a current verified snapshot.
+
+Backups and logs are under `.progress/finalize-*/`. Ordinary failures and
+interruptions restore previous candidate/report files, preserving production
+edits. Conflicting edits or forced termination may require manual recovery from
+those backups. Rerun successfully before submitting changes.
+
+The commands below are also available for individual steps and candidate-only work.
+
 ## Updating the snapshot
 
 Source, header, assembly, linker, build, accounting, or toolchain changes require

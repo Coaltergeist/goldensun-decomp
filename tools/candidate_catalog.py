@@ -25,9 +25,9 @@ def sites(text):
     return list(SITE.finditer(clean))
 
 
-def catalog(root, manifests=None):
+def catalog(root, manifests=None, *, snapshot=None, retired=()):
     root = Path(root)
-    snapshot = load(root / "progress_snapshot.json")
+    snapshot = load(root / "progress_snapshot.json") if snapshot is None else snapshot
     result, identities, files = {}, set(), set()
     if manifests is None:
         manifests = {p.relative_to(root).as_posix(): load(p)
@@ -89,7 +89,7 @@ def catalog(root, manifests=None):
                           functions=functions, manifest=manifest.relative_to(root).as_posix())
         closure(result[tu], list(functions))
     unexpected = {p.relative_to(root).as_posix()
-                  for p in (root / PARKED).rglob("*.c")} - files
+                  for p in (root / PARKED).rglob("*.c")} - files - set(retired)
     if unexpected:
         raise ValueError("unregistered candidates: " + ", ".join(sorted(unexpected)))
     return result
