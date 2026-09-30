@@ -1,16 +1,18 @@
-unsigned short OvlFunc_880_20092c8(int count, unsigned char *data)
+unsigned short OvlFunc_880_20092c8(unsigned int count, const unsigned char *data)
 {
-    int i, j;
+    unsigned int i;
+    int j;
     unsigned int crc = 0xffff;
 
     for (i = 0; i < count; i++) {
-        crc ^= (data[i] << 8);
+        crc ^= *data << 8;
         for (j = 0; j < 8; j++) {
             if (crc & 0x8000)
-                crc = (crc << 1) + 0xffffefdf;
+                crc = (crc << 1) - 0x1021;
             else
-                crc = crc << 1;
+                crc <<= 1;
         }
+        data++;
     }
     return ~crc;
 }

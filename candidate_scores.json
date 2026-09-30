@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "a6e9e2f095c06f74e158f9d815c6598745a8a2220083187abd5a01e923012006",
+  "candidate_fingerprint": "b93addd432bcd61bc0c3a464c6465660a607424255cd0f08b07367bb698622cb",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -100,7 +100,7 @@
       ],
       "fuzzy_match_percent": 97.138885,
       "name": "OvlFunc_880_20092c8",
-      "object_sha256": "b36e4ef16948431679c622c69c3b3e44e723796a3e1cd9a69b6e04430ae00901",
+      "object_sha256": "f2fedb56b78b801953517f4964ac58543207bdd2dc4e6d8afdd113d439eb50cd",
       "reference_sha256": "c0d200f42960c738ac59f5f758d032f681edc4dc03ee4e92729e64e011bbaec3",
       "source": "src/maps/main_menu.c",
       "target_size": 76
@@ -3617,7 +3617,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "84c4d9ed4e40810e653da85cf9a5ffb612f78e3bd365ad4e1a7891b0e882cb1f",
+  "progress_sha256": "418d961571a54e392fa34b9552364f238d60c7f2eff884131e1a049068acabc6",
   "schema": 1,
   "scorer": {
     "config": [

@@ -197,7 +197,21 @@ void OvlFunc_955_2008950(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008970.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20089b0.s");
+extern void __Func_809ad90(int);
+
+void OvlFunc_955_20089b0(void)
+{
+    __Func_809ad90(0x1f);
+    API_SetFlag(0x334);
+    if (L4834[0] != 0) {
+        L4838[0] = 0;
+    }
+    API_WaitFrames(30);
+    API_WaitFrames(1);
+    __StopTask(OvlFunc_955_2008714);
+    API_Func_8010704(0x3a, 0x1c, 7, 1, 0x3a, 0xd);
+    API_Func_8010704(0x39, 0xb, 1, 1, 0x3a, 0xb);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008a1c.s");
 
 extern unsigned char gOvl_0200c83c[];

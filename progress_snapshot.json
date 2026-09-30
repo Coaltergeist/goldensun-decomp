@@ -2813,7 +2813,7 @@
     "overlay:rom_7ddb88:020088ec": "c",
     "overlay:rom_7ddb88:02008950": "c",
     "overlay:rom_7ddb88:02008970": "assembly",
-    "overlay:rom_7ddb88:020089b0": "assembly",
+    "overlay:rom_7ddb88:020089b0": "c",
     "overlay:rom_7ddb88:02008a1c": "assembly",
     "overlay:rom_7ddb88:02008b30": "c",
     "overlay:rom_7ddb88:02008b38": "c",
@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3841,
+  "input_count": 3840,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "f2d382aaf775cd41c3af42838bb2433a852d37acc072db526caccea6e93a082a",
+  "source_fingerprint": "75ac39320d7c2cecc70622e72b95d2f96c961b1602378616dc812da28809746a",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
