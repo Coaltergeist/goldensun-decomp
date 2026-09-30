@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/sprite/sprite.c",
-  "functions": {
-    "DeleteSpriteLayer": {
-      "id": "rom:0800bc48"
-    }
-  }
-}

@@ -7,7 +7,22 @@
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008030.s");
+int OvlFunc_882_2008030(struct Actor *a) {
+    extern int _umodsi3_RAM(unsigned int, unsigned int);
+    extern unsigned int __Random(void);
+    int t;
+
+    if (a->waveCounter != 0) {
+        t = a->waveCounter;
+    } else {
+        a->facing = __Random();
+        t = _umodsi3_RAM(__Random(), 0x14) + 0x14;
+        a->waveCounter = t;
+    }
+    a->waveCounter = t - 1;
+    return 1;
+}
+
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008064.s");
 
 extern unsigned char gOvl_0200d0e4[];
@@ -319,7 +334,13 @@ void OvlFunc_882_2008f38(void) {
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20090a4.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009154.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20092f0.s");
+
+void OvlFunc_882_20092f0(void) {
+    __Func_8010704(0x1d, 0x16, 1, 1, 3, 0x2a);
+    __Func_8010704(0x1d, 0x15, 1, 1, 2, 0x2a);
+    __Func_8010704(0x1d, 0x15, 1, 1, 4, 0x2a);
+    __Func_8010704(0x17, 0x14, 3, 1, 2, 0x2b);
+}
 
 extern void OvlFunc_882_2009498(void);
 
@@ -552,7 +573,40 @@ void OvlFunc_882_200998c(void) {
 
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009a64.s");
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009b18.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200a09c.s");
+
+extern unsigned char L48bc[] __asm__(".Lm882_48bc");
+extern unsigned int iwram_3001e40__a0 __asm__("iwram_3001e40");
+
+void OvlFunc_882_200a09c(int actor, int colorswap) {
+    unsigned char *sprite;
+    unsigned int *p;
+    unsigned int mask;
+    int cs;
+    unsigned char count;
+    int i;
+
+    mask = *(unsigned char *)(actor + 0x54) & 0xf;
+    if (mask != 1)
+        return;
+
+    sprite = *(unsigned char **)(actor + 0x50);
+    cs = colorswap - 1;
+    if (colorswap == 0) {
+        cs = L48bc[(iwram_3001e40__a0 >> 1) & mask];
+    }
+
+    count = sprite[0x27];
+    if (count != 0) {
+        p = (unsigned int *)(sprite + 0x28);
+        for (i = count; i != 0; i--) {
+            unsigned int e = *p++;
+            if (e != 0 && *(unsigned int *)((char *)e + 0x10) != 0) {
+                *(unsigned char *)((char *)e + 5) = cs;
+            }
+        }
+    }
+    sprite[0x25] = 1;
+}
 
 extern unsigned int L57fc__a1 __asm__(".Lm882_57fc");
 extern void OvlFunc_882_200a09c(int, int);
@@ -652,7 +706,66 @@ void OvlFunc_882_200be18(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200be48.s");
+
+void OvlFunc_882_200be48(void) {
+    extern unsigned char gScript_882__0200cec8[];
+    struct Actor *a0 = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *a8 = (struct Actor *)__MapActor_GetActor(8);
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x305)) {
+        API_MapActor_SetIdle(8);
+        API_CutsceneWait(0xa);
+        API_Func_80925cc(8, 2);
+        API_CutsceneWait(0x28);
+        if ((s16)a0->facing >= 0) {
+            API_MapActor_SetAnim(8, 7);
+        } else {
+            API_MapActor_SetAnim(8, 8);
+        }
+        API_Func_80925cc(8, 2);
+        API_CutsceneWait(0x14);
+        API_MessageID(0xed2);
+        API_ActorMessage(8, 0);
+        API_MapActor_SetBehavior(8, (int)gScript_882__0200cec8);
+        API_MapActor_SetAnim(8, 6);
+    } else {
+        API_MapActor_SetIdle(8);
+        a8->scale.x = 0x80 << 9;
+        a8->scale.y = 0x80 << 9;
+        API_Func_8092adc(8, 0x80 << 5, 0);
+        if ((s16)a0->facing >= 0) {
+            API_MapActor_SetAnim(8, 7);
+        } else {
+            API_MapActor_SetAnim(8, 8);
+        }
+        API_CutsceneWait(0x14);
+        API_MessageID(0xed1);
+        API_ActorMessage_Wait(8, 0, 0x14);
+        API_MapActor_SetAnim(8, 1);
+        API_MapActor_Jump(8, 4, 0);
+        API_CutsceneWait(0x50);
+        API_Func_80925cc(8, 2);
+        API_CutsceneWait(0x28);
+        if ((s16)a0->facing >= 0) {
+            API_MapActor_SetAnim(8, 7);
+        } else {
+            API_MapActor_SetAnim(8, 8);
+        }
+        API_CutsceneWait(2);
+        API_MapActor_Jump(8, 2, 0);
+        API_CutsceneWait(0x3c);
+        API_Func_80925cc(8, 2);
+        API_CutsceneWait(0x14);
+        API_ActorMessage(8, 0);
+        API_MapActor_SetBehavior(8, (int)gScript_882__0200cec8);
+        API_MapActor_SetAnim(8, 6);
+        API_SetFlag(0x305);
+    }
+    API_CutsceneEnd();
+}
+
+
 
 extern void OvlFunc_882_200c5b8(void);
 
@@ -769,8 +882,45 @@ void OvlFunc_882_200c34c(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c378.s");
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c3c8.s");
+extern int __sin(int);
+extern void __DeleteActor(struct Actor *);
+
+void OvlFunc_882_200c378(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        __DeleteActor(actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z + (0x10000 - sinVal) * 5 + 0x80000;
+    }
+}
+
+void OvlFunc_882_200c3c8(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        __DeleteActor(actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c41c.s");
 
 extern void __Func_8096fb0(int, int);

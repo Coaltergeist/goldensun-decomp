@@ -1,32 +1,6 @@
 {
-  "candidate_fingerprint": "bd65f7bc2f566c4b83260360eae1533e0ccc9644dee2dbf35b7c375fa18e5e4c",
+  "candidate_fingerprint": "a6e9e2f095c06f74e158f9d815c6598745a8a2220083187abd5a01e923012006",
   "functions": {
-    "common:common0:00000000": {
-      "candidate": "src/non_matching/maps/common/common0/OvlFunc_common0_0.c",
-      "candidate_size": 22,
-      "evaluated_with": [
-        "OvlFunc_common0_0"
-      ],
-      "fuzzy_match_percent": 53.333332,
-      "name": "OvlFunc_common0_0",
-      "object_sha256": "7ebae7c06cf77754ff93aac5489ea841b0186e6ec3681db0414deda58977cdd8",
-      "reference_sha256": "9b076fcd09c594d21ecbcdca8379f2596f417187081b72afdd69be8347fe2ec4",
-      "source": "src/maps/common/common0.c",
-      "target_size": 24
-    },
-    "common:common0:000000d4": {
-      "candidate": "src/non_matching/maps/common/common0/OvlFunc_common0_d4.c",
-      "candidate_size": 54,
-      "evaluated_with": [
-        "OvlFunc_common0_d4"
-      ],
-      "fuzzy_match_percent": 90.53571,
-      "name": "OvlFunc_common0_d4",
-      "object_sha256": "391e11e69256e960f400429be9ad06ab12d4de0fb2568598ab05a8b33c89881a",
-      "reference_sha256": "9b076fcd09c594d21ecbcdca8379f2596f417187081b72afdd69be8347fe2ec4",
-      "source": "src/maps/common/common0.c",
-      "target_size": 56
-    },
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
       "candidate_size": 76,
@@ -35,8 +9,8 @@
       ],
       "fuzzy_match_percent": 81.702705,
       "name": "OvlFunc_common1_588",
-      "object_sha256": "a8dec87315b8b6d704f55a7a7987085c8e0caf76cc371ddb338c3692f8bae44f",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "object_sha256": "2786512f5e8790dde38864bf266d224ebaa69b9b3b2ba4c812bc722699816f2f",
+      "reference_sha256": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
       "source": "src/maps/common/common1.c",
       "target_size": 92
     },
@@ -48,8 +22,8 @@
       ],
       "fuzzy_match_percent": 74.067474,
       "name": "OvlFunc_common1_920",
-      "object_sha256": "dde74d53e51c62fab88e950533f786106677e8e33123e36aaa1ce0f2ab6a0e71",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "object_sha256": "5d887be46c6159e33fbe826161ea8af1476c9c68dff66da895e4952a03b3d9bd",
+      "reference_sha256": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
       "source": "src/maps/common/common1.c",
       "target_size": 1264
     },
@@ -61,23 +35,10 @@
       ],
       "fuzzy_match_percent": 78.97059,
       "name": "OvlFunc_common1_15b8",
-      "object_sha256": "2783938163f03d41014c0cd19e4866413ce095a8f2941c167f140a80f2582324",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "object_sha256": "90d21726c0e27583993154a02561da00a14dec2e1a6025d13051e903d94c72ac",
+      "reference_sha256": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
       "source": "src/maps/common/common1.c",
       "target_size": 80
-    },
-    "common:common1:000016cc": {
-      "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_16cc.c",
-      "candidate_size": 44,
-      "evaluated_with": [
-        "OvlFunc_common1_16cc"
-      ],
-      "fuzzy_match_percent": 51.095238,
-      "name": "OvlFunc_common1_16cc",
-      "object_sha256": "3cbfdcff958f759c3f031e5bce9300fd75b53e7342e9034d6cf5c96827d4a2d2",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
-      "source": "src/maps/common/common1.c",
-      "target_size": 44
     },
     "common:common1:000017c0": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_17c0.c",
@@ -87,8 +48,8 @@
       ],
       "fuzzy_match_percent": 90.91892,
       "name": "OvlFunc_common1_17c0",
-      "object_sha256": "241a37852db10750ef6d0c95221094b0848c103bff663b06ea86b0c57fc7b884",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "object_sha256": "aeddeeac642063595d2de45cb43ebe468033174dd830faecc44d9cd5b746ce87",
+      "reference_sha256": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
       "source": "src/maps/common/common1.c",
       "target_size": 84
     },
@@ -100,8 +61,8 @@
       ],
       "fuzzy_match_percent": 66.947136,
       "name": "OvlFunc_common1_1b08",
-      "object_sha256": "4f79c47f50fd168e8c0b8f5c90ae780bae0133232c022f54e197d3687ea231ce",
-      "reference_sha256": "9c242d41540c6cde2e0c3d4a3e164785431f6c6bd453289e80a8ceb08810b3e6",
+      "object_sha256": "262f839746c83635ebb4a9434171af0114da52cf62796a919fa3bb34b3b83213",
+      "reference_sha256": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
       "source": "src/maps/common/common1.c",
       "target_size": 964
     },
@@ -144,19 +105,6 @@
       "source": "src/maps/main_menu.c",
       "target_size": 76
     },
-    "overlay:rom_77a7c8:0200811c": {
-      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_200811c.c",
-      "candidate_size": 28,
-      "evaluated_with": [
-        "OvlFunc_881_200811c"
-      ],
-      "fuzzy_match_percent": 56.666668,
-      "name": "OvlFunc_881_200811c",
-      "object_sha256": "0e35a5b1100061571824bb0f195cc73a3ef287f9b85e2366fa2d5b40e1201027",
-      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
-      "source": "src/maps/world_map_cutscenes.c",
-      "target_size": 32
-    },
     "overlay:rom_77a7c8:020082cc": {
       "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_20082cc.c",
       "candidate_size": 32,
@@ -165,8 +113,8 @@
       ],
       "fuzzy_match_percent": 78.0625,
       "name": "OvlFunc_881_20082cc",
-      "object_sha256": "2bee8aceb8d682e7170d9a3a70afad73f12e1c34f614dba9244daf8e60e0e636",
-      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "object_sha256": "6fb2a87cd7bf1a1c680d8d856b67a60295052ce370c3c3e7ea37a4a2e340246f",
+      "reference_sha256": "6dd696b8d3cd66efc5917113d9cfcae3f08aac3949fea56731ba57ab43e23898",
       "source": "src/maps/world_map_cutscenes.c",
       "target_size": 36
     },
@@ -178,49 +126,10 @@
       ],
       "fuzzy_match_percent": 88.23529,
       "name": "OvlFunc_881_20082f0",
-      "object_sha256": "659a686c125b5b64d41527a9f56c6fdce3e53cdd02f3c0b6c18d600f4996473a",
-      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
+      "object_sha256": "68bd461a8af679b4a11ab131f0f1442cf1feefc3a534f4b0261354fed617bfa6",
+      "reference_sha256": "6dd696b8d3cd66efc5917113d9cfcae3f08aac3949fea56731ba57ab43e23898",
       "source": "src/maps/world_map_cutscenes.c",
       "target_size": 36
-    },
-    "overlay:rom_77a7c8:02008314": {
-      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_2008314.c",
-      "candidate_size": 64,
-      "evaluated_with": [
-        "OvlFunc_881_2008314"
-      ],
-      "fuzzy_match_percent": 85.52,
-      "name": "OvlFunc_881_2008314",
-      "object_sha256": "556e67b720040bee79ac966ca08e5dab1358137d7582f94e355ba0c18c5c780b",
-      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
-      "source": "src/maps/world_map_cutscenes.c",
-      "target_size": 60
-    },
-    "overlay:rom_77a7c8:0200a81c": {
-      "candidate": "src/non_matching/maps/world_map_cutscenes/OvlFunc_881_200a81c.c",
-      "candidate_size": 60,
-      "evaluated_with": [
-        "OvlFunc_881_200a81c"
-      ],
-      "fuzzy_match_percent": 90.90909,
-      "name": "OvlFunc_881_200a81c",
-      "object_sha256": "c72ad10af4d5008e0fb4613f6474797ae473bf4544d91c2194c7525f68487126",
-      "reference_sha256": "ae3b9fd3a6f0921c5e85b92892dfb141c298017e783578f8be1c6bd70a626058",
-      "source": "src/maps/world_map_cutscenes.c",
-      "target_size": 60
-    },
-    "overlay:rom_77dd1c:02008030": {
-      "candidate": "src/non_matching/maps/vale_river_prologue/OvlFunc_882_2008030.c",
-      "candidate_size": 52,
-      "evaluated_with": [
-        "OvlFunc_882_2008030"
-      ],
-      "fuzzy_match_percent": 81.73913,
-      "name": "OvlFunc_882_2008030",
-      "object_sha256": "0ad3e37cb95d63a3d2e7d228117b31651532866f804c448d36652935629975b3",
-      "reference_sha256": "5ed839c7f13bc0de65d11a471bb5fad9ff8cdccf493adc4ee3a1375f26e46eeb",
-      "source": "src/maps/vale_river_prologue.c",
-      "target_size": 52
     },
     "overlay:rom_77dd1c:02009498": {
       "candidate": "src/non_matching/maps/vale_river_prologue/OvlFunc_882_2009498.c",
@@ -230,8 +139,8 @@
       ],
       "fuzzy_match_percent": 74.20755,
       "name": "OvlFunc_882_2009498",
-      "object_sha256": "b2c11e681e3afe019c19835d5662f57140e52134bd68e56068eadaab23ae4ad0",
-      "reference_sha256": "5ed839c7f13bc0de65d11a471bb5fad9ff8cdccf493adc4ee3a1375f26e46eeb",
+      "object_sha256": "6d0dffaac8365e55dc5aa246c9b7d4bca31b1d0c6b2cc24a20a71e021c05a698",
+      "reference_sha256": "39110a10d23fe8b895728722660269dc19478a72ac99bb13ef2c06f27bd8618f",
       "source": "src/maps/vale_river_prologue.c",
       "target_size": 116
     },
@@ -269,23 +178,10 @@
       ],
       "fuzzy_match_percent": 79.141846,
       "name": "OvlFunc_895_2008258",
-      "object_sha256": "59f8cc1f50027a8edc2e8b77996150dfd96a7593f51138421f889992685c03a7",
-      "reference_sha256": "7b0535d6e40846f7a3fd81797a974be82fe5160312f660c301a44e035f35bf32",
+      "object_sha256": "3c83bae61df8a15168501f13a0b3cbc2406f332b1a96302d75e306ddb52ea256",
+      "reference_sha256": "4e711b79b18090c23ef6a71cd28347e9a637af8e893a91513c2873aa56aefa50",
       "source": "src/maps/sol.c",
       "target_size": 356
-    },
-    "overlay:rom_78dee8:020088f4": {
-      "candidate": "src/non_matching/maps/sol/Sol_MapInit.c",
-      "candidate_size": 44,
-      "evaluated_with": [
-        "Sol_MapInit"
-      ],
-      "fuzzy_match_percent": 80.391304,
-      "name": "Sol_MapInit",
-      "object_sha256": "79f66be955de136f7f4a9f6cabc0784291d25d96af67585e7dd4ae9707398b53",
-      "reference_sha256": "7b0535d6e40846f7a3fd81797a974be82fe5160312f660c301a44e035f35bf32",
-      "source": "src/maps/sol.c",
-      "target_size": 56
     },
     "overlay:rom_791794:02008f64": {
       "candidate": "src/non_matching/maps/elemental_stars_eruption/OvlFunc_897_2008f64.c",
@@ -373,23 +269,10 @@
       ],
       "fuzzy_match_percent": 85.9375,
       "name": "OvlFunc_901_2008640",
-      "object_sha256": "58409d4db8434324c09ee8af51c95182ad932eadbccf064db97a6c479373e3d3",
-      "reference_sha256": "49ecb394e2d2e406553f5b111be576ed0b231abccd75c35b6ef954086e1ac91c",
+      "object_sha256": "d16ba7b01f16081caed076e8cc69404c76ab8e8f3fafaa28130980bc8679b67b",
+      "reference_sha256": "3c4a2d2b0cbe10b7cbde6d49967703797cc2474a3942cd1b42d8b11cd9a4dd0a",
       "source": "src/maps/vault_2.c",
       "target_size": 116
-    },
-    "overlay:rom_797990:02008864": {
-      "candidate": "src/non_matching/maps/vault_2/OvlFunc_901_2008864.c",
-      "candidate_size": 66,
-      "evaluated_with": [
-        "OvlFunc_901_2008864"
-      ],
-      "fuzzy_match_percent": 96.15385,
-      "name": "OvlFunc_901_2008864",
-      "object_sha256": "3c4a2d2b0cbe10b7cbde6d49967703797cc2474a3942cd1b42d8b11cd9a4dd0a",
-      "reference_sha256": "49ecb394e2d2e406553f5b111be576ed0b231abccd75c35b6ef954086e1ac91c",
-      "source": "src/maps/vault_2.c",
-      "target_size": 68
     },
     "overlay:rom_798dc4:020084f4": {
       "candidate": "src/non_matching/maps/goma_cave_entry/GomaCaveEntry_MapInit.c",
@@ -477,8 +360,8 @@
       ],
       "fuzzy_match_percent": 81.2,
       "name": "OvlFunc_911_2008230",
-      "object_sha256": "b72c9bb301a2345fe2c9f28cf987a2056f0181ff0f7dc78f05b8d547ecf5524a",
-      "reference_sha256": "bee391e9e3ef96ba43ee25e6f1cc8c91fd22dac04a267c817d596571de1ed4ca",
+      "object_sha256": "942643512c1ec088be29f2aee9f3ca9500dd88927004e984c0407485c474fde0",
+      "reference_sha256": "91ef97594a9f274648d59bcd7a8b33376dce6255c58c5ee2180bd464dd8561c5",
       "source": "src/maps/kolima.c",
       "target_size": 68
     },
@@ -893,8 +776,8 @@
       ],
       "fuzzy_match_percent": 74.24,
       "name": "OvlFunc_926_200a508",
-      "object_sha256": "d33d2ce05b4b17b99da94728386d93bdaf6f32846a8790eaa38144deab7361b5",
-      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
+      "object_sha256": "dead94b145fe09763c9b2efe6c2339dfdd7ca87a4bd1b827a08e64bf3ff04cf8",
+      "reference_sha256": "977ad076fc39e9eb55e5336bedc5e2a868b48fb2ead355e09714bf798f2bc083",
       "source": "src/maps/fuchin_temple.c",
       "target_size": 68
     },
@@ -906,36 +789,10 @@
       ],
       "fuzzy_match_percent": 100.0,
       "name": "OvlFunc_926_200c140",
-      "object_sha256": "4d093766fa97fe56442a9dbaef17a1831b6c17966e856694ab6f4b2ec62f9ced",
-      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
+      "object_sha256": "3745e17dcb63b7dd66b68968a1812c457359666672877639c7db330df50c0417",
+      "reference_sha256": "977ad076fc39e9eb55e5336bedc5e2a868b48fb2ead355e09714bf798f2bc083",
       "source": "src/maps/fuchin_temple.c",
       "target_size": 132
-    },
-    "overlay:rom_7b2078:0200c1c4": {
-      "candidate": "src/non_matching/maps/fuchin_temple/OvlFunc_926_200c1c4.c",
-      "candidate_size": 40,
-      "evaluated_with": [
-        "OvlFunc_926_200c1c4"
-      ],
-      "fuzzy_match_percent": 99.411766,
-      "name": "OvlFunc_926_200c1c4",
-      "object_sha256": "82c8623349a0600390a884f3690cf5c46d42613ec3a05b2141e1b67e4b620aca",
-      "reference_sha256": "2ca59a4dd7937230fd8ffb30b765591930de048419d8a831aba8dffeafb309d7",
-      "source": "src/maps/fuchin_temple.c",
-      "target_size": 40
-    },
-    "overlay:rom_7b4558:020089dc": {
-      "candidate": "src/non_matching/maps/mogall_forest/OvlFunc_927_20089dc.c",
-      "candidate_size": 22,
-      "evaluated_with": [
-        "OvlFunc_927_20089dc"
-      ],
-      "fuzzy_match_percent": 53.333332,
-      "name": "OvlFunc_927_20089dc",
-      "object_sha256": "e128f18162ce727744422370eaaf8d15cac7d30ae65ac7661cfe5fae05401dcb",
-      "reference_sha256": "5502129c73a3d72d3cac90739c798fa993176b347d1ffb2446f5be295987fdf8",
-      "source": "src/maps/mogall_forest.c",
-      "target_size": 24
     },
     "overlay:rom_7b6668:02008370": {
       "candidate": "src/non_matching/maps/xian/OvlFunc_928_2008370.c",
@@ -984,49 +841,10 @@
       ],
       "fuzzy_match_percent": 84.054344,
       "name": "OvlFunc_932_2009770",
-      "object_sha256": "b5f7e8b06a471ff0014bedad0564c2dd026efdf453645f36bef2f698ca2eb4ac",
-      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
+      "object_sha256": "2329c6bc3a67fa156fe57f843ca45ac62e1936bc53814143304c3d3069ac2712",
+      "reference_sha256": "2a1d61fc78c20408ce198327b341ba559b5e73066a47b10a6e686de9ac86a278",
       "source": "src/maps/altin_peak.c",
       "target_size": 200
-    },
-    "overlay:rom_7b9cb4:0200aa10": {
-      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_200aa10.c",
-      "candidate_size": 56,
-      "evaluated_with": [
-        "OvlFunc_932_200aa10"
-      ],
-      "fuzzy_match_percent": 97.4,
-      "name": "OvlFunc_932_200aa10",
-      "object_sha256": "f8d57d7efca4daec38817f8632db6098746546cdb1b03ce2f4aadc1b05d9fe70",
-      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
-      "source": "src/maps/altin_peak.c",
-      "target_size": 56
-    },
-    "overlay:rom_7b9cb4:0200ba44": {
-      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_200ba44.c",
-      "candidate_size": 44,
-      "evaluated_with": [
-        "OvlFunc_932_200ba44"
-      ],
-      "fuzzy_match_percent": 100.0,
-      "name": "OvlFunc_932_200ba44",
-      "object_sha256": "b892d651d6709d8bc40a604ed8bab9d7da30ceb354ee30a2edcbc5f7c1ec421c",
-      "reference_sha256": "26611b03e9b3d73bfbdd3e9222f74e3c3e743f759bd53f850aa2cab540704e5b",
-      "source": "src/maps/altin_peak.c",
-      "target_size": 44
-    },
-    "overlay:rom_7bc690:02008344": {
-      "candidate": "src/non_matching/maps/lamakan_desert/OvlFunc_933_2008344.c",
-      "candidate_size": 104,
-      "evaluated_with": [
-        "OvlFunc_933_2008344"
-      ],
-      "fuzzy_match_percent": 100.0,
-      "name": "OvlFunc_933_2008344",
-      "object_sha256": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
-      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
-      "source": "src/maps/lamakan_desert.c",
-      "target_size": 104
     },
     "overlay:rom_7bc690:020084e4": {
       "candidate": "src/non_matching/maps/lamakan_desert/OvlFunc_933_20084e4.c",
@@ -1036,8 +854,8 @@
       ],
       "fuzzy_match_percent": 90.12981,
       "name": "OvlFunc_933_20084e4",
-      "object_sha256": "47d372bae821641590c00c777128b2154f48c011d09da58b6a07ab259755650e",
-      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
+      "object_sha256": "3e78f96129956fccfc118c642493dbee6782d4f167a1a255bccd54060223c10f",
+      "reference_sha256": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
       "source": "src/maps/lamakan_desert.c",
       "target_size": 936
     },
@@ -1049,8 +867,8 @@
       ],
       "fuzzy_match_percent": 89.2,
       "name": "OvlFunc_933_2008c38",
-      "object_sha256": "ad3e67bf9f51469123f59364b6e5f8b0d155a6d800bef7deca045ec03fe1ceea",
-      "reference_sha256": "f236d76d2fb6cb828e63bb9631d25e8b67c88cf08429741e43ceb46730cfb8c2",
+      "object_sha256": "bcfaaa2cc1b9a416a357b0e9023c76482b82d6aa55b13e60464889d220f09a5d",
+      "reference_sha256": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
       "source": "src/maps/lamakan_desert.c",
       "target_size": 52
     },
@@ -1140,8 +958,8 @@
       ],
       "fuzzy_match_percent": 57.466667,
       "name": "OvlFunc_936_20080ac",
-      "object_sha256": "0f5ff830a57c4720e1497b703ed2b195ad30ee4dc710514173182107c737d03e",
-      "reference_sha256": "dace5727218fad81404876fe046a711c17717cb16384aafb3f7f043d9c7c4acd",
+      "object_sha256": "3e9df700686f9f76855b1e7e259bd85196e3cebd058557e657e94d789bc79fef",
+      "reference_sha256": "3f2f6bd175a8e15aa771c5d1736f58bf68e4eb3ecef082580cd8b2072f037ddb",
       "source": "src/maps/kalay.c",
       "target_size": 64
     },
@@ -1179,23 +997,10 @@
       ],
       "fuzzy_match_percent": 87.368095,
       "name": "OvlFunc_942_2008958",
-      "object_sha256": "e245df7ec0905eda76de49b0f3a8262a980d7fb19e76d17aade40cf5970aacde",
-      "reference_sha256": "ae890f683c1c0ba6809431e6a5a080756a4e808dcb3c635a397877684457bee9",
+      "object_sha256": "037238a9630efc405ce0fbce1a1d24a2b5b024b6a4b954c78ac4adfdae8a5557",
+      "reference_sha256": "a98b2a8b04f0488c3d75539dd7fd2a2ededecd0c409e2c9867871c1d19e2c499",
       "source": "src/maps/kalay_docks.c",
       "target_size": 380
-    },
-    "overlay:rom_7c6bac:02008b68": {
-      "candidate": "src/non_matching/maps/kalay_docks/OvlFunc_942_2008b68.c",
-      "candidate_size": 54,
-      "evaluated_with": [
-        "OvlFunc_942_2008b68"
-      ],
-      "fuzzy_match_percent": 95.833336,
-      "name": "OvlFunc_942_2008b68",
-      "object_sha256": "a98b2a8b04f0488c3d75539dd7fd2a2ededecd0c409e2c9867871c1d19e2c499",
-      "reference_sha256": "ae890f683c1c0ba6809431e6a5a080756a4e808dcb3c635a397877684457bee9",
-      "source": "src/maps/kalay_docks.c",
-      "target_size": 56
     },
     "overlay:rom_7ca63c:02008564": {
       "candidate": "src/non_matching/maps/tolbi_bound_ship_top/OvlFunc_944_2008564.c",
@@ -1262,84 +1067,6 @@
       "source": "src/maps/tolbi_bound_ship_hull.c",
       "target_size": 76
     },
-    "overlay:rom_7ced6c:020089dc": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_20089dc.c",
-      "candidate_size": 20,
-      "evaluated_with": [
-        "OvlFunc_946_20089dc"
-      ],
-      "fuzzy_match_percent": 60.333332,
-      "name": "OvlFunc_946_20089dc",
-      "object_sha256": "ffbc4b4dc5c99bc68c9dcf60acc94bf482914e05fbaaf96806f12c1ca2bd637c",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 24
-    },
-    "overlay:rom_7ced6c:02008ab0": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2008ab0.c",
-      "candidate_size": 54,
-      "evaluated_with": [
-        "OvlFunc_946_2008ab0"
-      ],
-      "fuzzy_match_percent": 90.53571,
-      "name": "OvlFunc_946_2008ab0",
-      "object_sha256": "f19f1a251ecffc5e20dcbb48fd43d630c593e14a3bd5c076fd6e6a1e8f403d38",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 56
-    },
-    "overlay:rom_7ced6c:02009508": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009508.c",
-      "candidate_size": 64,
-      "evaluated_with": [
-        "OvlFunc_946_2009508"
-      ],
-      "fuzzy_match_percent": 92.37037,
-      "name": "OvlFunc_946_2009508",
-      "object_sha256": "a74bed88876cf3f5f6633050e8ed036286559f830a5451a7004eb424faf295d6",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 64
-    },
-    "overlay:rom_7ced6c:02009548": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009548.c",
-      "candidate_size": 68,
-      "evaluated_with": [
-        "OvlFunc_946_2009548"
-      ],
-      "fuzzy_match_percent": 92.64286,
-      "name": "OvlFunc_946_2009548",
-      "object_sha256": "9b5164d1fabafb118209db74c96b3acafd3cd199f4c8caab4ad88902f8fdbcef",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 68
-    },
-    "overlay:rom_7ced6c:0200958c": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_200958c.c",
-      "candidate_size": 68,
-      "evaluated_with": [
-        "OvlFunc_946_200958c"
-      ],
-      "fuzzy_match_percent": 92.64286,
-      "name": "OvlFunc_946_200958c",
-      "object_sha256": "98dfe50cb5202932bbeb020f965b6b211cf3ffd98005bd5b13c90cc088f5d44c",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 68
-    },
-    "overlay:rom_7ced6c:02009624": {
-      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2009624.c",
-      "candidate_size": 40,
-      "evaluated_with": [
-        "OvlFunc_946_2009624"
-      ],
-      "fuzzy_match_percent": 87.64706,
-      "name": "OvlFunc_946_2009624",
-      "object_sha256": "5c25b9c0bdd9e3adf52b011f3d7e3c2574521148973f8b60b55c35050ef6fbb0",
-      "reference_sha256": "a3bd108657b216c2ade8f69ac6f6ebf80ac2639ef57ec2ac54024b28206f925b",
-      "source": "src/maps/crossbone_isle.c",
-      "target_size": 40
-    },
     "overlay:rom_7d0e88:02009938": {
       "candidate": "src/non_matching/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.c",
       "candidate_size": 176,
@@ -1348,8 +1075,8 @@
       ],
       "fuzzy_match_percent": 79.46067,
       "name": "OvlFunc_947_2009938",
-      "object_sha256": "28c6ab7d309f1c82f0e0e0884da15ea0f27f74887b010a6fca7932776cc03486",
-      "reference_sha256": "1c76982a78d97c1365f4463b85ab76e527411415256e622ddf7ec6ef127a71e3",
+      "object_sha256": "25f39130e6557f77fb4073f285b3c28f49873ee3cfeeb16025c35b1ed459b3cc",
+      "reference_sha256": "ab924b95f5d5b0af507cdf3f2f14596c3af4497f74b0cbb62fd6bc1a0d387ffd",
       "source": "src/maps/crossbone_isle_dungeon_2.c",
       "target_size": 184
     },
@@ -1457,58 +1184,6 @@
       "source": "src/maps/babis_palace.c",
       "target_size": 348
     },
-    "overlay:rom_7d768c:02008524": {
-      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_2008524.c",
-      "candidate_size": 72,
-      "evaluated_with": [
-        "OvlFunc_952_2008524"
-      ],
-      "fuzzy_match_percent": 65.36,
-      "name": "OvlFunc_952_2008524",
-      "object_sha256": "0f3235d20eed8119aa450206d49df6212fcb80dbf7ccce6c4e4aa91178375815",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
-      "source": "src/maps/babis_palace.c",
-      "target_size": 64
-    },
-    "overlay:rom_7d768c:02008564": {
-      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_2008564.c",
-      "candidate_size": 72,
-      "evaluated_with": [
-        "OvlFunc_952_2008564"
-      ],
-      "fuzzy_match_percent": 65.36,
-      "name": "OvlFunc_952_2008564",
-      "object_sha256": "6b913775621289b5744eca3fb5cc77249194bf581fe6ef6fbe3bcf4647b4a14a",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
-      "source": "src/maps/babis_palace.c",
-      "target_size": 64
-    },
-    "overlay:rom_7d768c:0200bfc4": {
-      "candidate": "src/non_matching/maps/babis_palace/OvlFunc_952_200bfc4.c",
-      "candidate_size": 80,
-      "evaluated_with": [
-        "OvlFunc_952_200bfc4"
-      ],
-      "fuzzy_match_percent": 69.42857,
-      "name": "OvlFunc_952_200bfc4",
-      "object_sha256": "9d867582b39a1c01db4abead6da4cca5a81ab1061950bf63545e2c84d21ac283",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
-      "source": "src/maps/babis_palace.c",
-      "target_size": 72
-    },
-    "overlay:rom_7d95dc:02009a14": {
-      "candidate": "src/non_matching/maps/colosseum/Colosseum_MapInit.c",
-      "candidate_size": 44,
-      "evaluated_with": [
-        "Colosseum_MapInit"
-      ],
-      "fuzzy_match_percent": 80.391304,
-      "name": "Colosseum_MapInit",
-      "object_sha256": "eca244af9fdc6a3b1f2f457dc9937f2f59e7d0901bf9a75ca76eb8ad0316597a",
-      "reference_sha256": "6689e6fff1a8fe79e945ee6f2c02ccce9d443a0bbc85e2c6087f15ea0c9bb959",
-      "source": "src/maps/colosseum.c",
-      "target_size": 56
-    },
     "overlay:rom_7d95dc:0200a3e0": {
       "candidate": "src/non_matching/maps/colosseum/OvlFunc_953_200a3e0.c",
       "candidate_size": 256,
@@ -1517,23 +1192,10 @@
       ],
       "fuzzy_match_percent": 62.410526,
       "name": "OvlFunc_953_200a3e0",
-      "object_sha256": "8d86872b1a3fa00b9a913e4728c8d8a9628b8f1dd5ecb24412acb259e00b66c7",
-      "reference_sha256": "6689e6fff1a8fe79e945ee6f2c02ccce9d443a0bbc85e2c6087f15ea0c9bb959",
+      "object_sha256": "44e15fa68acdea33680c77c4406fbd7550d6370889394342aeefc1c90faa7910",
+      "reference_sha256": "5deead0f22fe9a80d081d8c4ed6eacafd246657e8e13d417789be5ebac3507fe",
       "source": "src/maps/colosseum.c",
       "target_size": 248
-    },
-    "overlay:rom_7db0c8:02008178": {
-      "candidate": "src/non_matching/maps/colosseum_final_1/OvlFunc_954_2008178.c",
-      "candidate_size": 48,
-      "evaluated_with": [
-        "OvlFunc_954_2008178"
-      ],
-      "fuzzy_match_percent": 88.333336,
-      "name": "OvlFunc_954_2008178",
-      "object_sha256": "bc6fbd2008e495758426a2aefc82f85995d7646173fc5d14e1501c1d0dbcf927",
-      "reference_sha256": "80647ad3c81c6ed017b19544c52c1dad1e46b664c1d285e20671627ccdef25b8",
-      "source": "src/maps/colosseum_final_1.c",
-      "target_size": 48
     },
     "overlay:rom_7db0c8:02008a3c": {
       "candidate": "src/non_matching/maps/colosseum_final_1/ColosseumFinal1_MapInit.c",
@@ -1608,8 +1270,8 @@
       ],
       "fuzzy_match_percent": 70.53226,
       "name": "OvlFunc_957_2008b30",
-      "object_sha256": "ba569b65a73430712ee5d1570379de3082910700b459213cb93981b6cc70c481",
-      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
+      "object_sha256": "00dbb2964a68fc426671cc3e02d0ed9c5ea2dbd3917140f7b000ac420f0a2a1e",
+      "reference_sha256": "7cec0fbe73339f2bf48377e2d6ca6b45ee98fab55298489bca05a8156a61a8d1",
       "source": "src/maps/altmiller_cave.c",
       "target_size": 152
     },
@@ -1621,23 +1283,10 @@
       ],
       "fuzzy_match_percent": 60.18182,
       "name": "OvlFunc_957_2008ee0",
-      "object_sha256": "5858b19d4d8fd973bbffe26ea85c5060cd9ee934dda456fee0cc179d86446139",
-      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
+      "object_sha256": "802fcc3bbdec398156130ef32ec0d89eab58b2b7a1cf4efcb85383a6f3cbc0f3",
+      "reference_sha256": "7cec0fbe73339f2bf48377e2d6ca6b45ee98fab55298489bca05a8156a61a8d1",
       "source": "src/maps/altmiller_cave.c",
       "target_size": 48
-    },
-    "overlay:rom_7e3e08:0200b610": {
-      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_200b610.c",
-      "candidate_size": 48,
-      "evaluated_with": [
-        "OvlFunc_957_200b610"
-      ],
-      "fuzzy_match_percent": 90.96,
-      "name": "OvlFunc_957_200b610",
-      "object_sha256": "90330bcdf4b7f1f8b5d8c1ad07757e7b3d1d9dbbf31860683e47ad4fe20afd2c",
-      "reference_sha256": "88713897041f91afce9e00fee5184e24c4e364eff82acb3566e8d3d9cc84259b",
-      "source": "src/maps/altmiller_cave.c",
-      "target_size": 52
     },
     "overlay:rom_7e636c:02008ba4": {
       "candidate": "src/non_matching/maps/gondowan/OvlFunc_958_2008ba4.c",
@@ -1673,8 +1322,8 @@
       ],
       "fuzzy_match_percent": 97.36842,
       "name": "OvlFunc_959_2008b4c",
-      "object_sha256": "8a7279eff7ac7f2e9104dd4a9f1d659ef64e7d5e03f333932ce3694fa61e7740",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "3e3b1f93f28089570a2cdcc819d45b688204589fe43f14788a3e5ae5e9b69d76",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 84
     },
@@ -1686,23 +1335,10 @@
       ],
       "fuzzy_match_percent": 100.0,
       "name": "OvlFunc_959_2008f30",
-      "object_sha256": "2a998cc56164a7eaa79b3c3e73511ddb9233066910390cbf02ae3cf5f75d538c",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "9153abb45ca4bad99977455c9c91a12c59b54b9431e763d914f505cfe30bb0bf",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 100
-    },
-    "overlay:rom_7e7574:0200a2d4": {
-      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a2d4.c",
-      "candidate_size": 50,
-      "evaluated_with": [
-        "OvlFunc_959_200a2d4"
-      ],
-      "fuzzy_match_percent": 95.833336,
-      "name": "OvlFunc_959_200a2d4",
-      "object_sha256": "bbbf8106bb846da60af90093719a8e3630921dbf020878ce30dba26bca54d91f",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
-      "source": "src/maps/lunpa_fortress.c",
-      "target_size": 52
     },
     "overlay:rom_7e7574:0200a410": {
       "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a410.c",
@@ -1712,8 +1348,8 @@
       ],
       "fuzzy_match_percent": 100.0,
       "name": "OvlFunc_959_200a410",
-      "object_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 88
     },
@@ -1725,8 +1361,8 @@
       ],
       "fuzzy_match_percent": 100.0,
       "name": "OvlFunc_959_200a468",
-      "object_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 88
     },
@@ -1738,8 +1374,8 @@
       ],
       "fuzzy_match_percent": 92.789116,
       "name": "OvlFunc_959_200c794",
-      "object_sha256": "4056a082d247d1d0432b099dca7da678e1c9eae14318362efbb1afcde2b25737",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "2dac71ab1919be659712ad10dccbfdd244b28e1a0bab5879736e6382fddb30fd",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 404
     },
@@ -1751,8 +1387,8 @@
       ],
       "fuzzy_match_percent": 90.11215,
       "name": "OvlFunc_959_200d0e4",
-      "object_sha256": "e177230322856fde9042b907ced419f9a28a1a7aea48230df4de5921857210e0",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "88e8a02acc99d586b0712d2927e60dc7abdaf62b685d7ad48db538f3f32db5bf",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 576
     },
@@ -1764,8 +1400,8 @@
       ],
       "fuzzy_match_percent": 93.674416,
       "name": "OvlFunc_959_200d324",
-      "object_sha256": "1319edfcef2850067b4c8e6ff46a7f299bd0caaca10c51929a8ecfb61e14d61e",
-      "reference_sha256": "a4f74ab86739ce54a0263a338fc4e56e5c604775b11b09d6f376d50b0f950020",
+      "object_sha256": "ae0aba43890e9b8e114bf9d827d7c526639651e3292210dc22c763bb855a949d",
+      "reference_sha256": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 332
     },
@@ -1834,19 +1470,6 @@
       "source": "src/maps/suhalla_rooms.c",
       "target_size": 188
     },
-    "overlay:rom_7ed0a0:020089dc": {
-      "candidate": "src/non_matching/maps/tunnel_ruins/OvlFunc_964_20089dc.c",
-      "candidate_size": 20,
-      "evaluated_with": [
-        "OvlFunc_964_20089dc"
-      ],
-      "fuzzy_match_percent": 60.333332,
-      "name": "OvlFunc_964_20089dc",
-      "object_sha256": "63875a788ad1d21fbdde0c9ad1aa15fa999ed00cc7668622e13024c675a86c9c",
-      "reference_sha256": "ff75fc2788aafbed59733a6593e357aaf27779b5a285f69c9b8e90cbd31c619f",
-      "source": "src/maps/tunnel_ruins.c",
-      "target_size": 24
-    },
     "overlay:rom_7ed0a0:02009038": {
       "candidate": "src/non_matching/maps/tunnel_ruins/OvlFunc_964_2009038.c",
       "candidate_size": 46,
@@ -1855,36 +1478,10 @@
       ],
       "fuzzy_match_percent": 82.73913,
       "name": "OvlFunc_964_2009038",
-      "object_sha256": "798b928fdc548eb1f134ec57fac5476f36551c77073c42611e6adb702982d10c",
-      "reference_sha256": "ff75fc2788aafbed59733a6593e357aaf27779b5a285f69c9b8e90cbd31c619f",
+      "object_sha256": "fd24cc634f6d6fe9e1fe2487a5a815cc993ed620361ebcbd8b37de7e25f73881",
+      "reference_sha256": "19e8e589414198af9afe9eca2750c6d704f3dfed9cc5eb78df559962f8e0c9e8",
       "source": "src/maps/tunnel_ruins.c",
       "target_size": 48
-    },
-    "overlay:rom_7ef4f4:020089dc": {
-      "candidate": "src/non_matching/maps/babi_lighthouse/OvlFunc_965_20089dc.c",
-      "candidate_size": 22,
-      "evaluated_with": [
-        "OvlFunc_965_20089dc"
-      ],
-      "fuzzy_match_percent": 53.333332,
-      "name": "OvlFunc_965_20089dc",
-      "object_sha256": "75585ddde2ef76315ccf4bfa603e31e9814911c5891fe64ecf484cadec195ff5",
-      "reference_sha256": "c95648a596a92f1c6cf4b4ae575288112fb0b1b4c1f6939f933934f83dfe83f9",
-      "source": "src/maps/babi_lighthouse.c",
-      "target_size": 24
-    },
-    "overlay:rom_7ef4f4:02009158": {
-      "candidate": "src/non_matching/maps/babi_lighthouse/OvlFunc_965_2009158.c",
-      "candidate_size": 38,
-      "evaluated_with": [
-        "OvlFunc_965_2009158"
-      ],
-      "fuzzy_match_percent": 70.0,
-      "name": "OvlFunc_965_2009158",
-      "object_sha256": "ba4f63e042937411e9d7ae62232e5973d460443e67fffabda59503d90aab3af5",
-      "reference_sha256": "c95648a596a92f1c6cf4b4ae575288112fb0b1b4c1f6939f933934f83dfe83f9",
-      "source": "src/maps/babi_lighthouse.c",
-      "target_size": 44
     },
     "overlay:rom_7f148c:02008218": {
       "candidate": "src/non_matching/maps/lalivero/OvlFunc_966_2008218.c",
@@ -1920,8 +1517,8 @@
       ],
       "fuzzy_match_percent": 64.413795,
       "name": "OvlFunc_968_2008058",
-      "object_sha256": "ab99ea81799778d13456405bfda8bddada2397a73e96dc43d9b74e2d3bb305a8",
-      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "object_sha256": "75420f7c2612e9afb958a1297e6e6f5a3ffcda268bf0af86002aaf9854ff4269",
+      "reference_sha256": "2102840a47e6ae2a5ddf4d249ca302b11ea1fff89fe42e8f4c2b2801e1de5ca8",
       "source": "src/maps/venus_lighthouse.c",
       "target_size": 64
     },
@@ -1933,8 +1530,8 @@
       ],
       "fuzzy_match_percent": 82.911766,
       "name": "OvlFunc_968_2008098",
-      "object_sha256": "e25fd1b29da6f9c8be03a843eabf12ed487ee897b83b44dba283ebcec8633f46",
-      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "object_sha256": "7d85571da789131ed1f11afb604221721f51b58cd43ce3b03108e6f0a50cc5f9",
+      "reference_sha256": "2102840a47e6ae2a5ddf4d249ca302b11ea1fff89fe42e8f4c2b2801e1de5ca8",
       "source": "src/maps/venus_lighthouse.c",
       "target_size": 72
     },
@@ -1946,8 +1543,8 @@
       ],
       "fuzzy_match_percent": 85.542854,
       "name": "OvlFunc_968_200832c",
-      "object_sha256": "054a956a074077bbc4dbf64026fbe5c26450ceb2a5630df089a53b1b80720c0c",
-      "reference_sha256": "83c38d439e72b49cadaa83754495a606b95fd33cd581188acfcfa73dafd17bdf",
+      "object_sha256": "033ec8c0894b99fcca67bae86afc3715b3f6afc233c8e1224f604c4d51efa380",
+      "reference_sha256": "2102840a47e6ae2a5ddf4d249ca302b11ea1fff89fe42e8f4c2b2801e1de5ca8",
       "source": "src/maps/venus_lighthouse.c",
       "target_size": 72
     },
@@ -1959,8 +1556,8 @@
       ],
       "fuzzy_match_percent": 59.45652,
       "name": "OvlFunc_969_20083a0",
-      "object_sha256": "d44c25f212b1280cfd38fb6caa45950c961d37d920da9c353b40c7be9368cf84",
-      "reference_sha256": "718a88b82a96ae3d16e15c9ef2f2414e94306667ab4c6167644d7d5f8c439773",
+      "object_sha256": "56b750344d0ef440aac6577cfcf0d1b9ae7ae16a33f418f2fb667cdbcd25cc9a",
+      "reference_sha256": "3ea65e3ad2bded5a951128e9ae53e5e60446524b087653359702a31d455ee5c4",
       "source": "src/maps/venus_lighthouse_aerie.c",
       "target_size": 96
     },
@@ -2028,19 +1625,6 @@
       "reference_sha256": "047c0fb5a8bd46063e7f3574a34c7cd79c0a0b3b70c192ff7e73d565f2e7d478",
       "source": "src/maps/menu_test.c",
       "target_size": 168
-    },
-    "rom:0800bc48": {
-      "candidate": "src/non_matching/sprite/sprite/DeleteSpriteLayer.c",
-      "candidate_size": 48,
-      "evaluated_with": [
-        "DeleteSpriteLayer"
-      ],
-      "fuzzy_match_percent": 63.0,
-      "name": "DeleteSpriteLayer",
-      "object_sha256": "85cbedaba8ff4edb2046f33c929f3a44f11501b00fc552513aeb30c701625d03",
-      "reference_sha256": "57ae4163c820522d2bbf6af9eca53a4bedbda451d300763c493fe5bfd32c6b27",
-      "source": "src/sprite/sprite.c",
-      "target_size": 40
     },
     "rom:0800c0cc": {
       "candidate": "src/non_matching/actor/actor/NewActor.c",
@@ -2453,23 +2037,10 @@
       ],
       "fuzzy_match_percent": 64.04762,
       "name": "Func_801b36c",
-      "object_sha256": "ef0bb1532740eb7e80bfac62a81f93e747f367021ad006930d35c20922af4964",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "object_sha256": "e62403c726b717dfeb752a46c920eea28a1ff0bc97e9f4c06627b4d5c4aa1cfb",
+      "reference_sha256": "547dcaa1d75169e0c786443d44cf3d811d30ecdd8fad8dc8179b3bb318fe6403",
       "source": "src/ui/menu.c",
       "target_size": 44
-    },
-    "rom:0801c154": {
-      "candidate": "src/non_matching/ui/menu/Func_801c154.c",
-      "candidate_size": 40,
-      "evaluated_with": [
-        "Func_801c154"
-      ],
-      "fuzzy_match_percent": 57.0,
-      "name": "Func_801c154",
-      "object_sha256": "d86f40180ac0a381669647eea2ba6aa7f4bd602d9fe14c12f13de438cba75df8",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
-      "source": "src/ui/menu.c",
-      "target_size": 40
     },
     "rom:0801c46c": {
       "candidate": "src/non_matching/ui/menu/Func_801c46c.c",
@@ -2479,8 +2050,8 @@
       ],
       "fuzzy_match_percent": 71.09091,
       "name": "Func_801c46c",
-      "object_sha256": "3152c3158257ef9149cdb162cf229d97a86cb07f303192a36855121a3d1b8c78",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "object_sha256": "7d9fde2d50350048204e9b9a177691b63b99205a07d8f9ed58d71d60e56c0725",
+      "reference_sha256": "547dcaa1d75169e0c786443d44cf3d811d30ecdd8fad8dc8179b3bb318fe6403",
       "source": "src/ui/menu.c",
       "target_size": 48
     },
@@ -2492,36 +2063,10 @@
       ],
       "fuzzy_match_percent": 87.12195,
       "name": "Func_801c9c8",
-      "object_sha256": "a803439202eab951851c094d5f30b8dbeaf122a8dbf21fd2cd0735d05d500143",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
+      "object_sha256": "31e5f39da9b7fa2e6eda0ab3059e1a320c55dac5d5c5202c475a68c5a046f9c8",
+      "reference_sha256": "547dcaa1d75169e0c786443d44cf3d811d30ecdd8fad8dc8179b3bb318fe6403",
       "source": "src/ui/menu.c",
       "target_size": 84
-    },
-    "rom:0801ce48": {
-      "candidate": "src/non_matching/ui/menu/Func_801ce48.c",
-      "candidate_size": 36,
-      "evaluated_with": [
-        "Func_801ce48"
-      ],
-      "fuzzy_match_percent": 68.375,
-      "name": "Func_801ce48",
-      "object_sha256": "0246fffc2db63c32ec4e41643403a360858bf135f8e72c25ed2364a2aebb2f27",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
-      "source": "src/ui/menu.c",
-      "target_size": 36
-    },
-    "rom:0801d94c": {
-      "candidate": "src/non_matching/ui/menu/Func_801d94c.c",
-      "candidate_size": 52,
-      "evaluated_with": [
-        "Func_801d94c"
-      ],
-      "fuzzy_match_percent": 89.7619,
-      "name": "Func_801d94c",
-      "object_sha256": "39abffd8740cfe38eccb181c08abe513e9301a0ea357fec1a0fe178fe9c08302",
-      "reference_sha256": "659730a3942cdc908d8028817bc032e26d971fd8cb4bccea2671a4e584a92aa5",
-      "source": "src/ui/menu.c",
-      "target_size": 52
     },
     "rom:0801ee68": {
       "candidate": "src/non_matching/ui/text/Func_801ee68.c",
@@ -2575,19 +2120,6 @@
       "source": "src/ui/save_menu.c",
       "target_size": 68
     },
-    "rom:08021360": {
-      "candidate": "src/non_matching/ui/save_menu/Func_8021360.c",
-      "candidate_size": 48,
-      "evaluated_with": [
-        "Func_8021360"
-      ],
-      "fuzzy_match_percent": 98.809525,
-      "name": "Func_8021360",
-      "object_sha256": "0118cdeb4b931fd77c30285fcc3994ee8673d7eb101d0b0dcc7951316fd35d65",
-      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
-      "source": "src/ui/save_menu.c",
-      "target_size": 48
-    },
     "rom:080216b4": {
       "candidate": "src/non_matching/ui/save_menu/Func_80216b4.c",
       "candidate_size": 52,
@@ -2614,19 +2146,6 @@
       "source": "src/ui/save_menu.c",
       "target_size": 84
     },
-    "rom:08021c34": {
-      "candidate": "src/non_matching/ui/save_menu/Func_8021c34.c",
-      "candidate_size": 48,
-      "evaluated_with": [
-        "Func_8021c34"
-      ],
-      "fuzzy_match_percent": 100.0,
-      "name": "Func_8021c34",
-      "object_sha256": "4473704dfc31376445071bf86b5186db634f38632aeb713399b8f79238443fb1",
-      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
-      "source": "src/ui/save_menu.c",
-      "target_size": 48
-    },
     "rom:080270ac": {
       "candidate": "src/non_matching/ui/save_menu/Func_80270ac.c",
       "candidate_size": 32,
@@ -2639,19 +2158,6 @@
       "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
       "source": "src/ui/save_menu.c",
       "target_size": 44
-    },
-    "rom:080284dc": {
-      "candidate": "src/non_matching/ui/save_menu/Func_80284dc.c",
-      "candidate_size": 64,
-      "evaluated_with": [
-        "Func_80284dc"
-      ],
-      "fuzzy_match_percent": 75.11539,
-      "name": "Func_80284dc",
-      "object_sha256": "1b5699b1881b0639143b2ccc40e1b13d2abcf6e60b2fa8138981a12f01a58ddf",
-      "reference_sha256": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
-      "source": "src/ui/save_menu.c",
-      "target_size": 64
     },
     "rom:08077394": {
       "candidate": "src/non_matching/rpg/get_unit/GetUnit.c",
@@ -2674,23 +2180,10 @@
       ],
       "fuzzy_match_percent": 68.86957,
       "name": "Func_8078aa0",
-      "object_sha256": "217858cf5df9cdb612c861872afc6205b72d7766e1e32882aa0705048727cb04",
-      "reference_sha256": "52b33b9b6a027ea5728b8464ac6d9026e139f1eacfbaba1d1f3dd618f950a43d",
+      "object_sha256": "74ec8fb7b94767eaa0a72f5a5997890ecc33fd9d59fd0ce9ac51a4781550a483",
+      "reference_sha256": "b47960c17e6cd5f71fbb75c37b72e45626d530c834951e7d54b219ce1b92d9b3",
       "source": "src/rpg/item.c",
       "target_size": 48
-    },
-    "rom:08078ad0": {
-      "candidate": "src/non_matching/rpg/item/Func_8078ad0.c",
-      "candidate_size": 40,
-      "evaluated_with": [
-        "Func_8078ad0"
-      ],
-      "fuzzy_match_percent": 99.117645,
-      "name": "Func_8078ad0",
-      "object_sha256": "9faa6dc416b29297ff002ccb307cb36a43817847e2af91c9d0d51faea323a4b5",
-      "reference_sha256": "52b33b9b6a027ea5728b8464ac6d9026e139f1eacfbaba1d1f3dd618f950a43d",
-      "source": "src/rpg/item.c",
-      "target_size": 40
     },
     "rom:08078bc0": {
       "candidate": "src/non_matching/rpg/move/HasMove.c",
@@ -2705,19 +2198,6 @@
       "source": "src/rpg/move.c",
       "target_size": 48
     },
-    "rom:0807a2bc": {
-      "candidate": "src/non_matching/rpg/djinni/Func_807a2bc.c",
-      "candidate_size": 38,
-      "evaluated_with": [
-        "Func_807a2bc"
-      ],
-      "fuzzy_match_percent": 94.73684,
-      "name": "Func_807a2bc",
-      "object_sha256": "f0899b73ffd4bbae94cdfb8087c13791d240113cee56e2c8693badd32e1c1d11",
-      "reference_sha256": "1f30952b4c7053de5654b8730ff2525d1ececf04e6fef4e52b09a75d82a3ff95",
-      "source": "src/rpg/djinni.c",
-      "target_size": 40
-    },
     "rom:0807a458": {
       "candidate": "src/non_matching/rpg/djinni/Func_807a458.c",
       "candidate_size": 58,
@@ -2726,8 +2206,8 @@
       ],
       "fuzzy_match_percent": 73.63333,
       "name": "Func_807a458",
-      "object_sha256": "8734f351b5a2e13932284ce77678b4e6fbfad8ad50c060b2655a43eb615bc960",
-      "reference_sha256": "1f30952b4c7053de5654b8730ff2525d1ececf04e6fef4e52b09a75d82a3ff95",
+      "object_sha256": "4f3b7fdd5390d553cf6ba09d953bb0ab140234c21c7bfebfe6eac17331092e04",
+      "reference_sha256": "f0899b73ffd4bbae94cdfb8087c13791d240113cee56e2c8693badd32e1c1d11",
       "source": "src/rpg/djinni.c",
       "target_size": 64
     },
@@ -2752,8 +2232,8 @@
       ],
       "fuzzy_match_percent": 83.69768,
       "name": "Func_808bc44",
-      "object_sha256": "e08e38b6bfd610bdda2fe5200add0211775a4aa3180a755ff2d6c169fcfc2a70",
-      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "object_sha256": "03796cbf86028b93cc6752f7ee7334dbd20c01052d603a899ccb90c703f2797f",
+      "reference_sha256": "e391be4b874bf8e87db486dff40344d3b4c665fad108c0a268e66a2ba7e40edc",
       "source": "src/field/map_actor.c",
       "target_size": 88
     },
@@ -2765,8 +2245,8 @@
       ],
       "fuzzy_match_percent": 60.904762,
       "name": "Func_808c2dc",
-      "object_sha256": "d3b95528a381173237f88cbf7e0d876076471784d805cb5e8f7e0bd79e76fc7f",
-      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "object_sha256": "1697a1fc8aed9cb690e17f167a288f854f97ccd1d8b3bc054a957b4e98886913",
+      "reference_sha256": "e391be4b874bf8e87db486dff40344d3b4c665fad108c0a268e66a2ba7e40edc",
       "source": "src/field/map_actor.c",
       "target_size": 48
     },
@@ -2778,8 +2258,8 @@
       ],
       "fuzzy_match_percent": 83.32,
       "name": "GetFieldMoveRange",
-      "object_sha256": "1fdc448f394018c673e746a10e3401f720a6a9c5ce645794ba67b319f0c594e5",
-      "reference_sha256": "1dcf597ca8c8dbc6fe2274c54e8af97c699b21731f9cf095404ea139031fc96c",
+      "object_sha256": "46029695a1998c6f610779f70372ef2c563c6c3a6df55a5bc302577a48bd0714",
+      "reference_sha256": "ef53b3100eec0089d7dbef758f9701c409164f949b69c5aa71d26eefd3f1dffe",
       "source": "src/field/map.c",
       "target_size": 52
     },
@@ -2791,8 +2271,8 @@
       ],
       "fuzzy_match_percent": 79.82758,
       "name": "Func_8091254",
-      "object_sha256": "33ba85226430cadd5e8be1b3da53ce85bb626189745b61b71f67fb4335d5b487",
-      "reference_sha256": "1dcf597ca8c8dbc6fe2274c54e8af97c699b21731f9cf095404ea139031fc96c",
+      "object_sha256": "191b109458e6ed285b1280cf01797f4a82325eade6a5bed727e208ca0db57885",
+      "reference_sha256": "ef53b3100eec0089d7dbef758f9701c409164f949b69c5aa71d26eefd3f1dffe",
       "source": "src/field/map.c",
       "target_size": 64
     },
@@ -2804,23 +2284,10 @@
       ],
       "fuzzy_match_percent": 82.51351,
       "name": "Task_Cutscene",
-      "object_sha256": "dd32ac394efd6415242007c47a3fb020ee6ef9ed5308953894fe123521854d26",
-      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
+      "object_sha256": "cf1611d21209aea46d56ce8dbd67ebe24f2e030bdcf7ad6bcf5f886a0e87e232",
+      "reference_sha256": "ff89ab2543751eafcfe72ac441b7396eafa71934bf44f62bc26fa1f6d4c42d91",
       "source": "src/field/cutscene.c",
       "target_size": 80
-    },
-    "rom:08091c1c": {
-      "candidate": "src/non_matching/field/cutscene/Func_8091c1c.c",
-      "candidate_size": 30,
-      "evaluated_with": [
-        "Func_8091c1c"
-      ],
-      "fuzzy_match_percent": 65.666664,
-      "name": "Func_8091c1c",
-      "object_sha256": "dddfd95070cf85ade5e4b003338a6d88bf72ab1221c7df0819ae151713f056cf",
-      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
-      "source": "src/field/cutscene.c",
-      "target_size": 32
     },
     "rom:08091ff0": {
       "candidate": "src/non_matching/field/cutscene/Func_8091ff0.c",
@@ -2830,8 +2297,8 @@
       ],
       "fuzzy_match_percent": 80.16,
       "name": "Func_8091ff0",
-      "object_sha256": "9cb1b149ebbf3309c133e53902bcc785d5d0e78edc3c93f6c7463709681b6acb",
-      "reference_sha256": "1c7651118234320495edf682caa023c184d5d3e7f6a0ab4b16f472c4d5e19c7b",
+      "object_sha256": "0a85f74bfb1424df586ccdbc29d3247f7d5080eac93aad92e29084666f95723f",
+      "reference_sha256": "ff89ab2543751eafcfe72ac441b7396eafa71934bf44f62bc26fa1f6d4c42d91",
       "source": "src/field/cutscene.c",
       "target_size": 60
     },
@@ -2843,23 +2310,10 @@
       ],
       "fuzzy_match_percent": 88.520836,
       "name": "Func_80936a0",
-      "object_sha256": "718820c25bff7b3e6da271e9676e6ebe19ab439ef775ccee7593c371f0ce32e5",
-      "reference_sha256": "dbd947374fc01942a6bd2f20a0697ab5a0b9f867c295768d2030f671b46873cb",
+      "object_sha256": "ac68aaaceac24678952282e9993eef1b5b97ca4be1aa9542045d69a12f7f7b2f",
+      "reference_sha256": "e391be4b874bf8e87db486dff40344d3b4c665fad108c0a268e66a2ba7e40edc",
       "source": "src/field/map_actor.c",
       "target_size": 112
-    },
-    "rom:080958a8": {
-      "candidate": "src/non_matching/field/weather/Func_80958a8.c",
-      "candidate_size": 60,
-      "evaluated_with": [
-        "Func_80958a8"
-      ],
-      "fuzzy_match_percent": 83.32,
-      "name": "Func_80958a8",
-      "object_sha256": "28ee199cb63f68362f1955036f81996691afc3723097dcefdb3e550f93c42a5c",
-      "reference_sha256": "570b9e4ab1f0c6777c73eccd2894e96253af410ba675c5f59b1db03c0e2cea2a",
-      "source": "src/field/weather.c",
-      "target_size": 60
     },
     "rom:08096ab0": {
       "candidate": "src/non_matching/field/field_move/Func_8096ab0.c",
@@ -2934,8 +2388,8 @@
       ],
       "fuzzy_match_percent": 87.93194,
       "name": "Field_Halt",
-      "object_sha256": "399f1e5fe1a5f41ea910fb910e15e1b87d00811f9a38fe4c0887b253d61c43c3",
-      "reference_sha256": "bf37df7ad90d1820711a056bf0d11cf5ec3832ae3b39ec681600a365f34d1dc6",
+      "object_sha256": "df0be205d231d7062fb407ee9eab82f16215cd498bb302079b5e82ccf483f4d4",
+      "reference_sha256": "9b529c02346814fa75323a7fe5e04097daf8bbe755aa7a6954664e1817e8bddd",
       "source": "src/field/moves/halt.c",
       "target_size": 444
     },
@@ -2965,29 +2419,16 @@
       "source": "src/field/moves/avoid.c",
       "target_size": 120
     },
-    "rom:0809bb34": {
-      "candidate": "src/non_matching/field/field_effect/Func_809bb34.c",
-      "candidate_size": 56,
-      "evaluated_with": [
-        "Func_809bb34"
-      ],
-      "fuzzy_match_percent": 57.857143,
-      "name": "Func_809bb34",
-      "object_sha256": "83fca6287292dab113a6016be4651ff0c5b58ffc30fdf957755541914bedbf43",
-      "reference_sha256": "df61887c23819dcb4e702bc3ca2f1612d59b1558be95ed8c7fc3ca2066f5ac47",
-      "source": "src/field/field_effect.c",
-      "target_size": 48
-    },
     "rom:080a22f4": {
       "candidate": "src/non_matching/ui/party_menu/Func_80a22f4.c",
-      "candidate_size": 52,
+      "candidate_size": 40,
       "evaluated_with": [
         "Func_80a22f4"
       ],
-      "fuzzy_match_percent": 57.666668,
+      "fuzzy_match_percent": 74.44444,
       "name": "Func_80a22f4",
-      "object_sha256": "3171ca7b3d5398116156bba32f475abf824d6b842189f1b2c5e8fddeee215fe7",
-      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "object_sha256": "988a753a4a414d21836117674c744f05950498548a06ee2f1930f14d614ca04c",
+      "reference_sha256": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
       "source": "src/ui/party_menu.c",
       "target_size": 48
     },
@@ -2999,8 +2440,8 @@
       ],
       "fuzzy_match_percent": 50.761906,
       "name": "Func_80a65e4",
-      "object_sha256": "c6e51e6c2e02718d911540f6c2d2f27914336fe9cc807b28b2eb7ccc26f1c3c8",
-      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "object_sha256": "ebc04203867a7d6b0e40d5cd00e2771c6030a097982f1aef5e96805b4b232d56",
+      "reference_sha256": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
       "source": "src/ui/party_menu.c",
       "target_size": 48
     },
@@ -3012,8 +2453,8 @@
       ],
       "fuzzy_match_percent": 39.882355,
       "name": "Func_80a735c",
-      "object_sha256": "baaefa5e9297c4f7cd6dc5a5f958fc02db059c70cf6fc926376516143dc0f48f",
-      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "object_sha256": "31a4b8c69e7ee05d415d5cadf5ac4cee1698353d7355a571655ec9cde7ba8226",
+      "reference_sha256": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
       "source": "src/ui/party_menu.c",
       "target_size": 36
     },
@@ -3025,8 +2466,8 @@
       ],
       "fuzzy_match_percent": 89.47369,
       "name": "Func_80ab1f4",
-      "object_sha256": "a851e2e7d4332041e862d1af0f3921dd1a738b5eddc95b795490191b4538c695",
-      "reference_sha256": "665e0c4aec82f217d9da8472eb55a67d7ea31b07e0866086aaac84d8a096792e",
+      "object_sha256": "1e0c1854e76d4c7631a49f301ce22a9b600daebdbbca0476a30ecf2c05512001",
+      "reference_sha256": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
       "source": "src/ui/party_menu.c",
       "target_size": 40
     },
@@ -3225,58 +2666,6 @@
       "source": "src/battle_anim/cast.c",
       "target_size": 56
     },
-    "rom:080c23a0": {
-      "candidate": "src/non_matching/battle/enemy/Func_80c23a0.c",
-      "candidate_size": 32,
-      "evaluated_with": [
-        "Func_80c23a0"
-      ],
-      "fuzzy_match_percent": 99.666664,
-      "name": "Func_80c23a0",
-      "object_sha256": "ce63659eb846fd1cb0918f98d191b201e8c423221e93ee755763dadfc1d4ac14",
-      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
-      "source": "src/battle/enemy.c",
-      "target_size": 32
-    },
-    "rom:080c23c0": {
-      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnimUnk.c",
-      "candidate_size": 36,
-      "evaluated_with": [
-        "GetEnemyAttackAnimUnk"
-      ],
-      "fuzzy_match_percent": 74.63158,
-      "name": "GetEnemyAttackAnimUnk",
-      "object_sha256": "6ad7d39dc08de0dd69b562f862530c9225899ce9d2272417c9d7e08794849d92",
-      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
-      "source": "src/battle/enemy.c",
-      "target_size": 40
-    },
-    "rom:080c23e8": {
-      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnim.c",
-      "candidate_size": 32,
-      "evaluated_with": [
-        "GetEnemyAttackAnim"
-      ],
-      "fuzzy_match_percent": 70.947365,
-      "name": "GetEnemyAttackAnim",
-      "object_sha256": "6e7206df90ab21397a10de6e3fa85f1278889112b4d8539e22e3525094748e17",
-      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
-      "source": "src/battle/enemy.c",
-      "target_size": 40
-    },
-    "rom:080c2410": {
-      "candidate": "src/non_matching/battle/enemy/GetEnemyAttackAnimParam.c",
-      "candidate_size": 32,
-      "evaluated_with": [
-        "GetEnemyAttackAnimParam"
-      ],
-      "fuzzy_match_percent": 71.47059,
-      "name": "GetEnemyAttackAnimParam",
-      "object_sha256": "4c86afa3ec694ac50ed5bc8cfb5ae0386677659cf24624716320eacac0ac7cd2",
-      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
-      "source": "src/battle/enemy.c",
-      "target_size": 36
-    },
     "rom:080c24b0": {
       "candidate": "src/non_matching/battle/enemy/Func_80c24b0.c",
       "candidate_size": 66,
@@ -3285,8 +2674,8 @@
       ],
       "fuzzy_match_percent": 33.482758,
       "name": "Func_80c24b0",
-      "object_sha256": "ab4706442b8f7b50feb9d581bb081e22c89fe7d9c8e4e7266f92c754df8dfa33",
-      "reference_sha256": "9c001eaa67c96c02a8c7746a6dd31e6a184948a2732a2598dd4817f2a1f0a9ec",
+      "object_sha256": "10885307585381b5e3d7f13a12d99af82889a4c351a7b223345d76820617e17e",
+      "reference_sha256": "39c87e5b24b869d302dfedae7c57e321476f2336d03c030a4ff8190aad218933",
       "source": "src/battle/enemy.c",
       "target_size": 64
     },
@@ -3367,19 +2756,6 @@
       "reference_sha256": "78373a461a1b8937901ae069575507165094284bab545b45578fee9abc447376",
       "source": "src/battle_anim/moves/death_plunge.c",
       "target_size": 840
-    },
-    "rom:080ccbdc": {
-      "candidate": "src/non_matching/battle_anim/unleash_intro/EndAnim_UnleashIntro.c",
-      "candidate_size": 60,
-      "evaluated_with": [
-        "EndAnim_UnleashIntro"
-      ],
-      "fuzzy_match_percent": 86.17391,
-      "name": "EndAnim_UnleashIntro",
-      "object_sha256": "43fe818aae55e0db2f2b7c53dc429a2446f2b8ce71516605e61dd03bf62352f9",
-      "reference_sha256": "9c9027e5ecccbb0e18f5cf671d716da20fa1d9cdebfe97fbc6a55380cb19da8e",
-      "source": "src/battle_anim/unleash_intro.c",
-      "target_size": 68
     },
     "rom:080ccebc": {
       "candidate": "src/non_matching/battle_anim/moves/spider_web/Anim_SpiderWeb.c",
@@ -4241,7 +3617,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "c6531b20a6378a0d9c9b185968b33d4a699cb72ae766f5538026974d8426b077",
+  "progress_sha256": "4df70f5c92f49502d4ac4c036f65525034f1fecf3c78cb2bd3c589bd826c5e64",
   "schema": 1,
   "scorer": {
     "config": [

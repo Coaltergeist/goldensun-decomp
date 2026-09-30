@@ -574,15 +574,26 @@ void OvlFunc_926_200c128(void)
 }
 
 INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c140.s");
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c1c4.s");
+
+extern unsigned int iwram_3001e40;
+extern void __Func_80929d8(struct Actor *actor, int val);
+
+void OvlFunc_926_200c1c4(struct Actor *actor) {
+    unsigned int v = (iwram_3001e40 >> 1) & 1;
+
+    if (v) {
+        __Func_80929d8(actor, 0xa);
+    } else {
+        __Func_80929d8(actor, 9);
+    }
+}
+
 INCLUDE_ASM("asm/maps/fuchin_temple/fuchin_temple_data.s");
 void __Func_8091220(int, int);
 void __Func_8091200(int, int);
 void __Func_8091254(int);
 unsigned int __Random(void);
 void __Func_8092950(int, int);
-
-extern void OvlFunc_926_200c1c4(void);
 
 void OvlFunc_926_200c1ec(void)
 {

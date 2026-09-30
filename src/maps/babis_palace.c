@@ -180,8 +180,36 @@ void OvlFunc_952_20083b0(unsigned int actor)
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200849c.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008524.s");
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008564.s");
+extern unsigned char Lconst_22a8[] __asm__(".Lconst_22a8");
+__asm__(".equ .Lconst_22a8, 0x22a8");
+
+void OvlFunc_952_2008524(unsigned int actor) {
+    int msg = (int)Lconst_22a8;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(actor, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+    } else {
+        API_MessageID(msg + 2);
+    }
+    API_ActorMessage(actor, 0);
+}
+extern unsigned char Lconst_22ab[] __asm__(".Lconst_22ab");
+__asm__(".equ .Lconst_22ab, 0x22ab");
+
+void OvlFunc_952_2008564(unsigned int actor) {
+    int msg = (int)Lconst_22ab;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(actor, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+    } else {
+        API_MessageID(msg + 2);
+    }
+    API_ActorMessage(actor, 0);
+}
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20085a4.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008674.s");
 INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008af8.s");
@@ -258,7 +286,22 @@ void OvlFunc_952_200bf84(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200bfc4.s");
+extern unsigned char Lconst_22a3[] __asm__(".Lconst_22a3");
+__asm__(".equ .Lconst_22a3, 0x22a3");
+
+void OvlFunc_952_200bfc4(int a) {
+    int msg = (int)Lconst_22a3;
+
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(a, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_MessageID(msg + 1);
+        API_ActorMessage(a, 0);
+    } else {
+        API_MessageID(msg + 2);
+        API_ActorMessage(a, 0);
+    }
+}
 
 extern void __Func_801776c();
 

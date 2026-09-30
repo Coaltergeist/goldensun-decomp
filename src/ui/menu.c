@@ -1,5 +1,6 @@
 /* ui/menu.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "dma.h"
 
 extern void Func_801b228();
 extern void Func_801a968();
@@ -105,7 +106,21 @@ void Func_801c0d4(void) {}
 void Func_801c0d8(void) {}
 
 INCLUDE_ASM("asm/ui/menu/Func_801c0dc.s");
-INCLUDE_ASM("asm/ui/menu/Func_801c154.s");
+
+extern void Func_8003dec(unsigned int *arg0, int index);
+struct MenuField {
+    char pad0[4];
+    unsigned char field4;
+    unsigned char pad5;
+    unsigned short id : 9;
+    unsigned short flags : 7;
+};
+
+void Func_801c154(struct MenuField *arg0, unsigned int arg1, unsigned char arg2) {
+    arg0->id = arg1;
+    arg0->field4 = arg2;
+    Func_8003dec((unsigned int *)arg0, 0xfc);
+}
 
 extern void Func_8003f3c();
 
@@ -114,7 +129,22 @@ void Func_801c17c(void) {
 }
 
 INCLUDE_ASM("asm/ui/menu/Func_801c188.s");
-INCLUDE_ASM("asm/ui/menu/Func_801c21c.s");
+
+extern unsigned char *iwram_3001e98__a3 __asm__("iwram_3001e98");
+void Func_801c21c(void) {
+    unsigned char *base;
+    unsigned char *p;
+
+    base = iwram_3001e98__a3;
+    p = base + (0xc3 << 2);
+    if (*(unsigned short *)(p + 0xa) != 0) {
+        int zero;
+        Func_8003f3c(*(unsigned short *)(p + 0xc));
+        zero = 0;
+        *(unsigned short *)(p + 0xa) = zero;
+    }
+}
+
 INCLUDE_ASM("asm/ui/menu/Func_801c244.s");
 
 extern void Func_801ef08(int);
@@ -267,7 +297,17 @@ INCLUDE_ASM("asm/ui/menu/Func_801cae0.s");
 INCLUDE_ASM("asm/ui/menu/Func_801cbd4.s");
 INCLUDE_ASM("asm/ui/menu/Func_801cc50.s");
 INCLUDE_ASM("asm/ui/menu/SetUIColor.s");
-INCLUDE_ASM("asm/ui/menu/Func_801ce48.s");
+
+void Func_801ce48(unsigned char *p) {
+    unsigned short *c = (unsigned short *)(p + 0x574);
+
+    if (*c == 0) {
+        int x = 2;
+        *c = x;
+    } else {
+        *c = *c - 1;
+    }
+}
 
 void Func_801ce6c(unsigned char *p)
 {
@@ -298,10 +338,31 @@ void Func_801d0f0(void) {
 
 INCLUDE_ASM("asm/ui/menu/Func_801d108.s");
 INCLUDE_ASM("asm/ui/menu/Menu_Settings.s");
-INCLUDE_ASM("asm/ui/menu/Func_801d94c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801d980.s");
 
-extern void Func_801d94c(void);
+extern void _Func_80b08b8(void *arg0);
+extern void Func_80217a4(void *arg0);
+extern unsigned char *iwram_3001ea0;
+
+void Func_801d94c(void) {
+    unsigned char *r5 = iwram_3001ea0;
+    unsigned int idx;
+    unsigned int off;
+    void *item;
+
+    _Func_80b08b8(r5 + 0x5a4);
+    idx = *(unsigned short *)(r5 + 0x574);
+    off = (idx << 2) + 0x610;
+    item = *(void **)(r5 + off);
+    Func_80217a4(item);
+}
+
+void Func_801d980(void) {
+    void *p;
+
+    p = galloc_ewram(0x14, 0xc5 << 3);
+    DMA3_CLEAR(p, 0xc5 << 3);
+    StartTask(Func_801d94c, 0xc8 << 4);
+}
 
 void Func_801d9bc(void) {
     StopTask(Func_801d94c);

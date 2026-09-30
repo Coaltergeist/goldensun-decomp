@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/lunpa_fortress.c",
   "functions": {
-    "OvlFunc_959_200a2d4": {
-      "id": "overlay:rom_7e7574:0200a2d4"
-    },
     "OvlFunc_959_200a410": {
       "id": "overlay:rom_7e7574:0200a410"
     },

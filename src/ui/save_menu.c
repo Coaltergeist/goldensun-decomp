@@ -90,7 +90,17 @@ INCLUDE_ASM("asm/ui/save_menu/Func_802106c.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8021228.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021360.s");
+extern int _GetFlag(int);
+extern short L37206[] __asm__(".L37206");
+extern short L37216[] __asm__(".L37216");
+
+int Func_8021360(unsigned int arg0) {
+    if (arg0 > 8)
+        return 0;
+    if (_GetFlag(0x20) == 0)
+        return L37206[arg0];
+    return L37216[arg0];
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8021390.s");
 
@@ -221,7 +231,17 @@ unsigned int Func_8021bc8(int idx) {
 
 INCLUDE_ASM("asm/ui/save_menu/DecompressIcon.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021c34.s");
+extern void *CreateUIBox(int a, int b, int c, int d, int e);
+extern void UIDrawText(char *text, void *box, int x, int y);
+extern unsigned char L37300[] __asm__(".L37300");
+
+void *Func_8021c34(void) {
+    void *box;
+
+    box = CreateUIBox(0, 0, 6, 4, 6);
+    UIDrawText((char *)L37300, box, 0, 0);
+    return box;
+}
 
 unsigned int Func_8021c64(unsigned int arg0, unsigned int index)
 {
@@ -346,7 +366,15 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8027114.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8028194.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80284dc.s");
+extern void Func_8028194(void);
+extern short StartTask(void *task, unsigned int priority);
+
+void *Func_80284dc(void) {
+    void *p = galloc_ewram(0x3a, 0x98);
+    DMA3_CLEAR(p, 0x98);
+    StartTask(Func_8028194, 0xc76);
+    return p;
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_802851c.s");
 

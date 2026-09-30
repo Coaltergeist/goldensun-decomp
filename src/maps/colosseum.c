@@ -352,7 +352,28 @@ void OvlFunc_953_20091c4(void) {
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009298.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200960c.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009688.s");
-INCLUDE_ASM("asm/maps/colosseum/Colosseum_MapInit.s");
+
+extern unsigned char Lconst_8c[] __asm__(".Lconst_8c");
+__asm__(".equ .Lconst_8c, 0x8c");
+extern unsigned char Lconst_8e[] __asm__(".Lconst_8e");
+__asm__(".equ .Lconst_8e, 0x8e");
+extern void OvlFunc_953_2009c6c(void);
+
+int Colosseum_MapInit(void) {
+    int offset;
+    short a;
+
+    offset = 0xe0;
+    offset <<= 1;
+    a = *(short *)((char *)&gState + offset);
+    if (a == (int)Lconst_8c) {
+        OvlFunc_953_2009a4c();
+    } else if (a == (int)Lconst_8e) {
+        OvlFunc_953_2009c6c();
+    }
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009a4c.s");
 
 void OvlFunc_953_2009c48(void) {

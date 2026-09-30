@@ -47,7 +47,19 @@ void OvlFunc_954_2008158(void)
     __StartTask(OvlFunc_954_200804c, 0xc8 << 4);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008178.s");
+void OvlFunc_954_2008178(void)
+{
+    int i = 0;
+
+    API_WaitFrames(0xa);
+    if (*(int *)L441c != 0x16) {
+        do {
+            API_WaitFrames(1);
+            i++;
+            if (i > 0x77) break;
+        } while (*(int *)L441c != 0x16);
+    }
+}
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20081a8.s");
 
 extern void OvlFunc_common1_2060(void);

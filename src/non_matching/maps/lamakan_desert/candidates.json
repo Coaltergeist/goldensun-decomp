@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/lamakan_desert.c",
   "functions": {
-    "OvlFunc_933_2008344": {
-      "id": "overlay:rom_7bc690:02008344"
-    },
     "OvlFunc_933_2008c38": {
       "id": "overlay:rom_7bc690:02008c38"
     },

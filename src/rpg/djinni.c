@@ -18,10 +18,22 @@ unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
 INCLUDE_ASM("asm/rpg/djinni/Func_807a0f4.s");
 INCLUDE_ASM("asm/rpg/djinni/GiveDjinni.s");
 INCLUDE_ASM("asm/rpg/djinni/Func_807a1f8.s");
-INCLUDE_ASM("asm/rpg/djinni/Func_807a2bc.s");
-INCLUDE_ASM("asm/rpg/djinni/SetDjinni.s");
 
-extern unsigned int Func_807a2bc(unsigned int, unsigned int, unsigned int);
+unsigned int Func_807a2bc(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
+    unsigned char *r5;
+    unsigned int off;
+    unsigned int mask;
+
+    r5 = (unsigned char *)GetUnit(arg0);
+    off = (arg1 << 2) + 0x108;
+    mask = *(unsigned int *)(r5 + off) & (1 << arg2);
+    if (mask) {
+        return 1;
+    }
+    return 0;
+}
+
+INCLUDE_ASM("asm/rpg/djinni/SetDjinni.s");
 
 unsigned int Func_807a350(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     unsigned char *r5;

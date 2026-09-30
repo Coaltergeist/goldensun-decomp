@@ -722,7 +722,30 @@ void OvlFunc_959_2009708(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009718.s");
+extern unsigned char *iwram_3001ebc__a4 __asm__("iwram_3001ebc");
+
+void OvlFunc_959_2009718(void)
+{
+    unsigned char *r5;
+    unsigned int r3;
+    unsigned int r2;
+
+    r5 = iwram_3001ebc__a4;
+    if (OvlFunc_959_20098e4(0xc) != 0) {
+        r3 = (unsigned int)&gState;
+        r2 = 0x93;
+        r2 <<= 2;
+        r3 += r2;
+        if (*(short *)r3 == 0) {
+            __StopTask(OvlFunc_959_2009718);
+            r3 = 0xc1;
+            r3 <<= 1;
+            r2 = (unsigned int)r5 + r3;
+            r3 = 0x5f;
+            *(unsigned short *)r2 = r3;
+        }
+    }
+}
 
 extern unsigned int iwram_3001ebc__a2 __asm__("iwram_3001ebc");
 
@@ -1157,7 +1180,10 @@ void OvlFunc_959_200a2a0(void) {
     API_Func_8010704(5, 9, 1, 1, 6, 0xa);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a2d4.s");
+void OvlFunc_959_200a2d4(void) {
+    API_Func_80105d4(2, 0x56, 1, 2, 0x1b, 0x3e);
+    API_Func_8010704(0x1a, 0x10, 1, 1, 0x1b, 0x11);
+}
 
 void OvlFunc_959_200a308(void) {
     if (*(short *)(iwram_3001ebc__a8 + 0xcb8) != 0 && API_GetFlag(0x947) == 0) {

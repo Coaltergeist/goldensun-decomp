@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/common/common1.c",
   "functions": {
-    "OvlFunc_common1_16cc": {
-      "id": "common:common1:000016cc"
-    },
     "OvlFunc_common1_17c0": {
       "id": "common:common1:000017c0"
     },

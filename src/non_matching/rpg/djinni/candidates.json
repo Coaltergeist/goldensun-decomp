@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/rpg/djinni.c",
   "functions": {
-    "Func_807a2bc": {
-      "id": "rom:0807a2bc"
-    },
     "Func_807a458": {
       "id": "rom:0807a458"
     }

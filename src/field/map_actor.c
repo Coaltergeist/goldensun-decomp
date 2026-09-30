@@ -415,7 +415,20 @@ void MapActor_Face(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_TurnToFaceActor.s", ".text.map_actor_2");
+extern void MapActor_RotateToward(unsigned char *a, unsigned char *b);
+
+void MapActor_TurnToFaceActor(unsigned int actorID, unsigned int targetID, unsigned int holdTime) {
+    unsigned char *a;
+    unsigned char *b;
+
+    a = (unsigned char *)GetFieldActor(actorID);
+    b = (unsigned char *)GetFieldActor(targetID);
+    if (a != (unsigned char *)0 && b != (unsigned char *)0) {
+        MapActor_RotateToward(a, b);
+        CutsceneWait(holdTime);
+    }
+}
+
 INCLUDE_ASM_SECTION("asm/field/map_actor/MapActor_RotateToward.s", ".text.map_actor_2");
 
 extern void _DeleteActor(void);

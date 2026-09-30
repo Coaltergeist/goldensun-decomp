@@ -1,5 +1,6 @@
 /* field/field_effect.c */
 #include "nonmatching.h"
+#include "dma.h"
 
 extern void _Sprite_SetAnim(unsigned int);
 
@@ -47,6 +48,14 @@ void Func_809ba7c(unsigned int arg0, unsigned int arg1) {
 
 INCLUDE_ASM("asm/field/field_effect/Func_809ba90.s");
 
-INCLUDE_ASM("asm/field/field_effect/Func_809bb34.s");
+extern void _DeleteSprite(void *sprite);
+
+void Func_809bb34(unsigned char *arg0) {
+    void **p = (void **)arg0;
+    if (*p != 0) {
+        _DeleteSprite(*p);
+    }
+    DMA3_CLEAR(arg0, 0x48);
+}
 
 INCLUDE_ASM("asm/field/field_effect/rodata.s");

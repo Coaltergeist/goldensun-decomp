@@ -1,6 +1,7 @@
 /* field/weather.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma0.h"
+#include "dma.h"
 
 extern void Func_80944ec();
 
@@ -169,7 +170,18 @@ void Func_8095884(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/weather/Func_80958a8.s");
+extern void *galloc_iwram(int index, unsigned int size);
+extern int StartTask(void *task, int priority);
+extern void Func_8095884(void);
+
+void Func_80958a8(void) {
+    void *p;
+
+    p = galloc_iwram(0x38, 0xe4 << 3);
+    DMA3_CLEAR(p, 0xe4 << 3);
+    StartTask(Func_8095884, 0xc8 << 4);
+}
+
 INCLUDE_ASM("asm/field/weather/Func_80958e4.s");
 
 void Func_809592c(unsigned int arg0) {

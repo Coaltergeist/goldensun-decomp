@@ -2,12 +2,6 @@
   "schema": 1,
   "source": "src/maps/altin_peak.c",
   "functions": {
-    "OvlFunc_932_200aa10": {
-      "id": "overlay:rom_7b9cb4:0200aa10"
-    },
-    "OvlFunc_932_200ba44": {
-      "id": "overlay:rom_7b9cb4:0200ba44"
-    },
     "OvlFunc_932_2009770": {
       "id": "overlay:rom_7b9cb4:02009770"
     }

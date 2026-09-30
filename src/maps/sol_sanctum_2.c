@@ -33,7 +33,30 @@ void *SolSanctum2_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008054.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008098.s");
+
+extern void OvlFunc_891_20096dc(void);
+
+void OvlFunc_891_2008098(void) {
+    int i;
+
+    API_CopyMapTiles(0, 0x1c, 0x11, 8, 2, 1);
+    API_PlaySound(0xc8);
+    i = 0;
+    do {
+        API_CopyMapTiles(0xa, 0x3d, 0x11, 0x28, 2, 1);
+        API_CutsceneWait(4);
+        API_CopyMapTiles(8, 0x3d, 0x11, 0x28, 2, 1);
+        i++;
+        API_CutsceneWait(4);
+    } while (i != 0x16);
+    API_CopyMapTiles(0, 0x3b, 0xf, 0x26, 4, 3);
+    API_CopyMapTiles(4, 0x3b, 0x11, 0x26, 4, 3);
+    API_CopyMapTiles(8, 0x3c, 0x11, 0x27, 2, 2);
+    API_Func_8010704(0, 0, 2, 1, 0x11, 8);
+    API_SetFlag(0x207);
+    OvlFunc_891_20096dc();
+}
+
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008150.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008614.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008c8c.s");
@@ -55,9 +78,81 @@ void OvlFunc_891_2009000(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200901c.s");
+void OvlFunc_891_200901c(void) {
+    if (!API_GetFlag(0x80b)) {
+        API_CutsceneStart();
+        __MapActor_GetActor(9);
+        API_MapActor_SetSpeed(9, 0x3333, 0x1999);
+        API_MapActor_TravelToAnimWait(9, 0xfc << 1, 0x98);
+        API_CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/sol_sanctum_2/SolSanctum2_MapInit.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20094b8.s");
+
+extern unsigned int Lm891_2a50[] __asm__(".Lm891_2a50");
+extern unsigned char Lm891_256c[] __asm__(".Lm891_256c");
+extern void *__galloc_ewram(int tag, int size);
+extern unsigned int __DecompressLZ1(const void *src, void *dst);
+extern int __AllocSpriteSlot(void);
+extern int __UploadSpriteGFX(int, int, void *);
+extern void __gfree(int);
+extern void OvlFunc_891_2008eb0(void);
+extern int __StartTask(void (*)(void), unsigned int);
+
+void OvlFunc_891_20094b8(void) {
+    unsigned char *buf;
+    unsigned int *p;
+    unsigned int *q;
+    int slot;
+    int val;
+    unsigned int i;
+
+    p = Lm891_2a50;
+    buf = (unsigned char *)__galloc_ewram(0xe, 0x80 << 3);
+    __DecompressLZ1(Lm891_256c, buf);
+
+    slot = __AllocSpriteSlot();
+    slot = __UploadSpriteGFX(slot, 0x80, buf);
+    i = 0;
+    do {
+        q = p;
+        *q++ = 0;
+        *q++ = 0x40004000;
+        val = slot | (0xac << 8);
+        i++;
+        p += 3;
+        *q = val;
+    } while (i <= 8);
+
+    slot = __AllocSpriteSlot();
+    slot = __UploadSpriteGFX(slot, 0x80, buf + 0x80);
+    i = 0;
+    do {
+        q = p;
+        *q++ = 0;
+        *q++ = 0x40004000;
+        val = slot | (0xdc << 8);
+        i++;
+        p += 3;
+        *q = val;
+    } while (i <= 8);
+
+    slot = __AllocSpriteSlot();
+    slot = __UploadSpriteGFX(slot, 0x80, buf + 0x100);
+    i = 0;
+    do {
+        q = p;
+        *q++ = 0;
+        *q++ = 0x40004000;
+        val = slot | (0xc0 << 4);
+        i++;
+        p += 3;
+        *q = val;
+    } while (i <= 8);
+
+    __gfree(0xe);
+    __StartTask(OvlFunc_891_2008eb0, 0xc8 << 4);
+}
 
 extern void OvlFunc_891_2009c14(void);
 
@@ -168,8 +263,101 @@ void OvlFunc_891_20096a4(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_20096dc.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_200995c.s");
+void OvlFunc_891_20096dc(void) {
+    struct Actor *actor;
+    int z;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x11);
+    API_Func_8012078(2, 0x88 << 17, 0x80 << 16, 0);
+    API_Func_8012078(2, 0x90 << 17, 0x80 << 16, 0);
+    if (actor != (struct Actor *)0) {
+        z = actor->pos.z >> 20;
+        API_CutsceneStart();
+        if (z == 8) {
+            if (!API_GetFlag(0x207)) {
+                if ((unsigned int)(((struct Actor *)__MapActor_GetActor(0))->pos.z >> 19) <= 0x11) {
+                    API_MapActor_TravelToAnimWait(0, 0x121, 0x9e);
+                    ((struct Actor *)__MapActor_GetActor(0))->facing = 0xc0 << 8;
+                }
+            }
+            if (API_GetFlag(0x816) && API_GetFlag(0x817)) {
+                API_SetFlag(0x818);
+                API_Func_80933d4(0x80 << 10, 0x80 << 7);
+                API_Func_80933f8(0x8f << 17, -1, 0x92 << 16, 1);
+                API_Func_8093530();
+                ((struct Actor *)__MapActor_GetActor(0x11))->__unk5A &= 0xfe;
+                API_MapActor_SetSpeed(0x11, 0xc0 << 10, 0x80 << 9);
+                actor->__unk55 = 0;
+                API_Func_8092b08(0x11, 3);
+                API_PlaySound(0xbd);
+                API_MapActor_TravelTo(0x11, 0x90 << 1, 0xb2);
+                API_CutsceneWait(8);
+                API_MapActor_SetPos(0x12, 0x90 << 17, 0xb2 << 16);
+                actor->prevPos.x = 0x80 << 24;
+                actor->prevPos.y = 0x80 << 24;
+                actor->prevPos.z = 0x80 << 24;
+                actor->pos.x = 0;
+                actor->pos.y = 0;
+                actor->pos.z = 0;
+                actor->motion.x = 0;
+                actor->motion.y = 0;
+                actor->motion.z = 0;
+                API_MapActor_SetPos(0x11, 0, 0);
+                API_Func_8012330(0x80 << 9, 0x80 << 9, 0x80 << 9);
+                API_CutsceneWait(0xa);
+                API_PlaySound(0x8d);
+                API_Func_8012330(0xc0 << 10, 0xc0 << 10, 0x80 << 9);
+                API_CutsceneWait(0xa);
+                API_Func_8012330(0xa0 << 11, 0xa0 << 11, 0x80 << 9);
+                API_CutsceneWait(0x23);
+                API_Func_8012330(0x80 << 11, 0x80 << 11, 0x80 << 9);
+                API_CutsceneWait(0x14);
+                API_Func_8012330(0xc0 << 10, 0xc0 << 10, 0x80 << 9);
+                API_CutsceneWait(0x1e);
+                API_Func_8012330(0x80 << 10, 0x80 << 10, 0x80 << 9);
+                API_CutsceneWait(0x28);
+                API_PlaySound(0x121);
+                API_Func_8012330(0x80 << 9, 0x80 << 9, 0x80 << 9);
+                API_CutsceneWait(0xa);
+                API_Func_8012330(-1, -1, 0xe666);
+                API_CutsceneWait(0x3c);
+                API_PlaySound(0xbc);
+                if (API_GetFlag(0x80b) && API_GetFlag(0x80c) && API_GetFlag(0x80d) && API_GetFlag(0x80e)) {
+                    API_SetFlag(0x80f);
+                }
+                API_CutsceneWait(0x28);
+                API_Func_801776c(0x1038, 1);
+                API_Func_8010704(0, 1, 2, 1, 0x11, 8);
+                API_Func_8010704(0x11, 9, 2, 1, 0x11, 7);
+            }
+        }
+        API_CutsceneEnd();
+    }
+}
+
+void OvlFunc_891_200995c(void) {
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x11);
+    if (actor == (struct Actor *)0) {
+        return;
+    }
+    if ((actor->pos.z >> 20) != 8) {
+        return;
+    }
+    API_CutsceneStart();
+    API_PlaySound(0xb9);
+    API_MapActor_SetSpeed(0x11, 0x3333, 0x1999);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    ((struct Actor *)__MapActor_GetActor(0x11))->__unk5A &= 0xfe;
+    API_MapActor_SetAnim(0, 8);
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    API_MapActor_TravelTo(0, *(short *)((char *)actor + 0xa), 0x88);
+    API_MapActor_TravelTo(0x11, 0x120, 0x78);
+    API_MapActor_WaitMovement(0x11);
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_891_2009b44(int, int, int, int, int);
 

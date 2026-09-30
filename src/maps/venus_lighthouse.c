@@ -41,7 +41,16 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008058.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008098.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20080e0.s");
+
+void OvlFunc_968_20080e0(struct Actor *actor) {
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008118.s");
 
 extern int Func_8000948(int);
@@ -77,7 +86,20 @@ unsigned int OvlFunc_968_2008594(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085ac.s");
+int OvlFunc_968_20085ac(unsigned int actorId)
+{
+    extern unsigned char iwram_3001e40[];
+
+    if ((*(unsigned int *)iwram_3001e40 & 3) == 0) {
+        __Func_80929d8(actorId, 7);
+    } else {
+        __Func_80929d8(actorId, 0);
+    }
+    if ((*(unsigned int *)iwram_3001e40 & 7) == 0) {
+        API_PlaySound(0x8a);
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085e4.s");
 
 extern void __Actor_SetSpriteFlags();

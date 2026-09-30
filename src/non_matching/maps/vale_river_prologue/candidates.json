@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/vale_river_prologue.c",
   "functions": {
-    "OvlFunc_882_2008030": {
-      "id": "overlay:rom_77dd1c:02008030"
-    },
     "OvlFunc_882_2009498": {
       "id": "overlay:rom_77dd1c:02009498"
     }

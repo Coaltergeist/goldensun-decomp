@@ -315,7 +315,16 @@ void *KolimaForest2_GetActors(void) {
     return (void *)gOvl_02008ff0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_20089f8.s");
+void OvlFunc_914_20089f8(void)
+{
+    struct Pk buf;
+
+    API_CutsceneStart();
+    if (OvlFunc_914_2008474(&buf)) {
+        OvlFunc_914_2008608(buf);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_914_2008a2c(void)
 {
@@ -386,8 +395,26 @@ void OvlFunc_914_2008bac(void) {
     DMA3_COPY((void *)iwram_3001ed0, L17b0, 0x380);
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008bcc.s");
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008c0c.s");
+
+void OvlFunc_914_2008bcc(void) {
+    unsigned char *base = (unsigned char *)iwram_3001ed0;
+
+    DMA3_SET((const void *)0x5000000, base, 0x84000070);
+    DMA3_SET((const void *)0x5000200, base + 0x1c0, 0x84000070);
+    API_Func_8091220(0x80 << 9, 0);
+}
+
+void OvlFunc_914_2008c0c(int arg0) {
+    void *dst = (void *)iwram_3001ed0;
+
+    if (arg0) {
+        DMA3_SET(L17b0, dst, 0x840000e0);
+    } else {
+        DMA3_SET(L10b0, dst, 0x840000e0);
+    }
+    API_Func_8091200(0x80 << 9, 0);
+    OvlFunc_914_2008bcc();
+}
 
 int OvlFunc_914_2008c4c(int *actor)
 {

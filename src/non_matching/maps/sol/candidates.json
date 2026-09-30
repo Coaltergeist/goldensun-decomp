@@ -4,9 +4,6 @@
   "functions": {
     "OvlFunc_895_2008258": {
       "id": "overlay:rom_78dee8:02008258"
-    },
-    "Sol_MapInit": {
-      "id": "overlay:rom_78dee8:020088f4"
     }
   }
 }

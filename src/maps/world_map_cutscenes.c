@@ -2,13 +2,24 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008030.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200808c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20080d4.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200811c.s");
+
+void OvlFunc_881_200811c(struct Actor *a) {
+    short *wc = &a->waveCounter;
+
+    if (*wc <= 0) {
+        *wc += 1;
+    } else {
+        API_DeleteActor(a);
+    }
+}
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200813c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20081c4.s");
 
@@ -65,7 +76,21 @@ unsigned int OvlFunc_881_20082a4(unsigned int arg0)
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082cc.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20082f0.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008314.s");
+int OvlFunc_881_2008314(struct Actor *actor)
+{
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Actor_SetColorswap(unsigned int, unsigned int);
+
+    __Actor_SetSpriteFlags(actor, 0);
+    __Actor_SetColorswap((unsigned int)actor, 0xa);
+    actor->__unk59 = 0;
+    if (API_GetFlag(0x8a << 4)) {
+        API_SetFlag(0x2f1);
+        actor->pos.x = 0;
+        actor->pos.y = 0;
+    }
+    return 0;
+}
 
 
 unsigned int OvlFunc_881_2008350(unsigned char *actor)
@@ -196,7 +221,18 @@ INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a274.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a4a8.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a768.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a7dc.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a81c.s");
+
+extern unsigned char L679c[] __asm__(".Lm881_679c");
+
+void OvlFunc_881_200a81c(void) {
+
+    API_CutsceneStart();
+    API_MapActor_Face(0x37, 0, 0);
+    API_MessageID(0x2642);
+    API_ActorMessage(*(unsigned long *)L679c, 0);
+    API_Func_8092adc(0x37, 0xc0 << 6, 0);
+    API_CutsceneEnd();
+}
 
 
 extern void __CutsceneStart(void);
@@ -222,7 +258,27 @@ void OvlFunc_881_200a858(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8a8.s");
+
+void OvlFunc_881_200a8a8(void) {
+    extern unsigned char iwram_3001ebc[];
+    void *base;
+    short *p;
+
+    API_CutsceneStart();
+    __Func_808c44c();
+    API_Func_801776c(0x264c, 1);
+    if (API_GetFlag(0x8d << 2)) {
+        int one;
+
+        base = *(void **)iwram_3001ebc;
+        p = (short *)((char *)base + (0xb9 << 1));
+        one = 1;
+        *p = one;
+    }
+    __Func_808c4c0();
+    API_CutsceneEnd();
+}
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200a8e8.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200acb4.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b130.s");

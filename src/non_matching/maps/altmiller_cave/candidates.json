@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/altmiller_cave.c",
   "functions": {
-    "OvlFunc_957_200b610": {
-      "id": "overlay:rom_7e3e08:0200b610"
-    },
     "OvlFunc_957_2008ee0": {
       "id": "overlay:rom_7e3e08:02008ee0"
     },

@@ -1,5 +1,7 @@
 /* sprite/sprite.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "dma.h"
+#include "sprite.h"
 
 INCLUDE_ASM("asm/sprite/sprite/UpdateSpriteAnim.s");
 
@@ -131,7 +133,13 @@ void Sprite_SetAnimSpeed(unsigned char *sprite, int speed) {
 
 INCLUDE_ASM("asm/sprite/sprite/InitSprites.s");
 INCLUDE_ASM("asm/sprite/sprite/CreateSpriteLayer.s");
-INCLUDE_ASM("asm/sprite/sprite/DeleteSpriteLayer.s");
+
+void DeleteSpriteLayer(struct SpriteLayer *layer) {
+    if (layer != (struct SpriteLayer *)0) {
+        DMA3_CLEAR(layer, sizeof(struct SpriteLayer));
+    }
+}
+
 INCLUDE_ASM("asm/sprite/sprite/CreateSprite.s");
 INCLUDE_ASM("asm/sprite/sprite/DeleteSprite.s");
 INCLUDE_ASM("asm/sprite/sprite/Func_800be20.s");
