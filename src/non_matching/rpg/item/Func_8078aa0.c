@@ -1,9 +1,9 @@
 extern unsigned char ewram_2000380[];
 
-unsigned int Func_8078aa0(int arg0, int arg1)
+int Func_8078aa0(int arg0, int arg1)
 {
     int val;
-    unsigned int ret;
+    int ret;
 
     ret = 0;
     if (arg0 <= 0x7f) {

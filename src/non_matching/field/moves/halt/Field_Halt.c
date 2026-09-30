@@ -10,7 +10,7 @@ extern void _PlaySound(unsigned int id);
 
 extern void Func_80974d8(int *vec);
 
-extern int Random(void);
+extern unsigned int Random(void);
 
 extern void vec3_translate(int mag, unsigned int angle, int *vec);
 
