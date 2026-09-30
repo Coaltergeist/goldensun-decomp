@@ -73,7 +73,7 @@ class SourceRejected(ValueError):
     pass
 
 
-def compile_tu(root, source, text, directory, settings, names=()):
+def compile_tu(root, source, text, directory, settings, names=(), *, cache=None, tools=None):
     directory.mkdir()
     path = directory / Path(source).name
     path.write_text(text)
@@ -95,10 +95,26 @@ def compile_tu(root, source, text, directory, settings, names=()):
         errors = source_errors(expanded.read_text(), names)
         if errors:
             raise SourceRejected("; ".join(errors))
-        if mode == "gcc296":
-            run([cc] + shlex.split(flags) + inc + ["-S", "-o", str(asm), str(path)])
+        key = cache.assembly_key(source, expanded.read_text(), path, settings, names, tools) if cache else None
+        previous = cache.get(key) if cache else None
+        if previous:
+            asm.write_bytes(previous[1])
+            cache.stats["assembly_reused"] += 1
+            log.write("Reused compiler assembly: " + str(previous[0]) + "\n")
         else:
-            run([oldcc] + shlex.split(oldflags) + ["-o", str(asm), str(expanded)])
+            if mode == "gcc296":
+                # Scoring compiles the exact expanded input used by its cache key.
+                # Ordinary comparisons retain their existing source pipeline.
+                compiler_input = expanded if cache else path
+                run([cc] + shlex.split(flags) + inc + ["-S", "-o", str(asm), str(compiler_input)])
+            else:
+                run([oldcc] + shlex.split(oldflags) + ["-o", str(asm), str(expanded)])
+            if cache:
+                cache.stats["assembly_compiled"] += 1
+        if cache:
+            artifact = directory / "compiler.s"
+            shutil.copyfile(asm, artifact)
+            cache.remember(key, artifact)
         with asm.open("a") as out:
             out.write("\n\t.text\n\t.align\t2, 0\n")
         run(["arm-none-eabi-as", "-mcpu=arm7tdmi", "-mthumb-interwork",

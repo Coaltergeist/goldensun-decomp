@@ -163,7 +163,7 @@ class FreshnessTests(unittest.TestCase):
         self.put("progress_snapshot.json", json.dumps(self.snapshot))
         previous = self.put(cs.SCORES, "previous scores")
         compiled = []
-        def compile_tu(root, source, text, folder, settings, names=()):
+        def compile_tu(root, source, text, folder, settings, names=(), **kwargs):
             compiled.append((text, list(names)))
             folder.mkdir()
             obj = folder / "tu.o"; obj.write_text("candidate " + str(names))
@@ -181,7 +181,8 @@ class FreshnessTests(unittest.TestCase):
             for name, value in dict(metadata=({}, {}), source_inputs={"production": "hash"},
                                     validate_snapshot=None, compiler_inputs={"host:gcc": "b" * 64},
                                     scorer=(str(binary), info), reference=(expected, {}),
-                                    contract=["settings"], comparison={"exact": control_ok}).items():
+                                    contract=["settings"], tool_identity={"compiler": "identity"},
+                                    comparison={"exact": control_ok}).items():
                 stack.enter_context(patch.object(cli, name, return_value=value))
             stack.enter_context(patch.object(cli, "compile_tu", side_effect=compile_tu))
             stack.enter_context(patch.object(cli.subprocess, "run", side_effect=run))

@@ -3617,7 +3617,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "15a83d1019071db9f657e589ac4cc50f9d82aa98f12d1a19f93efa63913df75b",
+  "progress_sha256": "84c4d9ed4e40810e653da85cf9a5ffb612f78e3bd365ad4e1a7891b0e882cb1f",
   "schema": 1,
   "scorer": {
     "config": [

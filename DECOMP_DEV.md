@@ -75,6 +75,12 @@ checks the unchanged control, and scores only the replaced function using
 objdiff's report settings. Original byte spans supply the report weights.
 Temporary objects and diffs stay under `build/non_matching/`.
 
+Unchanged compiler output and measured scores are reused by default. Every run
+still preprocesses candidates, assembles their objects, and verifies each unchanged
+control TU. Use `--full` to recompile and rescore all candidates. The local cache
+index is `.progress/candidate-score-cache.json`; missing or damaged artifacts are
+recomputed.
+
 Include `candidate_scores.json` with candidate changes. Refresh it after changing
 candidate C, context headers, manifests, or `progress_snapshot.json`. Failed
 scoring retains the previous file; stale scores stop export. The CLI binary is

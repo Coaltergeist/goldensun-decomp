@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3840,
+  "input_count": 3841,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "7e8713d56d7473232114e6408f1cfadd9c9a97815e4630cacbb27ba9c5066984",
+  "source_fingerprint": "f2d382aaf775cd41c3af42838bb2433a852d37acc072db526caccea6e93a082a",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
