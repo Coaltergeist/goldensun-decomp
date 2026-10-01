@@ -3929,7 +3929,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "30acc33eca7f9ef733ae96babc51ceb24d2dd020c2cfc6b6ad7546a4d01e5e4f",
+  "progress_sha256": "76aab8e74b893c9256c48a1e42f8f6dd26e51de7b38a47142ec687a513319f01",
   "schema": 1,
   "scorer": {
     "config": [

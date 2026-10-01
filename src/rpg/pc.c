@@ -153,7 +153,27 @@ unsigned int AddCoinsSpent(int coins)
     return val;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079754.s", ".text.rpg_pc_2");
+
+int Func_8079754(int delta)
+{
+    int value;
+    int idx;
+
+    idx = 0x8e << 1;
+    value = *(signed char *)((char *)gState__a2 + idx);
+
+    value += delta;
+
+    if (value > 28)
+        value = 28;
+
+    if (value < 0)
+        value = 0;
+
+    *(unsigned char *)((char *)gState__a2 + idx) = value;
+
+    return value;
+}
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_807977c.s", ".text.rpg_pc_2");
 
 SECTION(".text.rpg_pc_3");
