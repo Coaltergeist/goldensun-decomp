@@ -81,7 +81,23 @@ void OvlFunc_896_200a674(void) {
     }
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200a6e0.s");
+void OvlFunc_896_200a6e0(void) {
+    API_CutsceneStart();
+    if (API_GetFlag(0x83e)) {
+        API_MessageID(0x10c9);
+        API_ActorMessage(5, 0);
+    } else {
+        if (API_GetFlag(0x83c) == 0) {
+            API_MessageID(0x107a);
+        } else {
+            API_MessageID(0x107c);
+        }
+        API_MapActor_TurnToFaceActor(5, 0, 0);
+        API_CutsceneWait(10);
+        API_ActorMessage(5, 0);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_896_200a74c(void)
 {

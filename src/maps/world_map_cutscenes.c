@@ -300,7 +300,35 @@ unsigned int OvlFunc_881_200b41c(void)
     return r6;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b448.s");
+unsigned int OvlFunc_881_200b448(unsigned int arg0)
+{
+    extern int __GetFlag(int);
+    extern unsigned int L6718[] __asm__(".Lm881_6718");
+    unsigned int base;
+    unsigned int i;
+
+    base = 0;
+    switch (arg0) {
+    case 0:
+        base = 0x92c;
+        break;
+    case 1:
+        base = 0x935;
+        break;
+    case 2:
+        base = 0x917;
+        break;
+    case 3:
+        base = 0x990;
+        break;
+    }
+
+    for (i = 0; i <= 8; i++) {
+        if (__GetFlag(base + i) != 0)
+            return L6718[i];
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b4a0.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b57c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b678.s");
@@ -368,7 +396,19 @@ void OvlFunc_881_200b7d8(void)
 }
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b84c.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b8fc.s");
+void OvlFunc_881_200b8fc(void)
+{
+    extern void __SetRegAnimDest(unsigned int reg, unsigned int value);
+    extern unsigned int iwram_3001e40;
+    extern unsigned short L67a0 __asm__(".Lm881_67a0");
+
+    __SetRegAnimDest(0x04000050, 0x3f41);
+    if (iwram_3001e40 & 2) {
+        __SetRegAnimDest(0x04000052, L67a0 | 0xc);
+    } else {
+        __SetRegAnimDest(0x04000052, L67a0 | 0x10);
+    }
+}
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b95c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b9fc.s");
 
@@ -413,7 +453,26 @@ void OvlFunc_881_200bf88(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200bfb4.s");
+void OvlFunc_881_200bfb4(struct Actor *actor)
+{
+    extern int __sin(int);
+    struct Actor *linked;
+    short counter;
+    int s;
+
+    linked = actor->linkedActor;
+    counter = ++actor->waveCounter;
+    if (counter > 31) {
+        API_DeleteActor((int)actor);
+    } else {
+        s = __sin(counter << 10);
+        actor->scale.x = s;
+        actor->scale.y = s;
+        actor->pos.x = linked->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = linked->pos.z + (0x10000 - s) * 5 + 0x80000;
+    }
+}
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c004.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c058.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/world_map_cutscenes_data.s");

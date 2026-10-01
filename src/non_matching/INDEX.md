@@ -87,10 +87,11 @@
 | [maps/babis_palace](maps/babis_palace/) | [OvlFunc_952_2008108](maps/babis_palace/OvlFunc_952_2008108.c) |
 | [maps/colosseum](maps/colosseum/) | [OvlFunc_953_200a3e0](maps/colosseum/OvlFunc_953_200a3e0.c) |
 | [maps/colosseum_final_1](maps/colosseum_final_1/) | [ColosseumFinal1_MapInit](maps/colosseum_final_1/ColosseumFinal1_MapInit.c) |
-| [maps/colosseum_final_2](maps/colosseum_final_2/) | [OvlFunc_955_2008160](maps/colosseum_final_2/OvlFunc_955_2008160.c) |
-| [maps/colosseum_final_3](maps/colosseum_final_3/) | [ColosseumFinal3_MapInit](maps/colosseum_final_3/ColosseumFinal3_MapInit.c), [OvlFunc_956_20081c8](maps/colosseum_final_3/OvlFunc_956_20081c8.c), [OvlFunc_956_200937c](maps/colosseum_final_3/OvlFunc_956_200937c.c) |
+| [maps/colosseum_final_2](maps/colosseum_final_2/) | [OvlFunc_955_2008160](maps/colosseum_final_2/OvlFunc_955_2008160.c), [OvlFunc_955_2008970](maps/colosseum_final_2/OvlFunc_955_2008970.c) |
+| [maps/colosseum_final_3](maps/colosseum_final_3/) | [ColosseumFinal3_MapInit](maps/colosseum_final_3/ColosseumFinal3_MapInit.c), [OvlFunc_956_20081c8](maps/colosseum_final_3/OvlFunc_956_20081c8.c), [OvlFunc_956_2008204](maps/colosseum_final_3/OvlFunc_956_2008204.c), [OvlFunc_956_200937c](maps/colosseum_final_3/OvlFunc_956_200937c.c) |
 | [maps/common/common1](maps/common/common1/) | [OvlFunc_common1_15b8](maps/common/common1/OvlFunc_common1_15b8.c), [OvlFunc_common1_17c0](maps/common/common1/OvlFunc_common1_17c0.c), [OvlFunc_common1_1b08](maps/common/common1/OvlFunc_common1_1b08.c), [OvlFunc_common1_588](maps/common/common1/OvlFunc_common1_588.c), [OvlFunc_common1_920](maps/common/common1/OvlFunc_common1_920.c) |
 | [maps/common/common2](maps/common/common2/) | [OvlFunc_common2_254](maps/common/common2/OvlFunc_common2_254.c) |
+| [maps/crossbone_isle](maps/crossbone_isle/) | [OvlFunc_946_20089f4](maps/crossbone_isle/OvlFunc_946_20089f4.c), [OvlFunc_946_200985c](maps/crossbone_isle/OvlFunc_946_200985c.c), [OvlFunc_946_20098b0](maps/crossbone_isle/OvlFunc_946_20098b0.c) |
 | [maps/crossbone_isle_dungeon_2](maps/crossbone_isle_dungeon_2/) | [OvlFunc_947_2009938](maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.c) |
 | [maps/elemental_stars_eruption](maps/elemental_stars_eruption/) | [OvlFunc_897_2008f64](maps/elemental_stars_eruption/OvlFunc_897_2008f64.c), [OvlFunc_897_200a9a4](maps/elemental_stars_eruption/OvlFunc_897_200a9a4.c), [OvlFunc_897_200aba0](maps/elemental_stars_eruption/OvlFunc_897_200aba0.c) |
 | [maps/fuchin_temple](maps/fuchin_temple/) | [OvlFunc_926_200a508](maps/fuchin_temple/OvlFunc_926_200a508.c), [OvlFunc_926_200c140](maps/fuchin_temple/OvlFunc_926_200c140.c) |
@@ -98,9 +99,9 @@
 | [maps/gondowan](maps/gondowan/) | [OvlFunc_958_2008ba4](maps/gondowan/OvlFunc_958_2008ba4.c), [OvlFunc_958_20091f8](maps/gondowan/OvlFunc_958_20091f8.c) |
 | [maps/imil](maps/imil/) | [Imil_MapInit](maps/imil/Imil_MapInit.c), [OvlFunc_921_2008030](maps/imil/OvlFunc_921_2008030.c), [OvlFunc_921_20080d8](maps/imil/OvlFunc_921_20080d8.c), [OvlFunc_921_2008f90](maps/imil/OvlFunc_921_2008f90.c), [OvlFunc_921_200954c](maps/imil/OvlFunc_921_200954c.c), [OvlFunc_921_2009704](maps/imil/OvlFunc_921_2009704.c), [OvlFunc_921_20099e8](maps/imil/OvlFunc_921_20099e8.c), [OvlFunc_921_2009f24](maps/imil/OvlFunc_921_2009f24.c), [OvlFunc_921_2009fa4](maps/imil/OvlFunc_921_2009fa4.c) |
 | [maps/imil_falls_cave](maps/imil_falls_cave/) | [OvlFunc_922_200a094](maps/imil_falls_cave/OvlFunc_922_200a094.c) |
-| [maps/kalay](maps/kalay/) | [OvlFunc_936_20080ac](maps/kalay/OvlFunc_936_20080ac.c) |
+| [maps/kalay](maps/kalay/) | [Kalay_MapInit](maps/kalay/Kalay_MapInit.c), [OvlFunc_936_20080ac](maps/kalay/OvlFunc_936_20080ac.c) |
 | [maps/kalay_docks](maps/kalay_docks/) | [OvlFunc_942_2008958](maps/kalay_docks/OvlFunc_942_2008958.c) |
-| [maps/kolima](maps/kolima/) | [OvlFunc_911_2008230](maps/kolima/OvlFunc_911_2008230.c) |
+| [maps/kolima](maps/kolima/) | [OvlFunc_911_2008050](maps/kolima/OvlFunc_911_2008050.c), [OvlFunc_911_2008230](maps/kolima/OvlFunc_911_2008230.c) |
 | [maps/kolima_forest_1](maps/kolima_forest_1/) | [OvlFunc_913_200834c](maps/kolima_forest_1/OvlFunc_913_200834c.c), [OvlFunc_913_20088c0](maps/kolima_forest_1/OvlFunc_913_20088c0.c) |
 | [maps/kolima_forest_3](maps/kolima_forest_3/) | [OvlFunc_915_20088c0](maps/kolima_forest_3/OvlFunc_915_20088c0.c), [OvlFunc_915_2008aac](maps/kolima_forest_3/OvlFunc_915_2008aac.c) |
 | [maps/kolima_forest_4](maps/kolima_forest_4/) | [OvlFunc_916_2008098](maps/kolima_forest_4/OvlFunc_916_2008098.c), [OvlFunc_916_20083f0](maps/kolima_forest_4/OvlFunc_916_20083f0.c), [OvlFunc_916_2008a90](maps/kolima_forest_4/OvlFunc_916_2008a90.c), [OvlFunc_916_2008c2c](maps/kolima_forest_4/OvlFunc_916_2008c2c.c) |
@@ -117,8 +118,9 @@
 | [maps/menu_test](maps/menu_test/) | [OvlFunc_974_2008b10](maps/menu_test/OvlFunc_974_2008b10.c) |
 | [maps/mercury_lighthouse](maps/mercury_lighthouse/) | [OvlFunc_924_200a648](maps/mercury_lighthouse/OvlFunc_924_200a648.c), [OvlFunc_924_200adcc](maps/mercury_lighthouse/OvlFunc_924_200adcc.c), [OvlFunc_924_200cf44](maps/mercury_lighthouse/OvlFunc_924_200cf44.c), [OvlFunc_924_200d1b0](maps/mercury_lighthouse/OvlFunc_924_200d1b0.c) |
 | [maps/mercury_lighthouse_aerie](maps/mercury_lighthouse_aerie/) | [OvlFunc_925_200b1c0](maps/mercury_lighthouse_aerie/OvlFunc_925_200b1c0.c) |
-| [maps/mercury_lighthouse_entrance](maps/mercury_lighthouse_entrance/) | [OvlFunc_923_2008528](maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.c), [OvlFunc_923_2008cc0](maps/mercury_lighthouse_entrance/OvlFunc_923_2008cc0.c), [OvlFunc_923_2008d98](maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.c) |
+| [maps/mercury_lighthouse_entrance](maps/mercury_lighthouse_entrance/) | [OvlFunc_923_2008528](maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.c), [OvlFunc_923_2008cc0](maps/mercury_lighthouse_entrance/OvlFunc_923_2008cc0.c), [OvlFunc_923_2008d98](maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.c), [OvlFunc_923_20091b4](maps/mercury_lighthouse_entrance/OvlFunc_923_20091b4.c), [OvlFunc_923_200a370](maps/mercury_lighthouse_entrance/OvlFunc_923_200a370.c) |
 | [maps/sol](maps/sol/) | [OvlFunc_895_2008258](maps/sol/OvlFunc_895_2008258.c) |
+| [maps/sol_sanctum_2](maps/sol_sanctum_2/) | [OvlFunc_891_2008054](maps/sol_sanctum_2/OvlFunc_891_2008054.c) |
 | [maps/suhalla_desert](maps/suhalla_desert/) | [OvlFunc_960_2008b24](maps/suhalla_desert/OvlFunc_960_2008b24.c), [OvlFunc_960_2008c00](maps/suhalla_desert/OvlFunc_960_2008c00.c), [OvlFunc_960_2008f50](maps/suhalla_desert/OvlFunc_960_2008f50.c), [OvlFunc_960_2009094](maps/suhalla_desert/OvlFunc_960_2009094.c) |
 | [maps/suhalla_rooms](maps/suhalla_rooms/) | [SuhallaRooms_MapInit](maps/suhalla_rooms/SuhallaRooms_MapInit.c) |
 | [maps/tolbi](maps/tolbi/) | [OvlFunc_949_20082f0](maps/tolbi/OvlFunc_949_20082f0.c), [OvlFunc_949_20083d0](maps/tolbi/OvlFunc_949_20083d0.c), [OvlFunc_949_20086e8](maps/tolbi/OvlFunc_949_20086e8.c), [OvlFunc_949_2008980](maps/tolbi/OvlFunc_949_2008980.c) |
@@ -127,15 +129,15 @@
 | [maps/tret_tree](maps/tret_tree/) | [OvlFunc_918_2009244](maps/tret_tree/OvlFunc_918_2009244.c), [OvlFunc_918_200962c](maps/tret_tree/OvlFunc_918_200962c.c), [OvlFunc_918_20097ec](maps/tret_tree/OvlFunc_918_20097ec.c), [OvlFunc_918_200985c](maps/tret_tree/OvlFunc_918_200985c.c) |
 | [maps/tunnel_ruins](maps/tunnel_ruins/) | [OvlFunc_964_2009038](maps/tunnel_ruins/OvlFunc_964_2009038.c) |
 | [maps/vale_cave](maps/vale_cave/) | [OvlFunc_934_2008630](maps/vale_cave/OvlFunc_934_2008630.c), [OvlFunc_934_2008ba4](maps/vale_cave/OvlFunc_934_2008ba4.c), [OvlFunc_934_2009984](maps/vale_cave/OvlFunc_934_2009984.c) |
-| [maps/vale_plaza](maps/vale_plaza/) | [OvlFunc_884_200a440](maps/vale_plaza/OvlFunc_884_200a440.c) |
+| [maps/vale_plaza](maps/vale_plaza/) | [OvlFunc_884_200a39c](maps/vale_plaza/OvlFunc_884_200a39c.c), [OvlFunc_884_200a3ec](maps/vale_plaza/OvlFunc_884_200a3ec.c), [OvlFunc_884_200a440](maps/vale_plaza/OvlFunc_884_200a440.c) |
 | [maps/vale_river_prologue](maps/vale_river_prologue/) | [OvlFunc_882_2009498](maps/vale_river_prologue/OvlFunc_882_2009498.c) |
-| [maps/vale_rooms_2](maps/vale_rooms_2/) | [OvlFunc_887_2008e34](maps/vale_rooms_2/OvlFunc_887_2008e34.c) |
-| [maps/vault_1](maps/vault_1/) | [OvlFunc_898_2008314](maps/vault_1/OvlFunc_898_2008314.c), [OvlFunc_898_2008cfc](maps/vault_1/OvlFunc_898_2008cfc.c) |
+| [maps/vale_rooms_2](maps/vale_rooms_2/) | [OvlFunc_887_2008e34](maps/vale_rooms_2/OvlFunc_887_2008e34.c), [OvlFunc_887_2009638](maps/vale_rooms_2/OvlFunc_887_2009638.c) |
+| [maps/vault_1](maps/vault_1/) | [OvlFunc_898_2008314](maps/vault_1/OvlFunc_898_2008314.c), [OvlFunc_898_2008cfc](maps/vault_1/OvlFunc_898_2008cfc.c), [OvlFunc_898_2008d78](maps/vault_1/OvlFunc_898_2008d78.c) |
 | [maps/vault_2](maps/vault_2/) | [OvlFunc_901_2008640](maps/vault_2/OvlFunc_901_2008640.c) |
 | [maps/vault_cave](maps/vault_cave/) | [OvlFunc_935_2008170](maps/vault_cave/OvlFunc_935_2008170.c), [OvlFunc_935_2008704](maps/vault_cave/OvlFunc_935_2008704.c), [OvlFunc_935_2008754](maps/vault_cave/OvlFunc_935_2008754.c) |
 | [maps/vault_rooms_1](maps/vault_rooms_1/) | [OvlFunc_899_200c7bc](maps/vault_rooms_1/OvlFunc_899_200c7bc.c), [OvlFunc_899_200c7fc](maps/vault_rooms_1/OvlFunc_899_200c7fc.c) |
 | [maps/venus_lighthouse](maps/venus_lighthouse/) | [OvlFunc_968_2008058](maps/venus_lighthouse/OvlFunc_968_2008058.c), [OvlFunc_968_2008098](maps/venus_lighthouse/OvlFunc_968_2008098.c), [OvlFunc_968_200832c](maps/venus_lighthouse/OvlFunc_968_200832c.c) |
-| [maps/venus_lighthouse_aerie](maps/venus_lighthouse_aerie/) | [OvlFunc_969_2008314](maps/venus_lighthouse_aerie/OvlFunc_969_2008314.c), [OvlFunc_969_20083a0](maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.c) |
+| [maps/venus_lighthouse_aerie](maps/venus_lighthouse_aerie/) | [OvlFunc_969_2008314](maps/venus_lighthouse_aerie/OvlFunc_969_2008314.c), [OvlFunc_969_20083a0](maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.c), [OvlFunc_969_2008424](maps/venus_lighthouse_aerie/OvlFunc_969_2008424.c), [OvlFunc_969_2009280](maps/venus_lighthouse_aerie/OvlFunc_969_2009280.c), [OvlFunc_969_200a15c](maps/venus_lighthouse_aerie/OvlFunc_969_200a15c.c), [OvlFunc_969_200a1ac](maps/venus_lighthouse_aerie/OvlFunc_969_200a1ac.c) |
 | [maps/west_lunpa_cave](maps/west_lunpa_cave/) | [OvlFunc_941_2008094](maps/west_lunpa_cave/OvlFunc_941_2008094.c), [OvlFunc_941_2009394](maps/west_lunpa_cave/OvlFunc_941_2009394.c), [OvlFunc_941_2009760](maps/west_lunpa_cave/OvlFunc_941_2009760.c) |
 | [maps/world_map_cutscenes](maps/world_map_cutscenes/) | [OvlFunc_881_20082cc](maps/world_map_cutscenes/OvlFunc_881_20082cc.c), [OvlFunc_881_20082f0](maps/world_map_cutscenes/OvlFunc_881_20082f0.c) |
 | [maps/xian](maps/xian/) | [OvlFunc_928_2008370](maps/xian/OvlFunc_928_2008370.c), [OvlFunc_928_2008408](maps/xian/OvlFunc_928_2008408.c), [OvlFunc_928_2008500](maps/xian/OvlFunc_928_2008500.c), [OvlFunc_928_2008f30](maps/xian/OvlFunc_928_2008f30.c) |

@@ -250,7 +250,27 @@ void OvlFunc_897_200add0(arg0) unsigned int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae0c.s");
+extern int __sin(int angle);
+
+void OvlFunc_897_200ae0c(unsigned char *actor)
+{
+    unsigned char *anchor;
+    short timer;
+    int s;
+
+    anchor = *(unsigned char **)(actor + 0x68);
+    timer = ++*(short *)(actor + 0x64);
+    if (timer > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        s = __sin(timer << 10);
+        *(int *)(actor + 0x18) = s;
+        *(int *)(actor + 0x1c) = s;
+        *(int *)(actor + 0x8) = *(int *)(anchor + 0x8);
+        *(int *)(actor + 0xc) += 0x10000;
+        *(int *)(actor + 0x10) = *(int *)(anchor + 0x10) + (0x10000 - s) * 5 + 0x80000;
+    }
+}
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae5c.s");
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
 

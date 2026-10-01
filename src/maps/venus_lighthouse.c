@@ -513,7 +513,23 @@ void OvlFunc_968_2009628(void)
 	OvlFunc_968_20094f4();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009644.s");
+void OvlFunc_968_2009644(void)
+{
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(0xd);
+    API_CutsceneStart();
+    if ((a->pos.x >> 20) == 0x2a) {
+        API_CutsceneWait(0x1e);
+        API_PlaySound(0xbc);
+        a->__unk55 = 0;
+        a->floorPos = 0xfffe0000;
+        a->pos.y = 0xfffe0000;
+        API_SetFlag(0x80 << 2);
+        API_CopyMapTiles(0x2c, 0x75, 0x29, 0x75, 3, 5);
+    }
+    API_CutsceneEnd();
+}
 void OvlFunc_968_20096a4(void) {
     struct Actor *a;
     short x;
@@ -646,7 +662,27 @@ void OvlFunc_968_20099f0(void)
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009a14.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009a50.s");
+void OvlFunc_968_2009a50(int arg0)
+{
+    extern unsigned int OvlFunc_968_2008058(unsigned int, unsigned int, unsigned int, unsigned int);
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int obj;
+
+    actor = (struct Actor *)arg0;
+    sprite = actor->sprite;
+    if (sprite->oam.priority == 3) {
+        sprite->oam.priority = 1;
+        actor->bounce = 0;
+        obj = OvlFunc_968_2008058(actor->pos.x, 0, 0x80 << 18, 0xdf);
+        OvlFunc_968_200894c(actor);
+        actor->pos.x = 0;
+        actor->pos.z = 0;
+        API_DeleteActor(obj);
+    } else {
+        OvlFunc_968_20099c0();
+    }
+}
 
 extern void OvlFunc_968_2009a14(int);
 extern void OvlFunc_968_2009a50(int);

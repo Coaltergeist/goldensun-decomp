@@ -793,7 +793,29 @@ void OvlFunc_899_200c684(void)
 }
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c698.s");
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c704.s");
+extern unsigned char Lm899_4f2c[] __asm__(".Lm899_4f2c");
+
+unsigned char *OvlFunc_899_200c704(vec3_t *pos)
+{
+    int x;
+    int y;
+    unsigned char *result;
+    unsigned char *entry;
+    unsigned int i;
+
+    x = (pos->x - 0x400000) >> 19;
+    y = (pos->z - 0x2700000) >> 19;
+    result = 0;
+    entry = Lm899_4f2c;
+    for (i = 0; i <= 0x24; i++, entry += 0x10) {
+        if ((entry[0] == x || entry[0] + 1 == x) &&
+            (entry[1] == y || entry[1] + 1 == y)) {
+            result = entry;
+            break;
+        }
+    }
+    return result;
+}
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c754.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7bc.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7fc.s");

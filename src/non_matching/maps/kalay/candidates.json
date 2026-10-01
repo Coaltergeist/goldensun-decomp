@@ -4,6 +4,9 @@
   "functions": {
     "OvlFunc_936_20080ac": {
       "id": "overlay:rom_7c097c:020080ac"
+    },
+    "Kalay_MapInit": {
+      "id": "overlay:rom_7c097c:0200964c"
     }
   }
 }
