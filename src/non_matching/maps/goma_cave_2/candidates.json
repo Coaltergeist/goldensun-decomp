@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/goma_cave_2.c",
+  "functions": {
+    "OvlFunc_905_200806c": {
+      "id": "overlay:rom_799abc:0200806c"
+    }
+  }
+}

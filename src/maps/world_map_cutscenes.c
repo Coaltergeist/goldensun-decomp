@@ -6,7 +6,30 @@
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2008030.s");
+void OvlFunc_881_2008030(void)
+{
+    extern unsigned char iwram_3001ebc[];
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern int _divsi3_RAM(int, int);
+    extern unsigned int __Random(void);
+    extern void __Func_8091f14(int, int);
+    unsigned char *base;
+    int *limit;
+    int *value;
+    int offset = 0x8e;
+
+    base = *(unsigned char **)iwram_3001ebc;
+    limit = (int *)((char *)gStateBytes + (offset << 2));
+    value = (int *)(base + 0x1ac);
+    if (*limit >= _divsi3_RAM(*value * 9, 10)) {
+        if (__Random() < 0x8000) {
+            __Func_8091f14(0x808, 3);
+            *(int *)(base + 0x1a8) = 0;
+        } else {
+            *limit = *value;
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200808c.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20080d4.s");
 
@@ -104,8 +127,49 @@ unsigned int OvlFunc_881_2008350(unsigned char *actor)
 }
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/WorldMapCutscenes_GetActors.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20084a0.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20084f0.s");
+void OvlFunc_881_20084a0(int a, int b, int c)
+{
+    extern void *__MapActor_GetActor(int);
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern unsigned char iwram_3001ebc[];
+    struct Actor *actor;
+    struct Actor *other;
+    unsigned char *base;
+    unsigned char *gs;
+
+    actor = (struct Actor *)__MapActor_GetActor(a - 0x64);
+    gs = gStateBytes;
+    gs += (0xfa << 1);
+    other = (struct Actor *)__MapActor_GetActor(*(int *)gs);
+    base = *(unsigned char **)iwram_3001ebc;
+    if (other->pos.x < actor->pos.x) {
+        *(u16 *)(base + (0xb8 << 1)) = b;
+    } else {
+        *(u16 *)(base + (0xb8 << 1)) = c;
+    }
+    API_PlaySound(0x7b);
+}
+void OvlFunc_881_20084f0(int a, int b, int c)
+{
+    extern int __MapActor_GetActor(int);
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern unsigned char iwram_3001ebc[];
+    struct Actor *target;
+    struct Actor *other;
+    unsigned char *base;
+    unsigned char *gs;
+
+    target = (struct Actor *)__MapActor_GetActor(a - 0x64);
+    gs = gStateBytes;
+    gs += (0xfa << 1);
+    other = (struct Actor *)__MapActor_GetActor(*(int *)gs);
+    base = *(unsigned char **)iwram_3001ebc;
+    if (other->pos.z < target->pos.z)
+        *(u16 *)(base + 0x170) = b;
+    else
+        *(u16 *)(base + 0x170) = c;
+    API_PlaySound(0x7b);
+}
 
 
 void OvlFunc_881_2008540(void) {

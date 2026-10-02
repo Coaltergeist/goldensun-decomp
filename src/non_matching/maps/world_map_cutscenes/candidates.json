@@ -13,6 +13,18 @@
       "context": [
         "context.h"
       ]
+    },
+    "OvlFunc_881_200808c": {
+      "id": "overlay:rom_77a7c8:0200808c"
+    },
+    "OvlFunc_881_20080d4": {
+      "id": "overlay:rom_77a7c8:020080d4"
+    },
+    "OvlFunc_881_200a7dc": {
+      "id": "overlay:rom_77a7c8:0200a7dc"
+    },
+    "OvlFunc_881_200c004": {
+      "id": "overlay:rom_77a7c8:0200c004"
     }
   }
 }

@@ -52,7 +52,29 @@ void OvlFunc_956_20081b4(void) {
     __StartTask(OvlFunc_956_200804c, 0xc8 << 4);
 }
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20081c8.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008204.s");
+void OvlFunc_956_2008204(void)
+{
+    extern unsigned char gState[];
+    extern unsigned char *iwram_3001ebc;
+    unsigned int r2;
+    unsigned char *p;
+    struct Actor *actor;
+    struct Actor *other;
+    int id;
+    int z;
+
+    p = iwram_3001ebc;
+    r2 = 0xfa;
+    r2 <<= 1;
+    id = *(int *)((char *)gState + r2);
+    other = *(struct Actor **)(p + 0x1e0);
+    actor = (struct Actor *)__MapActor_GetActor(id);
+    z = *(short *)((char *)actor + 0x12);
+    if (z >= 0xb7 && z <= 0xba) {
+        other->pos.x -= 0xcccc;
+        actor->pos.x -= 0xcccc;
+    }
+}
 
 void OvlFunc_956_200824c(void) {
     int a;

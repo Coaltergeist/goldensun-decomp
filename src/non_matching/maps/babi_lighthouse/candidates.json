@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/babi_lighthouse.c",
+  "functions": {
+    "OvlFunc_965_200a660": {
+      "id": "overlay:rom_7ef4f4:0200a660"
+    }
+  }
+}

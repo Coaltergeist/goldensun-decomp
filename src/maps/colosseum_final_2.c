@@ -196,7 +196,19 @@ void OvlFunc_955_2008950(void) {
     __ClearFlag(0x82 << 1);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008970.s");
+void OvlFunc_955_2008970(void)
+{
+    int i;
+
+    API_WaitFrames(10);
+    i = 0;
+    while (L4834[0] != 0 || L4838[0] != 0x4b) {
+        API_WaitFrames(1);
+        i++;
+        if (i >= 600)
+            return;
+    }
+}
 extern void __Func_809ad90(int);
 
 void OvlFunc_955_20089b0(void)

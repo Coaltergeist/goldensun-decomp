@@ -41,7 +41,25 @@ int OvlFunc_923_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008350.s");
+extern unsigned char iwram_3001ebc[];
+
+void *OvlFunc_923_2008350(int *pos, void *arg1)
+{
+    unsigned int i;
+    unsigned char **actors;
+    unsigned char *actor;
+
+    actors = (unsigned char **)(*(char **)iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        actor = actors[i];
+        if (pos[0] >> 20 == *(int *)(actor + 8) >> 20 &&
+            pos[1] / 0x10000 == *(int *)(actor + 0xc) / 0x10000 &&
+            pos[2] >> 20 == *(int *)(actor + 0x10) >> 20) {
+            return actor;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20083a8.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.s");
 

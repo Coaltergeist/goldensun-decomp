@@ -4,6 +4,9 @@
   "functions": {
     "ColosseumFinal1_MapInit": {
       "id": "overlay:rom_7db0c8:02008a3c"
+    },
+    "OvlFunc_954_200842c": {
+      "id": "overlay:rom_7db0c8:0200842c"
     }
   }
 }

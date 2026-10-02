@@ -6,8 +6,8 @@ void OvlFunc_884_200a3ec(struct Actor *actor)
     s16 count;
     int s;
 
-    count = ++actor->waveCounter;
     linked = actor->linkedActor;
+    count = ++actor->waveCounter;
     if (count > 0x1f) {
         API_DeleteActor((int)actor);
     } else {
