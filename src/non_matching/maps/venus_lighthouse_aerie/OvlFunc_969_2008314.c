@@ -1,4 +1,4 @@
-extern int __Random(void);
+extern unsigned int __Random(void);
 extern int _umodsi3_RAM(unsigned int, unsigned int);
 
 int OvlFunc_969_2008314(struct Actor *actor)
