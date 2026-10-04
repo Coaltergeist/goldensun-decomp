@@ -10,6 +10,12 @@
     },
     "OvlFunc_925_200b208": {
       "id": "overlay:rom_7b0400:0200b208"
+    },
+    "MercuryLighthouseAerie_MapInit": {
+      "id": "overlay:rom_7b0400:0200835c"
+    },
+    "OvlFunc_925_200b4bc": {
+      "id": "overlay:rom_7b0400:0200b4bc"
     }
   }
 }

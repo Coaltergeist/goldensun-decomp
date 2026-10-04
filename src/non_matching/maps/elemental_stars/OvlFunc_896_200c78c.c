@@ -1,5 +1,5 @@
 extern void *__galloc_ewram(u32, u32);
-extern struct Actor *__MapActor_GetActor(int);
+extern void *__MapActor_GetActor(int);
 extern void __Func_800c548(struct Actor *, int);
 extern const int Lm896_5140[] __asm__(".Lm896_5140");
 extern const int Lm896_5168[] __asm__(".Lm896_5168");

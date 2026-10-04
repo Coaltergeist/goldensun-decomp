@@ -31,7 +31,85 @@ int OvlFunc_905_2008030(int *a, int *b)
 }
 
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200806c.s");
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20080c4.s");
+extern unsigned int L1554[] __asm__(".Lm905_1554");
+extern void *OvlFunc_905_200806c(int *, void *);
+extern int __TestCollision(void *, int *);
+extern unsigned char *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_905_20080c4(void)
+{
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern void __Actor_WaitMovement(struct Actor *);
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *hit;
+    int pos[3];
+    unsigned int dir;
+    unsigned int t;
+
+    player = (struct Actor *)__MapActor_GetActor(0);
+    dir = player->facing >> 12;
+
+    t = L1554[dir];
+    pos[0] = player->pos.x + (t & 0xffff0000);
+    pos[1] = player->pos.y;
+    t <<= 16;
+    pos[2] = player->pos.z + t;
+    obj = (struct Actor *)OvlFunc_905_200806c(pos, player);
+    if (obj == NULL)
+        return;
+
+    t = L1554[dir];
+    pos[0] = obj->pos.x + (t & 0xffff0000);
+    pos[1] = obj->pos.y;
+    t <<= 16;
+    pos[2] = obj->pos.z + t;
+    hit = (struct Actor *)OvlFunc_905_200806c(pos, obj);
+    if (hit != NULL && (hit->__unk59 & 1))
+        return;
+
+    pos[0] = obj->pos.x;
+    pos[1] = obj->pos.y + 0x100000;
+    pos[2] = obj->pos.z;
+    hit = (struct Actor *)OvlFunc_905_200806c(pos, obj);
+    if (hit != NULL && (hit->__unk59 & 1))
+        return;
+
+    obj->layer = 2;
+    t = L1554[dir];
+    pos[0] = obj->pos.x + (t & 0xffff0000);
+    pos[1] = obj->pos.y;
+    t <<= 16;
+    pos[2] = obj->pos.z + t;
+    if (__TestCollision(obj, pos) > 0)
+        return;
+    if (obj->__unk62 != 0)
+        return;
+
+    __Actor_SetAnim(player, 8);
+    API_WaitFrames(15);
+    API_PlaySound(0xb9);
+    obj->speed = 0x3333;
+    obj->accel = 0x3333;
+    API_Actor_TravelTo(obj, pos[0], pos[1], pos[2]);
+    player->speed = 0x3333;
+    player->accel = 0x3333;
+    API_Actor_TravelTo(player, pos[0], pos[1], pos[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+
+    obj->pos.x = pos[0];
+    obj->pos.z = pos[2];
+    obj->motion.x = 0;
+    obj->motion.z = 0;
+    player->prevPos.x = 0x80000000;
+    player->prevPos.z = 0x80000000;
+    player->motion.x = 0;
+    player->motion.z = 0;
+    player->pos.x = *(s16 *)((u8 *)player + 0xa) << 16;
+    player->pos.z = *(s16 *)((u8 *)player + 0x12) << 16;
+    __Actor_SetAnim(player, 1);
+}
 INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008244.s");
 
 extern unsigned int L1554[] __asm__(".Lm905_1554");

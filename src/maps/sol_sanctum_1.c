@@ -191,7 +191,71 @@ void OvlFunc_890_20083f4(void)
 
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008488.s");
 INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_20089f4.s");
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2008c00.s");
+extern void *__MapActor_GetActor(int);
+extern unsigned char _MSG_1000[];
+
+void OvlFunc_890_2008c00(void)
+{
+    unsigned char *mover;
+    unsigned char *leader;
+
+    mover = (unsigned char *)__MapActor_GetActor(0x10);
+
+    if (!API_GetFlag(0x809)) {
+        return;
+    }
+    if (API_GetFlag(0x814)) {
+        OvlFunc_890_2008108();
+        return;
+    }
+    if (API_GetFlag(0x819)) {
+        return;
+    }
+
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 0);
+    API_MessageID((int)_MSG_1000);
+
+    if (API_GetFlag(0x810) || !API_GetFlag(0x80a)) {
+        leader = (unsigned char *)__MapActor_GetActor(0);
+        if (leader != 0) {
+            API_MapActor_SetPos(0x10, *(int *)(leader + 0x8), *(int *)(leader + 0x10));
+        }
+        API_CutsceneWait(4);
+        API_MapActor_SetSpeed(0x10, 0x80 << 9, 0x80 << 8);
+    } else if (API_GetFlag(0x810) || *(int *)(mover + 0x8) > (0xaa << 17)) {
+        API_MapActor_SetPos(0x10, 0xc4 << 17, 0xa8 << 16);
+        API_CutsceneWait(4);
+        API_MapActor_SetSpeed(0x10, 0x80 << 10, 0x80 << 9);
+    }
+
+    if (API_GetFlag(0x810) || *(int *)(mover + 0x8) > (0xaa << 17)) {
+        API_MapActor_TravelToAnimWait(0x10, 0x90 << 1, 0xe8);
+    } else {
+        API_GetFlag(0x80a);
+    }
+
+    API_MapActor_TravelToAnimWait(0x10, 0x90 << 1, 0xe8);
+    API_Func_8092adc(0, 0xc0 << 8, 0);
+    API_Func_8092adc(0x10, 0x80 << 7, 0xa);
+    API_ActorMessage_Wait(0x10, 0, 0xa);
+    API_MapActor_DoAnim(0, 3);
+
+    if (API_GetFlag(0x810) || !API_GetFlag(0x80a)) {
+        API_MapActor_SetAnim(0x10, 2);
+        leader = (unsigned char *)__MapActor_GetActor(0);
+        if (leader != 0) {
+            API_MapActor_TravelTo(0x10, *(short *)(leader + 0xa), *(short *)(leader + 0x12));
+        }
+        API_MapActor_WaitMovement(0x10);
+        API_MapActor_SetPos(0x10, 0, 0);
+        API_MapActor_TravelToAnimWait(0, 0x90 << 1, 0xe8);
+    } else {
+        API_MapActor_TravelToAnimWait(0, 0x90 << 1, 0xf8);
+    }
+
+    API_CutsceneEnd();
+}
 extern unsigned char Lm890_2de8[] __asm__(".Lm890_2de8");
 int  __Random(void);
 void __PlaySound(int sound);

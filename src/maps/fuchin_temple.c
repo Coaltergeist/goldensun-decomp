@@ -485,7 +485,26 @@ void OvlFunc_926_200a484(void)
         __CutsceneEnd();
     }
 }
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a508.s");
+extern void __UI_Sanctum(int);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+
+void OvlFunc_926_200a508(void)
+{
+    unsigned char *p;
+    unsigned int facing;
+
+    p = __MapActor_GetActor(0);
+    facing = *(unsigned short *)(p + 6);
+    __CutsceneStart();
+    if ((unsigned int)(facing - 0xa001) <= 0x3ffe) {
+        __UI_Sanctum(0xd);
+    } else {
+        __MessageID(0x1a1c);
+        __ActorMessage(0xd, 0);
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_926_200a54c(void)
 {
@@ -658,7 +677,45 @@ void OvlFunc_926_200c128(void)
 	__Func_8097174();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200c140.s");
+extern unsigned char L51d8[] __asm__(".Lm926_51d8");
+
+struct Effect926Data
+{
+  int flag;
+  char pad0[12];
+  int a;
+  int b;
+  short c;
+  void *d;
+  char pad1[8];
+};
+
+void OvlFunc_926_200c140(void)
+{
+  struct Actor *actor;
+  unsigned int i;
+  struct Effect926Data data;
+
+  actor = (struct Actor *)__MapActor_GetActor(8);
+  data.flag = 1;
+  data.c = 0x119;
+  data.d = L51d8;
+  data.a = 0x38000;
+  data.b = 0x18000;
+  i = 0;
+  do
+  {
+    __CutsceneWait(10);
+    if ((i & 1) != 0)
+    {
+      __PlaySound(0x82);
+    }
+    i = i + 1;
+    OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z - 0x180000, 0,
+                         0x9999, 0, 0x360001, &data);
+  } while (i < 8);
+  __CutsceneWait(0x3c);
+}
 
 extern unsigned int iwram_3001e40;
 extern void __Func_80929d8(struct Actor *actor, int val);

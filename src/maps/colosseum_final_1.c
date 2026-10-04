@@ -156,7 +156,54 @@ void OvlFunc_954_200842c(void)
     z = actor->pos.z >> 20;
     __Func_8010704(0x40, 0x18, 3, 1, 0x40, z);
 }
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008490.s");
+extern vu32 gKeyHeld;
+
+void OvlFunc_954_2008490(void)
+{
+    struct Actor *actor;
+    int x;
+    int dir;
+    int z;
+    u8 *state = gState;
+
+    actor = (struct Actor *)__MapActor_GetActor(*(int *)(state + 0x1f4));
+    x = actor->pos.x >> 20;
+
+    if (gKeyHeld & 0x20) {
+        dir = -1;
+    }
+    if (gKeyHeld & 0x10) {
+        dir = 1;
+    }
+
+    actor = (struct Actor *)__MapActor_GetActor(0x11);
+    z = actor->pos.z >> 20;
+
+    if (x == 0x3f) {
+        if (z == 0xb) {
+            return;
+        }
+        z = 0xa0;
+    } else if (x == 0x43) {
+        if (z == 0xb && dir == -1) {
+            return;
+        }
+        z = 0x60;
+    } else {
+        if (z == 0xb) {
+            z = 0x60;
+        } else {
+            z = 0xa0;
+        }
+        z = -z;
+    }
+
+    __Func_8010704(0x48, 9, 1, 3, x, 9);
+    OvlFunc_954_200833c(0x12, z, 0);
+    actor = (struct Actor *)__MapActor_GetActor(0x12);
+    x = actor->pos.x >> 20;
+    __Func_8010704(0x3f, 0x19, 1, 3, x, 9);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_2008540.s");
 
 

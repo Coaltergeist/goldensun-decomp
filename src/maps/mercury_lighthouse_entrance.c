@@ -60,7 +60,86 @@ void *OvlFunc_923_2008350(int *pos, void *arg1)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20083a8.s");
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern unsigned int L2700__a1[] __asm__(".Lm923_2700");
+extern int __TestCollision(void *, int *);
+extern void __WaitFrames(int);
+extern void __PlaySound(unsigned int);
+extern void __Actor_TravelTo(void *, int, int, int);
+
+void OvlFunc_923_20083a8(void)
+{
+    int stk[3];
+    unsigned char *actor;
+    unsigned char *obj;
+    unsigned char *hit;
+    unsigned int dir;
+    unsigned int t;
+    int zero;
+
+    actor = __MapActor_GetActor(0);
+    dir = *(unsigned short *)(actor + 6) >> 12;
+    t = L2700__a1[dir];
+    stk[0] = *(int *)(actor + 8) + (t & 0xffff0000);
+    stk[1] = *(int *)(actor + 0xc);
+    t <<= 16;
+    stk[2] = *(int *)(actor + 0x10) + t;
+    obj = OvlFunc_923_2008350(stk, actor);
+    if (obj == 0)
+        return;
+
+    t = L2700__a1[dir];
+    stk[0] = *(int *)(obj + 8) + (t & 0xffff0000);
+    stk[1] = *(int *)(obj + 0xc);
+    t <<= 16;
+    stk[2] = *(int *)(obj + 0x10) + t;
+    hit = OvlFunc_923_2008350(stk, obj);
+    if (hit != 0 && (hit[0x59] & 1))
+        return;
+
+    stk[0] = *(int *)(obj + 8);
+    stk[1] = *(int *)(obj + 0xc) + (0x80 << 13);
+    stk[2] = *(int *)(obj + 0x10);
+    hit = OvlFunc_923_2008350(stk, obj);
+    if (hit != 0 && (hit[0x59] & 1))
+        return;
+
+    obj[0x22] = 2;
+    t = L2700__a1[dir];
+    stk[0] = *(int *)(obj + 8) + (t & 0xffff0000);
+    stk[1] = *(int *)(obj + 0xc);
+    t <<= 16;
+    stk[2] = *(int *)(obj + 0x10) + t;
+    if (__TestCollision(obj, stk) > 0)
+        return;
+    zero = obj[0x62];
+    if (zero != 0)
+        return;
+
+    __Actor_SetAnim(actor, 8);
+    __WaitFrames(15);
+    __PlaySound(0xb9);
+    *(int *)(obj + 0x30) = 0x3333;
+    *(int *)(obj + 0x34) = 0x3333;
+    __Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    *(int *)(actor + 0x30) = 0x3333;
+    *(int *)(actor + 0x34) = 0x3333;
+    __Actor_TravelTo(actor, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    __MapActor_PlayPendingSound();
+
+    *(int *)(obj + 8) = stk[0];
+    *(int *)(obj + 0x10) = stk[2];
+    *(int *)(obj + 0x24) = zero;
+    *(int *)(obj + 0x2c) = zero;
+    *(int *)(actor + 0x38) = 0x80 << 24;
+    *(int *)(actor + 0x40) = 0x80 << 24;
+    *(int *)(actor + 0x24) = zero;
+    *(int *)(actor + 0x2c) = zero;
+    *(int *)(actor + 8) = *(short *)(actor + 0xa) << 16;
+    *(int *)(actor + 0x10) = *(short *)(actor + 0x12) << 16;
+    __Actor_SetAnim(actor, 1);
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.s");
 
 extern unsigned int L2700[] __asm__(".Lm923_2700");

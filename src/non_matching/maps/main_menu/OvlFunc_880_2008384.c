@@ -1,3 +1,4 @@
+extern int __GetFlag(int);
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 
 extern GlobalState gState;

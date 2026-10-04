@@ -19,6 +19,12 @@
     },
     "OvlFunc_905_200834c": {
       "id": "overlay:rom_799abc:0200834c"
+    },
+    "GomaCave2_MapInit": {
+      "id": "overlay:rom_799abc:0200921c"
+    },
+    "OvlFunc_905_2008ce0": {
+      "id": "overlay:rom_799abc:02008ce0"
     }
   }
 }

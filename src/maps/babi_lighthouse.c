@@ -390,7 +390,7 @@ void __MapTransitionIn(void);
 void __WaitMapTransition(void);
 int __cos(int);
 int __sin(int);
-void OvlFunc_965_2008cf0(void);
+void OvlFunc_965_2008cf0(struct Actor *);
 void OvlFunc_965_2008ae8(int, int, int, int, int, int, int, int *);
 void __MapActor_Surprise(int, int);
 void __Func_8012330(int, int, int);
@@ -577,7 +577,7 @@ void OvlFunc_965_2009184(void)
     __CutsceneEnd();
 }
 
-extern void OvlFunc_965_20089f4(unsigned int, unsigned int, unsigned int, unsigned int);
+extern void *OvlFunc_965_20089f4(int, int, int, int);
 
 void OvlFunc_965_200919c(void) {
     __CutsceneStart();

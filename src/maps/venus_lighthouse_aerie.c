@@ -392,5 +392,18 @@ void OvlFunc_969_200d9f0(struct Actor *actor) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200da28.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200db90.s");
+extern int __cos(int);
+extern int __sin(int);
+
+void OvlFunc_969_200db90(struct Actor *actor)
+{
+    u16 angle = actor->waveCounter;
+    struct Actor *linked = actor->linkedActor;
+
+    actor->pos.x = linked->pos.x + __cos(angle) * (actor->speed + 0x1c);
+    actor->pos.z = (0xa4 << 16) + (__sin(angle) << 4);
+    actor->prevPos.x = actor->pos.x;
+    actor->prevPos.z = actor->pos.z;
+    actor->waveCounter -= 0x200;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/venus_lighthouse_aerie_data.s");

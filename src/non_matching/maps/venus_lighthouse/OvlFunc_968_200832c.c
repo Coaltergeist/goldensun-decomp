@@ -7,7 +7,7 @@ unsigned int OvlFunc_968_200832c(unsigned int *arg0)
     unsigned int i;
     int x;
 
-    base = (unsigned int *)iwram_3001ebc;
+    base = *(unsigned int **)iwram_3001ebc;
     x = (int)arg0[0] >> 20;
     i = 8;
     p = (unsigned char *)base + 0x34;

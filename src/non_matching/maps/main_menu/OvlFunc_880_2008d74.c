@@ -13,7 +13,6 @@ void OvlFunc_880_2008d74(struct MainMenuTilePos *pos) {
     unsigned short *vram;
     void *tmp;
     int offset;
-    int base;
     int i;
     int j;
 
@@ -22,16 +21,14 @@ void OvlFunc_880_2008d74(struct MainMenuTilePos *pos) {
     offset = pos->y * 32 + pos->x;
     vram = (unsigned short *)0x6002000 + offset;
     buf += offset;
-    base = 0;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 16; j++) {
-            short tile = (base + 0x20 + j) | 0xF000;
+            short tile = (i * 16 + 0x20 + j) | -0x1000;
             *vram++ = tile;
             *buf++ = tile;
         }
         vram += 16;
         buf += 16;
-        base += 16;
     }
     __free(tmp);
 }
