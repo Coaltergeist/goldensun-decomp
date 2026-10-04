@@ -4430,7 +4430,7 @@
     "rom:080796c4": "c",
     "rom:08079700": "c",
     "rom:08079728": "c",
-    "rom:08079754": "assembly",
+    "rom:08079754": "c",
     "rom:0807977c": "assembly",
     "rom:080797d4": "c",
     "rom:080797ec": "c",
@@ -5799,7 +5799,7 @@
   "input_count": 3756,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "3a813f17bbef475cd7f8500c2d36fdbb27a6ecccd66fd9974dfb26058ddc6feb",
+  "source_fingerprint": "61c95cb4df73ca4a42586f72ae058bea41919e9ff35a1c0a9639acfc5710736b",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
