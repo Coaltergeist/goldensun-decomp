@@ -1,7 +1,3 @@
-typedef struct { unsigned char _bytes[704]; } GlobalState;
-
-extern GlobalState gState;
-
 extern void *iwram_3001ebc;
 
 int ColosseumFinal1_MapInit(void)

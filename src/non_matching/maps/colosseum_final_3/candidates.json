@@ -10,6 +10,27 @@
     },
     "ColosseumFinal3_MapInit": {
       "id": "overlay:rom_7e0928:02008da4"
+    },
+    "OvlFunc_956_2008ba4": {
+      "id": "overlay:rom_7e0928:02008ba4"
+    },
+    "OvlFunc_956_20093c0": {
+      "id": "overlay:rom_7e0928:020093c0"
+    },
+    "OvlFunc_956_20084a4": {
+      "id": "overlay:rom_7e0928:020084a4"
+    },
+    "OvlFunc_956_2008c5c": {
+      "id": "overlay:rom_7e0928:02008c5c"
+    },
+    "OvlFunc_956_20082f8": {
+      "id": "overlay:rom_7e0928:020082f8"
+    },
+    "OvlFunc_956_2009f90": {
+      "id": "overlay:rom_7e0928:02009f90"
+    },
+    "OvlFunc_956_200804c": {
+      "id": "overlay:rom_7e0928:0200804c"
     }
   }
 }

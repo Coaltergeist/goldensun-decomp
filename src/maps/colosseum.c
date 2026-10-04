@@ -31,7 +31,62 @@ void *Colosseum_GetExits(void) {
     return (void *)gOvl_0200b2bc;
 }
 
-INCLUDE_ASM("asm/maps/colosseum/Colosseum_GetActors.s");
+extern unsigned char Lconst_8c[] __asm__(".Lconst_8c");
+__asm__(".equ .Lconst_8c, 0x8c");
+extern unsigned char Lconst_8e[] __asm__(".Lconst_8e");
+__asm__(".equ .Lconst_8e, 0x8e");
+
+extern unsigned char Lm953_339c[] __asm__(".Lm953_339c");
+extern unsigned char Lm953_35f4[] __asm__(".Lm953_35f4");
+extern unsigned char Lm953_37bc[] __asm__(".Lm953_37bc");
+extern unsigned char Lm953_387c[] __asm__(".Lm953_387c");
+extern unsigned char Lm953_399c[] __asm__(".Lm953_399c");
+extern unsigned char Lm953_375c[] __asm__(".Lm953_375c");
+extern unsigned char Lm953_3e1c[] __asm__(".Lm953_3e1c");
+extern unsigned char Lm953_3bdc[] __asm__(".Lm953_3bdc");
+extern unsigned char Lm953_3a44[] __asm__(".Lm953_3a44");
+extern unsigned char Lm953_3324[] __asm__(".Lm953_3324");
+
+void *Colosseum_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+
+    if (ev == (int)Lconst_8c) {
+        switch (*(short *)((char *)p + 0x1c2)) {
+        case 0x5:
+        case 0x45:
+            return Lm953_339c;
+        case 0x7:
+        case 0x46:
+            return Lm953_35f4;
+        case 0x8:
+        case 0x15:
+        case 0x1f:
+        case 0x40:
+        case 0x41:
+        case 0x43:
+            return Lm953_37bc;
+        case 0xc:
+            return Lm953_387c;
+        case 0x42:
+        case 0x44:
+            return Lm953_399c;
+        default:
+            return Lm953_375c;
+        }
+    }
+
+    if (ev == (int)Lconst_8e) {
+        if (API_GetFlag(0x95 << 4))
+            return Lm953_3e1c;
+        if (API_GetFlag(0x962))
+            return Lm953_3bdc;
+        return Lm953_3a44;
+    }
+
+    return Lm953_3324;
+}
 extern unsigned char _EVENT_8d[];
 extern unsigned char Lm953_3e70[] __asm__(".Lm953_3e70");
 extern unsigned char Lm953_4110[] __asm__(".Lm953_4110");
@@ -395,7 +450,90 @@ int Colosseum_MapInit(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009a4c.s");
+void OvlFunc_953_2009a4c(void)
+{
+    extern void __WaitFrames(int);
+    extern void __MapActor_SetAnim(int, int);
+    extern int __GetFlag(int);
+    extern void __SetFlag(int);
+    extern void __AddPartyMember(int);
+    extern void __Func_807a664(void);
+    extern void OvlFunc_953_2009298(void);
+    extern void OvlFunc_953_200960c(void);
+    extern void OvlFunc_953_2009688(void);
+    extern void OvlFunc_953_2009cd4(void);
+    extern void OvlFunc_953_200a3e0(void);
+    extern void OvlFunc_953_200a4d8(void);
+    extern void OvlFunc_953_200a5f0(void);
+    extern void OvlFunc_953_200a668(void);
+    extern void OvlFunc_953_200a820(void);
+    extern void OvlFunc_953_200a904(void);
+    extern void OvlFunc_953_200a964(void);
+    extern void OvlFunc_953_200ab1c(void);
+    int offset;
+    short val;
+
+    __WaitFrames(1);
+    offset = 0xe1;
+    offset <<= 1;
+    val = *(short *)((char *)&gState + offset);
+    switch (val) {
+    case 5:
+        __MapActor_SetAnim(8, 2);
+        __MapActor_SetAnim(9, 2);
+        break;
+    case 0x45:
+        __MapActor_SetAnim(8, 2);
+        __MapActor_SetAnim(9, 2);
+        if (!__GetFlag(0x109)) {
+            OvlFunc_953_200960c();
+        }
+        break;
+    case 7:
+        OvlFunc_953_2009298();
+        break;
+    case 0x46:
+        OvlFunc_953_2009688();
+        break;
+    case 0x40:
+        OvlFunc_953_2009cd4();
+        __Func_807a664();
+        break;
+    case 0x41:
+        OvlFunc_953_200a3e0();
+        break;
+    case 0x42:
+        OvlFunc_953_200a5f0();
+        break;
+    case 0xc:
+        __SetFlag(0x144);
+        OvlFunc_953_200ab1c();
+        if (!__GetFlag(0x109)) {
+            OvlFunc_953_200a4d8();
+        }
+        break;
+    case 0x15:
+        __AddPartyMember(1);
+        __AddPartyMember(2);
+        __AddPartyMember(3);
+        __SetFlag(0x90e);
+        OvlFunc_953_200a668();
+        break;
+    case 0x43:
+        OvlFunc_953_200a820();
+        break;
+    case 0x44:
+        OvlFunc_953_200a904();
+        break;
+    case 0x1f:
+        __AddPartyMember(1);
+        __AddPartyMember(2);
+        __AddPartyMember(3);
+        __SetFlag(0x90f);
+        OvlFunc_953_200a964();
+        break;
+    }
+}
 
 void OvlFunc_953_2009c48(void) {
     extern int __ActorMessage();
@@ -430,7 +568,53 @@ void OvlFunc_953_2009c6c(void) {
 
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_2009cd4.s");
 INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a3e0.s");
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200a4d8.s");
+void OvlFunc_953_200a4d8(void)
+{
+    extern void Colosseum_MessageActor(int) __asm__("OvlFunc_953_2009c48");
+    int actor;
+    unsigned short *p;
+    unsigned short *p2;
+    unsigned short v;
+
+    actor = __MapActor_GetActor(0xd);
+    API_CutsceneStart();
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x28);
+    API_Func_80925cc(8, 2);
+    API_MapActor_SetIdle(0xd);
+    API_WaitFrames(1);
+    API_Func_8092adc(0, 0xe0 << 8, 0);
+    API_MapActor_SetAnim(0xd, 1);
+    API_Func_8092adc(0xc, 0xd0 << 8, 0);
+    API_Func_8092adc(0xd, 0, 0);
+    API_Func_8092adc(0xe, 0x80 << 8, 0);
+    API_Func_8092adc(0xf, 0xd0 << 8, 0);
+    API_Func_8092adc(0x10, 0x80 << 8, 0);
+    API_Func_8092adc(0x11, 0xb0 << 8, 0);
+    API_Func_8092adc(0x12, 0xb0 << 8, 0);
+    API_MessageID(0x2112);
+    Colosseum_MessageActor(8);
+    API_MapActor_DoAnim(0, 3);
+
+    p = (unsigned short *)(actor + 0x64);
+    v = 0xb4;
+    v <<= 2;
+    *p = v;
+
+    p2 = (unsigned short *)(actor + 0x66);
+    v = 0x70;
+    *p2 = v;
+
+    API_MapActor_SetBehavior(0xd, 2);
+    API_Func_8092adc(0xc, 0xc0 << 6, 0);
+    API_Func_8092adc(0xe, 0xb0 << 8, 0);
+    API_Func_8092adc(0xf, 0xa0 << 7, 0);
+    API_Func_8092adc(0x10, 0, 0);
+    API_Func_8092adc(0x11, 0xa0 << 7, 0);
+    API_Func_8092adc(0x12, 0xa0 << 7, 0);
+    API_CutsceneEnd();
+}
 void OvlFunc_953_200a5f0(void)
 {
     API_CutsceneStart();

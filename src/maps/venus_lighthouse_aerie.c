@@ -24,7 +24,22 @@ void OvlFunc_969_2008400(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008424.s");
+extern unsigned int __Random(void);
+
+int OvlFunc_969_2008424(struct Actor *actor)
+{
+    s16 *timer;
+
+    timer = (s16 *)&actor->__unk66;
+    if (*timer == 0) {
+        actor->facing += (__Random() * 0x8000) >> 16;
+        *timer = (__Random() * 80) >> 16;
+    }
+    if (*timer != 0) {
+        *timer -= 1;
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_0200e3d4[];
 
@@ -70,8 +85,90 @@ int OvlFunc_969_2008480(int *a, int *b)
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20084bc.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008518.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20085ec.s");
+void OvlFunc_969_20086c0(void);
+void __vec3_translate(int, int, vec3_t *);
+int __TestCollision(struct Actor *, vec3_t *);
+void __ClearFlag(int);
+void __Actor_SetAnim(struct Actor *, int);
+void __WaitFrames(int);
+void __PlaySound(int);
+void __Actor_SetSpriteFlags(int, int);
+void __MapActor_TravelToWait(int, int, int);
+
+void OvlFunc_969_2008518(void)
+{
+    struct Actor *actor;
+    int angle;
+    u8 unk55;
+    vec3_t vec;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    angle = (actor->facing + 0x1000) & 0xe000;
+    unk55 = actor->__unk55;
+    vec.x = (actor->pos.x & 0xfff00000) + 0x80000;
+    vec.y = actor->pos.y;
+    vec.z = (actor->pos.z & 0xfff00000) + 0x80000;
+    __vec3_translate(0x200000, angle, &vec);
+    if (!__TestCollision(actor, &vec)) {
+        __ClearFlag(0x250);
+        OvlFunc_969_20086c0();
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(6);
+        __Actor_SetAnim(actor, 7);
+        actor->speed = 0x30000;
+        actor->accel = 0x20000;
+        __PlaySound(0x98);
+        actor->motion.y = 0x40000;
+        actor->__unk55 &= 0x7e;
+        __Actor_SetSpriteFlags((int)actor, 0);
+        __MapActor_TravelToWait(0, vec.x >> 16, vec.z >> 16);
+        __Actor_SetAnim(actor, 6);
+        __Actor_SetSpriteFlags((int)actor, 1);
+        actor->__unk55 = unk55;
+    }
+}
+extern int D_m969_66e8 __asm__(".Lm969_66e8");
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void __SetFlag(int);
+extern void __WaitFrames(int);
+extern int OvlFunc_969_20084bc(void);
+
+void OvlFunc_969_20085ec(void)
+{
+    struct Actor *actor0;
+    struct Actor *actor;
+
+    actor0 = (struct Actor *)__MapActor_GetActor(0);
+    __CutsceneStart();
+    D_m969_66e8 = OvlFunc_969_20084bc();
+    if (D_m969_66e8 != 0) {
+        __SetFlag(0x250);
+        actor = (struct Actor *)__MapActor_GetActor(D_m969_66e8);
+        actor->__unk55 = 0;
+        actor0->__unk55 &= 0xfe;
+        actor->pos.y -= 0x30000;
+        actor0->pos.y -= 0x30000;
+        actor0->floorPos -= 0x30000;
+        __WaitFrames(2);
+        actor->pos.y -= 0x20000;
+        actor0->pos.y -= 0x20000;
+        actor0->floorPos -= 0x20000;
+        __WaitFrames(10);
+        actor->pos.y += 0x20000;
+        actor0->pos.y += 0x20000;
+        actor0->floorPos += 0x20000;
+        __WaitFrames(4);
+        actor->pos.y += 0x20000;
+        actor0->pos.y += 0x20000;
+        actor0->floorPos += 0x20000;
+        __WaitFrames(4);
+        actor->pos.y += 0x10000;
+        actor0->pos.y += 0x10000;
+        actor0->floorPos += 0x10000;
+    }
+    __CutsceneEnd();
+}
 
 void OvlFunc_969_20086c0(void) {
     ((unsigned char *) __MapActor_GetActor(0))[0x55] = 3;
@@ -106,7 +203,26 @@ void OvlFunc_969_20088a8(int a, int b) {
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20088b4.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2009280.s");
+extern void __Func_8092950(int a, int b);
+extern void __Actor_SetSpriteFlags(int actor, int flags);
+extern void __MapActor_SetSpeed(int a, int b, int c);
+
+static inline void MapActor_SetSpeed(int a, int b, int c)
+{
+    __MapActor_SetSpeed(a, b, c);
+}
+
+void OvlFunc_969_2009280(int a, int b)
+{
+    if (b != 0) {
+        __Func_8092950(a, 0);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(a), 1);
+        MapActor_SetSpeed(a, 0xcccc, 0x6666);
+    } else {
+        __Func_8092950(a, 0xf);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(a), 0);
+    }
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20092c8.s");
 
 extern unsigned int iwram_3001e40;
@@ -173,8 +289,38 @@ void OvlFunc_969_200b5c4(void) {
     __WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b600.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b660.s");
+extern int __cos(int);
+extern int __sin(int);
+
+void OvlFunc_969_200b600(struct Actor *actor)
+{
+    struct Actor *centerActor;
+    u16 angle;
+
+    centerActor = ((struct Actor *(*)(int))__MapActor_GetActor)(0x18);
+    angle = actor->waveCounter;
+    actor->pos.x = centerActor->pos.x + __cos(angle) * (actor->speed + 3);
+    actor->pos.z = centerActor->pos.z + (__sin(angle) * 2);
+    actor->prevPos.x = actor->pos.x;
+    actor->prevPos.z = actor->pos.z;
+    actor->waveCounter -= 0x800;
+}
+extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+extern int __cos(int);
+extern int __sin(int);
+
+void OvlFunc_969_200b660(struct Actor *actor)
+{
+    struct Actor *other = MapActor_GetActor(0x17);
+    u16 *waveCounter = (u16 *)&actor->waveCounter;
+    u16 angle = *waveCounter;
+
+    actor->pos.x = other->pos.x + __cos(angle) * (actor->speed + actor->__unk62 + 6);
+    actor->pos.z = other->pos.z + __sin(angle) * (actor->__unk62 + 4);
+    actor->prevPos.x = actor->pos.x;
+    actor->prevPos.z = actor->pos.z;
+    *waveCounter -= 0x800;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b6d0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b7c4.s");
 

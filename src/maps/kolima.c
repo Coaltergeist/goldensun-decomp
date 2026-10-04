@@ -50,7 +50,31 @@ unsigned int OvlFunc_911_20080cc(unsigned int arg0)
     }
     return 1;
 }
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008114.s");
+extern int __atan2(int, int);
+
+u32 OvlFunc_911_2008114(struct Actor *actor)
+{
+    struct Actor *target = actor->linkedActor;
+
+    if (target != NULL) {
+        u16 angle;
+        int diff;
+
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (s16)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x1000) {
+                diff = 0x1000;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;

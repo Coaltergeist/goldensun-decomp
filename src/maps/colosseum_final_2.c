@@ -265,6 +265,62 @@ INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20092f0.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2009424.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2009538.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20096d4.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2009898.s");
+extern void __Actor_SetAnim(struct Actor *, int);
+extern void __Actor_WaitMovement(struct Actor *);
+
+void OvlFunc_955_2009898(int arg0, int arg1, int arg2)
+{
+    unsigned int r3;
+    int leaderId;
+    struct Actor *actorB;
+    struct Actor *actorA;
+    int cond;
+    int dx;
+    int dz;
+
+    r3 = (unsigned int)&gState;
+    r3 += 0xfa << 1;
+    leaderId = *(int *)r3;
+
+    actorB = __MapActor_GetActor(leaderId);
+    actorA = __MapActor_GetActor(arg0);
+
+    cond = actorA->pos.x >> 20 != arg1 / 2;
+    arg1 <<= 16;
+    arg2 <<= 16;
+    if (cond) {
+        dx = (arg1 - actorA->pos.x) / 2;
+        dz = 0;
+    } else {
+        dx = 0;
+        dz = (arg2 - actorA->pos.z) / 2;
+    }
+
+    API_MapActor_SetAnim(leaderId, 8);
+    API_CutsceneWait(6);
+
+    actorA->speed = 0x8000;
+    actorA->accel = 0x3333;
+    API_PlaySound(0xef);
+    __Actor_SetAnim(actorA, 3);
+    API_Actor_TravelTo(actorA, arg1, 0, arg2);
+
+    API_CutsceneWait(6);
+
+    API_MapActor_SetAnim(leaderId, 2);
+    API_MapActor_SetSpeed(leaderId, 0x8000, 0x3333);
+
+    __Actor_SetAnim(actorB, 2);
+    API_Actor_TravelTo(actorB, actorB->pos.x + dx, 0, actorB->pos.z + dz);
+    __Actor_WaitMovement(actorB);
+    __Actor_SetAnim(actorB, 1);
+
+    __Actor_WaitMovement(actorA);
+    __Actor_SetAnim(actorA, 1);
+
+    API_PlaySound(0x120);
+    API_PlaySound(0xd5);
+    API_CutsceneWait(15);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20099bc.s");
 INCLUDE_ASM("asm/maps/colosseum_final_2/colosseum_final_2_data.s");

@@ -86,7 +86,30 @@ void OvlFunc_956_200824c(void) {
 }
 
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008274.s");
+extern struct Actor *__MapActor_GetActor(int);
+
+void OvlFunc_956_2008274(void) {
+    struct Actor *actor;
+
+    actor = __MapActor_GetActor(9);
+    actor->scale.x = 0x80 << 9;
+    actor->scale.y = 0x80 << 9;
+
+    actor = __MapActor_GetActor(0xb);
+    actor->accel = 0x6666;
+    actor->speed = 0xcccc;
+    API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 14, actor->pos.z);
+
+    actor = __MapActor_GetActor(0xa);
+    actor->accel = 0x6666;
+    actor->speed = 0xcccc;
+    API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 11, actor->pos.z);
+
+    API_SetFlag(0x362);
+
+    API_Func_8010704(0xf, 0xc, 1, 1, 0xd, 0xc);
+    API_Func_8010704(0xe, 0xc, 1, 1, 9, 0xc);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20082f8.s");
 
 void OvlFunc_956_2008404(void) {
@@ -149,7 +172,24 @@ void OvlFunc_956_20085d4(void) {
     OvlFunc_common1_2060();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20085e0.s");
+extern int __Func_8011f54(int, int, int);
+
+void OvlFunc_956_20085e0(void)
+{
+    int i;
+
+    for (i = 0xf; i <= 0x11; i++) {
+        struct Actor *actor = __MapActor_GetActor(i);
+
+        if (__Func_8011f54(0, actor->pos.x, actor->pos.z) == 0) {
+            actor->flags = 2;
+            actor->__unk55 = 0;
+            API_Func_8010704(0x53, 0xd, 1, 1, actor->pos.x >> 20, actor->pos.z >> 20);
+            API_Func_8010704(0x53, 0xd, 1, 1, actor->pos.x >> 20, (actor->pos.z >> 20) + 0x34);
+            API_SetFlag(i + 0x205);
+        }
+    }
+}
 
 typedef struct { unsigned char _bytes[704]; } GlobalState;
 extern GlobalState gState;

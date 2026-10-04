@@ -1,5 +1,5 @@
-extern int __cos(u16);
-extern int __sin(u16);
+extern int __cos(int);
+extern int __sin(int);
 
 void OvlFunc_969_200db90(struct Actor *actor)
 {

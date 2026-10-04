@@ -390,7 +390,34 @@ void OvlFunc_936_2009858(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20098a4.s");
+extern unsigned int iwram_3001ebc;
+extern void __Func_800fe9c(void);
+extern void __Func_8091ff0(int);
+
+void OvlFunc_936_20098a4(void)
+{
+    unsigned int r3;
+    unsigned int r2;
+    short val;
+
+    *(int *)((char *)iwram_3001ebc + 0x1c0) = 0x204;
+    if (API_GetFlag(0x915)) {
+        API_CopyMapTiles(0x3a, 5, 0x3a, 8, 2, 3);
+        API_Func_8010704(8, 0xb, 2, 1, 8, 0xa);
+        API_CopyMapTiles(8, 0xc, 8, 0xb, 2, 1);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+    }
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    r2 = 0;
+    val = *(short *)((char *)r3 + r2);
+    if (val <= 3) {
+        __Func_8091ff0(0xaa);
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009930.s");
 
 extern void OvlFunc_936_2009ea4(unsigned int);

@@ -182,7 +182,57 @@ void OvlFunc_888_2008574(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/ValeSanctum_MapInit.s");
+void OvlFunc_888_200b270(void);
+void OvlFunc_888_200888c(void);
+
+int ValeSanctum_MapInit(void)
+{
+    GlobalState *p;
+    int f1;
+
+    *(int *)(*(unsigned int *)iwram_3001ebc + 0x1c0) = 0x209;
+    API_Func_8091200(0x80 << 9, 0);
+    API_Func_8091254(1);
+    API_CutsceneWait(1);
+
+    p = &gState;
+    f1 = *(short *)((char *)p + 0x1c2);
+    switch (f1) {
+    case 0xa:
+    case 0xb:
+    case 0xc:
+        if (API_GetFlag(0x855)) {
+            API_MapActor_SetPos(10, 0xc8 << 16, 0xa0 << 15);
+        }
+        API_ClearFlag(0x12f);
+        break;
+
+    case 0x14:
+        OvlFunc_888_200b270();
+        if (!API_GetFlag(0x109)) {
+            OvlFunc_888_200888c();
+        }
+        API_ClearFlag(0x12f);
+        break;
+
+    case 0x1d:
+    case 0x20:
+    case 0x23:
+        API_ClearFlag(0x12f);
+        break;
+
+    case 0x15:
+        OvlFunc_888_200b270();
+        API_SetFlag(0x201);
+        if (!API_GetFlag(0x109)) {
+            OvlFunc_888_200888c();
+        }
+        API_ClearFlag(0x12f);
+        break;
+    }
+
+    return 0;
+}
 extern void __Func_8093500(unsigned int, unsigned int);
 extern void __Func_8093530(void);
 
@@ -263,7 +313,36 @@ INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a90c.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b098.s");
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b144.s");
+extern void __Actor_SetScript(struct Actor *, void *);
+extern unsigned char gScript_888__0200c18c[];
+
+void OvlFunc_888_200b144(struct Actor *actor)
+{
+    int scale;
+
+    actor->prevPos.y = actor->pos.y += actor->waveCounter << 12;
+
+    scale = 0;
+    switch (((s16)actor->__unk66 >> 2) & 3) {
+    case 0:
+        scale = 0x80 << 9;
+        break;
+    case 1:
+    case 3:
+        scale = 0xcccc;
+        break;
+    case 2:
+        scale = 0x9999;
+        break;
+    }
+
+    actor->scale.x = scale;
+    actor->scale.y = scale;
+
+    if (--*(s16 *)&actor->__unk66 <= 0) {
+        __Actor_SetScript(actor, gScript_888__0200c18c);
+    }
+}
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b1b8.s");
 
 extern void __CopyMapTiles(int, int, int, int, int, int);
@@ -317,7 +396,40 @@ void OvlFunc_888_200b2d0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b334.s");
+extern void OvlFunc_888_2008360(void);
+
+void OvlFunc_888_200b334(void) {
+    unsigned int r2;
+
+    if (OvlFunc_888_200b2a8()) {
+        __UI_Sanctum(8);
+    } else {
+        __CutsceneStart();
+        r2 = 0xe1;
+        r2 <<= 1;
+        switch (*(short *)((char *)&gState + r2)) {
+        case 0xa:
+        case 0xc:
+            if (__GetFlag(0x855)) {
+                __MessageID(0x1376);
+            } else {
+                __MessageID(0x1288);
+            }
+            break;
+        case 0xb:
+            __MessageID(0x1ce8);
+            break;
+        case 0x14:
+        case 0x15:
+        case 0x32:
+            __CutsceneEnd();
+            OvlFunc_888_2008360();
+            return;
+        }
+        __ActorMessage(8, 0);
+        __CutsceneEnd();
+    }
+}
 
 
 void OvlFunc_888_200b45c(void) {

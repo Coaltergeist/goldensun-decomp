@@ -2,8 +2,8 @@ void __WaitFrames(int);
 
 void OvlFunc_956_20081c8(void)
 {
-    extern unsigned char L5480[] __asm__(".L5480");
-    extern unsigned char L5484[] __asm__(".L5484");
+    extern unsigned char L5480[] __asm__(".Lm956_5480");
+    extern unsigned char L5484[] __asm__(".Lm956_5484");
     int r5;
     int r3;
 

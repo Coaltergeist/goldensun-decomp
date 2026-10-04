@@ -1,7 +1,10 @@
+/* GCC names r10 as sl in indirect-call helpers. */
+__asm__(".set _call_via_sl, _call_via_r10");
+
 extern void __CutsceneWait(unsigned int arg0);
 extern void __PlaySound(unsigned int arg0);
 
-#include "math.h"
+extern int Func_8000888(int, int) __attribute__((long_call));
 
 void __Actor_SetSpriteFlags(void *, int);
 
@@ -45,8 +48,8 @@ void OvlFunc_897_2008f64(void)
             actor = (unsigned char *)__MapActor_GetActor(i + 16);
             theta = i << 12;
             *(unsigned short *)(*(unsigned char **)(actor + 0x50) + 0x1e) = theta + -0x4000;
-            fx = fx32_multiply(__cos(theta), 0x80 << 17);
-            fz = fx32_multiply(__sin(theta), 0x80 << 17);
+            fx = Func_8000888(__cos(theta), 0x80 << 17);
+            fz = Func_8000888(__sin(theta), 0x80 << 17);
             __Actor_TravelTo(actor, *(int *)(actor + 8) + fx, *(int *)(actor + 0xc), *(int *)(actor + 0x10) + fz);
         }
     }

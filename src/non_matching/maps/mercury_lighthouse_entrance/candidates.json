@@ -22,6 +22,21 @@
     },
     "OvlFunc_923_200a370": {
       "id": "overlay:rom_7aa430:0200a370"
+    },
+    "OvlFunc_923_2009df8": {
+      "id": "overlay:rom_7aa430:02009df8"
+    },
+    "OvlFunc_923_2009ec8": {
+      "id": "overlay:rom_7aa430:02009ec8"
+    },
+    "OvlFunc_923_2008ba4": {
+      "id": "overlay:rom_7aa430:02008ba4"
+    },
+    "OvlFunc_923_2009cb4": {
+      "id": "overlay:rom_7aa430:02009cb4"
+    },
+    "OvlFunc_923_2008630": {
+      "id": "overlay:rom_7aa430:02008630"
     }
   }
 }

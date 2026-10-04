@@ -5,12 +5,13 @@ int OvlFunc_969_20084bc(void)
     struct Actor **actor_ptr;
     int best_id;
     int min_dist;
-    int i;
+    unsigned int i;
 
-    actor_ptr = (struct Actor **)(*(unsigned char **)iwram_3001ebc + 0x34);
+    actor_ptr = (struct Actor **)*(unsigned char **)iwram_3001ebc;
     best_id = 0;
     leader = (struct Actor *)__MapActor_GetActor(0);
     min_dist = 0xa0 << 2;
+    actor_ptr = (struct Actor **)((unsigned char *)actor_ptr + 0x34);
 
     for (i = 8; i <= 0x41; i++) {
         struct Actor *actor = *actor_ptr++;

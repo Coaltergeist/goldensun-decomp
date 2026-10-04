@@ -436,7 +436,65 @@ void OvlFunc_895_200892c(void) {
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008a24.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008d1c.s");
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008f8c.s");
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_200961c.s");
+void OvlFunc_895_200961c(void)
+{
+    unsigned char *actor;
+
+    API_CutsceneStart();
+    *(int *)(iwram_3001ebc + 0x1c0) = 0x204;
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x14);
+
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    if (actor != 0) {
+        API_MapActor_SetPos(8, *(int *)(actor + 8), *(int *)(actor + 0x10));
+    }
+
+    API_MapActor_SetSpeed(8, 0x10000, 0x8000);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelBy(8, 0x18, -10);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_CutsceneWait(6);
+
+    API_Func_8092adc(8, 0xb000, 0);
+    API_Func_8092adc(0, 0xc000, 0x28);
+
+    API_Func_80933d4(0x26666, 0x4ccc);
+    API_Func_80933f8(0xd1 << 19, -1, 0x83 << 18, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+
+    API_Func_80933d4(0x19999, 0x3333);
+    API_Func_80933f8(0xeb << 19, -1, 0x83 << 18, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+
+    API_Func_80933d4(0x33333, 0x6666);
+    API_Func_80933f8(0x6e90000, -1, 0x89 << 18, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+
+    API_Func_80925cc(8, 2);
+    API_Func_8092adc(8, 0, 0x1e);
+    API_MessageID(0x103a);
+    API_ActorMessage_Wait(0x4008, 0, 0xa);
+    API_MapActor_Emote(8, 0x100, 0x28);
+    API_Func_80925cc(8, 1);
+    API_Func_8092adc(8, 0x5000, 0x14);
+    API_ActorMessage_Wait(0x4008, 0, 0xa);
+    API_MapActor_SetAnim(8, 2);
+
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(8, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetPos(8, 0, 0);
+    API_SetFlag(0x825);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20097c0.s");
 
 void OvlFunc_895_2009aac(void)

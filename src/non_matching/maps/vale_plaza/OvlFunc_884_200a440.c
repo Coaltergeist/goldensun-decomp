@@ -30,7 +30,7 @@ void OvlFunc_884_200a440(unsigned int arg0)
             if (sprite != 0) {
                 unsigned char slotVal;
                 __Sprite_SetAnim(sprite, 0);
-                slotVal = *(unsigned char *)((char *)base + 0x46);
+                slotVal = 0;
                 *(unsigned char *)((char *)sprite + 0x26) = slotVal;
                 __Func_8003f3c(*(unsigned char *)((char *)sprite + 0x1c));
                 *(unsigned char *)((char *)sprite + 0x1c) = *(unsigned short *)((char *)base + 0x46);
@@ -44,7 +44,7 @@ void OvlFunc_884_200a440(unsigned int arg0)
                 }
                 {
                     unsigned char b5 = *(unsigned char *)((char *)sprite + 5);
-                    b5 = (b5 & (unsigned char)~0x21 & 0x3f) | 0x40;
+                    b5 = (b5 & (unsigned char)~0x20 & 0x3f) | 0x40;
                     *(unsigned char *)((char *)sprite + 5) = b5;
                     {
                         unsigned char b7 = *(unsigned char *)((char *)sprite + 7);

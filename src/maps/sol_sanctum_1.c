@@ -791,7 +791,61 @@ void OvlFunc_890_2009790(void)
     __WaitMapTransition();
     __Func_8091e9c(5);
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_1/OvlFunc_890_2009a58.s");
+extern void *__MapActor_GetActor(int);
+extern unsigned int OvlFunc_890_200a5b0(void);
+
+void OvlFunc_890_2009a58(void)
+{
+    unsigned char *actor;
+
+    if (!API_GetFlag(0x81 << 4) && OvlFunc_890_200a5b0()) {
+        API_CutsceneStart();
+        API_MapActor_SetPos(0x10, 0x2410000, 0x93 << 16);
+        API_Func_8092adc(0x10, 0x80 << 7, 1);
+        API_Func_80933f8(0x23e0000, -1, 0xb8 << 16, 1);
+        API_MessageID(0x1027);
+        API_MapActor_TravelToAnimWait(0, 0x90 << 2, 0xe8);
+        API_MapActor_SetAnim(0, 0);
+        API_Func_8093530();
+        API_CutsceneWait(10);
+        API_MapActor_SetSpeed(0x10, 0x80 << 9, 0x80 << 8);
+        API_MapActor_TravelToAnimWait(0x10, 0x90 << 2, 0x98);
+        API_CutsceneWait(6);
+        API_MapActor_Jump(0x10, 6, 0x1e);
+        OvlFunc_890_200a5fc(0x10, 6);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(2);
+        API_MapActor_DoAnim(0x10, 4);
+        OvlFunc_890_200a5fc(0x10, 6);
+        API_MapActor_Surprise(0, 0x81 << 1);
+        API_CutsceneWait(0x28);
+        API_Func_80925cc(0x10, 2);
+        API_CutsceneWait(0x1e);
+        OvlFunc_890_200a5fc(0x10, 6);
+        API_MapActor_DoAnim(0, 3);
+        API_MapActor_TravelToAnimWait(0x10, 0x90 << 2, 0xb8);
+        API_CutsceneWait(6);
+        API_Func_80925cc(0x10, 2);
+        API_CutsceneWait(0x28);
+        OvlFunc_890_200a5fc(0x4010, 6);
+        API_MapActor_TravelToAnimWait(0x10, 0x90 << 2, 0xd0);
+        API_CutsceneWait(0x28);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(6);
+        API_MapActor_SetSpeed(0x10, 0x80 << 8, 0x80 << 7);
+        API_MapActor_SetAnim(0x10, 2);
+
+        actor = (unsigned char *)__MapActor_GetActor(0);
+        if (actor != 0) {
+            API_MapActor_TravelTo(0x10, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+        }
+
+        API_MapActor_WaitMovement(0x10);
+        API_MapActor_SetPos(0x10, 0, 0);
+        API_SetFlag(0x81 << 4);
+        API_CutsceneEnd();
+    }
+}
 
 void OvlFunc_890_2009be8(void) {
 	API_PlaySound(0x15);

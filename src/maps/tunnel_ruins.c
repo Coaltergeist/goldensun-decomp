@@ -51,7 +51,25 @@ int OvlFunc_964_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200806c.s");
+extern unsigned char iwram_3001ebc[];
+
+void *OvlFunc_964_200806c(int *pos, void *arg1)
+{
+    struct Actor **actors;
+    unsigned int i;
+
+    actors = (struct Actor **)(*(char **)iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        struct Actor *actor = actors[i];
+
+        if (pos[0] >> 20 == actor->pos.x >> 20 &&
+            pos[1] / 0x10000 == actor->pos.y / 0x10000 &&
+            pos[2] >> 20 == actor->pos.z >> 20) {
+            return actor;
+        }
+    }
+    return NULL;
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20080c4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008244.s");
 
@@ -370,7 +388,47 @@ void OvlFunc_964_2008df4(void)
 	r3[2] = *(unsigned int *)((char *)r0 + 0x10) + 0xffe00000;
 	OvlFunc_964_2008cd0(r3);
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008e20.s");
+extern unsigned char iwram_3001ee0[];
+extern unsigned char Lconst_ac[] __asm__(".Lconst_ac");
+__asm__(".equ .Lconst_ac, 0xac");
+
+void OvlFunc_964_2008e20(void)
+{
+    struct Actor *actor;
+    void *obj;
+    int threshold;
+    GlobalState *p;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    obj = *(void **)iwram_3001ee0;
+    p = &gState;
+    threshold = 0;
+
+    if (*(short *)((char *)p + 0x1c0) == (int)Lconst_ac) {
+        switch (*(short *)((char *)p + 0x1c2)) {
+        case 3:
+        case 4:
+            threshold = 0x5e;
+            break;
+        case 8:
+        case 9:
+            threshold = 0x4a;
+            break;
+        case 12:
+        case 13:
+            threshold = 0x76;
+            break;
+        }
+    } else if (*(short *)((char *)p + 0x1c2) == 12) {
+        threshold = 0x5d;
+    }
+
+    if ((actor->pos.z >> 19) <= threshold) {
+        *(void **)((char *)obj + 0x18) = NULL;
+    } else {
+        *(void **)((char *)obj + 0x18) = actor;
+    }
+}
 
 int OvlFunc_964_2008ec8(struct Actor *a) {
     struct Actor *p;
@@ -791,7 +849,39 @@ unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009abc.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009c2c.s");
+extern void OvlFunc_964_20091e0(unsigned int);
+
+void OvlFunc_964_2009c2c(unsigned int arg0)
+{
+    unsigned int i;
+    int y;
+
+    y = -0x500000;
+    for (i = 0; i <= 4; i++) {
+        unsigned int other = i + 10;
+        if (other != arg0) {
+            if (((struct Actor *)__MapActor_GetActor(other))->pos.x >> 20 == ((struct Actor *)__MapActor_GetActor(arg0))->pos.x >> 20) {
+                if (((struct Actor *)__MapActor_GetActor(other))->pos.z >> 20 == ((struct Actor *)__MapActor_GetActor(arg0))->pos.z >> 20) {
+                    if (y <= ((struct Actor *)__MapActor_GetActor(other))->pos.y + 0x100000) {
+                        y = ((struct Actor *)__MapActor_GetActor(other))->pos.y + 0x100000;
+                        ((struct Actor *)__MapActor_GetActor(arg0))->waveCounter = other;
+                    }
+                }
+            }
+        }
+    }
+    __MapActor_SetSpeed(arg0, 0x40000, 0x20000);
+    __Actor_TravelTo(
+        __MapActor_GetActor(arg0),
+        ((struct Actor *)__MapActor_GetActor(arg0))->pos.x,
+        y,
+        ((struct Actor *)__MapActor_GetActor(arg0))->pos.z
+    );
+    __MapActor_WaitMovement(arg0);
+    __PlaySound(0xbc);
+    OvlFunc_964_20091e0(arg0);
+    __CutsceneWait(0x1e);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009d04.s");
 
 
@@ -903,7 +993,18 @@ int TunnelRuins_GetEvents(void)
     if (ev == (int)_EVENT_ac) return (int)Lm964_3c0c;
     return (int)Lm964_3ef4;
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a3a0.s");
+void OvlFunc_964_200a3a0(void) {
+    API_Func_8010704(0x49, 0x26, 5, 5, 9, 0x26);
+    OvlFunc_964_2008f10(9, 8);
+    API_Func_8010704(2, 0x24, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(8))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20
+    );
+    API_Func_8010704(2, 0x24, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(9))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20
+    );
+}
 
 void OvlFunc_964_200a410(void) {
     API_Func_8010704(0x5d, 0x1e, 6, 5, 0x1d, 0x1e);

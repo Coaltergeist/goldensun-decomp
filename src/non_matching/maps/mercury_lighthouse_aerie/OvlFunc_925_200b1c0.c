@@ -1,4 +1,5 @@
-extern unsigned char iwram_3001ebc[];
+struct MapActors;
+extern struct MapActors *iwram_3001ebc;
 
 void OvlFunc_925_200b1c0(unsigned int *out, unsigned int arg1)
 {
@@ -9,7 +10,7 @@ void OvlFunc_925_200b1c0(unsigned int *out, unsigned int arg1)
     base = 0x40 - ((int)arg1 >> 20);
     hi = base + 8;
     lo = base + 11;
-    p = (unsigned int **)(*(unsigned int **)iwram_3001ebc);
+    p = (unsigned int **)iwram_3001ebc;
     p = (unsigned int **)((char *)p + 0x14);
 
     for (i = 0; i <= 0x41; i++) {

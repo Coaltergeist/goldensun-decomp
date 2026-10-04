@@ -61,7 +61,29 @@ void OvlFunc_941_200807c(void)
 }
 
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008094.s");
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20080d4.s");
+void OvlFunc_941_20080d4(void)
+{
+    unsigned char *actor;
+
+    actor = (unsigned char *)__MapActor_GetActor(10);
+    API_MapActor_SetAnim(10, 5);
+    if (actor != 0) {
+        __Actor_SetSpriteFlags(actor, 0);
+        actor[0x23] = 1;
+    }
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3b);
+    API_WaitFrames(4);
+    API_Func_80105d4(3, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(1, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x2b, 0x57, 2, 5, 0x15, 0x3a);
+    API_WaitFrames(4);
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3a);
+    API_WaitFrames(4);
+    API_WaitFrames(4);
+    API_Func_8010704(0x15, 0xb, 2, 2, 0x15, 0xd);
+    API_Func_8010704(0x15, 0xb, 1, 1, 0x16, 0xf);
+    API_Func_8010704(0x13, 0x11, 1, 1, 0x15, 0xe);
+}
 
 struct Actor {
 unsigned char pad[0x23];
@@ -99,7 +121,30 @@ void OvlFunc_941_2008200(void) {
     __SetFlag(0x203);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008210.s");
+void OvlFunc_941_2008210(void)
+{
+    if (API_GetFlag(0x202) != 0) {
+        API_Func_80105d4(0x29, 0x56, 2, 6, 0x15, 0x39);
+        API_WaitFrames(4);
+        API_Func_80105d4(0x2b, 0x56, 2, 6, 0x15, 0x39);
+        API_WaitFrames(4);
+        API_Func_80105d4(0x29, 0x56, 2, 6, 0x15, 0x3a);
+        API_WaitFrames(4);
+        API_Func_80105d4(0x2b, 0x56, 2, 6, 0x15, 0x3a);
+        API_WaitFrames(4);
+    }
+
+    API_Func_80105d4(2, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(2, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x29, 0x56, 2, 6, 0x15, 0x3b);
+    API_WaitFrames(4);
+    API_Func_80105d4(1, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(3, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x2b, 0x56, 2, 6, 0x15, 0x3b);
+    API_WaitFrames(4);
+    API_Func_8092b08(10, 3);
+    API_Func_8010704(0x13, 0x11, 1, 1, 0x16, 0xf);
+}
 
 void OvlFunc_941_200833c(void) {
 	if (API_GetFlag(0x201) != 0) {

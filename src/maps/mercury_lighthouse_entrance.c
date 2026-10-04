@@ -203,7 +203,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L2700__a2[] __asm__(".Lm923_2700");
-extern void OvlFunc_923_2008528(int, int, int, int, int, int);
+extern int OvlFunc_923_2008528(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);

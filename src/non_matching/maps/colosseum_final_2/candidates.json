@@ -4,6 +4,33 @@
   "functions": {
     "OvlFunc_955_2008160": {
       "id": "overlay:rom_7ddb88:02008160"
+    },
+    "OvlFunc_955_20080c0": {
+      "id": "overlay:rom_7ddb88:020080c0"
+    },
+    "OvlFunc_955_200862c": {
+      "id": "overlay:rom_7ddb88:0200862c"
+    },
+    "OvlFunc_955_2008400": {
+      "id": "overlay:rom_7ddb88:02008400"
+    },
+    "OvlFunc_955_2008310": {
+      "id": "overlay:rom_7ddb88:02008310"
+    },
+    "OvlFunc_955_2009424": {
+      "id": "overlay:rom_7ddb88:02009424"
+    },
+    "OvlFunc_955_2008a1c": {
+      "id": "overlay:rom_7ddb88:02008a1c"
+    },
+    "OvlFunc_955_20092f0": {
+      "id": "overlay:rom_7ddb88:020092f0"
+    },
+    "OvlFunc_955_20084c0": {
+      "id": "overlay:rom_7ddb88:020084c0"
+    },
+    "OvlFunc_955_20099bc": {
+      "id": "overlay:rom_7ddb88:020099bc"
     }
   }
 }

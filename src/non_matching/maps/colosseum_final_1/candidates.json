@@ -5,8 +5,17 @@
     "ColosseumFinal1_MapInit": {
       "id": "overlay:rom_7db0c8:02008a3c"
     },
-    "OvlFunc_954_200842c": {
-      "id": "overlay:rom_7db0c8:0200842c"
+    "OvlFunc_954_20095e0": {
+      "id": "overlay:rom_7db0c8:020095e0"
+    },
+    "OvlFunc_954_200804c": {
+      "id": "overlay:rom_7db0c8:0200804c"
+    },
+    "OvlFunc_954_200833c": {
+      "id": "overlay:rom_7db0c8:0200833c"
+    },
+    "OvlFunc_954_2008840": {
+      "id": "overlay:rom_7db0c8:02008840"
     }
   }
 }

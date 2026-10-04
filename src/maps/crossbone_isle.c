@@ -576,7 +576,33 @@ void OvlFunc_946_200966c(void) {
     __SetFlag(0x8c7);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200967c.s");
+void OvlFunc_946_200967c(void)
+{
+    if (API_GetFlag(0x8c4)) {
+        API_Func_8010704(0, 0, 1, 1, 8, 0x15);
+        MapActor_SetPos18(0xf2, 0xf2, 0xf);
+    } else {
+        ((struct Actor *)__MapActor_GetActor(0xf))->scale.y = 0x19999;
+    }
+
+    if (API_GetFlag(0x8c5)) {
+        MapActor_SetPos18(0xf2, 0xf2, 0x10);
+    } else {
+        ((struct Actor *)__MapActor_GetActor(0x10))->scale.y = 0x19999;
+    }
+
+    if (API_GetFlag(0x8c6)) {
+        MapActor_SetPos18(0xf2, 0xf2, 0x11);
+    } else {
+        ((struct Actor *)__MapActor_GetActor(0x11))->scale.y = 0x19999;
+    }
+
+    if (API_GetFlag(0x8c7)) {
+        MapActor_SetPos18(0xf2, 0xf2, 0x12);
+    } else {
+        ((struct Actor *)__MapActor_GetActor(0x12))->scale.y = 0x19999;
+    }
+}
 
 void OvlFunc_946_2009740(void) {
     struct Pk buf;
@@ -757,14 +783,231 @@ INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009bbc.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009c84.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009d2c.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009de0.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009e5c.s");
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+
+void OvlFunc_946_2009e5c(void)
+{
+    int x;
+    int z;
+
+    x = ((struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20;
+    z = ((struct Actor *)__MapActor_GetActor(0xb))->pos.z >> 20;
+
+    if (x == 0x1e) {
+        return;
+    }
+
+    if (x == 0x22) {
+        if (((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20 == 0x12) {
+            return;
+        }
+        OvlFunc_946_2009774(0xb, -0x40, 0);
+    } else if (x == 0x24) {
+        if (((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20 == 0x12) {
+            OvlFunc_946_2009774(0xb, -0x20, 0);
+        } else {
+            OvlFunc_946_2009774(0xb, -0x60, 0);
+        }
+    }
+
+    __WaitFrames(2);
+    z--;
+    __Func_8010704(x, z, 1, 3, ((struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20, z);
+    __Func_8010704(0, 0, 1, 3, x, z);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009ef4.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009f78.s");
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+
+void OvlFunc_946_2009f78(void)
+{
+    int x;
+    int z;
+
+    x = ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20;
+    z = ((struct Actor *)__MapActor_GetActor(0xc))->pos.z >> 20;
+    if (x == 0x24) {
+        OvlFunc_946_2009774(0xc, -0x60, 0);
+        OvlFunc_946_2009774(0xc, -0x60, 0);
+    } else if (x == 0x22) {
+        OvlFunc_946_2009774(0xc, -0x60, 0);
+        OvlFunc_946_2009774(0xc, -0x40, 0);
+    } else if (x == 0x18) {
+        return;
+    }
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a004.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a080.s");
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+
+void OvlFunc_946_200a080(void)
+{
+    int x13;
+    int z13;
+    int z10;
+    int x15;
+    int z;
+    int new_x;
+
+    x13 = ((struct Actor *)__MapActor_GetActor(0xd))->pos.x >> 20;
+    z13 = ((struct Actor *)__MapActor_GetActor(0xd))->pos.z >> 20;
+    z10 = ((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20;
+    x15 = ((struct Actor *)__MapActor_GetActor(0xf))->pos.x >> 20;
+
+    if (x13 == 0x24) {
+        if (x15 == 0x22) {
+            OvlFunc_946_2009774(0xd, -0x10, 0);
+        } else if (z10 == 7) {
+            OvlFunc_946_2009774(0xd, -0x20, 0);
+        } else if (x15 == 0x1e) {
+            OvlFunc_946_2009774(0xd, -0x50, 0);
+        } else {
+            OvlFunc_946_2009774(0xd, -0x60, 0);
+            OvlFunc_946_2009774(0xd, -0x50, 0);
+        }
+    } else if (x13 == 0x23) {
+        if (x15 == 0x22) {
+            return;
+        }
+        if (z10 == 7) {
+            OvlFunc_946_2009774(0xd, -0x10, 0);
+        } else if (x15 == 0x1e) {
+            OvlFunc_946_2009774(0xd, -0x40, 0);
+        } else {
+            OvlFunc_946_2009774(0xd, -0x50, 0);
+            OvlFunc_946_2009774(0xd, -0x50, 0);
+        }
+    } else if (x13 == 0x22) {
+        if (z10 == 7) {
+            return;
+        }
+        if (x15 == 0x1e) {
+            OvlFunc_946_2009774(0xd, -0x30, 0);
+        } else {
+            OvlFunc_946_2009774(0xd, -0x90, 0);
+        }
+    } else if (x13 == 0x1f) {
+        if (x15 == 0x1e) {
+            return;
+        }
+        OvlFunc_946_2009774(0xd, -0x60, 0);
+    } else if (x13 == 0x19) {
+        return;
+    }
+
+    __WaitFrames(2);
+    new_x = ((struct Actor *)__MapActor_GetActor(0xd))->pos.x >> 20;
+    z = z13 - 1;
+    __Func_8010704(x13, z, 1, 3, new_x, z);
+    __Func_8010704(0, 0, 1, 3, x13, z);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a16c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a200.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a2c8.s");
+extern void OvlFunc_946_2009774(int, int, int);
+
+void OvlFunc_946_200a200(void)
+{
+    int x15 = ((struct Actor *)__MapActor_GetActor(15))->pos.x >> 20;
+    int z15 = ((struct Actor *)__MapActor_GetActor(15))->pos.z >> 20;
+    int z8 = ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20;
+    int z10 = ((struct Actor *)__MapActor_GetActor(10))->pos.z >> 20;
+    int new_z;
+
+    if (x15 == 0x23) {
+        if (z10 == 7) {
+            OvlFunc_946_2009774(15, -0x10, 0);
+        } else if (z8 == 7) {
+            OvlFunc_946_2009774(15, -0x70, 0);
+        } else {
+            OvlFunc_946_2009774(15, -0x60, 0);
+            OvlFunc_946_2009774(15, -0x50, 0);
+        }
+    } else if (x15 == 0x22) {
+        if (z10 == 7) {
+            return;
+        }
+        OvlFunc_946_2009774(15, -0x60, 0);
+        OvlFunc_946_2009774(15, -0x40, 0);
+    } else if (x15 == 0x21) {
+        OvlFunc_946_2009774(15, -0x90, 0);
+    } else if (x15 == 0x1f) {
+        OvlFunc_946_2009774(15, -0x50, 0);
+    } else if (x15 == 0x1e) {
+        OvlFunc_946_2009774(15, -0x60, 0);
+    } else if (x15 == 0x18) {
+        return;
+    }
+
+    __WaitFrames(2);
+    new_z = z15 - 1;
+    __Func_8010704(x15, new_z, 1, 3, ((struct Actor *)__MapActor_GetActor(15))->pos.x >> 20, new_z);
+    __Func_8010704(0, 0, 1, 3, x15, new_z);
+}
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+
+void OvlFunc_946_200a2c8(void)
+{
+    int x15;
+    int z15;
+    int z10;
+    int x13;
+    int r5;
+    int new_x;
+
+    x15 = *(int *)(__MapActor_GetActor(0xf) + 8) >> 20;
+    z15 = *(int *)(__MapActor_GetActor(0xf) + 0x10) >> 20;
+    z10 = *(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20;
+    x13 = *(int *)(__MapActor_GetActor(0xd) + 8) >> 20;
+
+    if (x15 == 0x18) {
+        if (z10 == 7 || x13 == 0x1f) {
+            OvlFunc_946_2009774(0xf, 0x60, 0);
+        } else if (x13 == 0x22) {
+            OvlFunc_946_2009774(0xf, 0x40, 0);
+            OvlFunc_946_2009774(0xf, 0x50, 0);
+        } else if (x13 == 0x23) {
+            OvlFunc_946_2009774(0xf, 0x50, 0);
+            OvlFunc_946_2009774(0xf, 0x50, 0);
+        } else {
+            OvlFunc_946_2009774(0xf, 0x50, 0);
+            OvlFunc_946_2009774(0xf, 0x60, 0);
+        }
+    } else if (x15 == 0x1e || x13 == 0x1f) {
+        if (z10 == 7) {
+            return;
+        }
+        if (x13 == 0x22) {
+            OvlFunc_946_2009774(0xf, 0x30, 0);
+        } else if (x13 == 0x23) {
+            OvlFunc_946_2009774(0xf, 0x40, 0);
+        } else {
+            OvlFunc_946_2009774(0xf, 0x50, 0);
+        }
+    } else if (x15 == 0x21) {
+        if (x13 == 0x22) {
+            return;
+        }
+        if (x13 == 0x23) {
+            OvlFunc_946_2009774(0xf, 0x10, 0);
+        } else {
+            OvlFunc_946_2009774(0xf, 0x20, 0);
+        }
+    } else if (x15 == 0x22) {
+        OvlFunc_946_2009774(0xf, 0x10, 0);
+    } else if (x15 == 0x23) {
+        return;
+    }
+
+    __WaitFrames(2);
+    new_x = *(int *)(__MapActor_GetActor(0xf) + 8) >> 20;
+    r5 = z15 - 1;
+    __Func_8010704(x15, r5, 1, 3, new_x, r5);
+    __Func_8010704(0, 0, 1, 3, x15, r5);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a3c4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a450.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a4c8.s");
@@ -773,7 +1016,56 @@ INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a700.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a848.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a984.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200aa98.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200ab80.s");
+extern void OvlFunc_946_2009774(int, int, int);
+extern void __WaitFrames(int);
+
+void OvlFunc_946_200ab80(void)
+{
+    int x;
+    int z;
+    int z18;
+    int z9;
+
+    x = *(int *)(__MapActor_GetActor(0xe) + 8) >> 20;
+    z = *(int *)(__MapActor_GetActor(0xe) + 0x10) >> 20;
+    z18 = *(int *)(__MapActor_GetActor(0x12) + 0x10) >> 20;
+    z9 = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+
+    if (x == 13) {
+        if ((unsigned int)(z9 - 12) <= 2) {
+            OvlFunc_946_2009774(0xe, -0x10, 0);
+        } else if ((unsigned int)(z18 - 12) <= 2) {
+            OvlFunc_946_2009774(0xe, -0x40, 0);
+        } else {
+            OvlFunc_946_2009774(0xe, -0x70, 0);
+        }
+    } else if (x == 12) {
+        if ((unsigned int)(z9 - 12) <= 2) {
+            return;
+        }
+        if ((unsigned int)(z18 - 12) <= 2) {
+            OvlFunc_946_2009774(0xe, -0x30, 0);
+        } else {
+            OvlFunc_946_2009774(0xe, -0x60, 0);
+        }
+    } else if (x == 9) {
+        if ((unsigned int)(z18 - 12) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(0xe, -0x30, 0);
+    } else if (x == 8) {
+        if ((unsigned int)(z18 - 12) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(0xe, -0x20, 0);
+    } else if (x == 6) {
+        return;
+    }
+
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xe) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200ac4c.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200ad0c.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200add0.s");

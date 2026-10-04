@@ -77,7 +77,54 @@ int OvlFunc_968_20082f0(int *a, int *b)
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200832c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008374.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20084f4.s");
+struct MapTile_968_20084f4 {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+};
+
+struct MapLayer_968_20084f4 {
+    struct MapTile_968_20084f4 *tiles;
+    u8 pad[0x2c];
+};
+
+struct MapData_968_20084f4 {
+    u8 pad[0x130];
+    struct MapLayer_968_20084f4 layers[3];
+};
+
+int OvlFunc_968_20084f4(unsigned int layer, unsigned int x, unsigned int y,
+                        unsigned int width, unsigned int height, unsigned int val)
+{
+    extern unsigned char gBuffer[];
+    extern void *iwram_3001e70;
+    struct MapData_968_20084f4 *map;
+    struct MapTile_968_20084f4 *tiles;
+    struct MapTile_968_20084f4 *tile;
+    unsigned int i;
+    unsigned int j;
+
+    map = (struct MapData_968_20084f4 *)iwram_3001e70;
+    if (map == 0) {
+        return 0;
+    }
+
+    if (layer <= 2) {
+        tiles = map->layers[layer].tiles;
+    } else {
+        tiles = (struct MapTile_968_20084f4 *)gBuffer;
+    }
+
+    tiles += x + y * 128;
+    for (i = 0; i < height; i++) {
+        tile = tiles + i * 128;
+        for (j = 0; j < width; j++, tile++) {
+            tile->unk2 = val;
+        }
+    }
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008558.s");
 extern void __Func_80929d8(unsigned int actor, int x);
 
@@ -110,10 +157,49 @@ unsigned int OvlFunc_968_2008690(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20086a0.s");
+int OvlFunc_968_20086a0(struct Actor *actor)
+{
+    extern unsigned int __Random(void);
+    extern void OvlFunc_968_2008118(int, int, int, int, int, int, int, void *);
+    extern unsigned char iwram_3001e40[];
+    int stack_buf[10];
+    int speed;
+
+    stack_buf[2] = 0xcccc;
+    stack_buf[3] = 0xcccc;
+    stack_buf[0] = 0;
+
+    speed = ((__Random() * 8) >> 16) * 0x3333;
+    OvlFunc_968_2008118(
+        actor->pos.x + ((8 - (*(unsigned int *)iwram_3001e40 & 0xf)) << 16),
+        actor->pos.y + (0xd0 << 13),
+        actor->pos.z,
+        0,
+        -speed,
+        0,
+        0xa0 << 12,
+        stack_buf
+    );
+
+    if ((*(unsigned int *)iwram_3001e40 & 0xf) == 0) {
+        stack_buf[2] = 0x80 << 8;
+        stack_buf[3] = 0x80 << 8;
+        OvlFunc_968_2008118(
+            actor->pos.x + ((((__Random() * 9) >> 16) - 4) << 16),
+            actor->pos.y,
+            actor->pos.z,
+            0,
+            0,
+            0,
+            0xa0 << 12,
+            stack_buf
+        );
+    }
+    return 0;
+}
 
 void OvlFunc_968_2008754(void) {
-    extern void OvlFunc_968_20086a0(struct Actor *);
+    extern int OvlFunc_968_20086a0(struct Actor *);
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void __Func_8092950(int, int);
     extern unsigned char iwram_3001ebc[];
@@ -143,7 +229,7 @@ void OvlFunc_968_2008754(void) {
 
 void OvlFunc_968_20087d8(void)
 {
-    extern void OvlFunc_968_20086a0(struct Actor *);
+    extern int OvlFunc_968_20086a0(struct Actor *);
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void __Func_8092950(int, int);
     struct Actor *a;
@@ -247,11 +333,53 @@ void OvlFunc_968_200894c(arg0) unsigned int * arg0;
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200896c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20089c8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b08.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b98.s");
+extern int _divsi3_RAM(int, int);
+struct Struct_2008b98 {
+    int pad[2];
+    int unk8;
+    int unkC;
+    int unk10;
+    int unk14;
+    u16 unk18;
+    u8 pad2[14];
+};
+
+extern void OvlFunc_968_2008118(fx32, fx32, fx32, int, int, int, int, void *);
+extern u32 __Random(void);
+
+int OvlFunc_968_2008b98(struct Actor *actor)
+{
+    extern unsigned char iwram_3001e40[];
+    struct Struct_2008b98 sp10;
+    int dx;
+    int dz;
+
+    if (*(u32 *)iwram_3001e40 & 3) {
+        return 0;
+    }
+
+    if (((__Random() * 6) >> 16) == 0) {
+        if (actor->prevPos.x != (fx32)0x80000000 || actor->prevPos.z != (fx32)0x80000000) {
+            API_PlaySound(0xf6);
+        }
+    }
+
+    sp10.unk18 = 0x8f << 1;
+    sp10.unk8 = 0x80 << 9;
+    sp10.unkC = 0x80 << 9;
+    sp10.unk10 = 0xfffffeb9;
+    sp10.unk14 = 0xfffffeb9;
+
+    dx = _divsi3_RAM((int)((((__Random() * 9) >> 16) - 4) << 16), 10);
+    dz = _divsi3_RAM((int)((((__Random() * 9) >> 16) - 4) << 16), 10);
+
+    OvlFunc_968_2008118(actor->pos.x, actor->pos.y, actor->pos.z + (int)0xffff0000, dx, 0, dz, 0x1c0001, &sp10);
+    return 0;
+}
 
 extern void __Actor_SetAnim(struct Actor *actor, int anim);
 extern void __Actor_SetScript(struct Actor *actor, void *script);
-extern void OvlFunc_968_2008b98(void);
+extern int OvlFunc_968_2008b98(struct Actor *);
 
 struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, void *param_3) {
     struct Actor *actor;

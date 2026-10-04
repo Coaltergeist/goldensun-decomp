@@ -1,6 +1,6 @@
 extern unsigned char gBuffer[];
 
-void OvlFunc_923_2008528(int a0, int a1, int a2, int a3, int a4, int a5)
+int OvlFunc_923_2008528(int a0, int a1, int a2, int a3, int a4, int a5)
 {
     extern unsigned char iwram_3001e70[];
     unsigned char *env;
@@ -10,9 +10,9 @@ void OvlFunc_923_2008528(int a0, int a1, int a2, int a3, int a4, int a5)
 
     env = *(unsigned char **)iwram_3001e70;
     if (env == 0)
-        return;
+        return 0;
 
-    if (a0 > 2)
+    if ((unsigned int)a0 > 2)
         base = gBuffer;
     else
         base = *(unsigned char **)(env + a0 * 48 + 0x130);
@@ -26,4 +26,5 @@ void OvlFunc_923_2008528(int a0, int a1, int a2, int a3, int a4, int a5)
             p += 4;
         }
     }
+    return 0;
 }

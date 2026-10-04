@@ -5,7 +5,7 @@ struct MainMenuTilePos {
 };
 
 extern unsigned short *iwram_3001e8c;
-extern void *__alloc_ewram(int size);
+extern void *__alloc_ewram(unsigned int size);
 extern void __free(void *ptr);
 
 void OvlFunc_880_2008d74(struct MainMenuTilePos *pos) {

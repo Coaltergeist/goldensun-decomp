@@ -38,7 +38,47 @@ INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20081fc.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20082f4.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008384.s");
 INCLUDE_ASM("asm/maps/main_menu/MainMenu_MapInit.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008cfc.s");
+struct Struct2008cfc {
+    unsigned char pad[8];
+    unsigned short unk8;
+    unsigned char pad2[2];
+    unsigned short x;
+    unsigned short y;
+};
+
+extern unsigned short *iwram_3001e8c;
+
+extern void *__alloc_ewram(unsigned int size);
+extern void __DecompressLZ(const void *src, void *dst);
+extern void __free(void *ptr);
+
+void OvlFunc_880_2008cfc(struct Struct2008cfc *arg0, const void *src) {
+    unsigned short *iwram_ptr = iwram_3001e8c;
+    void *buf;
+    unsigned short *vram_ptr;
+    int offset;
+    int row;
+    int col;
+
+    buf = __alloc_ewram(0x300);
+    __DecompressLZ(src, buf);
+
+    offset = arg0->y * 32 + arg0->x;
+    vram_ptr = (unsigned short *)0x06002000 + offset;
+    iwram_ptr += offset;
+
+    for (row = 0; row < 8; row++) {
+        for (col = 0; col < 16; col++) {
+            short tile = (arg0->unk8 * row + col) | -0x1000;
+            *vram_ptr++ = tile;
+            *iwram_ptr++ = tile;
+        }
+        vram_ptr += 16;
+        iwram_ptr += 16;
+    }
+
+    __free(buf);
+}
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008d74.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008de4.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20091e4.s");

@@ -307,7 +307,29 @@ void OvlFunc_905_20089dc(void)
     __Func_8091f14(0xc, 0x28);
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008a00.s");
+void OvlFunc_905_2008a00(struct Actor *actor)
+{
+    switch ((s16)actor->__unk66) {
+    case 0:
+        actor->pos.x += actor->speed;
+        actor->prevPos.x = actor->pos.x;
+        actor->pos.y += actor->accel;
+        actor->prevPos.y = actor->pos.y;
+        break;
+    case 1:
+        actor->pos.x += actor->speed;
+        actor->prevPos.x = actor->pos.x;
+        actor->pos.z += actor->accel;
+        actor->prevPos.z = actor->pos.z;
+        break;
+    case 2:
+        actor->pos.y += actor->speed;
+        actor->prevPos.y = actor->pos.y;
+        actor->pos.z += actor->accel;
+        actor->prevPos.z = actor->pos.z;
+        break;
+    }
+}
 
 extern void __Func_80929d8(int a, int b);
 

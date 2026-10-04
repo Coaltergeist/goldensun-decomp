@@ -1,10 +1,6 @@
-__asm__(".set __floatsidf, OvlFunc_common2_304");
 
-__asm__(".set __adddf3, OvlFunc_common2_254");
 
-__asm__(".set __muldf3, OvlFunc_common2_28c");
 
-__asm__(".set __fixdfsi, OvlFunc_common2_380");
 
 extern unsigned int iwram_3001e70;
 
@@ -24,7 +20,9 @@ extern void __Func_800fe9c(void);
 
 extern void __Func_8012350(void);
 
-extern double __muldf3(double, double);
+extern double VaultIntToDouble(int) __asm__("OvlFunc_common2_304");
+extern double VaultMulDouble(double, double) __asm__("OvlFunc_common2_28c");
+extern int VaultDoubleToInt(double) __asm__("OvlFunc_common2_380");
 
 void OvlFunc_935_2008754(void)
 {
@@ -32,6 +30,11 @@ void OvlFunc_935_2008754(void)
     int loop;
     int r5, r6, r7;
     int a4, a5;
+    union { unsigned int words[2]; double value; } factor;
+
+    /* ARM soft-float double word order; avoids the compiler literal conversion bug. */
+    factor.words[0] = 0x40b26e97;
+    factor.words[1] = 0x8d4fdf3b;
 
     __CutsceneStart();
     if (iwram_3001e40 & 1) {
@@ -47,12 +50,12 @@ void OvlFunc_935_2008754(void)
 
     for (loop = 0x1df; loop >= 0; loop--) {
         unsigned int r = __Random();
-        double pos = *(int *)(env + 0x24);
+        double pos = VaultIntToDouble(*(int *)(env + 0x24));
         double v;
         r <<= 11;
         r >>= 16;
-        v = (double)r;
-        *(int *)(env + 0x24) = pos * __muldf3(4718.592, v);
+        v = VaultIntToDouble((int)r);
+        *(int *)(env + 0x24) = VaultDoubleToInt(VaultMulDouble(pos, VaultMulDouble(factor.value, v)));
         __CutsceneWait(1);
     }
 

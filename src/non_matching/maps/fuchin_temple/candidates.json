@@ -7,6 +7,30 @@
     },
     "OvlFunc_926_200c140": {
       "id": "overlay:rom_7b2078:0200c140"
+    },
+    "OvlFunc_926_2008484": {
+      "id": "overlay:rom_7b2078:02008484"
+    },
+    "FuchinTemple_GetActors": {
+      "id": "overlay:rom_7b2078:02008388"
+    },
+    "OvlFunc_926_2008f80": {
+      "id": "overlay:rom_7b2078:02008f80"
+    },
+    "OvlFunc_926_2008658": {
+      "id": "overlay:rom_7b2078:02008658"
+    },
+    "OvlFunc_926_2008afc": {
+      "id": "overlay:rom_7b2078:02008afc"
+    },
+    "OvlFunc_926_2008db4": {
+      "id": "overlay:rom_7b2078:02008db4"
+    },
+    "OvlFunc_926_2008e94": {
+      "id": "overlay:rom_7b2078:02008e94"
+    },
+    "OvlFunc_926_200902c": {
+      "id": "overlay:rom_7b2078:0200902c"
     }
   }
 }

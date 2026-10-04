@@ -179,7 +179,28 @@ void OvlFunc_952_20083b0(unsigned int actor)
     __MapActor_SetBehavior(actor, gScript_952__0200c570);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200849c.s");
+extern void __Func_8097608(void);
+
+void OvlFunc_952_200849c(int a, unsigned int actor)
+{
+    API_CutsceneStart();
+    API_MessageID(0x2052);
+    API_ActorMessage(actor, 0);
+    if (API_GetFlag(0x968) == 0) {
+        API_SetFlag(0x968);
+        __Func_8097608();
+        API_CutsceneWait(0x32);
+        API_MapActor_Emote(actor, 0x80 << 1, 0x46);
+        API_MapActor_Face(actor, 0, 0x28);
+        API_ActorMessage(actor, 0);
+        API_CutsceneWait(0x1e);
+        API_MapActor_DoAnim(actor, 4);
+        API_CutsceneWait(0x14);
+        API_ActorMessage(actor, 0);
+        API_Func_8092adc(actor, 0x80 << 8, 0);
+    }
+    API_CutsceneEnd();
+}
 extern unsigned char Lconst_22a8[] __asm__(".Lconst_22a8");
 __asm__(".equ .Lconst_22a8, 0x22a8");
 

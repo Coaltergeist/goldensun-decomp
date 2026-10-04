@@ -25,6 +25,15 @@
       "context": [
         "context.h"
       ]
+    },
+    "OvlFunc_960_2008d24": {
+      "id": "overlay:rom_7eaf28:02008d24"
+    },
+    "OvlFunc_960_2008464": {
+      "id": "overlay:rom_7eaf28:02008464"
+    },
+    "OvlFunc_960_20089cc": {
+      "id": "overlay:rom_7eaf28:020089cc"
     }
   }
 }

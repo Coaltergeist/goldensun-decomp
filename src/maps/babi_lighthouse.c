@@ -208,7 +208,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L2fd4__a2[] __asm__(".Lm965_2fd4");
-extern void OvlFunc_965_2008244(int, int, int, int, int, int);
+extern int OvlFunc_965_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -707,7 +707,35 @@ void OvlFunc_965_200a548(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a5c8.s");
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+
+void OvlFunc_965_200a5c8(void)
+{
+    unsigned char *ptr;
+    int e;
+    int f;
+
+    ptr = iwram_3001ebc;
+    __CutsceneStart();
+    if (*(short *)(ptr + 0xcb8) != 0) {
+        if (__GetFlag(0x985) == 0) {
+            __Func_801776c(0x1528, 1);
+            __PlaySound(0x9b);
+            e = 0x11;
+            f = 0x4e;
+            __Func_8010788(0x23, 0x4e, 1, 2, e, f);
+            __CutsceneWait(10);
+            __Func_8010788(0x22, 0x4e, 1, 2, e, f);
+            __CutsceneWait(10);
+            OvlFunc_965_200a4d0();
+        }
+    } else {
+        __MessageID(0x2756);
+        __ActorMessage(-1, 0);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a660.s");
 
 extern unsigned int iwram_3001f30;
@@ -753,7 +781,30 @@ void OvlFunc_965_200a6fc(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a738.s");
+extern int __Func_8093fa0(void);
+extern int __Func_8093e28__ret(void) __asm__("__Func_8093e28");
+
+void OvlFunc_965_200a738(void)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *other = OvlFunc_965_200a660(actor);
+    int dir = (actor->facing + 0x2000) & 0xc000;
+    int res = -1;
+
+    if (gState._bytes[0x1f2] == 1 || other == NULL) {
+        if (dir == 0xc000) {
+            res = __Func_8093fa0();
+        }
+        if (dir == 0x4000) {
+            res = __Func_8093e28__ret();
+        }
+    }
+    if (res != 0) {
+        if (gState._bytes[0x1f2] != 1) {
+            OvlFunc_965_200a6fc();
+        }
+    }
+}
 extern unsigned char _EVENT_b0[], _EVENT_af[], _EVENT_ae[];
 extern unsigned char Lm965_391c[] __asm__(".Lm965_391c");
 extern unsigned char Lm965_39e8[] __asm__(".Lm965_39e8");

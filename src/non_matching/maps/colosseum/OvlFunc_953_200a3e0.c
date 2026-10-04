@@ -22,9 +22,9 @@ void OvlFunc_953_200a3e0(void)
     __MapActor_SetAnim(0, 2);
     __MapActor_SetAnim(0xb, 2);
     __MapActor_TravelTo(0, 0xc3 << 2, 0x93 << 2);
-    __Func_8092158(0xb, 0xcb << 2, 0x93 << 2);
+    __MapActor_TravelToWait(0xb, 0xcb << 2, 0x93 << 2);
     __MapActor_TravelTo(0, 0xdc << 2, 0x93 << 2);
-    __Func_8092158(0xb, 0xe4 << 2, 0x93 << 2);
+    __MapActor_TravelToWait(0xb, 0xe4 << 2, 0x93 << 2);
     __MapActor_TravelTo(0, 0xf5 << 2, 0x93 << 2);
     __MapActor_TravelTo(0xb, 0xfd << 2, 0x93 << 2);
     __MapTransitionOut();

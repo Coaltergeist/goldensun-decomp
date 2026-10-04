@@ -39,7 +39,50 @@ void OvlFunc_974_200804c(unsigned int arg0) {
     __WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200807c.s");
+extern unsigned char gState[];
+extern volatile unsigned int gKeyHeld;
+
+extern int __Func_8019da8(int, int, int, int);
+extern void __Func_8019908(int, int);
+extern void __CloseUIBox(int, int);
+
+void OvlFunc_974_200807c(int firstMessage, int count)
+{
+    int uiBox;
+    int i;
+
+    gState[0x20c] = 2;
+    uiBox = __Func_8019da8(0x7d, 0, 0, 0);
+
+    for (i = 0; i < count; i++) {
+        __Func_8019908(1, 1);
+        __Func_8019908(0x8d, 2);
+        __Func_8019908(0x1e240, 5);
+        OvlFunc_974_200804c(firstMessage);
+
+        while (1) {
+            if (gKeyHeld & 2) {
+                goto exit;
+            }
+            if ((gKeyHeld & 1) || (gKeyHeld & 0x80)) {
+                firstMessage++;
+                break;
+            }
+            if (gKeyHeld & 0x40) {
+                firstMessage--;
+                break;
+            }
+            if (gKeyHeld != 0) {
+                break;
+            }
+            __WaitFrames(1);
+        }
+    }
+
+exit:
+    __Func_8019a54();
+    __CloseUIBox(uiBox, 2);
+}
 /* Message-ID endpoints for the debug message browser. Symbol-only absolute
  * definitions keep endpoint references separate; they emit no instructions. */
 extern unsigned char MenuMessage_c9b[] __asm__(".Lmenu_message_c9b");

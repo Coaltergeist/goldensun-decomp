@@ -355,7 +355,49 @@ void OvlFunc_899_200859c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_20085bc.s");
+extern int Lm899_64a8[] __asm__(".Lm899_64a8");
+extern int Lm899_64c0[] __asm__(".Lm899_64c0");
+extern void __MapActor_SetBehavior(int, int);
+extern void __MapActor_WaitScript(int);
+
+void OvlFunc_899_20085bc(void)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0x18);
+
+    __CutsceneStart();
+    __Func_80925cc(0x18, 2);
+    __MessageID(0x12ac);
+    __ActorMessage(0x18, 0);
+    __MapActor_SetSpeed(0x18, 0x80 << 11, 0x80 << 10);
+
+    if ((unsigned int)((actor->facing & (0xf0 << 8)) + 0xffffb000) <= (0xc0 << 7)) {
+        if (actor->waveCounter <= 2) {
+            __MapActor_SetBehavior(0x18, Lm899_64a8[actor->waveCounter]);
+            actor->waveCounter++;
+        } else {
+            __MapActor_SetBehavior(0x18, Lm899_64c0[actor->waveCounter]);
+            actor->waveCounter--;
+        }
+    } else {
+        if (actor->waveCounter > 2) {
+            __MapActor_SetBehavior(0x18, Lm899_64a8[actor->waveCounter]);
+            actor->waveCounter++;
+        } else {
+            __MapActor_SetBehavior(0x18, Lm899_64c0[actor->waveCounter]);
+            actor->waveCounter--;
+        }
+    }
+
+    if (actor->waveCounter > 5) {
+        actor->waveCounter = 0;
+    }
+    if (actor->waveCounter < 0) {
+        actor->waveCounter = 5;
+    }
+
+    __MapActor_WaitScript(0x18);
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2008690.s");
 
 
@@ -651,7 +693,73 @@ void OvlFunc_899_2009e80(void) {
 
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_2009f50.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200a1c8.s");
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200a564.s");
+extern unsigned char iwram_3001ebc[];
+extern void OvlFunc_899_200a6e4(unsigned int arg0, int arg1, unsigned int arg2, unsigned int arg3);
+
+extern unsigned char Lm899_55b0[] __asm__(".Lm899_55b0");
+extern unsigned char Lm899_55d8[] __asm__(".Lm899_55d8");
+extern unsigned char Lm899_5538[] __asm__(".Lm899_5538");
+extern unsigned char Lm899_5718[] __asm__(".Lm899_5718");
+extern unsigned char Lm899_5894[] __asm__(".Lm899_5894");
+extern unsigned char Lm899_56c8[] __asm__(".Lm899_56c8");
+extern unsigned char Lm899_57cc[] __asm__(".Lm899_57cc");
+extern unsigned char Lm899_56f0[] __asm__(".Lm899_56f0");
+extern unsigned char Lm899_57a4[] __asm__(".Lm899_57a4");
+extern unsigned char Lm899_5600[] __asm__(".Lm899_5600");
+
+extern unsigned char gScript_899__0200d8bc[];
+extern unsigned char gScript_899__0200d678[];
+extern unsigned char gScript_899__0200d830[];
+extern unsigned char gScript_899__0200d858[];
+extern unsigned char gScript_899__0200d560[];
+extern unsigned char gScript_899__0200d650[];
+extern unsigned char gScript_956__0200d808[];
+extern unsigned char gScript_899__0200d768[];
+
+void OvlFunc_899_200a564(void)
+{
+    short val;
+
+    val = *(short *)(*(unsigned char **)iwram_3001ebc + (0xb6 << 1));
+    switch (val) {
+    case 0xb:
+        OvlFunc_899_200a6e4(0x18, 1, 2, (unsigned int)Lm899_55b0);
+        OvlFunc_899_200a6e4(0x19, 3, 4, (unsigned int)gScript_899__0200d8bc);
+        break;
+    case 0xc:
+        OvlFunc_899_200a6e4(0x18, 1, 4, (unsigned int)gScript_899__0200d678);
+        OvlFunc_899_200a6e4(0x18, 2, 3, (unsigned int)Lm899_55d8);
+        OvlFunc_899_200a6e4(0x19, 1, 3, (unsigned int)gScript_899__0200d830);
+        break;
+    case 0xd:
+        OvlFunc_899_200a6e4(0x18, 2, 1, (unsigned int)Lm899_5538);
+        OvlFunc_899_200a6e4(0x18, 3, 6, (unsigned int)Lm899_5718);
+        OvlFunc_899_200a6e4(0x19, 2, 4, (unsigned int)Lm899_5894);
+        break;
+    case 0xe:
+        OvlFunc_899_200a6e4(0x18, 3, 2, (unsigned int)Lm899_55b0);
+        OvlFunc_899_200a6e4(0x19, 4, 3, (unsigned int)gScript_899__0200d858);
+        break;
+    case 0xf:
+        OvlFunc_899_200a6e4(0x18, 4, 5, (unsigned int)Lm899_56c8);
+        OvlFunc_899_200a6e4(0x19, 1, 2, (unsigned int)Lm899_57cc);
+        break;
+    case 0x10:
+        OvlFunc_899_200a6e4(0x18, 4, 1, (unsigned int)gScript_899__0200d560);
+        OvlFunc_899_200a6e4(0x18, 5, 6, (unsigned int)Lm899_56f0);
+        OvlFunc_899_200a6e4(0x19, 3, 1, (unsigned int)Lm899_57a4);
+        break;
+    case 0x11:
+        OvlFunc_899_200a6e4(0x18, 5, 4, (unsigned int)gScript_899__0200d650);
+        OvlFunc_899_200a6e4(0x18, 6, 3, (unsigned int)Lm899_5600);
+        OvlFunc_899_200a6e4(0x19, 4, 2, (unsigned int)gScript_956__0200d808);
+        break;
+    case 0x12:
+        OvlFunc_899_200a6e4(0x18, 6, 5, (unsigned int)Lm899_56c8);
+        OvlFunc_899_200a6e4(0x19, 2, 1, (unsigned int)gScript_899__0200d768);
+        break;
+    }
+}
 
 
 void OvlFunc_899_200a6e4(unsigned int arg0, int arg1, unsigned int arg2, unsigned int arg3) {
@@ -819,7 +927,30 @@ unsigned char *OvlFunc_899_200c704(vec3_t *pos)
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c754.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7bc.s");
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7fc.s");
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c840.s");
+extern unsigned int OvlFunc_899_200c7fc(int, int, int);
+extern unsigned int OvlFunc_899_200c7bc(unsigned int, unsigned int, unsigned int);
+
+int OvlFunc_899_200c840(unsigned char *p)
+{
+    int x;
+    int y;
+
+    if (p == 0) {
+        return 1;
+    }
+
+    x = ((int)p[0] << 19) + (0x90 << 15);
+    y = ((int)p[1] << 19) + (0x9e << 18);
+
+    if (OvlFunc_899_200c7fc(x, y, 0) ||
+        OvlFunc_899_200c7bc(x, y, 2) ||
+        OvlFunc_899_200c7bc(x, y, 0x18) ||
+        OvlFunc_899_200c7bc(x, y, 0x19)) {
+        return -1;
+    }
+
+    return 0;
+}
 
 void OvlFunc_899_200c8a4(int arg0, unsigned char *p) {
     __Actor_TravelTo(arg0, ((int)p[0] << 19) + (0x90 << 15), 0, ((int)p[1] << 19) + (0x9e << 18));

@@ -4,9 +4,7 @@ extern void OvlFunc_942_2008af8(void);
 
 extern void __Func_8092950(int, int);
 
-extern unsigned char Lm942_a84[] __asm__(".Lm942_a84");
 
-__asm__(".equ .Lm942_a84, 0");
 
 void OvlFunc_942_2008958(void) {
     GlobalState *state;
@@ -66,7 +64,7 @@ void OvlFunc_942_2008958(void) {
         *(unsigned short *)((char *)actor->sprite + 0x1e) = rot;
 
         actor = __MapActor_GetActor(0xb);
-        actor->flags = (int)Lm942_a84;
+        actor->flags = 0;
         ((unsigned char *)actor->sprite)[9] |= 0xc;
         ((unsigned char *)actor->sprite)[0x15] |= 0xc;
     }

@@ -191,7 +191,30 @@ void OvlFunc_926_2008bd4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008bf4.s");
+void OvlFunc_926_2008bf4(void)
+{
+    unsigned char *actor;
+    unsigned int i;
+    int theta;
+    unsigned char *sprite;
+
+    actor = __MapActor_GetActor(0x13);
+    for (i = 8; i >= 4; i--)
+    {
+        sprite = *(unsigned char **)(actor + 0x50);
+        theta = i << 12;
+        *(unsigned short *)(sprite + 0x1e) = theta;
+        __WaitFrames((i - 4) * 2);
+        *(int *)(actor + 8) += __cos(theta) * 6;
+        *(int *)(actor + 0x10) += __sin(theta) * 6;
+    }
+    *(int *)(actor + 0xc) = 0x120000;
+    *(int *)(actor + 0x3c) = 0x120000;
+    __PlaySound(0xe3);
+    OvlFunc_common0_10c(*(int *)(actor + 8) - 0xc0000, *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, -0x3333, 0x6666, 0, 0, 0);
+    OvlFunc_common0_10c(*(int *)(actor + 8), *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, -0xcccc, 0x4ccc, 0, 0, 0);
+    OvlFunc_common0_10c(*(int *)(actor + 8) + 0xa0000, *(int *)(actor + 0xc), *(int *)(actor + 0x10) + 0x80000, -0x10000, 0x3333, 0, 0, 0);
+}
 
 void OvlFunc_926_2008cd4(void)
 {
@@ -298,7 +321,39 @@ void OvlFunc_926_20092e0(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2009334.s");
+extern void OvlFunc_926_2008e94(void);
+extern void OvlFunc_926_2008db4(void);
+
+void OvlFunc_926_2009334(void)
+{
+    unsigned char *actor;
+    unsigned short facing;
+
+    actor = __MapActor_GetActor(0);
+    __CutsceneStart();
+    __MapActor_SetAnim(0, 8);
+    __CutsceneWait(0x14);
+    facing = *(unsigned short *)(actor + 6);
+    if ((unsigned short)(facing - 0x2000) <= 0x3fff)
+    {
+        OvlFunc_926_2008e94();
+    }
+    else if ((unsigned short)(facing - 0x6000) <= 0x3fff)
+    {
+        OvlFunc_926_2008bf4();
+    }
+    else if ((unsigned short)(facing + 0x6000) <= 0x3fff)
+    {
+        OvlFunc_926_2008db4();
+    }
+    else
+    {
+        OvlFunc_926_2008cd4();
+    }
+    __MapActor_SetAnim(0, 1);
+    OvlFunc_926_200902c(1);
+    __CutsceneEnd();
+}
 extern void OvlFunc_926_2008e94(void);
 extern void OvlFunc_926_2008db4(void);
 extern void __Func_80933d4(int, int);
@@ -456,7 +511,37 @@ int FuchinTemple_GetEvents(void)
     if (*(short *)((char *)p + 0x1c2) == 3) return (int)Lm926_5184;
     return (int)Lm926_4d40;
 }
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_200a5b8.s");
+extern unsigned int iwram_3001e40;
+extern unsigned int __Random(void);
+extern void __Func_8092950(int, int);
+
+void OvlFunc_926_200a5b8(void)
+{
+    struct Actor *actor;
+    struct EffectData data;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    data.b = 7;
+    if ((((__Random() * 7) >> 16) & 7) == 0) {
+        data.b = 5;
+    }
+    data.pad8 = 0xb333;
+    data.padc = 0xcccc;
+    OvlFunc_common0_10c(
+        actor->pos.x + ((8 - (iwram_3001e40 & 0xf)) << 16),
+        actor->pos.y + (0xc0 << 13),
+        actor->pos.z,
+        0,
+        -(((__Random() * 8) >> 16) * 0x3333),
+        0,
+        0x90 << 12,
+        &data);
+    if (iwram_3001e40 & 1) {
+        __Func_8092950(0, 0xf);
+    } else {
+        __Func_8092950(0, 1);
+    }
+}
 
 extern void OvlFunc_926_200a68c(int param_1, int param_2);
 
