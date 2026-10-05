@@ -20,7 +20,6 @@ int OvlFunc_888_200a7d4(void)
     int cursor[3];
     void *handle;
     void *box;
-    int textId;
     int choice;
 
     __MapActor_SetPos(8, 0, 0);
@@ -36,12 +35,12 @@ int OvlFunc_888_200a7d4(void)
     __CutsceneWait(1);
 
     box = __CreateUIBox(2, 7, 0x19, 5, 1);
-    textId = 0x116e;
-    __DrawSmallText(textId, box, 0x10, 0);
+    choice = 0x116e;
+    __DrawSmallText(choice, box, 0x10, 0);
     if (!__Func_801f730(1)) {
-        __DrawSmallText(textId + 2, box, 0x10, 0x10);
+        __DrawSmallText(choice + 2, box, 0x10, 0x10);
     } else {
-        __DrawSmallText(textId + 1, box, 0x10, 0x10);
+        __DrawSmallText(choice + 1, box, 0x10, 0x10);
     }
 
     __Func_801c0dc(cursor, &handle);

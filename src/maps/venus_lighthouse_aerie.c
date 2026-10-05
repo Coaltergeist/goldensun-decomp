@@ -5,7 +5,33 @@
 
 extern void OvlFunc_969_200a11c();
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_2008314.s");
+extern unsigned int __Random(void);
+extern int _umodsi3_RAM(unsigned int, unsigned int);
+
+int OvlFunc_969_2008314(struct Actor *actor)
+{
+    switch (actor->waveCounter) {
+    case 6:
+        actor->scale.x += -0x2000;
+        actor->scale.y += 0x1000;
+        break;
+    case 4:
+        actor->scale.x += 0x1000;
+        actor->scale.y += -0x800;
+        break;
+    case 2:
+        actor->scale.x += 0x800;
+        actor->scale.y += -0x400;
+        break;
+    case 0:
+        actor->scale.x += 0x800;
+        actor->scale.y += -0x400;
+        actor->waveCounter = _umodsi3_RAM(__Random(), 0x50) + 0x50;
+        break;
+    }
+    actor->waveCounter--;
+    return 1;
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.s");
 
 void OvlFunc_969_2008400(unsigned char *p)
@@ -361,7 +387,97 @@ INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200bbc8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200be9c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c23c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c8d8.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200cb28.s");
+extern void __MessageID(int);
+extern void __PlaySound(int);
+extern void __Func_8012330(int, int, int);
+extern void __Func_80933d4(int, int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __Func_8093530(void);
+extern void __CutsceneWait(int);
+extern void __Func_80925cc(int, int);
+extern void __ActorMessage_Wait(int, int, int);
+extern void __MapActor_Surprise(int, int);
+extern void __Func_809259c(int, int);
+extern void OvlFunc_969_2008894(int);
+
+static inline void MessageID(int a)
+{
+    __MessageID(a);
+}
+
+static inline void PlaySound(int a)
+{
+    __PlaySound(a);
+}
+
+static inline void Func_8012330(int a, int b, int c)
+{
+    __Func_8012330(a, b, c);
+}
+
+static inline void Func_80933d4(int a, int b)
+{
+    __Func_80933d4(a, b);
+}
+
+static inline void Func_80933f8(int a, int b, int c, int d)
+{
+    __Func_80933f8(a, b, c, d);
+}
+
+static inline void Func_8093530(void)
+{
+    __Func_8093530();
+}
+
+static inline void CutsceneWait(int a)
+{
+    __CutsceneWait(a);
+}
+
+static inline void Func_80925cc(int a, int b)
+{
+    __Func_80925cc(a, b);
+}
+
+static inline void ActorMessage_Wait(int a, int b, int c)
+{
+    __ActorMessage_Wait(a, b, c);
+}
+
+static inline void MapActor_Surprise(int a, int b)
+{
+    __MapActor_Surprise(a, b);
+}
+
+static inline void Func_809259c(int a, int b)
+{
+    __Func_809259c(a, b);
+}
+
+void OvlFunc_969_200cb28(void)
+{
+    MessageID(0x2829);
+    OvlFunc_969_2008894(0x15);
+    PlaySound(0x3e);
+    Func_8012330(0x10000, 0x10000, 0x10000);
+    Func_80933d4(0x4cccc, 0x9999);
+    Func_80933d4(0x40000, 0x8000);
+    Func_80933f8(0xc00000, 0xffc00000, 0xee0000, 1);
+    Func_8093530();
+    CutsceneWait(0x28);
+    Func_80925cc(0x15, 1);
+    ActorMessage_Wait(0x2015, 0, 0x28);
+    Func_80925cc(6, 3);
+    OvlFunc_969_2008894(6);
+    MapActor_Surprise(0x15, 0x102);
+    CutsceneWait(0x3c);
+    ActorMessage_Wait(0x2015, 0, 0x50);
+    MapActor_Surprise(6, 0x102);
+    CutsceneWait(0x28);
+    Func_809259c(6, 2);
+    OvlFunc_969_2008894(6);
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200cbec.s");
 
 void OvlFunc_969_200d688(unsigned int arg0) {

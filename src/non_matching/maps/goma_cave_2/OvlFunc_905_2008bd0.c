@@ -1,3 +1,4 @@
+extern void OvlFunc_905_2008a68(int, int, int, int, int, int, int);
 extern int iwram_3001e40;
 extern unsigned int __Random(void);
 

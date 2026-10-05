@@ -9,9 +9,10 @@ extern void OvlFunc_common1_5e4(int, int, int);
 
 void OvlFunc_954_20095e0(int arg0)
 {
+    u8 *state = gState;
     int res;
 
-    if (*(s16 *)(gState + 0x1c2) == 2) {
+    if (*(s16 *)(state + 0x1c2) == 2) {
         OvlFunc_common1_2c4();
         return;
     }

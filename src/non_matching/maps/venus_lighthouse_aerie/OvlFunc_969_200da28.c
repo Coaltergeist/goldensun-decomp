@@ -17,13 +17,16 @@ void OvlFunc_969_200da28(void)
     struct Actor *newActor;
     struct Sprite *sprite;
     u8 *ptr;
+    s16 *gate;
     int r8;
     int flags;
+    u32 randVal;
 
     actor = MapActor_GetActor(0x17);
     ptr = (u8 *)iwram_3001e70;
     r8 = ((__Random() * 48) >> 16) << 16;
-    if (((s16 *)(ptr + 0xe8))[1] <= 0x81) {
+    gate = (s16 *)(ptr + 0xe8);
+    if (gate[1] <= 0x81) {
         if (iwram_3001e40 & 1) {
             __MapActor_SetPos(0x17, 0x1300000, 0xa40000);
             MapActor_GetActor(0x17)->scale.x = 0x10000;
@@ -44,13 +47,15 @@ void OvlFunc_969_200da28(void)
                                      actor->pos.x + 0x80000,
                                      actor->pos.y + r8 + 0x80000,
                                      actor->pos.z);
-            r8 = _divsi3_RAM(r8, 0x60000) << 16;
+            r8 = _divsi3_RAM(r8, 0x60000);
+            r8 <<= 16;
             if (newActor != NULL) {
                 sprite = newActor->sprite;
                 __Actor_SetScript(newActor, gScript_969__0200e734);
                 __Func_80929d8(newActor, 5);
                 newActor->__unk55 = flags;
-                newActor->waveCounter = __Random() & 0x0ffff000;
+                randVal = __Random() & 0x0ffff000;
+                newActor->waveCounter = randVal;
                 newActor->__unk66 = flags;
                 newActor->linkedActor = actor;
                 newActor->update = (actorfun_t *)OvlFunc_969_200db90;

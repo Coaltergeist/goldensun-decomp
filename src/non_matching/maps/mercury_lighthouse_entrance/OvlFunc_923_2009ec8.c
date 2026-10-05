@@ -13,9 +13,17 @@ void OvlFunc_923_2009ec8(void)
     unsigned char *sprite;
     int i;
     int mask;
+    char *base;
+    int state_idx;
+    int actor_idx;
+    int offset;
 
     r8 = *(int **)iwram_3001edc;
-    target = ((unsigned char **)(*(char **)((char *)&iwram_3001edc - 0x20) + 0x14))[*(int *)(gState + 0x1f4)];
+    base = *(char **)((char *)&iwram_3001edc - 0x20);
+    state_idx = 0x1f4;
+    actor_idx = *(int *)(gState + state_idx);
+    offset = actor_idx * 4 + 0x14;
+    target = *(unsigned char **)(base + offset);
     if ((unsigned int)*r8 > 2)
         return;
 

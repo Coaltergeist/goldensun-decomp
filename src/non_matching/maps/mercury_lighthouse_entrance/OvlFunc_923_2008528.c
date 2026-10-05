@@ -12,10 +12,10 @@ int OvlFunc_923_2008528(int a0, int a1, int a2, int a3, int a4, int a5)
     if (env == 0)
         return 0;
 
-    if ((unsigned int)a0 > 2)
-        base = gBuffer;
+    if ((unsigned int)a0 <= 2)
+        base = *(unsigned char **)(env + (a0 * 48 + 0x130));
     else
-        base = *(unsigned char **)(env + a0 * 48 + 0x130);
+        base = gBuffer;
 
     base += (a1 + (a2 << 7)) << 2;
 

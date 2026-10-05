@@ -520,7 +520,35 @@ void *BabiLighthouse_GetActors(void)
     if (ev == (int)_EVENT_ae) return Lm965_3784;
     return Lm965_388c;
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2009030.s");
+extern void OvlFunc_965_200a820(void);
+
+void OvlFunc_965_2009030(void)
+{
+    struct Actor *actor;
+    int x;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    API_CutsceneStart();
+    x = actor->pos.x >> 20;
+    if ((x == 6 || x == 0x12) && (actor->pos.z >> 20 == 0x14)) {
+        actor->prevPos.x = 0x80 << 24;
+        actor->prevPos.z = 0x80 << 24;
+        API_MapActor_Emote(0, 0x80 << 1, 0x14);
+        API_MapActor_SetSpeed(0, 0x80 << 10, 0x80 << 9);
+        API_MapActor_Jump(0, 4, 0);
+        if ((u16)(actor->facing + 0x4fff) <= 0x1fff || (u16)(actor->facing - 0x3001) <= 0x1fff) {
+            API_MapActor_TravelBy(0, 0x10, 0);
+            API_MapActor_WaitMovement(0);
+            API_Func_8092adc(0, 0x80 << 8, 0x14);
+        } else {
+            API_MapActor_TravelBy(0, 0, -0x10);
+            API_MapActor_WaitMovement(0);
+            API_Func_8092adc(0, 0x80 << 7, 0x14);
+        }
+    }
+    OvlFunc_965_200a820();
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_965_20080c4(void);
 extern void OvlFunc_965_2009030(void);

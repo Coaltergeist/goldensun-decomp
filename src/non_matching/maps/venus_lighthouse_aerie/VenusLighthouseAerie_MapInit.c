@@ -16,7 +16,7 @@ extern unsigned char gState[];
 
 int VenusLighthouseAerie_MapInit(void)
 {
-    int i;
+    u32 i;
     struct Actor *actor;
 
     __SetFlag(0x144);
@@ -40,7 +40,7 @@ int VenusLighthouseAerie_MapInit(void)
         actor->pos.y = 0x8000;
     }
 
-    switch (*(s16 *)&gState[0x1c2]) {
+    switch (((s16 *)gState)[0xe1]) {
     case 1:
         if (!__GetFlag(0x109)) {
             OvlFunc_969_20088b4();
@@ -51,6 +51,9 @@ int VenusLighthouseAerie_MapInit(void)
         break;
     case 3:
         OvlFunc_969_200b8c0();
+        break;
+    case 0x5d:
+        OvlFunc_969_200b8dc();
         break;
     case 4:
         OvlFunc_969_200b924();
@@ -68,17 +71,14 @@ int VenusLighthouseAerie_MapInit(void)
         }
         __Func_8091e9c(9);
         break;
-    case 0x5d:
-        OvlFunc_969_200b8dc();
-        break;
     }
 
     if (__GetFlag(0x109)) {
         int actorId = OvlFunc_969_20084bc();
         if (actorId != 0) {
-            actor = (struct Actor *)__MapActor_GetActor(actorId);
-            if (actor != NULL) {
-                actor->__unk55 = 0;
+            struct Actor *act = (struct Actor *)__MapActor_GetActor(actorId);
+            if (act != NULL) {
+                act->__unk55 = 0;
             }
         }
     }
