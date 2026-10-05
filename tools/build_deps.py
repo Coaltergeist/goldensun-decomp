@@ -59,6 +59,18 @@ def stamp(path, tools, values):
     write_changed(path, json.dumps({"tools": hashes, "values": values}, sort_keys=True, indent=2) + "\n")
 
 
+def phony_dependencies(path):
+    path = Path(path)
+    text = path.read_text()
+    target, rhs = text.split(":", 1)
+    # GAS includes .file debug names (e.g. save.c) in -MD output even
+    # though they were never opened. After successful assembly genuine
+    # .include/.incbin inputs exist; retain those and the actual .s.
+    deps = [d for d in rhs.replace("\\\n", " ").split() if Path(d).exists()]
+    text = target + ": " + " ".join(deps) + "\n"
+    write_changed(path, text + "".join(d + ":\n" for d in deps))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     subs = ap.add_subparsers(dest="mode", required=True)
@@ -80,15 +92,7 @@ def main():
             for target in args.targets:
                 print(target + ": " + " ".join(sorted(linker_dependencies(Path(target).with_suffix(".ld")))) + "|")
         elif args.mode == "phony":
-            path = Path(args.path)
-            text = path.read_text()
-            target, rhs = text.split(":", 1)
-            # GAS includes .file debug names (e.g. save.c) in -MD output even
-            # though they were never opened. After successful assembly genuine
-            # .include/.incbin inputs exist; retain those and the actual .s.
-            deps = [d for d in rhs.replace("\\\n", " ").split() if Path(d).exists()]
-            text = target + ": " + " ".join(deps) + "\n"
-            write_changed(path, text + "".join(d + ":\n" for d in deps))
+            phony_dependencies(args.path)
         elif args.mode == "c":
             c_dependencies(args.target, args.command)
         else:

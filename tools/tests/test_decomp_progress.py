@@ -251,8 +251,14 @@ int parked(void) { return 0; }
 #define BODY(name) int name(void) { return 1; }
 BODY(active)
 """)
-        contract = "gcc296\ngcc\n-nostdinc\nunused\nunused\nunused\n"
-        with patch.object(dp.subprocess, "check_output", return_value=contract):
+        profiles = dp.build_config.read_json(Path(__file__).resolve().parents[2] / "config/compiler_profiles.json")
+        profiles["required_unit_profiles"] = {}; profiles["host_units"] = []
+        (self.root / "config").mkdir(exist_ok=True)
+        (self.root / "config/compiler_profiles.json").write_text(json.dumps(profiles))
+        (self.root / "config/modules.json").write_text(json.dumps(dict(schema=1, units=[dict(
+            id="tu:test", source="test.c", object="test.o", profile="gcc296")], modules=[])))
+        contract = ["gcc296", "gcc", "-nostdinc", "unused", "unused", "unused"]
+        with patch.object(dp.build_config, "make_contract", return_value=contract):
             definitions = dp.active_definitions(self.root, "test.c")
         self.assertIn("active", definitions)
         self.assertNotIn("parked", definitions)

@@ -66,7 +66,9 @@ class BaselineTests(unittest.TestCase):
         return subprocess.CompletedProcess(command, 0)
 
     def create(self, output="expected"):
-        with mock.patch.object(baseline.subprocess, "run", side_effect=self.run_command), contextlib.redirect_stdout(io.StringIO()):
+        with mock.patch.object(baseline.subprocess, "run", side_effect=self.run_command), \
+             mock.patch.object(baseline, "compiler_inputs", return_value={"fixture": "compiler"}), \
+             contextlib.redirect_stdout(io.StringIO()):
             baseline.create(output)
 
     def test_success_requires_both_gates_and_copies_contract(self):

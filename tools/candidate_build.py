@@ -11,6 +11,7 @@ import subprocess
 from c_source import parse_funcs
 from decomp_progress import source_inputs, load
 from elf_contract import ELF
+import build_config
 
 
 def sha(path):
@@ -20,29 +21,21 @@ def sha(path):
 def production_inputs(root):
     inputs = source_inputs(root)
     return {n: h for n, h in inputs.items()
-            if n.startswith(("src/", "asm/", "data/", "include/", "overlays/", "exports/", "file_table/"))
+            if n.startswith(("src/", "asm/", "data/", "include/", "overlays/", "exports/", "file_table/", "config/"))
             or n == "Makefile" or n.endswith((".ld", ".sym"))
-            or n == "tools/build_deps.py" or n.startswith("tools/") and n.endswith((".c", ".h"))}
+            or n in build_config.IMPLEMENTATION or n.startswith("tools/") and n.endswith((".c", ".h"))}
 
 
 def compiler_inputs(root):
-    files = list((root / "tools/gcc296").glob("*"))
-    files += list((root / "tools/agbcc").rglob("*"))
-    result = {str(p.relative_to(root)): sha(p) for p in files if p.is_file()}
-    for name in ("gcc", "arm-none-eabi-as", "arm-none-eabi-objdump"):
-        binary = shutil.which(name)
-        if binary:
-            result["host:" + name] = sha(binary)
+    result = build_config.selected_inputs(root)
+    binary = shutil.which("arm-none-eabi-objdump")
+    if binary:
+        result["host:arm-none-eabi-objdump"] = sha(binary)
     return result
 
 
 def contract(root, source):
-    out = subprocess.run(["make", "-s", "--no-print-directory", "print-compile-contract",
-                          "SOURCE=" + source], cwd=root, capture_output=True, text=True,
-                         check=True, timeout=120).stdout.splitlines()
-    if len(out) != 6 or out[0] not in ("gcc296", "agbcc"):
-        raise ValueError("invalid Makefile compile contract")
-    return out
+    return build_config.make_contract(root, source)
 
 
 def reference(root, directory, object_name):
@@ -78,7 +71,8 @@ def compile_tu(root, source, text, directory, settings, names=(), *, cache=None,
     path = directory / Path(source).name
     path.write_text(text)
     asm, obj, expanded = directory / "tu.s", directory / "tu.o", directory / "tu.i"
-    mode, cc, flags, oldcc, cppflags, oldflags = settings
+    profile = build_config.settings(root, source, legacy=settings)
+    mode = profile["family"]
     inc = ["-I" + str((root / source).parent)]
     commands = []
     with (directory / "build.log").open("w") as log:
@@ -89,9 +83,7 @@ def compile_tu(root, source, text, directory, settings, names=(), *, cache=None,
             if out.returncode:
                 raise ValueError("compile failed; see " + str(directory / "build.log"))
             return out.stdout
-        pre = ([cc] + shlex.split(flags) if mode == "gcc296"
-               else ["gcc"] + shlex.split(cppflags))
-        expanded.write_text(run(pre + inc + ["-E", str(path)], capture=True))
+        expanded.write_text(run(build_config.preprocess_command(profile, path, inc), capture=True))
         errors = source_errors(expanded.read_text(), names)
         if errors:
             raise SourceRejected("; ".join(errors))
@@ -106,19 +98,17 @@ def compile_tu(root, source, text, directory, settings, names=(), *, cache=None,
                 # Scoring compiles the exact expanded input used by its cache key.
                 # Ordinary comparisons retain their existing source pipeline.
                 compiler_input = expanded if cache else path
-                run([cc] + shlex.split(flags) + inc + ["-S", "-o", str(asm), str(compiler_input)])
+                run(build_config.compile_command(profile, compiler_input, asm, inc))
             else:
-                run([oldcc] + shlex.split(oldflags) + ["-o", str(asm), str(expanded)])
+                run(build_config.compile_command(profile, expanded, asm))
             if cache:
                 cache.stats["assembly_compiled"] += 1
         if cache:
             artifact = directory / "compiler.s"
             shutil.copyfile(asm, artifact)
             cache.remember(key, artifact)
-        with asm.open("a") as out:
-            out.write("\n\t.text\n\t.align\t2, 0\n")
-        run(["arm-none-eabi-as", "-mcpu=arm7tdmi", "-mthumb-interwork",
-             "-Iinclude", "-o", str(obj), str(asm)])
+        build_config.postprocess_assembly(profile, asm)
+        run(build_config.assemble_command(profile, asm, obj))
     return obj, expanded.read_text(), commands
 
 

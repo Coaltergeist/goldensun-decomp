@@ -1,10 +1,4 @@
-# decomp-permuter project settings.
-#
-# Compiler/assembler flags mirror goldensun/Makefile's %.o: %.c pipeline.
-# The permuter invokes this command line per candidate; any drift from the
-# real build produces spurious non-matches.
-
+# Generate per-TU settings with tools/permuter_compile.py; see DECOMP_DEV.md.
+# The compiler profile must be selected before importing a temporary C variant.
 compiler_type = "gcc"
-compiler_command = "tools/gcc296/xgcc -Btools/gcc296/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi -fno-builtin -nostdinc -ffreestanding -fcall-used-r4 -Iinclude -S -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
-assembler_command = "arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
 asm_prelude_file = "permuter_prelude.inc"

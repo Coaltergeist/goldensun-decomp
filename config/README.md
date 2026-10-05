@@ -14,8 +14,9 @@ set -o pipefail
 python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 ~~~
 
-The catalog is an inventory, not a replacement build graph. Make and the maintained
-linker scripts still control the build. No source paths have moved.
+The catalog owns current TU paths, profile assignments and module identities.
+Make and the maintained linker scripts still control the build graph and link
+order. No source paths have moved.
 
 ## Schema 1
 
@@ -33,11 +34,70 @@ linker scripts still control the build. No source paths have moved.
 - Reference-only m4a source is explicitly excluded. Headers and per-function
   assembly fragments are dependencies, not independently compiled units.
 
-The compiler profile names describe the current Make rules: gcc296,
-gcc296-gaia, gcc296-common2, old-agbcc-m4a, old-agbcc-flash and arm-assembly.
-The validator's adapter checks those current rules' source assignments. Exact
-commands remain in Make and its print-compile-contract query until the dedicated
-compiler-profile migration. Host utilities are outside the target-object catalog.
+`compiler_profiles.json` is the versioned authority for ordered compiler,
+preprocessor and assembler arguments, preprocessing methods, and trailing text
+alignment. `modules.json` assigns each target TU a profile by stable identity.
+The profiles are gcc296, gcc296-gaia, gcc296-common2, old-agbcc-m4a,
+old-agbcc-flash, arm-assembly and host-c. The four host utilities are listed in
+compiler_profiles.json, separately from the 439 target objects.
+
+Gaia and common2 keep their aliasing/interworking exceptions. m4a uses signed-char
+SDK declarations and old_agbcc at -O2; three Flash units use old_agbcc at -O.
+Flash verification stays on normal GCC 2.96. Required ABI assignments are checked
+by stable TU ID, so moving a source path does not change its profile.
+
+## Read-only build queries
+
+These commands need source/configuration files and Python/Make, but no ROM,
+installed target compiler, generated assembly, object or configured build tree:
+
+~~~bash
+set -o pipefail
+python3 -B tools/build_config.py query unit src/math/vector.c 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query unit asm/maps/common/common2.o 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query profile tu:src/battle_anim/moves/gaia 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query commands src/lib/m4a/m4a.c 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query module rom_1b70 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query overlay rom_779188 2>&1 | tee output-query.txt
+~~~
+
+Unit/profile/command queries accept a current source, object, or stable TU ID.
+Module/overlay queries return their object and artifact paths. Command output is
+ordered argument arrays plus structured postprocessing, not a shell script.
+Unknown or reference-only sources fail instead of inheriting a default profile.
+
+`make -s --no-print-directory print-compile-contract SOURCE=src/math/vector.c`
+remains the six-line target-C compatibility interface: family, GCC driver, GCC
+flags, old_agbcc path, host-preprocessor flags, old_agbcc flags. Unused family
+lines retain their former values. `print-build-settings` emits resolved variable
+values as JSON. Both targets are read-only; keep stdout separate from diagnostics
+when consuming either interface programmatically.
+
+## Overrides and dependencies
+
+GCC296_DIR and AGBCC_DIR keep their environment/command-line overrides. GCC296_CC,
+GCC296_CFLAGS, GAIA_CFLAGS, COMMON2_CFLAGS, M4A_CPPFLAGS, M4A_CC1FLAGS,
+AGBFLASH_CPPFLAGS and AGBFLASH_CC1FLAGS accept Make command-line overrides.
+CC, CPPFLAGS and CFLAGS retain Make's host-tool behavior, including the existing
+-MMD append rule. Source/object/tool-directory paths must remain whitespace-free.
+
+A base GCC296_CFLAGS override feeds the Gaia/common2 derivations consistently in
+both builds and queries. Override GAIA_CFLAGS or COMMON2_CFLAGS explicitly to
+replace those derived settings. Research overrides do not establish matching
+acceptance; use the complete verification workflow for accepted changes.
+
+Recipes, candidate compilation and progress preprocessing share build_config.py's
+command construction. build_compile.py runs production pipelines. Make still
+owns scheduling, recursive linker dependencies and output locations. Per-profile
+stamps hash effective arguments, selected driver/frontend/specs/assembler tools,
+implementation and TU membership. No-op checks preserve stamp mtimes. A profile
+change invalidates its consumers; moving a TU between profiles invalidates both
+groups. C/assembler dependency files continue to track individual inputs.
+
+Source/baseline fingerprints include configuration and executable build helpers.
+Candidate caches also include the resolved TU profile and postprocessing. Compiler
+provenance records the effective settings and selected tools, including overrides.
+Do not edit a historical fingerprint to make an old reference appear current.
 
 ## Editing and validating
 
@@ -55,5 +115,5 @@ interpreter. Review new linker syntax before relying on its inventory.
 The validator requires neither a ROM nor generated objects. It does not build,
 rewrite the catalog, update progress or prove byte equivalence. Changes to the
 validator fall under the existing tooling fingerprint/finalization policy.
-The new config directory must join input fingerprints before build/acceptance
-tools start consuming its settings in the later profile/path migration.
+Configuration and build-helper changes require normal finalization before the
+public snapshot and candidate scores become fresh again.

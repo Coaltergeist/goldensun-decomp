@@ -125,6 +125,10 @@ class IncrementalTests(unittest.TestCase):
         self.assertEqual(changed, full)
 
     def test_unrelated_tu_change_keeps_same_named_overlay_candidate_reusable(self):
+        modules = load(self.root / "config/modules.json")
+        modules["units"].append(dict(id="tu:other", source="src/other.c", object="src/other.o",
+                                     profile="gcc296", owner="other", source_role="maintained"))
+        self.put("config/modules.json", json.dumps(modules))
         self.put("src/other.c", 'INCLUDE_ASM("asm/other/One.s");\n')
         self.put("asm/other/One.s", "original other One")
         self.put("src/non_matching/other/One.c", "int One(void) { return 5; }\n")

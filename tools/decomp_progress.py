@@ -22,6 +22,7 @@ import tarfile
 import tempfile
 
 from c_source import parse_funcs
+import build_config
 from progress import linked_sources, symbol_records
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,10 +38,10 @@ SIZE_CORRECTIONS = {
     "overlay:rom_77dd1c:0200c560": (12, "OvlFunc_4560 ends with a typo: .func_end OvlFunc_456c; next entry is 0x0200c56c."),
     "rom:080a23f4": (20, "Func_a23f4 lacks .func_end; its return is followed immediately by Func_a2408."),
 }
-INPUT_DIRS = {"src", "asm", "data", "include", "overlays", "exports", "file_table", "tools"}
+INPUT_DIRS = {"src", "asm", "data", "include", "overlays", "exports", "file_table", "tools", "config"}
 INPUT_FILES = {"Makefile", ".gitattributes", ".gitignore", "goldensun.sha1",
                "original_functions.json", BASELINE, "fakematch.txt", "aliases.txt",
-               "unmatchable.txt"}
+               "unmatchable.txt", "permuter_settings.toml"}
 
 
 def digest(path, algorithm="sha256"):
@@ -323,16 +324,9 @@ def baseline_capture(root, output):
 
 
 def active_definitions(root, source):
-    # Reuse the production Makefile contract, including Gaia/common2/library overrides.
-    contract = subprocess.check_output(["make", "-s", "--no-print-directory",
-                                       "print-compile-contract", "SOURCE=" + source],
-                                      cwd=root, text=True).splitlines()
-    if len(contract) != 6 or contract[0] not in {"gcc296", "agbcc"}:
-        raise ValueError("invalid compile contract: " + source)
-    if contract[0] == "gcc296":
-        command = [contract[1], *shlex.split(contract[2]), "-E", source]
-    else:
-        command = ["gcc", "-E", *shlex.split(contract[4]), source]
+    contract = build_config.make_contract(root, source)
+    profile = build_config.settings(root, source, legacy=contract)
+    command = build_config.preprocess_command(profile, source)
     expanded = subprocess.run(command, cwd=root, capture_output=True, text=True, check=True).stdout
     return parse_funcs(expanded)
 
@@ -479,16 +473,16 @@ def validate_units(baseline, snapshot, inputs):
 
 
 def installed_tools(root):
-    manifest_path = root / "tools/gcc296/build-manifest.json"
+    values = build_config.make_values(root)
+    gcc_dir = root / values["GCC296_DIR"]
+    manifest_path = gcc_dir / "build-manifest.json"
     manifest = load(manifest_path)
     for name, expected in manifest["artifacts"].items():
-        path = root / "tools/gcc296" / Path(name).name
+        path = gcc_dir / Path(name).name
         if digest(path) != expected:
             raise ValueError("installed GCC binary differs from provenance: " + name)
     # old_agbcc has no manifest; record its actual binary and installed headers.
-    paths = [manifest_path, *sorted((root / "tools/gcc296").glob("*")),
-             *sorted((root / "tools/agbcc").rglob("*"))]
-    hashes = {p.relative_to(root).as_posix(): digest(p) for p in paths if p.is_file()}
+    hashes = build_config.selected_inputs(root, values)
     for name in ["arm-none-eabi-as", "arm-none-eabi-ld", "arm-none-eabi-objcopy", "gcc", "make"]:
         path = shutil.which(name)
         if not path:

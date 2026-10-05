@@ -11,6 +11,7 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import candidate_catalog as catalog
 import candidate_build as build
+import build_config
 import compare_candidate as cli
 from decomp_progress import source_inputs
 
@@ -22,6 +23,13 @@ class CandidateTests(unittest.TestCase):
         subprocess.run(["git", "init", "-q", str(self.root)], check=True)
         self.put(".gitignore", "build/\n*.o\n")
         self.put("Makefile", "# fixture\n")
+        profiles = build_config.read_json(Path(__file__).resolve().parents[2] / "config/compiler_profiles.json")
+        profiles["required_unit_profiles"] = {}
+        profiles["host_units"] = []
+        self.put("config/compiler_profiles.json", json.dumps(profiles))
+        self.put("config/modules.json", json.dumps(dict(schema=1, units=[dict(
+            id="tu:example", source="src/example.c", object="src/example.o",
+            profile="gcc296", owner="example", source_role="maintained")], modules=[])))
         self.put("original_functions.json", "{}")
         self.put("src/example.c", '#include "nonmatching.h"\n'
                  'INCLUDE_ASM("asm/example/One.s");\n'
@@ -173,6 +181,9 @@ const char *description = ".size is not assembly here";
                 Path(argv[argv.index("-o") + 1]).write_bytes(b"object")
             return subprocess.CompletedProcess(argv, 0, "int One(void) { return 1; }\n", "")
         for mode in ("gcc296", "agbcc"):
+            data = json.loads((self.root / "config/modules.json").read_text())
+            data["units"][0]["profile"] = "gcc296" if mode == "gcc296" else "old-agbcc-m4a"
+            self.put("config/modules.json", json.dumps(data))
             settings = [mode, "xgcc", "-O2 -fno-strict-aliasing",
                         "oldcc", "-nostdinc -D M4A_SIGNED_CHAR", "-O"]
             with mock.patch.object(build.subprocess, "run", side_effect=run):

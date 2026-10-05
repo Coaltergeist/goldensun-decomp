@@ -104,3 +104,32 @@ and generate the report. Only successful pushes to `main` upload
 
 CI checks both snapshots and candidate freshness without the ROM or game compiler.
 It does not regenerate snapshots, rerun comparisons, or replace source review.
+
+
+## Compiler profiles and permuter settings
+
+See [config/README.md](config/README.md) for the shared compiler profiles,
+read-only source/object queries, overrides and dependency fingerprints.
+
+Generate settings for the owning production TU before importing a function into
+[decomp-permuter](https://github.com/simonlindholm/decomp-permuter). Substitute the
+owning source, target assembly and importer path:
+
+~~~bash
+set -o pipefail
+python3 -B tools/permuter_compile.py src/math/vector.c --output build/permuter/vector.toml 2>&1 | tee output-permuter-settings.txt
+python3 /path/to/decomp-permuter/import.py src/math/vector.c /path/to/target.s --settings build/permuter/vector.toml 2>&1 | tee output-permuter-import.txt
+~~~
+
+Without --output, the settings generator writes TOML to stdout and changes no
+files. It preserves the selected profile's include/define flags for the importer's
+preprocessing and supplies its assembler flags. The compile adapter uses the same
+pipeline and trailing alignment as production/candidate compilation. It rejects
+stale settings and writes only a separate scratch object. Regenerate settings
+after changing the selected profile or overrides.
+
+Use per-TU settings for normal code as well as Gaia, common2, m4a and Flash. The
+generic Make dry-run discovery cannot interpret Python build recipes and fails
+with instructions to generate settings. No permuter or model run starts during
+settings generation. A permuter result still requires source review, whole-object
+comparison and the normal ROM/all-overlay acceptance gate.

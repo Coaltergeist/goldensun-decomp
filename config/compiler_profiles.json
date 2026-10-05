@@ -1,0 +1,300 @@
+{
+  "schema": 1,
+  "variables": [
+    {
+      "name": "GCC296_DIR",
+      "assignment": "?=",
+      "arguments": [
+        "tools/gcc296"
+      ]
+    },
+    {
+      "name": "AGBCC_DIR",
+      "assignment": "?=",
+      "arguments": [
+        "tools/agbcc"
+      ]
+    },
+    {
+      "name": "GCC296_CC",
+      "assignment": ":=",
+      "arguments": [
+        "{GCC296_DIR}/xgcc"
+      ]
+    },
+    {
+      "name": "GCC296_CFLAGS",
+      "assignment": ":=",
+      "arguments": [
+        "-B{GCC296_DIR}/",
+        "-O2",
+        "-mthumb",
+        "-mthumb-interwork",
+        "-mcpu=arm7tdmi",
+        "-fno-builtin",
+        "-nostdinc",
+        "-ffreestanding",
+        "-fcall-used-r4",
+        "-Iinclude",
+        "-fno-strict-aliasing"
+      ]
+    },
+    {
+      "name": "GAIA_CFLAGS",
+      "assignment": ":=",
+      "base": "GCC296_CFLAGS",
+      "remove": [
+        "-fno-strict-aliasing"
+      ],
+      "append": [
+        "-fstrict-aliasing"
+      ]
+    },
+    {
+      "name": "COMMON2_CFLAGS",
+      "assignment": ":=",
+      "base": "GCC296_CFLAGS",
+      "remove": [
+        "-mthumb-interwork"
+      ],
+      "append": []
+    },
+    {
+      "name": "M4A_CPPFLAGS",
+      "assignment": ":=",
+      "arguments": [
+        "-nostdinc",
+        "-I{AGBCC_DIR}/include",
+        "-Iinclude",
+        "-D",
+        "PLATFORM_GBA=1",
+        "-D",
+        "M4A_SIGNED_CHAR"
+      ]
+    },
+    {
+      "name": "M4A_CC1FLAGS",
+      "assignment": ":=",
+      "arguments": [
+        "-Wimplicit",
+        "-Wparentheses",
+        "-fhex-asm",
+        "-mthumb-interwork",
+        "-O2"
+      ]
+    },
+    {
+      "name": "AGBFLASH_CPPFLAGS",
+      "assignment": ":=",
+      "arguments": [
+        "-nostdinc",
+        "-I{AGBCC_DIR}/include",
+        "-Iinclude",
+        "-D",
+        "PLATFORM_GBA=1"
+      ]
+    },
+    {
+      "name": "AGBFLASH_CC1FLAGS",
+      "assignment": ":=",
+      "arguments": [
+        "-Wimplicit",
+        "-Wparentheses",
+        "-fhex-asm",
+        "-mthumb-interwork",
+        "-O"
+      ]
+    },
+    {
+      "name": "CC",
+      "assignment": "?=",
+      "arguments": [
+        "cc"
+      ]
+    },
+    {
+      "name": "CPPFLAGS",
+      "assignment": "+=",
+      "arguments": [
+        "-MMD"
+      ]
+    },
+    {
+      "name": "CFLAGS",
+      "assignment": "?=",
+      "arguments": [
+        "-O2",
+        "-Wall"
+      ]
+    }
+  ],
+  "profiles": {
+    "gcc296": {
+      "family": "gcc296",
+      "compiler_variable": "GCC296_CC",
+      "arguments_variable": "GCC296_CFLAGS",
+      "preprocessing": "driver",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-mthumb-interwork",
+        "-Iinclude"
+      ],
+      "postprocess": {
+        "text_alignment_power": 2,
+        "fill": 0
+      }
+    },
+    "gcc296-gaia": {
+      "family": "gcc296",
+      "compiler_variable": "GCC296_CC",
+      "arguments_variable": "GAIA_CFLAGS",
+      "preprocessing": "driver",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-mthumb-interwork",
+        "-Iinclude"
+      ],
+      "postprocess": {
+        "text_alignment_power": 2,
+        "fill": 0
+      }
+    },
+    "gcc296-common2": {
+      "family": "gcc296",
+      "compiler_variable": "GCC296_CC",
+      "arguments_variable": "COMMON2_CFLAGS",
+      "preprocessing": "driver",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-mthumb-interwork",
+        "-Iinclude"
+      ],
+      "postprocess": {
+        "text_alignment_power": 2,
+        "fill": 0
+      }
+    },
+    "old-agbcc-m4a": {
+      "family": "agbcc",
+      "compiler": [
+        "{AGBCC_DIR}/bin/old_agbcc"
+      ],
+      "arguments_variable": "M4A_CC1FLAGS",
+      "preprocessing": "host",
+      "preprocessor": [
+        "gcc"
+      ],
+      "preprocessor_arguments_variable": "M4A_CPPFLAGS",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-mthumb-interwork",
+        "-Iinclude"
+      ],
+      "postprocess": {
+        "text_alignment_power": 2,
+        "fill": 0
+      }
+    },
+    "old-agbcc-flash": {
+      "family": "agbcc",
+      "compiler": [
+        "{AGBCC_DIR}/bin/old_agbcc"
+      ],
+      "arguments_variable": "AGBFLASH_CC1FLAGS",
+      "preprocessing": "host",
+      "preprocessor": [
+        "gcc"
+      ],
+      "preprocessor_arguments_variable": "AGBFLASH_CPPFLAGS",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-mthumb-interwork",
+        "-Iinclude"
+      ],
+      "postprocess": {
+        "text_alignment_power": 2,
+        "fill": 0
+      }
+    },
+    "arm-assembly": {
+      "family": "assembly",
+      "assembler": [
+        "arm-none-eabi-as"
+      ],
+      "assembler_arguments": [
+        "-mcpu=arm7tdmi",
+        "-Iinclude"
+      ]
+    },
+    "host-c": {
+      "family": "host",
+      "compiler_variable": "CC",
+      "arguments_variables": [
+        "CPPFLAGS",
+        "CFLAGS"
+      ]
+    }
+  },
+  "required_unit_profiles": {
+    "tu:src/maps/common/common2": "gcc296-common2",
+    "tu:src/battle_anim/moves/gaia": "gcc296-gaia",
+    "tu:src/lib/agb_flash/agb_flash": "old-agbcc-flash",
+    "tu:src/lib/agb_flash/agb_flash_at": "old-agbcc-flash",
+    "tu:src/lib/agb_flash/agb_flash_mx": "old-agbcc-flash",
+    "tu:src/lib/agb_flash/agb_flash_verify": "gcc296",
+    "tu:src/lib/m4a/m4a": "old-agbcc-m4a"
+  },
+  "host_units": [
+    {
+      "id": "host:pack_overlay",
+      "source": "tools/pack_overlay.c",
+      "object": "tools/pack_overlay.o",
+      "binary": "tools/pack_overlay",
+      "profile": "host-c",
+      "owner": "host-tools",
+      "source_role": "maintained"
+    },
+    {
+      "id": "host:pack_strings",
+      "source": "tools/pack_strings.c",
+      "object": "tools/pack_strings.o",
+      "binary": "tools/pack_strings",
+      "profile": "host-c",
+      "owner": "host-tools",
+      "source_role": "maintained"
+    },
+    {
+      "id": "host:unpack_overlay",
+      "source": "tools/unpack_overlay.c",
+      "object": "tools/unpack_overlay.o",
+      "binary": "tools/unpack_overlay",
+      "profile": "host-c",
+      "owner": "host-tools",
+      "source_role": "maintained"
+    },
+    {
+      "id": "host:unpack_strings",
+      "source": "tools/unpack_strings.c",
+      "object": "tools/unpack_strings.o",
+      "binary": "tools/unpack_strings",
+      "profile": "host-c",
+      "owner": "host-tools",
+      "source_role": "maintained"
+    }
+  ]
+}

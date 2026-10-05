@@ -75,7 +75,7 @@ def capture(root, baseline, binary, output, *, full=False):
         shutil.copyfile(original, expected)
         settings = contract(root, unit["source"])
         contracts[unit["source"]] = settings
-        tools = tool_identity(root, settings)
+        tools = tool_identity(root, settings, unit["source"])
         toolchains[unit["source"]] = tools
         text = local(root, unit["source"]).read_text()
         control, _, _ = compile_tu(root, unit["source"], text, folder / "control", settings)
@@ -138,7 +138,7 @@ def capture(root, baseline, binary, output, *, full=False):
             or sha(binary) != info["sha256"] or sha(baseline / "manifest.json") != baseline_hash
             or any(sha(p) != h for p, h in references.items())
             or any(contract(root, source) != settings for source, settings in contracts.items())
-            or any(tool_identity(root, contracts[source]) != tools for source, tools in toolchains.items())):
+            or any(tool_identity(root, contracts[source], source) != tools for source, tools in toolchains.items())):
         raise ValueError("inputs changed during scoring; previous scores retained")
     validate_scores(root, snapshot, saved, units)
     write_json(run / "candidate_scores.json", saved)

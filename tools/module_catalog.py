@@ -6,6 +6,8 @@ from pathlib import Path
 import re
 import sys
 
+import build_config
+
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED_SOURCES = {"data/strings/strings.s": "string-pack"}
 COMMON = {
@@ -14,8 +16,6 @@ COMMON = {
     "asm/maps/common/common2.o": "common:common2",
     "src/lib/call_via.o": "library:call_via",
 }
-PROFILE_IDS = {"gcc296", "gcc296-gaia", "gcc296-common2", "old-agbcc-m4a",
-               "old-agbcc-flash", "arm-assembly"}
 
 def local(root, name):
     path = Path(name)
@@ -84,20 +84,6 @@ def scripts(root):
     paths += [p.relative_to(root).as_posix() for p in sorted((root / "overlays").glob("*/overlay.ld"))]
     return {name: read_script(root, name) for name in paths}
 
-def profile(source):
-    if source.endswith(".s"):
-        return "arm-assembly"
-    if source == "src/battle_anim/moves/gaia.c":
-        return "gcc296-gaia"
-    if source == "src/maps/common/common2.c":
-        return "gcc296-common2"
-    if source.startswith("src/lib/m4a/"):
-        return "old-agbcc-m4a"
-    if source in {"src/lib/agb_flash/agb_flash.c", "src/lib/agb_flash/agb_flash_mx.c",
-                  "src/lib/agb_flash/agb_flash_at.c"}:
-        return "old-agbcc-flash"
-    return "gcc296"
-
 def source_for(root, obj):
     # Current Make adapter. Replace together with Make in the profile/path phase.
     local(root, obj)
@@ -109,7 +95,9 @@ def source_for(root, obj):
         raise ValueError("candidate used as production: " + source)
     return source
 
-def derive(root):
+def derive(root, catalog=None):
+    _, _, entries = build_config.load(root, catalog)
+    profiles = {u["object"]: u["profile"] for u in entries}
     graph = scripts(root)
     consumers = defaultdict(set)
     anchors = defaultdict(list)
@@ -132,7 +120,7 @@ def derive(root):
             if len(linked) != 1:
                 raise ValueError("unresolved shared ownership: " + obj)
             owner = next(iter(linked))
-        units[obj] = dict(source=source, owner=owner, profile=profile(source),
+        units[obj] = dict(source=source, owner=owner, profile=profiles.get(obj),
                           source_role="generated" if source in GENERATED_SOURCES else "maintained",
                           linked_in=sorted(linked))
     return dict(scripts=graph, anchors=dict(anchors), units=units)
@@ -140,7 +128,8 @@ def derive(root):
 def validate(root, catalog):
     if catalog.get("schema") != 1 or catalog.get("link_order_authority") != "linker-scripts":
         raise ValueError("unsupported module catalog schema/authority")
-    graph = derive(root)
+    profile_data, _, _ = build_config.load(root, catalog)
+    graph = derive(root, catalog)
     modules, units = {}, {}
     for module in catalog["modules"]:
         identity = module["id"]
@@ -173,7 +162,7 @@ def validate(root, catalog):
         if obj in units or unit["id"] in seen_ids or unit["source"] in seen_sources:
             raise ValueError("duplicate TU identity/source/object: " + obj)
         seen_ids.add(unit["id"]); seen_sources.add(unit["source"])
-        if unit["owner"] not in modules or unit["profile"] not in PROFILE_IDS:
+        if unit["owner"] not in modules or unit["profile"] not in profile_data["profiles"]:
             raise ValueError("unknown owner/profile: " + obj)
         for key in ("source", "object"):
             local(root, unit[key])
