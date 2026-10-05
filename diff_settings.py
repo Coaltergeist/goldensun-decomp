@@ -21,9 +21,9 @@ def object_map(path):
 
 def apply(config, args):
     config['baseimg'] = 'baserom.gba'
-    config['myimg'] = 'goldensun.gba'
+    config['myimg'] = 'build/usa/goldensun.gba'
     # The final map merges ROM inputs into stage1.o and loses source ownership.
-    default_map = 'stage1.map' if getattr(args, 'diff_obj', False) else 'goldensun.map'
+    default_map = 'build/usa/stage1.map' if getattr(args, 'diff_obj', False) else 'build/usa/goldensun.map'
     mapfile = os.environ.get('GOLDENSUN_DIFF_MAP', default_map)
     config['mapfile'] = object_map(mapfile) if getattr(args, 'diff_obj', False) else mapfile
     config['source_directories'] = ['.']

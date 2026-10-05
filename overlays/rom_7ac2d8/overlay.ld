@@ -13,24 +13,24 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/mercury_lighthouse/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/mercury_lighthouse.o(.text)
-		asm/maps/mercury_lighthouse/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/mercury_lighthouse/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/mercury_lighthouse.o(.text)
+		build/usa/asm/maps/mercury_lighthouse/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/mercury_lighthouse.o(.data)
-		asm/maps/mercury_lighthouse.o(.mdata1)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/mercury_lighthouse.o(.mdata2)
-		asm/maps/mercury_lighthouse.o(.mdata3)
-		asm/maps/mercury_lighthouse.o(.mdata4)
-		asm/maps/mercury_lighthouse.o(.mdata5)
-		asm/maps/mercury_lighthouse.o(.mdata6)
-		asm/maps/mercury_lighthouse.o(.mdata7)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/mercury_lighthouse.o(.data)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata1)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata2)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata3)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata4)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata5)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata6)
+		build/usa/asm/maps/mercury_lighthouse.o(.mdata7)
 	} > overlay
 
 	/DISCARD/ : {

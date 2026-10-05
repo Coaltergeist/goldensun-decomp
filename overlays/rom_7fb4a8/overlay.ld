@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/link_lobby/exports.o(.text)
-		asm/maps/link_lobby.o(.text)
-		asm/maps/link_lobby/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/link_lobby/exports.o(.text)
+		build/usa/asm/maps/link_lobby.o(.text)
+		build/usa/asm/maps/link_lobby/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/link_lobby.o(.data)
+		build/usa/asm/maps/link_lobby.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/link_lobby.o(.bss)
+		build/usa/asm/maps/link_lobby.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

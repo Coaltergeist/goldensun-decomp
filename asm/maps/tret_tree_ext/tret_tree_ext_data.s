@@ -10,13 +10,13 @@
 
 gOvl_0200835c:
 MapEntrance_ARRAY_919__0200835c:
-	.incbin "overlays/rom_7a67d8/orig.bin", 0x35c, (0x44c-0x35c)
+	.incbin "build/usa/reference/overlays/rom_7a67d8/orig.bin", 0x35c, (0x44c-0x35c)
 gOvl_0200844c:
-	.incbin "overlays/rom_7a67d8/orig.bin", 0x44c, (0x474-0x44c)
+	.incbin "build/usa/reference/overlays/rom_7a67d8/orig.bin", 0x44c, (0x474-0x44c)
 gOvl_02008474:
-	.incbin "overlays/rom_7a67d8/orig.bin", 0x474, (0x4a4-0x474)
+	.incbin "build/usa/reference/overlays/rom_7a67d8/orig.bin", 0x474, (0x4a4-0x474)
 gOvl_020084a4:
-	.incbin "overlays/rom_7a67d8/orig.bin", 0x4a4
+	.incbin "build/usa/reference/overlays/rom_7a67d8/orig.bin", 0x4a4
 
 	.section .bss
 	.global .Lm919_590

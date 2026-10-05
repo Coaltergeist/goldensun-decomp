@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vault_1/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/vault_1.o(.text)
-		asm/maps/vault_1/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/vault_1/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/vault_1.o(.text)
+		build/usa/asm/maps/vault_1/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/vault_1.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/vault_1.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

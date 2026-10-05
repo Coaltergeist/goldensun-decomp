@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tret_tree_ext.o(.text)
+		build/usa/asm/maps/tret_tree_ext.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/tret_tree_ext.o(.data)
+		build/usa/asm/maps/tret_tree_ext.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/tret_tree_ext.o(.bss)
+		build/usa/asm/maps/tret_tree_ext.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

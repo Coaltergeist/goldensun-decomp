@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vale_kraden.o(.text)
+		build/usa/asm/maps/vale_kraden.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/vale_kraden.o(.data)
+		build/usa/asm/maps/vale_kraden.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

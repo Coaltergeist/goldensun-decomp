@@ -7,9 +7,10 @@ import re
 import sys
 
 import build_config
+import build_paths
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATED_SOURCES = {"data/strings/strings.s": "string-pack"}
+GENERATED_SOURCES = {build_paths.STRINGS + "/strings.s": "string-pack"}
 COMMON = {
     "asm/maps/common/common0.o": "common:common0",
     "asm/maps/common/common1.o": "common:common1",
@@ -84,16 +85,14 @@ def scripts(root):
     paths += [p.relative_to(root).as_posix() for p in sorted((root / "overlays").glob("*/overlay.ld"))]
     return {name: read_script(root, name) for name in paths}
 
-def source_for(root, obj):
-    # Current Make adapter. Replace together with Make in the profile/path phase.
+def source_for(root, obj, entries=None):
     local(root, obj)
-    candidate = ("src/" + obj[4:] if obj.startswith("asm/") else obj)[:-2] + ".c"
-    source = candidate if local(root, candidate).is_file() else obj[:-2] + ".s"
+    entries = build_config.load(root)[2] if entries is None else entries
+    source = build_config.unit_for(entries, obj)["source"]
     if source not in GENERATED_SOURCES and not local(root, source).is_file():
         raise ValueError("missing object source: " + obj)
-    if source.startswith("src/non_matching/"):
-        raise ValueError("candidate used as production: " + source)
     return source
+
 
 def derive(root, catalog=None):
     _, _, entries = build_config.load(root, catalog)
@@ -110,12 +109,12 @@ def derive(root, catalog=None):
             owner = "overlay:" + Path(script).parent.name if overlay else name
             anchors[owner].append(dict(script=script, section=name))
             for entry in section["inputs"]:
-                if entry["object"] != "stage1.o":
+                if entry["object"] != build_paths.STAGE1:
                     consumers[entry["object"]].add(owner)
     units = {}
     for obj, linked in sorted(consumers.items()):
-        source = source_for(root, obj)
-        owner = COMMON.get(obj)
+        source = source_for(root, obj, entries)
+        owner = COMMON.get(build_config.unit_for(entries, obj).get("legacy_object", obj))
         if owner is None:
             if len(linked) != 1:
                 raise ValueError("unresolved shared ownership: " + obj)
@@ -175,7 +174,8 @@ def validate(root, catalog):
                 raise ValueError("TU " + key + " differs from current Make/linkers: " + obj)
     snapshot = json.loads(local(root, "progress_snapshot.json").read_text())
     for source, unit in snapshot["units"].items():
-        if unit["object"] not in units or units[unit["object"]]["source"] != source:
+        resolved = build_config.unit_for(list(units.values()), unit["object"])
+        if resolved["source"] != source:
             raise ValueError("progress TU missing from catalog: " + source)
     # Ensure reference C is explicit without mistaking include fragments for TUs.
     references = {row["path"] for row in catalog["reference_sources"]}

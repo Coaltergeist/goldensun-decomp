@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/lunpa/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/lunpa.o(.text)
-		asm/maps/lunpa/imports.o(.text)
+		build/usa/asm/maps/lunpa/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/lunpa.o(.text)
+		build/usa/asm/maps/lunpa/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/lunpa.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/lunpa.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

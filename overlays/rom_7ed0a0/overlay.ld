@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tunnel_ruins.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/tunnel_ruins.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/tunnel_ruins.o(.data)
+		build/usa/asm/maps/tunnel_ruins.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

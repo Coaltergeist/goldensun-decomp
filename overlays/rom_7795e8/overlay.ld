@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/main_menu.o(.text)
+		build/usa/asm/maps/main_menu.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/main_menu.o(.data)
+		build/usa/asm/maps/main_menu.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

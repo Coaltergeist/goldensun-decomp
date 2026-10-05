@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/colosseum.o(.text)
+		build/usa/asm/maps/colosseum.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/colosseum.o(.data)
+		build/usa/asm/maps/colosseum.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

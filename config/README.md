@@ -16,7 +16,7 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 
 The catalog owns current TU paths, profile assignments and module identities.
 Make and the maintained linker scripts still control the build graph and link
-order. No source paths have moved.
+order. Maintained source paths are unchanged; generated products use build/.
 
 ## Schema 1
 
@@ -29,6 +29,8 @@ order. No source paths have moved.
 - Each unit has a stable ID, current source/object paths, an owner, a compiler
   profile and a maintained/generated classification. Unit IDs retain their initial
   spelling after future path changes; original function IDs remain separate.
+  `legacy_object` records the pre-isolation Make alias; it is not a current file.
+  Host entries similarly retain `legacy_binary`.
 - The 439 linked objects include 297 C compilations and 142 assembly compilations.
   The latter include one generated string-data assembly input.
 - Reference-only m4a source is explicitly excluded. Headers and per-function
@@ -61,7 +63,8 @@ python3 -B tools/build_config.py query module rom_1b70 2>&1 | tee output-query.t
 python3 -B tools/build_config.py query overlay rom_779188 2>&1 | tee output-query.txt
 ~~~
 
-Unit/profile/command queries accept a current source, object, or stable TU ID.
+Unit/profile/command queries accept a current source/object, a recorded legacy
+object alias, or a stable TU ID.
 Module/overlay queries return their object and artifact paths. Command output is
 ordered argument arrays plus structured postprocessing, not a shell script.
 Unknown or reference-only sources fail instead of inheriting a default profile.
@@ -88,7 +91,9 @@ acceptance; use the complete verification workflow for accepted changes.
 
 Recipes, candidate compilation and progress preprocessing share build_config.py's
 command construction. build_compile.py runs production pipelines. Make still
-owns scheduling, recursive linker dependencies and output locations. Per-profile
+owns serial scheduling and recursive linker dependencies. build_paths.py resolves
+artifacts and declares clean ownership; build_graph.py emits explicit Make rules;
+build_actions.py publishes generated/link products and performs bounded clean. Per-profile
 stamps hash effective arguments, selected driver/frontend/specs/assembler tools,
 implementation and TU membership. No-op checks preserve stamp mtimes. A profile
 change invalidates its consumers; moving a TU between profiles invalidates both
@@ -98,6 +103,36 @@ Source/baseline fingerprints include configuration and executable build helpers.
 Candidate caches also include the resolved TU profile and postprocessing. Compiler
 provenance records the effective settings and selected tools, including overrides.
 Do not edit a historical fingerprint to make an old reference appear current.
+
+## Output layout and cleanup
+
+| Location | Contents |
+| --- | --- |
+| build/usa/src, asm, data, exports | Target objects, .s/.i intermediates and dependency files |
+| build/usa/overlays | Overlay ELF/bin/lz/map outputs |
+| build/usa/reference | Extracted originals and strings.txt |
+| build/usa/generated/strings | Packed strings and generated strings.s |
+| build/usa/stamps | Effective profile and binutils fingerprints |
+| build/usa | ROM, final ELF/map, stage1 object/map and tags |
+| build/host | Host utility objects, dependencies and executables |
+
+All compiler/assembler/linker commands run from the checkout root. Maintained
+assembly names generated inputs explicitly; no legacy file or symlink is needed.
+The first-build graph discovers literal generated inputs before depfiles exist.
+The USA string generator owns its complete 42-chunk output set; missing byproducts
+trigger regeneration. Linker scripts retain section/input order and select real
+catalog objects. Overlay -R symbol inputs must remain after -T script inputs.
+
+Ordinary clean removes the declared files, then empty directories. It validates
+paths before deletion and rejects symlinks and tracked outputs. Unknown files,
+build/non_matching, build/permuter, installed compilers, references and verification
+history survive. Compiler output m4a.s is generated under build/usa/src/lib/m4a;
+the maintained src/lib/m4a/m4a0.s remains source. New handwritten .s files are no
+longer hidden by broad ignore rules.
+
+Old Make object/host/link targets are compatibility aliases. Diff tools and
+baselines use current paths, including build/usa inside a new reference directory.
+Do not rewrite old receipts or copy old products back into source directories.
 
 ## Editing and validating
 

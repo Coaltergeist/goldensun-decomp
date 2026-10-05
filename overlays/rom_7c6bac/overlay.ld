@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/kalay_docks.o(.text)
+		build/usa/asm/maps/kalay_docks.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/kalay_docks.o(.data)
+		build/usa/asm/maps/kalay_docks.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

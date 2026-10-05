@@ -888,102 +888,102 @@ gFileTable:
 	.ft_include	"file_table/file_877.raw"
 	.ft_include	"file_table/file_878.raw"
 
-	.ft_include	"overlays/rom_779188/overlay.lz", 0xa0, 0x4f
-	.ft_include	"overlays/rom_7795e8/overlay.lz", 0x00, 0x00, 0xdd
-	.ft_include	"overlays/rom_77a7c8/overlay.lz"
-	.ft_include	"overlays/rom_77dd1c/overlay.lz"
-	.ft_include	"overlays/rom_780898/overlay.lz", 0x2b, 0x82
-	.ft_include	"overlays/rom_784360/overlay.lz"
-	.ft_include	"overlays/rom_78603c/overlay.lz"
-	.ft_include	"overlays/rom_786f0c/overlay.lz"
-	.ft_include	"overlays/rom_787e04/overlay.lz"
-	.ft_include	"overlays/rom_7892c8/overlay.lz"
-	.ft_include	"overlays/rom_78ac38/overlay.lz"
-	.ft_include	"overlays/rom_78b2ac/overlay.lz", 0x7c
-	.ft_include	"overlays/rom_78c76c/overlay.lz", 0x51, 0x05, 0x08
-	.ft_include	"overlays/rom_78dc80/overlay.lz"
-	.ft_include	"overlays/rom_78dd40/overlay.lz"
-	.ft_include	"overlays/rom_78de18/overlay.lz", 0x10, 0x4e
-	.ft_include	"overlays/rom_78dee8/overlay.lz"
-	.ft_include	"overlays/rom_78ef88/overlay.lz", 0xc5
-	.ft_include	"overlays/rom_791794/overlay.lz"
-	.ft_include	"overlays/rom_793768/overlay.lz", 0xa3, 0x6e, 0x3e
-	.ft_include	"overlays/rom_794ac0/overlay.lz", 0x46, 0xe0
-	.ft_include	"overlays/rom_797740/overlay.lz"
-	.ft_include	"overlays/rom_797990/overlay.lz", 0xe0, 0x2d, 0xbc
-	.ft_include	"overlays/rom_7987ac/overlay.lz", 0x03
-	.ft_include	"overlays/rom_798dc4/overlay.lz", 0xc1
-	.ft_include	"overlays/rom_799998/overlay.lz", 0x90, 0x58
-	.ft_include	"overlays/rom_799abc/overlay.lz"
-	.ft_include	"overlays/rom_79aad8/overlay.lz", 0x16, 0x56, 0x82
-	.ft_include	"overlays/rom_79b154/overlay.lz"
-	.ft_include	"overlays/rom_79c0c4/overlay.lz"
-	.ft_include	"overlays/rom_79c738/overlay.lz", 0xfd, 0x11, 0x21
-	.ft_include	"overlays/rom_79dd90/overlay.lz", 0x47
-	.ft_include	"overlays/rom_79e5c0/overlay.lz", 0xb0
-	.ft_include	"overlays/rom_7a0010/overlay.lz", 0x16, 0x40
-	.ft_include	"overlays/rom_7a04ac/overlay.lz", 0x04, 0x14
-	.ft_include	"overlays/rom_7a1ff0/overlay.lz"
-	.ft_include	"overlays/rom_7a2bf0/overlay.lz", 0x7c
-	.ft_include	"overlays/rom_7a37f0/overlay.lz"
-	.ft_include	"overlays/rom_7a4370/overlay.lz"
-	.ft_include	"overlays/rom_7a5214/overlay.lz", 0x8c, 0x0e, 0xe2
-	.ft_include	"overlays/rom_7a67d8/overlay.lz"
-	.ft_include	"overlays/rom_7a6ae4/overlay.lz"
-	.ft_include	"overlays/rom_7a7298/overlay.lz", 0x5b
-	.ft_include	"overlays/rom_7a8c8c/overlay.lz", 0xf4, 0xbe
-	.ft_include	"overlays/rom_7aa430/overlay.lz", 0x46
-	.ft_include	"overlays/rom_7ac2d8/overlay.lz", 0x48
-	.ft_include	"overlays/rom_7b0400/overlay.lz"
-	.ft_include	"overlays/rom_7b2078/overlay.lz", 0xe1
-	.ft_include	"overlays/rom_7b4558/overlay.lz"
-	.ft_include	"overlays/rom_7b6668/overlay.lz", 0x88, 0x12
-	.ft_include	"overlays/rom_7b7790/overlay.lz"
-	.ft_include	"overlays/rom_7b7f1c/overlay.lz"
-	.ft_include	"overlays/rom_7b8cb0/overlay.lz", 0x5c, 0x8f, 0xff
-	.ft_include	"overlays/rom_7b9cb4/overlay.lz"
-	.ft_include	"overlays/rom_7bc690/overlay.lz", 0xe7, 0x42
-	.ft_include	"overlays/rom_7bdeb0/overlay.lz", 0x64
-	.ft_include	"overlays/rom_7bf5a8/overlay.lz"
-	.ft_include	"overlays/rom_7c097c/overlay.lz", 0x1c, 0x41, 0x81
-	.ft_include	"overlays/rom_7c3044/overlay.lz", 0x14, 0x01, 0x4e
-	.ft_include	"overlays/rom_7c37ac/overlay.lz", 0x22
-	.ft_include	"overlays/rom_7c460c/overlay.lz", 0x01, 0x6c
-	.ft_include	"overlays/rom_7c5974/overlay.lz", 0x7c, 0xa6, 0x05
-	.ft_include	"overlays/rom_7c5efc/overlay.lz", 0x9b
-	.ft_include	"overlays/rom_7c6bac/overlay.lz", 0xf8, 0xa5
-	.ft_include	"overlays/rom_7c7b9c/overlay.lz"
-	.ft_include	"overlays/rom_7ca63c/overlay.lz", 0x94, 0x27
-	.ft_include	"overlays/rom_7cb2c0/overlay.lz"
-	.ft_include	"overlays/rom_7ced6c/overlay.lz", 0x33, 0xfe, 0x11
-	.ft_include	"overlays/rom_7d0e88/overlay.lz"
-	.ft_include	"overlays/rom_7d30e0/overlay.lz", 0x21
-	.ft_include	"overlays/rom_7d4af4/overlay.lz", 0x99, 0x07, 0x7c
-	.ft_include	"overlays/rom_7d5838/overlay.lz", 0x0b
-	.ft_include	"overlays/rom_7d6418/overlay.lz", 0xdf
-	.ft_include	"overlays/rom_7d768c/overlay.lz", 0xe2
-	.ft_include	"overlays/rom_7d95dc/overlay.lz", 0x8d, 0x10, 0x11
-	.ft_include	"overlays/rom_7db0c8/overlay.lz", 0x68
-	.ft_include	"overlays/rom_7ddb88/overlay.lz", 0x06, 0x43
-	.ft_include	"overlays/rom_7e0928/overlay.lz"
-	.ft_include	"overlays/rom_7e3e08/overlay.lz", 0x20
-	.ft_include	"overlays/rom_7e636c/overlay.lz", 0x12
-	.ft_include	"overlays/rom_7e7574/overlay.lz", 0x19
-	.ft_include	"overlays/rom_7eaf28/overlay.lz"
-	.ft_include	"overlays/rom_7ebdfc/overlay.lz"
-	.ft_include	"overlays/rom_7ec19c/overlay.lz"
-	.ft_include	"overlays/rom_7ec968/overlay.lz", 0xee, 0x9d, 0x02
-	.ft_include	"overlays/rom_7ed0a0/overlay.lz"
-	.ft_include	"overlays/rom_7ef4f4/overlay.lz"
-	.ft_include	"overlays/rom_7f148c/overlay.lz"
-	.ft_include	"overlays/rom_7f21b8/overlay.lz"
-	.ft_include	"overlays/rom_7f2f14/overlay.lz", 0xe7, 0x0a, 0xa9
-	.ft_include	"overlays/rom_7f6e64/overlay.lz", 0xbc
-	.ft_include	"overlays/rom_7fa4ec/overlay.lz", 0xb4, 0xcf, 0x87
-	.ft_include	"overlays/rom_7fb4a8/overlay.lz", 0x8a
-	.ft_include	"overlays/rom_7fc618/overlay.lz", 0x51
-	.ft_include	"overlays/rom_7fc720/overlay.lz", 0x01, 0x30, 0x27
-	.ft_include	"overlays/rom_7fcd20/overlay.lz", 0x3b, 0x07, 0xf2
+	.ft_include	"build/usa/overlays/rom_779188/overlay.lz", 0xa0, 0x4f
+	.ft_include	"build/usa/overlays/rom_7795e8/overlay.lz", 0x00, 0x00, 0xdd
+	.ft_include	"build/usa/overlays/rom_77a7c8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_77dd1c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_780898/overlay.lz", 0x2b, 0x82
+	.ft_include	"build/usa/overlays/rom_784360/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78603c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_786f0c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_787e04/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7892c8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78ac38/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78b2ac/overlay.lz", 0x7c
+	.ft_include	"build/usa/overlays/rom_78c76c/overlay.lz", 0x51, 0x05, 0x08
+	.ft_include	"build/usa/overlays/rom_78dc80/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78dd40/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78de18/overlay.lz", 0x10, 0x4e
+	.ft_include	"build/usa/overlays/rom_78dee8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_78ef88/overlay.lz", 0xc5
+	.ft_include	"build/usa/overlays/rom_791794/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_793768/overlay.lz", 0xa3, 0x6e, 0x3e
+	.ft_include	"build/usa/overlays/rom_794ac0/overlay.lz", 0x46, 0xe0
+	.ft_include	"build/usa/overlays/rom_797740/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_797990/overlay.lz", 0xe0, 0x2d, 0xbc
+	.ft_include	"build/usa/overlays/rom_7987ac/overlay.lz", 0x03
+	.ft_include	"build/usa/overlays/rom_798dc4/overlay.lz", 0xc1
+	.ft_include	"build/usa/overlays/rom_799998/overlay.lz", 0x90, 0x58
+	.ft_include	"build/usa/overlays/rom_799abc/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_79aad8/overlay.lz", 0x16, 0x56, 0x82
+	.ft_include	"build/usa/overlays/rom_79b154/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_79c0c4/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_79c738/overlay.lz", 0xfd, 0x11, 0x21
+	.ft_include	"build/usa/overlays/rom_79dd90/overlay.lz", 0x47
+	.ft_include	"build/usa/overlays/rom_79e5c0/overlay.lz", 0xb0
+	.ft_include	"build/usa/overlays/rom_7a0010/overlay.lz", 0x16, 0x40
+	.ft_include	"build/usa/overlays/rom_7a04ac/overlay.lz", 0x04, 0x14
+	.ft_include	"build/usa/overlays/rom_7a1ff0/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7a2bf0/overlay.lz", 0x7c
+	.ft_include	"build/usa/overlays/rom_7a37f0/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7a4370/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7a5214/overlay.lz", 0x8c, 0x0e, 0xe2
+	.ft_include	"build/usa/overlays/rom_7a67d8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7a6ae4/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7a7298/overlay.lz", 0x5b
+	.ft_include	"build/usa/overlays/rom_7a8c8c/overlay.lz", 0xf4, 0xbe
+	.ft_include	"build/usa/overlays/rom_7aa430/overlay.lz", 0x46
+	.ft_include	"build/usa/overlays/rom_7ac2d8/overlay.lz", 0x48
+	.ft_include	"build/usa/overlays/rom_7b0400/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7b2078/overlay.lz", 0xe1
+	.ft_include	"build/usa/overlays/rom_7b4558/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7b6668/overlay.lz", 0x88, 0x12
+	.ft_include	"build/usa/overlays/rom_7b7790/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7b7f1c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7b8cb0/overlay.lz", 0x5c, 0x8f, 0xff
+	.ft_include	"build/usa/overlays/rom_7b9cb4/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7bc690/overlay.lz", 0xe7, 0x42
+	.ft_include	"build/usa/overlays/rom_7bdeb0/overlay.lz", 0x64
+	.ft_include	"build/usa/overlays/rom_7bf5a8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7c097c/overlay.lz", 0x1c, 0x41, 0x81
+	.ft_include	"build/usa/overlays/rom_7c3044/overlay.lz", 0x14, 0x01, 0x4e
+	.ft_include	"build/usa/overlays/rom_7c37ac/overlay.lz", 0x22
+	.ft_include	"build/usa/overlays/rom_7c460c/overlay.lz", 0x01, 0x6c
+	.ft_include	"build/usa/overlays/rom_7c5974/overlay.lz", 0x7c, 0xa6, 0x05
+	.ft_include	"build/usa/overlays/rom_7c5efc/overlay.lz", 0x9b
+	.ft_include	"build/usa/overlays/rom_7c6bac/overlay.lz", 0xf8, 0xa5
+	.ft_include	"build/usa/overlays/rom_7c7b9c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ca63c/overlay.lz", 0x94, 0x27
+	.ft_include	"build/usa/overlays/rom_7cb2c0/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ced6c/overlay.lz", 0x33, 0xfe, 0x11
+	.ft_include	"build/usa/overlays/rom_7d0e88/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7d30e0/overlay.lz", 0x21
+	.ft_include	"build/usa/overlays/rom_7d4af4/overlay.lz", 0x99, 0x07, 0x7c
+	.ft_include	"build/usa/overlays/rom_7d5838/overlay.lz", 0x0b
+	.ft_include	"build/usa/overlays/rom_7d6418/overlay.lz", 0xdf
+	.ft_include	"build/usa/overlays/rom_7d768c/overlay.lz", 0xe2
+	.ft_include	"build/usa/overlays/rom_7d95dc/overlay.lz", 0x8d, 0x10, 0x11
+	.ft_include	"build/usa/overlays/rom_7db0c8/overlay.lz", 0x68
+	.ft_include	"build/usa/overlays/rom_7ddb88/overlay.lz", 0x06, 0x43
+	.ft_include	"build/usa/overlays/rom_7e0928/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7e3e08/overlay.lz", 0x20
+	.ft_include	"build/usa/overlays/rom_7e636c/overlay.lz", 0x12
+	.ft_include	"build/usa/overlays/rom_7e7574/overlay.lz", 0x19
+	.ft_include	"build/usa/overlays/rom_7eaf28/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ebdfc/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ec19c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ec968/overlay.lz", 0xee, 0x9d, 0x02
+	.ft_include	"build/usa/overlays/rom_7ed0a0/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7ef4f4/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7f148c/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7f21b8/overlay.lz"
+	.ft_include	"build/usa/overlays/rom_7f2f14/overlay.lz", 0xe7, 0x0a, 0xa9
+	.ft_include	"build/usa/overlays/rom_7f6e64/overlay.lz", 0xbc
+	.ft_include	"build/usa/overlays/rom_7fa4ec/overlay.lz", 0xb4, 0xcf, 0x87
+	.ft_include	"build/usa/overlays/rom_7fb4a8/overlay.lz", 0x8a
+	.ft_include	"build/usa/overlays/rom_7fc618/overlay.lz", 0x51
+	.ft_include	"build/usa/overlays/rom_7fc720/overlay.lz", 0x01, 0x30, 0x27
+	.ft_include	"build/usa/overlays/rom_7fcd20/overlay.lz", 0x3b, 0x07, 0xf2
 
 	.ft_ref		0
 	.ft_ref		0

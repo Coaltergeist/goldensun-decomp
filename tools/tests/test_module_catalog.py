@@ -27,7 +27,7 @@ class CatalogTests(unittest.TestCase):
         self.assertEqual(set(graph["units"]), {u["object"] for u in self.data["units"]})
 
     def test_missing_linked_object_is_rejected(self):
-        self.reject(lambda data: data["units"].pop(), "coverage")
+        self.reject(lambda data: data["units"].pop(), "unknown|coverage")
 
     def test_duplicate_identity_is_rejected(self):
         self.reject(lambda data: data["units"].append(copy.deepcopy(data["units"][0])), "duplicate TU")

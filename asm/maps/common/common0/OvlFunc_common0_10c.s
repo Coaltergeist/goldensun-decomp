@@ -240,11 +240,11 @@
 	.section .data
 
 .L1:
-	.incbin "overlays/rom_78ef88/orig.bin", 0x4b1c, (0x4b54-0x4b1c)
+	.incbin "build/usa/reference/overlays/rom_78ef88/orig.bin", 0x4b1c, (0x4b54-0x4b1c)
 .L2:
-	.incbin "overlays/rom_78ef88/orig.bin", 0x4b54, (0x4b8c-0x4b54)
+	.incbin "build/usa/reference/overlays/rom_78ef88/orig.bin", 0x4b54, (0x4b8c-0x4b54)
 .L3:
-	.incbin "overlays/rom_78ef88/orig.bin", 0x4b8c, (0x4bc4-0x4b8c)
+	.incbin "build/usa/reference/overlays/rom_78ef88/orig.bin", 0x4b8c, (0x4bc4-0x4b8c)
 
 	.section .data1
 

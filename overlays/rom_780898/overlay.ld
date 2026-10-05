@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vale_river.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/vale_river.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/vale_river.o(.data)
+		build/usa/asm/maps/vale_river.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

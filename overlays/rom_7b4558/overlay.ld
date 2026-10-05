@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/mogall_forest.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/mogall_forest.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/mogall_forest.o(.data)
+		build/usa/asm/maps/mogall_forest.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -16,32 +16,32 @@
 	.global .Lm920_a64
 	.global .Lm920_b24
 
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0x9b0, (0x9bc-0x9b0)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0x9b0, (0x9bc-0x9b0)
 .Lm920_9bc:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0x9bc, (0x9ec-0x9bc)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0x9bc, (0x9ec-0x9bc)
 .Lm920_9ec:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0x9ec, (0xa64-0x9ec)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0x9ec, (0xa64-0x9ec)
 .Lm920_a64:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xa64, (0xb24-0xa64)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xa64, (0xb24-0xa64)
 .Lm920_b24:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xb24, (0xbcc-0xb24)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xb24, (0xbcc-0xb24)
 gOvl_02008bcc:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xbcc, (0xc14-0xbcc)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xbcc, (0xc14-0xbcc)
 .Lm920_c14:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xc14, (0xc2c-0xc14)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xc14, (0xc2c-0xc14)
 .Lm920_c2c:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xc2c, (0xc5c-0xc2c)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xc2c, (0xc5c-0xc2c)
 .Lm920_c5c:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xc5c, (0xcbc-0xc5c)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xc5c, (0xcbc-0xc5c)
 .Lm920_cbc:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xcbc, (0xe9c-0xcbc)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xcbc, (0xe9c-0xcbc)
 .Lm920_e9c:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xe9c, (0xea8-0xe9c)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xe9c, (0xea8-0xe9c)
 .Lm920_ea8:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xea8, (0xefc-0xea8)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xea8, (0xefc-0xea8)
 .Lm920_efc:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xefc, (0xf80-0xefc)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xefc, (0xf80-0xefc)
 gOvl_02008f80:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0xf80, (0x1064-0xf80)
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0xf80, (0x1064-0xf80)
 .Lm920_1064:
-	.incbin "overlays/rom_7a6ae4/orig.bin", 0x1064
+	.incbin "build/usa/reference/overlays/rom_7a6ae4/orig.bin", 0x1064

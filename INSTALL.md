@@ -11,7 +11,8 @@ sudo apt update
 sudo apt install build-essential binutils-arm-none-eabi python3 python3-venv git less
 ~~~
 
-The optional asm-differ setup requires Python 3.9 or newer.
+The build requires GNU Make 4.3 or newer and Python 3.10 or newer.
+Make enforces serial scheduling, including when invoked with -j.
 
 ## Clone and install the compilers
 
@@ -36,15 +37,34 @@ Place your legally obtained USA ROM at `baserom.gba` in the game checkout.
 Its SHA1 must be `5c4695205413df7db52b9a184815a07783999971`.
 
 ~~~sh
-sha1sum baserom.gba
-make -j1 clean && make -j1 compare
+set -o pipefail
+sha1sum baserom.gba | tee output.txt
+make -j1 clean 2>&1 | tee output.txt && make -j1 compare 2>&1 | tee output.txt
 ~~~
 
 Check the first hash against the value above. Verification must finish
-successfully, including `goldensun.gba: OK` and all 96 overlay comparisons.
+successfully, including `build/usa/goldensun.gba: OK` and all 96 overlay comparisons.
 Use serial builds. `make compare-rom` checks only the ROM.
 
+The ROM is `build/usa/goldensun.gba`. Target objects, generated assembly, dependency
+files, overlays and maps are under `build/usa/`; host utilities are under
+`build/host/`. Extracted overlay originals are under `build/usa/reference/`.
 ROMs, extracted assets, and generated build outputs must not be committed.
+
+`make clean` removes only declared production/host outputs. It preserves candidate
+builds, installed compilers, `expected/`, `.diff-baselines/`, `.progress/` and unknown
+files. Preview its exact file list with:
+
+~~~bash
+set -o pipefail
+python3 -B tools/build_actions.py clean --dry-run 2>&1 | tee output.txt
+~~~
+
+Old object targets such as `make src/math/vector.o` remain aliases to the current
+object; they do not create files at the old paths. Use the real path printed by
+`python3 -B tools/build_config.py query unit src/math/vector.c` for comparison tools.
+Historical baselines retain their original paths; capture a new baseline after a
+layout change and keep the old one as evidence.
 
 ## Optional function diff viewer
 
@@ -90,10 +110,10 @@ reference object. For interactive watching, use
 For overlays, select the owning bank's map to disambiguate reused symbols:
 
 ~~~sh
-GOLDENSUN_DIFF_MAP=overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
+GOLDENSUN_DIFF_MAP=build/usa/overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
 ~~~
 
-Use `-f asm/maps/MAP.o` to select a known object directly. For a custom section,
+Use `-f build/usa/asm/maps/MAP.o` to select a known object directly. For a custom section,
 add `--section .text.SECTION` using the name shown by
 `arm-none-eabi-objdump -t OBJECT`. The reference must contain the same relative
 object path. See [CONTRIBUTING.md](CONTRIBUTING.md) for final verification.
@@ -108,3 +128,21 @@ Incremental builds track headers, assembly inputs, linker scripts, and compiler
 settings. Include build logs and compiler revisions or manifests when reporting
 a mismatch. If logging through `tee`, enable `set -o pipefail` so the pipeline
 preserves failed exit statuses.
+
+## Build regression tests
+
+Source-only tests do not require the ROM or installed game compilers:
+
+~~~bash
+set -o pipefail
+python3 -B -m unittest discover -s tools/tests -v 2>&1 | tee output.txt
+~~~
+
+With the normal prerequisites installed, opt into the dependency, output-isolation,
+failure/recovery and clean regression. It builds and mutates a disposable copy;
+logs remain under `.progress/build-integration-*.log`.
+
+~~~bash
+set -o pipefail
+RUN_BUILD_INTEGRATION=1 python3 -B -m unittest discover -s tools/tests -p test_build_integration.py -v 2>&1 | tee output.txt
+~~~

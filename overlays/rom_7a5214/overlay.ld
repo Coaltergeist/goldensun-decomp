@@ -13,21 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tret_tree/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/tret_tree.o(.text)
-		asm/maps/tret_tree/imports.o(.text)
+		build/usa/asm/maps/tret_tree/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/tret_tree.o(.text)
+		build/usa/asm/maps/tret_tree/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/tret_tree.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/tret_tree.o(.mdata1)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/tret_tree.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/tret_tree.o(.mdata1)
 	} > overlay
 
 	.bss : {
-		asm/maps/tret_tree.o(.bss)
+		build/usa/asm/maps/tret_tree.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

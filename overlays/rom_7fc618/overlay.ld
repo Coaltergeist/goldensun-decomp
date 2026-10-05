@@ -13,13 +13,13 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/debug_test/exports.o(.text)
-		asm/maps/debug_test.o(.text)
-		asm/maps/debug_test/imports.o(.text)
+		build/usa/asm/maps/debug_test/exports.o(.text)
+		build/usa/asm/maps/debug_test.o(.text)
+		build/usa/asm/maps/debug_test/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/debug_test.o(.data)
+		build/usa/asm/maps/debug_test.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/suhalla_rooms.o(.text)
+		build/usa/asm/maps/suhalla_rooms.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/suhalla_rooms.o(.data)
+		build/usa/asm/maps/suhalla_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

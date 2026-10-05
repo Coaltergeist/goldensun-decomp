@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/altin_peak.o(.text)
+		build/usa/asm/maps/altin_peak.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/altin_peak.o(.data)
+		build/usa/asm/maps/altin_peak.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/altin_peak.o(.bss)
+		build/usa/asm/maps/altin_peak.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

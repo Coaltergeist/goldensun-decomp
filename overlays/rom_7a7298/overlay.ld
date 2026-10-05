@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/imil.o(.text)
+		build/usa/asm/maps/imil.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/imil.o(.data)
+		build/usa/asm/maps/imil.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/imil.o(.bss)
+		build/usa/asm/maps/imil.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

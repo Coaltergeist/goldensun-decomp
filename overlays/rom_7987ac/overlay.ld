@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vault_rooms_2.o(.text)
+		build/usa/asm/maps/vault_rooms_2.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/vault_rooms_2.o(.data)
+		build/usa/asm/maps/vault_rooms_2.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

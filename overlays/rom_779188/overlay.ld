@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/title.o(.text)
+		build/usa/asm/maps/title.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/title.o(.data)
+		build/usa/asm/maps/title.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/title.o(.bss)
+		build/usa/asm/maps/title.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

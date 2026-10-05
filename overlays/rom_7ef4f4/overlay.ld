@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/babi_lighthouse.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/babi_lighthouse.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/babi_lighthouse.o(.data)
+		build/usa/asm/maps/babi_lighthouse.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

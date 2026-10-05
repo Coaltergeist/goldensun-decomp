@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tolbi_bound_ship_top.o(.text)
+		build/usa/asm/maps/tolbi_bound_ship_top.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/tolbi_bound_ship_top.o(.data)
+		build/usa/asm/maps/tolbi_bound_ship_top.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/tolbi_bound_ship_top.o(.bss)
+		build/usa/asm/maps/tolbi_bound_ship_top.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

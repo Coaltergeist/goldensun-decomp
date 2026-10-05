@@ -2110,3514 +2110,3953 @@
     {
       "id": "tu:asm/lib/ramlib",
       "source": "asm/lib/ramlib.s",
-      "object": "asm/lib/ramlib.o",
+      "object": "build/usa/asm/lib/ramlib.o",
       "owner": "rom_770",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/lib/ramlib.o"
     },
     {
       "id": "tu:src/maps/alpine_crossing",
       "source": "src/maps/alpine_crossing.c",
-      "object": "asm/maps/alpine_crossing.o",
+      "object": "build/usa/asm/maps/alpine_crossing.o",
       "owner": "overlay:rom_7b7f1c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/alpine_crossing.o"
     },
     {
       "id": "tu:src/maps/altin",
       "source": "src/maps/altin.c",
-      "object": "asm/maps/altin.o",
+      "object": "build/usa/asm/maps/altin.o",
       "owner": "overlay:rom_7b8cb0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/altin.o"
     },
     {
       "id": "tu:src/maps/altin_peak",
       "source": "src/maps/altin_peak.c",
-      "object": "asm/maps/altin_peak.o",
+      "object": "build/usa/asm/maps/altin_peak.o",
       "owner": "overlay:rom_7b9cb4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/altin_peak.o"
     },
     {
       "id": "tu:src/maps/altmiller_cave",
       "source": "src/maps/altmiller_cave.c",
-      "object": "asm/maps/altmiller_cave.o",
+      "object": "build/usa/asm/maps/altmiller_cave.o",
       "owner": "overlay:rom_7e3e08",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/altmiller_cave.o"
     },
     {
       "id": "tu:src/maps/babi_lighthouse",
       "source": "src/maps/babi_lighthouse.c",
-      "object": "asm/maps/babi_lighthouse.o",
+      "object": "build/usa/asm/maps/babi_lighthouse.o",
       "owner": "overlay:rom_7ef4f4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/babi_lighthouse.o"
     },
     {
       "id": "tu:src/maps/babis_palace",
       "source": "src/maps/babis_palace.c",
-      "object": "asm/maps/babis_palace.o",
+      "object": "build/usa/asm/maps/babis_palace.o",
       "owner": "overlay:rom_7d768c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/babis_palace.o"
     },
     {
       "id": "tu:src/maps/bilibin",
       "source": "src/maps/bilibin.c",
-      "object": "asm/maps/bilibin.o",
+      "object": "build/usa/asm/maps/bilibin.o",
       "owner": "overlay:rom_79b154",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/bilibin.o"
     },
     {
       "id": "tu:src/maps/bilibin_cave",
       "source": "src/maps/bilibin_cave.c",
-      "object": "asm/maps/bilibin_cave.o",
+      "object": "build/usa/asm/maps/bilibin_cave.o",
       "owner": "overlay:rom_7a6ae4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/bilibin_cave.o"
     },
     {
       "id": "tu:src/maps/bilibin_rooms",
       "source": "src/maps/bilibin_rooms.c",
-      "object": "asm/maps/bilibin_rooms.o",
+      "object": "build/usa/asm/maps/bilibin_rooms.o",
       "owner": "overlay:rom_79c0c4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/bilibin_rooms.o"
     },
     {
       "id": "tu:src/maps/colosseum",
       "source": "src/maps/colosseum.c",
-      "object": "asm/maps/colosseum.o",
+      "object": "build/usa/asm/maps/colosseum.o",
       "owner": "overlay:rom_7d95dc",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum.o"
     },
     {
       "id": "tu:src/maps/colosseum_final_1",
       "source": "src/maps/colosseum_final_1.c",
-      "object": "asm/maps/colosseum_final_1.o",
+      "object": "build/usa/asm/maps/colosseum_final_1.o",
       "owner": "overlay:rom_7db0c8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_1.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_1/exports",
       "source": "asm/maps/colosseum_final_1/exports.s",
-      "object": "asm/maps/colosseum_final_1/exports.o",
+      "object": "build/usa/asm/maps/colosseum_final_1/exports.o",
       "owner": "overlay:rom_7db0c8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_1/exports.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_1/imports",
       "source": "asm/maps/colosseum_final_1/imports.s",
-      "object": "asm/maps/colosseum_final_1/imports.o",
+      "object": "build/usa/asm/maps/colosseum_final_1/imports.o",
       "owner": "overlay:rom_7db0c8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_1/imports.o"
     },
     {
       "id": "tu:src/maps/colosseum_final_2",
       "source": "src/maps/colosseum_final_2.c",
-      "object": "asm/maps/colosseum_final_2.o",
+      "object": "build/usa/asm/maps/colosseum_final_2.o",
       "owner": "overlay:rom_7ddb88",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_2.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_2/exports",
       "source": "asm/maps/colosseum_final_2/exports.s",
-      "object": "asm/maps/colosseum_final_2/exports.o",
+      "object": "build/usa/asm/maps/colosseum_final_2/exports.o",
       "owner": "overlay:rom_7ddb88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_2/exports.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_2/imports",
       "source": "asm/maps/colosseum_final_2/imports.s",
-      "object": "asm/maps/colosseum_final_2/imports.o",
+      "object": "build/usa/asm/maps/colosseum_final_2/imports.o",
       "owner": "overlay:rom_7ddb88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_2/imports.o"
     },
     {
       "id": "tu:src/maps/colosseum_final_3",
       "source": "src/maps/colosseum_final_3.c",
-      "object": "asm/maps/colosseum_final_3.o",
+      "object": "build/usa/asm/maps/colosseum_final_3.o",
       "owner": "overlay:rom_7e0928",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_3.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_3/exports",
       "source": "asm/maps/colosseum_final_3/exports.s",
-      "object": "asm/maps/colosseum_final_3/exports.o",
+      "object": "build/usa/asm/maps/colosseum_final_3/exports.o",
       "owner": "overlay:rom_7e0928",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_3/exports.o"
     },
     {
       "id": "tu:asm/maps/colosseum_final_3/imports",
       "source": "asm/maps/colosseum_final_3/imports.s",
-      "object": "asm/maps/colosseum_final_3/imports.o",
+      "object": "build/usa/asm/maps/colosseum_final_3/imports.o",
       "owner": "overlay:rom_7e0928",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/colosseum_final_3/imports.o"
     },
     {
       "id": "tu:src/maps/common/common0",
       "source": "src/maps/common/common0.c",
-      "object": "asm/maps/common/common0.o",
+      "object": "build/usa/asm/maps/common/common0.o",
       "owner": "common:common0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/common/common0.o"
     },
     {
       "id": "tu:src/maps/common/common1",
       "source": "src/maps/common/common1.c",
-      "object": "asm/maps/common/common1.o",
+      "object": "build/usa/asm/maps/common/common1.o",
       "owner": "common:common1",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/common/common1.o"
     },
     {
       "id": "tu:src/maps/common/common2",
       "source": "src/maps/common/common2.c",
-      "object": "asm/maps/common/common2.o",
+      "object": "build/usa/asm/maps/common/common2.o",
       "owner": "common:common2",
       "profile": "gcc296-common2",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/common/common2.o"
     },
     {
       "id": "tu:src/maps/crossbone_isle",
       "source": "src/maps/crossbone_isle.c",
-      "object": "asm/maps/crossbone_isle.o",
+      "object": "build/usa/asm/maps/crossbone_isle.o",
       "owner": "overlay:rom_7ced6c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/crossbone_isle.o"
     },
     {
       "id": "tu:src/maps/crossbone_isle_dungeon_2",
       "source": "src/maps/crossbone_isle_dungeon_2.c",
-      "object": "asm/maps/crossbone_isle_dungeon_2.o",
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_2.o",
       "owner": "overlay:rom_7d0e88",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2.o"
     },
     {
       "id": "tu:asm/maps/crossbone_isle_dungeon_2/exports",
       "source": "asm/maps/crossbone_isle_dungeon_2/exports.s",
-      "object": "asm/maps/crossbone_isle_dungeon_2/exports.o",
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_2/exports.o",
       "owner": "overlay:rom_7d0e88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/exports.o"
     },
     {
       "id": "tu:asm/maps/crossbone_isle_dungeon_2/imports",
       "source": "asm/maps/crossbone_isle_dungeon_2/imports.s",
-      "object": "asm/maps/crossbone_isle_dungeon_2/imports.o",
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_2/imports.o",
       "owner": "overlay:rom_7d0e88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/imports.o"
     },
     {
       "id": "tu:src/maps/crossbone_isle_dungeon_4",
       "source": "src/maps/crossbone_isle_dungeon_4.c",
-      "object": "asm/maps/crossbone_isle_dungeon_4.o",
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_4.o",
       "owner": "overlay:rom_7d30e0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_4.o"
     },
     {
       "id": "tu:src/maps/debug_get_item",
       "source": "src/maps/debug_get_item.c",
-      "object": "asm/maps/debug_get_item.o",
+      "object": "build/usa/asm/maps/debug_get_item.o",
       "owner": "overlay:rom_7fc720",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/debug_get_item.o"
     },
     {
       "id": "tu:src/maps/debug_test",
       "source": "src/maps/debug_test.c",
-      "object": "asm/maps/debug_test.o",
+      "object": "build/usa/asm/maps/debug_test.o",
       "owner": "overlay:rom_7fc618",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/debug_test.o"
     },
     {
       "id": "tu:asm/maps/debug_test/exports",
       "source": "asm/maps/debug_test/exports.s",
-      "object": "asm/maps/debug_test/exports.o",
+      "object": "build/usa/asm/maps/debug_test/exports.o",
       "owner": "overlay:rom_7fc618",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/debug_test/exports.o"
     },
     {
       "id": "tu:asm/maps/debug_test/imports",
       "source": "asm/maps/debug_test/imports.s",
-      "object": "asm/maps/debug_test/imports.o",
+      "object": "build/usa/asm/maps/debug_test/imports.o",
       "owner": "overlay:rom_7fc618",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/debug_test/imports.o"
     },
     {
       "id": "tu:src/maps/elemental_stars",
       "source": "src/maps/elemental_stars.c",
-      "object": "asm/maps/elemental_stars.o",
+      "object": "build/usa/asm/maps/elemental_stars.o",
       "owner": "overlay:rom_78ef88",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/elemental_stars.o"
     },
     {
       "id": "tu:asm/maps/elemental_stars/exports",
       "source": "asm/maps/elemental_stars/exports.s",
-      "object": "asm/maps/elemental_stars/exports.o",
+      "object": "build/usa/asm/maps/elemental_stars/exports.o",
       "owner": "overlay:rom_78ef88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/elemental_stars/exports.o"
     },
     {
       "id": "tu:asm/maps/elemental_stars/imports",
       "source": "asm/maps/elemental_stars/imports.s",
-      "object": "asm/maps/elemental_stars/imports.o",
+      "object": "build/usa/asm/maps/elemental_stars/imports.o",
       "owner": "overlay:rom_78ef88",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/elemental_stars/imports.o"
     },
     {
       "id": "tu:src/maps/elemental_stars_eruption",
       "source": "src/maps/elemental_stars_eruption.c",
-      "object": "asm/maps/elemental_stars_eruption.o",
+      "object": "build/usa/asm/maps/elemental_stars_eruption.o",
       "owner": "overlay:rom_791794",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/elemental_stars_eruption.o"
     },
     {
       "id": "tu:src/maps/fuchin_temple",
       "source": "src/maps/fuchin_temple.c",
-      "object": "asm/maps/fuchin_temple.o",
+      "object": "build/usa/asm/maps/fuchin_temple.o",
       "owner": "overlay:rom_7b2078",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/fuchin_temple.o"
     },
     {
       "id": "tu:asm/maps/fuchin_temple/exports",
       "source": "asm/maps/fuchin_temple/exports.s",
-      "object": "asm/maps/fuchin_temple/exports.o",
+      "object": "build/usa/asm/maps/fuchin_temple/exports.o",
       "owner": "overlay:rom_7b2078",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/fuchin_temple/exports.o"
     },
     {
       "id": "tu:asm/maps/fuchin_temple/imports",
       "source": "asm/maps/fuchin_temple/imports.s",
-      "object": "asm/maps/fuchin_temple/imports.o",
+      "object": "build/usa/asm/maps/fuchin_temple/imports.o",
       "owner": "overlay:rom_7b2078",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/fuchin_temple/imports.o"
     },
     {
       "id": "tu:src/maps/goma_cave",
       "source": "src/maps/goma_cave.c",
-      "object": "asm/maps/goma_cave.o",
+      "object": "build/usa/asm/maps/goma_cave.o",
       "owner": "overlay:rom_79aad8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave.o"
     },
     {
       "id": "tu:asm/maps/goma_cave/exports",
       "source": "asm/maps/goma_cave/exports.s",
-      "object": "asm/maps/goma_cave/exports.o",
+      "object": "build/usa/asm/maps/goma_cave/exports.o",
       "owner": "overlay:rom_79aad8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave/exports.o"
     },
     {
       "id": "tu:asm/maps/goma_cave/imports",
       "source": "asm/maps/goma_cave/imports.s",
-      "object": "asm/maps/goma_cave/imports.o",
+      "object": "build/usa/asm/maps/goma_cave/imports.o",
       "owner": "overlay:rom_79aad8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave/imports.o"
     },
     {
       "id": "tu:src/maps/goma_cave_1",
       "source": "src/maps/goma_cave_1.c",
-      "object": "asm/maps/goma_cave_1.o",
+      "object": "build/usa/asm/maps/goma_cave_1.o",
       "owner": "overlay:rom_799998",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave_1.o"
     },
     {
       "id": "tu:src/maps/goma_cave_2",
       "source": "src/maps/goma_cave_2.c",
-      "object": "asm/maps/goma_cave_2.o",
+      "object": "build/usa/asm/maps/goma_cave_2.o",
       "owner": "overlay:rom_799abc",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave_2.o"
     },
     {
       "id": "tu:src/maps/goma_cave_entry",
       "source": "src/maps/goma_cave_entry.c",
-      "object": "asm/maps/goma_cave_entry.o",
+      "object": "build/usa/asm/maps/goma_cave_entry.o",
       "owner": "overlay:rom_798dc4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave_entry.o"
     },
     {
       "id": "tu:asm/maps/goma_cave_entry/exports",
       "source": "asm/maps/goma_cave_entry/exports.s",
-      "object": "asm/maps/goma_cave_entry/exports.o",
+      "object": "build/usa/asm/maps/goma_cave_entry/exports.o",
       "owner": "overlay:rom_798dc4",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave_entry/exports.o"
     },
     {
       "id": "tu:asm/maps/goma_cave_entry/imports",
       "source": "asm/maps/goma_cave_entry/imports.s",
-      "object": "asm/maps/goma_cave_entry/imports.o",
+      "object": "build/usa/asm/maps/goma_cave_entry/imports.o",
       "owner": "overlay:rom_798dc4",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/goma_cave_entry/imports.o"
     },
     {
       "id": "tu:src/maps/gondowan",
       "source": "src/maps/gondowan.c",
-      "object": "asm/maps/gondowan.o",
+      "object": "build/usa/asm/maps/gondowan.o",
       "owner": "overlay:rom_7e636c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/gondowan.o"
     },
     {
       "id": "tu:asm/maps/gondowan/exports",
       "source": "asm/maps/gondowan/exports.s",
-      "object": "asm/maps/gondowan/exports.o",
+      "object": "build/usa/asm/maps/gondowan/exports.o",
       "owner": "overlay:rom_7e636c",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/gondowan/exports.o"
     },
     {
       "id": "tu:asm/maps/gondowan/imports",
       "source": "asm/maps/gondowan/imports.s",
-      "object": "asm/maps/gondowan/imports.o",
+      "object": "build/usa/asm/maps/gondowan/imports.o",
       "owner": "overlay:rom_7e636c",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/gondowan/imports.o"
     },
     {
       "id": "tu:src/maps/hammet_palace",
       "source": "src/maps/hammet_palace.c",
-      "object": "asm/maps/hammet_palace.o",
+      "object": "build/usa/asm/maps/hammet_palace.o",
       "owner": "overlay:rom_7c37ac",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/hammet_palace.o"
     },
     {
       "id": "tu:src/maps/imil",
       "source": "src/maps/imil.c",
-      "object": "asm/maps/imil.o",
+      "object": "build/usa/asm/maps/imil.o",
       "owner": "overlay:rom_7a7298",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/imil.o"
     },
     {
       "id": "tu:src/maps/imil_falls_cave",
       "source": "src/maps/imil_falls_cave.c",
-      "object": "asm/maps/imil_falls_cave.o",
+      "object": "build/usa/asm/maps/imil_falls_cave.o",
       "owner": "overlay:rom_7a8c8c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/imil_falls_cave.o"
     },
     {
       "id": "tu:src/maps/jail",
       "source": "src/maps/jail.c",
-      "object": "asm/maps/jail.o",
+      "object": "build/usa/asm/maps/jail.o",
       "owner": "overlay:rom_797740",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/jail.o"
     },
     {
       "id": "tu:src/maps/kalay",
       "source": "src/maps/kalay.c",
-      "object": "asm/maps/kalay.o",
+      "object": "build/usa/asm/maps/kalay.o",
       "owner": "overlay:rom_7c097c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kalay.o"
     },
     {
       "id": "tu:src/maps/kalay_docks",
       "source": "src/maps/kalay_docks.c",
-      "object": "asm/maps/kalay_docks.o",
+      "object": "build/usa/asm/maps/kalay_docks.o",
       "owner": "overlay:rom_7c6bac",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kalay_docks.o"
     },
     {
       "id": "tu:src/maps/kalay_rooms",
       "source": "src/maps/kalay_rooms.c",
-      "object": "asm/maps/kalay_rooms.o",
+      "object": "build/usa/asm/maps/kalay_rooms.o",
       "owner": "overlay:rom_7c3044",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kalay_rooms.o"
     },
     {
       "id": "tu:src/maps/kolima",
       "source": "src/maps/kolima.c",
-      "object": "asm/maps/kolima.o",
+      "object": "build/usa/asm/maps/kolima.o",
       "owner": "overlay:rom_79e5c0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima.o"
     },
     {
       "id": "tu:src/maps/kolima_forest_1",
       "source": "src/maps/kolima_forest_1.c",
-      "object": "asm/maps/kolima_forest_1.o",
+      "object": "build/usa/asm/maps/kolima_forest_1.o",
       "owner": "overlay:rom_7a04ac",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_forest_1.o"
     },
     {
       "id": "tu:src/maps/kolima_forest_2",
       "source": "src/maps/kolima_forest_2.c",
-      "object": "asm/maps/kolima_forest_2.o",
+      "object": "build/usa/asm/maps/kolima_forest_2.o",
       "owner": "overlay:rom_7a1ff0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_forest_2.o"
     },
     {
       "id": "tu:src/maps/kolima_forest_3",
       "source": "src/maps/kolima_forest_3.c",
-      "object": "asm/maps/kolima_forest_3.o",
+      "object": "build/usa/asm/maps/kolima_forest_3.o",
       "owner": "overlay:rom_7a2bf0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_forest_3.o"
     },
     {
       "id": "tu:src/maps/kolima_forest_4",
       "source": "src/maps/kolima_forest_4.c",
-      "object": "asm/maps/kolima_forest_4.o",
+      "object": "build/usa/asm/maps/kolima_forest_4.o",
       "owner": "overlay:rom_7a37f0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_forest_4.o"
     },
     {
       "id": "tu:src/maps/kolima_forest_5",
       "source": "src/maps/kolima_forest_5.c",
-      "object": "asm/maps/kolima_forest_5.o",
+      "object": "build/usa/asm/maps/kolima_forest_5.o",
       "owner": "overlay:rom_7a4370",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_forest_5.o"
     },
     {
       "id": "tu:src/maps/kolima_rooms",
       "source": "src/maps/kolima_rooms.c",
-      "object": "asm/maps/kolima_rooms.o",
+      "object": "build/usa/asm/maps/kolima_rooms.o",
       "owner": "overlay:rom_7a0010",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/kolima_rooms.o"
     },
     {
       "id": "tu:src/maps/lalivero",
       "source": "src/maps/lalivero.c",
-      "object": "asm/maps/lalivero.o",
+      "object": "build/usa/asm/maps/lalivero.o",
       "owner": "overlay:rom_7f148c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lalivero.o"
     },
     {
       "id": "tu:src/maps/lalivero_rooms",
       "source": "src/maps/lalivero_rooms.c",
-      "object": "asm/maps/lalivero_rooms.o",
+      "object": "build/usa/asm/maps/lalivero_rooms.o",
       "owner": "overlay:rom_7f21b8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lalivero_rooms.o"
     },
     {
       "id": "tu:src/maps/lalivero_ship",
       "source": "src/maps/lalivero_ship.c",
-      "object": "asm/maps/lalivero_ship.o",
+      "object": "build/usa/asm/maps/lalivero_ship.o",
       "owner": "overlay:rom_7fa4ec",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lalivero_ship.o"
     },
     {
       "id": "tu:src/maps/lamakan_desert",
       "source": "src/maps/lamakan_desert.c",
-      "object": "asm/maps/lamakan_desert.o",
+      "object": "build/usa/asm/maps/lamakan_desert.o",
       "owner": "overlay:rom_7bc690",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lamakan_desert.o"
     },
     {
       "id": "tu:asm/maps/lamakan_desert/exports",
       "source": "asm/maps/lamakan_desert/exports.s",
-      "object": "asm/maps/lamakan_desert/exports.o",
+      "object": "build/usa/asm/maps/lamakan_desert/exports.o",
       "owner": "overlay:rom_7bc690",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lamakan_desert/exports.o"
     },
     {
       "id": "tu:asm/maps/lamakan_desert/imports",
       "source": "asm/maps/lamakan_desert/imports.s",
-      "object": "asm/maps/lamakan_desert/imports.o",
+      "object": "build/usa/asm/maps/lamakan_desert/imports.o",
       "owner": "overlay:rom_7bc690",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lamakan_desert/imports.o"
     },
     {
       "id": "tu:src/maps/link_lobby",
       "source": "src/maps/link_lobby.c",
-      "object": "asm/maps/link_lobby.o",
+      "object": "build/usa/asm/maps/link_lobby.o",
       "owner": "overlay:rom_7fb4a8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/link_lobby.o"
     },
     {
       "id": "tu:asm/maps/link_lobby/exports",
       "source": "asm/maps/link_lobby/exports.s",
-      "object": "asm/maps/link_lobby/exports.o",
+      "object": "build/usa/asm/maps/link_lobby/exports.o",
       "owner": "overlay:rom_7fb4a8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/link_lobby/exports.o"
     },
     {
       "id": "tu:asm/maps/link_lobby/imports",
       "source": "asm/maps/link_lobby/imports.s",
-      "object": "asm/maps/link_lobby/imports.o",
+      "object": "build/usa/asm/maps/link_lobby/imports.o",
       "owner": "overlay:rom_7fb4a8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/link_lobby/imports.o"
     },
     {
       "id": "tu:src/maps/lucky_fountain",
       "source": "src/maps/lucky_fountain.c",
-      "object": "asm/maps/lucky_fountain.o",
+      "object": "build/usa/asm/maps/lucky_fountain.o",
       "owner": "overlay:rom_7d6418",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lucky_fountain.o"
     },
     {
       "id": "tu:src/maps/lunpa",
       "source": "src/maps/lunpa.c",
-      "object": "asm/maps/lunpa.o",
+      "object": "build/usa/asm/maps/lunpa.o",
       "owner": "overlay:rom_7c460c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa.o"
     },
     {
       "id": "tu:asm/maps/lunpa/exports",
       "source": "asm/maps/lunpa/exports.s",
-      "object": "asm/maps/lunpa/exports.o",
+      "object": "build/usa/asm/maps/lunpa/exports.o",
       "owner": "overlay:rom_7c460c",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa/exports.o"
     },
     {
       "id": "tu:asm/maps/lunpa/imports",
       "source": "asm/maps/lunpa/imports.s",
-      "object": "asm/maps/lunpa/imports.o",
+      "object": "build/usa/asm/maps/lunpa/imports.o",
       "owner": "overlay:rom_7c460c",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa/imports.o"
     },
     {
       "id": "tu:src/maps/lunpa_fortress",
       "source": "src/maps/lunpa_fortress.c",
-      "object": "asm/maps/lunpa_fortress.o",
+      "object": "build/usa/asm/maps/lunpa_fortress.o",
       "owner": "overlay:rom_7e7574",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa_fortress.o"
     },
     {
       "id": "tu:asm/maps/lunpa_fortress/exports",
       "source": "asm/maps/lunpa_fortress/exports.s",
-      "object": "asm/maps/lunpa_fortress/exports.o",
+      "object": "build/usa/asm/maps/lunpa_fortress/exports.o",
       "owner": "overlay:rom_7e7574",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa_fortress/exports.o"
     },
     {
       "id": "tu:asm/maps/lunpa_fortress/imports",
       "source": "asm/maps/lunpa_fortress/imports.s",
-      "object": "asm/maps/lunpa_fortress/imports.o",
+      "object": "build/usa/asm/maps/lunpa_fortress/imports.o",
       "owner": "overlay:rom_7e7574",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa_fortress/imports.o"
     },
     {
       "id": "tu:src/maps/lunpa_rooms",
       "source": "src/maps/lunpa_rooms.c",
-      "object": "asm/maps/lunpa_rooms.o",
+      "object": "build/usa/asm/maps/lunpa_rooms.o",
       "owner": "overlay:rom_7c5974",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/lunpa_rooms.o"
     },
     {
       "id": "tu:src/maps/main_menu",
       "source": "src/maps/main_menu.c",
-      "object": "asm/maps/main_menu.o",
+      "object": "build/usa/asm/maps/main_menu.o",
       "owner": "overlay:rom_7795e8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/main_menu.o"
     },
     {
       "id": "tu:src/maps/mccoys_palace",
       "source": "src/maps/mccoys_palace.c",
-      "object": "asm/maps/mccoys_palace.o",
+      "object": "build/usa/asm/maps/mccoys_palace.o",
       "owner": "overlay:rom_79c738",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mccoys_palace.o"
     },
     {
       "id": "tu:src/maps/mccoys_palace_ext",
       "source": "src/maps/mccoys_palace_ext.c",
-      "object": "asm/maps/mccoys_palace_ext.o",
+      "object": "build/usa/asm/maps/mccoys_palace_ext.o",
       "owner": "overlay:rom_79dd90",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mccoys_palace_ext.o"
     },
     {
       "id": "tu:src/maps/menu_test",
       "source": "src/maps/menu_test.c",
-      "object": "asm/maps/menu_test.o",
+      "object": "build/usa/asm/maps/menu_test.o",
       "owner": "overlay:rom_7fcd20",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/menu_test.o"
     },
     {
       "id": "tu:src/maps/mercury_lighthouse",
       "source": "src/maps/mercury_lighthouse.c",
-      "object": "asm/maps/mercury_lighthouse.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse.o",
       "owner": "overlay:rom_7ac2d8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse/exports",
       "source": "asm/maps/mercury_lighthouse/exports.s",
-      "object": "asm/maps/mercury_lighthouse/exports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse/exports.o",
       "owner": "overlay:rom_7ac2d8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse/exports.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse/imports",
       "source": "asm/maps/mercury_lighthouse/imports.s",
-      "object": "asm/maps/mercury_lighthouse/imports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse/imports.o",
       "owner": "overlay:rom_7ac2d8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse/imports.o"
     },
     {
       "id": "tu:src/maps/mercury_lighthouse_aerie",
       "source": "src/maps/mercury_lighthouse_aerie.c",
-      "object": "asm/maps/mercury_lighthouse_aerie.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_aerie.o",
       "owner": "overlay:rom_7b0400",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_aerie/exports",
       "source": "asm/maps/mercury_lighthouse_aerie/exports.s",
-      "object": "asm/maps/mercury_lighthouse_aerie/exports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_aerie/exports.o",
       "owner": "overlay:rom_7b0400",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie/exports.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_aerie/imports",
       "source": "asm/maps/mercury_lighthouse_aerie/imports.s",
-      "object": "asm/maps/mercury_lighthouse_aerie/imports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_aerie/imports.o",
       "owner": "overlay:rom_7b0400",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie/imports.o"
     },
     {
       "id": "tu:src/maps/mercury_lighthouse_entrance",
       "source": "src/maps/mercury_lighthouse_entrance.c",
-      "object": "asm/maps/mercury_lighthouse_entrance.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_entrance.o",
       "owner": "overlay:rom_7aa430",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_entrance/exports",
       "source": "asm/maps/mercury_lighthouse_entrance/exports.s",
-      "object": "asm/maps/mercury_lighthouse_entrance/exports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_entrance/exports.o",
       "owner": "overlay:rom_7aa430",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance/exports.o"
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_entrance/imports",
       "source": "asm/maps/mercury_lighthouse_entrance/imports.s",
-      "object": "asm/maps/mercury_lighthouse_entrance/imports.o",
+      "object": "build/usa/asm/maps/mercury_lighthouse_entrance/imports.o",
       "owner": "overlay:rom_7aa430",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance/imports.o"
     },
     {
       "id": "tu:src/maps/mogall_forest",
       "source": "src/maps/mogall_forest.c",
-      "object": "asm/maps/mogall_forest.o",
+      "object": "build/usa/asm/maps/mogall_forest.o",
       "owner": "overlay:rom_7b4558",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/mogall_forest.o"
     },
     {
       "id": "tu:src/maps/sol",
       "source": "src/maps/sol.c",
-      "object": "asm/maps/sol.o",
+      "object": "build/usa/asm/maps/sol.o",
       "owner": "overlay:rom_78dee8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol.o"
     },
     {
       "id": "tu:src/maps/sol_sanctum_1",
       "source": "src/maps/sol_sanctum_1.c",
-      "object": "asm/maps/sol_sanctum_1.o",
+      "object": "build/usa/asm/maps/sol_sanctum_1.o",
       "owner": "overlay:rom_78b2ac",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol_sanctum_1.o"
     },
     {
       "id": "tu:src/maps/sol_sanctum_2",
       "source": "src/maps/sol_sanctum_2.c",
-      "object": "asm/maps/sol_sanctum_2.o",
+      "object": "build/usa/asm/maps/sol_sanctum_2.o",
       "owner": "overlay:rom_78c76c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol_sanctum_2.o"
     },
     {
       "id": "tu:src/maps/sol_sanctum_3",
       "source": "src/maps/sol_sanctum_3.c",
-      "object": "asm/maps/sol_sanctum_3.o",
+      "object": "build/usa/asm/maps/sol_sanctum_3.o",
       "owner": "overlay:rom_78dc80",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol_sanctum_3.o"
     },
     {
       "id": "tu:src/maps/sol_sanctum_4",
       "source": "src/maps/sol_sanctum_4.c",
-      "object": "asm/maps/sol_sanctum_4.o",
+      "object": "build/usa/asm/maps/sol_sanctum_4.o",
       "owner": "overlay:rom_78dd40",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol_sanctum_4.o"
     },
     {
       "id": "tu:src/maps/sol_sanctum_5",
       "source": "src/maps/sol_sanctum_5.c",
-      "object": "asm/maps/sol_sanctum_5.o",
+      "object": "build/usa/asm/maps/sol_sanctum_5.o",
       "owner": "overlay:rom_78de18",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/sol_sanctum_5.o"
     },
     {
       "id": "tu:src/maps/suhalla",
       "source": "src/maps/suhalla.c",
-      "object": "asm/maps/suhalla.o",
+      "object": "build/usa/asm/maps/suhalla.o",
       "owner": "overlay:rom_7ebdfc",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla.o"
     },
     {
       "id": "tu:src/maps/suhalla_desert",
       "source": "src/maps/suhalla_desert.c",
-      "object": "asm/maps/suhalla_desert.o",
+      "object": "build/usa/asm/maps/suhalla_desert.o",
       "owner": "overlay:rom_7eaf28",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla_desert.o"
     },
     {
       "id": "tu:asm/maps/suhalla_desert/exports",
       "source": "asm/maps/suhalla_desert/exports.s",
-      "object": "asm/maps/suhalla_desert/exports.o",
+      "object": "build/usa/asm/maps/suhalla_desert/exports.o",
       "owner": "overlay:rom_7eaf28",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla_desert/exports.o"
     },
     {
       "id": "tu:asm/maps/suhalla_desert/imports",
       "source": "asm/maps/suhalla_desert/imports.s",
-      "object": "asm/maps/suhalla_desert/imports.o",
+      "object": "build/usa/asm/maps/suhalla_desert/imports.o",
       "owner": "overlay:rom_7eaf28",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla_desert/imports.o"
     },
     {
       "id": "tu:src/maps/suhalla_gate_1",
       "source": "src/maps/suhalla_gate_1.c",
-      "object": "asm/maps/suhalla_gate_1.o",
+      "object": "build/usa/asm/maps/suhalla_gate_1.o",
       "owner": "overlay:rom_7ec968",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla_gate_1.o"
     },
     {
       "id": "tu:src/maps/suhalla_rooms",
       "source": "src/maps/suhalla_rooms.c",
-      "object": "asm/maps/suhalla_rooms.o",
+      "object": "build/usa/asm/maps/suhalla_rooms.o",
       "owner": "overlay:rom_7ec19c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/suhalla_rooms.o"
     },
     {
       "id": "tu:src/maps/title",
       "source": "src/maps/title.c",
-      "object": "asm/maps/title.o",
+      "object": "build/usa/asm/maps/title.o",
       "owner": "overlay:rom_779188",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/title.o"
     },
     {
       "id": "tu:src/maps/tolbi",
       "source": "src/maps/tolbi.c",
-      "object": "asm/maps/tolbi.o",
+      "object": "build/usa/asm/maps/tolbi.o",
       "owner": "overlay:rom_7d4af4",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tolbi.o"
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_deck",
       "source": "src/maps/tolbi_bound_ship_deck.c",
-      "object": "asm/maps/tolbi_bound_ship_deck.o",
+      "object": "build/usa/asm/maps/tolbi_bound_ship_deck.o",
       "owner": "overlay:rom_7c7b9c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tolbi_bound_ship_deck.o"
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_hull",
       "source": "src/maps/tolbi_bound_ship_hull.c",
-      "object": "asm/maps/tolbi_bound_ship_hull.o",
+      "object": "build/usa/asm/maps/tolbi_bound_ship_hull.o",
       "owner": "overlay:rom_7cb2c0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tolbi_bound_ship_hull.o"
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_top",
       "source": "src/maps/tolbi_bound_ship_top.c",
-      "object": "asm/maps/tolbi_bound_ship_top.o",
+      "object": "build/usa/asm/maps/tolbi_bound_ship_top.o",
       "owner": "overlay:rom_7ca63c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tolbi_bound_ship_top.o"
     },
     {
       "id": "tu:src/maps/tolbi_rooms_1",
       "source": "src/maps/tolbi_rooms_1.c",
-      "object": "asm/maps/tolbi_rooms_1.o",
+      "object": "build/usa/asm/maps/tolbi_rooms_1.o",
       "owner": "overlay:rom_7d5838",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tolbi_rooms_1.o"
     },
     {
       "id": "tu:src/maps/tret_tree",
       "source": "src/maps/tret_tree.c",
-      "object": "asm/maps/tret_tree.o",
+      "object": "build/usa/asm/maps/tret_tree.o",
       "owner": "overlay:rom_7a5214",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tret_tree.o"
     },
     {
       "id": "tu:asm/maps/tret_tree/exports",
       "source": "asm/maps/tret_tree/exports.s",
-      "object": "asm/maps/tret_tree/exports.o",
+      "object": "build/usa/asm/maps/tret_tree/exports.o",
       "owner": "overlay:rom_7a5214",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tret_tree/exports.o"
     },
     {
       "id": "tu:asm/maps/tret_tree/imports",
       "source": "asm/maps/tret_tree/imports.s",
-      "object": "asm/maps/tret_tree/imports.o",
+      "object": "build/usa/asm/maps/tret_tree/imports.o",
       "owner": "overlay:rom_7a5214",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tret_tree/imports.o"
     },
     {
       "id": "tu:src/maps/tret_tree_ext",
       "source": "src/maps/tret_tree_ext.c",
-      "object": "asm/maps/tret_tree_ext.o",
+      "object": "build/usa/asm/maps/tret_tree_ext.o",
       "owner": "overlay:rom_7a67d8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tret_tree_ext.o"
     },
     {
       "id": "tu:src/maps/tunnel_ruins",
       "source": "src/maps/tunnel_ruins.c",
-      "object": "asm/maps/tunnel_ruins.o",
+      "object": "build/usa/asm/maps/tunnel_ruins.o",
       "owner": "overlay:rom_7ed0a0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/tunnel_ruins.o"
     },
     {
       "id": "tu:src/maps/vale_cave",
       "source": "src/maps/vale_cave.c",
-      "object": "asm/maps/vale_cave.o",
+      "object": "build/usa/asm/maps/vale_cave.o",
       "owner": "overlay:rom_7bdeb0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_cave.o"
     },
     {
       "id": "tu:asm/maps/vale_cave/exports",
       "source": "asm/maps/vale_cave/exports.s",
-      "object": "asm/maps/vale_cave/exports.o",
+      "object": "build/usa/asm/maps/vale_cave/exports.o",
       "owner": "overlay:rom_7bdeb0",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_cave/exports.o"
     },
     {
       "id": "tu:asm/maps/vale_cave/imports",
       "source": "asm/maps/vale_cave/imports.s",
-      "object": "asm/maps/vale_cave/imports.o",
+      "object": "build/usa/asm/maps/vale_cave/imports.o",
       "owner": "overlay:rom_7bdeb0",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_cave/imports.o"
     },
     {
       "id": "tu:src/maps/vale_kraden",
       "source": "src/maps/vale_kraden.c",
-      "object": "asm/maps/vale_kraden.o",
+      "object": "build/usa/asm/maps/vale_kraden.o",
       "owner": "overlay:rom_78603c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_kraden.o"
     },
     {
       "id": "tu:src/maps/vale_plaza",
       "source": "src/maps/vale_plaza.c",
-      "object": "asm/maps/vale_plaza.o",
+      "object": "build/usa/asm/maps/vale_plaza.o",
       "owner": "overlay:rom_784360",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_plaza.o"
     },
     {
       "id": "tu:src/maps/vale_river",
       "source": "src/maps/vale_river.c",
-      "object": "asm/maps/vale_river.o",
+      "object": "build/usa/asm/maps/vale_river.o",
       "owner": "overlay:rom_780898",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_river.o"
     },
     {
       "id": "tu:src/maps/vale_river_eruption",
       "source": "src/maps/vale_river_eruption.c",
-      "object": "asm/maps/vale_river_eruption.o",
+      "object": "build/usa/asm/maps/vale_river_eruption.o",
       "owner": "overlay:rom_78ac38",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_river_eruption.o"
     },
     {
       "id": "tu:src/maps/vale_river_prologue",
       "source": "src/maps/vale_river_prologue.c",
-      "object": "asm/maps/vale_river_prologue.o",
+      "object": "build/usa/asm/maps/vale_river_prologue.o",
       "owner": "overlay:rom_77dd1c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_river_prologue.o"
     },
     {
       "id": "tu:src/maps/vale_rooms_1",
       "source": "src/maps/vale_rooms_1.c",
-      "object": "asm/maps/vale_rooms_1.o",
+      "object": "build/usa/asm/maps/vale_rooms_1.o",
       "owner": "overlay:rom_786f0c",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_rooms_1.o"
     },
     {
       "id": "tu:src/maps/vale_rooms_2",
       "source": "src/maps/vale_rooms_2.c",
-      "object": "asm/maps/vale_rooms_2.o",
+      "object": "build/usa/asm/maps/vale_rooms_2.o",
       "owner": "overlay:rom_787e04",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_rooms_2.o"
     },
     {
       "id": "tu:src/maps/vale_sanctum",
       "source": "src/maps/vale_sanctum.c",
-      "object": "asm/maps/vale_sanctum.o",
+      "object": "build/usa/asm/maps/vale_sanctum.o",
       "owner": "overlay:rom_7892c8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vale_sanctum.o"
     },
     {
       "id": "tu:src/maps/vault_1",
       "source": "src/maps/vault_1.c",
-      "object": "asm/maps/vault_1.o",
+      "object": "build/usa/asm/maps/vault_1.o",
       "owner": "overlay:rom_793768",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_1.o"
     },
     {
       "id": "tu:asm/maps/vault_1/exports",
       "source": "asm/maps/vault_1/exports.s",
-      "object": "asm/maps/vault_1/exports.o",
+      "object": "build/usa/asm/maps/vault_1/exports.o",
       "owner": "overlay:rom_793768",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_1/exports.o"
     },
     {
       "id": "tu:asm/maps/vault_1/imports",
       "source": "asm/maps/vault_1/imports.s",
-      "object": "asm/maps/vault_1/imports.o",
+      "object": "build/usa/asm/maps/vault_1/imports.o",
       "owner": "overlay:rom_793768",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_1/imports.o"
     },
     {
       "id": "tu:src/maps/vault_2",
       "source": "src/maps/vault_2.c",
-      "object": "asm/maps/vault_2.o",
+      "object": "build/usa/asm/maps/vault_2.o",
       "owner": "overlay:rom_797990",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_2.o"
     },
     {
       "id": "tu:asm/maps/vault_2/exports",
       "source": "asm/maps/vault_2/exports.s",
-      "object": "asm/maps/vault_2/exports.o",
+      "object": "build/usa/asm/maps/vault_2/exports.o",
       "owner": "overlay:rom_797990",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_2/exports.o"
     },
     {
       "id": "tu:asm/maps/vault_2/imports",
       "source": "asm/maps/vault_2/imports.s",
-      "object": "asm/maps/vault_2/imports.o",
+      "object": "build/usa/asm/maps/vault_2/imports.o",
       "owner": "overlay:rom_797990",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_2/imports.o"
     },
     {
       "id": "tu:src/maps/vault_cave",
       "source": "src/maps/vault_cave.c",
-      "object": "asm/maps/vault_cave.o",
+      "object": "build/usa/asm/maps/vault_cave.o",
       "owner": "overlay:rom_7bf5a8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_cave.o"
     },
     {
       "id": "tu:asm/maps/vault_cave/exports",
       "source": "asm/maps/vault_cave/exports.s",
-      "object": "asm/maps/vault_cave/exports.o",
+      "object": "build/usa/asm/maps/vault_cave/exports.o",
       "owner": "overlay:rom_7bf5a8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_cave/exports.o"
     },
     {
       "id": "tu:asm/maps/vault_cave/imports",
       "source": "asm/maps/vault_cave/imports.s",
-      "object": "asm/maps/vault_cave/imports.o",
+      "object": "build/usa/asm/maps/vault_cave/imports.o",
       "owner": "overlay:rom_7bf5a8",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_cave/imports.o"
     },
     {
       "id": "tu:src/maps/vault_rooms_1",
       "source": "src/maps/vault_rooms_1.c",
-      "object": "asm/maps/vault_rooms_1.o",
+      "object": "build/usa/asm/maps/vault_rooms_1.o",
       "owner": "overlay:rom_794ac0",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_rooms_1.o"
     },
     {
       "id": "tu:src/maps/vault_rooms_2",
       "source": "src/maps/vault_rooms_2.c",
-      "object": "asm/maps/vault_rooms_2.o",
+      "object": "build/usa/asm/maps/vault_rooms_2.o",
       "owner": "overlay:rom_7987ac",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/vault_rooms_2.o"
     },
     {
       "id": "tu:src/maps/venus_lighthouse",
       "source": "src/maps/venus_lighthouse.c",
-      "object": "asm/maps/venus_lighthouse.o",
+      "object": "build/usa/asm/maps/venus_lighthouse.o",
       "owner": "overlay:rom_7f2f14",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/venus_lighthouse.o"
     },
     {
       "id": "tu:src/maps/venus_lighthouse_aerie",
       "source": "src/maps/venus_lighthouse_aerie.c",
-      "object": "asm/maps/venus_lighthouse_aerie.o",
+      "object": "build/usa/asm/maps/venus_lighthouse_aerie.o",
       "owner": "overlay:rom_7f6e64",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/venus_lighthouse_aerie.o"
     },
     {
       "id": "tu:asm/maps/venus_lighthouse_aerie/exports",
       "source": "asm/maps/venus_lighthouse_aerie/exports.s",
-      "object": "asm/maps/venus_lighthouse_aerie/exports.o",
+      "object": "build/usa/asm/maps/venus_lighthouse_aerie/exports.o",
       "owner": "overlay:rom_7f6e64",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/venus_lighthouse_aerie/exports.o"
     },
     {
       "id": "tu:asm/maps/venus_lighthouse_aerie/imports",
       "source": "asm/maps/venus_lighthouse_aerie/imports.s",
-      "object": "asm/maps/venus_lighthouse_aerie/imports.o",
+      "object": "build/usa/asm/maps/venus_lighthouse_aerie/imports.o",
       "owner": "overlay:rom_7f6e64",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/venus_lighthouse_aerie/imports.o"
     },
     {
       "id": "tu:src/maps/west_lunpa_cave",
       "source": "src/maps/west_lunpa_cave.c",
-      "object": "asm/maps/west_lunpa_cave.o",
+      "object": "build/usa/asm/maps/west_lunpa_cave.o",
       "owner": "overlay:rom_7c5efc",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/west_lunpa_cave.o"
     },
     {
       "id": "tu:src/maps/world_map_cutscenes",
       "source": "src/maps/world_map_cutscenes.c",
-      "object": "asm/maps/world_map_cutscenes.o",
+      "object": "build/usa/asm/maps/world_map_cutscenes.o",
       "owner": "overlay:rom_77a7c8",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/world_map_cutscenes.o"
     },
     {
       "id": "tu:src/maps/xian",
       "source": "src/maps/xian.c",
-      "object": "asm/maps/xian.o",
+      "object": "build/usa/asm/maps/xian.o",
       "owner": "overlay:rom_7b6668",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian.o"
     },
     {
       "id": "tu:asm/maps/xian/exports",
       "source": "asm/maps/xian/exports.s",
-      "object": "asm/maps/xian/exports.o",
+      "object": "build/usa/asm/maps/xian/exports.o",
       "owner": "overlay:rom_7b6668",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian/exports.o"
     },
     {
       "id": "tu:asm/maps/xian/imports",
       "source": "asm/maps/xian/imports.s",
-      "object": "asm/maps/xian/imports.o",
+      "object": "build/usa/asm/maps/xian/imports.o",
       "owner": "overlay:rom_7b6668",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian/imports.o"
     },
     {
       "id": "tu:src/maps/xian_rooms",
       "source": "src/maps/xian_rooms.c",
-      "object": "asm/maps/xian_rooms.o",
+      "object": "build/usa/asm/maps/xian_rooms.o",
       "owner": "overlay:rom_7b7790",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian_rooms.o"
     },
     {
       "id": "tu:asm/maps/xian_rooms/exports",
       "source": "asm/maps/xian_rooms/exports.s",
-      "object": "asm/maps/xian_rooms/exports.o",
+      "object": "build/usa/asm/maps/xian_rooms/exports.o",
       "owner": "overlay:rom_7b7790",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian_rooms/exports.o"
     },
     {
       "id": "tu:asm/maps/xian_rooms/imports",
       "source": "asm/maps/xian_rooms/imports.s",
-      "object": "asm/maps/xian_rooms/imports.o",
+      "object": "build/usa/asm/maps/xian_rooms/imports.o",
       "owner": "overlay:rom_7b7790",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "asm/maps/xian_rooms/imports.o"
     },
     {
       "id": "tu:data/rom_15000/rom_15e8c_c_c_c",
       "source": "data/rom_15000/rom_15e8c_c_c_c.s",
-      "object": "data/rom_15000/rom_15e8c_c_c_c.o",
+      "object": "build/usa/data/rom_15000/rom_15e8c_c_c_c.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_15e8c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_15000/rom_29910",
       "source": "data/rom_15000/rom_29910.s",
-      "object": "data/rom_15000/rom_29910.o",
+      "object": "build/usa/data/rom_15000/rom_29910.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_29910.o"
     },
     {
       "id": "tu:data/rom_15000/rom_310a4",
       "source": "data/rom_15000/rom_310a4.s",
-      "object": "data/rom_15000/rom_310a4.o",
+      "object": "build/usa/data/rom_15000/rom_310a4.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_310a4.o"
     },
     {
       "id": "tu:data/rom_15000/rom_317e4",
       "source": "data/rom_15000/rom_317e4.s",
-      "object": "data/rom_15000/rom_317e4.o",
+      "object": "build/usa/data/rom_15000/rom_317e4.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_317e4.o"
     },
     {
       "id": "tu:data/rom_15000/rom_32224",
       "source": "data/rom_15000/rom_32224.s",
-      "object": "data/rom_15000/rom_32224.o",
+      "object": "build/usa/data/rom_15000/rom_32224.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_32224.o"
     },
     {
       "id": "tu:data/rom_15000/rom_346f8",
       "source": "data/rom_15000/rom_346f8.s",
-      "object": "data/rom_15000/rom_346f8.o",
+      "object": "build/usa/data/rom_15000/rom_346f8.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_346f8.o"
     },
     {
       "id": "tu:data/rom_15000/rom_367e4",
       "source": "data/rom_15000/rom_367e4.s",
-      "object": "data/rom_15000/rom_367e4.o",
+      "object": "build/usa/data/rom_15000/rom_367e4.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_367e4.o"
     },
     {
       "id": "tu:data/rom_15000/rom_73812",
       "source": "data/rom_15000/rom_73812.s",
-      "object": "data/rom_15000/rom_73812.o",
+      "object": "build/usa/data/rom_15000/rom_73812.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_73812.o"
     },
     {
       "id": "tu:data/rom_15000/rom_73864",
       "source": "data/rom_15000/rom_73864.s",
-      "object": "data/rom_15000/rom_73864.o",
+      "object": "build/usa/data/rom_15000/rom_73864.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_15000/rom_73864.o"
     },
     {
       "id": "tu:data/rom_185000/rom_185008_c",
       "source": "data/rom_185000/rom_185008_c.s",
-      "object": "data/rom_185000/rom_185008_c.o",
+      "object": "build/usa/data/rom_185000/rom_185008_c.o",
       "owner": "rom_185000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_185000/rom_185008_c.o"
     },
     {
       "id": "tu:data/rom_320000/rom_320000",
       "source": "data/rom_320000/rom_320000.s",
-      "object": "data/rom_320000/rom_320000.o",
+      "object": "build/usa/data/rom_320000/rom_320000.o",
       "owner": "rom_320000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_320000/rom_320000.o"
     },
     {
       "id": "tu:data/rom_77000/rom_78414_c_c_c_c",
       "source": "data/rom_77000/rom_78414_c_c_c_c.s",
-      "object": "data/rom_77000/rom_78414_c_c_c_c.o",
+      "object": "build/usa/data/rom_77000/rom_78414_c_c_c_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_78414_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_78a8c_c_c",
       "source": "data/rom_77000/rom_78a8c_c_c.s",
-      "object": "data/rom_77000/rom_78a8c_c_c.o",
+      "object": "build/usa/data/rom_77000/rom_78a8c_c_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_78a8c_c_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_78b9c_c",
       "source": "data/rom_77000/rom_78b9c_c.s",
-      "object": "data/rom_77000/rom_78b9c_c.o",
+      "object": "build/usa/data/rom_77000/rom_78b9c_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_78b9c_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_78ed8_c",
       "source": "data/rom_77000/rom_78ed8_c.s",
-      "object": "data/rom_77000/rom_78ed8_c.o",
+      "object": "build/usa/data/rom_77000/rom_78ed8_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_78ed8_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_78ee8_c",
       "source": "data/rom_77000/rom_78ee8_c.s",
-      "object": "data/rom_77000/rom_78ee8_c.o",
+      "object": "build/usa/data/rom_77000/rom_78ee8_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_78ee8_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_79008_c",
       "source": "data/rom_77000/rom_79008_c.s",
-      "object": "data/rom_77000/rom_79008_c.o",
+      "object": "build/usa/data/rom_77000/rom_79008_c.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_79008_c.o"
     },
     {
       "id": "tu:data/rom_77000/rom_80ec8",
       "source": "data/rom_77000/rom_80ec8.s",
-      "object": "data/rom_77000/rom_80ec8.o",
+      "object": "build/usa/data/rom_77000/rom_80ec8.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_77000/rom_80ec8.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_8a5f8_c",
       "source": "data/rom_8a000/rom_8a5f8_c.s",
-      "object": "data/rom_8a000/rom_8a5f8_c.o",
+      "object": "build/usa/data/rom_8a000/rom_8a5f8_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_8a5f8_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_8ace0_c",
       "source": "data/rom_8a000/rom_8ace0_c.s",
-      "object": "data/rom_8a000/rom_8ace0_c.o",
+      "object": "build/usa/data/rom_8a000/rom_8ace0_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_8ace0_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_8b674_c_c_c",
       "source": "data/rom_8a000/rom_8b674_c_c_c.s",
-      "object": "data/rom_8a000/rom_8b674_c_c_c.o",
+      "object": "build/usa/data/rom_8a000/rom_8b674_c_c_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_8b674_c_c_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_91584_c_c_c_c",
       "source": "data/rom_8a000/rom_91584_c_c_c_c.s",
-      "object": "data/rom_8a000/rom_91584_c_c_c_c.o",
+      "object": "build/usa/data/rom_8a000/rom_91584_c_c_c_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_91584_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9259c_c",
       "source": "data/rom_8a000/rom_9259c_c.s",
-      "object": "data/rom_8a000/rom_9259c_c.o",
+      "object": "build/usa/data/rom_8a000/rom_9259c_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9259c_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_925e0_c",
       "source": "data/rom_8a000/rom_925e0_c.s",
-      "object": "data/rom_8a000/rom_925e0_c.o",
+      "object": "build/usa/data/rom_8a000/rom_925e0_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_925e0_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9bb64_c_c",
       "source": "data/rom_8a000/rom_9bb64_c_c.s",
-      "object": "data/rom_8a000/rom_9bb64_c_c.o",
+      "object": "build/usa/data/rom_8a000/rom_9bb64_c_c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9bb64_c_c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9f0b0",
       "source": "data/rom_8a000/rom_9f0b0.s",
-      "object": "data/rom_8a000/rom_9f0b0.o",
+      "object": "build/usa/data/rom_8a000/rom_9f0b0.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9f0b0.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9f840",
       "source": "data/rom_8a000/rom_9f840.s",
-      "object": "data/rom_8a000/rom_9f840.o",
+      "object": "build/usa/data/rom_8a000/rom_9f840.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9f840.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9fc1c",
       "source": "data/rom_8a000/rom_9fc1c.s",
-      "object": "data/rom_8a000/rom_9fc1c.o",
+      "object": "build/usa/data/rom_8a000/rom_9fc1c.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9fc1c.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_9ff40",
       "source": "data/rom_8a000/rom_9ff40.s",
-      "object": "data/rom_8a000/rom_9ff40.o",
+      "object": "build/usa/data/rom_8a000/rom_9ff40.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_9ff40.o"
     },
     {
       "id": "tu:data/rom_8a000/rom_a0138",
       "source": "data/rom_8a000/rom_a0138.s",
-      "object": "data/rom_8a000/rom_a0138.o",
+      "object": "build/usa/data/rom_8a000/rom_a0138.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_8a000/rom_a0138.o"
     },
     {
       "id": "tu:data/rom_9000/rom_13624",
       "source": "data/rom_9000/rom_13624.s",
-      "object": "data/rom_9000/rom_13624.o",
+      "object": "build/usa/data/rom_9000/rom_13624.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_9000/rom_13624.o"
     },
     {
       "id": "tu:data/rom_9000/rom_c004_c_c_c",
       "source": "data/rom_9000/rom_c004_c_c_c.s",
-      "object": "data/rom_9000/rom_c004_c_c_c.o",
+      "object": "build/usa/data/rom_9000/rom_c004_c_c_c.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_9000/rom_c004_c_c_c.o"
     },
     {
       "id": "tu:data/rom_9000/rom_d654_c_c_c",
       "source": "data/rom_9000/rom_d654_c_c_c.s",
-      "object": "data/rom_9000/rom_d654_c_c_c.o",
+      "object": "build/usa/data/rom_9000/rom_d654_c_c_c.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_9000/rom_d654_c_c_c.o"
     },
     {
       "id": "tu:data/rom_a1000/rom_a172c_c",
       "source": "data/rom_a1000/rom_a172c_c.s",
-      "object": "data/rom_a1000/rom_a172c_c.o",
+      "object": "build/usa/data/rom_a1000/rom_a172c_c.o",
       "owner": "rom_a1000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_a1000/rom_a172c_c.o"
     },
     {
       "id": "tu:data/rom_a1000/rom_a47b4_c_c_c_c_c_c",
       "source": "data/rom_a1000/rom_a47b4_c_c_c_c_c_c.s",
-      "object": "data/rom_a1000/rom_a47b4_c_c_c_c_c_c.o",
+      "object": "build/usa/data/rom_a1000/rom_a47b4_c_c_c_c_c_c.o",
       "owner": "rom_a1000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_a1000/rom_a47b4_c_c_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_a1000/rom_a8604_c_c_c_c_c",
       "source": "data/rom_a1000/rom_a8604_c_c_c_c_c.s",
-      "object": "data/rom_a1000/rom_a8604_c_c_c_c_c.o",
+      "object": "build/usa/data/rom_a1000/rom_a8604_c_c_c_c_c.o",
       "owner": "rom_a1000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_a1000/rom_a8604_c_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_a1000/rom_af26c",
       "source": "data/rom_a1000/rom_af26c.s",
-      "object": "data/rom_a1000/rom_af26c.o",
+      "object": "build/usa/data/rom_a1000/rom_af26c.o",
       "owner": "rom_a1000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_a1000/rom_af26c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_b7410_c_c_c_c_c",
       "source": "data/rom_b5000/rom_b7410_c_c_c_c_c.s",
-      "object": "data/rom_b5000/rom_b7410_c_c_c_c_c.o",
+      "object": "build/usa/data/rom_b5000/rom_b7410_c_c_c_c_c.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_b7410_c_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_b8228_c_c",
       "source": "data/rom_b5000/rom_b8228_c_c.s",
-      "object": "data/rom_b5000/rom_b8228_c_c.o",
+      "object": "build/usa/data/rom_b5000/rom_b8228_c_c.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_b8228_c_c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_c10e8_c",
       "source": "data/rom_b5000/rom_c10e8_c.s",
-      "object": "data/rom_b5000/rom_c10e8_c.o",
+      "object": "build/usa/data/rom_b5000/rom_c10e8_c.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_c10e8_c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_c1a34_c",
       "source": "data/rom_b5000/rom_c1a34_c.s",
-      "object": "data/rom_b5000/rom_c1a34_c.o",
+      "object": "build/usa/data/rom_b5000/rom_c1a34_c.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_c1a34_c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_c2a0c",
       "source": "data/rom_b5000/rom_c2a0c.s",
-      "object": "data/rom_b5000/rom_c2a0c.o",
+      "object": "build/usa/data/rom_b5000/rom_c2a0c.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_c2a0c.o"
     },
     {
       "id": "tu:data/rom_b5000/rom_c3734",
       "source": "data/rom_b5000/rom_c3734.s",
-      "object": "data/rom_b5000/rom_c3734.o",
+      "object": "build/usa/data/rom_b5000/rom_c3734.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_b5000/rom_c3734.o"
     },
     {
       "id": "tu:data/rom_c0/rom_45e8_c_c_c_c_c",
       "source": "data/rom_c0/rom_45e8_c_c_c_c_c.s",
-      "object": "data/rom_c0/rom_45e8_c_c_c_c_c.o",
+      "object": "build/usa/data/rom_c0/rom_45e8_c_c_c_c_c.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c0/rom_45e8_c_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_c0/rom_49a8_c_c_c_c_c",
       "source": "data/rom_c0/rom_49a8_c_c_c_c_c.s",
-      "object": "data/rom_c0/rom_49a8_c_c_c_c_c.o",
+      "object": "build/usa/data/rom_c0/rom_49a8_c_c_c_c_c.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c0/rom_49a8_c_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_c9000/rom_e28f4_c_c_c",
       "source": "data/rom_c9000/rom_e28f4_c_c_c.s",
-      "object": "data/rom_c9000/rom_e28f4_c_c_c.o",
+      "object": "build/usa/data/rom_c9000/rom_e28f4_c_c_c.o",
       "owner": "rom_c9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c9000/rom_e28f4_c_c_c.o"
     },
     {
       "id": "tu:data/rom_c9000/rom_e6638_c",
       "source": "data/rom_c9000/rom_e6638_c.s",
-      "object": "data/rom_c9000/rom_e6638_c.o",
+      "object": "build/usa/data/rom_c9000/rom_e6638_c.o",
       "owner": "rom_c9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c9000/rom_e6638_c.o"
     },
     {
       "id": "tu:data/rom_c9000/rom_eda78",
       "source": "data/rom_c9000/rom_eda78.s",
-      "object": "data/rom_c9000/rom_eda78.o",
+      "object": "build/usa/data/rom_c9000/rom_eda78.o",
       "owner": "rom_c9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c9000/rom_eda78.o"
     },
     {
       "id": "tu:data/rom_c9000/rom_ee2b4",
       "source": "data/rom_c9000/rom_ee2b4.s",
-      "object": "data/rom_c9000/rom_ee2b4.o",
+      "object": "build/usa/data/rom_c9000/rom_ee2b4.o",
       "owner": "rom_c9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_c9000/rom_ee2b4.o"
     },
     {
       "id": "tu:data/rom_f2000/rom_f2028_c_c_c_c",
       "source": "data/rom_f2000/rom_f2028_c_c_c_c.s",
-      "object": "data/rom_f2000/rom_f2028_c_c_c_c.o",
+      "object": "build/usa/data/rom_f2000/rom_f2028_c_c_c_c.o",
       "owner": "rom_f2000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_f2000/rom_f2028_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_f9000/rom_f9080_c_c_c_c",
       "source": "data/rom_f9000/rom_f9080_c_c_c_c.s",
-      "object": "data/rom_f9000/rom_f9080_c_c_c_c.o",
+      "object": "build/usa/data/rom_f9000/rom_f9080_c_c_c_c.o",
       "owner": "rom_f9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_f9000/rom_f9080_c_c_c_c.o"
     },
     {
       "id": "tu:data/rom_f9000/rom_f9ef8_c_c_c",
       "source": "data/rom_f9000/rom_f9ef8_c_c_c.s",
-      "object": "data/rom_f9000/rom_f9ef8_c_c_c.o",
+      "object": "build/usa/data/rom_f9000/rom_f9ef8_c_c_c.o",
       "owner": "rom_f9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_f9000/rom_f9ef8_c_c_c.o"
     },
     {
       "id": "tu:data/rom_f9000/rom_fc624",
       "source": "data/rom_f9000/rom_fc624.s",
-      "object": "data/rom_f9000/rom_fc624.o",
+      "object": "build/usa/data/rom_f9000/rom_fc624.o",
       "owner": "rom_f9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "data/rom_f9000/rom_fc624.o"
     },
     {
       "id": "tu:data/strings/strings",
-      "source": "data/strings/strings.s",
-      "object": "data/strings/strings.o",
+      "source": "build/usa/generated/strings/strings.s",
+      "object": "build/usa/data/strings/strings.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "generated"
+      "source_role": "generated",
+      "legacy_object": "data/strings/strings.o"
     },
     {
       "id": "tu:exports/rom_15000/exports",
       "source": "exports/rom_15000/exports.s",
-      "object": "exports/rom_15000/exports.o",
+      "object": "build/usa/exports/rom_15000/exports.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_15000/exports.o"
     },
     {
       "id": "tu:exports/rom_185000/exports",
       "source": "exports/rom_185000/exports.s",
-      "object": "exports/rom_185000/exports.o",
+      "object": "build/usa/exports/rom_185000/exports.o",
       "owner": "rom_185000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_185000/exports.o"
     },
     {
       "id": "tu:exports/rom_77000/exports",
       "source": "exports/rom_77000/exports.s",
-      "object": "exports/rom_77000/exports.o",
+      "object": "build/usa/exports/rom_77000/exports.o",
       "owner": "rom_77000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_77000/exports.o"
     },
     {
       "id": "tu:exports/rom_8a000/exports",
       "source": "exports/rom_8a000/exports.s",
-      "object": "exports/rom_8a000/exports.o",
+      "object": "build/usa/exports/rom_8a000/exports.o",
       "owner": "rom_8a000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_8a000/exports.o"
     },
     {
       "id": "tu:exports/rom_9000/exports",
       "source": "exports/rom_9000/exports.s",
-      "object": "exports/rom_9000/exports.o",
+      "object": "build/usa/exports/rom_9000/exports.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_9000/exports.o"
     },
     {
       "id": "tu:exports/rom_a1000/exports",
       "source": "exports/rom_a1000/exports.s",
-      "object": "exports/rom_a1000/exports.o",
+      "object": "build/usa/exports/rom_a1000/exports.o",
       "owner": "rom_a1000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_a1000/exports.o"
     },
     {
       "id": "tu:exports/rom_b0000/exports",
       "source": "exports/rom_b0000/exports.s",
-      "object": "exports/rom_b0000/exports.o",
+      "object": "build/usa/exports/rom_b0000/exports.o",
       "owner": "rom_b0000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_b0000/exports.o"
     },
     {
       "id": "tu:exports/rom_b5000/exports",
       "source": "exports/rom_b5000/exports.s",
-      "object": "exports/rom_b5000/exports.o",
+      "object": "build/usa/exports/rom_b5000/exports.o",
       "owner": "rom_b5000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_b5000/exports.o"
     },
     {
       "id": "tu:exports/rom_c0/exports",
       "source": "exports/rom_c0/exports.s",
-      "object": "exports/rom_c0/exports.o",
+      "object": "build/usa/exports/rom_c0/exports.o",
       "owner": "rom_c0",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_c0/exports.o"
     },
     {
       "id": "tu:exports/rom_c9000/exports",
       "source": "exports/rom_c9000/exports.s",
-      "object": "exports/rom_c9000/exports.o",
+      "object": "build/usa/exports/rom_c9000/exports.o",
       "owner": "rom_c9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_c9000/exports.o"
     },
     {
       "id": "tu:exports/rom_f0000/exports",
       "source": "exports/rom_f0000/exports.s",
-      "object": "exports/rom_f0000/exports.o",
+      "object": "build/usa/exports/rom_f0000/exports.o",
       "owner": "rom_f0000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_f0000/exports.o"
     },
     {
       "id": "tu:exports/rom_f2000/exports",
       "source": "exports/rom_f2000/exports.s",
-      "object": "exports/rom_f2000/exports.o",
+      "object": "build/usa/exports/rom_f2000/exports.o",
       "owner": "rom_f2000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_f2000/exports.o"
     },
     {
       "id": "tu:exports/rom_f4000/exports",
       "source": "exports/rom_f4000/exports.s",
-      "object": "exports/rom_f4000/exports.o",
+      "object": "build/usa/exports/rom_f4000/exports.o",
       "owner": "rom_f4000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_f4000/exports.o"
     },
     {
       "id": "tu:exports/rom_f6000/exports",
       "source": "exports/rom_f6000/exports.s",
-      "object": "exports/rom_f6000/exports.o",
+      "object": "build/usa/exports/rom_f6000/exports.o",
       "owner": "rom_f6000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_f6000/exports.o"
     },
     {
       "id": "tu:exports/rom_f9000/exports",
       "source": "exports/rom_f9000/exports.s",
-      "object": "exports/rom_f9000/exports.o",
+      "object": "build/usa/exports/rom_f9000/exports.o",
       "owner": "rom_f9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "exports/rom_f9000/exports.o"
     },
     {
       "id": "tu:src/actor/actor",
       "source": "src/actor/actor.c",
-      "object": "src/actor/actor.o",
+      "object": "build/usa/src/actor/actor.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/actor/actor.o"
     },
     {
       "id": "tu:src/actor/actor_script",
       "source": "src/actor/actor_script.c",
-      "object": "src/actor/actor_script.o",
+      "object": "build/usa/src/actor/actor_script.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/actor/actor_script.o"
     },
     {
       "id": "tu:src/actor/player",
       "source": "src/actor/player.c",
-      "object": "src/actor/player.o",
+      "object": "build/usa/src/actor/player.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/actor/player.o"
     },
     {
       "id": "tu:src/battle/actor_pos",
       "source": "src/battle/actor_pos.c",
-      "object": "src/battle/actor_pos.o",
+      "object": "build/usa/src/battle/actor_pos.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle/actor_pos.o"
     },
     {
       "id": "tu:src/battle/battle",
       "source": "src/battle/battle.c",
-      "object": "src/battle/battle.o",
+      "object": "build/usa/src/battle/battle.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle/battle.o"
     },
     {
       "id": "tu:src/battle/debug_battle_test",
       "source": "src/battle/debug_battle_test.c",
-      "object": "src/battle/debug_battle_test.o",
+      "object": "build/usa/src/battle/debug_battle_test.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle/debug_battle_test.o"
     },
     {
       "id": "tu:src/battle/enemy",
       "source": "src/battle/enemy.c",
-      "object": "src/battle/enemy.o",
+      "object": "build/usa/src/battle/enemy.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle/enemy.o"
     },
     {
       "id": "tu:src/battle/mechanics",
       "source": "src/battle/mechanics.c",
-      "object": "src/battle/mechanics.o",
+      "object": "build/usa/src/battle/mechanics.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle/mechanics.o"
     },
     {
       "id": "tu:src/battle_anim/anim_util",
       "source": "src/battle_anim/anim_util.c",
-      "object": "src/battle_anim/anim_util.o",
+      "object": "build/usa/src/battle_anim/anim_util.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/anim_util.o"
     },
     {
       "id": "tu:src/battle_anim/anims",
       "source": "src/battle_anim/anims.c",
-      "object": "src/battle_anim/anims.o",
+      "object": "build/usa/src/battle_anim/anims.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/anims.o"
     },
     {
       "id": "tu:src/battle_anim/attack",
       "source": "src/battle_anim/attack.c",
-      "object": "src/battle_anim/attack.o",
+      "object": "build/usa/src/battle_anim/attack.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/attack.o"
     },
     {
       "id": "tu:src/battle_anim/camera",
       "source": "src/battle_anim/camera.c",
-      "object": "src/battle_anim/camera.o",
+      "object": "build/usa/src/battle_anim/camera.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/camera.o"
     },
     {
       "id": "tu:src/battle_anim/cast",
       "source": "src/battle_anim/cast.c",
-      "object": "src/battle_anim/cast.o",
+      "object": "build/usa/src/battle_anim/cast.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/cast.o"
     },
     {
       "id": "tu:src/battle_anim/color_cycle_vfx_palette",
       "source": "src/battle_anim/color_cycle_vfx_palette.c",
-      "object": "src/battle_anim/color_cycle_vfx_palette.o",
+      "object": "build/usa/src/battle_anim/color_cycle_vfx_palette.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/color_cycle_vfx_palette.o"
     },
     {
       "id": "tu:src/battle_anim/djinn_set",
       "source": "src/battle_anim/djinn_set.c",
-      "object": "src/battle_anim/djinn_set.o",
+      "object": "build/usa/src/battle_anim/djinn_set.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/djinn_set.o"
     },
     {
       "id": "tu:src/battle_anim/djinni",
       "source": "src/battle_anim/djinni.c",
-      "object": "src/battle_anim/djinni.o",
+      "object": "build/usa/src/battle_anim/djinni.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/djinni.o"
     },
     {
       "id": "tu:src/battle_anim/epower_up",
       "source": "src/battle_anim/epower_up.c",
-      "object": "src/battle_anim/epower_up.o",
+      "object": "build/usa/src/battle_anim/epower_up.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/epower_up.o"
     },
     {
       "id": "tu:src/battle_anim/move_intro",
       "source": "src/battle_anim/move_intro.c",
-      "object": "src/battle_anim/move_intro.o",
+      "object": "build/usa/src/battle_anim/move_intro.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/move_intro.o"
     },
     {
       "id": "tu:src/battle_anim/moves/annihilation",
       "source": "src/battle_anim/moves/annihilation.c",
-      "object": "src/battle_anim/moves/annihilation.o",
+      "object": "build/usa/src/battle_anim/moves/annihilation.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/annihilation.o"
     },
     {
       "id": "tu:src/battle_anim/moves/astral_blast",
       "source": "src/battle_anim/moves/astral_blast.c",
-      "object": "src/battle_anim/moves/astral_blast.o",
+      "object": "build/usa/src/battle_anim/moves/astral_blast.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/astral_blast.o"
     },
     {
       "id": "tu:src/battle_anim/moves/atalanta",
       "source": "src/battle_anim/moves/atalanta.c",
-      "object": "src/battle_anim/moves/atalanta.o",
+      "object": "build/usa/src/battle_anim/moves/atalanta.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/atalanta.o"
     },
     {
       "id": "tu:src/battle_anim/moves/bind",
       "source": "src/battle_anim/moves/bind.c",
-      "object": "src/battle_anim/moves/bind.o",
+      "object": "build/usa/src/battle_anim/moves/bind.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/bind.o"
     },
     {
       "id": "tu:src/battle_anim/moves/bite_sting",
       "source": "src/battle_anim/moves/bite_sting.c",
-      "object": "src/battle_anim/moves/bite_sting.o",
+      "object": "build/usa/src/battle_anim/moves/bite_sting.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/bite_sting.o"
     },
     {
       "id": "tu:src/battle_anim/moves/blast",
       "source": "src/battle_anim/moves/blast.c",
-      "object": "src/battle_anim/moves/blast.o",
+      "object": "build/usa/src/battle_anim/moves/blast.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/blast.o"
     },
     {
       "id": "tu:src/battle_anim/moves/bolt",
       "source": "src/battle_anim/moves/bolt.c",
-      "object": "src/battle_anim/moves/bolt.o",
+      "object": "build/usa/src/battle_anim/moves/bolt.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/bolt.o"
     },
     {
       "id": "tu:src/battle_anim/moves/boreas",
       "source": "src/battle_anim/moves/boreas.c",
-      "object": "src/battle_anim/moves/boreas.o",
+      "object": "build/usa/src/battle_anim/moves/boreas.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/boreas.o"
     },
     {
       "id": "tu:src/battle_anim/moves/break",
       "source": "src/battle_anim/moves/break.c",
-      "object": "src/battle_anim/moves/break.o",
+      "object": "build/usa/src/battle_anim/moves/break.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/break.o"
     },
     {
       "id": "tu:src/battle_anim/moves/breath",
       "source": "src/battle_anim/moves/breath.c",
-      "object": "src/battle_anim/moves/breath.o",
+      "object": "build/usa/src/battle_anim/moves/breath.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/breath.o"
     },
     {
       "id": "tu:src/battle_anim/moves/condemn",
       "source": "src/battle_anim/moves/condemn.c",
-      "object": "src/battle_anim/moves/condemn.o",
+      "object": "build/usa/src/battle_anim/moves/condemn.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/condemn.o"
     },
     {
       "id": "tu:src/battle_anim/moves/confuse",
       "source": "src/battle_anim/moves/confuse.c",
-      "object": "src/battle_anim/moves/confuse.o",
+      "object": "build/usa/src/battle_anim/moves/confuse.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/confuse.o"
     },
     {
       "id": "tu:src/battle_anim/moves/curse",
       "source": "src/battle_anim/moves/curse.c",
-      "object": "src/battle_anim/moves/curse.o",
+      "object": "build/usa/src/battle_anim/moves/curse.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/curse.o"
     },
     {
       "id": "tu:src/battle_anim/moves/cybele",
       "source": "src/battle_anim/moves/cybele.c",
-      "object": "src/battle_anim/moves/cybele.o",
+      "object": "build/usa/src/battle_anim/moves/cybele.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/cybele.o"
     },
     {
       "id": "tu:src/battle_anim/moves/death_plunge",
       "source": "src/battle_anim/moves/death_plunge.c",
-      "object": "src/battle_anim/moves/death_plunge.o",
+      "object": "build/usa/src/battle_anim/moves/death_plunge.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/death_plunge.o"
     },
     {
       "id": "tu:src/battle_anim/moves/douse",
       "source": "src/battle_anim/moves/douse.c",
-      "object": "src/battle_anim/moves/douse.o",
+      "object": "build/usa/src/battle_anim/moves/douse.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/douse.o"
     },
     {
       "id": "tu:src/battle_anim/moves/dragon_cloud",
       "source": "src/battle_anim/moves/dragon_cloud.c",
-      "object": "src/battle_anim/moves/dragon_cloud.o",
+      "object": "build/usa/src/battle_anim/moves/dragon_cloud.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/dragon_cloud.o"
     },
     {
       "id": "tu:src/battle_anim/moves/drain",
       "source": "src/battle_anim/moves/drain.c",
-      "object": "src/battle_anim/moves/drain.o",
+      "object": "build/usa/src/battle_anim/moves/drain.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/drain.o"
     },
     {
       "id": "tu:src/battle_anim/moves/fireball",
       "source": "src/battle_anim/moves/fireball.c",
-      "object": "src/battle_anim/moves/fireball.o",
+      "object": "build/usa/src/battle_anim/moves/fireball.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/fireball.o"
     },
     {
       "id": "tu:src/battle_anim/moves/flare",
       "source": "src/battle_anim/moves/flare.c",
-      "object": "src/battle_anim/moves/flare.o",
+      "object": "build/usa/src/battle_anim/moves/flare.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/flare.o"
     },
     {
       "id": "tu:src/battle_anim/moves/frost",
       "source": "src/battle_anim/moves/frost.c",
-      "object": "src/battle_anim/moves/frost.o",
+      "object": "build/usa/src/battle_anim/moves/frost.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/frost.o"
     },
     {
       "id": "tu:src/battle_anim/moves/froth",
       "source": "src/battle_anim/moves/froth.c",
-      "object": "src/battle_anim/moves/froth.o",
+      "object": "build/usa/src/battle_anim/moves/froth.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/froth.o"
     },
     {
       "id": "tu:src/battle_anim/moves/fullscreen_slash",
       "source": "src/battle_anim/moves/fullscreen_slash.c",
-      "object": "src/battle_anim/moves/fullscreen_slash.o",
+      "object": "build/usa/src/battle_anim/moves/fullscreen_slash.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/fullscreen_slash.o"
     },
     {
       "id": "tu:src/battle_anim/moves/gaia",
       "source": "src/battle_anim/moves/gaia.c",
-      "object": "src/battle_anim/moves/gaia.o",
+      "object": "build/usa/src/battle_anim/moves/gaia.o",
       "owner": "rom_c9000",
       "profile": "gcc296-gaia",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/gaia.o"
     },
     {
       "id": "tu:src/battle_anim/moves/ground",
       "source": "src/battle_anim/moves/ground.c",
-      "object": "src/battle_anim/moves/ground.o",
+      "object": "build/usa/src/battle_anim/moves/ground.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/ground.o"
     },
     {
       "id": "tu:src/battle_anim/moves/growth",
       "source": "src/battle_anim/moves/growth.c",
-      "object": "src/battle_anim/moves/growth.o",
+      "object": "build/usa/src/battle_anim/moves/growth.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/growth.o"
     },
     {
       "id": "tu:src/battle_anim/moves/hail",
       "source": "src/battle_anim/moves/hail.c",
-      "object": "src/battle_anim/moves/hail.o",
+      "object": "build/usa/src/battle_anim/moves/hail.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/hail.o"
     },
     {
       "id": "tu:src/battle_anim/moves/haunt",
       "source": "src/battle_anim/moves/haunt.c",
-      "object": "src/battle_anim/moves/haunt.o",
+      "object": "build/usa/src/battle_anim/moves/haunt.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/haunt.o"
     },
     {
       "id": "tu:src/battle_anim/moves/haunt_attack",
       "source": "src/battle_anim/moves/haunt_attack.c",
-      "object": "src/battle_anim/moves/haunt_attack.o",
+      "object": "build/usa/src/battle_anim/moves/haunt_attack.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/haunt_attack.o"
     },
     {
       "id": "tu:src/battle_anim/moves/heal",
       "source": "src/battle_anim/moves/heal.c",
-      "object": "src/battle_anim/moves/heal.o",
+      "object": "build/usa/src/battle_anim/moves/heal.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/heal.o"
     },
     {
       "id": "tu:src/battle_anim/moves/helm_splitter",
       "source": "src/battle_anim/moves/helm_splitter.c",
-      "object": "src/battle_anim/moves/helm_splitter.o",
+      "object": "build/usa/src/battle_anim/moves/helm_splitter.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/helm_splitter.o"
     },
     {
       "id": "tu:src/battle_anim/moves/ice",
       "source": "src/battle_anim/moves/ice.c",
-      "object": "src/battle_anim/moves/ice.o",
+      "object": "build/usa/src/battle_anim/moves/ice.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/ice.o"
     },
     {
       "id": "tu:src/battle_anim/moves/judgment",
       "source": "src/battle_anim/moves/judgment.c",
-      "object": "src/battle_anim/moves/judgment.o",
+      "object": "build/usa/src/battle_anim/moves/judgment.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/judgment.o"
     },
     {
       "id": "tu:src/battle_anim/moves/jupiter",
       "source": "src/battle_anim/moves/jupiter.c",
-      "object": "src/battle_anim/moves/jupiter.o",
+      "object": "build/usa/src/battle_anim/moves/jupiter.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/jupiter.o"
     },
     {
       "id": "tu:src/battle_anim/moves/kirin",
       "source": "src/battle_anim/moves/kirin.c",
-      "object": "src/battle_anim/moves/kirin.o",
+      "object": "build/usa/src/battle_anim/moves/kirin.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/kirin.o"
     },
     {
       "id": "tu:src/battle_anim/moves/kite",
       "source": "src/battle_anim/moves/kite.c",
-      "object": "src/battle_anim/moves/kite.o",
+      "object": "build/usa/src/battle_anim/moves/kite.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/kite.o"
     },
     {
       "id": "tu:src/battle_anim/moves/mars",
       "source": "src/battle_anim/moves/mars.c",
-      "object": "src/battle_anim/moves/mars.o",
+      "object": "build/usa/src/battle_anim/moves/mars.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/mars.o"
     },
     {
       "id": "tu:src/battle_anim/moves/mercury",
       "source": "src/battle_anim/moves/mercury.c",
-      "object": "src/battle_anim/moves/mercury.o",
+      "object": "build/usa/src/battle_anim/moves/mercury.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/mercury.o"
     },
     {
       "id": "tu:src/battle_anim/moves/meteor",
       "source": "src/battle_anim/moves/meteor.c",
-      "object": "src/battle_anim/moves/meteor.o",
+      "object": "build/usa/src/battle_anim/moves/meteor.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/meteor.o"
     },
     {
       "id": "tu:src/battle_anim/moves/mud",
       "source": "src/battle_anim/moves/mud.c",
-      "object": "src/battle_anim/moves/mud.o",
+      "object": "build/usa/src/battle_anim/moves/mud.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/mud.o"
     },
     {
       "id": "tu:src/battle_anim/moves/neptune",
       "source": "src/battle_anim/moves/neptune.c",
-      "object": "src/battle_anim/moves/neptune.o",
+      "object": "build/usa/src/battle_anim/moves/neptune.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/neptune.o"
     },
     {
       "id": "tu:src/battle_anim/moves/nereid",
       "source": "src/battle_anim/moves/nereid.c",
-      "object": "src/battle_anim/moves/nereid.o",
+      "object": "build/usa/src/battle_anim/moves/nereid.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/nereid.o"
     },
     {
       "id": "tu:src/battle_anim/moves/nova",
       "source": "src/battle_anim/moves/nova.c",
-      "object": "src/battle_anim/moves/nova.o",
+      "object": "build/usa/src/battle_anim/moves/nova.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/nova.o"
     },
     {
       "id": "tu:src/battle_anim/moves/particle_cloud",
       "source": "src/battle_anim/moves/particle_cloud.c",
-      "object": "src/battle_anim/moves/particle_cloud.o",
+      "object": "build/usa/src/battle_anim/moves/particle_cloud.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/particle_cloud.o"
     },
     {
       "id": "tu:src/battle_anim/moves/planet_diver",
       "source": "src/battle_anim/moves/planet_diver.c",
-      "object": "src/battle_anim/moves/planet_diver.o",
+      "object": "build/usa/src/battle_anim/moves/planet_diver.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/planet_diver.o"
     },
     {
       "id": "tu:src/battle_anim/moves/plasma",
       "source": "src/battle_anim/moves/plasma.c",
-      "object": "src/battle_anim/moves/plasma.o",
+      "object": "build/usa/src/battle_anim/moves/plasma.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/plasma.o"
     },
     {
       "id": "tu:src/battle_anim/moves/prism",
       "source": "src/battle_anim/moves/prism.c",
-      "object": "src/battle_anim/moves/prism.o",
+      "object": "build/usa/src/battle_anim/moves/prism.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/prism.o"
     },
     {
       "id": "tu:src/battle_anim/moves/procne",
       "source": "src/battle_anim/moves/procne.c",
-      "object": "src/battle_anim/moves/procne.o",
+      "object": "build/usa/src/battle_anim/moves/procne.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/procne.o"
     },
     {
       "id": "tu:src/battle_anim/moves/projectile",
       "source": "src/battle_anim/moves/projectile.c",
-      "object": "src/battle_anim/moves/projectile.o",
+      "object": "build/usa/src/battle_anim/moves/projectile.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/projectile.o"
     },
     {
       "id": "tu:src/battle_anim/moves/psyphon_seal",
       "source": "src/battle_anim/moves/psyphon_seal.c",
-      "object": "src/battle_anim/moves/psyphon_seal.o",
+      "object": "build/usa/src/battle_anim/moves/psyphon_seal.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/psyphon_seal.o"
     },
     {
       "id": "tu:src/battle_anim/moves/quake",
       "source": "src/battle_anim/moves/quake.c",
-      "object": "src/battle_anim/moves/quake.o",
+      "object": "build/usa/src/battle_anim/moves/quake.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/quake.o"
     },
     {
       "id": "tu:src/battle_anim/moves/ragnarok",
       "source": "src/battle_anim/moves/ragnarok.c",
-      "object": "src/battle_anim/moves/ragnarok.o",
+      "object": "build/usa/src/battle_anim/moves/ragnarok.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/ragnarok.o"
     },
     {
       "id": "tu:src/battle_anim/moves/ramses",
       "source": "src/battle_anim/moves/ramses.c",
-      "object": "src/battle_anim/moves/ramses.o",
+      "object": "build/usa/src/battle_anim/moves/ramses.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/ramses.o"
     },
     {
       "id": "tu:src/battle_anim/moves/rapid_slash",
       "source": "src/battle_anim/moves/rapid_slash.c",
-      "object": "src/battle_anim/moves/rapid_slash.o",
+      "object": "build/usa/src/battle_anim/moves/rapid_slash.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/rapid_slash.o"
     },
     {
       "id": "tu:src/battle_anim/moves/ray",
       "source": "src/battle_anim/moves/ray.c",
-      "object": "src/battle_anim/moves/ray.o",
+      "object": "build/usa/src/battle_anim/moves/ray.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/ray.o"
     },
     {
       "id": "tu:src/battle_anim/moves/revive",
       "source": "src/battle_anim/moves/revive.c",
-      "object": "src/battle_anim/moves/revive.o",
+      "object": "build/usa/src/battle_anim/moves/revive.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/revive.o"
     },
     {
       "id": "tu:src/battle_anim/moves/shining_star",
       "source": "src/battle_anim/moves/shining_star.c",
-      "object": "src/battle_anim/moves/shining_star.o",
+      "object": "build/usa/src/battle_anim/moves/shining_star.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/shining_star.o"
     },
     {
       "id": "tu:src/battle_anim/moves/sleep",
       "source": "src/battle_anim/moves/sleep.c",
-      "object": "src/battle_anim/moves/sleep.o",
+      "object": "build/usa/src/battle_anim/moves/sleep.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/sleep.o"
     },
     {
       "id": "tu:src/battle_anim/moves/sonic_wave",
       "source": "src/battle_anim/moves/sonic_wave.c",
-      "object": "src/battle_anim/moves/sonic_wave.o",
+      "object": "build/usa/src/battle_anim/moves/sonic_wave.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/sonic_wave.o"
     },
     {
       "id": "tu:src/battle_anim/moves/spasm",
       "source": "src/battle_anim/moves/spasm.c",
-      "object": "src/battle_anim/moves/spasm.o",
+      "object": "build/usa/src/battle_anim/moves/spasm.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/spasm.o"
     },
     {
       "id": "tu:src/battle_anim/moves/spider_web",
       "source": "src/battle_anim/moves/spider_web.c",
-      "object": "src/battle_anim/moves/spider_web.o",
+      "object": "build/usa/src/battle_anim/moves/spider_web.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/spider_web.o"
     },
     {
       "id": "tu:src/battle_anim/moves/spire",
       "source": "src/battle_anim/moves/spire.c",
-      "object": "src/battle_anim/moves/spire.o",
+      "object": "build/usa/src/battle_anim/moves/spire.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/spire.o"
     },
     {
       "id": "tu:src/battle_anim/moves/spore",
       "source": "src/battle_anim/moves/spore.c",
-      "object": "src/battle_anim/moves/spore.o",
+      "object": "build/usa/src/battle_anim/moves/spore.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/spore.o"
     },
     {
       "id": "tu:src/battle_anim/moves/stat_down",
       "source": "src/battle_anim/moves/stat_down.c",
-      "object": "src/battle_anim/moves/stat_down.o",
+      "object": "build/usa/src/battle_anim/moves/stat_down.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/stat_down.o"
     },
     {
       "id": "tu:src/battle_anim/moves/stat_up",
       "source": "src/battle_anim/moves/stat_up.c",
-      "object": "src/battle_anim/moves/stat_up.o",
+      "object": "build/usa/src/battle_anim/moves/stat_up.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/stat_up.o"
     },
     {
       "id": "tu:src/battle_anim/moves/tackle",
       "source": "src/battle_anim/moves/tackle.c",
-      "object": "src/battle_anim/moves/tackle.o",
+      "object": "build/usa/src/battle_anim/moves/tackle.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/tackle.o"
     },
     {
       "id": "tu:src/battle_anim/moves/tentacle",
       "source": "src/battle_anim/moves/tentacle.c",
-      "object": "src/battle_anim/moves/tentacle.o",
+      "object": "build/usa/src/battle_anim/moves/tentacle.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/tentacle.o"
     },
     {
       "id": "tu:src/battle_anim/moves/thor",
       "source": "src/battle_anim/moves/thor.c",
-      "object": "src/battle_anim/moves/thor.o",
+      "object": "build/usa/src/battle_anim/moves/thor.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/thor.o"
     },
     {
       "id": "tu:src/battle_anim/moves/thorn",
       "source": "src/battle_anim/moves/thorn.c",
-      "object": "src/battle_anim/moves/thorn.o",
+      "object": "build/usa/src/battle_anim/moves/thorn.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/thorn.o"
     },
     {
       "id": "tu:src/battle_anim/moves/thrash",
       "source": "src/battle_anim/moves/thrash.c",
-      "object": "src/battle_anim/moves/thrash.o",
+      "object": "build/usa/src/battle_anim/moves/thrash.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/thrash.o"
     },
     {
       "id": "tu:src/battle_anim/moves/tiamat",
       "source": "src/battle_anim/moves/tiamat.c",
-      "object": "src/battle_anim/moves/tiamat.o",
+      "object": "build/usa/src/battle_anim/moves/tiamat.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/tiamat.o"
     },
     {
       "id": "tu:src/battle_anim/moves/titan_blade",
       "source": "src/battle_anim/moves/titan_blade.c",
-      "object": "src/battle_anim/moves/titan_blade.o",
+      "object": "build/usa/src/battle_anim/moves/titan_blade.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/titan_blade.o"
     },
     {
       "id": "tu:src/battle_anim/moves/torch",
       "source": "src/battle_anim/moves/torch.c",
-      "object": "src/battle_anim/moves/torch.o",
+      "object": "build/usa/src/battle_anim/moves/torch.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/torch.o"
     },
     {
       "id": "tu:src/battle_anim/moves/undead_sword",
       "source": "src/battle_anim/moves/undead_sword.c",
-      "object": "src/battle_anim/moves/undead_sword.o",
+      "object": "build/usa/src/battle_anim/moves/undead_sword.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/undead_sword.o"
     },
     {
       "id": "tu:src/battle_anim/moves/unused_fizz",
       "source": "src/battle_anim/moves/unused_fizz.c",
-      "object": "src/battle_anim/moves/unused_fizz.o",
+      "object": "build/usa/src/battle_anim/moves/unused_fizz.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/unused_fizz.o"
     },
     {
       "id": "tu:src/battle_anim/moves/unused_sabre_rain",
       "source": "src/battle_anim/moves/unused_sabre_rain.c",
-      "object": "src/battle_anim/moves/unused_sabre_rain.o",
+      "object": "build/usa/src/battle_anim/moves/unused_sabre_rain.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/unused_sabre_rain.o"
     },
     {
       "id": "tu:src/battle_anim/moves/unused_skull_cloud",
       "source": "src/battle_anim/moves/unused_skull_cloud.c",
-      "object": "src/battle_anim/moves/unused_skull_cloud.o",
+      "object": "build/usa/src/battle_anim/moves/unused_skull_cloud.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/unused_skull_cloud.o"
     },
     {
       "id": "tu:src/battle_anim/moves/unused_skull_spin",
       "source": "src/battle_anim/moves/unused_skull_spin.c",
-      "object": "src/battle_anim/moves/unused_skull_spin.o",
+      "object": "build/usa/src/battle_anim/moves/unused_skull_spin.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/unused_skull_spin.o"
     },
     {
       "id": "tu:src/battle_anim/moves/venus",
       "source": "src/battle_anim/moves/venus.c",
-      "object": "src/battle_anim/moves/venus.o",
+      "object": "build/usa/src/battle_anim/moves/venus.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/venus.o"
     },
     {
       "id": "tu:src/battle_anim/moves/vine",
       "source": "src/battle_anim/moves/vine.c",
-      "object": "src/battle_anim/moves/vine.o",
+      "object": "build/usa/src/battle_anim/moves/vine.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/vine.o"
     },
     {
       "id": "tu:src/battle_anim/moves/volcano",
       "source": "src/battle_anim/moves/volcano.c",
-      "object": "src/battle_anim/moves/volcano.o",
+      "object": "build/usa/src/battle_anim/moves/volcano.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/volcano.o"
     },
     {
       "id": "tu:src/battle_anim/moves/whirlwind",
       "source": "src/battle_anim/moves/whirlwind.c",
-      "object": "src/battle_anim/moves/whirlwind.o",
+      "object": "build/usa/src/battle_anim/moves/whirlwind.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/moves/whirlwind.o"
     },
     {
       "id": "tu:src/battle_anim/screen_shatter",
       "source": "src/battle_anim/screen_shatter.c",
-      "object": "src/battle_anim/screen_shatter.o",
+      "object": "build/usa/src/battle_anim/screen_shatter.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/screen_shatter.o"
     },
     {
       "id": "tu:src/battle_anim/special_attack",
       "source": "src/battle_anim/special_attack.c",
-      "object": "src/battle_anim/special_attack.o",
+      "object": "build/usa/src/battle_anim/special_attack.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/special_attack.o"
     },
     {
       "id": "tu:src/battle_anim/summon_sprite",
       "source": "src/battle_anim/summon_sprite.c",
-      "object": "src/battle_anim/summon_sprite.o",
+      "object": "build/usa/src/battle_anim/summon_sprite.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/summon_sprite.o"
     },
     {
       "id": "tu:src/battle_anim/transition_in",
       "source": "src/battle_anim/transition_in.c",
-      "object": "src/battle_anim/transition_in.o",
+      "object": "build/usa/src/battle_anim/transition_in.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/transition_in.o"
     },
     {
       "id": "tu:src/battle_anim/transition_out",
       "source": "src/battle_anim/transition_out.c",
-      "object": "src/battle_anim/transition_out.o",
+      "object": "build/usa/src/battle_anim/transition_out.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/transition_out.o"
     },
     {
       "id": "tu:src/battle_anim/unleash_intro",
       "source": "src/battle_anim/unleash_intro.c",
-      "object": "src/battle_anim/unleash_intro.o",
+      "object": "build/usa/src/battle_anim/unleash_intro.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/unleash_intro.o"
     },
     {
       "id": "tu:src/battle_anim/unused_element_orbs",
       "source": "src/battle_anim/unused_element_orbs.c",
-      "object": "src/battle_anim/unused_element_orbs.o",
+      "object": "build/usa/src/battle_anim/unused_element_orbs.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/unused_element_orbs.o"
     },
     {
       "id": "tu:src/battle_anim/unused_screen_melt",
       "source": "src/battle_anim/unused_screen_melt.c",
-      "object": "src/battle_anim/unused_screen_melt.o",
+      "object": "build/usa/src/battle_anim/unused_screen_melt.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/unused_screen_melt.o"
     },
     {
       "id": "tu:src/battle_anim/update_screen_shake",
       "source": "src/battle_anim/update_screen_shake.c",
-      "object": "src/battle_anim/update_screen_shake.o",
+      "object": "build/usa/src/battle_anim/update_screen_shake.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/update_screen_shake.o"
     },
     {
       "id": "tu:src/battle_anim/vfx",
       "source": "src/battle_anim/vfx.c",
-      "object": "src/battle_anim/vfx.o",
+      "object": "build/usa/src/battle_anim/vfx.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/battle_anim/vfx.o"
     },
     {
       "id": "tu:src/crt0",
       "source": "src/crt0.s",
-      "object": "src/crt0.o",
+      "object": "build/usa/src/crt0.o",
       "owner": "rom_c0",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/crt0.o"
     },
     {
       "id": "tu:src/decompress/battle_bg",
       "source": "src/decompress/battle_bg.c",
-      "object": "src/decompress/battle_bg.o",
+      "object": "build/usa/src/decompress/battle_bg.o",
       "owner": "rom_b5000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/battle_bg.o"
     },
     {
       "id": "tu:src/decompress/bg-credits",
       "source": "src/decompress/bg-credits.s",
-      "object": "src/decompress/bg-credits.o",
+      "object": "build/usa/src/decompress/bg-credits.o",
       "owner": "rom_f0000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/bg-credits.o"
     },
     {
       "id": "tu:src/decompress/huffman",
       "source": "src/decompress/huffman.s",
-      "object": "src/decompress/huffman.o",
+      "object": "build/usa/src/decompress/huffman.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/huffman.o"
     },
     {
       "id": "tu:src/decompress/icon",
       "source": "src/decompress/icon.s",
-      "object": "src/decompress/icon.o",
+      "object": "build/usa/src/decompress/icon.o",
       "owner": "rom_15000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/icon.o"
     },
     {
       "id": "tu:src/decompress/lz",
       "source": "src/decompress/lz.c",
-      "object": "src/decompress/lz.o",
+      "object": "build/usa/src/decompress/lz.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/lz.o"
     },
     {
       "id": "tu:src/decompress/lz1",
       "source": "src/decompress/lz1.s",
-      "object": "src/decompress/lz1.o",
+      "object": "build/usa/src/decompress/lz1.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/lz1.o"
     },
     {
       "id": "tu:src/decompress/lz16",
       "source": "src/decompress/lz16.s",
-      "object": "src/decompress/lz16.o",
+      "object": "build/usa/src/decompress/lz16.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/lz16.o"
     },
     {
       "id": "tu:src/decompress/lz2",
       "source": "src/decompress/lz2.s",
-      "object": "src/decompress/lz2.o",
+      "object": "build/usa/src/decompress/lz2.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/lz2.o"
     },
     {
       "id": "tu:src/decompress/lz_rom",
       "source": "src/decompress/lz_rom.s",
-      "object": "src/decompress/lz_rom.o",
+      "object": "build/usa/src/decompress/lz_rom.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/lz_rom.o"
     },
     {
       "id": "tu:src/decompress/sprite_lz",
       "source": "src/decompress/sprite_lz.c",
-      "object": "src/decompress/sprite_lz.o",
+      "object": "build/usa/src/decompress/sprite_lz.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/decompress/sprite_lz.o"
     },
     {
       "id": "tu:src/ending",
       "source": "src/ending.c",
-      "object": "src/ending.o",
+      "object": "build/usa/src/ending.o",
       "owner": "rom_f0000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ending.o"
     },
     {
       "id": "tu:src/engine/sprite_test",
       "source": "src/engine/sprite_test.c",
-      "object": "src/engine/sprite_test.o",
+      "object": "build/usa/src/engine/sprite_test.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/engine/sprite_test.o"
     },
     {
       "id": "tu:src/engine/unpack_tilemap",
       "source": "src/engine/unpack_tilemap.s",
-      "object": "src/engine/unpack_tilemap.o",
+      "object": "build/usa/src/engine/unpack_tilemap.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/engine/unpack_tilemap.o"
     },
     {
       "id": "tu:src/field/actor_move",
       "source": "src/field/actor_move.c",
-      "object": "src/field/actor_move.o",
+      "object": "build/usa/src/field/actor_move.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/actor_move.o"
     },
     {
       "id": "tu:src/field/cutscene",
       "source": "src/field/cutscene.c",
-      "object": "src/field/cutscene.o",
+      "object": "build/usa/src/field/cutscene.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/cutscene.o"
     },
     {
       "id": "tu:src/field/djinni",
       "source": "src/field/djinni.c",
-      "object": "src/field/djinni.o",
+      "object": "build/usa/src/field/djinni.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/djinni.o"
     },
     {
       "id": "tu:src/field/field",
       "source": "src/field/field.c",
-      "object": "src/field/field.o",
+      "object": "build/usa/src/field/field.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/field.o"
     },
     {
       "id": "tu:src/field/field_effect",
       "source": "src/field/field_effect.c",
-      "object": "src/field/field_effect.o",
+      "object": "build/usa/src/field/field_effect.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/field_effect.o"
     },
     {
       "id": "tu:src/field/field_move",
       "source": "src/field/field_move.c",
-      "object": "src/field/field_move.o",
+      "object": "build/usa/src/field/field_move.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/field_move.o"
     },
     {
       "id": "tu:src/field/map",
       "source": "src/field/map.c",
-      "object": "src/field/map.o",
+      "object": "build/usa/src/field/map.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/map.o"
     },
     {
       "id": "tu:src/field/map_actor",
       "source": "src/field/map_actor.c",
-      "object": "src/field/map_actor.o",
+      "object": "build/usa/src/field/map_actor.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/map_actor.o"
     },
     {
       "id": "tu:src/field/map_actor_api",
       "source": "src/field/map_actor_api.c",
-      "object": "src/field/map_actor_api.o",
+      "object": "build/usa/src/field/map_actor_api.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/map_actor_api.o"
     },
     {
       "id": "tu:src/field/map_data",
       "source": "src/field/map_data.c",
-      "object": "src/field/map_data.o",
+      "object": "build/usa/src/field/map_data.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/map_data.o"
     },
     {
       "id": "tu:src/field/map_load",
       "source": "src/field/map_load.c",
-      "object": "src/field/map_load.o",
+      "object": "build/usa/src/field/map_load.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/map_load.o"
     },
     {
       "id": "tu:src/field/moves/avoid",
       "source": "src/field/moves/avoid.c",
-      "object": "src/field/moves/avoid.o",
+      "object": "build/usa/src/field/moves/avoid.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/avoid.o"
     },
     {
       "id": "tu:src/field/moves/carry",
       "source": "src/field/moves/carry.c",
-      "object": "src/field/moves/carry.o",
+      "object": "build/usa/src/field/moves/carry.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/carry.o"
     },
     {
       "id": "tu:src/field/moves/catch",
       "source": "src/field/moves/catch.c",
-      "object": "src/field/moves/catch.o",
+      "object": "build/usa/src/field/moves/catch.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/catch.o"
     },
     {
       "id": "tu:src/field/moves/cloak",
       "source": "src/field/moves/cloak.c",
-      "object": "src/field/moves/cloak.o",
+      "object": "build/usa/src/field/moves/cloak.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/cloak.o"
     },
     {
       "id": "tu:src/field/moves/douse",
       "source": "src/field/moves/douse.c",
-      "object": "src/field/moves/douse.o",
+      "object": "build/usa/src/field/moves/douse.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/douse.o"
     },
     {
       "id": "tu:src/field/moves/force",
       "source": "src/field/moves/force.c",
-      "object": "src/field/moves/force.o",
+      "object": "build/usa/src/field/moves/force.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/force.o"
     },
     {
       "id": "tu:src/field/moves/frost",
       "source": "src/field/moves/frost.c",
-      "object": "src/field/moves/frost.o",
+      "object": "build/usa/src/field/moves/frost.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/frost.o"
     },
     {
       "id": "tu:src/field/moves/growth",
       "source": "src/field/moves/growth.c",
-      "object": "src/field/moves/growth.o",
+      "object": "build/usa/src/field/moves/growth.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/growth.o"
     },
     {
       "id": "tu:src/field/moves/halt",
       "source": "src/field/moves/halt.c",
-      "object": "src/field/moves/halt.o",
+      "object": "build/usa/src/field/moves/halt.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/halt.o"
     },
     {
       "id": "tu:src/field/moves/lift",
       "source": "src/field/moves/lift.c",
-      "object": "src/field/moves/lift.o",
+      "object": "build/usa/src/field/moves/lift.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/lift.o"
     },
     {
       "id": "tu:src/field/moves/mind_read",
       "source": "src/field/moves/mind_read.c",
-      "object": "src/field/moves/mind_read.o",
+      "object": "build/usa/src/field/moves/mind_read.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/mind_read.o"
     },
     {
       "id": "tu:src/field/moves/move",
       "source": "src/field/moves/move.c",
-      "object": "src/field/moves/move.o",
+      "object": "build/usa/src/field/moves/move.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/move.o"
     },
     {
       "id": "tu:src/field/moves/ply",
       "source": "src/field/moves/ply.c",
-      "object": "src/field/moves/ply.o",
+      "object": "build/usa/src/field/moves/ply.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/ply.o"
     },
     {
       "id": "tu:src/field/moves/retreat",
       "source": "src/field/moves/retreat.c",
-      "object": "src/field/moves/retreat.o",
+      "object": "build/usa/src/field/moves/retreat.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/retreat.o"
     },
     {
       "id": "tu:src/field/moves/reveal",
       "source": "src/field/moves/reveal.c",
-      "object": "src/field/moves/reveal.o",
+      "object": "build/usa/src/field/moves/reveal.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/reveal.o"
     },
     {
       "id": "tu:src/field/moves/whirlwind",
       "source": "src/field/moves/whirlwind.c",
-      "object": "src/field/moves/whirlwind.o",
+      "object": "build/usa/src/field/moves/whirlwind.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/moves/whirlwind.o"
     },
     {
       "id": "tu:src/field/psynergy",
       "source": "src/field/psynergy.c",
-      "object": "src/field/psynergy.o",
+      "object": "build/usa/src/field/psynergy.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/psynergy.o"
     },
     {
       "id": "tu:src/field/room_load",
       "source": "src/field/room_load.c",
-      "object": "src/field/room_load.o",
+      "object": "build/usa/src/field/room_load.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/room_load.o"
     },
     {
       "id": "tu:src/field/transition",
       "source": "src/field/transition.c",
-      "object": "src/field/transition.o",
+      "object": "build/usa/src/field/transition.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/transition.o"
     },
     {
       "id": "tu:src/field/weather",
       "source": "src/field/weather.c",
-      "object": "src/field/weather.o",
+      "object": "build/usa/src/field/weather.o",
       "owner": "rom_8a000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/field/weather.o"
     },
     {
       "id": "tu:src/fixup_ram_code",
       "source": "src/fixup_ram_code.s",
-      "object": "src/fixup_ram_code.o",
+      "object": "build/usa/src/fixup_ram_code.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/fixup_ram_code.o"
     },
     {
       "id": "tu:src/flags",
       "source": "src/flags.c",
-      "object": "src/flags.o",
+      "object": "build/usa/src/flags.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/flags.o"
     },
     {
       "id": "tu:src/intr/intr",
       "source": "src/intr/intr.c",
-      "object": "src/intr/intr.o",
+      "object": "build/usa/src/intr/intr.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/intr/intr.o"
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash",
       "source": "src/lib/agb_flash/agb_flash.c",
-      "object": "src/lib/agb_flash/agb_flash.o",
+      "object": "build/usa/src/lib/agb_flash/agb_flash.o",
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/agb_flash/agb_flash.o"
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_at",
       "source": "src/lib/agb_flash/agb_flash_at.c",
-      "object": "src/lib/agb_flash/agb_flash_at.o",
+      "object": "build/usa/src/lib/agb_flash/agb_flash_at.o",
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/agb_flash/agb_flash_at.o"
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_data",
       "source": "src/lib/agb_flash/agb_flash_data.s",
-      "object": "src/lib/agb_flash/agb_flash_data.o",
+      "object": "build/usa/src/lib/agb_flash/agb_flash_data.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/agb_flash/agb_flash_data.o"
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_mx",
       "source": "src/lib/agb_flash/agb_flash_mx.c",
-      "object": "src/lib/agb_flash/agb_flash_mx.o",
+      "object": "build/usa/src/lib/agb_flash/agb_flash_mx.o",
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/agb_flash/agb_flash_mx.o"
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_verify",
       "source": "src/lib/agb_flash/agb_flash_verify.c",
-      "object": "src/lib/agb_flash/agb_flash_verify.o",
+      "object": "build/usa/src/lib/agb_flash/agb_flash_verify.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/agb_flash/agb_flash_verify.o"
     },
     {
       "id": "tu:src/lib/call_via",
       "source": "src/lib/call_via.s",
-      "object": "src/lib/call_via.o",
+      "object": "build/usa/src/lib/call_via.o",
       "owner": "library:call_via",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/call_via.o"
     },
     {
       "id": "tu:src/lib/m4a/m4a",
       "source": "src/lib/m4a/m4a.c",
-      "object": "src/lib/m4a/m4a.o",
+      "object": "build/usa/src/lib/m4a/m4a.o",
       "owner": "rom_f9000",
       "profile": "old-agbcc-m4a",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lib/m4a/m4a.o"
     },
     {
       "id": "tu:src/lucky_dice",
       "source": "src/lucky_dice.c",
-      "object": "src/lucky_dice.o",
+      "object": "build/usa/src/lucky_dice.o",
       "owner": "rom_f4000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lucky_dice.o"
     },
     {
       "id": "tu:src/lucky_wheels",
       "source": "src/lucky_wheels.c",
-      "object": "src/lucky_wheels.o",
+      "object": "build/usa/src/lucky_wheels.o",
       "owner": "rom_f6000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/lucky_wheels.o"
     },
     {
       "id": "tu:src/main",
       "source": "src/main.c",
-      "object": "src/main.o",
+      "object": "build/usa/src/main.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/main.o"
     },
     {
       "id": "tu:src/math/gcc_div",
       "source": "src/math/gcc_div.s",
-      "object": "src/math/gcc_div.o",
+      "object": "build/usa/src/math/gcc_div.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/math/gcc_div.o"
     },
     {
       "id": "tu:src/math/math",
       "source": "src/math/math.c",
-      "object": "src/math/math.o",
+      "object": "build/usa/src/math/math.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/math/math.o"
     },
     {
       "id": "tu:src/math/matrix",
       "source": "src/math/matrix.c",
-      "object": "src/math/matrix.o",
+      "object": "build/usa/src/math/matrix.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/math/matrix.o"
     },
     {
       "id": "tu:src/math/sin",
       "source": "src/math/sin.s",
-      "object": "src/math/sin.o",
+      "object": "build/usa/src/math/sin.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/math/sin.o"
     },
     {
       "id": "tu:src/math/vector",
       "source": "src/math/vector.c",
-      "object": "src/math/vector.o",
+      "object": "build/usa/src/math/vector.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/math/vector.o"
     },
     {
       "id": "tu:src/memory/alloc",
       "source": "src/memory/alloc.c",
-      "object": "src/memory/alloc.o",
+      "object": "build/usa/src/memory/alloc.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/memory/alloc.o"
     },
     {
       "id": "tu:src/memory/free",
       "source": "src/memory/free.s",
-      "object": "src/memory/free.o",
+      "object": "build/usa/src/memory/free.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/memory/free.o"
     },
     {
       "id": "tu:src/other/sub_8006864",
       "source": "src/other/sub_8006864.c",
-      "object": "src/other/sub_8006864.o",
+      "object": "build/usa/src/other/sub_8006864.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/other/sub_8006864.o"
     },
     {
       "id": "tu:src/other/sub_80f0008",
       "source": "src/other/sub_80f0008.c",
-      "object": "src/other/sub_80f0008.o",
+      "object": "build/usa/src/other/sub_80f0008.o",
       "owner": "rom_f0000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/other/sub_80f0008.o"
     },
     {
       "id": "tu:src/other/sub_80f95e0",
       "source": "src/other/sub_80f95e0.c",
-      "object": "src/other/sub_80f95e0.o",
+      "object": "build/usa/src/other/sub_80f95e0.o",
       "owner": "rom_f9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/other/sub_80f95e0.o"
     },
     {
       "id": "tu:src/random",
       "source": "src/random.c",
-      "object": "src/random.o",
+      "object": "build/usa/src/random.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/random.o"
     },
     {
       "id": "tu:src/render/blit_fade",
       "source": "src/render/blit_fade.c",
-      "object": "src/render/blit_fade.o",
+      "object": "build/usa/src/render/blit_fade.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/blit_fade.o"
     },
     {
       "id": "tu:src/render/blit_fade_alt",
       "source": "src/render/blit_fade_alt.s",
-      "object": "src/render/blit_fade_alt.o",
+      "object": "build/usa/src/render/blit_fade_alt.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/blit_fade_alt.o"
     },
     {
       "id": "tu:src/render/blit_fade_rom",
       "source": "src/render/blit_fade_rom.s",
-      "object": "src/render/blit_fade_rom.o",
+      "object": "build/usa/src/render/blit_fade_rom.o",
       "owner": "rom_1b70",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/blit_fade_rom.o"
     },
     {
       "id": "tu:src/render/draw2D",
       "source": "src/render/draw2D.c",
-      "object": "src/render/draw2D.o",
+      "object": "build/usa/src/render/draw2D.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/draw2D.o"
     },
     {
       "id": "tu:src/render/draw2D_util",
       "source": "src/render/draw2D_util.c",
-      "object": "src/render/draw2D_util.o",
+      "object": "build/usa/src/render/draw2D_util.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/draw2D_util.o"
     },
     {
       "id": "tu:src/render/window_effect",
       "source": "src/render/window_effect.c",
-      "object": "src/render/window_effect.o",
+      "object": "build/usa/src/render/window_effect.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/render/window_effect.o"
     },
     {
       "id": "tu:src/rom_header",
       "source": "src/rom_header.s",
-      "object": "src/rom_header.o",
+      "object": "build/usa/src/rom_header.o",
       "owner": "header",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rom_header.o"
     },
     {
       "id": "tu:src/rpg/djinni",
       "source": "src/rpg/djinni.c",
-      "object": "src/rpg/djinni.o",
+      "object": "build/usa/src/rpg/djinni.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/djinni.o"
     },
     {
       "id": "tu:src/rpg/get_unit",
       "source": "src/rpg/get_unit.c",
-      "object": "src/rpg/get_unit.o",
+      "object": "build/usa/src/rpg/get_unit.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/get_unit.o"
     },
     {
       "id": "tu:src/rpg/item",
       "source": "src/rpg/item.c",
-      "object": "src/rpg/item.o",
+      "object": "build/usa/src/rpg/item.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/item.o"
     },
     {
       "id": "tu:src/rpg/move",
       "source": "src/rpg/move.c",
-      "object": "src/rpg/move.o",
+      "object": "build/usa/src/rpg/move.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/move.o"
     },
     {
       "id": "tu:src/rpg/party",
       "source": "src/rpg/party.c",
-      "object": "src/rpg/party.o",
+      "object": "build/usa/src/rpg/party.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/party.o"
     },
     {
       "id": "tu:src/rpg/pc",
       "source": "src/rpg/pc.c",
-      "object": "src/rpg/pc.o",
+      "object": "build/usa/src/rpg/pc.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/pc.o"
     },
     {
       "id": "tu:src/rpg/random",
       "source": "src/rpg/random.c",
-      "object": "src/rpg/random.o",
+      "object": "build/usa/src/rpg/random.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/random.o"
     },
     {
       "id": "tu:src/rpg/summon",
       "source": "src/rpg/summon.c",
-      "object": "src/rpg/summon.o",
+      "object": "build/usa/src/rpg/summon.o",
       "owner": "rom_77000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/rpg/summon.o"
     },
     {
       "id": "tu:src/save",
       "source": "src/save.c",
-      "object": "src/save.o",
+      "object": "build/usa/src/save.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/save.o"
     },
     {
       "id": "tu:src/serial",
       "source": "src/serial.c",
-      "object": "src/serial.o",
+      "object": "build/usa/src/serial.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/serial.o"
     },
     {
       "id": "tu:src/sound",
       "source": "src/sound.c",
-      "object": "src/sound.o",
+      "object": "build/usa/src/sound.o",
       "owner": "rom_f9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sound.o"
     },
     {
       "id": "tu:src/sprite/draw_sprite",
       "source": "src/sprite/draw_sprite.s",
-      "object": "src/sprite/draw_sprite.o",
+      "object": "build/usa/src/sprite/draw_sprite.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/draw_sprite.o"
     },
     {
       "id": "tu:src/sprite/palette",
       "source": "src/sprite/palette.c",
-      "object": "src/sprite/palette.o",
+      "object": "build/usa/src/sprite/palette.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/palette.o"
     },
     {
       "id": "tu:src/sprite/rom_a418",
       "source": "src/sprite/rom_a418.s",
-      "object": "src/sprite/rom_a418.o",
+      "object": "build/usa/src/sprite/rom_a418.o",
       "owner": "rom_9000",
       "profile": "arm-assembly",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/rom_a418.o"
     },
     {
       "id": "tu:src/sprite/sprite",
       "source": "src/sprite/sprite.c",
-      "object": "src/sprite/sprite.o",
+      "object": "build/usa/src/sprite/sprite.o",
       "owner": "rom_9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/sprite.o"
     },
     {
       "id": "tu:src/sprite/sprite_info",
       "source": "src/sprite/sprite_info.c",
-      "object": "src/sprite/sprite_info.o",
+      "object": "build/usa/src/sprite/sprite_info.o",
       "owner": "rom_185000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/sprite_info.o"
     },
     {
       "id": "tu:src/sprite/summon",
       "source": "src/sprite/summon.c",
-      "object": "src/sprite/summon.o",
+      "object": "build/usa/src/sprite/summon.o",
       "owner": "rom_c9000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/sprite/summon.o"
     },
     {
       "id": "tu:src/task",
       "source": "src/task.c",
-      "object": "src/task.o",
+      "object": "build/usa/src/task.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/task.o"
     },
     {
       "id": "tu:src/title",
       "source": "src/title.c",
-      "object": "src/title.o",
+      "object": "build/usa/src/title.o",
       "owner": "rom_f2000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/title.o"
     },
     {
       "id": "tu:src/ui/debug/icon_test",
       "source": "src/ui/debug/icon_test.c",
-      "object": "src/ui/debug/icon_test.o",
+      "object": "build/usa/src/ui/debug/icon_test.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/debug/icon_test.o"
     },
     {
       "id": "tu:src/ui/icon",
       "source": "src/ui/icon.c",
-      "object": "src/ui/icon.o",
+      "object": "build/usa/src/ui/icon.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/icon.o"
     },
     {
       "id": "tu:src/ui/menu",
       "source": "src/ui/menu.c",
-      "object": "src/ui/menu.o",
+      "object": "build/usa/src/ui/menu.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/menu.o"
     },
     {
       "id": "tu:src/ui/menus/debug_flag_editor",
       "source": "src/ui/menus/debug_flag_editor.c",
-      "object": "src/ui/menus/debug_flag_editor.o",
+      "object": "build/usa/src/ui/menus/debug_flag_editor.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/menus/debug_flag_editor.o"
     },
     {
       "id": "tu:src/ui/menus/debug_warp_menu",
       "source": "src/ui/menus/debug_warp_menu.c",
-      "object": "src/ui/menus/debug_warp_menu.o",
+      "object": "build/usa/src/ui/menus/debug_warp_menu.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/menus/debug_warp_menu.o"
     },
     {
       "id": "tu:src/ui/menus/menu_bars",
       "source": "src/ui/menus/menu_bars.c",
-      "object": "src/ui/menus/menu_bars.o",
+      "object": "build/usa/src/ui/menus/menu_bars.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/menus/menu_bars.o"
     },
     {
       "id": "tu:src/ui/party_menu",
       "source": "src/ui/party_menu.c",
-      "object": "src/ui/party_menu.o",
+      "object": "build/usa/src/ui/party_menu.o",
       "owner": "rom_a1000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/party_menu.o"
     },
     {
       "id": "tu:src/ui/save_menu",
       "source": "src/ui/save_menu.c",
-      "object": "src/ui/save_menu.o",
+      "object": "build/usa/src/ui/save_menu.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/save_menu.o"
     },
     {
       "id": "tu:src/ui/shop",
       "source": "src/ui/shop.c",
-      "object": "src/ui/shop.o",
+      "object": "build/usa/src/ui/shop.o",
       "owner": "rom_b0000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/shop.o"
     },
     {
       "id": "tu:src/ui/text",
       "source": "src/ui/text.c",
-      "object": "src/ui/text.o",
+      "object": "build/usa/src/ui/text.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/text.o"
     },
     {
       "id": "tu:src/ui/ui",
       "source": "src/ui/ui.c",
-      "object": "src/ui/ui.o",
+      "object": "build/usa/src/ui/ui.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/ui.o"
     },
     {
       "id": "tu:src/ui/window",
       "source": "src/ui/window.c",
-      "object": "src/ui/window.o",
+      "object": "build/usa/src/ui/window.o",
       "owner": "rom_15000",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/ui/window.o"
     },
     {
       "id": "tu:src/video",
       "source": "src/video.c",
-      "object": "src/video.o",
+      "object": "build/usa/src/video.o",
       "owner": "rom_1b70",
       "profile": "gcc296",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "src/video.o"
     }
   ],
   "reference_sources": [

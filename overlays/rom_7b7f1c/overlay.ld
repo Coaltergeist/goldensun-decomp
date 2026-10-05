@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/alpine_crossing.o(.text)
+		build/usa/asm/maps/alpine_crossing.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/alpine_crossing.o(.data)
+		build/usa/asm/maps/alpine_crossing.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

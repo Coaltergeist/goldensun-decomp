@@ -263,38 +263,46 @@
     {
       "id": "host:pack_overlay",
       "source": "tools/pack_overlay.c",
-      "object": "tools/pack_overlay.o",
-      "binary": "tools/pack_overlay",
+      "object": "build/host/pack_overlay.o",
+      "binary": "build/host/pack_overlay",
       "profile": "host-c",
       "owner": "host-tools",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "tools/pack_overlay.o",
+      "legacy_binary": "tools/pack_overlay"
     },
     {
       "id": "host:pack_strings",
       "source": "tools/pack_strings.c",
-      "object": "tools/pack_strings.o",
-      "binary": "tools/pack_strings",
+      "object": "build/host/pack_strings.o",
+      "binary": "build/host/pack_strings",
       "profile": "host-c",
       "owner": "host-tools",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "tools/pack_strings.o",
+      "legacy_binary": "tools/pack_strings"
     },
     {
       "id": "host:unpack_overlay",
       "source": "tools/unpack_overlay.c",
-      "object": "tools/unpack_overlay.o",
-      "binary": "tools/unpack_overlay",
+      "object": "build/host/unpack_overlay.o",
+      "binary": "build/host/unpack_overlay",
       "profile": "host-c",
       "owner": "host-tools",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "tools/unpack_overlay.o",
+      "legacy_binary": "tools/unpack_overlay"
     },
     {
       "id": "host:unpack_strings",
       "source": "tools/unpack_strings.c",
-      "object": "tools/unpack_strings.o",
-      "binary": "tools/unpack_strings",
+      "object": "build/host/unpack_strings.o",
+      "binary": "build/host/unpack_strings",
       "profile": "host-c",
       "owner": "host-tools",
-      "source_role": "maintained"
+      "source_role": "maintained",
+      "legacy_object": "tools/unpack_strings.o",
+      "legacy_binary": "tools/unpack_strings"
     }
   ]
 }

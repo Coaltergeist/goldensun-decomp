@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/tolbi.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/tolbi.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/tolbi.o(.data)
+		build/usa/asm/maps/tolbi.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -18,82 +18,82 @@ SECTIONS {
 	__start_overlay = ORIGIN(overlay);
 
 	header : {
-		stage1.o(header)
+		build/usa/stage1.o(header)
 	} > rom
 
 	rom_c0 : {
-		stage1.o(rom_c0)
+		build/usa/stage1.o(rom_c0)
 	} > rom
 
 	rom_770 : {
-		stage1.o(rom_770)
+		build/usa/stage1.o(rom_770)
 	} > iwram AT > rom
 
 	__load_start_rom_770 = LOADADDR(rom_770);
 
 	rom_1b70 : {
-		stage1.o(rom_1b70)
+		build/usa/stage1.o(rom_1b70)
 	} > rom
 
 	rom_9000 : ALIGN(0x1000) {
-		stage1.o(rom_9000)
+		build/usa/stage1.o(rom_9000)
 	} > rom
 
 	rom_15000 : ALIGN(0x1000) {
-		stage1.o(rom_15000)
+		build/usa/stage1.o(rom_15000)
 	} > rom
 
 	rom_77000 : ALIGN(0x1000) {
-		stage1.o(rom_77000)
+		build/usa/stage1.o(rom_77000)
 	} > rom
 
 	rom_8a000 : ALIGN(0x1000) {
-		stage1.o(rom_8a000)
+		build/usa/stage1.o(rom_8a000)
 	} > rom
 
 	rom_a1000 : ALIGN(0x1000) {
-		stage1.o(rom_a1000)
+		build/usa/stage1.o(rom_a1000)
 	} > rom
 
 	rom_b0000 : ALIGN(0x1000) {
-		stage1.o(rom_b0000)
+		build/usa/stage1.o(rom_b0000)
 	} > rom
 
 	rom_b5000 : ALIGN(0x1000) {
-		stage1.o(rom_b5000)
+		build/usa/stage1.o(rom_b5000)
 	} > rom
 
 	rom_c9000 : ALIGN(0x1000) {
-		stage1.o(rom_c9000)
+		build/usa/stage1.o(rom_c9000)
 	} > rom
 
 	rom_f0000 : ALIGN(0x1000) {
-		stage1.o(rom_f0000)
+		build/usa/stage1.o(rom_f0000)
 	} > rom
 
 	rom_f2000 : ALIGN(0x1000) {
-		stage1.o(rom_f2000)
+		build/usa/stage1.o(rom_f2000)
 	} > rom
 
 	rom_f4000 : ALIGN(0x1000) {
-		stage1.o(rom_f4000)
+		build/usa/stage1.o(rom_f4000)
 	} > rom
 
 	rom_f6000 : ALIGN(0x1000) {
-		stage1.o(rom_f6000)
+		build/usa/stage1.o(rom_f6000)
 	} > rom
 
 	rom_f9000 : ALIGN(0x1000) {
-		stage1.o(rom_f9000)
+		build/usa/stage1.o(rom_f9000)
 	} > rom
 
 	rom_185000 : ALIGN(0x1000) {
-		stage1.o(rom_185000)
+		build/usa/stage1.o(rom_185000)
 	} > rom
 
 	rom_320000 : ALIGN(0x1000) {
-		data/rom_320000/rom_320000.o(.rodata.mft)
-		data/rom_320000/rom_320000.o(.rodata.mftdata)
+		build/usa/data/rom_320000/rom_320000.o(.rodata.mft)
+		build/usa/data/rom_320000/rom_320000.o(.rodata.mftdata)
 	} > rom
 
 	.fill : {

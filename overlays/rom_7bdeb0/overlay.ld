@@ -13,20 +13,20 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vale_cave/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/vale_cave.o(.text)
-		asm/maps/vale_cave/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/vale_cave/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/vale_cave.o(.text)
+		build/usa/asm/maps/vale_cave/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/vale_cave.o(.data)
-		asm/maps/vale_cave.o(.mdata1)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/vale_cave.o(.mdata2)
-		asm/maps/vale_cave.o(.mdata3)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/vale_cave.o(.data)
+		build/usa/asm/maps/vale_cave.o(.mdata1)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/vale_cave.o(.mdata2)
+		build/usa/asm/maps/vale_cave.o(.mdata3)
 	} > overlay
 
 	/DISCARD/ : {

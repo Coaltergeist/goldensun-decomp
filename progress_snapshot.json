@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3748,
+  "input_count": 3751,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "ba78ed1c875ab8c6cc5ea3418654006ee368f6f225e5b50b39e33ae5c6e11ebf",
+  "source_fingerprint": "10585f94aafd879c1a932e2b2b35e7ff55ce2500088991c67f454a267c344517",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -5912,7 +5912,7 @@
           "virtual_address": 50336648
         }
       },
-      "object": "asm/lib/ramlib.o"
+      "object": "build/usa/asm/lib/ramlib.o"
     },
     "src/actor/actor.c": {
       "functions": {
@@ -6109,7 +6109,7 @@
           "virtual_address": 134269056
         }
       },
-      "object": "src/actor/actor.o"
+      "object": "build/usa/src/actor/actor.o"
     },
     "src/actor/actor_script.c": {
       "functions": {
@@ -6600,7 +6600,7 @@
           "virtual_address": 134277716
         }
       },
-      "object": "src/actor/actor_script.o"
+      "object": "build/usa/src/actor/actor_script.o"
     },
     "src/actor/player.c": {
       "functions": {
@@ -6647,7 +6647,7 @@
           "virtual_address": 134281204
         }
       },
-      "object": "src/actor/player.o"
+      "object": "build/usa/src/actor/player.o"
     },
     "src/battle/actor_pos.c": {
       "functions": {
@@ -6688,7 +6688,7 @@
           "virtual_address": 135153392
         }
       },
-      "object": "src/battle/actor_pos.o"
+      "object": "build/usa/src/battle/actor_pos.o"
     },
     "src/battle/battle.c": {
       "functions": {
@@ -7035,7 +7035,7 @@
           "virtual_address": 134971848
         }
       },
-      "object": "src/battle/battle.o"
+      "object": "build/usa/src/battle/battle.o"
     },
     "src/battle/debug_battle_test.c": {
       "functions": {
@@ -7070,7 +7070,7 @@
           "virtual_address": 134961500
         }
       },
-      "object": "src/battle/debug_battle_test.o"
+      "object": "build/usa/src/battle/debug_battle_test.o"
     },
     "src/battle/enemy.c": {
       "functions": {
@@ -7201,7 +7201,7 @@
           "virtual_address": 135014920
         }
       },
-      "object": "src/battle/enemy.o"
+      "object": "build/usa/src/battle/enemy.o"
     },
     "src/battle/mechanics.c": {
       "functions": {
@@ -7932,7 +7932,7 @@
           "virtual_address": 135008388
         }
       },
-      "object": "src/battle/mechanics.o"
+      "object": "build/usa/src/battle/mechanics.o"
     },
     "src/battle_anim/anim_util.c": {
       "functions": {
@@ -8021,7 +8021,7 @@
           "virtual_address": 135061136
         }
       },
-      "object": "src/battle_anim/anim_util.o"
+      "object": "build/usa/src/battle_anim/anim_util.o"
     },
     "src/battle_anim/anims.c": {
       "functions": {
@@ -8038,7 +8038,7 @@
           "virtual_address": 135095904
         }
       },
-      "object": "src/battle_anim/anims.o"
+      "object": "build/usa/src/battle_anim/anims.o"
     },
     "src/battle_anim/attack.c": {
       "functions": {
@@ -8061,7 +8061,7 @@
           "virtual_address": 135151780
         }
       },
-      "object": "src/battle_anim/attack.o"
+      "object": "build/usa/src/battle_anim/attack.o"
     },
     "src/battle_anim/camera.c": {
       "functions": {
@@ -8108,7 +8108,7 @@
           "virtual_address": 135096672
         }
       },
-      "object": "src/battle_anim/camera.o"
+      "object": "build/usa/src/battle_anim/camera.o"
     },
     "src/battle_anim/cast.c": {
       "functions": {
@@ -8155,7 +8155,7 @@
           "virtual_address": 135010852
         }
       },
-      "object": "src/battle_anim/cast.o"
+      "object": "build/usa/src/battle_anim/cast.o"
     },
     "src/battle_anim/color_cycle_vfx_palette.c": {
       "functions": {
@@ -8166,7 +8166,7 @@
           "virtual_address": 135086316
         }
       },
-      "object": "src/battle_anim/color_cycle_vfx_palette.o"
+      "object": "build/usa/src/battle_anim/color_cycle_vfx_palette.o"
     },
     "src/battle_anim/djinn_set.c": {
       "functions": {
@@ -8177,7 +8177,7 @@
           "virtual_address": 135054808
         }
       },
-      "object": "src/battle_anim/djinn_set.o"
+      "object": "build/usa/src/battle_anim/djinn_set.o"
     },
     "src/battle_anim/djinni.c": {
       "functions": {
@@ -8188,7 +8188,7 @@
           "virtual_address": 135127800
         }
       },
-      "object": "src/battle_anim/djinni.o"
+      "object": "build/usa/src/battle_anim/djinni.o"
     },
     "src/battle_anim/epower_up.c": {
       "functions": {
@@ -8199,7 +8199,7 @@
           "virtual_address": 135051256
         }
       },
-      "object": "src/battle_anim/epower_up.o"
+      "object": "build/usa/src/battle_anim/epower_up.o"
     },
     "src/battle_anim/move_intro.c": {
       "functions": {
@@ -8216,7 +8216,7 @@
           "virtual_address": 135010200
         }
       },
-      "object": "src/battle_anim/move_intro.o"
+      "object": "build/usa/src/battle_anim/move_intro.o"
     },
     "src/battle_anim/moves/annihilation.c": {
       "functions": {
@@ -8227,7 +8227,7 @@
           "virtual_address": 135172264
         }
       },
-      "object": "src/battle_anim/moves/annihilation.o"
+      "object": "build/usa/src/battle_anim/moves/annihilation.o"
     },
     "src/battle_anim/moves/astral_blast.c": {
       "functions": {
@@ -8238,7 +8238,7 @@
           "virtual_address": 135073504
         }
       },
-      "object": "src/battle_anim/moves/astral_blast.o"
+      "object": "build/usa/src/battle_anim/moves/astral_blast.o"
     },
     "src/battle_anim/moves/atalanta.c": {
       "functions": {
@@ -8249,7 +8249,7 @@
           "virtual_address": 135121256
         }
       },
-      "object": "src/battle_anim/moves/atalanta.o"
+      "object": "build/usa/src/battle_anim/moves/atalanta.o"
     },
     "src/battle_anim/moves/bind.c": {
       "functions": {
@@ -8260,7 +8260,7 @@
           "virtual_address": 135071228
         }
       },
-      "object": "src/battle_anim/moves/bind.o"
+      "object": "build/usa/src/battle_anim/moves/bind.o"
     },
     "src/battle_anim/moves/bite_sting.c": {
       "functions": {
@@ -8343,7 +8343,7 @@
           "virtual_address": 135046668
         }
       },
-      "object": "src/battle_anim/moves/bite_sting.o"
+      "object": "build/usa/src/battle_anim/moves/bite_sting.o"
     },
     "src/battle_anim/moves/blast.c": {
       "functions": {
@@ -8366,7 +8366,7 @@
           "virtual_address": 135116512
         }
       },
-      "object": "src/battle_anim/moves/blast.o"
+      "object": "build/usa/src/battle_anim/moves/blast.o"
     },
     "src/battle_anim/moves/bolt.c": {
       "functions": {
@@ -8377,7 +8377,7 @@
           "virtual_address": 135126496
         }
       },
-      "object": "src/battle_anim/moves/bolt.o"
+      "object": "build/usa/src/battle_anim/moves/bolt.o"
     },
     "src/battle_anim/moves/boreas.c": {
       "functions": {
@@ -8388,7 +8388,7 @@
           "virtual_address": 135099996
         }
       },
-      "object": "src/battle_anim/moves/boreas.o"
+      "object": "build/usa/src/battle_anim/moves/boreas.o"
     },
     "src/battle_anim/moves/break.c": {
       "functions": {
@@ -8399,7 +8399,7 @@
           "virtual_address": 135103152
         }
       },
-      "object": "src/battle_anim/moves/break.o"
+      "object": "build/usa/src/battle_anim/moves/break.o"
     },
     "src/battle_anim/moves/breath.c": {
       "functions": {
@@ -8452,7 +8452,7 @@
           "virtual_address": 135117872
         }
       },
-      "object": "src/battle_anim/moves/breath.o"
+      "object": "build/usa/src/battle_anim/moves/breath.o"
     },
     "src/battle_anim/moves/condemn.c": {
       "functions": {
@@ -8463,7 +8463,7 @@
           "virtual_address": 135069428
         }
       },
-      "object": "src/battle_anim/moves/condemn.o"
+      "object": "build/usa/src/battle_anim/moves/condemn.o"
     },
     "src/battle_anim/moves/confuse.c": {
       "functions": {
@@ -8474,7 +8474,7 @@
           "virtual_address": 135063644
         }
       },
-      "object": "src/battle_anim/moves/confuse.o"
+      "object": "build/usa/src/battle_anim/moves/confuse.o"
     },
     "src/battle_anim/moves/curse.c": {
       "functions": {
@@ -8485,7 +8485,7 @@
           "virtual_address": 135093320
         }
       },
-      "object": "src/battle_anim/moves/curse.o"
+      "object": "build/usa/src/battle_anim/moves/curse.o"
     },
     "src/battle_anim/moves/cybele.c": {
       "functions": {
@@ -8496,7 +8496,7 @@
           "virtual_address": 135096688
         }
       },
-      "object": "src/battle_anim/moves/cybele.o"
+      "object": "build/usa/src/battle_anim/moves/cybele.o"
     },
     "src/battle_anim/moves/death_plunge.c": {
       "functions": {
@@ -8507,7 +8507,7 @@
           "virtual_address": 135049636
         }
       },
-      "object": "src/battle_anim/moves/death_plunge.o"
+      "object": "build/usa/src/battle_anim/moves/death_plunge.o"
     },
     "src/battle_anim/moves/douse.c": {
       "functions": {
@@ -8518,7 +8518,7 @@
           "virtual_address": 135042860
         }
       },
-      "object": "src/battle_anim/moves/douse.o"
+      "object": "build/usa/src/battle_anim/moves/douse.o"
     },
     "src/battle_anim/moves/dragon_cloud.c": {
       "functions": {
@@ -8529,7 +8529,7 @@
           "virtual_address": 135170540
         }
       },
-      "object": "src/battle_anim/moves/dragon_cloud.o"
+      "object": "build/usa/src/battle_anim/moves/dragon_cloud.o"
     },
     "src/battle_anim/moves/drain.c": {
       "functions": {
@@ -8540,7 +8540,7 @@
           "virtual_address": 135103952
         }
       },
-      "object": "src/battle_anim/moves/drain.o"
+      "object": "build/usa/src/battle_anim/moves/drain.o"
     },
     "src/battle_anim/moves/fireball.c": {
       "functions": {
@@ -8551,7 +8551,7 @@
           "virtual_address": 135112396
         }
       },
-      "object": "src/battle_anim/moves/fireball.o"
+      "object": "build/usa/src/battle_anim/moves/fireball.o"
     },
     "src/battle_anim/moves/flare.c": {
       "functions": {
@@ -8568,7 +8568,7 @@
           "virtual_address": 135111244
         }
       },
-      "object": "src/battle_anim/moves/flare.o"
+      "object": "build/usa/src/battle_anim/moves/flare.o"
     },
     "src/battle_anim/moves/frost.c": {
       "functions": {
@@ -8579,7 +8579,7 @@
           "virtual_address": 135113588
         }
       },
-      "object": "src/battle_anim/moves/frost.o"
+      "object": "build/usa/src/battle_anim/moves/frost.o"
     },
     "src/battle_anim/moves/froth.c": {
       "functions": {
@@ -8590,7 +8590,7 @@
           "virtual_address": 135082944
         }
       },
-      "object": "src/battle_anim/moves/froth.o"
+      "object": "build/usa/src/battle_anim/moves/froth.o"
     },
     "src/battle_anim/moves/fullscreen_slash.c": {
       "functions": {
@@ -8613,7 +8613,7 @@
           "virtual_address": 135188212
         }
       },
-      "object": "src/battle_anim/moves/fullscreen_slash.o"
+      "object": "build/usa/src/battle_anim/moves/fullscreen_slash.o"
     },
     "src/battle_anim/moves/gaia.c": {
       "functions": {
@@ -8624,7 +8624,7 @@
           "virtual_address": 135147564
         }
       },
-      "object": "src/battle_anim/moves/gaia.o"
+      "object": "build/usa/src/battle_anim/moves/gaia.o"
     },
     "src/battle_anim/moves/ground.c": {
       "functions": {
@@ -8635,7 +8635,7 @@
           "virtual_address": 135139392
         }
       },
-      "object": "src/battle_anim/moves/ground.o"
+      "object": "build/usa/src/battle_anim/moves/ground.o"
     },
     "src/battle_anim/moves/growth.c": {
       "functions": {
@@ -8658,7 +8658,7 @@
           "virtual_address": 135123652
         }
       },
-      "object": "src/battle_anim/moves/growth.o"
+      "object": "build/usa/src/battle_anim/moves/growth.o"
     },
     "src/battle_anim/moves/hail.c": {
       "functions": {
@@ -8669,7 +8669,7 @@
           "virtual_address": 135138436
         }
       },
-      "object": "src/battle_anim/moves/hail.o"
+      "object": "build/usa/src/battle_anim/moves/hail.o"
     },
     "src/battle_anim/moves/haunt.c": {
       "functions": {
@@ -8680,7 +8680,7 @@
           "virtual_address": 135062760
         }
       },
-      "object": "src/battle_anim/moves/haunt.o"
+      "object": "build/usa/src/battle_anim/moves/haunt.o"
     },
     "src/battle_anim/moves/haunt_attack.c": {
       "functions": {
@@ -8709,7 +8709,7 @@
           "virtual_address": 135064404
         }
       },
-      "object": "src/battle_anim/moves/haunt_attack.o"
+      "object": "build/usa/src/battle_anim/moves/haunt_attack.o"
     },
     "src/battle_anim/moves/heal.c": {
       "functions": {
@@ -8762,7 +8762,7 @@
           "virtual_address": 135104940
         }
       },
-      "object": "src/battle_anim/moves/heal.o"
+      "object": "build/usa/src/battle_anim/moves/heal.o"
     },
     "src/battle_anim/moves/helm_splitter.c": {
       "functions": {
@@ -8773,7 +8773,7 @@
           "virtual_address": 135162252
         }
       },
-      "object": "src/battle_anim/moves/helm_splitter.o"
+      "object": "build/usa/src/battle_anim/moves/helm_splitter.o"
     },
     "src/battle_anim/moves/ice.c": {
       "functions": {
@@ -8784,7 +8784,7 @@
           "virtual_address": 135041500
         }
       },
-      "object": "src/battle_anim/moves/ice.o"
+      "object": "build/usa/src/battle_anim/moves/ice.o"
     },
     "src/battle_anim/moves/judgment.c": {
       "functions": {
@@ -8795,7 +8795,7 @@
           "virtual_address": 135176408
         }
       },
-      "object": "src/battle_anim/moves/judgment.o"
+      "object": "build/usa/src/battle_anim/moves/judgment.o"
     },
     "src/battle_anim/moves/jupiter.c": {
       "functions": {
@@ -8806,7 +8806,7 @@
           "virtual_address": 135135716
         }
       },
-      "object": "src/battle_anim/moves/jupiter.o"
+      "object": "build/usa/src/battle_anim/moves/jupiter.o"
     },
     "src/battle_anim/moves/kirin.c": {
       "functions": {
@@ -8817,7 +8817,7 @@
           "virtual_address": 135182164
         }
       },
-      "object": "src/battle_anim/moves/kirin.o"
+      "object": "build/usa/src/battle_anim/moves/kirin.o"
     },
     "src/battle_anim/moves/kite.c": {
       "functions": {
@@ -8828,7 +8828,7 @@
           "virtual_address": 135162184
         }
       },
-      "object": "src/battle_anim/moves/kite.o"
+      "object": "build/usa/src/battle_anim/moves/kite.o"
     },
     "src/battle_anim/moves/mars.c": {
       "functions": {
@@ -8839,7 +8839,7 @@
           "virtual_address": 135137472
         }
       },
-      "object": "src/battle_anim/moves/mars.o"
+      "object": "build/usa/src/battle_anim/moves/mars.o"
     },
     "src/battle_anim/moves/mercury.c": {
       "functions": {
@@ -8856,7 +8856,7 @@
           "virtual_address": 135134764
         }
       },
-      "object": "src/battle_anim/moves/mercury.o"
+      "object": "build/usa/src/battle_anim/moves/mercury.o"
     },
     "src/battle_anim/moves/meteor.c": {
       "functions": {
@@ -8891,7 +8891,7 @@
           "virtual_address": 135164932
         }
       },
-      "object": "src/battle_anim/moves/meteor.o"
+      "object": "build/usa/src/battle_anim/moves/meteor.o"
     },
     "src/battle_anim/moves/mud.c": {
       "functions": {
@@ -8944,7 +8944,7 @@
           "virtual_address": 135067872
         }
       },
-      "object": "src/battle_anim/moves/mud.o"
+      "object": "build/usa/src/battle_anim/moves/mud.o"
     },
     "src/battle_anim/moves/neptune.c": {
       "functions": {
@@ -8967,7 +8967,7 @@
           "virtual_address": 135184640
         }
       },
-      "object": "src/battle_anim/moves/neptune.o"
+      "object": "build/usa/src/battle_anim/moves/neptune.o"
     },
     "src/battle_anim/moves/nereid.c": {
       "functions": {
@@ -8978,7 +8978,7 @@
           "virtual_address": 135081368
         }
       },
-      "object": "src/battle_anim/moves/nereid.o"
+      "object": "build/usa/src/battle_anim/moves/nereid.o"
     },
     "src/battle_anim/moves/nova.c": {
       "functions": {
@@ -9001,7 +9001,7 @@
           "virtual_address": 135087620
         }
       },
-      "object": "src/battle_anim/moves/nova.o"
+      "object": "build/usa/src/battle_anim/moves/nova.o"
     },
     "src/battle_anim/moves/particle_cloud.c": {
       "functions": {
@@ -9060,7 +9060,7 @@
           "virtual_address": 135090888
         }
       },
-      "object": "src/battle_anim/moves/particle_cloud.o"
+      "object": "build/usa/src/battle_anim/moves/particle_cloud.o"
     },
     "src/battle_anim/moves/planet_diver.c": {
       "functions": {
@@ -9071,7 +9071,7 @@
           "virtual_address": 135061556
         }
       },
-      "object": "src/battle_anim/moves/planet_diver.o"
+      "object": "build/usa/src/battle_anim/moves/planet_diver.o"
     },
     "src/battle_anim/moves/plasma.c": {
       "functions": {
@@ -9082,7 +9082,7 @@
           "virtual_address": 135086500
         }
       },
-      "object": "src/battle_anim/moves/plasma.o"
+      "object": "build/usa/src/battle_anim/moves/plasma.o"
     },
     "src/battle_anim/moves/prism.c": {
       "functions": {
@@ -9093,7 +9093,7 @@
           "virtual_address": 135085184
         }
       },
-      "object": "src/battle_anim/moves/prism.o"
+      "object": "build/usa/src/battle_anim/moves/prism.o"
     },
     "src/battle_anim/moves/procne.c": {
       "functions": {
@@ -9104,7 +9104,7 @@
           "virtual_address": 135075604
         }
       },
-      "object": "src/battle_anim/moves/procne.o"
+      "object": "build/usa/src/battle_anim/moves/procne.o"
     },
     "src/battle_anim/moves/projectile.c": {
       "functions": {
@@ -9199,7 +9199,7 @@
           "virtual_address": 135133648
         }
       },
-      "object": "src/battle_anim/moves/projectile.o"
+      "object": "build/usa/src/battle_anim/moves/projectile.o"
     },
     "src/battle_anim/moves/psyphon_seal.c": {
       "functions": {
@@ -9210,7 +9210,7 @@
           "virtual_address": 135072468
         }
       },
-      "object": "src/battle_anim/moves/psyphon_seal.o"
+      "object": "build/usa/src/battle_anim/moves/psyphon_seal.o"
     },
     "src/battle_anim/moves/quake.c": {
       "functions": {
@@ -9221,7 +9221,7 @@
           "virtual_address": 135111340
         }
       },
-      "object": "src/battle_anim/moves/quake.o"
+      "object": "build/usa/src/battle_anim/moves/quake.o"
     },
     "src/battle_anim/moves/ragnarok.c": {
       "functions": {
@@ -9232,7 +9232,7 @@
           "virtual_address": 135173304
         }
       },
-      "object": "src/battle_anim/moves/ragnarok.o"
+      "object": "build/usa/src/battle_anim/moves/ragnarok.o"
     },
     "src/battle_anim/moves/ramses.c": {
       "functions": {
@@ -9243,7 +9243,7 @@
           "virtual_address": 135168572
         }
       },
-      "object": "src/battle_anim/moves/ramses.o"
+      "object": "build/usa/src/battle_anim/moves/ramses.o"
     },
     "src/battle_anim/moves/rapid_slash.c": {
       "functions": {
@@ -9308,7 +9308,7 @@
           "virtual_address": 135149892
         }
       },
-      "object": "src/battle_anim/moves/rapid_slash.o"
+      "object": "build/usa/src/battle_anim/moves/rapid_slash.o"
     },
     "src/battle_anim/moves/ray.c": {
       "functions": {
@@ -9319,7 +9319,7 @@
           "virtual_address": 135115364
         }
       },
-      "object": "src/battle_anim/moves/ray.o"
+      "object": "build/usa/src/battle_anim/moves/ray.o"
     },
     "src/battle_anim/moves/revive.c": {
       "functions": {
@@ -9342,7 +9342,7 @@
           "virtual_address": 135066296
         }
       },
-      "object": "src/battle_anim/moves/revive.o"
+      "object": "build/usa/src/battle_anim/moves/revive.o"
     },
     "src/battle_anim/moves/shining_star.c": {
       "functions": {
@@ -9353,7 +9353,7 @@
           "virtual_address": 135074640
         }
       },
-      "object": "src/battle_anim/moves/shining_star.o"
+      "object": "build/usa/src/battle_anim/moves/shining_star.o"
     },
     "src/battle_anim/moves/sleep.c": {
       "functions": {
@@ -9364,7 +9364,7 @@
           "virtual_address": 135092656
         }
       },
-      "object": "src/battle_anim/moves/sleep.o"
+      "object": "build/usa/src/battle_anim/moves/sleep.o"
     },
     "src/battle_anim/moves/sonic_wave.c": {
       "functions": {
@@ -9411,7 +9411,7 @@
           "virtual_address": 135044264
         }
       },
-      "object": "src/battle_anim/moves/sonic_wave.o"
+      "object": "build/usa/src/battle_anim/moves/sonic_wave.o"
     },
     "src/battle_anim/moves/spasm.c": {
       "functions": {
@@ -9440,7 +9440,7 @@
           "virtual_address": 135065592
         }
       },
-      "object": "src/battle_anim/moves/spasm.o"
+      "object": "build/usa/src/battle_anim/moves/spasm.o"
     },
     "src/battle_anim/moves/spider_web.c": {
       "functions": {
@@ -9451,7 +9451,7 @@
           "virtual_address": 135057084
         }
       },
-      "object": "src/battle_anim/moves/spider_web.o"
+      "object": "build/usa/src/battle_anim/moves/spider_web.o"
     },
     "src/battle_anim/moves/spire.c": {
       "functions": {
@@ -9462,7 +9462,7 @@
           "virtual_address": 135144760
         }
       },
-      "object": "src/battle_anim/moves/spire.o"
+      "object": "build/usa/src/battle_anim/moves/spire.o"
     },
     "src/battle_anim/moves/spore.c": {
       "functions": {
@@ -9485,7 +9485,7 @@
           "virtual_address": 135045628
         }
       },
-      "object": "src/battle_anim/moves/spore.o"
+      "object": "build/usa/src/battle_anim/moves/spore.o"
     },
     "src/battle_anim/moves/stat_down.c": {
       "functions": {
@@ -9520,7 +9520,7 @@
           "virtual_address": 135109352
         }
       },
-      "object": "src/battle_anim/moves/stat_down.o"
+      "object": "build/usa/src/battle_anim/moves/stat_down.o"
     },
     "src/battle_anim/moves/stat_up.c": {
       "functions": {
@@ -9567,7 +9567,7 @@
           "virtual_address": 135107036
         }
       },
-      "object": "src/battle_anim/moves/stat_up.o"
+      "object": "build/usa/src/battle_anim/moves/stat_up.o"
     },
     "src/battle_anim/moves/tackle.c": {
       "functions": {
@@ -9602,7 +9602,7 @@
           "virtual_address": 135133768
         }
       },
-      "object": "src/battle_anim/moves/tackle.o"
+      "object": "build/usa/src/battle_anim/moves/tackle.o"
     },
     "src/battle_anim/moves/tentacle.c": {
       "functions": {
@@ -9625,7 +9625,7 @@
           "virtual_address": 135056440
         }
       },
-      "object": "src/battle_anim/moves/tentacle.o"
+      "object": "build/usa/src/battle_anim/moves/tentacle.o"
     },
     "src/battle_anim/moves/thor.c": {
       "functions": {
@@ -9636,7 +9636,7 @@
           "virtual_address": 135140840
         }
       },
-      "object": "src/battle_anim/moves/thor.o"
+      "object": "build/usa/src/battle_anim/moves/thor.o"
     },
     "src/battle_anim/moves/thorn.c": {
       "functions": {
@@ -9647,7 +9647,7 @@
           "virtual_address": 135125440
         }
       },
-      "object": "src/battle_anim/moves/thorn.o"
+      "object": "build/usa/src/battle_anim/moves/thorn.o"
     },
     "src/battle_anim/moves/thrash.c": {
       "functions": {
@@ -9664,7 +9664,7 @@
           "virtual_address": 135188140
         }
       },
-      "object": "src/battle_anim/moves/thrash.o"
+      "object": "build/usa/src/battle_anim/moves/thrash.o"
     },
     "src/battle_anim/moves/tiamat.c": {
       "functions": {
@@ -9687,7 +9687,7 @@
           "virtual_address": 135079012
         }
       },
-      "object": "src/battle_anim/moves/tiamat.o"
+      "object": "build/usa/src/battle_anim/moves/tiamat.o"
     },
     "src/battle_anim/moves/titan_blade.c": {
       "functions": {
@@ -9698,7 +9698,7 @@
           "virtual_address": 135174592
         }
       },
-      "object": "src/battle_anim/moves/titan_blade.o"
+      "object": "build/usa/src/battle_anim/moves/titan_blade.o"
     },
     "src/battle_anim/moves/torch.c": {
       "functions": {
@@ -9709,7 +9709,7 @@
           "virtual_address": 135161400
         }
       },
-      "object": "src/battle_anim/moves/torch.o"
+      "object": "build/usa/src/battle_anim/moves/torch.o"
     },
     "src/battle_anim/moves/undead_sword.c": {
       "functions": {
@@ -9720,7 +9720,7 @@
           "virtual_address": 135188740
         }
       },
-      "object": "src/battle_anim/moves/undead_sword.o"
+      "object": "build/usa/src/battle_anim/moves/undead_sword.o"
     },
     "src/battle_anim/moves/unused_fizz.c": {
       "functions": {
@@ -9731,7 +9731,7 @@
           "virtual_address": 135093844
         }
       },
-      "object": "src/battle_anim/moves/unused_fizz.o"
+      "object": "build/usa/src/battle_anim/moves/unused_fizz.o"
     },
     "src/battle_anim/moves/unused_sabre_rain.c": {
       "functions": {
@@ -9742,7 +9742,7 @@
           "virtual_address": 135050476
         }
       },
-      "object": "src/battle_anim/moves/unused_sabre_rain.o"
+      "object": "build/usa/src/battle_anim/moves/unused_sabre_rain.o"
     },
     "src/battle_anim/moves/unused_skull_cloud.c": {
       "functions": {
@@ -9753,7 +9753,7 @@
           "virtual_address": 135120572
         }
       },
-      "object": "src/battle_anim/moves/unused_skull_cloud.o"
+      "object": "build/usa/src/battle_anim/moves/unused_skull_cloud.o"
     },
     "src/battle_anim/moves/unused_skull_spin.c": {
       "functions": {
@@ -9764,7 +9764,7 @@
           "virtual_address": 135119956
         }
       },
-      "object": "src/battle_anim/moves/unused_skull_spin.o"
+      "object": "build/usa/src/battle_anim/moves/unused_skull_spin.o"
     },
     "src/battle_anim/moves/venus.c": {
       "functions": {
@@ -9775,7 +9775,7 @@
           "virtual_address": 135136612
         }
       },
-      "object": "src/battle_anim/moves/venus.o"
+      "object": "build/usa/src/battle_anim/moves/venus.o"
     },
     "src/battle_anim/moves/vine.c": {
       "functions": {
@@ -9786,7 +9786,7 @@
           "virtual_address": 135124860
         }
       },
-      "object": "src/battle_anim/moves/vine.o"
+      "object": "build/usa/src/battle_anim/moves/vine.o"
     },
     "src/battle_anim/moves/volcano.c": {
       "functions": {
@@ -9797,7 +9797,7 @@
           "virtual_address": 135089384
         }
       },
-      "object": "src/battle_anim/moves/volcano.o"
+      "object": "build/usa/src/battle_anim/moves/volcano.o"
     },
     "src/battle_anim/moves/whirlwind.c": {
       "functions": {
@@ -9808,7 +9808,7 @@
           "virtual_address": 135084116
         }
       },
-      "object": "src/battle_anim/moves/whirlwind.o"
+      "object": "build/usa/src/battle_anim/moves/whirlwind.o"
     },
     "src/battle_anim/screen_shatter.c": {
       "functions": {
@@ -9819,7 +9819,7 @@
           "virtual_address": 135052300
         }
       },
-      "object": "src/battle_anim/screen_shatter.o"
+      "object": "build/usa/src/battle_anim/screen_shatter.o"
     },
     "src/battle_anim/special_attack.c": {
       "functions": {
@@ -9830,7 +9830,7 @@
           "virtual_address": 135153592
         }
       },
-      "object": "src/battle_anim/special_attack.o"
+      "object": "build/usa/src/battle_anim/special_attack.o"
     },
     "src/battle_anim/summon_sprite.c": {
       "functions": {
@@ -9859,7 +9859,7 @@
           "virtual_address": 135164640
         }
       },
-      "object": "src/battle_anim/summon_sprite.o"
+      "object": "build/usa/src/battle_anim/summon_sprite.o"
     },
     "src/battle_anim/transition_in.c": {
       "functions": {
@@ -9870,7 +9870,7 @@
           "virtual_address": 135006444
         }
       },
-      "object": "src/battle_anim/transition_in.o"
+      "object": "build/usa/src/battle_anim/transition_in.o"
     },
     "src/battle_anim/transition_out.c": {
       "functions": {
@@ -9881,7 +9881,7 @@
           "virtual_address": 135057668
         }
       },
-      "object": "src/battle_anim/transition_out.o"
+      "object": "build/usa/src/battle_anim/transition_out.o"
     },
     "src/battle_anim/unleash_intro.c": {
       "functions": {
@@ -9904,7 +9904,7 @@
           "virtual_address": 135056348
         }
       },
-      "object": "src/battle_anim/unleash_intro.o"
+      "object": "build/usa/src/battle_anim/unleash_intro.o"
     },
     "src/battle_anim/unused_element_orbs.c": {
       "functions": {
@@ -9915,7 +9915,7 @@
           "virtual_address": 135119340
         }
       },
-      "object": "src/battle_anim/unused_element_orbs.o"
+      "object": "build/usa/src/battle_anim/unused_element_orbs.o"
     },
     "src/battle_anim/unused_screen_melt.c": {
       "functions": {
@@ -9926,7 +9926,7 @@
           "virtual_address": 135070824
         }
       },
-      "object": "src/battle_anim/unused_screen_melt.o"
+      "object": "build/usa/src/battle_anim/unused_screen_melt.o"
     },
     "src/battle_anim/update_screen_shake.c": {
       "functions": {
@@ -9937,7 +9937,7 @@
           "virtual_address": 135140700
         }
       },
-      "object": "src/battle_anim/update_screen_shake.o"
+      "object": "build/usa/src/battle_anim/update_screen_shake.o"
     },
     "src/battle_anim/vfx.c": {
       "functions": {
@@ -9948,7 +9948,7 @@
           "virtual_address": 135136548
         }
       },
-      "object": "src/battle_anim/vfx.o"
+      "object": "build/usa/src/battle_anim/vfx.o"
     },
     "src/crt0.s": {
       "functions": {
@@ -9971,7 +9971,7 @@
           "virtual_address": 134219516
         }
       },
-      "object": "src/crt0.o"
+      "object": "build/usa/src/crt0.o"
     },
     "src/decompress/battle_bg.c": {
       "functions": {
@@ -9982,7 +9982,7 @@
           "virtual_address": 134959416
         }
       },
-      "object": "src/decompress/battle_bg.o"
+      "object": "build/usa/src/decompress/battle_bg.o"
     },
     "src/decompress/bg-credits.s": {
       "functions": {
@@ -9993,7 +9993,7 @@
           "virtual_address": 135200804
         }
       },
-      "object": "src/decompress/bg-credits.o"
+      "object": "build/usa/src/decompress/bg-credits.o"
     },
     "src/decompress/huffman.s": {
       "functions": {
@@ -10022,7 +10022,7 @@
           "virtual_address": 134306024
         }
       },
-      "object": "src/decompress/huffman.o"
+      "object": "build/usa/src/decompress/huffman.o"
     },
     "src/decompress/icon.s": {
       "functions": {
@@ -10045,7 +10045,7 @@
           "virtual_address": 134307344
         }
       },
-      "object": "src/decompress/icon.o"
+      "object": "build/usa/src/decompress/icon.o"
     },
     "src/decompress/lz.c": {
       "functions": {
@@ -10074,7 +10074,7 @@
           "virtual_address": 134239208
         }
       },
-      "object": "src/decompress/lz.o"
+      "object": "build/usa/src/decompress/lz.o"
     },
     "src/decompress/lz1.s": {
       "functions": {
@@ -10091,7 +10091,7 @@
           "virtual_address": 134225352
         }
       },
-      "object": "src/decompress/lz1.o"
+      "object": "build/usa/src/decompress/lz1.o"
     },
     "src/decompress/lz16.s": {
       "functions": {
@@ -10102,7 +10102,7 @@
           "virtual_address": 134226584
         }
       },
-      "object": "src/decompress/lz16.o"
+      "object": "build/usa/src/decompress/lz16.o"
     },
     "src/decompress/lz2.s": {
       "functions": {
@@ -10119,7 +10119,7 @@
           "virtual_address": 134229236
         }
       },
-      "object": "src/decompress/lz2.o"
+      "object": "build/usa/src/decompress/lz2.o"
     },
     "src/decompress/lz_rom.s": {
       "functions": {
@@ -10130,7 +10130,7 @@
           "virtual_address": 134227268
         }
       },
-      "object": "src/decompress/lz_rom.o"
+      "object": "build/usa/src/decompress/lz_rom.o"
     },
     "src/decompress/sprite_lz.c": {
       "functions": {
@@ -10141,7 +10141,7 @@
           "virtual_address": 134261116
         }
       },
-      "object": "src/decompress/sprite_lz.o"
+      "object": "build/usa/src/decompress/sprite_lz.o"
     },
     "src/ending.c": {
       "functions": {
@@ -10200,7 +10200,7 @@
           "virtual_address": 135202800
         }
       },
-      "object": "src/ending.o"
+      "object": "build/usa/src/ending.o"
     },
     "src/engine/sprite_test.c": {
       "functions": {
@@ -10253,7 +10253,7 @@
           "virtual_address": 134295080
         }
       },
-      "object": "src/engine/sprite_test.o"
+      "object": "build/usa/src/engine/sprite_test.o"
     },
     "src/engine/unpack_tilemap.s": {
       "functions": {
@@ -10264,7 +10264,7 @@
           "virtual_address": 134259580
         }
       },
-      "object": "src/engine/unpack_tilemap.o"
+      "object": "build/usa/src/engine/unpack_tilemap.o"
     },
     "src/field/actor_move.c": {
       "functions": {
@@ -10341,7 +10341,7 @@
           "virtual_address": 134836876
         }
       },
-      "object": "src/field/actor_move.o"
+      "object": "build/usa/src/field/actor_move.o"
     },
     "src/field/cutscene.c": {
       "functions": {
@@ -10568,7 +10568,7 @@
           "virtual_address": 134815788
         }
       },
-      "object": "src/field/cutscene.o"
+      "object": "build/usa/src/field/cutscene.o"
     },
     "src/field/djinni.c": {
       "functions": {
@@ -10657,7 +10657,7 @@
           "virtual_address": 134833576
         }
       },
-      "object": "src/field/djinni.o"
+      "object": "build/usa/src/field/djinni.o"
     },
     "src/field/field.c": {
       "functions": {
@@ -10668,7 +10668,7 @@
           "virtual_address": 134792440
         }
       },
-      "object": "src/field/field.o"
+      "object": "build/usa/src/field/field.o"
     },
     "src/field/field_effect.c": {
       "functions": {
@@ -10727,7 +10727,7 @@
           "virtual_address": 134855476
         }
       },
-      "object": "src/field/field_effect.o"
+      "object": "build/usa/src/field/field_effect.o"
     },
     "src/field/field_move.c": {
       "functions": {
@@ -10780,7 +10780,7 @@
           "virtual_address": 134835180
         }
       },
-      "object": "src/field/field_move.o"
+      "object": "build/usa/src/field/field_move.o"
     },
     "src/field/map.c": {
       "functions": {
@@ -11271,7 +11271,7 @@
           "virtual_address": 134813148
         }
       },
-      "object": "src/field/map.o"
+      "object": "build/usa/src/field/map.o"
     },
     "src/field/map_actor.c": {
       "functions": {
@@ -11840,7 +11840,7 @@
           "virtual_address": 134823840
         }
       },
-      "object": "src/field/map_actor.o"
+      "object": "build/usa/src/field/map_actor.o"
     },
     "src/field/map_actor_api.c": {
       "functions": {
@@ -11887,7 +11887,7 @@
           "virtual_address": 134825000
         }
       },
-      "object": "src/field/map_actor_api.o"
+      "object": "build/usa/src/field/map_actor_api.o"
     },
     "src/field/map_data.c": {
       "functions": {
@@ -12348,7 +12348,7 @@
           "virtual_address": 134292468
         }
       },
-      "object": "src/field/map_data.o"
+      "object": "build/usa/src/field/map_data.o"
     },
     "src/field/map_load.c": {
       "functions": {
@@ -12503,7 +12503,7 @@
           "virtual_address": 134788684
         }
       },
-      "object": "src/field/map_load.o"
+      "object": "build/usa/src/field/map_load.o"
     },
     "src/field/moves/avoid.c": {
       "functions": {
@@ -12550,7 +12550,7 @@
           "virtual_address": 134854296
         }
       },
-      "object": "src/field/moves/avoid.o"
+      "object": "build/usa/src/field/moves/avoid.o"
     },
     "src/field/moves/carry.c": {
       "functions": {
@@ -12603,7 +12603,7 @@
           "virtual_address": 134850232
         }
       },
-      "object": "src/field/moves/carry.o"
+      "object": "build/usa/src/field/moves/carry.o"
     },
     "src/field/moves/catch.c": {
       "functions": {
@@ -12620,7 +12620,7 @@
           "virtual_address": 134852196
         }
       },
-      "object": "src/field/moves/catch.o"
+      "object": "build/usa/src/field/moves/catch.o"
     },
     "src/field/moves/cloak.c": {
       "functions": {
@@ -12649,7 +12649,7 @@
           "virtual_address": 134846520
         }
       },
-      "object": "src/field/moves/cloak.o"
+      "object": "build/usa/src/field/moves/cloak.o"
     },
     "src/field/moves/douse.c": {
       "functions": {
@@ -12678,7 +12678,7 @@
           "virtual_address": 134846960
         }
       },
-      "object": "src/field/moves/douse.o"
+      "object": "build/usa/src/field/moves/douse.o"
     },
     "src/field/moves/force.c": {
       "functions": {
@@ -12707,7 +12707,7 @@
           "virtual_address": 134843608
         }
       },
-      "object": "src/field/moves/force.o"
+      "object": "build/usa/src/field/moves/force.o"
     },
     "src/field/moves/frost.c": {
       "functions": {
@@ -12748,7 +12748,7 @@
           "virtual_address": 134844768
         }
       },
-      "object": "src/field/moves/frost.o"
+      "object": "build/usa/src/field/moves/frost.o"
     },
     "src/field/moves/growth.c": {
       "functions": {
@@ -12771,7 +12771,7 @@
           "virtual_address": 134842008
         }
       },
-      "object": "src/field/moves/growth.o"
+      "object": "build/usa/src/field/moves/growth.o"
     },
     "src/field/moves/halt.c": {
       "functions": {
@@ -12818,7 +12818,7 @@
           "virtual_address": 134852156
         }
       },
-      "object": "src/field/moves/halt.o"
+      "object": "build/usa/src/field/moves/halt.o"
     },
     "src/field/moves/lift.c": {
       "functions": {
@@ -12841,7 +12841,7 @@
           "virtual_address": 134843012
         }
       },
-      "object": "src/field/moves/lift.o"
+      "object": "build/usa/src/field/moves/lift.o"
     },
     "src/field/moves/mind_read.c": {
       "functions": {
@@ -12876,7 +12876,7 @@
           "virtual_address": 134838468
         }
       },
-      "object": "src/field/moves/mind_read.o"
+      "object": "build/usa/src/field/moves/mind_read.o"
     },
     "src/field/moves/move.c": {
       "functions": {
@@ -12923,7 +12923,7 @@
           "virtual_address": 134840752
         }
       },
-      "object": "src/field/moves/move.o"
+      "object": "build/usa/src/field/moves/move.o"
     },
     "src/field/moves/ply.c": {
       "functions": {
@@ -12958,7 +12958,7 @@
           "virtual_address": 134845648
         }
       },
-      "object": "src/field/moves/ply.o"
+      "object": "build/usa/src/field/moves/ply.o"
     },
     "src/field/moves/retreat.c": {
       "functions": {
@@ -12987,7 +12987,7 @@
           "virtual_address": 134853128
         }
       },
-      "object": "src/field/moves/retreat.o"
+      "object": "build/usa/src/field/moves/retreat.o"
     },
     "src/field/moves/reveal.c": {
       "functions": {
@@ -13016,7 +13016,7 @@
           "virtual_address": 134841536
         }
       },
-      "object": "src/field/moves/reveal.o"
+      "object": "build/usa/src/field/moves/reveal.o"
     },
     "src/field/moves/whirlwind.c": {
       "functions": {
@@ -13051,7 +13051,7 @@
           "virtual_address": 134850756
         }
       },
-      "object": "src/field/moves/whirlwind.o"
+      "object": "build/usa/src/field/moves/whirlwind.o"
     },
     "src/field/psynergy.c": {
       "functions": {
@@ -13110,7 +13110,7 @@
           "virtual_address": 134839004
         }
       },
-      "object": "src/field/psynergy.o"
+      "object": "build/usa/src/field/psynergy.o"
     },
     "src/field/room_load.c": {
       "functions": {
@@ -13157,7 +13157,7 @@
           "virtual_address": 134789624
         }
       },
-      "object": "src/field/room_load.o"
+      "object": "build/usa/src/field/room_load.o"
     },
     "src/field/transition.c": {
       "functions": {
@@ -13198,7 +13198,7 @@
           "virtual_address": 134857636
         }
       },
-      "object": "src/field/transition.o"
+      "object": "build/usa/src/field/transition.o"
     },
     "src/field/weather.c": {
       "functions": {
@@ -13371,7 +13371,7 @@
           "virtual_address": 134835328
         }
       },
-      "object": "src/field/weather.o"
+      "object": "build/usa/src/field/weather.o"
     },
     "src/fixup_ram_code.s": {
       "functions": {
@@ -13382,7 +13382,7 @@
           "virtual_address": 134229340
         }
       },
-      "object": "src/fixup_ram_code.o"
+      "object": "build/usa/src/fixup_ram_code.o"
     },
     "src/flags.c": {
       "functions": {
@@ -13447,7 +13447,7 @@
           "virtual_address": 134714420
         }
       },
-      "object": "src/flags.o"
+      "object": "build/usa/src/flags.o"
     },
     "src/intr/intr.c": {
       "functions": {
@@ -13518,7 +13518,7 @@
           "virtual_address": 134232080
         }
       },
-      "object": "src/intr/intr.o"
+      "object": "build/usa/src/intr/intr.o"
     },
     "src/lib/agb_flash/agb_flash.c": {
       "functions": {
@@ -13601,7 +13601,7 @@
           "virtual_address": 134245480
         }
       },
-      "object": "src/lib/agb_flash/agb_flash.o"
+      "object": "build/usa/src/lib/agb_flash/agb_flash.o"
     },
     "src/lib/agb_flash/agb_flash_at.c": {
       "functions": {
@@ -13642,7 +13642,7 @@
           "virtual_address": 134246944
         }
       },
-      "object": "src/lib/agb_flash/agb_flash_at.o"
+      "object": "build/usa/src/lib/agb_flash/agb_flash_at.o"
     },
     "src/lib/agb_flash/agb_flash_mx.c": {
       "functions": {
@@ -13677,7 +13677,7 @@
           "virtual_address": 134246216
         }
       },
-      "object": "src/lib/agb_flash/agb_flash_mx.o"
+      "object": "build/usa/src/lib/agb_flash/agb_flash_mx.o"
     },
     "src/lib/agb_flash/agb_flash_verify.c": {
       "functions": {
@@ -13688,7 +13688,7 @@
           "virtual_address": 134246252
         }
       },
-      "object": "src/lib/agb_flash/agb_flash_verify.o"
+      "object": "build/usa/src/lib/agb_flash/agb_flash_verify.o"
     },
     "src/lib/m4a/m4a.c": {
       "functions": {
@@ -14041,7 +14041,7 @@
           "virtual_address": 135247760
         }
       },
-      "object": "src/lib/m4a/m4a.o"
+      "object": "build/usa/src/lib/m4a/m4a.o"
     },
     "src/lucky_dice.c": {
       "functions": {
@@ -14088,7 +14088,7 @@
           "virtual_address": 135217512
         }
       },
-      "object": "src/lucky_dice.o"
+      "object": "build/usa/src/lucky_dice.o"
     },
     "src/lucky_wheels.c": {
       "functions": {
@@ -14183,7 +14183,7 @@
           "virtual_address": 135233400
         }
       },
-      "object": "src/lucky_wheels.o"
+      "object": "build/usa/src/lucky_wheels.o"
     },
     "src/main.c": {
       "functions": {
@@ -14266,7 +14266,7 @@
           "virtual_address": 134229936
         }
       },
-      "object": "src/main.o"
+      "object": "build/usa/src/main.o"
     },
     "src/maps/alpine_crossing.c": {
       "functions": {
@@ -14439,7 +14439,7 @@
           "virtual_address": 33591728
         }
       },
-      "object": "asm/maps/alpine_crossing.o"
+      "object": "build/usa/asm/maps/alpine_crossing.o"
     },
     "src/maps/altin.c": {
       "functions": {
@@ -14624,7 +14624,7 @@
           "virtual_address": 33590616
         }
       },
-      "object": "asm/maps/altin.o"
+      "object": "build/usa/asm/maps/altin.o"
     },
     "src/maps/altin_peak.c": {
       "functions": {
@@ -15085,7 +15085,7 @@
           "virtual_address": 33602116
         }
       },
-      "object": "asm/maps/altin_peak.o"
+      "object": "build/usa/asm/maps/altin_peak.o"
     },
     "src/maps/altmiller_cave.c": {
       "functions": {
@@ -15366,7 +15366,7 @@
           "virtual_address": 33602260
         }
       },
-      "object": "asm/maps/altmiller_cave.o"
+      "object": "build/usa/asm/maps/altmiller_cave.o"
     },
     "src/maps/babi_lighthouse.c": {
       "functions": {
@@ -15659,7 +15659,7 @@
           "virtual_address": 33597600
         }
       },
-      "object": "asm/maps/babi_lighthouse.o"
+      "object": "build/usa/asm/maps/babi_lighthouse.o"
     },
     "src/maps/babis_palace.c": {
       "functions": {
@@ -15820,7 +15820,7 @@
           "virtual_address": 33603764
         }
       },
-      "object": "asm/maps/babis_palace.o"
+      "object": "build/usa/asm/maps/babis_palace.o"
     },
     "src/maps/bilibin.c": {
       "functions": {
@@ -16017,7 +16017,7 @@
           "virtual_address": 33591200
         }
       },
-      "object": "asm/maps/bilibin.o"
+      "object": "build/usa/asm/maps/bilibin.o"
     },
     "src/maps/bilibin_cave.c": {
       "functions": {
@@ -16178,7 +16178,7 @@
           "virtual_address": 33589508
         }
       },
-      "object": "asm/maps/bilibin_cave.o"
+      "object": "build/usa/asm/maps/bilibin_cave.o"
     },
     "src/maps/bilibin_rooms.c": {
       "functions": {
@@ -16303,7 +16303,7 @@
           "virtual_address": 33588424
         }
       },
-      "object": "asm/maps/bilibin_rooms.o"
+      "object": "build/usa/asm/maps/bilibin_rooms.o"
     },
     "src/maps/colosseum.c": {
       "functions": {
@@ -16530,7 +16530,7 @@
           "virtual_address": 33598236
         }
       },
-      "object": "asm/maps/colosseum.o"
+      "object": "build/usa/asm/maps/colosseum.o"
     },
     "src/maps/colosseum_final_1.c": {
       "functions": {
@@ -16703,7 +16703,7 @@
           "virtual_address": 33593068
         }
       },
-      "object": "asm/maps/colosseum_final_1.o"
+      "object": "build/usa/asm/maps/colosseum_final_1.o"
     },
     "src/maps/colosseum_final_2.c": {
       "functions": {
@@ -16960,7 +16960,7 @@
           "virtual_address": 33593788
         }
       },
-      "object": "asm/maps/colosseum_final_2.o"
+      "object": "build/usa/asm/maps/colosseum_final_2.o"
     },
     "src/maps/colosseum_final_3.c": {
       "functions": {
@@ -17247,7 +17247,7 @@
           "virtual_address": 33596624
         }
       },
-      "object": "asm/maps/colosseum_final_3.o"
+      "object": "build/usa/asm/maps/colosseum_final_3.o"
     },
     "src/maps/common/common0.c": {
       "functions": {
@@ -17277,7 +17277,7 @@
           "section": ".text"
         }
       },
-      "object": "asm/maps/common/common0.o"
+      "object": "build/usa/asm/maps/common/common0.o"
     },
     "src/maps/common/common1.c": {
       "functions": {
@@ -17492,7 +17492,7 @@
           "section": ".text"
         }
       },
-      "object": "asm/maps/common/common1.o"
+      "object": "build/usa/asm/maps/common/common1.o"
     },
     "src/maps/common/common2.c": {
       "functions": {
@@ -17587,7 +17587,7 @@
           "section": ".text"
         }
       },
-      "object": "asm/maps/common/common2.o"
+      "object": "build/usa/asm/maps/common/common2.o"
     },
     "src/maps/crossbone_isle.c": {
       "functions": {
@@ -18126,7 +18126,7 @@
           "virtual_address": 33599192
         }
       },
-      "object": "asm/maps/crossbone_isle.o"
+      "object": "build/usa/asm/maps/crossbone_isle.o"
     },
     "src/maps/crossbone_isle_dungeon_2.c": {
       "functions": {
@@ -18497,7 +18497,7 @@
           "virtual_address": 33597260
         }
       },
-      "object": "asm/maps/crossbone_isle_dungeon_2.o"
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_2.o"
     },
     "src/maps/crossbone_isle_dungeon_4.c": {
       "functions": {
@@ -19024,7 +19024,7 @@
           "virtual_address": 33596212
         }
       },
-      "object": "asm/maps/crossbone_isle_dungeon_4.o"
+      "object": "build/usa/asm/maps/crossbone_isle_dungeon_4.o"
     },
     "src/maps/debug_get_item.c": {
       "functions": {
@@ -19137,7 +19137,7 @@
           "virtual_address": 33589204
         }
       },
-      "object": "asm/maps/debug_get_item.o"
+      "object": "build/usa/asm/maps/debug_get_item.o"
     },
     "src/maps/debug_test.c": {
       "functions": {
@@ -19202,7 +19202,7 @@
           "virtual_address": 33587380
         }
       },
-      "object": "asm/maps/debug_test.o"
+      "object": "build/usa/asm/maps/debug_test.o"
     },
     "src/maps/elemental_stars.c": {
       "functions": {
@@ -19405,7 +19405,7 @@
           "virtual_address": 33605516
         }
       },
-      "object": "asm/maps/elemental_stars.o"
+      "object": "build/usa/asm/maps/elemental_stars.o"
     },
     "src/maps/elemental_stars_eruption.c": {
       "functions": {
@@ -19626,7 +19626,7 @@
           "virtual_address": 33600268
         }
       },
-      "object": "asm/maps/elemental_stars_eruption.o"
+      "object": "build/usa/asm/maps/elemental_stars_eruption.o"
     },
     "src/maps/fuchin_temple.c": {
       "functions": {
@@ -19925,7 +19925,7 @@
           "virtual_address": 33604076
         }
       },
-      "object": "asm/maps/fuchin_temple.o"
+      "object": "build/usa/asm/maps/fuchin_temple.o"
     },
     "src/maps/goma_cave.c": {
       "functions": {
@@ -19990,7 +19990,7 @@
           "virtual_address": 33588468
         }
       },
-      "object": "asm/maps/goma_cave.o"
+      "object": "build/usa/asm/maps/goma_cave.o"
     },
     "src/maps/goma_cave_1.c": {
       "functions": {
@@ -20031,7 +20031,7 @@
           "virtual_address": 33587284
         }
       },
-      "object": "asm/maps/goma_cave_1.o"
+      "object": "build/usa/asm/maps/goma_cave_1.o"
     },
     "src/maps/goma_cave_2.c": {
       "functions": {
@@ -20204,7 +20204,7 @@
           "virtual_address": 33591836
         }
       },
-      "object": "asm/maps/goma_cave_2.o"
+      "object": "build/usa/asm/maps/goma_cave_2.o"
     },
     "src/maps/goma_cave_entry.c": {
       "functions": {
@@ -20335,7 +20335,7 @@
           "virtual_address": 33591240
         }
       },
-      "object": "asm/maps/goma_cave_entry.o"
+      "object": "build/usa/asm/maps/goma_cave_entry.o"
     },
     "src/maps/gondowan.c": {
       "functions": {
@@ -20520,7 +20520,7 @@
           "virtual_address": 33592212
         }
       },
-      "object": "asm/maps/gondowan.o"
+      "object": "build/usa/asm/maps/gondowan.o"
     },
     "src/maps/hammet_palace.c": {
       "functions": {
@@ -20615,7 +20615,7 @@
           "virtual_address": 33592468
         }
       },
-      "object": "asm/maps/hammet_palace.o"
+      "object": "build/usa/asm/maps/hammet_palace.o"
     },
     "src/maps/imil.c": {
       "functions": {
@@ -20884,7 +20884,7 @@
           "virtual_address": 33595300
         }
       },
-      "object": "asm/maps/imil.o"
+      "object": "build/usa/asm/maps/imil.o"
     },
     "src/maps/imil_falls_cave.c": {
       "functions": {
@@ -21405,7 +21405,7 @@
           "virtual_address": 33595540
         }
       },
-      "object": "asm/maps/imil_falls_cave.o"
+      "object": "build/usa/asm/maps/imil_falls_cave.o"
     },
     "src/maps/jail.c": {
       "functions": {
@@ -21488,7 +21488,7 @@
           "virtual_address": 33587684
         }
       },
-      "object": "asm/maps/jail.o"
+      "object": "build/usa/asm/maps/jail.o"
     },
     "src/maps/kalay.c": {
       "functions": {
@@ -21769,7 +21769,7 @@
           "virtual_address": 33602108
         }
       },
-      "object": "asm/maps/kalay.o"
+      "object": "build/usa/asm/maps/kalay.o"
     },
     "src/maps/kalay_docks.c": {
       "functions": {
@@ -21924,7 +21924,7 @@
           "virtual_address": 33590848
         }
       },
-      "object": "asm/maps/kalay_docks.o"
+      "object": "build/usa/asm/maps/kalay_docks.o"
     },
     "src/maps/kalay_rooms.c": {
       "functions": {
@@ -22001,7 +22001,7 @@
           "virtual_address": 33588028
         }
       },
-      "object": "asm/maps/kalay_rooms.o"
+      "object": "build/usa/asm/maps/kalay_rooms.o"
     },
     "src/maps/kolima.c": {
       "functions": {
@@ -22174,7 +22174,7 @@
           "virtual_address": 33597712
         }
       },
-      "object": "asm/maps/kolima.o"
+      "object": "build/usa/asm/maps/kolima.o"
     },
     "src/maps/kolima_forest_1.c": {
       "functions": {
@@ -22353,7 +22353,7 @@
           "virtual_address": 33598168
         }
       },
-      "object": "asm/maps/kolima_forest_1.o"
+      "object": "build/usa/asm/maps/kolima_forest_1.o"
     },
     "src/maps/kolima_forest_2.c": {
       "functions": {
@@ -22508,7 +22508,7 @@
           "virtual_address": 33590452
         }
       },
-      "object": "asm/maps/kolima_forest_2.o"
+      "object": "build/usa/asm/maps/kolima_forest_2.o"
     },
     "src/maps/kolima_forest_3.c": {
       "functions": {
@@ -22657,7 +22657,7 @@
           "virtual_address": 33590748
         }
       },
-      "object": "asm/maps/kolima_forest_3.o"
+      "object": "build/usa/asm/maps/kolima_forest_3.o"
     },
     "src/maps/kolima_forest_4.c": {
       "functions": {
@@ -22824,7 +22824,7 @@
           "virtual_address": 33591220
         }
       },
-      "object": "asm/maps/kolima_forest_4.o"
+      "object": "build/usa/asm/maps/kolima_forest_4.o"
     },
     "src/maps/kolima_forest_5.c": {
       "functions": {
@@ -22991,7 +22991,7 @@
           "virtual_address": 33593528
         }
       },
-      "object": "asm/maps/kolima_forest_5.o"
+      "object": "build/usa/asm/maps/kolima_forest_5.o"
     },
     "src/maps/kolima_rooms.c": {
       "functions": {
@@ -23062,7 +23062,7 @@
           "virtual_address": 33587652
         }
       },
-      "object": "asm/maps/kolima_rooms.o"
+      "object": "build/usa/asm/maps/kolima_rooms.o"
     },
     "src/maps/lalivero.c": {
       "functions": {
@@ -23163,7 +23163,7 @@
           "virtual_address": 33591820
         }
       },
-      "object": "asm/maps/lalivero.o"
+      "object": "build/usa/asm/maps/lalivero.o"
     },
     "src/maps/lalivero_rooms.c": {
       "functions": {
@@ -23276,7 +23276,7 @@
           "virtual_address": 33591372
         }
       },
-      "object": "asm/maps/lalivero_rooms.o"
+      "object": "build/usa/asm/maps/lalivero_rooms.o"
     },
     "src/maps/lalivero_ship.c": {
       "functions": {
@@ -23431,7 +23431,7 @@
           "virtual_address": 33591980
         }
       },
-      "object": "asm/maps/lalivero_ship.o"
+      "object": "build/usa/asm/maps/lalivero_ship.o"
     },
     "src/maps/lamakan_desert.c": {
       "functions": {
@@ -23586,7 +23586,7 @@
           "virtual_address": 33594488
         }
       },
-      "object": "asm/maps/lamakan_desert.o"
+      "object": "build/usa/asm/maps/lamakan_desert.o"
     },
     "src/maps/link_lobby.c": {
       "functions": {
@@ -23777,7 +23777,7 @@
           "virtual_address": 33592032
         }
       },
-      "object": "asm/maps/link_lobby.o"
+      "object": "build/usa/asm/maps/link_lobby.o"
     },
     "src/maps/lucky_fountain.c": {
       "functions": {
@@ -23920,7 +23920,7 @@
           "virtual_address": 33593148
         }
       },
-      "object": "asm/maps/lucky_fountain.o"
+      "object": "build/usa/asm/maps/lucky_fountain.o"
     },
     "src/maps/lunpa.c": {
       "functions": {
@@ -24189,7 +24189,7 @@
           "virtual_address": 33593408
         }
       },
-      "object": "asm/maps/lunpa.o"
+      "object": "build/usa/asm/maps/lunpa.o"
     },
     "src/maps/lunpa_fortress.c": {
       "functions": {
@@ -24890,7 +24890,7 @@
           "virtual_address": 33608992
         }
       },
-      "object": "asm/maps/lunpa_fortress.o"
+      "object": "build/usa/asm/maps/lunpa_fortress.o"
     },
     "src/maps/lunpa_rooms.c": {
       "functions": {
@@ -25003,7 +25003,7 @@
           "virtual_address": 33588308
         }
       },
-      "object": "asm/maps/lunpa_rooms.o"
+      "object": "build/usa/asm/maps/lunpa_rooms.o"
     },
     "src/maps/main_menu.c": {
       "functions": {
@@ -25104,7 +25104,7 @@
           "virtual_address": 33592008
         }
       },
-      "object": "asm/maps/main_menu.o"
+      "object": "build/usa/asm/maps/main_menu.o"
     },
     "src/maps/mccoys_palace.c": {
       "functions": {
@@ -25295,7 +25295,7 @@
           "virtual_address": 33595836
         }
       },
-      "object": "asm/maps/mccoys_palace.o"
+      "object": "build/usa/asm/maps/mccoys_palace.o"
     },
     "src/maps/mccoys_palace_ext.c": {
       "functions": {
@@ -25414,7 +25414,7 @@
           "virtual_address": 33589620
         }
       },
-      "object": "asm/maps/mccoys_palace_ext.o"
+      "object": "build/usa/asm/maps/mccoys_palace_ext.o"
     },
     "src/maps/menu_test.c": {
       "functions": {
@@ -25605,7 +25605,7 @@
           "virtual_address": 33591676
         }
       },
-      "object": "asm/maps/menu_test.o"
+      "object": "build/usa/asm/maps/menu_test.o"
     },
     "src/maps/mercury_lighthouse.c": {
       "functions": {
@@ -26168,7 +26168,7 @@
           "virtual_address": 33610056
         }
       },
-      "object": "asm/maps/mercury_lighthouse.o"
+      "object": "build/usa/asm/maps/mercury_lighthouse.o"
     },
     "src/maps/mercury_lighthouse_aerie.c": {
       "functions": {
@@ -26317,7 +26317,7 @@
           "virtual_address": 33600700
         }
       },
-      "object": "asm/maps/mercury_lighthouse_aerie.o"
+      "object": "build/usa/asm/maps/mercury_lighthouse_aerie.o"
     },
     "src/maps/mercury_lighthouse_entrance.c": {
       "functions": {
@@ -26622,7 +26622,7 @@
           "virtual_address": 33596344
         }
       },
-      "object": "asm/maps/mercury_lighthouse_entrance.o"
+      "object": "build/usa/asm/maps/mercury_lighthouse_entrance.o"
     },
     "src/maps/mogall_forest.c": {
       "functions": {
@@ -26951,7 +26951,7 @@
           "virtual_address": 33598476
         }
       },
-      "object": "asm/maps/mogall_forest.o"
+      "object": "build/usa/asm/maps/mogall_forest.o"
     },
     "src/maps/sol.c": {
       "functions": {
@@ -27130,7 +27130,7 @@
           "virtual_address": 33594056
         }
       },
-      "object": "asm/maps/sol.o"
+      "object": "build/usa/asm/maps/sol.o"
     },
     "src/maps/sol_sanctum_1.c": {
       "functions": {
@@ -27333,7 +27333,7 @@
           "virtual_address": 33597732
         }
       },
-      "object": "asm/maps/sol_sanctum_1.o"
+      "object": "build/usa/asm/maps/sol_sanctum_1.o"
     },
     "src/maps/sol_sanctum_2.c": {
       "functions": {
@@ -27620,7 +27620,7 @@
           "virtual_address": 33596324
         }
       },
-      "object": "asm/maps/sol_sanctum_2.o"
+      "object": "build/usa/asm/maps/sol_sanctum_2.o"
     },
     "src/maps/sol_sanctum_3.c": {
       "functions": {
@@ -27661,7 +27661,7 @@
           "virtual_address": 33587284
         }
       },
-      "object": "asm/maps/sol_sanctum_3.o"
+      "object": "build/usa/asm/maps/sol_sanctum_3.o"
     },
     "src/maps/sol_sanctum_4.c": {
       "functions": {
@@ -27702,7 +27702,7 @@
           "virtual_address": 33587284
         }
       },
-      "object": "asm/maps/sol_sanctum_4.o"
+      "object": "build/usa/asm/maps/sol_sanctum_4.o"
     },
     "src/maps/sol_sanctum_5.c": {
       "functions": {
@@ -27743,7 +27743,7 @@
           "virtual_address": 33587284
         }
       },
-      "object": "asm/maps/sol_sanctum_5.o"
+      "object": "build/usa/asm/maps/sol_sanctum_5.o"
     },
     "src/maps/suhalla.c": {
       "functions": {
@@ -27814,7 +27814,7 @@
           "virtual_address": 33587756
         }
       },
-      "object": "asm/maps/suhalla.o"
+      "object": "build/usa/asm/maps/suhalla.o"
     },
     "src/maps/suhalla_desert.c": {
       "functions": {
@@ -28017,7 +28017,7 @@
           "virtual_address": 33591444
         }
       },
-      "object": "asm/maps/suhalla_desert.o"
+      "object": "build/usa/asm/maps/suhalla_desert.o"
     },
     "src/maps/suhalla_gate_1.c": {
       "functions": {
@@ -28100,7 +28100,7 @@
           "virtual_address": 33589164
         }
       },
-      "object": "asm/maps/suhalla_gate_1.o"
+      "object": "build/usa/asm/maps/suhalla_gate_1.o"
     },
     "src/maps/suhalla_rooms.c": {
       "functions": {
@@ -28177,7 +28177,7 @@
           "virtual_address": 33589880
         }
       },
-      "object": "asm/maps/suhalla_rooms.o"
+      "object": "build/usa/asm/maps/suhalla_rooms.o"
     },
     "src/maps/title.c": {
       "functions": {
@@ -28242,7 +28242,7 @@
           "virtual_address": 33588308
         }
       },
-      "object": "asm/maps/title.o"
+      "object": "build/usa/asm/maps/title.o"
     },
     "src/maps/tolbi.c": {
       "functions": {
@@ -28433,7 +28433,7 @@
           "virtual_address": 33590440
         }
       },
-      "object": "asm/maps/tolbi.o"
+      "object": "build/usa/asm/maps/tolbi.o"
     },
     "src/maps/tolbi_bound_ship_deck.c": {
       "functions": {
@@ -28810,7 +28810,7 @@
           "virtual_address": 33604120
         }
       },
-      "object": "asm/maps/tolbi_bound_ship_deck.o"
+      "object": "build/usa/asm/maps/tolbi_bound_ship_deck.o"
     },
     "src/maps/tolbi_bound_ship_hull.c": {
       "functions": {
@@ -29385,7 +29385,7 @@
           "virtual_address": 33612716
         }
       },
-      "object": "asm/maps/tolbi_bound_ship_hull.o"
+      "object": "build/usa/asm/maps/tolbi_bound_ship_hull.o"
     },
     "src/maps/tolbi_bound_ship_top.c": {
       "functions": {
@@ -29534,7 +29534,7 @@
           "virtual_address": 33591644
         }
       },
-      "object": "asm/maps/tolbi_bound_ship_top.o"
+      "object": "build/usa/asm/maps/tolbi_bound_ship_top.o"
     },
     "src/maps/tolbi_rooms_1.c": {
       "functions": {
@@ -29665,7 +29665,7 @@
           "virtual_address": 33589532
         }
       },
-      "object": "asm/maps/tolbi_rooms_1.o"
+      "object": "build/usa/asm/maps/tolbi_rooms_1.o"
     },
     "src/maps/tret_tree.c": {
       "functions": {
@@ -29916,7 +29916,7 @@
           "virtual_address": 33593528
         }
       },
-      "object": "asm/maps/tret_tree.o"
+      "object": "build/usa/asm/maps/tret_tree.o"
     },
     "src/maps/tret_tree_ext.c": {
       "functions": {
@@ -30059,7 +30059,7 @@
           "virtual_address": 33587936
         }
       },
-      "object": "asm/maps/tret_tree_ext.o"
+      "object": "build/usa/asm/maps/tret_tree_ext.o"
     },
     "src/maps/tunnel_ruins.c": {
       "functions": {
@@ -30514,7 +30514,7 @@
           "virtual_address": 33596828
         }
       },
-      "object": "asm/maps/tunnel_ruins.o"
+      "object": "build/usa/asm/maps/tunnel_ruins.o"
     },
     "src/maps/vale_cave.c": {
       "functions": {
@@ -30753,7 +30753,7 @@
           "virtual_address": 33594364
         }
       },
-      "object": "asm/maps/vale_cave.o"
+      "object": "build/usa/asm/maps/vale_cave.o"
     },
     "src/maps/vale_kraden.c": {
       "functions": {
@@ -30860,7 +30860,7 @@
           "virtual_address": 33593900
         }
       },
-      "object": "asm/maps/vale_kraden.o"
+      "object": "build/usa/asm/maps/vale_kraden.o"
     },
     "src/maps/vale_plaza.c": {
       "functions": {
@@ -31165,7 +31165,7 @@
           "virtual_address": 33596848
         }
       },
-      "object": "asm/maps/vale_plaza.o"
+      "object": "build/usa/asm/maps/vale_plaza.o"
     },
     "src/maps/vale_river.c": {
       "functions": {
@@ -31674,7 +31674,7 @@
           "virtual_address": 33611112
         }
       },
-      "object": "asm/maps/vale_river.o"
+      "object": "build/usa/asm/maps/vale_river.o"
     },
     "src/maps/vale_river_eruption.c": {
       "functions": {
@@ -31721,7 +31721,7 @@
           "virtual_address": 33587316
         }
       },
-      "object": "asm/maps/vale_river_eruption.o"
+      "object": "build/usa/asm/maps/vale_river_eruption.o"
     },
     "src/maps/vale_river_prologue.c": {
       "functions": {
@@ -32146,7 +32146,7 @@
           "virtual_address": 33605144
         }
       },
-      "object": "asm/maps/vale_river_prologue.o"
+      "object": "build/usa/asm/maps/vale_river_prologue.o"
     },
     "src/maps/vale_rooms_1.c": {
       "functions": {
@@ -32319,7 +32319,7 @@
           "virtual_address": 33591488
         }
       },
-      "object": "asm/maps/vale_rooms_1.o"
+      "object": "build/usa/asm/maps/vale_rooms_1.o"
     },
     "src/maps/vale_rooms_2.c": {
       "functions": {
@@ -32582,7 +32582,7 @@
           "virtual_address": 33593316
         }
       },
-      "object": "asm/maps/vale_rooms_2.o"
+      "object": "build/usa/asm/maps/vale_rooms_2.o"
     },
     "src/maps/vale_sanctum.c": {
       "functions": {
@@ -32791,7 +32791,7 @@
           "virtual_address": 33600752
         }
       },
-      "object": "asm/maps/vale_sanctum.o"
+      "object": "build/usa/asm/maps/vale_sanctum.o"
     },
     "src/maps/vault_1.c": {
       "functions": {
@@ -33168,7 +33168,7 @@
           "virtual_address": 33593260
         }
       },
-      "object": "asm/maps/vault_1.o"
+      "object": "build/usa/asm/maps/vault_1.o"
     },
     "src/maps/vault_2.c": {
       "functions": {
@@ -33431,7 +33431,7 @@
           "virtual_address": 33591088
         }
       },
-      "object": "asm/maps/vault_2.o"
+      "object": "build/usa/asm/maps/vault_2.o"
     },
     "src/maps/vault_cave.c": {
       "functions": {
@@ -33664,7 +33664,7 @@
           "virtual_address": 33590432
         }
       },
-      "object": "asm/maps/vault_cave.o"
+      "object": "build/usa/asm/maps/vault_cave.o"
     },
     "src/maps/vault_rooms_1.c": {
       "functions": {
@@ -34119,7 +34119,7 @@
           "virtual_address": 33606444
         }
       },
-      "object": "asm/maps/vault_rooms_1.o"
+      "object": "build/usa/asm/maps/vault_rooms_1.o"
     },
     "src/maps/vault_rooms_2.c": {
       "functions": {
@@ -34262,7 +34262,7 @@
           "virtual_address": 33588592
         }
       },
-      "object": "asm/maps/vault_rooms_2.o"
+      "object": "build/usa/asm/maps/vault_rooms_2.o"
     },
     "src/maps/venus_lighthouse.c": {
       "functions": {
@@ -34795,7 +34795,7 @@
           "virtual_address": 33606616
         }
       },
-      "object": "asm/maps/venus_lighthouse.o"
+      "object": "build/usa/asm/maps/venus_lighthouse.o"
     },
     "src/maps/venus_lighthouse_aerie.c": {
       "functions": {
@@ -35088,7 +35088,7 @@
           "virtual_address": 33610640
         }
       },
-      "object": "asm/maps/venus_lighthouse_aerie.o"
+      "object": "build/usa/asm/maps/venus_lighthouse_aerie.o"
     },
     "src/maps/west_lunpa_cave.c": {
       "functions": {
@@ -35267,7 +35267,7 @@
           "virtual_address": 33593868
         }
       },
-      "object": "asm/maps/west_lunpa_cave.o"
+      "object": "build/usa/asm/maps/west_lunpa_cave.o"
     },
     "src/maps/world_map_cutscenes.c": {
       "functions": {
@@ -35704,7 +35704,7 @@
           "virtual_address": 33603672
         }
       },
-      "object": "asm/maps/world_map_cutscenes.o"
+      "object": "build/usa/asm/maps/world_map_cutscenes.o"
     },
     "src/maps/xian.c": {
       "functions": {
@@ -35853,7 +35853,7 @@
           "virtual_address": 33591624
         }
       },
-      "object": "asm/maps/xian.o"
+      "object": "build/usa/asm/maps/xian.o"
     },
     "src/maps/xian_rooms.c": {
       "functions": {
@@ -35936,7 +35936,7 @@
           "virtual_address": 33588632
         }
       },
-      "object": "asm/maps/xian_rooms.o"
+      "object": "build/usa/asm/maps/xian_rooms.o"
     },
     "src/math/math.c": {
       "functions": {
@@ -35965,7 +35965,7 @@
           "virtual_address": 134235604
         }
       },
-      "object": "src/math/math.o"
+      "object": "build/usa/src/math/math.o"
     },
     "src/math/matrix.c": {
       "functions": {
@@ -36078,7 +36078,7 @@
           "virtual_address": 134238696
         }
       },
-      "object": "src/math/matrix.o"
+      "object": "build/usa/src/math/matrix.o"
     },
     "src/math/vector.c": {
       "functions": {
@@ -36101,7 +36101,7 @@
           "virtual_address": 134238824
         }
       },
-      "object": "src/math/vector.o"
+      "object": "build/usa/src/math/vector.o"
     },
     "src/memory/alloc.c": {
       "functions": {
@@ -36148,7 +36148,7 @@
           "virtual_address": 134236528
         }
       },
-      "object": "src/memory/alloc.o"
+      "object": "build/usa/src/memory/alloc.o"
     },
     "src/memory/free.s": {
       "functions": {
@@ -36165,7 +36165,7 @@
           "virtual_address": 134229488
         }
       },
-      "object": "src/memory/free.o"
+      "object": "build/usa/src/memory/free.o"
     },
     "src/other/sub_8006864.c": {
       "functions": {
@@ -36188,7 +36188,7 @@
           "virtual_address": 134244464
         }
       },
-      "object": "src/other/sub_8006864.o"
+      "object": "build/usa/src/other/sub_8006864.o"
     },
     "src/other/sub_80f0008.c": {
       "functions": {
@@ -36199,7 +36199,7 @@
           "virtual_address": 135200776
         }
       },
-      "object": "src/other/sub_80f0008.o"
+      "object": "build/usa/src/other/sub_80f0008.o"
     },
     "src/other/sub_80f95e0.c": {
       "functions": {
@@ -36420,7 +36420,7 @@
           "virtual_address": 135242216
         }
       },
-      "object": "src/other/sub_80f95e0.o"
+      "object": "build/usa/src/other/sub_80f95e0.o"
     },
     "src/random.c": {
       "functions": {
@@ -36431,7 +36431,7 @@
           "virtual_address": 134235224
         }
       },
-      "object": "src/random.o"
+      "object": "build/usa/src/random.o"
     },
     "src/render/blit_fade.c": {
       "functions": {
@@ -36484,7 +36484,7 @@
           "virtual_address": 134239868
         }
       },
-      "object": "src/render/blit_fade.o"
+      "object": "build/usa/src/render/blit_fade.o"
     },
     "src/render/blit_fade_alt.s": {
       "functions": {
@@ -36513,7 +36513,7 @@
           "virtual_address": 134226372
         }
       },
-      "object": "src/render/blit_fade_alt.o"
+      "object": "build/usa/src/render/blit_fade_alt.o"
     },
     "src/render/blit_fade_rom.s": {
       "functions": {
@@ -36542,7 +36542,7 @@
           "virtual_address": 134225848
         }
       },
-      "object": "src/render/blit_fade_rom.o"
+      "object": "build/usa/src/render/blit_fade_rom.o"
     },
     "src/render/draw2D.c": {
       "functions": {
@@ -36553,7 +36553,7 @@
           "virtual_address": 135189512
         }
       },
-      "object": "src/render/draw2D.o"
+      "object": "build/usa/src/render/draw2D.o"
     },
     "src/render/draw2D_util.c": {
       "functions": {
@@ -36564,7 +36564,7 @@
           "virtual_address": 135065444
         }
       },
-      "object": "src/render/draw2D_util.o"
+      "object": "build/usa/src/render/draw2D_util.o"
     },
     "src/render/window_effect.c": {
       "functions": {
@@ -36593,7 +36593,7 @@
           "virtual_address": 135041444
         }
       },
-      "object": "src/render/window_effect.o"
+      "object": "build/usa/src/render/window_effect.o"
     },
     "src/rpg/djinni.c": {
       "functions": {
@@ -36676,7 +36676,7 @@
           "virtual_address": 134718908
         }
       },
-      "object": "src/rpg/djinni.o"
+      "object": "build/usa/src/rpg/djinni.o"
     },
     "src/rpg/get_unit.c": {
       "functions": {
@@ -36687,7 +36687,7 @@
           "virtual_address": 134706068
         }
       },
-      "object": "src/rpg/get_unit.o"
+      "object": "build/usa/src/rpg/get_unit.o"
     },
     "src/rpg/item.c": {
       "functions": {
@@ -36860,7 +36860,7 @@
           "virtual_address": 134712160
         }
       },
-      "object": "src/rpg/item.o"
+      "object": "build/usa/src/rpg/item.o"
     },
     "src/rpg/move.c": {
       "functions": {
@@ -36895,7 +36895,7 @@
           "virtual_address": 134713036
         }
       },
-      "object": "src/rpg/move.o"
+      "object": "build/usa/src/rpg/move.o"
     },
     "src/rpg/party.c": {
       "functions": {
@@ -37014,7 +37014,7 @@
           "virtual_address": 134710236
         }
       },
-      "object": "src/rpg/party.o"
+      "object": "build/usa/src/rpg/party.o"
     },
     "src/rpg/pc.c": {
       "functions": {
@@ -37193,7 +37193,7 @@
           "virtual_address": 134719392
         }
       },
-      "object": "src/rpg/pc.o"
+      "object": "build/usa/src/rpg/pc.o"
     },
     "src/rpg/random.c": {
       "functions": {
@@ -37210,7 +37210,7 @@
           "virtual_address": 134716392
         }
       },
-      "object": "src/rpg/random.o"
+      "object": "build/usa/src/rpg/random.o"
     },
     "src/rpg/summon.c": {
       "functions": {
@@ -37275,7 +37275,7 @@
           "virtual_address": 134716196
         }
       },
-      "object": "src/rpg/summon.o"
+      "object": "build/usa/src/rpg/summon.o"
     },
     "src/save.c": {
       "functions": {
@@ -37370,7 +37370,7 @@
           "virtual_address": 134241528
         }
       },
-      "object": "src/save.o"
+      "object": "build/usa/src/save.o"
     },
     "src/serial.c": {
       "functions": {
@@ -37501,7 +37501,7 @@
           "virtual_address": 134244252
         }
       },
-      "object": "src/serial.o"
+      "object": "build/usa/src/serial.o"
     },
     "src/sound.c": {
       "functions": {
@@ -37602,7 +37602,7 @@
           "virtual_address": 135239112
         }
       },
-      "object": "src/sound.o"
+      "object": "build/usa/src/sound.o"
     },
     "src/sprite/draw_sprite.s": {
       "functions": {
@@ -37625,7 +37625,7 @@
           "virtual_address": 134258936
         }
       },
-      "object": "src/sprite/draw_sprite.o"
+      "object": "build/usa/src/sprite/draw_sprite.o"
     },
     "src/sprite/palette.c": {
       "functions": {
@@ -37690,7 +37690,7 @@
           "virtual_address": 134236216
         }
       },
-      "object": "src/sprite/palette.o"
+      "object": "build/usa/src/sprite/palette.o"
     },
     "src/sprite/rom_a418.s": {
       "functions": {
@@ -37725,7 +37725,7 @@
           "virtual_address": 134261096
         }
       },
-      "object": "src/sprite/rom_a418.o"
+      "object": "build/usa/src/sprite/rom_a418.o"
     },
     "src/sprite/sprite.c": {
       "functions": {
@@ -37880,7 +37880,7 @@
           "virtual_address": 134266676
         }
       },
-      "object": "src/sprite/sprite.o"
+      "object": "build/usa/src/sprite/sprite.o"
     },
     "src/sprite/sprite_info.c": {
       "functions": {
@@ -37891,7 +37891,7 @@
           "virtual_address": 135811080
         }
       },
-      "object": "src/sprite/sprite_info.o"
+      "object": "build/usa/src/sprite/sprite_info.o"
     },
     "src/sprite/summon.c": {
       "functions": {
@@ -37914,7 +37914,7 @@
           "virtual_address": 135117724
         }
       },
-      "object": "src/sprite/summon.o"
+      "object": "build/usa/src/sprite/summon.o"
     },
     "src/task.c": {
       "functions": {
@@ -38003,7 +38003,7 @@
           "virtual_address": 134235168
         }
       },
-      "object": "src/task.o"
+      "object": "build/usa/src/task.o"
     },
     "src/title.c": {
       "functions": {
@@ -38116,7 +38116,7 @@
           "virtual_address": 135215276
         }
       },
-      "object": "src/title.o"
+      "object": "build/usa/src/title.o"
     },
     "src/ui/debug/icon_test.c": {
       "functions": {
@@ -38133,7 +38133,7 @@
           "virtual_address": 134387580
         }
       },
-      "object": "src/ui/debug/icon_test.o"
+      "object": "build/usa/src/ui/debug/icon_test.o"
     },
     "src/ui/icon.c": {
       "functions": {
@@ -38234,7 +38234,7 @@
           "virtual_address": 134325668
         }
       },
-      "object": "src/ui/icon.o"
+      "object": "build/usa/src/ui/icon.o"
     },
     "src/ui/menu.c": {
       "functions": {
@@ -38737,7 +38737,7 @@
           "virtual_address": 134339880
         }
       },
-      "object": "src/ui/menu.o"
+      "object": "build/usa/src/ui/menu.o"
     },
     "src/ui/menus/debug_flag_editor.c": {
       "functions": {
@@ -38784,7 +38784,7 @@
           "virtual_address": 134386948
         }
       },
-      "object": "src/ui/menus/debug_flag_editor.o"
+      "object": "build/usa/src/ui/menus/debug_flag_editor.o"
     },
     "src/ui/menus/debug_warp_menu.c": {
       "functions": {
@@ -38813,7 +38813,7 @@
           "virtual_address": 134385812
         }
       },
-      "object": "src/ui/menus/debug_warp_menu.o"
+      "object": "build/usa/src/ui/menus/debug_warp_menu.o"
     },
     "src/ui/menus/menu_bars.c": {
       "functions": {
@@ -38908,7 +38908,7 @@
           "virtual_address": 134385320
         }
       },
-      "object": "src/ui/menus/menu_bars.o"
+      "object": "build/usa/src/ui/menus/menu_bars.o"
     },
     "src/ui/party_menu.c": {
       "functions": {
@@ -40149,7 +40149,7 @@
           "virtual_address": 134932976
         }
       },
-      "object": "src/ui/party_menu.o"
+      "object": "build/usa/src/ui/party_menu.o"
     },
     "src/ui/save_menu.c": {
       "functions": {
@@ -40616,7 +40616,7 @@
           "virtual_address": 134383264
         }
       },
-      "object": "src/ui/save_menu.o"
+      "object": "build/usa/src/ui/save_menu.o"
     },
     "src/ui/shop.c": {
       "functions": {
@@ -41041,7 +41041,7 @@
           "virtual_address": 134953068
         }
       },
-      "object": "src/ui/shop.o"
+      "object": "build/usa/src/ui/shop.o"
     },
     "src/ui/text.c": {
       "functions": {
@@ -41346,7 +41346,7 @@
           "virtual_address": 134348200
         }
       },
-      "object": "src/ui/text.o"
+      "object": "build/usa/src/ui/text.o"
     },
     "src/ui/ui.c": {
       "functions": {
@@ -41825,7 +41825,7 @@
           "virtual_address": 134323784
         }
       },
-      "object": "src/ui/ui.o"
+      "object": "build/usa/src/ui/ui.o"
     },
     "src/ui/window.c": {
       "functions": {
@@ -41872,7 +41872,7 @@
           "virtual_address": 134308092
         }
       },
-      "object": "src/ui/window.o"
+      "object": "build/usa/src/ui/window.o"
     },
     "src/video.c": {
       "functions": {
@@ -42063,528 +42063,528 @@
           "virtual_address": 134234320
         }
       },
-      "object": "src/video.o"
+      "object": "build/usa/src/video.o"
     }
   },
   "verification": {
     "artifacts": {
-      "asm/lib/ramlib.o": "130f9e3079a494307e5a9033a80af6a592e56610b95da98c4d48ac2a91e72ce5",
-      "asm/maps/alpine_crossing.o": "75bf0dd286f3a1b876de83b0debd084fefb904bfe038783a2c04873fd4270140",
-      "asm/maps/altin.o": "a71569cb5ce7fc93280ac15a5f42e3d770286dff08a654fa752649a3456e54ed",
-      "asm/maps/altin_peak.o": "2a1d61fc78c20408ce198327b341ba559b5e73066a47b10a6e686de9ac86a278",
-      "asm/maps/altmiller_cave.o": "7cec0fbe73339f2bf48377e2d6ca6b45ee98fab55298489bca05a8156a61a8d1",
-      "asm/maps/babi_lighthouse.o": "b81bd20b4213c52bd2b1c8f3c447d98d040687f96f6afbedb96b7f910a29a1da",
-      "asm/maps/babis_palace.o": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
-      "asm/maps/bilibin.o": "2dd973c47d9e210eee31081620262c0a7b20de332c2bcc414ee370e3f412fd43",
-      "asm/maps/bilibin_cave.o": "9595d680b8e2f693ce31382b3ba7045658a519aea3c198d836ea9488c335d7f0",
-      "asm/maps/bilibin_rooms.o": "d68e854b840b8b99bc41935d988a764e153f405b76cd9820bbaf1f15b7072363",
-      "asm/maps/colosseum.o": "11f295f5b4caf72c1cf34c4e108b8155b823108601edd679e4afb32e1d470b60",
-      "asm/maps/colosseum_final_1.o": "35e333821c789f8c2d5326e3cd2b11d2ebfd5fcf92c6c1eae0d99a160af4e6f1",
-      "asm/maps/colosseum_final_2.o": "ea4ff107be1827276c68d7bbf2e546a0aaab8459e3ecb2bf079ff433b258b0cd",
-      "asm/maps/colosseum_final_3.o": "e5c4dc2c68f72b502721d6ba23979051859ce249c2d058c13eceec609d103783",
-      "asm/maps/common/common0.o": "4ac479703fe8da1ea7b2969a05ac5eec4b4195e76448e968cc15d0aca00e0407",
-      "asm/maps/common/common1.o": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
-      "asm/maps/common/common2.o": "ee9b4962bd06323b3e4861b2ab256df8bf98c65e83c69856bc61d04f9084f3ca",
-      "asm/maps/crossbone_isle.o": "7d35a6743c6edbad174e223dc533e7c5ace46536b62eb760000accaaba89dc7e",
-      "asm/maps/crossbone_isle_dungeon_2.o": "ab924b95f5d5b0af507cdf3f2f14596c3af4497f74b0cbb62fd6bc1a0d387ffd",
-      "asm/maps/crossbone_isle_dungeon_4.o": "0a6c76195a9216be0b79782c5b254168fe081cedf465acc5097e4983e1380b8d",
-      "asm/maps/debug_get_item.o": "65b5f156733b3edabe5ed3643de9702f3f3f23cd9d91afe203e08fddc07c1459",
-      "asm/maps/debug_test.o": "b820d9907065a718bd22bf87fde9ed276c98ccac1d5275dc0da2e1edaeb2839b",
-      "asm/maps/elemental_stars.o": "759c7dcd98dd5af7d86167c74e7894c618efca34c64b58b47d860dfe1ffc4f7d",
-      "asm/maps/elemental_stars_eruption.o": "0bc81c48a893fc13484a95fe04659feffa023a2474fa2f6b5772bf49e54a55c1",
-      "asm/maps/fuchin_temple.o": "f647e46a313eb5abdcb7a6a7a9d769c8a265f69a1624108efcaf6599a148ab14",
-      "asm/maps/goma_cave.o": "ab44a10bb138f1c2281110f141f201f2558d3c990328b42ad76975db88cb41c2",
-      "asm/maps/goma_cave_1.o": "188d3a60f80b188bba1d77210cd918859c9a3deb414e910f5b308d54c4310280",
-      "asm/maps/goma_cave_2.o": "40dd84ee3c89dae21ed7f53bd4ea7ea0f2ca96f3fe4813f76adf22deacb2e84e",
-      "asm/maps/goma_cave_entry.o": "1c6e4c6c231204a2a875c1cc75d3b1823a675f8b4db48879916c911ee71b53ff",
-      "asm/maps/gondowan.o": "bcac2ea08fcf7d683a02f1f0049392185c35e69a9b948aa940c6a60cfc9423eb",
-      "asm/maps/hammet_palace.o": "9ef09358a9c31e29e117e06b57dfcd9b60bd7300a7996fd3ca9298819ec55992",
-      "asm/maps/imil.o": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
-      "asm/maps/imil_falls_cave.o": "b82e1c993b438b1157f886dc175d84293eb3b6d0b481695c65a28977086a758e",
-      "asm/maps/jail.o": "2f75a981b5b43462c657253047973a6c299263ee968273cb047264fea5588280",
-      "asm/maps/kalay.o": "0f8991b65c639a3c01b46369be0e0bc99bc591f6714f14762c8d3f28a54145ff",
-      "asm/maps/kalay_docks.o": "a98b2a8b04f0488c3d75539dd7fd2a2ededecd0c409e2c9867871c1d19e2c499",
-      "asm/maps/kalay_rooms.o": "7eccbff11e715720e42788dd7cd217c7426bd2234a7ca652fcd2660675c11d0d",
-      "asm/maps/kolima.o": "c8654a1a1d5a8318218fbda10a182ab0cb2b4247173cb4d0b707471497dae751",
-      "asm/maps/kolima_forest_1.o": "279997d005f3ce6e67e338ed5b46886a325ef3ef5db2738f39a2a3512a249153",
-      "asm/maps/kolima_forest_2.o": "ea9dd9d7ceaa08c39d23e8500f0f66a7af2223647e1bc8efcac77eb75ed72127",
-      "asm/maps/kolima_forest_3.o": "fe6cfff03a9f5840b916dab4d0c21edc65b0d51773ca2e14fd52f1dc26a5bbc2",
-      "asm/maps/kolima_forest_4.o": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
-      "asm/maps/kolima_forest_5.o": "0499b2231c7fe943b820c816050b26ff0337c88743e478e8e010a349e5e60192",
-      "asm/maps/kolima_rooms.o": "8de4629aac1ca627895633d8674241d822c0c68aeb8522dce768a2a7e47bf9e8",
-      "asm/maps/lalivero.o": "c8ec9529bdb21ca889570f1f7967f11ead6483b51f6816dfb407127729161808",
-      "asm/maps/lalivero_rooms.o": "197800e09540ccf88cbbed575928527b8ca8a480afff52e78969917c9bcbcd9b",
-      "asm/maps/lalivero_ship.o": "b6dd018cd553a4d8f93398e7993894deba4c17efa84f3af0c4092c5580d9834d",
-      "asm/maps/lamakan_desert.o": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
-      "asm/maps/link_lobby.o": "3553b78897aeb5940fd36c264fdc9dd78df7ed6ae38f2bdcdf5a8842a20b0c23",
-      "asm/maps/lucky_fountain.o": "73ee6dcbaf78984853f8d0d20f6c4a38ae199b9f622ff81e3f6231c726a9d736",
-      "asm/maps/lunpa.o": "ceca73e0c2d7fffca37e15f6cad1d92b7c819b966fc5b39180c5784b4047561f",
-      "asm/maps/lunpa_fortress.o": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
-      "asm/maps/lunpa_rooms.o": "8a580c5089adfd30bd5b60775204c6f095807c822efd6dd986c4a6d3c52eefca",
-      "asm/maps/main_menu.o": "79a6407f0eb609885d5b9d4544c83c8ab45b584956ecc5d5f281fcf221cf9b5a",
-      "asm/maps/mccoys_palace.o": "4bfed0a942339d7efad8847dfb139bfabf7607da8524d57dc390b0dc8f9c1c49",
-      "asm/maps/mccoys_palace_ext.o": "b709af96ae1b8891ba836bf99be9609c0c8f78ae6c85ea458d96c9f261b899fa",
-      "asm/maps/menu_test.o": "0636f48eee8c4d84d272a7b10279f51a76bb44e3cd49b9d79eb7775131ef2215",
-      "asm/maps/mercury_lighthouse.o": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
-      "asm/maps/mercury_lighthouse_aerie.o": "8529bba6bd047512d5425a37250eb5ed75371f27b2c30166c44ba41769bc0409",
-      "asm/maps/mercury_lighthouse_entrance.o": "7f331a0dcaa4aea8e8de3fb3e75d35b47fc64a1d2cb7a5f01257991e609d152e",
-      "asm/maps/mogall_forest.o": "96ecee5f730286d8d2eaa8249a700153f73c25165f22ea5c05dd985e0ea3d5d0",
-      "asm/maps/sol.o": "05317e12d9ada35580c99d5d821e7caa7293642876f86efa8a283d40d2753e1e",
-      "asm/maps/sol_sanctum_1.o": "c19c718a70f523de711f889c328051c7bc6006f4519254520592f443310f406b",
-      "asm/maps/sol_sanctum_2.o": "88b72657244d632f7fa332eadfe8bba7a7f7332ed9ad4e6d01110450b5ffd2f3",
-      "asm/maps/sol_sanctum_3.o": "0160a872039c3b10c81bdaa811a0d4d4c5a428d6239f1aeb5c99366bdba6e0f6",
-      "asm/maps/sol_sanctum_4.o": "34b7d878f17ff78edd3b72f96b4a318c689a218ec0620bc535dfeb8f1ebc3455",
-      "asm/maps/sol_sanctum_5.o": "bbc6f8509fc367ead4c0be4d247f39f40b7b83d743fc5754e1bf65cc9423ea23",
-      "asm/maps/suhalla.o": "a104327a717b813329a69bdcab05c1de016a0da702b29517091459d3a87a3e5e",
-      "asm/maps/suhalla_desert.o": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
-      "asm/maps/suhalla_gate_1.o": "56d7799dc604f3effe825c39d91cb78dfb07798d5efb16987525058b56f9fe4a",
-      "asm/maps/suhalla_rooms.o": "0aa4e74f09500e468650c80136fc8bc7195f5847483072ceb35c052c8a8324b2",
-      "asm/maps/title.o": "383f24c0883ce9e35ce4ad28e25bb95853338bc2a6a25aa116d43e400dd5632c",
-      "asm/maps/tolbi.o": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
-      "asm/maps/tolbi_bound_ship_deck.o": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
-      "asm/maps/tolbi_bound_ship_hull.o": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
-      "asm/maps/tolbi_bound_ship_top.o": "aa7dc4ef31de89c53a9cc10059474167845995384289d227b3e50c35994900cd",
-      "asm/maps/tolbi_rooms_1.o": "c635b771ded771dc4747e232d4587523731b668f87871c1c72740143d5d9cbe3",
-      "asm/maps/tret_tree.o": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
-      "asm/maps/tret_tree_ext.o": "8a59b9f33c90c0da58481f7131c95ed53af30c8f4d3745d1025cb05290c3a95b",
-      "asm/maps/tunnel_ruins.o": "e4e6de27111279191d08a9782068011464fccc8ab2078d4f469d4c41aef505d5",
-      "asm/maps/vale_cave.o": "dccab8ed2825a20aa5d4e0056cf225b75f8e1179680c87f34a596f9a2b59306c",
-      "asm/maps/vale_kraden.o": "8f9be3dc734568b71673c83dc6b3dbb9579189ad9e38eb5a8721797a72364e7b",
-      "asm/maps/vale_plaza.o": "0a7154466ba5abfd758a10c4a2ea037d105018381b8aa365826a52dfb1a2d3cc",
-      "asm/maps/vale_river.o": "a4565edbfa1b0eb3c6043d96c8b7d9602bbb3e482bc9f4a98214011e826a960b",
-      "asm/maps/vale_river_eruption.o": "4d0e07fbdd6d6d6c3f05fbf533344c6b2c8c4dc2eb06e35a14ec6debe608e291",
-      "asm/maps/vale_river_prologue.o": "39110a10d23fe8b895728722660269dc19478a72ac99bb13ef2c06f27bd8618f",
-      "asm/maps/vale_rooms_1.o": "1a5ebdb5591c99466b97a313222eb2a0558298a55d52d4c31a3c352deea69a40",
-      "asm/maps/vale_rooms_2.o": "a540f3b36f344caa8252425ccc6587c81022ebbac162facebb314ece3439bf4e",
-      "asm/maps/vale_sanctum.o": "c7888c339ac48942af2be6e3f079a40a8274978e38be3e2ddb5353ed1315ad8d",
-      "asm/maps/vault_1.o": "9a9c5a0b5d62347f1843ddb9ea27aaed7fa351be6517b0643b21b14e2f6ac904",
-      "asm/maps/vault_2.o": "3c4a2d2b0cbe10b7cbde6d49967703797cc2474a3942cd1b42d8b11cd9a4dd0a",
-      "asm/maps/vault_cave.o": "3df847350e55e084582e5abbf0a30a6ce1f52fb9c3deef595b5dab58f5d8cc3f",
-      "asm/maps/vault_rooms_1.o": "b89e9b0aeb10df5f1e0807fb1f3c7e47a219d0b64364b4594b1488bb515214fc",
-      "asm/maps/vault_rooms_2.o": "18e2592523f7fcc2e5474cec68215275230eb1001aed8db0b0213a187ede9fe9",
-      "asm/maps/venus_lighthouse.o": "0bb5f06c759b8ab4c0e33b222b228332dc59b896314958810607bd91495595a8",
-      "asm/maps/venus_lighthouse_aerie.o": "7aaa463dbd16c1f0e55b690991408d86a1a1cd7452b56d03009e2d6cf8799e80",
-      "asm/maps/west_lunpa_cave.o": "a0cd35271501987f7a9354c040a08ace398ed40fee3baa7e14d1a8b8252c8f82",
-      "asm/maps/world_map_cutscenes.o": "48bfa5dd3b70a0bf5347698924770951bb02c064d467dd69dd3f5a412db3a8ba",
-      "asm/maps/xian.o": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
-      "asm/maps/xian_rooms.o": "98ce1de4352d4b987ec56a4d1b4f1a58d4000259885d94db094d33fc0b771753",
-      "goldensun.elf": "166f050996f53bb80398721964aace0da3132431bfe8fc35839e7ad3f58b5bee",
-      "overlays/rom_779188/overlay.elf": "755417f31d24e2936ade3c9919d34ed191e4c38e88ecc77043f171a56150844d",
-      "overlays/rom_779188/overlay.map": "60678f9c8f4bcb3775d4d88eaddf29cedd76440b4101d6343ff2d3c35130c34c",
-      "overlays/rom_7795e8/overlay.elf": "d836d291becc95d9a976d8f6fbaaa41f4a177854450df020504560db253a079e",
-      "overlays/rom_7795e8/overlay.map": "b0464cd6a0cbc78fa08e84a60d95a20eb79ea8c5e8ba727a349aa8ae96de84d0",
-      "overlays/rom_77a7c8/overlay.elf": "701fbbe7e08bdb51a2d3f319f61532a36f2ea7f2f9590d03927db82f4c5e85b8",
-      "overlays/rom_77a7c8/overlay.map": "16f1d82156d7005e3cd559ca7045f058d4bd09b92bf8cd808811503b9fe1a519",
-      "overlays/rom_77dd1c/overlay.elf": "eaeca84d573832076eadb918e2a689be95478e30fd9e030b4c8106e11190319c",
-      "overlays/rom_77dd1c/overlay.map": "33addbbf3f3c2b51ecf55aa2bdc5caa46b0b2a284cbc567c6b6f102e3ebb98a7",
-      "overlays/rom_780898/overlay.elf": "6cb7161b2e5350404f3fd96ce382f93e485f3c38901b397ba5563b463f8e7f84",
-      "overlays/rom_780898/overlay.map": "ae03a2a7f5c9518bf98125dcbf37a4d5942d77b08dda7aef9b387f59c691cfcb",
-      "overlays/rom_784360/overlay.elf": "32c73cc163bb8a37af692df87aff9adbdd65a3346e98001b1a1bf436620f4314",
-      "overlays/rom_784360/overlay.map": "6c5ac18660e443f9fca965b2289f1daa07132db2c2b3747e0ee186fa75dd675d",
-      "overlays/rom_78603c/overlay.elf": "a4382eb63538ed43766442c384714b42ab3241189b031f1f4b682175aba88c1b",
-      "overlays/rom_78603c/overlay.map": "1ac003a1968f6adfd1b487eb47190827e6a8406610447f375ec8f6866a91adf3",
-      "overlays/rom_786f0c/overlay.elf": "142668edad14ac0f310df41d41c2075d0762a8e133a30c5215c86c75f710344f",
-      "overlays/rom_786f0c/overlay.map": "33fc668ce82d2ebc0e16195d21f3973924b59a850f08218db14473440eb7c43b",
-      "overlays/rom_787e04/overlay.elf": "e3548c4ae3ff643642ce0ba0b77e3487ac10b608c386b41af1be62caae79960a",
-      "overlays/rom_787e04/overlay.map": "cff1c3811e6cf2307b393bc36783304ac47f37409a045b90186b350e6e0e062d",
-      "overlays/rom_7892c8/overlay.elf": "475827192d63f41dd502b74612737aca91714c22103654e2b25894cd36871525",
-      "overlays/rom_7892c8/overlay.map": "5d37d95349a2a5115697b2cda6c4737c9656585f2affc0525246ab877c7d407f",
-      "overlays/rom_78ac38/overlay.elf": "d565cf9004b94b1def7f4c88c6d4e86116e9a3969d29bb106ed0b7a1c0581871",
-      "overlays/rom_78ac38/overlay.map": "c05813072e1f34bad03afdb18c2a3eeae2af1972a5059c037780cf1568f198bf",
-      "overlays/rom_78b2ac/overlay.elf": "897c034c5c2c523be5bc38d8f19a8976381dbaf90413092d8c2b144fc0949447",
-      "overlays/rom_78b2ac/overlay.map": "740e9418dd88a9b14c1550b951e2dedd41eb3bf4de418026a60e33136c01cd2a",
-      "overlays/rom_78c76c/overlay.elf": "a99631dee73064c7a327277c70d64152a6eea451779780646d82690594dcdadf",
-      "overlays/rom_78c76c/overlay.map": "4ab6d95efcdc37c4ec9b85e96041566ff2f2cec98c934bde063b58105fb20b1c",
-      "overlays/rom_78dc80/overlay.elf": "eecbbb2656cf24831ed656a9c2d68e2eb8371342f84ba4391fc408c33a889c5f",
-      "overlays/rom_78dc80/overlay.map": "cd67544dca8573a5a8858e72ac1ed8f47ba88e86ba13931f488c6345a2531af2",
-      "overlays/rom_78dd40/overlay.elf": "8af92785e32e634d7ce25068b9ff63a0d3f16aa802c809f3030fe7db0b8bb481",
-      "overlays/rom_78dd40/overlay.map": "176177bd667c0dca3a2144508e9a81e1e1a1a5d2d3126078259db771a0eb597a",
-      "overlays/rom_78de18/overlay.elf": "7b22b7a14bb6eca16a3853ccb3e4c2d6650646641e81e2c8504dab20fd0176a7",
-      "overlays/rom_78de18/overlay.map": "e26619d51b8ec72ffe1eba12bc51a1cb29493dc4da7f54f28e261709ce6bbfee",
-      "overlays/rom_78dee8/overlay.elf": "f3db7a67dd48c1997dd4b69aa1489649ace5a46b117242100dc6ab2366a84ee3",
-      "overlays/rom_78dee8/overlay.map": "829af068802f5ed1c578e024802273d229279c78866c0a0fdc4749e654f05668",
-      "overlays/rom_78ef88/overlay.elf": "088877f9c4adcf2e1f04f48835081e6b879822c3fc1126edc7fd56249916e9a5",
-      "overlays/rom_78ef88/overlay.map": "635e7145f7f620aae274924862a79205ce99704a8f93ce8825743f47acbb35ed",
-      "overlays/rom_791794/overlay.elf": "f4907b58e9e88fe9ee8550767f5de9ee01a46bef5f6eeb558be3ab6ddaaf1d70",
-      "overlays/rom_791794/overlay.map": "e0899337e71c176f441cc9a93e6cdd55cec626073d3c833341965265881cadd2",
-      "overlays/rom_793768/overlay.elf": "5b1bf859f025feac995d85b3f13f1035af195f580e809c6f87f9e5c1b49891c2",
-      "overlays/rom_793768/overlay.map": "8b3ae1ccc9516664d35a48ca10587a63156a748ac374c8dc4cfdacdb77961853",
-      "overlays/rom_794ac0/overlay.elf": "16fcd53806825d1d9aeba5b5f8920d02c3be0dd88a2c20ce3c985e3f0b9c7827",
-      "overlays/rom_794ac0/overlay.map": "54d3ff1457f02268896d7e9a63ce725ecf4d930e1161ccc73ecc75ae50da5f58",
-      "overlays/rom_797740/overlay.elf": "02cbaa70271c7846b3b73a62c035503be73db9239fe46937d7d028ac7697c867",
-      "overlays/rom_797740/overlay.map": "ff490d3c0b10c15dc2e3234918e74a11a12a953d06b04835095a8e6a7b6b53e0",
-      "overlays/rom_797990/overlay.elf": "582fbd96257e37767ce898080dae9194851ad35a93e81dd16f72328f432db9f4",
-      "overlays/rom_797990/overlay.map": "246b9146f9251caf8cafc389118fd7e7d059434891f5d4b427aeac897608c437",
-      "overlays/rom_7987ac/overlay.elf": "62155dd79e25b8febf1df6d8c65c0e300c43b06cb0a8b3871ec637835e65db91",
-      "overlays/rom_7987ac/overlay.map": "f0ca27bf41504da9dc6c8f27bd7abb1f99212ea64798718980799bb1d9ce4829",
-      "overlays/rom_798dc4/overlay.elf": "1917dae7797a94f4f6ed6e890076d0e01ee029570b9e538a35df20e0b723c98f",
-      "overlays/rom_798dc4/overlay.map": "fe2ad8faed9d31f394ec64d679c198c8819e71f66707c0e9faedb67e1a851513",
-      "overlays/rom_799998/overlay.elf": "0da397474191328715f2e71da438b58eb21c6f7a4c15a8b5960815ef7cef7f8f",
-      "overlays/rom_799998/overlay.map": "e5e4907e77af77334cfde77d49680309c1e53c57a3abc7f23ed96ee5aff9e2b9",
-      "overlays/rom_799abc/overlay.elf": "8e2371ab32e44c13ae7a2d2652d9632dfd355cdfcef9cd4b0e697945ef8695e5",
-      "overlays/rom_799abc/overlay.map": "2ed6df3dffaefea9a5158f49e03838eb27ef25e4c9621bf4ab31407b1880510e",
-      "overlays/rom_79aad8/overlay.elf": "2d81ed816c853e15a26ab30615603a29c23089be4a98f81cf9ce4f6d973e0b0e",
-      "overlays/rom_79aad8/overlay.map": "713240cc4c546bcccabf0ed6831b45ba79b0976ff2b4a964dea87c0025083c9d",
-      "overlays/rom_79b154/overlay.elf": "542245b49854c005fa47b854a6fd9cca9b443c90385d43edd677157f3fa513d3",
-      "overlays/rom_79b154/overlay.map": "e0029d154a6b05b202dcf7d5b05a6cd59c686a85033d844b84d7dde5482231cc",
-      "overlays/rom_79c0c4/overlay.elf": "8c0f6382b411a02bbe6cf911f20cdcc6163c8d8507c0526fc49a7671b2a5b1b9",
-      "overlays/rom_79c0c4/overlay.map": "4ddc7e220bae4f932aeada7a06afc37bbd66c21d406ae570931ae878fdb42bd8",
-      "overlays/rom_79c738/overlay.elf": "f73b75f9d191c99699ec15e1c6bdcccf9efbf8568f4b35f9b5bbee9e58333162",
-      "overlays/rom_79c738/overlay.map": "40eff66d350c88785441c8892354573fc20c65a1c0bc7db4ce60690f32ce269b",
-      "overlays/rom_79dd90/overlay.elf": "6aa76c0dd012f54d47aa6f0c0d8d4ca913830d03373585733e5bc9de49cc6eea",
-      "overlays/rom_79dd90/overlay.map": "4db6b383521b9686b0a0cf4fe68545130c4bdc37b98a726150f72b42227858c7",
-      "overlays/rom_79e5c0/overlay.elf": "1d0aac695b2b38c703e58a8b94c13a3e40fff0e3bf96d5dce5f22a1e0dade3c8",
-      "overlays/rom_79e5c0/overlay.map": "1ec2a905a09c9693ae92422e5b5bf69c56ec4c87e8de44d840d20e4875569e72",
-      "overlays/rom_7a0010/overlay.elf": "af6c6264dddf5bf77479acf5b25d57f6ee989f4a41712d06bd48baea902a2bd5",
-      "overlays/rom_7a0010/overlay.map": "f9b943be7f353b4aa1479ec47b2f447a72c25323fd014d740a7d726938be1716",
-      "overlays/rom_7a04ac/overlay.elf": "492281fc5f40205af7bbe1eafad37ab2c92de06f19596f27e88c4583982bafd6",
-      "overlays/rom_7a04ac/overlay.map": "478137e2553c2c498c2a5e73bfe7134f3debbcea41bea860d55fdf042ef2ee3f",
-      "overlays/rom_7a1ff0/overlay.elf": "c88eca550bb3ec26698d8e717f833b065f69f9194a49a74fe816552c11186655",
-      "overlays/rom_7a1ff0/overlay.map": "239986789a4f3447f04e29b1a79661079ac89ecd9f9553a6998e75085abd0374",
-      "overlays/rom_7a2bf0/overlay.elf": "0c8ee918fab762eb14e2f3e9f63f1433e306a696f7018235a3efa3c1472b0165",
-      "overlays/rom_7a2bf0/overlay.map": "c14bc96aecf54016fe7e50801e02effb68740a3bc5ec1a372b66a9f4b2f871b9",
-      "overlays/rom_7a37f0/overlay.elf": "7bb6ef89c2ed0c4955402d1d3ce7864ea41510e2630b4e2824a996b2c9657e52",
-      "overlays/rom_7a37f0/overlay.map": "3d2731b4e0a489d0e25fa2dc2356ebca40806f6e2345a180c18e9beed241fc5a",
-      "overlays/rom_7a4370/overlay.elf": "b36407edafcb6bcda4d8d70994e0efc6f2edce6224e96791b3d8a7072d36ad65",
-      "overlays/rom_7a4370/overlay.map": "34753901fa46db90ceda6b81cb77987fa5fb81bcd9ea4765b00d7db89cf3f37e",
-      "overlays/rom_7a5214/overlay.elf": "a54a3aa5edd31a9b76655e9673ee592d8cfeb503de6092b8ecc4f9d2000d234b",
-      "overlays/rom_7a5214/overlay.map": "d4d56fd231a531208382b93268a7c59b674be662c16269f0b5ac56afa1588538",
-      "overlays/rom_7a67d8/overlay.elf": "108445bce21d1cdf69721954d1cafd3787861065fc3382cd0ae7a6aef4ef2a36",
-      "overlays/rom_7a67d8/overlay.map": "7604de1a06a8f40163fd18aed4bd81527db5c747fcc95dd70d2cdba246f90b41",
-      "overlays/rom_7a6ae4/overlay.elf": "5db7799727f05a19338e212336f77c4ca18c2bb443458189f82a7fbb71c53995",
-      "overlays/rom_7a6ae4/overlay.map": "1836509a26aceccccf85422a2c6a64df7162a84c76620d85f01fb360ef0b1f4b",
-      "overlays/rom_7a7298/overlay.elf": "9f768f8feebcc6c25646973d25648f8555be608abdf57173a32423ad889a2076",
-      "overlays/rom_7a7298/overlay.map": "6e5b30d304bada05c7be6f939898d1b262ba30d44a060d0a55707b605432ed63",
-      "overlays/rom_7a8c8c/overlay.elf": "30531d7d8ad4a9dac88b6c2e70305a7f8366d387ed56027c8f9b7ffed10685fa",
-      "overlays/rom_7a8c8c/overlay.map": "0ec76f71ac2a48eaf466779828b36d11d58dc1aa0c08dccf1cf8e482fbce402a",
-      "overlays/rom_7aa430/overlay.elf": "ad0723fcabca81db02037e0db8e2eba49fa507af7091bc054da811d12bc61c86",
-      "overlays/rom_7aa430/overlay.map": "e6f6f280899b3e0e691a70280acb70ee636c9c1c0af86c7ce3ae0a790afd4136",
-      "overlays/rom_7ac2d8/overlay.elf": "c03ed4dea916f47e1eb2be7a20716ce9c175834a08cadc7b41498a6d15b60a41",
-      "overlays/rom_7ac2d8/overlay.map": "d2733d09c15c9c2325087a674a9920d731deddf8a5d2580cba6763bb0b950c7d",
-      "overlays/rom_7b0400/overlay.elf": "698ab9340a28c91b3be9549d00fb22cebead40e3774c1a79a95c8d7d8f764fd0",
-      "overlays/rom_7b0400/overlay.map": "4a2ba4107e0339e1ce9478f607eccaa1999d18168fa2972220bfce557ed63f8b",
-      "overlays/rom_7b2078/overlay.elf": "fbff97a49174d092d90006430f4c78b01a1e4df409c0ed162969674d7ff20032",
-      "overlays/rom_7b2078/overlay.map": "82a18ecfa17207e9346f85c5d80230a3a5d8b109b21bb90442c2f0f8abee66cd",
-      "overlays/rom_7b4558/overlay.elf": "cab78d705011c8c96269369548541782d91a13cf51cc325a28bb7bea66e5aea8",
-      "overlays/rom_7b4558/overlay.map": "acaaea251c5ce9f7f778c91f54b118d3cca9c86ecc1750b37e4b1334a4ee3a2b",
-      "overlays/rom_7b6668/overlay.elf": "fb4531096ed0b8a326c86266c9b5fdb2a6f9c80eed10fb7f4acfa4348d7fc476",
-      "overlays/rom_7b6668/overlay.map": "fb61a3e7722f8d80657c05c2ffb316014e4a3cba16e3deb925cb443cbedc1b36",
-      "overlays/rom_7b7790/overlay.elf": "f3cb5aee3cc170a4c75835fccb9890feaf3c05c60e334aaea9ee26f72dd66360",
-      "overlays/rom_7b7790/overlay.map": "4166e598f814a1374f193b94831d31d9d26e3b94eab71490fa3287aaf8bc034e",
-      "overlays/rom_7b7f1c/overlay.elf": "b9f364886ff330f171a2e9813f04295636294f8fb8f390a29954b5d527ff817b",
-      "overlays/rom_7b7f1c/overlay.map": "95f959636980244b75b59156f653eea1527ff0a2a36ad7c02546fddfc74d13e5",
-      "overlays/rom_7b8cb0/overlay.elf": "0e576aaddff94938592219d0315401a7c9bcc4ae27d6115814e621324a000e7c",
-      "overlays/rom_7b8cb0/overlay.map": "718361596708b98dc42b5de3844b20cc5728f351dc150e82df06670f949c12b0",
-      "overlays/rom_7b9cb4/overlay.elf": "d4d5171414d4179c019deafc4086d6ae14a2ad032fa60134ceddc2e352255dd7",
-      "overlays/rom_7b9cb4/overlay.map": "db2d1470a430d53eaf6cbb4446ecc9deb65e0fcffcb7ac85fe930cae854ea1fc",
-      "overlays/rom_7bc690/overlay.elf": "c8f68dffb632aa27d03e4994c98fdb83c93536a96da4f06f777fe9edb7f5eb13",
-      "overlays/rom_7bc690/overlay.map": "502a79fba68d007f2158fc8ada576df12399671a117b333a63f14b6bf2c6fade",
-      "overlays/rom_7bdeb0/overlay.elf": "d2bae22644bcf00b4e2ecce97676286fa2c0073b79d4d53d758cd6d7828a12ed",
-      "overlays/rom_7bdeb0/overlay.map": "f393abc5e1c6e619ed4fea74e33101f6f6f5fb793f0ab42af8eb50d4cc08a445",
-      "overlays/rom_7bf5a8/overlay.elf": "2ccd4277456d58f777ae19b1a055fddc4aa944b0e946cc4a1e7085b76da7949f",
-      "overlays/rom_7bf5a8/overlay.map": "6b26a570d5172e88809dec771981774fe7b31351ba7f654e72f165de26a85fea",
-      "overlays/rom_7c097c/overlay.elf": "31b79fe835806e5429091267d90bc983f2329c483da3387093d68257ca2503b4",
-      "overlays/rom_7c097c/overlay.map": "b5be32df2d19a71324d7113000abb4ae7808d55fb2d522e56c4e59a5b107a86b",
-      "overlays/rom_7c3044/overlay.elf": "759b6230e747fdd807e8a883540ab244ddcaff0a5125d8e10ad1fac150b17663",
-      "overlays/rom_7c3044/overlay.map": "f39f40e656216225f59e7a4d9d31c778b691944ef08593e33413d69350f30738",
-      "overlays/rom_7c37ac/overlay.elf": "603838e28aa38973f79b3b6174bbf089ca756bda8b7f8407f479d8dcd5be0767",
-      "overlays/rom_7c37ac/overlay.map": "7ea3b0650263ac55af27e236826416800d7e78c3f73a37251fc27506c048b208",
-      "overlays/rom_7c460c/overlay.elf": "e60ee754d377955f4a041dceb29fb4164319e5af927f8da69fd0fe565c4053e8",
-      "overlays/rom_7c460c/overlay.map": "eac341f1712f4be6f19f24027083efcb64961487ba740efe2b3133e683dcf12e",
-      "overlays/rom_7c5974/overlay.elf": "c140ca4a3e159aad8b429540a610247c305e77243f747d27e873dfca3c152686",
-      "overlays/rom_7c5974/overlay.map": "ffb3ac1dc79a35b5ce1bc2a71d0617d8dead62f780872c5bfdb99531b47d5baa",
-      "overlays/rom_7c5efc/overlay.elf": "d00f6e528dcb9747ef788ce47f044b0b26c44d3160351e8bdfb4407e07de8b08",
-      "overlays/rom_7c5efc/overlay.map": "efe3a5f3bfba61146143ce5bd855062725c9387f915b43aba920f8925d82dd8e",
-      "overlays/rom_7c6bac/overlay.elf": "8a77b98bd9a45979b33b6353883287ede3f67536862ab9def9178357d943f1e4",
-      "overlays/rom_7c6bac/overlay.map": "6b3235010d1971f2497c07a556ffc963e8317b54dbeda7fb8a4f8fa93881860f",
-      "overlays/rom_7c7b9c/overlay.elf": "89f3f7ae30ac858a76d3182a79072d101b55de04276460ea43b0239adccc758c",
-      "overlays/rom_7c7b9c/overlay.map": "bc2cfad8527d17e9c6d8061470be6c231bc4f6eb5d1753d1bf55d493eb9b90a0",
-      "overlays/rom_7ca63c/overlay.elf": "98526214427e40b9bb6389d4b62ccae7c3f43630392e42a676f01a2af32f93cc",
-      "overlays/rom_7ca63c/overlay.map": "9eaad36b5abbffea9f889539f66af7595b53c089b04f513eb9f6501a16abe8f1",
-      "overlays/rom_7cb2c0/overlay.elf": "a804b2a3dd29e26f0e0cd8c3e6883fed35c7f3e445efc1b8932cd07025eba7a1",
-      "overlays/rom_7cb2c0/overlay.map": "8b0a0634f282d6a15120177f538fcd7f577ad12a95a8d4e93a0a3441c45ec5f7",
-      "overlays/rom_7ced6c/overlay.elf": "58e39653b4f599244d6a3554eef2c52b483b8e77f82b54c0335471233fb3ce8f",
-      "overlays/rom_7ced6c/overlay.map": "20037d3ae07a2890aec2a14d13c8d4c1af9233a2cd65fc08938acb39b6f0cf71",
-      "overlays/rom_7d0e88/overlay.elf": "6d634b2b42f48cad71e61e0f7d449de8f1459556d22d86aa206b88be33e21b40",
-      "overlays/rom_7d0e88/overlay.map": "4243267ba9fbad6d7432215ae24883931a6ffc077cf10294e732e9425624733c",
-      "overlays/rom_7d30e0/overlay.elf": "b0af7d975ef10c55e8f4d91cb01f3d830d8abf3998953eba38fab71d241d2f81",
-      "overlays/rom_7d30e0/overlay.map": "fcc61295205e4863d6e96721a156c219ae1f0db642465b4d04e4bbe936b91f7f",
-      "overlays/rom_7d4af4/overlay.elf": "07797eccc18780728a0c03b67f10e5e49103e159338c54b49adb2ecf130395e6",
-      "overlays/rom_7d4af4/overlay.map": "50d4ce6e2a57921da6d58bfb3fa198a519e0ee95c6edb9f36991813385d6555a",
-      "overlays/rom_7d5838/overlay.elf": "2e7658aabfd8ac02743f1d346d6389a5a142f17d1a4f961349eb38dfb244472b",
-      "overlays/rom_7d5838/overlay.map": "69c99bc268ce66c9055eed543bedb3ce2eae487b144be36231eefbdf30fbe543",
-      "overlays/rom_7d6418/overlay.elf": "0acb229ffe67e692c5ab846c46d93ee1619447a35e873a621799c7ed371e15ea",
-      "overlays/rom_7d6418/overlay.map": "ac4aa5a330b4770b2d32893dcf7df794be9296c039722da05a8e5b1d4ad3408a",
-      "overlays/rom_7d768c/overlay.elf": "cef425d4154947ec30e77be58b481d41111e5ca2c9609cf7e7bfda215c52a6cc",
-      "overlays/rom_7d768c/overlay.map": "9c97b77292417450eb9c9916c2412626e1db0e5ed4162e6b1eac8f04ca218958",
-      "overlays/rom_7d95dc/overlay.elf": "fdfb724f6f477f45187d4407ce925709e568277ae8c5d5ae4f768f90e3254dc3",
-      "overlays/rom_7d95dc/overlay.map": "2506336bdbd5265fff42a2ab7ab802e22311648c95465cb1cfaf8baa297dddd2",
-      "overlays/rom_7db0c8/overlay.elf": "c98d077e0602c0581a49e1b4588c4805db6ac0347a28f9a13dfd71da37559e3e",
-      "overlays/rom_7db0c8/overlay.map": "86d56747cec68e4119866b01d2e0f2de85c9a8869c43bbbcc9e850db7ea81126",
-      "overlays/rom_7ddb88/overlay.elf": "b96e054c66346f23ec669489e84d6cdfaf8e38cad1752b3d8d5e1b31b3c4d043",
-      "overlays/rom_7ddb88/overlay.map": "8fa28b92d225a1109842666fb8ffefd28df37eb09a59197c523517205a814f30",
-      "overlays/rom_7e0928/overlay.elf": "6b08ff78b9d5665ea8ed451b6df85278eba197056445d920bc6bc2499dc30e9e",
-      "overlays/rom_7e0928/overlay.map": "f8475c9d13e097cc52062ecd58a4f1d3e7a619197250c69bfce9046d6b02e589",
-      "overlays/rom_7e3e08/overlay.elf": "46551f56b7a5ec9fccc8875836f3a8a093d8a0a5770f4fa02eb6c11972b0d648",
-      "overlays/rom_7e3e08/overlay.map": "15be3989a7357ca21ecad32494b4f7a4a4763a6e8408af7bc9d6a01d7c5a7154",
-      "overlays/rom_7e636c/overlay.elf": "8856fef2865c50e0be47dd3462aec5ab2d3d3b01ff1a9d16f7b316ec22c2fe95",
-      "overlays/rom_7e636c/overlay.map": "6baaad7c8560028f8df46de8e99d87e2dfae5e3812447c1423b7d4258de83b79",
-      "overlays/rom_7e7574/overlay.elf": "906ea13f044e2b66d3ea7bcb853cfc5d90bdfb639171984e5df3ac0dfda39f58",
-      "overlays/rom_7e7574/overlay.map": "7fbaf7996ebd61670f6144d89bf76f4981e7d8ed0a395a870b6dd8db58d0d399",
-      "overlays/rom_7eaf28/overlay.elf": "871abdcf3d80e895167992522afe7f0fb71a286ced50912702a1139511639756",
-      "overlays/rom_7eaf28/overlay.map": "6b9f9f603c57ba2726087ae564674bff916ea24f51e6c849d54247d67a4ba270",
-      "overlays/rom_7ebdfc/overlay.elf": "3788fd377b7170c41260f85ffc91d944f74d81a3f7156af9faec49b7beef78a2",
-      "overlays/rom_7ebdfc/overlay.map": "b74bb55e2e3bf4c8ca4a4e8dd408750eb27da5bfd07a48c68e7e43c4829403ab",
-      "overlays/rom_7ec19c/overlay.elf": "eb10bf2617aad743cb481bc518ac170245f591e3a447c188746d548f216735cd",
-      "overlays/rom_7ec19c/overlay.map": "ed6f1a0c3827bebfd4cf48579621b9aebd1c998db241229273d1a2d5984ed247",
-      "overlays/rom_7ec968/overlay.elf": "7dba49d5ea8fdc0cd9bdd88c8e4b03956b760d5e32bde860d9324497690f1f52",
-      "overlays/rom_7ec968/overlay.map": "036743f53a82034cb6464f03b39670c60470d2aae7fdf7e49923e4dc43afb34c",
-      "overlays/rom_7ed0a0/overlay.elf": "789229491e51ccab5c335dbe1d7324dd8aeb971bd2969cd2579d2eb84281486b",
-      "overlays/rom_7ed0a0/overlay.map": "0d9899c5f21bdc6a9efd07203c6a4fd6c51120d4b5c64dc020e9835d6bc4a0f6",
-      "overlays/rom_7ef4f4/overlay.elf": "b052168cc7eada19391a2c40e61bd30b80774df1480f54b00ae0e5d0b931d7bc",
-      "overlays/rom_7ef4f4/overlay.map": "12c919878764f8ac1496af06fc8856131e1abdca283447e5cc3da2dac4393ec8",
-      "overlays/rom_7f148c/overlay.elf": "aac7c49edda576b238765b5b80bc5d26c590f8f52c5d3e3f332a0247c15d8494",
-      "overlays/rom_7f148c/overlay.map": "d3583e7514e272416974ed229181c6e3d15abec3c9267e9d86ba26232f375f5d",
-      "overlays/rom_7f21b8/overlay.elf": "a732d71c1eb08700e708d975ec390fb37fcfe391f5ede2fc0d575ae8f0b5aed6",
-      "overlays/rom_7f21b8/overlay.map": "053b20677e599d4d312f5f89ff4f4d13d5b8d4f1094c73f9ce7b776cdf3711da",
-      "overlays/rom_7f2f14/overlay.elf": "6d4892fe114f8d8e542f1dbba64dd126d8a7b575de7de5497fa8ca8ff51f1da9",
-      "overlays/rom_7f2f14/overlay.map": "76891a00c87b02fd36364b2af76e727cfffc9a1e4fc2419dca658cc5786c8a10",
-      "overlays/rom_7f6e64/overlay.elf": "c3f93a7e0c7610a6e557710ac70e72dbef169653d80666449680cc3914778bd6",
-      "overlays/rom_7f6e64/overlay.map": "0404df2d28683aa12796eb947fcad7df220ca6c1ea0bc46e3b7aa8ead05f87bd",
-      "overlays/rom_7fa4ec/overlay.elf": "9eccd39ef59d854f67fb3366374c9ff886d2fe2b257cf6815fb929a23608142b",
-      "overlays/rom_7fa4ec/overlay.map": "81dccc6856b4e6ad4f7d9e40290d50a363d93284a2ebc4a544cc25ddc37a1676",
-      "overlays/rom_7fb4a8/overlay.elf": "ad82244df42415e70735c70063b028129d7260f294ae80962869d7f8d9fb3d71",
-      "overlays/rom_7fb4a8/overlay.map": "1e9643c7a67bdc6f13b7c901bb19b5368d3a1b66c5fad38a3bf61e8c3079313c",
-      "overlays/rom_7fc618/overlay.elf": "66ad6f974cecb5e9fe5a9769dd1928dd932dce8c65630dfb873cd7ab0865e8bb",
-      "overlays/rom_7fc618/overlay.map": "ae9c7e7a7eab2aecf770eb07fb3bd1982fa33503a6beb29d02a51e5439a03654",
-      "overlays/rom_7fc720/overlay.elf": "d0c845edf8b6c31c544b3446830501f0a6c5ce7ee23d1b51fcef876ea65ec8e1",
-      "overlays/rom_7fc720/overlay.map": "6f224f3d0b85dfe7b1a0abb8f0fb225d5d7207548f70703393e29a2d34ef591b",
-      "overlays/rom_7fcd20/overlay.elf": "f0682fd1301509c0e56f57a5e634125bb1dfd946057852585b60f1e776ff06cf",
-      "overlays/rom_7fcd20/overlay.map": "e86a4351a338d21d8bfde5297ce10d16caf45b90f411e7bf13c2662d0cdadfc2",
-      "src/actor/actor.o": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
-      "src/actor/actor_script.o": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
-      "src/actor/player.o": "0f9a2a12f4a9b52c4740a723ef7605b974475a421c50b5a78f790e797f0e4927",
-      "src/battle/actor_pos.o": "f0777b49265e7372d1880713d94bb41172af34522abeb130b7999a69b9dac2d6",
-      "src/battle/battle.o": "49d3639008eb58dc075192b8d8a298fe59f45c344a0b9e15c77418d1350426ec",
-      "src/battle/debug_battle_test.o": "7111f830d6a0936cec16324d952630bbc1cc2e1fdb0366c32b7bebe948d4c84d",
-      "src/battle/enemy.o": "39c87e5b24b869d302dfedae7c57e321476f2336d03c030a4ff8190aad218933",
-      "src/battle/mechanics.o": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
-      "src/battle_anim/anim_util.o": "e53edcfa92b91071c31e9567c8ebda71f2f1b500e726ba03793a14c5625be161",
-      "src/battle_anim/anims.o": "7f99d432c9d910273bfee0627ac09f158e71d346c9a3415790151aa2d6ddc484",
-      "src/battle_anim/attack.o": "e5105fc4d44b744cc280a33886f0e39f07d366803c2ce7a0b87deaa1d033c442",
-      "src/battle_anim/camera.o": "ab567ca2d1c57ce831b285b6ae67d03013d6b8543629cf6836b8d64bd6a1f2ec",
-      "src/battle_anim/cast.o": "1fb08b84ffe35f00d6b9dd8a536570cef4c86a48d90be0ab77ff5e059f9360f8",
-      "src/battle_anim/color_cycle_vfx_palette.o": "dde0f902e3ee0f592b11ef71334d17c55d4ec5c1c3d160739fd0009dc7b82af7",
-      "src/battle_anim/djinn_set.o": "1a0188548b4870c1a4a4cd4fba680d01f06865b928a26fc74e80ca8c56f48823",
-      "src/battle_anim/djinni.o": "65d9badd13339fd6aa095c18252585e1eb985924a638b7582dc8cd853c641f01",
-      "src/battle_anim/epower_up.o": "3484bf3e941ec833adf095e32850be8685aba001677a959462eb13520adf9e55",
-      "src/battle_anim/move_intro.o": "be1bc4e17d10bce093cba2d7e6591ec76c5e122cd907ba67fa6dd5ddb67ed147",
-      "src/battle_anim/moves/annihilation.o": "ccc0ecba4a6b35691dd75fdebbe62001524229b607161feb18907cca17cb554f",
-      "src/battle_anim/moves/astral_blast.o": "60acfabbd97386295101755dae862708624dd99e33bb40c819fddce42ab694bb",
-      "src/battle_anim/moves/atalanta.o": "3c8360ee9470c34aa0ee05c93b0864425475c9571f55658abce06cca4ee255d0",
-      "src/battle_anim/moves/bind.o": "ebfcbfbdd8fe6dee77ed27a63998c1bc28a619cc091674b5f813a8c5b374e83e",
-      "src/battle_anim/moves/bite_sting.o": "9e23e601e6a742cdb19c163d9f1b869dcdcf82edeb0a0d2332019a63dba94f5d",
-      "src/battle_anim/moves/blast.o": "b3d0fbdbc7b32d0f8ed1f2a1acfd1d278d6447c6b53cd0322e953d20b93f52c8",
-      "src/battle_anim/moves/bolt.o": "c974f754d7e090f70cc6592965e4c8c4f032d7be9e9d2aa9909ee0b1ff7d23bb",
-      "src/battle_anim/moves/boreas.o": "9086b4d204d4df2865a08745fd133eacd005516e62aad494cfb5741490ed2a30",
-      "src/battle_anim/moves/break.o": "4eb57960a3e40eeb9e2d236593876a70b8a95f9a5a6678f75c577f45ef6b8324",
-      "src/battle_anim/moves/breath.o": "85469969890df0329c89f65e581cf74abd21e4d193b7ea8a8b2a619f3b6ede1c",
-      "src/battle_anim/moves/condemn.o": "31619bcd25ba0f35783e528085a5f7015bb84743e910113a991492a475f0185e",
-      "src/battle_anim/moves/confuse.o": "a75b1e323d464475d07aa09948f402f6f7da8bd9bb230bbce071a9286687a6c3",
-      "src/battle_anim/moves/curse.o": "1aca50b3a499ccd2734198af5648d4ee9982fdf3e36f5f12e0dfd55319bf932b",
-      "src/battle_anim/moves/cybele.o": "3fb07534cf9ad995a669b08c02e3413e38843aefae3612215461cb7cf708a849",
-      "src/battle_anim/moves/death_plunge.o": "78373a461a1b8937901ae069575507165094284bab545b45578fee9abc447376",
-      "src/battle_anim/moves/douse.o": "f4aa34c7c8f19cd8ddfb09098b3f010ab89bac9244d39c1648d735445223a8cc",
-      "src/battle_anim/moves/dragon_cloud.o": "58403c80e9fea4579213723fa83889e6d4e60a0ce61d24e3e22d754cc9a2ed81",
-      "src/battle_anim/moves/drain.o": "c76b5eedcceade7cc55df45e4a25043a710e4b093d30835d32ce0924ab6cd9c1",
-      "src/battle_anim/moves/fireball.o": "ae1bd5009ad4dcdd1a72bd328be2df9419f60243721a7da0578460d036a32960",
-      "src/battle_anim/moves/flare.o": "f2e28699bd84a99b6d3dc30b71ea8a5889da55bc7e346f96d915c343079e717c",
-      "src/battle_anim/moves/frost.o": "17705b9eb167e00f07a8690ee397b786ffd4b9991881d83374d272291c1ba2b1",
-      "src/battle_anim/moves/froth.o": "9908ec0f732cf9e99d6905a8cff4d3060f2f99a0468bfc0eed36ca969ed32e67",
-      "src/battle_anim/moves/fullscreen_slash.o": "3907fe14bfe2d6e309e813496b8c651ca226a7b6d86222ee2879f62d2667bc2a",
-      "src/battle_anim/moves/gaia.o": "daca6ed19207d68424638f815ba1aea2d6662bc9334db414ace7bfe4df8b15f9",
-      "src/battle_anim/moves/ground.o": "a3ce30c39fb0bb4c863deb59754c6ab30e42ab72a8b5f668aa0330001575a4da",
-      "src/battle_anim/moves/growth.o": "f725064a8592c346dc955218ad13b2e113479f0bb4ad0d573558e8245b53e9d6",
-      "src/battle_anim/moves/hail.o": "4df0d8e7c9592ea0bdddaff52b2937d2c9103eff789173bd26f8563e7f536392",
-      "src/battle_anim/moves/haunt.o": "79b39d8510f5ee1fd7d32d0c1f5dd935d7361ccc4020b316afe59412919da17c",
-      "src/battle_anim/moves/haunt_attack.o": "8e39ea95356fdbfb28bee7048ae3fa6fa61e5ae7fc38764b4155107f1df103ee",
-      "src/battle_anim/moves/heal.o": "f45e631492df5bbba4ad57062c28f3f4739d50fed4735170f01502eba556b843",
-      "src/battle_anim/moves/helm_splitter.o": "5e18698f0145c2fdd1ef09b4d1f0f7de4892318db574f8abf4d4bea7ca8ccc86",
-      "src/battle_anim/moves/ice.o": "06c77c541741a277e19f8ff8e7a142bf8526598025ea88a98ba18d3c437d1305",
-      "src/battle_anim/moves/judgment.o": "81cb4cf6e534b626a3b731f320b354bc5937f1d3818b09bf9bf778b346656d2c",
-      "src/battle_anim/moves/jupiter.o": "e1c22feebc6c2b98e0efffeb2f7a88c2566105677e8d323dc9f0065921d0d5aa",
-      "src/battle_anim/moves/kirin.o": "1f3b1189a92798e86963e7c18f5d66be9cb5d929f709d731711cc385ba0bd53b",
-      "src/battle_anim/moves/kite.o": "7828f05bb779c4bcfd4dd285b9fe46a595e62babed9ae7b9db308335158aba93",
-      "src/battle_anim/moves/mars.o": "e01a12a472f77d4946a6b2ee8177b48bec7b5ea99d5c5516dc0fbdce2fa3521e",
-      "src/battle_anim/moves/mercury.o": "8415ab0d35aa3e5652941d2581bfdfe2c852229c255cfdfe0bdde17a8d044da5",
-      "src/battle_anim/moves/meteor.o": "d4ca12ec9e4a1c95277fce8cf007d58ebe340af06ee7d1dee06f55d4a5ffc935",
-      "src/battle_anim/moves/mud.o": "f86b1a69c526e77111551708494e718683e80cb243758c724e41717e81a762a7",
-      "src/battle_anim/moves/neptune.o": "a7ab07f892559af3e9fc8e3d6e555b2f961168c76481d3845c85fb616e358830",
-      "src/battle_anim/moves/nereid.o": "91d58861f97f37e7d83610273c27b55a6e3b9528833759798b34ceb42ccdce24",
-      "src/battle_anim/moves/nova.o": "0409088e2828a24e18c653f6f6f44d158bd50a6af01ebfdb1139bf41d2b20a29",
-      "src/battle_anim/moves/particle_cloud.o": "f32e40790c1a064f2d1105edbca23f7e04868f34ac8cd4729965e0677f1f8d5c",
-      "src/battle_anim/moves/planet_diver.o": "62bdd43042c988e04b80a779cc2d091239d63e3679b59375ff5c3c3c22c34af8",
-      "src/battle_anim/moves/plasma.o": "1e00c1a8a041f81311f45ed8e42a5a9167d4421af6f84b54a8baedc5c289fc94",
-      "src/battle_anim/moves/prism.o": "6aceef8a48a7bda397e3f38cd34ac5380bc376e3942ef2de3d5b9e197f26a1e3",
-      "src/battle_anim/moves/procne.o": "dc3e4b582b17f0c08f38c194eac23177966df4275e4a5017fc66edfd7c96ac3c",
-      "src/battle_anim/moves/projectile.o": "dd41731aa08078296d53cc3d4dd05252d8ef65929059c6fef4f52cbdcadabae9",
-      "src/battle_anim/moves/psyphon_seal.o": "75d589c4e19f405af7f0a2a4ace3a1c104ac0a9f662ed926e3f28cf351b78bb3",
-      "src/battle_anim/moves/quake.o": "ba189f30c963ddf540331058de795a62b5dde016d6039e9efe385444723a8208",
-      "src/battle_anim/moves/ragnarok.o": "fe78668df5332543c9bdbf0d2868c2c38c5a0150b314da902f70fab979c38b4c",
-      "src/battle_anim/moves/ramses.o": "b1fdbd914651af06979880f0cc6665ce177c5961b997dac6280aefc1f9d94e8c",
-      "src/battle_anim/moves/rapid_slash.o": "43ebafe14a093028a55760735a09b71b4c1ace82bdf292d7199dc08248f875d1",
-      "src/battle_anim/moves/ray.o": "04c93a08e57a81a742d0e60a26999acc88d5eb262a94354898d7ff7e07bb6985",
-      "src/battle_anim/moves/revive.o": "9c166c9bb8dfc4e86a50f2f8622e212115017e52532219d577584ce63dbb394d",
-      "src/battle_anim/moves/shining_star.o": "8b15ef7979501c7ab32a7a40b4e3a1cf2b3d6746b829db9d7864bdef37c87ae2",
-      "src/battle_anim/moves/sleep.o": "fdc74690e52f80a788176e4066b4045fd6fe066ecc7f59c4ec49bb2f1c6c3f33",
-      "src/battle_anim/moves/sonic_wave.o": "5cb16d22f67972457624f4c6c858fe5ba13262835c200a8d4ba6e8604276ca25",
-      "src/battle_anim/moves/spasm.o": "1c4e6ab1d02729e9081d42036a6a9c745230b4d78ca6a893954e7889c7c34784",
-      "src/battle_anim/moves/spider_web.o": "0188eba97e3e3cc96281e15d70ec8762ea7f10d495977d9e82e911701c373fea",
-      "src/battle_anim/moves/spire.o": "b6586033adfa12278db99fcf16796d3706a3395a7400ede53b7dffbfa3f81560",
-      "src/battle_anim/moves/spore.o": "ce389bed885f2e31b8f15857d199937253198af08adc5dcfa219e4c7a5852f53",
-      "src/battle_anim/moves/stat_down.o": "2acf26cfa80ad874811a55112e0079b6bc060ddcd9d28bbc46138cab56548035",
-      "src/battle_anim/moves/stat_up.o": "c449a05bb99cbaec16da531e5dcbc45de4a038c8f73a32f10b79efcbc145eeb5",
-      "src/battle_anim/moves/tackle.o": "8e3267880744a89e94c5638390a35a24d9d7115c446b85b843a50e06c89a7009",
-      "src/battle_anim/moves/tentacle.o": "4ce7848982827d893a28ec595f048d0e3c1cc7e7a3363c6be02cc55ac4aa67a8",
-      "src/battle_anim/moves/thor.o": "2fca8e1e9669fcdb84dc40a471ad5d6132cebf5e2c34d77591fa997a69b41da9",
-      "src/battle_anim/moves/thorn.o": "2a1010c1d67135ab29f700bf805da2f7bc9b229793fc392d9583043aeeec0c99",
-      "src/battle_anim/moves/thrash.o": "b67b26e9f5297f8d7a6aa73bf2cb12d41ed72f277aa4c69f0395d12409829a47",
-      "src/battle_anim/moves/tiamat.o": "e162250d5d813108b3d3ae3c890cca97c35d09cf0cec0eba758a7359eedf4626",
-      "src/battle_anim/moves/titan_blade.o": "de2b78a7f8029d19d8f15916ef57ed056984e8779ba5fdf1762e674c9a9da37b",
-      "src/battle_anim/moves/torch.o": "0ff117700049db213dcf951b4c210ffd0d6a227bc9287ee9d99fd22b99708672",
-      "src/battle_anim/moves/undead_sword.o": "67f7a7786192addd4c51b6dbccf7157078925678ef0ba3ab27780e10887c55e4",
-      "src/battle_anim/moves/unused_fizz.o": "b3462817e0657f9c6d2fdf8efc73ffee723684e77c09a55c53e2c76ad652de7b",
-      "src/battle_anim/moves/unused_sabre_rain.o": "3fb6ebc03fa62515848fb8b92058e80ebed911a6321d1bf556754b7770c53046",
-      "src/battle_anim/moves/unused_skull_cloud.o": "20ecedd5ed5fdd4732739db490bc61d5e5c4571c8b14a5587da5c06c2ab23ccf",
-      "src/battle_anim/moves/unused_skull_spin.o": "6b8898dd612cdba11c495f05751a244c6ed4a050c7d2a479377569bef1183109",
-      "src/battle_anim/moves/venus.o": "8055a3e1e31d5103528b63c64a5cfd2ccf6ed17db646fe85a13256b0ca3d328a",
-      "src/battle_anim/moves/vine.o": "c43a96ad58e933652b46af4a2ab9df7f2bdb15259c2096d5a598a17c34f87ab4",
-      "src/battle_anim/moves/volcano.o": "f07144e41c71fbca1afbea62e34bf731097561cb40f81d15e818b4304c334378",
-      "src/battle_anim/moves/whirlwind.o": "d6c56606347ecfcdbe1aa39fc1d00693fa44adeea7f176581d43d782ad612cc9",
-      "src/battle_anim/screen_shatter.o": "12b4e2be72d4d97881424e64f7ae06b6f6d56ed4660fae9e380e87dd7aa55920",
-      "src/battle_anim/special_attack.o": "b0a4f8c1ee8088fb82fe39346fe1375507977ecdf4b526b0bd7c5762cad3d04a",
-      "src/battle_anim/summon_sprite.o": "3ef6b3d7f8330b118187f3ed40b77195dfb4ea83cbd5e77bb7c1fb51c52f08bb",
-      "src/battle_anim/transition_in.o": "ad71aa0ca8b6f7c32435954e6cc6586f14122fadaaf1d7b28a6602586f60dbf5",
-      "src/battle_anim/transition_out.o": "df2ebd87c8c1b0d2345a7ae5d22a9f1a1cdae319658443db44d0ff7ddd535a2b",
-      "src/battle_anim/unleash_intro.o": "7f0283dee619083f97288c6b32fcb8d9e271b5fdac3ca9ad7fe2a1e04872cf26",
-      "src/battle_anim/unused_element_orbs.o": "7847a76564e486c4eec8b0204960c6fd8599583b863c7660759f608ea3c7b9d8",
-      "src/battle_anim/unused_screen_melt.o": "c59402f05b39a4fe5b269dd1515dc14490dfdaa96bbf2ca1d67e1ade92401dba",
-      "src/battle_anim/update_screen_shake.o": "56fd8b4e973495430904e2bd3950a78ab3a5693e4b5e47417a0c121b3faa1df3",
-      "src/battle_anim/vfx.o": "75010d2baaa512820d707b1d9f4782ee5fe440effbcda6dd064728351603fd33",
-      "src/crt0.o": "f241c6382fbb6e4655495ebc38d8b82a165c414e098515b79cdaf29bc2f7503c",
-      "src/decompress/battle_bg.o": "0fc7ba54b4c24feb68237af96bfa344b7dcb0237af9a484edb4d0492416b7759",
-      "src/decompress/bg-credits.o": "bf271a4794745fd93ac8ecaccbbc03d72cd03260cf2537d146237a93bcac4ceb",
-      "src/decompress/huffman.o": "c02e13c2f3f9aa8c529ba8f486d53be4d1283b1fe466bb51f00ec68d0e37b9f0",
-      "src/decompress/icon.o": "ab6bd133e9ee84bf85b85e86587478b7b968fa1467dc758146bf46df57055f8a",
-      "src/decompress/lz.o": "f46824d12615186de82e322d156b4714ef86bf0ca9a1c5e941caea9cc1765057",
-      "src/decompress/lz1.o": "fffa9da76b44562ed4925091741bb870ec8ef93b88ecfd0eac8fb86bd842702e",
-      "src/decompress/lz16.o": "ad9a815207e999e4fe7e95fc5532e93a6000bf18ee7dacb576138ff90cf74159",
-      "src/decompress/lz2.o": "bd3d45d28810cfe21d06390043c1fe9a315778887b0cf1f9f0efc8a7ea5be86d",
-      "src/decompress/lz_rom.o": "4acb0cc69b183293f23a9420c49abd9f38b809a5e511634059e1ebe8ac69cb96",
-      "src/decompress/sprite_lz.o": "aefc24beb229d4dd6ff17051316a577155744d7728ae11dda960768e794ab78b",
-      "src/ending.o": "a98bbd41dbecba62783355dc6a66fccc06417ed449019ac75b711128065411d4",
-      "src/engine/sprite_test.o": "10db6e664323ff5ef5ab9fe787817c398a47239102a42efa83e8f8b98dac1118",
-      "src/engine/unpack_tilemap.o": "e0d52e62c3e87d7b71c23bb0d5300e69ce4b03a75b964c7313c7047aab887517",
-      "src/field/actor_move.o": "42a4a5c29a5918ef057a0817ff5a949c29a139f72bcd5f7dcef038f7ff24cc97",
-      "src/field/cutscene.o": "ff89ab2543751eafcfe72ac441b7396eafa71934bf44f62bc26fa1f6d4c42d91",
-      "src/field/djinni.o": "c30423fd5c186b2ec71157126b03b895c6694e63d47aaaba3b84665372ac6395",
-      "src/field/field.o": "6de9b0b1bdae2a1fb7306b697cfe636d00063392e71a928a53771ac1933b09ed",
-      "src/field/field_effect.o": "df61887c23819dcb4e702bc3ca2f1612d59b1558be95ed8c7fc3ca2066f5ac47",
-      "src/field/field_move.o": "56791e8f5d456e3915e084e75dfdc9393e2f8e147a7726030264d4d4cbd7e865",
-      "src/field/map.o": "ef53b3100eec0089d7dbef758f9701c409164f949b69c5aa71d26eefd3f1dffe",
-      "src/field/map_actor.o": "e391be4b874bf8e87db486dff40344d3b4c665fad108c0a268e66a2ba7e40edc",
-      "src/field/map_actor_api.o": "bb9df1465fcd1c085b828c43c601a88bfaf476cfab18b53b582f3d44248286c0",
-      "src/field/map_data.o": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
-      "src/field/map_load.o": "0f976a98cfe33528dd069ec6587907796752eb75c0eff6d8a1538d2e06e5234b",
-      "src/field/moves/avoid.o": "07c00448b90e143da7a1f2f222032947f714f109ff92ca76f83522204cc826d0",
-      "src/field/moves/carry.o": "4e428c54a80030fdf741214e874c32cc0f4b5707f9af2290c70d5fbc097980b1",
-      "src/field/moves/catch.o": "f693d62f446bbbae2463062f1893dd039d1710d82c7c1ee7e5d4c685ef9cf505",
-      "src/field/moves/cloak.o": "b6a2601c83ba590d7984f68dade55d205033a419796659557892fe658408620e",
-      "src/field/moves/douse.o": "d195920d57be4bbb2ea68752d14310f2aacdebeeb64f20f8d27a58585e60b3ad",
-      "src/field/moves/force.o": "8c2103738af420faf67d0c8252f1e21b3b7fc1752ae543e25cb53b028586f28a",
-      "src/field/moves/frost.o": "9225581246d922b359a5f44b49c43565561258edc9a9b35691494392e1c35bcb",
-      "src/field/moves/growth.o": "44e570aa3440eb12e88e451ee6d1c0f3828ca997f4530987cfd41579dfcc1a81",
-      "src/field/moves/halt.o": "9b529c02346814fa75323a7fe5e04097daf8bbe755aa7a6954664e1817e8bddd",
-      "src/field/moves/lift.o": "a1e77fba3faffcd5adb24c7d6def9981e01127fc91534712c48a371a0939d8e6",
-      "src/field/moves/mind_read.o": "35d3c01a81191c8e3f95f52e3dac8cfa0f01f10eb3e71d245cb57b794d59b862",
-      "src/field/moves/move.o": "b55023b21072a040ccba761b01a4df4a445847df3c81a1d32c4a6024a025cec3",
-      "src/field/moves/ply.o": "e86e635c1c13fceaca04fb7c41b80c29aa16434d88d5e9d01678898cd58d4edb",
-      "src/field/moves/retreat.o": "af23c64a146841f52aaf05b01e1f418b6855452f03361c3c45d7eb6671d4d177",
-      "src/field/moves/reveal.o": "1ea408512df1fdd8515079bde710cb18ac92a8a07298b6ec718beb4ebe2bec84",
-      "src/field/moves/whirlwind.o": "11d9920b99ff436a111152b7583dbb7495a425e2f1ec9df2e6d527296f13014f",
-      "src/field/psynergy.o": "9363ee3f06d7bdc66303bbc0788e6d8a9a735e317ba7db31568ade29478e2c82",
-      "src/field/room_load.o": "14ae0ab2573bfb97c036f1b79cf516ba34682e5ba9b579d40410068a15399ce0",
-      "src/field/transition.o": "61de9bb957b3abfda6fa3e3fbd5a49a99f87de4f85eb6e3e88bd2e4eb624a8ec",
-      "src/field/weather.o": "cb17fd34e2c659437fa8de72c188b2da0692e6eccf630db2f75b240a2b210187",
-      "src/fixup_ram_code.o": "2248dd2c6df7e697cdedfc1962c3deede2b19873e1edbe469249ecf88a773178",
-      "src/flags.o": "4e6c8109e18e5ce78e7aa0ba8b3def742d056f1604501896f2d154dc70d51381",
-      "src/intr/intr.o": "77e67d01dacce5d5cce5611ac7cea13262a01b7af651df6386c45376b07b7593",
-      "src/lib/agb_flash/agb_flash.o": "8210d5cbc4f08a1afdb3865927d438ccd566e08666e88921f4c5df28f1932d3b",
-      "src/lib/agb_flash/agb_flash_at.o": "9e5987dcfcfa6973e6199319f841efee78fc672ce3e43f67bab9606703f22ace",
-      "src/lib/agb_flash/agb_flash_mx.o": "e36903ebe4dea19cd0ba80fe73d170206a43d49d4ad65ea6e0d57aead766ce9c",
-      "src/lib/agb_flash/agb_flash_verify.o": "3c2272e7b5b0c4634ce2fdd8e2c1aae2f9885aa3fdab2e13a5b74c7a33fcc5be",
-      "src/lib/m4a/m4a.o": "4ae0a29385aceb597eb15f5f411508c36cc0895cb810ddd66ebc58bc67718ac4",
-      "src/lucky_dice.o": "14ca0cfa20cd3b0c720a2464cb2e32e5ec709e5a529f568cda190eb3c8d46370",
-      "src/lucky_wheels.o": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
-      "src/main.o": "193dca0e4769e3ff2fab82f2115829cfde2928bb66cb4aa5f06ee58a312723eb",
-      "src/math/math.o": "a9b56de14944800d8f153f69ad986ffedd27b9779a5abbaf9872b719fedd436d",
-      "src/math/matrix.o": "c3f8c2b8c27a5830c928cd9a0ffe86f4bef7a8daa0b34300d56bf403fc748c98",
-      "src/math/vector.o": "cc5488287741df3f09c463adda62ef552bd725f010aa79eccca2265307bcb5d6",
-      "src/memory/alloc.o": "2ac51fae7fdbf78cc1c20b7bfea70c19df567bcfaa839dc778b8a2fee17627e1",
-      "src/memory/free.o": "29136924f98f452d6b5da33b879f31fa660ab427c4e7b7e52b36685a4f082ed9",
-      "src/other/sub_8006864.o": "3ccbbaf2f2e67d5cd2b149fa2b89794033a49db7ddab8734f577706547ff6691",
-      "src/other/sub_80f0008.o": "188f2bd5021856f4b9446f14a487732f6a2bac6756df1d2a9613b146b3f4baac",
-      "src/other/sub_80f95e0.o": "185d633428ba0dd53cf214f13d615e24322ffcc175da4dac02fac6d55fc1a820",
-      "src/random.o": "c615fdbba061da9b88467a2174c06f1c42f7958b3ef2a493b58cabfb1cb2d2b3",
-      "src/render/blit_fade.o": "8119c4d80f1e6c43c73b127029163568a0de75eab0c6b10ac1c699e1fa8ddea7",
-      "src/render/blit_fade_alt.o": "eee7636aa404ea69e1212a158ccbd0759002795d7676132d42a2a30da34c180b",
-      "src/render/blit_fade_rom.o": "6c2ea906e7333539e948b0df655050b599404c4cda24bef3c0c948d73d6fb4c1",
-      "src/render/draw2D.o": "7adb4413af4dfea0d9482716d03febd8027b04ce87916e1961a7d5896ff1a830",
-      "src/render/draw2D_util.o": "0a4e297ef3085929915e02bc92507cbe309149fe27bd734ba2690a2e5fdddafc",
-      "src/render/window_effect.o": "05bcd73f2da584c3ec7990e98bb9e37b2396a7733aa4518ab4caefd443568446",
-      "src/rpg/djinni.o": "f0899b73ffd4bbae94cdfb8087c13791d240113cee56e2c8693badd32e1c1d11",
-      "src/rpg/get_unit.o": "2b55446d83b5fe1cdea5fa88f6c6515b49a6b6a6b94e26a220645fdabcf6e414",
-      "src/rpg/item.o": "b47960c17e6cd5f71fbb75c37b72e45626d530c834951e7d54b219ce1b92d9b3",
-      "src/rpg/move.o": "65690c376d1a23b0dae697550fead20b035a79c704bfeac82445f365d21d2423",
-      "src/rpg/party.o": "a882bd2b564e6f0377e177cd61f949ae7f615ed42291f737ebfe6fe068a46b59",
-      "src/rpg/pc.o": "16da9a466f0002f08602ba1cca9c3c94a26f1bbfe6aa5d84be1d5d68f5188193",
-      "src/rpg/random.o": "96aeb858f9a1f6ac707cd527720aeeb4e26b8e167b75a09dbe1a91c95e783e70",
-      "src/rpg/summon.o": "e4687a707197ce95273df2d53e24973af20c0604fa9b90e37b1ab7117ca5a811",
-      "src/save.o": "3640352de3f3bbe81afb389bbeb624200702017aa848239e1c7a03f911156cb9",
-      "src/serial.o": "335616f6d0962f6590f803bf9fab7e508510f2303b2a6322724d1cfaba1e1446",
-      "src/sound.o": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
-      "src/sprite/draw_sprite.o": "5d4b26613fcb4fded79a5468570ebc8503abc089abeb53220a028d138686508e",
-      "src/sprite/palette.o": "abcc1c79b1460784876b7a70db315f007b7545bccc083319a6209fdc0adf1e85",
-      "src/sprite/rom_a418.o": "f0d359892ddc203b4f1aaf8bc34edf75a1804ca622be4c88b4a23488f30006c6",
-      "src/sprite/sprite.o": "b3c0d09ce20120e3718b57703bebda6c8dad7f609cd03b7bfcb9cde8f6984eb8",
-      "src/sprite/sprite_info.o": "050f3b6e3fd754896bbcb43e37edcf423a0136adf35ca947b2b1bf0a50b27690",
-      "src/sprite/summon.o": "72b61b75410295b4f3ecc7d73e3be297711dfd22c8cbdc8b4f4c2808468ea02f",
-      "src/task.o": "817ad4f64436eadc2508d63e2ce73dc3bed0deb2644ab0f1276adc07fd17d8c8",
-      "src/title.o": "7dd0f1f67c3e456e006e783957d8e2086018e58d2f8e2b978a13188c8fcbcab6",
-      "src/ui/debug/icon_test.o": "3f6cea60b8774b3171b3b2fc7d1cc143d034fb5c1a6240bf3b18d923676ea3e5",
-      "src/ui/icon.o": "f59913f9cdbae72f2a2847c5ee5f44983be4e28c5fa7421fef2997a25f3483e5",
-      "src/ui/menu.o": "547dcaa1d75169e0c786443d44cf3d811d30ecdd8fad8dc8179b3bb318fe6403",
-      "src/ui/menus/debug_flag_editor.o": "ced2448a29e48a83e9d2a59ca8c7d6767bc87488d6ad50c7bb9caa9f42c608c6",
-      "src/ui/menus/debug_warp_menu.o": "dd1c06ae739b04fc35b1cb62cb95b8459a35dcbd0a97495aaa84fbe8ce621735",
-      "src/ui/menus/menu_bars.o": "4141bcfe5e44a666cbe52f35dc55f9306fe63db7d24e1f2a26b07a2e85b8b1c9",
-      "src/ui/party_menu.o": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
-      "src/ui/save_menu.o": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
-      "src/ui/shop.o": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
-      "src/ui/text.o": "b9c002c71ea02cc53dc4204a5f0b3f47e87bb15de7187be01e43e7681b0e081d",
-      "src/ui/ui.o": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
-      "src/ui/window.o": "9c020030260a6dc2eb5fd4e9602b6572b76512f6f4c4b9677b03aec09fd691a2",
-      "src/video.o": "e085b85db9aaf320728d121573f250bf29b113bc7156645f67554c0f78f1253f",
-      "stage1.map": "79d4bca9d7c4029675f0b5f7a8c9eb5030b863427ccf2cc2f054618b34a0ffed"
+      "build/usa/asm/lib/ramlib.o": "130f9e3079a494307e5a9033a80af6a592e56610b95da98c4d48ac2a91e72ce5",
+      "build/usa/asm/maps/alpine_crossing.o": "75bf0dd286f3a1b876de83b0debd084fefb904bfe038783a2c04873fd4270140",
+      "build/usa/asm/maps/altin.o": "a71569cb5ce7fc93280ac15a5f42e3d770286dff08a654fa752649a3456e54ed",
+      "build/usa/asm/maps/altin_peak.o": "2a1d61fc78c20408ce198327b341ba559b5e73066a47b10a6e686de9ac86a278",
+      "build/usa/asm/maps/altmiller_cave.o": "7cec0fbe73339f2bf48377e2d6ca6b45ee98fab55298489bca05a8156a61a8d1",
+      "build/usa/asm/maps/babi_lighthouse.o": "b81bd20b4213c52bd2b1c8f3c447d98d040687f96f6afbedb96b7f910a29a1da",
+      "build/usa/asm/maps/babis_palace.o": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
+      "build/usa/asm/maps/bilibin.o": "2dd973c47d9e210eee31081620262c0a7b20de332c2bcc414ee370e3f412fd43",
+      "build/usa/asm/maps/bilibin_cave.o": "9595d680b8e2f693ce31382b3ba7045658a519aea3c198d836ea9488c335d7f0",
+      "build/usa/asm/maps/bilibin_rooms.o": "d68e854b840b8b99bc41935d988a764e153f405b76cd9820bbaf1f15b7072363",
+      "build/usa/asm/maps/colosseum.o": "11f295f5b4caf72c1cf34c4e108b8155b823108601edd679e4afb32e1d470b60",
+      "build/usa/asm/maps/colosseum_final_1.o": "35e333821c789f8c2d5326e3cd2b11d2ebfd5fcf92c6c1eae0d99a160af4e6f1",
+      "build/usa/asm/maps/colosseum_final_2.o": "ea4ff107be1827276c68d7bbf2e546a0aaab8459e3ecb2bf079ff433b258b0cd",
+      "build/usa/asm/maps/colosseum_final_3.o": "e5c4dc2c68f72b502721d6ba23979051859ce249c2d058c13eceec609d103783",
+      "build/usa/asm/maps/common/common0.o": "4ac479703fe8da1ea7b2969a05ac5eec4b4195e76448e968cc15d0aca00e0407",
+      "build/usa/asm/maps/common/common1.o": "2c04f9deffae72b91751df4ce79f63ebf67ba1c09843c389abceeb019cfb503b",
+      "build/usa/asm/maps/common/common2.o": "ee9b4962bd06323b3e4861b2ab256df8bf98c65e83c69856bc61d04f9084f3ca",
+      "build/usa/asm/maps/crossbone_isle.o": "7d35a6743c6edbad174e223dc533e7c5ace46536b62eb760000accaaba89dc7e",
+      "build/usa/asm/maps/crossbone_isle_dungeon_2.o": "ab924b95f5d5b0af507cdf3f2f14596c3af4497f74b0cbb62fd6bc1a0d387ffd",
+      "build/usa/asm/maps/crossbone_isle_dungeon_4.o": "0a6c76195a9216be0b79782c5b254168fe081cedf465acc5097e4983e1380b8d",
+      "build/usa/asm/maps/debug_get_item.o": "65b5f156733b3edabe5ed3643de9702f3f3f23cd9d91afe203e08fddc07c1459",
+      "build/usa/asm/maps/debug_test.o": "b820d9907065a718bd22bf87fde9ed276c98ccac1d5275dc0da2e1edaeb2839b",
+      "build/usa/asm/maps/elemental_stars.o": "759c7dcd98dd5af7d86167c74e7894c618efca34c64b58b47d860dfe1ffc4f7d",
+      "build/usa/asm/maps/elemental_stars_eruption.o": "0bc81c48a893fc13484a95fe04659feffa023a2474fa2f6b5772bf49e54a55c1",
+      "build/usa/asm/maps/fuchin_temple.o": "f647e46a313eb5abdcb7a6a7a9d769c8a265f69a1624108efcaf6599a148ab14",
+      "build/usa/asm/maps/goma_cave.o": "ab44a10bb138f1c2281110f141f201f2558d3c990328b42ad76975db88cb41c2",
+      "build/usa/asm/maps/goma_cave_1.o": "188d3a60f80b188bba1d77210cd918859c9a3deb414e910f5b308d54c4310280",
+      "build/usa/asm/maps/goma_cave_2.o": "40dd84ee3c89dae21ed7f53bd4ea7ea0f2ca96f3fe4813f76adf22deacb2e84e",
+      "build/usa/asm/maps/goma_cave_entry.o": "1c6e4c6c231204a2a875c1cc75d3b1823a675f8b4db48879916c911ee71b53ff",
+      "build/usa/asm/maps/gondowan.o": "bcac2ea08fcf7d683a02f1f0049392185c35e69a9b948aa940c6a60cfc9423eb",
+      "build/usa/asm/maps/hammet_palace.o": "9ef09358a9c31e29e117e06b57dfcd9b60bd7300a7996fd3ca9298819ec55992",
+      "build/usa/asm/maps/imil.o": "3582bc10d9f8b29eeed0e75dbe1de93d7dcd11afac17f5f02d205b86b005df08",
+      "build/usa/asm/maps/imil_falls_cave.o": "b82e1c993b438b1157f886dc175d84293eb3b6d0b481695c65a28977086a758e",
+      "build/usa/asm/maps/jail.o": "2f75a981b5b43462c657253047973a6c299263ee968273cb047264fea5588280",
+      "build/usa/asm/maps/kalay.o": "0f8991b65c639a3c01b46369be0e0bc99bc591f6714f14762c8d3f28a54145ff",
+      "build/usa/asm/maps/kalay_docks.o": "a98b2a8b04f0488c3d75539dd7fd2a2ededecd0c409e2c9867871c1d19e2c499",
+      "build/usa/asm/maps/kalay_rooms.o": "7eccbff11e715720e42788dd7cd217c7426bd2234a7ca652fcd2660675c11d0d",
+      "build/usa/asm/maps/kolima.o": "c8654a1a1d5a8318218fbda10a182ab0cb2b4247173cb4d0b707471497dae751",
+      "build/usa/asm/maps/kolima_forest_1.o": "279997d005f3ce6e67e338ed5b46886a325ef3ef5db2738f39a2a3512a249153",
+      "build/usa/asm/maps/kolima_forest_2.o": "ea9dd9d7ceaa08c39d23e8500f0f66a7af2223647e1bc8efcac77eb75ed72127",
+      "build/usa/asm/maps/kolima_forest_3.o": "fe6cfff03a9f5840b916dab4d0c21edc65b0d51773ca2e14fd52f1dc26a5bbc2",
+      "build/usa/asm/maps/kolima_forest_4.o": "72d673c3faa24ccefc8dda4dee8ed285bcc2845954e98a30549bf01836f66e50",
+      "build/usa/asm/maps/kolima_forest_5.o": "0499b2231c7fe943b820c816050b26ff0337c88743e478e8e010a349e5e60192",
+      "build/usa/asm/maps/kolima_rooms.o": "8de4629aac1ca627895633d8674241d822c0c68aeb8522dce768a2a7e47bf9e8",
+      "build/usa/asm/maps/lalivero.o": "c8ec9529bdb21ca889570f1f7967f11ead6483b51f6816dfb407127729161808",
+      "build/usa/asm/maps/lalivero_rooms.o": "197800e09540ccf88cbbed575928527b8ca8a480afff52e78969917c9bcbcd9b",
+      "build/usa/asm/maps/lalivero_ship.o": "b6dd018cd553a4d8f93398e7993894deba4c17efa84f3af0c4092c5580d9834d",
+      "build/usa/asm/maps/lamakan_desert.o": "b77b1aad5fbb84f2e2b82e6962e34691c138db469d1db5061265117ce0b95c18",
+      "build/usa/asm/maps/link_lobby.o": "3553b78897aeb5940fd36c264fdc9dd78df7ed6ae38f2bdcdf5a8842a20b0c23",
+      "build/usa/asm/maps/lucky_fountain.o": "73ee6dcbaf78984853f8d0d20f6c4a38ae199b9f622ff81e3f6231c726a9d736",
+      "build/usa/asm/maps/lunpa.o": "ceca73e0c2d7fffca37e15f6cad1d92b7c819b966fc5b39180c5784b4047561f",
+      "build/usa/asm/maps/lunpa_fortress.o": "27cadfadf7b76d254bce6c582ab7865cab9fd28d7e725955dfbc50630f8f9bfc",
+      "build/usa/asm/maps/lunpa_rooms.o": "8a580c5089adfd30bd5b60775204c6f095807c822efd6dd986c4a6d3c52eefca",
+      "build/usa/asm/maps/main_menu.o": "79a6407f0eb609885d5b9d4544c83c8ab45b584956ecc5d5f281fcf221cf9b5a",
+      "build/usa/asm/maps/mccoys_palace.o": "4bfed0a942339d7efad8847dfb139bfabf7607da8524d57dc390b0dc8f9c1c49",
+      "build/usa/asm/maps/mccoys_palace_ext.o": "b709af96ae1b8891ba836bf99be9609c0c8f78ae6c85ea458d96c9f261b899fa",
+      "build/usa/asm/maps/menu_test.o": "0636f48eee8c4d84d272a7b10279f51a76bb44e3cd49b9d79eb7775131ef2215",
+      "build/usa/asm/maps/mercury_lighthouse.o": "1e99de87ed8c6315d9789b4110320f2ad9915f2fefffcbe735b65f6a8afce1d0",
+      "build/usa/asm/maps/mercury_lighthouse_aerie.o": "8529bba6bd047512d5425a37250eb5ed75371f27b2c30166c44ba41769bc0409",
+      "build/usa/asm/maps/mercury_lighthouse_entrance.o": "7f331a0dcaa4aea8e8de3fb3e75d35b47fc64a1d2cb7a5f01257991e609d152e",
+      "build/usa/asm/maps/mogall_forest.o": "96ecee5f730286d8d2eaa8249a700153f73c25165f22ea5c05dd985e0ea3d5d0",
+      "build/usa/asm/maps/sol.o": "05317e12d9ada35580c99d5d821e7caa7293642876f86efa8a283d40d2753e1e",
+      "build/usa/asm/maps/sol_sanctum_1.o": "c19c718a70f523de711f889c328051c7bc6006f4519254520592f443310f406b",
+      "build/usa/asm/maps/sol_sanctum_2.o": "88b72657244d632f7fa332eadfe8bba7a7f7332ed9ad4e6d01110450b5ffd2f3",
+      "build/usa/asm/maps/sol_sanctum_3.o": "0160a872039c3b10c81bdaa811a0d4d4c5a428d6239f1aeb5c99366bdba6e0f6",
+      "build/usa/asm/maps/sol_sanctum_4.o": "34b7d878f17ff78edd3b72f96b4a318c689a218ec0620bc535dfeb8f1ebc3455",
+      "build/usa/asm/maps/sol_sanctum_5.o": "bbc6f8509fc367ead4c0be4d247f39f40b7b83d743fc5754e1bf65cc9423ea23",
+      "build/usa/asm/maps/suhalla.o": "a104327a717b813329a69bdcab05c1de016a0da702b29517091459d3a87a3e5e",
+      "build/usa/asm/maps/suhalla_desert.o": "5046c898bbccf4fa729d936119d4f5580295331fba32be8036f4551ff88bdc4a",
+      "build/usa/asm/maps/suhalla_gate_1.o": "56d7799dc604f3effe825c39d91cb78dfb07798d5efb16987525058b56f9fe4a",
+      "build/usa/asm/maps/suhalla_rooms.o": "0aa4e74f09500e468650c80136fc8bc7195f5847483072ceb35c052c8a8324b2",
+      "build/usa/asm/maps/title.o": "383f24c0883ce9e35ce4ad28e25bb95853338bc2a6a25aa116d43e400dd5632c",
+      "build/usa/asm/maps/tolbi.o": "f127fbd1e26ba247d644465627917b13c860b1d68b69de16681083cb04a3537a",
+      "build/usa/asm/maps/tolbi_bound_ship_deck.o": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "build/usa/asm/maps/tolbi_bound_ship_hull.o": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "build/usa/asm/maps/tolbi_bound_ship_top.o": "aa7dc4ef31de89c53a9cc10059474167845995384289d227b3e50c35994900cd",
+      "build/usa/asm/maps/tolbi_rooms_1.o": "c635b771ded771dc4747e232d4587523731b668f87871c1c72740143d5d9cbe3",
+      "build/usa/asm/maps/tret_tree.o": "845f501f689a9838b1e18693e4c883a543bf1d3220425f512a4939560abc528d",
+      "build/usa/asm/maps/tret_tree_ext.o": "8a59b9f33c90c0da58481f7131c95ed53af30c8f4d3745d1025cb05290c3a95b",
+      "build/usa/asm/maps/tunnel_ruins.o": "e4e6de27111279191d08a9782068011464fccc8ab2078d4f469d4c41aef505d5",
+      "build/usa/asm/maps/vale_cave.o": "dccab8ed2825a20aa5d4e0056cf225b75f8e1179680c87f34a596f9a2b59306c",
+      "build/usa/asm/maps/vale_kraden.o": "8f9be3dc734568b71673c83dc6b3dbb9579189ad9e38eb5a8721797a72364e7b",
+      "build/usa/asm/maps/vale_plaza.o": "0a7154466ba5abfd758a10c4a2ea037d105018381b8aa365826a52dfb1a2d3cc",
+      "build/usa/asm/maps/vale_river.o": "a4565edbfa1b0eb3c6043d96c8b7d9602bbb3e482bc9f4a98214011e826a960b",
+      "build/usa/asm/maps/vale_river_eruption.o": "4d0e07fbdd6d6d6c3f05fbf533344c6b2c8c4dc2eb06e35a14ec6debe608e291",
+      "build/usa/asm/maps/vale_river_prologue.o": "39110a10d23fe8b895728722660269dc19478a72ac99bb13ef2c06f27bd8618f",
+      "build/usa/asm/maps/vale_rooms_1.o": "1a5ebdb5591c99466b97a313222eb2a0558298a55d52d4c31a3c352deea69a40",
+      "build/usa/asm/maps/vale_rooms_2.o": "a540f3b36f344caa8252425ccc6587c81022ebbac162facebb314ece3439bf4e",
+      "build/usa/asm/maps/vale_sanctum.o": "c7888c339ac48942af2be6e3f079a40a8274978e38be3e2ddb5353ed1315ad8d",
+      "build/usa/asm/maps/vault_1.o": "9a9c5a0b5d62347f1843ddb9ea27aaed7fa351be6517b0643b21b14e2f6ac904",
+      "build/usa/asm/maps/vault_2.o": "3c4a2d2b0cbe10b7cbde6d49967703797cc2474a3942cd1b42d8b11cd9a4dd0a",
+      "build/usa/asm/maps/vault_cave.o": "3df847350e55e084582e5abbf0a30a6ce1f52fb9c3deef595b5dab58f5d8cc3f",
+      "build/usa/asm/maps/vault_rooms_1.o": "b89e9b0aeb10df5f1e0807fb1f3c7e47a219d0b64364b4594b1488bb515214fc",
+      "build/usa/asm/maps/vault_rooms_2.o": "18e2592523f7fcc2e5474cec68215275230eb1001aed8db0b0213a187ede9fe9",
+      "build/usa/asm/maps/venus_lighthouse.o": "0bb5f06c759b8ab4c0e33b222b228332dc59b896314958810607bd91495595a8",
+      "build/usa/asm/maps/venus_lighthouse_aerie.o": "7aaa463dbd16c1f0e55b690991408d86a1a1cd7452b56d03009e2d6cf8799e80",
+      "build/usa/asm/maps/west_lunpa_cave.o": "a0cd35271501987f7a9354c040a08ace398ed40fee3baa7e14d1a8b8252c8f82",
+      "build/usa/asm/maps/world_map_cutscenes.o": "48bfa5dd3b70a0bf5347698924770951bb02c064d467dd69dd3f5a412db3a8ba",
+      "build/usa/asm/maps/xian.o": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
+      "build/usa/asm/maps/xian_rooms.o": "98ce1de4352d4b987ec56a4d1b4f1a58d4000259885d94db094d33fc0b771753",
+      "build/usa/goldensun.elf": "166f050996f53bb80398721964aace0da3132431bfe8fc35839e7ad3f58b5bee",
+      "build/usa/overlays/rom_779188/overlay.elf": "755417f31d24e2936ade3c9919d34ed191e4c38e88ecc77043f171a56150844d",
+      "build/usa/overlays/rom_779188/overlay.map": "d3d2e1a1517ffe7f5741d5cd8d11f23c22ae04b76cb825e09fbf25554bc372a1",
+      "build/usa/overlays/rom_7795e8/overlay.elf": "d836d291becc95d9a976d8f6fbaaa41f4a177854450df020504560db253a079e",
+      "build/usa/overlays/rom_7795e8/overlay.map": "b1fbef52b7cf62773b8038df740232b9e96bbe88cf13be604729e0108c39cdec",
+      "build/usa/overlays/rom_77a7c8/overlay.elf": "701fbbe7e08bdb51a2d3f319f61532a36f2ea7f2f9590d03927db82f4c5e85b8",
+      "build/usa/overlays/rom_77a7c8/overlay.map": "83c2748a88a683bdf37ed388abcda574c572dcb6cddfda858aae96abaae925c0",
+      "build/usa/overlays/rom_77dd1c/overlay.elf": "eaeca84d573832076eadb918e2a689be95478e30fd9e030b4c8106e11190319c",
+      "build/usa/overlays/rom_77dd1c/overlay.map": "614979e6bb947233878d0e2bdc8bdf8fa26eb70729782c624fa7043217ab6bc6",
+      "build/usa/overlays/rom_780898/overlay.elf": "6cb7161b2e5350404f3fd96ce382f93e485f3c38901b397ba5563b463f8e7f84",
+      "build/usa/overlays/rom_780898/overlay.map": "108f1afca19b3ddac823dc6ce3eb9a914be4f979f10a98198a48124c9e963b5e",
+      "build/usa/overlays/rom_784360/overlay.elf": "32c73cc163bb8a37af692df87aff9adbdd65a3346e98001b1a1bf436620f4314",
+      "build/usa/overlays/rom_784360/overlay.map": "589df3191214329ccb4887a30c202cfa7f6936463f4d569a7199ee5cae721f39",
+      "build/usa/overlays/rom_78603c/overlay.elf": "a4382eb63538ed43766442c384714b42ab3241189b031f1f4b682175aba88c1b",
+      "build/usa/overlays/rom_78603c/overlay.map": "08761b8cba6d3079206c15e20156c3c2b2fd0da3bbbb6d28d67b196a87141502",
+      "build/usa/overlays/rom_786f0c/overlay.elf": "142668edad14ac0f310df41d41c2075d0762a8e133a30c5215c86c75f710344f",
+      "build/usa/overlays/rom_786f0c/overlay.map": "fd6f3d8c50a1938add5b74707c174f214ae5060e95e3e2c87b93176c150b2cd8",
+      "build/usa/overlays/rom_787e04/overlay.elf": "e3548c4ae3ff643642ce0ba0b77e3487ac10b608c386b41af1be62caae79960a",
+      "build/usa/overlays/rom_787e04/overlay.map": "9cc07984b70bf9dba5aae76356fadb06476bb3d54989dbb547f111613224af7b",
+      "build/usa/overlays/rom_7892c8/overlay.elf": "475827192d63f41dd502b74612737aca91714c22103654e2b25894cd36871525",
+      "build/usa/overlays/rom_7892c8/overlay.map": "cfe5b43daac7ee869425e1344b320eb752a844dd90292c6e1fc7052c01d7fe7c",
+      "build/usa/overlays/rom_78ac38/overlay.elf": "d565cf9004b94b1def7f4c88c6d4e86116e9a3969d29bb106ed0b7a1c0581871",
+      "build/usa/overlays/rom_78ac38/overlay.map": "e0263f1f4bbe8d3591550bb8a0e948c907860de6cfd21e32398e42ddb5263039",
+      "build/usa/overlays/rom_78b2ac/overlay.elf": "897c034c5c2c523be5bc38d8f19a8976381dbaf90413092d8c2b144fc0949447",
+      "build/usa/overlays/rom_78b2ac/overlay.map": "2907d2f41a8a3af1eb7345f58e67f1d3eeb8b1739a33010cfc72a80355f8226c",
+      "build/usa/overlays/rom_78c76c/overlay.elf": "a99631dee73064c7a327277c70d64152a6eea451779780646d82690594dcdadf",
+      "build/usa/overlays/rom_78c76c/overlay.map": "c2a03f541b8575d5a85d933884bd46f9d40dcea0e9c74bdfd1e142be6233002d",
+      "build/usa/overlays/rom_78dc80/overlay.elf": "eecbbb2656cf24831ed656a9c2d68e2eb8371342f84ba4391fc408c33a889c5f",
+      "build/usa/overlays/rom_78dc80/overlay.map": "0259e2c7a7da1725f6cace5891757d3322b7dc3f9cfe14477b83969517d9cde8",
+      "build/usa/overlays/rom_78dd40/overlay.elf": "8af92785e32e634d7ce25068b9ff63a0d3f16aa802c809f3030fe7db0b8bb481",
+      "build/usa/overlays/rom_78dd40/overlay.map": "047fa00ea2593155b45d9bc3e5706a51ccafc25c765eca2ed26894d561fa00d2",
+      "build/usa/overlays/rom_78de18/overlay.elf": "7b22b7a14bb6eca16a3853ccb3e4c2d6650646641e81e2c8504dab20fd0176a7",
+      "build/usa/overlays/rom_78de18/overlay.map": "9245fa2de852e17dd7047851a6a822634aaf1401261db6ba11f1b843a14d169a",
+      "build/usa/overlays/rom_78dee8/overlay.elf": "f3db7a67dd48c1997dd4b69aa1489649ace5a46b117242100dc6ab2366a84ee3",
+      "build/usa/overlays/rom_78dee8/overlay.map": "282f1c3156fd314b03bfe9b5173e700dd3d2b6c1ef68ece91b29a05289ba62c9",
+      "build/usa/overlays/rom_78ef88/overlay.elf": "088877f9c4adcf2e1f04f48835081e6b879822c3fc1126edc7fd56249916e9a5",
+      "build/usa/overlays/rom_78ef88/overlay.map": "dbcfe4b8f8d7303311d9e58e00351c01fe52ff29e35946e876085cc300f9a9a4",
+      "build/usa/overlays/rom_791794/overlay.elf": "f4907b58e9e88fe9ee8550767f5de9ee01a46bef5f6eeb558be3ab6ddaaf1d70",
+      "build/usa/overlays/rom_791794/overlay.map": "8b50adb0b13c8a6fd8968f5689bbeec44e996c70ddb3e798ddad26f98a233149",
+      "build/usa/overlays/rom_793768/overlay.elf": "5b1bf859f025feac995d85b3f13f1035af195f580e809c6f87f9e5c1b49891c2",
+      "build/usa/overlays/rom_793768/overlay.map": "5a042c1146eebf2c578252efe6ea7b9541cf8e612c5e0e2cfdcf621f360e155f",
+      "build/usa/overlays/rom_794ac0/overlay.elf": "16fcd53806825d1d9aeba5b5f8920d02c3be0dd88a2c20ce3c985e3f0b9c7827",
+      "build/usa/overlays/rom_794ac0/overlay.map": "50c1ba6ba1feba5f151e51adf1c55dff03663b4c815dafc88f6e12754196ea5f",
+      "build/usa/overlays/rom_797740/overlay.elf": "02cbaa70271c7846b3b73a62c035503be73db9239fe46937d7d028ac7697c867",
+      "build/usa/overlays/rom_797740/overlay.map": "b1df80de2fafe11134a3825063d245897076f08f4a176bd7090dcf6a96172cfe",
+      "build/usa/overlays/rom_797990/overlay.elf": "582fbd96257e37767ce898080dae9194851ad35a93e81dd16f72328f432db9f4",
+      "build/usa/overlays/rom_797990/overlay.map": "8f40ca7b009ebe92c357ada7beca6780bacde5ee802eef9b32b8f43eefbf8c27",
+      "build/usa/overlays/rom_7987ac/overlay.elf": "62155dd79e25b8febf1df6d8c65c0e300c43b06cb0a8b3871ec637835e65db91",
+      "build/usa/overlays/rom_7987ac/overlay.map": "18b951f691d1c36c61cfb5145be3d0e327b0c05d3e0514edfac0591ef685f6a6",
+      "build/usa/overlays/rom_798dc4/overlay.elf": "1917dae7797a94f4f6ed6e890076d0e01ee029570b9e538a35df20e0b723c98f",
+      "build/usa/overlays/rom_798dc4/overlay.map": "6f0f21837d2fb78b23d7ee02305009ac11713ce1f51743044ca02c9ee203c4d9",
+      "build/usa/overlays/rom_799998/overlay.elf": "0da397474191328715f2e71da438b58eb21c6f7a4c15a8b5960815ef7cef7f8f",
+      "build/usa/overlays/rom_799998/overlay.map": "3e86ee59c7e3a4d20b9838c69721cb73042326ed07fcfd83d11dc031e12d248a",
+      "build/usa/overlays/rom_799abc/overlay.elf": "8e2371ab32e44c13ae7a2d2652d9632dfd355cdfcef9cd4b0e697945ef8695e5",
+      "build/usa/overlays/rom_799abc/overlay.map": "f50a382f293e48fc83da758c2fd7a33e1535d36f5a5ea618d480418aa8a5bc3c",
+      "build/usa/overlays/rom_79aad8/overlay.elf": "2d81ed816c853e15a26ab30615603a29c23089be4a98f81cf9ce4f6d973e0b0e",
+      "build/usa/overlays/rom_79aad8/overlay.map": "d4b330ecb76465cc5eaf960089496b3f170858e857be15778067c986fb212079",
+      "build/usa/overlays/rom_79b154/overlay.elf": "542245b49854c005fa47b854a6fd9cca9b443c90385d43edd677157f3fa513d3",
+      "build/usa/overlays/rom_79b154/overlay.map": "46b3081b5bfe2a586c5481bde3a66989844968a1858a481dea54883e2bd2667f",
+      "build/usa/overlays/rom_79c0c4/overlay.elf": "8c0f6382b411a02bbe6cf911f20cdcc6163c8d8507c0526fc49a7671b2a5b1b9",
+      "build/usa/overlays/rom_79c0c4/overlay.map": "86596ac794516bd81401368212711e529901458e3df81f013d8d81d9baa03c94",
+      "build/usa/overlays/rom_79c738/overlay.elf": "f73b75f9d191c99699ec15e1c6bdcccf9efbf8568f4b35f9b5bbee9e58333162",
+      "build/usa/overlays/rom_79c738/overlay.map": "15d3728deb6713e16b61758724a22fe7811170550193c3365b9aa5ad41b46f9a",
+      "build/usa/overlays/rom_79dd90/overlay.elf": "6aa76c0dd012f54d47aa6f0c0d8d4ca913830d03373585733e5bc9de49cc6eea",
+      "build/usa/overlays/rom_79dd90/overlay.map": "8cb27b216368d0920f0eaa6369d132550aca7a58be928285ec19cc9f29551b2d",
+      "build/usa/overlays/rom_79e5c0/overlay.elf": "1d0aac695b2b38c703e58a8b94c13a3e40fff0e3bf96d5dce5f22a1e0dade3c8",
+      "build/usa/overlays/rom_79e5c0/overlay.map": "ea6132111219a57c7fd756f516ca10f80e6dcdb189d689673b47d618a9b6c2c9",
+      "build/usa/overlays/rom_7a0010/overlay.elf": "af6c6264dddf5bf77479acf5b25d57f6ee989f4a41712d06bd48baea902a2bd5",
+      "build/usa/overlays/rom_7a0010/overlay.map": "1bc368d64812ce65437d7fa8e73f5b67c50e60e406a5cf013cec05b99f3453f9",
+      "build/usa/overlays/rom_7a04ac/overlay.elf": "492281fc5f40205af7bbe1eafad37ab2c92de06f19596f27e88c4583982bafd6",
+      "build/usa/overlays/rom_7a04ac/overlay.map": "f3e25392053c2a77d34979f6c473156543a8c099d3c27cd9d76a5fcd79757597",
+      "build/usa/overlays/rom_7a1ff0/overlay.elf": "c88eca550bb3ec26698d8e717f833b065f69f9194a49a74fe816552c11186655",
+      "build/usa/overlays/rom_7a1ff0/overlay.map": "4f70ffc2fe938d3569145ea87c57c047af55b5ff26e361f7cc8e40355ab6ced9",
+      "build/usa/overlays/rom_7a2bf0/overlay.elf": "0c8ee918fab762eb14e2f3e9f63f1433e306a696f7018235a3efa3c1472b0165",
+      "build/usa/overlays/rom_7a2bf0/overlay.map": "1ba55c5446ae738acea9d6d30f776da7797b91771253f0ba62c127802e6793f0",
+      "build/usa/overlays/rom_7a37f0/overlay.elf": "7bb6ef89c2ed0c4955402d1d3ce7864ea41510e2630b4e2824a996b2c9657e52",
+      "build/usa/overlays/rom_7a37f0/overlay.map": "0b2a69e47f25c1209d562f8624d6006467890ab9f2c377ffccc10bb36197b9a3",
+      "build/usa/overlays/rom_7a4370/overlay.elf": "b36407edafcb6bcda4d8d70994e0efc6f2edce6224e96791b3d8a7072d36ad65",
+      "build/usa/overlays/rom_7a4370/overlay.map": "48b417b850a33cd6fe63979563eb3fdc81a44a3e872c1e1a987d767acecadc45",
+      "build/usa/overlays/rom_7a5214/overlay.elf": "a54a3aa5edd31a9b76655e9673ee592d8cfeb503de6092b8ecc4f9d2000d234b",
+      "build/usa/overlays/rom_7a5214/overlay.map": "0cd71f713319dca34c12995d9a0ac1666da5149af67a964f01a19e72ee6fb97c",
+      "build/usa/overlays/rom_7a67d8/overlay.elf": "108445bce21d1cdf69721954d1cafd3787861065fc3382cd0ae7a6aef4ef2a36",
+      "build/usa/overlays/rom_7a67d8/overlay.map": "64f966ddbe922b8cbf574ecd4ba823fa713d3c36984e7bd483dd65f00f4f5a5c",
+      "build/usa/overlays/rom_7a6ae4/overlay.elf": "5db7799727f05a19338e212336f77c4ca18c2bb443458189f82a7fbb71c53995",
+      "build/usa/overlays/rom_7a6ae4/overlay.map": "915733c1708eb3938a0088a542f786d78d8a294fc28b4b89866c67b7bcb04462",
+      "build/usa/overlays/rom_7a7298/overlay.elf": "9f768f8feebcc6c25646973d25648f8555be608abdf57173a32423ad889a2076",
+      "build/usa/overlays/rom_7a7298/overlay.map": "485c28d5c1d000df17e78138a4518e78969809a1200d790f7a883b5505dadb64",
+      "build/usa/overlays/rom_7a8c8c/overlay.elf": "30531d7d8ad4a9dac88b6c2e70305a7f8366d387ed56027c8f9b7ffed10685fa",
+      "build/usa/overlays/rom_7a8c8c/overlay.map": "1084ad37a5d1532081921cda325fb7804025954094ed8b8224b1a8cab5505c3e",
+      "build/usa/overlays/rom_7aa430/overlay.elf": "ad0723fcabca81db02037e0db8e2eba49fa507af7091bc054da811d12bc61c86",
+      "build/usa/overlays/rom_7aa430/overlay.map": "93569c84aad700902a86f6d7887989ff1e61255a0122c94d3ef17b644b565328",
+      "build/usa/overlays/rom_7ac2d8/overlay.elf": "c03ed4dea916f47e1eb2be7a20716ce9c175834a08cadc7b41498a6d15b60a41",
+      "build/usa/overlays/rom_7ac2d8/overlay.map": "5a674eac0afbbb96180b7772e0237f86c7047ebe668ff6ca0c397fd56c75eea8",
+      "build/usa/overlays/rom_7b0400/overlay.elf": "698ab9340a28c91b3be9549d00fb22cebead40e3774c1a79a95c8d7d8f764fd0",
+      "build/usa/overlays/rom_7b0400/overlay.map": "b53f084778cf8f16446d2c37ef57d9d1a33191f8036be098efdebe2687747b6d",
+      "build/usa/overlays/rom_7b2078/overlay.elf": "fbff97a49174d092d90006430f4c78b01a1e4df409c0ed162969674d7ff20032",
+      "build/usa/overlays/rom_7b2078/overlay.map": "fba24c0d3bc61a260e6d9da939bd798c27ccb67e4c374bec9c93af80c422040d",
+      "build/usa/overlays/rom_7b4558/overlay.elf": "cab78d705011c8c96269369548541782d91a13cf51cc325a28bb7bea66e5aea8",
+      "build/usa/overlays/rom_7b4558/overlay.map": "0034f123351cf933260e046f7891402e2931075929c1fc6c42ea64117ff76761",
+      "build/usa/overlays/rom_7b6668/overlay.elf": "fb4531096ed0b8a326c86266c9b5fdb2a6f9c80eed10fb7f4acfa4348d7fc476",
+      "build/usa/overlays/rom_7b6668/overlay.map": "23f51a3aab02a3065458604c2bb71e83fdc77171a00b4c75b0892dc4fb08073e",
+      "build/usa/overlays/rom_7b7790/overlay.elf": "f3cb5aee3cc170a4c75835fccb9890feaf3c05c60e334aaea9ee26f72dd66360",
+      "build/usa/overlays/rom_7b7790/overlay.map": "f2ac86259692d58f093ab9715c71a9e658e106d47dd723f8fd526819835a2635",
+      "build/usa/overlays/rom_7b7f1c/overlay.elf": "b9f364886ff330f171a2e9813f04295636294f8fb8f390a29954b5d527ff817b",
+      "build/usa/overlays/rom_7b7f1c/overlay.map": "45a00d357ec2adf228376b56708bd11ee2ff36372cf4d42ac3d6929900da22d8",
+      "build/usa/overlays/rom_7b8cb0/overlay.elf": "0e576aaddff94938592219d0315401a7c9bcc4ae27d6115814e621324a000e7c",
+      "build/usa/overlays/rom_7b8cb0/overlay.map": "a18ffed3664100e750b40ff1bb878fc32986f67335f9f36d580ba2399b56bff9",
+      "build/usa/overlays/rom_7b9cb4/overlay.elf": "d4d5171414d4179c019deafc4086d6ae14a2ad032fa60134ceddc2e352255dd7",
+      "build/usa/overlays/rom_7b9cb4/overlay.map": "b44d83c60bf8644a49db8eb65e468ab0e8686908100fed053db8087e14ac197c",
+      "build/usa/overlays/rom_7bc690/overlay.elf": "c8f68dffb632aa27d03e4994c98fdb83c93536a96da4f06f777fe9edb7f5eb13",
+      "build/usa/overlays/rom_7bc690/overlay.map": "51a9dda7428007891e343758fc35d3eb15f9920ec62f6a27d238b8ee2ed445af",
+      "build/usa/overlays/rom_7bdeb0/overlay.elf": "d2bae22644bcf00b4e2ecce97676286fa2c0073b79d4d53d758cd6d7828a12ed",
+      "build/usa/overlays/rom_7bdeb0/overlay.map": "fd9a6debf5358a512105dfbf94225a0a630039f50aeefefa9c5d3cb4c91252fd",
+      "build/usa/overlays/rom_7bf5a8/overlay.elf": "2ccd4277456d58f777ae19b1a055fddc4aa944b0e946cc4a1e7085b76da7949f",
+      "build/usa/overlays/rom_7bf5a8/overlay.map": "f99e9cf73889b7824b0fd3437e7261d98a0e718439194ad86509521d2a753d70",
+      "build/usa/overlays/rom_7c097c/overlay.elf": "31b79fe835806e5429091267d90bc983f2329c483da3387093d68257ca2503b4",
+      "build/usa/overlays/rom_7c097c/overlay.map": "fadaedee221317dc5b532e623d12445802f4c0b8392bb8eedd4e3154198a7496",
+      "build/usa/overlays/rom_7c3044/overlay.elf": "759b6230e747fdd807e8a883540ab244ddcaff0a5125d8e10ad1fac150b17663",
+      "build/usa/overlays/rom_7c3044/overlay.map": "9de9452994ccc919c5b83b47e9d38891b0f808af722bdebc6fe85e00107b6300",
+      "build/usa/overlays/rom_7c37ac/overlay.elf": "603838e28aa38973f79b3b6174bbf089ca756bda8b7f8407f479d8dcd5be0767",
+      "build/usa/overlays/rom_7c37ac/overlay.map": "195fb17a86d3fd580589570696a4a838d4a9532c7c12c16c22e463dc5de93bfb",
+      "build/usa/overlays/rom_7c460c/overlay.elf": "e60ee754d377955f4a041dceb29fb4164319e5af927f8da69fd0fe565c4053e8",
+      "build/usa/overlays/rom_7c460c/overlay.map": "275d7ed053a00c3911a28e950a467f21bdfd49a8940d87c2b4954c81ae0339b6",
+      "build/usa/overlays/rom_7c5974/overlay.elf": "c140ca4a3e159aad8b429540a610247c305e77243f747d27e873dfca3c152686",
+      "build/usa/overlays/rom_7c5974/overlay.map": "47beb86f4d647109287bf4d6f9d54ab65a621534a49cda5679e096da42518d07",
+      "build/usa/overlays/rom_7c5efc/overlay.elf": "d00f6e528dcb9747ef788ce47f044b0b26c44d3160351e8bdfb4407e07de8b08",
+      "build/usa/overlays/rom_7c5efc/overlay.map": "0cd2ce01eb417917714e532a20bb543bb3b8862348efc519436caf6575f9668c",
+      "build/usa/overlays/rom_7c6bac/overlay.elf": "8a77b98bd9a45979b33b6353883287ede3f67536862ab9def9178357d943f1e4",
+      "build/usa/overlays/rom_7c6bac/overlay.map": "d1c3689cbb7b24469a40ce1b811ae55ca82f20564bf6cd7b0a2c1fb143f623dd",
+      "build/usa/overlays/rom_7c7b9c/overlay.elf": "89f3f7ae30ac858a76d3182a79072d101b55de04276460ea43b0239adccc758c",
+      "build/usa/overlays/rom_7c7b9c/overlay.map": "bec2f9a5c56adc32c9e9641f49443b871f85ba50b0b40af1e6375fc162ccafbf",
+      "build/usa/overlays/rom_7ca63c/overlay.elf": "98526214427e40b9bb6389d4b62ccae7c3f43630392e42a676f01a2af32f93cc",
+      "build/usa/overlays/rom_7ca63c/overlay.map": "40916de02ab28f25082160c304d730dcb99a331a72b8dedd5bd1d712ee9c5bbf",
+      "build/usa/overlays/rom_7cb2c0/overlay.elf": "a804b2a3dd29e26f0e0cd8c3e6883fed35c7f3e445efc1b8932cd07025eba7a1",
+      "build/usa/overlays/rom_7cb2c0/overlay.map": "aa993044f2dc4cfa94b14e067cad91be61b8d564b7421af4a512e4abe861f471",
+      "build/usa/overlays/rom_7ced6c/overlay.elf": "58e39653b4f599244d6a3554eef2c52b483b8e77f82b54c0335471233fb3ce8f",
+      "build/usa/overlays/rom_7ced6c/overlay.map": "ddb1f418081c1bc72d6bf14eff7d5d2a00d42cd64e4c4a51cce72c4b15da6bdc",
+      "build/usa/overlays/rom_7d0e88/overlay.elf": "6d634b2b42f48cad71e61e0f7d449de8f1459556d22d86aa206b88be33e21b40",
+      "build/usa/overlays/rom_7d0e88/overlay.map": "f333ff6f61dc0a6d65b083da9c9d6eb9c16103e1ff398fa909dc89a0c8499f07",
+      "build/usa/overlays/rom_7d30e0/overlay.elf": "b0af7d975ef10c55e8f4d91cb01f3d830d8abf3998953eba38fab71d241d2f81",
+      "build/usa/overlays/rom_7d30e0/overlay.map": "d309dfbe9c36e5426ca884f09c7c38da75c90d0603bf5e3c3ba9ce2506c2aaa7",
+      "build/usa/overlays/rom_7d4af4/overlay.elf": "07797eccc18780728a0c03b67f10e5e49103e159338c54b49adb2ecf130395e6",
+      "build/usa/overlays/rom_7d4af4/overlay.map": "adfeaed4356bb5e815979b69cacd32d6e810328b5d59b12203e2866e3128bc60",
+      "build/usa/overlays/rom_7d5838/overlay.elf": "2e7658aabfd8ac02743f1d346d6389a5a142f17d1a4f961349eb38dfb244472b",
+      "build/usa/overlays/rom_7d5838/overlay.map": "f92c26374d739d5de44fde4e6a37ee6a44b0c026f78f35ee6a0cf531b50f1952",
+      "build/usa/overlays/rom_7d6418/overlay.elf": "0acb229ffe67e692c5ab846c46d93ee1619447a35e873a621799c7ed371e15ea",
+      "build/usa/overlays/rom_7d6418/overlay.map": "7172e859168e492f440c32869e56276fbc4943b655a02e7d0e920fb1503b7794",
+      "build/usa/overlays/rom_7d768c/overlay.elf": "cef425d4154947ec30e77be58b481d41111e5ca2c9609cf7e7bfda215c52a6cc",
+      "build/usa/overlays/rom_7d768c/overlay.map": "3f4f3700d9e0fa721acbef4c897637c5d486dda7bbadd930b361a1d485bb6f6f",
+      "build/usa/overlays/rom_7d95dc/overlay.elf": "fdfb724f6f477f45187d4407ce925709e568277ae8c5d5ae4f768f90e3254dc3",
+      "build/usa/overlays/rom_7d95dc/overlay.map": "93dc96947999d746a3850fd316dc45438926883c66193dbaefd8e8507b4ed193",
+      "build/usa/overlays/rom_7db0c8/overlay.elf": "c98d077e0602c0581a49e1b4588c4805db6ac0347a28f9a13dfd71da37559e3e",
+      "build/usa/overlays/rom_7db0c8/overlay.map": "1eae392a974f82eb56bae662ac5e30b48cc60645e1d76ceea8222296ac05f13e",
+      "build/usa/overlays/rom_7ddb88/overlay.elf": "b96e054c66346f23ec669489e84d6cdfaf8e38cad1752b3d8d5e1b31b3c4d043",
+      "build/usa/overlays/rom_7ddb88/overlay.map": "d8a92b38ec2d93d13f6650cf0aa30091380dec638acbddd4a3594ded3648a72e",
+      "build/usa/overlays/rom_7e0928/overlay.elf": "6b08ff78b9d5665ea8ed451b6df85278eba197056445d920bc6bc2499dc30e9e",
+      "build/usa/overlays/rom_7e0928/overlay.map": "48b073f0f1063ba30a0c8fe311d5f43b79a3b0512bb2b3f3eb274586eeb76706",
+      "build/usa/overlays/rom_7e3e08/overlay.elf": "46551f56b7a5ec9fccc8875836f3a8a093d8a0a5770f4fa02eb6c11972b0d648",
+      "build/usa/overlays/rom_7e3e08/overlay.map": "567513bde6b77b2b0d9036dc0e6e36de92353546660b7f07d161025e0c1476af",
+      "build/usa/overlays/rom_7e636c/overlay.elf": "8856fef2865c50e0be47dd3462aec5ab2d3d3b01ff1a9d16f7b316ec22c2fe95",
+      "build/usa/overlays/rom_7e636c/overlay.map": "1ba8dd2f63b6d1ab26f4ddd793b751b3254c434b1ae3e3202055b6e1e8b7113d",
+      "build/usa/overlays/rom_7e7574/overlay.elf": "906ea13f044e2b66d3ea7bcb853cfc5d90bdfb639171984e5df3ac0dfda39f58",
+      "build/usa/overlays/rom_7e7574/overlay.map": "92a0fa399dbaf436eec034158e5e5e7e7cda31a2d19f5f8bfcf4781272566438",
+      "build/usa/overlays/rom_7eaf28/overlay.elf": "871abdcf3d80e895167992522afe7f0fb71a286ced50912702a1139511639756",
+      "build/usa/overlays/rom_7eaf28/overlay.map": "6bdaa278aca08e25fb3a625a3ba047a74fd24b7b82cc4c134c07f950230835cf",
+      "build/usa/overlays/rom_7ebdfc/overlay.elf": "3788fd377b7170c41260f85ffc91d944f74d81a3f7156af9faec49b7beef78a2",
+      "build/usa/overlays/rom_7ebdfc/overlay.map": "dc74af9c449ced33e478cf79889fc783d48541a041b2131cadbbe062268bba2f",
+      "build/usa/overlays/rom_7ec19c/overlay.elf": "eb10bf2617aad743cb481bc518ac170245f591e3a447c188746d548f216735cd",
+      "build/usa/overlays/rom_7ec19c/overlay.map": "f7249f7eba1fb2bef0706a544317a3d362524b380f2d20e76bc328f624ef955c",
+      "build/usa/overlays/rom_7ec968/overlay.elf": "7dba49d5ea8fdc0cd9bdd88c8e4b03956b760d5e32bde860d9324497690f1f52",
+      "build/usa/overlays/rom_7ec968/overlay.map": "a017905c39de1209c72645a78eb29f80a004ac8d38f1b53f7ffc2cbcab933550",
+      "build/usa/overlays/rom_7ed0a0/overlay.elf": "789229491e51ccab5c335dbe1d7324dd8aeb971bd2969cd2579d2eb84281486b",
+      "build/usa/overlays/rom_7ed0a0/overlay.map": "ecb5ff6600d9502d47b42f0832950a9f32610f0cc6cef5e4754c780fc3d70681",
+      "build/usa/overlays/rom_7ef4f4/overlay.elf": "b052168cc7eada19391a2c40e61bd30b80774df1480f54b00ae0e5d0b931d7bc",
+      "build/usa/overlays/rom_7ef4f4/overlay.map": "7e09cf49e2c5f905f674b8adc88cc7d4e7afea0262c89f05deaa9678653fe33f",
+      "build/usa/overlays/rom_7f148c/overlay.elf": "aac7c49edda576b238765b5b80bc5d26c590f8f52c5d3e3f332a0247c15d8494",
+      "build/usa/overlays/rom_7f148c/overlay.map": "c48969ff95f11622ec68f5ca5cf289cc0c869531e3100fc121bc54249490846e",
+      "build/usa/overlays/rom_7f21b8/overlay.elf": "a732d71c1eb08700e708d975ec390fb37fcfe391f5ede2fc0d575ae8f0b5aed6",
+      "build/usa/overlays/rom_7f21b8/overlay.map": "339a514e320c29e2fa1eac4828eb7b650d9d52c43b733171e6b96db8024904d3",
+      "build/usa/overlays/rom_7f2f14/overlay.elf": "6d4892fe114f8d8e542f1dbba64dd126d8a7b575de7de5497fa8ca8ff51f1da9",
+      "build/usa/overlays/rom_7f2f14/overlay.map": "72996ba9846d7deb4c8678a4c49933d8add9ac3129a96d1f9bbd10d69aabe863",
+      "build/usa/overlays/rom_7f6e64/overlay.elf": "c3f93a7e0c7610a6e557710ac70e72dbef169653d80666449680cc3914778bd6",
+      "build/usa/overlays/rom_7f6e64/overlay.map": "1c8c7b2314a20c24838240bf92378cc731b93c20501b7410de32bef002aff7b2",
+      "build/usa/overlays/rom_7fa4ec/overlay.elf": "9eccd39ef59d854f67fb3366374c9ff886d2fe2b257cf6815fb929a23608142b",
+      "build/usa/overlays/rom_7fa4ec/overlay.map": "60b8dfedff5fab7da43437549fba09c7a2e22abf7e7b5bc939934de472859d87",
+      "build/usa/overlays/rom_7fb4a8/overlay.elf": "ad82244df42415e70735c70063b028129d7260f294ae80962869d7f8d9fb3d71",
+      "build/usa/overlays/rom_7fb4a8/overlay.map": "662f7d3c15740a1eecb003dcbc87ac976e972cdf727bc0de5791aed88ffb1fe4",
+      "build/usa/overlays/rom_7fc618/overlay.elf": "66ad6f974cecb5e9fe5a9769dd1928dd932dce8c65630dfb873cd7ab0865e8bb",
+      "build/usa/overlays/rom_7fc618/overlay.map": "a4b2679d67d250d12f4d91a840f4eaa10f25d40931fcd440d0ea4750d71a9209",
+      "build/usa/overlays/rom_7fc720/overlay.elf": "d0c845edf8b6c31c544b3446830501f0a6c5ce7ee23d1b51fcef876ea65ec8e1",
+      "build/usa/overlays/rom_7fc720/overlay.map": "ac6d6d8d834aab8ede00208ea64c017ca3627762f35fbff8c70d157a7399c1f2",
+      "build/usa/overlays/rom_7fcd20/overlay.elf": "f0682fd1301509c0e56f57a5e634125bb1dfd946057852585b60f1e776ff06cf",
+      "build/usa/overlays/rom_7fcd20/overlay.map": "9a8b9bb598fd3bbf0692e47611c1f81c25bf03f9fcb1b202bbb6fca85296ab3a",
+      "build/usa/src/actor/actor.o": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "build/usa/src/actor/actor_script.o": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "build/usa/src/actor/player.o": "0f9a2a12f4a9b52c4740a723ef7605b974475a421c50b5a78f790e797f0e4927",
+      "build/usa/src/battle/actor_pos.o": "f0777b49265e7372d1880713d94bb41172af34522abeb130b7999a69b9dac2d6",
+      "build/usa/src/battle/battle.o": "49d3639008eb58dc075192b8d8a298fe59f45c344a0b9e15c77418d1350426ec",
+      "build/usa/src/battle/debug_battle_test.o": "7111f830d6a0936cec16324d952630bbc1cc2e1fdb0366c32b7bebe948d4c84d",
+      "build/usa/src/battle/enemy.o": "39c87e5b24b869d302dfedae7c57e321476f2336d03c030a4ff8190aad218933",
+      "build/usa/src/battle/mechanics.o": "cfa9ef1d342a9f09de4cda9908b60d8b58f0d94535726263574d35420b8bbb13",
+      "build/usa/src/battle_anim/anim_util.o": "e53edcfa92b91071c31e9567c8ebda71f2f1b500e726ba03793a14c5625be161",
+      "build/usa/src/battle_anim/anims.o": "7f99d432c9d910273bfee0627ac09f158e71d346c9a3415790151aa2d6ddc484",
+      "build/usa/src/battle_anim/attack.o": "e5105fc4d44b744cc280a33886f0e39f07d366803c2ce7a0b87deaa1d033c442",
+      "build/usa/src/battle_anim/camera.o": "ab567ca2d1c57ce831b285b6ae67d03013d6b8543629cf6836b8d64bd6a1f2ec",
+      "build/usa/src/battle_anim/cast.o": "1fb08b84ffe35f00d6b9dd8a536570cef4c86a48d90be0ab77ff5e059f9360f8",
+      "build/usa/src/battle_anim/color_cycle_vfx_palette.o": "dde0f902e3ee0f592b11ef71334d17c55d4ec5c1c3d160739fd0009dc7b82af7",
+      "build/usa/src/battle_anim/djinn_set.o": "1a0188548b4870c1a4a4cd4fba680d01f06865b928a26fc74e80ca8c56f48823",
+      "build/usa/src/battle_anim/djinni.o": "65d9badd13339fd6aa095c18252585e1eb985924a638b7582dc8cd853c641f01",
+      "build/usa/src/battle_anim/epower_up.o": "3484bf3e941ec833adf095e32850be8685aba001677a959462eb13520adf9e55",
+      "build/usa/src/battle_anim/move_intro.o": "be1bc4e17d10bce093cba2d7e6591ec76c5e122cd907ba67fa6dd5ddb67ed147",
+      "build/usa/src/battle_anim/moves/annihilation.o": "ccc0ecba4a6b35691dd75fdebbe62001524229b607161feb18907cca17cb554f",
+      "build/usa/src/battle_anim/moves/astral_blast.o": "60acfabbd97386295101755dae862708624dd99e33bb40c819fddce42ab694bb",
+      "build/usa/src/battle_anim/moves/atalanta.o": "3c8360ee9470c34aa0ee05c93b0864425475c9571f55658abce06cca4ee255d0",
+      "build/usa/src/battle_anim/moves/bind.o": "ebfcbfbdd8fe6dee77ed27a63998c1bc28a619cc091674b5f813a8c5b374e83e",
+      "build/usa/src/battle_anim/moves/bite_sting.o": "9e23e601e6a742cdb19c163d9f1b869dcdcf82edeb0a0d2332019a63dba94f5d",
+      "build/usa/src/battle_anim/moves/blast.o": "b3d0fbdbc7b32d0f8ed1f2a1acfd1d278d6447c6b53cd0322e953d20b93f52c8",
+      "build/usa/src/battle_anim/moves/bolt.o": "c974f754d7e090f70cc6592965e4c8c4f032d7be9e9d2aa9909ee0b1ff7d23bb",
+      "build/usa/src/battle_anim/moves/boreas.o": "9086b4d204d4df2865a08745fd133eacd005516e62aad494cfb5741490ed2a30",
+      "build/usa/src/battle_anim/moves/break.o": "4eb57960a3e40eeb9e2d236593876a70b8a95f9a5a6678f75c577f45ef6b8324",
+      "build/usa/src/battle_anim/moves/breath.o": "85469969890df0329c89f65e581cf74abd21e4d193b7ea8a8b2a619f3b6ede1c",
+      "build/usa/src/battle_anim/moves/condemn.o": "31619bcd25ba0f35783e528085a5f7015bb84743e910113a991492a475f0185e",
+      "build/usa/src/battle_anim/moves/confuse.o": "a75b1e323d464475d07aa09948f402f6f7da8bd9bb230bbce071a9286687a6c3",
+      "build/usa/src/battle_anim/moves/curse.o": "1aca50b3a499ccd2734198af5648d4ee9982fdf3e36f5f12e0dfd55319bf932b",
+      "build/usa/src/battle_anim/moves/cybele.o": "3fb07534cf9ad995a669b08c02e3413e38843aefae3612215461cb7cf708a849",
+      "build/usa/src/battle_anim/moves/death_plunge.o": "78373a461a1b8937901ae069575507165094284bab545b45578fee9abc447376",
+      "build/usa/src/battle_anim/moves/douse.o": "f4aa34c7c8f19cd8ddfb09098b3f010ab89bac9244d39c1648d735445223a8cc",
+      "build/usa/src/battle_anim/moves/dragon_cloud.o": "58403c80e9fea4579213723fa83889e6d4e60a0ce61d24e3e22d754cc9a2ed81",
+      "build/usa/src/battle_anim/moves/drain.o": "c76b5eedcceade7cc55df45e4a25043a710e4b093d30835d32ce0924ab6cd9c1",
+      "build/usa/src/battle_anim/moves/fireball.o": "ae1bd5009ad4dcdd1a72bd328be2df9419f60243721a7da0578460d036a32960",
+      "build/usa/src/battle_anim/moves/flare.o": "f2e28699bd84a99b6d3dc30b71ea8a5889da55bc7e346f96d915c343079e717c",
+      "build/usa/src/battle_anim/moves/frost.o": "17705b9eb167e00f07a8690ee397b786ffd4b9991881d83374d272291c1ba2b1",
+      "build/usa/src/battle_anim/moves/froth.o": "9908ec0f732cf9e99d6905a8cff4d3060f2f99a0468bfc0eed36ca969ed32e67",
+      "build/usa/src/battle_anim/moves/fullscreen_slash.o": "3907fe14bfe2d6e309e813496b8c651ca226a7b6d86222ee2879f62d2667bc2a",
+      "build/usa/src/battle_anim/moves/gaia.o": "daca6ed19207d68424638f815ba1aea2d6662bc9334db414ace7bfe4df8b15f9",
+      "build/usa/src/battle_anim/moves/ground.o": "a3ce30c39fb0bb4c863deb59754c6ab30e42ab72a8b5f668aa0330001575a4da",
+      "build/usa/src/battle_anim/moves/growth.o": "f725064a8592c346dc955218ad13b2e113479f0bb4ad0d573558e8245b53e9d6",
+      "build/usa/src/battle_anim/moves/hail.o": "4df0d8e7c9592ea0bdddaff52b2937d2c9103eff789173bd26f8563e7f536392",
+      "build/usa/src/battle_anim/moves/haunt.o": "79b39d8510f5ee1fd7d32d0c1f5dd935d7361ccc4020b316afe59412919da17c",
+      "build/usa/src/battle_anim/moves/haunt_attack.o": "8e39ea95356fdbfb28bee7048ae3fa6fa61e5ae7fc38764b4155107f1df103ee",
+      "build/usa/src/battle_anim/moves/heal.o": "f45e631492df5bbba4ad57062c28f3f4739d50fed4735170f01502eba556b843",
+      "build/usa/src/battle_anim/moves/helm_splitter.o": "5e18698f0145c2fdd1ef09b4d1f0f7de4892318db574f8abf4d4bea7ca8ccc86",
+      "build/usa/src/battle_anim/moves/ice.o": "06c77c541741a277e19f8ff8e7a142bf8526598025ea88a98ba18d3c437d1305",
+      "build/usa/src/battle_anim/moves/judgment.o": "81cb4cf6e534b626a3b731f320b354bc5937f1d3818b09bf9bf778b346656d2c",
+      "build/usa/src/battle_anim/moves/jupiter.o": "e1c22feebc6c2b98e0efffeb2f7a88c2566105677e8d323dc9f0065921d0d5aa",
+      "build/usa/src/battle_anim/moves/kirin.o": "1f3b1189a92798e86963e7c18f5d66be9cb5d929f709d731711cc385ba0bd53b",
+      "build/usa/src/battle_anim/moves/kite.o": "7828f05bb779c4bcfd4dd285b9fe46a595e62babed9ae7b9db308335158aba93",
+      "build/usa/src/battle_anim/moves/mars.o": "e01a12a472f77d4946a6b2ee8177b48bec7b5ea99d5c5516dc0fbdce2fa3521e",
+      "build/usa/src/battle_anim/moves/mercury.o": "8415ab0d35aa3e5652941d2581bfdfe2c852229c255cfdfe0bdde17a8d044da5",
+      "build/usa/src/battle_anim/moves/meteor.o": "d4ca12ec9e4a1c95277fce8cf007d58ebe340af06ee7d1dee06f55d4a5ffc935",
+      "build/usa/src/battle_anim/moves/mud.o": "f86b1a69c526e77111551708494e718683e80cb243758c724e41717e81a762a7",
+      "build/usa/src/battle_anim/moves/neptune.o": "a7ab07f892559af3e9fc8e3d6e555b2f961168c76481d3845c85fb616e358830",
+      "build/usa/src/battle_anim/moves/nereid.o": "91d58861f97f37e7d83610273c27b55a6e3b9528833759798b34ceb42ccdce24",
+      "build/usa/src/battle_anim/moves/nova.o": "0409088e2828a24e18c653f6f6f44d158bd50a6af01ebfdb1139bf41d2b20a29",
+      "build/usa/src/battle_anim/moves/particle_cloud.o": "f32e40790c1a064f2d1105edbca23f7e04868f34ac8cd4729965e0677f1f8d5c",
+      "build/usa/src/battle_anim/moves/planet_diver.o": "62bdd43042c988e04b80a779cc2d091239d63e3679b59375ff5c3c3c22c34af8",
+      "build/usa/src/battle_anim/moves/plasma.o": "1e00c1a8a041f81311f45ed8e42a5a9167d4421af6f84b54a8baedc5c289fc94",
+      "build/usa/src/battle_anim/moves/prism.o": "6aceef8a48a7bda397e3f38cd34ac5380bc376e3942ef2de3d5b9e197f26a1e3",
+      "build/usa/src/battle_anim/moves/procne.o": "dc3e4b582b17f0c08f38c194eac23177966df4275e4a5017fc66edfd7c96ac3c",
+      "build/usa/src/battle_anim/moves/projectile.o": "dd41731aa08078296d53cc3d4dd05252d8ef65929059c6fef4f52cbdcadabae9",
+      "build/usa/src/battle_anim/moves/psyphon_seal.o": "75d589c4e19f405af7f0a2a4ace3a1c104ac0a9f662ed926e3f28cf351b78bb3",
+      "build/usa/src/battle_anim/moves/quake.o": "ba189f30c963ddf540331058de795a62b5dde016d6039e9efe385444723a8208",
+      "build/usa/src/battle_anim/moves/ragnarok.o": "fe78668df5332543c9bdbf0d2868c2c38c5a0150b314da902f70fab979c38b4c",
+      "build/usa/src/battle_anim/moves/ramses.o": "b1fdbd914651af06979880f0cc6665ce177c5961b997dac6280aefc1f9d94e8c",
+      "build/usa/src/battle_anim/moves/rapid_slash.o": "43ebafe14a093028a55760735a09b71b4c1ace82bdf292d7199dc08248f875d1",
+      "build/usa/src/battle_anim/moves/ray.o": "04c93a08e57a81a742d0e60a26999acc88d5eb262a94354898d7ff7e07bb6985",
+      "build/usa/src/battle_anim/moves/revive.o": "9c166c9bb8dfc4e86a50f2f8622e212115017e52532219d577584ce63dbb394d",
+      "build/usa/src/battle_anim/moves/shining_star.o": "8b15ef7979501c7ab32a7a40b4e3a1cf2b3d6746b829db9d7864bdef37c87ae2",
+      "build/usa/src/battle_anim/moves/sleep.o": "fdc74690e52f80a788176e4066b4045fd6fe066ecc7f59c4ec49bb2f1c6c3f33",
+      "build/usa/src/battle_anim/moves/sonic_wave.o": "5cb16d22f67972457624f4c6c858fe5ba13262835c200a8d4ba6e8604276ca25",
+      "build/usa/src/battle_anim/moves/spasm.o": "1c4e6ab1d02729e9081d42036a6a9c745230b4d78ca6a893954e7889c7c34784",
+      "build/usa/src/battle_anim/moves/spider_web.o": "0188eba97e3e3cc96281e15d70ec8762ea7f10d495977d9e82e911701c373fea",
+      "build/usa/src/battle_anim/moves/spire.o": "b6586033adfa12278db99fcf16796d3706a3395a7400ede53b7dffbfa3f81560",
+      "build/usa/src/battle_anim/moves/spore.o": "ce389bed885f2e31b8f15857d199937253198af08adc5dcfa219e4c7a5852f53",
+      "build/usa/src/battle_anim/moves/stat_down.o": "2acf26cfa80ad874811a55112e0079b6bc060ddcd9d28bbc46138cab56548035",
+      "build/usa/src/battle_anim/moves/stat_up.o": "c449a05bb99cbaec16da531e5dcbc45de4a038c8f73a32f10b79efcbc145eeb5",
+      "build/usa/src/battle_anim/moves/tackle.o": "8e3267880744a89e94c5638390a35a24d9d7115c446b85b843a50e06c89a7009",
+      "build/usa/src/battle_anim/moves/tentacle.o": "4ce7848982827d893a28ec595f048d0e3c1cc7e7a3363c6be02cc55ac4aa67a8",
+      "build/usa/src/battle_anim/moves/thor.o": "2fca8e1e9669fcdb84dc40a471ad5d6132cebf5e2c34d77591fa997a69b41da9",
+      "build/usa/src/battle_anim/moves/thorn.o": "2a1010c1d67135ab29f700bf805da2f7bc9b229793fc392d9583043aeeec0c99",
+      "build/usa/src/battle_anim/moves/thrash.o": "b67b26e9f5297f8d7a6aa73bf2cb12d41ed72f277aa4c69f0395d12409829a47",
+      "build/usa/src/battle_anim/moves/tiamat.o": "e162250d5d813108b3d3ae3c890cca97c35d09cf0cec0eba758a7359eedf4626",
+      "build/usa/src/battle_anim/moves/titan_blade.o": "de2b78a7f8029d19d8f15916ef57ed056984e8779ba5fdf1762e674c9a9da37b",
+      "build/usa/src/battle_anim/moves/torch.o": "0ff117700049db213dcf951b4c210ffd0d6a227bc9287ee9d99fd22b99708672",
+      "build/usa/src/battle_anim/moves/undead_sword.o": "67f7a7786192addd4c51b6dbccf7157078925678ef0ba3ab27780e10887c55e4",
+      "build/usa/src/battle_anim/moves/unused_fizz.o": "b3462817e0657f9c6d2fdf8efc73ffee723684e77c09a55c53e2c76ad652de7b",
+      "build/usa/src/battle_anim/moves/unused_sabre_rain.o": "3fb6ebc03fa62515848fb8b92058e80ebed911a6321d1bf556754b7770c53046",
+      "build/usa/src/battle_anim/moves/unused_skull_cloud.o": "20ecedd5ed5fdd4732739db490bc61d5e5c4571c8b14a5587da5c06c2ab23ccf",
+      "build/usa/src/battle_anim/moves/unused_skull_spin.o": "6b8898dd612cdba11c495f05751a244c6ed4a050c7d2a479377569bef1183109",
+      "build/usa/src/battle_anim/moves/venus.o": "8055a3e1e31d5103528b63c64a5cfd2ccf6ed17db646fe85a13256b0ca3d328a",
+      "build/usa/src/battle_anim/moves/vine.o": "c43a96ad58e933652b46af4a2ab9df7f2bdb15259c2096d5a598a17c34f87ab4",
+      "build/usa/src/battle_anim/moves/volcano.o": "f07144e41c71fbca1afbea62e34bf731097561cb40f81d15e818b4304c334378",
+      "build/usa/src/battle_anim/moves/whirlwind.o": "d6c56606347ecfcdbe1aa39fc1d00693fa44adeea7f176581d43d782ad612cc9",
+      "build/usa/src/battle_anim/screen_shatter.o": "12b4e2be72d4d97881424e64f7ae06b6f6d56ed4660fae9e380e87dd7aa55920",
+      "build/usa/src/battle_anim/special_attack.o": "b0a4f8c1ee8088fb82fe39346fe1375507977ecdf4b526b0bd7c5762cad3d04a",
+      "build/usa/src/battle_anim/summon_sprite.o": "3ef6b3d7f8330b118187f3ed40b77195dfb4ea83cbd5e77bb7c1fb51c52f08bb",
+      "build/usa/src/battle_anim/transition_in.o": "ad71aa0ca8b6f7c32435954e6cc6586f14122fadaaf1d7b28a6602586f60dbf5",
+      "build/usa/src/battle_anim/transition_out.o": "df2ebd87c8c1b0d2345a7ae5d22a9f1a1cdae319658443db44d0ff7ddd535a2b",
+      "build/usa/src/battle_anim/unleash_intro.o": "7f0283dee619083f97288c6b32fcb8d9e271b5fdac3ca9ad7fe2a1e04872cf26",
+      "build/usa/src/battle_anim/unused_element_orbs.o": "7847a76564e486c4eec8b0204960c6fd8599583b863c7660759f608ea3c7b9d8",
+      "build/usa/src/battle_anim/unused_screen_melt.o": "c59402f05b39a4fe5b269dd1515dc14490dfdaa96bbf2ca1d67e1ade92401dba",
+      "build/usa/src/battle_anim/update_screen_shake.o": "56fd8b4e973495430904e2bd3950a78ab3a5693e4b5e47417a0c121b3faa1df3",
+      "build/usa/src/battle_anim/vfx.o": "75010d2baaa512820d707b1d9f4782ee5fe440effbcda6dd064728351603fd33",
+      "build/usa/src/crt0.o": "f241c6382fbb6e4655495ebc38d8b82a165c414e098515b79cdaf29bc2f7503c",
+      "build/usa/src/decompress/battle_bg.o": "0fc7ba54b4c24feb68237af96bfa344b7dcb0237af9a484edb4d0492416b7759",
+      "build/usa/src/decompress/bg-credits.o": "bf271a4794745fd93ac8ecaccbbc03d72cd03260cf2537d146237a93bcac4ceb",
+      "build/usa/src/decompress/huffman.o": "c02e13c2f3f9aa8c529ba8f486d53be4d1283b1fe466bb51f00ec68d0e37b9f0",
+      "build/usa/src/decompress/icon.o": "ab6bd133e9ee84bf85b85e86587478b7b968fa1467dc758146bf46df57055f8a",
+      "build/usa/src/decompress/lz.o": "f46824d12615186de82e322d156b4714ef86bf0ca9a1c5e941caea9cc1765057",
+      "build/usa/src/decompress/lz1.o": "fffa9da76b44562ed4925091741bb870ec8ef93b88ecfd0eac8fb86bd842702e",
+      "build/usa/src/decompress/lz16.o": "ad9a815207e999e4fe7e95fc5532e93a6000bf18ee7dacb576138ff90cf74159",
+      "build/usa/src/decompress/lz2.o": "bd3d45d28810cfe21d06390043c1fe9a315778887b0cf1f9f0efc8a7ea5be86d",
+      "build/usa/src/decompress/lz_rom.o": "4acb0cc69b183293f23a9420c49abd9f38b809a5e511634059e1ebe8ac69cb96",
+      "build/usa/src/decompress/sprite_lz.o": "aefc24beb229d4dd6ff17051316a577155744d7728ae11dda960768e794ab78b",
+      "build/usa/src/ending.o": "a98bbd41dbecba62783355dc6a66fccc06417ed449019ac75b711128065411d4",
+      "build/usa/src/engine/sprite_test.o": "10db6e664323ff5ef5ab9fe787817c398a47239102a42efa83e8f8b98dac1118",
+      "build/usa/src/engine/unpack_tilemap.o": "e0d52e62c3e87d7b71c23bb0d5300e69ce4b03a75b964c7313c7047aab887517",
+      "build/usa/src/field/actor_move.o": "42a4a5c29a5918ef057a0817ff5a949c29a139f72bcd5f7dcef038f7ff24cc97",
+      "build/usa/src/field/cutscene.o": "ff89ab2543751eafcfe72ac441b7396eafa71934bf44f62bc26fa1f6d4c42d91",
+      "build/usa/src/field/djinni.o": "c30423fd5c186b2ec71157126b03b895c6694e63d47aaaba3b84665372ac6395",
+      "build/usa/src/field/field.o": "6de9b0b1bdae2a1fb7306b697cfe636d00063392e71a928a53771ac1933b09ed",
+      "build/usa/src/field/field_effect.o": "df61887c23819dcb4e702bc3ca2f1612d59b1558be95ed8c7fc3ca2066f5ac47",
+      "build/usa/src/field/field_move.o": "56791e8f5d456e3915e084e75dfdc9393e2f8e147a7726030264d4d4cbd7e865",
+      "build/usa/src/field/map.o": "ef53b3100eec0089d7dbef758f9701c409164f949b69c5aa71d26eefd3f1dffe",
+      "build/usa/src/field/map_actor.o": "e391be4b874bf8e87db486dff40344d3b4c665fad108c0a268e66a2ba7e40edc",
+      "build/usa/src/field/map_actor_api.o": "bb9df1465fcd1c085b828c43c601a88bfaf476cfab18b53b582f3d44248286c0",
+      "build/usa/src/field/map_data.o": "624f3605b9ea9860518a2bbbf43eea18a1bf2e0ca390afa235315dd93df615ff",
+      "build/usa/src/field/map_load.o": "0f976a98cfe33528dd069ec6587907796752eb75c0eff6d8a1538d2e06e5234b",
+      "build/usa/src/field/moves/avoid.o": "07c00448b90e143da7a1f2f222032947f714f109ff92ca76f83522204cc826d0",
+      "build/usa/src/field/moves/carry.o": "4e428c54a80030fdf741214e874c32cc0f4b5707f9af2290c70d5fbc097980b1",
+      "build/usa/src/field/moves/catch.o": "f693d62f446bbbae2463062f1893dd039d1710d82c7c1ee7e5d4c685ef9cf505",
+      "build/usa/src/field/moves/cloak.o": "b6a2601c83ba590d7984f68dade55d205033a419796659557892fe658408620e",
+      "build/usa/src/field/moves/douse.o": "d195920d57be4bbb2ea68752d14310f2aacdebeeb64f20f8d27a58585e60b3ad",
+      "build/usa/src/field/moves/force.o": "8c2103738af420faf67d0c8252f1e21b3b7fc1752ae543e25cb53b028586f28a",
+      "build/usa/src/field/moves/frost.o": "9225581246d922b359a5f44b49c43565561258edc9a9b35691494392e1c35bcb",
+      "build/usa/src/field/moves/growth.o": "44e570aa3440eb12e88e451ee6d1c0f3828ca997f4530987cfd41579dfcc1a81",
+      "build/usa/src/field/moves/halt.o": "9b529c02346814fa75323a7fe5e04097daf8bbe755aa7a6954664e1817e8bddd",
+      "build/usa/src/field/moves/lift.o": "a1e77fba3faffcd5adb24c7d6def9981e01127fc91534712c48a371a0939d8e6",
+      "build/usa/src/field/moves/mind_read.o": "35d3c01a81191c8e3f95f52e3dac8cfa0f01f10eb3e71d245cb57b794d59b862",
+      "build/usa/src/field/moves/move.o": "b55023b21072a040ccba761b01a4df4a445847df3c81a1d32c4a6024a025cec3",
+      "build/usa/src/field/moves/ply.o": "e86e635c1c13fceaca04fb7c41b80c29aa16434d88d5e9d01678898cd58d4edb",
+      "build/usa/src/field/moves/retreat.o": "af23c64a146841f52aaf05b01e1f418b6855452f03361c3c45d7eb6671d4d177",
+      "build/usa/src/field/moves/reveal.o": "1ea408512df1fdd8515079bde710cb18ac92a8a07298b6ec718beb4ebe2bec84",
+      "build/usa/src/field/moves/whirlwind.o": "11d9920b99ff436a111152b7583dbb7495a425e2f1ec9df2e6d527296f13014f",
+      "build/usa/src/field/psynergy.o": "9363ee3f06d7bdc66303bbc0788e6d8a9a735e317ba7db31568ade29478e2c82",
+      "build/usa/src/field/room_load.o": "14ae0ab2573bfb97c036f1b79cf516ba34682e5ba9b579d40410068a15399ce0",
+      "build/usa/src/field/transition.o": "61de9bb957b3abfda6fa3e3fbd5a49a99f87de4f85eb6e3e88bd2e4eb624a8ec",
+      "build/usa/src/field/weather.o": "cb17fd34e2c659437fa8de72c188b2da0692e6eccf630db2f75b240a2b210187",
+      "build/usa/src/fixup_ram_code.o": "2248dd2c6df7e697cdedfc1962c3deede2b19873e1edbe469249ecf88a773178",
+      "build/usa/src/flags.o": "4e6c8109e18e5ce78e7aa0ba8b3def742d056f1604501896f2d154dc70d51381",
+      "build/usa/src/intr/intr.o": "77e67d01dacce5d5cce5611ac7cea13262a01b7af651df6386c45376b07b7593",
+      "build/usa/src/lib/agb_flash/agb_flash.o": "8210d5cbc4f08a1afdb3865927d438ccd566e08666e88921f4c5df28f1932d3b",
+      "build/usa/src/lib/agb_flash/agb_flash_at.o": "9e5987dcfcfa6973e6199319f841efee78fc672ce3e43f67bab9606703f22ace",
+      "build/usa/src/lib/agb_flash/agb_flash_mx.o": "e36903ebe4dea19cd0ba80fe73d170206a43d49d4ad65ea6e0d57aead766ce9c",
+      "build/usa/src/lib/agb_flash/agb_flash_verify.o": "3c2272e7b5b0c4634ce2fdd8e2c1aae2f9885aa3fdab2e13a5b74c7a33fcc5be",
+      "build/usa/src/lib/m4a/m4a.o": "4ae0a29385aceb597eb15f5f411508c36cc0895cb810ddd66ebc58bc67718ac4",
+      "build/usa/src/lucky_dice.o": "14ca0cfa20cd3b0c720a2464cb2e32e5ec709e5a529f568cda190eb3c8d46370",
+      "build/usa/src/lucky_wheels.o": "f52e1dfc893cd05dd3b80d637c75a320d7704e3e503c4ecaddcb5e7192c70557",
+      "build/usa/src/main.o": "193dca0e4769e3ff2fab82f2115829cfde2928bb66cb4aa5f06ee58a312723eb",
+      "build/usa/src/math/math.o": "a9b56de14944800d8f153f69ad986ffedd27b9779a5abbaf9872b719fedd436d",
+      "build/usa/src/math/matrix.o": "c3f8c2b8c27a5830c928cd9a0ffe86f4bef7a8daa0b34300d56bf403fc748c98",
+      "build/usa/src/math/vector.o": "cc5488287741df3f09c463adda62ef552bd725f010aa79eccca2265307bcb5d6",
+      "build/usa/src/memory/alloc.o": "2ac51fae7fdbf78cc1c20b7bfea70c19df567bcfaa839dc778b8a2fee17627e1",
+      "build/usa/src/memory/free.o": "29136924f98f452d6b5da33b879f31fa660ab427c4e7b7e52b36685a4f082ed9",
+      "build/usa/src/other/sub_8006864.o": "3ccbbaf2f2e67d5cd2b149fa2b89794033a49db7ddab8734f577706547ff6691",
+      "build/usa/src/other/sub_80f0008.o": "188f2bd5021856f4b9446f14a487732f6a2bac6756df1d2a9613b146b3f4baac",
+      "build/usa/src/other/sub_80f95e0.o": "185d633428ba0dd53cf214f13d615e24322ffcc175da4dac02fac6d55fc1a820",
+      "build/usa/src/random.o": "c615fdbba061da9b88467a2174c06f1c42f7958b3ef2a493b58cabfb1cb2d2b3",
+      "build/usa/src/render/blit_fade.o": "8119c4d80f1e6c43c73b127029163568a0de75eab0c6b10ac1c699e1fa8ddea7",
+      "build/usa/src/render/blit_fade_alt.o": "eee7636aa404ea69e1212a158ccbd0759002795d7676132d42a2a30da34c180b",
+      "build/usa/src/render/blit_fade_rom.o": "6c2ea906e7333539e948b0df655050b599404c4cda24bef3c0c948d73d6fb4c1",
+      "build/usa/src/render/draw2D.o": "7adb4413af4dfea0d9482716d03febd8027b04ce87916e1961a7d5896ff1a830",
+      "build/usa/src/render/draw2D_util.o": "0a4e297ef3085929915e02bc92507cbe309149fe27bd734ba2690a2e5fdddafc",
+      "build/usa/src/render/window_effect.o": "05bcd73f2da584c3ec7990e98bb9e37b2396a7733aa4518ab4caefd443568446",
+      "build/usa/src/rpg/djinni.o": "f0899b73ffd4bbae94cdfb8087c13791d240113cee56e2c8693badd32e1c1d11",
+      "build/usa/src/rpg/get_unit.o": "2b55446d83b5fe1cdea5fa88f6c6515b49a6b6a6b94e26a220645fdabcf6e414",
+      "build/usa/src/rpg/item.o": "b47960c17e6cd5f71fbb75c37b72e45626d530c834951e7d54b219ce1b92d9b3",
+      "build/usa/src/rpg/move.o": "65690c376d1a23b0dae697550fead20b035a79c704bfeac82445f365d21d2423",
+      "build/usa/src/rpg/party.o": "a882bd2b564e6f0377e177cd61f949ae7f615ed42291f737ebfe6fe068a46b59",
+      "build/usa/src/rpg/pc.o": "16da9a466f0002f08602ba1cca9c3c94a26f1bbfe6aa5d84be1d5d68f5188193",
+      "build/usa/src/rpg/random.o": "96aeb858f9a1f6ac707cd527720aeeb4e26b8e167b75a09dbe1a91c95e783e70",
+      "build/usa/src/rpg/summon.o": "e4687a707197ce95273df2d53e24973af20c0604fa9b90e37b1ab7117ca5a811",
+      "build/usa/src/save.o": "3640352de3f3bbe81afb389bbeb624200702017aa848239e1c7a03f911156cb9",
+      "build/usa/src/serial.o": "335616f6d0962f6590f803bf9fab7e508510f2303b2a6322724d1cfaba1e1446",
+      "build/usa/src/sound.o": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
+      "build/usa/src/sprite/draw_sprite.o": "5d4b26613fcb4fded79a5468570ebc8503abc089abeb53220a028d138686508e",
+      "build/usa/src/sprite/palette.o": "abcc1c79b1460784876b7a70db315f007b7545bccc083319a6209fdc0adf1e85",
+      "build/usa/src/sprite/rom_a418.o": "f0d359892ddc203b4f1aaf8bc34edf75a1804ca622be4c88b4a23488f30006c6",
+      "build/usa/src/sprite/sprite.o": "b3c0d09ce20120e3718b57703bebda6c8dad7f609cd03b7bfcb9cde8f6984eb8",
+      "build/usa/src/sprite/sprite_info.o": "050f3b6e3fd754896bbcb43e37edcf423a0136adf35ca947b2b1bf0a50b27690",
+      "build/usa/src/sprite/summon.o": "72b61b75410295b4f3ecc7d73e3be297711dfd22c8cbdc8b4f4c2808468ea02f",
+      "build/usa/src/task.o": "817ad4f64436eadc2508d63e2ce73dc3bed0deb2644ab0f1276adc07fd17d8c8",
+      "build/usa/src/title.o": "7dd0f1f67c3e456e006e783957d8e2086018e58d2f8e2b978a13188c8fcbcab6",
+      "build/usa/src/ui/debug/icon_test.o": "3f6cea60b8774b3171b3b2fc7d1cc143d034fb5c1a6240bf3b18d923676ea3e5",
+      "build/usa/src/ui/icon.o": "f59913f9cdbae72f2a2847c5ee5f44983be4e28c5fa7421fef2997a25f3483e5",
+      "build/usa/src/ui/menu.o": "547dcaa1d75169e0c786443d44cf3d811d30ecdd8fad8dc8179b3bb318fe6403",
+      "build/usa/src/ui/menus/debug_flag_editor.o": "ced2448a29e48a83e9d2a59ca8c7d6767bc87488d6ad50c7bb9caa9f42c608c6",
+      "build/usa/src/ui/menus/debug_warp_menu.o": "dd1c06ae739b04fc35b1cb62cb95b8459a35dcbd0a97495aaa84fbe8ce621735",
+      "build/usa/src/ui/menus/menu_bars.o": "4141bcfe5e44a666cbe52f35dc55f9306fe63db7d24e1f2a26b07a2e85b8b1c9",
+      "build/usa/src/ui/party_menu.o": "616c443a1de9c5b6d360b4b33819d37553d098bfacbc9600d5e12de447b71231",
+      "build/usa/src/ui/save_menu.o": "782371cf0c6dbd8187b8d0ab2e588be93ccba6835a5f25de12d69dfba5668699",
+      "build/usa/src/ui/shop.o": "6615db767febd0b85c284111c724e973c28b2948d7deb4835da0d0ebc08f4329",
+      "build/usa/src/ui/text.o": "b9c002c71ea02cc53dc4204a5f0b3f47e87bb15de7187be01e43e7681b0e081d",
+      "build/usa/src/ui/ui.o": "8e8b9f9fa3849bba272a9efb7692dc63898c8edbe7a809a3443a2fc97a29ba76",
+      "build/usa/src/ui/window.o": "9c020030260a6dc2eb5fd4e9602b6572b76512f6f4c4b9677b03aec09fd691a2",
+      "build/usa/src/video.o": "e085b85db9aaf320728d121573f250bf29b113bc7156645f67554c0f78f1253f",
+      "build/usa/stage1.map": "26d060069ec3af06ab6a666676d09fcd5be3cfd41bd07e5720a3d39646fe2204"
     },
     "build_stamps": {
-      "arm-assembly.stamp": "9afd5b2dfbceec87e23e44a8b922af7f91a9499dcf9f0a999a88c70c1933af10",
-      "binutils.stamp": "6221f1b021f5936d07313fc17cad38e50a6dc5bef28dcd3f514d6cea49da8d33",
-      "gcc296-common2.stamp": "cd66d43fde21af3150881dccf66d94452c3cacf999fea15c0ffc55bf579d8854",
-      "gcc296-gaia.stamp": "998925e2376a885d209fd93e8dbddc8fe159392227e715628268567ccb528706",
-      "gcc296.stamp": "2ec6f1b253e07a67abd2cec8646db7c812653c83321d4e5855706c01b4c6a5de",
-      "host-c.stamp": "607e20308d122e42bf4b9735096205fb5f13f8d961ebf6620bb6e0520871f9e2",
-      "old-agbcc-flash.stamp": "d7748d40168db5012f49445925d55ffc51912d2fd8b7d7bf56b88a9f56142658",
-      "old-agbcc-m4a.stamp": "0afc1c03a790eab78353bb7f97df0c123bd10cfa6e692bcf7baa1c9b383a7b4e"
+      "arm-assembly.stamp": "76544fe950119eb95d32558009fd98007c02cd44654a478f44a9c975d0832e89",
+      "binutils.stamp": "a933be5cc317e47b2fcc8503ba67ce37341e0278ba0a3a5dd4a617382709bd89",
+      "gcc296-common2.stamp": "18038366fb6cfef72e2caa3ccaf424be435ba8adf4a6afd0e163d01be52813c7",
+      "gcc296-gaia.stamp": "e71f8f54659eaabf4a0aad5862df9e94dcf7aa3bbe436ab17f9119e2caf013f9",
+      "gcc296.stamp": "64c2ba426bf8e848f0b3975d983e0f68a7e09171968007fadb8784915149c072",
+      "host-c.stamp": "70149fbba75a5e72a3e5f51c9c6875a9050c2df8c5a11fdc7bfbb7deeeb7ecfd",
+      "old-agbcc-flash.stamp": "6b14f2249f4c895b118931468382fa6be5df24767ce9640ba19af05d3fce49aa",
+      "old-agbcc-m4a.stamp": "b7fc447d411813b7d7e8b93da230a8d80426431b3699f6422955060a27757317"
     },
     "gate": "make -j1 clean && make -j1 compare",
     "overlays": {

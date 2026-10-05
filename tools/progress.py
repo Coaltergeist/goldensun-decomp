@@ -11,6 +11,8 @@ import re
 from pathlib import Path
 import struct
 from c_source import parse_funcs
+import build_paths
+from build_deps import linker_dependencies
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -52,23 +54,13 @@ def symbols(path):
 
 
 def linked_sources(root, domain):
-    """Scope C ownership to the objects actually included in this address space."""
-    if domain.startswith('common:'):
-        return {'src/maps/common/' + domain.split(':')[1] + '.c'}
-    script = (root / 'stage1.ld' if domain == 'rom' else
-              root / 'overlays' / domain.split(':')[1] / 'overlay.ld')
-    seen, objects = set(), set()
-    def visit(path):
-        path = path.resolve()
-        if path in seen:
-            return
-        seen.add(path)
-        text = path.read_text()
-        objects.update(re.findall(r'\b((?:src|asm)/[A-Za-z0-9_/]+)\.o\b', text))
-        for include in re.findall(r'\bINCLUDE\s+["\']?([^"\'\s;]+)', text):
-            visit(root / include)
-    visit(script)
-    return {(('src/' + obj[4:]) if obj.startswith('asm/') else obj) + '.c' for obj in objects}
+    """Resolve current C ownership through explicit catalog objects."""
+    units = build_paths.catalog(root)["units"]
+    if domain.startswith("common:"):
+        return {u["source"] for u in units if u["owner"] == domain and u["source"].endswith(".c")}
+    script = "stage1.ld" if domain == "rom" else "overlays/" + domain.split(":")[1] + "/overlay.ld"
+    objects = linker_dependencies(script, root=root)
+    return {u["source"] for u in units if u["object"] in objects and u["source"].endswith(".c")}
 
 
 def report(root=ROOT):
@@ -87,12 +79,7 @@ def report(root=ROOT):
         domain = f['domain']
         if domain in domains:
             continue
-        if domain == 'rom':
-            path = root / 'goldensun.elf'
-        elif domain.startswith('common:'):
-            path = root / 'asm/maps/common' / (domain.split(':')[1] + '.o')
-        else:
-            path = root / 'overlays' / domain.split(':')[1] / 'overlay.elf'
+        path = root / build_paths.domain_artifact(root, domain)
         domains[domain] = symbol_records(path)
     units, _ = capture_units(root, manifest, domains, definitions)
     statuses = classify(units, definitions, registered)

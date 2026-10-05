@@ -13,21 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/venus_lighthouse_aerie/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/venus_lighthouse_aerie.o(.text)
-		asm/maps/venus_lighthouse_aerie/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/venus_lighthouse_aerie/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/venus_lighthouse_aerie.o(.text)
+		build/usa/asm/maps/venus_lighthouse_aerie/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/venus_lighthouse_aerie.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/venus_lighthouse_aerie.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/venus_lighthouse_aerie.o(.bss)
+		build/usa/asm/maps/venus_lighthouse_aerie.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

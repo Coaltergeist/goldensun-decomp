@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/altmiller_cave.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/altmiller_cave.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/altmiller_cave.o(.data)
+		build/usa/asm/maps/altmiller_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

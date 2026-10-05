@@ -20,16 +20,20 @@ def write_changed(path, text):
     temporary.replace(path)
 
 
-def linker_dependencies(script, seen=None):
+def linker_dependencies(script, seen=None, root=None):
+    root = Path.cwd() if root is None else Path(root)
     seen = set() if seen is None else seen
     script = Path(script)
-    if script in seen:
+    if not script.is_absolute():
+        script = root / script
+    name = script.resolve().relative_to(root.resolve()).as_posix()
+    if name in seen:
         return set()
-    seen.add(script)
+    seen.add(name)
     text = re.sub(r"/\*.*?\*/|//[^\n]*|#[^\n]*", "", script.read_text(), flags=re.S)
-    deps = {str(script)} | set(re.findall(r"[A-Za-z0-9_./-]+\.o\b", text))
+    deps = {name} | set(re.findall(r"[A-Za-z0-9_./-]+\.o\b", text))
     for quoted, bare in re.findall(r'\bINCLUDE\s+(?:"([^"]+)"|([^\s;]+))', text):
-        deps.update(linker_dependencies(quoted or bare, seen))
+        deps.update(linker_dependencies(quoted or bare, seen, root))
     return deps
 
 
@@ -54,7 +58,7 @@ def stamp(path, tools, values):
         if resolved is None:
             raise ValueError("missing build tool: " + tool)
         hashes[tool] = hashlib.sha256(Path(resolved).read_bytes()).hexdigest()
-    for name in ("Makefile", "tools/build_deps.py"):
+    for name in ("Makefile", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py"):
         hashes[name] = hashlib.sha256(Path(name).read_bytes()).hexdigest()
     write_changed(path, json.dumps({"tools": hashes, "values": values}, sort_keys=True, indent=2) + "\n")
 
@@ -89,8 +93,13 @@ def main():
     try:
         if args.mode == "linker":
             # Make substitutes the separator with newlines before eval.
+            import build_paths
+            links = build_paths.link_targets(Path.cwd())
             for target in args.targets:
-                print(target + ": " + " ".join(sorted(linker_dependencies(Path(target).with_suffix(".ld")))) + "|")
+                current = target if target in links else build_paths.TARGET + "/" + target
+                if current not in links:
+                    raise ValueError("unknown link target: " + target)
+                print(current + ": " + " ".join(sorted(linker_dependencies(links[current]))) + "|")
         elif args.mode == "phony":
             phony_dependencies(args.path)
         elif args.mode == "c":

@@ -23,6 +23,7 @@ import tempfile
 
 from c_source import parse_funcs
 import build_config
+import build_paths
 from progress import linked_sources, symbol_records
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -215,37 +216,41 @@ def metadata(root):
 
 
 def domain_artifact(root, domain, historical=False):
-    if domain == "rom":
-        return root / "goldensun.elf"
-    if domain.startswith("common:"):
-        parent = "overlays/common" if historical else "asm/maps/common"
-        return root / parent / (domain.split(":")[1] + ".o")
-    return root / "overlays" / domain.split(":")[1] / "overlay.elf"
+    if historical:
+        if domain == "rom":
+            return root / "goldensun.elf"
+        if domain.startswith("common:"):
+            return root / "overlays/common" / (domain.split(":")[1] + ".o")
+        return root / "overlays" / domain.split(":")[1] / "overlay.elf"
+    return root / build_paths.domain_artifact(root, domain)
 
 
-def verify_outputs(root):
+def verify_outputs(root, historical=False):
     if digest(root / "baserom.gba", "sha1") != ROM_SHA1:
         raise ValueError("reference ROM SHA1 mismatch")
-    if digest(root / "goldensun.gba", "sha1") != ROM_SHA1:
+    if digest(root / ("goldensun.gba" if historical else build_paths.ROM), "sha1") != ROM_SHA1:
         raise ValueError("built ROM SHA1 mismatch")
-    overlays = sorted((root / "overlays").glob("*/overlay.ld"))
-    if len(overlays) != 96:
+    scripts = sorted((root / "overlays").glob("*/overlay.ld"))
+    if len(scripts) != 96:
         raise ValueError("expected all 96 overlay linker scripts")
     hashes = {}
-    for script in overlays:
-        original = script.with_name("orig.bin")
-        built = script.with_name("overlay.bin")
+    for script in scripts:
+        if historical:
+            original, built = script.with_name("orig.bin"), script.with_name("overlay.bin")
+        else:
+            paths = build_paths.overlay(root, script.parent.name)
+            original, built = root / paths["original"], root / paths["binary"]
         if original.read_bytes() != built.read_bytes():
             raise ValueError("overlay mismatch: " + script.parent.name)
         hashes[script.parent.name] = digest(built)
     return hashes
 
 
-def run_gate(root, log):
+def run_gate(root, log, historical=False):
     for target in ("clean", "compare"):
         subprocess.run(["make", "-j1", target], cwd=root, stdout=log,
                        stderr=subprocess.STDOUT, check=True)
-    return verify_outputs(root)
+    return verify_outputs(root, historical)
 
 
 def account_sizes(manifest, raw_sizes):
@@ -301,7 +306,7 @@ def baseline_capture(root, output):
             raise ValueError("historical source provenance mismatch: " + f["source"])
     shutil.copyfile(root / "baserom.gba", reference / "baserom.gba")
     with (reference / "build.log").open("w") as log:
-        overlays = run_gate(reference, log)
+        overlays = run_gate(reference, log, historical=True)
     domains = {}
     sizes = {}
     for f in manifest["functions"]:
@@ -357,12 +362,7 @@ def map_sections(text):
 
 
 def object_source(root, obj):
-    """Mirror the Makefile's src/*.o and asm/*.o rules, including assembly TUs."""
-    path = PurePosixPath(obj)
-    if path.is_absolute() or ".." in path.parts or path.suffix != ".o":
-        raise ValueError("invalid TU object path: " + obj)
-    c_source = ("src/" + obj[4:] if obj.startswith("asm/") else obj)[:-2] + ".c"
-    source = c_source if (root / c_source).is_file() else obj[:-2] + ".s"
+    source = build_paths.unit(root, obj)["source"]
     if not (root / source).is_file() or source.startswith("src/non_matching/"):
         raise ValueError("missing production TU source: " + source)
     return source
@@ -396,8 +396,7 @@ def capture_units(root, manifest, domains, definitions):
                     candidates.append((obj, f["address"], record["section"], None))
         else:
             if domain not in maps:
-                name = ("stage1.map" if domain == "rom" else
-                        "overlays/" + domain.split(":")[1] + "/overlay.map")
+                name = build_paths.domain_map(root, domain)
                 artifacts[name] = digest(root / name)
                 maps[domain] = map_sections((root / name).read_text())
             address = f["address"]
@@ -448,6 +447,7 @@ def validate_units(baseline, snapshot, inputs):
         expected = {source[:-2] + ".o"}
         if source.startswith("src/") and source.endswith(".c"):
             expected.add("asm/" + source[4:-2] + ".o")
+        expected |= {build_paths.TARGET + "/" + name for name in expected}
         if obj not in expected:
             raise ValueError("TU object/source mismatch: " + source)
         objects.add(obj)
@@ -509,7 +509,7 @@ def capture(root, output):
         allowed[domain] = linked_sources(root, domain)
     artifacts = {domain_artifact(root, domain).relative_to(root).as_posix():
                  digest(domain_artifact(root, domain)) for domain in domains}
-    stamps = {p.name: digest(p) for p in sorted((root / ".build").glob("*.stamp"))}
+    stamps = {p.name: digest(p) for p in sorted((root / build_paths.STAMPS).glob("*.stamp"))}
     definitions = {}
     sources = sorted(set().union(*allowed.values()))
     for source in sources:
@@ -526,7 +526,7 @@ def capture(root, output):
         raise ValueError("inputs changed during verification; snapshot not published")
     if any(digest(root / name) != sha for name, sha in artifacts.items()):
         raise ValueError("linked artifacts changed during capture")
-    if {p.name: digest(p) for p in (root / ".build").glob("*.stamp")} != stamps:
+    if {p.name: digest(p) for p in (root / build_paths.STAMPS).glob("*.stamp")} != stamps:
         raise ValueError("build contracts changed during capture")
     verify_outputs(root)
     snapshot = dict(schema=2, policy=POLICY, source_fingerprint=fingerprint(before),

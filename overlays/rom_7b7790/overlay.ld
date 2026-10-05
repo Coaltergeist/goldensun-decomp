@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/xian_rooms/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/xian_rooms.o(.text)
-		asm/maps/xian_rooms/imports.o(.text)
+		build/usa/asm/maps/xian_rooms/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/xian_rooms.o(.text)
+		build/usa/asm/maps/xian_rooms/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/xian_rooms.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/xian_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

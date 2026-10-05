@@ -8,6 +8,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import build_paths
 
 from candidate_catalog import catalog, closure, collection_inputs, compose, local, markdown_index, production_candidate_errors
 from candidate_build import (SourceRejected, sha, production_inputs, compiler_inputs,
@@ -18,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def input_state(root, unit):
     state = production_inputs(root)
-    for path in [root / "baserom.gba", *(root / "overlays").glob("*/orig.bin")]:
+    for path in [root / "baserom.gba", *(root / row["original"] for row in build_paths.overlays(root).values())]:
         if path.is_file():
             state[path.relative_to(root).as_posix()] = sha(path)
     for name in collection_inputs(root, unit) + ["progress_snapshot.json"]:

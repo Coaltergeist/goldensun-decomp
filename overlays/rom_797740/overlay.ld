@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/jail.o(.text)
+		build/usa/asm/maps/jail.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/jail.o(.data)
+		build/usa/asm/maps/jail.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

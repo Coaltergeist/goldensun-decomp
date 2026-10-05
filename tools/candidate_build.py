@@ -53,7 +53,7 @@ def reference(root, directory, object_name):
     if meta.get("reference_sha256") and sha(root / "baserom.gba") != meta["reference_sha256"]:
         raise ValueError("reference ROM changed")
     for overlay, expected_hash in meta.get("overlays", {}).items():
-        original = local(root, overlay.replace("/overlay.bin", "/orig.bin"))
+        original = local(root, meta.get("overlay_originals", {}).get(overlay, overlay.replace("/overlay.bin", "/orig.bin")))
         if sha(original) != expected_hash:
             raise ValueError("reference overlay changed: " + str(original))
     path = local(directory, object_name)

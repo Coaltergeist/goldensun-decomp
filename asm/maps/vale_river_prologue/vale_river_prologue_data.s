@@ -39,78 +39,78 @@
 	.global gOvl_0200d0e4
 
 .Lm882_48bc:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x48bc, (0x48c0-0x48bc)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x48bc, (0x48c0-0x48bc)
 gScript_882__0200c8c0:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x48c0, (0x4934-0x48c0)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x48c0, (0x4934-0x48c0)
 gScript_882__0200c934:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4934, (0x4984-0x4934)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4934, (0x4984-0x4934)
 gScript_882__0200c984:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4984, (0x49f4-0x4984)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4984, (0x49f4-0x4984)
 gScript_882__0200c9f4:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x49f4, (0x4a00-0x49f4)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x49f4, (0x4a00-0x49f4)
 gScript_882__0200ca00:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4a00, (0x4a3c-0x4a00)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4a00, (0x4a3c-0x4a00)
 gScript_882__0200ca3c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4a3c, (0x4a78-0x4a3c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4a3c, (0x4a78-0x4a3c)
 gScript_881__0200ca78:
 gScript_882__0200ca78:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4a78, (0x4ab4-0x4a78)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4a78, (0x4ab4-0x4a78)
 gScript_882__0200cab4:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4ab4, (0x4b28-0x4ab4)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4ab4, (0x4b28-0x4ab4)
 gScript_882__0200cb28:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4b28, (0x4b9c-0x4b28)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4b28, (0x4b9c-0x4b28)
 gScript_882__0200cb9c:
 gScript_955__0200cb9c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4b9c, (0x4c0c-0x4b9c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4b9c, (0x4c0c-0x4b9c)
 gScript_882__0200cc0c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4c0c, (0x4c5c-0x4c0c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4c0c, (0x4c5c-0x4c0c)
 gScript_882__0200cc5c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4c5c, (0x4ca8-0x4c5c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4c5c, (0x4ca8-0x4c5c)
 gScript_882__0200cca8:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4ca8, (0x4d1c-0x4ca8)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4ca8, (0x4d1c-0x4ca8)
 gScript_882__0200cd1c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4d1c, (0x4d6c-0x4d1c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4d1c, (0x4d6c-0x4d1c)
 gScript_882__0200cd6c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4d6c, (0x4e04-0x4d6c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4d6c, (0x4e04-0x4d6c)
 gScript_882__0200ce04:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4e04, (0x4e30-0x4e04)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4e04, (0x4e30-0x4e04)
 gScript_882__0200ce30:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4e30, (0x4e5c-0x4e30)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4e30, (0x4e5c-0x4e30)
 gScript_882__0200ce5c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4e5c, (0x4e88-0x4e5c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4e5c, (0x4e88-0x4e5c)
 gScript_882__0200ce88:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4e88, (0x4eb4-0x4e88)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4e88, (0x4eb4-0x4e88)
 gScript_882__0200ceb4:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4eb4, (0x4ec8-0x4eb4)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4eb4, (0x4ec8-0x4eb4)
 gScript_882__0200cec8:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4ec8, (0x4edc-0x4ec8)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4ec8, (0x4edc-0x4ec8)
 gScript_882__0200cedc:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x4edc, (0x50e4-0x4edc)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x4edc, (0x50e4-0x4edc)
 gOvl_0200d0e4:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x50e4, (0x527c-0x50e4)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x50e4, (0x527c-0x50e4)
 	.global gOvl_0200d27c
 gOvl_0200d27c:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x527c, (0x52b8-0x527c)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x527c, (0x52b8-0x527c)
 	.global gOvl_0200d2b8
 gOvl_0200d2b8:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x52b8, (0x54b0-0x52b8)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x52b8, (0x54b0-0x52b8)
 .Lm882_54b0:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x54b0, (0x5558-0x54b0)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x54b0, (0x5558-0x54b0)
 	.global gOvl_0200d558
 gOvl_0200d558:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x5558, (0x5774-0x5558)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x5558, (0x5774-0x5558)
 .Lm882_5774:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x5774, (0x578a-0x5774)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x5774, (0x578a-0x5774)
 .Lm882_578a:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x578a, (0x57a0-0x578a)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x578a, (0x57a0-0x578a)
 .Lm882_57a0:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x57a0, (0x57b6-0x57a0)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x57a0, (0x57b6-0x57a0)
 .Lm882_57b6:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x57b6, (0x57cc-0x57b6)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x57b6, (0x57cc-0x57b6)
 .Lm882_57cc:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x57cc, (0x57e2-0x57cc)
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x57cc, (0x57e2-0x57cc)
 .Lm882_57e2:
-	.incbin "overlays/rom_77dd1c/orig.bin", 0x57e2
+	.incbin "build/usa/reference/overlays/rom_77dd1c/orig.bin", 0x57e2
 
 	.section .bss
 	.global .Lm882_57f8

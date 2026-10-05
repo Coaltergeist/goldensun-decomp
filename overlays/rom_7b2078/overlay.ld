@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/fuchin_temple/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/fuchin_temple.o(.text)
-		asm/maps/fuchin_temple/imports.o(.text)
+		build/usa/asm/maps/fuchin_temple/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/fuchin_temple.o(.text)
+		build/usa/asm/maps/fuchin_temple/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/fuchin_temple.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/fuchin_temple.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

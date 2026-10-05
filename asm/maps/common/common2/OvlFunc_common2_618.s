@@ -109,4 +109,4 @@
 	.global .Lc2_1
 
 .Lc2_1:
-	.incbin "overlays/rom_7bf5a8/orig.bin", 0x1888, (0x189c-0x1888)
+	.incbin "build/usa/reference/overlays/rom_7bf5a8/orig.bin", 0x1888, (0x189c-0x1888)

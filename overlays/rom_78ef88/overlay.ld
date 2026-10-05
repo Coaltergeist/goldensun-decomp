@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/elemental_stars/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/elemental_stars.o(.text)
-		asm/maps/elemental_stars/imports.o(.text)
+		build/usa/asm/maps/elemental_stars/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/elemental_stars.o(.text)
+		build/usa/asm/maps/elemental_stars/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/elemental_stars.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/elemental_stars.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

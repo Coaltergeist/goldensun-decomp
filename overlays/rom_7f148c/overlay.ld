@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/lalivero.o(.text)
+		build/usa/asm/maps/lalivero.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/lalivero.o(.data)
+		build/usa/asm/maps/lalivero.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/suhalla_desert/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/suhalla_desert.o(.text)
-		asm/maps/suhalla_desert/imports.o(.text)
+		build/usa/asm/maps/suhalla_desert/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/suhalla_desert.o(.text)
+		build/usa/asm/maps/suhalla_desert/imports.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/suhalla_desert.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/suhalla_desert.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

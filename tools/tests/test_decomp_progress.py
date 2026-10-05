@@ -229,7 +229,7 @@ class SnapshotWorkflowTests(unittest.TestCase):
 
     def test_linked_assembly_includes_are_checked_but_archived_sources_are_not_walked(self):
         for name, text in {"Makefile": "", "original_functions.json": "{}",
-                           "stage1.ld": "src/crt0.o(.text)",
+                           "stage1.ld": "build/usa/src/crt0.o(.text)",
                            "src/crt0.s": '.include "include/start.inc"',
                            "src/historical.s": '.include "upstream-only.inc"',
                            "include/start.inc": "bx lr"}.items():
@@ -285,24 +285,33 @@ rom_1b70 0x08001000 0x100
     def test_tu_capture_uses_linked_objects_and_scopes_overlay_names(self):
         manifest, _, snapshot, _ = fixture()
         root = self.root
+        for row in snapshot["units"].values():
+            row["object"] = "build/usa/" + row["object"]
+        (root / "config").mkdir()
+        (root / "config/modules.json").write_text(json.dumps(dict(schema=1,
+            modules=[dict(id="overlay:"+n, kind="overlay") for n in ("a","b")],
+            units=[dict(id="tu:"+source, source=source, object=row["object"],
+                        owner="common:common1" if "common1" in source else "rom")
+                   for source,row in snapshot["units"].items()])))
+        (root / "config/compiler_profiles.json").write_text('{"host_units": []}')
         for source, unit in snapshot["units"].items():
             for name in (source, unit["object"]):
                 path = root / name
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text("fixture")
         texts = {
-            "stage1.map": """
+            "build/usa/stage1.map": """
 Linker script and memory map
- .text 0x080003c0 0x44 src/crt0.o
- .text 0x08001000 0x64 src/main.o
+ .text 0x080003c0 0x44 build/usa/src/crt0.o
+ .text 0x08001000 0x64 build/usa/src/main.o
 """,
-            "overlays/a/overlay.map": """
+            "build/usa/overlays/a/overlay.map": """
 Linker script and memory map
- .text 0x02008000 0xc8 src/a.o
+ .text 0x02008000 0xc8 build/usa/src/a.o
 """,
-            "overlays/b/overlay.map": """
+            "build/usa/overlays/b/overlay.map": """
 Linker script and memory map
- .text 0x02008000 0x12c src/b.o
+ .text 0x02008000 0x12c build/usa/src/b.o
 """}
         for name, value in texts.items():
             path = root / name
@@ -332,15 +341,15 @@ Linker script and memory map
             self.assertNotIn("virtual_address", shared)
             self.assertEqual(len(units["src/a.c"]["functions"]), 1)
             self.assertEqual(len(units["src/b.c"]["functions"]), 1)
-            self.assertIn("stage1.map", artifacts)
-            self.assertIn("src/main.o", artifacts)
-            objects["src/main.o"][0].append(dict(name="second_alias", section=".text"))
+            self.assertIn("build/usa/stage1.map", artifacts)
+            self.assertIn("build/usa/src/main.o", artifacts)
+            objects["build/usa/src/main.o"][0].append(dict(name="second_alias", section=".text"))
             definitions["src/main.c"]["second_alias"] = ""
             with self.assertRaisesRegex(ValueError, "ambiguous C ownership"):
                 dp.capture_units(root, manifest, domains, definitions)
-            objects["src/main.o"][0].pop()
+            objects["build/usa/src/main.o"][0].pop()
             del definitions["src/main.c"]["second_alias"]
-            del objects["src/b.o"][0]
+            del objects["build/usa/src/b.o"][0]
             with self.assertRaisesRegex(ValueError, "TU ownership"):
                 dp.capture_units(root, manifest, domains, definitions)
 
@@ -348,10 +357,16 @@ Linker script and memory map
         source = self.root / "asm/ram.s"
         source.parent.mkdir()
         source.write_text("assembly")
-        source.with_suffix(".o").write_text("object")
-        (self.root / "stage1.map").write_text("""
+        output = self.root / "build/usa/asm/ram.o"
+        output.parent.mkdir(parents=True)
+        output.write_text("object")
+        (self.root / "config").mkdir()
+        (self.root / "config/modules.json").write_text(json.dumps(dict(schema=1, modules=[], units=[
+            dict(id="tu:ram", source="asm/ram.s", object="build/usa/asm/ram.o") ])))
+        (self.root / "config/compiler_profiles.json").write_text('{"host_units": []}')
+        (self.root / "build/usa/stage1.map").write_text("""
 Linker script and memory map
- .text 0x03000000 0x100 asm/ram.o
+ .text 0x03000000 0x100 build/usa/asm/ram.o
 """)
         identity = "rom:08000790"
         manifest = {"functions": [dict(id=identity, domain="rom",

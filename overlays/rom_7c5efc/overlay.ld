@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/west_lunpa_cave.o(.text)
+		build/usa/asm/maps/west_lunpa_cave.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/west_lunpa_cave.o(.data)
+		build/usa/asm/maps/west_lunpa_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

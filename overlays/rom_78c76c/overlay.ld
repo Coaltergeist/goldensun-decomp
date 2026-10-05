@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/sol_sanctum_2.o(.text)
+		build/usa/asm/maps/sol_sanctum_2.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/sol_sanctum_2.o(.data)
+		build/usa/asm/maps/sol_sanctum_2.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/sol_sanctum_2.o(.bss)
+		build/usa/asm/maps/sol_sanctum_2.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

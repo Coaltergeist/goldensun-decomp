@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/lalivero_ship.o(.text)
+		build/usa/asm/maps/lalivero_ship.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/lalivero_ship.o(.data)
+		build/usa/asm/maps/lalivero_ship.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/lalivero_ship.o(.bss)
+		build/usa/asm/maps/lalivero_ship.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

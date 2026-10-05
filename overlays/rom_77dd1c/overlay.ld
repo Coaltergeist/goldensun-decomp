@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vale_river_prologue.o(.text)
+		build/usa/asm/maps/vale_river_prologue.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/vale_river_prologue.o(.data)
+		build/usa/asm/maps/vale_river_prologue.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/vale_river_prologue.o(.bss)
+		build/usa/asm/maps/vale_river_prologue.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

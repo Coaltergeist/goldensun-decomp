@@ -86,25 +86,25 @@
 	.global .Lc1_6
 
 .Lc1_1:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3e44, (0x3e4e-0x3e44)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3e44, (0x3e4e-0x3e44)
 .Lc1_2:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3e4e, (0x3e76-0x3e4e)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3e4e, (0x3e76-0x3e4e)
 .Lc1_3:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3e76, (0x3ef4-0x3e76)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3e76, (0x3ef4-0x3e76)
 .Lc1_4:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3ef4, (0x3f14-0x3ef4)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3ef4, (0x3f14-0x3ef4)
 .Lc1_5:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3f14, (0x3fd0-0x3f14)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3f14, (0x3fd0-0x3f14)
 .Lc1_6:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3fd0, (0x3fe4-0x3fd0)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3fd0, (0x3fe4-0x3fd0)
 .Lc1_7:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x3fe4, (0x4008-0x3fe4)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x3fe4, (0x4008-0x3fe4)
 .Lc1_8:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x4008, (0x4010-0x4008)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x4008, (0x4010-0x4008)
 	.word	OvlFunc_common1_172c
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x4014, (0x4154-0x4014)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x4014, (0x4154-0x4014)
 .Lc1_9:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x4154, (0x4194-0x4154)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x4154, (0x4194-0x4154)
 
 	.section .data1
 	.global .Lc1_15
@@ -116,23 +116,23 @@
 	.global .Lc1_14
 
 .Lc1_10:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x457c, (0x457e-0x457c)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x457c, (0x457e-0x457c)
 .Lc1_11:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x457e, (0x45aa-0x457e)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x457e, (0x45aa-0x457e)
 .Lc1_12:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x45aa, (0x4628-0x45aa)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x45aa, (0x4628-0x45aa)
 .Lc1_13:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x4628, (0x46a6-0x4628)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x4628, (0x46a6-0x4628)
 .Lc1_14:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x46a6, (0x46a8-0x46a6)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x46a6, (0x46a8-0x46a6)
 .Lc1_15:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x46a8, (0x46c8-0x46a8)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x46a8, (0x46c8-0x46a8)
 	.word	OvlFunc_common1_17c0
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x46cc, (0x46fc-0x46cc)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x46cc, (0x46fc-0x46cc)
 .Lc1_16:
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x46fc, (0x471c-0x46fc)
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x46fc, (0x471c-0x46fc)
 	.word	OvlFunc_common1_17c0
-	.incbin "overlays/rom_7db0c8/orig.bin", 0x4720
+	.incbin "build/usa/reference/overlays/rom_7db0c8/orig.bin", 0x4720
 
 	.section .bss
 	.global .Lc1_17

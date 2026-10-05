@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/kolima_forest_4.o(.text)
+		build/usa/asm/maps/kolima_forest_4.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/kolima_forest_4.o(.data)
+		build/usa/asm/maps/kolima_forest_4.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/kolima_forest_4.o(.bss)
+		build/usa/asm/maps/kolima_forest_4.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

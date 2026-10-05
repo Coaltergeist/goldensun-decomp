@@ -13,25 +13,25 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/crossbone_isle_dungeon_2/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/crossbone_isle_dungeon_2.o(.text)
-		asm/maps/crossbone_isle_dungeon_2/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/crossbone_isle_dungeon_2/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.text)
+		build/usa/asm/maps/crossbone_isle_dungeon_2/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/crossbone_isle_dungeon_2.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/crossbone_isle_dungeon_2.o(.mdata1)
-		asm/maps/crossbone_isle_dungeon_2.o(.mdata2)
-		asm/maps/crossbone_isle_dungeon_2.o(.mdata3)
-		asm/maps/crossbone_isle_dungeon_2.o(.mdata4)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.mdata1)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.mdata2)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.mdata3)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.mdata4)
 	} > overlay
 
 	.bss : {
-		asm/maps/crossbone_isle_dungeon_2.o(.bss)
+		build/usa/asm/maps/crossbone_isle_dungeon_2.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

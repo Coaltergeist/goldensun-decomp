@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/imil_falls_cave.o(.text)
+		build/usa/asm/maps/imil_falls_cave.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/imil_falls_cave.o(.data)
+		build/usa/asm/maps/imil_falls_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

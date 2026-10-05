@@ -45,7 +45,8 @@ def compile_import(root, argv):
     if argv[3] != profile_digest(profile) or flags != profile["preprocessor_arguments"]:
         raise ValueError("profile settings changed; regenerate the per-TU permuter settings")
     _, _, units = build_config.load(root)
-    protected = {(root / u[key]).resolve() for u in units for key in ("source", "object")}
+    protected = {(root / u[key]).resolve() for u in units
+                 for key in ("source", "object", "legacy_object") if key in u}
     if output in protected or output == source or output.suffix != ".o":
         raise ValueError("permuter output must be a separate scratch .o file")
     try:

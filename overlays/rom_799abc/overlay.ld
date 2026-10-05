@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/goma_cave_2.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/goma_cave_2.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/goma_cave_2.o(.data)
+		build/usa/asm/maps/goma_cave_2.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

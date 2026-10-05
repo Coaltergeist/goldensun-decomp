@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/debug_get_item.o(.text)
+		build/usa/asm/maps/debug_get_item.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/debug_get_item.o(.data)
+		build/usa/asm/maps/debug_get_item.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

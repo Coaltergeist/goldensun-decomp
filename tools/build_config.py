@@ -10,9 +10,11 @@ import shutil
 import subprocess
 import sys
 
+import build_paths
+
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILES = ("config/modules.json", "config/compiler_profiles.json")
-IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py")
+IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py")
 
 
 def read_json(path):
@@ -151,7 +153,7 @@ def make_values(root):
 
 
 def unit_for(units, name):
-    matches = [u for u in units if name in (u["id"], u["source"], u["object"], u.get("binary"))]
+    matches = [u for u in units if name in (u["id"], u["source"], u["object"], u.get("binary"), u.get("legacy_object"), u.get("legacy_binary"))]
     if len(matches) != 1:
         raise ValueError("unknown or ambiguous active TU: " + name)
     return matches[0]
@@ -311,7 +313,7 @@ def make_config(root):
     for profile in data["profiles"]:
         group = [u for u in units if u["profile"] == profile]
         if group:
-            lines.append(" ".join(u["object"] for u in group) + ": .build/" + profile + ".stamp")
+            lines.append(" ".join(u["object"] for u in group) + ": " + build_paths.STAMPS + "/" + profile + ".stamp")
     return "|".join(lines)
 
 
@@ -323,10 +325,9 @@ def module_artifacts(root, identity):
     result = dict(module=identity, objects=[u["object"] for u in units if u["owner"] == identity],
                   linkers=list(dict.fromkeys(a["script"] for a in module["link_anchors"])))
     if module["kind"] == "overlay":
-        folder = "overlays/" + identity.split(":", 1)[1]
-        result.update(original=folder + "/orig.bin", elf=folder + "/overlay.elf", binary=folder + "/overlay.bin", compressed=folder + "/overlay.lz", map=folder + "/overlay.map")
+        result.update(build_paths.overlay(root, identity))
     elif module["kind"] == "rom-region":
-        result.update(elf="goldensun.elf", binary="goldensun.gba", partial="stage1.o", map="goldensun.map")
+        result.update(elf=build_paths.ELF, binary=build_paths.ROM, partial=build_paths.STAGE1, map=build_paths.TARGET + "/goldensun.map")
     else:
         result["linked_by"] = [m["id"] for m in catalog["modules"] if m["kind"] == "overlay" and any(
             obj in (root / a["script"]).read_text() for obj in result["objects"] for a in m["link_anchors"])]

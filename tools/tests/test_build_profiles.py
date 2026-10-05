@@ -71,7 +71,7 @@ class ProfileTests(unittest.TestCase):
             json.loads(self.query("query", kind, name).stdout)
         self.make("src/math/vector.c")
         self.assertEqual(before, inventory())
-        self.assertFalse((self.root / ".build").exists())
+        self.assertFalse((self.root / "build/usa/stamps").exists())
         self.assertFalse((self.root / "tools/gcc296").exists())
         self.assertFalse((self.root / "baserom.gba").exists())
 
@@ -114,7 +114,7 @@ class ProfileTests(unittest.TestCase):
         host = json.loads(self.query("query", "commands", "tools/pack_overlay.c", env=env).stdout)
         self.assertEqual(host["compile"][0], "custom-cc")
         self.assertEqual(host["compile"][1:4], ["-DTEST", "-MMD", "-O0"])
-        self.assertEqual(host["link"], ["custom-cc", "-o", "tools/pack_overlay", "tools/pack_overlay.o"])
+        self.assertEqual(host["link"], ["custom-cc", "-o", "build/host/pack_overlay", "build/host/pack_overlay.o"])
 
     def test_exception_follows_stable_identity_after_source_move(self):
         unit = next(u for u in self.catalog["units"] if u["profile"] == "gcc296-gaia")
@@ -158,7 +158,7 @@ class ProfileTests(unittest.TestCase):
         def stamp(identity):
             with patch.object(config, "tool_files", return_value={"compiler": fake}):
                 build_compile.profile_stamp(self.root, identity)
-            return (self.root / ".build" / (identity + ".stamp")).stat().st_mtime_ns
+            return (self.root / "build/usa/stamps" / (identity + ".stamp")).stat().st_mtime_ns
         before = {n: stamp(n) for n in ["gcc296", "gcc296-gaia", "gcc296-common2"]}
         self.assertEqual(before, {n: stamp(n) for n in before})
         row = next(v for v in self.data["variables"] if v["name"] == "GAIA_CFLAGS")
@@ -170,7 +170,7 @@ class ProfileTests(unittest.TestCase):
         self.assertNotEqual(before["gcc296"], stamp("gcc296"))
 
     def test_failed_compile_removes_stale_output(self):
-        output = self.root / "stale.o"; output.write_bytes(b"old object")
+        output = self.root / "build/host/stale.o"; output.parent.mkdir(parents=True); output.write_bytes(b"old object")
         with patch.object(build_compile, "run", side_effect=subprocess.CalledProcessError(1, ["cc"])), \
              self.assertRaises(subprocess.CalledProcessError):
             build_compile.compile_source(self.root, dict(family="host", compiler=["cc"], arguments=[]),

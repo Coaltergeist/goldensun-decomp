@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/altin.o(.text)
+		build/usa/asm/maps/altin.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/altin.o(.data)
+		build/usa/asm/maps/altin.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

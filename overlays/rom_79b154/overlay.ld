@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/bilibin.o(.text)
+		build/usa/asm/maps/bilibin.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/bilibin.o(.data)
+		build/usa/asm/maps/bilibin.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

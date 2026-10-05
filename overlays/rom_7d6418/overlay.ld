@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/lucky_fountain.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/lucky_fountain.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/lucky_fountain.o(.data)
+		build/usa/asm/maps/lucky_fountain.o(.data)
 	} > overlay
 
 	.bss : {
-		asm/maps/lucky_fountain.o(.bss)
+		build/usa/asm/maps/lucky_fountain.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

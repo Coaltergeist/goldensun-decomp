@@ -13,29 +13,29 @@
 	.global .Lm933_22dc
 
 .Lm933_212c:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x212c, (0x2174-0x212c)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x212c, (0x2174-0x212c)
 .Lm933_2174:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x2174, (0x21d4-0x2174)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x2174, (0x21d4-0x2174)
 .Lm933_21d4:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x21d4, (0x2234-0x21d4)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x21d4, (0x2234-0x21d4)
 .Lm933_2234:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x2234, (0x22dc-0x2234)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x2234, (0x22dc-0x2234)
 .Lm933_22dc:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x22dc, (0x236c-0x22dc)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x22dc, (0x236c-0x22dc)
 	.global gOvl_0200a36c
 gOvl_0200a36c:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x236c, (0x23b0-0x236c)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x236c, (0x23b0-0x236c)
 .Lm933_23b0:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x23b0, (0x23c8-0x23b0)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x23b0, (0x23c8-0x23b0)
 .Lm933_23c8:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x23c8, (0x2410-0x23c8)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x23c8, (0x2410-0x23c8)
 .Lm933_2410:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x2410, (0x24b8-0x2410)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x2410, (0x24b8-0x2410)
 .Lm933_24b8:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x24b8, (0x2500-0x24b8)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x24b8, (0x2500-0x24b8)
 	.global gOvl_0200a500
 gOvl_0200a500:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x2500, (0x26bc-0x2500)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x2500, (0x26bc-0x2500)
 
 	.section .mdata3, "aw", %progbits
 	.global gOvl_0200a6bc
@@ -43,11 +43,11 @@ gOvl_0200a500:
 	.global .Lm933_26c0
 
 gOvl_0200a6bc:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26bc, (0x26be-0x26bc)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x26bc, (0x26be-0x26bc)
 .Lm933_26be:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26be, (0x26c0-0x26be)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x26be, (0x26c0-0x26be)
 .Lm933_26c0:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x26c0
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x26c0
 
 	.section .bss
 	.global .Lm933_26d0
@@ -64,20 +64,20 @@ gOvl_0200a6bc:
 	.section .mdata1, "aw", %progbits
 	.global	OvlData_933_2009f80
 OvlData_933_2009f80:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f80, (0x1fa0-0x1f80)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x1f80, (0x1fa0-0x1f80)
 	.ssize	OvlData_933_2009fa0
 
 	.global	OvlData_933_2009fa0
 OvlData_933_2009fa0:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1fa0, (0x2120-0x1fa0)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x1fa0, (0x2120-0x1fa0)
 	.ssize	OvlData_933_2009fa0
 
 	.section .data
 
 	.global Events_TolbiSpring
 Events_TolbiSpring:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f30, (0x1f48-0x1f30)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x1f30, (0x1f48-0x1f30)
 .Lm933_1f48:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f48, (0x1f70-0x1f48)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x1f48, (0x1f70-0x1f48)
 .Lm933_1f70:
-	.incbin "overlays/rom_7bc690/orig.bin", 0x1f70, (0x1f80-0x1f70)
+	.incbin "build/usa/reference/overlays/rom_7bc690/orig.bin", 0x1f70, (0x1f80-0x1f70)

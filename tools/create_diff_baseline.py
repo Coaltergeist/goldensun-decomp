@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 
+import build_paths
 from build_deps import linker_dependencies
 from candidate_build import production_inputs, compiler_inputs
 
@@ -43,10 +44,9 @@ def source_fingerprint():
 
 
 def linked_objects():
-    scripts = [Path("stage1.ld"), Path("goldensun.ld")]
-    scripts += sorted(Path("overlays").glob("*/overlay.ld"))
-    deps = set().union(*(linker_dependencies(p) for p in scripts))
-    return sorted(p for p in deps if p.endswith(".o") and p.startswith(("src/", "asm/")))
+    # Retain the established reference scope: game-code/assembly objects only.
+    return sorted(u["object"] for u in build_paths.catalog(ROOT)["units"]
+                  if u["source"].startswith(("src/", "asm/")))
 
 
 def create(output):
@@ -70,7 +70,7 @@ def create(output):
             subprocess.run(["make", "-j1", target], stdout=log, stderr=subprocess.STDOUT, check=True)
     if source_fingerprint() != before:
         raise ValueError("sources changed during verification; nothing published")
-    stamps = {str(p): sha(p) for p in Path(".build").glob("*.stamp")}
+    stamps = {str(p): sha(p) for p in Path(build_paths.STAMPS).glob("*.stamp")}
     objects = linked_objects()
     if not objects:
         raise ValueError("no linked objects found")
@@ -93,9 +93,10 @@ def create(output):
         revision=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         dirty=bool(subprocess.check_output(["git", "status", "--porcelain"])),
         source_fingerprint=before, gate="make -j1 clean && make -j1 compare",
-        reference_sha256=sha("baserom.gba"), rom_sha256=sha("goldensun.gba"),
-        overlays={str(p): sha(p) for p in Path("overlays").glob("*/overlay.bin")},
-        compiler_stamps={str(p): json.loads(p.read_text()) for p in Path(".build").glob("*.stamp")},
+        reference_sha256=sha("baserom.gba"), rom_sha256=sha(build_paths.ROM),
+        overlays={row["binary"]: sha(row["binary"]) for row in build_paths.overlays(ROOT).values()},
+        overlay_originals={row["binary"]: row["original"] for row in build_paths.overlays(ROOT).values()},
+        compiler_stamps={str(p): json.loads(p.read_text()) for p in Path(build_paths.STAMPS).glob("*.stamp")},
         objects=entries)
     (stage / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     if source_fingerprint() != before or any(sha(p) != h for p, h in stamps.items()):

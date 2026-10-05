@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/xian/exports.o(.text)
-		asm/maps/common/common0.o(.text)
-		asm/maps/xian.o(.text)
-		asm/maps/xian/imports.o(.text)
-		src/lib/call_via.o(.text)
+		build/usa/asm/maps/xian/exports.o(.text)
+		build/usa/asm/maps/common/common0.o(.text)
+		build/usa/asm/maps/xian.o(.text)
+		build/usa/asm/maps/xian/imports.o(.text)
+		build/usa/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/common/common0.o(.data)
-		asm/maps/common/common0.o(.data1)
-		asm/maps/xian.o(.data)
+		build/usa/asm/maps/common/common0.o(.data)
+		build/usa/asm/maps/common/common0.o(.data1)
+		build/usa/asm/maps/xian.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

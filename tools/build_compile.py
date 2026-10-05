@@ -10,6 +10,8 @@ import sys
 
 import build_config as config
 import build_deps
+import build_paths
+from build_actions import checked
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -24,6 +26,14 @@ def compile_source(root, settings, source, output, *, dependencies=True):
     source, output = Path(source), Path(output)
     assembly, expanded = output.with_suffix(".s"), output.with_suffix(".i")
     family = settings["family"]
+    # Validate every output before creating directories or opening intermediates.
+    names = [output, output.with_suffix(".d")]
+    if family in ("gcc296", "agbcc"):
+        names += [assembly, output.with_suffix(".c.d")]
+    if family == "agbcc":
+        names.append(expanded)
+    for name in names:
+        checked(root, name.relative_to(root) if name.is_absolute() else name)
     output.parent.mkdir(parents=True, exist_ok=True)
     try:
         if family == "assembly":
@@ -63,7 +73,7 @@ def profile_stamp(root, profile):
     # older destination-profile stamp. Only the two affected groups invalidate.
     text = json.dumps(dict(settings=values, tools=tools, implementation=hashes,
                            units=sorted(({k: u[k] for k in ("id", "source", "object", "profile")} for u in members), key=lambda u: u["id"])), sort_keys=True, indent=2) + "\n"
-    build_deps.write_changed(root / ".build" / (profile + ".stamp"), text)
+    build_deps.write_changed(root / build_paths.STAMPS / (profile + ".stamp"), text)
 
 
 def main():
@@ -87,6 +97,7 @@ def main():
             settings = config.settings(ROOT, args.output)
             if settings["family"] != "host" or settings["unit"]["binary"] != args.output:
                 raise ValueError("not a host utility: " + args.output)
+            checked(ROOT, args.output).parent.mkdir(parents=True, exist_ok=True)
             try:
                 run([*settings["compiler"], "-o", args.output, settings["unit"]["object"]], ROOT)
             except BaseException:

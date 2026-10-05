@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		asm/maps/vault_cave/exports.o(.text)
-		asm/maps/vault_cave.o(.text)
-		asm/maps/vault_cave/imports.o(.text)
-		asm/maps/common/common2.o(.text)
+		build/usa/asm/maps/vault_cave/exports.o(.text)
+		build/usa/asm/maps/vault_cave.o(.text)
+		build/usa/asm/maps/vault_cave/imports.o(.text)
+		build/usa/asm/maps/common/common2.o(.text)
 	} > overlay
 
 	.data : {
-		asm/maps/vault_cave.o(.data)
-		asm/maps/vault_cave.o(.mdata1)
-		asm/maps/common/common2.o(.data)
-		asm/maps/vault_cave.o(.mdata2)
-		asm/maps/vault_cave.o(.mdata3)
+		build/usa/asm/maps/vault_cave.o(.data)
+		build/usa/asm/maps/vault_cave.o(.mdata1)
+		build/usa/asm/maps/common/common2.o(.data)
+		build/usa/asm/maps/vault_cave.o(.mdata2)
+		build/usa/asm/maps/vault_cave.o(.mdata3)
 	} > overlay
 
 	/DISCARD/ : {

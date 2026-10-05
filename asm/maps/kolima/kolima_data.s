@@ -29,61 +29,61 @@
 	.global .Lm911_3010
 
 ActorCmd_ARRAY_911__0200abd4:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2bd4, (0x2c08-0x2bd4)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2bd4, (0x2c08-0x2bd4)
 gScript_911__0200ac08:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c08, (0x2c3c-0x2c08)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2c08, (0x2c3c-0x2c08)
 gScript_911__0200ac3c:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c3c, (0x2c70-0x2c3c)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2c3c, (0x2c70-0x2c3c)
 gScript_911__0200ac70:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2c70, (0x2cfc-0x2c70)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2c70, (0x2cfc-0x2c70)
 gScript_911__0200acfc:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2cfc, (0x2d20-0x2cfc)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2cfc, (0x2d20-0x2cfc)
 gScript_911__0200ad20:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2d20, (0x2d7c-0x2d20)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2d20, (0x2d7c-0x2d20)
 gScript_911__0200ad7c:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2d7c, (0x2dd8-0x2d7c)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2d7c, (0x2dd8-0x2d7c)
 gScript_911__0200add8:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2dd8, (0x2e20-0x2dd8)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2dd8, (0x2e20-0x2dd8)
 gScript_911__0200ae20:
 gScript_913__0200ae20:
 gScript_953__0200ae20:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e20, (0x2e34-0x2e20)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2e20, (0x2e34-0x2e20)
 gScript_884__0200ae34:
 gScript_911__0200ae34:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e34, (0x2e48-0x2e34)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2e34, (0x2e48-0x2e34)
 .Lm911_2e48:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e48, (0x2e60-0x2e48)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2e48, (0x2e60-0x2e48)
 .Lm911_2e60:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2e60, (0x2f80-0x2e60)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2e60, (0x2f80-0x2e60)
 .Lm911_2f80:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2f80, (0x2fc8-0x2f80)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2f80, (0x2fc8-0x2f80)
 gScript_913__0200afc8:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x2fc8, (0x3010-0x2fc8)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x2fc8, (0x3010-0x2fc8)
 .Lm911_3010:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3010, (0x3040-0x3010)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3010, (0x3040-0x3010)
 	.global gOvl_0200b040
 gOvl_0200b040:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3040, (0x3080-0x3040)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3040, (0x3080-0x3040)
 .Lm911_3080:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3080, (0x3098-0x3080)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3080, (0x3098-0x3080)
 .Lm911_3098:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3098, (0x32d8-0x3098)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3098, (0x32d8-0x3098)
 .Lm911_32d8:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x32d8, (0x3368-0x32d8)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x32d8, (0x3368-0x32d8)
 .Lm911_3368:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3368, (0x33b0-0x3368)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3368, (0x33b0-0x3368)
 .Lm911_33b0:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x33b0, (0x3590-0x33b0)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x33b0, (0x3590-0x33b0)
 .Lm911_3590:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3590, (0x35d8-0x3590)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3590, (0x35d8-0x3590)
 gScript_911__0200b5d8:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x35d8, (0x35ec-0x35d8)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x35d8, (0x35ec-0x35d8)
 	.global gScript_911__0200b5ec
 gScript_911__0200b5ec:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x35ec, (0x3610-0x35ec)
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x35ec, (0x3610-0x35ec)
 	.global gScript_911__0200b610
 gScript_911__0200b610:
-	.incbin "overlays/rom_79e5c0/orig.bin", 0x3610
+	.incbin "build/usa/reference/overlays/rom_79e5c0/orig.bin", 0x3610
 
 	.section .bss
 	.global .Lm911_368c
