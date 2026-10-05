@@ -1,5 +1,5 @@
 extern void __Func_808f1c0(int, int);
-extern void __Func_8091a58(int, int);
+extern int __Func_8091a58(int, int);
 
 void OvlFunc_952_20085a4(void)
 {

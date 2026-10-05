@@ -2709,7 +2709,7 @@
     "overlay:rom_7d768c:02008af8": "assembly",
     "overlay:rom_7d768c:02008ff8": "assembly",
     "overlay:rom_7d768c:020097e8": "assembly",
-    "overlay:rom_7d768c:0200a014": "assembly",
+    "overlay:rom_7d768c:0200a014": "c",
     "overlay:rom_7d768c:0200bd40": "c",
     "overlay:rom_7d768c:0200bdf8": "c",
     "overlay:rom_7d768c:0200be40": "assembly",
@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3740,
+  "input_count": 3739,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 2,
-  "source_fingerprint": "d20c7d616b92a6e144a28230fe1c67ec3d8f3030290199b8e00426e443443ad4",
+  "source_fingerprint": "bc4688dc4a4059aa8c2e92d7c1b3dd8cb54aa3449fb6315aefe0301707e0fc2c",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -42074,7 +42074,7 @@
       "asm/maps/altin_peak.o": "2a1d61fc78c20408ce198327b341ba559b5e73066a47b10a6e686de9ac86a278",
       "asm/maps/altmiller_cave.o": "7cec0fbe73339f2bf48377e2d6ca6b45ee98fab55298489bca05a8156a61a8d1",
       "asm/maps/babi_lighthouse.o": "b81bd20b4213c52bd2b1c8f3c447d98d040687f96f6afbedb96b7f910a29a1da",
-      "asm/maps/babis_palace.o": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "asm/maps/babis_palace.o": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
       "asm/maps/bilibin.o": "2dd973c47d9e210eee31081620262c0a7b20de332c2bcc414ee370e3f412fd43",
       "asm/maps/bilibin_cave.o": "9595d680b8e2f693ce31382b3ba7045658a519aea3c198d836ea9488c335d7f0",
       "asm/maps/bilibin_rooms.o": "d68e854b840b8b99bc41935d988a764e153f405b76cd9820bbaf1f15b7072363",
@@ -42315,7 +42315,7 @@
       "overlays/rom_7d5838/overlay.map": "69c99bc268ce66c9055eed543bedb3ce2eae487b144be36231eefbdf30fbe543",
       "overlays/rom_7d6418/overlay.elf": "0acb229ffe67e692c5ab846c46d93ee1619447a35e873a621799c7ed371e15ea",
       "overlays/rom_7d6418/overlay.map": "ac4aa5a330b4770b2d32893dcf7df794be9296c039722da05a8e5b1d4ad3408a",
-      "overlays/rom_7d768c/overlay.elf": "9ebd771c3cb47d7f61320d85765765227d104f081cd5630a8f52fbe38a4e9722",
+      "overlays/rom_7d768c/overlay.elf": "cef425d4154947ec30e77be58b481d41111e5ca2c9609cf7e7bfda215c52a6cc",
       "overlays/rom_7d768c/overlay.map": "9c97b77292417450eb9c9916c2412626e1db0e5ed4162e6b1eac8f04ca218958",
       "overlays/rom_7d95dc/overlay.elf": "fdfb724f6f477f45187d4407ce925709e568277ae8c5d5ae4f768f90e3254dc3",
       "overlays/rom_7d95dc/overlay.map": "2506336bdbd5265fff42a2ab7ab802e22311648c95465cb1cfaf8baa297dddd2",

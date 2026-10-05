@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "fc6ca4c03e934e7d9881256f943ed591547f99c58b7ff93f88b4a40284875430",
+  "candidate_fingerprint": "44baee561453781acd36669a4d91bf1316e9fb9d6841319d9b1bbcabd44bb1ef",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -3194,8 +3194,8 @@
       ],
       "fuzzy_match_percent": 82.00741,
       "name": "OvlFunc_952_2008108",
-      "object_sha256": "d6b4a583ae04c534463d3366901b1d630086b9e52143f326fcc13159d71ee63d",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "object_sha256": "4762558097a0b9a2167652baa2d72f1c0b404f5e45630e13c774c3fc98415c6e",
+      "reference_sha256": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
       "source": "src/maps/babis_palace.c",
       "target_size": 348
     },
@@ -3207,8 +3207,8 @@
       ],
       "fuzzy_match_percent": 93.22078,
       "name": "OvlFunc_952_20085a4",
-      "object_sha256": "f755c4811f972ce79e5ec567614176faa8907b3ba57316a4e57c6013f4c2ba08",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "object_sha256": "1d25e4cf5534bddc4a228bce893970592aeb254b54ebbf55542a71a05631493d",
+      "reference_sha256": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
       "source": "src/maps/babis_palace.c",
       "target_size": 208
     },
@@ -3220,8 +3220,8 @@
       ],
       "fuzzy_match_percent": 95.18852,
       "name": "OvlFunc_952_200be40",
-      "object_sha256": "5875b6ef23b753d2e63bc1b1244aa4a26d52c9d7f2da3287753a4d855d610305",
-      "reference_sha256": "3852df3fb54d6ea9a3ef9d44de7c62f7f8bbf79549b555cf5947e0c963f516cf",
+      "object_sha256": "db7839073217f0b77b397bda8a3c9c08c8f58232f344eda1cc50e44e41476a1b",
+      "reference_sha256": "3cd55801f110a11e6c7c460130bce7f99a8ba468d464a5963e9fb01965e6c5bf",
       "source": "src/maps/babis_palace.c",
       "target_size": 324
     },
@@ -6789,7 +6789,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "4cb1372d000c663b97e6966cc94d177e949f8992c944fe86ad0f84a40b039ea7",
+  "progress_sha256": "6aefcae9938077bb9b1d0b1c63c1a326da56e25106413f7e7dfc33b46309a346",
   "schema": 1,
   "scorer": {
     "config": [
