@@ -1,6 +1,7 @@
 /* rom_779188 (overlay file 879): consolidated TU — GS1 title-screen overlay. */
 
 #include "nonmatching.h"
+#include "sprite/slot.h"
 
 INCLUDE_ASM("asm/maps/title/exports.s");
 
@@ -147,10 +148,6 @@ void OvlFunc_879_20081c0(int unused) {
     __free(buf);
 }
 
-struct SpriteSlot {
-    unsigned short unk0;
-    unsigned short unk2;
-};
 extern struct SpriteSlot gSpriteSlots[];
 extern unsigned char L6a0[] __asm__(".L6a0");
 extern unsigned char L68c[] __asm__(".L68c");
@@ -171,7 +168,7 @@ void OvlFunc_879_2008238(void) {
 
     q = (struct TitleSprite *)L6a0;
     p = (volatile unsigned int *)q;
-    tileId = gSpriteSlots[L650[0]].unk2 >> 5;
+    tileId = gSpriteSlots[L650[0]].vramOffset >> 5;
     i = 0;
     x = 0x88;
 

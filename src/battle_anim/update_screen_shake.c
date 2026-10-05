@@ -1,5 +1,6 @@
 /* battle_anim/update_screen_shake.c */
 #include "gba/types.h"
+#include "math/projection.h"
 
 struct ShakeState {
     u8 pad[0x77a0];
@@ -8,17 +9,8 @@ struct ShakeState {
     s32 unk77a8;
 };
 
-struct Projection {
-    fx32 focal;
-    fx32 zMin;
-    fx32 zMax;
-    s32 originX;
-    s32 originY;
-};
-
 extern u8 *iwram_3001eec[];
 extern u16 iwram_3001ad0[];
-extern struct Projection gPhysVec;
 
 extern unsigned int Random(void);
 

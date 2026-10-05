@@ -1,6 +1,7 @@
 // fakematch
 /* video.c -- consolidated TU. */
 #include "nonmatching.h"
+#include "sprite/slot.h"
 
 #include "gba/types.h"
 #include "gba/io.h"
@@ -294,11 +295,6 @@ void Func_8003dec(unsigned int *arg0, int index)
 #include "gba/types.h"
 #include "libcamelot.h"
 #include "dma.h"
-
-struct SpriteSlot {
-	u16 size;
-	u16 vramOffset;
-};
 
 extern struct SpriteSlot gSpriteSlots[];
 extern u8 gSpriteAllocTable[];

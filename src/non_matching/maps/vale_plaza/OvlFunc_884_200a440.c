@@ -1,8 +1,8 @@
-typedef struct { unsigned char _bytes[4]; } SpriteSlot;
+#include "sprite/slot.h"
 
 extern unsigned char iwram_3001f30[];
 
-extern SpriteSlot gSpriteSlots[96];
+extern struct SpriteSlot gSpriteSlots[96];
 
 extern void OvlFunc_884_200a3ec(void);
 

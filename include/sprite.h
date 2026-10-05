@@ -2,6 +2,7 @@
 #define _SPRITE_H_
 
 #include "gba/types.h"
+#include "sprite/slot.h"
 
 // Sprite system (GS1). The enum-like fields (type, format, colorswap, flags)
 // are stored as one byte each; their named value constants live in the gs1/ ID
@@ -76,12 +77,6 @@ struct Sprite {
 };                                  // 0x38
 
 // --- Sprite data tables --------------------------------------------------
-
-// VRAM allocation-table slot: a sprite's byte size and its VRAM offset.
-struct SpriteSlot {
-    u16 size;        // width*height*bpp/8
-    u16 vramOffset;
-};
 
 // Sprite-ID -> battle voice mapping.
 struct SpriteVoice {

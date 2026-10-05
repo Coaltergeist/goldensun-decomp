@@ -1,17 +1,10 @@
 /* math/vector.c */
 #include "nonmatching.h"
 #include "gba/types.h"
+#include "math/projection.h"
 #include "dma.h"
 #include "math.h"
 
-struct Projection {
-    fx32 focal;
-    fx32 zMin;
-    fx32 zMax;
-    s32 originX;
-    s32 originY;
-};
-extern struct Projection gPhysVec;
 extern fx32 Func_80008ac(fx32 num, fx32 denom);
 void Func_80009c0(vec3_t *a, vec3_t *b);
 extern u32 udivsi3_RAM(u32, u32);

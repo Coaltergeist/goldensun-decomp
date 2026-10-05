@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "44baee561453781acd36669a4d91bf1316e9fb9d6841319d9b1bbcabd44bb1ef",
+  "candidate_fingerprint": "f5c792e8a21da4fa73c5f26ed25b64e3efec6ca3cfae776ad7f867aee36a1b12",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -6789,7 +6789,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "55998ce35da578fe28b1c2901f392b235d67df112e7c6be9b5c0be8b8df3c604",
+  "progress_sha256": "e5949b391d87e7d8b1203d4a05b2548358809e878a75a4e4deb472207e6cccf6",
   "schema": 1,
   "scorer": {
     "config": [
