@@ -76,14 +76,14 @@ def domain_map(root, domain):
 def owned_outputs(root):
     """Exact files clean may remove; unknown files in owned directories survive."""
     data = json.loads((root / "config/compiler_profiles.json").read_text())
-    result = {ROM, ELF, STAGE1, STRINGS_TEXT, STRING_STAMP, *STRING_OUTPUTS, TARGET + "/tags"}
+    result = {ROM, ELF, STAGE1, STRINGS_TEXT, STRING_STAMP, *STRING_OUTPUTS, TARGET + "/tags", TARGET + "/build.ninja", TARGET + "/ninja-actions.json", TARGET + "/.ninja_log", TARGET + "/.ninja_deps"}
     for output in link_targets(root):
         result.update([output, str(Path(output).with_suffix(".map"))])
     for row in overlays(root).values():
         result.update(row.values())
     for u in units(root):
         obj = Path(u["object"])
-        result.update([str(obj), str(obj.with_suffix(".d"))])
+        result.update([str(obj), str(obj.with_suffix(".d")), str(obj.with_suffix(".ninja.d"))])
         family = data["profiles"][u["profile"]]["family"]
         if family in ("gcc296", "agbcc"):
             result.update([str(obj.with_suffix(".s")), str(obj.with_suffix(".c.d"))])

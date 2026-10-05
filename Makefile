@@ -1,4 +1,8 @@
-# GNU Make 4.3+ schedules the shared profiles and explicit catalog paths.
+# GNU Make 4.3+ compatibility entry point; both backends share one graph.
+BUILD_BACKEND ?= ninja
+export BUILD_BACKEND
+export GS_BUILD_ARM_LDFLAGS = $(ARM_LDFLAGS)
+export GS_BUILD_ARM_LDLIBS = $(ARM_LDLIBS)
 .DEFAULT_GOAL := compare
 .NOTPARALLEL:
 .SUFFIXES:
@@ -10,7 +14,6 @@ endif
 
 ARM_LDFLAGS :=
 ARM_LDLIBS :=
-LINK_BASE_FLAGS := $(ARM_LDFLAGS) $(ARM_LDLIBS)
 
 define newline
 
@@ -28,6 +31,7 @@ READ_BUILD_GRAPH := 1
 else ifeq ($(MAKECMDGOALS),)
 READ_BUILD_GRAPH := 1
 endif
+ifeq ($(BUILD_BACKEND),make)
 ifeq ($(READ_BUILD_GRAPH),1)
 BUILD_GRAPH := $(shell python3 -B tools/build_graph.py)
 ifneq ($(.SHELLSTATUS),0)
@@ -38,22 +42,24 @@ DEPS := $(shell find build/usa build/host -name '*.d' -type f 2>/dev/null)
 -include $(DEPS)
 endif
 
-.PHONY: compare compare-rom compare-overlays clean tags FORCE
-compare: compare-rom compare-overlays
+else ifeq ($(BUILD_BACKEND),ninja)
+NINJA_TARGETS := $(sort compare compare-rom compare-overlays build verify configure $(filter-out clean tags print-compile-contract print-build-settings,$(MAKECMDGOALS)))
+.PHONY: $(NINJA_TARGETS)
+$(NINJA_TARGETS):
+	python3 -B tools/build.py --backend ninja $@
+.DEFAULT:
+	python3 -B tools/build.py --backend ninja $@
+else
+$(error BUILD_BACKEND must be make or ninja)
+endif
 
+.PHONY: clean tags
 clean:
-	python3 -B tools/build_actions.py clean
+	python3 -B tools/build.py clean
 
 tags:
 	mkdir -p build/usa
 	ctags -R -f build/usa/tags --options=.opts.ctags --exclude=build .
-
-# Only effective content changes update a stamp's mtime.
-FORCE:
-build/usa/stamps/%.stamp: FORCE
-	@python3 -B tools/build_compile.py stamp $*
-build/usa/stamps/binutils.stamp: FORCE
-	@python3 -B tools/build_deps.py stamp $@ --tool arm-none-eabi-as --tool arm-none-eabi-ld --tool arm-none-eabi-objcopy --value='$(LINK_BASE_FLAGS)'
 
 .DELETE_ON_ERROR:
 .PHONY: print-compile-contract print-build-settings

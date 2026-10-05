@@ -24,6 +24,7 @@ import tempfile
 from c_source import parse_funcs
 import build_config
 import build_paths
+import build_verify
 from progress import linked_sources, symbol_records
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -247,9 +248,12 @@ def verify_outputs(root, historical=False):
 
 
 def run_gate(root, log, historical=False):
-    for target in ("clean", "compare"):
-        subprocess.run(["make", "-j1", target], cwd=root, stdout=log,
-                       stderr=subprocess.STDOUT, check=True)
+    if historical:
+        for target in ("clean", "compare"):
+            subprocess.run(["make", "-j1", target], cwd=root, stdout=log,
+                           stderr=subprocess.STDOUT, check=True)
+    else:
+        build_verify.run(root, log)
     return verify_outputs(root, historical)
 
 
@@ -529,12 +533,12 @@ def capture(root, output):
     if {p.name: digest(p) for p in (root / build_paths.STAMPS).glob("*.stamp")} != stamps:
         raise ValueError("build contracts changed during capture")
     verify_outputs(root)
-    snapshot = dict(schema=2, policy=POLICY, source_fingerprint=fingerprint(before),
+    snapshot = dict(schema=3, policy=POLICY, source_fingerprint=fingerprint(before),
                     input_count=len(before), baseline_sha256=digest(root / BASELINE),
                     functions=statuses, units=units,
                     verification=dict(rom_sha1=ROM_SHA1, overlays=overlays,
                                       artifacts=artifacts, build_stamps=stamps,
-                                      gate="make -j1 clean && make -j1 compare",
+                                      gate=build_verify.receipt(root),
                                       toolchain=tools_before))
     validate_snapshot(manifest, baseline, snapshot, before, digest(root / BASELINE))
     write_json(output, snapshot)
@@ -543,7 +547,7 @@ def capture(root, output):
 
 def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
     validate_baseline(manifest, baseline)
-    if snapshot.get("schema") != 2 or snapshot.get("policy") != POLICY:
+    if snapshot.get("schema") not in (2, 3) or snapshot.get("policy") != POLICY:
         raise ValueError("unsupported snapshot schema/policy")
     if snapshot.get("baseline_sha256") != baseline_sha:
         raise ValueError("snapshot baseline changed")
@@ -562,8 +566,8 @@ def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
             or any(not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value)
                    for value in overlays.values())):
         raise ValueError("invalid overlay verification metadata")
-    if (verification.get("rom_sha1") != ROM_SHA1 or len(verification.get("overlays", {})) != 96
-            or verification.get("gate") != "make -j1 clean && make -j1 compare"):
+    build_verify.validate(verification.get("gate"), legacy=snapshot["schema"] == 2)
+    if verification.get("rom_sha1") != ROM_SHA1 or len(verification.get("overlays", {})) != 96:
         raise ValueError("snapshot lacks complete ROM/overlay verification metadata")
 
 

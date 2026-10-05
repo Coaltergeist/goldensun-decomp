@@ -15,8 +15,8 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 ~~~
 
 The catalog owns current TU paths, profile assignments and module identities.
-Make and the maintained linker scripts still control the build graph and link
-order. Maintained source paths are unchanged; generated products use build/.
+The shared build graph supplies Make and Ninja; maintained linker scripts control
+link order. Maintained source paths are unchanged; generated products use build/.
 
 ## Schema 1
 
@@ -90,14 +90,22 @@ replace those derived settings. Research overrides do not establish matching
 acceptance; use the complete verification workflow for accepted changes.
 
 Recipes, candidate compilation and progress preprocessing share build_config.py's
-command construction. build_compile.py runs production pipelines. Make still
-owns serial scheduling and recursive linker dependencies. build_paths.py resolves
-artifacts and declares clean ownership; build_graph.py emits explicit Make rules;
-build_actions.py publishes generated/link products and performs bounded clean. Per-profile
+command construction. build_compile.py runs production pipelines. build_graph.py
+declares explicit edges, ordered argv, byproducts and recursive linker inputs;
+its Make adapter and configure_build.py's Ninja adapter render scheduler syntax.
+build.py refreshes Ninja configuration and enforces serial execution. build_paths.py
+resolves artifacts and clean ownership; build_actions.py publishes generated/link
+products and performs bounded clean. Per-profile
 stamps hash effective arguments, selected driver/frontend/specs/assembler tools,
 implementation and TU membership. No-op checks preserve stamp mtimes. A profile
 change invalidates its consumers; moving a TU between profiles invalidates both
-groups. C/assembler dependency files continue to track individual inputs.
+groups. Both backends check tool contents even when a binary is replaced without
+changing its path or mtime. Ninja uses restat on these stamps and compiler edges with unchanged dependency
+byproducts. Its merged depfile
+keeps C headers plus assembler/include/incbin inputs, omits Make phony rules and
+excludes intermediates produced by the same edge. Original C/GAS depfiles remain
+available for the Make fallback. Multi-output edges declare generated assembly,
+preprocessed input, strings and link maps explicitly.
 
 Source/baseline fingerprints include configuration and executable build helpers.
 Candidate caches also include the resolved TU profile and postprocessing. Compiler
@@ -113,7 +121,7 @@ Do not edit a historical fingerprint to make an old reference appear current.
 | build/usa/reference | Extracted originals and strings.txt |
 | build/usa/generated/strings | Packed strings and generated strings.s |
 | build/usa/stamps | Effective profile and binutils fingerprints |
-| build/usa | ROM, final ELF/map, stage1 object/map and tags |
+| build/usa | ROM, final ELF/map, stage1 object/map, tags and Ninja graph/settings/log/dependency database |
 | build/host | Host utility objects, dependencies and executables |
 
 All compiler/assembler/linker commands run from the checkout root. Maintained
@@ -133,6 +141,20 @@ longer hidden by broad ignore rules.
 Old Make object/host/link targets are compatibility aliases. Diff tools and
 baselines use current paths, including build/usa inside a new reference directory.
 Do not rewrite old receipts or copy old products back into source directories.
+
+Ninja configuration is generated deterministically and written only when changed.
+The action manifest stores argv arrays and resolved profile values; each generated
+command checks its action signature before execution. Use build.py or the Make
+facade before scheduling so current configuration is refreshed. All Ninja actions
+use a depth-one pool, including when the engine is invoked with a larger job count.
+Engine logs/databases may change during no-op verification; production outputs and
+unchanged configuration/stamps retain their contents and mtimes.
+
+New reference manifests and progress snapshots use schema 3 with a schema-1 gate
+receipt identifying Make or Ninja, serial clean/verify commands, ROM plus all 96
+overlays and executor version/hash. Historical schema-2 metadata accepts only its
+original literal Make gate. Current input fingerprints still require a fresh
+capture after build changes; accepting historical syntax does not waive freshness.
 
 ## Editing and validating
 

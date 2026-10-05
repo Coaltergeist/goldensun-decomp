@@ -1,4 +1,4 @@
-"""Compiler profiles and read-only queries. Make remains the build scheduler."""
+"""Compiler profiles and read-only queries. Shared by the Make and Ninja schedulers."""
 import argparse
 import hashlib
 import json
@@ -14,7 +14,7 @@ import build_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILES = ("config/modules.json", "config/compiler_profiles.json")
-IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py")
+IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py", "tools/configure_build.py", "tools/build.py", "tools/build_verify.py")
 
 
 def read_json(path):
@@ -310,10 +310,6 @@ def make_config(root):
             value = "$(filter-out " + " ".join(row["remove"]) + ",$(" + row["base"] + ")) " + shlex.join(row["append"])
         lines.append(row["name"] + " " + row["assignment"] + " " + value.rstrip())
         lines.append("export GS_BUILD_" + row["name"] + " = $(" + row["name"] + ")")
-    for profile in data["profiles"]:
-        group = [u for u in units if u["profile"] == profile]
-        if group:
-            lines.append(" ".join(u["object"] for u in group) + ": " + build_paths.STAMPS + "/" + profile + ".stamp")
     return "|".join(lines)
 
 

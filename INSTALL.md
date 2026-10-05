@@ -8,11 +8,14 @@ below in Bash.
 
 ~~~sh
 sudo apt update
-sudo apt install build-essential binutils-arm-none-eabi python3 python3-venv git less
+sudo apt install build-essential binutils-arm-none-eabi ninja-build python3 python3-venv git less
 ~~~
 
-The build requires GNU Make 4.3 or newer and Python 3.10 or newer.
-Make enforces serial scheduling, including when invoked with -j.
+The build requires Ninja 1.10+, GNU Make 4.3+ and Python 3.10+.
+The supported front ends enforce serial scheduling; Ninja edges also share a
+pool of depth one. `make` uses Ninja by default. `make BUILD_BACKEND=make` selects
+the retained Make scheduler. Both use the same graph, profiles and output paths.
+Set NINJA to an executable path when Ninja is not on PATH.
 
 ## Clone and install the compilers
 
@@ -39,7 +42,7 @@ Its SHA1 must be `5c4695205413df7db52b9a184815a07783999971`.
 ~~~sh
 set -o pipefail
 sha1sum baserom.gba | tee output.txt
-make -j1 clean 2>&1 | tee output.txt && make -j1 compare 2>&1 | tee output.txt
+make -j1 clean 2>&1 | tee output-clean.txt && make -j1 compare 2>&1 | tee output.txt
 ~~~
 
 Check the first hash against the value above. Verification must finish
@@ -66,6 +69,40 @@ object; they do not create files at the old paths. Use the real path printed by
 Historical baselines retain their original paths; capture a new baseline after a
 layout change and keep the old one as evidence.
 
+## Build operations
+
+Run from the checkout root. The Python facade regenerates configuration before
+scheduling work; use it or Make for builds so changed settings and newly generated
+input dependencies are discovered. The generated Ninja file is for diagnostics,
+not a separate configuration entry point. No Rust toolchain is required.
+
+~~~bash
+set -o pipefail
+python3 -B tools/build.py configure 2>&1 | tee output.txt
+python3 -B tools/build.py build 2>&1 | tee output.txt
+python3 -B tools/build.py verify 2>&1 | tee output.txt
+python3 -B tools/build.py build/usa/src/math/vector.o 2>&1 | tee output.txt
+python3 -B tools/build.py --dry-run --explain build 2>&1 | tee output.txt
+python3 -B tools/build.py commands build/usa/src/math/vector.o 2>&1 | tee output.txt
+python3 -B tools/build_config.py query commands src/math/vector.c 2>&1 | tee output.txt
+~~~
+
+`build` produces the ROM; `verify` (also `compare`, the default) checks the ROM and
+all 96 overlays. `commands` prints scheduled wrapper commands; the read-only
+profile query prints the underlying compiler argument arrays. `--verbose` and
+`--explain` show scheduling details. Ordinary builds never rescore candidates or
+refresh progress metadata. Run clean as a separate operation before a clean build.
+
+For fallback scheduling, use `python3 -B tools/build.py --backend make verify` or
+`make BUILD_BACKEND=make compare`. Do not run both backends concurrently in one
+checkout. They share output paths; comparisons between backends need independent
+clean copies. Switching to the Make fallback does not require Ninja.
+
+Compiler flag overrides retain the documented Make interface, including
+`make GCC296_CFLAGS='...' TARGET`; the resolved values reach either backend.
+Use `make print-compile-contract SOURCE=src/math/vector.c` to inspect the six-line
+compatibility contract. [Build configuration](config/README.md) lists overrides.
+
 ## Optional function diff viewer
 
 Install the tested asm-differ revision in its own Python environment:
@@ -85,7 +122,10 @@ python3 tools/create_diff_baseline.py
 
 This runs a fresh ROM/all-overlay comparison and copies the linked objects to
 `expected/`. Do not edit or build concurrently. Use the baseline only after the
-command succeeds; its `manifest.json` records verification and tool provenance.
+command succeeds; its schema-3 `manifest.json` records the actual backend,
+serial clean/verify commands, ROM/all-overlay scope and build-engine fingerprint.
+Use `--backend make` to capture a Make reference. Historical schema-2 references
+retain their original Make receipts and are never rewritten.
 Logs are stored under `.diff-baselines/verification-*/build.log`.
 
 Existing destinations are preserved. To capture another baseline:
@@ -140,7 +180,10 @@ python3 -B -m unittest discover -s tools/tests -v 2>&1 | tee output.txt
 
 With the normal prerequisites installed, opt into the dependency, output-isolation,
 failure/recovery and clean regression. It builds and mutates a disposable copy;
-logs remain under `.progress/build-integration-*.log`.
+logs remain under `.progress/build-integration-*.log`. It tests the default Ninja
+backend. Set `BUILD_BACKEND=make` to exercise the fallback with the same matrix.
+Ninja log/dependency database bookkeeping may change during a no-op verification;
+compiled/generated products, configured settings and content stamps must not.
 
 ~~~bash
 set -o pipefail

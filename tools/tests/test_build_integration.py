@@ -57,7 +57,7 @@ class BuildIntegrationTests(unittest.TestCase):
             make("compare")
             self.assertEqual(inputs, {n: state(game / n) for n in inputs}, "build modified maintained inputs")
             outputs = {str(f.relative_to(game)): mtime(str(f.relative_to(game)))
-                       for folder in ("build/usa", "build/host") for f in (game / folder).rglob("*") if f.is_file()}
+                       for folder in ("build/usa", "build/host") for f in (game / folder).rglob("*") if f.is_file() and f.name not in (".ninja_log", ".ninja_deps")}
             make("compare", "--debug=b")
             self.assertEqual(outputs, {n: mtime(n) for n in outputs}, "no-op rebuilt output")
             save = "build/usa/src/save.o"
@@ -79,7 +79,9 @@ class BuildIntegrationTests(unittest.TestCase):
             changed(save, lambda: None, "GCC296_CFLAGS=" + flags + " -DDEPENDENCY_TEST=1")
             make(save)
             def compiler_change():
-                with (game / "tools/gcc296/cc1").open("ab") as out: out.write(b"\0")
+                file = game / "tools/gcc296/cc1"; previous = file.stat()
+                with file.open("ab") as out: out.write(b"\0")
+                os.utime(file, ns=(previous.st_atime_ns, previous.st_mtime_ns))
             changed(save, compiler_change)
             flash = "build/usa/src/lib/agb_flash/agb_flash.o"
             before = mtime(flash); append("tools/agbcc/include/stddef.h", "\n/* unused header */\n"); make(flash)
@@ -91,6 +93,8 @@ class BuildIntegrationTests(unittest.TestCase):
             changed(common, lambda: (game / original).write_bytes(data))
             changed(common, lambda: (game / original).unlink())
             changed(save, lambda: (game / save).unlink())
+            if env.get("BUILD_BACKEND", "ninja") == "ninja":
+                changed(save, lambda: (game / "build/usa/src/save.s").unlink())
             strings = "build/usa/data/strings/strings.o"
             changed(strings, lambda: (game / "build/usa/generated/strings/strings_00.bin").unlink())
             overlay = "build/usa/overlays/rom_780898/overlay.bin"

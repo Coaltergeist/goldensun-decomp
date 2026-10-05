@@ -30,7 +30,7 @@ The generated size metadata records exceptions for missing sizes and overlaps.
 
 ## Local function counts
 
-After a fresh serial `make -j1 clean && make -j1 compare`:
+After a fresh serial `make -j1 clean && make -j1 compare` (Ninja by default):
 
 ~~~sh
 python3 tools/progress.py
@@ -56,3 +56,9 @@ closer comparison.
 Neither report proves source semantics or detects every fakematch.
 [Contribution requirements](CONTRIBUTING.md) apply regardless of the reported
 percentage.
+
+Build verification records the actual backend in schema-3 progress snapshots and
+reference manifests. Use `--backend make` with the finalizer or reference-capture
+command to select the Make fallback. Old schema-2 receipts remain historical
+evidence; changing the backend helpers requires fresh finalization. Ordinary
+`make`/`tools/build.py` operations do not refresh progress or candidate scores.

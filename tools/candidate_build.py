@@ -12,6 +12,7 @@ from c_source import parse_funcs
 from decomp_progress import source_inputs, load
 from elf_contract import ELF
 import build_config
+import build_verify
 
 
 def sha(path):
@@ -43,8 +44,9 @@ def reference(root, directory, object_name):
     meta = load(directory / "manifest.json")
     if not meta.get("production_inputs") or not meta.get("candidate_compilers"):
         raise ValueError("baseline needs fresh capture with tools/create_diff_baseline.py")
-    if meta.get("gate") != "make -j1 clean && make -j1 compare":
-        raise ValueError("reference has no full verification gate")
+    if meta.get("schema") not in (2, 3):
+        raise ValueError("unsupported reference schema")
+    build_verify.validate(meta.get("gate"), legacy=meta["schema"] == 2)
     if meta["production_inputs"] != production_inputs(root):
         raise ValueError("production inputs changed; capture a fresh baseline")
     if meta["candidate_compilers"] != compiler_inputs(root):

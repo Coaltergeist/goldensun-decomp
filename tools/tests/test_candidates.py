@@ -138,7 +138,7 @@ const char *description = ".size is not assembly here";
     def test_reference_requires_verified_metadata_and_hash(self):
         base = self.root / "expected"
         obj = self.put("expected/src/example.o", "original")
-        meta = dict(gate="make -j1 clean && make -j1 compare",
+        meta = dict(schema=2, gate="make -j1 clean && make -j1 compare",
                     objects={"src/example.o": build.sha(obj)},
                     production_inputs=build.production_inputs(self.root),
                     candidate_compilers={"test": "compiler"})
@@ -154,7 +154,7 @@ const char *description = ".size is not assembly here";
         obj = self.put("expected/src/example.o", "reference")
         rom = self.put("baserom.gba", "ROM")
         overlay = self.put("overlays/test/orig.bin", "overlay")
-        meta = dict(gate="make -j1 clean && make -j1 compare",
+        meta = dict(schema=2, gate="make -j1 clean && make -j1 compare",
             production_inputs=build.production_inputs(self.root), candidate_compilers={"test": "cc"},
             reference_sha256=build.sha(rom), overlays={"overlays/test/overlay.bin": build.sha(overlay)},
             objects={"src/example.o": build.sha(obj)})
@@ -242,7 +242,7 @@ const char *description = ".size is not assembly here";
     def test_changed_reference_inputs_are_rejected(self):
         expected = self.put("expected/src/example.o", "reference")
         state = build.production_inputs(self.root)
-        meta = dict(gate="make -j1 clean && make -j1 compare", production_inputs=state,
+        meta = dict(schema=2, gate="make -j1 clean && make -j1 compare", production_inputs=state,
                     candidate_compilers={"test": "old"}, objects={"src/example.o": build.sha(expected)})
         self.put("expected/manifest.json", json.dumps(meta))
         with mock.patch.object(build, "compiler_inputs", return_value={"test": "new"}):

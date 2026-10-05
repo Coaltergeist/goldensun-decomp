@@ -111,10 +111,11 @@ class OutputTests(unittest.TestCase):
         self.put("src/maps/common/common2.c", 'INCLUDE_ASM("asm/maps/common/common2/data.s");')
         self.put("asm/maps/common/common2/data.s", '.incbin "' + original + '"')
         result = build_graph.graph(self.root)
-        self.assertIn("build/usa/asm/maps/common/common2.o: src/maps/common/common2.c " + original, result)
-        self.assertIn("asm/maps/common/common2.o: build/usa/asm/maps/common/common2.o", result)
-        self.assertIn(paths.STRINGS + "/strings.s", result)
-        self.assertIn(" &: ", result)
+        self.assertIn(original, next(e for e in result if e.outputs == ["build/usa/asm/maps/common/common2.o"]).inputs)
+        self.assertEqual(next(e for e in result if e.outputs == ["asm/maps/common/common2.o"]).inputs,
+                         ["build/usa/asm/maps/common/common2.o"])
+        self.assertTrue(any(paths.STRINGS + "/strings.s" in e.outputs for e in result))
+        self.assertIn(" &: ", build_graph.make_graph(self.root))
         self.assertFalse((self.root / "build").exists())
 
     def test_nested_linker_dependencies_resolve_in_supplied_root(self):

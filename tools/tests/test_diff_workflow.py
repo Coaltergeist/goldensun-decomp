@@ -53,13 +53,13 @@ class BaselineTests(unittest.TestCase):
     def run_command(self, command, **kwargs):
         if command == ["git", "rev-parse", "HEAD"]:
             return subprocess.CompletedProcess(command, 0, stdout="fixture-revision\n")
-        if command[0] != "make":
+        if command[:3] != ["python3", "-B", "tools/build.py"]:
             return self.real_run(command, **kwargs)
-        self.assertEqual(command[:2], ["make", "-j1"])
+        self.assertEqual(command[3:5], ["--backend", "ninja"])
         self.targets.append(command[-1])
         if command[-1] == self.fail_target:
             raise subprocess.CalledProcessError(2, command)
-        if command[-1] == "compare":
+        if command[-1] == "verify":
             (self.root / "build/usa/src/example.o").write_bytes(b"verified object")
             for name in ("baserom.gba", "build/usa/goldensun.gba"):
                 (self.root / name).write_bytes(b"verified ROM")
@@ -72,12 +72,16 @@ class BaselineTests(unittest.TestCase):
     def create(self, output="expected"):
         with mock.patch.object(baseline.subprocess, "run", side_effect=self.run_command), \
              mock.patch.object(baseline, "compiler_inputs", return_value={"fixture": "compiler"}), \
+             mock.patch.object(baseline.build_verify, "receipt", return_value=dict(
+                 schema=1, backend="ninja", serial=True,
+                 commands=baseline.build_verify.commands("ninja"), checks=["rom-sha1", "all-96-overlays"],
+                 executor=dict(name="ninja", version="fixture", sha256="a" * 64))), \
              contextlib.redirect_stdout(io.StringIO()):
             baseline.create(output)
 
     def test_success_requires_both_gates_and_copies_contract(self):
         self.create()
-        self.assertEqual(self.targets, ["clean", "compare"])
+        self.assertEqual(self.targets, ["clean", "verify"])
         manifest = json.loads((self.root / "expected/manifest.json").read_text())
         self.assertEqual(manifest["objects"], {"build/usa/src/example.o": baseline.sha(self.root / "build/usa/src/example.o")})
         self.assertEqual((self.root / "expected/build/usa/src/example.o").read_bytes(), b"verified object")
@@ -92,7 +96,7 @@ class BaselineTests(unittest.TestCase):
         (self.root / "expected").mkdir()
         old = self.root / "expected/old.o"
         old.write_bytes(b"historical evidence")
-        self.fail_target = "compare"
+        self.fail_target = "verify"
         with self.assertRaises(subprocess.CalledProcessError): self.create(".diff-baselines/new")
         self.assertFalse((self.root / ".diff-baselines/new").exists())
         self.assertEqual(old.read_bytes(), b"historical evidence")

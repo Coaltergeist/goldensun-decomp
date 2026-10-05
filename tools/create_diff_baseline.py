@@ -16,6 +16,7 @@ import sys
 import tempfile
 
 import build_paths
+import build_verify
 from build_deps import linker_dependencies
 from candidate_build import production_inputs, compiler_inputs
 
@@ -66,8 +67,7 @@ def create(output):
     production_before = production_inputs(ROOT)
     compilers_before = compiler_inputs(ROOT)
     with (run / "build.log").open("w") as log:
-        for target in ("clean", "compare"):
-            subprocess.run(["make", "-j1", target], stdout=log, stderr=subprocess.STDOUT, check=True)
+        gate = build_verify.run(ROOT, log)
     if source_fingerprint() != before:
         raise ValueError("sources changed during verification; nothing published")
     stamps = {str(p): sha(p) for p in Path(build_paths.STAMPS).glob("*.stamp")}
@@ -88,11 +88,11 @@ def create(output):
             raise ValueError("copy changed: " + rel)
     if production_before != production_inputs(ROOT) or compilers_before != compiler_inputs(ROOT):
         raise ValueError("production or compiler inputs changed during verification")
-    manifest = dict(schema=2, production_inputs=production_before,
+    manifest = dict(schema=3, production_inputs=production_before,
         candidate_compilers=compilers_before, verified_at=datetime.now(timezone.utc).isoformat(),
         revision=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         dirty=bool(subprocess.check_output(["git", "status", "--porcelain"])),
-        source_fingerprint=before, gate="make -j1 clean && make -j1 compare",
+        source_fingerprint=before, gate=gate,
         reference_sha256=sha("baserom.gba"), rom_sha256=sha(build_paths.ROM),
         overlays={row["binary"]: sha(row["binary"]) for row in build_paths.overlays(ROOT).values()},
         overlay_originals={row["binary"]: row["original"] for row in build_paths.overlays(ROOT).values()},
@@ -122,7 +122,9 @@ def create(output):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--output", default="expected", help="expected or .diff-baselines/<new-name>")
+    ap.add_argument("--backend", choices=("make", "ninja"))
     args = ap.parse_args()
+    if args.backend: os.environ["BUILD_BACKEND"] = args.backend
     try:
         create(args.output)
     except (OSError, ValueError, subprocess.SubprocessError) as exc:

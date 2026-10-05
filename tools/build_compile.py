@@ -1,4 +1,4 @@
-"""Execute the shared compiler pipeline and update Make's per-profile stamps."""
+"""Execute the shared compiler pipeline and update per-profile stamps."""
 import argparse
 import hashlib
 import json
@@ -80,6 +80,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     compile_parser = sub.add_parser("compile")
+    compile_parser.add_argument("--ninja-depfile", action="store_true")
     compile_parser.add_argument("source"); compile_parser.add_argument("-o", required=True, dest="output")
     stamp = sub.add_parser("stamp"); stamp.add_argument("profile")
     link = sub.add_parser("link-host"); link.add_argument("output")
@@ -93,6 +94,12 @@ def main():
             if args.output != settings["unit"]["object"]:
                 raise ValueError("output differs from catalog: " + args.output)
             compile_source(ROOT, settings, args.source, args.output)
+            if args.ninja_depfile:
+                try:
+                    build_deps.ninja_dependencies(args.output)
+                except BaseException:
+                    Path(args.output).unlink(missing_ok=True)
+                    raise
         else:
             settings = config.settings(ROOT, args.output)
             if settings["family"] != "host" or settings["unit"]["binary"] != args.output:

@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3751,
+  "input_count": 3754,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
-  "schema": 2,
-  "source_fingerprint": "10585f94aafd879c1a932e2b2b35e7ff55ce2500088991c67f454a267c344517",
+  "schema": 3,
+  "source_fingerprint": "ca0b332b388c4fdc96376733c7de3175b88e39a917ce7d9568fe8809a99ad4f2",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -42577,16 +42577,47 @@
       "build/usa/stage1.map": "26d060069ec3af06ab6a666676d09fcd5be3cfd41bd07e5720a3d39646fe2204"
     },
     "build_stamps": {
-      "arm-assembly.stamp": "76544fe950119eb95d32558009fd98007c02cd44654a478f44a9c975d0832e89",
-      "binutils.stamp": "a933be5cc317e47b2fcc8503ba67ce37341e0278ba0a3a5dd4a617382709bd89",
-      "gcc296-common2.stamp": "18038366fb6cfef72e2caa3ccaf424be435ba8adf4a6afd0e163d01be52813c7",
-      "gcc296-gaia.stamp": "e71f8f54659eaabf4a0aad5862df9e94dcf7aa3bbe436ab17f9119e2caf013f9",
-      "gcc296.stamp": "64c2ba426bf8e848f0b3975d983e0f68a7e09171968007fadb8784915149c072",
-      "host-c.stamp": "70149fbba75a5e72a3e5f51c9c6875a9050c2df8c5a11fdc7bfbb7deeeb7ecfd",
-      "old-agbcc-flash.stamp": "6b14f2249f4c895b118931468382fa6be5df24767ce9640ba19af05d3fce49aa",
-      "old-agbcc-m4a.stamp": "b7fc447d411813b7d7e8b93da230a8d80426431b3699f6422955060a27757317"
+      "arm-assembly.stamp": "f793c89623108f783f3cf43009c3ed8d8bd42b3cd47c5127ff5edf12e96f913f",
+      "binutils.stamp": "41cd65c1831c134bfeae4096182698fcec7f69d10ad25b7ed257a4ce695fda5c",
+      "gcc296-common2.stamp": "2fec8154bdf6a2b07f78463ac497d05012346969a5c9de5e956d8761c9510edd",
+      "gcc296-gaia.stamp": "f88d2e32c3d2b09f99330b9598e136229af8e3f3fcc89ce1ebca1da41fda385b",
+      "gcc296.stamp": "62ccedf1a56306764bc2b6960d973163a819b33adafef6754920d953df4f9d7f",
+      "host-c.stamp": "8e432bbd2edbbf338fb8f153ac2fa5b322b8f324ac3d96f5651b2d9051dd7ab3",
+      "old-agbcc-flash.stamp": "28d1e6080a905e04384c8dbf60437db24064cbf3772f1dbf4886804329893e09",
+      "old-agbcc-m4a.stamp": "a73ba4d151e61eb6245822d8721a521bb8b96a99e8d538b1f4f5422d7d30e777"
     },
-    "gate": "make -j1 clean && make -j1 compare",
+    "gate": {
+      "backend": "ninja",
+      "checks": [
+        "rom-sha1",
+        "all-96-overlays"
+      ],
+      "commands": [
+        [
+          "python3",
+          "-B",
+          "tools/build.py",
+          "--backend",
+          "ninja",
+          "clean"
+        ],
+        [
+          "python3",
+          "-B",
+          "tools/build.py",
+          "--backend",
+          "ninja",
+          "verify"
+        ]
+      ],
+      "executor": {
+        "name": "ninja",
+        "sha256": "a9ddfbf7e365a2e5026ed44f9173e498e37d8b71ec5e259b2c2a684f16cfa862",
+        "version": "1.10.1"
+      },
+      "schema": 1,
+      "serial": true
+    },
     "overlays": {
       "rom_779188": "04c088fb9abf9da498ace094ddf2fe635841b26fdeb10fc9a4c3b2eb1efbae7e",
       "rom_7795e8": "6a45e6aab0bbea264c91b97e233a079f615c7f86835a48f5316cdee47d434c69",

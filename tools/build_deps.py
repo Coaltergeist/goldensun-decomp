@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import shutil
+import shlex
 import subprocess
 import sys
 
@@ -58,7 +59,8 @@ def stamp(path, tools, values):
         if resolved is None:
             raise ValueError("missing build tool: " + tool)
         hashes[tool] = hashlib.sha256(Path(resolved).read_bytes()).hexdigest()
-    for name in ("Makefile", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py"):
+    from build_config import IMPLEMENTATION
+    for name in ("Makefile", *IMPLEMENTATION):
         hashes[name] = hashlib.sha256(Path(name).read_bytes()).hexdigest()
     write_changed(path, json.dumps({"tools": hashes, "values": values}, sort_keys=True, indent=2) + "\n")
 
@@ -73,6 +75,22 @@ def phony_dependencies(path):
     deps = [d for d in rhs.replace("\\\n", " ").split() if Path(d).exists()]
     text = target + ": " + " ".join(deps) + "\n"
     write_changed(path, text + "".join(d + ":\n" for d in deps))
+
+
+def ninja_dependencies(target):
+    """Merge C and GAS dependencies, discarding Make phony rules and own outputs."""
+    obj = Path(target)
+    own = {str(obj.with_suffix(ext)) for ext in (".o", ".s", ".i", ".d", ".c.d", ".ninja.d")}
+    deps = set()
+    for file in (obj.with_suffix(".c.d"), obj.with_suffix(".d")):
+        if file.is_file():
+            first = file.read_text().replace("\\\n", " ").splitlines()[0]
+            deps.update(shlex.split(first.split(":", 1)[1]))
+    deps -= own
+    if not deps: raise ValueError("compiler produced no usable dependency information")
+    def escape(value):
+        return value.replace("\\", "\\\\").replace(" ", "\\ ").replace("#", "\\#").replace("$", "$$")
+    write_changed(obj.with_suffix(".ninja.d"), escape(target) + ": " + " ".join(escape(d) for d in sorted(deps)) + "\n")
 
 
 def main():
