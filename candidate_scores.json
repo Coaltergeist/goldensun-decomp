@@ -6789,7 +6789,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "6aefcae9938077bb9b1d0b1c63c1a326da56e25106413f7e7dfc33b46309a346",
+  "progress_sha256": "55998ce35da578fe28b1c2901f392b235d67df112e7c6be9b5c0be8b8df3c604",
   "schema": 1,
   "scorer": {
     "config": [
