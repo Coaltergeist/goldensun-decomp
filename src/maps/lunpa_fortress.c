@@ -31,7 +31,24 @@ int OvlFunc_959_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200806c.s");
+extern unsigned char *iwram_3001ebc__a9 __asm__("iwram_3001ebc");
+
+void *OvlFunc_959_200806c(int *pos, void *unused)
+{
+    struct Actor **actors;
+    struct Actor *a;
+    unsigned int i;
+
+    actors = (struct Actor **)(iwram_3001ebc__a9 + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        a = actors[i];
+        if ((pos[0] >> 20) == (a->pos.x >> 20)
+            && pos[1] / 0x10000 == a->pos.y / 0x10000
+            && (pos[2] >> 20) == (a->pos.z >> 20))
+            return a;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20080c4.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008244.s");
 
@@ -175,7 +192,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L5ed8__a2[] __asm__(".Lm959_5ed8");
-extern void OvlFunc_959_2008244(int, int, int, int, int, int);
+extern int OvlFunc_959_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -604,7 +621,27 @@ void OvlFunc_959_200901c(void)
         __SetFlag(0xf2d);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009038.s");
+extern int __Func_808e078(int, int, int);
+extern int __Func_8091a58__ret(int, int) __asm__("__Func_8091a58");
+
+int OvlFunc_959_2009038(int actor, int arg1)
+{
+    int result = 0;
+    int obj;
+
+    API_CutsceneStart();
+    obj = __Func_808e078(0, actor, arg1);
+    if (__Func_8091a58__ret(arg1, 0) != -1) {
+        __MapActor_SetAnim(actor, 2);
+        result = 1;
+    } else {
+        API_PlaySound(0x7d);
+        __MapActor_SetAnim(actor, 5);
+    }
+    API_DeleteActor(obj);
+    API_CutsceneEnd();
+    return result;
+}
 
 void OvlFunc_959_2009098(void) {}
 void OvlFunc_959_200909c(void) {}
@@ -848,7 +885,19 @@ void OvlFunc_959_20097bc(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200981c.s");
+int OvlFunc_959_200981c(unsigned int arg0)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(arg0);
+    struct Actor *leader = (struct Actor *)__MapActor_GetActor(0);
+    int az = actor->pos.z / 0x100000;
+    int ax = actor->pos.x / 0x100000;
+    int lz = leader->pos.z / 0x100000;
+    int lx = leader->pos.x / 0x100000;
+
+    if ((unsigned int)(az - lz + 6) <= 12 && ax - 1 < lx && ax + 1 > lx)
+        return 1;
+    return 0;
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009880.s");
 
 extern int OvlFunc_959_2009980(void);
@@ -951,7 +1000,30 @@ void OvlFunc_959_2009b24(int actor) {
     __Func_8091e9c(0x3c);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009be4.s");
+extern int Lm959_5fa4[] __asm__(".Lm959_5fa4");
+
+void OvlFunc_959_2009be4(int actor)
+{
+    __MapActor_Face(actor, 0, 0);
+    __MapActor_Face(0, actor, 0);
+    switch (Lm959_5fa4[0] & 3) {
+    case 0:
+        OvlFunc_959_2009c4c(actor);
+        break;
+    case 1:
+        OvlFunc_959_2009ca4(actor);
+        break;
+    case 2:
+        OvlFunc_959_2009cf0(actor);
+        break;
+    case 3:
+        OvlFunc_959_2009d60(actor);
+        break;
+    default:
+        OvlFunc_959_2009ca4(actor);
+        break;
+    }
+}
 
 void OvlFunc_959_2009c4c(unsigned int actor)
 {

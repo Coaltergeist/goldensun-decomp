@@ -29,7 +29,23 @@ int OvlFunc_883_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200806c.s");
+void *OvlFunc_883_200806c(int *pos, void *unused)
+{
+    extern unsigned int iwram_3001ebc;
+    struct Actor **actors;
+    struct Actor *actor;
+    unsigned int i;
+
+    actors = (struct Actor **)(iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        actor = actors[i];
+        if ((pos[0] >> 20) == (actor->pos.x >> 20)
+            && pos[1] / 0x10000 == actor->pos.y / 0x10000
+            && (pos[2] >> 20) == (actor->pos.z >> 20))
+            return actor;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20080c4.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008244.s");
 
@@ -173,7 +189,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L6190__a2[] __asm__(".Lm883_6190");
-extern void OvlFunc_883_2008244(int, int, int, int, int, int);
+extern int OvlFunc_883_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);

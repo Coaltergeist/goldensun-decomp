@@ -19,6 +19,27 @@
     },
     "OvlFunc_924_200cf44": {
       "id": "overlay:rom_7ac2d8:0200cf44"
+    },
+    "OvlFunc_924_200cf90": {
+      "id": "overlay:rom_7ac2d8:0200cf90"
+    },
+    "OvlFunc_924_200d900": {
+      "id": "overlay:rom_7ac2d8:0200d900"
+    },
+    "OvlFunc_924_2008350": {
+      "id": "overlay:rom_7ac2d8:02008350"
+    },
+    "OvlFunc_924_2009568": {
+      "id": "overlay:rom_7ac2d8:02009568"
+    },
+    "OvlFunc_924_2008528": {
+      "id": "overlay:rom_7ac2d8:02008528"
+    },
+    "OvlFunc_924_200a844": {
+      "id": "overlay:rom_7ac2d8:0200a844"
+    },
+    "OvlFunc_924_200bbd4": {
+      "id": "overlay:rom_7ac2d8:0200bbd4"
     }
   }
 }

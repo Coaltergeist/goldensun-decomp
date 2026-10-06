@@ -171,7 +171,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int Lec8__a2[] __asm__(".Lm914_ec8");
-extern void OvlFunc_914_2008244(int, int, int, int, int, int);
+extern int OvlFunc_914_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -375,8 +375,42 @@ int KolimaForest2_MapInit(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008abc.s");
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008b24.s");
+extern void OvlFunc_914_2008b8c(void);
+extern void OvlFunc_914_2008bac(void);
+extern void OvlFunc_914_2008bcc(void);
+extern unsigned short OvlFunc_914_2008b24(unsigned short color, int arg);
+
+void OvlFunc_914_2008abc(int arg0)
+{
+    unsigned short i;
+    unsigned short *pal;
+
+    OvlFunc_914_2008b8c();
+    for (i = 0; i < 0xe0; i++) {
+        if ((i < 0x11 || i > 0x17) && (i < 0xc1 || i > 0xc8)) {
+            pal = (unsigned short *)0x5000000 + i;
+            *pal = OvlFunc_914_2008b24(*pal, arg0);
+        }
+    }
+    OvlFunc_914_2008bcc();
+    OvlFunc_914_2008bac();
+    API_Func_8091200(0x80 << 9, 0);
+}
+extern int _divsi3_RAM(int, int);
+
+unsigned short OvlFunc_914_2008b24(unsigned short color, int n)
+{
+    short r = color & 0x1f;
+    short g = (color >> 5) & 0x1f;
+    short b = (color >> 10) & 0x1f;
+
+    r += _divsi3_RAM(r, (unsigned int)n << 2);
+    g -= _divsi3_RAM(g, n);
+    b -= _divsi3_RAM(b, n);
+    if (r > 31)
+        r = 31;
+    return r | ((b << 10) | (g << 5));
+}
 
 #include "dma.h"
 extern unsigned int iwram_3001ed0;

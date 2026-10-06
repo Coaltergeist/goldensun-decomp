@@ -198,7 +198,40 @@ void *TolbiBoundShipDeck_GetExits(void) {
     return (void *)gOvl_0200cb64;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/TolbiBoundShipDeck_GetActors.s");
+extern int __GetFlag(int);
+extern unsigned char gScript_968__0200d508[];
+extern unsigned char Lm943_4ef0[] __asm__(".Lm943_4ef0");
+extern unsigned char Lm943_5028[] __asm__(".Lm943_5028");
+extern unsigned char Lm943_4cf8[] __asm__(".Lm943_4cf8");
+extern unsigned char Lm943_4ba8[] __asm__(".Lm943_4ba8");
+
+void *TolbiBoundShipDeck_GetActors(void)
+{
+    int flag;
+
+    if (__GetFlag(0x93e)) {
+        return gScript_968__0200d508;
+    }
+    if (__GetFlag(0x927)) {
+        return Lm943_4ef0;
+    }
+    flag = __GetFlag(0x928);
+    if (flag) {
+        return Lm943_5028;
+    }
+    if (__GetFlag(0x911)) {
+        if (__GetFlag(0x925)) {
+            Lm943_4cf8[0x14e] = flag;
+            Lm943_4cf8[0x1ae] = 2;
+            Lm943_4cf8[0x1c6] = 2;
+        } else if (__GetFlag(0x922)) {
+            Lm943_4cf8[0x1ae] = 1;
+            Lm943_4cf8[0x1c6] = 1;
+        }
+        return Lm943_4cf8;
+    }
+    return Lm943_4ba8;
+}
 
 extern unsigned char L59d0[] __asm__(".Lm943_59d0");
 extern unsigned char L5a54[] __asm__(".Lm943_5a54");

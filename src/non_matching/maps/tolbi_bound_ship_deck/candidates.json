@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "source": "src/maps/tolbi_bound_ship_deck.c",
+  "functions": {
+    "OvlFunc_943_2008030": {
+      "id": "overlay:rom_7c7b9c:02008030"
+    },
+    "OvlFunc_943_2008514": {
+      "id": "overlay:rom_7c7b9c:02008514"
+    },
+    "OvlFunc_943_20088e0": {
+      "id": "overlay:rom_7c7b9c:020088e0"
+    },
+    "OvlFunc_943_200b558": {
+      "id": "overlay:rom_7c7b9c:0200b558"
+    },
+    "TolbiBoundShipDeck_MapInit": {
+      "id": "overlay:rom_7c7b9c:020093d4"
+    }
+  }
+}

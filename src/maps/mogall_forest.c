@@ -34,7 +34,24 @@ int OvlFunc_927_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200806c.s");
+extern unsigned char *iwram_3001ebc;
+
+void *OvlFunc_927_200806c(int *pos, void *unused)
+{
+    struct Actor **list;
+    struct Actor *actor;
+    unsigned int i;
+
+    list = (struct Actor **)(iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        actor = list[i];
+        if (pos[0] >> 20 == actor->pos.x >> 20
+            && pos[1] / 0x10000 == actor->pos.y / 0x10000
+            && pos[2] >> 20 == actor->pos.z >> 20)
+            return actor;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20080c4.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008244.s");
 
@@ -178,7 +195,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L2ef8__a2[] __asm__(".Lm927_2ef8");
-extern void OvlFunc_927_2008244(int, int, int, int, int, int);
+extern int OvlFunc_927_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);

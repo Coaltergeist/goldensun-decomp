@@ -193,7 +193,7 @@ hit:
 }
 
 extern unsigned char iwram_3001e70[];
-extern void OvlFunc_957_2008244(int, int, int, int, int, int);
+extern int OvlFunc_957_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -550,7 +550,24 @@ void OvlFunc_957_200b4bc(void)
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200b518.s");
+void OvlFunc_957_200b518(void)
+{
+    if (API_GetFlag(0x960) && !API_GetFlag(0x962)) {
+        API_SetFlag(0x961);
+        API_CutsceneStart();
+        API_MessageID(0x217d);
+        API_ActorMessage(8, 0);
+        API_CutsceneWait(10);
+        API_Func_80925cc(0, 2);
+        API_CutsceneWait(30);
+        API_MapActor_Face(0, 8, 0);
+        API_CutsceneWait(30);
+        API_ActorMessage(8, 0);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(20);
+        API_CutsceneEnd();
+    }
+}
 extern unsigned char Lm957_4688[] __asm__(".Lm957_4688");
 extern unsigned char Lm957_4724[] __asm__(".Lm957_4724");
 extern unsigned char Lm957_476c[] __asm__(".Lm957_476c");

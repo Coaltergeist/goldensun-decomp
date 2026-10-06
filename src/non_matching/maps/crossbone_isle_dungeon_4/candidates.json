@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/crossbone_isle_dungeon_4.c",
+  "functions": {
+    "OvlFunc_948_2009308": {
+      "id": "overlay:rom_7d30e0:02009308"
+    },
+    "OvlFunc_948_200941c": {
+      "id": "overlay:rom_7d30e0:0200941c"
+    }
+  }
+}

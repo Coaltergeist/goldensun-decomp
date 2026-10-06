@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "ecd4cadfe9ac4908d82a90810d92357a9dbb706db3691d6a7d4b76bc6f94ff7b",
+  "candidate_fingerprint": "d234e0c1283b629af9904bc137109cc98166fc61bc91b0273e5ac47dc1ddfdfe",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -443,6 +443,32 @@
       "source": "src/maps/vale_river_prologue.c",
       "target_size": 116
     },
+    "overlay:rom_780898:02008244": {
+      "candidate": "src/non_matching/maps/vale_river/OvlFunc_883_2008244.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_883_2008244"
+      ],
+      "fuzzy_match_percent": 84.645836,
+      "name": "OvlFunc_883_2008244",
+      "object_sha256": "34991fdc5e4f14aaf54fac414e7645e4e9992c9a279124419b6d78fd66f1e270",
+      "reference_sha256": "25b77e35aa4a72944fb01775453b5674becd97fdd72565223c903267863cb272",
+      "source": "src/maps/vale_river.c",
+      "target_size": 100
+    },
+    "overlay:rom_780898:0200b45c": {
+      "candidate": "src/non_matching/maps/vale_river/OvlFunc_883_200b45c.c",
+      "candidate_size": 108,
+      "evaluated_with": [
+        "OvlFunc_883_200b45c"
+      ],
+      "fuzzy_match_percent": 99.6,
+      "name": "OvlFunc_883_200b45c",
+      "object_sha256": "eab7b69b273899bace35b772137a1a37e960c5e0f7f887a24e96e0d17f64d3a6",
+      "reference_sha256": "25b77e35aa4a72944fb01775453b5674becd97fdd72565223c903267863cb272",
+      "source": "src/maps/vale_river.c",
+      "target_size": 108
+    },
     "overlay:rom_780898:0200dcc4": {
       "candidate": "src/non_matching/maps/vale_river/OvlFunc_883_200dcc4.c",
       "candidate_size": 80,
@@ -451,8 +477,8 @@
       ],
       "fuzzy_match_percent": 94.73684,
       "name": "OvlFunc_883_200dcc4",
-      "object_sha256": "9b8a62fefb1c7841c158f6aa20ffd22e3055818e86d207b14c8c4232edcf28ec",
-      "reference_sha256": "a4565edbfa1b0eb3c6043d96c8b7d9602bbb3e482bc9f4a98214011e826a960b",
+      "object_sha256": "98b4e328064f2bf8697da7f5940c9c0df3cf20fcea596ce88fa78624c668b97f",
+      "reference_sha256": "25b77e35aa4a72944fb01775453b5674becd97fdd72565223c903267863cb272",
       "source": "src/maps/vale_river.c",
       "target_size": 80
     },
@@ -464,8 +490,8 @@
       ],
       "fuzzy_match_percent": 97.5,
       "name": "OvlFunc_883_200dd14",
-      "object_sha256": "2a417d559cb06b9b1fe5ca91d8b8eb1aa80cd3409ef7f1eb950b8c13944d2ed4",
-      "reference_sha256": "a4565edbfa1b0eb3c6043d96c8b7d9602bbb3e482bc9f4a98214011e826a960b",
+      "object_sha256": "8a31396a7f310cbd3a86af00481c9798ab8fe6dfa45d6c55fcf13159fd541a91",
+      "reference_sha256": "25b77e35aa4a72944fb01775453b5674becd97fdd72565223c903267863cb272",
       "source": "src/maps/vale_river.c",
       "target_size": 84
     },
@@ -1548,6 +1574,32 @@
       "source": "src/maps/kolima_forest_1.c",
       "target_size": 284
     },
+    "overlay:rom_7a1ff0:0200806c": {
+      "candidate": "src/non_matching/maps/kolima_forest_2/OvlFunc_914_200806c.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_914_200806c"
+      ],
+      "fuzzy_match_percent": 78.57143,
+      "name": "OvlFunc_914_200806c",
+      "object_sha256": "25d4d0ce1686b99b1bf5eadb276956bdf5170560499695047eb9a7165b0ef5de",
+      "reference_sha256": "ea9dd9d7ceaa08c39d23e8500f0f66a7af2223647e1bc8efcac77eb75ed72127",
+      "source": "src/maps/kolima_forest_2.c",
+      "target_size": 88
+    },
+    "overlay:rom_7a1ff0:02008244": {
+      "candidate": "src/non_matching/maps/kolima_forest_2/OvlFunc_914_2008244.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_914_2008244"
+      ],
+      "fuzzy_match_percent": 85.791664,
+      "name": "OvlFunc_914_2008244",
+      "object_sha256": "c4c0958004eecb777019044ce1044c40b7cfffe6fbc7133b1aa1627c9e6eb4cf",
+      "reference_sha256": "ea9dd9d7ceaa08c39d23e8500f0f66a7af2223647e1bc8efcac77eb75ed72127",
+      "source": "src/maps/kolima_forest_2.c",
+      "target_size": 100
+    },
     "overlay:rom_7a2bf0:020088c0": {
       "candidate": "src/non_matching/maps/kolima_forest_3/OvlFunc_915_20088c0.c",
       "candidate_size": 284,
@@ -1834,6 +1886,19 @@
       "source": "src/maps/imil.c",
       "target_size": 452
     },
+    "overlay:rom_7a8c8c:02008ed8": {
+      "candidate": "src/non_matching/maps/imil_falls_cave/OvlFunc_922_2008ed8.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_922_2008ed8"
+      ],
+      "fuzzy_match_percent": 95.12195,
+      "name": "OvlFunc_922_2008ed8",
+      "object_sha256": "9ab5f1c010d98b387bfd604a3642ede034ccfa8b46318a2c72f29f043fdb54c1",
+      "reference_sha256": "b82e1c993b438b1157f886dc175d84293eb3b6d0b481695c65a28977086a758e",
+      "source": "src/maps/imil_falls_cave.c",
+      "target_size": 88
+    },
     "overlay:rom_7a8c8c:0200a094": {
       "candidate": "src/non_matching/maps/imil_falls_cave/OvlFunc_922_200a094.c",
       "candidate_size": 452,
@@ -1990,6 +2055,45 @@
       "source": "src/maps/mercury_lighthouse_entrance.c",
       "target_size": 72
     },
+    "overlay:rom_7ac2d8:02008350": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_2008350.c",
+      "candidate_size": 88,
+      "evaluated_with": [
+        "OvlFunc_924_2008350"
+      ],
+      "fuzzy_match_percent": 95.2381,
+      "name": "OvlFunc_924_2008350",
+      "object_sha256": "ea49e4e0aabf58c893edf1e303c25881da0bb39f1deb2a69d438135804aa129e",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 88
+    },
+    "overlay:rom_7ac2d8:02008528": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_2008528.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_924_2008528"
+      ],
+      "fuzzy_match_percent": 84.645836,
+      "name": "OvlFunc_924_2008528",
+      "object_sha256": "f7c187cbc1baab7b516c969914c82467ef1c5f3f1b9ef6848d299792f7ccb60e",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 100
+    },
+    "overlay:rom_7ac2d8:02009568": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_2009568.c",
+      "candidate_size": 124,
+      "evaluated_with": [
+        "OvlFunc_924_2009568"
+      ],
+      "fuzzy_match_percent": 94.0,
+      "name": "OvlFunc_924_2009568",
+      "object_sha256": "46af6bdb1bcba1abaad2805494de09c17f6a4ed997e46063f5cee7de2420136a",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 120
+    },
     "overlay:rom_7ac2d8:0200a648": {
       "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200a648.c",
       "candidate_size": 60,
@@ -1998,10 +2102,23 @@
       ],
       "fuzzy_match_percent": 88.19231,
       "name": "OvlFunc_924_200a648",
-      "object_sha256": "7db817f2f8e56286a53ce0beb8ca66f21f6289b9c87213eb83aeff39b20c4e27",
-      "reference_sha256": "a1b95e3686d9435b901391f5babd01f57ea40c6696c1ed01cb85b92987b74cb2",
+      "object_sha256": "a0e216eb7cef72a9193d3e8a9853801f7d410ec26203708bf6943a9b55491f91",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
       "source": "src/maps/mercury_lighthouse.c",
       "target_size": 60
+    },
+    "overlay:rom_7ac2d8:0200a844": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200a844.c",
+      "candidate_size": 106,
+      "evaluated_with": [
+        "OvlFunc_924_200a844"
+      ],
+      "fuzzy_match_percent": 98.039215,
+      "name": "OvlFunc_924_200a844",
+      "object_sha256": "060097daf2daf4fa068f9063c6ada57d53ae660f3c26441714e395334dab01fe",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 108
     },
     "overlay:rom_7ac2d8:0200adcc": {
       "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200adcc.c",
@@ -2011,10 +2128,23 @@
       ],
       "fuzzy_match_percent": 88.19231,
       "name": "OvlFunc_924_200adcc",
-      "object_sha256": "3c5a8c32b689a0e4af2fdee77ff72ebc9307d891331b9f0cab822b9a9bcc242a",
-      "reference_sha256": "a1b95e3686d9435b901391f5babd01f57ea40c6696c1ed01cb85b92987b74cb2",
+      "object_sha256": "7ff253a3bbcc0362c7847fd9c00024a2ac42009e39e458dc496313a5d7e508c3",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
       "source": "src/maps/mercury_lighthouse.c",
       "target_size": 60
+    },
+    "overlay:rom_7ac2d8:0200bbd4": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200bbd4.c",
+      "candidate_size": 112,
+      "evaluated_with": [
+        "OvlFunc_924_200bbd4"
+      ],
+      "fuzzy_match_percent": 78.26923,
+      "name": "OvlFunc_924_200bbd4",
+      "object_sha256": "97810aba423cd4819c0e8384e0fc51c0b7e7a2557208d55d99c8adfd449a32de",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 116
     },
     "overlay:rom_7ac2d8:0200cf44": {
       "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200cf44.c",
@@ -2024,10 +2154,23 @@
       ],
       "fuzzy_match_percent": 92.6,
       "name": "OvlFunc_924_200cf44",
-      "object_sha256": "d06b8e00e1e40bb89bdbcdc4fe7457fbe4a45305e10b110c78e1f1003d98459a",
-      "reference_sha256": "a1b95e3686d9435b901391f5babd01f57ea40c6696c1ed01cb85b92987b74cb2",
+      "object_sha256": "b3d23c9b9d66c6ab8b45f324d20d4650537d217a31c79880fbd71ad3e2985bbc",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
       "source": "src/maps/mercury_lighthouse.c",
       "target_size": 76
+    },
+    "overlay:rom_7ac2d8:0200cf90": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200cf90.c",
+      "candidate_size": 62,
+      "evaluated_with": [
+        "OvlFunc_924_200cf90"
+      ],
+      "fuzzy_match_percent": 95.888885,
+      "name": "OvlFunc_924_200cf90",
+      "object_sha256": "b48d91914c8f9280bf5c9ad1cf2473895876c505548adbd0157bab381a1cee64",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 60
     },
     "overlay:rom_7ac2d8:0200d1b0": {
       "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200d1b0.c",
@@ -2037,10 +2180,23 @@
       ],
       "fuzzy_match_percent": 83.80645,
       "name": "OvlFunc_924_200d1b0",
-      "object_sha256": "35c43964867cf507322c8bdfc5d078f2d9a0d2d8dd8b248b72fdd87a10e70e89",
-      "reference_sha256": "a1b95e3686d9435b901391f5babd01f57ea40c6696c1ed01cb85b92987b74cb2",
+      "object_sha256": "2f6e4c504601520721e06cbd29da202b349553004a5b9163292a91a06e482e62",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
       "source": "src/maps/mercury_lighthouse.c",
       "target_size": 64
+    },
+    "overlay:rom_7ac2d8:0200d900": {
+      "candidate": "src/non_matching/maps/mercury_lighthouse/OvlFunc_924_200d900.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_924_200d900"
+      ],
+      "fuzzy_match_percent": 75.0625,
+      "name": "OvlFunc_924_200d900",
+      "object_sha256": "df0cbb8c40dbb46d66c28d225ad11ef519d9351e8f1f483b65f4f1bcda8f8e44",
+      "reference_sha256": "d08d80332e266d17772407f451985b3c5958e2d5bb4ad4bda57f126377590bdf",
+      "source": "src/maps/mercury_lighthouse.c",
+      "target_size": 72
     },
     "overlay:rom_7b0400:0200835c": {
       "candidate": "src/non_matching/maps/mercury_lighthouse_aerie/MercuryLighthouseAerie_MapInit.c",
@@ -2159,6 +2315,19 @@
       "source": "src/maps/fuchin_temple.c",
       "target_size": 308
     },
+    "overlay:rom_7b4558:02008244": {
+      "candidate": "src/non_matching/maps/mogall_forest/OvlFunc_927_2008244.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_927_2008244"
+      ],
+      "fuzzy_match_percent": 84.645836,
+      "name": "OvlFunc_927_2008244",
+      "object_sha256": "ebc654ed05e85523a4f7d1d2c78eb091d4e8e9066b356e23ade75f0d9971c709",
+      "reference_sha256": "c0ff5b56a7256fcf5c816a09bb7094166bfea52b3ceede083359daee824955a8",
+      "source": "src/maps/mogall_forest.c",
+      "target_size": 100
+    },
     "overlay:rom_7b4558:020089f4": {
       "candidate": "src/non_matching/maps/mogall_forest/OvlFunc_927_20089f4.c",
       "candidate_size": 86,
@@ -2167,10 +2336,23 @@
       ],
       "fuzzy_match_percent": 87.325,
       "name": "OvlFunc_927_20089f4",
-      "object_sha256": "ec4ae15aafeb3dc7e020eaa04b4915c9edc1de5e9cc77101f0c50cfa5ed32edd",
-      "reference_sha256": "96ecee5f730286d8d2eaa8249a700153f73c25165f22ea5c05dd985e0ea3d5d0",
+      "object_sha256": "31bead1d15d94f1231166362ddc1e5e3ea2d020298afbb565983b6744417d5be",
+      "reference_sha256": "c0ff5b56a7256fcf5c816a09bb7094166bfea52b3ceede083359daee824955a8",
       "source": "src/maps/mogall_forest.c",
       "target_size": 88
+    },
+    "overlay:rom_7b4558:02008a4c": {
+      "candidate": "src/non_matching/maps/mogall_forest/OvlFunc_927_2008a4c.c",
+      "candidate_size": 98,
+      "evaluated_with": [
+        "OvlFunc_927_2008a4c"
+      ],
+      "fuzzy_match_percent": 97.53191,
+      "name": "OvlFunc_927_2008a4c",
+      "object_sha256": "924e1345c1cda9c836559950d6fccb1735d34f5983458a9d53288355eb123c14",
+      "reference_sha256": "c0ff5b56a7256fcf5c816a09bb7094166bfea52b3ceede083359daee824955a8",
+      "source": "src/maps/mogall_forest.c",
+      "target_size": 100
     },
     "overlay:rom_7b6668:02008370": {
       "candidate": "src/non_matching/maps/xian/OvlFunc_928_2008370.c",
@@ -2236,6 +2418,32 @@
       "reference_sha256": "28d00403a118f41ad775a939ef2239f78a5ce3f0fd432689d9071d6043969171",
       "source": "src/maps/xian.c",
       "target_size": 488
+    },
+    "overlay:rom_7b9cb4:02008040": {
+      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_2008040.c",
+      "candidate_size": 84,
+      "evaluated_with": [
+        "OvlFunc_932_2008040"
+      ],
+      "fuzzy_match_percent": 95.2381,
+      "name": "OvlFunc_932_2008040",
+      "object_sha256": "dfe2ba4679835ec76406ffe4de1f7b17e2d6d31502ce000db4186e1121b01501",
+      "reference_sha256": "269ad8db771ffe2639b034ee78b591c79ceb9f5138308799087a90a55ea3b718",
+      "source": "src/maps/altin_peak.c",
+      "target_size": 88
+    },
+    "overlay:rom_7b9cb4:020086a0": {
+      "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_20086a0.c",
+      "candidate_size": 60,
+      "evaluated_with": [
+        "OvlFunc_932_20086a0"
+      ],
+      "fuzzy_match_percent": 78.48148,
+      "name": "OvlFunc_932_20086a0",
+      "object_sha256": "393a2cf2f8cb60c29b94d70dda58de843356cb18afe6903617299701cfaff5ed",
+      "reference_sha256": "269ad8db771ffe2639b034ee78b591c79ceb9f5138308799087a90a55ea3b718",
+      "source": "src/maps/altin_peak.c",
+      "target_size": 60
     },
     "overlay:rom_7b9cb4:02009770": {
       "candidate": "src/non_matching/maps/altin_peak/OvlFunc_932_2009770.c",
@@ -2666,6 +2874,71 @@
       "source": "src/maps/kalay_docks.c",
       "target_size": 380
     },
+    "overlay:rom_7c7b9c:02008030": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_deck/OvlFunc_943_2008030.c",
+      "candidate_size": 136,
+      "evaluated_with": [
+        "OvlFunc_943_2008030"
+      ],
+      "fuzzy_match_percent": 58.606556,
+      "name": "OvlFunc_943_2008030",
+      "object_sha256": "0cb53ad8ba5508b097fbaedace40f3a124bda9ea3b98dc01e31e83486c08b0c0",
+      "reference_sha256": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "source": "src/maps/tolbi_bound_ship_deck.c",
+      "target_size": 132
+    },
+    "overlay:rom_7c7b9c:02008514": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_deck/OvlFunc_943_2008514.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_943_2008514"
+      ],
+      "fuzzy_match_percent": 87.74419,
+      "name": "OvlFunc_943_2008514",
+      "object_sha256": "47549f22a7310e8d77866d7c119ac7207c3552eeaa848af67a73abde1507e5de",
+      "reference_sha256": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "source": "src/maps/tolbi_bound_ship_deck.c",
+      "target_size": 92
+    },
+    "overlay:rom_7c7b9c:020088e0": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_deck/OvlFunc_943_20088e0.c",
+      "candidate_size": 86,
+      "evaluated_with": [
+        "OvlFunc_943_20088e0"
+      ],
+      "fuzzy_match_percent": 97.61905,
+      "name": "OvlFunc_943_20088e0",
+      "object_sha256": "17435d0f862eaa64928ed17d9818bbbb617d3e9e27c21b83ae7aca8b48995143",
+      "reference_sha256": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "source": "src/maps/tolbi_bound_ship_deck.c",
+      "target_size": 88
+    },
+    "overlay:rom_7c7b9c:020093d4": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_deck/TolbiBoundShipDeck_MapInit.c",
+      "candidate_size": 112,
+      "evaluated_with": [
+        "TolbiBoundShipDeck_MapInit"
+      ],
+      "fuzzy_match_percent": 73.64445,
+      "name": "TolbiBoundShipDeck_MapInit",
+      "object_sha256": "712a65bfb5d04e1c6da86afec1b761fa4c5651df33befe27e3aa41fc01d3033a",
+      "reference_sha256": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "source": "src/maps/tolbi_bound_ship_deck.c",
+      "target_size": 112
+    },
+    "overlay:rom_7c7b9c:0200b558": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_deck/OvlFunc_943_200b558.c",
+      "candidate_size": 156,
+      "evaluated_with": [
+        "OvlFunc_943_200b558"
+      ],
+      "fuzzy_match_percent": 88.333336,
+      "name": "OvlFunc_943_200b558",
+      "object_sha256": "f9a789244cb41bd4f12c9cae441ca77225079eab4b64823cffbebdc21fa689a4",
+      "reference_sha256": "8df02973b3d5c2b53dcb9bd27b9c28814bb04557aae6b48e50ccb1a2dddae37f",
+      "source": "src/maps/tolbi_bound_ship_deck.c",
+      "target_size": 148
+    },
     "overlay:rom_7ca63c:02008564": {
       "candidate": "src/non_matching/maps/tolbi_bound_ship_top/OvlFunc_944_2008564.c",
       "candidate_size": 588,
@@ -2705,6 +2978,19 @@
       "source": "src/maps/tolbi_bound_ship_top.c",
       "target_size": 144
     },
+    "overlay:rom_7cb2c0:02008058": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_2008058.c",
+      "candidate_size": 96,
+      "evaluated_with": [
+        "OvlFunc_945_2008058"
+      ],
+      "fuzzy_match_percent": 78.48781,
+      "name": "OvlFunc_945_2008058",
+      "object_sha256": "a9ba25be59103391bec8d9177ac29023dbc67e773344be8e4710af9da239b5ab",
+      "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "source": "src/maps/tolbi_bound_ship_hull.c",
+      "target_size": 88
+    },
     "overlay:rom_7cb2c0:020080fc": {
       "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.c",
       "candidate_size": 50,
@@ -2717,6 +3003,19 @@
       "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
       "source": "src/maps/tolbi_bound_ship_hull.c",
       "target_size": 48
+    },
+    "overlay:rom_7cb2c0:02008284": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_2008284.c",
+      "candidate_size": 120,
+      "evaluated_with": [
+        "OvlFunc_945_2008284"
+      ],
+      "fuzzy_match_percent": 76.69231,
+      "name": "OvlFunc_945_2008284",
+      "object_sha256": "6dbc1b267188058017645942a65e99e9bb076016b6ba0de44fd03e273b620569",
+      "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "source": "src/maps/tolbi_bound_ship_hull.c",
+      "target_size": 112
     },
     "overlay:rom_7cb2c0:020082f4": {
       "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.c",
@@ -2744,6 +3043,19 @@
       "source": "src/maps/tolbi_bound_ship_hull.c",
       "target_size": 76
     },
+    "overlay:rom_7cb2c0:0200e3ac": {
+      "candidate": "src/non_matching/maps/tolbi_bound_ship_hull/OvlFunc_945_200e3ac.c",
+      "candidate_size": 116,
+      "evaluated_with": [
+        "OvlFunc_945_200e3ac"
+      ],
+      "fuzzy_match_percent": 99.38461,
+      "name": "OvlFunc_945_200e3ac",
+      "object_sha256": "4108f93b509013b5b88e629deab411604b729c3a6b3885b9546fc86bcbbde2a8",
+      "reference_sha256": "6ce290a8b4c383884eb44e5c4bdbf3551eefa8c1f6a0580068b546923053b22c",
+      "source": "src/maps/tolbi_bound_ship_hull.c",
+      "target_size": 116
+    },
     "overlay:rom_7ced6c:0200806c": {
       "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_200806c.c",
       "candidate_size": 88,
@@ -2756,6 +3068,19 @@
       "reference_sha256": "7d35a6743c6edbad174e223dc533e7c5ace46536b62eb760000accaaba89dc7e",
       "source": "src/maps/crossbone_isle.c",
       "target_size": 88
+    },
+    "overlay:rom_7ced6c:02008244": {
+      "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_2008244.c",
+      "candidate_size": 96,
+      "evaluated_with": [
+        "OvlFunc_946_2008244"
+      ],
+      "fuzzy_match_percent": 84.5,
+      "name": "OvlFunc_946_2008244",
+      "object_sha256": "3c0df0d1a4c2635ff9ce9f2a1bddfcfb8abe8deba3367d91cf9c08fc273173da",
+      "reference_sha256": "7d35a6743c6edbad174e223dc533e7c5ace46536b62eb760000accaaba89dc7e",
+      "source": "src/maps/crossbone_isle.c",
+      "target_size": 100
     },
     "overlay:rom_7ced6c:020088c0": {
       "candidate": "src/non_matching/maps/crossbone_isle/OvlFunc_946_20088c0.c",
@@ -3082,6 +3407,19 @@
       "source": "src/maps/crossbone_isle.c",
       "target_size": 216
     },
+    "overlay:rom_7d0e88:020093b0": {
+      "candidate": "src/non_matching/maps/crossbone_isle_dungeon_2/OvlFunc_947_20093b0.c",
+      "candidate_size": 118,
+      "evaluated_with": [
+        "OvlFunc_947_20093b0"
+      ],
+      "fuzzy_match_percent": 90.54386,
+      "name": "OvlFunc_947_20093b0",
+      "object_sha256": "a0aeeae45b790e359a5de59b3c624245ef3e93b00e0214c6fb438245b02f76ce",
+      "reference_sha256": "ab924b95f5d5b0af507cdf3f2f14596c3af4497f74b0cbb62fd6bc1a0d387ffd",
+      "source": "src/maps/crossbone_isle_dungeon_2.c",
+      "target_size": 120
+    },
     "overlay:rom_7d0e88:02009938": {
       "candidate": "src/non_matching/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.c",
       "candidate_size": 176,
@@ -3120,6 +3458,32 @@
       "reference_sha256": "ab924b95f5d5b0af507cdf3f2f14596c3af4497f74b0cbb62fd6bc1a0d387ffd",
       "source": "src/maps/crossbone_isle_dungeon_2.c",
       "target_size": 68
+    },
+    "overlay:rom_7d30e0:02009308": {
+      "candidate": "src/non_matching/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009308.c",
+      "candidate_size": 136,
+      "evaluated_with": [
+        "OvlFunc_948_2009308"
+      ],
+      "fuzzy_match_percent": 89.84746,
+      "name": "OvlFunc_948_2009308",
+      "object_sha256": "fb77d59c022e14840659fa47672701b7a13f0270293cb1f8fda90ccd855181c9",
+      "reference_sha256": "0a6c76195a9216be0b79782c5b254168fe081cedf465acc5097e4983e1380b8d",
+      "source": "src/maps/crossbone_isle_dungeon_4.c",
+      "target_size": 132
+    },
+    "overlay:rom_7d30e0:0200941c": {
+      "candidate": "src/non_matching/maps/crossbone_isle_dungeon_4/OvlFunc_948_200941c.c",
+      "candidate_size": 132,
+      "evaluated_with": [
+        "OvlFunc_948_200941c"
+      ],
+      "fuzzy_match_percent": 89.789474,
+      "name": "OvlFunc_948_200941c",
+      "object_sha256": "45f62b256acecd505aacec916766cead3832930ca1848e99103b79726d907830",
+      "reference_sha256": "0a6c76195a9216be0b79782c5b254168fe081cedf465acc5097e4983e1380b8d",
+      "source": "src/maps/crossbone_isle_dungeon_4.c",
+      "target_size": 128
     },
     "overlay:rom_7d4af4:020082f0": {
       "candidate": "src/non_matching/maps/tolbi/OvlFunc_949_20082f0.c",
@@ -3732,6 +4096,32 @@
       "source": "src/maps/colosseum_final_3.c",
       "target_size": 416
     },
+    "overlay:rom_7e3e08:02008244": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008244.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_957_2008244"
+      ],
+      "fuzzy_match_percent": 85.791664,
+      "name": "OvlFunc_957_2008244",
+      "object_sha256": "b9ea642a3b5c06195d42c9287e2a9351735819b0d876e75523149f769d7d7b8c",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 100
+    },
+    "overlay:rom_7e3e08:02008a54": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008a54.c",
+      "candidate_size": 128,
+      "evaluated_with": [
+        "OvlFunc_957_2008a54"
+      ],
+      "fuzzy_match_percent": 48.4375,
+      "name": "OvlFunc_957_2008a54",
+      "object_sha256": "8b5dffe8b1ce966efb37be50b44050b4da303674dda75ce8efe57ac80ab6e4ba",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 104
+    },
     "overlay:rom_7e3e08:02008b30": {
       "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008b30.c",
       "candidate_size": 148,
@@ -3740,10 +4130,23 @@
       ],
       "fuzzy_match_percent": 70.53226,
       "name": "OvlFunc_957_2008b30",
-      "object_sha256": "f7fbf7fc614c26046ba48207e0f17d163681d120d99c940d5e479d1b3c3fa4fe",
-      "reference_sha256": "0644947f2bbe8b890682af67d92dac90b5079bd4109c086c441917b908a8b336",
+      "object_sha256": "390ed3e6163a5de04f6293620e9b5e8f9858c171711a6977890f6ae7706e4ab9",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
       "source": "src/maps/altmiller_cave.c",
       "target_size": 152
+    },
+    "overlay:rom_7e3e08:02008bc8": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008bc8.c",
+      "candidate_size": 80,
+      "evaluated_with": [
+        "OvlFunc_957_2008bc8"
+      ],
+      "fuzzy_match_percent": 55.658535,
+      "name": "OvlFunc_957_2008bc8",
+      "object_sha256": "8bd41cab8794bfa9755638edfcabd1feda9f7be48037acd5a5f8c2c0840372c9",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 100
     },
     "overlay:rom_7e3e08:02008ee0": {
       "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008ee0.c",
@@ -3753,10 +4156,23 @@
       ],
       "fuzzy_match_percent": 60.18182,
       "name": "OvlFunc_957_2008ee0",
-      "object_sha256": "f912f1c639b02e6b3ea5ca3a5d0ab2b4979b1d724ef6467755fa5d97eba56ae3",
-      "reference_sha256": "0644947f2bbe8b890682af67d92dac90b5079bd4109c086c441917b908a8b336",
+      "object_sha256": "9aac6387fe47087fc44c6470fdc0188420c50c2ecff4777b1d364db8e7ee4f68",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
       "source": "src/maps/altmiller_cave.c",
       "target_size": 48
+    },
+    "overlay:rom_7e3e08:02008f10": {
+      "candidate": "src/non_matching/maps/altmiller_cave/OvlFunc_957_2008f10.c",
+      "candidate_size": 72,
+      "evaluated_with": [
+        "OvlFunc_957_2008f10"
+      ],
+      "fuzzy_match_percent": 46.93182,
+      "name": "OvlFunc_957_2008f10",
+      "object_sha256": "2fa36805e1f6ac625129be019a4920cb3e13af72f6832c4f5bf52be69a256331",
+      "reference_sha256": "e9cbe1f5f11c74afd324d47b681db7bfe6be5d6424abffe030c0d2fd23a4395d",
+      "source": "src/maps/altmiller_cave.c",
+      "target_size": 92
     },
     "overlay:rom_7e636c:02008630": {
       "candidate": "src/non_matching/maps/gondowan/OvlFunc_958_2008630.c",
@@ -3797,6 +4213,19 @@
       "source": "src/maps/gondowan.c",
       "target_size": 392
     },
+    "overlay:rom_7e7574:02008244": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2008244.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_959_2008244"
+      ],
+      "fuzzy_match_percent": 85.791664,
+      "name": "OvlFunc_959_2008244",
+      "object_sha256": "4880301ad873d34c12e863d7ca0188f23446a71e9925c62785d1b543974db7b9",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 100
+    },
     "overlay:rom_7e7574:02008b4c": {
       "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2008b4c.c",
       "candidate_size": 82,
@@ -3805,10 +4234,88 @@
       ],
       "fuzzy_match_percent": 97.36842,
       "name": "OvlFunc_959_2008b4c",
-      "object_sha256": "f69ec339bf46281277dedbdbe8bf2d46dfd342520410080b07dba89bf0b22ea7",
-      "reference_sha256": "9153abb45ca4bad99977455c9c91a12c59b54b9431e763d914f505cfe30bb0bf",
+      "object_sha256": "b4d8849f6e5892b2a311980da19b95e27485662c7e7923b39a1e821c99cd17ac",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 84
+    },
+    "overlay:rom_7e7574:02008d54": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2008d54.c",
+      "candidate_size": 120,
+      "evaluated_with": [
+        "OvlFunc_959_2008d54"
+      ],
+      "fuzzy_match_percent": 98.818184,
+      "name": "OvlFunc_959_2008d54",
+      "object_sha256": "e45eaefea142b96d773aa19a1bb2b17849e55141fb59fb40a1b057f2126f0b7f",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 120
+    },
+    "overlay:rom_7e7574:02009880": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2009880.c",
+      "candidate_size": 100,
+      "evaluated_with": [
+        "OvlFunc_959_2009880"
+      ],
+      "fuzzy_match_percent": 95.510635,
+      "name": "OvlFunc_959_2009880",
+      "object_sha256": "f503e4ecbb89128899bbfb38b1c79359af2133aee3b92c20673bb22038232114",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 100
+    },
+    "overlay:rom_7e7574:02009918": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2009918.c",
+      "candidate_size": 104,
+      "evaluated_with": [
+        "OvlFunc_959_2009918"
+      ],
+      "fuzzy_match_percent": 83.81633,
+      "name": "OvlFunc_959_2009918",
+      "object_sha256": "13d4a5a67021b3170428d584257c0118b190e92ffac3d7badc3c4a4a894c7c89",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 104
+    },
+    "overlay:rom_7e7574:02009a44": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_2009a44.c",
+      "candidate_size": 112,
+      "evaluated_with": [
+        "OvlFunc_959_2009a44"
+      ],
+      "fuzzy_match_percent": 93.69388,
+      "name": "OvlFunc_959_2009a44",
+      "object_sha256": "a7bcdd148455bd735554dd3ee2fd1d697af7aa8ec5f284e92bcb815f03c18829",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 108
+    },
+    "overlay:rom_7e7574:0200a38c": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200a38c.c",
+      "candidate_size": 136,
+      "evaluated_with": [
+        "OvlFunc_959_200a38c"
+      ],
+      "fuzzy_match_percent": 91.71154,
+      "name": "OvlFunc_959_200a38c",
+      "object_sha256": "de86e725d5fd5082951de5a90f031b432027010bdd73cad9a05febe931d381d5",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 132
+    },
+    "overlay:rom_7e7574:0200c638": {
+      "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200c638.c",
+      "candidate_size": 204,
+      "evaluated_with": [
+        "OvlFunc_959_200c638"
+      ],
+      "fuzzy_match_percent": 77.85135,
+      "name": "OvlFunc_959_200c638",
+      "object_sha256": "50e6d89c1e7586ff7274f62b8b887b008e3546c3f6d75faa84fc3f0e07ded820",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
+      "source": "src/maps/lunpa_fortress.c",
+      "target_size": 204
     },
     "overlay:rom_7e7574:0200c794": {
       "candidate": "src/non_matching/maps/lunpa_fortress/OvlFunc_959_200c794.c",
@@ -3818,8 +4325,8 @@
       ],
       "fuzzy_match_percent": 92.789116,
       "name": "OvlFunc_959_200c794",
-      "object_sha256": "1e5f9c1cedaa734a1c18ca14da9780162d0c1961bcf95f1b343879ba5eb81f5c",
-      "reference_sha256": "9153abb45ca4bad99977455c9c91a12c59b54b9431e763d914f505cfe30bb0bf",
+      "object_sha256": "317e6d451c50bf2eb17afb341b337c271f8e78882197607968b445d51f83fac5",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 404
     },
@@ -3831,8 +4338,8 @@
       ],
       "fuzzy_match_percent": 90.11215,
       "name": "OvlFunc_959_200d0e4",
-      "object_sha256": "e3a372bc3394100f861d8eaaa20da5357ea54645f820dd11df48ac7d8678431a",
-      "reference_sha256": "9153abb45ca4bad99977455c9c91a12c59b54b9431e763d914f505cfe30bb0bf",
+      "object_sha256": "7189a55c02e03f8eaf2f58f129affc1f3750c364deaefc0e73c8a2207d67b983",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 576
     },
@@ -3844,8 +4351,8 @@
       ],
       "fuzzy_match_percent": 93.674416,
       "name": "OvlFunc_959_200d324",
-      "object_sha256": "e51152635978650f23cea54ba6c050d4be85ca5d395ec88b2de5b639a3653776",
-      "reference_sha256": "9153abb45ca4bad99977455c9c91a12c59b54b9431e763d914f505cfe30bb0bf",
+      "object_sha256": "c19ff75d1b2d6d6e666931542597b0400b22ede6a2fa714803fd86d1fcc9433e",
+      "reference_sha256": "8ee0fc0785189767464ccd7780e27f199029f4bd69cf1bd895a04993eec1c887",
       "source": "src/maps/lunpa_fortress.c",
       "target_size": 332
     },
@@ -6711,7 +7218,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "ac1d1bef6525e4f0a8a0cd865e7f38001b883778c85d589ce3785206dbc4f930",
+  "progress_sha256": "b2d9c9fd4942f81331755c7fc00e24723b17b3161d23a9b8cfb638f17e79ac3c",
   "schema": 1,
   "scorer": {
     "config": [
