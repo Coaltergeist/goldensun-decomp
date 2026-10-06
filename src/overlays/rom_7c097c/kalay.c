@@ -19,7 +19,7 @@ void OvlFunc_936_2008030(void) {
 INCLUDE_ASM("asm/overlays/rom_7c097c/kalay/OvlFunc_936_2008040.s");
 INCLUDE_ASM("asm/overlays/rom_7c097c/kalay/OvlFunc_936_20080ac.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
 extern unsigned char Lm936_42c8[] __asm__(".Lm936_42c8");

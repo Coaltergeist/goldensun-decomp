@@ -813,19 +813,7 @@ static inline void Func_8012330_neg(int x, int y, int z)
 }
 
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 void OvlFunc_918_20098b8(void) {
     struct EffectData data;

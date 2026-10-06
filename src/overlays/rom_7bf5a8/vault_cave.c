@@ -5,7 +5,7 @@
 
 extern void OvlFunc_935_2008734();
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
 extern unsigned char Lm935_18cc[] __asm__(".Lm935_18cc");

@@ -63,11 +63,7 @@ INCLUDE_ASM("asm/overlays/rom_7d30e0/crossbone_isle_dungeon_4/OvlFunc_948_20080c
 extern unsigned char iwram_3001e70[];
 extern unsigned char gBuffer[];
 
-struct MapTile_528 {
-    unsigned short a;
-    unsigned char b;
-    unsigned char c;
-};
+#include "field/map_tile.h"
 
 int OvlFunc_948_2008244(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val)
 {
@@ -244,14 +240,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_948_2008608(struct Pk arg)
 {
@@ -367,7 +356,7 @@ void OvlFunc_948_20089dc(void) {
 
 void OvlFunc_948_20089ec(void) {}
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_75[], _EVENT_76[], _EVENT_78[];
 extern unsigned char Lm948_2898[] __asm__(".Lm948_2898");

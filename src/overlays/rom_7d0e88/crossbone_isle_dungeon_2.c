@@ -58,11 +58,7 @@ void *OvlFunc_947_2008350(int *coords, void *arg1)
 INCLUDE_ASM("asm/overlays/rom_7d0e88/crossbone_isle_dungeon_2/OvlFunc_947_20083a8.s");
 extern unsigned char gBuffer[];
 
-struct MapTile_528 {
-    unsigned short a;
-    unsigned char b;
-    unsigned char c;
-};
+#include "field/map_tile.h"
 
 int OvlFunc_947_2008528(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val)
 {
@@ -238,14 +234,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_947_20088ec(struct Pk arg)
 {
@@ -535,7 +524,7 @@ void OvlFunc_947_2009174(unsigned int arg0)
 
 }
 
-struct EffectData {
+struct CrossboneEffectDataView {
     int pad0;
     int a;
     int b;
@@ -549,13 +538,41 @@ struct EffectData {
     void (*g)(void);
 };
 
+// Target ABI checks for the production compiler.
+typedef char CrossboneEffectDataViewSizeCheck[(sizeof(struct CrossboneEffectDataView) == 40) ? 1 : -1];
+typedef char CrossboneEffectDataViewAlignmentCheck[(__alignof__(struct CrossboneEffectDataView) == 4) ? 1 : -1];
+typedef char CrossboneEffectDataViewFieldWidthsCheck[
+    (sizeof(((struct CrossboneEffectDataView *)0)->pad0) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->a) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->b) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->c) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->d) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->e) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->pad18) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->pad1c) == 4 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->f) == 2 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->pad22) == 2 &&
+     sizeof(((struct CrossboneEffectDataView *)0)->g) == 4) ? 1 : -1];
+typedef char CrossboneEffectDataViewOffsetsCheck[
+    ((unsigned long)&((struct CrossboneEffectDataView *)0)->pad0 == 0 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->a == 4 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->b == 8 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->c == 12 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->d == 16 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->e == 20 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->pad18 == 24 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->pad1c == 28 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->f == 32 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->pad22 == 34 &&
+     (unsigned long)&((struct CrossboneEffectDataView *)0)->g == 36) ? 1 : -1];
+
 extern volatile unsigned int iwram_3001e40;
 extern int _divsi3_RAM(int, int);
 extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 
 void OvlFunc_947_20091c4(void)
 {
-    struct EffectData data;
+    struct CrossboneEffectDataView data;
     int *actor = (int *)__MapActor_GetActor(0);
     int flag = iwram_3001e40 & 3;
 
@@ -584,7 +601,7 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
 }
 
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];
 extern unsigned char Lm947_2eac[] __asm__(".Lm947_2eac");
@@ -961,7 +978,7 @@ void OvlFunc_947_200a1ac(void)
 
 void OvlFunc_947_200a230(void)
 {
-    struct EffectData data;
+    struct CrossboneEffectDataView data;
     int r;
     int r2;
     int mask;
@@ -995,7 +1012,7 @@ int OvlFunc_947_200a2d8(int *coords)
     if ((iwram_3001e40 & 7) != 0) {
         return 0;
     } else {
-        struct EffectData data;
+        struct CrossboneEffectDataView data;
         int x, y, z, div_res;
         data.a = 7;
         data.b = 0xb333;

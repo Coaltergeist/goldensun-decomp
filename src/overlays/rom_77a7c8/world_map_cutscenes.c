@@ -791,7 +791,7 @@ void OvlFunc_881_200b7c8(void) {
     *((unsigned char *)(ptr + 0x34)) = 1;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
     extern unsigned char iwram_3001ebc[];   /* @ 0x03001EBC */
     extern GlobalState gState;   /* GlobalState @ 0x02000240 */
 

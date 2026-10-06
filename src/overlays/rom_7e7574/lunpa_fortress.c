@@ -183,14 +183,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_959_2008608(struct Pk arg)
 {
@@ -298,7 +291,7 @@ void OvlFunc_959_2008608(struct Pk arg)
 
 INCLUDE_ASM("asm/overlays/rom_7e7574/lunpa_fortress/OvlFunc_959_20088c0.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_6a[], _EVENT_a0[], _EVENT_a1[], _EVENT_a2[], _EVENT_a3[];
 extern unsigned char Lm959_62a4[] __asm__(".Lm959_62a4");

@@ -181,14 +181,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_883_2008608(struct Pk arg)
 {

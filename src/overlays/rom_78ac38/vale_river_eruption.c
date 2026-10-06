@@ -31,7 +31,7 @@ void *ValeRiverEruption_GetEvents(void) {
     return (void *)gOvl_02008e94;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern void OvlFunc_889_2008074(void);
 

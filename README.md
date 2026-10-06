@@ -45,7 +45,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 | `asm/core/`, `asm/modules/`, `asm/overlays/` | Active assembly fragments for the corresponding source TUs |
 | `data/` and `exports/` | Maintained data assembly and exported symbols |
 | `linker/` | Main-ROM and overlay linker scripts; address maps under `linker/symbols/` |
-| `include/` | C headers and assembler macros |
+| `include/` | C headers, assembler macros and [shared type owners](include/README.md) |
 | `config/` | Module ownership, compiler profiles and current path declarations |
 | `tools/` | Build, comparison, and reporting tools |
 | `build/` | Ignored objects, intermediates, generated assets, ROM and overlay products |

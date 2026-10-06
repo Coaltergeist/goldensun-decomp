@@ -130,11 +130,7 @@ void OvlFunc_934_20083a8(void)
 extern unsigned char iwram_3001e70[];
 extern unsigned char gBuffer[];
 
-struct MapTile_528 {
-    unsigned short a;
-    unsigned char b;
-    unsigned char c;
-};
+#include "field/map_tile.h"
 
 int OvlFunc_934_2008528(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val)
 {
@@ -304,14 +300,7 @@ extern void __MapActor_TravelBy(unsigned int, int, int);
 extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_934_20088ec(struct Pk arg)
 {
@@ -453,7 +442,7 @@ int OvlFunc_934_2008cf8(int arg0)
 
 INCLUDE_ASM("asm/overlays/rom_7bdeb0/vale_cave/vale_cave_data.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_5d[], _EVENT_5e[], _EVENT_5f[];
 extern unsigned char Lconst_5d[] __asm__(".Lconst_5d");
@@ -520,19 +509,7 @@ void OvlFunc_934_2008dcc(void) {
 void OvlFunc_934_2008de8(void) {
     __Func_80105d4(0x10, 0x11, 1, 1, 0xf, 0xf);
 }
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 extern int OvlFunc_common0_18(int, int, int, int);
 extern int OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);

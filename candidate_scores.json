@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "527b834c806cc9ed373cd0855cb87b942800c7dd3ada1d6ac3565b7174e7720c",
+  "candidate_fingerprint": "354ffe4bce4b04051041184c8330f27e537cfa7347033b1f6802bb6f4c74aa1e",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/overlays/common/common1/OvlFunc_common1_588.c",
@@ -6789,7 +6789,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "8dfc39ab26adf594f51ad090e4994d64d35325052140dfb74b02d12524260b97",
+  "progress_sha256": "08d0fd222c530e932ccbb86175aa9d25e2301b84bb370492e5eeefd9a8d9f079",
   "schema": 1,
   "scorer": {
     "config": [

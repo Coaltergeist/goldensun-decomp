@@ -13,7 +13,7 @@ unsigned int OvlFunc_920_2008030(void) {
     return 0;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 extern unsigned char Lconst_31[] __asm__(".Lconst_31");

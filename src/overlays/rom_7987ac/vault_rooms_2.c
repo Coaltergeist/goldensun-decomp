@@ -319,7 +319,7 @@ void *VaultRooms2_GetEvents(void) {
 }
 
 extern unsigned char *iwram_3001ebc;
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 void OvlFunc_902_2008570(int, int, int, int);
 

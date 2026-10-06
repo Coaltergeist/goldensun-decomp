@@ -348,19 +348,7 @@ static inline void call_8092950(int actor, int flag) {
     __Func_8092950(actor, flag << 1);
 }
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 void OvlFunc_925_200af18(void)
 {

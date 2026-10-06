@@ -4,7 +4,7 @@
 #include "api.h"
 #include "actor.h"
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gScript_888__0200b81c[];
 extern unsigned char Lconst_ad[] __asm__(".Lconst_ad");
@@ -221,14 +221,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_964_2008608(struct Pk arg)
 {

@@ -76,7 +76,7 @@ u32 OvlFunc_911_2008114(struct Actor *actor)
     return 1;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_27[], _EVENT_26[];
 extern unsigned char Lm911_2f80[] __asm__(".Lm911_2f80");

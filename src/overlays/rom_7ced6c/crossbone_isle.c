@@ -183,14 +183,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_946_2008608(struct Pk arg)
 {
@@ -321,7 +314,7 @@ INCLUDE_ASM("asm/overlays/rom_7ced6c/crossbone_isle/OvlFunc_946_2008ae8.s");
 
 void OvlFunc_946_2008cc0(void) {}
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_71[], _EVENT_72[], _EVENT_7b[], _EVENT_7c[], _EVENT_7d[];
 extern unsigned char Lm946_3310[] __asm__(".Lm946_3310");

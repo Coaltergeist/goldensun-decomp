@@ -137,7 +137,7 @@ unsigned int *Suhalla_GetEvents(void)
     return (unsigned int *)L614;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 

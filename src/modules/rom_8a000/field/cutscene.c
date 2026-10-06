@@ -263,7 +263,7 @@ unsigned int Func_8091e9c(unsigned int arg0) {
 
 INCLUDE_ASM("asm/modules/rom_8a000/field/cutscene/StartMapBattle.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern void *iwram_3001ebc__a15 __asm__("iwram_3001ebc");
 extern GlobalState gState__a5 __asm__("gState");
 extern void Func_809537c(int a);

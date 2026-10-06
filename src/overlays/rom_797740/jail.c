@@ -20,7 +20,7 @@ void *Jail_GetExits(void) {
     return (void *)gOvl_02008348;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char L3bc[] __asm__(".Lm900_3bc");
 extern unsigned char gOvl_0200835c[];

@@ -23,7 +23,7 @@ unsigned int OvlFunc_960_200833c(unsigned int arg0) {
     return 1;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_a4[], _EVENT_a5[], _EVENT_a6[];
 extern unsigned char gOvl_02009488[];

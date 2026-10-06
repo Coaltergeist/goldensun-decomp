@@ -260,14 +260,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_905_2008608(struct Pk arg)
 {
@@ -539,7 +532,7 @@ void *GomaCave2_GetEvents(void) {
     return (void *)gOvl_02009814;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
 extern int gOvl_020098ec;

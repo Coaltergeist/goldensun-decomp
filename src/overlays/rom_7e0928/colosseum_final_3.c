@@ -191,7 +191,7 @@ void OvlFunc_956_20085e0(void)
     }
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 void OvlFunc_956_2008658(void) {

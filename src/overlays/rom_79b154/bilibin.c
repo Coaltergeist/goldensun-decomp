@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_79b154/bilibin/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gOvl_020093fc[];
 

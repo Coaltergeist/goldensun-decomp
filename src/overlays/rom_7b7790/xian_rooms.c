@@ -18,7 +18,7 @@ void *XianRooms_GetExits(void) {
     return (void *)gOvl_02008868;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char L9c8[] __asm__(".Lm929_9c8");
 extern unsigned char L890[] __asm__(".Lm929_890");

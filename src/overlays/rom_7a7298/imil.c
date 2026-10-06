@@ -10,7 +10,7 @@ extern void OvlFunc_921_20096ac();
 INCLUDE_ASM("asm/overlays/rom_7a7298/imil/OvlFunc_921_2008030.s");
 INCLUDE_ASM("asm/overlays/rom_7a7298/imil/OvlFunc_921_20080d8.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_33[];
 extern unsigned char Lm921_28a0[] __asm__(".Lm921_28a0");

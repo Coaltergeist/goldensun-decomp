@@ -2,19 +2,7 @@ extern unsigned char Lm928_1740[] __asm__(".Lm928_1740");
 
 extern unsigned char iwram_3001e40[];
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 void OvlFunc_928_2008370(void)
 {

@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_7c37ac/hammet_palace/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gScript_887__02009c04[];
 extern unsigned char Lm938_1bd4[] __asm__(".Lm938_1bd4");

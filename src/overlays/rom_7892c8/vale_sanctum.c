@@ -36,7 +36,7 @@ void *ValeSanctum_GetExits(void) {
     return (void *)gOvl_0200bbc8;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char Lm888_3c0c[] __asm__(".Lm888_3c0c");
 extern unsigned char Lm888_3ccc[] __asm__(".Lm888_3ccc");

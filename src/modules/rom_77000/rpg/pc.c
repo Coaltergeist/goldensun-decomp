@@ -76,7 +76,7 @@ int GetPartySize(void) {
 INCLUDE_ASM_SECTION("asm/modules/rom_77000/rpg/pc/AddPartyMember.s", ".text.rpg_pc_2");
 INCLUDE_ASM_SECTION("asm/modules/rom_77000/rpg/pc/Func_8079664.s", ".text.rpg_pc_2");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 unsigned int Func_80796c4(unsigned int arg0)

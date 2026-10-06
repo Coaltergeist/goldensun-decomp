@@ -41,7 +41,7 @@ void OvlFunc_common1_0(void)
 
 INCLUDE_ASM("asm/overlays/common/common1/OvlFunc_common1_78.s");
 INCLUDE_ASM("asm/overlays/common/common1/OvlFunc_common1_148.s");
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
 

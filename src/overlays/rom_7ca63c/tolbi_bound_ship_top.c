@@ -196,7 +196,7 @@ void OvlFunc_944_20081fc(void)
 }
 
 extern void OvlFunc_944_200840c(void);
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern unsigned char iwram_3001ebc[];
 extern short gState[];
 

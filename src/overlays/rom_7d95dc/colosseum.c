@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_7d95dc/colosseum/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 extern unsigned char _EVENT_8c[], _EVENT_8e[];

@@ -417,19 +417,7 @@ extern void __MapActor_SetAnim(int, int);
 extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 extern void OvlFunc_903_2008da8(unsigned int);
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 void OvlFunc_903_2008dd8(int id)
 {

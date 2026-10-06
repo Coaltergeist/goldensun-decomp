@@ -406,7 +406,7 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
 
 INCLUDE_ASM("asm/overlays/rom_7f2f14/venus_lighthouse/OvlFunc_968_2008cc8.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_b5[], _EVENT_b7[], _EVENT_b8[], _EVENT_b9[], _EVENT_ba[];
 extern unsigned char Lm968_5d68[] __asm__(".Lm968_5d68");

@@ -4,7 +4,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_7c3044/kalay_rooms/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 extern unsigned char Lconst_64[] __asm__(".Lconst_64");

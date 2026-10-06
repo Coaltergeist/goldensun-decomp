@@ -712,7 +712,7 @@ void OvlFunc_885_20092a0(void)
         __CutsceneEnd();
     }
 }
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gOvl_02009c34[];
 extern unsigned char gScript_885__02009ce0[];

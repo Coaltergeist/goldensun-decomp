@@ -246,7 +246,7 @@ void OvlFunc_939_20086bc(void) {
     __CutsceneEnd();
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState__a1 __asm__("gState");
 extern unsigned char _EVENT_9f[], _EVENT_68[];
 extern unsigned char Lm939_23b4[] __asm__(".Lm939_23b4");

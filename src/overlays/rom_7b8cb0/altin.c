@@ -5,7 +5,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_7b8cb0/altin/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char Lconst_4b[] __asm__(".Lconst_4b");
 __asm__(".equ .Lconst_4b, 0x4b");

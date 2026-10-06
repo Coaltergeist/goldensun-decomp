@@ -20,7 +20,7 @@ void OvlFunc_922_2008040(void) {
     __Func_8091f14(0xb, 0x3e);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_34[], _EVENT_3e[], _EVENT_3f[], _EVENT_40[], _EVENT_41[], _EVENT_42[], _EVENT_43[];
 extern unsigned char Lm922_24bc[] __asm__(".Lm922_24bc");
@@ -1276,7 +1276,7 @@ unsigned int OvlFunc_922_2009c08(int arg) {
     return 0;
 }
 
-struct EffectData {
+struct ImilFallsEffectData {
     u8 unk0;
     char pad[3];
     int unk4;
@@ -1285,6 +1285,26 @@ struct EffectData {
     int unk10;
     int unk14;
 };
+
+// Target ABI checks for the production compiler.
+typedef char ImilFallsEffectDataSizeCheck[(sizeof(struct ImilFallsEffectData) == 24) ? 1 : -1];
+typedef char ImilFallsEffectDataAlignmentCheck[(__alignof__(struct ImilFallsEffectData) == 4) ? 1 : -1];
+typedef char ImilFallsEffectDataFieldWidthsCheck[
+    (sizeof(((struct ImilFallsEffectData *)0)->unk0) == 1 &&
+     sizeof(((struct ImilFallsEffectData *)0)->pad) == 3 &&
+     sizeof(((struct ImilFallsEffectData *)0)->unk4) == 4 &&
+     sizeof(((struct ImilFallsEffectData *)0)->unk8) == 4 &&
+     sizeof(((struct ImilFallsEffectData *)0)->unkc) == 4 &&
+     sizeof(((struct ImilFallsEffectData *)0)->unk10) == 4 &&
+     sizeof(((struct ImilFallsEffectData *)0)->unk14) == 4) ? 1 : -1];
+typedef char ImilFallsEffectDataOffsetsCheck[
+    ((unsigned long)&((struct ImilFallsEffectData *)0)->unk0 == 0 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->pad == 1 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->unk4 == 4 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->unk8 == 8 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->unkc == 12 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->unk10 == 16 &&
+     (unsigned long)&((struct ImilFallsEffectData *)0)->unk14 == 20) ? 1 : -1];
 
 extern void __Actor_SetAnim(void *, int);
 extern void __Actor_SetScript(void *, void *);
@@ -1295,7 +1315,7 @@ struct Scripts_2418 {
 };
 extern struct Scripts_2418 Lm922_2418 __asm__(".Lm922_2418");
 
-void OvlFunc_922_2009c18(int x, int y, int z, int r, int r2, int mask, int flags, struct EffectData *data) {
+void OvlFunc_922_2009c18(int x, int y, int z, int r, int r2, int mask, int flags, struct ImilFallsEffectData *data) {
     struct Scripts_2418 scripts = Lm922_2418;
     struct Actor *actor = (struct Actor *)API_CreateActor(0xde, x, y, z);
     if (actor != 0) {
@@ -1345,7 +1365,7 @@ extern volatile unsigned int iwram_3001e40;
 
 void OvlFunc_922_2009d78(void)
 {
-    struct EffectData data;
+    struct ImilFallsEffectData data;
     int r;
     int r2;
     int mask;

@@ -64,7 +64,7 @@ int OvlFunc_933_2008344(int *arg0) {
     return 0;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_59[], _EVENT_5a[], _EVENT_5b[], _EVENT_5c[];
 extern unsigned char Lm933_2174[] __asm__(".Lm933_2174");

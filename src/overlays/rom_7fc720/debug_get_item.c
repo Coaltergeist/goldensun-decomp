@@ -88,7 +88,7 @@ void OvlFunc_973_20080c0(int r0)
 }
 #include "dma.h"
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 typedef struct { unsigned char _bytes[4]; } KeyState32;
 extern KeyState32 gKeyPress;

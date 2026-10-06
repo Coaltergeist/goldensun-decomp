@@ -23,7 +23,7 @@ void *MccoysPalaceExt_GetExits(void) {
     return (void *)gOvl_02008c50;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_22[];
 extern int __GetFlag(int);

@@ -184,14 +184,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_957_2008608(struct Pk arg)
 {
@@ -321,7 +314,7 @@ void *AltmillerCave_GetExits(void) {
     return (void *)gOvl_0200c138;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_93[], _EVENT_94[], _EVENT_95[], _EVENT_96[], _EVENT_97[];
 extern unsigned char Lm957_41b0[] __asm__(".Lm957_41b0");

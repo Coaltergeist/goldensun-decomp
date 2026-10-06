@@ -12,7 +12,7 @@ void OvlFunc_942_2008030(void) {
     __Func_80955b0(14, 0, 5);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_6b[], _EVENT_70[], _EVENT_6c[];
 extern unsigned char Lm942_1738[] __asm__(".Lm942_1738");

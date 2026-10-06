@@ -51,7 +51,7 @@ void *MccoysPalace_GetExits(void) {
     return (void *)gOvl_0200a920;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char Lm909_actorsevent21[] __asm__(".Lm909_actorsevent21");
 __asm__(".equ .Lm909_actorsevent21, 0x21");

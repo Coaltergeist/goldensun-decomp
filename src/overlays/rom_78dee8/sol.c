@@ -31,7 +31,7 @@ void *Sol_GetExits(void) {
     return (void *)gOvl_02009f14;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_13[], _EVENT_10[];
 extern unsigned char Lm895_21b8[] __asm__(".Lm895_21b8");

@@ -28,7 +28,7 @@ unsigned int VaultRooms1_GetExits(void) {
     return (unsigned int)gOvl_0200da80;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char Lm899_5cc8[] __asm__(".Lm899_5cc8");
 extern unsigned char Lm899_5ab8[] __asm__(".Lm899_5ab8");

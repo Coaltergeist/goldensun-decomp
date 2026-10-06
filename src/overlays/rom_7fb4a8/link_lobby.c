@@ -6,7 +6,7 @@
 
 #include "nonmatching.h"
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 extern unsigned char gOvl_02009948[];

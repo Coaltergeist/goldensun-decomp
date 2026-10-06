@@ -290,14 +290,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 static inline void SetActorSpeed(int actor, int speed, int accel)
 {
@@ -587,19 +580,7 @@ void *MercuryLighthouseEntrance_GetEvents(void) {
     return (void *)gOvl_0200ad60;
 }
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 extern void OvlFunc_923_2008d98();

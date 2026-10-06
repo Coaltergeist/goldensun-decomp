@@ -3,7 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gOvl_02009690[];
 extern unsigned char Lm967_16b0[] __asm__(".Lm967_16b0");

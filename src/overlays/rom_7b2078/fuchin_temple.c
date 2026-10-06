@@ -31,7 +31,7 @@ int OvlFunc_926_2008324(int arg0) {
     return 0;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char gScript_943__0200c7a8[];
 extern unsigned char Lm926_4838[] __asm__(".Lm926_4838");
@@ -119,7 +119,7 @@ void OvlFunc_926_2008414(void)
 
 INCLUDE_ASM("asm/overlays/rom_7b2078/fuchin_temple/OvlFunc_926_2008484.s");
 
-struct EffectData {
+struct FuchinEffectDataView {
     int a;
     int b;
     int pad8;
@@ -133,11 +133,39 @@ struct EffectData {
     int pad24;
 };
 
+// Target ABI checks for the production compiler.
+typedef char FuchinEffectDataViewSizeCheck[(sizeof(struct FuchinEffectDataView) == 40) ? 1 : -1];
+typedef char FuchinEffectDataViewAlignmentCheck[(__alignof__(struct FuchinEffectDataView) == 4) ? 1 : -1];
+typedef char FuchinEffectDataViewFieldWidthsCheck[
+    (sizeof(((struct FuchinEffectDataView *)0)->a) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->b) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad8) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->padc) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad10) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad14) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->f) == 2 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad1a) == 2 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad1c) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad20) == 4 &&
+     sizeof(((struct FuchinEffectDataView *)0)->pad24) == 4) ? 1 : -1];
+typedef char FuchinEffectDataViewOffsetsCheck[
+    ((unsigned long)&((struct FuchinEffectDataView *)0)->a == 0 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->b == 4 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad8 == 8 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->padc == 12 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad10 == 16 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad14 == 20 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->f == 24 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad1a == 26 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad1c == 28 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad20 == 32 &&
+     (unsigned long)&((struct FuchinEffectDataView *)0)->pad24 == 36) ? 1 : -1];
+
 extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 
 void OvlFunc_926_2008518(void) {
     struct Actor *a;
-    struct EffectData data;
+    struct FuchinEffectDataView data;
 
     a = (struct Actor *)__MapActor_GetActor(9);
     API_CutsceneStart();
@@ -537,7 +565,7 @@ extern void __Func_8092950(int, int);
 void OvlFunc_926_200a5b8(void)
 {
     struct Actor *actor;
-    struct EffectData data;
+    struct FuchinEffectDataView data;
 
     actor = (struct Actor *)__MapActor_GetActor(0);
     data.b = 7;
@@ -739,7 +767,7 @@ void __Func_8092950(int, int);
 
 void OvlFunc_926_200c1ec(void)
 {
-    struct EffectData data;
+    struct FuchinEffectDataView data;
     struct Actor *actor;
     unsigned int r7;
     int x;

@@ -37,7 +37,7 @@ INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_2008e3
 void OvlFunc_897_2008f28(void) {}
 void OvlFunc_897_2008f2c(void) {}
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern int OvlFunc_897_2008054(void);
 

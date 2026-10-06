@@ -130,7 +130,7 @@ void *KolimaRooms_GetEvents(void) {
     return (void *)gOvl_02008658;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char iwram_3001ebc[];
 extern void __Actor_SetSpriteFlags(unsigned char *, int);

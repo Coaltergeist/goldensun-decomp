@@ -105,7 +105,7 @@ void OvlFunc_887_2008118(int arg0) {
     __ActorMessage(arg0, 0);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState__a1 __asm__("gState");
 extern unsigned char L2c5c[] __asm__(".Lm887_2c5c");
 extern unsigned char L2b9c[] __asm__(".Lm887_2b9c");

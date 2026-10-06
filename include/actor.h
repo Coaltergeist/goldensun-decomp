@@ -47,7 +47,26 @@ struct Actor {
     s16 waveCounter;
     u16 __unk66;
     struct Actor *linkedActor;
+    // UpdateActors calls the word at 0x6c directly with this actor in r0.
+    // Retain the legacy declaration until all callback signatures are reconciled.
     actorfun_t *update;
 };
+
+// Target ABI checks for the production compiler.
+typedef char ActorSizeCheck[(sizeof(struct Actor) == 112) ? 1 : -1];
+typedef char ActorAlignmentCheck[(__alignof__(struct Actor) == 4) ? 1 : -1];
+typedef char ActorFieldWidthsCheck[
+    (sizeof(((struct Actor *)0)->pos) == 12 &&
+     sizeof(((struct Actor *)0)->flags) == 1 &&
+     sizeof(((struct Actor *)0)->sprite) == 4 &&
+     sizeof(((struct Actor *)0)->linkedActor) == 4 &&
+     sizeof(((struct Actor *)0)->update) == 4) ? 1 : -1];
+typedef char ActorOffsetsCheck[
+    ((unsigned long)&((struct Actor *)0)->pos == 8 &&
+     (unsigned long)&((struct Actor *)0)->flags == 35 &&
+     (unsigned long)&((struct Actor *)0)->sprite == 80 &&
+     (unsigned long)&((struct Actor *)0)->linkedActor == 104 &&
+     (unsigned long)&((struct Actor *)0)->update == 108 &&
+     (unsigned long)&((struct Actor *)0)->pos.y == 12) ? 1 : -1];
 
 #endif // _ACTOR_H_

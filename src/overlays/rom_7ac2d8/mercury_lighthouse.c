@@ -203,14 +203,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_924_20088ec(struct Pk arg)
 {
@@ -342,7 +335,7 @@ void OvlFunc_924_2008dfc(void)
 
 INCLUDE_ASM("asm/overlays/rom_7ac2d8/mercury_lighthouse/mercury_lighthouse_data.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_39[], _EVENT_38[], _EVENT_37[];
 extern unsigned char Lm924_650c[] __asm__(".Lm924_650c");
@@ -1233,19 +1226,7 @@ INCLUDE_ASM("asm/overlays/rom_7ac2d8/mercury_lighthouse/OvlFunc_924_200b788.s");
 INCLUDE_ASM("asm/overlays/rom_7ac2d8/mercury_lighthouse/OvlFunc_924_200b860.s");
 void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 
-struct EffectData {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkc;
-    int unk10;
-    int unk14;
-    short unk18;
-    short unk1a;
-    int unk1c;
-    int unk20;
-    int unk24;
-};
+#include "overlays/common0_effect.h"
 
 void OvlFunc_924_200b948(void)
 {

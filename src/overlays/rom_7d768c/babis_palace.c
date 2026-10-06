@@ -6,7 +6,7 @@
 
 INCLUDE_ASM("asm/overlays/rom_7d768c/babis_palace/exports.s");
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_8b[];
 extern unsigned char Lm952_4a1c[] __asm__(".Lm952_4a1c");

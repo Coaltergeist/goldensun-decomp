@@ -204,7 +204,7 @@ void OvlFunc_950_2008328(void)
     __CutsceneWait(0x1e);
     __CutsceneEnd();
 }
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 
 void __MapActor_SetPos(int, int, int);

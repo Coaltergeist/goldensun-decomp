@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "overlays/altin_peak_actor.h"
 
 INCLUDE_ASM("asm/overlays/rom_7b9cb4/altin_peak/exports.s");
 
@@ -38,7 +39,7 @@ unsigned int OvlFunc_932_20080bc(unsigned int arg0) {
     return 0;
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_4d[], _EVENT_4e[], _EVENT_4f[], _EVENT_50[], _EVENT_51[], _EVENT_52[], _EVENT_53[], _EVENT_54[], _EVENT_55[], _EVENT_56[], _EVENT_57[];
 extern unsigned char gOvl_0200c194[];
@@ -221,13 +222,6 @@ void OvlFunc_932_200840c(void)
 
 void OvlFunc_932_200847c(void)
 {
-struct Actor932
-{
-unsigned char pad1[0xc];
-long f0c;
-unsigned char pad2[0x23 - 0xc - 4];
-unsigned char f23;
-};
   struct Actor932 *actor;
   int s1;
   int s2;
@@ -363,13 +357,6 @@ unsigned char f23;
 
 void OvlFunc_932_2008650(void)
 {
-struct Actor932
-{
-unsigned char pad1[0xc];
-long f0c;
-unsigned char pad2[0x23 - 0xc - 4];
-unsigned char f23;
-};
   struct Actor932 *actor;
   int s1;
   int s2;
@@ -1406,12 +1393,6 @@ void OvlFunc_932_200b410(void) {
 extern void __Func_8092b08(int, int);
 
 void OvlFunc_932_200b428(void) {
-    struct Actor932 {
-        unsigned char pad1[0xc];
-        long f0c;
-        unsigned char pad2[0x23 - 0xc - 4];
-        unsigned char f23;
-    };
     struct Actor932 *actor;
 
     actor = (struct Actor932 *) __MapActor_GetActor(0);

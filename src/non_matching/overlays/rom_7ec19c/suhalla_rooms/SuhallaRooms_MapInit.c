@@ -5,7 +5,7 @@ typedef struct {
     int transitionSpeed;
 } MapState;
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 
 extern GlobalState gState;
 

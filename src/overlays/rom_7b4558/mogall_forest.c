@@ -186,14 +186,7 @@ extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned in
 extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
-struct Pk {
-int a;
-int b;
-int x;
-int y;
-int z;
-void (*arg5)(void);
-};
+#include "field/push_block.h"
 
 void OvlFunc_927_2008608(struct Pk arg)
 {
@@ -415,7 +408,7 @@ void OvlFunc_927_2008ea8(unsigned int arg0, unsigned int arg1)
   __Func_8092950(arg0, arg1);
 }
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_44[], _EVENT_45[], _EVENT_46[];
 extern unsigned char Lm927_30f4[] __asm__(".Lm927_30f4");

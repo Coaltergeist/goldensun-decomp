@@ -4,7 +4,7 @@
 #include "api.h"
 #include "actor.h"
 
-typedef struct { unsigned char _bytes[704]; } GlobalState;
+#include "state/global_state.h"
 extern GlobalState gState;
 extern unsigned char Lm945_696c[] __asm__(".Lm945_696c");
 extern unsigned char Lm945_6984[] __asm__(".Lm945_6984");
