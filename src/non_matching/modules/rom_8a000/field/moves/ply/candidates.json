@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_8a000/field/moves/ply.c",
+  "functions": {
+    "Func_80992f0": {
+      "id": "rom:080992f0"
+    }
+  }
+}

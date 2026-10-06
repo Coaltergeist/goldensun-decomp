@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7f148c/lalivero.c",
+  "functions": {
+    "OvlFunc_966_2008218": {
+      "id": "overlay:rom_7f148c:02008218"
+    },
+    "Lalivero_MapInit": {
+      "id": "overlay:rom_7f148c:0200920c"
+    }
+  }
+}

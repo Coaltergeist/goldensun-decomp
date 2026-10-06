@@ -411,5 +411,91 @@ class RealBaselineTests(unittest.TestCase):
         self.assertEqual(sum(b["sizes"].values()), 1289450)
 
 
+class OutputVerificationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.put("baserom.gba", b"reference ROM fixture")
+        rom = patch.object(dp, "ROM_SHA1", dp.digest(self.root / "baserom.gba", "sha1"))
+        rom.start(); self.addCleanup(rom.stop)
+
+    def put(self, name, data):
+        path = self.root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(data)
+        return path
+
+    def prepare(self, historical=False):
+        self.put("goldensun.gba" if historical else dp.build_paths.ROM,
+                 (self.root / "baserom.gba").read_bytes())
+        modules, targets, expected = [], {}, {}
+        self.files = {}
+        for index in range(96):
+            identity = "rom_%06x" % index
+            data = bytes([index, 1, 2, 3])
+            if historical:
+                script = "overlays/" + identity + "/overlay.ld"
+                original = "overlays/" + identity + "/orig.bin"
+                binary = "overlays/" + identity + "/overlay.bin"
+            else:
+                # Neither directory nor filename identifies the overlay here.
+                script = "linker/overlays/bank_%02d.ld" % index
+                paths = dp.build_paths._overlay(identity)
+                original, binary = paths["original"], paths["binary"]
+                targets[paths["elf"]] = script
+                modules.append(dict(id="overlay:" + identity, kind="overlay"))
+            self.put(script, b"/* linker fixture */")
+            self.put(original, data); self.put(binary, data)
+            expected[identity] = dp.digest(self.root / binary)
+            self.files[identity] = dict(script=script, original=original, binary=binary)
+        if not historical:
+            targets.update({dp.build_paths.STAGE1: "linker/stage1.ld",
+                            dp.build_paths.ELF: "linker/main.ld"})
+            self.config = dict(schema=1, units=[], modules=modules,
+                               paths=dict(schema=1, link_targets=targets))
+            self.save_config()
+        return expected
+
+    def save_config(self):
+        self.put("config/modules.json", json.dumps(self.config).encode())
+
+    def test_current_verification_uses_declared_linkers_and_overlay_identity(self):
+        expected = self.prepare()
+        before = {str(p.relative_to(self.root)): (p.read_bytes(), p.stat().st_mtime_ns)
+                  for p in self.root.rglob("*") if p.is_file()}
+        self.assertFalse((self.root / "overlays").exists())
+        self.assertEqual(dp.verify_outputs(self.root), expected)
+        self.assertEqual(before, {str(p.relative_to(self.root)): (p.read_bytes(), p.stat().st_mtime_ns)
+                                 for p in self.root.rglob("*") if p.is_file()})
+
+    def test_current_verification_rejects_missing_linker_or_overlay_coverage(self):
+        self.prepare(); script = self.root / self.files["rom_000000"]["script"]
+        script.unlink()
+        with self.assertRaisesRegex(ValueError, "all 96"):
+            dp.verify_outputs(self.root)
+        script.write_bytes(b"/* restored */")
+        self.config["modules"].pop()
+        del self.config["paths"]["link_targets"][dp.build_paths._overlay("rom_00005f")["elf"]]
+        self.save_config()
+        with self.assertRaisesRegex(ValueError, "all 96"):
+            dp.verify_outputs(self.root)
+
+    def test_current_verification_rejects_corrupt_overlay_and_rom(self):
+        self.prepare(); row = self.files["rom_000000"]
+        self.put(row["binary"], b"corrupt")
+        with self.assertRaisesRegex(ValueError, "overlay mismatch: rom_000000"):
+            dp.verify_outputs(self.root)
+        self.put(row["binary"], (self.root / row["original"]).read_bytes())
+        self.put(dp.build_paths.ROM, b"corrupt")
+        with self.assertRaisesRegex(ValueError, "built ROM SHA1 mismatch"):
+            dp.verify_outputs(self.root)
+
+    def test_historical_verification_retains_original_layout_without_catalog(self):
+        expected = self.prepare(historical=True)
+        self.assertFalse((self.root / "config").exists())
+        self.assertEqual(dp.verify_outputs(self.root, historical=True), expected)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/plasma.c",
-  "functions": {
-    "Anim_Plasma": {
-      "id": "rom:080d41a4"
-    }
-  }
-}

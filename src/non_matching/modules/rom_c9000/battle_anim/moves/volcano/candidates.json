@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/volcano.c",
+  "functions": {
+    "Anim_Volcano": {
+      "id": "rom:080d4ce8"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/thorn.c",
+  "functions": {
+    "Anim_Thorn": {
+      "id": "rom:080dd9c0"
+    }
+  }
+}

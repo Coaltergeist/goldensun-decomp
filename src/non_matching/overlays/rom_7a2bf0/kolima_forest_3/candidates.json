@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7a2bf0/kolima_forest_3.c",
+  "functions": {
+    "OvlFunc_915_2008aac": {
+      "id": "overlay:rom_7a2bf0:02008aac"
+    },
+    "OvlFunc_915_20088c0": {
+      "id": "overlay:rom_7a2bf0:020088c0"
+    }
+  }
+}

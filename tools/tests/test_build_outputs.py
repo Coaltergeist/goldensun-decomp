@@ -26,8 +26,11 @@ class OutputTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         for name in ("Makefile", *build_config.CONFIG_FILES, *build_config.IMPLEMENTATION):
             self.put(name, (TOOLS.parent / name).read_text())
-        for f in [*TOOLS.parent.glob("*.ld"), *TOOLS.parent.glob("*.sym"), *TOOLS.parent.glob("overlays/*/overlay.ld")]:
-            self.put(f.relative_to(TOOLS.parent).as_posix(), f.read_text())
+        for script in paths.link_targets(TOOLS.parent).values():
+            for name in linker_dependencies(script, root=TOOLS.parent):
+                f = TOOLS.parent / name
+                if f.is_file() and f.suffix in (".ld", ".sym"):
+                    self.put(name, f.read_text())
 
     def put(self, name, text="sentinel"):
         f = self.root / name
@@ -41,7 +44,8 @@ class OutputTests(unittest.TestCase):
                 "tools/agbcc/bin/old_agbcc", "build/usa/my-notes.txt", "build/host/unknown.o", "work/history"]
         old = {n: self.put(n) for n in keep}
         states = {n: (f.read_bytes(), f.stat().st_mtime_ns) for n, f in old.items()}
-        disposable = ["build/usa/src/math/vector.o", "build/usa/src/lib/m4a/m4a.s",
+        disposable = [paths.unit(self.root, "tu:src/math/vector")["object"],
+                      str(Path(paths.unit(self.root, "tu:src/lib/m4a/m4a")["object"]).with_suffix(".s")),
                       "build/usa/stage1.o.tmp", "build/host/pack_overlay", paths.STRING_OUTPUTS[1],
                       paths.STRINGS + ".tmp/strings.s"]
         for n in disposable: self.put(n)
@@ -56,7 +60,9 @@ class OutputTests(unittest.TestCase):
         untouched = self.put("build/host/pack_overlay")
         outside = self.root / "elsewhere"; outside.mkdir()
         self.put("build/usa/marker")
-        (self.root / "build/usa/src").symlink_to(outside, target_is_directory=True)
+        parent = self.root / Path(paths.unit(self.root, "tu:src/math/vector")["object"]).parent
+        parent.parent.mkdir(parents=True, exist_ok=True)
+        parent.symlink_to(outside, target_is_directory=True)
         with self.assertRaisesRegex(ValueError, "symlink"):
             actions.clean(self.root)
         self.assertTrue(untouched.exists())
@@ -108,12 +114,14 @@ class OutputTests(unittest.TestCase):
 
     def test_generated_prerequisites_exist_in_graph_before_depfiles(self):
         original = paths.overlay(self.root, "rom_7bf5a8")["original"]
-        self.put("src/maps/common/common2.c", 'INCLUDE_ASM("asm/maps/common/common2/data.s");')
-        self.put("asm/maps/common/common2/data.s", '.incbin "' + original + '"')
+        unit = paths.unit(self.root, "tu:src/maps/common/common2")
+        assembly = unit["assembly_directory"] + "/data.s"
+        self.put(unit["source"], 'INCLUDE_ASM("' + assembly + '");')
+        self.put(assembly, '.incbin "' + original + '"')
         result = build_graph.graph(self.root)
-        self.assertIn(original, next(e for e in result if e.outputs == ["build/usa/asm/maps/common/common2.o"]).inputs)
+        self.assertIn(original, next(e for e in result if e.outputs == [unit["object"]]).inputs)
         self.assertEqual(next(e for e in result if e.outputs == ["asm/maps/common/common2.o"]).inputs,
-                         ["build/usa/asm/maps/common/common2.o"])
+                         [unit["object"]])
         self.assertTrue(any(paths.STRINGS + "/strings.s" in e.outputs for e in result))
         self.assertIn(" &: ", build_graph.make_graph(self.root))
         self.assertFalse((self.root / "build").exists())
@@ -127,13 +135,13 @@ class OutputTests(unittest.TestCase):
 
     def test_paths_reject_unknown_overlay_and_resolve_legacy_aliases(self):
         u = paths.unit(self.root, "asm/maps/common/common2.o")
-        self.assertEqual(u["object"], "build/usa/asm/maps/common/common2.o")
+        self.assertEqual(u, paths.unit(self.root, "tu:src/maps/common/common2"))
         with self.assertRaises(ValueError): paths.overlay(self.root, "does_not_exist")
         self.assertEqual(paths.domain_artifact(self.root, "common:common2"), u["object"])
 
     def test_overlay_link_preserves_script_before_symbol_provider(self):
         output = paths.overlay(self.root, "rom_780898")["elf"]
-        script = "overlays/rom_780898/overlay.ld"
+        script = paths.link_targets(self.root)[output]
         seen = []
         def link(argv):
             seen.append(argv)
@@ -155,7 +163,7 @@ class OutputTests(unittest.TestCase):
                                     cwd=self.root, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertTrue(result.stdout.startswith(paths.STAGE1 + ": "))
-            self.assertIn("build/usa/src/math/vector.o", result.stdout)
+            self.assertIn(paths.unit(self.root, "tu:src/math/vector")["object"], result.stdout)
         self.assertFalse((self.root / "build").exists())
 
     def test_catalog_has_no_output_source_collision(self):

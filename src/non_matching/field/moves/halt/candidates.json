@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/field/moves/halt.c",
-  "functions": {
-    "Field_Halt": {
-      "id": "rom:0809abb4"
-    }
-  }
-}

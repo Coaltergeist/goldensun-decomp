@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7ac2d8/mercury_lighthouse.c",
+  "functions": {
+    "OvlFunc_924_200a648": {
+      "id": "overlay:rom_7ac2d8:0200a648",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_924_200d1b0": {
+      "id": "overlay:rom_7ac2d8:0200d1b0"
+    },
+    "OvlFunc_924_200adcc": {
+      "id": "overlay:rom_7ac2d8:0200adcc",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_924_200cf44": {
+      "id": "overlay:rom_7ac2d8:0200cf44"
+    }
+  }
+}

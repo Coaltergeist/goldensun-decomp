@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/revive.c",
+  "functions": {
+    "BaseAnim_Revive": {
+      "id": "rom:080cf2b8"
+    }
+  }
+}

@@ -1,0 +1,664 @@
+/* rom_7bf5a8 (overlay file 935): consolidated TU — vault_cave map overlay. */
+
+#include "nonmatching.h"
+#include "api.h"
+
+extern void OvlFunc_935_2008734();
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
+extern unsigned char Lm935_18cc[] __asm__(".Lm935_18cc");
+extern unsigned char Lm935_1a34[] __asm__(".Lm935_1a34");
+extern unsigned char Lm935_1b9c[] __asm__(".Lm935_1b9c");
+extern unsigned char Lm935_189c[] __asm__(".Lm935_189c");
+
+void *VaultCave_GetEntrances(void) {
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return Lm935_18cc;
+    if (ev == (int)_EVENT_61) return Lm935_1a34;
+    if (ev == (int)_EVENT_62) return Lm935_1b9c;
+    return Lm935_189c;
+}
+
+extern unsigned char gOvl_02009c5c[];
+
+void *VaultCave_GetSpecialExits(void) {
+    return (void *)gOvl_02009c5c;
+}
+
+extern unsigned char Lm935_1c80[] __asm__(".Lm935_1c80");
+extern unsigned char Lm935_1cc0[] __asm__(".Lm935_1cc0");
+extern unsigned char Lm935_1cfc[] __asm__(".Lm935_1cfc");
+extern unsigned char Lm935_1c7c[] __asm__(".Lm935_1c7c");
+
+void *VaultCave_GetExits(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return Lm935_1c80;
+    if (ev == (int)_EVENT_61) return Lm935_1cc0;
+    if (ev == (int)_EVENT_62) return Lm935_1cfc;
+    return Lm935_1c7c;
+}
+extern unsigned char gScript_887__02009ecc[];
+extern unsigned char Lm935_1d34[] __asm__(".Lm935_1d34");
+extern unsigned char Lm935_1d4c[] __asm__(".Lm935_1d4c");
+extern unsigned char Lm935_1d1c[] __asm__(".Lm935_1d1c");
+extern unsigned char Lm935_ev60[] __asm__(".Lm935_ev60");
+extern unsigned char Lm935_ev61[] __asm__(".Lm935_ev61");
+extern unsigned char Lm935_ev62[] __asm__(".Lm935_ev62");
+__asm__(".equ .Lm935_ev60, 0x60");
+__asm__(".equ .Lm935_ev61, 0x61");
+__asm__(".equ .Lm935_ev62, 0x62");
+
+void *VaultCave_GetActors(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)Lm935_ev60) return Lm935_1d34;
+    if (ev == (int)Lm935_ev61) return Lm935_1d4c;
+    if (ev == (int)Lm935_ev62) return gScript_887__02009ecc;
+    return Lm935_1d1c;
+}
+
+extern unsigned int iwram_3001ebc;
+
+unsigned int OvlFunc_935_2008134(unsigned int arg0, unsigned int arg1)
+{
+    unsigned int *base;
+    unsigned int *r2;
+    unsigned int i;
+
+    i = 8;
+    base = (unsigned int *)iwram_3001ebc;
+    r2 = (unsigned int *)((char *)base + 0x34);
+    do {
+        unsigned char *r0;
+        r0 = (unsigned char *)*r2;
+        r2++;
+        if ((int)arg0 == ((int)*(unsigned int *)(r0 + 8) >> 20) &&
+            (int)arg1 == ((int)*(unsigned int *)(r0 + 0x10) >> 20) &&
+            *(unsigned char *)(r0 + 0x59) != 0)
+            return (unsigned int)r0;
+        i++;
+    } while (i <= 0x41);
+    return 0;
+}
+
+INCLUDE_ASM("asm/overlays/rom_7bf5a8/vault_cave/vault_cave_data.s");
+
+INCLUDE_ASM("asm/overlays/rom_7bf5a8/vault_cave/OvlFunc_935_2008170.s");
+
+extern void __SetFlag(int);
+
+void OvlFunc_935_20082bc(void) {
+    __SetFlag(0xc0 << 2);
+}
+
+extern void __Func_801776c(int a, int b);
+
+void OvlFunc_935_20082cc(void) {
+    __Func_801776c(0x953, 1);
+}
+
+
+extern unsigned char _EVENT_60[], _EVENT_61[], _EVENT_62[];
+extern unsigned char Lm935_1f98[] __asm__(".Lm935_1f98");
+extern unsigned char Lm935_2064[] __asm__(".Lm935_2064");
+extern unsigned char Lm935_2190[] __asm__(".Lm935_2190");
+extern unsigned char Lm935_1f8c[] __asm__(".Lm935_1f8c");
+
+int VaultCave_GetEvents(void)
+{
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+    if (ev == (int)_EVENT_60) return (int)Lm935_1f98;
+    if (ev == (int)_EVENT_61) return (int)Lm935_2064;
+    if (ev == (int)_EVENT_62) return (int)Lm935_2190;
+    return (int)Lm935_1f8c;
+}
+
+extern unsigned char *__MapActor_GetActor(int);
+
+unsigned int OvlFunc_935_2008334(void)
+{
+    unsigned char *p;
+    int a, b;
+    p = __MapActor_GetActor(9);
+    a = *(int *)(p + 0x10) / 0x100000;
+    b = *(int *)(p + 8) / 0x100000;
+    if (b == 0xf && a == 0x36)
+        return 1;
+    return 0;
+}
+
+extern void __PlaySound(unsigned int);
+extern void OvlFunc_935_2008170(void);
+extern void OvlFunc_935_2008398(void);
+
+void OvlFunc_935_2008368(void)
+{
+    if (API_GetFlag(0x9a9) == 0) {
+        OvlFunc_935_2008170();
+        if (OvlFunc_935_2008334() != 0) {
+            API_SetFlag(0x9a9);
+            __PlaySound(0x50);
+            OvlFunc_935_2008398();
+        }
+    }
+}
+
+extern void __Func_80105d4(int, int, int, int, int, int);
+extern void __Func_8010704(int, int, int, int, int, int);
+
+void OvlFunc_935_2008398(void)
+{
+    int a;
+    int b;
+    int s1;
+    int s2;
+    int s3;
+
+    a = 0x50;
+    b = 0x32;
+    __Func_80105d4(0x57, 0x32, 2, 4, a, b);
+    s1 = 0x10;
+    s2 = 0x34;
+    __Func_80105d4(0x17, 0x34, 1, 2, s1, s2);
+    s3 = 0x35;
+    __Func_8010704(0x10, 0x34, 1, 1, s1, s3);
+}
+
+void OvlFunc_935_20083e0(void)
+{
+    if (API_GetFlag(0x9a9) == 0) {
+        if (OvlFunc_935_2008334() != 0) {
+            API_SetFlag(0x9a9);
+            __PlaySound(0x50);
+            OvlFunc_935_2008398();
+        }
+    }
+}
+
+void OvlFunc_935_200840c(void) {}
+
+void OvlFunc_935_2008410(void)
+{
+    int a;
+    int b;
+    int s1;
+    int s2;
+    int s3;
+
+    a = 0x50;
+    b = 9;
+    __Func_80105d4(0x5a, 9, 2, 3, a, b);
+    s1 = 0x11;
+    s2 = 0xa;
+    __Func_80105d4(0x1b, 0xa, 1, 2, s1, s2);
+    s3 = 0xb;
+    __Func_8010704(0x11, 0xa, 1, 1, s1, s3);
+}
+
+
+unsigned int OvlFunc_935_2008458(void)
+{
+    unsigned char *p;
+    int a, b;
+
+    p = __MapActor_GetActor(0xa);
+    a = *(int *)(p + 0x10) / 0x100000;
+    b = *(int *)(p + 8) / 0x100000;
+    if (b == 16 && a == 12)
+        return 1;
+    return 0;
+}
+
+void OvlFunc_935_200848c(void)
+{
+    OvlFunc_935_2008170();
+    if (API_GetFlag(0x9aa) == 0) {
+        if (OvlFunc_935_2008458() != 0) {
+            if (API_GetFlag(0x207) == 0) {
+                __PlaySound(0x50);
+                OvlFunc_935_2008410();
+                API_SetFlag(0x9aa);
+            }
+        }
+    }
+}
+
+void OvlFunc_935_20084cc(void) {}
+
+void OvlFunc_935_20084d0(void)
+{
+    if (API_GetFlag(0x9aa) == 0) {
+        if (OvlFunc_935_2008458() != 0) {
+            if (API_GetFlag(0x207) == 0) {
+                __PlaySound(0x50);
+                OvlFunc_935_2008410();
+                API_SetFlag(0x9aa);
+            }
+        }
+    }
+}
+
+struct Actor935
+{
+unsigned char pad1[0x23];
+unsigned char f23;
+unsigned char pad2[0x55 - 0x23 - 1];
+unsigned char f55;
+};
+
+void OvlFunc_935_200850c(void)
+{
+  struct Actor935 *actor1;
+  struct Actor935 *actor2;
+  int s1;
+  int s2;
+
+  actor1 = (struct Actor935 *) __MapActor_GetActor(0x10);
+  s1 = 0x17;
+  s2 = 0x20;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor1 != 0)
+  {
+    actor2 = (struct Actor935 *) __MapActor_GetActor(0x10);
+    actor2->f55 = 0;
+    actor1->f23 = 1;
+  }
+  __SetFlag(0x200);
+}
+
+
+void OvlFunc_935_2008554(void)
+{
+  struct Actor935 *actor;
+  struct Actor935 *actor2;
+  int s1;
+  int s2;
+
+  actor = (struct Actor935 *) __MapActor_GetActor(0x11);
+  s1 = 0x17;
+  s2 = 0x22;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor != 0)
+  {
+    actor2 = (struct Actor935 *) __MapActor_GetActor(0x11);
+    actor2->f55 = 0;
+    actor->f23 = 1;
+  }
+  __SetFlag(0x201);
+}
+
+
+void OvlFunc_935_20085a0(void)
+{
+  struct Actor935 *actor;
+  struct Actor935 *actor2;
+  int s1;
+  int s2;
+
+  actor = (struct Actor935 *) __MapActor_GetActor(0x12);
+  s1 = 0x18;
+  s2 = 0x22;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor != 0)
+  {
+    actor2 = (struct Actor935 *) __MapActor_GetActor(0x12);
+    actor2->f55 = 0;
+    actor->f23 = 1;
+  }
+  __SetFlag(0x202);
+}
+
+extern void __Actor_SetSpriteFlags(struct Actor935 *actor, int flags);
+
+void OvlFunc_935_20085ec(void)
+{
+  struct Actor935 *actor;
+  int s1;
+  int s2;
+
+  actor = (struct Actor935 *) __MapActor_GetActor(0x13);
+  s1 = 0x1a;
+  s2 = 0x20;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor != 0)
+  {
+    __Actor_SetSpriteFlags(actor, 0);
+    ((struct Actor935 *) __MapActor_GetActor(0x13))->f55 = 0;
+    actor->f23 = 1;
+  }
+  __SetFlag(0x203);
+}
+
+extern void __Func_8010704(int a0, int a1, int a2, int a3, int a4, int a5);
+
+void OvlFunc_935_2008640(void)
+{
+  struct Actor935 *actor;
+  struct Actor935 *actor2;
+  int s1;
+  int s2;
+
+  actor = (struct Actor935 *) __MapActor_GetActor(0x14);
+  s1 = 0x1a;
+  s2 = 0x22;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor != 0)
+  {
+    __Actor_SetSpriteFlags(actor, 0);
+    actor2 = (struct Actor935 *) __MapActor_GetActor(0x14);
+    actor2->f55 = 0;
+    actor->f23 = 1;
+  }
+  __SetFlag(0x204);
+}
+
+void OvlFunc_935_2008690(void)
+{
+  struct Actor935 *actor;
+  int s1;
+  int s2;
+
+  actor = (struct Actor935 *) __MapActor_GetActor(0x15);
+  s1 = 0x1c;
+  s2 = 0x21;
+  __Func_8010704(0x1a, 0x1e, 1, 1, s1, s2);
+  if (actor != 0)
+  {
+    __Actor_SetSpriteFlags(actor, 0);
+    ((struct Actor935 *) __MapActor_GetActor(0x15))->f55 = 0;
+    actor->f23 = 1;
+  }
+  __SetFlag(0x205);
+}
+
+extern void OvlFunc_935_2008704(void);
+
+void OvlFunc_935_20086e4(void) {
+    unsigned char *actor;
+    int r2;
+    int r3;
+
+    actor = (unsigned char *)__MapActor_GetActor(0);
+    r2 = 0x80;
+    r3 = *(int *)(actor + 0xc);
+    r2 <<= 13;
+    if (r3 >= r2) {
+        OvlFunc_935_2008704();
+    } else {
+        OvlFunc_935_2008734();
+    }
+}
+
+INCLUDE_ASM("asm/overlays/rom_7bf5a8/vault_cave/OvlFunc_935_2008704.s");
+
+void OvlFunc_935_2008734(void)
+{
+  unsigned char *p;
+  int new_var;
+  int id;
+  int i;
+  id = 0x10;
+  new_var = 1;
+  i = 5;
+  do
+  {
+    p = __MapActor_GetActor(id);
+    i--;
+    p += 0x23;
+    *p = new_var;
+    id++;
+  }
+  while (i >= 0);
+}
+
+INCLUDE_ASM("asm/overlays/rom_7bf5a8/vault_cave/OvlFunc_935_2008754.s");
+
+extern void OvlFunc_935_2008754(void);
+
+void OvlFunc_935_20088a8(void)
+{
+    int a;
+    int b;
+
+    if (API_GetFlag(0x9a8) == 0) {
+        __Func_801776c(0x1528, 1);
+        API_SetFlag(0x9a8);
+        __PlaySound(0x9b);
+        a = 0x1b;
+        b = 0x5c;
+        __Func_80105d4(0x6b, 0x1b, 1, 1, b, a);
+        API_CutsceneWait(0x27);
+        __Func_80105d4(0x6c, 0x1b, 1, 1, b, a);
+        API_CutsceneWait(0x32);
+        __PlaySound(0x9c);
+        b = 0x19;
+        __Func_80105d4(1, 0x18, 1, 2, b, a);
+        API_CutsceneWait(0x28);
+        __Func_80105d4(2, 0x18, 1, 2, b, a);
+        API_CutsceneWait(0x28);
+        OvlFunc_935_2008754();
+    }
+}
+
+unsigned int OvlFunc_935_2008944(int arg0)
+{
+    unsigned char *player;
+    unsigned char *other;
+    int i;
+    int val;
+    int ca, cb, pa, pb;
+    int diff;
+
+    player = __MapActor_GetActor(arg0);
+    for (i = 0; i <= 3; i++) {
+        other = __MapActor_GetActor(i + 0xb);
+        val = *(int *)(other + 0xc);
+        if (val >= 1 && val <= 0xfffff) {
+            ca = *(int *)(other + 0x10) / 0x100000;
+            cb = *(int *)(other + 8) / 0x100000;
+            pa = *(int *)(player + 0x10) / 0x100000;
+            pb = *(int *)(player + 8) / 0x100000;
+            diff = pa - ca;
+            if (pb == cb && diff == 0) {
+                *(unsigned int *)(other + 0xc) = 0xff0000;
+                *(unsigned int *)(other + 0x48) = diff;
+                *(unsigned int *)(other + 0x28) = diff;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+extern int Lm935_2224 __asm__(".Lm935_2224");
+extern int Lm935_2228 __asm__(".Lm935_2228");
+extern int Lm935_2214[] __asm__(".Lm935_2214");
+extern void OvlFunc_935_2008b8c(unsigned char *arg0);
+
+void OvlFunc_935_20089c0(void)
+{
+    unsigned char *actor;
+    unsigned char *other;
+    int i;
+    int idx;
+
+    actor = __MapActor_GetActor(0xa);
+    if (actor[0x5b] == 0) {
+        Lm935_2224++;
+        if (Lm935_2224 > 0xbe)
+            Lm935_2224 = 0;
+        idx = Lm935_2228;
+        if (Lm935_2214[idx] == Lm935_2224) {
+            other = __MapActor_GetActor(idx + 0xb);
+            *(unsigned int *)(other + 0x48) = 0xa3d;
+            Lm935_2228++;
+            if (Lm935_2228 > 3)
+                Lm935_2228 = 0;
+        }
+        for (i = 0; i <= 3; i++) {
+            other = __MapActor_GetActor(i + 0xb);
+            if (*(int *)(other + 0x28) >= 0 && *(int *)(other + 0xc) <= 0xffff) {
+                OvlFunc_935_2008b8c(other);
+                *(unsigned int *)(other + 0xc) = 0xff0000;
+                *(unsigned int *)(other + 0x48) = 0;
+                *(unsigned int *)(other + 0x28) = 0;
+                other[0x5b] = 0;
+                __PlaySound(0x6a);
+            }
+        }
+        if (OvlFunc_935_2008944(0xa) != 0) {
+            API_MapActor_SetAnim(0xa, 1);
+            if (API_GetFlag(0x207) == 0) {
+                API_SetFlag(0x207);
+                __PlaySound(0xcc);
+            } else {
+                __PlaySound(0x6a);
+            }
+        }
+        if (OvlFunc_935_2008944(9) != 0) {
+            __PlaySound(0x6a);
+        }
+    }
+}
+
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+
+extern int Lm935_222c __asm__(".Lm935_222c");
+extern int Lm935_2230 __asm__(".Lm935_2230");
+
+void OvlFunc_935_2008aa0(void) {
+    unsigned char *actor;
+    int r7;
+    int i;
+
+    actor = __MapActor_GetActor(10);
+    if (actor[0x5b] != 0)
+        return;
+
+    Lm935_222c++;
+    if ((Lm935_222c & 0x3f) == 0) {
+        Lm935_2230 = _umodsi3_RAM(__Random(), 6);
+        actor = __MapActor_GetActor(Lm935_2230 + 10);
+        *(int *)(actor + 0x48) = 0xa3d;
+    }
+
+    r7 = 0xff;
+    i = 0;
+    r7 <<= 16;
+    for (; i <= 5; i++) {
+        actor = __MapActor_GetActor(i + 10);
+        if (__GetFlag(i + (0x80 << 2)) != 0) {
+            if (*(int *)(actor + 0x28) > 0 || *(int *)(actor + 0xc) <= 0x20ffff) {
+                *(int *)(actor + 0xc) = r7;
+                *(int *)(actor + 0x48) = 0;
+                *(int *)(actor + 0x28) = 0;
+                __PlaySound(0x6a);
+            }
+        } else {
+            if (*(int *)(actor + 0x28) > 0 || *(int *)(actor + 0xc) <= 0xffff) {
+                *(int *)(actor + 0x48) = 0;
+                *(int *)(actor + 0x28) = 0;
+                *(int *)(actor + 0xc) = r7;
+                __PlaySound(0x6a);
+            }
+        }
+    }
+}
+
+extern void __vec3_translate(unsigned int arg0, unsigned int arg1, unsigned int *arg2);
+extern void __Actor_TravelTo(unsigned char *arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
+
+void OvlFunc_935_2008b54(unsigned char *arg0, unsigned int arg1, unsigned int arg2) {
+    unsigned int tmp[3];
+
+    if (arg0 != (unsigned char *)0) {
+        tmp[0] = *(unsigned int *)(arg0 + 8);
+        tmp[1] = *(unsigned int *)(arg0 + 0xc);
+        tmp[2] = *(unsigned int *)(arg0 + 0x10);
+        __vec3_translate(arg1, arg2, tmp);
+        __Actor_TravelTo(arg0, tmp[0], tmp[1], tmp[2]);
+    }
+}
+
+
+extern unsigned char gScript_935__02009884[];
+extern void __Actor_SetScript(void *, void *);
+
+void OvlFunc_935_2008b8c(unsigned char *arg0) {
+    unsigned char *actor;
+    unsigned char *p;
+    int i;
+    int eight;
+
+    for (i = 0; i <= 3; i++) {
+        actor = (unsigned char *)__CreateActor(0xf0, *(int *)(arg0 + 8), *(int *)(arg0 + 0xc), *(int *)(arg0 + 0x10));
+        if (actor == 0)
+            break;
+        *(int *)(actor + 0x1c) = 0x8ccc;
+        *(int *)(actor + 0x18) = 0x8ccc;
+        actor[0x55] = 2;
+        *(int *)(actor + 0x28) = 0xffff0000;
+        *(int *)(actor + 0x30) = __Random() + 0xcccc;
+        actor[0x59] = 1;
+        OvlFunc_935_2008b54(actor, 0x80 << 14, __Random());
+        p = actor + 0x5e;
+        eight = 8;
+        *(short *)p = eight;
+        __Actor_SetScript(actor, gScript_935__02009884);
+    }
+}
+
+extern void OvlFunc_935_2008aa0(void);
+
+void OvlFunc_935_2008c08(void)
+{
+    void *a;
+    int r5;
+    int r6;
+
+    r5 = 10;
+    r6 = 5;
+    do {
+        a = __MapActor_GetActor(r5);
+        __Actor_SetSpriteFlags(a, 0);
+        a = __MapActor_GetActor(r5);
+        *(unsigned int *)((char *)a + 0x44) = 0x1999;
+        *(unsigned int *)((char *)a + 0x48) = 0;
+        *(unsigned int *)((char *)a + 0xc) = 0xff0000;
+        r6 -= 1;
+        r5 += 1;
+    } while (r6 >= 0);
+    __StartTask(OvlFunc_935_2008aa0, 0xc80);
+}
+
+extern void OvlFunc_935_20089c0(void);
+
+void OvlFunc_935_2008c50(void)
+{
+    void *a;
+    int r5;
+    int r6;
+
+    r6 = 0xb;
+    r5 = 0;
+    do {
+        a = __MapActor_GetActor(r6);
+        __Actor_SetSpriteFlags(a, 0);
+        a = __MapActor_GetActor(r6);
+        *(unsigned int *)((char *)a + 0x44) = 0x1999;
+        *(unsigned int *)((char *)a + 0x48) = 0;
+        *(unsigned int *)((char *)a + 0xc) = 0xff0000;
+        __Func_8092b08(r5 + 0xb, 1);
+        r5 += 1;
+        r6 += 1;
+    } while (r5 <= 3);
+    __StartTask(OvlFunc_935_20089c0, 0xc80);
+}
+
+INCLUDE_ASM("asm/overlays/rom_7bf5a8/vault_cave/VaultCave_MapInit.s");

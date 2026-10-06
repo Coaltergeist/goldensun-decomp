@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7a7298/imil.c",
+  "functions": {
+    "OvlFunc_921_2009704": {
+      "id": "overlay:rom_7a7298:02009704",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_921_200954c": {
+      "id": "overlay:rom_7a7298:0200954c"
+    },
+    "OvlFunc_921_2008f90": {
+      "id": "overlay:rom_7a7298:02008f90"
+    },
+    "OvlFunc_921_2009fa4": {
+      "id": "overlay:rom_7a7298:02009fa4",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_921_2008030": {
+      "id": "overlay:rom_7a7298:02008030"
+    },
+    "OvlFunc_921_2009f24": {
+      "id": "overlay:rom_7a7298:02009f24",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Imil_MapInit": {
+      "id": "overlay:rom_7a7298:02008b70",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_921_20099e8": {
+      "id": "overlay:rom_7a7298:020099e8",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_921_20080d8": {
+      "id": "overlay:rom_7a7298:020080d8"
+    },
+    "OvlFunc_921_20095b4": {
+      "id": "overlay:rom_7a7298:020095b4"
+    },
+    "OvlFunc_921_2008384": {
+      "id": "overlay:rom_7a7298:02008384"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/anim_util.c",
+  "functions": {
+    "Func_80cd4b4": {
+      "id": "rom:080cd4b4"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_15000/ui/menu.c",
+  "functions": {
+    "Func_801c9c8": {
+      "id": "rom:0801c9c8"
+    },
+    "Func_801b36c": {
+      "id": "rom:0801b36c"
+    },
+    "Func_801c46c": {
+      "id": "rom:0801c46c"
+    }
+  }
+}

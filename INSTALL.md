@@ -65,7 +65,7 @@ python3 -B tools/build_actions.py clean --dry-run 2>&1 | tee output.txt
 
 Old object targets such as `make src/math/vector.o` remain aliases to the current
 object; they do not create files at the old paths. Use the real path printed by
-`python3 -B tools/build_config.py query unit src/math/vector.c` for comparison tools.
+`python3 -B tools/build_config.py query unit src/core/rom_1b70/math/vector.c` for comparison tools.
 Historical baselines retain their original paths; capture a new baseline after a
 layout change and keep the old one as evidence.
 
@@ -81,10 +81,10 @@ set -o pipefail
 python3 -B tools/build.py configure 2>&1 | tee output.txt
 python3 -B tools/build.py build 2>&1 | tee output.txt
 python3 -B tools/build.py verify 2>&1 | tee output.txt
-python3 -B tools/build.py build/usa/src/math/vector.o 2>&1 | tee output.txt
+python3 -B tools/build.py build/usa/obj/src/core/rom_1b70/math/vector.o 2>&1 | tee output.txt
 python3 -B tools/build.py --dry-run --explain build 2>&1 | tee output.txt
-python3 -B tools/build.py commands build/usa/src/math/vector.o 2>&1 | tee output.txt
-python3 -B tools/build_config.py query commands src/math/vector.c 2>&1 | tee output.txt
+python3 -B tools/build.py commands build/usa/obj/src/core/rom_1b70/math/vector.o 2>&1 | tee output.txt
+python3 -B tools/build_config.py query commands src/core/rom_1b70/math/vector.c 2>&1 | tee output.txt
 ~~~
 
 `build` produces the ROM; `verify` (also `compare`, the default) checks the ROM and
@@ -100,7 +100,7 @@ clean copies. Switching to the Make fallback does not require Ninja.
 
 Compiler flag overrides retain the documented Make interface, including
 `make GCC296_CFLAGS='...' TARGET`; the resolved values reach either backend.
-Use `make print-compile-contract SOURCE=src/math/vector.c` to inspect the six-line
+Use `make print-compile-contract SOURCE=src/core/rom_1b70/math/vector.c` to inspect the six-line
 compatibility contract. [Build configuration](config/README.md) lists overrides.
 
 ## Optional function diff viewer
@@ -153,7 +153,7 @@ For overlays, select the owning bank's map to disambiguate reused symbols:
 GOLDENSUN_DIFF_MAP=build/usa/overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
 ~~~
 
-Use `-f build/usa/asm/maps/MAP.o` to select a known object directly. For a custom section,
+Use `-f build/usa/obj/src/overlays/rom_XXXXXX/MAP.o` to select a known object directly. For a custom section,
 add `--section .text.SECTION` using the name shown by
 `arm-none-eabi-objdump -t OBJECT`. The reference must contain the same relative
 object path. See [CONTRIBUTING.md](CONTRIBUTING.md) for final verification.

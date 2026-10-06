@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/tackle.c",
-  "functions": {
-    "BaseAnim_Tackle": {
-      "id": "rom:080dfa48"
-    }
-  }
-}

@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7d6418/lucky_fountain.c",
+  "functions": {
+    "OvlFunc_951_20088f8": {
+      "id": "overlay:rom_7d6418:020088f8"
+    },
+    "OvlFunc_951_2008dd0": {
+      "id": "overlay:rom_7d6418:02008dd0"
+    },
+    "OvlFunc_951_20084bc": {
+      "id": "overlay:rom_7d6418:020084bc"
+    }
+  }
+}

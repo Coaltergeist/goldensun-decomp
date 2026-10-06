@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/astral_blast.c",
+  "functions": {
+    "Anim_AstralBlast": {
+      "id": "rom:080d0ee0"
+    }
+  }
+}

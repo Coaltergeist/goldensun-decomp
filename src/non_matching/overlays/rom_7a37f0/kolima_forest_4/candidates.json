@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7a37f0/kolima_forest_4.c",
+  "functions": {
+    "OvlFunc_916_20083f0": {
+      "id": "overlay:rom_7a37f0:020083f0"
+    },
+    "OvlFunc_916_2008a90": {
+      "id": "overlay:rom_7a37f0:02008a90",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_916_2008c2c": {
+      "id": "overlay:rom_7a37f0:02008c2c",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_916_2008098": {
+      "id": "overlay:rom_7a37f0:02008098"
+    }
+  }
+}

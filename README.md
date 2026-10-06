@@ -36,17 +36,25 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 
 | Path | Contents |
 | --- | --- |
-| `src/` | Game C and assembly, organized by subsystem |
-| `src/maps/` | One translation unit per code overlay, plus shared modules |
+| `src/core/<region>/` | Startup and low-level main-ROM code |
+| `src/modules/<region>/` | Main-ROM modules, retaining subsystem folders within each region |
+| `src/overlays/<overlay>/` | One translation unit per code overlay |
+| `src/overlays/common/` | The three shared overlay modules, compiled once each |
 | `src/lib/` | GBA library code, including m4a and Flash support |
-| `src/non_matching/` | Unfinished C candidates, organized by TU |
-| `asm/` | Active disassembly, included from the corresponding source TUs |
-| `data/` | Data assembly and generated build outputs |
-| `overlays/` | Per-overlay linker scripts and generated overlay files |
+| `src/non_matching/` | Parked candidates and context headers, grouped by current TU ownership |
+| `asm/core/`, `asm/modules/`, `asm/overlays/` | Active assembly fragments for the corresponding source TUs |
+| `data/` and `exports/` | Maintained data assembly and exported symbols |
+| `linker/` | Main-ROM and overlay linker scripts; address maps under `linker/symbols/` |
 | `include/` | C headers and assembler macros |
+| `config/` | Module ownership, compiler profiles and current path declarations |
 | `tools/` | Build, comparison, and reporting tools |
-| `*.sym` | Symbol address maps |
-| `stage1.ld` / `goldensun.ld` | Main-ROM partial and final link scripts |
+| `build/` | Ignored objects, intermediates, generated assets, ROM and overlay products |
+
+Region and overlay folder names follow catalog IDs, including their ROM offsets. Use
+[the module catalog](config/README.md) to resolve a stable TU ID, current path or
+legacy object alias. Catalog ownership preserves compile profiles and link order.
+Original disassembly paths in `original_functions.json` are historical evidence;
+current production paths come from `config/modules.json` and `progress_snapshot.json`.
 
 ## References
 

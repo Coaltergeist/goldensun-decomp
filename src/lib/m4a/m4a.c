@@ -9,10 +9,10 @@
 #endif
 
 // GS1 port: these globals live at fixed addresses already defined in
-// goldensun's aliases.sym / wram.sym (the existing source of truth — SA2's
+// goldensun's aliases.sym / linker/symbols/wram.sym (the existing source of truth — SA2's
 // m4a.c owns them, GS1 does not), so the m4a TU references them extern rather
 // than defining them. SoundMainRAM_Buffer is the IWRAM mixer-code buffer
-// (0x03007000, added to wram.sym as SoundMainRAM_Buffer = iwram_3007000).
+// (0x03007000, added to linker/symbols/wram.sym as SoundMainRAM_Buffer = iwram_3007000).
 extern char SoundMainRAM_Buffer[0x400];
 
 extern struct MP2KTrack gMPlayTrack_BGM[16];

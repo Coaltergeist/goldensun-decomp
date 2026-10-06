@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/field/moves/move.c",
-  "functions": {
-    "Func_8098184": {
-      "id": "rom:08098184"
-    }
-  }
-}

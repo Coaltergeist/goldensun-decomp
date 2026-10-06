@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/rpg/get_unit.c",
-  "functions": {
-    "GetUnit": {
-      "id": "rom:08077394"
-    }
-  }
-}

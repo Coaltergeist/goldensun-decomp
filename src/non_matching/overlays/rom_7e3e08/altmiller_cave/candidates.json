@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7e3e08/altmiller_cave.c",
+  "functions": {
+    "OvlFunc_957_2008ee0": {
+      "id": "overlay:rom_7e3e08:02008ee0"
+    },
+    "OvlFunc_957_2008b30": {
+      "id": "overlay:rom_7e3e08:02008b30"
+    }
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/death_plunge.c",
-  "functions": {
-    "Anim_DeathPlunge": {
-      "id": "rom:080cb1a4"
-    }
-  }
-}

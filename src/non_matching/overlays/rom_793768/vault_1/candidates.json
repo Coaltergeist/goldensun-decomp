@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_793768/vault_1.c",
+  "functions": {
+    "OvlFunc_898_2008314": {
+      "id": "overlay:rom_793768:02008314"
+    },
+    "OvlFunc_898_2008cfc": {
+      "id": "overlay:rom_793768:02008cfc"
+    },
+    "OvlFunc_898_2008d78": {
+      "id": "overlay:rom_793768:02008d78"
+    },
+    "OvlFunc_898_2009754": {
+      "id": "overlay:rom_793768:02009754"
+    },
+    "OvlFunc_898_20087ec": {
+      "id": "overlay:rom_793768:020087ec"
+    },
+    "OvlFunc_898_200885c": {
+      "id": "overlay:rom_793768:0200885c"
+    },
+    "OvlFunc_898_2008a4c": {
+      "id": "overlay:rom_793768:02008a4c"
+    },
+    "OvlFunc_898_2008acc": {
+      "id": "overlay:rom_793768:02008acc"
+    },
+    "OvlFunc_898_2009090": {
+      "id": "overlay:rom_793768:02009090"
+    },
+    "OvlFunc_898_2009674": {
+      "id": "overlay:rom_793768:02009674"
+    },
+    "OvlFunc_898_20084a0": {
+      "id": "overlay:rom_793768:020084a0"
+    },
+    "OvlFunc_898_20097ac": {
+      "id": "overlay:rom_793768:020097ac"
+    }
+  }
+}

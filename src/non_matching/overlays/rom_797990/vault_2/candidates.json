@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_797990/vault_2.c",
+  "functions": {
+    "OvlFunc_901_2008640": {
+      "id": "overlay:rom_797990:02008640"
+    },
+    "OvlFunc_901_2008400": {
+      "id": "overlay:rom_797990:02008400"
+    },
+    "OvlFunc_901_200858c": {
+      "id": "overlay:rom_797990:0200858c"
+    },
+    "OvlFunc_901_2008c1c": {
+      "id": "overlay:rom_797990:02008c1c"
+    },
+    "OvlFunc_901_2008350": {
+      "id": "overlay:rom_797990:02008350"
+    },
+    "Vault2_MapInit": {
+      "id": "overlay:rom_797990:02008f30"
+    }
+  }
+}

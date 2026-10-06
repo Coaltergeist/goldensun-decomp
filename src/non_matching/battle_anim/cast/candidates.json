@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/cast.c",
-  "functions": {
-    "Task_BlitPreAnim": {
-      "id": "rom:080c1438"
-    }
-  }
-}

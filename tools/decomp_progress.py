@@ -229,19 +229,22 @@ def verify_outputs(root, historical=False):
         raise ValueError("reference ROM SHA1 mismatch")
     if digest(root / ("goldensun.gba" if historical else build_paths.ROM), "sha1") != ROM_SHA1:
         raise ValueError("built ROM SHA1 mismatch")
-    scripts = sorted((root / "overlays").glob("*/overlay.ld"))
-    if len(scripts) != 96:
+    if historical:
+        overlays = {script.parent.name: (script, script.with_name("orig.bin"),
+                                        script.with_name("overlay.bin"))
+                    for script in sorted((root / "overlays").glob("*/overlay.ld"))}
+    else:
+        scripts = build_paths.link_targets(root)
+        overlays = {identity.split(":", 1)[1]: (root / scripts[paths["elf"]],
+                    root / paths["original"], root / paths["binary"])
+                    for identity, paths in build_paths.overlays(root).items()}
+    if len(overlays) != 96 or any(not paths[0].is_file() for paths in overlays.values()):
         raise ValueError("expected all 96 overlay linker scripts")
     hashes = {}
-    for script in scripts:
-        if historical:
-            original, built = script.with_name("orig.bin"), script.with_name("overlay.bin")
-        else:
-            paths = build_paths.overlay(root, script.parent.name)
-            original, built = root / paths["original"], root / paths["binary"]
+    for identity, (_, original, built) in sorted(overlays.items()):
         if original.read_bytes() != built.read_bytes():
-            raise ValueError("overlay mismatch: " + script.parent.name)
-        hashes[script.parent.name] = digest(built)
+            raise ValueError("overlay mismatch: " + identity)
+        hashes[identity] = digest(built)
     return hashes
 
 

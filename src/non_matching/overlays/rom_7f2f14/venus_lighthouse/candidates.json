@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7f2f14/venus_lighthouse.c",
+  "functions": {
+    "OvlFunc_968_2008058": {
+      "id": "overlay:rom_7f2f14:02008058",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_968_200832c": {
+      "id": "overlay:rom_7f2f14:0200832c"
+    },
+    "OvlFunc_968_2008098": {
+      "id": "overlay:rom_7f2f14:02008098",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_968_2008558": {
+      "id": "overlay:rom_7f2f14:02008558"
+    },
+    "OvlFunc_968_20088c8": {
+      "id": "overlay:rom_7f2f14:020088c8"
+    },
+    "OvlFunc_968_2009a14": {
+      "id": "overlay:rom_7f2f14:02009a14"
+    },
+    "OvlFunc_968_200aee4": {
+      "id": "overlay:rom_7f2f14:0200aee4"
+    },
+    "OvlFunc_968_200896c": {
+      "id": "overlay:rom_7f2f14:0200896c"
+    },
+    "OvlFunc_968_200a3d4": {
+      "id": "overlay:rom_7f2f14:0200a3d4"
+    },
+    "OvlFunc_968_20085e4": {
+      "id": "overlay:rom_7f2f14:020085e4"
+    },
+    "OvlFunc_968_2009150": {
+      "id": "overlay:rom_7f2f14:02009150"
+    },
+    "OvlFunc_968_200c968": {
+      "id": "overlay:rom_7f2f14:0200c968"
+    },
+    "OvlFunc_968_200c520": {
+      "id": "overlay:rom_7f2f14:0200c520"
+    },
+    "OvlFunc_968_2009808": {
+      "id": "overlay:rom_7f2f14:02009808"
+    },
+    "OvlFunc_968_2008b08": {
+      "id": "overlay:rom_7f2f14:02008b08"
+    }
+  }
+}

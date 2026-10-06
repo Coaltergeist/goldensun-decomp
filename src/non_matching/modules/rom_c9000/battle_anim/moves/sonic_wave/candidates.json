@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/sonic_wave.c",
+  "functions": {
+    "BaseAnim_SonicWave": {
+      "id": "rom:080c9ca8"
+    }
+  }
+}

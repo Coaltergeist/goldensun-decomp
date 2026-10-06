@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7ca63c/tolbi_bound_ship_top.c",
+  "functions": {
+    "OvlFunc_944_20090a0": {
+      "id": "overlay:rom_7ca63c:020090a0"
+    },
+    "OvlFunc_944_2008564": {
+      "id": "overlay:rom_7ca63c:02008564"
+    },
+    "OvlFunc_944_2008af8": {
+      "id": "overlay:rom_7ca63c:02008af8"
+    }
+  }
+}

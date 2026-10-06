@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/drain.c",
+  "functions": {
+    "Anim_Drain": {
+      "id": "rom:080d85d0"
+    }
+  }
+}

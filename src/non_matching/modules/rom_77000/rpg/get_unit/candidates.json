@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_77000/rpg/get_unit.c",
+  "functions": {
+    "GetUnit": {
+      "id": "rom:08077394"
+    }
+  }
+}

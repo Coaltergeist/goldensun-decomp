@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/unused_skull_spin.c",
+  "functions": {
+    "Anim_Unused_Haunt": {
+      "id": "rom:080dc454"
+    }
+  }
+}

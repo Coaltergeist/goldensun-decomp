@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/growth.c",
+  "functions": {
+    "BaseAnim_Growth": {
+      "id": "rom:080dd2c4"
+    }
+  }
+}

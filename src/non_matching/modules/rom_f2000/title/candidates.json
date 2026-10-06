@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_f2000/title.c",
+  "functions": {
+    "Func_80f3858": {
+      "id": "rom:080f3858"
+    }
+  }
+}

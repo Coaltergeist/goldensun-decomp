@@ -1,7 +1,7 @@
 #ifndef _MESSAGE_H_
 #define _MESSAGE_H_
 
-// external symbols from the message.sym linker include.
+// external symbols from the linker/symbols/message.sym linker include.
 // Message/text IDs (the arg space of Func_801776c, distinct from the file
 // table in file_table.h; those callers also pass IDs past the file table's
 // range, so this is its own ID space). Named absolute so (int)&_MSG_* is

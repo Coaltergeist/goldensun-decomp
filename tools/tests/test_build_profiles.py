@@ -16,6 +16,7 @@ TOOLS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS))
 import build_config as config
 import build_compile
+import build_paths
 import candidate_build
 import permuter_compile
 from candidate_cache import CandidateCache
@@ -30,8 +31,9 @@ class ProfileTests(unittest.TestCase):
             target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(TOOLS.parent / name, target)
-        for path in (TOOLS.parent / "overlays").glob("*/overlay.ld"):
-            target = self.root / path.relative_to(TOOLS.parent)
+        for name in build_paths.link_targets(TOOLS.parent).values():
+            path = TOOLS.parent / name
+            target = self.root / name
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(path, target)
         self.data = config.read_json(self.root / config.CONFIG_FILES[1])
@@ -64,21 +66,21 @@ class ProfileTests(unittest.TestCase):
             return {str(p.relative_to(self.root)): (hashlib.sha256(p.read_bytes()).hexdigest(), p.stat().st_mtime_ns)
                     for p in self.root.rglob("*") if p.is_file()}
         before = inventory()
-        for kind, name in [("unit", "src/maps/common/common2.c"), ("unit", "asm/maps/common/common2.o"),
+        for kind, name in [("unit", "tu:src/maps/common/common2"), ("unit", "asm/maps/common/common2.o"),
                            ("profile", "tu:src/battle_anim/moves/gaia"), ("commands", "src/lib/m4a/m4a.c"),
                            ("commands", "tools/pack_overlay.c"), ("commands", "src/lib/call_via.s"),
                            ("overlay", "rom_779188"), ("module", "common:common1")]:
             json.loads(self.query("query", kind, name).stdout)
-        self.make("src/math/vector.c")
+        self.make("tu:src/math/vector")
         self.assertEqual(before, inventory())
         self.assertFalse((self.root / "build/usa/stamps").exists())
         self.assertFalse((self.root / "tools/gcc296").exists())
         self.assertFalse((self.root / "baserom.gba").exists())
 
     def test_profile_exceptions_and_flash_verify_are_preserved(self):
-        normal = self.make("src/math/vector.c")
-        gaia = self.make("src/battle_anim/moves/gaia.c")
-        common = self.make("src/maps/common/common2.c")
+        normal = self.make("tu:src/math/vector")
+        gaia = self.make("tu:src/battle_anim/moves/gaia")
+        common = self.make("tu:src/maps/common/common2")
         m4a = self.make("src/lib/m4a/m4a.c")
         flash = self.make("src/lib/agb_flash/agb_flash.c")
         verify = self.make("src/lib/agb_flash/agb_flash_verify.c")
@@ -90,26 +92,26 @@ class ProfileTests(unittest.TestCase):
         self.assertEqual(m4a[0], "agbcc"); self.assertEqual(flash[0], "agbcc")
         self.assertIn("M4A_SIGNED_CHAR", m4a[4]); self.assertNotIn("M4A_SIGNED_CHAR", flash[4])
         self.assertTrue(m4a[5].endswith("-O2")); self.assertTrue(flash[5].endswith("-O"))
-        config_data = json.loads(self.query("query", "profile", "src/maps/common/common2.c").stdout)
+        config_data = json.loads(self.query("query", "profile", "tu:src/maps/common/common2").stdout)
         self.assertIn("-mthumb-interwork", config_data["assembler_arguments"])
 
     def test_directory_and_flag_overrides_reach_the_adapter(self):
-        row = self.make("src/math/vector.c", "GCC296_DIR=alternate/gcc", "AGBCC_DIR=alternate/agb")
+        row = self.make("tu:src/math/vector", "GCC296_DIR=alternate/gcc", "AGBCC_DIR=alternate/agb")
         self.assertEqual(row[1], "alternate/gcc/xgcc")
         self.assertIn("-Balternate/gcc/", row[2])
         self.assertEqual(row[3], "alternate/agb/bin/old_agbcc")
         self.assertIn("-Ialternate/agb/include", row[4])
         flags = "-O1 -mthumb-interwork -fno-strict-aliasing"
-        row = self.make("src/battle_anim/moves/gaia.c", "GCC296_CFLAGS=" + flags)
+        row = self.make("tu:src/battle_anim/moves/gaia", "GCC296_CFLAGS=" + flags)
         self.assertEqual(row[2], "-O1 -mthumb-interwork -fstrict-aliasing")
-        row = self.make("src/maps/common/common2.c", "GCC296_CFLAGS=" + flags)
+        row = self.make("tu:src/maps/common/common2", "GCC296_CFLAGS=" + flags)
         self.assertEqual(row[2], "-O1 -fno-strict-aliasing")
-        self.assertEqual(self.make("src/battle_anim/moves/gaia.c", "GAIA_CFLAGS=-O0")[2], "-O0")
+        self.assertEqual(self.make("tu:src/battle_anim/moves/gaia", "GAIA_CFLAGS=-O0")[2], "-O0")
         self.assertEqual(self.make("src/lib/m4a/m4a.c", "M4A_CPPFLAGS=-D TEST", "M4A_CC1FLAGS=-O")[4:], ["-D TEST", "-O"])
 
     def test_environment_defaults_and_host_flags_keep_make_semantics(self):
         env = dict(self.env, GCC296_DIR="alternate/gcc", GCC296_CFLAGS="ignored", CC="custom-cc", CFLAGS="-O0", CPPFLAGS="-DTEST")
-        row = self.make("src/math/vector.c", env=env)
+        row = self.make("tu:src/math/vector", env=env)
         self.assertEqual(row[1], "alternate/gcc/xgcc"); self.assertNotIn("ignored", row[2])
         host = json.loads(self.query("query", "commands", "tools/pack_overlay.c", env=env).stdout)
         self.assertEqual(host["compile"][0], "custom-cc")
@@ -123,7 +125,7 @@ class ProfileTests(unittest.TestCase):
 
     def test_lost_required_profile_is_rejected(self):
         next(u for u in self.catalog["units"] if u["profile"] == "gcc296-gaia")["profile"] = "gcc296"
-        self.save(); self.assertIn("required ABI", self.query("query", "unit", "src/math/vector.c", ok=False).stderr)
+        self.save(); self.assertIn("required ABI", self.query("query", "unit", "tu:src/math/vector", ok=False).stderr)
 
     def test_reference_and_unknown_sources_cannot_be_compiled(self):
         for name in ("src/lib/m4a/m4a_tables.c", "src/new.c", "src/non_matching/maps/title.c"):
@@ -146,7 +148,7 @@ class ProfileTests(unittest.TestCase):
     def test_profile_postprocessing_participates_in_candidate_cache_key(self):
         self.root.joinpath("build/non_matching/run").mkdir(parents=True)
         cache = CandidateCache(self.root, self.root / "build/non_matching/run")
-        source = "src/math/vector.c"
+        source = "tu:src/math/vector"
         settings = config.legacy_contract(self.root, source)
         before = cache.assembly_key(source, "int f(void) {return 1;}", Path("tmp.c"), settings, ["f"], {})
         self.data["profiles"]["gcc296"]["postprocess"]["fill"] = 1; self.save()
@@ -191,7 +193,7 @@ class ProfileTests(unittest.TestCase):
 
     def test_permuter_rejects_stale_profile_and_production_output(self):
         values = config.resolve_values(self.data)
-        profile = config.settings(self.root, "src/math/vector.c", values)
+        profile = config.settings(self.root, "tu:src/math/vector", values)
         args = ["--unit", profile["unit"]["id"], "--contract", "outdated", *profile["preprocessor_arguments"],
                 str(self.root / "input.c"), "-o", str(self.root / "output.o")]
         with patch.object(config, "make_values", return_value=values), \

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/unused_screen_melt.c",
+  "functions": {
+    "Anim_Unused_ScreenMelt": {
+      "id": "rom:080d0468"
+    }
+  }
+}

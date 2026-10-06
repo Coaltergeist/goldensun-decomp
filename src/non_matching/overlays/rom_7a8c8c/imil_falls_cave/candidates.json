@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7a8c8c/imil_falls_cave.c",
+  "functions": {
+    "OvlFunc_922_200a094": {
+      "id": "overlay:rom_7a8c8c:0200a094"
+    }
+  }
+}

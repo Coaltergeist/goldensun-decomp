@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/sleep.c",
-  "functions": {
-    "Anim_Sleep": {
-      "id": "rom:080d59b0"
-    }
-  }
-}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/camera.c",
+  "functions": {
+    "Task_SpinCamera": {
+      "id": "rom:080d6504"
+    }
+  }
+}

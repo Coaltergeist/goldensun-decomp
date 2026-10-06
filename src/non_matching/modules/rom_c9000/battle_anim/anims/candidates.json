@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/anims.c",
+  "functions": {
+    "Anim_Func": {
+      "id": "rom:080d6660"
+    }
+  }
+}

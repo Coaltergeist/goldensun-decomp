@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_7d4af4/tolbi.c",
+  "functions": {
+    "OvlFunc_949_20082f0": {
+      "id": "overlay:rom_7d4af4:020082f0",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_949_20083d0": {
+      "id": "overlay:rom_7d4af4:020083d0",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_949_2008980": {
+      "id": "overlay:rom_7d4af4:02008980"
+    },
+    "OvlFunc_949_20086e8": {
+      "id": "overlay:rom_7d4af4:020086e8"
+    }
+  }
+}

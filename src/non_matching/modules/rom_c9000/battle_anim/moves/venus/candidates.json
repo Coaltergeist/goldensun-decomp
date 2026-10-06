@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/venus.c",
+  "functions": {
+    "Anim_Venus": {
+      "id": "rom:080e0564"
+    }
+  }
+}

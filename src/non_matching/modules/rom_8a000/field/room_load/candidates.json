@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_8a000/field/room_load.c",
+  "functions": {
+    "Func_808b868": {
+      "id": "rom:0808b868"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/overlays/rom_79c738/mccoys_palace.c",
+  "functions": {
+    "OvlFunc_909_200a1bc": {
+      "id": "overlay:rom_79c738:0200a1bc"
+    }
+  }
+}

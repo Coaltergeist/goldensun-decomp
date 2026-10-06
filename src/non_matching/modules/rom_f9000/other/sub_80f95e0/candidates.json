@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_f9000/other/sub_80f95e0.c",
+  "functions": {
+    "SoundMainBTM": {
+      "id": "rom:080f9a18"
+    },
+    "ply_pend": {
+      "id": "rom:080f9afc"
+    }
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/volcano.c",
-  "functions": {
-    "Anim_Volcano": {
-      "id": "rom:080d4ce8"
-    }
-  }
-}

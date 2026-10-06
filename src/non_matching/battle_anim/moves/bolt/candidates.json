@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/bolt.c",
-  "functions": {
-    "Anim_Bolt": {
-      "id": "rom:080ddde0"
-    }
-  }
-}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/fireball.c",
+  "functions": {
+    "Anim_Fireball": {
+      "id": "rom:080da6cc"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_8a000/field/moves/mind_read.c",
+  "functions": {
+    "Func_8097868": {
+      "id": "rom:08097868"
+    }
+  }
+}

@@ -4,14 +4,18 @@ RUN_BUILD_INTEGRATION=1 python3 -B -m unittest discover -s tools/tests -p test_b
 """
 from pathlib import Path
 import hashlib
+import json
 import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+from build_deps import linker_dependencies
 
 
 @unittest.skipUnless(os.environ.get("RUN_BUILD_INTEGRATION") == "1", "opt-in full toolchain test")
@@ -60,22 +64,27 @@ class BuildIntegrationTests(unittest.TestCase):
                        for folder in ("build/usa", "build/host") for f in (game / folder).rglob("*") if f.is_file() and f.name not in (".ninja_log", ".ninja_deps")}
             make("compare", "--debug=b")
             self.assertEqual(outputs, {n: mtime(n) for n in outputs}, "no-op rebuilt output")
-            save = "build/usa/src/save.o"
-            common = "build/usa/asm/maps/common/common2.o"
+            catalog = json.loads((game / "config/modules.json").read_text())
+            units = {u["id"]: u for u in catalog["units"]}
+            save_unit = units["tu:src/save"]
+            common_unit = units["tu:src/maps/common/common2"]
+            save, common = save_unit["object"], common_unit["object"]
             stage = "build/usa/stage1.o"
+            script = catalog["paths"]["link_targets"][stage]
+            symbols = next(n for n in linker_dependencies(script, root=game) if n.endswith("wram.sym"))
             # Old targets are aliases, never copied products.
             before = mtime(save); make("src/save.o")
             self.assertEqual(before, mtime(save)); self.assertFalse((game / "src/save.o").exists())
             changed(save, lambda: append("include/gba/types.h", "\n/* used header */\n"))
-            asm = re.findall(r'INCLUDE_ASM\("([^"]+)"', (game / "src/maps/common/common2.c").read_text())[0]
+            asm = re.findall(r'INCLUDE_ASM\("([^"]+)"', (game / common_unit["source"]).read_text())[0]
             changed(common, lambda: append(asm, "\n@ assembly dependency\n"))
-            changed(stage, lambda: append("wram.sym", "\n/* linker dependency */\n"))
+            changed(stage, lambda: append(symbols, "\n/* linker dependency */\n"))
             (game / "dependency-fixture").mkdir()
             (game / "dependency-fixture/one.sym").write_text('INCLUDE "dependency-fixture/two.sym"\n')
             (game / "dependency-fixture/two.sym").write_text("/* nested */\n")
-            append("stage1.ld", '\nINCLUDE "dependency-fixture/one.sym"\n'); make(stage)
+            append(script, '\nINCLUDE "dependency-fixture/one.sym"\n'); make(stage)
             changed(stage, lambda: append("dependency-fixture/two.sym", "/* changed */\n"))
-            flags = subprocess.check_output(["make", "-s", "print-compile-contract", "SOURCE=src/save.c"], cwd=game, env=env, text=True).splitlines()[2]
+            flags = subprocess.check_output(["make", "-s", "print-compile-contract", "SOURCE=" + save_unit["source"]], cwd=game, env=env, text=True).splitlines()[2]
             changed(save, lambda: None, "GCC296_CFLAGS=" + flags + " -DDEPENDENCY_TEST=1")
             make(save)
             def compiler_change():
@@ -83,7 +92,7 @@ class BuildIntegrationTests(unittest.TestCase):
                 with file.open("ab") as out: out.write(b"\0")
                 os.utime(file, ns=(previous.st_atime_ns, previous.st_mtime_ns))
             changed(save, compiler_change)
-            flash = "build/usa/src/lib/agb_flash/agb_flash.o"
+            flash = units["tu:src/lib/agb_flash/agb_flash"]["object"]
             before = mtime(flash); append("tools/agbcc/include/stddef.h", "\n/* unused header */\n"); make(flash)
             self.assertEqual(before, mtime(flash))
             changed(flash, lambda: append("tools/agbcc/include/stdint.h", "\n/* used header */\n"))
@@ -94,20 +103,20 @@ class BuildIntegrationTests(unittest.TestCase):
             changed(common, lambda: (game / original).unlink())
             changed(save, lambda: (game / save).unlink())
             if env.get("BUILD_BACKEND", "ninja") == "ninja":
-                changed(save, lambda: (game / "build/usa/src/save.s").unlink())
-            strings = "build/usa/data/strings/strings.o"
+                changed(save, lambda: (game / Path(save).with_suffix(".s")).unlink())
+            strings = units["tu:data/strings/strings"]["object"]
             changed(strings, lambda: (game / "build/usa/generated/strings/strings_00.bin").unlink())
             overlay = "build/usa/overlays/rom_780898/overlay.bin"
             changed(overlay, lambda: (game / overlay).unlink())
             changed(stage, lambda: (game / "build/usa/stage1.map").unlink())
-            empty = "asm/maps/common/common2/dependency_empty.s"
+            empty = common_unit["assembly_directory"] + "/dependency_empty.s"
             (game / empty).write_text("@ empty\n")
             inclusion = '\nINCLUDE_ASM("' + empty + '");\n'
-            append("src/maps/common/common2.c", inclusion); make(common)
-            src = game / "src/maps/common/common2.c"
+            append(common_unit["source"], inclusion); make(common)
+            src = game / common_unit["source"]
             src.write_text(src.read_text().replace(inclusion, "")); (game / empty).unlink(); make(common)
             # A failed C rebuild removes the old object, and then repairs cleanly.
-            src = game / "src/save.c"; before_source = src.read_bytes()
+            src = game / save_unit["source"]; before_source = src.read_bytes()
             src.write_bytes(before_source + b"\ninvalid C input\n"); make(save, success=False)
             self.assertFalse((game / save).exists()); src.write_bytes(before_source); make(save)
             # Fail after the linker has written a partial temporary output.

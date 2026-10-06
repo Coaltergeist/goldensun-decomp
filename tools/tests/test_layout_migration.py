@@ -140,4 +140,93 @@ class LayoutMigrationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'duplicate'):decomp_progress.validate_units(baseline,broken,inputs,root=self.root)
 
 
+    def empty_unit(self):
+        self.prepare()
+        config=json.loads((self.root/'config/modules.json').read_text())
+        config['units'].append(dict(id='tu:empty',source='src/empty.c',object='src/empty.o',
+            profile='gcc296',source_role='maintained',owner='empty',candidate_key='empty',
+            candidate_directory='src/non_matching/empty',assembly_directory='asm/empty'))
+        self.put('config/modules.json',json.dumps(config))
+        self.put('src/empty.c','void Empty(void) {}\n')
+        return {'src/non_matching/empty':'src/non_matching/modules/demo/empty',
+                'asm/empty':'asm/modules/demo/empty'}
+
+    def test_empty_directory_migration_routes_future_candidate_to_stable_owner(self):
+        directories=self.empty_unit()
+        result=migration.plan(self.root,{'src/empty.c':'src/modules/demo/empty.c'},directories=directories)
+        migration.apply(self.root,result)
+        owner=source_paths.candidate_owner(self.root,source='src/modules/demo/empty.c')
+        self.assertEqual((owner['id'],owner['candidate_key']),('tu:empty','empty'))
+        self.assertEqual(owner['candidate_directory'],directories['src/non_matching/empty'])
+        self.assertEqual(owner['assembly_directory'],directories['asm/empty'])
+        # Register a later draft through the new declaration, preserving its ID.
+        self.put(owner['source'],'INCLUDE_ASM("'+owner['assembly_directory']+'/Empty.s");\n')
+        self.put(owner['assembly_directory']+'/Empty.s','/* original Empty */')
+        self.snapshot['units'][owner['source']]=dict(object=owner['object'],functions={'rom:3':dict(name='Empty')})
+        self.snapshot['functions']['rom:3']='assembly'
+        self.put('progress_snapshot.json',json.dumps(self.snapshot))
+        self.put(owner['candidate_directory']+'/candidates.json',json.dumps(dict(schema=1,
+            source=owner['source'],functions={'Empty':dict(id='rom:3')})))
+        self.put(owner['candidate_directory']+'/Empty.c','void Empty(void) {}\n')
+        current=candidate_catalog.catalog(self.root)['empty']
+        self.assertEqual(current['functions']['Empty']['candidate'],owner['candidate_directory']+'/Empty.c')
+        self.assertEqual(current['functions']['Empty']['id'],'rom:3')
+        self.assertIn('void Empty(void)',candidate_catalog.compose(self.root,current,['Empty']))
+        self.assertFalse((self.root/'src/non_matching/empty').exists())
+
+    def test_explicit_directory_mapping_rejects_unowned_escaping_and_overlapping_paths(self):
+        directories=self.empty_unit();before=self.state()
+        bad_maps=[
+            {'missing':'asm/new'},
+            {'asm/empty':'../outside'},
+            {'asm/empty':'build/usa/new'},
+            {'asm/empty':'src/non_matching/new'},
+            {'src/non_matching/empty':'src/new'},
+            {'asm/empty':'asm/example'},
+            {'asm/empty':'asm/example/nested'},
+            {'src/non_matching/empty':'src/non_matching'},
+        ]
+        (self.root/'alias').symlink_to(self.root/'asm',target_is_directory=True)
+        bad_maps.append({'asm/empty':'alias/new'})
+        for bad in bad_maps:
+            with self.subTest(bad=bad),self.assertRaises(ValueError):
+                migration.plan(self.root,{},directories=bad)
+        self.assertEqual(self.state(),before)
+        (self.root/'alias').unlink()
+        # An unpopulated declaration still reserves the destination.
+        config=json.loads((self.root/'config/modules.json').read_text())
+        config['units'].append(dict(config['units'][-1],id='tu:other',source='src/other.c',
+            object='src/other.o',candidate_key='other',candidate_directory='src/non_matching/other',
+            assembly_directory='asm/other'))
+        self.put('src/other.c','void Other(void) {}')
+        self.put('config/modules.json',json.dumps(config))
+        with self.assertRaisesRegex(ValueError,'overlapping'):
+            migration.plan(self.root,{},directories={'asm/empty':'asm/other'})
+
+    def test_directory_move_refuses_partial_children_and_conflicting_destinations(self):
+        moves=self.prepare();before=self.state()
+        for dirs in ({'asm/example':'asm/conflict'}, {'src/non_matching/example':'src/non_matching/conflict'}):
+            with self.subTest(dirs=dirs),self.assertRaisesRegex(ValueError,'differs'):
+                migration.plan(self.root,moves,directories=dirs)
+        with self.assertRaisesRegex(ValueError,'incomplete'):
+            migration.plan(self.root,{},directories={'asm/example':'asm/new'})
+        self.put('asm/new/extra.s','unrelated')
+        complete={a:b.replace('modules/demo/example','new') for a,b in moves.items() if a.startswith('asm/')}
+        with self.assertRaisesRegex(ValueError,'existing contents'):
+            migration.plan(self.root,complete,directories={'asm/example':'asm/new'})
+        self.assertEqual({k:v for k,v in self.state().items() if k!='asm/new/extra.s'},before)
+
+    def test_directory_only_plan_is_read_only_and_forged_ownership_is_rejected(self):
+        directories=self.empty_unit();before=self.state()
+        result=migration.plan(self.root,{},directories=directories)
+        self.assertEqual(self.state(),before)
+        broken=copy.deepcopy(result);broken['directories']['asm/empty']='asm/different'
+        with self.assertRaisesRegex(ValueError,'differs'):
+            migration.apply(self.root,broken)
+        self.assertEqual(self.state(),before)
+        migration.apply(self.root,result)
+        owner=source_paths.candidate_owner(self.root,source='src/empty.c')
+        self.assertEqual(owner['assembly_directory'],directories['asm/empty'])
+
+
 if __name__=='__main__':unittest.main()

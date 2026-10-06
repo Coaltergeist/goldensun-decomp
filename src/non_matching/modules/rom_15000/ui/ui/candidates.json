@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_15000/ui/ui.c",
+  "functions": {
+    "Func_80167ac": {
+      "id": "rom:080167ac",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_8019d0c": {
+      "id": "rom:08019d0c",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80173f4": {
+      "id": "rom:080173f4",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80170c4": {
+      "id": "rom:080170c4"
+    },
+    "Func_80198dc": {
+      "id": "rom:080198dc",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80173ac": {
+      "id": "rom:080173ac",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_8019908": {
+      "id": "rom:08019908",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_801908c": {
+      "id": "rom:0801908c"
+    }
+  }
+}

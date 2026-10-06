@@ -16,7 +16,8 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 
 The catalog owns current TU paths, profile assignments and module identities.
 The shared build graph supplies Make and Ninja; maintained linker scripts control
-link order. Maintained source paths are unchanged; generated products use build/.
+link order. Maintained sources follow ROM-module ownership; generated products
+use build/. See the repository layout in [README.md](../README.md).
 
 ## Schema 1
 
@@ -28,7 +29,7 @@ link order. Maintained source paths are unchanged; generated products use build/
   overlay address is the load region's start, not every shared object's address.
 - Each unit has a stable ID, current source/object paths, an owner, a compiler
   profile and a maintained/generated classification. Unit IDs retain their initial
-  spelling after future path changes; original function IDs remain separate.
+  spelling across path changes; original function IDs remain separate.
   `legacy_object` records the pre-isolation Make alias; it is not a current file.
   Host entries similarly retain `legacy_binary`.
 - The 439 linked objects include 297 C compilations and 142 assembly compilations.
@@ -55,7 +56,7 @@ installed target compiler, generated assembly, object or configured build tree:
 
 ~~~bash
 set -o pipefail
-python3 -B tools/build_config.py query unit src/math/vector.c 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query unit src/core/rom_1b70/math/vector.c 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query unit asm/maps/common/common2.o 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query profile tu:src/battle_anim/moves/gaia 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query commands src/lib/m4a/m4a.c 2>&1 | tee output-query.txt
@@ -69,7 +70,7 @@ Module/overlay queries return their object and artifact paths. Command output is
 ordered argument arrays plus structured postprocessing, not a shell script.
 Unknown or reference-only sources fail instead of inheriting a default profile.
 
-`make -s --no-print-directory print-compile-contract SOURCE=src/math/vector.c`
+`make -s --no-print-directory print-compile-contract SOURCE=src/core/rom_1b70/math/vector.c`
 remains the six-line target-C compatibility interface: family, GCC driver, GCC
 flags, old_agbcc path, host-preprocessor flags, old_agbcc flags. Unused family
 lines retain their former values. `print-build-settings` emits resolved variable
@@ -116,7 +117,7 @@ Do not edit a historical fingerprint to make an old reference appear current.
 
 | Location | Contents |
 | --- | --- |
-| build/usa/src, asm, data, exports | Target objects, .s/.i intermediates and dependency files |
+| build/usa/obj | Target objects, .s/.i intermediates and dependency files, grouped by catalog ownership |
 | build/usa/overlays | Overlay ELF/bin/lz/map outputs |
 | build/usa/reference | Extracted originals and strings.txt |
 | build/usa/generated/strings | Packed strings and generated strings.s |
@@ -134,7 +135,7 @@ catalog objects. Overlay -R symbol inputs must remain after -T script inputs.
 Ordinary clean removes the declared files, then empty directories. It validates
 paths before deletion and rejects symlinks and tracked outputs. Unknown files,
 build/non_matching, build/permuter, installed compilers, references and verification
-history survive. Compiler output m4a.s is generated under build/usa/src/lib/m4a;
+history survive. Compiler output m4a.s is generated under build/usa/obj/src/lib/m4a;
 the maintained src/lib/m4a/m4a0.s remains source. New handwritten .s files are no
 longer hidden by broad ignore rules.
 
@@ -186,8 +187,12 @@ source prefix. Original function IDs include their ROM/overlay/common domain.
 Original disassembly paths in original_functions.json are immutable evidence.
 
 `tools/migrate_layout.py` separates read-only planning from journaled application.
-Supply JSON with `moves` (old/new maintained paths) and optional `objects`
-(old/new build object paths). Store plans in an ignored evidence directory.
+Supply JSON with `moves` (old/new maintained files), optional `objects`
+(old/new build object paths) and optional `directories` (old/new catalog-owned
+candidate and assembly directories). Declare empty directories explicitly so
+future candidates use the new owner location. Directory declarations do not
+recursively move files: include every existing child in `moves`, preserving its
+relative name. Store plans in an ignored evidence directory.
 
 ~~~bash
 set -o pipefail

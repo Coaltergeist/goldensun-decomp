@@ -55,7 +55,7 @@ struct FlashChipSetup {
     struct FlashType type;
 };
 
-// Globals shared across the split TUs (pinned to fixed EWRAM in wram.sym).
+// Globals shared across the split TUs (pinned to fixed EWRAM in linker/symbols/wram.sym).
 extern const struct FlashType *gFlash;
 extern u16 gFlashNumRemainingBytes;
 extern u16 (*ProgramFlashSector)(u16, void *);

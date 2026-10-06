@@ -52,7 +52,7 @@ def substitutions(text, mapping):
     return pattern.sub(lambda m: mapping[m[0]], text)
 
 
-def relocate_config(data, mapping, objects):
+def relocate_config(data, mapping, objects, directories):
     data = copy.deepcopy(data)
     for u in data['units']:
         u['source'] = mapping.get(u['source'], u['source'])
@@ -66,7 +66,11 @@ def relocate_config(data, mapping, objects):
             destinations = {str(Path(b).parent) for a, b in children if Path(a).parent.as_posix() == old}
             if len(destinations) > 1:
                 raise ValueError('split owner directory: ' + old)
-            if destinations:
+            if old in directories:
+                if destinations and destinations != {directories[old]}:
+                    raise ValueError('directory differs from file destinations: ' + old)
+                u[key] = directories[old]
+            elif destinations:
                 u[key] = destinations.pop()
     for row in data.get('reference_sources', []):
         row['path'] = mapping.get(row['path'], row['path'])
@@ -79,11 +83,67 @@ def relocate_config(data, mapping, objects):
     return data
 
 
-def plan(root, moves, objects=None):
+def validate_directories(root, config, updated, mapping, directories, before):
+    """Check explicit ownership, including directories with no current files."""
+    owners = {}
+    for unit in config['units']:
+        for field in ('candidate_directory', 'assembly_directory'):
+            if field in unit:
+                old = unit[field]
+                if old in owners:
+                    raise ValueError('ambiguous directory owner: ' + old)
+                owners[old] = (unit['id'], field)
+    for old, new in directories.items():
+        paths.local(root, old); paths.local(root, new)
+        if old not in owners:
+            raise ValueError('unknown directory owner: ' + old)
+    final = []
+    for unit in updated['units']:
+        for field in ('candidate_directory', 'assembly_directory'):
+            if field not in unit:
+                continue
+            new = unit[field]
+            dest = paths.local(root, new)
+            if new == '.' or new.split('/')[0] in ('build', '.git', '.progress', '.diff-baselines'):
+                raise ValueError('directory destination is generated or reserved: ' + new)
+            if dest.exists() and not dest.is_dir():
+                raise ValueError('directory destination is a file: ' + new)
+            if field == 'candidate_directory':
+                if not Path(new).is_relative_to(paths.candidate_root(root)) or new == paths.candidate_root(root):
+                    raise ValueError('candidate directory crosses production boundary: ' + new)
+            elif paths.parked(root, new):
+                raise ValueError('assembly directory enters parked candidates: ' + new)
+            for other in final:
+                if Path(new).is_relative_to(other) or Path(other).is_relative_to(new):
+                    raise ValueError('overlapping final directory owners: ' + new)
+            final.append(new)
+    current = {u['id']: u for u in config['units']}
+    for unit in updated['units']:
+        for field in ('candidate_directory', 'assembly_directory'):
+            if field not in unit:
+                continue
+            old, new = current[unit['id']][field], unit[field]
+            if old == new:
+                continue
+            # Renames operate on files, never recursively on a directory. Require
+            # its complete maintained contents to retain their relative names.
+            for name in before:
+                if name.startswith(old + '/'):
+                    expected = new + name[len(old):]
+                    if mapping.get(name, name) != expected:
+                        raise ValueError('incomplete directory move: ' + old)
+                if name.startswith(new + '/') and not name.startswith(old + '/'):
+                    raise ValueError('directory destination has existing contents: ' + new)
+
+
+def plan(root, moves, objects=None, directories=None):
     root = Path(root).resolve()
     before = inventory(root)
     objects = objects or {}
-    if not isinstance(moves, dict) or not moves:
+    directories = directories or {}
+    if not all(isinstance(value, dict) for value in (moves, objects, directories)):
+        raise ValueError('explicit old/new path mappings must be dictionaries')
+    if not moves and not objects and not directories:
         raise ValueError('a nonempty explicit old/new path mapping is required')
     mapping = {a: b for a, b in moves.items() if a != b}
     for a, b in mapping.items():
@@ -112,7 +172,8 @@ def plan(root, moves, objects=None):
         paths.local(root, a); paths.local(root, b)
         if not b.startswith('build/usa/') or not b.endswith('.o'):
             raise ValueError('object destination outside owned output root')
-    new_config = relocate_config(config, mapping, objects)
+    new_config = relocate_config(config, mapping, objects, directories)
+    validate_directories(root, config, new_config, mapping, directories, before)
     outputs = [u['object'] for u in new_config['units']]
     if len(outputs) != len(set(outputs)):
         raise ValueError('duplicate final object destination')
@@ -175,7 +236,7 @@ def plan(root, moves, objects=None):
     if inventory(root) != before:
         raise ValueError('concurrent modification during planning')
     return dict(schema=1, kind='catalog-layout-migration', root=str(root), inventory=before,
-                moves=mapping, objects=objects, candidates=candidates, writes=writes,
+                moves=mapping, objects=objects, directories=directories, candidates=candidates, writes=writes,
                 historical_inputs={n: before[n] for n in IMMUTABLE},
                 requires_fresh_verification=['progress_snapshot.json','candidate_scores.json','report.json','reference-baseline'],
                 private_history='Use the private read-only history adapter before preparing any future queue.')
@@ -188,7 +249,7 @@ def apply(root, proposal):
     with exclusive(root), interruptible():
         if inventory(root) != proposal['inventory']:
             raise ValueError('stale migration inventory; plan again')
-        if plan(root, proposal['moves'], proposal['objects']) != proposal:
+        if plan(root, proposal['moves'], proposal['objects'], proposal.get('directories')) != proposal:
             raise ValueError('migration plan differs from current deterministic plan')
         changes = {}
         for row in proposal['writes'].values():
@@ -230,7 +291,7 @@ def main():
     args = parser.parse_args()
     if args.command == 'plan':
         config = json.loads(args.mapping.read_text())
-        result = plan(args.root, config['moves'], config.get('objects'))
+        result = plan(args.root, config['moves'], config.get('objects'), config.get('directories'))
         # Use an ignored evidence directory; never overwrite an existing plan.
         with args.output.open('x') as out:
             json.dump(result,out,indent=2);out.write('\n')

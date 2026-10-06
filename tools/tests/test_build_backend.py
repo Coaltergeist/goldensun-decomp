@@ -14,6 +14,7 @@ sys.path.insert(0, str(TOOLS))
 import build_config
 import build_deps
 import build_graph
+import build_paths
 import build_verify
 import configure_build as ninja
 from build_actions import clean
@@ -25,8 +26,11 @@ class BackendTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         for name in ("Makefile", *build_config.CONFIG_FILES, *build_config.IMPLEMENTATION):
             self.put(name, (TOOLS.parent / name).read_text())
-        for f in [*TOOLS.parent.glob("*.ld"), *TOOLS.parent.glob("*.sym"), *TOOLS.parent.glob("overlays/*/overlay.ld")]:
-            self.put(f.relative_to(TOOLS.parent).as_posix(), f.read_text())
+        for script in build_paths.link_targets(TOOLS.parent).values():
+            for name in build_deps.linker_dependencies(script, root=TOOLS.parent):
+                f = TOOLS.parent / name
+                if f.is_file() and f.suffix in (".ld", ".sym"):
+                    self.put(name, f.read_text())
 
     def put(self, name, text):
         p = self.root / name; p.parent.mkdir(parents=True, exist_ok=True); p.write_text(text); return p
@@ -46,7 +50,8 @@ class BackendTests(unittest.TestCase):
         self.assertEqual(text.count("rule action_"), text.count("  pool = serial"))
         self.assertIn("builddir = build/usa", text)
         self.assertIn("build/usa/generated/strings/strings_00.bin", text)
-        self.assertIn(" | build/usa/src/lib/m4a/m4a.d build/usa/src/lib/m4a/m4a.s", text)
+        obj = Path(build_paths.unit(self.root, "tu:src/lib/m4a/m4a")["object"])
+        self.assertIn(" | " + str(obj.with_suffix(".d")) + " " + str(obj.with_suffix(".s")), text)
         link = next(e for e in build_graph.graph(self.root) if e.outputs[0] == "build/usa/overlays/rom_780898/overlay.elf")
         self.assertEqual(link.outputs[1], "build/usa/overlays/rom_780898/overlay.map")
         self.assertIn("build/usa/stage1.o", link.inputs)

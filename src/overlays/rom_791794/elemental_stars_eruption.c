@@ -1,0 +1,300 @@
+/* rom_791794 (overlay file 897): consolidated TU — elemental_stars_eruption map overlay. */
+
+#include "nonmatching.h"
+#include "api.h"
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/exports.s");
+
+extern unsigned char gOvl_0200b6d4[];
+
+unsigned int ElementalStarsEruption_GetEntrances(void) {
+    return (unsigned int)gOvl_0200b6d4;
+}
+
+unsigned int ElementalStarsEruption_GetSpecialExits(void) {
+    return 0;
+}
+
+extern unsigned char gOvl_0200b704[];
+
+unsigned int ElementalStarsEruption_GetExits(void) {
+    return (unsigned int)gOvl_0200b704;
+}
+extern unsigned char gOvl_0200b710[];
+
+unsigned int ElementalStarsEruption_GetActors(void) {
+    return (unsigned int)gOvl_0200b710;
+}
+extern unsigned char gOvl_0200b998[];
+
+unsigned int ElementalStarsEruption_GetEvents(void) {
+    return (unsigned int)gOvl_0200b998;
+}
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_2008054.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_2008e30.s");
+
+void OvlFunc_897_2008f28(void) {}
+void OvlFunc_897_2008f2c(void) {}
+
+typedef struct { unsigned char _bytes[704]; } GlobalState;
+extern GlobalState gState;
+extern int OvlFunc_897_2008054(void);
+
+int ElementalStarsEruption_MapInit(void) {
+    unsigned int r3;
+    unsigned int r2;
+
+    r3 = (unsigned int)&gState;
+    r2 = 0xe1;
+    r2 <<= 1;
+    r3 += r2;
+    r2 = 0;
+    if (*(short *)((char *)r3 + r2) == 0xa) {
+        __StartEarthquake();
+        OvlFunc_897_2008054();
+    }
+    return 0;
+}
+
+unsigned int OvlFunc_897_2008f54(unsigned int arg0) {
+    unsigned short val;
+    unsigned int ptr;
+
+    val = *((unsigned short *)((char *)arg0 + 6));
+    ptr = *((unsigned int *)((char *)arg0 + 0x50));
+    val += 0x4000;
+    *((unsigned short *)((char *)ptr + 0x1e)) = val;
+    return 1;
+}
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_2008f64.s");
+
+extern unsigned char L3b68[] __asm__(".Lm897_3b68");
+extern unsigned char L3b00[] __asm__(".Lm897_3b00");
+extern unsigned char L3b6c[] __asm__(".Lm897_3b6c");
+extern unsigned char L3b70[] __asm__(".Lm897_3b70");
+extern unsigned char L3ac0[] __asm__(".Lm897_3ac0");
+
+void OvlFunc_897_2009084(void)
+{
+    unsigned int *r2;
+    unsigned int *r3;
+    unsigned int cnt;
+    unsigned int r1;
+
+    *(unsigned int *)L3b68 = 0x3f;
+    *(unsigned int *)L3b00 = 0;
+    *(unsigned int *)L3b6c = 0;
+    *(unsigned int *)L3b70 = 0x78;
+    r2 = (unsigned int *)L3ac0;
+    cnt = 0;
+    r1 = 0;
+    do {
+        cnt += 1;
+        *r2++ = r1;
+    } while (cnt <= 0xf);
+}
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_20090c4.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200935c.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_2009410.s");
+
+void OvlFunc_897_200a820(unsigned int arg0)
+{
+  unsigned char *r6;
+  long long new_var2;
+  int new_var;
+  unsigned short v;
+  new_var2 = 0xfa << 15;
+  r6 = __MapActor_GetActor(arg0);
+  new_var = new_var2;
+  __MapActor_SetPos(arg0, 0xe8 << 16, new_var);
+  v = 0x80 << 7;
+  *((unsigned short *) (r6 + 6)) = v;
+  __Func_8092b08(arg0, 3);
+}
+
+void OvlFunc_897_200a84c(int arg0)
+{
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(8, 0x2f, 0x40, 7, 1, 1);
+        API_CopyMapTiles(7, 0x30, 0x3f, 8, 2, 1);
+        API_CopyMapTiles(7, 0x31, 0x3f, 9, 2, 1);
+    } else {
+        API_CopyMapTiles(0x38, 0, 0x40, 7, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 8, 1, 1);
+        API_CopyMapTiles(0x38, 0, 0x3f, 9, 2, 1);
+        API_CopyMapTiles(0x3a, 0x19, 0x40, 8, 1, 1);
+    }
+    __Func_800fe9c();
+}
+
+void OvlFunc_897_200a8dc(int arg0) {
+    extern void __Func_800fe9c(void);
+
+    if (arg0 != 0) {
+        API_CopyMapTiles(9, 0x2d, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0xb, 0x2e, 0x43, 6, 1, 2);
+    } else {
+        API_CopyMapTiles(0x59, 2, 0x41, 5, 2, 2);
+        API_CopyMapTiles(0x66, 0x20, 0x43, 6, 1, 2);
+    }
+    __Func_800fe9c();
+}
+
+extern unsigned char iwram_3001e40[];
+extern void OvlFunc_897_200a84c(int arg0);
+extern int _umodsi3_RAM(int a, int b);
+
+void OvlFunc_897_200a93c(void)
+{
+    if ((*(unsigned int *)iwram_3001e40 & 1) == 0) {
+        if ((unsigned int)_umodsi3_RAM(__Random(), 100) > 0x32) {
+            OvlFunc_897_200a84c(1);
+        } else {
+            OvlFunc_897_200a84c(0);
+        }
+    }
+}
+
+extern void OvlFunc_897_200a8dc(int arg0);
+
+void OvlFunc_897_200a970(void)
+{
+    if ((*(unsigned int *)iwram_3001e40 & 1) == 0) {
+        if ((unsigned int)_umodsi3_RAM(__Random(), 100) > 0x32) {
+            OvlFunc_897_200a8dc(1);
+        } else {
+            OvlFunc_897_200a8dc(0);
+        }
+    }
+}
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200a9a4.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200aba0.s");
+extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
+extern void __Func_8091254(unsigned int arg0);
+unsigned int *__Func_8093554(void);
+void __Func_80933f8(int, int, int, int);
+void __WaitFrames(int);
+void __Func_800fe9c(void);
+
+void OvlFunc_897_200ac1c(int arg0, int arg1) {
+    int *r5;
+
+    r5 = (int *)__Func_8093554();
+    arg1 <<= 16;
+    arg0 <<= 16;
+    __Func_80933f8(arg0, -1, arg1, 1);
+    __Func_8091200(0, 0);
+    __Func_8091254(0x14);
+    __WaitFrames(0x28);
+    *(int *)((char *)r5 + 8) = arg0;
+    *(int *)((char *)r5 + 0x10) = arg1;
+    *(int *)((char *)r5 + 0x38) = 0x80 << 24;
+    *(int *)((char *)r5 + 0x40) = 0x80 << 24;
+    *(int *)((char *)r5 + 0x24) = 0;
+    *(int *)((char *)r5 + 0x2c) = 0;
+    __WaitFrames(5);
+    __Func_800fe9c();
+    __WaitFrames(5);
+    __Func_8091200(0x80 << 9, 0);
+    __Func_8091254(0x14);
+    __WaitFrames(0x1e);
+}
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200ac9c.s");
+
+extern void __PlaySound(unsigned int arg0);
+extern void __CutsceneWait(unsigned int arg0);
+extern unsigned int iwram_3001e40__a2 __asm__("iwram_3001e40");
+extern void __Actor_SetColorswap(unsigned int a, unsigned int b);
+extern void OvlFunc_897_200aeb0(unsigned int a);
+
+void OvlFunc_897_200ad48(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
+    if (arg0 == 1) {
+        __PlaySound(0x9a << 1);
+        __Func_8091200(0x203a52, 1);
+    } else {
+        __PlaySound(0x121);
+        __Func_8091200(0x80 << 9, 1);
+    }
+    __Func_8091254(arg1);
+    if (arg2 != 0) {
+        __CutsceneWait(arg2);
+    }
+}
+void OvlFunc_897_200ad94(unsigned int arg0)
+{
+    if (iwram_3001e40__a2 & 2) {
+        __Actor_SetColorswap(arg0, 7);
+    } else {
+        __Actor_SetColorswap(arg0, 0);
+    }
+    if ((iwram_3001e40__a2 & 0xf) == 0) {
+        OvlFunc_897_200aeb0(arg0);
+    }
+}
+
+extern volatile unsigned int iwram_3001e40__a3 __asm__("iwram_3001e40");
+
+void OvlFunc_897_200add0(arg0) unsigned int arg0;
+{
+    if (iwram_3001e40__a3 & 1) {
+        __Actor_SetColorswap(arg0, _umodsi3_RAM(iwram_3001e40__a3 >> 1, 6));
+    }
+    if ((iwram_3001e40__a3 & 0xf) == 0) {
+        OvlFunc_897_200aeb0(arg0);
+    }
+}
+
+extern int __sin(int angle);
+
+void OvlFunc_897_200ae0c(unsigned char *actor)
+{
+    unsigned char *anchor;
+    short timer;
+    int s;
+
+    anchor = *(unsigned char **)(actor + 0x68);
+    timer = ++*(short *)(actor + 0x64);
+    if (timer > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        s = __sin(timer << 10);
+        *(int *)(actor + 0x18) = s;
+        *(int *)(actor + 0x1c) = s;
+        *(int *)(actor + 0x8) = *(int *)(anchor + 0x8);
+        *(int *)(actor + 0xc) += 0x10000;
+        *(int *)(actor + 0x10) = *(int *)(anchor + 0x10) + (0x10000 - s) * 5 + 0x80000;
+    }
+}
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200ae5c.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
+
+extern void __Func_8096fb0(int a, int b);
+
+void OvlFunc_897_200aff0(void) {
+    __Func_8096fb0(0x8c, 0);
+}
+
+extern void __Func_8097194(void);
+
+void OvlFunc_897_200b000(void) {
+    __Func_8097194();
+}
+
+extern void __MapActor_GetActor(int);
+
+void OvlFunc_897_200b00c(void) {
+    __MapActor_GetActor(0xf);
+    OvlFunc_897_200add0();
+}
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200b01c.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/OvlFunc_897_200b30c.s");
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/elemental_stars_eruption_data.s");
+
+INCLUDE_ASM("asm/overlays/rom_791794/elemental_stars_eruption/imports.s");

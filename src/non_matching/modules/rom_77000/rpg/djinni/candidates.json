@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_77000/rpg/djinni.c",
+  "functions": {
+    "Func_807a458": {
+      "id": "rom:0807a458"
+    }
+  }
+}

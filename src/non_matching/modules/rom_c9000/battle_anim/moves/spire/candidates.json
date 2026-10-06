@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/spire.c",
+  "functions": {
+    "Anim_Spire": {
+      "id": "rom:080e2538"
+    }
+  }
+}

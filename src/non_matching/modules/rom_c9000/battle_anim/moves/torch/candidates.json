@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_c9000/battle_anim/moves/torch.c",
+  "functions": {
+    "Anim_Torch": {
+      "id": "rom:080e6638"
+    }
+  }
+}

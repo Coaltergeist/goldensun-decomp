@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/modules/rom_b5000/battle_anim/cast.c",
+  "functions": {
+    "Task_BlitPreAnim": {
+      "id": "rom:080c1438"
+    }
+  }
+}
