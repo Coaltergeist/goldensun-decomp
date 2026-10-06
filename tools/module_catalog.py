@@ -8,6 +8,7 @@ import sys
 
 import build_config
 import build_paths
+import source_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED_SOURCES = {build_paths.STRINGS + "/strings.s": "string-pack"}
@@ -81,8 +82,7 @@ def read_script(root, name):
     return dict(includes=included, sections=sections)
 
 def scripts(root):
-    paths = ["stage1.ld", "goldensun.ld"]
-    paths += [p.relative_to(root).as_posix() for p in sorted((root / "overlays").glob("*/overlay.ld"))]
+    paths = list(build_paths.link_targets(root).values())
     return {name: read_script(root, name) for name in paths}
 
 def source_for(root, obj, entries=None):
@@ -100,13 +100,15 @@ def derive(root, catalog=None):
     graph = scripts(root)
     consumers = defaultdict(set)
     anchors = defaultdict(list)
+    targets = build_paths.link_targets(root)
+    overlay_scripts = {targets[p["elf"]]: identity for identity, p in build_paths.overlays(root).items()}
     for script, record in graph.items():
-        overlay = script.startswith("overlays/")
+        overlay = script in overlay_scripts
         for section in record["sections"]:
             name = section["name"]
             if name in {"/DISCARD/", ".fill"}:
                 continue
-            owner = "overlay:" + Path(script).parent.name if overlay else name
+            owner = overlay_scripts[script] if overlay else name
             anchors[owner].append(dict(script=script, section=name))
             for entry in section["inputs"]:
                 if entry["object"] != build_paths.STAGE1:
@@ -182,8 +184,9 @@ def validate(root, catalog):
     for row in catalog["reference_sources"]:
         if not local(root, row["path"]).is_file() or row["path"] in seen_sources:
             raise ValueError("invalid reference-only source: " + row["path"])
-    current_c = {p.relative_to(root).as_posix() for p in (root / "src").rglob("*.c")
-                 if not p.is_relative_to(root / "src/non_matching")}
+    roots = [n for n in source_paths.input_roots(root) if n not in ("config", "tools")]
+    current_c = {p.relative_to(root).as_posix() for base in roots for p in (root / base).rglob("*.c")
+                 if not source_paths.parked(root, p.relative_to(root).as_posix())}
     if current_c != {p for p in seen_sources if p.endswith(".c")} | {p for p in references if p.endswith(".c")}:
         raise ValueError("production C needs an active/reference classification")
     return graph

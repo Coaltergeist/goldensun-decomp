@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3754,
+  "input_count": 3756,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 3,
-  "source_fingerprint": "ca0b332b388c4fdc96376733c7de3175b88e39a917ce7d9568fe8809a99ad4f2",
+  "source_fingerprint": "25e35de80a5d7933c31a07a2e0098b3dfb797717970717533969f4f11fd8c28f",
   "units": {
     "asm/lib/ramlib.s": {
       "functions": {
@@ -42577,14 +42577,14 @@
       "build/usa/stage1.map": "26d060069ec3af06ab6a666676d09fcd5be3cfd41bd07e5720a3d39646fe2204"
     },
     "build_stamps": {
-      "arm-assembly.stamp": "f793c89623108f783f3cf43009c3ed8d8bd42b3cd47c5127ff5edf12e96f913f",
-      "binutils.stamp": "41cd65c1831c134bfeae4096182698fcec7f69d10ad25b7ed257a4ce695fda5c",
-      "gcc296-common2.stamp": "2fec8154bdf6a2b07f78463ac497d05012346969a5c9de5e956d8761c9510edd",
-      "gcc296-gaia.stamp": "f88d2e32c3d2b09f99330b9598e136229af8e3f3fcc89ce1ebca1da41fda385b",
-      "gcc296.stamp": "62ccedf1a56306764bc2b6960d973163a819b33adafef6754920d953df4f9d7f",
-      "host-c.stamp": "8e432bbd2edbbf338fb8f153ac2fa5b322b8f324ac3d96f5651b2d9051dd7ab3",
-      "old-agbcc-flash.stamp": "28d1e6080a905e04384c8dbf60437db24064cbf3772f1dbf4886804329893e09",
-      "old-agbcc-m4a.stamp": "a73ba4d151e61eb6245822d8721a521bb8b96a99e8d538b1f4f5422d7d30e777"
+      "arm-assembly.stamp": "f22d764e538dd9969a1c444dc2f399b087ac911d6f0e9e8729b3abe1cb62a319",
+      "binutils.stamp": "6db3890b9f37bfc3aee19866a87bde03c4ee7c2b73e497b6062837e6f4705394",
+      "gcc296-common2.stamp": "d084d42166d35fe0ad8245a611a50e9022fcdfc105dde2ba165a1ebbc78b0bfe",
+      "gcc296-gaia.stamp": "211ebc32cb909d94de959ad08b8e0daa29149d1d5e8b038a9049de076f5666c2",
+      "gcc296.stamp": "e33cffb8fc4a2a1caa249a8fe085bd41d7212d8ec330ef46af517984bf132ef2",
+      "host-c.stamp": "b52da571b89236ade2888afefd7d30d637dc95ba5db7d6541dcfbf6b2dcb62bc",
+      "old-agbcc-flash.stamp": "5e4b38cf7be7406330251fd171a8c47d004da805fc1cbe50cc5b47d1daffc98c",
+      "old-agbcc-m4a.stamp": "0874f69a7d86f286dea097300df7b250641f8869f40771ae0cda1a2df27675b3"
     },
     "gate": {
       "backend": "ninja",

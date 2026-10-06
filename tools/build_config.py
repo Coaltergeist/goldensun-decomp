@@ -11,10 +11,11 @@ import subprocess
 import sys
 
 import build_paths
+import source_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILES = ("config/modules.json", "config/compiler_profiles.json")
-IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py", "tools/configure_build.py", "tools/build.py", "tools/build_verify.py")
+IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py", "tools/configure_build.py", "tools/build.py", "tools/build_verify.py", "tools/source_paths.py")
 
 
 def read_json(path):
@@ -28,10 +29,12 @@ def read_json(path):
     return json.loads(Path(path).read_text(), object_pairs_hook=unique)
 
 
-def local_name(name, root=None):
+def local_name(name, root=None, *, candidate_prefix=None):
     if (not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9_./-]+", name)
             or Path(name).is_absolute() or ".." in Path(name).parts
-            or name.startswith("src/non_matching/")):
+            or "non_matching" in Path(name).parts
+            or root is not None and (Path(name).is_relative_to(candidate_prefix) if candidate_prefix is not None
+                                     else source_paths.parked(root, name))):
         raise ValueError("invalid production path: " + str(name))
     if root is not None:
         target = root / name
@@ -98,11 +101,12 @@ def load(root=ROOT, catalog=None):
                     type(post["text_alignment_power"]) is not int or not 0 <= post["text_alignment_power"] <= 4 or
                     type(post["fill"]) is not int or not 0 <= post["fill"] <= 255):
                 raise ValueError("invalid assembly postprocessing")
+    candidate_prefix = source_paths.candidate_root(root)
     units = [*catalog["units"], *data["host_units"]]
     by_id, sources, objects = {}, set(), set()
     for unit in units:
         for key in ("source", "object"):
-            local_name(unit[key], root)
+            local_name(unit[key], root, candidate_prefix=candidate_prefix)
         if unit["id"] in by_id or unit["source"] in sources or unit["object"] in objects:
             raise ValueError("duplicate TU identity/source/object")
         if unit["profile"] not in data["profiles"]:
@@ -111,7 +115,7 @@ def load(root=ROOT, catalog=None):
         if not unit["source"].endswith(".s" if family == "assembly" else ".c"):
             raise ValueError("profile source language differs: " + unit["id"])
         if family == "host":
-            local_name(unit["binary"], root)
+            local_name(unit["binary"], root, candidate_prefix=candidate_prefix)
         by_id[unit["id"]] = unit; sources.add(unit["source"]); objects.add(unit["object"])
     for identity, profile in data["required_unit_profiles"].items():
         if identity not in by_id or by_id[identity]["profile"] != profile:

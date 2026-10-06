@@ -47,7 +47,7 @@ def source_fingerprint():
 def linked_objects():
     # Retain the established reference scope: game-code/assembly objects only.
     return sorted(u["object"] for u in build_paths.catalog(ROOT)["units"]
-                  if u["source"].startswith(("src/", "asm/")))
+                  if u.get("baseline_scope", u["source"].startswith(("src/", "asm/"))))
 
 
 def create(output):

@@ -174,3 +174,38 @@ rewrite the catalog, update progress or prove byte equivalence. Changes to the
 validator fall under the existing tooling fingerprint/finalization policy.
 Configuration and build-helper changes require normal finalization before the
 public snapshot and candidate scores become fresh again.
+
+## Source paths and candidate migration
+
+The schema-1 `paths` record declares maintained input roots, the candidate root
+and linker scripts by build target. A C unit also records `candidate_key`,
+`candidate_directory` and `assembly_directory`; its stable key and TU ID survive
+renames. `baseline_scope` preserves the historical reference-object scope.
+Look up paths through `source_paths.py` / `build_paths.py`, never by replacing a
+source prefix. Original function IDs include their ROM/overlay/common domain.
+Original disassembly paths in original_functions.json are immutable evidence.
+
+`tools/migrate_layout.py` separates read-only planning from journaled application.
+Supply JSON with `moves` (old/new maintained paths) and optional `objects`
+(old/new build object paths). Store plans in an ignored evidence directory.
+
+~~~bash
+set -o pipefail
+python3 -B tools/migrate_layout.py plan --mapping .progress/layout-mapping.json --output .progress/layout-plan.json 2>&1 | tee .progress/layout-plan.log
+python3 -B tools/migrate_layout.py apply --plan .progress/layout-plan.json 2>&1 | tee .progress/layout-apply.log
+~~~
+
+Review candidate IDs, owners, hashes, context headers, companion requirements,
+author metadata and the complete write set before application. Both operations
+reject escapes, duplicate destinations and incomplete ownership. Application
+recomputes the plan and checks content, mode and timestamp preimages under the
+finalizer lock. Its transaction backs up changed inputs, preserves concurrent
+edits on rollback and records recovery state under .progress/layout-*.
+
+The planner handles literal repository path references. Review relative includes,
+assembly directives and any external consumers before accepting a new layout.
+Candidate bodies/context headers and original function evidence must retain their
+contents. A relocated snapshot describes current ownership but deliberately keeps
+its old fingerprint: run the normal finalizer to produce fresh ROM/all-overlay,
+reference, candidate-score and report verification. Historical run records and
+review approvals must never be rewritten to satisfy a freshness check.

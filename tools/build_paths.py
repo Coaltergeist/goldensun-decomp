@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import re
+import source_paths
 
 TARGET = "build/usa"
 HOST = "build/host"
@@ -19,7 +20,7 @@ STRING_STAMP = STRINGS + "/complete.stamp"
 
 
 def catalog(root):
-    return json.loads((root / "config/modules.json").read_text())
+    return source_paths.data(root)
 
 
 def units(root):
@@ -53,6 +54,14 @@ def overlays(root):
 
 
 def link_targets(root):
+    explicit = source_paths.layout(root).get("link_targets")
+    if explicit is not None:
+        for output, script in explicit.items():
+            source_paths.local(root, output); source_paths.local(root, script)
+        expected = {STAGE1, ELF, *(p["elf"] for p in overlays(root).values())}
+        if set(explicit) != expected:
+            raise ValueError("link target coverage differs from modules")
+        return explicit
     return {STAGE1: "stage1.ld", ELF: "goldensun.ld", **{
         paths["elf"]: "overlays/" + identity.split(":")[1] + "/overlay.ld"
         for identity, paths in overlays(root).items()}}

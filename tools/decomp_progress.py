@@ -24,6 +24,7 @@ import tempfile
 from c_source import parse_funcs
 import build_config
 import build_paths
+import source_paths
 import build_verify
 from progress import linked_sources, symbol_records
 
@@ -79,10 +80,10 @@ def git(root, *args):
 def production_candidate_errors(root):
     errors = []
     token = re.compile(r'/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"', re.S)
-    for base in ("src", "include"):
+    for base in source_paths.input_roots(root):
         for path in (root / base).rglob("*"):
             name = path.relative_to(root).as_posix()
-            if path.suffix not in (".c", ".h") or name.startswith("src/non_matching/"):
+            if path.suffix not in (".c", ".h") or source_paths.parked(root, name):
                 continue
             text = path.read_text().replace("\\\n", "")
             text = token.sub(lambda m: re.sub(r"[^\n]", " ", m[0])
@@ -95,11 +96,12 @@ def production_candidate_errors(root):
                 ref = include[1]
                 targets = (path.parent / ref, root / "include" / ref, root / ref)
                 if "non_matching" in Path(ref).parts or any(
-                        t.resolve().is_relative_to((root / "src/non_matching").resolve())
+                        t.resolve().is_relative_to((root / source_paths.candidate_root(root)).resolve())
                         for t in targets):
                     errors.append("production includes parked candidate: " + name)
-    for path in list(root.glob("*.ld")) + list((root / "overlays").glob("*/overlay.ld")):
-        if "non_matching" in path.read_text():
+    scripts = {p for base in source_paths.input_roots(root) for p in (root / base).rglob("*.ld")} | set(root.glob("*.ld"))
+    for path in scripts:
+        if "non_matching" in path.read_text() or source_paths.candidate_root(root) + "/" in path.read_text():
             errors.append("linker references parked candidate: " + path.relative_to(root).as_posix())
     return errors
 
@@ -110,14 +112,16 @@ def source_inputs(root):
         raise ValueError("; ".join(errors))
     names = git(root, "ls-files", "-z", "--cached", "--others", "--exclude-standard")
     result = {}
+    roots = source_paths.input_roots(root) + ["tools"]
+    explicit = {u["source"] for u in source_paths.data(root).get("units", []) if u.get("source_role") == "maintained"}
     for raw in sorted(set(names.split(b"\0")) - {b""}):
         name = os.fsdecode(raw)
         path = PurePosixPath(name)
-        if not (path.parts[0] in INPUT_DIRS or name in INPUT_FILES
+        if not (any(name.startswith(base + "/") for base in roots) or name in explicit or name in INPUT_FILES
                 or len(path.parts) == 1 and path.suffix in {".ld", ".sym"}):
             continue
         # Tests and prose don't affect the compiled game or accounting implementation.
-        if name.startswith(("tools/tests/", "src/non_matching/")) or path.suffix.lower() == ".md":
+        if (name.startswith("tools/tests/") or source_paths.parked(root, name)) or path.suffix.lower() == ".md":
             continue
         p = root / name
         p.resolve().relative_to(root.resolve())
@@ -131,28 +135,22 @@ def source_inputs(root):
         result[name] = digest(p)
     # Raw INCLUDE_ASM files are sometimes gitignored until the maintainer force-adds
     # them. Include their content even before staging; a missing checkout must fail.
-    queue = [name for name in result if name.startswith("src/")
-             and name.endswith(".c") and not name.startswith("src/non_matching/")]
-    # Walk includes only in assembly actually linked (the tree also preserves
-    # historical library references with upstream-only include paths).
-    for name in result:
-        if not name.endswith(".ld"):
-            continue
-        for obj in re.findall(r'\b((?:src|asm)/[A-Za-z0-9_/]+)\.o\b', (root / name).read_text()):
-            source = ("src/" + obj[4:] if obj.startswith("asm/") else obj) + ".c"
-            assembly = obj + ".s"
-            if not (root / source).is_file() and assembly in result:
-                queue.append(assembly)
+    queue = sorted(explicit) if explicit else [name for name in result if name.endswith(".c") and not name.startswith("tools/")]
+    for name in queue:
+        path = source_paths.local(root, name)
+        if not path.is_file():
+            raise ValueError("missing maintained source: " + name)
+        result[name] = digest(path)
     seen = set()
     while queue:
         name = queue.pop()
-        if name.startswith("src/non_matching/"):
+        if source_paths.parked(root, name):
             raise ValueError("production includes parked candidate: " + name)
         if name in seen:
             continue
         seen.add(name)
         path = root / name
-        if path.suffix == ".c" and name.startswith("src/"):
+        if path.suffix == ".c":
             refs = re.findall(r'^\s*INCLUDE_ASM(?:_SECTION)?\("([^"]+)"', path.read_text(), re.M)
         elif path.suffix in {".s", ".inc"}:
             refs = re.findall(r'^\s*\.include\s+"([^"]+)"', path.read_text(), re.M)
@@ -367,7 +365,7 @@ def map_sections(text):
 
 def object_source(root, obj):
     source = build_paths.unit(root, obj)["source"]
-    if not (root / source).is_file() or source.startswith("src/non_matching/"):
+    if not (root / source).is_file() or source_paths.parked(root, source):
         raise ValueError("missing production TU source: " + source)
     return source
 
@@ -434,24 +432,31 @@ def capture_units(root, manifest, domains, definitions):
     return units, artifacts
 
 
-def validate_units(baseline, snapshot, inputs):
+def validate_units(baseline, snapshot, inputs, root=None):
     units = snapshot.get("units")
     if not isinstance(units, dict) or not units:
         raise ValueError("snapshot has no TU inventory; regenerate the snapshot")
     seen, objects = set(), set()
     for source, unit in units.items():
         if (source not in inputs or PurePosixPath(source).suffix not in {".c", ".s"}
-                or source.startswith("src/non_matching/")):
+                or (source_paths.parked(root, source) if root is not None else "non_matching" in PurePosixPath(source).parts)):
             raise ValueError("TU source is not a fingerprinted production input: " + source)
         obj = unit["object"]
         path = PurePosixPath(obj)
         if (path.is_absolute() or ".." in path.parts or path.suffix != ".o"
                 or obj in objects):
             raise ValueError("invalid/duplicate TU object: " + obj)
-        expected = {source[:-2] + ".o"}
-        if source.startswith("src/") and source.endswith(".c"):
-            expected.add("asm/" + source[4:-2] + ".o")
-        expected |= {build_paths.TARGET + "/" + name for name in expected}
+        if root is not None:
+            current = build_paths.unit(root, source)
+            expected = {current["object"]}
+            if current["source"] != source or current.get("source_role") != "maintained":
+                raise ValueError("TU is not a current maintained source: " + source)
+        else:
+            # Historical schema-2 snapshots predate the ownership catalog.
+            expected = {source[:-2] + ".o"}
+            if source.startswith("src/") and source.endswith(".c"):
+                expected.add("asm/" + source[4:-2] + ".o")
+            expected |= {build_paths.TARGET + "/" + name for name in expected}
         if obj not in expected:
             raise ValueError("TU object/source mismatch: " + source)
         objects.add(obj)
@@ -517,7 +522,7 @@ def capture(root, output):
     definitions = {}
     sources = sorted(set().union(*allowed.values()))
     for source in sources:
-        if (root / source).is_file() and not source.startswith("src/non_matching/"):
+        if (root / source).is_file() and not source_paths.parked(root, source):
             definitions[source] = active_definitions(root, source)
     registered = {tuple(line.split("#", 1)[0].split()) for line in
                   (root / "fakematch.txt").read_text().splitlines() if line.split("#", 1)[0].strip()}
@@ -540,12 +545,12 @@ def capture(root, output):
                                       artifacts=artifacts, build_stamps=stamps,
                                       gate=build_verify.receipt(root),
                                       toolchain=tools_before))
-    validate_snapshot(manifest, baseline, snapshot, before, digest(root / BASELINE))
+    validate_snapshot(manifest, baseline, snapshot, before, digest(root / BASELINE), root=root)
     write_json(output, snapshot)
     print("Snapshot:", output, "Statuses:", dict(Counter(statuses.values())), flush=True)
 
 
-def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
+def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha, root=None):
     validate_baseline(manifest, baseline)
     if snapshot.get("schema") not in (2, 3) or snapshot.get("policy") != POLICY:
         raise ValueError("unsupported snapshot schema/policy")
@@ -557,7 +562,7 @@ def validate_snapshot(manifest, baseline, snapshot, inputs, baseline_sha):
     statuses = snapshot.get("functions", {})
     if set(statuses) != set(baseline["sizes"]) or not set(statuses.values()) <= STATUSES:
         raise ValueError("snapshot must classify every original identity exactly once")
-    validate_units(baseline, snapshot, inputs)
+    validate_units(baseline, snapshot, inputs, root if root is not None else ROOT if snapshot["schema"] == 3 else None)
     verification = snapshot.get("verification", {})
     overlays = verification.get("overlays", {})
     expected_overlays = {f["domain"].split(":")[1] for f in manifest["functions"]
@@ -625,7 +630,7 @@ def unit_report(baseline, snapshot, scores=None):
 def export(root, output=None):
     manifest, baseline = metadata(root)
     snapshot = load(root / SNAPSHOT)
-    validate_snapshot(manifest, baseline, snapshot, source_inputs(root), digest(root / BASELINE))
+    validate_snapshot(manifest, baseline, snapshot, source_inputs(root), digest(root / BASELINE), root=root)
     from candidate_scores import read_scores
     report = unit_report(baseline, snapshot, read_scores(root, snapshot))
     if output:

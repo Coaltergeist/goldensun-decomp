@@ -216,6 +216,10 @@ const char *description = ".size is not assembly here";
 
 
     def test_repeated_overlay_name_is_scoped_to_original_identity(self):
+        config = json.loads((self.root / "config/modules.json").read_text())
+        config["units"].append(dict(id="tu:overlay", source="src/overlay.c", object="src/overlay.o",
+            source_role="maintained", profile="gcc296", owner="overlay"))
+        self.put("config/modules.json", json.dumps(config))
         self.put("src/overlay.c", 'INCLUDE_ASM("asm/overlay/One.s");')
         self.put("asm/overlay/One.s", "/* another overlay */")
         self.snapshot["functions"]["overlay:other:1"] = "assembly"

@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 import sys
 import tempfile
+import source_paths
 
 from candidate_catalog import PARKED, catalog, local, markdown_index, production_candidate_errors
 from decomp_progress import load
@@ -21,7 +22,7 @@ def plan(root):
         raise ValueError("; ".join(issues))
     snapshot = load(root / "progress_snapshot.json")
     manifests, originals = {}, {}
-    for path in sorted((root / PARKED).rglob("candidates.json")):
+    for path in sorted((root / source_paths.candidate_root(root)).rglob("candidates.json")):
         name = path.relative_to(root).as_posix()
         meta = load(local(root, name))
         if (not isinstance(meta, dict) or meta.get("schema") != 1
@@ -30,11 +31,11 @@ def plan(root):
         originals[name] = copy.deepcopy(meta)
         manifests[name] = meta
 
-    for path in sorted((root / PARKED).rglob("*.c")):
+    for path in sorted((root / source_paths.candidate_root(root)).rglob("*.c")):
         name = path.relative_to(root).as_posix()
         local(root, name)
-        tu = path.parent.relative_to(root / PARKED).as_posix()
-        source = "src/" + tu + ".c"
+        owner = source_paths.candidate_owner(root, directory=path.parent.relative_to(root).as_posix())
+        source = owner["source"]
         unit = snapshot["units"].get(source)
         if unit is None:
             raise ValueError("no production TU for " + name + ": " + source)
@@ -56,7 +57,7 @@ def plan(root):
     units = catalog(root, manifests)
     changes = {name: json.dumps(meta, indent=2) + "\n"
                for name, meta in sorted(manifests.items()) if originals.get(name) != meta}
-    index = PARKED + "INDEX.md"
+    index = source_paths.candidate_root(root) + "/INDEX.md"
     text = markdown_index(units)
     path = local(root, index)
     if not path.is_file() or path.read_text() != text:
@@ -72,7 +73,7 @@ def retirement_plan(root, snapshot):
     """
     root = Path(root)
     manifests, changes, retired, identities = {}, {}, [], set()
-    for path in sorted((root / PARKED).rglob("candidates.json")):
+    for path in sorted((root / source_paths.candidate_root(root)).rglob("candidates.json")):
         manifest = path.relative_to(root).as_posix()
         original = load(local(root, manifest))
         meta = copy.deepcopy(original)
@@ -80,7 +81,7 @@ def retirement_plan(root, snapshot):
                 or not isinstance(meta.get("functions"), dict) or not meta["functions"]):
             raise ValueError("invalid candidate manifest: " + manifest)
         directory = path.parent.relative_to(root).as_posix()
-        source = "src/" + directory[len(PARKED):] + ".c"
+        source = source_paths.candidate_owner(root, directory=directory)["source"]
         unit = snapshot["units"].get(source)
         if meta.get("source") != source or unit is None:
             raise ValueError("candidate owner changed or missing: " + manifest)
@@ -120,7 +121,7 @@ def retirement_plan(root, snapshot):
             changes[manifest] = None
     units = catalog(root, manifests, snapshot=snapshot,
                     retired=[row["candidate"] for row in retired])
-    index = PARKED + "INDEX.md"
+    index = source_paths.candidate_root(root) + "/INDEX.md"
     changes[index] = markdown_index(units).encode()
     changes = {name: data for name, data in changes.items()
                if (local(root, name).read_bytes() if local(root, name).exists() else None) != data}

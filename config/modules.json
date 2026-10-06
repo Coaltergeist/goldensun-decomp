@@ -2114,7 +2114,8 @@
       "owner": "rom_770",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/lib/ramlib.o"
+      "legacy_object": "asm/lib/ramlib.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/alpine_crossing",
@@ -2123,7 +2124,11 @@
       "owner": "overlay:rom_7b7f1c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/alpine_crossing.o"
+      "legacy_object": "asm/maps/alpine_crossing.o",
+      "candidate_key": "maps/alpine_crossing",
+      "candidate_directory": "src/non_matching/maps/alpine_crossing",
+      "assembly_directory": "asm/maps/alpine_crossing",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/altin",
@@ -2132,7 +2137,11 @@
       "owner": "overlay:rom_7b8cb0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/altin.o"
+      "legacy_object": "asm/maps/altin.o",
+      "candidate_key": "maps/altin",
+      "candidate_directory": "src/non_matching/maps/altin",
+      "assembly_directory": "asm/maps/altin",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/altin_peak",
@@ -2141,7 +2150,11 @@
       "owner": "overlay:rom_7b9cb4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/altin_peak.o"
+      "legacy_object": "asm/maps/altin_peak.o",
+      "candidate_key": "maps/altin_peak",
+      "candidate_directory": "src/non_matching/maps/altin_peak",
+      "assembly_directory": "asm/maps/altin_peak",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/altmiller_cave",
@@ -2150,7 +2163,11 @@
       "owner": "overlay:rom_7e3e08",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/altmiller_cave.o"
+      "legacy_object": "asm/maps/altmiller_cave.o",
+      "candidate_key": "maps/altmiller_cave",
+      "candidate_directory": "src/non_matching/maps/altmiller_cave",
+      "assembly_directory": "asm/maps/altmiller_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/babi_lighthouse",
@@ -2159,7 +2176,11 @@
       "owner": "overlay:rom_7ef4f4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/babi_lighthouse.o"
+      "legacy_object": "asm/maps/babi_lighthouse.o",
+      "candidate_key": "maps/babi_lighthouse",
+      "candidate_directory": "src/non_matching/maps/babi_lighthouse",
+      "assembly_directory": "asm/maps/babi_lighthouse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/babis_palace",
@@ -2168,7 +2189,11 @@
       "owner": "overlay:rom_7d768c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/babis_palace.o"
+      "legacy_object": "asm/maps/babis_palace.o",
+      "candidate_key": "maps/babis_palace",
+      "candidate_directory": "src/non_matching/maps/babis_palace",
+      "assembly_directory": "asm/maps/babis_palace",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/bilibin",
@@ -2177,7 +2202,11 @@
       "owner": "overlay:rom_79b154",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/bilibin.o"
+      "legacy_object": "asm/maps/bilibin.o",
+      "candidate_key": "maps/bilibin",
+      "candidate_directory": "src/non_matching/maps/bilibin",
+      "assembly_directory": "asm/maps/bilibin",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/bilibin_cave",
@@ -2186,7 +2215,11 @@
       "owner": "overlay:rom_7a6ae4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/bilibin_cave.o"
+      "legacy_object": "asm/maps/bilibin_cave.o",
+      "candidate_key": "maps/bilibin_cave",
+      "candidate_directory": "src/non_matching/maps/bilibin_cave",
+      "assembly_directory": "asm/maps/bilibin_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/bilibin_rooms",
@@ -2195,7 +2228,11 @@
       "owner": "overlay:rom_79c0c4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/bilibin_rooms.o"
+      "legacy_object": "asm/maps/bilibin_rooms.o",
+      "candidate_key": "maps/bilibin_rooms",
+      "candidate_directory": "src/non_matching/maps/bilibin_rooms",
+      "assembly_directory": "asm/maps/bilibin_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/colosseum",
@@ -2204,7 +2241,11 @@
       "owner": "overlay:rom_7d95dc",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum.o"
+      "legacy_object": "asm/maps/colosseum.o",
+      "candidate_key": "maps/colosseum",
+      "candidate_directory": "src/non_matching/maps/colosseum",
+      "assembly_directory": "asm/maps/colosseum",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/colosseum_final_1",
@@ -2213,7 +2254,11 @@
       "owner": "overlay:rom_7db0c8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_1.o"
+      "legacy_object": "asm/maps/colosseum_final_1.o",
+      "candidate_key": "maps/colosseum_final_1",
+      "candidate_directory": "src/non_matching/maps/colosseum_final_1",
+      "assembly_directory": "asm/maps/colosseum_final_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_1/exports",
@@ -2222,7 +2267,8 @@
       "owner": "overlay:rom_7db0c8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_1/exports.o"
+      "legacy_object": "asm/maps/colosseum_final_1/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_1/imports",
@@ -2231,7 +2277,8 @@
       "owner": "overlay:rom_7db0c8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_1/imports.o"
+      "legacy_object": "asm/maps/colosseum_final_1/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/colosseum_final_2",
@@ -2240,7 +2287,11 @@
       "owner": "overlay:rom_7ddb88",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_2.o"
+      "legacy_object": "asm/maps/colosseum_final_2.o",
+      "candidate_key": "maps/colosseum_final_2",
+      "candidate_directory": "src/non_matching/maps/colosseum_final_2",
+      "assembly_directory": "asm/maps/colosseum_final_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_2/exports",
@@ -2249,7 +2300,8 @@
       "owner": "overlay:rom_7ddb88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_2/exports.o"
+      "legacy_object": "asm/maps/colosseum_final_2/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_2/imports",
@@ -2258,7 +2310,8 @@
       "owner": "overlay:rom_7ddb88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_2/imports.o"
+      "legacy_object": "asm/maps/colosseum_final_2/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/colosseum_final_3",
@@ -2267,7 +2320,11 @@
       "owner": "overlay:rom_7e0928",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_3.o"
+      "legacy_object": "asm/maps/colosseum_final_3.o",
+      "candidate_key": "maps/colosseum_final_3",
+      "candidate_directory": "src/non_matching/maps/colosseum_final_3",
+      "assembly_directory": "asm/maps/colosseum_final_3",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_3/exports",
@@ -2276,7 +2333,8 @@
       "owner": "overlay:rom_7e0928",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_3/exports.o"
+      "legacy_object": "asm/maps/colosseum_final_3/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/colosseum_final_3/imports",
@@ -2285,7 +2343,8 @@
       "owner": "overlay:rom_7e0928",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/colosseum_final_3/imports.o"
+      "legacy_object": "asm/maps/colosseum_final_3/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/common/common0",
@@ -2294,7 +2353,11 @@
       "owner": "common:common0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/common/common0.o"
+      "legacy_object": "asm/maps/common/common0.o",
+      "candidate_key": "maps/common/common0",
+      "candidate_directory": "src/non_matching/maps/common/common0",
+      "assembly_directory": "asm/maps/common/common0",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/common/common1",
@@ -2303,7 +2366,11 @@
       "owner": "common:common1",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/common/common1.o"
+      "legacy_object": "asm/maps/common/common1.o",
+      "candidate_key": "maps/common/common1",
+      "candidate_directory": "src/non_matching/maps/common/common1",
+      "assembly_directory": "asm/maps/common/common1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/common/common2",
@@ -2312,7 +2379,11 @@
       "owner": "common:common2",
       "profile": "gcc296-common2",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/common/common2.o"
+      "legacy_object": "asm/maps/common/common2.o",
+      "candidate_key": "maps/common/common2",
+      "candidate_directory": "src/non_matching/maps/common/common2",
+      "assembly_directory": "asm/maps/common/common2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/crossbone_isle",
@@ -2321,7 +2392,11 @@
       "owner": "overlay:rom_7ced6c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/crossbone_isle.o"
+      "legacy_object": "asm/maps/crossbone_isle.o",
+      "candidate_key": "maps/crossbone_isle",
+      "candidate_directory": "src/non_matching/maps/crossbone_isle",
+      "assembly_directory": "asm/maps/crossbone_isle",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/crossbone_isle_dungeon_2",
@@ -2330,7 +2405,11 @@
       "owner": "overlay:rom_7d0e88",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/crossbone_isle_dungeon_2.o"
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2.o",
+      "candidate_key": "maps/crossbone_isle_dungeon_2",
+      "candidate_directory": "src/non_matching/maps/crossbone_isle_dungeon_2",
+      "assembly_directory": "asm/maps/crossbone_isle_dungeon_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/crossbone_isle_dungeon_2/exports",
@@ -2339,7 +2418,8 @@
       "owner": "overlay:rom_7d0e88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/exports.o"
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/crossbone_isle_dungeon_2/imports",
@@ -2348,7 +2428,8 @@
       "owner": "overlay:rom_7d0e88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/imports.o"
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_2/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/crossbone_isle_dungeon_4",
@@ -2357,7 +2438,11 @@
       "owner": "overlay:rom_7d30e0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/crossbone_isle_dungeon_4.o"
+      "legacy_object": "asm/maps/crossbone_isle_dungeon_4.o",
+      "candidate_key": "maps/crossbone_isle_dungeon_4",
+      "candidate_directory": "src/non_matching/maps/crossbone_isle_dungeon_4",
+      "assembly_directory": "asm/maps/crossbone_isle_dungeon_4",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/debug_get_item",
@@ -2366,7 +2451,11 @@
       "owner": "overlay:rom_7fc720",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/debug_get_item.o"
+      "legacy_object": "asm/maps/debug_get_item.o",
+      "candidate_key": "maps/debug_get_item",
+      "candidate_directory": "src/non_matching/maps/debug_get_item",
+      "assembly_directory": "asm/maps/debug_get_item",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/debug_test",
@@ -2375,7 +2464,11 @@
       "owner": "overlay:rom_7fc618",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/debug_test.o"
+      "legacy_object": "asm/maps/debug_test.o",
+      "candidate_key": "maps/debug_test",
+      "candidate_directory": "src/non_matching/maps/debug_test",
+      "assembly_directory": "asm/maps/debug_test",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/debug_test/exports",
@@ -2384,7 +2477,8 @@
       "owner": "overlay:rom_7fc618",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/debug_test/exports.o"
+      "legacy_object": "asm/maps/debug_test/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/debug_test/imports",
@@ -2393,7 +2487,8 @@
       "owner": "overlay:rom_7fc618",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/debug_test/imports.o"
+      "legacy_object": "asm/maps/debug_test/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/elemental_stars",
@@ -2402,7 +2497,11 @@
       "owner": "overlay:rom_78ef88",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/elemental_stars.o"
+      "legacy_object": "asm/maps/elemental_stars.o",
+      "candidate_key": "maps/elemental_stars",
+      "candidate_directory": "src/non_matching/maps/elemental_stars",
+      "assembly_directory": "asm/maps/elemental_stars",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/elemental_stars/exports",
@@ -2411,7 +2510,8 @@
       "owner": "overlay:rom_78ef88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/elemental_stars/exports.o"
+      "legacy_object": "asm/maps/elemental_stars/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/elemental_stars/imports",
@@ -2420,7 +2520,8 @@
       "owner": "overlay:rom_78ef88",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/elemental_stars/imports.o"
+      "legacy_object": "asm/maps/elemental_stars/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/elemental_stars_eruption",
@@ -2429,7 +2530,11 @@
       "owner": "overlay:rom_791794",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/elemental_stars_eruption.o"
+      "legacy_object": "asm/maps/elemental_stars_eruption.o",
+      "candidate_key": "maps/elemental_stars_eruption",
+      "candidate_directory": "src/non_matching/maps/elemental_stars_eruption",
+      "assembly_directory": "asm/maps/elemental_stars_eruption",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/fuchin_temple",
@@ -2438,7 +2543,11 @@
       "owner": "overlay:rom_7b2078",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/fuchin_temple.o"
+      "legacy_object": "asm/maps/fuchin_temple.o",
+      "candidate_key": "maps/fuchin_temple",
+      "candidate_directory": "src/non_matching/maps/fuchin_temple",
+      "assembly_directory": "asm/maps/fuchin_temple",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/fuchin_temple/exports",
@@ -2447,7 +2556,8 @@
       "owner": "overlay:rom_7b2078",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/fuchin_temple/exports.o"
+      "legacy_object": "asm/maps/fuchin_temple/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/fuchin_temple/imports",
@@ -2456,7 +2566,8 @@
       "owner": "overlay:rom_7b2078",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/fuchin_temple/imports.o"
+      "legacy_object": "asm/maps/fuchin_temple/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/goma_cave",
@@ -2465,7 +2576,11 @@
       "owner": "overlay:rom_79aad8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave.o"
+      "legacy_object": "asm/maps/goma_cave.o",
+      "candidate_key": "maps/goma_cave",
+      "candidate_directory": "src/non_matching/maps/goma_cave",
+      "assembly_directory": "asm/maps/goma_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/goma_cave/exports",
@@ -2474,7 +2589,8 @@
       "owner": "overlay:rom_79aad8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave/exports.o"
+      "legacy_object": "asm/maps/goma_cave/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/goma_cave/imports",
@@ -2483,7 +2599,8 @@
       "owner": "overlay:rom_79aad8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave/imports.o"
+      "legacy_object": "asm/maps/goma_cave/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/goma_cave_1",
@@ -2492,7 +2609,11 @@
       "owner": "overlay:rom_799998",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave_1.o"
+      "legacy_object": "asm/maps/goma_cave_1.o",
+      "candidate_key": "maps/goma_cave_1",
+      "candidate_directory": "src/non_matching/maps/goma_cave_1",
+      "assembly_directory": "asm/maps/goma_cave_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/goma_cave_2",
@@ -2501,7 +2622,11 @@
       "owner": "overlay:rom_799abc",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave_2.o"
+      "legacy_object": "asm/maps/goma_cave_2.o",
+      "candidate_key": "maps/goma_cave_2",
+      "candidate_directory": "src/non_matching/maps/goma_cave_2",
+      "assembly_directory": "asm/maps/goma_cave_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/goma_cave_entry",
@@ -2510,7 +2635,11 @@
       "owner": "overlay:rom_798dc4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave_entry.o"
+      "legacy_object": "asm/maps/goma_cave_entry.o",
+      "candidate_key": "maps/goma_cave_entry",
+      "candidate_directory": "src/non_matching/maps/goma_cave_entry",
+      "assembly_directory": "asm/maps/goma_cave_entry",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/goma_cave_entry/exports",
@@ -2519,7 +2648,8 @@
       "owner": "overlay:rom_798dc4",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave_entry/exports.o"
+      "legacy_object": "asm/maps/goma_cave_entry/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/goma_cave_entry/imports",
@@ -2528,7 +2658,8 @@
       "owner": "overlay:rom_798dc4",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/goma_cave_entry/imports.o"
+      "legacy_object": "asm/maps/goma_cave_entry/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/gondowan",
@@ -2537,7 +2668,11 @@
       "owner": "overlay:rom_7e636c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/gondowan.o"
+      "legacy_object": "asm/maps/gondowan.o",
+      "candidate_key": "maps/gondowan",
+      "candidate_directory": "src/non_matching/maps/gondowan",
+      "assembly_directory": "asm/maps/gondowan",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/gondowan/exports",
@@ -2546,7 +2681,8 @@
       "owner": "overlay:rom_7e636c",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/gondowan/exports.o"
+      "legacy_object": "asm/maps/gondowan/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/gondowan/imports",
@@ -2555,7 +2691,8 @@
       "owner": "overlay:rom_7e636c",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/gondowan/imports.o"
+      "legacy_object": "asm/maps/gondowan/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/hammet_palace",
@@ -2564,7 +2701,11 @@
       "owner": "overlay:rom_7c37ac",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/hammet_palace.o"
+      "legacy_object": "asm/maps/hammet_palace.o",
+      "candidate_key": "maps/hammet_palace",
+      "candidate_directory": "src/non_matching/maps/hammet_palace",
+      "assembly_directory": "asm/maps/hammet_palace",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/imil",
@@ -2573,7 +2714,11 @@
       "owner": "overlay:rom_7a7298",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/imil.o"
+      "legacy_object": "asm/maps/imil.o",
+      "candidate_key": "maps/imil",
+      "candidate_directory": "src/non_matching/maps/imil",
+      "assembly_directory": "asm/maps/imil",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/imil_falls_cave",
@@ -2582,7 +2727,11 @@
       "owner": "overlay:rom_7a8c8c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/imil_falls_cave.o"
+      "legacy_object": "asm/maps/imil_falls_cave.o",
+      "candidate_key": "maps/imil_falls_cave",
+      "candidate_directory": "src/non_matching/maps/imil_falls_cave",
+      "assembly_directory": "asm/maps/imil_falls_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/jail",
@@ -2591,7 +2740,11 @@
       "owner": "overlay:rom_797740",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/jail.o"
+      "legacy_object": "asm/maps/jail.o",
+      "candidate_key": "maps/jail",
+      "candidate_directory": "src/non_matching/maps/jail",
+      "assembly_directory": "asm/maps/jail",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kalay",
@@ -2600,7 +2753,11 @@
       "owner": "overlay:rom_7c097c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kalay.o"
+      "legacy_object": "asm/maps/kalay.o",
+      "candidate_key": "maps/kalay",
+      "candidate_directory": "src/non_matching/maps/kalay",
+      "assembly_directory": "asm/maps/kalay",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kalay_docks",
@@ -2609,7 +2766,11 @@
       "owner": "overlay:rom_7c6bac",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kalay_docks.o"
+      "legacy_object": "asm/maps/kalay_docks.o",
+      "candidate_key": "maps/kalay_docks",
+      "candidate_directory": "src/non_matching/maps/kalay_docks",
+      "assembly_directory": "asm/maps/kalay_docks",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kalay_rooms",
@@ -2618,7 +2779,11 @@
       "owner": "overlay:rom_7c3044",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kalay_rooms.o"
+      "legacy_object": "asm/maps/kalay_rooms.o",
+      "candidate_key": "maps/kalay_rooms",
+      "candidate_directory": "src/non_matching/maps/kalay_rooms",
+      "assembly_directory": "asm/maps/kalay_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima",
@@ -2627,7 +2792,11 @@
       "owner": "overlay:rom_79e5c0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima.o"
+      "legacy_object": "asm/maps/kolima.o",
+      "candidate_key": "maps/kolima",
+      "candidate_directory": "src/non_matching/maps/kolima",
+      "assembly_directory": "asm/maps/kolima",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_forest_1",
@@ -2636,7 +2805,11 @@
       "owner": "overlay:rom_7a04ac",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_forest_1.o"
+      "legacy_object": "asm/maps/kolima_forest_1.o",
+      "candidate_key": "maps/kolima_forest_1",
+      "candidate_directory": "src/non_matching/maps/kolima_forest_1",
+      "assembly_directory": "asm/maps/kolima_forest_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_forest_2",
@@ -2645,7 +2818,11 @@
       "owner": "overlay:rom_7a1ff0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_forest_2.o"
+      "legacy_object": "asm/maps/kolima_forest_2.o",
+      "candidate_key": "maps/kolima_forest_2",
+      "candidate_directory": "src/non_matching/maps/kolima_forest_2",
+      "assembly_directory": "asm/maps/kolima_forest_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_forest_3",
@@ -2654,7 +2831,11 @@
       "owner": "overlay:rom_7a2bf0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_forest_3.o"
+      "legacy_object": "asm/maps/kolima_forest_3.o",
+      "candidate_key": "maps/kolima_forest_3",
+      "candidate_directory": "src/non_matching/maps/kolima_forest_3",
+      "assembly_directory": "asm/maps/kolima_forest_3",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_forest_4",
@@ -2663,7 +2844,11 @@
       "owner": "overlay:rom_7a37f0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_forest_4.o"
+      "legacy_object": "asm/maps/kolima_forest_4.o",
+      "candidate_key": "maps/kolima_forest_4",
+      "candidate_directory": "src/non_matching/maps/kolima_forest_4",
+      "assembly_directory": "asm/maps/kolima_forest_4",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_forest_5",
@@ -2672,7 +2857,11 @@
       "owner": "overlay:rom_7a4370",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_forest_5.o"
+      "legacy_object": "asm/maps/kolima_forest_5.o",
+      "candidate_key": "maps/kolima_forest_5",
+      "candidate_directory": "src/non_matching/maps/kolima_forest_5",
+      "assembly_directory": "asm/maps/kolima_forest_5",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/kolima_rooms",
@@ -2681,7 +2870,11 @@
       "owner": "overlay:rom_7a0010",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/kolima_rooms.o"
+      "legacy_object": "asm/maps/kolima_rooms.o",
+      "candidate_key": "maps/kolima_rooms",
+      "candidate_directory": "src/non_matching/maps/kolima_rooms",
+      "assembly_directory": "asm/maps/kolima_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lalivero",
@@ -2690,7 +2883,11 @@
       "owner": "overlay:rom_7f148c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lalivero.o"
+      "legacy_object": "asm/maps/lalivero.o",
+      "candidate_key": "maps/lalivero",
+      "candidate_directory": "src/non_matching/maps/lalivero",
+      "assembly_directory": "asm/maps/lalivero",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lalivero_rooms",
@@ -2699,7 +2896,11 @@
       "owner": "overlay:rom_7f21b8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lalivero_rooms.o"
+      "legacy_object": "asm/maps/lalivero_rooms.o",
+      "candidate_key": "maps/lalivero_rooms",
+      "candidate_directory": "src/non_matching/maps/lalivero_rooms",
+      "assembly_directory": "asm/maps/lalivero_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lalivero_ship",
@@ -2708,7 +2909,11 @@
       "owner": "overlay:rom_7fa4ec",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lalivero_ship.o"
+      "legacy_object": "asm/maps/lalivero_ship.o",
+      "candidate_key": "maps/lalivero_ship",
+      "candidate_directory": "src/non_matching/maps/lalivero_ship",
+      "assembly_directory": "asm/maps/lalivero_ship",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lamakan_desert",
@@ -2717,7 +2922,11 @@
       "owner": "overlay:rom_7bc690",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lamakan_desert.o"
+      "legacy_object": "asm/maps/lamakan_desert.o",
+      "candidate_key": "maps/lamakan_desert",
+      "candidate_directory": "src/non_matching/maps/lamakan_desert",
+      "assembly_directory": "asm/maps/lamakan_desert",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lamakan_desert/exports",
@@ -2726,7 +2935,8 @@
       "owner": "overlay:rom_7bc690",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lamakan_desert/exports.o"
+      "legacy_object": "asm/maps/lamakan_desert/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lamakan_desert/imports",
@@ -2735,7 +2945,8 @@
       "owner": "overlay:rom_7bc690",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lamakan_desert/imports.o"
+      "legacy_object": "asm/maps/lamakan_desert/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/link_lobby",
@@ -2744,7 +2955,11 @@
       "owner": "overlay:rom_7fb4a8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/link_lobby.o"
+      "legacy_object": "asm/maps/link_lobby.o",
+      "candidate_key": "maps/link_lobby",
+      "candidate_directory": "src/non_matching/maps/link_lobby",
+      "assembly_directory": "asm/maps/link_lobby",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/link_lobby/exports",
@@ -2753,7 +2968,8 @@
       "owner": "overlay:rom_7fb4a8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/link_lobby/exports.o"
+      "legacy_object": "asm/maps/link_lobby/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/link_lobby/imports",
@@ -2762,7 +2978,8 @@
       "owner": "overlay:rom_7fb4a8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/link_lobby/imports.o"
+      "legacy_object": "asm/maps/link_lobby/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lucky_fountain",
@@ -2771,7 +2988,11 @@
       "owner": "overlay:rom_7d6418",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lucky_fountain.o"
+      "legacy_object": "asm/maps/lucky_fountain.o",
+      "candidate_key": "maps/lucky_fountain",
+      "candidate_directory": "src/non_matching/maps/lucky_fountain",
+      "assembly_directory": "asm/maps/lucky_fountain",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lunpa",
@@ -2780,7 +3001,11 @@
       "owner": "overlay:rom_7c460c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa.o"
+      "legacy_object": "asm/maps/lunpa.o",
+      "candidate_key": "maps/lunpa",
+      "candidate_directory": "src/non_matching/maps/lunpa",
+      "assembly_directory": "asm/maps/lunpa",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lunpa/exports",
@@ -2789,7 +3014,8 @@
       "owner": "overlay:rom_7c460c",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa/exports.o"
+      "legacy_object": "asm/maps/lunpa/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lunpa/imports",
@@ -2798,7 +3024,8 @@
       "owner": "overlay:rom_7c460c",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa/imports.o"
+      "legacy_object": "asm/maps/lunpa/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lunpa_fortress",
@@ -2807,7 +3034,11 @@
       "owner": "overlay:rom_7e7574",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa_fortress.o"
+      "legacy_object": "asm/maps/lunpa_fortress.o",
+      "candidate_key": "maps/lunpa_fortress",
+      "candidate_directory": "src/non_matching/maps/lunpa_fortress",
+      "assembly_directory": "asm/maps/lunpa_fortress",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lunpa_fortress/exports",
@@ -2816,7 +3047,8 @@
       "owner": "overlay:rom_7e7574",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa_fortress/exports.o"
+      "legacy_object": "asm/maps/lunpa_fortress/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/lunpa_fortress/imports",
@@ -2825,7 +3057,8 @@
       "owner": "overlay:rom_7e7574",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa_fortress/imports.o"
+      "legacy_object": "asm/maps/lunpa_fortress/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/lunpa_rooms",
@@ -2834,7 +3067,11 @@
       "owner": "overlay:rom_7c5974",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/lunpa_rooms.o"
+      "legacy_object": "asm/maps/lunpa_rooms.o",
+      "candidate_key": "maps/lunpa_rooms",
+      "candidate_directory": "src/non_matching/maps/lunpa_rooms",
+      "assembly_directory": "asm/maps/lunpa_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/main_menu",
@@ -2843,7 +3080,11 @@
       "owner": "overlay:rom_7795e8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/main_menu.o"
+      "legacy_object": "asm/maps/main_menu.o",
+      "candidate_key": "maps/main_menu",
+      "candidate_directory": "src/non_matching/maps/main_menu",
+      "assembly_directory": "asm/maps/main_menu",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mccoys_palace",
@@ -2852,7 +3093,11 @@
       "owner": "overlay:rom_79c738",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mccoys_palace.o"
+      "legacy_object": "asm/maps/mccoys_palace.o",
+      "candidate_key": "maps/mccoys_palace",
+      "candidate_directory": "src/non_matching/maps/mccoys_palace",
+      "assembly_directory": "asm/maps/mccoys_palace",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mccoys_palace_ext",
@@ -2861,7 +3106,11 @@
       "owner": "overlay:rom_79dd90",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mccoys_palace_ext.o"
+      "legacy_object": "asm/maps/mccoys_palace_ext.o",
+      "candidate_key": "maps/mccoys_palace_ext",
+      "candidate_directory": "src/non_matching/maps/mccoys_palace_ext",
+      "assembly_directory": "asm/maps/mccoys_palace_ext",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/menu_test",
@@ -2870,7 +3119,11 @@
       "owner": "overlay:rom_7fcd20",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/menu_test.o"
+      "legacy_object": "asm/maps/menu_test.o",
+      "candidate_key": "maps/menu_test",
+      "candidate_directory": "src/non_matching/maps/menu_test",
+      "assembly_directory": "asm/maps/menu_test",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mercury_lighthouse",
@@ -2879,7 +3132,11 @@
       "owner": "overlay:rom_7ac2d8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse.o"
+      "legacy_object": "asm/maps/mercury_lighthouse.o",
+      "candidate_key": "maps/mercury_lighthouse",
+      "candidate_directory": "src/non_matching/maps/mercury_lighthouse",
+      "assembly_directory": "asm/maps/mercury_lighthouse",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse/exports",
@@ -2888,7 +3145,8 @@
       "owner": "overlay:rom_7ac2d8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse/exports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse/imports",
@@ -2897,7 +3155,8 @@
       "owner": "overlay:rom_7ac2d8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse/imports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mercury_lighthouse_aerie",
@@ -2906,7 +3165,11 @@
       "owner": "overlay:rom_7b0400",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_aerie.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie.o",
+      "candidate_key": "maps/mercury_lighthouse_aerie",
+      "candidate_directory": "src/non_matching/maps/mercury_lighthouse_aerie",
+      "assembly_directory": "asm/maps/mercury_lighthouse_aerie",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_aerie/exports",
@@ -2915,7 +3178,8 @@
       "owner": "overlay:rom_7b0400",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_aerie/exports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_aerie/imports",
@@ -2924,7 +3188,8 @@
       "owner": "overlay:rom_7b0400",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_aerie/imports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_aerie/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mercury_lighthouse_entrance",
@@ -2933,7 +3198,11 @@
       "owner": "overlay:rom_7aa430",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_entrance.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance.o",
+      "candidate_key": "maps/mercury_lighthouse_entrance",
+      "candidate_directory": "src/non_matching/maps/mercury_lighthouse_entrance",
+      "assembly_directory": "asm/maps/mercury_lighthouse_entrance",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_entrance/exports",
@@ -2942,7 +3211,8 @@
       "owner": "overlay:rom_7aa430",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_entrance/exports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/mercury_lighthouse_entrance/imports",
@@ -2951,7 +3221,8 @@
       "owner": "overlay:rom_7aa430",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mercury_lighthouse_entrance/imports.o"
+      "legacy_object": "asm/maps/mercury_lighthouse_entrance/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/mogall_forest",
@@ -2960,7 +3231,11 @@
       "owner": "overlay:rom_7b4558",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/mogall_forest.o"
+      "legacy_object": "asm/maps/mogall_forest.o",
+      "candidate_key": "maps/mogall_forest",
+      "candidate_directory": "src/non_matching/maps/mogall_forest",
+      "assembly_directory": "asm/maps/mogall_forest",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol",
@@ -2969,7 +3244,11 @@
       "owner": "overlay:rom_78dee8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol.o"
+      "legacy_object": "asm/maps/sol.o",
+      "candidate_key": "maps/sol",
+      "candidate_directory": "src/non_matching/maps/sol",
+      "assembly_directory": "asm/maps/sol",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol_sanctum_1",
@@ -2978,7 +3257,11 @@
       "owner": "overlay:rom_78b2ac",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol_sanctum_1.o"
+      "legacy_object": "asm/maps/sol_sanctum_1.o",
+      "candidate_key": "maps/sol_sanctum_1",
+      "candidate_directory": "src/non_matching/maps/sol_sanctum_1",
+      "assembly_directory": "asm/maps/sol_sanctum_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol_sanctum_2",
@@ -2987,7 +3270,11 @@
       "owner": "overlay:rom_78c76c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol_sanctum_2.o"
+      "legacy_object": "asm/maps/sol_sanctum_2.o",
+      "candidate_key": "maps/sol_sanctum_2",
+      "candidate_directory": "src/non_matching/maps/sol_sanctum_2",
+      "assembly_directory": "asm/maps/sol_sanctum_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol_sanctum_3",
@@ -2996,7 +3283,11 @@
       "owner": "overlay:rom_78dc80",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol_sanctum_3.o"
+      "legacy_object": "asm/maps/sol_sanctum_3.o",
+      "candidate_key": "maps/sol_sanctum_3",
+      "candidate_directory": "src/non_matching/maps/sol_sanctum_3",
+      "assembly_directory": "asm/maps/sol_sanctum_3",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol_sanctum_4",
@@ -3005,7 +3296,11 @@
       "owner": "overlay:rom_78dd40",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol_sanctum_4.o"
+      "legacy_object": "asm/maps/sol_sanctum_4.o",
+      "candidate_key": "maps/sol_sanctum_4",
+      "candidate_directory": "src/non_matching/maps/sol_sanctum_4",
+      "assembly_directory": "asm/maps/sol_sanctum_4",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/sol_sanctum_5",
@@ -3014,7 +3309,11 @@
       "owner": "overlay:rom_78de18",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/sol_sanctum_5.o"
+      "legacy_object": "asm/maps/sol_sanctum_5.o",
+      "candidate_key": "maps/sol_sanctum_5",
+      "candidate_directory": "src/non_matching/maps/sol_sanctum_5",
+      "assembly_directory": "asm/maps/sol_sanctum_5",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/suhalla",
@@ -3023,7 +3322,11 @@
       "owner": "overlay:rom_7ebdfc",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla.o"
+      "legacy_object": "asm/maps/suhalla.o",
+      "candidate_key": "maps/suhalla",
+      "candidate_directory": "src/non_matching/maps/suhalla",
+      "assembly_directory": "asm/maps/suhalla",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/suhalla_desert",
@@ -3032,7 +3335,11 @@
       "owner": "overlay:rom_7eaf28",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla_desert.o"
+      "legacy_object": "asm/maps/suhalla_desert.o",
+      "candidate_key": "maps/suhalla_desert",
+      "candidate_directory": "src/non_matching/maps/suhalla_desert",
+      "assembly_directory": "asm/maps/suhalla_desert",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/suhalla_desert/exports",
@@ -3041,7 +3348,8 @@
       "owner": "overlay:rom_7eaf28",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla_desert/exports.o"
+      "legacy_object": "asm/maps/suhalla_desert/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/suhalla_desert/imports",
@@ -3050,7 +3358,8 @@
       "owner": "overlay:rom_7eaf28",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla_desert/imports.o"
+      "legacy_object": "asm/maps/suhalla_desert/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/suhalla_gate_1",
@@ -3059,7 +3368,11 @@
       "owner": "overlay:rom_7ec968",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla_gate_1.o"
+      "legacy_object": "asm/maps/suhalla_gate_1.o",
+      "candidate_key": "maps/suhalla_gate_1",
+      "candidate_directory": "src/non_matching/maps/suhalla_gate_1",
+      "assembly_directory": "asm/maps/suhalla_gate_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/suhalla_rooms",
@@ -3068,7 +3381,11 @@
       "owner": "overlay:rom_7ec19c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/suhalla_rooms.o"
+      "legacy_object": "asm/maps/suhalla_rooms.o",
+      "candidate_key": "maps/suhalla_rooms",
+      "candidate_directory": "src/non_matching/maps/suhalla_rooms",
+      "assembly_directory": "asm/maps/suhalla_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/title",
@@ -3077,7 +3394,11 @@
       "owner": "overlay:rom_779188",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/title.o"
+      "legacy_object": "asm/maps/title.o",
+      "candidate_key": "maps/title",
+      "candidate_directory": "src/non_matching/maps/title",
+      "assembly_directory": "asm/maps/title",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tolbi",
@@ -3086,7 +3407,11 @@
       "owner": "overlay:rom_7d4af4",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tolbi.o"
+      "legacy_object": "asm/maps/tolbi.o",
+      "candidate_key": "maps/tolbi",
+      "candidate_directory": "src/non_matching/maps/tolbi",
+      "assembly_directory": "asm/maps/tolbi",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_deck",
@@ -3095,7 +3420,11 @@
       "owner": "overlay:rom_7c7b9c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tolbi_bound_ship_deck.o"
+      "legacy_object": "asm/maps/tolbi_bound_ship_deck.o",
+      "candidate_key": "maps/tolbi_bound_ship_deck",
+      "candidate_directory": "src/non_matching/maps/tolbi_bound_ship_deck",
+      "assembly_directory": "asm/maps/tolbi_bound_ship_deck",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_hull",
@@ -3104,7 +3433,11 @@
       "owner": "overlay:rom_7cb2c0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tolbi_bound_ship_hull.o"
+      "legacy_object": "asm/maps/tolbi_bound_ship_hull.o",
+      "candidate_key": "maps/tolbi_bound_ship_hull",
+      "candidate_directory": "src/non_matching/maps/tolbi_bound_ship_hull",
+      "assembly_directory": "asm/maps/tolbi_bound_ship_hull",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tolbi_bound_ship_top",
@@ -3113,7 +3446,11 @@
       "owner": "overlay:rom_7ca63c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tolbi_bound_ship_top.o"
+      "legacy_object": "asm/maps/tolbi_bound_ship_top.o",
+      "candidate_key": "maps/tolbi_bound_ship_top",
+      "candidate_directory": "src/non_matching/maps/tolbi_bound_ship_top",
+      "assembly_directory": "asm/maps/tolbi_bound_ship_top",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tolbi_rooms_1",
@@ -3122,7 +3459,11 @@
       "owner": "overlay:rom_7d5838",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tolbi_rooms_1.o"
+      "legacy_object": "asm/maps/tolbi_rooms_1.o",
+      "candidate_key": "maps/tolbi_rooms_1",
+      "candidate_directory": "src/non_matching/maps/tolbi_rooms_1",
+      "assembly_directory": "asm/maps/tolbi_rooms_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tret_tree",
@@ -3131,7 +3472,11 @@
       "owner": "overlay:rom_7a5214",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tret_tree.o"
+      "legacy_object": "asm/maps/tret_tree.o",
+      "candidate_key": "maps/tret_tree",
+      "candidate_directory": "src/non_matching/maps/tret_tree",
+      "assembly_directory": "asm/maps/tret_tree",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/tret_tree/exports",
@@ -3140,7 +3485,8 @@
       "owner": "overlay:rom_7a5214",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tret_tree/exports.o"
+      "legacy_object": "asm/maps/tret_tree/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/tret_tree/imports",
@@ -3149,7 +3495,8 @@
       "owner": "overlay:rom_7a5214",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tret_tree/imports.o"
+      "legacy_object": "asm/maps/tret_tree/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tret_tree_ext",
@@ -3158,7 +3505,11 @@
       "owner": "overlay:rom_7a67d8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tret_tree_ext.o"
+      "legacy_object": "asm/maps/tret_tree_ext.o",
+      "candidate_key": "maps/tret_tree_ext",
+      "candidate_directory": "src/non_matching/maps/tret_tree_ext",
+      "assembly_directory": "asm/maps/tret_tree_ext",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/tunnel_ruins",
@@ -3167,7 +3518,11 @@
       "owner": "overlay:rom_7ed0a0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/tunnel_ruins.o"
+      "legacy_object": "asm/maps/tunnel_ruins.o",
+      "candidate_key": "maps/tunnel_ruins",
+      "candidate_directory": "src/non_matching/maps/tunnel_ruins",
+      "assembly_directory": "asm/maps/tunnel_ruins",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_cave",
@@ -3176,7 +3531,11 @@
       "owner": "overlay:rom_7bdeb0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_cave.o"
+      "legacy_object": "asm/maps/vale_cave.o",
+      "candidate_key": "maps/vale_cave",
+      "candidate_directory": "src/non_matching/maps/vale_cave",
+      "assembly_directory": "asm/maps/vale_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vale_cave/exports",
@@ -3185,7 +3544,8 @@
       "owner": "overlay:rom_7bdeb0",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_cave/exports.o"
+      "legacy_object": "asm/maps/vale_cave/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vale_cave/imports",
@@ -3194,7 +3554,8 @@
       "owner": "overlay:rom_7bdeb0",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_cave/imports.o"
+      "legacy_object": "asm/maps/vale_cave/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_kraden",
@@ -3203,7 +3564,11 @@
       "owner": "overlay:rom_78603c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_kraden.o"
+      "legacy_object": "asm/maps/vale_kraden.o",
+      "candidate_key": "maps/vale_kraden",
+      "candidate_directory": "src/non_matching/maps/vale_kraden",
+      "assembly_directory": "asm/maps/vale_kraden",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_plaza",
@@ -3212,7 +3577,11 @@
       "owner": "overlay:rom_784360",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_plaza.o"
+      "legacy_object": "asm/maps/vale_plaza.o",
+      "candidate_key": "maps/vale_plaza",
+      "candidate_directory": "src/non_matching/maps/vale_plaza",
+      "assembly_directory": "asm/maps/vale_plaza",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_river",
@@ -3221,7 +3590,11 @@
       "owner": "overlay:rom_780898",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_river.o"
+      "legacy_object": "asm/maps/vale_river.o",
+      "candidate_key": "maps/vale_river",
+      "candidate_directory": "src/non_matching/maps/vale_river",
+      "assembly_directory": "asm/maps/vale_river",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_river_eruption",
@@ -3230,7 +3603,11 @@
       "owner": "overlay:rom_78ac38",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_river_eruption.o"
+      "legacy_object": "asm/maps/vale_river_eruption.o",
+      "candidate_key": "maps/vale_river_eruption",
+      "candidate_directory": "src/non_matching/maps/vale_river_eruption",
+      "assembly_directory": "asm/maps/vale_river_eruption",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_river_prologue",
@@ -3239,7 +3616,11 @@
       "owner": "overlay:rom_77dd1c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_river_prologue.o"
+      "legacy_object": "asm/maps/vale_river_prologue.o",
+      "candidate_key": "maps/vale_river_prologue",
+      "candidate_directory": "src/non_matching/maps/vale_river_prologue",
+      "assembly_directory": "asm/maps/vale_river_prologue",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_rooms_1",
@@ -3248,7 +3629,11 @@
       "owner": "overlay:rom_786f0c",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_rooms_1.o"
+      "legacy_object": "asm/maps/vale_rooms_1.o",
+      "candidate_key": "maps/vale_rooms_1",
+      "candidate_directory": "src/non_matching/maps/vale_rooms_1",
+      "assembly_directory": "asm/maps/vale_rooms_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_rooms_2",
@@ -3257,7 +3642,11 @@
       "owner": "overlay:rom_787e04",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_rooms_2.o"
+      "legacy_object": "asm/maps/vale_rooms_2.o",
+      "candidate_key": "maps/vale_rooms_2",
+      "candidate_directory": "src/non_matching/maps/vale_rooms_2",
+      "assembly_directory": "asm/maps/vale_rooms_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vale_sanctum",
@@ -3266,7 +3655,11 @@
       "owner": "overlay:rom_7892c8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vale_sanctum.o"
+      "legacy_object": "asm/maps/vale_sanctum.o",
+      "candidate_key": "maps/vale_sanctum",
+      "candidate_directory": "src/non_matching/maps/vale_sanctum",
+      "assembly_directory": "asm/maps/vale_sanctum",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vault_1",
@@ -3275,7 +3668,11 @@
       "owner": "overlay:rom_793768",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_1.o"
+      "legacy_object": "asm/maps/vault_1.o",
+      "candidate_key": "maps/vault_1",
+      "candidate_directory": "src/non_matching/maps/vault_1",
+      "assembly_directory": "asm/maps/vault_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_1/exports",
@@ -3284,7 +3681,8 @@
       "owner": "overlay:rom_793768",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_1/exports.o"
+      "legacy_object": "asm/maps/vault_1/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_1/imports",
@@ -3293,7 +3691,8 @@
       "owner": "overlay:rom_793768",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_1/imports.o"
+      "legacy_object": "asm/maps/vault_1/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vault_2",
@@ -3302,7 +3701,11 @@
       "owner": "overlay:rom_797990",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_2.o"
+      "legacy_object": "asm/maps/vault_2.o",
+      "candidate_key": "maps/vault_2",
+      "candidate_directory": "src/non_matching/maps/vault_2",
+      "assembly_directory": "asm/maps/vault_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_2/exports",
@@ -3311,7 +3714,8 @@
       "owner": "overlay:rom_797990",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_2/exports.o"
+      "legacy_object": "asm/maps/vault_2/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_2/imports",
@@ -3320,7 +3724,8 @@
       "owner": "overlay:rom_797990",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_2/imports.o"
+      "legacy_object": "asm/maps/vault_2/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vault_cave",
@@ -3329,7 +3734,11 @@
       "owner": "overlay:rom_7bf5a8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_cave.o"
+      "legacy_object": "asm/maps/vault_cave.o",
+      "candidate_key": "maps/vault_cave",
+      "candidate_directory": "src/non_matching/maps/vault_cave",
+      "assembly_directory": "asm/maps/vault_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_cave/exports",
@@ -3338,7 +3747,8 @@
       "owner": "overlay:rom_7bf5a8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_cave/exports.o"
+      "legacy_object": "asm/maps/vault_cave/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/vault_cave/imports",
@@ -3347,7 +3757,8 @@
       "owner": "overlay:rom_7bf5a8",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_cave/imports.o"
+      "legacy_object": "asm/maps/vault_cave/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vault_rooms_1",
@@ -3356,7 +3767,11 @@
       "owner": "overlay:rom_794ac0",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_rooms_1.o"
+      "legacy_object": "asm/maps/vault_rooms_1.o",
+      "candidate_key": "maps/vault_rooms_1",
+      "candidate_directory": "src/non_matching/maps/vault_rooms_1",
+      "assembly_directory": "asm/maps/vault_rooms_1",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/vault_rooms_2",
@@ -3365,7 +3780,11 @@
       "owner": "overlay:rom_7987ac",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/vault_rooms_2.o"
+      "legacy_object": "asm/maps/vault_rooms_2.o",
+      "candidate_key": "maps/vault_rooms_2",
+      "candidate_directory": "src/non_matching/maps/vault_rooms_2",
+      "assembly_directory": "asm/maps/vault_rooms_2",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/venus_lighthouse",
@@ -3374,7 +3793,11 @@
       "owner": "overlay:rom_7f2f14",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/venus_lighthouse.o"
+      "legacy_object": "asm/maps/venus_lighthouse.o",
+      "candidate_key": "maps/venus_lighthouse",
+      "candidate_directory": "src/non_matching/maps/venus_lighthouse",
+      "assembly_directory": "asm/maps/venus_lighthouse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/venus_lighthouse_aerie",
@@ -3383,7 +3806,11 @@
       "owner": "overlay:rom_7f6e64",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/venus_lighthouse_aerie.o"
+      "legacy_object": "asm/maps/venus_lighthouse_aerie.o",
+      "candidate_key": "maps/venus_lighthouse_aerie",
+      "candidate_directory": "src/non_matching/maps/venus_lighthouse_aerie",
+      "assembly_directory": "asm/maps/venus_lighthouse_aerie",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/venus_lighthouse_aerie/exports",
@@ -3392,7 +3819,8 @@
       "owner": "overlay:rom_7f6e64",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/venus_lighthouse_aerie/exports.o"
+      "legacy_object": "asm/maps/venus_lighthouse_aerie/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/venus_lighthouse_aerie/imports",
@@ -3401,7 +3829,8 @@
       "owner": "overlay:rom_7f6e64",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/venus_lighthouse_aerie/imports.o"
+      "legacy_object": "asm/maps/venus_lighthouse_aerie/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/west_lunpa_cave",
@@ -3410,7 +3839,11 @@
       "owner": "overlay:rom_7c5efc",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/west_lunpa_cave.o"
+      "legacy_object": "asm/maps/west_lunpa_cave.o",
+      "candidate_key": "maps/west_lunpa_cave",
+      "candidate_directory": "src/non_matching/maps/west_lunpa_cave",
+      "assembly_directory": "asm/maps/west_lunpa_cave",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/world_map_cutscenes",
@@ -3419,7 +3852,11 @@
       "owner": "overlay:rom_77a7c8",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/world_map_cutscenes.o"
+      "legacy_object": "asm/maps/world_map_cutscenes.o",
+      "candidate_key": "maps/world_map_cutscenes",
+      "candidate_directory": "src/non_matching/maps/world_map_cutscenes",
+      "assembly_directory": "asm/maps/world_map_cutscenes",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/xian",
@@ -3428,7 +3865,11 @@
       "owner": "overlay:rom_7b6668",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian.o"
+      "legacy_object": "asm/maps/xian.o",
+      "candidate_key": "maps/xian",
+      "candidate_directory": "src/non_matching/maps/xian",
+      "assembly_directory": "asm/maps/xian",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/xian/exports",
@@ -3437,7 +3878,8 @@
       "owner": "overlay:rom_7b6668",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian/exports.o"
+      "legacy_object": "asm/maps/xian/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/xian/imports",
@@ -3446,7 +3888,8 @@
       "owner": "overlay:rom_7b6668",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian/imports.o"
+      "legacy_object": "asm/maps/xian/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/maps/xian_rooms",
@@ -3455,7 +3898,11 @@
       "owner": "overlay:rom_7b7790",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian_rooms.o"
+      "legacy_object": "asm/maps/xian_rooms.o",
+      "candidate_key": "maps/xian_rooms",
+      "candidate_directory": "src/non_matching/maps/xian_rooms",
+      "assembly_directory": "asm/maps/xian_rooms",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/xian_rooms/exports",
@@ -3464,7 +3911,8 @@
       "owner": "overlay:rom_7b7790",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian_rooms/exports.o"
+      "legacy_object": "asm/maps/xian_rooms/exports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:asm/maps/xian_rooms/imports",
@@ -3473,7 +3921,8 @@
       "owner": "overlay:rom_7b7790",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "asm/maps/xian_rooms/imports.o"
+      "legacy_object": "asm/maps/xian_rooms/imports.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:data/rom_15000/rom_15e8c_c_c_c",
@@ -3482,7 +3931,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_15e8c_c_c_c.o"
+      "legacy_object": "data/rom_15000/rom_15e8c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_29910",
@@ -3491,7 +3941,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_29910.o"
+      "legacy_object": "data/rom_15000/rom_29910.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_310a4",
@@ -3500,7 +3951,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_310a4.o"
+      "legacy_object": "data/rom_15000/rom_310a4.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_317e4",
@@ -3509,7 +3961,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_317e4.o"
+      "legacy_object": "data/rom_15000/rom_317e4.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_32224",
@@ -3518,7 +3971,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_32224.o"
+      "legacy_object": "data/rom_15000/rom_32224.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_346f8",
@@ -3527,7 +3981,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_346f8.o"
+      "legacy_object": "data/rom_15000/rom_346f8.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_367e4",
@@ -3536,7 +3991,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_367e4.o"
+      "legacy_object": "data/rom_15000/rom_367e4.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_73812",
@@ -3545,7 +4001,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_73812.o"
+      "legacy_object": "data/rom_15000/rom_73812.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_15000/rom_73864",
@@ -3554,7 +4011,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_15000/rom_73864.o"
+      "legacy_object": "data/rom_15000/rom_73864.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_185000/rom_185008_c",
@@ -3563,7 +4021,8 @@
       "owner": "rom_185000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_185000/rom_185008_c.o"
+      "legacy_object": "data/rom_185000/rom_185008_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_320000/rom_320000",
@@ -3572,7 +4031,8 @@
       "owner": "rom_320000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_320000/rom_320000.o"
+      "legacy_object": "data/rom_320000/rom_320000.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_78414_c_c_c_c",
@@ -3581,7 +4041,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_78414_c_c_c_c.o"
+      "legacy_object": "data/rom_77000/rom_78414_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_78a8c_c_c",
@@ -3590,7 +4051,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_78a8c_c_c.o"
+      "legacy_object": "data/rom_77000/rom_78a8c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_78b9c_c",
@@ -3599,7 +4061,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_78b9c_c.o"
+      "legacy_object": "data/rom_77000/rom_78b9c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_78ed8_c",
@@ -3608,7 +4071,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_78ed8_c.o"
+      "legacy_object": "data/rom_77000/rom_78ed8_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_78ee8_c",
@@ -3617,7 +4081,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_78ee8_c.o"
+      "legacy_object": "data/rom_77000/rom_78ee8_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_79008_c",
@@ -3626,7 +4091,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_79008_c.o"
+      "legacy_object": "data/rom_77000/rom_79008_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_77000/rom_80ec8",
@@ -3635,7 +4101,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_77000/rom_80ec8.o"
+      "legacy_object": "data/rom_77000/rom_80ec8.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_8a5f8_c",
@@ -3644,7 +4111,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_8a5f8_c.o"
+      "legacy_object": "data/rom_8a000/rom_8a5f8_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_8ace0_c",
@@ -3653,7 +4121,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_8ace0_c.o"
+      "legacy_object": "data/rom_8a000/rom_8ace0_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_8b674_c_c_c",
@@ -3662,7 +4131,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_8b674_c_c_c.o"
+      "legacy_object": "data/rom_8a000/rom_8b674_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_91584_c_c_c_c",
@@ -3671,7 +4141,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_91584_c_c_c_c.o"
+      "legacy_object": "data/rom_8a000/rom_91584_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9259c_c",
@@ -3680,7 +4151,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9259c_c.o"
+      "legacy_object": "data/rom_8a000/rom_9259c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_925e0_c",
@@ -3689,7 +4161,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_925e0_c.o"
+      "legacy_object": "data/rom_8a000/rom_925e0_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9bb64_c_c",
@@ -3698,7 +4171,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9bb64_c_c.o"
+      "legacy_object": "data/rom_8a000/rom_9bb64_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9f0b0",
@@ -3707,7 +4181,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9f0b0.o"
+      "legacy_object": "data/rom_8a000/rom_9f0b0.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9f840",
@@ -3716,7 +4191,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9f840.o"
+      "legacy_object": "data/rom_8a000/rom_9f840.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9fc1c",
@@ -3725,7 +4201,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9fc1c.o"
+      "legacy_object": "data/rom_8a000/rom_9fc1c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_9ff40",
@@ -3734,7 +4211,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_9ff40.o"
+      "legacy_object": "data/rom_8a000/rom_9ff40.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_8a000/rom_a0138",
@@ -3743,7 +4221,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_8a000/rom_a0138.o"
+      "legacy_object": "data/rom_8a000/rom_a0138.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_9000/rom_13624",
@@ -3752,7 +4231,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_9000/rom_13624.o"
+      "legacy_object": "data/rom_9000/rom_13624.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_9000/rom_c004_c_c_c",
@@ -3761,7 +4241,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_9000/rom_c004_c_c_c.o"
+      "legacy_object": "data/rom_9000/rom_c004_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_9000/rom_d654_c_c_c",
@@ -3770,7 +4251,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_9000/rom_d654_c_c_c.o"
+      "legacy_object": "data/rom_9000/rom_d654_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_a1000/rom_a172c_c",
@@ -3779,7 +4261,8 @@
       "owner": "rom_a1000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_a1000/rom_a172c_c.o"
+      "legacy_object": "data/rom_a1000/rom_a172c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_a1000/rom_a47b4_c_c_c_c_c_c",
@@ -3788,7 +4271,8 @@
       "owner": "rom_a1000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_a1000/rom_a47b4_c_c_c_c_c_c.o"
+      "legacy_object": "data/rom_a1000/rom_a47b4_c_c_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_a1000/rom_a8604_c_c_c_c_c",
@@ -3797,7 +4281,8 @@
       "owner": "rom_a1000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_a1000/rom_a8604_c_c_c_c_c.o"
+      "legacy_object": "data/rom_a1000/rom_a8604_c_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_a1000/rom_af26c",
@@ -3806,7 +4291,8 @@
       "owner": "rom_a1000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_a1000/rom_af26c.o"
+      "legacy_object": "data/rom_a1000/rom_af26c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_b7410_c_c_c_c_c",
@@ -3815,7 +4301,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_b7410_c_c_c_c_c.o"
+      "legacy_object": "data/rom_b5000/rom_b7410_c_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_b8228_c_c",
@@ -3824,7 +4311,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_b8228_c_c.o"
+      "legacy_object": "data/rom_b5000/rom_b8228_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_c10e8_c",
@@ -3833,7 +4321,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_c10e8_c.o"
+      "legacy_object": "data/rom_b5000/rom_c10e8_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_c1a34_c",
@@ -3842,7 +4331,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_c1a34_c.o"
+      "legacy_object": "data/rom_b5000/rom_c1a34_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_c2a0c",
@@ -3851,7 +4341,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_c2a0c.o"
+      "legacy_object": "data/rom_b5000/rom_c2a0c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_b5000/rom_c3734",
@@ -3860,7 +4351,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_b5000/rom_c3734.o"
+      "legacy_object": "data/rom_b5000/rom_c3734.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c0/rom_45e8_c_c_c_c_c",
@@ -3869,7 +4361,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c0/rom_45e8_c_c_c_c_c.o"
+      "legacy_object": "data/rom_c0/rom_45e8_c_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c0/rom_49a8_c_c_c_c_c",
@@ -3878,7 +4371,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c0/rom_49a8_c_c_c_c_c.o"
+      "legacy_object": "data/rom_c0/rom_49a8_c_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c9000/rom_e28f4_c_c_c",
@@ -3887,7 +4381,8 @@
       "owner": "rom_c9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c9000/rom_e28f4_c_c_c.o"
+      "legacy_object": "data/rom_c9000/rom_e28f4_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c9000/rom_e6638_c",
@@ -3896,7 +4391,8 @@
       "owner": "rom_c9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c9000/rom_e6638_c.o"
+      "legacy_object": "data/rom_c9000/rom_e6638_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c9000/rom_eda78",
@@ -3905,7 +4401,8 @@
       "owner": "rom_c9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c9000/rom_eda78.o"
+      "legacy_object": "data/rom_c9000/rom_eda78.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_c9000/rom_ee2b4",
@@ -3914,7 +4411,8 @@
       "owner": "rom_c9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_c9000/rom_ee2b4.o"
+      "legacy_object": "data/rom_c9000/rom_ee2b4.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_f2000/rom_f2028_c_c_c_c",
@@ -3923,7 +4421,8 @@
       "owner": "rom_f2000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_f2000/rom_f2028_c_c_c_c.o"
+      "legacy_object": "data/rom_f2000/rom_f2028_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_f9000/rom_f9080_c_c_c_c",
@@ -3932,7 +4431,8 @@
       "owner": "rom_f9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_f9000/rom_f9080_c_c_c_c.o"
+      "legacy_object": "data/rom_f9000/rom_f9080_c_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_f9000/rom_f9ef8_c_c_c",
@@ -3941,7 +4441,8 @@
       "owner": "rom_f9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_f9000/rom_f9ef8_c_c_c.o"
+      "legacy_object": "data/rom_f9000/rom_f9ef8_c_c_c.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/rom_f9000/rom_fc624",
@@ -3950,7 +4451,8 @@
       "owner": "rom_f9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "data/rom_f9000/rom_fc624.o"
+      "legacy_object": "data/rom_f9000/rom_fc624.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:data/strings/strings",
@@ -3959,7 +4461,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "generated",
-      "legacy_object": "data/strings/strings.o"
+      "legacy_object": "data/strings/strings.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_15000/exports",
@@ -3968,7 +4471,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_15000/exports.o"
+      "legacy_object": "exports/rom_15000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_185000/exports",
@@ -3977,7 +4481,8 @@
       "owner": "rom_185000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_185000/exports.o"
+      "legacy_object": "exports/rom_185000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_77000/exports",
@@ -3986,7 +4491,8 @@
       "owner": "rom_77000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_77000/exports.o"
+      "legacy_object": "exports/rom_77000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_8a000/exports",
@@ -3995,7 +4501,8 @@
       "owner": "rom_8a000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_8a000/exports.o"
+      "legacy_object": "exports/rom_8a000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_9000/exports",
@@ -4004,7 +4511,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_9000/exports.o"
+      "legacy_object": "exports/rom_9000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_a1000/exports",
@@ -4013,7 +4521,8 @@
       "owner": "rom_a1000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_a1000/exports.o"
+      "legacy_object": "exports/rom_a1000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_b0000/exports",
@@ -4022,7 +4531,8 @@
       "owner": "rom_b0000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_b0000/exports.o"
+      "legacy_object": "exports/rom_b0000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_b5000/exports",
@@ -4031,7 +4541,8 @@
       "owner": "rom_b5000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_b5000/exports.o"
+      "legacy_object": "exports/rom_b5000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_c0/exports",
@@ -4040,7 +4551,8 @@
       "owner": "rom_c0",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_c0/exports.o"
+      "legacy_object": "exports/rom_c0/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_c9000/exports",
@@ -4049,7 +4561,8 @@
       "owner": "rom_c9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_c9000/exports.o"
+      "legacy_object": "exports/rom_c9000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_f0000/exports",
@@ -4058,7 +4571,8 @@
       "owner": "rom_f0000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_f0000/exports.o"
+      "legacy_object": "exports/rom_f0000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_f2000/exports",
@@ -4067,7 +4581,8 @@
       "owner": "rom_f2000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_f2000/exports.o"
+      "legacy_object": "exports/rom_f2000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_f4000/exports",
@@ -4076,7 +4591,8 @@
       "owner": "rom_f4000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_f4000/exports.o"
+      "legacy_object": "exports/rom_f4000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_f6000/exports",
@@ -4085,7 +4601,8 @@
       "owner": "rom_f6000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_f6000/exports.o"
+      "legacy_object": "exports/rom_f6000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:exports/rom_f9000/exports",
@@ -4094,7 +4611,8 @@
       "owner": "rom_f9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "exports/rom_f9000/exports.o"
+      "legacy_object": "exports/rom_f9000/exports.o",
+      "baseline_scope": false
     },
     {
       "id": "tu:src/actor/actor",
@@ -4103,7 +4621,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/actor/actor.o"
+      "legacy_object": "src/actor/actor.o",
+      "candidate_key": "actor/actor",
+      "candidate_directory": "src/non_matching/actor/actor",
+      "assembly_directory": "asm/actor/actor",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/actor/actor_script",
@@ -4112,7 +4634,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/actor/actor_script.o"
+      "legacy_object": "src/actor/actor_script.o",
+      "candidate_key": "actor/actor_script",
+      "candidate_directory": "src/non_matching/actor/actor_script",
+      "assembly_directory": "asm/actor/actor_script",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/actor/player",
@@ -4121,7 +4647,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/actor/player.o"
+      "legacy_object": "src/actor/player.o",
+      "candidate_key": "actor/player",
+      "candidate_directory": "src/non_matching/actor/player",
+      "assembly_directory": "asm/actor/player",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle/actor_pos",
@@ -4130,7 +4660,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle/actor_pos.o"
+      "legacy_object": "src/battle/actor_pos.o",
+      "candidate_key": "battle/actor_pos",
+      "candidate_directory": "src/non_matching/battle/actor_pos",
+      "assembly_directory": "asm/battle/actor_pos",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle/battle",
@@ -4139,7 +4673,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle/battle.o"
+      "legacy_object": "src/battle/battle.o",
+      "candidate_key": "battle/battle",
+      "candidate_directory": "src/non_matching/battle/battle",
+      "assembly_directory": "asm/battle/battle",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle/debug_battle_test",
@@ -4148,7 +4686,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle/debug_battle_test.o"
+      "legacy_object": "src/battle/debug_battle_test.o",
+      "candidate_key": "battle/debug_battle_test",
+      "candidate_directory": "src/non_matching/battle/debug_battle_test",
+      "assembly_directory": "asm/battle/debug_battle_test",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle/enemy",
@@ -4157,7 +4699,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle/enemy.o"
+      "legacy_object": "src/battle/enemy.o",
+      "candidate_key": "battle/enemy",
+      "candidate_directory": "src/non_matching/battle/enemy",
+      "assembly_directory": "asm/battle/enemy",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle/mechanics",
@@ -4166,7 +4712,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle/mechanics.o"
+      "legacy_object": "src/battle/mechanics.o",
+      "candidate_key": "battle/mechanics",
+      "candidate_directory": "src/non_matching/battle/mechanics",
+      "assembly_directory": "asm/battle/mechanics",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/anim_util",
@@ -4175,7 +4725,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/anim_util.o"
+      "legacy_object": "src/battle_anim/anim_util.o",
+      "candidate_key": "battle_anim/anim_util",
+      "candidate_directory": "src/non_matching/battle_anim/anim_util",
+      "assembly_directory": "asm/battle_anim/anim_util",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/anims",
@@ -4184,7 +4738,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/anims.o"
+      "legacy_object": "src/battle_anim/anims.o",
+      "candidate_key": "battle_anim/anims",
+      "candidate_directory": "src/non_matching/battle_anim/anims",
+      "assembly_directory": "asm/battle_anim/anims",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/attack",
@@ -4193,7 +4751,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/attack.o"
+      "legacy_object": "src/battle_anim/attack.o",
+      "candidate_key": "battle_anim/attack",
+      "candidate_directory": "src/non_matching/battle_anim/attack",
+      "assembly_directory": "asm/battle_anim/attack",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/camera",
@@ -4202,7 +4764,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/camera.o"
+      "legacy_object": "src/battle_anim/camera.o",
+      "candidate_key": "battle_anim/camera",
+      "candidate_directory": "src/non_matching/battle_anim/camera",
+      "assembly_directory": "asm/battle_anim/camera",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/cast",
@@ -4211,7 +4777,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/cast.o"
+      "legacy_object": "src/battle_anim/cast.o",
+      "candidate_key": "battle_anim/cast",
+      "candidate_directory": "src/non_matching/battle_anim/cast",
+      "assembly_directory": "asm/battle_anim/cast",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/color_cycle_vfx_palette",
@@ -4220,7 +4790,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/color_cycle_vfx_palette.o"
+      "legacy_object": "src/battle_anim/color_cycle_vfx_palette.o",
+      "candidate_key": "battle_anim/color_cycle_vfx_palette",
+      "candidate_directory": "src/non_matching/battle_anim/color_cycle_vfx_palette",
+      "assembly_directory": "asm/battle_anim/color_cycle_vfx_palette",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/djinn_set",
@@ -4229,7 +4803,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/djinn_set.o"
+      "legacy_object": "src/battle_anim/djinn_set.o",
+      "candidate_key": "battle_anim/djinn_set",
+      "candidate_directory": "src/non_matching/battle_anim/djinn_set",
+      "assembly_directory": "asm/battle_anim/djinn_set",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/djinni",
@@ -4238,7 +4816,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/djinni.o"
+      "legacy_object": "src/battle_anim/djinni.o",
+      "candidate_key": "battle_anim/djinni",
+      "candidate_directory": "src/non_matching/battle_anim/djinni",
+      "assembly_directory": "asm/battle_anim/djinni",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/epower_up",
@@ -4247,7 +4829,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/epower_up.o"
+      "legacy_object": "src/battle_anim/epower_up.o",
+      "candidate_key": "battle_anim/epower_up",
+      "candidate_directory": "src/non_matching/battle_anim/epower_up",
+      "assembly_directory": "asm/battle_anim/epower_up",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/move_intro",
@@ -4256,7 +4842,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/move_intro.o"
+      "legacy_object": "src/battle_anim/move_intro.o",
+      "candidate_key": "battle_anim/move_intro",
+      "candidate_directory": "src/non_matching/battle_anim/move_intro",
+      "assembly_directory": "asm/battle_anim/move_intro",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/annihilation",
@@ -4265,7 +4855,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/annihilation.o"
+      "legacy_object": "src/battle_anim/moves/annihilation.o",
+      "candidate_key": "battle_anim/moves/annihilation",
+      "candidate_directory": "src/non_matching/battle_anim/moves/annihilation",
+      "assembly_directory": "asm/battle_anim/moves/annihilation",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/astral_blast",
@@ -4274,7 +4868,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/astral_blast.o"
+      "legacy_object": "src/battle_anim/moves/astral_blast.o",
+      "candidate_key": "battle_anim/moves/astral_blast",
+      "candidate_directory": "src/non_matching/battle_anim/moves/astral_blast",
+      "assembly_directory": "asm/battle_anim/moves/astral_blast",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/atalanta",
@@ -4283,7 +4881,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/atalanta.o"
+      "legacy_object": "src/battle_anim/moves/atalanta.o",
+      "candidate_key": "battle_anim/moves/atalanta",
+      "candidate_directory": "src/non_matching/battle_anim/moves/atalanta",
+      "assembly_directory": "asm/battle_anim/moves/atalanta",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/bind",
@@ -4292,7 +4894,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/bind.o"
+      "legacy_object": "src/battle_anim/moves/bind.o",
+      "candidate_key": "battle_anim/moves/bind",
+      "candidate_directory": "src/non_matching/battle_anim/moves/bind",
+      "assembly_directory": "asm/battle_anim/moves/bind",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/bite_sting",
@@ -4301,7 +4907,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/bite_sting.o"
+      "legacy_object": "src/battle_anim/moves/bite_sting.o",
+      "candidate_key": "battle_anim/moves/bite_sting",
+      "candidate_directory": "src/non_matching/battle_anim/moves/bite_sting",
+      "assembly_directory": "asm/battle_anim/moves/bite_sting",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/blast",
@@ -4310,7 +4920,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/blast.o"
+      "legacy_object": "src/battle_anim/moves/blast.o",
+      "candidate_key": "battle_anim/moves/blast",
+      "candidate_directory": "src/non_matching/battle_anim/moves/blast",
+      "assembly_directory": "asm/battle_anim/moves/blast",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/bolt",
@@ -4319,7 +4933,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/bolt.o"
+      "legacy_object": "src/battle_anim/moves/bolt.o",
+      "candidate_key": "battle_anim/moves/bolt",
+      "candidate_directory": "src/non_matching/battle_anim/moves/bolt",
+      "assembly_directory": "asm/battle_anim/moves/bolt",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/boreas",
@@ -4328,7 +4946,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/boreas.o"
+      "legacy_object": "src/battle_anim/moves/boreas.o",
+      "candidate_key": "battle_anim/moves/boreas",
+      "candidate_directory": "src/non_matching/battle_anim/moves/boreas",
+      "assembly_directory": "asm/battle_anim/moves/boreas",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/break",
@@ -4337,7 +4959,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/break.o"
+      "legacy_object": "src/battle_anim/moves/break.o",
+      "candidate_key": "battle_anim/moves/break",
+      "candidate_directory": "src/non_matching/battle_anim/moves/break",
+      "assembly_directory": "asm/battle_anim/moves/break",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/breath",
@@ -4346,7 +4972,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/breath.o"
+      "legacy_object": "src/battle_anim/moves/breath.o",
+      "candidate_key": "battle_anim/moves/breath",
+      "candidate_directory": "src/non_matching/battle_anim/moves/breath",
+      "assembly_directory": "asm/battle_anim/moves/breath",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/condemn",
@@ -4355,7 +4985,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/condemn.o"
+      "legacy_object": "src/battle_anim/moves/condemn.o",
+      "candidate_key": "battle_anim/moves/condemn",
+      "candidate_directory": "src/non_matching/battle_anim/moves/condemn",
+      "assembly_directory": "asm/battle_anim/moves/condemn",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/confuse",
@@ -4364,7 +4998,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/confuse.o"
+      "legacy_object": "src/battle_anim/moves/confuse.o",
+      "candidate_key": "battle_anim/moves/confuse",
+      "candidate_directory": "src/non_matching/battle_anim/moves/confuse",
+      "assembly_directory": "asm/battle_anim/moves/confuse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/curse",
@@ -4373,7 +5011,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/curse.o"
+      "legacy_object": "src/battle_anim/moves/curse.o",
+      "candidate_key": "battle_anim/moves/curse",
+      "candidate_directory": "src/non_matching/battle_anim/moves/curse",
+      "assembly_directory": "asm/battle_anim/moves/curse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/cybele",
@@ -4382,7 +5024,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/cybele.o"
+      "legacy_object": "src/battle_anim/moves/cybele.o",
+      "candidate_key": "battle_anim/moves/cybele",
+      "candidate_directory": "src/non_matching/battle_anim/moves/cybele",
+      "assembly_directory": "asm/battle_anim/moves/cybele",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/death_plunge",
@@ -4391,7 +5037,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/death_plunge.o"
+      "legacy_object": "src/battle_anim/moves/death_plunge.o",
+      "candidate_key": "battle_anim/moves/death_plunge",
+      "candidate_directory": "src/non_matching/battle_anim/moves/death_plunge",
+      "assembly_directory": "asm/battle_anim/moves/death_plunge",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/douse",
@@ -4400,7 +5050,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/douse.o"
+      "legacy_object": "src/battle_anim/moves/douse.o",
+      "candidate_key": "battle_anim/moves/douse",
+      "candidate_directory": "src/non_matching/battle_anim/moves/douse",
+      "assembly_directory": "asm/battle_anim/moves/douse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/dragon_cloud",
@@ -4409,7 +5063,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/dragon_cloud.o"
+      "legacy_object": "src/battle_anim/moves/dragon_cloud.o",
+      "candidate_key": "battle_anim/moves/dragon_cloud",
+      "candidate_directory": "src/non_matching/battle_anim/moves/dragon_cloud",
+      "assembly_directory": "asm/battle_anim/moves/dragon_cloud",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/drain",
@@ -4418,7 +5076,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/drain.o"
+      "legacy_object": "src/battle_anim/moves/drain.o",
+      "candidate_key": "battle_anim/moves/drain",
+      "candidate_directory": "src/non_matching/battle_anim/moves/drain",
+      "assembly_directory": "asm/battle_anim/moves/drain",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/fireball",
@@ -4427,7 +5089,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/fireball.o"
+      "legacy_object": "src/battle_anim/moves/fireball.o",
+      "candidate_key": "battle_anim/moves/fireball",
+      "candidate_directory": "src/non_matching/battle_anim/moves/fireball",
+      "assembly_directory": "asm/battle_anim/moves/fireball",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/flare",
@@ -4436,7 +5102,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/flare.o"
+      "legacy_object": "src/battle_anim/moves/flare.o",
+      "candidate_key": "battle_anim/moves/flare",
+      "candidate_directory": "src/non_matching/battle_anim/moves/flare",
+      "assembly_directory": "asm/battle_anim/moves/flare",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/frost",
@@ -4445,7 +5115,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/frost.o"
+      "legacy_object": "src/battle_anim/moves/frost.o",
+      "candidate_key": "battle_anim/moves/frost",
+      "candidate_directory": "src/non_matching/battle_anim/moves/frost",
+      "assembly_directory": "asm/battle_anim/moves/frost",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/froth",
@@ -4454,7 +5128,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/froth.o"
+      "legacy_object": "src/battle_anim/moves/froth.o",
+      "candidate_key": "battle_anim/moves/froth",
+      "candidate_directory": "src/non_matching/battle_anim/moves/froth",
+      "assembly_directory": "asm/battle_anim/moves/froth",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/fullscreen_slash",
@@ -4463,7 +5141,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/fullscreen_slash.o"
+      "legacy_object": "src/battle_anim/moves/fullscreen_slash.o",
+      "candidate_key": "battle_anim/moves/fullscreen_slash",
+      "candidate_directory": "src/non_matching/battle_anim/moves/fullscreen_slash",
+      "assembly_directory": "asm/battle_anim/moves/fullscreen_slash",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/gaia",
@@ -4472,7 +5154,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296-gaia",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/gaia.o"
+      "legacy_object": "src/battle_anim/moves/gaia.o",
+      "candidate_key": "battle_anim/moves/gaia",
+      "candidate_directory": "src/non_matching/battle_anim/moves/gaia",
+      "assembly_directory": "asm/battle_anim/moves/gaia",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/ground",
@@ -4481,7 +5167,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/ground.o"
+      "legacy_object": "src/battle_anim/moves/ground.o",
+      "candidate_key": "battle_anim/moves/ground",
+      "candidate_directory": "src/non_matching/battle_anim/moves/ground",
+      "assembly_directory": "asm/battle_anim/moves/ground",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/growth",
@@ -4490,7 +5180,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/growth.o"
+      "legacy_object": "src/battle_anim/moves/growth.o",
+      "candidate_key": "battle_anim/moves/growth",
+      "candidate_directory": "src/non_matching/battle_anim/moves/growth",
+      "assembly_directory": "asm/battle_anim/moves/growth",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/hail",
@@ -4499,7 +5193,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/hail.o"
+      "legacy_object": "src/battle_anim/moves/hail.o",
+      "candidate_key": "battle_anim/moves/hail",
+      "candidate_directory": "src/non_matching/battle_anim/moves/hail",
+      "assembly_directory": "asm/battle_anim/moves/hail",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/haunt",
@@ -4508,7 +5206,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/haunt.o"
+      "legacy_object": "src/battle_anim/moves/haunt.o",
+      "candidate_key": "battle_anim/moves/haunt",
+      "candidate_directory": "src/non_matching/battle_anim/moves/haunt",
+      "assembly_directory": "asm/battle_anim/moves/haunt",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/haunt_attack",
@@ -4517,7 +5219,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/haunt_attack.o"
+      "legacy_object": "src/battle_anim/moves/haunt_attack.o",
+      "candidate_key": "battle_anim/moves/haunt_attack",
+      "candidate_directory": "src/non_matching/battle_anim/moves/haunt_attack",
+      "assembly_directory": "asm/battle_anim/moves/haunt_attack",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/heal",
@@ -4526,7 +5232,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/heal.o"
+      "legacy_object": "src/battle_anim/moves/heal.o",
+      "candidate_key": "battle_anim/moves/heal",
+      "candidate_directory": "src/non_matching/battle_anim/moves/heal",
+      "assembly_directory": "asm/battle_anim/moves/heal",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/helm_splitter",
@@ -4535,7 +5245,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/helm_splitter.o"
+      "legacy_object": "src/battle_anim/moves/helm_splitter.o",
+      "candidate_key": "battle_anim/moves/helm_splitter",
+      "candidate_directory": "src/non_matching/battle_anim/moves/helm_splitter",
+      "assembly_directory": "asm/battle_anim/moves/helm_splitter",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/ice",
@@ -4544,7 +5258,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/ice.o"
+      "legacy_object": "src/battle_anim/moves/ice.o",
+      "candidate_key": "battle_anim/moves/ice",
+      "candidate_directory": "src/non_matching/battle_anim/moves/ice",
+      "assembly_directory": "asm/battle_anim/moves/ice",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/judgment",
@@ -4553,7 +5271,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/judgment.o"
+      "legacy_object": "src/battle_anim/moves/judgment.o",
+      "candidate_key": "battle_anim/moves/judgment",
+      "candidate_directory": "src/non_matching/battle_anim/moves/judgment",
+      "assembly_directory": "asm/battle_anim/moves/judgment",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/jupiter",
@@ -4562,7 +5284,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/jupiter.o"
+      "legacy_object": "src/battle_anim/moves/jupiter.o",
+      "candidate_key": "battle_anim/moves/jupiter",
+      "candidate_directory": "src/non_matching/battle_anim/moves/jupiter",
+      "assembly_directory": "asm/battle_anim/moves/jupiter",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/kirin",
@@ -4571,7 +5297,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/kirin.o"
+      "legacy_object": "src/battle_anim/moves/kirin.o",
+      "candidate_key": "battle_anim/moves/kirin",
+      "candidate_directory": "src/non_matching/battle_anim/moves/kirin",
+      "assembly_directory": "asm/battle_anim/moves/kirin",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/kite",
@@ -4580,7 +5310,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/kite.o"
+      "legacy_object": "src/battle_anim/moves/kite.o",
+      "candidate_key": "battle_anim/moves/kite",
+      "candidate_directory": "src/non_matching/battle_anim/moves/kite",
+      "assembly_directory": "asm/battle_anim/moves/kite",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/mars",
@@ -4589,7 +5323,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/mars.o"
+      "legacy_object": "src/battle_anim/moves/mars.o",
+      "candidate_key": "battle_anim/moves/mars",
+      "candidate_directory": "src/non_matching/battle_anim/moves/mars",
+      "assembly_directory": "asm/battle_anim/moves/mars",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/mercury",
@@ -4598,7 +5336,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/mercury.o"
+      "legacy_object": "src/battle_anim/moves/mercury.o",
+      "candidate_key": "battle_anim/moves/mercury",
+      "candidate_directory": "src/non_matching/battle_anim/moves/mercury",
+      "assembly_directory": "asm/battle_anim/moves/mercury",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/meteor",
@@ -4607,7 +5349,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/meteor.o"
+      "legacy_object": "src/battle_anim/moves/meteor.o",
+      "candidate_key": "battle_anim/moves/meteor",
+      "candidate_directory": "src/non_matching/battle_anim/moves/meteor",
+      "assembly_directory": "asm/battle_anim/moves/meteor",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/mud",
@@ -4616,7 +5362,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/mud.o"
+      "legacy_object": "src/battle_anim/moves/mud.o",
+      "candidate_key": "battle_anim/moves/mud",
+      "candidate_directory": "src/non_matching/battle_anim/moves/mud",
+      "assembly_directory": "asm/battle_anim/moves/mud",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/neptune",
@@ -4625,7 +5375,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/neptune.o"
+      "legacy_object": "src/battle_anim/moves/neptune.o",
+      "candidate_key": "battle_anim/moves/neptune",
+      "candidate_directory": "src/non_matching/battle_anim/moves/neptune",
+      "assembly_directory": "asm/battle_anim/moves/neptune",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/nereid",
@@ -4634,7 +5388,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/nereid.o"
+      "legacy_object": "src/battle_anim/moves/nereid.o",
+      "candidate_key": "battle_anim/moves/nereid",
+      "candidate_directory": "src/non_matching/battle_anim/moves/nereid",
+      "assembly_directory": "asm/battle_anim/moves/nereid",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/nova",
@@ -4643,7 +5401,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/nova.o"
+      "legacy_object": "src/battle_anim/moves/nova.o",
+      "candidate_key": "battle_anim/moves/nova",
+      "candidate_directory": "src/non_matching/battle_anim/moves/nova",
+      "assembly_directory": "asm/battle_anim/moves/nova",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/particle_cloud",
@@ -4652,7 +5414,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/particle_cloud.o"
+      "legacy_object": "src/battle_anim/moves/particle_cloud.o",
+      "candidate_key": "battle_anim/moves/particle_cloud",
+      "candidate_directory": "src/non_matching/battle_anim/moves/particle_cloud",
+      "assembly_directory": "asm/battle_anim/moves/particle_cloud",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/planet_diver",
@@ -4661,7 +5427,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/planet_diver.o"
+      "legacy_object": "src/battle_anim/moves/planet_diver.o",
+      "candidate_key": "battle_anim/moves/planet_diver",
+      "candidate_directory": "src/non_matching/battle_anim/moves/planet_diver",
+      "assembly_directory": "asm/battle_anim/moves/planet_diver",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/plasma",
@@ -4670,7 +5440,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/plasma.o"
+      "legacy_object": "src/battle_anim/moves/plasma.o",
+      "candidate_key": "battle_anim/moves/plasma",
+      "candidate_directory": "src/non_matching/battle_anim/moves/plasma",
+      "assembly_directory": "asm/battle_anim/moves/plasma",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/prism",
@@ -4679,7 +5453,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/prism.o"
+      "legacy_object": "src/battle_anim/moves/prism.o",
+      "candidate_key": "battle_anim/moves/prism",
+      "candidate_directory": "src/non_matching/battle_anim/moves/prism",
+      "assembly_directory": "asm/battle_anim/moves/prism",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/procne",
@@ -4688,7 +5466,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/procne.o"
+      "legacy_object": "src/battle_anim/moves/procne.o",
+      "candidate_key": "battle_anim/moves/procne",
+      "candidate_directory": "src/non_matching/battle_anim/moves/procne",
+      "assembly_directory": "asm/battle_anim/moves/procne",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/projectile",
@@ -4697,7 +5479,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/projectile.o"
+      "legacy_object": "src/battle_anim/moves/projectile.o",
+      "candidate_key": "battle_anim/moves/projectile",
+      "candidate_directory": "src/non_matching/battle_anim/moves/projectile",
+      "assembly_directory": "asm/battle_anim/moves/projectile",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/psyphon_seal",
@@ -4706,7 +5492,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/psyphon_seal.o"
+      "legacy_object": "src/battle_anim/moves/psyphon_seal.o",
+      "candidate_key": "battle_anim/moves/psyphon_seal",
+      "candidate_directory": "src/non_matching/battle_anim/moves/psyphon_seal",
+      "assembly_directory": "asm/battle_anim/moves/psyphon_seal",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/quake",
@@ -4715,7 +5505,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/quake.o"
+      "legacy_object": "src/battle_anim/moves/quake.o",
+      "candidate_key": "battle_anim/moves/quake",
+      "candidate_directory": "src/non_matching/battle_anim/moves/quake",
+      "assembly_directory": "asm/battle_anim/moves/quake",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/ragnarok",
@@ -4724,7 +5518,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/ragnarok.o"
+      "legacy_object": "src/battle_anim/moves/ragnarok.o",
+      "candidate_key": "battle_anim/moves/ragnarok",
+      "candidate_directory": "src/non_matching/battle_anim/moves/ragnarok",
+      "assembly_directory": "asm/battle_anim/moves/ragnarok",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/ramses",
@@ -4733,7 +5531,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/ramses.o"
+      "legacy_object": "src/battle_anim/moves/ramses.o",
+      "candidate_key": "battle_anim/moves/ramses",
+      "candidate_directory": "src/non_matching/battle_anim/moves/ramses",
+      "assembly_directory": "asm/battle_anim/moves/ramses",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/rapid_slash",
@@ -4742,7 +5544,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/rapid_slash.o"
+      "legacy_object": "src/battle_anim/moves/rapid_slash.o",
+      "candidate_key": "battle_anim/moves/rapid_slash",
+      "candidate_directory": "src/non_matching/battle_anim/moves/rapid_slash",
+      "assembly_directory": "asm/battle_anim/moves/rapid_slash",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/ray",
@@ -4751,7 +5557,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/ray.o"
+      "legacy_object": "src/battle_anim/moves/ray.o",
+      "candidate_key": "battle_anim/moves/ray",
+      "candidate_directory": "src/non_matching/battle_anim/moves/ray",
+      "assembly_directory": "asm/battle_anim/moves/ray",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/revive",
@@ -4760,7 +5570,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/revive.o"
+      "legacy_object": "src/battle_anim/moves/revive.o",
+      "candidate_key": "battle_anim/moves/revive",
+      "candidate_directory": "src/non_matching/battle_anim/moves/revive",
+      "assembly_directory": "asm/battle_anim/moves/revive",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/shining_star",
@@ -4769,7 +5583,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/shining_star.o"
+      "legacy_object": "src/battle_anim/moves/shining_star.o",
+      "candidate_key": "battle_anim/moves/shining_star",
+      "candidate_directory": "src/non_matching/battle_anim/moves/shining_star",
+      "assembly_directory": "asm/battle_anim/moves/shining_star",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/sleep",
@@ -4778,7 +5596,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/sleep.o"
+      "legacy_object": "src/battle_anim/moves/sleep.o",
+      "candidate_key": "battle_anim/moves/sleep",
+      "candidate_directory": "src/non_matching/battle_anim/moves/sleep",
+      "assembly_directory": "asm/battle_anim/moves/sleep",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/sonic_wave",
@@ -4787,7 +5609,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/sonic_wave.o"
+      "legacy_object": "src/battle_anim/moves/sonic_wave.o",
+      "candidate_key": "battle_anim/moves/sonic_wave",
+      "candidate_directory": "src/non_matching/battle_anim/moves/sonic_wave",
+      "assembly_directory": "asm/battle_anim/moves/sonic_wave",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/spasm",
@@ -4796,7 +5622,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/spasm.o"
+      "legacy_object": "src/battle_anim/moves/spasm.o",
+      "candidate_key": "battle_anim/moves/spasm",
+      "candidate_directory": "src/non_matching/battle_anim/moves/spasm",
+      "assembly_directory": "asm/battle_anim/moves/spasm",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/spider_web",
@@ -4805,7 +5635,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/spider_web.o"
+      "legacy_object": "src/battle_anim/moves/spider_web.o",
+      "candidate_key": "battle_anim/moves/spider_web",
+      "candidate_directory": "src/non_matching/battle_anim/moves/spider_web",
+      "assembly_directory": "asm/battle_anim/moves/spider_web",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/spire",
@@ -4814,7 +5648,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/spire.o"
+      "legacy_object": "src/battle_anim/moves/spire.o",
+      "candidate_key": "battle_anim/moves/spire",
+      "candidate_directory": "src/non_matching/battle_anim/moves/spire",
+      "assembly_directory": "asm/battle_anim/moves/spire",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/spore",
@@ -4823,7 +5661,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/spore.o"
+      "legacy_object": "src/battle_anim/moves/spore.o",
+      "candidate_key": "battle_anim/moves/spore",
+      "candidate_directory": "src/non_matching/battle_anim/moves/spore",
+      "assembly_directory": "asm/battle_anim/moves/spore",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/stat_down",
@@ -4832,7 +5674,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/stat_down.o"
+      "legacy_object": "src/battle_anim/moves/stat_down.o",
+      "candidate_key": "battle_anim/moves/stat_down",
+      "candidate_directory": "src/non_matching/battle_anim/moves/stat_down",
+      "assembly_directory": "asm/battle_anim/moves/stat_down",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/stat_up",
@@ -4841,7 +5687,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/stat_up.o"
+      "legacy_object": "src/battle_anim/moves/stat_up.o",
+      "candidate_key": "battle_anim/moves/stat_up",
+      "candidate_directory": "src/non_matching/battle_anim/moves/stat_up",
+      "assembly_directory": "asm/battle_anim/moves/stat_up",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/tackle",
@@ -4850,7 +5700,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/tackle.o"
+      "legacy_object": "src/battle_anim/moves/tackle.o",
+      "candidate_key": "battle_anim/moves/tackle",
+      "candidate_directory": "src/non_matching/battle_anim/moves/tackle",
+      "assembly_directory": "asm/battle_anim/moves/tackle",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/tentacle",
@@ -4859,7 +5713,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/tentacle.o"
+      "legacy_object": "src/battle_anim/moves/tentacle.o",
+      "candidate_key": "battle_anim/moves/tentacle",
+      "candidate_directory": "src/non_matching/battle_anim/moves/tentacle",
+      "assembly_directory": "asm/battle_anim/moves/tentacle",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/thor",
@@ -4868,7 +5726,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/thor.o"
+      "legacy_object": "src/battle_anim/moves/thor.o",
+      "candidate_key": "battle_anim/moves/thor",
+      "candidate_directory": "src/non_matching/battle_anim/moves/thor",
+      "assembly_directory": "asm/battle_anim/moves/thor",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/thorn",
@@ -4877,7 +5739,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/thorn.o"
+      "legacy_object": "src/battle_anim/moves/thorn.o",
+      "candidate_key": "battle_anim/moves/thorn",
+      "candidate_directory": "src/non_matching/battle_anim/moves/thorn",
+      "assembly_directory": "asm/battle_anim/moves/thorn",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/thrash",
@@ -4886,7 +5752,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/thrash.o"
+      "legacy_object": "src/battle_anim/moves/thrash.o",
+      "candidate_key": "battle_anim/moves/thrash",
+      "candidate_directory": "src/non_matching/battle_anim/moves/thrash",
+      "assembly_directory": "asm/battle_anim/moves/thrash",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/tiamat",
@@ -4895,7 +5765,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/tiamat.o"
+      "legacy_object": "src/battle_anim/moves/tiamat.o",
+      "candidate_key": "battle_anim/moves/tiamat",
+      "candidate_directory": "src/non_matching/battle_anim/moves/tiamat",
+      "assembly_directory": "asm/battle_anim/moves/tiamat",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/titan_blade",
@@ -4904,7 +5778,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/titan_blade.o"
+      "legacy_object": "src/battle_anim/moves/titan_blade.o",
+      "candidate_key": "battle_anim/moves/titan_blade",
+      "candidate_directory": "src/non_matching/battle_anim/moves/titan_blade",
+      "assembly_directory": "asm/battle_anim/moves/titan_blade",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/torch",
@@ -4913,7 +5791,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/torch.o"
+      "legacy_object": "src/battle_anim/moves/torch.o",
+      "candidate_key": "battle_anim/moves/torch",
+      "candidate_directory": "src/non_matching/battle_anim/moves/torch",
+      "assembly_directory": "asm/battle_anim/moves/torch",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/undead_sword",
@@ -4922,7 +5804,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/undead_sword.o"
+      "legacy_object": "src/battle_anim/moves/undead_sword.o",
+      "candidate_key": "battle_anim/moves/undead_sword",
+      "candidate_directory": "src/non_matching/battle_anim/moves/undead_sword",
+      "assembly_directory": "asm/battle_anim/moves/undead_sword",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/unused_fizz",
@@ -4931,7 +5817,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/unused_fizz.o"
+      "legacy_object": "src/battle_anim/moves/unused_fizz.o",
+      "candidate_key": "battle_anim/moves/unused_fizz",
+      "candidate_directory": "src/non_matching/battle_anim/moves/unused_fizz",
+      "assembly_directory": "asm/battle_anim/moves/unused_fizz",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/unused_sabre_rain",
@@ -4940,7 +5830,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/unused_sabre_rain.o"
+      "legacy_object": "src/battle_anim/moves/unused_sabre_rain.o",
+      "candidate_key": "battle_anim/moves/unused_sabre_rain",
+      "candidate_directory": "src/non_matching/battle_anim/moves/unused_sabre_rain",
+      "assembly_directory": "asm/battle_anim/moves/unused_sabre_rain",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/unused_skull_cloud",
@@ -4949,7 +5843,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/unused_skull_cloud.o"
+      "legacy_object": "src/battle_anim/moves/unused_skull_cloud.o",
+      "candidate_key": "battle_anim/moves/unused_skull_cloud",
+      "candidate_directory": "src/non_matching/battle_anim/moves/unused_skull_cloud",
+      "assembly_directory": "asm/battle_anim/moves/unused_skull_cloud",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/unused_skull_spin",
@@ -4958,7 +5856,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/unused_skull_spin.o"
+      "legacy_object": "src/battle_anim/moves/unused_skull_spin.o",
+      "candidate_key": "battle_anim/moves/unused_skull_spin",
+      "candidate_directory": "src/non_matching/battle_anim/moves/unused_skull_spin",
+      "assembly_directory": "asm/battle_anim/moves/unused_skull_spin",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/venus",
@@ -4967,7 +5869,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/venus.o"
+      "legacy_object": "src/battle_anim/moves/venus.o",
+      "candidate_key": "battle_anim/moves/venus",
+      "candidate_directory": "src/non_matching/battle_anim/moves/venus",
+      "assembly_directory": "asm/battle_anim/moves/venus",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/vine",
@@ -4976,7 +5882,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/vine.o"
+      "legacy_object": "src/battle_anim/moves/vine.o",
+      "candidate_key": "battle_anim/moves/vine",
+      "candidate_directory": "src/non_matching/battle_anim/moves/vine",
+      "assembly_directory": "asm/battle_anim/moves/vine",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/volcano",
@@ -4985,7 +5895,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/volcano.o"
+      "legacy_object": "src/battle_anim/moves/volcano.o",
+      "candidate_key": "battle_anim/moves/volcano",
+      "candidate_directory": "src/non_matching/battle_anim/moves/volcano",
+      "assembly_directory": "asm/battle_anim/moves/volcano",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/moves/whirlwind",
@@ -4994,7 +5908,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/moves/whirlwind.o"
+      "legacy_object": "src/battle_anim/moves/whirlwind.o",
+      "candidate_key": "battle_anim/moves/whirlwind",
+      "candidate_directory": "src/non_matching/battle_anim/moves/whirlwind",
+      "assembly_directory": "asm/battle_anim/moves/whirlwind",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/screen_shatter",
@@ -5003,7 +5921,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/screen_shatter.o"
+      "legacy_object": "src/battle_anim/screen_shatter.o",
+      "candidate_key": "battle_anim/screen_shatter",
+      "candidate_directory": "src/non_matching/battle_anim/screen_shatter",
+      "assembly_directory": "asm/battle_anim/screen_shatter",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/special_attack",
@@ -5012,7 +5934,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/special_attack.o"
+      "legacy_object": "src/battle_anim/special_attack.o",
+      "candidate_key": "battle_anim/special_attack",
+      "candidate_directory": "src/non_matching/battle_anim/special_attack",
+      "assembly_directory": "asm/battle_anim/special_attack",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/summon_sprite",
@@ -5021,7 +5947,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/summon_sprite.o"
+      "legacy_object": "src/battle_anim/summon_sprite.o",
+      "candidate_key": "battle_anim/summon_sprite",
+      "candidate_directory": "src/non_matching/battle_anim/summon_sprite",
+      "assembly_directory": "asm/battle_anim/summon_sprite",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/transition_in",
@@ -5030,7 +5960,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/transition_in.o"
+      "legacy_object": "src/battle_anim/transition_in.o",
+      "candidate_key": "battle_anim/transition_in",
+      "candidate_directory": "src/non_matching/battle_anim/transition_in",
+      "assembly_directory": "asm/battle_anim/transition_in",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/transition_out",
@@ -5039,7 +5973,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/transition_out.o"
+      "legacy_object": "src/battle_anim/transition_out.o",
+      "candidate_key": "battle_anim/transition_out",
+      "candidate_directory": "src/non_matching/battle_anim/transition_out",
+      "assembly_directory": "asm/battle_anim/transition_out",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/unleash_intro",
@@ -5048,7 +5986,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/unleash_intro.o"
+      "legacy_object": "src/battle_anim/unleash_intro.o",
+      "candidate_key": "battle_anim/unleash_intro",
+      "candidate_directory": "src/non_matching/battle_anim/unleash_intro",
+      "assembly_directory": "asm/battle_anim/unleash_intro",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/unused_element_orbs",
@@ -5057,7 +5999,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/unused_element_orbs.o"
+      "legacy_object": "src/battle_anim/unused_element_orbs.o",
+      "candidate_key": "battle_anim/unused_element_orbs",
+      "candidate_directory": "src/non_matching/battle_anim/unused_element_orbs",
+      "assembly_directory": "asm/battle_anim/unused_element_orbs",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/unused_screen_melt",
@@ -5066,7 +6012,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/unused_screen_melt.o"
+      "legacy_object": "src/battle_anim/unused_screen_melt.o",
+      "candidate_key": "battle_anim/unused_screen_melt",
+      "candidate_directory": "src/non_matching/battle_anim/unused_screen_melt",
+      "assembly_directory": "asm/battle_anim/unused_screen_melt",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/update_screen_shake",
@@ -5075,7 +6025,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/update_screen_shake.o"
+      "legacy_object": "src/battle_anim/update_screen_shake.o",
+      "candidate_key": "battle_anim/update_screen_shake",
+      "candidate_directory": "src/non_matching/battle_anim/update_screen_shake",
+      "assembly_directory": "asm/battle_anim/update_screen_shake",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/battle_anim/vfx",
@@ -5084,7 +6038,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/battle_anim/vfx.o"
+      "legacy_object": "src/battle_anim/vfx.o",
+      "candidate_key": "battle_anim/vfx",
+      "candidate_directory": "src/non_matching/battle_anim/vfx",
+      "assembly_directory": "asm/battle_anim/vfx",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/crt0",
@@ -5093,7 +6051,8 @@
       "owner": "rom_c0",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/crt0.o"
+      "legacy_object": "src/crt0.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/battle_bg",
@@ -5102,7 +6061,11 @@
       "owner": "rom_b5000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/battle_bg.o"
+      "legacy_object": "src/decompress/battle_bg.o",
+      "candidate_key": "decompress/battle_bg",
+      "candidate_directory": "src/non_matching/decompress/battle_bg",
+      "assembly_directory": "asm/decompress/battle_bg",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/bg-credits",
@@ -5111,7 +6074,8 @@
       "owner": "rom_f0000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/bg-credits.o"
+      "legacy_object": "src/decompress/bg-credits.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/huffman",
@@ -5120,7 +6084,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/huffman.o"
+      "legacy_object": "src/decompress/huffman.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/icon",
@@ -5129,7 +6094,8 @@
       "owner": "rom_15000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/icon.o"
+      "legacy_object": "src/decompress/icon.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/lz",
@@ -5138,7 +6104,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/lz.o"
+      "legacy_object": "src/decompress/lz.o",
+      "candidate_key": "decompress/lz",
+      "candidate_directory": "src/non_matching/decompress/lz",
+      "assembly_directory": "asm/decompress/lz",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/lz1",
@@ -5147,7 +6117,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/lz1.o"
+      "legacy_object": "src/decompress/lz1.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/lz16",
@@ -5156,7 +6127,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/lz16.o"
+      "legacy_object": "src/decompress/lz16.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/lz2",
@@ -5165,7 +6137,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/lz2.o"
+      "legacy_object": "src/decompress/lz2.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/lz_rom",
@@ -5174,7 +6147,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/lz_rom.o"
+      "legacy_object": "src/decompress/lz_rom.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/decompress/sprite_lz",
@@ -5183,7 +6157,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/decompress/sprite_lz.o"
+      "legacy_object": "src/decompress/sprite_lz.o",
+      "candidate_key": "decompress/sprite_lz",
+      "candidate_directory": "src/non_matching/decompress/sprite_lz",
+      "assembly_directory": "asm/decompress/sprite_lz",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ending",
@@ -5192,7 +6170,11 @@
       "owner": "rom_f0000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ending.o"
+      "legacy_object": "src/ending.o",
+      "candidate_key": "ending",
+      "candidate_directory": "src/non_matching/ending",
+      "assembly_directory": "asm/ending",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/engine/sprite_test",
@@ -5201,7 +6183,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/engine/sprite_test.o"
+      "legacy_object": "src/engine/sprite_test.o",
+      "candidate_key": "engine/sprite_test",
+      "candidate_directory": "src/non_matching/engine/sprite_test",
+      "assembly_directory": "asm/engine/sprite_test",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/engine/unpack_tilemap",
@@ -5210,7 +6196,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/engine/unpack_tilemap.o"
+      "legacy_object": "src/engine/unpack_tilemap.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/actor_move",
@@ -5219,7 +6206,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/actor_move.o"
+      "legacy_object": "src/field/actor_move.o",
+      "candidate_key": "field/actor_move",
+      "candidate_directory": "src/non_matching/field/actor_move",
+      "assembly_directory": "asm/field/actor_move",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/cutscene",
@@ -5228,7 +6219,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/cutscene.o"
+      "legacy_object": "src/field/cutscene.o",
+      "candidate_key": "field/cutscene",
+      "candidate_directory": "src/non_matching/field/cutscene",
+      "assembly_directory": "asm/field/cutscene",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/djinni",
@@ -5237,7 +6232,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/djinni.o"
+      "legacy_object": "src/field/djinni.o",
+      "candidate_key": "field/djinni",
+      "candidate_directory": "src/non_matching/field/djinni",
+      "assembly_directory": "asm/field/djinni",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/field",
@@ -5246,7 +6245,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/field.o"
+      "legacy_object": "src/field/field.o",
+      "candidate_key": "field/field",
+      "candidate_directory": "src/non_matching/field/field",
+      "assembly_directory": "asm/field/field",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/field_effect",
@@ -5255,7 +6258,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/field_effect.o"
+      "legacy_object": "src/field/field_effect.o",
+      "candidate_key": "field/field_effect",
+      "candidate_directory": "src/non_matching/field/field_effect",
+      "assembly_directory": "asm/field/field_effect",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/field_move",
@@ -5264,7 +6271,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/field_move.o"
+      "legacy_object": "src/field/field_move.o",
+      "candidate_key": "field/field_move",
+      "candidate_directory": "src/non_matching/field/field_move",
+      "assembly_directory": "asm/field/field_move",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/map",
@@ -5273,7 +6284,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/map.o"
+      "legacy_object": "src/field/map.o",
+      "candidate_key": "field/map",
+      "candidate_directory": "src/non_matching/field/map",
+      "assembly_directory": "asm/field/map",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/map_actor",
@@ -5282,7 +6297,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/map_actor.o"
+      "legacy_object": "src/field/map_actor.o",
+      "candidate_key": "field/map_actor",
+      "candidate_directory": "src/non_matching/field/map_actor",
+      "assembly_directory": "asm/field/map_actor",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/map_actor_api",
@@ -5291,7 +6310,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/map_actor_api.o"
+      "legacy_object": "src/field/map_actor_api.o",
+      "candidate_key": "field/map_actor_api",
+      "candidate_directory": "src/non_matching/field/map_actor_api",
+      "assembly_directory": "asm/field/map_actor_api",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/map_data",
@@ -5300,7 +6323,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/map_data.o"
+      "legacy_object": "src/field/map_data.o",
+      "candidate_key": "field/map_data",
+      "candidate_directory": "src/non_matching/field/map_data",
+      "assembly_directory": "asm/field/map_data",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/map_load",
@@ -5309,7 +6336,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/map_load.o"
+      "legacy_object": "src/field/map_load.o",
+      "candidate_key": "field/map_load",
+      "candidate_directory": "src/non_matching/field/map_load",
+      "assembly_directory": "asm/field/map_load",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/avoid",
@@ -5318,7 +6349,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/avoid.o"
+      "legacy_object": "src/field/moves/avoid.o",
+      "candidate_key": "field/moves/avoid",
+      "candidate_directory": "src/non_matching/field/moves/avoid",
+      "assembly_directory": "asm/field/moves/avoid",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/carry",
@@ -5327,7 +6362,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/carry.o"
+      "legacy_object": "src/field/moves/carry.o",
+      "candidate_key": "field/moves/carry",
+      "candidate_directory": "src/non_matching/field/moves/carry",
+      "assembly_directory": "asm/field/moves/carry",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/catch",
@@ -5336,7 +6375,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/catch.o"
+      "legacy_object": "src/field/moves/catch.o",
+      "candidate_key": "field/moves/catch",
+      "candidate_directory": "src/non_matching/field/moves/catch",
+      "assembly_directory": "asm/field/moves/catch",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/cloak",
@@ -5345,7 +6388,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/cloak.o"
+      "legacy_object": "src/field/moves/cloak.o",
+      "candidate_key": "field/moves/cloak",
+      "candidate_directory": "src/non_matching/field/moves/cloak",
+      "assembly_directory": "asm/field/moves/cloak",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/douse",
@@ -5354,7 +6401,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/douse.o"
+      "legacy_object": "src/field/moves/douse.o",
+      "candidate_key": "field/moves/douse",
+      "candidate_directory": "src/non_matching/field/moves/douse",
+      "assembly_directory": "asm/field/moves/douse",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/force",
@@ -5363,7 +6414,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/force.o"
+      "legacy_object": "src/field/moves/force.o",
+      "candidate_key": "field/moves/force",
+      "candidate_directory": "src/non_matching/field/moves/force",
+      "assembly_directory": "asm/field/moves/force",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/frost",
@@ -5372,7 +6427,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/frost.o"
+      "legacy_object": "src/field/moves/frost.o",
+      "candidate_key": "field/moves/frost",
+      "candidate_directory": "src/non_matching/field/moves/frost",
+      "assembly_directory": "asm/field/moves/frost",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/growth",
@@ -5381,7 +6440,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/growth.o"
+      "legacy_object": "src/field/moves/growth.o",
+      "candidate_key": "field/moves/growth",
+      "candidate_directory": "src/non_matching/field/moves/growth",
+      "assembly_directory": "asm/field/moves/growth",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/halt",
@@ -5390,7 +6453,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/halt.o"
+      "legacy_object": "src/field/moves/halt.o",
+      "candidate_key": "field/moves/halt",
+      "candidate_directory": "src/non_matching/field/moves/halt",
+      "assembly_directory": "asm/field/moves/halt",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/lift",
@@ -5399,7 +6466,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/lift.o"
+      "legacy_object": "src/field/moves/lift.o",
+      "candidate_key": "field/moves/lift",
+      "candidate_directory": "src/non_matching/field/moves/lift",
+      "assembly_directory": "asm/field/moves/lift",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/mind_read",
@@ -5408,7 +6479,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/mind_read.o"
+      "legacy_object": "src/field/moves/mind_read.o",
+      "candidate_key": "field/moves/mind_read",
+      "candidate_directory": "src/non_matching/field/moves/mind_read",
+      "assembly_directory": "asm/field/moves/mind_read",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/move",
@@ -5417,7 +6492,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/move.o"
+      "legacy_object": "src/field/moves/move.o",
+      "candidate_key": "field/moves/move",
+      "candidate_directory": "src/non_matching/field/moves/move",
+      "assembly_directory": "asm/field/moves/move",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/ply",
@@ -5426,7 +6505,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/ply.o"
+      "legacy_object": "src/field/moves/ply.o",
+      "candidate_key": "field/moves/ply",
+      "candidate_directory": "src/non_matching/field/moves/ply",
+      "assembly_directory": "asm/field/moves/ply",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/retreat",
@@ -5435,7 +6518,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/retreat.o"
+      "legacy_object": "src/field/moves/retreat.o",
+      "candidate_key": "field/moves/retreat",
+      "candidate_directory": "src/non_matching/field/moves/retreat",
+      "assembly_directory": "asm/field/moves/retreat",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/reveal",
@@ -5444,7 +6531,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/reveal.o"
+      "legacy_object": "src/field/moves/reveal.o",
+      "candidate_key": "field/moves/reveal",
+      "candidate_directory": "src/non_matching/field/moves/reveal",
+      "assembly_directory": "asm/field/moves/reveal",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/moves/whirlwind",
@@ -5453,7 +6544,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/moves/whirlwind.o"
+      "legacy_object": "src/field/moves/whirlwind.o",
+      "candidate_key": "field/moves/whirlwind",
+      "candidate_directory": "src/non_matching/field/moves/whirlwind",
+      "assembly_directory": "asm/field/moves/whirlwind",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/psynergy",
@@ -5462,7 +6557,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/psynergy.o"
+      "legacy_object": "src/field/psynergy.o",
+      "candidate_key": "field/psynergy",
+      "candidate_directory": "src/non_matching/field/psynergy",
+      "assembly_directory": "asm/field/psynergy",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/room_load",
@@ -5471,7 +6570,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/room_load.o"
+      "legacy_object": "src/field/room_load.o",
+      "candidate_key": "field/room_load",
+      "candidate_directory": "src/non_matching/field/room_load",
+      "assembly_directory": "asm/field/room_load",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/transition",
@@ -5480,7 +6583,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/transition.o"
+      "legacy_object": "src/field/transition.o",
+      "candidate_key": "field/transition",
+      "candidate_directory": "src/non_matching/field/transition",
+      "assembly_directory": "asm/field/transition",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/field/weather",
@@ -5489,7 +6596,11 @@
       "owner": "rom_8a000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/field/weather.o"
+      "legacy_object": "src/field/weather.o",
+      "candidate_key": "field/weather",
+      "candidate_directory": "src/non_matching/field/weather",
+      "assembly_directory": "asm/field/weather",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/fixup_ram_code",
@@ -5498,7 +6609,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/fixup_ram_code.o"
+      "legacy_object": "src/fixup_ram_code.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/flags",
@@ -5507,7 +6619,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/flags.o"
+      "legacy_object": "src/flags.o",
+      "candidate_key": "flags",
+      "candidate_directory": "src/non_matching/flags",
+      "assembly_directory": "asm/flags",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/intr/intr",
@@ -5516,7 +6632,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/intr/intr.o"
+      "legacy_object": "src/intr/intr.o",
+      "candidate_key": "intr/intr",
+      "candidate_directory": "src/non_matching/intr/intr",
+      "assembly_directory": "asm/intr/intr",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash",
@@ -5525,7 +6645,11 @@
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
       "source_role": "maintained",
-      "legacy_object": "src/lib/agb_flash/agb_flash.o"
+      "legacy_object": "src/lib/agb_flash/agb_flash.o",
+      "candidate_key": "lib/agb_flash/agb_flash",
+      "candidate_directory": "src/non_matching/lib/agb_flash/agb_flash",
+      "assembly_directory": "asm/lib/agb_flash/agb_flash",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_at",
@@ -5534,7 +6658,11 @@
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
       "source_role": "maintained",
-      "legacy_object": "src/lib/agb_flash/agb_flash_at.o"
+      "legacy_object": "src/lib/agb_flash/agb_flash_at.o",
+      "candidate_key": "lib/agb_flash/agb_flash_at",
+      "candidate_directory": "src/non_matching/lib/agb_flash/agb_flash_at",
+      "assembly_directory": "asm/lib/agb_flash/agb_flash_at",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_data",
@@ -5543,7 +6671,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/lib/agb_flash/agb_flash_data.o"
+      "legacy_object": "src/lib/agb_flash/agb_flash_data.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_mx",
@@ -5552,7 +6681,11 @@
       "owner": "rom_1b70",
       "profile": "old-agbcc-flash",
       "source_role": "maintained",
-      "legacy_object": "src/lib/agb_flash/agb_flash_mx.o"
+      "legacy_object": "src/lib/agb_flash/agb_flash_mx.o",
+      "candidate_key": "lib/agb_flash/agb_flash_mx",
+      "candidate_directory": "src/non_matching/lib/agb_flash/agb_flash_mx",
+      "assembly_directory": "asm/lib/agb_flash/agb_flash_mx",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/agb_flash/agb_flash_verify",
@@ -5561,7 +6694,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/lib/agb_flash/agb_flash_verify.o"
+      "legacy_object": "src/lib/agb_flash/agb_flash_verify.o",
+      "candidate_key": "lib/agb_flash/agb_flash_verify",
+      "candidate_directory": "src/non_matching/lib/agb_flash/agb_flash_verify",
+      "assembly_directory": "asm/lib/agb_flash/agb_flash_verify",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/call_via",
@@ -5570,7 +6707,8 @@
       "owner": "library:call_via",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/lib/call_via.o"
+      "legacy_object": "src/lib/call_via.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lib/m4a/m4a",
@@ -5579,7 +6717,11 @@
       "owner": "rom_f9000",
       "profile": "old-agbcc-m4a",
       "source_role": "maintained",
-      "legacy_object": "src/lib/m4a/m4a.o"
+      "legacy_object": "src/lib/m4a/m4a.o",
+      "candidate_key": "lib/m4a/m4a",
+      "candidate_directory": "src/non_matching/lib/m4a/m4a",
+      "assembly_directory": "asm/lib/m4a/m4a",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lucky_dice",
@@ -5588,7 +6730,11 @@
       "owner": "rom_f4000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/lucky_dice.o"
+      "legacy_object": "src/lucky_dice.o",
+      "candidate_key": "lucky_dice",
+      "candidate_directory": "src/non_matching/lucky_dice",
+      "assembly_directory": "asm/lucky_dice",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/lucky_wheels",
@@ -5597,7 +6743,11 @@
       "owner": "rom_f6000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/lucky_wheels.o"
+      "legacy_object": "src/lucky_wheels.o",
+      "candidate_key": "lucky_wheels",
+      "candidate_directory": "src/non_matching/lucky_wheels",
+      "assembly_directory": "asm/lucky_wheels",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/main",
@@ -5606,7 +6756,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/main.o"
+      "legacy_object": "src/main.o",
+      "candidate_key": "main",
+      "candidate_directory": "src/non_matching/main",
+      "assembly_directory": "asm/main",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/math/gcc_div",
@@ -5615,7 +6769,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/math/gcc_div.o"
+      "legacy_object": "src/math/gcc_div.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/math/math",
@@ -5624,7 +6779,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/math/math.o"
+      "legacy_object": "src/math/math.o",
+      "candidate_key": "math/math",
+      "candidate_directory": "src/non_matching/math/math",
+      "assembly_directory": "asm/math/math",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/math/matrix",
@@ -5633,7 +6792,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/math/matrix.o"
+      "legacy_object": "src/math/matrix.o",
+      "candidate_key": "math/matrix",
+      "candidate_directory": "src/non_matching/math/matrix",
+      "assembly_directory": "asm/math/matrix",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/math/sin",
@@ -5642,7 +6805,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/math/sin.o"
+      "legacy_object": "src/math/sin.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/math/vector",
@@ -5651,7 +6815,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/math/vector.o"
+      "legacy_object": "src/math/vector.o",
+      "candidate_key": "math/vector",
+      "candidate_directory": "src/non_matching/math/vector",
+      "assembly_directory": "asm/math/vector",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/memory/alloc",
@@ -5660,7 +6828,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/memory/alloc.o"
+      "legacy_object": "src/memory/alloc.o",
+      "candidate_key": "memory/alloc",
+      "candidate_directory": "src/non_matching/memory/alloc",
+      "assembly_directory": "asm/memory/alloc",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/memory/free",
@@ -5669,7 +6841,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/memory/free.o"
+      "legacy_object": "src/memory/free.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/other/sub_8006864",
@@ -5678,7 +6851,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/other/sub_8006864.o"
+      "legacy_object": "src/other/sub_8006864.o",
+      "candidate_key": "other/sub_8006864",
+      "candidate_directory": "src/non_matching/other/sub_8006864",
+      "assembly_directory": "asm/other/sub_8006864",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/other/sub_80f0008",
@@ -5687,7 +6864,11 @@
       "owner": "rom_f0000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/other/sub_80f0008.o"
+      "legacy_object": "src/other/sub_80f0008.o",
+      "candidate_key": "other/sub_80f0008",
+      "candidate_directory": "src/non_matching/other/sub_80f0008",
+      "assembly_directory": "asm/other/sub_80f0008",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/other/sub_80f95e0",
@@ -5696,7 +6877,11 @@
       "owner": "rom_f9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/other/sub_80f95e0.o"
+      "legacy_object": "src/other/sub_80f95e0.o",
+      "candidate_key": "other/sub_80f95e0",
+      "candidate_directory": "src/non_matching/other/sub_80f95e0",
+      "assembly_directory": "asm/other/sub_80f95e0",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/random",
@@ -5705,7 +6890,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/random.o"
+      "legacy_object": "src/random.o",
+      "candidate_key": "random",
+      "candidate_directory": "src/non_matching/random",
+      "assembly_directory": "asm/random",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/blit_fade",
@@ -5714,7 +6903,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/render/blit_fade.o"
+      "legacy_object": "src/render/blit_fade.o",
+      "candidate_key": "render/blit_fade",
+      "candidate_directory": "src/non_matching/render/blit_fade",
+      "assembly_directory": "asm/render/blit_fade",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/blit_fade_alt",
@@ -5723,7 +6916,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/render/blit_fade_alt.o"
+      "legacy_object": "src/render/blit_fade_alt.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/blit_fade_rom",
@@ -5732,7 +6926,8 @@
       "owner": "rom_1b70",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/render/blit_fade_rom.o"
+      "legacy_object": "src/render/blit_fade_rom.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/draw2D",
@@ -5741,7 +6936,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/render/draw2D.o"
+      "legacy_object": "src/render/draw2D.o",
+      "candidate_key": "render/draw2D",
+      "candidate_directory": "src/non_matching/render/draw2D",
+      "assembly_directory": "asm/render/draw2D",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/draw2D_util",
@@ -5750,7 +6949,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/render/draw2D_util.o"
+      "legacy_object": "src/render/draw2D_util.o",
+      "candidate_key": "render/draw2D_util",
+      "candidate_directory": "src/non_matching/render/draw2D_util",
+      "assembly_directory": "asm/render/draw2D_util",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/render/window_effect",
@@ -5759,7 +6962,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/render/window_effect.o"
+      "legacy_object": "src/render/window_effect.o",
+      "candidate_key": "render/window_effect",
+      "candidate_directory": "src/non_matching/render/window_effect",
+      "assembly_directory": "asm/render/window_effect",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rom_header",
@@ -5768,7 +6975,8 @@
       "owner": "header",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/rom_header.o"
+      "legacy_object": "src/rom_header.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/djinni",
@@ -5777,7 +6985,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/djinni.o"
+      "legacy_object": "src/rpg/djinni.o",
+      "candidate_key": "rpg/djinni",
+      "candidate_directory": "src/non_matching/rpg/djinni",
+      "assembly_directory": "asm/rpg/djinni",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/get_unit",
@@ -5786,7 +6998,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/get_unit.o"
+      "legacy_object": "src/rpg/get_unit.o",
+      "candidate_key": "rpg/get_unit",
+      "candidate_directory": "src/non_matching/rpg/get_unit",
+      "assembly_directory": "asm/rpg/get_unit",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/item",
@@ -5795,7 +7011,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/item.o"
+      "legacy_object": "src/rpg/item.o",
+      "candidate_key": "rpg/item",
+      "candidate_directory": "src/non_matching/rpg/item",
+      "assembly_directory": "asm/rpg/item",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/move",
@@ -5804,7 +7024,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/move.o"
+      "legacy_object": "src/rpg/move.o",
+      "candidate_key": "rpg/move",
+      "candidate_directory": "src/non_matching/rpg/move",
+      "assembly_directory": "asm/rpg/move",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/party",
@@ -5813,7 +7037,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/party.o"
+      "legacy_object": "src/rpg/party.o",
+      "candidate_key": "rpg/party",
+      "candidate_directory": "src/non_matching/rpg/party",
+      "assembly_directory": "asm/rpg/party",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/pc",
@@ -5822,7 +7050,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/pc.o"
+      "legacy_object": "src/rpg/pc.o",
+      "candidate_key": "rpg/pc",
+      "candidate_directory": "src/non_matching/rpg/pc",
+      "assembly_directory": "asm/rpg/pc",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/random",
@@ -5831,7 +7063,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/random.o"
+      "legacy_object": "src/rpg/random.o",
+      "candidate_key": "rpg/random",
+      "candidate_directory": "src/non_matching/rpg/random",
+      "assembly_directory": "asm/rpg/random",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/rpg/summon",
@@ -5840,7 +7076,11 @@
       "owner": "rom_77000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/rpg/summon.o"
+      "legacy_object": "src/rpg/summon.o",
+      "candidate_key": "rpg/summon",
+      "candidate_directory": "src/non_matching/rpg/summon",
+      "assembly_directory": "asm/rpg/summon",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/save",
@@ -5849,7 +7089,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/save.o"
+      "legacy_object": "src/save.o",
+      "candidate_key": "save",
+      "candidate_directory": "src/non_matching/save",
+      "assembly_directory": "asm/save",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/serial",
@@ -5858,7 +7102,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/serial.o"
+      "legacy_object": "src/serial.o",
+      "candidate_key": "serial",
+      "candidate_directory": "src/non_matching/serial",
+      "assembly_directory": "asm/serial",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sound",
@@ -5867,7 +7115,11 @@
       "owner": "rom_f9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/sound.o"
+      "legacy_object": "src/sound.o",
+      "candidate_key": "sound",
+      "candidate_directory": "src/non_matching/sound",
+      "assembly_directory": "asm/sound",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/draw_sprite",
@@ -5876,7 +7128,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/draw_sprite.o"
+      "legacy_object": "src/sprite/draw_sprite.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/palette",
@@ -5885,7 +7138,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/palette.o"
+      "legacy_object": "src/sprite/palette.o",
+      "candidate_key": "sprite/palette",
+      "candidate_directory": "src/non_matching/sprite/palette",
+      "assembly_directory": "asm/sprite/palette",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/rom_a418",
@@ -5894,7 +7151,8 @@
       "owner": "rom_9000",
       "profile": "arm-assembly",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/rom_a418.o"
+      "legacy_object": "src/sprite/rom_a418.o",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/sprite",
@@ -5903,7 +7161,11 @@
       "owner": "rom_9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/sprite.o"
+      "legacy_object": "src/sprite/sprite.o",
+      "candidate_key": "sprite/sprite",
+      "candidate_directory": "src/non_matching/sprite/sprite",
+      "assembly_directory": "asm/sprite/sprite",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/sprite_info",
@@ -5912,7 +7174,11 @@
       "owner": "rom_185000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/sprite_info.o"
+      "legacy_object": "src/sprite/sprite_info.o",
+      "candidate_key": "sprite/sprite_info",
+      "candidate_directory": "src/non_matching/sprite/sprite_info",
+      "assembly_directory": "asm/sprite/sprite_info",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/sprite/summon",
@@ -5921,7 +7187,11 @@
       "owner": "rom_c9000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/sprite/summon.o"
+      "legacy_object": "src/sprite/summon.o",
+      "candidate_key": "sprite/summon",
+      "candidate_directory": "src/non_matching/sprite/summon",
+      "assembly_directory": "asm/sprite/summon",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/task",
@@ -5930,7 +7200,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/task.o"
+      "legacy_object": "src/task.o",
+      "candidate_key": "task",
+      "candidate_directory": "src/non_matching/task",
+      "assembly_directory": "asm/task",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/title",
@@ -5939,7 +7213,11 @@
       "owner": "rom_f2000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/title.o"
+      "legacy_object": "src/title.o",
+      "candidate_key": "title",
+      "candidate_directory": "src/non_matching/title",
+      "assembly_directory": "asm/title",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/debug/icon_test",
@@ -5948,7 +7226,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/debug/icon_test.o"
+      "legacy_object": "src/ui/debug/icon_test.o",
+      "candidate_key": "ui/debug/icon_test",
+      "candidate_directory": "src/non_matching/ui/debug/icon_test",
+      "assembly_directory": "asm/ui/debug/icon_test",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/icon",
@@ -5957,7 +7239,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/icon.o"
+      "legacy_object": "src/ui/icon.o",
+      "candidate_key": "ui/icon",
+      "candidate_directory": "src/non_matching/ui/icon",
+      "assembly_directory": "asm/ui/icon",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/menu",
@@ -5966,7 +7252,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/menu.o"
+      "legacy_object": "src/ui/menu.o",
+      "candidate_key": "ui/menu",
+      "candidate_directory": "src/non_matching/ui/menu",
+      "assembly_directory": "asm/ui/menu",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/menus/debug_flag_editor",
@@ -5975,7 +7265,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/menus/debug_flag_editor.o"
+      "legacy_object": "src/ui/menus/debug_flag_editor.o",
+      "candidate_key": "ui/menus/debug_flag_editor",
+      "candidate_directory": "src/non_matching/ui/menus/debug_flag_editor",
+      "assembly_directory": "asm/ui/menus/debug_flag_editor",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/menus/debug_warp_menu",
@@ -5984,7 +7278,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/menus/debug_warp_menu.o"
+      "legacy_object": "src/ui/menus/debug_warp_menu.o",
+      "candidate_key": "ui/menus/debug_warp_menu",
+      "candidate_directory": "src/non_matching/ui/menus/debug_warp_menu",
+      "assembly_directory": "asm/ui/menus/debug_warp_menu",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/menus/menu_bars",
@@ -5993,7 +7291,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/menus/menu_bars.o"
+      "legacy_object": "src/ui/menus/menu_bars.o",
+      "candidate_key": "ui/menus/menu_bars",
+      "candidate_directory": "src/non_matching/ui/menus/menu_bars",
+      "assembly_directory": "asm/ui/menus/menu_bars",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/party_menu",
@@ -6002,7 +7304,11 @@
       "owner": "rom_a1000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/party_menu.o"
+      "legacy_object": "src/ui/party_menu.o",
+      "candidate_key": "ui/party_menu",
+      "candidate_directory": "src/non_matching/ui/party_menu",
+      "assembly_directory": "asm/ui/party_menu",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/save_menu",
@@ -6011,7 +7317,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/save_menu.o"
+      "legacy_object": "src/ui/save_menu.o",
+      "candidate_key": "ui/save_menu",
+      "candidate_directory": "src/non_matching/ui/save_menu",
+      "assembly_directory": "asm/ui/save_menu",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/shop",
@@ -6020,7 +7330,11 @@
       "owner": "rom_b0000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/shop.o"
+      "legacy_object": "src/ui/shop.o",
+      "candidate_key": "ui/shop",
+      "candidate_directory": "src/non_matching/ui/shop",
+      "assembly_directory": "asm/ui/shop",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/text",
@@ -6029,7 +7343,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/text.o"
+      "legacy_object": "src/ui/text.o",
+      "candidate_key": "ui/text",
+      "candidate_directory": "src/non_matching/ui/text",
+      "assembly_directory": "asm/ui/text",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/ui",
@@ -6038,7 +7356,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/ui.o"
+      "legacy_object": "src/ui/ui.o",
+      "candidate_key": "ui/ui",
+      "candidate_directory": "src/non_matching/ui/ui",
+      "assembly_directory": "asm/ui/ui",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/ui/window",
@@ -6047,7 +7369,11 @@
       "owner": "rom_15000",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/ui/window.o"
+      "legacy_object": "src/ui/window.o",
+      "candidate_key": "ui/window",
+      "candidate_directory": "src/non_matching/ui/window",
+      "assembly_directory": "asm/ui/window",
+      "baseline_scope": true
     },
     {
       "id": "tu:src/video",
@@ -6056,7 +7382,11 @@
       "owner": "rom_1b70",
       "profile": "gcc296",
       "source_role": "maintained",
-      "legacy_object": "src/video.o"
+      "legacy_object": "src/video.o",
+      "candidate_key": "video",
+      "candidate_directory": "src/non_matching/video",
+      "assembly_directory": "asm/video",
+      "baseline_scope": true
     }
   ],
   "reference_sources": [
@@ -6068,5 +7398,120 @@
       "path": "src/lib/m4a/m4a0.s",
       "reason": "Upstream SA2 comparison reference, excluded from the Golden Sun build."
     }
-  ]
+  ],
+  "paths": {
+    "schema": 1,
+    "candidate_root": "src/non_matching",
+    "input_roots": [
+      "src",
+      "asm",
+      "data",
+      "include",
+      "overlays",
+      "exports",
+      "file_table",
+      "config",
+      "linker"
+    ],
+    "link_targets": {
+      "build/usa/stage1.o": "stage1.ld",
+      "build/usa/goldensun.elf": "goldensun.ld",
+      "build/usa/overlays/rom_779188/overlay.elf": "overlays/rom_779188/overlay.ld",
+      "build/usa/overlays/rom_7795e8/overlay.elf": "overlays/rom_7795e8/overlay.ld",
+      "build/usa/overlays/rom_77a7c8/overlay.elf": "overlays/rom_77a7c8/overlay.ld",
+      "build/usa/overlays/rom_77dd1c/overlay.elf": "overlays/rom_77dd1c/overlay.ld",
+      "build/usa/overlays/rom_780898/overlay.elf": "overlays/rom_780898/overlay.ld",
+      "build/usa/overlays/rom_784360/overlay.elf": "overlays/rom_784360/overlay.ld",
+      "build/usa/overlays/rom_78603c/overlay.elf": "overlays/rom_78603c/overlay.ld",
+      "build/usa/overlays/rom_786f0c/overlay.elf": "overlays/rom_786f0c/overlay.ld",
+      "build/usa/overlays/rom_787e04/overlay.elf": "overlays/rom_787e04/overlay.ld",
+      "build/usa/overlays/rom_7892c8/overlay.elf": "overlays/rom_7892c8/overlay.ld",
+      "build/usa/overlays/rom_78ac38/overlay.elf": "overlays/rom_78ac38/overlay.ld",
+      "build/usa/overlays/rom_78b2ac/overlay.elf": "overlays/rom_78b2ac/overlay.ld",
+      "build/usa/overlays/rom_78c76c/overlay.elf": "overlays/rom_78c76c/overlay.ld",
+      "build/usa/overlays/rom_78dc80/overlay.elf": "overlays/rom_78dc80/overlay.ld",
+      "build/usa/overlays/rom_78dd40/overlay.elf": "overlays/rom_78dd40/overlay.ld",
+      "build/usa/overlays/rom_78de18/overlay.elf": "overlays/rom_78de18/overlay.ld",
+      "build/usa/overlays/rom_78dee8/overlay.elf": "overlays/rom_78dee8/overlay.ld",
+      "build/usa/overlays/rom_78ef88/overlay.elf": "overlays/rom_78ef88/overlay.ld",
+      "build/usa/overlays/rom_791794/overlay.elf": "overlays/rom_791794/overlay.ld",
+      "build/usa/overlays/rom_793768/overlay.elf": "overlays/rom_793768/overlay.ld",
+      "build/usa/overlays/rom_794ac0/overlay.elf": "overlays/rom_794ac0/overlay.ld",
+      "build/usa/overlays/rom_797740/overlay.elf": "overlays/rom_797740/overlay.ld",
+      "build/usa/overlays/rom_797990/overlay.elf": "overlays/rom_797990/overlay.ld",
+      "build/usa/overlays/rom_7987ac/overlay.elf": "overlays/rom_7987ac/overlay.ld",
+      "build/usa/overlays/rom_798dc4/overlay.elf": "overlays/rom_798dc4/overlay.ld",
+      "build/usa/overlays/rom_799998/overlay.elf": "overlays/rom_799998/overlay.ld",
+      "build/usa/overlays/rom_799abc/overlay.elf": "overlays/rom_799abc/overlay.ld",
+      "build/usa/overlays/rom_79aad8/overlay.elf": "overlays/rom_79aad8/overlay.ld",
+      "build/usa/overlays/rom_79b154/overlay.elf": "overlays/rom_79b154/overlay.ld",
+      "build/usa/overlays/rom_79c0c4/overlay.elf": "overlays/rom_79c0c4/overlay.ld",
+      "build/usa/overlays/rom_79c738/overlay.elf": "overlays/rom_79c738/overlay.ld",
+      "build/usa/overlays/rom_79dd90/overlay.elf": "overlays/rom_79dd90/overlay.ld",
+      "build/usa/overlays/rom_79e5c0/overlay.elf": "overlays/rom_79e5c0/overlay.ld",
+      "build/usa/overlays/rom_7a0010/overlay.elf": "overlays/rom_7a0010/overlay.ld",
+      "build/usa/overlays/rom_7a04ac/overlay.elf": "overlays/rom_7a04ac/overlay.ld",
+      "build/usa/overlays/rom_7a1ff0/overlay.elf": "overlays/rom_7a1ff0/overlay.ld",
+      "build/usa/overlays/rom_7a2bf0/overlay.elf": "overlays/rom_7a2bf0/overlay.ld",
+      "build/usa/overlays/rom_7a37f0/overlay.elf": "overlays/rom_7a37f0/overlay.ld",
+      "build/usa/overlays/rom_7a4370/overlay.elf": "overlays/rom_7a4370/overlay.ld",
+      "build/usa/overlays/rom_7a5214/overlay.elf": "overlays/rom_7a5214/overlay.ld",
+      "build/usa/overlays/rom_7a67d8/overlay.elf": "overlays/rom_7a67d8/overlay.ld",
+      "build/usa/overlays/rom_7a6ae4/overlay.elf": "overlays/rom_7a6ae4/overlay.ld",
+      "build/usa/overlays/rom_7a7298/overlay.elf": "overlays/rom_7a7298/overlay.ld",
+      "build/usa/overlays/rom_7a8c8c/overlay.elf": "overlays/rom_7a8c8c/overlay.ld",
+      "build/usa/overlays/rom_7aa430/overlay.elf": "overlays/rom_7aa430/overlay.ld",
+      "build/usa/overlays/rom_7ac2d8/overlay.elf": "overlays/rom_7ac2d8/overlay.ld",
+      "build/usa/overlays/rom_7b0400/overlay.elf": "overlays/rom_7b0400/overlay.ld",
+      "build/usa/overlays/rom_7b2078/overlay.elf": "overlays/rom_7b2078/overlay.ld",
+      "build/usa/overlays/rom_7b4558/overlay.elf": "overlays/rom_7b4558/overlay.ld",
+      "build/usa/overlays/rom_7b6668/overlay.elf": "overlays/rom_7b6668/overlay.ld",
+      "build/usa/overlays/rom_7b7790/overlay.elf": "overlays/rom_7b7790/overlay.ld",
+      "build/usa/overlays/rom_7b7f1c/overlay.elf": "overlays/rom_7b7f1c/overlay.ld",
+      "build/usa/overlays/rom_7b8cb0/overlay.elf": "overlays/rom_7b8cb0/overlay.ld",
+      "build/usa/overlays/rom_7b9cb4/overlay.elf": "overlays/rom_7b9cb4/overlay.ld",
+      "build/usa/overlays/rom_7bc690/overlay.elf": "overlays/rom_7bc690/overlay.ld",
+      "build/usa/overlays/rom_7bdeb0/overlay.elf": "overlays/rom_7bdeb0/overlay.ld",
+      "build/usa/overlays/rom_7bf5a8/overlay.elf": "overlays/rom_7bf5a8/overlay.ld",
+      "build/usa/overlays/rom_7c097c/overlay.elf": "overlays/rom_7c097c/overlay.ld",
+      "build/usa/overlays/rom_7c3044/overlay.elf": "overlays/rom_7c3044/overlay.ld",
+      "build/usa/overlays/rom_7c37ac/overlay.elf": "overlays/rom_7c37ac/overlay.ld",
+      "build/usa/overlays/rom_7c460c/overlay.elf": "overlays/rom_7c460c/overlay.ld",
+      "build/usa/overlays/rom_7c5974/overlay.elf": "overlays/rom_7c5974/overlay.ld",
+      "build/usa/overlays/rom_7c5efc/overlay.elf": "overlays/rom_7c5efc/overlay.ld",
+      "build/usa/overlays/rom_7c6bac/overlay.elf": "overlays/rom_7c6bac/overlay.ld",
+      "build/usa/overlays/rom_7c7b9c/overlay.elf": "overlays/rom_7c7b9c/overlay.ld",
+      "build/usa/overlays/rom_7ca63c/overlay.elf": "overlays/rom_7ca63c/overlay.ld",
+      "build/usa/overlays/rom_7cb2c0/overlay.elf": "overlays/rom_7cb2c0/overlay.ld",
+      "build/usa/overlays/rom_7ced6c/overlay.elf": "overlays/rom_7ced6c/overlay.ld",
+      "build/usa/overlays/rom_7d0e88/overlay.elf": "overlays/rom_7d0e88/overlay.ld",
+      "build/usa/overlays/rom_7d30e0/overlay.elf": "overlays/rom_7d30e0/overlay.ld",
+      "build/usa/overlays/rom_7d4af4/overlay.elf": "overlays/rom_7d4af4/overlay.ld",
+      "build/usa/overlays/rom_7d5838/overlay.elf": "overlays/rom_7d5838/overlay.ld",
+      "build/usa/overlays/rom_7d6418/overlay.elf": "overlays/rom_7d6418/overlay.ld",
+      "build/usa/overlays/rom_7d768c/overlay.elf": "overlays/rom_7d768c/overlay.ld",
+      "build/usa/overlays/rom_7d95dc/overlay.elf": "overlays/rom_7d95dc/overlay.ld",
+      "build/usa/overlays/rom_7db0c8/overlay.elf": "overlays/rom_7db0c8/overlay.ld",
+      "build/usa/overlays/rom_7ddb88/overlay.elf": "overlays/rom_7ddb88/overlay.ld",
+      "build/usa/overlays/rom_7e0928/overlay.elf": "overlays/rom_7e0928/overlay.ld",
+      "build/usa/overlays/rom_7e3e08/overlay.elf": "overlays/rom_7e3e08/overlay.ld",
+      "build/usa/overlays/rom_7e636c/overlay.elf": "overlays/rom_7e636c/overlay.ld",
+      "build/usa/overlays/rom_7e7574/overlay.elf": "overlays/rom_7e7574/overlay.ld",
+      "build/usa/overlays/rom_7eaf28/overlay.elf": "overlays/rom_7eaf28/overlay.ld",
+      "build/usa/overlays/rom_7ebdfc/overlay.elf": "overlays/rom_7ebdfc/overlay.ld",
+      "build/usa/overlays/rom_7ec19c/overlay.elf": "overlays/rom_7ec19c/overlay.ld",
+      "build/usa/overlays/rom_7ec968/overlay.elf": "overlays/rom_7ec968/overlay.ld",
+      "build/usa/overlays/rom_7ed0a0/overlay.elf": "overlays/rom_7ed0a0/overlay.ld",
+      "build/usa/overlays/rom_7ef4f4/overlay.elf": "overlays/rom_7ef4f4/overlay.ld",
+      "build/usa/overlays/rom_7f148c/overlay.elf": "overlays/rom_7f148c/overlay.ld",
+      "build/usa/overlays/rom_7f21b8/overlay.elf": "overlays/rom_7f21b8/overlay.ld",
+      "build/usa/overlays/rom_7f2f14/overlay.elf": "overlays/rom_7f2f14/overlay.ld",
+      "build/usa/overlays/rom_7f6e64/overlay.elf": "overlays/rom_7f6e64/overlay.ld",
+      "build/usa/overlays/rom_7fa4ec/overlay.elf": "overlays/rom_7fa4ec/overlay.ld",
+      "build/usa/overlays/rom_7fb4a8/overlay.elf": "overlays/rom_7fb4a8/overlay.ld",
+      "build/usa/overlays/rom_7fc618/overlay.elf": "overlays/rom_7fc618/overlay.ld",
+      "build/usa/overlays/rom_7fc720/overlay.elf": "overlays/rom_7fc720/overlay.ld",
+      "build/usa/overlays/rom_7fcd20/overlay.elf": "overlays/rom_7fcd20/overlay.ld"
+    }
+  }
 }

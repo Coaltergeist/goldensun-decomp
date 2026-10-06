@@ -1,5 +1,6 @@
 """Candidate identities and temporary TU composition."""
 import re
+import source_paths
 from pathlib import Path
 from c_source import parse_funcs
 from decomp_progress import load, production_candidate_errors
@@ -9,14 +10,7 @@ TOKEN = re.compile(r'/\*.*?\*/|//[^\n]*|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'',
 SITE = re.compile(r'\bINCLUDE_ASM(_SECTION)?\s*\(\s*"([^"]+)"\s*(?:,\s*"([^"]+)"\s*)?\)\s*;')
 
 
-def local(root, name):
-    if not isinstance(name, str) or Path(name).is_absolute() or ".." in Path(name).parts:
-        raise ValueError("invalid repository path: " + str(name))
-    path = root / name
-    path.resolve().relative_to(root.resolve())
-    if path.is_symlink():
-        raise ValueError("symlink input: " + name)
-    return path
+local = source_paths.local
 
 
 def sites(text):
@@ -31,22 +25,23 @@ def catalog(root, manifests=None, *, snapshot=None, retired=()):
     result, identities, files = {}, set(), set()
     if manifests is None:
         manifests = {p.relative_to(root).as_posix(): load(p)
-                     for p in (root / PARKED).rglob("candidates.json")}
+                     for p in (root / source_paths.candidate_root(root)).rglob("candidates.json")}
     for name, meta in sorted(manifests.items()):
         manifest = local(root, name)
         if meta.get("schema") != 1 or not meta.get("functions"):
             raise ValueError("invalid candidate manifest: " + str(manifest))
         source = meta["source"]
         path = local(root, source)
-        if not source.startswith("src/") or source.startswith(PARKED) or path.suffix != ".c":
+        if source_paths.parked(root, source) or path.suffix != ".c":
             raise ValueError("invalid production TU: " + source)
         unit = snapshot["units"].get(source)
         if unit is None:
             raise ValueError("unknown production TU: " + source)
         directory = manifest.parent.relative_to(root).as_posix()
-        tu = directory[len(PARKED):]
-        if source != "src/" + tu + ".c":
-            raise ValueError("candidate directory does not mirror TU: " + directory)
+        owner = source_paths.candidate_owner(root, source=source, directory=directory)
+        tu = owner["candidate_key"]
+        if unit["object"] != owner["object"] or tu in result:
+            raise ValueError("duplicate or mismatched candidate owner: " + source)
         text = path.read_text()
         includes = sites(text)
         functions = {}
@@ -60,7 +55,7 @@ def catalog(root, manifests=None, *, snapshot=None, retired=()):
             original = unit["functions"].get(identity)
             if not original or original["name"] != name or snapshot["functions"][identity] != "assembly":
                 raise ValueError("candidate target missing, renamed or already landed: " + name)
-            assembly = "asm/" + tu + "/" + name + ".s"
+            assembly = source_paths.assembly(root, source, name)
             matches = [m for m in includes if m[2] == assembly]
             if len(matches) != 1 or not local(root, assembly).is_file():
                 raise ValueError("expected one assembly inclusion: " + assembly)
@@ -86,10 +81,11 @@ def catalog(root, manifests=None, *, snapshot=None, retired=()):
                     dep not in functions or dep == name for dep in entry.get("requires", [])):
                 raise ValueError("invalid companion requirement: " + name)
         result[tu] = dict(source=source, object=unit["object"], directory=directory,
+                          id=owner["id"], index_directory=directory.removeprefix(source_paths.candidate_root(root) + "/"),
                           functions=functions, manifest=manifest.relative_to(root).as_posix())
         closure(result[tu], list(functions))
     unexpected = {p.relative_to(root).as_posix()
-                  for p in (root / PARKED).rglob("*.c")} - files - set(retired)
+                  for p in (root / source_paths.candidate_root(root)).rglob("*.c")} - files - set(retired)
     if unexpected:
         raise ValueError("unregistered candidates: " + ", ".join(sorted(unexpected)))
     return result
@@ -150,8 +146,9 @@ def collection_inputs(root, unit):
 
 def markdown_index(units):
     lines = ["# Candidates", "", "| Translation unit | Functions |", "| --- | --- |"]
-    for tu, unit in units.items():
-        links = ["[" + name + "](" + tu + "/" + name + ".c)"
+    for tu, unit in sorted(units.items()):
+        relative = unit.get("index_directory", tu)
+        links = ["[" + name + "](" + relative + "/" + name + ".c)"
                  for name in sorted(unit["functions"])]
-        lines.append("| [" + tu + "](" + tu + "/) | " + ", ".join(links) + " |")
+        lines.append("| [" + tu + "](" + relative + "/) | " + ", ".join(links) + " |")
     return "\n".join(lines) + "\n"

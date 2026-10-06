@@ -236,6 +236,9 @@ class SnapshotWorkflowTests(unittest.TestCase):
             p = self.root / name
             p.parent.mkdir(parents=True, exist_ok=True)
             p.write_text(text)
+        p = self.root / "config/modules.json"; p.parent.mkdir(exist_ok=True)
+        p.write_text(json.dumps(dict(schema=1, units=[dict(source="src/crt0.s", source_role="maintained")],
+                                    reference_sources=[dict(path="src/historical.s")])))
         names = b"Makefile\0original_functions.json\0stage1.ld\0src/crt0.s\0src/historical.s\0"
         with patch.object(dp, "git", return_value=names):
             self.assertIn("include/start.inc", dp.source_inputs(self.root))

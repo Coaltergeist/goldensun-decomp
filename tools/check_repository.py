@@ -5,6 +5,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import source_paths
 from c_source import parse_funcs
 from candidate_catalog import catalog, production_candidate_errors, markdown_index
 
@@ -35,8 +36,10 @@ def registry_errors(root):
         seen.add(identity)
         try:
             path = local_path(root, source)
-            if not source.startswith("src/") or path.suffix != ".c":
-                raise ValueError("expected src/...c")
+            if path.suffix != ".c" or source_paths.parked(root, source):
+                raise ValueError("expected production C")
+            if source_paths.data(root) and source not in {u["source"] for u in source_paths.c_units(root)}:
+                raise ValueError("source has no catalog owner")
             if source not in definitions:
                 definitions[source] = parse_funcs(path.read_text())
             if name not in definitions[source]:
@@ -66,7 +69,7 @@ def main():
     errors += production_candidate_errors(ROOT)
     try:
         candidates = catalog(ROOT)
-        index = ROOT / "src/non_matching/INDEX.md"
+        index = ROOT / source_paths.candidate_root(ROOT) / "INDEX.md"
         if index.is_file() and index.read_text() != markdown_index(candidates):
             errors.append("candidate index is stale; run tools/generate_candidates.py")
     except (OSError, ValueError, KeyError, TypeError) as exc:
@@ -75,7 +78,7 @@ def main():
     for name in tracked:
         if Path(name).suffix.lower() in {".gba", ".z64", ".n64", ".v64", ".nds"}:
             errors.append("ROM image tracked: " + name)
-        if not name.startswith("src/") or name.startswith("src/non_matching/") or not name.endswith(".c"):
+        if name not in {u["source"] for u in source_paths.c_units(ROOT)}:
             continue
         text = local_path(ROOT, name).read_text()
         for target in re.findall(r'INCLUDE_ASM(?:_SECTION)?\("([^"]+)"', text):

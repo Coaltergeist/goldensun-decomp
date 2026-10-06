@@ -60,6 +60,12 @@ class FinalizationTests(unittest.TestCase):
 
     def add_unit(self, tu, names):
         source = "src/" + tu + ".c"
+        config = self.root / "config/modules.json"
+        data = json.loads(config.read_text()) if config.exists() else dict(schema=1, units=[], modules=[])
+        data["units"].append(dict(id="tu:" + tu, source=source, object=source[:-2] + ".o",
+            source_role="maintained", profile="gcc296", owner=tu, candidate_key=tu,
+            candidate_directory="src/non_matching/" + tu, assembly_directory="asm/" + tu))
+        self.put("config/modules.json", json.dumps(data))
         self.put(source, "\n".join('INCLUDE_ASM("asm/' + tu + '/' + name + '.s");' for name in names))
         for name, identity in names.items():
             self.put("asm/" + tu + "/" + name + ".s", "/* original */\n")

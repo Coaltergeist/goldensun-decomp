@@ -12,6 +12,7 @@ from pathlib import Path
 import struct
 from c_source import parse_funcs
 import build_paths
+import source_paths
 from build_deps import linker_dependencies
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,7 +59,8 @@ def linked_sources(root, domain):
     units = build_paths.catalog(root)["units"]
     if domain.startswith("common:"):
         return {u["source"] for u in units if u["owner"] == domain and u["source"].endswith(".c")}
-    script = "stage1.ld" if domain == "rom" else "overlays/" + domain.split(":")[1] + "/overlay.ld"
+    target = build_paths.STAGE1 if domain == "rom" else build_paths.overlay(root, domain)["elf"]
+    script = build_paths.link_targets(root)[target]
     objects = linker_dependencies(script, root=root)
     return {u["source"] for u in units if u["object"] in objects and u["source"].endswith(".c")}
 
@@ -68,10 +70,9 @@ def report(root=ROOT):
     # Import here: decomp_progress reuses this module's ELF/linker helpers.
     from decomp_progress import capture_units, classify
     definitions = {}
-    for path in sorted((root / 'src').rglob('*.c')):
-        if 'non_matching' in path.parts:
-            continue
-        definitions[path.relative_to(root).as_posix()] = parse_funcs(path.read_text())
+    for unit in source_paths.c_units(root):
+        path = source_paths.local(root, unit['source'])
+        definitions[unit['source']] = parse_funcs(path.read_text())
     registered = {tuple(line.split()[:2]) for line in (root / 'fakematch.txt').read_text().splitlines()
                   if line.strip() and not line.lstrip().startswith('#')}
     domains = {}

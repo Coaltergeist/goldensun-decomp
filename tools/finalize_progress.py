@@ -16,6 +16,7 @@ import stat
 import subprocess
 import sys
 import tempfile
+import source_paths
 
 import decomp_progress as progress
 import score_candidates
@@ -40,7 +41,7 @@ def checksum(data):
 
 
 def inventory(root):
-    names = set(candidate_inputs(root)) | set(REPORT_FILES) | {INDEX}
+    names = set(candidate_inputs(root)) | set(REPORT_FILES) | {source_paths.candidate_root(root) + "/INDEX.md"}
     return {name: (checksum(data), mode) for name in sorted(names)
             for data, mode in [contents(root, name)]}
 
@@ -83,10 +84,10 @@ class Transaction:
         atomic_write(self.run / "transaction.json",
                      (json.dumps(self.state, indent=2) + "\n").encode(), 0o600)
 
-    def write(self, name, data):
+    def write(self, name, data, mode=None):
         if contents(self.root, name) != self.expected[name]:
             raise RuntimeError("file changed during finalization: " + name)
-        mode = self.before[name][1] or 0o644
+        mode = mode if mode is not None else self.before[name][1] or 0o644
         self.expected[name] = (data, mode) if data is not None else (None, None)
         if name not in self.applied:
             self.applied.append(name)
@@ -173,6 +174,7 @@ def check_repository(root):
 
 
 def finalize(root, objdiff):
+    INDEX = source_paths.candidate_root(root) + "/INDEX.md"
     root = Path(root).resolve()
     binary = preflight(root, objdiff)
     with exclusive(root) as work:
@@ -223,7 +225,7 @@ def preview(root):
     snapshot = progress.load(root / "progress_snapshot.json")
     try:
         progress.validate_snapshot(manifest, baseline, snapshot, progress.source_inputs(root),
-                                   progress.digest(root / progress.BASELINE))
+                                   progress.digest(root / progress.BASELINE), root=root)
     except ValueError as exc:
         print("Retirement preview requires a fresh snapshot:", exc)
         return

@@ -1,6 +1,7 @@
 """ROM-free validation of measured candidate progress."""
 import math
 import re
+import source_paths
 
 from candidate_catalog import catalog, closure, local
 from decomp_progress import digest, fingerprint, load
@@ -26,7 +27,7 @@ CONFIG = ["function_reloc_diffs=none", "combine_data_sections=true",
 
 def candidate_inputs(root):
     result = {}
-    for path in sorted((root / "src/non_matching").rglob("*")):
+    for path in sorted((root / source_paths.candidate_root(root)).rglob("*")):
         if path.suffix in {".c", ".h"} or path.name == "candidates.json":
             name = path.relative_to(root).as_posix()
             result[name] = digest(local(root, name))

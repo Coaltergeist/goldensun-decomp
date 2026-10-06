@@ -12,6 +12,7 @@ from c_source import parse_funcs
 from decomp_progress import source_inputs, load
 from elf_contract import ELF
 import build_config
+import source_paths
 import build_verify
 
 
@@ -22,7 +23,7 @@ def sha(path):
 def production_inputs(root):
     inputs = source_inputs(root)
     return {n: h for n, h in inputs.items()
-            if n.startswith(("src/", "asm/", "data/", "include/", "overlays/", "exports/", "file_table/", "config/"))
+            if n.startswith(tuple(p + "/" for p in source_paths.input_roots(root)))
             or n == "Makefile" or n.endswith((".ld", ".sym"))
             or n in build_config.IMPLEMENTATION or n.startswith("tools/") and n.endswith((".c", ".h"))}
 

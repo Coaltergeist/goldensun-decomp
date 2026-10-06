@@ -35,6 +35,12 @@ class GeneratorTests(unittest.TestCase):
 
     def add_unit(self, tu, functions):
         source = "src/" + tu + ".c"
+        config = self.root / "config/modules.json"
+        data = json.loads(config.read_text()) if config.exists() else dict(schema=1, units=[], modules=[])
+        data["units"].append(dict(id="tu:" + tu, source=source, object=source[:-2] + ".o",
+            source_role="maintained", profile="gcc296", owner=tu, candidate_key=tu,
+            candidate_directory="src/non_matching/" + tu, assembly_directory="asm/" + tu))
+        self.put("config/modules.json", json.dumps(data))
         self.put(source, "\n".join('INCLUDE_ASM("asm/' + tu + '/' + n + '.s");'
                                    for n in functions))
         for name, identity in functions.items():
@@ -95,7 +101,7 @@ class GeneratorTests(unittest.TestCase):
     def test_invalid_candidate_prevents_all_writes(self):
         self.candidate("unowned", "Unknown")
         index = self.put("src/non_matching/INDEX.md", "preserve me")
-        with self.assertRaisesRegex(ValueError, "no production TU"):
+        with self.assertRaisesRegex(ValueError, "candidate owner"):
             self.sync()
         self.assertFalse(self.manifest().exists())
         self.assertFalse(self.manifest("unowned").exists())
