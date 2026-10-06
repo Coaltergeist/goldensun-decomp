@@ -490,7 +490,15 @@ void OvlFunc_959_2008dcc(void) {
         __SetFlag(v + 0x32d);
     }
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008e30.s");
+extern int L7754[][2] __asm__(".Lm959_7754");
+
+void OvlFunc_959_2008e30(int idx) {
+    int x = L7754[idx][0];
+    int y = L7754[idx][1];
+    __Func_80105d4(0x37, 0x79, 1, 3, x, y);
+    __Func_80105d4(0x38, 0x79, 1, 1, x + 1, y);
+    __Func_80105d4(x, y - 0x3f, 1, 1, x, y - 0x3e);
+}
 
 extern void OvlFunc_959_2008e30(int a);
 
@@ -516,8 +524,40 @@ void OvlFunc_959_2008e80(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008ee0.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008f30.s");
+extern int L7764[][2] __asm__(".Lm959_7764");
+
+void OvlFunc_959_2008ee0(int idx) {
+    int x = L7764[idx][0];
+    int y = L7764[idx][1];
+    __Func_80105d4(1, 0x50, 1, 3, x, y);
+    __Func_80105d4(2, 0x50, 1, 1, x + 1, y);
+    __Func_8010704(x, y - 0x3f, 1, 1, x, y - 0x3e);
+}
+void OvlFunc_959_2008ee0();
+
+void __Func_8012330(int, int, int);
+
+static inline void helper(int a, int b, int c) {
+    __Func_8012330(a << 10, b << 10, c << 9);
+}
+
+void OvlFunc_959_2008f30(void) {
+    unsigned int r5;
+    short *p;
+    short v;
+    int c = 0xe666;
+
+    r5 = *(unsigned int *)iwram_3001ebc;
+    if (__CheckPartyItem(0xea) != -1) {
+        p = (short *)(r5 + (0xb6 << 1));
+        v = *p;
+        OvlFunc_959_2008ee0(v - 0x28);
+        __PlaySound(0x9d);
+        helper(0xc0, 0xc0, 0x80);
+        __Func_8012330(-1, -1, c);
+        __SetFlag(v + 0x332);
+    }
+}
 
 void OvlFunc_959_2008f94(void)
 {
@@ -1200,8 +1240,25 @@ void OvlFunc_959_200a308(void) {
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a38c.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a410.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200a468.s");
+void OvlFunc_959_200a410(void)
+{
+  int a;
+  int b;
+
+  a = 0x11;
+  __Func_80105d4(5, 0x4d, 1, 2, a, 0x52);
+  b = 3;
+  __Func_80105d4(5, 0x4d, 1, 2, b, 0x37);
+  __Func_8010704(0xf, 0x21, 1, 1, a, 0x23);
+  __Func_8010704(3, 8, 1, 1, b, 0xa);
+}
+void OvlFunc_959_200a468(void)
+{
+	__Func_80105d4(8, 0x4d, 1, 2, 0x11, 0x52);
+	__Func_80105d4(8, 0x4d, 1, 2, 3, 0x37);
+	__Func_8010704(0x12, 0x23, 1, 1, 0x11, 0x23);
+	__Func_8010704(2, 10, 1, 1, 3, 10);
+}
 
 void OvlFunc_959_200a4c0(void)
 {

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/mogall_forest.c",
+  "functions": {
+    "OvlFunc_927_20089f4": {
+      "id": "overlay:rom_7b4558:020089f4"
+    }
+  }
+}

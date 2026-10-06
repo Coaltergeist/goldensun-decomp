@@ -2,20 +2,11 @@
   "schema": 1,
   "source": "src/maps/lunpa_fortress.c",
   "functions": {
-    "OvlFunc_959_200a410": {
-      "id": "overlay:rom_7e7574:0200a410"
-    },
     "OvlFunc_959_2008b4c": {
       "id": "overlay:rom_7e7574:02008b4c"
     },
-    "OvlFunc_959_2008f30": {
-      "id": "overlay:rom_7e7574:02008f30"
-    },
     "OvlFunc_959_200c794": {
       "id": "overlay:rom_7e7574:0200c794"
-    },
-    "OvlFunc_959_200a468": {
-      "id": "overlay:rom_7e7574:0200a468"
     },
     "OvlFunc_959_200d324": {
       "id": "overlay:rom_7e7574:0200d324"

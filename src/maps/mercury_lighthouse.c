@@ -1389,7 +1389,28 @@ INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cc68.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf44.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf90.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cfcc.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d158.s");
+extern unsigned char gScript_924__0200de08[];
+
+void OvlFunc_924_200d158(struct Actor *arg0)
+{
+    extern void __Sprite_SetAnim(struct Sprite *, int);
+    struct Actor *actor;
+    struct Sprite *sprite;
+
+    actor = API_CreateActor(0x18, arg0->pos.x, arg0->pos.y, arg0->pos.z);
+    if (actor != 0) {
+        sprite = actor->sprite;
+        __Actor_SetScript(actor, gScript_924__0200de08);
+        actor->__unk55 = 0;
+        actor->layer = 1;
+        actor->flags = 2;
+        if (sprite != 0) {
+            __Sprite_SetAnim(sprite, 2);
+            sprite->flags = 0;
+            sprite->oam.priority = 3;
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d1b0.s");
 
 unsigned int OvlFunc_924_200d1f0(unsigned int arg0)

@@ -33,7 +33,24 @@ int OvlFunc_957_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200806c.s");
+extern unsigned char iwram_3001ebc[];
+
+void *OvlFunc_957_200806c(int *pos, void *self)
+{
+    int **list;
+    int *e;
+    unsigned int i;
+
+    list = (int **)(*(unsigned int *)iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        e = list[i];
+        if ((pos[0] >> 20) == (e[2] >> 20)
+            && pos[1] / 0x10000 == e[3] / 0x10000
+            && (pos[2] >> 20) == (e[4] >> 20))
+            return e;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_20080c4.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008244.s");
 

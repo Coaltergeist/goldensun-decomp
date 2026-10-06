@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/vale_river.c",
+  "functions": {
+    "OvlFunc_883_200dcc4": {
+      "id": "overlay:rom_780898:0200dcc4"
+    },
+    "OvlFunc_883_200dd14": {
+      "id": "overlay:rom_780898:0200dd14"
+    }
+  }
+}
