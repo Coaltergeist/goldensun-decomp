@@ -13,21 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7aa430/mercury_lighthouse_entrance/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.text)
-		build/usa/obj/asm/overlays/rom_7aa430/mercury_lighthouse_entrance/imports.o(.text)
+		build/usa/obj/asm/maps/mercury_lighthouse_entrance/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.text)
+		build/usa/obj/asm/maps/mercury_lighthouse_entrance/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.data)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.mdata1)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.mdata2)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.mdata3)
-		build/usa/obj/src/overlays/rom_7aa430/mercury_lighthouse_entrance.o(.mdata4)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.data)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.mdata1)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.mdata2)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.mdata3)
+		build/usa/obj/src/maps/mercury_lighthouse_entrance.o(.mdata4)
 	} > overlay
 
 	/DISCARD/ : {

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "src/maps/tunnel_ruins.c",
+  "functions": {
+    "OvlFunc_964_2009038": {
+      "id": "overlay:rom_7ed0a0:02009038"
+    },
+    "OvlFunc_964_20089f4": {
+      "id": "overlay:rom_7ed0a0:020089f4"
+    },
+    "OvlFunc_964_2009068": {
+      "id": "overlay:rom_7ed0a0:02009068"
+    },
+    "OvlFunc_964_2008a4c": {
+      "id": "overlay:rom_7ed0a0:02008a4c"
+    },
+    "OvlFunc_964_200a52c": {
+      "id": "overlay:rom_7ed0a0:0200a52c"
+    },
+    "OvlFunc_964_20091e0": {
+      "id": "overlay:rom_7ed0a0:020091e0"
+    },
+    "OvlFunc_964_2008f4c": {
+      "id": "overlay:rom_7ed0a0:02008f4c"
+    },
+    "OvlFunc_964_200a480": {
+      "id": "overlay:rom_7ed0a0:0200a480"
+    },
+    "OvlFunc_964_2008cd0": {
+      "id": "overlay:rom_7ed0a0:02008cd0"
+    },
+    "OvlFunc_964_2008244": {
+      "id": "overlay:rom_7ed0a0:02008244"
+    }
+  }
+}

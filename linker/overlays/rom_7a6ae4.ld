@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7a6ae4/bilibin_cave.o(.text)
+		build/usa/obj/src/maps/bilibin_cave.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7a6ae4/bilibin_cave.o(.data)
+		build/usa/obj/src/maps/bilibin_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

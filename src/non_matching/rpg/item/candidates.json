@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/rpg/item.c",
+  "functions": {
+    "Func_8078aa0": {
+      "id": "rom:08078aa0"
+    }
+  }
+}

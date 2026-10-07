@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/flare.c",
+  "functions": {
+    "Anim_Flare": {
+      "id": "rom:080d9fc8"
+    }
+  }
+}

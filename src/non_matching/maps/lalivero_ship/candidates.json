@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/maps/lalivero_ship.c",
+  "functions": {
+    "OvlFunc_970_20091c4": {
+      "id": "overlay:rom_7fa4ec:020091c4"
+    },
+    "OvlFunc_970_2008f80": {
+      "id": "overlay:rom_7fa4ec:02008f80"
+    }
+  }
+}

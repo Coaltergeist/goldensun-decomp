@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7ed0a0/tunnel_ruins.o(.text)
+		build/usa/obj/src/maps/tunnel_ruins.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7ed0a0/tunnel_ruins.o(.data)
+		build/usa/obj/src/maps/tunnel_ruins.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

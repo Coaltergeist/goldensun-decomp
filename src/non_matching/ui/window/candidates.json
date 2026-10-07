@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/ui/window.c",
+  "functions": {
+    "Func_8015f30": {
+      "id": "rom:08015f30"
+    }
+  }
+}

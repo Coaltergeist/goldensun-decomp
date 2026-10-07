@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/quake.c",
-  "functions": {
-    "Anim_Quake": {
-      "id": "rom:080da2ac"
-    }
-  }
-}

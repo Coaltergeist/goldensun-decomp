@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7e3e08/altmiller_cave.o(.text)
+		build/usa/obj/src/maps/altmiller_cave.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7e3e08/altmiller_cave.o(.data)
+		build/usa/obj/src/maps/altmiller_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

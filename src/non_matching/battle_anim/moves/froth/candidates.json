@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/froth.c",
+  "functions": {
+    "Anim_Froth": {
+      "id": "rom:080d33c0"
+    }
+  }
+}

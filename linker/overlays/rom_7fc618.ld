@@ -13,13 +13,13 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7fc618/debug_test/exports.o(.text)
-		build/usa/obj/src/overlays/rom_7fc618/debug_test.o(.text)
-		build/usa/obj/asm/overlays/rom_7fc618/debug_test/imports.o(.text)
+		build/usa/obj/asm/maps/debug_test/exports.o(.text)
+		build/usa/obj/src/maps/debug_test.o(.text)
+		build/usa/obj/asm/maps/debug_test/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7fc618/debug_test.o(.data)
+		build/usa/obj/src/maps/debug_test.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7d768c/babis_palace.o(.text)
+		build/usa/obj/src/maps/babis_palace.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7d768c/babis_palace.o(.data)
+		build/usa/obj/src/maps/babis_palace.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

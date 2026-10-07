@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/quake.c",
+  "functions": {
+    "Anim_Quake": {
+      "id": "rom:080da2ac"
+    }
+  }
+}

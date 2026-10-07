@@ -92,8 +92,8 @@ SECTIONS {
 	} > rom
 
 	rom_320000 : ALIGN(0x1000) {
-		build/usa/obj/data/modules/rom_320000/rom_320000.o(.rodata.mft)
-		build/usa/obj/data/modules/rom_320000/rom_320000.o(.rodata.mftdata)
+		build/usa/obj/data/map_overlays/rom_320000.o(.rodata.mft)
+		build/usa/obj/data/map_overlays/rom_320000.o(.rodata.mftdata)
 	} > rom
 
 	.fill : {

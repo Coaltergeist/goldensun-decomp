@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "source": "src/maps/xian.c",
+  "functions": {
+    "OvlFunc_928_2008370": {
+      "id": "overlay:rom_7b6668:02008370",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_928_2008500": {
+      "id": "overlay:rom_7b6668:02008500"
+    },
+    "OvlFunc_928_2008f30": {
+      "id": "overlay:rom_7b6668:02008f30",
+      "context": [
+        "context.h"
+      ]
+    },
+    "OvlFunc_928_2008408": {
+      "id": "overlay:rom_7b6668:02008408"
+    },
+    "Xian_MapInit": {
+      "id": "overlay:rom_7b6668:02009148"
+    }
+  }
+}

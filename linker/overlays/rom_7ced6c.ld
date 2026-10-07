@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7ced6c/crossbone_isle.o(.text)
+		build/usa/obj/src/maps/crossbone_isle.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7ced6c/crossbone_isle.o(.data)
+		build/usa/obj/src/maps/crossbone_isle.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

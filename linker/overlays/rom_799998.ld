@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_799998/goma_cave_1.o(.text)
+		build/usa/obj/src/maps/goma_cave_1.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_799998/goma_cave_1.o(.data)
+		build/usa/obj/src/maps/goma_cave_1.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

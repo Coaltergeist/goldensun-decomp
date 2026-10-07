@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/projectile.c",
-  "functions": {
-    "Func_80df9d0": {
-      "id": "rom:080df9d0"
-    }
-  }
-}

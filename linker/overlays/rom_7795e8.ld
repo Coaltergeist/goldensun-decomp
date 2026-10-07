@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7795e8/main_menu.o(.text)
+		build/usa/obj/src/maps/main_menu.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7795e8/main_menu.o(.data)
+		build/usa/obj/src/maps/main_menu.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

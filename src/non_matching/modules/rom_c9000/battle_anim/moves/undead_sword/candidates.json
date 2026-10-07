@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/undead_sword.c",
-  "functions": {
-    "Anim_UndeadSword": {
-      "id": "rom:080ed104"
-    }
-  }
-}

@@ -39,13 +39,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 
 | Path | Contents |
 | --- | --- |
-| `src/core/<region>/` | Startup and low-level main-ROM code |
-| `src/modules/<region>/` | Main-ROM modules, retaining subsystem folders within each region |
-| `src/overlays/<overlay>/` | One translation unit per code overlay |
-| `src/overlays/common/` | The three shared overlay modules, compiled once each |
+| `src/core/` | Startup, resident runtime code and the standalone RAM library |
+| `src/<module>/` | Descriptive main-ROM modules, such as field_engine, field, ui, battle and battle_anim |
+| `src/maps/*.c` | Map and other code overlays, one named translation unit per bank |
+| `src/maps/common/` | The three shared overlay modules, compiled once each |
 | `src/lib/` | GBA library code, including m4a and Flash support |
 | `src/non_matching/` | Parked candidates and context headers, grouped by current TU ownership |
-| `asm/core/`, `asm/modules/`, `asm/overlays/` | Active assembly fragments for the corresponding source TUs |
+| `asm/core/`, `asm/<module>/`, `asm/maps/` | Active assembly fragments for the corresponding source TUs |
 | `data/` and `exports/` | Maintained data assembly and exported symbols |
 | `linker/` | Main-ROM and overlay linker scripts; address maps under `linker/symbols/` |
 | `include/` | C headers, assembler macros and [shared type owners](include/README.md) |
@@ -53,7 +53,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 | `tools/` | Build, comparison, and reporting tools |
 | `build/` | Ignored objects, intermediates, generated assets, ROM and overlay products |
 
-Region and overlay folder names follow catalog IDs, including their ROM offsets. Use
+Source names describe their role; ROM offsets and overlay identities remain in the catalog.
+Maintained standalone assembly belongs under src; included disassembly and assembly
+import/export fragments remain under asm. Use
 [the module catalog](config/README.md) to resolve a stable TU ID, current path or
 legacy object alias. Catalog ownership preserves compile profiles and link order.
 Original disassembly paths in `original_functions.json` are historical evidence;

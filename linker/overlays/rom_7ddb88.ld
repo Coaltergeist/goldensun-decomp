@@ -13,21 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7ddb88/colosseum_final_2/exports.o(.text)
-		build/usa/obj/src/overlays/rom_7ddb88/colosseum_final_2.o(.text)
-		build/usa/obj/src/overlays/common/common1.o(.text)
-		build/usa/obj/asm/overlays/rom_7ddb88/colosseum_final_2/imports.o(.text)
+		build/usa/obj/asm/maps/colosseum_final_2/exports.o(.text)
+		build/usa/obj/src/maps/colosseum_final_2.o(.text)
+		build/usa/obj/src/maps/common/common1.o(.text)
+		build/usa/obj/asm/maps/colosseum_final_2/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7ddb88/colosseum_final_2.o(.data)
-		build/usa/obj/src/overlays/common/common1.o(.data)
-		build/usa/obj/src/overlays/rom_7ddb88/colosseum_final_2.o(.data1)
-		build/usa/obj/src/overlays/common/common1.o(.data1)
+		build/usa/obj/src/maps/colosseum_final_2.o(.data)
+		build/usa/obj/src/maps/common/common1.o(.data)
+		build/usa/obj/src/maps/colosseum_final_2.o(.data1)
+		build/usa/obj/src/maps/common/common1.o(.data1)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/common/common1.o(.bss)
+		build/usa/obj/src/maps/common/common1.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

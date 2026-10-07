@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/ui/icon.c",
+  "functions": {
+    "DecompressStatusIcon": {
+      "id": "rom:0801a4c0"
+    }
+  }
+}

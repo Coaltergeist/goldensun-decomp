@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/curse.c",
+  "functions": {
+    "Anim_Curse": {
+      "id": "rom:080d5c48"
+    }
+  }
+}

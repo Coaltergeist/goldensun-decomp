@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7c5974/lunpa_rooms.o(.text)
+		build/usa/obj/src/maps/lunpa_rooms.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7c5974/lunpa_rooms.o(.data)
+		build/usa/obj/src/maps/lunpa_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

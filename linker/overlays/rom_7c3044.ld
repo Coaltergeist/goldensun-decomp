@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7c3044/kalay_rooms.o(.text)
+		build/usa/obj/src/maps/kalay_rooms.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7c3044/kalay_rooms.o(.data)
+		build/usa/obj/src/maps/kalay_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

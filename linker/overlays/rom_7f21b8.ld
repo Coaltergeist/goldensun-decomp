@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7f21b8/lalivero_rooms.o(.text)
+		build/usa/obj/src/maps/lalivero_rooms.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7f21b8/lalivero_rooms.o(.data)
+		build/usa/obj/src/maps/lalivero_rooms.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

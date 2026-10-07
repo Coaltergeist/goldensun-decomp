@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_779188/title.o(.text)
+		build/usa/obj/src/maps/title.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_779188/title.o(.data)
+		build/usa/obj/src/maps/title.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_779188/title.o(.bss)
+		build/usa/obj/src/maps/title.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

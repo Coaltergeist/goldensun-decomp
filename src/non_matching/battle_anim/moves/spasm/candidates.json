@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/spasm.c",
+  "functions": {
+    "BaseAnim_Spasm": {
+      "id": "rom:080ceff8"
+    }
+  }
+}

@@ -27,9 +27,9 @@ behavior.
 ## Where changes belong
 
 Resolve the owning TU through [the catalog](config/README.md#read-only-build-queries).
-Main-ROM code follows its region under `src/core/` or `src/modules/`; overlay code
-belongs under `src/overlays/<overlay>/`. Shared overlay implementations live in
-`src/overlays/common/` and compile once each, even when multiple overlays use them.
+Main-ROM code follows its catalog owner under `src/core/` or directly under `src/`; overlay code
+belongs in `src/maps/<name>.c`. Shared overlay implementations live in
+`src/maps/common/` and compile once each, even when multiple overlays use them.
 Preserve the linkers' placement and imports/exports. Put shared declarations in the
 [owning header](include/README.md); keep unproven or incompatible local views
 separate. Candidate directories come from the owning catalog unit.

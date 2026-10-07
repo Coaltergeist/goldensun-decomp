@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle/enemy.c",
+  "functions": {
+    "Func_80c24b0": {
+      "id": "rom:080c24b0"
+    }
+  }
+}

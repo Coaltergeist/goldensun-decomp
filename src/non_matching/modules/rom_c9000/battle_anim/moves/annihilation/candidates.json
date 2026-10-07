@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/annihilation.c",
-  "functions": {
-    "Anim_Annihilation": {
-      "id": "rom:080e90a8"
-    }
-  }
-}

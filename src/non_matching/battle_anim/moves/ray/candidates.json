@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/ray.c",
+  "functions": {
+    "Anim_Ray": {
+      "id": "rom:080db264"
+    }
+  }
+}

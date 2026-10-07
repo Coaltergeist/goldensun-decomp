@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_77a7c8/world_map_cutscenes.o(.text)
+		build/usa/obj/src/maps/world_map_cutscenes.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_77a7c8/world_map_cutscenes.o(.data)
+		build/usa/obj/src/maps/world_map_cutscenes.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_77a7c8/world_map_cutscenes.o(.bss)
+		build/usa/obj/src/maps/world_map_cutscenes.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

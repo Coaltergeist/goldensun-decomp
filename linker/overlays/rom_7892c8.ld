@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7892c8/vale_sanctum.o(.text)
+		build/usa/obj/src/maps/vale_sanctum.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7892c8/vale_sanctum.o(.data)
+		build/usa/obj/src/maps/vale_sanctum.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

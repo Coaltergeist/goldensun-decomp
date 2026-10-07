@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_78ac38/vale_river_eruption.o(.text)
+		build/usa/obj/src/maps/vale_river_eruption.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_78ac38/vale_river_eruption.o(.data)
+		build/usa/obj/src/maps/vale_river_eruption.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

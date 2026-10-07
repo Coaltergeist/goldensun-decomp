@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7cb2c0/tolbi_bound_ship_hull.o(.text)
+		build/usa/obj/src/maps/tolbi_bound_ship_hull.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7cb2c0/tolbi_bound_ship_hull.o(.data)
+		build/usa/obj/src/maps/tolbi_bound_ship_hull.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

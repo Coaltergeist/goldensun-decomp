@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/planet_diver.c",
-  "functions": {
-    "Anim_PlanetDiver": {
-      "id": "rom:080ce034"
-    }
-  }
-}

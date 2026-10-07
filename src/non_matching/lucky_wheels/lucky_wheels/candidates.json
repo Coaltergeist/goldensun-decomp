@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "source": "src/lucky_wheels/lucky_wheels.c",
+  "functions": {
+    "Func_80f7e34": {
+      "id": "rom:080f7e34",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80f7f30": {
+      "id": "rom:080f7f30",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80f7df0": {
+      "id": "rom:080f7df0",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_80f7db4": {
+      "id": "rom:080f7db4",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}

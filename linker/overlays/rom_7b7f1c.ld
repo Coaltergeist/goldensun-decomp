@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7b7f1c/alpine_crossing.o(.text)
+		build/usa/obj/src/maps/alpine_crossing.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7b7f1c/alpine_crossing.o(.data)
+		build/usa/obj/src/maps/alpine_crossing.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

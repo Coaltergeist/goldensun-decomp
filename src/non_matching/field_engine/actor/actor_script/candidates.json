@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "source": "src/field_engine/actor/actor_script.c",
+  "functions": {
+    "ActorCmd_CallNative": {
+      "id": "rom:0800d6a4"
+    },
+    "ActorAttrOp_unk64": {
+      "id": "rom:0800e850"
+    },
+    "ActorAttrOp_width": {
+      "id": "rom:0800e334"
+    },
+    "ActorAttrOp_waitTimer": {
+      "id": "rom:0800e810"
+    },
+    "ActorAttrOp_unk66": {
+      "id": "rom:0800e890"
+    },
+    "ActorCmd_IncAttr": {
+      "id": "rom:0800e9dc",
+      "context": [
+        "context.h"
+      ]
+    },
+    "ActorCmd_SetAttr": {
+      "id": "rom:0800e9a0",
+      "context": [
+        "context.h"
+      ]
+    },
+    "Func_800d304": {
+      "id": "rom:0800d304"
+    },
+    "ActorCmd_CmpAttr": {
+      "id": "rom:0800ea18",
+      "context": [
+        "context.h"
+      ]
+    }
+  }
+}

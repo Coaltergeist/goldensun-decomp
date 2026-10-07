@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7a8c8c/imil_falls_cave.o(.text)
+		build/usa/obj/src/maps/imil_falls_cave.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7a8c8c/imil_falls_cave.o(.data)
+		build/usa/obj/src/maps/imil_falls_cave.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7fcd20/menu_test.o(.text)
+		build/usa/obj/src/maps/menu_test.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7fcd20/menu_test.o(.data)
+		build/usa/obj/src/maps/menu_test.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

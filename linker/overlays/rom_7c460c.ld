@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7c460c/lunpa/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7c460c/lunpa.o(.text)
-		build/usa/obj/asm/overlays/rom_7c460c/lunpa/imports.o(.text)
+		build/usa/obj/asm/maps/lunpa/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/lunpa.o(.text)
+		build/usa/obj/asm/maps/lunpa/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7c460c/lunpa.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/lunpa.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

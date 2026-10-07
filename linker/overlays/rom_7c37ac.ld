@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7c37ac/hammet_palace.o(.text)
+		build/usa/obj/src/maps/hammet_palace.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7c37ac/hammet_palace.o(.data)
+		build/usa/obj/src/maps/hammet_palace.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

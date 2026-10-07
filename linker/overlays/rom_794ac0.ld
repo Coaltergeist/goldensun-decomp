@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_794ac0/vault_rooms_1.o(.text)
+		build/usa/obj/src/maps/vault_rooms_1.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_794ac0/vault_rooms_1.o(.data)
+		build/usa/obj/src/maps/vault_rooms_1.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_794ac0/vault_rooms_1.o(.bss)
+		build/usa/obj/src/maps/vault_rooms_1.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

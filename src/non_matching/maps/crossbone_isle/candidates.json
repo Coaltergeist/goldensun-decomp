@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "source": "src/maps/crossbone_isle.c",
+  "functions": {
+    "OvlFunc_946_20089f4": {
+      "id": "overlay:rom_7ced6c:020089f4"
+    },
+    "OvlFunc_946_200985c": {
+      "id": "overlay:rom_7ced6c:0200985c"
+    },
+    "OvlFunc_946_20098b0": {
+      "id": "overlay:rom_7ced6c:020098b0"
+    },
+    "OvlFunc_946_200806c": {
+      "id": "overlay:rom_7ced6c:0200806c"
+    },
+    "OvlFunc_946_2008da4": {
+      "id": "overlay:rom_7ced6c:02008da4"
+    },
+    "OvlFunc_946_2008a4c": {
+      "id": "overlay:rom_7ced6c:02008a4c"
+    },
+    "OvlFunc_946_200a450": {
+      "id": "overlay:rom_7ced6c:0200a450"
+    },
+    "OvlFunc_946_2009de0": {
+      "id": "overlay:rom_7ced6c:02009de0"
+    },
+    "OvlFunc_946_200a004": {
+      "id": "overlay:rom_7ced6c:0200a004"
+    },
+    "OvlFunc_946_2009ef4": {
+      "id": "overlay:rom_7ced6c:02009ef4"
+    },
+    "OvlFunc_946_2008e00": {
+      "id": "overlay:rom_7ced6c:02008e00"
+    },
+    "OvlFunc_946_200a3c4": {
+      "id": "overlay:rom_7ced6c:0200a3c4"
+    },
+    "OvlFunc_946_200a16c": {
+      "id": "overlay:rom_7ced6c:0200a16c"
+    },
+    "OvlFunc_946_20093ac": {
+      "id": "overlay:rom_7ced6c:020093ac"
+    },
+    "OvlFunc_946_2009c84": {
+      "id": "overlay:rom_7ced6c:02009c84"
+    },
+    "OvlFunc_946_200add0": {
+      "id": "overlay:rom_7ced6c:0200add0"
+    },
+    "OvlFunc_946_20092b4": {
+      "id": "overlay:rom_7ced6c:020092b4"
+    },
+    "OvlFunc_946_2009d2c": {
+      "id": "overlay:rom_7ced6c:02009d2c"
+    },
+    "OvlFunc_946_200ac4c": {
+      "id": "overlay:rom_7ced6c:0200ac4c"
+    },
+    "OvlFunc_946_2009bbc": {
+      "id": "overlay:rom_7ced6c:02009bbc"
+    },
+    "OvlFunc_946_200ad0c": {
+      "id": "overlay:rom_7ced6c:0200ad0c"
+    },
+    "OvlFunc_946_2009a44": {
+      "id": "overlay:rom_7ced6c:02009a44"
+    },
+    "OvlFunc_946_200aed8": {
+      "id": "overlay:rom_7ced6c:0200aed8"
+    },
+    "OvlFunc_946_2009774": {
+      "id": "overlay:rom_7ced6c:02009774"
+    },
+    "OvlFunc_946_200aa98": {
+      "id": "overlay:rom_7ced6c:0200aa98"
+    },
+    "OvlFunc_946_20088c0": {
+      "id": "overlay:rom_7ced6c:020088c0"
+    }
+  }
+}

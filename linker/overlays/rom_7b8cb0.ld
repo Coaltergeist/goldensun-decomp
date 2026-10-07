@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7b8cb0/altin.o(.text)
+		build/usa/obj/src/maps/altin.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7b8cb0/altin.o(.data)
+		build/usa/obj/src/maps/altin.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

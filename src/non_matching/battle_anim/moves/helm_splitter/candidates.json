@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/helm_splitter.c",
+  "functions": {
+    "Anim_HelmSplitter": {
+      "id": "rom:080e698c"
+    }
+  }
+}

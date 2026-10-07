@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/break.c",
-  "functions": {
-    "Anim_Break": {
-      "id": "rom:080d82b0"
-    }
-  }
-}

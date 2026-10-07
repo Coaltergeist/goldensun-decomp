@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7ebdfc/suhalla.o(.text)
+		build/usa/obj/src/maps/suhalla.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7ebdfc/suhalla.o(.data)
+		build/usa/obj/src/maps/suhalla.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

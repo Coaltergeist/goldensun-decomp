@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source": "src/maps/mccoys_palace_ext.c",
+  "functions": {
+    "MccoysPalaceExt_MapInit": {
+      "id": "overlay:rom_79dd90:020084bc"
+    },
+    "OvlFunc_910_2008030": {
+      "id": "overlay:rom_79dd90:02008030"
+    },
+    "OvlFunc_910_2008974": {
+      "id": "overlay:rom_79dd90:02008974"
+    },
+    "OvlFunc_910_20081e4": {
+      "id": "overlay:rom_79dd90:020081e4"
+    }
+  }
+}

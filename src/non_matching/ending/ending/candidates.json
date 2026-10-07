@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/ending/ending.c",
+  "functions": {
+    "Func_80f037c": {
+      "id": "rom:080f037c"
+    },
+    "Func_80f0254": {
+      "id": "rom:080f0254"
+    }
+  }
+}

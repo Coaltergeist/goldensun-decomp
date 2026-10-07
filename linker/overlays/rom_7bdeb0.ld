@@ -13,20 +13,20 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7bdeb0/vale_cave/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7bdeb0/vale_cave.o(.text)
-		build/usa/obj/asm/overlays/rom_7bdeb0/vale_cave/imports.o(.text)
+		build/usa/obj/asm/maps/vale_cave/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/vale_cave.o(.text)
+		build/usa/obj/asm/maps/vale_cave/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/rom_7bdeb0/vale_cave.o(.data)
-		build/usa/obj/src/overlays/rom_7bdeb0/vale_cave.o(.mdata1)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7bdeb0/vale_cave.o(.mdata2)
-		build/usa/obj/src/overlays/rom_7bdeb0/vale_cave.o(.mdata3)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/vale_cave.o(.data)
+		build/usa/obj/src/maps/vale_cave.o(.mdata1)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/vale_cave.o(.mdata2)
+		build/usa/obj/src/maps/vale_cave.o(.mdata3)
 	} > overlay
 
 	/DISCARD/ : {

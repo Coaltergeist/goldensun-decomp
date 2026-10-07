@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7a67d8/tret_tree_ext.o(.text)
+		build/usa/obj/src/maps/tret_tree_ext.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7a67d8/tret_tree_ext.o(.data)
+		build/usa/obj/src/maps/tret_tree_ext.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7a67d8/tret_tree_ext.o(.bss)
+		build/usa/obj/src/maps/tret_tree_ext.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

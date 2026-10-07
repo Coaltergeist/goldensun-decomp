@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7c097c/kalay.o(.text)
+		build/usa/obj/src/maps/kalay.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7c097c/kalay.o(.data)
+		build/usa/obj/src/maps/kalay.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7c097c/kalay.o(.bss)
+		build/usa/obj/src/maps/kalay.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_784360/vale_plaza.o(.text)
+		build/usa/obj/src/maps/vale_plaza.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_784360/vale_plaza.o(.data)
+		build/usa/obj/src/maps/vale_plaza.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

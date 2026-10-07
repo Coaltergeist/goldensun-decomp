@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/ramses.c",
+  "functions": {
+    "Anim_Ramses": {
+      "id": "rom:080e823c"
+    }
+  }
+}

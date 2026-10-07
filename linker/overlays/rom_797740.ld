@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_797740/jail.o(.text)
+		build/usa/obj/src/maps/jail.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_797740/jail.o(.data)
+		build/usa/obj/src/maps/jail.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

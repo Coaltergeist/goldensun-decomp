@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7b9cb4/altin_peak.o(.text)
+		build/usa/obj/src/maps/altin_peak.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7b9cb4/altin_peak.o(.data)
+		build/usa/obj/src/maps/altin_peak.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7b9cb4/altin_peak.o(.bss)
+		build/usa/obj/src/maps/altin_peak.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

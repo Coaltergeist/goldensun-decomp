@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_791794/elemental_stars_eruption.o(.text)
+		build/usa/obj/src/maps/elemental_stars_eruption.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_791794/elemental_stars_eruption.o(.data)
+		build/usa/obj/src/maps/elemental_stars_eruption.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_791794/elemental_stars_eruption.o(.bss)
+		build/usa/obj/src/maps/elemental_stars_eruption.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

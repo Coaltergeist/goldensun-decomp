@@ -16,7 +16,7 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 
 The catalog owns current TU paths, profile assignments and module identities.
 The shared build graph supplies Make and Ninja; maintained linker scripts control
-link order. Maintained sources follow ROM-module ownership; generated products
+link order. Descriptive source paths retain ROM-module ownership; generated products
 use build/. See the repository layout in [README.md](../README.md).
 
 ## Schema 1
@@ -56,7 +56,7 @@ installed target compiler, generated assembly, object or configured build tree:
 
 ~~~bash
 set -o pipefail
-python3 -B tools/build_config.py query unit src/core/rom_1b70/math/vector.c 2>&1 | tee output-query.txt
+python3 -B tools/build_config.py query unit src/core/runtime/math/vector.c 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query unit asm/maps/common/common2.o 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query profile tu:src/battle_anim/moves/gaia 2>&1 | tee output-query.txt
 python3 -B tools/build_config.py query commands src/lib/m4a/m4a.c 2>&1 | tee output-query.txt
@@ -70,7 +70,7 @@ Module/overlay queries return their object and artifact paths. Command output is
 ordered argument arrays plus structured postprocessing, not a shell script.
 Unknown or reference-only sources fail instead of inheriting a default profile.
 
-`make -s --no-print-directory print-compile-contract SOURCE=src/core/rom_1b70/math/vector.c`
+`make -s --no-print-directory print-compile-contract SOURCE=src/core/runtime/math/vector.c`
 remains the six-line target-C compatibility interface: family, GCC driver, GCC
 flags, old_agbcc path, host-preprocessor flags, old_agbcc flags. Unused family
 lines retain their former values. `print-build-settings` emits resolved variable

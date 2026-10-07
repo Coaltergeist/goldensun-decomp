@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_798dc4/goma_cave_entry/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_798dc4/goma_cave_entry.o(.text)
-		build/usa/obj/asm/overlays/rom_798dc4/goma_cave_entry/imports.o(.text)
+		build/usa/obj/asm/maps/goma_cave_entry/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/goma_cave_entry.o(.text)
+		build/usa/obj/asm/maps/goma_cave_entry/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_798dc4/goma_cave_entry.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/goma_cave_entry.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

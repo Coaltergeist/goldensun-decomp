@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_9000/actor/player.c",
-  "functions": {
-    "Func_800eba0": {
-      "id": "rom:0800eba0"
-    }
-  }
-}

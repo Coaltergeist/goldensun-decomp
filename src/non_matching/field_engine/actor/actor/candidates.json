@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "source": "src/field_engine/actor/actor.c",
+  "functions": {
+    "Func_800c548": {
+      "id": "rom:0800c548"
+    },
+    "Func_800c570": {
+      "id": "rom:0800c570"
+    },
+    "NewActor": {
+      "id": "rom:0800c0cc"
+    }
+  }
+}

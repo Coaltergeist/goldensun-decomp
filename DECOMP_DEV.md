@@ -150,8 +150,8 @@ owning source, target assembly and importer path:
 
 ~~~bash
 set -euo pipefail
-python3 -B tools/permuter_compile.py src/core/rom_1b70/math/vector.c --output build/permuter/vector.toml 2>&1 | tee output-permuter-settings.txt
-python3 /path/to/decomp-permuter/import.py src/core/rom_1b70/math/vector.c /path/to/target.s --settings build/permuter/vector.toml 2>&1 | tee output-permuter-import.txt
+python3 -B tools/permuter_compile.py src/core/runtime/math/vector.c --output build/permuter/vector.toml 2>&1 | tee output-permuter-settings.txt
+python3 /path/to/decomp-permuter/import.py src/core/runtime/math/vector.c /path/to/target.s --settings build/permuter/vector.toml 2>&1 | tee output-permuter-import.txt
 ~~~
 
 Without --output, the settings generator writes TOML to stdout and changes no

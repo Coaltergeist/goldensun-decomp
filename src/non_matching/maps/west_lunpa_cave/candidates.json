@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source": "src/maps/west_lunpa_cave.c",
+  "functions": {
+    "OvlFunc_941_2008094": {
+      "id": "overlay:rom_7c5efc:02008094"
+    },
+    "OvlFunc_941_2009760": {
+      "id": "overlay:rom_7c5efc:02009760"
+    },
+    "OvlFunc_941_2009394": {
+      "id": "overlay:rom_7c5efc:02009394"
+    },
+    "WestLunpaCave_MapInit": {
+      "id": "overlay:rom_7c5efc:02009a0c"
+    },
+    "OvlFunc_941_20091b8": {
+      "id": "overlay:rom_7c5efc:020091b8"
+    },
+    "OvlFunc_941_2008384": {
+      "id": "overlay:rom_7c5efc:02008384"
+    }
+  }
+}

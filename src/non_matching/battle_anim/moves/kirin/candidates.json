@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/kirin.c",
+  "functions": {
+    "Anim_Kirin": {
+      "id": "rom:080eb754"
+    }
+  }
+}

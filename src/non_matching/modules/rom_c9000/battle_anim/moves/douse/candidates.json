@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/douse.c",
-  "functions": {
-    "Anim_Douse": {
-      "id": "rom:080c972c"
-    }
-  }
-}

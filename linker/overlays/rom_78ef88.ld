@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_78ef88/elemental_stars/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_78ef88/elemental_stars.o(.text)
-		build/usa/obj/asm/overlays/rom_78ef88/elemental_stars/imports.o(.text)
+		build/usa/obj/asm/maps/elemental_stars/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/elemental_stars.o(.text)
+		build/usa/obj/asm/maps/elemental_stars/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_78ef88/elemental_stars.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/elemental_stars.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

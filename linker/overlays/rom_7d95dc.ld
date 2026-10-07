@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7d95dc/colosseum.o(.text)
+		build/usa/obj/src/maps/colosseum.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7d95dc/colosseum.o(.data)
+		build/usa/obj/src/maps/colosseum.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

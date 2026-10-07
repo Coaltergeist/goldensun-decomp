@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_79dd90/mccoys_palace_ext.o(.text)
+		build/usa/obj/src/maps/mccoys_palace_ext.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_79dd90/mccoys_palace_ext.o(.data)
+		build/usa/obj/src/maps/mccoys_palace_ext.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

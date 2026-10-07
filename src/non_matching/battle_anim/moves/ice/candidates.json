@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/battle_anim/moves/ice.c",
+  "functions": {
+    "Anim_Ice": {
+      "id": "rom:080c91dc"
+    }
+  }
+}

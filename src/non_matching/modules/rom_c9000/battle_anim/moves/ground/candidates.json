@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/ground.c",
-  "functions": {
-    "Anim_Ground": {
-      "id": "rom:080e1040"
-    }
-  }
-}

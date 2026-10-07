@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "source": "src/sound/other/sub_80f95e0.c",
+  "functions": {
+    "SoundMainBTM": {
+      "id": "rom:080f9a18"
+    },
+    "ply_pend": {
+      "id": "rom:080f9afc"
+    }
+  }
+}

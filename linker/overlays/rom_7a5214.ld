@@ -13,21 +13,21 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7a5214/tret_tree/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7a5214/tret_tree.o(.text)
-		build/usa/obj/asm/overlays/rom_7a5214/tret_tree/imports.o(.text)
+		build/usa/obj/asm/maps/tret_tree/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/tret_tree.o(.text)
+		build/usa/obj/asm/maps/tret_tree/imports.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/rom_7a5214/tret_tree.o(.data)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7a5214/tret_tree.o(.mdata1)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/tret_tree.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/tret_tree.o(.mdata1)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7a5214/tret_tree.o(.bss)
+		build/usa/obj/src/maps/tret_tree.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

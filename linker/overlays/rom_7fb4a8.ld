@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7fb4a8/link_lobby/exports.o(.text)
-		build/usa/obj/src/overlays/rom_7fb4a8/link_lobby.o(.text)
-		build/usa/obj/asm/overlays/rom_7fb4a8/link_lobby/imports.o(.text)
+		build/usa/obj/asm/maps/link_lobby/exports.o(.text)
+		build/usa/obj/src/maps/link_lobby.o(.text)
+		build/usa/obj/asm/maps/link_lobby/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7fb4a8/link_lobby.o(.data)
+		build/usa/obj/src/maps/link_lobby.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7fb4a8/link_lobby.o(.bss)
+		build/usa/obj/src/maps/link_lobby.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

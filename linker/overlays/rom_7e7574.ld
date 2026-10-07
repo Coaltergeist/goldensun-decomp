@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7e7574/lunpa_fortress/exports.o(.text)
-		build/usa/obj/src/overlays/rom_7e7574/lunpa_fortress.o(.text)
-		build/usa/obj/asm/overlays/rom_7e7574/lunpa_fortress/imports.o(.text)
+		build/usa/obj/asm/maps/lunpa_fortress/exports.o(.text)
+		build/usa/obj/src/maps/lunpa_fortress.o(.text)
+		build/usa/obj/asm/maps/lunpa_fortress/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
-		build/usa/obj/src/overlays/common/common2.o(.text)
+		build/usa/obj/src/maps/common/common2.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7e7574/lunpa_fortress.o(.data)
-		build/usa/obj/src/overlays/common/common2.o(.data)
-		build/usa/obj/src/overlays/rom_7e7574/lunpa_fortress.o(.mdata1)
+		build/usa/obj/src/maps/lunpa_fortress.o(.data)
+		build/usa/obj/src/maps/common/common2.o(.data)
+		build/usa/obj/src/maps/lunpa_fortress.o(.mdata1)
 	} > overlay
 
 	/DISCARD/ : {

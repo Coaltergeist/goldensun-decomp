@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7d4af4/tolbi.o(.text)
+		build/usa/obj/src/maps/tolbi.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7d4af4/tolbi.o(.data)
+		build/usa/obj/src/maps/tolbi.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

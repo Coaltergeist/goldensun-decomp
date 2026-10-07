@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_78dc80/sol_sanctum_3.o(.text)
+		build/usa/obj/src/maps/sol_sanctum_3.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_78dc80/sol_sanctum_3.o(.data)
+		build/usa/obj/src/maps/sol_sanctum_3.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

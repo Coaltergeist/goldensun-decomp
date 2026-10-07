@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_78603c/vale_kraden.o(.text)
+		build/usa/obj/src/maps/vale_kraden.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_78603c/vale_kraden.o(.data)
+		build/usa/obj/src/maps/vale_kraden.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

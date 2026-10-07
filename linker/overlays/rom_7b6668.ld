@@ -13,17 +13,17 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7b6668/xian/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7b6668/xian.o(.text)
-		build/usa/obj/asm/overlays/rom_7b6668/xian/imports.o(.text)
+		build/usa/obj/asm/maps/xian/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/xian.o(.text)
+		build/usa/obj/asm/maps/xian/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7b6668/xian.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/xian.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7b4558/mogall_forest.o(.text)
+		build/usa/obj/src/maps/mogall_forest.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7b4558/mogall_forest.o(.data)
+		build/usa/obj/src/maps/mogall_forest.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7f2f14/venus_lighthouse.o(.text)
+		build/usa/obj/src/maps/venus_lighthouse.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7f2f14/venus_lighthouse.o(.data)
+		build/usa/obj/src/maps/venus_lighthouse.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

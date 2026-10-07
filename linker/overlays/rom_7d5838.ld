@@ -13,11 +13,11 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7d5838/tolbi_rooms_1.o(.text)
+		build/usa/obj/src/maps/tolbi_rooms_1.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7d5838/tolbi_rooms_1.o(.data)
+		build/usa/obj/src/maps/tolbi_rooms_1.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

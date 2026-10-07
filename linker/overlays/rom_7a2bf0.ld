@@ -13,16 +13,16 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7a2bf0/kolima_forest_3.o(.text)
+		build/usa/obj/src/maps/kolima_forest_3.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7a2bf0/kolima_forest_3.o(.data)
+		build/usa/obj/src/maps/kolima_forest_3.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7a2bf0/kolima_forest_3.o(.bss)
+		build/usa/obj/src/maps/kolima_forest_3.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

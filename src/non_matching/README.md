@@ -1,9 +1,9 @@
 # Unfinished C candidates
 
 The catalog declares each TU's candidate directory. For example,
-`modules/rom_c9000/battle_anim/moves/kirin/Anim_Kirin.c` targets
-`asm/modules/rom_c9000/battle_anim/moves/kirin/Anim_Kirin.s` in
-`src/modules/rom_c9000/battle_anim/moves/kirin.c`.
+`battle_anim/moves/kirin/Anim_Kirin.c` targets
+`asm/battle_anim/moves/kirin/Anim_Kirin.s` in
+`src/battle_anim/moves/kirin.c`.
 Browse the [candidate index](INDEX.md). Query the production TU with
 `tools/build_config.py query unit` to find its `candidate_directory`; do not
 construct a path from an old TU spelling. The examples below run from the
@@ -40,7 +40,7 @@ changing production code. Use a new directory name for each capture:
 set -o pipefail
 python3 -B tools/create_diff_baseline.py --output .diff-baselines/candidates 2>&1 | tee output-candidates.txt
 export GOLDENSUN_EXPECTED_DIR=.diff-baselines/candidates
-python3 -B tools/compare_candidate.py src/non_matching/modules/rom_c9000/battle_anim/moves/kirin/Anim_Kirin.c 2>&1 | tee output-candidates.txt
+python3 -B tools/compare_candidate.py src/non_matching/battle_anim/moves/kirin/Anim_Kirin.c 2>&1 | tee output-candidates.txt
 ~~~
 
 The helper copies the production TU into a unique `build/non_matching/` run,

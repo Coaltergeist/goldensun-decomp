@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_c9000/battle_anim/moves/breath.c",
-  "functions": {
-    "BaseAnim_Breath": {
-      "id": "rom:080dbc30"
-    }
-  }
-}

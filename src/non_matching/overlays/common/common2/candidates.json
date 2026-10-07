@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/overlays/common/common2.c",
-  "functions": {
-    "OvlFunc_common2_254": {
-      "id": "common:common2:00000254"
-    }
-  }
-}

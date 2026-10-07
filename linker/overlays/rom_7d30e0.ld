@@ -13,12 +13,12 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7d30e0/crossbone_isle_dungeon_4.o(.text)
+		build/usa/obj/src/maps/crossbone_isle_dungeon_4.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7d30e0/crossbone_isle_dungeon_4.o(.data)
+		build/usa/obj/src/maps/crossbone_isle_dungeon_4.o(.data)
 	} > overlay
 
 	/DISCARD/ : {

@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_15000/ui/window.c",
-  "functions": {
-    "Func_8015f30": {
-      "id": "rom:08015f30"
-    }
-  }
-}

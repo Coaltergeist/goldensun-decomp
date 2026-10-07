@@ -13,18 +13,18 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7bf5a8/vault_cave/exports.o(.text)
-		build/usa/obj/src/overlays/rom_7bf5a8/vault_cave.o(.text)
-		build/usa/obj/asm/overlays/rom_7bf5a8/vault_cave/imports.o(.text)
-		build/usa/obj/src/overlays/common/common2.o(.text)
+		build/usa/obj/asm/maps/vault_cave/exports.o(.text)
+		build/usa/obj/src/maps/vault_cave.o(.text)
+		build/usa/obj/asm/maps/vault_cave/imports.o(.text)
+		build/usa/obj/src/maps/common/common2.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7bf5a8/vault_cave.o(.data)
-		build/usa/obj/src/overlays/rom_7bf5a8/vault_cave.o(.mdata1)
-		build/usa/obj/src/overlays/common/common2.o(.data)
-		build/usa/obj/src/overlays/rom_7bf5a8/vault_cave.o(.mdata2)
-		build/usa/obj/src/overlays/rom_7bf5a8/vault_cave.o(.mdata3)
+		build/usa/obj/src/maps/vault_cave.o(.data)
+		build/usa/obj/src/maps/vault_cave.o(.mdata1)
+		build/usa/obj/src/maps/common/common2.o(.data)
+		build/usa/obj/src/maps/vault_cave.o(.mdata2)
+		build/usa/obj/src/maps/vault_cave.o(.mdata3)
 	} > overlay
 
 	/DISCARD/ : {

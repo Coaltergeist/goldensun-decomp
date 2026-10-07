@@ -13,15 +13,15 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/src/overlays/rom_7c7b9c/tolbi_bound_ship_deck.o(.text)
+		build/usa/obj/src/maps/tolbi_bound_ship_deck.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/rom_7c7b9c/tolbi_bound_ship_deck.o(.data)
+		build/usa/obj/src/maps/tolbi_bound_ship_deck.o(.data)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7c7b9c/tolbi_bound_ship_deck.o(.bss)
+		build/usa/obj/src/maps/tolbi_bound_ship_deck.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

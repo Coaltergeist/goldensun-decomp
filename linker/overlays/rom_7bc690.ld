@@ -13,24 +13,24 @@ MEMORY {
 
 SECTIONS {
 	.text : {
-		build/usa/obj/asm/overlays/rom_7bc690/lamakan_desert/exports.o(.text)
-		build/usa/obj/src/overlays/common/common0.o(.text)
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.text)
-		build/usa/obj/asm/overlays/rom_7bc690/lamakan_desert/imports.o(.text)
+		build/usa/obj/asm/maps/lamakan_desert/exports.o(.text)
+		build/usa/obj/src/maps/common/common0.o(.text)
+		build/usa/obj/src/maps/lamakan_desert.o(.text)
+		build/usa/obj/asm/maps/lamakan_desert/imports.o(.text)
 		build/usa/obj/src/lib/call_via.o(.text)
 	} > overlay
 
 	.data : {
-		build/usa/obj/src/overlays/common/common0.o(.data)
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.data)
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.mdata1)
-		build/usa/obj/src/overlays/common/common0.o(.data1)
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.mdata2)
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.mdata3)
+		build/usa/obj/src/maps/common/common0.o(.data)
+		build/usa/obj/src/maps/lamakan_desert.o(.data)
+		build/usa/obj/src/maps/lamakan_desert.o(.mdata1)
+		build/usa/obj/src/maps/common/common0.o(.data1)
+		build/usa/obj/src/maps/lamakan_desert.o(.mdata2)
+		build/usa/obj/src/maps/lamakan_desert.o(.mdata3)
 	} > overlay
 
 	.bss : {
-		build/usa/obj/src/overlays/rom_7bc690/lamakan_desert.o(.bss)
+		build/usa/obj/src/maps/lamakan_desert.o(.bss)
 	} > overlay
 
 	/DISCARD/ : {

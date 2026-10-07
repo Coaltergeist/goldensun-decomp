@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/overlays/rom_7c6bac/kalay_docks.c",
-  "functions": {
-    "OvlFunc_942_2008958": {
-      "id": "overlay:rom_7c6bac:02008958"
-    }
-  }
-}

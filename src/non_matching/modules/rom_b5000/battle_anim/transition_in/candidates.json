@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_b5000/battle_anim/transition_in.c",
-  "functions": {
-    "AnimTransitionIn": {
-      "id": "rom:080c08ec"
-    }
-  }
-}

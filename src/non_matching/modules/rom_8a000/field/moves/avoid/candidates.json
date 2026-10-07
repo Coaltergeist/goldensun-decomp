@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/modules/rom_8a000/field/moves/avoid.c",
-  "functions": {
-    "Func_809b3d8": {
-      "id": "rom:0809b3d8"
-    }
-  }
-}

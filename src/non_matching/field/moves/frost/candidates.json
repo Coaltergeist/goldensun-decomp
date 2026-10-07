@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/field/moves/frost.c",
+  "functions": {
+    "Field_Frost_Target": {
+      "id": "rom:08099128"
+    }
+  }
+}
