@@ -597,7 +597,42 @@ void OvlFunc_957_200b610(struct Actor *actor)
     }
 }
 INCLUDE_ASM("asm/maps/altmiller_cave/AltmillerCave_MapInit.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200ba30.s");
+extern unsigned char iwram_3001800[];
+extern int __Random(void);
+extern void __vec3_translate(int dist, int angle, int *vec);
+extern int __Func_809ba34(void *);
+extern void __Func_809bb34(void *);
+
+void OvlFunc_957_200ba30(void *arg0)
+{
+    int stk[3];
+    signed char *state = (signed char *)((char *)arg0 + 0x40);
+
+    if (*state == 0) {
+        int v18 = *(int *)((char *)arg0 + 0x18);
+        int v14 = *(int *)((char *)arg0 + 0x14);
+
+        *(int *)((char *)arg0 + 8) = v18;
+        stk[2] = v18;
+        *(int *)((char *)arg0 + 4) = v14;
+        stk[0] = v14;
+        __vec3_translate(0x780000, __Random(), stk);
+        *(int *)((char *)arg0 + 0xc) = stk[0];
+        *(int *)((char *)arg0 + 0x10) = stk[2];
+        *(int *)((char *)arg0 + 0x24) = 0x50000;
+        *(int *)((char *)arg0 + 0x20) = 0x50000;
+        *((unsigned char *)arg0 + 0x42) = 0;
+        (*state)++;
+        if ((*(unsigned int *)iwram_3001800 & 3) == 0)
+            API_PlaySound(0x86);
+    } else if (*state == 1) {
+        if (__Func_809ba34(arg0) == 0)
+            (*state)--;
+    } else if (*state == 2) {
+        if (__Func_809ba34(arg0) == 0)
+            __Func_809bb34(arg0);
+    }
+}
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200bad4.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/altmiller_cave_data.s");
 

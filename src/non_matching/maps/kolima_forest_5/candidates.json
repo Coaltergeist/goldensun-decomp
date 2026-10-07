@@ -4,6 +4,9 @@
   "functions": {
     "KolimaForest5_MapInit": {
       "id": "overlay:rom_7a4370:02009070"
+    },
+    "OvlFunc_917_20095a0": {
+      "id": "overlay:rom_7a4370:020095a0"
     }
   }
 }

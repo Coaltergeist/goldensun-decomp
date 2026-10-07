@@ -1162,7 +1162,7 @@ int OvlFunc_883_200d610(int *a, int *b)
 
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d64c.s");
 
-extern void OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
+extern int OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
 
 unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     int r1;
@@ -1368,7 +1368,27 @@ void OvlFunc_883_200dc98(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dcc4.s");
+extern int __sin(int);
+
+void OvlFunc_883_200dcc4(struct Actor *actor)
+{
+    struct Actor *linked;
+    int t;
+    int s;
+
+    linked = actor->linkedActor;
+    t = ++actor->waveCounter;
+    if (t > 0x1f) {
+        API_DeleteActor((int)actor);
+        return;
+    }
+    s = __sin(t << 10);
+    actor->scale.x = s;
+    actor->scale.y = s;
+    actor->pos.x = linked->pos.x;
+    actor->pos.y += 0x80 << 9;
+    actor->pos.z = linked->pos.z + ((0x80 << 9) - s) * 5 + (0x80 << 12);
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd14.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd68.s");
 INCLUDE_ASM("asm/maps/vale_river/vale_river_data.s");

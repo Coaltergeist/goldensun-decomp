@@ -13,6 +13,15 @@
     },
     "OvlFunc_947_20093b0": {
       "id": "overlay:rom_7d0e88:020093b0"
+    },
+    "OvlFunc_947_2008cc0": {
+      "id": "overlay:rom_7d0e88:02008cc0"
+    },
+    "OvlFunc_947_2008ec8": {
+      "id": "overlay:rom_7d0e88:02008ec8"
+    },
+    "OvlFunc_947_20099f0": {
+      "id": "overlay:rom_7d0e88:020099f0"
     }
   }
 }

@@ -14,8 +14,23 @@
     "OvlFunc_943_200b558": {
       "id": "overlay:rom_7c7b9c:0200b558"
     },
-    "TolbiBoundShipDeck_MapInit": {
-      "id": "overlay:rom_7c7b9c:020093d4"
+    "OvlFunc_943_2009684": {
+      "id": "overlay:rom_7c7b9c:02009684"
+    },
+    "OvlFunc_943_20099c0": {
+      "id": "overlay:rom_7c7b9c:020099c0"
+    },
+    "OvlFunc_943_200b1a8": {
+      "id": "overlay:rom_7c7b9c:0200b1a8"
+    },
+    "OvlFunc_943_200b3b8": {
+      "id": "overlay:rom_7c7b9c:0200b3b8"
+    },
+    "OvlFunc_943_20090a0": {
+      "id": "overlay:rom_7c7b9c:020090a0"
+    },
+    "OvlFunc_943_20091c8": {
+      "id": "overlay:rom_7c7b9c:020091c8"
     }
   }
 }

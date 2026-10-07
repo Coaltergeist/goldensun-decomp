@@ -332,7 +332,17 @@ void OvlFunc_882_2008f38(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_20090a4.s");
+void OvlFunc_882_20090a4(void)
+{
+    CopyMapTileAttributes(0x1d, 0x17, 1, 1, 0xf, 0x35);
+    CopyMapTileAttributes(0x1d, 0x17, 1, 1, 0xe, 0x35);
+    CopyMapTileAttributes(0x1d, 0x17, 1, 1, 0xd, 0x35);
+    CopyMapTileAttributes(0x1a, 0x14, 2, 1, 0xe, 0x34);
+    CopyMapTileAttributes(0x19, 0x15, 1, 1, 0xd, 0x36);
+    CopyMapTileAttributes(0x19, 0x15, 1, 1, 0xf, 0x36);
+    CopyMapTileAttributes(0xe, 0x35, 1, 1, 0xe, 0x36);
+    CopyMapTileAttributes(0xd, 0x37, 1, 1, 0xf, 0x37);
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009154.s");
 
 void OvlFunc_882_20092f0(void) {
@@ -571,7 +581,31 @@ void OvlFunc_882_200998c(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009a64.s");
+void OvlFunc_882_2009a64(int x, int y)
+{
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    if (a != NULL)
+        API_MapActor_SetPos(0x16, a->pos.x, a->pos.z);
+    API_MapActor_SetSpeed(0x16, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnimWait(0x16, x, y);
+    API_MapActor_TurnToFaceActor(0, 0x16, 0);
+    API_CutsceneWait(0x14);
+    API_MapActor_Surprise(0, 0x81 << 1);
+    API_CutsceneWait(0x28);
+    API_MessageID(0xe7d);
+    API_ActorMessage(0x16, 0);
+    API_Func_80925cc(0x16, 2);
+    API_ActorMessage(0x16, 0);
+    API_MapActor_DoAnim(0, 3);
+    API_MapActor_SetAnim(0x16, 2);
+    a = (struct Actor *)__MapActor_GetActor(0);
+    if (a != NULL)
+        API_MapActor_TravelTo(0x16, ((s16 *)&a->pos.x)[1], ((s16 *)&a->pos.z)[1]);
+    API_MapActor_WaitMovement(0x16);
+    API_MapActor_SetPos(0x16, 0, 0);
+}
 INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2009b18.s");
 
 extern unsigned char L48bc[] __asm__(".Lm882_48bc");

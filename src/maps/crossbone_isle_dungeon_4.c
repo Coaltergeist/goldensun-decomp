@@ -1396,7 +1396,26 @@ void OvlFunc_948_2009ec0(void) {
     __Func_808edac(0x6b, r1, r2);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009edc.s");
+void OvlFunc_948_2009edc(void)
+{
+    if (((struct Actor *)__MapActor_GetActor(0))->pos.y > 0x100000) {
+        ((struct Actor *)__MapActor_GetActor(8))->flags = 2;
+        if (((struct Actor *)__MapActor_GetActor(10))->pos.y == 0)
+            ((struct Actor *)__MapActor_GetActor(10))->flags = 2;
+        ((struct Actor *)__MapActor_GetActor(11))->flags = 2;
+        ((struct Actor *)__MapActor_GetActor(12))->flags = 2;
+    } else {
+        if (((struct Actor *)__MapActor_GetActor(10))->pos.y == 0
+            && ((struct Actor *)__MapActor_GetActor(0))->pos.z / 0x100000 > 0x38) {
+            API_Func_8092b08(10, 3);
+        } else {
+            API_Func_8092b08(10, 1);
+            ((struct Actor *)__MapActor_GetActor(10))->flags = 1;
+        }
+        ((struct Actor *)__MapActor_GetActor(11))->flags = 0;
+        ((struct Actor *)__MapActor_GetActor(12))->flags = 0;
+    }
+}
 
 extern void OvlFunc_948_200a188(void);
 extern void OvlFunc_948_200a290(void);
@@ -1416,7 +1435,52 @@ int CrossboneIsleDungeon4_MapInit(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009fd8.s");
+extern int Lm948_2f80 __asm__(".Lm948_2f80");
+extern void OvlFunc_948_200a0c4(int, int);
+
+static inline void MapActor_SetPos16_18(int x, int y, int actor)
+{
+    __MapActor_SetPos(actor, x << 16, y << 18);
+}
+
+static inline void MapActor_SetPos17_18(int x, int y, int actor)
+{
+    __MapActor_SetPos(actor, x << 17, y << 18);
+}
+
+void OvlFunc_948_2009fd8(void)
+{
+    if (++Lm948_2f80 > 16)
+        Lm948_2f80 = 0;
+
+    switch (Lm948_2f80) {
+    case 12:
+        if (!API_GetFlag(0xee7))
+            MapActor_SetPos16_18(0xe8, 0xda, 8);
+        if (!API_GetFlag(0xee8))
+            MapActor_SetPos17_18(0x94, 0xce, 9);
+        if (!API_GetFlag(0xee9))
+            MapActor_SetPos17_18(0xa4, 0xbe, 10);
+        if (!API_GetFlag(0xeea))
+            MapActor_SetPos17_18(0xb4, 0xda, 11);
+        break;
+    case 10:
+        OvlFunc_948_200a0c4(8, 0);
+        break;
+    case 8:
+        OvlFunc_948_200a0c4(9, 0);
+        break;
+    case 6:
+        OvlFunc_948_200a0c4(10, 0);
+        break;
+    case 4:
+        OvlFunc_948_200a0c4(11, 0);
+        break;
+    case 2:
+        OvlFunc_948_200a0c4(12, 1);
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a0c4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a188.s");
 

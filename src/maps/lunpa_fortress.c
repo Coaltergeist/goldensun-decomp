@@ -900,14 +900,14 @@ int OvlFunc_959_200981c(unsigned int arg0)
 }
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009880.s");
 
-extern int OvlFunc_959_2009980(void);
+extern int OvlFunc_959_2009980(unsigned int);
 extern int OvlFunc_959_200981c(unsigned int arg0);
 extern int OvlFunc_959_2009880(unsigned int arg0);
 
 unsigned int OvlFunc_959_20098e4(unsigned int arg0)
 {
 	int v;
-	if (!OvlFunc_959_2009980())
+	if (!OvlFunc_959_2009980(arg0))
 		return 0;
 	if (OvlFunc_959_200981c(arg0))
 		return 1;

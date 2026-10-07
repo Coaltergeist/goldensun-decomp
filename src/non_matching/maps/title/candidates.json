@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "source": "src/maps/title.c",
+  "functions": {
+    "OvlFunc_879_2008454": {
+      "id": "overlay:rom_779188:02008454"
+    }
+  }
+}

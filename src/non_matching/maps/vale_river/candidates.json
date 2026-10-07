@@ -2,9 +2,6 @@
   "schema": 1,
   "source": "src/maps/vale_river.c",
   "functions": {
-    "OvlFunc_883_200dcc4": {
-      "id": "overlay:rom_780898:0200dcc4"
-    },
     "OvlFunc_883_200dd14": {
       "id": "overlay:rom_780898:0200dd14"
     },
@@ -13,6 +10,24 @@
     },
     "OvlFunc_883_200b45c": {
       "id": "overlay:rom_780898:0200b45c"
+    },
+    "OvlFunc_883_20090d8": {
+      "id": "overlay:rom_780898:020090d8"
+    },
+    "OvlFunc_883_200b2b0": {
+      "id": "overlay:rom_780898:0200b2b0"
+    },
+    "OvlFunc_883_200b380": {
+      "id": "overlay:rom_780898:0200b380"
+    },
+    "OvlFunc_883_200d950": {
+      "id": "overlay:rom_780898:0200d950"
+    },
+    "OvlFunc_883_200db48": {
+      "id": "overlay:rom_780898:0200db48"
+    },
+    "OvlFunc_883_200d64c": {
+      "id": "overlay:rom_780898:0200d64c"
     }
   }
 }
