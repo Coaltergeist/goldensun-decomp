@@ -159,10 +159,26 @@ capture after build changes; accepting historical syntax does not waive freshnes
 
 ## Editing and validating
 
-When adding a TU, update its module, source/object and profile entry, then run the
-validator and repository tests. A new region or overlay also needs its linker
-anchor and load/execution entry. Build and verify through the normal contribution
-workflow before accepting production changes.
+When adding a TU:
+
+1. Resolve the owning ROM region or overlay. Place maintained C/assembly with that
+   owner; declare a new stable TU ID only for genuinely new ownership.
+2. Declare its source, object, role and compiler profile in `modules.json`. For C,
+   also choose the candidate key/directory and assembly directory. Do not silently
+   inherit normal GCC settings for Gaia, common2 or a library exception.
+3. Add explicit ordered inputs/selectors to the appropriate linker scripts,
+   retaining section alignment and import/export bindings. A new module also
+   needs its linker anchor and load/execution entry. Do not use filesystem order.
+4. Update dependencies and shared declarations in their owning headers. Keep
+   original-function identities and byte spans unchanged when splitting/moving
+   existing code; ambiguous census changes need separate evidence.
+5. Run the catalog/structure tests, inspect the compile query and link inventory,
+   then follow the full contribution verification/finalization workflow.
+
+Adding a file alone does not add a compilation or linker input. Shared overlay
+modules are compiled once and have no single placement; each overlay's scripts
+select the shared pieces and import/export symbols it needs. Do not duplicate
+shared implementations into every overlay directory.
 
 Link order has one editable owner: the linker scripts. The inventory derives
 section bodies, selectors, padding/alignment and recursive includes in that order;

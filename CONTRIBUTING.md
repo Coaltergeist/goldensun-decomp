@@ -18,10 +18,26 @@ behavior.
 - Assembler-name declarations for data and literal-pool symbols, such as
   `extern unsigned char pool[] __asm__(".Lpool");`, are allowed. Symbol-only
   `.equ` definitions require evidenced absolute constants.
-- Use the production compiler and per-file Makefile settings. Experimental
+- Use the production compiler and catalog-assigned compiler profile. The Make
+  compile-contract query exposes the same settings. Experimental
   compiler flags do not establish an accepted match.
 - Preserve credits, source notices, and assembly evidence. Do not submit ROMs,
   extracted assets, generated objects, installed compilers, or local diff caches.
+
+## Where changes belong
+
+Resolve the owning TU through [the catalog](config/README.md#read-only-build-queries).
+Main-ROM code follows its region under `src/core/` or `src/modules/`; overlay code
+belongs under `src/overlays/<overlay>/`. Shared overlay implementations live in
+`src/overlays/common/` and compile once each, even when multiple overlays use them.
+Preserve the linkers' placement and imports/exports. Put shared declarations in the
+[owning header](include/README.md); keep unproven or incompatible local views
+separate. Candidate directories come from the owning catalog unit.
+
+Adding a TU requires explicit source/object ownership, a compiler profile, and
+ordered linker inputs. Update the catalog and linker scripts together; a new C
+file is not automatically discovered. Keep stable TU and original-function IDs
+when relocating existing code. See [catalog editing](config/README.md#editing-and-validating).
 
 ## Matching workflow
 
@@ -33,8 +49,8 @@ behavior.
    data, symbols, and relocations. Do not refresh the reference to hide a mismatch.
 4. Finalize the conversion with the pinned [objdiff CLI](DECOMP_DEV.md#candidate-scores):
 
-   ~~~sh
-   set -o pipefail
+   ~~~bash
+   set -euo pipefail
    python3 tools/finalize_progress.py --objdiff /path/to/objdiff-cli 2>&1 | tee output.txt
    ~~~
 
@@ -45,9 +61,11 @@ behavior.
 
 5. Run the repository checks:
 
-   ~~~sh
-   python3 tools/check_repository.py
-   python3 -m unittest discover -s tools/tests -v
+   ~~~bash
+   set -euo pipefail
+   python3 tools/check_repository.py 2>&1 | tee output-structure.txt
+   python3 -m unittest discover -s tools/tests -v 2>&1 | tee output-tests.txt
+   python3 -B tools/decomp_progress.py check 2>&1 | tee output-freshness.txt
    ~~~
 
 6. Describe the function's behavior, relevant source reasoning, compiler version,
@@ -55,7 +73,8 @@ behavior.
 
 ## Unfinished candidates
 
-Park unfinished C under `src/non_matching/<TU>/<Function>.c`. See the
+Park unfinished C under the catalog's `candidate_directory`, named `<Function>.c`.
+The directory follows current module ownership; the TU identity stays stable. See the
 [candidate workflow](src/non_matching/README.md) for metadata and isolated
 comparison commands. Keep one primary candidate per function and retain relevant
 credits. Candidates do not receive matching credit.

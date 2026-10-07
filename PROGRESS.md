@@ -32,9 +32,10 @@ The generated size metadata records exceptions for missing sizes and overlaps.
 
 After a fresh serial `make -j1 clean && make -j1 compare` (Ninja by default):
 
-~~~sh
-python3 tools/progress.py
-python3 tools/progress.py --json /tmp/goldensun-functions.json
+~~~bash
+set -euo pipefail
+python3 tools/progress.py 2>&1 | tee output-progress-1.txt
+python3 tools/progress.py --json /tmp/goldensun-functions.json 2>&1 | tee output-progress-2.txt
 ~~~
 
 This reads existing linked artifacts and reports Thumb function counts plus

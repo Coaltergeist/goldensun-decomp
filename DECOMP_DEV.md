@@ -4,6 +4,36 @@
 shows original-byte progress, a translation-unit treemap, and function details.
 See [PROGRESS.md](PROGRESS.md) for the baseline and counting rules.
 
+## Choosing an operation
+
+Run commands from the public checkout root. Production means the C, headers,
+assembly, linker inputs and build/profile tools that determine the game output.
+All build, baseline and finalization operations require exclusive use of that
+checkout while running.
+
+| Operation | Purpose | Writes |
+| --- | --- | --- |
+| `tools/build.py build` | Produce the ROM | Declared `build/usa/` and `build/host/` products |
+| `tools/build.py verify` or `make compare` | Compare the ROM and all 96 overlays | Build products; no public progress or score refresh |
+| `tools/build.py clean` | Remove only owned production/host output | Preserves candidates, references, compilers, journals and unknown files |
+| `tools/create_diff_baseline.py --output PATH` | Fresh serial verification, then immutable reference capture | New reference directory and verification logs |
+| `tools/generate_candidates.py` | Register drafts and refresh their index | Candidate manifests and `src/non_matching/INDEX.md`; no compilation |
+| `tools/score_candidates.py --expected PATH --objdiff PATH` | Compile/score registered drafts against a verified reference | `candidate_scores.json`, candidate products and local score cache |
+| `tools/finalize_progress.py --objdiff PATH` | Full production acceptance and candidate reconciliation | Snapshot, scores, ignored report, retired candidate files/manifests/index, references and journal |
+| `tools/decomp_progress.py check` | Validate published input/score freshness | No files; no build, ROM or compiler required |
+| `tools/decomp_progress.py export` | Validate freshness and generate the report | Ignored `report.json`; no build |
+
+Invoke these Python tools as `python3 -B tools/NAME.py ...`. A new contributor can
+build and run source-only checks without objdiff; candidate scoring/finalization
+add the pinned objdiff prerequisite below. A comparison is necessary for matching
+acceptance but cannot establish source semantics.
+
+Use finalization after production changes. For candidate-only changes, generate
+any missing entries, score against a still-current reference and check freshness.
+Documentation, workflow and test-only edits leave production metadata valid; run
+the affected checks without regenerating it merely to change a timestamp.
+`generate_candidates.py --check` and finalizer `--dry-run` are write-free previews.
+
 ## Reading the treemap
 
 Each rectangle represents a current production TU. Its area is the total
@@ -46,8 +76,9 @@ Source, header, assembly, linker, build, accounting, or toolchain changes requir
 a fresh snapshot. From the checkout, with the ROM and compilers installed as
 described in [INSTALL.md](INSTALL.md):
 
-~~~sh
-python3 tools/decomp_progress.py snapshot
+~~~bash
+set -euo pipefail
+python3 tools/decomp_progress.py snapshot 2>&1 | tee output-snapshot.txt
 ~~~
 
 This runs fresh serial ROM/all-96-overlay verification, then records function
@@ -66,8 +97,9 @@ Install the [objdiff CLI v3.8.1 release](https://github.com/encounter/objdiff/re
 and follow the [candidate comparison setup](src/non_matching/README.md#compare-a-candidate)
 for a verified reference. Then run:
 
-~~~sh
-python3 tools/score_candidates.py --expected .diff-baselines/candidates --objdiff /path/to/objdiff-cli
+~~~bash
+set -euo pipefail
+python3 tools/score_candidates.py --expected .diff-baselines/candidates --objdiff /path/to/objdiff-cli 2>&1 | tee output-scores.txt
 ~~~
 
 This compiles each candidate with its declared companions in its production TU,
@@ -88,9 +120,10 @@ checked against the pinned release checksums.
 
 Check freshness without a ROM, game compiler, or objdiff, or export locally:
 
-~~~sh
-python3 tools/decomp_progress.py check
-python3 tools/decomp_progress.py export
+~~~bash
+set -euo pipefail
+python3 tools/decomp_progress.py check 2>&1 | tee output-freshness.txt
+python3 tools/decomp_progress.py export 2>&1 | tee output-report.txt
 ~~~
 
 `export` writes ignored `report.json`; console output shows overall measures.
@@ -116,7 +149,7 @@ Generate settings for the owning production TU before importing a function into
 owning source, target assembly and importer path:
 
 ~~~bash
-set -o pipefail
+set -euo pipefail
 python3 -B tools/permuter_compile.py src/core/rom_1b70/math/vector.c --output build/permuter/vector.toml 2>&1 | tee output-permuter-settings.txt
 python3 /path/to/decomp-permuter/import.py src/core/rom_1b70/math/vector.c /path/to/target.s --settings build/permuter/vector.toml 2>&1 | tee output-permuter-import.txt
 ~~~

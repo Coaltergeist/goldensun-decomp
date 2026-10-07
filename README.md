@@ -19,14 +19,17 @@ colored by matching progress. Click the treemap for unit and function details.
 ## Getting started
 
 - [Build and diff setup](INSTALL.md)
+- [Build, verification and metadata commands](DECOMP_DEV.md#choosing-an-operation)
+- [Module ownership and compiler profiles](config/README.md)
 - [Contributing and matching requirements](CONTRIBUTING.md)
 - [Unfinished C candidates and comparison workflow](src/non_matching/README.md)
 - [Progress accounting](PROGRESS.md) and [report generation](DECOMP_DEV.md)
 
 The build uses patched GCC 2.96 from
 [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), with `old_agbcc` for
-the stock m4a audio engine and most Flash library C. Full verification compares
-the ROM and all 96 code overlays against the reference game.
+the stock m4a audio engine and most Flash library C. Ninja schedules the build
+through a Python facade; GNU Make remains a compatibility entry point and fallback. Full
+verification compares the ROM and all 96 code overlays against the reference game.
 
 Contributions are welcome, including matching C, reverse-engineering findings,
 and cleanup of existing fakematches. **New fakematches are not accepted.**

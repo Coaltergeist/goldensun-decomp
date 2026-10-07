@@ -2,13 +2,15 @@
 
 The supported setup documented here is Ubuntu on x86-64 Linux, including WSL2.
 On Windows, keep the checkout inside the WSL Linux filesystem. Run the commands
-below in Bash.
+below in Bash. Use a checkout path without spaces. This public repository needs
+no private workspace, private scripts or private history to build or run its tests.
 
 ## System requirements
 
-~~~sh
-sudo apt update
-sudo apt install build-essential binutils-arm-none-eabi ninja-build python3 python3-venv git less
+~~~bash
+set -euo pipefail
+sudo apt update 2>&1 | tee output-apt-update.txt
+sudo apt install build-essential binutils-arm-none-eabi ninja-build python3 python3-venv git less 2>&1 | tee output-apt-install.txt
 ~~~
 
 The build requires Ninja 1.10+, GNU Make 4.3+ and Python 3.10+.
@@ -19,30 +21,40 @@ Set NINJA to an executable path when Ninja is not on PATH.
 
 ## Clone and install the compilers
 
-~~~sh
-git clone https://github.com/Coaltergeist/goldensun-decomp.git
-git clone https://github.com/Coaltergeist/camelot-gcc.git
+~~~bash
+set -euo pipefail
+git clone https://github.com/Coaltergeist/goldensun-decomp.git 2>&1 | tee output-clone-game.txt
+git clone https://github.com/Coaltergeist/camelot-gcc.git 2>&1 | tee output-clone-compiler.txt
 cd camelot-gcc
-./build.sh gcc296
-./install.sh ../goldensun-decomp gcc296
-./build.sh agbcc
-./install.sh ../goldensun-decomp agbcc
+./build.sh gcc296 2>&1 | tee output-build-gcc296.txt
+./install.sh ../goldensun-decomp gcc296 2>&1 | tee output-install-gcc296.txt
+./build.sh agbcc 2>&1 | tee output-build-agbcc.txt
+./install.sh ../goldensun-decomp agbcc 2>&1 | tee output-install-agbcc.txt
 cd ../goldensun-decomp
 ~~~
 
 Game C uses patched GCC 2.96. The stock m4a engine and most Flash library C use
 `old_agbcc`. GCC 3.0 is not required. Installed compilers and headers live under
-ignored `tools/gcc296/` and `tools/agbcc/`.
+ignored `tools/gcc296/` and `tools/agbcc/`. Keep the compiler revision and installed
+build manifests with your local verification record. Consult camelot-gcc's build
+instructions if its own host prerequisites are missing.
+
+An existing verified installation can instead be copied into those same two
+locations, including all headers, support files and manifests. Use independent
+copies that retain executable permissions; do not borrow another checkout's
+objects, generated assets, baselines or output directories. Verify the new checkout
+from empty build output before trusting it. The reference ROM is supplied separately.
 
 ## Reference ROM and verification
 
 Place your legally obtained USA ROM at `baserom.gba` in the game checkout.
 Its SHA1 must be `5c4695205413df7db52b9a184815a07783999971`.
 
-~~~sh
-set -o pipefail
-sha1sum baserom.gba | tee output.txt
-make -j1 clean 2>&1 | tee output-clean.txt && make -j1 compare 2>&1 | tee output.txt
+~~~bash
+set -euo pipefail
+sha1sum baserom.gba 2>&1 | tee output-rom-hash.txt
+make -j1 clean 2>&1 | tee output-clean.txt
+make -j1 compare 2>&1 | tee output-verify.txt
 ~~~
 
 Check the first hash against the value above. Verification must finish
@@ -59,7 +71,7 @@ builds, installed compilers, `expected/`, `.diff-baselines/`, `.progress/` and u
 files. Preview its exact file list with:
 
 ~~~bash
-set -o pipefail
+set -euo pipefail
 python3 -B tools/build_actions.py clean --dry-run 2>&1 | tee output.txt
 ~~~
 
@@ -77,7 +89,7 @@ input dependencies are discovered. The generated Ninja file is for diagnostics,
 not a separate configuration entry point. No Rust toolchain is required.
 
 ~~~bash
-set -o pipefail
+set -euo pipefail
 python3 -B tools/build.py configure 2>&1 | tee output.txt
 python3 -B tools/build.py build 2>&1 | tee output.txt
 python3 -B tools/build.py verify 2>&1 | tee output.txt
@@ -103,21 +115,48 @@ Compiler flag overrides retain the documented Make interface, including
 Use `make print-compile-contract SOURCE=src/core/rom_1b70/math/vector.c` to inspect the six-line
 compatibility contract. [Build configuration](config/README.md) lists overrides.
 
+## Make compatibility
+
+| Interface | Supported behavior |
+| --- | --- |
+| `make`, `make compare`, `make verify` | Serial ROM and all-overlay verification, using Ninja by default |
+| `make build` | Build the ROM without comparing it |
+| `make compare-rom`, `make compare-overlays` | Explicit partial checks; neither alone is full acceptance |
+| `make clean` | Remove declared production/host output; preserve the state listed above |
+| `make src/math/vector.o` | Legacy object alias to the catalog-owned current object |
+| `make BUILD_BACKEND=make compare` | Make fallback using the shared graph |
+| `make print-compile-contract SOURCE=...` | Read-only six-line target-C compiler contract |
+| `make print-build-settings` | Read-only resolved settings as JSON |
+
+Catalog `legacy_object` and host `legacy_binary` entries identify retained aliases.
+New tooling should use current catalog paths or the read-only query APIs. Both
+backends are serial; avoid running clean and build together or operating on the
+same checkout from two processes.
+
+The facade, legacy aliases and Make scheduler remain supported. Retiring any of
+them requires a separate reviewed change: migrate its documented/external callers,
+retain a supported per-TU compile query, update tests and contributor instructions,
+and repeat clean-build/object/ROM/all-overlay acceptance. There is no automatic
+retirement date. The shared graph keeps scheduler behavior testable without adding
+a Rust dependency.
+
 ## Optional function diff viewer
 
 Install the tested asm-differ revision in its own Python environment:
 
-~~~sh
-git clone https://github.com/simonlindholm/asm-differ tools/asm-differ
-git -C tools/asm-differ checkout 0dd09af8f8008f1f880327cf0aca3b26d2562ea2
-python3 -m venv tools/asm-differ/.venv
-tools/asm-differ/.venv/bin/python3 -m pip install ./tools/asm-differ
+~~~bash
+set -euo pipefail
+git clone https://github.com/simonlindholm/asm-differ tools/asm-differ 2>&1 | tee output-clone-differ.txt
+git -C tools/asm-differ checkout 0dd09af8f8008f1f880327cf0aca3b26d2562ea2 2>&1 | tee output-differ-revision.txt
+python3 -m venv tools/asm-differ/.venv 2>&1 | tee output-differ-venv.txt
+tools/asm-differ/.venv/bin/python3 -m pip install ./tools/asm-differ 2>&1 | tee output-differ-install.txt
 ~~~
 
 Before editing source, capture reference objects:
 
-~~~sh
-python3 tools/create_diff_baseline.py
+~~~bash
+set -euo pipefail
+python3 tools/create_diff_baseline.py 2>&1 | tee output-baseline.txt
 ~~~
 
 This runs a fresh ROM/all-overlay comparison and copies the linked objects to
@@ -130,8 +169,9 @@ Logs are stored under `.diff-baselines/verification-*/build.log`.
 
 Existing destinations are preserved. To capture another baseline:
 
-~~~sh
-python3 tools/create_diff_baseline.py --output .diff-baselines/before-change
+~~~bash
+set -euo pipefail
+python3 tools/create_diff_baseline.py --output .diff-baselines/before-change 2>&1 | tee output-baseline.txt
 export GOLDENSUN_EXPECTED_DIR=.diff-baselines/before-change
 ~~~
 
@@ -139,8 +179,9 @@ export GOLDENSUN_EXPECTED_DIR=.diff-baselines/before-change
 
 From the game checkout, replace `FUNCTION` with its current symbol:
 
-~~~sh
-bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
+~~~bash
+set -euo pipefail
+bash ./run-diff.sh -mo FUNCTION --no-pager --format plain 2>&1 | tee output-diff.txt
 ~~~
 
 `-m` rebuilds the current object serially; `-o` compares it with the saved
@@ -149,8 +190,9 @@ reference object. For interactive watching, use
 
 For overlays, select the owning bank's map to disambiguate reused symbols:
 
-~~~sh
-GOLDENSUN_DIFF_MAP=build/usa/overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain
+~~~bash
+set -euo pipefail
+GOLDENSUN_DIFF_MAP=build/usa/overlays/rom_XXXXXX/overlay.map bash ./run-diff.sh -mo FUNCTION --no-pager --format plain 2>&1 | tee output-diff.txt
 ~~~
 
 Use `-f build/usa/obj/src/overlays/rom_XXXXXX/MAP.o` to select a known object directly. For a custom section,
@@ -159,6 +201,18 @@ add `--section .text.SECTION` using the name shown by
 object path. See [CONTRIBUTING.md](CONTRIBUTING.md) for final verification.
 
 ## Troubleshooting
+
+| Symptom | Check or recovery |
+| --- | --- |
+| Ninja missing | Install `ninja-build`, set `NINJA` to its executable, or explicitly select the Make fallback. |
+| Compiler/header missing or permission denied | Install both compiler families inside WSL; retain executable modes and complete include directories. |
+| ROM or overlay mismatch | Check the USA ROM hash, selected profile and compiler provenance; run a serial clean comparison. Do not replace references to conceal a mismatch. |
+| Unknown TU or legacy path in a tool | Resolve the stable TU/current path through the catalog; an alias is a Make target, not a file to open. |
+| Stale snapshot or scores | Use [the operation table](DECOMP_DEV.md#choosing-an-operation); ordinary builds do not refresh metadata. |
+| Candidate declaration/companion conflict | Repair and review the draft in its current owning TU, then rerun scoring/finalization. Preserve the old evidence. |
+| Baseline destination exists | Choose a new name; captures preserve existing reference directories. |
+| Interrupted finalization | Inspect `.progress/finalize-*/` and any reported recovery conflicts before retrying. Do not overwrite concurrent edits with old backups. |
+| Clean refuses a path | Inspect the reported tracked file or symlink. Do not bypass the guard with recursive deletion. |
 
 After a compiler change, rebuild and reinstall it through camelot-gcc, then run
 the full game comparison. If copying tools through Windows removes executable
@@ -174,7 +228,7 @@ preserves failed exit statuses.
 Source-only tests do not require the ROM or installed game compilers:
 
 ~~~bash
-set -o pipefail
+set -euo pipefail
 python3 -B -m unittest discover -s tools/tests -v 2>&1 | tee output.txt
 ~~~
 
@@ -186,6 +240,6 @@ Ninja log/dependency database bookkeeping may change during a no-op verification
 compiled/generated products, configured settings and content stamps must not.
 
 ~~~bash
-set -o pipefail
+set -euo pipefail
 RUN_BUILD_INTEGRATION=1 python3 -B -m unittest discover -s tools/tests -p test_build_integration.py -v 2>&1 | tee output.txt
 ~~~

@@ -4,7 +4,10 @@ The catalog declares each TU's candidate directory. For example,
 `modules/rom_c9000/battle_anim/moves/kirin/Anim_Kirin.c` targets
 `asm/modules/rom_c9000/battle_anim/moves/kirin/Anim_Kirin.s` in
 `src/modules/rom_c9000/battle_anim/moves/kirin.c`.
-Browse the [candidate index](INDEX.md).
+Browse the [candidate index](INDEX.md). Query the production TU with
+`tools/build_config.py query unit` to find its `candidate_directory`; do not
+construct a path from an old TU spelling. The examples below run from the
+repository root; the first example above is relative to `src/non_matching/`.
 
 Candidates are drafts, excluded from the game build and perfect-match progress.
 Their behavior and types still need review; compilation alone is not validation.
