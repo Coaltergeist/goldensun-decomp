@@ -5796,10 +5796,10 @@
     "rom:080fb790": "c",
     "rom:08185008": "c"
   },
-  "input_count": 3761,
+  "input_count": 3760,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 3,
-  "source_fingerprint": "f3f2a1ccf1945b0226b18bd49b868bbc571a3b485dadd898e8dcd7b820a983ac",
+  "source_fingerprint": "7923fbdd74f33906e9c84ec5af76ff1016be8f35a535f0fbd62e4a4bef8096ba",
   "units": {
     "src/battle/battle.c": {
       "functions": {

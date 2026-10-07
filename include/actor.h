@@ -57,6 +57,7 @@ typedef char ActorSizeCheck[(sizeof(struct Actor) == 112) ? 1 : -1];
 typedef char ActorAlignmentCheck[(__alignof__(struct Actor) == 4) ? 1 : -1];
 typedef char ActorFieldWidthsCheck[
     (sizeof(((struct Actor *)0)->pos) == 12 &&
+     sizeof(((struct Actor *)0)->pos.y) == 4 &&
      sizeof(((struct Actor *)0)->flags) == 1 &&
      sizeof(((struct Actor *)0)->sprite) == 4 &&
      sizeof(((struct Actor *)0)->linkedActor) == 4 &&

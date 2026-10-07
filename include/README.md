@@ -12,7 +12,6 @@ Compile layout checks with the assigned target profile; host C layout is not evi
 | `MapTile_528` | `field/map_tile.h` | Four-byte map entry; existing field names remain provisional |
 | `Pk` | `field/push_block.h` | 24-byte packet passed by value; preserve `void (*arg5)(void)` |
 | `Actor` | `actor.h` | Canonical 112-byte GS1 actor; local prefix views are not complete actors |
-| `Actor932` | `overlays/altin_peak_actor.h` | Altin Peak's repeated 36-byte signed-long prefix view |
 | `EffectData` | `overlays/common0_effect.h` | Common0's 40-byte integer parameter view; flags select fields |
 
 Distinct effect views remain in their sole owning overlay:

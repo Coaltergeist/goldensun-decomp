@@ -3,7 +3,6 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
-#include "overlays/altin_peak_actor.h"
 
 INCLUDE_ASM("asm/maps/altin_peak/exports.s");
 
@@ -222,19 +221,19 @@ void OvlFunc_932_200840c(void)
 
 void OvlFunc_932_200847c(void)
 {
-  struct Actor932 *actor;
+  struct Actor *actor;
   int s1;
   int s2;
 
-  actor = (struct Actor932 *) __MapActor_GetActor(8);
+  actor = (struct Actor *) __MapActor_GetActor(8);
   s1 = 9;
   s2 = 0xd;
   __Func_8010704(7, 0xd, 1, 1, s1, s2);
   if (actor != 0)
   {
     __Actor_SetSpriteFlags(actor, 0);
-    actor->f0c = actor->f0c + -0x200000;
-    actor->f23 = 2;
+    actor->pos.y = actor->pos.y + -0x200000;
+    actor->flags = 2;
   }
   __SetFlag(0x200);
 }
@@ -357,19 +356,19 @@ unsigned char f23;
 
 void OvlFunc_932_2008650(void)
 {
-  struct Actor932 *actor;
+  struct Actor *actor;
   int s1;
   int s2;
 
-  actor = (struct Actor932 *) __MapActor_GetActor(12);
+  actor = (struct Actor *) __MapActor_GetActor(12);
   s1 = 26;
   s2 = 15;
   __Func_8010704(1, 0, 1, 1, s1, s2);
   if (actor != 0)
   {
     __Actor_SetSpriteFlags(actor, 0);
-    actor->f0c = actor->f0c + -0x200000;
-    actor->f23 = 2;
+    actor->pos.y = actor->pos.y + -0x200000;
+    actor->flags = 2;
   }
   __SetFlag(0x204);
 }
@@ -1393,12 +1392,12 @@ void OvlFunc_932_200b410(void) {
 extern void __Func_8092b08(int, int);
 
 void OvlFunc_932_200b428(void) {
-    struct Actor932 *actor;
+    struct Actor *actor;
 
-    actor = (struct Actor932 *) __MapActor_GetActor(0);
-    if (actor->f0c > (0xc0 << 14)) {
-        struct Actor932 *actor2 = (struct Actor932 *) __MapActor_GetActor(0xb);
-        actor2->f23 |= 2;
+    actor = (struct Actor *) __MapActor_GetActor(0);
+    if (actor->pos.y > (0xc0 << 14)) {
+        struct Actor *actor2 = (struct Actor *) __MapActor_GetActor(0xb);
+        actor2->flags |= 2;
         __Func_8092b08(0xc, 3);
     } else {
         __Func_8092b08(0xc, 2);
