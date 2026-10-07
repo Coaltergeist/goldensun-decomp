@@ -85,7 +85,13 @@ def domain_map(root, domain):
 def owned_outputs(root):
     """Exact files clean may remove; unknown files in owned directories survive."""
     data = json.loads((root / "config/compiler_profiles.json").read_text())
-    result = {ROM, ELF, STAGE1, STRINGS_TEXT, STRING_STAMP, *STRING_OUTPUTS, TARGET + "/tags", TARGET + "/build.ninja", TARGET + "/ninja-actions.json", TARGET + "/.ninja_log", TARGET + "/.ninja_deps"}
+    # Known retired Ninja products remain removable; no current rule builds them.
+    result = {
+        TARGET + "/inputs.mk", ROM, ELF, STAGE1, STRINGS_TEXT,
+        STRING_STAMP, *STRING_OUTPUTS, TARGET + "/tags",
+        TARGET + "/build.ninja", TARGET + "/ninja-actions.json",
+        TARGET + "/.ninja_log", TARGET + "/.ninja_deps",
+    }
     for output in link_targets(root):
         result.update([output, str(Path(output).with_suffix(".map"))])
     for row in overlays(root).values():

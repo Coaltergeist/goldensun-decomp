@@ -1,4 +1,4 @@
-"""Compiler profiles and read-only queries. Shared by the Make and Ninja schedulers."""
+"""Compiler profiles and read-only queries. Values are resolved by the maintained Make settings."""
 import argparse
 import hashlib
 import json
@@ -14,8 +14,12 @@ import build_paths
 import source_paths
 
 ROOT = Path(__file__).resolve().parents[1]
-CONFIG_FILES = ("config/modules.json", "config/compiler_profiles.json")
-IMPLEMENTATION = ("tools/build_config.py", "tools/build_compile.py", "tools/build_deps.py", "tools/build_paths.py", "tools/build_graph.py", "tools/build_actions.py", "tools/configure_build.py", "tools/build.py", "tools/build_verify.py", "tools/source_paths.py")
+CONFIG_FILES = ("config/modules.json", "config/compiler_profiles.json", "config/toolchain.mk")
+IMPLEMENTATION = (
+    "tools/build_config.py", "tools/build_stamp.py", "tools/build_deps.py",
+    "tools/build_paths.py", "tools/build_inventory.py", "tools/build_clean.py",
+    "tools/build_strings.py", "tools/build_verify.py", "tools/source_paths.py",
+)
 
 
 def read_json(path):
@@ -44,63 +48,37 @@ def local_name(name, root=None, *, candidate_prefix=None):
     return name
 
 
-def arguments(value, variables=()):
-    if not isinstance(value, list) or any(not isinstance(a, str) or not a or
-            any(c in a for c in "\n\r\0$`|;#") for a in value):
-        raise ValueError("configuration requires argument arrays, not shell fragments")
-    for arg in value:
-        for name in re.findall(r"\{([^{}]+)\}", arg):
-            if name not in variables:
-                raise ValueError("unknown variable: " + name)
-        if re.sub(r"\{[^{}]+\}", "", arg).count("{") or re.sub(r"\{[^{}]+\}", "", arg).count("}"):
-            raise ValueError("invalid argument placeholder")
-    return value
-
-
 def load(root=ROOT, catalog=None):
     data = read_json(root / CONFIG_FILES[1])
     catalog = read_json(root / CONFIG_FILES[0]) if catalog is None else catalog
     if data.get("schema") != 1 or catalog.get("schema") != 1:
         raise ValueError("unsupported build configuration schema")
-    seen = set()
-    for row in data["variables"]:
-        name = row["name"]
-        if not re.fullmatch(r"[A-Z][A-Z0-9_]*", name) or name in seen:
-            raise ValueError("duplicate/invalid build variable")
-        if row["assignment"] not in ("?=", ":=", "+="):
-            raise ValueError("unsupported variable assignment")
-        if "arguments" in row:
-            arguments(row["arguments"], seen)
-        else:
-            if row["base"] not in seen:
-                raise ValueError("undefined variable base")
-            arguments(row["remove"], seen); arguments(row["append"], seen)
-        seen.add(name)
     for identity, profile in data["profiles"].items():
         if not re.fullmatch(r"[a-z0-9-]+", identity) or profile["family"] not in ("gcc296", "agbcc", "assembly", "host"):
             raise ValueError("unsupported profile: " + identity)
         for key, value in profile.items():
-            if key.endswith("_variable") and value not in seen:
-                raise ValueError("unknown profile variable: " + value)
-            if key.endswith("_variables") and (not isinstance(value, list) or not set(value) <= seen):
-                raise ValueError("unknown profile variables")
-            if key in ("compiler", "preprocessor", "assembler", "assembler_arguments"):
-                arguments(value, seen)
+            if key.endswith("_variable"):
+                if not isinstance(value, str) or not re.fullmatch(r"[A-Z][A-Z0-9_]*", value):
+                    raise ValueError("invalid profile variable: " + str(value))
+            if key.endswith("_variables"):
+                if not isinstance(value, list) or any(not re.fullmatch(r"[A-Z][A-Z0-9_]*", v) for v in value):
+                    raise ValueError("invalid profile variable list")
         family = profile["family"]
-        required = {"gcc296": ("compiler_variable", "arguments_variable", "preprocessing", "assembler", "assembler_arguments", "postprocess"),
-                    "agbcc": ("compiler", "arguments_variable", "preprocessing", "preprocessor", "preprocessor_arguments_variable", "assembler", "assembler_arguments", "postprocess"),
-                    "assembly": ("assembler", "assembler_arguments"),
-                    "host": ("compiler_variable", "arguments_variables")}[family]
-        if not set(required) <= profile.keys():
-            raise ValueError("incomplete profile: " + identity)
+        required = {
+            "gcc296": ("compiler_variable", "arguments_variable", "preprocessing"),
+            "agbcc": ("compiler_variable", "arguments_variable", "preprocessing",
+                      "preprocessor_variable", "preprocessor_arguments_variable"),
+            "assembly": (),
+            "host": ("compiler_variable", "arguments_variables"),
+        }[family]
+        if family != "host":
+            required += ("assembler_variable", "assembler_arguments_variable")
         if family in ("gcc296", "agbcc"):
+            required += ("alignment_variable", "fill_variable")
             if profile["preprocessing"] != ("driver" if family == "gcc296" else "host"):
                 raise ValueError("unsupported preprocessing method")
-            post = profile["postprocess"]
-            if (set(post) != {"text_alignment_power", "fill"} or
-                    type(post["text_alignment_power"]) is not int or not 0 <= post["text_alignment_power"] <= 4 or
-                    type(post["fill"]) is not int or not 0 <= post["fill"] <= 255):
-                raise ValueError("invalid assembly postprocessing")
+        if not set(required) <= profile.keys():
+            raise ValueError("incomplete profile: " + identity)
     candidate_prefix = source_paths.candidate_root(root)
     units = [*catalog["units"], *data["host_units"]]
     by_id, sources, objects = {}, set(), set()
@@ -123,33 +101,18 @@ def load(root=ROOT, catalog=None):
     return data, catalog, units
 
 
-def resolve_values(data, overrides=None):
-    """Match documented Make defaults; GS_BUILD_* carries Make-resolved values."""
-    result = {}
-    overrides = overrides or {}
-    for row in data["variables"]:
-        name = row["name"]
-        if name in overrides:
-            result[name] = overrides[name]
-            continue
-        if "GS_BUILD_" + name in os.environ:
-            result[name] = os.environ["GS_BUILD_" + name]
-            continue
-        if "arguments" in row:
-            value = " ".join(shlex.quote(a.format_map(result)) for a in row["arguments"])
-        else:
-            value = " ".join(shlex.quote(a) for a in shlex.split(result[row["base"]]) if a not in row["remove"])
-            value = (value + " " + shlex.join(row["append"])).strip()
-        if row["assignment"] == "?=":
-            value = os.environ.get(name, value)
-        elif row["assignment"] == "+=":
-            value = (os.environ.get(name, "") + " " + value).strip()
-        result[name] = value
-    return result
+def resolve_values(data=None, overrides=None, root=ROOT):
+    """Use Make as the only evaluator of defaults, flags and user overrides."""
+    names = os.environ.get("GS_BUILD_VARIABLES", "").split()
+    if os.environ.get("GS_BUILD_SETTINGS") == "1" and names and not overrides:
+        return {name: os.environ[name] for name in names}
+    return make_values(root, overrides)
 
 
-def make_values(root):
-    out = subprocess.run(["make", "-s", "--no-print-directory", "print-build-settings"],
+def make_values(root, overrides=None):
+    command = ["make", "-s", "--no-print-directory", "print-build-settings"]
+    command.extend(name + "=" + value for name, value in (overrides or {}).items())
+    out = subprocess.run(command,
                          cwd=root, text=True, capture_output=True, timeout=120)
     if out.returncode:
         raise ValueError("build settings query failed: " + out.stderr.strip())
@@ -167,20 +130,22 @@ def settings(root, source, values=None, legacy=None):
     data, _, units = load(root)
     unit = unit_for(units, source)
     profile = data["profiles"][unit["profile"]]
-    values = resolve_values(data) if values is None else values
-    def expand(args):
-        return [a.format_map(values) for a in args]
+    values = resolve_values(data, root=root) if values is None else values
     result = dict(profile=unit["profile"], family=profile["family"], unit=unit)
     for key in ("compiler", "preprocessor", "assembler"):
         if key + "_variable" in profile:
             result[key] = shlex.split(values[profile[key + "_variable"]])
-        elif key in profile:
-            result[key] = expand(profile[key])
     result["arguments"] = shlex.split(values[profile["arguments_variable"]]) if "arguments_variable" in profile else []
     if "arguments_variables" in profile:
         result["arguments"] = [a for key in profile["arguments_variables"] for a in shlex.split(values[key])]
-    result["assembler_arguments"] = expand(profile.get("assembler_arguments", []))
-    result["postprocess"] = profile.get("postprocess")
+    result["assembler_arguments"] = shlex.split(values[profile["assembler_arguments_variable"]]) if "assembler_arguments_variable" in profile else []
+    result["postprocess"] = None
+    if "alignment_variable" in profile:
+        alignment = int(values[profile["alignment_variable"]])
+        fill = int(values[profile["fill_variable"]])
+        if not 0 <= alignment <= 4 or not 0 <= fill <= 255:
+            raise ValueError("invalid assembly postprocessing")
+        result["postprocess"] = dict(text_alignment_power=alignment, fill=fill)
     if result["family"] == "gcc296":
         result["preprocessor"] = result["compiler"]
         result["preprocessor_arguments"] = result["arguments"]
@@ -200,7 +165,7 @@ def settings(root, source, values=None, legacy=None):
 
 def legacy_contract(root, source, values=None):
     data, _, units = load(root)
-    values = resolve_values(data) if values is None else values
+    values = resolve_values(data, root=root) if values is None else values
     unit = unit_for(units, source); profile = data["profiles"][unit["profile"]]
     family = profile["family"]
     if family not in ("gcc296", "agbcc"):
@@ -303,20 +268,6 @@ def selected_inputs(root, values=None):
     return result
 
 
-def make_config(root):
-    data, _, units = load(root)
-    lines = []
-    for row in data["variables"]:
-        if "arguments" in row:
-            value = shlex.join([re.sub(r"\{([A-Z0-9_]+)\}", r"GSPLACEHOLDER_\1_END", a) for a in row["arguments"]])
-            value = re.sub(r"GSPLACEHOLDER_([A-Z0-9_]+)_END", r"$(\1)", value)
-        else:
-            value = "$(filter-out " + " ".join(row["remove"]) + ",$(" + row["base"] + ")) " + shlex.join(row["append"])
-        lines.append(row["name"] + " " + row["assignment"] + " " + value.rstrip())
-        lines.append("export GS_BUILD_" + row["name"] + " = $(" + row["name"] + ")")
-    return "|".join(lines)
-
-
 def module_artifacts(root, identity):
     _, catalog, units = load(root)
     matches = [m for m in catalog["modules"] if m["id"] == identity]
@@ -337,15 +288,14 @@ def module_artifacts(root, identity):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     subs = parser.add_subparsers(dest="command", required=True)
-    subs.add_parser("make-config"); subs.add_parser("settings")
+    subs.add_parser("settings")
     legacy = subs.add_parser("legacy"); legacy.add_argument("source")
     query = subs.add_parser("query")
     query.add_argument("kind", choices=("unit", "profile", "commands", "module", "overlay"))
     query.add_argument("identity")
     args = parser.parse_args()
     try:
-        if args.command == "make-config": print(make_config(ROOT))
-        elif args.command == "settings": print(json.dumps(resolve_values(load(ROOT)[0]), sort_keys=True))
+        if args.command == "settings": print(json.dumps(resolve_values(load(ROOT)[0]), sort_keys=True))
         elif args.command == "legacy": print("\n".join(legacy_contract(ROOT, args.source)))
         elif args.kind in ("module", "overlay"):
             name = args.identity

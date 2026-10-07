@@ -48,6 +48,8 @@ class IncrementalTests(unittest.TestCase):
         self.stack.enter_context(patch.object(cli, "contract", side_effect=lambda *a: list(self.settings)))
         self.stack.enter_context(patch.object(cli, "tool_identity", side_effect=lambda *a: dict(self.tools)))
         self.stack.enter_context(patch.object(cli, "comparison", side_effect=lambda *a: {"exact": self.control_ok}))
+        values = build.build_config.make_values(Path(__file__).resolve().parents[2])
+        self.stack.enter_context(patch.object(build.build_config, "make_values", return_value=values))
         self.stack.enter_context(patch.object(cli.subprocess, "run", side_effect=self.command))
         self.output = self.root / cs.SCORES
 

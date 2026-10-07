@@ -12,9 +12,10 @@ from unittest.mock import patch
 
 TOOLS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS))
-import build_actions as actions
+import build_clean as actions
+import build_strings
 import build_config
-import build_graph
+import build_inventory
 import build_paths as paths
 from build_deps import linker_dependencies
 
@@ -74,30 +75,14 @@ class OutputTests(unittest.TestCase):
             actions.clean(self.root)
         self.assertTrue(f.exists())
 
-    def test_atomic_failure_removes_partial_and_stale_products(self):
-        output, map_name = "build/usa/stage1.o", "build/usa/stage1.map"
-        self.put(output, "old object"); self.put(map_name, "old map")
-        def fail(argv):
-            self.put(output + ".tmp", "partial")
-            self.put(map_name + ".tmp", "partial")
-            raise subprocess.CalledProcessError(1, argv)
-        with patch.object(actions, "run", side_effect=fail), self.assertRaises(subprocess.CalledProcessError):
-            actions.atomic_output(self.root, output, lambda temp: temp, map_name)
-        self.assertFalse(any((self.root / n).exists() for n in [output, map_name, output+".tmp", map_name+".tmp"]))
-        def succeed(argv):
-            for n in argv: self.put(n, "complete")
-        with patch.object(actions, "run", side_effect=succeed):
-            actions.atomic_output(self.root, output, lambda temp: temp, map_name)
-        self.assertEqual((self.root / output).read_text(), "complete")
-
     def test_string_failure_does_not_publish_a_complete_marker_or_partial_outputs(self):
         self.put(paths.STRING_STAMP)
         self.put(paths.STRING_OUTPUTS[0], "old assembly")
         def fail(argv):
             self.put(paths.STRINGS + ".tmp/strings.s", "partial")
             raise subprocess.CalledProcessError(1, argv)
-        with patch.object(actions, "run", side_effect=fail), self.assertRaises(subprocess.CalledProcessError):
-            actions.strings(self.root)
+        with patch.object(build_strings, "run", side_effect=fail), self.assertRaises(subprocess.CalledProcessError):
+            build_strings.strings(self.root)
         self.assertFalse((self.root / paths.STRING_STAMP).exists())
         self.assertFalse(any((self.root / n).exists() for n in paths.STRING_OUTPUTS))
         self.assertFalse((self.root / (paths.STRINGS + ".tmp")).exists())
@@ -106,8 +91,8 @@ class OutputTests(unittest.TestCase):
         def produce(argv):
             for name in paths.STRING_FILES:
                 self.put(paths.STRINGS + ".tmp/" + name, '.incbin "' + paths.STRINGS + '.tmp/data.bin"\n')
-        with patch.object(actions, "run", side_effect=produce):
-            actions.strings(self.root)
+        with patch.object(build_strings, "run", side_effect=produce):
+            build_strings.strings(self.root)
         self.assertTrue((self.root / paths.STRING_STAMP).exists())
         self.assertIn('"'+paths.STRINGS+'/data.bin"', (self.root / paths.STRING_OUTPUTS[0]).read_text())
         self.assertFalse((self.root / (paths.STRINGS + ".tmp")).exists())
@@ -118,12 +103,11 @@ class OutputTests(unittest.TestCase):
         assembly = unit["assembly_directory"] + "/data.s"
         self.put(unit["source"], 'INCLUDE_ASM("' + assembly + '");')
         self.put(assembly, '.incbin "' + original + '"')
-        result = build_graph.graph(self.root)
-        self.assertIn(original, next(e for e in result if e.outputs == [unit["object"]]).inputs)
-        self.assertEqual(next(e for e in result if e.outputs == ["asm/maps/common/common2.o"]).inputs,
-                         [unit["object"]])
-        self.assertTrue(any(paths.STRINGS + "/strings.s" in e.outputs for e in result))
-        self.assertIn(" &: ", build_graph.make_graph(self.root))
+        result = build_inventory.inventory(self.root)
+        self.assertIn(unit["object"] + ": " + original, result)
+        self.assertIn("asm/maps/common/common2.o: " + unit["object"], result)
+        self.assertIn(paths.STRINGS + "/strings.s", result)
+        self.assertNotIn("\t", result, "inventory must not generate recipes")
         self.assertFalse((self.root / "build").exists())
 
     def test_nested_linker_dependencies_resolve_in_supplied_root(self):
@@ -138,24 +122,6 @@ class OutputTests(unittest.TestCase):
         self.assertEqual(u, paths.unit(self.root, "tu:src/maps/common/common2"))
         with self.assertRaises(ValueError): paths.overlay(self.root, "does_not_exist")
         self.assertEqual(paths.domain_artifact(self.root, "common:common2"), u["object"])
-
-    def test_overlay_link_preserves_script_before_symbol_provider(self):
-        output = paths.overlay(self.root, "rom_780898")["elf"]
-        script = paths.link_targets(self.root)[output]
-        seen = []
-        def link(argv):
-            seen.append(argv)
-            self.assertLess(argv.index("-T"), argv.index("-R"))
-            self.put(argv[argv.index("-o") + 1], "linked")
-            self.put(argv[argv.index("-Map") + 1], "map")
-        previous = Path.cwd()
-        try:
-            with patch.object(actions, "ROOT", self.root), patch.object(actions, "run", side_effect=link), \
-                 patch.object(sys, "argv", ["build_actions.py", "link", output, script, "--libraries", "-R", paths.STAGE1]):
-                self.assertEqual(actions.main(), 0)
-        finally:
-            os.chdir(previous)
-        self.assertEqual(len(seen), 1)
 
     def test_dependency_query_accepts_current_and_legacy_link_targets(self):
         for name in ("stage1.o", paths.STAGE1):

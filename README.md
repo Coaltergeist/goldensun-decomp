@@ -27,9 +27,9 @@ colored by matching progress. Click the treemap for unit and function details.
 
 The build uses patched GCC 2.96 from
 [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), with `old_agbcc` for
-the stock m4a audio engine and most Flash library C. Ninja schedules the build
-through a Python facade; GNU Make remains a compatibility entry point and fallback. Full
-verification compares the ROM and all 96 code overlays against the reference game.
+the stock m4a audio engine and most Flash library C. GNU Make runs the build;
+compiler settings live in config/toolchain.mk. Full verification compares the ROM
+and all 96 code overlays against the reference game.
 
 Contributions are welcome, including matching C, reverse-engineering findings,
 and cleanup of existing fakematches. **New fakematches are not accepted.**

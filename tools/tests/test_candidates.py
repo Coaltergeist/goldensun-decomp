@@ -173,6 +173,7 @@ const char *description = ".size is not assembly here";
 
     def test_gcc_and_agbcc_use_supplied_contract_and_original_include_path(self):
         calls = []
+        values = build_config.make_values(Path(__file__).resolve().parents[2])
         def run(argv, **kwargs):
             calls.append(argv)
             if "-S" in argv or argv[0] == "oldcc":
@@ -186,7 +187,8 @@ const char *description = ".size is not assembly here";
             self.put("config/modules.json", json.dumps(data))
             settings = [mode, "xgcc", "-O2 -fno-strict-aliasing",
                         "oldcc", "-nostdinc -D M4A_SIGNED_CHAR", "-O"]
-            with mock.patch.object(build.subprocess, "run", side_effect=run):
+            with mock.patch.object(build_config, "make_values", return_value=values), \
+                 mock.patch.object(build.subprocess, "run", side_effect=run):
                 build.compile_tu(self.root, "src/example.c", "int One(void) { return 1; }",
                                  self.root / mode, settings, ["One"])
         self.assertTrue(any(a[0] == "xgcc" and "-fno-strict-aliasing" in a for a in calls))

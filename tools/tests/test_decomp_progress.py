@@ -261,7 +261,9 @@ BODY(active)
         (self.root / "config/modules.json").write_text(json.dumps(dict(schema=1, units=[dict(
             id="tu:test", source="test.c", object="test.o", profile="gcc296")], modules=[])))
         contract = ["gcc296", "gcc", "-nostdinc", "unused", "unused", "unused"]
-        with patch.object(dp.build_config, "make_contract", return_value=contract):
+        values = dp.build_config.make_values(Path(__file__).resolve().parents[2])
+        with patch.object(dp.build_config, "make_values", return_value=values), \
+             patch.object(dp.build_config, "make_contract", return_value=contract):
             definitions = dp.active_definitions(self.root, "test.c")
         self.assertIn("active", definitions)
         self.assertNotIn("parked", definitions)

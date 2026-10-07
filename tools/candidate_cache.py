@@ -10,7 +10,7 @@ import build_config
 
 IMPLEMENTATION = ("candidate_cache.py", "candidate_build.py", "candidate_catalog.py",
                   "candidate_scores.py", "score_candidates.py", "c_source.py", "elf_contract.py",
-                  "build_config.py", "build_compile.py")
+                  "build_config.py", "build_stamp.py")
 
 
 def tool_identity(root, settings, source):

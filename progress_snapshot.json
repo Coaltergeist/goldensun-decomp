@@ -5799,7 +5799,7 @@
   "input_count": 3761,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 3,
-  "source_fingerprint": "10fd2eb3fdab9c8734e0be4fc5fa7f2e9afd7dd894ed9f327596df85135db721",
+  "source_fingerprint": "f3f2a1ccf1945b0226b18bd49b868bbc571a3b485dadd898e8dcd7b820a983ac",
   "units": {
     "src/battle/battle.c": {
       "functions": {
@@ -42577,45 +42577,39 @@
       "build/usa/stage1.map": "636962d452287717b4c0e5f63c840aca25d6dbfb26576e244aa7ea50dc09f567"
     },
     "build_stamps": {
-      "arm-assembly.stamp": "a369cb762b4b404c6ce5336b72c6000eed86573b260fbae8d659f91cf44a2db7",
-      "binutils.stamp": "6db3890b9f37bfc3aee19866a87bde03c4ee7c2b73e497b6062837e6f4705394",
-      "gcc296-common2.stamp": "a9cd8435bfa838818958afd2e54ff2b987c0266828464bc13cf657bd42ed1cba",
-      "gcc296-gaia.stamp": "207987d7777da6ef57b240d760e59c328ce7c43df1274431e8f7cabe26d48561",
-      "gcc296.stamp": "a48bb728f6c08febf6281fbf2b5f353517834bea4f1dcbfcfcb2cd89a8f85119",
-      "host-c.stamp": "b52da571b89236ade2888afefd7d30d637dc95ba5db7d6541dcfbf6b2dcb62bc",
-      "old-agbcc-flash.stamp": "a27beceb2633566d63eca24985b9c2906ab17acf4b2589d20890320d59c76e6a",
-      "old-agbcc-m4a.stamp": "018b2bec5c36ae9f3da17fd93ec4a910161f7c7792dd8927355d7c32457b0c21"
+      "arm-assembly.stamp": "e9826e4d4b4056e4429affa0d824371ffced6e5de8f3c33952e32608bf6c0240",
+      "binutils.stamp": "71d00d43f035819ff78ce34370a965e187ad224eca7446a247f159a99e57658b",
+      "gcc296-common2.stamp": "2e3a126f50e7903d54662850b3bffd05f045f9c8c6867d4c9dbe843f4f078650",
+      "gcc296-gaia.stamp": "07e451af162ef409c00de3392464f6ac4991ad8b07731bc5137f6d6da12dde9d",
+      "gcc296.stamp": "1777fa988f500580e4562805714e3fdba13ea19b64338f987ac43816a9206185",
+      "host-c.stamp": "c8255b7baff48a0d5cd468ef58b6a07c75092a1f68c6a0636d990189c6f756a0",
+      "old-agbcc-flash.stamp": "19040a231ed55d9787247e3e6593f08d88e9131c437be8b86be9e2462d26ff5a",
+      "old-agbcc-m4a.stamp": "91256bc610c3da6dd4201d841f650f4ee86ac46212f95862424f709ad3b3b30f"
     },
     "gate": {
-      "backend": "ninja",
+      "backend": "make",
       "checks": [
         "rom-sha1",
         "all-96-overlays"
       ],
       "commands": [
         [
-          "python3",
-          "-B",
-          "tools/build.py",
-          "--backend",
-          "ninja",
+          "make",
+          "-j1",
           "clean"
         ],
         [
-          "python3",
-          "-B",
-          "tools/build.py",
-          "--backend",
-          "ninja",
+          "make",
+          "-j1",
           "verify"
         ]
       ],
       "executor": {
-        "name": "ninja",
-        "sha256": "a9ddfbf7e365a2e5026ed44f9173e498e37d8b71ec5e259b2c2a684f16cfa862",
-        "version": "1.10.1"
+        "name": "make",
+        "sha256": "92f646030615cd98490a68a94c0aefd87b552be3158b941c02e43b0bfdb576db",
+        "version": "GNU Make 4.3"
       },
-      "schema": 1,
+      "schema": 2,
       "serial": true
     },
     "overlays": {

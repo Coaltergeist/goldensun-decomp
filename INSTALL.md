@@ -10,14 +10,12 @@ no private workspace, private scripts or private history to build or run its tes
 ~~~bash
 set -euo pipefail
 sudo apt update 2>&1 | tee output-apt-update.txt
-sudo apt install build-essential binutils-arm-none-eabi ninja-build python3 python3-venv git less 2>&1 | tee output-apt-install.txt
+sudo apt install build-essential binutils-arm-none-eabi python3 python3-venv git less 2>&1 | tee output-apt-install.txt
 ~~~
 
-The build requires Ninja 1.10+, GNU Make 4.3+ and Python 3.10+.
-The supported front ends enforce serial scheduling; Ninja edges also share a
-pool of depth one. `make` uses Ninja by default. `make BUILD_BACKEND=make` selects
-the retained Make scheduler. Both use the same graph, profiles and output paths.
-Set NINJA to an executable path when Ninja is not on PATH.
+The build requires GNU Make 4.3+, Bash and Python 3.10+. Make enforces serial
+execution, including when invoked with a larger job count. Compiler flags live
+in config/toolchain.mk; the main Makefile contains the maintained build recipes.
 
 ## Clone and install the compilers
 
@@ -72,7 +70,7 @@ files. Preview its exact file list with:
 
 ~~~bash
 set -euo pipefail
-python3 -B tools/build_actions.py clean --dry-run 2>&1 | tee output.txt
+make clean-dry-run 2>&1 | tee output.txt
 ~~~
 
 Old object targets such as `make src/math/vector.o` remain aliases to the current
@@ -83,62 +81,43 @@ layout change and keep the old one as evidence.
 
 ## Build operations
 
-Run from the checkout root. The Python facade regenerates configuration before
-scheduling work; use it or Make for builds so changed settings and newly generated
-input dependencies are discovered. The generated Ninja file is for diagnostics,
-not a separate configuration entry point. No Rust toolchain is required.
+Run from the checkout root:
 
 ~~~bash
 set -euo pipefail
-python3 -B tools/build.py configure 2>&1 | tee output.txt
-python3 -B tools/build.py build 2>&1 | tee output.txt
-python3 -B tools/build.py verify 2>&1 | tee output.txt
-python3 -B tools/build.py build/usa/obj/src/core/runtime/math/vector.o 2>&1 | tee output.txt
-python3 -B tools/build.py --dry-run --explain build 2>&1 | tee output.txt
-python3 -B tools/build.py commands build/usa/obj/src/core/runtime/math/vector.o 2>&1 | tee output.txt
-python3 -B tools/build_config.py query commands src/core/runtime/math/vector.c 2>&1 | tee output.txt
+make build 2>&1 | tee output-build.txt
+make verify 2>&1 | tee output-verify.txt
+make build/usa/obj/src/core/runtime/math/vector.o 2>&1 | tee output-object.txt
+make -n --debug=b build 2>&1 | tee output-plan.txt
+python3 -B tools/build_config.py query commands src/core/runtime/math/vector.c 2>&1 | tee output-query.txt
 ~~~
 
-`build` produces the ROM; `verify` (also `compare`, the default) checks the ROM and
-all 96 overlays. `commands` prints scheduled wrapper commands; the read-only
-profile query prints the underlying compiler argument arrays. `--verbose` and
-`--explain` show scheduling details. Ordinary builds never rescore candidates or
-refresh progress metadata. Run clean as a separate operation before a clean build.
+The default operation compares the ROM and all 96 overlays. Ordinary builds
+never rescore candidates or refresh progress metadata. Run clean separately
+before a clean build. Do not operate on one checkout from two build processes.
 
-For fallback scheduling, use `python3 -B tools/build.py --backend make verify` or
-`make BUILD_BACKEND=make compare`. Do not run both backends concurrently in one
-checkout. They share output paths; comparisons between backends need independent
-clean copies. Switching to the Make fallback does not require Ninja.
+Make reads catalog lists and discovered prerequisites from build/usa/inputs.mk.
+That file is regenerated only when its contents change; all compilation,
+linking and packing recipes remain in the maintained Makefile. A dry run may
+refresh this dependency inventory but does not compile or link.
 
-Compiler flag overrides retain the documented Make interface, including
-`make GCC296_CFLAGS='...' TARGET`; the resolved values reach either backend.
-Use `make print-compile-contract SOURCE=src/core/runtime/math/vector.c` to inspect the six-line
-compatibility contract. [Build configuration](config/README.md) lists overrides.
-
-## Make compatibility
-
-| Interface | Supported behavior |
+| Interface | Behavior |
 | --- | --- |
-| `make`, `make compare`, `make verify` | Serial ROM and all-overlay verification, using Ninja by default |
-| `make build` | Build the ROM without comparing it |
-| `make compare-rom`, `make compare-overlays` | Explicit partial checks; neither alone is full acceptance |
-| `make clean` | Remove declared production/host output; preserve the state listed above |
-| `make src/math/vector.o` | Legacy object alias to the catalog-owned current object |
-| `make BUILD_BACKEND=make compare` | Make fallback using the shared graph |
-| `make print-compile-contract SOURCE=...` | Read-only six-line target-C compiler contract |
-| `make print-build-settings` | Read-only resolved settings as JSON |
+| make, make compare, make verify | Serial ROM and all-overlay verification |
+| make build | Build the ROM without comparing it |
+| make compare-rom, make compare-overlays | Partial checks; neither alone is full acceptance |
+| make clean, make clean-dry-run | Remove declared output, or preview the exact file list |
+| make src/math/vector.o | Legacy alias to the catalog-owned object |
+| make print-compile-contract SOURCE=... | Read-only six-line target-C compiler contract |
+| make print-build-settings | Read-only resolved settings as JSON |
 
-Catalog `legacy_object` and host `legacy_binary` entries identify retained aliases.
-New tooling should use current catalog paths or the read-only query APIs. Both
-backends are serial; avoid running clean and build together or operating on the
-same checkout from two processes.
+Catalog legacy_object and host legacy_binary entries identify retained aliases.
+New tooling should use current catalog paths or the read-only query APIs.
 
-The facade, legacy aliases and Make scheduler remain supported. Retiring any of
-them requires a separate reviewed change: migrate its documented/external callers,
-retain a supported per-TU compile query, update tests and contributor instructions,
-and repeat clean-build/object/ROM/all-overlay acceptance. There is no automatic
-retirement date. The shared graph keeps scheduler behavior testable without adding
-a Rust dependency.
+Compiler overrides retain Make semantics, including
+make GCC296_CFLAGS='...' TARGET. Inspect the result with
+make print-compile-contract SOURCE=src/core/runtime/math/vector.c.
+[Build configuration](config/README.md) explains the settings and exceptions.
 
 ## Optional function diff viewer
 
@@ -161,10 +140,9 @@ python3 tools/create_diff_baseline.py 2>&1 | tee output-baseline.txt
 
 This runs a fresh ROM/all-overlay comparison and copies the linked objects to
 `expected/`. Do not edit or build concurrently. Use the baseline only after the
-command succeeds; its schema-3 `manifest.json` records the actual backend,
-serial clean/verify commands, ROM/all-overlay scope and build-engine fingerprint.
-Use `--backend make` to capture a Make reference. Historical schema-2 references
-retain their original Make receipts and are never rewritten.
+command succeeds; its schema-3 manifest.json records a schema-2 direct-Make
+gate: serial clean/verify commands, ROM/all-overlay scope and Make's version/hash.
+Historical references retain their original receipts and are never rewritten.
 Logs are stored under `.diff-baselines/verification-*/build.log`.
 
 Existing destinations are preserved. To capture another baseline:
@@ -204,7 +182,6 @@ object path. See [CONTRIBUTING.md](CONTRIBUTING.md) for final verification.
 
 | Symptom | Check or recovery |
 | --- | --- |
-| Ninja missing | Install `ninja-build`, set `NINJA` to its executable, or explicitly select the Make fallback. |
 | Compiler/header missing or permission denied | Install both compiler families inside WSL; retain executable modes and complete include directories. |
 | ROM or overlay mismatch | Check the USA ROM hash, selected profile and compiler provenance; run a serial clean comparison. Do not replace references to conceal a mismatch. |
 | Unknown TU or legacy path in a tool | Resolve the stable TU/current path through the catalog; an alias is a Make target, not a file to open. |
@@ -234,10 +211,9 @@ python3 -B -m unittest discover -s tools/tests -v 2>&1 | tee output.txt
 
 With the normal prerequisites installed, opt into the dependency, output-isolation,
 failure/recovery and clean regression. It builds and mutates a disposable copy;
-logs remain under `.progress/build-integration-*.log`. It tests the default Ninja
-backend. Set `BUILD_BACKEND=make` to exercise the fallback with the same matrix.
-Ninja log/dependency database bookkeeping may change during a no-op verification;
-compiled/generated products, configured settings and content stamps must not.
+logs remain under .progress/build-integration-*.log. The test exercises direct
+Make, including serial enforcement when -j is requested. No-op verification
+preserves production outputs, dependency inventory and tool-stamp mtimes.
 
 ~~~bash
 set -euo pipefail

@@ -1,245 +1,64 @@
 {
   "schema": 1,
-  "variables": [
-    {
-      "name": "GCC296_DIR",
-      "assignment": "?=",
-      "arguments": [
-        "tools/gcc296"
-      ]
-    },
-    {
-      "name": "AGBCC_DIR",
-      "assignment": "?=",
-      "arguments": [
-        "tools/agbcc"
-      ]
-    },
-    {
-      "name": "GCC296_CC",
-      "assignment": ":=",
-      "arguments": [
-        "{GCC296_DIR}/xgcc"
-      ]
-    },
-    {
-      "name": "GCC296_CFLAGS",
-      "assignment": ":=",
-      "arguments": [
-        "-B{GCC296_DIR}/",
-        "-O2",
-        "-mthumb",
-        "-mthumb-interwork",
-        "-mcpu=arm7tdmi",
-        "-fno-builtin",
-        "-nostdinc",
-        "-ffreestanding",
-        "-fcall-used-r4",
-        "-Iinclude",
-        "-fno-strict-aliasing"
-      ]
-    },
-    {
-      "name": "GAIA_CFLAGS",
-      "assignment": ":=",
-      "base": "GCC296_CFLAGS",
-      "remove": [
-        "-fno-strict-aliasing"
-      ],
-      "append": [
-        "-fstrict-aliasing"
-      ]
-    },
-    {
-      "name": "COMMON2_CFLAGS",
-      "assignment": ":=",
-      "base": "GCC296_CFLAGS",
-      "remove": [
-        "-mthumb-interwork"
-      ],
-      "append": []
-    },
-    {
-      "name": "M4A_CPPFLAGS",
-      "assignment": ":=",
-      "arguments": [
-        "-nostdinc",
-        "-I{AGBCC_DIR}/include",
-        "-Iinclude",
-        "-D",
-        "PLATFORM_GBA=1",
-        "-D",
-        "M4A_SIGNED_CHAR"
-      ]
-    },
-    {
-      "name": "M4A_CC1FLAGS",
-      "assignment": ":=",
-      "arguments": [
-        "-Wimplicit",
-        "-Wparentheses",
-        "-fhex-asm",
-        "-mthumb-interwork",
-        "-O2"
-      ]
-    },
-    {
-      "name": "AGBFLASH_CPPFLAGS",
-      "assignment": ":=",
-      "arguments": [
-        "-nostdinc",
-        "-I{AGBCC_DIR}/include",
-        "-Iinclude",
-        "-D",
-        "PLATFORM_GBA=1"
-      ]
-    },
-    {
-      "name": "AGBFLASH_CC1FLAGS",
-      "assignment": ":=",
-      "arguments": [
-        "-Wimplicit",
-        "-Wparentheses",
-        "-fhex-asm",
-        "-mthumb-interwork",
-        "-O"
-      ]
-    },
-    {
-      "name": "CC",
-      "assignment": "?=",
-      "arguments": [
-        "cc"
-      ]
-    },
-    {
-      "name": "CPPFLAGS",
-      "assignment": "+=",
-      "arguments": [
-        "-MMD"
-      ]
-    },
-    {
-      "name": "CFLAGS",
-      "assignment": "?=",
-      "arguments": [
-        "-O2",
-        "-Wall"
-      ]
-    }
-  ],
   "profiles": {
     "gcc296": {
       "family": "gcc296",
       "compiler_variable": "GCC296_CC",
       "arguments_variable": "GCC296_CFLAGS",
       "preprocessing": "driver",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-mthumb-interwork",
-        "-Iinclude"
-      ],
-      "postprocess": {
-        "text_alignment_power": 2,
-        "fill": 0
-      }
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "THUMB_ASFLAGS",
+      "alignment_variable": "TEXT_ALIGNMENT",
+      "fill_variable": "TEXT_FILL"
     },
     "gcc296-gaia": {
       "family": "gcc296",
       "compiler_variable": "GCC296_CC",
       "arguments_variable": "GAIA_CFLAGS",
       "preprocessing": "driver",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-mthumb-interwork",
-        "-Iinclude"
-      ],
-      "postprocess": {
-        "text_alignment_power": 2,
-        "fill": 0
-      }
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "THUMB_ASFLAGS",
+      "alignment_variable": "TEXT_ALIGNMENT",
+      "fill_variable": "TEXT_FILL"
     },
     "gcc296-common2": {
       "family": "gcc296",
       "compiler_variable": "GCC296_CC",
       "arguments_variable": "COMMON2_CFLAGS",
       "preprocessing": "driver",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-mthumb-interwork",
-        "-Iinclude"
-      ],
-      "postprocess": {
-        "text_alignment_power": 2,
-        "fill": 0
-      }
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "THUMB_ASFLAGS",
+      "alignment_variable": "TEXT_ALIGNMENT",
+      "fill_variable": "TEXT_FILL"
     },
     "old-agbcc-m4a": {
       "family": "agbcc",
-      "compiler": [
-        "{AGBCC_DIR}/bin/old_agbcc"
-      ],
       "arguments_variable": "M4A_CC1FLAGS",
       "preprocessing": "host",
-      "preprocessor": [
-        "gcc"
-      ],
       "preprocessor_arguments_variable": "M4A_CPPFLAGS",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-mthumb-interwork",
-        "-Iinclude"
-      ],
-      "postprocess": {
-        "text_alignment_power": 2,
-        "fill": 0
-      }
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "THUMB_ASFLAGS",
+      "compiler_variable": "AGBCC_CC",
+      "preprocessor_variable": "SDK_CPP",
+      "alignment_variable": "TEXT_ALIGNMENT",
+      "fill_variable": "TEXT_FILL"
     },
     "old-agbcc-flash": {
       "family": "agbcc",
-      "compiler": [
-        "{AGBCC_DIR}/bin/old_agbcc"
-      ],
       "arguments_variable": "AGBFLASH_CC1FLAGS",
       "preprocessing": "host",
-      "preprocessor": [
-        "gcc"
-      ],
       "preprocessor_arguments_variable": "AGBFLASH_CPPFLAGS",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-mthumb-interwork",
-        "-Iinclude"
-      ],
-      "postprocess": {
-        "text_alignment_power": 2,
-        "fill": 0
-      }
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "THUMB_ASFLAGS",
+      "compiler_variable": "AGBCC_CC",
+      "preprocessor_variable": "SDK_CPP",
+      "alignment_variable": "TEXT_ALIGNMENT",
+      "fill_variable": "TEXT_FILL"
     },
     "arm-assembly": {
       "family": "assembly",
-      "assembler": [
-        "arm-none-eabi-as"
-      ],
-      "assembler_arguments": [
-        "-mcpu=arm7tdmi",
-        "-Iinclude"
-      ]
+      "assembler_variable": "ARM_AS",
+      "assembler_arguments_variable": "ARM_ASFLAGS"
     },
     "host-c": {
       "family": "host",

@@ -13,9 +13,9 @@ checkout while running.
 
 | Operation | Purpose | Writes |
 | --- | --- | --- |
-| `tools/build.py build` | Produce the ROM | Declared `build/usa/` and `build/host/` products |
-| `tools/build.py verify` or `make compare` | Compare the ROM and all 96 overlays | Build products; no public progress or score refresh |
-| `tools/build.py clean` | Remove only owned production/host output | Preserves candidates, references, compilers, journals and unknown files |
+| `make build` | Produce the ROM | Declared `build/usa/` and `build/host/` products |
+| `make verify` or `make compare` | Compare the ROM and all 96 overlays | Build products; no public progress or score refresh |
+| `make clean` | Remove only owned production/host output | Preserves candidates, references, compilers, journals and unknown files |
 | `tools/create_diff_baseline.py --output PATH` | Fresh serial verification, then immutable reference capture | New reference directory and verification logs |
 | `tools/generate_candidates.py` | Register drafts and refresh their index | Candidate manifests and `src/non_matching/INDEX.md`; no compilation |
 | `tools/score_candidates.py --expected PATH --objdiff PATH` | Compile/score registered drafts against a verified reference | `candidate_scores.json`, candidate products and local score cache |

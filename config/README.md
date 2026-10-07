@@ -15,8 +15,7 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 ~~~
 
 The catalog owns current TU paths, profile assignments and module identities.
-The shared build graph supplies Make and Ninja; maintained linker scripts control
-link order. Descriptive source paths retain ROM-module ownership; generated products
+Make contains the build recipes; maintained linker scripts control link order. Descriptive source paths retain ROM-module ownership; generated products
 use build/. See the repository layout in [README.md](../README.md).
 
 ## Schema 1
@@ -37,12 +36,11 @@ use build/. See the repository layout in [README.md](../README.md).
 - Reference-only m4a source is explicitly excluded. Headers and per-function
   assembly fragments are dependencies, not independently compiled units.
 
-`compiler_profiles.json` is the versioned authority for ordered compiler,
-preprocessor and assembler arguments, preprocessing methods, and trailing text
-alignment. `modules.json` assigns each target TU a profile by stable identity.
-The profiles are gcc296, gcc296-gaia, gcc296-common2, old-agbcc-m4a,
-old-agbcc-flash, arm-assembly and host-c. The four host utilities are listed in
-compiler_profiles.json, separately from the 439 target objects.
+config/toolchain.mk owns ordered compiler/preprocessor/assembler settings and
+trailing text alignment. compiler_profiles.json binds stable profile names to
+those Make variables and records the four host utilities. modules.json assigns
+each target TU its profile by stable identity. Profiles are gcc296, gcc296-gaia,
+gcc296-common2, old-agbcc-m4a, old-agbcc-flash, arm-assembly and host-c.
 
 Gaia and common2 keep their aliasing/interworking exceptions. m4a uses signed-char
 SDK declarations and old_agbcc at -O2; three Flash units use old_agbcc at -O.
@@ -90,23 +88,32 @@ both builds and queries. Override GAIA_CFLAGS or COMMON2_CFLAGS explicitly to
 replace those derived settings. Research overrides do not establish matching
 acceptance; use the complete verification workflow for accepted changes.
 
-Recipes, candidate compilation and progress preprocessing share build_config.py's
-command construction. build_compile.py runs production pipelines. build_graph.py
-declares explicit edges, ordered argv, byproducts and recursive linker inputs;
-its Make adapter and configure_build.py's Ninja adapter render scheduler syntax.
-build.py refreshes Ninja configuration and enforces serial execution. build_paths.py
-resolves artifacts and clean ownership; build_actions.py publishes generated/link
-products and performs bounded clean. Per-profile
-stamps hash effective arguments, selected driver/frontend/specs/assembler tools,
-implementation and TU membership. No-op checks preserve stamp mtimes. A profile
-change invalidates its consumers; moving a TU between profiles invalidates both
-groups. Both backends check tool contents even when a binary is replaced without
-changing its path or mtime. Ninja uses restat on these stamps and compiler edges with unchanged dependency
-byproducts. Its merged depfile
-keeps C headers plus assembler/include/incbin inputs, omits Make phony rules and
-excludes intermediates produced by the same edge. Original C/GAS depfiles remain
-available for the Make fallback. Multi-output edges declare generated assembly,
-preprocessed input, strings and link maps explicitly.
+Make recipes use the resolved settings directly. Candidate compilation,
+progress preprocessing and permuter settings query the same values through
+build_config.py; Python does not reimplement Make defaults.
+
+| Helper | Responsibility |
+| --- | --- |
+| build_inventory.py | Catalog lists, legacy target aliases, generated-input and recursive linker prerequisites; no recipes |
+| build_config.py | Profile validation and read-only settings, path and command queries |
+| build_deps.py | C/GAS dependency files and linker/binutils fingerprints |
+| build_stamp.py | Per-profile effective settings and selected compiler/tool fingerprints |
+| build_paths.py | Catalog artifact paths and the exact clean allowlist |
+| build_clean.py | Validate output boundaries and remove only declared products |
+| build_strings.py | Publish the complete generated string set or discard a failed generation |
+| build_verify.py | Run and record the serial Make acceptance gate; read historical receipts |
+
+The inventory is refreshed before ordinary builds and written only when changed.
+Queries and clean skip it. Per-profile stamps include resolved settings, selected
+driver/frontend/specs/assembler tools, build implementation and TU membership.
+Changing one profile setting invalidates that group; changing a shared setting
+invalidates its consumers. Tool contents are checked even when path and mtime
+stay unchanged. Unchanged stamps retain their mtimes.
+
+C and GAS dependency files track actual headers, included assembly and binary
+inputs. The first-build inventory supplies generated prerequisites before those
+depfiles exist. Grouped rules own link/map pairs and the generated string set.
+Failed recipes remove incomplete outputs; a subsequent build repairs them.
 
 Source/baseline fingerprints include configuration and executable build helpers.
 Candidate caches also include the resolved TU profile and postprocessing. Compiler
@@ -122,12 +129,12 @@ Do not edit a historical fingerprint to make an old reference appear current.
 | build/usa/reference | Extracted originals and strings.txt |
 | build/usa/generated/strings | Packed strings and generated strings.s |
 | build/usa/stamps | Effective profile and binutils fingerprints |
-| build/usa | ROM, final ELF/map, stage1 object/map, tags and Ninja graph/settings/log/dependency database |
+| build/usa | ROM, final ELF/map, stage1 object/map, tags and the derived inputs.mk inventory |
 | build/host | Host utility objects, dependencies and executables |
 
 All compiler/assembler/linker commands run from the checkout root. Maintained
 assembly names generated inputs explicitly; no legacy file or symlink is needed.
-The first-build graph discovers literal generated inputs before depfiles exist.
+The first-build inventory discovers literal generated inputs before depfiles exist.
 The USA string generator owns its complete 42-chunk output set; missing byproducts
 trigger regeneration. Linker scripts retain section/input order and select real
 catalog objects. Overlay -R symbol inputs must remain after -T script inputs.
@@ -143,19 +150,15 @@ Old Make object/host/link targets are compatibility aliases. Diff tools and
 baselines use current paths, including build/usa inside a new reference directory.
 Do not rewrite old receipts or copy old products back into source directories.
 
-Ninja configuration is generated deterministically and written only when changed.
-The action manifest stores argv arrays and resolved profile values; each generated
-command checks its action signature before execution. Use build.py or the Make
-facade before scheduling so current configuration is refreshed. All Ninja actions
-use a depth-one pool, including when the engine is invoked with a larger job count.
-Engine logs/databases may change during no-op verification; production outputs and
-unchanged configuration/stamps retain their contents and mtimes.
+New reference manifests and progress snapshots use schema 3 with a schema-2
+gate receipt: direct serial Make clean/verify commands, ROM plus all 96 overlays,
+and Make's version/hash. Readers still validate older schema-1 Make/Ninja
+dispatcher receipts and the original literal Make gate. Historical records are
+never relabeled or executed by the current build. Current input fingerprints
+require fresh capture after build changes.
 
-New reference manifests and progress snapshots use schema 3 with a schema-1 gate
-receipt identifying Make or Ninja, serial clean/verify commands, ROM plus all 96
-overlays and executor version/hash. Historical schema-2 metadata accepts only its
-original literal Make gate. Current input fingerprints still require a fresh
-capture after build changes; accepting historical syntax does not waive freshness.
+The clean allowlist also recognizes known output files from the retired Ninja
+build, so cleanup can remove them safely. No current operation executes Ninja.
 
 ## Editing and validating
 

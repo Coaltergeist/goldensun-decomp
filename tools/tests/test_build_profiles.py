@@ -15,7 +15,7 @@ from unittest.mock import patch
 TOOLS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS))
 import build_config as config
-import build_compile
+import build_stamp
 import build_paths
 import candidate_build
 import permuter_compile
@@ -40,7 +40,7 @@ class ProfileTests(unittest.TestCase):
         self.catalog = config.read_json(self.root / config.CONFIG_FILES[0])
         self.env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
         for key in list(self.env):
-            if key.startswith("GS_BUILD_") or key in {"MAKEFLAGS", "MFLAGS", *[v["name"] for v in self.data["variables"]]}:
+            if key.startswith("GS_BUILD_") or key in {"MAKEFLAGS", "MFLAGS", "GCC296_DIR", "AGBCC_DIR", "CC", "CFLAGS", "CPPFLAGS"}:
                 self.env.pop(key)
 
     def save(self):
@@ -141,8 +141,8 @@ class ProfileTests(unittest.TestCase):
         path = self.root / config.CONFIG_FILES[1]
         path.write_text('{"schema": 1, "schema": 2}')
         with self.assertRaisesRegex(ValueError, "duplicate"): config.load(self.root)
-        self.data["variables"][0]["arguments"] = ["$(touch sentinel)"]; self.save()
-        with self.assertRaisesRegex(ValueError, "argument arrays"): config.load(self.root)
+        self.data["profiles"]["gcc296"]["compiler_variable"] = "$(touch sentinel)"; self.save()
+        with self.assertRaisesRegex(ValueError, "invalid profile variable"): config.load(self.root)
         self.assertFalse((self.root / "sentinel").exists())
 
     def test_profile_postprocessing_participates_in_candidate_cache_key(self):
@@ -151,7 +151,8 @@ class ProfileTests(unittest.TestCase):
         source = "tu:src/math/vector"
         settings = config.legacy_contract(self.root, source)
         before = cache.assembly_key(source, "int f(void) {return 1;}", Path("tmp.c"), settings, ["f"], {})
-        self.data["profiles"]["gcc296"]["postprocess"]["fill"] = 1; self.save()
+        settings_file = self.root / "config/toolchain.mk"
+        settings_file.write_text(settings_file.read_text().replace("TEXT_FILL := 0", "TEXT_FILL := 1"))
         after = cache.assembly_key(source, "int f(void) {return 1;}", Path("tmp.c"), settings, ["f"], {})
         self.assertNotEqual(before, after)
 
@@ -159,29 +160,20 @@ class ProfileTests(unittest.TestCase):
         fake = self.root / "compiler"; fake.write_text("compiler version one")
         def stamp(identity):
             with patch.object(config, "tool_files", return_value={"compiler": fake}):
-                build_compile.profile_stamp(self.root, identity)
+                build_stamp.profile_stamp(self.root, identity)
             return (self.root / "build/usa/stamps" / (identity + ".stamp")).stat().st_mtime_ns
         before = {n: stamp(n) for n in ["gcc296", "gcc296-gaia", "gcc296-common2"]}
         self.assertEqual(before, {n: stamp(n) for n in before})
-        row = next(v for v in self.data["variables"] if v["name"] == "GAIA_CFLAGS")
-        row["append"].append("-DGAIA_TEST"); self.save()
+        settings_file = self.root / "config/toolchain.mk"
+        settings_file.write_text(settings_file.read_text().replace("-fstrict-aliasing", "-fstrict-aliasing -DGAIA_TEST"))
         self.assertEqual(before["gcc296"], stamp("gcc296"))
         self.assertEqual(before["gcc296-common2"], stamp("gcc296-common2"))
         self.assertNotEqual(before["gcc296-gaia"], stamp("gcc296-gaia"))
         fake.write_text("compiler version two")
         self.assertNotEqual(before["gcc296"], stamp("gcc296"))
 
-    def test_failed_compile_removes_stale_output(self):
-        output = self.root / "build/host/stale.o"; output.parent.mkdir(parents=True); output.write_bytes(b"old object")
-        with patch.object(build_compile, "run", side_effect=subprocess.CalledProcessError(1, ["cc"])), \
-             self.assertRaises(subprocess.CalledProcessError):
-            build_compile.compile_source(self.root, dict(family="host", compiler=["cc"], arguments=[]),
-                                         self.root / "input.c", output)
-        self.assertFalse(output.exists())
-
-
     def test_generated_permuter_settings_keep_selected_defines_and_assembler(self):
-        values = config.resolve_values(self.data)
+        values = config.make_values(self.root)
         with patch.object(config, "make_values", return_value=values):
             text = permuter_compile.settings_text(self.root, "src/lib/m4a/m4a.c")
         rows = {k: json.loads(v) for k, v in (line.split(" = ", 1) for line in text.splitlines())}
@@ -192,7 +184,7 @@ class ProfileTests(unittest.TestCase):
         self.assertIn("-mthumb-interwork", shlex.split(rows["assembler_command"]))
 
     def test_permuter_rejects_stale_profile_and_production_output(self):
-        values = config.resolve_values(self.data)
+        values = config.make_values(self.root)
         profile = config.settings(self.root, "tu:src/math/vector", values)
         args = ["--unit", profile["unit"]["id"], "--contract", "outdated", *profile["preprocessor_arguments"],
                 str(self.root / "input.c"), "-o", str(self.root / "output.o")]

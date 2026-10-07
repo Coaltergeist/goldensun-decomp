@@ -53,9 +53,8 @@ class BaselineTests(unittest.TestCase):
     def run_command(self, command, **kwargs):
         if command == ["git", "rev-parse", "HEAD"]:
             return subprocess.CompletedProcess(command, 0, stdout="fixture-revision\n")
-        if command[:3] != ["python3", "-B", "tools/build.py"]:
+        if command[:2] != ["make", "-j1"]:
             return self.real_run(command, **kwargs)
-        self.assertEqual(command[3:5], ["--backend", "ninja"])
         self.targets.append(command[-1])
         if command[-1] == self.fail_target:
             raise subprocess.CalledProcessError(2, command)
@@ -73,9 +72,9 @@ class BaselineTests(unittest.TestCase):
         with mock.patch.object(baseline.subprocess, "run", side_effect=self.run_command), \
              mock.patch.object(baseline, "compiler_inputs", return_value={"fixture": "compiler"}), \
              mock.patch.object(baseline.build_verify, "receipt", return_value=dict(
-                 schema=1, backend="ninja", serial=True,
-                 commands=baseline.build_verify.commands("ninja"), checks=["rom-sha1", "all-96-overlays"],
-                 executor=dict(name="ninja", version="fixture", sha256="a" * 64))), \
+                 schema=2, backend="make", serial=True,
+                 commands=baseline.build_verify.commands(), checks=["rom-sha1", "all-96-overlays"],
+                 executor=dict(name="make", version="fixture", sha256="a" * 64))), \
              contextlib.redirect_stdout(io.StringIO()):
             baseline.create(output)
 

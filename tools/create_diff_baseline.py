@@ -122,9 +122,7 @@ def create(output):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--output", default="expected", help="expected or .diff-baselines/<new-name>")
-    ap.add_argument("--backend", choices=("make", "ninja"))
     args = ap.parse_args()
-    if args.backend: os.environ["BUILD_BACKEND"] = args.backend
     try:
         create(args.output)
     except (OSError, ValueError, subprocess.SubprocessError) as exc:

@@ -241,9 +241,7 @@ def main():
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true", help="preview without builds or writes")
     mode.add_argument("--check-tools", action="store_true", help="validate compilers and pinned objdiff only")
-    ap.add_argument("--backend", choices=("make", "ninja"))
     args = ap.parse_args()
-    if args.backend: os.environ["BUILD_BACKEND"] = args.backend
     try:
         os.chdir(ROOT)
         if args.dry_run:

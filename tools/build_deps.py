@@ -77,22 +77,6 @@ def phony_dependencies(path):
     write_changed(path, text + "".join(d + ":\n" for d in deps))
 
 
-def ninja_dependencies(target):
-    """Merge C and GAS dependencies, discarding Make phony rules and own outputs."""
-    obj = Path(target)
-    own = {str(obj.with_suffix(ext)) for ext in (".o", ".s", ".i", ".d", ".c.d", ".ninja.d")}
-    deps = set()
-    for file in (obj.with_suffix(".c.d"), obj.with_suffix(".d")):
-        if file.is_file():
-            first = file.read_text().replace("\\\n", " ").splitlines()[0]
-            deps.update(shlex.split(first.split(":", 1)[1]))
-    deps -= own
-    if not deps: raise ValueError("compiler produced no usable dependency information")
-    def escape(value):
-        return value.replace("\\", "\\\\").replace(" ", "\\ ").replace("#", "\\#").replace("$", "$$")
-    write_changed(obj.with_suffix(".ninja.d"), escape(target) + ": " + " ".join(escape(d) for d in sorted(deps)) + "\n")
-
-
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     subs = ap.add_subparsers(dest="mode", required=True)

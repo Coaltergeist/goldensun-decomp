@@ -58,10 +58,10 @@ class BuildIntegrationTests(unittest.TestCase):
                 self.assertNotEqual(mtime(target), before, target)
             def append(name, text):
                 with (game / name).open("a") as out: out.write(text)
-            make("compare")
+            make("compare", "-j4")
             self.assertEqual(inputs, {n: state(game / n) for n in inputs}, "build modified maintained inputs")
             outputs = {str(f.relative_to(game)): mtime(str(f.relative_to(game)))
-                       for folder in ("build/usa", "build/host") for f in (game / folder).rglob("*") if f.is_file() and f.name not in (".ninja_log", ".ninja_deps")}
+                       for folder in ("build/usa", "build/host") for f in (game / folder).rglob("*") if f.is_file()}
             make("compare", "--debug=b")
             self.assertEqual(outputs, {n: mtime(n) for n in outputs}, "no-op rebuilt output")
             catalog = json.loads((game / "config/modules.json").read_text())
@@ -102,8 +102,7 @@ class BuildIntegrationTests(unittest.TestCase):
             changed(common, lambda: (game / original).write_bytes(data))
             changed(common, lambda: (game / original).unlink())
             changed(save, lambda: (game / save).unlink())
-            if env.get("BUILD_BACKEND", "ninja") == "ninja":
-                changed(save, lambda: (game / Path(save).with_suffix(".s")).unlink())
+            changed(save, lambda: (game / Path(save).with_suffix(".s")).unlink())
             strings = units["tu:data/strings/strings"]["object"]
             changed(strings, lambda: (game / "build/usa/generated/strings/strings_00.bin").unlink())
             overlay = "build/usa/overlays/rom_780898/overlay.bin"
