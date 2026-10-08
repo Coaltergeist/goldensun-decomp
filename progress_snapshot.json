@@ -5799,7 +5799,7 @@
   "input_count": 3760,
   "policy": "known-original-function-bytes-excluding-registered-fakematches-v1",
   "schema": 3,
-  "source_fingerprint": "7923fbdd74f33906e9c84ec5af76ff1016be8f35a535f0fbd62e4a4bef8096ba",
+  "source_fingerprint": "4b02d60e907c08dc37de81065d8098c068d9dd9e770b6ca811e5a1e72c9fb1db",
   "units": {
     "src/battle/battle.c": {
       "functions": {

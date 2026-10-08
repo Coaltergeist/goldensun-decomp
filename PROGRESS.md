@@ -30,7 +30,7 @@ The generated size metadata records exceptions for missing sizes and overlaps.
 
 ## Local function counts
 
-After a fresh serial `make -j1 clean && make -j1 compare` (Ninja by default):
+After the serial clean and full comparison in [INSTALL.md](INSTALL.md#reference-rom-and-verification):
 
 ~~~bash
 set -euo pipefail
@@ -58,8 +58,7 @@ Neither report proves source semantics or detects every fakematch.
 [Contribution requirements](CONTRIBUTING.md) apply regardless of the reported
 percentage.
 
-Build verification records the actual backend in schema-3 progress snapshots and
-reference manifests. Use `--backend make` with the finalizer or reference-capture
-command to select the Make fallback. Old schema-2 receipts remain historical
-evidence; changing the backend helpers requires fresh finalization. Ordinary
-`make`/`tools/build.py` operations do not refresh progress or candidate scores.
+Snapshots and reference manifests record the serial Make verification and tool
+fingerprints. Production-input changes require fresh finalization.
+Ordinary builds do not refresh progress or candidate scores; see
+[the operation table](DECOMP_DEV.md#choosing-an-operation).

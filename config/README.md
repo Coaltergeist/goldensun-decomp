@@ -15,8 +15,9 @@ python3 -B tools/module_catalog.py --inventory 2>&1 | tee output.txt
 ~~~
 
 The catalog owns current TU paths, profile assignments and module identities.
-Make contains the build recipes; maintained linker scripts control link order. Descriptive source paths retain ROM-module ownership; generated products
-use build/. See the repository layout in [README.md](../README.md).
+Make contains the build recipes; maintained linker scripts control link order.
+Source paths follow ROM-module ownership; generated products use build/.
+See the repository layout in [README.md](../README.md).
 
 ## Schema 1
 
@@ -31,8 +32,6 @@ use build/. See the repository layout in [README.md](../README.md).
   spelling across path changes; original function IDs remain separate.
   `legacy_object` records the pre-isolation Make alias; it is not a current file.
   Host entries similarly retain `legacy_binary`.
-- The 439 linked objects include 297 C compilations and 142 assembly compilations.
-  The latter include one generated string-data assembly input.
 - Reference-only m4a source is explicitly excluded. Headers and per-function
   assembly fragments are dependencies, not independently compiled units.
 
@@ -143,22 +142,18 @@ Ordinary clean removes the declared files, then empty directories. It validates
 paths before deletion and rejects symlinks and tracked outputs. Unknown files,
 build/non_matching, build/permuter, installed compilers, references and verification
 history survive. Compiler output m4a.s is generated under build/usa/obj/src/lib/m4a;
-the maintained src/lib/m4a/m4a0.s remains source. New handwritten .s files are no
-longer hidden by broad ignore rules.
+the maintained src/lib/m4a/m4a0.s remains source.
 
 Old Make object/host/link targets are compatibility aliases. Diff tools and
 baselines use current paths, including build/usa inside a new reference directory.
 Do not rewrite old receipts or copy old products back into source directories.
 
-New reference manifests and progress snapshots use schema 3 with a schema-2
-gate receipt: direct serial Make clean/verify commands, ROM plus all 96 overlays,
-and Make's version/hash. Readers still validate older schema-1 Make/Ninja
-dispatcher receipts and the original literal Make gate. Historical records are
-never relabeled or executed by the current build. Current input fingerprints
-require fresh capture after build changes.
-
-The clean allowlist also recognizes known output files from the retired Ninja
-build, so cleanup can remove them safely. No current operation executes Ninja.
+Reference manifests and progress snapshots use schema 3 with a schema-2
+verification receipt: serial Make clean/verify commands, ROM plus all 96 overlays,
+and Make's version/hash. build_verify.py also validates older receipt formats
+without rewriting them or executing their commands. Build changes require fresh
+verification and reference capture. Clean recognizes declared legacy build
+metadata as well as current products.
 
 ## Editing and validating
 

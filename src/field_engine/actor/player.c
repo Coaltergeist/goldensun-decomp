@@ -1,4 +1,3 @@
-/* actor/player.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field_engine/actor/player/Func_800ea60.s");

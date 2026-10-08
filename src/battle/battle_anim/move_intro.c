@@ -1,4 +1,3 @@
-/* battle_anim/move_intro.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle/battle_anim/move_intro/UploadBGPalette.s");

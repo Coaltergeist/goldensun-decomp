@@ -1,7 +1,7 @@
 	.include "macros.inc"
 	.include "gba.inc"
 
-@ Active disassembly included by battle/mechanics.c; original source form unknown.
+@ Original source form unknown.
 @ Save old m[0], reset the 48-byte 16.16 matrix to identity, then set m[1] = old m[0] + 0x10000 (32-bit wraparound).
 .thumb_func_start Func_80c0eb8  @ 0x080c0eb8
 	push	{r5, r6, lr}

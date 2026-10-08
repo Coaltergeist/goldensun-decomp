@@ -39,6 +39,10 @@ ordered linker inputs. Update the catalog and linker scripts together; a new C
 file is not automatically discovered. Keep stable TU and original-function IDs
 when relocating existing code. See [catalog editing](config/README.md#editing-and-validating).
 
+Keep documentation focused on current usage, behavior and constraints. Record
+change narratives in commits or pull requests. Code comments should explain
+non-obvious behavior or requirements, rather than the history of an edit.
+
 ## Matching workflow
 
 1. Follow [INSTALL.md](INSTALL.md) and capture verified reference objects

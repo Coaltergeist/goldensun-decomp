@@ -1,4 +1,3 @@
-/* other/sub_80f95e0.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/sound/other/sub_80f95e0/umul3232H32.s");

@@ -161,8 +161,7 @@ pipeline and trailing alignment as production/candidate compilation. It rejects
 stale settings and writes only a separate scratch object. Regenerate settings
 after changing the selected profile or overrides.
 
-Use per-TU settings for normal code as well as Gaia, common2, m4a and Flash. The
-generic Make dry-run discovery cannot interpret Python build recipes and fails
-with instructions to generate settings. No permuter or model run starts during
-settings generation. A permuter result still requires source review, whole-object
-comparison and the normal ROM/all-overlay acceptance gate.
+Use per-TU settings for normal code as well as Gaia, common2, m4a and Flash.
+Make's `PERMUTER=1` mode stops with instructions to generate those settings.
+Settings generation does not start a search. A permuter result still requires
+source review, whole-object comparison and the ROM/all-overlay acceptance gate.

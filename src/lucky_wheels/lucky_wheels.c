@@ -1,4 +1,3 @@
-/* lucky_wheels.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern volatile unsigned short iwram_disp;

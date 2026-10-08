@@ -2,8 +2,7 @@
 
 The supported setup documented here is Ubuntu on x86-64 Linux, including WSL2.
 On Windows, keep the checkout inside the WSL Linux filesystem. Run the commands
-below in Bash. Use a checkout path without spaces. This public repository needs
-no private workspace, private scripts or private history to build or run its tests.
+below in Bash. Use a checkout path without spaces.
 
 ## System requirements
 
@@ -37,11 +36,9 @@ ignored `tools/gcc296/` and `tools/agbcc/`. Keep the compiler revision and insta
 build manifests with your local verification record. Consult camelot-gcc's build
 instructions if its own host prerequisites are missing.
 
-An existing verified installation can instead be copied into those same two
-locations, including all headers, support files and manifests. Use independent
-copies that retain executable permissions; do not borrow another checkout's
-objects, generated assets, baselines or output directories. Verify the new checkout
-from empty build output before trusting it. The reference ROM is supplied separately.
+Alternatively, copy a verified installation into those two directories, including
+its headers, support files, manifests and executable permissions. Supply the ROM
+separately and verify the checkout from empty build output.
 
 ## Reference ROM and verification
 
@@ -139,11 +136,9 @@ python3 tools/create_diff_baseline.py 2>&1 | tee output-baseline.txt
 ~~~
 
 This runs a fresh ROM/all-overlay comparison and copies the linked objects to
-`expected/`. Do not edit or build concurrently. Use the baseline only after the
-command succeeds; its schema-3 manifest.json records a schema-2 direct-Make
-gate: serial clean/verify commands, ROM/all-overlay scope and Make's version/hash.
-Historical references retain their original receipts and are never rewritten.
-Logs are stored under `.diff-baselines/verification-*/build.log`.
+`expected/`. Use the baseline only after the command succeeds. Its manifest records
+the verification commands and tool fingerprints; logs are under
+`.diff-baselines/verification-*/build.log`. Do not edit or build concurrently.
 
 Existing destinations are preserved. To capture another baseline:
 
