@@ -155,7 +155,10 @@ def source_errors(expanded, names):
 def comparison(expected, actual):
     a, b = ELF(expected), ELF(actual)
     x, y = a.contract(), b.contract()
-    result = dict(exact=x == y, flags=x[0] != y[0], sections=[], symbols=[], relocations=[])
+    padding = a.padding_differences(b)
+    result = dict(exact=x == y or bool(padding), flags=x[0] != y[0], sections=[], symbols=[], relocations=[])
+    if padding:
+        result["alignment_padding"] = padding
     for name in sorted(x[1].keys() | y[1].keys()):
         left, right = x[1].get(name), y[1].get(name)
         if left != right:
@@ -167,7 +170,7 @@ def comparison(expected, actual):
             result["relocations"].append(name)
     sx, sy = {s[0]: s[1:] for s in x[2]}, {s[0]: s[1:] for s in y[2]}
     for name in sorted(sx.keys() | sy.keys()):
-        if sx.get(name) != sy.get(name):
+        if sx.get(name) != sy.get(name) and name not in {row["name"] for row in padding}:
             result["symbols"].append(dict(name=name, expected=sx.get(name), candidate=sy.get(name)))
     return result
 

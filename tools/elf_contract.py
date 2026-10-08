@@ -2,7 +2,8 @@
 """Conservative link contract for little-endian ELF32 ARM relocatable objects.
 
 Ignores file/mapping symbol order and non-allocated debug metadata. Preserves
-allocated layout, exported definitions and relocation symbol identity. A match
+allocated layout, exported definitions and relocation symbol identity. Raw contracts
+retain sizes; equivalence also recognizes proven two-byte Thumb tail padding. A match
 is an inner-loop check; only a fresh full link verifies the final ROM.
 """
 from pathlib import Path
@@ -135,16 +136,159 @@ class ELF:
                 self.flags, sym["value"] & 1, sym["bind"], sym["visibility"])
 
 
+    def _trailing_thumb_padding(self, sym, short_size, long_size):
+        """Recognize only one data-mapped zero halfword after a Thumb return."""
+        if (sym["type"] != 2 or not sym["value"] & 1 or
+                not 0 < sym["index"] < len(self.sections)):
+            return False
+        sec = self.sections[sym["index"]]
+        start = sym["value"] & ~1
+        end, limit = start + short_size, start + long_size
+        if (long_size - short_size != 2 or short_size < 2 or start % 4 or
+                end % 4 != 2 or limit % 4 or limit > sec["size"] or
+                sec["type"] != 1 or sec["flags"] & 6 != 6 or sec["align"] < 4):
+            return False
+        data = self.contents(sec)
+        if data[end:limit] != b"\0\0":
+            return False
+        symbols = [s for s in self.symbols if s["index"] == sym["index"]]
+        mappings = [(s["value"], s["name"].split(".")[0]) for s in symbols
+                    if not s["bind"] and s["type"] == 0 and
+                    s["name"].split(".")[0] in ("$a", "$t", "$d")]
+
+        def mode(offset):
+            earlier = [value for value, kind in mappings if value <= offset]
+            if not earlier:
+                return None
+            kinds = {kind for value, kind in mappings if value == max(earlier)}
+            return next(iter(kinds)) if len(kinds) == 1 else None
+
+        if (mode(start) != "$t" or mode(end - 2) != "$t" or mode(end) != "$d" or
+                (end, "$d") not in mappings or
+                any(start <= value < end and kind == "$a" for value, kind in mappings)):
+            return False
+        if limit != sec["size"] and not any(
+                s["type"] == 2 and s["value"] & 1 and
+                (s["value"] & ~1) == limit for s in symbols):
+            return False
+
+        def word(offset):
+            return struct.unpack_from("<H", data, offset)[0]
+
+        def is_return(offset):
+            op = word(offset)
+            if op == 0x4770 or op & 0xff00 == 0xbd00:  # bx lr / pop {..., pc}
+                return True
+            if op & 0xff87 == 0x4700:  # pop {rN}; bx rN (Thumb interworking return)
+                reg = (op >> 3) & 15
+                return (reg < 8 and offset >= start + 2 and mode(offset - 2) == "$t"
+                        and word(offset - 2) == (0xbc00 | (1 << reg)))
+            return False
+
+        if not is_return(end - 2):
+            return False
+        for other in symbols:
+            if other is sym or other["type"] == 3:
+                continue
+            value = other["value"] & ~1 if other["type"] == 2 else other["value"]
+            mapping = (not other["bind"] and other["type"] == 0 and not other["size"]
+                       and other["name"].split(".")[0] == "$d")
+            if end <= value < limit and not mapping:
+                return False
+            if other["size"] and value < limit and value + other["size"] > end:
+                return False
+        for i, section in enumerate(self.sections):
+            for pos, kind, target, addend in self.relocations(i):
+                # ARM relocation fields can span a word. Keep ambiguous section-
+                # relative/self references conservative instead of guessing REL addends.
+                if i == sym["index"] and end - 3 <= pos < limit:
+                    return False
+                if target[1] == sec["name"] and (target[3] == 3 or
+                        target[0] == sym["name"] or end <= (target[2] & ~1) < limit):
+                    return False
+        for offset in range(start, end, 2):
+            if mode(offset) != "$t":
+                continue
+            op = word(offset)
+            target = None
+            if op & 0xf800 == 0xe000:  # Thumb B
+                imm = op & 0x7ff
+                target = offset + 4 + (imm - 0x800 if imm & 0x400 else imm) * 2
+            elif op & 0xf000 == 0xd000 and op & 0x0f00 < 0x0e00:  # Bcc
+                imm = op & 0xff
+                target = offset + 4 + (imm - 0x100 if imm & 0x80 else imm) * 2
+            elif op & 0xf800 == 0xf000 and offset + 2 < end:
+                low = word(offset + 2)
+                if low & 0xf800 == 0xf800:  # Thumb-1 BL pair
+                    high = op & 0x7ff
+                    if high & 0x400:
+                        high -= 0x800
+                    target = offset + 4 + (high << 12) + ((low & 0x7ff) << 1)
+            elif op & 0xf800 == 0x4800:  # PC-relative literal load
+                address = ((offset + 4) & ~3) + (op & 0xff) * 4
+                if address < limit and address + 4 > end:
+                    return False
+            elif op & 0xf800 == 0xa000:  # ADR
+                target = ((offset + 4) & ~3) + (op & 0xff) * 4
+            if target is not None and end <= target < limit:
+                return False
+            if op & 0xff87 in (0x4487, 0x4687):  # add/mov pc, register
+                return False
+            if op & 0xff87 == 0x4700 and not is_return(offset):
+                return False
+        return True
+
+    def padding_differences(self, other):
+        """Explain accepted size differences; every other whole-object field must match."""
+        a, b = self.contract(), other.contract()
+        if any(a[i] != b[i] for i in (0, 1, 3)) or len(a[2]) != len(b[2]):
+            return []
+        differences = []
+        for left, right in zip(a[2], b[2]):
+            if left == right:
+                continue
+            if left[:-1] != right[:-1]:
+                return []
+            sa = [s for s in self.symbols if s["name"] == left[0]]
+            sb = [s for s in other.symbols if s["name"] == right[0]]
+            short, long = sorted((left[-1], right[-1]))
+            if (len(sa) != 1 or len(sb) != 1 or
+                    not self._trailing_thumb_padding(sa[0], short, long) or
+                    not other._trailing_thumb_padding(sb[0], short, long)):
+                return []
+            differences.append(dict(name=left[0], expected_size=left[-1],
+                                    candidate_size=right[-1], padding_bytes=long - short))
+        return differences
+
+    def equivalent(self, other, function=None):
+        """Compare raw contracts, with a bounded trailing-alignment exception."""
+        if function is None:
+            if self.contract() == other.contract():
+                return True
+        elif self.function(function) == other.function(function):
+            return True
+        differences = self.padding_differences(other)
+        return bool(differences) and (function is None or
+                                     any(d["name"] == function for d in differences))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("expected")
     ap.add_argument("candidate")
     ap.add_argument("--function")
+    ap.add_argument("--strict", action="store_true", help="require identical raw symbol sizes")
     args = ap.parse_args()
     try:
         a, b = ELF(args.expected), ELF(args.candidate)
-        equal = a.function(args.function) == b.function(args.function) if args.function else a.contract() == b.contract()
+        if args.strict:
+            equal = a.function(args.function) == b.function(args.function) if args.function else a.contract() == b.contract()
+        else:
+            equal = a.equivalent(b, args.function)
         print("pass" if equal else "fail")
+        if equal and not args.strict:
+            for row in a.padding_differences(b):
+                print("alignment padding: {name} size {expected_size} -> {candidate_size}".format(**row))
         return 0 if equal else 1
     except (OSError, ValueError, IndexError, KeyError, struct.error) as exc:
         print("error\n" + str(exc))

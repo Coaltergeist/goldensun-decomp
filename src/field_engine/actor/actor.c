@@ -57,7 +57,35 @@ void Actor_SetAnim(unsigned char *p, unsigned int animID) {
     }
 }
 
-INCLUDE_ASM("asm/field_engine/actor/actor/Actor_SetAnimSpeed.s");
+extern void Sprite_SetAnimSpeed(unsigned char *sprite, int speed);
+
+void Actor_SetAnimSpeed(unsigned char *actor, int speed)
+{
+    unsigned char *sprite;
+    unsigned char **sprites;
+    int i;
+
+    if (actor == (unsigned char *)0)
+        return;
+
+    switch (*(unsigned char *)(actor + 0x54) & 0xf)
+    {
+    case 1:
+        Sprite_SetAnimSpeed(*(unsigned char **)(actor + 0x50), speed);
+        break;
+    case 2:
+        sprites = *(unsigned char ***)(actor + 0x50);
+        for (i = 3; i >= 0; i--)
+        {
+            sprite = *sprites++;
+            if (sprite != 0)
+            {
+                Sprite_SetAnimSpeed(sprite, speed);
+            }
+        }
+        break;
+    }
+}
 INCLUDE_ASM("asm/field_engine/actor/actor/Actor_SetAnimAndSpeed.s");
 
 void Actor_SetRotation(int actor, int rotation)

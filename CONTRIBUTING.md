@@ -51,6 +51,12 @@ non-obvious behavior or requirements, rather than the history of an edit.
 2. Replace the active `INCLUDE_ASM` in that TU with C.
 3. Compare the whole affected object, including neighboring functions, sizes,
    data, symbols, and relocations. Do not refresh the reference to hide a mismatch.
+   The ELF checker permits a two-byte Thumb alignment accounting difference only
+   after verifying zero data-mapped padding after a return, its boundary and the
+   absence of detected references into it. All allocated bytes, addresses and
+   relocations must still match. It reports the size difference; use --strict to
+   require the raw symbol sizes as well. Do not add source padding or .size
+   overrides to manufacture equality.
 4. Finalize the conversion with the pinned [objdiff CLI](DECOMP_DEV.md#candidate-scores):
 
    ~~~bash

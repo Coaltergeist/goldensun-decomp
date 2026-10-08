@@ -5768,8 +5768,8 @@
       ],
       "fuzzy_match_percent": 72.63158,
       "name": "NewActor",
-      "object_sha256": "f3054d8816b29da951c01af83fc90ca8b2d8ac3bb35c9f127ebb340106391139",
-      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "object_sha256": "e0b3844dbc0a0b2ab2d418ad7d6b9b69a18bb6402c8692f0ceb8d620aab3da4b",
+      "reference_sha256": "c379cd94babef315c575b383049e6dc6aec2f349bfbfd19151c67a44e9882146",
       "source": "src/field_engine/actor/actor.c",
       "target_size": 40
     },
@@ -5781,8 +5781,8 @@
       ],
       "fuzzy_match_percent": 72.4,
       "name": "Func_800c548",
-      "object_sha256": "a1363d04fabb119ebae309fcadf88c2db96d79ce53a770e74fbb2aefa5add01d",
-      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "object_sha256": "c90ed7668092d91aa6eba7c09f99c5afb928dff2ad1324958fd4d3b8ad162f0c",
+      "reference_sha256": "c379cd94babef315c575b383049e6dc6aec2f349bfbfd19151c67a44e9882146",
       "source": "src/field_engine/actor/actor.c",
       "target_size": 40
     },
@@ -5794,8 +5794,8 @@
       ],
       "fuzzy_match_percent": 72.4,
       "name": "Func_800c570",
-      "object_sha256": "42daf1b7579cd302ade06614c385b4e91897b5726c84aba8733b124ea04b0f54",
-      "reference_sha256": "bd8ce2eb8faf1b8e3d32f918513164fc737d095a0926f9bf2800259cd279aea1",
+      "object_sha256": "86805be7384d6cf1178477c8932d1e8b669d8a6738c92f676da73c54c4a90465",
+      "reference_sha256": "c379cd94babef315c575b383049e6dc6aec2f349bfbfd19151c67a44e9882146",
       "source": "src/field_engine/actor/actor.c",
       "target_size": 40
     },
@@ -7751,7 +7751,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "137a84294fae7222868d88d80f12ccbc36d273d9fd8da53bbcd26a4b92ac6dea",
+  "progress_sha256": "216cc1a15049f11a3ed367f92fe6d362d17664a14c65d1fa51a7e4e0e4a7598c",
   "schema": 1,
   "scorer": {
     "config": [
