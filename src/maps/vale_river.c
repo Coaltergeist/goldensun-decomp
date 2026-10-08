@@ -29,7 +29,23 @@ int OvlFunc_883_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200806c.s");
+void *OvlFunc_883_200806c(int *pos, void *unused)
+{
+    extern unsigned int iwram_3001ebc;
+    struct Actor **actors;
+    struct Actor *actor;
+    unsigned int i;
+
+    actors = (struct Actor **)(iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        actor = actors[i];
+        if ((pos[0] >> 20) == (actor->pos.x >> 20)
+            && pos[1] / 0x10000 == actor->pos.y / 0x10000
+            && (pos[2] >> 20) == (actor->pos.z >> 20))
+            return actor;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20080c4.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008244.s");
 
@@ -173,7 +189,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L6190__a2[] __asm__(".Lm883_6190");
-extern void OvlFunc_883_2008244(int, int, int, int, int, int);
+extern int OvlFunc_883_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -1139,7 +1155,7 @@ int OvlFunc_883_200d610(int *a, int *b)
 
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d64c.s");
 
-extern void OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
+extern int OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
 
 unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     int r1;
@@ -1345,7 +1361,27 @@ void OvlFunc_883_200dc98(int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dcc4.s");
+extern int __sin(int);
+
+void OvlFunc_883_200dcc4(struct Actor *actor)
+{
+    struct Actor *linked;
+    int t;
+    int s;
+
+    linked = actor->linkedActor;
+    t = ++actor->waveCounter;
+    if (t > 0x1f) {
+        API_DeleteActor((int)actor);
+        return;
+    }
+    s = __sin(t << 10);
+    actor->scale.x = s;
+    actor->scale.y = s;
+    actor->pos.x = linked->pos.x;
+    actor->pos.y += 0x80 << 9;
+    actor->pos.z = linked->pos.z + ((0x80 << 9) - s) * 5 + (0x80 << 12);
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd14.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd68.s");
 INCLUDE_ASM("asm/maps/vale_river/vale_river_data.s");

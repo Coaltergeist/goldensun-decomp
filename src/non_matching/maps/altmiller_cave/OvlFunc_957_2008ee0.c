@@ -1,4 +1,4 @@
-extern unsigned int L4468[] __asm__(".L4468");
+extern unsigned int L4468[] __asm__(".Lm957_4468");
 
 void OvlFunc_957_2008ee0(unsigned int arg0) {
     unsigned short *p;

@@ -7,7 +7,7 @@ void *OvlFunc_905_200834c(int *arg0, void *arg1, void *arg2)
     unsigned char *base;
     unsigned char *actor0;
     void **ptr;
-    int k;
+    unsigned int k;
 
     base = *(unsigned char **)iwram_3001ebc;
     actor0 = __MapActor_GetActor(0);
@@ -20,7 +20,7 @@ void *OvlFunc_905_200834c(int *arg0, void *arg1, void *arg2)
         short val;
         int *q;
         int *table;
-        int i;
+        unsigned int i;
 
         p = *(int **)((char *)obj + 0x50);
         p = *(int **)((char *)p + 0x28);

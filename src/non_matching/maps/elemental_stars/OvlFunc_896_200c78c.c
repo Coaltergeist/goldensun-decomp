@@ -6,6 +6,12 @@ extern const int Lm896_5168[] __asm__(".Lm896_5168");
 extern void OvlFunc_896_200c49c(void);
 extern int __StartTask(void (*)(void), unsigned int);
 
+struct DmaTransfer {
+    const void *src;
+    void *dest;
+    u32 cnt;
+};
+
 struct TaskDataEntry {
     struct Actor *actor;
     u8 pad4[0x18];
@@ -23,29 +29,35 @@ struct TaskData {
 
 void OvlFunc_896_200c78c(u32 actorId, u32 count)
 {
-    volatile u32 zero;
+    u32 zero;
     struct TaskData *taskData;
+    struct TaskDataEntry *entry;
+    struct DmaTransfer dma;
     u32 i;
+    u32 clear;
 
     taskData = (struct TaskData *)__galloc_ewram(0x21, sizeof(struct TaskData));
     zero = 0;
-    *(volatile u32 *)0x040000d4 = (u32)&zero;
-    *(volatile u32 *)0x040000d8 = (u32)taskData;
-    *(volatile u32 *)0x040000dc = 0x85000065;
+    entry = taskData->entries;
+    dma.src = &zero;
+    dma.dest = taskData;
+    dma.cnt = 0x85000065;
+    *(struct DmaTransfer *)0x040000d4 = dma;
 
     if (count > 10) {
         count = 10;
     }
 
-    for (i = 0; i < count; i++, actorId++) {
-        struct Actor *actor = __MapActor_GetActor(actorId);
-        taskData->entries[i].actor = actor;
-        actor->sprite->flags = 0;
-        actor->__unk55 = 0;
+    clear = 0;
+    for (i = 0; i < count; i++, actorId++, entry++) {
+        struct Actor *actor = (struct Actor *)__MapActor_GetActor(actorId);
+        entry->actor = actor;
+        actor->sprite->flags = clear;
+        actor->__unk55 = clear;
         __Func_800c548(__MapActor_GetActor(actorId), 1);
-        taskData->entries[i].unk1c = Lm896_5140[i];
-        taskData->entries[i].unk20 = -Lm896_5168[i];
-        taskData->entries[i].unk24 = 3;
+        entry->unk1c = Lm896_5140[i];
+        entry->unk20 = -Lm896_5168[i];
+        entry->unk24 = 3;
     }
 
     taskData->count = count;

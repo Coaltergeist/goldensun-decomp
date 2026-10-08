@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "src/maps/mogall_forest.c",
+  "functions": {
+    "OvlFunc_927_20089f4": {
+      "id": "overlay:rom_7b4558:020089f4"
+    },
+    "OvlFunc_927_2008244": {
+      "id": "overlay:rom_7b4558:02008244"
+    },
+    "OvlFunc_927_2008a4c": {
+      "id": "overlay:rom_7b4558:02008a4c"
+    },
+    "OvlFunc_927_2008e18": {
+      "id": "overlay:rom_7b4558:02008e18"
+    },
+    "OvlFunc_927_2009454": {
+      "id": "overlay:rom_7b4558:02009454"
+    },
+    "OvlFunc_927_2009d04": {
+      "id": "overlay:rom_7b4558:02009d04"
+    },
+    "OvlFunc_927_200a1b0": {
+      "id": "overlay:rom_7b4558:0200a1b0"
+    },
+    "OvlFunc_927_200ac0c": {
+      "id": "overlay:rom_7b4558:0200ac0c"
+    },
+    "OvlFunc_927_2008cd0": {
+      "id": "overlay:rom_7b4558:02008cd0"
+    },
+    "OvlFunc_927_20099b8": {
+      "id": "overlay:rom_7b4558:020099b8"
+    }
+  }
+}

@@ -44,11 +44,14 @@ void OvlFunc_956_2009f90(void *arg0)
         __MapActor_SetSpeed(0, 0xc0 << 9, 0xc0 << 8);
         OvlFunc_common1_1578(0, 0xaa << 2, 0xc8);
 
-        while (*(short *)(p + (0xc1 << 1)) != 5) {
-            __WaitFrames(1);
-            r6++;
-            if (r6 > 0xef)
-                break;
+        if (*(short *)(p + (0xc1 << 1)) != 5) {
+            short *q = (short *)(p + (0xc1 << 1));
+            do {
+                __WaitFrames(1);
+                r6++;
+                if (r6 > 0xef)
+                    break;
+            } while (*q != 5);
         }
 
         OvlFunc_956_2008b30();

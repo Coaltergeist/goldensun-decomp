@@ -11,26 +11,33 @@ void OvlFunc_956_20082f8(void)
     r2 <<= 1;
     id = *(int *)((char *)gState + r2);
     if (API_GetFlag(0x362) == 0) {
-        actor = (struct Actor *)__MapActor_GetActor(0xa);
-        if (actor != NULL) {
-            API_MapActor_TravelTo(id, *(short *)((char *)actor + 0xa), *(short *)((char *)actor + 0x12));
+        {
+            struct Actor *a = (struct Actor *)__MapActor_GetActor(0xa);
+            if (a != NULL) {
+                API_MapActor_TravelTo(id, *(short *)((char *)a + 0xa), *(short *)((char *)a + 0x12));
+            }
         }
         API_MapActor_WaitMovement(id);
 
-        actor = (struct Actor *)__MapActor_GetActor(0xb);
-        actor->__unk55 = 0;
-        actor->accel = 0x6666;
-        actor->speed = 0xcccc;
-        API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 14, actor->pos.z);
+        {
+            struct Actor *a = (struct Actor *)__MapActor_GetActor(0xb);
+            a->__unk55 = 0;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            API_Actor_TravelTo(a, a->pos.x, 0x80 << 14, a->pos.z);
+        }
 
-        actor = (struct Actor *)__MapActor_GetActor(0xa);
-        actor->__unk55 = 0;
-        actor->accel = 0x6666;
-        actor->speed = 0xcccc;
-        API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 11, actor->pos.z);
+        {
+            struct Actor *a = (struct Actor *)__MapActor_GetActor(0xa);
+            a->__unk55 = 0;
+            a->accel = 0x6666;
+            a->speed = 0xcccc;
+            API_Actor_TravelTo(a, a->pos.x, 0x80 << 11, a->pos.z);
+        }
 
         actor = (struct Actor *)__MapActor_GetActor(id);
         actor->__unk55 = 0;
+
         actor->speed = 0xcccc;
         actor->accel = 0x6666;
         API_Actor_TravelTo(actor, actor->pos.x, 0x80 << 11, actor->pos.z);

@@ -4,6 +4,9 @@
   "functions": {
     "OvlFunc_922_200a094": {
       "id": "overlay:rom_7a8c8c:0200a094"
+    },
+    "OvlFunc_922_2008ed8": {
+      "id": "overlay:rom_7a8c8c:02008ed8"
     }
   }
 }

@@ -1012,7 +1012,29 @@ void OvlFunc_932_200aa10(struct Actor *actor) {
 }
 
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200aa48.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200ab58.s");
+extern unsigned int iwram_3001e40__ab58 __asm__("iwram_3001e40");
+extern int Lm932_5240__ab58[] __asm__(".Lm932_5240");
+extern void OvlFunc_932_200aa48(struct Actor *);
+extern void __Actor_SetAnim(struct Actor *, int);
+
+void OvlFunc_932_200ab58(void)
+{
+    struct Actor *actor;
+    int *pos;
+
+    if ((iwram_3001e40__ab58 & 3) == 0) {
+        pos = Lm932_5240__ab58;
+        actor = (struct Actor *)API_CreateActor(0xde, pos[0], pos[1], pos[2]);
+        if (actor != 0) {
+            actor->waveCounter = 0x1e;
+            actor->__unk66 = 1;
+            actor->linkedActor = (struct Actor *)0x14;
+            OvlFunc_932_200aa10(actor);
+            actor->update = (actorfun_t *)OvlFunc_932_200aa48;
+            __Actor_SetAnim(actor, 1);
+        }
+    }
+}
 
 extern unsigned char L5240[] __asm__(".Lm932_5240");
 extern unsigned char L523c[] __asm__(".Lm932_523c");

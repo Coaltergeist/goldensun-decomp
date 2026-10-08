@@ -7,13 +7,15 @@ void *OvlFunc_923_2008630(int *dir, void *arg1, void *arg2)
     unsigned char **actors;
     unsigned char *actor;
     unsigned int i;
-    int j;
+    unsigned int j;
     int *q;
     int *shape;
     short val;
+    int step;
+    int x, z;
     int x0, z0;
-    int min_x, min_z, max_x, max_z;
-    short ax, az;
+    int min_x, min_z;
+    int ax, az;
     int *p;
 
     actors = (unsigned char **)(*(char **)iwram_3001ebc + 0x14);
@@ -32,25 +34,27 @@ void *OvlFunc_923_2008630(int *dir, void *arg1, void *arg2)
             if (val == *q++) {
                 *(int *)arg2 = j;
 
-                x0 = ((*(int *)(actor0 + 8) >> 16) + ((int)L2700[*dir] >> 16)) >> 4;
-                z0 = ((*(int *)(actor0 + 0x10) >> 16) + (short)L2700[*dir]) >> 4;
+                step = L2700[*dir];
+                x = *(int *)(actor0 + 8);
+                x0 = ((x >> 16) + (step >> 16)) >> 4;
+                z = *(int *)(actor0 + 0x10);
+                z0 = ((z >> 16) + (short)step) >> 4;
 
                 ax = *(short *)((char *)actor + 0xa);
-                az = *(short *)((char *)actor + 0x12);
-
                 min_x = (ax + shape[0]) >> 4;
+                az = *(short *)((char *)actor + 0x12);
                 min_z = (az + shape[1]) >> 4;
-                max_x = (ax + shape[2]) >> 4;
-                max_z = (az + shape[3]) >> 4;
+                ax = (ax + shape[2]) >> 4;
+                az = (az + shape[3]) >> 4;
 
-                if (min_x <= x0 && x0 < max_x && min_z <= z0 && z0 < max_z) {
+                if (min_x <= x0 && x0 < ax && min_z <= z0 && z0 < az) {
                     if (j & 1) {
-                        if (min_x != (*(int *)(actor0 + 8) >> 20)) {
+                        if (min_x != (x >> 20)) {
                             *(int *)arg1 = i;
                             return actor;
                         }
                     } else {
-                        if (min_z != (*(int *)(actor0 + 0x10) >> 20)) {
+                        if (min_z != (z >> 20)) {
                             *(int *)arg1 = i;
                             return actor;
                         }

@@ -35,8 +35,9 @@ void OvlFunc_956_200804c(void)
         }
         __MapActor_SetAnim(0x1c, L4c20[*(int *)L5480][5]);
     } else {
+        signed char *row = L4c20[*(int *)L5480];
         for (r6 = 0x12; r6 <= 0x16; r6++) {
-            int val = L4c20[*(int *)L5480][r6 - 0x12];
+            int val = *row++;
             if ((unsigned int)(actor->pos.x - (r6 << 21) + 0x31ffff) <= 0x13fffe) {
                 if (r4 == 11 && val == 4) {
                     *(short *)(p + 0x182) = val;

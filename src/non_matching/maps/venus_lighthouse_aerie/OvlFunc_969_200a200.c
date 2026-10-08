@@ -17,26 +17,30 @@ void OvlFunc_969_200a200(u32 arg0)
     __PlaySound(0x83);
 
     for (i = 0; i < 2; i++) {
-        actors[i] = __CreateActor(0x1a, actor->pos.x, actor->pos.y, actor->pos.z);
-        if (actors[i] != NULL) {
+        struct Actor *created = __CreateActor(0x1a, actor->pos.x, actor->pos.y, actor->pos.z);
+        actors[i] = created;
+        if (created != NULL) {
             struct Sprite *sprite;
 
-            actors[i]->floorPos = actor->floorPos;
-            sprite = actors[i]->sprite;
-            actors[i]->__unk55 = 0;
-            actors[i]->waveCounter = 0;
-            actors[i]->linkedActor = actor;
+            created->floorPos = actor->floorPos;
+            sprite = created->sprite;
+            created->__unk55 = 0;
+            created->waveCounter = 0;
+            created->linkedActor = actor;
 
             if (sprite != NULL) {
+                int val;
+
                 __Sprite_SetAnim(sprite, 0);
                 sprite->flags = 0;
                 __Func_8003f3c(sprite->slot);
                 sprite->slot = *(u16 *)(map + 0x46);
                 sprite->__unk1D |= 1;
-                *(u16 *)&sprite->oam.attr2Lo = (*(u16 *)&sprite->oam.attr2Lo & ~0x3ff) |
-                    (((u32)gSpriteSlots[sprite->slot].vramOffset << 17) >> 22);
-                ((u8 *)sprite)[5] &= ~0x20;
-                ((u8 *)sprite)[5] = (((u8 *)sprite)[5] & 0x3f) | 0x40;
+                *(u16 *)&sprite->oam.attr2Lo = (((u32)gSpriteSlots[sprite->slot].vramOffset << 17) >> 22) |
+                    (*(u16 *)&sprite->oam.attr2Lo & ~0x3ff);
+                val = ((u8 *)sprite)[5];
+                val &= ~0x20;
+                ((u8 *)sprite)[5] = (val & 0x3f) | 0x40;
                 ((u8 *)sprite)[7] = (((u8 *)sprite)[7] & 0x3f) | 0x80;
                 sprite->layers[0]->frameID = 0;
             }

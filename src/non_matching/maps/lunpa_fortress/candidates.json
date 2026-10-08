@@ -2,26 +2,41 @@
   "schema": 1,
   "source": "src/maps/lunpa_fortress.c",
   "functions": {
-    "OvlFunc_959_200a410": {
-      "id": "overlay:rom_7e7574:0200a410"
-    },
     "OvlFunc_959_2008b4c": {
       "id": "overlay:rom_7e7574:02008b4c"
     },
-    "OvlFunc_959_2008f30": {
-      "id": "overlay:rom_7e7574:02008f30"
-    },
     "OvlFunc_959_200c794": {
       "id": "overlay:rom_7e7574:0200c794"
-    },
-    "OvlFunc_959_200a468": {
-      "id": "overlay:rom_7e7574:0200a468"
     },
     "OvlFunc_959_200d324": {
       "id": "overlay:rom_7e7574:0200d324"
     },
     "OvlFunc_959_200d0e4": {
       "id": "overlay:rom_7e7574:0200d0e4"
+    },
+    "OvlFunc_959_2008244": {
+      "id": "overlay:rom_7e7574:02008244"
+    },
+    "OvlFunc_959_2009880": {
+      "id": "overlay:rom_7e7574:02009880"
+    },
+    "OvlFunc_959_2009918": {
+      "id": "overlay:rom_7e7574:02009918"
+    },
+    "OvlFunc_959_2009a44": {
+      "id": "overlay:rom_7e7574:02009a44"
+    },
+    "OvlFunc_959_200a38c": {
+      "id": "overlay:rom_7e7574:0200a38c"
+    },
+    "OvlFunc_959_2008d54": {
+      "id": "overlay:rom_7e7574:02008d54"
+    },
+    "OvlFunc_959_200c638": {
+      "id": "overlay:rom_7e7574:0200c638"
+    },
+    "OvlFunc_959_2009980": {
+      "id": "overlay:rom_7e7574:02009980"
     }
   }
 }

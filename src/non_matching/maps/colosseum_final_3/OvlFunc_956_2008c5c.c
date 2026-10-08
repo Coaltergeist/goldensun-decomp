@@ -9,6 +9,7 @@ void OvlFunc_956_2008c5c(void)
 {
     int i;
     int r6;
+    int map;
 
     OvlFunc_common1_16f8();
     API_CutsceneStart();
@@ -37,11 +38,12 @@ void OvlFunc_956_2008c5c(void)
     API_MapActor_SetAnim(8, 9);
     API_CutsceneWait(10);
 
-    __StartMapBattle(0x48, 4 - r6 + 1);
+    r6 = 4 - r6;
+    __StartMapBattle(0x48, r6 + 1);
     gState._bytes[0x22b] = 3;
 
-    i = 0x91;
-    __Func_8091f90(i, 4);
-    __Func_8091fa8(i, 5);
+    map = 0x91;
+    __Func_8091f90(map, 4);
+    __Func_8091fa8(map, 5);
     API_SetFlag(0x8d << 1);
 }

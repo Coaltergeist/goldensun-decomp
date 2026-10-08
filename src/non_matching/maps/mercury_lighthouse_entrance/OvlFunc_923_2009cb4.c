@@ -1,7 +1,18 @@
-extern int Func_8000888(int, int);
+/* Return bits 16..47 of a signed 32-by-32 product. */
+static inline int MercuryEntrance_MultiplyFixed16(int a, int b)
+{
+    unsigned int aLow = (unsigned int)a & 0xffff;
+    unsigned int bLow = (unsigned int)b & 0xffff;
+    unsigned int aHigh = a >> 16;
+    unsigned int bHigh = b >> 16;
+
+    return (aLow * bLow >> 16) + aHigh * bLow + aLow * bHigh +
+        ((aHigh * bHigh) << 16);
+}
+
 extern int Func_80008ac(int, int);
 extern int __FastIntSqrtFP1616_RAM(int);
-extern int iwram_3001e40;
+extern unsigned int iwram_3001e40;
 
 int OvlFunc_923_2009cb4(void *arg0)
 {
@@ -41,7 +52,7 @@ int OvlFunc_923_2009cb4(void *arg0)
 
     dist <<= 16;
     if (dist < 0x80 << 15) {
-        dist = __FastIntSqrtFP1616_RAM(Func_8000888(diff_x, diff_x) + Func_8000888(diff_z, diff_z));
+        dist = __FastIntSqrtFP1616_RAM(MercuryEntrance_MultiplyFixed16(diff_x, diff_x) + MercuryEntrance_MultiplyFixed16(diff_z, diff_z));
     }
 
     speed = dist / 8;
@@ -55,8 +66,8 @@ int OvlFunc_923_2009cb4(void *arg0)
     } else {
         if (dist > speed) {
             fp_div = Func_80008ac;
-            diff_x = Func_8000888(fp_div(dist, diff_x), speed);
-            diff_z = Func_8000888(fp_div(dist, diff_z), speed);
+            diff_x = MercuryEntrance_MultiplyFixed16(fp_div(dist, diff_x), speed);
+            diff_z = MercuryEntrance_MultiplyFixed16(fp_div(dist, diff_z), speed);
         }
         *(int *)((char *)arg0 + 8) += diff_x;
         *(int *)((char *)arg0 + 0x10) += diff_z;

@@ -34,7 +34,24 @@ int OvlFunc_927_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200806c.s");
+extern unsigned char *iwram_3001ebc;
+
+void *OvlFunc_927_200806c(int *pos, void *unused)
+{
+    struct Actor **list;
+    struct Actor *actor;
+    unsigned int i;
+
+    list = (struct Actor **)(iwram_3001ebc + 0x14);
+    for (i = 8; i <= 0x41; i++) {
+        actor = list[i];
+        if (pos[0] >> 20 == actor->pos.x >> 20
+            && pos[1] / 0x10000 == actor->pos.y / 0x10000
+            && pos[2] >> 20 == actor->pos.z >> 20)
+            return actor;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20080c4.s");
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008244.s");
 
@@ -178,7 +195,7 @@ hit:
 
 extern unsigned char iwram_3001e70[];
 extern int L2ef8__a2[] __asm__(".Lm927_2ef8");
-extern void OvlFunc_927_2008244(int, int, int, int, int, int);
+extern int OvlFunc_927_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -492,7 +509,36 @@ void OvlFunc_927_200903c(void)
     OvlFunc_927_2008cd0(arr);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009078.s");
+void OvlFunc_927_2009078(void)
+{
+    struct Actor *actor;
+    unsigned int pos[3];
+    u8 saved;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    saved = actor->__unk55;
+    pos[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    pos[1] = actor->pos.y;
+    pos[2] = (actor->pos.z & 0xfff00000) + 0x280000;
+    if (OvlFunc_927_2008cd0(pos) != 0) {
+        __CutsceneStart();
+        actor->__unk55 = 0;
+        __MapActor_SetAnim(9, 7);
+        actor->pos.y += -0x10000;
+        actor->floorPos += -0x10000;
+        API_WaitFrames(2);
+        actor->pos.y += -0x10000;
+        actor->floorPos += -0x10000;
+        API_WaitFrames(10);
+        actor->pos.y += 0x10000;
+        actor->floorPos += 0x10000;
+        API_WaitFrames(4);
+        actor->pos.y += 0x10000;
+        actor->floorPos += 0x10000;
+        actor->__unk55 = saved;
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_927_200912c(void)
 {
@@ -635,7 +681,27 @@ void OvlFunc_927_2009420(void)
 }
 
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009454.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009520.s");
+void OvlFunc_927_2009520(void)
+{
+    struct Actor *actor;
+    int x;
+    int z;
+
+    __CutsceneStart();
+    x = ((struct Actor *)__MapActor_GetActor(11))->pos.x >> 20;
+    z = ((struct Actor *)__MapActor_GetActor(11))->pos.z >> 20;
+    OvlFunc_927_2008244(2, x, z, 1, 1, 0xff);
+    OvlFunc_927_2008244(2, x + 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x - 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z + 1, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z - 1, 1, 1, 0);
+    if (x == 0x24 && z == 0x18) {
+        actor = (struct Actor *)__MapActor_GetActor(11);
+        actor->__unk55 = 0;
+        actor->pos.y = actor->floorPos = -0x20000;
+    }
+    __CutsceneEnd();
+}
 #include "actor.h"
 
 void OvlFunc_927_20095d0(void)
@@ -771,8 +837,51 @@ void OvlFunc_927_2009ac8(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009b84.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009c34.s");
+void OvlFunc_927_2009b84(void)
+{
+    struct Actor *actor;
+    int x;
+    int z;
+
+    __CutsceneStart();
+    x = ((struct Actor *)__MapActor_GetActor(13))->pos.x;
+    z = ((struct Actor *)__MapActor_GetActor(13))->pos.z >> 20;
+    x >>= 20;
+    OvlFunc_927_2008244(2, x, z, 1, 1, 0xff);
+    OvlFunc_927_2008244(2, x + 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x - 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z + 1, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z - 1, 1, 1, 0);
+    if (x == 0x2d && z == 6) {
+        actor = (struct Actor *)__MapActor_GetActor(13);
+        actor->__unk55 = 0;
+        actor->pos.y = actor->floorPos = -0x20000;
+    }
+    __CutsceneEnd();
+}
+void OvlFunc_927_2009c34(void)
+{
+    struct Actor *actor;
+    int x;
+    int z;
+
+    __CutsceneStart();
+    x = ((struct Actor *)__MapActor_GetActor(0xe))->pos.x >> 20;
+    z = ((struct Actor *)__MapActor_GetActor(0xe))->pos.z >> 20;
+    OvlFunc_927_2008244(2, x, z, 1, 1, 0xff);
+    OvlFunc_927_2008244(2, x + 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x - 1, z, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z + 1, 1, 1, 0);
+    OvlFunc_927_2008244(2, x, z - 1, 1, 1, 0);
+    if (((struct Actor *)__MapActor_GetActor(0xe))->pos.z >> 20 == 0x1b) {
+        actor = (struct Actor *)__MapActor_GetActor(0xe);
+        actor->__unk55 = 0;
+        actor->pos.y = actor->floorPos = -0x20000;
+        __SetFlag(0x214);
+        OvlFunc_927_2008244(2, 0x2b, 0x17, 1, 1, 0xff);
+    }
+    __CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2009d04.s");
 
 void OvlFunc_927_2009de0(void) {
