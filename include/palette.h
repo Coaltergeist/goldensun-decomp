@@ -38,6 +38,7 @@ typedef struct {
 } PaletteBGR;
 
 typedef union {
+	u16 channels[PALETTE_COUNT * 2 * 3];
 	BGR colors[PALETTE_COUNT * 2];
 	PaletteBGR palettes[2];
 	struct {

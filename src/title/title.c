@@ -14,8 +14,25 @@ INCLUDE_ASM("asm/title/title/CamelotLogo.s");
 
 void Func_80f2eb8(void) {}
 
-INCLUDE_ASM("asm/title/title/Func_80f2ebc.s");
-extern void Func_80f2ebc(void* cur, void* target, void* delta, unsigned int frames);
+typedef int (*DivFn)(int, int);
+extern int divsi3_RAM(int, int);
+
+/* GCC calls r10 "sl"; the ROM provides its bx-r10 veneer as _call_via_r10. */
+__asm__(".set _call_via_sl, _call_via_r10");
+void Func_80f2ebc(u16* cur, u16* target, u16* delta, int frames)
+{
+	int i;
+
+	if (frames > 0) {
+		DivFn fn = divsi3_RAM;
+
+		for (i = sizeof(PaletteBGRData) / sizeof(u16) - 1; i >= 0; i--) {
+			s16 curSample = (s16)*cur++;
+
+			*delta++ = (u16)fn((s16)*target++ - curSample, frames);
+		}
+	}
+}
 
 typedef enum {
     PALFADE_ALL = 0,
@@ -94,13 +111,13 @@ void Func_80f3844(int arg0)
         *p = arg0;
 }
 
-void Func_80f3858(unsigned int frames)
+void Func_80f3858(int frames)
 {
     TitlePaletteState *p = GetPaletteFadeState();
     if (p != NULL) {
         p->rampFrames = frames;
         p->rampPos = 0;
-        Func_80f2ebc(&p->currentBGR, &p->targetBGR, &p->rampDelta, frames);
+        Func_80f2ebc(&p->currentBGR.channels[0], &p->targetBGR.channels[0], &p->rampDelta.channels[0], frames);
     }
 }
 
