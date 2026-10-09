@@ -82,6 +82,18 @@
     },
     "OvlFunc_946_2008244": {
       "id": "overlay:rom_7ced6c:02008244"
+    },
+    "OvlFunc_946_200a984": {
+      "id": "overlay:rom_7ced6c:0200a984"
+    },
+    "OvlFunc_946_200a4c8": {
+      "id": "overlay:rom_7ced6c:0200a4c8"
+    },
+    "OvlFunc_946_200834c": {
+      "id": "overlay:rom_7ced6c:0200834c"
+    },
+    "OvlFunc_946_200a848": {
+      "id": "overlay:rom_7ced6c:0200a848"
     }
   }
 }

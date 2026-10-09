@@ -423,7 +423,41 @@ int TolbiBoundShipDeck_MapInit(void)
     return 0;
 }
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009444.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2009684.s");
+extern unsigned char gScript_943__0200c4d8[];
+extern void __MapActor_SetBehavior(int, void *);
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+
+void OvlFunc_943_2009684(void)
+{
+    API_Func_8092b08(0x1b, 1);
+    API_Func_8092b08(0x17, 1);
+    API_Func_8092b08(0x16, 1);
+    API_Func_8092b08(0x1a, 1);
+    API_Func_8092b08(0x18, 1);
+
+    if (__GetFlag(0x920) != 0) {
+        API_MapActor_SetPos(0x16, 0xa20000, 0x29a0000);
+        ((struct Actor *)__MapActor_GetActor(0x16))->facing = 0x8000;
+        API_MapActor_SetPos(0x17, 0, 0);
+        API_MapActor_SetPos(0x14, 0, 0);
+    }
+
+    if (__GetFlag(0x922) != 0) {
+        API_MapActor_SetPos(0x15, 0x1080000, 0x2be0000);
+        ((struct Actor *)__MapActor_GetActor(0x15))->facing = 0x5000;
+        ((struct Actor *)__MapActor_GetActor(0x15))->waveCounter = _umodsi3_RAM(__Random0(), 90) + 60;
+        __MapActor_SetBehavior(0x15, gScript_943__0200c4d8);
+
+        API_MapActor_SetPos(0x18, 0xf80000, 0x2a80000);
+        ((struct Actor *)__MapActor_GetActor(0x18))->waveCounter = _umodsi3_RAM(__Random0(), 90) + 60;
+        __MapActor_SetBehavior(0x18, gScript_943__0200c4d8);
+
+        API_MapActor_SetPos(0x16, 0, 0);
+    } else if (__GetFlag(0x923) != 0) {
+        API_MapActor_SetPos(0x14, 0xf60000, 0x2000000);
+        ((struct Actor *)__MapActor_GetActor(0x14))->facing = 0;
+    }
+}
 extern void __MapActor_SetPos(int, int, int);
 void __Func_8092b08(int, int);
 
