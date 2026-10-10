@@ -20,9 +20,6 @@
     "OvlFunc_927_2009d04": {
       "id": "overlay:rom_7b4558:02009d04"
     },
-    "OvlFunc_927_200a1b0": {
-      "id": "overlay:rom_7b4558:0200a1b0"
-    },
     "OvlFunc_927_200ac0c": {
       "id": "overlay:rom_7b4558:0200ac0c"
     },
@@ -31,6 +28,12 @@
     },
     "OvlFunc_927_20099b8": {
       "id": "overlay:rom_7b4558:020099b8"
+    },
+    "OvlFunc_927_20088c0": {
+      "id": "overlay:rom_7b4558:020088c0"
+    },
+    "OvlFunc_927_200834c": {
+      "id": "overlay:rom_7b4558:0200834c"
     }
   }
 }
