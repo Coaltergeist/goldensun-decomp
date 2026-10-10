@@ -5807,8 +5807,8 @@
       ],
       "fuzzy_match_percent": 57.875,
       "name": "Func_800d304",
-      "object_sha256": "6bf2f4305006d5fb750f585b916c21a01a5a982f2971d8bcff3e3ea59cdda614",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "7c915ba8ece8edec432a19dcf5145949ccf538be78da5fee23ec9ee7f6c8b461",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 60
     },
@@ -5820,8 +5820,8 @@
       ],
       "fuzzy_match_percent": 92.0,
       "name": "ActorCmd_CallNative",
-      "object_sha256": "09d270efbda83020c6a7677ee2e6eb708f8d0a082a389394c89d4e1ba1230fa4",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "16c832ae9307891a5a65ca053bcd36e45f806f3c84beccc4f18784e5a0d57f39",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 52
     },
@@ -5833,8 +5833,8 @@
       ],
       "fuzzy_match_percent": 64.833336,
       "name": "ActorAttrOp_width",
-      "object_sha256": "5241e351a0661c42931a6c792bfcc0e6e645b5d13a30c1bbabec0a8aa71c542b",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "817ae40323b4cf158d28e91fc39464c313d227daf7c2fbff8bf52bb566bc4403",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 48
     },
@@ -5846,8 +5846,8 @@
       ],
       "fuzzy_match_percent": 67.1875,
       "name": "ActorAttrOp_waitTimer",
-      "object_sha256": "b4a02062aca2b13bae2cfbd99a1e85d9cd95459ff526ed31f6b36fd7b9ce5c1f",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "5fea79edd8966421b4cd50baf177a9fc7130df27fd1e9a4c47c99cc645bf9542",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 64
     },
@@ -5859,8 +5859,8 @@
       ],
       "fuzzy_match_percent": 59.53125,
       "name": "ActorAttrOp_unk64",
-      "object_sha256": "ac67b2baae92cc3acb340f134b3154c7041c1fd47fe351d015f8975af622dc34",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "a349eb5055e5ec6a34dd3f17a4f3549aee7e8eeec5d5ad4f407de5f40e33fef6",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 64
     },
@@ -5872,8 +5872,8 @@
       ],
       "fuzzy_match_percent": 67.1875,
       "name": "ActorAttrOp_unk66",
-      "object_sha256": "bc2c11c772012a295f6c6fa86e1495650c78ac77be1c6a4d6bd7432608e6a99e",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "7f961f4992b4efc30b1414348c475d85098be200546bdbc32b4589855ccba393",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 64
     },
@@ -5885,8 +5885,8 @@
       ],
       "fuzzy_match_percent": 68.28571,
       "name": "ActorCmd_SetAttr",
-      "object_sha256": "c72e9ab4cd1c9840b32e9dde77e22861a113070c4cc227f15d3a64c32d033345",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "e5a6ecd1206068a2bb12c3c016acb5a92ec814909ea01063beeeb726258d4560",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 60
     },
@@ -5898,8 +5898,8 @@
       ],
       "fuzzy_match_percent": 68.28571,
       "name": "ActorCmd_IncAttr",
-      "object_sha256": "b11b9afea545fabda92629d12c2debbc6abf6e1cd5d034892bec551305fc50d9",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "4e22970d650cbc9ea7326d33c902bd807a764934bff27ada3ca7909a928ea851",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 60
     },
@@ -5911,8 +5911,8 @@
       ],
       "fuzzy_match_percent": 68.28571,
       "name": "ActorCmd_CmpAttr",
-      "object_sha256": "2e6b379cecf29786fade8531950472bccf63406efe9bd25983d2fb3122f42916",
-      "reference_sha256": "6e949df654a9128258d034691bc8dfd188320042f602f8c7fdf34732e2fb2972",
+      "object_sha256": "ffec7354c881a358bf0307b7cccce8388e212d3c7e5e0511a96e5662e14e78e7",
+      "reference_sha256": "d21a491c0f216c89234f3cbf3d1afba04674386ce44a5c464e2679ff971a693a",
       "source": "src/field_engine/actor/actor_script.c",
       "target_size": 60
     },
@@ -7751,7 +7751,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "216cc1a15049f11a3ed367f92fe6d362d17664a14c65d1fa51a7e4e0e4a7598c",
+  "progress_sha256": "7ca7a1fbd92e7003f0e58e4dbccdcdb5fcc76e870965f3f56ae95a5f4cf02828",
   "schema": 1,
   "scorer": {
     "config": [
