@@ -56,7 +56,30 @@ void Actor_WaitMovement(void *actor)
     }
 }
 
-INCLUDE_ASM("asm/field_engine/actor/actor_script/Actor_IsNotMoving.s");
+int Actor_IsNotMoving(void *arg0)
+{
+    unsigned char *actor = (unsigned char *)arg0;
+    unsigned int value1;
+    unsigned int value2;
+
+    if (*(actor + 0x55) == 0) {
+        value1 = *(unsigned int *)(actor + 0x38);
+        value2 = 0x80000000;
+        if (value1 != value2) {
+            return 0;
+        }
+        value2 = *(unsigned int *)(actor + 0x3c);
+    } else {
+        value2 = *(unsigned int *)(actor + 0x38);
+        value1 = 0x80000000;
+    }
+
+    if (value2 == value1 && *(unsigned int *)(actor + 0x40) == value2) {
+        return 1;
+    }
+
+    return 0;
+}
 
 INCLUDE_ASM("asm/field_engine/actor/actor_script/UpdateActors.s");
 
