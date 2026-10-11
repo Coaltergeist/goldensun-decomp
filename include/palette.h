@@ -11,15 +11,17 @@ typedef union {
 	palette16x16_t palette16x16;
 } palette_t;
 
-#define PALETTE_BG *(palette256_t*)0x05000000
-#define PALETTE_OBJ *(palette256_t*)0x05000200
+#define PALETTE_BG_ADDR 0x05000000
+#define PALETTE_OBJ_ADDR 0x05000200
+#define PALETTE_BG *(palette256_t*)PALETTE_BG_ADDR
+#define PALETTE_OBJ *(palette256_t*)PALETTE_OBJ_ADDR
 #define PALETTE_SIZE 0x200
 #define PALETTE_COUNT (PALETTE_SIZE / sizeof(color_t))
 
 #define SET_PALETTE(id, value) \
 do { \
     u32 _value = value; \
-    *((vu16*)(0x05000000) + id) = _value; \
+    *((vu16*)(PALETTE_BG_ADDR) + id) = _value; \
 } while (0)
 
 

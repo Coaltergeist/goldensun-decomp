@@ -171,10 +171,12 @@ static inline void ScheduleDmaTransfer_Standard(void* dest, const void* src, u32
 #define DMATASK_TYPE_BYTE 0x1
 #define DMATASK_TYPE_HWORD 0x2 // 2byte
 #define DMATASK_TYPE_WORD 0x3 // 4byte
-#define DMATASK_OP_SET (0x1 << 18)
-#define DMATASK_OP_CLR (0x1 << 19)
+#define DMATASK_OP_ASSIGN (0x0 << 18) // a = b 
+#define DMATASK_OP_SET (0x1 << 18) // a = a | b 
+#define DMATASK_OP_CLR (0x2 << 18) // a = a & ~b 
 // use control as DMA3CNT (bit 20-16 unused)
-#define MAKE_DMATASK_DMA(dma3_ctrl, dma3_wordcnt) ((dma3_ctrl << 16) | dma3_wordcnt)
-#define MAKE_DMATASK_REG(type, op) ((type << 16) | (op & 0xFFFF))
+#define MAKE_DMATASK_DMA(dma3_ctrl, dma3_wordcnt) (((dma3_ctrl) << 16) | (dma3_wordcnt))
+// use 20-16 bit, opcode in 19-18 bit, type in 17-16 bit
+#define MAKE_DMATASK_REG(op, type) ((op) | ((type) << 16))
 
 #endif // _DMA_H_

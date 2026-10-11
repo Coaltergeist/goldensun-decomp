@@ -70,6 +70,7 @@
 #include "gba/io.h"
 #include "dma.h"
 #include "palette.h"
+#include "title.h"
 
 extern const u16 gBGRCurve1[] __asm__(".Lf39ee");
 extern const u16 gBGRCurve2[] __asm__(".Lf3a2e");
