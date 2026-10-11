@@ -472,7 +472,51 @@ void OvlFunc_936_2009ed8(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009f14.s");
+extern unsigned char gScript_936__0200bec0[];
+extern unsigned char gScript_936__0200bfb0[];
+
+void OvlFunc_936_2009f14(void)
+{
+    extern void __MapActor_SetBehavior(int, void *);
+
+    switch (Lm936_5144) {
+    case 0:
+        ((struct Actor *)__MapActor_GetActor(0x15))->waveCounter = 0;
+        __MapActor_SetBehavior(0x15, gScript_936__0200bec0);
+        Lm936_5144++;
+        break;
+
+    case 1:
+        if (((struct Actor *)__MapActor_GetActor(0x15))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x14))->waveCounter = 0;
+            __MapActor_SetBehavior(0x14, gScript_936__0200bfb0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 2:
+        if (((struct Actor *)__MapActor_GetActor(0x14))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x14))->waveCounter = 0;
+            __MapActor_SetBehavior(0x14, gScript_936__0200bec0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 3:
+        if (((struct Actor *)__MapActor_GetActor(0x14))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x15))->waveCounter = 0;
+            __MapActor_SetBehavior(0x15, gScript_936__0200bfb0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 4:
+        if (((struct Actor *)__MapActor_GetActor(0x15))->waveCounter != 0) {
+            Lm936_5144 = 0;
+        }
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a008.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a6c0.s");
 
@@ -639,7 +683,38 @@ void OvlFunc_936_200b2a4(void)
     }
 }
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b768.s");
+extern unsigned int iwram_3001e40;
+extern void __Func_8091ff0(int);
+extern void OvlFunc_936_200b864(int, int, int);
+
+void OvlFunc_936_200b768(void)
+{
+    struct Actor *actor8;
+    struct Actor *actor9;
+
+    actor8 = (struct Actor *)__MapActor_GetActor(8);
+    actor9 = (struct Actor *)__MapActor_GetActor(9);
+
+    if ((u32)(*(short *)((char *)actor8 + 0xa) - 0x17d) <= 12 && *(short *)((char *)actor8 + 0x12) > 0x309) {
+        actor8->sprite->oam.priority = ((struct Actor *)__MapActor_GetActor(0))->sprite->oam.priority;
+    } else if (!API_GetFlag(0x302) && *(short *)((char *)actor8 + 0xa) <= 0xf5 && !(iwram_3001e40 & 1)) {
+        if (!API_GetFlag(0x202)) {
+            __Func_8091ff0(-1);
+            API_PlaySound(0xe6);
+            API_SetFlag(0x202);
+        }
+        OvlFunc_936_200b864(actor8->pos.x, actor8->pos.y, actor8->pos.z);
+    }
+
+    if (!API_GetFlag(0x303) && *(short *)((char *)actor9 + 0xa) <= 0x2c5 && !(iwram_3001e40 & 1)) {
+        if (!API_GetFlag(0x203)) {
+            __Func_8091ff0(-1);
+            API_PlaySound(0xe6);
+            API_SetFlag(0x203);
+        }
+        OvlFunc_936_200b864(actor9->pos.x, actor9->pos.y, actor9->pos.z);
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b864.s");
 
 void OvlFunc_936_200b90c(void)

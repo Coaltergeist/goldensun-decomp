@@ -22,7 +22,8 @@ void OvlFunc_960_2008464(int arg0)
     actorId = *(int *)((char *)&gState + off);
     actor = __MapActor_GetActor(actorId);
     target = __MapActor_GetActor(arg0);
-    flag = __GetFlag(0x20f);
+    off = 0x20f;
+    flag = __GetFlag(off);
     if (flag == 0) {
         __CutsceneStart();
         __MapActor_Surprise(actorId, 0x101);
@@ -33,17 +34,21 @@ void OvlFunc_960_2008464(int arg0)
         }
         __MapActor_WaitMovement(actorId);
         __PlaySound(0xf4);
-        __StartTask(OvlFunc_960_2008400, 0xc8 << 4);
+        off = 0xc8 << 4;
+        __StartTask(OvlFunc_960_2008400, off);
         actor[0x55] = flag;
         __Actor_TravelTo(actor, *(int *)(actor + 8), *(int *)(actor + 0xc) + (0x80 << 14), *(int *)(actor + 0x10));
         __MapActor_WaitMovement(actorId);
         *(int *)(actor + 0x28) = flag;
-        actor[0x55] = 4;
         off = 0xf9 << 1;
+        actor[0x55] = 4;
         *(unsigned char *)((char *)&gState + off) = 2;
-        __SetFlag(0x20f);
-        __SetFlagByte(0x86 << 2, arg0);
-        __SetFlagByte(0x84 << 2, 0xb4);
+        off = 0x20f;
+        __SetFlag(off);
+        off = 0x86 << 2;
+        __SetFlagByte(off, arg0);
+        off = 0x84 << 2;
+        __SetFlagByte(off, 0xb4);
         __CutsceneEnd();
         off = 0xbe << 1;
         *(unsigned short *)(iwram_3001ebc + off) = flag;

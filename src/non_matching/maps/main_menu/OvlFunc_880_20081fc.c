@@ -18,7 +18,7 @@ void OvlFunc_880_20081fc(void) {
                 D_020096ba = 0;
             }
         } else if (gKeyHeld != 0) {
-            if (gKeyHeld == D_020094d4[D_020096b6]) {
+            if (D_020094d4[D_020096b6] == gKeyHeld) {
                 D_020096b6++;
                 D_020096ba = 1;
                 if (D_020094d4[D_020096b6] == 0) {
@@ -37,7 +37,7 @@ void OvlFunc_880_20081fc(void) {
                 D_020096bc = 0;
             }
         } else if (gKeyHeld != 0) {
-            if (gKeyHeld == D_020094dc[gScript_930__020096b8]) {
+            if (D_020094dc[gScript_930__020096b8] == gKeyHeld) {
                 gScript_930__020096b8++;
                 D_020096bc = 1;
                 if (D_020094dc[gScript_930__020096b8] == 0) {

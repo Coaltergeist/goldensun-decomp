@@ -4,7 +4,7 @@ extern void OvlFunc_968_200896c(void);
 extern void OvlFunc_968_2008118(fx32, fx32, fx32, int, int, int, int, void *);
 extern int _divsi3_RAM(int, int);
 
-void OvlFunc_968_2008b08(int actorId)
+void OvlFunc_968_2008b08(unsigned int actorId)
 {
     struct Actor *actor;
     int vec[3];

@@ -68,7 +68,30 @@ void OvlFunc_945_20080d8(unsigned char *p)
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008284.s");
+void OvlFunc_945_2008284(struct Actor *actor)
+{
+    extern int __MapActor_GetActor(int);
+    extern void __Actor_SetAnim(struct Actor *, int);
+    struct Actor *other;
+
+    other = (struct Actor *)__MapActor_GetActor(9);
+    if (actor->stop != 0)
+        return;
+
+    if (other->__unk63 == 1) {
+        actor->facing = 0xd000;
+        actor->__unk62 = 1;
+        other->__unk63 = 0;
+    } else if (other->__unk63 == 2) {
+        if (actor->__unk62 != 0)
+            __Actor_SetAnim(actor, 3);
+        actor->__unk62 = 0;
+        other->__unk63 = 0;
+    } else if (other->__unk63 == 3) {
+        actor->facing = 0;
+        other->__unk63 = 0;
+    }
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.s");
 unsigned int *TolbiBoundShipHull_GetEntrances(void)
 {
@@ -1896,7 +1919,29 @@ void OvlFunc_945_200dca4(void) {
 }
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dd10.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e110.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200e3ac.s");
+void OvlFunc_945_200e3ac(unsigned int base1, unsigned int base2)
+{
+    unsigned int i;
+    unsigned int n1;
+    unsigned int n2;
+
+    n1 = 0;
+    n2 = 0;
+    for (i = 0; i <= 8; n1++, i++) {
+        if (API_GetFlag(base1 + i)) {
+            API_ClearFlag(base1 + i);
+            break;
+        }
+    }
+    for (i = 0; i <= 8; n2++, i++) {
+        if (API_GetFlag(base2 + i)) {
+            API_ClearFlag(base2 + i);
+            break;
+        }
+    }
+    API_SetFlag(base2 + n1);
+    API_SetFlag(base1 + n2);
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/tolbi_bound_ship_hull_data.s");
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/imports.s");

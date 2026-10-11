@@ -97,7 +97,46 @@ void OvlFunc_897_2009084(void)
 }
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_20090c4.s");
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200935c.s");
+extern int __Random(void);
+
+void OvlFunc_897_200935c(void)
+{
+    unsigned int *p;
+
+    if (*(unsigned int *)L3b70 != 0) {
+        (*(unsigned int *)L3b70)--;
+        return;
+    }
+
+    if (*(unsigned int *)L3b6c != 0) {
+        (*(unsigned int *)L3b6c)--;
+    } else {
+        *(unsigned int *)L3b6c = (unsigned int)(__Random() * 4) >> 16;
+    }
+
+    switch (*(unsigned int *)L3b6c) {
+    case 3:
+        *(unsigned int *)L3b68 = 3;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 20) >> 16) + 0x28;
+        break;
+    case 2:
+        *(unsigned int *)L3b68 = 0xf;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 40) >> 16) + 0x50;
+        break;
+    case 1:
+        *(unsigned int *)L3b68 = 0x3f;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 80) >> 16) + 0xa0;
+        break;
+    default:
+        *(unsigned int *)L3b68 = 0x7f;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 160) >> 16) + 0x140;
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2009410.s");
 
 void OvlFunc_897_200a820(unsigned int arg0)

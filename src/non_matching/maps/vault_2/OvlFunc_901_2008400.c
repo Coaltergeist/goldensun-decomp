@@ -1,6 +1,6 @@
 extern unsigned char *iwram_3001e8c[];
 extern void *__MapActor_GetActor(unsigned int);
-extern int OvlFunc_901_2008350(struct Actor *, void *, int, int);
+extern int OvlFunc_901_2008350(struct Actor *, struct Actor *, int, int);
 
 int OvlFunc_901_2008400(struct Actor *actor)
 {

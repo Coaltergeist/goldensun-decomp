@@ -6,7 +6,33 @@
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008030.s");
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+extern unsigned int __Random0(void) __asm__("__Random");
+
+unsigned int OvlFunc_943_2008030(struct Actor *actor)
+{
+    switch (actor->waveCounter) {
+    case 6:
+        actor->scale.x += -0x4000;
+        actor->scale.y += 0x2000;
+        break;
+    case 4:
+        actor->scale.x += 0x2000;
+        actor->scale.y += -0x1000;
+        break;
+    case 2:
+        actor->scale.x += 0x1000;
+        actor->scale.y += -0x800;
+        break;
+    case 0:
+        actor->scale.x = 0x10000;
+        actor->scale.y = 0x10000;
+        actor->waveCounter = _umodsi3_RAM(__Random0(), 90) + 60;
+        break;
+    }
+    actor->waveCounter--;
+    return 1;
+}
 
 extern int bytes(int);
 
@@ -780,7 +806,43 @@ unsigned int OvlFunc_943_200b150(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b1a8.s");
+extern unsigned char iwram_3001e70[];
+extern int __cos(int);
+extern int __sin(int);
+extern int Lm943_5b58 __asm__(".Lm943_5b58");
+extern int Lm943_5b38 __asm__(".Lm943_5b38");
+extern int Lm943_5b50[2] __asm__(".Lm943_5b50");
+extern int Lm943_5b60[2] __asm__(".Lm943_5b60");
+
+void OvlFunc_943_200b1a8(void)
+{
+    char *base = *(char **)iwram_3001e70;
+    int *pos = *(int **)base;
+    int c = __cos(Lm943_5b58);
+    int s = __sin(Lm943_5b38);
+    struct Actor *actor;
+
+    *pos++ += c >> 1;
+    *pos += s;
+
+    Lm943_5b58 += (__Random0() * 0x180) >> 16;
+    Lm943_5b38 += (__Random0() << 9) >> 16;
+    Lm943_5b58 &= 0xffff;
+    Lm943_5b38 &= 0xffff;
+
+    actor = (struct Actor *)(base + 0x104);
+    actor->pos.x = Lm943_5b50[0];
+    Lm943_5b50[0] -= Lm943_5b60[0];
+    if (Lm943_5b50[0] < 0)
+        Lm943_5b50[0] += 0x200000;
+    if (Lm943_5b50[0] > 0x200000)
+        Lm943_5b50[0] -= 0x200000;
+
+    actor->pos.y = Lm943_5b50[1];
+    Lm943_5b50[1] -= Lm943_5b60[1];
+    if (Lm943_5b50[1] < 0)
+        Lm943_5b50[1] += 0x200000;
+}
 
 void OvlFunc_943_200b284(void) {
     extern void OvlFunc_943_200b380(int);

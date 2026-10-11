@@ -25,12 +25,12 @@ int OvlFunc_968_200c968(struct Actor *actor)
     sp10.unk18 = 0x8f << 1;
     sp10.unk1c = Lm968_52cc;
 
-    flag = *(unsigned int *)iwram_3001e40 & 3;
+    flag = *(vu32 *)iwram_3001e40 & 3;
     if (flag != 0) {
         return 0;
     }
 
-    if ((*(unsigned int *)iwram_3001e40 & 7) == 0) {
+    if ((*(vu32 *)iwram_3001e40 & 7) == 0) {
         API_PlaySound(0xf6);
     }
 

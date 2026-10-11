@@ -2,13 +2,13 @@ extern int iwram_3001ebc;
 
 void *OvlFunc_914_200806c(int *pos, void *unused)
 {
+    int x;
     int **objs;
     int *obj;
     unsigned int i;
-    int x;
 
-    objs = (int **)((char *)iwram_3001ebc + 0x34);
     x = pos[0] >> 20;
+    objs = (int **)((char *)iwram_3001ebc + 0x34);
     for (i = 8; i <= 0x41; i++) {
         obj = *objs++;
         if (x == (obj[2] >> 20)
