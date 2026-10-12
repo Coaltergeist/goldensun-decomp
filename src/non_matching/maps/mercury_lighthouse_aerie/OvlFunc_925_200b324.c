@@ -1,4 +1,4 @@
-extern void OvlFunc_925_200b1c0(int *, int);
+extern void OvlFunc_925_200b1c0(unsigned int *, unsigned int);
 
 void OvlFunc_925_200b324(void)
 {

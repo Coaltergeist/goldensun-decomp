@@ -1,9 +1,13 @@
+/* main.c -- consolidated TU. */
 #include "nonmatching.h"
 
 #include "gba/types.h"
 #include "gba/io.h"
 #include "dma.h"
 #include "interrupt.h"
+
+/* 32-bit view of the queue's count and padding, cleared together. */
+extern s32 gDMAQueueHeader __asm__("gDMATaskCount");
 
 extern void WaitFrames();
 extern void InitRAMLib();
@@ -20,7 +24,6 @@ extern void _GameStart(int a1);
 extern void _InitSoundEngine(void);
 extern void VBlank(void);
 
-extern s32 gDMATaskCount;
 extern s8 iwram_3001ac4;
 extern s8 iwram_3001ca0;
 extern s8 iwram_3001d18;
@@ -35,7 +38,7 @@ void AgbMain(void) {
     DMA3_CLEAR((void*)0x03000000, 0x1E000 / 4);
     ClearHeap();
     InitRAMLib();
-    gDMATaskCount = 0;
+    gDMAQueueHeader = 0;
     iwram_3001ac4 = 0;
     gDebugMode = 0;
     iwram_3001f58 = 0;

@@ -6,7 +6,6 @@ extern void *Menu_GetActor(int) __asm__("__MapActor_GetActor");
 extern unsigned char iwram_3001ad0[];
 extern unsigned char gBuffer[];
 extern unsigned char *iwram_3001e70;
-extern unsigned char gState[];
 
 typedef struct {
     const void *src;
@@ -63,6 +62,6 @@ void OvlFunc_880_2008054(void) {
 
     *(unsigned short *)(iwram_3001e70 + 0x14) = 0x1400;
 
-    actor = (unsigned char *)Menu_GetActor(*(int *)(gState + 0x1F4));
+    actor = (unsigned char *)Menu_GetActor(*(int *)((unsigned char *)&gState + 0x1F4));
     actor[0x55] = 0;
 }

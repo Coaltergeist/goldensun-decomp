@@ -1,7 +1,7 @@
 void OvlFunc_946_20092b4(void)
 {
     extern void __Actor_SetSpriteFlags(void *, int);
-    extern void OvlFunc_946_2008e00(int);
+    extern void OvlFunc_946_2008e00(unsigned int);
     struct Actor *actor;
     int x;
     unsigned int r2;

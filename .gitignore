@@ -1,4 +1,4 @@
-# All generated production/host output
+# All generated production/host output and candidate build caches
 /build/
 
 # ROMs and user-installed toolchains
@@ -11,6 +11,8 @@ tools/asm-differ/
 # Immutable comparison references and verification evidence
 expected/
 .diff-baselines/
+.progress/
+/report.json
 
 # decomp-permuter scratch
 nonmatchings/
@@ -20,6 +22,9 @@ debug_compiled_object.o
 # Python, editors and local command transcripts
 __pycache__/
 *.pyc
+
+# Editor / OS
+.vs/
 .vscode/
 .idea/
 *.swp

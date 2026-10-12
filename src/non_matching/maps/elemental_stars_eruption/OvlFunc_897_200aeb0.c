@@ -2,7 +2,7 @@ extern unsigned char *iwram_3001f30;
 extern unsigned short gSpriteSlots[][2];
 extern void __Sprite_SetAnim(void *, int);
 extern void __Func_8003f3c(int);
-extern void OvlFunc_897_200ae5c(void);
+extern void OvlFunc_897_200ae5c(unsigned char *);
 
 void OvlFunc_897_200aeb0(unsigned int arg0)
 {

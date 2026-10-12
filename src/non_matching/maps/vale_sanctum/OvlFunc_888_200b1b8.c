@@ -1,6 +1,6 @@
 extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
 extern u32 __Random(void);
-extern void *__CreateActor(int, int, int, int);
+extern struct Actor *__CreateActor(int, int, int, int);
 extern void OvlFunc_888_200b144(struct Actor *);
 
 void OvlFunc_888_200b1b8(int arg0)
