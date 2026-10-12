@@ -75,37 +75,26 @@ $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 
 
-# Compile target C with the patched gcc-2.96 build from the camelot-gcc
-# repository (install via camelot-gcc/install.sh). Produces byte-identical
-# output for the reconstructed sources (see INSTALL.md).
-# Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
-# Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
-# NOT needed under gcc-2.96; the compiler naturally avoids r7 for the same
-# allocation patterns Camelot did. Trailing .align 2, 0 is required because
-# gcc emits .align with zero-fill BETWEEN functions (via the elf.h patch)
-# but NOT AFTER the last function in a TU, so the assembler's default
-# Thumb-nop fill leaks in without this explicit append.
+# Game C uses patched GCC 2.96 from camelot-gcc (see INSTALL.md):
+# xgcc -S, then an appended `.align 2, 0`, then as. GCC zero-fills alignment
+# between functions but not after the last one in a file, where the assembler
+# would otherwise pad with Thumb NOPs. -fcall-used-r4 matches Camelot's
+# register usage.
 GCC296_DIR     ?= tools/gcc296
 GCC296_CC      := $(GCC296_DIR)/xgcc
-# -fno-strict-aliasing is the gcc-2.96 default. goma_cave's
-# OvlFunc_906_20084f4 reproduces the ROM only with type-based alias analysis off,
-# and the flag is byte-compatible across the rest of the C codebase: the full ROM
-# builds byte-exact under it. Gaia has a documented reconstruction exception.
+# Type-based alias analysis is off for all C except Gaia (below).
 GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
                   -fno-builtin -nostdinc -ffreestanding \
                   -fcall-used-r4 -Iinclude -fno-strict-aliasing
 
-# Gaia's cleaned reconstruction needs type-based alias analysis for its final
-# scale-store schedule. This is a matching exception, not evidence of Camelot's
-# original flags. Keep other animation TUs on the project default.
+# Gaia's reconstruction needs type-based alias analysis to match. This is a
+# matching exception, not evidence of Camelot's original flags.
 GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
 $(OBJ)/src/battle_anim/moves/gaia.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
 
-# The common2 shared object was compiled WITHOUT -mthumb-interwork in the original
-# ROM: its common2_c* functions return `pop {pc}` (the non-interwork epilogue),
-# unique in the corpus; every other TU returns `bx`-form. The rest of the
-# consolidated TU (common2_b) is interwork-INSENSITIVE (byte-identical either way,
-# verified), so the whole common2.c compiles non-interwork.
+# common2 is built without -mthumb-interwork: its common2_c* functions return
+# with `pop {pc}`, unlike every other file. Its remaining code is the same
+# either way.
 COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
 $(OBJ)/src/maps/common/common2.o: private GCC296_CFLAGS := $(COMMON2_CFLAGS)
 
@@ -119,11 +108,9 @@ $(OBJ)/%.o: %.c $(STAMPS)/gcc296.stamp $(STAMPS)/binutils.stamp | $(OVERLAY_ORIG
 	$(AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
 	@python3 tools/build_deps.py phony $(@:.o=.d)
 
-# src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
-# old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
-# sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
-# s8 (its ROM loads are signed) without touching the rest of the unsigned-char
-# corpus. See INSTALL.md for compiler setup.
+# The m4a ("Sappy") sound engine is Nintendo library code built with old_agbcc,
+# as in sa2. M4A_SIGNED_CHAR gives it a signed s8, matching its signed loads,
+# without changing char signedness elsewhere.
 AGBCC_DIR     ?= tools/agbcc
 AGBCC_CC      := $(AGBCC_DIR)/bin/old_agbcc
 M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
@@ -132,10 +119,9 @@ M4A_OBJS      := $(OBJ)/src/lib/m4a/m4a.o
 $(M4A_OBJS): private SDK_CPPFLAGS := $(M4A_CPPFLAGS)
 $(M4A_OBJS): private SDK_CC1FLAGS := $(M4A_CC1FLAGS)
 
-# src/lib/agb_flash/ is the launch-SDK "Flash v123" save library. Like m4a it is a
-# prebuilt Nintendo lib (old_agbcc, stock r4-callee-save ABI); but -O not -O2, and
-# unsigned char (no M4A_SIGNED_CHAR). The lone gcc-2.96 holdout agb_flash_verify.c
-# (VerifyEraseSector) rides the default gcc-2.96 rule instead.
+# The "Flash v123" save library is also old_agbcc library code, built at -O with
+# unsigned char. agb_flash_verify.c is the exception and uses the default
+# GCC 2.96 rule.
 AGBFLASH_CPPFLAGS := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1
 AGBFLASH_CC1FLAGS := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O
 FLASH_OBJS := $(addprefix $(OBJ)/src/lib/agb_flash/,agb_flash.o agb_flash_mx.o agb_flash_at.o)
@@ -182,8 +168,8 @@ $(OBJ)/generated/strings/strings.o: $(STRINGS)/strings.s $(STAMPS)/binutils.stam
 	@python3 tools/build_deps.py phony $(@:.o=.d)
 
 
-# We need the uncompressed overlays for incbin statements in overlay
-# sources. They're also convenient for comparing our build outputs.
+# Original overlays, extracted from the ROM: overlay data .incbin's them, and
+# compare-overlays checks the built overlays against them.
 $(BUILD)/reference/overlays/rom_%/orig.bin: baserom.gba $(HOST)/unpack_overlay
 	@mkdir -p $(@D)
 	$(HOST)/unpack_overlay -r $< -a 0x$* -o $@
@@ -224,8 +210,7 @@ $(STAMPS)/host.stamp: FORCE
 clean:
 	rm -rf build
 
-# Builds ctags using custom parsing on top of asm.
-# Ensure https://github.com/universal-ctags/ctags is installed to use.
+# Requires universal-ctags (https://github.com/universal-ctags/ctags).
 tags:
 	@mkdir -p $(BUILD)
 	ctags -R -f $(BUILD)/tags --options=.opts.ctags --exclude=build .

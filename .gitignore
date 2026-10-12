@@ -11,7 +11,6 @@ tools/asm-differ/
 # Immutable comparison references and verification evidence
 expected/
 .diff-baselines/
-/report.json
 
 # decomp-permuter scratch
 nonmatchings/
