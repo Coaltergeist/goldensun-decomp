@@ -1,5 +1,5 @@
 extern void OvlFunc_common0_70(int, int, int, int);
-extern void OvlFunc_901_2008400(void);
+extern int OvlFunc_901_2008400(struct Actor *);
 extern unsigned char gState[];
 
 int Vault2_MapInit(void) {

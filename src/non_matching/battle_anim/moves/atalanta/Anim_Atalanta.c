@@ -43,18 +43,6 @@ extern char _FILE_73[];
 
 extern char _FILE_b4[];
 
-typedef unsigned char  u8;
-
-typedef unsigned short u16;
-
-typedef unsigned int   u32;
-
-typedef signed char    s8;
-
-typedef signed short   s16;
-
-typedef signed int     s32;
-
 typedef u8  byte;
 
 typedef struct { s32 x, y, z; } vec3;
@@ -216,8 +204,8 @@ void Anim_Atalanta(AnimContext *context)
     AnimStart(0x2000);
     REG_BG2PA = 0x100;
     Func_80c9048();
-    PALETTE_BG[0] = 0;
-    PALETTE_BG[1] = 0;
+    ((u16 *)PALETTE_BG_ADDR)[0] = 0;
+    ((u16 *)PALETTE_BG_ADDR)[1] = 0;
     STATE_BLITMODE(state) = 0;
     StartTask(Task_BlitAnim, 0x480);
     AnimTransitionOut(0, 0);

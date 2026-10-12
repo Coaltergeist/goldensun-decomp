@@ -13,7 +13,7 @@ void OvlFunc_880_2008154(void) {
     *(volatile unsigned short *)0x04000208 = 0x04000208;
     if (gDMATaskCount.count <= 31) {
         idx = gDMATaskCount.count++;
-        gDMATaskCount.tasks[idx].value = 0x2e51;
+        gDMATaskCount.tasks[idx].src = 0x2e51;
         gDMATaskCount.tasks[idx].dest = 0x04000050;
         gDMATaskCount.tasks[idx].control = 0x80 << 10;
     }
@@ -23,7 +23,7 @@ void OvlFunc_880_2008154(void) {
     *(volatile unsigned short *)0x04000208 = 0x04000208;
     if (gDMATaskCount.count <= 31) {
         idx = gDMATaskCount.count++;
-        gDMATaskCount.tasks[idx].value = ((16 - step) << 8) | step;
+        gDMATaskCount.tasks[idx].src = ((16 - step) << 8) | step;
         gDMATaskCount.tasks[idx].dest = 0x04000052;
         gDMATaskCount.tasks[idx].control = 0x80 << 10;
     }

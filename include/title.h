@@ -3,6 +3,7 @@
 
 #include "gba/types.h"
 #include "gba/io.h"
+#include "palette.h"
 
 /* ===========================================================================
  * Title-screen and boot-logo vocabulary.

@@ -9,7 +9,10 @@
       ]
     },
     "OvlFunc_921_200954c": {
-      "id": "overlay:rom_7a7298:0200954c"
+      "id": "overlay:rom_7a7298:0200954c",
+      "context": [
+        "context.h"
+      ]
     },
     "OvlFunc_921_2008f90": {
       "id": "overlay:rom_7a7298:02008f90"
@@ -45,7 +48,10 @@
       "id": "overlay:rom_7a7298:020080d8"
     },
     "OvlFunc_921_20095b4": {
-      "id": "overlay:rom_7a7298:020095b4"
+      "id": "overlay:rom_7a7298:020095b4",
+      "context": [
+        "context.h"
+      ]
     },
     "OvlFunc_921_2008384": {
       "id": "overlay:rom_7a7298:02008384"

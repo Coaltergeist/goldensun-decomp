@@ -13,7 +13,7 @@ void OvlFunc_921_2008384(void)
     extern void __MapActor_Emote(int, int, int);
     extern void __Func_809259c(int, int);
     extern void __ActorMessage_Wait(int, int, int);
-    extern void __MapActor_SetSpeed(int, int, int);
+    extern void __MapActor_SetSpeed(unsigned int, int, int);
     extern void __MapActor_RunScript(int, void *);
     extern void __MapActor_Jump(int, int, int);
     extern int __SetFlag(int);

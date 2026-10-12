@@ -1,4 +1,4 @@
-void OvlFunc_925_200b1c0(int *, int);
+void OvlFunc_925_200b1c0(unsigned int *, unsigned int);
 
 void OvlFunc_925_200b208(void)
 {

@@ -243,7 +243,7 @@ loop:
                 }
             }
             {
-                struct DmaQueue *queue = &gDMATaskCount;
+                DmaQueue *queue = &gDMATaskCount;
                 volatile unsigned short *ime = (volatile unsigned short *)0x04000208;
                 unsigned int savedIme = *ime;
                 *ime = (unsigned int)0x04000208;

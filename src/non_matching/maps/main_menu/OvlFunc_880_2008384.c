@@ -1,7 +1,4 @@
 extern int __GetFlag(int);
-#include "state/global_state.h"
-
-extern GlobalState gState;
 
 unsigned int OvlFunc_880_2008384(void)
 {
@@ -10,11 +7,11 @@ unsigned int OvlFunc_880_2008384(void)
 
     result = 0;
     if (__GetFlag(0x144)) {
-        a = *(short *)((char *)&gState + 0x23e);
+        a = *(short *)((unsigned char *)&gState + 0x23e);
         if (a == 2) {
             result = 0;
         } else {
-            short b = *(short *)((char *)&gState + 0x1c0);
+            short b = *(short *)((unsigned char *)&gState + 0x1c0);
             result = -(unsigned int)((b ^ 2) != 0);
         }
     }

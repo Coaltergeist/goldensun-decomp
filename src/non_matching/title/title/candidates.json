@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "source": "src/title/title.c",
+  "functions": {
+    "Func_80f2f10": {
+      "id": "rom:080f2f10"
+    },
+    "Func_80f3078": {
+      "id": "rom:080f3078"
+    },
+    "Func_80f2028": {
+      "id": "rom:080f2028"
+    },
+    "LoadGS1TitleGFX": {
+      "id": "rom:080f24a0"
+    },
+    "StartTitleScreen": {
+      "id": "rom:080f26ec"
+    },
+    "NintendoLogo": {
+      "id": "rom:080f2b70"
+    },
+    "CamelotLogo": {
+      "id": "rom:080f2d54"
+    }
+  }
+}

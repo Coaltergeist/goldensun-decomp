@@ -53,7 +53,7 @@
 #include "dma.h"
 #include "palette.h"
 #include "task.h"
-#include "io.h"
+#include "gba/io.h"
 #include "file_table.h"
 
 /* Logo frame-loop landmarks (TITLE_LOGO_FRAME_END, shared with Func_80f2028,
@@ -69,16 +69,16 @@
 extern void Func_80f2028(void);
 extern void LoadGS1TitleGFX(void);
 extern void Func_80f377c(void);
-extern void Func_80f3824(unsigned int arg0, PalFadeType arg1);
-extern void Func_80f3858(unsigned int frames);
+extern void Func_80f3824(unsigned int arg0, TitlePalFadeType arg1);
+extern void Func_80f3858(int frames);
 extern void Func_8003bf8(u32 arg0);
-extern void Func_8003c3c(u32 arg0);
+extern void Func_8003c3c(int arg0);
 extern void Func_8003ce0(void);
 extern void Func_8003dec(unsigned int *arg0, int index);
 extern void ClearVRAM(void);
 extern void ClearSprites(void);
 extern void ClearTasks(void);
-extern void WaitFrames(unsigned int frames);
+extern void WaitFrames(int frames);
 extern void LoadStaticUIGFX(void);
 extern u32 DecompressLZ1(const void *src, void *dst);
 extern u32 AllocSpriteSlot(void);

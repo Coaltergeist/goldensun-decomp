@@ -27,9 +27,9 @@ extern int _FILE_16;
 #define FILE_16 ((int)&_FILE_16)
 extern int _FILE_17;
 #define FILE_17 ((int)&_FILE_17)
-extern int _FILE_18;
+extern int _FILE_NTD_LOGO;
 #define FILE_NTD_LOGO ((int)&_FILE_NTD_LOGO)
-extern int _CAMELOT_FILE_ID;
+extern int _FILE_CAMELOT_LOGO;
 #define FILE_CAMELOT_LOGO ((int)&_FILE_CAMELOT_LOGO)
 extern int _FILE_1c;
 #define FILE_1c ((int)&_FILE_1c)

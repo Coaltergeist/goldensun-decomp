@@ -18,6 +18,7 @@
 
 #include "title.h"
 #include "dma.h"
+#include "file_table.h"
 
 extern void ClearTasks(void);
 extern void ClearVRAM(void);

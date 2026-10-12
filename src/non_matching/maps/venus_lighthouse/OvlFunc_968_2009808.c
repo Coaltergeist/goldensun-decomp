@@ -3,7 +3,7 @@ void OvlFunc_968_2009808(void)
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void __MapActor_SetAnimSpeed(int, int);
     extern void __Func_8092950(int, int);
-    extern void OvlFunc_968_2008058(int, int, int, int);
+    extern unsigned int OvlFunc_968_2008058(unsigned int, unsigned int, unsigned int, unsigned int);
     struct Actor *actor;
 
     actor = (struct Actor *)__MapActor_GetActor(0);

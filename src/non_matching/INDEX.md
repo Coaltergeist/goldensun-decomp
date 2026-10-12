@@ -160,7 +160,7 @@
 | [rpg/item](rpg/item/) | [Func_8078aa0](rpg/item/Func_8078aa0.c) |
 | [rpg/move](rpg/move/) | [HasMove](rpg/move/HasMove.c) |
 | [sound](sound/sound/) | [Debug_SoundTest](sound/sound/Debug_SoundTest.c), [PlaySound](sound/sound/PlaySound.c), [UpdateMusicSettings](sound/sound/UpdateMusicSettings.c) |
-| [title/title](title/title/) | [Func_80f2f10](title/title/Func_80f2f10.c), [Func_80f3078](title/title/Func_80f3078.c) |
+| [title](title/title/) | [CamelotLogo](title/title/CamelotLogo.c), [Func_80f2028](title/title/Func_80f2028.c), [Func_80f2f10](title/title/Func_80f2f10.c), [Func_80f3078](title/title/Func_80f3078.c), [LoadGS1TitleGFX](title/title/LoadGS1TitleGFX.c), [NintendoLogo](title/title/NintendoLogo.c), [StartTitleScreen](title/title/StartTitleScreen.c) |
 | [ui/icon](ui/icon/) | [DecompressStatusIcon](ui/icon/DecompressStatusIcon.c) |
 | [ui/menu](ui/menu/) | [Func_801b36c](ui/menu/Func_801b36c.c), [Func_801c46c](ui/menu/Func_801c46c.c), [Func_801c9c8](ui/menu/Func_801c9c8.c) |
 | [ui/party_menu](party_menu/party_menu/) | [Func_80a22f4](party_menu/party_menu/Func_80a22f4.c), [Func_80a65e4](party_menu/party_menu/Func_80a65e4.c), [Func_80a735c](party_menu/party_menu/Func_80a735c.c), [Func_80ab1f4](party_menu/party_menu/Func_80ab1f4.c) |

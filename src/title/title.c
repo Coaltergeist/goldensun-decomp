@@ -2,6 +2,7 @@
 #include "nonmatching.h"
 #include "dma.h"
 #include "palette.h"
+#include "title.h"
 
 INCLUDE_ASM("asm/title/title/Func_80f2028.s");
 INCLUDE_ASM("asm/title/title/LoadGS1TitleGFX.s");
@@ -32,60 +33,6 @@ void Func_80f2ebc(u16* cur, u16* target, u16* delta, int frames)
 			*delta++ = (u16)fn((s16)*target++ - curSample, frames);
 		}
 	}
-}
-
-/* `mode` argument of Func_80f3078.
- * The argument is overloaded: the function branches on the range the value
- * falls in, so the constants below are grouped by that range.
- *
- *   mode <  PALMODE_INDIRECT   the value is a raw BGR555 colour and the plane
- *                              is flood-filled with it
- *   mode == PALMODE_INDIRECT   the value is the address of such a colour
- *   PALMODE_PLANE..PALMODE_WARM_ALT
- *                              colour opcode, one per post-processing effect
- *   mode >= PALMODE_PACKED     the low 15 bits are the colour and the
- *                              PALMODE_FLAG_* bits select the operation
- */
-typedef enum {
-    PALMODE_INDIRECT = 0x8000,    /* also the upper bound of a raw colour */
-    PALMODE_PLANE = 0x10000,   /* straight BGR555 plane decomposition */
-    PALMODE_GREYSCALE = 0x10001,   /* luminance / 7 in all three planes */
-    PALMODE_SEPIA = 0x10002,
-    PALMODE_WARM = 0x10003,   /* warm highlight wash */
-    PALMODE_CONTRAST = 0x10004,   /* level clamp through curve 1 */
-    PALMODE_HALFBLEND = 0x10005,   /* half-way to the plane average */
-    PALMODE_DESATURATE = 0x10006,
-    PALMODE_WARM_ALT = 0x10007,   /* separate copy of PALMODE_WARM */
-    PALMODE_PACKED = 0x100000,  /* >= this: colour | PALMODE_FLAG_* */
-
-    /* Operation bits packed into `mode` when it is >= PALMODE_PACKED. */
-	PALMODE_FLAG_GAIN = 0x200000,  /* per-channel gain */
-	PALMODE_FLAG_FADE = 0x400000,  /* fade towards the gain colour */
-	PALMODE_FLAG_OVERLAY = 0x800000,  /* brightness overlay */
-} PaletteMode;
-
-typedef enum {
-    PALFADE_ALL = 0,
-    PALFADE_BG = 1,
-    PALFADE_OBJ = 2,
-} TitlePalFadeType;
-
-typedef struct {
-    PaletteData startPal;
-    PaletteBGRData currentBGR; // +0x0400
-    PaletteBGRData targetBGR;  // +0x1000
-    PaletteBGRData rampDelta;  // +0x1c00
-    PaletteData paletteBuf[2]; // +0x2800, +0x2c00; palBG +0x000, palOBJ +0x200
-    u8 paletteIdx;             // +0x3000
-    signed char rampFrames;    // +0x3001, read with ldrsb; s8/char is unsigned here
-    u8 rampPos;                // +0x3002
-    u8 pad_3003;               // +0x3003
-} TitlePaletteState;
-
-extern unsigned char iwram_3001ed0[];
-
-static inline TitlePaletteState* GetPaletteFadeState(void) {
-    return *(TitlePaletteState**)&iwram_3001ed0;
 }
 
 // see non_matching/title/Func_80f2f10.c
