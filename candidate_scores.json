@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "fa7457eb07e075ba5b07db9f6e406cccfbeb1c1f6a46dd2d3c0a08b828819d0c",
+  "candidate_fingerprint": "724d595efa4272aec38003bc371ac525894cbae173ca202d275e17852757b13d",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -5467,9 +5467,9 @@
       "evaluated_with": [
         "OvlFunc_968_2009808"
       ],
-      "fuzzy_match_percent": 97.89474,
+      "fuzzy_match_percent": 100.0,
       "name": "OvlFunc_968_2009808",
-      "object_sha256": "a79c030feb102a37a90e797b6756ff7c5ae13648fdbb5b661e8ac59562a849d7",
+      "object_sha256": "194a071b666b8fd8481acb77227b13e986b43180638f09434f7954e11b3d4573",
       "reference_sha256": "194a071b666b8fd8481acb77227b13e986b43180638f09434f7954e11b3d4573",
       "source": "src/maps/venus_lighthouse.c",
       "target_size": 240
@@ -7387,13 +7387,13 @@
     },
     "rom:080dc968": {
       "candidate": "src/non_matching/battle_anim/moves/atalanta/Anim_Atalanta.c",
-      "candidate_size": 2420,
+      "candidate_size": 2412,
       "evaluated_with": [
         "Anim_Atalanta"
       ],
-      "fuzzy_match_percent": 60.19827,
+      "fuzzy_match_percent": 58.724735,
       "name": "Anim_Atalanta",
-      "object_sha256": "a30e2bc49b94ebed38a8aff2468fa633602dd5c796e905bafec0f8f18a2d3b07",
+      "object_sha256": "d5033c8cc1cb6c8ee38a1b835a33a0831894d01741bfbfa7cf6455af0ecff45f",
       "reference_sha256": "3c8360ee9470c34aa0ee05c93b0864425475c9571f55658abce06cca4ee255d0",
       "source": "src/battle_anim/moves/atalanta.c",
       "target_size": 2372
@@ -7697,18 +7697,96 @@
       "source": "src/ending/ending.c",
       "target_size": 68
     },
-    "rom:080f3858": {
-      "candidate": "src/non_matching/title/title/Func_80f3858.c",
-      "candidate_size": 68,
+    "rom:080f2028": {
+      "candidate": "src/non_matching/title/title/Func_80f2028.c",
+      "candidate_size": 984,
       "evaluated_with": [
-        "Func_80f3858"
+        "Func_80f2028"
       ],
-      "fuzzy_match_percent": 79.82758,
-      "name": "Func_80f3858",
-      "object_sha256": "19d9da21b5fb9b28bf698d6d06974d817245e865d0f0ef3b2181ad535c20088c",
-      "reference_sha256": "7dd0f1f67c3e456e006e783957d8e2086018e58d2f8e2b978a13188c8fcbcab6",
+      "fuzzy_match_percent": 55.87594,
+      "name": "Func_80f2028",
+      "object_sha256": "449e0bdaa4820e1e60426010651be9338b77a243574b305bdebe07b0c1d3fa45",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
       "source": "src/title/title.c",
-      "target_size": 64
+      "target_size": 1144
+    },
+    "rom:080f24a0": {
+      "candidate": "src/non_matching/title/title/LoadGS1TitleGFX.c",
+      "candidate_size": 586,
+      "evaluated_with": [
+        "LoadGS1TitleGFX"
+      ],
+      "fuzzy_match_percent": 98.75697,
+      "name": "LoadGS1TitleGFX",
+      "object_sha256": "e38041197a0dc6aa4191f846ecbd5dc3653e7754a02d479ebbe37dcd55b9a52b",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 588
+    },
+    "rom:080f26ec": {
+      "candidate": "src/non_matching/title/title/StartTitleScreen.c",
+      "candidate_size": 1108,
+      "evaluated_with": [
+        "StartTitleScreen"
+      ],
+      "fuzzy_match_percent": 70.58215,
+      "name": "StartTitleScreen",
+      "object_sha256": "67a57e543c1d74108f5d9e09b6edf1db6867d7591af8d977e4e63b024a19bbab",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 1152
+    },
+    "rom:080f2b70": {
+      "candidate": "src/non_matching/title/title/NintendoLogo.c",
+      "candidate_size": 484,
+      "evaluated_with": [
+        "NintendoLogo"
+      ],
+      "fuzzy_match_percent": 99.0099,
+      "name": "NintendoLogo",
+      "object_sha256": "d1f113d7b89480022a4f438d448bb373a915bb0a6f0a0be00c94e98df08b9ca9",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 484
+    },
+    "rom:080f2d54": {
+      "candidate": "src/non_matching/title/title/CamelotLogo.c",
+      "candidate_size": 356,
+      "evaluated_with": [
+        "CamelotLogo"
+      ],
+      "fuzzy_match_percent": 94.6014,
+      "name": "CamelotLogo",
+      "object_sha256": "405f361ef9dc528e3d3028cdf2bdd03334c87894a9040dc74d8666bf31e95d91",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 356
+    },
+    "rom:080f2f10": {
+      "candidate": "src/non_matching/title/title/Func_80f2f10.c",
+      "candidate_size": 360,
+      "evaluated_with": [
+        "Func_80f2f10"
+      ],
+      "fuzzy_match_percent": 93.9881,
+      "name": "Func_80f2f10",
+      "object_sha256": "590bcc4701368f05a8b94453a8d05bcc869d227a5346c4977fca1634cc24306d",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 360
+    },
+    "rom:080f3078": {
+      "candidate": "src/non_matching/title/title/Func_80f3078.c",
+      "candidate_size": 1688,
+      "evaluated_with": [
+        "Func_80f3078"
+      ],
+      "fuzzy_match_percent": 66.16448,
+      "name": "Func_80f3078",
+      "object_sha256": "0e705b4f2f06f4617dea79f66e60106f4cfecf172a8de850fe49b38aa587d3da",
+      "reference_sha256": "fe8ed0a850e76094bde166d7a8e521338dde7a0b91fbbf354192938afcc073d1",
+      "source": "src/title/title.c",
+      "target_size": 1796
     },
     "rom:080f7db4": {
       "candidate": "src/non_matching/lucky_wheels/lucky_wheels/Func_80f7db4.c",
@@ -7829,7 +7907,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "aebe1292e5243f25306e47dc37b91a90e49f4c8757526cae19bafa2bd6207787",
+  "progress_sha256": "216623aea43c1312b4dad65a18d145400c4a533880907be05ae8a8e8ba56b1b6",
   "schema": 1,
   "scorer": {
     "config": [
