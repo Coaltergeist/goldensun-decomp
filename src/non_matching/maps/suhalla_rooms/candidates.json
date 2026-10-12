@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/maps/suhalla_rooms.c",
-  "functions": {
-    "SuhallaRooms_MapInit": {
-      "id": "overlay:rom_7ec19c:02008a78"
-    }
-  }
-}

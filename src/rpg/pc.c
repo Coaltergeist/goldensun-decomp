@@ -1,4 +1,3 @@
-/* rpg/pc.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern int GetPartySize();
@@ -225,7 +224,7 @@ INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079f10.s", ".text.rpg_pc_3");
 
 SECTION(".text.rpg_pc_4");
 
-/* rpg/give_item.c -- give item to a party member (equip + stat/flag update). */
+/* Give an item to a party member (equip plus stat/flag update). */
 #include "nonmatching.h"
 
 void Func_807a628(unsigned int arg0, unsigned int arg1)

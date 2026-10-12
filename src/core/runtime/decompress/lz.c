@@ -1,4 +1,3 @@
-/* decompress/lz.c -- consolidated TU. */
 #include "nonmatching.h"
 
 #include "gba/types.h"

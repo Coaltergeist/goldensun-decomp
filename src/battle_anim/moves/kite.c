@@ -1,4 +1,3 @@
-/* battle_anim/moves/kite.c */
 #include "anim.h"
 
 struct KiteState {

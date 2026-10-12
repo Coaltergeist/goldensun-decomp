@@ -68,9 +68,8 @@ void *LaliveroRooms_GetActors(void)
 extern unsigned char Lconst_26e3[] __asm__(".Lconst_26e3");
 __asm__(".equ .Lconst_26e3, 0x26e3");
 
-/* Preserve the overlay's historical ignored-return message-call declarations
- * (PROJECT_BIBLE section 7.4); explicit prototype changes alter GCC 2.96 scheduling.
- * All message arguments retain their original 32-bit calling convention. */
+/* Message calls keep ignored-return declarations; explicit prototypes change
+ * GCC 2.96 scheduling. Arguments keep the 32-bit calling convention. */
 void OvlFunc_967_20080c8(int actor) {
     int msg;
     void *r0 = __MapActor_GetActor(0);

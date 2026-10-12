@@ -1,4 +1,4 @@
-/* field/field_move.c -- general-purpose field-move dispatcher (split from weather.c). */
+/* General-purpose field-move dispatcher. */
 #include "nonmatching.h"
 
 extern void FieldMove_NoTarget(void);

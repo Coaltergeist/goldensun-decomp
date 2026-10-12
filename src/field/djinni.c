@@ -1,4 +1,4 @@
-/* field/djinni.c -- djinni-get table + supporting field tasks. */
+/* Djinni-get table and supporting field tasks. */
 #include "nonmatching.h"
 #include "actor.h"
 

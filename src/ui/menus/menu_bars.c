@@ -1,4 +1,3 @@
-/* ui/menus/menu_bars.c */
 #include "nonmatching.h"
 
 extern void Func_801c2d0(void);

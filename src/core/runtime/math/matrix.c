@@ -1,5 +1,4 @@
 // fakematch
-/* math/matrix.c */
 #include "nonmatching.h"
 #include "gba/types.h"
 #include "dma.h"

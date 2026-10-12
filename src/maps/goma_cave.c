@@ -1,6 +1,4 @@
-/* rom_79aad8 (overlay file 906): consolidated TU — goma_cave map overlay.
- * Built with -fno-strict-aliasing (per-file Makefile rule): OvlFunc_906_20084f4
- * only matches the ROM with type-based alias analysis off. */
+/* rom_79aad8 (overlay file 906): consolidated TU — goma_cave map overlay. */
 
 #include "nonmatching.h"
 #include "actor.h"

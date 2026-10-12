@@ -1109,10 +1109,8 @@ void OvlFunc_932_200ad08(void)
 
 void OvlFunc_932_200ad58(void)
 {
-    /* Block-scoped decls keep these prototypes out of the sibling C fns below.
-       __MapActor_GetActor (unsigned int, :15), ActorCmd (:210),
-       gScript_882__0200cd6c (:420) and iwram_3001ebc (unsigned char*, :695) are
-       already declared file-scope; iwram needs the array view here. */
+    /* Block-scoped so these views stay out of the other functions; this one
+       needs the array view of iwram_3001ebc. */
     extern void __CutsceneStart(void);
     extern void __MapActor_SetPos(int, int, int);
     extern void __MapTransitionIn(void);

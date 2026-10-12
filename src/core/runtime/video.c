@@ -1,5 +1,4 @@
 // fakematch
-/* video.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "sprite/slot.h"
 

@@ -1,4 +1,3 @@
-/* rpg/djinni.c */
 #include "nonmatching.h"
 
 extern unsigned char *GetUnit(unsigned int unit);

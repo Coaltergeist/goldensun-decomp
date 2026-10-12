@@ -1,4 +1,3 @@
-/* battle_anim/moves/unused_skull_cloud.c */
 #include "anim.h"
 #include "math.h"
 #include "task.h"

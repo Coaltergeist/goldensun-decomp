@@ -1,5 +1,4 @@
 // fakematch
-/* field/map_load.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern int GetEncounterGroup();
@@ -7,11 +6,8 @@ extern int GetEncounterGroup();
 INCLUDE_ASM("asm/field/map_load/InitMapSomething.s");
 INCLUDE_ASM("asm/field/map_load/RespawnAtSanctum.s");
 
-/* GetMapArea (GetMapArea); signed byte at offset 2 of an 8-byte-stride table
- * element. Forming the element pointer (base + map*8) first keeps the +2 a
- * `ldrb [.,#2]` immediate (Thumb ldrsb has no immediate form, so gcc then
- * sign-extends via lsl#24/asr#24) instead of folding into a register-indexed
- * ldrsb. gMaps is a .global asm-label (§8). */
+/* GetMapArea: signed byte at offset 2 of an 8-byte table entry. Thumb ldrsb has
+ * no immediate form, so the byte is loaded with ldrb and sign-extended. */
 extern unsigned char gMaps[] __asm__("gMaps");
 
 int GetMapArea(int map) {

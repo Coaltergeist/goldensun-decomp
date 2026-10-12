@@ -1,4 +1,3 @@
-/* render/blit_fade.c */
 #include "nonmatching.h"
 
 #include "gba/types.h"

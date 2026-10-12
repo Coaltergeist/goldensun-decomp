@@ -1,4 +1,3 @@
-/* rpg/move.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned char gMoves[] __asm__("gMoves");

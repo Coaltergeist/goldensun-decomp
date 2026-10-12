@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/spire.c",
-  "functions": {
-    "Anim_Spire": {
-      "id": "rom:080e2538"
-    }
-  }
-}

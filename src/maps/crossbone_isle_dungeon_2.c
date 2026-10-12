@@ -727,9 +727,7 @@ extern unsigned char Lm947_2e26[] __asm__(".Lm947_2e26");
 
 void OvlFunc_947_200975c(void)
 {
-    /* Block-scoped decls: keep these prototypes out of the sibling C fns below,
-       which compile on implicit decls. __MapActor_GetActor/__MapActor_SetAnim/
-       __Func_8010704 already have file-scope decls above (175/177/178). */
+    /* Block-scoped so the other functions keep their implicit declarations. */
     extern void __CutsceneStart(void);
     extern void __Func_80933d4(int, int);
     extern void __Func_80933f8(int, int, int, int);

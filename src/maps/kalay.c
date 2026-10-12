@@ -6,8 +6,7 @@
 
 INCLUDE_ASM("asm/maps/kalay/exports.s");
 
-/* forward decl hoisted to TU top: used as a function pointer (line ~133) before
- * its definition; reconcile re-emitted it below the use instead of here. */
+/* Used as a function pointer before its definition. */
 extern void OvlFunc_936_200b90c(void);
 
 extern void __Func_80955b0(int a, int b, int c);
@@ -202,9 +201,7 @@ struct TableEntry {
 extern struct TableEntry Lm936_50e0[] __asm__(".Lm936_50e0");
 
 void OvlFunc_936_2008464(void) {
-    /* iwram_3001ebc is a file-scope unsigned int scalar (:270); this fn needs the
-       array view of the same symbol. Callees are left implicit, matching the
-       standalone match (implicit decls are block-scoped, no sibling leak). */
+    /* This function needs the array view of iwram_3001ebc. */
     extern unsigned char iwram_3001ebc__arr[] __asm__("iwram_3001ebc");
     unsigned int map;
     unsigned int i;

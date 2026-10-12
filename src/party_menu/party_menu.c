@@ -1,5 +1,4 @@
 // fakematch
-/* unknown/sub_80a1050.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma.h"
 
@@ -254,7 +253,6 @@ void Func_80a2474(void) {
     StartTask(Func_80a2444, priority);
 }
 
-/* Func_80a2444 is a function (defined above); the stray void* redecl removed */
 
 void Func_80a2490(void) {
     int r0;

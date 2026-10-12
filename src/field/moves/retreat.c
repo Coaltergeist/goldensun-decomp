@@ -1,4 +1,3 @@
-/* field/moves/retreat.c */
 #include "nonmatching.h"
 
 void Func_809b0b0(unsigned int arg0)

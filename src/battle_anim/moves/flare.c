@@ -1,11 +1,9 @@
-/* battle_anim/moves/flare.c */
 #include "nonmatching.h"
 #include "anim.h"
 
 INCLUDE_ASM("asm/battle_anim/moves/flare/Anim_Flare.s");
 
-/* trailing helper (Func_80da24c) - no symbolic caller; folded here from the removed
-   battle_anim/unknown/ holding dir (sits between Anim_Flare and Anim_Quake in ROM). */
+/* Func_80da24c has no symbolic caller; it sits between Anim_Flare and Anim_Quake in ROM. */
 int Func_80da24c(struct AnimContext *context, s16 *out)
 {
     int n = context->__unk10 * 2 + 1;

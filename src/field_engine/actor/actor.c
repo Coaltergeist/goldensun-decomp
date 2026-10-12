@@ -1,4 +1,3 @@
-/* actor/actor.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void Actor_SetScript();

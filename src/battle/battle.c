@@ -1,4 +1,3 @@
-/* battle/battle.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned int GetBattleActor();

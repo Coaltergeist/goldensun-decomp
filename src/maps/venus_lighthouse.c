@@ -6,7 +6,7 @@
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/exports.s");
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __Actor_SetSpriteFlags();
 extern void __CutsceneEnd();
 extern void __CutsceneStart();

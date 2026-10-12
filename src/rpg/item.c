@@ -1,4 +1,3 @@
-/* rpg/item.c -- consolidated TU. */
 #include "nonmatching.h"
 
 

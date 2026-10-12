@@ -1,4 +1,3 @@
-/* ui/menus/debug_warp_menu.c */
 #include "nonmatching.h"
 
 extern int StartTask(void *task, int priority);

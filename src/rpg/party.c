@@ -1,4 +1,3 @@
-/* rpg/party.c -- consolidated [?] residual (get_unit TU extracted) */
 #include "nonmatching.h"
 
 #include "nonmatching.h"

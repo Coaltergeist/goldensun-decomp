@@ -1,4 +1,3 @@
-/* battle/actor_pos.c -- consolidated [?] residual (attack TU extracted) */
 #include "nonmatching.h"
 
 #include "nonmatching.h"

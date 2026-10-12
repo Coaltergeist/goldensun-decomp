@@ -207,7 +207,6 @@ void OvlFunc_909_20082cc(void) {
 
 void OvlFunc_909_2008338(void)
 {
-    /* iwram_3001ebc is declared file-scope above as unsigned char* (:93). */
     extern int __GetFlag(int);
     extern void __PlaySound(int);
     extern void __Func_80118a8(int);

@@ -12,7 +12,7 @@ __asm__(".equ .Lconst_ad, 0xad");
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/exports.s");
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __Actor_SetAnim();
 extern void __Actor_WaitMovement();
 extern void __CutsceneEnd();

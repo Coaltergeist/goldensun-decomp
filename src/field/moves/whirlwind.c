@@ -1,4 +1,3 @@
-/* field/moves/whirlwind.c */
 #include "nonmatching.h"
 
 extern void _Actor_SetPos();

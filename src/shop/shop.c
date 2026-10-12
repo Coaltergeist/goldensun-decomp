@@ -1,5 +1,4 @@
 // fakematch
-/* ui/shop.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void Func_80b00f4();

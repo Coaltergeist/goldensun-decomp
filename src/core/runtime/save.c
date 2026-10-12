@@ -1,4 +1,3 @@
-/* save.c -- consolidated flash-save TU. */
 #include "gba/types.h"
 #include "nonmatching.h"
 

@@ -1,13 +1,10 @@
-/* actor/actor_script.c */
 #include "nonmatching.h"
 
 extern void WaitFrames(unsigned int nframes);
 extern int Actor_IsNotMoving(void *actor);
 extern void Actor_SetPos();
 extern int Actor_FindScriptMarker();
-/* ActorCmd_Stop (ActorCmd_Stop); actor[0] = &.L13240; *(u16*)(actor+4) = 0;
- * return 0. Scoping the tarpman zero in a nested block after the pointer store
- * keeps its `movs` from being hoisted ahead of the str (so r3 is reused). */
+/* ActorCmd_Stop: points the actor at .L13240 and clears the halfword at +4. */
 extern unsigned char L13240[] __asm__(".L13240");
 extern int _GetFlag(int);
 extern void _SetFlag(int);

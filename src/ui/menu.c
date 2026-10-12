@@ -1,4 +1,3 @@
-/* ui/menu.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma.h"
 

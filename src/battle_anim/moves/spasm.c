@@ -1,4 +1,3 @@
-/* battle_anim/moves/spasm.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Spasm(void *context, int subanim);

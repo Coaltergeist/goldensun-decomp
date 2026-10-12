@@ -1,4 +1,3 @@
-/* field/moves/halt.c */
 #include "nonmatching.h"
 
 extern unsigned char **iwram_3001f30;

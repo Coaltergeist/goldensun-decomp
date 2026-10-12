@@ -1,4 +1,3 @@
-/* battle_anim/update_screen_shake.c */
 #include "gba/types.h"
 #include "math/projection.h"
 

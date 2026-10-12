@@ -1,4 +1,3 @@
-/* battle_anim/moves/haunt_attack.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_HauntAttack(void *context, int subanim);

@@ -18,76 +18,61 @@ behavior.
 - Assembler-name declarations for data and literal-pool symbols, such as
   `extern unsigned char pool[] __asm__(".Lpool");`, are allowed. Symbol-only
   `.equ` definitions require evidenced absolute constants.
-- Use the production compiler and catalog-assigned compiler profile. The Make
-  compile-contract query exposes the same settings. Experimental
-  compiler flags do not establish an accepted match.
+- Use the production compiler and the file's Makefile flags
+  (`make print-compile-contract SOURCE=...`). Experimental compiler flags do not
+  establish an accepted match.
 - Preserve credits, source notices, and assembly evidence. Do not submit ROMs,
   extracted assets, generated objects, installed compilers, or local diff caches.
 
 ## Where changes belong
 
-Resolve the owning TU through [the catalog](config/README.md#read-only-build-queries).
-Main-ROM code follows its catalog owner under `src/core/` or directly under `src/`; overlay code
-belongs in `src/maps/<name>.c`. Shared overlay implementations live in
+Main-ROM code lives under `src/core/` or `src/<module>/`; overlay code belongs
+in `src/maps/<name>.c`. Shared overlay implementations live in
 `src/maps/common/` and compile once each, even when multiple overlays use them.
-Preserve the linkers' placement and imports/exports. Put shared declarations in the
-[owning header](include/README.md); keep unproven or incompatible local views
-separate. Candidate directories come from the owning catalog unit.
+Overlay symbols and execution addresses can repeat, so confirm the owning TU and
+linker script before editing.
 
-Adding a TU requires explicit source/object ownership, a compiler profile, and
-ordered linker inputs. Update the catalog and linker scripts together; a new C
-file is not automatically discovered. Keep stable TU and original-function IDs
-when relocating existing code. See [catalog editing](config/README.md#editing-and-validating).
+Put shared declarations in their owning header under `include/` instead of
+copying them. Keep a partial or unproven struct view local until its fields,
+widths and offsets are established.
 
-Keep documentation focused on current usage, behavior and constraints. Record
-change narratives in commits or pull requests. Code comments should explain
-non-obvious behavior or requirements, rather than the history of an edit.
+A new C file is not discovered automatically. The linker scripts under `linker/`
+name every object and own link order, so adding a TU means adding its
+`build/usa/obj/<path>.o` input there. A file that needs non-default compiler
+flags also needs a Makefile entry. Keep original function identities and byte
+spans unchanged when moving existing code.
+
+Code comments should explain non-obvious behavior or requirements, not the
+history of an edit or how a match was found.
 
 ## Matching workflow
 
-1. Follow [INSTALL.md](INSTALL.md) and capture verified reference objects
-   **before editing**. Identify the function's owning translation unit and
-   linker script; overlay symbols and execution addresses can repeat.
-2. Replace the active `INCLUDE_ASM` in that TU with C.
-3. Compare the whole affected object, including neighboring functions, sizes,
-   data, symbols, and relocations. Do not refresh the reference to hide a mismatch.
-   The ELF checker permits a two-byte Thumb alignment accounting difference only
-   after verifying zero data-mapped padding after a return, its boundary and the
-   absence of detected references into it. All allocated bytes, addresses and
-   relocations must still match. It reports the size difference; use --strict to
-   require the raw symbol sizes as well. Do not add source padding or .size
-   overrides to manufacture equality.
-4. Finalize the conversion with the pinned [objdiff CLI](DECOMP_DEV.md#candidate-scores):
+1. Follow [INSTALL.md](INSTALL.md), verify the baseline, and capture reference
+   objects **before editing**.
+2. Replace the function's active `INCLUDE_ASM` with C in its owning TU.
+3. Iterate with asm-differ against the saved reference. Review the whole affected
+   object, including neighboring functions, sizes, data and relocations; a clean
+   function diff can hide a changed callee or literal pool.
+4. Run a full comparison from the project root:
 
    ~~~bash
-   set -euo pipefail
-   python3 tools/finalize_progress.py --objdiff /path/to/objdiff-cli 2>&1 | tee output.txt
+   make clean && make compare
    ~~~
 
-   This verifies the ROM and all 96 overlays, reconciles landed candidates, and
-   refreshes the progress reports. Include the resulting candidate changes,
-   `progress_snapshot.json`, and `candidate_scores.json` in the PR. See
-   [DECOMP_DEV.md](DECOMP_DEV.md#finalizing-production-changes) for options and recovery.
+   Both `build/usa/goldensun.gba: OK` and `All 96 overlays: OK` must appear.
+5. Describe the function's behavior, relevant source reasoning and validation in
+   the pull request. Label unmatched investigations clearly.
 
-5. Run the repository checks:
-
-   ~~~bash
-   set -euo pipefail
-   python3 tools/check_repository.py 2>&1 | tee output-structure.txt
-   python3 -m unittest discover -s tools/tests -v 2>&1 | tee output-tests.txt
-   python3 -B tools/decomp_progress.py check 2>&1 | tee output-freshness.txt
-   ~~~
-
-6. Describe the function's behavior, relevant source reasoning, compiler version,
-   and validation in the pull request. Label unmatched investigations clearly.
+Pull requests do not need any generated files. Maintainers update the
+[decomp.dev](https://decomp.dev/Coaltergeist/goldensun-decomp) progress report
+after merging.
 
 ## Unfinished candidates
 
-Park unfinished C under the catalog's `candidate_directory`, named `<Function>.c`.
-The directory follows current module ownership; the TU identity stays stable. See the
-[candidate workflow](src/non_matching/README.md) for metadata and isolated
-comparison commands. Keep one primary candidate per function and retain relevant
-credits. Candidates do not receive matching credit.
+Park unfinished C under `src/non_matching/`, in the directory matching its owning
+TU's path, named `<Function>.c`. Shared context for a directory goes in its
+`context.h`. Parked C is never compiled into the ROM and does not count as a
+match. Keep one candidate per function and retain relevant credits.
 
 ## Existing fakematches
 
@@ -96,6 +81,4 @@ are not examples for new contributions. Remove a registry entry only after its
 specific source concern is resolved and the output remains byte-identical.
 Review callers when changing a shared macro or inline helper.
 
-CI checks repository structure, reporting metadata, and tooling. It does not
-replace the local ROM/all-overlay verification or semantic source review.
 Preserve the notices listed in [ATTRIBUTION.md](ATTRIBUTION.md).

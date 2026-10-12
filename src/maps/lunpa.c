@@ -510,10 +510,7 @@ static inline void CallFunc(int unk4, int unk6, void *unk0) {
 
 void OvlFunc_939_2008b6c(void)
 {
-    /* Block-scoped decls keep these prototypes out of the sibling C fns below.
-       __MapActor_GetActor is declared file-scope above (unsigned char*, :39).
-       iwram_3001ebc is an unsigned int scalar at file scope (:230); this fn
-       needs the array view of the same symbol (single pointer load). */
+    /* This function needs the array view of iwram_3001ebc. */
     extern void __CutsceneStart(void);
     extern void __PlaySound(int);
     extern void __Func_8010560(void *, int, int);

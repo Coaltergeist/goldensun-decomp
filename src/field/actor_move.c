@@ -1,4 +1,3 @@
-/* unknown/sub_8096c24.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "actor.h"
 

@@ -1054,9 +1054,7 @@ void OvlFunc_948_2009838(void)
     API_ClearFlag(0x220);
 }
 
-/* OvlFunc_948_20098c0; REG_BLDALPHA (0x04000052) = 0xd00.
- * Value synthesized (0xd0<<4). Value var declared FIRST so it lands in r2 and
- * the address pointer in r3 (matching strh r2,[r3]). */
+/* OvlFunc_948_20098c0: REG_BLDALPHA = 0xd00. */
 
 void OvlFunc_948_20098c0(void) {
     unsigned short v = 0xd00;

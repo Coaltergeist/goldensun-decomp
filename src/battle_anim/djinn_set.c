@@ -1,4 +1,3 @@
-/* battle_anim/djinn_set.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle_anim/djinn_set/Anim_DjinnSet.s");

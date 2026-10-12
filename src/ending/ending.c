@@ -1,4 +1,3 @@
-/* ending.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/ending/ending/Func_80f0254.s");

@@ -1,4 +1,3 @@
-/* unknown/sub_80c9048.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma0.h"
 

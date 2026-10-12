@@ -1,4 +1,3 @@
-/* task.c */
 #include "nonmatching.h"
 
 #include "gba/types.h"

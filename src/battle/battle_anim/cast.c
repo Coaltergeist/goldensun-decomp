@@ -1,4 +1,3 @@
-/* unknown/sub_80c0a24.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle/battle_anim/cast/Func_80c10e8.s");

@@ -1,4 +1,4 @@
-# All generated production/host output and candidate build caches
+# All generated production/host output
 /build/
 
 # ROMs and user-installed toolchains
@@ -11,7 +11,6 @@ tools/asm-differ/
 # Immutable comparison references and verification evidence
 expected/
 .diff-baselines/
-.progress/
 /report.json
 
 # decomp-permuter scratch

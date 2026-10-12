@@ -1,4 +1,3 @@
-/* battle_anim/moves/mercury.c */
 #include "nonmatching.h"
 
 /* helper for Anim_Mercury (called twice by it); precedes it in ROM. */

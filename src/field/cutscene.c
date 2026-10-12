@@ -1,4 +1,3 @@
-/* field/cutscene.c */
 #include "nonmatching.h"
 
 extern void CutsceneEnd();
@@ -309,9 +308,7 @@ void Func_8091f90(unsigned short arg0, unsigned short arg1) {
     *(unsigned short *)(r3 + 0xe8 * 2) = arg1;
 }
 
-/* Func_8091fa8; two halfword stores into gState (gState) at u16
- * indices 0xe9 and 0xea. The earlier miss added a bogus return and used a
- * register-indexed store; this is plain void with independent array writes. */
+/* Func_8091fa8: two halfword stores into gState at u16 indices 0xe9 and 0xea. */
 extern unsigned short gState__a7[] __asm__("gState");
 
 void Func_8091fa8(unsigned short a, unsigned short b) {

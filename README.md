@@ -19,17 +19,12 @@ colored by matching progress. Click the treemap for unit and function details.
 ## Getting started
 
 - [Build and diff setup](INSTALL.md)
-- [Build, verification and metadata commands](DECOMP_DEV.md#choosing-an-operation)
-- [Module ownership and compiler profiles](config/README.md)
 - [Contributing and matching requirements](CONTRIBUTING.md)
-- [Unfinished C candidates and comparison workflow](src/non_matching/README.md)
-- [Progress accounting](PROGRESS.md) and [report generation](DECOMP_DEV.md)
 
 The build uses patched GCC 2.96 from
 [camelot-gcc](https://github.com/Coaltergeist/camelot-gcc), with `old_agbcc` for
-the stock m4a audio engine and most Flash library C. GNU Make runs the build;
-compiler settings live in config/toolchain.mk. Full verification compares the ROM
-and all 96 code overlays against the reference game.
+the stock m4a audio engine and most Flash library C. `make clean && make compare`
+builds the ROM and checks it and all 96 code overlays against the original game.
 
 Contributions are welcome, including matching C, reverse-engineering findings,
 and cleanup of existing fakematches. **New fakematches are not accepted.**
@@ -48,18 +43,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the source and verification requireme
 | `asm/core/`, `asm/<module>/`, `asm/maps/` | Active assembly fragments for the corresponding source TUs |
 | `data/` and `exports/` | Maintained data assembly and exported symbols |
 | `linker/` | Main-ROM and overlay linker scripts; address maps under `linker/symbols/` |
-| `include/` | C headers, assembler macros and [shared type owners](include/README.md) |
-| `config/` | Module ownership, compiler profiles and current path declarations |
-| `tools/` | Build, comparison, and reporting tools |
-| `build/` | Ignored objects, intermediates, generated assets, ROM and overlay products |
+| `include/` | C headers and assembler macros |
+| `tools/` | Build and comparison tools |
+| `build/` | Build output only (ignored); `make clean` deletes it |
 
-Source names describe their role; ROM offsets and overlay identities remain in the catalog.
-Maintained standalone assembly belongs under src; included disassembly and assembly
-import/export fragments remain under asm. Use
-[the module catalog](config/README.md) to resolve a stable TU ID, current path or
-legacy object alias. Catalog ownership preserves compile profiles and link order.
-Original disassembly paths in `original_functions.json` are historical evidence;
-current production paths come from `config/modules.json` and `progress_snapshot.json`.
+Overlay linker scripts are named by ROM offset (`linker/overlays/rom_XXXXXX.ld`)
+and, with the main-ROM scripts, name every object that is built. Standalone
+assembly lives under `src/`; disassembly included by C files stays under `asm/`.
+Paths in `original_functions.json` are the original disassembly's, not current paths.
 
 ## References
 

@@ -1,4 +1,3 @@
-/* battle_anim/moves/spore.c -- consolidated TU. */
 #include "anim.h"
 #include "math.h"
 #include "task.h"

@@ -250,9 +250,7 @@ extern void *Lm921_3190[] __asm__(".Lm921_3190");
 
 void OvlFunc_921_20086c0(void)
 {
-    /* Block-scoped decls: __MapActor_GetActor is declared file-scope below as
-       void* (:207); the unsigned char* view here (needed for the direct index)
-       stays local and out of the sibling C fns. */
+    /* Local unsigned char* view of __MapActor_GetActor for the direct index. */
     extern void __CutsceneStart(void);
     extern unsigned char *__MapActor_GetActor(int);
     extern void __PlaySound(int);

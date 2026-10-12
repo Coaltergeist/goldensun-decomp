@@ -1,4 +1,3 @@
-/* field/moves/reveal.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/moves/reveal/Func_8098294.s");

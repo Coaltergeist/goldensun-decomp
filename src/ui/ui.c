@@ -1,4 +1,3 @@
-/* ui/ui.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void Func_8016498(unsigned char *p);

@@ -1,4 +1,3 @@
-/* battle_anim/moves/stat_down.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_StatDown(void *context, int subanim);

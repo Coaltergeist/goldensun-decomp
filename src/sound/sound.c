@@ -1,4 +1,3 @@
-/* sound.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/sound/sound/PlaySound.s");

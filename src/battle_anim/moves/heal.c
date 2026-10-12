@@ -1,4 +1,3 @@
-/* battle_anim/moves/heal.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Heal(void *context, int subanim);

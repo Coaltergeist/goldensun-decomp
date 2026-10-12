@@ -1,224 +1,236 @@
-# GNU Make 4.3+. All generated files stay under build/usa or build/host.
+# Default target. Verify the checksums of the built ROM and overlays.
+# Every generated file goes under build/: target output in build/usa and
+# host tools in build/host.
 .DEFAULT_GOAL := compare
-.NOTPARALLEL:
-.DELETE_ON_ERROR:
-.SUFFIXES:
-.ONESHELL:
-MAKEFLAGS += --no-builtin-rules
 SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
+MAKEFLAGS += --no-builtin-rules
+.SUFFIXES:
+.DELETE_ON_ERROR:
 
-include config/toolchain.mk
+BUILD  := build/usa
+HOST   := build/host
+OBJ    := $(BUILD)/obj
+STAMPS := $(BUILD)/stamps
+ROM    := $(BUILD)/goldensun.gba
+ELF    := $(BUILD)/goldensun.elf
+STAGE1 := $(BUILD)/stage1.o
 
-TARGET := build/usa
-HOST := build/host
-STAMPS := $(TARGET)/stamps
-ROM := $(TARGET)/goldensun.gba
-ELF := $(TARGET)/goldensun.elf
-STAGE1 := $(TARGET)/stage1.o
-STRINGS := $(TARGET)/generated/strings
-STRINGS_TEXT := $(TARGET)/reference/strings.txt
-STRINGS_STAMP := $(STRINGS)/complete.stamp
+AS      := arm-none-eabi-as
+LD      := arm-none-eabi-ld
+OBJCOPY := arm-none-eabi-objcopy
+ARM_ASFLAGS   := -mcpu=arm7tdmi -Iinclude
+THUMB_ASFLAGS := -mcpu=arm7tdmi -mthumb-interwork -Iinclude
 
-ifeq ($(PERMUTER),1)
-$(error Generate per-TU settings with tools/permuter_compile.py and pass --settings to the importer)
-endif
+OVERLAY_IDS       := $(patsubst linker/overlays/%.ld,%,$(wildcard linker/overlays/*.ld))
+OVERLAY_ELFS      := $(OVERLAY_IDS:%=$(BUILD)/overlays/%/overlay.elf)
+OVERLAY_BINS      := $(OVERLAY_ELFS:.elf=.bin)
+OVERLAY_LZS       := $(OVERLAY_ELFS:.elf=.lz)
+OVERLAY_ORIGINALS := $(OVERLAY_IDS:%=$(BUILD)/reference/overlays/%/orig.bin)
 
-ifneq ($(filter clean clean-dry-run,$(MAKECMDGOALS)),)
-ifneq ($(words $(MAKECMDGOALS)),1)
-$(error Run clean separately from other targets)
-endif
-endif
-
-# Queries and cleanup work without a ROM, compilers or generated dependencies.
-UTILITY_GOALS := clean clean-dry-run tags print-build-settings print-compile-contract
-READ_BUILD_INPUTS := $(filter-out $(UTILITY_GOALS),$(MAKECMDGOALS))
-ifeq ($(MAKECMDGOALS),)
-READ_BUILD_INPUTS := compare
-endif
-
-ifneq ($(READ_BUILD_INPUTS),)
-INPUTS_READY := $(shell python3 -B tools/build_inventory.py)
-ifneq ($(.SHELLSTATUS),0)
-$(error Failed to read build inputs)
-endif
-include $(TARGET)/inputs.mk
-
-ALL_GCC_OBJECTS := $(GCC_OBJECTS) $(GAIA_OBJECTS) $(COMMON2_OBJECTS)
-SDK_OBJECTS := $(M4A_OBJECTS) $(FLASH_OBJECTS)
-C_OBJECTS := $(ALL_GCC_OBJECTS) $(SDK_OBJECTS)
-ALL_OBJECTS := $(C_OBJECTS) $(ASSEMBLY_OBJECTS) $(STRINGS_OBJECT) $(HOST_OBJECTS)
-
-# Compile Camelot C. The trailing alignment uses zero fill rather than Thumb NOPs.
-$(GCC_OBJECTS): $(STAMPS)/gcc296.stamp
-$(GAIA_OBJECTS): $(STAMPS)/gcc296-gaia.stamp
-$(COMMON2_OBJECTS): $(STAMPS)/gcc296-common2.stamp
-$(ALL_GCC_OBJECTS): private TARGET_CFLAGS := $(GCC296_CFLAGS)
-$(GAIA_OBJECTS): private TARGET_CFLAGS := $(GAIA_CFLAGS)
-$(COMMON2_OBJECTS): private TARGET_CFLAGS := $(COMMON2_CFLAGS)
-
-$(ALL_GCC_OBJECTS): $(TARGET)/obj/%.o: %.c
-	mkdir -p $(dir $@)
-	rm -f $@
-	python3 -B tools/build_deps.py c $@ $(GCC296_CC) $(TARGET_CFLAGS) -M $*.c
-	$(GCC296_CC) $(TARGET_CFLAGS) -S -o $(@:.o=.s) $*.c
-	printf '\n\t.text\n\t.align\t%s, %s\n' $(TEXT_ALIGNMENT) $(TEXT_FILL) >> $(@:.o=.s)
-	$(ARM_AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
-	python3 -B tools/build_deps.py phony $(@:.o=.d)
-
-# Compile the SDK libraries through host preprocessing and old_agbcc.
-$(M4A_OBJECTS): $(STAMPS)/old-agbcc-m4a.stamp
-$(FLASH_OBJECTS): $(STAMPS)/old-agbcc-flash.stamp
-$(M4A_OBJECTS): private SDK_CPPFLAGS := $(M4A_CPPFLAGS)
-$(M4A_OBJECTS): private SDK_CFLAGS := $(M4A_CC1FLAGS)
-$(FLASH_OBJECTS): private SDK_CPPFLAGS := $(AGBFLASH_CPPFLAGS)
-$(FLASH_OBJECTS): private SDK_CFLAGS := $(AGBFLASH_CC1FLAGS)
-
-$(SDK_OBJECTS): $(TARGET)/obj/%.o: %.c
-	mkdir -p $(dir $@)
-	rm -f $@
-	python3 -B tools/build_deps.py c $@ $(SDK_CPP) $(SDK_CPPFLAGS) -M $*.c
-	$(SDK_CPP) -E $(SDK_CPPFLAGS) $*.c -o $(@:.o=.i)
-	$(AGBCC_CC) $(SDK_CFLAGS) -o $(@:.o=.s) $(@:.o=.i)
-	printf '\n\t.text\n\t.align\t%s, %s\n' $(TEXT_ALIGNMENT) $(TEXT_FILL) >> $(@:.o=.s)
-	$(ARM_AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
-	python3 -B tools/build_deps.py phony $(@:.o=.d)
-
-$(ASSEMBLY_OBJECTS): $(STAMPS)/arm-assembly.stamp
-$(ASSEMBLY_OBJECTS): $(TARGET)/obj/%.o: %.s
-	mkdir -p $(dir $@)
-	rm -f $@
-	$(ARM_AS) $(ARM_ASFLAGS) -MD $(@:.o=.d) -o $@ $*.s
-	python3 -B tools/build_deps.py phony $(@:.o=.d)
-
-$(STRINGS_OBJECT): $(STRINGS)/strings.s $(STAMPS)/arm-assembly.stamp
-	mkdir -p $(dir $@)
-	rm -f $@
-	$(ARM_AS) $(ARM_ASFLAGS) -MD $(@:.o=.d) -o $@ $(STRINGS)/strings.s
-	python3 -B tools/build_deps.py phony $(@:.o=.d)
-
-# Host utilities.
-$(HOST_OBJECTS): $(STAMPS)/host-c.stamp
-$(HOST_OBJECTS): $(HOST)/%.o: tools/%.c
-	mkdir -p $(dir $@)
-	rm -f $@
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ tools/$*.c
-
-$(HOST_TOOLS): $(HOST)/%: $(HOST)/%.o $(STAMPS)/host-c.stamp
-	rm -f $@
-	$(CC) -o $@ $<
-
-# Extract originals before sources that include their bytes are assembled.
-$(OVERLAY_ORIGINALS): $(TARGET)/reference/overlays/%/orig.bin: baserom.gba $(HOST)/unpack_overlay
-	mkdir -p $(dir $@)
-	rm -f $@
-	$(HOST)/unpack_overlay -r $< -a $(ROM_OFFSET) -o $@
-
-$(STRINGS_TEXT): baserom.gba $(HOST)/unpack_strings
-	mkdir -p $(dir $@)
-	rm -f $@
-	$(HOST)/unpack_strings -r $< -o $@
-
-$(STRINGS_STAMP) $(STRING_OUTPUTS) &: $(STRINGS_TEXT) $(HOST)/pack_strings
-	python3 -B tools/build_strings.py
-
-# Main symbols are linked first; overlays import them with -R after -T.
-$(STAGE1) $(TARGET)/stage1.map &: $(STAGE1_SCRIPT) $(STAMPS)/binutils.stamp
-	mkdir -p $(TARGET)
-	trap 'rm -f $(STAGE1) $(TARGET)/stage1.map $(STAGE1).tmp $(TARGET)/stage1.map.tmp' ERR INT TERM
-	arm-none-eabi-ld $(ARM_LDFLAGS) -r -T $(STAGE1_SCRIPT) $(ARM_LDLIBS) \
-	    -Map $(TARGET)/stage1.map.tmp -o $(STAGE1).tmp
-	mv $(TARGET)/stage1.map.tmp $(TARGET)/stage1.map
-	mv $(STAGE1).tmp $(STAGE1)
-
-$(TARGET)/overlays/%/overlay.elf $(TARGET)/overlays/%/overlay.map &: linker/overlays/%.ld $(STAGE1) $(STAMPS)/binutils.stamp
-	mkdir -p $(TARGET)/overlays/$*
-	trap 'rm -f $(TARGET)/overlays/$*/overlay.{elf,map}{,.tmp}' ERR INT TERM
-	arm-none-eabi-ld $(ARM_LDFLAGS) -T linker/overlays/$*.ld \
-	    $(ARM_LDLIBS) -R $(STAGE1) \
-	    -Map $(TARGET)/overlays/$*/overlay.map.tmp -o $(TARGET)/overlays/$*/overlay.elf.tmp
-	mv $(TARGET)/overlays/$*/overlay.map.tmp $(TARGET)/overlays/$*/overlay.map
-	mv $(TARGET)/overlays/$*/overlay.elf.tmp $(TARGET)/overlays/$*/overlay.elf
-
-$(OVERLAY_BINS): $(TARGET)/overlays/%/overlay.bin: $(TARGET)/overlays/%/overlay.elf $(STAMPS)/binutils.stamp
-	rm -f $@
-	arm-none-eabi-objcopy -O binary $< $@
-
-$(OVERLAY_LZS): $(TARGET)/overlays/%/overlay.lz: $(TARGET)/overlays/%/overlay.bin $(HOST)/pack_overlay
-	rm -f $@
-	$(HOST)/pack_overlay -i $< -o $@
-
-# Packed overlays and generated strings feed the final link through its inputs.
-$(ELF) $(TARGET)/goldensun.map &: $(ROM_SCRIPT) $(STAMPS)/binutils.stamp
-	mkdir -p $(TARGET)
-	trap 'rm -f $(ELF) $(TARGET)/goldensun.map $(ELF).tmp $(TARGET)/goldensun.map.tmp' ERR INT TERM
-	arm-none-eabi-ld $(ARM_LDFLAGS) -T $(ROM_SCRIPT) $(ARM_LDLIBS) \
-	    -Map $(TARGET)/goldensun.map.tmp -o $(ELF).tmp
-	mv $(TARGET)/goldensun.map.tmp $(TARGET)/goldensun.map
-	mv $(ELF).tmp $(ELF)
-
-$(ROM): $(ELF) $(STAMPS)/binutils.stamp
-	rm -f $@
-	arm-none-eabi-objcopy -O binary $< $@
-
-.PHONY: build compare verify compare-rom compare-overlays
-build: $(ROM)
+.PHONY: compare compare-rom compare-overlays
 compare: compare-rom compare-overlays
-verify: compare
 
-compare-rom: $(ROM) baserom.gba goldensun.sha1
-	read -r expected name < goldensun.sha1
-	printf '%s  %s\n' "$$expected" baserom.gba "$$expected" "$(ROM)" | sha1sum --check
+compare-rom: $(ROM) goldensun.sha1
+	sed 's|goldensun.gba|$(ROM)|' goldensun.sha1 | sha1sum -c -
 
 compare-overlays: $(OVERLAY_BINS) $(OVERLAY_ORIGINALS)
-	@for bank in $(OVERLAY_IDS); do
-	    cmp "$(TARGET)/reference/overlays/$$bank/orig.bin" \
-	        "$(TARGET)/overlays/$$bank/overlay.bin"
+	@for id in $(OVERLAY_IDS); do \
+	    cmp $(BUILD)/reference/overlays/$$id/orig.bin $(BUILD)/overlays/$$id/overlay.bin; \
 	done
-	@echo "All 96 overlays: OK"
+	@echo "All $(words $(OVERLAY_IDS)) overlays: OK"
 
-# Stamps change only when effective settings, selected tools or build code change.
+
+# The ROM image includes compressed code overlays.
+# The overlays reference symbols defined in the main executable.
+# We partially link the main executable; build the overlays against it;
+# compress the overlays; and then link the final image.
+# The linker scripts name every object, so they also define what gets built.
+
+SYMBOLS           := $(wildcard linker/symbols/*.sym)
+
+linked_objects = $(shell grep -ohE '$(OBJ)/[A-Za-z0-9_./-]+\.o' $(1))
+OBJS := $(sort $(call linked_objects,linker/*.ld linker/overlays/*.ld))
+
+$(STAGE1): linker/stage1.ld $(SYMBOLS) $(call linked_objects,linker/stage1.ld) $(STAMPS)/binutils.stamp
+	$(LD) -r -T $< -Map $(@:.o=.map) -o $@
+
+# Overlays reference symbols defined in main code
+$(foreach id,$(OVERLAY_IDS),$(eval $(BUILD)/overlays/$(id)/overlay.elf: $(call linked_objects,linker/overlays/$(id).ld)))
+$(OVERLAY_ELFS): $(BUILD)/overlays/%/overlay.elf: linker/overlays/%.ld $(STAGE1) $(STAMPS)/binutils.stamp
+	@mkdir -p $(@D)
+	$(LD) -T $< -R $(STAGE1) -Map $(@:.elf=.map) -o $@
+
+$(OVERLAY_BINS): %.bin: %.elf
+	$(OBJCOPY) -O binary $< $@
+
+$(OVERLAY_LZS): %.lz: %.bin $(HOST)/pack_overlay
+	$(HOST)/pack_overlay -i $< -o $@
+
+# Final fully linked executable
+$(ELF): linker/goldensun.ld $(SYMBOLS) $(STAGE1) $(call linked_objects,linker/goldensun.ld) $(STAMPS)/binutils.stamp
+	$(LD) -T $< -Map $(@:.elf=.map) -o $@
+
+$(ROM): $(ELF)
+	$(OBJCOPY) -O binary $< $@
+
+
+# Compile target C with the patched gcc-2.96 build from the camelot-gcc
+# repository (install via camelot-gcc/install.sh). Produces byte-identical
+# output for the reconstructed sources (see INSTALL.md).
+# Pipeline: xgcc -S (driver internal cpp -> cc1) -> trailing .align -> as.
+# Karathan's -fcall-used-r4 flag is required for byte match. -ffixed-r7 is
+# NOT needed under gcc-2.96; the compiler naturally avoids r7 for the same
+# allocation patterns Camelot did. Trailing .align 2, 0 is required because
+# gcc emits .align with zero-fill BETWEEN functions (via the elf.h patch)
+# but NOT AFTER the last function in a TU, so the assembler's default
+# Thumb-nop fill leaks in without this explicit append.
+GCC296_DIR     ?= tools/gcc296
+GCC296_CC      := $(GCC296_DIR)/xgcc
+# -fno-strict-aliasing is the gcc-2.96 default. goma_cave's
+# OvlFunc_906_20084f4 reproduces the ROM only with type-based alias analysis off,
+# and the flag is byte-compatible across the rest of the C codebase: the full ROM
+# builds byte-exact under it. Gaia has a documented reconstruction exception.
+GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi \
+                  -fno-builtin -nostdinc -ffreestanding \
+                  -fcall-used-r4 -Iinclude -fno-strict-aliasing
+
+# Gaia's cleaned reconstruction needs type-based alias analysis for its final
+# scale-store schedule. This is a matching exception, not evidence of Camelot's
+# original flags. Keep other animation TUs on the project default.
+GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
+$(OBJ)/src/battle_anim/moves/gaia.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
+
+# The common2 shared object was compiled WITHOUT -mthumb-interwork in the original
+# ROM: its common2_c* functions return `pop {pc}` (the non-interwork epilogue),
+# unique in the corpus; every other TU returns `bx`-form. The rest of the
+# consolidated TU (common2_b) is interwork-INSENSITIVE (byte-identical either way,
+# verified), so the whole common2.c compiles non-interwork.
+COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
+$(OBJ)/src/maps/common/common2.o: private GCC296_CFLAGS := $(COMMON2_CFLAGS)
+
+# Overlay data .incbin's the extracted originals, so extract them before any
+# object assembles; assembler depfiles track the actual inputs afterwards.
+$(OBJ)/%.o: %.c $(STAMPS)/gcc296.stamp $(STAMPS)/binutils.stamp | $(OVERLAY_ORIGINALS)
+	@mkdir -p $(@D)
+	python3 tools/build_deps.py c $@ $(GCC296_CC) $(GCC296_CFLAGS) -M $<
+	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	$(AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
+# src/lib/m4a/ is the stock m4a / "Sappy" engine, prebuilt by Nintendo with
+# old_agbcc (signed char, old ABI), NOT Camelot's gcc296. Per-file rule mirrors
+# sa2/Makefile's CC1_OLD override. -D M4A_SIGNED_CHAR gives the engine a signed
+# s8 (its ROM loads are signed) without touching the rest of the unsigned-char
+# corpus. See INSTALL.md for compiler setup.
+AGBCC_DIR     ?= tools/agbcc
+AGBCC_CC      := $(AGBCC_DIR)/bin/old_agbcc
+M4A_CPPFLAGS  := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1 -D M4A_SIGNED_CHAR
+M4A_CC1FLAGS  := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O2
+M4A_OBJS      := $(OBJ)/src/lib/m4a/m4a.o
+$(M4A_OBJS): private SDK_CPPFLAGS := $(M4A_CPPFLAGS)
+$(M4A_OBJS): private SDK_CC1FLAGS := $(M4A_CC1FLAGS)
+
+# src/lib/agb_flash/ is the launch-SDK "Flash v123" save library. Like m4a it is a
+# prebuilt Nintendo lib (old_agbcc, stock r4-callee-save ABI); but -O not -O2, and
+# unsigned char (no M4A_SIGNED_CHAR). The lone gcc-2.96 holdout agb_flash_verify.c
+# (VerifyEraseSector) rides the default gcc-2.96 rule instead.
+AGBFLASH_CPPFLAGS := -nostdinc -I$(AGBCC_DIR)/include -Iinclude -D PLATFORM_GBA=1
+AGBFLASH_CC1FLAGS := -Wimplicit -Wparentheses -fhex-asm -mthumb-interwork -O
+FLASH_OBJS := $(addprefix $(OBJ)/src/lib/agb_flash/,agb_flash.o agb_flash_mx.o agb_flash_at.o)
+$(FLASH_OBJS): private SDK_CPPFLAGS := $(AGBFLASH_CPPFLAGS)
+$(FLASH_OBJS): private SDK_CC1FLAGS := $(AGBFLASH_CC1FLAGS)
+
+$(M4A_OBJS) $(FLASH_OBJS): $(OBJ)/%.o: %.c $(STAMPS)/agbcc.stamp $(STAMPS)/binutils.stamp | $(OVERLAY_ORIGINALS)
+	@mkdir -p $(@D)
+	python3 tools/build_deps.py c $@ gcc $(SDK_CPPFLAGS) -M $<
+	gcc -E $(SDK_CPPFLAGS) $< -o $(@:.o=.i)
+	$(AGBCC_CC) $(SDK_CC1FLAGS) -o $(@:.o=.s) $(@:.o=.i)
+	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	$(AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
+# Assemble ARM code and generate dependencies
+$(OBJ)/%.o: %.s $(STAMPS)/binutils.stamp | $(OVERLAY_ORIGINALS)
+	@mkdir -p $(@D)
+	$(AS) $(ARM_ASFLAGS) -MD $(@:.o=.d) -o $@ $<
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
+# The overlay table data .incbin's every compressed overlay.
+$(OBJ)/data/map_overlays/rom_320000.o: $(OVERLAY_LZS)
+
+-include $(OBJS:.o=.d) $(OBJS:.o=.c.d)
+
+
+# Strings are extracted from the reference ROM and repacked.
+STRINGS      := $(BUILD)/generated/strings
+STRINGS_TEXT := $(BUILD)/reference/strings.txt
+
+$(STRINGS_TEXT): baserom.gba $(HOST)/unpack_strings
+	@mkdir -p $(@D)
+	$(HOST)/unpack_strings -r $< -o $@
+
+$(STRINGS)/strings.s: $(STRINGS_TEXT) $(HOST)/pack_strings
+	rm -rf $(STRINGS)
+	mkdir -p $(STRINGS)
+	$(HOST)/pack_strings -i $< -o $(STRINGS)
+
+$(OBJ)/generated/strings/strings.o: $(STRINGS)/strings.s $(STAMPS)/binutils.stamp
+	@mkdir -p $(@D)
+	$(AS) $(ARM_ASFLAGS) -MD $(@:.o=.d) -o $@ $<
+	@python3 tools/build_deps.py phony $(@:.o=.d)
+
+
+# We need the uncompressed overlays for incbin statements in overlay
+# sources. They're also convenient for comparing our build outputs.
+$(BUILD)/reference/overlays/rom_%/orig.bin: baserom.gba $(HOST)/unpack_overlay
+	@mkdir -p $(@D)
+	$(HOST)/unpack_overlay -r $< -a 0x$* -o $@
+
+
+# Tools are compiled for the host and used during the build.
+HOST_TOOLS := $(patsubst tools/%.c,$(HOST)/%,$(wildcard tools/*.c))
+CPPFLAGS += -MMD
+CFLAGS ?= -O2 -Wall
+
+$(HOST)/%.o: tools/%.c $(STAMPS)/host.stamp
+	@mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+
+$(HOST_TOOLS): $(HOST)/%: $(HOST)/%.o
+	$(CC) -o $@ $<
+
+.SECONDARY: $(HOST_TOOLS:=.o)
+-include $(HOST_TOOLS:=.d)
+
+
+# Fingerprints change only when tool contents or command settings change.
+# A phony prerequisite runs the inexpensive check each invocation; unchanged
+# stamp mtimes do not rebuild their consumers.
 .PHONY: FORCE
 FORCE:
-
+$(STAMPS)/gcc296.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(GCC296_CC) --tool $(GCC296_DIR)/cc1 --tool $(GCC296_DIR)/cpp --tool $(GCC296_DIR)/tradcpp --value='$(GCC296_CFLAGS)' --value='$(COMMON2_CFLAGS)' --value='$(GAIA_CFLAGS)'
+$(STAMPS)/agbcc.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(AGBCC_CC) --tool gcc --value='$(M4A_CPPFLAGS) $(M4A_CC1FLAGS)' --value='$(AGBFLASH_CPPFLAGS) $(AGBFLASH_CC1FLAGS)'
 $(STAMPS)/binutils.stamp: FORCE
-	@python3 -B tools/build_deps.py stamp $@ \
-	    --tool arm-none-eabi-as --tool arm-none-eabi-ld --tool arm-none-eabi-objcopy \
-	    --value='$(ARM_LDFLAGS) $(ARM_LDLIBS)'
+	@python3 tools/build_deps.py stamp $@ --tool $(AS) --tool $(LD) --tool $(OBJCOPY) --value='$(ARM_ASFLAGS)' --value='$(THUMB_ASFLAGS)'
+$(STAMPS)/host.stamp: FORCE
+	@python3 tools/build_deps.py stamp $@ --tool $(firstword $(CC)) --value='$(CC) $(CPPFLAGS) $(CFLAGS)'
 
-$(PROFILE_STAMPS): $(STAMPS)/%.stamp: FORCE
-	@python3 -B tools/build_stamp.py $*
 
--include $(ALL_OBJECTS:.o=.d)
--include $(C_OBJECTS:.o=.c.d)
-
-# Make does not inspect an unrequested peer of a grouped target.
-# Regenerate a link/map pair when its map was removed independently.
-LINK_MAPS := $(ELF:.elf=.map) $(OVERLAY_ELFS:.elf=.map)
-MISSING_LINK_MAPS := $(filter-out $(wildcard $(LINK_MAPS)),$(LINK_MAPS))
-$(MISSING_LINK_MAPS:.map=.elf): FORCE
-ifeq ($(wildcard $(TARGET)/stage1.map),)
-$(STAGE1): FORCE
-endif
-
-# Recreate missing compiler assembly even if the object still exists.
-MISSING_C_ASSEMBLY := $(filter-out $(wildcard $(C_OBJECTS:.o=.s)),$(C_OBJECTS:.o=.s))
-$(MISSING_C_ASSEMBLY:.s=.o): FORCE
-endif
-
-.PHONY: clean clean-dry-run tags print-build-settings print-compile-contract
+.PHONY: clean tags print-compile-contract
 clean:
-	python3 -B tools/build_clean.py
+	rm -rf build
 
-clean-dry-run:
-	python3 -B tools/build_clean.py --dry-run
-
+# Builds ctags using custom parsing on top of asm.
+# Ensure https://github.com/universal-ctags/ctags is installed to use.
 tags:
-	mkdir -p $(TARGET)
-	ctags -R -f $(TARGET)/tags --options=.opts.ctags --exclude=build .
+	@mkdir -p $(BUILD)
+	ctags -R -f $(BUILD)/tags --options=.opts.ctags --exclude=build .
 
-print-build-settings:
-	@python3 -B tools/build_config.py settings
-
+# Machine-readable compilation settings for external comparison tools.
+# SOURCE is the src/... C path, even when compiling a scratch copy.
 print-compile-contract:
-	@python3 -B tools/build_config.py legacy "$(SOURCE)"
+	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/battle_anim/moves/gaia.c,$(SOURCE)),$(GAIA_CFLAGS),$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS)))' '$(AGBCC_CC)' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'

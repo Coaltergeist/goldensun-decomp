@@ -1,4 +1,3 @@
-/* field/map_actor.c */
 #include "nonmatching.h"
 
 extern int MapActor_GetActor();

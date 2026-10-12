@@ -1,4 +1,3 @@
-/* battle_anim/moves/bite_sting.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Bite_Sting(void *context, int subanim);

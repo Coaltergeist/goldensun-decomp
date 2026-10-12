@@ -181,8 +181,7 @@ extern unsigned char iwram_3001ebc[];
 extern unsigned char const_89[] __asm__(".Lconst_89");
 __asm__(".equ .Lconst_89, 0x89");
 
-/* Private coins-view of gState (the TU's file-scope GlobalState at :28 is opaque
-   704B); a member access keeps the `ldr [base, #16]` form the ref codegen wants. */
+/* Private coins view of gState; the file-scope GlobalState is opaque. */
 struct GS951 { unsigned char _pad[16]; unsigned int coins; };
 
 void OvlFunc_951_20089f8(void) {

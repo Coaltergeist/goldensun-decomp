@@ -1,4 +1,11 @@
-# Generate per-TU settings with tools/permuter_compile.py; see DECOMP_DEV.md.
-# The compiler profile must be selected before importing a temporary C variant.
+# decomp-permuter project settings.
+#
+# Flags mirror the Makefile's default gcc-2.96 rule. Files with Makefile
+# exceptions (Gaia, common2, m4a/Flash) need their own flags instead; see
+# `make print-compile-contract SOURCE=...`. Any drift from the real build
+# produces spurious non-matches.
+
 compiler_type = "gcc"
+compiler_command = "tools/gcc296/xgcc -Btools/gcc296/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi -fno-builtin -nostdinc -ffreestanding -fcall-used-r4 -Iinclude -fno-strict-aliasing -S -o /dev/stdout | arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
+assembler_command = "arm-none-eabi-as -mcpu=arm7tdmi -mthumb-interwork -Iinclude"
 asm_prelude_file = "permuter_prelude.inc"

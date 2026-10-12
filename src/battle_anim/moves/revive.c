@@ -1,4 +1,3 @@
-/* battle_anim/moves/revive.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Revive(void *context, int subanim);

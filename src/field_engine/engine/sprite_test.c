@@ -1,4 +1,3 @@
-/* engine/sprite_test.c */
 #include "nonmatching.h"
 
 extern void *_GetSpriteInfo(int spriteId);

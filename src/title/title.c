@@ -1,4 +1,3 @@
-/* title.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/title/title/Func_80f2028.s");

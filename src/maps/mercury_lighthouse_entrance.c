@@ -3,7 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __Actor_SetAnim();
 extern void __Actor_SetScript();
 extern void __Actor_WaitMovement();

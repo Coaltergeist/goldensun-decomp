@@ -1,4 +1,3 @@
-/* field/moves/ply.c */
 #include "nonmatching.h"
 
 extern void Field_Ply(void);

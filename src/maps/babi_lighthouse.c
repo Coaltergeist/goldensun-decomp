@@ -6,7 +6,7 @@
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/exports.s");
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __Actor_SetAnim();
 extern void __Actor_WaitMovement();
 extern void __CutsceneEnd();

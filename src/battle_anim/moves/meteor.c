@@ -1,4 +1,3 @@
-/* battle_anim/moves/meteor.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Meteor(void *context, int subanim);

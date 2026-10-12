@@ -1,4 +1,3 @@
-/* field/weather.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma0.h"
 #include "dma.h"

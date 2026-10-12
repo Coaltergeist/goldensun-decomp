@@ -1,4 +1,3 @@
-/* battle_anim/anim_util.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim.s");

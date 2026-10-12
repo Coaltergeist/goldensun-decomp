@@ -1,4 +1,3 @@
-/* ui/save_menu.c -- consolidated [?] residual */
 #include "nonmatching.h"
 
 extern unsigned int AllocSpriteSlot(void);

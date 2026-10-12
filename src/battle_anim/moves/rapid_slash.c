@@ -1,4 +1,3 @@
-/* battle_anim/moves/rapid_slash.c -- consolidated [?] residual (gaia TU extracted) */
 #include "nonmatching.h"
 
 #include "nonmatching.h"

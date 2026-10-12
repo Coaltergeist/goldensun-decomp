@@ -1,4 +1,3 @@
-/* battle_anim/moves/particle_cloud.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_ParticleCloud(void *context, int subanim);

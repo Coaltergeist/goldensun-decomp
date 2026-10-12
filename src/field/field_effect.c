@@ -1,4 +1,3 @@
-/* field/field_effect.c */
 #include "nonmatching.h"
 #include "dma.h"
 

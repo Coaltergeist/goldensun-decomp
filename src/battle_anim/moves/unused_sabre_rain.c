@@ -1,4 +1,3 @@
-/* battle_anim/moves/unused_sabre_rain.c */
 #include "nonmatching.h"
 #include "anim.h"
 #include "task.h"

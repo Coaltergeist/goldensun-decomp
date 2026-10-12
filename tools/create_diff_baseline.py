@@ -15,12 +15,11 @@ import subprocess
 import sys
 import tempfile
 
-import build_paths
-import build_verify
 from build_deps import linker_dependencies
-from candidate_build import production_inputs, compiler_inputs
 
 ROOT = Path(__file__).resolve().parents[1]
+BUILD = "build/usa"
+OBJ = BUILD + "/obj"
 
 
 def sha(path):
@@ -45,9 +44,10 @@ def source_fingerprint():
 
 
 def linked_objects():
-    # Retain the established reference scope: game-code/assembly objects only.
-    return sorted(u["object"] for u in build_paths.catalog(ROOT)["units"]
-                  if u.get("baseline_scope", u["source"].startswith(("src/", "asm/"))))
+    scripts = [Path("linker/stage1.ld"), Path("linker/goldensun.ld")]
+    scripts += sorted(Path("linker/overlays").glob("*.ld"))
+    deps = set().union(*(linker_dependencies(p) for p in scripts))
+    return sorted(p for p in deps if p.endswith(".o") and p.startswith((OBJ + "/src/", OBJ + "/asm/")))
 
 
 def create(output):
@@ -64,13 +64,12 @@ def create(output):
     run = Path(tempfile.mkdtemp(prefix="verification-", dir=work))
     print("Verification log:", run / "build.log", flush=True)
     before = source_fingerprint()
-    production_before = production_inputs(ROOT)
-    compilers_before = compiler_inputs(ROOT)
     with (run / "build.log").open("w") as log:
-        gate = build_verify.run(ROOT, log)
+        for target in ("clean", "compare"):
+            subprocess.run(["make", "-j1", target], stdout=log, stderr=subprocess.STDOUT, check=True)
     if source_fingerprint() != before:
         raise ValueError("sources changed during verification; nothing published")
-    stamps = {str(p): sha(p) for p in Path(build_paths.STAMPS).glob("*.stamp")}
+    stamps = {str(p): sha(p) for p in Path(BUILD, "stamps").glob("*.stamp")}
     objects = linked_objects()
     if not objects:
         raise ValueError("no linked objects found")
@@ -86,17 +85,13 @@ def create(output):
         shutil.copy2(source, dest)
         if sha(dest) != entries[rel]:
             raise ValueError("copy changed: " + rel)
-    if production_before != production_inputs(ROOT) or compilers_before != compiler_inputs(ROOT):
-        raise ValueError("production or compiler inputs changed during verification")
-    manifest = dict(schema=3, production_inputs=production_before,
-        candidate_compilers=compilers_before, verified_at=datetime.now(timezone.utc).isoformat(),
+    manifest = dict(schema=1, verified_at=datetime.now(timezone.utc).isoformat(),
         revision=subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
         dirty=bool(subprocess.check_output(["git", "status", "--porcelain"])),
-        source_fingerprint=before, gate=gate,
-        reference_sha256=sha("baserom.gba"), rom_sha256=sha(build_paths.ROM),
-        overlays={row["binary"]: sha(row["binary"]) for row in build_paths.overlays(ROOT).values()},
-        overlay_originals={row["binary"]: row["original"] for row in build_paths.overlays(ROOT).values()},
-        compiler_stamps={str(p): json.loads(p.read_text()) for p in Path(build_paths.STAMPS).glob("*.stamp")},
+        source_fingerprint=before, gate="make -j1 clean && make -j1 compare",
+        reference_sha256=sha("baserom.gba"), rom_sha256=sha(BUILD + "/goldensun.gba"),
+        overlays={str(p): sha(p) for p in Path(BUILD, "overlays").glob("*/overlay.bin")},
+        compiler_stamps={str(p): json.loads(p.read_text()) for p in Path(BUILD, "stamps").glob("*.stamp")},
         objects=entries)
     (stage / "manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     if source_fingerprint() != before or any(sha(p) != h for p, h in stamps.items()):

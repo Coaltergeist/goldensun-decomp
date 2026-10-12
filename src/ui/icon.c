@@ -1,4 +1,3 @@
-/* ui/icon.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned char L2a2e0[] __asm__(".L2a2e0");

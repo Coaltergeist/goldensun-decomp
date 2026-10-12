@@ -1,4 +1,3 @@
-/* battle/mechanics.c -- consolidated [?] residual (transition_in TU extracted) */
 #include "nonmatching.h"
 
 #include "nonmatching.h"

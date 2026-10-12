@@ -1,4 +1,3 @@
-/* math/vector.c */
 #include "nonmatching.h"
 #include "gba/types.h"
 #include "math/projection.h"

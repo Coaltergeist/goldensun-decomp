@@ -1,4 +1,3 @@
-/* rpg/summon.c */
 #include "nonmatching.h"
 
 extern unsigned char *GetUnit(unsigned int unit);

@@ -398,8 +398,7 @@ INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008bc8.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c2c.s");
 void OvlFunc_957_2008c98(void)
 {
-    /* iwram_3001f30 is a file-scope unsigned char* pointer (:385); this fn needs
-       the array view of the same symbol. Callees left implicit (standalone match). */
+    /* This function needs the array view of iwram_3001f30. */
     extern unsigned char iwram_3001f30__arr[] __asm__("iwram_3001f30");
     unsigned char *p;
     unsigned char *actor;

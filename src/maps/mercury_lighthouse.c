@@ -4,7 +4,7 @@
 #include "api.h"
 #include "actor.h"
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __ActorMessage_Wait();
 extern void __Actor_SetAnim();
 extern void __Actor_SetScript();
@@ -541,8 +541,7 @@ void OvlFunc_924_20090c0(void)
 }
 void OvlFunc_924_2009164(void)
 {
-    /* struct Pk / OvlFunc_924_20088ec are file-scope above (:204/:213); pk is
-       passed by value so the TU's struct Pk layout must be the one used here. */
+    /* pk is passed by value, so it must use the file's struct Pk layout. */
     extern void __ClearFlag();
     extern void __CutsceneEnd();
     extern void __CutsceneStart();
@@ -853,7 +852,7 @@ void OvlFunc_924_2009d3c(void) {
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009db4.s");
-/* Private name — the TU's struct EffectData (:919) is a separate def below. */
+/* Private name; the file's struct EffectData is a separate definition. */
 struct EffectData924 {
     int unk0;
     int unk4;
@@ -942,8 +941,7 @@ extern ActorCmd gScript_924__0200dfa8[18];
 
 int OvlFunc_924_200a1cc(void)
 {
-    /* __MapActor_GetActor is declared file-scope as unsigned char* (:201);
-       cast to the actor.h struct Actor for the pos accesses. */
+    /* Cast to struct Actor for the position accesses. */
     extern void __Func_80933d4(int, int);
     extern void __Func_80933f8(int, int, int, int);
     extern void __Func_8093530(void);
