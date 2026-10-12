@@ -1,3 +1,5 @@
+#include "palette.h"
+
 /* Adapted from Salenewt GS2 re_Atalanta.c. */
 #define REG_BG2PA (*(volatile u16 *)0x04000020)
 
@@ -8,8 +10,6 @@
 #define REG_BLDALPHA (*(volatile u16 *)0x04000052)
 
 #define REG_BLDCNT (*(volatile u16 *)0x04000050)
-
-#define PALETTE_BG  ((volatile u16 *)0x05000000)
 
 #define OFFSET_CHECK(field, offset) typedef char field##_offset_check[(unsigned int)&((MoveAnimState *)0)->field == offset ? 1 : -1]
 

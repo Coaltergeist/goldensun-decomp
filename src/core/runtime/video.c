@@ -21,21 +21,8 @@ extern u16 iwram_3001cf8;
 #include "gba/io.h"
 #include "dma.h"
 
-struct DmaTransfer {
-    const void *src;
-    void *dest;
-    u32 control;
-};
-
-struct DmaQueue {
-    u16 count;
-    struct DmaTransfer tasks[32];
-};
-
-extern struct DmaQueue gDMATaskCount;
-
-static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 cnt) {
-    struct DmaQueue *queue;
+static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 control) {
+    DmaQueue *queue;
     register void *d __asm__("r6");
     register const void *s __asm__("r0");
     u32 savedIme;
@@ -46,17 +33,17 @@ static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 cnt) {
     __asm__ volatile("" : : "r"(queue));
     d = dest;
     s = src;
-    savedIme = REG_IME;
-    SET_IO(REG_IME, REG_ADDR_IME);
-    count = queue->count;
-    if (count < 32) {
+	savedIme = REG_IME;
+	SET_IO(REG_IME, REG_ADDR_IME);
+	count = queue->count;
+	if (count < 32) {
         task = (u32 *)(count * 12 + (u32)queue + 4);
         *task++ = (u32)s;
-        queue->count = count + 1;
+		queue->count = count + 1;
         *task++ = (u32)d;
-        *task = cnt;
-    }
-    SET_IO(REG_IME, savedIme);
+        *task = control;
+	}
+	SET_IO(REG_IME, savedIme);
 }
 
 void Func_800383c(void *dest, const void *src) {
@@ -95,7 +82,7 @@ void Func_8003a3c(void *dest, const void *src) {
     ScheduleDmaTransfer(dest, src, 0xB0000);
 }
 
-extern void UploadPalette_ROM(struct DmaQueue *queue, u32 count);
+extern void UploadPalette_ROM(DmaQueue *queue, u32 count);
 
 extern int _UPLOAD_PALETTE_SIZE;
 

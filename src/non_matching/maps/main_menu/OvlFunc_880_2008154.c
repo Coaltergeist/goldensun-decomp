@@ -1,11 +1,4 @@
-extern struct {
-    unsigned short count;
-    struct {
-        unsigned int value;
-        unsigned int dest;
-        unsigned int control;
-    } tasks[32];
-} gDMATaskCount;
+#include "dma.h"
 
 void __StopTask(void (*)(void));
 void OvlFunc_880_2008154(void);

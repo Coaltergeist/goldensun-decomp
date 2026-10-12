@@ -110,13 +110,6 @@ static inline u16 UnknownDMAPrefix(void) {
     return dma[5];
 }
 
-// A queued DMA copy (the gDMATasks[33] table).
-struct DMATask {
-    void *src;      // 0x00
-    void *dest;     // 0x04
-    u32 dmacnt;     // 0x08
-};
-
 /* DMA3 zero-fill of a byte range within a buffer. This variant preserves
  * the save routine's conservative r3 clobber; it is intentionally not replaced
  * by DMA3_CLEAR, whose asm contract differs. Offset and size are in bytes. */
@@ -138,5 +131,50 @@ static inline void DMA3_CLEAR_REGION(void *base, unsigned int offset, unsigned i
         );
     }
 }
+
+// A queued DMA copy (the gDMATasks[33] table).
+typedef struct {
+    const void *src;      // 0x00
+    void *dest;     // 0x04
+    u32 control;     // 0x08
+} DMATask;
+
+typedef struct {
+	u16 count;
+	u16 _pad;
+	DMATask tasks[32];
+} DmaQueue;
+
+extern DmaQueue gDMATaskCount;
+
+// reference only. clean, but can not match the binary.
+static inline void ScheduleDmaTransfer_Standard(void* dest, const void* src, u32 control) {
+	DmaQueue* queue;
+	u32 savedIme;
+	s32 count;
+	DMATask* task;
+	queue = &gDMATaskCount;
+	savedIme = REG_IME;
+	SET_IO(REG_IME, REG_ADDR_IME);
+	count = queue->count;
+	if (count < 32) {
+		task = &queue->tasks[count];
+		task->src = src;
+		queue->count = count + 1;
+		task->dest = dest;
+		task->control = control;
+	}
+	SET_IO(REG_IME, savedIme);
+}
+
+#define DMATASK_TYPE_DMA 0x0 // do not use this type
+#define DMATASK_TYPE_BYTE 0x1
+#define DMATASK_TYPE_HWORD 0x2 // 2byte
+#define DMATASK_TYPE_WORD 0x3 // 4byte
+#define DMATASK_OP_SET (0x1 << 18)
+#define DMATASK_OP_CLR (0x1 << 19)
+// use control as DMA3CNT (bit 20-16 unused)
+#define MAKE_DMATASK_DMA(dma3_ctrl, dma3_wordcnt) ((dma3_ctrl << 16) | dma3_wordcnt)
+#define MAKE_DMATASK_REG(type, op) ((type << 16) | (op & 0xFFFF))
 
 #endif // _DMA_H_

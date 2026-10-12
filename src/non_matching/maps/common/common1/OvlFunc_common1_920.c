@@ -1,3 +1,5 @@
+#include "dma.h"
+
 #define REG_IME (*(volatile unsigned short *)0x04000208)
 
 #define REG_ADDR_IME 0x04000208
@@ -6,24 +8,11 @@
 
 #define REG_BLDALPHA ((void *)0x04000052)
 
-struct DmaTransfer {
-    const void *src;
-    void *dest;
-    unsigned int control;
-};
-
-struct DmaQueue {
-    unsigned short count;
-    struct DmaTransfer tasks[32];
-};
-
 struct ObjAffineSrc {
     short xScale;
     short yScale;
     unsigned short angle;
 };
-
-extern struct DmaQueue gDMATaskCount;
 
 extern unsigned char Lc1_43[] __asm__(".Lc1_43");
 

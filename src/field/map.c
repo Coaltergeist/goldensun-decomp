@@ -1,6 +1,7 @@
 /* field/map.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma.h"
+#include "palette.h"
 
 extern void CutsceneEnd();
 extern int MapActor_GetActor();
@@ -454,8 +455,6 @@ INCLUDE_ASM("asm/field/map/Func_8090a5c.s");
 #include "task.h"
 extern void Func_8090a5c(unsigned int, unsigned int, unsigned int, unsigned int);
 extern void Func_80908e0(void);
-#define PALETTE_BG  ((void *)0x05000000)
-#define PALETTE_OBJ ((void *)0x05000200)
 
 void Func_8091174(void)
 {
