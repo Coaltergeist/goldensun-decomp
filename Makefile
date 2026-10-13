@@ -91,6 +91,9 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 # matching exception, not evidence of Camelot's original flags.
 GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
 $(OBJ)/src/battle_anim/moves/gaia.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
+$(OBJ)/src/field_engine/actor/actor.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
+$(OBJ)/src/field_engine/actor/actor_script.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
+$(OBJ)/src/field_engine/actor/player.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
 
 # common2 is built without -mthumb-interwork: its common2_c* functions return
 # with `pop {pc}`, unlike every other file. Its remaining code is the same
