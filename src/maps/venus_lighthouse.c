@@ -396,7 +396,7 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
     __Actor_SetAnim(actor, 7);
     actor->__unk55 = 0;
     actor->pos.y = 0;
-    actor->__unk59 = 0;
+    actor->collision = 0;
     actor->flags = 2;
     actor->update = (void *)OvlFunc_968_2008b98;
     actor->__unk63 = 0;

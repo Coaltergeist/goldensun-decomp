@@ -31,20 +31,21 @@ static inline void DMA3_COPY(const void *src, void *dst, u32 size) {
     );
 }
 
-static inline void DMA3_SET(const void *src, void *dst, u32 cnt) {
+static inline void DMA3_SET(const void *src, void *dst, u32 cnt)
+{
     register vu32 *_base __asm__("r3") = &REG_DMA3SAD;
-    register const void *_src  __asm__("r0") = src;
-    register void *_dst  __asm__("r1") = dst;
-    register u32 _cnt  __asm__("r2") = cnt;
+    register const void *_src __asm__("r0") = src;
+    register void *_dst __asm__("r1") = dst;
+    register u32 _cnt __asm__("r2") = cnt;
+
     __asm__ volatile (
         "stmia\tr3!, {r0, r1, r2}\n\t"
         "sub\tr3, #0xc"
-        :
-        : "r" (_base), "r" (_src), "r" (_dst), "r" (_cnt)
-        : "memory"
+        : "+r" (_src)
+        : "r" (_base), "r" (_dst), "r" (_cnt)
+        : "memory", "cc"
     );
 }
-
 // there must be a way to unify those, maybe they were macros instead of
 // inline functions and had some sort of common DMAN_SET
 

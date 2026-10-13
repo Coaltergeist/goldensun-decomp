@@ -11,7 +11,7 @@ int GomaCave2_MapInit(void)
     *(int *)(base + 0x1c8) = 0x18;
 
     a = (struct Actor *)__MapActor_GetActor(9);
-    a->__unk59 |= 0x10;
+    a->collision |= 0x10;
 
     if (API_GetFlag(0x302)) {
         API_MapActor_SetPos(8, 0xac << 17, 0xd0 << 15);

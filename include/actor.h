@@ -10,47 +10,46 @@
 struct Actor;
 
 typedef void (*actorfun_t)(struct Actor *actor);
+typedef bool32 (*actorcmd_t)(struct Actor *actor);
 
 struct Actor {
-    void *script;
-    u16 scriptPos;
-    u16 facing;
-    vec3_t pos;
-    fx32 floorPos;
-    vec2_t scale;
-    u16 width;
-    u8 layer;
-    u8 flags;
-    vec3_t motion;
-    fx32 speed;
-    fx32 accel;
-    vec3_t prevPos;
-    fx32 bounce;
-    fx32 gravity;
-    fx32 __unk4C;
-    struct Sprite *sprite;
-    bool8 visible;
-    u8 __unk55;
-    u8 __unk56;
-    u8 scriptVar;
-    u8 __unk58;
-    u8 __unk59;
-    u8 __unk5A;
-    bool8 stop;
-    u8 __unk5C;
-    u8 scriptLoop;
-    u16 waitTimer;
-    u8 __unk60;
-    u8 __unk61;
-    u8 __unk62;
-    u8 __unk63;
-    s16 waveCounter;
-    u16 __unk66;
-    struct Actor *linkedActor;
-    // UpdateActors calls the word at 0x6c directly with this actor in r0.
-    // Retain the legacy declaration until all callback signatures are reconciled.
-    actorfun_t *update;
-};
+/* 0x00 */  s32 *script;
+/* 0x04 */  s16 scriptPos;
+/* 0x06 */  u16 facing;
+/* 0x08 */  vec3_t pos;
+/* 0x14 */  fx32 floorPos;
+/* 0x18 */  vec2_t scale;
+/* 0x20 */  u16 width;
+/* 0x22 */  u8 layer;
+/* 0x23 */  u8 flags;
+/* 0x24 */  vec3_t motion;
+/* 0x30 */  fx32 speed;
+/* 0x34 */  fx32 accel;
+/* 0x38 */  vec3_t prevPos;
+/* 0x44 */  fx32 bounce;
+/* 0x48 */  fx32 gravity;
+/* 0x4C */  fx32 __unk4C;
+/* 0x50 */  struct Sprite *sprite;
+/* 0x54 */  bool8 visible;
+/* 0x55 */  u8 __unk55;
+/* 0x56 */  u8 __unk56;
+/* 0x57 */  u8 scriptVar;
+/* 0x58 */  u8 __unk58;
+/* 0x59 */  u8 collision;
+/* 0x5A */  u8 __unk5A;
+/* 0x5B */  bool8 stop;
+/* 0x5C */  u8 __unk5C;
+/* 0x5D */  u8 scriptLoop;
+/* 0x5E */  s16 waitTimer;
+/* 0x60 */  u8 __unk60;
+/* 0x61 */  u8 __unk61;
+/* 0x62 */  u8 __unk62;
+/* 0x63 */  u8 __unk63;
+/* 0x64 */  s16 waveCounter;
+/* 0x66 */  s16 __unk66;
+/* 0x68 */  struct Actor *linkedActor;
+/* 0x6C */  actorfun_t update;
+};                                   // sizeof = 0x70 (112 bytes)
 
 // Target ABI checks for the production compiler.
 typedef char ActorSizeCheck[(sizeof(struct Actor) == 112) ? 1 : -1];

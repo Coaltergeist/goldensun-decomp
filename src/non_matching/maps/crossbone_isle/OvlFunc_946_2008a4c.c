@@ -8,7 +8,7 @@ struct Actor *OvlFunc_946_2008a4c(int x, int y, int z, int a)
     if (actor != NULL) {
         actor->sprite->oam.priority = 1;
         actor->__unk55 = 0;
-        actor->__unk59 = 8;
+        actor->collision = 8;
         __Actor_SetSpriteFlags(actor, 0);
         __Func_80929d8(actor, 15);
         actor->flags = (actor->flags & ~1) | 2;

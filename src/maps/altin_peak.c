@@ -964,7 +964,7 @@ void OvlFunc_932_200a934(void)
         __Actor_SetSpriteFlags((void *)__MapActor_GetActor(8), 0);
         __Func_8092b08(9, 3);
         __Actor_SetSpriteFlags((void *)__MapActor_GetActor(9), 0);
-        ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 0;
+        ((struct Actor *)__MapActor_GetActor(9))->collision = 0;
     }
 
     o = 0xe1;

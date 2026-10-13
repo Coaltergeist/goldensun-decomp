@@ -1281,7 +1281,7 @@ void OvlFunc_945_200b7b4(void) {
     unsigned int i;
 
     for (i = 0x1c; i <= 0x23; i++) {
-        ((struct Actor *)__MapActor_GetActor(i))->__unk59 |= 8;
+        ((struct Actor *)__MapActor_GetActor(i))->collision |= 8;
     }
 }
 

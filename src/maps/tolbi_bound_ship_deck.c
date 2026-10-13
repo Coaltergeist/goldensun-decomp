@@ -541,10 +541,10 @@ void OvlFunc_943_200985c(void) {
     API_MapActor_SetPos(0x16, 0xcc0000, 0x2090000);
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->pos.y = 0x80 << 13;
-    ((struct Actor *)__MapActor_GetActor(0x16))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x16))->collision |= 0x80;
     API_MapActor_SetSpeed(0x16, 0x9999, 0x4ccc);
     __MapActor_SetBehavior(0x16, gScript_943__0200c58c);
-    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x15))->collision |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
@@ -567,7 +567,7 @@ void OvlFunc_943_2009920(void)
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->facing = 0;
     __MapActor_SetBehavior(0x16, gScript_943__0200c980);
-    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x15))->collision |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
@@ -851,10 +851,10 @@ void OvlFunc_943_200b284(void) {
     unsigned char *actor;
     int *p90;
 
-    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 0;
+    ((struct Actor *)__MapActor_GetActor(8))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(9))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(0xa))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(0xb))->collision = 0;
 
     OvlFunc_943_200b380(8);
     OvlFunc_943_200b380(9);
@@ -916,7 +916,7 @@ void OvlFunc_943_200b380(int actorId) {
     if (actor != 0) {
         __Func_8092b08(actorId, 3);
         __Actor_SetSpriteFlags(actor, 0);
-        actor->__unk59 = 0;
+        actor->collision = 0;
         actor->flags |= 2;
     }
 }

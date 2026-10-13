@@ -679,20 +679,20 @@ void OvlFunc_964_2009458(void) {
     API_SetFlag(0x80 << 2);
     if (API_GetFlag(0x201)) {
         __MapActor_GetActor(0xe)[0x62] = 0;
-        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xf7;
+        ((struct Actor *)__MapActor_GetActor(0xe))->collision &= 0xf7;
     } else {
         __MapActor_GetActor(0xe)[0x62] = 1;
-        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 |= 8;
+        ((struct Actor *)__MapActor_GetActor(0xe))->collision |= 8;
     }
 }
 void OvlFunc_964_20094ac(void) {
     API_SetFlag(0x201);
     if (API_GetFlag(0x80 << 2)) {
         __MapActor_GetActor(0xe)[0x62] = 0;
-        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xf7;
+        ((struct Actor *)__MapActor_GetActor(0xe))->collision &= 0xf7;
     } else {
         __MapActor_GetActor(0xe)[0x62] = 1;
-        ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 |= 8;
+        ((struct Actor *)__MapActor_GetActor(0xe))->collision |= 8;
     }
 }
 

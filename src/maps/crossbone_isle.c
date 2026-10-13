@@ -485,7 +485,7 @@ void OvlFunc_946_2009508(unsigned int param_1) {
 
     actor = (struct Actor *)__MapActor_GetActor(0xb);
     if (actor != 0) {
-        actor->__unk59 = 0;
+        actor->collision = 0;
     }
     actor = (struct Actor *)__MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
@@ -502,7 +502,7 @@ void OvlFunc_946_2009548(unsigned int param_1) {
 
     actor = (struct Actor *)__MapActor_GetActor(0xc);
     if (actor != 0) {
-        actor->__unk59 = 0;
+        actor->collision = 0;
     }
     actor = (struct Actor *)__MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
@@ -519,7 +519,7 @@ void OvlFunc_946_200958c(unsigned int param_1) {
 
     actor = (struct Actor *)__MapActor_GetActor(0xd);
     if (actor != 0) {
-        actor->__unk59 = 0;
+        actor->collision = 0;
     }
     actor = (struct Actor *)__MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);
@@ -537,7 +537,7 @@ void OvlFunc_946_20095d0(unsigned int param_1) {
 
     actor = (struct Actor *)__MapActor_GetActor(0xe);
     if (actor != 0) {
-        actor->__unk59 = 0;
+        actor->collision = 0;
     }
     actor = (struct Actor *)__MapActor_GetActor(param_1);
     __Actor_SetSpriteFlags(actor, 0);

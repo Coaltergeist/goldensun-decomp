@@ -106,7 +106,7 @@ int OvlFunc_881_2008314(struct Actor *actor)
 
     __Actor_SetSpriteFlags(actor, 0);
     __Actor_SetColorswap((unsigned int)actor, 0xa);
-    actor->__unk59 = 0;
+    actor->collision = 0;
     if (API_GetFlag(0x8a << 4)) {
         API_SetFlag(0x2f1);
         actor->pos.x = 0;
