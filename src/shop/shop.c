@@ -88,7 +88,21 @@ unsigned int Func_80b0664(unsigned int arg0)
   return r7;
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b0694.s");
+struct ShopListNode {
+    unsigned int unk0;
+    struct ShopListNode *next;
+};
+
+struct ShopListNode *Func_80b0694(unsigned char *shop)
+{
+    struct ShopListNode *node = *(struct ShopListNode **)(shop + 0x348);
+    int i;
+
+    for (i = 0; i != *(unsigned short *)(shop + 0x39e); i++)
+        node = node->next;
+    return node;
+}
+
 extern unsigned char Lb4100[] asm(".Lb4100");
 
 void Func_80b06c0(int count, int arg1, int arg2)
