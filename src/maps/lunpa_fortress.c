@@ -1688,7 +1688,69 @@ void OvlFunc_959_200cd88(void) {
 }
 
 INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_MapInit.s");
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200cf60.s");
+
+extern void OvlFunc_959_200d470(void);
+extern void OvlFunc_959_2009528(void);
+extern void __Func_80108c4(int);
+extern void __Func_8092950(int, int);
+extern void __Func_800fe9c(void);
+extern unsigned char *iwram_3001ebc__cf60 __asm__("iwram_3001ebc");
+
+void OvlFunc_959_200cf60(void) {
+    unsigned char *gs;
+
+    OvlFunc_959_200d470();
+    gs = (unsigned char *)&gState;
+    gs += 0x1c2;
+    switch (*(short *)gs) {
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        *(int *)(iwram_3001ebc__cf60 + 0x1c0) = 0x200;
+        API_StartTask(OvlFunc_959_2009718, 0xc8 << 4);
+        API_StartTask(OvlFunc_959_200975c, 0xc8 << 4);
+        API_StartTask(OvlFunc_959_20097bc, 0xc8 << 4);
+        __Func_80108c4(0xe0 << 4);
+        break;
+    case 12:
+    case 19:
+        *(int *)(iwram_3001ebc__cf60 + 0x1c0) = 0x209;
+        __Func_80108c4(0xc0 << 4);
+        break;
+    case 16:
+    case 17:
+    case 18:
+        *(int *)(iwram_3001ebc__cf60 + 0x1c0) = 0x200;
+        API_StartTask(OvlFunc_959_2009528, 0xc8 << 4);
+        API_StartTask(OvlFunc_959_20099e8, 0xc8 << 4);
+        API_WaitFrames(1);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        API_Func_80105d4(0x65, 9, 0xa, 8, 0x6e, 9);
+        __Func_80108c4(0xe0 << 4);
+        break;
+    case 13:
+    case 14:
+    case 15:
+        *(int *)(iwram_3001ebc__cf60 + 0x1c0) = 0x200;
+        API_StartTask(OvlFunc_959_200969c, 0xc8 << 4);
+        break;
+    default:
+        *(int *)(iwram_3001ebc__cf60 + 0x1c0) = 0x200;
+        __Func_80108c4(0xe0 << 4);
+        break;
+    }
+    __Func_8092950(0x12, 1);
+    __Func_8092950(0x11, 1);
+    __Func_8092950(0x15, 1);
+    __Func_8092950(0xc, 1);
+    __Func_8092950(0xd, 1);
+    API_WaitFrames(1);
+}
+
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d0e4.s");
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d324.s");
 

@@ -718,7 +718,46 @@ void OvlFunc_947_20095cc(void) {
     *(unsigned short *)((char *)h + 0xa) += 0xc0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20095fc.s");
+extern void OvlFunc_947_2008cc0(int, int, int, int, int, int, int);
+extern void __SetIntrHandler(int, int, void *);
+extern void __Func_800fe9c(void);
+extern int Lm947_3738__95fc __asm__(".Lm947_3738");
+
+void OvlFunc_947_20095fc(void) {
+    if (API_GetFlag(0x200) == 0) {
+        OvlFunc_947_2008cc0(0xa, 0x13, 0x10, 5, 0, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0xa, 0x33, 0x10, 5, 1, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0x2a, 0x33, 0x10, 5, 2, 0xa, 0x1f);
+    } else {
+        OvlFunc_947_2008cc0(0xa, 0x13, 0x10, 5, 0, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0xa, 0x53, 0x10, 5, 1, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0x2a, 0x53, 0x10, 5, 2, 0xa, 0x1f);
+    }
+    Lm947_3738__95fc = 0;
+    API_StartTask(OvlFunc_947_20095cc, 0xc8 << 4);
+    API_WaitFrames(1);
+    __SetIntrHandler(1, 0, OvlFunc_947_2009578);
+    API_PlaySound(0xe7);
+    Lm947_3738__95fc = 0;
+    do {
+        API_WaitFrames(1);
+    } while (++Lm947_3738__95fc <= 0x64);
+    API_PlaySound(0x121);
+    if (API_GetFlag(0x200) == 0) {
+        API_CopyMapTiles(0, 0x20, 0x20, 0, 0x20, 0x20);
+        API_CopyMapTiles(0x20, 0x20, 0x40, 0, 0x20, 0x20);
+    } else {
+        API_CopyMapTiles(0, 0x40, 0x20, 0, 0x20, 0x20);
+        API_CopyMapTiles(0x20, 0x40, 0x40, 0, 0x20, 0x20);
+    }
+    API_WaitFrames(1);
+    __SetIntrHandler(1, 0, 0);
+    API_WaitFrames(1);
+    API_StopTask(OvlFunc_947_20095cc);
+    __Func_800fe9c();
+    API_WaitFrames(0x1e);
+}
+
 extern unsigned char Lm947_2da8[] __asm__(".Lm947_2da8");
 extern unsigned char Lm947_2dfc[] __asm__(".Lm947_2dfc");
 extern unsigned char Lm947_2e50[] __asm__(".Lm947_2e50");

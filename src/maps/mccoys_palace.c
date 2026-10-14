@@ -503,10 +503,6 @@ extern int __Func_8091c7c(int, int);
 extern void __Func_8091e9c(int);
 extern int __Func_800fe9c(void);
 
-static inline int API_ShowActorMessage_NoWait(int a0, int a1) {
-    extern int __ShowActorMessage_NoWait(int, int);
-    return __ShowActorMessage_NoWait(a0, a1);
-}
 
 void OvlFunc_909_20088c0(void)
 {

@@ -6,6 +6,8 @@
 
 INCLUDE_ASM("asm/maps/altin_peak/exports.s");
 
+extern void __Func_800fe9c(void);
+
 extern void __Func_8091f14(int, int);
 
 void OvlFunc_932_2008030(void) {
@@ -431,7 +433,38 @@ void OvlFunc_932_20086dc(void) {
     __Func_8010704(0, 0, 1, 2, s1, s2);
     __SetFlag(0x8fd);
 }
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_20087e8.s");
+void OvlFunc_932_20087e8(void) {
+    char *field;
+    char *layer;
+    int i;
+
+    field = (char *)iwram_3001e70;
+    API_Func_80105d4(0x5d, 0x29, 0x10, 4, 0x4d, 0x1c);
+    API_PlaySound(0xe6);
+    API_Func_8012330(0x20000, 0x20000, 0x10000);
+    API_CutsceneWait(10);
+
+    layer = field + (0xb2 << 1);
+    for (i = 0; i <= 23; i++) {
+        *(int *)(layer + 0xc) += 0xffff0000;
+        API_WaitFrames(4);
+    }
+
+    __SetIntrHandler(1, 0, OvlFunc_932_20086a0);
+    *(unsigned short *)Lm932_5238 = 0;
+    do {
+        API_WaitFrames(1);
+    } while (++*(unsigned short *)Lm932_5238 <= 100);
+
+    API_WaitFrames(1);
+    __SetIntrHandler(1, 0, 0);
+    API_PlaySound(0x121);
+    API_Func_8012330(-1, -1, 0xe666);
+    API_CutsceneWait(0x1e);
+    API_Func_80105d4(0x4d, 0x29, 0x10, 4, 0x4d, 0x1c);
+    API_SetFlag(0x8fe);
+}
+
 extern void __CopyMapTiles(int, int, int, int, int, int);
 void __PlaySound(unsigned int snd);
 void OvlFunc_932_20088d4(void)
@@ -944,7 +977,42 @@ void OvlFunc_932_200a6c0(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200a804.s");
+void OvlFunc_932_200a804(void) {
+    struct Actor *a;
+    unsigned char *gs;
+
+    a = (struct Actor *)__MapActor_GetActor(0xa);
+    API_MapActor_SetPos(8, 0, 0);
+    API_MapActor_SetPos(9, 0, 0);
+    __Actor_SetSpriteFlags((void *)__MapActor_GetActor(9), 0);
+    a->__unk55 = 0;
+    a->scale.x = 0xe666;
+    a->scale.y = 0x9999;
+    a->sprite->rotation = 0x80 << 8;
+    ((struct Actor *)__MapActor_GetActor(0xc))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(0xc))->pos.y = 0xffe40000;
+    if (API_GetFlag(0x908)) {
+        a->pos.x += 0xe0 << 12;
+        a->pos.y += 0xfff80000;
+        a->sprite->rotation = 0xc0 << 8;
+    }
+    if (API_GetFlag(0x908)) {
+        API_CopyMapTiles(0x19, 0x24, 0x2b, 0x24, 0xb, 9);
+        API_Func_8010704(0x19, 0x23, 0xa, 5, 0x2b, 0x23);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+    }
+    gs = (unsigned char *)&gState;
+    gs += 0x1c2;
+    if (*(short *)gs == 6 && !API_GetFlag(0x109)) {
+        API_CutsceneStart();
+        ((struct Actor *)__MapActor_GetActor(0))->pos.y = 0xffa80000;
+        API_Func_80933f8(0xc6 << 18, 0xffa80000, 0x2410000, 0);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        API_CutsceneEnd();
+    }
+}
 
 extern void __Func_8092b08(int, int);
 extern void OvlFunc_932_200b028(void);
@@ -1052,7 +1120,48 @@ void OvlFunc_932_200abb0(unsigned int arg0, unsigned int arg1, unsigned int arg2
     __StartTask(OvlFunc_932_200ab58, 0xc8 << 4);
 }
 
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200abe0.s");
+extern unsigned int __Random(void);
+extern void __Actor_SetScript(struct Actor *, void *);
+extern unsigned char gScript_932__0200c01c[];
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+
+void OvlFunc_932_200abe0(void) {
+    struct Actor *actor;
+
+    if (_umodsi3_RAM(iwram_3001e40__ab58, 3) == 0) {
+        actor = (struct Actor *)API_CreateActor(
+            0xc8,
+            (((__Random() * 3 << 4) >> 16) << 16) + 0x2fd0000,
+            0xffc00000,
+            0x98 << 18
+        );
+        if (actor != 0) {
+            if (_umodsi3_RAM(iwram_3001e40__ab58, 9) == 0) {
+                if (((__Random() << 1) >> 16) != 0) {
+                    API_PlaySound(0x91);
+                } else {
+                    API_PlaySound(0x90);
+                }
+            }
+            actor->__unk55 = 0;
+            {
+                unsigned int v = ((__Random() << 15) >> 16) + 0x4ccc;
+                actor->gravity = 0x6666;
+                actor->scale.y = v;
+                actor->scale.x = v;
+            }
+            actor->__unk61 = 1;
+            __Actor_SetSpriteFlags(actor, 0);
+            actor->flags &= 0xfe;
+            actor->sprite->oam.priority = 1;
+            __Actor_SetAnim(actor, 1);
+            __Actor_SetScript(actor, gScript_932__0200c01c);
+            actor->motion.x = ((((__Random() * 3) << 1) >> 16) - 3) << 16;
+            actor->motion.y = 0x80 << 12;
+            actor->motion.z = (((__Random() * 3) << 9) >> 16) + 0xfffffd00;
+        }
+    }
+}
 
 extern unsigned char iwram_3001e40[];   /* @ 0x03001E40 */
 

@@ -271,7 +271,6 @@ int LaliveroRooms_GetEvents(void)
 }
 void OvlFunc_967_2008eec(void);
 static inline void API_Func_807808c(int a) { extern void __Func_807808c(int); __Func_807808c(a); }
-static inline int API_Func_8091c7c(int a, int b) { extern int __Func_8091c7c(int, int); return __Func_8091c7c(a, b); }
 void OvlFunc_967_2008508(void) {
     void *act;
     unsigned char *b;

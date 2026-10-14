@@ -1205,7 +1205,58 @@ void OvlFunc_883_200d75c(struct Actor *arg0) {
     __PlaySound(0x8a);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d7fc.s");
+void OvlFunc_883_200d8f0(unsigned int *arg0, unsigned int arg1, unsigned int arg2);
+
+void OvlFunc_883_200d7fc(struct Actor *arg0) {
+    extern void __Actor_SetSpriteFlags(unsigned char *, int);
+    extern unsigned char gScript_883__0200e6e4[];
+    struct Actor *actor;
+    int i;
+
+    API_PlaySound(0x9a);
+    for (i = 0x1e; i >= 0; i--) {
+        arg0->pos.y += 0x80 << 9;
+        arg0->facing += 0x80 << 6;
+        arg0->scale.x += 0xfffff800;
+        arg0->scale.y += 0xfffff800;
+        API_WaitFrames(1);
+    }
+
+    for (i = 7; i >= 0; i--) {
+        actor = (struct Actor *)API_CreateActor(
+            0x11d,
+            arg0->pos.x,
+            arg0->pos.y,
+            arg0->pos.z
+        );
+        if (actor != 0) {
+            int r;
+            int q;
+            __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+            __Actor_SetScript(actor, gScript_883__0200e6e4);
+            actor->speed = __Random() + (0x80 << 9);
+            actor->accel = 0x80 << 9;
+            actor->__unk55 = 2;
+            actor->gravity = 0xa3d;
+            r = __Random();
+            r -= __Random();
+            actor->motion.y = r;
+            q = __Random() * 3 * 8 + (0x80 << 12);
+            OvlFunc_883_200d8f0((unsigned int *)actor, q, __Random());
+        }
+    }
+
+    API_PlaySound(0x83);
+    arg0->pos.x = 0;
+    arg0->pos.y = 0;
+    arg0->pos.z = 0;
+    arg0->prevPos.x = 0x80 << 24;
+    arg0->prevPos.y = 0x80 << 24;
+    arg0->prevPos.z = 0x80 << 24;
+    arg0->motion.x = 0;
+    arg0->motion.y = 0;
+    arg0->motion.z = 0;
+}
 
 extern void __vec3_translate(unsigned int a, unsigned int b, unsigned int *c);
 
