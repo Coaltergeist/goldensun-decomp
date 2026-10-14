@@ -1478,10 +1478,10 @@ void OvlFunc_948_200a290(void) {
     volatile unsigned short *p;
     unsigned short val;
 
-    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 1;
+    ((struct Actor *)__MapActor_GetActor(8))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(9))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(0xa))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(0xb))->collision = 1;
 
     ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0xb333;
     ((struct Actor *)__MapActor_GetActor(9))->scale.x = 0xb333;

@@ -53,8 +53,8 @@ Data_8013624:
 	.word	ActorCmd_Stop
 	.ssize	Data_8013624
 
-	.global	Data_80136e0
-Data_80136e0:
+	.global	gActorAttrOpTable
+gActorAttrOpTable:
 	.word	ActorAttrOp_script
 	.word	ActorAttrOp_scriptPos
 	.word	ActorAttrOp_facing
@@ -97,4 +97,4 @@ Data_80136e0:
 	.word	ActorAttrOp_unk62
 	.word	ActorAttrOp_unk63
 
-	.ssize	Data_80136e0
+	.ssize	gActorAttrOpTable

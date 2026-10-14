@@ -10,7 +10,7 @@ struct Actor *OvlFunc_927_20089f4(int x, int y, int z, int spriteId)
     if (actor != 0) {
         actor->sprite->oam.priority = 0;
         actor->__unk55 = 0;
-        actor->__unk59 = 8;
+        actor->collision = 8;
         __Actor_SetSpriteFlags(actor, 0);
         __Func_80929d8((int)actor, 14);
         __Func_800c548(actor, 1);

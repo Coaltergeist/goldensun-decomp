@@ -55,7 +55,7 @@ void OvlFunc_942_2008958(void) {
         API_Func_8092adc(0xb, 0xc0 << 8, 0);
 
         actor = __MapActor_GetActor(0xa);
-        actor->__unk59 = 0;
+        actor->collision = 0;
         actor->flags = 2;
         ((unsigned char *)actor->sprite)[9] |= 0xc;
         ((unsigned char *)actor->sprite)[0x26] = 0;

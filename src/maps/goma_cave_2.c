@@ -65,14 +65,14 @@ void OvlFunc_905_20080c4(void)
     t <<= 16;
     pos[2] = obj->pos.z + t;
     hit = (struct Actor *)OvlFunc_905_200806c(pos, obj);
-    if (hit != NULL && (hit->__unk59 & 1))
+    if (hit != NULL && (hit->collision & 1))
         return;
 
     pos[0] = obj->pos.x;
     pos[1] = obj->pos.y + 0x100000;
     pos[2] = obj->pos.z;
     hit = (struct Actor *)OvlFunc_905_200806c(pos, obj);
-    if (hit != NULL && (hit->__unk59 & 1))
+    if (hit != NULL && (hit->collision & 1))
         return;
 
     obj->layer = 2;

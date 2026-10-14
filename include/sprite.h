@@ -13,7 +13,17 @@ struct SpriteLayer;
 // GBA OAM shadow record.
 struct SpriteOAM {
     struct SpriteOAM *dest;   // 0x00
-    u16 attr0;                // 0x04
+    union {                   // 0x04
+        u16 attr0;
+        struct {
+            u16 posY : 8;
+            u16 affineMode : 2;
+            u16 objMode : 2;
+            u16 moasic : 1;
+            u16 bpp : 1;
+            u16 shape : 2;
+        } __attribute__((packed)) attr0Bits;
+    } __attribute__((packed));
     u16 attr1;                // 0x06
     u8 attr2Lo;               // 0x08  attr2 bits 0-7 (tile bits 0-7)
     u8 tileHi : 2;            // 0x09  attr2 bits 8-9
@@ -63,7 +73,14 @@ struct Sprite {
     struct SpriteOAM shadowOAM;     // 0x0C
     fx32 scale;                     // 0x18
     u8 slot;                        // 0x1C  VRAM slot
-    u8 __unk1D;                     // 0x1D
+    union {
+        u8 __unk1D;                 // 0x1D
+        struct {
+            u8 bit0      : 1;
+            u8 bit1      : 1;
+            u8 remaining : 6;
+        } __attribute__((packed)) flags1D;
+    } __attribute__((packed));
     u16 rotation;                   // 0x1E  affine rotation (not facing)
     u8 width;                       // 0x20
     u8 height;                      // 0x21
