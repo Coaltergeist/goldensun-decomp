@@ -15,7 +15,12 @@ unsigned int NumMoveIcons(void) {
 }
 
 INCLUDE_ASM("asm/ui/icon/LoadOldUIIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadOldMoveIcon.s");
+extern unsigned char *_GetMoveInfo(unsigned int move);
+extern void LoadItemIconID(unsigned int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+
+void LoadOldMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {
+    LoadItemIconID(_GetMoveInfo(move)[4], a, b, c, d);
+}
 INCLUDE_ASM("asm/ui/icon/LoadItemIconID.s");
 INCLUDE_ASM("asm/ui/icon/DrawInventoryIcon.s");
 INCLUDE_ASM("asm/ui/icon/LoadInventoryIcon.s");
@@ -32,7 +37,11 @@ int LoadStatusIcon(int icon, int unused, int slot) {
 
 INCLUDE_ASM("asm/ui/icon/LoadUIBanner.s");
 INCLUDE_ASM("asm/ui/icon/LoadItemIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadMoveIcon.s");
+extern void LoadMoveIconID(unsigned int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+
+void LoadMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {
+    LoadMoveIconID(_GetMoveInfo(move)[4], a, b, c, d);
+}
 INCLUDE_ASM("asm/ui/icon/LoadMoveIconID.s");
 INCLUDE_ASM("asm/ui/icon/DecompressStatusIcon.s");
 INCLUDE_ASM("asm/ui/icon/LoadPortrait.s");

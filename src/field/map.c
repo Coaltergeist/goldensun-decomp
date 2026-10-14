@@ -53,7 +53,23 @@ void InitMap(void) {
     _call_via_r0((void (*)(void))__start_overlay[1]);
 }
 
-INCLUDE_ASM("asm/field/map/FindSpeakEvent.s");
+extern void *FindMapActorEvent(int a, int b);
+
+void *FindSpeakEvent(int arg0)
+{
+    extern unsigned char gState[];
+    void *event;
+    char *state;
+
+    event = FindMapActorEvent(0, arg0);
+    state = (char *)gState;
+    if (*(short *)(state + 0x24a) == arg0) {
+        void *alt = FindMapActorEvent(7, arg0);
+        if (alt != 0)
+            return alt;
+    }
+    return event;
+}
 
 INCLUDE_ASM("asm/field/map/rodata_808ce74.s");
 
