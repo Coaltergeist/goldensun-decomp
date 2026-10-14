@@ -6,7 +6,20 @@ extern void Func_801a968();
 extern void Func_801c3e8();
 
 INCLUDE_ASM("asm/ui/menu/Func_801a66c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801a778.s");
+extern unsigned int iwram_3001e98;
+void Func_801a778(void)
+{
+    unsigned char *base = (unsigned char *)iwram_3001e98;
+
+    *(unsigned int *)(base + 0x348) = 0;
+    *(unsigned short *)(base + 0x39a) = 0;
+    if (*(unsigned short *)(base + 0x39e) & 0x80) {
+        *(unsigned short *)(base + 0x39c) = 0;
+        *(unsigned short *)(base + 0x39e) = 0;
+    }
+    *(unsigned short *)(base + 0x3a0) = 0;
+    *(unsigned short *)(base + 0x394) = 0;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801a7c0.s");
 INCLUDE_ASM("asm/ui/menu/Func_801a7f4.s");
 
@@ -63,7 +76,15 @@ void Func_801b228(void) {
 }
 
 INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor2.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b36c.s");
+void *Func_801b36c(unsigned char *menu)
+{
+    unsigned int **node = *(unsigned int ***)(menu + 0x348);
+    int i;
+
+    for (i = 0; i != *(unsigned short *)(menu + 0x39e); i++)
+        node = (unsigned int **)node[1];
+    return node;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801b398.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b424.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b4ec.s");
@@ -239,7 +260,17 @@ unsigned int Func_801c458(unsigned int arg0, unsigned int arg1) {
 
 int Func_801c468(void) { return 1; }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c46c.s");
+extern unsigned char gState[];
+void Func_801c46c(int keys)
+{
+    unsigned char v = gState[0x205];
+
+    if (keys & 0x20)
+        v--;
+    else
+        v++;
+    gState[0x205] = v;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801c49c.s");
 INCLUDE_ASM("asm/ui/menu/Func_801c7fc.s");
 INCLUDE_ASM("asm/ui/menu/Func_801c8a0.s");
