@@ -151,7 +151,42 @@ void OvlFunc_964_20080c4(void) {
     __Actor_SetAnim(player, 1);
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008244.s");
+struct MapTile_OvlFunc_964_2008244 {
+    unsigned short a;
+    unsigned char b;
+    unsigned char c;
+};
+
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[];
+
+int OvlFunc_964_2008244(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val) {
+    char *base;
+    struct MapTile_OvlFunc_964_2008244 *buf;
+    unsigned int i;
+    unsigned int j;
+
+    base = *(char **)iwram_3001e70;
+    if (base == 0)
+        return 0;
+
+    if (layer <= 2) {
+        int offset = 0x130 + layer * 0x30;
+        buf = *(struct MapTile_OvlFunc_964_2008244 **)(base + offset);
+    } else {
+        buf = (struct MapTile_OvlFunc_964_2008244 *)gBuffer;
+    }
+
+    buf += x + (y << 7);
+    for (i = 0; i < h; i++) {
+        struct MapTile_OvlFunc_964_2008244 *row = buf + (i << 7);
+        for (j = 0; j < w; j++) {
+            row->b = val;
+            row++;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L31f0[] __asm__(".Lm964_31f0");
 extern int L3230[] __asm__(".Lm964_3230");
@@ -291,9 +326,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L31f0__a2[] __asm__(".Lm964_31f0");
-extern void OvlFunc_964_2008244(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
