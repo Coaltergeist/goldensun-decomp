@@ -414,6 +414,14 @@ void OvlFunc_914_2008b8c(void) {
 }
 
 #include "dma.h"
+#include "actor.h"
+
+struct Attr_OvlFunc_914_2008cb4 {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
 
 extern int OvlFunc_914_20082a8();
 extern unsigned char L17b0[] __asm__(".Lm914_17b0");
@@ -471,7 +479,40 @@ int OvlFunc_914_2008c4c(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_2/OvlFunc_914_2008cb4.s");
+void OvlFunc_914_2008cb4(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_914_2008cb4 *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_914_2008c4c;
+    actor->__unk56 = zero;
+}
+
 INCLUDE_ASM("asm/maps/kolima_forest_2/kolima_forest_2_data.s");
 
 INCLUDE_ASM("asm/maps/kolima_forest_2/imports.s");

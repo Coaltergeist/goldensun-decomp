@@ -428,21 +428,164 @@ unsigned int Func_80bf208(int arg0, int arg1, int arg2)
 	return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf250.s");
+unsigned int Func_80bf250(int unit) {
+    unsigned char *base;
+    unsigned char *p;
+    signed char *q;
+    unsigned char c;
+    int zero;
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf2b4.s");
+    base = _GetUnit(unit);
+    p = base + 0x132;
+    if (*p != 0) {
+        c = --*p;
+        zero = 0;
+        if (c == 0) {
+            base[0x133] = zero;
+            return 1;
+        }
+        q = (signed char *)(base + 0x133);
+        if (*q < 0) {
+            if (Func_80bf208(unit, *p, 0x1e) != 0) {
+                *q = zero;
+                *p = zero;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf318.s");
+unsigned int Func_80bf2b4(int unit) {
+    unsigned char *base;
+    unsigned char *p;
+    signed char *q;
+    unsigned char c;
+    int zero;
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf37c.s");
+    base = _GetUnit(unit);
+    p = base + 0x134;
+    if (*p != 0) {
+        c = --*p;
+        zero = 0;
+        if (c == 0) {
+            base[0x135] = zero;
+            return 1;
+        }
+        q = (signed char *)(base + 0x135);
+        if (*q < 0) {
+            if (Func_80bf208(unit, *p, 0x14) != 0) {
+                *q = zero;
+                *p = zero;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf3bc.s");
+unsigned int Func_80bf318(int unit) {
+    unsigned char *base;
+    unsigned char *p;
+    signed char *q;
+    unsigned char c;
+    int zero;
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf400.s");
+    base = _GetUnit(unit);
+    p = base + 0x136;
+    if (*p != 0) {
+        c = --*p;
+        zero = 0;
+        if (c == 0) {
+            base[0x137] = zero;
+            return 1;
+        }
+        q = (signed char *)(base + 0x137);
+        if (*q < 0) {
+            if (Func_80bf208(unit, *p, 0x14) != 0) {
+                *q = zero;
+                *p = zero;
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf440.s");
+unsigned int Func_80bf37c(int unit) {
+    unsigned char *p;
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf484.s");
+    p = _GetUnit(unit) + 0x138;
+    if (*p != 0) {
+        if (--*p == 0)
+            return 1;
+        if (Func_80bf208(unit, *p, 0x1e) != 0) {
+            *p = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+unsigned int Func_80bf3bc(int unit) {
+    unsigned char *p;
+
+    p = _GetUnit(unit) + 0x139;
+    if (*p != 0) {
+        if (--*p == 0)
+            return 1;
+        if (Func_80bf208(unit, *p, 0x3c) != 0) {
+            *p = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+unsigned int Func_80bf400(int unit) {
+    unsigned char *p;
+
+    p = _GetUnit(unit) + 0x13a;
+    if (*p != 0) {
+        if (--*p == 0)
+            return 1;
+        if (Func_80bf208(unit, *p, 0x46) != 0) {
+            *p = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+unsigned int Func_80bf440(int unit) {
+    unsigned char *p;
+
+    p = _GetUnit(unit) + 0x13b;
+    if (*p != 0) {
+        if (--*p == 0)
+            return 1;
+        if (Func_80bf208(unit, *p, 0x28) != 0) {
+            *p = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+unsigned int Func_80bf484(int unit) {
+    unsigned char *p;
+
+    p = _GetUnit(unit) + 0x13c;
+    if (*p != 0) {
+        if (--*p == 0)
+            return 1;
+        if (Func_80bf208(unit, *p, 0x32) != 0) {
+            *p = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bf4c4.s");
 

@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm948_2644[] __asm__(".Lm948_2644");
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/exports.s");
 
 extern int OvlFunc_948_20082a8();
@@ -59,7 +61,85 @@ void *OvlFunc_948_200806c(int *coords, void *arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20080c4.s");
+void OvlFunc_948_20080c4(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm948_2644[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_948_200806c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm948_2644[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_948_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_948_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm948_2644[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 extern unsigned char iwram_3001e70[];
 extern unsigned char gBuffer[];
 

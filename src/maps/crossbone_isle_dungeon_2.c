@@ -602,6 +602,7 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
 
 
 #include "state/global_state.h"
+#include "actor.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];
 extern unsigned char Lm947_2eac[] __asm__(".Lm947_2eac");
@@ -1188,7 +1189,17 @@ int CrossboneIsleDungeon2_GetEvents(void)
 
 void __Actor_SetSpriteFlags(void *, int);
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a5f8.s");
+void OvlFunc_947_200a5f8(int id) {
+    extern void __Actor_SetSpriteFlags();
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(id);
+    actor->__unk59 &= 0xfe;
+    actor->flags |= 2;
+    actor->__unk55 = 0;
+    __Actor_SetSpriteFlags(actor);
+    actor->sprite->oam.priority = 2;
+}
 
 
 void OvlFunc_947_200a63c(int arg0)

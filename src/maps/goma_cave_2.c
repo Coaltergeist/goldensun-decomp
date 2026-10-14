@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
+
 INCLUDE_ASM("asm/maps/goma_cave_2/exports.s");
 
 extern int OvlFunc_905_20082a8();
@@ -30,7 +32,29 @@ int OvlFunc_905_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200806c.s");
+void *OvlFunc_905_200806c(int *coords, void *arg1) {
+    unsigned char *base;
+    struct Actor **p;
+    unsigned int i;
+    int cx;
+
+    base = *(unsigned char **)iwram_3001ebc__tw;
+    i = 8;
+    cx = coords[0] >> 20;
+    p = (struct Actor **)(base + 0x34);
+    for (; i <= 0x41; i++) {
+        struct Actor *actor = *p++;
+        if (cx == actor->pos.x >> 20) {
+            if (coords[1] / 0x10000 == actor->pos.y / 0x10000) {
+                if (coords[2] >> 20 == actor->pos.z >> 20) {
+                    return actor;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
 extern unsigned int L1554[] __asm__(".Lm905_1554");
 extern void *OvlFunc_905_200806c(int *, void *);
 extern int __TestCollision(void *, int *);

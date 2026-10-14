@@ -5,6 +5,8 @@
 #include "message.h"
 #include "actor.h"
 
+extern unsigned int Lm883_6190[] __asm__(".Lm883_6190");
+
 INCLUDE_ASM("asm/maps/vale_river/exports.s");
 
 extern int Func_8000948(int);
@@ -46,7 +48,85 @@ void *OvlFunc_883_200806c(int *pos, void *unused)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20080c4.s");
+void OvlFunc_883_20080c4(void)
+{
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm883_6190[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_883_200806c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm883_6190[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_883_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_883_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm883_6190[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_2008244.s");
 
 extern unsigned int L6190[] __asm__(".Lm883_6190");
@@ -198,6 +278,12 @@ extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
 #include "field/push_block.h"
+struct Attr_OvlFunc_883_200db48 {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
 
 void OvlFunc_883_2008608(struct Pk arg)
 {
@@ -1373,7 +1459,39 @@ int OvlFunc_883_200dae0(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200db48.s");
+void OvlFunc_883_200db48(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_883_200db48 *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_883_200dae0;
+    actor->__unk56 = zero;
+}
 
 extern void __Actor_SetColorswap(unsigned int arg0, unsigned int arg1);
 extern void OvlFunc_883_200dd68(unsigned int arg0);
@@ -1433,7 +1551,28 @@ void OvlFunc_883_200dcc4(struct Actor *actor)
     actor->pos.y += 0x80 << 9;
     actor->pos.z = linked->pos.z + ((0x80 << 9) - s) * 5 + (0x80 << 12);
 }
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd14.s");
+
+void OvlFunc_883_200dd14(struct Actor *actor) {
+    extern int __sin(int);
+    struct Actor *target;
+    int w;
+    int s;
+
+    w = (unsigned short)actor->waveCounter + 1;
+    target = actor->linkedActor;
+    actor->waveCounter = w;
+    if ((short)w > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        s = __sin((short)w << 10);
+        actor->scale.x = s;
+        actor->scale.y = -s;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x80 << 9;
+        actor->pos.z = target->pos.z - (((0x80 << 9) - s) * 5) + (0x80 << 13);
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200dd68.s");
 INCLUDE_ASM("asm/maps/vale_river/vale_river_data.s");
 

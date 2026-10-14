@@ -19,6 +19,13 @@ INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
 
 #include "state/global_state.h"
+
+struct Attr_OvlFunc_936_200ba3c {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
 extern GlobalState gState;
 extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
 extern unsigned char Lm936_42c8[] __asm__(".Lm936_42c8");
@@ -791,7 +798,40 @@ int OvlFunc_936_200b9d4(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200ba3c.s");
+void OvlFunc_936_200ba3c(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_936_200ba3c *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_936_200b9d4;
+    actor->__unk56 = zero;
+}
+
 INCLUDE_ASM("asm/maps/kalay/kalay_data.s");
 
 INCLUDE_ASM("asm/maps/kalay/imports.s");

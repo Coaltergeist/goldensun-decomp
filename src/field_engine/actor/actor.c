@@ -1,5 +1,8 @@
 #include "nonmatching.h"
 
+extern void Func_800c880(void);
+extern void Func_800c62c(void);
+
 extern void Actor_SetScript();
 
 INCLUDE_ASM("asm/field_engine/actor/actor/Func_800bfa4.s");
@@ -241,7 +244,22 @@ void Actor_SetColorswap(void *actor, int colorswap)
     Sprite_SetColorswap(*(void **)((unsigned char *)actor + 0x50), colorswap);
 }
 
-INCLUDE_ASM("asm/field_engine/actor/actor/Func_800c5b4.s");
+void Func_800c5b4(void) {
+    unsigned short r2;
+    unsigned int r3;
+    unsigned short *r1;
+
+    Func_80042c8(Func_800c62c);
+    Func_80042c8(Func_800c880);
+    _Func_8091200(0x80 << 9, 1);
+    _Func_8091254(1);
+    WaitFrames(1);
+    r1 = (unsigned short *)(0x80u << 19);
+    r2 = *r1;
+    r3 = 0xf1ff;
+    r3 = r3 & r2;
+    *r1 = r3 | 0x1000;
+}
 
 extern void Func_800439c(void *);
 extern void Func_800c62c(void);

@@ -989,7 +989,31 @@ void OvlFunc_899_200c684(void)
 	__Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c698.s");
+void OvlFunc_899_200c698(int item, int x, int y, int z) {
+    int mask = ~0x20;
+    int zero;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+
+    zero = 0;
+    actor = API_CreateActor(0x16, x, y, z);
+    if (actor != 0) {
+        sprite = actor->sprite;
+        sprite->flags = zero;
+        sprite->numLayers = zero;
+        ((unsigned char *)&sprite->oam.attr0)[1] &= mask;
+        sprite->oam.palette = 0;
+        actor->__unk55 = zero;
+        actor->__unk5C = 1;
+        buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+        __LoadItemIcon(item);
+        buf += 0x400;
+        __UploadSpriteGFX(sprite->slot, 0x80, buf);
+        __gfree(0x11);
+    }
+}
+
 extern unsigned char Lm899_4f2c[] __asm__(".Lm899_4f2c");
 
 unsigned char *OvlFunc_899_200c704(vec3_t *pos)

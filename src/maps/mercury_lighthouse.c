@@ -4,6 +4,9 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm924_5d50[] __asm__(".Lm924_5d50");
+extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
+
 /* Void declarations for veneer callees. */
 extern void __ActorMessage_Wait();
 extern void __Actor_SetAnim();
@@ -51,8 +54,108 @@ int OvlFunc_924_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008350.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20083a8.s");
+void *OvlFunc_924_2008350(int *coords, void *arg1) {
+    unsigned char *base;
+    struct Actor **p;
+    unsigned int i;
+    int cx;
+
+    base = *(unsigned char **)iwram_3001ebc__tw;
+    i = 8;
+    cx = coords[0] >> 20;
+    p = (struct Actor **)(base + 0x34);
+    for (; i <= 0x41; i++) {
+        struct Actor *actor = *p++;
+        if (cx == actor->pos.x >> 20) {
+            if (coords[1] / 0x10000 == actor->pos.y / 0x10000) {
+                if (coords[2] >> 20 == actor->pos.z >> 20) {
+                    return actor;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+void OvlFunc_924_20083a8(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm924_5d50[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_924_2008350(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm924_5d50[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_924_2008350(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_924_2008350(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm924_5d50[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008528.s");
 
 extern unsigned int L5d50[] __asm__(".Lm924_5d50");
@@ -1451,6 +1554,7 @@ void OvlFunc_924_200b860(void)
 void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 
 #include "overlays/common0_effect.h"
+#include "rpg.h"
 
 void OvlFunc_924_200b948(void)
 {
@@ -1668,7 +1772,23 @@ void OvlFunc_924_200ca08(void)
 }
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cc68.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf44.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf90.s");
+
+void OvlFunc_924_200cf90(int item, int replacement) {
+    extern int __CheckPartyItem(int item);
+    extern int __CheckItem(int pc, int item);
+    extern struct Unit *__GetUnit(int pc);
+    int pc;
+    int slot;
+
+    pc = __CheckPartyItem(item);
+    if (pc != -1) {
+        slot = __CheckItem(pc, item);
+        if (slot != -1) {
+            __GetUnit(pc)->items[slot] = replacement;
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cfcc.s");
 extern unsigned char gScript_924__0200de08[];
 
@@ -1692,7 +1812,28 @@ void OvlFunc_924_200d158(struct Actor *arg0)
         }
     }
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d1b0.s");
+
+int OvlFunc_924_200d1b0(struct Actor *actor) {
+    struct Actor *target;
+    int next;
+    int val;
+    int s;
+
+    next = (unsigned short)actor->waveCounter + 1;
+    target = actor->linkedActor;
+    actor->waveCounter = next;
+    val = (short)next;
+    if (val > 31) {
+        return 0;
+    }
+    s = __sin(val << 10);
+    actor->scale.x = s;
+    actor->scale.y = s;
+    actor->pos.x = target->pos.x;
+    actor->pos.y += 0x80 << 9;
+    actor->pos.z = target->pos.z;
+    return 1;
+}
 
 unsigned int OvlFunc_924_200d1f0(unsigned int arg0)
 {

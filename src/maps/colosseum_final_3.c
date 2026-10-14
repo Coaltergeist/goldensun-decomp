@@ -192,6 +192,18 @@ void OvlFunc_956_20085e0(void)
 }
 
 #include "state/global_state.h"
+struct Ovl_OvlFunc_956_200937c {
+    char pad0[8];
+    int x;
+    int y;
+    int z;
+    int pad14;
+    int unk18;
+    int unk1c;
+    char pad2[0x64 - 0x20];
+    short s64;
+    short s66;
+};
 extern GlobalState gState;
 
 void OvlFunc_956_2008658(void) {
@@ -371,7 +383,17 @@ void *ColosseumFinal3_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_3/ColosseumFinal3_MapInit.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200937c.s");
+
+int OvlFunc_956_200937c(struct Ovl_OvlFunc_956_200937c *obj) {
+    obj->x += obj->s64 << 8;
+    obj->y += obj->s66 << 8;
+    obj->unk18 += 0x666;
+    obj->unk1c += 0x666;
+    obj->s64 += 5;
+    obj->s66 -= 1;
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20093c0.s");
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009474.s");
 void OvlFunc_956_2009a0c(int arg0)

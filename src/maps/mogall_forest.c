@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm927_2ef8[] __asm__(".Lm927_2ef8");
+
 INCLUDE_ASM("asm/maps/mogall_forest/exports.s");
 
 extern void __CutsceneStart();
@@ -52,7 +54,86 @@ void *OvlFunc_927_200806c(int *pos, void *unused)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20080c4.s");
+
+void OvlFunc_927_20080c4(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm927_2ef8[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_927_200806c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm927_2ef8[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_927_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_927_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm927_2ef8[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008244.s");
 
 extern unsigned int L2ef8[] __asm__(".Lm927_2ef8");
@@ -315,8 +396,43 @@ void OvlFunc_927_20089dc(struct Actor *actor, int priority) {
     actor->sprite->oam.priority = priority;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20089f4.s");
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008a4c.s");
+struct Actor *OvlFunc_927_20089f4(int x, int y, int z, int id) {
+    extern void __Actor_SetSpriteFlags();
+    extern void __Func_80929d8(int, int);
+    extern void __Func_800c548(int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(id, x, y, z);
+    if (actor != 0) {
+        actor->sprite->oam.priority = 0;
+        actor->__unk55 = 0;
+        actor->__unk59 = 8;
+        __Actor_SetSpriteFlags(actor, 0);
+        __Func_80929d8((int)actor, 0xe);
+        __Func_800c548((int)actor, 1);
+        return actor;
+    }
+    return 0;
+}
+
+struct Actor *OvlFunc_927_2008a4c(int x, int y, int z, int id) {
+    extern void __Actor_SetSpriteFlags();
+    extern void __Func_80929d8(int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(id, x, y, z);
+    if (actor != 0) {
+        actor->sprite->oam.priority = 1;
+        actor->__unk55 = 0;
+        actor->__unk59 = 8;
+        __Actor_SetSpriteFlags(actor, 0);
+        __Func_80929d8((int)actor, 0xf);
+        actor->flags = (actor->flags & 0xfe) | 2;
+        return actor;
+    }
+    return 0;
+}
+
 void OvlFunc_927_2008ab0(unsigned int *p, int unused)
 {
   unsigned short *new_var3;
@@ -1006,6 +1122,13 @@ void OvlFunc_927_200a004(void) {
 
 #include "actor.h"
 
+struct Attr_OvlFunc_927_200ac0c {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
+
 void OvlFunc_927_200a078(void)
 {
     struct Actor *actor;
@@ -1123,7 +1246,40 @@ int OvlFunc_927_200aba4(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200ac0c.s");
+void OvlFunc_927_200ac0c(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_927_200ac0c *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_927_200aba4;
+    actor->__unk56 = zero;
+}
+
 INCLUDE_ASM("asm/maps/mogall_forest/mogall_forest_data.s");
 
 INCLUDE_ASM("asm/maps/mogall_forest/imports.s");

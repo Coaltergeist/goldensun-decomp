@@ -1,6 +1,8 @@
 /* General-purpose field-move dispatcher. */
 #include "nonmatching.h"
 
+extern int *iwram_3001f30;
+
 extern void FieldMove_NoTarget(void);
 extern void FieldMove_Target(void);
 extern void Func_8096ab0(void);
@@ -21,7 +23,20 @@ void FieldMove(int param_1)
 INCLUDE_ASM("asm/field/field_move/FieldMove_NoTarget.s");
 INCLUDE_ASM("asm/field/field_move/FieldMove_Target.s");
 INCLUDE_ASM("asm/field/field_move/Func_8096ab0.s");
-INCLUDE_ASM("asm/field/field_move/Func_8096af0.s");
+
+void Func_8096af0(void) {
+    switch ((unsigned int)*(short *)((char *)iwram_3001f30 + 0x1e)) {
+    case 8:
+        Func_80984c0();
+        break;
+    case 10:
+        Func_8099738();
+        break;
+    case 16:
+        Func_809b648();
+        break;
+    }
+}
 
 extern void CutsceneStart(void);
 extern void MessageID(unsigned int stringID);

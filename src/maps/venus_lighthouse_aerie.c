@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "actor.h"
+#include "api.h"
 
 extern void OvlFunc_969_200a11c();
 
@@ -280,8 +281,42 @@ void OvlFunc_969_200a11c(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a15c.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a1ac.s");
+void OvlFunc_969_200a15c(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z + (0x10000 - sinVal) * 5 + 0x80000;
+    }
+}
+
+void OvlFunc_969_200a1ac(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200a200.s");
 
 extern void __Func_8096fb0(int a, int b);

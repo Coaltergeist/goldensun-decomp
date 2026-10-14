@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "rpg.h"
 
 
 unsigned char *GetItemInfo(unsigned int itemID) {
@@ -89,14 +90,57 @@ int CheckItem(int pc, int item)
     return -1;
 }
 
-INCLUDE_ASM("asm/rpg/item/CheckPartyItem.s");
+int CheckPartyItem(int item) {
+    extern unsigned int gState_a[] __asm__("gState");
+    extern int Func_80796c4(short *buf);
+    short party[10];
+    short *p;
+    int idx = 0xfa << 1;
+    int *leader = (int *)((char *)gState_a + idx);
+    int count;
+    int i;
+
+    if (CheckItem(*leader, item) != -1) {
+        return *leader;
+    }
+    count = Func_80796c4(party);
+    p = party;
+    for (i = 0; i < count; i++) {
+        int pc = *p++;
+        if (CheckItem(pc, item) != -1) {
+            return pc;
+        }
+    }
+    return -1;
+}
+
 INCLUDE_ASM("asm/rpg/item/EquipItem.s");
 INCLUDE_ASM("asm/rpg/item/GetEquippedItem.s");
 INCLUDE_ASM("asm/rpg/item/Func_807882c.s");
 INCLUDE_ASM("asm/rpg/item/Func_8078870.s");
 INCLUDE_ASM("asm/rpg/item/Func_80788c4.s");
 INCLUDE_ASM("asm/rpg/item/Func_8078948.s");
-INCLUDE_ASM("asm/rpg/item/CanRemoveItem.s");
+
+int CanRemoveItem(int pc, int slot) {
+    extern struct Unit *GetUnit(int unit);
+    struct Unit *u;
+    struct Item *info;
+    int item;
+
+    u = GetUnit(pc);
+    item = u->items[slot] & 0x1ff;
+    info = GetItemInfo(item);
+    if (item == 0) {
+        return -1;
+    }
+    if (info->flags & 8) {
+        return -4;
+    }
+    if ((u->items[slot] & (0x80 << 2)) && (info->flags & 2)) {
+        return -3;
+    }
+    return 0;
+}
 
 
 unsigned int Func_80789dc(unsigned int arg0)

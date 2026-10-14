@@ -7,7 +7,29 @@
 
 INCLUDE_ASM("asm/maps/vale_plaza/exports.s");
 
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008030.s");
+int OvlFunc_884_2008030(struct Actor *actor) {
+    extern int __atan2(int, int);
+    struct Actor *target;
+    unsigned short angle;
+    int diff;
+
+    target = actor->linkedActor;
+    if (target != 0) {
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x80 << 5) {
+                diff = 0x80 << 5;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_0200afa0[];
 
@@ -552,8 +574,42 @@ void OvlFunc_884_200a370(arg0) int arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a39c.s");
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a3ec.s");
+void OvlFunc_884_200a39c(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z + (0x10000 - sinVal) * 5 + 0x80000;
+    }
+}
+
+void OvlFunc_884_200a3ec(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a440.s");
 
 extern void __Func_8096fb0(int a, int b);

@@ -1071,7 +1071,25 @@ void OvlFunc_881_200bfb4(struct Actor *actor)
         actor->pos.z = linked->pos.z + (0x10000 - s) * 5 + 0x80000;
     }
 }
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c004.s");
+
+void OvlFunc_881_200c004(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200c058.s");
 INCLUDE_ASM("asm/maps/world_map_cutscenes/world_map_cutscenes_data.s");
 

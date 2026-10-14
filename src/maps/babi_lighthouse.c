@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm965_2fd4[] __asm__(".Lm965_2fd4");
+
 INCLUDE_ASM("asm/maps/babi_lighthouse/exports.s");
 
 /* Void declarations for veneer callees. */
@@ -65,7 +67,86 @@ void *OvlFunc_965_200806c(int *pos, void *unused)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20080c4.s");
+
+void OvlFunc_965_20080c4(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm965_2fd4[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_965_200806c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm965_2fd4[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_965_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_965_200806c(stk, obj);
+    if (res != 0) {
+        if (res->__unk59 & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm965_2fd4[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008244.s");
 
 extern unsigned int L2fd4[] __asm__(".Lm965_2fd4");
@@ -329,7 +410,25 @@ void OvlFunc_965_20089dc(struct Actor *actor, int priority) {
 }
 
 INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089f4.s");
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008a4c.s");
+
+struct Actor *OvlFunc_965_2008a4c(int x, int y, int z, int id) {
+    extern void __Actor_SetSpriteFlags();
+    extern void __Func_80929d8(int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(id, x, y, z);
+    if (actor != 0) {
+        actor->sprite->oam.priority = 1;
+        actor->__unk55 = 0;
+        actor->__unk59 = 8;
+        __Actor_SetSpriteFlags(actor, 0);
+        __Func_80929d8((int)actor, 0xf);
+        actor->flags = (actor->flags & 0xfe) | 2;
+        return actor;
+    }
+    return 0;
+}
+
 void OvlFunc_965_2008ab0(unsigned int arg0)
 {
   unsigned int r3;
@@ -856,7 +955,20 @@ void OvlFunc_965_200a7f4(void)
   __SetFlag(0xc0 << 2);
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a820.s");
+void OvlFunc_965_200a820(void) {
+    struct Actor *actor;
+    struct Actor *other;
+
+    actor = (struct Actor *)__MapActor_GetActor(8);
+    API_Func_8092b08(8, 1);
+    API_Func_8092b08(9, 1);
+    API_Func_8010704(0x45, 0x13, 3, 3, 5, 0x13);
+    API_Func_8010704(0x45, 0x13, 3, 3, 0x11, 0x13);
+    API_Func_8010704(3, 3, 1, 1, actor->pos.x >> 20, actor->pos.z >> 20);
+    other = (struct Actor *)__MapActor_GetActor(9);
+    API_Func_8010704(3, 3, 1, 1, other->pos.x >> 20, other->pos.z >> 20);
+}
+
 INCLUDE_ASM("asm/maps/babi_lighthouse/BabiLighthouse_MapInit.s");
 INCLUDE_ASM("asm/maps/babi_lighthouse/babi_lighthouse_data.s");
 

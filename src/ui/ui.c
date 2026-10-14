@@ -1,5 +1,36 @@
 #include "nonmatching.h"
 
+extern unsigned char iwram_3001e8c__a5[] __asm__("iwram_3001e8c");
+struct UISlot {
+    unsigned int obj;
+    unsigned short f4;
+    unsigned short f6;
+    unsigned char pad8[0xc];
+    unsigned short f14;
+    unsigned short f16;
+    unsigned short f18;
+    unsigned short f1a;
+    unsigned char pad1c[0xc];
+};
+struct UIBox {
+    unsigned int f0;
+    unsigned int f4;
+    unsigned short w;
+    unsigned short h;
+    unsigned short x;
+    unsigned short y;
+    unsigned short f10;
+    unsigned short f12;
+    unsigned short f14;
+    unsigned short flags;
+    unsigned short f18;
+    unsigned short f1a;
+    unsigned short ox;
+    unsigned short oy;
+    unsigned short ow;
+    unsigned short oh;
+};
+
 extern void Func_8016498(unsigned char *p);
 extern void Func_80164ac();
 extern void Func_8016594(unsigned char *arg0);
@@ -22,7 +53,44 @@ void UIBox_WaitAnim(unsigned char *box)
     }
 }
 
-INCLUDE_ASM("asm/ui/ui/CloseUIBox.s");
+void CloseUIBox(void *arg0, int clear) {
+    struct UIBox *box;
+    unsigned int zero;
+
+    box = (struct UIBox *)arg0;
+    if (box == 0) {
+        return;
+    }
+    Func_8016478(box);
+    box->ox = box->x;
+    box->oy = box->y;
+    box->ow = box->w;
+    zero = 0;
+    box->flags = zero;
+    box->oh = box->h;
+    if (clear != 0) {
+        ClearUIRegion(box->x, box->y, box->w, box->h);
+        box->f0 = zero;
+        box->f4 = zero;
+        box->w = zero;
+        box->h = zero;
+        box->x = zero;
+        box->y = zero;
+        box->f10 = zero;
+        box->f12 = zero;
+        box->f14 = zero;
+        box->flags = zero;
+        box->f18 = zero;
+        box->f1a = zero;
+        box->ox = zero;
+        box->oy = zero;
+        box->ow = zero;
+        box->oh = zero;
+    } else {
+        box->f18 = clear;
+        box->f1a = 4;
+    }
+}
 
 
 void Func_8016478(void *arg0) {
@@ -125,7 +193,35 @@ void *Func_8016738(void)
 
     return fill((void *)0x6002500, 0xf00, 0x44444444);
 }
-INCLUDE_ASM("asm/ui/ui/Func_8016758.s");
+
+void Func_8016758(void) {
+    struct UISlot *p;
+    struct UISlot *slot;
+    int i;
+
+    p = (struct UISlot *)(*(unsigned char **)iwram_3001e8c__a5 + (0xc4 << 3));
+    slot = 0;
+    for (i = 0; i != 3; i++) {
+        unsigned char *obj = (unsigned char *)p->obj;
+        if (obj == 0 || *(unsigned short *)(obj + 0x14) != 0) {
+            slot = p;
+            break;
+        }
+        p++;
+    }
+    if (slot != 0) {
+        if (slot->obj != 0) {
+            Func_801671c();
+            slot->f6 = 0;
+        }
+        slot->f4 = 0;
+        slot->f14 = 0;
+        slot->f16 = 0xf;
+        slot->f18 = 0;
+        slot->f1a = 0xa;
+    }
+}
+
 INCLUDE_ASM("asm/ui/ui/Func_80167ac.s");
 
 void Func_80167d8(unsigned int r0) {

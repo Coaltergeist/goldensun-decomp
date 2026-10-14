@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 extern void WaitFrames(unsigned int nframes);
 extern int Actor_IsNotMoving(void *actor);
@@ -151,9 +152,41 @@ int ActorCmd_Goto(int actor) {
     return 1;
 }
 
-INCLUDE_ASM("asm/field_engine/actor/actor_script/ActorCmd_GotoIfNZ.s");
+int ActorCmd_GotoIfNZ(struct Actor *actor) {
+    int idx;
+    int base;
+    unsigned int val;
+    unsigned char flag;
 
-INCLUDE_ASM("asm/field_engine/actor/actor_script/ActorCmd_GotoIfZ.s");
+    idx = (short)actor->scriptPos;
+    base = (int)actor->script;
+    val = *(unsigned int *)((char *)(idx << 2) + base + 4);
+    flag = actor->scriptVar;
+    if (flag != 0) {
+        actor->scriptPos = Actor_FindScriptMarker(actor, val);
+    } else {
+        actor->scriptPos = actor->scriptPos + 2;
+    }
+    return 1;
+}
+
+int ActorCmd_GotoIfZ(struct Actor *actor) {
+    int idx;
+    int base;
+    unsigned int val;
+    unsigned char flag;
+
+    idx = (short)actor->scriptPos;
+    base = (int)actor->script;
+    val = *(unsigned int *)((char *)(idx << 2) + base + 4);
+    flag = actor->scriptVar;
+    if (flag == 0) {
+        actor->scriptPos = Actor_FindScriptMarker(actor, val);
+    } else {
+        actor->scriptPos = actor->scriptPos + 2;
+    }
+    return 1;
+}
 
 int ActorCmd_Stop(int *actor) {
     actor[0] = (int)L13240;
@@ -279,9 +312,47 @@ int ActorCmd_Sound(unsigned char *r5_arg)
     return 1;
 }
 
-INCLUDE_ASM("asm/field_engine/actor/actor_script/Func_800d924.s");
+int Func_800d924(struct Actor *self, int *pos) {
+    extern struct Actor *iwram_3001e64;
+    extern int Func_800eba0(int *a, int r1, int *b, int r3);
+    struct Actor *actor;
+    unsigned char *flags;
+    int i;
 
-INCLUDE_ASM("asm/field_engine/actor/actor_script/Func_800d98c.s");
+    actor = iwram_3001e64;
+    flags = &actor->__unk59;
+    for (i = 0; i <= 0x3f; i++) {
+        if (actor->script != 0 && (*flags & 1) != 0 && actor != self) {
+            if (Func_800eba0((int *)&actor->pos, actor->width - 2, pos, self->width - 2) >= 0) {
+                return -1;
+            }
+        }
+        flags += sizeof(struct Actor);
+        actor++;
+    }
+    return 0;
+}
+
+struct Actor * Func_800d98c(struct Actor *self, int *pos) {
+    extern struct Actor *iwram_3001e64;
+    extern int Func_800eba0(int *a, int r1, int *b, int r3);
+    struct Actor *actor;
+    unsigned char *flags;
+    int i;
+
+    actor = iwram_3001e64;
+    flags = &actor->__unk59;
+    for (i = 0; i <= 0x3f; i++) {
+        if (actor->script != 0 && (*flags & 1) != 0 && actor != self) {
+            if (Func_800eba0((int *)&actor->pos, actor->width - 2, pos, self->width - 2) >= 0) {
+                return actor;
+            }
+        }
+        flags += sizeof(struct Actor);
+        actor++;
+    }
+    return 0;
+}
 
 int ActorCmd_SetPos(void *r5)
 {
