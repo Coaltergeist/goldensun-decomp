@@ -206,7 +206,21 @@ int Func_8079c5c(int arg0, int arg1, int arg2) {
     return result >> 16;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c8c.s", ".text.rpg_pc_3");
+int Func_8079c8c(unsigned int pc)
+{
+    extern unsigned int Func_80798b4(unsigned char *unit);
+    extern unsigned char *Func_807882c(unsigned char *unit, int type);
+    unsigned char *unit;
+    unsigned char *item;
+
+    unit = GetUnit(pc);
+    if (unit[0x129] == 0)
+        return Func_80798b4(unit);
+    item = Func_807882c(unit, 1);
+    if (item != 0)
+        return *(int *)(item + 0x14);
+    return 4;
+}
 INCLUDE_ASM_SECTION("asm/rpg/pc/CheckEquipmentCritBoost.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d1c.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d7c.s", ".text.rpg_pc_3");

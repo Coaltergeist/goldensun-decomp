@@ -81,7 +81,21 @@ int FindEmptyInventorySlot(int unit)
 }
 
 INCLUDE_ASM("asm/rpg/item/Func_8078500.s");
-INCLUDE_ASM("asm/rpg/item/Func_8078550.s");
+int Func_8078550(void)
+{
+    extern int Func_80796c4(short *buf);
+    short party[10];
+    short *p;
+    int count;
+    int total = 0;
+    int i;
+
+    count = Func_80796c4(party);
+    p = party;
+    for (i = 0; i < count; i++)
+        total = total - FindEmptyInventorySlot(*p++) + 15;
+    return total;
+}
 INCLUDE_ASM("asm/rpg/item/GiveItemTo.s");
 INCLUDE_ASM("asm/rpg/item/GiveItem.s");
 
@@ -128,7 +142,20 @@ int CheckPartyItem(int item) {
 
 INCLUDE_ASM("asm/rpg/item/EquipItem.s");
 INCLUDE_ASM("asm/rpg/item/GetEquippedItem.s");
-INCLUDE_ASM("asm/rpg/item/Func_807882c.s");
+struct Item *Func_807882c(struct Unit *u, int type)
+{
+    struct Item *item;
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            item = (struct Item *)GetItemInfo(u->items[i]);
+            if (item->type == type)
+                return item;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/rpg/item/Func_8078870.s");
 INCLUDE_ASM("asm/rpg/item/Func_80788c4.s");
 extern int Func_80788c4(int a, int b);
