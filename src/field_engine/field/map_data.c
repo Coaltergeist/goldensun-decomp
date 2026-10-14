@@ -315,9 +315,50 @@ INCLUDE_ASM("asm/field_engine/field/map_data/Func_8011f54.s");
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_8011fd8.s");
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_8012038.s");
+struct MapTile {
+    unsigned char unk0;
+    unsigned char unk1;
+    unsigned char unk2;
+    unsigned char unk3;
+};
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_8012078.s");
+struct MapLayer {
+    struct MapTile *tiles;
+    unsigned char pad4[0x2c];
+};
+
+struct MapLayerState {
+    unsigned char pad0[0x130];
+    struct MapLayer layers[4];
+};
+
+unsigned int Func_8012038(int layer, int x, int z)
+{
+    struct MapLayerState *field = (struct MapLayerState *)iwram_3001e70;
+    struct MapTile *tiles;
+
+    x >>= 20;
+    z >>= 20;
+    tiles = (struct MapTile *)gBuffer;
+    if (field != 0)
+        tiles = field->layers[layer & 3].tiles;
+    tiles += x + (z << 7);
+    return tiles->unk2;
+}
+
+void Func_8012078(int layer, int x, int z, int value)
+{
+    struct MapLayerState *field = (struct MapLayerState *)iwram_3001e70;
+    struct MapTile *tiles;
+
+    x >>= 20;
+    z >>= 20;
+    if (field != 0) {
+        tiles = field->layers[layer & 3].tiles;
+        tiles += x + (z << 7);
+        tiles->unk2 = value;
+    }
+}
 
 unsigned int Func_80120b4(int x, int y)
 {
