@@ -1,6 +1,7 @@
 // fakematch
 #include "nonmatching.h"
 #include "dma.h"
+#include "rpg.h"
 
 extern void Func_80a19a0(void);
 
@@ -116,7 +117,32 @@ unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned 
     return ret;
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a17c4.s");
+/* Partial view of a menu cursor: position plus an embedded OAM shadow at 0x10. */
+struct MenuCursor {
+    u8 pad0[5];
+    u8 unk5;
+    u16 x;
+    u16 y;
+    u8 padA[6];
+    void *oamDest;
+    u16 oamY : 8;
+    u16 affineMode : 2;
+    u16 attr0Hi : 6;
+    u16 oamX : 9;
+    u16 matrixNum : 5;
+    u16 size : 2;
+};
+
+void Func_80a17c4(struct MenuCursor *cursor)
+{
+    if (cursor != 0) {
+        cursor->unk5 = 1;
+        cursor->oamX = cursor->x;
+        cursor->oamY = cursor->y;
+        cursor->matrixNum = 0;
+        cursor->affineMode = 0;
+    }
+}
 
 extern void _Func_801ed40();
 
@@ -192,8 +218,6 @@ void Func_80a1bcc(void) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1bdc.s");
 
-extern void Func_80a17c4(unsigned char *);
-
 void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4)
 {
     unsigned char *p;
@@ -203,7 +227,7 @@ void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4)
     p = *pp;
     *(unsigned short *)(p + 8) = ((idx / arg4) << 4) + arg3;
     *(unsigned short *)(p + 6) = ((idx % arg4) << 4) + arg2;
-    Func_80a17c4(p);
+    Func_80a17c4((struct MenuCursor *)p);
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_a1c6c.s");
@@ -418,7 +442,24 @@ void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d24.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d6c.s");
+
+extern unsigned int _GetUnit(unsigned int arg0);
+
+unsigned int Func_80a3d6c(unsigned int unit)
+{
+    struct Unit *u;
+    int i;
+    int count;
+
+    count = 0;
+    u = (struct Unit *)_GetUnit(unit);
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x1ff)
+            count++;
+    }
+    return count;
+}
+
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d9c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3ddc.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3e28.s");
@@ -728,7 +769,7 @@ void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4) {
         idx = 0;
     *(unsigned short *)(p + 8) = ((idx / arg4) << 4) + xoff;
     *(unsigned short *)(p + 6) = ((idx % arg4) << 4) + yoff;
-    Func_80a17c4(p);
+    Func_80a17c4((struct MenuCursor *)p);
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9c18.s");
