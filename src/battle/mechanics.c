@@ -9,6 +9,7 @@ extern unsigned char *_Sprite_AddLayer(unsigned int a, unsigned int b);
 extern void _SpriteLayer_SetAnim(unsigned char *p, unsigned int b);
 extern void WaitFrames(unsigned int nframes);
 #include "gba/types.h"
+#include "gba/io.h"
 #include "actor.h"
 #include "math.h"
 extern unsigned int Func_80b7f70(unsigned int arg0, unsigned int arg1);
@@ -403,7 +404,20 @@ void Func_80bdfec(void) {
     *(unsigned int *)((char *)r2 + 0x824) = 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80be02c.s");
+extern void StopTask(void *task);
+
+/* Returns no value, but the epilogue (pop {r1}) shows a non-void function. */
+int Func_80be02c(void)
+{
+    unsigned char *base = (unsigned char *)iwram_3001e74;
+
+    if (*(int *)(base + 0x800) == 0)
+        *(int *)(base + 0x800) = 1;
+    while (*(int *)(base + 0x800) != 4)
+        WaitFrames(1);
+    StopTask(Func_80bd898);
+    Func_80bdfec();
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80be070.s");
 
@@ -664,11 +678,42 @@ INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0be4.s", ".text.mechanics_2");
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0cec.s", ".text.mechanics_2");
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0df4.s", ".text.mechanics_2");
+extern void Func_80c0cec(int x, int y, int z, int arg3);
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0e38.s", ".text.mechanics_2");
+void Func_80c0df4(int unitA, int unitB, int arg2)
+{
+    struct Actor *a;
+    struct Actor *b;
+    int ax, az, bx, bz;
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0e70.s", ".text.mechanics_2");
+    a = *(struct Actor **)GetBattleActor(unitA);
+    b = *(struct Actor **)GetBattleActor(unitB);
+    ax = a->pos.x;
+    bx = b->pos.x;
+    az = a->pos.z;
+    bz = b->pos.z;
+    Func_80c0cec((bx + ax) / 2, 0, (bz + az) / 2, arg2);
+}
+
+void Func_80c0e38(void) {
+    int i;
+
+    REG_BLDCNT = 0x2044;
+    for (i = 1; i <= 16; i += 2) {
+        REG_BLDALPHA = 0x1010 - i;
+        WaitFrames(1);
+    }
+}
+
+void Func_80c0e70(void) {
+    int i;
+
+    REG_BLDCNT = 0x2044;
+    for (i = 1; i <= 16; i += 2) {
+        REG_BLDALPHA = 0x1000 + i;
+        WaitFrames(1);
+    }
+}
 
 void Func_80c0ea8(void) {
     REG_BLDCNT = 0xbf;
@@ -687,8 +732,40 @@ INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0f98.s", ".text.mechanics_2");
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1014.s", ".text.mechanics_2");
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1054.s", ".text.mechanics_2");
+extern int Func_80b6c08(int side, s16 *units);
+extern void Func_80c0f98(int unit, int arg1);
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1084.s", ".text.mechanics_2");
+void Func_80c1054(void)
+{
+    s16 units[14];
+    int count;
+    int i;
+
+    count = Func_80b6c08(3, units);
+    for (i = 0; i < count; i++)
+        Func_80c0f98(units[i], 0);
+}
+
+extern signed char gFlashBrightness[] __asm__(".Lc5c10");
+
+void Func_80c1084(void)
+{
+    u16 *p = (u16 *)iwram_3001e74;
+    unsigned int v, next;
+
+    if (p == 0)
+        return;
+    if (p[0x650 / 2] == 0)
+        return;
+    REG_BLDCNT = 0x3f90;
+    REG_BLDALPHA = 0x10;
+    p += 0x64e / 2;
+    REG_BLDY = gFlashBrightness[*p];
+    v = *p;
+    next = (v + 1) & 0xf;
+    if (v > 14)
+        next |= 0x10;
+    *p = next;
+}
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/80c0a24_rodata.s", ".text.mechanics_2");

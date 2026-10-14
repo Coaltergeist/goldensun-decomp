@@ -43,7 +43,23 @@ INCLUDE_ASM("asm/battle/battle/Func_80b5f0c.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b606c.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b60a0.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6148.s");
-INCLUDE_ASM("asm/battle/battle/Func_80b6378.s");
+extern unsigned int iwram_3001e74;
+extern int Func_80b6a60(unsigned short *units);
+
+/* Returns no value, but the epilogue (pop {r1}) shows a non-void function. */
+int Func_80b6378(void)
+{
+    unsigned short units[8];
+    unsigned char *base = *(unsigned char **)&iwram_3001e74;
+    int count;
+    int i;
+
+    count = Func_80b6a60(units);
+    for (i = 0; i < count; i++) {
+        int idx = units[i] + 0x48;
+        base[idx] = i - 0x80;
+    }
+}
 void *Func_80b63b0(void)
 {
     void *(*clear)(void *, unsigned int) = Func_80008d4;
