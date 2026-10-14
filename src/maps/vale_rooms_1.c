@@ -387,10 +387,6 @@ void OvlFunc_886_20085d4(void)
     }
 }
 
-static inline int API_ShowActorMessage_NoWait(int a0, int a1) {
-    extern int __ShowActorMessage_NoWait(int, int);
-    return __ShowActorMessage_NoWait(a0, a1);
-}
 
 void OvlFunc_886_20090c0(void);
 extern unsigned char gScript_886__02009400[];

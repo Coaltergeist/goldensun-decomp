@@ -38,6 +38,8 @@ void OvlFunc_897_2008f28(void) {}
 void OvlFunc_897_2008f2c(void) {}
 
 #include "state/global_state.h"
+#include "actor.h"
+
 extern GlobalState gState;
 extern int OvlFunc_897_2008054(void);
 
@@ -310,7 +312,25 @@ void OvlFunc_897_200ae0c(unsigned char *actor)
         *(int *)(actor + 0x10) = *(int *)(anchor + 0x10) + (0x10000 - s) * 5 + 0x80000;
     }
 }
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae5c.s");
+
+void OvlFunc_897_200ae5c(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
 
 extern void __Func_8096fb0(int a, int b);

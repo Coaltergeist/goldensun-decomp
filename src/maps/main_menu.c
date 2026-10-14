@@ -35,7 +35,43 @@ void *MainMenu_GetEvents(void) {
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008054.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008154.s");
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20081fc.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20082f4.s");
+
+void OvlFunc_880_20082f4(int idx, unsigned char *out) {
+    out[1] = 0;
+    out[2] = 0;
+    if (idx <= 7) {
+        out[0] = idx + 0x41;
+    } else if (idx <= 0xc) {
+        out[0] = idx + 0x42;
+    } else if (idx <= 0x17) {
+        out[0] = idx + 0x43;
+    } else if (idx <= 0x1f) {
+        out[0] = idx + 0x1a;
+    } else if (idx <= 0x2a) {
+        out[0] = idx + 0x41;
+    } else if (idx <= 0x2c) {
+        out[0] = idx + 0x42;
+    } else if (idx <= 0x37) {
+        out[0] = idx + 0x43;
+    } else if (idx == 0x38) {
+        out[0] = 0x21;
+    } else if (idx == 0x39) {
+        out[0] = 0x3f;
+    } else if (idx == 0x3a) {
+        out[0] = 0x23;
+    } else if (idx == 0x3b) {
+        out[0] = 0x26;
+    } else if (idx == 0x3c) {
+        out[0] = 0x24;
+    } else if (idx == 0x3d) {
+        out[0] = 0x25;
+    } else if (idx == 0x3e) {
+        out[0] = 0x2b;
+    } else {
+        out[0] = 0x3d;
+    }
+}
+
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008384.s");
 INCLUDE_ASM("asm/maps/main_menu/MainMenu_MapInit.s");
 struct Struct2008cfc {

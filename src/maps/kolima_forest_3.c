@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kolima_forest_3/exports.s");
 
@@ -481,7 +482,50 @@ void OvlFunc_915_20089f8(void) {
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/kolima_forest_3/OvlFunc_915_2008aac.s");
+extern void __Actor_SetSpriteFlags(void *, int);
+
+int OvlFunc_915_2008aac(int *p) {
+    struct Actor *a;
+    unsigned char *b;
+    int c;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    b = &a->__unk55;
+    c = *b;
+
+    if (!__TestCollision(a, p)) {
+        API_CutsceneStart();
+        __Actor_SetAnim(a, 6);
+        API_WaitFrames(6);
+        API_PlaySound(0x98);
+        __Actor_SetAnim(a, 7);
+        a->speed = 0xc0 << 10;
+        a->accel = 0x80 << 10;
+        a->motion.y = 0x80 << 11;
+        *b &= 0x7e;
+        __Actor_SetSpriteFlags(a, 0);
+        API_MapActor_TravelToWait(0, ((short *)p)[1], ((short *)p)[5]);
+        __Actor_SetAnim(a, 6);
+        __Actor_SetSpriteFlags(a, 1);
+        *b = 0;
+        API_MapActor_SetAnim(0xa, 7);
+        a->pos.y += -0x10000;
+        a->floorPos += -0x10000;
+        API_WaitFrames(2);
+        a->pos.y += -0x10000;
+        a->floorPos += -0x10000;
+        API_WaitFrames(0xa);
+        a->pos.y += 0x10000;
+        a->floorPos += 0x10000;
+        API_WaitFrames(4);
+        a->pos.y += 0x10000;
+        a->floorPos += 0x10000;
+        *b = c;
+        API_CutsceneEnd();
+        return 1;
+    }
+    return 0;
+}
 
 
 #include "state/global_state.h"

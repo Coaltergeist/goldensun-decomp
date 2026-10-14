@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm968_50e8[] __asm__(".Lm968_50e8");
+
 INCLUDE_ASM("asm/maps/venus_lighthouse/exports.s");
 
 /* Void declarations for veneer callees. */
@@ -76,7 +78,86 @@ int OvlFunc_968_20082f0(int *a, int *b)
 }
 
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200832c.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008374.s");
+
+void OvlFunc_968_2008374(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm968_50e8[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = (struct Actor *)OvlFunc_968_200832c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm968_50e8[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = (struct Actor *)OvlFunc_968_200832c(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = (struct Actor *)OvlFunc_968_200832c(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm968_50e8[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 struct MapTile_968_20084f4 {
     u16 unk0;
     u8 unk2;
@@ -281,7 +362,20 @@ void OvlFunc_968_20088b8(void) {
     ptr[6] = 0;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20088c8.s");
+int OvlFunc_968_20088c8(struct Actor *a) {
+    struct Actor *p;
+    int d;
+
+    p = (struct Actor *)__MapActor_GetActor(0);
+    a->flags |= 2;
+    if (p->pos.z < a->pos.z) {
+        d = (a->pos.z - p->pos.z) + 0x40000;
+        if (p->pos.y <= a->pos.y + d) {
+            a->flags &= 0xfd;
+        }
+    }
+    return 0;
+}
 
 extern void __WaitFrames(unsigned int a);
 
@@ -789,7 +883,15 @@ void OvlFunc_968_20099f0(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009a14.s");
+void OvlFunc_968_2009a14(int arg0) {
+    struct Actor *actor;
+
+    actor = (struct Actor *)arg0;
+    actor->flags |= 2;
+    actor->__unk55 = 0;
+    API_Func_8010704(9, 0x18, 1, 1, actor->pos.x >> 20, actor->pos.z >> 20);
+}
+
 void OvlFunc_968_2009a50(int arg0)
 {
     extern unsigned int OvlFunc_968_2008058(unsigned int, unsigned int, unsigned int, unsigned int);

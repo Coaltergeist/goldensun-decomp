@@ -2,6 +2,8 @@
 #include "nonmatching.h"
 #include "dma.h"
 
+extern void Func_80a19a0(void);
+
 extern unsigned int LoadUIHandCursorGFX();
 extern void Func_80a2444();
 extern void Func_80a345c();
@@ -152,7 +154,30 @@ unsigned int Func_80a1814(unsigned int arg0)
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1870.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a195c.s");
+
+void Func_80a195c(void) {
+    unsigned short buf[14];
+    unsigned char *base;
+    unsigned int *p;
+    unsigned int n;
+    unsigned int count;
+    unsigned int v;
+
+    base = (unsigned char *)iwram_3001f2c;
+    n = (unsigned short)_Func_80796c4(buf);
+    if (n != 0) {
+        p = (unsigned int *)(base + (0x8a << 1));
+        count = n;
+        do {
+            v = *p++;
+            if (v != 0)
+                _DeleteSprite(v);
+            count--;
+        } while (count != 0);
+    }
+    StopTask(Func_80a19a0);
+}
+
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a19a0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1a40.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1ac0.s");
@@ -300,7 +325,23 @@ void Func_80a345c(void) {
     }
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3480.s");
+void Func_80a3480(void) {
+    unsigned char *base;
+    unsigned int *p;
+    unsigned char *sprite;
+    int i;
+    int x;
+
+    base = (unsigned char *)iwram_3001f2c;
+    i = 0;
+    x = 0xd;
+    p = (unsigned int *)(base + 0x48);
+    for (; i <= 0x1f; i++) {
+        sprite = (unsigned char *)*p++;
+        if (sprite != 0 && i % 5 == 0)
+            sprite[5] = x;
+    }
+}
 
 extern void Func_80a195c(void);
 extern void WaitFrames(unsigned int nframes);

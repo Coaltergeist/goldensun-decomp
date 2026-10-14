@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "rpg.h"
 
 extern unsigned char *GetUnit(unsigned int unit);
 extern void Func_8079ae8();
@@ -75,7 +76,29 @@ unsigned short Func_807a5b0(void) {
     return *(unsigned short *)ptr;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/GetNumDjinn.s");
+unsigned int GetNumDjinn(int element) {
+    extern int Func_80796c4(unsigned short *buf);
+    extern struct Unit *GetUnit_u(unsigned int unit) __asm__("GetUnit");
+    unsigned short party[16];
+    unsigned int total;
+    int count;
+    int i;
+
+    total = 0;
+    count = Func_80796c4(party);
+    for (i = 0; i < count; i++) {
+        struct Unit *unit = GetUnit_u(party[i]);
+        if (element == -1) {
+            total += unit->numDjinn[0];
+            total += unit->numDjinn[1];
+            total += unit->numDjinn[2];
+            total += unit->numDjinn[3];
+        } else {
+            total += unit->numDjinn[element];
+        }
+    }
+    return total;
+}
 
 /* Shared rpg-region rodata pool (djinni tables incl. gDjinn used by
    GetDjinniInfo); trails the region's text in ROM. */

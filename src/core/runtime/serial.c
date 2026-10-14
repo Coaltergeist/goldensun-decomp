@@ -478,7 +478,16 @@ void Func_8006488(void)
     }
 }
 
-INCLUDE_ASM("asm/core/runtime/serial/Func_80064b8.s");
+void Func_80064b8(void) {
+    u32 i;
+
+    for (i = 0; ewram_2002080 != 0 || ewram_20023ac != 0; ) {
+        WaitFrames(1);
+        i++;
+        if (i > 0x927bf)
+            return;
+    }
+}
 
 unsigned int Func_80064f4(void)
 {

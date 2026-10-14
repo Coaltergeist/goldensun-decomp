@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
+
 INCLUDE_ASM("asm/maps/goma_cave_2/exports.s");
 
 extern int OvlFunc_905_20082a8();
@@ -30,7 +32,29 @@ int OvlFunc_905_2008030(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200806c.s");
+void *OvlFunc_905_200806c(int *coords, void *arg1) {
+    unsigned char *base;
+    struct Actor **p;
+    unsigned int i;
+    int cx;
+
+    base = *(unsigned char **)iwram_3001ebc__tw;
+    i = 8;
+    cx = coords[0] >> 20;
+    p = (struct Actor **)(base + 0x34);
+    for (; i <= 0x41; i++) {
+        struct Actor *actor = *p++;
+        if (cx == actor->pos.x >> 20) {
+            if (coords[1] / 0x10000 == actor->pos.y / 0x10000) {
+                if (coords[2] >> 20 == actor->pos.z >> 20) {
+                    return actor;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
 extern unsigned int L1554[] __asm__(".Lm905_1554");
 extern void *OvlFunc_905_200806c(int *, void *);
 extern int __TestCollision(void *, int *);
@@ -110,7 +134,42 @@ void OvlFunc_905_20080c4(void)
     player->pos.z = *(s16 *)((u8 *)player + 0x12) << 16;
     __Actor_SetAnim(player, 1);
 }
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008244.s");
+struct MapTile_OvlFunc_905_2008244 {
+    unsigned short a;
+    unsigned char b;
+    unsigned char c;
+};
+
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[];
+
+int OvlFunc_905_2008244(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val) {
+    char *base;
+    struct MapTile_OvlFunc_905_2008244 *buf;
+    unsigned int i;
+    unsigned int j;
+
+    base = *(char **)iwram_3001e70;
+    if (base == 0)
+        return 0;
+
+    if (layer <= 2) {
+        int offset = 0x130 + layer * 0x30;
+        buf = *(struct MapTile_OvlFunc_905_2008244 **)(base + offset);
+    } else {
+        buf = (struct MapTile_OvlFunc_905_2008244 *)gBuffer;
+    }
+
+    buf += x + (y << 7);
+    for (i = 0; i < h; i++) {
+        struct MapTile_OvlFunc_905_2008244 *row = buf + (i << 7);
+        for (j = 0; j < w; j++) {
+            row->b = val;
+            row++;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L1554[] __asm__(".Lm905_1554");
 extern int L1594[] __asm__(".Lm905_1594");
@@ -250,9 +309,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L1554__a2[] __asm__(".Lm905_1554");
-extern int OvlFunc_905_2008244(unsigned int, int, int, unsigned int, unsigned int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);

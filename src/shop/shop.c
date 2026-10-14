@@ -129,7 +129,22 @@ void Func_80b0a6c(void *arg0, unsigned int arg1, unsigned int arg2)
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0aac.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0fa4.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b10cc.s");
+extern void _Func_801e7c0(unsigned int, unsigned int, unsigned int, unsigned int);
+extern void _Func_801ea08(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+
+void Func_80b10cc(void)
+{
+    extern unsigned char gState[];
+    unsigned int r5;
+    char *state;
+
+    r5 = *(unsigned int *)(iwram_3001f2c + 0xc);
+    if (r5 != 0) {
+        _Func_801e7c0(0xc8a, r5, 0, 0);
+        state = (char *)gState;
+        _Func_801ea08(*(unsigned int *)(state + 0x10), 6, r5, 0x20, 8);
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b110c.s");
 
 extern void _Func_8016498(void);

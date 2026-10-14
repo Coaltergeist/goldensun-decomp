@@ -2,15 +2,42 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/imil/exports.s");
 
 extern void OvlFunc_921_20096ac();
 
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008030.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20080d8.s");
+int OvlFunc_921_20080d8(struct Actor *actor) {
+    extern int __atan2(int, int);
+    struct Actor *target;
+    unsigned short angle;
+    int diff;
+
+    target = actor->linkedActor;
+    if (target != 0) {
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x80 << 5) {
+                diff = 0x80 << 5;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 #include "state/global_state.h"
+#include "actor.h"
+
+extern short Lm921_23f0[] __asm__(".Lm921_23f0");
+extern unsigned int gKeyHeld__tw __asm__("gKeyHeld");
 extern GlobalState gState;
 extern unsigned char _EVENT_33[];
 extern unsigned char Lm921_28a0[] __asm__(".Lm921_28a0");
@@ -641,7 +668,37 @@ void OvlFunc_921_20099bc(void)
     __CutsceneEnd();
 }
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20099e8.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009f24.s");
+
+void OvlFunc_921_2009f24(struct Actor *actor) {
+    if (actor->waveCounter != 0) {
+        actor->waveCounter -= 1;
+    } else {
+        short target;
+        short diff;
+        int max_step;
+        int min_step;
+
+        actor->__unk5A = 0;
+        target = Lm921_23f0[(gKeyHeld__tw >> 4) & 0xf];
+        if (target == -1) {
+            __Actor_SetAnim(actor, 9);
+        } else {
+            diff = (short)(target - actor->facing);
+            max_step = 0x80 << 5;
+            if (diff > max_step) {
+                diff = max_step;
+            }
+            min_step = -0x1000;
+            if (diff < min_step) {
+                diff = min_step;
+            }
+            actor->facing += diff;
+            __Actor_SetAnim(actor, 2);
+            __Actor_SetAnimSpeed(actor, 0x30);
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009fa4.s");
 INCLUDE_ASM("asm/maps/imil/imil_data.s");
 

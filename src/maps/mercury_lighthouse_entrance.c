@@ -140,7 +140,42 @@ void OvlFunc_923_20083a8(void)
     *(int *)(actor + 0x10) = *(short *)(actor + 0x12) << 16;
     __Actor_SetAnim(actor, 1);
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.s");
+struct MapTile_OvlFunc_923_2008528 {
+    unsigned short a;
+    unsigned char b;
+    unsigned char c;
+};
+
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[];
+
+int OvlFunc_923_2008528(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val) {
+    char *base;
+    struct MapTile_OvlFunc_923_2008528 *buf;
+    unsigned int i;
+    unsigned int j;
+
+    base = *(char **)iwram_3001e70;
+    if (base == 0)
+        return 0;
+
+    if (layer <= 2) {
+        int offset = 0x130 + layer * 0x30;
+        buf = *(struct MapTile_OvlFunc_923_2008528 **)(base + offset);
+    } else {
+        buf = (struct MapTile_OvlFunc_923_2008528 *)gBuffer;
+    }
+
+    buf += x + (y << 7);
+    for (i = 0; i < h; i++) {
+        struct MapTile_OvlFunc_923_2008528 *row = buf + (i << 7);
+        for (j = 0; j < w; j++) {
+            row->b = val;
+            row++;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L2700[] __asm__(".Lm923_2700");
 extern int L2740[] __asm__(".Lm923_2740");
@@ -280,9 +315,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L2700__a2[] __asm__(".Lm923_2700");
-extern int OvlFunc_923_2008528(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);

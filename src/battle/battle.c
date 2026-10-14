@@ -262,7 +262,34 @@ int Func_80b7e60(int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/battle/Func_80b7e7c.s");
+struct BattleActorEntry {
+    void *actor;
+    unsigned char __pad04[0x24];
+    short active;
+};
+
+extern void _DeleteActor(void *actor);
+
+int Func_80b7e7c(void)
+{
+    int i;
+    struct BattleActorEntry *entry;
+    int id;
+
+    i = 0;
+    do {
+        id = i + 0x78;
+        if (i <= 7)
+            id = i;
+        entry = (struct BattleActorEntry *)GetBattleActor(id);
+        if (entry != 0 && entry->active != 0) {
+            _DeleteActor(entry->actor);
+            entry->actor = 0;
+            entry->active = 0;
+        }
+        i++;
+    } while (i <= 0xd);
+}
 
 
 unsigned int Func_80b7eb4(unsigned int arg0, unsigned int *arg1) {

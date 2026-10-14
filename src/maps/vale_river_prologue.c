@@ -23,7 +23,32 @@ int OvlFunc_882_2008030(struct Actor *a) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_2008064.s");
+int OvlFunc_882_2008064(struct Actor *a) {
+    extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+    extern unsigned int __Random(void);
+
+    switch (a->waveCounter) {
+    case 6:
+        a->scale.x += -0x4000;
+        a->scale.y += 0x80 << 6;
+        break;
+    case 4:
+        a->scale.x += 0x80 << 6;
+        a->scale.y += -0x1000;
+        break;
+    case 2:
+        a->scale.x += 0x80 << 5;
+        a->scale.y += -0x800;
+        break;
+    case 0:
+        a->scale.x = 0x80 << 9;
+        a->scale.y = 0x80 << 9;
+        a->waveCounter = _umodsi3_RAM(__Random(), 0x5a) + 0x3c;
+        break;
+    }
+    a->waveCounter--;
+    return 1;
+}
 
 extern unsigned char gOvl_0200d0e4[];
 
