@@ -16,7 +16,20 @@ unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
 }
 
 INCLUDE_ASM("asm/rpg/djinni/Func_807a0f4.s");
-INCLUDE_ASM("asm/rpg/djinni/GiveDjinni.s");
+int GiveDjinni(unsigned int pc, int element, int index)
+{
+    struct Unit *u = (struct Unit *)GetUnit(pc);
+    u32 bit;
+
+    if (u->numDjinn[element] > 9)
+        return -1;
+    bit = 1 << index;
+    if (u->djinn[element] & bit)
+        return -1;
+    u->numDjinn[element]++;
+    u->djinn[element] |= bit;
+    return 0;
+}
 INCLUDE_ASM("asm/rpg/djinni/Func_807a1f8.s");
 
 unsigned int Func_807a2bc(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
