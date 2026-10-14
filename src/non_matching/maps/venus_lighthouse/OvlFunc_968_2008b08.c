@@ -1,6 +1,6 @@
 extern int __cos(int);
 extern int __sin(int);
-extern void OvlFunc_968_200896c(void);
+extern void OvlFunc_968_200896c(struct Actor *actor);
 extern void OvlFunc_968_2008118(fx32, fx32, fx32, int, int, int, int, void *);
 extern int _divsi3_RAM(int, int);
 

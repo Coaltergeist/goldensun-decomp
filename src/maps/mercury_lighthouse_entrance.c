@@ -927,7 +927,31 @@ void OvlFunc_923_2009fe8(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a030.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a370.s");
+extern unsigned char gState[];
+extern int __Random(void);
+
+void OvlFunc_923_200a370(void)
+{
+    unsigned int *state;
+    char *base;
+    int *arg;
+    int off = 0xfa << 1;
+    int timer;
+    int offset;
+
+    state = (unsigned int *)**(unsigned int **)&iwram_3001edc;
+    base = *(char **)((char *)&iwram_3001edc - 0x20);
+    offset = *(int *)(gState + off) * 4 + 0x14;
+    arg = *(int **)(base + offset);
+    timer = state[2];
+    if (timer != 0) {
+        timer--;
+    } else {
+        OvlFunc_923_2009bc8(arg);
+        timer = (((unsigned int)__Random() * 30) >> 16) + 10;
+    }
+    state[2] = timer;
+}
 
 extern unsigned int *__galloc_ewram(int a, int b);
 extern void __DeleteActor(int a);
