@@ -4,7 +4,7 @@ extern void *__CreateActor(int, int, int, int);
 extern unsigned int __Random(void);
 extern void __Actor_SetAnim(void *, int);
 extern void __Actor_SetScript(void *, const void *);
-extern void OvlFunc_898_2009754(unsigned char *);
+extern void OvlFunc_898_2009754(struct Actor *);
 extern unsigned char gScript_898__0200a8c4[];
 extern unsigned char gScript_898__0200a8dc[];
 

@@ -792,6 +792,29 @@ void OvlFunc_898_200973c(unsigned int arg0, unsigned int arg1, unsigned int arg2
 	__CutsceneWait(arg2);
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2009754.s");
+#include "actor.h"
+
+void OvlFunc_898_2009754(struct Actor *actor)
+{
+    actor->pos.x += actor->speed;
+    actor->prevPos.x = actor->pos.x;
+    if (actor->waveCounter != 0) {
+        actor->pos.y += actor->accel;
+        actor->prevPos.y = actor->pos.y;
+    } else {
+        actor->pos.z += actor->accel;
+        actor->prevPos.z = actor->pos.z;
+        actor->pos.y += 0x80 << 3;
+        actor->prevPos.y = actor->pos.y;
+    }
+    {
+        fx32 speed = actor->speed;
+        actor->speed = speed - _divsi3_RAM(speed, 28);
+    }
+    {
+        fx32 accel = actor->accel;
+        actor->accel = accel - _divsi3_RAM(accel, 28);
+    }
+}
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_20097ac.s");
 INCLUDE_ASM("asm/maps/vault_1/vault_1_data.s");
