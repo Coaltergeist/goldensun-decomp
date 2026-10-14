@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "rpg.h"
 
 #include "nonmatching.h"
 
@@ -162,8 +163,28 @@ INCLUDE_ASM_SECTION("asm/rpg/party/Func_80782a0.s", ".text.party_2");
 
 INCLUDE_ASM_SECTION("asm/rpg/party/Func_8078320.s", ".text.party_2");
 
-INCLUDE_ASM_SECTION("asm/rpg/party/ModifyHP.s", ".text.party_2");
+static inline int Clamp(int value, int min, int max) {
+    if (value > max)
+        return max;
+    if (value < min)
+        return min;
+    return value;
+}
 
-INCLUDE_ASM_SECTION("asm/rpg/party/ModifyPP.s", ".text.party_2");
+int ModifyHP(int unit, int amount) {
+    struct Unit *u = GetUnit(unit);
+
+    u->HP = Clamp(u->HP + amount, 0, u->maxHP);
+    UpdateStatBarPercent(unit);
+    return u->HP;
+}
+
+int ModifyPP(int unit, int amount) {
+    struct Unit *u = GetUnit(unit);
+
+    u->PP = Clamp(u->PP + amount, 0, u->maxPP);
+    UpdateStatBarPercent(unit);
+    return u->PP;
+}
 
 INCLUDE_ASM_SECTION("asm/rpg/party/rodata.s", ".text.party_2");

@@ -20,10 +20,10 @@ struct Unit {
     u16 baseHPRegen;           // 0x020
     u16 basePPRegen;           // 0x022
     u16 baseElementStats[2][4];// 0x024  [power/resist][element]
-    u16 maxHP;                 // 0x034
-    u16 maxPP;                 // 0x036
-    u16 HP;                    // 0x038
-    u16 PP;                    // 0x03A
+    s16 maxHP;                 // 0x034  signed: ldrsh in ModifyHP/ModifyPP
+    s16 maxPP;                 // 0x036  signed: ldrsh in ModifyHP/ModifyPP
+    s16 HP;                    // 0x038  signed: ldrsh in ModifyHP/ModifyPP
+    s16 PP;                    // 0x03A  signed: ldrsh in ModifyHP/ModifyPP
     u16 attack;                // 0x03C
     u16 defense;               // 0x03E
     u16 agility;               // 0x040
