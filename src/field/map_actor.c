@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 extern int MapActor_GetActor();
 extern void Func_80922c4();
@@ -538,7 +539,22 @@ void MessageID(unsigned short stringID) {
     *(unsigned short *)(r3) = stringID;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/GetActorSpriteID.s", ".text.map_actor_2");
+int GetActorSpriteID(int actorID)
+{
+    unsigned int base = iwram_3001ebc__v;
+    unsigned int ofs;
+    struct Actor *actor;
+    int spriteID = -1;
+
+    ofs = ((actorID & 0xfff) << 2) + 0x14;
+    actor = *(struct Actor **)(base + ofs);
+    if (actor != 0 && actor->visible == 1) {
+        struct SpriteLayer *layer = actor->sprite->layers[0];
+        spriteID = (s16)layer->spriteID;
+    }
+    return spriteID;
+}
+
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092be0.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ShowActorMessage_NoWait.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ActorMessage.s", ".text.map_actor_2");
@@ -564,11 +580,9 @@ void Func_809315c(void) {
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093168.s", ".text.map_actor_2");
 
-extern int GetActorSpriteID(void);
-
-void Func_80931d4(void)
+void Func_80931d4(int actorID)
 {
-    if (GetActorSpriteID() == -1)
+    if (GetActorSpriteID(actorID) == -1)
         return;
     _Func_8019e48();
 }
