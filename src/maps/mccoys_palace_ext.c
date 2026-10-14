@@ -2,10 +2,33 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/exports.s");
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008030.s");
+int OvlFunc_910_2008030(struct Actor *actor) {
+    extern int __atan2(int, int);
+    struct Actor *target;
+    unsigned short angle;
+    int diff;
+
+    target = actor->linkedActor;
+    if (target != 0) {
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x80 << 5) {
+                diff = 0x80 << 5;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_02008c08[];
 

@@ -442,7 +442,24 @@ void OvlFunc_965_20089dc(struct Actor *actor, int priority) {
     actor->sprite->oam.priority = priority;
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_20089f4.s");
+struct Actor *OvlFunc_965_20089f4(int x, int y, int z, int id) {
+    extern void __Actor_SetSpriteFlags();
+    extern void __Func_80929d8(int, int);
+    extern void __Func_800c548(int, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(id, x, y, z);
+    if (actor != 0) {
+        actor->sprite->oam.priority = 0;
+        actor->__unk55 = 0;
+        actor->__unk59 = 8;
+        __Actor_SetSpriteFlags(actor, 0);
+        __Func_80929d8((int)actor, 0xe);
+        __Func_800c548((int)actor, 1);
+        return actor;
+    }
+    return 0;
+}
 
 struct Actor *OvlFunc_965_2008a4c(int x, int y, int z, int id) {
     extern void __Actor_SetSpriteFlags();
@@ -730,7 +747,6 @@ void OvlFunc_965_2009184(void)
     __CutsceneEnd();
 }
 
-extern void *OvlFunc_965_20089f4(int, int, int, int);
 
 void OvlFunc_965_200919c(void) {
     __CutsceneStart();

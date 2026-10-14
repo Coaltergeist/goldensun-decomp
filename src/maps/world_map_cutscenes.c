@@ -30,8 +30,36 @@ void OvlFunc_881_2008030(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200808c.s");
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20080d4.s");
+void OvlFunc_881_200808c(void) {
+    extern unsigned char iwram_3001ebc[];
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern void __Func_8091f14(int a, int b);
+    extern int _divsi3_RAM(int, int);
+    unsigned char *base;
+    unsigned char *gs = gStateBytes;
+
+    gs += (0x8e << 2);
+    base = *(unsigned char **)iwram_3001ebc;
+    if (*(int *)gs >= _divsi3_RAM(*(int *)(base + 0x1ac) * 9, 10)) {
+        __Func_8091f14(0x809, 0x2a);
+        *(unsigned int *)(base + 0x1a8) = 0;
+    }
+}
+void OvlFunc_881_20080d4(void) {
+    extern unsigned char iwram_3001ebc[];
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern void __Func_8091f14(int a, int b);
+    extern int _divsi3_RAM(int, int);
+    unsigned char *base;
+    unsigned char *gs = gStateBytes;
+
+    gs += (0x8e << 2);
+    base = *(unsigned char **)iwram_3001ebc;
+    if (*(int *)gs >= _divsi3_RAM(*(int *)(base + 0x1ac) * 9, 10)) {
+        __Func_8091f14(0x80a, 0x18);
+        *(unsigned int *)(base + 0x1a8) = 0;
+    }
+}
 
 void OvlFunc_881_200811c(struct Actor *a) {
     short *wc = &a->waveCounter;

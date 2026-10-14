@@ -2,13 +2,36 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/imil/exports.s");
 
 extern void OvlFunc_921_20096ac();
 
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008030.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20080d8.s");
+int OvlFunc_921_20080d8(struct Actor *actor) {
+    extern int __atan2(int, int);
+    struct Actor *target;
+    unsigned short angle;
+    int diff;
+
+    target = actor->linkedActor;
+    if (target != 0) {
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x80 << 5) {
+                diff = 0x80 << 5;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 #include "state/global_state.h"
 #include "actor.h"
