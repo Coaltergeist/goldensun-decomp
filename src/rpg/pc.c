@@ -179,7 +179,19 @@ SECTION(".text.rpg_pc_3");
 
 #include "nonmatching.h"
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079bf8.s", ".text.rpg_pc_3");
+extern int Func_8079b24();
+int Func_8079bf8(int a, int b, int c, int d)
+{
+    int r;
+
+    a -= b;
+    if (a < 0)
+        a = 0;
+    r = Func_8079b24(d, 1) * (a + c * 2) / 512;
+    if (r < 0)
+        r = 0;
+    return r;
+}
 
 extern int Func_8079b24(int a, int b);
 
