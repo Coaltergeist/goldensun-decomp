@@ -492,7 +492,32 @@ int OvlFunc_924_2008cd0(struct Actor *actor) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008d58.s");
+extern int gScript_969__0200e004;
+extern int Lm924_600c __asm__(".Lm924_600c");
+extern int Lm924_6008 __asm__(".Lm924_6008");
+extern unsigned int iwram_3001e40;
+void OvlFunc_924_2008d58(void)
+{
+    extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+    extern int _divsi3_RAM__c(int, int) __asm__("_divsi3_RAM") __attribute__((const));
+    volatile unsigned short c = 0;
+    unsigned int i;
+    int v, hi;
+
+    if (_umodsi3_RAM(iwram_3001e40, 5) == 0) {
+        gScript_969__0200e004 = (gScript_969__0200e004 + 4) & 0x1f;
+        for (i = 0; i <= 5; i++) {
+            c = ((unsigned short *)0x5000000)[0x6e - i] & 0x1f;
+            v = c;
+            if (i <= 2)
+                v -= _divsi3_RAM__c(v * 4, 10);
+            { unsigned short *d = &((unsigned short *)0x5000000)[0x6f - i];
+            hi = (Lm924_600c << 10) | (Lm924_6008 << 5);
+            *d = v | hi; }
+        }
+        *(unsigned short *)0x50000d2 = gScript_969__0200e004 | hi;
+    }
+}
 
 void OvlFunc_924_2008dfc(void)
 {

@@ -966,7 +966,22 @@ void OvlFunc_948_20092d4(void)
   __SetFlag(0xeeb);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009308.s");
+void OvlFunc_948_2009308(void)
+{
+    unsigned char *a = __MapActor_GetActor(0);
+    int x = *(int *)(a + 8) / 0x100000;
+    int z = *(int *)(a + 0x10) / 0x100000;
+    unsigned char *b = *(unsigned char **)iwram_3001ebc;
+    short v = 0x5b;
+
+    if (API_GetFlag(0x220) == 0) {
+        unsigned char *g = (unsigned char *)&gState;
+        if (*(short *)(g + 0x24c) == 0 && *(short *)(g + 0x24a) != 8 && (unsigned)(x - 0x15) <= 2 && z >= 10 && z <= 11) {
+            API_SetFlag(0x220);
+            *(short *)(b + 0x182) = v;
+        }
+    }
+}
 
 void OvlFunc_948_200938c(void) {
     void *actor;
@@ -992,7 +1007,22 @@ void OvlFunc_948_200938c(void) {
 }
 
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200941c.s");
+void OvlFunc_948_200941c(void)
+{
+    unsigned char *a = __MapActor_GetActor(0);
+    int x = *(int *)(a + 8) / 0x100000;
+    int z = *(int *)(a + 0x10) / 0x100000;
+    unsigned char *b = *(unsigned char **)iwram_3001ebc;
+    short v = 0x5c;
+
+    if (API_GetFlag(0x220) == 0) {
+        unsigned char *g = (unsigned char *)&gState;
+        if (*(short *)(g + 0x24c) == 0 && *(short *)(g + 0x24a) != 9 && x == 10 && (unsigned)(z - 0x10) <= 2) {
+            API_SetFlag(0x220);
+            *(short *)(b + 0x182) = v;
+        }
+    }
+}
 void __CutsceneStart(void);
 void __MapActor_TravelTo(int, int, int);
 void __CutsceneWait(int);
@@ -1155,7 +1185,21 @@ void OvlFunc_948_2009694(void)
     __CutsceneWait(10);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20097ac.s");
+void OvlFunc_948_20097ac(void)
+{
+    unsigned char *a = __MapActor_GetActor(0);
+    int x = *(int *)(a + 8) / 0x100000;
+    int z = *(int *)(a + 0x10) / 0x100000;
+    unsigned char *g = (unsigned char *)&gState;
+    unsigned char *b = *(unsigned char **)iwram_3001ebc;
+    short v = 0x60;
+
+    if (*(short *)(g + 0x24a) != 0xc && API_GetFlag(0x220) == 0 && *(short *)(g + 0x24c) == 0
+        && x == 0x13 && (unsigned)(z - 0xf) <= 1) {
+        API_SetFlag(0x220);
+        *(short *)(b + 0x182) = v;
+    }
+}
 void OvlFunc_948_2009838(void)
 {
     void *actor;

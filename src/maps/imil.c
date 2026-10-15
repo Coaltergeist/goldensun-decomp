@@ -499,7 +499,28 @@ void OvlFunc_921_2008abc(void)
 }
 INCLUDE_ASM("asm/maps/imil/Imil_MapInit.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008f90.s");
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_200954c.s");
+extern int Lm921_31f0[] __asm__(".Lm921_31f0");
+extern void __vec3_translate(int, int, int *);
+void OvlFunc_921_200954c(unsigned char *a)
+{
+    int v[3];
+    short t;
+
+    if (a != 0) {
+        t = --*(short *)(a + 0x64);
+        if (t != 0) {
+            v[0] = Lm921_31f0[0];
+            v[1] = Lm921_31f0[1] + 0x80000;
+            v[2] = Lm921_31f0[2];
+            __vec3_translate(t << 16, (t << 11) + *(short *)(a + 0x66), v);
+            *(int *)(a + 0x8) = v[0];
+            *(int *)(a + 0xc) = v[1];
+            *(int *)(a + 0x10) = v[2];
+        } else {
+            __DeleteActor(a);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_20095b4.s");
 
 extern void __MapActor_SetBehavior(int, void *);
