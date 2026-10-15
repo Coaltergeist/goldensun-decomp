@@ -106,7 +106,13 @@ INCLUDE_ASM("asm/field_engine/field/map_data/Func_8010704.s");
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_8010788.s");
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_80108c4.s");
+void Func_80108c4(unsigned int v)
+{
+    unsigned char *base = (unsigned char *)iwram_3001e70;
+    unsigned int m = v & 0xe00;
+
+    *(unsigned short *)(base + 0x14) = (*(unsigned short *)(base + 0x14) & 0xf1ff) | m;
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_80108e4.s");
 
@@ -244,11 +250,60 @@ int HeightTile_2(signed char *param_1, int param_2, int param_3) {
     return a + ((b - a) * param_3) / 16;
 }
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_3.s");
+int HeightTile_3(signed char *param_1, int param_2, int param_3)
+{
+    int a;
+    int b;
+    int max;
+    int s;
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_4.s");
+    a = param_1[0] << 19;
+    b = param_1[1] << 19;
+    max = a;
+    if (b > a)
+        max = b;
+    s = param_2 + param_3;
+    if (s == 15)
+        return max;
+    if ((unsigned int)s <= 14)
+        return a;
+    return b;
+}
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_5.s");
+int HeightTile_4(signed char *param_1, int param_2, int param_3)
+{
+    int a;
+    int b;
+    int max;
+
+    a = param_1[0] << 19;
+    b = param_1[1] << 19;
+    max = a;
+    if (b > a)
+        max = b;
+    param_2 = param_3 - param_2 + 15;
+    if (param_2 == 15)
+        return max;
+    if ((unsigned int)param_2 < 15)
+        return a;
+    return b;
+}
+
+int HeightTile_5(signed char *p, int param_2, int param_3)
+{
+    int a, b, c;
+
+    a = *p++ << 19;
+    b = p[0] << 19;
+    c = p[1] << 19;
+    param_2 += param_3;
+    if (param_2 == 15)
+        return b;
+    if ((unsigned int)param_2 < 15)
+        return a + ((b - a) * param_2) / 15;
+    param_2 -= 15;
+    return b + ((c - b) * param_2) / 15;
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_6.s");
 
@@ -360,7 +415,18 @@ void Func_8012330(int arg0, int arg1, int arg2)
         r3[3] = arg2;
 }
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_8012350.s");
+void Func_8012350(void)
+{
+    int *state = (int *)iwram_3001e70;
+    int i;
+
+    for (i = 0; i < 300; i++) {
+        if (state[1] <= 0xff && state[2] <= 0xff)
+            break;
+        WaitFrames(1);
+    }
+    state[3] = 0;
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_8012388.s");
 
