@@ -12,7 +12,6 @@ void Func_801a7c0(int a, int b)
 {
     unsigned char *base = (unsigned char *)iwram_3001e98;
     unsigned short *n = (unsigned short *)(base + 0x394);
-
     unsigned short c = *n;
 
     if (c != 0x10) {
