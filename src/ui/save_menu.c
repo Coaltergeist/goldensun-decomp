@@ -38,13 +38,71 @@ INCLUDE_ASM("asm/ui/save_menu/Func_801fe2c.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801ff14.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_801ff58.s");
+struct SaveMenu801ff58 {
+    unsigned char pad0[0x114];
+    void *spr[4];
+    unsigned char pad124[0x10];
+    short x[8];
+    short y[8];
+    int scale[4];
+};
+void Func_801ff58(void)
+{
+    extern void _UpdateSprite(void *, int *, int *, int);
+    extern struct SaveMenu801ff58 *iwram_3001f2c__k11 __asm__("iwram_3001f2c");
+    struct SaveMenu801ff58 *s = iwram_3001f2c__k11;
+    int sc[2];
+    int v[4];
+    int i;
+    void *p;
+
+    for (i = 0; i < 4; i++) {
+        p = s->spr[i];
+        if (p != 0) {
+            sc[0] = s->scale[i];
+            sc[1] = s->scale[i];
+            v[0] = s->x[i] << 16;
+            v[1] = 0x1f40000;
+            v[2] = (s->y[i] << 16) + 0x1f40000;
+            v[3] = 0;
+            _UpdateSprite(p, v, sc, 0x4000);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801ffd8.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8020088.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80200cc.s");
+struct SaveMenu80200cc {
+    unsigned char pad0[0x224];
+    void *spr[4];
+    short x[4];
+    short y[4];
+};
+void Func_80200cc(void)
+{
+    extern void _UpdateSprite(void *, int *, int *, int);
+    extern struct SaveMenu80200cc *iwram_3001f2c__k12 __asm__("iwram_3001f2c");
+    struct SaveMenu80200cc *s = iwram_3001f2c__k12;
+    int sc[2];
+    int v[4];
+    int i;
+    void *p;
+
+    for (i = 0; i < 4; i++) {
+        p = s->spr[i];
+        if (p != 0) {
+            sc[0] = 0x10000;
+            sc[1] = 0x10000;
+            v[0] = s->x[i] << 16;
+            v[1] = 0x1f40000;
+            v[2] = (s->y[i] << 16) + 0x1f40000;
+            v[3] = 0;
+            _UpdateSprite(p, v, sc, 0x4000);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8020150.s");
 

@@ -30,9 +30,37 @@ void SetTextBold(unsigned short arg0) {
 
 INCLUDE_ASM("asm/ui/text/DrawSmallText.s");
 INCLUDE_ASM("asm/ui/text/Func_801e7c0.s");
-INCLUDE_ASM("asm/ui/text/Func_801e858.s");
+void Func_801e858(unsigned char *s, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    short *buf = alloc_ewram(0x200);
+    short *d = buf;
+
+    while (*s != 0) {
+        *d = *s;
+        s++;
+        d++;
+    }
+    *d = 0;
+    Func_8017aa4(buf, a1, a2, a3);
+    free(buf);
+}
 INCLUDE_ASM("asm/ui/text/Func_801e8b0.s");
-INCLUDE_ASM("asm/ui/text/UIDrawText.s");
+void UIDrawText(char *str, unsigned int box, unsigned int x, unsigned int y)
+{
+    short *buf = alloc_ewram(0x200);
+    short *d = buf;
+
+    while (*str != 0) {
+        *d = (unsigned char)*str;
+        str++;
+        d++;
+    }
+    *d = 0;
+    x >>= 3;
+    y >>= 3;
+    Func_8017c8c(buf, box, x, y);
+    free(buf);
+}
 
 unsigned char *PrintNum(unsigned char *dest, unsigned int num, unsigned int param_3);
 void Func_801e858(unsigned char *dest, unsigned int arg2, unsigned int arg3, unsigned int arg4);
