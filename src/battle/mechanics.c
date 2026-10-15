@@ -589,11 +589,43 @@ unsigned int Func_80bf484(int unit) {
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bf4c4.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf524.s");
+int Func_80bf524(int id)
+{
+    unsigned char *u = _GetUnit(id);
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf54c.s");
+    if (u[0x13e] != 0) {
+        u[0x13e]--;
+        if (u[0x13e] == 0)
+            return 1;
+    }
+    return 0;
+}
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bf574.s");
+int Func_80bf54c(int id)
+{
+    unsigned char *u = _GetUnit(id);
+
+    if (u[0x13f] != 0) {
+        u[0x13f]--;
+        if (u[0x13f] == 0)
+            return 1;
+    }
+    return 0;
+}
+
+int Func_80bf574(int id)
+{
+    unsigned char *u = _GetUnit(id);
+
+    if (u[0x146] != 0) {
+        u[0x146]--;
+        if (u[0x146] == 0) {
+            u[0x147] = 0;
+            return 1;
+        }
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bf5a8.s");
 
