@@ -190,7 +190,21 @@ void Func_80a1bcc(void) {
     Func_80a1bdc(0x6c, 0x28, 8);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1bdc.s");
+void Func_80a1bdc(int a, int b, int c)
+{
+    unsigned char **pp = (unsigned char **)(iwram_3001f2c + 0x48);
+    unsigned char **q;
+    int i;
+
+    i = 0;
+    q = pp;
+    do {
+        if (*q++ != 0)
+            Func_80a1c2c(pp, i, a, b, c);
+        i++;
+        pp++;
+    } while (i <= 0x1f);
+}
 
 extern void Func_80a17c4(unsigned char *);
 
@@ -207,7 +221,27 @@ void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4)
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_a1c6c.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1cb0.s");
+extern void Func_a1c6c();
+void Func_80a1cb0(unsigned int mode)
+{
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    unsigned char **pp;
+    unsigned char **q;
+    int i;
+    int y = 0x38;
+
+    if (mode != 1)
+        y = 0x28;
+    pp = (unsigned char **)(base + 0x48);
+    i = 0;
+    q = pp;
+    do {
+        if (*q++ != 0)
+            Func_a1c6c(pp, i, 0x74, y, 5);
+        i++;
+        pp++;
+    } while (i <= 0xe);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1d08.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1e38.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_a1f74.s");
@@ -636,7 +670,21 @@ void Func_80a6874(void)
     _CloseUIBox(*(unsigned int *)r5, 1);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a68a8.s");
+extern void _Func_801bcd4();
+void Func_80a68a8(unsigned short *ids)
+{
+    struct MenuCursor **cursors = (struct MenuCursor **)(iwram_3001f2c + 0x48);
+    unsigned short *p = ids;
+    int i;
+
+    for (i = 0x1f; i >= 0; i--) {
+        int id = *p++;
+        if (id != 0)
+            _Func_801bcd4(4, id, ((unsigned char *)*cursors)[0xe], 0);
+        cursors++;
+    }
+    Func_80a3d24(ids);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a68ec.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6a00.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6a98.s");
