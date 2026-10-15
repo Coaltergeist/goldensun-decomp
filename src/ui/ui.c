@@ -387,8 +387,35 @@ void Func_8018790(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     Func_8018850(BufferString(arg0, 0), r5, r6, 0);
 }
 
-INCLUDE_ASM("asm/ui/ui/TextBox.s");
-INCLUDE_ASM("asm/ui/ui/DialogueBox.s");
+struct UiMsgFlags {
+    unsigned char pad0[0xeb0];
+    unsigned short seen[1];
+};
+extern struct UiMsgFlags *iwram_3001e8c__k3 __asm__("iwram_3001e8c");
+int TextBox(int msg, int a1, int a2, int a3, int a4)
+{
+    extern int BufferString__k(int, int) __asm__("BufferString");
+    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    struct UiMsgFlags *s = iwram_3001e8c__k3;
+    int i = BufferString__k(msg, 0);
+
+    if (s->seen[i] == 0)
+        return 0;
+    Func_801868c__k(i, a1, a2, a3, a4, 0, 0);
+    return 1;
+}
+int DialogueBox(int msg, int a1, int a2, int a3, int a4)
+{
+    extern int BufferString__k(int, int) __asm__("BufferString");
+    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    struct UiMsgFlags *s = iwram_3001e8c__k3;
+    int i = BufferString__k(msg, 0);
+
+    if (s->seen[i] == 0)
+        return 0;
+    Func_801868c__k(i, a1, a2, a3, a4, 0, 1);
+    return 1;
+}
 INCLUDE_ASM("asm/ui/ui/Func_8018850.s");
 INCLUDE_ASM("asm/ui/ui/Func_8018a50.s");
 
