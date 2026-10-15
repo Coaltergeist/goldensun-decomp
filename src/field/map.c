@@ -463,7 +463,26 @@ void Func_8090824(unsigned int arg0)
     WaitFrames(0x78);
 }
 
-INCLUDE_ASM("asm/field/map/Func_809088c.s");
+typedef int (*DivFn)(int, int);
+extern int divsi3_RAM(int, int);
+
+/* GCC calls r10 "sl"; the ROM provides its bx-r10 veneer as _call_via_r10. */
+__asm__(".set _call_via_sl, _call_via_r10");
+
+void Func_809088c(u16 *cur, u16 *target, u16 *delta, int frames)
+{
+    int i;
+
+    if (frames > 0) {
+        DivFn fn = divsi3_RAM;
+
+        for (i = 0x53f; i >= 0; i--) {
+            s16 curSample = (s16)*cur++;
+
+            *delta++ = (u16)fn((s16)*target++ - curSample, frames);
+        }
+    }
+}
 INCLUDE_ASM("asm/field/map/Func_80908e0.s");
 INCLUDE_ASM("asm/field/map/Func_8090a5c.s");
 
@@ -529,7 +548,28 @@ void Func_8091240(int arg0)
         *p = arg0;
 }
 
-INCLUDE_ASM("asm/field/map/Func_8091254.s");
+struct MapPaletteState {
+    u8 pad0[0x380];
+    u16 current[0x540];
+    u16 target[0x540];
+    u16 delta[0x540];
+    u8 pad[0x2a01 - 0x2300];
+    u8 rampFrames;
+    u8 rampPos;
+};
+
+extern struct MapPaletteState *iwram_3001ed0__a3 __asm__("iwram_3001ed0");
+
+void Func_8091254(int frames)
+{
+    struct MapPaletteState *p = iwram_3001ed0__a3;
+
+    if (p != NULL) {
+        p->rampFrames = frames;
+        p->rampPos = 0;
+        Func_809088c(p->current, p->target, p->delta, frames);
+    }
+}
 
 int Func_8091294(int arg0) {
     if (arg0 > 0x1f)
