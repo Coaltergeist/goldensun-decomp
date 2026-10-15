@@ -1,6 +1,6 @@
 #include "nonmatching.h"
 
-extern void Func_809a65c(void);
+extern void Func_809a65c();
 extern int cos(int);
 extern int sin(int);
 extern void Func_809a484(int, int, int, int, int, int, int, int *);
@@ -32,7 +32,20 @@ void Func_809a44c(void *arg0)
 
 INCLUDE_ASM("asm/field/moves/carry/Func_809a484.s");
 
-INCLUDE_ASM("asm/field/moves/carry/Func_809a65c.s");
+void Func_809a65c(int *a)
+{
+    int vx = a[0x44 / 4];
+    int vz;
+    a[2] += vx;
+    a[3] += a[0x48 / 4];
+    vz = a[0x4c / 4];
+    a[4] += vz;
+    a[0x44 / 4] = vx - vx / 18;
+    a[0x4c / 4] = vz - vz / 16;
+    a[6] += a[0xc];
+    a[7] += a[0xd];
+    *(unsigned short *)(*(unsigned char **)(a + 0x14) + 0x1e) += *(unsigned short *)((unsigned char *)a + 0x64);
+}
 
 void Func_809a6b8(unsigned int arg0)
 {

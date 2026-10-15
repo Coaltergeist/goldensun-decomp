@@ -489,7 +489,22 @@ int LunpaFortress_GetEvents(void)
     if (ev == (int)_EVENT_a2) return (int)Lm959_7528;
     return (int)Lm959_763c;
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2008b4c.s");
+void OvlFunc_959_2008b4c(void)
+{
+    extern unsigned char *__MapActor_GetActor__k(int) __asm__("__MapActor_GetActor");
+    extern void __Actor_SetSpriteFlags__k(void *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void F8010704(int, int, int, int, int, int) __asm__("__Func_8010704");
+    unsigned char *a;
+
+    F8010704(0xf, 0x14, 1, 1, 0xf, 0x16);
+    F8010704(0x11, 0x17, 1, 3, 0xf, 0x17);
+    a = __MapActor_GetActor__k(0xc);
+    if (a != 0) {
+        __Actor_SetSpriteFlags__k(a, 0);
+        a[0x55] = 0;
+        a[0x23] = 2;
+    }
+}
 
 extern void OvlFunc_959_20080c4(void);
 
