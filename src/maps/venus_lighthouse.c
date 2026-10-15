@@ -41,8 +41,37 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
     __Func_80929d8(r5, r6);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008058.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008098.s");
+struct SpriteBits968 {
+    unsigned char pad0[9];
+    unsigned char lo : 2;
+    unsigned char mode : 2;
+};
+extern void *__CreateActor(int, int, int, int);
+extern void __Func_800c548(void *, int);
+unsigned int OvlFunc_968_2008058(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
+{
+    unsigned char *a = __CreateActor(type, x, y, z);
+
+    if (a != 0) {
+        (*(struct SpriteBits968 **)(a + 0x50))->mode = 0;
+        OvlFunc_968_2008030((unsigned int)a, 0xe);
+        __Func_800c548(a, 1);
+        return (unsigned int)a;
+    }
+    return 0;
+}
+unsigned int OvlFunc_968_2008098(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
+{
+    unsigned char *a = __CreateActor(type, x, y, z);
+
+    if (a != 0) {
+        (*(struct SpriteBits968 **)(a + 0x50))->mode = 1;
+        OvlFunc_968_2008030((unsigned int)a, 0xf);
+        ((struct Actor *)a)->flags |= 2;
+        return (unsigned int)a;
+    }
+    return 0;
+}
 
 void OvlFunc_968_20080e0(struct Actor *actor) {
     actor->pos.x += actor->bounce;
@@ -424,7 +453,22 @@ void OvlFunc_968_200894c(arg0) unsigned int * arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200896c.s");
+void OvlFunc_968_200896c(struct Actor *actor)
+{
+    extern int _divsi3_RAM__c(int, int) __asm__("_divsi3_RAM") __attribute__((const));
+    int *a = (int *)actor;
+    int vx = a[0x44 / 4];
+    int vz;
+    a[2] += vx;
+    a[3] += a[0x48 / 4];
+    vz = a[0x4c / 4];
+    a[4] += vz;
+    a[0x44 / 4] = vx - _divsi3_RAM__c(vx, 18);
+    a[0x4c / 4] = vz - vz / 16;
+    a[6] += a[0xc];
+    a[7] += a[0xd];
+    *(unsigned short *)(*(unsigned char **)(a + 0x14) + 0x1e) += *(unsigned short *)((unsigned char *)a + 0x64);
+}
 struct Struct_20089c8 {
     int unk0;
     int unk4;
@@ -1131,7 +1175,20 @@ void OvlFunc_968_200a6e4(void) {
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a6f8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a90c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200ab14.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200aee4.s");
+void OvlFunc_968_200aee4(void)
+{
+    extern int OvlFunc_968_2008cc8();
+    extern void OvlFunc_968_200ab14();
+
+    __CutsceneStart();
+    if (OvlFunc_968_2008cc8() == 0) {
+        API_Func_8010704(0x45, 0x30, 4, 2, 5, 0x30);
+        API_Func_8010704(0x49, 0x25, 9, 0xd, 9, 0x25);
+        OvlFunc_968_2008374();
+    }
+    __CutsceneEnd();
+    OvlFunc_968_200ab14();
+}
 
 extern void __Func_8092708(int, int, int);
 extern void __Func_8091e9c(int);

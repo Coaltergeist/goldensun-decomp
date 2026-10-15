@@ -60,7 +60,26 @@ void OvlFunc_941_200807c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008094.s");
+struct ActorBits941 {
+    unsigned char pad0[0x23];
+    unsigned char flags;
+    unsigned char pad24[0x31];
+    unsigned char unk55;
+};
+void OvlFunc_941_2008094(void)
+{
+    extern struct ActorBits941 *__MapActor_GetActor__k(int) __asm__("__MapActor_GetActor");
+    extern void API_Func_8010704(int, int, int, int, int, int) __asm__("__Func_8010704");
+    extern void API_SetFlag(int) __asm__("__SetFlag");
+    struct ActorBits941 *a = __MapActor_GetActor__k(9);
+
+    if (a != 0) {
+        a->flags = 1;
+        a->unk55 = 0;
+    }
+    API_Func_8010704(7, 0x20, 1, 1, 8, 0x20);
+    API_SetFlag(0x204);
+}
 void OvlFunc_941_20080d4(void)
 {
     unsigned char *actor;

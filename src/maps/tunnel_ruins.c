@@ -672,7 +672,22 @@ int OvlFunc_964_2008fe8(struct Actor *a) {
 }
 
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
+void OvlFunc_964_2009068(struct Actor *actor)
+{
+    extern int _divsi3_RAM__c(int, int) __asm__("_divsi3_RAM") __attribute__((const));
+    int *a = (int *)actor;
+    int vx = a[0x44 / 4];
+    int vz;
+    a[2] += vx;
+    a[3] += a[0x48 / 4];
+    vz = a[0x4c / 4];
+    a[4] += vz;
+    a[0x44 / 4] = vx - _divsi3_RAM__c(vx, 18);
+    a[0x4c / 4] = vz - vz / 16;
+    a[6] += a[0xc];
+    a[7] += a[0xd];
+    *(unsigned short *)(*(unsigned char **)(a + 0x14) + 0x1e) += *(unsigned short *)((unsigned char *)a + 0x64);
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");
 
