@@ -235,8 +235,34 @@ INCLUDE_ASM("asm/shop/shop/Func_80b24e4.s");
 
 int NumShops(void) { return 0x23; }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b26cc.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2720.s");
+extern short gShopItemLists[][33] asm(".Lb41ac");
+
+extern int _GetFlag(int flag);
+extern void _SetFlag(int flag);
+extern int _Func_8078ad0(int item, int count);
+
+void Func_80b26cc(int shop)
+{
+    int flag = shop + 0x400;
+    int item;
+    int i;
+
+    if (_GetFlag(flag))
+        return;
+    _SetFlag(flag);
+    for (i = 0; i < 8 && (item = gShopItemLists[shop][24 + i]) != 0; i++)
+        _Func_8078ad0(item, 1);
+}
+
+int Func_80b2720(int shop, unsigned short *out)
+{
+    int n;
+
+    for (n = 0; n < 24 && gShopItemLists[shop][n] != 0; n++)
+        out[n] = gShopItemLists[shop][n];
+    out[n] = 0;
+    return n;
+}
 
 extern short Lb41ac[] __asm__(".Lb41ac");
 
