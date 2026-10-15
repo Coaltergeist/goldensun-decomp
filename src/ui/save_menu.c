@@ -36,13 +36,51 @@ extern unsigned char gStringBuffer;
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801fe2c.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_801ff14.s");
+extern void Func_801ff58(void);
+extern int StopTask(void *);
+extern void _DeleteSprite(void *);
+struct SaveMenu801ff14 {
+    unsigned char pad0[0x114];
+    void *spr[4];
+};
+extern struct SaveMenu801ff14 *iwram_3001f2c__k9 __asm__("iwram_3001f2c");
+void Func_801ff14(void)
+{
+    struct SaveMenu801ff14 *s = iwram_3001f2c__k9;
+    int i;
+
+    StopTask(Func_801ff58);
+    for (i = 0; i < 4; i++) {
+        if (s->spr[i] != 0) {
+            _DeleteSprite(s->spr[i]);
+            s->spr[i] = 0;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801ff58.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801ffd8.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8020088.s");
+extern void Func_80200cc(void);
+struct SaveMenu8020088 {
+    unsigned char pad0[0x224];
+    void *spr[4];
+};
+extern struct SaveMenu8020088 *iwram_3001f2c__k10 __asm__("iwram_3001f2c");
+void Func_8020088(void)
+{
+    struct SaveMenu8020088 *s = iwram_3001f2c__k10;
+    int i;
+
+    StopTask(Func_80200cc);
+    for (i = 0; i < 4; i++) {
+        if (s->spr[i] != 0) {
+            _DeleteSprite(s->spr[i]);
+            s->spr[i] = 0;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80200cc.s");
 

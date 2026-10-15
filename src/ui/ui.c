@@ -270,7 +270,23 @@ unsigned int Func_8017394(unsigned char *box)
     return 0;
 }
 
-INCLUDE_ASM("asm/ui/ui/Func_80173ac.s");
+struct UiState80173ac {
+    unsigned char pad0[0xea8];
+    unsigned short ea8, eaa, eac, eae;
+    unsigned char pad1[0x12b0 - 0xeb0];
+    unsigned short f12b0;
+};
+extern struct UiState80173ac *iwram_3001e8c__k1 __asm__("iwram_3001e8c");
+void Func_80173ac(void)
+{
+    struct UiState80173ac *s = iwram_3001e8c__k1;
+
+    s->eae = 15;
+    s->ea8 = 10;
+    s->f12b0 = 9;
+    s->eac = 0;
+    s->eaa = 1;
+}
 INCLUDE_ASM("asm/ui/ui/Func_80173f4.s");
 
 extern void *iwram_3001e8c__a3 __asm__("iwram_3001e8c");
@@ -417,7 +433,26 @@ int *Func_80197b4(int *p) {
 INCLUDE_ASM("asm/ui/ui/Func_80197c4.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
 INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019908.s");
+struct UiSlots8019908 {
+    unsigned char pad0[0x12bc];
+    int value[8];
+    unsigned short id[8];
+};
+extern struct UiSlots8019908 *iwram_3001e8c__k2 __asm__("iwram_3001e8c");
+void Func_8019908(int value, int id)
+{
+    struct UiSlots8019908 *s = iwram_3001e8c__k2;
+    int i;
+    int n = 8;
+
+    for (i = 0; i != n; i++) {
+        if (s->id[i] == 0) {
+            s->value[i] = value;
+            s->id[i] = id;
+            return;
+        }
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019944.s");
 INCLUDE_ASM("asm/ui/ui/Func_801999c.s");
 INCLUDE_ASM("asm/ui/ui/Func_80199ec.s");
