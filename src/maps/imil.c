@@ -530,7 +530,23 @@ void OvlFunc_921_20096c8(void)
   __Func_8097194();
 }
 
-INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2009704.s");
+struct SpriteBits921 { unsigned char pad[9]; unsigned char lo:2; unsigned char mode:2; };
+extern void __Func_80929d8__921() __asm__("__Func_80929d8");
+extern void __Actor_SetSpriteFlags__921() __asm__("__Actor_SetSpriteFlags");
+void OvlFunc_921_2009704(void *v)
+{
+    unsigned char *a = v;
+    short z = 0;
+
+    a[0x55] = z;
+    *(short *)(a + 0x64) = z;
+    a[0x23] &= 0xfe;
+    (*(struct SpriteBits921 **)(a + 0x50))->mode = 1;
+    __Func_80929d8__921(a, 9);
+    __Actor_SetSpriteFlags__921(a, 0);
+    *(int *)(a + 0x18) = 0x8000;
+    *(int *)(a + 0x1c) = 0x8000;
+}
 extern void __DeleteActor(void *);
 
 void OvlFunc_921_200974c(void *actor)

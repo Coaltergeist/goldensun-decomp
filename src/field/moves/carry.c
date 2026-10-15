@@ -11,7 +11,33 @@ INCLUDE_ASM("asm/field/moves/carry/Field_Carry_Target.s");
 
 INCLUDE_ASM("asm/field/moves/carry/Field_Carry.s");
 
-INCLUDE_ASM("asm/field/moves/carry/Func_809a3c4.s");
+unsigned char *Func_809a3c4(int x, int y, int z, int dir)
+{
+    unsigned char *p;
+    int s;
+
+    _PlaySound(0x8a);
+    p = CreateParticleActor(0xd7, x, y, z);
+    if (p != 0) {
+        *(int *)(p + 0x18) = *(int *)(p + 0x1c) = 0x4000;
+        *(int *)(p + 0x34) = *(int *)(p + 0x30) = 0x30000;
+        s = 0;
+        p[0x5a] = s;
+        _Actor_SetAnim(p, 1);
+        s = *(int *)(p + 0x18);
+        if (s < 0x10000) {
+            do {
+                s += 0x800;
+                *(int *)(p + 0x18) = *(int *)(p + 0x1c) = s;
+                *(unsigned short *)(p + 6) += 0x2000;
+                WaitFrames(1);
+                s = *(int *)(p + 0x18);
+            } while (s <= 0xffff);
+        }
+        *(short *)(p + 6) = dir;
+    }
+    return p;
+}
 
 void Func_809a44c(void *arg0)
 {
