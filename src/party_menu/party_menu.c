@@ -1,6 +1,7 @@
 // fakematch
 #include "nonmatching.h"
 #include "dma.h"
+#include "rpg.h"
 
 extern void Func_80a19a0(void);
 
@@ -115,6 +116,22 @@ unsigned int LoadUIHandCursorGFX(unsigned int arg0, unsigned int arg1, unsigned 
     }
     return ret;
 }
+
+/* Partial view of a menu cursor: position plus an embedded OAM shadow at 0x10. */
+struct MenuCursor {
+    u8 pad0[5];
+    u8 unk5;
+    u16 x;
+    u16 y;
+    u8 padA[6];
+    void *oamDest;
+    u16 oamY : 8;
+    u16 affineMode : 2;
+    u16 attr0Hi : 6;
+    u16 oamX : 9;
+    u16 matrixNum : 5;
+    u16 size : 2;
+};
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a17c4.s");
 
@@ -419,7 +436,27 @@ void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d24.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d6c.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d9c.s");
+
+extern unsigned int _GetUnit(unsigned int arg0);
+
+unsigned int Func_80a3d9c(unsigned int unit, int itemID)
+{
+    struct Unit *u;
+    int i;
+    int count;
+
+    count = 0;
+    u = (struct Unit *)_GetUnit(unit);
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] != 0 && (u->items[i] & 0x1ff) == itemID) {
+            count = (u->items[i] & 0xf800) >> 11;
+            count++;
+            break;
+        }
+    }
+    return count;
+}
+
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3ddc.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3e28.s");
 
@@ -720,7 +757,17 @@ unsigned int Func_80a9a58(void) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9a5c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9aec.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9b94.s");
+void Func_80a9b94(int arg0, int arg1, int arg2)
+{
+    unsigned char **cursors = (unsigned char **)(iwram_3001f2c + 0x48);
+    int i;
+
+    for (i = 0; i <= 31; i++) {
+        unsigned char *cursor = cursors[i];
+        if (cursor != 0)
+            Func_80a9bd8(cursor, i, arg0, arg1, arg2);
+    }
+}
 
 
 void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4) {
@@ -732,10 +779,47 @@ void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4) {
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9c18.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9cbc.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9cf8.s");
+void Func_80a9cbc(void)
+{
+    struct MenuCursor **cursors = (struct MenuCursor **)(iwram_3001f2c + 0x48);
+    int i;
+
+    for (i = 0; i <= 31; i++) {
+        struct MenuCursor *cursor = cursors[i];
+        if (cursor != 0) {
+            cursor->x = 0xf8;
+            cursor->y = 0xa8;
+            Func_80a17c4(cursor);
+        }
+    }
+}
+extern void *_Func_801eb64(int a, int b, int c, int x, int y);
+
+int Func_80a9cf8(int arg0)
+{
+    void **cursors = (void **)(iwram_3001f2c + 0xc8);
+    int i;
+
+    for (i = 0; i <= 7; i++)
+        cursors[i] = _Func_801eb64(2, i, arg0, 0xf8, 0xa8);
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9d3c.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9d84.s");
+void Func_80a9d84(void)
+{
+    struct MenuCursor **cursors = (struct MenuCursor **)(iwram_3001f2c + 0xc8);
+    int i;
+
+    for (i = 0; i <= 4; i++) {
+        struct MenuCursor *cursor = cursors[i];
+        if (cursor != 0) {
+            cursor->x = 0xf8;
+            cursor->y = 0xa8;
+            ((unsigned char *)cursor)[0xf] = 0xf0;
+            Func_80a17c4(cursor);
+        }
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9dc4.s");
 
 extern void Func_80a22f4(void);
@@ -902,7 +986,14 @@ void Func_80ad658(void)
     StopTask((void *)&Func_80ad40c);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80ad69c.s");
+void Func_80ad69c(void)
+{
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    int i;
+
+    for (i = 0; i < base[0x219]; i++)
+        _Sprite_SetAnim(((unsigned char **)(base + 0x114))[i], 1);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ad6d4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae2f4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae714.s");
