@@ -132,7 +132,32 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
     return ret;
 }
 
-INCLUDE_ASM("asm/field/map/Func_808e0b0.s");
+extern short gFieldMoveRanges[];
+extern unsigned int iwram_3001e40;
+void Func_808e0b0(unsigned char *a, int k)
+{
+    unsigned char *s;
+    unsigned int v;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        v = k - 1;
+        if (k == 0)
+            { unsigned int i = iwram_3001e40; unsigned char *t = (unsigned char *)gFieldMoveRanges + 0x32; v = t[(i >> 1) & 7]; }
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0 && e[5] != 0xf)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
 
 extern unsigned int iwram_3001ebc__a7 __asm__("iwram_3001ebc");
 extern void Func_808e5d8(unsigned int);
@@ -326,7 +351,31 @@ void Func_808ed78(void) {
 
 INCLUDE_ASM("asm/field/map/Func_808edac.s");
 INCLUDE_ASM("asm/field/map/Func_808ee0c.s");
-INCLUDE_ASM("asm/field/map/Func_808eee4.s");
+extern unsigned char gScript_0809e87c[];
+extern void _Actor_SetScript(void *actor, void *script);
+struct SB808e { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
+void Func_808eee4(unsigned char *a)
+{
+    int v[3];
+    unsigned char *p;
+    int r;
+
+    if ((unsigned)(*(int *)(a + 0x28) + 0xff) <= 0x1fe)
+        a[0x55] = 0;
+    if ((unsigned)(Random() * 100) >> 16 <= 9) {
+        v[0] = *(int *)(a + 8);
+        v[1] = *(int *)(a + 0xc);
+        v[2] = *(int *)(a + 0x10);
+        r = Random();
+        vec3_translate(r << 4, Random(), v);
+        p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
+        if (p != 0) {
+            _Actor_SetScript(p, gScript_0809e87c);
+            _Actor_SetAnim(p, 0);
+            (*(struct SB808e **)(p + 0x50))->f = 1;
+        }
+    }
+}
 INCLUDE_ASM("asm/field/map/Func_808ef70.s");
 
 extern void _DeleteActor(void *actor);
@@ -374,7 +423,28 @@ void Func_808f0d8(unsigned int arg0)
 
 INCLUDE_ASM("asm/field/map/Func_808f140.s");
 INCLUDE_ASM("asm/field/map/Func_808f1c0.s");
-INCLUDE_ASM("asm/field/map/Func_808f28c.s");
+extern unsigned char gScript_0809e87c[];
+struct SB808 { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
+void Func_808f28c(unsigned char *a)
+{
+    int v[3];
+    unsigned char *p;
+    int r;
+
+    if ((unsigned)(Random() * 100) >> 16 <= 9) {
+        v[0] = *(int *)(a + 8);
+        v[1] = *(int *)(a + 0xc);
+        v[2] = *(int *)(a + 0x10);
+        r = Random();
+        vec3_translate(r << 4, Random(), v);
+        p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
+        if (p != 0) {
+            _Actor_SetScript(p, gScript_0809e87c);
+            _Actor_SetAnim(p, 0);
+            (*(struct SB808 **)(p + 0x50))->f = 1;
+        }
+    }
+}
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 

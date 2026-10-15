@@ -158,7 +158,25 @@ label_0x6c:
     return;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/party/Func_80782a0.s", ".text.party_2");
+static inline int Clamp_(int value, int min, int max) {
+    if (value > max)
+        return max;
+    if (value < min)
+        return min;
+    return value;
+}
+void Func_80782a0(unsigned char *u, int hp)
+{
+    short v;
+
+    v = *(short *)(u + 0x38) = Clamp_(hp, 0, *(short *)(u + 0x34));
+    v = *(short *)(u + 0x14) = Clamp_((v << 16 >> 2) / *(short *)(u + 0x34), 0, 0x4000);
+    if (v == 0 && *(short *)(u + 0x38) != 0)
+        *(short *)(u + 0x14) = v = 1;
+    v = *(short *)(u + 0x16) = Clamp_((*(short *)(u + 0x3a) << 14) / *(short *)(u + 0x36), 0, 0x4000);
+    if (v == 0 && *(short *)(u + 0x3a) != 0)
+        *(short *)(u + 0x16) = v = 1;
+}
 
 INCLUDE_ASM_SECTION("asm/rpg/party/Func_8078320.s", ".text.party_2");
 
