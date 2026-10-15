@@ -40,7 +40,18 @@ void Func_80b5e10(void) {}
 
 INCLUDE_ASM("asm/battle/battle/Func_80b5e14.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b5f0c.s");
-INCLUDE_ASM("asm/battle/battle/Func_80b606c.s");
+int Func_80b606c(int a0, int a1, unsigned short *src)
+{
+    char buf[8];
+    int i;
+
+    for (i = 0; i < 4; i++) {
+        buf[i] = src[i];
+        if (buf[i] == 0)
+            buf[i] = 0x5f;
+    }
+    buf[4] = 0;
+}
 INCLUDE_ASM("asm/battle/battle/Func_80b60a0.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6148.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6378.s");

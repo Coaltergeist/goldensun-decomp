@@ -613,7 +613,26 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80bfba4.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bffb8.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80c0098.s");
+extern void Func_80008d8(unsigned int *, int, int);
+void Func_80c0098(unsigned int *p)
+{
+    void (*f)(unsigned int *, int, int);
+    unsigned int v;
+    unsigned int i;
+
+    v = 0x3020100;
+    for (i = 0; i < 0x40; i++) {
+        *p++ = v;
+        v += 0x4040404;
+    }
+    v = 0x3020100;
+    for (i = 0; i < 0x38; i++) {
+        *p++ = v;
+        v += 0x4040404;
+    }
+    f = Func_80008d8;
+    f(p, 0x220, -1);
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80c00d8.s");
 
