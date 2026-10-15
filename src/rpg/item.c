@@ -127,9 +127,34 @@ int CheckPartyItem(int item) {
 }
 
 INCLUDE_ASM("asm/rpg/item/EquipItem.s");
-INCLUDE_ASM("asm/rpg/item/GetEquippedItem.s");
+int GetEquippedItem(int unit, int type)
+{
+    struct Unit *u = GetUnit(unit);
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            if (((struct Item *)GetItemInfo(u->items[i]))->type == type)
+                break;
+        }
+    }
+    if (i == 15)
+        i = -1;
+    return i;
+}
 INCLUDE_ASM("asm/rpg/item/Func_807882c.s");
-INCLUDE_ASM("asm/rpg/item/Func_8078870.s");
+int Func_8078870(struct Unit *u, int type)
+{
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            if (((struct Item *)GetItemInfo(u->items[i]))->type == type)
+                return u->items[i] & 0x1ff;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/rpg/item/Func_80788c4.s");
 extern int Func_80788c4(int a, int b);
 extern int Func_8078ad0(unsigned int arg0, int arg1);

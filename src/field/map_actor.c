@@ -449,8 +449,8 @@ void DeleteFieldActor(int actorID) {
 
 void Func_809294c(void) {}
 
-extern void Func_8092980(void);
-extern void Func_80929d8(unsigned int a, unsigned int b);
+extern void Func_8092980();
+extern void Func_80929d8();
 
 void Func_8092950(unsigned int arg0, unsigned int arg1) {
     unsigned char *actor;
@@ -465,8 +465,50 @@ void Func_8092950(unsigned int arg0, unsigned int arg1) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092980.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80929d8.s", ".text.map_actor_2");
+extern unsigned char gScript_0809ed80[];
+extern unsigned int iwram_3001e40;
+void Func_8092980(unsigned char *a)
+{
+    unsigned char *s;
+    unsigned char v;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        v = gScript_0809ed80[(iwram_3001e40 >> 1) & 3];
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
+void Func_80929d8(unsigned char *a, int v)
+{
+    unsigned char *s;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092a1c.s", ".text.map_actor_2");
 
 unsigned int Func_8092a74(unsigned int arg0)
