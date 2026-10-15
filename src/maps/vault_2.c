@@ -52,7 +52,32 @@ int OvlFunc_901_2008350(struct Actor *a, struct Actor *b, int range, int arg3)
 
     return ret;
 }
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008400.s");
+extern unsigned int iwram_3001e8c;
+extern void *__MapActor_GetActor(unsigned int);
+int OvlFunc_901_2008400(unsigned char *a)
+{
+    unsigned char *b = (unsigned char *)iwram_3001e8c;
+    unsigned char *c = *(unsigned char **)((char *)&iwram_3001e8c + 0x30);
+    int e = 0;
+    int d = 0x12;
+    int id;
+    unsigned char *p;
+
+    if (*(unsigned short *)(a + 0x64) & 1)
+        p = __MapActor_GetActor(0xf);
+    else
+        p = __MapActor_GetActor(0xe);
+    if (OvlFunc_901_2008350((struct Actor *)a, (struct Actor *)p, 0x20, 0) == 0) {
+        p = __MapActor_GetActor(0);
+        if (*(short *)(c + 0x178) != 0 || b[0xea4] != 0) {
+            d = 0x1a;
+            if (*(unsigned short *)(a + 0x64) & 2)
+                e = 1;
+        }
+        OvlFunc_901_2008350((struct Actor *)a, (struct Actor *)p, d, e);
+    }
+    return 0;
+}
 
 extern unsigned char gScript_944__02009450[];
 

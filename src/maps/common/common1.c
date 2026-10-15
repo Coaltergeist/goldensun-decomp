@@ -450,7 +450,37 @@ void OvlFunc_common1_1708(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_172c.s");
+extern unsigned char Lc1_7[] __asm__(".Lc1_7");
+extern int __Random(void);
+extern void __vec3_translate(int, int, int *);
+extern unsigned char *__CreateActor(int, int, int, int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Actor_SetScript(void *, void *);
+extern void __Actor_SetAnim(void *, int);
+void OvlFunc_common1_172c(unsigned char *a)
+{
+    int v[3];
+    unsigned char *p;
+    int r;
+
+    if ((unsigned)(*(int *)(a + 0x28) + 0xff) <= 0x1fe)
+        a[0x55] = 0;
+    if ((unsigned)(__Random() * 100) >> 16 <= 9) {
+        v[0] = *(int *)(a + 8);
+        v[1] = *(int *)(a + 0xc);
+        v[2] = *(int *)(a + 0x10);
+        r = __Random();
+        __vec3_translate(r << 4, __Random(), v);
+        { int x = v[0], y = v[1], z = v[2]; p = __CreateActor(0x11d, x, y, z); }
+        if (p != 0) {
+            p[0x55] = 0;
+            __Actor_SetSpriteFlags(p, 0);
+            __Actor_SetScript(p, Lc1_7);
+            __Actor_SetAnim(p, 1);
+            __Actor_SetAnim(p, 0);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_17c0.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1814.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1928.s");

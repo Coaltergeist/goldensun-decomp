@@ -13,7 +13,30 @@ extern void __CutsceneWait();
 extern unsigned int iwram_3001e8c;
 extern unsigned int OvlFunc_898_2009674(unsigned char *arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008314.s");
+int OvlFunc_898_2008314(unsigned char *a)
+{
+    unsigned char *b = (unsigned char *)iwram_3001e8c;
+    unsigned char *c = *(unsigned char **)((char *)&iwram_3001e8c + 0x30);
+    int e = 0;
+    int d = 0x12;
+    int id;
+    unsigned char *p;
+
+    if (*(unsigned short *)(a + 0x64) & 1)
+        p = __MapActor_GetActor(0xf);
+    else
+        p = __MapActor_GetActor(0xe);
+    if (OvlFunc_898_2009674(a, (unsigned int)p, 0x20, 0) == 0) {
+        p = __MapActor_GetActor(0);
+        if (*(short *)(c + 0x178) != 0 || b[0xea4] != 0) {
+            d = 0x1a;
+            if (*(unsigned short *)(a + 0x64) & 2)
+                e = 1;
+        }
+        OvlFunc_898_2009674(a, (unsigned int)p, d, e);
+    }
+    return 0;
+}
 
 
 unsigned int OvlFunc_898_20083ac(unsigned char *arg0)
