@@ -107,7 +107,21 @@ INCLUDE_ASM("asm/field/map/Func_808d828.s");
 INCLUDE_ASM("asm/field/map/Func_808d8f0.s");
 
 INCLUDE_ASM("asm/field/map/Func_808d9a4.s");
-INCLUDE_ASM("asm/field/map/GetFieldMoveRange.s");
+extern short gFieldMoveRanges[];
+int GetFieldMoveRange(int move)
+{
+    short *p = gFieldMoveRanges;
+    int range = 16;
+
+    while (*p != -1) {
+        if (move == *p++) {
+            range = *p;
+            break;
+        }
+        p++;
+    }
+    return range;
+}
 INCLUDE_ASM("asm/field/map/Func_808ddec.s");
 INCLUDE_ASM("asm/field/map/Func_808df1c.s");
 

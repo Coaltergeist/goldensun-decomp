@@ -38,6 +38,26 @@ INCLUDE_ASM("asm/field/moves/frost/Func_8099070.s");
 
 INCLUDE_ASM("asm/field/moves/frost/Func_80990cc.s");
 
-INCLUDE_ASM("asm/field/moves/frost/Field_Frost_Target.s");
+extern unsigned char *iwram_3001f30__k1 __asm__("iwram_3001f30");
+extern void Field_Frost(void);
+
+/* Partial view of the targeted field object. */
+struct FrostTarget {
+    unsigned char pad0[0x23];
+    unsigned char flags;
+};
+
+void Field_Frost_Target(void)
+{
+    unsigned char *s = iwram_3001f30__k1;
+    struct FrostTarget *t = *(struct FrostTarget **)(s + 0x14);
+
+    if (t != 0) {
+        if (*(signed char *)(s + 0x35) != 0)
+            s[0x20] = 1;
+        t->flags |= 2;
+        Field_Frost();
+    }
+}
 
 INCLUDE_ASM("asm/field/moves/frost/Field_Frost.s");

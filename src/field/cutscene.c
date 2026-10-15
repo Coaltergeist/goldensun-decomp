@@ -365,7 +365,15 @@ void SetDestMap2(int arg0, int arg1)
   *new_var = new_var2;
 }
 
-INCLUDE_ASM("asm/field/cutscene/Func_8091ff0.s");
+extern unsigned char *iwram_3001ebc__k1 __asm__("iwram_3001ebc");
+void Func_8091ff0(int sound)
+{
+    *(short *)(iwram_3001ebc__k1 + 0xcc8) = sound;
+    if ((short)sound == -1)
+        sound = 0x121;
+    _PlaySound(0x12a);
+    _PlaySound(sound);
+}
 
 extern unsigned char iwram_3001ebc__a17[] __asm__("iwram_3001ebc");
 
