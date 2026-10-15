@@ -135,7 +135,17 @@ void Func_801eddc(unsigned int arg0, unsigned int arg1) {
 }
 
 INCLUDE_ASM("asm/ui/text/Func_801edec.s");
-INCLUDE_ASM("asm/ui/text/Func_801ee68.s");
+void Func_801ee68(int a0, int a1, unsigned int w, unsigned int h, int fill)
+{
+    unsigned short *p = (unsigned short *)0x6002000;
+    unsigned int y, x;
+
+    for (y = 0; y < h; y++) {
+        for (x = 0; x < w; x++)
+            *p++ = fill;
+        p += 0x20 - w;
+    }
+}
 INCLUDE_ASM("asm/ui/text/Func_801eea0.s");
 INCLUDE_ASM("asm/ui/text/Func_801ef08.s");
 INCLUDE_ASM("asm/ui/text/Func_801ef68.s");
