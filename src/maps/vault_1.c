@@ -239,8 +239,41 @@ void OvlFunc_898_20087b8(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_20087ec.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_200885c.s");
+extern int __WaitFrames(int);
+void OvlFunc_898_20087ec(void)
+{
+    unsigned char *a = __MapActor_GetActor(0xe);
+    short facing = *(short *)(a + 6);
+    int flags = 2 | *(unsigned short *)(a + 0x64);
+
+    *(unsigned short *)(a + 0x64) = flags;
+    __CutsceneStart();
+    __MessageID(0x122c);
+    __MapActor_SetAnim(0xe, 0);
+    OvlFunc_898_200973c(0xe, 0, 2);
+    OvlFunc_898_2009724(0xe, 0xa);
+    *(short *)(a + 6) = facing;
+    __WaitFrames(1);
+    __CutsceneEnd();
+    *(unsigned short *)(a + 0x64) &= 1;
+}
+void OvlFunc_898_200885c(void)
+{
+    unsigned char *a = __MapActor_GetActor(0xf);
+    short facing = *(short *)(a + 6);
+    int flags = 2 | *(unsigned short *)(a + 0x64);
+
+    *(unsigned short *)(a + 0x64) = flags;
+    __CutsceneStart();
+    __MessageID(0x122d);
+    __MapActor_SetAnim(0xf, 0);
+    OvlFunc_898_200973c(0xf, 0, 2);
+    OvlFunc_898_2009724(0xf, 0xa);
+    *(short *)(a + 6) = facing;
+    __WaitFrames(1);
+    __CutsceneEnd();
+    *(unsigned short *)(a + 0x64) &= 1;
+}
 
 extern int _MSG_12c0;
 
@@ -338,7 +371,23 @@ void OvlFunc_898_2008a2c(void) {
 }
 
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008a4c.s");
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008acc.s");
+void OvlFunc_898_2008acc(void)
+{
+    unsigned char *a = __MapActor_GetActor(0xf);
+    short facing = *(short *)(a + 6);
+    int flags = 2 | *(unsigned short *)(a + 0x64);
+
+    *(unsigned short *)(a + 0x64) = flags;
+    __CutsceneStart();
+    __MessageID(0x133b);
+    __MapActor_SetAnim(0xf, 0);
+    OvlFunc_898_200973c(0xf, 0, 2);
+    OvlFunc_898_2009724(0xf, 0xa);
+    *(short *)(a + 6) = facing;
+    __WaitFrames(1);
+    __CutsceneEnd();
+    *(unsigned short *)(a + 0x64) &= 1;
+}
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 

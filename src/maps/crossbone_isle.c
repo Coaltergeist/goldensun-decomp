@@ -821,8 +821,34 @@ void OvlFunc_946_2009740(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009774.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200985c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20098b0.s");
+void OvlFunc_946_200985c(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    unsigned char *actor = __MapActor_GetActor(id);
+
+    if (actor != 0) {
+        API_Func_8092b08(id, 3);
+        ((struct Actor *)actor)->flags |= 2;
+        {
+            int x = *(int *)(actor + 8) >> 20;
+            int z = *(int *)(actor + 0x10) >> 20;
+            __Func_8010704(a1, a2, 3, 1, x - 1, z);
+        }
+    }
+}
+void OvlFunc_946_20098b0(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    unsigned char *actor = __MapActor_GetActor(id);
+
+    if (actor != 0) {
+        API_Func_8092b08(id, 3);
+        ((struct Actor *)actor)->flags |= 2;
+        {
+            int x = *(int *)(actor + 8) >> 20;
+            int z = *(int *)(actor + 0x10) >> 20;
+            __Func_8010704(a1, a2, 1, 3, x, z - 1);
+        }
+    }
+}
 
 void OvlFunc_946_2009904(unsigned int arg0)
 {

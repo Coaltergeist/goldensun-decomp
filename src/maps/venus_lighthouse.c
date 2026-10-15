@@ -77,7 +77,26 @@ int OvlFunc_968_20082f0(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200832c.s");
+struct ActorTable200832c {
+    unsigned char pad0[0x14];
+    struct Actor *actor[66];
+};
+struct Actor *OvlFunc_968_200832c(int *pos, struct Actor *self)
+{
+    extern struct ActorTable200832c *iwram_3001ebc__k1 __asm__("iwram_3001ebc");
+    struct ActorTable200832c *t = iwram_3001ebc__k1;
+    int x;
+    unsigned int i;
+
+    i = 8;
+    x = pos[0] >> 20;
+    for (; i <= 0x41; i++) {
+        struct Actor *a = t->actor[i];
+        if (x == a->pos.x >> 20 && pos[1] >> 20 == a->pos.y >> 20 && pos[2] >> 20 == a->pos.z >> 20)
+            return a;
+    }
+    return 0;
+}
 
 void OvlFunc_968_2008374(void) {
     struct Actor *player;
