@@ -417,7 +417,22 @@ void Func_80a3cf8(unsigned int arg0, unsigned int arg1) {
     _Func_801e7c0(r6, *(unsigned int *)r5, 0, 0);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d24.s");
+struct PartyCursors80a3d24 {
+    unsigned char pad0[0x48];
+    unsigned char *cur[32];
+};
+void Func_80a3d24(unsigned short *ids)
+{
+    struct PartyCursors80a3d24 *s = (struct PartyCursors80a3d24 *)iwram_3001f2c;
+    int i;
+
+    for (i = 0; i < 32; i++) {
+        if (ids[i] == 0) {
+            Func_80a17c4((void *)s->cur[i]);
+            s->cur[i][5] = 13;
+        }
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d6c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3d9c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3ddc.s");

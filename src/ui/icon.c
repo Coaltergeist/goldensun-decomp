@@ -43,7 +43,23 @@ void LoadMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned in
     LoadMoveIconID(_GetMoveInfo(move)[4], a, b, c, d);
 }
 INCLUDE_ASM("asm/ui/icon/LoadMoveIconID.s");
-INCLUDE_ASM("asm/ui/icon/DecompressStatusIcon.s");
+struct IconState {
+    unsigned char pad0[0x600];
+    unsigned short w, h;
+    void *src;
+};
+extern struct IconState *iwram_3001e94__k1 __asm__("iwram_3001e94");
+extern void *gStatusIcons[];
+extern void LoadIcon(void *, int);
+void DecompressStatusIcon(int id)
+{
+    struct IconState *s = iwram_3001e94__k1;
+
+    s->src = gStatusIcons[id];
+    s->w = 2;
+    s->h = 2;
+    LoadIcon(s, 0);
+}
 INCLUDE_ASM("asm/ui/icon/LoadPortrait.s");
 
 void Func_801a5a0(void) {}
