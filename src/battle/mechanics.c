@@ -114,7 +114,21 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80b8530.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b8574.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80b86ec.s");
+extern unsigned char *iwram_3001e80__k1[] __asm__("iwram_3001e80");
+extern volatile unsigned int gKeyHeld__k1 __asm__("gKeyHeld");
+extern void Func_80c0a24(int, int, int, int, int);
+void Func_80b86ec(void)
+{
+    unsigned char *s = iwram_3001e80__k1[0];
+    unsigned char *t = iwram_3001e80__k1[0x20];
+
+    if (gKeyHeld__k1 & 0x200)
+        *(unsigned short *)(s + 0x36) += 0x200;
+    if (gKeyHeld__k1 & 0x100)
+        *(unsigned short *)(s + 0x36) -= 0x200;
+    if (*(int *)(t + 0x14) == 0)
+        Func_80c0a24(0x780000, 0x780000, 0, 0, 0x10000);
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b874c.s");
 
@@ -228,7 +242,18 @@ short Func_80b9a44(unsigned int arg0)
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b9a70.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80b9acc.s");
+void Func_80b9acc(void)
+{
+    unsigned char *s = iwram_3001e80__k1[0];
+    unsigned char *t = iwram_3001e80__k1[0x20];
+
+    if (gKeyHeld__k1 & 0x200)
+        *(unsigned short *)(s + 0x36) += 0x200;
+    if (gKeyHeld__k1 & 0x100)
+        *(unsigned short *)(s + 0x36) -= 0x200;
+    if (*(int *)(t + 0x14) == 0)
+        Func_80c0a24(0x780000, 0x780000, 0, 0, 0x10000);
+}
 
 void Func_80b9b2c(void) {}
 
