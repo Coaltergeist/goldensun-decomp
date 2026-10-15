@@ -685,7 +685,20 @@ INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0eec.s", ".text.mechanics_2");
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0f98.s", ".text.mechanics_2");
 
-INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1014.s", ".text.mechanics_2");
+extern int Func_80b6c08(int side, s16 *units);
+extern void Func_80c0f98(int unit, int arg1);
+SECTION(".text.mechanics_2");
+void Func_80c1014(int id)
+{
+    s16 buf[14];
+    int n = Func_80b6c08(3, buf);
+    int i;
+
+    for (i = 0; i < n; i++) {
+        if (buf[i] != id)
+            Func_80c0f98(buf[i], 1);
+    }
+}
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c1054.s", ".text.mechanics_2");
 

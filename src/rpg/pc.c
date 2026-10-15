@@ -173,7 +173,25 @@ int Func_8079754(int delta)
 
     return value;
 }
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_807977c.s", ".text.rpg_pc_2");
+extern unsigned char X84a8c[];
+extern int *Func_8077330__p() __asm__("Func_8077330");
+int Func_807977c(unsigned char *out)
+{
+    unsigned char *p = X84a8c;
+    unsigned char *end = X84a8c + 0xf;
+    int n = 0;
+    int one = 1;
+
+    do {
+        unsigned char id = *p++;
+        if (*Func_8077330__p(0) & (one << id)) {
+            *out++ = id;
+            n++;
+        }
+    } while (p <= end);
+    *out = 0x20;
+    return n;
+}
 
 SECTION(".text.rpg_pc_3");
 
