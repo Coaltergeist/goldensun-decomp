@@ -50,7 +50,28 @@ unsigned char **GetCachedSpriteGFX(unsigned int spriteID)
 }
 
 INCLUDE_ASM("asm/field_engine/sprite/sprite/InitSprite.s");
-INCLUDE_ASM("asm/field_engine/sprite/sprite/InitSpriteLayer.s");
+extern void *_GetSpriteInfo(int id);
+void InitSpriteLayer(struct SpriteLayer *layer)
+{
+    struct SpriteInfo *info;
+    const u8 **gfx;
+
+    if (layer == 0)
+        return;
+    info = _GetSpriteInfo((short)layer->spriteID);
+    if (info->width == 0)
+        return;
+    gfx = info->gfx;
+    if (gfx == 0)
+        gfx = (const u8 **)GetCachedSpriteGFX((short)layer->spriteID);
+    layer->type = info->type;
+    layer->anims = info->anims;
+    layer->gfx = gfx;
+    layer->gfxFormat = info->gfxFormat;
+    layer->frameID = 0xff;
+    layer->curAnim = 0;
+    layer->animCmdIndex = 0;
+}
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_AddLayer.s");
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_DeleteLayer.s");
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_DeleteLayerIndex.s");
@@ -140,7 +161,21 @@ void DeleteSpriteLayer(struct SpriteLayer *layer) {
 }
 
 INCLUDE_ASM("asm/field_engine/sprite/sprite/CreateSprite.s");
-INCLUDE_ASM("asm/field_engine/sprite/sprite/DeleteSprite.s");
+extern void Func_8003f3c(int slot);
+void DeleteSprite(struct Sprite *sprite)
+{
+    struct SpriteLayer **layers;
+    int i;
+
+    if (sprite == 0)
+        return;
+    if ((sprite->__unk1D & 1) == 0)
+        Func_8003f3c(sprite->slot);
+    layers = sprite->layers;
+    for (i = 3; i >= 0; i--)
+        DeleteSpriteLayer(*layers++);
+    DMA3_CLEAR(sprite, sizeof(struct Sprite));
+}
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Func_800be20.s");
 
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Func_800be70.s");
