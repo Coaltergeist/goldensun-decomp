@@ -35,7 +35,29 @@ unsigned int OvlFunc_945_2008030(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008058.s");
+int OvlFunc_945_2008058(unsigned char *a)
+{
+    short flag;
+    int y;
+
+    if (*(short *)(a + 0x66) != 0) {
+        y = *(int *)(a + 0xc) - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y < 0) {
+            flag = 0;
+            goto set;
+        }
+    } else {
+        y = *(int *)(a + 0xc) + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y > 0x80000) {
+            flag = 1;
+        set:
+            *(short *)(a + 0x66) = flag;
+        }
+    }
+    return 1;
+}
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
     extern unsigned int __Random(unsigned int);

@@ -486,6 +486,25 @@ void OvlFunc_common1_2008(unsigned short arg0) {
     *((unsigned short *)(ptr + 0xdc)) = arg0;
 }
 
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_2018.s");
+struct ActorTableCommon1 {
+    unsigned char pad0[0x14];
+    int *actor[66];
+};
+int *OvlFunc_common1_2018(int *pos)
+{
+    extern struct ActorTableCommon1 *iwram_3001ebc__k2 __asm__("iwram_3001ebc");
+    struct ActorTableCommon1 *t = iwram_3001ebc__k2;
+    int x;
+    unsigned int i;
+
+    i = 8;
+    x = pos[0] >> 20;
+    for (; i <= 0x41; i++) {
+        int *a = t->actor[i];
+        if (x == a[2] >> 20 && pos[1] >> 20 == a[3] >> 20 && pos[2] >> 20 == a[4] >> 20)
+            return a;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_2060.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_21c8.s");
