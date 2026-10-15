@@ -54,7 +54,17 @@ INCLUDE_ASM("asm/field/map_actor/CheckSpecialExits.s");
 
 INCLUDE_ASM("asm/field/map_actor/Func_808bec0.s");
 
-INCLUDE_ASM("asm/field/map_actor/Func_808c2dc.s");
+extern int _GetPartySize(void);
+extern int _ModifyPP(int, int);
+extern unsigned char gState[];
+void Func_808c2dc(int amount)
+{
+    int n = _GetPartySize();
+    int i;
+
+    for (i = 0; i < n; i++)
+        _ModifyPP(gState[0x1f8 + i], amount);
+}
 
 INCLUDE_ASM("asm/field/map_actor/Func_808c30c.s");
 

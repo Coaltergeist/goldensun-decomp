@@ -22,7 +22,19 @@ void FieldMove(int param_1)
 
 INCLUDE_ASM("asm/field/field_move/FieldMove_NoTarget.s");
 INCLUDE_ASM("asm/field/field_move/FieldMove_Target.s");
-INCLUDE_ASM("asm/field/field_move/Func_8096ab0.s");
+extern unsigned char *iwram_3001f30__k1 __asm__("iwram_3001f30");
+extern void Func_8097608(void);
+extern short gState__k1[] __asm__("gState");
+void Func_8096ab0(void)
+{
+    unsigned char *s = iwram_3001f30__k1;
+
+    if (*(short *)(s + 0x1e) == 2) {
+        Func_8097608();
+        if (gState__k1[0x125] != *(short *)(s + 0x1a))
+            (*(unsigned char **)(s + 0x14))[0x5b] = 0;
+    }
+}
 
 void Func_8096af0(void) {
     switch ((unsigned int)*(short *)((char *)iwram_3001f30 + 0x1e)) {
