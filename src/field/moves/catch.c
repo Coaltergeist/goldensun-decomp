@@ -1,4 +1,3 @@
-/* field/moves/catch.c */
 #include "nonmatching.h"
 
 extern void Field_Catch(void);

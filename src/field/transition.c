@@ -1,4 +1,3 @@
-/* unknown/sub_809b804.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/transition/Func_809bb64.s");

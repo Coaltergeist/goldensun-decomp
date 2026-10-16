@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/kolima_forest_5/exports.s");
 
@@ -179,7 +180,69 @@ void OvlFunc_917_20082c0(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_5/OvlFunc_917_20082ec.s");
+extern void *__MapActor_GetActor(int);
+extern void __PlayMapMusic(void);
+extern void OvlFunc_917_2009218(void);
+extern int L1dd0 __asm__(".Lm917_1dd0");
+
+void OvlFunc_917_20082ec(void) {
+    struct Actor *a;
+
+    a = (struct Actor *)__MapActor_GetActor(0);
+    API_Func_8092adc(0, 0xc0 << 8, 0);
+    API_Func_8091200(0x406218, 1);
+    API_Func_8091254(0x14);
+    API_WaitFrames(0x28);
+    API_PlaySound(0x11);
+    L1dd0 = 1;
+    API_StartTask(OvlFunc_917_2009218, 0xc8 << 4);
+    API_WaitFrames(0x1e);
+    L1dd0 = 0;
+    API_Func_80933f8(0xa4 << 17, -1, 0xeb << 16, 1);
+    API_Func_8092b08(0, 1);
+    ((struct Actor *)__MapActor_GetActor(0))->__unk5A &= 0xfe;
+    API_MapActor_SetAnim(0, 0x10);
+    API_MapActor_SetSpeed(0, 0x80 << 10, 0x80 << 10);
+    API_PlaySound(0x85);
+    a->motion.y = 0xa0 << 11;
+    a->gravity = 0x80 << 7;
+    a->bounce = 0xa0 << 8;
+    API_MapActor_TravelToWait(0, 0x14f, 0x81 << 1);
+    if (a->motion.y >= 0) {
+        do {
+            API_WaitFrames(1);
+        } while (a->motion.y >= 0);
+    }
+    do {
+        API_WaitFrames(1);
+    } while (a->motion.y <= 0);
+    API_PlaySound(0xa1);
+    API_MapActor_SetAnim(0, 0x13);
+    API_CutsceneWait(0x78);
+    API_StopTask(OvlFunc_917_2009218);
+    API_WaitFrames(0x28);
+    a->bounce = 0x80 << 7;
+    ((struct Actor *)__MapActor_GetActor(0))->__unk5A |= 1;
+    API_CutsceneWait(0x50);
+    API_MessageID(0x14cc);
+    API_ActorMessage_Wait(0x200e, 0, 0x14);
+    API_Func_80925cc(0, 2);
+    API_CutsceneWait(0x14);
+    API_ActorMessage(0x200e, 0);
+    __PlayMapMusic();
+    API_Func_8091200(0x80 << 9, 1);
+    API_Func_8091254(0x14);
+    API_WaitFrames(0x28);
+    a->facing = 0xc0 << 8;
+    a->gravity = 0x80 << 9;
+    a->bounce = 0x80 << 7;
+    API_Func_80925cc(0, 2);
+    API_CutsceneWait(0x28);
+    API_MapActor_Jump(0, 4, 0);
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneWait(0x14);
+}
+
 INCLUDE_ASM("asm/maps/kolima_forest_5/OvlFunc_917_2008488.s");
 INCLUDE_ASM("asm/maps/kolima_forest_5/KolimaForest5_MapInit.s");
 

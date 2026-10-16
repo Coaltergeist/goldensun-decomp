@@ -21,21 +21,8 @@ extern u16 iwram_3001cf8;
 #include "gba/io.h"
 #include "dma.h"
 
-struct DmaTransfer {
-    const void *src;
-    void *dest;
-    u32 control;
-};
-
-struct DmaQueue {
-    u16 count;
-    struct DmaTransfer tasks[32];
-};
-
-extern struct DmaQueue gDMATaskCount;
-
-static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 cnt) {
-    struct DmaQueue *queue;
+static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 control) {
+    DmaQueue *queue;
     register void *d __asm__("r6");
     register const void *s __asm__("r0");
     u32 savedIme;
@@ -54,7 +41,7 @@ static inline void ScheduleDmaTransfer(void *dest, const void *src, u32 cnt) {
         *task++ = (u32)s;
         queue->count = count + 1;
         *task++ = (u32)d;
-        *task = cnt;
+        *task = control;
     }
     SET_IO(REG_IME, savedIme);
 }
@@ -95,7 +82,7 @@ void Func_8003a3c(void *dest, const void *src) {
     ScheduleDmaTransfer(dest, src, 0xB0000);
 }
 
-extern void UploadPalette_ROM(struct DmaQueue *queue, u32 count);
+extern void UploadPalette_ROM(DmaQueue *queue, u32 count);
 
 extern int _UPLOAD_PALETTE_SIZE;
 
@@ -104,9 +91,9 @@ void UploadPalette(void) {
     if (count != 0) {
         u32 size = (u32)&_UPLOAD_PALETTE_SIZE;
         u32 funcBuffer[size / 4];
-        void (*func)(struct DmaQueue *, u32);
+        void (*func)(DmaQueue *, u32);
         DMA3_COPY(UploadPalette_ROM, funcBuffer, size);
-        func = (void (*)(struct DmaQueue *, u32))funcBuffer;
+        func = (void (*)(DmaQueue *, u32))funcBuffer;
         func(&gDMATaskCount, count);
         gDMATaskCount.count = 0;
     }

@@ -6,8 +6,7 @@
 
 INCLUDE_ASM("asm/maps/kalay/exports.s");
 
-/* forward decl hoisted to TU top: used as a function pointer (line ~133) before
- * its definition; reconcile re-emitted it below the use instead of here. */
+/* Used as a function pointer before its definition. */
 extern void OvlFunc_936_200b90c(void);
 
 extern void __Func_80955b0(int a, int b, int c);
@@ -20,6 +19,13 @@ INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
 
 #include "state/global_state.h"
+
+struct Attr_OvlFunc_936_200ba3c {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
 extern GlobalState gState;
 extern unsigned char _EVENT_63[], _EVENT_66[], _EVENT_99[], _EVENT_9a[], _EVENT_9b[], _EVENT_9c[];
 extern unsigned char Lm936_42c8[] __asm__(".Lm936_42c8");
@@ -202,9 +208,7 @@ struct TableEntry {
 extern struct TableEntry Lm936_50e0[] __asm__(".Lm936_50e0");
 
 void OvlFunc_936_2008464(void) {
-    /* iwram_3001ebc is a file-scope unsigned int scalar (:270); this fn needs the
-       array view of the same symbol. Callees are left implicit, matching the
-       standalone match (implicit decls are block-scoped, no sibling leak). */
+    /* This function needs the array view of iwram_3001ebc. */
     extern unsigned char iwram_3001ebc__arr[] __asm__("iwram_3001ebc");
     unsigned int map;
     unsigned int i;
@@ -472,7 +476,51 @@ void OvlFunc_936_2009ed8(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2009f14.s");
+extern unsigned char gScript_936__0200bec0[];
+extern unsigned char gScript_936__0200bfb0[];
+
+void OvlFunc_936_2009f14(void)
+{
+    extern void __MapActor_SetBehavior(int, void *);
+
+    switch (Lm936_5144) {
+    case 0:
+        ((struct Actor *)__MapActor_GetActor(0x15))->waveCounter = 0;
+        __MapActor_SetBehavior(0x15, gScript_936__0200bec0);
+        Lm936_5144++;
+        break;
+
+    case 1:
+        if (((struct Actor *)__MapActor_GetActor(0x15))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x14))->waveCounter = 0;
+            __MapActor_SetBehavior(0x14, gScript_936__0200bfb0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 2:
+        if (((struct Actor *)__MapActor_GetActor(0x14))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x14))->waveCounter = 0;
+            __MapActor_SetBehavior(0x14, gScript_936__0200bec0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 3:
+        if (((struct Actor *)__MapActor_GetActor(0x14))->waveCounter != 0) {
+            ((struct Actor *)__MapActor_GetActor(0x15))->waveCounter = 0;
+            __MapActor_SetBehavior(0x15, gScript_936__0200bfb0);
+            Lm936_5144++;
+        }
+        break;
+
+    case 4:
+        if (((struct Actor *)__MapActor_GetActor(0x15))->waveCounter != 0) {
+            Lm936_5144 = 0;
+        }
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a008.s");
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200a6c0.s");
 
@@ -639,7 +687,38 @@ void OvlFunc_936_200b2a4(void)
     }
 }
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b768.s");
+extern unsigned int iwram_3001e40;
+extern void __Func_8091ff0(int);
+extern void OvlFunc_936_200b864(int, int, int);
+
+void OvlFunc_936_200b768(void)
+{
+    struct Actor *actor8;
+    struct Actor *actor9;
+
+    actor8 = (struct Actor *)__MapActor_GetActor(8);
+    actor9 = (struct Actor *)__MapActor_GetActor(9);
+
+    if ((u32)(*(short *)((char *)actor8 + 0xa) - 0x17d) <= 12 && *(short *)((char *)actor8 + 0x12) > 0x309) {
+        actor8->sprite->oam.priority = ((struct Actor *)__MapActor_GetActor(0))->sprite->oam.priority;
+    } else if (!API_GetFlag(0x302) && *(short *)((char *)actor8 + 0xa) <= 0xf5 && !(iwram_3001e40 & 1)) {
+        if (!API_GetFlag(0x202)) {
+            __Func_8091ff0(-1);
+            API_PlaySound(0xe6);
+            API_SetFlag(0x202);
+        }
+        OvlFunc_936_200b864(actor8->pos.x, actor8->pos.y, actor8->pos.z);
+    }
+
+    if (!API_GetFlag(0x303) && *(short *)((char *)actor9 + 0xa) <= 0x2c5 && !(iwram_3001e40 & 1)) {
+        if (!API_GetFlag(0x203)) {
+            __Func_8091ff0(-1);
+            API_PlaySound(0xe6);
+            API_SetFlag(0x203);
+        }
+        OvlFunc_936_200b864(actor9->pos.x, actor9->pos.y, actor9->pos.z);
+    }
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b864.s");
 
 void OvlFunc_936_200b90c(void)
@@ -719,7 +798,40 @@ int OvlFunc_936_200b9d4(int *actor)
   return 0;
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200ba3c.s");
+void OvlFunc_936_200ba3c(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_936_200ba3c *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_936_200b9d4;
+    actor->__unk56 = zero;
+}
+
 INCLUDE_ASM("asm/maps/kalay/kalay_data.s");
 
 INCLUDE_ASM("asm/maps/kalay/imports.s");

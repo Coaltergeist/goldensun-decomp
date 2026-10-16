@@ -152,6 +152,11 @@ static inline void API_MapActor_PlayPendingSound(void) { extern void __MapActor_
 static inline void API_SetCameraTarget(int a, int b) { extern void __SetCameraTarget(int, int); __SetCameraTarget(a, b); }
 static inline void API_MapTransitionOut(void) { extern void __MapTransitionOut(void); __MapTransitionOut(); }
 static inline void API_Func_8093530(void) { extern void __Func_8093530(void); __Func_8093530(); }
+static inline int API_Func_8091c7c(int a, int b) { extern int __Func_8091c7c(int, int); return __Func_8091c7c(a, b); }
+static inline int API_ShowActorMessage_NoWait(int a, int b) { extern int __ShowActorMessage_NoWait(int, int); return __ShowActorMessage_NoWait(a, b); }
+static inline void API_Func_8093c00(void) { extern void __Func_8093c00(void); __Func_8093c00(); }
+static inline void API_Func_8093e28(void) { extern void __Func_8093e28(void); __Func_8093e28(); }
+static inline void API_Func_8093fa0(void) { extern void __Func_8093fa0(void); __Func_8093fa0(); }
 static inline void API_Func_8091e9c(int a) { extern void __Func_8091e9c(int); __Func_8091e9c(a); }
 static inline void API_MapActor_SetIdle(int a) { extern void __MapActor_SetIdle(int); __MapActor_SetIdle(a); }
 static inline void API_MapActor_SetBehavior(int a, int b) { extern void __MapActor_SetBehavior(int, int); __MapActor_SetBehavior(a, b); }

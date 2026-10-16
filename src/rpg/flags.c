@@ -1,5 +1,4 @@
 // fakematch
-/* flags.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned char gFlags[];

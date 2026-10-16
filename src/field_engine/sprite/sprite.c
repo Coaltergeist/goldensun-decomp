@@ -1,4 +1,3 @@
-/* sprite/sprite.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma.h"
 #include "sprite.h"

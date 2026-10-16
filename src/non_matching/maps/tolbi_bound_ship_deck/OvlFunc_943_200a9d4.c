@@ -15,7 +15,7 @@ void OvlFunc_943_200a9d4(void)
     API_MapActor_SetBehavior(0x16, (int)gScript_943__0200c980);
 
     actor = (struct Actor *)__MapActor_GetActor(0x15);
-    actor->__unk59 |= 0x80;
+    actor->collision |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     API_MapActor_SetBehavior(0x15, (int)gScript_943__0200c628);
 

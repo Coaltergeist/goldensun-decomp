@@ -1,4 +1,3 @@
-/* battle_anim/moves/growth.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Growth(void *context, int subanim);

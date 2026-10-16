@@ -1,7 +1,7 @@
 extern struct {
     char pad[0x1f4];
     int target_idx;
-} gState;
+} gStateFields __asm__("gState");
 
 extern unsigned char gScript_923__0200a7c4[];
 
@@ -16,7 +16,7 @@ void OvlFunc_923_2009df8(void)
     unsigned char *p;
 
     base = *(char **)iwram_3001ebc;
-    offset = (gState.target_idx << 2) + 0x14;
+    offset = (gStateFields.target_idx << 2) + 0x14;
     target = *(unsigned char **)(base + offset);
 
     actor = (unsigned char *)__CreateActor(0x1a, *(int *)(target + 8), *(int *)(target + 0xc), *(int *)(target + 0x10));

@@ -1,4 +1,3 @@
-/* field/moves/avoid.c */
 #include "nonmatching.h"
 
 #include "state/global_state.h"

@@ -1,4 +1,3 @@
-/* ui/icon.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned char L2a2e0[] __asm__(".L2a2e0");
@@ -16,14 +15,33 @@ unsigned int NumMoveIcons(void) {
 }
 
 INCLUDE_ASM("asm/ui/icon/LoadOldUIIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadOldMoveIcon.s");
+extern unsigned char *_GetMoveInfo(unsigned int move);
+extern void LoadItemIconID(unsigned int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+
+void LoadOldMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {
+    LoadItemIconID(_GetMoveInfo(move)[4], a, b, c, d);
+}
 INCLUDE_ASM("asm/ui/icon/LoadItemIconID.s");
 INCLUDE_ASM("asm/ui/icon/DrawInventoryIcon.s");
 INCLUDE_ASM("asm/ui/icon/LoadInventoryIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadStatusIcon.s");
+
+int LoadStatusIcon(int icon, int unused, int slot) {
+    unsigned char *buf;
+
+    buf = galloc_iwram(0x11, 0x608);
+    DecompressStatusIcon(icon);
+    UploadSpriteGFX(slot, 0x80, buf + 0x400);
+    gfree(0x11);
+    return 1;
+}
+
 INCLUDE_ASM("asm/ui/icon/LoadUIBanner.s");
 INCLUDE_ASM("asm/ui/icon/LoadItemIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadMoveIcon.s");
+extern void LoadMoveIconID(unsigned int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
+
+void LoadMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {
+    LoadMoveIconID(_GetMoveInfo(move)[4], a, b, c, d);
+}
 INCLUDE_ASM("asm/ui/icon/LoadMoveIconID.s");
 INCLUDE_ASM("asm/ui/icon/DecompressStatusIcon.s");
 INCLUDE_ASM("asm/ui/icon/LoadPortrait.s");

@@ -1,4 +1,3 @@
-/* sprite/summon.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma0.h"
 

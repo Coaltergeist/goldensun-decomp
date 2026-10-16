@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 #include "dma.h"
 extern void OvlFunc_947_20093b0(void *);
 
@@ -55,7 +56,91 @@ void *OvlFunc_947_2008350(int *coords, void *arg1)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20083a8.s");
+extern unsigned int Lm947_2ca0[] __asm__(".Lm947_2ca0");
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_WaitMovement(void *);
+extern int __TestCollision(void *, int *);
+
+void OvlFunc_947_20083a8(void)
+{
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm947_2ca0[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_947_2008350(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm947_2ca0[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_947_2008350(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_947_2008350(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm947_2ca0[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
 extern unsigned char gBuffer[];
 
 #include "field/map_tile.h"
@@ -602,6 +687,7 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
 
 
 #include "state/global_state.h"
+#include "actor.h"
 extern GlobalState gState;
 extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];
 extern unsigned char Lm947_2eac[] __asm__(".Lm947_2eac");
@@ -718,7 +804,46 @@ void OvlFunc_947_20095cc(void) {
     *(unsigned short *)((char *)h + 0xa) += 0xc0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20095fc.s");
+extern void OvlFunc_947_2008cc0(int, int, int, int, int, int, int);
+extern void __SetIntrHandler(int, int, void *);
+extern void __Func_800fe9c(void);
+extern int Lm947_3738__95fc __asm__(".Lm947_3738");
+
+void OvlFunc_947_20095fc(void) {
+    if (API_GetFlag(0x200) == 0) {
+        OvlFunc_947_2008cc0(0xa, 0x13, 0x10, 5, 0, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0xa, 0x33, 0x10, 5, 1, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0x2a, 0x33, 0x10, 5, 2, 0xa, 0x1f);
+    } else {
+        OvlFunc_947_2008cc0(0xa, 0x13, 0x10, 5, 0, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0xa, 0x53, 0x10, 5, 1, 0xa, 0x1f);
+        OvlFunc_947_2008cc0(0x2a, 0x53, 0x10, 5, 2, 0xa, 0x1f);
+    }
+    Lm947_3738__95fc = 0;
+    API_StartTask(OvlFunc_947_20095cc, 0xc8 << 4);
+    API_WaitFrames(1);
+    __SetIntrHandler(1, 0, OvlFunc_947_2009578);
+    API_PlaySound(0xe7);
+    Lm947_3738__95fc = 0;
+    do {
+        API_WaitFrames(1);
+    } while (++Lm947_3738__95fc <= 0x64);
+    API_PlaySound(0x121);
+    if (API_GetFlag(0x200) == 0) {
+        API_CopyMapTiles(0, 0x20, 0x20, 0, 0x20, 0x20);
+        API_CopyMapTiles(0x20, 0x20, 0x40, 0, 0x20, 0x20);
+    } else {
+        API_CopyMapTiles(0, 0x40, 0x20, 0, 0x20, 0x20);
+        API_CopyMapTiles(0x20, 0x40, 0x40, 0, 0x20, 0x20);
+    }
+    API_WaitFrames(1);
+    __SetIntrHandler(1, 0, 0);
+    API_WaitFrames(1);
+    API_StopTask(OvlFunc_947_20095cc);
+    __Func_800fe9c();
+    API_WaitFrames(0x1e);
+}
+
 extern unsigned char Lm947_2da8[] __asm__(".Lm947_2da8");
 extern unsigned char Lm947_2dfc[] __asm__(".Lm947_2dfc");
 extern unsigned char Lm947_2e50[] __asm__(".Lm947_2e50");
@@ -727,9 +852,7 @@ extern unsigned char Lm947_2e26[] __asm__(".Lm947_2e26");
 
 void OvlFunc_947_200975c(void)
 {
-    /* Block-scoped decls: keep these prototypes out of the sibling C fns below,
-       which compile on implicit decls. __MapActor_GetActor/__MapActor_SetAnim/
-       __Func_8010704 already have file-scope decls above (175/177/178). */
+    /* Block-scoped so the other functions keep their implicit declarations. */
     extern void __CutsceneStart(void);
     extern void __Func_80933d4(int, int);
     extern void __Func_80933f8(int, int, int, int);
@@ -1151,7 +1274,17 @@ int CrossboneIsleDungeon2_GetEvents(void)
 
 void __Actor_SetSpriteFlags(void *, int);
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_200a5f8.s");
+void OvlFunc_947_200a5f8(int id) {
+    extern void __Actor_SetSpriteFlags();
+    struct Actor *actor;
+
+    actor = (struct Actor *)__MapActor_GetActor(id);
+    actor->collision &= 0xfe;
+    actor->flags |= 2;
+    actor->__unk55 = 0;
+    __Actor_SetSpriteFlags(actor);
+    actor->sprite->oam.priority = 2;
+}
 
 
 void OvlFunc_947_200a63c(int arg0)

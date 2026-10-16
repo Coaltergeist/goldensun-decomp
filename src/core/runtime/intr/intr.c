@@ -1,5 +1,4 @@
 // fakematch
-/* intr/intr.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void UploadPalette();

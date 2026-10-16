@@ -1,9 +1,5 @@
 extern void __DeleteActor(void *);
 
-typedef struct { int x, y, z; } Vec3;
-
-extern Vec3 Lm921_31f0 __asm__(".Lm921_31f0");
-
 extern void __vec3_translate(int, int, int *);
 
 void OvlFunc_921_200954c(void *actor)

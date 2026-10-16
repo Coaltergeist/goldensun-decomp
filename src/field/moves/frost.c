@@ -1,4 +1,3 @@
-/* field/moves/frost.c */
 #include "nonmatching.h"
 
 extern unsigned char iwram_3001e40[];

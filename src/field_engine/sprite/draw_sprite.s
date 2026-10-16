@@ -163,7 +163,7 @@
 Data_8009d9c:
 	.space	0xe0
 	.ssize	Data_8009d9c
-.func_end _DrawSprite
+.func_end_emit_size _DrawSprite, _DRAW_SPRITE_SIZE
 
 .arm_func_start Func_8009e7c  @ 0x08009e7c
 	push	{r5, r6, r7, r8, r9, r10, r11, lr}

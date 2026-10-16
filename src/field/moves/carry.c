@@ -1,4 +1,3 @@
-/* field/moves/carry.c */
 #include "nonmatching.h"
 
 extern void Func_809a65c(void);

@@ -1,4 +1,3 @@
-/* field/moves/douse.c */
 #include "nonmatching.h"
 
 extern int Random(void);

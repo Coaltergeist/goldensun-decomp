@@ -1,5 +1,11 @@
-/* field/cutscene.c */
 #include "nonmatching.h"
+#include "actor.h"
+
+struct GStateFlags {
+    unsigned char pad[0x220];
+    unsigned short a;
+    unsigned short b;
+};
 
 extern void CutsceneEnd();
 extern int MapActor_GetActor();
@@ -129,7 +135,16 @@ unsigned int Func_8091814(unsigned int arg0)
     return 0;
 }
 
-INCLUDE_ASM("asm/field/cutscene/Func_8091858.s");
+void Func_8091858(void) {
+    struct GStateFlags *base;
+
+    base = (struct GStateFlags *)gState;
+    if (Func_8091814(base->a) != 0)
+        base->a = 0;
+    if (Func_8091814(base->b) != 0)
+        base->b = 0;
+}
+
 INCLUDE_ASM("asm/field/cutscene/Func_8091890.s");
 INCLUDE_ASM("asm/field/cutscene/Func_80919d8.s");
 INCLUDE_ASM("asm/field/cutscene/Func_8091a58.s");
@@ -149,7 +164,22 @@ int Func_8091c1c(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
 void Func_8091c3c(void) {}
 void Func_8091c40(void) {}
 
-INCLUDE_ASM("asm/field/cutscene/MapActor_WaitAnim.s");
+void MapActor_WaitAnim(unsigned int actorID, unsigned int anim) {
+    struct Actor *actor;
+    int i;
+
+    actor = (struct Actor *)GetFieldActor(actorID);
+    if (actor != 0 && actor->visible == 1) {
+        struct Sprite *sprite = actor->sprite;
+        i = 0;
+        for (; i <= 0x59; i++) {
+            WaitFrames(1);
+            if (anim != sprite->animID)
+                break;
+        }
+    }
+}
+
 INCLUDE_ASM("asm/field/cutscene/Func_8091c7c.s");
 
 extern int _YesNoMenu(int a, int b, int c, int d);
@@ -309,9 +339,7 @@ void Func_8091f90(unsigned short arg0, unsigned short arg1) {
     *(unsigned short *)(r3 + 0xe8 * 2) = arg1;
 }
 
-/* Func_8091fa8; two halfword stores into gState (gState) at u16
- * indices 0xe9 and 0xea. The earlier miss added a bogus return and used a
- * register-indexed store; this is plain void with independent array writes. */
+/* Func_8091fa8: two halfword stores into gState at u16 indices 0xe9 and 0xea. */
 extern unsigned short gState__a7[] __asm__("gState");
 
 void Func_8091fa8(unsigned short a, unsigned short b) {

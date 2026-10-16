@@ -1,4 +1,3 @@
-/* rpg/random.c */
 #include "nonmatching.h"
 
 extern unsigned int sRPGRNGState;

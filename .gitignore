@@ -22,6 +22,9 @@ debug_compiled_object.o
 # Python, editors and local command transcripts
 __pycache__/
 *.pyc
+
+# Editor / OS
+.vs/
 .vscode/
 .idea/
 *.swp

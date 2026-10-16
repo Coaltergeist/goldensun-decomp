@@ -1,4 +1,3 @@
-/* battle_anim/moves/tackle.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Tackle(void *context, int subanim);

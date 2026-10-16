@@ -1,4 +1,3 @@
-/* ui/unknown_15e8c.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/ui/window/Func_8015e8c.s");

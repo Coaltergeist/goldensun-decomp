@@ -3,7 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 
-/* auto void-veneer protos (add_void_protos.py) */
+/* Void declarations for veneer callees. */
 extern void __Actor_SetAnim();
 extern void __Actor_SetScript();
 extern void __Actor_WaitMovement();
@@ -140,7 +140,42 @@ void OvlFunc_923_20083a8(void)
     *(int *)(actor + 0x10) = *(short *)(actor + 0x12) << 16;
     __Actor_SetAnim(actor, 1);
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008528.s");
+struct MapTile_OvlFunc_923_2008528 {
+    unsigned short a;
+    unsigned char b;
+    unsigned char c;
+};
+
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[];
+
+int OvlFunc_923_2008528(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val) {
+    char *base;
+    struct MapTile_OvlFunc_923_2008528 *buf;
+    unsigned int i;
+    unsigned int j;
+
+    base = *(char **)iwram_3001e70;
+    if (base == 0)
+        return 0;
+
+    if (layer <= 2) {
+        int offset = 0x130 + layer * 0x30;
+        buf = *(struct MapTile_OvlFunc_923_2008528 **)(base + offset);
+    } else {
+        buf = (struct MapTile_OvlFunc_923_2008528 *)gBuffer;
+    }
+
+    buf += x + (y << 7);
+    for (i = 0; i < h; i++) {
+        struct MapTile_OvlFunc_923_2008528 *row = buf + (i << 7);
+        for (j = 0; j < w; j++) {
+            row->b = val;
+            row++;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L2700[] __asm__(".Lm923_2700");
 extern int L2740[] __asm__(".Lm923_2740");
@@ -280,9 +315,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L2700__a2[] __asm__(".Lm923_2700");
-extern int OvlFunc_923_2008528(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -894,7 +927,31 @@ void OvlFunc_923_2009fe8(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a030.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a370.s");
+extern unsigned char gState[];
+extern int __Random(void);
+
+void OvlFunc_923_200a370(void)
+{
+    unsigned int *state;
+    char *base;
+    int *arg;
+    int off = 0xfa << 1;
+    int timer;
+    int offset;
+
+    state = (unsigned int *)**(unsigned int **)&iwram_3001edc;
+    base = *(char **)((char *)&iwram_3001edc - 0x20);
+    offset = *(int *)(gState + off) * 4 + 0x14;
+    arg = *(int **)(base + offset);
+    timer = state[2];
+    if (timer != 0) {
+        timer--;
+    } else {
+        OvlFunc_923_2009bc8(arg);
+        timer = (((unsigned int)__Random() * 30) >> 16) + 10;
+    }
+    state[2] = timer;
+}
 
 extern unsigned int *__galloc_ewram(int a, int b);
 extern void __DeleteActor(int a);

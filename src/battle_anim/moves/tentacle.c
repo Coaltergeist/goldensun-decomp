@@ -1,4 +1,3 @@
-/* battle_anim/moves/tentacle.c */
 #include "nonmatching.h"
 #include "anim.h"
 #include "task.h"

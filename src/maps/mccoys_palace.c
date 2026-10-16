@@ -207,7 +207,6 @@ void OvlFunc_909_20082cc(void) {
 
 void OvlFunc_909_2008338(void)
 {
-    /* iwram_3001ebc is declared file-scope above as unsigned char* (:93). */
     extern int __GetFlag(int);
     extern void __PlaySound(int);
     extern void __Func_80118a8(int);
@@ -504,10 +503,6 @@ extern int __Func_8091c7c(int, int);
 extern void __Func_8091e9c(int);
 extern int __Func_800fe9c(void);
 
-static inline int API_ShowActorMessage_NoWait(int a0, int a1) {
-    extern int __ShowActorMessage_NoWait(int, int);
-    return __ShowActorMessage_NoWait(a0, a1);
-}
 
 void OvlFunc_909_20088c0(void)
 {

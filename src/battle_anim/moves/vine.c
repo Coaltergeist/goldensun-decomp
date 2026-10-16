@@ -1,4 +1,3 @@
-/* battle_anim/moves/vine.c */
 #include "anim.h"
 #include "task.h"
 

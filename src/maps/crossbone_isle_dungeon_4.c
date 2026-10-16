@@ -4,6 +4,8 @@
 #include "api.h"
 #include "actor.h"
 
+extern unsigned int Lm948_2644[] __asm__(".Lm948_2644");
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/exports.s");
 
 extern int OvlFunc_948_20082a8();
@@ -59,7 +61,85 @@ void *OvlFunc_948_200806c(int *coords, void *arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20080c4.s");
+void OvlFunc_948_20080c4(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm948_2644[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_948_200806c(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm948_2644[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_948_200806c(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_948_200806c(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm948_2644[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
 extern unsigned char iwram_3001e70[];
 extern unsigned char gBuffer[];
 
@@ -483,7 +563,52 @@ void OvlFunc_948_2008b68(void)
     __Actor_SetScript(a, gScript_948__0200a6fc);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2008ccc.s");
+
+void OvlFunc_948_2008ccc(void) {
+    int flag;
+    struct Actor *a;
+
+    if (API_GetFlag(0x9c9) == 0) {
+        return;
+    }
+    flag = API_GetFlag(0x9ca);
+    if (flag != 0) {
+        return;
+    }
+    API_SetFlag(0x9ca);
+    API_CutsceneStart();
+    a = (struct Actor *)__MapActor_GetActor(0xf);
+    a->sprite->rotation = flag;
+    __Actor_SetAnimSpeed(a, 0x10);
+    API_PlaySound(0x98);
+    ((struct Actor *)__MapActor_GetActor(0xf))->motion.y = 0x80 << 12;
+    API_Func_8092adc(0xf, 0x80 << 8, 0x1e);
+    API_MapActor_Surprise(0xf, 0x81 << 1);
+    API_Func_80925cc(0xf, 2);
+    API_CutsceneWait(0x14);
+    API_MapActor_SetSpeed(0xf, 0x80 << 9, 0x80 << 8);
+    API_PlaySound(0x98);
+    ((struct Actor *)__MapActor_GetActor(0xf))->motion.y = 0x80 << 11;
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xaa << 2);
+    API_CutsceneWait(0xa);
+    API_MapActor_Surprise(0xf, 0x101);
+    API_MapActor_SetSpeed(0xf, 0x80 << 10, 0x80 << 9);
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xae << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0x372, 0xb0 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xb2 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0x36e, 0xb4 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xb6 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0x372, 0xb8 << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xba << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0x36e, 0xbc << 2);
+    API_MapActor_TravelToAnimWait(0xf, 0xdc << 2, 0xbe << 2);
+    API_MapActor_SetPos(0xf, 0xd6 << 18, 0xce << 18);
+    API_CutsceneWait(0xa);
+    API_Func_8092adc(0xf, 0xc0 << 8, 0x14);
+    API_MapActor_Surprise(0xf, 0x80 << 1);
+    ((struct Actor *)__MapActor_GetActor(0xf))->update = (actorfun_t *)OvlFunc_948_2008aa8;
+    API_CutsceneEnd();
+}
 
 typedef struct { unsigned char _pad[0x30]; int speed; int accel; } ActorT;
 extern unsigned char iwram_3001ebc[];
@@ -1054,9 +1179,7 @@ void OvlFunc_948_2009838(void)
     API_ClearFlag(0x220);
 }
 
-/* OvlFunc_948_20098c0; REG_BLDALPHA (0x04000052) = 0xd00.
- * Value synthesized (0xd0<<4). Value var declared FIRST so it lands in r2 and
- * the address pointer in r3 (matching strh r2,[r3]). */
+/* OvlFunc_948_20098c0: REG_BLDALPHA = 0xd00. */
 
 void OvlFunc_948_20098c0(void) {
     unsigned short v = 0xd00;
@@ -1071,7 +1194,34 @@ void OvlFunc_948_20098d0(void) {
     REG_BLDALPHA = value;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_20098e0.s");
+extern void OvlFunc_948_2009b60(void);
+
+void OvlFunc_948_20098e0(void) {
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0);
+    unsigned int facing = a->facing;
+
+    if (facing == 0xc000) {
+        if (API_GetFlag(0x206)) {
+            API_Func_8010704(0x2e, 0x2b, 1, 1, 0x2d, 0x2b);
+        }
+        API_ClearFlag(0x207);
+        API_Func_8093fa0();
+    } else if (facing == 0x4000) {
+        API_Func_8093e28();
+    } else if (facing == 0) {
+        if (API_GetFlag(0x206)) {
+            API_Func_8010704(0x3a, 0x24, 1, 1, 0x2d, 0x2b);
+        }
+        API_SetFlag(0x207);
+        API_Func_8093c00();
+    } else if (facing == 0x8000) {
+        if (a->pos.y == 0) {
+            OvlFunc_948_2009b60();
+        } else {
+            API_Func_8093c00();
+        }
+    }
+}
 
 void OvlFunc_948_2009980(void) {}
 
@@ -1480,10 +1630,10 @@ void OvlFunc_948_200a290(void) {
     volatile unsigned short *p;
     unsigned short val;
 
-    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 1;
-    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 1;
+    ((struct Actor *)__MapActor_GetActor(8))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(9))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(0xa))->collision = 1;
+    ((struct Actor *)__MapActor_GetActor(0xb))->collision = 1;
 
     ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0xb333;
     ((struct Actor *)__MapActor_GetActor(9))->scale.x = 0xb333;

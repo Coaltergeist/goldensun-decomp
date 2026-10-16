@@ -1,4 +1,3 @@
-/* battle_anim/moves/projectile.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_ParticleSpray(void *context, int subanim);

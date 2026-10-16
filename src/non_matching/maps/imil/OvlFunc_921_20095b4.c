@@ -1,10 +1,9 @@
 extern int __sin(int);
 extern int Func_8000888(int, int) __attribute__((long_call));
-extern int Lm921_31f0 __asm__(".Lm921_31f0");
 extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
 extern unsigned char iwram_3001e40[];
-extern int __Random(void);
-extern void __vec3_translate(int, int, void *);
+extern unsigned int __Random(void);
+extern void __vec3_translate(int, int, int *);
 extern void *__CreateActor(int, int, int, int);
 extern void __Actor_SetSpriteFlags(void *, int);
 extern void __Actor_SetAnim(void *, int);
@@ -31,7 +30,7 @@ void OvlFunc_921_20095b4(void *actor)
     void *spawn;
     unsigned char *sub;
 
-    a->f8 = Lm921_31f0 + Func_8000888(0xc0 << 11, __sin((int)a->f64 << 10));
+    a->f8 = *(int *)&Lm921_31f0 + Func_8000888(0xc0 << 11, __sin((int)a->f64 << 10));
     a->f64++;
     a->f64 = (a->f64 + 64) % 64;
 

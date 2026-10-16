@@ -1,5 +1,4 @@
 // fakematch
-/* ui/shop.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void Func_80b00f4();
@@ -90,7 +89,37 @@ unsigned int Func_80b0664(unsigned int arg0)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0694.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b06c0.s");
+extern unsigned char Lb4100[] asm(".Lb4100");
+
+void Func_80b06c0(int count, int arg1, int arg2)
+{
+  int shifted;
+  int val;
+  shifted = arg1 << 4;
+  val = shifted + 1;
+  if (count <= 0)
+  {
+    return;
+  }
+  {
+    unsigned short *p = (unsigned short *) Lb4100;
+    do
+    {
+      int addr = arg2 + (*p);
+      p++;
+      count--;
+      *((unsigned char *) (addr + 4)) = val;
+      *((unsigned char *) (addr + 8)) = val;
+      *((unsigned char *) (addr + 0xc)) = val;
+      // accepted as-is; may need further review
+      shifted = addr;
+      *((unsigned char *) (shifted + 0x10)) = val;
+      *((unsigned char *) (shifted + 0x14)) = val;
+      *((unsigned char *) (shifted + 0x18)) = val;
+    }
+    while (count != 0);
+  }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b06ec.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0744.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0840.s");
@@ -130,7 +159,22 @@ void Func_80b0a6c(void *arg0, unsigned int arg1, unsigned int arg2)
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0aac.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0fa4.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b10cc.s");
+extern void _Func_801e7c0(unsigned int, unsigned int, unsigned int, unsigned int);
+extern void _Func_801ea08(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+
+void Func_80b10cc(void)
+{
+    extern unsigned char gState[];
+    unsigned int r5;
+    char *state;
+
+    r5 = *(unsigned int *)(iwram_3001f2c + 0xc);
+    if (r5 != 0) {
+        _Func_801e7c0(0xc8a, r5, 0, 0);
+        state = (char *)gState;
+        _Func_801ea08(*(unsigned int *)(state + 0x10), 6, r5, 0x20, 8);
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b110c.s");
 
 extern void _Func_8016498(void);

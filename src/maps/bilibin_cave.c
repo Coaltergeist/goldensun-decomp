@@ -358,10 +358,7 @@ void OvlFunc_920_20084e8(void)
 
 void OvlFunc_920_2008538(void)
 {
-    /* iwram_3001ebc is a file-scope array (:98); this fn needs the pointer view of
-       the same symbol (one load of the stored pointer). __Actor_SetSpriteFlags is
-       declared file-scope (:7) and OvlFunc_920_2008904 is defined below (:142) as
-       a no-arg stub; both are left to those (calls are codegen-identical). */
+    /* This function needs the pointer view of iwram_3001ebc. */
     extern void *iwram_3001ebc__ptr __asm__("iwram_3001ebc");
     void *__MapActor_GetActor(int);
     void __MapActor_SetAnim(int, int);

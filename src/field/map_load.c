@@ -1,5 +1,4 @@
 // fakematch
-/* field/map_load.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern int GetEncounterGroup();
@@ -7,11 +6,8 @@ extern int GetEncounterGroup();
 INCLUDE_ASM("asm/field/map_load/InitMapSomething.s");
 INCLUDE_ASM("asm/field/map_load/RespawnAtSanctum.s");
 
-/* GetMapArea (GetMapArea); signed byte at offset 2 of an 8-byte-stride table
- * element. Forming the element pointer (base + map*8) first keeps the +2 a
- * `ldrb [.,#2]` immediate (Thumb ldrsb has no immediate form, so gcc then
- * sign-extends via lsl#24/asr#24) instead of folding into a register-indexed
- * ldrsb. gMaps is a .global asm-label (§8). */
+/* GetMapArea: signed byte at offset 2 of an 8-byte table entry. Thumb ldrsb has
+ * no immediate form, so the byte is loaded with ldrb and sign-extended. */
 extern unsigned char gMaps[] __asm__("gMaps");
 
 int GetMapArea(int map) {
@@ -67,6 +63,14 @@ INCLUDE_ASM("asm/field/map_load/Func_808ae74.s");
 #include "gba/types.h"
 #include "field.h"
 
+extern struct Respawn gRespawns[];
+struct Respawn {
+    unsigned short map;
+    short sub;
+    unsigned short x;
+    unsigned short y;
+};
+
 extern struct MapState * iwram_3001ebc;
 
 u32 Func_808b02c(s32 arg0) {
@@ -105,7 +109,22 @@ unsigned int Func_808b074(int index)
 
 INCLUDE_ASM("asm/field/map_load/Func_808b090.s");
 INCLUDE_ASM("asm/field/map_load/GetLocationName.s");
-INCLUDE_ASM("asm/field/map_load/UpdateRespawnMap.s");
+
+void UpdateRespawnMap(void) {
+    short *gs = (short *)&gState;
+    short map = gs[0xe0];
+    short sub = gs[0xe1];
+    struct Respawn *r = gRespawns;
+
+    while ((short)r->map != -1) {
+        if ((short)r->map == map && (r->sub == -1 || r->sub == sub)) {
+            gs[0xe2] = r->x;
+            gs[0xe3] = r->y;
+            break;
+        }
+        r++;
+    }
+}
 
 extern unsigned short gState__a2[] __asm__("gState");
 

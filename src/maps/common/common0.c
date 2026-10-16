@@ -1,10 +1,7 @@
-/* Shared "common0" module: the field/effects actor runtime linked into all 19
- * common0-bundling overlays (dungeons, lighthouses, deserts, …). Provides the
- * per-frame physics integrator, sprite/attr helpers, and the effect-actor
- * spawner (OvlFunc_common0_10c) that map cutscenes call into.
- *
- * Skeleton: remaining functions are INCLUDE_ASM stubs pending decomp.
- */
+/* Shared "common0" module: the field/effects actor runtime linked into the 19
+ * overlays that bundle it. Provides the per-frame physics integrator,
+ * sprite/attr helpers, and the effect-actor spawner (OvlFunc_common0_10c) that
+ * map cutscenes call into. */
 
 #include "nonmatching.h"
 #include "actor.h"

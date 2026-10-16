@@ -1,4 +1,3 @@
-/* field/moves/force.c */
 #include "nonmatching.h"
 
 extern void Field_Force(void);

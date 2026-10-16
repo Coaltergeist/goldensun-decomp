@@ -1,4 +1,3 @@
-/* battle_anim/summon_sprite.c */
 #include "nonmatching.h"
 #include "dma0.h"
 

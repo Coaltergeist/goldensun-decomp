@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/transition_out.c",
-  "functions": {
-    "AnimTransitionOut": {
-      "id": "rom:080cd104"
-    }
-  }
-}

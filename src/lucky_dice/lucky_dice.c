@@ -1,5 +1,4 @@
 // fakematch
-/* lucky_dice.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void _PlaySound(int);

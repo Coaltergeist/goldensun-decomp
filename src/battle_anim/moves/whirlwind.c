@@ -1,4 +1,3 @@
-/* battle_anim/moves/whirlwind.c */
 #include "anim.h"
 #include "math.h"
 #include "task.h"

@@ -115,9 +115,7 @@ void OvlFunc_890_20081ec(void) {
 	API_ClearFlag(0x201);
 }
 
-/* OvlFunc_890_200822c; *(vu16*)0x05000000 = 0.
- * Address (0xa0<<19) and value (0) both synthesized. Value var FIRST -> r2,
- * address pointer -> r3 (matching strh r2,[r3]). */
+/* OvlFunc_890_200822c: clears the first palette RAM entry. */
 
 void OvlFunc_890_200822c(void) {
     unsigned short v = 0;
@@ -421,9 +419,7 @@ end:
         *p = 0;
     }
 }
-/* Twin of 2008ef8, constants adapted from OvlFunc_890_200901c.s.
-   global .Lm890_2de0, r0=0x30 r1=0x3b r2=0x1f, r3 base 0x24, special 0x5f,
-   threshold 105 (0x69). Complete prototypes per §2.4/§2.5. */
+/* As OvlFunc_890_2008ef8, with its own constants and .Lm890_2de0. */
 int  __Random(void);
 void __PlaySound(int sound);
 void __CopyMapTiles(int a, int b, int c, int d, int e, int f);
@@ -495,9 +491,7 @@ end:
         *p = 0;
     }
 }
-/* Twin of 2008ef8, constants adapted from OvlFunc_890_2009140.s.
-   global .Lm890_2dec, r0=0x2e r1=0x3b r2=0x29, r3 base 0x24, special 0x55,
-   threshold 95 (0x5f). Complete prototypes per §2.4/§2.5. */
+/* As OvlFunc_890_2008ef8, with its own constants and .Lm890_2dec. */
 int  __Random(void);
 void __PlaySound(int sound);
 void __CopyMapTiles(int a, int b, int c, int d, int e, int f);

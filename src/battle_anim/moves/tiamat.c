@@ -1,4 +1,3 @@
-/* battle_anim/moves/tiamat.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Tiamat(void *context, int subanim);

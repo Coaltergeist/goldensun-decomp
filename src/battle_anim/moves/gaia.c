@@ -101,10 +101,8 @@ static inline void GaiaDrawColumnCap(struct GaiaRendererPair pair, u8 *dst,
 /* GCC calls r10 "sl"; the ROM provides its bx-r10 veneer as _call_via_r10. */
 __asm__(".set _call_via_sl, _call_via_r10");
 
-/* ROM asset metadata has a const view during expansion. Drawing code
- * retains the unqualified view of the same tables used by the previous seed. Both views
- * only read; these aliases add no objects and do not change the ROM addresses.
- * This is a declaration hypothesis, not a recovered original header. */
+/* Expansion reads the ROM asset tables through a const view; drawing code uses an
+ * unqualified view of the same tables. Both only read and add no objects. */
 extern const u8 GaiaAssetWidths[] __asm__(".Leeda0");
 extern const u8 GaiaAssetHeights[] __asm__(".Leeda3");
 

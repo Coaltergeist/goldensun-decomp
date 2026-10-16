@@ -1,4 +1,3 @@
-/* field/psynergy.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void Func_809748c();

@@ -58,7 +58,21 @@ void OvlFunc_955_20080b0(void)
 	OvlFunc_955_200805c();
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20080c0.s");
+void OvlFunc_955_20080c0(void) {
+    extern void __SetFlagByte(int, int);
+    int v;
+
+    API_Func_8010704(0x64, 0xb, 0xc, 4, 0xe, 0xb);
+    v = __MapActor_GetActor(0xc)->pos.x >> 20;
+    __SetFlagByte(0xd0 << 2, v);
+    API_Func_8010704(0x47, 0x10, 1, 1, v, 0x10);
+    v = __MapActor_GetActor(0xd)->pos.x >> 20;
+    __SetFlagByte(0xd2 << 2, v);
+    API_Func_8010704(0x47, 0x10, 1, 1, v, 0x10);
+    v = __MapActor_GetActor(0xe)->pos.x >> 20;
+    __SetFlagByte(0xd4 << 2, v);
+    API_Func_8010704(0x47, 0x10, 1, 1, v, 0x10);
+}
 
 extern unsigned int iwram_3001f30;
 
@@ -114,9 +128,61 @@ void OvlFunc_955_2008304(void) {
 }
 
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008310.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_2008400.s");
+extern unsigned int gKeyHeld;
+extern void OvlFunc_955_2008310(int, int, int);
+
+void OvlFunc_955_2008400(void) {
+    unsigned int r3;
+    struct Actor *actor;
+    int posX;
+    int actorId;
+    int speed;
+
+    r3 = (unsigned int)&gState;
+    r3 += 0xfa << 1;
+    actor = __MapActor_GetActor(*(unsigned int *)r3);
+    posX = actor->pos.x >> 20;
+
+    speed = 0;
+    actorId = 0x20;
+    if (actor->pos.z >> 20 > 12) {
+        actorId = 0x21;
+    }
+
+    if (__MapActor_GetActor(actorId)->pos.x >> 20 == posX) {
+        if (posX > 0x33) {
+            if (gKeyHeld & 0x20) {
+                speed = -0x40;
+            }
+        } else {
+            if (gKeyHeld & 0x10) {
+                speed = 0x40;
+            }
+        }
+
+        if (speed != 0) {
+            OvlFunc_955_2008310(actorId, speed, 0);
+            API_Func_8010704(0x78, 10, 5, 6, 0x30, 10);
+            posX = __MapActor_GetActor(0x20)->pos.x >> 20;
+            API_Func_8010704(0x34, 0x1c, 1, 3, posX, 10);
+            posX = __MapActor_GetActor(0x21)->pos.x >> 20;
+            API_Func_8010704(0x34, 0x1c, 1, 3, posX, 13);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_20084c0.s");
-INCLUDE_ASM("asm/maps/colosseum_final_2/OvlFunc_955_200862c.s");
+
+void OvlFunc_955_200862c(void) {
+    int v;
+
+    API_Func_8010704(0x64, 0xb, 0xc, 4, 0xe, 0xb);
+    v = __MapActor_GetActor(0xf)->pos.x >> 20;
+    API_Func_8010704(0xd, 0x1c, 1, 4, v, 0xb);
+    v = __MapActor_GetActor(0x10)->pos.x >> 20;
+    API_Func_8010704(0xd, 0x1c, 1, 4, v, 0xb);
+    v = __MapActor_GetActor(0x11)->pos.z >> 20;
+    API_Func_8010704(0xd, 0x1c, 4, 1, 0x12, v);
+}
 
 extern void OvlFunc_955_20084c0(int a, int b, int c);
 extern void OvlFunc_955_200862c(void);

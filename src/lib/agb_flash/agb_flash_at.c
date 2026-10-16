@@ -1,12 +1,10 @@
 #include "gba/gba.h"
 #include "lib/agb_flash/flash_internal.h"
 
-// Atmel AT29LV512 page-based erase/program driver (chip id 0x1F/0x3D). The two
-// page records gFlashChip2 (.L7be4) and gFlashChip3 (.L7c10) are raw rodata.
-// Func_8006f84 is the program-sector for the Macronix MX29L512 setup (id
-// 0xC2/0x1C); name still TBD (GSHC lists it as ?; note that the 0x6e24
-// "ProgramFlashSector_MX" is actually used by the LE/Default setups, so the _MX
-// suffix there is a GS-internal misnomer rather than this routine's name).
+// Atmel AT29LV512 page-based erase/program driver (chip id 0x1F/0x3D). The page
+// records gFlashChip2 (.L7be4) and gFlashChip3 (.L7c10) are raw rodata.
+// Func_8006f84 programs a sector for the Macronix MX29L512 setup (id 0xC2/0x1C);
+// "ProgramFlashSector_MX" at 0x6e24 actually serves the LE/Default setups.
 
 u16 Func_8006f84(u16 sectorNum, u8 *src)
 {

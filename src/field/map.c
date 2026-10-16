@@ -1,6 +1,7 @@
 /* field/map.c -- consolidated TU. */
 #include "nonmatching.h"
 #include "dma.h"
+#include "palette.h"
 
 extern void CutsceneEnd();
 extern int MapActor_GetActor();
@@ -52,7 +53,23 @@ void InitMap(void) {
     _call_via_r0((void (*)(void))__start_overlay[1]);
 }
 
-INCLUDE_ASM("asm/field/map/FindSpeakEvent.s");
+extern void *FindMapActorEvent(int a, int b);
+
+void *FindSpeakEvent(int arg0)
+{
+    extern unsigned char gState[];
+    void *event;
+    char *state;
+
+    event = FindMapActorEvent(0, arg0);
+    state = (char *)gState;
+    if (*(short *)(state + 0x24a) == arg0) {
+        void *alt = FindMapActorEvent(7, arg0);
+        if (alt != 0)
+            return alt;
+    }
+    return event;
+}
 
 INCLUDE_ASM("asm/field/map/rodata_808ce74.s");
 
@@ -454,8 +471,6 @@ INCLUDE_ASM("asm/field/map/Func_8090a5c.s");
 #include "task.h"
 extern void Func_8090a5c(unsigned int, unsigned int, unsigned int, unsigned int);
 extern void Func_80908e0(void);
-#define PALETTE_BG  ((void *)0x05000000)
-#define PALETTE_OBJ ((void *)0x05000200)
 
 void Func_8091174(void)
 {

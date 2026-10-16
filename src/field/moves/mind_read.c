@@ -1,4 +1,3 @@
-/* field/moves/mind_read.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/moves/mind_read/Field_MindRead.s");

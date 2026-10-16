@@ -724,7 +724,7 @@ void OvlFunc_930_20090b8(void) {
     int zero = 0;
     __CutsceneStart();
     ((struct Actor *)__MapActor_GetActor(0xe))->flags &= 0xfd;
-    ((struct Actor *)__MapActor_GetActor(0xe))->__unk59 &= 0xfd;
+    ((struct Actor *)__MapActor_GetActor(0xe))->collision &= 0xfd;
     ((struct Actor *)__MapActor_GetActor(0xe))->__unk55 = zero;
     *(int *)((char *)__MapActor_GetActor(0xe) + 0x6c) = (int)OvlFunc_930_2009060;
     r5 = 0x12;

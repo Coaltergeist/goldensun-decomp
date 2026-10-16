@@ -1,4 +1,3 @@
-/* battle_anim/moves/thrash.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void _Func_80b82c4(int, int, int, int);

@@ -1,4 +1,3 @@
-/* battle_anim/attack.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle_anim/attack/Anim_Attack.s");

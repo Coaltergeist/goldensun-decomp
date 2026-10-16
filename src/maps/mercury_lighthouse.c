@@ -4,7 +4,10 @@
 #include "api.h"
 #include "actor.h"
 
-/* auto void-veneer protos (add_void_protos.py) */
+extern unsigned int Lm924_5d50[] __asm__(".Lm924_5d50");
+extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
+
+/* Void declarations for veneer callees. */
 extern void __ActorMessage_Wait();
 extern void __Actor_SetAnim();
 extern void __Actor_SetScript();
@@ -51,9 +54,144 @@ int OvlFunc_924_2008314(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008350.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20083a8.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008528.s");
+void *OvlFunc_924_2008350(int *coords, void *arg1) {
+    unsigned char *base;
+    struct Actor **p;
+    unsigned int i;
+    int cx;
+
+    base = *(unsigned char **)iwram_3001ebc__tw;
+    i = 8;
+    cx = coords[0] >> 20;
+    p = (struct Actor **)(base + 0x34);
+    for (; i <= 0x41; i++) {
+        struct Actor *actor = *p++;
+        if (cx == actor->pos.x >> 20) {
+            if (coords[1] / 0x10000 == actor->pos.y / 0x10000) {
+                if (coords[2] >> 20 == actor->pos.z >> 20) {
+                    return actor;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+void OvlFunc_924_20083a8(void) {
+    struct Actor *player;
+    struct Actor *obj;
+    struct Actor *res;
+    int stk[3];
+    unsigned int idx;
+    unsigned int t;
+    int speed;
+    int zero;
+
+    player = __MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    t = Lm924_5d50[idx];
+    stk[0] = player->pos.x + (t & 0xffff0000);
+    stk[1] = player->pos.y;
+    t <<= 16;
+    stk[2] = player->pos.z + t;
+    obj = OvlFunc_924_2008350(stk, player);
+    if (obj == 0) {
+        return;
+    }
+    t = Lm924_5d50[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    res = OvlFunc_924_2008350(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    stk[0] = obj->pos.x;
+    stk[1] = obj->pos.y + (0x80 << 13);
+    stk[2] = obj->pos.z;
+    res = OvlFunc_924_2008350(stk, obj);
+    if (res != 0) {
+        if (res->collision & 1) {
+            return;
+        }
+    }
+    obj->layer = 2;
+    t = Lm924_5d50[idx];
+    stk[0] = obj->pos.x + (t & 0xffff0000);
+    stk[1] = obj->pos.y;
+    t <<= 16;
+    stk[2] = obj->pos.z + t;
+    if (__TestCollision(obj, stk) > 0) {
+        return;
+    }
+    zero = obj->__unk62;
+    if (zero != 0) {
+        return;
+    }
+    __Actor_SetAnim(player, 8);
+    speed = 0x3333;
+    API_WaitFrames(0xf);
+    API_PlaySound(0xb9);
+    obj->speed = speed;
+    obj->accel = speed;
+    API_Actor_TravelTo(obj, stk[0], stk[1], stk[2]);
+    player->speed = speed;
+    player->accel = speed;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+    __Actor_WaitMovement(obj);
+    API_MapActor_PlayPendingSound();
+    obj->pos.x = stk[0];
+    obj->pos.z = stk[2];
+    obj->motion.x = zero;
+    obj->motion.z = zero;
+    player->prevPos.x = 0x80 << 24;
+    player->prevPos.z = 0x80 << 24;
+    player->motion.x = zero;
+    player->motion.z = zero;
+    player->pos.x = ((short *)&player->pos.x)[1] << 16;
+    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    __Actor_SetAnim(player, 1);
+}
+
+struct MapTile_OvlFunc_924_2008528 {
+    unsigned short a;
+    unsigned char b;
+    unsigned char c;
+};
+
+extern unsigned char iwram_3001e70[];
+extern unsigned char gBuffer[];
+
+int OvlFunc_924_2008528(unsigned int layer, int x, int y, unsigned int w, unsigned int h, unsigned int val) {
+    char *base;
+    struct MapTile_OvlFunc_924_2008528 *buf;
+    unsigned int i;
+    unsigned int j;
+
+    base = *(char **)iwram_3001e70;
+    if (base == 0)
+        return 0;
+
+    if (layer <= 2) {
+        int offset = 0x130 + layer * 0x30;
+        buf = *(struct MapTile_OvlFunc_924_2008528 **)(base + offset);
+    } else {
+        buf = (struct MapTile_OvlFunc_924_2008528 *)gBuffer;
+    }
+
+    buf += x + (y << 7);
+    for (i = 0; i < h; i++) {
+        struct MapTile_OvlFunc_924_2008528 *row = buf + (i << 7);
+        for (j = 0; j < w; j++) {
+            row->b = val;
+            row++;
+        }
+    }
+    return 0;
+}
 
 extern unsigned int L5d50[] __asm__(".Lm924_5d50");
 extern int L5d90[] __asm__(".Lm924_5d90");
@@ -193,9 +331,7 @@ hit:
     return 1;
 }
 
-extern unsigned char iwram_3001e70[];
 extern int L5d50__a2[] __asm__(".Lm924_5d50");
-extern int OvlFunc_924_2008528(int, int, int, int, int, int);
 void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
@@ -317,7 +453,44 @@ void OvlFunc_924_2008cc0(void) {
     __Func_8091f14(12, 21);
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008cd0.s");
+int OvlFunc_924_2008cd0(struct Actor *actor) {
+    struct {
+        int unk0;
+        int unk4;
+        int unk8;
+        int unkc;
+        int unk10;
+        int unk14;
+        int unk18;
+        int unk1c;
+        int unk20;
+        int unk24;
+    } data;
+    extern unsigned int __Random(void);
+    extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+    extern unsigned int iwram_3001e40;
+    int r;
+
+    data.unk4 = 7;
+    if ((iwram_3001e40 & 1) == 0) {
+        data.unk4 = 5;
+    }
+    data.unk8 = 0xcccc;
+    data.unkc = 0xcccc;
+    data.unk0 = 0;
+    r = ((__Random() << 3) >> 16) * 0x3333;
+    OvlFunc_common0_10c(
+        actor->pos.x + ((8 - (iwram_3001e40 & 0xf)) << 16),
+        actor->pos.y + (0xd0 << 13),
+        actor->pos.z,
+        0,
+        -r,
+        0,
+        0xb0 << 12,
+        &data
+    );
+    return 0;
+}
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2008d58.s");
 
@@ -541,8 +714,7 @@ void OvlFunc_924_20090c0(void)
 }
 void OvlFunc_924_2009164(void)
 {
-    /* struct Pk / OvlFunc_924_20088ec are file-scope above (:204/:213); pk is
-       passed by value so the TU's struct Pk layout must be the one used here. */
+    /* pk is passed by value, so it must use the file's struct Pk layout. */
     extern void __ClearFlag();
     extern void __CutsceneEnd();
     extern void __CutsceneStart();
@@ -853,7 +1025,7 @@ void OvlFunc_924_2009d3c(void) {
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009db4.s");
-/* Private name — the TU's struct EffectData (:919) is a separate def below. */
+/* Private name; the file's struct EffectData is a separate definition. */
 struct EffectData924 {
     int unk0;
     int unk4;
@@ -942,8 +1114,7 @@ extern ActorCmd gScript_924__0200dfa8[18];
 
 int OvlFunc_924_200a1cc(void)
 {
-    /* __MapActor_GetActor is declared file-scope as unsigned char* (:201);
-       cast to the actor.h struct Actor for the pos accesses. */
+    /* Cast to struct Actor for the position accesses. */
     extern void __Func_80933d4(int, int);
     extern void __Func_80933f8(int, int, int, int);
     extern void __Func_8093530(void);
@@ -1197,7 +1368,51 @@ void OvlFunc_924_200a600(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a648.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200a684.s");
+
+void OvlFunc_924_200a684(void) {
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(3, 0xcccc, 0x6666);
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
+    API_MessageID(0x1577);
+    API_ActorMessage_Wait(3, 0, 0x14);
+    API_MapActor_TravelToAnimWait(3, 0xd2 << 2, 0xa2 << 2);
+    API_MapActor_Emote(3, 0x80 << 1, 0x3c);
+    API_Func_8092adc(3, 0x80 << 8, 0x14);
+    API_MapActor_SetAnim(3, 0x10);
+    ((struct Actor *)__MapActor_GetActor(3))->scale.x = 0xffff0000;
+    API_CutsceneWait(0x14);
+    API_ActorMessage_Wait(3, 0, 0x14);
+    API_MapActor_SetAnim(3, 1);
+    ((struct Actor *)__MapActor_GetActor(3))->scale.x = 0x80 << 9;
+    API_CutsceneWait(0x14);
+    API_Func_8092adc(3, 0x80 << 7, 0x14);
+    API_ShowActorMessage_NoWait(3, 0);
+    if (API_Func_8091c7c(0, 0) == 0) {
+        API_CutsceneWait(0x14);
+        API_MapActor_DoAnim(3, 3);
+        API_ActorMessage_Wait(3, 0, 0x14);
+        *(unsigned short *)((char *)iwram_3001ebc + (0xec << 1)) += 1;
+    } else {
+        *(unsigned short *)((char *)iwram_3001ebc + (0xec << 1)) += 1;
+        API_CutsceneWait(0x14);
+        API_MapActor_DoAnim(3, 4);
+        API_ActorMessage_Wait(3, 0, 0x14);
+    }
+    API_CutsceneWait(0x14);
+    API_Func_8092adc(3, 0xc0 << 8, 0x14);
+    API_Func_80933d4(0xcccc, 0x1999);
+    API_Func_80933f8(0xd2 << 18, -1, 0x9e << 18, 1);
+    API_MapActor_TravelToAnimWait(3, 0xd2 << 2, 0x9e << 2);
+    API_Func_8093530();
+    API_CutsceneWait(0x14);
+    API_Func_80925cc(3, 2);
+    API_CutsceneWait(0xa);
+    API_MapActor_DoAnim(3, 4);
+    API_CutsceneWait(0x14);
+    API_ActorMessage_Wait(3, 0, 0x14);
+    API_SetFlag(0x87 << 4);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_924_200a814(void)
 {
@@ -1372,6 +1587,7 @@ void OvlFunc_924_200b860(void)
 void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
 
 #include "overlays/common0_effect.h"
+#include "rpg.h"
 
 void OvlFunc_924_200b948(void)
 {
@@ -1589,7 +1805,23 @@ void OvlFunc_924_200ca08(void)
 }
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cc68.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf44.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cf90.s");
+
+void OvlFunc_924_200cf90(int item, int replacement) {
+    extern int __CheckPartyItem(int item);
+    extern int __CheckItem(int pc, int item);
+    extern struct Unit *__GetUnit(int pc);
+    int pc;
+    int slot;
+
+    pc = __CheckPartyItem(item);
+    if (pc != -1) {
+        slot = __CheckItem(pc, item);
+        if (slot != -1) {
+            __GetUnit(pc)->items[slot] = replacement;
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200cfcc.s");
 extern unsigned char gScript_924__0200de08[];
 
@@ -1613,7 +1845,28 @@ void OvlFunc_924_200d158(struct Actor *arg0)
         }
     }
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d1b0.s");
+
+int OvlFunc_924_200d1b0(struct Actor *actor) {
+    struct Actor *target;
+    int next;
+    int val;
+    int s;
+
+    next = (unsigned short)actor->waveCounter + 1;
+    target = actor->linkedActor;
+    actor->waveCounter = next;
+    val = (short)next;
+    if (val > 31) {
+        return 0;
+    }
+    s = __sin(val << 10);
+    actor->scale.x = s;
+    actor->scale.y = s;
+    actor->pos.x = target->pos.x;
+    actor->pos.y += 0x80 << 9;
+    actor->pos.z = target->pos.z;
+    return 1;
+}
 
 unsigned int OvlFunc_924_200d1f0(unsigned int arg0)
 {

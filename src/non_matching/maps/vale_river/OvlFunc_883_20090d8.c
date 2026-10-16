@@ -26,19 +26,23 @@ void OvlFunc_883_20090d8(void)
     saved = *camera;
     *camera = &pos;
 
-    for (i = 0; i < 40; i++) {
+    i = 0;
+    do {
         pos.z += 0x80 << 10;
         API_CutsceneWait(1);
         __Func_800fe9c();
-    }
+    } while (++i != 40);
+
     API_CutsceneWait(0x3c);
     API_Func_801776c(0xf4f, 1);
     API_CutsceneWait(6);
-    for (i = 0; i < 40; i++) {
+
+    i = 0;
+    do {
         pos.z -= 0x80 << 10;
         API_CutsceneWait(1);
         __Func_800fe9c();
-    }
+    } while (++i != 40);
 
     *camera = saved;
     API_CutsceneWait(0x3c);

@@ -1,3 +1,5 @@
+#include "palette.h"
+
 /* Adapted from Salenewt GS2 re_Atalanta.c. */
 #define REG_BG2PA (*(volatile u16 *)0x04000020)
 
@@ -8,8 +10,6 @@
 #define REG_BLDALPHA (*(volatile u16 *)0x04000052)
 
 #define REG_BLDCNT (*(volatile u16 *)0x04000050)
-
-#define PALETTE_BG  ((volatile u16 *)0x05000000)
 
 #define OFFSET_CHECK(field, offset) typedef char field##_offset_check[(unsigned int)&((MoveAnimState *)0)->field == offset ? 1 : -1]
 
@@ -42,18 +42,6 @@ extern char _FILE_a0[];
 extern char _FILE_73[];
 
 extern char _FILE_b4[];
-
-typedef unsigned char  u8;
-
-typedef unsigned short u16;
-
-typedef unsigned int   u32;
-
-typedef signed char    s8;
-
-typedef signed short   s16;
-
-typedef signed int     s32;
 
 typedef u8  byte;
 
@@ -216,8 +204,8 @@ void Anim_Atalanta(AnimContext *context)
     AnimStart(0x2000);
     REG_BG2PA = 0x100;
     Func_80c9048();
-    PALETTE_BG[0] = 0;
-    PALETTE_BG[1] = 0;
+    ((u16 *)PALETTE_BG_ADDR)[0] = 0;
+    ((u16 *)PALETTE_BG_ADDR)[1] = 0;
     STATE_BLITMODE(state) = 0;
     StartTask(Task_BlitAnim, 0x480);
     AnimTransitionOut(0, 0);

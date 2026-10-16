@@ -1,4 +1,3 @@
-/* field/moves/growth.c */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/moves/growth/Field_Growth_Target.s");

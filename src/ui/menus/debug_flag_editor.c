@@ -1,4 +1,3 @@
-/* ui/menus/debug_flag_editor.c */
 #include "nonmatching.h"
 
 extern void _SetFlag(unsigned int);

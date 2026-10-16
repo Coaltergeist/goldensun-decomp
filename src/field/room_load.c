@@ -1,4 +1,3 @@
-/* field/room_load.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/room_load/InitMapActors.s");

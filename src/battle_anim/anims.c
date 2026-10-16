@@ -1,4 +1,3 @@
-/* battle_anim/anims.c */
 #include "anim.h"
 #include "nonmatching.h"
 

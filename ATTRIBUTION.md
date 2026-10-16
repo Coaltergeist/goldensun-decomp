@@ -10,6 +10,10 @@ part of this source repository. The optional
 [asm-differ](https://github.com/simonlindholm/asm-differ) installation retains its
 upstream notices.
 
-The [m4a library notes](src/lib/m4a/README.md) identify its source and assembly
-reference. This attribution index does not replace component notices or
-introduce a project-wide license.
+The m4a audio engine C in `src/lib/m4a/` is a Golden Sun port of
+[SAT-R/sa2's m4a reconstruction](https://github.com/SAT-R/sa2), compiled with
+`old_agbcc`. `m4a0.s` there is an upstream SA2 comparison reference, excluded
+from the Golden Sun build. Preserve this provenance when modifying library code.
+
+This attribution index does not replace component notices or introduce a
+project-wide license.

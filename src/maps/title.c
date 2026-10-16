@@ -196,9 +196,6 @@ void OvlFunc_879_2008238(void) {
 }
 #include "gba/io.h"
 
-/* DMA task queue: a u16 task count followed (at +4) by 12-byte
-   {src, dest, control} entries, walked as u32 words. */
-extern unsigned short gDMATaskCount;
 extern unsigned char iwram_3001ebc[];
 extern unsigned char L68c[] __asm__(".L68c");
 
@@ -262,7 +259,9 @@ void OvlFunc_879_20082e8(void) {
     OvlFunc_879_20081c0(0);
     __StartTask(OvlFunc_879_2008238, 0xc8 << 4);
 
-    queue = &gDMATaskCount;
+    /* DMA task queue: a u16 task count followed (at +4) by 12-byte
+   {src, dest, control} entries, walked as u32 words. */
+    queue = (unsigned short*)&gDMATaskCount;
     SetRegAnimDest(queue, (void *)(0x80 << 19), (void *)(0xaa << 5));
     SetRegAnimDest(queue, (void *)REG_ADDR_BLDCNT, (void *)0x2fce);
     SetRegAnimDestWrapped(queue, (void *)REG_ADDR_BLDY, (void *)0x10);

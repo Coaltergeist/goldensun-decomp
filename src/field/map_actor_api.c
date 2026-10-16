@@ -1,4 +1,3 @@
-/* field/map_actor_api.c -- [?] tail (BattleIntro / Player_EnterStairs) */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/field/map_actor_api/Func_8094154.s");

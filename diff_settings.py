@@ -2,9 +2,6 @@ import hashlib
 import os
 from pathlib import Path
 import re
-import sys
-sys.path.insert(0, str(Path(__file__).resolve().parent / "tools"))
-import build_paths
 
 
 def object_map(path):
@@ -24,9 +21,9 @@ def object_map(path):
 
 def apply(config, args):
     config['baseimg'] = 'baserom.gba'
-    config['myimg'] = build_paths.ROM
+    config['myimg'] = 'build/usa/goldensun.gba'
     # The final map merges ROM inputs into stage1.o and loses source ownership.
-    default_map = str(Path(build_paths.STAGE1 if getattr(args, 'diff_obj', False) else build_paths.ELF).with_suffix('.map'))
+    default_map = 'build/usa/stage1.map' if getattr(args, 'diff_obj', False) else 'build/usa/goldensun.map'
     mapfile = os.environ.get('GOLDENSUN_DIFF_MAP', default_map)
     config['mapfile'] = object_map(mapfile) if getattr(args, 'diff_obj', False) else mapfile
     config['source_directories'] = ['.']

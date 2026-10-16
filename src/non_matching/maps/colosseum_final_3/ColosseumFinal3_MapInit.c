@@ -1,6 +1,6 @@
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 
-extern unsigned char iwram_3001ebc[];
+extern unsigned char *iwram_3001ebc;
 
 extern ActorCmd ActorCmd_ARRAY_956__0200cbec[13];
 
@@ -36,7 +36,7 @@ int ColosseumFinal3_MapInit(void)
     int j;
     int ret;
 
-    base = *(unsigned char **)iwram_3001ebc;
+    base = iwram_3001ebc;
     *(int *)(base + 0x1c0) = 0x100;
     __SetFlag(0x144);
     __StartTask(OvlFunc_956_2008658, 0xc80);

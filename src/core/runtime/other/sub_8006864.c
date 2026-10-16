@@ -1,4 +1,3 @@
-/* other/sub_8006864.c -- consolidated TU. */
 #include "nonmatching.h"
 
 /* FF: void CpuSet(void * src, void * dest, u32 length) */

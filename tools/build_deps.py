@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 import re
 import shutil
-import shlex
 import subprocess
 import sys
 
@@ -59,8 +58,7 @@ def stamp(path, tools, values):
         if resolved is None:
             raise ValueError("missing build tool: " + tool)
         hashes[tool] = hashlib.sha256(Path(resolved).read_bytes()).hexdigest()
-    from build_config import IMPLEMENTATION
-    for name in ("Makefile", *IMPLEMENTATION):
+    for name in ("Makefile", "tools/build_deps.py"):
         hashes[name] = hashlib.sha256(Path(name).read_bytes()).hexdigest()
     write_changed(path, json.dumps({"tools": hashes, "values": values}, sort_keys=True, indent=2) + "\n")
 
@@ -80,8 +78,6 @@ def phony_dependencies(path):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     subs = ap.add_subparsers(dest="mode", required=True)
-    ld = subs.add_parser("linker")
-    ld.add_argument("targets", nargs="+")
     dep = subs.add_parser("c")
     dep.add_argument("target")
     dep.add_argument("command", nargs=argparse.REMAINDER)
@@ -93,16 +89,7 @@ def main():
     st.add_argument("--value", action="append", default=[])
     args = ap.parse_args()
     try:
-        if args.mode == "linker":
-            # Make substitutes the separator with newlines before eval.
-            import build_paths
-            links = build_paths.link_targets(Path.cwd())
-            for target in args.targets:
-                current = target if target in links else build_paths.TARGET + "/" + target
-                if current not in links:
-                    raise ValueError("unknown link target: " + target)
-                print(current + ": " + " ".join(sorted(linker_dependencies(links[current]))) + "|")
-        elif args.mode == "phony":
+        if args.mode == "phony":
             phony_dependencies(args.path)
         elif args.mode == "c":
             c_dependencies(args.target, args.command)

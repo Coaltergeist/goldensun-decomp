@@ -6,7 +6,33 @@
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008030.s");
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+extern unsigned int __Random0(void) __asm__("__Random");
+
+unsigned int OvlFunc_943_2008030(struct Actor *actor)
+{
+    switch (actor->waveCounter) {
+    case 6:
+        actor->scale.x += -0x4000;
+        actor->scale.y += 0x2000;
+        break;
+    case 4:
+        actor->scale.x += 0x2000;
+        actor->scale.y += -0x1000;
+        break;
+    case 2:
+        actor->scale.x += 0x1000;
+        actor->scale.y += -0x800;
+        break;
+    case 0:
+        actor->scale.x = 0x10000;
+        actor->scale.y = 0x10000;
+        actor->waveCounter = _umodsi3_RAM(__Random0(), 90) + 60;
+        break;
+    }
+    actor->waveCounter--;
+    return 1;
+}
 
 extern int bytes(int);
 
@@ -515,10 +541,10 @@ void OvlFunc_943_200985c(void) {
     API_MapActor_SetPos(0x16, 0xcc0000, 0x2090000);
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->pos.y = 0x80 << 13;
-    ((struct Actor *)__MapActor_GetActor(0x16))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x16))->collision |= 0x80;
     API_MapActor_SetSpeed(0x16, 0x9999, 0x4ccc);
     __MapActor_SetBehavior(0x16, gScript_943__0200c58c);
-    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x15))->collision |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
@@ -541,7 +567,7 @@ void OvlFunc_943_2009920(void)
     actor = (struct Actor *)__MapActor_GetActor(0x16);
     actor->facing = 0;
     __MapActor_SetBehavior(0x16, gScript_943__0200c980);
-    ((struct Actor *)__MapActor_GetActor(0x15))->__unk59 |= 0x80;
+    ((struct Actor *)__MapActor_GetActor(0x15))->collision |= 0x80;
     API_MapActor_SetSpeed(0x15, 0xcccc, 0x6666);
     __MapActor_SetBehavior(0x15, gScript_943__0200c628);
     if (__GetFlag(0x109) != 0) {
@@ -780,7 +806,43 @@ unsigned int OvlFunc_943_200b150(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b1a8.s");
+extern unsigned char iwram_3001e70[];
+extern int __cos(int);
+extern int __sin(int);
+extern int Lm943_5b58 __asm__(".Lm943_5b58");
+extern int Lm943_5b38 __asm__(".Lm943_5b38");
+extern int Lm943_5b50[2] __asm__(".Lm943_5b50");
+extern int Lm943_5b60[2] __asm__(".Lm943_5b60");
+
+void OvlFunc_943_200b1a8(void)
+{
+    char *base = *(char **)iwram_3001e70;
+    int *pos = *(int **)base;
+    int c = __cos(Lm943_5b58);
+    int s = __sin(Lm943_5b38);
+    struct Actor *actor;
+
+    *pos++ += c >> 1;
+    *pos += s;
+
+    Lm943_5b58 += (__Random0() * 0x180) >> 16;
+    Lm943_5b38 += (__Random0() << 9) >> 16;
+    Lm943_5b58 &= 0xffff;
+    Lm943_5b38 &= 0xffff;
+
+    actor = (struct Actor *)(base + 0x104);
+    actor->pos.x = Lm943_5b50[0];
+    Lm943_5b50[0] -= Lm943_5b60[0];
+    if (Lm943_5b50[0] < 0)
+        Lm943_5b50[0] += 0x200000;
+    if (Lm943_5b50[0] > 0x200000)
+        Lm943_5b50[0] -= 0x200000;
+
+    actor->pos.y = Lm943_5b50[1];
+    Lm943_5b50[1] -= Lm943_5b60[1];
+    if (Lm943_5b50[1] < 0)
+        Lm943_5b50[1] += 0x200000;
+}
 
 void OvlFunc_943_200b284(void) {
     extern void OvlFunc_943_200b380(int);
@@ -789,10 +851,10 @@ void OvlFunc_943_200b284(void) {
     unsigned char *actor;
     int *p90;
 
-    ((struct Actor *)__MapActor_GetActor(8))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(9))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(0xa))->__unk59 = 0;
-    ((struct Actor *)__MapActor_GetActor(0xb))->__unk59 = 0;
+    ((struct Actor *)__MapActor_GetActor(8))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(9))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(0xa))->collision = 0;
+    ((struct Actor *)__MapActor_GetActor(0xb))->collision = 0;
 
     OvlFunc_943_200b380(8);
     OvlFunc_943_200b380(9);
@@ -854,7 +916,7 @@ void OvlFunc_943_200b380(int actorId) {
     if (actor != 0) {
         __Func_8092b08(actorId, 3);
         __Actor_SetSpriteFlags(actor, 0);
-        actor->__unk59 = 0;
+        actor->collision = 0;
         actor->flags |= 2;
     }
 }

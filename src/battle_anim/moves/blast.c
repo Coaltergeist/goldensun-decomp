@@ -1,4 +1,3 @@
-/* battle_anim/moves/blast.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Blast(void *context, int subanim);

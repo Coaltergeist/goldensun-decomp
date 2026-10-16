@@ -1,4 +1,3 @@
-/* field/map_data.c -- consolidated [?] residual (sprite_test TU extracted) */
 #include "nonmatching.h"
 
 #include "nonmatching.h"
@@ -27,12 +26,10 @@ unsigned char pad[0x100];
 unsigned short f100;
 unsigned short f102;
 } FieldState;
-/* Func_80118a8; halfword 0 at element i (12-byte stride) + 0x22 of the array
- * at *iwram_3001e70__a1. base temp forces the deref early; the separate element
- * pointer keeps base the add accumulator and 0x22 the strh immediate; tarpman
- * var forces `movs` for the stored 0. */
+/* Func_80118a8: clears the halfword at +0x22 of element i (12-byte stride) of
+ * the array at *iwram_3001e70__a1. */
 extern unsigned char *iwram_3001e70__a2 __asm__("iwram_3001e70");
-/* Func_80118c0; twin of Func_80118a8 but stores 1 (`movs r3,#1`). */
+/* Func_80118c0: as Func_80118a8, but stores 1. */
 extern unsigned char *iwram_3001e70__a3 __asm__("iwram_3001e70");
 extern unsigned char iwram_3001e70__a4[] __asm__("iwram_3001e70");
 extern void Func_80042c8(void *);

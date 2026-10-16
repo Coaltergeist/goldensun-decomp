@@ -459,7 +459,25 @@ void OvlFunc_887_20095e8(struct Actor *actor)
         actor->pos.z = linked->pos.z + (0x10000 - sinVal) * 5 + (0x80 << 12);
     }
 }
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2009638.s");
+
+void OvlFunc_887_2009638(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200968c.s");
 
 extern void __Func_8096fb0(int a, int b);

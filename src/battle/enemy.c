@@ -1,4 +1,3 @@
-/* battle/enemy.c -- consolidated TU. */
 #include "nonmatching.h"
 
 INCLUDE_ASM("asm/battle/enemy/Func_80c1a34.s");

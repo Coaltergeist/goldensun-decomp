@@ -24,8 +24,6 @@ extern u8 *iwram_3001eec[];
 
 extern u16 gBuffer[];
 
-extern u16 gDMATaskCount;
-
 extern u16 ewram_2010002[];
 
 extern u16 ewram_201007c[];
@@ -124,7 +122,7 @@ void Anim_Torch(struct AnimContext *context)
             state->frameReady = 1;
         } else {
             unsigned int ime;
-            u16 *queue = &gDMATaskCount;
+            u16 *queue = (u16*)&gDMATaskCount;
             u32 *task;
             int count, slot;
             gBuffer[1] = *ewram_201007e;

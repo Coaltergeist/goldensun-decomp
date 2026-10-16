@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "source": "src/battle_anim/moves/psyphon_seal.c",
-  "functions": {
-    "Anim_PsyphonSeal": {
-      "id": "rom:080d0ad4"
-    }
-  }
-}

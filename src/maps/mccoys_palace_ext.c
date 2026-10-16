@@ -2,10 +2,33 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/exports.s");
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008030.s");
+int OvlFunc_910_2008030(struct Actor *actor) {
+    extern int __atan2(int, int);
+    struct Actor *target;
+    unsigned short angle;
+    int diff;
+
+    target = actor->linkedActor;
+    if (target != 0) {
+        actor->__unk5A &= 0xfe;
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        diff = (short)(angle - actor->facing);
+        if (diff != 0) {
+            if (diff > 0x80 << 5) {
+                diff = 0x80 << 5;
+            }
+            if (diff < -0x1000) {
+                diff = -0x1000;
+            }
+            actor->facing += diff;
+        }
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_02008c08[];
 
@@ -91,6 +114,14 @@ int MccoysPalaceExt_GetEvents(void)
 }
 
 #include "message.h"
+#include "actor.h"
+
+struct Attr_OvlFunc_910_2008974 {
+    unsigned char pad[5];
+    unsigned char low : 5;
+    unsigned char flag : 1;
+    unsigned char high : 2;
+};
 
 void OvlFunc_910_2008184(void)
 {
@@ -220,7 +251,40 @@ extern void __LoadItemIcon(int);
 extern int __UploadSpriteGFX(int, int, void *);
 extern void __gfree(int);
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/OvlFunc_910_2008974.s");
+void OvlFunc_910_2008974(int id) {
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+    int zero;
+
+    actor = __MapActor_GetActor(id);
+    sprite = actor->sprite;
+    sprite->oam.priority = 1;
+    ((struct Attr_OvlFunc_910_2008974 *)sprite)->flag = 0;
+    sprite->oam.palette = 0;
+    zero = 0;
+    sprite->numLayers = zero;
+    __Actor_SetSpriteFlags(actor, 0);
+    actor->__unk5C = zero;
+    actor->__unk55 = zero;
+    if (API_GetFlag(0x109) == 0) {
+        actor->pos.y += 0x80 << 14;
+    }
+    actor->flags &= 0xfe;
+    actor->__unk61 = 1;
+    buf = (unsigned char *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xb5);
+    buf += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, buf);
+    __gfree(0x11);
+    actor->prevPos.x = actor->pos.x;
+    actor->speed = zero;
+    actor->prevPos.y = actor->pos.y;
+    actor->__unk5C = 1;
+    actor->update = (actorfun_t *)OvlFunc_910_200890c;
+    actor->__unk56 = zero;
+}
+
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/mccoys_palace_ext_data.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace_ext/imports.s");

@@ -1,4 +1,3 @@
-/* sprite/sprite_info.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern unsigned char gSpriteInfo[] __asm__("gSpriteInfo");

@@ -1,4 +1,3 @@
-/* battle_anim/camera.c -- consolidated [?] residual (anims TU extracted) */
 #include "nonmatching.h"
 
 extern void Func_80dbb98(void);

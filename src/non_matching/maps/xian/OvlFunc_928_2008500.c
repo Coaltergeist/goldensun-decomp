@@ -1,4 +1,4 @@
-extern void OvlFunc_928_2008408(unsigned char *, unsigned char *, int, int);
+extern int OvlFunc_928_2008408(unsigned char *, unsigned char *, int, int);
 
 int OvlFunc_928_2008500(unsigned char *actor)
 {

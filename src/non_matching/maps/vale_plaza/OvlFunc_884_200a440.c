@@ -4,9 +4,9 @@ extern unsigned char iwram_3001f30[];
 
 extern struct SpriteSlot gSpriteSlots[96];
 
-extern void OvlFunc_884_200a3ec(void);
+extern void OvlFunc_884_200a3ec(struct Actor *);
 
-extern void OvlFunc_884_200a39c(void);
+extern void OvlFunc_884_200a39c(struct Actor *);
 
 void OvlFunc_884_200a440(unsigned int arg0)
 {

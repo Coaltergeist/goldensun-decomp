@@ -1,4 +1,3 @@
-/* field/moves/move.c */
 #include "nonmatching.h"
 
 extern unsigned int gKeyHeld;

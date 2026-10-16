@@ -1,4 +1,3 @@
-/* battle_anim/transition_in.c */
 #include "nonmatching.h"
 
 #define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)

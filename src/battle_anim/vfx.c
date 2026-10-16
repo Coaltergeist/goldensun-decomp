@@ -1,4 +1,3 @@
-/* battle_anim/vfx.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void *GetFile(int);

@@ -5,13 +5,6 @@
 #include "actor.h"
 #include "math.h"
 
-/* This overlay preserves the historical ignored-return message declaration. */
-static inline int API_ShowActorMessage_NoWait(int a0, int a1)
-{
-    extern int __ShowActorMessage_NoWait(int, int);
-    return __ShowActorMessage_NoWait(a0, a1);
-}
-
 extern unsigned char gOvl_0200a5cc[];
 
 void *TretTree_GetEntrances(void) {

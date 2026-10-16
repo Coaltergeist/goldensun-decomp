@@ -1,4 +1,3 @@
-/* field/moves/cloak.c */
 #include "nonmatching.h"
 
 extern unsigned char gState;

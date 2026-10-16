@@ -193,7 +193,7 @@
 	lsl	r0, #16
 	orr	r0, r1, lsr #16
 	add	r0, r3, r0
-	bl	Func_800a960
+	bl	Func_8000948_veneer
 	lsls	r0, #8
 	beq	.La730
 	ldr	r3, [r5, #0x34]
@@ -202,7 +202,7 @@
 	strmi	r1, [r5, #0x24]
 	strmi	r1, [r5, #0x2c]
 	bmi	.La73c
-	bl	Func_800a968
+	bl	Func_80008ac_veneer
 	smull	r2, r3, r0, r6
 	lsl	r3, #16
 	orr	r3, r2, lsr #16
@@ -345,7 +345,7 @@
 	beq	.La940
 	mov	r0, r10
 	mov	r1, r9
-	bl	Func_800a958
+	bl	atan2_veneer
 	lsl	r0, #16
 	ldrh	r3, [r5, #6]
 	mov	r2, #0x80000000
@@ -365,21 +365,27 @@
 	add	sp, #0x10
 	pop	{r5, r6, r7, r8, r9, r10, lr}
 	bx	lr
-.func_end Func_800a494
 
-.arm_func_start Func_800a958  @ 0x0800a958
+.func_end Func_800a494
+.arm_func_start atan2_veneer
+atan2_veneer:                          @ 0x0800a958
 	ldr	r4, =atan2
 	bx	r4
-.ssize	Func_800a958
+.ssize        atan2_veneer
 
-.arm_func_start Func_800a960  @ 0x0800a960
+.arm_func_start Func_8000948_veneer
+Func_8000948_veneer:                   @ 0x0800a960
 	ldr	r4, =Func_8000948
 	bx	r4
-.ssize	Func_800a960
+.ssize        Func_8000948_veneer
 
-.arm_func_start Func_800a968  @ 0x0800a968
+.arm_func_start Func_80008ac_veneer
+Func_80008ac_veneer:                   @ 0x0800a968
 	ldr	r4, =Func_80008ac
 	bx	r4
-.ssize	Func_800a968
+.ssize        Func_80008ac_veneer
 
 .pool
+Func_800a494_end:
+.global _Func_800a494_SIZE
+_Func_800a494_SIZE = Func_800a494_end - Func_800a494

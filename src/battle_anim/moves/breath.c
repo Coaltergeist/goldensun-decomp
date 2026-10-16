@@ -1,4 +1,3 @@
-/* battle_anim/moves/breath.c -- consolidated TU. */
 #include "nonmatching.h"
 
 extern void BaseAnim_Breath(void *context, int subanim);

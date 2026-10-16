@@ -1,4 +1,3 @@
-/* battle_anim/moves/fullscreen_slash.c */
 #include "nonmatching.h"
 
 extern void BaseAnim_FullScreenSlash(void *context, int subanim);

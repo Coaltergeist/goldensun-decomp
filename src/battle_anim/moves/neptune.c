@@ -1,4 +1,3 @@
-/* battle_anim/moves/neptune.c */
 #include "nonmatching.h"
 
 #define REG_BG2PA (*(volatile unsigned short *)0x04000020)

@@ -38,6 +38,8 @@ void OvlFunc_897_2008f28(void) {}
 void OvlFunc_897_2008f2c(void) {}
 
 #include "state/global_state.h"
+#include "actor.h"
+
 extern GlobalState gState;
 extern int OvlFunc_897_2008054(void);
 
@@ -97,7 +99,46 @@ void OvlFunc_897_2009084(void)
 }
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_20090c4.s");
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200935c.s");
+extern int __Random(void);
+
+void OvlFunc_897_200935c(void)
+{
+    unsigned int *p;
+
+    if (*(unsigned int *)L3b70 != 0) {
+        (*(unsigned int *)L3b70)--;
+        return;
+    }
+
+    if (*(unsigned int *)L3b6c != 0) {
+        (*(unsigned int *)L3b6c)--;
+    } else {
+        *(unsigned int *)L3b6c = (unsigned int)(__Random() * 4) >> 16;
+    }
+
+    switch (*(unsigned int *)L3b6c) {
+    case 3:
+        *(unsigned int *)L3b68 = 3;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 20) >> 16) + 0x28;
+        break;
+    case 2:
+        *(unsigned int *)L3b68 = 0xf;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 40) >> 16) + 0x50;
+        break;
+    case 1:
+        *(unsigned int *)L3b68 = 0x3f;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 80) >> 16) + 0xa0;
+        break;
+    default:
+        *(unsigned int *)L3b68 = 0x7f;
+        p = (unsigned int *)L3b70;
+        *p = ((unsigned int)(__Random() * 160) >> 16) + 0x140;
+        break;
+    }
+}
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2009410.s");
 
 void OvlFunc_897_200a820(unsigned int arg0)
@@ -271,7 +312,25 @@ void OvlFunc_897_200ae0c(unsigned char *actor)
         *(int *)(actor + 0x10) = *(int *)(anchor + 0x10) + (0x10000 - s) * 5 + 0x80000;
     }
 }
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ae5c.s");
+
+void OvlFunc_897_200ae5c(struct Actor *actor) {
+    struct Actor *target;
+    s32 sinVal;
+
+    target = actor->linkedActor;
+
+    if (++actor->waveCounter > 0x1f) {
+        API_DeleteActor((int)actor);
+    } else {
+        sinVal = __sin(actor->waveCounter << 10);
+        actor->scale.x = sinVal;
+        actor->scale.y = -sinVal;
+        actor->pos.x = target->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = target->pos.z - (0x10000 - sinVal) * 5 + 0x100000;
+    }
+}
+
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
 
 extern void __Func_8096fb0(int a, int b);
