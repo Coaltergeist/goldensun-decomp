@@ -154,7 +154,58 @@ void UpdateMusicSettings(void) {
     m4aSoundVSync();
 }
 
-INCLUDE_ASM("asm/sound/sound/Debug_SoundTest.s");
+struct DebugSoundTestSlots {
+    int values[3];
+};
+
+extern const struct DebugSoundTestSlots Data_fb794 __asm__(".Lfb794");
+extern volatile int gRAMBuildDate;
+extern volatile unsigned int gKeyRepeat;
+extern int Label_12cc;
+
+void Debug_SoundTest(void) {
+    struct DebugSoundTestSlots slots;
+    int cur;
+    int fadeTimer;
+    int channel;
+
+    slots = Data_fb794;
+    cur = 0;
+    channel = 2;
+    __asm__ volatile ("");
+    gRAMBuildDate = 0;
+    __asm__ volatile ("");
+    fadeTimer = 0x14;
+
+    for (;;) {
+        if (fadeTimer != 0)
+            fadeTimer--;
+        if (Label_12cc != 0) {
+            Label_12cc = 0;
+            fadeTimer = 0x14;
+        }
+
+        if (gKeyRepeat & 4) {
+            channel = (channel + 1) % 5;
+            SetSoundFXMode(channel);
+        }
+        if (gKeyRepeat & 0x100) slots.values[cur] += 0xa;
+        if (gKeyRepeat & 0x200) slots.values[cur] -= 0xa;
+        if (gKeyRepeat & 0x10)  slots.values[cur] += 1;
+        if (gKeyRepeat & 0x20)  slots.values[cur] -= 1;
+        if ((gKeyRepeat & 0x40) && cur > 0)
+            cur--;
+
+        if ((gKeyRepeat & 0x80) && cur <= 1)
+            cur++;
+        if (gKeyRepeat & 1) PlaySound(slots.values[cur]);
+        if (gKeyRepeat & 2) PlaySound(0x13);
+        if (gKeyRepeat & 8) PlaySound(0x11);
+        if (gKeyRepeat & 4) PlaySound(0x121);
+
+        WaitFrames(1);
+    }
+}
 
 void InitSoundEngine(void) {
     int i;
@@ -243,8 +294,6 @@ void Func_80f9570(unsigned int arg0)
 unsigned int Func_80f9594(void) {
     return ewram_200303c;
 }
-
-extern void WaitFrames(int frames);
 
 void Func_80f95a0(void) {
     int i;
