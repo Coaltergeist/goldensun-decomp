@@ -1,5 +1,5 @@
 {
-  "candidate_fingerprint": "e8861f93b1dc2e17fdc454bae9255b854d8c6afe3ac737bb8e91553a5acac7c6",
+  "candidate_fingerprint": "1fdede8c6da516e154b98e67f6695584478c2a2d70f9e7a442a9e19d060eddac",
   "functions": {
     "common:common1:00000588": {
       "candidate": "src/non_matching/maps/common/common1/OvlFunc_common1_588.c",
@@ -7996,45 +7996,6 @@
       "source": "src/lucky_wheels/lucky_wheels.c",
       "target_size": 72
     },
-    "rom:080f9080": {
-      "candidate": "src/non_matching/sound/sound/PlaySound.c",
-      "candidate_size": 346,
-      "evaluated_with": [
-        "PlaySound"
-      ],
-      "fuzzy_match_percent": 92.7351,
-      "name": "PlaySound",
-      "object_sha256": "99c2006160e07b7f88a5696c22aaaf8ee92584f336cfc1e8cb28a1f405414733",
-      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
-      "source": "src/sound/sound.c",
-      "target_size": 360
-    },
-    "rom:080f91e8": {
-      "candidate": "src/non_matching/sound/sound/UpdateMusicSettings.c",
-      "candidate_size": 272,
-      "evaluated_with": [
-        "UpdateMusicSettings"
-      ],
-      "fuzzy_match_percent": 98.06612,
-      "name": "UpdateMusicSettings",
-      "object_sha256": "7a2aa39ab62d8bad15d64baec45573cf5d91fe1fbba334b391d49c9cf837da07",
-      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
-      "source": "src/sound/sound.c",
-      "target_size": 276
-    },
-    "rom:080f92fc": {
-      "candidate": "src/non_matching/sound/sound/Debug_SoundTest.c",
-      "candidate_size": 304,
-      "evaluated_with": [
-        "Debug_SoundTest"
-      ],
-      "fuzzy_match_percent": 82.678085,
-      "name": "Debug_SoundTest",
-      "object_sha256": "c35ae9ec7ae572e0c6982c59deedd77f82ed60762cc6a3eca60a0fca2436416d",
-      "reference_sha256": "b85b04b50abfac48f036a808d05526ec8403ccac8a27478dbd9abbb510ccc0aa",
-      "source": "src/sound/sound.c",
-      "target_size": 316
-    },
     "rom:080f9a18": {
       "candidate": "src/non_matching/sound/other/sub_80f95e0/SoundMainBTM.c",
       "candidate_size": 18,
@@ -8063,7 +8024,7 @@
     }
   },
   "policy": "objdiff-function-scores-original-byte-weights-v1",
-  "progress_sha256": "785be645d37f44eadf39d4fcb785e8524e313bd807fa118236ddd43dd05d1b5c",
+  "progress_sha256": "0124697f5c33af5a8a6709a2161131289c8549affeaf8eec52560831d343c6c0",
   "schema": 1,
   "scorer": {
     "config": [
