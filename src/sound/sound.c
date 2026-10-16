@@ -160,7 +160,7 @@ struct DebugSoundTestSlots {
 };
 
 extern const struct DebugSoundTestSlots Data_fb794 __asm__(".Lfb794");
-extern volatile int gRAMBuildDate;
+extern int gRAMBuildDate;
 extern volatile unsigned int gKeyRepeat;
 extern int Label_12cc;
 
@@ -173,9 +173,11 @@ void Debug_SoundTest(void) {
     slots = Data_fb794;
     cur = 0;
     channel = 2;
-    __asm__ volatile ("");
-    gRAMBuildDate = 0;
-    __asm__ volatile ("");
+    // Fakematch: force load instruction after initial variables but
+    // before fadeTimer.
+    do {
+        gRAMBuildDate = 0;
+    } while (0);
     fadeTimer = 0x14;
 
     for (;;) {
