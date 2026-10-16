@@ -19,6 +19,12 @@
     },
     "OvlFunc_945_2009190": {
       "id": "overlay:rom_7cb2c0:02009190"
+    },
+    "OvlFunc_945_200812c": {
+      "id": "overlay:rom_7cb2c0:0200812c"
+    },
+    "TolbiBoundShipHull_GetActors": {
+      "id": "overlay:rom_7cb2c0:0200837c"
     }
   }
 }

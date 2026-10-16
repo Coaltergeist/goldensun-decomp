@@ -1166,7 +1166,43 @@ INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009f3c.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200a7d8.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/TolbiBoundShipHull_MapInit.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b364.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200b51c.s");
+void OvlFunc_945_200b51c(void)
+{
+    extern int __GetFlag();
+    extern void __MapActor_SetPos();
+    extern void OvlFunc_945_200c890(unsigned int, unsigned int, unsigned int, unsigned int);
+    extern void __MapActor_SetBehavior();
+    extern void OvlFunc_945_200d004(void);
+    extern void OvlFunc_945_200c8e8();
+    extern unsigned char gScript_945__0200e958[];
+    extern unsigned char gScript_945__0200e840[];
+
+    if (__GetFlag(0x93e)) {
+        __MapActor_SetPos(8, 0, 0);
+        __MapActor_SetPos(9, 0, 0);
+        __MapActor_SetPos(10, 0, 0);
+        __MapActor_SetPos(11, 0, 0);
+        __MapActor_SetPos(12, 0, 0);
+        OvlFunc_945_200c8e8(14, 0, 0);
+    } else if (__GetFlag(0x8a << 4)) {
+        OvlFunc_945_200c890(8, 0x98, 0x1bc, 0x3000);
+        __MapActor_SetBehavior(8, (int)gScript_945__0200e958);
+        OvlFunc_945_200c890(10, 0xb8, 0x1e0, 0xb000);
+        OvlFunc_945_200c890(12, 0xaa, 0x1e8, 0xb000);
+        OvlFunc_945_200c890(13, 0x88, 0x1e8, 0xd000);
+        OvlFunc_945_200c890(15, 0x78, 0x1e0, 0xd000);
+        OvlFunc_945_200c890(14, 0xb8, 0x20e, 0xb000);
+        OvlFunc_945_200c890(11, 0x88, 0x248, 0x8000);
+        __MapActor_SetBehavior(11, (int)gScript_945__0200e840);
+    } else if (__GetFlag(0x928)) {
+        OvlFunc_945_200d004();
+    } else if (__GetFlag(0x925)) {
+        OvlFunc_945_200c8e8(18, 0, 0);
+    } else if (__GetFlag(0x911) && __GetFlag(0x922)) {
+        OvlFunc_945_200c8e8(14, 0, 0);
+        __MapActor_SetPos(12, 0, 0);
+    }
+}
 extern void OvlFunc_945_200c890(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
 extern void __WaitFrames(int);
 extern void OvlFunc_945_200b7b4(void);
@@ -1522,7 +1558,59 @@ void *OvlFunc_945_200c5d0(void)
     Lm945_6968 = actor;
     return actor;
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200c670.s");
+void OvlFunc_945_200c670(int arg0)
+{
+    extern int __GetFlag(int);
+    extern unsigned int OvlFunc_945_200cfa8(unsigned int, unsigned int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern int __MapActor_GetActor(int);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+
+    unsigned int actor;
+
+    if (__GetFlag(0x928)) {
+        actor = OvlFunc_945_200cfa8(0, 0);
+        __MapActor_SetPos(actor, 0xcd << 17, 0xac << 16);
+        OvlFunc_945_200c8e8(7, actor, arg0);
+        __MapActor_SetPos(0xa, 0, 0);
+    } else {
+        OvlFunc_945_200c8e8(5, 0xa, arg0);
+    }
+
+    if (__GetFlag(0x929)) {
+        actor = OvlFunc_945_200cfa8(1, 0);
+        __MapActor_SetPos(actor, 0xeb << 17, 0xac << 16);
+        ((struct Actor *)__MapActor_GetActor(actor))->scale.x = 0xffff0000;
+        OvlFunc_945_200c8e8(7, actor, arg0);
+        __MapActor_SetPos(0xb, 0, 0);
+    } else {
+        OvlFunc_945_200c8e8(6, 0xb, arg0);
+    }
+
+    if (__GetFlag(0x92a)) {
+        actor = OvlFunc_945_200cfa8(2, 0);
+        __MapActor_SetPos(actor, 0xcd << 17, 0xcc << 16);
+        OvlFunc_945_200c8e8(7, actor, arg0);
+        __MapActor_SetPos(0xc, 0, 0);
+    } else {
+        OvlFunc_945_200c8e8(5, 0xc, arg0);
+    }
+
+    if (__GetFlag(0x92b)) {
+        actor = OvlFunc_945_200cfa8(3, 0);
+        __MapActor_SetPos(actor, 0xeb << 17, 0xcc << 16);
+        ((struct Actor *)__MapActor_GetActor(actor))->scale.x = 0xffff0000;
+        OvlFunc_945_200c8e8(7, actor, arg0);
+        __MapActor_SetPos(0xd, 0, 0);
+    } else {
+        OvlFunc_945_200c8e8(6, 0xd, arg0);
+    }
+
+    OvlFunc_945_200c8e8(5, 0xe, arg0);
+    OvlFunc_945_200c8e8(6, 0xf, arg0);
+    OvlFunc_945_200c8e8(5, 0x10, arg0);
+    OvlFunc_945_200c8e8(6, 0x11, arg0);
+}
 void OvlFunc_945_200c7cc(int actor)
 {
     extern void __MapActor_SetAnimSpeed(int, int);

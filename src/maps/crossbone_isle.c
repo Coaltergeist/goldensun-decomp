@@ -1004,7 +1004,63 @@ void OvlFunc_946_200a2c8(void)
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a3c4.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a450.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a4c8.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a5f0.s");
+void OvlFunc_946_200a5f0(void)
+{
+    int actor18_x;
+    int actor18_z;
+    int actor19_x;
+    int actor14_x;
+    int x_sub;
+    int new_z;
+
+    actor18_x = ((struct Actor *)__MapActor_GetActor(0x12))->pos.x >> 20;
+    actor18_z = ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20;
+    actor19_x = ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20;
+    actor14_x = ((struct Actor *)__MapActor_GetActor(0xe))->pos.x >> 20;
+
+    if (actor18_z == 9) {
+        if ((u32)(actor14_x - 6) <= 2) {
+            OvlFunc_946_2009774(0x12, 0, 0x20);
+        } else if ((u32)(actor19_x - 6) <= 2) {
+            OvlFunc_946_2009774(0x12, 0, 0x50);
+        } else {
+            OvlFunc_946_2009774(0x12, 0, 0x40);
+            OvlFunc_946_2009774(0x12, 0, 0x60);
+        }
+    } else if (actor18_z == 11) {
+        if ((u32)(actor14_x - 6) <= 2) {
+            return;
+        }
+        if ((u32)(actor19_x - 6) <= 2) {
+            OvlFunc_946_2009774(0x12, 0, 0x30);
+        } else {
+            OvlFunc_946_2009774(0x12, 0, 0x80);
+        }
+    } else if (actor18_z == 12) {
+        if ((u32)(actor19_x - 6) <= 2) {
+            OvlFunc_946_2009774(0x12, 0, 0x20);
+        } else {
+            OvlFunc_946_2009774(0x12, 0, 0x70);
+        }
+    } else if (actor18_z == 14) {
+        if ((u32)(actor19_x - 6) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(0x12, 0, 0x50);
+    } else if (actor18_z == 15) {
+        OvlFunc_946_2009774(0x12, 0, 0x40);
+    } else if (actor18_z == 18) {
+        OvlFunc_946_2009774(0x12, 0, 0x10);
+    } else if (actor18_z == 19) {
+        return;
+    }
+
+    __WaitFrames(2);
+    x_sub = actor18_x - 1;
+    new_z = ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20;
+    __Func_8010704(x_sub, actor18_z, 3, 1, x_sub, new_z);
+    __Func_8010704(0, 0, 3, 1, x_sub, actor18_z);
+}
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a700.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a848.s");
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a984.s");
