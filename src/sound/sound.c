@@ -21,6 +21,8 @@ extern const struct m4aSong gSongTable[];
 
 // end m4a_internal.h references
 
+extern void WaitFrames(int frames);
+
 extern void m4aSoundInit(void);
 
 extern unsigned short gMusicVolume;
