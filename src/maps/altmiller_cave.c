@@ -9,9 +9,8 @@
 extern unsigned int Lm957_3eb4[] __asm__(".Lm957_3eb4");
 
 INCLUDE_ASM("asm/maps/altmiller_cave/exports.s");
-extern unsigned char Lc957_92[] __asm__(".Lc957_92");
 extern unsigned char Lc957_97[] __asm__(".Lc957_97");
-__asm__(".equ .Lc957_92, 0x92\n.equ .Lc957_97, 0x97");
+__asm__(".equ .Lc957_97, 0x97");
 extern short gState_s957[] __asm__("gState");
 static inline void API_Func_8092950(int a, int b) { extern void __Func_8092950(int, int); __Func_8092950(a, b); }
 
