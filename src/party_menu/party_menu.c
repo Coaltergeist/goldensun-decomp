@@ -178,7 +178,42 @@ void Func_80a195c(void) {
     StopTask(Func_80a19a0);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a19a0.s");
+void Func_80a19a0(void)
+{
+    struct PM80a19a0 {
+        unsigned char pad0[0x114];
+        unsigned char *spr[4];
+        unsigned char pad124[0x10];
+        short x[8];
+        short y[8];
+        int scale[4];
+    };
+    extern void _UpdateSprite(void *, int *, int *, int);
+    extern int _GetPartySize(void);
+    extern struct PM80a19a0 *iwram_3001f2c__k19 __asm__("iwram_3001f2c");
+    struct PM80a19a0 *s = iwram_3001f2c__k19;
+    int sc[2];
+    int v[4];
+    int n = (unsigned short)_GetPartySize();
+    int i;
+    int dy;
+    unsigned char *p;
+
+    for (i = 0; i < n; i++) {
+        p = s->spr[i];
+        dy = 0x1e20000 - (s->y[i] << 16);
+        if (p != 0) {
+            *(signed char *)(p + 9) &= -13;
+            sc[0] = s->scale[i];
+            sc[1] = s->scale[i];
+            v[0] = s->x[i] << 16;
+            v[1] = dy;
+            v[2] = (s->y[i] << 16) + dy;
+            v[3] = 0;
+            _UpdateSprite(p, v, sc, 0x4000);
+        }
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1a40.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1ac0.s");
 

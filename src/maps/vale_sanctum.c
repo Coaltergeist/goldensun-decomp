@@ -366,7 +366,17 @@ void OvlFunc_888_200a67c(struct Actor *arg0) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a6f0.s");
+void OvlFunc_888_200a6f0(struct Actor *actor)
+{
+    struct Actor *linked = actor->linkedActor;
+    u16 *waveCounter = (u16 *)&actor->waveCounter;
+    u16 angle = *waveCounter;
+    actor->pos.x = linked->pos.x + __cos(angle) * 14;
+    actor->pos.z = linked->pos.z + __sin(angle) * 10;
+    actor->prevPos.x = actor->pos.x;
+    actor->prevPos.z = actor->pos.z;
+    *waveCounter += actor->__unk66;
+}
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a90c.s");

@@ -314,7 +314,30 @@ INCLUDE_ASM("asm/shop/shop/UI_Sanctum.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2b10.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2da8.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2e30.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2ed8.s");
+__asm__(".equ .Ls_d2c, 0xd2c\n.equ .Ls_d2d, 0xd2d");
+void Func_80b2ed8(int win, int item)
+{
+    extern unsigned char *iwram_3001f2c__e8 __asm__("iwram_3001f2c");
+    extern void _Func_8016478(int);
+    extern void _Func_8019908(int, int);
+    extern void _DrawSmallText(int, int, int, int);
+    int k = *(signed char *)(iwram_3001f2c__e8 + 0x3aa);
+    int price = Func_80b2778(item, k);
+    extern unsigned char Ls_d2c[] __asm__(".Ls_d2c");
+    extern unsigned char Ls_d2d[] __asm__(".Ls_d2d");
+    int msg;
+
+    if (win == 0)
+        return;
+    _Func_8016478(win);
+    if (Func_80b27b0(item, k))
+        msg = (int)Ls_d2c;
+    else
+        msg = (int)Ls_d2d;
+    msg = Func_80b2884(msg);
+    _Func_8019908(price, 5);
+    _DrawSmallText(msg, win, 0, 0);
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b2f4c.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2ffc.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b3050.s");
