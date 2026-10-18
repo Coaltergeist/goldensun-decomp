@@ -1,6 +1,28 @@
 #include "nonmatching.h"
 
-INCLUDE_ASM("asm/field/map_actor_api/Func_8094154.s");
+extern unsigned char *GetFieldActor(int id);
+extern unsigned char *iwram_3001e70;
+extern signed char *_GetSpriteInfo(int);
+
+int Func_8094154(int id, int *out)
+{
+    unsigned char *a = GetFieldActor(id);
+    int *cam;
+    int x, y, cx, cy;
+
+    if (a == 0)
+        return -1;
+    cam = (int *)(iwram_3001e70 + 0xe4);
+    cx = cam[0] & ~0xffff;
+    cy = cam[1] & ~0xffff;
+    x = *(int *)(a + 8) - cx;
+    y = *(int *)(a + 0x10) - cy - *(int *)(a + 0xc);
+    *out++ = x / 0x10000;
+    *out = y / 0x10000;
+    if ((a[0x54] & 0xf) == 1)
+        *out -= _GetSpriteInfo(**(short **)(*(unsigned char **)(a + 0x50) + 0x28))[8];
+    return 0;
+}
 
 void Func_80941dc(void) {}
 

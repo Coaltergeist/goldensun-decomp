@@ -127,7 +127,53 @@ void Func_801c17c(void) {
     Func_8003f3c();
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c188.s");
+struct MenuGfx801c188 {
+    unsigned char pad0[8];
+    unsigned short id;
+    unsigned short state;
+    unsigned short slot;
+    unsigned short gfx;
+    unsigned char pad10[0x12];
+    unsigned short w;
+    unsigned short h;
+    unsigned short x;
+};
+
+void Func_801c188(void)
+{
+    extern void *galloc_iwram(int, int);
+    extern void DecompressLZ1(void *, void *);
+    extern int AllocSpriteSlot(void);
+    extern int UploadSpriteGFX(int, int, void *);
+    extern void gfree(int);
+    extern int _FILE_f1;
+    extern void *GetFile(int);
+    extern unsigned char *iwram_3001e98__c188 __asm__("iwram_3001e98");
+    unsigned char *base = iwram_3001e98__c188;
+    unsigned short *m = Func_801b36c(base);
+    struct MenuGfx801c188 *p;
+    unsigned char *buf;
+    unsigned char *f;
+    int id;
+
+    if (m[5] == 1 || m[5] == 6) {
+        buf = galloc_iwram(0x11, 0x608);
+        p = (struct MenuGfx801c188 *)(base + 0x30c);
+        id = m[4];
+        f = GetFile((int)&_FILE_f1);
+        *(unsigned char **)(buf + 0x604) = f + ((unsigned short *)f)[m[4]];
+        DecompressLZ1(*(unsigned char **)(buf + 0x604), buf);
+        if (p->state == 0)
+            p->slot = AllocSpriteSlot();
+        p->gfx = UploadSpriteGFX(p->slot, 0x400, buf);
+        p->state = 1;
+        p->id = id;
+        p->w = 0x28;
+        p->h = 0x28;
+        p->x = 0xf0;
+        gfree(0x11);
+    }
+}
 
 extern unsigned char *iwram_3001e98__a3 __asm__("iwram_3001e98");
 void Func_801c21c(void) {
