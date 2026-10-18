@@ -19,7 +19,25 @@ unsigned int OvlFunc_911_2008030(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008050.s");
+unsigned int OvlFunc_911_2008050(unsigned int arg0)
+{
+    extern unsigned int __Random(void);
+    extern int __Func_80929d8(int a, int b);
+    short *counter = (short *)(arg0 + 0x64);
+    int zero;
+
+    *counter += (__Random() * 100) >> 16;
+    zero = 0;
+    if (*counter > 1000) {
+        __Func_80929d8(arg0, 7);
+    } else {
+        __Func_80929d8(arg0, 0xa);
+    }
+    if (*counter > 1200) {
+        *counter = zero;
+    }
+    return 1;
+}
 void OvlFunc_911_20080a0(void *arg0)
 {
     unsigned char *p = (unsigned char *)arg0 + 0x48;
@@ -130,7 +148,26 @@ void *Kolima_GetActors(void)
     if (ev == (int)_EVENT_27) return Lm911_3368;
     return Lm911_3080;
 }
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_2008230.s");
+void __CutsceneEnd(void);
+void __CutsceneStart(void);
+void *__MapActor_GetActor(int);
+
+void OvlFunc_911_2008230(void)
+{
+    unsigned char *p;
+    unsigned int r5;
+
+    p = __MapActor_GetActor(0);
+    r5 = *(unsigned short *)(p + 6);
+    __CutsceneStart();
+    if ((unsigned int)(r5 + 0xffff5fff) <= 0x3ffe) {
+        __UI_Sanctum(0x10);
+    } else {
+        __MessageID(0x16b3);
+        __Func_8093054(0x10, 0);
+    }
+    __CutsceneEnd();
+}
 
 extern void __Func_80955b0(int a, int b, int c);
 
