@@ -33,7 +33,22 @@ int OvlFunc_969_2008314(struct Actor *actor)
     actor->waveCounter--;
     return 1;
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20083a0.s");
+void OvlFunc_969_20083a0(int *a)
+{
+    extern int _divsi3_RAM(int, int);
+    int vx = a[0x11];
+    int vy, vz;
+    a[2] += vx;
+    vy = a[0x12];
+    a[3] += vy;
+    vz = a[0x13];
+    a[4] += vz;
+    a[0x11] = vx - _divsi3_RAM(vx, 0x16);
+    a[0x13] = vz - _divsi3_RAM(vz, 0x14);
+    a[6] += a[0xc];
+    a[7] += a[0xd];
+    *(unsigned short *)((char *)a[0x14] + 0x1e) += *(unsigned short *)((char *)a + 0x64);
+}
 
 void OvlFunc_969_2008400(unsigned char *p)
 {

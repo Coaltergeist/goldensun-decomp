@@ -421,7 +421,38 @@ void OvlFunc_896_200c248(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c260.s");
-INCLUDE_ASM("asm/maps/elemental_stars/OvlFunc_896_200c328.s");
+void OvlFunc_896_200c328(void)
+{
+    extern void __PlaySound(int);
+    extern void __Func_808f1c0(int, int);
+    extern void __Func_801776c(int, int);
+    extern int __FindEmptyInventorySlot(int);
+    extern int __UI_SellMenu(int *, int *);
+    extern void __Func_8078948(int, int);
+    extern void __GiveItem(int);
+    short *base = iwram_3001ebc;
+    short saved = base[0xec];
+    int a, b;
+    int n;
+
+    __PlaySound(0x53);
+    __Func_808f1c0(0xe0, 3);
+    __Func_801776c(0x111b, 1);
+loop:
+    n = 0x1e - __FindEmptyInventorySlot(0);
+    n -= __FindEmptyInventorySlot(1);
+    if (n <= 3) {
+        __Func_801776c(0x111c, 1);
+        if (__UI_SellMenu(&b, &a) != -1)
+            __Func_8078948(b, a);
+        goto loop;
+    }
+    __GiveItem(0xe0);
+    __GiveItem(0xe0);
+    __GiveItem(0xe0);
+    __GiveItem(0xe0);
+    base[0xec] = saved;
+}
 #include "actor.h"
 
 extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);

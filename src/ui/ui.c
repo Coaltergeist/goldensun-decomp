@@ -434,4 +434,31 @@ INCLUDE_ASM("asm/ui/ui/Func_8019d0c.s");
 
 INCLUDE_ASM("asm/ui/ui/GetPortrait.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019da8.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019e48.s");
+void Func_8019e48(int a0)
+{
+    extern int GetPortrait(int);
+    unsigned char *base = *(unsigned char **)iwram_3001e8c__a5;
+    unsigned char *slot = base + (0xa0 << 3);
+    int p = GetPortrait(a0);
+    int idx;
+    struct S { unsigned char pad[0x12ec]; unsigned short pt[2]; unsigned short ids[2]; } *st = (struct S *)base;
+    int id;
+    int i;
+
+    if (p == -1)
+        return;
+    if (st->pt[1] == p)
+        idx = 1;
+    else if (st->pt[0] == p)
+        idx = 0;
+    else
+        return;
+    id = st->ids[idx];
+    for (i = 0; i != 8; i++, slot += 0x24) {
+        unsigned char *q = *(unsigned char **)slot;
+        if (q[4] == 2 && q[0xe] == id) {
+            CloseUIBox(slot, 2);
+            return;
+        }
+    }
+}

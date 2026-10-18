@@ -15,7 +15,30 @@ void OvlFunc_936_2008030(void) {
     __Func_80955b0(12, 2, 3);
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
+extern unsigned int __Random__936() __asm__("__Random");
+int OvlFunc_936_2008040(struct Actor *a)
+{
+    extern void __Actor_SetAnim(void *, int);
+
+    if (a->__unk66 == 0) {
+        switch ((__Random__936() << 3) >> 16) {
+        case 0:
+            __Actor_SetAnim(a, 3);
+            break;
+        case 1:
+            __Actor_SetAnim(a, 4);
+            break;
+        case 3:
+        case 4:
+            a->facing += (__Random__936() << 15) >> 16;
+            break;
+        }
+        a->__unk66 = (__Random__936() * 80) >> 16;
+    }
+    if (a->__unk66 != 0)
+        a->__unk66--;
+    return 1;
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
 
 #include "state/global_state.h"
@@ -339,7 +362,38 @@ void OvlFunc_936_2009610(void)
   __Func_8091a58(0xb5, 0);
 }
 
-INCLUDE_ASM("asm/maps/kalay/Kalay_MapInit.s");
+extern unsigned char Lm936_ev63[] __asm__(".Lm936_ev63");
+extern unsigned char Lm936_ev66[] __asm__(".Lm936_ev66");
+extern unsigned char Lm936_ev99[] __asm__(".Lm936_ev99");
+extern unsigned char Lm936_ev9b[] __asm__(".Lm936_ev9b");
+extern unsigned char Lm936_ev9c[] __asm__(".Lm936_ev9c");
+__asm__(".equ .Lm936_ev63, 0x63\n.equ .Lm936_ev66, 0x66\n.equ .Lm936_ev99, 0x99\n.equ .Lm936_ev9b, 0x9b\n.equ .Lm936_ev9c, 0x9c");
+int Kalay_MapInit(void)
+{
+    extern void OvlFunc_936_20096bc(void);
+    extern void OvlFunc_936_20097e8(void);
+    extern void OvlFunc_936_2009858(void);
+    extern void OvlFunc_936_20098a4(void);
+    extern void OvlFunc_936_2009930(void);
+    int room;
+
+    API_SetFlag(0x87a);
+    {
+        extern short gState_s936[] __asm__("gState");
+        room = gState_s936[0xe0];
+    }
+    if (room == (int)Lm936_ev63)
+        OvlFunc_936_20096bc();
+    else if (room == (int)Lm936_ev66)
+        OvlFunc_936_20097e8();
+    else if (room == (int)Lm936_ev99)
+        OvlFunc_936_2009858();
+    else if (room == (int)Lm936_ev9b)
+        OvlFunc_936_20098a4();
+    else if (room == (int)Lm936_ev9c)
+        OvlFunc_936_2009930();
+    return 0;
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
 
 void OvlFunc_936_20097e8(void) {

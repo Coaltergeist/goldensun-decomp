@@ -64,7 +64,34 @@ void Func_801b228(void) {
 
 INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor2.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b36c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b398.s");
+int Func_801b398(int a)
+{
+    extern unsigned char *iwram_3001e98__b398 __asm__("iwram_3001e98");
+    extern volatile int gKeyPress, gKeyRepeat;
+    extern void WaitFrames(unsigned int);
+    extern void Func_801b9ec(void *, int);
+    extern void Func_801b664(void *);
+    extern void Func_801b810(void *);
+    extern int Func_801be80(void *);
+    unsigned char *base = iwram_3001e98__b398;
+
+    Func_801b9ec(base, 0);
+    for (;;) {
+        WaitFrames(1);
+        if (*(unsigned short *)(base + 0x3a0))
+            continue;
+        if (a != 999) {
+            if (gKeyRepeat & 0x10)
+                Func_801b664(base);
+            else if (gKeyRepeat & 0x20)
+                Func_801b810(base);
+            else if (gKeyPress & 1)
+                return Func_801be80(base);
+        }
+        if (a && (gKeyPress & 2))
+            return -1;
+    }
+}
 INCLUDE_ASM("asm/ui/menu/Func_801b424.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b4ec.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b5c0.s");
@@ -91,7 +118,39 @@ void Func_801ba34(unsigned int base) {
 }
 
 INCLUDE_ASM("asm/ui/menu/Func_801ba68.s");
-INCLUDE_ASM("asm/ui/menu/UploadIcon.s");
+int UploadIcon(int type, int id)
+{
+    extern void LoadOldUIIcon(int, int, int *, int *, int);
+    extern int AllocSpriteSlot(void);
+    extern void LoadInventoryIcon(int, int, int);
+    extern void LoadUIBanner(int, int, int);
+    extern void LoadMoveIcon(int, int, int *, int *, int);
+    int tmp;
+    int slot = -1;
+
+    switch (type) {
+    case 1:
+    case 6:
+        LoadOldUIIcon(id, 0, &slot, &tmp, 0);
+        break;
+    case 2:
+        slot = AllocSpriteSlot();
+        if (slot == 0x60)
+            return -1;
+        LoadInventoryIcon(id, 0x1a, slot);
+        break;
+    case 9:
+        slot = AllocSpriteSlot();
+        if (slot == 0x60)
+            return -1;
+        LoadUIBanner(id, 0, slot);
+        break;
+    case 4:
+        LoadMoveIcon(id, 1, &slot, &tmp, 0);
+        break;
+    }
+    return slot;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801bcd4.s");
 INCLUDE_ASM("asm/ui/menu/Func_801bd98.s");
 INCLUDE_ASM("asm/ui/menu/Func_801be80.s");
@@ -144,7 +203,52 @@ void Func_801c21c(void) {
     }
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c244.s");
+int Func_801c244(void)
+{
+    extern unsigned char *iwram_3001ebc__c244 __asm__("iwram_3001ebc");
+    extern void Func_801c2d0(void);
+    extern void Func_801c2e4(void);
+    extern int Func_8028920(int);
+    extern int _Func_808ce74(void);
+    extern int _Func_80a5b94(void);
+    extern int _Func_80aa56c(void);
+    extern int _Func_80a24d0(void);
+    extern int _Func_80a7478(void);
+    unsigned char *base = iwram_3001ebc__c244;
+    int sel = 0;
+    int r;
+
+    for (;;) {
+        Func_801c2d0();
+        sel = Func_8028920(sel);
+        Func_801c2e4();
+        switch (sel) {
+        case 0:
+            r = _Func_808ce74();
+            if (r == 0)
+                r = 0xff;
+            *(unsigned short *)(base + 0x17a) = r;
+            break;
+        case 1:
+            if (_Func_80a5b94() == -1)
+                continue;
+            break;
+        case 2:
+            if (_Func_80aa56c() != 0)
+                continue;
+            break;
+        case 3:
+            if (_Func_80a24d0() == -1)
+                continue;
+            break;
+        case 4:
+            if (_Func_80a7478() == -1)
+                continue;
+            break;
+        }
+        break;
+    }
+}
 
 extern void Func_801ef08(int);
 extern void WaitFrames(unsigned int);

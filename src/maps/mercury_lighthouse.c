@@ -859,7 +859,25 @@ void OvlFunc_924_20094cc(void) {
     __Func_8010560(Lm924_6010, 9, 7);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_2009568.s");
+void OvlFunc_924_2009568(void)
+{
+    extern unsigned char Lm924_603a[] __asm__(".Lm924_603a");
+    extern void __Func_8010560(void *, int, int);
+    struct Actor *a;
+
+    if (API_GetFlag(0x256)) {
+        API_CutsceneStart();
+        API_ClearFlag(0x256);
+        ((struct Actor *)__MapActor_GetActor(0))->pos.y += 0x20000;
+        a = (struct Actor *)__MapActor_GetActor(0);
+        a->prevPos.y = ((struct Actor *)__MapActor_GetActor(0))->pos.y;
+        API_CutsceneWait(5);
+        API_CopyMapTiles(7, 2, 5, 0xb, 1, 1);
+        API_PlaySound(0xd9);
+        __Func_8010560(Lm924_603a, 9, 7);
+        API_CutsceneEnd();
+    }
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20095e0.s");
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_20096c4.s");
 
@@ -1672,7 +1690,32 @@ void OvlFunc_924_200bb24(unsigned int a, int b, int c)
         OvlFunc_common0_10c(a, b, c, dx, dy, phase, 0x90000, &data);
     }
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200bbd4.s");
+void OvlFunc_924_200bbd4(int x, int y, int z)
+{
+    struct {
+        int unk0;
+        int unk4;
+        int unk8;
+        int unkc;
+        int unk10;
+        int unk14;
+        int unk18;
+        int unk1c;
+        int unk20;
+        int unk24;
+    } data;
+    extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+    data.unk4 = 7;
+    data.unk0 = 1;
+    data.unk8 = 0xb333;
+    data.unkc = 0xb333;
+    x += ((__Random() << 4) >> 16) << 16;
+    x -= 0x80000;
+    z += ((__Random() << 3) >> 16) << 16;
+    z -= 0x40000;
+    OvlFunc_common0_10c(x, y, z, 0, 0, 0, 0xb0 << 12, &data);
+}
 void OvlFunc_924_200bc48(int x, int y, int z, int angle)
 {
     extern void __vec3_translate(int, int, vec3_t *);
@@ -1925,7 +1968,29 @@ void OvlFunc_924_200d578(void)
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d5c0.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse/OvlFunc_924_200d900.s");
+void OvlFunc_924_200d900(void)
+{
+    extern unsigned char gState_b9[] __asm__("gState");
+    unsigned int *state;
+    char *base;
+    struct Actor *arg;
+    int off = 0xfa << 1;
+    int timer;
+    int offset;
+
+    state = (unsigned int *)**(unsigned int **)&iwram_3001edc;
+    base = *(char **)((char *)&iwram_3001edc - 0x20);
+    offset = *(int *)(gState_b9 + off) * 4 + 0x14;
+    arg = *(struct Actor **)(base + offset);
+    timer = state[2];
+    if (timer != 0) {
+        timer--;
+    } else {
+        OvlFunc_924_200d158(arg);
+        timer = (((unsigned int)__Random() * 30) >> 16) + 10;
+    }
+    state[2] = timer;
+}
 
 extern void *__galloc_ewram(int a, int b);
 extern void __DeleteActor(void *p);
