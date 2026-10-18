@@ -367,7 +367,23 @@ void Func_801789c(void) {
     Func_80191cc();
 }
 INCLUDE_ASM("asm/ui/ui/DrawMsgGlyph.s");
-INCLUDE_ASM("asm/ui/ui/Func_8017a64.s");
+extern unsigned char Data_32224[];
+int Func_8017a64(unsigned short *s)
+{
+    int w = 0;
+    unsigned int c = *s++;
+    while (c != 0) {
+        if (c == 0x20)
+            w += 4;
+        else if (c <= 0xff) {
+            if (c - 0xde > 1)
+                w += *(unsigned short *)(Data_32224 + (c - 0x20) * 32);
+        } else
+            w += 10;
+        c = *s++;
+    }
+    return w;
+}
 INCLUDE_ASM("asm/ui/ui/Func_8017aa4.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017c1c.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017c8c.s");
@@ -419,7 +435,22 @@ INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
 INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019908.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019944.s");
-INCLUDE_ASM("asm/ui/ui/Func_801999c.s");
+extern int _Func_80f954c(void);
+extern unsigned int gKeyHeld;
+struct V199c { char pad[0x14]; unsigned short t; };
+int Func_801999c(struct V199c *m)
+{
+    int f = 0;
+    if ((*(unsigned char **)iwram_3001e8c__a5)[0x12f9] != 0 && _Func_80f954c() == 0)
+        f = 1;
+    if (gKeyHeld & 0x303)
+        f = 1;
+    if (f) {
+        m->t = 0;
+        return 1;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/ui/ui/Func_80199ec.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019a54.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019aa0.s");

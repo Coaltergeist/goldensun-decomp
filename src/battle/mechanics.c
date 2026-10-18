@@ -110,7 +110,18 @@ int Func_80b84c0(unsigned int unitID, vec3_t *dest)
     return 0;
 }
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80b8530.s");
+extern unsigned char GetEnemyHeight(int);
+int Func_80b8530(unsigned int id)
+{
+    int r = (unsigned int)(GetEnemyHeight(*(unsigned char *)(_GetUnit(id) + 0x128)) << 24) >> 8;
+    if (r == 0) {
+        if (GetEnemyAttackAnimUnk(*(unsigned char *)(_GetUnit(id) + 0x128)) != 0)
+            r = 0x180000;
+        else
+            r = 0x300000;
+    }
+    return r;
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b8574.s");
 

@@ -355,7 +355,26 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8026e80.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8026fa8.s");
 
-INCLUDE_ASM("asm/ui/save_menu/GetMoveDisplayEffect.s");
+extern int _Func_8079ef8(int);
+int GetMoveDisplayEffect(unsigned char *m)
+{
+    int r = 0;
+    int t;
+    t = m[1] & 0xf;
+    if (t == 1)
+        r = 1;
+    if (t == 0xb)
+        r = 2;
+    if (m[3] == 3)
+        r = 3;
+    if (m[3] == 4)
+        r = 4;
+    if (m[3] == 0x40)
+        r = 6;
+    if (_Func_8079ef8(m[3]))
+        r = 5;
+    return r;
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80270ac.s");
 

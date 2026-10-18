@@ -1,5 +1,6 @@
 // fakematch
 #include "nonmatching.h"
+#include "dma.h"
 
 extern void Func_80b00f4();
 
@@ -122,7 +123,16 @@ void Func_80b06c0(int count, int arg1, int arg2)
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b06ec.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0744.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b0840.s");
+extern unsigned char *iwram_3001ebc__s[] __asm__("iwram_3001ebc");
+void Func_80b0840(int a)
+{
+    unsigned char *w = iwram_3001ebc__s[5];
+    unsigned char *b = iwram_3001ebc__s[0];
+    DMA3_SET(w + 0xe00, b + 0x236, 0x84000150);
+    DMA3_SET(w + 0xe00, w + 0x380, 0x840002a0);
+    _Func_8091200(a, 1);
+    _Func_8091254(0x10);
+}
 
 extern unsigned int iwram_3001ebc;
 
@@ -286,7 +296,22 @@ unsigned int Func_80b27b0(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b280c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2884.s");
+extern unsigned char Ls_d24[] __asm__(".Ls_d24");
+extern unsigned char Ls_d2e[] __asm__(".Ls_d2e");
+extern unsigned char Ls_d38[] __asm__(".Ls_d38");
+extern unsigned char Ls_d42[] __asm__(".Ls_d42");
+__asm__(".equ .Ls_d24, 0xd24\n.equ .Ls_d2e, 0xd2e\n.equ .Ls_d38, 0xd38\n.equ .Ls_d42, 0xd42");
+unsigned int Func_80b2884(unsigned int m)
+{
+    signed char t = (*(unsigned char **)iwram_3001f2c__a1)[0x3aa];
+    if (t == 1)
+        m += (int)Ls_d2e - (int)Ls_d24;
+    if (t == 2)
+        m += (int)Ls_d38 - (int)Ls_d24;
+    if (t == 3)
+        m += (int)Ls_d42 - (int)Ls_d24;
+    return m;
+}
 
 extern unsigned char iwram_3001f2c__a4[] __asm__("iwram_3001f2c");
 extern unsigned int _GetSpriteVoice(unsigned short id);

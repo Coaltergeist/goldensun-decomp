@@ -174,7 +174,29 @@ unsigned int Func_801f704(void) {
     return r0;
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801f730.s");
+extern int Func_80056cc(void);
+
+extern void Func_8005cf8(void);
+int Func_801f730(int a)
+{
+    int busy = Func_80056cc();
+    int r = -9;
+    if (busy == 0) {
+        r = Func_8005c68();
+        if (a != 0) {
+            unsigned char *p = *(unsigned char **)iwram_3001f1c + 0x1071;
+            int i;
+            for (i = 2; i >= 0; i--) {
+                signed char c = *(volatile signed char *)p;
+                p += 0x40;
+                if (c != 0)
+                    r--;
+            }
+        }
+    }
+    Func_8005cf8();
+    return r;
+}
 INCLUDE_ASM("asm/ui/text/Func_801f77c.s");
 INCLUDE_ASM("asm/ui/text/PrepareSaveHeader.s");
 INCLUDE_ASM("asm/ui/text/Func_801f9b4.s");

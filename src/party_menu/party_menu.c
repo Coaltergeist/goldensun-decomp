@@ -206,7 +206,16 @@ void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4)
     Func_80a17c4(p);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_a1c6c.s");
+void Func_a1c6c(unsigned char **o, int i, int x, int y, int cols)
+{
+    unsigned char *w;
+    if (i > 15)
+        i = 0;
+    w = *o;
+    *(unsigned short *)(w + 8) = (i / cols) * 16 + y;
+    *(unsigned short *)(w + 6) = (i % cols) * 24 + x;
+    Func_80a17c4((struct MenuCursor *)w);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1cb0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1d08.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1e38.s");
@@ -395,7 +404,17 @@ void Func_80a38a8(unsigned int arg0) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a38d0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3c08.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3c98.s");
+extern void _Sprite_SetAnim(unsigned char *sprite, unsigned int animID);
+extern void Func_80a3c08(void);
+void Func_80a3c98(void)
+{
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    signed char i;
+
+    for (i = 0; i < base[0x219]; i++)
+        { int off = (i << 2) + 0x114; _Sprite_SetAnim(*(unsigned char **)(base + off), 1); }
+    StopTask(Func_80a3c08);
+}
 unsigned int Func_80a3ce4(int x)
 {
 	switch (x) {

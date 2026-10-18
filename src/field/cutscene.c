@@ -31,7 +31,23 @@ void CutsceneWait(unsigned int arg0) {
     }
 }
 
-INCLUDE_ASM("asm/field/cutscene/ResetPlayerSpeed.s");
+extern unsigned char *GetFieldActor__r(int) __asm__("GetFieldActor");
+extern void _Actor_SetAnim__r(void *, int) __asm__("_Actor_SetAnim");
+void ResetPlayerSpeed(void)
+{
+    unsigned char *s = gState;
+    unsigned char *a = GetFieldActor__r(*(int *)(s + 0x1f4));
+    *(int *)(a + 0x30) = 0x10000;
+    *(int *)(a + 0x34) = 0x8000;
+    *(int *)(a + 0x38) = 0x80000000;
+    *(int *)(a + 0x40) = 0x80000000;
+    *(int *)(a + 0x24) = 0;
+    *(int *)(a + 0x2c) = 0;
+    if (s[0x1f2] == 1)
+        _Actor_SetAnim__r(a, 0xc);
+    else
+        _Actor_SetAnim__r(a, 1);
+}
 INCLUDE_ASM("asm/field/cutscene/CutsceneStart.s");
 
 extern void Task_Cutscene(void);

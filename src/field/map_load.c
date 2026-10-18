@@ -133,7 +133,22 @@ short Func_808b248(void) {
 }
 
 INCLUDE_ASM("asm/field/map_load/Func_808b25c.s");
-INCLUDE_ASM("asm/field/map_load/Func_808b2b0.s");
+extern unsigned short gState_s2b0[] __asm__("gState");
+extern unsigned char Lm36[] __asm__(".Lm36"), Lm37[] __asm__(".Lm37"), Lm38[] __asm__(".Lm38"), Lm39[] __asm__(".Lm39"), Lm3a[] __asm__(".Lm3a"), Lm3c[] __asm__(".Lm3c");
+__asm__(".equ .Lm36, 0x36\n.equ .Lm37, 0x37\n.equ .Lm38, 0x38\n.equ .Lm39, 0x39\n.equ .Lm3a, 0x3a\n.equ .Lm3c, 0x3c");
+void Func_808b2b0(int x)
+{
+    int v;
+    switch (x) {
+    case 1: v = (int)Lm38; break;
+    case 2: v = (int)Lm3a; break;
+    case 3: v = (int)Lm3c; break;
+    case 4: case 7: v = (int)Lm36; break;
+    case 5: case 6: v = (int)Lm37; break;
+    default: v = (int)Lm39; break;
+    }
+    gState_s2b0[0xeb] = v;
+}
 INCLUDE_ASM("asm/field/map_load/Func_808b320.s");
 
 extern int _GetFlag(int arg0);
