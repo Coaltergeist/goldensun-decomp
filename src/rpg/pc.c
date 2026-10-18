@@ -208,7 +208,26 @@ int Func_8079c5c(int arg0, int arg1, int arg2) {
 
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c8c.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/CheckEquipmentCritBoost.s", ".text.rpg_pc_3");
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d1c.s", ".text.rpg_pc_3");
+int Func_8079d1c(unsigned char *unit)
+{
+    extern unsigned char *Func_807882c(unsigned char *unit, int type);
+    extern int CheckEquipmentCritBoost(unsigned char *unit);
+    extern int RPGRandom_i(void) __asm__("RPGRandom");
+    unsigned char *item;
+    int chance;
+
+    if (unit[0x129] == 0)
+        return 1;
+    item = Func_807882c(unit, 1);
+    if (item == 0)
+        return 1;
+    if (*(unsigned short *)(item + 0xe) == 0)
+        return 1;
+    chance = ((CheckEquipmentCritBoost(unit) + item[0xb] * 5) << 16) / 100;
+    if (chance > (RPGRandom_i() & 0xffff))
+        return *(unsigned short *)(item + 0xe);
+    return 1;
+}
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d7c.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079e9c.s", ".text.rpg_pc_3");
 

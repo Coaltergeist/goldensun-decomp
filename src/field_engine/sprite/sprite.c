@@ -52,8 +52,38 @@ unsigned char **GetCachedSpriteGFX(unsigned int spriteID)
 INCLUDE_ASM("asm/field_engine/sprite/sprite/InitSprite.s");
 INCLUDE_ASM("asm/field_engine/sprite/sprite/InitSpriteLayer.s");
 INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_AddLayer.s");
-INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_DeleteLayer.s");
-INCLUDE_ASM("asm/field_engine/sprite/sprite/Sprite_DeleteLayerIndex.s");
+void DeleteSpriteLayer(struct SpriteLayer *layer);
+void Sprite_DeleteLayer(struct Sprite *sprite, struct SpriteLayer *layer)
+{
+    u32 i, j;
+    int n;
+    if (sprite == NULL || layer == NULL) return;
+    DeleteSpriteLayer(layer);
+    for (i = 0; i < 4; i++) {
+        if (layer == sprite->layers[i]) break;
+    }
+    if (i == 4) return;
+    sprite->layers[i] = NULL;
+    n = 0;
+    for (j = i + 1; j <= 3; j++) {
+        if (sprite->layers[j] != NULL) n++;
+    }
+    if (n == 0) sprite->numLayers = i;
+}
+void Sprite_DeleteLayerIndex(struct Sprite *sprite, u32 idx)
+{
+    u32 i;
+    int n;
+    if (sprite == NULL || idx > 3) return;
+    if (sprite->layers[idx] == NULL) return;
+    DeleteSpriteLayer(sprite->layers[idx]);
+    sprite->layers[idx] = NULL;
+    n = 0;
+    for (i = idx + 1; i <= 3; i++) {
+        if (sprite->layers[i] != NULL) n++;
+    }
+    if (n == 0) sprite->numLayers = idx;
+}
 
 extern void *_GetSpriteInfo(int id);
 
