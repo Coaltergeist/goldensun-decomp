@@ -394,7 +394,32 @@ void Func_80a38a8(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a38d0.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3c08.s");
+struct PM80a3c08 {
+    unsigned char pad0[0x114];
+    unsigned char *sprites[25];
+    unsigned short unk178;
+    unsigned char pad17a[0x208 - 0x17a];
+    unsigned short items[8];
+    unsigned char pad218;
+    unsigned char count;
+};
+void Func_80a3c08(void)
+{
+    extern int _CanEquipItem(int, int);
+    extern void _Sprite_SetAnim(unsigned char *sprite, unsigned int animID);
+    extern unsigned int iwram_3001e40;
+    struct PM80a3c08 *s = (struct PM80a3c08 *)iwram_3001f2c;
+    signed char i;
+
+    if ((iwram_3001e40 & 0x1f) == 0) {
+        for (i = 0; i < s->count; i++) {
+            if (_CanEquipItem(s->items[i], s->unk178 & 0x1ff))
+                _Sprite_SetAnim(s->sprites[i], 3);
+            else
+                _Sprite_SetAnim(s->sprites[i], 1);
+        }
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3c98.s");
 unsigned int Func_80a3ce4(int x)
 {

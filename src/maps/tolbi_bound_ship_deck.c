@@ -992,7 +992,27 @@ void OvlFunc_943_200b4bc(void)
     OvlFunc_943_200b5ec(0x13, 7, 1);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b558.s");
+extern unsigned short L5b30_s[] __asm__(".Lm943_5b30");
+extern unsigned short L5b40_s[] __asm__(".Lm943_5b40");
+void OvlFunc_943_200b558(int actor, int i)
+{
+    extern void __MapActor_SetAnim(int, int);
+    unsigned short v = L5b40_s[i];
+
+    if (v > 0x6800 && v < 0x7000) {
+        L5b30_s[i] += 0x70;
+        __MapActor_SetAnim(actor, 3);
+    } else if (v > 0xe800 && v < 0xf000) {
+        L5b30_s[i] += 0xe0;
+        __MapActor_SetAnim(actor, 3);
+    } else if (v > 0x7000 && v < 0xf000) {
+        L5b30_s[i] += 0x1c0;
+        __MapActor_SetAnim(actor, 2);
+    } else {
+        L5b30_s[i] += 0x300;
+        __MapActor_SetAnim(actor, 1);
+    }
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b5ec.s");
 extern unsigned char Lm943_5b40[] __asm__(".Lm943_5b40");
 extern unsigned char Lm943_5b70[] __asm__(".Lm943_5b70");

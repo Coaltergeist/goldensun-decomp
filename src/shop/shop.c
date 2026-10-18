@@ -47,7 +47,33 @@ void Func_80b04c4(void)
 		WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b04dc.s");
+extern unsigned char Lmsg_c9b[] __asm__(".Lmsg_c9b");
+extern unsigned char Lmsg_cc6[] __asm__(".Lmsg_cc6");
+extern unsigned char Lmsg_cf1[] __asm__(".Lmsg_cf1");
+extern unsigned char Lmsg_d4c[] __asm__(".Lmsg_d4c");
+__asm__(".equ .Lmsg_c9b, 0xc9b\n.equ .Lmsg_cc6, 0xcc6\n.equ .Lmsg_cf1, 0xcf1\n.equ .Lmsg_d4c, 0xd4c");
+void Func_80b04dc(int msg)
+{
+    extern int _GetSpriteVoice(int);
+    extern void _Func_8017658(int, int, int, int);
+    extern int _Func_8017364(void);
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    int voice = _GetSpriteVoice(*(unsigned short *)(base + 0x3a4));
+    signed char kind;
+
+    _Func_8019a54();
+    kind = *(signed char *)(base + 0x3a9);
+    if (kind == 2)
+        msg += (int)Lmsg_cc6 - (int)Lmsg_c9b;
+    if (kind == 0)
+        msg += (int)Lmsg_cf1 - (int)Lmsg_c9b;
+    if (*(signed char *)(base + 0x3ac))
+        msg += (int)Lmsg_d4c - (int)Lmsg_c9b;
+    _Func_8017658(msg, 5, 0, (voice << 16) | 0x22);
+    while (!_Func_8017364())
+        WaitFrames(1);
+    WaitFrames(1);
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b0574.s");
 
 extern unsigned char iwram_3001f2c__a2[] __asm__("iwram_3001f2c");
