@@ -16,7 +16,19 @@ void OvlFunc_936_2008030(void) {
 }
 
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
+extern unsigned int __Random__936() __asm__("__Random");
+int OvlFunc_936_20080ac(unsigned char *a)
+{
+    short *t = (short *)(a + 0x66);
+
+    if (*t == 0) {
+        *(unsigned short *)(a + 6) += (__Random__936() << 15) >> 16;
+        *t = (__Random__936() * 80) >> 16;
+    }
+    if (*t != 0)
+        (*t)--;
+    return 1;
+}
 
 #include "state/global_state.h"
 
