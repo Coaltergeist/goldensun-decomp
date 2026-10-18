@@ -295,7 +295,26 @@ void Func_8092304(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809233c.s", ".text.map_actor_2");
+void Func_809233c(int id, int dx, int dy, int arg3)
+{
+    extern void MapActor_SetPos(int, int, int);
+    extern unsigned char gScript_0809fbcc[];
+    extern int gState_i3[] __asm__("gState");
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    unsigned char *o;
+
+    if (a != 0) {
+        MapActor_SetSpeed(id, 0x9999, 0x4ccc);
+        o = (unsigned char *)MapActor_GetActor(gState_i3[0x7d]);
+        if (o != 0)
+            MapActor_SetPos(id, *(int *)(o + 8), *(int *)(o + 0x10));
+        a[0x5b] = 0;
+        _Actor_SetAnim((int)a, 2);
+        MapActor_TravelBy(id, dx, dy);
+        _Actor_SetScript((int)a, gScript_0809fbcc);
+        *(unsigned short *)(a + 0x64) = arg3;
+    }
+}
 
 
 void MapActor_WaitMovement(int arg0)

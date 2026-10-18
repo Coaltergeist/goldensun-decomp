@@ -129,7 +129,21 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8021620.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80216b4.s");
 
-INCLUDE_ASM("asm/ui/save_menu/StartMenu_AddOption.s");
+void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned int unk)
+{
+    extern void _Func_800f9cc(void *, int);
+    int size = 0x400;
+    unsigned char *gfx = galloc_ewram(0xe, size);
+    unsigned short *f = GetFile(FILE_f1);
+
+    if ((int)name < 0x60) {
+        DecompressLZ1((unsigned char *)f + f[icon], gfx);
+        if (unk)
+            _Func_800f9cc(gfx, 0x300);
+        UploadSpriteGFX(name, size, gfx);
+        gfree(0xe);
+    }
+}
 
 unsigned int Func_8021750(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4)
 {

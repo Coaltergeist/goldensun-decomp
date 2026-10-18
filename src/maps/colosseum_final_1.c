@@ -60,7 +60,26 @@ void OvlFunc_954_2008178(void)
         } while (*(int *)L441c != 0x16);
     }
 }
-INCLUDE_ASM("asm/maps/colosseum_final_1/OvlFunc_954_20081a8.s");
+void OvlFunc_954_20081a8(void)
+{
+    extern unsigned char *MapActor_GetActor_954(int) __asm__("__MapActor_GetActor");
+    extern int __Func_8011f54(int, int, int);
+    extern int __SetFlagByte(int, int);
+    unsigned char *a;
+    int h;
+
+    API_Func_8010704(0x1b, 0xd, 3, 1, 0x17, 0xc);
+    a = MapActor_GetActor_954(9);
+    h = __Func_8011f54(0, *(int *)(a + 8), *(int *)(a + 0x10));
+    if (*(int *)(a + 0xc) == 0 && h == 0) {
+        a[0x23] = 2;
+        a[0x55] = h;
+        API_Func_8010704(0xe, 0xd, 1, 1, *(int *)(a + 8) >> 20, *(int *)(a + 0x10) >> 20);
+    }
+    a = MapActor_GetActor_954(0xa);
+    __SetFlagByte(0x310, *(int *)(a + 8) >> 20);
+    API_Func_8010704(0xe, 0xd, 1, 1, *(int *)(a + 8) >> 20, *(int *)(a + 0x10) >> 20);
+}
 
 extern void OvlFunc_common1_2060(void);
 extern void OvlFunc_954_20081a8(void);
