@@ -602,7 +602,50 @@ void OvlFunc_957_2008d90(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008de8.s");
+void OvlFunc_957_2008de8(void)
+{
+    extern int gState_i957[] __asm__("gState");
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern void __CutsceneStart(void);
+    extern void __CutsceneEnd(void);
+    extern void __WaitFrames(int);
+    extern void __PlaySound(int);
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __MapActor_TravelToWait(int, int, int);
+    struct Actor *actor;
+    u8 saved;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(gState_i957[0x1f4 / 4]);
+    saved = actor->__unk55;
+    v = buf;
+    v[0] = actor->pos.x;
+    v[1] = actor->pos.y;
+    v[2] = actor->pos.z;
+    {
+        int ang = actor->facing & 0xf000;
+        __vec3_translate(0x80 << 14, ang, v);
+    }
+    if (!__TestCollision(actor, (int *)v)) {
+        __CutsceneStart();
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(6);
+        __PlaySound(0x98);
+        __Actor_SetAnim(actor, 7);
+        actor->speed = 0xc0 << 10;
+        actor->accel = 0x80 << 10;
+        actor->motion.y = 0x80 << 11;
+        actor->__unk55 &= 0x7e;
+        __Actor_SetSpriteFlags(actor, 0);
+        __MapActor_TravelToWait(0, ((short *)v)[1], ((short *)v)[5]);
+        __Actor_SetAnim(actor, 6);
+        __Actor_SetSpriteFlags(actor, 1);
+        actor->__unk55 = saved;
+        __CutsceneEnd();
+    }
+}
 
 void OvlFunc_957_2008eac(void) {
     struct Pk buf;
