@@ -249,7 +249,23 @@ void MapActor_TravelToAnimWait(int actorID, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092208.s", ".text.map_actor_2");
+extern void _Actor_Stop__a(void *) __asm__("_Actor_Stop");
+extern void Func_8092b08(int, int);
+void Func_8092208(int id, int arg1, int arg2)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    short r;
+    if (a != 0) {
+        r = *(short *)(a + 0xa) % 16;
+        a[0x5b] = 0;
+        _Actor_Stop__a(a);
+        _Actor_SetAnim(a, 2);
+        _Actor_TravelTo(a, *(int *)(a + 8) + ((8 - r) << 16), *(int *)(a + 0xc), *(int *)(a + 0x10));
+        _Actor_WaitMovement(a);
+        Func_8092b08(id, arg1);
+        _Actor_TravelTo(a, *(int *)(a + 8), *(int *)(a + 0xc), *(int *)(a + 0x10) + (arg2 << 16));
+    }
+}
 
 
 void MapActor_TravelBy(int arg0, int arg1, int arg2) {

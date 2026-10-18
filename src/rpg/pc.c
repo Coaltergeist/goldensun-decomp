@@ -209,7 +209,26 @@ int Func_8079c5c(int arg0, int arg1, int arg2) {
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079c8c.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/CheckEquipmentCritBoost.s", ".text.rpg_pc_3");
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d1c.s", ".text.rpg_pc_3");
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079d7c.s", ".text.rpg_pc_3");
+int Func_8079d7c(int id)
+{
+    switch (id) {
+    case 12: case 13: return 70;
+    case 16: case 17: return 75;
+    case 22: return 30;
+    case 23: return 40;
+    case 24: return 45;
+    case 18: case 19: case 25: return 55;
+    case 26: return 25;
+    case 27: return 20;
+    case 20: case 31: return 65;
+    case 21: case 34: return 35;
+    case 35: return 50;
+    case 56: return -60;
+    case 57: return -90;
+    case 8: case 9: case 28: case 32: return 60;
+    default: return -100;
+    }
+}
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079e9c.s", ".text.rpg_pc_3");
 
 int Func_8079ef8(int arg0)

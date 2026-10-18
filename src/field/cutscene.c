@@ -32,7 +32,36 @@ void CutsceneWait(unsigned int arg0) {
 }
 
 INCLUDE_ASM("asm/field/cutscene/ResetPlayerSpeed.s");
-INCLUDE_ASM("asm/field/cutscene/CutsceneStart.s");
+extern void _Func_801c428(void);
+extern void ResetPlayerSpeed(void);
+extern void Func_808e118(void);
+extern void _ClearFlag(int);
+extern void Task_Cutscene(void);
+struct VCut {
+    char p0[0x1c8]; int a1c8; int a1cc; char p1[0x1da-0x1d0]; unsigned short a1da; short a1dc; short a1de;
+    char p2[0x1f4-0x1e0]; int a1f4; int a1f8; char p3[0xcb6-0x1fc]; short acb6; char p4[0xcc2-0xcb8]; unsigned short acc2; unsigned short acc4;
+};
+void CutsceneStart(void)
+{
+    struct VCut *b = *(struct VCut **)iwram_3001ebc__a7;
+    int zero;
+    _Func_801c428();
+    ResetPlayerSpeed();
+    if (b->acb6 != 0)
+        Func_808e118();
+    zero = 0;
+    b->acc2 = zero;
+    b->acc4 = zero;
+    b->a1c8 = 0x10;
+    b->a1cc = zero;
+    b->a1da = 0xffff;
+    b->a1dc = -1;
+    b->a1de = -1;
+    StartTask(Task_Cutscene, 0xc80);
+    _ClearFlag(0x132);
+    b->a1f4 = ((struct VCut *)gState)->a1f4;
+    b->a1f8 = zero;
+}
 
 extern void Task_Cutscene(void);
 extern void SetCameraTarget(unsigned int, unsigned char);
@@ -146,7 +175,31 @@ void Func_8091858(void) {
 }
 
 INCLUDE_ASM("asm/field/cutscene/Func_8091890.s");
-INCLUDE_ASM("asm/field/cutscene/Func_80919d8.s");
+extern int _GetPartySize(void);
+extern int _Func_8078af8(int, int);
+extern void _Func_8019908(unsigned int, unsigned int);
+extern void _Func_801776c(unsigned int, unsigned int);
+extern unsigned char Lc_97d[] __asm__(".Lc_97d");
+__asm__(".equ .Lc_97d, 0x97d");
+int Func_80919d8(int arg)
+{
+    int sum = 0;
+    int n = _GetPartySize();
+    int i;
+    int m;
+    for (i = 0; i < n; i++)
+        sum += _Func_8078af8(gState[0x1f8 + i], arg);
+    if (sum >= n * 30) {
+        _Func_8019908(arg, 2);
+        m = (int)Lc_97d;
+        _Func_801776c(m, 1);
+        m++;
+        _Func_8019908(arg, 2);
+        _Func_801776c(m, 1);
+        return -1;
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/field/cutscene/Func_8091a58.s");
 
 extern int _GiveItemTo(unsigned int unit, unsigned int item);

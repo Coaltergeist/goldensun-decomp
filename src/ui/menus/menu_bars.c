@@ -17,7 +17,26 @@ INCLUDE_ASM("asm/ui/menus/menu_bars/Func_8028808.s");
 
 INCLUDE_ASM("asm/ui/menus/menu_bars/Func_80288a8.s");
 
-INCLUDE_ASM("asm/ui/menus/menu_bars/Func_8028920.s");
+extern signed char L373f7_[][6] __asm__(".L373f7");
+extern signed char L37403_[][6] __asm__(".L37403");
+extern int _GetNumDjinn(int);
+int Func_8028920(int sel)
+{
+    int noDjinn = 0;
+    if (_GetNumDjinn(-1) == 0) noDjinn = 1;
+    sel = L37403_[noDjinn][sel] - 1;
+    if (sel < 0) sel = 0;
+    Func_80284dc();
+    AddMenuBarOption(1);
+    if (!noDjinn) AddMenuBarOption(0xf);
+    AddMenuBarOption(2);
+    AddMenuBarOption(7);
+    Func_8028808(0x11, 7, 0);
+    sel = Func_8028574(sel);
+    Func_802851c();
+    if (sel >= 0) sel = L373f7_[noDjinn][sel + 1];
+    return sel;
+}
 
 unsigned int Func_802899c(unsigned int r0, unsigned int r1)
 {
@@ -41,7 +60,32 @@ INCLUDE_ASM("asm/ui/menus/menu_bars/Func_80289e8.s");
 
 INCLUDE_ASM("asm/ui/menus/menu_bars/Func_8028aa8.s");
 
-INCLUDE_ASM("asm/ui/menus/menu_bars/Func_8028b80.s");
+extern void DrawSmallText(int, int, int, int);
+extern void Func_8016478(int);
+extern unsigned char *iwram_3001f38;
+void Func_8028b80(void)
+{
+    unsigned char *s = iwram_3001f38;
+    short *b = (short *)(s + 0x96);
+    short *a = (short *)(s + 0x8c);
+    int m;
+    if (*b != *a) {
+        *b = *a;
+        Func_8016478(*(int *)(s + 0x7c));
+        if (*a == 0) {
+            m = 0xc71;
+            DrawSmallText(m, *(int *)(s + 0x7c), 0x10, 4);
+            m++;
+            DrawSmallText(m, *(int *)(s + 0x7c), 0x10, 0x10);
+        } else {
+            m = 0xc73;
+            DrawSmallText(m, *(int *)(s + 0x7c), 0, 4);
+            DrawSmallText(m + 1, *(int *)(s + 0x7c), 0, 0x10);
+            m += 2;
+            DrawSmallText(m, *(int *)(s + 0x7c), 0, 0x1c);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/menus/menu_bars/DataTransferMenu.s");
 

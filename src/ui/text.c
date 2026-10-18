@@ -177,7 +177,42 @@ unsigned int Func_801f704(void) {
 INCLUDE_ASM("asm/ui/text/Func_801f730.s");
 INCLUDE_ASM("asm/ui/text/Func_801f77c.s");
 INCLUDE_ASM("asm/ui/text/PrepareSaveHeader.s");
-INCLUDE_ASM("asm/ui/text/Func_801f9b4.s");
+extern int Func_80056cc(void);
+extern int Func_801776c(int, int);
+extern int SomethingSaveHeader(unsigned int, int);
+extern void Func_8005cf8(void);
+extern void PrepareSaveHeader();
+extern int _MSG_0a;
+extern int _MSG_0b;
+extern unsigned char ewram_2000000[];
+extern short ewram_2002004;
+int Func_801f9b4(void)
+{
+    int r6;
+    int r8;
+    unsigned char *r5;
+    short *slot = &ewram_2002004;
+
+    r8 = 0;
+    if (*slot == -1)
+        return -1;
+    r6 = Func_80056cc();
+    if (r6 != 0) {
+        Func_801776c((int)&_MSG_0a, 1);
+        r8 = -9;
+    } else {
+        PrepareSaveHeader();
+        r5 = ewram_2000000;
+        r6 = SomethingSaveHeader(*slot, (int)r5);
+        r6 |= SomethingSaveHeader(*slot + 3, (int)(r5 + 0x1000));
+        if (r6 != 0) {
+            Func_801776c((int)&_MSG_0b, 1);
+            r8 = -3;
+        }
+    }
+    Func_8005cf8();
+    return r8;
+}
 
 extern int Func_80056cc(void);
 extern int Func_801776c(int, int);

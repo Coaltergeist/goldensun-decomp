@@ -372,7 +372,33 @@ void Func_808f0d8(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/field/map/Func_808f140.s");
+extern void _Actor_SetScript(void *, void *);
+extern unsigned char gScript_0809e6c0[];
+extern void Func_808eee4();
+void Func_808f140(unsigned char *a, int mode)
+{
+    unsigned short *s;
+    void *leader;
+
+    if (a == 0)
+        return;
+    s = (unsigned short *)gState;
+    leader = GetFieldActor(*(unsigned int *)&s[0xfa]);
+    if (mode & 1) {
+        _Actor_SetSpriteFlags(a, 0);
+        _Actor_SetScript(a, gScript_0809e6c0);
+        *(int *)(a + 0x28) = 0x20000;
+        *(int *)(a + 0x48) = 0x4000;
+        *(void **)(a + 0x6c) = Func_808eee4;
+    }
+    if (mode == 3)
+        WaitFrames(0x3c);
+    if (mode & 2)
+        Func_808f0d8((unsigned int)a);
+    if (mode == 3)
+        WaitFrames(0x50);
+    _Actor_SetAnim((unsigned int)leader, 1);
+}
 INCLUDE_ASM("asm/field/map/Func_808f1c0.s");
 INCLUDE_ASM("asm/field/map/Func_808f28c.s");
 

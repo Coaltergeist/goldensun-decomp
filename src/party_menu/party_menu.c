@@ -305,7 +305,30 @@ void Func_80a24c4(void) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a24d0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2680.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a32b8.s");
+extern int Func_80a9e48(int, int, int);
+extern void _Func_80164ac(int);
+extern void Func_80a1d08(int, int, int);
+extern void Func_80aa448__a(int) __asm__("Func_80aa448");
+extern void _CalcStats(int);
+struct V80a32b8 { char pad[0x222]; unsigned short flag; };
+int Func_80a32b8(void)
+{
+    unsigned char *b = (unsigned char *)iwram_3001f2c;
+    unsigned char *p1, *p2;
+    int r;
+    r = Func_80a9e48(*(unsigned short *)(b + 0x174), *(p1 = b + 0x21a), *(p2 = b + 0x21b));
+    if (r == -1) {
+        _PlaySound(0x72);
+        _Func_80164ac(*(int *)(b + 0x2c));
+        Func_80a1d08(*(short *)(b + 0x25a) + 0xbef, r, r);
+        ((struct V80a32b8 *)b)->flag = 1;
+        return r;
+    }
+    Func_80aa448__a(*(unsigned short *)(b + 0x178) & 0x1ff);
+    _CalcStats(*p1);
+    _CalcStats(*p2);
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3354.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a33d4.s");
 
@@ -615,7 +638,16 @@ unsigned int Func_80a63dc(void) {
 void Func_80a63e0(void) {}
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a63e4.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a65e4.s");
+extern unsigned short gState_s65e4[] __asm__("gState");
+int Func_80a65e4(int a, int b, int c)
+{
+    int v = (a << 10) | (b & 0x3fff);
+    if (c == 0)
+        gState_s65e4[0x110] = v;
+    else
+        gState_s65e4[0x111] = v;
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6614.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6794.s");
 
@@ -718,7 +750,34 @@ unsigned int Func_80a9a58(void) {
     return 1;
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9a5c.s");
+extern void Func_80a9aec();
+extern void Func_80a9c18();
+extern unsigned char Lc_b24[] __asm__(".Lc_b24");
+__asm__(".equ .Lc_b24, 0xb24");
+void Func_80a9a5c(unsigned int win, unsigned int unit, int flag)
+{
+    extern void _Func_801e7c0(unsigned int msg, unsigned int arg1, int arg2, int arg3);
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    int m;
+    unsigned char *p;
+
+    _GetUnit(unit);
+    Func_80a9cbc();
+    Func_80a345c();
+    m = (int)Lc_b24;
+    _Func_801e7c0(m, win, 0, 0);
+    _Func_801e7c0(m + 1, win, 0, 0x20);
+    _Func_801e7c0(m + 2, win, 0, 0x10);
+    m += 3;
+    _Func_801e7c0(m, win, 0, 0x30);
+    p = base + 0x1c8;
+    Func_80a9aec(win, p);
+    if (flag == 0) {
+        WaitFrames(1);
+        Func_80a3e28((unsigned short *)p, 1);
+        Func_80a9c18(p);
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9aec.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9b94.s");
 

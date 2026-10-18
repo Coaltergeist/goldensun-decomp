@@ -226,7 +226,25 @@ short Func_80b9a44(unsigned int arg0)
     return *(short *)(base + off);
 }
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80b9a70.s");
+struct S80b9a70 { char pad[0x58]; short a[7]; short b[1]; };
+int Func_80b9a70(int id)
+{
+    struct S80b9a70 *s = *(struct S80b9a70 **)&iwram_3001e74;
+    int i, v;
+    if ((unsigned int)id <= 7) {
+        for (i = 0; ; i++) {
+            v = s->a[i];
+            if (v == 0xff) return -1;
+            if (v != 0xfe && v == id) return i | 0x100;
+        }
+    } else {
+        for (i = 0; ; i++) {
+            v = s->b[i];
+            if (v == 0xff) return -1;
+            if (v != 0xfe && v == id) return i | 0x180;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b9acc.s");
 
@@ -271,7 +289,31 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80ba918.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80ba978.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80babdc.s");
+extern void _Func_802281c(short *);
+extern void Func_80ba918(void *, int);
+extern int GetUnitDefaultColor(int);
+extern void _Func_801f200(int);
+void Func_80babdc(int id)
+{
+    short buf[2];
+    void **a;
+    int i;
+    _GetUnit(id);
+    _Actor_SetAnim(*(void **)GetBattleActor(id), 5);
+    for (i = 0; i < 2; i++) {
+        buf[1] = 0xff;
+        buf[0] = id;
+        _Func_802281c(buf);
+        Func_80ba918(*(void **)GetBattleActor(id), 7);
+        WaitFrames(2);
+        buf[0] = id;
+        _Func_802281c(buf);
+        a = GetBattleActor(id);
+        Func_80ba918(*a, GetUnitDefaultColor(id));
+        WaitFrames(2);
+    }
+    _Func_801f200(*(unsigned char *)(iwram_3001e74 + 0x41));
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bac6c.s");
 

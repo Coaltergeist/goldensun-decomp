@@ -198,7 +198,32 @@ int Func_801c304(unsigned short param_1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c34c.s");
+extern short gState_s801c[] __asm__("gState");
+extern int _GetLocationName(int, int);
+extern void TextBox(int, int *, int *, int *, int *);
+extern void *CreateUIBox(int a, int b, int c, int d, int e);
+extern void DrawSmallText(int, void *, int, int);
+struct V801c34c { char pad[0x234]; unsigned short timer; };
+void Func_801c34c(void)
+{
+    extern unsigned char *iwram_3001ebc__c34 __asm__("iwram_3001ebc");
+    unsigned char *base = iwram_3001ebc__c34;
+    int h, w, y, x;
+    int msg;
+    void *box;
+
+    x = 8;
+    y = 8;
+    msg = _GetLocationName(gState_s801c[0xe0], gState_s801c[0xe1]) + 0x99b;
+    TextBox(msg, &x, &y, &w, &h);
+    x = (0x1e - w) >> 1;
+    y = (0xa - h) >> 1;
+    box = CreateUIBox(x, y, w, h, 2);
+    *(void **)(base + (0x8c << 2)) = box;
+    DrawSmallText(msg, box, 0, 0);
+    ((struct V801c34c *)base)->timer = 0x5a;
+    StartTask(Func_801c3e8, 0xc80);
+}
 
 extern unsigned int iwram_3001ebc;
 extern void CloseUIBox(void *box, int noanim);
@@ -321,7 +346,21 @@ void Func_801ce6c(unsigned char *p)
 }
 
 INCLUDE_ASM("asm/ui/menu/Func_801ce90.s");
-INCLUDE_ASM("asm/ui/menu/Func_801cee0.s");
+extern unsigned char gState[];
+void Func_801cee0(unsigned char *p)
+{
+    switch (*(unsigned short *)(p + 0x574)) {
+    case 0:
+        if (gState[0x20c] <= 1) gState[0x20c]++;
+        break;
+    case 1:
+        if (gState[0x205] <= 0x17) gState[0x205]++;
+        break;
+    case 2:
+        if (gState[0x206] <= 0xe) gState[0x206]++;
+        break;
+    }
+}
 
 void Func_801cf44(void) {}
 
