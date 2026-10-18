@@ -196,7 +196,46 @@ void OvlFunc_895_20083bc(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008420.s");
+extern unsigned char L895_1032[] __asm__(".L895_1032");
+__asm__(".equ .L895_1032, 0x1032");
+void OvlFunc_895_2008420(void)
+{
+    int r8;
+
+    if (API_GetFlag(0xf02) != 0 && API_GetFlag(0x821) == 0) {
+        API_CutsceneStart();
+        __Func_808e118();
+        API_PlaySound(0xb6);
+        API_CopyMapTiles(0, 0x47, 0x64, 0x47, 1, 1);
+        __Func_800fe9c();
+        API_CutsceneWait(0x28);
+        r8 = (int)L895_1032;
+        API_Func_801776c(r8, 1);
+        API_CutsceneWait(0x14);
+        API_PlaySound(0xb7);
+        API_CopyMapTiles(0x7a, 0x14, 0x78, 0x1e, 1, 2);
+        API_Func_8010704(0x7a, 0x14, 1, 2, 0x78, 0x1e);
+        __Func_800fe9c();
+        API_Func_8012330(0x80 << 9, 0x80 << 9, 0x80 << 9);
+        API_CutsceneWait(0x14);
+        API_MapActor_Emote(0, 0x80 << 1, 0);
+        API_Func_8012330(0x80 << 10, 0x80 << 10, 0x80 << 9);
+        API_CutsceneWait(0x14);
+        API_Func_8092adc(0, 0x80 << 7, 0x28);
+        API_Func_8092adc(0, 0x80 << 8, 0x14);
+        API_Func_8092adc(0, 0, 0x14);
+        API_Func_8092adc(0, 0x80 << 7, 0xa);
+        API_MapActor_Jump(0, 4, 0x14);
+        API_MapActor_Jump(0, 6, 0x28);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_CutsceneWait(0x28);
+        r8 += 1;
+        API_Func_801776c(r8, 1);
+        API_SetFlag(0x143);
+        API_SetFlag(0x821);
+        API_CutsceneEnd();
+    }
+}
 
 extern int __MapActor_GetActor(int);
 
