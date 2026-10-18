@@ -201,7 +201,18 @@ INCLUDE_ASM("asm/shop/shop/Func_80b1614.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b17e4.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1868.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b196c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b19cc.s");
+extern void *_GetItemInfo__s(unsigned int) __asm__("_GetItemInfo");
+int Func_80b19cc(unsigned int item)
+{
+    int price = *(short *)_GetItemInfo__s(item);
+    if (((unsigned char *)_GetItemInfo__s(item))[3] & 8)
+        price = 0;
+    else if (item & 0x400)
+        price = price / 2;
+    else
+        price = price * 3 / 4;
+    return price;
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b1a14.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1bd0.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1dec.s");
@@ -316,7 +327,26 @@ INCLUDE_ASM("asm/shop/shop/Func_80b2da8.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2e30.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2ed8.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2f4c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2ffc.s");
+extern void _Func_809b804(void *);
+extern void _Sprite_SetColorswap(void *, int);
+extern int Random(void);
+void Func_80b2ffc(void)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001f2c__a1;
+    unsigned char *p = b + 0x3b0;
+    int i;
+    signed char c;
+    for (i = 0; i < 24; i++) {
+        _Func_809b804(p);
+        p += 0x48;
+    }
+    c = b[0x3ab];
+    if (c != -1) {
+        int r = (unsigned int)(Random() * 7) >> 16;
+        int off = (c << 2) + 0x114;
+        _Sprite_SetColorswap(*(void **)(b + off), r);
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b3050.s");
 
 extern unsigned char iwram_3001f2c__a5[] __asm__("iwram_3001f2c");

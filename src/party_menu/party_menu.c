@@ -653,7 +653,20 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7850.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7a34.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7d68.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7f44.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8034.s");
+extern void Func_80a1870(unsigned int, int, int, int, int);
+void Func_80a8034(void)
+{
+    unsigned char *b = (unsigned char *)iwram_3001f2c;
+    Func_80a1870(Func_80a1814((unsigned int)b), 2, 2, 8, 0);
+    *(int *)(b + 0x28) = 0;
+    *(int *)(b + 0x24) = 0;
+    *(int *)(b + 0x2c) = 0;
+    *(int *)(b + 0x20) = 0;
+    b[0x110] = 0;
+    b[0x111] = 0;
+    b[0x112] = 8;
+    b[0x113] = 2;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8088.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8114.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a847c.s");

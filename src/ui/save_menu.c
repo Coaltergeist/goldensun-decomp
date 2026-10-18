@@ -331,7 +331,23 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8023e70.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8024934.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8025180.s");
+extern unsigned char *_GetItemInfo__e(int) __asm__("_GetItemInfo");
+extern unsigned char *_GetMoveInfo__e(int) __asm__("_GetMoveInfo");
+extern int _CanEquipItem(int, int);
+int Func_8025180(int unit, int item)
+{
+    unsigned char *info;
+    if (item == 0)
+        return 1;
+    info = _GetItemInfo__e(item);
+    if (info[0xc] == 3)
+        return 1;
+    if (*(unsigned short *)(info + 0x28) == 0)
+        return 1;
+    if (info[2] != 0 && _CanEquipItem(unit, item) == 0)
+        return 1;
+    return (_GetMoveInfo__e(*(unsigned short *)(info + 0x28))[1] & 0x80) ? 0 : 2;
+}
 
 #include "dma.h"
 
@@ -375,7 +391,22 @@ void *Func_80284dc(void) {
     return p;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_802851c.s");
+extern unsigned char *iwram_3001f38;
+extern void Func_8028194(void);
+extern void CloseUIBox(void *, int);
+extern void Func_8003f3c(int);
+void Func_802851c(void)
+{
+    unsigned char *b = iwram_3001f38;
+    int i;
+    StopTask(Func_8028194);
+    if (*(void **)(b + 0x78) != 0)
+        CloseUIBox(*(void **)(b + 0x78), 2);
+    for (i = 0; i < *(short *)(b + 0x8e); i++)
+        Func_8003f3c(*(unsigned short *)(b + 0x12 + i * 0x14));
+    gfree(0x3a);
+    WaitFrames(1);
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8028574.s");
 

@@ -20,7 +20,19 @@ INCLUDE_ASM("asm/rpg/pc/ResetPCs.s");
 
 void Func_8079004(void) {}
 
-INCLUDE_ASM("asm/rpg/pc/GetPCStatGrowth.s");
+extern int L7a830[] __asm__(".L7a830");
+unsigned int GetPCStatGrowth(unsigned int unit, unsigned int arg1)
+{
+    unsigned char *u = GetUnit(unit);
+    int lvl = arg1;
+    if (u[0x129] != 0) {
+        if (lvl <= 0)
+            return 0;
+        if (lvl <= 0x63 && u[0x128] <= 7)
+            return L7a830[u[0x128] * 99 + lvl - 1];
+    }
+    return -1;
+}
 INCLUDE_ASM("asm/rpg/pc/Func_807905c.s");
 
 extern unsigned char *GetUnit(unsigned int unit);

@@ -96,7 +96,20 @@ unsigned int Func_801eb90(unsigned int arg0, unsigned int arg1, unsigned int arg
     return Func_801eadc(slot, 0x80 << 23, arg2, arg3, arg4);
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801ebd8.s");
+extern void LoadOldUIIcon(unsigned int, int, int *, int *, int);
+unsigned int Func_801ebd8(unsigned int icon, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    int slot, tmp;
+    unsigned char *s;
+
+    slot = AllocSpriteSlot();
+    if (slot == 0x60)
+        return 0;
+    LoadOldUIIcon(icon, 1, &slot, &tmp, 1);
+    s = (unsigned char *)Func_801eadc(slot, 0x80 << 23, a1, a2, a3);
+    s[0xf] = 0xfb;
+    return (unsigned int)s;
+}
 
 int LoadUIBanner(unsigned int, unsigned int, unsigned int);
 

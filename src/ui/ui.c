@@ -421,7 +421,19 @@ INCLUDE_ASM("asm/ui/ui/Func_8019908.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019944.s");
 INCLUDE_ASM("asm/ui/ui/Func_801999c.s");
 INCLUDE_ASM("asm/ui/ui/Func_80199ec.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019a54.s");
+extern void CloseUIBox__u(void *, unsigned short) __asm__("CloseUIBox");
+void Func_8019a54(void)
+{
+    unsigned char **p = (unsigned char **)(*(unsigned char **)iwram_3001e8c__a5 + 0x620);
+    int i;
+    for (i = 0; i != 3; i++) {
+        unsigned char *box = *p;
+        if (box != 0 && *(int *)(box + 0x18) == 0 && *(unsigned short *)(box + 0x16) != 0 && *(unsigned short *)(box + 0x14) != 0)
+            CloseUIBox__u(box, *(unsigned short *)(box + 0x16) & 2);
+        p += 10;
+    }
+    WaitFrames(10);
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019aa0.s");
 
 int Func_8019ba0(int stringID) {

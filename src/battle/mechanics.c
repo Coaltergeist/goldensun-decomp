@@ -185,7 +185,23 @@ void Func_80b8ec4(unsigned int arg0) {
     }
 }
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80b8f08.s");
+extern int Func_80b6b40(int, s16 *);
+extern unsigned int Random(void);
+int Func_80b8f08(unsigned char *x)
+{
+    int id = *(s16 *)(x + 0xa);
+    s16 buf[14];
+    int side, n;
+    if (*(s16 *)(_GetUnit(id) + 0x38) != 0)
+        return id;
+    if (id > 0x7f)
+        n = Func_80b6b40(2, buf);
+    else
+        n = Func_80b6b40(1, buf);
+    if (n == 0)
+        return 0x100;
+    return buf[(Random() * n) >> 16];
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80b8f58.s");
 

@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "sprite.h"
 
 extern int MapActor_GetActor();
 extern void Func_80922c4();
@@ -522,7 +523,16 @@ void Func_8092adc(int arg0, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b08.s", ".text.map_actor_2");
+void Func_8092b08(int id, int v)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    if (a != 0 && (a[0x54] & 0xf) == 1) {
+        struct SpriteOAM *o = *(struct SpriteOAM **)(a + 0x50);
+        o[0].priority = v;
+        o[1].priority = v;
+        a[0x23] &= 0xfe;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b54.s", ".text.map_actor_2");
 
 void Func_8092b90(void) {}

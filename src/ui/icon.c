@@ -36,7 +36,27 @@ int LoadStatusIcon(int icon, int unused, int slot) {
 }
 
 INCLUDE_ASM("asm/ui/icon/LoadUIBanner.s");
-INCLUDE_ASM("asm/ui/icon/LoadItemIcon.s");
+struct IconState_i {
+    unsigned char pad0[0x600];
+    unsigned short w, h;
+    void *src;
+};
+extern struct IconState_i *iwram_3001e94__i __asm__("iwram_3001e94");
+extern unsigned char *_GetItemInfo(unsigned int);
+extern void *gItemIcons__i[] __asm__("gItemIcons");
+extern void LoadIcon(void *, int);
+void LoadItemIcon(unsigned int item)
+{
+    struct IconState_i *s = iwram_3001e94__i;
+    unsigned char *info = _GetItemInfo(item & 0x1ff);
+    if (item != 0)
+        s->src = gItemIcons__i[*(unsigned short *)(info + 6)];
+    else
+        s->src = gItemIcons__i[0];
+    s->w = 2;
+    s->h = 2;
+    LoadIcon(s, 0);
+}
 extern void LoadMoveIconID(unsigned int id, unsigned int a, unsigned int b, unsigned int c, unsigned int d);
 
 void LoadMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned int c, unsigned int d) {

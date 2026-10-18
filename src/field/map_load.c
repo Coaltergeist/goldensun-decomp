@@ -132,7 +132,20 @@ short Func_808b248(void) {
     return gState__a2[235];
 }
 
-INCLUDE_ASM("asm/field/map_load/Func_808b25c.s");
+extern unsigned int gMapBattleBGs[];
+extern short gState_s25c[] __asm__("gState");
+void Func_808b25c(void)
+{
+    int cur = gState_s25c[0xe0];
+    unsigned int *p = gMapBattleBGs;
+    unsigned int e;
+    int v;
+    while ((e = *p++) != 0 && e != cur) {
+        if (e & 0x80000000)
+            v = e & 0xffff;
+    }
+    gState_s25c[0xeb] = v;
+}
 INCLUDE_ASM("asm/field/map_load/Func_808b2b0.s");
 INCLUDE_ASM("asm/field/map_load/Func_808b320.s");
 
