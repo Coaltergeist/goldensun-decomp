@@ -486,7 +486,37 @@ void OvlFunc_968_20089c8(void)
     actor->bounce = 0x80 << 7;
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b08.s");
+extern void OvlFunc_968_200896c(struct Actor *);
+extern int __cos(int);
+extern int __sin(int);
+void OvlFunc_968_2008b08(unsigned int actorId)
+{
+    extern void OvlFunc_968_2008118(int, int, int, int, int, int, int, void *);
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    data[0] = 1;
+    data[1] = 7;
+    data[9] = (int)OvlFunc_968_200896c;
+
+    for (i = 0; i <= 16; i += 2) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_968_2008118(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1030001, data);
+    }
+}
 extern int _divsi3_RAM(int, int);
 struct Struct_2008b98 {
     int pad[2];

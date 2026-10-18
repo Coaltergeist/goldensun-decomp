@@ -473,5 +473,74 @@ void OvlFunc_925_200b460(struct Actor *actor)
     actor->prevPos.z = actor->pos.z;
     actor->waveCounter -= 0x200;
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b4bc.s");
+static inline void API925_MapActor_SetPos(int a0, int a1, int a2)
+{
+    extern void __MapActor_SetPos(int, int, int);
+    __MapActor_SetPos(a0, a1, a2);
+}
+static inline void *API925_CreateActor(int a, int x, int y, int z) { extern void *__CreateActor(int, int, int, int); return __CreateActor(a, x, y, z); }
+extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+extern int _divsi3_RAM(int, int);
+extern void __Actor_SetScript(struct Actor *, const void *);
+extern void __Func_80929d8(struct Actor *, int);
+extern unsigned int __Random(void);
+extern int __sin(int);
+extern const u8 gScript_925__0200bc54[];
+extern void *iwram_3001e70_p __asm__("iwram_3001e70");
+extern unsigned int iwram_3001e40_v __asm__("iwram_3001e40");
+void OvlFunc_925_200b4bc(void)
+{
+    struct Actor *actor;
+    struct Actor *newActor;
+    struct Sprite *sprite;
+    u8 *ptr;
+    s16 *gate;
+    int r8;
+    int flags;
+    u32 randVal;
+
+    actor = MapActor_GetActor(8);
+    ptr = (u8 *)iwram_3001e70_p;
+    r8 = ((__Random() * 48) >> 16) << 16;
+    gate = (s16 *)(ptr + 0xe8);
+    if (gate[1] <= 0x81) {
+        if (iwram_3001e40_v & 1) {
+            API925_MapActor_SetPos(8, 0x1300000, 0x900000);
+            MapActor_GetActor(8)->scale.x = 0x10000;
+            MapActor_GetActor(8)->scale.y = 0x10000;
+        } else {
+            API925_MapActor_SetPos(8, 0x1300000, 0x970000);
+            MapActor_GetActor(8)->scale.x = 0x14ccc;
+            MapActor_GetActor(8)->scale.y = 0x14ccc;
+        }
+    } else {
+        API925_MapActor_SetPos(8, 0x80000, 0x80000);
+    }
+
+    if (actor != NULL) {
+        flags = iwram_3001e40_v & 0xf;
+        if (flags == 0) {
+            newActor = API925_CreateActor(0x11c,
+                                     actor->pos.x + 0x80000,
+                                     actor->pos.y + r8 + 0x80000,
+                                     actor->pos.z);
+            r8 = _divsi3_RAM(r8, 0x60000);
+            r8 <<= 16;
+            if (newActor != NULL) {
+                sprite = newActor->sprite;
+                __Actor_SetScript(newActor, gScript_925__0200bc54);
+                __Func_80929d8(newActor, 3);
+                newActor->__unk55 = flags;
+                randVal = __Random() & 0x0ffff000;
+                newActor->waveCounter = randVal;
+                newActor->__unk66 = flags;
+                newActor->linkedActor = actor;
+                newActor->update = (actorfun_t *)OvlFunc_925_200b460;
+                newActor->speed = (__sin((r8 & 0xfffff) >> 4) * 24) >> 16;
+                sprite->flags = 0;
+                sprite->oam.priority = actor->sprite->oam.priority;
+            }
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/mercury_lighthouse_aerie_data.s");

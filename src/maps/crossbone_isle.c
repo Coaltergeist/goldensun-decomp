@@ -538,7 +538,36 @@ void *CrossboneIsle_GetActors(void)
     return gOvl_0200b5f8;
 }
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008da4.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008e00.s");
+extern void OvlFunc_946_2008da4(struct Actor *);
+extern int __cos(int);
+extern int __sin(int);
+void OvlFunc_946_2008e00(unsigned int actorId)
+{
+    extern void OvlFunc_946_2008ae8(int, int, int, int, int, int, int, void *);
+    extern int _divsi3_RAM(int, int);
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    data[9] = (int)OvlFunc_946_2008da4;
+
+    for (i = 0; i <= 16; i += 2) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, data);
+    }
+}
 
 void OvlFunc_946_2008e88(void)
 {
