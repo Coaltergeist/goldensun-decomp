@@ -33,7 +33,22 @@ unsigned int Func_807a2bc(unsigned int arg0, unsigned int arg1, unsigned int arg
     return 0;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/SetDjinni.s");
+int SetDjinni(int pc, int elem, int djinn)
+{
+    extern int Func_807a1f8(int, int, int);
+    struct Unit *u = (struct Unit *)GetUnit(pc);
+    int r = Func_807a1f8(pc, elem, djinn);
+
+    if (r != 0) {
+        if (u->djinn[elem] & (1 << djinn))
+            u->setDjinn[elem] |= 1 << djinn;
+        else
+            return 0;
+        u->numSetDjinn[elem]++;
+        Func_8079ae8(pc);
+    }
+    return r;
+}
 
 unsigned int Func_807a350(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     unsigned char *r5;
