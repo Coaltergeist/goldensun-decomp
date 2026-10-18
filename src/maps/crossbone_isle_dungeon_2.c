@@ -673,7 +673,55 @@ void OvlFunc_947_20091c4(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009268.s");
+int OvlFunc_947_2009268(void)
+{
+    extern unsigned char gState_b947[] __asm__("gState");
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern void __Actor_SetSpriteFlags(void *, int);
+    struct Actor *actor;
+    u8 *p55;
+    u8 saved;
+    int ang;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    p55 = &actor->__unk55;
+    saved = *p55;
+    ang = (actor->facing + 0x2000) & 0xc000;
+    if (gState_b947[0x1f2] != 0)
+        return 0;
+    v = buf;
+    v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    v[1] = actor->pos.y;
+    v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    __vec3_translate(0x80 << 13, ang, v);
+    if (__TestCollision(actor, v) != 1 && OvlFunc_947_2008350(v, actor) == 0) {
+        v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+        v[1] = actor->pos.y;
+        v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+        __vec3_translate(0x80 << 14, ang, v);
+        if (OvlFunc_947_2008350(v, actor) == 0 && __TestCollision(actor, v) == 0) {
+            __CutsceneStart();
+            __Actor_SetAnim(actor, 6);
+            __WaitFrames(6);
+            __PlaySound(0x98);
+            __Actor_SetAnim(actor, 7);
+            actor->speed = 0xc0 << 10;
+            actor->accel = 0x80 << 10;
+            actor->motion.y = 0x80 << 11;
+            *p55 &= 0x7e;
+            __Actor_SetSpriteFlags(actor, 0);
+            __MapActor_TravelToWait(0, ((short *)v)[1], ((short *)v)[5]);
+            __Actor_SetAnim(actor, 6);
+            __Actor_SetSpriteFlags(actor, 1);
+            *p55 = saved;
+            __CutsceneEnd();
+            return 1;
+        }
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20093b0.s");
 

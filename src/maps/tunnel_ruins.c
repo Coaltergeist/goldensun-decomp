@@ -502,7 +502,48 @@ unsigned int OvlFunc_964_2008cc0(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008cd0.s");
+int OvlFunc_964_2008cd0(unsigned int *arr)
+{
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern void __WaitFrames(int);
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __MapActor_TravelToWait(int, int, int);
+    struct Actor *actor;
+    u8 saved;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    saved = actor->__unk55;
+    v = buf;
+    v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    v[1] = actor->pos.y;
+    v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    {
+        int ang = (actor->facing + 0x2000) & 0xc000;
+        __vec3_translate(0x80 << 13, ang, v);
+    }
+    if (__TestCollision(actor, v) != 1 && __TestCollision(actor, (int *)arr) == 0) {
+        __CutsceneStart();
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(6);
+        __PlaySound(0x98);
+        __Actor_SetAnim(actor, 7);
+        actor->speed = 0xc0 << 10;
+        actor->accel = 0x80 << 10;
+        actor->motion.y = 0x80 << 11;
+        actor->__unk55 &= 0x7e;
+        __Actor_SetSpriteFlags(actor, 0);
+        __MapActor_TravelToWait(0, (((int)arr[0] >> 20) << 4) + 8, (((int)arr[2] >> 20) << 4) + 8);
+        __Actor_SetAnim(actor, 6);
+        __Actor_SetSpriteFlags(actor, 1);
+        __WaitFrames(6);
+        actor->__unk55 = saved;
+        __CutsceneEnd();
+        return 0;
+    }
+    return 1;
+}
 
 extern int OvlFunc_964_2008cd0(unsigned int *);
 
