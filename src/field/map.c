@@ -324,7 +324,29 @@ void Func_808ed78(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/Func_808edac.s");
+void Func_808edac(int id, int x, int z)
+{
+    int idx = GetMapActorIndex(id);
+    unsigned char *e;
+    int *act;
+    int y;
+
+    if (idx == -1)
+        return;
+    e = iwram_3001ebc + idx * 8 + 0x11c;
+    act = *(int **)e;
+    if (act == 0)
+        return;
+    if (x == -1)
+        x = (e[6] << 20) + 0x80000;
+    if (z == -1)
+        z = (e[7] << 20) + 0x80000;
+    act[2] = x;
+    act[4] = z;
+    y = _Func_8011f54(0, x, z);
+    act[5] = y;
+    act[3] = y;
+}
 INCLUDE_ASM("asm/field/map/Func_808ee0c.s");
 INCLUDE_ASM("asm/field/map/Func_808eee4.s");
 INCLUDE_ASM("asm/field/map/Func_808ef70.s");

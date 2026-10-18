@@ -117,7 +117,27 @@ void OvlFunc_926_2008414(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/fuchin_temple/OvlFunc_926_2008484.s");
+void OvlFunc_926_2008484(void)
+{
+    extern int __Func_8093054(int, int);
+    API_CutsceneStart();
+    if (API_GetFlag(0x88f)) {
+        API_MessageID(0x17d6);
+        __Func_8093054(0xc, 0);
+        API_CutsceneEnd();
+        return;
+    }
+    API_MessageID(0x1794);
+    API_ShowActorMessage_NoWait(0xc, 0);
+    if (API_Func_8091c7c(0, 0) == 1) {
+        (*(unsigned short *)(*(unsigned char **)iwram_3001ebc + (0xec << 1)))++;
+        API_ShowActorMessage_NoWait(0xc, 0);
+        if (API_Func_8091c7c(0, 0) == 1)
+            (*(unsigned short *)(*(unsigned char **)iwram_3001ebc + (0xec << 1)))++;
+    }
+    API_ActorMessage(0xc, 0);
+    API_CutsceneEnd();
+}
 
 struct FuchinEffectDataView {
     int a;

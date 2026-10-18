@@ -905,7 +905,22 @@ void Func_80ad658(void)
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ad69c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ad6d4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae2f4.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae714.s");
+int Func_80ae714(unsigned char *out, int self)
+{
+    extern int Func_80ae778(int, int);
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    int count = 0;
+    int i;
+
+    for (i = 0; i < base[0x219]; i++) {
+        out[i] = 0;
+        if (i != self && Func_80ae778(self, i) == 0) {
+            out[i] = 1;
+            count++;
+        }
+    }
+    return count;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae778.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ae7fc.s");
 

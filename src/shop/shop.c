@@ -36,7 +36,25 @@ void Func_80b0204(void)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0278.s");
-INCLUDE_ASM("asm/shop/shop/Debug_TestEquipAndStatus.s");
+int Debug_TestEquipAndStatus(void)
+{
+    extern struct { int pad[4]; int money; unsigned char p2[0x108]; unsigned char x; } gState__s __asm__("gState");
+    extern int _GiveItemTo(int, int);
+    extern void _EquipItem(int, int);
+    extern unsigned char *_GetUnit(unsigned int unitID);
+    extern void Func_80b0278(int, int);
+
+    gState__s.money = 200000;
+    gState__s.x = 0x1c;
+    _EquipItem(1, _GiveItemTo(1, 0x48d));
+    _EquipItem(0, _GiveItemTo(0, 0x40b));
+    _GiveItemTo(2, 0xe7);
+    _GetUnit(3)[0x131] = 1;
+    _GetUnit(5)[0x131] = 1;
+    _GetUnit(2)[0x140] = 1;
+    Func_80b0278(1, 0x1e);
+    return 0;
+}
 
 extern void WaitFrames(unsigned int nframes);
 extern int _Func_80f954c(void);
