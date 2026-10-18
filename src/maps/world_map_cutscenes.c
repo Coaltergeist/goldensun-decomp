@@ -71,7 +71,33 @@ void OvlFunc_881_200811c(struct Actor *a) {
     }
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200813c.s");
+void OvlFunc_881_200813c(struct Actor *a)
+{
+    extern unsigned int iwram_3001e40;
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Actor_SetAnim(unsigned char *, unsigned int);
+    struct Actor *n;
+
+    if (iwram_3001e40 & 4) {
+        a->scale.x = 0x14ccc;
+        a->scale.y = 0x14ccc;
+    } else {
+        a->scale.x = 0x10000;
+        a->scale.y = 0x10000;
+    }
+    if (iwram_3001e40 & 2) {
+        n = API_CreateActor(0x11d, a->pos.x, a->pos.y, a->pos.z);
+        API_PlaySound(0xf6);
+        if (n) {
+            n->__unk55 = 0;
+            n->sprite->oam.priority = 1;
+            __Actor_SetSpriteFlags(n, 0);
+            __Actor_SetAnim((unsigned char *)n, 1);
+            n->waveCounter = 0;
+            n->update = OvlFunc_881_200811c;
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_20081c4.s");
 
 

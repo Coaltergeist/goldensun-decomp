@@ -20,7 +20,22 @@ void *Func_8077330(int r0) {
     return ewram_200024c;
 }
 
-INCLUDE_ASM("asm/rpg/party/Func_8077348.s");
+extern int GetPartySize(void);
+struct PartyOrder_q { unsigned char pad[0x1f8]; unsigned char members[8]; };
+extern struct PartyOrder_q gState__q __asm__("gState");
+int Func_8077348(void)
+{
+    int sum = 0;
+    int n = GetPartySize();
+    int i;
+
+    if (n == 0)
+        return 0;
+    for (i = 0; i < n; i++)
+        sum += ((unsigned char *)GetUnit(gState__q.members[i]))[0xf];
+    sum /= n;
+    return sum;
+}
 
 SECTION(".text.party_2");
 

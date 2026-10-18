@@ -79,7 +79,22 @@ unsigned int SanctumMenu(unsigned int r0)
 
 INCLUDE_ASM("asm/ui/menus/menu_bars/YesNoMenu.s");
 
-INCLUDE_ASM("asm/ui/menus/menu_bars/YesNoMenu2.s");
+extern void Func_80288a8(int, int, int, int);
+extern unsigned char Lyn_24[] __asm__(".Lyn_24");
+__asm__(".equ .Lyn_24, 0x24");
+int YesNoMenu2(int a, int b, int c)
+{
+    int k = (int)Lyn_24;
+    Func_80284dc();
+    AddMenuBarOption(5);
+    AddMenuBarOption(6);
+    Func_80288a8(a, b, 3, k);
+    c = Func_8028574(c);
+    Func_802851c();
+    if (c == -1)
+        c = 1;
+    return c;
+}
 
 unsigned int LuckyFountainMenu(unsigned int arg0)
 {

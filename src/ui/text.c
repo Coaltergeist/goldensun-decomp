@@ -5,7 +5,22 @@ extern unsigned int Func_801f704();
 INCLUDE_ASM("asm/ui/text/Func_801de5c.s");
 INCLUDE_ASM("asm/ui/text/Func_801e260.s");
 INCLUDE_ASM("asm/ui/text/Func_801e318.s");
-INCLUDE_ASM("asm/ui/text/Func_801e3c8.s");
+
+extern unsigned int iwram_3001e8c;
+void Func_801e3c8(int on)
+{
+    unsigned char *b = (unsigned char *)iwram_3001e8c;
+    int i;
+    if (on) {
+        b[0xea2] = 1;
+        for (i = 0x80; i < 0x100; i++)
+            b[0xda0 + i] = 0;
+    } else {
+        b[0xea2] = 0;
+        for (i = 0x80; i < 0x100; i++)
+            b[0xda0 + i] = 0;
+    }
+}
 
 void Func_801e418(void) {}
 

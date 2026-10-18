@@ -340,7 +340,30 @@ void MapActor_SetAnimSpeed(int actorID, int speed)
     _Actor_SetAnimSpeed(r0, r5);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092504.s", ".text.map_actor_2");
+extern void WaitFrames(unsigned int nframes);
+void Func_8092504(int id)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    unsigned char *p;
+    unsigned char *oam;
+    int i;
+    int one;
+    volatile int v[1];
+    volatile int *vp;
+
+    one = 1;
+    if (a != 0 && a[0x54] == one) {
+        vp = v;
+        oam = *(unsigned char **)(a + 0x50);
+        p = oam + 0x24;
+        *vp = *p;
+        for (i = 0; i <= 0x59; i++) {
+            WaitFrames(one);
+            if (*vp != *p)
+                break;
+        }
+    }
+}
 
 extern void Func_8092504(int actorID);
 
@@ -575,7 +598,25 @@ void Func_80931d4(void)
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80931ec.s", ".text.map_actor_2");
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093304.s", ".text.map_actor_2");
+extern unsigned char iwram_3001e8c__v[] __asm__("iwram_3001e8c");
+extern int GetActorSpriteID__i(int) __asm__("GetActorSpriteID");
+extern unsigned char gState__304[] __asm__("gState");
+extern unsigned int GetSpriteVoice(unsigned int);
+extern unsigned char X9fc28[];
+void Func_8093304(int actor)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__v;
+    int v0, v1;
+    if (actor == 0x80000000) {
+        *(unsigned short *)(b + 0x12f4) = v1 = 0;
+        *(unsigned short *)(b + 0x12f6) = v1;
+    } else {
+        v0 = GetSpriteVoice(GetActorSpriteID__i(actor));
+        v1 = X9fc28[gState__304[0x20c]];
+        *(unsigned short *)(b + 0x12f4) = v0;
+        *(unsigned short *)(b + 0x12f6) = v1;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/SetCameraTarget.s", ".text.map_actor_2");
 
 

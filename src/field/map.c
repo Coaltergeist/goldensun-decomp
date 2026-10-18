@@ -135,7 +135,7 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
 INCLUDE_ASM("asm/field/map/Func_808e0b0.s");
 
 extern unsigned int iwram_3001ebc__a7 __asm__("iwram_3001ebc");
-extern void Func_808e5d8(unsigned int);
+extern int Func_808e5d8(unsigned int);
 
 void Func_808e118(void) {
     unsigned char *base = (unsigned char *)iwram_3001ebc__a7;
@@ -153,7 +153,41 @@ void Func_808e118(void) {
 INCLUDE_ASM("asm/field/map/FindFieldItemEvent.s");
 INCLUDE_ASM("asm/field/map/Func_808e23c.s");
 INCLUDE_ASM("asm/field/map/FindFieldMoveEvent.s");
-INCLUDE_ASM("asm/field/map/Func_808e5d8.s");
+
+extern unsigned char *_GetMoveInfo(int);
+extern void *GetFieldActor(unsigned int actorID);
+extern unsigned int FindFieldMoveEvent(unsigned int, unsigned int, unsigned int *);
+extern void Func_8096fb0(int, int);
+extern void Func_80970f8(unsigned int, unsigned int);
+extern int Func_8096b28(unsigned int, int, unsigned int);
+extern void Func_8096af0(void);
+extern void Func_8097174(void);
+extern void Func_8097194(void);
+extern unsigned char gState[];
+
+int Func_808e5d8(unsigned int arg)
+{
+    int move = arg & 0x3ff;
+    int dir = (arg >> 10) & 0xf;
+    unsigned int elem, ev1, ev2;
+    unsigned int pos;
+    unsigned short *s;
+
+    elem = _GetMoveInfo(move)[0xc];
+    s = (unsigned short *)gState;
+    GetFieldActor(*(unsigned int *)&s[0xfa]);
+    ev1 = FindFieldMoveEvent(0x30000005, elem, &pos);
+    ev2 = FindFieldMoveEvent(0x20000005, elem, &pos);
+    Func_8096fb0(move, 0);
+    Func_80970f8(*(unsigned int *)&s[0xfa], pos);
+    Func_8096b28(ev1, dir, pos);
+    Func_8096af0();
+    Func_8097174();
+    Func_8096b28(ev2, dir, pos);
+    Func_8097194();
+    return 0;
+}
+
 INCLUDE_ASM("asm/field/map/UseFieldMove.s");
 
 extern unsigned int FindFieldMoveEvent(unsigned int, unsigned int, unsigned int *);

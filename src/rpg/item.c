@@ -31,7 +31,24 @@ unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
 	return CanEquipItem(arg0, arg1);
 }
 
-INCLUDE_ASM("asm/rpg/item/GetItemEquipSlot.s");
+unsigned int GetItemEquipSlot(unsigned int item)
+{
+    unsigned char *p = GetItemInfo(item);
+    unsigned int r = 0;
+    if (p[2] == 1)
+        r = 1;
+    else if (p[2] == 2)
+        r = 2;
+    else if (p[2] == 3)
+        r = 2;
+    else if (p[2] == 4)
+        r = 2;
+    else if (p[2] == 5)
+        r = 2;
+    else if (p[2] == 9)
+        r = 2;
+    return r;
+}
 
 
 int GetInventoryItem(int unit, int slot)
