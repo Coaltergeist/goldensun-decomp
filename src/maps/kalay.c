@@ -136,7 +136,43 @@ void OvlFunc_936_20082c8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20082e8.s");
+extern void *__MapActor_GetActor(int);
+
+
+
+
+
+
+
+
+
+extern unsigned int iwram_3001ebc;
+
+void OvlFunc_936_20082e8(void)
+{
+    unsigned char *p;
+    unsigned int v;
+
+    p = (unsigned char *)__MapActor_GetActor(0);
+    v = (*(unsigned short *)(p + 6) + 0xfffff000) << 16;
+    if (v > (0x60 << 24)) {
+        API_CutsceneStart();
+        API_MapActor_TurnToFaceActor(0, 8, 0);
+        API_CutsceneWait(10);
+        API_MessageID(0x2584);
+        API_ShowActorMessage_NoWait(8, 0);
+        if (API_Func_8091c7c(0, 0) == 0) {
+            API_MapActor_DoAnim(8, 4);
+            API_ActorMessage(8, 0);
+        } else {
+            unsigned short *p2 = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+            *p2 += 1;
+            API_MapActor_DoAnim(8, 3);
+            API_ActorMessage(8, 0);
+        }
+        API_CutsceneEnd();
+    }
+}
 
 void OvlFunc_936_2008374(void) {
     __CutsceneStart();
@@ -686,7 +722,28 @@ void OvlFunc_936_200b2a4(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
+void OvlFunc_936_200b6f8(struct Actor *actor)
+{
+    extern void __DeleteActor(int);
+
+    if (actor->waveCounter == 0) {
+        __DeleteActor((int)actor);
+    } else if (actor->waveCounter == 1) {
+        actor->motion.x = 0;
+        actor->motion.y = 0;
+        actor->pos.x = 0;
+        actor->pos.y = 0;
+    } else {
+        actor->scale.x += 0x800;
+        actor->scale.y += 0x800;
+    }
+
+    actor->pos.x += actor->motion.x;
+    actor->pos.y += actor->motion.y;
+    actor->motion.x -= actor->motion.x / 256;
+    actor->motion.y -= actor->motion.y / 16;
+    actor->waveCounter--;
+}
 extern unsigned int iwram_3001e40;
 extern void __Func_8091ff0(int);
 extern void OvlFunc_936_200b864(int, int, int);

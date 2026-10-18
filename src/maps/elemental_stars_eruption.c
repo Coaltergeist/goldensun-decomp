@@ -246,7 +246,19 @@ void OvlFunc_897_200ac1c(int arg0, int arg1) {
     __Func_8091254(0x14);
     __WaitFrames(0x1e);
 }
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200ac9c.s");
+extern void __Func_8010704(int, int, int, int, int, int);
+
+void OvlFunc_897_200ac9c(void)
+{
+    __Func_8010704(0xe, 8, 1, 1, 0xa, 0);
+    __Func_8010704(0xe, 0x1c, 1, 1, 0xb, 0);
+    __Func_8010704(0x2c, 8, 1, 1, 0xc, 0);
+    __Func_8010704(0x2c, 0x1c, 1, 1, 0xd, 0);
+    __Func_8010704(0xd, 8, 1, 1, 0xe, 8);
+    __Func_8010704(0xd, 0x1c, 1, 1, 0xe, 0x1c);
+    __Func_8010704(0x2b, 8, 1, 1, 0x2c, 8);
+    __Func_8010704(0x2b, 0x1c, 1, 1, 0x2c, 0x1c);
+}
 
 extern void __PlaySound(unsigned int arg0);
 extern void __CutsceneWait(unsigned int arg0);

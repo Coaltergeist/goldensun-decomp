@@ -9,6 +9,11 @@
 extern unsigned int Lm957_3eb4[] __asm__(".Lm957_3eb4");
 
 INCLUDE_ASM("asm/maps/altmiller_cave/exports.s");
+extern unsigned char Lc957_92[] __asm__(".Lc957_92");
+extern unsigned char Lc957_97[] __asm__(".Lc957_97");
+__asm__(".equ .Lc957_92, 0x92\n.equ .Lc957_97, 0x97");
+extern short gState_s957[] __asm__("gState");
+static inline void API_Func_8092950(int a, int b) { extern void __Func_8092950(int, int); __Func_8092950(a, b); }
 
 extern int OvlFunc_957_20082a8();
 extern void OvlFunc_957_2008abc();
@@ -509,7 +514,23 @@ void OvlFunc_957_2008b24(void) {
 
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008b30.s");
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008bc8.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008c2c.s");
+extern unsigned char iwram_3001f30__c[] __asm__("iwram_3001f30");
+extern void OvlFunc_957_2008b30();
+void OvlFunc_957_2008c2c(void)
+{
+    unsigned char *p = *(unsigned char **)iwram_3001f30__c;
+    if (__GetFlag(0x200)) {
+        OvlFunc_957_2008b30();
+        p[0x34] = 1;
+    }
+    if (gState_s957[0xe0] == (int)Lc957_97) {
+        API_Func_8092950(0x10, 6);
+        API_Func_8092950(0x11, 6);
+        API_Func_8092950(0x12, 6);
+        API_Func_8092950(0x13, 6);
+        API_Func_8092950(0x14, 6);
+    }
+}
 void OvlFunc_957_2008c98(void)
 {
     /* This function needs the array view of iwram_3001f30. */
@@ -615,7 +636,19 @@ void OvlFunc_957_2008eac(void) {
 }
 
 INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008ee0.s");
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008f10.s");
+extern void __vec3_translate(int dist, int angle, int *vec);
+void OvlFunc_957_2008f10(int id, int dist, int angle)
+{
+    int v[3];
+    int x = 0x1f80000, z = 0x180000, h = 0x900000;
+    struct Actor *a = __MapActor_GetActor(id);
+    v[0] = x;
+    v[2] = z;
+    __vec3_translate(dist, angle, v);
+    a->pos.x = v[0];
+    a->pos.y = v[2];
+    a->pos.z = h;
+}
 
 extern void OvlFunc_957_2008f10(int a, int b, int c);
 

@@ -1621,7 +1621,37 @@ void OvlFunc_948_2009fd8(void)
     }
 }
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a0c4.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a188.s");
+extern void OvlFunc_948_200a0c4(int, int);
+
+void OvlFunc_948_200a188(void)
+{
+    API_WaitFrames(1);
+    OvlFunc_948_200a0c4(0xc, 0xf3);
+    OvlFunc_948_200a0c4(0xb, 0xf4);
+    OvlFunc_948_200a0c4(0xa, 0xf4);
+    OvlFunc_948_200a0c4(9, 0xf4);
+    OvlFunc_948_200a0c4(8, 0xf4);
+
+    if (!API_GetFlag(0xee7))
+        API_MapActor_SetPos(8, 0xe8 << 16, 0xda << 18);
+    if (!API_GetFlag(0xee8))
+        API_MapActor_SetPos(9, 0x94 << 17, 0xce << 18);
+    if (!API_GetFlag(0xee9))
+        API_MapActor_SetPos(0xa, 0xa4 << 17, 0xbe << 18);
+    if (!API_GetFlag(0xeea))
+        API_MapActor_SetPos(0xb, 0xb4 << 17, 0xda << 18);
+
+    if (API_GetFlag(0x9c0))
+        OvlFunc_948_2008f40(0);
+    if (API_GetFlag(0x9c1))
+        OvlFunc_948_2008f40(1);
+    if (API_GetFlag(0x9c2))
+        OvlFunc_948_2008f40(2);
+    if (API_GetFlag(0x9c3))
+        OvlFunc_948_2008f40(3);
+    if (API_GetFlag(0x9c4))
+        OvlFunc_948_2008fdc(0);
+}
 
 void OvlFunc_948_200a290(void) {
     extern void OvlFunc_948_20097ac(void);
@@ -1653,7 +1683,49 @@ void OvlFunc_948_200a290(void) {
     *p = val;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_200a334.s");
+void OvlFunc_948_200a334(void)
+{
+    extern void OvlFunc_948_2009edc(void);
+    struct Actor *actor;
+    int flag;
+
+    ((struct Actor *)__MapActor_GetActor(0xe))->__unk55 = 0;
+    API_StartTask(OvlFunc_948_2009e94, 0xc8 << 4);
+    API_StartTask(OvlFunc_948_2009edc, 0xc8 << 4);
+    API_Func_808edac(0x6b, 0, 0);
+    if (API_GetFlag(0xed9))
+        API_MapActor_SetAnim(0xe, 2);
+    OvlFunc_948_2009ac8();
+    OvlFunc_948_2009c28();
+    OvlFunc_948_2009cf8();
+    OvlFunc_948_2009e54();
+    OvlFunc_948_2009e74();
+    API_Func_8092b08(8, 3);
+    ((struct Actor *)__MapActor_GetActor(0xb))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(0xc))->__unk55 = 0;
+    OvlFunc_948_2009df8();
+    if (API_GetFlag(0x200)) {
+        OvlFunc_948_2009984();
+        API_MapActor_SetAnim(0xd, 5);
+    }
+    if (!API_GetFlag(0x109)) {
+        flag = API_GetFlag(0x9ca);
+        if (flag) {
+            API_MapActor_SetPos(0xf, 0xd6 << 18, 0xce << 18);
+            actor = (struct Actor *)__MapActor_GetActor(0xf);
+            actor->update = (actorfun_t *)OvlFunc_948_2008aa8;
+        } else if (API_GetFlag(0x9c9)) {
+            API_MapActor_SetPos(0xf, 0xde << 18, 0xa6 << 18);
+            actor = (struct Actor *)__MapActor_GetActor(0xf);
+            actor->sprite->rotation = flag;
+            __Actor_SetAnimSpeed(actor, 0x10);
+        } else if (API_GetFlag(0x9c8)) {
+            API_MapActor_SetPos(0xf, 0x92 << 18, 0xaa << 18);
+        } else {
+            API_MapActor_SetPos(0xf, 0x92 << 18, 0xa6 << 18);
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/crossbone_isle_dungeon_4_data.s");
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/imports.s");
