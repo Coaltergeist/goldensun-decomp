@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "dma.h"
 
 extern volatile unsigned short iwram_disp;
 extern unsigned int gState[];
@@ -16,7 +17,39 @@ int StartLuckyWheels(void)
 }
 
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f6038.s");
-INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Task_BlitLuckyWheelsAnim.s");
+extern u8 *iwram_3001eec[];
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
+extern void BlitFadeAlt_Div2(void *, void *, int);
+extern void BlitFadeAlt_Div4(void *, void *, int);
+static inline void Fill_80008d8(void *dst, unsigned int size, unsigned int value)
+{
+    void *(*fill)(void *, unsigned int, unsigned int) = Func_80008d8;
+    fill(dst, size, value);
+}
+void Task_BlitLuckyWheelsAnim(void)
+{
+    u8 *s = iwram_3001eec[0];
+
+    if (*(int *)(s + 0x7824) == 1) {
+        u8 *buf = iwram_3001eec[1];
+        switch (*(int *)(s + 0x7780)) {
+        case 1:
+            DMA3_SET(buf, (void *)0x6003500, 0x84002000);
+            Fill_80008d8(buf, 0x8000, *(int *)(s + 0x7784));
+            break;
+        case 2:
+            if (*(int *)(s + 0x7784) == 0x32)
+                BlitFadeAlt_Div2(buf, (void *)0x6003500, 0x8000);
+            else
+                BlitFadeAlt_Div4(buf, (void *)0x6003500, 0x8000);
+            break;
+        }
+        *(int *)(s + 0x7824) = 0;
+        *(int *)(s + 0x7820) = 1;
+    } else {
+        *(int *)(s + 0x7820) += 1;
+    }
+}
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f6148.s");
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f61e8.s");
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f62b8.s");

@@ -5,7 +5,8 @@ struct UISlot {
     unsigned int obj;
     unsigned short f4;
     unsigned short f6;
-    unsigned char pad8[0xc];
+    unsigned char pad8[0xa];
+    unsigned short f12;
     unsigned short f14;
     unsigned short f16;
     unsigned short f18;
@@ -231,7 +232,50 @@ void Func_80167d8(unsigned int r0) {
 }
 
 INCLUDE_ASM("asm/ui/ui/Func_80167e0.s");
-INCLUDE_ASM("asm/ui/ui/Func_8016868.s");
+struct MsgObj8016868 {
+    unsigned char pad0[0x12];
+    unsigned short f12;
+    unsigned short f14;
+    unsigned short f16;
+    int f18;
+};
+extern int AdvanceMsgText(struct UISlot *);
+extern void Func_8019854(struct UISlot *);
+void Func_8016868(void)
+{
+    struct UISlot *p = (struct UISlot *)(*(unsigned char **)iwram_3001e8c__a5 + (0xc4 << 3));
+    struct MsgObj8016868 *obj;
+    int i;
+    int r;
+
+    for (i = 0; i != 3; i++, p++) {
+        obj = (struct MsgObj8016868 *)p->obj;
+        if (obj == 0 || obj->f18 != 0)
+            continue;
+        if (obj->f16 == 0) {
+            p->obj = 0;
+        } else if (obj->f12 != 0) {
+            Func_8019854(p);
+        } else {
+            switch (AdvanceMsgText(p)) {
+            case 8:
+                ((struct MsgObj8016868 *)p->obj)->f14 = 1;
+                break;
+            case 9:
+                CloseUIBox((void *)p->obj, ((struct MsgObj8016868 *)p->obj)->f16 & 2);
+                p->f4 = 0;
+                p->f6 = 0;
+                p->f12 = 0;
+                p->f14 = 0;
+                p->f16 = 0;
+                p->f18 = 0;
+                p->f1a = 0;
+                ((struct MsgObj8016868 *)p->obj)->f14 = 1;
+                break;
+            }
+        }
+    }
+}
 INCLUDE_ASM("asm/ui/ui/AdvanceMsgText.s");
 INCLUDE_ASM("asm/ui/ui/Func_8016f2c.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017004.s");
@@ -414,7 +458,47 @@ int *Func_80197b4(int *p) {
     return p;
 }
 
-INCLUDE_ASM("asm/ui/ui/Func_80197c4.s");
+extern void CloseUIBox(void *, int);
+void Func_80197c4(void)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__a5;
+    struct UISlot *s;
+    struct UIBox *o;
+    struct UIBox *box;
+    int i;
+    int done;
+
+    s = (struct UISlot *)(b + 0x620);
+    box = (struct UIBox *)(b + 0x500);
+    for (i = 0; i != 3; i++, s++) {
+        o = (struct UIBox *)s->obj;
+        if (o != 0 && o->flags != 0)
+            CloseUIBox(o, 0);
+    }
+    for (;;) {
+        done = 1;
+        s = (struct UISlot *)(b + 0x620);
+        for (i = 0; i != 3; i++, s++) {
+            struct UIBox *q = (struct UIBox *)s->obj;
+            if (q != 0) {
+                if (*(int *)&q->f18 == 0 && q->flags == 0)
+                    s->obj = 0;
+                else
+                    done = 0;
+            }
+        }
+        if (done)
+            break;
+        WaitFrames(1);
+    }
+    i = 0;
+    while (i != 8) {
+        if (box->flags != 0)
+            CloseUIBox(box, 0);
+        box++;
+        i++;
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
 INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019908.s");

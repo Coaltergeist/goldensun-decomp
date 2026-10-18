@@ -125,7 +125,24 @@ void Func_80215e0(int param_1, unsigned int param_2)
     }
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021620.s");
+struct Spr8021620 { char pad[0xf]; unsigned char f; char pad2[8]; unsigned short tile:10; unsigned short rest:6; };
+unsigned int Func_8021620(int a0, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    int slot;
+    struct Spr8021620 *s1;
+    struct Spr8021620 *s2;
+
+    slot = AllocSpriteSlot();
+    if (slot > 0x5f)
+        return 0;
+    Func_80215e0(a0, slot);
+    s1 = (struct Spr8021620 *)Func_801eadc(slot, 0x80004000, a1, a2, a3);
+    s1->f = 0xfd;
+    s2 = (struct Spr8021620 *)Func_801eadc(slot, 0x80004000, a1, a2 + 0x20, a3);
+    s2->f = 0xfd;
+    s2->tile += 8;
+    return (unsigned int)s1;
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80216b4.s");
 

@@ -307,7 +307,18 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a24d0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2680.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a32b8.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3354.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a33d4.s");
+extern void *_Func_801eb64(int a, int b, int c, int x, int y);
+void Func_80a33d4(char *p, int arg1)
+{
+    int i;
+
+    for (i = 0; i <= 7; i++)
+        ((void **)(p + 0x48))[i] = _Func_801eb64(2, i, arg1, 0xf8, 0xa8);
+    for (i = 8; i <= 15; i++)
+        ((void **)(p + 0x48))[i] = _Func_801eb64(2, i, arg1, 0x100, 0xa8);
+    for (i = 16; i <= 31; i++)
+        ((void **)(p + 0x48))[i] = _Func_801eb64(2, i, arg1, 0x100, 0xa8);
+}
 
 void Func_80a345c(void) {
     unsigned int *p;

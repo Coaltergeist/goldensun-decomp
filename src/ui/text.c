@@ -115,7 +115,41 @@ int Func_801ec24(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsign
 }
 
 INCLUDE_ASM("asm/ui/text/Func_801ec6c.s");
-INCLUDE_ASM("asm/ui/text/Func_801ed40.s");
+struct TextState801ed40 {
+    unsigned char pad[0x12ec];
+    unsigned short portrait[2];
+    unsigned short pos[2];
+};
+extern int _GetFlag(int);
+extern int GetPortrait(int);
+extern void LoadPortrait(int, int, int *, int *, int, int);
+void Func_801ed40(unsigned int slot, int id, int win)
+{
+    struct TextState801ed40 *b = *(struct TextState801ed40 **)&iwram_3001e8c;
+    int portrait;
+    int pos;
+    int dummy;
+
+    if (_GetFlag(0x20)) {
+        if (id == 0)
+            id = 0x12;
+        if (id == 1)
+            id = 0x13;
+    }
+    portrait = GetPortrait(id);
+    if (portrait == -1)
+        return;
+    if (slot > 1) {
+        if (b->portrait[1] == portrait)
+            slot = 1;
+        else if (b->portrait[0] == portrait)
+            slot = 0;
+        else
+            return;
+    }
+    pos = b->pos[slot];
+    LoadPortrait(portrait, win, &pos, &dummy, slot + 0xe, 1);
+}
 
 void Func_801edcc(unsigned int arg0, int arg1)
 {
@@ -357,4 +391,48 @@ void Func_801fd98(void) {
     StopTask(Func_801fd34);
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801fda8.s");
+struct Win801fda8 { char pad[0xc]; unsigned short x; unsigned short y; };
+void Func_801fda8(struct Win801fda8 *w, int x, int y, int wd, int ht)
+{
+    unsigned int b = iwram_3001e8c;
+    unsigned short *p;
+    int off;
+    int n;
+
+    x = x + w->x + 1;
+    y = y + w->y + 1;
+    if (x < 0) {
+        wd += x;
+        x = 0;
+    }
+    if (x + wd > 0x1d)
+        wd = 0x1e - x;
+    if (y < 0) {
+        ht += y;
+        y = 0;
+    }
+    if (y + ht > 0x1d)
+        ht = 0x14 - y;
+    if (wd > 0 && ht > 0) {
+        off = (y << 6) + (x << 1);
+        do {
+            p = (unsigned short *)(off + b);
+            n = wd;
+            while (n != 0) {
+                n--;
+                *p++ = 0xe006;
+            }
+            off += 0x40;
+        } while (--ht != 0);
+        *(unsigned char *)(b + 0xea3) = 1;
+    }
+}
+/* Read-only data that follows Func_801fda8 in the ROM (used by Func_801de5c and Func_801ef68). */
+__asm__(".section .rodata\n"
+        "\t.global .L371c4\n"
+        "\t.global .L371b4\n"
+        ".L371b4:\n"
+        "\t.incbin \"baserom.gba\", 0x371b4, 0x10\n"
+        ".L371c4:\n"
+        "\t.incbin \"baserom.gba\", 0x371c4, 0x1c\n"
+        "\t.text\n");

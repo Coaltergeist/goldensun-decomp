@@ -1302,7 +1302,41 @@ void OvlFunc_948_2009a9c(void) {
     *(unsigned char *)((char *)r0 + 0x23) = 2;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_4/OvlFunc_948_2009ac8.s");
+static inline void OvlFunc_948_2009ac8_sub(int x, int zero)
+{
+    __Func_8010704(0x3d, 0x24, 1, 1, x, 0x2a);
+    __MapActor_GetActor(8)[0x55] = zero;
+    *(int *)(__MapActor_GetActor(8) + 0xc) = 0x200000;
+}
+
+void OvlFunc_948_2009ac8(void)
+{
+    unsigned char *a;
+    int x;
+    int z;
+    int zero;
+
+    a = __MapActor_GetActor(8);
+    z = *(int *)(a + 0xc);
+    x = *(int *)(a + 8) / 0x100000;
+    if (z == 0)
+        __MapActor_GetActor(8)[0x23] = 2;
+    OvlFunc_948_20099e8();
+    zero = 0;
+    __MapActor_GetActor(8)[0x55] = 3;
+    if (x == 0x28)
+        OvlFunc_948_2009a9c();
+    else if (x == 0x2a)
+        OvlFunc_948_2009a48();
+    else if (x == 0x29)
+        OvlFunc_948_2009a70();
+    else if (x == 0x27)
+        OvlFunc_948_2009ac8_sub(x, zero);
+    else if (x == 0x26)
+        OvlFunc_948_2009ac8_sub(x, zero);
+    else if (x == 0x25)
+        OvlFunc_948_2009ac8_sub(x, zero);
+}
 extern void __Func_8093fa0(void);
 extern void __Func_8093e28(void);
 extern void OvlFunc_948_20099e8(void);

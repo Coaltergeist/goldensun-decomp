@@ -549,7 +549,32 @@ int Func_80912a8(int arg0) {
 }
 
 INCLUDE_ASM("asm/field/map/Func_80912b8.s");
-INCLUDE_ASM("asm/field/map/Func_8091494.s");
+extern void *galloc_iwram(int, int);
+extern void UploadSpriteGFX(int, int, void *);
+extern void Func_80912b8(void);
+void Func_8091494(void *actor)
+{
+    unsigned char *p = galloc_ewram(0x24, 0x1c);
+    void *buf = galloc_iwram(0xe, 0x400);
+    unsigned short *s;
+    vu32 tmp;
+
+    tmp = 0x11111111;
+    DMA3_SET((void *)&tmp, buf, 0x85000080);
+    UploadSpriteGFX(0x5e, 0x200, buf);
+    gfree(0xe);
+    StartTask(Func_80912b8, 0xc80);
+    SET_IO(REG_BLDCNT, 0x3f9e);
+    SET_IO(REG_BLDALPHA, 0x10);
+    SET_IO(REG_BLDY, 0x1f);
+    tmp = 0;
+    DMA3_SET((void *)&tmp, p, 0x85000007);
+    if (actor == 0) {
+        s = (unsigned short *)gState;
+        actor = GetFieldActor(*(unsigned int *)&s[0xfa]);
+    }
+    *(void **)(p + 0x18) = actor;
+}
 
 extern void Func_80912b8(void);
 

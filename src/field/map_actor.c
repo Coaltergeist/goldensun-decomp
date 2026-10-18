@@ -56,7 +56,44 @@ INCLUDE_ASM("asm/field/map_actor/Func_808bec0.s");
 
 INCLUDE_ASM("asm/field/map_actor/Func_808c2dc.s");
 
-INCLUDE_ASM("asm/field/map_actor/Func_808c30c.s");
+void Func_808c30c(int amount, int pct)
+{
+    extern void Func_8091220(int, int);
+    extern void Func_8091254(int);
+    extern void _PlaySound(int);
+    extern unsigned char *_GetUnit(int);
+    extern void _ModifyHP(int, int);
+    extern unsigned char gState[];
+    int n;
+    int i;
+    int v;
+
+    if (amount < 0) {
+        Func_8091220(0x1ff, 0);
+        Func_8091254(4);
+        if (amount < -10)
+            _PlaySound(0x86);
+        else
+            _PlaySound(0x85);
+    } else {
+        _PlaySound(0x7e);
+    }
+    n = _GetPartySize();
+    for (i = 0; i < n; i++) {
+        unsigned char *u = _GetUnit(gState[0x1f8 + i]);
+        if (pct == 0)
+            v = amount;
+        else {
+            v = *(short *)(u + 0x34) * amount / 100;
+            if (v == 0) {
+                v = amount;
+                if (v < 0)
+                    v = -v;
+            }
+        }
+        _ModifyHP(gState[0x1f8 + i], v);
+    }
+}
 
 INCLUDE_ASM("asm/field/map_actor/UpdatePoison.s");
 
