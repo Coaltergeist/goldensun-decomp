@@ -337,7 +337,28 @@ void OvlFunc_898_2008a2c(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008a4c.s");
+extern void __WaitFrames__v(int) __asm__("__WaitFrames");
+extern int __GetFlag__898(int) __asm__("__GetFlag");
+extern unsigned char *iwram_3001ebc__898 __asm__("iwram_3001ebc");
+void OvlFunc_898_2008a4c(void)
+{
+    unsigned char *a = __MapActor_GetActor(0xe);
+    short facing = *(short *)(a + 6);
+    int flags = 2 | *(unsigned short *)(a + 0x64);
+
+    *(unsigned short *)(a + 0x64) = flags;
+    __CutsceneStart();
+    __MessageID(0x1339);
+    if (__GetFlag__898(2))
+        (*(unsigned short *)(iwram_3001ebc__898 + 0x1d8))++;
+    __MapActor_SetAnim(0xe, 0);
+    OvlFunc_898_200973c(0xe, 0, 2);
+    OvlFunc_898_2009724(0xe, 0xa);
+    *(short *)(a + 6) = facing;
+    __WaitFrames__v(1);
+    __CutsceneEnd();
+    *(unsigned short *)(a + 0x64) &= 1;
+}
 INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2008acc.s");
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");

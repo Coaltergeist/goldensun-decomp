@@ -215,7 +215,12 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a1fd4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2144.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a21b0.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2268.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a22f4.s");
+__asm__(".equ .Lpm_80000001, 0x80000001");
+extern unsigned char PmDmaCnt2[] __asm__(".Lpm_80000001");
+void Func_80a22f4(void) {
+    DMA3_SET((void *)0x5000200, (void *)0x50001c0, 0x80000010);
+    DMA3_SET((void *)0x50001e8, (void *)(0x50001c0 + 0x1c), (u32)PmDmaCnt2);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2324.s");
 
 void Func_80a23c0(unsigned int arg0) {
