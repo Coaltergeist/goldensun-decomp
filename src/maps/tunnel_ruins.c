@@ -671,7 +671,26 @@ int OvlFunc_964_2008fe8(struct Actor *a) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
+void OvlFunc_964_2009038(struct Actor *a)
+{
+    int i = 60;
+    fx32 y, f;
+    while (1) {
+        if (i != 0) {
+            __WaitFrames(1);
+            y = a->pos.y;
+            f = a->floorPos;
+            i--;
+            if (y <= f) break;
+        } else {
+            f = a->floorPos;
+            break;
+        }
+    }
+    a->motion.y = 0;
+    a->pos.y = f;
+    a->prevPos.y = 0x80000000;
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");

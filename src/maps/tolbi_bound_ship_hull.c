@@ -66,7 +66,17 @@ void OvlFunc_945_20080d8(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.s");
+int OvlFunc_945_20080fc(struct Actor *a)
+{
+    if (a->__unk4C != 0) {
+        a->__unk4C--;
+    } else {
+        return 1;
+    }
+    if (a->prevPos.x == (fx32)0x80000000 && a->prevPos.y == (fx32)0x80000000 && a->prevPos.z == (fx32)0x80000000)
+        return 1;
+    return 0;
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
 void OvlFunc_945_2008284(struct Actor *actor)
 {

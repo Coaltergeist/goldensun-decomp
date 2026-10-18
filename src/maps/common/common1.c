@@ -40,7 +40,17 @@ void OvlFunc_common1_0(void)
 }
 
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_78.s");
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_148.s");
+extern unsigned char iwram_3001ebc[];
+int __GetFlag(int);
+struct C1_148 { unsigned char pad[0x182]; short f; };
+void OvlFunc_common1_148(void)
+{
+    extern int gState_i148[] __asm__("gState");
+    unsigned char *b = *(unsigned char **)iwram_3001ebc;
+    int v = gState_i148[0x1f4 / 4];
+    if (v != 0 && *(short *)(b + 0x17e) >> 10 == v && __GetFlag(0x141))
+        ((struct C1_148 *)b)->f = 0x63;
+}
 #include "state/global_state.h"
 extern unsigned char iwram_3001ebc[];
 extern GlobalState gState;
