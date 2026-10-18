@@ -160,7 +160,20 @@ void OvlFunc_941_200833c(void) {
     API_ClearFlag(0x202);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008384.s");
+void OvlFunc_941_2008384(void)
+{
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3b);
+    API_WaitFrames(4);
+    API_Func_80105d4(2, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(2, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x2b, 0x57, 2, 5, 0x15, 0x3a);
+    API_WaitFrames(4);
+    API_Func_80105d4(3, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(1, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3a);
+    API_Func_8010704(0x15, 0xb, 2, 2, 0x15, 0xd);
+    API_Func_8010704(0x13, 0x11, 1, 1, 0x15, 0xe);
+}
 
 void OvlFunc_941_2008460(void) {
 	if (API_GetFlag(0x80 << 2) != 0) {

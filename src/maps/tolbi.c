@@ -332,7 +332,15 @@ void OvlFunc_949_2008644(void)
     __WaitMapTransition();
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20086e8.s");
+void OvlFunc_949_20086e8(struct Actor *actor) {
+    if (actor != 0) {
+        struct Actor *a0 = (struct Actor *)__MapActor_GetActor(0);
+        int prio = a0->sprite->oam.priority;
+        actor->flags = 0;
+        actor->sprite->oam.priority = prio;
+        actor->sprite->shadowOAM.priority = prio;
+    }
+}
 extern void OvlFunc_949_20086e8(struct Actor *actor);
 extern int gScript_949__02008ec0;
 extern int gScript_949__02008f90;

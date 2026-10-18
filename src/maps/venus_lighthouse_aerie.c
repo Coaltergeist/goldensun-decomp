@@ -542,7 +542,74 @@ void OvlFunc_969_200d9f0(struct Actor *actor) {
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200da28.s");
+extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+
+
+extern int _divsi3_RAM(int, int);
+extern void __Actor_SetScript(struct Actor *, const void *);
+extern void __Func_80929d8(struct Actor *, int);
+extern unsigned int __Random(void);
+extern int __sin(int);
+extern void OvlFunc_969_200db90(struct Actor *);
+extern const u8 gScript_969__0200e734[];
+extern void *iwram_3001e70;
+extern unsigned int iwram_3001e40;
+
+void OvlFunc_969_200da28(void)
+{
+    struct Actor *actor;
+    struct Actor *newActor;
+    struct Sprite *sprite;
+    u8 *ptr;
+    s16 *gate;
+    int r8;
+    int flags;
+    u32 randVal;
+
+    actor = MapActor_GetActor(0x17);
+    ptr = (u8 *)iwram_3001e70;
+    r8 = ((__Random() * 48) >> 16) << 16;
+    gate = (s16 *)(ptr + 0xe8);
+    if (gate[1] <= 0x81) {
+        if (iwram_3001e40 & 1) {
+            API_MapActor_SetPos(0x17, 0x1300000, 0xa40000);
+            MapActor_GetActor(0x17)->scale.x = 0x10000;
+            MapActor_GetActor(0x17)->scale.y = 0x10000;
+        } else {
+            API_MapActor_SetPos(0x17, 0x1300000, 0xab0000);
+            MapActor_GetActor(0x17)->scale.x = 0x14ccc;
+            MapActor_GetActor(0x17)->scale.y = 0x14ccc;
+        }
+    } else {
+        API_MapActor_SetPos(0x17, 0, 0);
+    }
+
+    if (actor != NULL) {
+        flags = iwram_3001e40 & 0xf;
+        if (flags == 0) {
+            newActor = API_CreateActor(0x11c,
+                                     actor->pos.x + 0x80000,
+                                     actor->pos.y + r8 + 0x80000,
+                                     actor->pos.z);
+            r8 = _divsi3_RAM(r8, 0x60000);
+            r8 <<= 16;
+            if (newActor != NULL) {
+                sprite = newActor->sprite;
+                __Actor_SetScript(newActor, gScript_969__0200e734);
+                __Func_80929d8(newActor, 5);
+                newActor->__unk55 = flags;
+                randVal = __Random() & 0x0ffff000;
+                newActor->waveCounter = randVal;
+                newActor->__unk66 = flags;
+                newActor->linkedActor = actor;
+                newActor->update = (actorfun_t *)OvlFunc_969_200db90;
+                newActor->speed = (__sin((r8 & 0xfffff) >> 4) * 24) >> 16;
+                sprite->flags = 0;
+                sprite->oam.priority = actor->sprite->oam.priority;
+            }
+        }
+    }
+}
 extern int __cos(int);
 extern int __sin(int);
 
