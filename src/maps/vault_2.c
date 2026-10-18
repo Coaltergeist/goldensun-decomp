@@ -132,7 +132,37 @@ void OvlFunc_901_200856c(void)
   OvlFunc_901_20084b4(0xd);
 }
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_200858c.s");
+extern unsigned char MSG_1cb1_[] __asm__(".Lmsg_1cb1");
+__asm__(".equ .Lmsg_1cb1, 0x1cb1");
+struct A200858c { char pad[6]; short facing; char pad2[0x64 - 8]; unsigned short flags; };
+void OvlFunc_901_200858c(void)
+{
+    unsigned char *a;
+    short dir;
+    int msg;
+
+    a = __MapActor_GetActor(0xe);
+    dir = *(short *)(a + 6);
+    ((struct A200858c *)a)->flags |= 2;
+    __CutsceneStart();
+    msg = (int)MSG_1cb1_;
+    API_MessageID(msg);
+    API_MapActor_SetAnim(0xe, 0);
+    API_MapActor_TurnToFaceActor(0xe, 0, 2);
+    if (API_GetFlag(0x300) == 0) {
+        API_MapActor_Emote(0xe, 0x100, 0x3c);
+        API_ActorMessage_Wait(0xe, 0, 0xa);
+        API_ActorMessage_Wait(0xe, 0, 0xa);
+        API_SetFlag(0x300);
+    }
+    API_MessageID(msg + 2);
+    API_ActorMessage_Wait(0xe, 0, 0xa);
+    *(short *)(a + 6) = dir;
+    API_WaitFrames(1);
+    __CutsceneEnd();
+    ((struct A200858c *)a)->flags = 1;
+    API_SetFlag(0x307);
+}
 struct Actor640 {
   char pad[6];
   short facing;

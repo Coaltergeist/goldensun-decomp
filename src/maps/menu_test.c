@@ -189,7 +189,37 @@ void OvlFunc_974_2008244(void)
 
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200829c.s");
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20088c4.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008b10.s");
+static inline void ModifyHP_974(int pc, int amount) { extern int __ModifyHP(int, int); __ModifyHP(pc, amount); }
+void OvlFunc_974_2008b10(void)
+{
+    extern void __Func_801776c(int, int);
+    extern void __ModifyPP(int, int);
+    extern unsigned char *__GetUnit(int);
+    extern void __CalcStats(int);
+    unsigned char *u;
+
+
+    __Func_801776c(0xc1b, 1);
+    ModifyHP_974(0, -100);
+    ModifyHP_974(1, -100);
+    ModifyHP_974(2, -33);
+    ModifyHP_974(3, -100);
+    __ModifyPP(0, -50);
+    __ModifyPP(1, -40);
+    __ModifyPP(2, -35);
+    __ModifyPP(3, -20);
+    u = __GetUnit(0);
+    u[0x131] = 1;
+    u += 0x140;
+    *u = 1;
+    u = __GetUnit(1);
+    u[0x130] = 1;
+    u[0x131] = 2;
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+}
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008bb8.s");
 INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008cf4.s");
 

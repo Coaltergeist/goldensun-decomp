@@ -1021,7 +1021,44 @@ void OvlFunc_881_200b7d8(void)
     actor[0x55] = 2;
 }
 
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b84c.s");
+__asm__(".equ .Lm881_map2, 2");
+extern unsigned char Lm881_map2[] __asm__(".Lm881_map2");
+void OvlFunc_881_200b84c(void)
+{
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern struct Actor *__MapActor_GetActor__b84c(int) __asm__("__MapActor_GetActor");
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __SetDestMap(int, int);
+    struct Actor *a;
+    struct Actor *b;
+    int i;
+
+    {
+        unsigned char *gs = gStateBytes;
+        gs += 0x1f4;
+        a = __MapActor_GetActor__b84c(*(int *)gs);
+    }
+    b = __MapActor_GetActor__b84c(0x36);
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    API_PlaySound(0xdb);
+    __Actor_SetSpriteFlags(a, 0);
+    b->__unk55 = 0;
+    a->__unk55 = 0;
+    a->motion.y = 0;
+    a->__unk61 = 1;
+    b->__unk61 = 1;
+    for (i = 0x3b; i >= 0; i--) {
+        a->motion.y += 0x3333;
+        b->motion.y += 0x3333;
+        API_WaitFrames(1);
+    }
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_CutsceneEnd();
+    API_SetFlag(0x122);
+    __SetDestMap((int)Lm881_map2, 0x1b);
+}
 void OvlFunc_881_200b8fc(void)
 {
     extern void __SetRegAnimDest(unsigned int reg, unsigned int value);

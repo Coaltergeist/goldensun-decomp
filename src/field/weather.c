@@ -56,7 +56,25 @@ void Func_80944ec(void)
 }
 
 INCLUDE_ASM("asm/field/weather/Func_8094544.s");
-INCLUDE_ASM("asm/field/weather/Func_8094730.s");
+extern void *galloc_ewram(int index, unsigned int size);
+extern int StartTask(void *task, int priority);
+extern void Func_8094544(void);
+void Func_8094730(int a0, int a1, int a2, int a3, int a4, int a5, int a6)
+{
+    unsigned char *p = (unsigned char *)galloc_ewram(0x22, 0xf20);
+
+    DMA3_CLEAR(p, 0xf20);
+    WaitForDma3();
+    p[0xf01] = a0;
+    *(int *)(p + 0xf08) = a1;
+    *(int *)(p + 0xf0c) = a4;
+    *(int *)(p + 0xf18) = a3;
+    *(int *)(p + 0xf1c) = a6;
+    *(int *)(p + 0xf10) = a2;
+    *(int *)(p + 0xf14) = a5;
+    StartTask(Func_8094544, 0xc80);
+    StartTask(Func_80944ec, 0x480);
+}
 
 extern void Func_8094544(void);
 
@@ -89,7 +107,29 @@ INCLUDE_ASM("asm/field/weather/Task_Snow.s");
 INCLUDE_ASM("asm/field/weather/StartSnow.s");
 INCLUDE_ASM("asm/field/weather/Task_Earthquake.s");
 INCLUDE_ASM("asm/field/weather/StartEarthquake.s");
-INCLUDE_ASM("asm/field/weather/StartThunder.s");
+extern void *galloc_ewram(int index, unsigned int size);
+extern unsigned int iwram_3001ed0;
+extern int Func_8090a5c(unsigned int, unsigned int, unsigned int, unsigned int);
+extern void Func_809088c(unsigned char *a, unsigned char *b, unsigned char *c, unsigned int d);
+extern void Task_Thunder(void);
+extern int StartTask(void *task, int priority);
+struct Thunder8095160 { unsigned char pad[0x1f80]; unsigned short timer; unsigned short active; };
+void StartThunder(void)
+{
+    unsigned char *base = (unsigned char *)galloc_ewram(0x1e, 0x1f88);
+    unsigned int src = iwram_3001ed0;
+    vu32 tmp;
+
+    tmp = 0;
+    DMA3_SET((void *)&tmp, base, 0x850007e2);
+    Func_8090a5c(0x10003, src, (unsigned int)base, 1);
+    Func_8090a5c(0x10005, src, (unsigned int)(base + 0xa80), 1);
+    Func_809088c(base + 0xa80, base, base + 0x1500, 0xc);
+    Func_8090a5c((unsigned int)base, 0, src + 0xe00, 1);
+    ((struct Thunder8095160 *)base)->timer = 0x258;
+    ((struct Thunder8095160 *)base)->active = 1;
+    StartTask(Task_Thunder, 0xc80);
+}
 
 extern void *galloc_ewram(int index, unsigned int size);
 

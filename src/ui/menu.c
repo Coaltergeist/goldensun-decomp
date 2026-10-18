@@ -31,7 +31,48 @@ INCLUDE_ASM("asm/ui/menu/Func_801a98c.s");
 
 INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b010.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b148.s");
+struct MenuNode801b148 {
+    unsigned int pad0;
+    struct MenuNode801b148 *next;
+    unsigned short pad8;
+    unsigned short active;
+    unsigned short id;
+};
+void Func_801b148(void)
+{
+    extern unsigned char *iwram_3001e98__b148 __asm__("iwram_3001e98");
+    extern void Func_801a97c(void);
+    extern void Func_801c21c(void);
+    extern void Func_8003f3c(int);
+    extern void CloseUIBox__b148(int, int) __asm__("CloseUIBox");
+    extern void WaitFrames(unsigned int);
+    unsigned char *s = iwram_3001e98__b148;
+    struct MenuNode801b148 *n;
+
+    Func_801a97c();
+    CloseUIBox__b148(*(int *)(s + 0x350), 2);
+    WaitFrames(1);
+    for (n = *(struct MenuNode801b148 **)(s + 0x348); n != 0; n = n->next) {
+        if (n->active) {
+            Func_8003f3c(n->id);
+            n->active = 0;
+        }
+    }
+    for (n = *(struct MenuNode801b148 **)(s + 0x34c); n != 0; n = n->next) {
+        if (n->active) {
+            Func_8003f3c(n->id);
+            n->active = 0;
+        }
+    }
+    Func_801c21c();
+    if (*(short *)(s + 0x12)) {
+        Func_8003f3c(*(unsigned short *)(s + 0xc));
+        if (*(short *)(s + 0x12))
+            Func_8003f3c(*(unsigned short *)(s + 0x40));
+    }
+    Func_8003f3c(*(unsigned short *)(s + 0x2e4));
+    gfree(0x12);
+}
 
 extern unsigned int iwram_3001e98;
 

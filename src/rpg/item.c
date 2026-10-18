@@ -82,7 +82,35 @@ int FindEmptyInventorySlot(int unit)
 
 INCLUDE_ASM("asm/rpg/item/Func_8078500.s");
 INCLUDE_ASM("asm/rpg/item/Func_8078550.s");
-INCLUDE_ASM("asm/rpg/item/GiveItemTo.s");
+int GiveItemTo(int pc, int item)
+{
+    extern unsigned char *GetUnit(int unit);
+    struct Unit *u;
+    int i;
+    unsigned int n;
+
+    u = (struct Unit *)GetUnit(pc);
+    if (((struct Item *)GetItemInfo(item))->flags & 0x10) {
+        for (i = 0; i <= 14; i++) {
+            if (((u->items[i] ^ item) & 0x1ff) == 0)
+                break;
+        }
+        if (i != 15) {
+            n = (u->items[i] >> 11) + 1;
+            if (n > 0x1d)
+                return -1;
+            u->items[i] = (u->items[i] & 0x7ff) | (n << 11);
+            return i;
+        }
+    }
+    for (i = 0; i <= 14; i++) {
+        if (u->items[i] == 0) {
+            u->items[i] = item;
+            return i;
+        }
+    }
+    return -1;
+}
 INCLUDE_ASM("asm/rpg/item/GiveItem.s");
 
 

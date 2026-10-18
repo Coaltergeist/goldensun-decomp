@@ -130,7 +130,38 @@ void Sprite_SetAnimSpeed(unsigned char *sprite, int speed) {
     } while (i != 0);
 }
 
-INCLUDE_ASM("asm/field_engine/sprite/sprite/InitSprites.s");
+extern void *galloc_ewram(int, int);
+extern void *galloc_iwram(int, int);
+extern void LoadSpritePalette(void);
+extern int UploadSpriteGFX(int, int, const void *);
+extern unsigned char L12f20[] __asm__(".L12f20");
+extern void Func_800a418(void);
+/* Size of the IWRAM-copied routine Func_800a418 (a link-time constant in the original). */
+__asm__(".equ .LFunc_800a418_size, 0x7c");
+extern unsigned char Func_800a418_size[] __asm__(".LFunc_800a418_size");
+void InitSprites(int mode)
+{
+    void *a;
+    void *b;
+    vu32 tmp;
+    unsigned int size;
+
+    if (mode == 3) {
+        a = galloc_ewram(4, 0xe00);
+        b = galloc_ewram(3, 0x600);
+    } else {
+        a = galloc_iwram(4, 0xe00);
+        b = galloc_iwram(3, 0x600);
+    }
+    LoadSpritePalette();
+    tmp = 0;
+    DMA3_SET((void *)&tmp, a, 0x85000380);
+    tmp = 0;
+    DMA3_SET((void *)&tmp, b, 0x85000180);
+    UploadSpriteGFX(0x5d, 0x80, L12f20);
+    size = (unsigned int)Func_800a418_size;
+    DMA3_SET(Func_800a418, galloc_iwram(0x35, size), 0x84000000 | (size >> 2));
+}
 INCLUDE_ASM("asm/field_engine/sprite/sprite/CreateSpriteLayer.s");
 
 void DeleteSpriteLayer(struct SpriteLayer *layer) {

@@ -39,7 +39,37 @@ extern void Func_801789c();
 extern unsigned int Func_8017364();
 
 INCLUDE_ASM("asm/ui/ui/ClearUIRegion.s");
-INCLUDE_ASM("asm/ui/ui/Func_8016230.s");
+extern void FillUIRegion__v(int a, int b, int c, int d) __asm__("FillUIRegion");
+extern void Func_8017248(int a, int b, int c, int d, int e);
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
+static inline void Fill_80008d8(void *dst, unsigned int size, unsigned int value)
+{
+    void *(*fill)(void *, unsigned int, unsigned int) = Func_80008d8;
+    fill(dst, size, value);
+}
+void Func_8016230(struct UIBox *box)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__a5;
+    int x, y, w, h;
+
+    h = box->h;
+    box->f1a = 0;
+    x = box->x;
+    y = box->y;
+    w = box->w;
+    if (box->flags & 8) {
+        if (box->flags & 0x20) {
+            FillUIRegion__v(x, y, w, h);
+            Fill_80008d8((void *)0x6002500, 0xf00, 0x44444444);
+        } else {
+            Fill_80008d8((void *)0x6002500, 0xf00, 0);
+        }
+        Func_8017248(x, y, w, h, 0);
+    } else {
+        FillUIRegion__v(x, y, w, h);
+    }
+    b[0xea3] = 1;
+}
 INCLUDE_ASM("asm/ui/ui/CreateUIBox.s");
 
 extern void WaitFrames(unsigned int nframes);
@@ -394,7 +424,42 @@ INCLUDE_ASM("asm/ui/ui/Func_8018a50.s");
 
 INCLUDE_ASM("asm/ui/ui/DrawText.s");
 INCLUDE_ASM("asm/ui/ui/Func_8018efc.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019000.s");
+void Func_8019000(unsigned short *box, unsigned int tile, unsigned int x, unsigned int y, unsigned int mode)
+{
+    extern unsigned short *iwram_3001e8c__9000 __asm__("iwram_3001e8c");
+    unsigned char *map = (unsigned char *)iwram_3001e8c__9000;
+    unsigned int pal;
+    unsigned int idx;
+
+    y++;
+    x++;
+    if (y > box[5] - 1u)
+        return;
+    if (x > box[4] - 1u)
+        return;
+    switch (mode) {
+    case 3: pal = 0xf000; break;
+    case 2: pal = 0xe000; break;
+    case 4: pal = 0x1000; break;
+    default: pal = 0; break;
+    }
+    switch (mode) {
+    case 1:
+        break;
+    case 2:
+    case 3:
+    case 4:
+        idx = (box[7] + y) * 32 + (box[6] + x);
+        if (idx < 0x280)
+            *(unsigned short *)(map + (idx << 1)) = tile | pal;
+        break;
+    default:
+        idx = (box[7] + y) * 32 + (box[6] + x);
+        if (idx < 0x280)
+            *(unsigned short *)(map + (idx << 1)) = tile;
+        break;
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_801908c.s");
 
 INCLUDE_ASM("asm/ui/ui/Func_80191cc.s");

@@ -638,7 +638,39 @@ void Func_80a6874(void)
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a68a8.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a68ec.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6a00.s");
+struct S80a6a00 {
+    unsigned char pad0[0x218];
+    unsigned char count;
+    unsigned char pad219;
+    unsigned char list[0x46];
+    signed char cursor[1];
+};
+
+int Func_80a6a00(int *out, int idx)
+{
+    extern struct S80a6a00 *iwram_3001f2c__6a00 __asm__("iwram_3001f2c");
+    extern unsigned char *_GetUnit__6a00(int) __asm__("_GetUnit");
+    struct S80a6a00 *s = iwram_3001f2c__6a00;
+    unsigned char *u = _GetUnit__6a00(s->list[idx]);
+    int total = s->count;
+    int sel = s->cursor[s->list[idx]];
+    int row, col, pages;
+
+    if (sel + 1 > total)
+        sel = total - 1;
+    row = sel / 5;
+    col = sel % 5;
+    pages = total / 5;
+    if (total % 5 != 0)
+        pages++;
+    out[0] = (int)u;
+    out[2] = row;
+    out[3] = pages;
+    out[4] = col;
+    out[5] = total;
+    out[6] = sel;
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6a98.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6b64.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6ccc.s");
@@ -656,7 +688,43 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7f44.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8034.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8088.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8114.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a847c.s");
+extern unsigned char Laf2fc[] __asm__(".Laf2fc");
+extern void Func_80a2268(void *w, int x, int y, int wd, int ht, int pri);
+void Func_80a847c(int mode, int idx, unsigned char *flags, int sel)
+{
+    unsigned char *m = (unsigned char *)iwram_3001f2c;
+    int x, y, wd;
+    int i, n;
+
+    if (mode == 0) {
+        y = idx * 2 + 5;
+        x = 0;
+        wd = 5;
+        n = 0;
+        for (i = 0; i <= 4; i++) {
+            if (flags[i] != 0) {
+                if (idx == n) {
+                    wd = Laf2fc[i];
+                    break;
+                }
+                n++;
+            }
+        }
+    } else if (idx <= 3) {
+        y = idx;
+        x = 5;
+        wd = 0xd;
+    } else {
+        y = idx + 4;
+        x = 8;
+        wd = 0x14;
+    }
+    {
+        int ne = sel != 1;
+        int pri = 0xf - ne;
+        Func_80a2268(*(void **)(m + 0x24), x, y, wd, 1, pri);
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8508.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8578.s");
 
@@ -794,7 +862,37 @@ unsigned int Func_80aa544(unsigned int arg0)
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aa56c.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aa768.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80aac84.s");
+void Func_80aac84(int d)
+{
+    int k;
+    int row = 0xf;
+
+    for (k = 0; k <= 2; k++) {
+        int j;
+        for (j = 0; j <= 0xf; j++) {
+            int idx = (row << 4) + j;
+            unsigned int c = ((unsigned short *)0x5000000)[idx];
+            int b = (0x1f & (c >> 10));
+            int g = (0x1f & (c >> 5));
+            int r = (0x1f & c);
+            b += d; g += d; r += d;
+            if (b > 0x1f) b = 0x1f;
+            if (g > 0x1f) g = 0x1f;
+            if (r > 0x1f) r = 0x1f;
+            if (b < 0) b = 0;
+            if (g < 0) g = 0;
+            if (r < 0) r = 0;
+            c = (b << 10) | (g << 5) | r;
+            /* written one palette row (16 colours) below the source */
+            ((unsigned short *)0x4ffffe0)[idx] = c;
+        }
+        row = 5;
+        if (k != 0) {
+            row = 7;
+            d = -12;
+        }
+    }
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aad10.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aae14.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aaf58.s");
