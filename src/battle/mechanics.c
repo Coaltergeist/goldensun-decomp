@@ -405,7 +405,21 @@ void Func_80bdfec(void) {
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80be02c.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80be070.s");
+extern int Func_80b6c08(int side, s16 *units);
+int Func_80be070(unsigned int id)
+{
+    s16 buf[8];
+    int side = 1;
+    int n;
+    int i;
+    if (id > 7)
+        side = 2;
+    n = Func_80b6c08(side, buf);
+    for (i = 0; i < n; i++)
+        if ((unsigned short)buf[i] == id)
+            break;
+    return i != n;
+}
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80be0b4.s");
 

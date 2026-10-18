@@ -23,7 +23,17 @@ void LoadOldMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned
 }
 INCLUDE_ASM("asm/ui/icon/LoadItemIconID.s");
 INCLUDE_ASM("asm/ui/icon/DrawInventoryIcon.s");
-INCLUDE_ASM("asm/ui/icon/LoadInventoryIcon.s");
+extern void DrawInventoryIcon(int, int);
+int LoadInventoryIcon(int item, int a1, int slot)
+{
+    unsigned char *buf;
+
+    buf = galloc_iwram(0x11, 0x608);
+    DrawInventoryIcon(item, a1);
+    UploadSpriteGFX(slot, 0x80, buf + 0x400);
+    gfree(0x11);
+    return 1;
+}
 
 int LoadStatusIcon(int icon, int unused, int slot) {
     unsigned char *buf;

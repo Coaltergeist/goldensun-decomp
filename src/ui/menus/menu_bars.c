@@ -9,7 +9,21 @@ extern void Func_802851c(void);
 extern void Func_801c2e4(void);
 extern unsigned int Func_8028574(unsigned int arg0);
 
-INCLUDE_ASM("asm/ui/menus/menu_bars/LoadUIIcon.s");
+extern void *alloc_iwram(int);
+extern unsigned char *GetFile(int);
+extern unsigned char _FILE_f1[];
+extern void DecompressLZ1(void *, void *);
+extern void UploadSpriteGFX(int, int, void *);
+extern void free(void *);
+void LoadUIIcon(int dst, int idx)
+{
+    int size = 0x400;
+    void *buf = alloc_iwram(size);
+    unsigned char *f = GetFile((int)_FILE_f1);
+    DecompressLZ1(f + ((unsigned short *)f)[idx], buf);
+    UploadSpriteGFX(dst, size, buf);
+    free(buf);
+}
 
 INCLUDE_ASM("asm/ui/menus/menu_bars/AddMenuBarOption.s");
 

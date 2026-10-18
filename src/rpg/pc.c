@@ -72,7 +72,19 @@ int GetPartySize(void) {
     return count;
 }
 
-INCLUDE_ASM_SECTION("asm/rpg/pc/AddPartyMember.s", ".text.rpg_pc_2");
+extern void SetFlag(int);
+extern unsigned char gState__p[] __asm__("gState");
+int AddPartyMember(int id)
+{
+    int n = GetPartySize();
+    int i;
+    SetFlag(id);
+    for (i = 0; i < n; i++)
+        if (gState__p[0x1f8 + i] == id)
+            return n;
+    gState__p[0x1f8 + i] = id;
+    return n + 1;
+}
 INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079664.s", ".text.rpg_pc_2");
 
 #include "state/global_state.h"

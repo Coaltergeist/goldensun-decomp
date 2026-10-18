@@ -123,7 +123,7 @@ void MapActor_SetSpeed(unsigned int actor, int speed, int accel) {
     }
 }
 
-extern unsigned int Actor_SetBehavior(void *, int);
+extern void Actor_SetBehavior(void *, int);
 
 void MapActor_SetBehavior(int actorID, int behavior)
 {
@@ -393,7 +393,17 @@ void Func_80925cc(unsigned int arg0)
 	MapActor_WaitScript(arg0);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80925e0.s", ".text.map_actor_2");
+void Func_80925e0(int *a)
+{
+    int vx = a[0xc];
+    int vz;
+    a[0xe] = a[2] += vx;
+    vz = a[0xd];
+    a[0x10] = a[4] += vz;
+    a[0xf] = a[3] += 0x400;
+    a[0xc] = vx - vx / 18;
+    a[0xd] = vz - vz / 16;
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092624.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092708.s", ".text.map_actor_2");
 
@@ -739,7 +749,25 @@ unsigned int Func_8093964(unsigned int arg0)
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809397c.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093a14.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Actor_SetBehavior.s", ".text.map_actor_2");
+extern unsigned char X9fe00[], X9fd44[], X9fe10[], X9fecc[], X9ff18[], X9ff2c[], X9fe04[];
+extern unsigned int gState__sb[] __asm__("gState");
+void Actor_SetBehavior(void *actor, int behavior)
+{
+    unsigned char *s = (unsigned char *)behavior;
+    switch (behavior) {
+    case 1: s = X9fe00; break;
+    case 2: s = X9fd44; break;
+    case 3: s = X9fe10; break;
+    case 4: s = X9fecc; break;
+    case 5: s = X9ff18; break;
+    case 6:
+        *(int *)((unsigned char *)actor + 0x68) = MapActor_GetActor(gState__sb[0x7d]);
+        s = X9ff2c;
+        break;
+    case 7: s = X9fe04; break;
+    }
+    _Actor_SetScript((int)actor, s);
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093af8.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093c00.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093e28.s", ".text.map_actor_2");

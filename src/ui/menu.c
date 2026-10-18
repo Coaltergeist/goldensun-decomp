@@ -320,7 +320,21 @@ void Func_801ce6c(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801ce90.s");
+extern unsigned char gState[];
+void Func_801ce90(unsigned char *p)
+{
+    switch (*(unsigned short *)(p + 0x574)) {
+    case 0:
+        if (gState[0x20c] != 0) gState[0x20c]--;
+        break;
+    case 1:
+        if (gState[0x205] != 0) gState[0x205]--;
+        break;
+    case 2:
+        if (gState[0x206] != 0) gState[0x206]--;
+        break;
+    }
+}
 INCLUDE_ASM("asm/ui/menu/Func_801cee0.s");
 
 void Func_801cf44(void) {}

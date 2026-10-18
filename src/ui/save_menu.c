@@ -220,7 +220,25 @@ int Func_8021b30(unsigned int move, unsigned int arg1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021b80.s");
+extern void LoadPortrait(int, int, int *, int *, int, int);
+int Func_8021b80(unsigned int id, int a1)
+{
+    int out;
+    if (id > 7)
+        id = 0;
+    if (_GetFlag(0x20)) {
+        switch (id) {
+        case 0:
+            id = 0x38;
+            break;
+        case 1:
+            id = 0x39;
+            break;
+        }
+    }
+    LoadPortrait(id, 0, &a1, &out, 0xe, 1);
+    return out;
+}
 
 unsigned int Func_8021bc8(int idx) {
     if (idx != 0)

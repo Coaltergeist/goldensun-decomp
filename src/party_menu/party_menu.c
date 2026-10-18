@@ -46,7 +46,20 @@ void Func_80a1090(void) {
     base[0x113] = 1;
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a10d0.s");
+extern void _Func_8016498(unsigned int);
+extern unsigned int _CreateUIBox(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+int Func_80a10d0(unsigned int a0, unsigned int a1, unsigned int a2, unsigned int a3, unsigned int a4, unsigned int flags)
+{
+    unsigned int *box = (unsigned int *)a0;
+    if (*box != 0) {
+        if (flags & 0x100)
+            return 0;
+        _Func_8016498(*box);
+        return 0;
+    }
+    *box = _CreateUIBox(a1, a2, a3, a4, flags & 0xff);
+    return 1;
+}
 
 extern void _CloseUIBox();
 
@@ -125,7 +138,7 @@ void Func_80a1804(void) {
     _Func_801ed40(0, unset, 0);
 }
 
-extern void Func_80a10d0(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+extern int Func_80a10d0(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 unsigned int Func_80a1814(unsigned int arg0)
 {
@@ -479,7 +492,20 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a45cc.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a46b4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a4754.s");
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a47b4.s");
+extern void Func_80a4924(unsigned int, unsigned int);
+int Func_80a47b4(int idx)
+{
+    unsigned char *b = (unsigned char *)iwram_3001f2c;
+    unsigned int *box = (unsigned int *)(b + 0x30);
+    int off;
+    unsigned short v;
+    Func_80a10d0((unsigned int)box, 0, 0, 0xd, 0xa, 2);
+    Func_80a22f4();
+    off = (idx << 1) + 0x178;
+    if (*(unsigned short *)(b + off) != 0)
+        Func_80a4924(*box, *(unsigned short *)(b + off));
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a4800.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a4924.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a4db4.s");
@@ -765,7 +791,32 @@ void Func_80aa448(void) {
     Func_80aa460(*(unsigned short *)(p + 0x28) & 0x3fff);
 }
 
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80aa460.s");
+extern unsigned char *_GetMoveInfo(int);
+extern void Func_80a2438__a(int) __asm__("Func_80a2438");
+void Func_80aa460(int id)
+{
+    unsigned char *m = _GetMoveInfo(id);
+    switch (m[1] & 0xf) {
+    case 1:
+        Func_80a2438__a(0x7e);
+    case 0xb:
+        Func_80a2438__a(0x7e);
+        return;
+    }
+    switch (m[3]) {
+    case 1: case 2: case 31: case 32:
+        break;
+    case 5:
+        Func_80a2438__a(0x52);
+        break;
+    case 3:
+        Func_80a2438__a(0x54);
+        break;
+    default:
+        Func_80a2438__a(0x5b);
+        break;
+    }
+}
 
 int Func_80aa534(void) { return 0; }
 
