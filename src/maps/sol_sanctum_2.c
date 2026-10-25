@@ -32,7 +32,16 @@ void *SolSanctum2_GetEvents(void) {
     return (void *)gOvl_0200a80c;
 }
 
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008054.s");
+int OvlFunc_891_2008054(void)
+{
+    extern void __Func_8091e9c(int);
+    if (__GetFlag(0x818)) {
+        if (!__GetFlag(0x813)) { __Func_8091e9c(3); return 1; }
+    } else {
+        if (!__GetFlag(0x812)) { __Func_8091e9c(4); return 1; }
+    }
+    return -1;
+}
 
 extern void OvlFunc_891_20096dc(void);
 

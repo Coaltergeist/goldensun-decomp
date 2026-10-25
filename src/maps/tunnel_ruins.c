@@ -502,7 +502,48 @@ unsigned int OvlFunc_964_2008cc0(void) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2008cd0.s");
+int OvlFunc_964_2008cd0(unsigned int *arr)
+{
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern void __WaitFrames(int);
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __MapActor_TravelToWait(int, int, int);
+    struct Actor *actor;
+    u8 saved;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    saved = actor->__unk55;
+    v = buf;
+    v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    v[1] = actor->pos.y;
+    v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    {
+        int ang = (actor->facing + 0x2000) & 0xc000;
+        __vec3_translate(0x80 << 13, ang, v);
+    }
+    if (__TestCollision(actor, v) != 1 && __TestCollision(actor, (int *)arr) == 0) {
+        __CutsceneStart();
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(6);
+        __PlaySound(0x98);
+        __Actor_SetAnim(actor, 7);
+        actor->speed = 0xc0 << 10;
+        actor->accel = 0x80 << 10;
+        actor->motion.y = 0x80 << 11;
+        actor->__unk55 &= 0x7e;
+        __Actor_SetSpriteFlags(actor, 0);
+        __MapActor_TravelToWait(0, (((int)arr[0] >> 20) << 4) + 8, (((int)arr[2] >> 20) << 4) + 8);
+        __Actor_SetAnim(actor, 6);
+        __Actor_SetSpriteFlags(actor, 1);
+        __WaitFrames(6);
+        actor->__unk55 = saved;
+        __CutsceneEnd();
+        return 0;
+    }
+    return 1;
+}
 
 extern int OvlFunc_964_2008cd0(unsigned int *);
 
@@ -671,10 +712,61 @@ int OvlFunc_964_2008fe8(struct Actor *a) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009038.s");
+void OvlFunc_964_2009038(struct Actor *a)
+{
+    int i = 60;
+    fx32 y, f;
+    while (1) {
+        if (i != 0) {
+            __WaitFrames(1);
+            y = a->pos.y;
+            f = a->floorPos;
+            i--;
+            if (y <= f) break;
+        } else {
+            f = a->floorPos;
+            break;
+        }
+    }
+    a->motion.y = 0;
+    a->pos.y = f;
+    a->prevPos.y = 0x80000000;
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20091e0.s");
+extern void OvlFunc_964_2009068(struct Actor *);
+extern void OvlFunc_964_2008ae8(int, int, int, int, int, int, int, void *);
+extern int __cos(int);
+extern int __sin(int);
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_964_20091e0(unsigned int actorId)
+{
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    data[0] = 1;
+    data[1] = 7;
+    data[9] = (int)OvlFunc_964_2009068;
+
+    for (i = 0; i <= 16; i += 2) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_964_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1030001, data);
+    }
+}
 
 extern unsigned char _EVENT_ac[], _EVENT_ad[];
 extern unsigned char Lm964_3474[] __asm__(".Lm964_3474");
@@ -1191,8 +1283,41 @@ void OvlFunc_964_200a410(void) {
     );
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a480.s");
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a52c.s");
+void OvlFunc_964_200a480(void) {
+    int a;
+    int b;
+    b = 0x31;
+    a = 0x19;
+    API_Func_8010704(0x59, 0x31, 3, 2, a, b);
+    b = 0x33;
+    API_Func_8010704(0x59, 0x33, 8, 5, a, b);
+    ((struct Actor *)__MapActor_GetActor(0xe))->layer = 1;
+    API_Func_8010704(0x16, 0x34, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0xc))->pos.z >> 20
+    );
+    API_Func_8010704(0x16, 0x34, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(0xd))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0xd))->pos.z >> 20
+    );
+    API_Func_8010704(0x16, 0x34, 1, 1, (
+        (struct Actor *)__MapActor_GetActor(0xe))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0xe))->pos.z >> 20
+    );
+}
+void OvlFunc_964_200a52c(void) {
+    API_Func_8010704(0x6c, 0x13, 4, 1, 0x2c, 0x13);
+    OvlFunc_964_2008244(0,
+        ((struct Actor *)__MapActor_GetActor(0x11))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20,
+        1, 1, 0xff
+    );
+    OvlFunc_964_2008244(0,
+        ((struct Actor *)__MapActor_GetActor(0x12))->pos.x >> 20,
+        ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20,
+        1, 1, 0xff
+    );
+}
 INCLUDE_ASM("asm/maps/tunnel_ruins/TunnelRuins_MapInit.s");
 INCLUDE_ASM("asm/maps/tunnel_ruins/tunnel_ruins_data.s");
 

@@ -41,8 +41,37 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
     __Func_80929d8(r5, r6);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008058.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008098.s");
+struct SpriteBits968 {
+    unsigned char pad0[9];
+    unsigned char lo : 2;
+    unsigned char mode : 2;
+};
+extern void *__CreateActor(int, int, int, int);
+extern void __Func_800c548(void *, int);
+unsigned int OvlFunc_968_2008058(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
+{
+    unsigned char *a = __CreateActor(type, x, y, z);
+
+    if (a != 0) {
+        (*(struct SpriteBits968 **)(a + 0x50))->mode = 0;
+        OvlFunc_968_2008030((unsigned int)a, 0xe);
+        __Func_800c548(a, 1);
+        return (unsigned int)a;
+    }
+    return 0;
+}
+unsigned int OvlFunc_968_2008098(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
+{
+    unsigned char *a = __CreateActor(type, x, y, z);
+
+    if (a != 0) {
+        (*(struct SpriteBits968 **)(a + 0x50))->mode = 1;
+        OvlFunc_968_2008030((unsigned int)a, 0xf);
+        ((struct Actor *)a)->flags |= 2;
+        return (unsigned int)a;
+    }
+    return 0;
+}
 
 void OvlFunc_968_20080e0(struct Actor *actor) {
     actor->pos.x += actor->bounce;
@@ -77,7 +106,26 @@ int OvlFunc_968_20082f0(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200832c.s");
+struct ActorTable200832c {
+    unsigned char pad0[0x14];
+    struct Actor *actor[66];
+};
+struct Actor *OvlFunc_968_200832c(int *pos, struct Actor *self)
+{
+    extern struct ActorTable200832c *iwram_3001ebc__k1 __asm__("iwram_3001ebc");
+    struct ActorTable200832c *t = iwram_3001ebc__k1;
+    int x;
+    unsigned int i;
+
+    i = 8;
+    x = pos[0] >> 20;
+    for (; i <= 0x41; i++) {
+        struct Actor *a = t->actor[i];
+        if (x == a->pos.x >> 20 && pos[1] >> 20 == a->pos.y >> 20 && pos[2] >> 20 == a->pos.z >> 20)
+            return a;
+    }
+    return 0;
+}
 
 void OvlFunc_968_2008374(void) {
     struct Actor *player;
@@ -228,7 +276,31 @@ int OvlFunc_968_20085ac(unsigned int actorId)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_20085e4.s");
+extern int _divsi3_RAM(int, int);
+int OvlFunc_968_20085e4(struct Actor *actor)
+{
+    extern unsigned char iwram_3001e40[];
+    extern unsigned int __Random(void);
+    extern void OvlFunc_968_2008118(int, int, int, int, int, int, int, void *);
+    int stack_buf[10];
+    int flag;
+    int x;
+    int y;
+    int speed;
+
+    flag = *(unsigned int *)iwram_3001e40 & 7;
+    if (flag == 0) {
+        stack_buf[0] = 3 - ((__Random() * 2) >> 16);
+        stack_buf[2] = 0x6666;
+        stack_buf[3] = 0x6666;
+        stack_buf[1] = 0xe;
+        x = actor->pos.x + ((((__Random() * 9) >> 16) - 4) << 16);
+        y = actor->pos.y + ((0x20 - ((__Random() * 32) >> 16)) << 16);
+        speed = _divsi3_RAM((int)((((__Random() * 5) >> 16) << 16) + 0x50000), 10);
+        OvlFunc_968_2008118(x, y, actor->pos.z, 0, speed, flag, 0xb0000, stack_buf);
+    }
+    return 0;
+}
 
 extern void __Actor_SetSpriteFlags();
 
@@ -486,7 +558,37 @@ void OvlFunc_968_20089c8(void)
     actor->bounce = 0x80 << 7;
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008b08.s");
+extern void OvlFunc_968_200896c(struct Actor *);
+extern int __cos(int);
+extern int __sin(int);
+void OvlFunc_968_2008b08(unsigned int actorId)
+{
+    extern void OvlFunc_968_2008118(int, int, int, int, int, int, int, void *);
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    data[0] = 1;
+    data[1] = 7;
+    data[9] = (int)OvlFunc_968_200896c;
+
+    for (i = 0; i <= 16; i += 2) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_968_2008118(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1030001, data);
+    }
+}
 extern int _divsi3_RAM(int, int);
 struct Struct_2008b98 {
     int pad[2];
@@ -558,7 +660,54 @@ struct Actor *OvlFunc_968_2008c5c(unsigned int param_1, unsigned int param_2, vo
     return actor;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008cc8.s");
+int OvlFunc_968_2008cc8(void)
+{
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern int __TestCollision(void *, int *);
+    extern void __MapActor_TravelToWait(int, int, int);
+    struct Actor *actor;
+    u8 *p55;
+    u8 saved;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    p55 = &actor->__unk55;
+    saved = *p55;
+    v = buf;
+    v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    v[1] = actor->pos.y;
+    v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    {
+        int ang = (actor->facing + 0x2000) & 0xc000;
+        __vec3_translate(0x80 << 13, ang, v);
+    }
+    if (__TestCollision(actor, v) != 1 && OvlFunc_968_200832c(v, actor) == 0) {
+        v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+        v[1] = actor->pos.y;
+        v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+        __vec3_translate(0x80 << 14, (actor->facing + 0x2000) & 0xc000, v);
+        if (OvlFunc_968_200832c(v, actor) == 0 && __TestCollision(actor, v) == 0) {
+            __CutsceneStart();
+            __Actor_SetAnim(actor, 6);
+            __WaitFrames(6);
+            __PlaySound(0x98);
+            __Actor_SetAnim(actor, 7);
+            actor->speed = 0xc0 << 10;
+            actor->accel = 0x80 << 10;
+            actor->motion.y = 0x80 << 11;
+            *p55 &= 0x7e;
+            __Actor_SetSpriteFlags(actor, 0);
+            __MapActor_TravelToWait(0, ((short *)v)[1], ((short *)v)[5]);
+            __Actor_SetAnim(actor, 6);
+            __Actor_SetSpriteFlags(actor, 1);
+            *p55 = saved;
+            __CutsceneEnd();
+            return 1;
+        }
+    }
+    return 0;
+}
 
 #include "state/global_state.h"
 extern GlobalState gState;
@@ -1131,7 +1280,20 @@ void OvlFunc_968_200a6e4(void) {
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a6f8.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a90c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200ab14.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200aee4.s");
+void OvlFunc_968_200aee4(void)
+{
+    extern int OvlFunc_968_2008cc8();
+    extern void OvlFunc_968_200ab14();
+
+    __CutsceneStart();
+    if (OvlFunc_968_2008cc8() == 0) {
+        API_Func_8010704(0x45, 0x30, 4, 2, 5, 0x30);
+        API_Func_8010704(0x49, 0x25, 9, 0xd, 9, 0x25);
+        OvlFunc_968_2008374();
+    }
+    __CutsceneEnd();
+    OvlFunc_968_200ab14();
+}
 
 extern void __Func_8092708(int, int, int);
 extern void __Func_8091e9c(int);

@@ -35,7 +35,29 @@ unsigned int OvlFunc_945_2008030(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2008058.s");
+int OvlFunc_945_2008058(unsigned char *a)
+{
+    short flag;
+    int y;
+
+    if (*(short *)(a + 0x66) != 0) {
+        y = *(int *)(a + 0xc) - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y < 0) {
+            flag = 0;
+            goto set;
+        }
+    } else {
+        y = *(int *)(a + 0xc) + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y > 0x80000) {
+            flag = 1;
+        set:
+            *(short *)(a + 0x66) = flag;
+        }
+    }
+    return 1;
+}
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
     extern unsigned int __Random(unsigned int);
@@ -66,7 +88,17 @@ void OvlFunc_945_20080d8(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20080fc.s");
+int OvlFunc_945_20080fc(struct Actor *a)
+{
+    if (a->__unk4C != 0) {
+        a->__unk4C--;
+    } else {
+        return 1;
+    }
+    if (a->prevPos.x == (fx32)0x80000000 && a->prevPos.y == (fx32)0x80000000 && a->prevPos.z == (fx32)0x80000000)
+        return 1;
+    return 0;
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
 void OvlFunc_945_2008284(struct Actor *actor)
 {
@@ -717,7 +749,51 @@ int OvlFunc_945_2009144(int x, int z)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_2009190.s");
+void OvlFunc_945_2009190(int actorId)
+{
+    extern int OvlFunc_945_2009280(int);
+
+    extern int Lm945_6668[] __asm__(".Lm945_6668");
+    struct Actor *actor0;
+    struct Actor *actor;
+    struct Actor *a0;
+    int r8;
+    int dir;
+    int t;
+
+    actor0 = (struct Actor *)__MapActor_GetActor(0);
+    r8 = 1;
+    API_Func_8092b08(actorId, 2);
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    actor->flags |= 1;
+
+    dir = (int)((actor0->facing + 0x4000) & 0xf000) >> 12;
+    if (OvlFunc_945_2009280(dir) != 0) {
+        r8 = 0;
+    }
+    if (r8 != 0) {
+        dir = (int)((actor0->facing + 0xffffc000) & 0xf000) >> 12;
+        if (OvlFunc_945_2009280(dir) != 0) {
+            r8 = 0;
+        }
+    }
+    if (r8 != 0) {
+        dir = (int)((actor0->facing + 0x8000) & 0xf000) >> 12;
+    }
+
+    a0 = (struct Actor *)__MapActor_GetActor(0);
+    if (a0 != 0) {
+        API_MapActor_SetPos(actorId, a0->pos.x, a0->pos.z);
+    }
+
+    API_MapActor_SetSpeed(actorId, 0x19999, 0xcccc);
+    API_MapActor_SetAnim(actorId, 2);
+    t = Lm945_6668[dir];
+    API_MapActor_TravelBy(actorId, (s16)(t >> 16), (s16)t);
+    API_MapActor_WaitMovement(actorId);
+    API_MapActor_SetAnim(actorId, 1);
+    OvlFunc_945_200c880(actorId, actor0->facing);
+}
 
 int OvlFunc_945_2009280(int dir) {
     extern int OvlFunc_945_2009144(int, int);

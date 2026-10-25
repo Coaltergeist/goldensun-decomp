@@ -46,7 +46,29 @@ unsigned int OvlFunc_943_20080b4(void) {
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20080c4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20082ec.s");
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_2008514.s");
+int OvlFunc_943_2008514(unsigned char *a)
+{
+    short flag;
+    int y;
+
+    if (*(short *)(a + 0x66) != 0) {
+        y = *(int *)(a + 0xc) - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y < 0x40000) {
+            flag = 0;
+            goto set;
+        }
+    } else {
+        y = *(int *)(a + 0xc) + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
+        *(int *)(a + 0xc) = y;
+        if (y > 0xc0000) {
+            flag = 1;
+        set:
+            *(short *)(a + 0x66) = flag;
+        }
+    }
+    return 1;
+}
 
 extern unsigned int __Random(unsigned int);
 
@@ -206,7 +228,26 @@ void OvlFunc_943_20088c0(int *p)
     }
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20088e0.s");
+unsigned int OvlFunc_943_20088e0(struct Actor *actor)
+{
+    u8 *timer = &actor->__unk62;
+    unsigned int r;
+
+    if (*timer != 0) {
+        *timer = *timer - 1;
+    } else {
+        r = (__Random0() * 300) >> 16;
+        if (r > 200) {
+            actor->facing = 0xd000;
+        } else if (r > 100) {
+            actor->facing = 0x5000;
+        } else {
+            actor->facing = 0;
+        }
+        *timer = ((__Random0() * 80) >> 16) + 80;
+    }
+    return 1;
+}
 
 extern unsigned char gOvl_0200c994[];
 
@@ -992,7 +1033,27 @@ void OvlFunc_943_200b4bc(void)
     OvlFunc_943_200b5ec(0x13, 7, 1);
 }
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b558.s");
+extern unsigned short L5b30_s[] __asm__(".Lm943_5b30");
+extern unsigned short L5b40_s[] __asm__(".Lm943_5b40");
+void OvlFunc_943_200b558(int actor, int i)
+{
+    extern void __MapActor_SetAnim(int, int);
+    unsigned short v = L5b40_s[i];
+
+    if (v > 0x6800 && v < 0x7000) {
+        L5b30_s[i] += 0x70;
+        __MapActor_SetAnim(actor, 3);
+    } else if (v > 0xe800 && v < 0xf000) {
+        L5b30_s[i] += 0xe0;
+        __MapActor_SetAnim(actor, 3);
+    } else if (v > 0x7000 && v < 0xf000) {
+        L5b30_s[i] += 0x1c0;
+        __MapActor_SetAnim(actor, 2);
+    } else {
+        L5b30_s[i] += 0x300;
+        __MapActor_SetAnim(actor, 1);
+    }
+}
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_200b5ec.s");
 extern unsigned char Lm943_5b40[] __asm__(".Lm943_5b40");
 extern unsigned char Lm943_5b70[] __asm__(".Lm943_5b70");

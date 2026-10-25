@@ -72,7 +72,22 @@ void OvlFunc_880_20082f4(int idx, unsigned char *out) {
     }
 }
 
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008384.s");
+int OvlFunc_880_2008384(void)
+{
+    extern int __GetFlag(int);
+    extern struct { unsigned char pad[0x1c0]; short a; unsigned char p2[0x23e - 0x1c2]; short b; } gState_t __asm__("gState");
+    extern unsigned char Lconst_2[] __asm__(".Lconst_2");
+
+    /* pooled literal (ldr rN, =2 in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+    __asm__(".equ .Lconst_2, 2");
+    if (__GetFlag(0x144) == 0)
+        return 0;
+    if (gState_t.b == 2)
+        return 0;
+    if (gState_t.a == (int)Lconst_2)
+        return 0;
+    return -1;
+}
 INCLUDE_ASM("asm/maps/main_menu/MainMenu_MapInit.s");
 struct Struct2008cfc {
     unsigned char pad[8];

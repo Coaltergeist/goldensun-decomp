@@ -60,7 +60,26 @@ void OvlFunc_941_200807c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008094.s");
+struct ActorBits941 {
+    unsigned char pad0[0x23];
+    unsigned char flags;
+    unsigned char pad24[0x31];
+    unsigned char unk55;
+};
+void OvlFunc_941_2008094(void)
+{
+    extern struct ActorBits941 *__MapActor_GetActor__k(int) __asm__("__MapActor_GetActor");
+    extern void API_Func_8010704(int, int, int, int, int, int) __asm__("__Func_8010704");
+    extern void API_SetFlag(int) __asm__("__SetFlag");
+    struct ActorBits941 *a = __MapActor_GetActor__k(9);
+
+    if (a != 0) {
+        a->flags = 1;
+        a->unk55 = 0;
+    }
+    API_Func_8010704(7, 0x20, 1, 1, 8, 0x20);
+    API_SetFlag(0x204);
+}
 void OvlFunc_941_20080d4(void)
 {
     unsigned char *actor;
@@ -160,7 +179,20 @@ void OvlFunc_941_200833c(void) {
     API_ClearFlag(0x202);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2008384.s");
+void OvlFunc_941_2008384(void)
+{
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3b);
+    API_WaitFrames(4);
+    API_Func_80105d4(2, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(2, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x2b, 0x57, 2, 5, 0x15, 0x3a);
+    API_WaitFrames(4);
+    API_Func_80105d4(3, 0x5d, 1, 1, 0x18, 0x3e);
+    API_Func_80105d4(1, 0x5e, 1, 1, 0x15, 0x37);
+    API_Func_80105d4(0x29, 0x57, 2, 5, 0x15, 0x3a);
+    API_Func_8010704(0x15, 0xb, 2, 2, 0x15, 0xd);
+    API_Func_8010704(0x13, 0x11, 1, 1, 0x15, 0xe);
+}
 
 void OvlFunc_941_2008460(void) {
 	if (API_GetFlag(0x80 << 2) != 0) {
