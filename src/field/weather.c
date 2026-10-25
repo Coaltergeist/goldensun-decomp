@@ -56,7 +56,25 @@ void Func_80944ec(void)
 }
 
 INCLUDE_ASM("asm/field/weather/Func_8094544.s");
-INCLUDE_ASM("asm/field/weather/Func_8094730.s");
+extern void *galloc_ewram(int index, unsigned int size);
+extern int StartTask(void *task, int priority);
+extern void Func_8094544(void);
+void Func_8094730(int a0, int a1, int a2, int a3, int a4, int a5, int a6)
+{
+    unsigned char *p = (unsigned char *)galloc_ewram(0x22, 0xf20);
+
+    DMA3_CLEAR(p, 0xf20);
+    WaitForDma3();
+    p[0xf01] = a0;
+    *(int *)(p + 0xf08) = a1;
+    *(int *)(p + 0xf0c) = a4;
+    *(int *)(p + 0xf18) = a3;
+    *(int *)(p + 0xf1c) = a6;
+    *(int *)(p + 0xf10) = a2;
+    *(int *)(p + 0xf14) = a5;
+    StartTask(Func_8094544, 0xc80);
+    StartTask(Func_80944ec, 0x480);
+}
 
 extern void Func_8094544(void);
 
@@ -89,6 +107,9 @@ INCLUDE_ASM("asm/field/weather/Task_Snow.s");
 INCLUDE_ASM("asm/field/weather/StartSnow.s");
 INCLUDE_ASM("asm/field/weather/Task_Earthquake.s");
 INCLUDE_ASM("asm/field/weather/StartEarthquake.s");
+extern void *galloc_ewram(int index, unsigned int size);
+extern void Task_Thunder(void);
+extern int StartTask(void *task, int priority);
 INCLUDE_ASM("asm/field/weather/StartThunder.s");
 
 extern void *galloc_ewram(int index, unsigned int size);

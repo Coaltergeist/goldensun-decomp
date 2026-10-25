@@ -36,15 +36,111 @@ extern unsigned char gStringBuffer;
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801fe2c.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_801ff14.s");
+extern void Func_801ff58(void);
+extern int StopTask(void *);
+extern void _DeleteSprite(void *);
+struct SaveMenu801ff14 {
+    unsigned char pad0[0x114];
+    void *spr[4];
+};
+extern struct SaveMenu801ff14 *iwram_3001f2c__k9 __asm__("iwram_3001f2c");
+void Func_801ff14(void)
+{
+    struct SaveMenu801ff14 *s = iwram_3001f2c__k9;
+    int i;
 
-INCLUDE_ASM("asm/ui/save_menu/Func_801ff58.s");
+    StopTask(Func_801ff58);
+    for (i = 0; i < 4; i++) {
+        if (s->spr[i] != 0) {
+            _DeleteSprite(s->spr[i]);
+            s->spr[i] = 0;
+        }
+    }
+}
+
+struct SaveMenu801ff58 {
+    unsigned char pad0[0x114];
+    void *spr[4];
+    unsigned char pad124[0x10];
+    short x[8];
+    short y[8];
+    int scale[4];
+};
+void Func_801ff58(void)
+{
+    extern void _UpdateSprite(void *, int *, int *, int);
+    extern struct SaveMenu801ff58 *iwram_3001f2c__k11 __asm__("iwram_3001f2c");
+    struct SaveMenu801ff58 *s = iwram_3001f2c__k11;
+    int sc[2];
+    int v[4];
+    int i;
+    void *p;
+
+    for (i = 0; i < 4; i++) {
+        p = s->spr[i];
+        if (p != 0) {
+            sc[0] = s->scale[i];
+            sc[1] = s->scale[i];
+            v[0] = s->x[i] << 16;
+            v[1] = 0x1f40000;
+            v[2] = (s->y[i] << 16) + 0x1f40000;
+            v[3] = 0;
+            _UpdateSprite(p, v, sc, 0x4000);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_801ffd8.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8020088.s");
+extern void Func_80200cc(void);
+struct SaveMenu8020088 {
+    unsigned char pad0[0x224];
+    void *spr[4];
+};
+extern struct SaveMenu8020088 *iwram_3001f2c__k10 __asm__("iwram_3001f2c");
+void Func_8020088(void)
+{
+    struct SaveMenu8020088 *s = iwram_3001f2c__k10;
+    int i;
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80200cc.s");
+    StopTask(Func_80200cc);
+    for (i = 0; i < 4; i++) {
+        if (s->spr[i] != 0) {
+            _DeleteSprite(s->spr[i]);
+            s->spr[i] = 0;
+        }
+    }
+}
+
+struct SaveMenu80200cc {
+    unsigned char pad0[0x224];
+    void *spr[4];
+    short x[4];
+    short y[4];
+};
+void Func_80200cc(void)
+{
+    extern void _UpdateSprite(void *, int *, int *, int);
+    extern struct SaveMenu80200cc *iwram_3001f2c__k12 __asm__("iwram_3001f2c");
+    struct SaveMenu80200cc *s = iwram_3001f2c__k12;
+    int sc[2];
+    int v[4];
+    int i;
+    void *p;
+
+    for (i = 0; i < 4; i++) {
+        p = s->spr[i];
+        if (p != 0) {
+            sc[0] = 0x10000;
+            sc[1] = 0x10000;
+            v[0] = s->x[i] << 16;
+            v[1] = 0x1f40000;
+            v[2] = (s->y[i] << 16) + 0x1f40000;
+            v[3] = 0;
+            _UpdateSprite(p, v, sc, 0x4000);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8020150.s");
 
@@ -125,11 +221,42 @@ void Func_80215e0(int param_1, unsigned int param_2)
     }
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021620.s");
+struct Spr8021620 { char pad[0xf]; unsigned char f; char pad2[8]; unsigned short tile:10; unsigned short rest:6; };
+unsigned int Func_8021620(int a0, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    int slot;
+    struct Spr8021620 *s1;
+    struct Spr8021620 *s2;
+
+    slot = AllocSpriteSlot();
+    if (slot > 0x5f)
+        return 0;
+    Func_80215e0(a0, slot);
+    s1 = (struct Spr8021620 *)Func_801eadc(slot, 0x80004000, a1, a2, a3);
+    s1->f = 0xfd;
+    s2 = (struct Spr8021620 *)Func_801eadc(slot, 0x80004000, a1, a2 + 0x20, a3);
+    s2->f = 0xfd;
+    s2->tile += 8;
+    return (unsigned int)s1;
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80216b4.s");
 
-INCLUDE_ASM("asm/ui/save_menu/StartMenu_AddOption.s");
+void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned int unk)
+{
+    extern void _Func_800f9cc(void *, int);
+    int size = 0x400;
+    unsigned char *gfx = galloc_ewram(0xe, size);
+    unsigned short *f = GetFile(FILE_f1);
+
+    if ((int)name < 0x60) {
+        DecompressLZ1((unsigned char *)f + f[icon], gfx);
+        if (unk)
+            _Func_800f9cc(gfx, 0x300);
+        UploadSpriteGFX(name, size, gfx);
+        gfree(0xe);
+    }
+}
 
 unsigned int Func_8021750(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3, unsigned int arg4)
 {
@@ -220,7 +347,25 @@ int Func_8021b30(unsigned int move, unsigned int arg1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8021b80.s");
+extern void LoadPortrait(int, int, int *, int *, int, int);
+int Func_8021b80(unsigned int id, int a1)
+{
+    int out;
+    if (id > 7)
+        id = 0;
+    if (_GetFlag(0x20)) {
+        switch (id) {
+        case 0:
+            id = 0x38;
+            break;
+        case 1:
+            id = 0x39;
+            break;
+        }
+    }
+    LoadPortrait(id, 0, &a1, &out, 0xe, 1);
+    return out;
+}
 
 unsigned int Func_8021bc8(int idx) {
     if (idx != 0)
@@ -331,7 +476,23 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8023e70.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8024934.s");
 
-INCLUDE_ASM("asm/ui/save_menu/Func_8025180.s");
+extern unsigned char *_GetItemInfo__e(int) __asm__("_GetItemInfo");
+extern unsigned char *_GetMoveInfo__e(int) __asm__("_GetMoveInfo");
+extern int _CanEquipItem(int, int);
+int Func_8025180(int unit, int item)
+{
+    unsigned char *info;
+    if (item == 0)
+        return 1;
+    info = _GetItemInfo__e(item);
+    if (info[0xc] == 3)
+        return 1;
+    if (*(unsigned short *)(info + 0x28) == 0)
+        return 1;
+    if (info[2] != 0 && _CanEquipItem(unit, item) == 0)
+        return 1;
+    return (_GetMoveInfo__e(*(unsigned short *)(info + 0x28))[1] & 0x80) ? 0 : 2;
+}
 
 #include "dma.h"
 
@@ -355,7 +516,26 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8026e80.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8026fa8.s");
 
-INCLUDE_ASM("asm/ui/save_menu/GetMoveDisplayEffect.s");
+extern int _Func_8079ef8(int);
+int GetMoveDisplayEffect(unsigned char *m)
+{
+    int r = 0;
+    int t;
+    t = m[1] & 0xf;
+    if (t == 1)
+        r = 1;
+    if (t == 0xb)
+        r = 2;
+    if (m[3] == 3)
+        r = 3;
+    if (m[3] == 4)
+        r = 4;
+    if (m[3] == 0x40)
+        r = 6;
+    if (_Func_8079ef8(m[3]))
+        r = 5;
+    return r;
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80270ac.s");
 
@@ -375,7 +555,22 @@ void *Func_80284dc(void) {
     return p;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_802851c.s");
+extern unsigned char *iwram_3001f38;
+extern void Func_8028194(void);
+extern void CloseUIBox(void *, int);
+extern s32 Func_8003f3c(int);
+void Func_802851c(void)
+{
+    unsigned char *b = iwram_3001f38;
+    int i;
+    StopTask(Func_8028194);
+    if (*(void **)(b + 0x78) != 0)
+        CloseUIBox(*(void **)(b + 0x78), 2);
+    for (i = 0; i < *(short *)(b + 0x8e); i++)
+        Func_8003f3c(*(unsigned short *)(b + 0x12 + i * 0x14));
+    gfree(0x3a);
+    WaitFrames(1);
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8028574.s");
 

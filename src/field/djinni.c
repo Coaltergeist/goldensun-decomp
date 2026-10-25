@@ -68,7 +68,27 @@ void Func_8095f9c(unsigned char *p)
         _DeleteActor();
 }
 
-INCLUDE_ASM("asm/field/djinni/Func_8095fcc.s");
+void Func_8095fcc(unsigned char *a)
+{
+    extern int gState_i[] __asm__("gState");
+    extern unsigned char *MapActor_GetActor(int);
+    extern void vec3_translate(int, int, int *);
+    extern void _DeleteActor_a(unsigned char *) __asm__("_DeleteActor");
+    unsigned char *o = MapActor_GetActor(gState_i[0x7d]);
+    short t = --*(short *)(a + 0x64);
+    int v[3];
+    int y;
+
+    v[0] = *(int *)(o + 8);
+    v[2] = *(int *)(o + 0x10);
+    vec3_translate(t * 0x6666, (t << 11) + *(short *)(a + 0x66), v);
+    *(int *)(a + 8) = v[0];
+    *(int *)(a + 0x10) = v[2];
+    y = *(int *)(a + 0xc) - 0x10000;
+    *(int *)(a + 0xc) = y;
+    if (y < *(int *)(o + 0xc) + 0x140000)
+        _DeleteActor_a(a);
+}
 INCLUDE_ASM("asm/field/djinni/Func_8096048.s");
 INCLUDE_ASM("asm/field/djinni/GetVenusDjinni.s");
 INCLUDE_ASM("asm/field/djinni/Func_809641c.s");

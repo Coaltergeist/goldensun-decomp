@@ -5,7 +5,25 @@ extern void _GiveDjinni(unsigned int, unsigned int, unsigned int);
 
 INCLUDE_ASM("asm/ui/menus/debug_flag_editor/Debug_FlagEditor.s");
 
-INCLUDE_ASM("asm/ui/menus/debug_flag_editor/Func_8029274.s");
+void Func_8029274(unsigned int val, unsigned int n, char *out)
+{
+    char buf[8];
+    int i;
+    unsigned int d;
+
+    if (n > 5)
+        n = 5;
+    for (i = 0; i != n; i++) {
+        d = val & 0xf;
+        if (d < 10)
+            buf[i] = d + '0';
+        else
+            buf[i] = d + '7';
+        val >>= 4;
+    }
+    for (i = n - 1; i >= 0; i--)
+        *out++ = buf[i];
+}
 
 INCLUDE_ASM("asm/ui/menus/debug_flag_editor/Func_80292c4.s");
 

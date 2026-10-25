@@ -1,5 +1,6 @@
 // fakematch
 #include "nonmatching.h"
+#include "dma.h"
 
 extern void Func_80b00f4();
 
@@ -36,7 +37,25 @@ void Func_80b0204(void)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0278.s");
-INCLUDE_ASM("asm/shop/shop/Debug_TestEquipAndStatus.s");
+int Debug_TestEquipAndStatus(void)
+{
+    extern struct { int pad[4]; int money; unsigned char p2[0x108]; unsigned char x; } gState__s __asm__("gState");
+    extern int _GiveItemTo(int, int);
+    extern int _EquipItem(int, int);
+    extern unsigned char *_GetUnit(unsigned int unitID);
+    extern int Func_80b0278(int, int);
+
+    gState__s.money = 200000;
+    gState__s.x = 0x1c;
+    _EquipItem(1, _GiveItemTo(1, 0x48d));
+    _EquipItem(0, _GiveItemTo(0, 0x40b));
+    _GiveItemTo(2, 0xe7);
+    _GetUnit(3)[0x131] = 1;
+    _GetUnit(5)[0x131] = 1;
+    _GetUnit(2)[0x140] = 1;
+    Func_80b0278(1, 0x1e);
+    return 0;
+}
 
 extern void WaitFrames(unsigned int nframes);
 extern int _Func_80f954c(void);
@@ -47,7 +66,34 @@ void Func_80b04c4(void)
 		WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b04dc.s");
+extern unsigned char Lconst_c9b[] __asm__(".Lconst_c9b");
+extern unsigned char Lconst_cc6[] __asm__(".Lconst_cc6");
+extern unsigned char Lconst_cf1[] __asm__(".Lconst_cf1");
+extern unsigned char Lconst_d4c[] __asm__(".Lconst_d4c");
+/* pooled literal (ldr rN, =0xc9b, =0xcc6, =0xcf1, =0xd4c in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+__asm__(".equ .Lconst_c9b, 0xc9b\n.equ .Lconst_cc6, 0xcc6\n.equ .Lconst_cf1, 0xcf1\n.equ .Lconst_d4c, 0xd4c");
+void Func_80b04dc(int msg)
+{
+    extern int _GetSpriteVoice(int);
+    extern unsigned int _Func_8017658(int, int, int, int);
+    extern int _Func_8017364(void);
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    int voice = _GetSpriteVoice(*(unsigned short *)(base + 0x3a4));
+    signed char kind;
+
+    _Func_8019a54();
+    kind = *(signed char *)(base + 0x3a9);
+    if (kind == 2)
+        msg += (int)Lconst_cc6 - (int)Lconst_c9b;
+    if (kind == 0)
+        msg += (int)Lconst_cf1 - (int)Lconst_c9b;
+    if (*(signed char *)(base + 0x3ac))
+        msg += (int)Lconst_d4c - (int)Lconst_c9b;
+    _Func_8017658(msg, 5, 0, (voice << 16) | 0x22);
+    while (!_Func_8017364())
+        WaitFrames(1);
+    WaitFrames(1);
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b0574.s");
 
 extern unsigned char iwram_3001f2c__a2[] __asm__("iwram_3001f2c");
@@ -88,7 +134,21 @@ unsigned int Func_80b0664(unsigned int arg0)
   return r7;
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b0694.s");
+struct ShopListNode {
+    unsigned int unk0;
+    struct ShopListNode *next;
+};
+
+struct ShopListNode *Func_80b0694(unsigned char *shop)
+{
+    struct ShopListNode *node = *(struct ShopListNode **)(shop + 0x348);
+    int i;
+
+    for (i = 0; i != *(unsigned short *)(shop + 0x39e); i++)
+        node = node->next;
+    return node;
+}
+
 extern unsigned char Lb4100[] asm(".Lb4100");
 
 void Func_80b06c0(int count, int arg1, int arg2)
@@ -122,7 +182,16 @@ void Func_80b06c0(int count, int arg1, int arg2)
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b06ec.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0744.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b0840.s");
+extern unsigned char *iwram_3001ebc__s[] __asm__("iwram_3001ebc");
+void Func_80b0840(int a)
+{
+    unsigned char *w = iwram_3001ebc__s[5];
+    unsigned char *b = iwram_3001ebc__s[0];
+    DMA3_SET(w + 0xe00, b + 0x236, 0x84000150);
+    DMA3_SET(w + 0xe00, w + 0x380, 0x840002a0);
+    _Func_8091200(a, 1);
+    _Func_8091254(0x10);
+}
 
 extern unsigned int iwram_3001ebc;
 
@@ -198,13 +267,83 @@ INCLUDE_ASM("asm/shop/shop/Func_80b1260.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1470.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b153c.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1614.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b17e4.s");
+extern void *_GetItemInfo__s(unsigned int) __asm__("_GetItemInfo");
+extern int _GetEquippedItem(int, int);
+extern void _PlaySound(int);
+extern int _GiveItemTo(int, int);
+extern int _AddCoins(int);
+extern unsigned int _AddCoinsSpent(int);
+extern void Func_80b0574(int);
+extern int Func_80b1868(int, int);
+extern int Func_80b196c(int, int);
+void Func_80b17e4(int unit, int item, int count)
+{
+    short *info = _GetItemInfo__s(item);
+    int slot = 0;
+    int eq = _GetEquippedItem(unit, ((unsigned char *)info)[2]);
+    int i;
+    _PlaySound(0x65);
+    for (i = 0; i < count; i++) {
+        slot = _GiveItemTo(unit, item);
+        _AddCoins(-info[0]);
+        _AddCoinsSpent(info[0]);
+        Func_80b10cc();
+    }
+    Func_80b0574(0xca1);
+    if (Func_80b1868(unit, slot))
+        Func_80b196c(unit, eq);
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b1868.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b196c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b19cc.s");
+extern void *_GetItemInfo__s(unsigned int) __asm__("_GetItemInfo");
+int Func_80b19cc(unsigned int item)
+{
+    int price = *(short *)_GetItemInfo__s(item);
+    if (((unsigned char *)_GetItemInfo__s(item))[3] & 8)
+        price = 0;
+    else if (item & 0x400)
+        price = price / 2;
+    else
+        price = price * 3 / 4;
+    return price;
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b1a14.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1bd0.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b1dec.s");
+struct Unit80b1dec { unsigned char pad[0xd8]; unsigned short items[15]; };
+void Func_80b1dec(int box, int pc)
+{
+    extern unsigned char *_GetUnit(unsigned int unitID);
+    extern void _Func_8016478(int);
+    extern int _FindEmptyInventorySlot(int);
+    extern void _DrawSmallText(int, int, int, int);
+    extern unsigned char *_Func_801eb90(int, int, int, int, int);
+    unsigned char *u;
+    int i, x, y;
+
+    u = _GetUnit(pc);
+    x = 8;
+    y = 0;
+    if (box == 0)
+        return;
+    _Func_8016478(box);
+    if (_FindEmptyInventorySlot(pc) == 0) {
+        _DrawSmallText(0xc91, box, 8, 0x14);
+        return;
+    }
+    for (i = 0; i <= 14; i++) {
+        if (((struct Unit80b1dec *)u)->items[i] != 0)
+            _Func_801eb90(((struct Unit80b1dec *)u)->items[i], 0x1b, box, x, y)[0xf] = 0xfc;
+        x += 0x10;
+        if (i == 4) {
+            x = 8;
+            y += 0x10;
+        }
+        if (i == 9) {
+            x = 8;
+            y += 0x10;
+        }
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b1e80.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1f4c.s");
 
@@ -235,8 +374,34 @@ INCLUDE_ASM("asm/shop/shop/Func_80b24e4.s");
 
 int NumShops(void) { return 0x23; }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b26cc.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2720.s");
+extern short gShopItemLists[][33] asm(".Lb41ac");
+
+extern int _GetFlag(int flag);
+extern void _SetFlag(int flag);
+extern int _Func_8078ad0(int item, int count);
+
+void Func_80b26cc(int shop)
+{
+    int flag = shop + 0x400;
+    int item;
+    int i;
+
+    if (_GetFlag(flag))
+        return;
+    _SetFlag(flag);
+    for (i = 0; i < 8 && (item = gShopItemLists[shop][24 + i]) != 0; i++)
+        _Func_8078ad0(item, 1);
+}
+
+int Func_80b2720(int shop, unsigned short *out)
+{
+    int n;
+
+    for (n = 0; n < 24 && gShopItemLists[shop][n] != 0; n++)
+        out[n] = gShopItemLists[shop][n];
+    out[n] = 0;
+    return n;
+}
 
 extern short Lb41ac[] __asm__(".Lb41ac");
 
@@ -286,7 +451,23 @@ unsigned int Func_80b27b0(unsigned int arg0, unsigned int arg1)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b280c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2884.s");
+extern unsigned char Lconst_d24[] __asm__(".Lconst_d24");
+extern unsigned char Lconst_d2e[] __asm__(".Lconst_d2e");
+extern unsigned char Lconst_d38[] __asm__(".Lconst_d38");
+extern unsigned char Lconst_d42[] __asm__(".Lconst_d42");
+/* pooled literal (ldr rN, =0xd24, =0xd2e, =0xd38, =0xd42 in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+__asm__(".equ .Lconst_d24, 0xd24\n.equ .Lconst_d2e, 0xd2e\n.equ .Lconst_d38, 0xd38\n.equ .Lconst_d42, 0xd42");
+unsigned int Func_80b2884(unsigned int m)
+{
+    signed char t = (*(unsigned char **)iwram_3001f2c__a1)[0x3aa];
+    if (t == 1)
+        m += (int)Lconst_d2e - (int)Lconst_d24;
+    if (t == 2)
+        m += (int)Lconst_d38 - (int)Lconst_d24;
+    if (t == 3)
+        m += (int)Lconst_d42 - (int)Lconst_d24;
+    return m;
+}
 
 extern unsigned char iwram_3001f2c__a4[] __asm__("iwram_3001f2c");
 extern unsigned int _GetSpriteVoice(unsigned short id);
@@ -309,14 +490,74 @@ void Func_80b28d4(unsigned int arg0)
     WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b2928.s");
+void Func_80b2928(unsigned int arg0)
+{
+    unsigned char *r5 = *(unsigned char **)iwram_3001f2c__a4;
+    unsigned int voice;
+    unsigned char saved;
+    unsigned char **pp = (unsigned char **)(r5 + (0xe0 << 2));
+
+    saved = (*pp)[5];
+    voice = _GetSpriteVoice(*(unsigned short *)(r5 + (0xe9 << 2)));
+    arg0 = Func_80b2884(arg0);
+    (*pp)[5] = 0xd;
+    _Func_8019a54();
+    _Func_8017658(arg0, 5, 0, (voice << 16) | 0x22);
+    while (_Func_8017364() == 0)
+        WaitFrames(1);
+    WaitFrames(1);
+    (*(unsigned char **)(r5 + (0xe0 << 2)))[5] = saved;
+}
 INCLUDE_ASM("asm/shop/shop/UI_Sanctum.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2b10.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2da8.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b2e30.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2ed8.s");
+/* pooled literal (ldr rN, =0xd2c, =0xd2d in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+__asm__(".equ .Lconst_d2c, 0xd2c\n.equ .Lconst_d2d, 0xd2d");
+void Func_80b2ed8(int win, int item)
+{
+    extern unsigned char *iwram_3001f2c__e8 __asm__("iwram_3001f2c");
+    extern void _Func_8016478(int);
+    extern void _Func_8019908(int, int);
+    extern void _DrawSmallText(int, int, int, int);
+    int k = *(signed char *)(iwram_3001f2c__e8 + 0x3aa);
+    int price = Func_80b2778(item, k);
+    extern unsigned char Lconst_d2c[] __asm__(".Lconst_d2c");
+    extern unsigned char Lconst_d2d[] __asm__(".Lconst_d2d");
+    int msg;
+
+    if (win == 0)
+        return;
+    _Func_8016478(win);
+    if (Func_80b27b0(item, k))
+        msg = (int)Lconst_d2c;
+    else
+        msg = (int)Lconst_d2d;
+    msg = Func_80b2884(msg);
+    _Func_8019908(price, 5);
+    _DrawSmallText(msg, win, 0, 0);
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b2f4c.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b2ffc.s");
+extern void _Func_809b804(void *);
+extern void _Sprite_SetColorswap(void *, int);
+extern int Random(void);
+void Func_80b2ffc(void)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001f2c__a1;
+    unsigned char *p = b + 0x3b0;
+    int i;
+    signed char c;
+    for (i = 0; i < 24; i++) {
+        _Func_809b804(p);
+        p += 0x48;
+    }
+    c = b[0x3ab];
+    if (c != -1) {
+        int r = (unsigned int)(Random() * 7) >> 16;
+        int off = (c << 2) + 0x114;
+        _Sprite_SetColorswap(*(void **)(b + off), r);
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b3050.s");
 
 extern unsigned char iwram_3001f2c__a5[] __asm__("iwram_3001f2c");
@@ -370,7 +611,43 @@ int Func_80b3210(int priceIndex)
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b3284.s");
-INCLUDE_ASM("asm/shop/shop/InnHeal.s");
+void InnHeal(int cost)
+{
+    extern int _Func_80796c4(short *);
+    extern void _UpdateStatBarPercent(int);
+    extern void _MapTransitionOut(void);
+    extern void _MapTransitionIn(void);
+    extern void _WaitMapTransition(void);
+    extern unsigned char *iwram_3001ebc__inn __asm__("iwram_3001ebc");
+    short party[8];
+    int n = _Func_80796c4(party);
+    int i;
+
+    _AddCoins(-cost);
+    for (i = 0; i < n; i++) {
+        unsigned char *u = _GetUnit(party[i]);
+        if (*(short *)(u + 0x38) != 0) {
+            *(unsigned short *)(u + 0x38) = *(unsigned short *)(u + 0x34);
+            *(unsigned short *)(u + 0x3a) = *(unsigned short *)(u + 0x36);
+            _UpdateStatBarPercent(party[i]);
+        }
+    }
+    {
+        unsigned char *b = iwram_3001ebc__inn;
+        *(int *)(b + 0x1c0) = 0x209;
+        *(int *)(b + 0x1c8) = 0x3c;
+    }
+    WaitFrames(0x14);
+    _MapTransitionOut();
+    _WaitMapTransition();
+    _PlaySound(0x56);
+    Func_80b04c4();
+    WaitFrames(10);
+    _MapTransitionIn();
+    _WaitMapTransition();
+    WaitFrames(0x1e);
+    *(int *)(iwram_3001ebc__inn + 0x1c8) = 0x10;
+}
 INCLUDE_ASM("asm/shop/shop/UI_SellMenu.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b362c.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b386c.s");

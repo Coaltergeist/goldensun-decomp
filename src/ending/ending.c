@@ -2,7 +2,27 @@
 
 INCLUDE_ASM("asm/ending/ending/Func_80f0254.s");
 INCLUDE_ASM("asm/ending/ending/LoadGS1CreditsBG.s");
-INCLUDE_ASM("asm/ending/ending/Func_80f037c.s");
+void Func_80f037c(unsigned int *p)
+{
+    unsigned int v1 = 0x01ff01ff;
+    unsigned int v2 = 0x80 << 9;
+    int i;
+
+    for (i = 0; i < 0x20; i++) {
+        *p++ = v1;
+    }
+    for (i = 0; i < 0xf0; i++) {
+        *p++ = v2;
+        v2 += 0x00020002;
+    }
+    for (i = 0; i < 0x30; i++) {
+        *p++ = v1;
+    }
+    v2 = 0;
+    for (i = 0; i < 0xc0; i++) {
+        *p++ = v2;
+    }
+}
 
 extern unsigned int iwram_3001800;
 extern unsigned short iwram_3001ad0;

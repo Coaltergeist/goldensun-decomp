@@ -3,7 +3,36 @@
 
 extern void _Sprite_SetAnim(unsigned int);
 
-INCLUDE_ASM("asm/field/field_effect/Func_809b804.s");
+struct FieldEffect809b804 {
+    unsigned char pad0[0x34];
+    void (*fn)(struct FieldEffect809b804 *);
+    unsigned short timer;
+    short delay;
+    unsigned char pad3c[7];
+    signed char flag43;
+    signed char flag44;
+    signed char active;
+};
+
+extern void Func_809b8f4(struct FieldEffect809b804 *);
+extern void Func_809b86c(struct FieldEffect809b804 *);
+
+void Func_809b804(struct FieldEffect809b804 *e)
+{
+    if (e->active != 0) {
+        e->timer++;
+        if (e->delay != 0)
+            e->delay--;
+        else if (e->fn != 0)
+            e->fn(e);
+        if (e->active != 0) {
+            if (e->flag43 != 0)
+                Func_809b8f4(e);
+            if (e->flag44 != 0)
+                Func_809b86c(e);
+        }
+    }
+}
 
 INCLUDE_ASM("asm/field/field_effect/Func_809b86c.s");
 

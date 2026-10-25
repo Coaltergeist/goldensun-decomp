@@ -107,7 +107,21 @@ INCLUDE_ASM("asm/field/map/Func_808d828.s");
 INCLUDE_ASM("asm/field/map/Func_808d8f0.s");
 
 INCLUDE_ASM("asm/field/map/Func_808d9a4.s");
-INCLUDE_ASM("asm/field/map/GetFieldMoveRange.s");
+extern short gFieldMoveRanges[];
+int GetFieldMoveRange(int move)
+{
+    short *p = gFieldMoveRanges;
+    int range = 16;
+
+    while (*p != -1) {
+        if (move == *p++) {
+            range = *p;
+            break;
+        }
+        p++;
+    }
+    return range;
+}
 INCLUDE_ASM("asm/field/map/Func_808ddec.s");
 INCLUDE_ASM("asm/field/map/Func_808df1c.s");
 
@@ -132,10 +146,35 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
     return ret;
 }
 
-INCLUDE_ASM("asm/field/map/Func_808e0b0.s");
+extern short gFieldMoveRanges[];
+extern unsigned int iwram_3001e40;
+void Func_808e0b0(unsigned char *a, int k)
+{
+    unsigned char *s;
+    unsigned int v;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        v = k - 1;
+        if (k == 0)
+            { unsigned int i = iwram_3001e40; unsigned char *t = (unsigned char *)gFieldMoveRanges + 0x32; v = t[(i >> 1) & 7]; }
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0 && e[5] != 0xf)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
 
 extern unsigned int iwram_3001ebc__a7 __asm__("iwram_3001ebc");
-extern void Func_808e5d8(unsigned int);
+extern int Func_808e5d8(unsigned int);
 
 void Func_808e118(void) {
     unsigned char *base = (unsigned char *)iwram_3001ebc__a7;
@@ -153,7 +192,41 @@ void Func_808e118(void) {
 INCLUDE_ASM("asm/field/map/FindFieldItemEvent.s");
 INCLUDE_ASM("asm/field/map/Func_808e23c.s");
 INCLUDE_ASM("asm/field/map/FindFieldMoveEvent.s");
-INCLUDE_ASM("asm/field/map/Func_808e5d8.s");
+
+extern unsigned char *_GetMoveInfo(int);
+extern void *GetFieldActor(unsigned int actorID);
+extern unsigned int FindFieldMoveEvent(unsigned int, unsigned int, unsigned int *);
+extern void Func_8096fb0(int, int);
+extern void Func_80970f8(unsigned int, unsigned int);
+extern int Func_8096b28(unsigned int, int, unsigned int);
+extern void Func_8096af0(void);
+extern void Func_8097174(void);
+extern void Func_8097194(void);
+extern unsigned char gState[];
+
+int Func_808e5d8(unsigned int arg)
+{
+    int move = arg & 0x3ff;
+    int dir = (arg >> 10) & 0xf;
+    unsigned int elem, ev1, ev2;
+    unsigned int pos;
+    unsigned short *s;
+
+    elem = _GetMoveInfo(move)[0xc];
+    s = (unsigned short *)gState;
+    GetFieldActor(*(unsigned int *)&s[0xfa]);
+    ev1 = FindFieldMoveEvent(0x30000005, elem, &pos);
+    ev2 = FindFieldMoveEvent(0x20000005, elem, &pos);
+    Func_8096fb0(move, 0);
+    Func_80970f8(*(unsigned int *)&s[0xfa], pos);
+    Func_8096b28(ev1, dir, pos);
+    Func_8096af0();
+    Func_8097174();
+    Func_8096b28(ev2, dir, pos);
+    Func_8097194();
+    return 0;
+}
+
 INCLUDE_ASM("asm/field/map/UseFieldMove.s");
 
 extern unsigned int FindFieldMoveEvent(unsigned int, unsigned int, unsigned int *);
@@ -324,9 +397,55 @@ void Func_808ed78(void) {
     }
 }
 
-INCLUDE_ASM("asm/field/map/Func_808edac.s");
+void Func_808edac(int id, int x, int z)
+{
+    int idx = GetMapActorIndex(id);
+    unsigned char *e;
+    int *act;
+    int y;
+
+    if (idx == -1)
+        return;
+    e = iwram_3001ebc + idx * 8 + 0x11c;
+    act = *(int **)e;
+    if (act == 0)
+        return;
+    if (x == -1)
+        x = (e[6] << 20) + 0x80000;
+    if (z == -1)
+        z = (e[7] << 20) + 0x80000;
+    act[2] = x;
+    act[4] = z;
+    y = _Func_8011f54(0, x, z);
+    act[5] = y;
+    act[3] = y;
+}
 INCLUDE_ASM("asm/field/map/Func_808ee0c.s");
-INCLUDE_ASM("asm/field/map/Func_808eee4.s");
+extern unsigned char gScript_0809e87c[];
+extern void _Actor_SetScript(void *actor, void *script);
+struct SB808e { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
+void Func_808eee4(unsigned char *a)
+{
+    int v[3];
+    unsigned char *p;
+    int r;
+
+    if ((unsigned)(*(int *)(a + 0x28) + 0xff) <= 0x1fe)
+        a[0x55] = 0;
+    if ((unsigned)(Random() * 100) >> 16 <= 9) {
+        v[0] = *(int *)(a + 8);
+        v[1] = *(int *)(a + 0xc);
+        v[2] = *(int *)(a + 0x10);
+        r = Random();
+        vec3_translate(r << 4, Random(), v);
+        p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
+        if (p != 0) {
+            _Actor_SetScript(p, gScript_0809e87c);
+            _Actor_SetAnim(p, 0);
+            (*(struct SB808e **)(p + 0x50))->f = 1;
+        }
+    }
+}
 INCLUDE_ASM("asm/field/map/Func_808ef70.s");
 
 extern void _DeleteActor(void *actor);
@@ -372,9 +491,56 @@ void Func_808f0d8(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/field/map/Func_808f140.s");
+extern void _Actor_SetScript(void *, void *);
+extern unsigned char gScript_0809e6c0[];
+extern void Func_808eee4();
+void Func_808f140(unsigned char *a, int mode)
+{
+    unsigned short *s;
+    void *leader;
+
+    if (a == 0)
+        return;
+    s = (unsigned short *)gState;
+    leader = GetFieldActor(*(unsigned int *)&s[0xfa]);
+    if (mode & 1) {
+        _Actor_SetSpriteFlags(a, 0);
+        _Actor_SetScript(a, gScript_0809e6c0);
+        *(int *)(a + 0x28) = 0x20000;
+        *(int *)(a + 0x48) = 0x4000;
+        *(void **)(a + 0x6c) = Func_808eee4;
+    }
+    if (mode == 3)
+        WaitFrames(0x3c);
+    if (mode & 2)
+        Func_808f0d8((unsigned int)a);
+    if (mode == 3)
+        WaitFrames(0x50);
+    _Actor_SetAnim((unsigned int)leader, 1);
+}
 INCLUDE_ASM("asm/field/map/Func_808f1c0.s");
-INCLUDE_ASM("asm/field/map/Func_808f28c.s");
+extern unsigned char gScript_0809e87c[];
+struct SB808 { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
+void Func_808f28c(unsigned char *a)
+{
+    int v[3];
+    unsigned char *p;
+    int r;
+
+    if ((unsigned)(Random() * 100) >> 16 <= 9) {
+        v[0] = *(int *)(a + 8);
+        v[1] = *(int *)(a + 0xc);
+        v[2] = *(int *)(a + 0x10);
+        r = Random();
+        vec3_translate(r << 4, Random(), v);
+        p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
+        if (p != 0) {
+            _Actor_SetScript(p, gScript_0809e87c);
+            _Actor_SetAnim(p, 0);
+            (*(struct SB808 **)(p + 0x50))->f = 1;
+        }
+    }
+}
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
 
@@ -463,7 +629,26 @@ void Func_8090824(unsigned int arg0)
     WaitFrames(0x78);
 }
 
-INCLUDE_ASM("asm/field/map/Func_809088c.s");
+typedef int (*DivFn)(int, int);
+extern int divsi3_RAM(int, int);
+
+/* GCC calls r10 "sl"; the ROM provides its bx-r10 veneer as _call_via_r10. */
+__asm__(".set _call_via_sl, _call_via_r10");
+
+void Func_809088c(u16 *cur, u16 *target, u16 *delta, int frames)
+{
+    int i;
+
+    if (frames > 0) {
+        DivFn fn = divsi3_RAM;
+
+        for (i = 0x53f; i >= 0; i--) {
+            s16 curSample = (s16)*cur++;
+
+            *delta++ = (u16)fn((s16)*target++ - curSample, frames);
+        }
+    }
+}
 INCLUDE_ASM("asm/field/map/Func_80908e0.s");
 INCLUDE_ASM("asm/field/map/Func_8090a5c.s");
 
@@ -529,7 +714,28 @@ void Func_8091240(int arg0)
         *p = arg0;
 }
 
-INCLUDE_ASM("asm/field/map/Func_8091254.s");
+struct MapPaletteState {
+    u8 pad0[0x380];
+    u16 current[0x540];
+    u16 target[0x540];
+    u16 delta[0x540];
+    u8 pad[0x2a01 - 0x2300];
+    u8 rampFrames;
+    u8 rampPos;
+};
+
+extern struct MapPaletteState *iwram_3001ed0__a3 __asm__("iwram_3001ed0");
+
+void Func_8091254(int frames)
+{
+    struct MapPaletteState *p = iwram_3001ed0__a3;
+
+    if (p != NULL) {
+        p->rampFrames = frames;
+        p->rampPos = 0;
+        Func_809088c(p->current, p->target, p->delta, frames);
+    }
+}
 
 int Func_8091294(int arg0) {
     if (arg0 > 0x1f)
@@ -549,7 +755,32 @@ int Func_80912a8(int arg0) {
 }
 
 INCLUDE_ASM("asm/field/map/Func_80912b8.s");
-INCLUDE_ASM("asm/field/map/Func_8091494.s");
+extern void *galloc_iwram(int, int);
+extern u32 UploadSpriteGFX(int, int, void *);
+extern void Func_80912b8(void);
+void Func_8091494(void *actor)
+{
+    unsigned char *p = galloc_ewram(0x24, 0x1c);
+    void *buf = galloc_iwram(0xe, 0x400);
+    unsigned short *s;
+    vu32 tmp;
+
+    tmp = 0x11111111;
+    DMA3_SET((void *)&tmp, buf, 0x85000080);
+    UploadSpriteGFX(0x5e, 0x200, buf);
+    gfree(0xe);
+    StartTask(Func_80912b8, 0xc80);
+    SET_IO(REG_BLDCNT, 0x3f9e);
+    SET_IO(REG_BLDALPHA, 0x10);
+    SET_IO(REG_BLDY, 0x1f);
+    tmp = 0;
+    DMA3_SET((void *)&tmp, p, 0x85000007);
+    if (actor == 0) {
+        s = (unsigned short *)gState;
+        actor = GetFieldActor(*(unsigned int *)&s[0xfa]);
+    }
+    *(void **)(p + 0x18) = actor;
+}
 
 extern void Func_80912b8(void);
 

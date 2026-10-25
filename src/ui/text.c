@@ -5,7 +5,22 @@ extern unsigned int Func_801f704();
 INCLUDE_ASM("asm/ui/text/Func_801de5c.s");
 INCLUDE_ASM("asm/ui/text/Func_801e260.s");
 INCLUDE_ASM("asm/ui/text/Func_801e318.s");
-INCLUDE_ASM("asm/ui/text/Func_801e3c8.s");
+
+extern unsigned int iwram_3001e8c;
+void Func_801e3c8(int on)
+{
+    unsigned char *b = (unsigned char *)iwram_3001e8c;
+    int i;
+    if (on) {
+        b[0xea2] = 1;
+        for (i = 0x80; i < 0x100; i++)
+            b[0xda0 + i] = 0;
+    } else {
+        b[0xea2] = 0;
+        for (i = 0x80; i < 0x100; i++)
+            b[0xda0 + i] = 0;
+    }
+}
 
 void Func_801e418(void) {}
 
@@ -30,9 +45,37 @@ void SetTextBold(unsigned short arg0) {
 
 INCLUDE_ASM("asm/ui/text/DrawSmallText.s");
 INCLUDE_ASM("asm/ui/text/Func_801e7c0.s");
-INCLUDE_ASM("asm/ui/text/Func_801e858.s");
+void Func_801e858(unsigned char *s, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    short *buf = alloc_ewram(0x200);
+    short *d = buf;
+
+    while (*s != 0) {
+        *d = *s;
+        s++;
+        d++;
+    }
+    *d = 0;
+    Func_8017aa4(buf, a1, a2, a3);
+    free(buf);
+}
 INCLUDE_ASM("asm/ui/text/Func_801e8b0.s");
-INCLUDE_ASM("asm/ui/text/UIDrawText.s");
+void UIDrawText(char *str, unsigned int box, unsigned int x, unsigned int y)
+{
+    short *buf = alloc_ewram(0x200);
+    short *d = buf;
+
+    while (*str != 0) {
+        *d = (unsigned char)*str;
+        str++;
+        d++;
+    }
+    *d = 0;
+    x >>= 3;
+    y >>= 3;
+    Func_8017c8c(buf, box, x, y);
+    free(buf);
+}
 
 unsigned char *PrintNum(unsigned char *dest, unsigned int num, unsigned int param_3);
 void Func_801e858(unsigned char *dest, unsigned int arg2, unsigned int arg3, unsigned int arg4);
@@ -96,7 +139,20 @@ unsigned int Func_801eb90(unsigned int arg0, unsigned int arg1, unsigned int arg
     return Func_801eadc(slot, 0x80 << 23, arg2, arg3, arg4);
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801ebd8.s");
+extern void LoadOldUIIcon(unsigned int, int, int *, int *, int);
+unsigned int Func_801ebd8(unsigned int icon, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    int slot, tmp;
+    unsigned char *s;
+
+    slot = AllocSpriteSlot();
+    if (slot == 0x60)
+        return 0;
+    LoadOldUIIcon(icon, 1, &slot, &tmp, 1);
+    s = (unsigned char *)Func_801eadc(slot, 0x80 << 23, a1, a2, a3);
+    s[0xf] = 0xfb;
+    return (unsigned int)s;
+}
 
 int LoadUIBanner(unsigned int, unsigned int, unsigned int);
 
@@ -115,7 +171,41 @@ int Func_801ec24(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsign
 }
 
 INCLUDE_ASM("asm/ui/text/Func_801ec6c.s");
-INCLUDE_ASM("asm/ui/text/Func_801ed40.s");
+struct TextState801ed40 {
+    unsigned char pad[0x12ec];
+    unsigned short portrait[2];
+    unsigned short pos[2];
+};
+extern int _GetFlag(int);
+extern int GetPortrait(int);
+extern void LoadPortrait(int, int, int *, int *, int, int);
+void Func_801ed40(unsigned int slot, int id, int win)
+{
+    struct TextState801ed40 *b = *(struct TextState801ed40 **)&iwram_3001e8c;
+    int portrait;
+    int pos;
+    int dummy;
+
+    if (_GetFlag(0x20)) {
+        if (id == 0)
+            id = 0x12;
+        if (id == 1)
+            id = 0x13;
+    }
+    portrait = GetPortrait(id);
+    if (portrait == -1)
+        return;
+    if (slot > 1) {
+        if (b->portrait[1] == portrait)
+            slot = 1;
+        else if (b->portrait[0] == portrait)
+            slot = 0;
+        else
+            return;
+    }
+    pos = b->pos[slot];
+    LoadPortrait(portrait, win, &pos, &dummy, slot + 0xe, 1);
+}
 
 void Func_801edcc(unsigned int arg0, int arg1)
 {
@@ -135,7 +225,17 @@ void Func_801eddc(unsigned int arg0, unsigned int arg1) {
 }
 
 INCLUDE_ASM("asm/ui/text/Func_801edec.s");
-INCLUDE_ASM("asm/ui/text/Func_801ee68.s");
+void Func_801ee68(int a0, int a1, unsigned int w, unsigned int h, int fill)
+{
+    unsigned short *p = (unsigned short *)0x6002000;
+    unsigned int y, x;
+
+    for (y = 0; y < h; y++) {
+        for (x = 0; x < w; x++)
+            *p++ = fill;
+        p += 0x20 - w;
+    }
+}
 INCLUDE_ASM("asm/ui/text/Func_801eea0.s");
 INCLUDE_ASM("asm/ui/text/Func_801ef08.s");
 INCLUDE_ASM("asm/ui/text/Func_801ef68.s");
@@ -174,15 +274,72 @@ unsigned int Func_801f704(void) {
     return r0;
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801f730.s");
+extern int Func_80056cc(void);
+
+extern int Func_8005cf8(void);
+int Func_801f730(int a)
+{
+    int busy = Func_80056cc();
+    int r = -9;
+    if (busy == 0) {
+        r = Func_8005c68();
+        if (a != 0) {
+            unsigned char *p = *(unsigned char **)iwram_3001f1c + 0x1071;
+            int i;
+            for (i = 2; i >= 0; i--) {
+                signed char c = *(volatile signed char *)p;
+                p += 0x40;
+                if (c != 0)
+                    r--;
+            }
+        }
+    }
+    Func_8005cf8();
+    return r;
+}
 INCLUDE_ASM("asm/ui/text/Func_801f77c.s");
 INCLUDE_ASM("asm/ui/text/PrepareSaveHeader.s");
-INCLUDE_ASM("asm/ui/text/Func_801f9b4.s");
+extern int Func_80056cc(void);
+extern void Func_801776c(int, int);
+extern int SomethingSaveHeader(unsigned int, int);
+extern int Func_8005cf8(void);
+extern int PrepareSaveHeader();
+extern int _MSG_0a;
+extern int _MSG_0b;
+extern unsigned char ewram_2000000[];
+extern short ewram_2002004;
+int Func_801f9b4(void)
+{
+    int r6;
+    int r8;
+    unsigned char *r5;
+    short *slot = &ewram_2002004;
+
+    r8 = 0;
+    if (*slot == -1)
+        return -1;
+    r6 = Func_80056cc();
+    if (r6 != 0) {
+        Func_801776c((int)&_MSG_0a, 1);
+        r8 = -9;
+    } else {
+        PrepareSaveHeader();
+        r5 = ewram_2000000;
+        r6 = SomethingSaveHeader(*slot, (int)r5);
+        r6 |= SomethingSaveHeader(*slot + 3, (int)(r5 + 0x1000));
+        if (r6 != 0) {
+            Func_801776c((int)&_MSG_0b, 1);
+            r8 = -3;
+        }
+    }
+    Func_8005cf8();
+    return r8;
+}
 
 extern int Func_80056cc(void);
-extern int Func_801776c(int, int);
+extern void Func_801776c(int, int);
 extern int SomethingSaveHeader(unsigned int, int);
-extern void Func_8005cf8(void);
+extern int Func_8005cf8(void);
 extern int _MSG_0a;
 extern int _MSG_0b;
 extern unsigned char ewram_2000000[];
@@ -357,4 +514,41 @@ void Func_801fd98(void) {
     StopTask(Func_801fd34);
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801fda8.s");
+struct Win801fda8 { char pad[0xc]; unsigned short x; unsigned short y; };
+void Func_801fda8(struct Win801fda8 *w, int x, int y, int wd, int ht)
+{
+    unsigned int b = iwram_3001e8c;
+    unsigned short *p;
+    int off;
+    int n;
+
+    x = x + w->x + 1;
+    y = y + w->y + 1;
+    if (x < 0) {
+        wd += x;
+        x = 0;
+    }
+    if (x + wd > 0x1d)
+        wd = 0x1e - x;
+    if (y < 0) {
+        ht += y;
+        y = 0;
+    }
+    if (y + ht > 0x1d)
+        ht = 0x14 - y;
+    if (wd > 0 && ht > 0) {
+        off = (y << 6) + (x << 1);
+        do {
+            p = (unsigned short *)(off + b);
+            n = wd;
+            while (n != 0) {
+                n--;
+                *p++ = 0xe006;
+            }
+            off += 0x40;
+        } while (--ht != 0);
+        *(unsigned char *)(b + 0xea3) = 1;
+    }
+}
+/* Read-only data that follows Func_801fda8 in the ROM (used by Func_801de5c and Func_801ef68). */
+INCLUDE_ASM("asm/ui/text/rodata_371b4.s");

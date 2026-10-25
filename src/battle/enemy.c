@@ -146,7 +146,21 @@ unsigned int Func_80c2470(unsigned int arg0) {
 	return r5;
 }
 
-INCLUDE_ASM("asm/battle/enemy/Func_80c24b0.s");
+extern unsigned char *iwram_3001e74__k1 __asm__("iwram_3001e74");
+extern short gState__k4[] __asm__("gState");
+void Func_80c24b0(void)
+{
+    unsigned char *base = iwram_3001e74__k1;
+    int *p = (int *)(base + 0x530);
+    int i;
+
+    gState__k4[0x11e] = 0;
+    p[0] = 0;
+    p[1] = 0;
+    p[2] = 0;
+    for (i = 3; i >= 0; i--)
+        ((unsigned short *)(base + 0x53c))[i] = 0;
+}
 INCLUDE_ASM("asm/battle/enemy/Func_80c24f0.s");
 INCLUDE_ASM("asm/battle/enemy/Func_80c2724.s");
 

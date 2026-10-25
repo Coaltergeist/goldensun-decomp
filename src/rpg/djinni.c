@@ -16,7 +16,20 @@ unsigned char *GetDjinniInfo(unsigned int arg0, unsigned int arg1) {
 }
 
 INCLUDE_ASM("asm/rpg/djinni/Func_807a0f4.s");
-INCLUDE_ASM("asm/rpg/djinni/GiveDjinni.s");
+int GiveDjinni(unsigned int pc, int element, int index)
+{
+    struct Unit *u = (struct Unit *)GetUnit(pc);
+    u32 bit;
+
+    if (u->numDjinn[element] > 9)
+        return -1;
+    bit = 1 << index;
+    if (u->djinn[element] & bit)
+        return -1;
+    u->numDjinn[element]++;
+    u->djinn[element] |= bit;
+    return 0;
+}
 INCLUDE_ASM("asm/rpg/djinni/Func_807a1f8.s");
 
 unsigned int Func_807a2bc(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
@@ -33,7 +46,22 @@ unsigned int Func_807a2bc(unsigned int arg0, unsigned int arg1, unsigned int arg
     return 0;
 }
 
-INCLUDE_ASM("asm/rpg/djinni/SetDjinni.s");
+int SetDjinni(int pc, int elem, int djinn)
+{
+    extern int Func_807a1f8(int, int, int);
+    struct Unit *u = (struct Unit *)GetUnit(pc);
+    int r = Func_807a1f8(pc, elem, djinn);
+
+    if (r != 0) {
+        if (u->djinn[elem] & (1 << djinn))
+            u->setDjinn[elem] |= 1 << djinn;
+        else
+            return 0;
+        u->numSetDjinn[elem]++;
+        Func_8079ae8(pc);
+    }
+    return r;
+}
 
 unsigned int Func_807a350(unsigned int arg0, unsigned int arg1, unsigned int arg2) {
     unsigned char *r5;

@@ -105,4 +105,13 @@ void Func_80df8b8(unsigned int arg0)
 }
 
 INCLUDE_ASM("asm/battle_anim/moves/projectile/Func_80df90c.s");
-INCLUDE_ASM("asm/battle_anim/moves/projectile/Func_80df9d0.s");
+void Func_80df9d0(unsigned char *src, unsigned char *dst, int stride)
+{
+    int y, x;
+
+    for (y = 0; y != 0x120; y++)
+        for (x = 0; x != 0x28; x++)
+            dst[y * stride / 2 + x / 2] = src[y * stride + x];
+}
+/* Read-only data that follows Func_80df9d0 in the ROM (bytes come from baserom.gba). */
+INCLUDE_ASM("asm/battle_anim/moves/projectile/rodata_eebe9.s");
