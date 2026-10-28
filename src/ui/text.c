@@ -1,5 +1,8 @@
 #include "nonmatching.h"
 
+extern void *alloc_ewram(unsigned int size);
+extern unsigned int Func_8005c68(void);
+
 extern unsigned int Func_801f704();
 
 INCLUDE_ASM("asm/ui/text/Func_801de5c.s");
@@ -287,6 +290,7 @@ int Func_801f730(int a)
             unsigned char *p = *(unsigned char **)iwram_3001f1c + 0x1071;
             int i;
             for (i = 2; i >= 0; i--) {
+                // fakematch
                 signed char c = *(volatile signed char *)p;
                 p += 0x40;
                 if (c != 0)
@@ -404,7 +408,6 @@ int Func_801fb48(void) {
     return r5;
 }
 
-extern void Func_8005c68(void);
 extern int Func_8020244(int, int);
 extern int Func_8005a78(int, int);
 extern int _MSG_0c;
@@ -550,5 +553,5 @@ void Func_801fda8(struct Win801fda8 *w, int x, int y, int wd, int ht)
         *(unsigned char *)(b + 0xea3) = 1;
     }
 }
-/* Read-only data that follows Func_801fda8 in the ROM (used by Func_801de5c and Func_801ef68). */
-INCLUDE_ASM("asm/ui/text/rodata_371b4.s");
+
+INCLUDE_ASM("asm/ui/text/rodata.s");

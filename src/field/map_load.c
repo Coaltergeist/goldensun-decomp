@@ -1,6 +1,8 @@
 // fakematch
 #include "nonmatching.h"
 
+void Func_808b2b0(int x);
+
 extern int GetEncounterGroup();
 
 INCLUDE_ASM("asm/field/map_load/InitMapSomething.s");

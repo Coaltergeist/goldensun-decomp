@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 extern unsigned char **iwram_3001f30;
 extern void Field_Halt(void);
@@ -24,44 +25,44 @@ void Func_809ad70(void *actor) {
     _Actor_SetColorswap(actor, gScript_0809f160[(Random() << 3) >> 16]);
 }
 
-extern unsigned char *GetFieldActor__h(int) __asm__("GetFieldActor");
+extern unsigned char *GetFieldActor(int);
 extern void _Actor_SetAnimSpeed(void *, int);
 extern unsigned char gState[];
 void Func_809ad90(int id)
 {
-    unsigned char *a = GetFieldActor__h(id);
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
     if (a != 0) {
         unsigned char *s = gState;
         unsigned char *c;
-        *(int *)(s + 0x250) = *(int *)(a + 0x6c);
+        *(int *)(s + 0x250) = (int)a->update;
         c = s + 0x249;
         *c = 0;
-        if (a[0x54] == 1) {
-            unsigned char *g = *(unsigned char **)(*(unsigned char **)(a + 0x50) + 0x28);
+        if (a->visible == 1) {
+            unsigned char *g = *(unsigned char **)((unsigned char *)a->sprite + 0x28);
             if (g != 0)
                 *c = g[5];
         }
-        *(void **)(a + 0x6c) = (void *)Func_809ad70;
-        a[0x5b] = 1;
+        a->update = (actorfun_t)Func_809ad70;
+        a->stop = 1;
         _Actor_SetAnimSpeed(a, 0);
     }
 }
 
-extern unsigned char *GetFieldActor__h(int) __asm__("GetFieldActor");
+extern unsigned char *GetFieldActor(int);
 extern void _Actor_SetAnimSpeed(void *, int);
 extern unsigned char gState[];
 void Func_809ade8(int id)
 {
-    unsigned char *a = GetFieldActor__h(id);
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
     if (a != 0) {
-        if (*(void **)(a + 0x6c) == (void *)Func_809ad70) {
+        if (a->update == (actorfun_t)Func_809ad70) {
             unsigned char *s = gState;
             int *p = (int *)(s + 0x250);
-            *(int *)(a + 0x6c) = *p;
+            a->update = (actorfun_t)*p;
             *p = 0;
             _Actor_SetColorswap(a, (signed char)s[0x249]);
         }
-        a[0x5b] = 0;
+        a->stop = 0;
         _Actor_SetAnimSpeed(a, 0x10);
     }
 }

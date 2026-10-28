@@ -181,17 +181,17 @@ static inline int Clamp_(int value, int min, int max) {
         return min;
     return value;
 }
-void Func_80782a0(unsigned char *u, int hp)
+void Func_80782a0(struct Unit *u, int hp)
 {
     short v;
 
-    v = *(short *)(u + 0x38) = Clamp_(hp, 0, *(short *)(u + 0x34));
-    v = *(short *)(u + 0x14) = Clamp_((v << 16 >> 2) / *(short *)(u + 0x34), 0, 0x4000);
-    if (v == 0 && *(short *)(u + 0x38) != 0)
-        *(short *)(u + 0x14) = v = 1;
-    v = *(short *)(u + 0x16) = Clamp_((*(short *)(u + 0x3a) << 14) / *(short *)(u + 0x36), 0, 0x4000);
-    if (v == 0 && *(short *)(u + 0x3a) != 0)
-        *(short *)(u + 0x16) = v = 1;
+    v = u->HP = Clamp_(hp, 0, u->maxHP);
+    v = u->percentHP = Clamp_((v << 16 >> 2) / u->maxHP, 0, 0x4000);
+    if (v == 0 && u->HP != 0)
+        u->percentHP = v = 1;
+    v = u->percentPP = Clamp_((u->PP << 14) / u->maxPP, 0, 0x4000);
+    if (v == 0 && u->PP != 0)
+        u->percentPP = v = 1;
 }
 
 INCLUDE_ASM_SECTION("asm/rpg/party/Func_8078320.s", ".text.party_2");

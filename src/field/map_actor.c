@@ -1,6 +1,10 @@
 #include "nonmatching.h"
+#include "rpg.h"
 #include "sprite.h"
 #include "actor.h"
+extern void _Actor_Stop();
+
+extern void _Actor_SetScript(int actor, unsigned char *script);
 
 extern int MapActor_GetActor();
 extern void Func_80922c4();
@@ -92,11 +96,11 @@ void Func_808c30c(int amount, int pct)
     }
     n = _GetPartySize();
     for (i = 0; i < n; i++) {
-        unsigned char *u = _GetUnit(gState[0x1f8 + i]);
+        struct Unit *u = (struct Unit *)_GetUnit(gState[0x1f8 + i]);
         if (pct == 0)
             v = amount;
         else {
-            v = *(short *)(u + 0x34) * amount / 100;
+            v = u->maxHP * amount / 100;
             if (v == 0) {
                 v = amount;
                 if (v < 0)
@@ -120,17 +124,17 @@ int UpdatePoison(void)
     int d;
 
     for (i = 0; i < n; i++) {
-        unsigned char *u = _GetUnit(gState[0x1f8 + i]);
-        switch ((signed char)u[0x131]) {
+        struct Unit *u = (struct Unit *)_GetUnit(gState[0x1f8 + i]);
+        switch ((signed char)u->poison) {
         case 1:
-            d = -((*(short *)(u + 0x34) + 10) / 20);
+            d = -((u->maxHP + 10) / 20);
             if (d == 0)
                 d = -1;
             if (ret < 1)
                 ret = 1;
             break;
         case 2:
-            d = -((*(short *)(u + 0x34) + 5) / 10);
+            d = -((u->maxHP + 5) / 10);
             if (d == 0)
                 d = -1;
             if (ret < 2)
@@ -230,7 +234,6 @@ void MapActor_SetBehavior(int actorID, int behavior)
   }
 }
 
-extern void _Actor_Stop(void);
 
 void MapActor_SetIdle(int actorID)
 {
@@ -290,7 +293,6 @@ void MapActor_RunScript(int actorID, int behavior)
     _Actor_WaitScript(r5);
 }
 
-extern void _Actor_Stop(void);
 extern void _Actor_WaitMovement();
 
 void MapActor_TravelTo(unsigned int param_1, int param_2, int param_3) {
@@ -339,21 +341,20 @@ void MapActor_TravelToAnimWait(int actorID, int arg1, int arg2) {
     }
 }
 
-extern void _Actor_Stop__a(void *) __asm__("_Actor_Stop");
 extern void Func_8092b08(int, int);
 void Func_8092208(int id, int arg1, int arg2)
 {
-    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
     short r;
     if (a != 0) {
-        r = *(short *)(a + 0xa) % 16;
-        a[0x5b] = 0;
-        _Actor_Stop__a(a);
+        r = *(short *)((char *)a + 0xa) % 16;
+        a->stop = 0;
+        _Actor_Stop(a);
         _Actor_SetAnim(a, 2);
-        _Actor_TravelTo(a, *(int *)(a + 8) + ((8 - r) << 16), *(int *)(a + 0xc), *(int *)(a + 0x10));
+        _Actor_TravelTo(a, a->pos.x + ((8 - r) << 16), a->pos.y, a->pos.z);
         _Actor_WaitMovement(a);
         Func_8092b08(id, arg1);
-        _Actor_TravelTo(a, *(int *)(a + 8), *(int *)(a + 0xc), *(int *)(a + 0x10) + (arg2 << 16));
+        _Actor_TravelTo(a, a->pos.x, a->pos.y, a->pos.z + (arg2 << 16));
     }
 }
 
@@ -406,19 +407,19 @@ void Func_809233c(int id, int dx, int dy, int arg3)
     extern void MapActor_SetPos(int, int, int);
     extern unsigned char gScript_0809fbcc[];
     extern int gState_i3[] __asm__("gState");
-    unsigned char *a = (unsigned char *)GetFieldActor(id);
-    unsigned char *o;
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
+    struct Actor *o;
 
     if (a != 0) {
         MapActor_SetSpeed(id, 0x9999, 0x4ccc);
-        o = (unsigned char *)MapActor_GetActor(gState_i3[0x7d]);
+        o = (struct Actor *)MapActor_GetActor(gState_i3[0x7d]);
         if (o != 0)
-            MapActor_SetPos(id, *(int *)(o + 8), *(int *)(o + 0x10));
-        a[0x5b] = 0;
+            MapActor_SetPos(id, o->pos.x, o->pos.z);
+        a->stop = 0;
         _Actor_SetAnim((int)a, 2);
         MapActor_TravelBy(id, dx, dy);
         _Actor_SetScript((int)a, gScript_0809fbcc);
-        *(unsigned short *)(a + 0x64) = arg3;
+        a->waveCounter = arg3;
     }
 }
 
@@ -468,23 +469,19 @@ void MapActor_SetAnimSpeed(int actorID, int speed)
 extern void WaitFrames(unsigned int nframes);
 void Func_8092504(int id)
 {
-    unsigned char *a = (unsigned char *)GetFieldActor(id);
-    unsigned char *p;
-    unsigned char *oam;
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
+    unsigned char *anim;
     int i;
-    int one;
-    volatile int v[1];
-    volatile int *vp;
+    volatile int prev;
+    volatile int *pprev;
 
-    one = 1;
-    if (a != 0 && a[0x54] == one) {
-        vp = v;
-        oam = *(unsigned char **)(a + 0x50);
-        p = oam + 0x24;
-        *vp = *p;
+    if (a != 0 && a->visible == 1) {
+        pprev = &prev;
+        anim = &a->sprite->animID;
+        *pprev = *anim;
         for (i = 0; i <= 0x59; i++) {
-            WaitFrames(one);
-            if (*vp != *p)
+            WaitFrames(1);
+            if (*pprev != *anim)
                 break;
         }
     }
@@ -520,7 +517,6 @@ void MapActor_Jump(int actor, int height, unsigned int holdTime) {
 }
 
 extern unsigned char gScript_0809ebfc[] __asm__("gScript_0809ebfc");
-extern void _Actor_SetScript(int actor, unsigned char *script);
 
 void Func_809259c(int arg0, int arg1) {
     int r5;
@@ -541,16 +537,16 @@ void Func_80925cc(unsigned int arg0)
 	MapActor_WaitScript(arg0);
 }
 
-void Func_80925e0(int *a)
+void Func_80925e0(struct Actor *a)
 {
-    int vx = a[0xc];
+    int vx = a->speed;
     int vz;
-    a[0xe] = a[2] += vx;
-    vz = a[0xd];
-    a[0x10] = a[4] += vz;
-    a[0xf] = a[3] += 0x400;
-    a[0xc] = vx - vx / 18;
-    a[0xd] = vz - vz / 16;
+    a->prevPos.x = a->pos.x += vx;
+    vz = a->accel;
+    a->prevPos.z = a->pos.z += vz;
+    a->prevPos.y = a->pos.y += 0x400;
+    a->speed = vx - vx / 18;
+    a->accel = vz - vz / 16;
 }
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092624.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092708.s", ".text.map_actor_2");
@@ -625,15 +621,15 @@ void Func_8092950(unsigned int arg0, unsigned int arg1) {
 
 extern unsigned char gScript_0809ed80[];
 extern unsigned int iwram_3001e40;
-void Func_8092980(unsigned char *a)
+void Func_8092980(struct Actor *a)
 {
     unsigned char *s;
     unsigned char v;
     unsigned char **pp;
     int n;
 
-    if ((a[0x54] & 0xf) == 1) {
-        s = *(unsigned char **)(a + 0x50);
+    if ((a->visible & 0xf) == 1) {
+        s = (unsigned char *)a->sprite;
         v = gScript_0809ed80[(iwram_3001e40 >> 1) & 3];
         { unsigned char m = s[0x27]; if (m != 0) {
             pp = (unsigned char **)(s + 0x28);
@@ -647,14 +643,14 @@ void Func_8092980(unsigned char *a)
         s[0x25] = 1;
     }
 }
-void Func_80929d8(unsigned char *a, int v)
+void Func_80929d8(struct Actor *a, int v)
 {
     unsigned char *s;
     unsigned char **pp;
     int n;
 
-    if ((a[0x54] & 0xf) == 1) {
-        s = *(unsigned char **)(a + 0x50);
+    if ((a->visible & 0xf) == 1) {
+        s = (unsigned char *)a->sprite;
         { unsigned char m = s[0x27]; if (m != 0) {
             pp = (unsigned char **)(s + 0x28);
             n = m;
@@ -724,12 +720,12 @@ void Func_8092adc(int arg0, int arg1, int arg2) {
 
 void Func_8092b08(int id, int v)
 {
-    unsigned char *a = (unsigned char *)GetFieldActor(id);
-    if (a != 0 && (a[0x54] & 0xf) == 1) {
-        struct SpriteOAM *o = *(struct SpriteOAM **)(a + 0x50);
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
+    if (a != 0 && (a->visible & 0xf) == 1) {
+        struct SpriteOAM *o = &a->sprite->oam;
         o[0].priority = v;
         o[1].priority = v;
-        a[0x23] &= 0xfe;
+        a->flags &= 0xfe;
     }
 }
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b54.s", ".text.map_actor_2");
@@ -798,7 +794,7 @@ void Func_80931d4(int actorID)
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80931ec.s", ".text.map_actor_2");
 
 extern unsigned char iwram_3001e8c__v[] __asm__("iwram_3001e8c");
-extern int GetActorSpriteID__i(int) __asm__("GetActorSpriteID");
+extern int GetActorSpriteID(int);
 extern unsigned char gState__304[] __asm__("gState");
 extern unsigned int GetSpriteVoice(unsigned int);
 extern unsigned char X9fc28[];
@@ -810,7 +806,7 @@ void Func_8093304(int actor)
         *(unsigned short *)(b + 0x12f4) = v1 = 0;
         *(unsigned short *)(b + 0x12f6) = v1;
     } else {
-        v0 = GetSpriteVoice(GetActorSpriteID__i(actor));
+        v0 = GetSpriteVoice(GetActorSpriteID(actor));
         v1 = X9fc28[gState__304[0x20c]];
         *(unsigned short *)(b + 0x12f4) = v0;
         *(unsigned short *)(b + 0x12f6) = v1;

@@ -3,6 +3,10 @@
 #include "dma.h"
 #include "rpg.h"
 
+void Func_80a1c2c(unsigned char **pp, int idx, int arg2, int arg3, int arg4);
+void Func_80a68a8(unsigned short *ids);
+void Func_80a9bd8(unsigned char *p, int idx, int yoff, int xoff, int arg4);
+
 extern void Func_80a19a0(void);
 
 extern unsigned int LoadUIHandCursorGFX();
@@ -374,8 +378,8 @@ void Func_80a2420(void) {
 
 extern unsigned int _PlaySound();
 
-unsigned int Func_80a2438(void) {
-    _PlaySound();
+unsigned int Func_80a2438(int sound) {
+    _PlaySound(sound);
     return 1;
 }
 
@@ -429,7 +433,7 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a2680.s");
 extern int Func_80a9e48(int, int, int);
 extern void _Func_80164ac(int);
 extern void Func_80a1d08(int, int, int);
-extern void Func_80aa448__a(int) __asm__("Func_80aa448");
+extern void Func_80aa448(int);
 extern void _CalcStats(int);
 struct V80a32b8 { char pad[0x222]; unsigned short flag; };
 int Func_80a32b8(void)
@@ -445,7 +449,7 @@ int Func_80a32b8(void)
         ((struct V80a32b8 *)b)->flag = 1;
         return r;
     }
-    Func_80aa448__a(*(unsigned short *)(b + 0x178) & 0x1ff);
+    Func_80aa448(*(unsigned short *)(b + 0x178) & 0x1ff);
     _CalcStats(*p1);
     _CalcStats(*p2);
     return 1;
@@ -829,10 +833,9 @@ struct S80a6a00 {
 int Func_80a5578(int *out, int idx)
 {
     extern struct S80a6a00 *iwram_3001f2c__5578 __asm__("iwram_3001f2c");
-    extern unsigned char *_GetUnit__5578(int) __asm__("_GetUnit");
     struct S80a6a00 *s = iwram_3001f2c__5578;
     int total = Func_80a3d6c(s->list[idx]);
-    unsigned char *u = _GetUnit__5578(s->list[idx]);
+    unsigned char *u = (unsigned char *)_GetUnit(s->list[idx]);
     int sel = s->cursor[s->list[idx]];
     int row, col, pages;
 
@@ -947,9 +950,8 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80a68ec.s");
 int Func_80a6a00(int *out, int idx)
 {
     extern struct S80a6a00 *iwram_3001f2c__6a00 __asm__("iwram_3001f2c");
-    extern unsigned char *_GetUnit__6a00(int) __asm__("_GetUnit");
     struct S80a6a00 *s = iwram_3001f2c__6a00;
-    unsigned char *u = _GetUnit__6a00(s->list[idx]);
+    unsigned char *u = (unsigned char *)_GetUnit(s->list[idx]);
     int total = s->count;
     int sel = s->cursor[s->list[idx]];
     int row, col, pages;
@@ -1081,7 +1083,7 @@ void Func_80a9374(unsigned int arg0, unsigned int arg1) {
     _GetUnit(arg1);
     Func_80a345c();
     r5 += 0xe4 << 1;
-    Func_80a68a8(r5);
+    Func_80a68a8((unsigned short *)r5);
 }
 
 void Func_80a939c(void) {}
@@ -1211,37 +1213,36 @@ unsigned int Func_80a9f0c(void) {
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9f10.s");
 
-extern int _GetItemInfo(void);
+extern int _GetItemInfo(int item);
 extern void Func_80aa460(int);
 
-void Func_80aa448(void) {
-    unsigned char *p = (unsigned char *)_GetItemInfo();
+void Func_80aa448(int item) {
+    unsigned char *p = (unsigned char *)_GetItemInfo(item);
     Func_80aa460(*(unsigned short *)(p + 0x28) & 0x3fff);
 }
 
 extern unsigned char *_GetMoveInfo(int);
-extern unsigned int Func_80a2438__a(int) __asm__("Func_80a2438");
 void Func_80aa460(int id)
 {
     unsigned char *m = _GetMoveInfo(id);
     switch (m[1] & 0xf) {
     case 1:
-        Func_80a2438__a(0x7e);
+        Func_80a2438(0x7e);
     case 0xb:
-        Func_80a2438__a(0x7e);
+        Func_80a2438(0x7e);
         return;
     }
     switch (m[3]) {
     case 1: case 2: case 31: case 32:
         break;
     case 5:
-        Func_80a2438__a(0x52);
+        Func_80a2438(0x52);
         break;
     case 3:
-        Func_80a2438__a(0x54);
+        Func_80a2438(0x54);
         break;
     default:
-        Func_80a2438__a(0x5b);
+        Func_80a2438(0x5b);
         break;
     }
 }

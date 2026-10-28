@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+
 extern void __Actor_SetAnim(void *, int);
 extern void __WaitFrames(int);
 extern void __PlaySound(int);

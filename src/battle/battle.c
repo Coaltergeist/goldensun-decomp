@@ -23,7 +23,6 @@ int Func_80b5ad4(void)
     return (int)clear(BattleClearStart, 20);
 }
 
-#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
 
 void ResetBG0VOFS(void) {
     unsigned short value = 0;

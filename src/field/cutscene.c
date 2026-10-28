@@ -31,22 +31,22 @@ void CutsceneWait(unsigned int arg0) {
     }
 }
 
-extern unsigned char *GetFieldActor__r(int) __asm__("GetFieldActor");
-extern void _Actor_SetAnim__r(void *, int) __asm__("_Actor_SetAnim");
+extern unsigned char *GetFieldActor(int);
+extern void _Actor_SetAnim(void *, int);
 void ResetPlayerSpeed(void)
 {
     unsigned char *s = gState;
-    unsigned char *a = GetFieldActor__r(*(int *)(s + 0x1f4));
-    *(int *)(a + 0x30) = 0x10000;
-    *(int *)(a + 0x34) = 0x8000;
-    *(int *)(a + 0x38) = 0x80000000;
-    *(int *)(a + 0x40) = 0x80000000;
-    *(int *)(a + 0x24) = 0;
-    *(int *)(a + 0x2c) = 0;
+    struct Actor *a = (struct Actor *)GetFieldActor(*(int *)(s + 0x1f4));
+    a->speed = 0x10000;
+    a->accel = 0x8000;
+    a->prevPos.x = 0x80000000;
+    a->prevPos.z = 0x80000000;
+    a->motion.x = 0;
+    a->motion.z = 0;
     if (s[0x1f2] == 1)
-        _Actor_SetAnim__r(a, 0xc);
+        _Actor_SetAnim(a, 0xc);
     else
-        _Actor_SetAnim__r(a, 1);
+        _Actor_SetAnim(a, 1);
 }
 extern void _Func_801c428(void);
 extern void ResetPlayerSpeed(void);

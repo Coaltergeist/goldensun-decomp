@@ -476,22 +476,22 @@ INCLUDE_ASM("asm/ui/save_menu/Func_8023e70.s");
 
 INCLUDE_ASM("asm/ui/save_menu/Func_8024934.s");
 
-extern unsigned char *_GetItemInfo__e(int) __asm__("_GetItemInfo");
-extern unsigned char *_GetMoveInfo__e(int) __asm__("_GetMoveInfo");
+extern unsigned char *_GetItemInfo(int);
+extern unsigned char *_GetMoveInfo(int);
 extern int _CanEquipItem(int, int);
 int Func_8025180(int unit, int item)
 {
     unsigned char *info;
     if (item == 0)
         return 1;
-    info = _GetItemInfo__e(item);
+    info = _GetItemInfo(item);
     if (info[0xc] == 3)
         return 1;
     if (*(unsigned short *)(info + 0x28) == 0)
         return 1;
     if (info[2] != 0 && _CanEquipItem(unit, item) == 0)
         return 1;
-    return (_GetMoveInfo__e(*(unsigned short *)(info + 0x28))[1] & 0x80) ? 0 : 2;
+    return (_GetMoveInfo(*(unsigned short *)(info + 0x28))[1] & 0x80) ? 0 : 2;
 }
 
 #include "dma.h"

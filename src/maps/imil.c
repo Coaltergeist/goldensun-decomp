@@ -4,6 +4,7 @@
 #include "api.h"
 #include "actor.h"
 #include "sprite.h"
+
 extern void __MapActor_Face(int, int, int);
 extern void __DeleteActor(void *);
 

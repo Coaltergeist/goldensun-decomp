@@ -2,6 +2,9 @@
 #include "nonmatching.h"
 #include "dma.h"
 #include "palette.h"
+#include "actor.h"
+
+extern struct Actor *CreateParticleActor(int, int, int, int);
 
 extern void CutsceneEnd();
 extern int MapActor_GetActor();
@@ -148,15 +151,15 @@ unsigned int Func_808e078(unsigned int arg0, unsigned int arg1, unsigned int arg
 
 extern short gFieldMoveRanges[];
 extern unsigned int iwram_3001e40;
-void Func_808e0b0(unsigned char *a, int k)
+void Func_808e0b0(struct Actor *a, int k)
 {
     unsigned char *s;
     unsigned int v;
     unsigned char **pp;
     int n;
 
-    if ((a[0x54] & 0xf) == 1) {
-        s = *(unsigned char **)(a + 0x50);
+    if ((a->visible & 0xf) == 1) {
+        s = (unsigned char *)a->sprite;
         v = k - 1;
         if (k == 0)
             { unsigned int i = iwram_3001e40; unsigned char *t = (unsigned char *)gFieldMoveRanges + 0x32; v = t[(i >> 1) & 7]; }
@@ -423,26 +426,25 @@ void Func_808edac(int id, int x, int z)
 INCLUDE_ASM("asm/field/map/Func_808ee0c.s");
 extern unsigned char gScript_0809e87c[];
 extern void _Actor_SetScript(void *actor, void *script);
-struct SB808e { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
-void Func_808eee4(unsigned char *a)
+void Func_808eee4(struct Actor *a)
 {
     int v[3];
-    unsigned char *p;
+    struct Actor *p;
     int r;
 
-    if ((unsigned)(*(int *)(a + 0x28) + 0xff) <= 0x1fe)
-        a[0x55] = 0;
+    if ((unsigned)(a->motion.y + 0xff) <= 0x1fe)
+        a->__unk55 = 0;
     if ((unsigned)(Random() * 100) >> 16 <= 9) {
-        v[0] = *(int *)(a + 8);
-        v[1] = *(int *)(a + 0xc);
-        v[2] = *(int *)(a + 0x10);
+        v[0] = a->pos.x;
+        v[1] = a->pos.y;
+        v[2] = a->pos.z;
         r = Random();
         vec3_translate(r << 4, Random(), v);
         p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
         if (p != 0) {
             _Actor_SetScript(p, gScript_0809e87c);
-            _Actor_SetAnim(p, 0);
-            (*(struct SB808e **)(p + 0x50))->f = 1;
+            _Actor_SetAnim((unsigned int)p, 0);
+            p->sprite->oam.priority = 1;
         }
     }
 }
@@ -494,7 +496,7 @@ void Func_808f0d8(unsigned int arg0)
 extern void _Actor_SetScript(void *, void *);
 extern unsigned char gScript_0809e6c0[];
 extern void Func_808eee4();
-void Func_808f140(unsigned char *a, int mode)
+void Func_808f140(struct Actor *a, int mode)
 {
     unsigned short *s;
     void *leader;
@@ -506,9 +508,9 @@ void Func_808f140(unsigned char *a, int mode)
     if (mode & 1) {
         _Actor_SetSpriteFlags(a, 0);
         _Actor_SetScript(a, gScript_0809e6c0);
-        *(int *)(a + 0x28) = 0x20000;
-        *(int *)(a + 0x48) = 0x4000;
-        *(void **)(a + 0x6c) = Func_808eee4;
+        a->motion.y = 0x20000;
+        a->gravity = 0x4000;
+        a->update = (actorfun_t)Func_808eee4;
     }
     if (mode == 3)
         WaitFrames(0x3c);
@@ -520,24 +522,23 @@ void Func_808f140(unsigned char *a, int mode)
 }
 INCLUDE_ASM("asm/field/map/Func_808f1c0.s");
 extern unsigned char gScript_0809e87c[];
-struct SB808 { unsigned char pad[9]; unsigned char lo:2; unsigned char f:2; unsigned char hi:4; };
-void Func_808f28c(unsigned char *a)
+void Func_808f28c(struct Actor *a)
 {
     int v[3];
-    unsigned char *p;
+    struct Actor *p;
     int r;
 
     if ((unsigned)(Random() * 100) >> 16 <= 9) {
-        v[0] = *(int *)(a + 8);
-        v[1] = *(int *)(a + 0xc);
-        v[2] = *(int *)(a + 0x10);
+        v[0] = a->pos.x;
+        v[1] = a->pos.y;
+        v[2] = a->pos.z;
         r = Random();
         vec3_translate(r << 4, Random(), v);
         p = CreateParticleActor(0x11d, v[0], v[1], v[2]);
         if (p != 0) {
             _Actor_SetScript(p, gScript_0809e87c);
-            _Actor_SetAnim(p, 0);
-            (*(struct SB808 **)(p + 0x50))->f = 1;
+            _Actor_SetAnim((unsigned int)p, 0);
+            p->sprite->oam.priority = 1;
         }
     }
 }

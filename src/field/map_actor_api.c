@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 extern unsigned char *GetFieldActor(int id);
 extern unsigned char *iwram_3001e70;
@@ -6,7 +7,7 @@ extern signed char *_GetSpriteInfo(int);
 
 int Func_8094154(int id, int *out)
 {
-    unsigned char *a = GetFieldActor(id);
+    struct Actor *a = (struct Actor *)GetFieldActor(id);
     int *cam;
     int x, y, cx, cy;
 
@@ -15,12 +16,12 @@ int Func_8094154(int id, int *out)
     cam = (int *)(iwram_3001e70 + 0xe4);
     cx = cam[0] & ~0xffff;
     cy = cam[1] & ~0xffff;
-    x = *(int *)(a + 8) - cx;
-    y = *(int *)(a + 0x10) - cy - *(int *)(a + 0xc);
+    x = a->pos.x - cx;
+    y = a->pos.z - cy - a->pos.y;
     *out++ = x / 0x10000;
     *out = y / 0x10000;
-    if ((a[0x54] & 0xf) == 1)
-        *out -= _GetSpriteInfo(**(short **)(*(unsigned char **)(a + 0x50) + 0x28))[8];
+    if ((a->visible & 0xf) == 1)
+        *out -= _GetSpriteInfo(**(short **)((unsigned char *)a->sprite + 0x28))[8];
     return 0;
 }
 

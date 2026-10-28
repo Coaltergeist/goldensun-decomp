@@ -1,6 +1,8 @@
 #include "nonmatching.h"
 #include "dma.h"
 
+void gfree(int index);
+
 extern void Func_801b228();
 extern void Func_801a968();
 extern void Func_801c3e8();
@@ -71,13 +73,13 @@ void Func_801b148(void)
     extern void Func_801a97c(void);
     extern void Func_801c21c(void);
     extern s32 Func_8003f3c(int);
-    extern void CloseUIBox__b148(int, int) __asm__("CloseUIBox");
+    extern void CloseUIBox(int, int);
     extern void WaitFrames(unsigned int);
     unsigned char *s = iwram_3001e98__b148;
     struct MenuNode801b148 *n;
 
     Func_801a97c();
-    CloseUIBox__b148(*(int *)(s + 0x350), 2);
+    CloseUIBox(*(int *)(s + 0x350), 2);
     WaitFrames(1);
     for (n = *(struct MenuNode801b148 **)(s + 0x348); n != 0; n = n->next) {
         if (n->active) {
@@ -318,7 +320,6 @@ void Func_801c188(void)
     extern u32 DecompressLZ1(void *, void *);
     extern int AllocSpriteSlot(void);
     extern int UploadSpriteGFX(int, int, void *);
-    extern void gfree(int);
     extern int _FILE_f1;
     extern void *GetFile(int);
     extern unsigned char *iwram_3001e98__c188 __asm__("iwram_3001e98");
@@ -518,7 +519,6 @@ void Func_801c930(void)
 }
 
 int Func_8017394(int a);
-void gfree(int index);
 extern unsigned char *iwram_3001e9c;
 
 void Func_801c954(void)

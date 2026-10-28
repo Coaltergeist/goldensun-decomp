@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+extern void FillUIRegion(int a, int b, int c, int d);
 
 extern unsigned char iwram_3001e8c__a5[] __asm__("iwram_3001e8c");
 struct UISlot {
@@ -40,7 +41,6 @@ extern void Func_801789c();
 extern unsigned int Func_8017364();
 
 INCLUDE_ASM("asm/ui/ui/ClearUIRegion.s");
-extern void FillUIRegion__v(int a, int b, int c, int d) __asm__("FillUIRegion");
 extern void Func_8017248(int a, int b, int c, int d, int e);
 extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
 static inline void Fill_80008d8(void *dst, unsigned int size, unsigned int value)
@@ -60,14 +60,14 @@ void Func_8016230(struct UIBox *box)
     w = box->w;
     if (box->flags & 8) {
         if (box->flags & 0x20) {
-            FillUIRegion__v(x, y, w, h);
+            FillUIRegion(x, y, w, h);
             Fill_80008d8((void *)0x6002500, 0xf00, 0x44444444);
         } else {
             Fill_80008d8((void *)0x6002500, 0xf00, 0);
         }
         Func_8017248(x, y, w, h, 0);
     } else {
-        FillUIRegion__v(x, y, w, h);
+        FillUIRegion(x, y, w, h);
     }
     b[0xea3] = 1;
 }
@@ -138,7 +138,6 @@ void Func_8016478(void *arg0) {
     }
 }
 
-extern int FillUIRegion(int a, int b, int c, int d);
 
 void Func_8016498(unsigned char *p)
 {
@@ -500,26 +499,24 @@ struct UiMsgFlags {
 extern struct UiMsgFlags *iwram_3001e8c__k3 __asm__("iwram_3001e8c");
 int TextBox(int msg, int a1, int a2, int a3, int a4)
 {
-    extern int BufferString__k(int, int) __asm__("BufferString");
-    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    extern void Func_801868c(int, int, int, int, int, int, int);
     struct UiMsgFlags *s = iwram_3001e8c__k3;
-    int i = BufferString__k(msg, 0);
+    int i = BufferString(msg, 0);
 
     if (s->seen[i] == 0)
         return 0;
-    Func_801868c__k(i, a1, a2, a3, a4, 0, 0);
+    Func_801868c(i, a1, a2, a3, a4, 0, 0);
     return 1;
 }
 int DialogueBox(int msg, int a1, int a2, int a3, int a4)
 {
-    extern int BufferString__k(int, int) __asm__("BufferString");
-    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    extern void Func_801868c(int, int, int, int, int, int, int);
     struct UiMsgFlags *s = iwram_3001e8c__k3;
-    int i = BufferString__k(msg, 0);
+    int i = BufferString(msg, 0);
 
     if (s->seen[i] == 0)
         return 0;
-    Func_801868c__k(i, a1, a2, a3, a4, 0, 1);
+    Func_801868c(i, a1, a2, a3, a4, 0, 1);
     return 1;
 }
 INCLUDE_ASM("asm/ui/ui/Func_8018850.s");
@@ -662,8 +659,7 @@ int Func_801999c(struct V199c *m)
     }
     return 0;
 }
-struct V19ec { char pad[0x14]; unsigned short t; };
-int Func_80199ec(struct V19ec *m)
+int Func_80199ec(struct V199c *m)
 {
     extern int _Func_80f954c(void);
     extern unsigned int iwram_3001af8;
@@ -684,7 +680,6 @@ int Func_80199ec(struct V19ec *m)
     }
     return 0;
 }
-extern void CloseUIBox__u(void *, unsigned short) __asm__("CloseUIBox");
 void Func_8019a54(void)
 {
     unsigned char **p = (unsigned char **)(*(unsigned char **)iwram_3001e8c__a5 + 0x620);
@@ -692,7 +687,7 @@ void Func_8019a54(void)
     for (i = 0; i != 3; i++) {
         unsigned char *box = *p;
         if (box != 0 && *(int *)(box + 0x18) == 0 && *(unsigned short *)(box + 0x16) != 0 && *(unsigned short *)(box + 0x14) != 0)
-            CloseUIBox__u(box, *(unsigned short *)(box + 0x16) & 2);
+            CloseUIBox(box, *(unsigned short *)(box + 0x16) & 2);
         p += 10;
     }
     WaitFrames(10);
@@ -712,7 +707,7 @@ void *Func_8019da8(int portrait, int arg1, int x, int y)
 {
     extern unsigned char *iwram_3001e8c__9da8 __asm__("iwram_3001e8c");
     extern int GetPortrait(int);
-    extern void *CreateUIBox__9da8(int, int, int, int, int) __asm__("CreateUIBox");
+    extern void *CreateUIBox(int, int, int, int, int);
     extern int Func_801ec6c(int, int, int, void *, int, int);
     unsigned char *ui = iwram_3001e8c__9da8;
     void *box;
@@ -724,10 +719,10 @@ void *Func_8019da8(int portrait, int arg1, int x, int y)
     dy = -4;
     dx = dy;
     if (ui[0xea4]) {
-        box = CreateUIBox__9da8(x, y, 6, 5, 2);
+        box = CreateUIBox(x, y, 6, 5, 2);
         dx = 0;
     } else {
-        box = CreateUIBox__9da8(x, y, 5, 5, 2);
+        box = CreateUIBox(x, y, 5, 5, 2);
     }
     if (box)
         Func_801ec6c(portrait, arg1, -1, box, dx, dy);

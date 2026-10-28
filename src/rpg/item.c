@@ -222,6 +222,7 @@ int CheckPartyItem(int item) {
 INCLUDE_ASM("asm/rpg/item/EquipItem.s");
 int GetEquippedItem(int unit, int type)
 {
+    extern struct Unit *GetUnit(int unit);
     struct Unit *u = GetUnit(unit);
     int i;
 

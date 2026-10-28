@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+
 extern void __Actor_SetSpriteFlags(void *, int);
 
 extern unsigned int Lm959_5ed8[] __asm__(".Lm959_5ed8");

@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 extern void Field_Ply(void);
 extern void Func_8097174(void);
@@ -9,22 +10,22 @@ extern unsigned char *iwram_3001f30__k2 __asm__("iwram_3001f30");
 extern void vec3_translate(int, int, int *);
 extern void _Actor_SetScript(void *actor, void *script);
 extern unsigned char Data_9f0b0[];
-void Func_8099340(unsigned char *a)
+void Func_8099340(struct Actor *a)
 {
     unsigned char *s = iwram_3001f30__k2;
     int v[3];
     short t;
 
     if (a != 0) {
-        t = --*(short *)(a + 0x64);
+        t = --a->waveCounter;
         if (t != 0) {
             v[0] = *(int *)(s + 0x4);
             v[1] = *(int *)(s + 0x8) + 0xa0000;
             v[2] = *(int *)(s + 0xc);
-            vec3_translate(t << 16, *(short *)(a + 0x66) + (t << 11), v);
-            *(int *)(a + 0x8) = v[0];
-            *(int *)(a + 0xc) = v[1];
-            *(int *)(a + 0x10) = v[2];
+            vec3_translate(t << 16, a->__unk66 + (t << 11), v);
+            a->pos.x = v[0];
+            a->pos.y = v[1];
+            a->pos.z = v[2];
         } else {
             _Actor_SetScript(a, Data_9f0b0);
         }

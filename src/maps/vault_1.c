@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+
 extern unsigned char *__MapActor_GetActor(int);
 extern void __WaitFrames(int);
 void OvlFunc_898_2009724(unsigned int arg0, unsigned int arg1);

@@ -1,5 +1,8 @@
 #include "nonmatching.h"
 
+extern void *galloc_iwram(int index, unsigned int size);
+void DecompressStatusIcon(int id);
+
 extern unsigned char L2a2e0[] __asm__(".L2a2e0");
 extern unsigned char gItemIcons[] __asm__("gItemIcons");
 
@@ -46,18 +49,18 @@ int LoadStatusIcon(int icon, int unused, int slot) {
 }
 
 INCLUDE_ASM("asm/ui/icon/LoadUIBanner.s");
-struct IconState_i {
+struct IconState {
     unsigned char pad0[0x600];
     unsigned short w, h;
     void *src;
 };
-extern struct IconState_i *iwram_3001e94__i __asm__("iwram_3001e94");
+extern struct IconState *iwram_3001e94__i __asm__("iwram_3001e94");
 extern unsigned char *_GetItemInfo(unsigned int);
 extern void *gItemIcons__i[] __asm__("gItemIcons");
 extern void LoadIcon(void *, int);
 void LoadItemIcon(unsigned int item)
 {
-    struct IconState_i *s = iwram_3001e94__i;
+    struct IconState *s = iwram_3001e94__i;
     unsigned char *info = _GetItemInfo(item & 0x1ff);
     if (item != 0)
         s->src = gItemIcons__i[*(unsigned short *)(info + 6)];
@@ -73,17 +76,11 @@ void LoadMoveIcon(unsigned int move, unsigned int a, unsigned int b, unsigned in
     LoadMoveIconID(_GetMoveInfo(move)[4], a, b, c, d);
 }
 INCLUDE_ASM("asm/ui/icon/LoadMoveIconID.s");
-struct IconState {
-    unsigned char pad0[0x600];
-    unsigned short w, h;
-    void *src;
-};
-extern struct IconState *iwram_3001e94__k1 __asm__("iwram_3001e94");
 extern void *gStatusIcons[];
 extern void LoadIcon(void *, int);
 void DecompressStatusIcon(int id)
 {
-    struct IconState *s = iwram_3001e94__k1;
+    struct IconState *s = iwram_3001e94__i;
 
     s->src = gStatusIcons[id];
     s->w = 2;

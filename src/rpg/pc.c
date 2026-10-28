@@ -1,7 +1,10 @@
 #include "nonmatching.h"
+#include "rpg.h"
+
+extern unsigned char *GetUnit(unsigned int unit);
 
 extern int GetPartySize();
-extern unsigned short RPGRandom();
+extern int RPGRandom();
 extern void Func_8079ae8();
 extern unsigned char * GetDjinniInfo();
 
@@ -23,19 +26,18 @@ void Func_8079004(void) {}
 extern int L7a830[] __asm__(".L7a830");
 unsigned int GetPCStatGrowth(unsigned int unit, unsigned int arg1)
 {
-    unsigned char *u = GetUnit(unit);
+    struct Unit *u = (struct Unit *)GetUnit(unit);
     int lvl = arg1;
-    if (u[0x129] != 0) {
+    if (u->curClass != 0) {
         if (lvl <= 0)
             return 0;
-        if (lvl <= 0x63 && u[0x128] <= 7)
-            return L7a830[u[0x128] * 99 + lvl - 1];
+        if (lvl <= 0x63 && u->pcID <= 7)
+            return L7a830[u->pcID * 99 + lvl - 1];
     }
     return -1;
 }
 INCLUDE_ASM("asm/rpg/pc/Func_807905c.s");
 
-extern unsigned char *GetUnit(unsigned int unit);
 extern unsigned int GetPCStatGrowth(unsigned int arg0, unsigned int arg1);
 extern unsigned int Func_807905c(unsigned int arg0, unsigned int arg1);
 extern void CalcStats(int pc);
@@ -198,7 +200,7 @@ int Func_8079754(int delta)
     return value;
 }
 extern unsigned char X84a8c[];
-extern int *Func_8077330__p() __asm__("Func_8077330");
+extern int *Func_8077330();
 int Func_807977c(unsigned char *out)
 {
     unsigned char *p = X84a8c;
@@ -208,7 +210,7 @@ int Func_807977c(unsigned char *out)
 
     do {
         unsigned char id = *p++;
-        if (*Func_8077330__p(0) & (one << id)) {
+        if (*Func_8077330(0) & (one << id)) {
             *out++ = id;
             n++;
         }
@@ -262,30 +264,29 @@ int Func_8079c5c(int arg0, int arg1, int arg2) {
 
 int Func_8079c8c(unsigned int pc)
 {
-    extern unsigned int Func_80798b4(unsigned char *unit);
-    extern unsigned char *Func_807882c(unsigned char *unit, int type);
-    unsigned char *unit;
+    extern unsigned int Func_80798b4(struct Unit *unit);
+    extern unsigned char *Func_807882c(struct Unit *unit, int type);
+    struct Unit *unit;
     unsigned char *item;
 
-    unit = GetUnit(pc);
-    if (unit[0x129] == 0)
+    unit = (struct Unit *)GetUnit(pc);
+    if (unit->curClass == 0)
         return Func_80798b4(unit);
     item = Func_807882c(unit, 1);
     if (item != 0)
         return *(int *)(item + 0x14);
     return 4;
 }
-int CheckEquipmentCritBoost(unsigned char *unit)
+int CheckEquipmentCritBoost(struct Unit *unit)
 {
     extern unsigned char *GetItemInfo(int item);
     int total = 0;
-    int i, j, off;
+    int i, j;
     unsigned char *e;
 
     for (i = 0; i < 15; i++) {
-        off = 0xd8 + i * 2;
-        if (*(unsigned short *)(unit + off) & 0x200) {
-            e = GetItemInfo(*(unsigned short *)(unit + off)) + 0x18;
+        if (unit->items[i] & 0x200) {
+            e = GetItemInfo(unit->items[i]) + 0x18;
             for (j = 0; j < 4; j++, e += 4) {
                 if (e[0] == 0x17)
                     total += (signed char)e[1];
@@ -296,15 +297,14 @@ int CheckEquipmentCritBoost(unsigned char *unit)
         total = 0;
     return total;
 }
-int Func_8079d1c(unsigned char *unit)
+int Func_8079d1c(struct Unit *unit)
 {
-    extern unsigned char *Func_807882c(unsigned char *unit, int type);
-    extern int CheckEquipmentCritBoost(unsigned char *unit);
-    extern int RPGRandom_i(void) __asm__("RPGRandom");
+    extern unsigned char *Func_807882c(struct Unit *unit, int type);
+    extern int CheckEquipmentCritBoost(struct Unit *unit);
     unsigned char *item;
     int chance;
 
-    if (unit[0x129] == 0)
+    if (unit->curClass == 0)
         return 1;
     item = Func_807882c(unit, 1);
     if (item == 0)
@@ -312,7 +312,7 @@ int Func_8079d1c(unsigned char *unit)
     if (*(unsigned short *)(item + 0xe) == 0)
         return 1;
     chance = ((CheckEquipmentCritBoost(unit) + item[0xb] * 5) << 16) / 100;
-    if (chance > (RPGRandom_i() & 0xffff))
+    if (chance > (RPGRandom() & 0xffff))
         return *(unsigned short *)(item + 0xe);
     return 1;
 }

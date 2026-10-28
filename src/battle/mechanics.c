@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "rpg.h"
 
 #include "nonmatching.h"
 
@@ -45,8 +46,6 @@ extern unsigned char Lc5a30[] __asm__(".Lc5a30");
 extern void gfree(int index);
 extern int Func_80b8808();
 
-#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
-#define REG_BLDCNT (*(volatile unsigned short *)0x04000050)
 
 extern int Lc59a4[] __asm__(".Lc59a4");
 extern int Lc59c4[] __asm__(".Lc59c4");
@@ -56,18 +55,18 @@ extern void _Actor_TravelTo(void *, int, int, int);
 void SetBattleActorKnockback(int id, int dir)
 {
     int *ba;
-    unsigned char *a;
+    struct Actor *a;
 
     ba = (int *)GetBattleActor(id);
-    a = (unsigned char *)ba[0];
-    if (_GetUnit(id)[0x128] != 0x94) {
-        *(int *)(a + 0x34) = Lc59a4[dir];
-        *(int *)(a + 0x30) = Lc59c4[dir];
-        if (*(int *)(a + 0xc) == 0 || dir > 4)
-            *(int *)(a + 0x28) = Lc59e4[dir];
-        *(int *)(a + 0x48) = 0x9999;
-        *(int *)(a + 0x44) = 0;
-        a[0x5a] = 0;
+    a = (struct Actor *)ba[0];
+    if (((struct Unit *)_GetUnit(id))->pcID != 0x94) {
+        a->accel = Lc59a4[dir];
+        a->speed = Lc59c4[dir];
+        if (a->pos.y == 0 || dir > 4)
+            a->motion.y = Lc59e4[dir];
+        a->gravity = 0x9999;
+        a->bounce = 0;
+        a->__unk5A = 0;
         _Actor_Stop(a);
         _Actor_TravelTo(a, ba[3] * Lc5a04[dir] / 100, 0, ba[4]);
     }
@@ -725,11 +724,11 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80bf4c4.s");
 
 int Func_80bf524(int id)
 {
-    unsigned char *u = _GetUnit(id);
+    struct Unit *u = (struct Unit *)_GetUnit(id);
 
-    if (u[0x13e] != 0) {
-        u[0x13e]--;
-        if (u[0x13e] == 0)
+    if (u->regenerate != 0) {
+        u->regenerate--;
+        if (u->regenerate == 0)
             return 1;
     }
     return 0;
@@ -737,11 +736,11 @@ int Func_80bf524(int id)
 
 int Func_80bf54c(int id)
 {
-    unsigned char *u = _GetUnit(id);
+    struct Unit *u = (struct Unit *)_GetUnit(id);
 
-    if (u[0x13f] != 0) {
-        u[0x13f]--;
-        if (u[0x13f] == 0)
+    if (u->reflect != 0) {
+        u->reflect--;
+        if (u->reflect == 0)
             return 1;
     }
     return 0;
@@ -749,12 +748,12 @@ int Func_80bf54c(int id)
 
 int Func_80bf574(int id)
 {
-    unsigned char *u = _GetUnit(id);
+    struct Unit *u = (struct Unit *)_GetUnit(id);
 
-    if (u[0x146] != 0) {
-        u[0x146]--;
-        if (u[0x146] == 0) {
-            u[0x147] = 0;
+    if (u->agilityModTurns != 0) {
+        u->agilityModTurns--;
+        if (u->agilityModTurns == 0) {
+            u->agilityMod = 0;
             return 1;
         }
     }
@@ -779,10 +778,10 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80bfba4.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80bffb8.s");
 
-extern void *Func_80008d8(unsigned int *, int, int);
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
 void Func_80c0098(unsigned int *p)
 {
-    void (*f)(unsigned int *, int, int);
+    void *(*f)(void *, unsigned int, unsigned int);
     unsigned int v;
     unsigned int i;
 
@@ -840,8 +839,6 @@ SECTION(".text.mechanics_2");
 
 #include "nonmatching.h"
 
-#define REG_BG0VOFS (*(volatile unsigned short *)0x04000012)
-#define REG_BLDCNT (*(volatile unsigned short *)0x04000050)
 
 INCLUDE_ASM_SECTION("asm/battle/mechanics/Func_80c0a24.s", ".text.mechanics_2");
 

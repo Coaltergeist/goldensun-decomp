@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "actor.h"
 #include "api.h"
+
 extern struct Actor *__MapActor_GetActor(int);
 extern void __Actor_SetSpriteFlags(void *, int);
 

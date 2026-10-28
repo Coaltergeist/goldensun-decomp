@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+
 extern unsigned int __Random();
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");

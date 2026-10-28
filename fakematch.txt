@@ -26,3 +26,4 @@ Func_80039bc src/core/runtime/video.c
 Func_80039fc src/core/runtime/video.c
 Func_8003a3c src/core/runtime/video.c
 SetRegAnimDest src/core/runtime/video.c
+Func_801f730 src/ui/text.c

@@ -1,6 +1,8 @@
 // fakematch
 #include "nonmatching.h"
+#include "rpg.h"
 #include "dma.h"
+extern void *_GetItemInfo(unsigned int item);
 
 extern void Func_80b00f4();
 
@@ -267,7 +269,6 @@ INCLUDE_ASM("asm/shop/shop/Func_80b1260.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1470.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b153c.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1614.s");
-extern void *_GetItemInfo__s(unsigned int) __asm__("_GetItemInfo");
 extern int _GetEquippedItem(int, int);
 extern void _PlaySound(int);
 extern int _GiveItemTo(int, int);
@@ -278,7 +279,7 @@ extern int Func_80b1868(int, int);
 extern int Func_80b196c(int, int);
 void Func_80b17e4(int unit, int item, int count)
 {
-    short *info = _GetItemInfo__s(item);
+    short *info = _GetItemInfo(item);
     int slot = 0;
     int eq = _GetEquippedItem(unit, ((unsigned char *)info)[2]);
     int i;
@@ -295,11 +296,10 @@ void Func_80b17e4(int unit, int item, int count)
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b1868.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b196c.s");
-extern void *_GetItemInfo__s(unsigned int) __asm__("_GetItemInfo");
 int Func_80b19cc(unsigned int item)
 {
-    int price = *(short *)_GetItemInfo__s(item);
-    if (((unsigned char *)_GetItemInfo__s(item))[3] & 8)
+    int price = *(short *)_GetItemInfo(item);
+    if (((unsigned char *)_GetItemInfo(item))[3] & 8)
         price = 0;
     else if (item & 0x400)
         price = price / 2;
@@ -309,7 +309,6 @@ int Func_80b19cc(unsigned int item)
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b1a14.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1bd0.s");
-struct Unit80b1dec { unsigned char pad[0xd8]; unsigned short items[15]; };
 void Func_80b1dec(int box, int pc)
 {
     extern unsigned char *_GetUnit(unsigned int unitID);
@@ -317,10 +316,10 @@ void Func_80b1dec(int box, int pc)
     extern int _FindEmptyInventorySlot(int);
     extern void _DrawSmallText(int, int, int, int);
     extern unsigned char *_Func_801eb90(int, int, int, int, int);
-    unsigned char *u;
+    struct Unit *u;
     int i, x, y;
 
-    u = _GetUnit(pc);
+    u = (struct Unit *)_GetUnit(pc);
     x = 8;
     y = 0;
     if (box == 0)
@@ -331,8 +330,8 @@ void Func_80b1dec(int box, int pc)
         return;
     }
     for (i = 0; i <= 14; i++) {
-        if (((struct Unit80b1dec *)u)->items[i] != 0)
-            _Func_801eb90(((struct Unit80b1dec *)u)->items[i], 0x1b, box, x, y)[0xf] = 0xfc;
+        if (u->items[i] != 0)
+            _Func_801eb90(u->items[i], 0x1b, box, x, y)[0xf] = 0xfc;
         x += 0x10;
         if (i == 4) {
             x = 8;
@@ -347,7 +346,6 @@ void Func_80b1dec(int box, int pc)
 INCLUDE_ASM("asm/shop/shop/Func_80b1e80.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b1f4c.s");
 
-extern short *_GetItemInfo(unsigned int arg);
 
 unsigned int Func_80b20e8(unsigned int arg0)
 {
@@ -625,10 +623,10 @@ void InnHeal(int cost)
 
     _AddCoins(-cost);
     for (i = 0; i < n; i++) {
-        unsigned char *u = _GetUnit(party[i]);
-        if (*(short *)(u + 0x38) != 0) {
-            *(unsigned short *)(u + 0x38) = *(unsigned short *)(u + 0x34);
-            *(unsigned short *)(u + 0x3a) = *(unsigned short *)(u + 0x36);
+        struct Unit *u = (struct Unit *)_GetUnit(party[i]);
+        if (u->HP != 0) {
+            u->HP = u->maxHP;
+            u->PP = u->maxPP;
             _UpdateStatBarPercent(party[i]);
         }
     }

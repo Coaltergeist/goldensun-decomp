@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "rpg.h"
 
 extern unsigned char *GetUnit(unsigned int unit);
 
@@ -61,14 +62,14 @@ extern int Func_80797fc(int a, unsigned char *b, int *c);
 
 int Func_807987c(unsigned int arg0, int arg1)
 {
-    unsigned char *p;
+    struct Unit *p;
     int buf[4];
     int ret;
 
-    p = (unsigned char *)GetUnit(arg0);
+    p = (struct Unit *)GetUnit(arg0);
     ret = 0;
     if (arg1 <= 3) {
-        Func_80797fc(*(unsigned char *)(p + 0x128), p + 0xf8, buf);
+        Func_80797fc(p->pcID, (unsigned char *)p->djinn, buf);
         ret = buf[arg1] / 0xa;
     }
     return ret;

@@ -1,17 +1,18 @@
 #include "nonmatching.h"
+#include "actor.h"
 
-extern unsigned char *iwram_3001e64[];
+extern struct Actor *iwram_3001e64;
 void Func_8098294(int v)
 {
-    unsigned char *a = iwram_3001e64[0];
+    struct Actor *a = iwram_3001e64;
     int i;
-    for (i = 0x3f; i >= 0; i--, a += 0x70) {
+    for (i = 0x3f; i >= 0; i--, a++) {
         unsigned char k;
-        if (*(int *)a == 0)
+        if (a->script == 0)
             continue;
-        k = a[0x54];
+        k = a->visible;
         if (k == 1) {
-            unsigned char *spr = *(unsigned char **)(a + 0x50);
+            unsigned char *spr = (unsigned char *)a->sprite;
             short *g = *(short **)(spr + 0x28);
             if (*g == 0xc8) {
                 ((unsigned char *)g)[5] = v;
