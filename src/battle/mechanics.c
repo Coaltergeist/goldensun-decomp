@@ -41,6 +41,7 @@ extern unsigned char iwram_3001e74__a4[] __asm__("iwram_3001e74");
 extern int _RPGRandom(void);
 extern void Func_80bf5a8(void);
 #include "dma.h"
+#include "dma0.h"
 extern unsigned char iwram_3001ef8[];
 extern unsigned char Lc5a30[] __asm__(".Lc5a30");
 extern void gfree(int index);
@@ -479,7 +480,16 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80bd3e4.s");
 
 INCLUDE_ASM("asm/battle/mechanics/LoadEnemy.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80bd7a4.s");
+extern void *iwram_30000c4[];
+extern void _call_via_r0(void (*)(void));
+
+void Func_80bd7a4(void)
+{
+    DMA3_COPY(0, 0, 0);
+    DMA3_COPY(0, 0, 0);
+    DMA3_COPY(0, 0, 0);
+    _call_via_r0((void (*)(void))iwram_30000c4[0]);
+}
 
 void Func_80bd7dc(int arg)
 {
@@ -801,7 +811,26 @@ void Func_80c0098(unsigned int *p)
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80c00d8.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80c0130.s");
+extern unsigned char * const iwram_3001f00;
+
+void Func_80c0130(void)
+{
+    unsigned char *state;
+    int *r4p;
+    int idx;
+    unsigned char *r0p;
+
+    state = iwram_3001f00;
+    if (*(int *)(state + 8) != 2) {
+        return;
+    }
+    r4p = *(int **)((unsigned char *)&iwram_3001f00 - 0x88);
+    idx = *r4p;
+    r0p = (unsigned char *)r4p + idx * 320;
+    SET_IO(REG_BG2CNT, *(unsigned short *)(r0p + 0x20));
+    DMA0_SET(r0p + 0x22, (void *)&REG_BG2CNT, 0xa2600001);
+    DMA3_COPY((unsigned char *)r4p + 0x10, (void *)&REG_BG2PA, 0x10);
+}
 
 void Func_80c0184(void)
 {
@@ -827,7 +856,18 @@ INCLUDE_ASM("asm/battle/mechanics/Func_80c0700.s");
 
 INCLUDE_ASM("asm/battle/mechanics/Func_80c0774.s");
 
-INCLUDE_ASM("asm/battle/mechanics/Func_80c08a8.s");
+extern void *galloc_ewram(int index, unsigned int size);
+
+void Func_80c08a8(void)
+{
+    void *p;
+    unsigned char *state;
+
+    p = galloc_ewram(10, 0xa8 << 2);
+    state = iwram_3001f00;
+    DMA3_CLEAR(p, 0xa8 << 2);
+    *(unsigned int *)(state + 8) = 0;
+}
 
 void Func_80c08e0(void) {
     gfree(10);
