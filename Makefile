@@ -98,7 +98,11 @@ $(OBJ)/src/field_engine/actor/player.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
 # common2 is built without -mthumb-interwork: its common2_c* functions return
 # with `pop {pc}`, unlike every other file. Its remaining code is the same
 # either way.
-COMMON2_CFLAGS := $(filter-out -mthumb-interwork,$(GCC296_CFLAGS))
+# It is also built without -fcall-used-r4: common2 is libgcc's soft-float
+# double code (fp-bit.c + __lshrdi3), not Camelot code, and its non-leaf
+# functions save and use r4 as a callee-saved register (e.g. __fixdfsi at
+# common2_380 does `push {r4, lr}` and keeps its fp_number_type pointer in r4).
+COMMON2_CFLAGS := $(filter-out -mthumb-interwork -fcall-used-r4,$(GCC296_CFLAGS))
 $(OBJ)/src/maps/common/common2.o: private GCC296_CFLAGS := $(COMMON2_CFLAGS)
 
 # Overlay data .incbin's the extracted originals, so extract them before any
