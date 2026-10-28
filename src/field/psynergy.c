@@ -70,5 +70,37 @@ void Func_8097a54(unsigned char *actor) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097a7c.s", ".text.psynergy_2");
+SECTION(".text.psynergy_2");
+extern unsigned int iwram_3001e8c;
+extern int StartTask(void *, int);
+extern void Func_8097868(void);
+void Func_8097a7c(void)
+{
+    volatile unsigned short * p;
+
+    *(unsigned char *)(*(unsigned char **)&iwram_3001e8c + 0xea4) = 1;
+    p = (void *)0x50001e2;
+    *p = 0x739c;
+    p += 2;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    p++;
+    *p = 0x739c;
+    StartTask(Func_8097868, 0x480);
+}
 INCLUDE_ASM_SECTION("asm/field/psynergy/Func_8097adc.s", ".text.psynergy_2");

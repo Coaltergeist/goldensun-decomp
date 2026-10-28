@@ -46,7 +46,22 @@ void Func_8096d2c(struct Actor *actor)
     }
 }
 
-INCLUDE_ASM("asm/field/actor_move/Func_8096d84.s");
+void Func_8096d84(struct Actor *a)
+{
+    struct Actor *o = a->linkedActor;
+    int s;
+    a->waveCounter++;
+    if (a->waveCounter > 0x1f) {
+        _Actor_SetScript(a, Data_9f0b0);
+        return;
+    }
+    s = sin(a->waveCounter << 10);
+    a->scale.x = s;
+    a->scale.y = -s;
+    a->pos.x = o->pos.x;
+    a->pos.y += 0x10000;
+    a->pos.z = o->pos.z - (0x10000 - s) * 5 + 0x100000;
+}
 INCLUDE_ASM("asm/field/actor_move/Func_8096ddc.s");
 
 extern unsigned int iwram_3001e40;

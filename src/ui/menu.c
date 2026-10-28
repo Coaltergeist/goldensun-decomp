@@ -6,8 +6,35 @@ extern void Func_801a968();
 extern void Func_801c3e8();
 
 INCLUDE_ASM("asm/ui/menu/Func_801a66c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801a778.s");
-INCLUDE_ASM("asm/ui/menu/Func_801a7c0.s");
+extern unsigned int iwram_3001e98;
+void Func_801a778(void)
+{
+    unsigned char *base = (unsigned char *)iwram_3001e98;
+
+    *(unsigned int *)(base + 0x348) = 0;
+    *(unsigned short *)(base + 0x39a) = 0;
+    if (*(unsigned short *)(base + 0x39e) & 0x80) {
+        *(unsigned short *)(base + 0x39c) = 0;
+        *(unsigned short *)(base + 0x39e) = 0;
+    }
+    *(unsigned short *)(base + 0x3a0) = 0;
+    *(unsigned short *)(base + 0x394) = 0;
+}
+void Func_801a7c0(int a, int b)
+{
+    unsigned char *base = (unsigned char *)iwram_3001e98;
+    unsigned short *n = (unsigned short *)(base + 0x394);
+    unsigned short c = *n;
+
+    if (c != 0x10) {
+        int i = c << 1;
+        int o = 0x354;
+        *(short *)(base + (o + i)) = a;
+        o = 0x374;
+        *(short *)(base + (o + i)) = b;
+        *n += 1;
+    }
+}
 INCLUDE_ASM("asm/ui/menu/Func_801a7f4.s");
 
 void Func_801a90c(void) {}
@@ -31,7 +58,48 @@ INCLUDE_ASM("asm/ui/menu/Func_801a98c.s");
 
 INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b010.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b148.s");
+struct MenuNode801b148 {
+    unsigned int pad0;
+    struct MenuNode801b148 *next;
+    unsigned short pad8;
+    unsigned short active;
+    unsigned short id;
+};
+void Func_801b148(void)
+{
+    extern unsigned char *iwram_3001e98__b148 __asm__("iwram_3001e98");
+    extern void Func_801a97c(void);
+    extern void Func_801c21c(void);
+    extern s32 Func_8003f3c(int);
+    extern void CloseUIBox__b148(int, int) __asm__("CloseUIBox");
+    extern void WaitFrames(unsigned int);
+    unsigned char *s = iwram_3001e98__b148;
+    struct MenuNode801b148 *n;
+
+    Func_801a97c();
+    CloseUIBox__b148(*(int *)(s + 0x350), 2);
+    WaitFrames(1);
+    for (n = *(struct MenuNode801b148 **)(s + 0x348); n != 0; n = n->next) {
+        if (n->active) {
+            Func_8003f3c(n->id);
+            n->active = 0;
+        }
+    }
+    for (n = *(struct MenuNode801b148 **)(s + 0x34c); n != 0; n = n->next) {
+        if (n->active) {
+            Func_8003f3c(n->id);
+            n->active = 0;
+        }
+    }
+    Func_801c21c();
+    if (*(short *)(s + 0x12)) {
+        Func_8003f3c(*(unsigned short *)(s + 0xc));
+        if (*(short *)(s + 0x12))
+            Func_8003f3c(*(unsigned short *)(s + 0x40));
+    }
+    Func_8003f3c(*(unsigned short *)(s + 0x2e4));
+    gfree(0x12);
+}
 
 extern unsigned int iwram_3001e98;
 
@@ -63,8 +131,43 @@ void Func_801b228(void) {
 }
 
 INCLUDE_ASM("asm/ui/menu/DisplayMenuArrowCursor2.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b36c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801b398.s");
+void *Func_801b36c(unsigned char *menu)
+{
+    unsigned int **node = *(unsigned int ***)(menu + 0x348);
+    int i;
+
+    for (i = 0; i != *(unsigned short *)(menu + 0x39e); i++)
+        node = (unsigned int **)node[1];
+    return node;
+}
+int Func_801b398(int a)
+{
+    extern unsigned char *iwram_3001e98__b398 __asm__("iwram_3001e98");
+    extern volatile int gKeyPress, gKeyRepeat;
+    extern void WaitFrames(unsigned int);
+    extern void Func_801b9ec(void *, int);
+    extern void Func_801b664(void *);
+    extern void Func_801b810(void *);
+    extern int Func_801be80(void *);
+    unsigned char *base = iwram_3001e98__b398;
+
+    Func_801b9ec(base, 0);
+    for (;;) {
+        WaitFrames(1);
+        if (*(unsigned short *)(base + 0x3a0))
+            continue;
+        if (a != 999) {
+            if (gKeyRepeat & 0x10)
+                Func_801b664(base);
+            else if (gKeyRepeat & 0x20)
+                Func_801b810(base);
+            else if (gKeyPress & 1)
+                return Func_801be80(base);
+        }
+        if (a && (gKeyPress & 2))
+            return -1;
+    }
+}
 INCLUDE_ASM("asm/ui/menu/Func_801b424.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b4ec.s");
 INCLUDE_ASM("asm/ui/menu/Func_801b5c0.s");
@@ -91,8 +194,78 @@ void Func_801ba34(unsigned int base) {
 }
 
 INCLUDE_ASM("asm/ui/menu/Func_801ba68.s");
-INCLUDE_ASM("asm/ui/menu/UploadIcon.s");
-INCLUDE_ASM("asm/ui/menu/Func_801bcd4.s");
+int UploadIcon(int type, int id)
+{
+    extern void LoadOldUIIcon(int, int, int *, int *, int);
+    extern int AllocSpriteSlot(void);
+    extern int LoadInventoryIcon(int, int, int);
+    extern int LoadUIBanner(int, int, int);
+    extern void LoadMoveIcon(int, int, int *, int *, int);
+    int tmp;
+    int slot = -1;
+
+    switch (type) {
+    case 1:
+    case 6:
+        LoadOldUIIcon(id, 0, &slot, &tmp, 0);
+        break;
+    case 2:
+        slot = AllocSpriteSlot();
+        if (slot == 0x60)
+            return -1;
+        LoadInventoryIcon(id, 0x1a, slot);
+        break;
+    case 9:
+        slot = AllocSpriteSlot();
+        if (slot == 0x60)
+            return -1;
+        LoadUIBanner(id, 0, slot);
+        break;
+    case 4:
+        LoadMoveIcon(id, 1, &slot, &tmp, 0);
+        break;
+    }
+    return slot;
+}
+int Func_801bcd4(int type, int id, int slot, int arg3)
+{
+    extern void LoadOldUIIcon(int, int, int *, int *, int);
+    extern int AllocSpriteSlot(void);
+    extern int LoadInventoryIcon(int, int, int);
+    extern int LoadUIBanner(int, int, int);
+    extern void LoadMoveIcon(int, int, int *, int *, int);
+    extern int LoadStatusIcon(int, int, int);
+    int tmp;
+    int orig = slot;
+
+    if (slot == -1) {
+        slot = AllocSpriteSlot();
+        if (slot == 0x60)
+            return orig;
+    }
+    switch (type) {
+    case 1:
+    case 6:
+        LoadOldUIIcon(id, arg3, &slot, &tmp, 1);
+        break;
+    case 2:
+        LoadInventoryIcon(id, 0x3a, slot);
+        break;
+    case 7:
+        LoadInventoryIcon(id, 0x2a, slot);
+        break;
+    case 4:
+        LoadMoveIcon(id, arg3, &slot, &tmp, 1);
+        break;
+    case 8:
+        LoadStatusIcon(id, 0, slot);
+        break;
+    case 9:
+        LoadUIBanner(id, 0, slot);
+        break;
+    }
+    return slot;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801bd98.s");
 INCLUDE_ASM("asm/ui/menu/Func_801be80.s");
 
@@ -127,7 +300,53 @@ void Func_801c17c(void) {
     Func_8003f3c();
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c188.s");
+struct MenuGfx801c188 {
+    unsigned char pad0[8];
+    unsigned short id;
+    unsigned short state;
+    unsigned short slot;
+    unsigned short gfx;
+    unsigned char pad10[0x12];
+    unsigned short w;
+    unsigned short h;
+    unsigned short x;
+};
+
+void Func_801c188(void)
+{
+    extern void *galloc_iwram(int, int);
+    extern u32 DecompressLZ1(void *, void *);
+    extern int AllocSpriteSlot(void);
+    extern int UploadSpriteGFX(int, int, void *);
+    extern void gfree(int);
+    extern int _FILE_f1;
+    extern void *GetFile(int);
+    extern unsigned char *iwram_3001e98__c188 __asm__("iwram_3001e98");
+    unsigned char *base = iwram_3001e98__c188;
+    unsigned short *m = Func_801b36c(base);
+    struct MenuGfx801c188 *p;
+    unsigned char *buf;
+    unsigned char *f;
+    int id;
+
+    if (m[5] == 1 || m[5] == 6) {
+        buf = galloc_iwram(0x11, 0x608);
+        p = (struct MenuGfx801c188 *)(base + 0x30c);
+        id = m[4];
+        f = GetFile((int)&_FILE_f1);
+        *(unsigned char **)(buf + 0x604) = f + ((unsigned short *)f)[m[4]];
+        DecompressLZ1(*(unsigned char **)(buf + 0x604), buf);
+        if (p->state == 0)
+            p->slot = AllocSpriteSlot();
+        p->gfx = UploadSpriteGFX(p->slot, 0x400, buf);
+        p->state = 1;
+        p->id = id;
+        p->w = 0x28;
+        p->h = 0x28;
+        p->x = 0xf0;
+        gfree(0x11);
+    }
+}
 
 extern unsigned char *iwram_3001e98__a3 __asm__("iwram_3001e98");
 void Func_801c21c(void) {
@@ -198,7 +417,32 @@ int Func_801c304(unsigned short param_1)
     return result;
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c34c.s");
+extern short gState_s801c[] __asm__("gState");
+extern int _GetLocationName(int, int);
+extern int TextBox(int, int *, int *, int *, int *);
+extern void *CreateUIBox(int a, int b, int c, int d, int e);
+extern void DrawSmallText(int, void *, int, int);
+struct V801c34c { char pad[0x234]; unsigned short timer; };
+void Func_801c34c(void)
+{
+    extern unsigned char *iwram_3001ebc__c34 __asm__("iwram_3001ebc");
+    unsigned char *base = iwram_3001ebc__c34;
+    int h, w, y, x;
+    int msg;
+    void *box;
+
+    x = 8;
+    y = 8;
+    msg = _GetLocationName(gState_s801c[0xe0], gState_s801c[0xe1]) + 0x99b;
+    TextBox(msg, &x, &y, &w, &h);
+    x = (0x1e - w) >> 1;
+    y = (0xa - h) >> 1;
+    box = CreateUIBox(x, y, w, h, 2);
+    *(void **)(base + (0x8c << 2)) = box;
+    DrawSmallText(msg, box, 0, 0);
+    ((struct V801c34c *)base)->timer = 0x5a;
+    StartTask(Func_801c3e8, 0xc80);
+}
 
 extern unsigned int iwram_3001ebc;
 extern void CloseUIBox(void *box, int noanim);
@@ -239,7 +483,17 @@ unsigned int Func_801c458(unsigned int arg0, unsigned int arg1) {
 
 int Func_801c468(void) { return 1; }
 
-INCLUDE_ASM("asm/ui/menu/Func_801c46c.s");
+extern unsigned char gState[];
+void Func_801c46c(int keys)
+{
+    unsigned char v = gState[0x205];
+
+    if (keys & 0x20)
+        v--;
+    else
+        v++;
+    gState[0x205] = v;
+}
 INCLUDE_ASM("asm/ui/menu/Func_801c49c.s");
 INCLUDE_ASM("asm/ui/menu/Func_801c7fc.s");
 INCLUDE_ASM("asm/ui/menu/Func_801c8a0.s");
@@ -292,7 +546,18 @@ void Func_801c9c4(void) {}
 INCLUDE_ASM("asm/ui/menu/Func_801c9c8.s");
 
 INCLUDE_ASM("asm/ui/menu/Func_801ca1c.s");
-INCLUDE_ASM("asm/ui/menu/Func_801cae0.s");
+void Func_801cae0(int t)
+{
+    extern unsigned short Func_801cbd4(int, int, int, int);
+    
+    *(unsigned short *)0x50001e8 = Func_801cbd4(t, 0xeeee, 0xcccc, 0x11110);
+    *(unsigned short *)0x50001ea = Func_801cbd4(t, 0xd555, 0xbbbb, 0xeeee);
+    *(unsigned short *)0x50001ec = Func_801cbd4(t, 0xbbbb, 0xaaaa, 0xcccc);
+    *(unsigned short *)0x50001ee = Func_801cbd4(t, 0xa221, 0x9999, 0xaaaa);
+    *(unsigned short *)0x50001f0 = Func_801cbd4(t, 0x10888, 0xdddd, 0x13333);
+    *(unsigned short *)0x50001f2 = Func_801cbd4(t, 0x12221, 0xeeee, 0x15555);
+    *(unsigned short *)0x50001f4 = Func_801cbd4(t, 0x13bbb, 0x10000, 0x17777);
+}
 INCLUDE_ASM("asm/ui/menu/Func_801cbd4.s");
 INCLUDE_ASM("asm/ui/menu/Func_801cc50.s");
 INCLUDE_ASM("asm/ui/menu/SetUIColor.s");
@@ -320,8 +585,36 @@ void Func_801ce6c(unsigned char *p)
     }
 }
 
-INCLUDE_ASM("asm/ui/menu/Func_801ce90.s");
-INCLUDE_ASM("asm/ui/menu/Func_801cee0.s");
+extern unsigned char gState[];
+void Func_801ce90(unsigned char *p)
+{
+    switch (*(unsigned short *)(p + 0x574)) {
+    case 0:
+        if (gState[0x20c] != 0) gState[0x20c]--;
+        break;
+    case 1:
+        if (gState[0x205] != 0) gState[0x205]--;
+        break;
+    case 2:
+        if (gState[0x206] != 0) gState[0x206]--;
+        break;
+    }
+}
+extern unsigned char gState[];
+void Func_801cee0(unsigned char *p)
+{
+    switch (*(unsigned short *)(p + 0x574)) {
+    case 0:
+        if (gState[0x20c] <= 1) gState[0x20c]++;
+        break;
+    case 1:
+        if (gState[0x205] <= 0x17) gState[0x205]++;
+        break;
+    case 2:
+        if (gState[0x206] <= 0xe) gState[0x206]++;
+        break;
+    }
+}
 
 void Func_801cf44(void) {}
 

@@ -57,7 +57,34 @@ void PlayMapMusic(void) {
 }
 
 INCLUDE_ASM("asm/field/map_load/InitEncounters.s");
-INCLUDE_ASM("asm/field/map_load/Func_808adf0.s");
+struct WorldMapEncounter {
+    short tile;
+    short area;
+    short flag;
+    short group;
+};
+extern struct WorldMapEncounter gWorldMapEncounters[];
+extern int _Func_80122c8(void *, int *);
+
+int Func_808adf0(void *pos)
+{
+    struct WorldMapEncounter *p = gWorldMapEncounters;
+    int result;
+    int tile;
+    int area = _Func_80122c8(pos, &tile);
+
+    result = 0;
+
+    for (; p->tile != -1; p++) {
+        if (p->tile == tile && (p->area == -1 || p->area == area)
+            && (p->flag == -1 || !_GetFlag(p->flag))) {
+            result = p->group;
+            break;
+        }
+    }
+    Func_808b2b0(area);
+    return result;
+}
 INCLUDE_ASM("asm/field/map_load/Func_808ae74.s");
 
 #include "gba/types.h"
@@ -78,11 +105,10 @@ u32 Func_808b02c(s32 arg0) {
     Func_808ae74(unk[arg0]);
 }
 
-extern s32 Func_808adf0(void);
 extern s32 Func_808ae74(s32, s32);
 
 s32 Func_808b048(s32 *arg1, s32 arg2) {
-    s32 foo = Func_808adf0();
+    s32 foo = Func_808adf0(arg1);
     Func_808ae74(foo, arg2);
 }
 
@@ -132,9 +158,60 @@ short Func_808b248(void) {
     return gState__a2[235];
 }
 
-INCLUDE_ASM("asm/field/map_load/Func_808b25c.s");
-INCLUDE_ASM("asm/field/map_load/Func_808b2b0.s");
-INCLUDE_ASM("asm/field/map_load/Func_808b320.s");
+extern unsigned int gMapBattleBGs[];
+extern short gState_s25c[] __asm__("gState");
+void Func_808b25c(void)
+{
+    int cur = gState_s25c[0xe0];
+    unsigned int *p = gMapBattleBGs;
+    unsigned int e;
+    int v;
+    while ((e = *p++) != 0 && e != cur) {
+        if (e & 0x80000000)
+            v = e & 0xffff;
+    }
+    gState_s25c[0xeb] = v;
+}
+extern unsigned short gState_s2b0[] __asm__("gState");
+extern unsigned char Lconst_36[] __asm__(".Lconst_36"), Lconst_37[] __asm__(".Lconst_37"), Lconst_38[] __asm__(".Lconst_38"), Lconst_39[] __asm__(".Lconst_39"), Lconst_3a[] __asm__(".Lconst_3a"), Lconst_3c[] __asm__(".Lconst_3c");
+/* pooled literal (ldr rN, =0x36, =0x37, =0x38, =0x39, =0x3a, =0x3c in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+__asm__(".equ .Lconst_36, 0x36\n.equ .Lconst_37, 0x37\n.equ .Lconst_38, 0x38\n.equ .Lconst_39, 0x39\n.equ .Lconst_3a, 0x3a\n.equ .Lconst_3c, 0x3c");
+void Func_808b2b0(int x)
+{
+    int v;
+    switch (x) {
+    case 1: v = (int)Lconst_38; break;
+    case 2: v = (int)Lconst_3a; break;
+    case 3: v = (int)Lconst_3c; break;
+    case 4: case 7: v = (int)Lconst_36; break;
+    case 5: case 6: v = (int)Lconst_37; break;
+    default: v = (int)Lconst_39; break;
+    }
+    gState_s2b0[0xeb] = v;
+}
+extern int _GetFlag(int arg0);
+extern short gEnemyBattleMusic[];
+void Func_808b320(int a, int b)
+{
+    short key = a * 16 + b;
+    short *p = gEnemyBattleMusic;
+    unsigned short v;
+    int music;
+
+    if (_GetFlag(0x16c)) {
+        music = 0x12;
+    } else {
+        for (;;) {
+            v = *p;
+            p++;
+            if (v == 0 || v == (unsigned short)key)
+                break;
+            if (v & 0x8000)
+                music = v & 0xfff;
+        }
+    }
+    gState__a2[0xf7] = music;
+}
 
 extern int _GetFlag(int arg0);
 

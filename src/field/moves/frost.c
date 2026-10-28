@@ -34,10 +34,69 @@ void Func_8099040(void *arg0)
   }
 }
 
-INCLUDE_ASM("asm/field/moves/frost/Func_8099070.s");
+extern void vec3_translate(int, int, int *);
+void Func_8099070(unsigned char *a)
+{
+    int v[3];
+    short t;
 
-INCLUDE_ASM("asm/field/moves/frost/Func_80990cc.s");
+    if (a != 0) {
+        t = --*(short *)(a + 0x64);
+        if (t != 0) {
+            v[0] = *(int *)(a + 0x38);
+            v[1] = *(int *)(a + 0x3c);
+            v[2] = *(int *)(a + 0x40);
+            vec3_translate(t << 17, *(short *)(a + 0x66) + (t << 11), v);
+            *(int *)(a + 0x8) = v[0];
+            *(int *)(a + 0xc) = v[1];
+            *(int *)(a + 0x10) = v[2];
+        } else {
+            *(void **)(a + 0x6c) = Func_8099040;
+        }
+    }
+}
 
-INCLUDE_ASM("asm/field/moves/frost/Field_Frost_Target.s");
+void Func_80990cc(unsigned char *a)
+{
+    int v[3];
+    short t;
+
+    if (a != 0) {
+        t = --*(short *)(a + 0x64);
+        if (t != 0) {
+            v[0] = *(int *)(a + 0x38);
+            v[1] = *(int *)(a + 0x3c);
+            v[2] = *(int *)(a + 0x40);
+            vec3_translate(t << 17, *(short *)(a + 0x66) - (t << 11), v);
+            *(int *)(a + 0x8) = v[0];
+            *(int *)(a + 0xc) = v[1];
+            *(int *)(a + 0x10) = v[2];
+        } else {
+            *(void **)(a + 0x6c) = Func_8099040;
+        }
+    }
+}
+
+extern unsigned char *iwram_3001f30__k1 __asm__("iwram_3001f30");
+extern void Field_Frost(void);
+
+/* Partial view of the targeted field object. */
+struct FrostTarget {
+    unsigned char pad0[0x23];
+    unsigned char flags;
+};
+
+void Field_Frost_Target(void)
+{
+    unsigned char *s = iwram_3001f30__k1;
+    struct FrostTarget *t = *(struct FrostTarget **)(s + 0x14);
+
+    if (t != 0) {
+        if (*(signed char *)(s + 0x35) != 0)
+            s[0x20] = 1;
+        t->flags |= 2;
+        Field_Frost();
+    }
+}
 
 INCLUDE_ASM("asm/field/moves/frost/Field_Frost.s");

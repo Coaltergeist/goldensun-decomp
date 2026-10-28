@@ -78,8 +78,9 @@ $(ROM): $(ELF)
 # Game C uses patched GCC 2.96 from camelot-gcc (see INSTALL.md):
 # xgcc -S, then an appended `.align 2, 0`, then as. GCC zero-fills alignment
 # between functions but not after the last one in a file, where the assembler
-# would otherwise pad with Thumb NOPs. -fcall-used-r4 matches Camelot's
-# register usage.
+# would otherwise pad with Thumb NOPs. The first `.align` covers a TU whose
+# last function sits in a split text section (SECTION/INCLUDE_ASM_SECTION).
+# -fcall-used-r4 matches Camelot's register usage.
 GCC296_DIR     ?= tools/gcc296
 GCC296_CC      := $(GCC296_DIR)/xgcc
 # Type-based alias analysis is off for all C except Gaia (below).
@@ -111,7 +112,7 @@ $(OBJ)/%.o: %.c $(STAMPS)/gcc296.stamp $(STAMPS)/binutils.stamp | $(OVERLAY_ORIG
 	@mkdir -p $(@D)
 	python3 tools/build_deps.py c $@ $(GCC296_CC) $(GCC296_CFLAGS) -M $<
 	$(GCC296_CC) $(GCC296_CFLAGS) -S -o $(@:.o=.s) $<
-	printf '\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
+	printf '\n\t.align\t2, 0\n\t.text\n\t.align\t2, 0\n' >> $(@:.o=.s)
 	$(AS) $(THUMB_ASFLAGS) -MD $(@:.o=.d) -o $@ $(@:.o=.s)
 	@python3 tools/build_deps.py phony $(@:.o=.d)
 

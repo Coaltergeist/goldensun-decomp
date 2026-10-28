@@ -55,7 +55,14 @@ SECTION(".text.rapid_slash_2");
 
 INCLUDE_ASM_SECTION("asm/battle_anim/moves/rapid_slash/Func_80e38b8.s", ".text.rapid_slash_2");
 
-INCLUDE_ASM_SECTION("asm/battle_anim/moves/rapid_slash/Func_80e3908.s", ".text.rapid_slash_2");
+void Func_80e3908(int *p, int k, int d)
+{
+    p[0] += p[3];
+    p[1] += p[4];
+    p[4] += d;
+    p[3] = p[3] * k / 64;
+    p[4] = p[4] * k / 64;
+}
 
 extern int PhysMove(unsigned int src, unsigned int dest);
 

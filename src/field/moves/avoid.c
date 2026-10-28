@@ -50,7 +50,22 @@ void Func_809b588(void)
 
 INCLUDE_ASM("asm/field/moves/avoid/Func_809b5dc.s");
 
-INCLUDE_ASM("asm/field/moves/avoid/Func_809b648.s");
+extern void _Func_8019908(int, int);
+extern void _Func_801776c(int, int);
+void Func_809b648(void)
+{
+    unsigned char *gs = (unsigned char *)&gState;
+    signed char c;
+    *(int *)(gs + 0x244) = 0;
+    c = gs[0x248];
+    if (c == 0) {
+        _Func_8019908(0x96, 4);
+        _Func_801776c(0x923, 1);
+    } else {
+        _Func_8019908(0xec, 2);
+        _Func_801776c(0x925, 1);
+    }
+}
 
 INCLUDE_ASM("asm/field/moves/avoid/Field_Avoid.s");
 

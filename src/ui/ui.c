@@ -5,7 +5,8 @@ struct UISlot {
     unsigned int obj;
     unsigned short f4;
     unsigned short f6;
-    unsigned char pad8[0xc];
+    unsigned char pad8[0xa];
+    unsigned short f12;
     unsigned short f14;
     unsigned short f16;
     unsigned short f18;
@@ -39,7 +40,37 @@ extern void Func_801789c();
 extern unsigned int Func_8017364();
 
 INCLUDE_ASM("asm/ui/ui/ClearUIRegion.s");
-INCLUDE_ASM("asm/ui/ui/Func_8016230.s");
+extern void FillUIRegion__v(int a, int b, int c, int d) __asm__("FillUIRegion");
+extern void Func_8017248(int a, int b, int c, int d, int e);
+extern void *Func_80008d8(void *dst, unsigned int size, unsigned int value);
+static inline void Fill_80008d8(void *dst, unsigned int size, unsigned int value)
+{
+    void *(*fill)(void *, unsigned int, unsigned int) = Func_80008d8;
+    fill(dst, size, value);
+}
+void Func_8016230(struct UIBox *box)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__a5;
+    int x, y, w, h;
+
+    h = box->h;
+    box->f1a = 0;
+    x = box->x;
+    y = box->y;
+    w = box->w;
+    if (box->flags & 8) {
+        if (box->flags & 0x20) {
+            FillUIRegion__v(x, y, w, h);
+            Fill_80008d8((void *)0x6002500, 0xf00, 0x44444444);
+        } else {
+            Fill_80008d8((void *)0x6002500, 0xf00, 0);
+        }
+        Func_8017248(x, y, w, h, 0);
+    } else {
+        FillUIRegion__v(x, y, w, h);
+    }
+    b[0xea3] = 1;
+}
 INCLUDE_ASM("asm/ui/ui/CreateUIBox.s");
 
 extern void WaitFrames(unsigned int nframes);
@@ -231,7 +262,50 @@ void Func_80167d8(unsigned int r0) {
 }
 
 INCLUDE_ASM("asm/ui/ui/Func_80167e0.s");
-INCLUDE_ASM("asm/ui/ui/Func_8016868.s");
+struct MsgObj8016868 {
+    unsigned char pad0[0x12];
+    unsigned short f12;
+    unsigned short f14;
+    unsigned short f16;
+    int f18;
+};
+extern int AdvanceMsgText(struct UISlot *);
+extern void Func_8019854(struct UISlot *);
+void Func_8016868(void)
+{
+    struct UISlot *p = (struct UISlot *)(*(unsigned char **)iwram_3001e8c__a5 + (0xc4 << 3));
+    struct MsgObj8016868 *obj;
+    int i;
+    int r;
+
+    for (i = 0; i != 3; i++, p++) {
+        obj = (struct MsgObj8016868 *)p->obj;
+        if (obj == 0 || obj->f18 != 0)
+            continue;
+        if (obj->f16 == 0) {
+            p->obj = 0;
+        } else if (obj->f12 != 0) {
+            Func_8019854(p);
+        } else {
+            switch (AdvanceMsgText(p)) {
+            case 8:
+                ((struct MsgObj8016868 *)p->obj)->f14 = 1;
+                break;
+            case 9:
+                CloseUIBox((void *)p->obj, ((struct MsgObj8016868 *)p->obj)->f16 & 2);
+                p->f4 = 0;
+                p->f6 = 0;
+                p->f12 = 0;
+                p->f14 = 0;
+                p->f16 = 0;
+                p->f18 = 0;
+                p->f1a = 0;
+                ((struct MsgObj8016868 *)p->obj)->f14 = 1;
+                break;
+            }
+        }
+    }
+}
 INCLUDE_ASM("asm/ui/ui/AdvanceMsgText.s");
 INCLUDE_ASM("asm/ui/ui/Func_8016f2c.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017004.s");
@@ -270,7 +344,23 @@ unsigned int Func_8017394(unsigned char *box)
     return 0;
 }
 
-INCLUDE_ASM("asm/ui/ui/Func_80173ac.s");
+struct UiState80173ac {
+    unsigned char pad0[0xea8];
+    unsigned short ea8, eaa, eac, eae;
+    unsigned char pad1[0x12b0 - 0xeb0];
+    unsigned short f12b0;
+};
+extern struct UiState80173ac *iwram_3001e8c__k1 __asm__("iwram_3001e8c");
+void Func_80173ac(void)
+{
+    struct UiState80173ac *s = iwram_3001e8c__k1;
+
+    s->eae = 15;
+    s->ea8 = 10;
+    s->f12b0 = 9;
+    s->eac = 0;
+    s->eaa = 1;
+}
 INCLUDE_ASM("asm/ui/ui/Func_80173f4.s");
 
 extern void *iwram_3001e8c__a3 __asm__("iwram_3001e8c");
@@ -367,7 +457,23 @@ void Func_801789c(void) {
     Func_80191cc();
 }
 INCLUDE_ASM("asm/ui/ui/DrawMsgGlyph.s");
-INCLUDE_ASM("asm/ui/ui/Func_8017a64.s");
+extern unsigned char Data_32224[];
+int Func_8017a64(unsigned short *s)
+{
+    int w = 0;
+    unsigned int c = *s++;
+    while (c != 0) {
+        if (c == 0x20)
+            w += 4;
+        else if (c <= 0xff) {
+            if (c - 0xde > 1)
+                w += *(unsigned short *)(Data_32224 + (c - 0x20) * 32);
+        } else
+            w += 10;
+        c = *s++;
+    }
+    return w;
+}
 INCLUDE_ASM("asm/ui/ui/Func_8017aa4.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017c1c.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017c8c.s");
@@ -387,14 +493,76 @@ void Func_8018790(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     Func_8018850(BufferString(arg0, 0), r5, r6, 0);
 }
 
-INCLUDE_ASM("asm/ui/ui/TextBox.s");
-INCLUDE_ASM("asm/ui/ui/DialogueBox.s");
+struct UiMsgFlags {
+    unsigned char pad0[0xeb0];
+    unsigned short seen[1];
+};
+extern struct UiMsgFlags *iwram_3001e8c__k3 __asm__("iwram_3001e8c");
+int TextBox(int msg, int a1, int a2, int a3, int a4)
+{
+    extern int BufferString__k(int, int) __asm__("BufferString");
+    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    struct UiMsgFlags *s = iwram_3001e8c__k3;
+    int i = BufferString__k(msg, 0);
+
+    if (s->seen[i] == 0)
+        return 0;
+    Func_801868c__k(i, a1, a2, a3, a4, 0, 0);
+    return 1;
+}
+int DialogueBox(int msg, int a1, int a2, int a3, int a4)
+{
+    extern int BufferString__k(int, int) __asm__("BufferString");
+    extern void Func_801868c__k(int, int, int, int, int, int, int) __asm__("Func_801868c");
+    struct UiMsgFlags *s = iwram_3001e8c__k3;
+    int i = BufferString__k(msg, 0);
+
+    if (s->seen[i] == 0)
+        return 0;
+    Func_801868c__k(i, a1, a2, a3, a4, 0, 1);
+    return 1;
+}
 INCLUDE_ASM("asm/ui/ui/Func_8018850.s");
 INCLUDE_ASM("asm/ui/ui/Func_8018a50.s");
 
 INCLUDE_ASM("asm/ui/ui/DrawText.s");
 INCLUDE_ASM("asm/ui/ui/Func_8018efc.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019000.s");
+void Func_8019000(unsigned short *box, unsigned int tile, unsigned int x, unsigned int y, unsigned int mode)
+{
+    extern unsigned short *iwram_3001e8c__9000 __asm__("iwram_3001e8c");
+    unsigned char *map = (unsigned char *)iwram_3001e8c__9000;
+    unsigned int pal;
+    unsigned int idx;
+
+    y++;
+    x++;
+    if (y > box[5] - 1u)
+        return;
+    if (x > box[4] - 1u)
+        return;
+    switch (mode) {
+    case 3: pal = 0xf000; break;
+    case 2: pal = 0xe000; break;
+    case 4: pal = 0x1000; break;
+    default: pal = 0; break;
+    }
+    switch (mode) {
+    case 1:
+        break;
+    case 2:
+    case 3:
+    case 4:
+        idx = (box[7] + y) * 32 + (box[6] + x);
+        if (idx < 0x280)
+            *(unsigned short *)(map + (idx << 1)) = tile | pal;
+        break;
+    default:
+        idx = (box[7] + y) * 32 + (box[6] + x);
+        if (idx < 0x280)
+            *(unsigned short *)(map + (idx << 1)) = tile;
+        break;
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_801908c.s");
 
 INCLUDE_ASM("asm/ui/ui/Func_80191cc.s");
@@ -414,14 +582,121 @@ int *Func_80197b4(int *p) {
     return p;
 }
 
-INCLUDE_ASM("asm/ui/ui/Func_80197c4.s");
+extern void CloseUIBox(void *, int);
+void Func_80197c4(void)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__a5;
+    struct UISlot *s;
+    struct UIBox *o;
+    struct UIBox *box;
+    int i;
+    int done;
+
+    s = (struct UISlot *)(b + 0x620);
+    box = (struct UIBox *)(b + 0x500);
+    for (i = 0; i != 3; i++, s++) {
+        o = (struct UIBox *)s->obj;
+        if (o != 0 && o->flags != 0)
+            CloseUIBox(o, 0);
+    }
+    for (;;) {
+        done = 1;
+        s = (struct UISlot *)(b + 0x620);
+        for (i = 0; i != 3; i++, s++) {
+            struct UIBox *q = (struct UIBox *)s->obj;
+            if (q != 0) {
+                if (*(int *)&q->f18 == 0 && q->flags == 0)
+                    s->obj = 0;
+                else
+                    done = 0;
+            }
+        }
+        if (done)
+            break;
+        WaitFrames(1);
+    }
+    i = 0;
+    while (i != 8) {
+        if (box->flags != 0)
+            CloseUIBox(box, 0);
+        box++;
+        i++;
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
 INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019908.s");
+struct UiSlots8019908 {
+    unsigned char pad0[0x12bc];
+    int value[8];
+    unsigned short id[8];
+};
+extern struct UiSlots8019908 *iwram_3001e8c__k2 __asm__("iwram_3001e8c");
+void Func_8019908(int value, int id)
+{
+    struct UiSlots8019908 *s = iwram_3001e8c__k2;
+    int i;
+    int n = 8;
+
+    for (i = 0; i != n; i++) {
+        if (s->id[i] == 0) {
+            s->value[i] = value;
+            s->id[i] = id;
+            return;
+        }
+    }
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019944.s");
-INCLUDE_ASM("asm/ui/ui/Func_801999c.s");
-INCLUDE_ASM("asm/ui/ui/Func_80199ec.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019a54.s");
+extern int _Func_80f954c(void);
+extern unsigned int gKeyHeld;
+struct V199c { char pad[0x14]; unsigned short t; };
+int Func_801999c(struct V199c *m)
+{
+    int f = 0;
+    if ((*(unsigned char **)iwram_3001e8c__a5)[0x12f9] != 0 && _Func_80f954c() == 0)
+        f = 1;
+    if (gKeyHeld & 0x303)
+        f = 1;
+    if (f) {
+        m->t = 0;
+        return 1;
+    }
+    return 0;
+}
+struct V19ec { char pad[0x14]; unsigned short t; };
+int Func_80199ec(struct V19ec *m)
+{
+    extern int _Func_80f954c(void);
+    extern unsigned int iwram_3001af8;
+    extern unsigned int gKeyPress;
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__a5;
+    int f = 0;
+    unsigned int k;
+    if (b[0x12f9] != 0 && _Func_80f954c() == 0)
+        f = 1;
+    k = gKeyPress;
+    if (b[0xea4] != 0)
+        k = iwram_3001af8;
+    if (k & 0x303)
+        f = 1;
+    if (f) {
+        m->t = 0;
+        return 1;
+    }
+    return 0;
+}
+extern void CloseUIBox__u(void *, unsigned short) __asm__("CloseUIBox");
+void Func_8019a54(void)
+{
+    unsigned char **p = (unsigned char **)(*(unsigned char **)iwram_3001e8c__a5 + 0x620);
+    int i;
+    for (i = 0; i != 3; i++) {
+        unsigned char *box = *p;
+        if (box != 0 && *(int *)(box + 0x18) == 0 && *(unsigned short *)(box + 0x16) != 0 && *(unsigned short *)(box + 0x14) != 0)
+            CloseUIBox__u(box, *(unsigned short *)(box + 0x16) & 2);
+        p += 10;
+    }
+    WaitFrames(10);
+}
 INCLUDE_ASM("asm/ui/ui/Func_8019aa0.s");
 
 int Func_8019ba0(int stringID) {
@@ -433,5 +708,56 @@ INCLUDE_ASM("asm/ui/ui/Func_8019bfc.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019d0c.s");
 
 INCLUDE_ASM("asm/ui/ui/GetPortrait.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019da8.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019e48.s");
+void *Func_8019da8(int portrait, int arg1, int x, int y)
+{
+    extern unsigned char *iwram_3001e8c__9da8 __asm__("iwram_3001e8c");
+    extern int GetPortrait(int);
+    extern void *CreateUIBox__9da8(int, int, int, int, int) __asm__("CreateUIBox");
+    extern int Func_801ec6c(int, int, int, void *, int, int);
+    unsigned char *ui = iwram_3001e8c__9da8;
+    void *box;
+    int dy;
+    int dx;
+
+    if (GetPortrait(portrait) == -1)
+        return 0;
+    dy = -4;
+    dx = dy;
+    if (ui[0xea4]) {
+        box = CreateUIBox__9da8(x, y, 6, 5, 2);
+        dx = 0;
+    } else {
+        box = CreateUIBox__9da8(x, y, 5, 5, 2);
+    }
+    if (box)
+        Func_801ec6c(portrait, arg1, -1, box, dx, dy);
+    return box;
+}
+void Func_8019e48(int a0)
+{
+    extern int GetPortrait(int);
+    unsigned char *base = *(unsigned char **)iwram_3001e8c__a5;
+    unsigned char *slot = base + (0xa0 << 3);
+    int p = GetPortrait(a0);
+    int idx;
+    struct S { unsigned char pad[0x12ec]; unsigned short pt[2]; unsigned short ids[2]; } *st = (struct S *)base;
+    int id;
+    int i;
+
+    if (p == -1)
+        return;
+    if (st->pt[1] == p)
+        idx = 1;
+    else if (st->pt[0] == p)
+        idx = 0;
+    else
+        return;
+    id = st->ids[idx];
+    for (i = 0; i != 8; i++, slot += 0x24) {
+        unsigned char *q = *(unsigned char **)slot;
+        if (q[4] == 2 && q[0xe] == id) {
+            CloseUIBox(slot, 2);
+            return;
+        }
+    }
+}

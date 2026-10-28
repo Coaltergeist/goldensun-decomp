@@ -3,6 +3,14 @@
 
 #include "gba/types.h"
 
+// One learned-psynergy slot. Slots are 4 bytes apart, but HasMove,
+// GiveInnateMove and Func_8078bf0 only ever read/write the low halfword
+// (ldrh/strh), and mask it with 0x3fff to get the move ID.
+struct UnitMove {
+    u16 id;            // 0x00  move ID in bits 0-13
+    u16 __unk2;        // 0x02
+};
+
 // A unit's full stat block: one party member or one enemy. Element stats are
 // a flat u16[2][4], indexed [power/resist][element].
 struct Unit {
@@ -20,10 +28,10 @@ struct Unit {
     u16 baseHPRegen;           // 0x020
     u16 basePPRegen;           // 0x022
     u16 baseElementStats[2][4];// 0x024  [power/resist][element]
-    u16 maxHP;                 // 0x034
-    u16 maxPP;                 // 0x036
-    u16 HP;                    // 0x038
-    u16 PP;                    // 0x03A
+    s16 maxHP;                 // 0x034  signed: ldrsh in ModifyHP/ModifyPP
+    s16 maxPP;                 // 0x036  signed: ldrsh in ModifyHP/ModifyPP
+    s16 HP;                    // 0x038  signed: ldrsh in ModifyHP/ModifyPP
+    s16 PP;                    // 0x03A  signed: ldrsh in ModifyHP/ModifyPP
     u16 attack;                // 0x03C
     u16 defense;               // 0x03E
     u16 agility;               // 0x040
@@ -32,7 +40,7 @@ struct Unit {
     u16 HPRegen;               // 0x044
     u16 PPRegen;               // 0x046
     u16 elementStats[2][4];    // 0x048
-    u32 psynergy[32];          // 0x058  learned psynergy move IDs
+    struct UnitMove psynergy[32]; // 0x058  learned psynergy
     u16 items[16];             // 0x0D8
     u32 djinn[4];              // 0x0F8  per-element djinn-owned bitflags
     u32 setDjinn[4];           // 0x108  per-element djinn-Set bitflags

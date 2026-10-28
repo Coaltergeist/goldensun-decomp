@@ -31,7 +31,24 @@ unsigned int Func_807845c(unsigned int arg0, unsigned int arg1)
 	return CanEquipItem(arg0, arg1);
 }
 
-INCLUDE_ASM("asm/rpg/item/GetItemEquipSlot.s");
+unsigned int GetItemEquipSlot(unsigned int item)
+{
+    unsigned char *p = GetItemInfo(item);
+    unsigned int r = 0;
+    if (p[2] == 1)
+        r = 1;
+    else if (p[2] == 2)
+        r = 2;
+    else if (p[2] == 3)
+        r = 2;
+    else if (p[2] == 4)
+        r = 2;
+    else if (p[2] == 5)
+        r = 2;
+    else if (p[2] == 9)
+        r = 2;
+    return r;
+}
 
 
 int GetInventoryItem(int unit, int slot)
@@ -80,10 +97,86 @@ int FindEmptyInventorySlot(int unit)
     return count;
 }
 
-INCLUDE_ASM("asm/rpg/item/Func_8078500.s");
-INCLUDE_ASM("asm/rpg/item/Func_8078550.s");
-INCLUDE_ASM("asm/rpg/item/GiveItemTo.s");
-INCLUDE_ASM("asm/rpg/item/GiveItem.s");
+int Func_8078500(void)
+{
+    extern int Func_80796c4(short *buf);
+    extern int gState_b[] __asm__("gState");
+    short party[10];
+    short *p;
+    int count;
+    int i;
+
+    if (FindEmptyInventorySlot(gState_b[0x7d]) != 15)
+        return 1;
+    count = Func_80796c4(party);
+    p = party;
+    for (i = 0; i < count; i++) {
+        if (FindEmptyInventorySlot(*p++) != 15)
+            return 1;
+    }
+    return 0;
+}
+int Func_8078550(void)
+{
+    extern int Func_80796c4(short *buf);
+    short party[10];
+    short *p;
+    int count;
+    int total = 0;
+    int i;
+
+    count = Func_80796c4(party);
+    p = party;
+    for (i = 0; i < count; i++)
+        total = total - FindEmptyInventorySlot(*p++) + 15;
+    return total;
+}
+int GiveItemTo(int pc, int item)
+{
+    extern unsigned char *GetUnit(int unit);
+    struct Unit *u;
+    int i;
+    unsigned int n;
+
+    u = (struct Unit *)GetUnit(pc);
+    if (((struct Item *)GetItemInfo(item))->flags & 0x10) {
+        for (i = 0; i <= 14; i++) {
+            if (((u->items[i] ^ item) & 0x1ff) == 0)
+                break;
+        }
+        if (i != 15) {
+            n = (u->items[i] >> 11) + 1;
+            if (n > 0x1d)
+                return -1;
+            u->items[i] = (u->items[i] & 0x7ff) | (n << 11);
+            return i;
+        }
+    }
+    for (i = 0; i <= 14; i++) {
+        if (u->items[i] == 0) {
+            u->items[i] = item;
+            return i;
+        }
+    }
+    return -1;
+}
+int GiveItem(int item)
+{
+    extern int Func_80796c4(short *buf);
+    short party[10];
+    short *p;
+    int count;
+    int i;
+
+    count = Func_80796c4(party);
+    p = party;
+    for (i = 0; i < count; i++) {
+        int u = *p++;
+        if (GiveItemTo(u, item) >= 0)
+            return u;
+    }
+    return -1;
+}
 
 
 int CheckItem(int pc, int item)
@@ -127,9 +220,47 @@ int CheckPartyItem(int item) {
 }
 
 INCLUDE_ASM("asm/rpg/item/EquipItem.s");
-INCLUDE_ASM("asm/rpg/item/GetEquippedItem.s");
-INCLUDE_ASM("asm/rpg/item/Func_807882c.s");
-INCLUDE_ASM("asm/rpg/item/Func_8078870.s");
+int GetEquippedItem(int unit, int type)
+{
+    struct Unit *u = GetUnit(unit);
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            if (((struct Item *)GetItemInfo(u->items[i]))->type == type)
+                break;
+        }
+    }
+    if (i == 15)
+        i = -1;
+    return i;
+}
+struct Item *Func_807882c(struct Unit *u, int type)
+{
+    struct Item *item;
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            item = (struct Item *)GetItemInfo(u->items[i]);
+            if (item->type == type)
+                return item;
+        }
+    }
+    return 0;
+}
+int Func_8078870(struct Unit *u, int type)
+{
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        if (u->items[i] & 0x200) {
+            if (((struct Item *)GetItemInfo(u->items[i]))->type == type)
+                return u->items[i] & 0x1ff;
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/rpg/item/Func_80788c4.s");
 extern int Func_80788c4(int a, int b);
 extern int Func_8078ad0(unsigned int arg0, int arg1);
@@ -268,13 +399,30 @@ int Func_8078ad0(unsigned int arg0, int arg1) {
     }
     return result;
 }
-INCLUDE_ASM("asm/rpg/item/Func_8078af8.s");
+int Func_8078af8(int unit, unsigned int item)
+{
+    struct Unit *u = (struct Unit *)GetUnit(unit);
+    int n = 0;
+    int i;
+
+    item &= 0x1ff;
+    for (i = 0; i <= 0xe; i++) {
+        if ((u->items[i] & 0x1ff) == item) {
+            if (((unsigned char *)GetItemInfo(item))[3] & 0x10) {
+                n = (u->items[i] >> 11) + 1;
+                break;
+            }
+            n++;
+        }
+    }
+    return n;
+}
 
 
 unsigned int Func_8078b60(unsigned int arg0)
 {
     extern int Func_80796c4(unsigned short *buf);
-    extern int Func_8078af8(unsigned short val, unsigned int arg);
+    extern int Func_8078af8(int val, unsigned int arg);
     unsigned short buf[16];
     int count;
     int sum;

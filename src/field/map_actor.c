@@ -1,4 +1,6 @@
 #include "nonmatching.h"
+#include "sprite.h"
+#include "actor.h"
 
 extern int MapActor_GetActor();
 extern void Func_80922c4();
@@ -54,11 +56,99 @@ INCLUDE_ASM("asm/field/map_actor/CheckSpecialExits.s");
 
 INCLUDE_ASM("asm/field/map_actor/Func_808bec0.s");
 
-INCLUDE_ASM("asm/field/map_actor/Func_808c2dc.s");
+extern int _GetPartySize(void);
+extern int _ModifyPP(int, int);
+extern unsigned char gState[];
+void Func_808c2dc(int amount)
+{
+    int n = _GetPartySize();
+    int i;
 
-INCLUDE_ASM("asm/field/map_actor/Func_808c30c.s");
+    for (i = 0; i < n; i++)
+        _ModifyPP(gState[0x1f8 + i], amount);
+}
 
-INCLUDE_ASM("asm/field/map_actor/UpdatePoison.s");
+void Func_808c30c(int amount, int pct)
+{
+    extern void Func_8091220(int, int);
+    extern void Func_8091254(int);
+    extern void _PlaySound(int);
+    extern unsigned char *_GetUnit(int);
+    extern int _ModifyHP(int, int);
+    extern unsigned char gState[];
+    int n;
+    int i;
+    int v;
+
+    if (amount < 0) {
+        Func_8091220(0x1ff, 0);
+        Func_8091254(4);
+        if (amount < -10)
+            _PlaySound(0x86);
+        else
+            _PlaySound(0x85);
+    } else {
+        _PlaySound(0x7e);
+    }
+    n = _GetPartySize();
+    for (i = 0; i < n; i++) {
+        unsigned char *u = _GetUnit(gState[0x1f8 + i]);
+        if (pct == 0)
+            v = amount;
+        else {
+            v = *(short *)(u + 0x34) * amount / 100;
+            if (v == 0) {
+                v = amount;
+                if (v < 0)
+                    v = -v;
+            }
+        }
+        _ModifyHP(gState[0x1f8 + i], v);
+    }
+}
+
+int UpdatePoison(void)
+{
+    extern void Func_8091220(int, int);
+    extern void Func_8091254(int);
+    extern void _PlaySound(int);
+    extern unsigned char *_GetUnit(int);
+    extern int _ModifyHP(int, int);
+    int ret = 0;
+    int n = _GetPartySize();
+    int i;
+    int d;
+
+    for (i = 0; i < n; i++) {
+        unsigned char *u = _GetUnit(gState[0x1f8 + i]);
+        switch ((signed char)u[0x131]) {
+        case 1:
+            d = -((*(short *)(u + 0x34) + 10) / 20);
+            if (d == 0)
+                d = -1;
+            if (ret < 1)
+                ret = 1;
+            break;
+        case 2:
+            d = -((*(short *)(u + 0x34) + 5) / 10);
+            if (d == 0)
+                d = -1;
+            if (ret < 2)
+                ret = 2;
+            break;
+        default:
+            d = 0;
+            break;
+        }
+        _ModifyHP(gState[0x1f8 + i], d);
+    }
+    if (ret != 0) {
+        Func_8091220(0x1ff, 0);
+        Func_8091254(4);
+        _PlaySound(0x85);
+    }
+    return ret;
+}
 
 void Func_808c44c(void)
 {
@@ -123,7 +213,7 @@ void MapActor_SetSpeed(unsigned int actor, int speed, int accel) {
     }
 }
 
-extern unsigned int Actor_SetBehavior(void *, int);
+extern void Actor_SetBehavior(void *, int);
 
 void MapActor_SetBehavior(int actorID, int behavior)
 {
@@ -249,7 +339,23 @@ void MapActor_TravelToAnimWait(int actorID, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092208.s", ".text.map_actor_2");
+extern void _Actor_Stop__a(void *) __asm__("_Actor_Stop");
+extern void Func_8092b08(int, int);
+void Func_8092208(int id, int arg1, int arg2)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    short r;
+    if (a != 0) {
+        r = *(short *)(a + 0xa) % 16;
+        a[0x5b] = 0;
+        _Actor_Stop__a(a);
+        _Actor_SetAnim(a, 2);
+        _Actor_TravelTo(a, *(int *)(a + 8) + ((8 - r) << 16), *(int *)(a + 0xc), *(int *)(a + 0x10));
+        _Actor_WaitMovement(a);
+        Func_8092b08(id, arg1);
+        _Actor_TravelTo(a, *(int *)(a + 8), *(int *)(a + 0xc), *(int *)(a + 0x10) + (arg2 << 16));
+    }
+}
 
 
 void MapActor_TravelBy(int arg0, int arg1, int arg2) {
@@ -295,7 +401,26 @@ void Func_8092304(unsigned int arg0, unsigned int arg1, unsigned int arg2)
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809233c.s", ".text.map_actor_2");
+void Func_809233c(int id, int dx, int dy, int arg3)
+{
+    extern void MapActor_SetPos(int, int, int);
+    extern unsigned char gScript_0809fbcc[];
+    extern int gState_i3[] __asm__("gState");
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    unsigned char *o;
+
+    if (a != 0) {
+        MapActor_SetSpeed(id, 0x9999, 0x4ccc);
+        o = (unsigned char *)MapActor_GetActor(gState_i3[0x7d]);
+        if (o != 0)
+            MapActor_SetPos(id, *(int *)(o + 8), *(int *)(o + 0x10));
+        a[0x5b] = 0;
+        _Actor_SetAnim((int)a, 2);
+        MapActor_TravelBy(id, dx, dy);
+        _Actor_SetScript((int)a, gScript_0809fbcc);
+        *(unsigned short *)(a + 0x64) = arg3;
+    }
+}
 
 
 void MapActor_WaitMovement(int arg0)
@@ -340,7 +465,30 @@ void MapActor_SetAnimSpeed(int actorID, int speed)
     _Actor_SetAnimSpeed(r0, r5);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092504.s", ".text.map_actor_2");
+extern void WaitFrames(unsigned int nframes);
+void Func_8092504(int id)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    unsigned char *p;
+    unsigned char *oam;
+    int i;
+    int one;
+    volatile int v[1];
+    volatile int *vp;
+
+    one = 1;
+    if (a != 0 && a[0x54] == one) {
+        vp = v;
+        oam = *(unsigned char **)(a + 0x50);
+        p = oam + 0x24;
+        *vp = *p;
+        for (i = 0; i <= 0x59; i++) {
+            WaitFrames(one);
+            if (*vp != *p)
+                break;
+        }
+    }
+}
 
 extern void Func_8092504(int actorID);
 
@@ -393,7 +541,17 @@ void Func_80925cc(unsigned int arg0)
 	MapActor_WaitScript(arg0);
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80925e0.s", ".text.map_actor_2");
+void Func_80925e0(int *a)
+{
+    int vx = a[0xc];
+    int vz;
+    a[0xe] = a[2] += vx;
+    vz = a[0xd];
+    a[0x10] = a[4] += vz;
+    a[0xf] = a[3] += 0x400;
+    a[0xc] = vx - vx / 18;
+    a[0xd] = vz - vz / 16;
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092624.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092708.s", ".text.map_actor_2");
 
@@ -449,8 +607,8 @@ void DeleteFieldActor(int actorID) {
 
 void Func_809294c(void) {}
 
-extern void Func_8092980(void);
-extern void Func_80929d8(unsigned int a, unsigned int b);
+extern void Func_8092980();
+extern void Func_80929d8();
 
 void Func_8092950(unsigned int arg0, unsigned int arg1) {
     unsigned char *actor;
@@ -465,8 +623,50 @@ void Func_8092950(unsigned int arg0, unsigned int arg1) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092980.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80929d8.s", ".text.map_actor_2");
+extern unsigned char gScript_0809ed80[];
+extern unsigned int iwram_3001e40;
+void Func_8092980(unsigned char *a)
+{
+    unsigned char *s;
+    unsigned char v;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        v = gScript_0809ed80[(iwram_3001e40 >> 1) & 3];
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
+void Func_80929d8(unsigned char *a, int v)
+{
+    unsigned char *s;
+    unsigned char **pp;
+    int n;
+
+    if ((a[0x54] & 0xf) == 1) {
+        s = *(unsigned char **)(a + 0x50);
+        { unsigned char m = s[0x27]; if (m != 0) {
+            pp = (unsigned char **)(s + 0x28);
+            n = m;
+            do {
+                unsigned char *e = *pp++;
+                if (e != 0 && *(int *)(e + 0x10) != 0)
+                    e[5] = v;
+            } while (--n != 0);
+        }}
+        s[0x25] = 1;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092a1c.s", ".text.map_actor_2");
 
 unsigned int Func_8092a74(unsigned int arg0)
@@ -522,7 +722,16 @@ void Func_8092adc(int arg0, int arg1, int arg2) {
     }
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b08.s", ".text.map_actor_2");
+void Func_8092b08(int id, int v)
+{
+    unsigned char *a = (unsigned char *)GetFieldActor(id);
+    if (a != 0 && (a[0x54] & 0xf) == 1) {
+        struct SpriteOAM *o = *(struct SpriteOAM **)(a + 0x50);
+        o[0].priority = v;
+        o[1].priority = v;
+        a[0x23] &= 0xfe;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092b54.s", ".text.map_actor_2");
 
 void Func_8092b90(void) {}
@@ -538,7 +747,22 @@ void MessageID(unsigned short stringID) {
     *(unsigned short *)(r3) = stringID;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/GetActorSpriteID.s", ".text.map_actor_2");
+int GetActorSpriteID(int actorID)
+{
+    unsigned int base = iwram_3001ebc__v;
+    unsigned int ofs;
+    struct Actor *actor;
+    int spriteID = -1;
+
+    ofs = ((actorID & 0xfff) << 2) + 0x14;
+    actor = *(struct Actor **)(base + ofs);
+    if (actor != 0 && actor->visible == 1) {
+        struct SpriteLayer *layer = actor->sprite->layers[0];
+        spriteID = (s16)layer->spriteID;
+    }
+    return spriteID;
+}
+
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092be0.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ShowActorMessage_NoWait.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ActorMessage.s", ".text.map_actor_2");
@@ -564,18 +788,34 @@ void Func_809315c(void) {
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093168.s", ".text.map_actor_2");
 
-extern int GetActorSpriteID(void);
-
-void Func_80931d4(void)
+void Func_80931d4(int actorID)
 {
-    if (GetActorSpriteID() == -1)
+    if (GetActorSpriteID(actorID) == -1)
         return;
     _Func_8019e48();
 }
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80931ec.s", ".text.map_actor_2");
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093304.s", ".text.map_actor_2");
+extern unsigned char iwram_3001e8c__v[] __asm__("iwram_3001e8c");
+extern int GetActorSpriteID__i(int) __asm__("GetActorSpriteID");
+extern unsigned char gState__304[] __asm__("gState");
+extern unsigned int GetSpriteVoice(unsigned int);
+extern unsigned char X9fc28[];
+void Func_8093304(int actor)
+{
+    unsigned char *b = *(unsigned char **)iwram_3001e8c__v;
+    int v0, v1;
+    if (actor == 0x80000000) {
+        *(unsigned short *)(b + 0x12f4) = v1 = 0;
+        *(unsigned short *)(b + 0x12f6) = v1;
+    } else {
+        v0 = GetSpriteVoice(GetActorSpriteID__i(actor));
+        v1 = X9fc28[gState__304[0x20c]];
+        *(unsigned short *)(b + 0x12f4) = v0;
+        *(unsigned short *)(b + 0x12f6) = v1;
+    }
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/SetCameraTarget.s", ".text.map_actor_2");
 
 
@@ -739,7 +979,25 @@ unsigned int Func_8093964(unsigned int arg0)
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809397c.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093a14.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Actor_SetBehavior.s", ".text.map_actor_2");
+extern unsigned char X9fe00[], X9fd44[], X9fe10[], X9fecc[], X9ff18[], X9ff2c[], X9fe04[];
+extern unsigned int gState__sb[] __asm__("gState");
+void Actor_SetBehavior(void *actor, int behavior)
+{
+    unsigned char *s = (unsigned char *)behavior;
+    switch (behavior) {
+    case 1: s = X9fe00; break;
+    case 2: s = X9fd44; break;
+    case 3: s = X9fe10; break;
+    case 4: s = X9fecc; break;
+    case 5: s = X9ff18; break;
+    case 6:
+        *(int *)((unsigned char *)actor + 0x68) = MapActor_GetActor(gState__sb[0x7d]);
+        s = X9ff2c;
+        break;
+    case 7: s = X9fe04; break;
+    }
+    _Actor_SetScript((int)actor, s);
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093af8.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093c00.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093e28.s", ".text.map_actor_2");
