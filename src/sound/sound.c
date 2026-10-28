@@ -1,56 +1,57 @@
 #include "nonmatching.h"
 #include "gba/types.h"
 
-// see m4a_internal.h for original struct definitions.
+// Subset of lib/m4a/m4a_internal.h, which is agbcc-only (needs <stdint.h>).
+struct MP2KPlayerState {
+    struct MP2KSongHeader *songHeader;
+    u32 status;
+};
 
-struct m4aMusicPlayer {
+struct MusicPlayer {
     struct MP2KPlayerState *info;
     struct MP2KTrack *track;
     u8 numTracks;
     u16 unk_A;
 };
 
-struct m4aSong {
-    void *header;
+struct Song {
+    struct MP2KSongHeader *header;
     u16 ms;
     u16 me;
 };
 
-extern const struct m4aMusicPlayer gMPlayTable[];
-extern const struct m4aSong gSongTable[];
+extern const struct MusicPlayer gMPlayTable[];
+extern const struct Song gSongTable[];
+extern struct MP2KPlayerState gMPlayInfo_BGM;
 
-// end m4a_internal.h references
+extern void m4aSoundInit(void);
+extern void m4aSoundVSync(void);
+extern void m4aSongNumStart(u16 n);
+extern void MPlayStart(struct MP2KPlayerState *mplayInfo, struct MP2KSongHeader *songHeader);
+extern void m4aMPlayFadeOut(struct MP2KPlayerState *mplayInfo, u16 speed);
+extern void m4aMPlayTempoControl(struct MP2KPlayerState *mplayInfo, u16 tempo);
+extern void m4aMPlayVolumeControl(struct MP2KPlayerState *mplayInfo, u16 trackBits, u16 volume);
+extern void m4aMPlayPitchControl(struct MP2KPlayerState *mplayInfo, u16 trackBits, s16 pitch);
 
 extern void WaitFrames(int frames);
 
-extern void m4aSoundInit(void);
-
-extern unsigned short gMusicVolume;
-extern unsigned short gMusicCurVolume;
+extern short gMusicVolume;
+extern short gMusicCurVolume;
 extern unsigned short gMusicVolumeDelta;
-extern unsigned short gMusicSpeed;
-extern unsigned short gMusicCurSpeed;
+extern short gMusicSpeed;
+extern short gMusicCurSpeed;
 extern unsigned short gMusicSpeedDelta;
 
-extern void *gMPlayInfo_BGM;
-extern void *gMPlayInfo_02004360;
+extern struct MP2KPlayerState gMPlayInfo_02004210;
+extern struct MP2KPlayerState gMPlayInfo_02004360;
 
-extern unsigned char ewram_2003000;
 extern unsigned char ewram_2003000;
 extern unsigned char ewram_2003004;
 extern unsigned char ewram_2003014;
-extern unsigned char ewram_2003014;
-extern unsigned char ewram_200303c;
 extern unsigned char ewram_200303c;
 extern unsigned char ewram_2003040;
 extern unsigned short ewram_2003020[];
-extern unsigned short ewram_2003020[];
 
-extern short gMusicCurVolume__a1 __asm__("gMusicCurVolume");
-extern void m4aMPlayFadeOut(void *mplayInfo, unsigned short speed);
-extern void m4aMPlayVolumeControl(void *mplayInfo, unsigned short trackBits, unsigned short volume);
-extern void m4aSongNumStart(unsigned short songNum);
-extern void MPlayStart(void *info, void *songHeader);
 extern void SetSoundFXMode(int mode);
 
 void PlaySound(int req) {
@@ -72,7 +73,7 @@ void PlaySound(int req) {
         int slot = gSongTable[id].ms;
         if (slot == 7) {
             for (;;) {
-                if (((unsigned char *)gMPlayTable[slot].info)[4] == 0)
+                if ((u8)gMPlayTable[slot].info->status == 0)
                     break;
                 slot--;
                 if (slot <= 3) {
@@ -86,7 +87,7 @@ void PlaySound(int req) {
     } else if (id > 0x4f) {
         m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, 0);
         gMusicVolume = 0;
-        gMusicCurVolume__a1 = 0;
+        gMusicCurVolume = 0;
         m4aSongNumStart(id);
         ewram_2003000 = 0xa;
     } else if (id != 0x12 && id != ewram_200303c) {
@@ -99,19 +100,14 @@ void PlaySound(int req) {
         SetSoundFXMode(mode);
         m4aSongNumStart(id);
         if (flags & 0x1000)
-            gMusicCurVolume__a1 = 0;
+            gMusicCurVolume = 0;
         else
-            gMusicCurVolume__a1 = 0x100;
+            gMusicCurVolume = 0x100;
         gMusicVolume = 0x100;
         gMusicVolumeDelta = 4;
         ewram_2003014 = 0;
     }
 }
-
-extern unsigned char gMPlayInfo_02004210[];
-extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);
-extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, short pitch);
-extern void m4aSoundVSync(void);
 
 void UpdateMusicSettings(void) {
     int diff;
@@ -119,7 +115,7 @@ void UpdateMusicSettings(void) {
 
     if (ewram_2003000 != 0) {
         if (ewram_2003000 == 1) {
-            if (gMPlayInfo_02004210[4] == 0) {
+            if ((u8)gMPlayInfo_02004210.status == 0) {
                 ewram_2003000 = 0;
                 gMusicVolume = 0x100;
             }
@@ -128,27 +124,27 @@ void UpdateMusicSettings(void) {
         }
     }
 
-    if ((short)gMusicVolume != (short)gMusicCurVolume) {
-        diff = (short)gMusicVolume - (short)gMusicCurVolume;
+    if (gMusicVolume != gMusicCurVolume) {
+        diff = gMusicVolume - gMusicCurVolume;
         if (diff > 0)
-            gMusicCurVolume = (unsigned short)(short)gMusicCurVolume + gMusicVolumeDelta;
+            gMusicCurVolume += gMusicVolumeDelta;
         else
-            gMusicCurVolume = (unsigned short)(short)gMusicCurVolume - gMusicVolumeDelta;
-        if ((((short)gMusicVolume - (short)gMusicCurVolume) ^ diff) < 0)
-            gMusicCurVolume = (short)gMusicVolume;
-        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, (unsigned short)(short)gMusicCurVolume);
+            gMusicCurVolume -= gMusicVolumeDelta;
+        if (((gMusicVolume - gMusicCurVolume) ^ diff) < 0)
+            gMusicCurVolume = gMusicVolume;
+        m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, gMusicCurVolume);
     }
 
-    if ((short)gMusicSpeed != (short)gMusicCurSpeed) {
-        diff = (short)gMusicSpeed - (short)gMusicCurSpeed;
+    if (gMusicSpeed != gMusicCurSpeed) {
+        diff = gMusicSpeed - gMusicCurSpeed;
         if (diff > 0)
-            gMusicCurSpeed = (unsigned short)(short)gMusicCurSpeed + gMusicSpeedDelta;
+            gMusicCurSpeed += gMusicSpeedDelta;
         else
-            gMusicCurSpeed = (unsigned short)(short)gMusicCurSpeed - gMusicSpeedDelta;
-        if ((((short)gMusicSpeed - (short)gMusicCurSpeed) ^ diff) < 0)
-            gMusicCurSpeed = (short)gMusicSpeed;
+            gMusicCurSpeed -= gMusicSpeedDelta;
+        if (((gMusicSpeed - gMusicCurSpeed) ^ diff) < 0)
+            gMusicCurSpeed = gMusicSpeed;
         m4aMPlayTempoControl(&gMPlayInfo_BGM, gMusicCurSpeed);
-        pitch = (((3 * (short)gMusicCurSpeed) << 18) + (0xf4 << 24)) >> 16;
+        pitch = ((3 * gMusicCurSpeed << 18) + (0xf4 << 24)) >> 16;
         m4aMPlayPitchControl(&gMPlayInfo_BGM, 0xff, pitch);
     }
 
@@ -160,7 +156,7 @@ struct DebugSoundTestSlots {
 };
 
 extern const struct DebugSoundTestSlots Data_fb794 __asm__(".Lfb794");
-extern int gRAMBuildDate;
+extern unsigned gRAMBuildDate[];
 extern volatile unsigned int gKeyRepeat;
 extern int Label_12cc;
 
@@ -176,7 +172,7 @@ void Debug_SoundTest(void) {
     // Fakematch: force load instruction after initial variables but
     // before fadeTimer.
     do {
-        gRAMBuildDate = 0;
+        gRAMBuildDate[0] = 0;
     } while (0);
     fadeTimer = 0x14;
 
@@ -229,14 +225,9 @@ void InitSoundEngine(void) {
         ewram_2003020[i] = 0;
 }
 
-extern void m4aMPlayTempoControl(void *mplayInfo, unsigned short tempo);
-extern void *gMPlayInfo_BGM;
-
 void SetMusicTempo(unsigned short tempo) {
     m4aMPlayTempoControl(&gMPlayInfo_BGM, tempo);
 }
-
-extern void m4aMPlayPitchControl(void *mplayInfo, unsigned short trackBits, short pitch);
 
 void SetMusicPitch(int pitch) {
     m4aMPlayPitchControl(&gMPlayInfo_BGM, 0xff, (short)pitch);
@@ -248,8 +239,6 @@ void ChangeMusicSpeed(unsigned short arg0, unsigned short arg1) {
     gMusicSpeedDelta = arg1;
 }
 
-extern void m4aMPlayVolumeControl(void *a0, unsigned short a1, unsigned short a2);
-
 void SetMusicVolume(unsigned short volume) {
     unsigned short r5;
     unsigned short r2;
@@ -258,7 +247,7 @@ void SetMusicVolume(unsigned short volume) {
     r5 = (short)r2;
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xff, r2);
     gMusicVolume = r5;
-    gMusicCurVolume__a1 = r5;
+    gMusicCurVolume = r5;
 }
 
 
