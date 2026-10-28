@@ -35,46 +35,53 @@ typedef union {
     } bits;
 } FLO_union_type;
 
-extern fp_number_type *OvlFunc_common2_0(fp_number_type *, fp_number_type *, fp_number_type *);
-extern double OvlFunc_common2_44c(fp_number_type *);
-extern void OvlFunc_common2_618(FLO_union_type *, fp_number_type *);
+fp_number_type *OvlFunc_common2_0(fp_number_type *a, fp_number_type *b, fp_number_type *tmp);
+fp_number_type *OvlFunc_common2_2cc(void);
+unsigned int OvlFunc_common2_2d4(fp_number_type *x);
+unsigned int OvlFunc_common2_2e4(fp_number_type *x);
+unsigned int OvlFunc_common2_2f4(fp_number_type *x);
+unsigned int OvlFunc_common2_3ec(fp_number_type *x);
+unsigned int OvlFunc_common2_3fc(fp_number_type *x);
+unsigned int OvlFunc_common2_40c(fp_number_type *x);
+long long OvlFunc_common2_41c(long long u, int b);
+double OvlFunc_common2_44c(fp_number_type *src);
+unsigned int OvlFunc_common2_5e8(fp_number_type *x);
+unsigned int OvlFunc_common2_5f8(fp_number_type *x);
+unsigned int OvlFunc_common2_608(fp_number_type *x);
+void OvlFunc_common2_618(FLO_union_type *src, fp_number_type *dst);
 
 /* fp-bit _fpadd_parts */
 fp_number_type *OvlFunc_common2_0(fp_number_type *a, fp_number_type *b, fp_number_type *tmp)
 {
-    extern unsigned int isnan_c2 (fp_number_type *) __asm__("OvlFunc_common2_2d4");
-    extern unsigned int isinf_c2 (fp_number_type *) __asm__("OvlFunc_common2_2e4");
-    extern unsigned int iszero_c2 (fp_number_type *) __asm__("OvlFunc_common2_2f4");
-    extern fp_number_type *nan_c2 (void) __asm__("OvlFunc_common2_2cc");
     long long tfraction;
     int a_normal_exp;
     int b_normal_exp;
     unsigned long long a_fraction;
     unsigned long long b_fraction;
 
-    if (isnan_c2(a)) {
+    if (OvlFunc_common2_2d4(a)) {
         return a;
     }
-    if (isnan_c2(b)) {
+    if (OvlFunc_common2_2d4(b)) {
         return b;
     }
-    if (isinf_c2(a)) {
-        if (isinf_c2(b) && a->sign != b->sign)
-            return nan_c2();
+    if (OvlFunc_common2_2e4(a)) {
+        if (OvlFunc_common2_2e4(b) && a->sign != b->sign)
+            return OvlFunc_common2_2cc();
         return a;
     }
-    if (isinf_c2(b)) {
+    if (OvlFunc_common2_2e4(b)) {
         return b;
     }
-    if (iszero_c2(b)) {
-        if (iszero_c2(a)) {
+    if (OvlFunc_common2_2f4(b)) {
+        if (OvlFunc_common2_2f4(a)) {
             *tmp = *a;
             tmp->sign = a->sign & b->sign;
             return tmp;
         }
         return a;
     }
-    if (iszero_c2(a)) {
+    if (OvlFunc_common2_2f4(a)) {
         return b;
     }
 
@@ -178,30 +185,30 @@ double OvlFunc_common2_28c(double arg_a, double arg_b)
 }
 
 
-/* fp-bit's __thenan_df ({CLASS_SNAN, 0, 0, {0}}); it was in .data after unpack_d's asm. */
+/* fp-bit __thenan_df: the NaN returned by nan(). */
 fp_number_type __thenan_df = { CLASS_SNAN, 0, 0, { 0 } };
 
-const void *OvlFunc_common2_2cc(void) {
+fp_number_type *OvlFunc_common2_2cc(void) {
     return &__thenan_df;
 }
 
-unsigned int OvlFunc_common2_2d4(unsigned int *p) {
-    return *p <= 1;
+unsigned int OvlFunc_common2_2d4(fp_number_type *x) {
+    return x->class <= CLASS_QNAN;
 }
 
-unsigned int OvlFunc_common2_2e4(int *p)
+unsigned int OvlFunc_common2_2e4(fp_number_type *x)
 {
     unsigned int r2 = 0;
-    if (*p == 4)
+    if (x->class == CLASS_INFINITY)
         r2 = 1;
     return r2;
 }
 
-unsigned int OvlFunc_common2_2f4(int *p)
+unsigned int OvlFunc_common2_2f4(fp_number_type *x)
 {
     unsigned int result;
     result = 0;
-    if (*p == 2)
+    if (x->class == CLASS_ZERO)
         result = 1;
     return result;
 }
@@ -213,16 +220,15 @@ int OvlFunc_common2_380(double arg_a)
     fp_number_type a;
     int tmp;
     FLO_union_type au;
-    extern long long OvlFunc_common2_41c(long long, int);
 
     au.value = arg_a;
     OvlFunc_common2_618(&au, &a);
 
-    if (OvlFunc_common2_40c((unsigned int *)&a))
+    if (OvlFunc_common2_40c(&a))
         return 0;
-    if (OvlFunc_common2_3ec((int *)&a))
+    if (OvlFunc_common2_3ec(&a))
         return 0;
-    if (OvlFunc_common2_3fc((int *)&a))
+    if (OvlFunc_common2_3fc(&a))
         return a.sign ? (-0x7fffffff) - 1 : 0x7fffffff;
     if (a.normal_exp < 0)
         return 0;
@@ -233,21 +239,21 @@ int OvlFunc_common2_380(double arg_a)
     return a.sign ? (-tmp) : (tmp);
 }
 
-unsigned int OvlFunc_common2_3ec(int *p) {
-    return (unsigned int)*p < 2;
+unsigned int OvlFunc_common2_3ec(fp_number_type *x) {
+    return x->class < CLASS_ZERO;
 }
 
-unsigned int OvlFunc_common2_3fc(int *p)
+unsigned int OvlFunc_common2_3fc(fp_number_type *x)
 {
     unsigned int r2 = 0;
-    if (*p == 4)
+    if (x->class == CLASS_INFINITY)
         r2 = 1;
     return r2;
 }
 
-unsigned int OvlFunc_common2_40c(unsigned int *p) {
+unsigned int OvlFunc_common2_40c(fp_number_type *x) {
     unsigned int r2 = 0;
-    if (*p == 2)
+    if (x->class == CLASS_ZERO)
         r2 = 1;
     return r2;
 }
@@ -281,10 +287,6 @@ long long OvlFunc_common2_41c(long long u, int b)
 /* fp-bit pack_d */
 double OvlFunc_common2_44c(fp_number_type *src)
 {
-    extern unsigned int OvlFunc_common2_5e8(fp_number_type *);
-    extern unsigned int OvlFunc_common2_5f8(fp_number_type *);
-    extern unsigned int OvlFunc_common2_608(fp_number_type *);
-    extern long long OvlFunc_common2_41c(long long, int);
     FLO_union_type dst;
     unsigned long long fraction = src->fraction.ll;
     int sign = src->sign;
@@ -355,19 +357,19 @@ double OvlFunc_common2_44c(fp_number_type *src)
     return dst.value;
 }
 
-unsigned int OvlFunc_common2_5e8(unsigned int *p) {
-    return *p <= 1;
+unsigned int OvlFunc_common2_5e8(fp_number_type *x) {
+    return x->class <= CLASS_QNAN;
 }
 
-unsigned int OvlFunc_common2_5f8(int *p) {
+unsigned int OvlFunc_common2_5f8(fp_number_type *x) {
     unsigned int r2 = 0;
-    if (*p == 4)
+    if (x->class == CLASS_INFINITY)
         r2 = 1;
     return r2;
 }
 
-unsigned int OvlFunc_common2_608(unsigned int *p) {
-    return *p == 2;
+unsigned int OvlFunc_common2_608(fp_number_type *x) {
+    return x->class == CLASS_ZERO;
 }
 
 /* fp-bit unpack_d (FLOAT_WORD_ORDER_MISMATCH: FPA word order) */
