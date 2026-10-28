@@ -40,7 +40,20 @@ void Func_80b5e10(void) {}
 
 INCLUDE_ASM("asm/battle/battle/Func_80b5e14.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b5f0c.s");
-INCLUDE_ASM("asm/battle/battle/Func_80b606c.s");
+
+int Func_80b606c(int arg0, int arg1, unsigned short *arg2)
+{
+    unsigned char buf[8];
+    int i;
+
+    for (i = 0; i < 4; i++) {
+        buf[i] = arg2[i];
+        if (buf[i] == 0)
+            buf[i] = '_';
+    }
+    buf[4] = 0;
+}
+
 INCLUDE_ASM("asm/battle/battle/Func_80b60a0.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6148.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6378.s");
@@ -89,7 +102,30 @@ INCLUDE_ASM("asm/battle/battle/Func_80b6cdc.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6d30.s");
 INCLUDE_ASM("asm/battle/battle/Func_80b6e30.s");
 
-INCLUDE_ASM("asm/battle/battle/GetWeaponType.s");
+extern unsigned short Lc593c[] __asm__(".Lc593c");
+
+unsigned int GetWeaponType(unsigned int weaponID)
+{
+    int i;
+    unsigned int ret;
+
+    while (1) {
+        i = 0;
+    loop:
+        if (weaponID == (Lc593c[i] & 0x1ff)) {
+            unsigned int v = Lc593c[i];
+            ret = v >> 9;
+        } else if ((short)Lc593c[i++] != -1) {
+            goto loop;
+        } else {
+            ret = 6;
+        }
+        break;
+    }
+    return ret;
+}
+
+INCLUDE_ASM("asm/battle/battle/rodata_rom_b6e7c.s");
 
 INCLUDE_ASM("asm/battle/battle/GetWeaponSpriteID.s");
 

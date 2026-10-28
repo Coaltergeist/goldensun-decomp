@@ -2,13 +2,28 @@
 
 INCLUDE_ASM("asm/battle/battle_anim/cast/Func_80c10e8.s");
 INCLUDE_ASM("asm/battle/battle_anim/cast/Func_80c11ec.s");
-INCLUDE_ASM("asm/battle/battle_anim/cast/Task_BlitPreAnim.s");
+
+extern void *gPtrs[];
+extern void BlitFade_Div4(void *, void *, unsigned int);
+
+int Task_BlitPreAnim(void) {
+    void *src = gPtrs[0x28];
+    unsigned char *state = gPtrs[0x27];
+
+    if (src != 0) {
+        unsigned int *flagPtr = (unsigned int *)(state + (0x9e << 5));
+        if (*flagPtr != 0) {
+            *flagPtr = 0;
+            BlitFade_Div4(src, (void *)0x6004000, 0x80 << 7);
+        }
+    }
+}
+
 INCLUDE_ASM("asm/battle/battle_anim/cast/Anim_Cast.s");
 
 extern void Func_80008d4(int arg0, int arg1);
 extern void gfree(int index);
 extern int StopTask(void *task);
-extern void Task_BlitPreAnim(void);
 extern void Func_80c11ec(void);
 
 int Func_80c16d0(void) {

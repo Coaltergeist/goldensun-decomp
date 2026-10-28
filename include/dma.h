@@ -25,8 +25,8 @@ static inline void DMA3_COPY(const void *src, void *dst, u32 size) {
     __asm__ volatile (
         "stmia\tr3!, {r0, r1, r2}\n\t"
         "sub\tr3, #0xc"
-        :
-        : "r" (_base), "r" (_src), "r" (_dst), "r" (_cnt)
+        : "+r" (_src), "+r" (_cnt)
+        : "r" (_base), "r" (_dst)
         : "memory"
     );
 }
@@ -41,8 +41,8 @@ static inline void DMA3_SET(const void *src, void *dst, u32 cnt)
     __asm__ volatile (
         "stmia\tr3!, {r0, r1, r2}\n\t"
         "sub\tr3, #0xc"
-        : "+r" (_src)
-        : "r" (_base), "r" (_dst), "r" (_cnt)
+        : "+r" (_src), "+r" (_cnt)
+        : "r" (_base), "r" (_dst)
         : "memory", "cc"
     );
 }

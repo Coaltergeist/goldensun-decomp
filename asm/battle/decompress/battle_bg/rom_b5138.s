@@ -155,4 +155,4 @@
 	add	r2, #0x10
 	orr	r3, r12, lsl r2
 	mov	pc, lr
-.func_end Func_80b5138
+.func_end_emit_size Func_80b5138, Func_80b5138_Size
