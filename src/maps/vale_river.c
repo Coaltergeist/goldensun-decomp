@@ -819,7 +819,7 @@ void OvlFunc_883_20090d8(void)
     vec3_t **camera;
     vec3_t *saved;
     vec3_t pos;
-    unsigned char *player;
+    struct Actor *player;
     int i;
 
     if (API_GetFlag(0x808) != 0)
@@ -835,10 +835,10 @@ void OvlFunc_883_20090d8(void)
     API_ActorMessage_Wait(0x10, 0, 2);
 
     player = __MapActor_GetActor(0);
-    pos.x = *(int *)(player + 8);
-    pos.y = *(int *)(player + 0xc);
+    pos.x = player->pos.x;
+    pos.y = player->pos.y;
     saved = *camera;
-    pos.z = *(int *)(player + 0x10);
+    pos.z = player->pos.z;
     *camera = &pos;
 
     i = 0;
@@ -1455,7 +1455,7 @@ void OvlFunc_883_200d928(void) {
 
 void OvlFunc_883_200d950(void)
 {
-    unsigned char *a;
+    struct Actor *a;
     int x;
 
     API_Func_8010704(0x11, 0, 3, 1, 0x16, 0x24);
@@ -1468,7 +1468,7 @@ void OvlFunc_883_200d950(void)
     API_ClearFlag(0x314);
     API_ClearFlag(0x315);
     API_ClearFlag(0x316);
-    x = *(int *)(a + 8) >> 20;
+    x = a->pos.x >> 20;
     if (x == 0x16) {
         API_Func_8010704(0x11, 1, 1, 1, x, 0x24);
         API_SetFlag(0x314);

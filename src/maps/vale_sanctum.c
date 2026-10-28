@@ -441,7 +441,7 @@ void OvlFunc_888_200b1b8(int arg0)
     newActor->__unk55 = 0;
     newActor->waveCounter = (_umodsi3_RAM(__Random(), 10)) + 5;
     newActor->__unk66 = (_umodsi3_RAM(__Random(), 60)) + 30;
-    newActor->update = (actorfun_t *)OvlFunc_888_200b144;
+    newActor->update = (actorfun_t)OvlFunc_888_200b144;
     sprite->flags = 0;
     sprite->oam.priority = actor->sprite->oam.priority;
 }

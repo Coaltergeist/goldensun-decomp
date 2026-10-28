@@ -3,6 +3,13 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+extern void __Actor_SetAnim(void *, int);
+extern void __WaitFrames(int);
+extern void __PlaySound(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __MapActor_TravelToWait(int, int, int);
+extern int __cos(int);
+extern int __sin(int);
 
 extern unsigned int Lm927_2ef8[] __asm__(".Lm927_2ef8");
 
@@ -430,7 +437,6 @@ void OvlFunc_927_20089dc(struct Actor *actor, int priority) {
 }
 
 struct Actor *OvlFunc_927_20089f4(int x, int y, int z, int id) {
-    extern void __Actor_SetSpriteFlags();
     extern void __Func_80929d8(int, int);
     extern void __Func_800c548(int, int);
     struct Actor *actor;
@@ -449,7 +455,6 @@ struct Actor *OvlFunc_927_20089f4(int x, int y, int z, int id) {
 }
 
 struct Actor *OvlFunc_927_2008a4c(int x, int y, int z, int id) {
-    extern void __Actor_SetSpriteFlags();
     extern void __Func_80929d8(int, int);
     struct Actor *actor;
 
@@ -513,11 +518,6 @@ void OvlFunc_927_2008cc0(void) {
     __Func_8091f14(0x12, 2);
 }
 
-extern void __Actor_SetAnim(void *, int);
-extern void __WaitFrames(int);
-extern void __PlaySound(int);
-extern void __Actor_SetSpriteFlags(void *, int);
-extern void __MapActor_TravelToWait(int, int, int);
 
 void *OvlFunc_927_2008cd0(unsigned int *arr)
 {
@@ -554,11 +554,11 @@ unsigned int OvlFunc_927_2008d6c(unsigned int arg0) {
     return 0;
 }
 
-extern void __Actor_SetSpriteFlags();
 
 unsigned int OvlFunc_927_2008d80(void) {
+    // fakematch dummy integer
     int dummy;
-    __Actor_SetSpriteFlags(dummy, 0);
+    __Actor_SetSpriteFlags((void *)dummy, 0);
     return 0;
 }
 
@@ -567,7 +567,6 @@ void __Func_8092b08(int, int);
 void __MapActor_SetPos(int, int, int);
 #include "actor.h"
 
-extern void __MapActor_TravelToWait(int, int, int);
 static inline void MapActor_SetSpeed(int actor, int speed, int accel) {
     __MapActor_SetSpeed(actor, speed << 10, accel << 9);
 }
@@ -590,8 +589,6 @@ void OvlFunc_927_2008d90(int arg0, int arg1, int arg2, int arg3) {
     __Actor_SetSpriteFlags(actor, 1);
     actor->gravity = 0x10000;
 }
-extern int __cos(int);
-extern int __sin(int);
 void OvlFunc_927_2008e18(unsigned int actorId)
 {
     extern void OvlFunc_927_2008ae8(int, int, int, int, int, int, int, void *);

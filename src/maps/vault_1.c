@@ -2,6 +2,10 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
+extern unsigned char *__MapActor_GetActor(int);
+extern void __WaitFrames(int);
+void OvlFunc_898_2009724(unsigned int arg0, unsigned int arg1);
 
 extern void OvlFunc_898_200973c();
 extern void OvlFunc_898_200890c();
@@ -13,7 +17,7 @@ extern void __CutsceneWait();
 extern unsigned int iwram_3001e8c;
 extern unsigned int OvlFunc_898_2009674(unsigned char *arg0, unsigned int arg1, unsigned int arg2, unsigned int arg3);
 
-int OvlFunc_898_2008314(unsigned char *a)
+int OvlFunc_898_2008314(struct Actor *a)
 {
     unsigned char *b = (unsigned char *)iwram_3001e8c;
     unsigned char *c = *(unsigned char **)((char *)&iwram_3001e8c + 0x30);
@@ -22,7 +26,7 @@ int OvlFunc_898_2008314(unsigned char *a)
     int id;
     unsigned char *p;
 
-    if (*(unsigned short *)(a + 0x64) & 1)
+    if (a->waveCounter & 1)
         p = __MapActor_GetActor(0xf);
     else
         p = __MapActor_GetActor(0xe);
@@ -30,10 +34,10 @@ int OvlFunc_898_2008314(unsigned char *a)
         p = __MapActor_GetActor(0);
         if (*(short *)(c + 0x178) != 0 || b[0xea4] != 0) {
             d = 0x1a;
-            if (*(unsigned short *)(a + 0x64) & 2)
+            if (a->waveCounter & 2)
                 e = 1;
         }
-        OvlFunc_898_2009674(a, (unsigned int)p, d, e);
+        OvlFunc_898_2009674((unsigned char *)a, (unsigned int)p, d, e);
     }
     return 0;
 }
@@ -54,7 +58,7 @@ unsigned int OvlFunc_898_20083ac(unsigned char *arg0)
     if (*(int *)(arg0 + 0x38) == (0x80 << 24)) {
         return 0;
     }
-    actor = __MapActor_GetActor(0);
+    actor = (unsigned int)__MapActor_GetActor(0);
     if ((*(short *)(p1 + 0x178) != 0) || (*(unsigned char *)(p0 + 0xea4) != 0)) {
         iVar3 = 0x1a;
         iVar4 = 1;
@@ -125,7 +129,7 @@ extern void __Func_8091890(int);
 void OvlFunc_898_20084a0(void)
 {
     unsigned char *base;
-    unsigned char *actor;
+    struct Actor *actor;
 
     base = iwram_3001ebc;
     if (API_GetFlag(0x855) || !API_GetFlag(0x856)) {
@@ -134,9 +138,9 @@ void OvlFunc_898_20084a0(void)
     }
 
     API_CutsceneStart();
-    actor = (unsigned char *)__MapActor_GetActor(0);
+    actor = (struct Actor *)__MapActor_GetActor(0);
     if (actor != 0) {
-        API_MapActor_SetPos(2, *(int *)(actor + 8), *(int *)(actor + 0x10));
+        API_MapActor_SetPos(2, actor->pos.x, actor->pos.z);
     }
     API_MapActor_SetSpeed(2, 0xcccc, 0x6666);
     if (*(short *)(base + (0xb6 << 1)) == 0x14) {
@@ -306,40 +310,39 @@ void OvlFunc_898_20087b8(void)
   __CutsceneEnd();
 }
 
-extern void __WaitFrames(int);
 void OvlFunc_898_20087ec(void)
 {
-    unsigned char *a = __MapActor_GetActor(0xe);
-    short facing = *(short *)(a + 6);
-    int flags = 2 | *(unsigned short *)(a + 0x64);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0xe);
+    short facing = a->facing;
+    int flags = 2 | (u16)a->waveCounter;
 
-    *(unsigned short *)(a + 0x64) = flags;
+    a->waveCounter = flags;
     __CutsceneStart();
     __MessageID(0x122c);
     __MapActor_SetAnim(0xe, 0);
     OvlFunc_898_200973c(0xe, 0, 2);
     OvlFunc_898_2009724(0xe, 0xa);
-    *(short *)(a + 6) = facing;
+    a->facing = facing;
     __WaitFrames(1);
     __CutsceneEnd();
-    *(unsigned short *)(a + 0x64) &= 1;
+    a->waveCounter &= 1;
 }
 void OvlFunc_898_200885c(void)
 {
-    unsigned char *a = __MapActor_GetActor(0xf);
-    short facing = *(short *)(a + 6);
-    int flags = 2 | *(unsigned short *)(a + 0x64);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0xf);
+    short facing = a->facing;
+    int flags = 2 | (u16)a->waveCounter;
 
-    *(unsigned short *)(a + 0x64) = flags;
+    a->waveCounter = flags;
     __CutsceneStart();
     __MessageID(0x122d);
     __MapActor_SetAnim(0xf, 0);
     OvlFunc_898_200973c(0xf, 0, 2);
     OvlFunc_898_2009724(0xf, 0xa);
-    *(short *)(a + 6) = facing;
+    a->facing = facing;
     __WaitFrames(1);
     __CutsceneEnd();
-    *(unsigned short *)(a + 0x64) &= 1;
+    a->waveCounter &= 1;
 }
 
 extern int _MSG_12c0;
@@ -437,44 +440,44 @@ void OvlFunc_898_2008a2c(void) {
     __CutsceneEnd();
 }
 
-extern void __WaitFrames__v(int) __asm__("__WaitFrames");
-extern int __GetFlag__898(int) __asm__("__GetFlag");
-extern unsigned char *iwram_3001ebc__898 __asm__("iwram_3001ebc");
+extern void __WaitFrames(int);
+extern int __GetFlag(int);
+extern unsigned char *iwram_3001ebc;
 void OvlFunc_898_2008a4c(void)
 {
-    unsigned char *a = __MapActor_GetActor(0xe);
-    short facing = *(short *)(a + 6);
-    int flags = 2 | *(unsigned short *)(a + 0x64);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0xe);
+    short facing = a->facing;
+    int flags = 2 | (u16)a->waveCounter;
 
-    *(unsigned short *)(a + 0x64) = flags;
+    a->waveCounter = flags;
     __CutsceneStart();
     __MessageID(0x1339);
-    if (__GetFlag__898(2))
-        (*(unsigned short *)(iwram_3001ebc__898 + 0x1d8))++;
+    if (__GetFlag(2))
+        (*(unsigned short *)(iwram_3001ebc + 0x1d8))++;
     __MapActor_SetAnim(0xe, 0);
     OvlFunc_898_200973c(0xe, 0, 2);
     OvlFunc_898_2009724(0xe, 0xa);
-    *(short *)(a + 6) = facing;
-    __WaitFrames__v(1);
+    a->facing = facing;
+    __WaitFrames(1);
     __CutsceneEnd();
-    *(unsigned short *)(a + 0x64) &= 1;
+    a->waveCounter &= 1;
 }
 void OvlFunc_898_2008acc(void)
 {
-    unsigned char *a = __MapActor_GetActor(0xf);
-    short facing = *(short *)(a + 6);
-    int flags = 2 | *(unsigned short *)(a + 0x64);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0xf);
+    short facing = a->facing;
+    int flags = 2 | (u16)a->waveCounter;
 
-    *(unsigned short *)(a + 0x64) = flags;
+    a->waveCounter = flags;
     __CutsceneStart();
     __MessageID(0x133b);
     __MapActor_SetAnim(0xf, 0);
     OvlFunc_898_200973c(0xf, 0, 2);
     OvlFunc_898_2009724(0xf, 0xa);
-    *(short *)(a + 6) = facing;
+    a->facing = facing;
     __WaitFrames(1);
     __CutsceneEnd();
-    *(unsigned short *)(a + 0x64) &= 1;
+    a->waveCounter &= 1;
 }
 
 extern unsigned int iwram_3001ebc__a6 __asm__("iwram_3001ebc");
@@ -769,7 +772,7 @@ void OvlFunc_898_2008fb4(void)
   unsigned int s1;
   unsigned int s2;
 
-  actor = __MapActor_GetActor(0);
+  actor = (unsigned int)__MapActor_GetActor(0);
   sprite = *(unsigned char **)(actor + 0x50);
   __PlaySound(0x9e);
   __Func_8010560(L286a, 0x36, 0xd);
@@ -974,7 +977,6 @@ void OvlFunc_898_200973c(unsigned int arg0, unsigned int arg1, unsigned int arg2
 	__CutsceneWait(arg2);
 }
 
-#include "actor.h"
 
 void OvlFunc_898_2009754(struct Actor *actor)
 {

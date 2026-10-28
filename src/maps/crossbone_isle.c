@@ -852,28 +852,28 @@ void OvlFunc_946_2009740(void) {
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009774.s");
 void OvlFunc_946_200985c(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
 {
-    unsigned char *actor = __MapActor_GetActor(id);
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(id);
 
     if (actor != 0) {
         API_Func_8092b08(id, 3);
-        ((struct Actor *)actor)->flags |= 2;
+        actor->flags |= 2;
         {
-            int x = *(int *)(actor + 8) >> 20;
-            int z = *(int *)(actor + 0x10) >> 20;
+            int x = actor->pos.x >> 20;
+            int z = actor->pos.z >> 20;
             __Func_8010704(a1, a2, 3, 1, x - 1, z);
         }
     }
 }
 void OvlFunc_946_20098b0(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
 {
-    unsigned char *actor = __MapActor_GetActor(id);
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(id);
 
     if (actor != 0) {
         API_Func_8092b08(id, 3);
-        ((struct Actor *)actor)->flags |= 2;
+        actor->flags |= 2;
         {
-            int x = *(int *)(actor + 8) >> 20;
-            int z = *(int *)(actor + 0x10) >> 20;
+            int x = actor->pos.x >> 20;
+            int z = actor->pos.z >> 20;
             __Func_8010704(a1, a2, 1, 3, x, z - 1);
         }
     }
@@ -1085,11 +1085,11 @@ void OvlFunc_946_2009bbc(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
     extern int OvlFunc_946_2009b14(void);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(8) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(8) + 0x10) >> 20;
-    int cx = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
-    int fx = *(int *)(__MapActor_GetActor(0xf) + 8) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(8))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20;
+    int cx = ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20;
+    int fx = ((struct Actor *)__MapActor_GetActor(0xf))->pos.x >> 20;
 
     if (z == 0x13) {
         if (cx == 0x18) {
@@ -1116,17 +1116,17 @@ void OvlFunc_946_2009bbc(void)
         OvlFunc_946_2009b14();
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(8) + 0x10) >> 20);
+    __WaitFrames(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x - 1, z);
 }
 void OvlFunc_946_2009c84(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(8) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(8) + 0x10) >> 20;
-    int ox = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(8))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20;
+    int ox = ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20;
 
     if (z == 7) {
         if (ox == 0x18) {
@@ -1144,8 +1144,8 @@ void OvlFunc_946_2009c84(void)
     } else {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(8) + 0x10) >> 20);
+    __WaitFrames(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, ((struct Actor *)__MapActor_GetActor(8))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x - 1, z);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1190,9 +1190,9 @@ void OvlFunc_946_2009d2c(void)
 void OvlFunc_946_2009de0(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0xa) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0xa))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20;
 
     if (z == 0x12)
         return;
@@ -1202,9 +1202,9 @@ void OvlFunc_946_2009de0(void)
         OvlFunc_946_2009774(0xa, 0, 0x70);
         OvlFunc_946_2009774(0xa, 0, 0x40);
     }
-    __WaitFrames__k(2);
+    __WaitFrames(2);
     x--;
-    __Func_8010704(x, z, 3, 1, x, *(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20);
+    __Func_8010704(x, z, 3, 1, x, ((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x, z);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1243,21 +1243,21 @@ void OvlFunc_946_2009e5c(void)
 void OvlFunc_946_2009ef4(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0xb) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0xb) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0xb))->pos.z >> 20;
 
     if (x == 0x24)
         return;
     if (x == 0x1e) {
-        if (*(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20 == 0x12)
+        if (((struct Actor *)__MapActor_GetActor(0xa))->pos.z >> 20 == 0x12)
             return;
         OvlFunc_946_2009774(0xb, 0x60, 0);
     } else if (x == 0x22) {
         OvlFunc_946_2009774(0xb, 0x20, 0);
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xb) + 8) >> 20, z - 1);
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1286,9 +1286,9 @@ void OvlFunc_946_2009f78(void)
 void OvlFunc_946_200a004(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0xc) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0xc))->pos.z >> 20;
 
     if (x == 0x18) {
         OvlFunc_946_2009774(0xc, 0x60, 0);
@@ -1298,9 +1298,9 @@ void OvlFunc_946_200a004(void)
     } else if (x == 0x24) {
         return;
     }
-    __WaitFrames__k(2);
+    __WaitFrames(2);
     z--;
-    __Func_8010704(x, z, 1, 3, *(int *)(__MapActor_GetActor(0xc) + 8) >> 20, z);
+    __Func_8010704(x, z, 1, 3, ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20, z);
     __Func_8010704(0, 0, 1, 3, x, z);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1370,9 +1370,9 @@ void OvlFunc_946_200a080(void)
 void OvlFunc_946_200a16c(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0xd) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0xd) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0xd))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0xd))->pos.z >> 20;
 
     __MapActor_GetActor(0xf);
     if (x == 0x19) {
@@ -1387,8 +1387,8 @@ void OvlFunc_946_200a16c(void)
     } else if (x == 0x24) {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xd) + 8) >> 20, z - 1);
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0xd))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1496,10 +1496,10 @@ void OvlFunc_946_200a2c8(void)
 void OvlFunc_946_200a3c4(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0x11) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20;
-    int ox = *(int *)(__MapActor_GetActor(0x13) + 8) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0x11))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20;
+    int ox = ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20;
 
     if (z == 0x13) {
         if ((unsigned int)(ox - 3) <= 2)
@@ -1513,16 +1513,16 @@ void OvlFunc_946_200a3c4(void)
     } else if (z == 0xf) {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20);
+    __WaitFrames(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x - 1, z);
 }
 void OvlFunc_946_200a450(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0x11) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0x11))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20;
 
     if (z == 0xf) {
         OvlFunc_946_2009774(0x11, 0, 0x40);
@@ -1531,8 +1531,8 @@ void OvlFunc_946_200a450(void)
     } else if (z == 0x13) {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20);
+    __WaitFrames(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x - 1, z);
 }
 void OvlFunc_946_200a4c8(void)
@@ -1874,11 +1874,11 @@ void OvlFunc_946_200a984(void)
 void OvlFunc_946_200aa98(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0x13) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0x13) + 0x10) >> 20;
-    int az = *(int *)(__MapActor_GetActor(0x12) + 0x10) >> 20;
-    int bz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0x13))->pos.z >> 20;
+    int az = ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20;
+    int bz = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
 
     if (x == 3) {
         if (az == 0xf) {
@@ -1910,8 +1910,8 @@ void OvlFunc_946_200aa98(void)
     } else if (x == 0xc) {
         OvlFunc_946_2009774(0x13, 0x10, 0);
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0x13) + 8) >> 20, z - 1);
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -1967,11 +1967,11 @@ void OvlFunc_946_200ab80(void)
 void OvlFunc_946_200ac4c(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0xe) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0xe) + 0x10) >> 20;
-    int az = *(int *)(__MapActor_GetActor(0x12) + 0x10) >> 20;
-    int bz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0xe))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0xe))->pos.z >> 20;
+    int az = ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20;
+    int bz = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
 
     if (x == 6) {
         if ((unsigned int)(bz - 0xc) <= 2)
@@ -1993,8 +1993,8 @@ void OvlFunc_946_200ac4c(void)
     } else if (x == 0xd) {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xe) + 8) >> 20, z - 1);
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0xe))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
 extern void OvlFunc_946_2009774(int, int, int);
@@ -2057,10 +2057,10 @@ void OvlFunc_946_200ad0c(void)
 void OvlFunc_946_200add0(void)
 {
     extern void OvlFunc_946_2009774(int, int, int);
-    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
-    int x = *(int *)(__MapActor_GetActor(0x10) + 8) >> 20;
-    int z = *(int *)(__MapActor_GetActor(0x10) + 0x10) >> 20;
-    int oz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+    extern void __WaitFrames(int);
+    int x = ((struct Actor *)__MapActor_GetActor(0x10))->pos.x >> 20;
+    int z = ((struct Actor *)__MapActor_GetActor(0x10))->pos.z >> 20;
+    int oz = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
 
     if (x == 6) {
         if ((unsigned int)(oz - 9) <= 2)
@@ -2078,8 +2078,8 @@ void OvlFunc_946_200add0(void)
     } else if (x == 0xd) {
         return;
     }
-    __WaitFrames__k(2);
-    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0x10) + 8) >> 20, z - 1);
+    __WaitFrames(2);
+    __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0x10))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
 

@@ -3,6 +3,9 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "sprite.h"
+extern void __MapActor_Face(int, int, int);
+extern void __DeleteActor(void *);
 
 INCLUDE_ASM("asm/maps/imil/exports.s");
 
@@ -501,21 +504,21 @@ INCLUDE_ASM("asm/maps/imil/Imil_MapInit.s");
 INCLUDE_ASM("asm/maps/imil/OvlFunc_921_2008f90.s");
 extern int Lm921_31f0[] __asm__(".Lm921_31f0");
 extern void __vec3_translate(int, int, int *);
-void OvlFunc_921_200954c(unsigned char *a)
+void OvlFunc_921_200954c(struct Actor *a)
 {
     int v[3];
     short t;
 
     if (a != 0) {
-        t = --*(short *)(a + 0x64);
+        t = --a->waveCounter;
         if (t != 0) {
             v[0] = Lm921_31f0[0];
             v[1] = Lm921_31f0[1] + 0x80000;
             v[2] = Lm921_31f0[2];
-            __vec3_translate(t << 16, (t << 11) + *(short *)(a + 0x66), v);
-            *(int *)(a + 0x8) = v[0];
-            *(int *)(a + 0xc) = v[1];
-            *(int *)(a + 0x10) = v[2];
+            __vec3_translate(t << 16, (t << 11) + a->__unk66, v);
+            a->pos.x = v[0];
+            a->pos.y = v[1];
+            a->pos.z = v[2];
         } else {
             __DeleteActor(a);
         }
@@ -551,24 +554,22 @@ void OvlFunc_921_20096c8(void)
   __Func_8097194();
 }
 
-struct SpriteBits921 { unsigned char pad[9]; unsigned char lo:2; unsigned char mode:2; };
-extern void __Func_80929d8__921() __asm__("__Func_80929d8");
-extern void __Actor_SetSpriteFlags__921() __asm__("__Actor_SetSpriteFlags");
+extern void __Func_80929d8();
+extern void __Actor_SetSpriteFlags();
 void OvlFunc_921_2009704(void *v)
 {
-    unsigned char *a = v;
+    struct Actor *a = v;
     short z = 0;
 
-    a[0x55] = z;
-    *(short *)(a + 0x64) = z;
-    a[0x23] &= 0xfe;
-    (*(struct SpriteBits921 **)(a + 0x50))->mode = 1;
-    __Func_80929d8__921(a, 9);
-    __Actor_SetSpriteFlags__921(a, 0);
-    *(int *)(a + 0x18) = 0x8000;
-    *(int *)(a + 0x1c) = 0x8000;
+    a->__unk55 = z;
+    a->waveCounter = z;
+    a->flags &= 0xfe;
+    a->sprite->oam.priority = 1;
+    __Func_80929d8(a, 9);
+    __Actor_SetSpriteFlags(a, 0);
+    a->scale.x = 0x8000;
+    a->scale.y = 0x8000;
 }
-extern void __DeleteActor(void *);
 
 void OvlFunc_921_200974c(void *actor)
 {

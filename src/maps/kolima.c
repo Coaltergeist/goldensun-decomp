@@ -154,11 +154,11 @@ void *__MapActor_GetActor(int);
 
 void OvlFunc_911_2008230(void)
 {
-    unsigned char *p;
+    struct Actor *p;
     unsigned int r5;
 
     p = __MapActor_GetActor(0);
-    r5 = *(unsigned short *)(p + 6);
+    r5 = p->facing;
     __CutsceneStart();
     if ((unsigned int)(r5 + 0xffff5fff) <= 0x3ffe) {
         __UI_Sanctum(0x10);

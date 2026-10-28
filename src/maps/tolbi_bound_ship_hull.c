@@ -5,6 +5,8 @@
 #include "actor.h"
 
 #include "state/global_state.h"
+extern unsigned int __Random();
+
 extern GlobalState gState;
 extern unsigned char Lm945_696c[] __asm__(".Lm945_696c");
 extern unsigned char Lm945_6984[] __asm__(".Lm945_6984");
@@ -35,32 +37,31 @@ unsigned int OvlFunc_945_2008030(unsigned int arg0) {
     return 0;
 }
 
-int OvlFunc_945_2008058(unsigned char *a)
+int OvlFunc_945_2008058(struct Actor *a)
 {
     short flag;
     int y;
 
-    if (*(short *)(a + 0x66) != 0) {
-        y = *(int *)(a + 0xc) - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
-        *(int *)(a + 0xc) = y;
+    if (a->__unk66 != 0) {
+        y = a->pos.y - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
+        a->pos.y = y;
         if (y < 0) {
             flag = 0;
             goto set;
         }
     } else {
-        y = *(int *)(a + 0xc) + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
-        *(int *)(a + 0xc) = y;
+        y = a->pos.y + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
+        a->pos.y = y;
         if (y > 0x80000) {
             flag = 1;
         set:
-            *(short *)(a + 0x66) = flag;
+            a->__unk66 = flag;
         }
     }
     return 1;
 }
 
 unsigned int OvlFunc_945_20080b0(unsigned char *arg0) {
-    extern unsigned int __Random(unsigned int);
     unsigned int v;
     unsigned int t;
     v = (__Random((unsigned int)arg0) << 6) >> 16;
@@ -1957,7 +1958,6 @@ static inline void Func_8012330_neg(int x, int y, int z)
 void OvlFunc_945_200dc48(void)
 {
     extern void __Func_8012330(int, int, int);
-    extern unsigned int __Random(void);
 
     if (Lm945_7f84_i != 0) {
         Lm945_7f84_i--;

@@ -968,9 +968,9 @@ void OvlFunc_948_20092d4(void)
 
 void OvlFunc_948_2009308(void)
 {
-    unsigned char *a = __MapActor_GetActor(0);
-    int x = *(int *)(a + 8) / 0x100000;
-    int z = *(int *)(a + 0x10) / 0x100000;
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0);
+    int x = a->pos.x / 0x100000;
+    int z = a->pos.z / 0x100000;
     unsigned char *b = *(unsigned char **)iwram_3001ebc;
     short v = 0x5b;
 
@@ -1009,9 +1009,9 @@ void OvlFunc_948_200938c(void) {
 
 void OvlFunc_948_200941c(void)
 {
-    unsigned char *a = __MapActor_GetActor(0);
-    int x = *(int *)(a + 8) / 0x100000;
-    int z = *(int *)(a + 0x10) / 0x100000;
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0);
+    int x = a->pos.x / 0x100000;
+    int z = a->pos.z / 0x100000;
     unsigned char *b = *(unsigned char **)iwram_3001ebc;
     short v = 0x5c;
 
@@ -1187,9 +1187,9 @@ void OvlFunc_948_2009694(void)
 }
 void OvlFunc_948_20097ac(void)
 {
-    unsigned char *a = __MapActor_GetActor(0);
-    int x = *(int *)(a + 8) / 0x100000;
-    int z = *(int *)(a + 0x10) / 0x100000;
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(0);
+    int x = a->pos.x / 0x100000;
+    int z = a->pos.z / 0x100000;
     unsigned char *g = (unsigned char *)&gState;
     unsigned char *b = *(unsigned char **)iwram_3001ebc;
     short v = 0x60;
@@ -1349,25 +1349,25 @@ void OvlFunc_948_2009a9c(void) {
 static inline void OvlFunc_948_2009ac8_sub(int x, int zero)
 {
     __Func_8010704(0x3d, 0x24, 1, 1, x, 0x2a);
-    __MapActor_GetActor(8)[0x55] = zero;
-    *(int *)(__MapActor_GetActor(8) + 0xc) = 0x200000;
+    ((struct Actor *)__MapActor_GetActor(8))->__unk55 = zero;
+    ((struct Actor *)__MapActor_GetActor(8))->pos.y = 0x200000;
 }
 
 void OvlFunc_948_2009ac8(void)
 {
-    unsigned char *a;
+    struct Actor *a;
     int x;
     int z;
     int zero;
 
     a = __MapActor_GetActor(8);
-    z = *(int *)(a + 0xc);
-    x = *(int *)(a + 8) / 0x100000;
+    z = a->pos.y;
+    x = a->pos.x / 0x100000;
     if (z == 0)
-        __MapActor_GetActor(8)[0x23] = 2;
+        ((struct Actor *)__MapActor_GetActor(8))->flags = 2;
     OvlFunc_948_20099e8();
     zero = 0;
-    __MapActor_GetActor(8)[0x55] = 3;
+    ((struct Actor *)__MapActor_GetActor(8))->__unk55 = 3;
     if (x == 0x28)
         OvlFunc_948_2009a9c();
     else if (x == 0x2a)
@@ -1791,7 +1791,7 @@ void OvlFunc_948_200a334(void)
         if (flag) {
             API_MapActor_SetPos(0xf, 0xd6 << 18, 0xce << 18);
             actor = (struct Actor *)__MapActor_GetActor(0xf);
-            actor->update = (actorfun_t *)OvlFunc_948_2008aa8;
+            actor->update = (actorfun_t)OvlFunc_948_2008aa8;
         } else if (API_GetFlag(0x9c9)) {
             API_MapActor_SetPos(0xf, 0xde << 18, 0xa6 << 18);
             actor = (struct Actor *)__MapActor_GetActor(0xf);

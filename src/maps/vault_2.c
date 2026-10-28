@@ -54,7 +54,7 @@ int OvlFunc_901_2008350(struct Actor *a, struct Actor *b, int range, int arg3)
 }
 extern unsigned int iwram_3001e8c;
 extern void *__MapActor_GetActor(unsigned int);
-int OvlFunc_901_2008400(unsigned char *a)
+int OvlFunc_901_2008400(struct Actor *a)
 {
     unsigned char *b = (unsigned char *)iwram_3001e8c;
     unsigned char *c = *(unsigned char **)((char *)&iwram_3001e8c + 0x30);
@@ -63,7 +63,7 @@ int OvlFunc_901_2008400(unsigned char *a)
     int id;
     unsigned char *p;
 
-    if (*(unsigned short *)(a + 0x64) & 1)
+    if (a->waveCounter & 1)
         p = __MapActor_GetActor(0xf);
     else
         p = __MapActor_GetActor(0xe);
@@ -71,7 +71,7 @@ int OvlFunc_901_2008400(unsigned char *a)
         p = __MapActor_GetActor(0);
         if (*(short *)(c + 0x178) != 0 || b[0xea4] != 0) {
             d = 0x1a;
-            if (*(unsigned short *)(a + 0x64) & 2)
+            if (a->waveCounter & 2)
                 e = 1;
         }
         OvlFunc_901_2008350((struct Actor *)a, (struct Actor *)p, d, e);
@@ -160,16 +160,15 @@ void OvlFunc_901_200856c(void)
 extern unsigned char Lconst_1cb1[] __asm__(".Lconst_1cb1");
 /* pooled literal (ldr rN, =0x1cb1 in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
 __asm__(".equ .Lconst_1cb1, 0x1cb1");
-struct A200858c { char pad[6]; short facing; char pad2[0x64 - 8]; unsigned short flags; };
 void OvlFunc_901_200858c(void)
 {
-    unsigned char *a;
+    struct Actor *a;
     short dir;
     int msg;
 
-    a = __MapActor_GetActor(0xe);
-    dir = *(short *)(a + 6);
-    ((struct A200858c *)a)->flags |= 2;
+    a = (struct Actor *)__MapActor_GetActor(0xe);
+    dir = a->facing;
+    a->waveCounter |= 2;
     __CutsceneStart();
     msg = (int)Lconst_1cb1;
     API_MessageID(msg);
@@ -183,10 +182,10 @@ void OvlFunc_901_200858c(void)
     }
     API_MessageID(msg + 2);
     API_ActorMessage_Wait(0xe, 0, 0xa);
-    *(short *)(a + 6) = dir;
+    a->facing = dir;
     API_WaitFrames(1);
     __CutsceneEnd();
-    ((struct A200858c *)a)->flags = 1;
+    a->waveCounter = 1;
     API_SetFlag(0x307);
 }
 struct Actor640 {

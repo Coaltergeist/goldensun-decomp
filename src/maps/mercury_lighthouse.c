@@ -1753,7 +1753,7 @@ void OvlFunc_924_200b788(void)
         API_MapTransitionIn();
         API_WaitMapTransition();
         API_PlaySound(0xe4);
-        actor->update = (actorfun_t *)OvlFunc_924_2008cd0;
+        actor->update = (actorfun_t)OvlFunc_924_2008cd0;
         API_MapActor_SetSpeed(0, 0x6666, 0x3333);
         API_Func_8092304(0, 0, 8);
         __Func_8092950(0, 0);

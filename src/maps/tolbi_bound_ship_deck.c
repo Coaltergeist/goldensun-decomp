@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+extern unsigned int __Random();
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/exports.s");
 
@@ -46,31 +47,30 @@ unsigned int OvlFunc_943_20080b4(void) {
 
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20080c4.s");
 INCLUDE_ASM("asm/maps/tolbi_bound_ship_deck/OvlFunc_943_20082ec.s");
-int OvlFunc_943_2008514(unsigned char *a)
+int OvlFunc_943_2008514(struct Actor *a)
 {
     short flag;
     int y;
 
-    if (*(short *)(a + 0x66) != 0) {
-        y = *(int *)(a + 0xc) - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
-        *(int *)(a + 0xc) = y;
+    if (a->__unk66 != 0) {
+        y = a->pos.y - ((unsigned int)(__Random() << 15) >> 16) - 0x8000;
+        a->pos.y = y;
         if (y < 0x40000) {
             flag = 0;
             goto set;
         }
     } else {
-        y = *(int *)(a + 0xc) + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
-        *(int *)(a + 0xc) = y;
+        y = a->pos.y + ((unsigned int)(__Random() << 15) >> 16) + 0x8000;
+        a->pos.y = y;
         if (y > 0xc0000) {
             flag = 1;
         set:
-            *(short *)(a + 0x66) = flag;
+            a->__unk66 = flag;
         }
     }
     return 1;
 }
 
-extern unsigned int __Random(unsigned int);
 
 unsigned int OvlFunc_943_2008570(unsigned char *arg0) {
     unsigned int v;

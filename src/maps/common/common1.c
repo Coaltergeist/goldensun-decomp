@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 
 void OvlFunc_common1_0(void)
@@ -467,23 +468,23 @@ extern unsigned char *__CreateActor(int, int, int, int);
 extern void __Actor_SetSpriteFlags(void *, int);
 extern void __Actor_SetScript(void *, void *);
 extern void __Actor_SetAnim(void *, int);
-void OvlFunc_common1_172c(unsigned char *a)
+void OvlFunc_common1_172c(struct Actor *a)
 {
     int v[3];
-    unsigned char *p;
+    struct Actor *p;
     int r;
 
-    if ((unsigned)(*(int *)(a + 0x28) + 0xff) <= 0x1fe)
-        a[0x55] = 0;
+    if ((unsigned)(a->motion.y + 0xff) <= 0x1fe)
+        a->__unk55 = 0;
     if ((unsigned)(__Random() * 100) >> 16 <= 9) {
-        v[0] = *(int *)(a + 8);
-        v[1] = *(int *)(a + 0xc);
-        v[2] = *(int *)(a + 0x10);
+        v[0] = a->pos.x;
+        v[1] = a->pos.y;
+        v[2] = a->pos.z;
         r = __Random();
         __vec3_translate(r << 4, __Random(), v);
         { int x = v[0], y = v[1], z = v[2]; p = __CreateActor(0x11d, x, y, z); }
         if (p != 0) {
-            p[0x55] = 0;
+            p->__unk55 = 0;
             __Actor_SetSpriteFlags(p, 0);
             __Actor_SetScript(p, Lc1_7);
             __Actor_SetAnim(p, 1);
@@ -530,7 +531,7 @@ struct ActorTableCommon1 {
     unsigned char pad0[0x14];
     int *actor[66];
 };
-int *OvlFunc_common1_2018(int *pos)
+int *OvlFunc_common1_2018(int *pos, void *arg1)
 {
     extern struct ActorTableCommon1 *iwram_3001ebc__k2 __asm__("iwram_3001ebc");
     struct ActorTableCommon1 *t = iwram_3001ebc__k2;
@@ -549,29 +550,26 @@ int *OvlFunc_common1_2018(int *pos)
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_2060.s");
 int OvlFunc_common1_21c8(void)
 {
-    extern int *__MapActor_GetActor__21c8(int) __asm__("__MapActor_GetActor");
-    extern int *OvlFunc_common1_2018__21c8(int *, int *) __asm__("OvlFunc_common1_2018");
-    int *a;
+    struct Actor *a;
     int dir;
     int v[3];
     int r;
     int off = 0xfa;
 
-    a = __MapActor_GetActor__21c8(*(int *)((char *)&gState + (off << 1)));
-    dir = (*(unsigned short *)((char *)a + 6) + 0x2000) & 0xc000;
-    v[0] = (a[2] & 0xfff00000) + 0x80000;
-    v[1] = a[3];
-    v[2] = (a[4] & 0xfff00000) + 0x80000;
+    a = (struct Actor *)__MapActor_GetActor(*(int *)((char *)&gState + (off << 1)));
+    dir = (a->facing + 0x2000) & 0xc000;
+    v[0] = (a->pos.x & 0xfff00000) + 0x80000;
+    v[1] = a->pos.y;
+    v[2] = (a->pos.z & 0xfff00000) + 0x80000;
     __vec3_translate(0x100000, dir, v);
-    r = (int)OvlFunc_common1_2018__21c8(v, a);
+    r = (int)OvlFunc_common1_2018(v, a);
     if (r == 0) {
-        v[0] = (a[2] & 0xfff00000) + 0x80000;
-        v[1] = a[3];
-        v[2] = (a[4] & 0xfff00000) + 0x80000;
+        v[0] = (a->pos.x & 0xfff00000) + 0x80000;
+        v[1] = a->pos.y;
+        v[2] = (a->pos.z & 0xfff00000) + 0x80000;
         __vec3_translate(0x200000, dir, v);
-        r = (int)OvlFunc_common1_2018__21c8(v, a);
+        r = (int)OvlFunc_common1_2018(v, a);
     }
     return r;
 }
-/* Data and bss that followed OvlFunc_common1_21c8 in its original .s. */
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_21c8_data.s");
+INCLUDE_ASM("asm/maps/common/common1/common1_data.s");

@@ -15,13 +15,13 @@ void OvlFunc_936_2008030(void) {
     __Func_80955b0(12, 2, 3);
 }
 
-extern unsigned int __Random__936() __asm__("__Random");
+extern unsigned int __Random();
 int OvlFunc_936_2008040(struct Actor *a)
 {
     extern void __Actor_SetAnim(void *, int);
 
     if (a->__unk66 == 0) {
-        switch ((__Random__936() << 3) >> 16) {
+        switch ((__Random() << 3) >> 16) {
         case 0:
             __Actor_SetAnim(a, 3);
             break;
@@ -30,22 +30,22 @@ int OvlFunc_936_2008040(struct Actor *a)
             break;
         case 3:
         case 4:
-            a->facing += (__Random__936() << 15) >> 16;
+            a->facing += (__Random() << 15) >> 16;
             break;
         }
-        a->__unk66 = (__Random__936() * 80) >> 16;
+        a->__unk66 = (__Random() * 80) >> 16;
     }
     if (a->__unk66 != 0)
         a->__unk66--;
     return 1;
 }
-int OvlFunc_936_20080ac(unsigned char *a)
+int OvlFunc_936_20080ac(struct Actor *a)
 {
-    short *t = (short *)(a + 0x66);
+    short *t = &a->__unk66;
 
     if (*t == 0) {
-        *(unsigned short *)(a + 6) += (__Random__936() << 15) >> 16;
-        *t = (__Random__936() * 80) >> 16;
+        a->facing += (__Random() << 15) >> 16;
+        *t = (__Random() * 80) >> 16;
     }
     if (*t != 0)
         (*t)--;
@@ -184,11 +184,11 @@ extern unsigned int iwram_3001ebc;
 
 void OvlFunc_936_20082e8(void)
 {
-    unsigned char *p;
+    struct Actor *p;
     unsigned int v;
 
-    p = (unsigned char *)__MapActor_GetActor(0);
-    v = (*(unsigned short *)(p + 6) + 0xfffff000) << 16;
+    p = (struct Actor *)__MapActor_GetActor(0);
+    v = (p->facing + 0xfffff000) << 16;
     if (v > (0x60 << 24)) {
         API_CutsceneStart();
         API_MapActor_TurnToFaceActor(0, 8, 0);

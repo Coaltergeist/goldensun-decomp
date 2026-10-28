@@ -536,7 +536,7 @@ struct ActorInfo_947 {
 int OvlFunc_947_2008ec8(int actor_id)
 {
     extern void __Actor_SetAnim(void *, int);
-    unsigned char *actor;
+    struct Actor *actor;
     int camz;
     int v;
     int camx;
@@ -550,8 +550,8 @@ int OvlFunc_947_2008ec8(int actor_id)
 
     API_Func_8010704(2, 2, w, h, info.x, info.z);
     __Actor_SetAnim(actor, 4);
-    v = 2 | actor[0x23];
-    actor[0x23] = v;
+    v = 2 | actor->flags;
+    actor->flags = v;
 
     if (w > h)
         API_CopyMapTiles(0x46, 0x28, info.x + 0x20, info.z + 2, w, h);

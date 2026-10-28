@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+extern void __Actor_SetSpriteFlags(void *, int);
 
 extern unsigned int Lm959_5ed8[] __asm__(".Lm959_5ed8");
 
@@ -491,18 +492,15 @@ int LunpaFortress_GetEvents(void)
 }
 void OvlFunc_959_2008b4c(void)
 {
-    extern unsigned char *__MapActor_GetActor__k(int) __asm__("__MapActor_GetActor");
-    extern void __Actor_SetSpriteFlags__k(void *, int) __asm__("__Actor_SetSpriteFlags");
-    extern void F8010704(int, int, int, int, int, int) __asm__("__Func_8010704");
-    unsigned char *a;
+    struct Actor *a;
 
-    F8010704(0xf, 0x14, 1, 1, 0xf, 0x16);
-    F8010704(0x11, 0x17, 1, 3, 0xf, 0x17);
-    a = __MapActor_GetActor__k(0xc);
+    __Func_8010704(0xf, 0x14, 1, 1, 0xf, 0x16);
+    __Func_8010704(0x11, 0x17, 1, 3, 0xf, 0x17);
+    a = (struct Actor *)__MapActor_GetActor(0xc);
     if (a != 0) {
-        __Actor_SetSpriteFlags__k(a, 0);
-        a[0x55] = 0;
-        a[0x23] = 2;
+        __Actor_SetSpriteFlags(a, 0);
+        a->__unk55 = 0;
+        a->flags = 2;
     }
 }
 

@@ -2,8 +2,13 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 #include "state/global_state.h"
+extern void *__MapActor_GetActor(int);
+extern void __SetFlag(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+
 extern GlobalState gState;
 extern unsigned char Lm941_1cc0[] __asm__(".Lm941_1cc0");
 extern unsigned char Lm941_1cd8[] __asm__(".Lm941_1cd8");
@@ -52,7 +57,7 @@ unsigned int WestLunpaCave_GetEvents(void) {
 
 void OvlFunc_941_200807c(void)
 {
-    unsigned int actor;
+    struct Actor *actor;
 
     actor = __MapActor_GetActor(8);
     if (actor != 0) {
@@ -60,22 +65,13 @@ void OvlFunc_941_200807c(void)
     }
 }
 
-struct ActorBits941 {
-    unsigned char pad0[0x23];
-    unsigned char flags;
-    unsigned char pad24[0x31];
-    unsigned char unk55;
-};
 void OvlFunc_941_2008094(void)
 {
-    extern struct ActorBits941 *__MapActor_GetActor__k(int) __asm__("__MapActor_GetActor");
-    extern void API_Func_8010704(int, int, int, int, int, int) __asm__("__Func_8010704");
-    extern void API_SetFlag(int) __asm__("__SetFlag");
-    struct ActorBits941 *a = __MapActor_GetActor__k(9);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(9);
 
     if (a != 0) {
         a->flags = 1;
-        a->unk55 = 0;
+        a->__unk55 = 0;
     }
     API_Func_8010704(7, 0x20, 1, 1, 8, 0x20);
     API_SetFlag(0x204);
@@ -104,10 +100,6 @@ void OvlFunc_941_20080d4(void)
     API_Func_8010704(0x13, 0x11, 1, 1, 0x15, 0xe);
 }
 
-struct Actor {
-unsigned char pad[0x23];
-unsigned char unk23;
-};
 void OvlFunc_941_20080d4(void);
 
 static inline int GetFlag(int flag)
@@ -123,7 +115,7 @@ void OvlFunc_941_20081b0(void) {
     __SetFlag(0x80 << 2);
     if (actor != 0) {
         __Actor_SetSpriteFlags(actor, 0);
-        actor->unk23 = 1;
+        actor->flags = 1;
     }
 
     if (GetFlag(0x202) == 0) {
@@ -134,7 +126,6 @@ void OvlFunc_941_20081b0(void) {
     }
 }
 
-extern void __SetFlag(int);
 
 void OvlFunc_941_2008200(void) {
     __SetFlag(0x203);
@@ -284,8 +275,6 @@ unsigned int OvlFunc_941_200941c(void)
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009448.s");
 INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009760.s");
 extern void *iwram_3001ebc;
-extern void *__MapActor_GetActor(int);
-extern void __Actor_SetSpriteFlags(void *, int);
 extern int __GetFlag(int);
 extern void __MapActor_SetAnim(int, int);
 extern void OvlFunc_941_2008210(void);

@@ -45,7 +45,7 @@ struct Actor {
 /* 0x61 */  u8 __unk61;
 /* 0x62 */  u8 __unk62;
 /* 0x63 */  u8 __unk63;
-/* 0x64 */  s16 waveCounter;
+/* 0x64 */  s16 waveCounter;      // many map scripts use this as u16 flags (& 1, |= 2); name/type unconfirmed
 /* 0x66 */  s16 __unk66;
 /* 0x68 */  struct Actor *linkedActor;
 /* 0x6C */  actorfun_t update;

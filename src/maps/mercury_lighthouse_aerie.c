@@ -2,6 +2,10 @@
 
 #include "nonmatching.h"
 
+extern void *__MapActor_GetActor(int);
+extern void __SetFlag(int);
+extern void __WaitFrames(int);
+
 extern unsigned char gOvl_0200b938[];
 
 unsigned int MercuryLighthouseAerie_GetEntrances(void) {
@@ -91,7 +95,6 @@ struct MapActors {
 };
 
 extern struct MapActors *iwram_3001ebc;
-void *__MapActor_GetActor(int);
 
 int OvlFunc_925_20088cc(void)
 {
@@ -186,11 +189,8 @@ void OvlFunc_925_2008928(void)
         actor->unk55 = unk55;
     }
 }
-extern void *__MapActor_GetActor(int);
 extern void __CutsceneStart(void);
 extern void __CutsceneEnd(void);
-extern void __SetFlag(int);
-extern void __WaitFrames(int);
 extern int OvlFunc_925_20088cc(void);
 extern int L3c50 __asm__(".Lm925_3c50");
 
@@ -247,7 +247,6 @@ extern unsigned char iwram_3001e70[];
 void __CutsceneStart(void);
 void __Func_800fe9c(void);
 void __WaitFrames(int);
-void *__MapActor_GetActor(int);
 void __MapActor_SetPos(int, int, int);
 void *__Func_8093554(void);
 void __Func_80933d4(int, int);
@@ -479,7 +478,7 @@ static inline void API925_MapActor_SetPos(int a0, int a1, int a2)
     __MapActor_SetPos(a0, a1, a2);
 }
 static inline void *API925_CreateActor(int a, int x, int y, int z) { extern void *__CreateActor(int, int, int, int); return __CreateActor(a, x, y, z); }
-extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+
 extern int _divsi3_RAM(int, int);
 extern void __Actor_SetScript(struct Actor *, const void *);
 extern void __Func_80929d8(struct Actor *, int);
@@ -487,7 +486,7 @@ extern unsigned int __Random(void);
 extern int __sin(int);
 extern const u8 gScript_925__0200bc54[];
 extern void *iwram_3001e70_p __asm__("iwram_3001e70");
-extern unsigned int iwram_3001e40_v __asm__("iwram_3001e40");
+extern unsigned int iwram_3001e40;
 void OvlFunc_925_200b4bc(void)
 {
     struct Actor *actor;
@@ -499,26 +498,26 @@ void OvlFunc_925_200b4bc(void)
     int flags;
     u32 randVal;
 
-    actor = MapActor_GetActor(8);
+    actor = __MapActor_GetActor(8);
     ptr = (u8 *)iwram_3001e70_p;
     r8 = ((__Random() * 48) >> 16) << 16;
     gate = (s16 *)(ptr + 0xe8);
     if (gate[1] <= 0x81) {
-        if (iwram_3001e40_v & 1) {
+        if (iwram_3001e40 & 1) {
             API925_MapActor_SetPos(8, 0x1300000, 0x900000);
-            MapActor_GetActor(8)->scale.x = 0x10000;
-            MapActor_GetActor(8)->scale.y = 0x10000;
+            ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0x10000;
+            ((struct Actor *)__MapActor_GetActor(8))->scale.y = 0x10000;
         } else {
             API925_MapActor_SetPos(8, 0x1300000, 0x970000);
-            MapActor_GetActor(8)->scale.x = 0x14ccc;
-            MapActor_GetActor(8)->scale.y = 0x14ccc;
+            ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0x14ccc;
+            ((struct Actor *)__MapActor_GetActor(8))->scale.y = 0x14ccc;
         }
     } else {
         API925_MapActor_SetPos(8, 0x80000, 0x80000);
     }
 
     if (actor != NULL) {
-        flags = iwram_3001e40_v & 0xf;
+        flags = iwram_3001e40 & 0xf;
         if (flags == 0) {
             newActor = API925_CreateActor(0x11c,
                                      actor->pos.x + 0x80000,
@@ -535,7 +534,7 @@ void OvlFunc_925_200b4bc(void)
                 newActor->waveCounter = randVal;
                 newActor->__unk66 = flags;
                 newActor->linkedActor = actor;
-                newActor->update = (actorfun_t *)OvlFunc_925_200b460;
+                newActor->update = (actorfun_t)OvlFunc_925_200b460;
                 newActor->speed = (__sin((r8 & 0xfffff) >> 4) * 24) >> 16;
                 sprite->flags = 0;
                 sprite->oam.priority = actor->sprite->oam.priority;

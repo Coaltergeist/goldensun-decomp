@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/bilibin/exports.s");
 
@@ -371,19 +372,19 @@ extern void __Func_8010704(int, int, int, int, int, int);
 
 void OvlFunc_907_20089cc(void)
 {
-    unsigned char *actor0;
-    unsigned char *actor20;
+    struct Actor *actor0;
+    struct Actor *actor20;
     int z20;
     int x0;
     int z0;
     int x20;
 
-    actor0 = (unsigned char *)__MapActor_GetActor(0);
-    actor20 = (unsigned char *)__MapActor_GetActor(0x14);
-    z20 = *(int *)(actor20 + 0x10) >> 20;
-    x0 = *(int *)(actor0 + 8) >> 20;
-    z0 = *(int *)(actor0 + 0x10) >> 20;
-    x20 = *(int *)(actor20 + 8) >> 20;
+    actor0 = (struct Actor *)__MapActor_GetActor(0);
+    actor20 = (struct Actor *)__MapActor_GetActor(0x14);
+    z20 = actor20->pos.z >> 20;
+    x0 = actor0->pos.x >> 20;
+    z0 = actor0->pos.z >> 20;
+    x20 = actor20->pos.x >> 20;
 
     __Func_8010704(15, 11, 3, 1, 15, 12);
     __Func_8010704(15, 11, 3, 1, 15, 13);

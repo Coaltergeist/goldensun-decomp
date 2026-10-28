@@ -6,6 +6,10 @@
 #include "dma.h"
 #include "message.h"
 
+extern void __PlaySound(int);
+extern void __Actor_SetAnim(void *, int);
+extern unsigned char *__MapActor_GetActor(unsigned int);
+
 extern unsigned int Lm957_3eb4[] __asm__(".Lm957_3eb4");
 
 INCLUDE_ASM("asm/maps/altmiller_cave/exports.s");
@@ -69,7 +73,7 @@ void OvlFunc_957_20080c4(void) {
     int speed;
     int zero;
 
-    player = __MapActor_GetActor(0);
+    player = (struct Actor *)__MapActor_GetActor(0);
     idx = player->facing >> 12;
     t = Lm957_3eb4[idx];
     stk[0] = player->pos.x + (t & 0xffff0000);
@@ -317,7 +321,6 @@ void __MapActor_SetSpeed(unsigned int, int, int);
 extern void __MapActor_SetAnim(unsigned int, unsigned int);
 extern void __MapActor_TravelBy(unsigned int, int, int);
 extern void __Func_8010704(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
-extern unsigned char *__MapActor_GetActor(unsigned int);
 extern void __Actor_TravelTo(void *, int, int, int);
 void __MapActor_WaitMovement(unsigned int);
 #include "field/push_block.h"
@@ -650,8 +653,6 @@ void OvlFunc_957_2008de8(void)
     extern void __CutsceneStart(void);
     extern void __CutsceneEnd(void);
     extern void __WaitFrames(int);
-    extern void __PlaySound(int);
-    extern void __Actor_SetAnim(struct Actor *, int);
     extern void __Actor_SetSpriteFlags(struct Actor *, int);
     extern void __MapActor_TravelToWait(int, int, int);
     struct Actor *actor;
@@ -704,7 +705,7 @@ void OvlFunc_957_2008f10(int id, int dist, int angle)
 {
     int v[3];
     int x = 0x1f80000, z = 0x180000, h = 0x900000;
-    struct Actor *a = __MapActor_GetActor(id);
+    struct Actor *a = (struct Actor *)__MapActor_GetActor(id);
     v[0] = x;
     v[2] = z;
     __vec3_translate(dist, angle, v);

@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "sprite.h"
 
 extern unsigned int Lm968_50e8[] __asm__(".Lm968_50e8");
 
@@ -41,19 +42,14 @@ void OvlFunc_968_2008030(unsigned int arg0, unsigned int arg1)
     __Func_80929d8(r5, r6);
 }
 
-struct SpriteBits968 {
-    unsigned char pad0[9];
-    unsigned char lo : 2;
-    unsigned char mode : 2;
-};
 extern void *__CreateActor(int, int, int, int);
 extern void __Func_800c548(void *, int);
 unsigned int OvlFunc_968_2008058(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
 {
-    unsigned char *a = __CreateActor(type, x, y, z);
+    struct Actor *a = __CreateActor(type, x, y, z);
 
     if (a != 0) {
-        (*(struct SpriteBits968 **)(a + 0x50))->mode = 0;
+        a->sprite->oam.priority = 0;
         OvlFunc_968_2008030((unsigned int)a, 0xe);
         __Func_800c548(a, 1);
         return (unsigned int)a;
@@ -62,12 +58,12 @@ unsigned int OvlFunc_968_2008058(unsigned int x, unsigned int y, unsigned int z,
 }
 unsigned int OvlFunc_968_2008098(unsigned int x, unsigned int y, unsigned int z, unsigned int type)
 {
-    unsigned char *a = __CreateActor(type, x, y, z);
+    struct Actor *a = __CreateActor(type, x, y, z);
 
     if (a != 0) {
-        (*(struct SpriteBits968 **)(a + 0x50))->mode = 1;
+        a->sprite->oam.priority = 1;
         OvlFunc_968_2008030((unsigned int)a, 0xf);
-        ((struct Actor *)a)->flags |= 2;
+        a->flags |= 2;
         return (unsigned int)a;
     }
     return 0;
@@ -112,8 +108,8 @@ struct ActorTable200832c {
 };
 struct Actor *OvlFunc_968_200832c(int *pos, struct Actor *self)
 {
-    extern struct ActorTable200832c *iwram_3001ebc__k1 __asm__("iwram_3001ebc");
-    struct ActorTable200832c *t = iwram_3001ebc__k1;
+    extern struct ActorTable200832c *iwram_3001ebc;
+    struct ActorTable200832c *t = iwram_3001ebc;
     int x;
     unsigned int i;
 

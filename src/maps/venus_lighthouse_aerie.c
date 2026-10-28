@@ -3,6 +3,8 @@
 #include "nonmatching.h"
 #include "actor.h"
 #include "api.h"
+extern struct Actor *__MapActor_GetActor(int);
+extern void __Actor_SetSpriteFlags(void *, int);
 
 extern void OvlFunc_969_200a11c();
 
@@ -33,21 +35,21 @@ int OvlFunc_969_2008314(struct Actor *actor)
     actor->waveCounter--;
     return 1;
 }
-void OvlFunc_969_20083a0(int *a)
+void OvlFunc_969_20083a0(struct Actor *a)
 {
     extern int _divsi3_RAM(int, int);
-    int vx = a[0x11];
+    int vx = a->bounce;
     int vy, vz;
-    a[2] += vx;
-    vy = a[0x12];
-    a[3] += vy;
-    vz = a[0x13];
-    a[4] += vz;
-    a[0x11] = vx - _divsi3_RAM(vx, 0x16);
-    a[0x13] = vz - _divsi3_RAM(vz, 0x14);
-    a[6] += a[0xc];
-    a[7] += a[0xd];
-    *(unsigned short *)((char *)a[0x14] + 0x1e) += *(unsigned short *)((char *)a + 0x64);
+    a->pos.x += vx;
+    vy = a->gravity;
+    a->pos.y += vy;
+    vz = a->__unk4C;
+    a->pos.z += vz;
+    a->bounce = vx - _divsi3_RAM(vx, 0x16);
+    a->__unk4C = vz - _divsi3_RAM(vz, 0x14);
+    a->scale.x += a->speed;
+    a->scale.y += a->accel;
+    a->sprite->rotation += (u16)a->waveCounter;
 }
 
 void OvlFunc_969_2008400(unsigned char *p)
@@ -134,7 +136,6 @@ void __ClearFlag(int);
 void __Actor_SetAnim(struct Actor *, int);
 void __WaitFrames(int);
 void __PlaySound(int);
-void __Actor_SetSpriteFlags(int, int);
 void __MapActor_TravelToWait(int, int, int);
 
 void OvlFunc_969_2008518(void)
@@ -162,10 +163,10 @@ void OvlFunc_969_2008518(void)
         __PlaySound(0x98);
         actor->motion.y = 0x40000;
         actor->__unk55 &= 0x7e;
-        __Actor_SetSpriteFlags((int)actor, 0);
+        __Actor_SetSpriteFlags(actor, 0);
         __MapActor_TravelToWait(0, vec.x >> 16, vec.z >> 16);
         __Actor_SetAnim(actor, 6);
-        __Actor_SetSpriteFlags((int)actor, 1);
+        __Actor_SetSpriteFlags(actor, 1);
         actor->__unk55 = unk55;
     }
 }
@@ -230,7 +231,6 @@ unsigned int VenusLighthouseAerie_GetEvents(void) {
 
 extern void __SetFlag(int);
 extern void __WaitFrames(int);
-extern void __Actor_SetSpriteFlags(int, int);
 extern void __Func_8092b08(int, int);
 extern int __GetFlag(int);
 extern void __CutsceneStart(void);
@@ -334,7 +334,6 @@ void OvlFunc_969_20088a8(int a, int b) {
 
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20088b4.s");
 extern void __Func_8092950(int a, int b);
-extern void __Actor_SetSpriteFlags(int actor, int flags);
 extern void __MapActor_SetSpeed(int a, int b, int c);
 
 static inline void MapActor_SetSpeed(int a, int b, int c)
@@ -434,7 +433,6 @@ void OvlFunc_969_200a344(void) {
     __Func_8097194();
 }
 
-extern void __MapActor_GetActor(int);
 
 void OvlFunc_969_200a350(void) {
     __MapActor_GetActor(6);
@@ -469,13 +467,13 @@ void OvlFunc_969_200b600(struct Actor *actor)
     actor->prevPos.z = actor->pos.z;
     actor->waveCounter -= 0x800;
 }
-extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+
 extern int __cos(int);
 extern int __sin(int);
 
 void OvlFunc_969_200b660(struct Actor *actor)
 {
-    struct Actor *other = MapActor_GetActor(0x17);
+    struct Actor *other = __MapActor_GetActor(0x17);
     u16 *waveCounter = (u16 *)&actor->waveCounter;
     u16 angle = *waveCounter;
 
@@ -645,7 +643,7 @@ void OvlFunc_969_200d9f0(struct Actor *actor) {
     }
 }
 
-extern struct Actor *MapActor_GetActor(int) __asm__("__MapActor_GetActor");
+
 
 
 extern int _divsi3_RAM(int, int);
@@ -669,19 +667,19 @@ void OvlFunc_969_200da28(void)
     int flags;
     u32 randVal;
 
-    actor = MapActor_GetActor(0x17);
+    actor = __MapActor_GetActor(0x17);
     ptr = (u8 *)iwram_3001e70;
     r8 = ((__Random() * 48) >> 16) << 16;
     gate = (s16 *)(ptr + 0xe8);
     if (gate[1] <= 0x81) {
         if (iwram_3001e40 & 1) {
             API_MapActor_SetPos(0x17, 0x1300000, 0xa40000);
-            MapActor_GetActor(0x17)->scale.x = 0x10000;
-            MapActor_GetActor(0x17)->scale.y = 0x10000;
+            __MapActor_GetActor(0x17)->scale.x = 0x10000;
+            __MapActor_GetActor(0x17)->scale.y = 0x10000;
         } else {
             API_MapActor_SetPos(0x17, 0x1300000, 0xab0000);
-            MapActor_GetActor(0x17)->scale.x = 0x14ccc;
-            MapActor_GetActor(0x17)->scale.y = 0x14ccc;
+            __MapActor_GetActor(0x17)->scale.x = 0x14ccc;
+            __MapActor_GetActor(0x17)->scale.y = 0x14ccc;
         }
     } else {
         API_MapActor_SetPos(0x17, 0, 0);
@@ -705,7 +703,7 @@ void OvlFunc_969_200da28(void)
                 newActor->waveCounter = randVal;
                 newActor->__unk66 = flags;
                 newActor->linkedActor = actor;
-                newActor->update = (actorfun_t *)OvlFunc_969_200db90;
+                newActor->update = (actorfun_t)OvlFunc_969_200db90;
                 newActor->speed = (__sin((r8 & 0xfffff) >> 4) * 24) >> 16;
                 sprite->flags = 0;
                 sprite->oam.priority = actor->sprite->oam.priority;

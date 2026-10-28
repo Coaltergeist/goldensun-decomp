@@ -1106,7 +1106,7 @@ extern unsigned char Lconst_2[] __asm__(".Lconst_2");
 void OvlFunc_881_200b84c(void)
 {
     extern unsigned char gStateBytes[] __asm__("gState");
-    extern struct Actor *__MapActor_GetActor__b84c(int) __asm__("__MapActor_GetActor");
+    extern struct Actor *__MapActor_GetActor(int);
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void __SetDestMap(int, int);
     struct Actor *a;
@@ -1116,9 +1116,9 @@ void OvlFunc_881_200b84c(void)
     {
         unsigned char *gs = gStateBytes;
         gs += 0x1f4;
-        a = __MapActor_GetActor__b84c(*(int *)gs);
+        a = __MapActor_GetActor(*(int *)gs);
     }
-    b = __MapActor_GetActor__b84c(0x36);
+    b = __MapActor_GetActor(0x36);
     API_CutsceneStart();
     API_Func_80933f8(-1, -1, -1, 0);
     API_PlaySound(0xdb);
