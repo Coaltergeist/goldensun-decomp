@@ -103,7 +103,48 @@ void OvlFunc_960_2008400(void)
     }
     __SetFlagByte(0x210, flag);
 }
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008464.s");
+#include "actor.h"
+#include "api.h"
+void OvlFunc_960_2008464(int arg0)
+{
+    extern unsigned char gStateBytes[] __asm__("gState");
+    extern void OvlFunc_960_2008400(void);
+    unsigned char *gs;
+    struct Actor *actor;
+    short *target;
+    unsigned char *base;
+    int leaderId;
+    int flag;
+    gs = gStateBytes;
+    leaderId = *(int *)(gs + (0xfa << 1));
+    actor = (struct Actor *)__MapActor_GetActor(leaderId);
+    __MapActor_GetActor(arg0);
+    flag = API_GetFlag(0x20f);
+    if (flag != 0)
+        return;
+    API_CutsceneStart();
+    API_MapActor_Surprise(leaderId, 0x101);
+    API_MapActor_SetAnim(leaderId, 9);
+    target = (short *)__MapActor_GetActor(arg0);
+    if (target != 0) {
+        API_MapActor_TravelTo(leaderId, target[5], target[9]);
+    }
+    API_MapActor_WaitMovement(leaderId);
+    API_PlaySound(0xf4);
+    API_StartTask(OvlFunc_960_2008400, 0xc8 << 4);
+    actor->__unk55 = flag;
+    API_Actor_TravelTo(actor, actor->pos.x, actor->pos.y + (0x80 << 14), actor->pos.z);
+    API_MapActor_WaitMovement(leaderId);
+    actor->motion.y = flag;
+    actor->__unk55 = 4;
+    *(gs + (0xf9 << 1)) = 2;
+    API_SetFlag(0x20f);
+    __SetFlagByte(0x86 << 2, arg0);
+    __SetFlagByte(0x84 << 2, 0xb4);
+    API_CutsceneEnd();
+    base = iwram_3001ebc;
+    *(u16 *)(base + (0xbe << 1)) = flag;
+}
 
 extern void OvlFunc_960_2008464(int);
 

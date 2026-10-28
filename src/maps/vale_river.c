@@ -813,7 +813,57 @@ void OvlFunc_883_2008fec(void) {
     API_MapActor_TravelToAnimWait(0, 0x6e, 0x12f);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20090d8.s");
+void OvlFunc_883_20090d8(void)
+{
+    extern void __Func_800fe9c(void);
+    vec3_t **camera;
+    vec3_t *saved;
+    vec3_t pos;
+    unsigned char *player;
+    int i;
+
+    if (API_GetFlag(0x808) != 0)
+        return;
+
+    camera = *(vec3_t ***)iwram_3001e70;
+    API_CutsceneStart();
+    API_MapActor_SetSpeed(0, 0x80 << 9, 0x80 << 8);
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneWait(2);
+    API_MessageID(0xf4d);
+    API_ActorMessage_Wait(0xf, 0, 2);
+    API_ActorMessage_Wait(0x10, 0, 2);
+
+    player = __MapActor_GetActor(0);
+    pos.x = *(int *)(player + 8);
+    pos.y = *(int *)(player + 0xc);
+    saved = *camera;
+    pos.z = *(int *)(player + 0x10);
+    *camera = &pos;
+
+    i = 0;
+    do {
+        pos.z += 0x80 << 10;
+        API_CutsceneWait(1);
+        __Func_800fe9c();
+    } while (++i != 40);
+
+    API_CutsceneWait(0x3c);
+    API_Func_801776c(0xf4f, 1);
+    API_CutsceneWait(6);
+
+    i = 0;
+    do {
+        pos.z -= 0x80 << 10;
+        API_CutsceneWait(1);
+        __Func_800fe9c();
+    } while (++i != 40);
+
+    *camera = saved;
+    API_CutsceneWait(0x3c);
+    API_MapActor_TravelToAnimWait(0, 0x46, 0x2e5);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_883_20091d8(void) {
     int msg;
@@ -1403,7 +1453,33 @@ void OvlFunc_883_200d928(void) {
     OvlFunc_883_200d950();
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d950.s");
+void OvlFunc_883_200d950(void)
+{
+    unsigned char *a;
+    int x;
+
+    API_Func_8010704(0x11, 0, 3, 1, 0x16, 0x24);
+    if (API_GetFlag(0x87a))
+        a = __MapActor_GetActor(0x15);
+    else
+        a = __MapActor_GetActor(0x14);
+    if (a == 0)
+        return;
+    API_ClearFlag(0x314);
+    API_ClearFlag(0x315);
+    API_ClearFlag(0x316);
+    x = *(int *)(a + 8) >> 20;
+    if (x == 0x16) {
+        API_Func_8010704(0x11, 1, 1, 1, x, 0x24);
+        API_SetFlag(0x314);
+    } else if (x == 0x17) {
+        API_Func_8010704(0x11, 1, 1, 1, x, 0x24);
+        API_SetFlag(0x315);
+    } else {
+        API_Func_8010704(0x11, 1, 1, 1, 0x18, 0x24);
+        API_SetFlag(0x316);
+    }
+}
 
 extern unsigned int iwram_3001e40;
 

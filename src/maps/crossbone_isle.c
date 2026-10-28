@@ -538,7 +538,36 @@ void *CrossboneIsle_GetActors(void)
     return gOvl_0200b5f8;
 }
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008da4.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008e00.s");
+extern void OvlFunc_946_2008da4();
+extern int __cos(int);
+extern int __sin(int);
+void OvlFunc_946_2008e00(unsigned int actorId)
+{
+    extern void OvlFunc_946_2008ae8(int, int, int, int, int, int, int, void *);
+    extern int _divsi3_RAM(int, int);
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    data[9] = (int)OvlFunc_946_2008da4;
+
+    for (i = 0; i <= 16; i += 2) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, data);
+    }
+}
 
 void OvlFunc_946_2008e88(void)
 {
@@ -821,8 +850,34 @@ void OvlFunc_946_2009740(void) {
 }
 
 INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009774.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200985c.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20098b0.s");
+void OvlFunc_946_200985c(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    unsigned char *actor = __MapActor_GetActor(id);
+
+    if (actor != 0) {
+        API_Func_8092b08(id, 3);
+        ((struct Actor *)actor)->flags |= 2;
+        {
+            int x = *(int *)(actor + 8) >> 20;
+            int z = *(int *)(actor + 0x10) >> 20;
+            __Func_8010704(a1, a2, 3, 1, x - 1, z);
+        }
+    }
+}
+void OvlFunc_946_20098b0(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
+{
+    unsigned char *actor = __MapActor_GetActor(id);
+
+    if (actor != 0) {
+        API_Func_8092b08(id, 3);
+        ((struct Actor *)actor)->flags |= 2;
+        {
+            int x = *(int *)(actor + 8) >> 20;
+            int z = *(int *)(actor + 0x10) >> 20;
+            __Func_8010704(a1, a2, 1, 3, x, z - 1);
+        }
+    }
+}
 
 void OvlFunc_946_2009904(unsigned int arg0)
 {
@@ -1026,8 +1081,73 @@ int OvlFunc_946_2009b94(void) {
     return OvlFunc_946_2009a44(r0, buf);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009bbc.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009c84.s");
+void OvlFunc_946_2009bbc(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern int OvlFunc_946_2009b14(void);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(8) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(8) + 0x10) >> 20;
+    int cx = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
+    int fx = *(int *)(__MapActor_GetActor(0xf) + 8) >> 20;
+
+    if (z == 0x13) {
+        if (cx == 0x18) {
+            OvlFunc_946_2009774(8, 0, -0x50);
+        } else if (fx == 0x18) {
+            OvlFunc_946_2009774(8, 0, -0x70);
+            OvlFunc_946_2009774(8, 0, -0x20);
+        } else {
+            OvlFunc_946_2009774(8, 0, -0x50);
+            OvlFunc_946_2009774(8, 0, -0x70);
+        }
+    } else if (z == 0xe) {
+        if (cx == 0x18)
+            return;
+        if (fx == 0x18)
+            OvlFunc_946_2009774(8, 0, -0x40);
+        else
+            OvlFunc_946_2009774(8, 0, -0x70);
+    } else if (z == 0xa) {
+        if (fx == 0x18)
+            return;
+        OvlFunc_946_2009774(8, 0, -0x30);
+    } else {
+        OvlFunc_946_2009b14();
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(8) + 0x10) >> 20);
+    __Func_8010704(0, 0, 3, 1, x - 1, z);
+}
+void OvlFunc_946_2009c84(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(8) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(8) + 0x10) >> 20;
+    int ox = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
+
+    if (z == 7) {
+        if (ox == 0x18) {
+            OvlFunc_946_2009774(8, 0, 0x30);
+        } else {
+            OvlFunc_946_2009774(8, 0, 0x50);
+            OvlFunc_946_2009774(8, 0, 0x70);
+        }
+    } else if (z == 0xa) {
+        if (ox == 0x18)
+            return;
+        OvlFunc_946_2009774(8, 0, 0x90);
+    } else if (z == 0xe) {
+        OvlFunc_946_2009774(8, 0, 0x50);
+    } else {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(8) + 0x10) >> 20);
+    __Func_8010704(0, 0, 3, 1, x - 1, z);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1067,7 +1187,26 @@ void OvlFunc_946_2009d2c(void)
     __Func_8010704(x, z10, 3, 1, x, ((struct Actor *)__MapActor_GetActor(10))->pos.z >> 20);
     __Func_8010704(0, 0, 3, 1, x, z10);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009de0.s");
+void OvlFunc_946_2009de0(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0xa) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20;
+
+    if (z == 0x12)
+        return;
+    if (z == 0xa) {
+        OvlFunc_946_2009774(0xa, 0, 0x80);
+    } else {
+        OvlFunc_946_2009774(0xa, 0, 0x70);
+        OvlFunc_946_2009774(0xa, 0, 0x40);
+    }
+    __WaitFrames__k(2);
+    x--;
+    __Func_8010704(x, z, 3, 1, x, *(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20);
+    __Func_8010704(0, 0, 3, 1, x, z);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1101,7 +1240,26 @@ void OvlFunc_946_2009e5c(void)
     __Func_8010704(x, z, 1, 3, ((struct Actor *)__MapActor_GetActor(0xb))->pos.x >> 20, z);
     __Func_8010704(0, 0, 1, 3, x, z);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009ef4.s");
+void OvlFunc_946_2009ef4(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0xb) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0xb) + 0x10) >> 20;
+
+    if (x == 0x24)
+        return;
+    if (x == 0x1e) {
+        if (*(int *)(__MapActor_GetActor(0xa) + 0x10) >> 20 == 0x12)
+            return;
+        OvlFunc_946_2009774(0xb, 0x60, 0);
+    } else if (x == 0x22) {
+        OvlFunc_946_2009774(0xb, 0x20, 0);
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xb) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1125,7 +1283,26 @@ void OvlFunc_946_2009f78(void)
     __Func_8010704(x, z - 1, 1, 3, ((struct Actor *)__MapActor_GetActor(0xc))->pos.x >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a004.s");
+void OvlFunc_946_200a004(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0xc) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0xc) + 0x10) >> 20;
+
+    if (x == 0x18) {
+        OvlFunc_946_2009774(0xc, 0x60, 0);
+        OvlFunc_946_2009774(0xc, 0x60, 0);
+    } else if (x == 0x22) {
+        OvlFunc_946_2009774(0xc, 0x20, 0);
+    } else if (x == 0x24) {
+        return;
+    }
+    __WaitFrames__k(2);
+    z--;
+    __Func_8010704(x, z, 1, 3, *(int *)(__MapActor_GetActor(0xc) + 8) >> 20, z);
+    __Func_8010704(0, 0, 1, 3, x, z);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1190,7 +1367,30 @@ void OvlFunc_946_200a080(void)
     __Func_8010704(x13, z, 1, 3, new_x, z);
     __Func_8010704(0, 0, 1, 3, x13, z);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a16c.s");
+void OvlFunc_946_200a16c(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0xd) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0xd) + 0x10) >> 20;
+
+    __MapActor_GetActor(0xf);
+    if (x == 0x19) {
+        OvlFunc_946_2009774(0xd, 0x60, 0);
+        OvlFunc_946_2009774(0xd, 0x50, 0);
+    } else if (x == 0x1f) {
+        OvlFunc_946_2009774(0xd, 0x50, 0);
+    } else if (x == 0x22) {
+        OvlFunc_946_2009774(0xd, 0x20, 0);
+    } else if (x == 0x23) {
+        OvlFunc_946_2009774(0xd, 0x10, 0);
+    } else if (x == 0x24) {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xd) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 
 void OvlFunc_946_200a200(void)
@@ -1293,9 +1493,124 @@ void OvlFunc_946_200a2c8(void)
     __Func_8010704(x15, r5, 1, 3, new_x, r5);
     __Func_8010704(0, 0, 1, 3, x15, r5);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a3c4.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a450.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a4c8.s");
+void OvlFunc_946_200a3c4(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0x11) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20;
+    int ox = *(int *)(__MapActor_GetActor(0x13) + 8) >> 20;
+
+    if (z == 0x13) {
+        if ((unsigned int)(ox - 3) <= 2)
+            OvlFunc_946_2009774(0x11, 0, -0x10);
+        else
+            OvlFunc_946_2009774(0x11, 0, -0x40);
+    } else if (z == 0x12) {
+        if ((unsigned int)(ox - 3) <= 2)
+            return;
+        OvlFunc_946_2009774(0x11, 0, -0x30);
+    } else if (z == 0xf) {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20);
+    __Func_8010704(0, 0, 3, 1, x - 1, z);
+}
+void OvlFunc_946_200a450(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0x11) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20;
+
+    if (z == 0xf) {
+        OvlFunc_946_2009774(0x11, 0, 0x40);
+    } else if (z == 0x12) {
+        OvlFunc_946_2009774(0x11, 0, 0x10);
+    } else if (z == 0x13) {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x - 1, z, 3, 1, x - 1, *(int *)(__MapActor_GetActor(0x11) + 0x10) >> 20);
+    __Func_8010704(0, 0, 3, 1, x - 1, z);
+}
+void OvlFunc_946_200a4c8(void)
+{
+    struct Actor *actor;
+    int x18;
+    int z18;
+    int x19;
+    int x14;
+    int x16;
+    int x;
+
+    x18 = ((struct Actor *)__MapActor_GetActor(18))->pos.x >> 20;
+    z18 = ((struct Actor *)__MapActor_GetActor(18))->pos.z >> 20;
+    x19 = ((struct Actor *)__MapActor_GetActor(19))->pos.x >> 20;
+    x14 = ((struct Actor *)__MapActor_GetActor(14))->pos.x >> 20;
+    x16 = ((struct Actor *)__MapActor_GetActor(16))->pos.x >> 20;
+
+    if (z18 == 19) {
+        if ((u32)(x19 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x10);
+        } else if ((u32)(x14 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x40);
+        } else if ((u32)(x16 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x70);
+        } else {
+            OvlFunc_946_2009774(18, 0, -0x40);
+            OvlFunc_946_2009774(18, 0, -0x60);
+        }
+    } else if (z18 == 18) {
+        if ((u32)(x19 - 6) <= 2) {
+            return;
+        }
+        if ((u32)(x14 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x30);
+        } else if ((u32)(x16 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x60);
+        } else {
+            OvlFunc_946_2009774(18, 0, -0x90);
+        }
+    } else if (z18 == 15) {
+        if ((u32)(x14 - 6) <= 2) {
+            return;
+        }
+        if ((u32)(x16 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x30);
+        } else {
+            OvlFunc_946_2009774(18, 0, -0x60);
+        }
+    } else if (z18 == 14) {
+        if ((u32)(x14 - 6) <= 2) {
+            return;
+        }
+        if ((u32)(x16 - 6) <= 2) {
+            OvlFunc_946_2009774(18, 0, -0x20);
+        } else {
+            OvlFunc_946_2009774(18, 0, -0x50);
+        }
+    } else if (z18 == 12) {
+        if ((u32)(x16 - 6) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(18, 0, -0x30);
+    } else if (z18 == 11) {
+        if ((u32)(x16 - 6) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(18, 0, -0x20);
+    } else if (z18 == 9) {
+        return;
+    }
+
+    API_WaitFrames(2);
+    actor = (struct Actor *)__MapActor_GetActor(18);
+    x = x18 - 1;
+    API_Func_8010704(x, z18, 3, 1, x, actor->pos.z >> 20);
+    API_Func_8010704(0, 0, 3, 1, x, z18);
+}
 void OvlFunc_946_200a5f0(void)
 {
     int actor18_x;
@@ -1353,10 +1668,252 @@ void OvlFunc_946_200a5f0(void)
     __Func_8010704(x_sub, actor18_z, 3, 1, x_sub, new_z);
     __Func_8010704(0, 0, 3, 1, x_sub, actor18_z);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a700.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a848.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200a984.s");
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200aa98.s");
+void OvlFunc_946_200a700(void)
+{
+    int x9 = ((struct Actor *)__MapActor_GetActor(9))->pos.x >> 20;
+    int z9 = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
+    int x19 = ((struct Actor *)__MapActor_GetActor(19))->pos.x >> 20;
+    int x14 = ((struct Actor *)__MapActor_GetActor(14))->pos.x >> 20;
+    int x16 = ((struct Actor *)__MapActor_GetActor(16))->pos.x >> 20;
+    int x;
+    int z;
+
+    if (z9 == 19) {
+        if ((u32)(x19 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x10);
+        } else if ((u32)(x14 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x40);
+        } else if ((u32)(x16 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x70);
+        } else {
+            OvlFunc_946_2009774(9, 0, -0x50);
+            OvlFunc_946_2009774(9, 0, -0x60);
+        }
+    } else if (z9 == 18) {
+        if ((u32)(x19 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x14 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x30);
+        } else if ((u32)(x16 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x60);
+        } else {
+            OvlFunc_946_2009774(9, 0, -0x60);
+            OvlFunc_946_2009774(9, 0, -0x40);
+        }
+    } else if (z9 == 15) {
+        if ((u32)(x14 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x16 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x30);
+        } else {
+            OvlFunc_946_2009774(9, 0, -0x70);
+        }
+    } else if (z9 == 14) {
+        if ((u32)(x14 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x16 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, -0x20);
+        } else {
+            OvlFunc_946_2009774(9, 0, -0x60);
+        }
+    } else if (z9 == 12) {
+        if ((u32)(x16 - 9) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(9, 0, -0x40);
+    } else if (z9 == 11) {
+        if ((u32)(x16 - 9) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(9, 0, -0x30);
+    } else if ((u32)z9 <= 9) {
+        return;
+    }
+
+    __WaitFrames(2);
+    x = x9 - 1;
+    z = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
+    __Func_8010704(x, z9, 3, 1, x, z);
+    __Func_8010704(0, 0, 3, 1, x, z9);
+}
+void OvlFunc_946_200a848(void)
+{
+    int x9 = ((struct Actor *)__MapActor_GetActor(9))->pos.x >> 20;
+    int z9 = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
+    int x19 = ((struct Actor *)__MapActor_GetActor(19))->pos.x >> 20;
+    int x14 = ((struct Actor *)__MapActor_GetActor(14))->pos.x >> 20;
+    int x16 = ((struct Actor *)__MapActor_GetActor(16))->pos.x >> 20;
+    int x;
+    int z;
+
+    if (z9 == 8) {
+        if ((u32)(x16 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x14 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, 0x30);
+        } else {
+            if ((u32)(x19 - 9) > 2) {
+                OvlFunc_946_2009774(9, 0, 0x50);
+            }
+            OvlFunc_946_2009774(9, 0, 0x60);
+        }
+    } else if (z9 == 11) {
+        if ((u32)(x14 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x19 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, 0x30);
+        } else {
+            OvlFunc_946_2009774(9, 0, 0x80);
+        }
+    } else if (z9 == 12) {
+        if ((u32)(x14 - 9) <= 2) {
+            return;
+        }
+        if ((u32)(x19 - 9) <= 2) {
+            OvlFunc_946_2009774(9, 0, 0x20);
+        } else {
+            OvlFunc_946_2009774(9, 0, 0x70);
+        }
+    } else if (z9 == 14) {
+        if ((u32)(x19 - 9) <= 2) {
+            return;
+        }
+        OvlFunc_946_2009774(9, 0, 0x50);
+    } else if (z9 == 15) {
+        OvlFunc_946_2009774(9, 0, 0x40);
+    } else if (z9 == 18) {
+        OvlFunc_946_2009774(9, 0, 0x10);
+    }
+
+    __WaitFrames(2);
+    x = x9 - 1;
+    z = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
+    __Func_8010704(x, z9, 3, 1, x, z);
+    __Func_8010704(0, 0, 3, 1, x, z9);
+}
+void OvlFunc_946_200a984(void)
+{
+    int x19;
+    int z19;
+    int z17;
+    int z18;
+    int z9;
+    int z_sub;
+    int new_x;
+
+    x19 = ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20;
+    z19 = ((struct Actor *)__MapActor_GetActor(0x13))->pos.z >> 20;
+    z17 = ((struct Actor *)__MapActor_GetActor(0x11))->pos.z >> 20;
+    z18 = ((struct Actor *)__MapActor_GetActor(0x12))->pos.z >> 20;
+    z9 = ((struct Actor *)__MapActor_GetActor(9))->pos.z >> 20;
+
+    if (x19 == 3) {
+        return;
+    }
+
+    if (x19 == 13) {
+        if (z9 == 15) {
+            OvlFunc_946_2009774(0x13, -0x10, 0);
+        } else if (z18 == 15) {
+            OvlFunc_946_2009774(0x13, -0x40, 0);
+        } else if (z17 == 15) {
+            OvlFunc_946_2009774(0x13, -0x70, 0);
+        } else {
+            OvlFunc_946_2009774(0x13, -0x70, 0);
+            OvlFunc_946_2009774(0x13, -0x30, 0);
+        }
+    } else if (x19 == 6) {
+        if (z17 == 15) {
+            return;
+        }
+        OvlFunc_946_2009774(0x13, -0x30, 0);
+    } else if (x19 == 5) {
+        OvlFunc_946_2009774(0x13, -0x20, 0);
+    } else if (x19 == 8) {
+        if (z18 == 15) {
+            return;
+        }
+        if (z17 == 15) {
+            OvlFunc_946_2009774(0x13, -0x20, 0);
+        } else {
+            OvlFunc_946_2009774(0x13, -0x50, 0);
+        }
+    } else if (x19 == 9) {
+        if (z18 == 15) {
+            return;
+        }
+        if (z17 == 15) {
+            OvlFunc_946_2009774(0x13, -0x30, 0);
+        } else {
+            OvlFunc_946_2009774(0x13, -0x60, 0);
+        }
+    } else if (x19 == 12) {
+        if (z9 == 15) {
+            return;
+        }
+        if (z18 == 15) {
+            OvlFunc_946_2009774(0x13, -0x30, 0);
+        } else if (z17 == 15) {
+            OvlFunc_946_2009774(0x13, -0x60, 0);
+        } else {
+            OvlFunc_946_2009774(0x13, -0x90, 0);
+        }
+    }
+
+    __WaitFrames(2);
+    new_x = ((struct Actor *)__MapActor_GetActor(0x13))->pos.x >> 20;
+    z_sub = z19 - 1;
+    __Func_8010704(x19, z_sub, 1, 3, new_x, z_sub);
+    __Func_8010704(0, 0, 1, 3, x19, z_sub);
+}
+void OvlFunc_946_200aa98(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0x13) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0x13) + 0x10) >> 20;
+    int az = *(int *)(__MapActor_GetActor(0x12) + 0x10) >> 20;
+    int bz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+
+    if (x == 3) {
+        if (az == 0xf) {
+            OvlFunc_946_2009774(0x13, 0x20, 0);
+        } else if (bz == 0xf) {
+            OvlFunc_946_2009774(0x13, 0x50, 0);
+        } else {
+            OvlFunc_946_2009774(0x13, 0x70, 0);
+            OvlFunc_946_2009774(0x13, 0x30, 0);
+        }
+    } else if (x == 5) {
+        if (az == 0xf)
+            return;
+        if (bz == 0xf)
+            OvlFunc_946_2009774(0x13, 0x30, 0);
+        else
+            OvlFunc_946_2009774(0x13, 0x80, 0);
+    } else if (x == 6) {
+        if (bz == 0xf)
+            OvlFunc_946_2009774(0x13, 0x20, 0);
+        else
+            OvlFunc_946_2009774(0x13, 0x70, 0);
+    } else if (x == 8) {
+        if (bz == 0xf)
+            return;
+        OvlFunc_946_2009774(0x13, 0x50, 0);
+    } else if (x == 9) {
+        OvlFunc_946_2009774(0x13, 0x40, 0);
+    } else if (x == 0xc) {
+        OvlFunc_946_2009774(0x13, 0x10, 0);
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0x13) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1407,7 +1964,39 @@ void OvlFunc_946_200ab80(void)
     __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xe) + 8) >> 20, z - 1);
     __Func_8010704(0, 0, 1, 3, x, z - 1);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200ac4c.s");
+void OvlFunc_946_200ac4c(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0xe) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0xe) + 0x10) >> 20;
+    int az = *(int *)(__MapActor_GetActor(0x12) + 0x10) >> 20;
+    int bz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+
+    if (x == 6) {
+        if ((unsigned int)(bz - 0xc) <= 2)
+            OvlFunc_946_2009774(0xe, 0x20, 0);
+        else if ((unsigned int)(az - 0xc) <= 2)
+            OvlFunc_946_2009774(0xe, 0x40, 0);
+        else
+            OvlFunc_946_2009774(0xe, 0x70, 0);
+    } else if (x == 8) {
+        if ((unsigned int)(bz - 0xc) <= 2)
+            return;
+        OvlFunc_946_2009774(0xe, 0x50, 0);
+    } else if (x == 9) {
+        if ((unsigned int)(bz - 0xc) <= 2)
+            return;
+        OvlFunc_946_2009774(0xe, 0x40, 0);
+    } else if (x == 0xc) {
+        OvlFunc_946_2009774(0xe, 0x10, 0);
+    } else if (x == 0xd) {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0xe) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 extern void OvlFunc_946_2009774(int, int, int);
 extern void __WaitFrames(int);
 
@@ -1465,7 +2054,34 @@ void OvlFunc_946_200ad0c(void)
     __Func_8010704(x16, z, 1, 3, ((struct Actor *)__MapActor_GetActor(0x10))->pos.x >> 20, z);
     __Func_8010704(0, 0, 1, 3, x16, z);
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_200add0.s");
+void OvlFunc_946_200add0(void)
+{
+    extern void OvlFunc_946_2009774(int, int, int);
+    extern void __WaitFrames__k(int) __asm__("__WaitFrames");
+    int x = *(int *)(__MapActor_GetActor(0x10) + 8) >> 20;
+    int z = *(int *)(__MapActor_GetActor(0x10) + 0x10) >> 20;
+    int oz = *(int *)(__MapActor_GetActor(9) + 0x10) >> 20;
+
+    if (x == 6) {
+        if ((unsigned int)(oz - 9) <= 2)
+            OvlFunc_946_2009774(0x10, 0x20, 0);
+        else
+            OvlFunc_946_2009774(0x10, 0x70, 0);
+    } else if (x == 8) {
+        if ((unsigned int)(oz - 9) <= 2)
+            return;
+        OvlFunc_946_2009774(0x10, 0x50, 0);
+    } else if (x == 9) {
+        OvlFunc_946_2009774(0x10, 0x40, 0);
+    } else if (x == 0xc) {
+        OvlFunc_946_2009774(0x10, 0x10, 0);
+    } else if (x == 0xd) {
+        return;
+    }
+    __WaitFrames__k(2);
+    __Func_8010704(x, z - 1, 1, 3, *(int *)(__MapActor_GetActor(0x10) + 8) >> 20, z - 1);
+    __Func_8010704(0, 0, 1, 3, x, z - 1);
+}
 
 int OvlFunc_946_200ae70(int *actor)
 {

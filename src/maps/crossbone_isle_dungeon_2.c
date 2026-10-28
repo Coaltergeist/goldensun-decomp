@@ -533,7 +533,32 @@ struct ActorInfo_947 {
     int unk14;
 };
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008ec8.s");
+int OvlFunc_947_2008ec8(int actor_id)
+{
+    extern void __Actor_SetAnim(void *, int);
+    unsigned char *actor;
+    int camz;
+    int v;
+    int camx;
+    unsigned int h;
+    unsigned int w;
+    struct ActorInfo_947 info;
+
+    actor = __MapActor_GetActor(actor_id);
+    if (OvlFunc_947_2008ddc(actor_id, (int *)&w, (int *)&h, (int *)&info, &camx, &camz) == 0)
+        return 0;
+
+    API_Func_8010704(2, 2, w, h, info.x, info.z);
+    __Actor_SetAnim(actor, 4);
+    v = 2 | actor[0x23];
+    actor[0x23] = v;
+
+    if (w > h)
+        API_CopyMapTiles(0x46, 0x28, info.x + 0x20, info.z + 2, w, h);
+    else
+        API_CopyMapTiles(0x44, 0x28, info.x + 0x20, info.z + 2, w, h);
+    return 1;
+}
 
 
 int OvlFunc_947_2008f58(int actor_id)
@@ -673,7 +698,55 @@ void OvlFunc_947_20091c4(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009268.s");
+int OvlFunc_947_2009268(void)
+{
+    extern unsigned char gState_b947[] __asm__("gState");
+    extern void __vec3_translate(int dist, int angle, int *vec);
+    extern void __Actor_SetSpriteFlags(void *, int);
+    struct Actor *actor;
+    u8 *p55;
+    u8 saved;
+    int ang;
+    int buf[3];
+    int *v;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    p55 = &actor->__unk55;
+    saved = *p55;
+    ang = (actor->facing + 0x2000) & 0xc000;
+    if (gState_b947[0x1f2] != 0)
+        return 0;
+    v = buf;
+    v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    v[1] = actor->pos.y;
+    v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    __vec3_translate(0x80 << 13, ang, v);
+    if (__TestCollision(actor, v) != 1 && OvlFunc_947_2008350(v, actor) == 0) {
+        v[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+        v[1] = actor->pos.y;
+        v[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+        __vec3_translate(0x80 << 14, ang, v);
+        if (OvlFunc_947_2008350(v, actor) == 0 && __TestCollision(actor, v) == 0) {
+            __CutsceneStart();
+            __Actor_SetAnim(actor, 6);
+            __WaitFrames(6);
+            __PlaySound(0x98);
+            __Actor_SetAnim(actor, 7);
+            actor->speed = 0xc0 << 10;
+            actor->accel = 0x80 << 10;
+            actor->motion.y = 0x80 << 11;
+            *p55 &= 0x7e;
+            __Actor_SetSpriteFlags(actor, 0);
+            __MapActor_TravelToWait(0, ((short *)v)[1], ((short *)v)[5]);
+            __Actor_SetAnim(actor, 6);
+            __Actor_SetSpriteFlags(actor, 1);
+            *p55 = saved;
+            __CutsceneEnd();
+            return 1;
+        }
+    }
+    return 0;
+}
 
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20093b0.s");
 
@@ -959,7 +1032,19 @@ extern int OvlFunc_947_2009268(void);
 extern void OvlFunc_947_20083a8(void);
 extern void OvlFunc_947_2009d84(void);
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009fd4.s");
+void OvlFunc_947_2009fd4(void)
+{
+    API_CutsceneStart();
+    if (OvlFunc_947_2009268() == 0) {
+        ((struct Actor947 *)__MapActor_GetActor(0))->f55 &= 0xfe;
+        ((struct Actor947 *)__MapActor_GetActor(0))->f23 &= 0xfe;
+        OvlFunc_947_20083a8();
+        OvlFunc_947_2009d84();
+        ((struct Actor947 *)__MapActor_GetActor(0))->f55 |= 1;
+        ((struct Actor947 *)__MapActor_GetActor(0))->f23 |= 1;
+    }
+    API_CutsceneEnd();
+}
 
 
 

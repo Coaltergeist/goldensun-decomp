@@ -1038,8 +1038,43 @@ unsigned char *OvlFunc_899_200c704(vec3_t *pos)
     return result;
 }
 INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c754.s");
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7bc.s");
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c7fc.s");
+extern struct Actor *__GetFieldActor(int);
+unsigned int OvlFunc_899_200c7bc(unsigned int x, unsigned int z, unsigned int id)
+{
+    struct Actor *a = __GetFieldActor(id);
+    int ax = a->prevPos.x;
+    int az;
+    int dx, dz;
+
+    if (ax == (int)0x80000000)
+        ax = a->pos.x;
+    az = a->prevPos.z;
+    if (az == (int)0x80000000)
+        az = a->pos.z;
+    ax = (int)(ax - x) >> 16;
+    az = (int)(az - z) >> 16;
+    if (ax * ax + az * az <= 0x40)
+        return 1;
+    return 0;
+}
+unsigned int OvlFunc_899_200c7fc(int x, int z, int id)
+{
+    struct Actor *a = __GetFieldActor(id);
+    int ax = a->prevPos.x;
+    int az;
+    int dx, dz;
+
+    if (ax == (int)0x80000000)
+        ax = a->pos.x;
+    az = a->prevPos.z;
+    if (az == (int)0x80000000)
+        az = a->pos.z;
+    ax = (int)(ax - x) >> 16;
+    az = (int)(az - z) >> 16;
+    if (ax * ax + az * az <= 0x100)
+        return 1;
+    return 0;
+}
 extern unsigned int OvlFunc_899_200c7fc(int, int, int);
 extern unsigned int OvlFunc_899_200c7bc(unsigned int, unsigned int, unsigned int);
 

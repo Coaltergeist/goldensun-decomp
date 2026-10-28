@@ -51,7 +51,20 @@ extern void OvlFunc_956_200804c(void);
 void OvlFunc_956_20081b4(void) {
     __StartTask(OvlFunc_956_200804c, 0xc8 << 4);
 }
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20081c8.s");
+void OvlFunc_956_20081c8(void)
+{
+    extern int V5480 __asm__(".Lm956_5480");
+    extern int V5484 __asm__(".Lm956_5484");
+    int i;
+
+    __WaitFrames(10);
+    i = 0;
+    while (V5480 != 3 || V5484 != 1) {
+        __WaitFrames(1);
+        i++;
+        if (i >= 0x78) return;
+    }
+}
 void OvlFunc_956_2008204(void)
 {
     extern unsigned char gState[];

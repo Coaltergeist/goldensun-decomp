@@ -513,7 +513,39 @@ void OvlFunc_927_2008cc0(void) {
     __Func_8091f14(0x12, 2);
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008cd0.s");
+extern void __Actor_SetAnim(void *, int);
+extern void __WaitFrames(int);
+extern void __PlaySound(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __MapActor_TravelToWait(int, int, int);
+
+void *OvlFunc_927_2008cd0(unsigned int *arr)
+{
+    struct Actor *actor;
+    u8 saved;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    saved = actor->__unk55;
+    if (!__TestCollision(actor, (int *)arr)) {
+        __CutsceneStart();
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(6);
+        __PlaySound(0x98);
+        __Actor_SetAnim(actor, 7);
+        actor->speed = 0xc0 << 10;
+        actor->accel = 0x80 << 10;
+        actor->motion.y = 0x80 << 11;
+        actor->__unk55 &= 0x7e;
+        __Actor_SetSpriteFlags(actor, 0);
+        __MapActor_TravelToWait(0, ((short *)arr)[1], ((short *)arr)[5]);
+        __Actor_SetAnim(actor, 6);
+        __Actor_SetSpriteFlags(actor, 1);
+        actor->__unk55 = saved;
+        __CutsceneEnd();
+        return (void *)1;
+    }
+    return 0;
+}
 
 extern void __Func_80929d8(int a, int b);
 
@@ -558,7 +590,36 @@ void OvlFunc_927_2008d90(int arg0, int arg1, int arg2, int arg3) {
     __Actor_SetSpriteFlags(actor, 1);
     actor->gravity = 0x10000;
 }
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_2008e18.s");
+extern int __cos(int);
+extern int __sin(int);
+void OvlFunc_927_2008e18(unsigned int actorId)
+{
+    extern void OvlFunc_927_2008ae8(int, int, int, int, int, int, int, void *);
+    extern int _divsi3_RAM(int, int);
+    int vel[3];
+    int data[10];
+    struct Actor *actor;
+    unsigned int i;
+
+    actor = (struct Actor *)__MapActor_GetActor(actorId);
+    __PlaySound(0xbc);
+    data[0] = 1;
+
+    for (i = 0; i <= 16; i++) {
+        int angle = i << 12;
+        int c;
+        int s;
+
+        vel[0] = __cos(angle);
+        vel[1] = 0;
+        s = __sin(angle);
+        c = vel[0];
+        vel[2] = s;
+        vel[0] = c + _divsi3_RAM(c, 3);
+
+        OvlFunc_927_2008ae8(actor->pos.x, 0x100000, actor->pos.z, vel[0], vel[1] + 0x1999, s, 0x20000, data);
+    }
+}
 
 extern void OvlFunc_927_2008e18(unsigned int arg0);
 

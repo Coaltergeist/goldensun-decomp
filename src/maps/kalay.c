@@ -15,8 +15,42 @@ void OvlFunc_936_2008030(void) {
     __Func_80955b0(12, 2, 3);
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_2008040.s");
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20080ac.s");
+extern unsigned int __Random__936() __asm__("__Random");
+int OvlFunc_936_2008040(struct Actor *a)
+{
+    extern void __Actor_SetAnim(void *, int);
+
+    if (a->__unk66 == 0) {
+        switch ((__Random__936() << 3) >> 16) {
+        case 0:
+            __Actor_SetAnim(a, 3);
+            break;
+        case 1:
+            __Actor_SetAnim(a, 4);
+            break;
+        case 3:
+        case 4:
+            a->facing += (__Random__936() << 15) >> 16;
+            break;
+        }
+        a->__unk66 = (__Random__936() * 80) >> 16;
+    }
+    if (a->__unk66 != 0)
+        a->__unk66--;
+    return 1;
+}
+int OvlFunc_936_20080ac(unsigned char *a)
+{
+    short *t = (short *)(a + 0x66);
+
+    if (*t == 0) {
+        *(unsigned short *)(a + 6) += (__Random__936() << 15) >> 16;
+        *t = (__Random__936() * 80) >> 16;
+    }
+    if (*t != 0)
+        (*t)--;
+    return 1;
+}
 
 #include "state/global_state.h"
 
@@ -136,7 +170,43 @@ void OvlFunc_936_20082c8(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20082e8.s");
+extern void *__MapActor_GetActor(int);
+
+
+
+
+
+
+
+
+
+extern unsigned int iwram_3001ebc;
+
+void OvlFunc_936_20082e8(void)
+{
+    unsigned char *p;
+    unsigned int v;
+
+    p = (unsigned char *)__MapActor_GetActor(0);
+    v = (*(unsigned short *)(p + 6) + 0xfffff000) << 16;
+    if (v > (0x60 << 24)) {
+        API_CutsceneStart();
+        API_MapActor_TurnToFaceActor(0, 8, 0);
+        API_CutsceneWait(10);
+        API_MessageID(0x2584);
+        API_ShowActorMessage_NoWait(8, 0);
+        if (API_Func_8091c7c(0, 0) == 0) {
+            API_MapActor_DoAnim(8, 4);
+            API_ActorMessage(8, 0);
+        } else {
+            unsigned short *p2 = (unsigned short *)(iwram_3001ebc + (0xec << 1));
+            *p2 += 1;
+            API_MapActor_DoAnim(8, 3);
+            API_ActorMessage(8, 0);
+        }
+        API_CutsceneEnd();
+    }
+}
 
 void OvlFunc_936_2008374(void) {
     __CutsceneStart();
@@ -339,7 +409,39 @@ void OvlFunc_936_2009610(void)
   __Func_8091a58(0xb5, 0);
 }
 
-INCLUDE_ASM("asm/maps/kalay/Kalay_MapInit.s");
+extern unsigned char Lconst_63[] __asm__(".Lconst_63");
+extern unsigned char Lconst_66[] __asm__(".Lconst_66");
+extern unsigned char Lconst_99[] __asm__(".Lconst_99");
+extern unsigned char Lconst_9b[] __asm__(".Lconst_9b");
+extern unsigned char Lconst_9c[] __asm__(".Lconst_9c");
+/* pooled literal (ldr rN, =0x63, =0x66, =0x99, =0x9b, =0x9c in the original); .Lconst_<hex> naming as upstream map TUs, e.g. alpine_crossing.c */
+__asm__(".equ .Lconst_63, 0x63\n.equ .Lconst_66, 0x66\n.equ .Lconst_99, 0x99\n.equ .Lconst_9b, 0x9b\n.equ .Lconst_9c, 0x9c");
+int Kalay_MapInit(void)
+{
+    extern void OvlFunc_936_20096bc(void);
+    extern void OvlFunc_936_20097e8(void);
+    extern void OvlFunc_936_2009858(void);
+    extern void OvlFunc_936_20098a4(void);
+    extern void OvlFunc_936_2009930(void);
+    int room;
+
+    API_SetFlag(0x87a);
+    {
+        extern short gState_s936[] __asm__("gState");
+        room = gState_s936[0xe0];
+    }
+    if (room == (int)Lconst_63)
+        OvlFunc_936_20096bc();
+    else if (room == (int)Lconst_66)
+        OvlFunc_936_20097e8();
+    else if (room == (int)Lconst_99)
+        OvlFunc_936_2009858();
+    else if (room == (int)Lconst_9b)
+        OvlFunc_936_20098a4();
+    else if (room == (int)Lconst_9c)
+        OvlFunc_936_2009930();
+    return 0;
+}
 INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
 
 void OvlFunc_936_20097e8(void) {
@@ -686,7 +788,28 @@ void OvlFunc_936_200b2a4(void)
         }
     }
 }
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b6f8.s");
+void OvlFunc_936_200b6f8(struct Actor *actor)
+{
+    extern void __DeleteActor(int);
+
+    if (actor->waveCounter == 0) {
+        __DeleteActor((int)actor);
+    } else if (actor->waveCounter == 1) {
+        actor->motion.x = 0;
+        actor->motion.y = 0;
+        actor->pos.x = 0;
+        actor->pos.y = 0;
+    } else {
+        actor->scale.x += 0x800;
+        actor->scale.y += 0x800;
+    }
+
+    actor->pos.x += actor->motion.x;
+    actor->pos.y += actor->motion.y;
+    actor->motion.x -= actor->motion.x / 256;
+    actor->motion.y -= actor->motion.y / 16;
+    actor->waveCounter--;
+}
 extern unsigned int iwram_3001e40;
 extern void __Func_8091ff0(int);
 extern void OvlFunc_936_200b864(int, int, int);

@@ -460,7 +460,32 @@ int OvlFunc_923_2008d58(char *arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008d98.s");
+extern int Lm923_291c __asm__(".Lm923_291c");
+extern int Lm923_2924 __asm__(".Lm923_2924");
+extern int gOvl_0200a920;
+extern unsigned int iwram_3001e40;
+void OvlFunc_923_2008d98(void)
+{
+    extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+    extern int _divsi3_RAM(int, int);
+    volatile unsigned short c = 0;
+    unsigned int i;
+    int v, hi;
+
+    if (_umodsi3_RAM(iwram_3001e40, 5) == 0) {
+        Lm923_291c = (Lm923_291c + 4) & 0x1f;
+        for (i = 0; i <= 5; i++) {
+            c = ((unsigned short *)0x5000000)[0x6e - i] & 0x1f;
+            v = c;
+            if (i <= 2)
+                v -= _divsi3_RAM(v * 4, 10);
+            { unsigned short *d = &((unsigned short *)0x5000000)[0x6f - i];
+            hi = (Lm923_2924 << 10) | (gOvl_0200a920 << 5);
+            *d = v | hi; }
+        }
+        *(unsigned short *)0x50000d2 = Lm923_291c | hi;
+    }
+}
 
 void OvlFunc_923_2008e3c(void)
 {
