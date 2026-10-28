@@ -6,44 +6,49 @@ extern const int Lm918_1f00[] __asm__(".Lm918_1f00");
 
 extern int __Random(void);
 
+extern int _divsi3_RAM(int, int);
+struct CS918P_Field { unsigned char pad[0x17e]; short transition; };
+struct CS918P_Context { struct CS918P_Field *field; void *other[4]; unsigned short *palette; };
+extern struct CS918P_Context CS918P_Context __asm__("iwram_3001ebc");
+static inline int CS918P_Divide(int a, int b) { return _divsi3_RAM(a, b); }
 void OvlFunc_918_2009244(void) {
-    unsigned short *src = iwram_3001ebc[5];
-    unsigned short *dst;
+    struct CS918P_Field *field = CS918P_Context.field;
+    unsigned short *src = CS918P_Context.palette;
+    volatile unsigned short *dst;
     unsigned int i;
-    int idx;
 
-    if (((short *)iwram_3001ebc[0])[0xbf] != 0) {
+    if (field->transition != 0) {
         return;
     }
     if (iwram_3001e40 & 0x1f) {
         return;
     }
 
-    dst = (unsigned short *)0x5000020;
+    dst = (volatile unsigned short *)0x5000020;
     src = (unsigned short *)((char *)src + 0x20);
     i = 0;
 
     for (i = 0; i <= 0x3e; i++) {
-        int r4, r7, r6;
+        int redOffset, greenOffset, blueOffset;
         int r, g, b;
-        int color;
+        unsigned int color;
 
-        r4 = Lm918_1f00[Lm918_2db8];
-        r7 = Lm918_1f00[Lm918_2db8 + 1];
-        r6 = Lm918_1f00[Lm918_2db8 + 2];
+        redOffset = Lm918_1f00[Lm918_2db8];
+        blueOffset = Lm918_1f00[Lm918_2db8 + 2];
+        greenOffset = Lm918_1f00[Lm918_2db8 + 1];
 
         if (i > 0x2f) {
-            r4 -= r4 / 2 + _divsi3_RAM(r4, 3);
-            r7 -= _divsi3_RAM(r7, 3) + r7 / 2;
-            r6 -= _divsi3_RAM(r6, 3) + r6 / 2;
+            redOffset -= redOffset / 2 + CS918P_Divide(redOffset, 3);
+            greenOffset -= CS918P_Divide(greenOffset, 3) + greenOffset / 2;
+            blueOffset -= CS918P_Divide(blueOffset, 3) + blueOffset / 2;
         } else if (i > 0x1f) {
-            r4 -= _divsi3_RAM(r4, 3) + r4 / 4;
-            r7 -= _divsi3_RAM(r7, 3) + r7 / 4;
-            r6 -= _divsi3_RAM(r6, 3) + r6 / 4;
+            redOffset -= CS918P_Divide(redOffset, 3) + redOffset / 4;
+            greenOffset -= CS918P_Divide(greenOffset, 3) + greenOffset / 4;
+            blueOffset -= CS918P_Divide(blueOffset, 3) + blueOffset / 4;
         } else if (i > 0xf) {
-            r4 -= r4 / 4 + _divsi3_RAM(r4, 5);
-            r7 -= r7 / 4 + _divsi3_RAM(r7, 5);
-            r6 -= r6 / 4 + _divsi3_RAM(r6, 5);
+            redOffset -= redOffset / 4 + CS918P_Divide(redOffset, 5);
+            greenOffset -= greenOffset / 4 + CS918P_Divide(greenOffset, 5);
+            blueOffset -= blueOffset / 4 + CS918P_Divide(blueOffset, 5);
         }
 
         color = *src;
@@ -51,9 +56,9 @@ void OvlFunc_918_2009244(void) {
         g = (color >> 5) & 0x1f;
         b = (color >> 10) & 0x1f;
 
-        r += r4;
-        g += r7;
-        b += r6;
+        r += redOffset;
+        g += greenOffset;
+        b += blueOffset;
 
         if (r > 0x1f) r = 0x1f;
         if (g > 0x1f) g = 0x1f;

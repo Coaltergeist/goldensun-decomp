@@ -1051,7 +1051,91 @@ void OvlFunc_883_2009590(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_20095dc.s");
-INCLUDE_ASM("asm/maps/vale_river/ValeRiver_MapInit.s");
+extern void CS883_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+extern void __SetUIColor(int, int);
+extern void __Func_8091ff0(int);
+extern void __Func_800fe9c(void);
+extern void OvlFunc_883_200b4c8(void);
+extern void OvlFunc_883_200bfb0(void);
+extern void OvlFunc_883_200db48(int);
+extern void OvlFunc_883_200d950(void);
+extern void OvlFunc_883_200da94(void);
+extern void OvlFunc_883_200da40(void);
+struct CS883_StateView {
+    unsigned char beforeRoom[0x1c2];
+    short room;
+    unsigned char beforeUI[0x41];
+    unsigned char uiColor, uiBrightness;
+};
+extern struct CS883_StateView CS883_State __asm__("gState");
+int ValeRiver_MapInit(void)
+{
+    struct Actor *actor;
+    int flag;
+    if (CS883_State.room == 16) {
+        __SetUIColor(CS883_State.uiColor, CS883_State.uiBrightness);
+        OvlFunc_883_200b4c8();
+        return 0;
+    }
+    if (!API_GetFlag(0xfd0)) {
+        if (!API_GetFlag(0x87a)) OvlFunc_883_200db48(26);
+        else OvlFunc_883_200db48(20);
+    }
+    API_CopyMapTiles(2, 0x66, 0x54, 0x29, 2, 1);
+    API_CopyMapTiles(1, 0x66, 0x53, 0x29, 1, 1);
+    actor = ((struct Actor *)__MapActor_GetActor(20 + (API_GetFlag(0x87a) != 0)));
+    CS883_SpriteFlags(actor, 0);
+    if (API_GetFlag(0x314)) actor->pos.x = 0x16a0000;
+    else if (API_GetFlag(0x316)) actor->pos.x = 0x18a0000;
+    else actor->pos.x = 0x17a0000;
+    actor->pos.z = 0x2480000;
+    actor->pos.y = 0xc00000;
+    OvlFunc_883_200d950();
+    actor->layer = 3;
+    actor->__unk55 = 0;
+    API_StartTask(OvlFunc_883_200da94, 0xc80);
+    if (!API_GetFlag(0x87a)) {
+        if (API_GetFlag(0x815)) {
+            actor = ((struct Actor *)__MapActor_GetActor(21));
+            CS883_SpriteFlags(((struct Actor *)__MapActor_GetActor(21)), 0);
+            actor->scale.x = 0x28f;
+            actor->scale.y = 0x28f;
+        }
+        if (API_GetFlag(0x808)) {
+            API_MapActor_SetPos(15, 0, 0);
+            API_MapActor_SetPos(16, 0, 0);
+            API_MapActor_SetPos(17, 0, 0);
+        }
+        flag = API_GetFlag(0x815);
+        if (!flag) {
+            if (!API_GetFlag(0x109)) {
+                if (API_GetFlag(0x823)) {
+                    API_MapActor_SetPos(22, 0x1000000, 0x1c80000);
+                    ((struct Actor *)__MapActor_GetActor(22))->update = (actorfun_t)OvlFunc_883_200d72c;
+                    API_MapActor_SetBehavior(22, (int)gScript_883__0200e248);
+                }
+            } else {
+                ((struct Actor *)__MapActor_GetActor(22))->stop = flag;
+                API_ClearFlag(0x241);
+            }
+            if (CS883_State.room != 16 && !API_GetFlag(0x87a))
+                API_StartTask(OvlFunc_883_200da40, 0xc80);
+        }
+        if (!API_GetFlag(0x308) && CS883_State.room == 17) {
+            OvlFunc_883_200bfb0();
+            API_SetFlag(0x308);
+        }
+    }
+    if (API_GetFlag(0x109)) {
+        if (API_GetFlag(0x204))
+            API_Func_8010704(0x31, 0x35, 8, 4, 20, 50);
+        if (API_GetFlag(0x210)) OvlFunc_883_2008d70();
+    }
+    __Func_8091ff0(0xaa);
+    __Func_800fe9c();
+    API_WaitFrames(1);
+    return 0;
+}
 
 extern void __Func_8092950(int, int);
 

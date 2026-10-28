@@ -1,6 +1,7 @@
 /* rom_7bf5a8 (overlay file 935): consolidated TU — vault_cave map overlay. */
 
 #include "nonmatching.h"
+#include "actor.h"
 #include "api.h"
 
 extern void OvlFunc_935_2008734();
@@ -661,4 +662,156 @@ void OvlFunc_935_2008c50(void)
     __StartTask(OvlFunc_935_20089c0, 0xc80);
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/VaultCave_MapInit.s");
+
+struct VaultInitState {
+    unsigned char prefix[0x1c0];
+    short area, room;
+    unsigned char middle[0x240 - 0x1c4];
+    unsigned short destinationArea, destinationRoom;
+};
+extern struct VaultInitState VaultState __asm__("gState");
+extern unsigned char *VaultScene __asm__("iwram_3001ebc");
+extern void VaultSpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
+extern void __Func_800fe9c(void);
+static inline void VaultByte(unsigned char *field, int value) { *field = value; }
+
+int VaultCave_MapInit(void)
+{
+    unsigned char *actor;
+    int mode, room;
+    *(int *)(VaultScene + 0x1c0) = 0x204;
+    if (VaultState.area == (int)Lm935_ev60) {
+        switch (VaultState.room) {
+        case 5: case 6: case 7: case 8: case 13:
+            if (!API_GetFlag(0x9a8)) {
+                API_Func_8010704(0x16, 0x1d, 1, 1, 0x15, 0x1d);
+            } else {
+                API_Func_80105d4(0x6c, 0x1b, 1, 1, 0x5c, 0x1b);
+                API_WaitFrames(1);
+                API_Func_80105d4(0x13, 0x53, 15, 8, 0x13, 0x5b);
+                API_WaitFrames(1);
+                API_Func_80105d4(2, 0x18, 1, 2, 0x19, 0x1b);
+            }
+            __Func_800fe9c();
+            API_WaitFrames(1);
+            break;
+        case 10:
+            API_ClearFlag(0x9a8);
+            break;
+        }
+    }
+    if (VaultState.area == (int)Lm935_ev61) {
+        if (!API_GetFlag(0x300)) {
+            actor = (unsigned char *)((int)__MapActor_GetActor(22));
+            *(int *)(actor + 0x1c) = 0x18000;
+        }
+        switch (VaultState.room) {
+        case 1: case 2: case 3: case 4:
+            if (!API_GetFlag(0x9a8)) {
+                API_Func_80105d4(5, 0x51, 11, 7, 5, 0x49);
+            } else {
+                API_Func_8010704(5, 12, 1, 1, 6, 12);
+                API_Func_8010704(12, 10, 1, 1, 12, 11);
+            }
+            break;
+        case 8: case 9: case 14:
+            OvlFunc_935_2008c08();
+            if (API_GetFlag(0x200)) {
+                API_MapActor_SetAnim(16, 5);
+                OvlFunc_935_200850c();
+            }
+            if (API_GetFlag(0x201)) {
+                API_MapActor_SetAnim(17, 5);
+                OvlFunc_935_2008554();
+            }
+            if (API_GetFlag(0x202)) {
+                API_MapActor_SetAnim(18, 5);
+                OvlFunc_935_20085a0();
+            }
+            if (API_GetFlag(0x203)) {
+                API_MapActor_SetAnim(19, 5);
+                OvlFunc_935_20085ec();
+            }
+            if (API_GetFlag(0x204)) {
+                API_MapActor_SetAnim(20, 5);
+                OvlFunc_935_2008640();
+            }
+            if (API_GetFlag(0x205)) {
+                API_MapActor_SetAnim(21, 5);
+                OvlFunc_935_2008690();
+            }
+            API_StartTask(OvlFunc_935_20086e4, 0xc80);
+            break;
+        case 10: case 11:
+            if (API_GetFlag(0x9a9)) {
+                OvlFunc_935_2008398();
+                API_MapActor_SetPos(9, 0xf80000, 0x36c0000);
+            }
+            actor = (unsigned char *)((int)__MapActor_GetActor(8));
+            actor += 0x23;
+            VaultByte(actor, 2);
+            break;
+        }
+        API_MapActor_SetAnim(8, 2);
+        API_MapActor_SetAnim(9, 2);
+        actor = (unsigned char *)((int)__MapActor_GetActor(8));
+        VaultSpriteFlags(actor, 0);
+        actor = (unsigned char *)((int)__MapActor_GetActor(9));
+        VaultSpriteFlags(actor, 0);
+        actor = (unsigned char *)((int)__MapActor_GetActor(9));
+        actor += 0x59;
+        VaultByte(actor, 1);
+    }
+    if (VaultState.area == (int)Lm935_ev62) {
+        API_MapActor_SetAnim(8, 2);
+        if (!API_GetFlag(0x207))
+            API_MapActor_SetAnim(10, 2);
+        actor = (unsigned char *)((int)__MapActor_GetActor(8));
+        VaultSpriteFlags(actor, 0);
+        actor = (unsigned char *)((int)__MapActor_GetActor(10));
+        VaultSpriteFlags(actor, 0);
+        actor = (unsigned char *)((int)__MapActor_GetActor(9));
+        VaultSpriteFlags(actor, 0);
+        actor = (unsigned char *)((int)__MapActor_GetActor(10));
+        actor += 0x59;
+        VaultByte(actor, *actor | 0x80);
+        actor = (unsigned char *)((int)__MapActor_GetActor(9));
+        actor += 0x59;
+        mode = *actor | 0x80;
+        room = VaultState.room;
+        VaultByte(actor, mode);
+        switch (room) {
+        case 5: case 6:
+            OvlFunc_935_2008c50();
+            actor = (unsigned char *)((int)__MapActor_GetActor(11));
+            actor += 0x59;
+            VaultByte(actor, 2);
+            actor = (unsigned char *)((int)__MapActor_GetActor(12));
+            actor += 0x59;
+            VaultByte(actor, 2);
+            actor = (unsigned char *)((int)__MapActor_GetActor(13));
+            actor += 0x59;
+            VaultByte(actor, 2);
+            actor = (unsigned char *)((int)__MapActor_GetActor(14));
+            actor += 0x59;
+            VaultByte(actor, 2);
+            actor = (unsigned char *)((int)__MapActor_GetActor(8));
+            actor += 0x59;
+            VaultByte(actor, 1);
+            actor = (unsigned char *)((int)__MapActor_GetActor(10));
+            actor += 0x59;
+            VaultByte(actor, 1);
+            actor = (unsigned char *)((int)__MapActor_GetActor(9));
+            actor += 0x59;
+            VaultByte(actor, 1);
+            if (API_GetFlag(0x9aa)) {
+                OvlFunc_935_2008410();
+                API_MapActor_SetPos(10, 0x1080000, 0xcc0000);
+            }
+            break;
+        }
+    }
+    VaultState.destinationRoom = 10;
+    VaultState.destinationArea = (int)Lm935_ev60;
+    return 0;
+}

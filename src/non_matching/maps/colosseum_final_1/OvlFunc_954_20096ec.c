@@ -1,4 +1,6 @@
-extern void OvlFunc_common1_2c4(void);
+struct CS954E_State { unsigned char pad[0x1c2]; short room; };
+extern struct CS954E_State CS954E_State __asm__("gState");
+extern void CS954E_Early(unsigned int) __asm__("OvlFunc_common1_2c4");
 extern int OvlFunc_common1_4cc(int, int);
 extern void OvlFunc_common1_1490(int, int, int);
 extern void OvlFunc_common1_1550(void);
@@ -12,8 +14,8 @@ void OvlFunc_954_20096ec(int actor)
 {
     int result;
 
-    if (*(s16 *)(gState + 0x1c2) == 2) {
-        OvlFunc_common1_2c4();
+    if (CS954E_State.room == 2) {
+        CS954E_Early(actor);
         return;
     }
 
@@ -21,8 +23,8 @@ void OvlFunc_954_20096ec(int actor)
     result = OvlFunc_common1_4cc(actor, 4);
     if (result == 0) {
         API_MessageID(0x2099);
-        __Func_80933d4(0xc0 << 10, 0xc0 << 7);
-        __Func_80933f8(0x88 << 19, -1, 0xa8 << 16, 1);
+        API_Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        API_Func_80933f8(0x88 << 19, -1, 0xa8 << 16, 1);
         __Func_8093530();
         API_ActorMessage(actor, 0);
         OvlFunc_common1_1490(0x78, 0x48, 0);
@@ -40,7 +42,7 @@ void OvlFunc_954_20096ec(int actor)
         OvlFunc_common1_15b8(0, 0x3f8, 0xa8);
         __CutsceneWait(0xf);
         OvlFunc_954_200833c(0x12, 0xa0, 0);
-        __Func_80933f8(0x88 << 19, -1, 0xa8 << 16, 1);
+        API_Func_80933f8(0x88 << 19, -1, 0xa8 << 16, 1);
         API_MapActor_SetAnim(0, 1);
         __CutsceneWait(0xa);
         API_MapActor_SetSpeed(0, 0x10000, 0x8000);

@@ -1,5 +1,6 @@
-extern u8 gState[];
-extern void OvlFunc_common1_2c4(void);
+struct CS954D_State { unsigned char pad[0x1c2]; short room; };
+extern struct CS954D_State CS954D_State __asm__("gState");
+extern void CS954D_RoomAction(unsigned int) __asm__("OvlFunc_common1_2c4");
 extern int OvlFunc_common1_4cc(int, int);
 extern void OvlFunc_common1_1078(int, int, int);
 extern void OvlFunc_common1_15b8(int, int, int);
@@ -12,8 +13,8 @@ void OvlFunc_954_2009214(int arg0)
 {
     int result;
 
-    if (*(s16 *)(gState + 0x1c2) == 2) {
-        OvlFunc_common1_2c4();
+    if (CS954D_State.room == 2) {
+        CS954D_RoomAction(arg0);
         return;
     }
 
@@ -22,7 +23,7 @@ void OvlFunc_954_2009214(int arg0)
     if (result == 0) {
         API_MessageID(0x208c);
         __Func_80933d4(0xc0 << 10, 0xc0 << 7);
-        __Func_80933f8(0xa4 << 17, -1, 0xa8 << 16, 1);
+        API_Func_80933f8(0xa4 << 17, -1, 0xa8 << 16, 1);
         __Func_8093530();
         API_ActorMessage(arg0, 0);
         OvlFunc_common1_1078(0, 0x118, 0xc8);

@@ -99,7 +99,143 @@ void OvlFunc_928_20085d4(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_20085f4.s");
+extern int CS928_Update(void *) __asm__("OvlFunc_928_2008500");
+extern unsigned char *CS928_Scene __asm__("iwram_3001ebc");
+static inline void CS928_Half(unsigned short *p, int value) { *p = value; }
+static inline void CS928_Byte(unsigned char *p, int value) { *p = value; }
+
+void OvlFunc_928_20085f4(void)
+{
+    unsigned char *effect, *actor, *leader;
+    int moveAside, savedX, savedZ, scaleX, scaleY;
+    unsigned int facing;
+
+    effect = (unsigned char *)((int)__MapActor_GetActor(20));
+    API_CutsceneStart();
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    moveAside = 0;
+    *(int *)(actor + 0x6c) = 0;
+    if (API_GetFlag(0x200) ||
+        (*(int *)((unsigned char *)((int)__MapActor_GetActor(18)) + 8) >> 20) <= 19) {
+        actor = (unsigned char *)((int)__MapActor_GetActor(18));
+        facing = *(unsigned short *)(actor + 6);
+        API_MapActor_Face(18, 0, 0);
+        API_CutsceneWait(10);
+        API_MessageID(0x17fb);
+        if (!API_GetFlag(0x200)) {
+            *(unsigned short *)(CS928_Scene + 0x1d8) += 1;
+            API_ActorMessage(18, 0);
+            actor = (unsigned char *)((int)__MapActor_GetActor(18));
+            actor += 0x64;
+            CS928_Half((unsigned short *)actor, moveAside);
+            actor = (unsigned char *)((int)__MapActor_GetActor(18));
+            CS928_Half((unsigned short *)(actor + 6), facing);
+        } else {
+            API_ActorMessage(18, 0);
+            API_Func_8092adc(18, 0x8000, 20);
+        }
+        actor = (unsigned char *)((int)__MapActor_GetActor(18));
+        *(int *)(actor + 0x6c) = (int)CS928_Update;
+        API_CutsceneEnd();
+        return;
+    }
+    if ((*(int *)((unsigned char *)((int)__MapActor_GetActor(0)) + 0x10) >> 19) > 27 &&
+        (*(int *)((unsigned char *)((int)__MapActor_GetActor(0)) + 0x10) >> 19) <= 29 &&
+        (*(int *)((unsigned char *)((int)__MapActor_GetActor(0)) + 8) >> 20) != 26) {
+        API_MapActor_SetSpeed(0, 0x8000, 0x4000);
+        API_MapActor_Face(0, 18, 0);
+        API_CutsceneWait(5);
+        leader = (unsigned char *)((int)__MapActor_GetActor(0));
+        actor = (unsigned char *)((int)__MapActor_GetActor(18));
+        if (*(int *)(leader + 8) < *(int *)(actor + 8)) {
+            actor = (unsigned char *)((int)__MapActor_GetActor(0));
+            actor += 0x5a;
+            CS928_Byte(actor, *actor & 0xfe);
+            actor = (unsigned char *)((int)__MapActor_GetActor(18));
+            API_MapActor_TravelToAnim(0, ((*(int *)(actor + 8) >> 20) * 16) - 8, 0xe8);
+            moveAside = 1;
+        } else {
+            actor = (unsigned char *)((int)__MapActor_GetActor(0));
+            actor += 0x5a;
+            CS928_Byte(actor, *actor & 0xfe);
+            actor = (unsigned char *)((int)__MapActor_GetActor(18));
+            API_MapActor_TravelToAnim(0, ((*(int *)(actor + 8) >> 20) * 16) + 24, 0xe8);
+        }
+        API_MapActor_WaitMovement(0);
+    }
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    *(int *)(actor + 0x38) = 0x80000000;
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    *(int *)(actor + 0x3c) = 0x80000000;
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    *(int *)(actor + 0x40) = 0x80000000;
+    API_MapActor_SetBehavior(18, 1);
+    API_MapActor_SetAnim(18, 1);
+    API_Func_80925cc(18, 2);
+    API_CutsceneWait(10);
+    API_PlaySound(0xe4);
+    *(int *)(effect + 0x18) = 0x4ccc;
+    *(int *)(effect + 0x1c) = 0x4ccc;
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    savedX = *(int *)(actor + 8);
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    savedX >>= 20;
+    savedZ = *(int *)(actor + 0x10) >> 20;
+    savedX <<= 20;
+    savedX += 0x80000;
+    API_MapActor_SetPos(20, savedX,
+        (savedZ << 20) + 0x80000);
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    savedX = *(int *)(actor + 8);
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    savedX >>= 20;
+    API_Func_8010704(16, 16, 1, 1, savedX, *(int *)(actor + 0x10) >> 20);
+    API_Func_8092b08(20, 2);
+    CS928_Byte(effect + 0x23, effect[0x23] | 2);
+    do {
+        API_WaitFrames(3);
+        scaleY = *(int *)(effect + 0x1c);
+        scaleX = *(int *)(effect + 0x18);
+        *(int *)(effect + 0x1c) = scaleY + 0x1999;
+        scaleX += 0x1999;
+        *(int *)(effect + 0x18) = scaleX;
+    } while (scaleX <= 0xffff);
+    API_MapActor_Emote(18, 0x105, 70);
+    API_MapActor_Face(18, 0, 0);
+    API_CutsceneWait(20);
+    API_MapActor_Emote(18, 0x103, 0);
+    API_Func_809259c(18, 2);
+    API_CutsceneWait(70);
+    API_MessageID(0x17fa);
+    API_ActorMessage_Wait(18, 0, 20);
+    API_MapActor_PlayPendingSound();
+    if ((*(int *)((unsigned char *)((int)__MapActor_GetActor(0)) + 8) >> 20) == 26 &&
+        (*(int *)((unsigned char *)((int)__MapActor_GetActor(0)) + 0x10) >> 20) > 13)
+        moveAside = 1;
+    if (moveAside != 0) {
+        API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
+        API_Func_8092adc(0, 0xc000, 10);
+        actor = (unsigned char *)((int)__MapActor_GetActor(0));
+        actor += 0x5a;
+        CS928_Byte(actor, *actor & 0xfe);
+        API_MapActor_SetAnim(0, 2);
+        API_MapActor_TravelBy(0, 0, 16);
+        API_MapActor_WaitMovement(0);
+        API_MapActor_SetAnim(0, 1);
+    }
+    API_MapActor_SetSpeed(18, 0xcccc, 0x6666);
+    actor = (unsigned char *)((int)__MapActor_GetActor(18));
+    if ((*(int *)(actor + 0x10) >> 20) != 14) {
+        actor = (unsigned char *)((int)__MapActor_GetActor(18));
+        API_MapActor_TravelToAnimWait(18, *(short *)(actor + 10), 0xe8);
+    }
+    API_MapActor_TravelToAnimWait(18, 0x118, 0xe8);
+    API_SetFlag(0x200);
+    actor = (unsigned char *)((int)__MapActor_GetActor(0));
+    actor += 0x5a;
+    CS928_Byte(actor, *actor | 1);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_928_200894c(void) {
     unsigned char *r4;

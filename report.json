@@ -1,10 +1,10 @@
 {
   "measures": {
-    "fuzzy_match_percent": 43.285120962344564,
-    "matched_code": "432360",
-    "matched_code_percent": 33.53057505137849,
-    "matched_functions": 4301,
-    "matched_functions_percent": 74.23196410079393,
+    "fuzzy_match_percent": 63.54978824560487,
+    "matched_code": "549600",
+    "matched_code_percent": 42.62282368451665,
+    "matched_functions": 4394,
+    "matched_functions_percent": 75.83707283396618,
     "total_code": "1289450",
     "total_functions": 5794,
     "total_units": 313
@@ -17033,7 +17033,7 @@
         },
         {
           "address": "3372",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 80.23428,
           "metadata": {
             "virtual_address": "33590572"
           },
@@ -17042,7 +17042,7 @@
         },
         {
           "address": "3776",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.23943,
           "metadata": {
             "virtual_address": "33590976"
           },
@@ -17051,7 +17051,7 @@
         },
         {
           "address": "5016",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592216"
           },
@@ -17078,7 +17078,7 @@
         },
         {
           "address": "6200",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593400"
           },
@@ -17087,7 +17087,7 @@
         },
         {
           "address": "7436",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 90.380646,
           "metadata": {
             "virtual_address": "33594636"
           },
@@ -17105,7 +17105,7 @@
         },
         {
           "address": "8400",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595600"
           },
@@ -17420,11 +17420,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 57.86909066791845,
-        "matched_code": "7824",
-        "matched_code_percent": 52.467811158798284,
-        "matched_functions": 61,
-        "matched_functions_percent": 80.26315789473684,
+        "fuzzy_match_percent": 90.0747969023605,
+        "matched_code": "9636",
+        "matched_code_percent": 64.61909871244636,
+        "matched_functions": 63,
+        "matched_functions_percent": 82.89473684210526,
         "total_code": "14912",
         "total_functions": 76
       },
@@ -17761,7 +17761,7 @@
         },
         {
           "address": "4252",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 82.74536,
           "metadata": {
             "virtual_address": "33591452"
           },
@@ -17770,7 +17770,7 @@
         },
         {
           "address": "5112",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.98858,
           "metadata": {
             "virtual_address": "33592312"
           },
@@ -17779,7 +17779,7 @@
         },
         {
           "address": "11332",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33598532"
           },
@@ -17851,7 +17851,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 28.87757333542648,
+        "fuzzy_match_percent": 88.39418618210361,
         "matched_code": "3612",
         "matched_code_percent": 23.626373626373628,
         "matched_functions": 35,
@@ -17985,7 +17985,7 @@
         },
         {
           "address": "2792",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.43946,
           "metadata": {
             "virtual_address": "33589992"
           },
@@ -18156,7 +18156,7 @@
         },
         {
           "address": "4664",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591864"
           },
@@ -18165,7 +18165,7 @@
         },
         {
           "address": "6928",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594128"
           },
@@ -18300,11 +18300,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 43.90736876397516,
-        "matched_code": "4476",
-        "matched_code_percent": 38.612836438923395,
-        "matched_functions": 40,
-        "matched_functions_percent": 83.33333333333333,
+        "fuzzy_match_percent": 87.99358556176674,
+        "matched_code": "9136",
+        "matched_code_percent": 78.81297446514837,
+        "matched_functions": 42,
+        "matched_functions_percent": 87.5,
         "total_code": "11592",
         "total_functions": 48
       },
@@ -18434,7 +18434,7 @@
         },
         {
           "address": "1652",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588852"
           },
@@ -18443,7 +18443,7 @@
         },
         {
           "address": "2808",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.16468,
           "metadata": {
             "virtual_address": "33590008"
           },
@@ -18452,7 +18452,7 @@
         },
         {
           "address": "4088",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591288"
           },
@@ -18461,7 +18461,7 @@
         },
         {
           "address": "6120",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.6802,
           "metadata": {
             "virtual_address": "33593320"
           },
@@ -18542,7 +18542,7 @@
         },
         {
           "address": "16564",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 93.67037,
           "metadata": {
             "virtual_address": "33603764"
           },
@@ -18551,11 +18551,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 57.453959773998136,
-        "matched_code": "9076",
-        "matched_code_percent": 52.86579683131407,
-        "matched_functions": 18,
-        "matched_functions_percent": 69.23076923076923,
+        "fuzzy_match_percent": 99.04615746971109,
+        "matched_code": "11108",
+        "matched_code_percent": 64.7017707362535,
+        "matched_functions": 19,
+        "matched_functions_percent": 73.07692307692308,
         "total_code": "17168",
         "total_functions": 26
       },
@@ -18748,7 +18748,7 @@
         },
         {
           "address": "1412",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588612"
           },
@@ -18856,11 +18856,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 78.94869362278978,
-        "matched_code": "2452",
-        "matched_code_percent": 60.216110019646365,
-        "matched_functions": 29,
-        "matched_functions_percent": 90.625,
+        "fuzzy_match_percent": 98.10389990962672,
+        "matched_code": "3232",
+        "matched_code_percent": 79.3713163064833,
+        "matched_functions": 30,
+        "matched_functions_percent": 93.75,
         "total_code": "4072",
         "total_functions": 32
       },
@@ -19465,7 +19465,7 @@
         },
         {
           "address": "1808",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589008"
           },
@@ -19474,7 +19474,7 @@
         },
         {
           "address": "3532",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590732"
           },
@@ -19501,7 +19501,7 @@
         },
         {
           "address": "4760",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591960"
           },
@@ -19519,7 +19519,7 @@
         },
         {
           "address": "5768",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592968"
           },
@@ -19573,7 +19573,7 @@
         },
         {
           "address": "7380",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594580"
           },
@@ -19654,11 +19654,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 42.918499999999995,
-        "matched_code": "4584",
-        "matched_code_percent": 41.2972972972973,
-        "matched_functions": 31,
-        "matched_functions_percent": 83.78378378378379,
+        "fuzzy_match_percent": 99.78336486486488,
+        "matched_code": "10896",
+        "matched_code_percent": 98.16216216216216,
+        "matched_functions": 36,
+        "matched_functions_percent": 97.29729729729729,
         "total_code": "11100",
         "total_functions": 37
       },
@@ -19806,7 +19806,7 @@
         },
         {
           "address": "1296",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.93378,
           "metadata": {
             "virtual_address": "33588544"
           },
@@ -19878,7 +19878,7 @@
         },
         {
           "address": "3464",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590712"
           },
@@ -19887,7 +19887,7 @@
         },
         {
           "address": "4580",
-          "fuzzy_match_percent": 92.5847,
+          "fuzzy_match_percent": 99.486336,
           "metadata": {
             "virtual_address": "33591828"
           },
@@ -19914,7 +19914,7 @@
         },
         {
           "address": "5820",
-          "fuzzy_match_percent": 83.76608,
+          "fuzzy_match_percent": 99.34503,
           "metadata": {
             "virtual_address": "33593068"
           },
@@ -19923,11 +19923,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 53.416656374391806,
-        "matched_code": "1168",
-        "matched_code_percent": 18.693982074263765,
-        "matched_functions": 18,
-        "matched_functions_percent": 64.28571428571429,
+        "fuzzy_match_percent": 84.88598292112677,
+        "matched_code": "2284",
+        "matched_code_percent": 36.555697823303454,
+        "matched_functions": 19,
+        "matched_functions_percent": 67.85714285714286,
         "total_code": "6248",
         "total_functions": 28
       },
@@ -20174,7 +20174,7 @@
         },
         {
           "address": "1764",
-          "fuzzy_match_percent": 97.72464,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589012"
           },
@@ -20246,7 +20246,7 @@
         },
         {
           "address": "2980",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.89199,
           "metadata": {
             "virtual_address": "33590228"
           },
@@ -20255,7 +20255,7 @@
         },
         {
           "address": "4268",
-          "fuzzy_match_percent": 97.366196,
+          "fuzzy_match_percent": 98.96713,
           "metadata": {
             "virtual_address": "33591516"
           },
@@ -20318,11 +20318,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 77.4749931238426,
-        "matched_code": "1672",
-        "matched_code_percent": 24.189814814814813,
-        "matched_functions": 30,
-        "matched_functions_percent": 71.42857142857143,
+        "fuzzy_match_percent": 96.36772314814816,
+        "matched_code": "2144",
+        "matched_code_percent": 31.01851851851852,
+        "matched_functions": 31,
+        "matched_functions_percent": 73.80952380952381,
         "total_code": "6912",
         "total_functions": 42
       },
@@ -20533,7 +20533,7 @@
         },
         {
           "address": "1852",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 90.959595,
           "metadata": {
             "virtual_address": "33589100"
           },
@@ -20641,7 +20641,7 @@
         },
         {
           "address": "3444",
-          "fuzzy_match_percent": 89.59872,
+          "fuzzy_match_percent": 99.86035,
           "metadata": {
             "virtual_address": "33590692"
           },
@@ -20695,7 +20695,7 @@
         },
         {
           "address": "7624",
-          "fuzzy_match_percent": 85.13043,
+          "fuzzy_match_percent": 99.453415,
           "metadata": {
             "virtual_address": "33594872"
           },
@@ -20713,7 +20713,7 @@
         },
         {
           "address": "8384",
-          "fuzzy_match_percent": 95.83246,
+          "fuzzy_match_percent": 98.78534,
           "metadata": {
             "virtual_address": "33595632"
           },
@@ -20740,7 +20740,7 @@
         },
         {
           "address": "8960",
-          "fuzzy_match_percent": 96.243904,
+          "fuzzy_match_percent": 99.768295,
           "metadata": {
             "virtual_address": "33596208"
           },
@@ -20758,7 +20758,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 73.04541176724854,
+        "fuzzy_match_percent": 82.0839935,
         "matched_code": "3188",
         "matched_code_percent": 33.12551953449709,
         "matched_functions": 35,
@@ -21333,7 +21333,7 @@
         },
         {
           "address": "2792",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.43946,
           "metadata": {
             "virtual_address": "33589992"
           },
@@ -21432,7 +21432,7 @@
         },
         {
           "address": "3952",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.82332,
           "metadata": {
             "virtual_address": "33591152"
           },
@@ -22017,7 +22017,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 88.99502499111843,
+        "fuzzy_match_percent": 98.24897149111843,
         "matched_code": "9876",
         "matched_code_percent": 81.21710526315789,
         "matched_functions": 82,
@@ -22358,7 +22358,7 @@
         },
         {
           "address": "6356",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.979164,
           "metadata": {
             "virtual_address": "33594344"
           },
@@ -22367,7 +22367,7 @@
         },
         {
           "address": "6768",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 92.28783,
           "metadata": {
             "virtual_address": "33594756"
           },
@@ -22583,7 +22583,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 83.4465542166267,
+        "fuzzy_match_percent": 93.021475372502,
         "matched_code": "7176",
         "matched_code_percent": 71.70263788968825,
         "matched_functions": 51,
@@ -23740,7 +23740,7 @@
         },
         {
           "address": "124",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588112"
           },
@@ -23749,7 +23749,7 @@
         },
         {
           "address": "992",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588980"
           },
@@ -23767,7 +23767,7 @@
         },
         {
           "address": "1924",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589912"
           },
@@ -23785,7 +23785,7 @@
         },
         {
           "address": "3192",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591180"
           },
@@ -23794,7 +23794,7 @@
         },
         {
           "address": "4412",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592400"
           },
@@ -23803,7 +23803,7 @@
         },
         {
           "address": "5240",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593228"
           },
@@ -23812,7 +23812,7 @@
         },
         {
           "address": "6640",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.95531,
           "metadata": {
             "virtual_address": "33594628"
           },
@@ -23911,7 +23911,7 @@
         },
         {
           "address": "9444",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.00215,
           "metadata": {
             "virtual_address": "33597432"
           },
@@ -23920,7 +23920,7 @@
         },
         {
           "address": "15376",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33603364"
           },
@@ -23965,7 +23965,7 @@
         },
         {
           "address": "16776",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 88.058334,
           "metadata": {
             "virtual_address": "33604764"
           },
@@ -23983,11 +23983,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 16.335069043321297,
-        "matched_code": "2536",
-        "matched_code_percent": 14.30505415162455,
-        "matched_functions": 21,
-        "matched_functions_percent": 63.63636363636363,
+        "fuzzy_match_percent": 98.92972467102888,
+        "matched_code": "6096",
+        "matched_code_percent": 34.38628158844765,
+        "matched_functions": 25,
+        "matched_functions_percent": 75.75757575757575,
         "total_code": "17728",
         "total_functions": 33
       },
@@ -24045,7 +24045,7 @@
         },
         {
           "address": "84",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33587284"
           },
@@ -24099,7 +24099,7 @@
         },
         {
           "address": "3940",
-          "fuzzy_match_percent": 83.203125,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33591140"
           },
@@ -24117,7 +24117,7 @@
         },
         {
           "address": "4292",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.71864,
           "metadata": {
             "virtual_address": "33591492"
           },
@@ -24135,7 +24135,7 @@
         },
         {
           "address": "5136",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592336"
           },
@@ -24189,7 +24189,7 @@
         },
         {
           "address": "10660",
-          "fuzzy_match_percent": 96.331795,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597860"
           },
@@ -24306,7 +24306,7 @@
         },
         {
           "address": "12316",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 88.058334,
           "metadata": {
             "virtual_address": "33599516"
           },
@@ -24324,11 +24324,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 20.25831336369138,
-        "matched_code": "1432",
-        "matched_code_percent": 10.832072617246595,
-        "matched_functions": 26,
-        "matched_functions_percent": 72.22222222222223,
+        "fuzzy_match_percent": 94.09174696944024,
+        "matched_code": "5488",
+        "matched_code_percent": 41.51285930408472,
+        "matched_functions": 28,
+        "matched_functions_percent": 77.77777777777777,
         "total_code": "13220",
         "total_functions": 36
       },
@@ -24431,7 +24431,7 @@
         },
         {
           "address": "1032",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589020"
           },
@@ -24566,7 +24566,7 @@
         },
         {
           "address": "4480",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592468"
           },
@@ -24584,7 +24584,7 @@
         },
         {
           "address": "6824",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594812"
           },
@@ -24710,7 +24710,7 @@
         },
         {
           "address": "9432",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597420"
           },
@@ -24719,7 +24719,7 @@
         },
         {
           "address": "10172",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33598160"
           },
@@ -24782,11 +24782,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 31.440599478811496,
-        "matched_code": "4864",
-        "matched_code_percent": 29.615197272284462,
-        "matched_functions": 42,
-        "matched_functions_percent": 85.71428571428571,
+        "fuzzy_match_percent": 96.02900668777399,
+        "matched_code": "15472",
+        "matched_code_percent": 94.20360448124696,
+        "matched_functions": 47,
+        "matched_functions_percent": 95.91836734693878,
         "total_code": "16424",
         "total_functions": 49
       },
@@ -26143,7 +26143,7 @@
         },
         {
           "address": "2928",
-          "fuzzy_match_percent": 68.49649,
+          "fuzzy_match_percent": 99.894615,
           "metadata": {
             "virtual_address": "33590128"
           },
@@ -26152,7 +26152,7 @@
         },
         {
           "address": "3984",
-          "fuzzy_match_percent": 94.707016,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591184"
           },
@@ -26260,7 +26260,7 @@
         },
         {
           "address": "6632",
-          "fuzzy_match_percent": 77.08572,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593832"
           },
@@ -26287,11 +26287,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 83.55104989087488,
-        "matched_code": "3376",
-        "matched_code_percent": 39.69896519285042,
-        "matched_functions": 37,
-        "matched_functions_percent": 84.0909090909091,
+        "fuzzy_match_percent": 91.97433960301035,
+        "matched_code": "6184",
+        "matched_code_percent": 72.71872060206961,
+        "matched_functions": 39,
+        "matched_functions_percent": 88.63636363636364,
         "total_code": "8504",
         "total_functions": 44
       },
@@ -27069,7 +27069,7 @@
         },
         {
           "address": "8340",
-          "fuzzy_match_percent": 98.99497,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595540"
           },
@@ -27078,7 +27078,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 99.89895448764867,
+        "fuzzy_match_percent": 99.95090709057641,
         "matched_code": "8204",
         "matched_code_percent": 93.82433668801464,
         "matched_functions": 84,
@@ -27490,7 +27490,7 @@
         },
         {
           "address": "6448",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593648"
           },
@@ -27535,7 +27535,7 @@
         },
         {
           "address": "8200",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595400"
           },
@@ -27544,7 +27544,7 @@
         },
         {
           "address": "9920",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597120"
           },
@@ -27643,11 +27643,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 33.77879193154683,
-        "matched_code": "4464",
-        "matched_code_percent": 29.609976120987,
-        "matched_functions": 39,
-        "matched_functions_percent": 84.78260869565217,
+        "fuzzy_match_percent": 72.3566640461661,
+        "matched_code": "10280",
+        "matched_code_percent": 68.18784823560627,
+        "matched_functions": 42,
+        "matched_functions_percent": 91.30434782608695,
         "total_code": "15076",
         "total_functions": 46
       },
@@ -27876,7 +27876,7 @@
         },
         {
           "address": "3648",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590848"
           },
@@ -27885,11 +27885,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 66.63645245495495,
-        "matched_code": "3220",
-        "matched_code_percent": 60.43543543543544,
-        "matched_functions": 23,
-        "matched_functions_percent": 92.0,
+        "fuzzy_match_percent": 99.06888488738738,
+        "matched_code": "4948",
+        "matched_code_percent": 92.86786786786787,
+        "matched_functions": 24,
+        "matched_functions_percent": 96.0,
         "total_code": "5328",
         "total_functions": 25
       },
@@ -28153,7 +28153,7 @@
         },
         {
           "address": "968",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.563576,
           "metadata": {
             "virtual_address": "33588168"
           },
@@ -28279,7 +28279,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 23.398774193134667,
+        "fuzzy_match_percent": 30.05395341003395,
         "matched_code": "1588",
         "matched_code_percent": 14.975480950584686,
         "matched_functions": 23,
@@ -29417,7 +29417,7 @@
         },
         {
           "address": "1160",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588360"
           },
@@ -29462,7 +29462,7 @@
         },
         {
           "address": "4852",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592052"
           },
@@ -29552,11 +29552,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 40.620163203026486,
-        "matched_code": "1956",
-        "matched_code_percent": 30.832282471626733,
-        "matched_functions": 23,
-        "matched_functions_percent": 85.18518518518519,
+        "fuzzy_match_percent": 97.61890216897856,
+        "matched_code": "5572",
+        "matched_code_percent": 87.83102143757881,
+        "matched_functions": 25,
+        "matched_functions_percent": 92.5925925925926,
         "total_code": "6344",
         "total_functions": 27
       },
@@ -29784,7 +29784,7 @@
         },
         {
           "address": "1988",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.884125,
           "metadata": {
             "virtual_address": "33589188"
           },
@@ -29829,7 +29829,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 55.01561836611195,
+        "fuzzy_match_percent": 97.553260102118,
         "matched_code": "2320",
         "matched_code_percent": 43.872919818456886,
         "matched_functions": 14,
@@ -30124,7 +30124,7 @@
         },
         {
           "address": "404",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.850204,
           "metadata": {
             "virtual_address": "33587604"
           },
@@ -30169,7 +30169,7 @@
         },
         {
           "address": "1072",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.933716,
           "metadata": {
             "virtual_address": "33588272"
           },
@@ -30178,7 +30178,7 @@
         },
         {
           "address": "2868",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 84.462746,
           "metadata": {
             "virtual_address": "33590068"
           },
@@ -30250,7 +30250,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 36.13405627791563,
+        "fuzzy_match_percent": 95.28095885525228,
         "matched_code": "1288",
         "matched_code_percent": 26.63358147229115,
         "matched_functions": 20,
@@ -30348,7 +30348,7 @@
         },
         {
           "address": "464",
-          "fuzzy_match_percent": 90.12981,
+          "fuzzy_match_percent": 99.97596,
           "metadata": {
             "virtual_address": "33588452"
           },
@@ -30357,7 +30357,7 @@
         },
         {
           "address": "1400",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.97591,
           "metadata": {
             "virtual_address": "33589388"
           },
@@ -30402,7 +30402,7 @@
         },
         {
           "address": "2840",
-          "fuzzy_match_percent": 80.59414,
+          "fuzzy_match_percent": 90.14226,
           "metadata": {
             "virtual_address": "33590828"
           },
@@ -30429,7 +30429,7 @@
         },
         {
           "address": "4072",
-          "fuzzy_match_percent": 91.89119,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592060"
           },
@@ -30447,7 +30447,7 @@
         },
         {
           "address": "4900",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592888"
           },
@@ -30465,7 +30465,7 @@
         },
         {
           "address": "5520",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 83.82951,
           "metadata": {
             "virtual_address": "33593508"
           },
@@ -30492,11 +30492,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 58.39360832309582,
-        "matched_code": "1532",
-        "matched_code_percent": 23.525798525798525,
-        "matched_functions": 16,
-        "matched_functions_percent": 64.0,
+        "fuzzy_match_percent": 95.80760710687962,
+        "matched_code": "2540",
+        "matched_code_percent": 39.004914004914006,
+        "matched_functions": 18,
+        "matched_functions_percent": 72.0,
         "total_code": "6512",
         "total_functions": 25
       },
@@ -30572,7 +30572,7 @@
         },
         {
           "address": "280",
-          "fuzzy_match_percent": 91.72455,
+          "fuzzy_match_percent": 95.20958,
           "metadata": {
             "virtual_address": "33587528"
           },
@@ -30599,7 +30599,7 @@
         },
         {
           "address": "872",
-          "fuzzy_match_percent": 68.09896,
+          "fuzzy_match_percent": 84.5,
           "metadata": {
             "virtual_address": "33588120"
           },
@@ -30617,7 +30617,7 @@
         },
         {
           "address": "1360",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 69.80078,
           "metadata": {
             "virtual_address": "33588608"
           },
@@ -30635,7 +30635,7 @@
         },
         {
           "address": "2096",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 84.386795,
           "metadata": {
             "virtual_address": "33589344"
           },
@@ -30779,7 +30779,7 @@
         },
         {
           "address": "4784",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 86.775116,
           "metadata": {
             "virtual_address": "33592032"
           },
@@ -30788,7 +30788,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 52.72325317180014,
+        "fuzzy_match_percent": 88.40937234702258,
         "matched_code": "1748",
         "matched_code_percent": 29.911019849418206,
         "matched_functions": 21,
@@ -30904,7 +30904,7 @@
         },
         {
           "address": "472",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.21622,
           "metadata": {
             "virtual_address": "33587672"
           },
@@ -30913,7 +30913,7 @@
         },
         {
           "address": "1212",
-          "fuzzy_match_percent": 76.376625,
+          "fuzzy_match_percent": 99.74026,
           "metadata": {
             "virtual_address": "33588412"
           },
@@ -30949,7 +30949,7 @@
         },
         {
           "address": "2760",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 87.24914,
           "metadata": {
             "virtual_address": "33589960"
           },
@@ -30985,7 +30985,7 @@
         },
         {
           "address": "3676",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.1586,
           "metadata": {
             "virtual_address": "33590876"
           },
@@ -31012,7 +31012,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 38.25241620388349,
+        "fuzzy_match_percent": 95.84284153398059,
         "matched_code": "1300",
         "matched_code_percent": 21.035598705501616,
         "matched_functions": 17,
@@ -31335,7 +31335,7 @@
         },
         {
           "address": "3292",
-          "fuzzy_match_percent": 94.56962,
+          "fuzzy_match_percent": 98.73418,
           "metadata": {
             "virtual_address": "33591280"
           },
@@ -31380,7 +31380,7 @@
         },
         {
           "address": "4104",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592092"
           },
@@ -31425,11 +31425,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 87.67968123491838,
-        "matched_code": "4552",
-        "matched_code_percent": 80.76650106458482,
-        "matched_functions": 42,
-        "matched_functions_percent": 95.45454545454545,
+        "fuzzy_match_percent": 99.90746667139815,
+        "matched_code": "5224",
+        "matched_code_percent": 92.68985095812633,
+        "matched_functions": 43,
+        "matched_functions_percent": 97.72727272727273,
         "total_code": "5636",
         "total_functions": 44
       },
@@ -32072,7 +32072,7 @@
         },
         {
           "address": "7780",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.138885,
           "metadata": {
             "virtual_address": "33595028"
           },
@@ -32252,7 +32252,7 @@
         },
         {
           "address": "10112",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.42515,
           "metadata": {
             "virtual_address": "33597360"
           },
@@ -32261,7 +32261,7 @@
         },
         {
           "address": "12324",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33599572"
           },
@@ -32288,7 +32288,7 @@
         },
         {
           "address": "18276",
-          "fuzzy_match_percent": 92.789116,
+          "fuzzy_match_percent": 94.680275,
           "metadata": {
             "virtual_address": "33605524"
           },
@@ -32414,7 +32414,7 @@
         },
         {
           "address": "19824",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 90.695656,
           "metadata": {
             "virtual_address": "33607072"
           },
@@ -32432,7 +32432,7 @@
         },
         {
           "address": "20660",
-          "fuzzy_match_percent": 90.2243,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33607908"
           },
@@ -32486,11 +32486,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 52.29567492566826,
-        "matched_code": "10220",
-        "matched_code_percent": 46.77773709264006,
-        "matched_functions": 104,
-        "matched_functions_percent": 89.65517241379311,
+        "fuzzy_match_percent": 92.06043466770414,
+        "matched_code": "10796",
+        "matched_code_percent": 49.41413401684365,
+        "matched_functions": 105,
+        "matched_functions_percent": 90.51724137931035,
         "total_code": "21848",
         "total_functions": 116
       },
@@ -32799,7 +32799,7 @@
         },
         {
           "address": "3556",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 86.98186,
           "metadata": {
             "virtual_address": "33590756"
           },
@@ -32826,7 +32826,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 21.410594094292804,
+        "fuzzy_match_percent": 39.828589263854425,
         "matched_code": "484",
         "matched_code_percent": 10.008271298593879,
         "matched_functions": 9,
@@ -33113,7 +33113,7 @@
         },
         {
           "address": "8636",
-          "fuzzy_match_percent": 95.48695,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595836"
           },
@@ -33122,11 +33122,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 99.71080281168265,
-        "matched_code": "8588",
-        "matched_code_percent": 93.59197907585005,
-        "matched_functions": 30,
-        "matched_functions_percent": 96.7741935483871,
+        "fuzzy_match_percent": 100.0,
+        "matched_code": "9176",
+        "matched_code_percent": 100.0,
+        "matched_functions": 31,
+        "matched_functions_percent": 100.0,
         "total_code": "9176",
         "total_functions": 31
       },
@@ -33238,7 +33238,7 @@
         },
         {
           "address": "484",
-          "fuzzy_match_percent": 99.910934,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33587684"
           },
@@ -33256,7 +33256,7 @@
         },
         {
           "address": "1212",
-          "fuzzy_match_percent": 98.28571,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33588412"
           },
@@ -33274,7 +33274,7 @@
         },
         {
           "address": "1500",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588700"
           },
@@ -33310,11 +33310,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 69.78615420710975,
-        "matched_code": "1096",
-        "matched_code_percent": 42.349304482225655,
-        "matched_functions": 16,
-        "matched_functions_percent": 84.21052631578948,
+        "fuzzy_match_percent": 96.90880989180835,
+        "matched_code": "2508",
+        "matched_code_percent": 96.90880989180835,
+        "matched_functions": 18,
+        "matched_functions_percent": 94.73684210526316,
         "total_code": "2588",
         "total_functions": 19
       },
@@ -33516,7 +33516,7 @@
         },
         {
           "address": "668",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.830795,
           "metadata": {
             "virtual_address": "33587868"
           },
@@ -33525,7 +33525,7 @@
         },
         {
           "address": "2244",
-          "fuzzy_match_percent": 96.051285,
+          "fuzzy_match_percent": 99.14103,
           "metadata": {
             "virtual_address": "33589444"
           },
@@ -33552,7 +33552,7 @@
         },
         {
           "address": "3316",
-          "fuzzy_match_percent": 87.0181,
+          "fuzzy_match_percent": 96.75565,
           "metadata": {
             "virtual_address": "33590516"
           },
@@ -33606,7 +33606,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 62.08496748558559,
+        "fuzzy_match_percent": 99.09633676036036,
         "matched_code": "1228",
         "matched_code_percent": 27.65765765765766,
         "matched_functions": 26,
@@ -34028,7 +34028,7 @@
         },
         {
           "address": "6816",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 94.01375,
           "metadata": {
             "virtual_address": "33594804"
           },
@@ -34154,7 +34154,7 @@
         },
         {
           "address": "9628",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597616"
           },
@@ -34190,7 +34190,7 @@
         },
         {
           "address": "11348",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.65031,
           "metadata": {
             "virtual_address": "33599336"
           },
@@ -34235,7 +34235,7 @@
         },
         {
           "address": "13208",
-          "fuzzy_match_percent": 74.244446,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33601196"
           },
@@ -34307,7 +34307,7 @@
         },
         {
           "address": "14860",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.81672,
           "metadata": {
             "virtual_address": "33602848"
           },
@@ -34325,7 +34325,7 @@
         },
         {
           "address": "18772",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.9661,
           "metadata": {
             "virtual_address": "33606760"
           },
@@ -34433,7 +34433,7 @@
         },
         {
           "address": "21164",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.80054,
           "metadata": {
             "virtual_address": "33609152"
           },
@@ -34460,11 +34460,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 52.58678488961274,
-        "matched_code": "10732",
-        "matched_code_percent": 48.55229822656533,
-        "matched_functions": 74,
-        "matched_functions_percent": 79.56989247311827,
+        "fuzzy_match_percent": 89.18149829895042,
+        "matched_code": "12040",
+        "matched_code_percent": 54.46977922547955,
+        "matched_functions": 75,
+        "matched_functions_percent": 80.64516129032258,
         "total_code": "22104",
         "total_functions": 93
       },
@@ -34522,7 +34522,7 @@
         },
         {
           "address": "72",
-          "fuzzy_match_percent": 92.5534,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33588060"
           },
@@ -34531,7 +34531,7 @@
         },
         {
           "address": "600",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588588"
           },
@@ -34585,7 +34585,7 @@
         },
         {
           "address": "2064",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.17422,
           "metadata": {
             "virtual_address": "33590052"
           },
@@ -34594,7 +34594,7 @@
         },
         {
           "address": "6108",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594096"
           },
@@ -34693,11 +34693,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 24.26661504741511,
-        "matched_code": "2224",
-        "matched_code_percent": 17.008259406546344,
-        "matched_functions": 17,
-        "matched_functions_percent": 70.83333333333333,
+        "fuzzy_match_percent": 94.39450970021414,
+        "matched_code": "7872",
+        "matched_code_percent": 60.2018966044662,
+        "matched_functions": 19,
+        "matched_functions_percent": 79.16666666666667,
         "total_code": "13076",
         "total_functions": 24
       },
@@ -35025,7 +35025,7 @@
         },
         {
           "address": "4044",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.41706,
           "metadata": {
             "virtual_address": "33592032"
           },
@@ -35034,7 +35034,7 @@
         },
         {
           "address": "5148",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.90667,
           "metadata": {
             "virtual_address": "33593136"
           },
@@ -35133,7 +35133,7 @@
         },
         {
           "address": "7452",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.80054,
           "metadata": {
             "virtual_address": "33595440"
           },
@@ -35160,7 +35160,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 63.99809447378456,
+        "fuzzy_match_percent": 93.48344942612012,
         "matched_code": "3868",
         "matched_code_percent": 46.091515729265964,
         "matched_functions": 39,
@@ -35294,7 +35294,7 @@
         },
         {
           "address": "2792",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.43946,
           "metadata": {
             "virtual_address": "33589992"
           },
@@ -35618,7 +35618,7 @@
         },
         {
           "address": "8896",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.44444,
           "metadata": {
             "virtual_address": "33596096"
           },
@@ -35663,7 +35663,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 75.14398400209717,
+        "fuzzy_match_percent": 83.26964719678433,
         "matched_code": "7504",
         "matched_code_percent": 65.57147850401958,
         "matched_functions": 46,
@@ -35878,7 +35878,7 @@
         },
         {
           "address": "2596",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589796"
           },
@@ -35896,7 +35896,7 @@
         },
         {
           "address": "3980",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591180"
           },
@@ -35914,7 +35914,7 @@
         },
         {
           "address": "6080",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593280"
           },
@@ -35941,11 +35941,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 53.79710144927536,
-        "matched_code": "3712",
-        "matched_code_percent": 53.79710144927536,
-        "matched_functions": 26,
-        "matched_functions_percent": 89.65517241379311,
+        "fuzzy_match_percent": 100.0,
+        "matched_code": "6140",
+        "matched_code_percent": 88.98550724637681,
+        "matched_functions": 28,
+        "matched_functions_percent": 96.55172413793103,
         "total_code": "6900",
         "total_functions": 29
       },
@@ -36084,7 +36084,7 @@
         },
         {
           "address": "1160",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588360"
           },
@@ -36093,7 +36093,7 @@
         },
         {
           "address": "2548",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.69154,
           "metadata": {
             "virtual_address": "33589748"
           },
@@ -36165,7 +36165,7 @@
         },
         {
           "address": "5392",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592592"
           },
@@ -36201,7 +36201,7 @@
         },
         {
           "address": "7336",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.62719,
           "metadata": {
             "virtual_address": "33594536"
           },
@@ -36210,7 +36210,7 @@
         },
         {
           "address": "8456",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595656"
           },
@@ -36237,7 +36237,7 @@
         },
         {
           "address": "9748",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 89.840256,
           "metadata": {
             "virtual_address": "33596948"
           },
@@ -36255,11 +36255,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 46.49488442591891,
-        "matched_code": "4908",
-        "matched_code_percent": 46.49488442591891,
-        "matched_functions": 27,
-        "matched_functions_percent": 81.81818181818181,
+        "fuzzy_match_percent": 98.93554191587722,
+        "matched_code": "8128",
+        "matched_code_percent": 76.99886320575976,
+        "matched_functions": 30,
+        "matched_functions_percent": 90.9090909090909,
         "total_code": "10556",
         "total_functions": 33
       },
@@ -36335,7 +36335,7 @@
         },
         {
           "address": "336",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33587536"
           },
@@ -36344,7 +36344,7 @@
         },
         {
           "address": "1556",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588756"
           },
@@ -36353,7 +36353,7 @@
         },
         {
           "address": "3212",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590412"
           },
@@ -36398,7 +36398,7 @@
         },
         {
           "address": "4188",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591388"
           },
@@ -36695,11 +36695,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 49.08470161758242,
-        "matched_code": "4252",
-        "matched_code_percent": 46.72527472527472,
-        "matched_functions": 42,
-        "matched_functions_percent": 89.36170212765957,
+        "fuzzy_match_percent": 98.97481150769231,
+        "matched_code": "8792",
+        "matched_code_percent": 96.61538461538461,
+        "matched_functions": 46,
+        "matched_functions_percent": 97.87234042553192,
         "total_code": "9100",
         "total_functions": 47
       },
@@ -37167,7 +37167,7 @@
         },
         {
           "address": "640",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.21484,
           "metadata": {
             "virtual_address": "33588628"
           },
@@ -37221,7 +37221,7 @@
         },
         {
           "address": "1316",
-          "fuzzy_match_percent": 77.62421,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589304"
           },
@@ -37338,11 +37338,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 74.46744345263158,
-        "matched_code": "1228",
-        "matched_code_percent": 32.31578947368421,
-        "matched_functions": 25,
-        "matched_functions_percent": 75.75757575757575,
+        "fuzzy_match_percent": 92.92959097894737,
+        "matched_code": "1632",
+        "matched_code_percent": 42.94736842105263,
+        "matched_functions": 26,
+        "matched_functions_percent": 78.78787878787878,
         "total_code": "3800",
         "total_functions": 33
       },
@@ -37982,7 +37982,7 @@
         },
         {
           "address": "2432",
-          "fuzzy_match_percent": 99.36102,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589632"
           },
@@ -38000,7 +38000,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 98.70630617826617,
+        "fuzzy_match_percent": 98.86390564102564,
         "matched_code": "2020",
         "matched_code_percent": 61.66056166056166,
         "matched_functions": 28,
@@ -38035,7 +38035,7 @@
         },
         {
           "address": "196",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 94.10976,
           "metadata": {
             "virtual_address": "33587396"
           },
@@ -38044,7 +38044,7 @@
         },
         {
           "address": "748",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 93.74494,
           "metadata": {
             "virtual_address": "33587948"
           },
@@ -38215,7 +38215,7 @@
         },
         {
           "address": "3232",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590432"
           },
@@ -38260,7 +38260,7 @@
         },
         {
           "address": "5188",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592388"
           },
@@ -38305,7 +38305,7 @@
         },
         {
           "address": "6592",
-          "fuzzy_match_percent": 85.223526,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33593792"
           },
@@ -38359,7 +38359,7 @@
         },
         {
           "address": "8080",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595280"
           },
@@ -38377,7 +38377,7 @@
         },
         {
           "address": "9752",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 88.37801,
           "metadata": {
             "virtual_address": "33596952"
           },
@@ -38404,7 +38404,7 @@
         },
         {
           "address": "11396",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33598596"
           },
@@ -38539,7 +38539,7 @@
         },
         {
           "address": "14860",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33602060"
           },
@@ -38548,7 +38548,7 @@
         },
         {
           "address": "15496",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33602696"
           },
@@ -38557,7 +38557,7 @@
         },
         {
           "address": "16176",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33603376"
           },
@@ -38575,11 +38575,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 47.90332643704229,
-        "matched_code": "5740",
-        "matched_code_percent": 33.90030711079613,
-        "matched_functions": 43,
-        "matched_functions_percent": 69.35483870967742,
+        "fuzzy_match_percent": 91.61800221922987,
+        "matched_code": "10420",
+        "matched_code_percent": 61.54027876210725,
+        "matched_functions": 49,
+        "matched_functions_percent": 79.03225806451613,
         "total_code": "16932",
         "total_functions": 62
       },
@@ -38691,7 +38691,7 @@
         },
         {
           "address": "892",
-          "fuzzy_match_percent": 93.08242,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588092"
           },
@@ -39060,7 +39060,7 @@
         },
         {
           "address": "6964",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594164"
           },
@@ -39069,7 +39069,7 @@
         },
         {
           "address": "7996",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595196"
           },
@@ -39078,7 +39078,7 @@
         },
         {
           "address": "10200",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597400"
           },
@@ -39087,7 +39087,7 @@
         },
         {
           "address": "12272",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33599472"
           },
@@ -39141,7 +39141,7 @@
         },
         {
           "address": "14508",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33601708"
           },
@@ -39231,7 +39231,7 @@
         },
         {
           "address": "16980",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33604180"
           },
@@ -39303,7 +39303,7 @@
         },
         {
           "address": "18664",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33605864"
           },
@@ -39348,7 +39348,7 @@
         },
         {
           "address": "20708",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.951454,
           "metadata": {
             "virtual_address": "33607908"
           },
@@ -39357,7 +39357,7 @@
         },
         {
           "address": "21236",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33608436"
           },
@@ -39393,7 +39393,7 @@
         },
         {
           "address": "22508",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33609708"
           },
@@ -39420,7 +39420,7 @@
         },
         {
           "address": "23824",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.59367,
           "metadata": {
             "virtual_address": "33611024"
           },
@@ -39429,7 +39429,7 @@
         },
         {
           "address": "24848",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33612048"
           },
@@ -39447,11 +39447,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 42.40947746638524,
-        "matched_code": "10076",
-        "matched_code_percent": 39.38398999374609,
-        "matched_functions": 79,
-        "matched_functions_percent": 83.15789473684211,
+        "fuzzy_match_percent": 97.89790941260162,
+        "matched_code": "23172",
+        "matched_code_percent": 90.57223264540337,
+        "matched_functions": 90,
+        "matched_functions_percent": 94.73684210526316,
         "total_code": "25584",
         "total_functions": 95
       },
@@ -39608,7 +39608,7 @@
         },
         {
           "address": "1380",
-          "fuzzy_match_percent": 98.12444,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588580"
           },
@@ -39635,7 +39635,7 @@
         },
         {
           "address": "2808",
-          "fuzzy_match_percent": 98.69627,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590008"
           },
@@ -39680,11 +39680,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 99.28117106155219,
-        "matched_code": "2856",
-        "matched_code_percent": 63.69313113291704,
-        "matched_functions": 21,
-        "matched_functions_percent": 87.5,
+        "fuzzy_match_percent": 99.78763211418376,
+        "matched_code": "4340",
+        "matched_code_percent": 96.7885816235504,
+        "matched_functions": 23,
+        "matched_functions_percent": 95.83333333333333,
         "total_code": "4484",
         "total_functions": 24
       },
@@ -40200,7 +40200,7 @@
         },
         {
           "address": "3888",
-          "fuzzy_match_percent": 70.32445,
+          "fuzzy_match_percent": 77.22667,
           "metadata": {
             "virtual_address": "33591876"
           },
@@ -40272,7 +40272,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 91.15483540992521,
+        "fuzzy_match_percent": 91.71789890414684,
         "matched_code": "4416",
         "matched_code_percent": 75.05098572399729,
         "matched_functions": 36,
@@ -40630,7 +40630,7 @@
         },
         {
           "address": "2792",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.43946,
           "metadata": {
             "virtual_address": "33589992"
           },
@@ -40900,7 +40900,7 @@
         },
         {
           "address": "5456",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.74286,
           "metadata": {
             "virtual_address": "33592656"
           },
@@ -40927,7 +40927,7 @@
         },
         {
           "address": "5956",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.77778,
           "metadata": {
             "virtual_address": "33593156"
           },
@@ -41044,7 +41044,7 @@
         },
         {
           "address": "7428",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.93651,
           "metadata": {
             "virtual_address": "33594628"
           },
@@ -41098,7 +41098,7 @@
         },
         {
           "address": "8356",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595556"
           },
@@ -41179,7 +41179,7 @@
         },
         {
           "address": "9628",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 94.83993,
           "metadata": {
             "virtual_address": "33596828"
           },
@@ -41188,11 +41188,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 50.95508173246329,
-        "matched_code": "5724",
-        "matched_code_percent": 46.6884176182708,
-        "matched_functions": 64,
-        "matched_functions_percent": 85.33333333333333,
+        "fuzzy_match_percent": 92.07412388580751,
+        "matched_code": "6328",
+        "matched_code_percent": 51.615008156606855,
+        "matched_functions": 65,
+        "matched_functions_percent": 86.66666666666667,
         "total_code": "12260",
         "total_functions": 75
       },
@@ -41538,7 +41538,7 @@
         },
         {
           "address": "5744",
-          "fuzzy_match_percent": 92.47893,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593732"
           },
@@ -41556,7 +41556,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 97.68674784375,
+        "fuzzy_match_percent": 98.42945350625,
         "matched_code": "5188",
         "matched_code_percent": 81.0625,
         "matched_functions": 36,
@@ -42013,7 +42013,7 @@
         },
         {
           "address": "2368",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589568"
           },
@@ -42022,7 +42022,7 @@
         },
         {
           "address": "3004",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590204"
           },
@@ -42040,7 +42040,7 @@
         },
         {
           "address": "4724",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 84.31746,
           "metadata": {
             "virtual_address": "33591924"
           },
@@ -42049,7 +42049,7 @@
         },
         {
           "address": "5556",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.004974,
           "metadata": {
             "virtual_address": "33592756"
           },
@@ -42058,7 +42058,7 @@
         },
         {
           "address": "6088",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.53604,
           "metadata": {
             "virtual_address": "33593288"
           },
@@ -42193,11 +42193,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 36.10130788271861,
-        "matched_code": "2956",
-        "matched_code_percent": 30.625777041027767,
-        "matched_functions": 43,
-        "matched_functions_percent": 86.0,
+        "fuzzy_match_percent": 96.84522225569829,
+        "matched_code": "4180",
+        "matched_code_percent": 43.30708661417323,
+        "matched_functions": 44,
+        "matched_functions_percent": 88.0,
         "total_code": "9652",
         "total_functions": 50
       },
@@ -42624,7 +42624,7 @@
         },
         {
           "address": "5596",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.35468,
           "metadata": {
             "virtual_address": "33592796"
           },
@@ -42633,7 +42633,7 @@
         },
         {
           "address": "10836",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33598036"
           },
@@ -42696,7 +42696,7 @@
         },
         {
           "address": "13512",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.47915,
           "metadata": {
             "virtual_address": "33600712"
           },
@@ -42705,7 +42705,7 @@
         },
         {
           "address": "16304",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.428055,
           "metadata": {
             "virtual_address": "33603504"
           },
@@ -42966,11 +42966,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 38.56972850356137,
-        "matched_code": "8284",
-        "matched_code_percent": 34.30511843630943,
-        "matched_functions": 73,
-        "matched_functions_percent": 86.9047619047619,
+        "fuzzy_match_percent": 96.52695602633759,
+        "matched_code": "8888",
+        "matched_code_percent": 36.80636077521948,
+        "matched_functions": 74,
+        "matched_functions_percent": 88.0952380952381,
         "total_code": "24148",
         "total_functions": 84
       },
@@ -43270,7 +43270,7 @@
         },
         {
           "address": "1076",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588276"
           },
@@ -43279,7 +43279,7 @@
         },
         {
           "address": "2576",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589776"
           },
@@ -43324,7 +43324,7 @@
         },
         {
           "address": "4436",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.65625,
           "metadata": {
             "virtual_address": "33591636"
           },
@@ -43432,7 +43432,7 @@
         },
         {
           "address": "6936",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594136"
           },
@@ -43459,7 +43459,7 @@
         },
         {
           "address": "8576",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.9078,
           "metadata": {
             "virtual_address": "33595776"
           },
@@ -43468,7 +43468,7 @@
         },
         {
           "address": "10404",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597604"
           },
@@ -43486,7 +43486,7 @@
         },
         {
           "address": "11756",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.210526,
           "metadata": {
             "virtual_address": "33598956"
           },
@@ -43495,7 +43495,7 @@
         },
         {
           "address": "12716",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 91.040146,
           "metadata": {
             "virtual_address": "33599916"
           },
@@ -43693,11 +43693,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 36.8431712028565,
-        "matched_code": "5324",
-        "matched_code_percent": 29.70319125195269,
-        "matched_functions": 56,
-        "matched_functions_percent": 80.0,
+        "fuzzy_match_percent": 95.72941171256416,
+        "matched_code": "8236",
+        "matched_code_percent": 45.949564829279176,
+        "matched_functions": 58,
+        "matched_functions_percent": 82.85714285714286,
         "total_code": "17924",
         "total_functions": 70
       },
@@ -44177,7 +44177,7 @@
         },
         {
           "address": "1400",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 87.52538,
           "metadata": {
             "virtual_address": "33588600"
           },
@@ -44186,7 +44186,7 @@
         },
         {
           "address": "2572",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.43675,
           "metadata": {
             "virtual_address": "33589772"
           },
@@ -44231,7 +44231,7 @@
         },
         {
           "address": "3984",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591184"
           },
@@ -44366,7 +44366,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 43.95075667125082,
+        "fuzzy_match_percent": 93.45639638310412,
         "matched_code": "1912",
         "matched_code_percent": 31.303208906352324,
         "matched_functions": 37,
@@ -44518,7 +44518,7 @@
         },
         {
           "address": "2188",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589388"
           },
@@ -44527,7 +44527,7 @@
         },
         {
           "address": "6268",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593468"
           },
@@ -44590,7 +44590,7 @@
         },
         {
           "address": "10508",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.86523,
           "metadata": {
             "virtual_address": "33597708"
           },
@@ -44689,11 +44689,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 28.45059944510035,
-        "matched_code": "3116",
-        "matched_code_percent": 22.992916174734358,
-        "matched_functions": 26,
-        "matched_functions_percent": 76.47058823529412,
+        "fuzzy_match_percent": 97.88238990850058,
+        "matched_code": "10596",
+        "matched_code_percent": 78.18772136953955,
+        "matched_functions": 28,
+        "matched_functions_percent": 82.3529411764706,
         "total_code": "13552",
         "total_functions": 34
       },
@@ -45201,7 +45201,7 @@
         },
         {
           "address": "4184",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592172"
           },
@@ -45264,11 +45264,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 81.06219765146116,
-        "matched_code": "4384",
-        "matched_code_percent": 78.1183178902352,
-        "matched_functions": 59,
-        "matched_functions_percent": 95.16129032258064,
+        "fuzzy_match_percent": 93.82057256236635,
+        "matched_code": "5100",
+        "matched_code_percent": 90.87669280114041,
+        "matched_functions": 60,
+        "matched_functions_percent": 96.7741935483871,
         "total_code": "5612",
         "total_functions": 62
       },
@@ -46018,7 +46018,7 @@
         },
         {
           "address": "3184",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590432"
           },
@@ -46027,11 +46027,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 73.46974578474904,
-        "matched_code": "2464",
-        "matched_code_percent": 59.45945945945946,
-        "matched_functions": 34,
-        "matched_functions_percent": 89.47368421052632,
+        "fuzzy_match_percent": 96.6357689507722,
+        "matched_code": "3424",
+        "matched_code_percent": 82.62548262548262,
+        "matched_functions": 35,
+        "matched_functions_percent": 92.10526315789474,
         "total_code": "4144",
         "total_functions": 38
       },
@@ -46368,7 +46368,7 @@
         },
         {
           "address": "2888",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590088"
           },
@@ -46377,7 +46377,7 @@
         },
         {
           "address": "3556",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33590756"
           },
@@ -46386,7 +46386,7 @@
         },
         {
           "address": "4936",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 97.56753,
           "metadata": {
             "virtual_address": "33592136"
           },
@@ -46431,7 +46431,7 @@
         },
         {
           "address": "7072",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594272"
           },
@@ -46458,7 +46458,7 @@
         },
         {
           "address": "8016",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.17959,
           "metadata": {
             "virtual_address": "33595216"
           },
@@ -46467,7 +46467,7 @@
         },
         {
           "address": "8648",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33595848"
           },
@@ -46503,7 +46503,7 @@
         },
         {
           "address": "10072",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597272"
           },
@@ -46557,7 +46557,7 @@
         },
         {
           "address": "12244",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33599444"
           },
@@ -46566,7 +46566,7 @@
         },
         {
           "address": "14072",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.62786,
           "metadata": {
             "virtual_address": "33601272"
           },
@@ -46701,7 +46701,7 @@
         },
         {
           "address": "18632",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.4375,
           "metadata": {
             "virtual_address": "33605832"
           },
@@ -46719,11 +46719,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 31.446708897315023,
-        "matched_code": "5060",
-        "matched_code_percent": 25.927444148391064,
-        "matched_functions": 61,
-        "matched_functions_percent": 81.33333333333333,
+        "fuzzy_match_percent": 98.74437213158434,
+        "matched_code": "9576",
+        "matched_code_percent": 49.0674318507891,
+        "matched_functions": 65,
+        "matched_functions_percent": 86.66666666666667,
         "total_code": "19516",
         "total_functions": 75
       },
@@ -47320,7 +47320,7 @@
         },
         {
           "address": "4632",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33591832"
           },
@@ -47455,7 +47455,7 @@
         },
         {
           "address": "6896",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33594096"
           },
@@ -47545,7 +47545,7 @@
         },
         {
           "address": "9976",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597176"
           },
@@ -47554,7 +47554,7 @@
         },
         {
           "address": "10508",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33597708"
           },
@@ -47662,7 +47662,7 @@
         },
         {
           "address": "16456",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.986206,
           "metadata": {
             "virtual_address": "33603656"
           },
@@ -47671,7 +47671,7 @@
         },
         {
           "address": "17084",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.8524,
           "metadata": {
             "virtual_address": "33604284"
           },
@@ -47707,7 +47707,7 @@
         },
         {
           "address": "17936",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.87027,
           "metadata": {
             "virtual_address": "33605136"
           },
@@ -47716,7 +47716,7 @@
         },
         {
           "address": "18368",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.76243,
           "metadata": {
             "virtual_address": "33605568"
           },
@@ -47725,7 +47725,7 @@
         },
         {
           "address": "18792",
-          "fuzzy_match_percent": 97.58889,
+          "fuzzy_match_percent": 0.0,
           "metadata": {
             "virtual_address": "33605992"
           },
@@ -47734,7 +47734,7 @@
         },
         {
           "address": "18988",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33606188"
           },
@@ -47743,7 +47743,7 @@
         },
         {
           "address": "19416",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.56039,
           "metadata": {
             "virtual_address": "33606616"
           },
@@ -47752,11 +47752,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 35.67537375822402,
-        "matched_code": "6148",
-        "matched_code_percent": 31.01917255297679,
-        "matched_functions": 66,
-        "matched_functions_percent": 75.0,
+        "fuzzy_match_percent": 61.64096946801211,
+        "matched_code": "8960",
+        "matched_code_percent": 45.20686175580222,
+        "matched_functions": 71,
+        "matched_functions_percent": 80.68181818181819,
         "total_code": "19820",
         "total_functions": 88
       },
@@ -47940,7 +47940,7 @@
         },
         {
           "address": "4020",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.54318,
           "metadata": {
             "virtual_address": "33592008"
           },
@@ -48093,7 +48093,7 @@
         },
         {
           "address": "13840",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33601828"
           },
@@ -48102,7 +48102,7 @@
         },
         {
           "address": "14516",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33602504"
           },
@@ -48120,7 +48120,7 @@
         },
         {
           "address": "16168",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 96.88921,
           "metadata": {
             "virtual_address": "33604156"
           },
@@ -48129,7 +48129,7 @@
         },
         {
           "address": "17860",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 92.52227,
           "metadata": {
             "virtual_address": "33605848"
           },
@@ -48147,7 +48147,7 @@
         },
         {
           "address": "18648",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33606636"
           },
@@ -48165,7 +48165,7 @@
         },
         {
           "address": "21388",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 85.303795,
           "metadata": {
             "virtual_address": "33609376"
           },
@@ -48201,11 +48201,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 15.861292807949349,
-        "matched_code": "2852",
-        "matched_code_percent": 12.539570875835386,
-        "matched_functions": 34,
-        "matched_functions_percent": 70.83333333333333,
+        "fuzzy_match_percent": 62.370128810411536,
+        "matched_code": "6968",
+        "matched_code_percent": 30.63665142455153,
+        "matched_functions": 37,
+        "matched_functions_percent": 77.08333333333333,
         "total_code": "22744",
         "total_functions": 48
       },
@@ -48344,7 +48344,7 @@
         },
         {
           "address": "1192",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588392"
           },
@@ -48353,7 +48353,7 @@
         },
         {
           "address": "2088",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33589288"
           },
@@ -48452,7 +48452,7 @@
         },
         {
           "address": "5192",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33592392"
           },
@@ -48461,7 +48461,7 @@
         },
         {
           "address": "5984",
-          "fuzzy_match_percent": 84.29434,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33593184"
           },
@@ -48479,7 +48479,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 36.18193015835777,
+        "fuzzy_match_percent": 98.40226321407626,
         "matched_code": "1620",
         "matched_code_percent": 23.75366568914956,
         "matched_functions": 23,
@@ -48739,7 +48739,7 @@
         },
         {
           "address": "1772",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 95.916664,
           "metadata": {
             "virtual_address": "33588972"
           },
@@ -48757,7 +48757,7 @@
         },
         {
           "address": "3112",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.88739,
           "metadata": {
             "virtual_address": "33590312"
           },
@@ -48856,7 +48856,7 @@
         },
         {
           "address": "7332",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 92.493126,
           "metadata": {
             "virtual_address": "33594532"
           },
@@ -48874,7 +48874,7 @@
         },
         {
           "address": "9384",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 98.888885,
           "metadata": {
             "virtual_address": "33596584"
           },
@@ -48928,7 +48928,7 @@
         },
         {
           "address": "10472",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.13648,
           "metadata": {
             "virtual_address": "33597672"
           },
@@ -48937,7 +48937,7 @@
         },
         {
           "address": "11444",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 99.56813,
           "metadata": {
             "virtual_address": "33598644"
           },
@@ -49081,7 +49081,7 @@
         },
         {
           "address": "14844",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 86.63903,
           "metadata": {
             "virtual_address": "33602044"
           },
@@ -49144,7 +49144,7 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 45.29148836078525,
+        "fuzzy_match_percent": 96.45790638568351,
         "matched_code": "6136",
         "matched_code_percent": 36.72492219296146,
         "matched_functions": 55,
@@ -49269,7 +49269,7 @@
         },
         {
           "address": "736",
-          "fuzzy_match_percent": 0.0,
+          "fuzzy_match_percent": 100.0,
           "metadata": {
             "virtual_address": "33588724"
           },
@@ -49377,11 +49377,11 @@
         }
       ],
       "measures": {
-        "fuzzy_match_percent": 56.43743146459748,
-        "matched_code": "1196",
-        "matched_code_percent": 29.000969932104752,
-        "matched_functions": 17,
-        "matched_functions_percent": 70.83333333333333,
+        "fuzzy_match_percent": 77.19397850630456,
+        "matched_code": "2052",
+        "matched_code_percent": 49.75751697381183,
+        "matched_functions": 18,
+        "matched_functions_percent": 75.0,
         "total_code": "4124",
         "total_functions": 24
       },

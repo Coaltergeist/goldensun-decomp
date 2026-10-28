@@ -1202,7 +1202,63 @@ void OvlFunc_964_200a040(void) {
     API_MapActor_SetPos(0xf, 0, 0);
     API_MapActor_SetPos(0x10, 0, 0);
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200a0a4.s");
+extern unsigned char CS964P_OpenTiles[] __asm__(".Lm964_33ec");
+extern unsigned char CS964P_ClosedTiles[] __asm__(".Lm964_340c");
+static inline void CS964P_MarkActor(int id)
+{
+    int x = ((struct Actor *)__MapActor_GetActor(id))->pos.x;
+    int z = ((struct Actor *)__MapActor_GetActor(id))->pos.z;
+    API_Func_8010704(20, 56, 1, 1, x >> 20, z >> 20);
+}
+void OvlFunc_964_200a0a4(void)
+{
+    int count = 0;
+    API_CutsceneStart();
+    API_Func_8010704(0x53, 0x2d, 11, 8, 19, 45);
+    CS964P_MarkActor(19);
+    CS964P_MarkActor(20);
+    CS964P_MarkActor(21);
+    CS964P_MarkActor(22);
+    CS964P_MarkActor(23);
+    if ((((struct Actor *)__MapActor_GetActor(19))->pos.x >> 20) == 25 && (((struct Actor *)__MapActor_GetActor(19))->pos.z >> 20) == 49)
+        count++;
+    if ((((struct Actor *)__MapActor_GetActor(20))->pos.x >> 20) == 23 && (((struct Actor *)__MapActor_GetActor(20))->pos.z >> 20) == 49)
+        count++;
+    if ((((struct Actor *)__MapActor_GetActor(21))->pos.x >> 20) == 25 && (((struct Actor *)__MapActor_GetActor(21))->pos.z >> 20) == 47)
+        count++;
+    if ((((struct Actor *)__MapActor_GetActor(22))->pos.x >> 20) == 23 && (((struct Actor *)__MapActor_GetActor(22))->pos.z >> 20) == 47)
+        count++;
+    if ((((struct Actor *)__MapActor_GetActor(23))->pos.x >> 20) == 24 && (((struct Actor *)__MapActor_GetActor(23))->pos.z >> 20) == 48)
+        count++;
+    if (count == 5) {
+        if (API_GetFlag(0x984)) {
+            API_CutsceneEnd();
+            return;
+        }
+        API_CutsceneWait(20);
+        API_Func_80933d4(0xcccc, 0x1999);
+        API_Func_80933f8(0x1d80000, -1, 0x30c0000, 1);
+        API_Func_8093530();
+        API_CutsceneWait(30);
+        API_SetFlag(0x984);
+        API_PlaySound(0x9e);
+        CallFunc_8010560(32, 46, CS964P_OpenTiles);
+        API_Func_8010704(24, 60, 1, 1, 32, 47);
+        API_CutsceneWait(40);
+    } else if (API_GetFlag(0x984)) {
+        API_CutsceneWait(20);
+        API_Func_80933d4(0xcccc, 0x1999);
+        API_Func_80933f8(0x1d80000, -1, 0x30c0000, 1);
+        API_Func_8093530();
+        API_CutsceneWait(30);
+        API_ClearFlag(0x984);
+        API_PlaySound(0x9f);
+        CallFunc_8010560(32, 46, CS964P_ClosedTiles);
+        API_Func_8010704(31, 47, 1, 1, 32, 47);
+        API_CutsceneWait(40);
+    }
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_964_200a0a4(void);
 

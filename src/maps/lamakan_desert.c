@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern void __Func_80955b0(int a, int b, int c);
 
@@ -263,7 +264,86 @@ void OvlFunc_933_2009180(void) {
     *(int *)((char *)__MapActor_GetActor(0) + 0x6c) = 0;
     __StartMapBattle(0x35, 4);
 }
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20092fc.s");
+struct CS933M_State { unsigned char pad[0x1f4]; int actorId; };
+extern struct CS933M_State CS933M_State __asm__("gState");
+struct CS933M_Field { unsigned char pad[0x1e0]; struct Actor *camera; };
+extern struct CS933M_Field *CS933M_Field __asm__("iwram_3001ebc");
+extern void OvlFunc_933_2009054(void);
+extern unsigned char iwram_3001ebc[];
+extern int __TestCollision(void *, int *);
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_WaitMovement(void *);
+
+void OvlFunc_933_20092fc(void) {
+    struct Actor *obj;
+    struct CS933M_Field *field;
+    int actorId;
+    struct Actor *actor;
+    int vec[3];
+    int result;
+    unsigned int bits;
+    struct EffectData933 data;
+    struct EffectData933 *dataPtr;
+    int x;
+    int y;
+
+    OvlFunc_933_2009054();
+    field = CS933M_Field;
+    actorId = CS933M_State.actorId;
+    obj = field->camera;
+    actor = ((struct Actor *)__MapActor_GetActor(actorId));
+
+    vec[0] = actor->pos.x;
+    vec[1] = actor->pos.y;
+    vec[2] = actor->pos.z + (0xc0 << 9);
+    result = __TestCollision(actor, vec);
+
+    bits = iwram_3001e40 & 4;
+    if (bits == 0) {
+        unsigned int rotation = __Random();
+        dataPtr = &data;
+        dataPtr->unk22 = (short)(((rotation << 12) >> 16) + (0xf8 << 8));
+        x = actor->pos.x + (((__Random() * 12) >> 16) << 16) - 0x60000;
+        y = ((__Random() * 5) >> 16) * 0x1999 + 0x7ffd;
+        OvlFunc_common0_10c(x, actor->pos.y, actor->pos.z, 0,
+                            bits, y, 0x800000, dataPtr);
+    }
+
+    if (result < 0) {
+        API_MapActor_Surprise(actorId, 0x81 << 1);
+        API_Actor_TravelTo(actor, actor->pos.x, actor->pos.y,
+                           actor->pos.z + (0x80 << 12));
+        __Actor_SetAnim(actor, 7);
+        __Actor_WaitMovement(actor);
+        do {
+            __WaitFrames(1);
+        } while (actor->pos.y != actor->floorPos);
+        __Actor_SetAnim(actor, 6);
+        __WaitFrames(3);
+        return;
+    }
+
+    vec[0] = actor->pos.x;
+    vec[1] = actor->pos.y;
+    vec[2] = actor->pos.z + (0x80 << 12);
+    result = __TestCollision(actor, vec);
+    if (result > 0) return;
+
+    vec[0] = actor->pos.x + 0x5b333;
+    vec[1] = actor->pos.y;
+    vec[2] = actor->pos.z + 0x5b333;
+    result = __TestCollision(actor, vec);
+    if (result > 0) return;
+
+    vec[0] = actor->pos.x - 0x5b333;
+    vec[1] = actor->pos.y;
+    vec[2] = actor->pos.z + 0x5b333;
+    result = __TestCollision(actor, vec);
+    if (result > 0) return;
+
+    obj->pos.z += (0xc0 << 9);
+    actor->pos.z += (0xc0 << 9);
+}
 extern void OvlFunc_933_2009054(void);
 extern void __vec3_translate(int, int, void *);
 extern unsigned char iwram_3001ebc[];
@@ -333,7 +413,62 @@ extern void __Func_80105d4(int, int, int, int, int, int);
 extern void __Func_8091ff0(int);
 extern void OvlFunc_933_20084e4(void);
 
-INCLUDE_ASM("asm/maps/lamakan_desert/LamakanDesert_MapInit.s");
+struct CS933I_StateView {
+    unsigned char beforeMap[0x1c0];
+    short map;
+    unsigned char beforeHeat[0x22c - 0x1c2];
+    unsigned short heatLimit, heatStatus, heatParameter;
+};
+struct CS933I_SceneView { unsigned char beforeTransition[0x1c0]; int transition; };
+extern struct CS933I_StateView CS933I_State __asm__("gState");
+extern struct CS933I_SceneView *CS933I_Scene __asm__("iwram_3001ebc");
+int LamakanDesert_MapInit(void)
+{
+    struct CS933I_StateView *state = &CS933I_State;
+    int map;
+    state->heatLimit = 600;
+    state->heatStatus = 0;
+    state->heatParameter = 0x119;
+    if (state->map != (int)Const5C) {
+        CS933I_Scene->transition = 0x100;
+        OvlFunc_933_2009c1c();
+        API_StartTask(OvlFunc_933_2008cd0, 0xc80);
+        map = state->map;
+        if (map == (int)Const59) {
+            int atlasRow = 126;
+            __Func_80105d4(22, 7, 4, 2, 64, atlasRow);
+            __Func_80105d4(8, 10, 4, 2, 68, atlasRow);
+            __Func_80105d4(23, 21, 4, 2, 72, atlasRow);
+            __Func_80105d4(16, 42, 4, 2, 76, atlasRow);
+            __Func_80105d4(36, 44, 4, 2, 80, atlasRow);
+            __Func_80105d4(14, 55, 4, 2, 84, atlasRow);
+        } else if (map == (int)Const5A) {
+            int atlasRow = 126;
+            __Func_80105d4(42, 5, 4, 2, 64, atlasRow);
+            __Func_80105d4(20, 11, 4, 2, 68, atlasRow);
+            __Func_80105d4(14, 12, 4, 2, 72, atlasRow);
+            __Func_80105d4(56, 18, 4, 2, 76, atlasRow);
+            __Func_80105d4(7, 22, 4, 2, 80, atlasRow);
+            __Func_80105d4(44, 23, 4, 2, 84, atlasRow);
+            __Func_80105d4(38, 24, 4, 2, 88, atlasRow);
+            __Func_80105d4(26, 28, 4, 2, 92, atlasRow);
+            __Func_80105d4(17, 35, 4, 2, 96, atlasRow);
+            __Func_80105d4(50, 36, 4, 2, 100, atlasRow);
+            __Func_80105d4(34, 43, 4, 2, 104, atlasRow);
+            __Func_80105d4(6, 46, 4, 2, 108, atlasRow);
+            __Func_80105d4(27, 55, 4, 2, 112, atlasRow);
+            __Func_80105d4(43, 56, 4, 2, 116, atlasRow);
+        } else if (map == (int)Const5B) {
+            int atlasRow = 124;
+            __Func_8091ff0(0xa9);
+            __Func_80105d4(8, 14, 4, 4, 64, atlasRow);
+            __Func_80105d4(6, 18, 4, 4, 68, atlasRow);
+            __Func_80105d4(10, 21, 4, 4, 72, atlasRow);
+        }
+        OvlFunc_933_20084e4();
+    }
+    return 0;
+}
 extern void __MapActor_SetAnim(int, int);
 extern void __MapActor_TravelToAnimWait(int, int, int);
 

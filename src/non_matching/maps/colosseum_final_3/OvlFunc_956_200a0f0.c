@@ -1,25 +1,29 @@
-extern void OvlFunc_common1_5e4(int, void *, int);
-void OvlFunc_956_200a0f0(void *arg0)
+extern void CS956C_RoomAction(unsigned int) __asm__("OvlFunc_common1_2c4");
+extern void CS956C_FinishCall(int, unsigned int, int) __asm__("OvlFunc_common1_5e4");
+extern int CS956C_Check(unsigned int, int) __asm__("OvlFunc_common1_4cc");
+extern void CS956C_Complete(unsigned int, int) __asm__("OvlFunc_common1_588");
+extern void CS956C_Message(unsigned int, int) __asm__("__ActorMessage");
+struct CS956C_State { unsigned char pad[0x1c2]; short room; };
+extern struct CS956C_State CS956C_State __asm__("gState");
+static inline void CS956C_Place(int actor, int x, int z)
+{ extern void OvlFunc_common1_1078(int, int, int); OvlFunc_common1_1078(actor, x, z); }
+static inline void CS956C_Finish(int result, unsigned int actor, int index)
+{ CS956C_FinishCall(result, actor, index); }
+void OvlFunc_956_200a0f0(unsigned int arg0)
 {
     extern void OvlFunc_common1_1078(int, int, int);
     extern void OvlFunc_common1_1254(int);
     extern void __Func_8093fa0(void);
-    unsigned int r3;
-    unsigned int r2;
-    int r6;
+    int result;
 
-    r3 = (unsigned int)&gState;
-    r2 = 0xe1;
-    r2 <<= 1;
-    r3 += r2;
-    if (*(short *)r3 == 2) {
-        OvlFunc_common1_2c4();
+    if (CS956C_State.room == 2) {
+        CS956C_RoomAction(arg0);
         return;
     }
 
     __CutsceneStart();
-    r6 = OvlFunc_common1_4cc(arg0, 4);
-    if (r6 == 0) {
+    result = CS956C_Check(arg0, 4);
+    if (result == 0) {
         struct Actor *a;
         int x;
         int y;
@@ -28,17 +32,17 @@ void OvlFunc_956_200a0f0(void *arg0)
 
         __MessageID(0x20bf);
         __Func_80933d4(0xc0 << 10, 0xc0 << 7);
-        __Func_80933f8(0xd6 << 18, -1, 0xa8 << 16, 1);
+        API_Func_80933f8(0xd6 << 18, -1, 0xa8 << 16, 1);
         __Func_8093530();
         __CutsceneWait(0x1e);
-        __ActorMessage(arg0, 0);
-        __ActorMessage(arg0, 0);
-        OvlFunc_common1_1078(0, 0xcc << 2, 0xc8);
+        CS956C_Message(arg0, 0);
+        CS956C_Message(arg0, 0);
+        CS956C_Place(0, 0xcc << 2, 0xc8);
         API_MapActor_SetSpeed(0, 0x80 << 9, 0x80 << 8);
         API_MapActor_TravelToAnimWait(0, 0xd2 << 2, 0xc8);
-        API_Func_8092adc(0, 0xc0 << 8, 0x14);
+        __Func_8092adc(0, 0xc0 << 8, 0x14);
         __Func_8093fa0();
-        __Func_80933f8(-1, -1, -1, 0);
+        API_Func_80933f8(-1, -1, -1, 0);
         API_MapActor_SetSpeed(0, 0x80 << 8, 0x80 << 7);
 
         a = __MapActor_GetActor(0);
@@ -67,15 +71,15 @@ void OvlFunc_956_200a0f0(void *arg0)
         __Actor_WaitMovement((unsigned int)a);
 
         API_MapActor_SetAnim(0, 0xc);
-        __ActorMessage(arg0, 0);
+        CS956C_Message(arg0, 0);
         OvlFunc_common1_1254(0);
         __SetCameraTarget(0, 0);
-        OvlFunc_common1_588(arg0, 4);
-    } else if (r6 == 1) {
+        CS956C_Complete(arg0, 4);
+    } else if (result == 1) {
         __MessageID(0x20be);
-        __ActorMessage(arg0, 0);
+        CS956C_Message(arg0, 0);
     }
 
-    OvlFunc_common1_5e4(r6, arg0, 4);
+    CS956C_Finish(result, arg0, 4);
     __CutsceneEnd();
 }

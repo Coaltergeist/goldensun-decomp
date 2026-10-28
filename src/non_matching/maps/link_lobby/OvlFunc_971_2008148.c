@@ -1,10 +1,21 @@
+static inline void LobbyConnection_SetState(unsigned char *base, int state)
+{
+    *(short *)(base + 0x182) = state;
+}
+static inline int LobbyConnection_GetFlag(int flag)
+{
+    extern int __GetFlag(int);
+    return __GetFlag(flag);
+}
+
 int OvlFunc_971_2008148(void)
 {
+    extern int __GetFlag(int);
+    extern void __SetFlag(int);
+    extern void __ClearFlag(int);
     unsigned char *base;
     int res;
     unsigned char *actor;
-    int one = 1;
-    int two = 2;
 
     base = *(unsigned char **)iwram_3001ebc;
     res = 1;
@@ -14,7 +25,7 @@ int OvlFunc_971_2008148(void)
     }
     if (*(short *)(base + (0xc1 << 1)) != 2) {
         OvlFunc_971_200808c(0);
-        if (__GetFlag(0x303) == 0) {
+        if (LobbyConnection_GetFlag(0x303) == 0) {
             L1f4c++;
             if (L1f4c > 0x19) {
                 void (*fn)(void *, unsigned int) = Func_80008d4;
@@ -35,8 +46,8 @@ int OvlFunc_971_2008148(void)
             if (OvlFunc_971_200808c(0) != 0 &&
                 (OvlFunc_971_200808c(1) != 0 || OvlFunc_971_200808c(2) != 0)) {
                 __SetFlag(0x201);
-                if (__GetFlag(0x202) != 0) {
-                    *(short *)(base + (0xc1 << 1)) = one;
+                if (LobbyConnection_GetFlag(0x202) != 0) {
+                    LobbyConnection_SetState(base, 1);
                 }
                 res = 1;
             } else {
@@ -44,22 +55,22 @@ int OvlFunc_971_2008148(void)
                 res = 0;
             }
         }
-        if (__GetFlag(0x201) != 0 && __GetFlag(0x202) != 0 && __GetFlag(0x80 << 2) == 0) {
-            *(short *)(base + (0xc1 << 1)) = one;
+        if (LobbyConnection_GetFlag(0x201) != 0 && LobbyConnection_GetFlag(0x202) != 0 && LobbyConnection_GetFlag(0x80 << 2) == 0) {
+            LobbyConnection_SetState(base, 1);
         }
     }
-    if ((__GetFlag(0x201) != 0 || __GetFlag(0x202) != 0) &&
-        __GetFlag(0x173) == 0 &&
+    if ((LobbyConnection_GetFlag(0x201) != 0 || LobbyConnection_GetFlag(0x202) != 0) &&
+        LobbyConnection_GetFlag(0x173) == 0 &&
         OvlFunc_971_200808c(0) == 0 &&
         L1f4c > 0x18) {
-        *(short *)(base + (0xc1 << 1)) = two;
+        LobbyConnection_SetState(base, 2);
         __SetFlag(0x205);
         __ClearFlag(0x201);
         __ClearFlag(0x202);
         OvlFunc_971_2008128(4);
     }
-    if (__GetFlag(0x205) != 0) {
-        *(short *)(base + (0xc1 << 1)) = two;
+    if (LobbyConnection_GetFlag(0x205) != 0) {
+        LobbyConnection_SetState(base, 2);
     }
     return res;
 }

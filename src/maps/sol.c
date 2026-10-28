@@ -1,6 +1,7 @@
 /* rom_78dee8 (overlay file 895): consolidated TU — sol map overlay. */
 
 #include "nonmatching.h"
+#include "actor.h"
 #include "api.h"
 
 INCLUDE_ASM("asm/maps/sol/exports.s");
@@ -621,7 +622,205 @@ void OvlFunc_895_2008d1c(void)
     API_ClearFlag(0x12f);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_2008f8c.s");
+
+void OvlFunc_895_2008f8c(void)
+{
+    extern unsigned char _MSG_fe0[];
+    extern int __Func_8091c7c(int, int);
+    extern int __ShowActorMessage_NoWait(int, int);
+    int choice1;
+    unsigned char *actor;
+
+    API_CutsceneStart();
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_SetPos(8, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    }
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_SetPos(5, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    }
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_SetPos(1, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    }
+    API_MapActor_SetSpeed(8, 0x9999, 0x4ccc);
+    API_MapActor_SetSpeed(5, 0x9999, 0x4ccc);
+    API_MapActor_SetSpeed(1, 0x9999, 0x4ccc);
+    API_MapActor_SetAnim(1, 2);
+    API_MapActor_SetAnim(5, 2);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelBy(1, -16, 0);
+    API_MapActor_TravelBy(5, 16, 0);
+    API_MapActor_TravelBy(8, 0, -16);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_MapActor_SetAnim(0, 0);
+    API_MapActor_SetAnim(1, 0);
+    API_MapActor_SetAnim(5, 0);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(5, 0xa000, 0);
+    API_Func_8092adc(8, 0xc000, 30);
+    API_Func_8092adc(1, 0x8000, 0);
+    API_Func_8092adc(5, 0, 0);
+    API_Func_8092adc(0, 0x4000, 0);
+    API_Func_8092adc(8, 0x8000, 30);
+    API_Func_8092adc(1, 0x4000, 0);
+    API_Func_8092adc(5, 0x8000, 0);
+    API_Func_8092adc(0, 0, 0);
+    API_Func_8092adc(8, 0x4000, 30);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(5, 0xa000, 0);
+    API_Func_8092adc(0, 0xc000, 0);
+    API_Func_8092adc(8, 0xc000, 0x28);
+    API_Func_80925cc(8, 2);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelBy(8, 0, -16);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_CutsceneWait(6);
+    API_Func_8092adc(8, 0x8000, 20);
+    API_Func_8092adc(8, 0, 20);
+    API_Func_8092adc(8, 0xc000, 0x28);
+    API_Func_80925cc(8, 2);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelBy(8, 0, -0x20);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_Func_80933d4(0x20000, 0x4000);
+    API_Func_80933f8(0x6310000, -1, 0x960000, 1);
+    API_Func_8093530();
+    API_CutsceneWait(10);
+    API_Func_80933d4(0x13333, 0x2666);
+    API_Func_80933f8(0x6550000, -1, 0x640000, 1);
+    API_Func_8093530();
+    API_Func_80933f8(0x6b60000, -1, 0x640000, 1);
+    API_Func_8093530();
+    API_MapActor_SetAnim(8, 1);
+    API_Func_80933f8(0x6d80000, -1, 0x960000, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x28);
+    API_Func_80933d4(0x26666, 0x4ccc);
+    API_Func_80933f8(0x6840000, -1, 0x1000000, 1);
+    API_Func_8093530();
+    API_MapActor_DoAnim(8, 3);
+    API_CutsceneWait(10);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(5, 0xa000, 10);
+    API_MapActor_Emote(1, 0x101, 20);
+    API_MessageID(0xfd6);
+    API_ActorMessage_Wait(1, 0, 10);
+    API_MapActor_Emote(8, 0x102, 0x3c);
+    API_Func_809259c(8, 2);
+    API_ActorMessage_Wait(8, 0, 10);
+    API_Func_809259c(0, 2);
+    API_Func_809259c(1, 2);
+    API_Func_809259c(5, 2);
+    API_MapActor_Surprise(0, 0x102);
+    API_MapActor_Surprise(1, 0x102);
+    API_MapActor_Surprise(5, 0x102);
+    API_CutsceneWait(0x28);
+    API_Func_80925cc(8, 2);
+    API_CutsceneWait(20);
+    API_ActorMessage(8, 0);
+    API_MapActor_DoAnim(8, 4);
+    API_ActorMessage_Wait(8, 0, 10);
+    API_MapActor_TurnToFaceActor(0, 5, 0);
+    API_CutsceneWait(0x28);
+    API_Func_809259c(0, 1);
+    API_Func_80925cc(5, 1);
+    API_CutsceneWait(10);
+    API_Func_8092adc(0, 0xc000, 0);
+    API_Func_8092adc(5, 0xa000, 20);
+    API_Func_80925cc(5, 2);
+    API_ActorMessage_Wait(5, 0, 10);
+    API_MapActor_DoAnim(8, 4);
+    API_ActorMessage_Wait(8, 0, 10);
+    API_Func_8092adc(8, 0x3000, 10);
+    API_ActorMessage_Wait(8, 0, 0x28);
+    API_Func_8092adc(8, 0xc000, 20);
+    API_Func_80925cc(8, 1);
+    API_CutsceneWait(10);
+    API_MapActor_Surprise(8, 0x102);
+    API_Func_8092adc(8, 0x8000, 20);
+    API_Func_8092adc(8, 0, 20);
+    API_Func_8092adc(8, 0xc000, 0x3c);
+    API_Func_80925cc(8, 2);
+    API_CutsceneWait(10);
+    API_ActorMessage_Wait(8, 0, 10);
+    API_Func_8092adc(8, 0x4000, 20);
+    API_MapActor_Jump(8, 2, 20);
+    API_ActorMessage_Wait(8, 0, 0x28);
+    API_Func_8092adc(1, 0, 20);
+    __ShowActorMessage_NoWait(1, 0);
+    choice1 = __Func_8091c7c(0, 0);
+    if (choice1 == 0) {
+        API_MessageID((int)_MSG_fe0);
+        API_Func_80925cc(1, 1);
+        API_ActorMessage_Wait(1, 0, 10);
+    } else {
+        API_MessageID(0xfe1);
+        API_Func_8092adc(5, 0x8000, 20);
+        API_ActorMessage_Wait(5, 0, 10);
+        API_Func_8092adc(0, 0xc000, 0);
+        API_Func_8092adc(1, 0xe000, 0);
+        API_Func_8092adc(5, 0xa000, 0x3c);
+        API_MapActor_Emote(0, 0x102, 0x28);
+        API_Func_80925cc(1, 1);
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(1, 3);
+        API_CutsceneWait(10);
+        API_Func_8092adc(1, 0, 0);
+        API_Func_8092adc(5, 0x8000, 30);
+        API_Func_80925cc(1, 1);
+        API_CutsceneWait(10);
+        API_ActorMessage_Wait(1, 0, 10);
+    }
+    API_MapActor_SetSpeed(8, 0x9999, 0x4ccc);
+    API_MapActor_SetAnim(8, 2);
+    API_MapActor_TravelBy(8, 0, 0x30);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_CutsceneWait(6);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(5, 0xa000, 0);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetAnim(8, 1);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(1, 3);
+    API_MapActor_SetAnim(5, 3);
+    API_MapActor_DoAnim(0, 3);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(1, 2);
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_TravelTo(1, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_SetAnim(5, 2);
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_TravelTo(5, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_SetAnim(8, 2);
+    actor = ((void *)__MapActor_GetActor(0));
+    if (actor != 0) {
+        API_MapActor_TravelTo(8, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_WaitMovement(8);
+    API_MapActor_SetPos(1, 0, 0);
+    API_MapActor_SetPos(5, 0, 0);
+    API_MapActor_SetPos(8, 0, 0);
+    API_MapActor_SetAnim(8, 1);
+    API_MapActor_SetAnim(1, 1);
+    API_MapActor_SetAnim(5, 1);
+    API_SetFlag(0x804);
+    API_ClearFlag(0x12f);
+    API_CutsceneEnd();
+}
 void OvlFunc_895_200961c(void)
 {
     unsigned char *actor;
@@ -681,7 +880,69 @@ void OvlFunc_895_200961c(void)
     API_SetFlag(0x825);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/sol/OvlFunc_895_20097c0.s");
+void OvlFunc_895_20097c0(int restoreActors)
+{
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x64, 0x20);
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x68, 0x20);
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x6c, 0x20);
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x70, 0x20);
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x74, 0x20);
+    API_Func_8010704(0x7a, 0x14, 1, 1, 0x78, 0x20);
+    if (API_GetFlag(0x311)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x64, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(9, 0x6380000, 0x2080000);
+    } else if (API_GetFlag(0x310)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x64, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(9, 0x6580000, 0x2080000);
+    }
+    if (API_GetFlag(0x313)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x68, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(10, 0x6780000, 0x2080000);
+    } else if (API_GetFlag(0x312)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x68, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(10, 0x6980000, 0x2080000);
+    }
+    if (API_GetFlag(0x315)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x6c, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(11, 0x6b80000, 0x2080000);
+    } else if (API_GetFlag(0x314)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x6c, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(11, 0x6d80000, 0x2080000);
+    }
+    if (API_GetFlag(0x317)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x70, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(12, 0x6f80000, 0x2080000);
+    } else if (API_GetFlag(0x316)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x70, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(12, 0x7180000, 0x2080000);
+    }
+    if (API_GetFlag(0x319)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x74, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(13, 0x7380000, 0x2080000);
+    } else if (API_GetFlag(0x318)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x74, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(13, 0x7580000, 0x2080000);
+    }
+    if (API_GetFlag(0x31b)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x78, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(14, 0x7780000, 0x2080000);
+    } else if (API_GetFlag(0x31a)) {
+        API_Func_8010704(0x79, 0x14, 1, 1, 0x78, 0x20);
+        if (restoreActors)
+            API_MapActor_SetPos(14, 0x7980000, 0x2080000);
+    }
+}
 
 void OvlFunc_895_2009aac(void)
 {

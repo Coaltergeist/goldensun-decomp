@@ -3,6 +3,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 INCLUDE_ASM("asm/maps/mccoys_palace/exports.s");
 
@@ -1346,7 +1347,63 @@ void OvlFunc_909_20099b0(void)
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace/OvlFunc_909_200a1bc.s");
+extern unsigned char *CS909C_Scene __asm__("iwram_3001ebc");
+void OvlFunc_909_200a1bc(void)
+{
+    unsigned char *scene;
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    ((struct Actor *)__Func_8093554())->__unk55 = 0;
+    API_Func_80933f8(0x2740000, -1, 0x2ec0000, 0);
+    API_Func_8010704(38, 55, 4, 1, 38, 45);
+    API_Func_8010704(42, 55, 4, 1, 38, 46);
+    ((struct Actor *)__MapActor_GetActor(0))->facing = 0;
+    API_MapActor_SetPos(0, 0x2410000, 0x2f80000);
+    ((struct Actor *)__MapActor_GetActor(19))->facing = 0;
+    API_MapActor_SetPos(19, 0x2500000, 0x2f80000);
+    ((struct Actor *)__MapActor_GetActor(17))->facing = 0x9000;
+    API_MapActor_SetPos(17, 0x2960000, 0x2fc0000);
+    API_MapActor_SetPos(21, 0x2680000, 0x2d80000);
+    API_MapActor_SetPos(22, 0x2780000, 0x2d80000);
+    API_MapActor_SetPos(23, 0x2880000, 0x2d80000);
+    API_MapActor_SetPos(24, 0x2980000, 0x2d80000);
+    __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(21)), 0);
+    __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(22)), 0);
+    __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(23)), 0);
+    __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(24)), 0);
+    ((struct Actor *)__MapActor_GetActor(21))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(22))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(23))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(24))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(21))->pos.y = -0x40000;
+    ((struct Actor *)__MapActor_GetActor(22))->pos.y = -0x40000;
+    ((struct Actor *)__MapActor_GetActor(23))->pos.y = -0x40000;
+    ((struct Actor *)__MapActor_GetActor(24))->pos.y = -0x40000;
+    __Func_800fe9c();
+    API_WaitFrames(1);
+    scene = CS909C_Scene;
+    *(int *)(scene + 0x1c0) = 0x201;
+    *(int *)(scene + 0x1c8) = 16;
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_MapActor_SetSpeed(19, 0x9999, 0x4ccc);
+    API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+    API_MapActor_TravelToAnim(19, 0x274, 0x2fc);
+    API_MapActor_TravelToAnimWait(0, 0x264, 0x2fc);
+    API_MapActor_SetAnim(19, 1);
+    API_CutsceneWait(20);
+    API_Func_80925cc(19, 1);
+    API_MessageID(0x1746);
+    API_ActorMessage_Wait(19, 0, 10);
+    API_MapActor_TravelToAnimWait(19, 0x26e, 0x30c);
+    API_Func_8092adc(19, 0xc000, 10);
+    API_Func_80925cc(17, 2);
+    API_ActorMessage_Wait(17, 0, 10);
+    API_MapActor_DoAnim(0, 3);
+    API_ClearFlag(0x12f);
+    API_SetFlag(0x202);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/mccoys_palace/mccoys_palace_data.s");
 
 INCLUDE_ASM("asm/maps/mccoys_palace/imports.s");

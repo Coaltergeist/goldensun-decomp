@@ -1,3 +1,8 @@
+#include "actor.h"
+struct CS922S_State { unsigned char pad[0x1f4]; int actorId; };
+extern struct CS922S_State CS922S_State __asm__("gState");
+extern volatile unsigned int CS922S_Keys __asm__("gKeyHeld");
+extern void CS922S_Update(struct Actor *) __asm__("OvlFunc_922_200a014");
 extern short Lm922_2464[] __asm__(".Lm922_2464");
 
 extern struct Actor *__GetFieldActor(int);
@@ -8,20 +13,19 @@ extern int __Func_8011f54(int, int, int);
 
 extern void __vec3_translate(int, int, vec3_t *);
 
+static inline void CS922S_Advance(int distance, int direction, vec3_t *pos)
+{ __vec3_translate(distance, direction, pos); }
 void OvlFunc_922_200a094(void) {
-    int r0;
     struct Actor *actor;
     short target;
     int saved_tile;
     vec3_t pos;
 
-    r0 = 0xfa;
-    r0 <<= 1;
-    actor = __GetFieldActor(*(int *)((char *)&gState + r0));
+    actor = __GetFieldActor(CS922S_State.actorId);
 
 loop_start:
-    target = Lm922_2464[(gKeyHeld >> 4) & 0xf];
-    if ((target << 16) == (int)0xffff0000) {
+    target = Lm922_2464[(CS922S_Keys >> 4) & 0xf];
+    if ((unsigned short)target == 0xffff) {
         return;
     }
 
@@ -58,10 +62,10 @@ loop_start:
         __Actor_SetAnim(actor, 2);
         __Actor_SetAnimSpeed(actor, 0x30);
         __Actor_WaitMovement(actor);
-        actor->update = (actorfun_t *)OvlFunc_922_200a014;
+        actor->update = (actorfun_t *)CS922S_Update;
 
         while (1) {
-            __vec3_translate(0x80 << 13, target, &pos);
+            CS922S_Advance(0x100000, target, &pos);
             tile = __Func_8012038(*layer, pos.x, pos.z);
             if (tile == 0xff)
                 break;

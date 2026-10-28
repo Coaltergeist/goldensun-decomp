@@ -1,0 +1,93 @@
+struct CS954_StateView { unsigned char beforeActor[0x1f4]; int actorID; };
+extern struct CS954_StateView CS954_State __asm__("gState");
+extern struct Actor *CS954_Actor(int) __asm__("__MapActor_GetActor");
+extern unsigned char *CS954_Alloc(int, int) __asm__("__galloc_ewram");
+extern void CS954_Camera(void *, struct Actor *) __asm__("__Camera_SetTarget");
+static inline void CS954_Byte(unsigned char *p, int value) { *p = value; }
+
+void OvlFunc_954_2008540(void)
+{
+    int actorID, flag;
+    int speed, accel, initialAccel;
+    struct Actor *leader, *actor;
+    unsigned char *scene;
+    actorID = CS954_State.actorID;
+    leader = CS954_Actor(actorID);
+    actor = CS954_Actor(12);
+    API_SetFlag(0x302);
+    API_CutsceneStart();
+    API_MapActor_SetAnim(actorID, 8);
+    API_CutsceneWait(6);
+    actor->speed = 0x8000;
+    initialAccel = 0x3333;
+    actor->accel = initialAccel;
+    API_PlaySound(0xef);
+    __Actor_SetAnim(actor, 2);
+    __Actor_TravelTo(actor, actor->pos.x - 0x300000, 0, actor->pos.z);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(actorID, 2);
+    scene = CS954_Alloc(27, 0xccc);
+    CS954_Camera(*(void **)(scene + 0x1e0), actor);
+    API_MapActor_SetSpeed(actorID, 0x4ccc, initialAccel);
+    __Actor_TravelTo(leader, leader->pos.x - 0x180000, 0, leader->pos.z);
+    API_MapActor_WaitMovement(actorID);
+    API_MapActor_SetAnim(actorID, 1);
+    __Actor_WaitMovement(actor);
+    __Actor_SetAnim(actor, 1);
+    API_PlaySound(0x120);
+    API_PlaySound(0xd5);
+    API_CutsceneWait(15);
+    API_CutsceneEnd();
+    API_Func_8010704(0x25, 7, 1, 4, 0x22, 7);
+    API_Func_8010704(0x24, 7, 1, 4, 0x25, 7);
+    flag = API_GetFlag(0x301);
+    if (flag) {
+        API_CutsceneStart();
+        API_Func_80933d4(0x20000, 0x4000);
+        API_Func_80933f8(0x2280000, -1, 0xc80000, 1);
+        API_Func_8093530();
+        API_Func_80105d4(96, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(97, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(98, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(99, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(100, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(15);
+        API_CutsceneEnd();
+    } else {
+        API_SetFlag(0x301);
+        API_CutsceneStart();
+        API_Func_80933d4(0x20000, 0x4000);
+        API_Func_80933f8(0x2580000, -1, 0xc80000, 1);
+        API_Func_8093530();
+        actor = CS954_Actor(13);
+        CS954_Byte(&actor->__unk55, flag);
+        accel = 0x6666;
+        speed = 0xcccc;
+        actor->speed = speed;
+        actor->accel = accel;
+        __Actor_TravelTo(actor, actor->pos.x, 0x80000, actor->pos.z);
+        __Actor_SetAnim(actor, 3);
+        API_Func_80105d4(96, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(97, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(98, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(99, 0x1d, 1, 3, 0x22, 0x26);
+        API_CutsceneWait(3);
+        API_Func_80105d4(100, 0x1d, 1, 3, 0x22, 0x26);
+        actor = CS954_Actor(14);
+        CS954_Byte(&actor->__unk55, flag);
+        actor->accel = accel;
+        actor->speed = speed;
+        __Actor_TravelTo(actor, actor->pos.x, 0x200000, actor->pos.z);
+        __Actor_WaitMovement(actor);
+        API_CutsceneWait(15);
+        API_CutsceneEnd();
+        API_Func_8010704(0x2b, 12, 1, 1, 0x29, 12);
+    }
+}

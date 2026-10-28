@@ -19,7 +19,7 @@ void OvlFunc_959_200c794(void)
         return;
     }
 
-    __MapActor_Emote(0x19, 0x102, 0x1e);
+    API_MapActor_Emote(0x19, 0x102, 0x1e);
     __MapActor_Face(0x19, 0, 0);
 
     msg = 0x244f;
@@ -33,16 +33,16 @@ void OvlFunc_959_200c794(void)
     __Func_8093500(0, 1);
     __CutsceneWait(0x14);
 
-    __MapActor_Emote(0x19, 0x105, 0x3c);
+    API_MapActor_Emote(0x19, 0x105, 0x3c);
     __MessageID(msg + 1);
     __ActorMessage(0x19, 0);
 
-    __MapActor_Emote(0x19, 0x107, 0x3c);
+    API_MapActor_Emote(0x19, 0x107, 0x3c);
     __MessageID(msg + 2);
     __ActorMessage(0x19, 0);
 
     __CutsceneWait(0x46);
-    __MapActor_Emote(0x19, 0x100, 0x3c);
+    API_MapActor_Emote(0x19, 0x100, 0x3c);
     __MapActor_Face(0x19, 0, 0);
 
     __MessageID(msg + 3);
@@ -57,7 +57,7 @@ void OvlFunc_959_200c794(void)
     }
 
     __CutsceneWait(0x3c);
-    __MapActor_Emote(0x19, 0x105, 0x3c);
+    API_MapActor_Emote(0x19, 0x105, 0x3c);
 
     msg = 0x2455;
     __MessageID(msg);

@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+int __Func_8091a58(int, int);
 
 extern void __Actor_SetSpriteFlags(void *, int);
 
@@ -754,7 +755,6 @@ void OvlFunc_959_200901c(void)
 }
 
 extern int __Func_808e078(int, int, int);
-extern int __Func_8091a58__ret(int, int) __asm__("__Func_8091a58");
 
 int OvlFunc_959_2009038(int actor, int arg1)
 {
@@ -763,7 +763,7 @@ int OvlFunc_959_2009038(int actor, int arg1)
 
     API_CutsceneStart();
     obj = __Func_808e078(0, actor, arg1);
-    if (__Func_8091a58__ret(arg1, 0) != -1) {
+    if (((int)__Func_8091a58(arg1, 0)) != -1) {
         __MapActor_SetAnim(actor, 2);
         result = 1;
     } else {
@@ -784,7 +784,6 @@ void __MapActor_TravelToAnim(int, int, int);
 void __Func_8092adc(int, int, int);
 void __CutsceneWait(int);
 void __Func_808f1c0(int, int);
-void __Func_8091a58(int, int);
 void __MapActor_SetPos(int, int, int);
 
 void OvlFunc_959_20090a8(void)
@@ -1990,7 +1989,72 @@ void OvlFunc_959_200cf60(void) {
     API_WaitFrames(1);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d0e4.s");
+struct CS959R_StateView { unsigned char beforeRoom[0x1c2]; short room; };
+struct CS959R_SceneView { unsigned char beforeTransition[0x1c0]; int transition; };
+extern struct CS959R_StateView CS959R_State __asm__("gState");
+extern struct CS959R_SceneView *CS959R_Scene __asm__("iwram_3001ebc");
+extern void __Func_8092950(int, int);
+extern void __Func_800fe9c(void);
+extern void OvlFunc_959_200d4b0(void);
+extern void OvlFunc_959_2009150(void);
+extern void OvlFunc_959_200938c(void);
+extern void OvlFunc_959_2009a44(void);
+void OvlFunc_959_200d0e4(void)
+{
+    struct Actor *actor;
+    OvlFunc_959_200d4b0();
+    __Func_8092950(9, 1);
+    __Func_8092950(10, 1);
+    __Func_8092950(17, 1);
+    if (API_GetFlag(0x94c)) API_MapActor_SetPos(15, 0, 0);
+    if (API_GetFlag(0x949)) API_MapActor_SetPos(11, 0, 0);
+    if (API_GetFlag(0x94b)) API_MapActor_SetPos(16, 0, 0);
+    if (API_GetFlag(0xf2e)) API_MapActor_SetPos(8, 0, 0);
+    switch (CS959R_State.room) {
+    case 1: case 2: case 3:
+        CS959R_Scene->transition = 0x200;
+        __Func_80108c4(0xe00);
+        API_StartTask(OvlFunc_959_2009150, 0xc80);
+        API_WaitFrames(1);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        break;
+    case 10: case 13: case 20: case 23: case 24:
+        CS959R_Scene->transition = 0x209;
+        __Func_80108c4(0xc00);
+        __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(24)), 0);
+        if (API_GetFlag(0x314)) API_MapActor_SetPos(25, 0x3680000, 0x780000);
+        break;
+    case 21: case 22:
+        CS959R_Scene->transition = 0x200;
+        __Func_80108c4(0xe00);
+        API_StartTask(OvlFunc_959_200938c, 0xc80);
+        API_WaitFrames(1);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        break;
+    case 11: case 12:
+        CS959R_Scene->transition = 0x200;
+        if (API_GetFlag(0x94a)) OvlFunc_959_200a06c();
+        break;
+    case 31:
+        CS959R_Scene->transition = 0x200;
+        OvlFunc_959_200a06c();
+        break;
+    case 14: case 15: case 16:
+        API_StartTask(OvlFunc_959_2009a44, 0xc80);
+        break;
+    default:
+        CS959R_Scene->transition = 0x200;
+        __Func_80108c4(0xe00);
+        break;
+    }
+    actor = ((struct Actor *)__MapActor_GetActor(8));
+    __Actor_SetSpriteFlags(((struct Actor *)__MapActor_GetActor(8)), 0);
+    API_Func_8092b08(8, 1);
+    actor->scale.x = 0xc000;
+    actor->scale.y = 0xc000;
+}
 INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d324.s");
 
 extern void OvlFunc_959_2008ee0(int);
