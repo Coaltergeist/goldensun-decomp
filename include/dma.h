@@ -16,6 +16,8 @@ static inline void WaitForDma3(void) {
 // fill r0-r3 with dma-related values
 // stmia r3!, {r0,r1,r2}
 // subs r3, #0xc
+// _src and _cnt are read-write operands even though the asm leaves r0/r2
+// intact, so the compiler reloads them for each transfer as the ROM does.
 
 static inline void DMA3_COPY(const void *src, void *dst, u32 size) {
     register vu32 *_base __asm__("r3") = &REG_DMA3SAD;

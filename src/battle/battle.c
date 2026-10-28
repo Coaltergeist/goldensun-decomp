@@ -156,7 +156,7 @@ unsigned int GetWeaponType(unsigned int weaponID)
     return ret;
 }
 
-INCLUDE_ASM("asm/battle/battle/rodata_rom_b6e7c.s");
+INCLUDE_ASM("asm/battle/battle/rodata.s");
 
 INCLUDE_ASM("asm/battle/battle/GetWeaponSpriteID.s");
 

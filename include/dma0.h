@@ -2,8 +2,8 @@
 #define DMA0_H
 #include "gba/types.h"
 /* Program DMA0 SAD, DAD and CNT in address order. The fixed registers form
- * the STM register list, as in DMA3_SET. Write-back advances p by 12 bytes;
- * SUB restores it. Keep the read/write base operand and memory clobber. */
+ * the STM register list, as in DMA3_SET. Write-back advances p by 12 bytes
+ * and SUB restores it, so p is an input operand. Keep the memory clobber. */
 static inline void DMA0_SET(const void *src, void *dst, u32 control)
 {
     register volatile u32 *p asm("r3") = (volatile u32 *)0x040000b0;
