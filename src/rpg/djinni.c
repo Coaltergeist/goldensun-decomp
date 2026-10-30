@@ -93,7 +93,29 @@ unsigned int Func_807a350(unsigned int arg0, unsigned int arg1, unsigned int arg
 }
 
 INCLUDE_ASM("asm/rpg/djinni/Func_807a3a8.s");
-INCLUDE_ASM("asm/rpg/djinni/Func_807a458.s");
+int Func_807a458(unsigned int pc, int elem, int djinni)
+{
+    extern void Func_807a3a8(int pc, int elem, int djinni);
+    extern unsigned char *Func_8077330(int flag);
+    int p;
+    int *s;
+    unsigned char *u;
+    int idx;
+
+    Func_807a3a8(pc, elem, djinni);
+    p = (int)Func_8077330(pc > 7);
+    u = (unsigned char *)(p + 8);
+    s = (int *)(p + 0x108);
+    idx = *s;
+    p = idx << 2;
+    u[p] = elem;
+    idx++;
+    u += p;
+    u[1] = djinni;
+    u[2] = pc;
+    u[3] = 0xff;
+    *s = idx;
+}
 INCLUDE_ASM("asm/rpg/djinni/Func_807a498.s");
 INCLUDE_ASM("asm/rpg/djinni/Func_807a550.s");
 
