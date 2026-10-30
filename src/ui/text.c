@@ -500,7 +500,24 @@ int Func_801fc84(void) {
     return r7;
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801fd34.s");
+extern unsigned int iwram_3001800;
+extern int sin(int theta);
+
+void Func_801fd34(void)
+{
+    int i;
+    unsigned short *pal = (unsigned short *)0x050001d0;
+
+    for (i = 0; i < 4; i++) {
+        int v = sin((iwram_3001800 + i * 8) * 0x300) / 0x4000;
+        int r = (v << 1) + 0x16;
+        int g = v + 0x10;
+        int b = v + 0x14;
+        do {
+            pal[i] = (b << 10) | (g << 5) | r;
+        } while (0);
+    }
+}
 
 extern void Func_801fd34(void);
 extern void StartTask(void (*task)(void), int priority);
