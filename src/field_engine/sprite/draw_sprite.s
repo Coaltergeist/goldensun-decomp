@@ -327,7 +327,7 @@ Data_8009d9c:
 	bne	.L9e8c
 	pop	{r5, r6, r7, r8, r9, r10, r11, lr}
 	bx	lr
-.func_end Func_8009e7c
+.func_end_emit_size Func_8009e7c, _Func_8009e7c_SIZE
 
 .arm_func_start Func_800a0f8  @ 0x0800a0f8
 	push	{r5, r6, r7, r8, r9, r10, lr}
