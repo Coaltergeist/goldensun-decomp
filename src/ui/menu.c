@@ -543,7 +543,35 @@ void Func_801c9bc(void) {}
 void Func_801c9c0(void) {}
 void Func_801c9c4(void) {}
 
-INCLUDE_ASM("asm/ui/menu/Func_801c9c8.s");
+struct MenuEnt801c9c8 {
+    unsigned char pad0[0xa];
+    unsigned short f;
+    unsigned char pad1[0x34 - 0xc];
+};
+struct Menu801c9c8 {
+    unsigned char pad0[0x400];
+    struct MenuEnt801c9c8 ent[7];
+    unsigned char pad1[8];
+    unsigned short g[5];
+};
+void Func_801c9c8(struct Menu801c9c8 *m)
+{
+    struct MenuEnt801c9c8 *p = m->ent;
+
+    p->f = 0; p++;
+    p->f = 0; p++;
+    p->f = 0; p++;
+    p->f = 0; p++;
+    p->f = 0; p++;
+    p->f = 0; p++;
+    p->f = 0;
+    m->g[0] = 0;
+    m->g[1] = 0;
+    m->g[2] = 0;
+    m->g[3] = 0;
+    m->g[4] = 0;
+}
+INCLUDE_ASM("asm/ui/menu/rodata_rom_1aeec.s");
 
 INCLUDE_ASM("asm/ui/menu/Func_801ca1c.s");
 void Func_801cae0(int t)
