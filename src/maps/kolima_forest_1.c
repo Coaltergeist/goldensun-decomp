@@ -434,7 +434,64 @@ void OvlFunc_913_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/kolima_forest_1/OvlFunc_913_20088c0.s");
+int OvlFunc_913_20088c0(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L2da8[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L2dc0[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L2dc0[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L2dc0[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L2dc0[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L2dc0[arg.a << 2] << 16;
+    arg.z += L2dc0[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_913_2008244(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_913_2008244(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
+
 
 extern unsigned char L3390[] __asm__(".Lm913_3390");
 
@@ -588,7 +645,6 @@ void *KolimaForest1_GetEvents(void) {
     return (void *)gOvl_0200b294;
 }
 
-extern int OvlFunc_913_20088c0(int);
 extern void OvlFunc_913_2008d3c(void);
 int KolimaForest1_MapInit(void) {
     unsigned int r2;
