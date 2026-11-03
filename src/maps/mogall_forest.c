@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 extern void __Actor_SetAnim(void *, int);
 extern void __WaitFrames(int);
@@ -232,10 +233,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200834c.s");
+extern int PushBlockIds_927[] __asm__(".Lm927_2f38");
+extern int PushBlockBoxes_927[] __asm__("gScript_884__0200af50");
+extern unsigned int PushBlockDirs_927[] __asm__(".Lm927_2ef8");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_927_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_927[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_927[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_927[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_927[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_927[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_927[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int gScript_884__0200af50[];
-extern void *OvlFunc_927_200834c(int *, void *, void *);
 
 int OvlFunc_927_2008474(void *arg0)
 {

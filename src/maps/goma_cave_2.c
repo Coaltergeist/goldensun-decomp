@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
 
@@ -224,10 +225,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200834c.s");
+extern int PushBlockIds_905[] __asm__(".Lm905_1594");
+extern int PushBlockBoxes_905[] __asm__(".Lm905_15ac");
+extern unsigned int PushBlockDirs_905[] __asm__(".Lm905_1554");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_905_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_905[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_905[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_905[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_905[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_905[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_905[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int L15ac[] __asm__(".Lm905_15ac");
-extern void *OvlFunc_905_200834c(int *, void *, void *);
 
 int OvlFunc_905_2008474(void *arg0)
 {
