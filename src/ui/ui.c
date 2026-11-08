@@ -832,6 +832,7 @@ int Func_8019ba0(int stringID) {
 
 INCLUDE_ASM("asm/ui/ui/HuffStr_Start.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019bfc.s");
+// fakematch
 void Func_8019d0c(void)
 {
     extern unsigned char *iwram_3001e8c__9d0c __asm__("iwram_3001e8c");

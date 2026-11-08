@@ -583,6 +583,9 @@ int GetMoveDisplayEffect(unsigned char *m)
 extern void Func_802281c(void *arg0);
 extern void _Func_80c10e8(void *arg0, unsigned int arg1);
 
+// fakematch
+/* Func_80270ac is a nested function of Func_8027114 (r9 static chain); this
+ * empty parent stands in until Func_8027114 is decompiled. */
 static __inline__ void Func_8027114_outer(void)
 {
     auto void Func_80270ac(void) __asm__("Func_80270ac");

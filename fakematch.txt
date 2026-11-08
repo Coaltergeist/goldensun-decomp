@@ -26,4 +26,6 @@ Func_80039bc src/core/runtime/video.c
 Func_80039fc src/core/runtime/video.c
 Func_8003a3c src/core/runtime/video.c
 SetRegAnimDest src/core/runtime/video.c
+Func_80270ac src/ui/save_menu.c # nested function in a stand-in parent; belongs inside Func_8027114
 Func_801f730 src/ui/text.c
+Func_8019d0c src/ui/ui.c # single-member struct local is load-bearing

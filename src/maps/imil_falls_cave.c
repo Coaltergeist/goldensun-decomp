@@ -1611,7 +1611,7 @@ loop_start:
         __Actor_SetAnim(actor, 2);
         __Actor_SetAnimSpeed(actor, 0x30);
         __Actor_WaitMovement(actor);
-        actor->update = (actorfun_t *)CS922S_Update;
+        actor->update = (actorfun_t)CS922S_Update;
 
         while (1) {
             CS922S_Advance(0x100000, target, &pos);

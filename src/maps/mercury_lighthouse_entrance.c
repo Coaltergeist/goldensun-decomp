@@ -921,7 +921,7 @@ void OvlFunc_923_2009730(void)
     }
     API_CutsceneWait(20);
     API_MapActor_Emote(3, 0x102, 60);
-    CS923M_Actor(3)->update = (actorfun_t *)OvlFunc_923_2008d58;
+    CS923M_Actor(3)->update = (actorfun_t)OvlFunc_923_2008d58;
     API_Func_8093500(0, 1);
     API_CutsceneWait(30);
     API_MapActor_TravelToAnimWait(0, 0x88, 0x108);
