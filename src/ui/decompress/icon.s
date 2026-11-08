@@ -182,7 +182,7 @@
 .L15d6c:
 	pop	{r5, r6}
 	bx	lr
-.func_end Func_8015afc
+.func_end_emit_size Func_8015afc, Func_8015afc_Size
 
 .arm_func_start Func_8015d74  @ 0x08015d74
 	push	{r5, r6, r7, r8, r9, r10}

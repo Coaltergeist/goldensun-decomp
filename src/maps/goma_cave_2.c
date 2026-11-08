@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 extern unsigned char iwram_3001ebc__tw[] __asm__("iwram_3001ebc");
 
@@ -224,10 +225,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_200834c.s");
+extern int PushBlockIds_905[] __asm__(".Lm905_1594");
+extern int PushBlockBoxes_905[] __asm__(".Lm905_15ac");
+extern unsigned int PushBlockDirs_905[] __asm__(".Lm905_1554");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_905_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_905[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_905[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_905[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_905[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_905[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_905[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int L15ac[] __asm__(".Lm905_15ac");
-extern void *OvlFunc_905_200834c(int *, void *, void *);
 
 int OvlFunc_905_2008474(void *arg0)
 {
@@ -423,7 +495,64 @@ void OvlFunc_905_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_20088c0.s");
+int OvlFunc_905_20088c0(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L1594[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L15ac[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L15ac[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L15ac[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L15ac[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L15ac[arg.a << 2] << 16;
+    arg.z += L15ac[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_905_2008244(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_905_2008244(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
+
 
 extern void __Func_8091f14(int, int);
 

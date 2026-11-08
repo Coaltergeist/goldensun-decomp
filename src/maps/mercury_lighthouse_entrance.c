@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
+#include "field.h"
 
 /* Void declarations for veneer callees. */
 extern void __Actor_SetAnim();
@@ -230,10 +232,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008630.s");
+extern int PushBlockIds_923[] __asm__(".Lm923_2740");
+extern int PushBlockBoxes_923[] __asm__(".Lm923_2758");
+extern unsigned int PushBlockDirs_923[] __asm__(".Lm923_2700");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_923_2008630(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_923[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_923[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_923[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_923[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_923[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_923[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int L2758[] __asm__(".Lm923_2758");
-extern void *OvlFunc_923_2008630(int *, void *, void *);
 
 int OvlFunc_923_2008758(void *arg0)
 {
@@ -796,7 +869,66 @@ void OvlFunc_923_2009208(void) {
 }
 
 INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/MercuryLighthouseEntrance_MapInit.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009730.s");
+extern struct Actor *CS923M_Actor(int) __asm__("__MapActor_GetActor");
+void OvlFunc_923_2009730(void)
+{
+    int i;
+    API_CutsceneStart();
+    CS923M_Actor(12)->scale.x = -0x10000;
+    CS923M_Actor(13)->scale.x = -0x10000;
+    CS923M_Actor(14)->scale.x = -0x10000;
+    API_MapActor_SetPos(3, 0x880000, 0xb80000);
+    API_MapActor_SetPos(0, 0x880000, 0x1280000);
+    API_MapActor_SetPos(8, 0x880000, 0x980000);
+    API_MapActor_SetSpeed(3, 0x18000, 0xc000);
+    API_MapActor_SetSpeed(8, 0x18000, 0xc000);
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
+    API_Func_80933d4(0xcccc, 0x1999);
+    API_Func_80933f8(0x880000, -1, 0xb80000, 0);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_Func_80925cc(3, 1);
+    CS923M_Actor(8)->__unk5A &= 0xfe;
+    API_CutsceneWait(20);
+    for (i = 0; i < 2; i++) {
+        API_MapActor_TravelToAnim(3, 0x98, 0xa8);
+        API_CutsceneWait(10);
+        API_MapActor_SetBehavior(8, (int)gScript_923__0200a8c8);
+        API_MapActor_WaitMovement(3);
+        API_Func_8092adc(3, 0xc000, 30);
+        API_Func_80925cc(3, 1);
+        CS923M_Actor(3)->__unk5A &= 0xfe;
+        API_MapActor_TravelToAnim(3, 0x88, 0xb8);
+        API_CutsceneWait(10);
+        API_MapActor_SetBehavior(8, (int)gScript_923__0200a820);
+        API_MapActor_WaitMovement(3);
+        CS923M_Actor(3)->__unk5A |= 1;
+        API_CutsceneWait(30);
+        API_MapActor_TravelToAnim(3, 0x78, 0xa8);
+        API_CutsceneWait(5);
+        API_MapActor_SetBehavior(8, (int)gScript_884__0200a874);
+        API_MapActor_WaitMovement(3);
+        API_Func_8092adc(3, 0xc000, 30);
+        API_Func_80925cc(3, 1);
+        API_CutsceneWait(15);
+        CS923M_Actor(3)->__unk5A &= 0xfe;
+        API_MapActor_TravelToAnim(3, 0x88, 0xb8);
+        API_CutsceneWait(15);
+        API_MapActor_SetBehavior(8, (int)gScript_923__0200a820);
+        API_MapActor_WaitMovement(3);
+        API_Func_80925cc(3, 1);
+        CS923M_Actor(3)->__unk5A |= 1;
+    }
+    API_CutsceneWait(20);
+    API_MapActor_Emote(3, 0x102, 60);
+    CS923M_Actor(3)->update = (actorfun_t *)OvlFunc_923_2008d58;
+    API_Func_8093500(0, 1);
+    API_CutsceneWait(30);
+    API_MapActor_TravelToAnimWait(0, 0x88, 0x108);
+    API_Func_8093530();
+    API_Func_8010704(0, 0, 3, 3, 7, 9);
+    API_CutsceneEnd();
+}
 extern unsigned char iwram_3001ebc[];
 
 extern int __GetFlag(int);

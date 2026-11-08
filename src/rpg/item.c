@@ -386,7 +386,28 @@ unsigned int GetPsynergyItemTarget(unsigned int item) {
     return *(unsigned char *)result;
 }
 
-INCLUDE_ASM("asm/rpg/item/Func_8078aa0.s");
+int Func_8078aa0(int arg0, int arg1)
+{
+    extern unsigned char ewram_2000380[];
+    int id = arg0;
+    unsigned char *p = ewram_2000380;
+    arg0 = 0;
+
+    if (id <= 0x7f) {
+        int val = p[id];
+        val += arg1;
+        if (val < 0) {
+            val = 0;
+        } else if (val > 99) {
+            val = 99;
+            arg0 = 99;
+        } else {
+            arg0 = val;
+        }
+        p[id] = val;
+    }
+    return arg0;
+}
 
 extern unsigned char gArtifacts[] __asm__("gArtifacts");
 extern int Func_8078aa0(int, int);

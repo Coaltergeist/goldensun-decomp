@@ -1706,7 +1706,67 @@ void OvlFunc_968_200c600(void) {
     OvlFunc_968_200c520(0x8c << 2, 0x2c);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c610.s");
+extern struct Actor *CS968C_Actor(int) __asm__("__MapActor_GetActor");
+extern void CS968C_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+extern void CS968C_StartTask(void (*)(void), int) __asm__("__StartTask");
+struct CS968C_Field { unsigned char pad[0x1c0]; int flags; };
+extern struct CS968C_Field *CS968C_Field __asm__("iwram_3001ebc");
+struct CS968C_Effect {
+    int priority, animation, scaleX, scaleY, targetX, targetY;
+    short sprite, unused;
+    void *script;
+    short rotation, angularSpeed;
+    void *update;
+};
+void OvlFunc_968_200c610(void)
+{
+    struct CS968C_Effect effect;
+    struct CS968C_Effect *effectPtr;
+    unsigned int repeated, row, column;
+    CS968C_Field->flags = 0x202;
+    API_CutsceneStart();
+    CS968C_SpriteFlags(CS968C_Actor(0), 0);
+    __Func_8092950(0, 15);
+    __Func_8091ff0(0xaa);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(40);
+    API_PlaySound(0xa2);
+    API_Func_80933d4(0x8000, 0x1000);
+    API_Func_80933f8(0x1b80000, -1, 0x1680000, 1);
+    repeated = 0;
+    row = 0;
+    effectPtr = &effect;
+    for (; row <= 12; ++row) {
+        unsigned int z;
+        effect.scaleX = (((__Random() << 1) >> 16) * 0x4ccc) + 0x17ffc;
+        effect.scaleY = (((__Random() << 1) >> 16) * 0x4ccc) + 0x17ffc;
+        effect.angularSpeed = (((__Random() << 12) >> 16) + 0xf800);
+    repeat:
+        for (column = 0; column <= 3; ++column) {
+            int x;
+            z = 0xc00000 + row * 0x100000 + column * 0x40000;
+            x = (((__Random() * 7) >> 16) << 19) + 0x1a00000;
+            OvlFunc_968_2008118(x, 0, z, 0, 0, 0, 0x880000, effectPtr);
+        }
+        API_WaitFrames(3);
+        if (row == 3) {
+            if (repeated <= 2) {
+                ++repeated;
+                goto repeat;
+            }
+            if (repeated == 3) CS968C_StartTask(OvlFunc_968_200c5f0, 0xc80);
+        }
+        API_CopyMapTiles(0x35, row + 12, 0x1a, row + 12, 3, 1);
+    }
+    API_CopyMapTiles(0x51, 0x29, 0x59, 14, 9, 2);
+    API_Func_8093530();
+    API_Func_80933f8(-1, -1, -1, 0);
+    API_CutsceneWait(60);
+    API_SetFlag(0x306);
+    API_Func_8091e9c(19);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c7c0.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c968.s");
 extern void OvlFunc_968_200c968(struct Actor *);

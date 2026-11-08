@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 extern void __Actor_SetAnim(void *, int);
 extern void __WaitFrames(int);
@@ -232,10 +233,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_200834c.s");
+extern int PushBlockIds_927[] __asm__(".Lm927_2f38");
+extern int PushBlockBoxes_927[] __asm__("gScript_884__0200af50");
+extern unsigned int PushBlockDirs_927[] __asm__(".Lm927_2ef8");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_927_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_927[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_927[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_927[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_927[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_927[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_927[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int gScript_884__0200af50[];
-extern void *OvlFunc_927_200834c(int *, void *, void *);
 
 int OvlFunc_927_2008474(void *arg0)
 {
@@ -431,7 +503,64 @@ void OvlFunc_927_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/mogall_forest/OvlFunc_927_20088c0.s");
+int OvlFunc_927_20088c0(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L2f38[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = gScript_884__0200af50[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = gScript_884__0200af50[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = gScript_884__0200af50[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = gScript_884__0200af50[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += gScript_884__0200af50[arg.a << 2] << 16;
+    arg.z += gScript_884__0200af50[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_927_2008244(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_927_2008244(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
+
 
 void OvlFunc_927_20089dc(struct Actor *actor, int priority) {
     actor->sprite->oam.priority = priority;

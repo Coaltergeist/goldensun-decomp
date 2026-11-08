@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "dma.h"
 
 extern unsigned int AllocSpriteSlot(void);
 extern void UploadSpriteGFX(unsigned int, unsigned int, unsigned char *);
@@ -240,7 +241,29 @@ unsigned int Func_8021620(int a0, unsigned int a1, unsigned int a2, unsigned int
     return (unsigned int)s1;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80216b4.s");
+struct Spr80216b4 {
+    struct Spr80216b4 *next;
+    unsigned char pad4[4];
+    unsigned char baseY;
+    unsigned char pad9[0x14 - 9];
+    unsigned char y;
+};
+
+extern unsigned int iwram_3001800;
+extern const unsigned char L37226[] __asm__(".L37226");
+
+void Func_80216b4(struct Spr80216b4 *p)
+{
+    unsigned int t;
+    unsigned int y;
+
+    t = iwram_3001800;
+    y = p->baseY + L37226[t = (t >> 2) & 7];
+    t = iwram_3001800;
+    p->y = y;
+    p = p->next;
+    p->y = p->baseY + L37226[(t >> 2) & 7];
+}
 
 void StartMenu_AddOption(unsigned int icon, unsigned int name, unsigned int unk)
 {
@@ -373,7 +396,28 @@ unsigned int Func_8021bc8(int idx) {
     return Data_73968[idx];
 }
 
-INCLUDE_ASM("asm/ui/save_menu/DecompressIcon.s");
+
+struct IconState8021be0 {
+    unsigned char pad0[0x600];
+    unsigned short w, h;
+    void *src;
+};
+
+extern void *gPtrs[];
+extern void Func_8015afc(void);
+extern unsigned char Func_8015afc_Size[];
+
+void DecompressIcon(struct IconState8021be0 *icon)
+{
+    void *buf;
+
+    do {
+        buf = galloc_iwram(0x31, (int)Func_8015afc_Size);
+        DMA3_COPY(Func_8015afc, buf, (int)Func_8015afc_Size);
+    } while (0);
+    ((void (*)(void *, void *))gPtrs[0x31])(icon->src, icon);
+    gfree(0x31);
+}
 
 extern void *CreateUIBox(int a, int b, int c, int d, int e);
 extern void UIDrawText(char *text, void *box, int x, int y);
@@ -494,7 +538,6 @@ int Func_8025180(int unit, int item)
     return (_GetMoveInfo(*(unsigned short *)(info + 0x28))[1] & 0x80) ? 0 : 2;
 }
 
-#include "dma.h"
 
 void Func_80251d4(unsigned int src, unsigned int dst)
 {
@@ -537,7 +580,20 @@ int GetMoveDisplayEffect(unsigned char *m)
     return r;
 }
 
-INCLUDE_ASM("asm/ui/save_menu/Func_80270ac.s");
+extern void Func_802281c(void *arg0);
+extern void _Func_80c10e8(void *arg0, unsigned int arg1);
+
+static __inline__ void Func_8027114_outer(void)
+{
+    auto void Func_80270ac(void) __asm__("Func_80270ac");
+    void Func_80270ac(void)
+    {
+        unsigned short local[2];
+        local[0] = 0xff;
+        Func_802281c(local);
+        _Func_80c10e8(local, 1);
+    }
+}
 
 INCLUDE_ASM("asm/ui/save_menu/Func_80270d8.s");
 

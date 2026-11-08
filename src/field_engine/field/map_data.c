@@ -62,7 +62,31 @@ void Func_800f9cc(unsigned char *p, int count)
 
 INCLUDE_ASM("asm/field_engine/field/map_data/DecodeMetatileset.s");
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_800fa8c.s");
+void Func_800fa8c(void)
+{
+    unsigned int *p;
+    int count;
+    unsigned int i;
+    int mask;
+    unsigned int val;
+    unsigned int low;
+
+    p = (unsigned int *)gBuffer;
+    i = 0x4000;
+    count = -1;
+    mask = 0xfff;
+    for (; i != 0; i--) {
+        val = *p++;
+        low = val & mask;
+        if (low == mask) {
+            if (count != (int)low) {
+                count++;
+            }
+            val = val + count - low;
+            p[-1] = val;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/UnpackTilemap.s");
 
@@ -124,9 +148,66 @@ INCLUDE_ASM("asm/field_engine/field/map_data/Func_8010e14.s");
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_8010ff0.s");
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_80110e0.s");
+void Func_80110e0(s32 row)
+{
+    u16 *src = (u16 *)(0x02020000 + (((row / 2) & 0x1f) << 7));
+    u16 *dst = (u16 *)(0x06004000 + ((row & 0x3e) << 6));
+    u32 i = 0;
+    u32 offset;
+    u32 tile;
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_8011164.s");
+loop1:
+    offset = *src;
+    offset <<= 2;
+    *dst = *(u16 *)(0x02010000 + offset);
+    tile = *(u16 *)(0x02010002 + offset);
+    offset = (u32)dst + 0x40;
+    *(u16 *)offset = tile;
+    dst += 1;
+    src += 2;
+    i++;
+    if (i <= 0x1f)
+        goto loop1;
+
+    dst = (u16 *)((u32)dst + 0xfc0);
+    src = (u16 *)((u32)src + 0xf80);
+    i = 0;
+
+loop2:
+    offset = *src;
+    offset <<= 2;
+    *dst = *(u16 *)(0x02010000 + offset);
+    tile = *(u16 *)(0x02010002 + offset);
+    offset = (u32)dst + 0x40;
+    *(u16 *)offset = tile;
+    dst += 1;
+    src += 2;
+    i++;
+    if (i <= 0x1f)
+        goto loop2;
+}
+
+void Func_8011164(s32 col)
+{
+    u16 *src = (u16 *)(0x02020000 + (((col / 2) & 0x1f) << 2));
+    u16 *dst = (u16 *)(0x06004000 + (col & 0x3e));
+    u32 i = 0;
+    u32 offset;
+    u32 tile;
+
+loop:
+    offset = *src;
+    offset <<= 2;
+    *dst = *(u16 *)(0x02010000 + offset);
+    tile = *(u16 *)(0x02010002 + offset);
+    offset = (u32)dst + 0x40;
+    *(u16 *)offset = tile;
+    dst += 0x40;
+    src += 0x40;
+    i++;
+    if (i <= 0x3f)
+        goto loop;
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_80111b4.s");
 
@@ -343,9 +424,33 @@ int HeightTile_9(signed char *param_1, int param_2, unsigned int param_3)
     return v << 19;
 }
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_A.s");
+int HeightTile_A(signed char *p, int idx)
+{
+    int a, b;
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_B.s");
+    a = *p++ << 19;
+    b = *p++ << 19;
+    if ((unsigned int)idx <= 7) {
+        return a + ((b - a) * idx) / 8;
+    } else {
+        a = *p << 19;
+        return b + ((a - b) * (idx - 8)) / 8;
+    }
+}
+
+int HeightTile_B(unsigned char *p, int unused, int idx)
+{
+    int a, b;
+
+    a = *p++ << 19;
+    b = *p++ << 19;
+    if ((unsigned int)idx <= 7) {
+        return a + ((b - a) * idx) / 8;
+    } else {
+        a = *p << 19;
+        return b + ((a - b) * (idx - 8)) / 8;
+    }
+}
 
 int HeightTile_C(int param_1, int param_2, int param_3)
 {
@@ -469,7 +574,34 @@ void Func_8012350(void)
     state[3] = 0;
 }
 
-INCLUDE_ASM("asm/field_engine/field/map_data/Func_8012388.s");
+extern unsigned char ewram_201c000[];
+extern void *gPtrs;
+extern unsigned char ewram_203c000[];
+extern void *galloc_iwram(int index, unsigned int size);
+extern int Func_8009e7c(void);
+extern unsigned char _Func_8009e7c_SIZE[];
+
+void Func_8012388(unsigned int arg0, unsigned int arg1)
+{
+    unsigned char *ptr;
+    void *dst;
+    unsigned char *gp;
+    unsigned char *p2;
+    int (*f)(unsigned int, unsigned int, unsigned char *, unsigned char *);
+
+    ptr = ewram_201c000;
+    do {
+        dst = galloc_iwram(0x31, (unsigned int)_Func_8009e7c_SIZE);
+        DMA3_COPY((const void *)Func_8009e7c, dst, (unsigned int)_Func_8009e7c_SIZE);
+    } while (0);
+    gp = (unsigned char *)&gPtrs;
+    p2 = ewram_203c000;
+    ptr += 0x1000;
+    gp += 0xc4;
+    f = *(int (**)(unsigned int, unsigned int, unsigned char *, unsigned char *))gp;
+    f(arg0, arg1, p2, ptr);
+    gfree(0x31);
+}
 
 INCLUDE_ASM("asm/field_engine/field/map_data/Func_80123f4.s");
 

@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "dma.h"
 extern void FillUIRegion(int a, int b, int c, int d);
 
 extern unsigned char iwram_3001e8c__a5[] __asm__("iwram_3001e8c");
@@ -252,7 +253,19 @@ void Func_8016758(void) {
     }
 }
 
-INCLUDE_ASM("asm/ui/ui/Func_80167ac.s");
+struct UiState80167ac {
+    unsigned char pad0[0xea8];
+    unsigned short ea8, eaa, eac, eae;
+};
+extern struct UiState80167ac *iwram_3001e8c__k4 __asm__("iwram_3001e8c");
+void Func_80167ac(unsigned char *a)
+{
+    struct UiState80167ac *s = iwram_3001e8c__k4;
+
+    s->eae = *(unsigned short *)(a + 0x16);
+    s->eac = *(unsigned short *)(a + 0x18);
+    s->ea8 = *(unsigned short *)(a + 0x1a);
+}
 
 void Func_80167d8(unsigned int r0) {
     unsigned short r3;
@@ -308,7 +321,19 @@ void Func_8016868(void)
 INCLUDE_ASM("asm/ui/ui/AdvanceMsgText.s");
 INCLUDE_ASM("asm/ui/ui/Func_8016f2c.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017004.s");
-INCLUDE_ASM("asm/ui/ui/Func_80170c4.s");
+/* Fill count halfwords at dst with the low half of value via DMA3; returns
+ * the advanced destination. */
+unsigned short *Func_80170c4(unsigned short *dst, unsigned int value, int count)
+{
+    unsigned short buf;
+
+    if (count > 0) {
+        buf = value;
+        DMA3_SET(&buf, dst, 0x81000000 | count);
+        dst += count;
+    }
+    return dst;
+}
 INCLUDE_ASM("asm/ui/ui/FillUIRegion.s");
 INCLUDE_ASM("asm/ui/ui/Func_8017248.s");
 
@@ -360,11 +385,33 @@ void Func_80173ac(void)
     s->eac = 0;
     s->eaa = 1;
 }
-INCLUDE_ASM("asm/ui/ui/Func_80173f4.s");
-
-extern void *iwram_3001e8c__a3 __asm__("iwram_3001e8c");
+struct UiState80173f4 {
+    unsigned char pad0[0xea8];
+    unsigned short ea8, eaa, eac, eae;
+    unsigned char pad1[0x12b0 - 0xeb0];
+    unsigned short f12b0, f12b2;
+    unsigned char pad2[4];
+    unsigned short f12b8;
+};
+extern struct UiState80173f4 *iwram_3001e8c__k5 __asm__("iwram_3001e8c");
 extern int UploadSpriteGFX(int slot, unsigned int size, unsigned char *gfx);
 extern void StartTask(void *task, int priority);
+void Func_80173f4(void)
+{
+    struct UiState80173f4 *s = iwram_3001e8c__k5;
+    int prio;
+
+    s->f12b8 = UploadSpriteGFX(0x5f, 0x2000, 0);
+    s->f12b0 = 9;
+    s->ea8 = 0xa;
+    s->eac = 0;
+    s->eae = 0xf;
+    s->f12b2 = 0;
+    prio = 0xc80;
+    StartTask(Func_801789c, prio);
+}
+
+extern void *iwram_3001e8c__a3 __asm__("iwram_3001e8c");
 
 void Func_8017464(int param_1)
 {
@@ -560,7 +607,83 @@ void Func_8019000(unsigned short *box, unsigned int tile, unsigned int x, unsign
         break;
     }
 }
-INCLUDE_ASM("asm/ui/ui/Func_801908c.s");
+struct ObjAffineSrc801908c {
+    short xScale : 16;
+    short yScale : 16;
+    unsigned short angle : 16;
+};
+
+struct OamShadow801908c {
+    void *oamDest;
+    unsigned short y : 8;
+    unsigned short affineMode : 2;
+    unsigned short attr0Hi : 6;
+    unsigned short x : 9;
+    unsigned short matrixNum : 5;
+    unsigned short size : 2;
+};
+
+struct Cursor801908c {
+    unsigned char pad0[5];
+    unsigned char mode;
+    unsigned short x;
+    unsigned short y;
+    unsigned short padA;
+    unsigned short timer;
+    unsigned short padE;
+    struct OamShadow801908c oam;
+};
+
+extern const unsigned short Data_366f8[];
+extern unsigned int Func_8003d28(struct ObjAffineSrc801908c *src);
+
+void Func_801908c(struct Cursor801908c *c)
+{
+    unsigned char mode = c->mode;
+    int val = 0x100;
+    struct OamShadow801908c *oam = &c->oam;
+    struct ObjAffineSrc801908c s;
+
+    switch (mode) {
+    case 9:
+        val = Data_366f8[c->timer++ & 0x1f];
+        break;
+    case 10:
+        val = Data_366f8[c->timer++ & 0x1f] >> 1;
+        break;
+    case 11:
+        if (c->timer < 8) {
+            val = Data_366f8[c->timer++ * 2 + 0x10];
+        }
+        break;
+    case 12:
+        if (c->timer < 8) {
+            val = Data_366f8[c->timer++ * 2 + 0x10] >> 1;
+        }
+        break;
+    }
+
+    if (val == 0x100) {
+        oam->matrixNum = 0;
+        oam->affineMode = 0;
+        oam->x = c->x;
+        oam->y = c->y;
+    } else {
+        s.xScale = val;
+        s.yScale = val;
+        s.angle = 0;
+        oam->matrixNum = Func_8003d28(&s);
+        if (val > 0x100) {
+            oam->affineMode = 3;
+            oam->x = c->x - 8;
+            oam->y = c->y - 8;
+        } else {
+            oam->affineMode = 1;
+            oam->x = c->x;
+            oam->y = c->y;
+        }
+    }
+}
 
 INCLUDE_ASM("asm/ui/ui/Func_80191cc.s");
 
@@ -621,13 +744,22 @@ void Func_80197c4(void)
     }
 }
 INCLUDE_ASM("asm/ui/ui/Func_8019854.s");
-INCLUDE_ASM("asm/ui/ui/Func_80198dc.s");
 struct UiSlots8019908 {
     unsigned char pad0[0x12bc];
     int value[8];
     unsigned short id[8];
 };
 extern struct UiSlots8019908 *iwram_3001e8c__k2 __asm__("iwram_3001e8c");
+void Func_80198dc(void)
+{
+    struct UiSlots8019908 *s = iwram_3001e8c__k2;
+    int i;
+
+    for (i = 0; i != 8; i++) {
+        s->value[i] = 0;
+        s->id[i] = 0;
+    }
+}
 void Func_8019908(int value, int id)
 {
     struct UiSlots8019908 *s = iwram_3001e8c__k2;
@@ -700,7 +832,20 @@ int Func_8019ba0(int stringID) {
 
 INCLUDE_ASM("asm/ui/ui/HuffStr_Start.s");
 INCLUDE_ASM("asm/ui/ui/Func_8019bfc.s");
-INCLUDE_ASM("asm/ui/ui/Func_8019d0c.s");
+void Func_8019d0c(void)
+{
+    extern unsigned char *iwram_3001e8c__9d0c __asm__("iwram_3001e8c");
+    struct { unsigned short v; } v;
+    unsigned char *base = iwram_3001e8c__9d0c;
+    unsigned short *p;
+    v.v = 999;
+    p = (unsigned short *)(base + 0x12ec);
+    *p = v.v;
+    p++;
+    *p = v.v;
+}
+
+INCLUDE_ASM("asm/ui/ui/rodata_rom_1908c.s");
 
 INCLUDE_ASM("asm/ui/ui/GetPortrait.s");
 void *Func_8019da8(int portrait, int arg1, int x, int y)

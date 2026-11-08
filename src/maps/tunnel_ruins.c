@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 #include "state/global_state.h"
 
@@ -241,10 +242,81 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_200834c.s");
+extern int PushBlockIds_964[] __asm__(".Lm964_3230");
+extern int PushBlockBoxes_964[] __asm__(".Lm964_3248");
+extern unsigned int PushBlockDirs_964[] __asm__(".Lm964_31f0");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_964_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_964[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_964[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_964[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_964[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_964[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_964[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
+
 
 extern int L3248[] __asm__(".Lm964_3248");
-extern void *OvlFunc_964_200834c(int *, void *, void *);
 
 int OvlFunc_964_2008474(void *arg0)
 {
@@ -440,7 +512,64 @@ void OvlFunc_964_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20088c0.s");
+int OvlFunc_964_20088c0(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L3230[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L3248[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L3248[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L3248[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L3248[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L3248[arg.a << 2] << 16;
+    arg.z += L3248[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_964_2008244(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_964_2008244(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
+
 
 void OvlFunc_964_20089dc(struct Actor *actor, int priority) {
     actor->sprite->oam.priority = priority;
@@ -963,7 +1092,62 @@ void OvlFunc_964_2009530(void)
         OvlFunc_964_2008df4();
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009550.s");
+extern struct Actor *CS964Q_Actor(unsigned int) __asm__("__MapActor_GetActor");
+extern struct Actor *CS964Q_Create(int, int, int, int) __asm__("OvlFunc_964_20089f4");
+extern unsigned int CS964Q_Random(void) __asm__("__Random");
+extern void CS964Q_Delete(struct Actor *) __asm__("__DeleteActor");
+struct CS964Q_Effect {
+    int priority, animation, scaleX, scaleY, targetX, targetY;
+    short sprite, unused;
+    void *script;
+    short rotation, angularSpeed;
+    void *update;
+};
+extern void CS964Q_Particle(int, int, int, int, int, int, unsigned int, struct CS964Q_Effect *) __asm__("OvlFunc_964_2008ae8");
+void OvlFunc_964_2009550(void)
+{
+    struct CS964Q_Effect effect;
+    struct Actor *created;
+    unsigned int i;
+    int x, z;
+    API_CutsceneStart();
+    if ((CS964Q_Actor(18)->pos.x >> 20) == 0x2e) {
+        API_CutsceneWait(30);
+        created = CS964Q_Create(0x2e80000, 0, 0xb80000, 0xfd);
+        effect.scaleX = 0x9999;
+        effect.scaleY = 0x9999;
+        effect.animation = 7;
+        CS964Q_Actor(18)->__unk55 = 0;
+        API_PlaySound(0xb9);
+        for (i = 0; i <= 15; ++i) {
+            API_WaitFrames(3);
+            CS964Q_Actor(18)->pos.y -= 0x10000;
+            x = (((CS964Q_Random() << 4) >> 16) << 16) + 0x2e00000;
+            z = (((CS964Q_Random() * 18) >> 16) << 16) + 0x800000;
+            CS964Q_Particle(x, 0, z, 0, 0, 0, 0x90000, &effect);
+        }
+        API_Func_8010704(0x33, 8, 1, 1, 0x31, 8);
+        API_CutsceneWait(30);
+        CS964Q_Actor(18)->flags |= 2;
+        API_MapActor_SetAnim(18, 3);
+        CS964Q_Delete(created);
+        API_Func_8010704(0x2d, 4, 1, 1, 0x2e, 8);
+        API_MapActor_SetPos(20, 0x2e80000, 0x880000);
+        API_PlaySound(0xbc);
+        API_CopyMapTiles(0x3a, 8, 0x31, 8, 1, 3);
+        API_Func_8012330(0, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_CutsceneWait(20);
+        API_PlaySound(0xbc);
+        API_CopyMapTiles(0x3b, 8, 0x31, 8, 1, 3);
+        API_Func_8012330(0, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_Func_8012350();
+        API_CutsceneWait(10);
+        API_SetFlag(0x971);
+    }
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_964_2009550(void);
 
@@ -985,7 +1169,62 @@ void OvlFunc_964_200970c(void) {
     *p = *p & 0xfd;
     __SetFlag(0x80 << 2);
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009744.s");
+extern struct Actor *CS964P_Actor(unsigned int) __asm__("__MapActor_GetActor");
+extern struct Actor *CS964P_Create(int, int, int, int) __asm__("OvlFunc_964_20089f4");
+extern unsigned int CS964P_Random(void) __asm__("__Random");
+extern void CS964P_Delete(struct Actor *) __asm__("__DeleteActor");
+struct CS964P_Effect {
+    int priority, animation, scaleX, scaleY, targetX, targetY;
+    short sprite, unused;
+    void *script;
+    short rotation, angularSpeed;
+    void *update;
+};
+extern void CS964P_Particle(int, int, int, int, int, int, unsigned int, struct CS964P_Effect *) __asm__("OvlFunc_964_2008ae8");
+void OvlFunc_964_2009744(void)
+{
+    struct CS964P_Effect effect;
+    struct Actor *created;
+    unsigned int i;
+    int x, z;
+    API_CutsceneStart();
+    if ((CS964P_Actor(19)->pos.x >> 20) == 0x30 && API_GetFlag(0x202)) {
+        API_CutsceneWait(30);
+        created = CS964P_Create(0x3020000, 0, 0x1120000, 0xdf);
+        effect.scaleX = 0x9999;
+        effect.scaleY = 0x9999;
+        effect.animation = 7;
+        CS964P_Actor(19)->__unk55 = 0;
+        API_PlaySound(0xb9);
+        for (i = 0; i <= 15; ++i) {
+            API_WaitFrames(3);
+            CS964P_Actor(19)->pos.y -= 0x10000;
+            x = (((CS964P_Random() << 4) >> 16) << 16) + 0x3000000;
+            z = (((CS964P_Random() * 18) >> 16) << 16) + 0xe00000;
+            CS964P_Particle(x, 0, z, 0, 0, 0, 0x90000, &effect);
+        }
+        API_Func_8010704(0x33, 8, 1, 1, 0x2d, 14);
+        API_CutsceneWait(30);
+        CS964P_Actor(19)->flags |= 2;
+        API_MapActor_SetAnim(19, 3);
+        CS964P_Delete(created);
+        API_Func_8010704(0x2d, 4, 1, 1, 0x30, 14);
+        API_MapActor_SetPos(21, 0x3080000, 0xe80000);
+        API_PlaySound(0xbc);
+        API_CopyMapTiles(0x3a, 8, 0x2d, 14, 1, 3);
+        API_Func_8012330(0, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_CutsceneWait(20);
+        API_PlaySound(0xbc);
+        API_CopyMapTiles(0x3b, 8, 0x2d, 14, 1, 3);
+        API_Func_8012330(0, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_Func_8012350();
+        API_CutsceneWait(10);
+        API_SetFlag(0x972);
+    }
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_964_2009744(void);
 
