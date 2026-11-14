@@ -1,10 +1,14 @@
-/* Remaining diff: exact 0x3cc byte size and pool layout; 0..0xeb and 0x104..end match 100%,
- * only 1 scratch-register allocation diff in the basic block at +0xec..+0x102
+/* Remaining diff: exact 0x3cc byte size and pool layout (with `.Lconst_2644` for the CSE'd
+ * `0x2644` / `0x264a` message IDs); 0..0xeb and 0x104..end match 100%, leaving only 1 reload
+ * scratch-register allocation diff in the `if (sceneActor != NULL)` block at +0xec..+0x102
  * (`movs r1, #0; adds r0, #85` reusing return reg `r0` vs `adds r2, r7, #0; movs r3, #0`).
  */
 #include "actor.h"
 #include "api.h"
 #include "sprite.h"
+
+__asm__(".equ .Lconst_2644, 0x2644");
+extern unsigned char Lconst_2644[] __asm__(".Lconst_2644");
 
 struct WorldMapEbcSub0 {
     unsigned char pad[0x1c0];
@@ -91,7 +95,7 @@ void OvlFunc_881_200a8e8(void)
     actor->facing = 0x3000;
     API_MapActor_Emote(WorldDialogueActorID, 0x100, 0);
     API_Func_80925cc(WorldDialogueActorID, 2);
-    API_MessageID(0x2644);
+    API_MessageID((int)Lconst_2644);
     API_ActorMessage_Wait(WorldDialogueActorID, 0, 0x50);
     if (sceneActor != NULL) {
         API_DeleteActor(sceneActor);
@@ -129,7 +133,7 @@ void OvlFunc_881_200a8e8(void)
     API_Actor_TravelTo(sceneActor, 0x17710000, 0, 0xd580000);
     __Actor_WaitMovement(sceneActor);
     API_MapActor_SetAnim(0x37, 1);
-    API_Func_801776c(0x264a, 1);
+    API_Func_801776c((int)Lconst_2644 + 6, 1);
     iwram_3001ebc_view.sub0->unk1d8++;
     __Func_8078a08(0xf2);
     API_CutsceneWait(20);

@@ -1,12 +1,14 @@
 /*
- * Non-matching decompilation of Anim_Sleep (exact size 0x298 / 664 bytes, 0 reloc diffs).
+ * Non-matching clean C candidate for Anim_Sleep (exact .text size 0x298 == 0x298 / 664 bytes,
+ * 0 relocation diffs).
  *
- * Matches 0x000..0x17d and 0x224..0x298 100% byte-for-byte.
+ * Matches 0x000..0x1e6 and 0x23a..0x298 100% byte-for-byte.
  * Remaining diffs:
- * 1. +0x17e..+0x220: r5 (particle pointer `q`) and r6 (constant 0x5c0000) are
- *    swapped in global register allocation for the 12-particle render loop.
- * 2. +0x20c..+0x21c: sched2 store ordering among `q->spin`, `q->vy`, and `q->y`
- *    inside the unreachable `q->y > 0x5c0000 && q->vy == 0` bounce block.
+ * 1. +0x1e6..+0x204 / +0x232..+0x238: r0/r1 tie between updated `q->vy` and `q->spin`
+ *    (shifting the loop-latch reload register from r2 to r3).
+ * 2. +0x208..+0x210: tools/gcc296 gives `ldr r2, =0x2001` in `thumb_movsi_insn` load latency 2,
+ *    causing `sched2` to fill its delay slot with `q->spin += 4` (`adds; str`) before
+ *    `adds r3, r4, r2; negs r3, r3` instead of issuing `adds r3, r4, r1` immediately.
  */
 #include "anim.h"
 #include "task.h"
@@ -123,8 +125,8 @@ void Anim_Sleep(struct AnimContext *context)
                 q->phase += q->spin;
                 if (q->y > 0x5c0000 && q->vy == 0) {
                     q->spin += 4;
-                    q->vy = -(q->vy + 1) / 2;
                     q->y = 0x5c0000;
+                    q->vy = -(q->vy + 1) / 2;
                 }
             }
         }

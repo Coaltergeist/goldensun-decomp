@@ -688,7 +688,76 @@ void OvlFunc_932_2008c9c(void)
     OvlFunc_932_200840c();
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_2008d2c.s");
+extern int __cos(int);
+extern int __sin(int);
+extern void OvlFunc_932_2008ec0(int);
+
+void OvlFunc_932_2008d2c(void)
+{
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int baseY, baseX;
+    unsigned int speed, nextSpeed;
+    unsigned short step;
+    int cosine, sine;
+
+    actor = (struct Actor *)__MapActor_GetActor(10);
+    baseX = actor->pos.x;
+    sprite = actor->sprite;
+    baseY = actor->pos.y;
+    API_CutsceneStart();
+    API_PlaySound(0x8d);
+    API_Func_8012330(0x20000, 0x10000, 0x10000);
+    API_CutsceneWait(10);
+    API_PlaySound(0x121);
+    API_Func_8012330(-1, -1, 0xe666);
+    API_CutsceneWait(20);
+    speed = 0;
+    while (1) {
+        int rot = sprite->rotation;
+        speed += 0x80000;
+        sprite->rotation = (speed >> 16) + rot;
+        cosine = __cos(sprite->rotation + 0x4000);
+        actor->pos.x = baseX + cosine * 16;
+        if (sprite->rotation > 0x8fff)
+            break;
+        API_WaitFrames(1);
+    }
+    speed = 0;
+    while (1) {
+        speed += 0x80000;
+        sprite->rotation -= speed >> 16;
+        cosine = __cos(sprite->rotation + 0x4000);
+        actor->pos.x = baseX + cosine * 16;
+        if (sprite->rotation <= 0x7000)
+            break;
+        API_WaitFrames(1);
+    }
+    speed = 0x80000;
+    while (1) {
+        nextSpeed = ((speed >> 16) + (speed >> 19)) << 16;
+        speed = nextSpeed;
+        step = nextSpeed >> 16;
+        sprite->rotation = step + sprite->rotation;
+        cosine = __cos(sprite->rotation + 0x4000);
+        sine = __sin(sprite->rotation + 0x8000);
+        actor->pos.x = baseX + cosine * 16;
+        if (sprite->rotation > 0x8000)
+            actor->pos.y = baseY - sine * 8;
+        if (sprite->rotation + step > 0xbfff)
+            break;
+        API_WaitFrames(1);
+    }
+    API_WaitFrames(1);
+    sprite->rotation = 0xc000;
+    API_PlaySound(0xb7);
+    API_Func_8012330(0x30000, 0x30000, 0x10000);
+    API_CutsceneWait(20);
+    API_PlaySound(0x121);
+    API_Func_8012330(-1, -1, 0xe666);
+    OvlFunc_932_2008ec0(5);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_932_2008ec0(int delay)
 {
@@ -1014,13 +1083,13 @@ void OvlFunc_932_2009838(void)
     extern unsigned char gScript_932__0200bd34[];
     extern void __Actor_SetSpriteFlags(void *, int);
     extern void OvlFunc_932_200ad08(void);
-    unsigned char * movingActor;
+    struct Actor *movingActor;
     int zero;
     unsigned char running;
     unsigned char *actor;
     struct Actor *leader;
 
-    movingActor = (unsigned char *)((int)__MapActor_GetActor(10));
+    movingActor = (struct Actor *)__MapActor_GetActor(10);
     API_CutsceneStart();
     API_Func_80933d4(0x26666, 0x4ccc);
     API_Func_80933f8(0x12a0000, -1, 0x1510000, 1);
@@ -1030,18 +1099,18 @@ void OvlFunc_932_2009838(void)
     API_CutsceneWait(0x28);
     API_Func_80933d4(0xcccc, 0x1999);
     API_Func_80933f8(0x1270000, 0x200000, 0xd40000, 1);
-    zero = (int)(0);
-    *(int *)(movingActor + 0x68) = zero;
+    zero = 0;
+    movingActor->linkedActor = 0;
     running = 0;
-    *(unsigned short *)(movingActor + 0x64) = zero;
-    *(unsigned short *)(movingActor + 0x66) = zero;
-    *(int *)(movingActor + 0x48) = 0x6666;
-    *(int *)(movingActor + 0x6c) = (int)OvlFunc_932_2009770;
+    movingActor->waveCounter = zero;
+    movingActor->__unk66 = zero;
+    movingActor->gravity = 0x6666;
+    movingActor->update = (actorfun_t)OvlFunc_932_2009770;
     API_MapActor_SetSpeed(10, 0x13333, 0x9999);
     API_MapActor_TravelToWait(10, 0x134, 0x123);
     API_MapActor_TravelToWait(10, 0x137, 0xd7);
-    *(int *)(movingActor + 0x6c) = zero;
-    *(unsigned char *)(movingActor + 0x5b) = running;
+    movingActor->update = 0;
+    movingActor->stop = running;
     API_CutsceneWait(16);
     API_MapActor_SetAnim(10, 1);
     API_PlaySound(0xe5);
@@ -1056,14 +1125,14 @@ void OvlFunc_932_2009838(void)
     API_Func_8092adc(10, 0x5000, 20);
     API_Func_8092adc(10, 0x3000, 0x28);
     API_Func_80933f8(0x14e0000, -1, 0xf40000, 1);
-    *(int *)(movingActor + 0x68) = zero;
-    *(unsigned short *)(movingActor + 0x64) = zero;
-    *(unsigned short *)(movingActor + 0x66) = zero;
-    *(int *)(movingActor + 0x6c) = (int)OvlFunc_932_2009770;
+    movingActor->linkedActor = 0;
+    movingActor->waveCounter = zero;
+    movingActor->__unk66 = zero;
+    movingActor->update = (actorfun_t)OvlFunc_932_2009770;
     API_MapActor_TravelToWait(10, 0x140, 0xe8);
     API_MapActor_TravelToWait(10, 0x154, 0x106);
     API_MapActor_TravelToWait(10, 0x176, 0x106);
-    *(int *)(movingActor + 0x6c) = zero;
+    movingActor->update = 0;
     API_CutsceneWait(16);
     API_MapActor_SetAnim(10, 1);
     API_PlaySound(0xe5);
@@ -1089,12 +1158,12 @@ void OvlFunc_932_2009838(void)
     API_Func_8092adc(10, 0xb000, 20);
     API_Func_8092adc(10, 0x8000, 0x28);
     API_Func_80933f8(0x1300000, -1, 0xd70000, 1);
-    *(int *)(movingActor + 0x68) = zero;
-    *(unsigned short *)(movingActor + 0x64) = zero;
-    *(unsigned short *)(movingActor + 0x66) = zero;
-    *(int *)(movingActor + 0x6c) = (int)OvlFunc_932_2009770;
+    movingActor->linkedActor = 0;
+    movingActor->waveCounter = zero;
+    movingActor->__unk66 = zero;
+    movingActor->update = (actorfun_t)OvlFunc_932_2009770;
     API_MapActor_TravelToWait(10, 0x149, 0xdb);
-    *(int *)(movingActor + 0x6c) = zero;
+    movingActor->update = 0;
     API_MapActor_SetAnim(10, 1);
     API_CutsceneWait(16);
     API_PlaySound(0xe5);
@@ -1144,7 +1213,7 @@ void OvlFunc_932_2009838(void)
     API_Func_8010704(4, 0, 1, 1, 17, 13);
     API_Func_8010704(2, 0, 1, 1, 18, 13);
     API_Func_8010704(4, 0, 1, 1, 19, 13);
-    leader = (unsigned char *)((int)__MapActor_GetActor(0));
+    leader = (struct Actor *)__MapActor_GetActor(0);
     API_Func_80933d4(0x4cccc, 0x9999);
     API_Func_80933f8(leader->pos.x, leader->pos.y, leader->pos.z, 1);
     API_Func_8093530();
@@ -2258,7 +2327,28 @@ void OvlFunc_932_200b724(struct Foo_b* arg0) {
 
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b738.s");
 INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b850.s");
-INCLUDE_ASM("asm/maps/altin_peak/OvlFunc_932_200b9c8.s");
+extern short Lm932_5260 __asm__(".Lm932_5260");
+extern short Lm932_525c __asm__(".Lm932_525c");
+extern signed char s8_ARRAY_932__0200bd28[];
+extern unsigned char *iwram_3001ed0;
+
+void OvlFunc_932_200b9c8(void)
+{
+    unsigned char *base = iwram_3001ed0;
+    int v;
+
+    if (Lm932_525c <= 0) {
+    retry:
+        v = s8_ARRAY_932__0200bd28[Lm932_5260++];
+        if (v == -1) {
+            Lm932_5260 = 0;
+            goto retry;
+        }
+        Lm932_525c = s8_ARRAY_932__0200bd28[Lm932_5260++];
+        DMA3_COPY16(base + (v << 1), (void *)0x5000006, 0x24);
+    }
+    Lm932_525c--;
+}
 
 extern short Lm932_5260 __asm__(".Lm932_5260");
 extern short Lm932_525c __asm__(".Lm932_525c");

@@ -1,7 +1,13 @@
 /*
- * Non-matching (592-byte .text, 30/30 relocations).
- * Requires -fstrict-aliasing (GAIA_CFLAGS) at 0x1c..0x1e (hoisting u8 * load baseSlots[2] above
- * pointer store state->context = context); minor 4-byte register allocation diff around Random() masks.
+ * Non-matching clean C candidate for Anim_Ray (1128 vs 1124 bytes, .rodata 6 == 6 bytes,
+ * 30/30 relocations under GAIA_CFLAGS / -fstrict-aliasing).
+ *
+ * Every instruction and relocation matches except +4 bytes at +0x1f8..+0x1fa and +0x23c..+0x240:
+ * in tools/gcc296 `08.loop`, the 4-iteration loop (`Loop from 414 to 752`) shrinks from 141
+ * real insns in Pass 1 (`> 138 = 3 * 46`, not hoisted) to 135 real insns in Pass 2 (`<= 138`),
+ * causing Pass 2 to hoist `(const_int 7)` (savings 3 across the three `Random() & 7` masks)
+ * into a pseudo that `global.c` later spills back to `#7` after `regmove`, emitting
+ * `movs r3, #7; adds r2, r0, #0; ands r2, r3` instead of `movs r2, #7; ands r2, r0`.
  */
 #include "anim.h"
 #include "math.h"
@@ -60,7 +66,7 @@ void Anim_Ray(struct AnimContext *context)
     struct RayState *state = (struct RayState *)*slots++;
     u8 *render = *slots;
     DrawFunc pair[2];
-    struct RayParticle *p, *q;
+    struct RayParticle *p;
     int frame;
     u8 *particleGfx = baseSlots[2];
     int i, j, count, x, y, angle;
@@ -138,17 +144,17 @@ void Anim_Ray(struct AnimContext *context)
             }
             state->unk77A8 = 1;
         }
-        q = (struct RayParticle *)gBuffer;
-        for (j = 0; j != 1024; j++, q++) {
-            if (q->life > 0) {
-                q->life--;
-                Func_80e3908(q, 0x3c, -0x800);
-                if (q->y > 0x780000) {
-                    q->vy = -q->vy / 2;
-                } else if ((u32)q->x <= 0x7effff && q->y >= 0) {
-                    int px = q->x >> 16;
-                    int py = q->y >> 16;
-                    int w = q->life / 8 + 1;
+        p = (struct RayParticle *)gBuffer;
+        for (j = 0; j != 1024; j++, p++) {
+            if (p->life > 0) {
+                p->life--;
+                Func_80e3908(p, 0x3c, -0x800);
+                if (p->y > 0x780000) {
+                    p->vy = -p->vy / 2;
+                } else if ((u32)p->x <= 0x7effff && p->y >= 0) {
+                    int px = p->x >> 16;
+                    int py = p->y >> 16;
+                    int w = p->life / 8 + 1;
                     pair[0](render, particleGfx + Data_ede48[w - 1],
                             px - w / 2, py - w, w, w * 2);
                 }

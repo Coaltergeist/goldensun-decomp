@@ -1,21 +1,14 @@
-/* Remaining diff: both minipools (+0x188 and +0x5a8) match 100%; minor regalloc/scheduling
- * differences around `API_GetFlag(0x16e)` (`r5` hoisted zero vs inline return reg),
- * `API_GiveDjinni(0, 0, 0)` arg setup order, and `midpointX >> 16` / `midpointZ >> 16` at +0x4f4.
+/* Remaining diff (exact 0x5d0 byte size and both minipools +0x188 / +0x5a8 match 100%):
+ * 1) `-fcse-skip-blocks` records `API_GetFlag(0x16e) == 0` (`r0 -> r5`) across `if (a != NULL)`
+ *    instead of hoisting `movs r5, #0` before `bl __GetFlag` (+0x46) and using `r5` at +0x27c;
+ * 2) minor Thumb scratch register swaps at +0x2e (`mov r9, r3` vs `ldr r1`), +0x362 (`ldr r0` vs `ldr r2`),
+ *    and +0x4f4 (`mov r3, sl; mov r2, r9` vs `mov r3, r9; asrs r1, r3, #16`).
  */
 #include "actor.h"
 #include "api.h"
 
-static inline void API_GiveDjinni(int a, int b, int c)
-{
-    extern void __GiveDjinni(int, int, int);
-    __GiveDjinni(a, b, c);
-}
-
-static inline void API_Func_807a458(int a, int b, int c)
-{
-    extern void __Func_807a458(int, int, int);
-    __Func_807a458(a, b, c);
-}
+__asm__(".equ .Lconst_c64, 0xc64");
+extern unsigned char Lconst_c64[] __asm__(".Lconst_c64");
 
 void OvlFunc_881_2009ca4(void)
 {
@@ -24,6 +17,7 @@ void OvlFunc_881_2009ca4(void)
     extern void __Func_8019908(unsigned int, unsigned int);
     extern void __Func_802899c(int, int);
     extern void __Func_807808c(unsigned int);
+    extern int __Func_807a458(int, int, int);
     extern void __Func_808c44c(void);
     extern void __Func_808c4c0(void);
     extern int __Func_8091c7c(int, int);
@@ -33,7 +27,9 @@ void OvlFunc_881_2009ca4(void)
     extern void __Func_8096fb0(int, int);
     extern void __Func_8097194(void);
     extern void __Func_80aa56c(void);
+    extern int __GiveDjinni(int, int, int);
     extern struct Actor *__MapActor_GetActor(int);
+    extern void __MessageID(int);
     extern void OvlFunc_881_2009c08(void);
     extern void OvlFunc_881_200c058(unsigned int);
     extern int __ShowActorMessage_NoWait(int, int);
@@ -44,8 +40,8 @@ void OvlFunc_881_2009ca4(void)
 
     djinn = __MapActor_GetActor(8);
     actor = __MapActor_GetActor(0);
-    midpointX = (int)((unsigned int)actor->pos.x - 0x15d00000u) / 2 + 0x15d00000;
-    midpointZ = (int)((unsigned int)actor->pos.z - 0x5300000u) / 2 + 0x5300000;
+    midpointX = (actor->pos.x - 0x15d00000) / 2 + 0x15d00000;
+    midpointZ = (actor->pos.z - 0x5300000) / 2 + 0x5300000;
     if (API_GetFlag(0x16e) == 0) {
         __Func_807808c(1);
         API_SetFlag(0x16e);
@@ -56,8 +52,8 @@ void OvlFunc_881_2009ca4(void)
                 API_MapActor_SetPos(8, a->pos.x, a->pos.z);
             }
         }
-        API_GiveDjinni(0, 0, 0);
-        API_Func_807a458(0, 0, 0);
+        __GiveDjinni(0, 0, 0);
+        __Func_807a458(0, 0, 0);
         __Func_808c44c();
         API_MapActor_Face(0, 8, 0);
         API_CutsceneWait(10);
@@ -147,30 +143,29 @@ void OvlFunc_881_2009ca4(void)
         API_MapActor_Jump(8, 2, 30);
         __ShowActorMessage_NoWait(8, 0);
         replies = 0;
-        while (1) {
-            if (__Func_8091c7c(0, 0) == 1) {
-                API_MapActor_Jump(8, 2, 20);
-                API_MapActor_Jump(8, 2, 20);
-                if (replies == 6) {
-                    API_MessageID(0xc62);
-                    API_ActorMessage(8, 0);
-                    break;
-                }
-                API_MessageID(replies + 0xc5c);
+    prompt_loop:
+        if (__Func_8091c7c(0, 0) == 1) {
+            API_MapActor_Jump(8, 2, 20);
+            API_MapActor_Jump(8, 2, 20);
+            if (replies == 6) {
+                API_MessageID(0xc62);
+                API_ActorMessage(8, 0);
+            } else {
+                __MessageID(replies + 0xc5c);
                 __ShowActorMessage_NoWait(8, 0);
                 replies++;
-            } else {
-                API_MapActor_SetAnim(0, 22);
-                API_MapActor_Jump(8, 2, 20);
-                API_MapActor_Jump(8, 4, 20);
-                API_MessageID(0xc63);
-                API_ActorMessage(8, 0);
-                break;
+                goto prompt_loop;
             }
+        } else {
+            API_MapActor_SetAnim(0, 22);
+            API_MapActor_Jump(8, 2, 20);
+            API_MapActor_Jump(8, 4, 20);
+            API_MessageID(0xc63);
+            API_ActorMessage(8, 0);
         }
         __Func_8019908(0x12c, 4);
         API_PlaySound(0x51);
-        message = 0xc64;
+        message = (int)Lconst_c64;
         API_Func_801776c(message++, 3);
         API_MessageID(message);
         API_MapActor_Jump(8, 2, 20);

@@ -1,8 +1,8 @@
 /*
- * Non-matching clean C for Anim_Atalanta (all 102 relocations, 8-byte .rodata,
+ * Non-matching clean C for Anim_Atalanta (all 87 relocations, 8-byte .rodata,
  * 0x78 stack frame, switch jump table, and particle/matrix logic match).
  *
- * Remaining diff (.text 0x944 vs 0x9a8):
+ * Remaining diff (.text ref=0x944 vs new=0x998):
  *   08.loop strength-reduces `k = i * 3; mtx = ...; pb = ...` in the initial
  *   particle/matrix init loop and `state->sprites + tile_inc` in the 3x3 tile
  *   loop (and hoists `FX(movement_xCoord)`), creating extra call-crossing GIV

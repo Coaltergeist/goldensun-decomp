@@ -1,6 +1,13 @@
 /*
  * Non-matching clean C candidate for Anim_Haunt (exact .text size 0x374 and 46 relocs).
- * Remaining diff: ~5 small instruction-scheduling and stack-slot order hunks.
+ * Requires -fstrict-aliasing (GAIA_CFLAGS), which matches wave-loop `stmia r6!, {r3}` and
+ * eliminates 3 of 4 scheduling diffs, matching 0x000..0x041, 0x046..0x0a9, and 0x224..0x374.
+ * Remaining diffs:
+ * 1. 0x042: `mov r1, sl; mov r0, r6` vs `mov r0, r6; mov r1, sl` before `DecompressLZ`.
+ * 2. 0x0aa: `0x480` stays live in `r5` across `p = (struct HauntParticle *)gBuffer`, assigning
+ *    `p` to `r6` / `0xff` to `r5` instead of `r5` / `r6`.
+ * 3. 0x1a0: `loop_optimize` GIV stack-slot order swaps `[sp, #12]` (`j * 1792`) and
+ *    `[sp, #16]` (`j * 2 + 36`), same GIV slot swap seen in Anim_Ragnarok and BaseAnim_StatDown.
  */
 #include "anim.h"
 #include "math.h"
@@ -93,7 +100,8 @@ void Anim_Haunt(struct AnimContext *context)
     {
         u8 *file = GetFile((int)_FILE_a9);
         API_Func_8001af8((void *)0x05000000, file, 0x80);
-        DecompressLZ(file + 0x80, state);
+        file += 0x80;
+        DecompressLZ(file, state);
         file = GetFile((int)_FILE_bb);
         API_Func_8001af8((void *)0x05000000, file, 0x80);
     }
@@ -142,11 +150,11 @@ void Anim_Haunt(struct AnimContext *context)
                 p = (struct HauntParticle *)gBuffer + j * 64;
                 for (i = 0; i != 8; i++, p++) {
                     if (frame > (j * 8 + i) * 4) {
-                        int dx = p->x >> 8;
-                        int dy = p->y >> 8;
-                        int dz = p->z >> 8;
+                        int x2 = (p->x >> 8) * (p->x >> 8);
+                        int y2 = (p->y >> 8) * (p->y >> 8);
+                        int z2 = (p->z >> 8) * (p->z >> 8);
                         int (*root)(int) = Func_8000948;
-                        dist = root(dx * dx + dy * dy + dz * dz) >> 8;
+                        dist = root(x2 + y2 + z2) >> 8;
                         if (dist != 0) {
                             Func_80e3944(p, &screen);
                             screen.x >>= 1;

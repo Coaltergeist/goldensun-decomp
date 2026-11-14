@@ -7,6 +7,7 @@ typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Par
 #include "math.h"
 #include "gba/io.h"
 #include "dma.h"
+#include "sprite.h"
 
 INCLUDE_ASM("asm/maps/world_map_cutscenes/exports.s");
 
@@ -1257,6 +1258,7 @@ void OvlFunc_881_2009c08(void)
     API_CutsceneWait(0x1e);
     __StartMapBattle(0xc, 6);
 }
+
 INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_2009ca4.s");
 
 void OvlFunc_881_200a274(void) {
@@ -1707,7 +1709,52 @@ void OvlFunc_881_200b130(void)
     API_SetFlag(0x8d << 1);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/world_map_cutscenes/OvlFunc_881_200b1fc.s");
+
+void OvlFunc_881_200b1fc(void)
+{
+    extern unsigned int __Random(void);
+    extern void __Actor_SetAnim(unsigned char *, unsigned int);
+    extern void __Actor_SetScript(struct Actor *, const void *);
+    extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+    extern void __Func_80933f8(int, int, int, int);
+    extern unsigned int iwram_3001e40;
+    extern unsigned char gScript_881__0200d14c[];
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int x, z;
+    int scale;
+
+    x = (__Random() * 40) >> 16;
+    z = (__Random() * 30) >> 16;
+    actor = API_CreateActor(0xde, (x << 16) + 0x17b00000, 0, (z << 16) + 0x0c4c0000);
+    if (actor != NULL) {
+        sprite = actor->sprite;
+        scale = 0x13333 + ((__Random() * 0x8000) >> 16);
+        sprite->flags = 0;
+        sprite->oam.priority = 2;
+        actor->__unk55 = 0;
+        actor->scale.x = scale;
+        actor->scale.y = scale;
+        __Actor_SetAnim((unsigned char *)actor, 1);
+        __Actor_SetScript(actor, gScript_881__0200d14c);
+    }
+    if (_umodsi3_RAM(iwram_3001e40, 3) == 0) {
+        switch ((__Random() * 4) >> 16) {
+        case 0:
+            __Func_80933f8(0x17c70000, -1, 0x0c690000, 1);
+            break;
+        case 1:
+            __Func_80933f8(0x17c90000, -1, 0x0c670000, 1);
+            break;
+        case 2:
+            __Func_80933f8(0x17c90000, -1, 0x0c690000, 1);
+            break;
+        case 3:
+            __Func_80933f8(0x17c70000, -1, 0x0c670000, 1);
+            break;
+        }
+    }
+}
 void OvlFunc_881_200b2f0(void)
 {
     extern void *__MapActor_GetActor(int);

@@ -1,8 +1,11 @@
 /*
  * Non-matching clean C candidate for Anim_Drain (exact .text size 0x378 and exact relocations).
- * Matches 0x00..0x166 with `u8 *const iwram_3001eec[]`; remaining diff in Loop 2 is `global_alloc`
- * priority tie-break where `obj` (14 refs / 137 insns = 0.30657) beats `j` (24 refs / 314 insns =
- * 0.30573) by 0.00084, swapping `r8` and `sl`.
+ * Matches 0x00..0x081 with `u8 *const iwram_3001eec[]`. Two coupled diffs remain:
+ * 1. `global_alloc` priority tie-break where `obj` (14 refs / 137 insns = 0.30657) beats `j`
+ *    (24 refs / 314 insns = 0.30573) by 0.00084, swapping `r8` and `sl`.
+ * 2. Spilled GIV stack slots `[sp, #24]`, `[sp, #20]`, `[sp, #16]` follow `global_alloc`
+ *    `allocno_order` (`319 -> 307 -> 316`) in the target binary vs ascending `regno` order
+ *    (`307 -> 316 -> 319`) in `reload1.c`.
  */
 #include "anim.h"
 #include "task.h"

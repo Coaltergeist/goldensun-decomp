@@ -600,7 +600,34 @@ void *AltmillerCave_GetActors(void)
     if (ev == (int)_EVENT_97) return Lm957_4318;
     return Lm957_4198;
 }
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_2008a54.s");
+static inline void SetBldCnt957(int v)
+{
+    REG_BLDCNT = v;
+}
+
+static inline void SetBldAlpha957(int v)
+{
+    REG_BLDALPHA = v;
+}
+
+void OvlFunc_957_2008a54(void)
+{
+    signed char level = ewram_2001004[0];
+
+    SET_IO(REG_BLDCNT, 0x3f42);
+    if (level == 0)
+        SET_IO(REG_BLDALPHA, 0x1000);
+    else if (level == 1)
+        SET_IO(REG_BLDALPHA, 0xe00);
+    else if (level == 2)
+        SET_IO(REG_BLDALPHA, 0xc00);
+    else if (level == 3)
+        SET_IO(REG_BLDALPHA, 0xa00);
+    else if (level == 4)
+        SET_IO(REG_BLDALPHA, 0x800);
+    else
+        SET_IO(REG_BLDALPHA, 0x600);
+}
 
 extern unsigned char ewram_2001004[];
 extern unsigned char iwram_3001ebc[];
@@ -648,16 +675,6 @@ void OvlFunc_957_2008b24(void) {
 extern unsigned char iwram_3001ebc[];
 extern void __Func_808fe38(int);
 extern void OvlFunc_957_2008a54(void);
-
-static inline void SetBldCnt957(int v)
-{
-    REG_BLDCNT = v;
-}
-
-static inline void SetBldAlpha957(int v)
-{
-    REG_BLDALPHA = v;
-}
 
 static inline void WriteU16_957(unsigned short *addr, int val)
 {
@@ -972,7 +989,174 @@ void OvlFunc_957_2008f94(void)
     L3f6c->unk2++;
 }
 
-INCLUDE_ASM("asm/maps/altmiller_cave/OvlFunc_957_200909c.s");
+__asm__(".set __divsi3, _divsi3_RAM");
+__asm__(".set __modsi3, _modsi3_RAM");
+
+struct PuzzleOrbit957 {
+    short phase;
+    short timer;
+    short unused;
+    short angle;
+    short speed;
+    short soundAngle;
+};
+
+extern struct PuzzleOrbit957 *PuzzleOrbit957 __asm__(".Lm957_3f6c");
+extern char PuzzleBytes957[4] __asm__("ewram_2001001");
+extern unsigned char PuzzleCount957 __asm__("ewram_2001000");
+extern void OvlFunc_957_2008f10(int, int, int);
+extern void OvlFunc_957_2008f94(void);
+extern void OvlFunc_957_200bad4(void);
+extern void __CutsceneStart(void);
+extern void __CutsceneEnd(void);
+extern void __CutsceneWait(int);
+extern void __Func_808e118(void);
+extern void __MessageID(int);
+extern void __ActorMessage(int, int);
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __PlaySound(int);
+extern void __WaitFrames(int);
+extern void __MapActor_SetPos(int, int, int);
+extern int __StartTask(void (*)(void), unsigned int);
+extern int __StopTask(void (*)(void));
+extern void __Func_8012330(int, int, int);
+extern int __Random(void);
+
+void OvlFunc_957_200909c(int selectedActor)
+{
+    int advance = 0;
+    int i, scale, radius;
+    signed char state, target;
+    unsigned char count;
+    unsigned short angle;
+    struct Actor *actor;
+
+    __CutsceneStart();
+    __Func_808e118();
+    __MessageID(0x21db);
+    __ActorMessage(16, 0);
+    __CutsceneEnd();
+    for (i = 0; i <= 4; i++) {
+        actor = (struct Actor *)__MapActor_GetActor(i + 11);
+        actor->update = 0;
+        actor->scale.x = 0x10000;
+        actor->scale.y = 0x10000;
+    }
+    state = PuzzleBytes957[0];
+    target = ((signed char *)PuzzleBytes957)[1];
+    PuzzleOrbit957->angle = (target << 16) / 5 + 0x4000;
+    if (state == 0) {
+        if (selectedActor == 16) {
+            state = 1;
+            __PlaySound(0x6e);
+        } else {
+            __PlaySound(0x72);
+        }
+        PuzzleCount957 = 0;
+    } else if (state == 1) {
+        if (selectedActor == 16) {
+            __PlaySound(0x6e);
+        } else if (selectedActor == 20) {
+            state = 2;
+            __PlaySound(0x6e);
+            __WaitFrames(30);
+            angle = PuzzleOrbit957->angle;
+            for (i = 0; i <= 4; i++) {
+                OvlFunc_957_2008f10(i + 11, 0x180000, angle);
+                __PlaySound(0x97);
+                actor = (struct Actor *)__MapActor_GetActor(i + 11);
+                actor->scale.x = 0;
+                scale = 0x6666;
+                do {
+                    actor->scale.y = scale;
+                    actor->scale.x = scale;
+                    __WaitFrames(1);
+                    scale += 0xc00;
+                } while (actor->scale.x <= 0xffff);
+                angle -= 0x3333;
+            }
+            __WaitFrames(30);
+            advance = 1;
+        } else {
+            __PlaySound(0x72);
+            state = 0;
+        }
+    } else if (state == 2) {
+        if (selectedActor != target + 16) {
+            state = 0;
+            __PlaySound(0x72);
+            __WaitFrames(30);
+            for (i = 0; i <= 4; i++) {
+                actor = (struct Actor *)__MapActor_GetActor(i + 11);
+                __PlaySound(0x97);
+                scale = actor->scale.x;
+                if (scale > 0x6666) {
+                    do {
+                        actor->scale.y = scale;
+                        actor->scale.x = scale;
+                        __WaitFrames(1);
+                        scale -= 0xc00;
+                    } while (actor->scale.x > 0x6666);
+                }
+                __MapActor_SetPos(i + 11, 0, 0);
+            }
+        } else {
+            __PlaySound(0x6e);
+            advance = 1;
+            __WaitFrames(30);
+        }
+    }
+    {
+        char *p = PuzzleBytes957;
+        *p = state;
+        if (advance != 0) {
+            count = ++*(unsigned char *)(p - 1);
+            target = (((unsigned int)__Random() << 2) >> 16) + target + 1;
+            p[1] = (target + 5) % 5;
+            PuzzleOrbit957->phase = 0;
+            PuzzleOrbit957->timer = 0;
+            PuzzleOrbit957->speed = 0x200;
+            PuzzleOrbit957->soundAngle = 0x3000;
+            __StartTask(OvlFunc_957_2008f94, 0xc80);
+            if (count <= 2) {
+                while (PuzzleOrbit957->phase != 99)
+                    __WaitFrames(1);
+                __WaitFrames(10);
+                __PlaySound(0x6e);
+            } else {
+                *p = 99;
+                while (PuzzleOrbit957->phase != 2)
+                    __WaitFrames(1);
+                PuzzleOrbit957->phase = 2;
+                PuzzleOrbit957->timer = 0;
+                API_Func_8012330(0x20000, 0x20000, 0x10000);
+                __CutsceneWait(20);
+                API_Func_8012330(0x40000, 0x40000, 0x10000);
+                PuzzleOrbit957->phase = 99;
+                __PlaySound(0xbe);
+                radius = 0x180000;
+                angle = PuzzleOrbit957->angle;
+                do {
+                    for (i = 0; i <= 4; i++) {
+                        actor = (struct Actor *)__MapActor_GetActor(i + 11);
+                        actor->scale.x -= 16;
+                        actor->scale.y -= 16;
+                        OvlFunc_957_2008f10(i + 11, radius, angle);
+                        angle -= 0x3333;
+                    }
+                    angle += 0xc00;
+                    radius -= 0x3333;
+                    __WaitFrames(1);
+                } while (radius > 0);
+                for (i = 0; i <= 4; i++)
+                    __MapActor_SetPos(i + 11, 0, 0);
+                OvlFunc_957_200bad4();
+                __PlaySound(0x50);
+            }
+            __StopTask(OvlFunc_957_2008f94);
+        }
+    }
+}
 
 void OvlFunc_957_20093f8(void)
 {

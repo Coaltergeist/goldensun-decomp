@@ -1,17 +1,17 @@
 /*
- * Non-matching clean C candidate for Anim_Annihilation (exact .text size 0x410 == 0x410,
- * 0 linked relocation diffs under GAIA_CFLAGS).
- * Only remaining diff (+0x366..+0x374 and +0x384..+0x392): in both
- * `SetBattleActorState((s16)state->context->targets[0], 10, -1, -1, 0)` calls,
- * tools/gcc296 CSE shares `CONST_INT -1` in `r3` and copies to `r2` (`adds r2, r3, #0`),
- * whereas original compiler materialized `r2 = -1` (`movs r2, #1; negs r2, r2`) and
- * adjusted `r3` from `0` via `subs r3, #1`.
+ * Non-matching clean C candidate for Anim_Annihilation (exact .text size 0x410 == 0x410 / 1040 bytes,
+ * 43/43 relocations under GAIA_CFLAGS / -fstrict-aliasing).
+ *
+ * Remaining diffs:
+ * 1. +0x122..+0x124 / +0x152 / +0x29c: stack-slot order between `&user` and `camera + 0xc` (`[sp, #12]` vs `[sp, #16]`).
+ * 2. +0x366..+0x374 and +0x384..+0x392: in both `SetBattleActorState((s16)state->context->targets[0], 10, -1, -1, 0)`
+ *    calls, tools/gcc296 CSE shares `CONST_INT -1` in `r3` and copies to `r2` (`adds r2, r3, #0`),
+ *    whereas original compiler materialized `r2 = -1` (`movs r2, #1; negs r2, r2`) and adjusted `r3`
+ *    from `0` via `subs r3, #1`.
  */
 #include "anim.h"
 #include "dma.h"
 #include "task.h"
-
-#define ANNIH_BUF ((u8 *)0x02010000)
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
 
@@ -39,6 +39,7 @@ struct AnnihilationState {
 
 extern u8 *iwram_3001eec[];
 extern void *gPtrs[];
+extern u8 gBuffer[];
 extern u16 Data_ede48[];
 extern char _FILE_96[], _FILE_63[], _FILE_73[];
 
@@ -74,7 +75,7 @@ void Anim_Annihilation(struct AnimContext *context)
     u8 *render = *slots;
     u8 *particleGfx = baseSlots[2];
     u8 *camera = baseSlots[-27];
-    u8 *buffer = ANNIH_BUF;
+    u8 *buffer = gBuffer;
     DrawFunc pair[2];
     struct AnnihilationPosition user, target;
     struct AnnihilationParticle *p;
@@ -136,7 +137,7 @@ void Anim_Annihilation(struct AnimContext *context)
             offset = 0;
             if (state->context->param != 0)
                 offset = 0x2580;
-            pair[0](render, ANNIH_BUF + (offset + image * 0xc80),
+            pair[0](render, gBuffer + (offset + image * 0xc80),
                     target.x / 2 - 20, target.y - 48, 40, 80);
             Unk_080D655C(10000);
             gfree(0x2e);

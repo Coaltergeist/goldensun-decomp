@@ -1,17 +1,12 @@
 /*
- * Non-matching decompilation of Anim_Torch (0x310 / 784 bytes, 0 reloc diffs).
+ * Non-matching clean C candidate for Anim_Torch (exact .text size 0x310 == 0x310 / 784 bytes,
+ * 0 relocation diffs under GAIA_CFLAGS / -fstrict-aliasing).
  *
- * Matches 0x000..0x26b (620 bytes) and 0x2ae..0x310 (98 bytes) 100% byte-for-byte.
- * Remaining diffs:
- * 1. +0x26c..+0x278 / +0x29a / +0x2a8: inside the inlined DMA queue sequence
- *    immediately after DMA3_SET, the original SDK DMA3_SET / ScheduleDmaTransfer
- *    expansion kept r2 busy across the REG_IME load so reload picked r5 instead
- *    of r2 (shifting the 3-register spill_regs[] {r3, r2, r5} round-robin by 1
- *    for the final two reloads in the loop latch).
- * 2. +0x288..+0x28a: under GAIA_CFLAGS (-fstrict-aliasing), `adds r3, r3, r1`
- *    precedes `strh r2, [r1, #0]` (`u16 *queue` vs `u32 *task`), matching target
- *    ASM; under default `-fno-strict-aliasing`, sched2 hoists `strh` first due
- *    to conservative memory aliasing with `stmia r3!`.
+ * Matches 0x000..0x26d (622 bytes) and 0x2aa..0x310 (102 bytes) 100% byte-for-byte.
+ * Remaining diff (only 9 insns at +0x26e..+0x278 / +0x29a / +0x2a8): shared `include/dma.h`
+ * `DMA3_SET` closes its `register u32 _cnt __asm__("r2")` scope before `ime = REG_IME`,
+ * so `reload1.c`'s `{r2, r3, r5}` spill-register ring starts at `r2` instead of `r5`
+ * (shifting the final two reloads in the loop latch by 1).
  */
 #include "anim.h"
 #include "task.h"
@@ -131,26 +126,25 @@ void Anim_Torch(struct AnimContext *context)
         if (frame > 127) {
             state->frameReady = 1;
         } else {
-            u16 *queue;
-            u32 savedIme;
-            s32 count;
-            u32 *task;
             int tmp = ewram_201007e[0];
             gBuffer[1] = tmp;
             DMA3_SET(ewram_201007c, ewram_201007e, 0x80a0003e);
-            queue = (u16 *)&gDMATaskCount;
-            savedIme = REG_IME;
-            SET_IO(REG_IME, REG_ADDR_IME);
-            count = *queue;
-            if (count < 32) {
-                task = (u32 *)((u8 *)queue + count * 12);
-                *queue = count + 1;
-                task++;
-                *task++ = (u32)ewram_2010002;
-                *task++ = 0x05000002;
-                *task = 0x8000003f;
-            }
-            SET_IO(REG_IME, savedIme);
+            do {
+                u16 *q = (u16 *)&gDMATaskCount;
+                u32 ime = REG_IME;
+                s32 c;
+                SET_IO(REG_IME, REG_ADDR_IME);
+                c = *q;
+                if (c < 32) {
+                    u32 *t = (u32 *)((u8 *)q + c * 12);
+                    *q = c + 1;
+                    t++;
+                    *t++ = (u32)ewram_2010002;
+                    *t++ = 0x05000002;
+                    *t = 0x8000003f;
+                }
+                SET_IO(REG_IME, ime);
+            } while (0);
         }
         WaitFrames(1);
     }

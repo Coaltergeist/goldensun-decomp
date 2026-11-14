@@ -1,3 +1,4 @@
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
 /* rom_7ced6c (overlay file 946): consolidated TU — crossbone_isle map overlay. */
 
 #include "nonmatching.h"
@@ -134,8 +135,8 @@ void OvlFunc_946_20080c4(void) {
     player->prevPos.z = 0x80 << 24;
     player->motion.x = zero;
     player->motion.z = zero;
-    player->pos.x = ((short *)&player->pos.x)[1] << 16;
-    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    player->pos.x = ((Fx32Parts *)&player->pos.x)->half.hi << 16;
+    player->pos.z = ((Fx32Parts *)&player->pos.z)->half.hi << 16;
     __Actor_SetAnim(player, 1);
 }
 
@@ -598,20 +599,100 @@ struct Actor *OvlFunc_946_2008a4c(int x, int y, int z, int id) {
     return 0;
 }
 
-void OvlFunc_946_2008ab0(void *arg0)
+void OvlFunc_946_2008ab0(struct Actor *actor)
 {
-    unsigned char *p = (unsigned char *)arg0;
-    unsigned char *sprite;
-
-    *(int *)(p + 8) += *(int *)(p + 0x44);
-    *(int *)(p + 0xc) += *(int *)(p + 0x48);
-    *(int *)(p + 0x10) += *(int *)(p + 0x4c);
-    *(int *)(p + 0x18) += *(int *)(p + 0x30);
-    *(int *)(p + 0x1c) += *(int *)(p + 0x34);
-    sprite = *(unsigned char **)(p + 0x50);
-    *(short *)(sprite + 0x1e) += *(short *)(p + 0x64);
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += (u16)actor->waveCounter;
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008ae8.s");
+
+struct CS946P_Effect {
+    int priority;
+    int animation;
+    int scaleX;
+    int scaleY;
+    int targetScaleX;
+    int targetScaleY;
+    short spriteId;
+    void *script;
+    unsigned short rotation;
+    unsigned short angularVelocity;
+    actorfun_t update;
+};
+
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_SetScript(void *, void *);
+extern int *Lm946_32d4[] __asm__(".Lm946_32d4");
+
+void OvlFunc_946_2008ae8(int x, int y, int z, int dx, int dy, int dz, int flags, struct CS946P_Effect *data)
+{
+    extern void __Func_80929d8(int, int);
+    struct Actor *player = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int *script;
+    int scale_flag;
+
+    if ((flags & 0x100000) && data != 0)
+        actor = (struct Actor *)API_CreateActor(data->spriteId, x, y, z);
+    else
+        actor = (struct Actor *)API_CreateActor(0xde, x, y, z);
+    if (actor == 0)
+        return;
+
+    sprite = actor->sprite;
+    __Actor_SetAnim(actor, (flags + 1) & 15);
+    __Actor_SetScript(actor, Lm946_32d4[flags & 15]);
+    actor->__unk55 = 0;
+    sprite->flags = 0;
+    actor->update = (actorfun_t)OvlFunc_946_2008ab0;
+    actor->bounce = dx;
+    actor->gravity = dy;
+    actor->__unk4C = dz;
+    sprite->oam.priority = player->sprite->oam.priority;
+    actor->speed = 0;
+    actor->accel = 0;
+    actor->waveCounter = 0;
+
+    if ((flags & 0xffff0000) == 0 || data == 0)
+        return;
+    if (flags & 0x10000)
+        __Func_80929d8((int)actor, data->animation);
+    if (flags & 0x20000) {
+        u8 p;
+        actor->flags &= 0xfe;
+        p = data->priority;
+        sprite->oam.priority = p;
+    }
+    scale_flag = flags & 0x80000;
+    if (scale_flag) {
+        actor->scale.x = data->scaleX;
+        actor->scale.y = data->scaleY;
+    }
+    if (flags & 0x40000) {
+        script = Lm946_32d4[flags & 15];
+        if (scale_flag) {
+            actor->speed = (data->targetScaleX - actor->scale.x) / script[3];
+            actor->accel = (data->targetScaleY - actor->scale.y) / script[3];
+        } else {
+            actor->speed = (data->targetScaleX - 0x10000) / script[3];
+            actor->accel = (data->targetScaleY - 0x10000) / script[3];
+        }
+    }
+    if (flags & 0x200000) {
+        __Actor_SetAnim(actor, 1);
+        __Actor_SetScript(actor, data->script);
+    }
+    if (flags & 0x400000)
+        sprite->rotation = data->rotation;
+    if (flags & 0x800000)
+        actor->waveCounter = data->angularVelocity;
+    if (flags & 0x1000000)
+        actor->update = data->update;
+}
 
 void OvlFunc_946_2008cc0(void) {}
 
@@ -690,7 +771,6 @@ extern int __cos(int);
 extern int __sin(int);
 void OvlFunc_946_2008e00(unsigned int actorId)
 {
-    extern void OvlFunc_946_2008ae8(int, int, int, int, int, int, int, void *);
     extern int _divsi3_RAM(int, int);
     int vel[3];
     int data[10];
@@ -712,7 +792,7 @@ void OvlFunc_946_2008e00(unsigned int actorId)
         vel[2] = s;
         vel[0] = c + _divsi3_RAM(c, 3);
 
-        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, data);
+        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, (struct CS946P_Effect *)data);
     }
 }
 
@@ -793,7 +873,7 @@ int CrossboneIsle_MapInit(void)
 {
     struct Actor *actor;
 
-    *(int *)(CS946_Scene + 0x1c0) = 0x204;
+    ((Fx32Parts *)(CS946_Scene + 0x1c0))->raw = 0x204;
     if (CS946_State.event == (int)Event7b) {
         OvlFunc_946_200991c();
     } else {

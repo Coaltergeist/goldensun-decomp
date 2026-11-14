@@ -104,6 +104,7 @@ GAIA_SRCS := \
 	src/battle_anim/moves/jupiter.c \
 	src/battle_anim/moves/kirin.c \
 	src/battle_anim/moves/mercury.c \
+	src/battle_anim/moves/ramses.c \
 	src/battle_anim/moves/revive.c \
 	src/battle_anim/moves/shining_star.c \
 	src/battle_anim/moves/spasm.c \
@@ -114,25 +115,38 @@ GAIA_SRCS := \
 	src/field_engine/actor/actor.c \
 	src/field_engine/actor/actor_script.c \
 	src/field_engine/actor/player.c \
+	src/maps/altin_peak.c \
 	src/maps/altmiller_cave.c \
+	src/maps/babi_lighthouse.c \
 	src/maps/babis_palace.c \
+	src/maps/crossbone_isle.c \
+	src/maps/crossbone_isle_dungeon_2.c \
 	src/maps/elemental_stars.c \
 	src/maps/elemental_stars_eruption.c \
 	src/maps/imil_falls_cave.c \
 	src/maps/kolima.c \
 	src/maps/kolima_forest_4.c \
+	src/maps/lalivero_ship.c \
 	src/maps/main_menu.c \
 	src/maps/mercury_lighthouse.c \
+	src/maps/mercury_lighthouse_aerie.c \
 	src/maps/mercury_lighthouse_entrance.c \
+	src/maps/mogall_forest.c \
 	src/maps/suhalla_desert.c \
+	src/maps/tolbi.c \
 	src/maps/tolbi_bound_ship_hull.c \
+	src/maps/tunnel_ruins.c \
 	src/maps/vale_plaza.c \
 	src/maps/vale_river.c \
 	src/maps/vale_river_prologue.c \
 	src/maps/vale_rooms_2.c \
+	src/maps/vale_sanctum.c \
 	src/maps/vault_1.c \
 	src/maps/vault_2.c \
+	src/maps/vault_rooms_1.c \
+	src/maps/venus_lighthouse_aerie.c \
 	src/maps/world_map_cutscenes.c \
+	src/maps/xian.c \
 	src/shop/shop.c \
 	src/title/title.c
 $(GAIA_SRCS:%.c=$(OBJ)/%.o): private GCC296_CFLAGS := $(GAIA_CFLAGS)

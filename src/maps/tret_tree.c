@@ -1,6 +1,8 @@
 /* rom_7a5214 (overlay file 918): consolidated TU — tret_tree map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __udivsi3, _udivsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "math.h"
@@ -715,7 +717,91 @@ void OvlFunc_918_2009224(void) {
     DMA3_COPY((void *)(0xa0 << 19), iwram_3001ed0, 0x1c0);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2009244.s");
+extern int iwram_3001e40;
+extern int Lm918_2db8 __asm__(".Lm918_2db8");
+extern int Lm918_1f00[] __asm__(".Lm918_1f00");
+extern int __Random(void);
+extern int _divsi3_RAM(int, int);
+
+struct CS918P_Field {
+    unsigned char pad[0x17e];
+    short transition;
+};
+
+struct CS918P_Context {
+    struct CS918P_Field *field;
+    void *other[4];
+    unsigned short *palette;
+};
+
+extern struct CS918P_Context CS918P_Context __asm__("iwram_3001ebc");
+
+void OvlFunc_918_2009244(void) {
+    struct CS918P_Field *field = CS918P_Context.field;
+    unsigned short *src = CS918P_Context.palette;
+    volatile unsigned short *dst;
+    unsigned int i;
+
+    if (field->transition != 0) {
+        return;
+    }
+    if (iwram_3001e40 & 0x1f) {
+        return;
+    }
+
+    src = (unsigned short *)((char *)src + 0x20);
+    dst = (volatile unsigned short *)0x5000020;
+
+    for (i = 0; i <= 0x3e; i++) {
+        int redOffset, greenOffset, blueOffset;
+        int r, g, b;
+        unsigned int color;
+
+        redOffset = Lm918_1f00[Lm918_2db8];
+        greenOffset = Lm918_1f00[Lm918_2db8 + 1];
+        blueOffset = Lm918_1f00[Lm918_2db8 + 2];
+
+        if (i > 0x2f) {
+            redOffset -= redOffset / 2 + redOffset / 3;
+            greenOffset -= greenOffset / 2 + greenOffset / 3;
+            blueOffset -= blueOffset / 2 + blueOffset / 3;
+        } else if (i > 0x1f) {
+            redOffset -= redOffset / 3 + redOffset / 4;
+            greenOffset -= greenOffset / 3 + greenOffset / 4;
+            blueOffset -= blueOffset / 3 + blueOffset / 4;
+        } else if (i > 0xf) {
+            redOffset -= redOffset / 4 + redOffset / 5;
+            greenOffset -= greenOffset / 4 + greenOffset / 5;
+            blueOffset -= blueOffset / 4 + blueOffset / 5;
+        }
+
+        color = *src;
+        r = color & 0x1f;
+        g = (color >> 5) & 0x1f;
+        b = (color >> 10) & 0x1f;
+
+        r += redOffset;
+        g += greenOffset;
+        b += blueOffset;
+
+        if (r > 0x1f) r = 0x1f;
+        if (g > 0x1f) g = 0x1f;
+        if (b > 0x1f) b = 0x1f;
+        if (r < 0) r = 0;
+        if (g < 0) g = 0;
+        if (b < 0) b = 0;
+
+        *dst = (b << 10) | (g << 5) | r;
+        dst++;
+        src++;
+    }
+
+    Lm918_2db8 += (__Random() & 7) * 3;
+    if (Lm918_1f00[Lm918_2db8] == 0x63) {
+        Lm918_2db8 = 0;
+    }
+}
+
 void OvlFunc_918_2009424(int arg0) {
     switch (arg0) {
         case 0:
@@ -820,7 +906,55 @@ void OvlFunc_918_20095ac(struct Actor *actor) {
         __DeleteActor(actor);
     }
 }
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200962c.s");
+extern unsigned int _udivsi3_RAM(unsigned int, unsigned int);
+extern int __Func_8096c48(void *, int);
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetAnim(void *, int);
+extern void OvlFunc_918_20095ac(struct Actor *);
+
+void OvlFunc_918_200962c(void) {
+    int unk = 0;
+    int val = Lm918_2dcc;
+    int div = val / 10;
+
+    switch (val) {
+        case 0:
+        case 10:
+        case 20:
+        case 30:
+        case 40: {
+            unsigned int i;
+            __PlaySound(0xdc);
+            for (i = 0; i < (unsigned int)(6 - div); i++) {
+                struct Actor *actor = __CreateActor(0x11d, Lm918_2dc0.x, Lm918_2dc0.y, Lm918_2dc0.z);
+                if (actor != NULL) {
+                    unk = __Func_8096c48(actor->sprite, unk);
+                    actor->__unk55 = 0;
+                    actor->sprite->oam.priority = 0;
+                    __Actor_SetSpriteFlags(actor, 0);
+                    __Actor_SetAnim(actor, 1);
+                    actor->waveCounter = 0;
+                    actor->__unk66 = ((360U / (unsigned int)(6 - div) * i) << 16) / 360U;
+                    actor->prevPos.x = Lm918_2dc0.x;
+                    actor->prevPos.y = Lm918_2dc0.y;
+                    actor->prevPos.z = Lm918_2dc0.z;
+                    actor->speed = 0x19999;
+                    actor->update = (actorfun_t)OvlFunc_918_20095ac;
+                }
+            }
+        }
+        /* fallthrough */
+        case 44:
+            __PlaySound(0x121);
+            break;
+    }
+
+    Lm918_2dcc++;
+    if (Lm918_2dcc > 0x78) {
+        Lm918_2dcc = 0;
+    }
+}
+
 
 extern short Lm918_1ca8[] __asm__(".Lm918_1ca8");
 extern void __CopyMapTiles(int, int, int, int, int, int);

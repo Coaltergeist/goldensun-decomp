@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
+
 __asm__(".set __divsi3, _divsi3_RAM");
 #include "api.h"
 #include "actor.h"
@@ -145,8 +147,8 @@ void OvlFunc_965_20080c4(void) {
     player->prevPos.z = 0x80 << 24;
     player->motion.x = zero;
     player->motion.z = zero;
-    player->pos.x = ((short *)&player->pos.x)[1] << 16;
-    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    player->pos.x = ((Fx32Parts *)&player->pos.x)->half.hi << 16;
+    player->pos.z = ((Fx32Parts *)&player->pos.z)->half.hi << 16;
     __Actor_SetAnim(player, 1);
 }
 
@@ -633,7 +635,91 @@ void OvlFunc_965_2008ab0(unsigned int arg0)
   r3h += r2h;
   *((unsigned short *) (r1 + 0x1e)) = r3h;
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008ae8.s");
+struct CS965P_Effect {
+    int priority;
+    int animation;
+    int scaleX;
+    int scaleY;
+    int targetScaleX;
+    int targetScaleY;
+    short spriteId;
+    void *script;
+    unsigned short rotation;
+    unsigned short angularVelocity;
+    actorfun_t update;
+};
+
+extern void __Actor_SetScript(struct Actor *, void *);
+extern void __Func_80929d8(int, int);
+extern int *Lm965_3134[] __asm__(".Lm965_3134");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_965_2008ae8(int x, int y, int z, int dx, int dy, int dz, int flags, struct CS965P_Effect *data)
+{
+    struct Actor *player = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int *script;
+    int scale_flag;
+
+    if ((flags & 0x100000) && data != 0)
+        actor = (struct Actor *)API_CreateActor(data->spriteId, x, y, z);
+    else
+        actor = (struct Actor *)API_CreateActor(0xde, x, y, z);
+    if (actor == 0)
+        return;
+
+    sprite = actor->sprite;
+    __Actor_SetAnim(actor, (flags + 1) & 15);
+    __Actor_SetScript(actor, Lm965_3134[flags & 15]);
+    actor->__unk55 = 0;
+    sprite->flags = 0;
+    actor->update = (actorfun_t)OvlFunc_965_2008ab0;
+    actor->bounce = dx;
+    actor->gravity = dy;
+    actor->__unk4C = dz;
+    sprite->oam.priority = player->sprite->oam.priority;
+    actor->speed = 0;
+    actor->accel = 0;
+    actor->waveCounter = 0;
+
+    if ((flags & 0xffff0000) == 0 || data == 0)
+        return;
+    if (flags & 0x10000)
+        __Func_80929d8((int)actor, data->animation);
+    if (flags & 0x20000) {
+        u8 p;
+        actor->flags &= 0xfe;
+        p = data->priority;
+        sprite->oam.priority = p;
+    }
+    scale_flag = flags & 0x80000;
+    if (scale_flag) {
+        actor->scale.x = data->scaleX;
+        actor->scale.y = data->scaleY;
+    }
+    if (flags & 0x40000) {
+        script = Lm965_3134[flags & 15];
+        if (scale_flag) {
+            actor->speed = ((data->targetScaleX - actor->scale.x) / (script[3]));
+            actor->accel = ((data->targetScaleY - actor->scale.y) / (script[3]));
+        } else {
+            actor->speed = ((data->targetScaleX - 0x10000) / (script[3]));
+            actor->accel = ((data->targetScaleY - 0x10000) / (script[3]));
+        }
+    }
+    if (flags & 0x200000) {
+        __Actor_SetAnim(actor, 1);
+        __Actor_SetScript(actor, data->script);
+    }
+    if (flags & 0x400000)
+        sprite->rotation = data->rotation;
+    if (flags & 0x800000)
+        actor->waveCounter = data->angularVelocity;
+    if (flags & 0x1000000)
+        actor->update = data->update;
+}
+
 
 extern void __Func_8091f14(int a, int b);
 
@@ -681,7 +767,7 @@ void __WaitMapTransition(void);
 int __cos(int);
 int __sin(int);
 void OvlFunc_965_2008cf0(struct Actor *);
-void OvlFunc_965_2008ae8(int, int, int, int, int, int, int, int *);
+void OvlFunc_965_2008ae8();
 void __MapActor_Surprise(int, int);
 void __Func_8012330(int, int, int);
 void __Func_8012350(void);

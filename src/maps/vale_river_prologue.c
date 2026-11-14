@@ -2581,7 +2581,87 @@ void OvlFunc_882_200c3c8(struct Actor *actor) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_river_prologue/OvlFunc_882_200c41c.s");
+struct SpriteOamBitView882 {
+    struct Sprite *dest;
+    u16 posY : 8;
+    u16 affineMode : 2;
+    u16 objMode : 2;
+    u16 mosaic : 1;
+    u16 bpp : 1;
+    u16 shape : 2;
+    u16 posX : 9;
+    u16 affineParam : 5;
+    u16 size : 2;
+    union {
+        struct {
+            u16 tileNum : 10;
+            u16 priority : 2;
+            u16 palette : 4;
+        };
+        struct {
+            u8 attr2Lo;
+            u8 tileHi : 2;
+            u8 prio : 2;
+            u8 pal : 4;
+        } __attribute__((packed));
+    } __attribute__((packed));
+};
+
+struct E30SlotView882 {
+    unsigned char pad[0x46];
+    u16 slot;
+};
+
+void OvlFunc_882_200c41c(unsigned int arg0)
+{
+    extern struct E30SlotView882 *iwram_3001f30_view __asm__("iwram_3001f30");
+    extern struct SpriteSlot gSpriteSlots[];
+    extern void __Sprite_SetAnim(struct Sprite *, int);
+    extern void __Func_8003f3c(int);
+
+    struct E30SlotView882 *e30 = iwram_3001f30_view;
+    struct Actor *parent = (struct Actor *)arg0;
+    struct Actor *actors[2];
+    int i;
+
+    API_PlaySound(0x98);
+
+    for (i = 0; i <= 1; i++) {
+        struct Actor *actor = API_CreateActor(0x1a, parent->pos.x, parent->pos.y, parent->pos.z);
+        actors[i] = actor;
+        if (actor != NULL) {
+            struct Sprite *sprite;
+
+            actor->floorPos = parent->floorPos;
+            sprite = actor->sprite;
+            actor->__unk55 = 0;
+            actor->waveCounter = 0;
+            actor->linkedActor = parent;
+            if (sprite != NULL) {
+                struct SpriteOamBitView882 *oam = (struct SpriteOamBitView882 *)&sprite->oam;
+
+                __Sprite_SetAnim(sprite, 0);
+                sprite->flags = 0;
+                __Func_8003f3c(sprite->slot);
+                sprite->slot = e30->slot;
+                sprite->flags1D.bit0 = 1;
+                oam->tileNum = gSpriteSlots[sprite->slot].vramOffset >> 5;
+                oam->bpp = 0;
+                oam->shape = 1;
+                oam->size = 2;
+                sprite->layers[0]->frameID = 0;
+            }
+        }
+    }
+
+    actors[0]->update = OvlFunc_882_200c3c8;
+    ((struct SpriteOamBitView882 *)&actors[0]->sprite->oam)->prio =
+        ((struct SpriteOamBitView882 *)&parent->sprite->oam)->prio;
+    ((struct SpriteOamBitView882 *)&actors[1]->sprite->oam)->prio =
+        ((struct SpriteOamBitView882 *)&parent->sprite->oam)->prio;
+    actors[1]->update = OvlFunc_882_200c378;
+    actors[1]->flags = 2;
+}
 
 extern void __Func_8096fb0(int, int);
 

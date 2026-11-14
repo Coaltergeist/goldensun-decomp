@@ -1,32 +1,47 @@
-/* Remaining diff: GCSE hoists -1 into a callee-saved register (sl), spilling &gState
- * to [sp, #4] instead of keeping &gState in fp and rematerializing -1 in place. */
-extern int CS951_ShowMessage(int, int) __asm__("__ShowActorMessage_NoWait");
+/*
+ * Remaining diff (only 4 bytes across 680 bytes):
+ * With `state = &CS951_State;` (`fp`), `gcse` hoists `(char *)state + 1` (`0x11d = 1 + (0x8e << 1)`)
+ * into `r7` across `__Random()` and `OvlFunc_951_20084bc` instead of recomputing `fp + 1` locally
+ * in scratch registers `r1`/`r0` and using `.word 0x11d` in the second weight-scan loop.
+ */
+#include "api.h"
+
+struct CS951_StateView {
+    unsigned char beforeCoins[0x10];
+    unsigned int coins;
+    unsigned char beforeWeights[0x11d - 0x14];
+    signed char weights[0x12c - 0x11d];
+    signed char rewards[0x1c0 - 0x12c];
+    short event, room;
+};
+extern struct CS951_StateView CS951_State __asm__("gState");
+
 extern unsigned char CS951_Message_e4c[] __asm__(".Lcs951_message_e4c");
 __asm__(".equ .Lcs951_message_e4c, 0xe4c");
 extern unsigned char CS951_Message_e49[] __asm__(".Lcs951_message_e49");
 __asm__(".equ .Lcs951_message_e49, 0xe49");
 extern unsigned char CS951_Message_e43[] __asm__(".Lcs951_message_e43");
 __asm__(".equ .Lcs951_message_e43, 0xe43");
+
 extern unsigned int __Func_8078b60(unsigned int);
+extern int __Func_8078550(void);
+extern int __Func_8091c7c(int, int);
+extern void __Func_8019908(int, int);
 extern unsigned int __LuckyFountainMenu(unsigned int);
 extern unsigned int __Func_80789dc(unsigned int);
-extern int __Func_8078550(void);
 extern void __Func_808e118(void);
 extern void *__CreateUIBox(int, int, int, int, int);
 extern void __CloseUIBox(void *, int);
 extern void __Func_801e7c0(unsigned int, void *, unsigned int, unsigned int);
 extern void __Func_801ea08(int, unsigned int, void *, unsigned int, unsigned int);
 extern void __Func_8019a54(void);
-extern void __Func_8019908(int, int);
-extern int __Func_8091c7c(int, int);
-extern void __ActorMessage(int, int);
 extern void __AddCoins(int);
 extern unsigned int __Random(void);
 extern volatile unsigned int gKeyPress;
 extern unsigned short CS951_CoinPrizes[] __asm__(".Lm951_200c");
 extern int gLuckyFountainPrizes[];
-extern int OvlFunc_951_200973c(int);
 extern void OvlFunc_951_20084bc(int);
+extern int OvlFunc_951_200973c(int);
 
 int OvlFunc_951_2008ac8(void)
 {
@@ -45,7 +60,7 @@ retry:
     coins = state->coins;
     tokens = __Func_8078b60(0xe5);
     API_MessageID(message);
-    CS951_ShowMessage(-1, 0);
+    API_ShowActorMessage_NoWait(-1, 0);
     box = __CreateUIBox(0, 0, 17, 4, 2);
     text = (int)CS951_Message_e49;
     __Func_801e7c0(text, box, 0, 0);
@@ -60,20 +75,20 @@ retry:
     if (selection == 0) {
         if (coins == 0) {
             API_MessageID(message + 1);
-            __ActorMessage(-1, 0);
+            API_ActorMessage(-1, 0);
             API_WaitFrames(1);
             goto retry;
         }
     } else if (selection == 1) {
         if (tokens == 0) {
             API_MessageID(message + 2);
-            __ActorMessage(-1, 0);
+            API_ActorMessage(-1, 0);
             API_WaitFrames(1);
             goto retry;
         }
         if (__Func_8078550() == 0) {
             API_MessageID(message + 4);
-            CS951_ShowMessage(-1, 0);
+            API_ShowActorMessage_NoWait(-1, 0);
             if (__Func_8091c7c(0, 0) != 0)
                 goto done;
         }
@@ -111,7 +126,7 @@ retry:
             API_PlaySound(0x5b);
             __Func_8019908(CS951_CoinPrizes[result], 5);
             API_MessageID(0xe46);
-            __ActorMessage(-1, 0);
+            API_ActorMessage(-1, 0);
         } else {
             API_PlaySound(0x71);
             API_CutsceneWait(10);
@@ -126,9 +141,9 @@ retry:
                 i++;
             } while (i < count);
         }
-        roll = ((unsigned int)total * __Random()) >> 16;
-        roll -= state->weights[0];
         i = 0;
+        roll = ((unsigned int)total * __Random()) >> 16;
+        roll -= state->weights[i];
         if (roll >= 0) {
             do {
                 i++;

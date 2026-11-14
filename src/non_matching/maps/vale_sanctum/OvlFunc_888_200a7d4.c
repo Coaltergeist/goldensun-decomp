@@ -1,7 +1,9 @@
-/* Remaining diff: CSE/GCSE hoists &cursor (sp + 8) into r6 across the 3 calls
- * (__Func_801c0dc and both __Func_801c154 calls), pushing box to r8 and Lm888_411c
- * to sl, whereas target asm rematerializes `add r0, sp, #8` at each call site and
- * keeps box in r7 and Lm888_411c in r8.
+/* Remaining diff: in tools/gcc296/cc1, expand_call scores (plus virtual-stack-vars -12)
+ * at rtx_cost == 4 (> 2) and calls copy_to_mode_reg, so 03.cse and 07.gcse hoist
+ * &cursor (sp + 8) into r6 across all 3 calls (__Func_801c0dc and both __Func_801c154
+ * calls), shifting 1 -> r7, box -> r8, and Lm888_411c -> sl, whereas target asm
+ * rematerializes `add r0, sp, #8` at each call site (keeping 1 in r6, box in r7,
+ * and Lm888_411c in r8).
  */
 __asm__(".equ .Lconst_116e, 0x116e");
 extern unsigned char Const116e[] __asm__(".Lconst_116e");

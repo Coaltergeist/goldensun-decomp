@@ -1,9 +1,10 @@
-/* Remaining diff vs asm/maps/link_lobby/OvlFunc_971_20087b0.s:
- * - Identical serial-abort sequence to `Func_800651c` in `src/core/runtime/serial.c`:
- *   storing `0` to `ewram_2002220[3]` / `ewram_2002220[2]` (`QImode` at non-zero offset)
- *   reloads `0` via an `HImode` minipool entry (`ldrh rX, =0`) in `camelot-gcc` without
- *   `register`-pinned locals (`Func_800651c` in `serial.c` uses `register` fakematch),
- *   and schedules `mov r6, #0` after `__GetFlag(0x302)` instead of before.
+/*
+ * Remaining compiler/RTL diffs vs asm/maps/link_lobby/OvlFunc_971_20087b0.s:
+ * - In `03.cse`, storing constant `0` to `p[3]` / `p[2]` (`QImode` at non-zero offset) widens
+ *   `QImode` via `GET_MODE_WIDER_MODE(QImode) == HImode` and forces an `HImode` minipool reload
+ *   (`ldrh rX, =0`) in `reload` unless `0` is already pinned in a register (`Func_800651c` in
+ *   `src/core/runtime/serial.c` has the identical serial-abort macro and uses a `register` pin).
+ * - In `23.sched2`, `mov r6, #0` is scheduled after `__GetFlag(0x302)` instead of before.
  */
 extern int __GetFlag(int);
 extern void __WaitFrames(int);

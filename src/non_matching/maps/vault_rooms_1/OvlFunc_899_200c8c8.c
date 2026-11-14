@@ -1,7 +1,8 @@
 /*
- * Remaining diff (minor register/stack allocation in compound follow condition):
- * Target ASM keeps `sub sp, #4` (`facing` on stack) and evaluates the actor-2
- * follow range check without spilling an extra boolean local (`sub sp, #8`).
+ * Remaining diff (exact byte size 0x264, `sub sp, #4`, `0x00..0xa8` 100% match):
+ * At `+0xaa`, `02.jump` inverts `bge <+0xb6>; b <+0xc4>` to `blt <+0xc4>; b <+0xb6>`
+ * before `07.gcse` inserts the common `dx*dx` / `dz*dz` block at `<+0xae>`, shifting
+ * one scratch register choice (`r1` vs `r2`) in the subsequent actor 24/25 blocks.
  */
 #include "api.h"
 #include "actor.h"
@@ -16,10 +17,10 @@ extern unsigned int __Random(void);
 extern int __atan2(int, int);
 extern void __Actor_SetAnim(struct Actor *, int);
 extern unsigned short Lm899_64f8 __asm__(".Lm899_64f8");
-extern unsigned char *iwram_3001ebc;
 
 void OvlFunc_899_200c8c8(void)
 {
+    extern unsigned char *scene_3001ebc __asm__("iwram_3001ebc");
     struct Actor *actor;
     unsigned char *scene, *node, *next;
     short facing;
@@ -28,7 +29,7 @@ void OvlFunc_899_200c8c8(void)
         struct Actor *leader = __GetFieldActor(0);
         u16 f, u;
         blocked = 0;
-        scene = iwram_3001ebc;
+        scene = scene_3001ebc;
         actor = __GetFieldActor(2);
         node = OvlFunc_899_200c704(&actor->pos);
         if (node && actor->prevPos.x == (int)0x80000000) {
@@ -38,11 +39,11 @@ void OvlFunc_899_200c8c8(void)
             angle = (short)__atan2(dz, dx);
             dx >>= 16;
             dz >>= 16;
-            if (!(*(short *)(scene + 0x19c) > 0 &&
-                  dx * dx + dz * dz <= 400 &&
-                  (f = facing, u = angle, angle = (short)(f - u), angle > -0x1000) &&
-                  angle < 0x1000) &&
-                dx * dx + dz * dz > 64) {
+            if (*(short *)(scene + 0x19c) > 0 &&
+                dx * dx + dz * dz <= 400 &&
+                (f = facing, u = angle, angle = (short)(f - u), angle > -0x1000) &&
+                angle < 0x1000) {
+            } else if (dx * dx + dz * dz > 64) {
                 facing = actor->facing;
             }
             next = OvlFunc_899_200c754(node, &facing);

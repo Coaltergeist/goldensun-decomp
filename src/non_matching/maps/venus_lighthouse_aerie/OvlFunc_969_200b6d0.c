@@ -58,7 +58,7 @@ void OvlFunc_969_200b6d0(void)
         actor->update = (actorfun_t)OvlFunc_969_200b600;
         flags = 0;
         actor->speed = (24 * __sin(((u32)__Random() * 0xffff) >> 20)) >> 16;
-        sprite->flags = flags;
+        *(char *)&sprite->flags = flags;
         sprite->oam.priority = 1;
     }
 }

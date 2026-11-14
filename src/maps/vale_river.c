@@ -2102,6 +2102,7 @@ void OvlFunc_883_200b45c(unsigned int actorId, unsigned int count, int setPos)
         }
     }
 }
+
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200b4c8.s");
 INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200bfb0.s");
 
@@ -2173,9 +2174,42 @@ int OvlFunc_883_200d610(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/vale_river/OvlFunc_883_200d64c.s");
+int OvlFunc_883_200d64c(struct Actor *actor, struct Actor *target, int range, int force)
+{
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern unsigned short __atan2(int, int);
+    int result = 0;
+    u16 angle;
+    int a0, a1, a2, facing;
 
-extern int OvlFunc_883_200d64c(unsigned char *arg, int a, int b, int c);
+    if (actor->stop == 1 && actor->__unk62 == 0) {
+        __Actor_SetAnim(actor, 1);
+        return 1;
+    }
+
+    if (OvlFunc_883_200d610(&target->pos.x, &actor->pos.x) < range || force != 0) {
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        a2 = (angle - 0x1000) & 0xf000;
+        a1 = (angle + 0x1000) & 0xf000;
+        a0 = angle & 0xf000;
+        facing = actor->facing & 0xf000;
+        if (a0 == facing || a1 == facing || a2 == facing || force != 0) {
+            actor->stop = 1;
+            __Actor_SetAnim(actor, 1);
+            result = 1;
+            actor->__unk62 = result;
+        } else {
+            actor->stop = 0;
+            __Actor_SetAnim(actor, 2);
+            actor->__unk62 = 0;
+        }
+    } else {
+        actor->stop = 0;
+        __Actor_SetAnim(actor, 2);
+        actor->__unk62 = 0;
+    }
+    return result;
+}
 
 unsigned int OvlFunc_883_200d72c(unsigned char *arg0) {
     int r1;

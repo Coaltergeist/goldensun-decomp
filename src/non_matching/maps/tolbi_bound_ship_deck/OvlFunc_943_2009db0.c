@@ -3,8 +3,10 @@
  * Remaining diff at +0x15e..+0x164 in API_MapActor_TravelToAnim(0x15, 0xc4, 0x264):
  *   ref: mov r0, #0x15; mov r2, #0x99; mov r1, #0xc4; lsl r2, #2
  *   new: mov r2, #0x99; mov r0, #0x15; mov r1, #0xc4; lsl r2, #2
- * In sched2, mov r2, #0x99 feeds lsl r2, #2 -> call (priority +2) while
- * mov r0, #0x15 feeds call directly (priority +1).
+ * In 23.sched2, flow2 splits r2 = 0x264 into mov r2, #0x99 -> lsl r2, #2 -> call
+ * (priority +2) while mov r0, #0x15 feeds call directly (priority +1), unless
+ * separated by a statement-macro loop note (do { ... } while (0)) in the
+ * original script header.
  */
 extern unsigned char Lm943_5208[] __asm__(".Lm943_5208");
 extern unsigned char gScript_943__0200c4ec[];

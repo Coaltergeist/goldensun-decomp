@@ -1,8 +1,13 @@
 /*
  * Non-matching (exact 0x470 .text size, exact 24-byte .rodata, all 50/50 relocations at exact offsets).
- * Requires -fstrict-aliasing (GAIA_CFLAGS) at 0x8e..0x9e (hoisting u8 * load baseSlots[7] above
- * s32 store state->blitParam = 75 while sinking stack spill str r6, [sp, #0x3c] below it);
- * minor register/spill allocation diff remains around frame - start (0x146..0x1e6, sp 0x70 vs 0x74).
+ * Matches 0x000..0x139 and 0x30c..0x470 100% byte-for-byte under -fstrict-aliasing (GAIA_CFLAGS)
+ * with `DrawFunc draw[2];` (8-byte DImode pseudo giving the exact 0x74 stack frame).
+ * Remaining diff (0x13a..0x30a):
+ * - At 0x146, target reloads `frame` (`ldr r3, [sp, #0x44]`) after `if (frame > 39)`, whereas
+ *   reload inherits `r0` (-2B).
+ * - GCSE PRE merges `frame - start` across `size = (frame - start) / 4 + 2` and
+ *   `MatrixRoll((frame - start) << 10)` into a single pseudo whose `global_alloc` priority
+ *   (1.013) beats `&origin` (0.611), spilling `&origin` (+2B at 0x244, canceling the -2B at 0x146).
  */
 #include "anim.h"
 #include "actor.h"
@@ -76,7 +81,7 @@ void Anim_AstralBlast(struct AnimContext *context)
     struct AstralBlastState *state = (struct AstralBlastState *)*slots++;
     u8 *render = *slots;
     int frame;
-    DrawFunc draw;
+    DrawFunc draw[2];
     int i;
     u8 *graphics = baseSlots[2];
     u8 *camera = baseSlots[-27];
@@ -101,7 +106,7 @@ void Anim_AstralBlast(struct AnimContext *context)
     BuildDraw2DFuncEx(0x2e, 7, 7, 3, 2);
     state->blitMode = 2;
     state->blitParam = 75;
-    draw = (DrawFunc)baseSlots[7];
+    draw[0] = (DrawFunc)baseSlots[7];
     StartTask(Task_BlitAnim, 0x480);
 
     user = *_GetBattleActor(state->context->user);
@@ -176,8 +181,8 @@ void Anim_AstralBlast(struct AnimContext *context)
                     for (k = 0; k != 16; k++) {
                         int x = a->vx + (b->vx - a->vx) * k / 16;
                         int y = a->vy + (b->vy - a->vy) * k / 16;
-                        draw(render, graphics + Data_ede48[size - 1],
-                             x - size / 2, y - size, size, size * 2);
+                        draw[0](render, graphics + Data_ede48[size - 1],
+                                x - size / 2, y - size, size, size * 2);
                     }
                 }
             }

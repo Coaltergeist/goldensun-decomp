@@ -65,7 +65,7 @@ void Anim_Unused_Haunt(struct AnimContext *context)
     u8 *render = *slots;
     int frame;
     struct HauntParticle *p;
-    DrawFunc draw;
+    DrawFunc draw[2];
     int i;
     u8 *camera;
     int offset, k;
@@ -88,7 +88,7 @@ void Anim_Unused_Haunt(struct AnimContext *context)
     state->blitParam = 0;
     state->blitMode = 2;
     state->blitParam = 75;
-    draw = (DrawFunc)iwram_3001eec[7];
+    draw[0] = (DrawFunc)iwram_3001eec[7];
     StartTask(Task_BlitAnim, 0x480);
 
     offset = 0;
@@ -124,7 +124,7 @@ void Anim_Unused_Haunt(struct AnimContext *context)
                     x = pos.x + ((sin(p->angle + k * 0x5555) << 3) >> 16);
                     y = pos.y + ((cos(p->angle + k * 0x5555) << 3) >> 16);
                     p->angle += 0x200;
-                    draw(render, state->graphics + k * 0x240, x - 12, y - 28, 24, 24);
+                    draw[0](render, state->graphics + k * 0x240, x - 12, y - 28, 24, 24);
                 }
             }
         }

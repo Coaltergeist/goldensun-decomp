@@ -1,6 +1,8 @@
 /* rom_7d0e88 (overlay file 947): consolidated TU — crossbone_isle_dungeon_2 map overlay. */
 
 #include "nonmatching.h"
+
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
 #include "api.h"
 #include "actor.h"
 #include "field.h"
@@ -138,8 +140,8 @@ void OvlFunc_947_20083a8(void)
     player->prevPos.z = 0x80 << 24;
     player->motion.x = zero;
     player->motion.z = zero;
-    player->pos.x = ((short *)&player->pos.x)[1] << 16;
-    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    player->pos.x = ((Fx32Parts *)&player->pos.x)->half.hi << 16;
+    player->pos.z = ((Fx32Parts *)&player->pos.z)->half.hi << 16;
     __Actor_SetAnim(player, 1);
 }
 extern unsigned char gBuffer[];
@@ -1153,8 +1155,65 @@ void OvlFunc_947_200975c(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20099f0.s");
+
+struct OAM947 {
+    struct Sprite *dest;
+    u16 attr0;
+    u16 attr1;
+    u8 attr2Lo;
+    u8 tileHi : 2;
+    u8 priority : 2;
+    u8 palette : 4;
+};
+struct Sprite947 {
+    struct OAM947 oam;
+    struct OAM947 shadowOAM;
+};
+
+int OvlFunc_947_2009938(struct Actor *a, struct Actor *b)
+{
+    int ret = 0;
+
+    if (b->pos.x == a->pos.x && b->pos.y == a->pos.y && b->pos.z == a->pos.z)
+        return ret;
+
+    if (b->pos.x - 0x100000 < a->pos.x
+     && a->pos.x < b->pos.x + 0x100000
+     && b->pos.y / 0x10000 == a->pos.y / 0x10000
+     && b->pos.z > a->pos.z
+     && b->pos.z - 0x200000 < a->pos.z) {
+        if (((struct Sprite947 *)a->sprite)->oam.priority < ((struct Sprite947 *)b->sprite)->oam.priority) {
+            a->flags &= ~1;
+            ((struct Sprite947 *)a->sprite)->oam.priority = ((struct Sprite947 *)b->sprite)->oam.priority;
+            ((struct Sprite947 *)a->sprite)->shadowOAM.priority = ((struct Sprite947 *)b->sprite)->shadowOAM.priority;
+        }
+        ret = 1;
+    }
+    return ret;
+}
+
+int OvlFunc_947_20099f0(struct Actor *a, struct Actor *b)
+{
+    int ret = 0;
+
+    if (b->pos.x == a->pos.x && b->pos.y == a->pos.y && b->pos.z == a->pos.z)
+        return ret;
+
+    if (a->pos.x - 0x100000 < b->pos.x
+     && b->pos.x < a->pos.x + 0x100000
+     && b->pos.y / 0x10000 == a->pos.y / 0x10000
+     && a->pos.z > b->pos.z
+     && a->pos.z - 0x200000 < b->pos.z) {
+        if (((struct Sprite947 *)a->sprite)->oam.priority > ((struct Sprite947 *)b->sprite)->oam.priority) {
+            b->flags &= ~1;
+            ((struct Sprite947 *)b->sprite)->oam.priority = ((struct Sprite947 *)a->sprite)->oam.priority;
+            ((struct Sprite947 *)b->sprite)->shadowOAM.priority = ((struct Sprite947 *)a->sprite)->shadowOAM.priority;
+        }
+        ret = 1;
+    }
+    return ret;
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009aa8.s");
 
 struct Tile947 {
@@ -1203,7 +1262,73 @@ void OvlFunc_947_2009be8(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009d84.s");
+
+extern vec3_t CS947U_Probe __asm__(".Lm947_3720");
+
+void OvlFunc_947_2009d84(void)
+{
+    extern int __Func_8012038(int, int, int);
+    struct Actor *actor, *other;
+    unsigned int id, index, j;
+    struct Tile947 tile;
+    for (id = 8; id <= 11; id++) {
+        actor = (struct Actor *)__MapActor_GetActor(id);
+        actor->layer = 2;
+        index = id - 8;
+        if ((actor->pos.x >> 20) == CS947S_Records[index].x &&
+            (actor->pos.z >> 20) == CS947S_Records[index].z && actor->motion.y == 0)
+            continue;
+        DMA3_SET(&actor->pos, &CS947U_Probe, 0x84000003);
+        WaitForDma3();
+        if (__TestCollision(actor, (int *)&CS947U_Probe) == -1)
+            actor->__unk55 = 3;
+        OvlFunc_947_200901c(0, CS947S_Records[index].x, CS947S_Records[index].z, (unsigned char *)&CS947S_Records[index].tile);
+        OvlFunc_947_200901c(2, CS947S_Records[index].x, CS947S_Records[index].z, (unsigned char *)&CS947S_Records[index].tile);
+        if (actor->__unk55 & 1) {
+            if (__Func_8012038(2, actor->pos.x, actor->pos.z) == 50) {
+                API_PlaySound(0xbd);
+                actor->flags &= ~1;
+                OvlFunc_947_2009074(id, 1);
+                actor->flags |= 1;
+            } else if (__Func_8012038(2, actor->pos.x, actor->pos.z) == 51) {
+                OvlFunc_947_2008da8((unsigned int)actor, 0);
+                API_PlaySound(0xbd);
+                actor->pos.y = 0;
+                actor->flags &= ~1;
+                OvlFunc_947_2009174(id);
+                actor->pos.x = 0;
+                actor->pos.y = 0;
+                actor->pos.z = 0;
+                actor->flags |= 1;
+            } else {
+                OvlFunc_947_2008d78((unsigned int)actor);
+            }
+            actor->__unk55 = 0;
+        }
+        OvlFunc_947_2008fcc(0, actor->pos.x >> 20, actor->pos.z >> 20, &CS947S_Records[index].tile);
+        if (actor->pos.y >= 0) {
+            OvlFunc_947_2008fcc(0, 27, (actor->pos.y >> 20) + 6, &tile);
+            OvlFunc_947_200901c(0, actor->pos.x >> 20, actor->pos.z >> 20, (unsigned char *)&tile);
+            tile.f2 = CS947S_Records[index].tile.f2;
+            OvlFunc_947_200901c(2, actor->pos.x >> 20, actor->pos.z >> 20, (unsigned char *)&tile);
+        }
+        CS947S_Records[index].x = actor->pos.x >> 20;
+        CS947S_Records[index].y = actor->pos.y >> 20;
+        CS947S_Records[index].z = actor->pos.z >> 20;
+        for (j = 0; j <= 3; j++) {
+            if (j != index) {
+                API_ClearFlag(CS947S_Records[j].flag);
+                other = (struct Actor *)__MapActor_GetActor(j + 8);
+                if ((actor->pos.x >> 20) == (other->pos.x >> 20) &&
+                    (actor->pos.z >> 20) == (other->pos.z >> 20) &&
+                    actor->pos.y > other->pos.y)
+                    API_SetFlag(CS947S_Records[j].flag);
+            }
+        }
+    }
+    OvlFunc_947_2009be8();
+}
+
 
 struct Actor947 {
     unsigned char pad0[0x22];

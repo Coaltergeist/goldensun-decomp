@@ -1,7 +1,13 @@
 /*
- * Non-matching (764-byte .text, 37/37 relocations).
- * Requires -fstrict-aliasing (GAIA_CFLAGS) at 0x12c (hoisting pointer load state->context above
- * s32 store state->particles[i].hit = 0); minor loop GIV / register allocation diff in target loop.
+ * Non-matching clean C candidate for Anim_Quake (exact .text size 0x420 == 0x420 / 1056 bytes,
+ * .rodata 9 == 9 bytes, 27/27 relocations under GAIA_CFLAGS / -fstrict-aliasing).
+ *
+ * Matches 0x00..0x49 100% byte-for-byte.
+ * Remaining diff (+0x4a..+0x64): in tools/gcc296, 08.loop hoists `=gBuffer` out of the
+ * 16x40 tile loop and 09.cse2 merges it with the `gBuffer` argument to `Func_8001af8`
+ * across `_call_via_r3`, keeping `gBuffer` in callee-saved `r5` across the call instead
+ * of reloading `=gBuffer` from the literal pool (same `thumb_movsi_insn` pool-load RTX_COST
+ * difference seen in `Anim_ScreenShatter` and `BaseAnim_Tackle`).
  */
 #include "anim.h"
 #include "math.h"
@@ -70,11 +76,12 @@ void Anim_Quake(struct AnimContext *context)
     u8 **slots = baseSlots;
     struct QuakeState *state = (struct QuakeState *)*slots++;
     u8 *render = *slots;
-    u8 *camera = (u8 *)baseSlots[-27];
+    int frame, i, j, k, t;
     DrawFunc draw;
+    u8 *camera = (u8 *)baseSlots[-27];
+    int xoff, h;
     struct QuakeAmp amp;
     struct QuakeVec pos, out;
-    int frame, i, j, k, xoff, h;
 
     state->context = context;
     AnimStart(1);
@@ -122,7 +129,6 @@ void Anim_Quake(struct AnimContext *context)
             if (frame >= start
                 && frame < start + QuakeParams[state->context->param * 3 + 1]) {
                 int top;
-                int t;
                 h = (sin((frame - start) << 10) * amp.v[k]) >> 16;
                 if (h < 0)
                     h = -h;
@@ -146,7 +152,6 @@ void Anim_Quake(struct AnimContext *context)
             }
         }
         {
-            int t;
             struct QuakeParticle *p = state->particles;
             for (t = 0; t != state->context->numTargets; t++, p++) {
                 s32 *actor = *_GetBattleActor((s16)state->context->targets[t]);

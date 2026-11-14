@@ -1,12 +1,12 @@
 /*
- * Non-matching clean C for Anim_Condemn (all relocations, .rodata tables,
- * stack layout, and animation logic match).
+ * Non-matching clean C for Anim_Condemn (exact .text size 0x574 == 0x574,
+ * exact 28-byte .rodata, all 43 relocations, and 0x4c stack layout match).
  *
- * Remaining diff (.text 0x4b0 vs 0x4ac):
- *   When both branches of `if (state->context->side == 0)` set `rowY = 0;`,
- *   GCC 2.96's `07.gcse` (`one_cprop_pass`) folds `rowY` to constant 0 and
- *   eliminates the runtime `CondemnY[rowY]` row-stride multiply (`lsl r3, #3;
- *   sub r3, r0`).
+ * Remaining diff (2 minor register-allocation differences):
+ *   1. +0x40..0x6a: `file` is allocated to `r5` and `=gBuffer` is loaded
+ *      directly into `r1`, whereas the target allocates `=gBuffer` to `r5`
+ *      (`ldr r5, =gBuffer; ... mov r1, r5`) and `file` to `r7`.
+ *   2. +0x124, +0x138, +0x244: `x` is allocated to `r6` instead of `r7`.
  */
 #include "anim.h"
 #include "math.h"
@@ -88,7 +88,8 @@ void Anim_Condemn(struct AnimContext *context)
     DrawFunc pair[2];
     vec3_t pos2, pos;
     struct CondemnActor *actor;
-    int frame, i, x, y, amp, base, blend;
+    int frame, i, x, y, amp, base;
+    int blend = 0;
     int rowX, rowY;
     vec2_t cur;
     int visible;
@@ -96,12 +97,14 @@ void Anim_Condemn(struct AnimContext *context)
     u8 *file;
 
     state->context = context;
-    blend = 0;
     Func_80cdb24(0);
     (*(vu16 *)0x04000020) = 0x100;
     (*(vu16 *)0x04000052) = 0x1010;
     file = GetFile((int)_FILE_ab);
-    ((void (*)(void *, const void *, unsigned int))Func_8001af8)((void *)0x05000000, file, 0x80);
+    {
+        void *(*copy)(void *, const void *, unsigned int) = Func_8001af8;
+        copy((void *)0x05000000, file, 0x80);
+    }
     file += 0x80;
     DecompressLZ(file, state);
     file = GetFile((int)_FILE_ac);
@@ -173,7 +176,10 @@ void Anim_Condemn(struct AnimContext *context)
             *scroll++ = base - ((sin((frame + i) << 11) * amp) >> 10);
 
         if (visible) {
-            if (state->context->side == 0) {
+            if (blend == 1) {
+                rowX = 0;
+                rowY = 1;
+            } else if (state->context->side == 0) {
                 rowX = 0;
                 rowY = 0;
             } else {

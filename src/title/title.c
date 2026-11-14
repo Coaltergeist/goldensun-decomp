@@ -245,9 +245,70 @@ void Func_80f2ebc(u16* cur, u16* target, u16* delta, int frames)
 	}
 }
 
-// see non_matching/title/Func_80f2f10.c
-INCLUDE_ASM("asm/title/title/Func_80f2f10.s");
-extern void Func_80f2f10(void);
+#define TITLE_QUEUE_DMA(queue, dma_dest, dma_src, dma_control) do { \
+    u32 savedIme = REG_IME; \
+    s32 count; \
+    s32 slot; \
+    u32 *task; \
+    SET_IO(REG_IME, REG_ADDR_IME); \
+    count = *(queue); \
+    if (count < 32) { \
+        slot = count * 12; \
+        count++; \
+        task = (u32 *)(slot + (u32)(queue)); \
+        *(queue) = count; \
+        task++; \
+        *task++ = (u32)(dma_src); \
+        *task++ = (u32)(dma_dest); \
+        *task = (dma_control); \
+    } \
+    SET_IO(REG_IME, savedIme); \
+} while (0)
+
+void Func_80f2f10(void)
+{
+    TitlePaletteState *p = GetPaletteFadeState();
+    u16 *delta;
+    s32 nextPos;
+    u16 *cur;
+    s32 i;
+
+    delta = (u16 *)&p->rampDelta;
+
+    if (p->rampFrames == 0)
+        return;
+
+    nextPos = p->rampPos + 1;
+    p->rampPos = nextPos;
+    if ((signed char)nextPos < p->rampFrames) {
+        cur = (u16 *)&p->currentBGR;
+        for (i = 0; i < (s32)(sizeof(PaletteBGRData) / sizeof(u16)); ++i)
+            *cur++ += *delta++;
+    } else {
+        DMA3_COPY(&p->targetBGR, &p->currentBGR, sizeof(p->currentBGR));
+        p->rampFrames = 0;
+    }
+
+    {
+        u16 *dst = (u16 *)&p->paletteBuf[p->paletteIdx ^ 1];
+        int maskB = 0x7c00;
+        u16 *src;
+
+        for (i = 0x200, src = (u16 *)&p->currentBGR; i != 0; i--) {
+            *dst++ = (src[0] & maskB) | BGR555_FROM_PLANE_G(src[1]) | BGR555_FROM_PLANE_R(src[2]);
+            src += 3;
+        }
+    }
+
+    p->paletteIdx ^= 1;
+    {
+        u8 *buf = (u8 *)p + (p->paletteIdx << 10);
+        u8 *bgr = buf + 0x2800;
+        u16 *queue = (u16 *)&gDMATaskCount;
+        TITLE_QUEUE_DMA(queue, PALETTE_BG, bgr, MAKE_DMATASK_DMA(0x8400, 0x80));
+        TITLE_QUEUE_DMA(queue, PALETTE_OBJ, buf + 0x2a00, MAKE_DMATASK_DMA(0x8400, 0x80));
+    }
+}
 
 // see non_matching/title/Func_80f3078.c
 INCLUDE_ASM("asm/title/title/Func_80f3078.s");

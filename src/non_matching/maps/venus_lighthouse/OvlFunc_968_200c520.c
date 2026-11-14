@@ -7,7 +7,6 @@
  * to `r7` (`LO_REGS`) and `arg0` to `r8` (`HI_REGS`) instead of the target's `arg0` in `r7` and
  * `&sp10` in `r8`.
  */
-extern int _divsi3_RAM(int, int);
 struct Struct_968_200c520 {
     int priority, animation, scaleX, scaleY, targetX, targetY;
     short sprite, unused;
@@ -37,7 +36,7 @@ void OvlFunc_968_200c520(int arg0, int arg1)
                 arg1 << 19,
                 0,
                 0,
-                _divsi3_RAM((int)((((__Random() * 5) >> 16) << 16) + 0x70000), 10),
+                (int)(((((__Random() * 5) >> 16) << 16) + 0x70000)) / 10,
                 0x88 << 16,
                 &sp10
             );

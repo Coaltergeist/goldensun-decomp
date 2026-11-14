@@ -3,10 +3,11 @@
  * Remaining diff at +0x36e..+0x374:
  *   ref: mov r3, #30; strh r3, [r1]; add r0, #0x67; add r2, r0
  *   new: add r0, #0x67; mov r3, #30; add r2, r0; strh r3, [r1]
- * In sched1, ldr =0x22b for field22b has higher priority than mov #30 for
- * destinationRoom, placing add r0, #0x67 ahead of mov r3, #30 in sched2's
- * equal-priority LUID tiebreaker unless field22b = 3 is emitted inside a
- * statement-macro loop note (do { ... } while (0)).
+ * In 23.sched2, flow2 splits the +0x22b offset for field22b into add r0, #0x67
+ * -> add r2, r0 -> strb r3, [r2] (longer true-dependency chain than mov r3, #30
+ * -> strh r3, [r1] -> cost-0 anti-dep), giving add r0, #0x67 strictly higher
+ * priority than mov r3, #30 unless separated by a statement-macro loop note
+ * (do { ... } while (0)) in the original script header.
  */
 #include "api.h"
 #include "actor.h"

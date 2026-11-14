@@ -1,3 +1,4 @@
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
 /* rom_7b0400 (overlay file 925): consolidated TU — mercury_lighthouse_aerie map overlay. */
 
 #include "nonmatching.h"
@@ -140,7 +141,7 @@ int MercuryLighthouseAerie_MapInit(void)
         __Actor_SetSpriteFlags(__MapActor_GetActor(0xc), 0);
         __Actor_SetSpriteFlags(__MapActor_GetActor(0xd), 0);
         ((struct AerieActorView *)__MapActor_GetActor(0xc))->scaleX = 0xffff0000;
-        ((struct AerieActorView *)__MapActor_GetActor(0xd))->scaleX = 0xffff0000;
+        ((Fx32Parts *)&((struct AerieActorView *)__MapActor_GetActor(0xd))->scaleX)->raw = 0xffff0000;
 
         state = AerieState.room;
         if (state == 1) {
@@ -1720,8 +1721,114 @@ void OvlFunc_925_200b1c0(unsigned int *out, int arg1)
         }
     }
 }
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b208.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_aerie/OvlFunc_925_200b324.s");
+extern unsigned char iwram_3001e70[];
+extern void OvlFunc_925_200b1c0(unsigned int *, int);
+
+void OvlFunc_925_200b208(void)
+{
+    unsigned char *ptr;
+    unsigned int actors[5];
+    int speed;
+    unsigned int count;
+    unsigned int i;
+    unsigned int j;
+
+    ptr = *(unsigned char **)iwram_3001e70 + (0xb2 << 1);
+    speed = 0x1999;
+    count = 0;
+
+    for (i = 0; i <= 4; i++) {
+        actors[i] = 0x42;
+    }
+
+    OvlFunc_925_200b1c0(actors, *(int *)(ptr + 0xc));
+
+    for (i = 0; i <= 4; i++) {
+        if (actors[i] == 0x42) {
+            break;
+        }
+        ((struct Actor *)__MapActor_GetActor(actors[i]))->__unk55 = 0;
+        count++;
+    }
+
+    __PlaySound(0xdf);
+
+    for (i = 0; i <= 0xe3; i++) {
+        *(int *)(ptr + 0xc) -= speed;
+
+        for (j = 0; j < count; j++) {
+            ((struct Actor *)__MapActor_GetActor(actors[j]))->pos.z += speed;
+            ((struct Actor *)__MapActor_GetActor(actors[j]))->prevPos.z =
+                ((struct Actor *)__MapActor_GetActor(actors[j]))->pos.z;
+        }
+
+        if ((i & 3) == 3) {
+            speed += 0x1999;
+        }
+
+        if (speed > 0x17fff) {
+            speed = 0x18000;
+        }
+
+        __WaitFrames(1);
+    }
+
+    for (i = 0; i < count; i++) {
+        ((struct Actor *)__MapActor_GetActor(actors[i]))->__unk55 = 0;
+    }
+}
+
+void OvlFunc_925_200b324(void)
+{
+    extern void __Func_800fe9c(void);
+    unsigned char *ptr;
+    unsigned int actors[5];
+    int vel;
+    unsigned int count;
+    unsigned int i;
+    unsigned int k;
+
+    ptr = *(unsigned char **)iwram_3001e70 + (0xb2 << 1);
+    vel = 0xc0 << 9;
+    count = 0;
+
+    for (i = 0; i <= 4; i++) {
+        actors[i] = 0x42;
+    }
+
+    OvlFunc_925_200b1c0(actors, *(int *)(ptr + 0xc));
+
+    for (i = 0; i <= 4; i++) {
+        if (actors[i] == 0x42) {
+            break;
+        }
+        ((struct Actor *)__MapActor_GetActor(actors[i]))->__unk55 = 0;
+        count++;
+    }
+
+    __PlaySound(0xdf);
+
+    for (i = 0; i <= 0x55; i++) {
+        *(int *)(ptr + 0xc) += vel;
+        for (k = 0; k < count; k++) {
+            ((struct Actor *)__MapActor_GetActor(actors[k]))->pos.z -= vel;
+            ((struct Actor *)__MapActor_GetActor(actors[k]))->prevPos.z =
+                ((struct Actor *)__MapActor_GetActor(actors[k]))->pos.z;
+        }
+
+        if ((i & 3) == 3 && i > 0x4b) {
+            vel -= 0x3333;
+        }
+        if (vel < 0xccc) {
+            vel = 0xccc;
+        }
+        __WaitFrames(1);
+    }
+
+    *(int *)(ptr + 0xc) = 0x80 << 19;
+    __Func_800fe9c();
+    __WaitFrames(2);
+}
 
 void OvlFunc_925_200b438(void)
 {
@@ -1773,11 +1880,77 @@ extern int __sin(int);
 extern const u8 gScript_925__0200bc54[];
 extern void *iwram_3001e70_p __asm__("iwram_3001e70");
 extern unsigned int iwram_3001e40;
+struct AerieSprite;
+struct AerieSpriteOAM {
+    struct AerieSprite *dest;
+    u16 attr0;
+    u16 attr1;
+    u8 attr2Lo;
+    u8 tileHi : 2;
+    u8 priority : 2;
+    u8 palette : 4;
+};
+struct AerieSprite {
+    struct AerieSpriteOAM oam;
+    struct AerieSpriteOAM shadowOAM;
+    fx32 scale;
+    u8 slot;
+    u8 __unk1D;
+    u16 rotation;
+    u8 width;
+    u8 height;
+    u8 offsetX;
+    u8 offsetY;
+    u8 animID;
+    bool8 visible;
+    u8 flags;
+    u8 numLayers;
+    struct SpriteLayer *layers[4];
+};
+struct AerieFullActor {
+    s32 *script;
+    s16 scriptPos;
+    u16 facing;
+    vec3_t pos;
+    fx32 floorPos;
+    vec2_t scale;
+    u16 width;
+    u8 layer;
+    u8 flags;
+    vec3_t motion;
+    fx32 speed;
+    fx32 accel;
+    vec3_t prevPos;
+    fx32 bounce;
+    fx32 gravity;
+    fx32 __unk4C;
+    struct AerieSprite *sprite;
+    bool8 visible;
+    u8 __unk55;
+    u8 __unk56;
+    u8 scriptVar;
+    u8 __unk58;
+    u8 collision;
+    u8 __unk5A;
+    bool8 stop;
+    u8 __unk5C;
+    u8 scriptLoop;
+    s16 waitTimer;
+    u8 __unk60;
+    u8 __unk61;
+    u8 __unk62;
+    u8 __unk63;
+    s16 waveCounter;
+    s16 __unk66;
+    struct AerieFullActor *linkedActor;
+    actorfun_t update;
+};
+
 void OvlFunc_925_200b4bc(void)
 {
-    struct Actor *actor;
-    struct Actor *newActor;
-    struct Sprite *sprite;
+    struct AerieFullActor *actor;
+    struct AerieFullActor *newActor;
+    struct AerieSprite *sprite;
     u8 *ptr;
     s16 *gate;
     int r8;
@@ -1791,12 +1964,12 @@ void OvlFunc_925_200b4bc(void)
     if (gate[1] <= 0x81) {
         if (iwram_3001e40 & 1) {
             API925_MapActor_SetPos(8, 0x1300000, 0x900000);
-            ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0x10000;
-            ((struct Actor *)__MapActor_GetActor(8))->scale.y = 0x10000;
+            ((struct AerieFullActor *)__MapActor_GetActor(8))->scale.x = 0x10000;
+            ((struct AerieFullActor *)__MapActor_GetActor(8))->scale.y = 0x10000;
         } else {
             API925_MapActor_SetPos(8, 0x1300000, 0x970000);
-            ((struct Actor *)__MapActor_GetActor(8))->scale.x = 0x14ccc;
-            ((struct Actor *)__MapActor_GetActor(8))->scale.y = 0x14ccc;
+            ((struct AerieFullActor *)__MapActor_GetActor(8))->scale.x = 0x14ccc;
+            ((struct AerieFullActor *)__MapActor_GetActor(8))->scale.y = 0x14ccc;
         }
     } else {
         API925_MapActor_SetPos(8, 0x80000, 0x80000);
@@ -1813,8 +1986,8 @@ void OvlFunc_925_200b4bc(void)
             r8 <<= 16;
             if (newActor != NULL) {
                 sprite = newActor->sprite;
-                __Actor_SetScript(newActor, gScript_925__0200bc54);
-                __Func_80929d8(newActor, 3);
+                __Actor_SetScript((struct Actor *)newActor, gScript_925__0200bc54);
+                __Func_80929d8((struct Actor *)newActor, 3);
                 newActor->__unk55 = flags;
                 randVal = __Random() & 0x0ffff000;
                 newActor->waveCounter = randVal;

@@ -1,23 +1,27 @@
-/* Func_80f3078 -- palette post-processing / tone mapping (title screen).
+/* Func_80f3078 -- palette post-processing / tone mapping (ROM 0x080f3078).
  *
  * `mode` is overloaded: it is either a raw BGR555 colour, a PaletteMode
- * selector, or a packed colour carrying PALMODE_FLAG_* operation bits.  The
- * selectors themselves, and the range each one falls in, are declared as
- * PaletteMode in src/title/title.c.  Source and destination are walked as flat
- * arrays: the palette stores 0x200 BGR555 colours, the BGR buffer three plane
- * words per colour.  `type` is a TitlePalFadeType -- PALFADE_ALL processes the
- * whole 0x200-entry palette, PALFADE_BG only the BG half, PALFADE_OBJ the OBJ
- * half (which also starts 0x300 words into `target` and 0x100 words into
- * `source`).
+ * selector, or a packed colour carrying PALMODE_FLAG_* operation bits.  Source
+ * (`color_t *src`) and destination (`u16 *dst`) walk the 0x200-entry BGR555
+ * palette and the 3-word-per-colour BGR plane buffer directly (matching
+ * Func_80f2ebc's channel pointer signature; callers pass `p->startPal.colors`
+ * and `p->targetBGR.channels` / `p->currentBGR.channels`).
  *
- * Status: PARKED (not byte-exact). Exact 181/181 TU relocations (uses scoped
- * `divsi3_RAM` indirect calls in the four dividing arms, `fx32_multiply` inline
- * fastcall for `Func_8000888` in `PALMODE_FLAG_FADE`, and unsigned `u32 c`
- * channel extraction for `lsrs`). Remaining gap is camelot-gcc register
- * allocation and frame layout: the ROM places `dst` in `r8` with a 0x28 stack
- * frame (`count` at `[sp, #36]`) and omits tail-merging the two DMA3 transfers,
- * whereas camelot-gcc allocates `dst` into a low callee-saved register (`r7`)
- * with a 0x20/0x24 frame and cross-jumps the DMA3 epilogues.
+ * Status: PARKED (99.1% byte match: exact 1692/1692 code bytes + 104 trailing
+ * rodata bytes = 1796/1796 bytes, exact 6292/6292 TU .text bytes, exact
+ * 110/110 TU relocations with zero offset diffs, exact 0x28 stack frame with
+ * `count` at `[sp, #36]`, `dst` in `r8`, `src` in `sl`, `i` in `r9`, and
+ * separate non-cross-jumped `DMA3_SET` transfers).
+ *
+ * Remaining 8-insn diff (out of 887 ASM lines):
+ *   - 4 insns in `PALMODE_SEPIA` (+0x16c..+0x17a): `09.cse2` `make_regs_eqv`
+ *     (`cse.c:1032-1036`) checks `REGNO_LAST_UID(g) > REGNO_LAST_UID(b)`; since
+ *     the final use of `b` (`dst[i*3 + 0] = b`) precedes `g` (`dst[i*3 + 1] =
+ *     g`) in `PALMODE_FLAG_GAIN`, `g` (`r6`) becomes canonical over `b` (`r5`)
+ *     for `3 * c + 5`.
+ *   - 4 stack-slot offsets in `PALMODE_FLAG_FADE` (+0x5a8/+0x5b6/+0x5d0/+0x60e):
+ *     loop-hoisted `mr + mg` and `mb << 16` swap spill slots `[sp, #4]` and
+ *     `[sp, #8]`.
  */
 
 #include "gba/types.h"
@@ -27,28 +31,26 @@
 #include "palette.h"
 #include "title.h"
 
-extern const u16 gBGRCurve1[] __asm__(".Lf39ee");
-extern const u16 gBGRCurve2[] __asm__(".Lf3a2e");
-extern const u16 gBGRCurve3[] __asm__(".Lf3a6e");
+extern u16 gBGRCurve1[] __asm__(".Lf39ee");
+extern u16 gBGRCurve2[] __asm__(".Lf3a2e");
+extern u16 gBGRCurve3[] __asm__(".Lf3a6e");
 
 extern int divsi3_RAM(int, int);
 extern int Func_80f3898(int arg0);
 extern int Func_80f38ac(int arg0);
 
-#define CURVE1(v) (gBGRCurve1[Func_80f3898(v)])
-#define CURVE3(v) (gBGRCurve3[Func_80f3898(v)])
-
-#define FADE_CH(m, q) FIXED_MUL_4_12(fx32_multiply, (m) * (q), (m))
-
-void Func_80f3078(unsigned int mode, PaletteData *source,
-                  PaletteBGRData *target, int type)
+static inline int title_div(int a, int b)
 {
-    typedef int (*DivFn)(int, int);
+    int (*fn)(int, int) = divsi3_RAM;
+    return fn(a, b);
+}
 
-    color_t *src = (color_t *)&source->colors;
-    u16 *dst = (u16 *)&target->channels;
+void Func_80f3078(unsigned int mode, color_t *src, u16 *dst, int type)
+{
     int count = PALETTE_COUNT * 2;
     unsigned int i;
+    u32 c;
+    int r, g, b;
 
     if (mode == PALMODE_INDIRECT)
         mode = *src;
@@ -65,77 +67,81 @@ void Func_80f3078(unsigned int mode, PaletteData *source,
         *dst++ = BGR555_PLANE_B(mode);
         *dst++ = BGR555_PLANE_G(mode);
         *dst++ = BGR555_PLANE_R(mode);
-        DMA3_COPY16(dst - 3, dst, (count - 1) * 6);
+        {
+            int n = count - 1;
+            DMA3_SET(dst - 3, dst, 0x80000000 | ((u32)(n * 6) >> 1));
+        }
     } else if (mode < PALMODE_PACKED) {
         switch (mode) {
-        case PALMODE_GREYSCALE: {
-            DivFn div = divsi3_RAM;
-            u16 *d = dst;
-
+        case PALMODE_GREYSCALE:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int v = div(BGR555_LUMA(c), 7);
+                c = *src++;
+                c = title_div(BGR555_LUMA(c), 7);
 
-                *d++ = v;
-                *d++ = v;
-                *d++ = v;
+                dst[i * 3 + 0] = c;
+                dst[i * 3 + 1] = c;
+                dst[i * 3 + 2] = c;
             }
             break;
-        }
-        case PALMODE_SEPIA: {
-            DivFn div = divsi3_RAM;
-
+        case PALMODE_SEPIA:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
-                int q = div(r + g + b, 10);
-                int ir = 4 * q + 5;
-                int ig = 3 * q + 5;
-                int ib = 3 * q + 5;
+                c = *src++;
 
-                if (ir < 8)
-                    ir = 8;
-                if (ig < 8)
-                    ig = 8;
-                if (ib < 8)
-                    ib = 8;
-                if (ir > 0x1c)
-                    ir = 0x1c;
-                if (ig > 0x1c)
-                    ig = 0x1c;
-                if (ib > 0x1c)
-                    ib = 0x1c;
+                r = BGR555_R(c);
+                g = BGR555_G(c);
+                b = BGR555_B(c);
+                c = title_div(r + g + b, 10);
+                r = 4 * c + 5;
+                b = 3 * c + 5;
+                g = 3 * c + 5;
 
-                *dst++ = gBGRCurve2[ib];
-                *dst++ = gBGRCurve2[ig];
-                *dst++ = gBGRCurve2[ir];
+                if (r < 8)
+                    r = 8;
+                if (g < 8)
+                    g = 8;
+                if (b < 8)
+                    b = 8;
+                if (r > 0x1c)
+                    r = 0x1c;
+                if (g > 0x1c)
+                    g = 0x1c;
+                if (b > 0x1c)
+                    b = 0x1c;
+
+                *dst++ = gBGRCurve2[b];
+                *dst++ = gBGRCurve2[g];
+                *dst++ = gBGRCurve2[r];
             }
             break;
-        }
         case PALMODE_WARM:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
+                c = *src++;
 
-                r = Func_80f3898(r - (r >> 1) + 6);
-                g = Func_80f3898(g - g / 3 + 4);
-                b = Func_80f3898(b - 6);
+                r = BGR555_R(c);
+                g = BGR555_G(c);
+                b = BGR555_B(c);
 
-                *dst++ = gBGRCurve3[b];
-                *dst++ = gBGRCurve2[g];
-                *dst++ = gBGRCurve1[r];
+                r -= r / 2;
+                g -= g / 3;
+                r += 6;
+                r = Func_80f3898(r);
+                g += 4;
+                g = Func_80f3898(g);
+                b -= 6;
+                b = Func_80f3898(b);
+
+                dst[i * 3 + 0] = gBGRCurve3[b];
+                dst[i * 3 + 1] = gBGRCurve2[g];
+                dst[i * 3 + 2] = gBGRCurve1[r];
             }
             break;
         case PALMODE_CONTRAST:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
+                c = *src++;
+
+                g = BGR555_G(c);
+                r = BGR555_R(c);
+                b = BGR555_B(c);
 
                 if (r < 10)
                     r = 10;
@@ -150,112 +156,142 @@ void Func_80f3078(unsigned int mode, PaletteData *source,
                 if (b > 0x1a)
                     b = 0x1a;
 
-                *dst++ = CURVE1(b + 2);
-                *dst++ = CURVE1(g + 2);
-                *dst++ = CURVE1(r);
+                r = Func_80f3898(r);
+                g += 2;
+                g = Func_80f3898(g);
+                b += 2;
+                b = Func_80f3898(b);
+
+                *dst++ = gBGRCurve1[b];
+                *dst++ = gBGRCurve1[g];
+                *dst++ = gBGRCurve1[r];
             }
             break;
         case PALMODE_HALFBLEND:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
-                int avg = Func_80f3898((r + g + b) / 3);
+                int avg;
+                c = *src++;
 
-                *dst++ = CURVE3((b >> 1) + avg);
-                *dst++ = CURVE3((g >> 1) + avg);
-                *dst++ = CURVE3((r >> 1) + avg);
+                r = BGR555_R(c);
+                g = BGR555_G(c);
+                b = BGR555_B(c);
+                avg = Func_80f3898((r + g + b) / 3);
+
+                r = (r >> 1) + avg;
+                g = (g >> 1) + avg;
+                b = (b >> 1) + avg;
+
+                r = Func_80f3898(r);
+                g = Func_80f3898(g);
+                b = Func_80f3898(b);
+
+                dst[i * 3 + 0] = gBGRCurve3[b];
+                dst[i * 3 + 1] = gBGRCurve3[g];
+                dst[i * 3 + 2] = gBGRCurve3[r];
             }
             break;
         case PALMODE_DESATURATE:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
+                c = *src++;
 
-                r = Func_80f3898(r + (g >> 3) + (b >> 3));
+                r = BGR555_R(c);
+                g = BGR555_G(c);
+                b = BGR555_B(c);
+
+                r += (g >> 3) + (b >> 3);
+                r = Func_80f3898(r);
                 g = g - g / 3;
                 b = b - b / 3;
 
-                *dst++ = gBGRCurve1[b];
-                *dst++ = gBGRCurve1[g];
-                *dst++ = gBGRCurve2[r];
+                dst[i * 3 + 0] = gBGRCurve1[b];
+                dst[i * 3 + 1] = gBGRCurve1[g];
+                dst[i * 3 + 2] = gBGRCurve2[r];
             }
             break;
         case PALMODE_WARM_ALT:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
-                int r = BGR555_R(c);
-                int g = BGR555_G(c);
-                int b = BGR555_B(c);
+                c = *src++;
 
-                r = Func_80f3898(r - (r >> 1) + 6);
-                g = Func_80f3898(g - g / 3 + 4);
-                b = Func_80f3898(b - 6);
+                r = BGR555_R(c);
+                g = BGR555_G(c);
+                b = BGR555_B(c);
 
-                *dst++ = gBGRCurve3[b];
-                *dst++ = gBGRCurve2[g];
-                *dst++ = gBGRCurve1[r];
+                r -= r / 2;
+                g -= g / 3;
+                r += 6;
+                r = Func_80f3898(r);
+                g += 4;
+                g = Func_80f3898(g);
+                b -= 6;
+                b = Func_80f3898(b);
+
+                dst[i * 3 + 0] = gBGRCurve3[b];
+                dst[i * 3 + 1] = gBGRCurve2[g];
+                dst[i * 3 + 2] = gBGRCurve1[r];
             }
             break;
-        default: {
-            u16 *d = dst;
-
+        default:
             for (i = 0; i < count; i++) {
-                u32 c = *src++;
+                c = *src++;
 
-                d[0] = BGR555_PLANE_B(c);
-                d[1] = BGR555_PLANE_G(c);
-                d[2] = BGR555_PLANE_R(c);
-                d += 3;
+                dst[i * 3 + 0] = BGR555_PLANE_B(c);
+                dst[i * 3 + 1] = BGR555_PLANE_G(c);
+                dst[i * 3 + 2] = BGR555_PLANE_R(c);
             }
             break;
-        }
         }
     } else if (mode & PALMODE_FLAG_GAIN) {
-        DivFn div = divsi3_RAM;
         int mr = BGR555_R(mode);
         int mg = BGR555_G(mode);
         int mb = BGR555_B(mode);
 
         for (i = 0; i < count; i++) {
-            u32 c = *src++;
-            int q = div(BGR555_LUMA(c), 0x60);
+            c = *src++;
+            c = title_div(BGR555_LUMA(c), 0x60);
 
-            *dst++ = Func_80f38ac(mb * q);
-            *dst++ = Func_80f38ac(mg * q);
-            *dst++ = Func_80f38ac(mr * q);
+            r = c * mr;
+            g = c * mg;
+            b = c * mb;
+
+            r = Func_80f38ac(r);
+            g = Func_80f38ac(g);
+            b = Func_80f38ac(b);
+
+            dst[i * 3 + 0] = b;
+            dst[i * 3 + 1] = g;
+            dst[i * 3 + 2] = r;
         }
     } else if (mode & PALMODE_FLAG_FADE) {
-        DivFn div = divsi3_RAM;
         int mr = BGR555_R(mode);
         int mg = BGR555_G(mode);
         int mb = BGR555_B(mode);
 
         for (i = 0; i < count; i++) {
-            u32 c = *src++;
-            int q = div((BGR555_R(c) + BGR555_G(c) + BGR555_B(c)) << 4,
-                        mr + mg + mb);
-            int tr = FADE_CH(mr, q);
-            int tg = FADE_CH(mg, q);
-            int tb = FADE_CH(mb, q);
+            c = *src++;
+            r = BGR555_R(c);
+            g = BGR555_G(c);
+            b = BGR555_B(c);
+            c = title_div((r + g + b) << 4, mr + mg + mb);
 
-            *dst++ = CURVE1(tb);
-            *dst++ = CURVE1(tg);
-            *dst++ = CURVE1(tr);
+            r = fx32_multiply((u32)(c * mr) >> 4 << 16, (mr << 16) >> 4);
+            g = fx32_multiply((u32)(c * mg) >> 4 << 16, (mg << 16) >> 4);
+            b = fx32_multiply((u32)(c * mb) >> 4 << 16, (mb << 16) >> 4);
+
+            r = Func_80f3898((u32)r >> 16);
+            g = Func_80f3898((u32)g >> 16);
+            b = Func_80f3898((u32)b >> 16);
+
+            *dst++ = gBGRCurve1[b];
+            *dst++ = gBGRCurve1[g];
+            *dst++ = gBGRCurve1[r];
         }
     } else if (mode & PALMODE_FLAG_OVERLAY) {
-        u16 *d = dst;
-
         for (i = 0; i < count; i++) {
-            u32 c = *src++;
+            c = *src++;
 
-            d[0] = BGR555_PLANE_B(c);
-            d[1] = BGR555_PLANE_G(c);
-            d[2] = BGR555_PLANE_R(c);
-            d += 3;
+            dst[i * 3 + 0] = BGR555_PLANE_B(c);
+            dst[i * 3 + 1] = BGR555_PLANE_G(c);
+            dst[i * 3 + 2] = BGR555_PLANE_R(c);
         }
     } else {
         PaletteBGR *pattern = &((PaletteBGRData *)mode)->palettes;
@@ -263,6 +299,6 @@ void Func_80f3078(unsigned int mode, PaletteData *source,
         if (type == PALFADE_OBJ)
             pattern++;
 
-        DMA3_COPY(pattern, dst, count * 6);
+        DMA3_SET(pattern, dst, 0x84000000 | (((u32)count * 6) / 4));
     }
 }

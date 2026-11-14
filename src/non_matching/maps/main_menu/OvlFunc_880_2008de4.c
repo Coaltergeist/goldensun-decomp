@@ -1,8 +1,8 @@
 /*
- * Remaining diff (~4 bytes / 1 spilled stack slot `sub sp, #68` vs `sub sp, #64`):
- * `target = menu880QuantityItems[j]` in the `kind == 0` quantity-item loop spills to `[sp, #0]`
- * across `for (k = 0; k != 15; ++k)` because `local-alloc` allocates 3 low registers for
- * `item & 0x1ff` before `target`, and in the preceding `__GetItemInfo` loop `j` spills instead of `unit`.
+ * Remaining diff (`sub sp, #64` stack frame matched):
+ * Multi-loop password serializer (`unit` / `packed` / `output`) exhibits high-register
+ * (`ip` vs `r8`, `r6` vs `r7`) allocation and mid-function minipool split differences
+ * under `GAIA_SRCS` (`-fstrict-aliasing`).
  */
 struct Menu880_Stats {
     short hp, pp;
@@ -105,8 +105,7 @@ int OvlFunc_880_2008de4(int unused, int kind, unsigned char *output)
                 unsigned short quantity;
                 unsigned int k;
                 for (k = 0; k != 15; ++k) {
-                    unsigned int item = unit->items[k];
-                    if ((0x1ff & item) == target) amount = (0xf800 & item) >> 11;
+                    if ((0x1ff & unit->items[k]) == target) amount = (0xf800 & unit->items[k]) >> 11;
                 }
                 quantity = amount;
                 if (shift < 0) {

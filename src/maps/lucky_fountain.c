@@ -563,7 +563,36 @@ int OvlFunc_951_2008d70(int idx)
     }
     return result;
 }
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008dd0.s");
+#include "actor.h"
+extern void __Actor_SetAnimSpeed(void *, int);
+
+void OvlFunc_951_2008dd0(int actor, int *data, int val2, int idByte, int animSpeed)
+{
+    struct Actor *p;
+    struct Sprite *sprite;
+    int count;
+    int i;
+
+    p = (struct Actor *)__MapActor_GetActor(actor);
+    if (p != 0) {
+        p->pos.x = *data++;
+        p->pos.y = *data++;
+        p->pos.z = *data;
+        p->facing = val2;
+        p->__unk55 = 0;
+        p->sprite->flags = 0;
+        __Actor_SetAnimSpeed(p, animSpeed);
+    }
+    sprite = p->sprite;
+    count = sprite->numLayers;
+    for (i = 0; i < count; i++) {
+        struct SpriteLayer *layer = sprite->layers[i];
+        if (layer->colorswap != idByte) {
+            layer->colorswap = idByte;
+            layer->frameID |= 0xff;
+        }
+    }
+}
 
 extern unsigned char *__MapActor_GetActor(int actor);
 

@@ -1,13 +1,14 @@
 /*
- * Non-matching clean C for BaseAnim_SonicWave (all relocations, .rodata tables,
- * jump table, stack layout, and animation logic match; .text 0x584 == 0x584).
+ * Non-matching clean C for BaseAnim_SonicWave (exact .text size 0x584 == 0x584,
+ * exact .rodata tables, all 45 relocations, jump table, and 0x54 stack layout match).
  *
- * Remaining diff (3 minor scratch-register / argument scheduling differences):
- *   1. `size = p->timer / 8` uses `r3` instead of `r5` as the sign-bias temp.
- *   2. `state->graphics + size * 800 + 0x2580` uses `r3` instead of `r5` for
- *      `size * 800` and schedules `ldr r3, [r6, #4]` 2 insns later.
- *   3. `SetBattleActorState(..., -1, 5, -1, 0)` materializes `-1` in `r3`
- *      before `0` in `r2` instead of `0` in `r3` and `-1` in `r1`.
+ * Remaining diff (1 single 6-instruction call-setup diff at +0x410..0x41a):
+ *   At `SetBattleActorState((s16)state->context->targets[i], -1, 5, -1, 0)`,
+ *   `08.loop` (`move_movables`) does not hoist `(const_int -1)` out of the
+ *   276-insn loop (`savings * lifetime * threshold = 1 * 6 * 12 = 72 < 276`),
+ *   so `17.lreg` allocates `reg 373` (`-1`) locally to `r3` before `[sp] = 0`
+ *   instead of spilling `REG_EQUIV (const_int -1)` for `reload` +
+ *   `reload_cse_move2add` (`movs r3, #0; str r3, [sp]; ... subs r3, #1`).
  */
 #include "anim.h"
 #include "math.h"
@@ -110,7 +111,6 @@ void BaseAnim_SonicWave(void *arg, int subanim)
     int count = 3;
     int yOffset = 0x140000;
     s32 *line;
-    const u8 *gfx;
 
     state->context = context;
     AnimStart(1);
@@ -195,11 +195,11 @@ void BaseAnim_SonicWave(void *arg, int subanim)
                     if (size > 5)
                         size = 5;
                     if (SonicWaveFlags[subanim][0]) {
-                        gfx = state->graphics + (size * 800 + (frame / 2) % 3 * 4800);
+                        const u8 *gfx = state->graphics + (size * 800 + (frame / 2) % 3 * 4800);
                         pair[0](render, gfx, out.x - 10, out.y - 40, 20, 40);
                         pair[1](render, gfx, out.x - 10, out.y, 20, 40);
                     } else {
-                        gfx = state->graphics + size * 800 + 0x2580;
+                        const u8 *gfx = state->graphics + size * 800 + 0x2580;
                         pair[0](render, gfx, out.x - 10, out.y - 40, 20, 40);
                         pair[1](render, gfx, out.x - 10, out.y, 20, 40);
                     }

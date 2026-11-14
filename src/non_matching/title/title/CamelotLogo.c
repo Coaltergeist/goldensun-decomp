@@ -1,19 +1,23 @@
 /* CamelotLogo -- Camelot logo boot screen (ROM 0x080f2d54).
  *
- * Reconstructed from asm/title/CamelotLogo.s. Sets the boot flag, clears the
- * task list and VRAM, configures BG2, decompresses the Camelot logo into
- * gBuffer and uploads the palette, tilemap and character data with DMA3. It
- * then clears the BG scroll shadow, hands the screen over to LoadStaticUIGFX
- * and finally animates the logo (a 0x340-byte frame whose VRAM offset cycles
- * through four slots) until a key is pressed or 0x78 frames have elapsed.
+ * Sets the boot flag, clears the task list and VRAM, configures BG2,
+ * decompresses the Camelot logo into gBuffer and uploads the palette, tilemap
+ * and character data with DMA3.  It then clears the BG scroll shadow, hands
+ * the screen over to LoadStaticUIGFX and finally animates the logo (a
+ * 0x340-byte frame whose VRAM offset cycles through four slots) until a key is
+ * pressed or 0x78 frames have elapsed.
  *
- * Status: PARKED / candidate (exact relocations, symbol 354 B vs 356 B).
- * The ROM saves `{r5, r6, lr}` (`r7` unused) and emits `adds r6, r5, #0`
- * (`src = (u32)buf`) at +0x1c, indicating the original TU was compiled with
- * `r7` reserved (`-ffixed-r7`, noted in README.md; other functions in title.c
- * use `r7`, or CamelotLogo had a different register-pressure environment).
- * With camelot-gcc's default flags (`r7` free), `src` either coalesces into
- * `r5` (-2 B) or spills `buf` into `r7` (`push {r5, r6, r7, lr}`, +2 B).
+ * Status: PARKED (exact 356/356 function bytes, exact 6292/6292 TU .text
+ * bytes, exact 110/110 TU relocations, and +0x00..+0x43 matched byte-for-byte
+ * including `push {r5, r6, lr}; sub sp, #4` and `[sp, #0]` return slot).
+ *
+ * Note on `r7`: `-ffixed-r7` is NOT involved (`r7` is Thumb's
+ * `THUMB_HARD_FRAME_POINTER_REGNUM`, placed after `r5`/`r6` in `REG_ALLOC_ORDER`
+ * so functions needing only two callee-saved regs naturally push `{r5, r6, lr}`).
+ * Remaining diff is a `r5`/`r6` swap between `i` and `src` after `DecompressLZ`:
+ * `i` has higher `allocno_compare` priority (`r5`), and `src = (u32)buf` ties
+ * `src` to `buf` (`r5` via `regs_someone_prefers` in `global.c:943`) unless `buf`
+ * stays live, which requires a third callee-saved reg (`r7`).
  */
 
 #include "title.h"
@@ -30,17 +34,18 @@ extern void *GetFile(int index);
 extern unsigned int DecompressLZ(const void *src, void *dst);
 extern void LoadStaticUIGFX(void);
 
-#define CAMELOT_PAL_SIZE  0x1c0
-#define CAMELOT_MAP_SIZE  0x800
-#define CAMELOT_CHR_SIZE  0x4000
+#define CAMELOT_PAL_SIZE   0x1c0
+#define CAMELOT_MAP_SIZE   0x800
+#define CAMELOT_CHR_SIZE   0x4000
 #define CAMELOT_FRAME_SIZE 0x340
-#define CAMELOT_FRAMES    0x78
+#define CAMELOT_FRAMES     0x78
 
 int CamelotLogo(int arg0)
 {
+    int result = 0;
     u32 fileId;
     u8 *file;
-    u8 *buf = gBuffer;
+    u8 *buf;
     u32 src;
     u32 offset;
     unsigned int i;
@@ -57,6 +62,7 @@ int CamelotLogo(int arg0)
     REG_DISPCNT = TITLE_DISPCNT_LOAD;
     TITLE_BG2_VOFS = 0;
 
+    buf = gBuffer;
     file = GetFile(fileId);
     DecompressLZ(file, buf);
     src = (u32)buf;
@@ -93,5 +99,5 @@ int CamelotLogo(int arg0)
             break;
         WaitFrames(1);
     }
-    return 0;
+    return result;
 }

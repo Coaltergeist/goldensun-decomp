@@ -1,20 +1,18 @@
 /*
  * StartTitleScreen -- title-screen sequence driver (ROM 0x080f26ec, 1152 bytes).
  *
- * Status: PARKED (not byte-exact). Exact 1152/1152 function bytes (6292/6292 TU
- * bytes, 543/543 disassembly lines), exact 181/181 TU relocations, and all
- * major loops/pools from +0x160 through +0x47e matched. Remaining diffs are
- * camelot-gcc (2.96) allocator/scheduler differences without fakematches:
- *   - +0x18..0x1e: `saved = iwram_3001f58` allocated to r1 instead of r3;
- *   - +0x38..0x44: reload re-materializes `ret` (`[sp, #8]`) across aliasing
- *     `u8` store `iwram_3001d18 = z` (+2 B absorbed by alignment pad at +0x15e);
- *   - +0x6e/0x70: `SCHEDULE_DMA` `queue->count` store scheduled 1 slot before
- *     `adds r3, r3, r1` (same 23.sched2 swap as Func_80f2f10);
- *   - +0x194/0x198: BG2 DMA literal-pool order (`ewram_20199c0` vs `0x0600e4c0`);
- *   - +0x27c/0x27e: 23.sched2 hoists `ldr r5, =gBuffer` 1 slot above
- *     `lsls r2, r2, #2` (same 23.sched2 swap as NintendoLogo);
- *   - +0x3a6..0x416: `fp` hoists `.Lf39b1` instead of `0x04000052` in the
- *     closing fade loop.
+ * Status: PARKED (exact 1152/1152 function bytes, exact 6292/6292 TU .text
+ * bytes, exact 110/110 TU relocations with zero relocation offset diffs, and
+ * +0x50..+0x94 plus +0x1aa..+0x480 = 726 bytes matched byte-for-byte under
+ * `-fstrict-aliasing`).
+ *
+ * Remaining diffs without fakematches:
+ *   - +0x18..+0x1e: BB0 `saved = iwram_3001f58` allocated to `r1` instead of
+ *     `r3`;
+ *   - +0x96..+0x1a8: main scroll-loop register allocation (`prev`/`frame`/`off`
+ *     scratch and literal-pool ordering for `ewram_20199c0` vs `0x0600e4c0`);
+ *   - +0x27c/+0x27e: 1-slot `23.sched2` hoist of `ldr r5, =gBuffer` above
+ *     `lsls r2, r2, #2`.
  */
 
 #include "title.h"
@@ -42,18 +40,17 @@ typedef struct {
     u32 unk8;
 } TitleSpriteOam;
 
-#define SCHEDULE_DMA(dma_dest, dma_src, dma_control) do { \
-    DmaQueue *queue = &gDMATaskCount; \
+#define TITLE_QUEUE_DMA(queue, dma_dest, dma_src, dma_control) do { \
     u32 savedIme = REG_IME; \
     s32 count; \
     SET_IO(REG_IME, REG_ADDR_IME); \
-    count = queue->count; \
+    count = *(queue); \
     if (count < 32) { \
-        u32 *task = (u32 *)(count * 12 + (u32)queue + 4); \
-        queue->count = count + 1; \
-        *task++ = (u32)(dma_src); \
-        *task++ = (u32)(dma_dest); \
-        *task = (dma_control); \
+        DMATask *task = (DMATask *)((u8 *)(queue) + 4 + count * sizeof(DMATask)); \
+        *(queue) = count + 1; \
+        task->src = (dma_src); \
+        task->dest = (dma_dest); \
+        task->control = (dma_control); \
     } \
     SET_IO(REG_IME, savedIme); \
 } while (0)
@@ -108,8 +105,11 @@ int StartTitleScreen(int arg0)
     LoadGS1TitleGFX();
     Func_80f377c();
     Func_80f3824(2, PALFADE_ALL);
-    SCHEDULE_DMA((void *)(REG_ADDR_DISPCNT), (void *)MAKE_DISPCNT(0xf740),
-                 MAKE_DMATASK_REG(DMATASK_OP_ASSIGN, DMATASK_TYPE_HWORD));
+    {
+        u16 *queue = (u16 *)&gDMATaskCount;
+        TITLE_QUEUE_DMA(queue, (void *)(REG_ADDR_DISPCNT), (void *)MAKE_DISPCNT(0xf740),
+                        MAKE_DMATASK_REG(DMATASK_OP_ASSIGN, DMATASK_TYPE_HWORD));
+    }
     Func_80f3858(60);
     StartTask(Func_80f2028, 0x480);
 
@@ -224,20 +224,20 @@ int StartTitleScreen(int arg0)
     REG_DISPCNT = TITLE_DISPCNT_RUN;
     frames = arg0 != 0 ? FADE_SCALE_FULL : FADE_SCALE_SHORT;
     for (i = 0; i < frames; i++) {
+        const u8 *fadeTable = Lf39b1;
         vu16 *bldalpha = &REG_BLDALPHA;
 
         if (arg0 != 0) {
             u32 alpha;
             u32 bld;
+            TitleSpriteOam *spr = (TitleSpriteOam *)work->anim.sprite;
 
-            for (j = 0; j <= 2; j++) {
-                TitleSpriteOam *spr = (TitleSpriteOam *)&work->anim.sprite[j];
-
+            for (j = 0; j <= 2; j++, spr++) {
                 spr->x = 0x50 + j * 0x20;
                 spr->y = 0x7c;
                 Func_8003dec((unsigned int *)spr, 0);
             }
-            alpha = Lf39b1[i % TITLE_FADE_TABLE_LEN];
+            alpha = fadeTable[i % TITLE_FADE_TABLE_LEN];
             REG_BLDCNT = 0x2f50;
             bld = ((0x10 - alpha) << 8) + alpha;
             *bldalpha = bld;
