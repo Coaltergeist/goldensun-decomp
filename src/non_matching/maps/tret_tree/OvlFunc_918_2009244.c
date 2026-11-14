@@ -1,16 +1,28 @@
+/* Non-matching: original source used signed `/` (`__divsi3` with `CONST_CALL_P = 1`),
+ * allowing `expand_operands` to evaluate `x / 2` and `x / 4` before `x / 3` and `x / 5`
+ * while the overlay stubber redirected `__divsi3` relocations to `_divsi3_RAM`.
+ * Explicit `_divsi3_RAM(...)` calls are `CALL_EXPR`s (`CONST_CALL_P = 0`), which forces
+ * `expand_operands` to evaluate the call before `x / 2` and `x / 4`.
+ */
 extern int iwram_3001e40;
-
 extern int Lm918_2db8 __asm__(".Lm918_2db8");
-
 extern const int Lm918_1f00[] __asm__(".Lm918_1f00");
-
 extern int __Random(void);
-
 extern int _divsi3_RAM(int, int);
-struct CS918P_Field { unsigned char pad[0x17e]; short transition; };
-struct CS918P_Context { struct CS918P_Field *field; void *other[4]; unsigned short *palette; };
+
+struct CS918P_Field {
+    unsigned char pad[0x17e];
+    short transition;
+};
+
+struct CS918P_Context {
+    struct CS918P_Field *field;
+    void *other[4];
+    unsigned short *palette;
+};
+
 extern struct CS918P_Context CS918P_Context __asm__("iwram_3001ebc");
-static inline int CS918P_Divide(int a, int b) { return _divsi3_RAM(a, b); }
+
 void OvlFunc_918_2009244(void) {
     struct CS918P_Field *field = CS918P_Context.field;
     unsigned short *src = CS918P_Context.palette;
@@ -26,7 +38,6 @@ void OvlFunc_918_2009244(void) {
 
     dst = (volatile unsigned short *)0x5000020;
     src = (unsigned short *)((char *)src + 0x20);
-    i = 0;
 
     for (i = 0; i <= 0x3e; i++) {
         int redOffset, greenOffset, blueOffset;
@@ -38,17 +49,17 @@ void OvlFunc_918_2009244(void) {
         greenOffset = Lm918_1f00[Lm918_2db8 + 1];
 
         if (i > 0x2f) {
-            redOffset -= redOffset / 2 + CS918P_Divide(redOffset, 3);
-            greenOffset -= CS918P_Divide(greenOffset, 3) + greenOffset / 2;
-            blueOffset -= CS918P_Divide(blueOffset, 3) + blueOffset / 2;
+            redOffset -= redOffset / 2 + _divsi3_RAM(redOffset, 3);
+            greenOffset -= _divsi3_RAM(greenOffset, 3) + greenOffset / 2;
+            blueOffset -= _divsi3_RAM(blueOffset, 3) + blueOffset / 2;
         } else if (i > 0x1f) {
-            redOffset -= CS918P_Divide(redOffset, 3) + redOffset / 4;
-            greenOffset -= CS918P_Divide(greenOffset, 3) + greenOffset / 4;
-            blueOffset -= CS918P_Divide(blueOffset, 3) + blueOffset / 4;
+            redOffset -= _divsi3_RAM(redOffset, 3) + redOffset / 4;
+            greenOffset -= _divsi3_RAM(greenOffset, 3) + greenOffset / 4;
+            blueOffset -= _divsi3_RAM(blueOffset, 3) + blueOffset / 4;
         } else if (i > 0xf) {
-            redOffset -= redOffset / 4 + CS918P_Divide(redOffset, 5);
-            greenOffset -= greenOffset / 4 + CS918P_Divide(greenOffset, 5);
-            blueOffset -= blueOffset / 4 + CS918P_Divide(blueOffset, 5);
+            redOffset -= redOffset / 4 + _divsi3_RAM(redOffset, 5);
+            greenOffset -= greenOffset / 4 + _divsi3_RAM(greenOffset, 5);
+            blueOffset -= blueOffset / 4 + _divsi3_RAM(blueOffset, 5);
         }
 
         color = *src;

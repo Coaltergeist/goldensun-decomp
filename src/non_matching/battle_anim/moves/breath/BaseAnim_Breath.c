@@ -1,12 +1,28 @@
-/* Unfinished candidate. Particle-loop preheader instruction order still differs. */
+/*
+ * Non-matching clean C for BaseAnim_Breath (all relocations, jump table,
+ * stack layout, and animation logic match; .text 0x578 == 0x578).
+ *
+ * Remaining diff (1 instruction order swap):
+ *   In the 64-particle update loop preheader, instruction scheduling orders
+ *   `i = 0` (`movs r0, #0`) vs `&state->particles[0]` (`movs r5, #225; lsls r5, #7`)
+ *   in swapped order.
+ */
 #include "anim.h"
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
 
+typedef union {
+    s32 raw;
+    struct {
+        u16 lo;
+        s16 hi;
+    } half;
+} BreathCoord;
+
 struct BreathParticle {
-    s32 x;
-    s32 y;
+    BreathCoord x;
+    BreathCoord y;
     s32 unk08;
     s32 vx;
     s32 vy;
@@ -50,7 +66,7 @@ extern void Func_80cd52c(void);
 extern void WaitFrames(int);
 extern void gfree(int);
 
-extern void BaseAnim_Breath(void *context, int subanim);
+void BaseAnim_Breath(void *context, int subanim);
 
 void BaseAnim_Breath(void *context, int subanim)
 {
@@ -62,7 +78,7 @@ void BaseAnim_Breath(void *context, int subanim)
     s32 pos[3];
     s32 targetPos[8][3];
     s32 target[3];
-    struct BreathParticle *p, *q;
+    struct BreathParticle *p;
     char *file;
     int i, frame, t, c, timer;
 
@@ -173,8 +189,8 @@ void BaseAnim_Breath(void *context, int subanim)
             target[1] = targetPos[t][1] + (Random() & 0x3f) - 16;
             if (frame <= 47) {
                 p = &state->particles[frame];
-                p->x = pos[0] << 15;
-                p->y = pos[1] << 16;
+                p->x.raw = pos[0] << 15;
+                p->y.raw = pos[1] << 16;
                 p->vx = (target[0] - pos[0]) << 11;
                 p->vy = (target[1] - pos[1]) << 11;
                 p->timer = 0;
@@ -182,24 +198,24 @@ void BaseAnim_Breath(void *context, int subanim)
         }
 
         for (i = 0; i != 64; i++) {
-            q = &state->particles[i];
+            struct BreathParticle *q = &state->particles[i];
             timer = q->timer;
             if (timer < 0)
                 continue;
             if (subanim == 7) {
                 if (timer > 5)
                     funcs[state->context->side](render, state->graphics + 0xc56,
-                        *(s16 *)((u8 *)&q->x + 2) - 16, *(s16 *)((u8 *)&q->y + 2) - 32, 32, 64);
+                        q->x.half.hi - 16, q->y.half.hi - 32, 32, 64);
             } else if (subanim == 4) {
                 if (timer > 5)
                     funcs[0](render, state->graphics + 0xc56 + (timer / 4) * 0x800,
-                        *(s16 *)((u8 *)&q->x + 2) - 16, *(s16 *)((u8 *)&q->y + 2) - 32, 32, 64);
+                        q->x.half.hi - 16, q->y.half.hi - 32, 32, 64);
             } else if (subanim != 5 && timer > 1) {
                 funcs[0](render, state->graphics + 0xc56 + (timer / 4) * 0x800,
-                    *(s16 *)((u8 *)&q->x + 2) - 16, *(s16 *)((u8 *)&q->y + 2) - 32, 32, 64);
+                    q->x.half.hi - 16, q->y.half.hi - 32, 32, 64);
             }
-            q->x += q->vx;
-            q->y += q->vy;
+            q->x.raw += q->vx;
+            q->y.raw += q->vy;
             if (++q->timer == 24)
                 q->timer = -1;
         }

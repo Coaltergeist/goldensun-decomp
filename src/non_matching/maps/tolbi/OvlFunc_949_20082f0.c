@@ -1,46 +1,51 @@
-extern void __CutsceneStart(void);
+#include "field.h"
 
+/* Matches 100% byte-for-byte under stock -O2 (-fstrict-aliasing), where
+ * actor->waveCounter (struct Actor) and iwram->__unk17E (struct MapState)
+ * have disjoint alias sets so sched2 schedules `lsl r2, #1` (priority 4)
+ * ahead of `strh r3, [r6]` (priority 3). Under the Makefile's global
+ * -fno-strict-aliasing, the HImode store-to-load dependence raises `strh`
+ * to priority 4 and breaks the tie by LUID (`strh` before `lsl`). */
 void OvlFunc_949_20082f0(void)
 {
-    char *iwram;
-    char *actor;
-    short saved;
-    unsigned short *flags;
-    unsigned int r2;
-    unsigned int r3;
-    short val;
+    struct MapState *iwram = (struct MapState *)iwram_3001ebc;
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0x10);
+    s16 saved = *(s16 *)&actor->facing;
+    int msg;
 
-    iwram = (char *)iwram_3001ebc;
-    actor = (char *)__MapActor_GetActor(0x10);
-    saved = *(short *)(actor + 6);
-    flags = (unsigned short *)(actor + 0x64);
-    __CutsceneStart();
-    r2 = 0xbf;
-    r2 <<= 1;
-    *flags |= 2;
-    r3 = (unsigned int)iwram + r2;
-    r2 = 0;
-    val = *(short *)((char *)r3 + r2);
-    if (val == 0) {
-        if (__GetFlag(0x95 << 4))
-            __MessageID(0x2365);
-        else if (__GetFlag(0x962))
-            __MessageID(0x21e2);
-        else
-            __MessageID(0x1f95);
+    API_CutsceneStart();
+    actor->waveCounter |= 2;
+    if ((s16)iwram->__unk17E == 0) {
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2365;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21e2;
+            } else {
+                msg = 0x1f95;
+            }
+        }
     } else {
-        if (__GetFlag(0x95 << 4))
-            __MessageID(0x2371);
-        else if (__GetFlag(0x962))
-            __MessageID(0x21f5);
-        else
-            __MessageID(0x1faa);
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2371;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21f5;
+            } else {
+                msg = 0x1faa;
+            }
+        }
     }
-    __MapActor_SetAnim(0x10, 0);
-    __MapActor_TurnToFaceActor(0x10, 0, 2);
-    __ActorMessage_Wait(0x10, 0, 0xa);
-    *(short *)(actor + 6) = saved;
-    __WaitFrames(1);
-    *flags &= 1;
-    __CutsceneEnd();
+    API_MessageID(msg);
+    API_MapActor_SetAnim(0x10, 0);
+    API_MapActor_TurnToFaceActor(0x10, 0, 2);
+    API_ActorMessage_Wait(0x10, 0, 0xa);
+    actor->facing = saved;
+    API_WaitFrames(1);
+    actor->waveCounter &= 1;
+    API_CutsceneEnd();
 }

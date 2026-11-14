@@ -1,6 +1,8 @@
 /* rom_7ed0a0 (overlay file 964): consolidated TU — tunnel_ruins map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "field.h"
@@ -861,7 +863,20 @@ void OvlFunc_964_2009038(struct Actor *a)
     a->pos.y = f;
     a->prevPos.y = 0x80000000;
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009068.s");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_964_2009068(struct Actor *actor)
+{
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->bounce -= ((actor->bounce) / (18));
+    actor->__unk4C -= actor->__unk4C / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_20090c4.s");
 extern void OvlFunc_964_2009068(struct Actor *);
 extern void OvlFunc_964_2008ae8(int, int, int, int, int, int, int, void *);
@@ -1351,7 +1366,54 @@ unsigned int OvlFunc_964_2009a98(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009abc.s");
+extern int Lm964_3350[] __asm__(".Lm964_3350");
+
+static inline void MapActor_SetSpeed964(unsigned int actor, int speed, int accel)
+{
+    __MapActor_SetSpeed(actor, speed << 8, accel << 7);
+}
+
+void OvlFunc_964_2009abc(int waitFrames)
+{
+    unsigned int i;
+
+    MapActor_SetSpeed964(10, 0x80, 0x80);
+    MapActor_SetSpeed964(11, 0x80, 0x80);
+    if (waitFrames != 0) {
+        __PlaySound(0xb4);
+    }
+    __Actor_TravelTo(
+        __MapActor_GetActor(10),
+        ((struct Actor *)__MapActor_GetActor(10))->pos.x,
+        Lm964_3350[((struct Actor *)__MapActor_GetActor(10))->waveCounter],
+        ((struct Actor *)__MapActor_GetActor(10))->pos.z
+    );
+    __Actor_TravelTo(
+        __MapActor_GetActor(11),
+        ((struct Actor *)__MapActor_GetActor(11))->pos.x,
+        Lm964_3350[((struct Actor *)__MapActor_GetActor(11))->waveCounter],
+        ((struct Actor *)__MapActor_GetActor(11))->pos.z
+    );
+    __MapActor_WaitMovement(10);
+    __MapActor_WaitMovement(11);
+    ((struct Actor *)__MapActor_GetActor(10))->pos.y = Lm964_3350[((struct Actor *)__MapActor_GetActor(10))->waveCounter];
+    ((struct Actor *)__MapActor_GetActor(11))->pos.y = Lm964_3350[((struct Actor *)__MapActor_GetActor(11))->waveCounter];
+    if (waitFrames != 0) {
+        __PlaySound(0x121);
+    }
+    for (i = 0; i <= 4; i++) {
+        unsigned int id = i + 10;
+        if (((struct Actor *)__MapActor_GetActor(id))->pos.y / 0x10000 < 0
+            && ((struct Actor *)__MapActor_GetActor(id))->pos.y / 0x10000 > -30) {
+            API_Func_8010704(
+                4, 9, 1, 1,
+                ((struct Actor *)__MapActor_GetActor(id))->pos.x >> 20,
+                ((struct Actor *)__MapActor_GetActor(id))->pos.z >> 20
+            );
+        }
+    }
+    __CutsceneWait(waitFrames);
+}
 extern void OvlFunc_964_20091e0(unsigned int);
 
 void OvlFunc_964_2009c2c(unsigned int arg0)
@@ -1385,7 +1447,96 @@ void OvlFunc_964_2009c2c(unsigned int arg0)
     OvlFunc_964_20091e0(arg0);
     __CutsceneWait(0x1e);
 }
-INCLUDE_ASM("asm/maps/tunnel_ruins/OvlFunc_964_2009d04.s");
+extern struct Actor *CS964R_Actor(int) __asm__("__MapActor_GetActor");
+extern struct Actor *CS964R_Camera(void) __asm__("__Func_8093554");
+
+static inline void CS964R_Reset(int id, int zero)
+{
+    CS964R_Actor(id)->floorPos = zero;
+    CS964R_Actor(id)->motion.y = zero;
+    CS964R_Actor(id)->prevPos.y = (int)0x80000000;
+    CS964R_Actor(id)->__unk55 = zero;
+    CS964R_Actor(id)->waveCounter = zero;
+}
+
+static inline void CS964R_StoreCounter(unsigned short *p, int value) { *p = value; }
+
+void OvlFunc_964_2009d04(void)
+{
+    struct Actor temporary;
+    struct Actor *actor, *saved;
+    unsigned short *counter;
+    int index, zero, actorId, flag, selected, earlier;
+
+    API_CutsceneStart();
+    index = 0;
+    saved = &temporary;
+    zero = index;
+    actorId = 12;
+    do {
+        if (CS964R_Actor(actorId)->sprite->oam.priority == 3 && !API_GetFlag(0x200 + index)) {
+            OvlFunc_964_2009038(CS964R_Actor(actorId));
+            API_MapActor_SetPos(actorId, 0, 0);
+            API_SetFlag(0x200 + index);
+            break;
+        }
+        if ((CS964R_Actor(actorId)->pos.z >> 20) == 9) {
+            flag = API_GetFlag(0x200 + index);
+            if (!flag) {
+                CS964R_Reset(actorId, flag);
+                selected = index;
+                for (earlier = 0; earlier < index; earlier++) {
+                    if (!API_GetFlag(0x200 + earlier)) {
+                        saved->pos.x = CS964R_Actor(actorId)->pos.x;
+                        saved->pos.y = CS964R_Actor(actorId)->pos.y;
+                        saved->pos.z = CS964R_Actor(actorId)->pos.z;
+                        actor = CS964R_Actor(actorId);
+                        actor->pos.x = CS964R_Actor(earlier + 12)->pos.x;
+                        actor = CS964R_Actor(actorId);
+                        actor->pos.y = CS964R_Actor(earlier + 12)->pos.y;
+                        actor = CS964R_Actor(actorId);
+                        actor->pos.z = CS964R_Actor(earlier + 12)->pos.z;
+                        CS964R_Actor(earlier + 12)->pos.x = saved->pos.x;
+                        CS964R_Actor(earlier + 12)->pos.y = saved->pos.y;
+                        CS964R_Actor(earlier + 12)->pos.z = saved->pos.z;
+                        selected = earlier;
+                        break;
+                    }
+                }
+                CS964R_Reset(selected + 12, zero);
+                API_Func_80933d4(0x30000, 0x6000);
+                CS964R_Camera()->__unk55 = zero;
+                API_Func_80933f8(0xa80000, 0x80000, 0xb80000, 1);
+                API_Func_8093530();
+                OvlFunc_964_2009c2c(selected + 12);
+                if ((CS964R_Actor(selected + 12)->pos.x >> 20) == 8) {
+                    counter = (unsigned short *)&CS964R_Actor(10)->waveCounter;
+                    *counter += 1;
+                    counter = (unsigned short *)&CS964R_Actor(11)->waveCounter;
+                    CS964R_StoreCounter(counter, (int)*counter - 1);
+                } else {
+                    counter = (unsigned short *)&CS964R_Actor(10)->waveCounter;
+                    CS964R_StoreCounter(counter, (int)*counter - 1);
+                    counter = (unsigned short *)&CS964R_Actor(11)->waveCounter;
+                    *counter += 1;
+                }
+                CS964R_Actor(selected + 12)->update = (actorfun_t)OvlFunc_964_2009a98;
+                OvlFunc_964_2009abc(40);
+                {
+                    unsigned char *flags = &CS964R_Actor(selected + 12)->flags;
+                    int v = *flags;
+                    v |= 2;
+                    *flags = v;
+                }
+                API_SetFlag(0x200 + selected);
+                break;
+            }
+        }
+        index++;
+        actorId++;
+    } while (index <= 2);
+    API_CutsceneEnd();
+}
 
 
 void OvlFunc_964_2009f5c(void) {

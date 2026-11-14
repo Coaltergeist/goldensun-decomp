@@ -3,6 +3,8 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "dma.h"
+#include "math.h"
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/exports.s");
 
@@ -406,7 +408,46 @@ void OvlFunc_897_2008054(void)
     OvlFunc_897_2009410();
     __Func_8091890(5);
 }
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2008e30.s");
+
+static inline void API_Func_8092950(int a, int b) { extern void __Func_8092950(int, int); __Func_8092950(a, b); }
+
+void OvlFunc_897_2008e30(int arg0)
+{
+    extern struct Actor *Eruption8e30_GetActor(int) __asm__("__MapActor_GetActor");
+    extern void __Actor_SetSpriteFlags(void *, int);
+
+    struct Actor *actor8;
+    struct Actor *actor;
+    unsigned char i;
+
+    actor8 = Eruption8e30_GetActor(8);
+    actor8->scale.x = 0x10000;
+    actor8->scale.y = 0x10000;
+    API_MapActor_TravelToAnimWait(arg0, 0x1d7, 0x122);
+    API_Func_8092adc(arg0, 0xc000, 0);
+    API_CutsceneWait(10);
+    API_MapActor_SetPos(8, 0x1d70000, 0x1220000);
+    actor = Eruption8e30_GetActor(arg0);
+    __Actor_SetSpriteFlags(Eruption8e30_GetActor(arg0), 0);
+    API_Func_8092950(arg0, 0x100);
+    actor->__unk55 = 0;
+    API_PlaySound(0xc9);
+    for (i = 0; i != 60; i++) {
+        actor->pos.y += 0x8000;
+        API_CutsceneWait(1);
+    }
+    API_PlaySound(0xbe);
+    for (i = 0; i != 90; i++) {
+        actor->pos.y += 0x1999;
+        actor->scale.x -= 655;
+        actor->scale.y -= 655;
+        actor8->scale.x -= 655;
+        actor8->scale.y -= 655;
+        API_CutsceneWait(1);
+    }
+    API_MapActor_SetPos(arg0, 0, 0);
+    API_MapActor_SetPos(8, 0, 0);
+}
 
 void OvlFunc_897_2008f28(void) {}
 void OvlFunc_897_2008f2c(void) {}
@@ -443,7 +484,65 @@ unsigned int OvlFunc_897_2008f54(unsigned int arg0) {
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_2008f64.s");
+void OvlFunc_897_2008f64(void)
+{
+    extern struct Actor *Eruption8f64_GetActor(int) __asm__("__MapActor_GetActor");
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void Eruption8f64_SetAnim(void *, int) __asm__("__Actor_SetAnim");
+    extern int __cos(int);
+    extern int __sin(int);
+
+    unsigned int i;
+
+    for (i = 16; i <= 31; i++) {
+        struct Actor *actor = Eruption8f64_GetActor(i);
+        API_MapActor_SetIdle(i);
+        __Actor_SetSpriteFlags(actor, 0);
+        Eruption8f64_SetAnim(actor, 2);
+        actor->sprite->oam.priority = 0;
+        actor->__unk55 = 0;
+        actor->speed = 0x80 << 12;
+        actor->accel = 0xc0 << 8;
+        actor->scale.x = 0x1cccc;
+        actor->scale.y = 0x1cccc;
+        actor->pos.x = 0xe8 << 16;
+        actor->pos.y = 0xa0 << 13;
+        actor->pos.z = 0x84 << 16;
+    }
+
+    API_PlaySound(0x91);
+
+    for (i = 0; i <= 15; i++) {
+        struct Actor *actor = Eruption8f64_GetActor(i + 16);
+        int theta;
+        int fx;
+        int fz;
+        actor->sprite->rotation = (i << 12) - 0x4000;
+        theta = i << 12;
+        fx = fx32_multiply(__cos(theta), 0x80 << 17);
+        fz = fx32_multiply(__sin(theta), 0x80 << 17);
+        API_Actor_TravelTo(actor, actor->pos.x + fx, actor->pos.y, actor->pos.z + fz);
+    }
+
+    API_CutsceneWait(0x14);
+    API_MapActor_WaitMovement(0x10);
+
+    for (i = 16; i <= 31; i++) {
+        struct Actor *actor = Eruption8f64_GetActor(i);
+        API_MapActor_SetIdle(i);
+        actor->scale.x = 0x10000;
+        actor->scale.y = 0x10000;
+        actor->pos.x = 0;
+        actor->pos.y = 0;
+        actor->pos.z = 0;
+        actor->motion.x = 0;
+        actor->motion.y = 0;
+        actor->motion.z = 0;
+        actor->prevPos.x = 0x80000000;
+        actor->prevPos.y = 0x80000000;
+        actor->prevPos.z = 0x80000000;
+    }
+}
 
 extern unsigned char L3b68[] __asm__(".Lm897_3b68");
 extern unsigned char L3b00[] __asm__(".Lm897_3b00");
@@ -471,7 +570,101 @@ void OvlFunc_897_2009084(void)
     } while (cnt <= 0xf);
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_20090c4.s");
+extern unsigned char *CS897_EffectState __asm__("iwram_3001ec4");
+extern unsigned int CS897_Fade __asm__(".Lm897_3b00");
+extern unsigned int CS897_Ages[16] __asm__(".Lm897_3ac0");
+extern unsigned int CS897_SpawnMask __asm__(".Lm897_3b68");
+extern unsigned int CS897_Frame __asm__("iwram_3001e40");
+extern struct Actor *CS897_GetActor(int) __asm__("__MapActor_GetActor");
+extern void CS897_SetAnim(void *, int) __asm__("__Actor_SetAnim");
+extern void CS897_SetSpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
+extern void CS897_SetScript(void *, void *) __asm__("__Actor_SetScript");
+extern void CS897_ActorMode(void *, int) __asm__("__Func_80929d8");
+extern unsigned int CS897_UnsignedDivide(unsigned int, unsigned int) __asm__("_udivsi3_RAM");
+extern unsigned int CS897_UnsignedRemainder(unsigned int, unsigned int) __asm__("_umodsi3_RAM");
+extern unsigned int CS897_Random(void) __asm__("__Random");
+extern int CS897_Cos(int) __asm__("__cos");
+extern int CS897_Sin(int) __asm__("__sin");
+extern unsigned char gScript_897__0200ba00[];
+
+void OvlFunc_897_20090c4(void)
+{
+    unsigned char *effect = CS897_EffectState;
+    unsigned int scale;
+    unsigned char i;
+    int stopped, targetX, targetZ;
+    short signedAngle;
+    unsigned short angle;
+    unsigned int unusedAge;
+    scale = CS897_UnsignedDivide(CS897_Fade, 10);
+    if (scale != 0) {
+        *(int *)(effect + 0x40c) = 0;
+        API_Func_8012330(scale << 16, scale << 16, 0x10000);
+    } else {
+        *(int *)(effect + 0x40c) = 1;
+        API_Func_8012330(-1, -1, 0xe666);
+    }
+    if (CS897_Fade != 0)
+        CS897_Fade -= 3;
+    for (i = 0; i <= 15; i++) {
+        if (CS897_Ages[i] != 0) {
+            struct Actor *actor = CS897_GetActor(i + 16);
+            if (actor->prevPos.x == (int)0x80000000) {
+                stopped = actor->prevPos.z;
+                if (stopped == actor->prevPos.x) {
+                    CS897_Ages[i]++;
+                    if (CS897_Ages[i] == 2)
+                        CS897_SetAnim(actor, 3);
+                    if (CS897_Ages[i] == 19) {
+                        actor->pos.x = 0;
+                        actor->pos.y = 0;
+                        actor->pos.z = 0;
+                        actor->motion.x = 0;
+                        actor->motion.y = 0;
+                        actor->motion.z = 0;
+                        actor->prevPos.x = stopped;
+                        actor->prevPos.y = stopped;
+                        actor->prevPos.z = stopped;
+                        CS897_ActorMode(actor, 15);
+                    } else if (CS897_Ages[i] == 20) {
+                        CS897_Ages[i] = 0;
+                    }
+                }
+            }
+        }
+    }
+    if (CS897_SpawnMask == 999 || (CS897_Frame & CS897_SpawnMask) != 0)
+        return;
+    for (i = 0; i <= 15; i++) {
+        struct Actor *actor;
+        signedAngle = CS897_UnsignedRemainder(CS897_Random(), 0xffff);
+        actor = CS897_GetActor(i + 16);
+        unusedAge = CS897_Ages[i];
+        if (unusedAge == 0) {
+            if (!API_GetFlag(0x246))
+                API_PlaySound(0xf6);
+            CS897_Ages[i] = 1;
+            actor->__unk55 = unusedAge;
+            actor->speed = 0x80000;
+            actor->accel = 0x10000;
+            CS897_SetSpriteFlags(actor, 0);
+            actor->sprite->oam.priority = 1;
+            CS897_SetAnim(actor, 2);
+            CS897_SetScript(actor, gScript_897__0200ba00);
+            angle = signedAngle;
+            actor->pos.x = fx32_multiply(CS897_Cos(angle), (((CS897_Random() << 8) >> 16) << 16) + 0x1000000) + 0x1450000;
+            actor->pos.y = unusedAge;
+            actor->pos.z = fx32_multiply(CS897_Sin(angle), (((CS897_Random() << 8) >> 16) << 16) + 0x1000000) + 0x12e0000;
+            targetX = fx32_multiply(CS897_Cos(angle), ((CS897_Random() & 0x3f) << 16) + 0x80000);
+            targetZ = fx32_multiply(CS897_Sin(angle), ((CS897_Random() & 0x3f) << 16) + 0x80000);
+            API_Actor_TravelTo(actor, targetX + 0x1450000, 0, targetZ + 0x11e0000);
+            CS897_ActorMode(actor, 0);
+            CS897_Fade = 30;
+            break;
+        }
+    }
+}
+
 extern int __Random(void);
 
 void OvlFunc_897_200935c(void)
@@ -646,10 +839,10 @@ void OvlFunc_897_2009410(void)
     sprite0 = (unsigned char *)(*(int *)(player0 + 0x50));
     sprite1 = (unsigned char *)(*(int *)(player1 + 0x50));
     do {
-        *(unsigned short *)(sprite0 + 0x1e) = (*(unsigned short *)(sprite0 + 0x1e) + 0x100);
-        *(unsigned short *)(sprite1 + 0x1e) = (*(unsigned short *)(sprite1 + 0x1e) - 0x100);
-        *(int *)(player0 + 0x8) = (*(int *)(player0 + 0x8) + 0x6000);
-        *(int *)(player1 + 0x8) = (*(int *)(player1 + 0x8) + -0x6000);
+        ((struct Sprite *)sprite0)->rotation += 0x100;
+        ((struct Sprite *)sprite1)->rotation -= 0x100;
+        ((struct Actor *)player0)->pos.x += 0x6000;
+        ((struct Actor *)player1)->pos.x += -0x6000;
         API_WaitFrames(1);
         frame++;
     } while (frame <= 19);
@@ -1446,7 +1639,35 @@ void OvlFunc_897_200a9a4(unsigned int arg0)
     API_Func_8091200(0x80 << 9, 1);
     API_Func_8091254(0x28);
 }
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aba0.s");
+extern unsigned int L3b40[] __asm__(".Lm897_3b40");
+extern struct Actor *L3b10[] __asm__(".Lm897_3b10");
+
+void OvlFunc_897_200aba0(void)
+{
+    unsigned int i;
+    unsigned int c;
+    struct Actor *p;
+
+    for (i = 0; i < 10; i++) {
+        c = L3b40[i];
+        if (c != 0) {
+            p = L3b10[i];
+            if (c <= 8) {
+                p->scale.x += -0x1ccc;
+                p->scale.y += 0x8000;
+                p->pos.y += 0x4ccc;
+                p->prevPos.y += 0x4ccc;
+            } else {
+                p->pos.y += 0x140000;
+                p->prevPos.y += 0x140000;
+            }
+            L3b40[i] = L3b40[i] + 1;
+            if (L3b40[i] > 14) {
+                L3b40[i] = 0;
+            }
+        }
+    }
+}
 extern void __Func_8091200(unsigned int arg0, unsigned int arg1);
 extern void __Func_8091254(unsigned int arg0);
 unsigned int *__Func_8093554(void);
@@ -1536,23 +1757,26 @@ void OvlFunc_897_200add0(arg0) unsigned int arg0;
 
 extern int __sin(int angle);
 
-void OvlFunc_897_200ae0c(unsigned char *actor)
+void OvlFunc_897_200ae0c(struct Actor *actor)
 {
-    unsigned char *anchor;
-    short timer;
+    struct Actor *anchor;
+    int next;
+    int timer;
     int s;
 
-    anchor = *(unsigned char **)(actor + 0x68);
-    timer = ++*(short *)(actor + 0x64);
+    next = (unsigned short)actor->waveCounter + 1;
+    anchor = actor->linkedActor;
+    actor->waveCounter = next;
+    timer = (short)next;
     if (timer > 0x1f) {
         API_DeleteActor((int)actor);
     } else {
         s = __sin(timer << 10);
-        *(int *)(actor + 0x18) = s;
-        *(int *)(actor + 0x1c) = s;
-        *(int *)(actor + 0x8) = *(int *)(anchor + 0x8);
-        *(int *)(actor + 0xc) += 0x10000;
-        *(int *)(actor + 0x10) = *(int *)(anchor + 0x10) + (0x10000 - s) * 5 + 0x80000;
+        actor->scale.x = s;
+        actor->scale.y = s;
+        actor->pos.x = anchor->pos.x;
+        actor->pos.y += 0x10000;
+        actor->pos.z = anchor->pos.z + (0x10000 - s) * 5 + 0x80000;
     }
 }
 
@@ -1574,7 +1798,82 @@ void OvlFunc_897_200ae5c(struct Actor *actor) {
     }
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200aeb0.s");
+extern void OvlFunc_897_200ae0c(struct Actor *actor);
+extern void OvlFunc_897_200ae5c(struct Actor *actor);
+
+struct SpriteOamBitView897 {
+    void *dest;
+    u16 posY : 8;
+    u16 affineMode : 2;
+    u16 objMode : 2;
+    u16 mosaic : 1;
+    u16 bpp : 1;
+    u16 shape : 2;
+    u16 posX : 9;
+    u16 affineParam : 5;
+    u16 size : 2;
+    u16 tileNum : 10;
+    u16 priority : 2;
+    u16 palette : 4;
+};
+
+struct E30SlotView897 {
+    unsigned char pad[0x46];
+    u16 slot;
+};
+
+void OvlFunc_897_200aeb0(unsigned int arg0)
+{
+    extern struct E30SlotView897 *iwram_3001f30_view __asm__("iwram_3001f30");
+    extern struct SpriteSlot gSpriteSlots[];
+    extern void __Sprite_SetAnim(struct Sprite *, int);
+    extern void __Func_8003f3c(int);
+    extern struct Actor *EruptionAeb0_GetActor(int) __asm__("__MapActor_GetActor");
+
+    struct E30SlotView897 *e30 = iwram_3001f30_view;
+    struct Actor *parent = (struct Actor *)arg0;
+    struct Actor *actors[2];
+    int i;
+
+    API_PlaySound(0x92 << 1);
+
+    for (i = 0; i <= 1; i++) {
+        struct Actor *actor = API_CreateActor(0x1a, parent->pos.x, parent->pos.y, parent->pos.z);
+        actors[i] = actor;
+        if (actor != NULL) {
+            struct Sprite *sprite;
+
+            actor->floorPos = parent->floorPos;
+            sprite = actor->sprite;
+            actor->__unk55 = 0;
+            actor->waveCounter = 0;
+            actor->linkedActor = parent;
+            if (sprite != NULL) {
+                struct SpriteOamBitView897 *oam = (struct SpriteOamBitView897 *)&sprite->oam;
+
+                __Sprite_SetAnim(sprite, 0);
+                sprite->flags = 0;
+                __Func_8003f3c(sprite->slot);
+                sprite->slot = e30->slot;
+                sprite->flags1D.bit0 = 1;
+                oam->tileNum = gSpriteSlots[sprite->slot].vramOffset >> 5;
+                oam->bpp = 0;
+                oam->shape = 1;
+                oam->size = 2;
+                sprite->layers[0]->frameID = 0;
+            }
+        }
+    }
+
+    actors[0]->update = OvlFunc_897_200ae5c;
+    ((struct SpriteOamBitView897 *)&actors[0]->sprite->oam)->priority =
+        ((struct SpriteOamBitView897 *)&EruptionAeb0_GetActor(0xf)->sprite->oam)->priority;
+    ((struct SpriteOamBitView897 *)&actors[1]->sprite->oam)->priority =
+        ((struct SpriteOamBitView897 *)&EruptionAeb0_GetActor(0xf)->sprite->oam)->priority;
+    actors[1]->update = (actorfun_t)OvlFunc_897_200ae0c;
+    actors[1]->flags = 2;
+}
+
 
 extern void __Func_8096fb0(int a, int b);
 
@@ -1595,8 +1894,198 @@ void OvlFunc_897_200b00c(void) {
     OvlFunc_897_200add0();
 }
 
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b01c.s");
-INCLUDE_ASM("asm/maps/elemental_stars_eruption/OvlFunc_897_200b30c.s");
+struct CS897_FloatingActor {
+    struct Actor *actor;
+    int savedX, savedY, savedZ;
+    int phaseX, phaseY, phaseZ;
+    int scale, scaleStep;
+    unsigned char tick, hiddenFrames;
+    unsigned char pad[2];
+};
+
+struct CS897_FloatingState {
+    struct CS897_FloatingActor actors[10];
+    unsigned short count;
+};
+
+extern struct CS897_FloatingState *CS897_Alloc(int, unsigned int) __asm__("__galloc_ewram");
+extern unsigned int CS897_Random(void) __asm__("__Random");
+extern unsigned int _udivsi3_RAM(unsigned int, unsigned int);
+extern int CS897_Sin(int) __asm__("__sin");
+extern int CS897_Cos(int) __asm__("__cos");
+extern unsigned char CS897_Ranges[] __asm__(".Lm897_3a0c");
+extern signed char CS897_Directions[] __asm__(".Lm897_3a48");
+extern unsigned char CS897_PhaseFactors[] __asm__(".Lm897_3a2a");
+extern int CS897_MaxScale[] __asm__(".Lm897_3a68");
+extern int CS897_ScaleSteps[] __asm__(".Lm897_3a90");
+
+void OvlFunc_897_200b01c(void)
+{
+    struct CS897_FloatingState *state;
+    struct CS897_FloatingActor *entry;
+    struct Actor *actor;
+    unsigned int index;
+    int phaseX, phaseY, phaseZ, scale, scaleStep;
+    unsigned char tick, hiddenFrames;
+    int savedX, savedY, savedZ;
+    unsigned int stepX, stepY, stepZ;
+    unsigned int randomX, randomY, randomZ;
+    int x, y, z;
+    state = CS897_Alloc(0x21, 0x194);
+    entry = state->actors;
+    for (index = 0; index != state->count; index++, entry++) {
+        actor = entry->actor;
+        phaseX = entry->phaseX;
+        phaseY = entry->phaseY;
+        phaseZ = entry->phaseZ;
+        scale = entry->scale;
+        scaleStep = entry->scaleStep;
+        hiddenFrames = entry->hiddenFrames;
+        savedX = entry->savedX;
+        savedY = entry->savedY;
+        savedZ = entry->savedZ;
+        tick = entry->tick;
+        tick--;
+        if (tick == 0) {
+            tick = 3;
+            if (hiddenFrames == 0) {
+                scale += scaleStep;
+                if (scale >= CS897_MaxScale[index])
+                    scaleStep = -CS897_ScaleSteps[index];
+                else if (scale <= 0x1999) {
+                    scaleStep = CS897_ScaleSteps[index];
+                    scale = 0x1999;
+                    hiddenFrames = 24;
+                    savedX = actor->pos.x;
+                    savedY = actor->pos.y;
+                    savedZ = actor->pos.z;
+                    actor->pos.x = 0;
+                    actor->pos.y = 0;
+                    actor->pos.z = 0;
+                }
+                actor->scale.x = scale;
+                actor->scale.y = scale;
+            }
+            randomX = (CS897_Random() * CS897_Ranges[index * 3]) >> 16;
+            randomY = (CS897_Random() * CS897_Ranges[index * 3 + 1]) >> 16;
+            randomZ = (CS897_Random() * CS897_Ranges[index * 3 + 2]) >> 16;
+            if (randomX != 0)
+                stepX = _udivsi3_RAM(randomX << 16, 1000);
+            else
+                stepX = 0;
+            if (randomY != 0)
+                stepY = _udivsi3_RAM(randomY << 16, 1000);
+            else
+                stepY = 0;
+            if (randomZ != 0)
+                stepZ = _udivsi3_RAM(randomZ << 16, 1000);
+            else
+                stepZ = 0;
+            if (CS897_Directions[index * 3] == 1)
+                phaseX += stepX;
+            else {
+                phaseX -= stepX;
+                if (CS897_Directions[index * 3] != -1)
+                    phaseX = 0;
+            }
+            if (CS897_Directions[index * 3 + 1] == 1)
+                phaseY += stepY;
+            else {
+                phaseY -= stepY;
+                if (CS897_Directions[index * 3 + 1] != -1)
+                    phaseY = 0;
+            }
+            if (CS897_Directions[index * 3 + 2] == 1)
+                phaseZ += stepZ;
+            else {
+                phaseZ -= stepZ;
+                if (CS897_Directions[index * 3 + 2] != -1)
+                    phaseZ = 0;
+            }
+            x = 2 * CS897_Sin(phaseX * CS897_PhaseFactors[index * 3]);
+            y = 2 * CS897_Sin(phaseY * CS897_PhaseFactors[index * 3 + 1]);
+            z = 2 * CS897_Cos(phaseZ * CS897_PhaseFactors[index * 3 + 2]);
+            if (hiddenFrames != 0) {
+                savedX += x;
+                savedY += y;
+                savedZ += z;
+                hiddenFrames--;
+                if (hiddenFrames == 0) {
+                    actor->pos.x = savedX;
+                    actor->prevPos.x = savedX;
+                    if (stepY != 0) {
+                        actor->pos.y = savedY;
+                        actor->prevPos.y = savedY;
+                    }
+                    actor->pos.z = savedZ;
+                    actor->prevPos.z = savedZ;
+                }
+            } else {
+                actor->pos.x += x;
+                actor->prevPos.x = actor->pos.x;
+                if (stepY != 0) {
+                    actor->pos.y += y;
+                    actor->prevPos.y = actor->pos.y;
+                }
+                actor->pos.z += z;
+                actor->prevPos.z = actor->pos.z;
+            }
+        }
+        entry->phaseX = phaseX;
+        entry->phaseY = phaseY;
+        entry->phaseZ = phaseZ;
+        entry->scale = scale;
+        entry->scaleStep = scaleStep;
+        entry->hiddenFrames = hiddenFrames;
+        entry->savedX = savedX;
+        entry->savedY = savedY;
+        entry->savedZ = savedZ;
+        entry->tick = tick;
+    }
+}
+
+
+
+
+
+extern void *__galloc_ewram(unsigned int, unsigned int);
+extern void __Func_800c548(struct Actor *, int);
+extern int __StartTask(void (*)(void), unsigned int);
+extern void OvlFunc_897_200b01c(void);
+extern int L3a68[] __asm__(".Lm897_3a68");
+extern int L3a90[] __asm__(".Lm897_3a90");
+extern struct Actor *Eruption_GetActor(int) __asm__("__MapActor_GetActor");
+
+void OvlFunc_897_200b30c(unsigned int arg0, unsigned int arg1)
+{
+    struct CS897_FloatingState *state;
+    struct CS897_FloatingActor *entry;
+    unsigned int i;
+    struct Actor *actor;
+
+    state = (struct CS897_FloatingState *)__galloc_ewram(0x21, sizeof(*state));
+    entry = state->actors;
+    DMA3_FILL(state, 0, sizeof(*state));
+
+    if (arg1 > 10) {
+        arg1 = 10;
+    }
+
+    for (i = 0; i != arg1; i++, entry++, arg0++) {
+        actor = Eruption_GetActor(arg0);
+        actor->sprite->flags = 0;
+        entry->actor = actor;
+        actor->__unk55 = 0;
+        __Func_800c548(Eruption_GetActor(arg0), 1);
+        entry->scale = L3a68[i];
+        entry->scaleStep = -L3a90[i];
+        entry->tick = 3;
+    }
+
+    state->count = arg1;
+    __StartTask(OvlFunc_897_200b01c, 0xc80);
+}
+
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/elemental_stars_eruption_data.s");
 
 INCLUDE_ASM("asm/maps/elemental_stars_eruption/imports.s");

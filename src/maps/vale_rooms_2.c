@@ -1,8 +1,10 @@
 /* rom_787e04 (overlay file 887): consolidated TU — vale_rooms_2 map overlay. */
 
 #include "nonmatching.h"
+#include "gba/io.h"
 #include "api.h"
 #include "actor.h"
+#include "sprite.h"
 
 INCLUDE_ASM("asm/maps/vale_rooms_2/exports.s");
 
@@ -279,9 +281,241 @@ void OvlFunc_887_20083e4(void) {
     OvlFunc_887_20082e0(0xb);
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/ValeRooms2_MapInit.s");
+struct ValeRooms2StateView {
+    unsigned char pad[0x1c2];
+    short room;
+};
+
+struct ValeRooms2Sub0View {
+    unsigned char pad[0x1c0];
+    int unk1c0;
+    int unk1c4;
+    int unk1c8;
+    unsigned char pad1cc[0xc];
+    unsigned short unk1d8;
+    unsigned char pad1da[6];
+    struct Actor *cameraActor;
+};
+
+struct ValeRooms2Sub3View {
+    unsigned char pad[0x1f84];
+    short unk1f84;
+};
+
+struct ValeRooms2EbcView {
+    struct ValeRooms2Sub0View *sub0;
+    void *sub1;
+    void *sub2;
+    struct ValeRooms2Sub3View *sub3;
+};
+
+int ValeRooms2_MapInit(void)
+{
+    extern struct ValeRooms2StateView gStateView __asm__("gState");
+    extern struct ValeRooms2EbcView iwram_3001ebc_view __asm__("iwram_3001ebc");
+    extern void __ClearFlag(int);
+    extern void __SetFlag(int);
+    extern void __MapActor_SetPos(int, int, int);
+    extern void OvlFunc_887_20093b4(void);
+    extern void __Func_8092b08(int, int);
+    extern struct Actor *__MapActor_GetActor(int);
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __Func_80118a8(int);
+    extern void __MapActor_SetAnim(int, int);
+    extern void OvlFunc_887_2008a0c(void);
+    extern void OvlFunc_887_2008578(void);
+    extern void OvlFunc_887_20093e4(void);
+    extern void __StartThunder(void);
+    extern void __Func_8095240(void);
+    extern void __WaitFrames(int);
+    extern void __MapTransitionIn(void);
+    extern void __Func_8095268(void);
+    extern void __Func_800fe9c(void);
+
+    if (gStateView.room == 0x13) {
+        __ClearFlag(0x12f);
+        iwram_3001ebc_view.sub0->unk1c0 = 0x209;
+        return 0;
+    }
+
+    if (__GetFlag(0x834) != 0) {
+        __MapActor_SetPos(0xb, 0, 0);
+        __MapActor_SetPos(0xc, 0, 0);
+        __MapActor_SetPos(0xd, 0, 0);
+        __MapActor_SetPos(0xe, 0, 0);
+        __MapActor_SetPos(0xf, 0, 0);
+        __MapActor_SetPos(0x10, 0, 0);
+    } else {
+        OvlFunc_887_20093b4();
+    }
+    __Func_8092b08(0xd, 1);
+
+    if (__GetFlag(0x87a) != 0) {
+        __Actor_SetSpriteFlags(__MapActor_GetActor(0x11), 0);
+        if (gStateView.room >= 6 && gStateView.room <= 7) {
+            if (__GetFlag(0x109) != 0) {
+                if (__GetFlag(0x203) != 0) {
+                    __Func_80118a8(0xc);
+                }
+            } else {
+                __Func_80118a8(0xb);
+                __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+                __MapActor_SetAnim(8, 0xa);
+            }
+        }
+    } else if (gStateView.room == 0x15) {
+        OvlFunc_887_2008a0c();
+    } else if (gStateView.room == 0x14) {
+        __SetFlag(0x834);
+        OvlFunc_887_2008578();
+    } else if (gStateView.room == 0x16) {
+        OvlFunc_887_20093e4();
+    } else {
+        iwram_3001ebc_view.sub0->unk1c0 = 0x209;
+        if (__GetFlag(0x834) != 0) {
+            __StartThunder();
+            iwram_3001ebc_view.sub3->unk1f84 = 1;
+            __Func_8095240();
+            __WaitFrames(0x1e);
+            __MapTransitionIn();
+            __WaitMapTransition();
+            __Func_8095268();
+        } else {
+            __Func_800fe9c();
+            __WaitFrames(1);
+        }
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008578.s");
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_2008a0c.s");
+
+void OvlFunc_887_2008a0c(void)
+{
+    extern unsigned char gScript_887__02009b78[];
+    extern unsigned char gScript_887__02009bb4[];
+    extern unsigned char gScript_887__02009c04[];
+    extern unsigned char gScript_887__02009c54[];
+    extern unsigned char gScript_887__02009ca4[];
+    extern unsigned char gScript_887__02009cec[];
+    extern unsigned char gScript_887__02009d38[];
+    extern struct ValeRooms2EbcView iwram_3001ebc_view __asm__("iwram_3001ebc");
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __Func_8011ae0(void);
+    extern void __Func_8095240(void);
+    extern struct Actor *__MapActor_GetActor(int);
+    extern void __MapActor_RunScript(int, void *);
+    extern void __StartThunder(void);
+
+    struct Actor *sceneActor = __MapActor_GetActor(10);
+    struct Sprite *sceneSprite = sceneActor->sprite;
+    struct ValeRooms2Sub0View *finalMap;
+    unsigned int frame;
+
+    API_CutsceneStart();
+    API_MapActor_SetPos(11, 0, 0);
+    API_MapActor_SetPos(12, 0, 0);
+    API_MapActor_SetPos(13, 0, 0);
+    API_MapActor_SetPos(14, 0, 0);
+    API_MapActor_SetPos(15, 0, 0);
+    API_MapActor_SetPos(16, 0, 0);
+    API_MapActor_SetPos(8, 0x1af0000, 0x1870000);
+    API_MapActor_SetPos(10, 0x1cf0000, 0x1940000);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(10), 0);
+    sceneActor->flags &= ~1;
+    sceneActor->__unk55 = 0;
+    sceneSprite->oam.priority = 1;
+    API_MapActor_SetBehavior(10, (int)gScript_887__02009cec);
+    iwram_3001ebc_view.sub0->unk1c0 = 0x201;
+    API_CopyMapTiles(0x53, 15, 0x53, 19, 5, 4);
+    API_CopyMapTiles(0x5a, 16, 0x5a, 20, 5, 4);
+    API_CopyMapTiles(0x4d, 23, 0x52, 23, 5, 7);
+    API_CopyMapTiles(0x53, 0x21, 0x55, 0x21, 2, 2);
+    API_CopyMapTiles(0x5b, 28, 0x5a, 28, 1, 1);
+    API_CopyMapTiles(0x5b, 28, 0x58, 30, 1, 1);
+    API_CopyMapTiles(0x5e, 27, 0x5e, 23, 6, 4);
+    API_CopyMapTiles(0x5c, 28, 0x57, 23, 4, 4);
+    API_CopyMapTiles(0x41, 0x35, 0x58, 24, 2, 2);
+    __Func_8011ae0();
+    SET_IO(REG_BLDCNT, 0x3f42);
+    SET_IO(REG_BLDALPHA, 0x100c);
+    __StartThunder();
+    iwram_3001ebc_view.sub3->unk1f84 = 1;
+    __Func_8095240();
+    API_WaitFrames(30);
+    API_SetCameraTarget(8, 1);
+    API_MapActor_SetSpeed(8, 0x18000, 0xc000);
+    API_MapActor_SetSpeed(0, 0x18000, 0xc000);
+    API_MapActor_SetSpeed(9, 0x18000, 0xc000);
+    API_MapActor_SetBehavior(0, (int)gScript_887__02009bb4);
+    API_MapActor_SetBehavior(8, (int)gScript_887__02009b78);
+    API_MapTransitionIn();
+    API_MapActor_WaitScript(8);
+    API_PlaySound(0x9e);
+    API_MapActor_Emote(8, 0x100, 0);
+    API_Func_80925cc(8, 2);
+    API_Func_8092adc(8, 0x4000, 10);
+    API_Func_80933d4(0x40000, 0x8000);
+    API_Func_80933f8(0x19e0000, -1, 0x2120000, 1);
+    API_MapActor_SetPos(9, 0x19e0000, 0x2120000);
+    API_MapActor_TravelToAnimWait(9, 0x1ab, 0x1e3);
+    API_Func_8093530();
+    API_MessageID(0xe5b);
+    API_ActorMessage_Wait(0x8009, 0, 10);
+    API_Func_80933d4(0x18000, 0x3000);
+    API_Func_80933f8(0x1e00000, -1, 0x1bc0000, 1);
+    API_Func_8093530();
+    API_CutsceneWait(20);
+    API_Func_8092adc(8, 0x8000, 20);
+    API_MapActor_SetAnim(8, 3);
+    API_MapActor_DoAnim(0, 3);
+    API_MapActor_DoAnim(9, 3);
+    API_MapActor_TravelToAnim(9, 0x19f, 0x24d);
+    API_CutsceneWait(10);
+    API_MapActor_SetBehavior(8, (int)gScript_887__02009c04);
+    API_MapActor_SetBehavior(0, (int)gScript_887__02009c54);
+    API_PlaySound(0xea);
+    API_CutsceneWait(20);
+    API_MapActor_SetBehavior(10, (int)gScript_887__02009d38);
+    frame = 0;
+    do {
+        SET_IO(REG_BLDALPHA, frame + 0x100e);
+        API_WaitFrames(1);
+        frame++;
+    } while (frame <= 3);
+    API_PlaySound(0xca);
+    API_WaitFrames(10);
+    frame = 0;
+    do {
+        SET_IO(REG_BLDALPHA, 0x100f - frame);
+        API_WaitFrames(1);
+        frame++;
+    } while (frame <= 15);
+    API_MapActor_WaitScript(0);
+    API_MapActor_SetAnim(8, 1);
+    API_Func_809259c(8, 2);
+    API_Func_80925cc(0, 2);
+    API_CutsceneWait(10);
+    API_Func_8092adc(8, 0xc000, 0);
+    API_Func_8092adc(0, 0xc000, 20);
+    API_MapActor_Surprise(8, 0x102);
+    API_MapActor_Surprise(0, 0x102);
+    API_CutsceneWait(0x50);
+    API_MapActor_SetPos(9, 0, 0);
+    API_MapActor_TurnToFaceActor(8, 0, 20);
+    API_MapActor_SetAnim(8, 3);
+    API_MapActor_DoAnim(0, 3);
+    API_CutsceneWait(0x28);
+    API_Func_80933d4(0xcccc, 0x1999);
+    API_SetCameraTarget(8, 1);
+    API_MapActor_SetBehavior(8, (int)gScript_887__02009ca4);
+    __MapActor_RunScript(0, gScript_887__02009ca4);
+    finalMap = iwram_3001ebc_view.sub0;
+    finalMap->unk1c0 = 0x100;
+    finalMap->unk1c8 = 0x20;
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_Func_8091e9c(21);
+}
 extern struct Actor *__MapActor_GetActor(int);
 extern void __Func_80b3284(int, int);
 
@@ -602,7 +836,76 @@ void OvlFunc_887_2009638(struct Actor *actor) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_200968c.s");
+struct SpriteOamBitView {
+    void *dest;
+    u16 posY : 8;
+    u16 affineMode : 2;
+    u16 objMode : 2;
+    u16 mosaic : 1;
+    u16 bpp : 1;
+    u16 shape : 2;
+    u16 posX : 9;
+    u16 affineParam : 5;
+    u16 size : 2;
+    u16 tileNum : 10;
+    u16 priority : 2;
+    u16 palette : 4;
+};
+
+struct E30SlotView {
+    unsigned char pad[0x46];
+    u16 slot;
+};
+
+void OvlFunc_887_200968c(unsigned int arg0)
+{
+    extern struct E30SlotView *iwram_3001f30_view __asm__("iwram_3001f30");
+    extern struct SpriteSlot gSpriteSlots[];
+    extern void __Sprite_SetAnim(struct Sprite *, int);
+    extern void __Func_8003f3c(int);
+    extern void OvlFunc_887_20095e8(struct Actor *);
+    extern void OvlFunc_887_2009638(struct Actor *);
+
+    struct E30SlotView *e30 = iwram_3001f30_view;
+    struct Actor *parent = (struct Actor *)arg0;
+    struct Actor *actors[2];
+    int i;
+
+    for (i = 0; i <= 1; i++) {
+        struct Actor *actor = API_CreateActor(0x1a, parent->pos.x, parent->pos.y, parent->pos.z);
+        actors[i] = actor;
+        if (actor != NULL) {
+            struct Sprite *sprite;
+
+            actor->floorPos = parent->floorPos;
+            sprite = actor->sprite;
+            actor->__unk55 = 0;
+            actor->waveCounter = 0;
+            actor->linkedActor = parent;
+            if (sprite != NULL) {
+                struct SpriteOamBitView *oam = (struct SpriteOamBitView *)&sprite->oam;
+
+                __Sprite_SetAnim(sprite, 0);
+                sprite->flags = 0;
+                __Func_8003f3c(sprite->slot);
+                sprite->slot = e30->slot;
+                sprite->flags1D.bit0 = 1;
+                oam->tileNum = gSpriteSlots[sprite->slot].vramOffset >> 5;
+                oam->bpp = 0;
+                oam->shape = 1;
+                oam->size = 2;
+                sprite->layers[0]->frameID = 0;
+            }
+        }
+    }
+
+    actors[0]->update = OvlFunc_887_2009638;
+    ((struct SpriteOamBitView *)&actors[0]->sprite->oam)->priority = 2;
+    ((struct SpriteOamBitView *)&actors[1]->sprite->oam)->priority = 2;
+    actors[1]->update = OvlFunc_887_20095e8;
+    actors[1]->flags = 2;
+}
+
 
 extern void __Func_8096fb0(int a, int b);
 

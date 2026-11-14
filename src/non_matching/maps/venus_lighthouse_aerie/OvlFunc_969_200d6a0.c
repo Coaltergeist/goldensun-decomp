@@ -1,3 +1,12 @@
+/*
+ * Non-matching reason:
+ * In the `if (emit != 0)` block, target ASM computes `(CS969_Sin(...) * 24) >> 16`, stores it
+ * to `particle->speed` (`strh r0, [r5, #0x32]`), and then reads `*(s16 *)(mainActor + 0x32)`
+ * and overwrites `particle->speed` (`ldrsh r0, [r6, r1]; strh r0, [r5, #0x32]`) — an original
+ * typo where `mainActor->speed` was read instead of `particle->speed`. Without volatile/fakematching,
+ * camelot-gcc dead-store-eliminates the first store to `particle->speed`, and also swaps `mainActor`
+ * (`sl`) vs `emit` (`r6`) in `global_alloc`.
+ */
 extern unsigned int CS969_Phase __asm__(".Lm969_6764");
 extern unsigned int CS969_Frame __asm__("iwram_3001e40");
 extern int CS969_GetActor(int) __asm__("__MapActor_GetActor");
@@ -14,10 +23,9 @@ extern void CS969_ActorMode(unsigned int, unsigned int) __asm__("__Func_80929d8"
 extern int CS969_Sin(int) __asm__("__sin");
 extern void OvlFunc_969_200d688(unsigned int);
 extern void OvlFunc_969_200d9f0(struct Actor *);
+extern void OvlFunc_969_200b660(struct Actor *);
 extern unsigned char gScript_969__0200e2d0[];
 extern unsigned char gScript_969__0200e1cc[];
-extern unsigned char CS969_ClearSprite[] __asm__(".Lcs969_clear_sprite");
-__asm__(".equ .Lcs969_clear_sprite, 0");
 static inline void CS969_Shake(int x, int y, int speed) { extern void __Func_8012330(int, int, int); __Func_8012330(x, y, speed); }
 static inline void CS969_Byte(unsigned char *p, int value) { *p = value; }
 static inline void CS969_Half(unsigned short *p, unsigned int value) { *p = value; }
@@ -109,12 +117,12 @@ void OvlFunc_969_200d6a0(void)
             CS969_ActorMode((unsigned int)particle, 1);
             CS969_Byte(&particle->__unk55, 0);
             CS969_Half((unsigned short *)&particle->waveCounter, CS969_Random() & 0x0ffff000);
-            clearSprite = (int)CS969_ClearSprite;
+            clearSprite = 0;
             CS969_Half(&particle->__unk66, 0);
             CS969_Byte(&particle->__unk62, CS969_Random() >> 13);
-            particle->update = (actorfun_t *)OvlFunc_969_200b660;
+            particle->update = (actorfun_t)OvlFunc_969_200b660;
             sineAngle = CS969_Random();
-            particle->speed = CS969_Sin(((sineAngle << 16) - sineAngle) >> 20) * 24;
+            particle->speed = (CS969_Sin(((sineAngle << 16) - sineAngle) >> 20) * 24) >> 16;
             particle->speed = *(short *)((unsigned char *)mainActor + 0x32);
             CS969_Byte((unsigned char *)sprite + 0x26, clearSprite);
             sprite->oam.priority = 1;

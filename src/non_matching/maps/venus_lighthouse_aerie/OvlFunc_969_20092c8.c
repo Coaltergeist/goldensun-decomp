@@ -1,3 +1,9 @@
+/*
+ * Non-matching reason:
+ * Target ASM loads small constant 0xbb into low register r5 from the literal pool
+ * (`ldr r5, =0xbb`) at the end of the function, whereas camelot-gcc always materializes
+ * 8-bit CONST_INT values (0..255) into LO_REGS via `mov r5, #0xbb`.
+ */
 extern void VenusSceneSetSpeed(unsigned int, int, int) __asm__("__MapActor_SetSpeed");
 #define __MapActor_SetSpeed VenusSceneSetSpeed
 #include "api.h"
@@ -5,10 +11,6 @@ extern void VenusSceneSetSpeed(unsigned int, int, int) __asm__("__MapActor_SetSp
 
 static inline void VenusWriteByte(unsigned char *p, int value) { *p = value; }
 static inline void VenusWriteFacing(unsigned char *actor, int value) { *(unsigned short *)(actor + 6) = value; }
-extern unsigned char VenusDepartureDialogue[] __asm__(".Lvenus_departure_dialogue");
-__asm__(".equ .Lvenus_departure_dialogue, 0x27ba");
-extern unsigned char VenusBattleMap[] __asm__(".Lvenus_battle_map");
-__asm__(".equ .Lvenus_battle_map, 0xbb");
 
 struct VenusBattleState { unsigned char prefix[0x22b]; unsigned char mode; };
 
@@ -323,7 +325,7 @@ void OvlFunc_969_20092c8(void)
     API_MapActor_TravelToAnimWait(21, 0x148, 0xba);
     API_CutsceneWait(20);
     API_Func_80925cc(21, 2);
-    departureDialogue = (int)VenusDepartureDialogue;
+    departureDialogue = 0x27ba;
     API_Func_801776c(departureDialogue, 1);
     API_MapActor_TravelToAnimWait(21, 0x136, 0xc0);
     API_Func_8092adc(19, 0x8000, 0);
@@ -464,7 +466,7 @@ void OvlFunc_969_20092c8(void)
     API_MapActor_SetBehavior(21, (int)gScript_969__0200e004);
     VenusRunActorScript(6, (int)gScript_969__0200e004);
     VenusSceneState.mode = 3;
-    battleMap = (int)VenusBattleMap;
+    battleMap = 0xbb;
     __Func_8091f90(battleMap, 2);
     __Func_8091fa8(battleMap, 9);
     __StartMapBattle(0x62, 1);

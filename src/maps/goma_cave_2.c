@@ -691,9 +691,96 @@ void OvlFunc_905_2008b6c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008bd0.s");
-INCLUDE_ASM("asm/maps/goma_cave_2/OvlFunc_905_2008ce0.s");
+extern int iwram_3001e40;
+extern unsigned int __Random(void);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Func_8092950(int, int);
+extern void __Func_800c548(void *, int);
 extern void OvlFunc_905_2008a68(int, int, int, int, int, int, int);
+
+void OvlFunc_905_2008bd0(void)
+{
+    if ((iwram_3001e40 & 7) == 0) {
+        OvlFunc_905_2008a68(
+            *(int *)(__MapActor_GetActor(9) + 8) + (((__Random() * 12) >> 16) << 16),
+            *(int *)(__MapActor_GetActor(9) + 0xc),
+            *(int *)(__MapActor_GetActor(9) + 0x10) + (0xc0 << 11),
+            0,
+            ((__Random() * 5) >> 16) * -0x1999,
+            (__Random() * 2) >> 16,
+            0
+        );
+        if ((iwram_3001e40 & 0xf) == 0) {
+            OvlFunc_905_2008a68(
+                *(int *)(__MapActor_GetActor(9) + 8) + (((__Random() * 12) >> 16) << 16),
+                *(int *)(__MapActor_GetActor(9) + 0xc),
+                *(int *)(__MapActor_GetActor(9) + 0x10) + (0xc0 << 11),
+                0,
+                ((__Random() * 5) >> 16) * -0x1999,
+                (__Random() * 2) >> 16,
+                0
+            );
+        }
+    }
+}
+
+void OvlFunc_905_2008ce0(void)
+{
+    int x;
+
+    x = *(int *)(__MapActor_GetActor(9) + 8);
+    if (x < 0) {
+        x += 0xfffff;
+    }
+    x >>= 20;
+    API_CutsceneStart();
+    if (x == 0x19) {
+        ((struct Actor *)__MapActor_GetActor(11))->layer = 1;
+        __Actor_SetSpriteFlags(__MapActor_GetActor(11), 0);
+        __Func_8092950(11, 14);
+        __Func_800c548(__MapActor_GetActor(11), 1);
+        API_MapActor_SetPos(11, 0xcf << 17, 0xf0 << 16);
+        API_CutsceneWait(10);
+        API_StartTask(OvlFunc_905_2008bd0, 0xc80);
+        API_PlaySound(0x8d);
+        __MapActor_TravelBy(9, 1, 0);
+        __MapActor_WaitMovement(9);
+        API_CutsceneWait(10);
+        __MapActor_TravelBy(9, 2, 0);
+        __MapActor_WaitMovement(9);
+        ((struct Actor *)__MapActor_GetActor(9))->bounce = 0;
+        ((struct Actor *)__MapActor_GetActor(9))->gravity = 0x9999;
+        API_CutsceneWait(3);
+        __MapActor_SetSpeed(9, 0x28000, 0x4000);
+        API_PlaySound(0x120);
+        API_MapActor_TravelTo(9, 0x1a0, 0xc8);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(9), 0);
+        API_StopTask(OvlFunc_905_2008bd0);
+        API_CutsceneWait(12);
+        API_PlaySound(0xbd);
+
+        OvlFunc_905_2008a68(
+            *(int *)(__MapActor_GetActor(9) + 8) + (((__Random() * 12) >> 16) << 16),
+            *(int *)(__MapActor_GetActor(9) + 0xc),
+            *(int *)(__MapActor_GetActor(9) + 0x10) + (0xc0 << 11),
+            0,
+            ((__Random() * 5) >> 16) * -0x1999,
+            (__Random() * 2) >> 16,
+            0
+        );
+
+        API_CutsceneWait(20);
+        API_PlaySound(0x9a);
+        API_Func_8012330(0x50000, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_Func_8012350();
+        API_MapActor_SetPos(9, 0, 0);
+        API_MapActor_SetPos(11, 0, 0);
+        API_SetFlag(0x300);
+        API_Func_8010704(0x15, 0x2d, 4, 2, 0x15, 0xb);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_905_2008ecc(void)
 {
@@ -836,7 +923,66 @@ void OvlFunc_905_200915c(void)
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_2/GomaCave2_MapInit.s");
+struct GomaCave2State {
+    unsigned char _pad0[0x1c2];
+    short unk1c2;
+    unsigned char _pad1[0x70];
+    short unk234;
+};
+extern struct GomaCave2State gState_905 __asm__("gState");
+
+int GomaCave2_MapInit(void)
+{
+    unsigned char *base;
+    struct Actor *a;
+
+    base = *(unsigned char **)iwram_3001ebc;
+    *(int *)(base + 0x1c0) = 0x204;
+    *(int *)(base + 0x1c8) = 0x18;
+
+    a = (struct Actor *)__MapActor_GetActor(9);
+    a->collision |= 0x10;
+
+    if (API_GetFlag(0x302)) {
+        API_MapActor_SetPos(8, 0xac << 17, 0xd0 << 15);
+        API_Func_8010704(0x18, 0x28, 6, 3, 0x12, 6);
+    } else {
+        API_Func_8010704(0x12, 0x28, 6, 3, 0x12, 6);
+    }
+
+    if (API_GetFlag(0x300)) {
+        API_MapActor_SetPos(9, 0, 0);
+        API_Func_8010704(0x15, 0x2d, 4, 2, 0x15, 0xb);
+    }
+
+    if (API_GetFlag(0x301)) {
+        API_MapActor_SetPos(10, 0x9a << 18, 0xe8 << 16);
+        if (gState_905.unk1c2 == 2 || gState_905.unk1c2 == 3) {
+            ((struct Actor *)__MapActor_GetActor(10))->layer = 2;
+            ((struct Actor *)__MapActor_GetActor(10))->pos.y -= 1;
+            ((struct Actor *)__MapActor_GetActor(10))->flags |= 2;
+            API_Func_8010704(0x24, 0x30, 5, 1, 0x24, 0xe);
+        }
+    }
+
+    if (gState_905.unk1c2 == 0x63) {
+        API_MapTransitionIn();
+        API_WaitMapTransition();
+        API_MapActor_SetPos(9, 0xc0 << 17, 0xc0 << 16);
+        API_CutsceneWait(0x3c);
+        ((struct Actor *)__MapActor_GetActor(9))->layer = 2;
+        API_MapActor_TravelToWait(9, 0xcc << 1, 0xc0);
+        API_CutsceneWait(0x3c);
+        OvlFunc_905_2008ce0();
+    }
+
+    if (gState_905.unk234 != 0) {
+        gOvl_020098ec = 0;
+        API_StartTask(OvlFunc_905_20090c8, 0xc8 << 4);
+    }
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/goma_cave_2/goma_cave_2_data.s");
 
 INCLUDE_ASM("asm/maps/goma_cave_2/imports.s");

@@ -1,6 +1,0 @@
-#ifndef CANDIDATE_MAPS_MERCURY_LIGHTHOUSE_H
-#define CANDIDATE_MAPS_MERCURY_LIGHTHOUSE_H
-
-extern unsigned int iwram_3001e40;
-
-#endif

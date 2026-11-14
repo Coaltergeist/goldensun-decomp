@@ -1,7 +1,12 @@
+/*
+ * Remaining diff vs target OvlFunc_970_2008f80:
+ * - Target computes `0xf02` and `0xf0c` offsets via register arithmetic
+ *   (`0xf10 - 14`, `0xf14 - 8`) rather than separate constant-pool loads.
+ */
 #include "math.h"
 
+extern unsigned char iwram_3001ed8[];
 extern unsigned char iwram_3001ad0[];
-
 extern short Lm970_14c8[] __asm__(".Lm970_14c8");
 
 void OvlFunc_970_2008f80(void)

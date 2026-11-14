@@ -1,26 +1,28 @@
+/*
+ * Remaining diff vs target OvlFunc_970_2008430 (2 instructions + pool literal):
+ * - At 0x698: `movs r2, #0` / `movs r3, #160` order swap on `*(vu16 *)0x05000000 = 0`.
+ * - At 0x6c0: target loads `.word 0x00000000` from constant pool (`ldr r0, [pc, #60]`)
+ *   for the first argument of `__SetDestMap(0, 9)` rather than `movs r0, #0`.
+ */
 #include "api.h"
 
-__asm__(".equ .LShipDestinationMap, 0");
-extern unsigned char ShipDestinationMap[] __asm__(".LShipDestinationMap");
+extern unsigned char iwram_3001ebc[];
+extern unsigned char iwram_3001e70[];
+extern unsigned char gScript_970__02009820[];
+extern unsigned char gScript_970__020098e0[];
+extern unsigned char gScript_970__0200998c[];
+extern unsigned char gScript_970__02009a4c[];
 
-static inline void ShipWritePalette(int color, volatile unsigned short *p) { *p = color; }
+extern int __Func_8091c7c(int, int);
+extern void OvlFunc_970_20092ac(void);
+extern void __SetDestMap(unsigned short, unsigned short);
+extern void __SetMusicTempo(unsigned short);
+extern int __ShowActorMessage_NoWait(int, int);
 
 void OvlFunc_970_2008430(void)
 {
-    extern unsigned char gScript_970__02009820[];
-    extern unsigned char gScript_970__020098e0[];
-    extern unsigned char gScript_970__0200998c[];
-    extern unsigned char gScript_970__02009a4c[];
-    extern unsigned char CS_iwram_3001e70[] __asm__("iwram_3001e70");
-    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
-    extern int __Func_8091c7c(int, int);
-    extern unsigned char * LaliveroShipGetActor(int) __asm__("__MapActor_GetActor");
-    extern void OvlFunc_970_20092ac(void);
-    extern void __SetDestMap(unsigned short, unsigned short);
-    extern void __SetMusicTempo(unsigned short);
-    extern int __ShowActorMessage_NoWait(int, int);
-    unsigned char * savedMotion;
-    unsigned char * fieldState;
+    unsigned char *savedMotion;
+    unsigned char *fieldState;
     int choice1;
     int choice2;
     int choice3;
@@ -65,11 +67,11 @@ void OvlFunc_970_2008430(void)
         API_CutsceneWait(30);
         API_MapActor_Emote(1, 0x102, 0x32);
         API_ActorMessage(1, 0);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
     } else {
         API_CutsceneWait(30);
         API_MapActor_Emote(1, 0x102, 0x32);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
         API_ActorMessage(1, 0);
     }
     API_CutsceneWait(10);
@@ -107,14 +109,14 @@ void OvlFunc_970_2008430(void)
         API_Func_8092adc(1, 0xe000, 0);
         API_CutsceneWait(20);
         API_ActorMessage(1, 0);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
     } else {
         API_CutsceneWait(20);
         API_Func_80925cc(1, 2);
         API_CutsceneWait(20);
         API_Func_8092adc(1, 0xe000, 0);
         API_CutsceneWait(20);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
         API_ActorMessage(1, 0);
     }
     API_CutsceneWait(10);
@@ -144,12 +146,12 @@ void OvlFunc_970_2008430(void)
         API_MapActor_DoAnim(3, 3);
         API_CutsceneWait(20);
         API_ActorMessage(3, 0);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
     } else {
         API_CutsceneWait(30);
         API_MapActor_DoAnim(3, 3);
         API_CutsceneWait(20);
-        *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        *(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)iwram_3001ebc) + 0x1d8) + 1);
         API_ActorMessage(3, 0);
     }
     API_CutsceneWait(10);
@@ -216,26 +218,26 @@ void OvlFunc_970_2008430(void)
     __SetMusicTempo(0xf0);
     OvlFunc_970_20092ac();
     API_CutsceneWait(0x50);
-    savedMotion = (unsigned char *)(*(int *)CS_iwram_3001e70);
-    actor = LaliveroShipGetActor(8);
+    savedMotion = *(unsigned char **)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(8);
     *(int *)(actor + 0x34) = 0x83;
     *(int *)(actor + 0x30) = 0x20000;
-    *(int *)(savedMotion + 0x11c) = 0xffffd000;
+    *(int *)(savedMotion + 0x11c) = -0x3000;
     API_Func_8092304(8, 0x3c, 0);
-    *(int *)(savedMotion + 0x11c) = 0xffffa000;
+    *(int *)(savedMotion + 0x11c) = -0x6000;
     API_Func_8092304(8, 0x3c, 0);
     API_CutsceneWait(0x50);
     API_CutsceneWait(0x64);
     API_Func_80933d4(0x23333, 0x28f);
     API_Func_80933f8(0x3280000, -1, 0xa80000, 1);
     API_CutsceneWait(0x12c);
-    fieldState = (unsigned char *)(*(int *)(CS_iwram_3001e70 + 0x4c));
+    fieldState = *(unsigned char **)(iwram_3001e70 + 0x4c);
     *(int *)(fieldState + 0x1c0) = 0x100;
-    ShipWritePalette(0, (volatile unsigned short *)0x05000000);
+    *(volatile unsigned short *)0x05000000 = 0;
     *(int *)(fieldState + 0x1c8) = 0x60;
     API_MapTransitionOut();
     API_WaitMapTransition();
     API_CutsceneWait(30);
     API_SetFlag(0x11a);
-    __SetDestMap((unsigned int)ShipDestinationMap, 9);
+    __SetDestMap(0, 9);
 }

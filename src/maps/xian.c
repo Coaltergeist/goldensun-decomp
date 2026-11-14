@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 
 extern void __Func_80955b0(int a, int b, int c);
 extern unsigned char iwram_3001ebc[];
@@ -64,7 +65,44 @@ int OvlFunc_928_20083cc(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008408.s");
+extern void __Actor_SetAnim(int, int);
+extern unsigned short __atan2(int, int);
+
+int OvlFunc_928_2008408(struct Actor *actor, struct Actor *target, int range, int force)
+{
+    int result = 0;
+    u16 angle;
+    int a0, a1, a2, facing;
+
+    if (actor->stop == 1 && actor->waveCounter == 0) {
+        __Actor_SetAnim((int)actor, 1);
+        return 1;
+    }
+
+    if (OvlFunc_928_20083cc(&target->pos.x, &actor->pos.x) < range || force != 0) {
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        a2 = (angle - 0x1000) & 0xf000;
+        a1 = (angle + 0x1000) & 0xf000;
+        a0 = angle & 0xf000;
+        facing = actor->facing & 0xf000;
+        if (a0 == facing || a1 == facing || a2 == facing || force != 0) {
+            actor->stop = 1;
+            __Actor_SetAnim((int)actor, 1);
+            result = 1;
+            actor->waveCounter = result;
+        } else {
+            actor->stop = 0;
+            __Actor_SetAnim((int)actor, 2);
+            actor->waveCounter = 0;
+        }
+    } else {
+        actor->stop = 0;
+        __Actor_SetAnim((int)actor, 2);
+        actor->waveCounter = 0;
+    }
+    return result;
+}
+
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008500.s");
 
 extern unsigned char gOvl_020097e8[];
@@ -408,12 +446,10 @@ void OvlFunc_928_2008e4c(void)
     __CutsceneEnd();
 }
 extern void __MessageID(int);
-extern unsigned char gScript_928__020096a0[];
-
 INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008f30.s");
 
 extern unsigned char gScript_928__020095b0[];
-extern int OvlFunc_928_2008500(unsigned char *);
+extern int OvlFunc_928_2008500(struct Actor *);
 extern void __MapActor_SetBehavior(int, void *);
 
 void OvlFunc_928_2009060(void)

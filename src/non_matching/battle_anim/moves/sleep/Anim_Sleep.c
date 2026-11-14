@@ -1,5 +1,14 @@
+/*
+ * Non-matching decompilation of Anim_Sleep (exact size 0x298 / 664 bytes, 0 reloc diffs).
+ *
+ * Matches 0x000..0x17d and 0x224..0x298 100% byte-for-byte.
+ * Remaining diffs:
+ * 1. +0x17e..+0x220: r5 (particle pointer `q`) and r6 (constant 0x5c0000) are
+ *    swapped in global register allocation for the 12-particle render loop.
+ * 2. +0x20c..+0x21c: sched2 store ordering among `q->spin`, `q->vy`, and `q->y`
+ *    inside the unreachable `q->y > 0x5c0000 && q->vy == 0` bounce block.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -15,52 +24,35 @@ struct SleepParticle {
 };
 
 struct SleepState {
-               u8 graphics[0x7780];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7780];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct SleepVec { s32 x, y, z; };
 
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e80[];
-
 extern u8 gBuffer[];
-
 extern char _FILE_a8[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern unsigned int Random(void);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern s32 **_GetBattleActor(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(u8 *, u8 *);
-
 extern void MatrixTranslatev(struct SleepVec *);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Sleep(struct AnimContext *context)

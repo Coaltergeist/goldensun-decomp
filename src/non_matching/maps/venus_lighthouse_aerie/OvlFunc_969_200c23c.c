@@ -1,10 +1,13 @@
+/*
+ * Non-matching reason:
+ * Target ASM loads small constant 2 into low register r0 from the literal pool
+ * (`ldr r0, =2`) before `__SetDestMap(2, 0x5b)`, whereas camelot-gcc always materializes
+ * 8-bit CONST_INT values (0..255) into LO_REGS via `mov r0, #2`.
+ */
 extern void VenusSceneSpeed(unsigned int, int, int) __asm__("__MapActor_SetSpeed");
 #define __MapActor_SetSpeed VenusSceneSpeed
 #include "api.h"
 #undef __MapActor_SetSpeed
-__asm__(".equ .LVenusDestinationMap, 2\n.equ .LVenusWaveStart, 0");
-extern unsigned char VenusDestinationMap[] __asm__(".LVenusDestinationMap");
-extern unsigned char VenusWaveStart[] __asm__(".LVenusWaveStart");
 
 static inline void VenusByte(unsigned char *p, int v) { *p = v; }
 static inline void VenusHalf(unsigned char *p, int v) { *(unsigned short *)p = v; }
@@ -198,7 +201,7 @@ void OvlFunc_969_200c23c(void)
     VenusByte((unsigned char *)(waveActor + 0x62), 0);
     *(unsigned char *)(waveActor + 0x63) = 1;
     *(int *)(waveActor + 0x4c) = *(int *)(waveActor + 0xc);
-    waveStart = (int)VenusWaveStart;
+    waveStart = 0;
     VenusHalf((unsigned char *)(waveActor + 0x6), 0xa000);
     waveActor = (unsigned int)VenusActor(1);
     VenusByte((unsigned char *)(waveActor + 0x62), waveStart);
@@ -240,7 +243,7 @@ void OvlFunc_969_200c23c(void)
     API_CutsceneWait(30);
     API_SetFlag(0x11a);
     __Func_808ba38();
-    __SetDestMap((unsigned short)(int)VenusDestinationMap, 0x5b);
+    __SetDestMap(2, 0x5b);
     VenusPalette(0x7fff, (volatile unsigned short *)0x5000000);
     *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c8) = 1;
     API_MapTransitionOut();

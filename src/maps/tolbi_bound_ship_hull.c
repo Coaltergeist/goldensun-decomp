@@ -100,7 +100,86 @@ int OvlFunc_945_20080fc(struct Actor *a)
         return 1;
     return 0;
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200812c.s");
+void OvlFunc_945_200812c(struct Actor *actor)
+{
+    extern void __Actor_SetAnim(struct Actor *, int);
+    extern int OvlFunc_945_20080fc(struct Actor *);
+
+    struct Actor *actor8;
+
+    actor8 = (struct Actor *)__MapActor_GetActor(8);
+
+    switch (actor->__unk66) {
+    case 0:
+        actor->facing = 0xb0 << 8;
+        actor->__unk66++;
+        actor->__unk62 = 0;
+        break;
+
+    case 2:
+        actor->facing = 0;
+        actor->__unk66++;
+        actor->__unk62 = 0;
+        break;
+
+    case 4:
+        __Actor_SetAnim(actor, 2);
+        API_Actor_TravelTo(actor, 0xea << 17, 0x80 << 14, 0x9e << 18);
+        actor->__unk4C = 0x3c;
+        actor->__unk66++;
+        break;
+
+    case 5:
+        if (OvlFunc_945_20080fc(actor) != 0) {
+            __Actor_SetAnim(actor, 1);
+            actor->__unk62 = 0;
+            if (!actor8->stop) {
+                actor->__unk63 = 1;
+            }
+            actor->__unk66++;
+        }
+        break;
+
+    case 7:
+        if (!actor8->stop) {
+            __Actor_SetAnim(actor, 3);
+            actor->__unk63 = 2;
+        }
+        actor->__unk66++;
+        actor->__unk62 = 0;
+        break;
+
+    case 9:
+        __Actor_SetAnim(actor, 2);
+        API_Actor_TravelTo(actor, 0xf0 << 17, 0x80 << 14, 0x96 << 18);
+        actor->__unk4C = 0x3c;
+        actor->__unk66++;
+        if (!actor8->stop) {
+            actor->__unk63 = 3;
+        }
+        break;
+
+    case 10:
+        if (OvlFunc_945_20080fc(actor) != 0) {
+            __Actor_SetAnim(actor, 1);
+            actor->__unk62 = 0;
+            actor->__unk66++;
+        }
+        break;
+
+    case 1:
+    case 3:
+    case 6:
+    case 8:
+    case 11:
+        OvlFunc_945_20080d8((unsigned char *)actor);
+        break;
+
+    case 12:
+        actor->__unk66 = 0;
+        break;
+    }
+}
 void OvlFunc_945_2008284(struct Actor *actor)
 {
     extern int __MapActor_GetActor(int);
@@ -125,7 +204,22 @@ void OvlFunc_945_2008284(struct Actor *actor)
         other->__unk63 = 0;
     }
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_20082f4.s");
+u32 OvlFunc_945_20082f4(struct Actor *actor)
+{
+    extern void __Actor_SetSpriteFlags(struct Actor *, int);
+    extern void __Func_80929d8(struct Actor *, int);
+    struct Sprite *sprite;
+
+    sprite = actor->sprite;
+    actor->collision = 8;
+    __Actor_SetSpriteFlags(actor, 0);
+    sprite->oam.priority = 1;
+    sprite->shadowOAM.priority = 1;
+    actor->flags = (actor->flags & 0xfe) | 2;
+    __Func_80929d8(actor, 0xf);
+    return 1;
+}
+
 unsigned int *TolbiBoundShipHull_GetEntrances(void)
 {
     unsigned int r3;
@@ -3536,7 +3630,124 @@ void OvlFunc_945_200dca4(void) {
     __CutsceneWait(0x14);
     OvlFunc_945_200c8e8(9, 0x15, 0);
 }
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_hull/OvlFunc_945_200dd10.s");
+void OvlFunc_945_200dd10(void)
+{
+    extern unsigned char gScript_945__0200e7c8[];
+    extern unsigned char gScript_945__0200e904[];
+    extern unsigned char gScript_945__0200e938[];
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __DeleteFieldActor(int);
+    extern void __Func_8092950(unsigned int, unsigned int);
+    extern int __MapActor_GetActor(int);
+    extern void __MapActor_RunScript(int, void *);
+    extern void OvlFunc_945_200b7b4(void);
+    extern void OvlFunc_945_200c670(int);
+    extern void OvlFunc_945_200c86c(int);
+    extern void OvlFunc_945_200c880(int, unsigned short);
+    extern void OvlFunc_945_200c8ac(unsigned int, unsigned int, unsigned int, unsigned int);
+    extern void OvlFunc_945_200c8e8(int, int, int);
+    extern unsigned int OvlFunc_945_200cfa8(unsigned int, unsigned int);
+    int route = 0;
+    extern unsigned char *Ship945_Map asm("iwram_3001ebc");
+    unsigned int passenger0;
+    unsigned int passenger1;
+    unsigned int passenger2;
+    unsigned int passenger3;
+    unsigned char *actor;
+
+    passenger0 = OvlFunc_945_200cfa8(0, 0);
+    passenger1 = OvlFunc_945_200cfa8(1, 0);
+    passenger2 = OvlFunc_945_200cfa8(2, 0);
+    passenger3 = OvlFunc_945_200cfa8(3, 0);
+    API_CutsceneStart();
+    OvlFunc_945_200b7b4();
+    OvlFunc_945_200c8e8(10, 0, 0);
+    OvlFunc_945_200c8e8(17, 0, 0);
+    API_MapActor_SetPos(8, 0x1d80000, 0x980000);
+    API_MapActor_SetPos(27, 0x1b80000, 0x860000);
+    __Func_8092950(27, 15);
+    actor = (unsigned char *)__MapActor_GetActor(27);
+    __Actor_SetSpriteFlags(actor, 0);
+    OvlFunc_945_200c670(16);
+    API_MapActor_SetAnim(9, 5);
+    OvlFunc_945_200c8ac(0x1b60000, -1, 0xae0000, 0x1000001);
+    OvlFunc_945_200c8e8(8, 1, 20);
+    __Func_8092950(27, 0);
+    actor = (unsigned char *)__MapActor_GetActor(27);
+    __Actor_SetSpriteFlags(actor, 1);
+    API_MapActor_SetSpeed(27, 0x10000, 0x8000);
+    API_MapActor_TravelToAnimWait(27, 0x198, 0x84);
+    API_MapActor_TravelToAnimWait(27, 0x198, 0x8e);
+    API_Func_8092adc(27, 0x3000, 20);
+    API_Func_809259c(27, 2);
+    API_MessageID(0x1f29);
+    OvlFunc_945_200c86c(27);
+    API_CutsceneWait(0x78);
+    OvlFunc_945_200c8e8(12, passenger0, 0);
+    OvlFunc_945_200c8e8(12, passenger1, 1);
+    OvlFunc_945_200c8e8(12, passenger2, 0);
+    OvlFunc_945_200c8e8(12, passenger3, 1);
+    OvlFunc_945_200c8e8(11, 0, 0);
+    API_Func_8092adc(passenger0, 0xd000, 0);
+    API_Func_8092adc(passenger1, 0xb000, 0);
+    API_Func_8092adc(passenger2, 0xd000, 0);
+    API_Func_8092adc(passenger3, 0xb000, 0x3c);
+    if (API_GetFlag(0x934)) route = 2;
+    else if (API_GetFlag(0x933) || API_GetFlag(0x92f)) route = 1;
+    API_Func_80925cc(passenger0, 1);
+    if (route == 1) *(unsigned short *)(Ship945_Map + 0x1d8) += 1;
+    else if (route == 2) *(unsigned short *)(Ship945_Map + 0x1d8) += 2;
+    API_Func_809259c(passenger0, 2);
+    OvlFunc_945_200c86c(passenger0);
+    API_MessageID(0x1f2d);
+    API_MapActor_DoAnim(27, 4);
+    OvlFunc_945_200c86c(27);
+    API_MapActor_Emote(passenger0, 0x102, 0);
+    API_MapActor_Emote(passenger1, 0x102, 0);
+    API_MapActor_Emote(passenger2, 0x102, 0);
+    API_MapActor_Emote(passenger3, 0x102, 0x3c);
+    OvlFunc_945_200c86c(27);
+    API_MapActor_TravelToAnimWait(27, 0x198, 0x84);
+    API_MapActor_TravelToAnimWait(27, 0x1bc, 0x84);
+    __DeleteFieldActor(27);
+    API_CutsceneWait(0x28);
+    if (route == 0) {
+        if (API_GetFlag(0x92c) || API_GetFlag(0x92d)) route = 3;
+    }
+    if (route == 0) *(unsigned short *)(Ship945_Map + 0x1d8) += 1;
+    else if (route == 1) *(unsigned short *)(Ship945_Map + 0x1d8) += 2;
+    else if (route == 2) *(unsigned short *)(Ship945_Map + 0x1d8) += 3;
+    OvlFunc_945_200c880(passenger0, 0);
+    OvlFunc_945_200c86c(passenger0);
+    API_MapActor_SetSpeed(passenger0, 0x10000, 0x8000);
+    __MapActor_RunScript(passenger0, gScript_945__0200e904);
+    API_Func_8092adc(passenger1, 0x5000, 0);
+    API_Func_8092adc(passenger2, 0, 0);
+    API_Func_8092adc(passenger3, 0x8000, 0x28);
+    API_Func_8092adc(passenger1, 0xd000, 0);
+    API_Func_8092adc(passenger2, 0xb000, 0);
+    API_Func_8092adc(passenger3, 0x5000, 20);
+    API_MapActor_SetSpeed(passenger1, 0x10000, 0x8000);
+    API_MapActor_SetSpeed(passenger2, 0x10000, 0x8000);
+    API_MapActor_SetSpeed(passenger3, 0x10000, 0x8000);
+    API_MapActor_SetBehavior(passenger2, (int)gScript_945__0200e904);
+    API_CutsceneWait(0x28);
+    __MapActor_RunScript(passenger1, gScript_945__0200e938);
+    API_MapActor_SetBehavior(passenger1, (int)gScript_945__0200e904);
+    __MapActor_RunScript(passenger3, gScript_945__0200e938);
+    __MapActor_RunScript(passenger3, gScript_945__0200e904);
+    API_MapActor_SetSpeed(1, 0x10000, 0x8000);
+    API_MapActor_SetSpeed(2, 0x10000, 0x8000);
+    API_MapActor_SetSpeed(3, 0x10000, 0x8000);
+    API_MapActor_SetBehavior(1, (int)gScript_945__0200e7c8);
+    API_MapActor_SetBehavior(2, (int)gScript_945__0200e7c8);
+    __MapActor_RunScript(3, gScript_945__0200e7c8);
+    OvlFunc_945_200c8e8(23, 0, 0);
+    API_ClearFlag(0x927);
+    API_SetFlag(0x8a0);
+    API_ClearFlag(0x12f);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_945_200e110(void)
 {

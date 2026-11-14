@@ -1,28 +1,21 @@
-int OvlFunc_947_20099f0(unsigned char *a, unsigned char *b)
+// Remaining diff: `-fno-strict-aliasing` invalidates `a->sprite->oam.priority` (`lsl #28`)
+// across `b->flags &= ~1` (`strb`), reloading `[r0, #9]` instead of reusing `r1` at +0x88.
+int OvlFunc_947_20099f0(struct Actor *a, struct Actor *b)
 {
-    unsigned int val;
-    unsigned char *s;
-    int mask;
     int ret = 0;
 
-    if (*(int *)(b + 8) == *(int *)(a + 8)
-     && *(int *)(b + 0xc) == *(int *)(a + 0xc)
-     && *(int *)(b + 0x10) == *(int *)(a + 0x10))
+    if (b->pos.x == a->pos.x && b->pos.y == a->pos.y && b->pos.z == a->pos.z)
         return ret;
 
-    if (*(int *)(a + 8) - 0x100000 < *(int *)(b + 8)
-     && *(int *)(b + 8) < *(int *)(a + 8) + 0x100000
-     && *(int *)(b + 0xc) / 0x10000 == *(int *)(a + 0xc) / 0x10000
-     && *(int *)(a + 0x10) > *(int *)(b + 0x10)
-     && *(int *)(a + 0x10) - 0x200000 < *(int *)(b + 0x10)) {
-        val = (unsigned int)*(*(unsigned char **)(a + 0x50) + 9) << 28;
-        if ((val >> 30) > (unsigned int)(*(*(unsigned char **)(b + 0x50) + 9) << 28) >> 30) {
-            b[0x23] &= 0xfe;
-            s = *(unsigned char **)(b + 0x50);
-            mask = ~0xc;
-            s[9] = (s[9] & mask) | ((val >> 30) << 2);
-            s = *(unsigned char **)(b + 0x50);
-            s[0x15] = (s[0x15] & mask) | (*(*(unsigned char **)(a + 0x50) + 0x15) & 0xc);
+    if (a->pos.x - 0x100000 < b->pos.x
+     && b->pos.x < a->pos.x + 0x100000
+     && b->pos.y / 0x10000 == a->pos.y / 0x10000
+     && a->pos.z > b->pos.z
+     && a->pos.z - 0x200000 < b->pos.z) {
+        if (a->sprite->oam.priority > b->sprite->oam.priority) {
+            b->flags &= ~1;
+            b->sprite->oam.priority = a->sprite->oam.priority;
+            b->sprite->shadowOAM.priority = a->sprite->shadowOAM.priority;
         }
         ret = 1;
     }

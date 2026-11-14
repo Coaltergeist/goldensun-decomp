@@ -1,12 +1,47 @@
 #include "nonmatching.h"
-
+#include "actor.h"
 #include "state/global_state.h"
+
 extern GlobalState gState;
 extern unsigned char iwram_3001e40[];
+extern void _DeleteActor(struct Actor *actor);
+
+extern unsigned char Lconst_1[] __asm__(".Lconst_1");
+/* Map ID 1 (World Map) was a linker-resolved symbol in Camelot's build, matching title.c and link_lobby.c. */
+__asm__(".equ .Lconst_1, 1");
 
 INCLUDE_ASM("asm/field/moves/avoid/Func_809b364.s");
 
-INCLUDE_ASM("asm/field/moves/avoid/Func_809b3d8.s");
+struct AvoidGlobalState {
+    u8 pad[0x1da];
+    s16 mapId;
+};
+
+void Func_809b3d8(struct Actor *actor)
+{
+    struct AvoidGlobalState *gs = (struct AvoidGlobalState *)&gState;
+    fx32 floorPos = actor->floorPos;
+    fx32 threshold = floorPos + 0xa0000;
+    struct Actor *linked = actor->linkedActor;
+    fx32 scale;
+
+    if (gs->mapId == (int)Lconst_1) {
+        threshold = floorPos + 0x40000;
+    }
+    if (actor->pos.y <= threshold) {
+        _DeleteActor(actor);
+        return;
+    }
+    scale = actor->scale.x + 0xc00;
+    if (scale > 0x10000) {
+        scale = 0x10000;
+    }
+    actor->scale.x = scale;
+    actor->scale.y = -scale;
+    actor->pos.x = linked->pos.x;
+    actor->pos.y -= 0x20000;
+    actor->pos.z = linked->pos.z - (0x10000 - scale) * 5 + 0x100000;
+}
 
 INCLUDE_ASM("asm/field/moves/avoid/Func_809b450.s");
 

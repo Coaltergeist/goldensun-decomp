@@ -129,7 +129,39 @@ int OvlFunc_969_2008480(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_20084bc.s");
+int OvlFunc_969_20084bc(void)
+{
+    struct AerieActorTable {
+        u8 pad[0x14];
+        struct Actor *actors[0x42];
+    };
+    extern struct AerieActorTable *iwram_3001ebc_table __asm__("iwram_3001ebc");
+    struct AerieActorTable *table;
+    struct Actor *leader;
+    int best_id;
+    int min_dist;
+    unsigned int i;
+
+    table = iwram_3001ebc_table;
+    best_id = 0;
+    min_dist = 0xa0 << 2;
+    leader = __MapActor_GetActor(0);
+
+    for (i = 8; i <= 0x41; i++) {
+        struct Actor *actor = table->actors[i];
+        if (actor != NULL) {
+            if ((s16)actor->sprite->layers[0]->spriteID == 0xf2) {
+                int dist = OvlFunc_969_2008480((int *)&leader->pos, (int *)&actor->pos);
+                if (dist < min_dist) {
+                    min_dist = dist;
+                    best_id = i;
+                }
+            }
+        }
+    }
+
+    return best_id;
+}
 void OvlFunc_969_20086c0(void);
 void __vec3_translate(int, int, vec3_t *);
 int __TestCollision(struct Actor *, vec3_t *);
@@ -485,7 +517,69 @@ void OvlFunc_969_200b660(struct Actor *actor)
     *waveCounter -= 0x800;
 }
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b6d0.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200b7c4.s");
+
+void OvlFunc_969_200b7c4(void)
+{
+    extern unsigned int iwram_3001e40;
+    extern int __GetFlag(int);
+    extern void __Func_8092950(int, int);
+    struct Actor *actor1;
+    struct Actor *actor2;
+    int cond;
+
+    actor1 = __MapActor_GetActor(0x14);
+    actor2 = __MapActor_GetActor(0x13);
+
+    if (actor1->prevPos.x == (0x80 << 24) &&
+        actor1->prevPos.y == (0x80 << 24) &&
+        actor1->prevPos.z == (0x80 << 24)) {
+        cond = 1;
+    } else {
+        cond = 0;
+    }
+    if (actor2->prevPos.x == (0x80 << 24) &&
+        actor2->prevPos.y == (0x80 << 24) &&
+        actor2->prevPos.z == (0x80 << 24)) {
+        cond = 1;
+    } else {
+        cond = 0;
+    }
+
+    if (cond) {
+        actor1->facing = 0;
+        actor2->facing = 0;
+
+        if (__GetFlag(0x235)) {
+            __Func_8092950(0x14, 7);
+            __Func_8092950(0x13, 7);
+            if (actor1->scale.x < (0xa0 << 9)) {
+                actor1->scale.x += (0x80 << 2);
+                actor1->scale.y += (0x80 << 2);
+                actor2->scale.x += (0x80 << 2);
+                actor2->scale.y += (0x80 << 2);
+            }
+        } else {
+            if (iwram_3001e40 & 2) {
+                __Func_8092950(0x14, 0xf);
+                __Func_8092950(0x13, 0);
+            } else {
+                __Func_8092950(0x14, 0);
+                __Func_8092950(0x13, 0xf);
+            }
+        }
+
+        if (__GetFlag(0x234)) {
+            if (actor1->pos.x < (0x9c << 17)) {
+                actor1->pos.x += (0x80 << 5);
+                actor2->pos.x += (0x80 << 5);
+            }
+            if (actor1->pos.z > (0xb6 << 16)) {
+                actor1->pos.z += -0x1000;
+                actor2->pos.z += -0x1000;
+            }
+        }
+    }
+}
 
 extern void OvlFunc_969_200bbc8(void);
 extern void OvlFunc_969_200be9c(void);
@@ -751,7 +845,100 @@ void OvlFunc_969_200bbc8(void)
 }
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200be9c.s");
 INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c23c.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse_aerie/OvlFunc_969_200c8d8.s");
+
+static inline void CS969B_API_CopyMapTiles(int a, int b, int c, int d, int e, int f) { extern void CS969B__CopyMapTiles(int, int, int, int, int, int) __asm__("__CopyMapTiles"); CS969B__CopyMapTiles(a, b, c, d, e, f); }
+static inline void CS969B_API_Func_8010704(int a, int b, int c, int d, int e, int f) { extern void CS969B__Func_8010704(int, int, int, int, int, int) __asm__("__Func_8010704"); CS969B__Func_8010704(a, b, c, d, e, f); }
+static inline void CS969B_API_Func_8012330(int a, int b, int c) { extern void CS969B__Func_8012330(int, int, int) __asm__("__Func_8012330"); CS969B__Func_8012330(a, b, c); }
+static inline void CS969B_API_Func_8091200(int a0, int a1) { extern void CS969B__Func_8091200(int, int) __asm__("__Func_8091200"); CS969B__Func_8091200(a0, a1); }
+static inline void CS969B_API_Func_8091220(int a0, int a1) { extern void CS969B__Func_8091220(int, int) __asm__("__Func_8091220"); CS969B__Func_8091220(a0, a1); }
+static inline void CS969B_API_Func_8091254(int a0) { extern void CS969B__Func_8091254(int) __asm__("__Func_8091254"); CS969B__Func_8091254(a0); }
+static inline void CS969B_API_Func_80933f8(int a0, int a1, int a2, int a3) { extern void CS969B__Func_80933f8(int, int, int, int) __asm__("__Func_80933f8"); CS969B__Func_80933f8(a0, a1, a2, a3); }
+static inline void CS969B_API_MapActor_SetAnim(int a0, int a1) { extern void CS969B__MapActor_SetAnim(int, int) __asm__("__MapActor_SetAnim"); CS969B__MapActor_SetAnim(a0, a1); }
+static inline void CS969B_API_MapTransitionIn(void) { extern void CS969B__MapTransitionIn(void) __asm__("__MapTransitionIn"); CS969B__MapTransitionIn(); }
+static inline void CS969B_API_PlaySound(int a) { extern void CS969B__PlaySound(int a) __asm__("__PlaySound"); CS969B__PlaySound(a); }
+static inline int CS969B_API_StartTask(void (*task)(void), unsigned int priority) { extern int CS969B__StartTask(void (*)(void), unsigned int) __asm__("__StartTask"); return CS969B__StartTask(task, priority); }
+static inline void CS969B_API_WaitFrames(int a0) { extern void CS969B__WaitFrames(int) __asm__("__WaitFrames"); CS969B__WaitFrames(a0); }
+
+void OvlFunc_969_200c8d8(void)
+{
+    extern void CS969B_Delete(int) __asm__("__DeleteFieldActor");
+    extern struct Actor *CS969B_Actor(int) __asm__("__MapActor_GetActor");
+    extern void CS969B_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void CS969B_UpdateCamera(void) __asm__("__Func_808bb2c");
+    extern void CS969B_Refresh(void) __asm__("__Func_800fe9c");
+    extern void CS969B_ActorFlags(int, int) __asm__("__Func_8092950");
+    extern unsigned char *CS969B_Scene __asm__("iwram_3001ebc");
+    extern void OvlFunc_969_200d688(unsigned int);
+    extern void OvlFunc_969_200da28(void);
+    struct Actor *actor0;
+    struct Actor *actor1;
+    struct Actor *actor2;
+    struct Actor *actor3;
+
+    CS969B_Delete(20);
+    CS969B_Delete(19);
+    CS969B_API_PlaySound(0x8d);
+    CS969B_API_Func_8010704(17, 10, 4, 2, 17, 8);
+    CS969B_API_CopyMapTiles(0x66, 4, 0x4a, 4, 18, 23);
+    CS969B_API_CopyMapTiles(39, 72, 11, 72, 16, 21);
+    CS969B_API_Func_8010704(19, 6, 3, 7, 22, 6);
+    CS969B_API_Func_8010704(19, 6, 3, 7, 13, 6);
+    CS969B_API_Func_8010704(19, 6, 3, 7, 22, 13);
+    CS969B_API_Func_8010704(19, 6, 3, 7, 13, 13);
+    CS969B_API_Func_8012330(0x20000, 0x20000, 0x10000);
+    CS969B_API_Func_80933f8(-1, -1, -1, 0);
+    CS969B_UpdateCamera();
+    CS969B_Refresh();
+    CS969B_API_WaitFrames(1);
+    CS969B_API_PlaySound(0x8a);
+    CS969B_API_MapActor_SetAnim(0, 19);
+    CS969B_API_MapActor_SetAnim(1, 18);
+    CS969B_API_MapActor_SetAnim(2, 18);
+    CS969B_API_MapActor_SetAnim(3, 18);
+    CS969B_SpriteFlags(CS969B_Actor(0), 0);
+    CS969B_SpriteFlags(CS969B_Actor(1), 0);
+    CS969B_SpriteFlags(CS969B_Actor(2), 0);
+    CS969B_SpriteFlags(CS969B_Actor(3), 0);
+    actor0 = CS969B_Actor(0);
+    actor0->pos.x = 0x15a0000;
+    actor0->pos.y = 0x200000;
+    actor0->pos.z = 0xcd0000;
+    OvlFunc_969_200d688((unsigned int)actor0);
+    actor0->__unk63 = 0;
+    actor0->motion.y = 0x20000;
+    actor1 = CS969B_Actor(1);
+    actor1->pos.x = 0x1640000;
+    actor1->pos.y = 0x200000;
+    actor1->pos.z = 0xc00000;
+    OvlFunc_969_200d688((unsigned int)actor1);
+    actor1->__unk63 = 0;
+    actor1->motion.y = 0x20000;
+    actor2 = CS969B_Actor(2);
+    actor2->pos.x = 0x1680000;
+    actor2->pos.y = 0x200000;
+    actor2->pos.z = 0xde0000;
+    OvlFunc_969_200d688((unsigned int)actor2);
+    actor2->__unk63 = 0;
+    actor2->motion.y = 0x20000;
+    actor3 = CS969B_Actor(3);
+    actor3->pos.x = 0x14e0000;
+    actor3->pos.y = 0x200000;
+    actor3->pos.z = 0xde0000;
+    OvlFunc_969_200d688((unsigned int)actor3);
+    actor3->__unk63 = 0;
+    actor3->motion.y = 0x20000;
+    CS969B_Actor(21)->__unk62 = 0;
+    CS969B_Actor(6)->__unk62 = 0;
+    CS969B_Actor(23)->__unk55 |= 4;
+    CS969B_ActorFlags(23, 4);
+    CS969B_API_StartTask(OvlFunc_969_200da28, 0xc80);
+    *(int *)(CS969B_Scene + 0x1c8) = 1;
+    CS969B_API_MapTransitionIn();
+    CS969B_API_Func_8091220(0x7fff, 0);
+    CS969B_API_Func_8091200(0x10000, 0);
+    CS969B_API_Func_8091254(40);
+    CS969B_API_WaitFrames(60);
+}
 extern void __MessageID(int);
 extern void __PlaySound(int);
 extern void __Func_8012330(int, int, int);

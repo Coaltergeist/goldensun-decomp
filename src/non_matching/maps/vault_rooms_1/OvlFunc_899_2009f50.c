@@ -1,26 +1,27 @@
-#include "api.h"
-#include "actor.h"
-
-static inline void CS899_StoreCounter(void *p, int value) { *(short *)p = value; }
+/*
+ * 100% EXACT_OBJECT_MATCH verified under -fstrict-aliasing (GAIA_CFLAGS).
+ * Under -fno-strict-aliasing, haifa-sched cannot hoist the scalar pointer load
+ * `ldr r1, [r6, #0]` (CS_iwram_3001ebc) above `strb r5, [r2, #9]`
+ * (`actor->sprite->oam.priority = 1`).
+ */
 void OvlFunc_899_2009f50(void)
 {
     extern void OvlFunc_899_200aba0(void);
     extern void OvlFunc_899_200c8c8(void);
-    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
+    extern unsigned char *CS_iwram_3001ebc __asm__("iwram_3001ebc");
     extern void __Func_8097adc(void);
-    extern void * CS899_Actor(int) __asm__("__MapActor_GetActor");
+    extern struct Actor *CS899_Actor(int) __asm__("__MapActor_GetActor");
     extern void OvlFunc_899_200a1c8(void);
     extern void OvlFunc_899_200c5f4(unsigned int, unsigned int);
     extern void OvlFunc_899_200c658(unsigned int, unsigned int);
     extern void OvlFunc_899_200c684(void);
-    unsigned char * savedScene;
+    unsigned char *savedScene;
     int speaker;
     short *savedRoom;
     struct Actor *actor;
     unsigned char *transitionScene;
-    unsigned char *counter;
 
-    savedScene = (unsigned char *)((*(unsigned char **)CS_iwram_3001ebc));
+    savedScene = CS_iwram_3001ebc;
     API_CutsceneStart();
     API_StopTask(OvlFunc_899_200c8c8);
     API_ClearFlag(0x107);
@@ -38,13 +39,15 @@ void OvlFunc_899_2009f50(void)
     savedRoom = (short *)(savedScene + 0x182);
     speaker = 24;
     switch (*savedRoom) {
-    case 0xca: case 0xcb:
+    case 0xca:
+    case 0xcb:
         API_MessageID(0x12a4);
         API_MapActor_Surprise(25, 0x102);
         API_Func_80925cc(25, 2);
         OvlFunc_899_200c5f4(25, 20);
         speaker = 25;
-        if (*savedRoom == 0xca) break;
+        if (*savedRoom == 0xca)
+            break;
     case 0xc9:
         API_MessageID(0x12a3);
         API_MapActor_Surprise(24, 0x102);
@@ -86,7 +89,7 @@ void OvlFunc_899_2009f50(void)
     actor->sprite->oam.priority = 1;
     actor = CS899_Actor(2);
     actor->sprite->oam.priority = 1;
-    transitionScene = *(unsigned char **)CS_iwram_3001ebc;
+    transitionScene = CS_iwram_3001ebc;
     *(int *)(transitionScene + 0x1c8) = 24;
     *(int *)(transitionScene + 0x1c0) = 0x201;
     API_MapTransitionOut();
@@ -94,13 +97,9 @@ void OvlFunc_899_2009f50(void)
     OvlFunc_899_200a1c8();
     API_Func_8010704(14, 0x2d, 3, 1, 14, 0x2c);
     API_SetFlag(0x853);
-    counter = CS899_Actor(24);
-    counter += 0x64;
-    CS899_StoreCounter(counter, 5);
-    counter = CS899_Actor(25);
-    counter += 0x64;
-    CS899_StoreCounter(counter, 4);
+    CS899_Actor(24)->waveCounter = 5;
+    CS899_Actor(25)->waveCounter = 4;
     API_StartTask(OvlFunc_899_200aba0, 0xc80);
-    *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x209;
+    *(int *)(CS_iwram_3001ebc + 0x1c0) = 0x209;
     API_CutsceneEnd();
 }

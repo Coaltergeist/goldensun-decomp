@@ -43,9 +43,64 @@ extern void __Func_80933f8(int, int, int, int);
 extern void __Func_8092b08(int, int);
 extern void __WaitFrames(int);
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2008334.s");
+struct TretState {
+    unsigned char pad[0x1dc];
+    int x;
+    int y;
+    int z;
+    int pad2[3];
+    int actorId;
+};
 
-extern void OvlFunc_918_2008334(int a, int b, int c, int d);
+extern struct TretState TretState __asm__("gState");
+extern unsigned char Lconst_2d[] __asm__(".Lconst_2d");
+
+static inline void Func_80933f8_macro(int a, int b, int c, int d)
+{
+    __Func_80933f8(-a, -b, -c, d);
+}
+
+void OvlFunc_918_2008334(int flag, int srcX, int srcY, int destExit) {
+    int dstX = (TretState.x >> 20) + 0x40;
+    int dstY = TretState.z >> 20;
+    int actorId = TretState.actorId;
+    struct Actor *actor = __MapActor_GetActor(actorId);
+    short *doorPtr = *(short **)L2dd0;
+
+    if (destExit != *doorPtr) {
+        *doorPtr = destExit;
+        if (!__GetFlag(flag)) {
+            __Func_80105d4(srcX, srcY, 1, 1, dstX, dstY);
+            __SetFlag(flag);
+        } else {
+            int i;
+            **(short **)L2dd0 = -1;
+            __Func_80105d4(srcX, srcY + 1, 1, 1, dstX, dstY);
+            __PlaySound(0xce);
+            __CutsceneStart();
+            __SetDestMap((int)Lconst_2d, destExit);
+            __MapActor_SetAnim(actorId, 0x1b);
+            __Actor_SetSpriteFlags(__MapActor_GetActor(actorId), 0);
+            API_MapActor_Surprise(actorId, 0x101);
+            __CutsceneWait(0x1e);
+            Func_80933f8_macro(1, 1, 1, 0);
+            actor->__unk55 = 2;
+            actor->floorPos = 0xff600000;
+            actor->gravity = 0x80 << 8;
+            __PlaySound(0xcc);
+            __CutsceneWait(3);
+            actor->layer = 2;
+            __Func_8092b08(actorId, 3);
+            for (i = 0x1d; i >= 0; i--) {
+                actor->facing += 0x2000;
+                __WaitFrames(1);
+            }
+            if (destExit != 0x32) {
+                __SetFlag(0x91 << 1);
+            }
+        }
+    }
+}
 
 void OvlFunc_918_2008494(void) {
     OvlFunc_918_2008334(0x200, 0x40, 0x23, 0x15);
@@ -564,11 +619,6 @@ extern void __MapTransitionIn(void);
 extern unsigned char Lconst_2d[] __asm__(".Lconst_2d");
 __asm__(".equ .Lconst_2d, 0x2d");
 
-static inline void Func_80933f8_macro(int a, int b, int c, int d)
-{
-    __Func_80933f8(-a, -b, -c, d);
-}
-
 int TretTree_MapInit(void) {
     struct Actor *actor8;
     struct Actor *actor9;
@@ -772,7 +822,22 @@ void OvlFunc_918_20095ac(struct Actor *actor) {
 }
 INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200962c.s");
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20097ec.s");
+extern short Lm918_1ca8[] __asm__(".Lm918_1ca8");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+static inline void CopyMapTilesSquare(int srcX, int srcY, int dstX, int dstY, int size) {
+    __CopyMapTiles(srcX, srcY, dstX, dstY, size, size);
+}
+
+void OvlFunc_918_20097ec(void) {
+    int i = 0;
+    while (Lm918_1ca8[i] != -1) {
+        if (__GetFlag(Lm918_1ca8[i]) && Lm918_1ca8[i + 1]) {
+            CopyMapTilesSquare(Lm918_1ca8[i + 2], Lm918_1ca8[i + 3], Lm918_1ca8[i + 4], Lm918_1ca8[i + 5], 1);
+        }
+        i += 6;
+    }
+}
 
 
 extern void __StopTask(void (*fn)(void));
@@ -784,7 +849,23 @@ void OvlFunc_918_200984c(void) {
 
 
 extern void OvlFunc_918_200985c(struct Actor *);
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200985c.s");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_918_200985c(struct Actor *actor) {
+    int bounce = actor->bounce;
+    int unk4C;
+
+    actor->pos.x += bounce;
+    actor->pos.y += actor->gravity;
+    unk4C = actor->__unk4C;
+    actor->pos.z += unk4C;
+    actor->bounce = bounce - ((bounce) / (0x12));
+    actor->__unk4C = unk4C - unk4C / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 extern void __Func_800fe9c(void);
 extern void __MapTransitionIn(void);
 extern void __WaitMapTransition(void);
@@ -807,6 +888,8 @@ static inline void Func_8012330_neg(int x, int y, int z)
 
 
 #include "overlays/common0_effect.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 
 void OvlFunc_918_20098b8(void) {
     struct EffectData data;

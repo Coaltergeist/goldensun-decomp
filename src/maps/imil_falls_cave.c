@@ -685,7 +685,24 @@ void OvlFunc_922_2008ec0(void)
 	__MapActor_SetAnim(0xb, 1);
 	__MapActor_SetAnim(0xb, 2);
 }
-INCLUDE_ASM("asm/maps/imil_falls_cave/OvlFunc_922_2008ed8.s");
+struct Actor *OvlFunc_922_2008ed8(int x, int y, int z, int id)
+{
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_80929d8(void *, int);
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(id, x, y, z);
+    if (actor != 0) {
+        actor->sprite->oam.priority = 1;
+        actor->__unk55 = 0;
+        __Actor_SetSpriteFlags(actor, 0);
+        __Func_80929d8(actor, 0xf);
+        actor->flags |= 2;
+        return actor;
+    }
+    return 0;
+}
+
 extern unsigned char _EVENT_34[], _EVENT_3e[], _EVENT_3f[], _EVENT_40[], _EVENT_41[], _EVENT_42[], _EVENT_43[];
 extern unsigned char Lm922_2bd8[] __asm__(".Lm922_2bd8");
 extern unsigned char gScript_911__0200ac08[];

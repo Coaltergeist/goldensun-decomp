@@ -1,52 +1,58 @@
+/*
+ * Non-matching decompilation of Anim_Torch (0x310 / 784 bytes, 0 reloc diffs).
+ *
+ * Matches 0x000..0x26b (620 bytes) and 0x2ae..0x310 (98 bytes) 100% byte-for-byte.
+ * Remaining diffs:
+ * 1. +0x26c..+0x278 / +0x29a / +0x2a8: inside the inlined DMA queue sequence
+ *    immediately after DMA3_SET, the original SDK DMA3_SET / ScheduleDmaTransfer
+ *    expansion kept r2 busy across the REG_IME load so reload picked r5 instead
+ *    of r2 (shifting the 3-register spill_regs[] {r3, r2, r5} round-robin by 1
+ *    for the final two reloads in the loop latch).
+ * 2. +0x288..+0x28a: under GAIA_CFLAGS (-fstrict-aliasing), `adds r3, r3, r1`
+ *    precedes `strh r2, [r1, #0]` (`u16 *queue` vs `u32 *task`), matching target
+ *    ASM; under default `-fno-strict-aliasing`, sched2 hoists `strh` first due
+ *    to conservative memory aliasing with `stmia r3!`.
+ */
 #include "anim.h"
-
 #include "task.h"
-
 #include "math.h"
-
 #include "dma.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
 
 struct TorchState {
-               u8 graphics[128][128];
-               u8 pad_4000[0x6980 - 0x4000];
-               s32 scroll[160];
-               u8 pad_6C00[0x7780 - 0x6C00];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[128][128];
+    u8 pad_4000[0x6980 - 0x4000];
+    s32 scroll[160];
+    u8 pad_6C00[0x7780 - 0x6C00];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 extern u8 *iwram_3001eec[];
-
 extern u16 gBuffer[];
-
 extern u16 ewram_2010002[];
-
 extern u16 ewram_201007c[];
-
 extern u16 ewram_201007e[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void Anim_Djinni(struct AnimContext *, int, int, int, int *, int *);
-
 extern void BuildDraw2DFuncs(int, DrawFunc *);
-
 extern int Func_8000948(int);
-
 extern void Task_BlitAnim(void);
-
 extern void Func_80dbb9c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
+
+static inline int Sqrt(int n)
+{
+    int (*func)(int) = Func_8000948;
+    return func(n);
+}
 
 void Anim_Torch(struct AnimContext *context)
 {
@@ -55,7 +61,7 @@ void Anim_Torch(struct AnimContext *context)
     u8 *render = *slots;
     DrawFunc pair[2];
     int a, b;
-    int i, j, frame;
+    int y, x, i, frame;
 
     state->context = context;
     AnimStart(0x2000);
@@ -68,19 +74,19 @@ void Anim_Torch(struct AnimContext *context)
     state->blitParam = 75;
     StartTask(Task_BlitAnim, 0x480);
 
-    for (i = 0; i != 64; i++) {
-        for (j = 0; j != 64; j++) {
-            int (*root)(int) = Func_8000948;
-            int cy = i / 8 + 64;
-            int v = root((j - 64) * (j - 64) + (i - cy) * (i - cy)) / 2;
+    for (y = 0; y != 64; y++) {
+        for (x = 0; x != 64; x++) {
+            int cy = y / 8 + 64;
+            int v = Sqrt((x - 64) * (x - 64) + (y - cy) * (y - cy));
+            v /= 2;
             if (v == 0)
                 v = 1;
             if (v > 63)
                 v = 63;
-            state->graphics[i][j] = v;
-            state->graphics[i][127 - j] = v;
-            state->graphics[127 - i][j] = v;
-            state->graphics[127 - i][127 - j] = v;
+            state->graphics[y][x] = v;
+            state->graphics[y][127 - x] = v;
+            state->graphics[127 - y][x] = v;
+            state->graphics[127 - y][127 - x] = v;
         }
     }
 
@@ -89,7 +95,6 @@ void Anim_Torch(struct AnimContext *context)
         int r = c * 9;
         int g = c * 7 - 42;
         int bl = c * 7 - 56;
-        int color;
         if (r < 0)
             r = 0;
         if (g < 0)
@@ -102,12 +107,14 @@ void Anim_Torch(struct AnimContext *context)
             g = 255;
         if (bl > 250)
             bl = 250;
-        color = ((bl >> 3) << 10) | ((g >> 3) << 5) | (r >> 3);
-        ((vu16 *)0x05000000)[i] = color;
-        ewram_2010002[i - 1] = color;
+        r >>= 3;
+        g >>= 3;
+        bl >>= 3;
+        ((vu16 *)0x05000000)[i] = (bl << 10) | (g << 5) | r;
+        ewram_2010002[i - 1] = (bl << 10) | (g << 5) | r;
     }
 
-    pair[0](render, state->graphics[0], 0, 0, 128, 128);
+    pair[0](render, &state->graphics[0][0], 0, 0, 128, 128);
     state->frameReady = 1;
     StartTask(Func_80dbb9c, 0x480);
 
@@ -116,31 +123,34 @@ void Anim_Torch(struct AnimContext *context)
             REG_BLDALPHA = (frame * 2) | 0x1000;
         if (frame > 88)
             REG_BLDALPHA = (0xc0 - frame * 2) | 0x1000;
-        for (j = 0; j != 160; j++)
-            state->scroll[j] = ((j << 18) - (sin((j - frame * 2) * 0x200) << 7) + 0x40000) >> 10;
+        {
+            s32 *scroll = state->scroll;
+            for (i = 0; i != 160; i++)
+                *scroll++ = ((i << 18) - (sin((i - frame * 2) * 0x200) << 7) + 0x40000) >> 10;
+        }
         if (frame > 127) {
             state->frameReady = 1;
         } else {
-            unsigned int ime;
-            u16 *queue = (u16*)&gDMATaskCount;
+            u16 *queue;
+            u32 savedIme;
+            s32 count;
             u32 *task;
-            int count, slot;
-            gBuffer[1] = *ewram_201007e;
+            int tmp = ewram_201007e[0];
+            gBuffer[1] = tmp;
             DMA3_SET(ewram_201007c, ewram_201007e, 0x80a0003e);
-            ime = REG_IME;
+            queue = (u16 *)&gDMATaskCount;
+            savedIme = REG_IME;
             SET_IO(REG_IME, REG_ADDR_IME);
             count = *queue;
             if (count < 32) {
-                slot = count * 12;
-                count++;
-                task = (u32 *)((u8 *)queue + slot);
-                *queue = count;
+                task = (u32 *)((u8 *)queue + count * 12);
+                *queue = count + 1;
                 task++;
                 *task++ = (u32)ewram_2010002;
                 *task++ = 0x05000002;
                 *task = 0x8000003f;
             }
-            SET_IO(REG_IME, ime);
+            SET_IO(REG_IME, savedIme);
         }
         WaitFrames(1);
     }

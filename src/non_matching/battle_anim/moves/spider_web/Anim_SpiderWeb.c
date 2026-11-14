@@ -1,5 +1,15 @@
+/*
+ * Non-matching decompilation of Anim_SpiderWeb.
+ *
+ * Remaining diffs:
+ * 1. In the target binary, `iwram_3001ef0` (`r8`) and `0x04000052` (`sl`) are
+ *    kept in high callee-saved registers across the 63-frame loop, while each
+ *    of the four `iwram_3001f08(...)` calls still loads from a literal-pool
+ *    `iwram_3001f08` symbol rather than `r8 + 0x18`.
+ * 2. Under `-fno-strict-aliasing`, prologue stack-spill scheduling and loop
+ *    invariant hoisting differ around `slots[-1]` / `iwram_3001f08`.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -9,42 +19,29 @@ struct SpiderWebPos {
 };
 
 struct SpiderWebState {
-               u8 graphics[0x7780];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7780];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 extern u8 *iwram_3001ef0[];
-
 extern DrawFunc iwram_3001f08;
-
 extern char _FILE_59[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void GetBattleActorPos2(int, struct SpiderWebPos *);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_SpiderWeb(struct AnimContext *context)

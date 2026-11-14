@@ -1,7 +1,15 @@
+/*
+ * Non-matching clean C for Anim_Condemn (all relocations, .rodata tables,
+ * stack layout, and animation logic match).
+ *
+ * Remaining diff (.text 0x4b0 vs 0x4ac):
+ *   When both branches of `if (state->context->side == 0)` set `rowY = 0;`,
+ *   GCC 2.96's `07.gcse` (`one_cprop_pass`) folds `rowY` to constant 0 and
+ *   eliminates the runtime `CondemnY[rowY]` row-stride multiply (`lsl r3, #3;
+ *   sub r3, r0`).
+ */
 #include "anim.h"
-
 #include "math.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -17,14 +25,14 @@ static const u8 CondemnY[2][7] = {
 };
 
 struct CondemnState {
-               u8 graphics[0x6980];
-               s32 scroll[160];
-               u8 pad_6c00[0x7780 - 0x6c00];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x6980];
+    s32 scroll[160];
+    u8 pad_6c00[0x7780 - 0x6c00];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct CondemnActor {
@@ -45,60 +53,30 @@ struct CondemnActor {
     u8 unk5a;
 };
 
-struct CondemnPoint {
-    s32 x, y;
-};
-
-struct CondemnPosition {
-    s32 x, y, z;
-};
-
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e74[];
-
 extern u8 gBuffer[];
-
 extern u8 ewram_2012d80[];
-
 extern u8 ewram_2014b00[];
-
 extern u8 ewram_20158d2[];
-
 extern char _FILE_ab[], _FILE_ac[];
 
 extern void Func_80cdb24(int);
-
 extern void AnimEnd(void);
-
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
-extern void DecompressLZ(const void *, void *);
-
+extern u32 DecompressLZ(const void *, void *);
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void Func_80dbb9c(void);
-
 extern void Task_BlitAnim(void);
-
 extern void *Func_80008d8(void *, int, int);
-
 extern void _PlaySound(int);
-
-extern void GetBattleActorPos2(int, struct CondemnPosition *);
-
+extern void GetBattleActorPos2(int, vec3_t *);
 extern struct CondemnActor **_GetBattleActor(int);
-
 extern void _Actor_TravelTo(void *, int, int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void _AnimTransitionIn(int, int, int);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Condemn(struct AnimContext *context)
@@ -108,36 +86,34 @@ void Anim_Condemn(struct AnimContext *context)
     struct CondemnState *state = (struct CondemnState *)*slots++;
     u8 *render = *slots;
     DrawFunc pair[2];
-    struct CondemnPosition pos;
+    vec3_t pos2, pos;
     struct CondemnActor *actor;
-    int frame, i, x, y, amp, visible, base;
-    struct CondemnPoint row;
-    struct CondemnPoint cur;
+    int frame, i, x, y, amp, base, blend;
+    int rowX, rowY;
+    vec2_t cur;
+    int visible;
     s32 *scroll;
     u8 *file;
 
     state->context = context;
+    blend = 0;
     Func_80cdb24(0);
     (*(vu16 *)0x04000020) = 0x100;
     (*(vu16 *)0x04000052) = 0x1010;
-    {
-        void *(*copy)(void *, const void *, unsigned int);
-        file = GetFile((int)_FILE_ab);
-        copy = Func_8001af8;
-        copy((void *)0x05000000, file, 0x80);
-        file += 0x80;
-        DecompressLZ(file, state);
-        file = GetFile((int)_FILE_ac);
-        file += 0x80;
-        DecompressLZ(file, gBuffer);
-    }
+    file = GetFile((int)_FILE_ab);
+    ((void (*)(void *, const void *, unsigned int))Func_8001af8)((void *)0x05000000, file, 0x80);
+    file += 0x80;
+    DecompressLZ(file, state);
+    file = GetFile((int)_FILE_ac);
+    file += 0x80;
+    DecompressLZ(file, gBuffer);
     BuildDraw2DFuncEx(0x2e, 7, 7, 3, 1);
     pair[0] = (DrawFunc)baseSlots[7];
     BuildDraw2DFuncEx(0x2f, 7, 7, 7, 1);
     pair[1] = (DrawFunc)baseSlots[8];
     StartTask(Func_80dbb9c, 0x480);
     state->blitMode = 1;
-    state->blitParam = 0;
+    state->blitParam = blend;
     StartTask(Task_BlitAnim, 0x480);
     visible = 1;
     if (state->context->side == 1)
@@ -194,44 +170,44 @@ void Anim_Condemn(struct AnimContext *context)
             amp = 0;
         base = (6 - x) << 8;
         for (i = 0; i != 160; i++)
-            *scroll++ = base - ((amp * sin((frame + i) << 11)) >> 10);
+            *scroll++ = base - ((sin((frame + i) << 11) * amp) >> 10);
 
         if (visible) {
             if (state->context->side == 0) {
-                row.x = 0;
-                row.y = 0;
+                rowX = 0;
+                rowY = 0;
             } else {
-                row.x = 1;
-                row.y = 0;
+                rowX = 1;
+                rowY = 0;
             }
             if (frame < 0x58) {
                 pair[state->context->side](render, state->graphics,
-                    CondemnX[row.x][0], CondemnY[row.y][0] + y, 0x39, 0x62);
+                    CondemnX[rowX][0], CondemnY[rowY][0] + y, 0x39, 0x62);
             } else {
                 if (frame < 0x5c)
                     pair[state->context->side](render, state->graphics,
-                        CondemnX[row.x][0], CondemnY[row.y][0] + y, 0x39, 0x62);
+                        CondemnX[rowX][0], CondemnY[rowY][0] + y, 0x39, 0x62);
                 pair[state->context->side](render, state->graphics + 0x15d2,
-                    CondemnX[row.x][1], CondemnY[row.y][1] + y, 0x63, 0x45);
+                    CondemnX[rowX][1], CondemnY[rowY][1] + y, 0x63, 0x45);
                 if (frame == 0x58 || frame == 0x59) {
                     void *(*clear)(void *, int, int) = Func_80008d8;
                     clear(render, 0x4000, 0x3f3f3f3f);
                 }
                 if (frame == 0x5a || frame == 0x5b)
                     pair[state->context->side](render, state->graphics + 0x3081,
-                        CondemnX[row.x][2], CondemnY[row.y][2] + y, 0x80, 0x5b);
+                        CondemnX[rowX][2], CondemnY[rowY][2] + y, 0x80, 0x5b);
                 if (frame == 0x5c || frame == 0x5d)
                     pair[state->context->side](render, gBuffer,
-                        CondemnX[row.x][3], CondemnY[row.y][3] + y, 0x80, 0x5b);
+                        CondemnX[rowX][3], CondemnY[rowY][3] + y, 0x80, 0x5b);
                 if (frame == 0x5e || frame == 0x5f)
                     pair[state->context->side](render, ewram_2012d80,
-                        CondemnX[row.x][4], CondemnY[row.y][4] + y, 0x80, 0x3b);
+                        CondemnX[rowX][4], CondemnY[rowY][4] + y, 0x80, 0x3b);
                 if (frame == 0x60 || frame == 0x61)
                     pair[state->context->side](render, ewram_2014b00,
-                        CondemnX[row.x][5], CondemnY[row.y][5] + y, 0x7a, 0x1d);
+                        CondemnX[rowX][5], CondemnY[rowY][5] + y, 0x7a, 0x1d);
                 if (frame == 0x62 || frame == 0x63)
                     pair[state->context->side](render, ewram_20158d2,
-                        CondemnX[row.x][6], CondemnY[row.y][6] + y, 0x4c, 0x19);
+                        CondemnX[rowX][6], CondemnY[rowY][6] + y, 0x4c, 0x19);
             }
         }
 
@@ -245,10 +221,8 @@ void Anim_Condemn(struct AnimContext *context)
             _Actor_TravelTo(actor, actor->x * 2, 0, actor->z);
             SetBattleActorState((s16)state->context->targets[0], -1, 5, -1, 0);
         }
-        if (frame == 0x78) {
-            actor = *_GetBattleActor((s16)state->context->targets[0]);
-            actor->unk48 = 0xab85;
-        }
+        if (frame == 0x78)
+            (*_GetBattleActor((s16)state->context->targets[0]))->unk48 = 0xab85;
         state->frameReady = 1;
         WaitFrames(1);
     }

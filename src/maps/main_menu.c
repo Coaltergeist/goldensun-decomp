@@ -33,8 +33,96 @@ void *MainMenu_GetEvents(void) {
 }
 
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008054.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008154.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20081fc.s");
+#include "dma.h"
+
+extern void __StopTask(void (*)(void));
+
+#define SetRegAnimDest880(queue, dest, src) do { \
+    unsigned int savedIme = REG_IME; \
+    int count; \
+    unsigned int *task; \
+    int slot; \
+    SET_IO(REG_IME, REG_ADDR_IME); \
+    count = *queue; \
+    if (count < 32) { \
+        slot = count * 12; \
+        count++; \
+        task = (unsigned int *)((char *)queue + slot); \
+        *queue = count; \
+        task++; \
+        *task++ = (unsigned int)(src); \
+        *task++ = (unsigned int)(dest); \
+        *task = 0x20000; \
+    } \
+    SET_IO(REG_IME, savedIme); \
+} while (0)
+
+void OvlFunc_880_2008154(void) {
+    extern unsigned short timer __asm__(".L16b0");
+    unsigned short step = ++timer >> 1;
+    unsigned short *queue = (unsigned short *)&gDMATaskCount;
+
+    SetRegAnimDest880(queue, REG_ADDR_BLDCNT, 0x2e51);
+    SetRegAnimDest880(queue, REG_ADDR_BLDALPHA, ((16 - step) << 8) | step);
+
+    if (step > 15) {
+        __StopTask(OvlFunc_880_2008154);
+    }
+}
+
+
+extern volatile unsigned int gKeyHeld;
+void __PlaySound(unsigned int);
+
+extern unsigned short D_020094d4[] __asm__(".L14d4");
+extern unsigned short D_020094dc[] __asm__(".L14dc");
+
+extern short D_020096b2 __asm__(".L16b2");
+extern short D_020096b4 __asm__(".L16b4");
+extern short D_020096b6 __asm__(".L16b6");
+extern short gScript_930__020096b8;
+extern short D_020096ba __asm__(".L16ba");
+extern short D_020096bc __asm__(".L16bc");
+
+void OvlFunc_880_20081fc(void) {
+    if (!D_020096b2) {
+        if (D_020096ba) {
+            if (gKeyHeld == 0) {
+                D_020096ba = 0;
+            }
+        } else if (gKeyHeld != 0) {
+            if (gKeyHeld == D_020094d4[D_020096b6]) {
+                D_020096b6++;
+                D_020096ba = 1;
+                if (D_020094d4[D_020096b6] == 0) {
+                    D_020096b2 = 1;
+                    __PlaySound(0x6e);
+                }
+            } else {
+                D_020096b6 = 0;
+            }
+        }
+    }
+
+    if (!D_020096b4) {
+        if (D_020096bc) {
+            if (gKeyHeld == 0) {
+                D_020096bc = 0;
+            }
+        } else if (gKeyHeld != 0) {
+            if (gKeyHeld == D_020094dc[gScript_930__020096b8]) {
+                gScript_930__020096b8++;
+                D_020096bc = 1;
+                if (D_020094dc[gScript_930__020096b8] == 0) {
+                    D_020096b4 = 1;
+                    __PlaySound(0x6e);
+                }
+            } else {
+                gScript_930__020096b8 = 0;
+            }
+        }
+    }
+}
 
 void OvlFunc_880_20082f4(int idx, unsigned char *out) {
     out[1] = 0;
@@ -155,8 +243,78 @@ void OvlFunc_880_2008d74(struct Struct2008cfc *pos) {
     __free(tmp);
 }
 INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_2008de4.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20091e4.s");
-INCLUDE_ASM("asm/maps/main_menu/OvlFunc_880_20092c8.s");
+
+unsigned int OvlFunc_880_20091e4(unsigned char *buf, unsigned int len, unsigned char *out)
+{
+    unsigned char key;
+    unsigned int i;
+    unsigned int j;
+    unsigned int count;
+    unsigned int idx;
+    unsigned int bitpos;
+    unsigned int group;
+    unsigned int sum;
+    unsigned int v;
+    unsigned int bit;
+
+    key = buf[len - 1];
+    count = 0;
+    for (i = 0; i != len - 1; i++)
+        buf[i] ^= key;
+
+    bitpos = 0;
+    idx = 0;
+    sum = 0;
+    group = 0;
+    do {
+        v = 0;
+        for (j = 0; j != 6; j++) {
+            bit = (buf[idx] >> (7 - bitpos)) & 1;
+            bitpos++;
+            if (bitpos == 8) {
+                bitpos = 0;
+                idx++;
+            }
+            v |= bit << (5 - j);
+            if (idx == len)
+                break;
+        }
+        group++;
+        out[count] = v;
+        count++;
+        sum += v;
+        if (group == 9) {
+            out[count] = sum & 0x3f;
+            count++;
+            sum = 0;
+            group = 0;
+        }
+    } while (idx != len);
+
+    for (i = 0; i != count; i++)
+        out[i] = (out[i] + i) & 0x3f;
+
+    return count;
+}
+
+unsigned short OvlFunc_880_20092c8(unsigned int count, const unsigned char *data)
+{
+    unsigned int i;
+    int j;
+    unsigned int crc = 0xffff;
+
+    for (i = 0; i != count; i++) {
+        crc ^= *data << 8;
+        for (j = 0; j != 8; j++) {
+            if (crc & 0x8000)
+                crc = (crc << 1) - 0x1021;
+            else
+                crc <<= 1;
+        }
+        data++;
+    }
+    return ~crc;
+}
 INCLUDE_ASM("asm/maps/main_menu/main_menu_data.s");
 
 INCLUDE_ASM("asm/maps/main_menu/imports.s");

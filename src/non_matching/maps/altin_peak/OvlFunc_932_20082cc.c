@@ -1,3 +1,8 @@
+/* Remaining diff: 2 instructions swapped by sched1/sched2 at +0x4a/+0x4c:
+ * ref: lsls r3, r3, #14 ; lsls r2, r2, #11
+ * new: lsls r2, r2, #11 ; lsls r3, r3, #14
+ * All other instructions and section size match 100%.
+ */
 extern void OvlFunc_932_200b850(int, int);
 void __Func_808e118(void);
 

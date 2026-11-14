@@ -1,6 +1,14 @@
+/*
+ * Remaining diff: single 4-instruction sched2 order diff at +0x2b4..+0x2be
+ * where ldr r5, =5 fills ldr r2, =0x22b's load delay slot across
+ * CS884_State.battleMode = 2 (mov r1, #2; strb r1, [r3, r2]).
+ */
 #include "api.h"
 
-struct CS884_StateView { unsigned char reserved[0x22b]; unsigned char battleMode; };
+struct CS884_StateView {
+    unsigned char reserved[0x22b];
+    unsigned char battleMode;
+};
 extern struct CS884_StateView CS884_State __asm__("gState");
 extern unsigned char CS884_BattleArea[] __asm__(".Lcs884_battleArea");
 __asm__(".equ .Lcs884_battleArea, 5");
@@ -12,16 +20,15 @@ void OvlFunc_884_2009274(void)
     extern unsigned char gScript_884__0200a998[];
     extern unsigned char gScript_884__0200a9f0[];
     extern unsigned char gScript_884__0200ac00[];
-    
     extern void __Actor_SetSpriteFlags(void *, int);
     extern int __Func_8091c7c(int, int);
-    extern void __Func_8091f90(unsigned short, unsigned short);
-    extern void __Func_8091fa8(unsigned short, unsigned short);
+    extern void __Func_8091f90(int, int);
+    extern void __Func_8091fa8(int, int);
     extern void __Func_8092950(unsigned int, unsigned int);
-    extern void * __MapActor_GetActor(int);
+    extern void *__MapActor_GetActor(int);
     extern void __MapActor_RunScript(int, void *);
     extern void OvlFunc_884_200a2c8(unsigned int, unsigned int);
-    
+    extern void OvlFunc_884_200a2e0(unsigned int, unsigned int, unsigned int);
     extern int __ShowActorMessage_NoWait(int, int);
     extern void __StartMapBattle(int, int);
     unsigned char *actor;

@@ -1,25 +1,33 @@
-extern void OvlFunc_925_200b1c0(unsigned int *, unsigned int);
+/*
+ * 100% exact byte-for-byte match under -fstrict-aliasing (verified via gs_check_tu.py).
+ * Under -fno-strict-aliasing, the u8 __unk55 store (`strb r6, [r0]`) creates an
+ * anti-dependence with stack spill slot `[sp, #0]` (`ldr r2, [sp]`), preventing sched2
+ * from hoisting `ldr r2, [sp]` above `strb r6, [r0]`.
+ */
+extern unsigned char iwram_3001e70[];
+extern void OvlFunc_925_200b1c0(unsigned int *, int);
+extern void __Func_800fe9c(void);
 
 void OvlFunc_925_200b324(void)
 {
     unsigned char *ptr;
-    int actors[5];
+    unsigned int actors[5];
     int vel;
-    int count;
-    int i;
-    int k;
+    unsigned int count;
+    unsigned int i;
+    unsigned int k;
 
     ptr = *(unsigned char **)iwram_3001e70 + (0xb2 << 1);
     vel = 0xc0 << 9;
     count = 0;
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i <= 4; i++) {
         actors[i] = 0x42;
     }
 
     OvlFunc_925_200b1c0(actors, *(int *)(ptr + 0xc));
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i <= 4; i++) {
         if (actors[i] == 0x42) {
             break;
         }

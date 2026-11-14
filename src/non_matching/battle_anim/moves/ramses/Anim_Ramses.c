@@ -1,18 +1,39 @@
+/*
+ * Non-matching clean C for Anim_Ramses (all relocations, .rodata tables,
+ * stack layout, and animation logic match; .text 0x628 == 0x628).
+ *
+ * Remaining diff (1 instruction pair):
+ *   Inside the 512-particle update loop, `size = (p->age >> 3) + 1` allocates
+ *   `size - 1` vs `size` across `r1`/`r4` in slightly different scratch-register
+ *   order (`adds r1, r4, #1` vs `subs r3, r1, #1`) before `Data_ede48[size - 1]`.
+ */
 #include "anim.h"
-
-#include "sprite.h"
-
-#include "task.h"
-
 #include "math.h"
+#include "sprite.h"
+#include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
 
-struct RamsesParticle { s32 x, y, z, dx, dy, dz, age; };
+typedef union {
+    s32 raw;
+    struct {
+        u16 lo;
+        s16 hi;
+    } half;
+} RamsesCoord;
 
-struct RamsesScale { s32 x, y; };
+struct RamsesParticle {
+    RamsesCoord x, y;
+    s32 z, dx, dy, dz, age;
+};
 
-struct RamsesPosition { s32 x, y, z, extra; };
+struct RamsesScale {
+    s32 x, y;
+};
+
+struct RamsesPosition {
+    s32 x, y, z, extra;
+};
 
 struct RamsesState {
     u8 graphics[0x7080];
@@ -30,89 +51,46 @@ struct RamsesState {
 };
 
 extern u8 *iwram_3001ef0[];
-
 extern void *gPtrs[];
-
 extern u8 gBuffer[];
-
 extern s32 ewram_2010018[];
-
 extern vs32 gKeyRepeat;
-
 extern const struct RamsesScale Data_edac8;
-
 extern const u16 Data_ede48[];
 
-extern const u8 RamsesX[] __asm__(".Leeed8");
-
-extern const u8 RamsesY[] __asm__(".Leeee1");
-
-extern const u16 RamsesOffsets[] __asm__(".Leeeea");
-
-extern const u16 RamsesSizes[] __asm__(".Leeef8");
+static const u8 RamsesX[9] = { 12, 44, 28, 60, 0, 32, 64, 0, 32 };
+static const u8 RamsesY[9] = { 0, 0, 32, 32, 64, 64, 64, 32, 32 };
+static const u16 RamsesOffsets[7] = { 0x0, 0x100, 0x500, 0xe00, 0x1700, 0x2000, 0x2900 };
+static const u16 RamsesSizes[7] = { 16, 32, 48, 48, 48, 48, 48 };
 
 extern char _FILE_73[], _FILE_c0[];
-
-extern char RamsesBackgroundFile[] __asm__(".Lramses_file_3c");
-
-__asm__(".equ .Lramses_file_3c, 0x3c");
+extern char RamsesBackgroundFile[] __asm__("0x3c");
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void Func_80c9048(void);
-
 extern void Task_BlitAnim(void);
-
 extern void AnimTransitionOut(int, int);
-
 extern void _AnimTransitionIn(int, int, int);
-
 extern void Func_80d6750(struct AnimContext *);
-
 extern void Func_80d67dc(void);
-
 extern void CreateSummonSprite(int, int, int);
-
 extern struct Sprite *_CreateSprite(int);
-
 extern void _Sprite_SetAnim(struct Sprite *, int);
-
 extern void _UpdateSprite(struct Sprite *, struct RamsesPosition *, struct RamsesScale *, int);
-
 extern void _DeleteSprite(struct Sprite *);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern unsigned int Random(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void Func_80e3908(struct RamsesParticle *, int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void _SetBattleActorKnockback(int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
-
-__asm__(".include \"macros.inc\"\n"
-        ".section .rodata\n"
-        ".Leeed8:\n.incrom 0xeeed8, 0xeeee1\n"
-        ".Leeee1:\n.incrom 0xeeee1, 0xeeeea\n"
-        ".Leeeea:\n.incrom 0xeeeea, 0xeeef8\n"
-        ".Leeef8:\n.incrom 0xeeef8, 0xeef06\n.text\n");
 
 void Anim_Ramses(struct AnimContext *context)
 {
@@ -171,8 +149,8 @@ void Anim_Ramses(struct AnimContext *context)
     fist.y = 92 << 16;
     for (i = 0; i != 6; i++) {
         p = &state->particles[i];
-        p->x = (Random() & 127) << 16;
-        p->y = -(i << 20);
+        p->x.raw = (Random() & 127) << 16;
+        p->y.raw = -(i << 20);
         p->dx = 0;
         p->dy = 0;
         p->age = 0;
@@ -184,10 +162,14 @@ void Anim_Ramses(struct AnimContext *context)
     state->unk77b4 = 24;
     state->unk77b8 = 0;
     for (frame = 0; frame != 320 && !(gKeyRepeat & 3); frame++) {
-        if (frame == 94) _PlaySound(0x9c);
-        if (frame == 136) _PlaySound(0x9c);
-        if (frame == 178) _PlaySound(0x9c);
-        if (frame == 260) _PlaySound(0x91);
+        if (frame == 94)
+            _PlaySound(0x9c);
+        if (frame == 136)
+            _PlaySound(0x9c);
+        if (frame == 178)
+            _PlaySound(0x9c);
+        if (frame == 260)
+            _PlaySound(0x91);
         scale = Data_edac8;
         if ((unsigned)(frame - 96) <= 155)
             state->shake = 1;
@@ -212,8 +194,8 @@ void Anim_Ramses(struct AnimContext *context)
                 if (frame == start + 3) {
                     for (j = 0; j != 4; j++) {
                         q = &state->particles[i * 8 + j + 6];
-                        q->x = 0x400000;
-                        q->y = 0x600000;
+                        q->x.raw = 0x400000;
+                        q->y.raw = 0x600000;
                         q->dx = ((Random() & 255) - 127) << 10;
                         q->dy = ((Random() & 255) - 127) << 10;
                         q->age = Random() & 15;
@@ -239,27 +221,27 @@ void Anim_Ramses(struct AnimContext *context)
         for (i = 0; i != 6; i++) {
             p = &state->particles[i];
             if (p->age != 2) {
-                pos.x = p->x;
-                pos.z = p->y;
+                pos.x = p->x.raw;
+                pos.z = p->y.raw;
                 _UpdateSprite(state->sprites[i + 9], &pos, &scale, 0);
-                p->x += p->dx;
-                p->y += p->dy;
+                p->x.raw += p->dx;
+                p->y.raw += p->dy;
                 if (frame > 96)
                     p->dy += 0x4000;
-                if (p->y > 0x780000) {
+                if (p->y.raw > 0x780000) {
                     p->age++;
                     if (p->age == 1) {
                         p->dy = -p->dy / 2;
                         for (j = 0; j != 2; j++) {
                             q = &state->particles[i * 2 + j + 30];
-                            q->x = p->x / 2;
-                            q->y = p->y - 0x200000;
+                            q->x.raw = p->x.raw / 2;
+                            q->y.raw = p->y.raw - 0x200000;
                             q->dx = ((Random() & 255) - 127) << 10;
                             q->dy = ((Random() & 255) - 127) << 10;
                             q->age = Random() & 15;
                         }
                     } else if (frame <= 199) {
-                        p->y = 0;
+                        p->y.raw = 0;
                         p->dy = 0;
                         p->age = 0;
                     }
@@ -272,8 +254,9 @@ void Anim_Ramses(struct AnimContext *context)
                 if ((unsigned)p->age <= 23) {
                     int image = p->age / 6 + 3;
                     pair[0](render, state->graphics + RamsesOffsets[image],
-                        *(s16 *)((u8 *)&p->x + 2) - RamsesSizes[image] / 2,
-                        *(s16 *)((u8 *)&p->y + 2) - RamsesSizes[image] / 2, RamsesSizes[image], RamsesSizes[image]);
+                        p->x.half.hi - RamsesSizes[image] / 2,
+                        p->y.half.hi - RamsesSizes[image] / 2,
+                        RamsesSizes[image], RamsesSizes[image]);
                 }
                 Func_80e3908(p, 60, -0x4000);
                 p->age++;
@@ -291,8 +274,8 @@ void Anim_Ramses(struct AnimContext *context)
             for (i = 0; i != 512; i++, p++) {
                 int speed = (Random() & 1023) + 32;
                 int angle = Random() & 65535;
-                p->x = 0x200000;
-                p->y = 0x5c0000;
+                p->x.raw = 0x200000;
+                p->y.raw = 0x5c0000;
                 p->dx = (sin(angle) * speed) >> 7;
                 p->dy = -((cos(angle) * speed) << 1) >> 7;
                 p->age = (Random() & 15) + 32;
@@ -302,10 +285,10 @@ void Anim_Ramses(struct AnimContext *context)
         for (i = 0; i != 512; i++, p++) {
             if (p->age >= 0) {
                 int size = (p->age >> 3) + 1;
-                const u8 *image = particleGfx + Data_ede48[size - 1];
-                int x = *(s16 *)((u8 *)&p->x + 2) - size / 2;
-                int y = *(s16 *)((u8 *)&p->y + 2) - size;
-                pair[i & 1](render, image, x, y, size, size * 2);
+                pair[i & 1](render, particleGfx + Data_ede48[size - 1],
+                    p->x.half.hi - size / 2,
+                    p->y.half.hi - size,
+                    size, size * 2);
                 Func_80e3908(p, 62, 0x1000);
                 p->age--;
             }
@@ -317,8 +300,11 @@ void Anim_Ramses(struct AnimContext *context)
     }
     _Func_80bd7dc(0x86);
     Func_80d67dc();
-    for (i = 0; i != 15; i++)
-        _DeleteSprite(state->sprites[i]);
+    {
+        struct Sprite **sprites = state->sprites;
+        for (i = 0; i != 15; i++)
+            _DeleteSprite(*sprites++);
+    }
     StopTask(Task_BlitAnim);
     gfree(0x2f);
     gfree(0x2e);

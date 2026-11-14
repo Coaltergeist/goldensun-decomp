@@ -1,3 +1,8 @@
+/*
+ * Handwritten assembly in original ROM (Nintendo MP2K / Sappy `m4a_1.s`,
+ * duplicate of `src/lib/m4a/m4a0.s` ply_pend: returns via bare `bx lr` without
+ * `push {lr}`, which camelot-gcc `-mthumb` never emits).
+ */
 void ply_pend(unsigned char *mplayInfo, unsigned char *track)
 {
     int count;

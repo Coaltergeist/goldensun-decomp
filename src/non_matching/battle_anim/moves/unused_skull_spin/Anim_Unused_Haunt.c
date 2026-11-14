@@ -1,7 +1,18 @@
+/*
+ * Non-matching decompilation of Anim_Unused_Haunt.
+ *
+ * Matches 0x000..0x0f5 (init, palette copy, LZ decompression, particle init,
+ * and outer loop setup) 100% byte-for-byte.
+ * Remaining diff:
+ * - Unfinished unused move (contains dead `blitMode = 1` / `blitParam = 0`
+ *   writes and unused `screen` projection). In the target binary, `frame - i * 16`
+ *   was strength-reduced into a loop GIV and tested with separate `< 0` and
+ *    `> 63` branches, whereas GCC 2.96 `fold-const.c` folds `t >= 0 && t < 64`
+ *   into `(unsigned)t <= 63` (single GIV benefit 34 < threshold 125) unless an
+ *   additional dead use of `frame - i * 16` was present in the unfinished source.
+ */
 #include "anim.h"
-
 #include "math.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -17,56 +28,42 @@ struct HauntParticle {
 };
 
 struct HauntState {
-               u8 graphics[0x7080];
-               struct HauntParticle particles[64];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct HauntParticle particles[64];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct HauntVec { s32 x, y, z; };
 
-extern u8 *iwram_3001eec[];
-
+extern u8 *const iwram_3001eec[];
 extern char _FILE_a9[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
 extern void DecompressLZ(const void *, void *);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void Task_BlitAnim(void);
-
 extern void **_GetBattleActor(int);
-
 extern void GetBattleActorPos2(int, struct HauntVec *);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(u8 *, u8 *);
-
 extern void Func_80e3944(struct HauntVec *, struct HauntVec *);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Unused_Haunt(struct AnimContext *context)
 {
-    u8 **baseSlots = iwram_3001eec;
-    u8 **slots = baseSlots;
+    u8 *const *baseSlots = iwram_3001eec;
+    u8 *const *slots = baseSlots;
     struct HauntState *state = (struct HauntState *)*slots++;
     u8 *render = *slots;
-    int frame, t;
+    int frame;
     struct HauntParticle *p;
     DrawFunc draw;
     int i;
@@ -89,24 +86,22 @@ void Anim_Unused_Haunt(struct AnimContext *context)
     BuildDraw2DFuncEx(0x2e, 7, 7, 3, 2);
     state->blitMode = 1;
     state->blitParam = 0;
-    draw = (DrawFunc)baseSlots[7];
     state->blitMode = 2;
     state->blitParam = 75;
+    draw = (DrawFunc)iwram_3001eec[7];
     StartTask(Task_BlitAnim, 0x480);
 
     offset = 0;
-    if (state->context->side != 0)
+    if (state->context->side)
         offset = -112;
     (*(vu32 *)0x04000028) = offset << 8;
 
-    {
-        struct HauntParticle *q = state->particles;
-        for (k = 0; k != 64; k++, q++) {
-            q->x = 0;
-            q->y = 0;
-            q->angle = 0;
-            q->unk8 = 4;
-        }
+    for (k = 0; k != 64; k++) {
+        p = &state->particles[k];
+        p->x = 0;
+        p->y = 0;
+        p->angle = 0;
+        p->unk8 = 4;
     }
 
     for (frame = 0; frame != state->context->numTargets * 16 + 64; frame++) {
@@ -115,8 +110,7 @@ void Anim_Unused_Haunt(struct AnimContext *context)
             obj = *actor;
             GetBattleActorPos2((s16)state->context->targets[i], &pos);
             pos.x += offset;
-            t = frame - i * 16;
-            if ((unsigned int)t <= 63) {
+            if (frame - i * 16 >= 0 && frame - i * 16 < 64) {
                 InitMatrixStack();
                 MatrixSetLook(camera, camera + 0xc);
                 world.x = obj[2];

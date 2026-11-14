@@ -255,7 +255,23 @@ void OvlFunc_910_200845c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mccoys_palace_ext/MccoysPalaceExt_MapInit.s");
+int MccoysPalaceExt_MapInit(void)
+{
+    extern void *__MapActor_GetActor(int);
+    extern void OvlFunc_910_200850c(void);
+    struct Actor *actor;
+    GlobalState *p;
+
+    *(unsigned int *)(iwram_3001ebc + 0x1c0) = 0x100;
+    actor = (struct Actor *)__MapActor_GetActor(8);
+    actor->flags = 0;
+    actor->sprite->oam.priority = 1;
+    p = &gState;
+    if (*(short *)((char *)p + 0x1c0) == (int)Lm910_actorsevent22) {
+        OvlFunc_910_200850c();
+    }
+    return 0;
+}
 
 void OvlFunc_910_200850c(void) {
     extern void OvlFunc_910_2008974(int);

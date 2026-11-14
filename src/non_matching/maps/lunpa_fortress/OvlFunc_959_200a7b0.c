@@ -1,42 +1,49 @@
+/*
+ * Matches 826/828 ASM lines (including all literal pools and registers) except
+ * one sched2 tiebreaker in both branches (+0x1c6 and +0x868):
+ *   ref: strb r2, [r3]; ldr r0, =0xa3; mov r1, #4; bl __Func_8091f90
+ *   new: ldr r0, =0xa3; mov r1, #4; strb r2, [r3]; bl __Func_8091f90
+ * Because both branches merge at .Lm959_302a (bl __CutsceneEnd) rather than
+ * ending in epilogue_insns (unspec_volatile), strb r2, [r3] has prio=3 with
+ * 2 INSN_DEPEND links (__Func_8091f90, __StartMapBattle) while ldr r0, =0xa3
+ * and mov r1, #4 have prio=3 with 3 INSN_DEPEND links.
+ */
 #include "api.h"
+#include "state/global_state.h"
 
-extern unsigned char LunpaReplayMessage[] __asm__(".LLunpaReplayMessage");
-__asm__(".equ .LLunpaReplayMessage, 0x247d");
-extern unsigned char LunpaFirstMessage[] __asm__(".LLunpaFirstMessage");
-__asm__(".equ .LLunpaFirstMessage, 0x2464");
-extern unsigned char LunpaBattleMap[] __asm__(".LLunpaBattleMap");
-__asm__(".equ .LLunpaBattleMap, 0xa3");
-extern unsigned char LunpaBattleModeOffset[] __asm__(".LLunpaBattleModeOffset");
-__asm__(".equ .LLunpaBattleModeOffset, 0x22b");
+extern GlobalState gState;
+extern unsigned char Lconst_247d[] __asm__(".Lconst_247d");
+__asm__(".equ .Lconst_247d, 0x247d");
+extern unsigned char Lconst_2464[] __asm__(".Lconst_2464");
+__asm__(".equ .Lconst_2464, 0x2464");
+extern unsigned char Lconst_a3[] __asm__(".Lconst_a3");
+__asm__(".equ .Lconst_a3, 0xa3");
 
-static inline void LunpaBattleMode(unsigned int base, unsigned int offset, int value) {
-    unsigned char *p = (unsigned char *)(base + offset);
-    *p = value;
-}
+struct CS959_BattleSceneView {
+    unsigned char pad[0x1c0];
+    int transition;
+};
+extern struct CS959_BattleSceneView *CS959_BattleScene __asm__("iwram_3001ebc");
+
+extern unsigned char *__MapActor_GetActor(unsigned int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Func_8091f90(int, int);
+extern void __StartMapBattle(int, int);
+extern void OvlFunc_959_200a52c(void);
+extern void OvlFunc_959_200a5f8(void);
+extern void OvlFunc_959_200a69c(void);
+extern void OvlFunc_959_200a718(void);
 
 void OvlFunc_959_200a7b0(void)
 {
-    extern unsigned char LunpaSceneState[] __asm__("gState");
-    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
-    extern void __Actor_SetSpriteFlags(void *, int);
-    extern void LunpaSceneDestination(unsigned short, unsigned short) __asm__("__Func_8091f90");
-    extern unsigned char *LunpaCutsceneActor(int) __asm__("__MapActor_GetActor");
-    extern void OvlFunc_959_200a52c(void);
-    extern void OvlFunc_959_200a5f8(void);
-    extern void OvlFunc_959_200a69c(void);
-    extern void OvlFunc_959_200a718(void);
-    extern void __StartMapBattle(int, int);
-    int flagValue1;
-    int flagValue2;
     unsigned char *actor;
     int messageBase;
 
-    flagValue1 = API_GetFlag(0x301);
-    if (flagValue1 != 0) return;
+    if (API_GetFlag(0x301) != 0)
+        return;
     API_SetFlag(0x270);
     API_CutsceneStart();
-    flagValue2 = API_GetFlag(0x942);
-    if (flagValue2 != 0) {
+    if (API_GetFlag(0x942) != 0) {
         API_MapActor_SetSpeed(0, 0x8000, 0x4000);
         API_MapActor_TravelToAnimWait(0, 0x1c8, 0xd8);
         API_MapActor_Face(0, 12, 0);
@@ -44,7 +51,7 @@ void OvlFunc_959_200a7b0(void)
         API_MapActor_Emote(12, 0x100, 0x3c);
         API_Func_8092adc(12, 0x8000, 0);
         API_MapActor_Jump(12, 4, 0);
-        actor = LunpaCutsceneActor(12);
+        actor = __MapActor_GetActor(12);
         __Actor_SetSpriteFlags(actor, 1);
         API_CutsceneWait(30);
         API_MapActor_SetSpeed(2, 0xb333, 0x5999);
@@ -57,7 +64,7 @@ void OvlFunc_959_200a7b0(void)
         API_Func_8092adc(3, 0x4000, 0);
         API_MapActor_SetPos(13, 0x1c80000, 0x1400000);
         API_Func_80933d4(0x20000, 0x4000);
-        messageBase = (int)LunpaReplayMessage;
+        messageBase = (int)Lconst_247d;
         API_MessageID(messageBase);
         API_ActorMessage(13, 0);
         API_MapActor_TravelToAnim(13, 0x1ca, 0x110);
@@ -83,23 +90,26 @@ void OvlFunc_959_200a7b0(void)
         API_MessageID(messageBase);
         API_ActorMessage(13, 0);
         OvlFunc_959_200a69c();
-        *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x200;
+        CS959_BattleScene->transition = 0x200;
         API_CutsceneWait(1);
-        LunpaBattleMode((unsigned int)LunpaSceneState, (unsigned int)LunpaBattleModeOffset, 3);
-        LunpaSceneDestination((int)LunpaBattleMap, 4);
+        {
+            GlobalState *gs = &gState;
+            *(unsigned char *)((char *)gs + 0x22b) = 3;
+        }
+        __Func_8091f90((int)Lconst_a3, 4);
         __StartMapBattle(0x62, 4);
     } else {
         API_MapActor_SetAnim(0, 1);
         API_PlaySound(17);
         API_CutsceneWait(30);
-        messageBase = (int)LunpaFirstMessage;
+        messageBase = (int)Lconst_2464;
         API_MessageID(messageBase);
         API_ActorMessage(12, 0);
         API_MapActor_TurnToFaceActor(0, 12, 0);
         API_CutsceneWait(0x8c);
         API_Func_8092adc(12, 0x8000, 0);
         API_MapActor_Jump(12, 4, 0);
-        actor = LunpaCutsceneActor(12);
+        actor = __MapActor_GetActor(12);
         __Actor_SetSpriteFlags(actor, 1);
         API_MessageID(messageBase + 1);
         API_ActorMessage(12, 0);
@@ -281,12 +291,14 @@ void OvlFunc_959_200a7b0(void)
         OvlFunc_959_200a718();
         OvlFunc_959_200a69c();
         API_SetFlag(0x942);
-        *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x200;
+        CS959_BattleScene->transition = 0x200;
         API_CutsceneWait(1);
-        LunpaBattleMode((unsigned int)LunpaSceneState, (unsigned int)LunpaBattleModeOffset, 3);
-        LunpaSceneDestination((int)LunpaBattleMap, 4);
+        {
+            GlobalState *gs = &gState;
+            *(unsigned char *)((char *)gs + 0x22b) = 3;
+        }
+        __Func_8091f90((int)Lconst_a3, 4);
         __StartMapBattle(0x62, 4);
     }
     API_CutsceneEnd();
-
 }

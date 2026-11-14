@@ -1,12 +1,16 @@
+/*
+ * Remaining diff (1 instruction + 1 pool entry out of 1,482 lines):
+ * At +0x534 (`((unsigned char *)VaultGetActor(19))[0x55] = zero;`), target ASM
+ * loads 0 into `r5` from the literal pool (`ldr r5, .Lm899_3c6c @ 0` / `.word 0`),
+ * whereas clean C without an un-evidenced `.equ ..., 0` symbol or artificial
+ * CSE-blocking `do-while(0)` self-assignment folds `zero` to `movs r5, #0`.
+ */
 #include "api.h"
 
-static inline void VaultWriteByte(unsigned char *address, int value) { *address = value; }
-extern unsigned char VaultDialogueStart[] __asm__(".Lvault_dialogue_start");
-__asm__(".equ .Lvault_dialogue_start, 0x12fc");
-extern unsigned char VaultRewardDialogue[] __asm__(".Lvault_reward_dialogue");
-__asm__(".equ .Lvault_reward_dialogue, 0x1324");
-extern unsigned char VaultIdleMovement[] __asm__(".Lvault_idle_movement");
-__asm__(".equ .Lvault_idle_movement, 0");
+extern unsigned char Lconst_12fc[] __asm__(".Lconst_12fc");
+__asm__(".equ .Lconst_12fc, 0x12fc");
+extern unsigned char Lconst_1324[] __asm__(".Lconst_1324");
+__asm__(".equ .Lconst_1324, 0x1324");
 
 void OvlFunc_899_200b6f8(void)
 {
@@ -20,7 +24,7 @@ void OvlFunc_899_200b6f8(void)
     extern unsigned int __Func_808e078(unsigned int, unsigned int, unsigned int);
     extern void __Func_8091890(int);
     extern int __Func_8091c7c(int, int);
-    extern void * VaultGetActor(int) __asm__("__MapActor_GetActor");
+    extern void *VaultGetActor(int) __asm__("__MapActor_GetActor");
     extern unsigned int OvlFunc_899_200af84(void);
     extern unsigned int OvlFunc_899_200af98(void);
     extern void OvlFunc_899_200c5f4(unsigned int, unsigned int);
@@ -28,8 +32,8 @@ void OvlFunc_899_200b6f8(void)
     extern void OvlFunc_899_200c624(unsigned int, unsigned int, unsigned int);
     extern void OvlFunc_899_200c63c(unsigned int, unsigned int, unsigned int);
     extern int VaultPromptActor(int, int) __asm__("__ShowActorMessage_NoWait");
-    unsigned char * fieldState;
-    unsigned char * transitionState;
+    unsigned char *fieldState;
+    unsigned char *transitionState;
     short *savedMessageAddress;
     int savedMessage;
     int choice1;
@@ -37,9 +41,10 @@ void OvlFunc_899_200b6f8(void)
     unsigned int flagValue3;
     int dialogueBase;
     int rewardDialogue;
+    unsigned short zero;
     unsigned char *actor;
 
-    fieldState = (unsigned char *)((*(unsigned char **)CS_iwram_3001ebc));
+    fieldState = *(unsigned char **)CS_iwram_3001ebc;
     API_SetFlag(0x855);
     API_CutsceneStart();
     actor = VaultGetActor(12);
@@ -81,14 +86,14 @@ void OvlFunc_899_200b6f8(void)
     API_MapActor_Face(0, 10, 0);
     API_MapActor_Face(1, 10, 0);
     API_MapActor_Face(2, 10, 0);
-    transitionState = (unsigned char *)((*(unsigned char **)CS_iwram_3001ebc));
+    transitionState = *(unsigned char **)CS_iwram_3001ebc;
     *(int *)(transitionState + 0x1c8) = 30;
     *(int *)(transitionState + 0x1c0) = 0x201;
     API_MapTransitionIn();
     API_WaitMapTransition();
     API_CutsceneWait(0x28);
     API_Func_80925cc(10, 2);
-    dialogueBase = (int)VaultDialogueStart;
+    dialogueBase = (int)Lconst_12fc;
     API_MessageID(dialogueBase);
     OvlFunc_899_200c5f4(10, 20);
     API_Func_80925cc(9, 1);
@@ -182,9 +187,8 @@ void OvlFunc_899_200b6f8(void)
     API_Func_80925cc(14, 2);
     API_PlaySound(0x7c);
     API_MapActor_SetAnim(16, 4);
-    actor = VaultGetActor(19);
-    actor += 0x55;
-    VaultWriteByte(actor, (int)VaultIdleMovement);
+    zero = 0;
+    ((unsigned char *)VaultGetActor(19))[0x55] = zero;
     API_Func_8092b08(19, 1);
     API_MapActor_SetPos(19, 0x3680000, 0x1980000);
     API_MapActor_SetSpeed(19, 0xcccc, 0x6666);
@@ -359,6 +363,7 @@ void OvlFunc_899_200b6f8(void)
     OvlFunc_899_200c5f4(2, 20);
     API_MapActor_Emote(0, 0x101, 0);
     API_MapActor_Emote(1, 0x101, 0);
+    API_MapActor_Emote(2, 0x101, 0);
     API_CutsceneWait(0x3c);
     OvlFunc_899_200c63c(2, 3, 20);
     OvlFunc_899_200c5f4(2, 20);
@@ -399,7 +404,7 @@ void OvlFunc_899_200b6f8(void)
     API_Func_80925cc(2, 2);
     sceneActor = (unsigned char *)__Func_808e078(2, 17, 0x41);
     API_CutsceneWait(0x3c);
-    rewardDialogue = (int)VaultRewardDialogue;
+    rewardDialogue = (int)Lconst_1324;
     API_Func_801776c(rewardDialogue, 1);
     API_DeleteActor((int)sceneActor);
     API_MapActor_SetAnim(17, 2);

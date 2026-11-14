@@ -1,22 +1,39 @@
+/* Matches 100% byte-for-byte under GAIA_CFLAGS (-fstrict-aliasing).
+ * Under -fno-strict-aliasing, storing data.unk1c (void *) aliases actor->pos.z (s32),
+ * preventing sched from hoisting ldr r2, [r5, #16] before str r3, [r4, #28].
+ */
+#include "actor.h"
+#include "context.h"
+
+extern void *__MapActor_GetActor(int);
 extern unsigned char Lm928_1740[] __asm__(".Lm928_1740");
+extern unsigned int iwram_3001e40;
 
-extern unsigned char iwram_3001e40[];
-
-#include "overlays/common0_effect.h"
+struct XianEffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    void *unk1c;
+    int unk20;
+    int unk24;
+};
 
 void OvlFunc_928_2008370(void)
 {
-    unsigned char *actor;
-    struct EffectData data;
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0xe);
+    struct XianEffectData data;
 
-    actor = (unsigned char *)__MapActor_GetActor(0xe);
-    if ((*(unsigned int *)iwram_3001e40 & 3) == 0) {
+    if ((iwram_3001e40 & 3) == 0) {
         data.unk0 = 1;
         data.unk4 = 9;
         data.unk18 = 0xa9;
-        data.unk1c = (int)Lm928_1740;
-        OvlFunc_common0_10c(*(int *)(actor + 8), *(int *)(actor + 0xc),
-            *(int *)(actor + 0x10) - 0x10000, 0, 0xffff0000, 0xffff0000,
-            0xcc << 14, &data);
+        data.unk1c = Lm928_1740;
+        OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z - 0x10000, 0,
+            -0x10000, -0x10000, 0xcc << 14, &data);
     }
 }

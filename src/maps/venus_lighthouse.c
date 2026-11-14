@@ -1,6 +1,8 @@
 /* rom_7f2f14 (overlay file 968): consolidated TU — venus_lighthouse map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "sprite.h"
@@ -250,7 +252,18 @@ int OvlFunc_968_20084f4(unsigned int layer, unsigned int x, unsigned int y,
 
     return 0;
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2008558.s");
+void OvlFunc_968_2008558(void)
+{
+    extern struct ActorTable200832c *iwram_3001ebc;
+    struct ActorTable200832c *t = iwram_3001ebc;
+    unsigned int i;
+
+    for (i = 8; i <= 0x41; i++) {
+        struct Actor *actor = t->actor[i];
+        if (((short)*(unsigned short *)((char *)actor + 0x64) >> 4) == 0x212)
+            __Func_80929d8(actor, *(unsigned short *)((char *)actor + 0x64) & 0xf);
+    }
+}
 extern void __Func_80929d8(unsigned int actor, int x);
 
 unsigned int OvlFunc_968_2008594(unsigned int arg0) {
@@ -492,7 +505,18 @@ void OvlFunc_968_200894c(arg0) unsigned int * arg0;
     }
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200896c.s");
+void OvlFunc_968_200896c(struct Actor *actor)
+{
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->bounce -= actor->bounce / 18;
+    actor->__unk4C -= actor->__unk4C / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 struct Struct_20089c8 {
     int unk0;
     int unk4;
@@ -883,7 +907,45 @@ void OvlFunc_968_20090cc(void)
     API_CopyMapTiles(0x35, 0x37, 0x2e, 0x37, 3, 3);
     API_CopyMapTiles(0x75, 0x37, 0x6e, 0x37, 3, 3);
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_2009150.s");
+static inline void CS968_WriteByte(unsigned char *p, int value) { *p = value; }
+
+void OvlFunc_968_2009150(void)
+{
+    extern unsigned char gScript_968__0200d21c[];
+    extern void __Func_8092950(int, int);
+    struct Actor *actor;
+    unsigned char *flags;
+    int dest;
+
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    API_CutsceneStart();
+    API_MapActor_SetBehavior(0, (int)gScript_968__0200d21c);
+    API_MapActor_WaitScript(0);
+    __Func_8092950(0, 6);
+    actor->motion.y = 0x80 << 11;
+    API_MapActor_SetSpeed(0, 0x80 << 11, 0x80 << 10);
+    if ((actor->pos.z >> 20) <= 0x36) {
+        flags = (unsigned char *)__MapActor_GetActor(0) + 0x5a;
+        CS968_WriteByte(flags, *flags & 0xfe);
+        dest = 0xd2;
+    } else {
+        flags = (unsigned char *)__MapActor_GetActor(0) + 0x5a;
+        CS968_WriteByte(flags, *flags & 0xfe);
+        dest = 0xee;
+    }
+    API_MapActor_TravelToAnimWait(0, *(short *)((char *)actor + 0xa), dest << 2);
+    API_CutsceneWait(1);
+    flags = (unsigned char *)__MapActor_GetActor(0) + 0x5a;
+    CS968_WriteByte(flags, *flags | 1);
+    API_CutsceneWait(0x14);
+    actor->update = (actorfun_t)OvlFunc_968_20085e4;
+    API_MapActor_Emote(0, 0x81 << 1, 0x3c);
+    API_MapActor_DoAnim(0, 4);
+    __Func_8092950(0, 0);
+    API_MapActor_DoAnim(0, 4);
+    actor->update = 0;
+    API_CutsceneEnd();
+}
 
 static inline void CS968_Half(unsigned short *p, int value) { *p = value; }
 
@@ -1382,7 +1444,39 @@ unsigned int OvlFunc_968_200a2a4(unsigned int arg0) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200a2c8.s");
+extern const int Lm968_5148[] __asm__(".Lm968_5148");
+
+void OvlFunc_968_200a2c8(int arg0)
+{
+    struct Actor *actor8;
+    struct Actor *actor9;
+    struct Actor *actor;
+    unsigned int i;
+
+    actor8 = (struct Actor *)__MapActor_GetActor(8);
+    actor9 = (struct Actor *)__MapActor_GetActor(9);
+    API_MapActor_SetSpeed(8, 0x8000, 0x4000);
+    API_MapActor_SetSpeed(9, 0x8000, 0x4000);
+    if (arg0 != 0) {
+        API_PlaySound(0xb4);
+    }
+    API_Actor_TravelTo(actor8, actor8->pos.x, Lm968_5148[actor8->waveCounter], actor8->pos.z);
+    API_Actor_TravelTo(actor9, actor9->pos.x, Lm968_5148[actor9->waveCounter], actor9->pos.z);
+    API_MapActor_WaitMovement(8);
+    API_MapActor_WaitMovement(9);
+    actor8->pos.y = Lm968_5148[actor8->waveCounter];
+    actor9->pos.y = Lm968_5148[actor9->waveCounter];
+    if (arg0 != 0) {
+        API_PlaySound(0x121);
+    }
+    for (i = 0; i <= 4; i++) {
+        actor = (struct Actor *)__MapActor_GetActor(i + 8);
+        if (actor->pos.y / 0x10000 < 0 && actor->pos.y / 0x10000 > -30) {
+            API_Func_8010704(4, 0x13, 1, 1, actor->pos.x >> 20, actor->pos.z >> 20);
+        }
+    }
+    API_CutsceneWait(arg0);
+}
 void OvlFunc_968_200a3d4(unsigned int actorId)
 {
     extern void OvlFunc_968_2008b08(unsigned int);
@@ -1691,8 +1785,160 @@ void OvlFunc_968_200c030(void)
 	OvlFunc_968_200c048((unsigned int)stack_buf);
 }
 
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c048.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c2bc.s");
+struct CS968_DustData {
+    unsigned int unused[8];
+    unsigned short rotation;
+    unsigned short angularVelocity;
+    unsigned int callback;
+};
+struct CS968_StateView { unsigned char pad[0x1f4]; int actorId; };
+extern struct CS968_StateView CS968_State __asm__("gState");
+extern unsigned char *CS968_Scene __asm__("iwram_3001ebc");
+extern unsigned int CS968_FrameFlags __asm__("iwram_3001e40");
+extern struct Actor *CS968_Actor(int) __asm__("__MapActor_GetActor");
+extern int CS968_Collision(struct Actor *, vec3_t *) __asm__("__TestCollision");
+extern void CS968_Travel(struct Actor *, int, int, int) __asm__("__Actor_TravelTo");
+extern void CS968_Anim(struct Actor *, int) __asm__("__Actor_SetAnim");
+extern void CS968_WaitMovement(struct Actor *) __asm__("__Actor_WaitMovement");
+
+void OvlFunc_968_200c048(unsigned int directionAddress)
+{
+    unsigned int *direction = (unsigned int *)directionAddress;
+    unsigned char *scene = CS968_Scene;
+    int actorId = CS968_State.actorId;
+    struct Actor *other = *(struct Actor **)(scene + 0x1e0);
+    struct Actor *actor = CS968_Actor(actorId);
+    vec3_t probe;
+    struct CS968_DustData data;
+    int collision;
+    unsigned int skipDust;
+    unsigned int x, vz, dx, dz;
+
+    probe.x = actor->pos.x + direction[0] * 0x18000;
+    probe.y = actor->pos.y;
+    probe.z = actor->pos.z + direction[2] * 0x18000;
+    collision = CS968_Collision(actor, &probe);
+    skipDust = CS968_FrameFlags & 4;
+    if (!skipDust) {
+        data.angularVelocity = ((__Random() << 12) >> 16) + 0xf800;
+        x = actor->pos.x + ((__Random() * 12 >> 16) << 16) - 0x60000;
+        {
+            unsigned int vx = ((__Random() * 5 >> 16) * 0x1999 + 0x7ffd) * direction[0];
+            vz = ((__Random() * 5 >> 16) * 0x1999 + 0x7ffd) * direction[2];
+            OvlFunc_968_2008118(x, actor->pos.y, actor->pos.z, vx, 0, vz, 0x800000, &data);
+        }
+    }
+    if (collision < 0) {
+        API_MapActor_Surprise(actorId, 0x102);
+        CS968_Travel(actor, actor->pos.x, actor->pos.y, actor->pos.z + 0x80000);
+        CS968_Anim(actor, 7);
+        CS968_WaitMovement(actor);
+        do { API_WaitFrames(1); } while (actor->pos.y != actor->floorPos);
+        CS968_Anim(actor, 6);
+        API_WaitFrames(3);
+    } else {
+        probe.x = actor->pos.x + (direction[0] << 19);
+        probe.y = actor->pos.y;
+        probe.z = actor->pos.z + (direction[2] << 19);
+        collision = CS968_Collision(actor, &probe);
+        if (collision <= 0) {
+            probe.x = actor->pos.x + (dx = direction[0] * 0x5b333) - (dz = direction[2] * 0x5b333);
+            probe.y = actor->pos.y;
+            probe.z = actor->pos.z + dz - dx;
+            collision = CS968_Collision(actor, &probe);
+            if (collision > 0) {
+                actor->pos.x += direction[2] * 0x18000;
+                actor->pos.z += direction[0] * 0x18000;
+            } else {
+                unsigned int diagonal = (direction[0] + direction[2]) * 0x5b333;
+                probe.x = diagonal + actor->pos.x;
+                probe.y = actor->pos.y;
+                probe.z = diagonal + actor->pos.z;
+                collision = CS968_Collision(actor, &probe);
+                if (collision > 0) {
+                    actor->pos.x -= direction[2] * 0x18000;
+                    actor->pos.z -= direction[0] * 0x18000;
+                } else {
+                    other->pos.x += direction[0] * 0x18000;
+                    actor->pos.x += direction[0] * 0x18000;
+                    other->pos.z += direction[2] * 0x18000;
+                    actor->pos.z += direction[2] * 0x18000;
+                }
+            }
+        }
+    }
+}
+
+extern void CS968S_FieldMode(int) __asm__("__Func_8091ff0");
+extern struct Actor *CS968S_Actor(int) __asm__("__MapActor_GetActor");
+extern void CS968S_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+extern void CS968S_ActorFlags(int, int) __asm__("__Func_8092950");
+struct CS968S_Effect {
+    int priority, animation;
+    int scaleX, scaleY, targetScaleX, targetScaleY;
+    short spriteId;
+    void *script;
+    unsigned short rotation, angularVelocity;
+    void *update;
+};
+static inline void CS968S_Prepare(struct CS968S_Effect *params)
+{
+    params->scaleX = ((__Random() << 1) >> 16) * 0x4ccc + 0x17ffc;
+    params->scaleY = ((__Random() << 1) >> 16) * 0x4ccc + 0x17ffc;
+    params->angularVelocity = ((__Random() << 12) >> 16) + 0xf800;
+}
+void OvlFunc_968_200c2bc(void)
+{
+    extern unsigned char iwram_3001ebc[];
+    struct CS968S_Effect data;
+    unsigned int repeats, row, column;
+
+    *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c0) = 0x202;
+    API_CutsceneStart();
+    CS968S_SpriteFlags(CS968S_Actor(0), 0);
+    CS968S_ActorFlags(0, 15);
+    CS968S_FieldMode(0xaa);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(40);
+    API_PlaySound(0xa2);
+    repeats = 0;
+    for (row = 0; row <= 9; row++) {
+        data.scaleX = ((__Random() << 1) >> 16) * 0x4ccc + 0x17ffc;
+        data.scaleY = ((__Random() << 1) >> 16) * 0x4ccc + 0x17ffc;
+        data.angularVelocity = ((__Random() << 12) >> 16) + 0xf800;
+repeatFirstRow:
+        for (column = 0; column <= 3 && row <= 7; column++) {
+            OvlFunc_968_2008118(((__Random() * 7) >> 16) * 0x80000 + 0x3600000,
+                                0, 0x300000 + row * 0x100000 + column * 0x40000,
+                                0, 0, 0, 0x880000, &data);
+        }
+        API_WaitFrames(3);
+        if (row == 3 && repeats <= 2) {
+            repeats++;
+            goto repeatFirstRow;
+        }
+        API_CopyMapTiles(0x30, row + 3, 0x36, row + 3, 3, 1);
+    }
+    API_CopyMapTiles(0x6f, 5, 0x75, 5, 5, 2);
+    API_CopyMapTiles(0x6f, 10, 0x75, 10, 5, 2);
+    API_CopyMapTiles(0x6f, 7, 0x6f, 5, 5, 2);
+    API_CopyMapTiles(0x6f, 7, 0x6f, 10, 5, 2);
+    for (row = 0; row <= 9; row++) {
+        CS968S_Prepare(&data);
+        for (column = 0; column <= 3 && row <= 7; column++) {
+            OvlFunc_968_2008118(((__Random() * 7) >> 16) * 0x80000 + 0x3000000,
+                                0, 0x300000 + row * 0x100000 + column * 0x40000,
+                                0, 0, 0, 0x880000, &data);
+        }
+        API_WaitFrames(3);
+        API_CopyMapTiles(0x37, row + 26, 0x30, row + 3, 3, 1);
+    }
+    API_PlaySound(0x121);
+    API_CutsceneWait(60);
+    API_Func_8091e9c(21);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c520.s");
 
 extern void OvlFunc_968_200c520(int a, int b);
@@ -1767,9 +2013,107 @@ void OvlFunc_968_200c610(void)
     API_Func_8091e9c(19);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c7c0.s");
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c968.s");
-extern void OvlFunc_968_200c968(struct Actor *);
+extern struct Actor *CS968R_Actor(int) __asm__("__MapActor_GetActor");
+extern void CS968R_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+struct CS968R_Field { unsigned char pad[0x1c0]; int flags; };
+extern struct CS968R_Field *CS968R_Field __asm__("iwram_3001ebc");
+struct CS968R_Effect {
+    int priority, animation, scaleX, scaleY, targetX, targetY;
+    short sprite, unused;
+    void *script;
+    short rotation, angularSpeed;
+    void *update;
+};
+void OvlFunc_968_200c7c0(void)
+{
+    extern void __Func_8092950(int, int);
+    extern void __Func_8091ff0(int);
+    extern void __Func_8093530(void);
+    struct CS968R_Effect effect;
+    struct CS968R_Effect *effectPtr;
+    unsigned int repeated, row, column;
+
+    CS968R_Field->flags = 0x202;
+    __CutsceneStart();
+    CS968R_SpriteFlags(CS968R_Actor(0), 0);
+    __Func_8092950(0, 15);
+    __Func_8091ff0(0xaa);
+    __MapTransitionIn();
+    __WaitMapTransition();
+    __CutsceneWait(40);
+    __PlaySound(0xa2);
+    API_Func_80933d4(0x8000, 0x1000);
+    API_Func_80933f8(0x2380000, -1, 0x1680000, 1);
+    repeated = 0;
+    row = 0;
+    effectPtr = &effect;
+    for (; row <= 12; ++row) {
+        unsigned int z;
+        effect.scaleX = (((__Random() << 1) >> 16) * 0x4ccc) + 0x17ffc;
+        effect.scaleY = (((__Random() << 1) >> 16) * 0x4ccc) + 0x17ffc;
+        effect.angularSpeed = (((__Random() << 12) >> 16) + 0xf800);
+    repeat:
+        for (column = 0; column <= 3; ++column) {
+            int x;
+            z = 0xc00000 + row * 0x100000 + column * 0x40000;
+            x = (((__Random() * 7) >> 16) << 19) + 0x2200000;
+            OvlFunc_968_2008118(x, 0, z, 0, 0, 0, 0x880000, effectPtr);
+        }
+        __WaitFrames(3);
+        if (row == 3) {
+            if (repeated <= 2) {
+                ++repeated;
+                goto repeat;
+            }
+        }
+        API_StartTask(OvlFunc_968_200c600, 0xc80);
+        API_CopyMapTiles(0x3a, row + 12, 0x22, row + 12, 3, 1);
+    }
+    API_CopyMapTiles(0x56, 0x29, 0x61, 14, 5, 2);
+    __Func_8093530();
+    API_Func_80933f8(-1, -1, -1, 0);
+    __CutsceneWait(60);
+    __SetFlag(0x307);
+    __Func_8091e9c(20);
+    __CutsceneEnd();
+}
+
+struct Struct_968_200c968 {
+    unsigned int unk0;
+    unsigned int unk4;
+    unsigned int pad8[4];
+    unsigned short unk18;
+    void *unk1c;
+    unsigned int pad20[2];
+};
+extern volatile unsigned int CS968_FrameCounter __asm__("iwram_3001e40");
+extern unsigned char Lm968_52cc[] __asm__(".Lm968_52cc");
+
+int OvlFunc_968_200c968(struct Actor *actor)
+{
+    struct Struct_968_200c968 sp10;
+    unsigned int flag;
+    int x, y, z;
+
+    sp10.unk0 = 1;
+    sp10.unk4 = 5;
+    sp10.unk18 = 0x8f << 1;
+    sp10.unk1c = Lm968_52cc;
+
+    flag = CS968_FrameCounter & 3;
+    if (flag == 0) {
+        if ((CS968_FrameCounter & 7) == 0) {
+            API_PlaySound(0xf6);
+        }
+        x = actor->pos.x + ((((__Random() * 49) >> 16) - 24) << 16);
+        y = actor->pos.y + ((((__Random() * 49) >> 16) - 24) << 16);
+        z = actor->pos.z + ((((__Random() * 49) >> 16) - 24) << 16);
+        OvlFunc_968_2008118(x, y, z, 0,
+                            ((((unsigned int)__Random() * 4) >> 16) << 15) + 0x8000,
+                            flag, 0x330000, &sp10);
+    }
+    return 0;
+}
 void OvlFunc_968_200ca2c(void)
 {
     struct Actor *player = ((struct Actor *)__MapActor_GetActor(0));

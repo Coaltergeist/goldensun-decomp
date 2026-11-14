@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 int __Func_8091a58(int, int);
 
 extern void __Actor_SetSpriteFlags(void *, int);
@@ -224,10 +225,80 @@ done:
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200834c.s");
+extern int PushBlockIds_959[] __asm__(".Lm959_5f18");
+extern int PushBlockBoxes_959[] __asm__(".Lm959_5f30");
+extern unsigned int PushBlockDirs_959[] __asm__(".Lm959_5ed8");
+extern struct MapState *gPushBlockMapState __asm__("iwram_3001ebc");
+
+void *OvlFunc_959_200834c(int *dir, int *arg1, int *arg2)
+{
+    struct MapState *map;
+    unsigned char *hero;
+    struct Actor **p_actor;
+    struct Actor *actor;
+    int *p;
+    unsigned int i;
+    short val;
+    unsigned int k;
+    int d;
+    int hero_x;
+    int target_x;
+    int target_z;
+    short ax;
+    short az;
+    int b_x1;
+    int b_z1;
+    int b_x2;
+    int b_z2;
+
+    map = gPushBlockMapState;
+    hero = (unsigned char *)__MapActor_GetActor(0);
+    *dir = *(unsigned short *)(hero + 6) >> 12;
+
+    p_actor = (struct Actor **)&map->actors[8];
+    for (i = 8; i <= 0x41; p_actor++, i++) {
+        actor = *p_actor;
+        p = *(int **)((char *)actor + 0x50);
+        p = *(int **)((char *)p + 0x28);
+        k = 0;
+        val = *(short *)p;
+        for (; k <= 5; k++) {
+            if (val == PushBlockIds_959[k]) {
+                *arg2 = k;
+                hero_x = *(int *)(hero + 8) >> 16;
+                d = PushBlockDirs_959[*dir];
+                target_x = (hero_x + (d >> 16)) >> 4;
+                target_z = ((*(int *)(hero + 16) >> 16) + (short)d) >> 4;
+
+                ax = *(short *)((char *)actor + 10);
+                b_x1 = (ax + PushBlockBoxes_959[k * 4 + 0]) >> 4;
+                az = *(short *)((char *)actor + 18);
+                b_z1 = (az + PushBlockBoxes_959[k * 4 + 1]) >> 4;
+                b_x2 = (ax + PushBlockBoxes_959[k * 4 + 2]) >> 4;
+                b_z2 = (az + PushBlockBoxes_959[k * 4 + 3]) >> 4;
+
+                if (b_x1 <= target_x && target_x < b_x2 &&
+                    b_z1 <= target_z && target_z < b_z2) {
+                    if (k & 1) {
+                        if (b_x1 != *(int *)(hero + 8) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    } else {
+                        if (b_z1 != *(int *)(hero + 16) >> 20) {
+                            *arg1 = i;
+                            return actor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return 0;
+}
 
 extern int L5f30[] __asm__(".Lm959_5f30");
-extern void *OvlFunc_959_200834c(int *, void *, void *);
 
 int OvlFunc_959_2008474(void *arg0)
 {
@@ -423,7 +494,63 @@ void OvlFunc_959_2008608(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_20088c0.s");
+int OvlFunc_959_20088c0(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L5f18[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L5f30[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L5f30[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L5f30[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L5f30[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L5f30[arg.a << 2] << 16;
+    arg.z += L5f30[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_959_2008244(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_959_2008244(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
 
 #include "state/global_state.h"
 extern GlobalState gState;
@@ -1364,7 +1491,75 @@ void OvlFunc_959_2009e2c(void)
     __SetFlag(0x949);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_2009e94.s");
+extern unsigned char Lconst_2438[] __asm__(".Lconst_2438");
+__asm__(".equ .Lconst_2438, 0x2438");
+extern unsigned char Lconst_a1[] __asm__(".Lconst_a1");
+__asm__(".equ .Lconst_a1, 0xa1");
+extern void __Func_8091f90(int, int);
+
+void OvlFunc_959_2009e94(void)
+{
+    unsigned int *p;
+    GlobalState *gs;
+    int message;
+
+    API_MapActor_SetAnim(0, 1);
+    API_MapActor_SetAnim(12, 1);
+    API_MapActor_SetAnim(13, 1);
+    API_MapActor_SetAnim(14, 1);
+    API_PlaySound(0x71);
+    API_MapActor_Emote(12, 0x100, 0);
+    API_CutsceneWait(30);
+    API_MapActor_Face(12, 0, 0);
+    message = (int)Lconst_2438;
+    API_MessageID(message);
+    API_ActorMessage(12, 0);
+    API_MapActor_Emote(13, 0x100, 0);
+    API_MapActor_Emote(14, 0x100, 0);
+    API_MapActor_Face(13, 0, 0);
+    API_MapActor_Face(14, 0, 0);
+    API_MapActor_Face(0, 13, 0);
+    API_CutsceneWait(0x41);
+    API_Func_8092adc(13, 0x5000, 0);
+    API_Func_8092adc(14, 0xd000, 0);
+    API_MessageID(message + 1);
+    API_ActorMessage(13, 0);
+    API_MapActor_DoAnim(14, 3);
+    API_MessageID(message + 2);
+    API_ActorMessage(14, 0);
+    API_MessageID(message + 3);
+    API_ActorMessage(12, 0);
+    API_Func_80925cc(13, 1);
+    API_MessageID(message + 4);
+    API_ActorMessage(13, 0);
+    API_MapActor_DoAnim(14, 3);
+    API_MessageID(message + 5);
+    API_ActorMessage(14, 0);
+    API_MapActor_DoAnim(14, 3);
+    API_CutsceneWait(0x3c);
+    API_MapActor_Face(13, 0, 0);
+    API_MapActor_Face(14, 0, 0);
+    API_CutsceneWait(0x46);
+    API_MapActor_TravelToAnim(12, 0x2a0, 0x58);
+    API_MapActor_WaitMovement(12);
+    API_MapActor_Face(12, 0, 0);
+    API_MapActor_DoAnim(12, 3);
+    message += 6;
+    API_CutsceneWait(30);
+    API_MessageID(message);
+    API_ActorMessage(12, 0);
+    p = *(unsigned int **)iwram_3001ebc;
+    *(unsigned int *)((char *)p + 0x1c0) = 0x200;
+    __Func_8091f90((int)Lconst_a1, 31);
+    gs = &gState;
+    *(unsigned char *)((char *)gs + 0x22b) = 3;
+    __StartMapBattle(0x62, 3);
+    API_MapActor_SetPos(12, 0, 0);
+    API_MapActor_SetPos(13, 0, 0);
+    API_MapActor_SetPos(14, 0, 0);
+    API_CutsceneEnd();
+    API_SetFlag(0x94a);
+}
 void OvlFunc_959_200a06c(void) {
     extern void __MapTransitionIn(void);
 
@@ -2381,7 +2576,86 @@ void OvlFunc_959_200c704(void) {
     API_ActorMessage(0x15, 0);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200c794.s");
+extern unsigned char Lconst_244f[] __asm__(".Lconst_244f");
+__asm__(".equ .Lconst_244f, 0x244f");
+extern unsigned char Lconst_2455[] __asm__(".Lconst_2455");
+__asm__(".equ .Lconst_2455, 0x2455");
+extern int __Func_8091c7c(int, int);
+
+void OvlFunc_959_200c794(void)
+{
+    int msg;
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x941)) {
+        API_MessageID(0x2566);
+        API_ActorMessage(0x12, 0);
+        API_CutsceneEnd();
+        return;
+    }
+    if (API_GetFlag(0x313)) {
+        API_MessageID(0x2457);
+        API_ShowActorMessage_NoWait(0x19, 0);
+        API_CutsceneEnd();
+        return;
+    }
+
+    API_MapActor_Emote(0x19, 0x102, 0x1e);
+    API_MapActor_Face(0x19, 0, 0);
+
+    msg = (int)Lconst_244f;
+    API_MessageID(msg);
+    API_ActorMessage(0x19, 0);
+
+    API_MapActor_Face(0x19, 0x18, 0);
+    API_Func_8093500(0x18, 1);
+    API_Func_8093530();
+    API_CutsceneWait(0x3c);
+    API_Func_8093500(0, 1);
+    API_CutsceneWait(0x14);
+
+    API_MapActor_Emote(0x19, 0x105, 0x3c);
+    API_MessageID(msg + 1);
+    API_ActorMessage(0x19, 0);
+
+    API_MapActor_Emote(0x19, 0x107, 0x3c);
+    API_MessageID(msg + 2);
+    API_ActorMessage(0x19, 0);
+
+    API_CutsceneWait(0x46);
+    API_MapActor_Emote(0x19, 0x100, 0x3c);
+    API_MapActor_Face(0x19, 0, 0);
+
+    API_MessageID(msg + 3);
+    API_ShowActorMessage_NoWait(0x19, 0);
+
+    if (!__Func_8091c7c(0, 0)) {
+        API_MessageID(msg + 4);
+        API_ShowActorMessage_NoWait(0x19, 0);
+    } else {
+        API_MessageID(msg + 5);
+        API_ShowActorMessage_NoWait(0x19, 0);
+    }
+
+    API_CutsceneWait(0x3c);
+    API_MapActor_Emote(0x19, 0x105, 0x3c);
+
+    msg = (int)Lconst_2455;
+    API_MessageID(msg);
+    API_ShowActorMessage_NoWait(0x19, 0);
+
+    API_Func_80925cc(0x19, 1);
+    API_MessageID(msg + 1);
+    API_ShowActorMessage_NoWait(0x19, 0);
+
+    msg += 2;
+    API_MapActor_DoAnim(0x19, 3);
+    API_MessageID(msg);
+    API_ShowActorMessage_NoWait(0x19, 0);
+
+    API_SetFlag(0x313);
+    API_CutsceneEnd();
+}
 
 void OvlFunc_959_200c928(void) {
     if (__GetFlag(0x941)) {
@@ -2604,7 +2878,74 @@ void OvlFunc_959_200cd88(void) {
     __ActorMessage(0xd, 0);
 }
 
-INCLUDE_ASM("asm/maps/lunpa_fortress/LunpaFortress_MapInit.s");
+extern unsigned char Lconst_a0[] __asm__(".Lconst_a0");
+__asm__(".equ .Lconst_a0, 0xa0");
+extern unsigned char Lconst_a2[] __asm__(".Lconst_a2");
+__asm__(".equ .Lconst_a2, 0xa2");
+extern unsigned char Lconst_a3[] __asm__(".Lconst_a3");
+__asm__(".equ .Lconst_a3, 0xa3");
+extern unsigned int __Random(void);
+extern void __Func_80108c4(int);
+extern void OvlFunc_959_200cf60(void);
+extern void OvlFunc_959_200d0e4(void);
+extern void OvlFunc_959_200d324(void);
+extern void OvlFunc_959_200d520(void);
+
+struct CS959I_State { unsigned char pad[0x1c0]; short map, room; };
+extern struct CS959I_State CS959I_State __asm__("gState");
+struct CS959I_Field { unsigned char pad[0x1c0]; int flags; };
+extern struct CS959I_Field *CS959I_Field __asm__("iwram_3001ebc");
+extern unsigned int CS959I_RandomSlot __asm__(".Lm959_5fa4");
+
+int LunpaFortress_MapInit(void)
+{
+    struct Actor *actor;
+    CS959I_RandomSlot = (__Random() * 7) >> 16;
+    if (CS959I_State.map == (int)Lconst_a0) {
+        __Func_80108c4(0xe00);
+        OvlFunc_959_200cf60();
+    }
+    if (CS959I_State.map == (int)Lconst_a1) OvlFunc_959_200d0e4();
+    if (CS959I_State.map == (int)Lconst_a2) OvlFunc_959_200d324();
+    if (CS959I_State.map == (int)Lconst_a3) {
+        CS959I_Field->flags = 0x204;
+        __Actor_SetSpriteFlags(__MapActor_GetActor(12), 0);
+        API_Func_8092adc(12, 0, 0);
+        __MapActor_SetAnim(12, 0);
+        OvlFunc_959_200d520();
+        actor = (struct Actor *)__MapActor_GetActor(8);
+        if (actor) __Actor_SetSpriteFlags(actor, 0);
+        actor->flags = 2;
+        actor = (struct Actor *)__MapActor_GetActor(9);
+        if (actor) __Actor_SetSpriteFlags(actor, 0);
+        actor->flags = 2;
+        actor = (struct Actor *)__MapActor_GetActor(10);
+        if (actor) __Actor_SetSpriteFlags(actor, 0);
+        actor->flags = 2;
+        __Func_80108c4(0xe00);
+        if (CS959I_State.room == 4) {
+            __Func_80108c4(0xc00);
+            OvlFunc_959_200b054();
+        }
+        if (CS959I_State.room == 3) {
+            __Func_80108c4(0xc00);
+            if (__GetFlag(0x941)) {
+                API_MapActor_SetPos(12, 0, 0);
+                API_MapActor_SetPos(16, 0x1b00000, 0x1580000);
+                API_Func_8092adc(16, 0x5000, 0);
+                API_MapActor_SetPos(13, 0x1c80000, 0x1200000);
+                API_Func_8092adc(13, 0x5000, 0);
+                API_MapActor_SetPos(17, 0x1c80000, 0x1400000);
+                __Actor_SetSpriteFlags(__MapActor_GetActor(17), 0);
+            }
+        }
+        actor = (struct Actor *)__MapActor_GetActor(15);
+        if (actor) __Actor_SetSpriteFlags(actor, 0);
+        actor->flags = 2;
+        actor->scale.x = 0xcccc;
+    }
+    return 0;
+}
 
 extern void OvlFunc_959_200d470(void);
 extern void OvlFunc_959_2009528(void);
@@ -2734,7 +3075,64 @@ void OvlFunc_959_200d0e4(void)
     actor->scale.x = 0xc000;
     actor->scale.y = 0xc000;
 }
-INCLUDE_ASM("asm/maps/lunpa_fortress/OvlFunc_959_200d324.s");
+extern void OvlFunc_959_200d4dc(void);
+extern void __ClearFlag(int);
+
+void OvlFunc_959_200d324(void)
+{
+    struct Actor *actor;
+
+    CS959R_Scene->transition = 0x200;
+    OvlFunc_959_200d4dc();
+    if (API_GetFlag(0x943)) {
+        OvlFunc_959_2008c78();
+    }
+    API_SetFlag(0x217);
+    API_SetFlag(0x218);
+    if (API_GetFlag(0x944)) {
+        API_MapActor_SetPos(8, 0, 0);
+        API_ClearFlag(0x217);
+    }
+    if (API_GetFlag(0x945)) {
+        API_MapActor_SetPos(9, 0, 0);
+        OvlFunc_959_200a2d4();
+    }
+    if (API_GetFlag(0x946)) {
+        API_MapActor_SetPos(10, 0, 0);
+        API_ClearFlag(0x218);
+    }
+    if (API_GetFlag(0x947)) {
+        OvlFunc_959_200a26c();
+    }
+    if (API_GetFlag(0x948)) {
+        OvlFunc_959_200a2a0();
+    }
+    API_CutsceneStart();
+    actor = (struct Actor *)__MapActor_GetActor(8);
+    if (actor != 0) {
+        actor->flags = 2;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(9);
+    if (actor != 0) {
+        actor->flags = 2;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(10);
+    if (actor != 0) {
+        actor->flags = 2;
+    }
+    actor = (struct Actor *)__MapActor_GetActor(11);
+    if (actor != 0) {
+        __Actor_SetSpriteFlags(actor, 0);
+    }
+    actor->flags = 2;
+    actor = (struct Actor *)__MapActor_GetActor(12);
+    if (actor != 0) {
+        actor->collision |= 0x10;
+    }
+    __Actor_SetSpriteFlags(__MapActor_GetActor(11), 0);
+    API_CutsceneEnd();
+    __Func_80108c4(0xe00);
+}
 
 extern void OvlFunc_959_2008ee0(int);
 

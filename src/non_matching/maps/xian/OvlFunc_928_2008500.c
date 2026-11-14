@@ -1,35 +1,44 @@
-extern int OvlFunc_928_2008408(unsigned char *, unsigned char *, int, int);
+/* Remaining diff: target avoids call-used r4 at the > 0x77 branch, spilling &actor->__unk62
+ * into r12 (ip) and reloading QImode 0 from a literal pool (.word 0), whereas camelot-gcc
+ * with -fcall-used-r4 uses r4 for the 0x182 offset calculation and movs r3, #0.
+ */
+#include "actor.h"
 
-int OvlFunc_928_2008500(unsigned char *actor)
+extern void *__MapActor_GetActor(int);
+extern int OvlFunc_928_2008408(struct Actor *, struct Actor *, int, int);
+extern unsigned char *iwram_3001ebc;
+
+static inline void CS928_Half(unsigned short *p, int value) { *p = value; }
+
+int OvlFunc_928_2008500(struct Actor *actor)
 {
-    unsigned char *leader;
-    int flag = 0;
+    struct Actor *leader;
+    u8 flag = 0;
     int leader_x;
     int actor_x;
 
-    if (*(int *)(actor + 0x38) == 0x80 << 24
-        && *(int *)(actor + 0x40) == *(int *)(actor + 0x38)) {
+    if (actor->prevPos.x == (0x80 << 24) && actor->prevPos.z == actor->prevPos.x) {
         return 0;
     }
 
-    leader = (unsigned char *)__MapActor_GetActor(0);
-    leader_x = *(int *)(leader + 8);
+    leader = (struct Actor *)__MapActor_GetActor(0);
+    leader_x = leader->pos.x;
 
     if ((leader_x >> 20) >= 17 && (leader_x >> 20) <= 18
-        && (*(int *)(leader + 0x10) >> 20) == 14
-        && ((actor_x = *(int *)(actor + 8)) >> 20) <= 19
-        && *(int *)(actor + 0x24) <= 0) {
+        && (leader->pos.z >> 20) == 14
+        && ((actor_x = actor->pos.x) >> 20) <= 19
+        && actor->motion.x <= 0) {
         if (leader_x <= actor_x) {
-            actor[0x62]++;
+            actor->__unk62++;
             flag = 1;
         }
     } else {
-        actor[0x62] = 0;
+        actor->__unk62 = 0;
     }
 
-    if (flag && actor[0x62] > 0x77) {
-        *(short *)(*(unsigned char **)iwram_3001ebc + 0x182) = 0xc8;
-        actor[0x62] = 0;
+    if (flag && actor->__unk62 > 0x77) {
+        CS928_Half((u16 *)(iwram_3001ebc + 0x182), 0xc8);
+        actor->__unk62 = 0;
     }
 
     OvlFunc_928_2008408(actor, leader, 0x12, flag);

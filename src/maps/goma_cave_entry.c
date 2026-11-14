@@ -112,7 +112,49 @@ void *GomaCaveEntry_GetEvents(void) {
     return (void *)gOvl_02009488;
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/GomaCaveEntry_MapInit.s");
+extern void __Func_8091ff0(int);
+extern void __Actor_SetSpriteFlags(void *, int);
+
+int GomaCaveEntry_MapInit(void)
+{
+    API_SetFlag(0x144);
+    API_CutsceneWait(10);
+    __Func_8091ff0(0xaa);
+    API_MapActor_SetAnim(0xb, 2);
+    ((struct Actor *)__MapActor_GetActor(0xb))->flags = 2;
+    ((struct Actor *)__MapActor_GetActor(8))->collision |= 0x10;
+    ((struct Actor *)__MapActor_GetActor(0xf))->collision |= 8;
+
+    if (API_GetFlag(0x865)) {
+        API_Func_8010704(0x4a, 0xb, 1, 1, 0x49, 0xb);
+    }
+
+    if (API_GetFlag(0x860)) {
+        API_MapActor_SetPos(8, 0x88 << 16, 0xc4 << 16);
+        ((struct Actor *)__MapActor_GetActor(8))->flags |= 2;
+        API_MapActor_SetAnim(8, 2);
+        API_Func_8010704(0x27, 0xc, 3, 1, 8, 0xc);
+        API_Func_8010704(0x2b, 0xb, 3, 1, 0xc, 0xb);
+    }
+
+    if (API_GetFlag(0x861)) {
+        API_MapActor_SetPos(9, 0x84 << 17, 0x9c << 17);
+        API_Func_8010704(0x30, 0x12, 1, 2, 0x10, 0x12);
+    } else if (API_GetFlag(0x862)) {
+        API_MapActor_SetPos(9, 0x8c << 17, 0x9c << 17);
+        API_Func_8010704(0x2f, 0x12, 1, 2, 0x10, 0x12);
+    }
+
+    if (API_GetFlag(0x863)) {
+        API_MapActor_SetPos(10, 0xbc << 17, 0x8c << 17);
+        ((struct Actor *)__MapActor_GetActor(10))->flags = 2;
+        ((struct Actor *)__MapActor_GetActor(10))->__unk55 = 0;
+        __Actor_SetSpriteFlags(__MapActor_GetActor(10), 0);
+        API_Func_8010704(0x36, 0x11, 1, 1, 0x17, 0x11);
+    }
+
+    return 0;
+}
 extern void __MapActor_PlayPendingSound(void);
 extern void __MessageID(int);
 extern void __Func_8092adc(int, int, int);
@@ -500,11 +542,70 @@ void OvlFunc_903_2008f8c(unsigned int arg0, unsigned int arg1)
     }
 }
 
+#include "rpg.h"
+
 extern unsigned char *__GetUnit(unsigned int);
 extern int __GiveItemTo(unsigned int, unsigned int);
-extern unsigned char *__GetItemInfo(unsigned int);
+extern struct Item *__GetItemInfo(unsigned int);
 extern void __Func_8078948(unsigned int, unsigned int);
 extern int __EquipItem(unsigned int, unsigned int);
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_2008fc8.s");
+void OvlFunc_903_2008fc8(void)
+{
+    unsigned char *unit;
+    unsigned short *items;
+    struct Item *info;
+    unsigned short *p;
+    int count;
+    int i;
+    int item;
+
+    item = 0x41;
+    unit = __GetUnit(2);
+    count = 0;
+retry:
+    count++;
+    if (count > 1000) {
+        int z;
+        p = (unsigned short *)(unit + 0xf4);
+        z = 0;
+        *p = z;
+    }
+    if (__GiveItemTo(2, 0x41) == -1) {
+        items = (unsigned short *)unit;
+        i = 0;
+        items = (unsigned short *)((char *)items + 0xd8);
+        while (i <= 14) {
+            info = __GetItemInfo(*items++);
+            if (info->type == 1) {
+                __Func_8078948(2, i);
+                goto retry;
+            }
+            i++;
+        }
+        items = (unsigned short *)unit;
+        i = 0;
+        items = (unsigned short *)((char *)items + 0xd8);
+        while (i <= 14) {
+            info = __GetItemInfo(*items);
+            if (info->type == 0 && !(info->flags & 8) && info->useEffect == 1) {
+                __Func_8078948(2, i);
+                goto retry;
+            }
+            items++;
+            i++;
+        }
+        goto retry;
+    } else {
+        items = (unsigned short *)unit;
+        i = 0;
+        items = (unsigned short *)((char *)items + 0xd8);
+        while (i <= 14) {
+            if (*items++ == item) {
+                __EquipItem(2, i);
+            }
+            i++;
+        }
+    }
+}
 INCLUDE_ASM("asm/maps/goma_cave_entry/goma_cave_entry_data.s");

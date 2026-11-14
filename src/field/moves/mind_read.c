@@ -1,4 +1,17 @@
 #include "nonmatching.h"
+#include "dma.h"
+#include "dma0.h"
+
+struct MindReadState {
+    u32 hofsBuf[2][81];
+    u16 unk288;
+    u8 bufIdx;
+    u8 unk28B[3];
+    u16 unk28E;
+    u16 actorID;
+    u16 unk292;
+    u8 paused;
+};
 
 INCLUDE_ASM("asm/field/moves/mind_read/Field_MindRead.s");
 
@@ -26,5 +39,16 @@ void Func_8097608(void)
 }
 
 INCLUDE_ASM("asm/field/moves/mind_read/Task_08097644.s");
-INCLUDE_ASM("asm/field/moves/mind_read/Func_8097868.s");
+
+void Func_8097868(void)
+{
+    struct MindReadState *state = *(struct MindReadState **)iwram_3001ea8;
+
+    if (state->paused == 0) {
+        u32 *src = state->hofsBuf[state->bufIdx];
+        UnknownDMAPrefix();
+        DMA0_SET(src, (void *)&REG_BG0HOFS, 0xa2600001);
+    }
+}
+
 INCLUDE_ASM("asm/field/moves/mind_read/Func_80978c4.s");

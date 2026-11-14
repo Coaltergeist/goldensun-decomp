@@ -15,7 +15,118 @@ void Field_Halt_Target(void) {
     Field_Halt();
 }
 
-INCLUDE_ASM("asm/field/moves/halt/Field_Halt.s");
+extern void *CreateParticleActor(unsigned short spriteID, int x, int y, int z);
+extern void _Actor_SetAnim(void *actor, int anim);
+extern void Func_8097384(void);
+extern void WaitFrames(unsigned int nframes);
+extern void _PlaySound(unsigned int id);
+extern void Func_80974d8(vec3_t *vec);
+extern unsigned int Random(void);
+extern void vec3_translate(int mag, unsigned int angle, vec3_t *vec);
+extern void Func_809ba90(void *arg0, int arg1, int arg2, int arg3);
+extern void Func_809aa98(void);
+extern void Func_809ba7c(void *arg0, void *arg1);
+extern void _Sprite_SetColorswap(void *sprite, int color);
+extern void _DeleteActor(void *actor);
+extern void Func_809748c(void);
+
+static inline int HaltLerpEnd(int steps)
+{
+    return steps + 1;
+}
+
+static inline fx32 HaltLerp(fx32 a, fx32 b, int step, int steps)
+{
+    return a + (b - a) * step / steps;
+}
+
+struct HaltParticle {
+    void *sprite;
+    u8 pad4[0x44];
+};
+
+struct HaltMoveState {
+    u8 pad0[0x04];
+    vec3_t targetPos;
+    struct Actor *caster;
+    struct Actor *target;
+    u8 pad18[0x40];
+    struct HaltParticle particles[16];
+};
+
+void Field_Halt(void)
+{
+    struct HaltMoveState *obj;
+    struct Actor *caster;
+    struct Actor *particle;
+    struct HaltParticle *p;
+    vec3_t buf;
+    vec3_t startPos;
+    vec3_t endPos;
+    int n;
+    int i;
+    int scale;
+
+    obj = (struct HaltMoveState *)iwram_3001f30;
+    caster = obj->caster;
+    obj->targetPos.y = caster->pos.y;
+
+    particle = CreateParticleActor(0xfa, 0, 0, 0);
+    n = 0;
+    _Actor_SetAnim(particle, 0);
+    if (particle != NULL) {
+        Func_8097384();
+
+        startPos.x = caster->pos.x;
+        startPos.y = caster->pos.y + 0x100000;
+        startPos.z = caster->pos.z;
+
+        endPos.x = obj->targetPos.x;
+        endPos.y = obj->targetPos.y + 0x80000;
+        endPos.z = obj->targetPos.z;
+
+        for (; n < HaltLerpEnd(10); n++) {
+            particle->pos.x = startPos.x + (endPos.x - startPos.x) * n / 10;
+            particle->pos.y = startPos.y + (endPos.y - startPos.y) * n / 10;
+            particle->pos.z = startPos.z + (endPos.z - startPos.z) * n / 10;
+            scale = HaltLerp(0x4000, 0x10000, n, 10);
+            particle->scale.x = scale;
+            particle->scale.y = scale;
+            WaitFrames(1);
+        }
+
+        WaitFrames(5);
+        _Actor_SetAnim(particle, 1);
+        _PlaySound(0x6c);
+        WaitFrames(10);
+        _PlaySound(0x6c);
+        WaitFrames(10);
+        _PlaySound(0x6c);
+        WaitFrames(10);
+        _PlaySound(0x6d);
+
+        p = obj->particles;
+        for (i = 0; i < 16; i++, p++) {
+            buf.x = particle->pos.x;
+            buf.y = particle->pos.y + 0x80000;
+            buf.z = particle->pos.z;
+            Func_80974d8(&buf);
+            vec3_translate(0x40000, Random(), &buf);
+            Func_809ba90(p, 0x11d, buf.x, buf.z);
+            Func_809ba7c(p, Func_809aa98);
+            _Sprite_SetColorswap(p->sprite, 7);
+        }
+
+        buf.x = particle->pos.x;
+        buf.y = particle->pos.y + 0x80000;
+        buf.z = particle->pos.z;
+        WaitFrames(8);
+        _DeleteActor(particle);
+        WaitFrames(4);
+        WaitFrames(0x1e);
+        Func_809748c();
+    }
+}
 
 extern unsigned int Random(void);
 extern void _Actor_SetColorswap(void *actor, int colorswap);

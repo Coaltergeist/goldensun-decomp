@@ -5,7 +5,7 @@
 #include "actor.h"
 #include "field.h"
 #include "dma.h"
-extern void OvlFunc_947_20093b0(void *);
+
 
 extern int OvlFunc_947_200858c();
 
@@ -497,7 +497,63 @@ void OvlFunc_947_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008ba4.s");
+int OvlFunc_947_2008ba4(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L2ce0[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = gScript_884__0200acf8[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = gScript_884__0200acf8[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = gScript_884__0200acf8[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = gScript_884__0200acf8[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += gScript_884__0200acf8[arg.a << 2] << 16;
+    arg.z += gScript_884__0200acf8[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_947_2008528(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_947_2008528(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2008cc0.s");
 
 extern void __WaitFrames(unsigned int);
@@ -820,7 +876,22 @@ int OvlFunc_947_2009268(void)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20093b0.s");
+void OvlFunc_947_20093b0(struct Actor *a)
+{
+    a->pos.x += a->bounce;
+    a->pos.y += a->gravity;
+    a->pos.z += a->__unk4C;
+
+    a->bounce -= ((a->bounce) / (10));
+    a->gravity -= ((a->gravity) / (3));
+    a->__unk4C -= ((a->__unk4C) / (10));
+
+    a->scale.x += a->speed;
+    a->scale.y += a->accel;
+
+    a->sprite->rotation += a->waveCounter;
+}
+
 
 
 extern void __Func_80929d8(unsigned int a, int b);
@@ -833,6 +904,8 @@ unsigned int OvlFunc_947_2009428(unsigned int arg0) {
 
 #include "state/global_state.h"
 #include "actor.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 extern GlobalState gState;
 extern unsigned char _EVENT_73[], _EVENT_74[], _EVENT_77[], _EVENT_79[], _EVENT_7a[];
 extern unsigned char Lm947_2eac[] __asm__(".Lm947_2eac");
@@ -1083,7 +1156,53 @@ void OvlFunc_947_200975c(void)
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009938.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_20099f0.s");
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009aa8.s");
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009be8.s");
+
+struct Tile947 {
+    u16 id : 12;
+    u16 f1 : 2;
+    u16 f2 : 2;
+    u8 f3;
+    u8 f4;
+};
+
+struct CS947S_Record { int x, y, z; struct Tile947 tile; int flag; };
+extern struct CS947S_Record CS947S_Records[] __asm__("bss_36d0");
+
+void OvlFunc_947_2009be8(void)
+{
+    struct Actor actorCopy;
+    vec3_t recordCopy;
+    unsigned int i, j;
+    struct Actor *first, *second;
+    for (i = 0; i <= 2; ++i) {
+        first = (struct Actor *)__MapActor_GetActor(i + 8);
+        for (j = i; j <= 3; ++j) {
+            second = (struct Actor *)__MapActor_GetActor(j + 8);
+            if (first->pos.y > second->pos.y || first->pos.z >= second->pos.z) {
+                DMA3_COPY(second, &actorCopy, sizeof(actorCopy));
+                WaitForDma3();
+                DMA3_COPY(first, second, sizeof(actorCopy));
+                WaitForDma3();
+                DMA3_COPY(&actorCopy, first, sizeof(actorCopy));
+                WaitForDma3();
+                DMA3_SET(&CS947S_Records[j], &recordCopy, 0x84000004);
+                WaitForDma3();
+                DMA3_SET(&CS947S_Records[i], &CS947S_Records[j], 0x84000004);
+                WaitForDma3();
+                DMA3_SET(&recordCopy, &CS947S_Records[i], 0x84000004);
+                WaitForDma3();
+                if (__GetFlag(CS947S_Records[i].flag) && !__GetFlag(CS947S_Records[j].flag)) {
+                    __ClearFlag(CS947S_Records[i].flag);
+                    __SetFlag(CS947S_Records[j].flag);
+                } else if (!__GetFlag(CS947S_Records[i].flag) && __GetFlag(CS947S_Records[j].flag)) {
+                    __SetFlag(CS947S_Records[i].flag);
+                    __ClearFlag(CS947S_Records[j].flag);
+                }
+            }
+        }
+    }
+}
+
 INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009d84.s");
 
 struct Actor947 {
@@ -1520,7 +1639,6 @@ __asm__(".equ .Lconst_79, 0x79");
 extern unsigned char Const7A[] __asm__(".Lconst_7a");
 __asm__(".equ .Lconst_7a, 0x7a");
 
-extern void OvlFunc_947_2008ba4(int);
 extern void __Func_80105d4();
 extern int __GetFlag();
 extern void OvlFunc_common0_70(int, int, int, int);

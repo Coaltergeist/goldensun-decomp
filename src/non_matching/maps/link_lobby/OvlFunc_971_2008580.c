@@ -1,3 +1,11 @@
+/* Remaining diffs vs asm/maps/link_lobby/OvlFunc_971_2008580.s:
+ * - Second unit send loop (`slot <= 2`) has its wait loop placed above the loop header
+ *   and non-merged `result = sent; goto done;` exit blocks.
+ * - Command compaction loop reloads `data->count` via `[r5, r1]` with `r1 = 0x100`
+ *   recomputed on each outer iteration (`mov r1, #0x80; lsl r1, #1; ldr r3, [r5, r1]`).
+ */
+extern unsigned short iwram_3001f64;
+extern int OvlFunc_971_200853c(unsigned short *arg0);
 extern void *CS971S_Alloc(unsigned int) __asm__("__alloc_ewram");
 extern void CS971S_Free(void *) __asm__("__free");
 extern void *CS971S_Unit(int) __asm__("__GetUnit");
@@ -6,6 +14,7 @@ extern int CS971S_Send(unsigned int, unsigned int) __asm__("__Func_80063bc");
 extern unsigned int CS971S_Busy(void) __asm__("__Func_80064f4");
 extern void CS971S_Wait(int) __asm__("__WaitFrames");
 extern void CS971S_Copy(void *, const void *, unsigned int) __asm__("iwram_3001388") __attribute__((long_call));
+
 union CS971S_Command {
     unsigned int word;
     struct { unsigned char bytes[2], unit, flags; } fields;
@@ -15,6 +24,7 @@ struct CS971S_PartyData {
     union CS971S_Command commands[64];
     int count;
 };
+
 int OvlFunc_971_2008580(void)
 {
     unsigned short party[8];
@@ -25,28 +35,29 @@ int OvlFunc_971_2008580(void)
     int count = OvlFunc_971_200853c(party);
     int timeout = 600;
     int slot, failures, i, sent;
-    for (i = 7; i >= 0; --i) remap[i] = 0;
+
+    for (i = 7; i >= 0; --i)
+        remap[i] = 0;
     for (slot = 0; slot < count; ++slot) {
-        CS971S_Copy(buffer, CS971S_Unit(party[slot]), 0x154);
+        CS971S_Copy(buffer, CS971S_Unit(party[slot]), unitSize);
         buffer[0x12a] = 2;
         remap[party[slot]] = slot - 0x80;
-        sent = CS971S_Send((unsigned int)buffer, 0x154);
+        sent = CS971S_Send((unsigned int)buffer, unitSize);
         failures = 0;
         if (sent == -1) {
             result = sent;
             goto done;
         }
         while (CS971S_Busy()) {
-            --timeout;
             CS971S_Wait(1);
-            if (timeout < 0 || (iwram_3001f64 & 3) != 3) {
-                if (++failures > 24) goto error;
+            if (--timeout < 0 || (iwram_3001f64 & 3) != 3) {
+                if (++failures > 24)
+                    goto error;
             }
         }
         CS971S_Wait(2);
     }
     for (; slot <= 2; ++slot) {
-        failures = 0;
         buffer[0x12a] = 0;
         sent = CS971S_Send((unsigned int)buffer, 0x154);
         failures = 0;
@@ -55,9 +66,8 @@ int OvlFunc_971_2008580(void)
             goto done;
         }
         while (CS971S_Busy()) {
-            --timeout;
             CS971S_Wait(1);
-            if (timeout < 0 || (iwram_3001f64 & 3) != 3) {
+            if (--timeout < 0 || (iwram_3001f64 & 3) != 3) {
                 if (++failures > 24) {
                     result = -1;
                     goto done;
@@ -95,10 +105,10 @@ int OvlFunc_971_2008580(void)
             goto done;
         }
         while (CS971S_Busy()) {
-            --commandTimeout;
             CS971S_Wait(1);
-            if (commandTimeout < 0 || (iwram_3001f64 & 3) != 3) {
-                if (++commandFailures > 24) goto error;
+            if (--commandTimeout < 0 || (iwram_3001f64 & 3) != 3) {
+                if (++commandFailures > 24)
+                    goto error;
             }
         }
         CS971S_Wait(1);

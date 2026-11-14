@@ -1,6 +1,10 @@
+/*
+ * Exact byte length (0xae4). Remaining diff: local-alloc places #0 for
+ * cameraActor[0x55] = 0 in r3 instead of r6, allowing global-alloc to assign
+ * GCSE-hoisted 0x5000/0x1000/0x9000 to {r6, r9, fp} instead of {r9, fp, r6}.
+ */
 #include "api.h"
 
-static inline void PlazaWriteByte(unsigned char *address, int value) { *address = value; }
 void OvlFunc_884_20097c8(void)
 {
     extern unsigned char gScript_884__0200ac00[];
@@ -14,15 +18,14 @@ void OvlFunc_884_20097c8(void)
     extern void __Func_800fe9c(void);
     extern void __Func_807808c(int);
     extern int __Func_8091a58(int, int);
-    extern unsigned char * __Func_8093554(void);
-    extern void * __MapActor_GetActor(int);
-    extern void __MapActor_RunScript(int, int);
+    extern unsigned char *__Func_8093554(void);
+    extern void *__MapActor_GetActor(int);
+    extern void __MapActor_RunScript(int, void *);
     extern void __MapActor_SetExtra(int, int);
     extern void OvlFunc_884_200a2c8(unsigned int, unsigned int);
     extern void OvlFunc_884_200a2e0(unsigned int, unsigned int, unsigned int);
-    unsigned char * cameraActor;
+    unsigned char *cameraActor;
     unsigned char *actor;
-    unsigned int facing9000;
     unsigned char *transitionState;
 
     __Func_807808c(1);
@@ -126,7 +129,6 @@ void OvlFunc_884_20097c8(void)
     OvlFunc_884_200a2e0(11, 0x5000, 0x3c);
     API_MapActor_DoAnim(11, 3);
     OvlFunc_884_200a2c8(11, 10);
-    /* Preserve the original null-checked actor-position copy. */
     actor = __MapActor_GetActor(30);
     if (actor != 0) {
         API_MapActor_SetPos(31, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
@@ -134,10 +136,10 @@ void OvlFunc_884_20097c8(void)
     API_WaitFrames(2);
     actor = __MapActor_GetActor(30);
     actor += 0x23;
-    PlazaWriteByte(actor, (0xfe & *actor));
+    *actor &= 0xfe;
     actor = __MapActor_GetActor(31);
     actor += 0x23;
-    PlazaWriteByte(actor, (0xfe & *actor));
+    *actor &= 0xfe;
     API_Func_8092b08(30, 2);
     API_Func_8092b08(31, 2);
     API_MapActor_SetSpeed(31, 0x39999, 0x1cccc);
@@ -146,7 +148,7 @@ void OvlFunc_884_20097c8(void)
     API_CutsceneWait(20);
     API_MapActor_SetAnim(30, 3);
     API_MapActor_SetSpeed(30, 0x4cccc, 0x26666);
-    __MapActor_RunScript(30, (int)gScript_884__0200ac90);
+    __MapActor_RunScript(30, gScript_884__0200ac90);
     API_CutsceneWait(0x3c);
     API_Func_80925cc(12, 2);
     OvlFunc_884_200a2e0(12, 0x7000, 10);
@@ -166,7 +168,7 @@ void OvlFunc_884_20097c8(void)
     API_CutsceneWait(10);
     API_Func_80933d4(0x26666, 0x4ccc);
     cameraActor = __Func_8093554();
-    PlazaWriteByte(((unsigned char *)cameraActor) + 0x55, 0);
+    cameraActor[0x55] = 0;
     API_Func_80933f8(0xd70000, 0x100000, 0x3210000, 1);
     API_CutsceneWait(10);
     API_MapActor_SetBehavior(12, (int)gScript_884__0200ad74);
@@ -174,10 +176,9 @@ void OvlFunc_884_20097c8(void)
     OvlFunc_884_200a2e0(12, 0x3000, 0x78);
     API_Func_80925cc(13, 2);
     API_CutsceneWait(20);
-    facing9000 = 0x9000;
     OvlFunc_884_200a2c8(13, 20);
     API_Func_8092adc(0, 0, 0);
-    OvlFunc_884_200a2e0(1, facing9000, 20);
+    OvlFunc_884_200a2e0(1, 0x9000, 20);
     OvlFunc_884_200a2e0(0, 0xc000, 10);
     OvlFunc_884_200a2e0(1, 0xb000, 10);
     API_MapActor_SetAnim(0, 3);
@@ -223,7 +224,7 @@ void OvlFunc_884_20097c8(void)
     API_MapActor_TravelToAnimWait(17, 0x110, 0x330);
     API_Func_8092adc(17, 0x8000, 0);
     API_Func_80925cc(1, 2);
-    OvlFunc_884_200a2e0(1, facing9000, 10);
+    OvlFunc_884_200a2e0(1, 0x9000, 10);
     OvlFunc_884_200a2c8(1, 10);
     API_Func_8092adc(14, 0x3000, 0);
     OvlFunc_884_200a2e0(0, 0, 10);
@@ -261,7 +262,7 @@ void OvlFunc_884_20097c8(void)
     OvlFunc_884_200a2e0(0, 0xc000, 20);
     OvlFunc_884_200a2e0(15, 0xd000, 10);
     OvlFunc_884_200a2c8(15, 10);
-    OvlFunc_884_200a2e0(15, facing9000, 20);
+    OvlFunc_884_200a2e0(15, 0x9000, 20);
     OvlFunc_884_200a2e0(15, 0x5000, 10);
     API_MapActor_SetAnim(11, 3);
     API_MapActor_SetAnim(14, 3);
@@ -308,10 +309,10 @@ void OvlFunc_884_20097c8(void)
     API_CutsceneWait(0x50);
     actor = __MapActor_GetActor(0);
     actor += 0x23;
-    PlazaWriteByte(actor, (*actor | 1));
+    *actor |= 1;
     actor = __MapActor_GetActor(1);
     actor += 0x23;
-    PlazaWriteByte(actor, (1 | *actor));
+    *actor |= 1;
     API_MapActor_Emote(0, 0x102, 0);
     API_MapActor_Emote(1, 0x102, 0x50);
     OvlFunc_884_200a2e0(0, 0x4000, 10);
@@ -325,7 +326,6 @@ void OvlFunc_884_20097c8(void)
     API_MapActor_SetSpeed(1, 0xcccc, 0x6666);
     API_MapActor_SetBehavior(1, (int)gScript_884__0200adf0);
     API_CutsceneWait(0x3c);
-    /* Both transition writes use the same field-state pointer. */
     transitionState = *(unsigned char **)CS_iwram_3001ebc;
     *(int *)(transitionState + 0x1c0) = 0x100;
     *(int *)(transitionState + 0x1c8) = 0x3c;

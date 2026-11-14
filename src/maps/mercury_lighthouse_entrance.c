@@ -1,3 +1,4 @@
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
 /* rom_7aa430 (overlay file 923): consolidated TU — mercury_lighthouse_entrance map overlay. */
 
 #include "nonmatching.h"
@@ -138,8 +139,8 @@ void OvlFunc_923_20083a8(void)
     *(int *)(actor + 0x40) = 0x80 << 24;
     *(int *)(actor + 0x24) = zero;
     *(int *)(actor + 0x2c) = zero;
-    *(int *)(actor + 8) = *(short *)(actor + 0xa) << 16;
-    *(int *)(actor + 0x10) = *(short *)(actor + 0x12) << 16;
+    *(int *)(actor + 8) = ((Fx32Parts *)(actor + 8))->half.hi << 16;
+    *(int *)(actor + 0x10) = ((Fx32Parts *)(actor + 0x10))->half.hi << 16;
     __Actor_SetAnim(actor, 1);
 }
 struct MapTile_OvlFunc_923_2008528 {
@@ -505,8 +506,102 @@ void OvlFunc_923_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008ba4.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2008cc0.s");
+int OvlFunc_923_2008ba4(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L2740[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L2758[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L2758[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L2758[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L2758[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L2758[arg.a << 2] << 16;
+    arg.z += L2758[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_923_2008528(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_923_2008528(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
+
+int OvlFunc_923_2008cc0(struct Actor *actor) {
+    struct {
+        int unk0;
+        int unk4;
+        int unk8;
+        int unkc;
+        int unk10;
+        int unk14;
+        int unk18;
+        int unk1c;
+        int unk20;
+        int unk24;
+    } data;
+    extern unsigned int __Random(void);
+    extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+    extern unsigned int iwram_3001e40;
+    int r;
+
+    data.unk4 = 7;
+    if ((iwram_3001e40 & 1) == 0) {
+        data.unk4 = 5;
+    }
+    data.unk8 = 0xcccc;
+    data.unkc = 0xcccc;
+    data.unk0 = 0;
+    r = ((__Random() << 3) >> 16) * 0x3333;
+    OvlFunc_common0_10c(
+        actor->pos.x + ((8 - (iwram_3001e40 & 0xf)) << 16),
+        actor->pos.y + (0xd0 << 13),
+        actor->pos.z,
+        0,
+        -r,
+        0,
+        0xb0 << 12,
+        &data
+    );
+    return 0;
+}
 
 extern void __PlaySound(unsigned int);
 
@@ -644,7 +739,7 @@ extern void __MapTransitionOut(void);
 extern void __WaitMapTransition(void);
 extern void __Func_8091e9c(int);
 extern void __CutsceneEnd(void);
-extern void OvlFunc_923_2008cc0(void);
+extern int OvlFunc_923_2008cc0(struct Actor *);
 
 void OvlFunc_923_2008ed0(int arg0)
 {
@@ -653,7 +748,7 @@ void OvlFunc_923_2008ed0(int arg0)
     actor = __MapActor_GetActor(0);
     __CutsceneStart();
     __PlaySound(0xe4);
-    *(void (**)(void))(actor + 0x6c) = OvlFunc_923_2008cc0;
+    *(int (**)(struct Actor *))(actor + 0x6c) = OvlFunc_923_2008cc0;
     *(int *)(actor + 0x30) = 0x3333;
     __MapActor_SetAnim(0, 2);
     __MapActor_TravelBy(0, 0, -6);
@@ -823,14 +918,36 @@ void OvlFunc_923_200916c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_20091b4.s");
+#include "state/global_state.h"
+extern GlobalState gState;
+
+extern unsigned char Lconst_35[] __asm__(".Lconst_35");
+__asm__(".equ .Lconst_35, 0x35");
+
+void OvlFunc_923_20091b4(void)
+{
+    extern void __Func_80925cc(int, int);
+    extern void __Func_8091f90(int, int);
+    extern void __StartMapBattle(int, int);
+
+    __CutsceneStart();
+    __Func_80925cc(8, 2);
+    __CutsceneWait(20);
+    *(int *)(*(char **)iwram_3001ebc + 0x1c0) = 0x200;
+    __Func_8091f90((int)Lconst_35, 0x1f);
+    do {
+        gState._bytes[0x22b] = 3;
+    } while (0);
+    __StartMapBattle(0x24, 1);
+    __CutsceneEnd();
+}
 
 void OvlFunc_923_2009208(void) {
     extern unsigned char *__MapActor_GetActor(unsigned int);
     extern void __Func_8092950(unsigned int, unsigned int);
     extern void __Actor_SetSpriteFlags(void *, unsigned int);
     extern void __PlaySound(unsigned int);
-    extern void OvlFunc_923_2008cc0(void);
+    extern int OvlFunc_923_2008cc0(struct Actor *);
     extern void __Func_8092304(unsigned int, unsigned int, unsigned int);
     extern void __MapActor_PlayPendingSound(void);
     unsigned char *actor;
@@ -853,7 +970,7 @@ void OvlFunc_923_2009208(void) {
     API_MapTransitionIn();
     API_WaitMapTransition();
     __PlaySound(0xe4);
-    *(void (**)(void))(actor + 0x6c) = OvlFunc_923_2008cc0;
+    *(int (**)(struct Actor *))(actor + 0x6c) = OvlFunc_923_2008cc0;
     API_MapActor_SetSpeed(0, 0x6666, 0x3333);
     __Func_8092304(0, 0, 8);
     __Func_8092950(0, 0);
@@ -868,7 +985,179 @@ void OvlFunc_923_2009208(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/MercuryLighthouseEntrance_MapInit.s");
+#include "gba/io.h"
+
+extern unsigned char Lconst_39[] __asm__(".Lconst_39");
+__asm__(".equ .Lconst_39, 0x39");
+
+int MercuryLighthouseEntrance_MapInit(void)
+{
+    extern void OvlFunc_923_2008d98(void);
+    extern unsigned char ewram_2001000[];
+    struct EntranceStateView {
+        unsigned char pad0[0x1c2];
+        short room;
+        unsigned char pad1[0x7c];
+        unsigned short field240;
+        unsigned short field242;
+    };
+    extern struct EntranceStateView EntranceState __asm__("gState");
+    extern int __cos(int);
+    extern int __sin(int);
+    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
+    extern void EntranceSpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void __Func_800fe9c(void);
+    extern void __Func_8019aa0(int, int, int);
+    extern void __Func_8091494(int);
+    extern void __Func_8091ff0(unsigned int);
+    extern void __Func_8092950(unsigned int, unsigned int);
+    extern struct Actor *EntranceGetActor(int) __asm__("__MapActor_GetActor");
+    extern void OvlFunc_923_2008e3c(void);
+    extern void OvlFunc_923_2009208(void);
+    extern void OvlFunc_923_2009730(void);
+    extern void OvlFunc_923_200996c(void);
+    extern void OvlFunc_923_2009a3c(int, int *);
+    struct EffectData effect;
+    int motion[3];
+    unsigned int particle;
+    struct Actor *effectActor;
+    int flagValue5;
+
+    SET_IO(REG_BLDCNT, 0x3f40);
+    SET_IO(REG_BLDALPHA, 0x1010);
+    OvlFunc_923_2009a3c(21, (int *)ewram_2001000);
+    API_SetFlag(0x111);
+    EntranceState.field242 = 11;
+    EntranceState.field240 = (unsigned int)Lconst_39;
+    __Func_8091494(0);
+    if (API_GetFlag(0x875) != 0) {
+        API_StartTask(OvlFunc_923_2008d98, 0xc80);
+    } else {
+        OvlFunc_923_2008e3c();
+    }
+    *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x204;
+    switch (EntranceState.room) {
+    case 1:
+        if (API_GetFlag(0x872) == 0) {
+            API_Func_8091e9c(20);
+        }
+        /* fallthrough */
+    case 2:
+        EntranceGetActor(12)->scale.x = -0x10000;
+        EntranceGetActor(13)->scale.x = -0x10000;
+        EntranceGetActor(14)->scale.x = -0x10000;
+        API_WaitFrames(1);
+        break;
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+        if (API_GetFlag(0x875) == 0)
+            break;
+        API_Func_8010704(0x54, 5, 10, 7, 20, 5);
+        API_Func_8010704(0x65, 5, 12, 7, 0x25, 5);
+        break;
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+        API_StartTask(OvlFunc_923_2008d98, 0xc80);
+        if (API_GetFlag(0x875) != 0) {
+            API_CopyMapTiles(0x25, 0x62, 10, 0x61, 5, 3);
+            __Func_800fe9c();
+            API_WaitFrames(1);
+            API_Func_8010704(0x46, 0x20, 13, 7, 6, 0x20);
+        }
+        if (EntranceState.room != 6)
+            break;
+        flagValue5 = API_GetFlag(0x251);
+        if (flagValue5 != 0)
+            break;
+        API_SetFlag(0x251);
+        API_CutsceneStart();
+        API_Func_80933f8(-1, -1, -1, 0);
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        EntranceGetActor(0)->pos.y = 0x820000;
+        EntranceGetActor(0)->gravity = 0x8000;
+        EntranceGetActor(0)->bounce = flagValue5;
+        EntranceGetActor(0)->__unk55 = flagValue5;
+        API_MapTransitionIn();
+        API_WaitMapTransition();
+        API_CutsceneWait(30);
+        EntranceGetActor(0)->__unk55 = 3;
+        API_PlaySound(0xcc);
+        API_CutsceneWait(24);
+        effectActor = EntranceGetActor(0);
+        effect.unk4 = 7;
+        for (particle = 0; particle <= 16; particle++) {
+            motion[0] = __cos(particle << 12);
+            motion[1] = 0;
+            motion[2] = __sin(particle << 12);
+            motion[0] -= motion[0] / 4;
+            motion[2] -= motion[2] / 2;
+            OvlFunc_common0_10c(effectActor->pos.x, effectActor->pos.y, effectActor->pos.z, motion[0], motion[1], motion[2], 0x10001, &effect);
+        }
+        API_PlaySound(0xbc);
+        API_MapActor_Surprise(0, 0x101);
+        API_MapActor_SetAnim(0, 22);
+        API_Func_8012330(0x50000, 0x50000, 0x10000);
+        API_Func_8012330(-1, -1, 0xe666);
+        API_Func_8012350();
+        API_MapActor_Surprise(0, 0x100);
+        EntranceGetActor(0)->gravity = 0x10000;
+        EntranceGetActor(0)->bounce = 0x4000;
+        if (API_GetFlag(0x875) == 0) {
+            API_Func_8091220(0x10000, 0);
+            API_Func_8091200(0x10003, 1);
+            API_Func_8091254(30);
+            API_WaitMapTransition();
+            API_MapActor_SetAnim(0, 1);
+            API_CutsceneWait(30);
+            __Func_8019aa0(0x1632, 0, 0);
+            API_Func_8091200(0x10000, 0);
+            API_Func_8091254(30);
+        }
+        API_CutsceneEnd();
+        break;
+    case 18:
+    case 19:
+    case 20:
+        OvlFunc_923_2009208();
+        /* fallthrough */
+    case 17:
+        __Func_8091ff0(0xaa);
+        break;
+    case 25:
+        __Func_8092950(0, 15);
+        EntranceSpriteFlags(EntranceGetActor(0), 0);
+        API_CutsceneStart();
+        __Func_800fe9c();
+        API_WaitFrames(1);
+        *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x100;
+        API_MapTransitionIn();
+        API_WaitMapTransition();
+        API_CutsceneWait(0x78);
+        API_Func_8091e9c(0x32);
+        API_CutsceneEnd();
+        break;
+    case 30:
+        if (API_GetFlag(0x109) == 0) {
+            OvlFunc_923_2009730();
+        } else {
+            API_Func_8010704(0, 0, 3, 3, 7, 9);
+        }
+        break;
+    case 31:
+        if (API_GetFlag(0x109) == 0) {
+            OvlFunc_923_200996c();
+        }
+        break;
+    }
+    return 0;
+}
 extern struct Actor *CS923M_Actor(int) __asm__("__MapActor_GetActor");
 void OvlFunc_923_2009730(void)
 {
@@ -973,7 +1262,83 @@ void OvlFunc_923_200996c(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009a3c.s");
+#include "dma.h"
+#include "field/map_tile.h"
+#include "state/global_state.h"
+
+#define TILES_ADDR 0x02010000
+#define TILES ((struct MapTile_528 *)TILES_ADDR)
+
+extern GlobalState gState;
+extern unsigned int *__galloc_ewram(int a, int b);
+extern struct Actor *__GetFieldActor(int);
+extern void *__CreateActor(int, int, int, int);
+extern void __Sprite_SetAnim(void *, int);
+extern s32 gScript_923__0200a7e8[];
+extern s32 gScript_923__0200a7d0[];
+
+void OvlFunc_923_2009a3c(int arg0, int *arg1)
+{
+    struct Actor *actor;
+    struct Actor *obj;
+    struct Sprite *sprite;
+    struct MapTile_528 *cell;
+    GlobalState *gs;
+    int z;
+
+    *__galloc_ewram(0x23, 4) = (unsigned int)arg1;
+
+    if (__GetFlag(0x109) == 0) {
+        DMA3_CLEAR(arg1, 0x1c);
+        arg1[1] = arg0;
+        return;
+    }
+
+    gs = &gState;
+    actor = __GetFieldActor(*(int *)((char *)gs + 0x1f4));
+    z = actor->pos.z;
+    cell = TILES + (((z / 0x100000) << 7) + actor->pos.x / 0x100000);
+
+    if (arg1[0] != 0 && arg1[5] != 0) {
+        obj = (struct Actor *)__CreateActor(0x1a, actor->pos.x, actor->pos.y + 0x180000, z);
+        if (obj != 0) {
+            obj->floorPos = actor->floorPos;
+            sprite = obj->sprite;
+            __Actor_SetScript(obj, gScript_923__0200a7e8);
+            obj->linkedActor = actor;
+            obj->__unk55 = 4;
+            obj->pos.y += -0x8000;
+            if (sprite != 0) {
+                __Sprite_SetAnim(sprite, 6 - arg1[0]);
+                sprite->flags = 0;
+                sprite->oam.priority = 1;
+            }
+            arg1[5] = (int)obj;
+        }
+    } else {
+        arg1[5] = 0;
+    }
+
+    if (cell->b == arg0 && arg1[6] != 0) {
+        obj = (struct Actor *)__CreateActor(0x1a, actor->pos.x, actor->pos.y, actor->pos.z);
+        if (obj != 0) {
+            obj->floorPos = actor->floorPos;
+            sprite = obj->sprite;
+            __Actor_SetScript(obj, gScript_923__0200a7d0);
+            obj->__unk55 = 0;
+            obj->waveCounter = 0;
+            obj->flags = 2;
+            obj->speed = 0x40000;
+            if (sprite != 0) {
+                __Sprite_SetAnim(sprite, 6);
+                sprite->flags = 0;
+            }
+            arg1[6] = (int)obj;
+        }
+    } else {
+        arg1[6] = 0;
+    }
+}
 extern void *__CreateActor(int, int, int, int);
 extern void __Actor_SetScript(void *, void *);
 extern void __Sprite_SetAnim(void *, int);
@@ -1000,26 +1365,26 @@ void OvlFunc_923_2009bc8(int *arg0)
 }
 extern int __sin(int);
 
-int OvlFunc_923_2009c20(void *arg0)
+int OvlFunc_923_2009c20(struct Actor *actor)
 {
-    void *r6;
+    struct Actor *target;
     int next;
     int val;
     int s;
 
-    next = *(unsigned short *)((char *)arg0 + 0x64) + 1;
-    r6 = *(void **)((char *)arg0 + 0x68);
-    *(unsigned short *)((char *)arg0 + 0x64) = (unsigned short)next;
+    next = (unsigned short)actor->waveCounter + 1;
+    target = actor->linkedActor;
+    actor->waveCounter = next;
     val = (short)next;
     if (val > 31) {
         return 0;
     }
     s = __sin(val << 10);
-    *(int *)((char *)arg0 + 0x18) = s;
-    *(int *)((char *)arg0 + 0x1c) = s;
-    *(int *)((char *)arg0 + 8) = *(int *)((char *)r6 + 8);
-    *(int *)((char *)arg0 + 0xc) += 0x80 << 9;
-    *(int *)((char *)arg0 + 0x10) = *(int *)((char *)r6 + 0x10);
+    actor->scale.x = s;
+    actor->scale.y = s;
+    actor->pos.x = target->pos.x;
+    actor->pos.y += 0x80 << 9;
+    actor->pos.z = target->pos.z;
     return 1;
 }
 
@@ -1056,9 +1421,187 @@ unsigned int OvlFunc_923_2009c88(unsigned int arg0)
     return 1;
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009cb4.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009df8.s");
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_2009ec8.s");
+#include "math.h"
+
+extern s32 Func_8000948(s32);
+extern fx32 Func_80008ac(fx32, fx32);
+extern fx32 __FastIntSqrtFP1616_RAM(fx32);
+extern u32 iwram_3001e40;
+
+static inline s32 Mercury_Sqrt(s32 n)
+{
+    s32 (*func)(s32) = Func_8000948;
+    return func(n);
+}
+
+static inline fx32 Mercury_FxDiv(fx32 num, fx32 denom)
+{
+    fx32 (*divide)(fx32, fx32) = Func_80008ac;
+    return divide(num, denom);
+}
+
+bool32 OvlFunc_923_2009cb4(struct Actor *actor)
+{
+    struct Actor *target = actor->linkedActor;
+    fx32 tz, tx;
+    fx32 dx, dz;
+    fx32 dist, step;
+
+    actor->speed = 0x20000;
+    actor->accel = 0x10000;
+    tx = target->pos.x;
+    tz = target->pos.z;
+    actor->prevPos.x = 0x80000000;
+    actor->prevPos.y = 0x80000000;
+    actor->prevPos.z = 0x80000000;
+
+    dx = (tx - actor->pos.x) / 0x10000;
+    dz = (tz - actor->pos.z) / 0x10000;
+    dist = Mercury_Sqrt(dx * dx + dz * dz) << 16;
+
+    dx = tx - actor->pos.x;
+    dz = tz - actor->pos.z;
+
+    if (dist < 0x400000) {
+        dist = __FastIntSqrtFP1616_RAM(fx32_multiply(dx, dx) + fx32_multiply(dz, dz));
+    }
+
+    step = dist / 8;
+    if (step > actor->speed) {
+        step = actor->speed;
+    }
+
+    if (dist < 0x4000) {
+        actor->pos.x = tx;
+        actor->pos.z = tz;
+    } else {
+        if (dist > step) {
+            dx = fx32_multiply(Mercury_FxDiv(dist, dx), step);
+            dz = fx32_multiply(Mercury_FxDiv(dist, dz), step);
+        }
+        actor->pos.x += dx;
+        actor->pos.z += dz;
+    }
+
+    actor->sprite->layers[0]->colorswap = ((iwram_3001e40 >> 1) & 1) * 7;
+    actor->sprite->visible = TRUE;
+
+    return TRUE;
+}
+
+extern s32 gScript_923__0200a7c4[];
+
+void OvlFunc_923_2009df8(void)
+{
+    struct MapState *map;
+    struct Actor *target;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    GlobalState *gs;
+    int idx;
+
+    map = gPushBlockMapState;
+    gs = &gState;
+    idx = *(int *)((char *)gs + 0x1f4);
+    target = (struct Actor *)map->actors[idx];
+
+    actor = (struct Actor *)__CreateActor(0x1a, target->pos.x, target->pos.y, target->pos.z);
+    if (actor != 0) {
+        actor->floorPos = target->floorPos;
+        sprite = actor->sprite;
+        __Actor_SetScript(actor, gScript_923__0200a7c4);
+        actor->__unk55 = 0;
+        actor->waveCounter = 0;
+        actor->linkedActor = target;
+        if (sprite != 0) {
+            __Sprite_SetAnim(sprite, 2);
+            sprite->flags = 0;
+            sprite->oam.priority = 1;
+        }
+    }
+
+    actor = (struct Actor *)__CreateActor(0x1a, target->pos.x, target->pos.y, target->pos.z);
+    if (actor != 0) {
+        actor->floorPos = target->floorPos;
+        sprite = actor->sprite;
+        __Actor_SetScript(actor, gScript_923__0200a7c4);
+        actor->__unk55 = 0;
+        actor->waveCounter = 0;
+        actor->linkedActor = target;
+        actor->flags = 2;
+        if (sprite != 0) {
+            __Sprite_SetAnim(sprite, 1);
+            sprite->flags = 0;
+        }
+    }
+
+    __PlaySound(0x82);
+}
+extern GlobalState gState;
+extern unsigned int iwram_3001edc;
+extern s32 gScript_923__0200a7e8[];
+extern void OvlFunc_923_2009df8(void);
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetScript(void *, void *);
+extern void __Actor_SetAnim();
+extern void __CutsceneStart();
+extern void __CutsceneEnd();
+extern void __WaitFrames(int);
+extern void __SetFlag();
+
+void OvlFunc_923_2009ec8(void)
+{
+    int *r8;
+    struct Actor *actor;
+    struct Actor *target;
+    struct Sprite *sprite;
+    int i;
+    struct MapState *map;
+    GlobalState *gs;
+    int idx;
+
+    r8 = *(int **)iwram_3001edc;
+    map = *(struct MapState **)((char *)&iwram_3001edc - 0x20);
+    gs = &gState;
+    idx = *(int *)((char *)gs + 0x1f4);
+    target = (struct Actor *)map->actors[idx];
+    if ((unsigned int)*r8 > 2)
+        return;
+
+    __CutsceneStart();
+    if (*(struct Actor **)((char *)r8 + 0x14) == 0) {
+        actor = (struct Actor *)__CreateActor(0x1a, target->pos.x, target->pos.y + (0xc0 << 13), target->pos.z);
+        if (actor != 0) {
+            sprite = actor->sprite;
+            actor->floorPos = target->floorPos;
+            __Actor_SetScript(actor, gScript_923__0200a7e8);
+            actor->linkedActor = target;
+            actor->__unk55 = 4;
+            actor->pos.y += -0x8000;
+            if (sprite != 0) {
+                sprite->flags = 0;
+                sprite->oam.priority = 1;
+            }
+            actor->visible = 0;
+            *(struct Actor **)((char *)r8 + 0x14) = actor;
+        }
+    }
+    actor = *(struct Actor **)((char *)r8 + 0x14);
+
+    for (i = *r8; i <= 2; i++) {
+        OvlFunc_923_2009df8();
+        __WaitFrames(30);
+        actor->visible = 1;
+        __Actor_SetAnim(actor, 5 - i);
+    }
+
+    *r8 = 3;
+    r8[3] = (actor->pos.x & 0xfff00000) + 0x80000;
+    r8[4] = (actor->pos.z & 0xfff00000) + 0x80000;
+    __SetFlag(0x161);
+    __CutsceneEnd();
+}
+
 
 extern unsigned int iwram_3001edc;
 extern unsigned int gScript_923__0200a7dc;
@@ -1083,8 +1626,140 @@ void OvlFunc_923_2009fe8(void)
     }
 }
 
-INCLUDE_ASM("asm/maps/mercury_lighthouse_entrance/OvlFunc_923_200a030.s");
-extern unsigned char gState[];
+#include "math.h"
+
+struct CS923_Traversal {
+    int count, tileType, busy, resetX, resetZ;
+    struct Actor *source, *traveler;
+};
+struct CS923_GameState {
+    unsigned char padding[0x1f4];
+    int partyIndex;
+};
+extern struct CS923_GameState CS923_State __asm__("gState");
+extern unsigned int gKeyHeld;
+extern unsigned int gKeyPress;
+extern unsigned short CS923_Directions[] __asm__(".Lm923_27f4");
+extern void __vec3_translate(int, unsigned int, int *);
+extern void __DeleteActor(int a);
+
+static inline void CS923_Project(int distance, unsigned int angle, int *position)
+{
+    __vec3_translate(distance, angle, position);
+}
+static inline struct Actor *CS923_ActorAt(unsigned char *scene, int slot)
+{
+    return *(struct Actor **)(scene + slot);
+}
+static inline int API_TestCollision_923(void *actor, int *pos)
+{
+    return __TestCollision(actor, pos);
+}
+
+void OvlFunc_923_200a030(void)
+{
+    struct CS923_Traversal *state;
+    unsigned char *scene, *sourceTile, *destTile;
+    struct Actor *actor, *traveler, *source;
+    struct Sprite *sprite;
+    unsigned char savedMode;
+    int collision, count, frame;
+    unsigned int direction;
+    int coords[3];
+
+    state = *(struct CS923_Traversal **)iwram_3001edc;
+    scene = *(unsigned char **)((unsigned char *)&iwram_3001edc - 0x20);
+    actor = CS923_ActorAt(scene, CS923_State.partyIndex * 4 + 0x14);
+    savedMode = actor->__unk55;
+    direction = CS923_Directions[(gKeyHeld >> 4) & 15];
+    if ((short)direction == -1)
+        return;
+    coords[0] = (actor->pos.x & 0xfff00000) + 0x80000;
+    coords[1] = actor->floorPos;
+    coords[2] = (actor->pos.z & 0xfff00000) + 0x80000;
+    sourceTile = (unsigned char *)0x02010000 + 4 * ((coords[2] / 0x100000) * 128 + coords[0] / 0x100000);
+    CS923_Project(0x200000, direction, coords);
+    destTile = (unsigned char *)0x02010000 + 4 * ((coords[2] / 0x100000) * 128 + coords[0] / 0x100000);
+    if (sourceTile[2] != state->tileType && destTile[2] == state->tileType && state->count == 0)
+        return;
+    API_CutsceneStart();
+    collision = API_TestCollision_923(actor, coords);
+    if (collision != 0)
+        return;
+    traveler = state->traveler;
+    if (traveler != 0) {
+        traveler->waveCounter = 0;
+        __Actor_SetScript(traveler, &gScript_923__0200a7dc);
+        __Actor_SetAnim(traveler, 7);
+        state->traveler = 0;
+    }
+    if (destTile[2] == state->tileType && state->count != 0) {
+        source = state->source;
+        traveler = (struct Actor *)__CreateActor(26, source->pos.x, source->pos.y, source->pos.z);
+        if (traveler != 0) {
+            sprite = traveler->sprite;
+            traveler->floorPos = source->floorPos;
+            __Actor_SetScript(traveler, gScript_923__0200a7d0);
+            traveler->__unk55 = 0;
+            traveler->waveCounter = 0;
+            traveler->flags = 2;
+            traveler->speed = 0x40000;
+            traveler->accel = 0x20000;
+            __Actor_TravelTo(traveler, coords[0], coords[1], coords[2]);
+            if (sprite != 0) {
+                __Sprite_SetAnim(sprite, 6);
+                sprite->flags = 0;
+            }
+            state->traveler = traveler;
+        }
+        count = state->count - 1;
+        state->count = count;
+        if (count == 0) {
+            __DeleteActor((int)state->source);
+            state->source = 0;
+            API_ClearFlag(0x161);
+        } else if (state->source != 0) {
+            __Actor_SetAnim(state->source, 6 - count);
+        }
+    }
+    __Actor_SetAnim(actor, 6);
+    API_WaitFrames(3);
+    API_PlaySound(0x98);
+    __Actor_SetAnim(actor, 7);
+    actor->speed = 0x30000;
+    actor->accel = 0x20000;
+    actor->motion.y = 0x40000;
+    actor->__unk55 &= 0x7e;
+    __Actor_SetSpriteFlags(actor, 0);
+    API_MapActor_TravelToWait(0, coords[0] >> 16, coords[2] >> 16);
+    __Actor_SetAnim(actor, 6);
+    API_WaitFrames(2);
+    if (destTile[2] != state->tileType)
+        __Actor_SetSpriteFlags(actor, 1);
+    else
+        API_PlaySound(0xd7);
+    API_WaitFrames(1);
+    actor->__unk55 = savedMode;
+    if (destTile[2] == state->tileType && state->traveler == 0) {
+        __Actor_SetAnim(actor, 18);
+        API_PlaySound(0xf1);
+        for (frame = 0; ; frame++) {
+            if ((frame & 15) == 0)
+                OvlFunc_923_2009bc8((int *)actor);
+            if (frame > 31 && gKeyPress != 0)
+                break;
+            API_WaitFrames(1);
+        }
+        API_PlaySound(0x120);
+        API_WaitFrames(1);
+        actor->pos.x = state->resetX;
+        actor->pos.z = state->resetZ;
+        __Actor_SetSpriteFlags(actor, 1);
+    }
+    state->busy = 0;
+    API_CutsceneEnd();
+    *(int *)(scene + 0x1b4) += fx32_multiply(*(int *)(scene + 0x1b0), 0x200000);
+}
 extern int __Random(void);
 
 void OvlFunc_923_200a370(void)
@@ -1098,7 +1773,7 @@ void OvlFunc_923_200a370(void)
 
     state = (unsigned int *)**(unsigned int **)&iwram_3001edc;
     base = *(char **)((char *)&iwram_3001edc - 0x20);
-    offset = *(int *)(gState + off) * 4 + 0x14;
+    offset = *(int *)((unsigned char *)&gState + off) * 4 + 0x14;
     arg = *(int **)(base + offset);
     timer = state[2];
     if (timer != 0) {

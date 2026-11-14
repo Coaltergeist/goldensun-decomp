@@ -1,6 +1,10 @@
 /* rom_7fa4ec (overlay file 970): consolidated TU — lalivero_ship map overlay. */
 
 #include "nonmatching.h"
+#include "api.h"
+#include "actor.h"
+#include "math.h"
+#include "gba/io.h"
 
 INCLUDE_ASM("asm/maps/lalivero_ship/exports.s");
 
@@ -129,7 +133,7 @@ void OvlFunc_970_2008168(void)
 }
 
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008194.s");
-extern int *__MapActor_GetActor(int idx);
+
 extern int Lm970_180c[] __asm__(".Lm970_180c");
 extern int Lm970_1810[] __asm__(".Lm970_1810");
 extern int Lm970_1818[] __asm__(".Lm970_1818");
@@ -137,14 +141,14 @@ extern int Lm970_1818[] __asm__(".Lm970_1818");
 int OvlFunc_970_20083c0(void)
 {
     int *dst = Lm970_180c;
-    *dst = __MapActor_GetActor(0)[3];
+    *dst = ((int *)__MapActor_GetActor(0))[3];
     return 0;
 }
 
 int OvlFunc_970_20083dc(void)
 {
     int *dst = Lm970_1810;
-    *dst = __MapActor_GetActor(1)[3];
+    *dst = ((int *)__MapActor_GetActor(1))[3];
     return 0;
 }
 
@@ -153,16 +157,17 @@ extern unsigned char gOvl_02009814[];
 int OvlFunc_970_20083f8(void)
 {
     int *dst = (int *)gOvl_02009814;
-    *dst = __MapActor_GetActor(3)[3];
+    *dst = ((int *)__MapActor_GetActor(3))[3];
     return 0;
 }
 
 int OvlFunc_970_2008414(void)
 {
     int *dst = Lm970_1818;
-    *dst = __MapActor_GetActor(2)[3];
+    *dst = ((int *)__MapActor_GetActor(2))[3];
     return 0;
 }
+
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008430.s");
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008b34.s");
 typedef unsigned char GlobalState;
@@ -341,23 +346,14 @@ void OvlFunc_970_2009188(void)
   r3 = *((volatile unsigned short *) (new_var + 0xa));
 }
 
-extern short Lm970_1c18 __asm__(".Lm970_1c18");
-extern short Lm970_1c1a __asm__(".Lm970_1c1a");
-
-struct SpriteSlot970 { short f0; short f2; };
-extern struct SpriteSlot970 gSpriteSlots[];
-
-struct OamEntry970 { int attr0; int attr1; int attr2; };
-extern struct OamEntry970 Lm970_1af8[] __asm__(".Lm970_1af8");
-
-extern void __Func_8003dec(void *entry, int a);
-
 INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_20091c4.s");
-
 
 #include "dma.h"
 
+extern short Lm970_1c18 __asm__(".Lm970_1c18");
+extern short Lm970_1c1a __asm__(".Lm970_1c1a");
 extern void OvlFunc_970_20091c4(void);
+extern void *__alloc_ewram(int);
 
 static inline void *alloc_ewram_helper(int size)
 {

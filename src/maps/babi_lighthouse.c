@@ -1,6 +1,8 @@
 /* rom_7ef4f4 (overlay file 965): consolidated TU — babi_lighthouse map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "field.h"
@@ -653,7 +655,24 @@ void OvlFunc_965_2008cd0(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_2008cf0.s");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_965_2008cf0(struct Actor *actor)
+{
+    int vx = actor->bounce;
+    int vz;
+
+    actor->pos.x += vx;
+    actor->pos.y += actor->gravity;
+    vz = actor->__unk4C;
+    actor->pos.z += vz;
+    actor->bounce = vx - ((vx) / (18));
+    actor->__unk4C = vz - vz / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += (u16)actor->waveCounter;
+}
+
 extern void __WaitFrames(int a);
 void __Func_80933f8(int, int, int, int);
 void __Func_800fe9c(void);
@@ -1608,7 +1627,19 @@ void OvlFunc_965_200a5c8(void)
     }
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/babi_lighthouse/OvlFunc_965_200a660.s");
+extern int __Func_8011f54(int, int, int);
+
+struct Actor *OvlFunc_965_200a660(struct Actor *actor)
+{
+    int stk[3];
+    int *p = stk;
+    unsigned int t = L2fd4[actor->facing >> 12];
+
+    p[0] = actor->pos.x + (t & 0xffff0000);
+    p[2] = actor->pos.z + (t << 16);
+    p[1] = __Func_8011f54(actor->layer, p[0], p[2]);
+    return OvlFunc_965_200806c(p, actor);
+}
 
 extern unsigned int iwram_3001f30;
 

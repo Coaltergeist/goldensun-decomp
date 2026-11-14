@@ -1,16 +1,24 @@
-extern struct Actor *CS932R_Actor(unsigned int) __asm__("__MapActor_GetActor");
-extern int CS932R_Cos(int) __asm__("__cos");
-extern int CS932R_Sin(int) __asm__("__sin");
+/* Exact section size match (0x194 bytes); remaining diff:
+ * 1) r9 vs fp swap between baseX and hoisted 0x8000 constant
+ * 2) at +0xe0..+0xe4: adds r7, r3, #0 ; lsrs r2, r7, #16 vs lsrs r2, r3, #16 ; adds r7, r3, #0
+ *    (computing step directly from speed triggers GCSE PRE hoisting speed >> 16 = 8 before loop 3)
+ */
+extern int __cos(int);
+extern int __sin(int);
 extern void OvlFunc_932_2008ec0(int);
-static inline unsigned int CS932R_Accelerate(unsigned int rate) { return ((rate >> 16) + (rate >> 19)) << 16; }
+
 void OvlFunc_932_2008d2c(void)
 {
-    struct Actor *actor = CS932R_Actor(10);
-    int baseY = actor->pos.y;
-    int baseX = actor->pos.x;
-    struct Sprite *sprite = actor->sprite;
-    unsigned int forwardSpeed, backwardSpeed, fallSpeed, step;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int baseY, baseX;
+    unsigned int speed, nextSpeed, step;
     int cosine, sine;
+
+    actor = (struct Actor *)__MapActor_GetActor(10);
+    baseX = actor->pos.x;
+    sprite = actor->sprite;
+    baseY = actor->pos.y;
     __CutsceneStart();
     __PlaySound(0x8d);
     API_Func_8012330(0x20000, 0x10000, 0x10000);
@@ -18,45 +26,42 @@ void OvlFunc_932_2008d2c(void)
     __PlaySound(0x121);
     API_Func_8012330(-1, -1, 0xe666);
     __CutsceneWait(20);
-    forwardSpeed = 0;
-forward_swing:
-    {
-        forwardSpeed += 0x80000;
-        sprite->rotation += forwardSpeed >> 16;
-        cosine = CS932R_Cos(sprite->rotation + 0x4000);
+    speed = 0;
+    while (1) {
+        int rot = sprite->rotation;
+        speed += 0x80000;
+        sprite->rotation = (speed >> 16) + rot;
+        cosine = __cos(sprite->rotation + 0x4000);
         actor->pos.x = baseX + cosine * 16;
-        if (sprite->rotation > 0x8fff) goto begin_backward;
+        if (sprite->rotation > 0x8fff)
+            break;
         __WaitFrames(1);
-        goto forward_swing;
     }
-begin_backward:
-    backwardSpeed = 0;
-backward_swing:
-    {
-        backwardSpeed += 0x80000;
-        sprite->rotation -= backwardSpeed >> 16;
-        cosine = CS932R_Cos(sprite->rotation + 0x4000);
+    speed = 0;
+    while (1) {
+        speed += 0x80000;
+        sprite->rotation -= speed >> 16;
+        cosine = __cos(sprite->rotation + 0x4000);
         actor->pos.x = baseX + cosine * 16;
-        if (sprite->rotation <= 0x7000) goto begin_fall;
+        if (sprite->rotation <= 0x7000)
+            break;
         __WaitFrames(1);
-        goto backward_swing;
     }
-begin_fall:
-    fallSpeed = 0x80000;
-fall:
-    {
-        fallSpeed = CS932R_Accelerate(fallSpeed);
-        step = fallSpeed >> 16;
+    speed = 0x80000;
+    while (1) {
+        nextSpeed = ((speed >> 16) + (speed >> 19)) << 16;
+        step = nextSpeed >> 16;
+        speed = nextSpeed;
         sprite->rotation += step;
-        cosine = CS932R_Cos(sprite->rotation + 0x4000);
-        sine = CS932R_Sin(sprite->rotation + 0x8000);
+        cosine = __cos(sprite->rotation + 0x4000);
+        sine = __sin(sprite->rotation + 0x8000);
         actor->pos.x = baseX + cosine * 16;
-        if (sprite->rotation > 0x8000) actor->pos.y = baseY - sine * 8;
-        if ((int)sprite->rotation + (int)step > 0xbfff) goto finish;
+        if (sprite->rotation > 0x8000)
+            actor->pos.y = baseY - sine * 8;
+        if ((int)sprite->rotation + (int)step > 0xbfff)
+            break;
         __WaitFrames(1);
-        goto fall;
     }
-finish:
     __WaitFrames(1);
     sprite->rotation = 0xc000;
     __PlaySound(0xb7);

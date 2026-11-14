@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "dma.h"
 
 extern void __Func_8091f14(int a, int b);
 
@@ -173,7 +174,113 @@ void OvlFunc_960_2008588(void) {
     OvlFunc_960_2008464(12);
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008594.s");
+struct SuhallaStateActorView {
+    unsigned char pad[0x1f4];
+    int actorId;
+};
+extern struct SuhallaStateActorView gSuhallaStateActor __asm__("gState");
+
+static inline void SuhallaStoreByte(unsigned char *p, int value)
+{
+    *p = value;
+}
+
+#define SUHALLA_QUEUE_DMA(queue, dest_val, src_expr)                 \
+    do {                                                             \
+        u32 savedIme = REG_IME;                                      \
+        s32 count;                                                   \
+        u32 *task;                                                   \
+        s32 slot;                                                    \
+        SET_IO(REG_IME, REG_ADDR_IME);                               \
+        count = *(queue);                                            \
+        if (count < 32) {                                            \
+            slot = count * 12;                                       \
+            count++;                                                 \
+            task = (u32 *)(slot + (u32)(queue));                     \
+            *(queue) = count;                                        \
+            task++;                                                  \
+            *task++ = (u32)(src_expr);                               \
+            *task++ = (dest_val);                                    \
+            *task = 0x20000;                                         \
+        }                                                            \
+        SET_IO(REG_IME, savedIme);                                   \
+    } while (0)
+
+void OvlFunc_960_2008594(int actorId)
+{
+    struct Actor *leader = (struct Actor *)__MapActor_GetActor(gSuhallaStateActor.actorId);
+    struct Actor *tornado = (struct Actor *)__MapActor_GetActor(actorId);
+    int alreadyActive = API_GetFlag(0x340);
+    int savedX = *(short *)((unsigned char *)leader + 0xa);
+    int savedZ = *(short *)((unsigned char *)leader + 0x12);
+    int i, next;
+    struct Actor *actor;
+    unsigned char *flags;
+
+    API_CutsceneStart();
+    API_PlaySound(0xf4);
+    i = 0;
+    do {
+        tornado->scale.x = 0x800 + (i << 11);
+        tornado->scale.y = 0x1000 + (i << 12);
+        if (!alreadyActive) {
+            u16 *queue = (u16 *)&gDMATaskCount;
+            next = i + 1;
+            SUHALLA_QUEUE_DMA(queue, REG_ADDR_BLDALPHA, ((16 - next) << 8) | next);
+        } else {
+            next = i + 1;
+        }
+        API_WaitFrames(1);
+        i = next;
+    } while (i <= 15);
+    API_SetFlag(0x1fe + actorId);
+    API_SetFlag(0x340);
+    if (API_GetFlag(0x9a0) && !API_GetFlag(0x9b6)) {
+        API_SetFlag(0x9b6);
+        API_MapActor_SetSpeed(13, 0x10000, 0x8000);
+        API_MapActor_SetSpeed(0, 0x18000, 0xc000);
+        actor = (struct Actor *)__MapActor_GetActor(0);
+        if (actor)
+            API_MapActor_SetPos(13, actor->pos.x, actor->pos.z);
+        API_MapActor_Face(13, 0x4000, 0);
+        flags = (unsigned char *)__MapActor_GetActor(13);
+        flags += 0x5a;
+        *flags = 0xfe & *flags;
+        API_MapActor_TravelToAnim(13, savedX, savedZ - 16);
+        flags = (unsigned char *)__MapActor_GetActor(0);
+        flags += 0x5a;
+        *flags = 0xfe & *flags;
+        API_MapActor_TravelToAnimWait(0, savedX + 8, savedZ - 40);
+        API_CutsceneWait(1);
+        flags = (unsigned char *)__MapActor_GetActor(0);
+        flags += 0x5a;
+        SuhallaStoreByte(flags, 1 | *flags);
+        API_MapActor_SetAnim(13, 1);
+        API_Func_8092adc(0, 0x4000, 0);
+        API_MessageID(0x262e);
+        API_MapActor_Emote(13, 0x106, 60);
+        API_ActorMessage(13, 0);
+        API_MapActor_Emote(13, 0x102, 60);
+        API_ActorMessage(13, 0);
+        API_Func_8092adc(13, 0x2000, 0);
+        API_MapActor_Emote(13, 0x101, 60);
+        API_ActorMessage(13, 0);
+        API_CutsceneWait(10);
+        API_Func_8092adc(13, 0xc000, 30);
+        API_Func_80925cc(13, 2);
+        API_ActorMessage(13, 0);
+        API_MapActor_DoAnim(13, 3);
+        API_ActorMessage(13, 0);
+        API_MapActor_SetSpeed(13, 0x10000, 0x8000);
+        API_MapActor_SetAnim(13, 2);
+        actor = (struct Actor *)__MapActor_GetActor(0);
+        if (actor)
+            API_MapActor_TravelTo(13, *(short *)((unsigned char *)actor + 0xa), *(short *)((unsigned char *)actor + 0x12));
+        API_MapActor_WaitMovement(13);
+        API_MapActor_SetPos(13, 0, 0);
+    }
+    API_CutsceneEnd();
+}
 
 extern void OvlFunc_960_2008594(int);
 
@@ -277,7 +384,73 @@ void OvlFunc_960_2008838(void)
     __MapActor_SetPos(0xd, 0, 0);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_20089cc.s");
+#include "math.h"
+extern int __Random(void);
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+struct SuhallaEffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    int unk1c;
+    short unk20;
+    short unk22;
+    int unk24;
+};
+
+int OvlFunc_960_20089cc(struct Actor *arg0)
+{
+    struct SuhallaEffectData data;
+    struct Actor *actor;
+    int off;
+    int zero;
+    int dx;
+    unsigned int flags;
+
+    off = 0xfa << 1;
+    actor = (struct Actor *)__MapActor_GetActor(*(int *)((char *)&gState + off));
+    arg0->accel = 0x80 << 7;
+    arg0->speed = 0xc0 << 9;
+    zero = 0;
+    arg0->__unk55 = zero;
+    __Actor_SetSpriteFlags((unsigned int)arg0, 0);
+    arg0->visible ^= 1;
+    if (__GetFlag(0x82 << 1) != 0) {
+        arg0->prevPos.x = 0x80 << 24;
+        arg0->prevPos.y = 0x80 << 24;
+        arg0->prevPos.z = 0x80 << 24;
+    } else {
+        arg0->prevPos.x = actor->pos.x;
+        arg0->prevPos.y = actor->floorPos;
+        arg0->prevPos.z = actor->pos.z;
+        dx = ABS(arg0->pos.x - actor->pos.x);
+        if (dx + ABS(arg0->pos.z - actor->pos.z) < (0x80 << 12)) {
+            unsigned char *p = iwram_3001ebc;
+            if (actor->__unk55 != 0) {
+                unsigned short *ptr = (unsigned short *)(p + (0xc1 << 1));
+                unsigned short val = 0x37;
+                *ptr = val;
+            }
+            arg0->__unk55 = 3;
+            arg0->prevPos.x = actor->pos.x;
+            arg0->prevPos.y = actor->pos.y;
+            arg0->prevPos.z = actor->pos.z;
+        }
+    }
+    flags = iwram_3001e40 & 7;
+    if (flags == 0) {
+        data.unk8 = 0xcccc;
+        data.unkc = 0xcccc;
+        data.unk22 = (short)((((unsigned int)__Random() << 12) >> 16) + (0xf8 << 8));
+        OvlFunc_common0_10c(arg0->pos.x, arg0->pos.y, arg0->pos.z, 0, flags, flags, 0x880001, &data);
+    }
+    return 1;
+}
 extern int __GetFlag(int);
 extern void __SetFlag(int);
 extern void __MapActor_SetBehavior(int, void *);
@@ -305,11 +478,63 @@ void OvlFunc_960_2008b14(void) {
 }
 
 extern unsigned char Const_A5[] __asm__(".Lconst_a5");
+extern void __ClearFlag(int);
+extern void __StartMapBattle(int, int);
+extern void __MapActor_SetIdle(int);
 
 INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008b24.s");
-extern void __PlaySound(int);
 
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008c00.s");
+extern void __PlaySound(int);
+extern void __Func_80933f8(int, int, int, int);
+extern void __WaitFrames(int);
+extern void __MapTransitionOut(void);
+extern void __WaitMapTransition(void);
+extern void __SetDestMap(int, int);
+extern unsigned char Lconst_2[] __asm__(".Lconst_2");
+__asm__(".equ .Lconst_2, 2");
+
+void OvlFunc_960_2008c00(void)
+{
+    int flagByte;
+    int off;
+    unsigned char *actorId;
+    struct Actor *actor1;
+    struct Actor *actor2;
+    int i;
+    int ev;
+
+    flagByte = __GetFlagByte(0x86 << 2);
+    off = 0xfa << 1;
+    actorId = (unsigned char *)((char *)&gState + off);
+    actor1 = (struct Actor *)__MapActor_GetActor(*(int *)actorId);
+    actor2 = (struct Actor *)__MapActor_GetActor(flagByte);
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    API_PlaySound(0xdb);
+    __Actor_SetSpriteFlags(*(unsigned int *)actorId, 0);
+    actor2->__unk55 = 0;
+    actor1->__unk55 = 0;
+    actor1->motion.y = 0;
+    actor1->__unk61 = 1;
+    actor2->__unk61 = 1;
+    for (i = 0x3b; i >= 0; i--) {
+        actor1->motion.y += 0x3333;
+        actor2->motion.y += 0x3333;
+        API_WaitFrames(1);
+    }
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_CutsceneEnd();
+    API_SetFlag(0x91 << 1);
+    off = 0xe0 << 1;
+    ev = *(short *)((char *)&gState + off);
+    if (ev == (int)Const_A5 && __GetFlagByte(0x86 << 2) == 11) {
+        __SetDestMap((int)Lconst_2, 0x4d);
+    } else {
+        __SetDestMap((int)Lconst_2, 0x1b);
+    }
+}
+
 extern unsigned int iwram_3001e40;
 
 void OvlFunc_960_2008ce4(void)
@@ -325,7 +550,28 @@ void OvlFunc_960_2008ce4(void)
     *(volatile unsigned short *)0x500019e = (u << 16) >> 16;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008d24.s");
+extern void __Func_8010704(int, int, int, int, int, int);
+extern void __Func_808edac(int, int, int);
+extern void __StopTask(void *);
+extern unsigned short Lm960_1a00 __asm__(".Lm960_1a00");
+
+int OvlFunc_960_2008d24(void)
+{
+    int off;
+
+    off = 0xe0 << 1;
+    if (*(short *)((char *)&gState + off) == (int)Const_A5) {
+        ((unsigned char *)__MapActor_GetActor(0xe))[0x23] = 2;
+        ((unsigned char *)__MapActor_GetActor(0xe))[0x55] = 3;
+        __MapActor_SetPos(0xe, 0, 0);
+        API_Func_8010704(0x10, 0x2c, 1, 1, 0xf, 0x2c);
+        __Func_808edac(100, 0, 0);
+        API_Func_8010704(0xc, 0x47, 1, 1, 0x7f, 0x7f);
+        API_Func_8010704(0xb, 0x47, 1, 1, 0xc, 0x47);
+        __StopTask(OvlFunc_960_2008ce4);
+        SET_IO(*(volatile unsigned short *)0x500019e, Lm960_1a00);
+    }
+}
 extern unsigned char Const_A5[] __asm__(".Lconst_a5");
 __asm__(".equ .Lconst_a5, 0xa5");
 
@@ -385,7 +631,6 @@ int SuhallaDesert_GetEvents(void)
 extern unsigned char iwram_3001e70_raw[] __asm__("iwram_3001e70");
 extern void __StartTask(void *, int);
 extern void __PlaySound(int);
-extern void OvlFunc_960_2008d24(void);
 extern void OvlFunc_960_2008f50(void);
 extern void OvlFunc_960_2009094(void);
 extern unsigned short Lm960_1a00 __asm__(".Lm960_1a00");
@@ -429,6 +674,161 @@ int SuhallaDesert_MapInit(void)
     }
     return 0;
 }
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2008f50.s");
-INCLUDE_ASM("asm/maps/suhalla_desert/OvlFunc_960_2009094.s");
+extern void __Func_8091ff0(int);
+
+extern unsigned char *__MapActor_GetActor(int);
+extern void __Func_8091ff0(int);
+
+#ifndef SUHALLA_QUEUE_DMA
+#define SUHALLA_QUEUE_DMA(queue, dest_val, src_expr)                 \
+    do {                                                             \
+        u32 savedIme = REG_IME;                                      \
+        s32 count;                                                   \
+        u32 *task;                                                   \
+        s32 slot;                                                    \
+        SET_IO(REG_IME, REG_ADDR_IME);                               \
+        count = *(queue);                                            \
+        if (count < 32) {                                            \
+            slot = count * 12;                                       \
+            count++;                                                 \
+            task = (u32 *)(slot + (u32)(queue));                     \
+            *(queue) = count;                                        \
+            task++;                                                  \
+            *task++ = (u32)(src_expr);                               \
+            *task++ = (dest_val);                                    \
+            *task = 0x20000;                                         \
+        }                                                            \
+        SET_IO(REG_IME, savedIme);                                   \
+    } while (0)
+#endif
+
+void OvlFunc_960_2008f50(void)
+{
+    int val;
+    int i;
+    unsigned char *actor;
+    u16 *queue;
+
+    val = 0;
+    if (API_GetFlag(0x301)) {
+        API_SetFlag(0x206);
+    }
+    if (API_GetFlag(0x302)) {
+        API_SetFlag(0x207);
+    }
+    if (API_GetFlag(0x303)) {
+        API_SetFlag(0x208);
+    }
+    if (API_GetFlag(0x304)) {
+        API_SetFlag(0x209);
+    }
+    if (API_GetFlag(0x305)) {
+        API_SetFlag(0x20a);
+    }
+
+    for (i = 8; i <= 12; i++) {
+        actor = (unsigned char *)__MapActor_GetActor(i);
+        if (actor != 0) {
+            if (API_GetFlag(0x109) == 0) {
+                *(int *)(actor + 0x18) = 0x800;
+                *(int *)(actor + 0x1c) = 0x800;
+            }
+            *(unsigned char *)(*(unsigned char **)(actor + 0x50) + 0x26) = 0;
+        }
+    }
+
+    queue = (u16 *)&gDMATaskCount;
+    SUHALLA_QUEUE_DMA(queue, REG_ADDR_BLDCNT, 0x3f42);
+
+    if (API_GetFlag(0x340)) {
+        val = 0x10;
+        __Func_8091ff0(0xf4);
+    }
+
+    SUHALLA_QUEUE_DMA(queue, REG_ADDR_BLDALPHA, ((0x10 - val) << 8) | val);
+}
+
+
+extern unsigned char *__MapActor_GetActor(int);
+extern void __Func_8091ff0(int);
+
+#ifndef SUHALLA_QUEUE_DMA
+#define SUHALLA_QUEUE_DMA(queue, dest_val, src_expr)                 \
+    do {                                                             \
+        u32 savedIme = REG_IME;                                      \
+        s32 count;                                                   \
+        u32 *task;                                                   \
+        s32 slot;                                                    \
+        SET_IO(REG_IME, REG_ADDR_IME);                               \
+        count = *(queue);                                            \
+        if (count < 32) {                                            \
+            slot = count * 12;                                       \
+            count++;                                                 \
+            task = (u32 *)(slot + (u32)(queue));                     \
+            *(queue) = count;                                        \
+            task++;                                                  \
+            *task++ = (u32)(src_expr);                               \
+            *task++ = (dest_val);                                    \
+            *task = 0x20000;                                         \
+        }                                                            \
+        SET_IO(REG_IME, savedIme);                                   \
+    } while (0)
+#endif
+
+void OvlFunc_960_2009094(void)
+{
+    int val;
+    int i;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    u16 *queue;
+
+    val = 0;
+    if (API_GetFlag(0x311)) {
+        API_SetFlag(0x206);
+    }
+    if (API_GetFlag(0x312)) {
+        API_SetFlag(0x207);
+    }
+    if (API_GetFlag(0x313)) {
+        API_SetFlag(0x208);
+    }
+
+    for (i = 8; i <= 10; i++) {
+        actor = (struct Actor *)__MapActor_GetActor(i);
+        if (actor != 0) {
+            if (API_GetFlag(0x109) == 0) {
+                actor->scale.x = 0x800;
+                actor->scale.y = 0x800;
+            }
+            sprite = actor->sprite;
+            sprite->flags = 0;
+        }
+    }
+
+    actor = (struct Actor *)__MapActor_GetActor(11);
+    if (actor != 0) {
+        sprite = actor->sprite;
+        if (sprite->layers[0] != 0) {
+            sprite->layers[0]->colorswap = 10;
+        }
+        sprite->visible = 1;
+        sprite->flags = 0;
+    }
+
+    if (API_GetFlag(0x315)) {
+        API_SetFlag(0x9b7);
+    }
+
+    queue = (u16 *)&gDMATaskCount;
+    SUHALLA_QUEUE_DMA(queue, REG_ADDR_BLDCNT, 0x3f42);
+
+    if (API_GetFlag(0x340)) {
+        val = 0x10;
+        __Func_8091ff0(0xf4);
+    }
+
+    SUHALLA_QUEUE_DMA(queue, REG_ADDR_BLDALPHA, ((0x10 - val) << 8) | val);
+}
+
 INCLUDE_ASM("asm/maps/suhalla_desert/suhalla_desert_data.s");
