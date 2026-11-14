@@ -61,11 +61,63 @@ void OvlFunc_952_20080c8(int a) {
     API_ActorMessage(a, 0);
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008108.s");
+extern unsigned char Lconst_1ff8[] __asm__(".Lconst_1ff8");
+__asm__(".equ .Lconst_1ff8, 0x1ff8");
+extern void __Func_808e118(void);
+void *__MapActor_GetActor(unsigned int);
+
+void OvlFunc_952_2008108(int arg0)
+{
+    short angle;
+    int msg;
+    unsigned char *actor0;
+
+    actor0 = (unsigned char *)__MapActor_GetActor(0);
+    angle = (*(unsigned short *)(actor0 + 6) + 0x2000) & (int)0xffffc000;
+    API_CutsceneStart();
+    __Func_808e118();
+    if (API_GetFlag(0x200) == 0) {
+        API_SetFlag(0x200);
+        API_ClearFlag(0x969);
+        API_MessageID(0x1ff7);
+        API_ActorMessage(arg0, 0);
+        API_CutsceneWait(10);
+        if ((unsigned short)angle == 0x4000) {
+            API_MapActor_TravelToAnimWait(0, 0x28, 0x68);
+            API_Func_8092adc(0, 0, 0);
+        }
+        API_MapActor_SetSpeed(arg0, 0x10000, 0x8000);
+        API_Func_8092304(arg0, 0, -0x30);
+        API_Func_8092304(arg0, 0x40, 0);
+        API_Func_8092adc(arg0, 0x4000, 0);
+    } else {
+        API_ClearFlag(0x200);
+        API_SetFlag(0x969);
+        API_Func_8092adc(arg0, 0x4000, 0);
+        API_MapActor_TravelToAnimWait(0, 0x78, 0x60);
+        API_Func_8092adc(0, 0xc000, 0);
+        API_CutsceneWait(20);
+        msg = (int)Lconst_1ff8;
+        API_MessageID(msg);
+        __ShowActorMessage_NoWait(arg0, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            API_MessageID(msg + 1);
+            API_ActorMessage(arg0, 0);
+        } else {
+            API_MessageID(msg + 2);
+            API_ActorMessage(arg0, 0);
+        }
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(arg0, 3);
+        API_CutsceneWait(20);
+        API_Func_8092304(arg0, -0x40, 0);
+        API_Func_8092304(arg0, 0, 0x30);
+    }
+    API_CutsceneEnd();
+}
 
 extern unsigned char Lm952_2241[] __asm__(".Lm952_2241");
 __asm__(".equ .Lm952_2241, 0x2241");
-extern void __Func_808e118(void);
 
 void OvlFunc_952_2008264(unsigned int actor) {
     int msg;
@@ -231,7 +283,44 @@ void OvlFunc_952_2008564(unsigned int actor) {
     }
     API_ActorMessage(actor, 0);
 }
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20085a4.s");
+extern unsigned char Lconst_2352[] __asm__(".Lconst_2352");
+__asm__(".equ .Lconst_2352, 0x2352");
+extern void __Func_808f1c0(int, int);
+extern int __Func_8091a58(int, int);
+
+void OvlFunc_952_20085a4(void)
+{
+    int msg;
+
+    API_CutsceneStart();
+    __Func_808e118();
+    msg = (int)Lconst_2352;
+    API_MessageID(msg);
+    API_ActorMessage(-1, 0);
+    API_CutsceneWait(0xa);
+    API_Func_80925cc(0xe, 2);
+    API_CutsceneWait(0x1e);
+    API_MapActor_Face(0, 0xe, 0x1e);
+    __ShowActorMessage_NoWait(0xe, 0);
+    if (__Func_8091c7c(0, 0) != 0) {
+        API_MessageID(msg + 2);
+        API_ActorMessage(0xe, 0);
+    } else {
+        API_CutsceneWait(0x14);
+        API_MessageID(msg + 3);
+        API_ActorMessage(0xe, 0);
+        API_CutsceneWait(0xa);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(0x1e);
+        API_Func_8092adc(0, 0x80 << 7, 0);
+        API_CutsceneWait(0x1e);
+        API_MapActor_SetPos(0x10, 0, 0);
+        __Func_808f1c0(0xcd, 3);
+        API_MapActor_SetAnim(0, 1);
+        __Func_8091a58(0xcd, 0);
+        API_SetFlag(0xf31);
+    }
+}
 static inline void BabiRecoveryByte(unsigned char *field, int value)
 {
     *field = value;
@@ -396,7 +485,187 @@ void OvlFunc_952_2008674(void)
     API_CutsceneWait(10);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_2008af8.s");
+void OvlFunc_952_2008af8(void)
+{
+    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
+    extern void __Func_808e118(void);
+    extern int __Func_8091c7c(int, int);
+    extern void __InnHeal(int);
+    extern int BabiHealActor(int) __asm__("__MapActor_GetActor");
+    extern int __ShowActorMessage_NoWait(int, int);
+    short savedFacing;
+    unsigned int facing;
+    int choice1;
+    int flagValue2;
+    int flagValue3;
+    int flagValue4;
+    int flagValue5;
+    int flagValue6;
+    unsigned char *actor;
+
+    actor = (unsigned char *)BabiHealActor(0);
+    savedFacing = (*(unsigned short *)(actor + 6) + 0x2000) & (int)0xffffc000;
+    API_CutsceneStart();
+    __Func_808e118();
+    API_MessageID(0x1ffb);
+    API_ShowActorMessage_NoWait(-1, 0);
+    choice1 = __Func_8091c7c(0, 0);
+    if (choice1 == 0) {
+        flagValue2 = API_GetFlag(0x96a);
+        if (flagValue2 != 0) {
+            API_CutsceneWait(20);
+            __InnHeal(0);
+            return;
+        }
+        API_CutsceneWait(20);
+        facing = (unsigned short)savedFacing;
+        if (facing == 0) {
+            API_MapActor_TravelToAnimWait(0, 0x80, 0x78);
+        }
+        if (facing == 0x8000) {
+            API_MapActor_TravelToAnimWait(0, 0xf0, 0x78);
+        }
+        API_MapActor_TravelToAnimWait(0, 0xb8, 0x78);
+        API_Func_8092adc(0, 0, 0);
+        API_CutsceneWait(10);
+        API_Func_809233c(1, 16, 0, 0x8000);
+        API_MapActor_WaitScript(1);
+        API_CutsceneWait(10);
+        API_ActorMessage(1, 0);
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(20);
+        API_MapActor_SetSpeed(1, 0x10000, 0x8000);
+        API_Func_8092304(1, 0x28, 0);
+        API_Func_8092304(1, 0, -0x20);
+        API_Func_8092adc(1, 0x6000, 0);
+        API_CutsceneWait(20);
+        API_Func_8092adc(0, 0x8000, 0);
+        API_CutsceneWait(20);
+        API_Func_809233c(2, -16, 0, 0);
+        API_MapActor_WaitScript(2);
+        API_CutsceneWait(10);
+        API_ActorMessage(2, 0);
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(20);
+        API_MapActor_SetSpeed(2, 0x10000, 0x8000);
+        API_Func_8092304(2, -0x28, 0);
+        API_Func_8092304(2, 0, 0x28);
+        API_Func_8092adc(2, 0xe000, 0);
+        API_CutsceneWait(20);
+        API_Func_8092adc(0, 0, 0);
+        API_CutsceneWait(20);
+        API_Func_809233c(3, 16, 0, 0x8000);
+        API_MapActor_WaitScript(3);
+        API_CutsceneWait(10);
+        API_ActorMessage(3, 0);
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(20);
+        API_MapActor_SetSpeed(3, 0x10000, 0x8000);
+        API_Func_8092304(3, 0x28, 0);
+        API_Func_8092304(3, 0, 0x28);
+        API_Func_8092adc(3, 0xa000, 0);
+        API_CutsceneWait(20);
+        API_Func_80933f8(-1, -1, -1, 0);
+        API_Func_8092304(0, -0x38, 0);
+        API_Func_8092304(0, 0, -0x20);
+        API_Func_8092adc(0, 0x2000, 0);
+        API_CutsceneWait(30);
+        API_MapActor_DoAnim(3, 3);
+        API_CutsceneWait(10);
+        API_ActorMessage(3, 0);
+        API_MapActor_DoAnim(1, 3);
+        API_CutsceneWait(10);
+        flagValue3 = API_GetFlag(0x96a);
+        if (flagValue3 == 0) {
+            API_ActorMessage(1, 0);
+        } else {
+            *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        }
+        API_MapActor_DoAnim(2, 3);
+        API_CutsceneWait(10);
+        flagValue4 = API_GetFlag(0x96a);
+        if (flagValue4 == 0) {
+            API_ActorMessage(2, 0);
+        } else {
+            *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        }
+        API_CutsceneWait(20);
+        API_Func_8092adc(0, 0, 0);
+        API_Func_8092adc(1, 0x8000, 0);
+        API_Func_8092adc(3, 0x8000, 0);
+        API_Func_8092adc(2, 0, 0);
+        __InnHeal(0);
+        API_Func_8092adc(0, 0x2000, 0);
+        API_Func_8092adc(1, 0x6000, 0);
+        API_Func_8092adc(3, 0xa000, 0);
+        API_Func_8092adc(2, 0xe000, 0);
+        API_CutsceneWait(20);
+        API_MapActor_DoAnim(1, 3);
+        API_CutsceneWait(10);
+        API_ActorMessage(1, 0);
+        API_MapActor_DoAnim(2, 3);
+        API_CutsceneWait(10);
+        flagValue5 = API_GetFlag(0x96a);
+        if (flagValue5 == 0) {
+            API_ActorMessage(2, 0);
+        } else {
+            *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        }
+        API_MapActor_DoAnim(3, 3);
+        API_CutsceneWait(10);
+        flagValue6 = API_GetFlag(0x96a);
+        if (flagValue6 == 0) {
+            API_ActorMessage(3, 0);
+        } else {
+            *(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) = (*(unsigned short *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1d8) + 1);
+        }
+        API_Func_8092304(1, 0, 0x20);
+        API_Func_80922c4(1, -0x70, 0);
+        API_Func_8092304(3, 0, -0x28);
+        API_Func_80922c4(3, -0x70, 0);
+        API_CutsceneWait(0x32);
+        API_Func_8092304(2, 0, -24);
+        API_MapActor_WaitMovement(1);
+        API_Func_8092adc(0, 0x4000, 0);
+        API_Func_8092304(1, 0, -16);
+        API_MapActor_WaitMovement(3);
+        API_Func_8092adc(3, 0xc000, 0);
+        API_CutsceneWait(20);
+        API_ActorMessage(1, 0);
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 3);
+        API_CutsceneWait(20);
+        API_MapActor_SetSpeed(1, 0x13333, 0x9999);
+        API_MapActor_SetSpeed(2, 0x13333, 0x9999);
+        API_MapActor_SetSpeed(3, 0x13333, 0x9999);
+        API_MapActor_SetAnim(1, 2);
+        actor = (unsigned char *)BabiHealActor(0);
+        if (actor != 0) {
+            API_MapActor_TravelTo(1, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+        }
+        API_MapActor_WaitMovement(1);
+        API_MapActor_SetPos(1, 0, 0);
+        API_MapActor_SetAnim(3, 2);
+        actor = (unsigned char *)BabiHealActor(0);
+        if (actor != 0) {
+            API_MapActor_TravelTo(3, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+        }
+        API_MapActor_WaitMovement(3);
+        API_MapActor_SetPos(3, 0, 0);
+        API_MapActor_SetAnim(2, 2);
+        actor = (unsigned char *)BabiHealActor(0);
+        if (actor != 0) {
+            API_MapActor_TravelTo(2, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+        }
+        API_MapActor_WaitMovement(2);
+        API_MapActor_SetPos(2, 0, 0);
+        API_SetFlag(0x96a);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_952_2008ff8(void)
 {
@@ -653,7 +922,300 @@ void OvlFunc_952_2008ff8(void)
     API_MapActor_SetPos(20, 0, 0);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_20097e8.s");
+void OvlFunc_952_20097e8(void)
+{
+    struct BabiGraphicsView {
+        int pad0[0x528 / 4];
+        unsigned short pad0b;
+        unsigned short unk52a : 16;
+        unsigned char pad1[0x534 - 0x52c];
+        unsigned short unk534 : 16;
+        unsigned short unk536 : 16;
+    };
+    struct BabiSceneView {
+        unsigned char pad0[0x1c0];
+        int mode;
+        int unk1c4;
+        int unk1c8;
+        unsigned char pad1[0x1d8 - 0x1cc];
+        unsigned short messageID;
+    };
+    extern unsigned char iwram_3001ebc[];
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_808fe38(int);
+    extern int __Func_8091c7c(int, int);
+    extern unsigned char *BabiWakeActor(int) __asm__("__MapActor_GetActor");
+    extern int __ShowActorMessage_NoWait(int, int);
+    struct BabiGraphicsView *graphics;
+    int fade;
+    int refused;
+    extern unsigned int BabiHeldKeys __asm__("gKeyHeld");
+    int choice1;
+    int choice2;
+    unsigned char *actor;
+    struct BabiSceneView *field;
+
+    API_CutsceneStart();
+    API_MessageID(0x228c);
+    API_MapActor_SetAnim(0, 31);
+    actor = BabiWakeActor(0);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_MapActor_SetPos(1, 0x680000, 0x680000);
+    API_MapActor_SetPos(3, 0x580000, 0x780000);
+    API_MapActor_SetPos(2, 0x780000, 0x780000);
+    API_Func_8092adc(1, 0x4000, 0);
+    API_Func_8092adc(3, 0, 0);
+    API_Func_8092adc(2, 0x8000, 0);
+    field = *(struct BabiSceneView **)iwram_3001ebc;
+    field->mode = 0x100;
+    field->unk1c8 = 12;
+    API_WaitFrames(1);
+    __Func_808fe38(9);
+    graphics = ((struct BabiGraphicsView **)iwram_3001ebc)[4];
+    graphics->unk52a = 0;
+    graphics->unk534 = 0x1f1f;
+    graphics->unk536 = 1;
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    for (fade = 1; fade <= 5; ++fade) {
+        API_WaitFrames(3);
+        graphics->unk52a = fade;
+    }
+    API_CutsceneWait(0x28);
+    API_Func_80925cc(0, 2);
+    API_CutsceneWait(30);
+    for (fade = 5; fade <= 31; ++fade) {
+        API_WaitFrames(3);
+        graphics->unk52a = fade;
+    }
+    graphics->unk536 = 31;
+    field = *(struct BabiSceneView **)iwram_3001ebc;
+    field->mode = 0x209;
+    field->unk1c8 = 24;
+    API_CutsceneWait(20);
+    API_MapActor_Emote(1, 0x100, 0x32);
+    API_MapActor_Face(1, 0, 0x28);
+    API_Func_80925cc(1, 2);
+    API_CutsceneWait(30);
+    API_CutsceneWait(10);
+    API_MapActor_Emote(2, 0x101, 0x28);
+    API_Func_8092adc(2, 0xe000, 0);
+    API_CutsceneWait(30);
+    API_ActorMessage(2, 0);
+    API_CutsceneWait(10);
+    API_ActorMessage(3, 0);
+    API_Func_8092adc(3, 0xe000, 0);
+    API_CutsceneWait(30);
+    API_Func_80925cc(3, 2);
+    API_CutsceneWait(30);
+    API_MapActor_SetSpeed(3, 0x10000, 0x8000);
+    API_Func_8092304(3, 0, -0x28);
+    API_Func_8092304(3, 0x20, 0);
+    API_Func_8092adc(3, 0x2000, 0);
+    API_CutsceneWait(10);
+    API_ActorMessage(3, 0);
+    actor = BabiWakeActor(0);
+    *(int *)(actor + 0x10) = (*(int *)(actor + 0x10) + 0xfffd0000);
+    actor = BabiWakeActor(0);
+    *(int *)(actor + 0x40) = (*(int *)(actor + 0x40) + 0xfffd0000);
+    API_MapActor_SetAnim(0, 0x20);
+    API_CutsceneWait(0x28);
+    API_MapActor_DoAnim(0, 0x22);
+    API_CutsceneWait(30);
+    API_MapActor_SetAnim(0, 0x21);
+    API_CutsceneWait(0x28);
+    API_MapActor_DoAnim(1, 4);
+    API_CutsceneWait(20);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(10);
+    API_MapActor_Emote(0, 0x102, 0x50);
+    API_MapActor_Emote(2, 0x100, 0x32);
+    __ShowActorMessage_NoWait(2, 0);
+    choice1 = __Func_8091c7c(-1, 0);
+    if (choice1 == 0) {
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 0x21);
+        API_CutsceneWait(20);
+        API_MapActor_Emote(1, 0x103, 0x28);
+        API_MapActor_Jump(1, 4, 13);
+        API_MapActor_Jump(1, 4, 30);
+        API_ActorMessage(1, 0);
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID++;
+    } else {
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 0x22);
+        API_CutsceneWait(20);
+        API_MapActor_Emote(1, 0x103, 0x28);
+        API_MapActor_Jump(1, 4, 13);
+        API_MapActor_Jump(1, 4, 30);
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID++;
+        API_ActorMessage(1, 0);
+    }
+    API_CutsceneWait(10);
+    API_Func_8092adc(2, 0xa000, 0);
+    API_CutsceneWait(30);
+    API_MapActor_DoAnim(2, 4);
+    API_CutsceneWait(20);
+    API_Func_8092adc(1, 0x2000, 0);
+    API_CutsceneWait(30);
+    API_Func_80925cc(1, 2);
+    API_CutsceneWait(0x28);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(2, 0xe000, 0);
+    API_CutsceneWait(30);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(30);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(10);
+    API_Func_8092adc(3, 0x6000, 0);
+    API_CutsceneWait(0x32);
+    API_Func_8092adc(3, 0x2000, 0);
+    API_CutsceneWait(0x23);
+    API_MapActor_Emote(3, 0x108, 0x32);
+    API_CutsceneWait(10);
+    API_MapActor_DoAnim(3, 3);
+    API_CutsceneWait(30);
+    API_ActorMessage(3, 0);
+    API_CutsceneWait(10);
+    API_Func_80925cc(2, 2);
+    API_CutsceneWait(20);
+    __ShowActorMessage_NoWait(2, 0);
+    choice2 = __Func_8091c7c(-1, 0);
+    if (choice2 == 0) {
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 0x21);
+        API_CutsceneWait(20);
+        API_MapActor_Emote(1, 0x107, 0x28);
+        API_ActorMessage(1, 0);
+        refused = 0;
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID++;
+    } else {
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(0, 0x22);
+        API_CutsceneWait(20);
+        API_MapActor_Emote(1, 0x107, 0x28);
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID++;
+        refused = 1;
+        API_ActorMessage(1, 0);
+    }
+    API_CutsceneWait(10);
+    API_Func_8092adc(2, 0xa000, 0);
+    API_CutsceneWait(30);
+    API_MapActor_DoAnim(2, 4);
+    API_CutsceneWait(20);
+    API_Func_8092adc(1, 0x2000, 0);
+    API_CutsceneWait(30);
+    API_Func_80925cc(1, 2);
+    API_CutsceneWait(0x28);
+    API_Func_8092adc(1, 0xe000, 0);
+    API_Func_8092adc(2, 0xe000, 0);
+    API_CutsceneWait(30);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(30);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(10);
+    API_Func_8092adc(3, 0x6000, 0);
+    API_CutsceneWait(0x32);
+    API_Func_8092adc(3, 0x2000, 0);
+    API_CutsceneWait(0x23);
+    API_MapActor_Emote(3, 0x108, 0x32);
+    API_CutsceneWait(10);
+    API_MapActor_DoAnim(3, 3);
+    API_CutsceneWait(30);
+    API_ActorMessage(3, 0);
+    if (refused == 0) {
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(2, 3);
+        API_CutsceneWait(30);
+        API_ActorMessage(2, 0);
+        API_CutsceneWait(10);
+        API_Func_80925cc(1, 2);
+        API_CutsceneWait(30);
+        API_ActorMessage(1, 0);
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID += 2;
+    } else {
+        (*(struct BabiSceneView **)iwram_3001ebc)->messageID += 2;
+        API_CutsceneWait(10);
+        API_MapActor_DoAnim(2, 4);
+        API_CutsceneWait(20);
+        API_ActorMessage(2, 0);
+        API_CutsceneWait(10);
+        API_Func_80925cc(1, 2);
+        API_CutsceneWait(20);
+        API_ActorMessage(1, 0);
+    }
+    API_CutsceneWait(10);
+    API_MapActor_Emote(0, 0x102, 0x3c);
+    API_CutsceneWait(10);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(30);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(20);
+    API_MapActor_TurnToFaceActor(2, 3, 0x28);
+    API_Func_8092adc(3, 0x2000, 0);
+    API_Func_8092adc(2, 0xe000, 0);
+    API_CutsceneWait(30);
+    while ((BabiHeldKeys & 0xf0) == 0) {
+        API_WaitFrames(1);
+    }
+    API_MapActor_Jump(0, 6, 0);
+    API_MapActor_SetSpeed(0, 0x1e666, 0xf333);
+    API_Func_8092304(0, -0x20, -8);
+    actor = BabiWakeActor(0);
+    __Actor_SetSpriteFlags(actor, 1);
+    API_CutsceneWait(20);
+    API_Func_8092adc(0, 0xc000, 0);
+    API_Func_8092adc(3, 0x4000, 0);
+    API_Func_8092adc(2, 0xc000, 0);
+    API_CutsceneWait(20);
+    API_CutsceneWait(10);
+    API_Func_80925cc(3, 2);
+    API_CutsceneWait(20);
+    API_ActorMessage(3, 0);
+    API_CutsceneWait(10);
+    API_Func_80925cc(1, 2);
+    API_CutsceneWait(20);
+    API_ActorMessage(1, 0);
+    API_CutsceneWait(20);
+    API_MapActor_DoAnim(2, 3);
+    API_CutsceneWait(30);
+    API_Func_8092adc(0, 0x4000, 0);
+    API_Func_8092adc(1, 0x2000, 0);
+    API_CutsceneWait(30);
+    API_ActorMessage(2, 0);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(0, 3);
+    API_MapActor_SetAnim(1, 3);
+    API_MapActor_DoAnim(3, 3);
+    API_CutsceneWait(30);
+    API_MapActor_SetSpeed(1, 0x13333, 0x9999);
+    API_MapActor_SetSpeed(3, 0x13333, 0x9999);
+    API_MapActor_SetSpeed(2, 0x13333, 0x9999);
+    API_MapActor_SetAnim(1, 2);
+    actor = BabiWakeActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(1, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_WaitMovement(1);
+    API_MapActor_SetPos(1, 0, 0);
+    API_MapActor_SetAnim(3, 2);
+    actor = BabiWakeActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(3, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_WaitMovement(3);
+    API_MapActor_SetPos(3, 0, 0);
+    API_MapActor_SetAnim(2, 2);
+    actor = BabiWakeActor(0);
+    if (actor != 0) {
+        API_MapActor_TravelTo(2, *(short *)(actor + 0xa), *(short *)(actor + 0x12));
+    }
+    API_MapActor_WaitMovement(2);
+    API_MapActor_SetPos(2, 0, 0);
+    API_CutsceneWait(10);
+    API_CutsceneEnd();
+}
+
 struct BabiActorView {
     unsigned char beforeX[0xa];
     short x; /* +0x0a: signed high half of the fixed-point X position */
@@ -1678,7 +2240,55 @@ void OvlFunc_952_200bdf8(void)
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/babis_palace/OvlFunc_952_200be40.s");
+extern unsigned char Lconst_2233[] __asm__(".Lconst_2233");
+__asm__(".equ .Lconst_2233, 0x2233");
+
+void OvlFunc_952_200be40(void)
+{
+    int msg;
+
+    API_SetFlag(0x96c);
+    API_CutsceneStart();
+    __Func_808e118();
+    API_Func_8092adc(8, 0xa0 << 7, 0);
+    API_Func_8092adc(9, 0xc0 << 6, 0);
+    API_MapActor_TravelToAnimWait(0, 0xc8, 0x88 << 1);
+    API_Func_8092adc(0, 0xc0 << 8, 0);
+    API_CutsceneWait(0x14);
+    msg = (int)Lconst_2233;
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(8, 0);
+    if (__Func_8091c7c(0, 0) == 0) {
+        API_CutsceneWait(0x14);
+        API_MessageID(msg + 1);
+        API_ActorMessage(8, 0);
+    } else {
+        API_CutsceneWait(0x14);
+        API_MessageID(msg + 2);
+        API_ActorMessage(8, 0);
+        API_CutsceneWait(0x14);
+        API_MapActor_TurnToFaceActor(8, 9, 0x3c);
+        API_Func_8092adc(9, 0xc0 << 6, 0);
+        API_CutsceneWait(0x28);
+        API_Func_80925cc(9, 2);
+        API_CutsceneWait(0x1e);
+        API_MapActor_TurnToFaceActor(8, 9, 0x1e);
+        API_MapActor_DoAnim(9, 3);
+        API_CutsceneWait(0x1e);
+        API_MapActor_Emote(8, 0x81 << 1, 0x32);
+        API_Func_8092adc(8, 0xa0 << 7, 0);
+        API_Func_8092adc(9, 0xc0 << 6, 0);
+        API_CutsceneWait(0x14);
+        API_MapActor_DoAnim(8, 4);
+        API_CutsceneWait(0x14);
+        API_ActorMessage(8, 0);
+        API_CutsceneWait(0xa);
+        API_Func_80925cc(8, 2);
+        API_CutsceneWait(0x14);
+        API_ActorMessage(8, 0);
+    }
+    API_CutsceneEnd();
+}
 void OvlFunc_952_200bf84(void)
 {
     if (API_GetFlag(0x96d) == 0) {
@@ -1739,7 +2349,131 @@ int BabisPalace_GetEvents(void)
     if (__GetFlag(0x962)) return (int)Lm952_5394;
     return (int)Lm952_5004;
 }
-INCLUDE_ASM("asm/maps/babis_palace/BabisPalace_MapInit.s");
+#include "actor.h"
+#include "rpg.h"
+
+struct CS952_StateView { unsigned char padding[0x1c0]; short event, room; };
+struct CS952_SceneView { unsigned char padding[0x1c0]; int mode; };
+extern struct CS952_SceneView *CS952_SceneTyped __asm__("iwram_3001ebc");
+extern struct Actor *CS952_GetActor(int) __asm__("__MapActor_GetActor");
+extern void CS952_SpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
+extern unsigned char *CS952_Alloc(int, unsigned int) __asm__("__galloc_iwram");
+extern void CS952_LoadIcon(int) __asm__("__LoadItemIcon");
+extern void CS952_Upload(int, int, void *) __asm__("__UploadSpriteGFX");
+extern void CS952_Free(int) __asm__("__gfree");
+extern struct Unit *CS952_Unit(int) __asm__("__GetUnit");
+extern void CS952_UpdateBars(int) __asm__("__UpdateStatBarPercent");
+extern void CS952_AddMember(int) __asm__("__AddPartyMember");
+extern void CS952_PartyUpdate(void) __asm__("__Func_807a7a0");
+extern void OvlFunc_952_200a014(void);
+extern void OvlFunc_952_20097e8(void);
+extern void OvlFunc_952_2008674(void);
+extern unsigned char CS952_Event8b[] __asm__(".Lcs952_event8b");
+__asm__(".equ .Lcs952_event8b, 0x8b");
+
+static inline int API_GetPartyMembers_952(short *buf)
+{
+    extern int __Func_80796c4(short *);
+    return __Func_80796c4(buf);
+}
+
+int BabisPalace_MapInit(void)
+{
+    struct CS952_StateView *state;
+    short room91;
+    int itemFlag, count99, count98, i99, i98, spriteMask;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *icons;
+    struct Unit *unit;
+    short members99[8];
+    short members98[8];
+
+    API_Func_80118c0(1);
+    API_Func_80118c0(2);
+    API_Func_80118c0(4);
+    state = (struct CS952_StateView *)&gState;
+    if (state->room == 90) {
+        API_SetFlag(0x962);
+    }
+    room91 = state->room;
+    if (room91 == 91) {
+        API_SetFlag(0x962);
+        API_SetFlag(0x950);
+    }
+    if (state->event == (int)CS952_Event8b)
+        goto done;
+    if (state->room == 11)
+        API_ClearFlag(0x12f);
+    if (API_GetFlag(0x950)) {
+        itemFlag = API_GetFlag(0xf31);
+        if (itemFlag) {
+            API_MapActor_SetPos(16, 0, 0);
+        } else {
+            actor = CS952_GetActor(16);
+            actor->__unk5C = 1;
+            actor->__unk55 = itemFlag;
+            sprite = actor->sprite;
+            actor->pos.y = 0x40000;
+            sprite->numLayers = itemFlag;
+            spriteMask = ~0x20;
+            ((unsigned char *)sprite)[5] &= spriteMask;
+            sprite->oam.palette = 0;
+            icons = CS952_Alloc(17, 0x608);
+            CS952_LoadIcon(0xcd);
+            CS952_Upload(sprite->slot, 0x80, icons + 0x400);
+            CS952_Free(17);
+        }
+        if (((struct CS952_StateView *)&gState)->room == 33 && !API_GetFlag(0x96f)) {
+            API_SetFlag(0x96f);
+            API_MapActor_SetPos(14, 0xd00000, 0x2c00000);
+            OvlFunc_952_200a014();
+        }
+        API_MapActor_SetAnim(14, 5);
+        CS952_SpriteFlags(CS952_GetActor(14), 0);
+    } else if (API_GetFlag(0x962) && !API_GetFlag(0x966)) {
+        API_MapActor_SetPos(10, 0x780000, 0x480000);
+    }
+    CS952_SceneTyped->mode = 0x209;
+    CS952_GetActor(9)->collision |= 4;
+    if (((struct CS952_StateView *)&gState)->room == 99) {
+        count99 = API_GetPartyMembers_952(members99);
+        for (i99 = 0; i99 < count99; i99++) {
+            unit = CS952_Unit(members99[i99]);
+            unit->HP = unit->maxHP;
+            unit->PP = unit->maxPP;
+            CS952_UpdateBars(members99[i99]);
+        }
+        CS952_AddMember(1);
+        CS952_AddMember(2);
+        CS952_AddMember(3);
+        CS952_PartyUpdate();
+        OvlFunc_952_20097e8();
+        ((struct CS952_StateView *)&gState)->room = 8;
+    }
+    if (((struct CS952_StateView *)&gState)->room == 98) {
+        count98 = API_GetPartyMembers_952(members98);
+        for (i98 = 0; i98 < count98; i98++) {
+            unit = CS952_Unit(members98[i98]);
+            unit->HP = unit->maxHP;
+            unit->PP = unit->maxPP;
+            CS952_UpdateBars(members98[i98]);
+        }
+        CS952_AddMember(1);
+        CS952_AddMember(2);
+        CS952_AddMember(3);
+        CS952_PartyUpdate();
+        API_SetFlag(0x966);
+        API_SetFlag(0x967);
+        API_MapActor_SetPos(10, 0x380000, 0x780000);
+        API_Func_8092adc(10, 0xf000, 0);
+        OvlFunc_952_2008674();
+        ((struct CS952_StateView *)&gState)->room = 8;
+    }
+done:
+    return 0;
+}
+
 INCLUDE_ASM("asm/maps/babis_palace/babis_palace_data.s");
 
 INCLUDE_ASM("asm/maps/babis_palace/imports.s");

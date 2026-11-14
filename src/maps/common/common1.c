@@ -297,7 +297,34 @@ void OvlFunc_common1_488(void)
 }
 
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_4cc.s");
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_588.s");
+
+extern void __Func_8019908(unsigned int, int);
+extern unsigned char Event8f[] __asm__("0x8f");
+extern unsigned char Event90[] __asm__("0x90");
+extern unsigned char Msg2076[] __asm__("0x2076");
+extern unsigned char Msg2078[] __asm__("0x2078");
+extern unsigned char Msg207a[] __asm__("0x207a");
+
+void OvlFunc_common1_588(unsigned int arg0, unsigned int arg1)
+{
+    int off;
+    int ev;
+    int msg;
+
+    __Func_8019908(arg1, 5);
+    off = 0xe0;
+    ev = *(short *)((char *)&gState + (off << 1));
+    if (ev == (int)Event8f) {
+        msg = (int)Msg2076;
+    } else if (ev == (int)Event90) {
+        msg = (int)Msg2078;
+    } else {
+        msg = (int)Msg207a;
+    }
+    __MessageID(msg + 1);
+    __ActorMessage(arg0, 0);
+}
+
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_5e4.s");
 
 void OvlFunc_common1_850(unsigned int arg0, unsigned int arg1)
@@ -420,7 +447,29 @@ void OvlFunc_common1_1578(unsigned int arg0, unsigned int arg1, unsigned int arg
     }
 }
 
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_15b8.s");
+extern void __Actor_WaitMovement(void *);
+
+void OvlFunc_common1_15b8(unsigned int actorID, unsigned int arg1, unsigned int arg2)
+{
+    unsigned char *actor;
+    int v;
+    unsigned char zero;
+
+    actor = __GetFieldActor(actorID);
+    if (actor != (unsigned char *)0) {
+        zero = 0;
+        v = 0xa0 << 9;
+        *(int *)(actor + 0x30) = v;
+        v >>= 1;
+        *(int *)(actor + 0x34) = v;
+        actor[0x5b] = zero;
+        __Actor_Stop();
+        __Actor_SetAnim(actor, 5);
+        __Actor_TravelTo(actor, arg1 << 16, *(int *)(actor + 0xc), arg2 << 16);
+        __Actor_WaitMovement(actor);
+        __Actor_SetAnim(actor, 1);
+    }
+}
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1608.s");
 
 extern unsigned char Lc1_6[] __asm__(".Lc1_6");
@@ -492,7 +541,19 @@ void OvlFunc_common1_172c(struct Actor *a)
         }
     }
 }
-INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_17c0.s");
+extern unsigned char Lc1_8[] __asm__(".Lc1_8");
+
+unsigned int OvlFunc_common1_17c0(struct Actor *a)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(a->waveCounter);
+
+    __Actor_TravelTo(actor, a->pos.x, a->pos.y + (0x90 << 14), a->pos.z);
+    actor->__unk55 = 0;
+    __Actor_SetScript(actor, Lc1_8);
+    API_PlaySound(0x53);
+    a->waveCounter = 0;
+    return 0;
+}
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1814.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1928.s");
 INCLUDE_ASM("asm/maps/common/common1/OvlFunc_common1_1b08.s");

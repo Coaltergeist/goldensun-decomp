@@ -66,6 +66,8 @@ int OvlFunc_933_2008344(int *arg0) {
 }
 
 #include "state/global_state.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 extern GlobalState gState;
 extern unsigned char _EVENT_59[], _EVENT_5a[], _EVENT_5b[], _EVENT_5c[];
 extern unsigned char Lm933_2174[] __asm__(".Lm933_2174");
@@ -143,8 +145,139 @@ void *LamakanDesert_GetEvents(void) {
 
 INCLUDE_ASM("asm/maps/lamakan_desert/lamakan_desert_data.s");
 
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_20084e4.s");
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_200888c.s");
+struct DesertTerrainState { unsigned char prefix[0x1c0]; short area; };
+extern struct DesertTerrainState DesertTerrain __asm__("gState");
+extern void __Func_8010788(int, int, int, int, int, int);
+extern void __Func_8094730(int, int, int, int, int, int, int);
+extern void __Func_808ee0c(void);
+extern void __Func_80947e4(void);
+static inline void API_Func_8010788(int a, int b, int c, int d, int e, int f) { __Func_8010788(a, b, c, d, e, f); }
+static inline void API_Func_8094730(int a, int b, int c, int d, int e, int f, int g) { __Func_8094730(a, b, c, d, e, f, g); }
+
+int OvlFunc_933_20084e4(void)
+{
+    int area;
+    int actorID;
+    API_ClearFlag(0x201);
+    area = DesertTerrain.area;
+    if (area == (int)Const59) {
+        API_Func_80105d4(0x46, 0x44, 4, 2, 22, 7);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 8, 10);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 23, 21);
+        API_Func_8010704(0x46, 0x44, 4, 1, 23, 23);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 16, 0x2a);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x24, 0x2c);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 14, 0x37);
+    } else if (area == (int)Const5A) {
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x2a, 5);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 20, 11);
+        API_Func_8010704(0x46, 0x44, 4, 1, 20, 13);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 14, 12);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x38, 18);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 7, 22);
+        API_Func_8010704(0x46, 0x44, 4, 1, 7, 24);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x2c, 23);
+        API_Func_8010704(0x46, 0x44, 4, 1, 0x2c, 25);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x26, 24);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 26, 28);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 17, 0x23);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x32, 0x24);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x22, 0x2b);
+        API_Func_8010704(0x46, 0x44, 4, 1, 0x22, 0x2d);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 6, 0x2e);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 27, 0x37);
+        API_Func_80105d4(0x46, 0x44, 4, 2, 0x2b, 0x38);
+    } else if (area == (int)Const5B) {
+        API_Func_8010788(0x45, 0x63, 4, 2, 8, 16);
+        API_Func_8010788(0x45, 0x63, 4, 2, 6, 20);
+        API_Func_8010788(0x45, 0x63, 4, 2, 10, 23);
+        API_Func_8010704(0x45, 0x63, 4, 2, 8, 14);
+        API_Func_8010704(0x45, 0x63, 4, 2, 6, 18);
+        API_Func_8010704(0x45, 0x63, 4, 1, 6, 20);
+        API_Func_8010704(0x45, 0x63, 4, 2, 10, 21);
+        API_Func_80105d4(0, 0x79, 5, 7, 8, 0x20);
+        API_Func_80105d4(0, 0x79, 5, 7, 0x2b, 0x20);
+        API_Func_80105d4(6, 0x78, 3, 1, 9, 5);
+        API_Func_80105d4(9, 0x78, 3, 1, 0x2c, 5);
+        API_Func_8010704(9, 0, 3, 3, 9, 6);
+    }
+    API_MapActor_SetPos(8, 0, 0);
+    API_MapActor_SetPos(9, 0, 0);
+    API_MapActor_SetPos(10, 0, 0);
+    API_MapActor_SetPos(11, 0, 0);
+    API_MapActor_SetPos(12, 0, 0);
+    API_MapActor_SetPos(13, 0, 0);
+    for (actorID = 100; actorID <= 107; actorID++) {
+        API_Func_808edac(actorID, 0, 0);
+    }
+    if (DesertTerrain.area != (int)Const5C) {
+        API_Func_8094730(0, 0x40000, 0x10000, 0x2000, 0x10000, 0x8000, 0x4000);
+    }
+}
+
+int OvlFunc_933_200888c(void)
+{
+    int area;
+    int actorID;
+    API_ClearFlag(0x200);
+    API_SetFlag(0x201);
+    area = DesertTerrain.area;
+    if (area == (int)Const59) {
+        API_Func_80105d4(0x40, 0x7e, 4, 2, 22, 7);
+        API_Func_80105d4(0x44, 0x7e, 4, 2, 8, 10);
+        API_Func_80105d4(0x48, 0x7e, 4, 2, 23, 21);
+        API_Func_8010704(0x48, 0x7e, 4, 2, 23, 22);
+        API_Func_80105d4(0x4c, 0x7e, 4, 2, 16, 0x2a);
+        API_Func_80105d4(0x50, 0x7e, 4, 2, 0x24, 0x2c);
+        API_Func_80105d4(0x54, 0x7e, 4, 2, 14, 0x37);
+        API_MapActor_SetPos(9, 0x1900000, 0x16c0000);
+    } else if (area == (int)Const5A) {
+        API_Func_80105d4(0x40, 0x7e, 4, 2, 0x2a, 5);
+        API_Func_80105d4(0x44, 0x7e, 4, 2, 20, 11);
+        API_Func_8010704(0x44, 0x7e, 4, 2, 20, 12);
+        API_Func_80105d4(0x48, 0x7e, 4, 2, 14, 12);
+        API_Func_80105d4(0x4c, 0x7e, 4, 2, 0x38, 18);
+        API_Func_80105d4(0x50, 0x7e, 4, 2, 7, 22);
+        API_Func_8010704(0x50, 0x7e, 4, 2, 7, 23);
+        API_Func_80105d4(0x54, 0x7e, 4, 2, 0x2c, 23);
+        API_Func_8010704(0x54, 0x7e, 4, 2, 0x2c, 24);
+        API_Func_80105d4(0x58, 0x7e, 4, 2, 0x26, 24);
+        API_Func_80105d4(0x5c, 0x7e, 4, 2, 26, 28);
+        API_Func_80105d4(0x60, 0x7e, 4, 2, 17, 0x23);
+        API_Func_80105d4(0x64, 0x7e, 4, 2, 0x32, 0x24);
+        API_Func_80105d4(0x68, 0x7e, 4, 2, 0x22, 0x2b);
+        API_Func_8010704(0x68, 0x7e, 4, 2, 0x22, 0x2c);
+        API_Func_80105d4(0x6c, 0x7e, 4, 2, 6, 0x2e);
+        API_Func_80105d4(0x70, 0x7e, 4, 2, 27, 0x37);
+        API_Func_80105d4(0x74, 0x7e, 4, 2, 0x2b, 0x38);
+        API_MapActor_SetPos(9, 0x1600000, 0xcc0000);
+        API_MapActor_SetPos(10, 0x2e00000, 0x18c0000);
+        API_MapActor_SetPos(11, 0x900000, 0x17c0000);
+        API_MapActor_SetPos(12, 0x2400000, 0x2cc0000);
+        API_MapActor_SetPos(13, 0x2880000, 0x1980000);
+    } else if (area == (int)Const5B) {
+        API_Func_80105d4(0x40, 0x7c, 4, 4, 8, 14);
+        API_Func_80105d4(0x44, 0x7c, 4, 4, 6, 18);
+        API_Func_8010704(0x44, 0x7c, 4, 1, 6, 20);
+        API_Func_80105d4(0x48, 0x7c, 4, 4, 10, 21);
+        API_Func_80105d4(10, 0x79, 5, 7, 8, 0x20);
+        API_Func_80105d4(5, 0x79, 5, 7, 0x2b, 0x20);
+        API_Func_80105d4(0, 0x78, 3, 1, 9, 5);
+        API_Func_80105d4(3, 0x78, 3, 1, 0x2c, 5);
+        API_MapActor_SetPos(8, 0xa80000, 0x5c0000);
+        API_MapActor_SetPos(9, 0x800000, 0x13c0000);
+        API_Func_8010704(6, 0, 3, 3, 9, 6);
+        if (!API_GetFlag(0x90a)) {
+            API_Func_80105d4(0, 0x77, 3, 1, 9, 5);
+        }
+    }
+    for (actorID = 100; actorID <= 107; actorID++) {
+        API_Func_808edac(actorID, -1, -1);
+    }
+    __Func_808ee0c();
+    if (DesertTerrain.area != (int)Const5C)
+        __Func_80947e4();
+}
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008c38.s");
 extern unsigned int __Random(void);
 
@@ -166,7 +299,63 @@ void OvlFunc_933_2008c6c(int arg0) {
     API_ActorMessage(r6 + 1, 0);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008cd0.s");
+extern unsigned char iwram_3001ebc[];
+
+struct CS933D_SceneView {
+    unsigned char pad[0x182];
+    short unk182;
+};
+
+struct CS933D_StateView {
+    unsigned char pad[0x22c];
+    short denominator;
+    unsigned char gap[4];
+    short numerator;
+};
+extern struct CS933D_StateView CS933D_State __asm__("gState");
+
+void OvlFunc_933_2008cd0(void)
+{
+    struct CS933D_SceneView *base = *(struct CS933D_SceneView **)iwram_3001ebc;
+    int ratio = (CS933D_State.numerator * 100) / CS933D_State.denominator;
+
+    if (API_GetFlag(0x201)) {
+        return;
+    }
+
+    if (API_GetFlag(0x302) && ratio <= 0x4a) {
+        API_ClearFlag(0x302);
+        API_ClearFlag(0x303);
+        API_ClearFlag(0x304);
+        API_ClearFlag(0x305);
+    }
+    if (API_GetFlag(0x301) && ratio <= 0x31) {
+        API_ClearFlag(0x301);
+        API_ClearFlag(0x303);
+        API_ClearFlag(0x304);
+        API_ClearFlag(0x305);
+    }
+    if (API_GetFlag(0x300) && ratio <= 0x18) {
+        API_ClearFlag(0x300);
+        API_ClearFlag(0x303);
+        API_ClearFlag(0x304);
+        API_ClearFlag(0x305);
+    }
+
+    if (!API_GetFlag(0x300) && ratio > 0x18) {
+        API_SetFlag(0x300);
+        base->unk182 = 1;
+    }
+    if (!API_GetFlag(0x301) && ratio > 0x31) {
+        API_SetFlag(0x301);
+        base->unk182 = 2;
+    }
+    if (!API_GetFlag(0x302) && ratio > 0x4a) {
+        API_SetFlag(0x302);
+        base->unk182 = 3;
+    }
+}
+
 
 extern int Func_8000948(int);
 
@@ -192,7 +381,98 @@ int OvlFunc_933_2008e00(int *a, int *b)
   return r4;
 }
 
-INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2008e2c.s");
+extern struct Actor *CS933R_Actor(int) __asm__("__MapActor_GetActor");
+struct CS933R_SceneView { unsigned char beforeCBA[0xcba]; unsigned short unkCBA; };
+extern struct CS933R_SceneView *CS933R_Scene __asm__("iwram_3001ebc");
+extern short CS933R_Heat __asm__("ewram_2000472");
+extern int CS933R_PointsA[6] __asm__("Events_TolbiSpring");
+extern int CS933R_PointsB[10] __asm__(".Lm933_1f48");
+extern int CS933R_PointsC[4] __asm__(".Lm933_1f70");
+extern void CS933R_PauseHeat(unsigned short) __asm__("OvlFunc_933_2009c78");
+struct CS933R_StateView { unsigned char beforeMap[0x1c0]; short map; };
+extern struct CS933R_StateView CS933R_State __asm__("gState");
+void OvlFunc_933_2008e2c(void)
+{
+    struct CS933R_SceneView *scene = CS933R_Scene;
+    int frames = 60;
+    int nearestDistance = 0xf00000;
+    int *points;
+    int count, remaining;
+    int nearest;
+    struct Actor *actor;
+    struct EffectData933 enterEffect, exitEffect;
+    API_SetFlag(0x200);
+    CS933R_PauseHeat(1);
+    if (CS933R_State.map == (int)Const59) {
+        remaining = 3;
+        points = CS933R_PointsA;
+    } else if (CS933R_State.map == (int)Const5A) {
+        remaining = 5;
+        points = CS933R_PointsB;
+    } else {
+        remaining = 2;
+        points = CS933R_PointsC;
+    }
+    {
+        int *point;
+        count = remaining;
+        point = points;
+        while (remaining != 0) {
+            int distance = OvlFunc_933_2008e00((int *)&CS933R_Actor(0)->pos, point);
+            if (distance <= nearestDistance) {
+                nearestDistance = distance;
+                nearest = count - remaining;
+            }
+            --remaining;
+            point = points + (count - remaining) * 2;
+        }
+    }
+    nearest *= 2;
+    API_MapActor_SetSpeed(0, 0x20000, 0x10000);
+    API_Actor_TravelTo(CS933R_Actor(0), points[nearest], 0, points[nearest + 1]);
+    CS933R_Actor(0)->motion.y = 0x60000;
+    API_PlaySound(0x98);
+    actor = CS933R_Actor(0);
+    OvlFunc_933_2008324((unsigned int *)actor, CS933R_Actor(0)->pos.y);
+    API_PlaySound(0xf1);
+    {
+        struct Actor *effectActor = CS933R_Actor(0);
+        enterEffect.unk18 = 0xd6;
+        enterEffect.unk8 = 0x8000;
+        enterEffect.unkc = 0xcccc;
+        enterEffect.unk10 = 0x10000;
+        enterEffect.unk14 = 0x13333;
+        OvlFunc_common0_10c(effectActor->pos.x, effectActor->pos.y, effectActor->pos.z, 0, 0, 0, 0x1c0000, &enterEffect);
+    }
+    API_MapActor_Emote(0, 0x104, 0);
+    API_MapActor_SetAnim(0, 18);
+    do {
+        scene->unkCBA = 600;
+        --frames;
+        if (CS933R_Heat != 0) {
+            CS933R_Heat -= 5;
+            if (CS933R_Heat <= 0) CS933R_Heat = 0;
+            else if (frames == 0) frames = 1;
+        }
+        API_WaitFrames(1);
+    } while (frames != 0);
+    {
+        struct Actor *effectActor = CS933R_Actor(0);
+        exitEffect.unk18 = 0xd6;
+        exitEffect.unk8 = 0x8000;
+        exitEffect.unkc = 0xcccc;
+        exitEffect.unk10 = 0x8000;
+        exitEffect.unk14 = 0x13333;
+        OvlFunc_common0_10c(effectActor->pos.x, effectActor->pos.y, effectActor->pos.z, 0, frames, frames, 0x1c0000, &exitEffect);
+    }
+    API_PlaySound(0x120);
+    API_PlaySound(0x98);
+    CS933R_Actor(0)->motion.y = 0x60000;
+    API_MapActor_SetAnim(0, 1);
+    API_CutsceneWait(10);
+    scene->unkCBA = frames;
+    CS933R_PauseHeat(0);
+}
 INCLUDE_ASM("asm/maps/lamakan_desert/OvlFunc_933_2009054.s");
 extern void *__MapActor_GetActor(int);
 extern void __MapActor_SetAnimSpeed(int, int);
@@ -411,7 +691,6 @@ extern void OvlFunc_933_2009c1c(void);
 extern void OvlFunc_933_2008cd0(void);
 extern void __Func_80105d4(int, int, int, int, int, int);
 extern void __Func_8091ff0(int);
-extern void OvlFunc_933_20084e4(void);
 
 struct CS933I_StateView {
     unsigned char beforeMap[0x1c0];

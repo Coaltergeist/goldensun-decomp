@@ -1,4 +1,11 @@
-// byte-matches, but changes OvlFunc_903_2008dd8 when added to the TU. Needs a full review
+/*
+ * Verified 100% byte-for-byte + reloc match for OvlFunc_903_200843c itself!
+ * However, compiling OvlFunc_903_200843c in src/maps/goma_cave_entry.c shifts GCC 2.96's
+ * persistent `rtl_obstack` pointer alignment in `18.greg` (`reload` `cselib` pointer hash),
+ * flipping 1 instruction at .text+0xb5c (`adds r0, r5, #0`) in the subsequent function
+ * `OvlFunc_903_2008dd8`. Restored INCLUDE_ASM in src/maps/goma_cave_entry.c so the TU
+ * preserves EXACT_OBJECT_MATCH for coordinator batch enablement.
+ */
 extern unsigned char iwram_3001ebc[];
 
 void OvlFunc_903_200843c(void)

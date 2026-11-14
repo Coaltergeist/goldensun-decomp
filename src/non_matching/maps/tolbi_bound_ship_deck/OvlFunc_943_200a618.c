@@ -1,8 +1,18 @@
+/*
+ * Exact size match (0x3bc == 0x3bc, 948/956 bytes identical).
+ * Remaining diff at +0x36e..+0x374:
+ *   ref: mov r3, #30; strh r3, [r1]; add r0, #0x67; add r2, r0
+ *   new: add r0, #0x67; mov r3, #30; add r2, r0; strh r3, [r1]
+ * In 23.sched2, flow2 splits the +0x22b offset for field22b into add r0, #0x67
+ * -> add r2, r0 -> strb r3, [r2] (longer true-dependency chain than mov r3, #30
+ * -> strh r3, [r1] -> cost-0 anti-dep), giving add r0, #0x67 strictly higher
+ * priority than mov r3, #30 unless separated by a statement-macro loop note
+ * (do { ... } while (0)) in the original script header.
+ */
 #include "api.h"
+#include "actor.h"
 
-__asm__(".equ .LShipTransition, 0x202\n.equ .LShipCameraMode, 0\n.equ .LShipBattleArea, 0x6f\n.equ .LShipReturnArea, 0x6d");
-extern unsigned char ShipTransition[] __asm__(".LShipTransition");
-extern unsigned char ShipCameraMode[] __asm__(".LShipCameraMode");
+__asm__(".equ .LShipBattleArea, 0x6f\n.equ .LShipReturnArea, 0x6d");
 extern unsigned char ShipBattleArea[] __asm__(".LShipBattleArea");
 extern unsigned char ShipReturnArea[] __asm__(".LShipReturnArea");
 
@@ -12,8 +22,6 @@ struct ShipBattleStateView {
     unsigned char middle[0x22b - 0x1c8];
     unsigned char field22b;
 };
-static inline void ShipHalf(unsigned short *field, int value) { *field = value; }
-static inline void ShipByte(unsigned char *field, int value) { *field = value; }
 
 void OvlFunc_943_200a618(void)
 {
@@ -21,14 +29,14 @@ void OvlFunc_943_200a618(void)
     extern void OvlFunc_943_20088c0(int *);
     extern struct ShipBattleStateView ShipBattleState __asm__("gState");
     extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
-    extern void ShipBattleSpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
-    extern void __Func_8091f90(unsigned short, unsigned short);
+    extern void ShipBattleSpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void __Func_8091f90(int, int);
     extern void __LoadFieldActors(void *);
-    extern int ShipBattleActor(int) __asm__("__MapActor_GetActor");
+    extern struct Actor *ShipBattleActor(int) __asm__("__MapActor_GetActor");
     extern void OvlFunc_943_2008bb8(void);
     extern void OvlFunc_943_200ba00(int, int);
     extern void __StartMapBattle(int, int);
-    unsigned char *actor;
+    struct Actor *actor;
 
     API_CutsceneStart();
     __LoadFieldActors(CS_943_5418);
@@ -36,12 +44,11 @@ void OvlFunc_943_200a618(void)
     API_SetCameraTarget(25, 1);
     API_WaitFrames(1);
     API_MapActor_SetAnim(21, 5);
-    actor = (unsigned char *)ShipBattleActor(21);
+    actor = ShipBattleActor(21);
     ShipBattleSpriteFlags(actor, 0);
     API_MapActor_SetPos(0, 0, 0);
-    actor = (unsigned char *)ShipBattleActor(0);
-    ShipHalf((unsigned short *)(actor + 6), 0x4000);
-    *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = (int)ShipTransition;
+    ShipBattleActor(0)->facing = 0x4000;
+    *(int *)((*(unsigned char **)CS_iwram_3001ebc) + 0x1c0) = 0x202;
     API_MapTransitionIn();
     API_WaitMapTransition();
     API_CutsceneWait(20);
@@ -61,24 +68,22 @@ void OvlFunc_943_200a618(void)
     API_Func_8012330(-1, -1, 0xe666);
     API_CutsceneWait(10);
     API_Func_8092adc(0, 0xc000, 20);
-    actor = (unsigned char *)ShipBattleActor(25);
-    actor += 0x55;
-    ShipByte(actor, (int)ShipCameraMode);
+    ShipBattleActor(25)->__unk55 = 0;
     API_MapActor_SetSpeed(25, 0x20000, 0x10000);
     API_MapActor_TravelTo(25, 0xd8, 0x264);
     API_PlaySound(0x95);
     API_Func_8092b08(22, 2);
     API_MapActor_SetAnim(22, 5);
-    actor = (unsigned char *)ShipBattleActor(22);
-    *(int *)(actor + 0x28) = 0x80000;
-    *(int *)(actor + 0x48) = 0xb333;
-    *(int *)(actor + 0x18) = 0x1a000;
-    *(int *)(actor + 0x1c) = 0x1a000;
-    *(void (**)(int *))(actor + 0x6c) = OvlFunc_943_20088c0;
-    *(int *)(actor + 0x44) = 0x8000;
+    actor = ShipBattleActor(22);
+    actor->motion.y = 0x80000;
+    actor->gravity = 0xb333;
+    actor->scale.x = 0x1a000;
+    actor->scale.y = 0x1a000;
+    actor->update = (actorfun_t)OvlFunc_943_20088c0;
+    actor->bounce = 0x8000;
     API_MapActor_SetSpeed(22, 0x60000, 0x30000);
     API_MapActor_TravelToWait(22, 0xb6, 0x26a);
-    actor = (unsigned char *)ShipBattleActor(22);
+    actor = ShipBattleActor(22);
     ShipBattleSpriteFlags(actor, 0);
     OvlFunc_943_200ba00(0, 0xa000);
     API_MapActor_Jump(0, 6, 0x50);
@@ -86,17 +91,17 @@ void OvlFunc_943_200a618(void)
     API_MapActor_TravelToAnimWait(0, 0xcc, 0x262);
     API_MapActor_TravelToAnimWait(0, 0xd0, 0x256);
     API_MapActor_TravelToAnimWait(0, 0xf8, 0x256);
-    actor = (unsigned char *)ShipBattleActor(0);
-    if (actor != 0) {
-        API_MapActor_SetPos(1, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    actor = ShipBattleActor(0);
+    if (actor != NULL) {
+        API_MapActor_SetPos(1, actor->pos.x, actor->pos.z);
     }
-    actor = (unsigned char *)ShipBattleActor(0);
-    if (actor != 0) {
-        API_MapActor_SetPos(2, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    actor = ShipBattleActor(0);
+    if (actor != NULL) {
+        API_MapActor_SetPos(2, actor->pos.x, actor->pos.z);
     }
-    actor = (unsigned char *)ShipBattleActor(0);
-    if (actor != 0) {
-        API_MapActor_SetPos(3, *(int *)(actor + 0x8), *(int *)(actor + 0x10));
+    actor = ShipBattleActor(0);
+    if (actor != NULL) {
+        API_MapActor_SetPos(3, actor->pos.x, actor->pos.z);
     }
     API_MapActor_SetSpeed(1, 0x10000, 0x8000);
     API_MapActor_SetSpeed(2, 0x10000, 0x8000);

@@ -1,5 +1,16 @@
+/*
+ * Non-matching clean C candidate for Anim_Sleep (exact .text size 0x298 == 0x298 / 664 bytes,
+ * 0 relocation diffs).
+ *
+ * Matches 0x000..0x1e6 and 0x23a..0x298 100% byte-for-byte.
+ * Remaining diffs:
+ * 1. +0x1e6..+0x204 / +0x232..+0x238: r0/r1 tie between updated `q->vy` and `q->spin`
+ *    (shifting the loop-latch reload register from r2 to r3).
+ * 2. +0x208..+0x210: tools/gcc296 gives `ldr r2, =0x2001` in `thumb_movsi_insn` load latency 2,
+ *    causing `sched2` to fill its delay slot with `q->spin += 4` (`adds; str`) before
+ *    `adds r3, r4, r2; negs r3, r3` instead of issuing `adds r3, r4, r1` immediately.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -15,52 +26,35 @@ struct SleepParticle {
 };
 
 struct SleepState {
-               u8 graphics[0x7780];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7780];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct SleepVec { s32 x, y, z; };
 
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e80[];
-
 extern u8 gBuffer[];
-
 extern char _FILE_a8[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern unsigned int Random(void);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern s32 **_GetBattleActor(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(u8 *, u8 *);
-
 extern void MatrixTranslatev(struct SleepVec *);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Sleep(struct AnimContext *context)
@@ -131,8 +125,8 @@ void Anim_Sleep(struct AnimContext *context)
                 q->phase += q->spin;
                 if (q->y > 0x5c0000 && q->vy == 0) {
                     q->spin += 4;
-                    q->vy = -(q->vy + 1) / 2;
                     q->y = 0x5c0000;
+                    q->vy = -(q->vy + 1) / 2;
                 }
             }
         }

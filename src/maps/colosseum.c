@@ -163,7 +163,38 @@ void OvlFunc_953_2008334(void) {
     __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/colosseum/OvlFunc_953_200839c.s");
+void OvlFunc_953_200839c(void) {
+    extern unsigned char *iwram_3001ebc;
+    extern void __Func_8093054(int, int);
+
+    API_CutsceneStart();
+    if (API_GetFlag(0x962)) {
+        if (API_GetFlag(0x3c0)) {
+            API_MessageID(0x225e);
+        } else {
+            API_MessageID(0x225a);
+            API_ShowActorMessage_NoWait(0x10, 0);
+            if (!API_Func_8091c7c(0, 0)) {
+                *(unsigned short *)(iwram_3001ebc + 0x1d8) = *(unsigned short *)(iwram_3001ebc + 0x1d8) + 1;
+                API_MapActor_Emote(0x10, 0x100, 0x28);
+                API_ShowActorMessage_NoWait(0x10, 0);
+                if (!API_Func_8091c7c(0, 0)) {
+                    *(unsigned short *)(iwram_3001ebc + 0x1d8) = *(unsigned short *)(iwram_3001ebc + 0x1d8) + 1;
+                }
+                API_CutsceneWait(0x28);
+                API_ActorMessage(0x10, 0);
+                API_SetFlag(0x3c0);
+                goto end;
+            }
+        }
+        API_ActorMessage(0x10, 0);
+    } else {
+        API_MessageID(0x205e);
+        __Func_8093054(0x10, 0);
+    }
+end:
+    API_CutsceneEnd();
+}
 
 void OvlFunc_953_2008468(void)
 {

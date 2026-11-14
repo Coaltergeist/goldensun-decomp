@@ -621,7 +621,92 @@ void OvlFunc_941_2008828(void)
     API_CutsceneWait(0x3c);
     OvlFunc_941_20091b8();
 }
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_20091b8.s");
+extern unsigned char CS941_Message2547[] __asm__(".Lconst_2547");
+extern unsigned char CS941_Message254b[] __asm__(".Lconst_254b");
+__asm__(".equ .Lconst_2547, 0x2547\n.equ .Lconst_254b, 0x254b");
+
+extern int __Func_8091c7c(int a, int b);
+extern int __ShowActorMessage_NoWait();
+
+unsigned int OvlFunc_941_20092ac(void);
+unsigned int OvlFunc_941_20092c4(void);
+unsigned int OvlFunc_941_20092f0(void);
+unsigned int OvlFunc_941_200931c(void);
+unsigned int OvlFunc_941_2009320(void);
+unsigned int OvlFunc_941_200934c(void);
+unsigned int OvlFunc_941_2009368(void);
+unsigned int OvlFunc_941_2009394(void);
+unsigned int OvlFunc_941_200941c(void);
+void OvlFunc_941_2009448(void);
+void OvlFunc_941_2009760(void);
+
+void OvlFunc_941_20091b8(void)
+{
+    int msg;
+    int retry;
+
+    msg = (int)CS941_Message2547;
+    API_MessageID(msg);
+    API_ActorMessage(12, 0);
+    msg++;
+    API_MapActor_Face(1, 0, 0);
+    API_MessageID(msg);
+    __ShowActorMessage_NoWait(1, 0);
+    API_MapActor_Face(2, 0, 0);
+    API_MapActor_Face(3, 0, 0);
+    API_MapActor_Face(13, 0, 0);
+    API_MapActor_Face(12, 0, 0);
+
+loop:
+    if ((unsigned char)OvlFunc_941_20092ac()) {
+after_368:
+        if (!(unsigned char)OvlFunc_941_2009320()) {
+            goto fail;
+        }
+        retry = 0;
+        if (!(unsigned char)OvlFunc_941_200941c()) {
+retry_prompt:
+            retry = 1;
+retry_loop:
+            OvlFunc_941_200934c();
+            if (__Func_8091c7c(0, 0) == 0) {
+                goto fail;
+            }
+        }
+        if ((unsigned char)OvlFunc_941_2009394()) {
+            goto success;
+        }
+        if (!retry) {
+            goto success;
+        }
+        goto retry_loop;
+    } else {
+        if ((unsigned char)OvlFunc_941_20092c4()) {
+            if ((unsigned char)OvlFunc_941_20092f0()) {
+                goto success;
+            }
+            goto retry_prompt;
+        }
+        if ((unsigned char)OvlFunc_941_2009368()) {
+            goto after_368;
+        }
+        msg = (int)CS941_Message254b;
+        API_MessageID(msg);
+        msg++;
+        API_ActorMessage(2, 0);
+        API_MessageID(msg);
+        __ShowActorMessage_NoWait(1, 0);
+        goto loop;
+    }
+
+fail:
+    OvlFunc_941_2009760();
+    return;
+
+success:
+    OvlFunc_941_200931c();
+    OvlFunc_941_2009448();
+}
 
 extern int __Func_8091c7c(int a, int b);
 
@@ -681,7 +766,30 @@ unsigned int OvlFunc_941_2009368(void)
     return 1 - ((unsigned int)(-r3 | r3) >> 31);
 }
 
-INCLUDE_ASM("asm/maps/west_lunpa_cave/OvlFunc_941_2009394.s");
+extern unsigned char CS941_Message255e[] __asm__(".Lconst_255e");
+__asm__(".equ .Lconst_255e, 0x255e");
+
+unsigned int OvlFunc_941_2009394(void)
+{
+    int msg;
+    unsigned int r3;
+
+    API_MapActor_Face(2, 0, 0);
+    API_MapActor_Emote(2, 0x102, 0x3c);
+    msg = (int)CS941_Message255e;
+    __MessageID(msg);
+    API_ActorMessage(2, 0);
+    API_Func_8092adc(0xc, 0x3000, 0);
+    API_CutsceneWait(0x1e);
+    API_MapActor_DoAnim(0xc, 4);
+    __MessageID(msg + 1);
+    API_ActorMessage(0xc, 0);
+    API_MapActor_Emote(3, 0x102, 0x3c);
+    __MessageID(msg + 2);
+    __ShowActorMessage_NoWait(3, 0);
+    r3 = __Func_8091c7c(0, 0);
+    return 1 - ((unsigned int)(-r3 | r3) >> 31);
+}
 
 unsigned int OvlFunc_941_200941c(void)
 {

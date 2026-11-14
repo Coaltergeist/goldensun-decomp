@@ -1,5 +1,10 @@
+/*
+ * Non-matching clean C candidate for Anim_Spire (exact .text size 0x3bc / 956B and 35 relocs).
+ * Fixes: `static const signed char SpireOffsets[5]` (`ldrsb`).
+ * Remaining diff: `+ gBuffer` GIV combination in debris initialization loop and `SpireDebrisWidths`
+ * load scheduling at 0x226.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -13,16 +18,16 @@ struct SpirePosition {
 };
 
 struct SpireState {
-               u8 graphics[0x7080];
-               struct SpireParticle spires[5];
-               u8 pad_710c[0x7780 - 0x710c];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x77a8 - 0x7788];
-               s32 unk77A8;
-               u8 pad_77ac[0x7824 - 0x77ac];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct SpireParticle spires[5];
+    u8 pad_710c[0x7780 - 0x710c];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x77a8 - 0x7788];
+    s32 unk77A8;
+    u8 pad_77ac[0x7824 - 0x77ac];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 static const u8 SpireDebrisPos[32][2] = {
@@ -33,7 +38,7 @@ static const u8 SpireDebrisPos[32][2] = {
     {0x35, 0x3d},
 };
 
-static const s8 SpireOffsets[5] = { 0, -12, 12, -8, 16 };
+static const signed char SpireOffsets[5] = { 0, -12, 12, -8, 16 };
 
 static const u8 SpireDelays[5] = { 8, 16, 20, 24, 32 };
 
@@ -53,39 +58,23 @@ static const u16 SpireDebrisOffsets[16] = {
 };
 
 extern u8 *iwram_3001eec[];
-
 extern struct SpireParticle gBuffer[];
-
 extern char _FILE_8a[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern unsigned int Random(void);
-
 extern void Task_BlitAnim(void);
-
 extern void GetBattleActorPos2(int, struct SpirePosition *);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void Func_80e3908(struct SpireParticle *, int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Spire(struct AnimContext *context)

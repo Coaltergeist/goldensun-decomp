@@ -1,17 +1,25 @@
-unsigned char *OvlFunc_899_200c754(unsigned char *node, u16 *angle)
+/*
+ * Remaining diff (1 instruction + scratch register permutation r2<->r4):
+ * Target ASM contains a second `ldrb r3, [r0]` (`best_idx = *node`) after
+ * `if (node[0] != 0xff && diff < min_diff)`, whereas `18.greg` (`reload_cse_regs`)
+ * eliminates the reload into `r3` because `(zero_extend:SI (mem:QI (reg 0)))` is
+ * still live in `r3` from `node[0] != 0xff`.
+ */
+extern unsigned char Lm899_4f2c[] __asm__(".Lm899_4f2c");
+
+unsigned char *OvlFunc_899_200c754(unsigned char *node, unsigned short *angle)
 {
-    unsigned char *result;
-    int best_idx = -1;
-    s16 best_angle = *angle;
-    int min_diff;
     unsigned int i;
-    int diff;
+    int min_diff = 0x8000;
+    int best_idx = -1;
+    short best_angle = *angle;
+    unsigned char *result;
 
     node += 4;
-    min_diff = 0x8000;
     for (i = 0; i <= 2; i++, node += 4) {
-        s16 a = node[1] << 8;
-        diff = (s16)((u16)a - *angle);
+        int diff;
+        unsigned short a = node[1] << 8;
+        diff = (short)(a - *angle);
         if (diff < 0) {
             diff = -diff;
         }

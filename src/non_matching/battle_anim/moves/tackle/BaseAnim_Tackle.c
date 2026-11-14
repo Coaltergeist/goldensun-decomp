@@ -1,6 +1,15 @@
+/*
+ * Non-matching clean C candidate for BaseAnim_Tackle (exact .text size 0x3c4 == 0x3c4,
+ * 0 linked relocation diffs).
+ * Under GAIA_CFLAGS (-fstrict-aliasing) with `#define TACKLE_BUF ((u8 *)0x02010000)`,
+ * 958 of 964 bytes match 100%; the sole remaining 3-halfword diff is at +0xd6..+0xda
+ * before `bl Func_80df9d0`, where tools/gcc296's `sched2` gives the constant-pool load
+ * `ldr r1, =0x02010000` load latency 2 ahead of `lsls r3, r3, #1; mov r0, r9`.
+ */
 #include "anim.h"
-
 #include "task.h"
+
+#define TACKLE_BUF ((u8 *)0x02010000)
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
 
@@ -18,72 +27,47 @@ struct TackleActor {
 };
 
 struct TackleState {
-               u8 graphics[0x7080];
-               struct TackleParticle particles[64];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x77a8 - 0x7788];
-               s32 unk77A8;
-               u8 pad_77ac[0x7824 - 0x77ac];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct TackleParticle particles[64];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x77a8 - 0x7788];
+    s32 unk77A8;
+    u8 pad_77ac[0x7824 - 0x77ac];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 extern u8 *iwram_3001eec[];
-
-extern void *gPtrs[];
-
-extern u8 gBuffer[];
-
+extern void *const gPtrs[];
 extern char _FILE_73[], _FILE_99[], _FILE_bd[], _FILE_c2[], _FILE_b9[], _FILE_bb[], _FILE_c0[];
-
 extern const u16 Data_ede48[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void LoadVFXFile(int, void *, int, int);
-
-extern void Func_80df9d0(void *, void *, int, int);
-
+extern void Func_80df9d0(u8 *, u8 *, int, int);
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
 extern void Task_BlitAnim(void);
-
 extern void Func_80df90c(int, int, int);
-
 extern struct TackleActor **_GetBattleActor(int);
-
 extern unsigned int Random(void);
-
 extern void GetBattleActorPos3(int, struct TackleVec *);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void _SetBattleActorKnockback(int, int);
-
 extern void _Func_80bd7dc(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(void *, void *);
-
-extern void Func_80e3944(struct TackleParticle *, struct TackleVec *);
-
+extern int Func_80e3944(struct TackleParticle *, struct TackleVec *);
 extern void Func_80e38b8(struct TackleParticle *, int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
+
+void BaseAnim_Tackle(void *arg, int subanim);
 
 void BaseAnim_Tackle(void *arg, int subanim)
 {
@@ -114,7 +98,7 @@ void BaseAnim_Tackle(void *arg, int subanim)
     mirror = (DrawFunc)gPtrs[0x2f];
     LoadVFXFile((int)_FILE_73, particleGfx, 0, 0);
     LoadVFXFile((int)_FILE_99, state, 1, 0);
-    Func_80df9d0(state, gBuffer, 0x28, 0x120);
+    Func_80df9d0(state->graphics, TACKLE_BUF, 0x28, 0x120);
     LoadVFXFile((int)_FILE_bd, state, 1, 1);
     switch (subanim) {
     case 0: file = _FILE_c2; break;
@@ -159,11 +143,12 @@ void BaseAnim_Tackle(void *arg, int subanim)
         }
         k = frame - 8;
         if ((unsigned int)k <= 11)
-            draw(render, gBuffer + 0x3c0 * (k / 2), targetPos.x / 2 - 16, pos.y - 40, 20, 48);
+            draw(render, TACKLE_BUF + 0x3c0 * (k / 2), targetPos.x / 2 - 16, pos.y - 40, 20, 48);
         if ((unsigned int)k <= 55) {
             InitMatrixStack();
             MatrixSetLook(camera, camera + 0xc);
-            for (i = 0, p = state->particles; i != 64; i++, p++) {
+            for (i = 0; i != 64; i++) {
+                p = &state->particles[i];
                 size = p->life;
                 if (size > 0) {
                     Func_80e3944(p, &screen);

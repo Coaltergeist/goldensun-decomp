@@ -163,11 +163,94 @@ void OvlFunc_884_200821c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2008248.s");
+extern unsigned char iwram_3001e70[];
 extern unsigned char iwram_3001ebc[];
 extern int __ShowActorMessage_NoWait();
 extern int __Func_8091c7c(int, int);
 extern void __Func_8093054(int, int);
+extern void __Func_809259c(int, int);
+extern void *__MapActor_GetActor(int);
+extern void __Func_8092950();
+extern void __StartTask(void *, int);
+extern void __StopTask(void *);
+extern void OvlFunc_884_200a2f8(unsigned int);
+extern void OvlFunc_884_200a564(void);
+extern void OvlFunc_884_200a574(void);
+extern void OvlFunc_884_200a590(void);
+extern int _umodsi3_RAM(int, int);
+extern void __PlaySound(int);
+
+extern unsigned char Lconst_1197[] __asm__(".Lconst_1197");
+__asm__(".equ .Lconst_1197, 0x1197");
+
+void OvlFunc_884_2008248(void) {
+    API_CutsceneStart();
+    if (API_GetFlag(0x815) != 0) {
+        int msg = (int)Lconst_1197;
+        unsigned char *base;
+
+        API_MessageID(msg);
+        if (API_GetFlag(2) != 0) {
+            base = *(unsigned char **)iwram_3001ebc;
+            *(unsigned short *)(base + 0x1d8) += 1;
+        }
+        if (API_GetFlag(3) != 0) {
+            base = *(unsigned char **)iwram_3001ebc;
+            *(unsigned short *)(base + 0x1d8) += 1;
+        }
+        __ShowActorMessage_NoWait(0x11, 0);
+        if (__Func_8091c7c(0, 0) == 0) {
+            API_MessageID(msg + 3);
+        } else {
+            API_MessageID(msg + 4);
+        }
+        API_ActorMessage(0x11, 0);
+    } else {
+        int *p;
+        int toggle;
+        int i;
+
+        p = *(int **)*(void **)iwram_3001e70;
+        API_MessageID(0xf48);
+        API_MapActor_TurnToFaceActor(0x11, 0, 0);
+        __Func_8093054(0x11, 0);
+        API_CutsceneWait(0x14);
+        API_Func_809259c(0x11, 2);
+        API_CutsceneWait(0xf);
+        OvlFunc_884_200a564();
+
+        toggle = 0;
+        for (i = 0; (unsigned int)i <= 0x27; i++) {
+            OvlFunc_884_200a2f8((unsigned int)__MapActor_GetActor(0x11));
+            API_WaitFrames(1);
+        }
+
+        API_StartTask(OvlFunc_884_200a590, 0xc8 << 4);
+        API_PlaySound(0x6b);
+
+        for (i = 0; i != 0xb4; i++) {
+            if (_umodsi3_RAM(i, 10) == 0) {
+                if ((toggle & 1) != 0) {
+                    *p += 0xffff0000;
+                } else {
+                    *p += 0x80 << 9;
+                }
+                toggle++;
+            }
+            API_CutsceneWait(1);
+        }
+
+        API_PlaySound(0x121);
+        API_StopTask(OvlFunc_884_200a590);
+        API_WaitFrames(1);
+        OvlFunc_884_200a574();
+        __Func_8092950(0x11, 0);
+        API_CutsceneWait(0x28);
+        API_MessageID(0xf4b);
+        API_ActorMessage(0x11, 0);
+    }
+    API_CutsceneEnd();
+}
 
 void OvlFunc_884_20083b4(void) {
 	unsigned char *base;
@@ -464,7 +547,12 @@ extern void CS884_Refresh(void) __asm__("__Func_800fe9c");
 extern void CS884_FinalizeRain(void) __asm__("__Func_8095268");
 extern struct Actor *CS884_Actor(int) __asm__("__MapActor_GetActor");
 extern void CS884_SpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
-struct CS884_StateView { unsigned char pad[0x1c2]; short room; };
+struct CS884_StateView {
+    unsigned char pad[0x1c2];
+    short room;
+    unsigned char pad2[0x22b - 0x1c4];
+    unsigned char battleMode;
+};
 extern struct CS884_StateView CS884_State __asm__("gState");
 int ValePlaza_MapInit(void)
 {
@@ -766,8 +854,403 @@ void OvlFunc_884_2009084(void) {
 }
 
 INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_2009274.s");
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20095b4.s");
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_20097c8.s");
+
+void OvlFunc_884_20095b4(void)
+{
+    extern unsigned char gScript_884__0200aa48[];
+    extern unsigned char gScript_884__0200ab2c[];
+    extern unsigned char *CS884_Field __asm__("iwram_3001ebc");
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_800fe9c(void);
+    extern void __Func_8095214(void);
+    extern void __Func_8095240(void);
+    extern void __Func_8095268(void);
+    extern struct Actor *CS884_Actor(int) __asm__("__MapActor_GetActor");
+    extern void __MapActor_RunScript(int, void *);
+    struct Actor *actor;
+
+    API_PlaySound(17);
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    API_WaitFrames(1);
+    API_Func_80933f8(0x400000, 0x900000, 0x15e0000, 0);
+    __Func_800fe9c();
+    API_WaitFrames(1);
+    API_MapActor_SetPos(0, 0x300000, 0x15a0000);
+    API_MapActor_SetPos(25, 0x4e0000, 0x1660000);
+    API_MapActor_SetPos(23, 0x670000, 0x1560000);
+    API_MapActor_SetPos(24, 0x700000, 0x1680000);
+    API_Func_8092adc(23, 0x8000, 0);
+    API_Func_8092adc(24, 0x8000, 0);
+    API_MapActor_SetAnim(0, 16);
+    actor = CS884_Actor(0);
+    actor->scale.x = -0x10000;
+    actor = CS884_Actor(0);
+    __Actor_SetSpriteFlags(actor, 0);
+    API_MapActor_SetAnim(25, 7);
+    actor = CS884_Actor(25);
+    actor->sprite->rotation = 0x1555;
+    actor = CS884_Actor(25);
+    __Actor_SetSpriteFlags(actor, 0);
+    *(int *)(CS884_Field + 0x1c0) = 0x100;
+    API_MapTransitionIn();
+    __Func_8095268();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x50);
+    API_Func_8092adc(23, 0x3000, 0);
+    API_Func_8092adc(24, 0xc000, 0x28);
+    API_MapActor_DoAnim(23, 3);
+    API_CutsceneWait(20);
+    API_MapActor_DoAnim(24, 3);
+    API_Func_8092adc(23, 0x8000, 10);
+    API_Func_8092adc(24, 0x8000, 10);
+    API_Func_8092b08(0, 3);
+    API_Func_8092b08(25, 3);
+    API_MapActor_SetSpeed(23, 0x26666, 0x13333);
+    actor = CS884_Actor(23);
+    actor->bounce = 0x28f;
+    actor->gravity = 0x8000;
+    API_MapActor_SetBehavior(23, (int)gScript_884__0200aa48);
+    API_CutsceneWait(24);
+    API_MapActor_SetSpeed(24, 0x26666, 0x13333);
+    actor = CS884_Actor(24);
+    actor->bounce = 0x28f;
+    actor->gravity = 0x8000;
+    __MapActor_RunScript(24, gScript_884__0200ab2c);
+    API_CutsceneWait(0x28);
+    __Func_8095214();
+    __Func_8095240();
+    API_WaitFrames(20);
+    __Func_8095240();
+    API_WaitFrames(0x3c);
+    __Func_8095240();
+    API_WaitFrames(20);
+    __Func_8095214();
+    API_CutsceneWait(0x28);
+    *(int *)(CS884_Field + 0x1c8) = 0x78;
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_ClearFlag(0x834);
+    API_Func_8091e9c(9);
+    API_CutsceneEnd();
+}
+
+
+void OvlFunc_884_20097c8(void)
+{
+    extern unsigned char gScript_884__0200ac00[];
+    extern unsigned char gScript_884__0200ac14[];
+    extern unsigned char gScript_884__0200ac90[];
+    extern unsigned char gScript_884__0200acf8[];
+    extern unsigned char gScript_884__0200ad74[];
+    extern unsigned char gScript_884__0200adf0[];
+    extern unsigned char CS_iwram_3001ebc[] __asm__("iwram_3001ebc");
+    extern void __Actor_SetSpriteFlags(void *, int);
+    extern void __Func_800fe9c(void);
+    extern void __Func_807808c(int);
+    extern int __Func_8091a58(int, int);
+    extern struct Actor *CS884_CameraActor(void) __asm__("__Func_8093554");
+    extern struct Actor *CS884_Actor(int) __asm__("__MapActor_GetActor");
+    extern void __MapActor_RunScript(int, void *);
+    extern void __MapActor_SetExtra(int, int);
+    extern void OvlFunc_884_200a2c8(unsigned int, unsigned int);
+    extern void OvlFunc_884_200a2e0(unsigned int, unsigned int, unsigned int);
+    struct Actor *actor;
+    unsigned char *transitionState;
+
+    __Func_807808c(1);
+    API_CutsceneStart();
+    API_CopyMapTiles(0x2a, 0x35, 0x2a, 0x36, 3, 1);
+    API_Func_80933f8(0xb40000, 0x100000, 0x26a0000, 0);
+    __Func_800fe9c();
+    API_WaitFrames(1);
+    __Actor_SetSpriteFlags(CS884_Actor(22), 0);
+    __Actor_SetSpriteFlags(CS884_Actor(23), 0);
+    __Actor_SetSpriteFlags(CS884_Actor(24), 0);
+    __Actor_SetSpriteFlags(CS884_Actor(25), 0);
+    __Actor_SetSpriteFlags(CS884_Actor(26), 0);
+    __Actor_SetSpriteFlags(CS884_Actor(29), 0);
+    API_Func_8092b08(0, 1);
+    API_Func_8092b08(1, 1);
+    API_Func_8092b08(17, 1);
+    API_Func_8092b08(16, 1);
+    API_Func_8092b08(15, 1);
+    API_MapActor_SetPos(0, 0xd00000, 0x32e0000);
+    API_MapTransitionIn();
+    API_WaitMapTransition();
+    API_CutsceneWait(0x50);
+    API_MapActor_Emote(12, 0x101, 0x28);
+    OvlFunc_884_200a2e0(12, 0x7000, 20);
+    API_MessageID(0x11fa);
+    OvlFunc_884_200a2c8(12, 10);
+    API_MapActor_Emote(11, 0x102, 20);
+    OvlFunc_884_200a2e0(11, 0x1000, 10);
+    OvlFunc_884_200a2c8(11, 10);
+    API_MapActor_DoAnim(12, 3);
+    API_CutsceneWait(10);
+    API_Func_80925cc(11, 2);
+    OvlFunc_884_200a2c8(11, 10);
+    API_MapActor_Emote(12, 0x100, 0x28);
+    API_MapActor_SetSpeed(12, 0xcccc, 0x6666);
+    API_MapActor_TravelToAnimWait(12, 0xb8, 0x26a);
+    OvlFunc_884_200a2e0(12, 0x3000, 0x3c);
+    OvlFunc_884_200a2c8(12, 20);
+    API_MapActor_SetSpeed(11, 0x10000, 0x8000);
+    API_MapActor_TravelToAnimWait(11, 0xa8, 0x26a);
+    OvlFunc_884_200a2e0(11, 0xf000, 10);
+    API_MapActor_SetAnim(11, 4);
+    OvlFunc_884_200a2c8(11, 20);
+    OvlFunc_884_200a2e0(12, 0x7000, 10);
+    API_Func_80925cc(12, 1);
+    API_ActorMessage(12, 0);
+    API_CutsceneWait(10);
+    API_MapActor_SetSpeed(30, 0x26666, 0x13333);
+    API_MapActor_SetPos(30, 0x6e0000, 0x2e80000);
+    API_WaitFrames(2);
+    API_MapActor_SetAnim(30, 3);
+    API_MapActor_SetBehavior(30, (int)gScript_884__0200ac14);
+    API_CutsceneWait(0x28);
+    API_Func_8092a1c(11, 0x1001e, gScript_884__0200ac00);
+    API_Func_8092a1c(12, 0x1001e, gScript_884__0200ac00);
+    API_MapActor_WaitScript(30);
+    API_MapActor_SetIdle(11);
+    API_MapActor_SetIdle(12);
+    API_CutsceneWait(0x3c);
+    API_MapActor_Emote(11, 0x105, 0);
+    API_MapActor_Emote(12, 0x105, 0x78);
+    API_Func_8092adc(11, 0x1000, 0);
+    OvlFunc_884_200a2e0(12, 0x7000, 0x50);
+    OvlFunc_884_200a2e0(11, 0x5000, 0x28);
+    OvlFunc_884_200a2e0(11, 0x1000, 20);
+    API_MapActor_DoAnim(11, 3);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2e0(12, 0x5000, 0x3c);
+    OvlFunc_884_200a2e0(12, 0x3000, 0x28);
+    OvlFunc_884_200a2e0(12, 0x5000, 0x3c);
+    API_MapActor_Emote(12, 0x101, 0x50);
+    API_Func_8092adc(11, 0x3000, 0);
+    API_MapActor_TravelToAnimWait(12, 0xb8, 0x276);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2e0(12, 0x3000, 20);
+    OvlFunc_884_200a2e0(12, 0x5000, 20);
+    OvlFunc_884_200a2e0(12, 0x3000, 20);
+    API_MapActor_Emote(12, 0x101, 0x28);
+    API_MapActor_Emote(11, 0x101, 0x28);
+    API_MapActor_TravelToAnimWait(11, 0xa8, 0x276);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2e0(11, 0x3000, 0x28);
+    OvlFunc_884_200a2e0(11, 0x5000, 0x28);
+    OvlFunc_884_200a2e0(11, 0x3000, 0x28);
+    API_MapActor_Emote(11, 0x101, 0x28);
+    OvlFunc_884_200a2e0(11, 0x1000, 10);
+    OvlFunc_884_200a2c8(11, 20);
+    API_MapActor_DoAnim(12, 3);
+    OvlFunc_884_200a2c8(12, 10);
+    API_MapActor_Emote(11, 0x100, 20);
+    OvlFunc_884_200a2e0(11, 0x5000, 20);
+    OvlFunc_884_200a2e0(11, 0x3000, 20);
+    OvlFunc_884_200a2e0(11, 0x5000, 20);
+    OvlFunc_884_200a2e0(11, 0x5000, 0x3c);
+    API_MapActor_DoAnim(11, 3);
+    OvlFunc_884_200a2c8(11, 10);
+    actor = CS884_Actor(30);
+    if (actor != NULL) {
+        API_MapActor_SetPos(31, actor->pos.x, actor->pos.z);
+    }
+    API_WaitFrames(2);
+    CS884_Actor(30)->flags &= ~1;
+    CS884_Actor(31)->flags &= ~1;
+    API_Func_8092b08(30, 2);
+    API_Func_8092b08(31, 2);
+    API_MapActor_SetSpeed(31, 0x39999, 0x1cccc);
+    API_MapActor_SetAnim(31, 2);
+    API_MapActor_SetBehavior(31, (int)gScript_884__0200ac90);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(30, 3);
+    API_MapActor_SetSpeed(30, 0x4cccc, 0x26666);
+    __MapActor_RunScript(30, gScript_884__0200ac90);
+    API_CutsceneWait(0x3c);
+    API_Func_80925cc(12, 2);
+    OvlFunc_884_200a2e0(12, 0x7000, 10);
+    OvlFunc_884_200a2c8(12, 10);
+    API_Func_80925cc(11, 1);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2e0(11, 0x1000, 10);
+    API_MapActor_DoAnim(11, 3);
+    OvlFunc_884_200a2c8(11, 20);
+    API_MapActor_SetAnim(12, 3);
+    API_CutsceneWait(10);
+    API_MapActor_DoAnim(11, 3);
+    API_CutsceneWait(20);
+    API_MapActor_SetSpeed(11, 0x26666, 0x13333);
+    API_MapActor_SetSpeed(12, 0x26666, 0x13333);
+    API_MapActor_SetBehavior(11, (int)gScript_884__0200acf8);
+    API_CutsceneWait(10);
+    API_Func_80933d4(0x26666, 0x4ccc);
+    CS884_CameraActor()->__unk55 = 0;
+    API_Func_80933f8(0xd70000, 0x100000, 0x3210000, 1);
+    API_CutsceneWait(10);
+    API_MapActor_SetBehavior(12, (int)gScript_884__0200ad74);
+    API_MapActor_WaitScript(12);
+    OvlFunc_884_200a2e0(12, 0x3000, 0x78);
+    API_Func_80925cc(13, 2);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2c8(13, 20);
+    API_Func_8092adc(0, 0, 0);
+    OvlFunc_884_200a2e0(1, 0x9000, 20);
+    OvlFunc_884_200a2e0(0, 0xc000, 10);
+    OvlFunc_884_200a2e0(1, 0xb000, 10);
+    API_MapActor_SetAnim(0, 3);
+    API_CutsceneWait(10);
+    API_MapActor_DoAnim(1, 3);
+    API_CutsceneWait(0x28);
+    API_Func_80925cc(16, 2);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2c8(16, 10);
+    API_MapActor_SetSpeed(16, 0x10000, 0x8000);
+    API_MapActor_TravelToAnimWait(16, 0xd8, 0x320);
+    API_Func_8092adc(16, 0x4000, 0);
+    __Func_8091a58(0xb4, 0);
+    API_MapActor_TravelToAnimWait(16, 0x108, 0x320);
+    API_Func_8092adc(16, 0x6000, 0);
+    API_MapActor_Emote(1, 0x102, 0x28);
+    OvlFunc_884_200a2e0(1, 0xf000, 10);
+    OvlFunc_884_200a2c8(1, 10);
+    API_MapActor_DoAnim(17, 4);
+    OvlFunc_884_200a2c8(17, 10);
+    API_Func_8092adc(1, 0x1000, 0);
+    API_MapActor_Emote(1, 0x103, 20);
+    API_MapActor_Jump(1, 4, 0x3c);
+    API_Func_80925cc(14, 2);
+    API_CutsceneWait(20);
+    OvlFunc_884_200a2e0(14, 0xd000, 10);
+    OvlFunc_884_200a2c8(14, 0x3c);
+    API_MapActor_Emote(1, 0x102, 0);
+    API_MapActor_Emote(16, 0x102, 0);
+    API_MapActor_Emote(17, 0x102, 0);
+    API_MapActor_Emote(18, 0x102, 0);
+    API_MapActor_Emote(19, 0x102, 0x50);
+    API_MapActor_Emote(17, 0x100, 0);
+    OvlFunc_884_200a2c8(17, 0x3c);
+    __MapActor_SetExtra(0, 17);
+    __MapActor_SetExtra(1, 17);
+    API_MapActor_TravelToAnimWait(17, 0xd8, 0x320);
+    API_Func_8092adc(17, 0x4000, 0);
+    OvlFunc_884_200a2c8(17, 0x3c);
+    __Func_8091a58(0xcf, 0);
+    API_MapActor_SetIdle(0);
+    API_MapActor_SetIdle(1);
+    API_MapActor_TravelToAnimWait(17, 0x110, 0x330);
+    API_Func_8092adc(17, 0x8000, 0);
+    API_Func_80925cc(1, 2);
+    OvlFunc_884_200a2e0(1, 0x9000, 10);
+    OvlFunc_884_200a2c8(1, 10);
+    API_Func_8092adc(14, 0x3000, 0);
+    OvlFunc_884_200a2e0(0, 0, 10);
+    API_MapActor_Emote(0, 0x101, 0x3c);
+    API_Func_80925cc(16, 1);
+    OvlFunc_884_200a2c8(16, 10);
+    OvlFunc_884_200a2e0(1, 0xf000, 10);
+    API_MapActor_Emote(1, 0x101, 20);
+    API_MapActor_DoAnim(16, 4);
+    OvlFunc_884_200a2c8(16, 10);
+    API_MapActor_DoAnim(18, 3);
+    API_ActorMessage(18, 0);
+    API_Func_8092adc(1, 0xd000, 0);
+    API_MapActor_SetAnim(18, 4);
+    API_ActorMessage(18, 0);
+    API_Func_809259c(18, 3);
+    API_ActorMessage(18, 0);
+    API_MapActor_DoAnim(16, 3);
+    API_MapActor_SetAnim(19, 3);
+    API_MapActor_SetAnim(17, 3);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(24, 3);
+    API_MapActor_SetAnim(18, 3);
+    API_MapActor_SetAnim(27, 3);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(28, 3);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(25, 3);
+    API_MapActor_SetAnim(20, 3);
+    API_MapActor_DoAnim(21, 3);
+    API_MapActor_Jump(15, 2, 10);
+    API_MapActor_Jump(15, 4, 0x28);
+    OvlFunc_884_200a2c8(15, 10);
+    API_Func_8092adc(1, 0xb000, 0);
+    OvlFunc_884_200a2e0(0, 0xc000, 20);
+    OvlFunc_884_200a2e0(15, 0xd000, 10);
+    OvlFunc_884_200a2c8(15, 10);
+    OvlFunc_884_200a2e0(15, 0x9000, 20);
+    OvlFunc_884_200a2e0(15, 0x5000, 10);
+    API_MapActor_SetAnim(11, 3);
+    API_MapActor_SetAnim(14, 3);
+    API_MapActor_SetAnim(17, 3);
+    API_MapActor_SetAnim(20, 3);
+    API_MapActor_SetAnim(23, 3);
+    API_MapActor_SetAnim(26, 3);
+    API_MapActor_SetAnim(29, 3);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(12, 3);
+    API_MapActor_SetAnim(15, 3);
+    API_MapActor_SetAnim(18, 3);
+    API_MapActor_SetAnim(21, 3);
+    API_MapActor_SetAnim(24, 3);
+    API_MapActor_SetAnim(27, 3);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(13, 3);
+    API_MapActor_SetAnim(16, 3);
+    API_MapActor_SetAnim(19, 3);
+    API_MapActor_SetAnim(22, 3);
+    API_MapActor_SetAnim(25, 3);
+    API_MapActor_DoAnim(28, 3);
+    API_CutsceneWait(0x50);
+    API_MapActor_Jump(11, 4, 0);
+    API_MapActor_Jump(14, 4, 0);
+    API_MapActor_Jump(17, 4, 0);
+    API_MapActor_Jump(20, 4, 0);
+    API_MapActor_Jump(23, 4, 0);
+    API_MapActor_Jump(26, 4, 0);
+    API_MapActor_Jump(29, 4, 0);
+    API_MapActor_Jump(12, 4, 0);
+    API_MapActor_Jump(15, 4, 0);
+    API_MapActor_Jump(18, 4, 0);
+    API_MapActor_Jump(21, 4, 0);
+    API_MapActor_Jump(24, 4, 0);
+    API_MapActor_Jump(27, 4, 0);
+    API_MapActor_Jump(13, 4, 0);
+    API_MapActor_Jump(16, 4, 0);
+    API_MapActor_Jump(19, 4, 0);
+    API_MapActor_Jump(22, 4, 0);
+    API_MapActor_Jump(25, 4, 0);
+    API_MapActor_Jump(28, 4, 0);
+    API_Func_801776c(0x1214, 1);
+    API_CutsceneWait(0x50);
+    CS884_Actor(0)->flags |= 1;
+    CS884_Actor(1)->flags |= 1;
+    API_MapActor_Emote(0, 0x102, 0);
+    API_MapActor_Emote(1, 0x102, 0x50);
+    OvlFunc_884_200a2e0(0, 0x4000, 10);
+    OvlFunc_884_200a2e0(1, 0x5000, 20);
+    API_MapActor_SetSpeed(0, 0xcccc, 0x6666);
+    API_MapActor_SetBehavior(0, (int)gScript_884__0200adf0);
+    API_CutsceneWait(20);
+    API_Func_80933d4(0x6666, 0xccc);
+    API_Func_80933f8(0xd80000, 0x100000, 0x3890000, 1);
+    API_CutsceneWait(20);
+    API_MapActor_SetSpeed(1, 0xcccc, 0x6666);
+    API_MapActor_SetBehavior(1, (int)gScript_884__0200adf0);
+    API_CutsceneWait(0x3c);
+    transitionState = *(unsigned char **)CS_iwram_3001ebc;
+    *(int *)(transitionState + 0x1c0) = 0x100;
+    *(int *)(transitionState + 0x1c8) = 0x3c;
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_MapActor_SetIdle(0);
+    API_MapActor_SetIdle(1);
+    API_Func_8091e9c(10);
+    API_CutsceneEnd();
+}
 
 extern void __ActorMessage(unsigned int arg0, unsigned int arg1);
 extern void __CutsceneWait(unsigned int arg0);
@@ -860,7 +1343,80 @@ void OvlFunc_884_200a3ec(struct Actor *actor) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vale_plaza/OvlFunc_884_200a440.s");
+#include "sprite/slot.h"
+
+extern void OvlFunc_884_200a3ec(struct Actor *);
+extern void OvlFunc_884_200a39c(struct Actor *);
+
+struct CS884_SpriteOamBitView {
+    void *dest;
+    u16 posY : 8;
+    u16 affineMode : 2;
+    u16 objMode : 2;
+    u16 mosaic : 1;
+    u16 bpp : 1;
+    u16 shape : 2;
+    u16 posX : 9;
+    u16 affineParam : 5;
+    u16 size : 2;
+    u16 tileNum : 10;
+    u16 priority : 2;
+    u16 palette : 4;
+};
+
+struct CS884_E30SlotView {
+    unsigned char pad[0x46];
+    u16 slot;
+};
+
+void OvlFunc_884_200a440(unsigned int arg0)
+{
+    extern struct CS884_E30SlotView *iwram_3001f30_view __asm__("iwram_3001f30");
+    extern struct SpriteSlot gSpriteSlots[];
+    extern void __Sprite_SetAnim(struct Sprite *, int);
+    extern void __Func_8003f3c(int);
+
+    struct CS884_E30SlotView *e30 = iwram_3001f30_view;
+    struct Actor *parent = (struct Actor *)arg0;
+    struct Actor *actors[2];
+    int i;
+
+    API_PlaySound(0x83);
+    for (i = 0; i <= 1; i++) {
+        struct Actor *actor = API_CreateActor(0x1a, parent->pos.x, parent->pos.y, parent->pos.z);
+        actors[i] = actor;
+        if (actor != 0) {
+            struct Sprite *sprite;
+
+            actor->floorPos = parent->floorPos;
+            sprite = actor->sprite;
+            actor->__unk55 = 0;
+            actor->waveCounter = 0;
+            actor->linkedActor = parent;
+            if (sprite != 0) {
+                struct CS884_SpriteOamBitView *oam = (struct CS884_SpriteOamBitView *)&sprite->oam;
+
+                __Sprite_SetAnim(sprite, 0);
+                sprite->flags = 0;
+                __Func_8003f3c(sprite->slot);
+                sprite->slot = e30->slot;
+                sprite->flags1D.bit0 = 1;
+                oam->tileNum = gSpriteSlots[sprite->slot].vramOffset >> 5;
+                oam->bpp = 0;
+                oam->shape = 1;
+                oam->size = 2;
+                sprite->layers[0]->frameID = 0;
+            }
+        }
+    }
+
+    actors[0]->update = OvlFunc_884_200a3ec;
+    ((struct CS884_SpriteOamBitView *)&actors[0]->sprite->oam)->priority = 2;
+    ((struct CS884_SpriteOamBitView *)&actors[1]->sprite->oam)->priority = 2;
+    actors[1]->update = OvlFunc_884_200a39c;
+    actors[1]->flags = 2;
+}
+
 
 extern void __Func_8096fb0(int a, int b);
 

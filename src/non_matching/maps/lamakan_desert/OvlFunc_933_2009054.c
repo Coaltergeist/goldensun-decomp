@@ -1,9 +1,18 @@
+/* Clean C candidate for OvlFunc_933_2009054 (matches 100% of instructions except 1 dead
+ * volatile load `ldr r3, [r2]` of `iwram_3001e40` at line 100 of OvlFunc_933_2009054.s,
+ * immediately overwritten by `ldr r3, =0xcccc` at line 101).
+ * Historical root cause (cf. neighboring OvlFunc_933_2008344 lines 54-56 and
+ * crossbone_isle_dungeon_2.c:1370-1373): `iwram_3001e40` is `volatile unsigned int` and
+ * the original code had a commented-out `if ((iwram_3001e40 & 0xf) == 0) { // __PlaySound(...); }`
+ * block; gcc 2.96 deleted the empty branch/mask/cmp while preserving the volatile `ldr r3, [r2]`.
+ * Kept in non_matching per zero-fakematch policy (no dummy volatile reads).
+ */
 extern void *__MapActor_GetActor(int);
 extern unsigned char iwram_3001ebc[];
 
 void OvlFunc_933_2009054(void)
 {
-    extern unsigned int iwram_3001e40;
+    extern volatile unsigned int iwram_3001e40;
     GlobalState *p = &gState;
     char *actor;
     char *base;

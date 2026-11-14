@@ -1,5 +1,10 @@
+/*
+ * Non-matching (1132-byte .text, 41/41 relocations).
+ * Requires -fstrict-aliasing (GAIA_CFLAGS) at 0x350 (caller-save stack spill reload-CSE across
+ * s32 stores to q->x / q->y via get_frame_alias_set()); minor loop-counter / crystal-init diff
+ * around dead Random() & 31 call.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -15,16 +20,16 @@ struct PrismParticle {
 };
 
 struct PrismState {
-               u8 graphics[0x7080];
-               struct PrismParticle crystals[16];
-               u8 pad_7240[0x7780 - 0x7240];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x77a8 - 0x7788];
-               s32 unk77A8;
-               u8 pad_77ac[0x7824 - 0x77ac];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct PrismParticle crystals[16];
+    u8 pad_7240[0x7780 - 0x7240];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x77a8 - 0x7788];
+    s32 unk77A8;
+    u8 pad_77ac[0x7824 - 0x77ac];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct Camera {
@@ -33,11 +38,8 @@ struct Camera {
 };
 
 extern u8 *iwram_3001eec[];
-
 extern struct Camera *iwram_3001e80;
-
 extern u8 gBuffer[];
-
 extern char _FILE_cf[];
 
 static const u8 PrismShardOrigins[] = {
@@ -68,31 +70,18 @@ static const u8 PrismShardOffsetBytes[] = {
 };
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern void BuildDraw2DFuncs(int, DrawFunc *);
-
 extern unsigned int Random(void);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void Func_80e3908(struct PrismParticle *, int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Prism(struct AnimContext *context)
@@ -101,9 +90,10 @@ void Anim_Prism(struct AnimContext *context)
     struct PrismState *state = (struct PrismState *)*slots++;
     u8 *render = *slots;
     DrawFunc pair[2];
-    struct PrismParticle *p, *q;
+    int frame;
+    struct PrismParticle *p, *q, *particles;
     const u8 *origin;
-    int frame, i, j, k, x, v, r, idx, w, h, delta;
+    int i, j, x, r, idx, delta;
 
     state->context = context;
     AnimStart(0);
@@ -114,23 +104,24 @@ void Anim_Prism(struct AnimContext *context)
     state->blitParam = 50;
     StartTask(Task_BlitAnim, 0x480);
 
-    for (i = 0, p = state->crystals; i != PrismParams[state->context->param * 2]; i++, p++) {
-        Random();
+    for (i = 0; i != PrismParams[state->context->param * 2]; i++) {
+        p = &state->crystals[i];
+        x = Random() & 31;
         p->y = 0xffc00000;
         if (state->context->side == 1) {
             x = ((Random() & 31) + 0x50) << 16;
-            v = Random() & 63;
+            p->vx = (Random() & 63) << 12;
         } else {
             x = ((Random() & 31) + 8) << 16;
-            v = -(Random() & 63);
+            p->vx = -(Random() & 63) << 12;
         }
-        p->vx = v << 12;
         p->x = x - p->vx * 18;
         p->vy = 0;
         p->mode = 0;
         p->timer = i * 8;
     }
 
+    particles = (struct PrismParticle *)gBuffer;
     for (frame = 0; frame != PrismParams[state->context->param * 2 + 1]; frame++) {
         if (state->context->param == 2 && frame <= 0x67) {
             struct Camera *camera = iwram_3001e80;
@@ -150,28 +141,31 @@ void Anim_Prism(struct AnimContext *context)
             state->blitParam = 0x06060606;
         }
         if (frame <= PrismParams[state->context->param * 2 + 1] - 8) {
-            for (j = 0, p = state->crystals; j != PrismParams[state->context->param * 2]; j++, p++) {
+            for (j = 0; j != PrismParams[state->context->param * 2]; j++) {
+                p = &state->crystals[j];
                 if (p->mode == 1) {
-                    q = (struct PrismParticle *)gBuffer + j * 16;
-                    for (k = 0; k != 16; k++, q++) {
-                        idx = (k % 5) * 3 + (q->timer / 96) % 3;
-                        w = PrismShardWidths[idx];
-                        h = PrismShardHeights[idx];
-                        pair[k <= 2](render, state->graphics + ((const u32 *)PrismShardOffsetBytes)[idx] + 0x800,
-                                     (q->x >> 16) - (w >> 1), (q->y >> 16) - (h >> 1), w, h);
+                    for (i = 0; i != 16; i++) {
+                        q = &particles[j * 16 + i];
+                        idx = (i % 5) * 3 + (q->timer / 96) % 3;
+                        pair[i <= 2](render, state->graphics + ((const u32 *)PrismShardOffsetBytes)[idx] + 0x800,
+                                     *(s16 *)((u8 *)&q->x + 2) - PrismShardWidths[idx] / 2,
+                                     *(s16 *)((u8 *)&q->y + 2) - PrismShardHeights[idx] / 2,
+                                     PrismShardWidths[idx], PrismShardHeights[idx]);
                         Func_80e3908(q, 0x40, 0x2000);
                         q->timer += q->mode;
                         if (q->mode > 1 && (frame & 1))
                             q->mode--;
                     }
                 } else if (frame >= p->timer) {
-                    pair[j & 1](render, state->graphics, (p->x >> 16) - 16, p->y >> 16, 32, 64);
+                    pair[j & 1](render, state->graphics,
+                                *(s16 *)((u8 *)&p->x + 2) - 16,
+                                *(s16 *)((u8 *)&p->y + 2), 32, 64);
                     Func_80e3908(p, 0x40, 0x10000);
                     if (p->y > 0x380000) {
                         p->mode = 1;
                         p->y = 0x380000;
-                        q = (struct PrismParticle *)gBuffer + j * 16;
-                        for (k = 0, origin = PrismShardOrigins; k != 16; k++, origin += 2, q++) {
+                        for (i = 0, origin = PrismShardOrigins; i != 16; i++, origin += 2) {
+                            q = &particles[j * 16 + i];
                             q->x = ((origin[0] - 0x28) << 16) + p->x;
                             q->y = origin[1] << 16;
                             q->vx = ((Random() & 0x7f) - 0x40) << 11;
@@ -186,8 +180,8 @@ void Anim_Prism(struct AnimContext *context)
                         }
                         state->unk77A8 = 8;
                         _PlaySound(0x90);
-                        for (k = 0; k != state->context->numTargets; k++)
-                            SetBattleActorState((s16)state->context->targets[k], 7, 5, k, 4);
+                        for (i = 0; i != state->context->numTargets; i++)
+                            SetBattleActorState((s16)state->context->targets[i], 7, 5, i, 4);
                     }
                 }
             }

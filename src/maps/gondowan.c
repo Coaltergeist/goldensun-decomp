@@ -2,6 +2,7 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
 #include "field.h"
 
 extern int OvlFunc_958_200858c();
@@ -482,7 +483,63 @@ void OvlFunc_958_20088ec(struct Pk arg)
     __MapActor_PlayPendingSound();
 }
 
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_2008ba4.s");
+int OvlFunc_958_2008ba4(unsigned int actorId)
+{
+    struct Pk arg;
+    unsigned char *env;
+    unsigned char *actor;
+    unsigned int i;
+    int t3;
+    int t4;
+    int h;
+    int w;
+    int t1;
+    int t2;
+    int raw;
+    int camz;
+    int s5;
+    int s6;
+
+    env = (unsigned char *)*(int *)iwram_3001e70;
+    actor = (unsigned char *)__MapActor_GetActor(actorId);
+    for (i = 0; i <= 5; i++) {
+        if (*(short *)(*(int **)((char *)*(int **)(actor + 0x50) + 0x28)) == L1700[i]) {
+            arg.a = i;
+            break;
+        }
+        arg.a = 7;
+    }
+    if ((unsigned int)arg.a > 6) {
+        return 0;
+    }
+    arg.x = *(int *)(actor + 8);
+    arg.y = *(int *)(actor + 0xc);
+    arg.z = *(int *)(actor + 0x10);
+    t1 = L1718[(arg.a << 2) + 1];
+    if (t1 < 0) t1 = -t1;
+    t2 = L1718[(arg.a << 2) + 3];
+    if (t2 < 0) t2 = -t2;
+    h = (t1 + t2) >> 4;
+    t3 = L1718[arg.a << 2];
+    if (t3 < 0) t3 = -t3;
+    t4 = L1718[(arg.a << 2) + 2];
+    if (t4 < 0) t4 = -t4;
+    w = (t3 + t4) >> 4;
+    arg.x += L1718[arg.a << 2] << 16;
+    arg.z += L1718[(arg.a << 2) + 1] << 16;
+    arg.x >>= 20;
+    arg.z >>= 20;
+    raw = *(int *)(env + 0x13c);
+    i = raw >> 20;
+    raw = *(int *)(env + 0x140);
+    camz = raw >> 20;
+    s5 = i + arg.x;
+    s6 = camz + arg.z;
+    __Func_8010704(arg.x, arg.z, w, h, s5, s6);
+    OvlFunc_958_2008528(0, arg.x, arg.z, w, h, 0xff);
+    OvlFunc_958_2008528(2, arg.x, arg.z, w, h, 0xff);
+    return 1;
+}
 
 extern unsigned char Lconst_98[] __asm__(".Lconst_98");
 __asm__(".equ .Lconst_98, 0x98");
@@ -836,7 +893,64 @@ void OvlFunc_958_20091d8(unsigned int arg0, int arg1)
     }
 }
 
-INCLUDE_ASM("asm/maps/gondowan/OvlFunc_958_20091f8.s");
+extern int __cos(int);
+extern int __sin(int);
+extern void __Func_8012350(void);
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, int);
+
+void OvlFunc_958_20091f8(int actor_id)
+{
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned int i;
+    int vec[3];
+    int angle;
+    int c;
+
+    actor = (struct Actor *)__MapActor_GetActor(actor_id);
+    actor->__unk55 = 0;
+    for (i = 0; i <= 8; i++) {
+        __WaitFrames(1);
+        actor->sprite->rotation -= 0x100;
+        actor->pos.x -= __cos(actor->sprite->rotation) / 2;
+        actor->prevPos.x = 0x80 << 24;
+    }
+
+    actor->update = (actorfun_t)OvlFunc_958_20091c8;
+    __PlaySound(0x88);
+    API_MapActor_SetSpeed(actor_id, 0x80 << 10, 0x80 << 9);
+    API_MapActor_TravelTo(actor_id, 0xec << 1, 0x90 << 1);
+    actor->gravity = 0xcccc;
+    actor->__unk55 = 3;
+    actor->layer = 0;
+    __MapActor_WaitMovement(actor_id);
+    OvlFunc_958_20091d8((unsigned int)actor, 0x80 << 14);
+    API_Func_8012330(0xa0 << 11, 0xa0 << 11, 0x80 << 9);
+    API_Func_8012330(-1, -1, 0xe666);
+
+    for (i = 0; i <= 0x10; i++) {
+        angle = i << 12;
+        vec[0] = __cos(angle);
+        vec[1] = 0;
+        vec[2] = __sin(angle);
+        vec[0] = vec[0] - vec[0] / 4;
+        vec[2] = vec[2] - vec[2] / 2;
+        OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z, vec[0], vec[1], vec[2], 0, 0);
+    }
+
+    API_MapActor_TravelTo(actor_id, 0xdc << 1, 0x9a << 1);
+    __MapActor_WaitMovement(actor_id);
+    OvlFunc_958_20091d8((unsigned int)actor, 0x80 << 14);
+    sprite = actor->sprite;
+    actor->update = 0;
+    c = 0x1000;
+    sprite->rotation = c;
+    __PlaySound(0x9a);
+    API_MapActor_SetAnim(actor_id, 3);
+    __Func_8012350();
+    __CutsceneWait(10);
+    API_MapActor_SetAnim(actor_id, 2);
+}
 INCLUDE_ASM("asm/maps/gondowan/gondowan_data.s");
 
 void OvlFunc_958_2009380(void) {}

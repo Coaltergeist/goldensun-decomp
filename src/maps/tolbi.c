@@ -3,6 +3,7 @@
 #include "nonmatching.h"
 #include "api.h"
 #include "actor.h"
+#include "field.h"
 
 INCLUDE_ASM("asm/maps/tolbi/exports.s");
 
@@ -186,9 +187,93 @@ void OvlFunc_949_20082d4(void) {
 extern void __CutsceneEnd(void);
 extern int *iwram_3001ebc;
 
-INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20082f0.s");
+void OvlFunc_949_20082f0(void)
+{
+    struct MapState *iwram = (struct MapState *)iwram_3001ebc;
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0x10);
+    s16 saved = actor->facing;
+    int msg;
 
-INCLUDE_ASM("asm/maps/tolbi/OvlFunc_949_20083d0.s");
+    API_CutsceneStart();
+    actor->waveCounter |= 2;
+    if ((s16)iwram->__unk17E == 0) {
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2365;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21e2;
+            } else {
+                msg = 0x1f95;
+            }
+        }
+    } else {
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2371;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21f5;
+            } else {
+                msg = 0x1faa;
+            }
+        }
+    }
+    API_MessageID(msg);
+    API_MapActor_SetAnim(0x10, 0);
+    API_MapActor_TurnToFaceActor(0x10, 0, 2);
+    API_ActorMessage_Wait(0x10, 0, 0xa);
+    actor->facing = saved;
+    API_WaitFrames(1);
+    actor->waveCounter &= 1;
+    API_CutsceneEnd();
+}
+
+void OvlFunc_949_20083d0(void)
+{
+    struct MapState *iwram = (struct MapState *)iwram_3001ebc;
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0x11);
+    s16 saved = actor->facing;
+    int msg;
+
+    API_CutsceneStart();
+    actor->waveCounter |= 2;
+    if ((s16)iwram->__unk17E == 0) {
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2366;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21e3;
+            } else {
+                msg = 0x1f96;
+            }
+        }
+    } else {
+        msg = API_GetFlag(0x95 << 4);
+        if (msg != 0) {
+            msg = 0x2372;
+        } else {
+            msg = API_GetFlag(0x962);
+            if (msg != 0) {
+                msg = 0x21f6;
+            } else {
+                msg = 0x1fab;
+            }
+        }
+    }
+    API_MessageID(msg);
+    API_MapActor_SetAnim(0x11, 0);
+    API_MapActor_TurnToFaceActor(0x11, 0, 2);
+    API_ActorMessage_Wait(0x11, 0, 0xa);
+    actor->facing = saved;
+    API_WaitFrames(1);
+    actor->waveCounter &= 1;
+    API_CutsceneEnd();
+}
 
 extern unsigned char L1a9c[] __asm__(".Lm949_1a9c");
 extern unsigned char L14a8[] __asm__(".Lm949_14a8");
@@ -332,16 +417,37 @@ void OvlFunc_949_2008644(void)
     __WaitMapTransition();
     __CutsceneEnd();
 }
-void OvlFunc_949_20086e8(struct Actor *actor) {
+struct TolbiSprite;
+struct TolbiSpriteOAM {
+    struct TolbiSprite *dest;
+    u16 attr0;
+    u16 attr1;
+    u8 attr2Lo;
+    u8 tileHi : 2;
+    u8 priority : 2;
+    u8 palette : 4;
+};
+struct TolbiSprite {
+    struct TolbiSpriteOAM oam;
+    struct TolbiSpriteOAM shadowOAM;
+};
+struct TolbiActor {
+    u8 pad0[0x23];
+    u8 flags;
+    u8 pad1[0x50 - 0x24];
+    struct TolbiSprite *sprite;
+};
+
+void OvlFunc_949_20086e8(struct TolbiActor *actor) {
     if (actor != 0) {
-        struct Actor *a0 = (struct Actor *)__MapActor_GetActor(0);
+        struct TolbiActor *a0 = (struct TolbiActor *)__MapActor_GetActor(0);
         int prio = a0->sprite->oam.priority;
         actor->flags = 0;
         actor->sprite->oam.priority = prio;
         actor->sprite->shadowOAM.priority = prio;
     }
 }
-extern void OvlFunc_949_20086e8(struct Actor *actor);
+extern void OvlFunc_949_20086e8(struct TolbiActor *actor);
 extern int gScript_949__02008ec0;
 extern int gScript_949__02008f90;
 extern void OvlFunc_949_2008ca8(void);

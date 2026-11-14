@@ -1,7 +1,16 @@
+/*
+ * Non-matching clean C candidate for Anim_Haunt (exact .text size 0x374 and 46 relocs).
+ * Requires -fstrict-aliasing (GAIA_CFLAGS), which matches wave-loop `stmia r6!, {r3}` and
+ * eliminates 3 of 4 scheduling diffs, matching 0x000..0x041, 0x046..0x0a9, and 0x224..0x374.
+ * Remaining diffs:
+ * 1. 0x042: `mov r1, sl; mov r0, r6` vs `mov r0, r6; mov r1, sl` before `DecompressLZ`.
+ * 2. 0x0aa: `0x480` stays live in `r5` across `p = (struct HauntParticle *)gBuffer`, assigning
+ *    `p` to `r6` / `0xff` to `r5` instead of `r5` / `r6`.
+ * 3. 0x1a0: `loop_optimize` GIV stack-slot order swaps `[sp, #12]` (`j * 1792`) and
+ *    `[sp, #16]` (`j * 2 + 36`), same GIV slot swap seen in Anim_Ragnarok and BaseAnim_StatDown.
+ */
 #include "anim.h"
-
 #include "math.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -17,14 +26,14 @@ struct HauntParticle {
 };
 
 struct HauntState {
-               u8 graphics[0x6980];
-               s32 wave[160];
-               u8 pad_6c00[0x7780 - 0x6c00];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x6980];
+    s32 wave[160];
+    u8 pad_6c00[0x7780 - 0x6c00];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct HauntActor {
@@ -38,55 +47,31 @@ struct HauntActor {
 struct HauntVec { s32 x, y, z; };
 
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e80[];
-
 extern u8 gBuffer[];
-
 extern char _FILE_a9[], _FILE_bb[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
 extern void DecompressLZ(const void *, void *);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern unsigned int Random(void);
-
 extern void Func_80dbb9c(void);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern struct HauntActor **_GetBattleActor(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(void *, void *);
-
 extern void MatrixTranslatev(struct HauntVec *);
-
 extern void MatrixPitch(int);
-
 extern int Func_8000948(int);
-
 extern void Func_80e3944(struct HauntParticle *, struct HauntVec *);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 static inline void *API_Func_8001af8(void *dst, const void *src, unsigned int size)
@@ -127,16 +112,13 @@ void Anim_Haunt(struct AnimContext *context)
     StartTask(Func_80dbb9c, 0x480);
     state->blitMode = 3;
     state->blitParam = 0x4040404;
-    {
-        struct HauntParticle *q;
-        StartTask(Task_BlitAnim, 0x480);
-        q = (struct HauntParticle *)gBuffer;
+    p = (struct HauntParticle *)gBuffer;
+    StartTask(Task_BlitAnim, 0x480);
 
-        for (i = 0; i != 512; i++, q++) {
-            q->x = ((Random() & 255) - 127) << 15;
-            q->y = ((Random() & 255) - 127) << 15;
-            q->z = ((Random() & 255) - 127) << 15;
-        }
+    for (i = 0; i != 512; i++, p++) {
+        p->x = ((Random() & 255) - 127) << 15;
+        p->y = ((Random() & 255) - 127) << 15;
+        p->z = ((Random() & 255) - 127) << 15;
     }
     _PlaySound(0x8e);
 
@@ -168,9 +150,11 @@ void Anim_Haunt(struct AnimContext *context)
                 p = (struct HauntParticle *)gBuffer + j * 64;
                 for (i = 0; i != 8; i++, p++) {
                     if (frame > (j * 8 + i) * 4) {
+                        int x2 = (p->x >> 8) * (p->x >> 8);
+                        int y2 = (p->y >> 8) * (p->y >> 8);
+                        int z2 = (p->z >> 8) * (p->z >> 8);
                         int (*root)(int) = Func_8000948;
-                        dist = root((p->x >> 8) * (p->x >> 8) + (p->y >> 8) * (p->y >> 8)
-                                    + (p->z >> 8) * (p->z >> 8)) >> 8;
+                        dist = root(x2 + y2 + z2) >> 8;
                         if (dist != 0) {
                             Func_80e3944(p, &screen);
                             screen.x >>= 1;

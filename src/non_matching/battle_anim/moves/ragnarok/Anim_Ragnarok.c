@@ -1,5 +1,15 @@
-#include "anim.h"
+/*
+ * Clean C decompilation of Anim_Ragnarok (src/battle_anim/moves/ragnarok.c).
+ *
+ * Status:
+ * - Exact section sizes: 1,288/1,288 bytes .text, 12/12 bytes .rodata, 49/49 relocations.
+ * - Matches 0x000..0x27b (first 636 bytes) and all inner loops/epilogue 100% byte-for-byte.
+ * - Remaining diff (-15/+15 lines): GCC 2.96 loop_optimize GIV stack-slot ordering swap
+ *   between [sp, #8] and [sp, #12] (`state->particles[i]` vs `start = i * 8 + 16`) in the
+ *   `for (i = 0; i != 2; i++)` loop.
+ */
 
+#include "anim.h"
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -15,15 +25,15 @@ struct RagnarokParticle {
 };
 
 struct RagnarokState {
-               u8 graphics[0x7080];
-               struct RagnarokParticle particles[4][16];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x77a8 - 0x7788];
-               s32 unk77A8;
-               u8 pad_77ac[0x7824 - 0x77ac];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct RagnarokParticle particles[4][16];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x77a8 - 0x7788];
+    s32 unk77A8;
+    u8 pad_77ac[0x7824 - 0x77ac];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 static const u8 RagnarokBladeX[2][3] = {
@@ -33,54 +43,31 @@ static const u8 RagnarokBladeX[2][3] = {
 
 static const u8 RagnarokFlashFrames[6] = { 5, 5, 4, 3, 2, 1 };
 
-extern const u16 Data_ede48[];
-
+extern u16 Data_ede48[];
 extern u8 *iwram_3001eec[];
-
-extern struct RagnarokParticle gBuffer[];
-
+extern u8 gBuffer[];
 extern char _FILE_55[], _FILE_7d[], _FILE_73[], _FILE_c0[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern s32 **_GetBattleActor(int);
-
 extern void BuildDraw2DFuncs(int, DrawFunc *);
-
 extern void _Actor_SetAnim(s32 *, int);
-
 extern void _Actor_SetAnimSpeed(s32 *, int);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern unsigned int Random(void);
-
 extern int sin(int);
-
 extern int cos(int);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void BlendVFXPaletteFile(char *);
-
 extern void Func_80e3908(struct RagnarokParticle *, int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void _SetBattleActorKnockback(int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_Ragnarok(struct AnimContext *context)
@@ -89,11 +76,12 @@ void Anim_Ragnarok(struct AnimContext *context)
     u8 **slots = baseSlots;
     struct RagnarokState *state = (struct RagnarokState *)*slots++;
     u8 *render = *slots;
+    int i, j, frame;
     u8 *sparkGfx = baseSlots[2];
-    DrawFunc pair[2];
     s32 *actor;
+    DrawFunc pair[2];
     struct RagnarokParticle *p;
-    int frame, i, j, x, y, h, a, r, s;
+    struct RagnarokParticle *buf = (struct RagnarokParticle *)gBuffer;
 
     actor = *_GetBattleActor(context->user);
     context->param = 1;
@@ -108,22 +96,21 @@ void Anim_Ragnarok(struct AnimContext *context)
     LoadVFXFile((int)_FILE_73, sparkGfx, 0, 0);
 
     for (i = 0; i != 3; i++) {
-        p = state->particles[i];
-        for (j = 0; j != 16; j++, p++) {
-            a = Random() & 0xffff;
-            p->x = j * 2 * sin(a);
-            p->y = -(j * 2 * cos(a));
+        for (j = 0, p = state->particles[i]; j != 16; j++, p++) {
+            int step = j * 2;
+            int a = Random() & 0xffff;
+            p->x = sin(a) * step;
+            p->y = -(cos(a) * step);
             p->timer = j / 2 + 25;
         }
-        p = &gBuffer[i * 340];
-        for (j = 0; j != 340; j++, p++) {
-            r = Random() & 0x1ff;
-            a = Random() & 0xffff;
+        for (j = 0; j != 340; j++) {
+            int r = (Random() & 0x1ff) + 0x20;
+            int a = Random() & 0xffff;
+            p = &buf[i * 340 + j];
             p->x = RagnarokBladeX[state->context->side][i] << 16;
             p->y = 0x580000;
-            r += 0x20;
-            p->dx = (r * sin(a)) >> 6;
-            p->dy = -(r * cos(a) * 2) >> 6;
+            p->dx = (sin(a) * r) >> 6;
+            p->dy = -(cos(a) * r * 2) >> 6;
             p->timer = (Random() & 7) + 0x20;
         }
     }
@@ -136,14 +123,15 @@ void Anim_Ragnarok(struct AnimContext *context)
         if (frame == 4)
             _PlaySound(0xd4);
         if (frame == 8)
-            state->unk77A8 = 8;
+            state->unk77A8 = frame;
         if (frame == 18)
             _PlaySound(0x91);
         if (frame == 40)
             _Func_80bd7dc(0x86);
 
         if (frame < 40) {
-            h = 0x80;
+            int x, y;
+            int h = 0x80;
             if (state->context->side == 1) {
                 if (frame <= 9) {
                     x = frame * 10 - 8;
@@ -177,16 +165,18 @@ void Anim_Ragnarok(struct AnimContext *context)
             BlendVFXPaletteFile(_FILE_c0);
 
         for (i = 0; i != 2; i++) {
-            if (frame == i * 8 + 16)
+            int start = i * 8 + 16;
+            if (frame == start)
                 state->unk77A8 = 12;
-            if (frame >= i * 8 + 16) {
+            if (frame >= start) {
                 if (frame < i * 8 + 18)
                     pair[0](render, state->graphics + 0x2000,
                             RagnarokBladeX[state->context->side][i] - 0x10, 0x38, 0x20, 0x40);
                 for (j = 0; j != 12; j++) {
+                    int x, y;
                     p = &state->particles[i][j];
-                    y = *(s16 *)((u8 *)&p->y + 2);
-                    x = *(s16 *)((u8 *)&p->x + 2) + RagnarokBladeX[state->context->side][i];
+                    y = p->y >> 16;
+                    x = (p->x >> 16) + RagnarokBladeX[state->context->side][i];
                     if (p->timer >= 0 && p->timer < 18)
                         pair[0](render,
                                 state->graphics + 0x2000 + (RagnarokFlashFrames[p->timer / 3] << 11),
@@ -197,26 +187,27 @@ void Anim_Ragnarok(struct AnimContext *context)
                         p->timer = -1;
                 }
             }
-            if (frame > i * 8 + 21) {
+            if (frame > start + 5) {
                 for (j = 0; j != 256; j++) {
-                    p = &gBuffer[i * 340 + j];
+                    struct RagnarokParticle *p = &((struct RagnarokParticle *)gBuffer)[i * 340 + j];
                     if (p->timer > 0) {
                         Func_80e3908(p, 0x40, 0x1000);
                         p->timer--;
                         if (p->y > 0x6c0000) {
                             p->dy = -p->dy / 2;
                         } else if (p->x >= 0 && p->x < 0x7f0000 && p->y >= 0) {
+                            int x, y, w;
                             y = p->y >> 16;
                             x = p->x >> 16;
-                            s = p->timer / 5 + 1;
-                            pair[j & 1](render, sparkGfx + Data_ede48[s - 1],
-                                        x - s / 2, y - s, s, s * 2);
+                            w = p->timer / 5 + 1;
+                            pair[j & 1](render, sparkGfx + Data_ede48[w - 1],
+                                        x - w / 2, y - w, w, w * 2);
                         }
                     }
                 }
             }
             for (j = 0; j != state->context->numTargets; j++) {
-                if (frame == i * 8 + 22) {
+                if (frame == start + 6) {
                     SetBattleActorState((s16)state->context->targets[j], 7, 5, j, 10);
                     _SetBattleActorKnockback((s16)state->context->targets[j], 4);
                 }

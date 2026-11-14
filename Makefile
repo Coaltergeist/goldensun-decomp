@@ -91,10 +91,65 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 # Gaia's reconstruction needs type-based alias analysis to match. This is a
 # matching exception, not evidence of Camelot's original flags.
 GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
-$(OBJ)/src/battle_anim/moves/gaia.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
-$(OBJ)/src/field_engine/actor/actor.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
-$(OBJ)/src/field_engine/actor/actor_script.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
-$(OBJ)/src/field_engine/actor/player.o: private GCC296_CFLAGS := $(GAIA_CFLAGS)
+GAIA_SRCS := \
+	src/battle_anim/anims.c \
+	src/battle_anim/moves/blast.c \
+	src/battle_anim/moves/curse.c \
+	src/battle_anim/moves/douse.c \
+	src/battle_anim/moves/fireball.c \
+	src/battle_anim/moves/froth.c \
+	src/battle_anim/moves/gaia.c \
+	src/battle_anim/moves/ground.c \
+	src/battle_anim/moves/helm_splitter.c \
+	src/battle_anim/moves/jupiter.c \
+	src/battle_anim/moves/kirin.c \
+	src/battle_anim/moves/mercury.c \
+	src/battle_anim/moves/ramses.c \
+	src/battle_anim/moves/revive.c \
+	src/battle_anim/moves/shining_star.c \
+	src/battle_anim/moves/spasm.c \
+	src/battle_anim/moves/thorn.c \
+	src/battle_anim/moves/undead_sword.c \
+	src/battle_anim/moves/venus.c \
+	src/battle_anim/moves/volcano.c \
+	src/field_engine/actor/actor.c \
+	src/field_engine/actor/actor_script.c \
+	src/field_engine/actor/player.c \
+	src/maps/altin_peak.c \
+	src/maps/altmiller_cave.c \
+	src/maps/babi_lighthouse.c \
+	src/maps/babis_palace.c \
+	src/maps/crossbone_isle.c \
+	src/maps/crossbone_isle_dungeon_2.c \
+	src/maps/elemental_stars.c \
+	src/maps/elemental_stars_eruption.c \
+	src/maps/imil_falls_cave.c \
+	src/maps/kolima.c \
+	src/maps/kolima_forest_4.c \
+	src/maps/lalivero_ship.c \
+	src/maps/main_menu.c \
+	src/maps/mercury_lighthouse.c \
+	src/maps/mercury_lighthouse_aerie.c \
+	src/maps/mercury_lighthouse_entrance.c \
+	src/maps/mogall_forest.c \
+	src/maps/suhalla_desert.c \
+	src/maps/tolbi.c \
+	src/maps/tolbi_bound_ship_hull.c \
+	src/maps/tunnel_ruins.c \
+	src/maps/vale_plaza.c \
+	src/maps/vale_river.c \
+	src/maps/vale_river_prologue.c \
+	src/maps/vale_rooms_2.c \
+	src/maps/vale_sanctum.c \
+	src/maps/vault_1.c \
+	src/maps/vault_2.c \
+	src/maps/vault_rooms_1.c \
+	src/maps/venus_lighthouse_aerie.c \
+	src/maps/world_map_cutscenes.c \
+	src/maps/xian.c \
+	src/shop/shop.c \
+	src/title/title.c
+$(GAIA_SRCS:%.c=$(OBJ)/%.o): private GCC296_CFLAGS := $(GAIA_CFLAGS)
 
 # common2 is built without -mthumb-interwork: its common2_c* functions return
 # with `pop {pc}`, unlike every other file. Its remaining code is the same
@@ -226,4 +281,4 @@ tags:
 # Machine-readable compilation settings for external comparison tools.
 # SOURCE is the src/... C path, even when compiling a scratch copy.
 print-compile-contract:
-	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter src/battle_anim/moves/gaia.c,$(SOURCE)),$(GAIA_CFLAGS),$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS)))' '$(AGBCC_CC)' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'
+	@printf '%s\n' '$(if $(filter src/lib/m4a/% src/lib/agb_flash/agb_flash.c src/lib/agb_flash/agb_flash_mx.c src/lib/agb_flash/agb_flash_at.c,$(SOURCE)),agbcc,gcc296)' '$(GCC296_CC)' '$(if $(filter $(GAIA_SRCS),$(SOURCE)),$(GAIA_CFLAGS),$(if $(filter src/maps/common/common2.c,$(SOURCE)),$(COMMON2_CFLAGS),$(GCC296_CFLAGS)))' '$(AGBCC_CC)' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CPPFLAGS),$(AGBFLASH_CPPFLAGS))' '$(if $(filter src/lib/m4a/%,$(SOURCE)),$(M4A_CC1FLAGS),$(AGBFLASH_CC1FLAGS))'

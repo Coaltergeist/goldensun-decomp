@@ -51,9 +51,16 @@ INCLUDE_ASM("asm/battle_anim/moves/rapid_slash/BaseAnim_RapidSlash.s");
 
 SECTION(".text.rapid_slash_2");
 
-#include "nonmatching.h"
-
-INCLUDE_ASM_SECTION("asm/battle_anim/moves/rapid_slash/Func_80e38b8.s", ".text.rapid_slash_2");
+void Func_80e38b8(int *p, int k, int d)
+{
+    p[0] += p[3];
+    p[1] += p[4];
+    p[2] += p[5];
+    p[4] += d;
+    p[3] = p[3] * k / 64;
+    p[4] = p[4] * k / 64;
+    p[5] = p[5] * k / 64;
+}
 
 void Func_80e3908(int *p, int k, int d)
 {

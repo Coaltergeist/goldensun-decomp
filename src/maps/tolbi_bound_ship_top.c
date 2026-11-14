@@ -884,7 +884,28 @@ extern int __sin(int);
 extern int Lm944_1924[] __asm__(".Lm944_1924");
 extern int Lm944_1920[] __asm__(".Lm944_1920");
 
-INCLUDE_ASM("asm/maps/tolbi_bound_ship_top/OvlFunc_944_20090a0.s");
+void OvlFunc_944_20090a0(void)
+{
+    int *dst;
+    int cos_val;
+    int sin_val;
+
+    dst = (int *)*iwram_3001e70;
+    cos_val = __cos(*(int *)Lm944_1940);
+    sin_val = __sin(*(int *)Lm944_1928);
+
+    *dst++ += cos_val;
+    sin_val <<= 2;
+    *dst += sin_val;
+
+    *(int *)Lm944_1924 += cos_val;
+    *(int *)Lm944_1920 += sin_val;
+
+    *(int *)Lm944_1940 += ((__Random() * 3) << 7) >> 16;
+    *(int *)Lm944_1928 += (__Random() << 9) >> 16;
+    *(int *)Lm944_1940 &= 0xffff;
+    *(int *)Lm944_1928 &= 0xffff;
+}
 
 extern unsigned int OvlFunc_944_200915c(unsigned int);
 

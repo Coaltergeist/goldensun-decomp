@@ -187,8 +187,275 @@ void OvlFunc_974_2008244(void)
     __CalcStats(2);
 }
 
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_200829c.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_20088c4.s");
+extern int __GiveItemTo(int, int);
+
+void OvlFunc_974_200829c(void)
+{
+    __Func_801776c(0xc1e, 1);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xbb);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb4);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb5);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb6);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(0, 0xb7);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xba);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(1, 0xbb);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbc);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xbd);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(2, 0xec);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xbf);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc0);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc1);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc2);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc3);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __GiveItemTo(3, 0xc4);
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+}
+
+extern int __GiveDjinni(int, int, int);
+extern int __SetDjinni(int, int, int);
+
+void OvlFunc_974_20088c4(void)
+{
+    unsigned char unused[0x100];
+
+    __Func_801776c(0xc1d, 1);
+    __GiveDjinni(0, 0, 0);
+    __GiveDjinni(0, 0, 1);
+    __GiveDjinni(0, 0, 2);
+    __GiveDjinni(0, 0, 3);
+    __GiveDjinni(0, 0, 4);
+    __GiveDjinni(0, 0, 5);
+    __GiveDjinni(0, 0, 6);
+    __SetDjinni(0, 0, 0);
+    __SetDjinni(0, 0, 1);
+    __SetDjinni(0, 0, 2);
+    __SetDjinni(0, 0, 3);
+    __SetDjinni(0, 0, 4);
+    __SetDjinni(0, 0, 5);
+    __SetDjinni(0, 0, 6);
+    __GiveDjinni(1, 2, 0);
+    __GiveDjinni(1, 2, 1);
+    __GiveDjinni(1, 2, 2);
+    __GiveDjinni(1, 2, 3);
+    __GiveDjinni(1, 2, 4);
+    __GiveDjinni(1, 2, 5);
+    __GiveDjinni(1, 2, 6);
+    __SetDjinni(1, 2, 0);
+    __SetDjinni(1, 2, 1);
+    __SetDjinni(1, 2, 2);
+    __SetDjinni(1, 2, 3);
+    __SetDjinni(1, 2, 4);
+    __SetDjinni(1, 2, 5);
+    __SetDjinni(1, 2, 6);
+    __GiveDjinni(3, 1, 0);
+    __GiveDjinni(3, 1, 1);
+    __GiveDjinni(3, 1, 2);
+    __GiveDjinni(3, 1, 3);
+    __GiveDjinni(3, 1, 4);
+    __GiveDjinni(3, 1, 5);
+    __GiveDjinni(3, 1, 6);
+    __SetDjinni(3, 1, 0);
+    __SetDjinni(3, 1, 1);
+    __SetDjinni(3, 1, 2);
+    __SetDjinni(3, 1, 3);
+    __SetDjinni(3, 1, 4);
+    __SetDjinni(3, 1, 5);
+    __SetDjinni(3, 1, 6);
+    __GiveDjinni(2, 3, 0);
+    __GiveDjinni(2, 3, 1);
+    __GiveDjinni(2, 3, 2);
+    __GiveDjinni(2, 3, 3);
+    __GiveDjinni(2, 3, 4);
+    __GiveDjinni(2, 3, 5);
+    __SetDjinni(2, 3, 0);
+    __SetDjinni(2, 3, 1);
+    __SetDjinni(2, 3, 2);
+    __SetDjinni(2, 3, 3);
+    __SetDjinni(2, 3, 4);
+    __SetDjinni(2, 3, 5);
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+}
 static inline void ModifyHP_974(int pc, int amount) { extern int __ModifyHP(int, int); __ModifyHP(pc, amount); }
 void OvlFunc_974_2008b10(void)
 {
@@ -220,8 +487,181 @@ void OvlFunc_974_2008b10(void)
     __CalcStats(3);
     __CalcStats(2);
 }
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008bb8.s");
-INCLUDE_ASM("asm/maps/menu_test/OvlFunc_974_2008cf4.s");
+void OvlFunc_974_2008bb8(void)
+{
+    __Func_801776c(0xc1f, 1);
+
+    __GiveItemTo(0, 0x55);
+    __GiveItemTo(0, 0x54);
+    __GiveItemTo(0, 0x7c);
+    __GiveItemTo(0, 0x7b);
+    __GiveItemTo(0, 0x09);
+    __GiveItemTo(0, 0x0b);
+    __GiveItemTo(0, 0x1b);
+    __GiveItemTo(0, 0x1a);
+
+    __GiveItemTo(1, 0x26);
+    __GiveItemTo(1, 0x25);
+    __GiveItemTo(1, 0x32);
+    __GiveItemTo(1, 0x31);
+    __GiveItemTo(1, 0x53);
+    __GiveItemTo(1, 0x52);
+    __GiveItemTo(1, 0x86);
+    __GiveItemTo(1, 0x85);
+    __GiveItemTo(1, 0x98);
+
+    __GiveItemTo(2, 0x40);
+    __GiveItemTo(2, 0x41);
+    __GiveItemTo(2, 0x62);
+    __GiveItemTo(2, 0x61);
+    __GiveItemTo(2, 0x7c);
+    __GiveItemTo(2, 0x83);
+    __GiveItemTo(2, 0x8d);
+    __GiveItemTo(2, 0xa3);
+
+    __GiveItemTo(3, 0x3d);
+    __GiveItemTo(3, 0x3f);
+    __GiveItemTo(3, 0x60);
+    __GiveItemTo(3, 0x5f);
+    __GiveItemTo(3, 0x71);
+    __GiveItemTo(3, 0x70);
+    __GiveItemTo(3, 0x82);
+    __GiveItemTo(3, 0x8e);
+    __GiveItemTo(3, 0xab);
+
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+}
+
+#include "dma.h"
+
+extern unsigned char MenuMessage_75[] __asm__(".Lmenu_message_75");
+__asm__(".equ .Lmenu_message_75, 0x75");
+extern unsigned char MenuMessage_182[] __asm__(".Lmenu_message_182");
+__asm__(".equ .Lmenu_message_182, 0x182");
+
+extern void __PlaySound(int);
+extern int __CreateUIBox(int, int, int, int, int);
+extern int _modsi3_RAM(int, int);
+extern void __Func_8016498(int);
+extern void __Func_80164ac(int);
+extern void __UIDrawText(const void *, int, int, int);
+extern void __Func_801e9d4(int, int, int, int, int);
+extern int __Func_8078500(void);
+extern void *__GetItemInfo(int);
+extern void __Func_801e7c0(int, int, int, int);
+extern void __DrawSmallText(int, int, int, int);
+extern void __Func_80a4924(int, int);
+extern int __GiveItem(int);
+
+extern unsigned char gOvl_02009390[];
+extern unsigned char gScript_944__0200939c[];
+extern unsigned char gScript_960__020093b4[];
+extern volatile unsigned int gKeyPress;
+extern volatile unsigned int gKeyRepeat;
+
+static inline int ModWrap(int item, int add, int mod)
+{
+    return _modsi3_RAM(item + (add << 1), mod << 1);
+}
+
+void OvlFunc_974_2008cf4(void)
+{
+    int uiBox1;
+    int uiBox2;
+    int itemId;
+    int update;
+
+    __PlaySound(0x70);
+    uiBox1 = __CreateUIBox(0, 0, 0x1e, 7, 2);
+    uiBox2 = __CreateUIBox(0, 8, 0xd, 0xa, 2);
+
+    itemId = 1;
+    update = itemId;
+
+    DMA3_SET((void *)0x5000200, (void *)0x50001c0, 0x80000010);
+    DMA3_SET((void *)0x50001e8, (void *)0x50001dc, 0x80000001);
+
+    __WaitFrames(1);
+
+    while (1) {
+        if (update) {
+            update = 0;
+            itemId = ModWrap(itemId, 0x87, 0x87);
+            __Func_8016498(uiBox1);
+            __Func_80164ac(uiBox1);
+            __UIDrawText(gOvl_02009390, uiBox1, 0, 0);
+            __Func_801e9d4(itemId, 0, uiBox1, 0x50, update);
+
+            if (__Func_8078500()) {
+                int item = 0x1ff;
+                __UIDrawText(gScript_944__0200939c, uiBox1, 0, 0x20);
+                item &= itemId;
+                __GetItemInfo(item);
+                __Func_801e7c0(item + (int)MenuMessage_182, uiBox1, 0x78, 0);
+                item += (int)MenuMessage_75;
+                __DrawSmallText(item, uiBox1, 0, 0x10);
+                __Func_8016498(uiBox2);
+                __Func_80a4924(uiBox2, itemId);
+            } else {
+                __UIDrawText(gScript_960__020093b4, uiBox1, 0, 0x20);
+            }
+        }
+
+        if (gKeyPress & 1) {
+            if (__GiveItem(itemId) == -1) {
+                __PlaySound(0x71);
+                break;
+            }
+            __PlaySound(0xaf);
+        }
+
+        if (gKeyPress & 2) {
+            __PlaySound(0x71);
+            break;
+        }
+
+        if (gKeyRepeat & 0x40) {
+            itemId--;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+        if (gKeyRepeat & 0x80) {
+            itemId++;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+        if (gKeyRepeat & 0x10) {
+            itemId += 10;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+        if (gKeyRepeat & 0x20) {
+            itemId -= 10;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+        if (gKeyRepeat & 0x100) {
+            itemId += 30;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+        if (gKeyRepeat & 0x200) {
+            itemId -= 30;
+            update = 1;
+            __PlaySound(0x6f);
+        }
+
+        __WaitFrames(1);
+    }
+
+    __Func_8016498(uiBox1);
+    __WaitFrames(1);
+    __CloseUIBox(uiBox1, 1);
+    __CloseUIBox(uiBox2, 1);
+}
 
 extern void OvlFunc_974_2008cf4(void);
 
@@ -286,7 +726,39 @@ void OvlFunc_974_2008f14(void)
     __CalcStats(3);
     __CalcStats(2);
 }
-INCLUDE_ASM("asm/maps/menu_test/MenuTest_MapInit.s");
+extern void __Func_8079664(int);
+extern void __AddPartyMember(int);
+extern int __Func_8078ad0(int, int);
+
+int MenuTest_MapInit(void) {
+    __Func_8079664(5);
+    __AddPartyMember(1);
+    __AddPartyMember(3);
+    __AddPartyMember(2);
+    __Func_8078ad0(5, 1);
+    __Func_8078ad0(5, 1);
+    __Func_8078ad0(5, 1);
+    __Func_8078ad0(6, 1);
+    __Func_8078ad0(6, 1);
+    __Func_8078ad0(7, 1);
+    __Func_8078ad0(0x6a, 1);
+    __Func_8078ad0(0x6c, 1);
+    __Func_8078ad0(0x6d, 1);
+    __Func_8078ad0(0x71, 1);
+    __Func_8078ad0(0x7b, 1);
+    __Func_8078ad0(0x82, 1);
+    __Func_8078ad0(0x8c, 1);
+    __Func_8078ad0(0x97, 1);
+    __SetMinLevel(0, 0x32);
+    __SetMinLevel(1, 0x1e);
+    __SetMinLevel(3, 0x1e);
+    __SetMinLevel(2, 0x1e);
+    __CalcStats(0);
+    __CalcStats(1);
+    __CalcStats(3);
+    __CalcStats(2);
+    return 0;
+}
 
 extern int __Debug_IconTest(unsigned int actorID);
 

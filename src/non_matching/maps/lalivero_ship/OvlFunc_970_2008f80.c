@@ -1,50 +1,70 @@
+/*
+ * Remaining diff vs target OvlFunc_970_2008f80 (exact 0x154 size and all 9 pool entries match):
+ * - In `include/math.h`, `fx32_multiply(a, b)` is a `static inline` function rather than a
+ *   statement-expression macro, so argument `a` (`Lm970_14c8[(acc >> 16) & 0xff]`) is evaluated
+ *   before `fxmul = Func_8000888`. That causes `loop.c` to hoist `#255` before `Func_8000888`
+ *   (swapping their reload scratch regs `r3`/`r0`) and shortens `fxmul`'s live_length by 5 insns
+ *   (`38` vs `scale`'s `46`), swapping `lr` and `r8` between `scale` and `fxmul` in `global.c`.
+ */
 #include "math.h"
 
-extern unsigned char iwram_3001ad0[];
+struct Wave970 {
+    short buf[2][0x1e0][2];
+    unsigned char page;
+    unsigned char flag;
+    unsigned short timer;
+    unsigned char pad2[4];
+    int val_f08;
+    int val_f0c;
+    int val_f10;
+    int val_f14;
+    int val_f18;
+    int val_f1c;
+};
 
+extern struct Wave970 *gWave970 __asm__("iwram_3001ed8");
+extern short iwram_3001ad0[];
 extern short Lm970_14c8[] __asm__(".Lm970_14c8");
 
 void OvlFunc_970_2008f80(void)
 {
-    unsigned char *base;
-    unsigned char *ad0;
-    signed short offset2;
+    struct Wave970 *base;
+    int offset2;
     short *out;
     int step;
     int acc;
     int scale;
-    int offset1;
+    unsigned int offset1;
     int i;
 
-    ad0 = iwram_3001ad0;
-    base = *(unsigned char **)iwram_3001ed8;
-    offset2 = *(signed short *)(ad0 + 0xe);
+    base = gWave970;
+    offset2 = iwram_3001ad0[7];
 
-    out = (short *)(base + ((base[0xf00] ^ 1) * 0x780));
-    step = *(int *)(base + 0xf10);
-    acc = *(int *)(base + 0xf08) * (*(unsigned short *)(base + 0xf02) + (unsigned short)offset2);
-    scale = *(int *)(base + 0xf18);
-    offset1 = *(unsigned short *)(ad0 + 0xc);
+    out = &base->buf[base->page ^ 1][0][0];
+    step = base->val_f10;
+    acc = (base->timer + (unsigned short)offset2) * base->val_f08;
+    scale = base->val_f18;
+    offset1 = (unsigned short)iwram_3001ad0[6];
 
     for (i = 0; i != 160; i++) {
-        unsigned short s = fx32_multiply(Lm970_14c8[(acc >> 16) & 0xff], scale) / 256;
-        *out = s + offset1;
+        int s = (unsigned short)(fx32_multiply(Lm970_14c8[(acc >> 16) & 0xff], scale) / 256) + offset1;
+        *out = s;
         acc += step;
         out += 2;
     }
 
-    out = (short *)(base + ((base[0xf00] ^ 1) * 0x780)) + 1;
-    step = *(int *)(base + 0xf14);
-    acc = *(int *)(base + 0xf0c) * (*(unsigned short *)(base + 0xf02) + (unsigned short)offset2);
-    scale = *(int *)(base + 0xf1c);
+    out = &base->buf[base->page ^ 1][0][1];
+    step = base->val_f14;
+    acc = (base->timer + (unsigned short)offset2) * base->val_f0c;
+    scale = base->val_f1c;
 
     for (i = 0; i != 160; i++) {
-        unsigned short s = fx32_multiply(Lm970_14c8[(acc >> 16) & 0xff], scale) / 256;
-        *out = s + (unsigned short)offset2;
+        int s = (unsigned short)(fx32_multiply(Lm970_14c8[(acc >> 16) & 0xff], scale) / 256) + (unsigned short)offset2;
+        *out = s;
         acc += step;
         out += 2;
     }
 
-    *(unsigned short *)(base + 0xf02) += 1;
-    base[0xf00] ^= 1;
+    base->timer++;
+    base->page ^= 1;
 }

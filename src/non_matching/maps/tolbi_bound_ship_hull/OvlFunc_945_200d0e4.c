@@ -1,10 +1,9 @@
-#include "api.h"
-
-static inline void CS945H_ShowMessage(int message, int mode, int actorId)
-{
-    extern void __Func_8019aa0(int, int, int);
-    __Func_8019aa0(message, mode, actorId);
-}
+/*
+ * Clean C candidate — 1-instruction sched2 diff at +0x126 (0x520e in TU):
+ * In 23.sched2, `ldr r5, =0x1e46` (insn 440, cost=2, prio=91) has zero predecessors
+ * in BB 7 and schedules 1 call earlier during the stall before `bl __Func_8092adc`
+ * (insn 430, prio=90) instead of after `bl __Func_8093304` (insn 437, prio=89).
+ */
 void OvlFunc_945_200d0e4(void)
 {
     extern unsigned char gScript_945__0200e7c8[];
@@ -52,7 +51,7 @@ void OvlFunc_945_200d0e4(void)
     API_Func_8092adc(3, 0x4000, 0x28);
     __Func_8093304(10);
     message = 0x1e46;
-    CS945H_ShowMessage(message, 1, 10);
+    __Func_8019aa0(message, 1, 10);
     API_CutsceneWait(10);
     OvlFunc_945_200c8e8(0, 0, 0x28);
     OvlFunc_945_200c8e8(1, 0x4000, 20);

@@ -310,7 +310,61 @@ void OvlFunc_888_20086e8(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200874c.s");
+struct SanctumPaletteState {
+    u8 pad0[0x380];
+    u16 current[0x540];
+    u16 target[0x540];
+    u16 delta[0x540];
+    u8 pad1[0x2a00 - 0x2300];
+    u8 mode;
+    u8 rampFrames;
+    u8 rampPos;
+    u8 flag2a03;
+};
+extern struct SanctumPaletteState *iwram_3001ed0;
+extern void __Func_8019aa0(int, int, int);
+extern int OvlFunc_888_200a7d4(void);
+
+void OvlFunc_888_200874c(void)
+{
+    struct SanctumPaletteState *ptr;
+
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 0);
+    API_MapActor_SetAnim(1, 0);
+    API_MapActor_SetAnim(0xb, 0);
+    API_MapActor_SetAnim(0xc, 0);
+    API_MapActor_SetAnim(8, 0);
+    API_MapActor_SetAnim(9, 0);
+    API_MapActor_SetAnim(0xa, 0);
+    API_Func_8091200(0x10002, 0);
+    API_Func_8091254(0x78);
+    API_CutsceneWait(0xb4);
+
+    ptr = iwram_3001ed0;
+    ptr->target[0x2d] = 0xf8 << 7;
+    ptr->target[0x2e] = 0xf8 << 7;
+    ptr->target[0x2f] = 0xf8 << 7;
+    ptr->mode = 0;
+    ptr->rampFrames = 1;
+    ptr->rampPos = 1;
+    ptr->flag2a03 = 1;
+
+    API_CutsceneWait(1);
+    __Func_8019aa0(0x116d, 1, 0);
+    API_Func_8091200(0, 0);
+    API_Func_8091254(0x78);
+    API_CutsceneWait(0x78);
+    API_CutsceneWait(0x3c);
+
+    if (OvlFunc_888_200a7d4() == 0) {
+        API_CutsceneEnd();
+        API_Func_8091e9c(0x14);
+    } else {
+        API_CutsceneEnd();
+        API_Func_8091e9c(0x32);
+    }
+}
 
 int OvlFunc_888_2008848(struct Actor *actor)
 {
@@ -1295,9 +1349,37 @@ void OvlFunc_888_200987c(void)
     API_CutsceneWait(30);
     API_MapActor_SetAnim(12, 3);
 }
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a5c4.s");
-
 extern void __MapActor_SetPos(int, int, int);
+extern void __MapActor_SetAnim(int, int);
+void OvlFunc_888_200a67c(struct Actor *actor);
+
+void OvlFunc_888_200a5c4(void)
+{
+    struct Actor *actor;
+    struct Sprite *sprite;
+    u32 i;
+
+    actor = (struct Actor *)__MapActor_GetActor(8);
+    if (actor != NULL) {
+        __MapActor_SetPos(0xe, actor->pos.x, actor->pos.z);
+    }
+    __MapActor_SetAnim(0xe, 0);
+
+    ((struct Actor *)__MapActor_GetActor(0xe))->facing = ((struct Actor *)__MapActor_GetActor(8))->facing;
+    ((struct Actor *)__MapActor_GetActor(0xe))->update = OvlFunc_888_200a67c;
+
+    sprite = ((struct Actor *)__MapActor_GetActor(0xe))->sprite;
+    for (i = 0; i < sprite->numLayers; i++) {
+        struct SpriteLayer *layer = sprite->layers[i];
+        if (layer != NULL && layer->curAnim != NULL) {
+            layer->colorswap = 10;
+        }
+    }
+
+    sprite->visible = 1;
+    ((struct Actor *)__MapActor_GetActor(0xe))->flags &= ~1;
+    sprite->oam.priority = 2;
+}
 
 void OvlFunc_888_200a660(void) {
     unsigned char *r0;
@@ -1335,15 +1417,44 @@ void OvlFunc_888_200a67c(struct Actor *arg0) {
 void OvlFunc_888_200a6f0(struct Actor *actor)
 {
     struct Actor *linked = actor->linkedActor;
-    u16 *waveCounter = (u16 *)&actor->waveCounter;
-    u16 angle = *waveCounter;
+    u16 angle = actor->waveCounter;
     actor->pos.x = linked->pos.x + __cos(angle) * 14;
     actor->pos.z = linked->pos.z + __sin(angle) * 10;
     actor->prevPos.x = actor->pos.x;
     actor->prevPos.z = actor->pos.z;
-    *waveCounter += actor->__unk66;
+    actor->waveCounter += actor->__unk66;
 }
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a750.s");
+
+extern struct Actor *__CreateActor(int, int, int, int);
+extern void __Actor_SetScript(struct Actor *, void *);
+extern u8 gScript_888__0200c15c[];
+
+void OvlFunc_888_200a750(int actorId, int arg1)
+{
+    struct Actor *parent;
+    struct Actor *actor;
+    struct Sprite *sprite;
+
+    parent = (struct Actor *)__MapActor_GetActor(actorId);
+    if (parent == NULL) {
+        return;
+    }
+
+    actor = API_CreateActor(0x11d, parent->pos.x, parent->pos.y + (0xb4 << 14), parent->pos.z);
+    if (actor == NULL) {
+        return;
+    }
+
+    sprite = actor->sprite;
+    __Actor_SetScript(actor, gScript_888__0200c15c);
+    actor->__unk55 = 0;
+    actor->waveCounter = 0;
+    actor->__unk66 = arg1;
+    actor->update = OvlFunc_888_200a6f0;
+    sprite->flags = 0;
+    actor->linkedActor = parent;
+    sprite->oam.priority = parent->sprite->oam.priority;
+}
 INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200a7d4.s");
 static inline void SanctumSetFlag(unsigned char *p, unsigned int flags, unsigned int value) { *p = flags | value; }
 static inline void SanctumWriteByte(unsigned char *p, int value) { *p = value; }
@@ -1598,7 +1709,47 @@ void OvlFunc_888_200a90c(void)
     API_MapActor_SetAnim(1, 2);
     API_CutsceneWait(0x3c);
 }
-INCLUDE_ASM("asm/maps/vale_sanctum/OvlFunc_888_200b098.s");
+extern void *__galloc_iwram(int, int);
+extern void __LoadItemIcon(int);
+extern int __UploadSpriteGFX();
+extern void __gfree(int);
+extern unsigned char gScript_888__0200b8f8[];
+extern unsigned char gScript_888__0200ba9c[];
+
+void OvlFunc_888_200b098(int item, int x, int y, int z)
+{
+    int mask = ~0x20;
+    int zero;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    u8 *buffer;
+    u32 i;
+
+    zero = 0;
+    actor = __CreateActor(0x16, x, y, z);
+    if (actor != NULL) {
+        __Actor_SetScript(actor, gScript_888__0200b8f8);
+        sprite = actor->sprite;
+        sprite->flags = zero;
+        sprite->numLayers = zero;
+        ((u8 *)&sprite->oam.attr0)[1] &= mask;
+        sprite->oam.palette = 0;
+        actor->motion.y = 0x80 << 10;
+        actor->gravity = 0x80 << 7;
+        buffer = (u8 *)__galloc_iwram(0x11, sizeof(struct IconBuffer));
+        __LoadItemIcon(item);
+        buffer += 0x400;
+        __UploadSpriteGFX(sprite->slot, 0x80, buffer);
+        __gfree(0x11);
+        for (i = 0; i < 60; i++) {
+            if ((u32)(actor->motion.y + 255) <= 510) {
+                actor->__unk55 = 0;
+            }
+            __WaitFrames(1);
+        }
+        __Actor_SetScript(actor, gScript_888__0200ba9c);
+    }
+}
 extern void __Actor_SetScript(struct Actor *, void *);
 extern unsigned char gScript_888__0200c18c[];
 
@@ -1625,7 +1776,7 @@ void OvlFunc_888_200b144(struct Actor *actor)
     actor->scale.x = scale;
     actor->scale.y = scale;
 
-    if (--*(s16 *)&actor->__unk66 <= 0) {
+    if (--actor->__unk66 <= 0) {
         __Actor_SetScript(actor, gScript_888__0200c18c);
     }
 }

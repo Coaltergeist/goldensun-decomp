@@ -1,7 +1,19 @@
+/*
+ * Remaining diff: 1-instruction sched2 tie-break swap before OvlFunc_927_2008d90
+ * (`adds r1, r5, #0` scheduled 1 cycle before `lsls r3, r3, #11` at +0x96).
+ * Pre-sched2 (.18.greg) emits exact order (`lsls r3, r3, #11; adds r1, r5, #0`),
+ * but in sched2 `r5` has an anti-dependence on `*epilogue_insns` (6 forward deps vs 5),
+ * causing `rank_for_schedule` to pop `adds r1, r5, #0` first without an asm barrier.
+ */
+struct CS927_StateView {
+    unsigned char pad[0x22b];
+    unsigned char encounter;
+};
+extern struct CS927_StateView CS927_State __asm__("gState");
+
 void OvlFunc_927_2009d04(void)
 {
     struct Actor *actor;
-    int x, z;
 
     actor = (struct Actor *)__MapActor_GetActor(0xf);
     __CutsceneStart();
@@ -17,12 +29,13 @@ void OvlFunc_927_2009d04(void)
     API_MapActor_Emote(0xf, 0x103, 0);
     __PlaySound(0x93);
     __CutsceneWait(0x3c);
-    x = (s16)(((struct Actor *)__MapActor_GetActor(0))->pos.x >> 16);
-    z = (s16)(((struct Actor *)__MapActor_GetActor(0))->pos.z >> 16);
-    OvlFunc_927_2008d90(0xf, x, z, 0x60000);
+    OvlFunc_927_2008d90(0xf,
+                        ((struct Actor *)__MapActor_GetActor(0))->pos.x >> 16,
+                        ((struct Actor *)__MapActor_GetActor(0))->pos.z >> 16,
+                        0x60000);
     __CutsceneWait(10);
     __SetFlag(0x307);
-    gState._bytes[0x22b] = 3;
+    CS927_State.encounter = 3;
     __StartMapBattle(0x35, 0);
     __CutsceneEnd();
 }

@@ -1,3 +1,9 @@
+/*
+ * Remaining diff (`sub sp, #64` stack frame matched):
+ * Multi-loop password serializer (`unit` / `packed` / `output`) exhibits high-register
+ * (`ip` vs `r8`, `r6` vs `r7`) allocation and mid-function minipool split differences
+ * under `GAIA_SRCS` (`-fstrict-aliasing`).
+ */
 struct Menu880_Stats {
     short hp, pp;
     unsigned short percentHP, percentPP;
@@ -12,14 +18,14 @@ struct Menu880_Unit {
     unsigned int djinn[4];
 };
 struct Menu880_State { unsigned char beforeMoney[0x10]; union { unsigned int money; unsigned short halves[2]; } funds; };
-extern struct Menu880_State menu880State asm("gState");
-extern int menu880UnitIDs[4] asm(".L16c0");
+extern struct Menu880_State menu880State __asm__("gState");
+extern int menu880UnitIDs[4] __asm__(".L16c0");
 extern unsigned short gOvl_020096d0[6];
-extern unsigned short menu880SpecialItems[8] asm(".L16dc");
-extern unsigned short menu880QuantityItems[23] asm(".L16ec");
+extern unsigned short menu880SpecialItems[8] __asm__(".L16dc");
+extern unsigned short menu880QuantityItems[23] __asm__(".L16ec");
 extern unsigned char *__GetUnit(unsigned int);
 extern unsigned char *__GetItemInfo(unsigned int);
-extern int __GetFlag(unsigned int);
+extern int __GetFlag(int);
 
 int OvlFunc_880_2008de4(int unused, int kind, unsigned char *output)
 {
@@ -75,8 +81,8 @@ int OvlFunc_880_2008de4(int unused, int kind, unsigned char *output)
         offset = 39;
         shift = 0;
         for (i = 0; i != 4; ++i) {
-            struct Menu880_Unit *unit = (struct Menu880_Unit *)__GetUnit(menu880UnitIDs[i]);
             int j;
+            unit = (struct Menu880_Unit *)__GetUnit(menu880UnitIDs[i]);
             for (j = 0; j != 15; ++j) {
                 int item;
                 __GetItemInfo(unit->items[j]);
@@ -91,17 +97,17 @@ int OvlFunc_880_2008de4(int unused, int kind, unsigned char *output)
         offset = 107;
         shift = -1;
         for (i = 0; i != 4; ++i) {
-            struct Menu880_Unit *unit = (struct Menu880_Unit *)__GetUnit(menu880UnitIDs[i]);
             unsigned int j;
+            unit = (struct Menu880_Unit *)__GetUnit(menu880UnitIDs[i]);
             for (j = 0; j != 23; ++j) {
                 unsigned int target = menu880QuantityItems[j];
-                unsigned int k, amount = 0;
-                int quantity;
+                int amount = 0;
+                unsigned short quantity;
+                unsigned int k;
                 for (k = 0; k != 15; ++k) {
-                    unsigned int item = unit->items[k];
-                    if ((item & 0x1ff) == target) amount = (0xf800 & item) >> 11;
+                    if ((0x1ff & unit->items[k]) == target) amount = (0xf800 & unit->items[k]) >> 11;
                 }
-                quantity = (unsigned short)amount;
+                quantity = amount;
                 if (shift < 0) {
                     output[offset] += quantity >> -shift;
                     ++offset;

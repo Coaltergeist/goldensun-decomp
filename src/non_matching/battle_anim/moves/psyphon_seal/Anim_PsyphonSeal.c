@@ -1,5 +1,9 @@
+/*
+ * Non-matching clean C candidate for Anim_PsyphonSeal (exact .text size 0x40c and 47 relocs).
+ * Matched stack-slot layout (0x44..0x2c) via declaration order; remaining diff at 0x0e is
+ * `baseSlots` spilled to stack instead of allocated to `r8`.
+ */
 #include "anim.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -13,69 +17,44 @@ struct PsyphonSealParticle {
 struct PsyphonSealVec { s32 x, y, z; };
 
 struct PsyphonSealState {
-               u8 graphics[0x7080];
-               struct PsyphonSealParticle particles[64];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct PsyphonSealParticle particles[64];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 static const struct PsyphonSealVec Data_ee134 = { 0, 0x18, 0 };
 
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e80[];
-
 extern DrawFunc iwram_3001f0c;
-
 extern void *gPtrs[];
-
 extern u16 Data_ede5c[];
-
 extern char _FILE_79[], _FILE_73[], _FILE_76[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
 extern void DecompressLZ(const void *, void *);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void Task_BlitAnim(void);
-
 extern void GetBattleActorPos2(int, struct PsyphonSealVec *);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern void _Func_80b82c4(int, int, int, int);
-
 extern void ColorCycleVFXPalette(int, int, int, int);
-
 extern s32 **_GetBattleActor(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(void *, void *);
-
 extern void MatrixScalev(s32 *);
-
 extern void MatrixRoll(int);
-
 extern void MatrixYaw(int);
-
 extern void Func_80e3944(const struct PsyphonSealVec *, struct PsyphonSealVec *);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 void Anim_PsyphonSeal(struct AnimContext *context)
@@ -84,15 +63,17 @@ void Anim_PsyphonSeal(struct AnimContext *context)
     u8 **slots = baseSlots;
     struct PsyphonSealState *state = (struct PsyphonSealState *)*slots++;
     u8 *render = *slots;
+    int frame;
+    DrawFunc mirror, draw;
+    int t;
     u8 *particleGfx = baseSlots[2];
     u8 *camera = baseSlots[-27];
+    int scroll;
     u8 *file;
-    DrawFunc draw, mirror;
     struct PsyphonSealVec pos, vec, screen;
-    struct PsyphonSealParticle *p, *a, *b;
     s32 scaleVec[3];
     s32 *actor;
-    int frame, t, i, k, local, scroll, angle, scale, rot, size;
+    int i, k, local;
 
     state->context = context;
     AnimStart(0);
@@ -141,9 +122,10 @@ void Anim_PsyphonSeal(struct AnimContext *context)
             screen.x = pos.x + scroll;
             screen.y -= 24;
             if (local <= 67) {
-                angle = 0;
-                scale = 0x2a000 - local * 0x600;
-                rot = (64 - local) << 9;
+                struct PsyphonSealParticle *a, *b, *p;
+                int angle = 0;
+                int scale = 0x2a000 - local * 0x600;
+                int rot = (64 - local) << 9;
                 for (i = 0; i != 3; i++) {
                     InitMatrixStack();
                     if (local <= 63) {
@@ -164,12 +146,14 @@ void Anim_PsyphonSeal(struct AnimContext *context)
                 for (i = 0; i != 3; i++) {
                     a = &state->particles[i + t * 32];
                     b = &state->particles[(i + 1) % 3 + t * 32];
-                    size = 5 - local / 16;
-                    for (k = 0; k != 24; k++) {
-                        int x = a->x + k * (b->x - a->x) / 24;
-                        int y = a->y + k * (b->y - a->y) / 24;
-                        draw(render, state->graphics + 0x1000 + Data_ede5c[size - 1],
-                             x - size, y - size, size * 2, size * 2);
+                    {
+                        int size = 5 - local / 16;
+                        for (k = 0; k != 24; k++) {
+                            int x = a->x + k * (b->x - a->x) / 24;
+                            int y = a->y + k * (b->y - a->y) / 24;
+                            draw(render, state->graphics + 0x1000 + Data_ede5c[size - 1],
+                                 x - size, y - size, size * 2, size * 2);
+                        }
                     }
                 }
             }

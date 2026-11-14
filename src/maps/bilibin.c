@@ -284,7 +284,56 @@ void OvlFunc_907_2008328(void)
     __Func_8091e9c(iVar5 + 3);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008404.s");
+void OvlFunc_907_2008404(void)
+{
+    extern void __Field_MindRead(int, int);
+    extern void __Func_8097608(void);
+    struct Actor *actor0 = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *actor11 = (struct Actor *)__MapActor_GetActor(11);
+
+    if (actor11->pos.x >> 20 == 6) {
+        API_CutsceneStart();
+        API_Func_8092b08(11, 1);
+        API_Func_80925cc(0, 2);
+        API_CutsceneWait(20);
+        API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+        API_MapActor_SetSpeed(11, 0x3333, 0x1999);
+        ((struct Actor *)__MapActor_GetActor(0))->__unk5A &= ~1;
+        actor11->__unk55 = 0;
+        actor0->scale.x = -0x10000;
+        API_MapActor_Surprise(0, 0x102);
+        API_MapActor_SetAnim(0, 0x10);
+        API_MapActor_TravelToWait(11, 0x6f, 0xc4);
+        actor0->scale.x = 0x10000;
+        API_MapActor_TravelToAnimWait(0, 0x80, 0xb9);
+        API_CutsceneWait(20);
+        actor0->scale.x = -0x10000;
+        API_MapActor_Surprise(0, 0x102);
+        API_MapActor_SetAnim(0, 0x10);
+        API_MapActor_TravelToWait(11, 0x79, 0xbe);
+        actor0->scale.x = 0x10000;
+        API_MapActor_TravelToAnimWait(0, 0x8d, 0xbd);
+        API_CutsceneWait(20);
+        actor0->scale.x = -0x10000;
+        API_MapActor_Surprise(0, 0x102);
+        API_MapActor_SetAnim(0, 0x10);
+        API_MapActor_TravelToWait(11, 0x84, 0xba);
+        actor0->scale.x = 0x10000;
+        ((struct Actor *)__MapActor_GetActor(0))->__unk5A |= 1;
+        API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+        API_MapActor_TravelToAnimWait(0, 0xa6, 0xb9);
+        API_Func_8092adc(0, 0x8000, 0x14);
+        API_Func_8092b08(11, 2);
+        __Field_MindRead(0, 11);
+        API_WaitFrames(10);
+        API_MessageID(0x1774);
+        API_ActorMessage(11, 0);
+        __Func_8097608();
+        API_WaitFrames(10);
+        API_SetFlag(0x848);
+        API_CutsceneEnd();
+    }
+}
 
 extern void __Func_8093c00(void);
 
@@ -298,7 +347,6 @@ extern void __Func_801776c(int, int);
 extern void __Func_808f1c0(int, int);
 extern void __Func_8091a58(int, int);
 extern void __Func_8092a1c(int, int, void *);
-
 
 static inline void CS907_Byte(unsigned char *p, int value) { *p = value; }
 
@@ -512,7 +560,67 @@ void OvlFunc_907_20089cc(void)
 extern void __CopyMapTiles();
 extern void OvlFunc_907_2008cb4(void);
 
-INCLUDE_ASM("asm/maps/bilibin/OvlFunc_907_2008ae0.s");
+void OvlFunc_907_2008ae0(void)
+{
+    struct Actor *actor10;
+    struct Actor *actor11;
+    struct Sprite *sprite;
+    int flag;
+    int rot;
+
+    actor10 = (struct Actor *)__MapActor_GetActor(10);
+    actor11 = (struct Actor *)__MapActor_GetActor(11);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+
+    flag = API_GetFlag(0x845);
+    if (flag != 0) {
+        API_MapActor_SetPos(9, 0, 0);
+        API_MapActor_SetPos(10, 0, 0);
+        API_MapActor_SetPos(11, 0, 0);
+        API_CopyMapTiles(0x38, 0xf, 0x28, 0xf, 1, 2);
+        API_Func_8010704(0x1a, 0xf, 1, 3, 10, 15);
+        if (API_GetFlag(0x849) == 0) {
+            if (API_GetFlag(0x848) != 0)
+                goto end;
+            API_MapActor_SetPos(0xe, 0, 0);
+        }
+        API_Func_8092adc(0xc, 0xd0 << 8, 0);
+        API_Func_8092adc(0xd, 0xb0 << 8, 0);
+    } else {
+        API_MapActor_SetPos(0xc, 0, 0);
+        API_MapActor_SetPos(0xd, 0, 0);
+        API_MapActor_SetPos(0xe, 0, 0);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(9), 0);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(10), 0);
+        __Actor_SetSpriteFlags(__MapActor_GetActor(11), 0);
+        actor10->__unk55 = flag;
+        if (API_GetFlag(0x881) != 0) {
+            ((struct Actor *)__MapActor_GetActor(9))->collision |= 0x10;
+            ((struct Actor *)__MapActor_GetActor(0x10))->collision |= 0x10;
+            ((struct Actor *)__MapActor_GetActor(11))->collision |= 0x10;
+            API_MapActor_SetPos(0x10, 0x8e << 16, 0x9c << 16);
+            __Actor_SetSpriteFlags(__MapActor_GetActor(0x10), 0);
+            API_MapActor_SetPos(10, 0x8e << 16, 0x9c << 16);
+            sprite = actor10->sprite;
+            rot = 0x4000;
+            sprite->rotation = rot;
+            actor10->pos.y -= 0x80000;
+            if (API_GetFlag(0x848) != 0) {
+                API_MapActor_SetPos(11, 0x84 << 16, 0xba << 16);
+            } else {
+                API_MapActor_SetPos(11, 0xb0 << 15, 0xc4 << 16);
+                API_Func_8092b08(11, 3);
+                actor11->collision |= 4;
+            }
+        } else {
+            actor10->pos.y = 0x80 << 14;
+            actor11->__unk55 = 0;
+            actor11->pos.y = 0xc0 << 14;
+        }
+    }
+end:
+    OvlFunc_907_2008cb4();
+}
 extern unsigned char Lm907_1d28[] __asm__(".Lm907_1d28");
 
 void OvlFunc_907_2008cb4(void)

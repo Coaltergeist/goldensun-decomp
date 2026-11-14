@@ -6,6 +6,7 @@
 INCLUDE_ASM("asm/maps/lalivero/exports.s");
 
 extern void __Func_80955b0(int a, int b, int c);
+extern void *__MapActor_GetActor(int);
 
 void OvlFunc_966_2008030(void) {
     __Func_80955b0(0x17, 2, 6);
@@ -712,19 +713,115 @@ unsigned int *Lalivero_GetEvents(void)
     return (unsigned int *)L1d04;
 }
 
+#include "actor.h"
 #include "state/global_state.h"
 extern GlobalState gState;
 
 void __Actor_SetSpriteFlags(void *, int);
 void *__galloc_iwram(int, int);
 void __LoadItemIcon(int);
-void __UploadSpriteGFX(int, int, void *);
+int __UploadSpriteGFX(int, int, void *);
 void __gfree(int);
 void __Func_8010704(int, int, int, int, int, int);
 void __MapActor_SetPos(int, int, int);
 void OvlFunc_966_2008218(void);
 
-INCLUDE_ASM("asm/maps/lalivero/Lalivero_MapInit.s");
+int Lalivero_MapInit(void)
+{
+    int off;
+    short *p;
+    char *base;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    u8 *buf;
+
+    off = 0xe1;
+    off <<= 1;
+    p = (short *)((char *)&gState + off);
+    if (*p == 0x5a) {
+        __SetFlag(0x9a7);
+        __SetFlag(0x9bf);
+    }
+    if (*p == 0x5b) {
+        __SetFlag(0x9a7);
+    }
+
+    base = *(char **)iwram_3001ebc;
+    *(int *)(base + 0xe0 * 2) = 0x100;
+    *(int *)(base + 0xe4 * 2) = 0x18;
+
+    __MapActor_SetAnim(0x13, 3);
+    ((struct Actor *)__MapActor_GetActor(0x13))->collision = 0;
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x13), 0);
+
+    __MapActor_SetAnim(0x14, 3);
+    ((struct Actor *)__MapActor_GetActor(0x14))->collision = 0;
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x14), 0);
+
+    __MapActor_SetAnim(0x15, 3);
+    ((struct Actor *)__MapActor_GetActor(0x15))->collision = 0;
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x15), 0);
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x19), 0);
+    actor = (struct Actor *)__MapActor_GetActor(0x19);
+    actor->__unk5C = 1;
+    actor->__unk55 = 0;
+    actor->pos.y = 0xa0000;
+    sprite = actor->sprite;
+    sprite->numLayers = 0;
+    sprite->oam.attr0Bits.bpp = 0;
+    sprite->oam.palette = 0;
+    buf = (u8 *)__galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xf2);
+    __UploadSpriteGFX(sprite->slot, 0x80, buf + 0x400);
+    __gfree(0x11);
+
+    if (__GetFlag(0x9a7)) {
+        __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+        ((struct Actor *)__MapActor_GetActor(0x18))->collision = 0;
+        __Func_8010704(0x14, 0x17, 1, 1, 0xe, 4);
+        __Func_8010704(0x14, 0x17, 1, 1, 0xf, 4);
+        __Func_8010704(0x14, 0x17, 1, 1, 0x10, 4);
+        if (__GetFlag(0x9bb)) {
+            API_MapActor_SetPos(0x12, 0x380000, 0xb80000);
+        }
+    } else {
+        actor = (struct Actor *)__MapActor_GetActor(8);
+        actor->collision = 0;
+        actor->flags |= 2;
+        actor->sprite->flags = 0;
+        actor->sprite->rotation = 0xc000;
+
+        actor = (struct Actor *)__MapActor_GetActor(9);
+        actor->collision = 0;
+        actor->flags |= 2;
+        actor->sprite->flags = 0;
+        actor->sprite->rotation = 0x4000;
+
+        __Func_8010704(0x14, 0x17, 1, 1, 0xd, 0x17);
+        __Func_8010704(0x14, 0x17, 1, 1, 0xe, 0x17);
+        __Func_8010704(0x14, 0x17, 1, 1, 0x4e, 0x17);
+        __Func_8010704(0x14, 0x17, 1, 1, 0x11, 0x17);
+        __Func_8010704(0x14, 0x17, 1, 1, 0x12, 0x17);
+
+        if (*p == 0x14 || *p == 0x15) {
+            if (!API_GetFlag(0x9b8)) {
+                API_SetFlag(0x9b8);
+                actor = (struct Actor *)__MapActor_GetActor(0xb);
+                actor->stop = 1;
+                actor = (struct Actor *)__MapActor_GetActor(0x11);
+                actor->stop = 1;
+                OvlFunc_966_2008218();
+                actor = (struct Actor *)__MapActor_GetActor(0xb);
+                actor->stop = 0;
+                actor = (struct Actor *)__MapActor_GetActor(0x11);
+                actor->stop = 0;
+            }
+        }
+    }
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/lalivero/lalivero_data.s");
 
 INCLUDE_ASM("asm/maps/lalivero/imports.s");

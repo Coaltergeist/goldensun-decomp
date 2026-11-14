@@ -211,11 +211,57 @@ void Func_80b0894(void) {
 
 INCLUDE_ASM("asm/shop/shop/Func_80b08b8.s");
 INCLUDE_ASM("asm/shop/shop/Func_80b0958.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b09fc.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b0a20.s");
+struct MenuCursor {
+    struct MenuCursor *next;
+    unsigned char unk4;
+    unsigned char unk5;
+    unsigned short x;
+    unsigned short y;
+    unsigned char padA[6];
+    void *oamDest;
+    unsigned short oamY : 8;
+    unsigned short affineMode : 2;
+    unsigned short attr0Hi : 6;
+    unsigned short oamX : 9;
+    unsigned short matrixNum : 5;
+    unsigned short size : 2;
+};
+
+struct ShopCursorAnim {
+    struct MenuCursor *cursor;
+    unsigned short startX;
+    unsigned short startY;
+    unsigned short endX;
+    unsigned short endY;
+    unsigned char step;
+    signed char totalSteps;
+};
+
+void Func_80b09fc(struct ShopCursorAnim *s, unsigned int x, unsigned int y, int totalSteps)
+{
+    s->startX = s->cursor->x;
+    s->startY = s->cursor->y;
+    s->endX = x;
+    s->endY = y;
+    s->totalSteps = totalSteps;
+    s->step = 0;
+}
+
+void Func_80b0a20(struct ShopCursorAnim *s, unsigned int x, unsigned int y)
+{
+    struct MenuCursor *c = s->cursor;
+
+    c->x = x;
+    s->totalSteps = 1;
+    s->endX = x;
+    s->step = 0;
+    c->oamX = s->startX = x;
+    s->endY = y;
+    s->startY = y;
+    s->cursor->oamY = s->cursor->y = y;
+}
 
 extern unsigned char iwram_3001f2c__a3[];   /* @ 0x03001F2C */
-extern void Func_80b09fc(void *arg0, unsigned int arg1, unsigned int arg2, int arg3);
 
 void Func_80b0a6c(void *arg0, unsigned int arg1, unsigned int arg2)
 {
@@ -225,7 +271,7 @@ void Func_80b0a6c(void *arg0, unsigned int arg1, unsigned int arg2)
         arg1 = arg1 + (*(unsigned short *)((char *)arg0 + 0xc) << 3) + 8;
         arg2 = arg2 + (*(unsigned short *)((char *)arg0 + 0xe) << 3) + 8;
     }
-    Func_80b09fc(base + 0x380, arg1, arg2, *(signed char *)(base + 0x3a8));
+    Func_80b09fc((struct ShopCursorAnim *)(base + 0x380), arg1, arg2, *(signed char *)(base + 0x3a8));
 }
 
 INCLUDE_ASM("asm/shop/shop/Func_80b0aac.s");

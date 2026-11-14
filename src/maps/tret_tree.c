@@ -1,6 +1,8 @@
 /* rom_7a5214 (overlay file 918): consolidated TU — tret_tree map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __udivsi3, _udivsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "math.h"
@@ -43,9 +45,64 @@ extern void __Func_80933f8(int, int, int, int);
 extern void __Func_8092b08(int, int);
 extern void __WaitFrames(int);
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2008334.s");
+struct TretState {
+    unsigned char pad[0x1dc];
+    int x;
+    int y;
+    int z;
+    int pad2[3];
+    int actorId;
+};
 
-extern void OvlFunc_918_2008334(int a, int b, int c, int d);
+extern struct TretState TretState __asm__("gState");
+extern unsigned char Lconst_2d[] __asm__(".Lconst_2d");
+
+static inline void Func_80933f8_macro(int a, int b, int c, int d)
+{
+    __Func_80933f8(-a, -b, -c, d);
+}
+
+void OvlFunc_918_2008334(int flag, int srcX, int srcY, int destExit) {
+    int dstX = (TretState.x >> 20) + 0x40;
+    int dstY = TretState.z >> 20;
+    int actorId = TretState.actorId;
+    struct Actor *actor = __MapActor_GetActor(actorId);
+    short *doorPtr = *(short **)L2dd0;
+
+    if (destExit != *doorPtr) {
+        *doorPtr = destExit;
+        if (!__GetFlag(flag)) {
+            __Func_80105d4(srcX, srcY, 1, 1, dstX, dstY);
+            __SetFlag(flag);
+        } else {
+            int i;
+            **(short **)L2dd0 = -1;
+            __Func_80105d4(srcX, srcY + 1, 1, 1, dstX, dstY);
+            __PlaySound(0xce);
+            __CutsceneStart();
+            __SetDestMap((int)Lconst_2d, destExit);
+            __MapActor_SetAnim(actorId, 0x1b);
+            __Actor_SetSpriteFlags(__MapActor_GetActor(actorId), 0);
+            API_MapActor_Surprise(actorId, 0x101);
+            __CutsceneWait(0x1e);
+            Func_80933f8_macro(1, 1, 1, 0);
+            actor->__unk55 = 2;
+            actor->floorPos = 0xff600000;
+            actor->gravity = 0x80 << 8;
+            __PlaySound(0xcc);
+            __CutsceneWait(3);
+            actor->layer = 2;
+            __Func_8092b08(actorId, 3);
+            for (i = 0x1d; i >= 0; i--) {
+                actor->facing += 0x2000;
+                __WaitFrames(1);
+            }
+            if (destExit != 0x32) {
+                __SetFlag(0x91 << 1);
+            }
+        }
+    }
+}
 
 void OvlFunc_918_2008494(void) {
     OvlFunc_918_2008334(0x200, 0x40, 0x23, 0x15);
@@ -564,11 +621,6 @@ extern void __MapTransitionIn(void);
 extern unsigned char Lconst_2d[] __asm__(".Lconst_2d");
 __asm__(".equ .Lconst_2d, 0x2d");
 
-static inline void Func_80933f8_macro(int a, int b, int c, int d)
-{
-    __Func_80933f8(-a, -b, -c, d);
-}
-
 int TretTree_MapInit(void) {
     struct Actor *actor8;
     struct Actor *actor9;
@@ -665,7 +717,91 @@ void OvlFunc_918_2009224(void) {
     DMA3_COPY((void *)(0xa0 << 19), iwram_3001ed0, 0x1c0);
 }
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_2009244.s");
+extern int iwram_3001e40;
+extern int Lm918_2db8 __asm__(".Lm918_2db8");
+extern int Lm918_1f00[] __asm__(".Lm918_1f00");
+extern int __Random(void);
+extern int _divsi3_RAM(int, int);
+
+struct CS918P_Field {
+    unsigned char pad[0x17e];
+    short transition;
+};
+
+struct CS918P_Context {
+    struct CS918P_Field *field;
+    void *other[4];
+    unsigned short *palette;
+};
+
+extern struct CS918P_Context CS918P_Context __asm__("iwram_3001ebc");
+
+void OvlFunc_918_2009244(void) {
+    struct CS918P_Field *field = CS918P_Context.field;
+    unsigned short *src = CS918P_Context.palette;
+    volatile unsigned short *dst;
+    unsigned int i;
+
+    if (field->transition != 0) {
+        return;
+    }
+    if (iwram_3001e40 & 0x1f) {
+        return;
+    }
+
+    src = (unsigned short *)((char *)src + 0x20);
+    dst = (volatile unsigned short *)0x5000020;
+
+    for (i = 0; i <= 0x3e; i++) {
+        int redOffset, greenOffset, blueOffset;
+        int r, g, b;
+        unsigned int color;
+
+        redOffset = Lm918_1f00[Lm918_2db8];
+        greenOffset = Lm918_1f00[Lm918_2db8 + 1];
+        blueOffset = Lm918_1f00[Lm918_2db8 + 2];
+
+        if (i > 0x2f) {
+            redOffset -= redOffset / 2 + redOffset / 3;
+            greenOffset -= greenOffset / 2 + greenOffset / 3;
+            blueOffset -= blueOffset / 2 + blueOffset / 3;
+        } else if (i > 0x1f) {
+            redOffset -= redOffset / 3 + redOffset / 4;
+            greenOffset -= greenOffset / 3 + greenOffset / 4;
+            blueOffset -= blueOffset / 3 + blueOffset / 4;
+        } else if (i > 0xf) {
+            redOffset -= redOffset / 4 + redOffset / 5;
+            greenOffset -= greenOffset / 4 + greenOffset / 5;
+            blueOffset -= blueOffset / 4 + blueOffset / 5;
+        }
+
+        color = *src;
+        r = color & 0x1f;
+        g = (color >> 5) & 0x1f;
+        b = (color >> 10) & 0x1f;
+
+        r += redOffset;
+        g += greenOffset;
+        b += blueOffset;
+
+        if (r > 0x1f) r = 0x1f;
+        if (g > 0x1f) g = 0x1f;
+        if (b > 0x1f) b = 0x1f;
+        if (r < 0) r = 0;
+        if (g < 0) g = 0;
+        if (b < 0) b = 0;
+
+        *dst = (b << 10) | (g << 5) | r;
+        dst++;
+        src++;
+    }
+
+    Lm918_2db8 += (__Random() & 7) * 3;
+    if (Lm918_1f00[Lm918_2db8] == 0x63) {
+        Lm918_2db8 = 0;
+    }
+}
+
 void OvlFunc_918_2009424(int arg0) {
     switch (arg0) {
         case 0:
@@ -770,9 +906,72 @@ void OvlFunc_918_20095ac(struct Actor *actor) {
         __DeleteActor(actor);
     }
 }
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200962c.s");
+extern unsigned int _udivsi3_RAM(unsigned int, unsigned int);
+extern int __Func_8096c48(void *, int);
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetAnim(void *, int);
+extern void OvlFunc_918_20095ac(struct Actor *);
 
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_20097ec.s");
+void OvlFunc_918_200962c(void) {
+    int unk = 0;
+    int val = Lm918_2dcc;
+    int div = val / 10;
+
+    switch (val) {
+        case 0:
+        case 10:
+        case 20:
+        case 30:
+        case 40: {
+            unsigned int i;
+            __PlaySound(0xdc);
+            for (i = 0; i < (unsigned int)(6 - div); i++) {
+                struct Actor *actor = __CreateActor(0x11d, Lm918_2dc0.x, Lm918_2dc0.y, Lm918_2dc0.z);
+                if (actor != NULL) {
+                    unk = __Func_8096c48(actor->sprite, unk);
+                    actor->__unk55 = 0;
+                    actor->sprite->oam.priority = 0;
+                    __Actor_SetSpriteFlags(actor, 0);
+                    __Actor_SetAnim(actor, 1);
+                    actor->waveCounter = 0;
+                    actor->__unk66 = ((360U / (unsigned int)(6 - div) * i) << 16) / 360U;
+                    actor->prevPos.x = Lm918_2dc0.x;
+                    actor->prevPos.y = Lm918_2dc0.y;
+                    actor->prevPos.z = Lm918_2dc0.z;
+                    actor->speed = 0x19999;
+                    actor->update = (actorfun_t)OvlFunc_918_20095ac;
+                }
+            }
+        }
+        /* fallthrough */
+        case 44:
+            __PlaySound(0x121);
+            break;
+    }
+
+    Lm918_2dcc++;
+    if (Lm918_2dcc > 0x78) {
+        Lm918_2dcc = 0;
+    }
+}
+
+
+extern short Lm918_1ca8[] __asm__(".Lm918_1ca8");
+extern void __CopyMapTiles(int, int, int, int, int, int);
+
+static inline void CopyMapTilesSquare(int srcX, int srcY, int dstX, int dstY, int size) {
+    __CopyMapTiles(srcX, srcY, dstX, dstY, size, size);
+}
+
+void OvlFunc_918_20097ec(void) {
+    int i = 0;
+    while (Lm918_1ca8[i] != -1) {
+        if (__GetFlag(Lm918_1ca8[i]) && Lm918_1ca8[i + 1]) {
+            CopyMapTilesSquare(Lm918_1ca8[i + 2], Lm918_1ca8[i + 3], Lm918_1ca8[i + 4], Lm918_1ca8[i + 5], 1);
+        }
+        i += 6;
+    }
+}
 
 
 extern void __StopTask(void (*fn)(void));
@@ -784,7 +983,23 @@ void OvlFunc_918_200984c(void) {
 
 
 extern void OvlFunc_918_200985c(struct Actor *);
-INCLUDE_ASM("asm/maps/tret_tree/OvlFunc_918_200985c.s");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_918_200985c(struct Actor *actor) {
+    int bounce = actor->bounce;
+    int unk4C;
+
+    actor->pos.x += bounce;
+    actor->pos.y += actor->gravity;
+    unk4C = actor->__unk4C;
+    actor->pos.z += unk4C;
+    actor->bounce = bounce - ((bounce) / (0x12));
+    actor->__unk4C = unk4C - unk4C / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += actor->waveCounter;
+}
+
 extern void __Func_800fe9c(void);
 extern void __MapTransitionIn(void);
 extern void __WaitMapTransition(void);
@@ -807,6 +1022,8 @@ static inline void Func_8012330_neg(int x, int y, int z)
 
 
 #include "overlays/common0_effect.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 
 void OvlFunc_918_20098b8(void) {
     struct EffectData data;

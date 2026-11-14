@@ -489,7 +489,71 @@ void OvlFunc_891_2008c8c(void)
     }
     *cameraSlot = savedCamera;
 }
-INCLUDE_ASM("asm/maps/sol_sanctum_2/OvlFunc_891_2008eb0.s");
+struct Sanctum2SpriteOAM {
+    struct SpriteOAM *dest;
+    u8 posY;
+    u8 attr0Hi;
+    u16 posX : 9;
+    u16 attr1Hi : 7;
+    u32 attr2;
+};
+
+extern void *iwram_3001e70;
+extern unsigned int Lm891_2a50[] __asm__(".Lm891_2a50");
+extern int Lm891_2974 __asm__(".Lm891_2974");
+extern void __Func_8003dec(void *, int);
+
+void OvlFunc_891_2008eb0(void) {
+    int *cam;
+    struct Sanctum2SpriteOAM *p;
+    int camX;
+    int y;
+    int x;
+    unsigned int i;
+
+    cam = (int *)((char *)iwram_3001e70 + 0xe4);
+    p = (struct Sanctum2SpriteOAM *)Lm891_2a50;
+    camX = cam[0] / 65536;
+    y = 0x50 - cam[1] / 65536;
+
+    if ((unsigned int)(y + 0x10) <= 0xaf) {
+        x = ((Lm891_2974 >> 10) - camX) | -0x20;
+        i = 0;
+        do {
+            p->posX = x;
+            p->posY = y;
+            __Func_8003dec(p, 0);
+            x += 0x20;
+            p++;
+            i++;
+        } while (i <= 8);
+
+        x = ((Lm891_2974 >> 9) - camX) | -0x20;
+        i = 0;
+        do {
+            p->posX = x;
+            p->posY = y;
+            __Func_8003dec(p, 0);
+            x += 0x20;
+            p++;
+            i++;
+        } while (i <= 8);
+
+        x = ((Lm891_2974 >> 8) - camX) | -0x20;
+        i = 0;
+        y += 8;
+        do {
+            p->posX = x;
+            p->posY = y;
+            __Func_8003dec(p, 0);
+            x += 0x20;
+            p++;
+            i++;
+        } while (i <= 8);
+    }
+
+    Lm891_2974 += 0x80;
+}
 
 void OvlFunc_891_2008fe4(void) {
     unsigned char *p;

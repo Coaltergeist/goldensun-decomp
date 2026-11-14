@@ -1,9 +1,19 @@
+/*
+ * Remaining diff vs asm/maps/vale_river/OvlFunc_883_200b4c8.s:
+ * All literal pools, control flow, and calls match. In basic block 0,
+ * local-alloc assigns the call-crossing QImode zero constant and
+ * gScript_883__0200e590 to r6, pushing global-alloc's sceneActor into r7
+ * (whereas target allocates sceneActor to r6, gScript_883__0200e590 and
+ * actor to r7, and QImode zero to r10/sl, freeing r6 so 0xd00000 is
+ * rematerialized instead of held in r6 across Actor_TravelTo).
+ */
 #include "api.h"
+#include "actor.h"
+#include "field.h"
 
-extern unsigned char RiverIntroMessage[] __asm__(".Lriver_intro_message");
-__asm__(".equ .Lriver_intro_message, 0xee8");
-static inline void RiverWriteByte(unsigned char *address, int value) { *address = value; }
-static inline void RiverFacing(unsigned char *actor, int value) { *(unsigned short *)(actor + 6) = value; }
+extern unsigned char Lconst_ee8[] __asm__(".Lconst_ee8");
+__asm__(".equ .Lconst_ee8, 0xee8");
+
 void OvlFunc_883_200b4c8(void)
 {
     extern void OvlFunc_883_200d5b0(void);
@@ -17,63 +27,53 @@ void OvlFunc_883_200b4c8(void)
     extern void __Func_800fe9c(void);
     extern void __Func_8019aa0(int, int, int);
     extern void __Func_8092950(int, int);
-    extern unsigned char * __Func_8093554(void);
-    extern unsigned char * __MapActor_GetActor(unsigned int);
+    extern unsigned char *__Func_8093554(void);
+    extern unsigned char *__MapActor_GetActor(unsigned int);
     extern void OvlFunc_883_200d594(void);
     extern void OvlFunc_883_200d5a4(void);
     extern void OvlFunc_883_200d7fc(void *);
     extern void OvlFunc_883_200dc20(unsigned int);
     extern void __PlayMapMusic(void);
-    unsigned char * playerActor;
-    struct Actor * sceneActor;
+    struct Actor *playerActor;
+    struct Actor *sceneActor;
     unsigned int effectFrame;
-    unsigned char * cameraActor;
-    unsigned char *actor;
-    int initialMovement;
-    int stoppedEffect;
+    struct Actor *actor;
 
-    /* Capture both actors before any cutscene or scheduler calls. */
-    actor = __MapActor_GetActor(0);
-    playerActor = (unsigned char *)(actor);
-    actor = __MapActor_GetActor(14);
-    sceneActor = (struct Actor *)actor;
+    playerActor = (struct Actor *)__MapActor_GetActor(0);
+    sceneActor = (struct Actor *)__MapActor_GetActor(14);
     API_CutsceneStart();
     API_Func_80933f8(-1, -1, -1, 0);
     API_WaitFrames(1);
-    cameraActor = __Func_8093554();
-    RiverWriteByte(((unsigned char *)cameraActor) + 0x55, 0);
-    initialMovement = 0;
+    ((struct Actor *)__Func_8093554())->__unk55 = 0;
     API_WaitFrames(1);
     API_Func_8010704(0x31, 0x35, 8, 4, 20, 0x32);
     API_CopyMapTiles(2, 0x66, 0x54, 0x29, 2, 1);
     API_CopyMapTiles(1, 0x66, 0x53, 0x29, 1, 1);
     API_CopyMapTiles(0, 0x67, 0x52, 0x2a, 1, 1);
-    actor = __MapActor_GetActor(11);
-    RiverWriteByte(actor + 0x55, initialMovement);
-    *(int *)(actor + 0xc) = 0xa00000;
-    *(int *)(actor + 0x10) = 0x3480000;
-    *(int *)(actor + 0x8) = 0x1840000;
-    __Actor_SetSpriteFlags(actor, 0);
-    actor = __MapActor_GetActor(12);
-    RiverWriteByte(actor + 0x55, initialMovement);
-    *(int *)(actor + 0xc) = 0xa00000;
-    *(int *)(actor + 0x10) = 0x34c0000;
-    *(int *)(actor + 0x8) = 0x1840000;
-    __Actor_SetSpriteFlags(actor, 0);
-    actor = __MapActor_GetActor(13);
-    RiverWriteByte(actor + 0x55, initialMovement);
-    *(int *)(actor + 0x10) = 0x3500000;
-    *(int *)(actor + 0xc) = 0xa00000;
-    *(int *)(actor + 0x8) = 0x1840000;
-    __Actor_SetSpriteFlags(actor, 0);
-    actor = __MapActor_GetActor(11);
-    __Actor_SetSpriteFlags(actor, 0);
-    actor = __MapActor_GetActor(12);
-    __Actor_SetSpriteFlags(actor, 0);
+    actor = (struct Actor *)__MapActor_GetActor(11);
+    actor->__unk55 = 0;
+    actor->pos.y = 0xa00000;
+    actor->pos.z = 0x3480000;
+    actor->pos.x = 0x1840000;
+    __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+    actor = (struct Actor *)__MapActor_GetActor(12);
+    actor->__unk55 = 0;
+    actor->pos.y = 0xa00000;
+    actor->pos.z = 0x34c0000;
+    actor->pos.x = 0x1840000;
+    __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+    actor = (struct Actor *)__MapActor_GetActor(13);
+    actor->__unk55 = 0;
+    actor->pos.z = 0x3500000;
+    actor->pos.y = 0xa00000;
+    actor->pos.x = 0x1840000;
+    __Actor_SetSpriteFlags((unsigned char *)actor, 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(11), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(12), 0);
     API_MapActor_SetAnim(0, 11);
     API_MapActor_SetBehavior(0, (int)gScript_883__0200e590);
     __Func_800c5b4();
-    __Func_8019aa0((int)RiverIntroMessage, 0, 0);
+    __Func_8019aa0((int)Lconst_ee8, 0, 0);
     __Func_800c5fc();
     API_Func_80933f8(0x1530000, 0xa00000, 0x4950000, 0);
     __Func_800fe9c();
@@ -117,10 +117,10 @@ void OvlFunc_883_200b4c8(void)
     API_Func_80933f8(0x1830000, 0xa00000, 0x3620000, 1);
     API_Func_8093530();
     API_MapActor_Jump(10, 2, 20);
-    API_MessageID((int)RiverIntroMessage + 1);
+    API_MessageID((int)Lconst_ee8 + 1);
     API_ActorMessage_Wait(0x100a, 0, 10);
-    *(int *)(playerActor + 0x18) = 0x10000;
-    *(int *)(playerActor + 0x1c) = 0x10000;
+    playerActor->scale.x = 0x10000;
+    playerActor->scale.y = 0x10000;
     API_MapActor_SetBehavior(0, (int)1);
     API_MapActor_TurnToFaceActor(10, 0, 0x28);
     API_MapActor_Surprise(0, 0x102);
@@ -162,25 +162,21 @@ void OvlFunc_883_200b4c8(void)
     API_MapActor_SetAnim(1, 17);
     API_ActorMessage_Wait(0x2001, 0, 20);
     API_PlaySound(0x83);
-    /* Sixty effect updates, with one frame wait after each update. */
     effectFrame = 0;
     do {
-        actor = __MapActor_GetActor(1);
-        OvlFunc_883_200dc20((unsigned int)actor);
+        OvlFunc_883_200dc20((unsigned int)__MapActor_GetActor(1));
         effectFrame++;
         API_WaitFrames(1);
     } while (effectFrame <= 0x3b);
     API_Func_8092b08(1, 1);
     API_StartTask(OvlFunc_883_200d5b0, 0xc80);
     API_StartTask(OvlFunc_883_200d5d0, 0xc80);
-    actor = __MapActor_GetActor(14);
-    __Actor_SetSpriteFlags(actor, 0);
-    stoppedEffect = 0;
-    RiverWriteByte(&sceneActor->__unk55, stoppedEffect);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(14), 0);
+    sceneActor->__unk55 = 0;
     sceneActor->pos.x = 0x1ac0000;
-    sceneActor->update = (actorfun_t *)OvlFunc_883_200d75c;
+    sceneActor->update = (actorfun_t)OvlFunc_883_200d75c;
     sceneActor->pos.y = 0xd00000;
-    RiverFacing((unsigned char *)sceneActor, 0x8000);
+    sceneActor->facing = 0x8000;
     sceneActor->pos.z = 0x2480000;
     API_CutsceneWait(4);
     API_MapActor_SetSpeed(14, 0x20000, 0x20000);
@@ -188,17 +184,14 @@ void OvlFunc_883_200b4c8(void)
     API_CutsceneWait(0x28);
     API_MapActor_SetSpeed(9, 0x2666, 0x1333);
     API_MapActor_SetSpeed(14, 0x2666, 0x1333);
-    /* The lookup is retained even though travel uses the saved actor 14. */
-    actor = __MapActor_GetActor(9);
+    __MapActor_GetActor(9);
     API_Actor_TravelTo(sceneActor, 0x1880000, 0xd00000, 0x2480000);
     API_MapActor_TravelToWait(9, 0x17a, 0x248);
     API_CutsceneWait(20);
     API_ActorMessage_Wait(0x2005, 0, 10);
-    sceneActor->update = (actorfun_t *)stoppedEffect;
+    sceneActor->update = 0;
     API_Func_8092b08(1, 2);
-    actor = __MapActor_GetActor(1);
-    actor += 0x23;
-    RiverWriteByte(actor, 1 | *actor);
+    ((struct Actor *)__MapActor_GetActor(1))->flags |= 1;
     API_StopTask(OvlFunc_883_200d5b0);
     API_StopTask(OvlFunc_883_200d5d0);
     API_WaitFrames(1);
@@ -243,8 +236,7 @@ void OvlFunc_883_200b4c8(void)
     API_CutsceneWait(10);
     API_Func_8092adc(5, 0, 0);
     API_Func_8092adc(1, 0x8000, 0x28);
-    /* Four register arguments and seven stack arguments in the original ABI. */
-    API_Func_80931ec(1, 1, 2, 25, 2, 5, 10, 14, 4, 14, stoppedEffect);
+    API_Func_80931ec(1, 1, 2, 25, 2, 5, 10, 14, 4, 14, 0);
     API_CutsceneWait(0x28);
     API_MapActor_Surprise(5, 0x102);
     API_MapActor_Surprise(1, 0x102);
