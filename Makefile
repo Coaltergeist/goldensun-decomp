@@ -93,6 +93,7 @@ GCC296_CFLAGS  := -B$(GCC296_DIR)/ -O2 -mthumb -mthumb-interwork -mcpu=arm7tdmi 
 GAIA_CFLAGS := $(filter-out -fno-strict-aliasing,$(GCC296_CFLAGS)) -fstrict-aliasing
 GAIA_SRCS := \
 	src/battle_anim/anims.c \
+	src/battle_anim/moves/astral_blast.c \
 	src/battle_anim/moves/blast.c \
 	src/battle_anim/moves/curse.c \
 	src/battle_anim/moves/douse.c \
@@ -104,10 +105,14 @@ GAIA_SRCS := \
 	src/battle_anim/moves/jupiter.c \
 	src/battle_anim/moves/kirin.c \
 	src/battle_anim/moves/mercury.c \
+	src/battle_anim/moves/prism.c \
 	src/battle_anim/moves/ramses.c \
+	src/battle_anim/moves/ray.c \
 	src/battle_anim/moves/revive.c \
 	src/battle_anim/moves/shining_star.c \
 	src/battle_anim/moves/spasm.c \
+	src/battle_anim/moves/spire.c \
+	src/battle_anim/moves/tackle.c \
 	src/battle_anim/moves/thorn.c \
 	src/battle_anim/moves/undead_sword.c \
 	src/battle_anim/moves/venus.c \
@@ -119,6 +124,7 @@ GAIA_SRCS := \
 	src/maps/altmiller_cave.c \
 	src/maps/babi_lighthouse.c \
 	src/maps/babis_palace.c \
+	src/maps/common/common1.c \
 	src/maps/crossbone_isle.c \
 	src/maps/crossbone_isle_dungeon_2.c \
 	src/maps/elemental_stars.c \

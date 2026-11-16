@@ -2,11 +2,15 @@
  * Clean C decompilation of BaseAnim_StatDown (src/battle_anim/moves/stat_down.c).
  *
  * Status:
- * - Exact section sizes: 1,296/1,296 bytes .text, 48/48 bytes .rodata, 53/53 relocations.
- * - Matches 0x000..0x27b (first 636 bytes including wrapper functions) and epilogue 100% byte-for-byte.
- * - Remaining diff (-38/+38 lines): GCC 2.96 loop_optimize GIV stack-slot ordering swap
- *   between [sp, #8] and [sp, #12] (`t - 0x18` vs `j * 32 * sizeof(struct StatDownParticle)`)
- *   inside the per-target loop.
+ * - Exact section sizes (with wrapper functions): 1,296/1,296 bytes .text, 48/48 bytes .rodata, 53/53 relocations.
+ * - Matches 0x000..0x24b, 0x260..0x3ab, and 0x3c2..0x4e0 of BaseAnim_StatDown byte-for-byte
+ *   (stack spill slots [sp, #8], [sp, #12], [sp, #16], [sp, #20] all match; identical under default and --gaia).
+ * - Remaining diff (38 diff lines across 2 hunks inside BaseAnim_StatDown):
+ *   1. +0x24c..+0x25e: 08.loop move_movables emits `camera + 3` before strength_reduce GIVs (`t - 24`, `t`, `pOff`),
+ *      assigning reload regs `r0, r1, r3, r5` to `camera+3, t-24, t, pOff` vs REF `t-24, t, camera+3, pOff`.
+ *   2. +0x3ac..+0x3c0: `17.lreg` keeps `screen` in `r5` across the `gBuffer` load (`r3`), blocking `sched2`
+ *      from scheduling `level * 0x2b8` (`r3, r5`) ahead of `gBuffer + pOff` vs REF `level * 0x2b8` (`r3, r2`),
+ *      `mov fp, r5`, `pOff` (`r3`), `gBuffer` (`r5`).
  */
 
 #include "anim.h"
@@ -156,6 +160,7 @@ void BaseAnim_StatDown(void *arg, int subanim)
         if (frame == 0x48)
             _Func_80bd7dc(0);
         for (j = 0; j != state->context->numTargets; j++) {
+            int pOff = j * 32 * sizeof(struct StatDownParticle);
             actor = *_GetBattleActor((s16)state->context->targets[j]);
             t = frame - j * 4;
             if (t > 0) {
@@ -192,7 +197,7 @@ void BaseAnim_StatDown(void *arg, int subanim)
                         if (level > 7)
                             level = 7;
                     }
-                    for (i = 0, p = (struct StatDownParticle *)gBuffer + j * 32; i != 0x18; i++, p++) {
+                    for (i = 0, p = (struct StatDownParticle *)(gBuffer + pOff); i != 0x18; i++, p++) {
                         int a = (i % 4) * 3;
                         int b = ((p->age + t) / 8) % 3;
                         int k;

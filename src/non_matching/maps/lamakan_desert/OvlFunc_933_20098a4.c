@@ -1,12 +1,13 @@
 /* Clean C candidate for OvlFunc_933_20098a4 (zero fakematches / zero .equ).
- * Matches 0x00..0x11c and 0x1ba..0x374 (over 380 of 405 asm lines) when standard C
- * `/` (`__divsi3`) is mapped to `_divsi3_RAM` (the 4th division `(MeterState933.numerator * 120)
- * / MeterState933.denominator` requires `TRUNC_DIV_EXPR` rather than a regular C function call
- * to avoid CSE on `&gState + 0x232`).
- * Remaining diff inside the 6-entry palette loop (0x11e..0x1b6): `local-alloc`/`global`
- * coalesces `(color >> 10) & 0x1f` directly into `blue` (`r5`), giving `(blue, green, heat) =
- * (r5, r6, r7)` instead of keeping `(color >> 10) & 0x1f` in `r2` with `mov r7, r2` and
- * `(green, heat, blue) = (r5, r6, r7)`.
+ * Uses `scanlines += 0x26` (fixing `adds r1, #38` at 0xda) and `fill = 0xeeeeeeee` after
+ * `dst`/`limit` (hoisting `ldr r0, =0xeeeeeeee` before `bcs` and matching `dst -> r1` at 0x27e
+ * plus the OAM loop tail at 0x328..0x334). Requires `__divsi3` -> `_divsi3_RAM` in TU.
+ * Remaining diffs:
+ * 1) 0x44..0x9a: `reload` scratch reg choices (`r0`/`r1`/`r2` vs `r5`/`r0`/`r1`) on `ldrsh` / `0x10000`.
+ * 2) 0x102..0x1b6 (6-entry palette loop): `global` allocates `(blue, green, heat)` to `(r5, r6, r7)`
+ *    instead of `(green, heat, blue)` with `blue` copied from `r2` (`adds r7, r2, #0`) after `ldrsh r6`.
+ * 3) 0x27e..0x2a0 (bar fill loop): `limit = 128 - Heat933` allocates to `r2` (and `#7` to `r5`)
+ *    instead of `r3 -> ip` (leaving `#7` in `r2`).
  */
 #include "dma.h"
 extern short Heat933 __asm__("gOvl_0200a6bc");
@@ -41,8 +42,8 @@ void OvlFunc_933_20098a4(void)
     unsigned int red, green, blue, i, limit, flags, x;
     unsigned short color;
     int heat;
-    unsigned short *line;
     unsigned int *dst, *oam;
+    unsigned int fill;
     unsigned char *src, *out;
 
     if (MeterForced933 != 0) {
@@ -65,10 +66,10 @@ void OvlFunc_933_20098a4(void)
     if (scanlines != 0) {
         scanlines += scanlines[0x539] * 644;
         x = (short)(slideVal << 3);
-        line = (unsigned short *)(scanlines + 0x26);
+        scanlines += 0x26;
         for (i = 0; i <= 0x8f; i++) {
-            *line = x;
-            line += 2;
+            *(unsigned short *)scanlines = x;
+            scanlines += 4;
         }
     }
     buffer = CS933_Alloc(0x900);
@@ -105,11 +106,12 @@ void OvlFunc_933_20098a4(void)
     }
     DMA3_SET(MeterGfx933, buffer, 0x84000240);
     if (MeterCooldown933 <= 118) {
-        limit = 128 - Heat933;
         dst = (unsigned int *)(buffer + 0x50);
+        limit = 128 - Heat933;
+        fill = 0xeeeeeeee;
         for (i = 12; i < limit; i++) {
-            dst[8] = 0xeeeeeeee;
-            *dst++ = 0xeeeeeeee;
+            dst[8] = fill;
+            *dst++ = fill;
             if ((i & 7) == 7) dst += 8;
         }
         *dst = *(unsigned int *)buffer;

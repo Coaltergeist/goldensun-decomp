@@ -3,11 +3,12 @@
  * Remaining diff at +0x36e..+0x374:
  *   ref: mov r3, #30; strh r3, [r1]; add r0, #0x67; add r2, r0
  *   new: add r0, #0x67; mov r3, #30; add r2, r0; strh r3, [r1]
- * In 23.sched2, flow2 splits the +0x22b offset for field22b into add r0, #0x67
- * -> add r2, r0 -> strb r3, [r2] (longer true-dependency chain than mov r3, #30
- * -> strh r3, [r1] -> cost-0 anti-dep), giving add r0, #0x67 strictly higher
- * priority than mov r3, #30 unless separated by a statement-macro loop note
- * (do { ... } while (0)) in the original script header.
+ * In 23.sched2, `add r0, #0x67` and `mov r3, #30` tie on priority (68) and
+ * depend_count (3), and `rank_for_schedule` picks `add r0, #0x67` over `mov r3, #30`
+ * because `mov r3, #30` has a cost-0 REG_DEP_ANTI on `r3` from the preceding
+ * `add r1, r2, r3` (class 2 vs class 3). Without a forbidden `do { ... } while (0)`
+ * statement-macro loop note (`NOTE_INSN_LOOP_BEG`/`END`) separating the `+0x22b`
+ * write from `destinationRoom = 30`, sched2 always emits `add r0, #0x67` first.
  */
 #include "api.h"
 #include "actor.h"

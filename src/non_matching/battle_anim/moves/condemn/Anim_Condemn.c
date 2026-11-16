@@ -2,11 +2,13 @@
  * Non-matching clean C for Anim_Condemn (exact .text size 0x574 == 0x574,
  * exact 28-byte .rodata, all 43 relocations, and 0x4c stack layout match).
  *
- * Remaining diff (2 minor register-allocation differences):
- *   1. +0x40..0x6a: `file` is allocated to `r5` and `=gBuffer` is loaded
- *      directly into `r1`, whereas the target allocates `=gBuffer` to `r5`
- *      (`ldr r5, =gBuffer; ... mov r1, r5`) and `file` to `r7`.
- *   2. +0x124, +0x138, +0x244: `x` is allocated to `r6` instead of `r7`.
+ * Remaining diff (single 2-instruction schedule swap, 674/676 lines match):
+ *   +0x5c/+0x60: `u8 *buf = gBuffer;` before `file = GetFile((int)_FILE_ac);`
+ *   matches `file` in `r7`, `gBuffer` in `r5`, and `x` in `r7` (`i = 0;` before
+ *   `base = (6 - x) << 8;`), leaving only `ldr r5, =gBuffer` scheduled before
+ *   `bl GetFile` instead of after it (gcc-2.96 `23.sched2` `flush_pending_lists`
+ *   prevents moving a memory load past `CALL_INSN`; placing an assignment after
+ *   `GetFile(_FILE_ac)` swaps `r5 <-> r7` between `file` and `gBuffer`).
  */
 #include "anim.h"
 #include "math.h"
@@ -107,9 +109,12 @@ void Anim_Condemn(struct AnimContext *context)
     }
     file += 0x80;
     DecompressLZ(file, state);
-    file = GetFile((int)_FILE_ac);
-    file += 0x80;
-    DecompressLZ(file, gBuffer);
+    {
+        u8 *buf = gBuffer;
+        file = GetFile((int)_FILE_ac);
+        file += 0x80;
+        DecompressLZ(file, buf);
+    }
     BuildDraw2DFuncEx(0x2e, 7, 7, 3, 1);
     pair[0] = (DrawFunc)baseSlots[7];
     BuildDraw2DFuncEx(0x2f, 7, 7, 7, 1);
@@ -171,8 +176,9 @@ void Anim_Condemn(struct AnimContext *context)
         }
         if (amp < 0)
             amp = 0;
+        i = 0;
         base = (6 - x) << 8;
-        for (i = 0; i != 160; i++)
+        for (; i != 160; i++)
             *scroll++ = base - ((sin((frame + i) << 11) * amp) >> 10);
 
         if (visible) {

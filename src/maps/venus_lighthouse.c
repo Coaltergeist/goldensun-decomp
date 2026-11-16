@@ -1939,7 +1939,42 @@ repeatFirstRow:
     API_Func_8091e9c(21);
     API_CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/venus_lighthouse/OvlFunc_968_200c520.s");
+struct Struct_968_200c520 {
+    int priority;
+    int animation;
+    int scaleX;
+    int scaleY;
+    int targetX;
+    int targetY;
+    short sprite;
+    short unused;
+    void *script;
+    unsigned short rotation;
+    unsigned short angularSpeed;
+    void *update;
+};
+
+extern u32 __Random(void);
+extern void OvlFunc_968_2008118(int, int, int, int, int, int, int, void *);
+
+void OvlFunc_968_200c520(int arg0, int arg1)
+{
+    extern unsigned char iwram_3001e40[];
+    struct Struct_968_200c520 sp10;
+
+    sp10.scaleX = 0xb333;
+    sp10.scaleY = 0xb333;
+    sp10.angularSpeed = ((__Random() << 12) >> 16) + 0xf800;
+    if ((*(u32 *)iwram_3001e40 & 3) == 0) {
+        if (((__Random() << 1) >> 16) != 0) {
+            OvlFunc_968_2008118((arg0 + (((__Random() << 1) >> 16) << 4)) << 16, 0, arg1 << 19, 0, 0,
+                                ((int)((((__Random() * 5) >> 16) << 16) + 0x70000)) / 10, 0x88 << 16, &sp10);
+        } else {
+            OvlFunc_968_2008118((arg0 + ((__Random() * 17) >> 16)) << 16, 0, (arg0 << 19) + 0xfffc0000,
+                                0, 0, 0, 0x88 << 16, &sp10);
+        }
+    }
+}
 
 extern void OvlFunc_968_200c520(int a, int b);
 

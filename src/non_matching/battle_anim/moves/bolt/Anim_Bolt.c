@@ -3,9 +3,15 @@
  *
  * Status:
  * - Exact section sizes: 1,304/1,304 bytes .text, 19/19 bytes .rodata, exact 64-byte stack frame.
- * - Remaining diff: GCC 2.96 loop_optimize strength-reduces `i * 8` into a stack GIV slot
- *   ([sp, #16]) instead of keeping `i << 3` in r8 across GetBattleActorPos3, shifting the
- *   in-function Thumb literal pool split point.
+ * - Relocations: 44/45 in .text (REF splits the Thumb literal pool earlier, emitting an extra
+ *   .rodata pool literal for sBoltCounts after the spark-spawn loop, plus _call_via_r4 vs _call_via_r5).
+ * - Instructions: 557/555 (excluding literal pool words; 291 normalized opcode diff ops).
+ * - Remaining diffs:
+ *   1. GCC 2.96 loop_optimize strength-reduces `i * 8` together with `i * 0xe00` and `i * 8 + 2`
+ *      into a stack GIV slot ([sp, #16]) instead of keeping `i << 3` in r8 across GetBattleActorPos3
+ *      and `i * 8 + 2` GCSE-hoisted in r9, which also shifts the literal pool split point.
+ *   2. Spill order swaps &state->context ([sp, #28]) ahead of &pos ([sp, #24]), and REF reserves an
+ *      unused 4-byte stack slot at [sp, #0x24] between `frame` ([sp, #0x28]) and `draw` ([sp, #0x20]).
  */
 
 #include "anim.h"

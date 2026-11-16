@@ -1,13 +1,19 @@
 /*
- * Non-matching clean C candidate for Anim_Quake (exact .text size 0x420 == 0x420 / 1056 bytes,
- * .rodata 9 == 9 bytes, 27/27 relocations under GAIA_CFLAGS / -fstrict-aliasing).
+ * Non-matching clean C candidate for Anim_Quake (.text 1060 vs 1056 bytes / 0x424 vs 0x420,
+ * .rodata 9 == 9 bytes, 27/27 relocations under both default and --gaia / -fstrict-aliasing).
  *
- * Matches 0x00..0x49 100% byte-for-byte.
- * Remaining diff (+0x4a..+0x64): in tools/gcc296, 08.loop hoists `=gBuffer` out of the
- * 16x40 tile loop and 09.cse2 merges it with the `gBuffer` argument to `Func_8001af8`
- * across `_call_via_r3`, keeping `gBuffer` in callee-saved `r5` across the call instead
- * of reloading `=gBuffer` from the literal pool (same `thumb_movsi_insn` pool-load RTX_COST
- * difference seen in `Anim_ScreenShatter` and `BaseAnim_Tackle`).
+ * Matches 0x000..0x049 100% byte-for-byte.
+ * Remaining diff (+0x04a..):
+ *   - 08.loop hoists `=gBuffer` out of the 16x40 tile loop and 09.cse2 merges it with the
+ *     `gBuffer` argument to `Func_8001af8` across `_call_via_r3`, keeping `gBuffer` in
+ *     callee-saved `r5` across the call instead of reloading the single `=gBuffer` literal pool
+ *     slot at 0x058 (same cross-call `gBuffer` behavior seen in `Anim_ScreenShatter`).
+ *   - Keeping `gBuffer` in `r5` shifts `r4..r7` in the tile and target loops and adds +2B at
+ *     0x04a..0x058 plus 2B `.short 0x0000` literal-pool alignment padding at 0x3f2 (+4B total).
+ *   - Note: when `Func_8001af8`'s destination uses a separate view so 09.cse2 does not merge
+ *     across the call, `--gaia` matches 0x000..0x057 (88 bytes) and 0x0e6..0x420 (762 consecutive
+ *     bytes: target-init, `frame`/`k`/`t`/`p` loops, epilogue, bottom pool) 100%, leaving only
+ *     the duplicate `=gBuffer` pool slot (+4B at 0x8c), 0x60/0x62 swap, and 0xce `ldrb` operand swap.
  */
 #include "anim.h"
 #include "math.h"
@@ -94,10 +100,11 @@ void Anim_Quake(struct AnimContext *context)
     }
     for (i = 0; i != 16; i++) {
         int y = i + 96;
+        int yrow = (y & 7) << 3;
         for (j = 0; j != 40; j++) {
             int x = j + 32;
             state->graphics[i * 40 + j] =
-                *((x & 7) + ((x / 8) << 6) + ((y & 7) << 3) + ((y / 8) << 11) + gBuffer);
+                gBuffer[(x & 7) + ((x / 8) << 6) + yrow + ((y / 8) << 11)];
         }
     }
     if (state->context->side == 1) {
@@ -108,8 +115,8 @@ void Anim_Quake(struct AnimContext *context)
     }
     BuildDraw2DFuncEx(0x2e, 7, 7, 3, 1);
     draw = (DrawFunc)gPtrs[0x2e];
-    for (i = 0; i != state->context->numTargets; i++)
-        state->particles[i].hit = 0;
+    for (t = 0; t != state->context->numTargets; t++)
+        state->particles[t].hit = 0;
     state->blitMode = 1;
     state->blitParam = 0;
     StartTask(Task_BlitAnim, 0x480);
@@ -151,14 +158,12 @@ void Anim_Quake(struct AnimContext *context)
                 }
             }
         }
-        {
-            struct QuakeParticle *p = state->particles;
-            for (t = 0; t != state->context->numTargets; t++, p++) {
-                s32 *actor = *_GetBattleActor((s16)state->context->targets[t]);
-                if (p->hit == 0 && actor[3] <= 0 && actor[10] < 0) {
-                    p->hit = 1;
-                    SetBattleActorState((s16)state->context->targets[t], 7, 5, t, 5);
-                }
+        for (t = 0; t != state->context->numTargets; t++) {
+            s32 *actor = *_GetBattleActor((s16)state->context->targets[t]);
+            struct QuakeParticle *p = &state->particles[t];
+            if (p->hit == 0 && actor[3] <= 0 && actor[10] < 0) {
+                p->hit = 1;
+                SetBattleActorState((s16)state->context->targets[t], 7, 5, t, 5);
             }
         }
         UpdateScreenShake(QuakeParams[state->context->param * 3 + 2],

@@ -1,12 +1,16 @@
 /*
  * Non-matching clean C candidate for Anim_Torch (exact .text size 0x310 == 0x310 / 784 bytes,
- * 0 relocation diffs under GAIA_CFLAGS / -fstrict-aliasing).
+ * 26/26 relocations under GAIA_CFLAGS / -fstrict-aliasing).
  *
- * Matches 0x000..0x26d (622 bytes) and 0x2aa..0x310 (102 bytes) 100% byte-for-byte.
- * Remaining diff (only 9 insns at +0x26e..+0x278 / +0x29a / +0x2a8): shared `include/dma.h`
- * `DMA3_SET` closes its `register u32 _cnt __asm__("r2")` scope before `ime = REG_IME`,
- * so `reload1.c`'s `{r2, r3, r5}` spill-register ring starts at `r2` instead of `r5`
- * (shifting the final two reloads in the loop latch by 1).
+ * Matches 0x000..0x26b (620 bytes) and 0x272..0x310 (158 bytes) 100% byte-for-byte under --gaia.
+ * Remaining diff:
+ *   - Under --gaia (-fstrict-aliasing): only 3 instructions at +0x26c..+0x270 are reordered by
+ *     23.sched2 (`mov r5, sl; ldrh r3, [r5, #0]; ldr r1, =gDMATaskCount` vs REF
+ *     `ldr r1, =gDMATaskCount; mov r5, sl; ldrh r3, [r5, #0]`), because haifa-sched ranks the
+ *     `REG_IME` save/restore chain above `=gDMATaskCount` without a `do { ... } while (0)`
+ *     statement-scheduling barrier (disallowed per zero-fakematch policy).
+ *   - Under default flags (-fno-strict-aliasing): additionally swaps `adds r3, r3, r1; strh r2, [r1, #0]`
+ *     at +0x288..+0x28a (`*q = c + 1` vs `q + c * 12`).
  */
 #include "anim.h"
 #include "task.h"
@@ -56,6 +60,7 @@ void Anim_Torch(struct AnimContext *context)
     u8 *render = *slots;
     DrawFunc pair[2];
     int a, b;
+    u16 *buf = gBuffer;
     int y, x, i, frame;
 
     state->context = context;
@@ -127,9 +132,9 @@ void Anim_Torch(struct AnimContext *context)
             state->frameReady = 1;
         } else {
             int tmp = ewram_201007e[0];
-            gBuffer[1] = tmp;
+            buf[1] = tmp;
             DMA3_SET(ewram_201007c, ewram_201007e, 0x80a0003e);
-            do {
+            {
                 u16 *q = (u16 *)&gDMATaskCount;
                 u32 ime = REG_IME;
                 s32 c;
@@ -144,7 +149,7 @@ void Anim_Torch(struct AnimContext *context)
                     *t = 0x8000003f;
                 }
                 SET_IO(REG_IME, ime);
-            } while (0);
+            }
         }
         WaitFrames(1);
     }

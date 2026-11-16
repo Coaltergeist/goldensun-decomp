@@ -35,8 +35,8 @@ int OvlFunc_971_2008398(void)
 
     size = 0x154;
     mem = __alloc_ewram(size);
-    timeout = 900;
     result = 0;
+    timeout = 900;
 
     i = 0;
     goto next_unit;

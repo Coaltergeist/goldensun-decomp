@@ -3,7 +3,11 @@
  * 1) +0x54..0x56: sched2 orders movs r1, #5 before movs r0, #0x62 on __StartMapBattle(0x62, 5)
  *    because CALL_INSN does not clear reg_last_sets[r1], giving r1 = 5 extra REG_DEP_OUTPUT links
  *    to the post-call r1 writes (same sched2 quirk as world_map_cutscenes OvlFunc_881_200b7ac).
- * 2) Callee-saved allocation swaps arg1 (r5 vs r6) and gs = &gState (r6 vs r5).
+ * 2) Callee-saved allocation swaps arg1 (r5 vs r6) and gs = &gState (r6 vs r5): in
+ *    `local-alloc.c:update_equiv_regs`, `gs` gets `REG_EQUIV`, doubling live length 25->50
+ *    (4/50 < 5/43); putting `0x22b` in `off` gives `gs` `pref STACK_REG`, skipping `REG_EQUIV`
+ *    and restoring `gs->r5, arg1->r6`, but `13.combine` folds `strb r3, [r5, r2]` instead of
+ *    `ldr r1, =gState; ldr r3, =0x22b; add r2, r1, r3; strb r3, [r2]; mov r5, r1`.
  */
 void OvlFunc_960_2008b24(int unused0, int arg1)
 {

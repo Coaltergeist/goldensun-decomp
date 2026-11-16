@@ -1,7 +1,9 @@
 /* Remaining diff: exact 0x3cc byte size and pool layout (with `.Lconst_2644` for the CSE'd
- * `0x2644` / `0x264a` message IDs); 0..0xeb and 0x104..end match 100%, leaving only 1 reload
- * scratch-register allocation diff in the `if (sceneActor != NULL)` block at +0xec..+0x102
- * (`movs r1, #0; adds r0, #85` reusing return reg `r0` vs `adds r2, r7, #0; movs r3, #0`).
+ * `0x2644` / `0x264a` message IDs); 0..0xeb and 0x104..end match 100%, leaving only the
+ * `if (sceneActor != NULL)` setup block at +0xec..+0x102: REF assigns `0` to `r1`,
+ * `sceneActor + 0x55` to `r0` (eliding `mov r0, r7` after `__CreateActor`), `itemSprite + 0x26/0x27`
+ * to `r3`, and loads `movs r3, #33; negs r3, r3` for `bpp = 0`; NEW assigns `0` to `r3`,
+ * `sceneActor + 0x55` / `itemSprite + 0x26/0x27` to `r2` (`adds r2, r7, #0`), and `subs r3, #33`.
  */
 #include "actor.h"
 #include "api.h"
@@ -98,7 +100,7 @@ void OvlFunc_881_200a8e8(void)
     API_MessageID((int)Lconst_2644);
     API_ActorMessage_Wait(WorldDialogueActorID, 0, 0x50);
     if (sceneActor != NULL) {
-        API_DeleteActor(sceneActor);
+        API_DeleteActor((int)sceneActor);
     }
     API_MapActor_SetAnim(0, 1);
     API_CutsceneWait(0x28);

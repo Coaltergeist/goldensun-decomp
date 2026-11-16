@@ -1,10 +1,12 @@
 /*
- * Remaining compiler/RTL diffs vs asm/maps/link_lobby/OvlFunc_971_20087b0.s:
+ * Remaining compiler/RTL diffs vs asm/maps/link_lobby/OvlFunc_971_20087b0.s (+4 bytes):
  * - In `03.cse`, storing constant `0` to `p[3]` / `p[2]` (`QImode` at non-zero offset) widens
  *   `QImode` via `GET_MODE_WIDER_MODE(QImode) == HImode` and forces an `HImode` minipool reload
- *   (`ldrh rX, =0`) in `reload` unless `0` is already pinned in a register (`Func_800651c` in
+ *   (`ldr r1, =0`) in `reload` unless `0` is already pinned in a register (`Func_800651c` in
  *   `src/core/runtime/serial.c` has the identical serial-abort macro and uses a `register` pin).
  * - In `23.sched2`, `mov r6, #0` is scheduled after `__GetFlag(0x302)` instead of before.
+ * Note: `volatile` on `ime` (`0x04000208`, `REG_IME`) is required so `*ime = (unsigned short)(unsigned int)ime`
+ * emits `strh r0, [r0, #0]` at +0x6a.
  */
 extern int __GetFlag(int);
 extern void __WaitFrames(int);
@@ -54,7 +56,7 @@ check:
     fail:
         {
             unsigned char *p = ewram_2002220;
-            unsigned short *ime = (unsigned short *)0x04000208;
+            volatile unsigned short *ime = (volatile unsigned short *)0x04000208;
             unsigned int saved_ime = *ime;
             *ime = (unsigned short)(unsigned int)ime;
             p[1] = 0x80;

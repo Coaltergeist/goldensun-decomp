@@ -1,9 +1,16 @@
 /*
  * Blocked by `static inline DMA3_COPY` in `include/dma.h` (see note at `include/dma.h:51-52`):
- * passing `gBuffer` to `static inline DMA3_COPY(gBuffer, ...)` copies its address into a formal
- * pseudo, allowing `cse2` to CSE `gBuffer` into `r5` across `__DecompressLZ(file + 0x1c0, gBuffer)`
- * instead of reloading `.L_gBuffer` into `r0` after `__DecompressLZ` as the GBA SDK `#define`
- * macro (`register const void *_src __asm__("r0") = src;`) did. Matches 102/104 instructions.
+ * passing `gBuffer` to `static inline DMA3_COPY(gBuffer, ...)` (or `DMA3_SET`) copies its
+ * address into a formal pseudo, allowing `cse2` to CSE `gBuffer` into `r5` across
+ * `__DecompressLZ(file + 0x1c0, gBuffer)` instead of reloading `gBuffer` into `r0` after
+ * `__DecompressLZ` as a `#define` macro (`register const void *_src __asm__("r0") = src;`) did.
+ * Pure-C alternatives tested without modifying `include/dma.h`:
+ * - `DMA3_SET`: identical formal-pseudo CSE into `r5`.
+ * - Direct `REG_DMA3*` / struct writes: emit `str` instructions instead of `stmia r3!, {r0, r1, r2}; sub r3, #0xc`.
+ * - Separate `extern` view (`__asm__("gBuffer")`): eliminates `r5` CSE across `__DecompressLZ`,
+ *   but GCC emits a duplicate `.pool` entry (`*gBuffer` vs `gBuffer`) and still differs on
+ *   `0x1a` (`r5` hoisting) / `0x1ff` (`r6` hoisting).
+ * Same diff under both default `-fno-strict-aliasing` and `--gaia` (`-fstrict-aliasing`).
  */
 extern unsigned char Lconst_1a[] __asm__(".Lconst_1a");
 __asm__(".equ .Lconst_1a, 0x1a");

@@ -1,23 +1,26 @@
-// Remaining diff: original C used literal addresses 0x02020000 / 0x02020004 (CONST_INT,
-// which stays inside MEM(PLUS) and reloads via `add r2, r1, r6; ldr r2, [r2]`), whereas
-// reference asm symbolizes `ewram_2020000` / `ewram_2020004` (R_ARM_ABS32 SYMBOL_REF),
-// causing loop.c to hoist both base pointers out of the inner loop (`ldr r2, [r6, r1]`).
+/*
+ * Exact size match: 0x2718 == 0x2718 (`sub sp, #8`, exact literal pool after linker sym resolution).
+ * Remaining minor reg/sched diffs:
+ * - Outer loop `dx + w` pseudo gets `r3` instead of `r2` in global.c (`18.greg`), causing an
+ *   anti-dep with `mov r3, r4` in `23.sched2` that schedules `mov ip, r3` at +0x40 instead of end of BB3.
+ * - Scratch reloads in BB1/BB2/BB3 pick `r2`/`r6`/`r2`/`r3` vs target `r6`/`r1`/`r3`/`r6`.
+ * - Inner loop `87` (`adds r3, r6, r3`) vs `99` (`ands r1, r2`) and `p2`/`0x6002840` scheduling at +0x72..+0x7a.
+ */
 void OvlFunc_947_2008cc0(int x, int y, int w, int h, int page, int dx, int dy)
 {
-    extern unsigned int ewram_2020000[];
-    extern unsigned int ewram_2020004[];
-    unsigned int *src;
+    unsigned int *src = (unsigned int *)(gBuffer + (((y << 7) + x) << 2));
     int row;
-    int col;
-
-    src = (unsigned int *)gBuffer + x + (y << 7);
     for (row = dy; row < dy + h; row++) {
+        int col;
         for (col = dx; col < dx + w; col++) {
-            unsigned int v = (*src++ & 0xfff) << 1;
-            unsigned int off = ((page << 4) + (row & 0xf)) * 32 + (col & 0xf);
-            ((unsigned int *)0x6002800)[off] = ewram_2020000[v];
-            ((unsigned int *)0x6002840)[off] = ewram_2020004[v];
+            int *p2;
+            unsigned short val = *src++;
+            int off = ((((row & 0xf) + (page << 4)) << 5) + (col & 0xf)) << 2;
+            int tile = (val & 0xfff) << 3;
+            *(int *)(0x6002800 + off) = *(int *)(0x02020000 + tile);
+            p2 = (int *)(0x02020004 + tile);
+            *(int *)(0x6002840 + off) = *p2;
         }
-        src += 0x80 - w;
+        src = (unsigned int *)((unsigned char *)src + ((0x80 - w) << 2));
     }
 }

@@ -1,9 +1,8 @@
 /*
- * Exact size match under `--gaia` (`-fstrict-aliasing`): 0x230 == 0x230 (282/282 asm lines),
- * matching +0x00..+0xc9 (101 straight insns) and +0x160..+0x230 (104 straight insns) byte-for-byte.
+ * Exact size match under `--gaia` (`-fstrict-aliasing`): 0x230 == 0x230 (28 diff lines total),
+ * matching +0x00..+0xc9, +0xf2..+0x145 (except +0xe0 `r1` vs `r3`), and +0x160..+0x230 byte-for-byte.
  * Remaining mid-function compiler/RTL diffs:
- * - +0xca, +0xf2, +0x122: reload1.c `last_spill_reg` / cse.c `canon_hash` scratch register
- *   choices (`r1`/`r2`/`r3`) on constant/address reloads.
+ * - +0xca, +0xe0: reload1.c `last_spill_reg` scratch register choice (`r3` vs `r1` / `r1` vs `r3`).
  * - +0x146..+0x14a: 23.sched2 ties priority (39) between `adds r2, r5, #0` and
  *   `ldr r3, =iwram_3001388` (`arm_adjust_cost` sets load->call cost to 1) and breaks the tie
  *   on `depend_count` (4 vs 3 due to anti-dep from `mov r5, r8`).
@@ -46,6 +45,7 @@ int OvlFunc_971_2008580(void)
     int timeout = 600;
     int count = OvlFunc_971_200853c(party);
     int slot, failures, i, sent;
+    unsigned short *status = &iwram_3001f64;
 
     for (i = 7; i >= 0; --i)
         remap[i] = 0;
@@ -77,7 +77,7 @@ int OvlFunc_971_2008580(void)
     goto check_empty;
 wait_empty_loop:
     CS971S_Wait(1);
-    if (--timeout < 0 || (iwram_3001f64 & 3) != 3) {
+    if (--timeout < 0 || (*status & 3) != 3) {
         if (++failures > 24) {
             result = -1;
             goto done;

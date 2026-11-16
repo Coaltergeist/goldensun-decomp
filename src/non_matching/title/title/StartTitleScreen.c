@@ -1,16 +1,20 @@
 /*
  * StartTitleScreen -- title-screen sequence driver (ROM 0x080f26ec, 1152 bytes).
  *
- * Status: PARKED (exact 1152/1152 function bytes, exact 6292/6292 TU .text
- * bytes, exact 110/110 TU relocations with zero relocation offset diffs, and
- * +0x50..+0x94 plus +0x1aa..+0x480 = 726 bytes matched byte-for-byte under
- * `-fstrict-aliasing`).
+ * Status: PARKED (exact 1152/1152 function bytes under `-fstrict-aliasing`;
+ * 1020/1152 bytes match byte-for-byte, including +0x00..+0x16, +0x20..+0x36,
+ * +0x50..+0x94 via `u32 *task` `stmia r3!, {r2}` in TITLE_QUEUE_DMA,
+ * +0x1a8..+0x27a, and +0x280..+0x480).
  *
- * Remaining diffs without fakematches:
- *   - +0x18..+0x1e: BB0 `saved = iwram_3001f58` allocated to `r1` instead of
- *     `r3`;
- *   - +0x96..+0x1a8: main scroll-loop register allocation (`prev`/`frame`/`off`
- *     scratch and literal-pool ordering for `ewram_20199c0` vs `0x0600e4c0`);
+ * Remaining diffs without fakematches (62 insns + 2 literal-pool words):
+ *   - +0x18..+0x1e & +0x38..+0x42: `03.cse` folds `saved = iwram_3001f58`, so
+ *     round-robin reload allocates `saved` to `r1` instead of `r3` and shifts
+ *     subsequent reload/scratch registers (`ret` reload at +0x38..+0x42);
+ *   - +0x4c/+0x4e: `Func_80f3824(2, PALFADE_ALL)` arg-setup `INSN_LUID`
+ *     tie-break in `23.sched2`;
+ *   - +0x96..+0x1a6 & +0x194/+0x198: main scroll-loop register allocation and
+ *     round-robin scratch rotation (`sl`/`r9` init order before `08.loop`
+ *     hoisting, plus `ewram_20199c0` vs `0x0600e4c0` literal-pool ordering);
  *   - +0x27c/+0x27e: 1-slot `23.sched2` hoist of `ldr r5, =gBuffer` above
  *     `lsls r2, r2, #2`.
  */
@@ -43,14 +47,19 @@ typedef struct {
 #define TITLE_QUEUE_DMA(queue, dma_dest, dma_src, dma_control) do { \
     u32 savedIme = REG_IME; \
     s32 count; \
+    s32 slot; \
+    u32 *task; \
     SET_IO(REG_IME, REG_ADDR_IME); \
     count = *(queue); \
     if (count < 32) { \
-        DMATask *task = (DMATask *)((u8 *)(queue) + 4 + count * sizeof(DMATask)); \
-        *(queue) = count + 1; \
-        task->src = (dma_src); \
-        task->dest = (dma_dest); \
-        task->control = (dma_control); \
+        slot = count * 12; \
+        count++; \
+        task = (u32 *)(slot + (u32)(queue)); \
+        *(queue) = count; \
+        task++; \
+        *task++ = (u32)(dma_src); \
+        *task++ = (u32)(dma_dest); \
+        *task = (dma_control); \
     } \
     SET_IO(REG_IME, savedIme); \
 } while (0)

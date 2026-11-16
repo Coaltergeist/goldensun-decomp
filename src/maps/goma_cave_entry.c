@@ -94,7 +94,31 @@ void OvlFunc_903_20083d0(void)
   }
 }
 
-INCLUDE_ASM("asm/maps/goma_cave_entry/OvlFunc_903_200843c.s");
+extern unsigned char iwram_3001ebc[];
+
+void OvlFunc_903_200843c(void)
+{
+    short *ptr = *(short **)iwram_3001ebc;
+    int diff;
+
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 8);
+    API_CutsceneWait(20);
+    API_MapActor_SetSpeed(0, 0x3333, 0x1999);
+    API_MapActor_SetSpeed(9, 0x3333, 0x1999);
+    API_PlaySound(0xb9);
+    ptr += 0xb6;
+    diff = (11 - *ptr * 2) << 4;
+    API_MapActor_TravelBy(0, diff, 0);
+    API_MapActor_TravelBy(9, diff, 0);
+    API_MapActor_WaitMovement(0);
+    API_MapActor_WaitMovement(9);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(0, 1);
+    OvlFunc_903_2008348();
+    API_MapActor_PlayPendingSound();
+    API_CutsceneEnd();
+}
 
 void OvlFunc_903_20084cc(void) {}
 
@@ -461,6 +485,11 @@ extern void OvlFunc_903_2008da8(unsigned int);
 
 #include "overlays/common0_effect.h"
 
+static inline void GomaCaveEntry_SetLiftUpdate(struct Actor *actor)
+{
+    actor->update = (actorfun_t)OvlFunc_903_2008da8;
+}
+
 void OvlFunc_903_2008dd8(int id)
 {
     struct Actor *actor;
@@ -481,7 +510,7 @@ void OvlFunc_903_2008dd8(int id)
         actor->prevPos.x = 0x80 << 24;
     }
 
-    actor->update = (actorfun_t *)OvlFunc_903_2008da8;
+    GomaCaveEntry_SetLiftUpdate(actor);
     __MapActor_SetSpeed(id, sx, sy);
     __MapActor_TravelTo(id, 0xa0, 0xc0);
     actor->gravity = 0xcccc;

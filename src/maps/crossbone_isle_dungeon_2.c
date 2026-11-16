@@ -740,7 +740,64 @@ void OvlFunc_947_200901c(int layer, int x, int y, unsigned char *src)
         tile[3] = src[3];
     }
 }
-INCLUDE_ASM("asm/maps/crossbone_isle_dungeon_2/OvlFunc_947_2009074.s");
+int OvlFunc_947_2009074(int actor_id, int arg1)
+{
+    struct Actor *actor;
+    int ret;
+    int spawned_actor;
+    int y;
+    int lim_y;
+    int limit;
+    unsigned int i;
+    int val;
+    int spawn_x;
+    int spawn_y;
+    int spawn_z;
+
+    actor = (struct Actor *)__MapActor_GetActor(actor_id);
+    ret = 0;
+    spawned_actor = 0;
+    __Actor_SetSpriteFlags(actor, 0);
+    y = __Func_8011f54(2, actor->pos.x, actor->pos.z);
+    lim_y = y / 0x100000;
+    limit = lim_y;
+    if (limit < 0) {
+        limit = -limit;
+    }
+    limit++;
+
+    for (i = 0; i <= limit; i++) {
+        val = __Func_8011f54(actor->layer, actor->pos.x, (i << 20) + actor->pos.z);
+        val /= 0x100000;
+        if (lim_y < val) {
+            spawn_x = ((actor->pos.x >> 20) << 20) + 0x80000;
+            if (arg1 == 0) {
+                i += 2;
+                spawn_z = ((i + (actor->pos.z >> 20)) << 20) + 0x20000;
+                spawn_y = val << 20;
+                spawned_actor = OvlFunc_common0_18(spawn_x, spawn_y, spawn_z, 0xdf);
+                y = actor->pos.z - spawn_z + spawn_y;
+            } else {
+                i += 3;
+                spawn_z = ((i + (actor->pos.z >> 20)) << 20) - 0x20000;
+                spawn_y = val << 20;
+                spawned_actor = OvlFunc_common0_18(spawn_x, spawn_y, spawn_z, 0xfd);
+                y = actor->pos.z - spawn_z + spawn_y;
+            }
+            ret = 1;
+            break;
+        }
+    }
+
+    OvlFunc_947_2008da8((unsigned int)actor, y);
+    actor->pos.x = 0;
+    actor->pos.y = 0;
+    actor->pos.z = 0;
+    if (spawned_actor != 0) {
+        __DeleteActor(spawned_actor);
+    }
+    return ret;
+}
 
 void OvlFunc_947_2009174(unsigned int arg0)
 {

@@ -1,7 +1,16 @@
 /*
- * Remaining diff: single 4-instruction sched2 order diff at +0x2b4..+0x2be
- * where ldr r5, =5 fills ldr r2, =0x22b's load delay slot across
- * CS884_State.battleMode = 2 (mov r1, #2; strb r1, [r3, r2]).
+ * Remaining diff: 6-instruction (+0x2b4..+0x2be) `23.sched2` order diff around
+ * `CS884_State.battleMode = 2;` (`adds r3, r3, r2; movs r2, #2; strb r2, [r3, #0]`):
+ * `ldr r5, =5` (`prio = 71`, cost 2 to `adds r0, r5, #0` -> `call`) strictly outranks
+ * `adds r3, r3, r2` (`prio = 70`, cost 1 to `strb` + cost 1 `arm_adjust_cost` to `call`)
+ * and `true_dependence` skips `RTX_UNCHANGING_P` (`mem/u/f`) pool loads, so `sched2` moves
+ * `ldr r5, =5` to `+0x2b4` (before `adds r3, r3, r2`) and puts `adds r0, r5, #0` before
+ * `movs r1, #19` instead of keeping `ldr r5, =5` after `strb` with `movs r1, #19` in its
+ * load-delay slot. Note: `src/maps/vale_plaza.c` is already in `GAIA_SRCS` (`-fstrict-aliasing`),
+ * and `-fno-strict-aliasing` produces the same diff; only a forbidden `do { ... } while (0)`
+ * (`NOTE_INSN_LOOP_BEG`/`END`) barrier blocks the `ldr r5, =5` hoist.
+ * Note when integrating into `src/maps/vale_plaza.c`: `struct CS884_StateView` and
+ * `CS884_State` are already declared above `ValePlaza_MapInit`.
  */
 #include "api.h"
 

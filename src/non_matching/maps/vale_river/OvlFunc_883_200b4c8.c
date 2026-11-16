@@ -1,11 +1,20 @@
 /*
  * Remaining diff vs asm/maps/vale_river/OvlFunc_883_200b4c8.s:
- * All literal pools, control flow, and calls match. In basic block 0,
- * local-alloc assigns the call-crossing QImode zero constant and
- * gScript_883__0200e590 to r6, pushing global-alloc's sceneActor into r7
- * (whereas target allocates sceneActor to r6, gScript_883__0200e590 and
- * actor to r7, and QImode zero to r10/sl, freeing r6 so 0xd00000 is
- * rematerialized instead of held in r6 across Actor_TravelTo).
+ * All literal pools, control flow, and calls match (ref .text 24916 B vs
+ * candidate 24896 B, 1026 vs 1016 insns). In basic block 0, local-alloc assigns
+ * the QImode 0 constant and gScript_883__0200e590 to r6, pushing global-alloc's
+ * sceneActor into r7 and actor (11/12/13) into r0 (whereas target has r7 = #0
+ * at Func_8093554, r10 = #0 for actors 11/12/13, actor in r7, sceneActor in r6,
+ * gScript_883__0200e590 reallocated to r7, and 0xd00000 rematerialized 3x in r2).
+ *
+ * Verified with tools/gcc296 RTL/permuter (clean C + -O2 -fcall-used-r4):
+ * forcing actor into r7 makes sceneActor evict r6 via global.c:1175 kick-out,
+ * matching insns 122..1026 (rematerialized 0xd00000 + gScript in r7) except 1
+ * sched2 swap at sceneActor->update; however under -fcall-used-r4 (confirmed by
+ * r4 clobber at mov r4, #4 without saving r4), local-alloc.c:1990 forbids r7
+ * and global.c REG_ALLOC_ORDER picks r4/r5 before r7 whenever calls_crossed == 0,
+ * blocking r7 for Func_8093554's #0 and 0-call-crossing actor without artificial
+ * call crossings or forbidden register pins.
  */
 #include "api.h"
 #include "actor.h"

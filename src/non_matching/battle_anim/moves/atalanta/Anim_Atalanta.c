@@ -1,12 +1,16 @@
 /*
- * Non-matching clean C for Anim_Atalanta (all 87 relocations, 8-byte .rodata,
- * 0x78 stack frame, switch jump table, and particle/matrix logic match).
+ * Non-matching clean C for Anim_Atalanta (all 87 relocations and 8-byte .rodata
+ * match, `state` is in `fp` (`r11`), and the final loop shares `u8 w = Data_ede9f[idx]`).
  *
- * Remaining diff (.text ref=0x944 vs new=0x998):
- *   08.loop strength-reduces `k = i * 3; mtx = ...; pb = ...` in the initial
- *   particle/matrix init loop and `state->sprites + tile_inc` in the 3x3 tile
- *   loop (and hoists `FX(movement_xCoord)`), creating extra call-crossing GIV
- *   pseudos that displace `state` from `fp` (r11) to `[sp, #0x30]`.
+ * Remaining diff (.text ref=0x944 vs new=0x94c, +8B; stack ref=0x78 vs new=0x80):
+ *   1. `07.gcse` hoists `FX(movement_xCoord)` out of the 3x3 `row` loop (`0x31a`),
+ *      while target reloads `movement_xCoord` inside `row` (`0x30e`).
+ *   2. `08.loop` GIV-reduces `mtx`/`pb` in the particle/matrix init loop (`0x1f6..0x268`)
+ *      and `state->sprites + tile_inc` in the `row` loop (`0x328`, `0x356`), while
+ *      target keeps those unreduced and places `mov r8, r7` (`tile_y`) at `0x322`.
+ *   3. Those extra live pseudos spill `j` in the trail draw loop (`0x5be`) and add 8B
+ *      stack frame (`0x80` vs `0x78`). Moving `k`/`mtx`/`pb` before `particle->px.raw`
+ *      reaches `0x948` (+4B).
  */
 #include "palette.h"
 
@@ -125,7 +129,7 @@ void Anim_Atalanta(AnimContext *context)
     u8 *dest = *(u8 **)((u8 *)&iwram_3001f00 - 0x10);
     MoveAnimState *state = *(MoveAnimState **)((u8 *)&iwram_3001f00 - 0x14);
     signed char *movementPattern;
-    int i, frame, j;
+    int i, frame;
     u8 *dest_00 = *(u8 **)((u8 *)&iwram_3001f00 - 0x0c);
     u32 originalBGCoords = iwram_3001ad0[2];
     Draw2DFn draw2D[2];
@@ -185,6 +189,7 @@ void Anim_Atalanta(AnimContext *context)
         int k;
         u8 *mtx;
         u8 *pb;
+        int j;
 
         particle->px.raw = FX((Random() % 0x60) + 0xc);
         particle->py.raw = FX((Random() & 0x3f) + 0x20);
@@ -302,6 +307,7 @@ void Anim_Atalanta(AnimContext *context)
                 int k = i * 3;
                 u8 *mtx = ewram_2013800 + k * 0x180;
                 u8 *pb = gBuffer + k * 0xe0;
+                int j;
                 for (j = 0; j != 24; j++) {
                     if (*(s32 *)pb > 0) {
                         MatrixLoad(mtx);
@@ -361,11 +367,12 @@ void Anim_Atalanta(AnimContext *context)
             if (particle->aux >= 0) {
                 if (particle->aux < 0x18) {
                     int idx = particle->aux / 4;
+                    u8 w = Data_ede9f[idx];
                     (*draw2D[i & 1])(dest,
                         gBuffer + Data_edeb2[idx],
-                        (particle->px.raw - (Data_ede9f[idx] >> 1)) - 8,
+                        (particle->px.raw - (w >> 1)) - 8,
                         (particle->py.raw + Data_edeab[idx]) - 0x28,
-                        Data_ede9f[idx],
+                        w,
                         Data_edea5[idx]);
                     if (particle->aux < 0xc) {
                         (*draw2D[0])(dest, state->buffer + 0x16ac, particle->px.raw + 4, particle->py.raw - 0x28, 0x10, 0x15);

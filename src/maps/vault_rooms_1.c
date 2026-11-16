@@ -2889,14 +2889,118 @@ void OvlFunc_899_200c8a4(int arg0, unsigned char *p) {
     __Actor_TravelTo(arg0, ((int)p[0] << 19) + (0x90 << 15), 0, ((int)p[1] << 19) + (0x9e << 18));
 }
 
-INCLUDE_ASM("asm/maps/vault_rooms_1/OvlFunc_899_200c8c8.s");
+extern unsigned char *OvlFunc_899_200c754(unsigned char *, short *);
+extern unsigned int __Random(void);
+extern int __atan2(int, int);
+extern void __Actor_SetAnim(struct Actor *, int);
+extern u16 Lm899_64f8 __asm__(".Lm899_64f8");
+
+void OvlFunc_899_200c8c8(void)
+{
+    struct Actor *actor;
+    unsigned char *scene, *node, *next;
+    short facing;
+    int dx, dz, angle, blocked;
+    {
+        struct Actor *leader = __GetFieldActor(0);
+        u16 f, u;
+        blocked = 0;
+        scene = iwram_3001ebc__a1;
+        actor = __GetFieldActor(2);
+        node = OvlFunc_899_200c704(&actor->pos);
+        if (node && actor->prevPos.x == (int)0x80000000) {
+            dx = (unsigned int)actor->pos.x - (unsigned int)leader->pos.x;
+            dz = (unsigned int)actor->pos.z - (unsigned int)leader->pos.z;
+            facing = leader->facing;
+            angle = (short)__atan2(dz, dx);
+            dx >>= 16;
+            dz >>= 16;
+            if (*(short *)(scene + 0x19c) > 0 &&
+                dx * dx + dz * dz <= 400 &&
+                (f = facing, u = angle, angle = (short)(f - u), angle > -0x1000) &&
+                angle < 0x1000) {
+                blocked = 0;
+            } else if (dx * dx + dz * dz > 64) {
+                facing = actor->facing;
+            }
+            next = OvlFunc_899_200c754(node, &facing);
+            if (!OvlFunc_899_200c840(next)) {
+                OvlFunc_899_200c8a4((int)actor, next);
+                __Actor_SetAnim(actor, 2);
+            } else {
+                __Actor_SetAnim(actor, 1);
+            }
+        }
+    }
+    actor = __GetFieldActor(24);
+    node = OvlFunc_899_200c704(&actor->pos);
+    if (node && actor->prevPos.x == (int)0x80000000) {
+        {
+            unsigned int r = ((__Random() << 1) >> 16);
+            int d = r * 0x6000;
+            short *fp = &facing;
+            int f2 = (u16)actor->facing;
+            int nf = (u16)(d - 0x3000) + f2;
+            *fp = nf;
+        }
+        next = OvlFunc_899_200c754(node, &facing);
+        if (OvlFunc_899_200c840(next)) {
+            facing = actor->facing + 0x8000;
+            next = OvlFunc_899_200c754(node, &facing);
+            if (!OvlFunc_899_200c840(next)) {
+                API_MapActor_Surprise(24, 2);
+            } else {
+                __Actor_SetAnim(actor, 4);
+                blocked = 1;
+                goto actor25;
+            }
+        }
+        OvlFunc_899_200c8a4((int)actor, next);
+        __Actor_SetAnim(actor, 2);
+    }
+actor25:
+    actor = __GetFieldActor(25);
+    node = OvlFunc_899_200c704(&actor->pos);
+    if (node && actor->prevPos.x == (int)0x80000000) {
+        {
+            unsigned int r = ((__Random() * 3) >> 16);
+            int d = r * 0x3000;
+            short *fp = &facing;
+            int f2 = (u16)actor->facing;
+            int nf = (u16)(d - 0x3000) + f2;
+            *fp = nf;
+        }
+        next = OvlFunc_899_200c754(node, &facing);
+        if (OvlFunc_899_200c840(next)) {
+            facing = actor->facing + 0x8000;
+            next = OvlFunc_899_200c754(node, &facing);
+            if (!OvlFunc_899_200c840(next)) {
+                API_MapActor_Surprise(25, 2);
+            } else {
+                __Actor_SetAnim(actor, 4);
+                blocked += 2;
+                goto finish;
+            }
+        }
+        OvlFunc_899_200c8a4((int)actor, next);
+        __Actor_SetAnim(actor, 2);
+    }
+finish:
+    if (blocked) {
+        if (++Lm899_64f8 > 29) {
+            int val = blocked + 200;
+            *(short *)(scene + 0x182) = val;
+        }
+    } else {
+        Lm899_64f8 = blocked;
+    }
+}
+
 static inline void Vault_Func_80935b0(int a0, int a1, int a2, int a3)
 {
     extern void __Func_80935b0(int, int, int, int);
     __Func_80935b0(a0, a1, a2, a3);
 }
-extern void OvlFunc_899_200c8c8(void);
-extern u16 Lm899_64f8 __asm__(".Lm899_64f8");
 
 void OvlFunc_899_200cb2c(void)
 {

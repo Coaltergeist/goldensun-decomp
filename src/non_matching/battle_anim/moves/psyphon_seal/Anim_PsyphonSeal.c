@@ -1,7 +1,19 @@
 /*
- * Non-matching clean C candidate for Anim_PsyphonSeal (exact .text size 0x40c and 47 relocs).
- * Matched stack-slot layout (0x44..0x2c) via declaration order; remaining diff at 0x0e is
- * `baseSlots` spilled to stack instead of allocated to `r8`.
+ * Non-matching clean C candidate for Anim_PsyphonSeal (src/battle_anim/moves/psyphon_seal.c).
+ *
+ * Status:
+ * - Default (-fno-strict-aliasing): 1,032/1,036 bytes .text, 12/12 bytes .rodata,
+ *   41/41 relocs, exact 0x78 stack frame, 434/436 insns (19 instruction diff ops).
+ * - --gaia (-fstrict-aliasing): 1,032/1,036 bytes .text, 434/436 insns (16 instruction diff ops).
+ * - Exact instruction match from REF 0x166 (blitParam update) through epilogue (0x3ce):
+ *   all matrix, particle, line-drawing, DrawPsyphonLeft, mirror, and frameReady code.
+ * - Remaining diff (2 regions):
+ *   1. BB0 (0x0e..0x2e): REF keeps `baseSlots` (iwram_3001eec) in `r8` with `ldmia r3!, {r2}`
+ *      while loading `slots[0]`/`slots[1]` and `baseSlots[2]`/`baseSlots[-27]` before
+ *      `AnimStart(0)`; this candidate spills/re-allocates via `slots[0]`/`slots[1]` in `r3`.
+ *   2. BB5 (0x154..0x15e): `if (frame > 16 && (frame & 15) == 0)` reloads `frame` (`[sp, #60]`)
+ *      into `r3` then `r4`, whereas REF loads `frame` into `r4` before `mirror = iwram_3001f0c`
+ *      and reuses `r4` across `ble`.
  */
 #include "anim.h"
 #include "task.h"
@@ -57,17 +69,22 @@ extern void Func_80e3944(const struct PsyphonSealVec *, struct PsyphonSealVec *)
 extern void WaitFrames(int);
 extern void gfree(int);
 
+static inline void DrawPsyphonLeft(DrawFunc fn, u8 *render, u8 *gfx, struct PsyphonSealVec *scr, int w)
+{
+    fn(render, gfx, scr->x - w, scr->y - w, 24, 48);
+}
+
 void Anim_PsyphonSeal(struct AnimContext *context)
 {
     u8 **baseSlots = iwram_3001eec;
     u8 **slots = baseSlots;
-    struct PsyphonSealState *state = (struct PsyphonSealState *)*slots++;
-    u8 *render = *slots;
+    struct PsyphonSealState *state = (struct PsyphonSealState *)slots[0];
+    u8 *render = slots[1];
     int frame;
     DrawFunc mirror, draw;
     int t;
-    u8 *particleGfx = baseSlots[2];
-    u8 *camera = baseSlots[-27];
+    u8 *particleGfx;
+    u8 *camera;
     int scroll;
     u8 *file;
     struct PsyphonSealVec pos, vec, screen;
@@ -76,6 +93,8 @@ void Anim_PsyphonSeal(struct AnimContext *context)
     int i, k, local;
 
     state->context = context;
+    particleGfx = baseSlots[2];
+    camera = baseSlots[-27];
     AnimStart(0);
     (*(vu16 *)0x04000020) = 0x100;
     file = GetFile((int)_FILE_79);
@@ -118,53 +137,52 @@ void Anim_PsyphonSeal(struct AnimContext *context)
             vec.x = actor[2];
             vec.y = actor[3];
             vec.z = actor[4];
-            Func_80e3944(&vec, &screen);
-            screen.x = pos.x + scroll;
-            screen.y -= 24;
-            if (local <= 67) {
-                struct PsyphonSealParticle *a, *b, *p;
-                int angle = 0;
-                int scale = 0x2a000 - local * 0x600;
-                int rot = (64 - local) << 9;
-                for (i = 0; i != 3; i++) {
-                    InitMatrixStack();
-                    if (local <= 63) {
-                        scaleVec[0] = scale;
-                        scaleVec[1] = scale;
-                        scaleVec[2] = scale;
-                        MatrixScalev(scaleVec);
-                        MatrixRoll(rot);
-                        MatrixYaw(rot);
+            {
+                struct PsyphonSealVec *scr = &screen;
+                Func_80e3944(&vec, scr);
+                scr->x = pos.x + scroll;
+                scr->y -= 24;
+                if (local <= 67) {
+                    struct PsyphonSealParticle *a, *b, *p;
+                    for (i = 0; i != 3; i++) {
+                        p = &state->particles[t * 32 + i];
+                        InitMatrixStack();
+                        if (local <= 63) {
+                            scaleVec[0] = 0x2a000 - local * 0x600;
+                            scaleVec[1] = 0x2a000 - local * 0x600;
+                            scaleVec[2] = 0x2a000 - local * 0x600;
+                            MatrixScalev(scaleVec);
+                            MatrixRoll((64 - local) << 9);
+                            MatrixYaw((64 - local) << 9);
+                        }
+                        MatrixRoll(i * 0x5555);
+                        Func_80e3944(&Data_ee134, &vec);
+                        p->x = vec.x + scr->x;
+                        p->y = vec.y + scr->y + 16;
                     }
-                    MatrixRoll(angle);
-                    Func_80e3944(&Data_ee134, &vec);
-                    p = &state->particles[t * 32 + i];
-                    p->x = screen.x + vec.x;
-                    p->y = vec.y + screen.y + 16;
-                    angle += 0x5555;
-                }
-                for (i = 0; i != 3; i++) {
-                    a = &state->particles[i + t * 32];
-                    b = &state->particles[(i + 1) % 3 + t * 32];
-                    {
-                        int size = 5 - local / 16;
-                        for (k = 0; k != 24; k++) {
-                            int x = a->x + k * (b->x - a->x) / 24;
-                            int y = a->y + k * (b->y - a->y) / 24;
-                            draw(render, state->graphics + 0x1000 + Data_ede5c[size - 1],
-                                 x - size, y - size, size * 2, size * 2);
+                    for (i = 0; i != 3; i++) {
+                        a = &state->particles[i + t * 32];
+                        b = &state->particles[(i + 1) % 3 + t * 32];
+                        {
+                            int size = 5 - local / 16;
+                            for (k = 0; k != 24; k++) {
+                                int x = a->x + k * (b->x - a->x) / 24;
+                                int y = a->y + k * (b->y - a->y) / 24;
+                                draw(render, state->graphics + 0x1000 + Data_ede5c[size - 1],
+                                     x - size, y - size, size * 2, size * 2);
+                            }
                         }
                     }
                 }
-            }
-            if (local > 63) {
-                draw(render, state->graphics, screen.x - 24, screen.y - 24, 24, 48);
-                mirror(render, state->graphics, screen.x, screen.y - 24, 24, 48);
+                if (local > 63) {
+                    DrawPsyphonLeft(draw, render, state->graphics, scr, 24);
+                    mirror(render, state->graphics, scr->x, scr->y - 24, 24, 48);
+                }
             }
         }
         gfree(0x2f);
         gfree(0x2e);
-        state->frameReady = 1;
+        state->frameReady = t;
         WaitFrames(1);
     }
     StopTask(Task_BlitAnim);

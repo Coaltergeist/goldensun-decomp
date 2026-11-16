@@ -689,8 +689,59 @@ struct Wave970 {
     int val_f1c;
 };
 
-INCLUDE_ASM("asm/maps/lalivero_ship/OvlFunc_970_2008f80.s");
-extern void OvlFunc_970_2008f80(void);
+#include "math.h"
+
+extern struct Wave970 *gWave970 __asm__("iwram_3001ed8");
+extern short iwram_3001ad0[];
+extern short Lm970_14c8[] __asm__(".Lm970_14c8");
+
+static inline int WaveSample970(int acc, int scale, unsigned short offset)
+{
+    return (unsigned short)(fx32_multiply(Lm970_14c8[(acc >> 16) & 0xff], scale) / 256) + offset;
+}
+
+void OvlFunc_970_2008f80(void)
+{
+    struct Wave970 *base;
+    int offset2;
+    short *out;
+    int step;
+    int acc;
+    short offset1;
+    int scale;
+    int i;
+
+    base = gWave970;
+    offset2 = iwram_3001ad0[7];
+
+    out = &base->buf[base->page ^ 1][0][0];
+    step = base->val_f10;
+    acc = (base->timer + (unsigned short)offset2) * base->val_f08;
+    offset1 = iwram_3001ad0[6];
+    i = 0;
+    scale = base->val_f18;
+
+    for (; i != 160; i++) {
+        *out = WaveSample970(acc, scale, offset1);
+        acc += step;
+        out += 2;
+    }
+
+    out = &base->buf[base->page ^ 1][0][1];
+    step = base->val_f14;
+    acc = (base->timer + (unsigned short)offset2) * base->val_f0c;
+    i = 0;
+    scale = base->val_f1c;
+
+    for (; i != 160; i++) {
+        *out = WaveSample970(acc, scale, offset2);
+        acc += step;
+        out += 2;
+    }
+
+    base->timer++;
+    base->page ^= 1;
+}
 extern void *__galloc_ewram(int tag, int size);
 
 void OvlFunc_970_20090d4(int p0, int p1, int p2, int p3, int p4, int p5, int p6)

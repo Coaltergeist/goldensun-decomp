@@ -920,7 +920,70 @@ void OvlFunc_887_20093b4(void) {
 	API_Func_8010704(0x19, 0xf, 2, 2, 0x19, 0x19);
 }
 
-INCLUDE_ASM("asm/maps/vale_rooms_2/OvlFunc_887_20093e4.s");
+extern void *__galloc_iwram(int, int);
+extern void __LoadItemIcon(int);
+extern unsigned int __UploadSpriteGFX(unsigned int, unsigned int, void *);
+extern void __gfree(int);
+extern void __Actor_SetScript(struct Actor *, const void *);
+extern void __Actor_WaitScript(struct Actor *);
+extern void __DeleteActor(struct Actor *);
+extern unsigned char gScript_887__02009eac[];
+extern unsigned char gScript_887__02009ecc[];
+
+extern struct ValeRooms2EbcView iwram_3001ebc_view __asm__("iwram_3001ebc");
+
+void OvlFunc_887_20093e4(void)
+{
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *icon;
+    int zero;
+
+    API_CutsceneStart();
+    API_Func_80933f8(-1, -1, -1, 0);
+    API_WaitFrames(1);
+    zero = 0;
+    API_MapActor_SetPos(0, zero, zero);
+    API_MapActor_SetPos(0x12, 0xf0 << 17, 0xca << 16);
+    API_WaitFrames(1);
+    API_SetCameraTarget(0x12, 1);
+
+    actor = API_CreateActor(0x16, 0xa4 << 17, 0x80 << 10, 0xc3 << 16);
+    actor->__unk55 = zero;
+    sprite = actor->sprite;
+    actor->pos.y = 0xa0 << 11;
+    sprite->numLayers = zero;
+    sprite->oam.attr0Bits.bpp = 0;
+    sprite->oam.palette = 0;
+
+    icon = __galloc_iwram(0x11, 0x608);
+    __LoadItemIcon(0xe0);
+    icon += 0x400;
+    __UploadSpriteGFX(sprite->slot, 0x80, icon);
+    __gfree(0x11);
+
+    iwram_3001ebc_view.sub0->unk1c0 = 0x202;
+
+    API_MapTransitionIn();
+    API_MapActor_SetSpeed(0x12, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnimWait(0x12, 0xf0 << 1, 0xb0);
+    API_MapActor_TravelToAnimWait(0x12, 0xd2 << 1, 0xa4);
+    API_MapActor_TravelToAnimWait(0x12, 0xa3 << 1, 0xb9);
+    API_Func_8092adc(0x12, 0x80 << 7, 0xa);
+
+    __Actor_SetScript(actor, gScript_887__02009eac);
+    __Actor_WaitScript(actor);
+    __Actor_SetScript(actor, gScript_887__02009ecc);
+    __Actor_WaitScript(actor);
+    API_CutsceneWait(0x14);
+    __DeleteActor(actor);
+
+    API_MapActor_Jump(0x12, 2, 0x14);
+    API_Func_8092adc(0x12, 0, 0x28);
+    API_MapTransitionOut();
+    API_WaitMapTransition();
+    API_Func_8091e9c(0x16);
+}
 
 extern unsigned int iwram_3001e40;
 extern void __Actor_SetColorswap(unsigned int a, unsigned int b);

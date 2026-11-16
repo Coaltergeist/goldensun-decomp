@@ -1,15 +1,16 @@
 /*
  * Non-matching decompilation of Anim_Unused_Haunt.
  *
- * Matches 0x000..0x0f5 (init, palette copy, LZ decompression, particle init,
- * and outer loop setup) 100% byte-for-byte.
- * Remaining diff:
- * - Unfinished unused move (contains dead `blitMode = 1` / `blitParam = 0`
- *   writes and unused `screen` projection). In the target binary, `frame - i * 16`
- *   was strength-reduced into a loop GIV and tested with separate `< 0` and
- *    `> 63` branches, whereas GCC 2.96 `fold-const.c` folds `t >= 0 && t < 64`
- *   into `(unsigned)t <= 63` (single GIV benefit 34 < threshold 125) unless an
- *   additional dead use of `frame - i * 16` was present in the unfinished source.
+ * Status:
+ * - Exact section size: 616/616 bytes .text, 20/20 relocations, exact stack frame (sub sp, #88).
+ * - Matches 0x000..0x0c3, 0x0ca..0x153, 0x15c..0x16f, and 0x174..0x267 byte-for-byte.
+ * - Remaining diff (18 diff lines / 9 insns across 3 spots):
+ *   1. 0xc4..0xc8: sched2 schedules `movs r3, #225; lsls r3, #7` (prio 3) before `movs r4, #0` (prio 1).
+ *   2. 0x154..0x15a: loading `wx`/`wy` before `&world` avoids `08.loop` hoisting `&world`
+ *      (`sub sp, #92`), leaving `ldr r2, [r6, #8]; ldr r3, [r6, #12]; add r0, sp, #76; str r2, [r0]`
+ *      vs `ldr r3, [r6, #8]; add r0, sp, #76; str r3, [r0]; ldr r3, [r6, #12]`.
+ *   3. 0x170..0x172: sched2 schedules `movs r4, #0` before `str r3, [r5, #0]` (prio 2 tie broken by
+ *      depend_count for `mov r8, r4`).
  */
 #include "anim.h"
 #include "math.h"
@@ -68,9 +69,11 @@ void Anim_Unused_Haunt(struct AnimContext *context)
     DrawFunc draw[2];
     int i;
     u8 *camera;
-    int offset, k;
+    int offset, k, side;
+    s32 wx, wy;
     void **actor;
     s32 *obj;
+    int t;
     struct HauntVec world, screen, pos;
 
     camera = baseSlots[-27];
@@ -91,8 +94,9 @@ void Anim_Unused_Haunt(struct AnimContext *context)
     draw[0] = (DrawFunc)iwram_3001eec[7];
     StartTask(Task_BlitAnim, 0x480);
 
+    side = state->context->side;
     offset = 0;
-    if (state->context->side)
+    if (side)
         offset = -112;
     (*(vu32 *)0x04000028) = offset << 8;
 
@@ -109,12 +113,15 @@ void Anim_Unused_Haunt(struct AnimContext *context)
             actor = _GetBattleActor((s16)state->context->targets[i]);
             obj = *actor;
             GetBattleActorPos2((s16)state->context->targets[i], &pos);
+            t = frame - i * 16;
             pos.x += offset;
-            if (frame - i * 16 >= 0 && frame - i * 16 < 64) {
+            if (t >= 0 && t < 64) {
                 InitMatrixStack();
                 MatrixSetLook(camera, camera + 0xc);
-                world.x = obj[2];
-                world.y = obj[3];
+                wx = obj[2];
+                wy = obj[3];
+                world.y = wy;
+                world.x = wx;
                 world.z = obj[4];
                 Func_80e3944(&world, &screen);
                 screen.x += offset;
