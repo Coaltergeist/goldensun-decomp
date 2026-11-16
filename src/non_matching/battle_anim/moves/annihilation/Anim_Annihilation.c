@@ -1,7 +1,16 @@
+/*
+ * Non-matching clean C candidate for Anim_Annihilation (exact .text size 0x410 == 0x410 / 1040 bytes,
+ * 43/43 relocations under GAIA_CFLAGS / -fstrict-aliasing).
+ *
+ * Remaining diff (1 hunk, +0x24a..+0x252, 4 insns / 8 bytes):
+ *   In `pair[0](render, gBuffer + (offset + image * 0xc80), ...)`, local-alloc allocates `gBuffer`
+ *   to `r3` (per REG_ALLOC_ORDER {3, 2, 1, 0}) and sched2 hoists `ldr r3, =gBuffer` to +0x24a,
+ *   delaying `ldr r3, [sp, #24]` (`&target`) to +0x252; reference allocates `gBuffer` to `r2`
+ *   at +0x250 (`adds r1, r2, r1` frees `r2` at +0x24e) and sched2 hoists `ldr r3, [sp, #24]` to +0x24c.
+ *   All bytes 0x000..0x249 and 0x254..0x410 match byte-for-byte.
+ */
 #include "anim.h"
-
 #include "dma.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -17,72 +26,51 @@ struct AnnihilationPosition {
 };
 
 struct AnnihilationState {
-               u8 graphics[0x7080];
-               struct AnnihilationParticle particles[64];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x77a8 - 0x7788];
-               s32 unk77A8;
-               u8 pad_77ac[0x7824 - 0x77ac];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x7080];
+    struct AnnihilationParticle particles[64];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x77a8 - 0x7788];
+    s32 unk77A8;
+    u8 pad_77ac[0x7824 - 0x77ac];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 extern u8 *iwram_3001eec[];
-
 extern void *gPtrs[];
-
 extern u8 gBuffer[];
-
-extern const u16 Data_ede48[];
-
+extern u16 Data_ede48[];
 extern char _FILE_96[], _FILE_63[], _FILE_73[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void LoadVFXFile(int, void *, int, int);
-
 extern void _Func_80b82c4(int, int, int, int);
-
 extern s32 **_GetBattleActor(int);
-
 extern unsigned int Random(void);
-
 extern void GetBattleActorPos2(int, struct AnnihilationPosition *);
-
 extern void Task_BlitAnim(void);
-
 extern void _Func_80bd7dc(int);
-
 extern void _PlaySound(int);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern void BuildDraw2DFuncs(int, DrawFunc *);
-
 extern void Unk_080D655C(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(void *, void *);
-
-extern void Func_80e3944(struct AnnihilationParticle *, struct AnnihilationPosition *);
-
+extern int Func_80e3944(struct AnnihilationParticle *, struct AnnihilationPosition *);
 extern void Func_80e38b8(struct AnnihilationParticle *, int, int);
-
 extern void _SetBattleActorKnockback(int, int);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void UpdateScreenShake(int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
+
+static inline void ResetTarget(int id)
+{
+    SetBattleActorState(id, 10, -1, -1, 0);
+}
 
 void Anim_Annihilation(struct AnimContext *context)
 {
@@ -137,12 +125,13 @@ void Anim_Annihilation(struct AnimContext *context)
             else
                 BuildDraw2DFuncEx(0x2e, 7, 7, 7, 3);
             pair[0] = (DrawFunc)gPtrs[0x2e];
-            if (state->context->side == 0)
-                pair[0](render, state->graphics + (frame - 6) * 0xd80,
-                        user.x / 2 - 24, user.y - 24, 48, 72);
-            else
-                pair[0](render, state->graphics + (frame - 6) * 0xd80,
-                        user.x / 2, user.y - 24, 48, 72);
+            {
+                u8 *gfx = state->graphics + (frame - 6) * 0xd80;
+                if (state->context->side == 0)
+                    pair[0](render, gfx, user.x / 2 - 24, user.y - 24, 48, 72);
+                else
+                    pair[0](render, gfx, user.x / 2, user.y - 24, 48, 72);
+            }
             gfree(0x2e);
         }
         if ((unsigned int)(frame - 16) <= 31) {
@@ -151,7 +140,10 @@ void Anim_Annihilation(struct AnimContext *context)
             pair[0] = (DrawFunc)gPtrs[0x2e];
             if (image > 2)
                 image = 2;
-            offset = state->context->param != 0 ? 0x2580 : 0;
+            if (state->context->param == 0)
+                offset = 0;
+            else
+                offset = 0x2580;
             pair[0](render, gBuffer + (offset + image * 0xc80),
                     target.x / 2 - 20, target.y - 48, 40, 80);
             Unk_080D655C(10000);
@@ -185,9 +177,9 @@ void Anim_Annihilation(struct AnimContext *context)
             state->unk77A8 = 4;
         }
         if (frame == 6)
-            SetBattleActorState((s16)state->context->targets[0], 10, -1, -1, 0);
+            ResetTarget((s16)state->context->targets[0]);
         if (frame == 14)
-            SetBattleActorState((s16)state->context->targets[0], 10, -1, -1, 0);
+            ResetTarget((s16)state->context->targets[0]);
         UpdateScreenShake(16, 16);
         Func_80cd52c();
         state->frameReady = 1;

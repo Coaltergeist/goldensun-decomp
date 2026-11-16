@@ -1,10 +1,16 @@
 #include "nonmatching.h"
 #include "actor.h"
+#include "math.h"
 
 extern void Field_Ply(void);
 extern void Func_8097174(void);
 
-INCLUDE_ASM("asm/field/moves/ply/Func_80992f0.s");
+void Func_80992f0(struct Actor *a)
+{
+    a->pos.x = a->prevPos.x + fx32_multiply(0x40000, sin(a->waveCounter << 9));
+    a->waveCounter++;
+    a->waveCounter = (a->waveCounter + 0x80) % 0x80;
+}
 
 extern unsigned char *iwram_3001f30__k2 __asm__("iwram_3001f30");
 extern void vec3_translate(int, int, int *);

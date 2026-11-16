@@ -188,14 +188,24 @@ void OvlFunc_901_200858c(void)
     a->waveCounter = 1;
     API_SetFlag(0x307);
 }
-struct Actor640 {
-  char pad[6];
-  short facing;
-  char pad2[0x64 - 8];
-  unsigned short flags;
-};
+void OvlFunc_901_2008640(void)
+{
+    struct Actor *a;
+    short dir;
 
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008640.s");
+    a = (struct Actor *)__MapActor_GetActor(0xf);
+    dir = a->facing;
+    a->waveCounter |= 2;
+    __CutsceneStart();
+    API_MessageID(0x1cb4);
+    API_MapActor_SetAnim(0xf, 0);
+    API_MapActor_TurnToFaceActor(0xf, 0, 2);
+    API_ActorMessage_Wait(0xf, 0, 0xa);
+    a->facing = dir;
+    API_WaitFrames(1);
+    __CutsceneEnd();
+    a->waveCounter = 0;
+}
 
 extern unsigned char *iwram_3001ebc;
 
@@ -481,7 +491,24 @@ void OvlFunc_901_2008bf8(void)
   __Func_8010560(L17ae, 0x26, 6);
   OvlFunc_901_2008a80(0x78, 0x90, 0xa);
 }
-INCLUDE_ASM("asm/maps/vault_2/OvlFunc_901_2008c1c.s");
+void OvlFunc_901_2008c1c(void)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0);
+    struct Sprite *sprite = actor->sprite;
+
+    __PlaySound(0xbc);
+    API_CopyMapTiles(0x2a, 0x21, 0x22, 0x10, 2, 2);
+    API_CopyMapTiles(0x2a, 0x23, 0x24, 0x10, 2, 2);
+    API_CutsceneWait(4);
+    API_CopyMapTiles(0x28, 0x21, 0x22, 0x10, 2, 2);
+    API_CopyMapTiles(0x28, 0x23, 0x24, 0x10, 2, 2);
+    API_CutsceneWait(4);
+    API_Func_8010704(0x21, 0x15, 2, 2, 3, 0x10);
+    actor->flags &= ~1;
+    sprite->oam.priority = 3;
+    OvlFunc_901_2008a80(0x40, 0x88 << 1, 0xb);
+}
+
 extern unsigned char L17c4[] __asm__(".Lm901_17c4");
 
 void OvlFunc_901_2008cc8(void)
@@ -633,5 +660,42 @@ void *Vault2_GetEvents(void) {
     return (void *)gOvl_020097dc;
 }
 
-INCLUDE_ASM("asm/maps/vault_2/Vault2_MapInit.s");
+struct Vault2State {
+    unsigned char pad[0x1c2];
+    short room;
+};
+extern struct Vault2State gVault2State __asm__("gState");
+extern struct Actor *OvlFunc_common0_70(int, int, int, int);
+
+int Vault2_MapInit(void)
+{
+    if (API_GetFlag(0x200)) {
+        API_Func_8010704(0x37, 0x1a, 4, 2, 0x17, 0x1a);
+    }
+    OvlFunc_common0_70(0x800000, 0, 0x1a40000, 0xdf);
+    API_CopyMapTiles(0x2d, 0x29, 8, 0x2d, 3, 3);
+    API_WaitFrames(1);
+    ((struct Actor *)__MapActor_GetActor(0xe))->update = (actorfun_t)OvlFunc_901_2008400;
+    ((struct Actor *)__MapActor_GetActor(0xe))->waveCounter = 1;
+    ((struct Actor *)__MapActor_GetActor(0xf))->update = (actorfun_t)OvlFunc_901_2008400;
+    ((struct Actor *)__MapActor_GetActor(0xf))->waveCounter = 0;
+    if (API_GetFlag(0x858)) {
+        API_MapActor_SetPos(0x12, 0xd80000, 0x1880000);
+    }
+    if (gVault2State.room <= 2) {
+        if (!API_GetFlag(0x34) && !API_GetFlag(0x109)) {
+            API_ClearFlag(0x867);
+        }
+    }
+    if (API_GetFlag(0x867) && !API_GetFlag(0x34)) {
+        API_MapActor_SetPos(0x15, 0x1980000, 0x780000);
+    }
+    if (gVault2State.room == 11) {
+        API_ClearFlag(0x12f);
+    }
+    if (gVault2State.room == 13) {
+        API_ClearFlag(0x120);
+    }
+    return 0;
+}
 INCLUDE_ASM("asm/maps/vault_2/vault_2_data.s");

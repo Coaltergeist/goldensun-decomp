@@ -1,8 +1,18 @@
+/*
+ * Remaining diff (~50 bytes; `sub sp, #16` vs `sub sp, #20`):
+ * `cse1` folds `&data->field_d8` (`node + 0xd8`) so `node` is not saved to `[sp]` alongside a
+ * live `node + 0xd8` pointer across `gSpriteSlots[*p_d8]`, shifting high-register allocation
+ * (`r8`/`r9`/`sl`) throughout the sprite-emission loops.
+ */
 #include "gba/types.h"
-
 #include "dma.h"
+#include "sprite/slot.h"
 
-struct Struct_3001f3c {
+__asm__(".set __divsi3, _divsi3_RAM");
+
+extern struct SpriteSlot gSpriteSlots[96];
+
+struct C1_1b08_Data {
     u8 _pad0[0xd8];
     s16 field_d8;
     s16 field_da;
@@ -16,13 +26,13 @@ struct Struct_3001f3c {
     s32 field_ec;
 };
 
-struct SpriteNode {
+struct C1_1b08_SpriteNode {
     u32 unk0;
     u32 unk4;
     u32 unk8;
 };
 
-struct FieldActor {
+struct C1_1b08_FieldActor {
     u8 _pad0[8];
     s32 x;
     u32 _padC;
@@ -30,27 +40,30 @@ struct FieldActor {
 };
 
 extern u32 iwram_3001f3c;
-
 extern u32 iwram_3001e40;
-
 extern unsigned char Lc1_4[] __asm__(".Lc1_4");
-
 extern unsigned char Lc1_5[] __asm__(".Lc1_5");
-
-extern int _divsi3_RAM(int, int);
+extern int __GetFlag(int);
+extern unsigned char *__GetFieldActor(unsigned int);
+extern void *__alloc_ewram(int);
+extern void __DecompressLZ(void *, void *);
+extern void __UploadSpriteGFX(int, int, void *);
+extern void __free(void *);
+extern void __Func_8003f78(int);
+extern void __Func_8003dec(void *, int);
 
 void OvlFunc_common1_1b08(void)
 {
-    struct Struct_3001f3c *data;
-    struct SpriteNode *node;
+    struct C1_1b08_Data *data;
+    struct C1_1b08_SpriteNode *node;
     u32 *out;
+    s16 *p_d8;
     u32 slot_val;
     s32 r7;
-    int i;
-    int count;
+    unsigned int i;
+    unsigned int count;
     s32 sp4;
     u32 mask;
-    u32 attr2;
     u32 attr2_plus6;
     u32 r10;
     u32 val;
@@ -58,11 +71,12 @@ void OvlFunc_common1_1b08(void)
     int y;
     void *ewram;
 
-    data = (struct Struct_3001f3c *)iwram_3001f3c;
-    out = (u32 *)data;
-    node = (struct SpriteNode *)data;
+    node = (struct C1_1b08_SpriteNode *)iwram_3001f3c;
+    out = (u32 *)node;
+    data = (struct C1_1b08_Data *)node;
 
-    slot_val = gSpriteSlots[data->field_d8].vramOffset >> 5;
+    p_d8 = &data->field_d8;
+    slot_val = gSpriteSlots[*p_d8].vramOffset >> 5;
     count = data->field_e6;
 
     if (data->field_dc != 0) {
@@ -78,7 +92,7 @@ void OvlFunc_common1_1b08(void)
                 DMA3_SET(Lc1_4, (void *)0x50003c0, 0x80000010);
                 ewram = (void *)__alloc_ewram(0x80 << 2);
                 __DecompressLZ(Lc1_5, ewram);
-                __UploadSpriteGFX(data->field_d8, 0x80 << 2, ewram);
+                __UploadSpriteGFX(*p_d8, 0x80 << 2, ewram);
                 __free(ewram);
             }
         }
@@ -91,7 +105,6 @@ void OvlFunc_common1_1b08(void)
 
     r7 = (data->field_da * 6 - 8) & 0xff;
     sp4 = count << 4;
-
     mask = 0x80 << 8;
 
     *out++ = 0;
@@ -108,7 +121,6 @@ void OvlFunc_common1_1b08(void)
         __Func_8003dec(node++, 0xff);
     }
 
-    mask = 0x80 << 8;
     *out++ = (i = 0);
     *out++ = (0xe0 << 15) | r7 | mask;
     attr2_plus6 = (slot_val + 6) | (0xe4 << 8);
@@ -131,39 +143,37 @@ void OvlFunc_common1_1b08(void)
         __Func_8003dec(node++, 0xff);
     }
 
-    mask = 0x80 << 8;
     *out++ = (count = 0);
     r7 |= (sp4 + 0x80) << 16;
     r7 |= mask;
-    r7 |= 0x80 << 21;
+    r7 |= (0x80 << 21);
     *out++ = r7;
     *out++ = slot_val | (0xe4 << 8);
     __Func_8003dec(node++, 0xff);
 
     if ((iwram_3001e40 & 0xf) > 4) {
-        struct FieldActor *actor;
-        mask = 0x80 << 23;
-        actor = (struct FieldActor *)__GetFieldActor(data->field_e0);
+        struct C1_1b08_FieldActor *actor;
+        actor = (struct C1_1b08_FieldActor *)__GetFieldActor(data->field_e0);
         if (actor != 0) {
-            x = _divsi3_RAM(actor->x - data->field_e8, 0xe0 << 12) + 0x70;
-            y = _divsi3_RAM(actor->y - data->field_ec, 0xe0 << 12) + data->field_da * 6;
+            x = (actor->x - data->field_e8) / (0xe0 << 12) + 0x70;
+            y = (actor->y - data->field_ec) / (0xe0 << 12) + data->field_da * 6;
             r7 = (y - 4) & 0xff;
             *out++ = count;
             r7 |= x << 16;
-            r7 |= mask;
+            r7 |= (0x80 << 23);
             *out++ = r7;
             *out++ = (slot_val + 12) | (0xe4 << 8);
             __Func_8003dec(node++, 0xff);
         }
 
-        actor = (struct FieldActor *)__GetFieldActor(data->field_de);
+        actor = (struct C1_1b08_FieldActor *)__GetFieldActor(data->field_de);
         if (actor != 0) {
-            x = _divsi3_RAM(actor->x - data->field_e8, 0xe0 << 12) + 0x70;
-            y = _divsi3_RAM(actor->y - data->field_ec, 0xe0 << 12) + data->field_da * 6;
+            x = (actor->x - data->field_e8) / (0xe0 << 12) + 0x70;
+            y = (actor->y - data->field_ec) / (0xe0 << 12) + data->field_da * 6;
             r7 = (y - 4) & 0xff;
             *out++ = count;
             r7 |= x << 16;
-            r7 |= mask;
+            r7 |= (0x80 << 23);
             *out++ = r7;
             *out = (slot_val + 8) | (0xe4 << 8);
             __Func_8003dec(node, 0xff);

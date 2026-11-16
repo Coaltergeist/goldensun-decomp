@@ -1,6 +1,8 @@
 /* rom_7a4370 (overlay file 917): consolidated TU — kolima_forest_5 map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __udivsi3, _udivsi3_RAM");
 #include "api.h"
 #include "actor.h"
 
@@ -634,7 +636,85 @@ void OvlFunc_917_2008488(void)
     API_PlaySound(1);
     OvlFunc_917_200972c(0xb8, 0xb9);
 }
-INCLUDE_ASM("asm/maps/kolima_forest_5/KolimaForest5_MapInit.s");
+
+#include "state/global_state.h"
+extern GlobalState gState;
+extern void *__MapActor_GetActor(int);
+extern void __WaitFrames(int);
+extern void __Func_8092950(int, int);
+extern void __Func_8092b08(int, int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __MapActor_SetAnim(int, int);
+extern void OvlFunc_917_2009768(int);
+
+extern unsigned char Lm917_ev28[] __asm__(".Lm917_ev28");
+__asm__(".equ .Lm917_ev28, 0x28");
+
+typedef struct {
+    unsigned char _pad0[0x1c0];
+    int f1c0;
+} KolimaIwramState;
+
+typedef struct {
+    unsigned char _pad0[0x240];
+    u16 destinationArea;
+    u16 destinationRoom;
+} KolimaGlobalState;
+
+extern KolimaGlobalState KolimaState __asm__("gState");
+
+int KolimaForest5_MapInit(void) {
+    struct Actor *actor10;
+    struct Actor *actor14;
+    struct Actor *actor11;
+
+    actor10 = (struct Actor *)__MapActor_GetActor(10);
+    actor14 = (struct Actor *)__MapActor_GetActor(14);
+    actor11 = (struct Actor *)__MapActor_GetActor(11);
+    __WaitFrames(1);
+    __Func_8092950(14, 15);
+
+    (*(KolimaIwramState **)iwram_3001ebc)->f1c0 = 0x204;
+    KolimaState.destinationArea = (int)Lm917_ev28;
+    KolimaState.destinationRoom = 4;
+
+    if (!__GetFlag(0x845)) {
+        OvlFunc_917_2009768(3);
+    }
+
+    ((struct Actor *)__MapActor_GetActor(8))->width = 6;
+    ((struct Actor *)__MapActor_GetActor(9))->width = 6;
+    ((struct Actor *)__MapActor_GetActor(12))->width = 6;
+    ((struct Actor *)__MapActor_GetActor(13))->width = 6;
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(14), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(10), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(11), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(8), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(9), 0);
+
+    __Func_8092b08(8, 2);
+    __Func_8092b08(14, 2);
+    __Func_8092b08(9, 2);
+
+    actor10->__unk55 = 0;
+    actor10->pos.y = 0x1c0000;
+    actor11->__unk55 = 0;
+    actor11->pos.y = 0x1c0000;
+    actor14->__unk55 = 0;
+    actor14->pos.y = 0x1c0000;
+
+    __MapActor_SetAnim(9, 3);
+    __MapActor_SetAnim(8, 3);
+
+    ((struct Actor *)__MapActor_GetActor(8))->collision |= 8;
+    ((struct Actor *)__MapActor_GetActor(9))->collision |= 8;
+    ((struct Actor *)__MapActor_GetActor(10))->collision |= 8;
+    ((struct Actor *)__MapActor_GetActor(11))->collision |= 8;
+    ((struct Actor *)__MapActor_GetActor(14))->collision |= 8;
+
+    return 0;
+}
 
 extern void __DeleteActor();
 
@@ -841,7 +921,55 @@ void OvlFunc_917_200952c(char *p) {
         __DeleteActor(p);
     }
 }
-INCLUDE_ASM("asm/maps/kolima_forest_5/OvlFunc_917_20095a0.s");
+
+extern int L1dcc __asm__(".Lm917_1dcc");
+extern int L1dc0[] __asm__(".Lm917_1dc0");
+extern void *__CreateActor(int, int, int, int);
+extern int __Func_8096c48(void *, int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern unsigned int _udivsi3_RAM(unsigned int, unsigned int);
+
+void OvlFunc_917_20095a0(void) {
+    int val = 0;
+
+    switch (L1dcc) {
+    case 0:
+    case 10:
+    case 20:
+    case 30:
+    case 40:
+        __PlaySound(0xdc);
+        {
+            unsigned int i;
+
+            for (i = 0; i < 6; i++) {
+                struct Actor *actor = (struct Actor *)__CreateActor(0x11d, L1dc0[0], L1dc0[1], L1dc0[2]);
+                if (actor != 0) {
+                    val = __Func_8096c48(actor->sprite, val);
+                    actor->__unk55 = 0;
+                    actor->sprite->oam.priority = 1;
+                    __Actor_SetSpriteFlags(actor, 0);
+                    __Actor_SetAnim(actor, 1);
+                    actor->waveCounter = 0;
+                    actor->__unk66 = ((unsigned int)((i * 60) << 16) / (unsigned int)(360));
+                    actor->prevPos.x = L1dc0[0];
+                    actor->prevPos.y = L1dc0[1];
+                    actor->prevPos.z = L1dc0[2];
+                    actor->speed = 0x19999;
+                    actor->update = (actorfun_t)OvlFunc_917_200952c;
+                }
+            }
+        }
+        break;
+    }
+
+    L1dcc++;
+    if (L1dcc > 0x78) {
+        L1dcc = 0;
+    }
+}
+
+
 extern int __CheckPartyItem(int);
 extern int __CheckItem(int, int);
 extern void *__GetUnit(int);

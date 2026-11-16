@@ -56,15 +56,57 @@ INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f62b8.s");
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f6440.s");
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f731c.s");
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/LuckyWheelsMain.s");
-INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f7db4.s");
-INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f7df0.s");
 struct ListNode {
     struct ListNode *prev;
     struct ListNode *next;
     unsigned int data;
 };
 
+/* Hash-chain LZ work buffer pointed to by ewram_2004c00. */
+struct LZWork {
+    struct ListNode nodes[0x400];
+    struct ListNode *buckets[0x101];
+    int window[0x400];
+    int codeLen;
+    unsigned char codeBuf[0x24];
+    int matchDist;
+    int matchLen;
+    int winPos;
+    int srcPos;
+    int dstPos;
+    int srcLen;
+};
+
 extern unsigned char ewram_2004c00[];
+
+void Func_80f7db4(void)
+{
+    struct LZWork *w;
+    struct ListNode **p;
+    int i;
+
+    w = *(struct LZWork **)ewram_2004c00;
+    for (i = 0; i < 0x400; i++) {
+        w->nodes[i].data = i;
+        w->nodes[i].next = 0;
+    }
+    p = (*(struct LZWork **)ewram_2004c00)->buckets;
+    for (i = 0; i < 0x100; i++) {
+        *p++ = 0;
+    }
+}
+
+void Func_80f7df0(unsigned int index)
+{
+    struct LZWork *w = *(struct LZWork **)ewram_2004c00;
+    int c;
+
+    w->nodes[index].next = (struct ListNode *)&w->buckets[c = w->window[index]];
+    w->nodes[index].prev = w->buckets[c];
+    w->buckets[c] = &w->nodes[index];
+    if (w->nodes[index].prev != 0)
+        w->nodes[index].prev->next = &w->nodes[index];
+}
 
 void Func_80f7e34(unsigned int index)
 {
@@ -90,5 +132,16 @@ void Func_80f7e34(unsigned int index)
     }
 }
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f7e60.s");
-INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f7f30.s");
+
+void Func_80f7f30(unsigned char *dst)
+{
+    struct LZWork *w = *(struct LZWork **)ewram_2004c00;
+    int i;
+
+    for (i = 0; i != w->codeLen; i++) {
+        dst[w->dstPos] = w->codeBuf[i];
+        w->dstPos++;
+    }
+}
+
 INCLUDE_ASM("asm/lucky_wheels/lucky_wheels/Func_80f7f78.s");

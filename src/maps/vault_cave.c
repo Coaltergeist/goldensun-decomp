@@ -90,7 +90,74 @@ unsigned int OvlFunc_935_2008134(unsigned int arg0, unsigned int arg1)
 
 INCLUDE_ASM("asm/maps/vault_cave/vault_cave_data.s");
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008170.s");
+extern unsigned char *__MapActor_GetActor(int);
+extern unsigned int Lm935_1844[] __asm__(".Lm935_1844");
+extern int __TestCollision(void *, void *);
+extern void __Actor_SetAnim(void *, int);
+extern void __WaitFrames(int);
+extern void __Actor_WaitMovement(void *);
+
+void OvlFunc_935_2008170(void) {
+    struct Actor *player;
+    struct Actor *other;
+    struct Actor *hit;
+    unsigned int dir;
+    int pos[3];
+    int x, z;
+    int i;
+
+    player = (struct Actor *)__MapActor_GetActor(0);
+    dir = player->facing >> 12;
+    x = (*(short *)((char *)&player->pos.x + 2) + ((int)Lm935_1844[dir] >> 16)) >> 4;
+    z = (*(short *)((char *)&player->pos.z + 2) + (short)Lm935_1844[dir]) >> 4;
+    other = (struct Actor *)OvlFunc_935_2008134(x, z);
+    if (other->collision == 0 || other == 0)
+        return;
+
+    for (i = 0; i <= 3; i++) {
+        if (other == (struct Actor *)__MapActor_GetActor(i + 0xb))
+            return;
+    }
+
+    x = (*(short *)((char *)&other->pos.x + 2) + ((int)Lm935_1844[dir] >> 16)) >> 4;
+    z = (*(short *)((char *)&other->pos.z + 2) + (short)Lm935_1844[dir]) >> 4;
+    hit = (struct Actor *)OvlFunc_935_2008134(x, z);
+    if (hit != 0 && (hit->collision & 1) != 0)
+        return;
+
+    other->layer = 2;
+    pos[0] = other->pos.x + (Lm935_1844[dir] & 0xffff0000);
+    pos[1] = other->pos.y;
+    pos[2] = other->pos.z + (Lm935_1844[dir] << 16);
+
+    if (__TestCollision(other, pos) > 0)
+        return;
+
+    __Actor_SetAnim(player, 8);
+    __WaitFrames(15);
+    API_PlaySound(0xee);
+
+    other->speed = 0x3333;
+    other->accel = 0x3333;
+    API_Actor_TravelTo(other, pos[0], pos[1], pos[2]);
+
+    player->speed = 0x3333;
+    player->accel = 0x3333;
+    API_Actor_TravelTo(player, pos[0], pos[1], pos[2]);
+
+    __Actor_WaitMovement(other);
+    API_PlaySound(0x120);
+
+    other->pos.x = pos[0];
+    other->pos.z = pos[2];
+    other->motion.x = 0;
+    other->motion.z = 0;
+    player->motion.x = 0;
+    player->motion.z = 0;
+    player->prevPos.x = 0x80000000;
+    player->prevPos.z = 0x80000000;
+    __Actor_SetAnim(player, 1);
+}
 
 extern void __SetFlag(int);
 
@@ -397,7 +464,14 @@ void OvlFunc_935_20086e4(void) {
     }
 }
 
-INCLUDE_ASM("asm/maps/vault_cave/OvlFunc_935_2008704.s");
+void OvlFunc_935_2008704(void)
+{
+    int i;
+    int id = 0x10;
+    for (i = 0; i < 6; i++, id++) {
+        ((struct Actor *)__MapActor_GetActor(id))->flags |= 2;
+    }
+}
 
 void OvlFunc_935_2008734(void)
 {

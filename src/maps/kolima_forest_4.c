@@ -372,7 +372,47 @@ int KolimaForest4_MapInit(void) {
 }
 
 
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008a90.s");
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void *__CreateActor(int, int, int, int);
+extern void __Actor_SetAnim(void *, int);
+extern int __Func_8011f54(int, int, int);
+
+void OvlFunc_916_2008a90(struct MapTileEntry_916 *entry) {
+    if (entry->id != -1) {
+        do {
+            int x, y;
+            int ret;
+            unsigned char *actor;
+            unsigned short v;
+
+            if (entry->dir == 0) {
+                x = (entry->x << 20) + (0x80 << 14);
+                y = (entry->y << 20) + (0x80 << 12);
+            } else {
+                x = (entry->x << 20) + (0x80 << 12);
+                y = (entry->y << 20) + (0x80 << 14);
+            }
+
+            actor = (unsigned char *)__CreateActor(entry->id, x, 0, y);
+            if (actor == 0) {
+                break;
+            }
+
+            entry->actor = actor;
+            __Actor_SetAnim(actor, 1);
+            __Actor_SetSpriteFlags(actor, 0);
+            actor[0x59] = 0;
+            v = 0x20;
+            *(unsigned short *)(actor + 0x20) = v;
+
+            ret = __Func_8011f54(0, *(short *)(actor + 0xa), *(short *)(actor + 0x12)) << 16;
+            *(int *)(actor + 0xc) += ret;
+            *(int *)(actor + 0x14) = ret;
+            entry++;
+        } while (entry->id != -1);
+    }
+}
+
 
 
 void OvlFunc_916_2008b3c(struct MapTileEntry_916 *entry, int val) {
@@ -439,7 +479,96 @@ int OvlFunc_916_2008be4(int arg0, int arg1, int arg2) {
 extern unsigned char L1164[] __asm__(".Lm916_1164");
 extern signed char L1168[] __asm__(".Lm916_1168");
 extern signed char L116c[] __asm__(".Lm916_116c");
-INCLUDE_ASM("asm/maps/kolima_forest_4/OvlFunc_916_2008c2c.s");
+extern void *__galloc_ewram(int, int);
+extern void __Camera_SetTarget(void *, void *);
+extern void __Actor_WaitMovement(void *);
+
+static inline void API_vec3_translate(int a, int b, void *c) {
+    extern void __vec3_translate(int, int, void *);
+    __vec3_translate(a, b, c);
+}
+
+void OvlFunc_916_2008c2c(void *arg0) {
+    int pos[3];
+    int flag;
+    struct MapTileEntry_916 *entry = (struct MapTileEntry_916 *)arg0;
+    char *actor;
+    int dir;
+    int *vec;
+    int i;
+    int dest_x, dest_z;
+    int idx;
+
+    flag = 0;
+
+    actor = (char *)__MapActor_GetActor(0);
+    dir = (*(unsigned short *)(actor + 6) + 0x2000) & 0xc000;
+
+    pos[0] = (*(int *)(actor + 8) & 0xfff00000) + 0x80000;
+    pos[1] = *(int *)(actor + 0xc);
+    pos[2] = (*(int *)(actor + 0x10) & 0xfff00000) + 0x80000;
+    API_vec3_translate(0x100000, dir, pos);
+
+    entry = OvlFunc_916_2008b8c(entry, pos[0] / 0x100000, pos[2] / 0x100000);
+    if (entry == 0) {
+        return;
+    }
+
+    for (i = 0; i <= 10; i++) {
+        vec = pos;
+        vec[0] = entry->x << 20;
+        vec[2] = entry->y << 20;
+        API_vec3_translate(0x100000, dir, vec);
+        if (OvlFunc_916_2008be4(vec[0] / 0x100000, pos[2] / 0x100000, entry->dir) != 0) {
+            break;
+        }
+        flag = 1;
+        if (entry->dir == 0) {
+            dest_x = pos[0] + 0x200000;
+            dest_z = pos[2] + 0x80000;
+        } else {
+            dest_x = pos[0] + 0x80000;
+            dest_z = pos[2] + 0x200000;
+        }
+        entry->x = pos[0] / 0x100000;
+        entry->y = pos[2] / 0x100000;
+    }
+
+    if (flag == 0) {
+        return;
+    }
+
+    pos[0] = (*(int *)(actor + 8) & 0xfff00000) + 0x80000;
+    pos[1] = *(int *)(actor + 0xc);
+    pos[2] = (*(int *)(actor + 0x10) & 0xfff00000) + 0x80000;
+    API_vec3_translate(0x80000, dir, pos);
+
+    actor = (char *)entry->actor;
+    idx = dir / 0x4000;
+
+    API_CutsceneStart();
+    API_MapActor_SetAnim(0, 8);
+    API_CutsceneWait(6);
+    *(int *)(actor + 0x30) = 0x8000;
+    *(int *)(actor + 0x34) = 0x3333;
+    API_PlaySound(0xef);
+    __Actor_SetAnim(actor, L1164[idx]);
+    API_Actor_TravelTo(actor, dest_x, 0, dest_z);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(0, 2);
+    __Camera_SetTarget(*(void **)((char *)__galloc_ewram(0x1b, 0xccc) + (0xf0 << 1)), actor);
+    API_MapActor_SetSpeed(0, 0x4ccc, 0x3333);
+    API_MapActor_TravelBy(0, L1168[idx], L116c[idx]);
+    API_CutsceneWait(24);
+    API_MapActor_SetAnim(0, 1);
+    __Actor_WaitMovement(actor);
+    __Actor_SetAnim(actor, 1);
+    API_PlaySound(0x120);
+    API_PlaySound(0xd5);
+    API_CutsceneWait(15);
+    API_CutsceneEnd();
+}
+
 extern void OvlFunc_916_2008f34(void);
 extern void OvlFunc_916_2008f54(void);
 extern void OvlFunc_916_2008f74(void);

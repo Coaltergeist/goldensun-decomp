@@ -1,50 +1,66 @@
-extern int CS951_ShowMessage(int, int) __asm__("__ShowActorMessage_NoWait");
+/*
+ * Remaining diff (only 4 bytes across 680 bytes):
+ * With `state = &CS951_State;` (`fp`), `gcse` hoists `(char *)state + 1` (`0x11d = 1 + (0x8e << 1)`)
+ * into `r7` across `__Random()` and `OvlFunc_951_20084bc` instead of recomputing `fp + 1` locally
+ * in scratch registers `r1`/`r0` and using `.word 0x11d` in the second weight-scan loop.
+ */
+#include "api.h"
+
+struct CS951_StateView {
+    unsigned char beforeCoins[0x10];
+    unsigned int coins;
+    unsigned char beforeWeights[0x11d - 0x14];
+    signed char weights[0x12c - 0x11d];
+    signed char rewards[0x1c0 - 0x12c];
+    short event, room;
+};
+extern struct CS951_StateView CS951_State __asm__("gState");
+
 extern unsigned char CS951_Message_e4c[] __asm__(".Lcs951_message_e4c");
 __asm__(".equ .Lcs951_message_e4c, 0xe4c");
 extern unsigned char CS951_Message_e49[] __asm__(".Lcs951_message_e49");
 __asm__(".equ .Lcs951_message_e49, 0xe49");
 extern unsigned char CS951_Message_e43[] __asm__(".Lcs951_message_e43");
 __asm__(".equ .Lcs951_message_e43, 0xe43");
+
 extern unsigned int __Func_8078b60(unsigned int);
+extern int __Func_8078550(void);
+extern int __Func_8091c7c(int, int);
+extern void __Func_8019908(int, int);
 extern unsigned int __LuckyFountainMenu(unsigned int);
 extern unsigned int __Func_80789dc(unsigned int);
-extern int __Func_8078550(void);
 extern void __Func_808e118(void);
 extern void *__CreateUIBox(int, int, int, int, int);
 extern void __CloseUIBox(void *, int);
 extern void __Func_801e7c0(unsigned int, void *, unsigned int, unsigned int);
 extern void __Func_801ea08(int, unsigned int, void *, unsigned int, unsigned int);
 extern void __Func_8019a54(void);
-extern void __Func_8019908(int, int);
-extern int __Func_8091c7c(int, int);
 extern void __AddCoins(int);
 extern unsigned int __Random(void);
-/* Updated by the VBlank input handler (src/core/runtime/intr/intr.c), hence volatile. */
 extern volatile unsigned int gKeyPress;
 extern unsigned short CS951_CoinPrizes[] __asm__(".Lm951_200c");
 extern int gLuckyFountainPrizes[];
-extern int OvlFunc_951_200973c(int);
 extern void OvlFunc_951_20084bc(int);
-extern int CS951_PlayFountain(void) __asm__("OvlFunc_951_2008ac8");
+extern int OvlFunc_951_200973c(int);
 
-int CS951_PlayFountain(void)
+int OvlFunc_951_2008ac8(void)
 {
     int selection = 0;
     unsigned int coins, tokens;
-    unsigned int state;
+    int message;
+    struct CS951_StateView *state;
     void *box;
     int confirmed, result, count, total, i, roll, weight;
-    int message;
     int text;
     API_CutsceneStart();
     __Func_808e118();
     message = (int)CS951_Message_e43;
-    state = (unsigned int)&gState;
+    state = &CS951_State;
 retry:
-    coins = *(unsigned int *)(state + 0x10);
+    coins = state->coins;
     tokens = __Func_8078b60(0xe5);
     API_MessageID(message);
-    CS951_ShowMessage(-1, 0);
+    API_ShowActorMessage_NoWait(-1, 0);
     box = __CreateUIBox(0, 0, 17, 4, 2);
     text = (int)CS951_Message_e49;
     __Func_801e7c0(text, box, 0, 0);
@@ -72,7 +88,7 @@ retry:
         }
         if (__Func_8078550() == 0) {
             API_MessageID(message + 4);
-            CS951_ShowMessage(-1, 0);
+            API_ShowActorMessage_NoWait(-1, 0);
             if (__Func_8091c7c(0, 0) != 0)
                 goto done;
         }
@@ -121,28 +137,27 @@ retry:
         total = 0;
         if (i < count) {
             do {
-                total += ((signed char *)(state + 1))[0x11c + i];
+                total += state->weights[i];
                 i++;
             } while (i < count);
         }
-        /* Random scaling deliberately uses a wrapping unsigned product. */
-        roll = ((unsigned int)total * __Random()) >> 16;
-        roll -= ((signed char *)(state + 1))[0x11c];
         i = 0;
+        roll = ((unsigned int)total * __Random()) >> 16;
+        roll -= state->weights[i];
         if (roll >= 0) {
-          do {
-            i++;
-            if (i > 14)
-                break;
-            roll -= ((signed char *)(state + 1))[0x11c + i];
-          } while (roll >= 0);
+            do {
+                i++;
+                if (i > 14)
+                    break;
+                roll -= state->weights[i];
+            } while (roll >= 0);
         }
         if (i == 15)
             i = 14;
         OvlFunc_951_20084bc(gLuckyFountainPrizes[i]);
-        weight = ((signed char *)(state + 1))[0x11c + i];
+        weight = state->weights[i];
         if (weight > 1)
-            ((signed char *)(state + 1))[0x11c + i] = weight / 2;
+            state->weights[i] = weight / 2;
     }
 done:
     API_CutsceneEnd();

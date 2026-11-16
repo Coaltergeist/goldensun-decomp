@@ -427,7 +427,50 @@ unsigned int *SuhallaRooms_GetEvents(void)
     return (unsigned int *)L1090;
 }
 
-INCLUDE_ASM("asm/maps/suhalla_rooms/SuhallaRooms_MapInit.s");
+#include "actor.h"
+#include "state/global_state.h"
+
+extern GlobalState gState;
+
+typedef struct {
+    unsigned char _pad0[0x1c0];
+    int transition;
+    unsigned char _pad1[4];
+    int transitionSpeed;
+} SuhallaMapState;
+
+int SuhallaRooms_MapInit(void)
+{
+    int offset;
+    SuhallaMapState *p;
+    struct Actor *actor;
+
+    offset = 0xe1;
+    offset <<= 1;
+    if (*(short *)((char *)&gState + offset) == 0x5a) {
+        __SetFlag(0x96f);
+    }
+
+    p = *(SuhallaMapState **)iwram_3001ebc;
+    p->transition = 0x209;
+    p->transitionSpeed = 0x18;
+
+    ((struct Actor *)__MapActor_GetActor(0xc))->collision |= 4;
+    ((struct Actor *)__MapActor_GetActor(0xd))->collision |= 4;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x14);
+    actor->sprite->flags = 0;
+    actor->sprite->rotation = 0x4000;
+    actor->sprite->oam.priority = 1;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x15);
+    actor->sprite->flags = 0;
+    actor->sprite->rotation = 0x4000;
+    actor->__unk55 = 2;
+    actor->pos.y = 0;
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/suhalla_rooms/suhalla_rooms_data.s");
 
 INCLUDE_ASM("asm/maps/suhalla_rooms/imports.s");

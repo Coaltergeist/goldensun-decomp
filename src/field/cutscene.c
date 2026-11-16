@@ -16,9 +16,23 @@ extern void MapActor_SetAnim();
 extern void CutsceneWait();
 extern unsigned char gState[];
 
-INCLUDE_ASM("asm/field/cutscene/Task_Cutscene.s");
-
 extern unsigned char iwram_3001ebc__a7[] __asm__("iwram_3001ebc");
+extern bool8 gDebugMode;
+extern vu32 gKeyPress;
+
+void Task_Cutscene(void)
+{
+    unsigned char *base = *(unsigned char **)iwram_3001ebc__a7;
+
+    if (gDebugMode != 0) {
+        if (gKeyPress & 0x200) {
+            *(int *)(base + 0x1cc) = 0;
+        }
+        if (gKeyPress & 0x100) {
+            *(int *)(base + 0x1cc) = -1;
+        }
+    }
+}
 
 void CutsceneWait(unsigned int arg0) {
     unsigned int *base;

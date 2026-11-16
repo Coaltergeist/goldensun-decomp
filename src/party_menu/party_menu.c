@@ -974,7 +974,18 @@ int Func_80a6a00(int *out, int idx)
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6a98.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6b64.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a6ccc.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a735c.s");
+extern unsigned char *_GetMoveInfo(int);
+
+int Func_80a735c(unsigned int move)
+{
+    unsigned char *info = _GetMoveInfo((move << 18) >> 18);
+
+    if (info[0xc] == 0 && (info[1] & 0xc0) != 0xc0)
+        return 1;
+    return 0;
+}
+
+INCLUDE_ASM("asm/party_menu/party_menu/rodata_aeb4c.s");
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7380.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a7440.s");
@@ -1309,7 +1320,12 @@ INCLUDE_ASM("asm/party_menu/party_menu/Func_80aad10.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aae14.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aaf58.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80aafb8.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80ab1f4.s");
+extern void _Func_8022768(int, int, int, int, int);
+
+int Func_80ab1f4(unsigned short *box, int x, int y, int w, int h, int pal)
+{
+    _Func_8022768(box[6] + x + 1, box[7] + y + 1, w, h, pal);
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ab21c.s");
 
 extern void Func_80ab21c(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);

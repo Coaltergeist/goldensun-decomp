@@ -2,6 +2,8 @@
 
 #include "nonmatching.h"
 #include "api.h"
+#include "actor.h"
+#include "sprite.h"
 
 extern void __Func_80955b0(int a, int b, int c);
 extern unsigned char iwram_3001ebc[];
@@ -40,7 +42,38 @@ void OvlFunc_928_2008358(void)
     *(unsigned short *)((char *)r2 + 0x1e) += 0x1400;
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008370.s");
+extern unsigned char Lm928_1740[] __asm__(".Lm928_1740");
+extern unsigned int iwram_3001e40;
+extern void OvlFunc_common0_10c(int, int, int, int, int, int, int, void *);
+
+struct XianEffectData {
+    int unk0;
+    int unk4;
+    int unk8;
+    int unkc;
+    int unk10;
+    int unk14;
+    short unk18;
+    short unk1a;
+    void *unk1c;
+    int unk20;
+    int unk24;
+};
+
+void OvlFunc_928_2008370(void)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0xe);
+    struct XianEffectData data;
+
+    if ((iwram_3001e40 & 3) == 0) {
+        data.unk0 = 1;
+        data.unk4 = 9;
+        data.unk18 = 0xa9;
+        data.unk1c = Lm928_1740;
+        OvlFunc_common0_10c(actor->pos.x, actor->pos.y, actor->pos.z - 0x10000, 0,
+            -0x10000, -0x10000, 0xcc << 14, &data);
+    }
+}
 
 extern int Func_8000948(int);
 
@@ -64,8 +97,84 @@ int OvlFunc_928_20083cc(int *a, int *b)
   return fp(new_var);
 }
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008408.s");
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008500.s");
+extern void __Actor_SetAnim(int, int);
+extern unsigned short __atan2(int, int);
+
+int OvlFunc_928_2008408(struct Actor *actor, struct Actor *target, int range, int force)
+{
+    int result = 0;
+    u16 angle;
+    int a0, a1, a2, facing;
+
+    if (actor->stop == 1 && actor->waveCounter == 0) {
+        __Actor_SetAnim((int)actor, 1);
+        return 1;
+    }
+
+    if (OvlFunc_928_20083cc(&target->pos.x, &actor->pos.x) < range || force != 0) {
+        angle = __atan2(target->pos.z - actor->pos.z, target->pos.x - actor->pos.x);
+        a2 = (angle - 0x1000) & 0xf000;
+        a1 = (angle + 0x1000) & 0xf000;
+        a0 = angle & 0xf000;
+        facing = actor->facing & 0xf000;
+        if (a0 == facing || a1 == facing || a2 == facing || force != 0) {
+            actor->stop = 1;
+            __Actor_SetAnim((int)actor, 1);
+            result = 1;
+            actor->waveCounter = result;
+        } else {
+            actor->stop = 0;
+            __Actor_SetAnim((int)actor, 2);
+            actor->waveCounter = 0;
+        }
+    } else {
+        actor->stop = 0;
+        __Actor_SetAnim((int)actor, 2);
+        actor->waveCounter = 0;
+    }
+    return result;
+}
+
+struct XianSceneView {
+    int pad[0x60];
+    u16 unk180;
+    u16 unk182;
+};
+
+int OvlFunc_928_2008500(struct Actor *actor)
+{
+    struct Actor *leader;
+    u8 flag = 0;
+    int leader_x;
+    int actor_x;
+
+    if (actor->prevPos.x == (0x80 << 24) && actor->prevPos.z == actor->prevPos.x) {
+        return 0;
+    }
+
+    leader = (struct Actor *)__MapActor_GetActor(0);
+    leader_x = leader->pos.x;
+
+    if ((leader_x >> 20) >= 17 && (leader_x >> 20) <= 18
+        && (leader->pos.z >> 20) == 14
+        && ((actor_x = actor->pos.x) >> 20) <= 19
+        && actor->motion.x <= 0) {
+        if (leader_x <= actor_x) {
+            actor->__unk62++;
+            flag = 1;
+        }
+    } else {
+        actor->__unk62 = 0;
+    }
+
+    if (flag && actor->__unk62 > 0x77) {
+        (*(struct XianSceneView **)iwram_3001ebc)->unk182 = 0xc8;
+        actor->__unk62 = 0;
+    }
+
+    OvlFunc_928_2008408(actor, leader, 0x12, flag);
+    return 0;
+}
 
 extern unsigned char gOvl_020097e8[];
 
@@ -288,44 +397,50 @@ extern void __vec3_translate(unsigned int, unsigned int, void *);
 extern void __Actor_SetAnim(int, int);
 extern void __Actor_SetSpriteFlags(int, int);
 
+typedef union {
+    vec3_t v;
+    struct {
+        u16 x_lo; s16 x_hi;
+        u16 y_lo; s16 y_hi;
+        u16 z_lo; s16 z_hi;
+    } half;
+} XianVec3Parts;
+
 void OvlFunc_928_2008d0c(void)
 {
-    unsigned char *actor;
+    struct Actor *actor;
     unsigned char *flags;
     unsigned char saved;
-    unsigned int buf[3];
+    XianVec3Parts buf;
     unsigned int heading;
 
-    actor = (unsigned char *)__MapActor_GetActor(0);
-    flags = actor + 0x55;
+    actor = (struct Actor *)__MapActor_GetActor(0);
+    flags = &actor->__unk55;
     saved = *flags;
 
     if (API_GetFlag(0x80 << 2)) {
-        buf[0] = (*(int *)(actor + 8) & 0xfff00000) + (0x80 << 12);
-        buf[1] = *(int *)(actor + 0xc);
-        buf[2] = (*(int *)(actor + 0x10) & 0xfff00000) + (0x80 << 12);
+        buf.v.x = (actor->pos.x & 0xfff00000) + (0x80 << 12);
+        buf.v.y = actor->pos.y;
+        buf.v.z = (actor->pos.z & 0xfff00000) + (0x80 << 12);
 
-        heading = (*(unsigned short *)(actor + 6) + (0x80 << 6)) & (0xc0 << 8);
-        __vec3_translate(0x80 << 14, heading, buf);
+        heading = (actor->facing + (0x80 << 6)) & (0xc0 << 8);
+        __vec3_translate(0x80 << 14, heading, &buf);
 
-        if (__TestCollision(actor, buf) == 0) {
+        if (__TestCollision(actor, &buf) == 0) {
             __CutsceneStart();
             __Actor_SetAnim((int)actor, 6);
             API_WaitFrames(6);
             __PlaySound(0x98);
             __Actor_SetAnim((int)actor, 7);
 
-            *(int *)(actor + 0x30) = 0xc0 << 10;
-            *(int *)(actor + 0x34) = 0x80 << 10;
-            *(int *)(actor + 0x28) = 0x80 << 11;
+            actor->speed = 0xc0 << 10;
+            actor->accel = 0x80 << 10;
+            actor->motion.y = 0x80 << 11;
 
             *flags &= 0x7e;
             __Actor_SetSpriteFlags((int)actor, 0);
 
-            {
-                short *sbuf = (short *)buf;
-                API_MapActor_TravelToWait(0, sbuf[1], sbuf[5]);
-            }
+            API_MapActor_TravelToWait(0, buf.half.x_hi, buf.half.z_hi);
 
             __Actor_SetAnim((int)actor, 6);
             __Actor_SetSpriteFlags((int)actor, 1);
@@ -410,10 +525,49 @@ void OvlFunc_928_2008e4c(void)
 extern void __MessageID(int);
 extern unsigned char gScript_928__020096a0[];
 
-INCLUDE_ASM("asm/maps/xian/OvlFunc_928_2008f30.s");
+void OvlFunc_928_2008f30(void)
+{
+    int x, y, z;
+    int flags;
+    int zero;
+    struct Actor *actor;
+
+    __CutsceneStart();
+    __MapActor_SetBehavior(0x13, gScript_928__020096a0);
+    __StartTask(OvlFunc_928_2008358, 0xc8 << 4);
+    API_MapActor_WaitScript(0x13);
+    __PlaySound(0x7c);
+
+    x = 0xa8 << 16;
+    y = 0x80 << 12;
+    z = 0x9c << 17;
+    flags = 0x20001;
+    zero = 0;
+
+    OvlFunc_common0_10c(x, y, z, 0, zero, zero, flags, (void *)zero);
+    OvlFunc_common0_10c(x, y, z, 0x3333, zero, zero, flags, (void *)zero);
+    OvlFunc_common0_10c(x, y, z, -0x3333, zero, zero, flags, (void *)zero);
+
+    API_StopTask(OvlFunc_928_2008358);
+    actor = (struct Actor *)__MapActor_GetActor(0x13);
+    actor->sprite->rotation = 0x80 << 8;
+    API_MapActor_SetPos(0x15, x, z);
+    API_CutsceneWait(0x14);
+    API_MapActor_Face(0xe, 0x13, 0);
+    API_Func_80925cc(0xe, 2);
+    API_CutsceneWait(0xa);
+    __MessageID(0x17fd);
+    if (API_GetFlag(0x203)) {
+        (*(unsigned short *)(CS928_Scene + (0xec << 1)))++;
+    }
+    API_ActorMessage(0xe, 0);
+    API_SetFlag(0x203);
+    API_MapActor_PlayPendingSound();
+    __CutsceneEnd();
+}
 
 extern unsigned char gScript_928__020095b0[];
-extern int OvlFunc_928_2008500(unsigned char *);
+extern int OvlFunc_928_2008500(struct Actor *);
 extern void __MapActor_SetBehavior(int, void *);
 
 void OvlFunc_928_2009060(void)
@@ -457,5 +611,85 @@ void *Xian_GetEvents(void) {
     return (void *)gOvl_02009ac8;
 }
 
-INCLUDE_ASM("asm/maps/xian/Xian_MapInit.s");
+struct XianStateView {
+    u8 pad[0x1c2];
+    s16 room;
+};
+
+extern struct XianStateView gState;
+extern void __Func_8091ff0(int);
+extern void __Func_80929d8(void *, int);
+extern void __Func_8092950(int, int);
+
+int Xian_MapInit(void)
+{
+    u32 i;
+    struct Actor *actor;
+    struct Actor *actor2;
+    struct Sprite *sprite;
+    int x;
+    int z;
+
+    *(int *)(CS928_Scene + 0x1c0) = 0x100;
+    __Func_8091ff0(0xa9);
+
+    if (gState.room > 9) {
+        API_ClearFlag(0x12f);
+    }
+
+    if (API_GetFlag(0x895)) {
+        API_Func_8092adc(0xd, 0x8000, 0);
+        API_MapActor_SetPos(0xe, 0x92 << 16, 0x9c << 17);
+        API_Func_8092adc(0xe, 0, 0);
+        if (API_GetFlag(0x89a)) {
+            API_MapActor_SetPos(0x11, 0, 0);
+        }
+    }
+
+    if (API_GetFlag(0x8b0)) {
+        API_MapActor_SetPos(0x11, 0, 0);
+    }
+
+    for (i = 0; i <= 2; i++) {
+        actor = (struct Actor *)__MapActor_GetActor(i + 0x17);
+        sprite = actor->sprite;
+        sprite->oam.priority = 1;
+        actor->__unk55 = 0;
+        actor->collision = 8;
+        __Actor_SetSpriteFlags((int)actor, 0);
+        __Func_80929d8(actor, 0xf);
+        actor->flags = (actor->flags & 0xfe) | 2;
+    }
+
+    if (API_GetFlag(0x202)) {
+        API_MapActor_SetPos(0xe, 0x92 << 16, 0x9c << 17);
+        API_Func_8092adc(0xe, 0, 0);
+    }
+
+    if (API_GetFlag(0x201)) {
+        __MapActor_SetAnim(0x14, 5);
+        x = ((struct Actor *)__MapActor_GetActor(0x14))->pos.x;
+        z = ((struct Actor *)__MapActor_GetActor(0x14))->pos.z;
+        __Func_8010704(3, 0x11, 1, 1, x >> 20, z >> 20);
+        __StartTask(OvlFunc_928_2008324, 0xc8 << 4);
+    }
+
+    __Func_8092950(0x12, 2);
+    ((struct Actor *)__MapActor_GetActor(0x12))->update = (actorfun_t)OvlFunc_928_2008500;
+
+    actor2 = (struct Actor *)__MapActor_GetActor(0x13);
+    actor2->__unk55 = 0;
+    actor2->pos.y = 0x80 << 13;
+    actor2->prevPos.y = 0x80 << 13;
+    actor2->scale.x = 0x8ccc;
+    actor2->scale.y = 0x6666;
+    actor2->sprite->rotation = 0x8000;
+
+    __Actor_SetSpriteFlags((int)__MapActor_GetActor(0x15), 0);
+    ((struct Actor *)__MapActor_GetActor(0x15))->__unk55 = 0;
+    ((struct Actor *)__MapActor_GetActor(0x15))->pos.y = 0;
+    ((struct Actor *)__MapActor_GetActor(0x15))->prevPos.y = 0x80 << 24;
+
+    return 0;
+}
 INCLUDE_ASM("asm/maps/xian/xian_data.s");

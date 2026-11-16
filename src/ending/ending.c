@@ -1,6 +1,27 @@
 #include "nonmatching.h"
+#include "dma.h"
 
-INCLUDE_ASM("asm/ending/ending/Func_80f0254.s");
+void Func_80f0254(unsigned int arg0)
+{
+    unsigned int fill;
+    void *vram;
+    void *pal;
+    vu32 buf;
+
+    if (arg0 == 0) {
+        fill = 0x01010101;
+        vram = (void *)0x6000000;
+        pal = (void *)0x5000000;
+    } else {
+        fill = 0x81818181;
+        vram = (void *)0x6008000;
+        pal = (void *)0x5000100;
+    }
+    buf = fill;
+    DMA3_SET((const void *)&buf, vram, 0x85001e00);
+    buf = 0;
+    DMA3_SET((const void *)&buf, pal, 0x85000040);
+}
 INCLUDE_ASM("asm/ending/ending/LoadGS1CreditsBG.s");
 void Func_80f037c(unsigned int *p)
 {

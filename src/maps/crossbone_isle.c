@@ -1,6 +1,9 @@
+typedef union { int raw; struct { unsigned short lo; short hi; } half; } Fx32Parts;
 /* rom_7ced6c (overlay file 946): consolidated TU — crossbone_isle map overlay. */
 
 #include "nonmatching.h"
+
+__asm__(".set __divsi3, _divsi3_RAM");
 #include "api.h"
 #include "actor.h"
 #include "field.h"
@@ -132,8 +135,8 @@ void OvlFunc_946_20080c4(void) {
     player->prevPos.z = 0x80 << 24;
     player->motion.x = zero;
     player->motion.z = zero;
-    player->pos.x = ((short *)&player->pos.x)[1] << 16;
-    player->pos.z = ((short *)&player->pos.z)[1] << 16;
+    player->pos.x = ((Fx32Parts *)&player->pos.x)->half.hi << 16;
+    player->pos.z = ((Fx32Parts *)&player->pos.z)->half.hi << 16;
     __Actor_SetAnim(player, 1);
 }
 
@@ -596,20 +599,100 @@ struct Actor *OvlFunc_946_2008a4c(int x, int y, int z, int id) {
     return 0;
 }
 
-void OvlFunc_946_2008ab0(void *arg0)
+void OvlFunc_946_2008ab0(struct Actor *actor)
 {
-    unsigned char *p = (unsigned char *)arg0;
-    unsigned char *sprite;
-
-    *(int *)(p + 8) += *(int *)(p + 0x44);
-    *(int *)(p + 0xc) += *(int *)(p + 0x48);
-    *(int *)(p + 0x10) += *(int *)(p + 0x4c);
-    *(int *)(p + 0x18) += *(int *)(p + 0x30);
-    *(int *)(p + 0x1c) += *(int *)(p + 0x34);
-    sprite = *(unsigned char **)(p + 0x50);
-    *(short *)(sprite + 0x1e) += *(short *)(p + 0x64);
+    actor->pos.x += actor->bounce;
+    actor->pos.y += actor->gravity;
+    actor->pos.z += actor->__unk4C;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += (u16)actor->waveCounter;
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008ae8.s");
+
+struct CS946P_Effect {
+    int priority;
+    int animation;
+    int scaleX;
+    int scaleY;
+    int targetScaleX;
+    int targetScaleY;
+    short spriteId;
+    void *script;
+    unsigned short rotation;
+    unsigned short angularVelocity;
+    actorfun_t update;
+};
+
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_SetScript(void *, void *);
+extern int *Lm946_32d4[] __asm__(".Lm946_32d4");
+
+void OvlFunc_946_2008ae8(int x, int y, int z, int dx, int dy, int dz, int flags, struct CS946P_Effect *data)
+{
+    extern void __Func_80929d8(int, int);
+    struct Actor *player = (struct Actor *)__MapActor_GetActor(0);
+    struct Actor *actor;
+    struct Sprite *sprite;
+    int *script;
+    int scale_flag;
+
+    if ((flags & 0x100000) && data != 0)
+        actor = (struct Actor *)API_CreateActor(data->spriteId, x, y, z);
+    else
+        actor = (struct Actor *)API_CreateActor(0xde, x, y, z);
+    if (actor == 0)
+        return;
+
+    sprite = actor->sprite;
+    __Actor_SetAnim(actor, (flags + 1) & 15);
+    __Actor_SetScript(actor, Lm946_32d4[flags & 15]);
+    actor->__unk55 = 0;
+    sprite->flags = 0;
+    actor->update = (actorfun_t)OvlFunc_946_2008ab0;
+    actor->bounce = dx;
+    actor->gravity = dy;
+    actor->__unk4C = dz;
+    sprite->oam.priority = player->sprite->oam.priority;
+    actor->speed = 0;
+    actor->accel = 0;
+    actor->waveCounter = 0;
+
+    if ((flags & 0xffff0000) == 0 || data == 0)
+        return;
+    if (flags & 0x10000)
+        __Func_80929d8((int)actor, data->animation);
+    if (flags & 0x20000) {
+        u8 p;
+        actor->flags &= 0xfe;
+        p = data->priority;
+        sprite->oam.priority = p;
+    }
+    scale_flag = flags & 0x80000;
+    if (scale_flag) {
+        actor->scale.x = data->scaleX;
+        actor->scale.y = data->scaleY;
+    }
+    if (flags & 0x40000) {
+        script = Lm946_32d4[flags & 15];
+        if (scale_flag) {
+            actor->speed = (data->targetScaleX - actor->scale.x) / script[3];
+            actor->accel = (data->targetScaleY - actor->scale.y) / script[3];
+        } else {
+            actor->speed = (data->targetScaleX - 0x10000) / script[3];
+            actor->accel = (data->targetScaleY - 0x10000) / script[3];
+        }
+    }
+    if (flags & 0x200000) {
+        __Actor_SetAnim(actor, 1);
+        __Actor_SetScript(actor, data->script);
+    }
+    if (flags & 0x400000)
+        sprite->rotation = data->rotation;
+    if (flags & 0x800000)
+        actor->waveCounter = data->angularVelocity;
+    if (flags & 0x1000000)
+        actor->update = data->update;
+}
 
 void OvlFunc_946_2008cc0(void) {}
 
@@ -665,13 +748,29 @@ void *CrossboneIsle_GetActors(void)
     if (ev <= (int)_EVENT_86 && ev >= (int)_EVENT_7e) return Lm946_3850;
     return gOvl_0200b5f8;
 }
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2008da4.s");
+extern int _divsi3_RAM(int, int);
+
+void OvlFunc_946_2008da4(struct Actor *actor)
+{
+    int vx = actor->bounce;
+    int vz;
+
+    actor->pos.x += vx;
+    actor->pos.y += actor->gravity;
+    vz = actor->__unk4C;
+    actor->pos.z += vz;
+    actor->bounce = vx - ((vx) / (18));
+    actor->__unk4C = vz - vz / 16;
+    actor->scale.x += actor->speed;
+    actor->scale.y += actor->accel;
+    actor->sprite->rotation += (u16)actor->waveCounter;
+}
+
 extern void OvlFunc_946_2008da4();
 extern int __cos(int);
 extern int __sin(int);
 void OvlFunc_946_2008e00(unsigned int actorId)
 {
-    extern void OvlFunc_946_2008ae8(int, int, int, int, int, int, int, void *);
     extern int _divsi3_RAM(int, int);
     int vel[3];
     int data[10];
@@ -693,7 +792,7 @@ void OvlFunc_946_2008e00(unsigned int actorId)
         vel[2] = s;
         vel[0] = c + _divsi3_RAM(c, 3);
 
-        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, data);
+        OvlFunc_946_2008ae8(actor->pos.x, actor->pos.y, actor->pos.z, vel[0], vel[1], s, 0x1000001, (struct CS946P_Effect *)data);
     }
 }
 
@@ -748,7 +847,105 @@ void OvlFunc_946_2008f3c(void)
   __CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/CrossboneIsle_MapInit.s");
+extern unsigned char *CS946_Scene __asm__("iwram_3001ebc");
+extern unsigned char Event71[] __asm__("0x71");
+extern unsigned char Event7b[] __asm__("0x7b");
+extern unsigned char Event7d[] __asm__("0x7d");
+extern unsigned char Event7e[] __asm__("0x7e");
+extern unsigned char Event86[] __asm__("0x86");
+extern void OvlFunc_946_200991c(void);
+extern void OvlFunc_946_200967c(void);
+extern void OvlFunc_946_200aed8(int);
+extern void OvlFunc_946_2009214(void);
+extern void OvlFunc_946_2009494(void);
+extern void __Actor_SetAnim(void *, int);
+extern void __Actor_SetSpriteFlags(void *, int);
+extern void __Func_8012078(int, int, int, int);
+
+struct CS946_StateView {
+    unsigned char pad[0x1c0];
+    short event;
+    short room;
+};
+extern struct CS946_StateView CS946_State __asm__("gState");
+
+int CrossboneIsle_MapInit(void)
+{
+    struct Actor *actor;
+
+    ((Fx32Parts *)(CS946_Scene + 0x1c0))->raw = 0x204;
+    if (CS946_State.event == (int)Event7b) {
+        OvlFunc_946_200991c();
+    } else {
+        if (CS946_State.event == (int)Event7d && !API_GetFlag(0xef7)) {
+            API_Func_8010704(0, 3, 1, 1, 13, 40);
+            API_Func_8010704(0, 2, 1, 1, 15, 40);
+            API_Func_808edac(101, 0xd80000, 0x2880000);
+        }
+        if (CS946_State.event == (int)Event7d) {
+            if (CS946_State.room == 5 || API_GetFlag(0x8d1)) {
+                API_SetFlag(0x8d1);
+                API_Func_8010704(0, 1, 1, 1, 13, 30);
+                API_Func_808edac(100, 0xd80000, 0x1e80000);
+            }
+        } else if (CS946_State.event == (int)Event71) {
+            OvlFunc_946_200967c();
+            ((struct Actor *)__MapActor_GetActor(8))->prevPos.x = 0x810000;
+            OvlFunc_946_20088c0(9);
+            OvlFunc_946_20088c0(10);
+            if (API_GetFlag(0x240)) {
+                actor = (struct Actor *)__MapActor_GetActor(11);
+                if (actor != 0) {
+                    actor->collision = 0;
+                    __Actor_SetAnim(actor, 4);
+                    __Actor_SetSpriteFlags(actor, 0);
+                }
+                API_Func_8012078(0, 0x1300000, 0x1700000, 0xfd);
+            }
+            if (API_GetFlag(0x241)) {
+                actor = (struct Actor *)__MapActor_GetActor(12);
+                if (actor != 0) {
+                    actor->collision = 0;
+                    __Actor_SetAnim(actor, 4);
+                    __Actor_SetSpriteFlags(actor, 0);
+                }
+                API_Func_8012078(0, 0x500000, 0x1700000, 0xfd);
+            }
+            if (API_GetFlag(0x242)) {
+                actor = (struct Actor *)__MapActor_GetActor(13);
+                if (actor != 0) {
+                    actor->collision = 0;
+                    __Actor_SetAnim(actor, 4);
+                    __Actor_SetSpriteFlags(actor, 0);
+                }
+                API_Func_8012078(0, 0x600000, 0x1500000, 0xfd);
+            }
+            if (API_GetFlag(0x243)) {
+                actor = (struct Actor *)__MapActor_GetActor(14);
+                if (actor != 0) {
+                    actor->collision = 0;
+                    __Actor_SetAnim(actor, 4);
+                    __Actor_SetSpriteFlags(actor, 0);
+                }
+                API_Func_8012078(0, 0x900000, 0x1400000, 0xfd);
+                API_Func_8012078(0, 0x2f00000, 0x1400000, 0xfd);
+            }
+            if (!API_GetFlag(0xfd7))
+                OvlFunc_946_200aed8(8);
+        } else {
+            if (CS946_State.event == (int)Event7e && !API_GetFlag(0xef4)) {
+                API_Func_8010704(0, 0, 1, 1, 37, 10);
+                API_Func_808edac(100, 0x2580000, 0xa80000);
+            }
+            if (CS946_State.event >= (int)Event7e && CS946_State.event <= (int)Event86) {
+                OvlFunc_946_2009214();
+                if (CS946_State.room == 5)
+                    OvlFunc_946_2009494();
+            }
+        }
+    }
+    return 0;
+}
 void OvlFunc_946_2009214(void)
 {
     extern void __Actor_SetSpriteFlags(void *, int);
@@ -829,7 +1026,53 @@ void OvlFunc_946_200938c(void) {
     __Func_8091e9c(4);
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_20093ac.s");
+void OvlFunc_946_20093ac(void) {
+    unsigned int r2;
+    short *p;
+
+    r2 = 0xe0;
+    r2 <<= 1;
+    p = (short *)((char *)&gState + r2);
+    if (!API_GetFlag(*p + (0x8c8 - (int)Event7e))) {
+        __CutsceneStart();
+        __Func_8091f90(*p, 5);
+        *((char *)&gState + 0x22b) = 3;
+        switch (*p - (int)Event7e) {
+        case 0:
+            __StartMapBattle(0x3f, 0);
+            break;
+        case 1:
+            __StartMapBattle(0x3f, 1);
+            break;
+        case 2:
+            __StartMapBattle(0x3f, 2);
+            break;
+        case 3:
+            __StartMapBattle(0x3f, 3);
+            break;
+        case 4:
+            __StartMapBattle(0x54, 0);
+            break;
+        case 5:
+            __StartMapBattle(0x54, 1);
+            break;
+        case 6:
+            __StartMapBattle(0x54, 2);
+            break;
+        case 7:
+            __StartMapBattle(0x54, 3);
+            break;
+        case 8:
+            __StartMapBattle(0x54, 4);
+            break;
+        }
+        __CutsceneEnd();
+    } else {
+        CallFunc_8010560(0x2c, 7, &gOvl_0200b2bc);
+        __PlaySound(0xb7);
+        __Func_8091e9c(3);
+    }
+}
 
 void OvlFunc_946_2009494(void) {
     unsigned int r2;
@@ -977,7 +1220,42 @@ void OvlFunc_946_2009740(void) {
     API_CutsceneEnd();
 }
 
-INCLUDE_ASM("asm/maps/crossbone_isle/OvlFunc_946_2009774.s");
+void OvlFunc_946_2009774(int actorId, int arg1, int arg2)
+{
+    struct Actor *actor1;
+    struct Actor *actor2;
+    int x;
+    int z;
+    u8 *state = (u8 *)&gState;
+
+    actor1 = (struct Actor *)__MapActor_GetActor(*(int *)(state + 0x1f4));
+    actor2 = (struct Actor *)__MapActor_GetActor(actorId);
+    __CutsceneStart();
+
+    x = ((actor1->pos.x + (arg1 << 16)) & 0xfff00000) + 0x80000;
+    z = ((actor1->pos.z + (arg2 << 16)) & 0xfff00000) + 0x80000;
+    actor1->speed = 0x10000;
+    actor1->accel = 0x8000;
+    __Actor_TravelTo(actor1, x, actor1->pos.y, z);
+    __Actor_SetAnim(actor1, 0x1b);
+
+    x = ((actor2->pos.x + (arg1 << 16)) & 0xfff00000) + 0x80000;
+    z = ((actor2->pos.z + (arg2 << 16)) & 0xfff00000) + 0x80000;
+    actor2->speed = 0x10000;
+    actor2->accel = 0x8000;
+    __Actor_TravelTo(actor2, x, actor2->pos.y, z);
+
+    if (arg1 < 0 || arg2 < 0) {
+        __Actor_SetAnim(actor2, 4);
+    } else {
+        __Actor_SetAnim(actor2, 3);
+    }
+
+    __PlaySound(0xe2);
+    __Actor_WaitMovement(actor1);
+    __PlaySound(0x120);
+    __CutsceneEnd();
+}
 void OvlFunc_946_200985c(unsigned int id, unsigned int a1, unsigned int a2, unsigned int a3)
 {
     struct Actor *actor = (struct Actor *)__MapActor_GetActor(id);

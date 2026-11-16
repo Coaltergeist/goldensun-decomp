@@ -55,16 +55,16 @@ void OvlFunc_911_20080a0(void *arg0)
         p += 0x18;
     }
 }
-unsigned int OvlFunc_911_20080cc(unsigned int arg0)
+int OvlFunc_911_20080cc(struct Actor *actor)
 {
-    *(int *)(arg0 + 0x08) += *(int *)(arg0 + 0x24);
-    *(int *)(arg0 + 0x10) += *(int *)(arg0 + 0x2c);
-    *(int *)(arg0 + 0x2c) += -2621;
-    *(int *)(arg0 + 0x18) += 0x600;
-    *(int *)(arg0 + 0x1c) += 0x600;
-    *(short *)(arg0 + 0x64) -= 1;
-    if (*(short *)(arg0 + 0x64) == 0) {
-        API_DeleteActor(arg0);
+    actor->pos.x += actor->motion.x;
+    actor->pos.z += actor->motion.z;
+    actor->motion.z += -2621;
+    actor->scale.x += 0x600;
+    actor->scale.y += 0x600;
+    actor->waveCounter -= 1;
+    if (actor->waveCounter == 0) {
+        API_DeleteActor((int)actor);
     }
     return 1;
 }
@@ -256,8 +256,155 @@ void OvlFunc_911_2008304(void)
     OvlFunc_911_20082b4(*(short *)(map + 0x16c));
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_20083c8.s");
-INCLUDE_ASM("asm/maps/kolima/Kolima_MapInit.s");
+void OvlFunc_911_20083c8(void)
+{
+    extern unsigned char gScript_884__0200ae34[];
+    extern struct Actor *CS911_GetActor(unsigned int) __asm__("__MapActor_GetActor");
+    extern void CS911_SpriteFlags(struct Actor *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void CS911_Anim(struct Actor *, int) __asm__("__Actor_SetAnim");
+    extern void CS911_Script(struct Actor *, void *) __asm__("__Actor_SetScript");
+    extern unsigned int CS911_Random(void) __asm__("__Random");
+    extern unsigned char gScript_911__0200ae20[];
+    unsigned char *actor;
+    struct Actor *debris;
+    unsigned int i;
+
+    API_CutsceneStart();
+    API_Func_80933d4(0x20000, 0x4000);
+    API_Func_80933f8(0xa80000, 0, 0xf60000, 1);
+    API_Func_8093530();
+    API_CutsceneWait(20);
+    API_MapActor_Emote(8, 0x100, 0x28);
+    API_Func_80925cc(8, 2);
+    API_MessageID(0x1786);
+    API_ActorMessage(8, 0);
+    API_Func_80933d4(0x6666, 0xccc);
+    API_Func_80933f8(0xa80000, 0, 0xea0000, 1);
+    API_MapActor_SetSpeed(0, 0x9999, 0x4ccc);
+    API_MapActor_TravelToAnimWait(0, 0xae, 0x116);
+    API_Func_8092adc(0, 0xe000, 20);
+    API_MapActor_DoAnim(0, 3);
+    API_CutsceneWait(20);
+    API_MapActor_SetAnim(8, 3);
+    API_ActorMessage(8, 0);
+    API_Func_8092adc(8, 0x9000, 20);
+    API_Func_80925cc(8, 1);
+    API_CutsceneWait(20);
+    actor = (unsigned char *)CS911_GetActor(8);
+    actor += 0x5a;
+    *actor = (0xfe & *actor);
+    API_MapActor_SetSpeed(8, 0x20000, 0x10000);
+    API_MapActor_Jump(8, 2, 0);
+    API_MapActor_TravelToWait(8, 0xe0, 0xc5);
+    API_PlaySound(0xb0);
+    API_CutsceneWait(10);
+    API_MapActor_TravelToWait(8, 0xea, 0xc8);
+    API_CutsceneWait(10);
+    API_PlaySound(0xc6);
+    API_CutsceneWait(30);
+    API_CopyMapTiles(0x5b, 0, 0x48, 9, 5, 4);
+    API_CutsceneWait(12);
+    API_CopyMapTiles(0x5b, 4, 0x48, 9, 5, 4);
+    API_CutsceneWait(9);
+    API_Func_8092adc(0, 0xc000, 0);
+    API_CopyMapTiles(0x5b, 8, 0x48, 9, 5, 5);
+    API_CutsceneWait(6);
+    API_CopyMapTiles(0x5b, 13, 0x48, 9, 5, 6);
+    API_CutsceneWait(3);
+    API_PlaySound(0xbc);
+    for (i = 0; i < 10; ++i) {
+        debris = API_CreateActor(0xde, 0x940000 + (i << 18), 0, 0x1020000);
+        if (debris != 0) {
+            debris->__unk55 = 0;
+            CS911_SpriteFlags(debris, 0);
+            debris->sprite->oam.priority = 0;
+            debris->waveCounter = ((CS911_Random() * 40) >> 16) + 40;
+            debris->motion.x = (int)(((i & 3) << 16) + 0x10000) >> 1;
+            debris->motion.z = 0x10000;
+            if (i & 1) debris->motion.x = -debris->motion.x;
+            CS911_Anim(debris, 1);
+            CS911_Script(debris, gScript_911__0200ae20);
+        }
+    }
+    API_CopyMapTiles(0x5b, 19, 0x48, 9, 5, 7);
+    API_Func_8010704(23, 11, 5, 7, 8, 11);
+    API_Func_8012330(0, 0x40000, 0x10000);
+    API_CutsceneWait(10);
+    API_MapActor_Jump(0, 6, 0);
+    API_CutsceneWait(20);
+    API_Func_8012330(-1, -1, 0xe666);
+    API_Func_8092a1c(8, 0x10000, gScript_884__0200ae34);
+    API_CutsceneWait(0x3c);
+    API_MapActor_Emote(0, 0x102, 0x3c);
+    API_SetFlag(0x847);
+    API_CutsceneEnd();
+}
+void OvlFunc_911_200a910(void);
+void OvlFunc_911_20088ec(void);
+void __Actor_SetSpriteFlags(void *, int);
+void __DeleteFieldActor(int);
+void __LoadFieldActors(void *);
+extern unsigned char gScript_911__0200add8[];
+extern unsigned char Lm911_32d8[] __asm__(".Lm911_32d8");
+
+int Kolima_MapInit(void)
+{
+    unsigned int i;
+    GlobalState *p = &gState;
+    int ev = *(short *)((char *)p + 0x1c0);
+
+    if (ev == (int)_EVENT_27) {
+        OvlFunc_911_200a910();
+        return 0;
+    }
+
+    if (ev == (int)_EVENT_26) {
+        *(int *)(*(unsigned char **)iwram_3001ebc + 0x1c0) = 0x204;
+        return 0;
+    }
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x17), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x18), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x19), 0);
+    __Actor_SetSpriteFlags(__MapActor_GetActor(0x1a), 0);
+
+    API_MapActor_SetBehavior(0x17, (int)gScript_911__0200add8);
+    API_MapActor_SetBehavior(0x18, (int)gScript_911__0200add8);
+    API_MapActor_SetBehavior(0x19, (int)gScript_911__0200add8);
+    API_MapActor_SetBehavior(0x1a, (int)gScript_911__0200add8);
+
+    if (!API_GetFlag(0x845)) {
+        for (i = 8; i <= 0x10; i++) {
+            __Actor_SetSpriteFlags(__MapActor_GetActor(i), 0);
+        }
+        API_Func_8010704(0xd, 9, 1, 1, 0xd, 8);
+        API_Func_8010704(0xd, 9, 1, 1, 0xf, 8);
+        API_Func_8010704(0xd, 9, 1, 1, 0xe, 9);
+    }
+
+    if (!API_GetFlag(0x843)) {
+        GlobalState *p2 = &gState;
+        if (*(short *)((char *)p2 + 0x1c2) == 1) {
+            OvlFunc_911_20088ec();
+        }
+    }
+
+    if (API_GetFlag(0x843)) {
+        __DeleteFieldActor(1);
+        __DeleteFieldActor(2);
+        __DeleteFieldActor(3);
+        __DeleteFieldActor(0x11);
+        __DeleteFieldActor(0x12);
+        __DeleteFieldActor(0x13);
+        __DeleteFieldActor(0x14);
+        __DeleteFieldActor(0x15);
+        __DeleteFieldActor(0x16);
+        __LoadFieldActors(Lm911_32d8);
+    }
+
+    return 0;
+}
+
 
 extern unsigned int iwram_3001e40;
 
@@ -423,8 +570,118 @@ unsigned int OvlFunc_911_200a6a4(int a)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a6cc.s");
-INCLUDE_ASM("asm/maps/kolima/OvlFunc_911_200a7ac.s");
+extern unsigned char Lm911_369c[] __asm__(".Lm911_369c");
+extern ActorCmd gScript_911__0200b5ec[];
+extern void __PlaySound(int);
+extern void __Actor_SetScript(struct Actor *, ActorCmd *);
+
+u32 OvlFunc_911_200a6cc(struct Actor *actor)
+{
+    if (*(int *)Lm911_369c != 0) {
+        if ((u32)(actor->pos.x - 0x3b0001) <= 0x51fffe && actor->pos.z > 0xd30000 && actor->pos.z <= 0x100ffff) {
+            goto match;
+        }
+        if ((u32)(actor->pos.x - 0x450001) <= 0x34fffe && actor->pos.z > 0xc20000 && actor->pos.z <= 0x114ffff) {
+            goto match;
+        }
+    } else {
+        if ((u32)(actor->pos.x - 0x3b0001) <= 0x33fffe && actor->pos.z > 0xc20000 && actor->pos.z < 0xe60000) {
+            goto match;
+        }
+        if ((u32)(actor->pos.x - 0x6f0001) <= 0x1dfffe && actor->pos.z > 0xd80000 && actor->pos.z < 0xfa0000) {
+            goto match;
+        }
+        if ((u32)(actor->pos.x - 0x4e0001) <= 0x2bfffe && actor->pos.z > 0xf10000 && actor->pos.z <= 0x114ffff) {
+        match:
+            __PlaySound(0x6a);
+            __Actor_SetScript(actor, gScript_911__0200b5ec);
+            *(int *)L3698 = 1;
+        }
+    }
+    return 0;
+}
+extern unsigned int Lm911_3694 __asm__(".Lm911_3694");
+extern int Lm911_3690 __asm__(".Lm911_3690");
+extern int Lm911_368c __asm__(".Lm911_368c");
+extern vec3_t **iwram_3001e70;
+extern ActorCmd gScript_911__0200b610[];
+
+void OvlFunc_911_200a7ac(void)
+{
+    int __Random(void);
+    void __PlaySound(int);
+    struct Actor *__CreateActor(int, int, int, int);
+    void __Actor_SetAnim(struct Actor *, int);
+    void __Actor_SetScript(struct Actor *, ActorCmd *);
+
+    struct Actor *actor = 0;
+    struct Sprite *sprite;
+    vec3_t *pos;
+    int x;
+    int z;
+
+    switch (Lm911_3694) {
+    case 1:
+        if (Lm911_3690 <= 0x3a97) {
+            Lm911_3690 += 0x32;
+        }
+        if (Lm911_368c > 0xf0 << 14) {
+            Lm911_368c -= 0x4000;
+        }
+        break;
+    case 2:
+        if (Lm911_3690 <= 0x752f) {
+            Lm911_3690 += 0x32;
+        }
+        if (Lm911_368c > 0xc0 << 13) {
+            Lm911_368c -= 0x4000;
+        }
+        break;
+    case 3:
+        if (Lm911_368c < -0x800000) {
+            Lm911_3694 = 0;
+        } else {
+            Lm911_3690 += 0x32;
+            Lm911_368c -= 0x4000;
+        }
+        break;
+    }
+
+    if ((iwram_3001e40 & 7) != 0) {
+        return;
+    }
+
+    actor = __CreateActor(0x11d, 0, 0, 0);
+    if (actor == 0) {
+        return;
+    }
+
+    pos = *iwram_3001e70;
+    if ((iwram_3001e40 & 0x3f) == 0) {
+        __PlaySound(0xf6);
+    }
+
+    if (Lm911_3694 != 0) {
+        x = pos->x + (((u32)(__Random() * Lm911_3690) >> 16) << 8) + Lm911_368c;
+    } else {
+        x = pos->x + (__Random() << 8) - 0x800000;
+    }
+    z = pos->z + (__Random() << 8) - 0x800000;
+
+    actor->__unk55 = 0;
+    actor->pos.y = 0xa0 << 16;
+    sprite = actor->sprite;
+    actor->scale.x = 0xe666;
+    actor->scale.y = 0xe666;
+    actor->pos.x = x;
+    actor->pos.z = z;
+    sprite->flags = 0;
+    actor->flags &= 0xfe;
+    sprite->oam.priority = 1;
+    __Actor_SetAnim(actor, 1);
+    __Actor_SetScript(actor, gScript_911__0200b610);
+}
+
 
 extern void __Func_800fe9c(void);
 

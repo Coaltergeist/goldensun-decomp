@@ -1,7 +1,20 @@
+/*
+ * Non-matching clean C candidate for Anim_Haunt (exact .text size 0x374 and 41 relocs).
+ * Requires -fstrict-aliasing (--gaia / GAIA_SRCS), which matches wave-loop `stmia` and
+ * reduces the `gs_check_tu.py` unified diff from 505 lines (default) to 463 lines.
+ * Remaining diffs under `--gaia`:
+ * 1. 0x042..0x044: `mov r1, sl; adds r0, r6, #0` vs `adds r0, r6, #0; mov r1, sl` before `DecompressLZ`.
+ * 2. 0x0aa..0x0e2: `ldr r5, =gBuffer` sits before `bl StartTask` in target (`r5 = 0x480` dies at
+ *    `0xa4`), whereas placing `p = gBuffer` after `StartTask` swaps `r5`/`r6` (`haifa-sched.c:3550`
+ *    `REG_DEP_ANTI` on `last_pending_memory_flush` blocks `mem/u/f` from moving above `CALL_INSN`).
+ * 3. 0x194..0x21c & 0x2c6..0x2d4: stack slots `[sp, #12..24]` order as
+ *    `camera+12, j*8, j*2+36, j*1792` in target vs ascending `regno` order (`172=j*8,
+ *    296=camera+12, 302=j*1792, 304=j*2+36`) in `reload1.c:801`.
+ * 4. 0x222..0x254: `x2+y2+z2` add/reg scheduling, early `Func_80e3944` `adds r0, r6, #0`
+ *    before `bl` (shifting `0x258..0x33d` by -2 bytes with trailing `.short 0x0000` at `0x33e`).
+ */
 #include "anim.h"
-
 #include "math.h"
-
 #include "task.h"
 
 typedef int (*DrawFunc)(u8 *, const u8 *, int, int, int, int);
@@ -17,14 +30,14 @@ struct HauntParticle {
 };
 
 struct HauntState {
-               u8 graphics[0x6980];
-               s32 wave[160];
-               u8 pad_6c00[0x7780 - 0x6c00];
-               s32 blitMode;
-               s32 blitParam;
-               u8 pad_7788[0x7824 - 0x7788];
-               s32 frameReady;
-               struct AnimContext *context;
+    u8 graphics[0x6980];
+    s32 wave[160];
+    u8 pad_6c00[0x7780 - 0x6c00];
+    s32 blitMode;
+    s32 blitParam;
+    u8 pad_7788[0x7824 - 0x7788];
+    s32 frameReady;
+    struct AnimContext *context;
 };
 
 struct HauntActor {
@@ -38,55 +51,31 @@ struct HauntActor {
 struct HauntVec { s32 x, y, z; };
 
 extern u8 *iwram_3001eec[];
-
 extern u8 *iwram_3001e80[];
-
 extern u8 gBuffer[];
-
 extern char _FILE_a9[], _FILE_bb[];
 
 extern void AnimStart(int);
-
 extern void AnimEnd(void);
-
 extern void *GetFile(int);
-
 extern void *Func_8001af8(void *, const void *, unsigned int);
-
 extern void DecompressLZ(const void *, void *);
-
 extern int BuildDraw2DFuncEx(int, int, int, int, int);
-
 extern unsigned int Random(void);
-
 extern void Func_80dbb9c(void);
-
 extern void Task_BlitAnim(void);
-
 extern void _PlaySound(int);
-
 extern void _Func_80bd7dc(int);
-
 extern struct HauntActor **_GetBattleActor(int);
-
 extern void InitMatrixStack(void);
-
 extern void MatrixSetLook(void *, void *);
-
 extern void MatrixTranslatev(struct HauntVec *);
-
 extern void MatrixPitch(int);
-
 extern int Func_8000948(int);
-
 extern void Func_80e3944(struct HauntParticle *, struct HauntVec *);
-
 extern void SetBattleActorState(int, int, int, int, int);
-
 extern void Func_80cd52c(void);
-
 extern void WaitFrames(int);
-
 extern void gfree(int);
 
 static inline void *API_Func_8001af8(void *dst, const void *src, unsigned int size)
@@ -105,7 +94,6 @@ void Anim_Haunt(struct AnimContext *context)
     DrawFunc pair[2];
     u8 *camera;
     s32 *wave;
-    struct HauntParticle *p;
     struct HauntActor *actor;
     struct HauntVec screen;
     struct HauntVec pos;
@@ -127,15 +115,14 @@ void Anim_Haunt(struct AnimContext *context)
     StartTask(Func_80dbb9c, 0x480);
     state->blitMode = 3;
     state->blitParam = 0x4040404;
-    {
-        struct HauntParticle *q;
-        StartTask(Task_BlitAnim, 0x480);
-        q = (struct HauntParticle *)gBuffer;
+    StartTask(Task_BlitAnim, 0x480);
 
-        for (i = 0; i != 512; i++, q++) {
-            q->x = ((Random() & 255) - 127) << 15;
-            q->y = ((Random() & 255) - 127) << 15;
-            q->z = ((Random() & 255) - 127) << 15;
+    {
+        struct HauntParticle *p = (struct HauntParticle *)gBuffer;
+        for (i = 0; i != 512; i++, p++) {
+            p->x = ((Random() & 255) - 127) << 15;
+            p->y = ((Random() & 255) - 127) << 15;
+            p->z = ((Random() & 255) - 127) << 15;
         }
     }
     _PlaySound(0x8e);
@@ -162,6 +149,7 @@ void Anim_Haunt(struct AnimContext *context)
             pos.z = actor->z;
             MatrixTranslatev(&pos);
             if (frame > j * 32) {
+                struct HauntParticle *p;
                 MatrixPitch(frame << 9);
                 if (frame == j * 32 + 32)
                     SetBattleActorState((s16)state->context->targets[j], 7, 5, j, 0x20);
@@ -169,8 +157,7 @@ void Anim_Haunt(struct AnimContext *context)
                 for (i = 0; i != 8; i++, p++) {
                     if (frame > (j * 8 + i) * 4) {
                         int (*root)(int) = Func_8000948;
-                        dist = root((p->x >> 8) * (p->x >> 8) + (p->y >> 8) * (p->y >> 8)
-                                    + (p->z >> 8) * (p->z >> 8)) >> 8;
+                        dist = root((p->x >> 8) * (p->x >> 8) + (p->y >> 8) * (p->y >> 8) + (p->z >> 8) * (p->z >> 8)) >> 8;
                         if (dist != 0) {
                             Func_80e3944(p, &screen);
                             screen.x >>= 1;

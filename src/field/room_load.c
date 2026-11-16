@@ -33,7 +33,52 @@ unsigned int GetMapActorSlot(unsigned int arg0) {
     return iwram_3001ebc + (arg0 << 2) + 0x14;
 }
 
-INCLUDE_ASM("asm/field/room_load/Func_808b868.s");
+extern void *iwram_3001e70;
+extern void _ClearFlag(int);
+extern void _SetFlag(int);
+
+struct MapActorRecord {
+    short sprite;
+    short flagID;
+    int unk4;
+    int x;
+    int y;
+    int z;
+    int unk20;
+};
+
+struct RoomCameraState {
+    char pad[0xec];
+    int camMinX;
+    int camMinZ;
+    int camMaxX;
+    int camMaxZ;
+};
+
+void Func_808b868(struct MapActorRecord *actors)
+{
+    struct RoomCameraState *state = iwram_3001e70;
+
+    _ClearFlag(0x164);
+    _SetFlag(0x165);
+    while (actors->sprite != -1) {
+        if (actors->flagID == 0) {
+            int px = actors->x;
+            int pz = actors->z;
+
+            if (state->camMinX <= px && px <= state->camMaxX) {
+                if (state->camMinZ <= pz && pz <= state->camMaxZ) {
+                    actors->flagID = 0x164;
+                } else {
+                    actors->flagID = 0x165;
+                }
+            } else {
+                actors->flagID = 0x165;
+            }
+        }
+        actors++;
+    }
+}
 INCLUDE_ASM("asm/field/room_load/Func_808b8e8.s");
 INCLUDE_ASM("asm/field/room_load/Func_808b98c.s");
 

@@ -1,4 +1,5 @@
 #include "nonmatching.h"
+#include "actor.h"
 
 void Func_809b0b0(unsigned int arg0)
 {
@@ -17,7 +18,19 @@ void Func_809b0b0(unsigned int arg0)
     }
 }
 
-INCLUDE_ASM("asm/field/moves/retreat/Func_809b0dc.s");
+void Func_809b0dc(struct Actor *actor)
+{
+    fx32 scaleX;
+
+    actor->scale.y -= 0x280;
+    scaleX = actor->scale.x - 0x280;
+    actor->facing += 0x2000;
+    actor->pos.y += 0x10000;
+    actor->scale.x = scaleX;
+    if (scaleX < 0x3000) {
+        actor->visible = 0;
+    }
+}
 
 INCLUDE_ASM("asm/field/moves/retreat/Func_809b11c.s");
 

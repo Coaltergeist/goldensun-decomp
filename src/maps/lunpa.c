@@ -732,7 +732,72 @@ void OvlFunc_939_2008fa0(void)
     __Func_8010704(6, 0xb, 1, 1, 9, 0xb);
     API_SetFlag(0x241);
 }
-INCLUDE_ASM("asm/maps/lunpa/OvlFunc_939_2008ff0.s");
+extern unsigned char Lconst_2409[] __asm__(".Lconst_2409");
+__asm__(".equ .Lconst_2409, 0x2409");
+
+void OvlFunc_939_2008ff0(void)
+{
+    extern void __MapActor_Face(int, int, int);
+    extern void __StartTask(void *, int);
+    extern void OvlFunc_939_2009240(void);
+    unsigned char *actor;
+    int msg;
+
+    if (API_GetFlag(0x244))
+        return;
+
+    API_SetFlag(0x244);
+    __CutsceneStart();
+    actor = __MapActor_GetActor(0);
+    __MapActor_Face(8, 0, 0);
+    __MapActor_Face(9, 0, 0);
+    __Func_809259c(8, 1);
+    __Func_809259c(9, 1);
+    __CutsceneWait(0x14);
+    API_MapActor_Emote(8, 0x102, 0x3c);
+
+    msg = (int)Lconst_2409;
+    __MessageID(msg);
+    __ActorMessage(8, 0);
+    API_MapActor_SetSpeed(0, 0x20000, 0x10000);
+    API_MapActor_SetSpeed(8, 0x20000, 0x10000);
+    API_MapActor_SetSpeed(9, 0x20000, 0x10000);
+    __MapActor_SetAnim(9, 4);
+    __CutsceneWait(0x23);
+    __MessageID(msg + 1);
+    __ActorMessage(9, 0);
+    API_MapActor_Emote(8, 0x103, 0x1e);
+    __MessageID(msg + 2);
+    __ActorMessage(8, 0);
+    __MapActor_SetAnim(9, 3);
+    msg += 3;
+    __CutsceneWait(0x19);
+    __MessageID(msg);
+    __ActorMessage(9, 0);
+
+    API_MapActor_TravelToAnim(8, *(short *)(actor + 0xa) - 1, *(short *)(actor + 0x12));
+    __MapActor_WaitMovement(8);
+
+    API_MapActor_TravelToAnim(0, 0xa0, 0xd8);
+    API_MapActor_TravelToAnim(8, 0x98, 0xc8);
+    API_MapActor_TravelToAnim(9, 0xa8, 0xc8);
+    __MapActor_WaitMovement(8);
+    __MapActor_WaitMovement(9);
+    __MapActor_WaitMovement(0);
+    __MapActor_Face(8, 0, 0);
+    __MapActor_Face(9, 0, 0);
+    __CutsceneWait(0xc);
+
+    API_MapActor_TravelToAnim(0, 0xa0, 0x110);
+    API_MapActor_TravelToAnim(8, 0x98, 0x100);
+    API_MapActor_TravelToAnim(9, 0xa8, 0x100);
+    __MapActor_WaitMovement(8);
+    __MapActor_WaitMovement(9);
+    __MapActor_WaitMovement(0);
+    __CutsceneEnd();
+
+    __StartTask(OvlFunc_939_2009240, 0xc80);
+}
 
 void OvlFunc_939_200918c(void)
 {

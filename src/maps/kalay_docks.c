@@ -513,7 +513,63 @@ void OvlFunc_942_20088cc(void) {
         }
     }
 }
-INCLUDE_ASM("asm/maps/kalay_docks/OvlFunc_942_2008958.s");
+extern void __Func_8010704(int, int, int, int, int, int);
+extern void OvlFunc_942_2008af8(void);
+extern void __Func_8092950(int, int);
+
+void OvlFunc_942_2008958(void) {
+    int off;
+    short *p;
+    struct Actor *actor;
+
+    OvlFunc_942_2008af8();
+    if (API_GetFlag(0x950)) {
+        __Func_8092950(0xc, 2);
+    }
+
+    off = 0xe1;
+    off <<= 1;
+    p = (short *)((char *)&gState + off);
+    if (*p == 3) {
+        __ClearFlag(0x12f);
+    }
+    if (*p == 1) {
+        __ClearFlag(0x8aa);
+    }
+
+    if (API_GetFlag(0x8aa)) {
+        API_MapActor_SetPos(8, 0xcc << 17, 0x94 << 17);
+        API_Func_8092adc(8, 0x80 << 8, 0);
+    }
+
+    if (API_GetFlag(0x8ab)) {
+        API_MapActor_SetPos(0xd, 0x8c << 17, 0x94 << 17);
+        API_Func_8092adc(0xd, 0xc0 << 8, 0);
+        API_MapActor_SetPos(0x10, 0x90 << 17, 0x8c << 17);
+        API_Func_8092adc(0x10, 0xe0 << 8, 0);
+        API_MapActor_SetPos(0xa, 0xe8 << 16, 0x98 << 17);
+        API_Func_8092adc(0xa, 0x80 << 7, 0);
+        API_MapActor_SetPos(0xb, 0xf0 << 16, 0x9c << 17);
+        API_Func_8092adc(0xb, 0xc0 << 8, 0);
+
+        actor = __MapActor_GetActor(0xa);
+        actor->collision = 0;
+        actor->flags = 2;
+        actor->sprite->oam.priority = 3;
+        actor->sprite->flags = 0;
+        actor->sprite->rotation = 0xc000;
+
+        actor = __MapActor_GetActor(0xb);
+        actor->flags = 0;
+        actor->sprite->oam.priority = 3;
+        actor->sprite->shadowOAM.priority = 3;
+    }
+
+    if (API_GetFlag(0x950)) {
+        API_Func_8010704(0x12, 0x12, 1, 1, 0xe, 0x12);
+        API_Func_8010704(0x12, 0x12, 1, 1, 0xf, 0x12);
+    }
+}
 
 
 extern unsigned int iwram_3001ebc;

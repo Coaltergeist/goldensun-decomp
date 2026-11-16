@@ -443,7 +443,69 @@ int Kalay_MapInit(void)
         OvlFunc_936_2009930();
     return 0;
 }
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_20096bc.s");
+extern void __Func_8092950(int, int);
+extern void *__galloc_iwram(int, int);
+extern void __LoadItemIcon(int);
+extern int __UploadSpriteGFX(int, int, void *);
+extern void __gfree(int);
+extern void OvlFunc_936_200b90c(void);
+
+struct KalayState936 {
+    unsigned char _pad0[0x1c2];
+    short unk1c2;
+};
+extern struct KalayState936 gState_936 __asm__("gState");
+
+void OvlFunc_936_20096bc(void)
+{
+    int flag;
+    struct Actor *actor;
+    struct Sprite *sprite;
+    unsigned char *buf;
+
+    if (__GetFlag(0x941)) {
+        __SetFlag(0x321);
+        __SetFlag(0x913);
+        __SetFlag(0x912);
+        __SetFlag(0x915);
+    }
+
+    if (__GetFlag(0x94 << 4)) {
+        __SetFlag(0x321);
+    }
+
+    if (gState_936.unk1c2 == 0xe) {
+        MapActor_SetPos17_15(0xd4, 0xb0, 0x19);
+    }
+
+    __Func_8092950(0x15, 2);
+
+    flag = __GetFlag(0x916);
+    if (flag) {
+        __MapActor_SetPos(0x1a, 0, 0);
+    } else {
+        actor = (struct Actor *)__MapActor_GetActor(0x1a);
+        sprite = actor->sprite;
+        sprite->oam.priority = 1;
+        ((struct Attr_OvlFunc_936_200ba3c *)sprite)->flag = 0;
+        sprite->oam.palette = 0;
+        sprite->numLayers = flag;
+        actor->__unk5C = 1;
+        actor->__unk55 = flag;
+        actor->pos.y = 0xa0 << 12;
+        actor->__unk61 = 1;
+        buf = (unsigned char *)__galloc_iwram(0x11, 0xc1 << 3);
+        __LoadItemIcon(0xb5);
+        buf += 0x80 << 3;
+        __UploadSpriteGFX(sprite->slot, 0x80, buf);
+        __gfree(0x11);
+        actor->speed = flag;
+        actor->prevPos.x = actor->pos.x;
+        actor->prevPos.y = actor->pos.y;
+        actor->prevPos.z = actor->pos.z;
+        __StartTask(OvlFunc_936_200b90c, 0xc8 << 4);
+    }
+}
 
 void OvlFunc_936_20097e8(void) {
     unsigned int r3;
@@ -1302,7 +1364,63 @@ unsigned int OvlFunc_936_200b184(unsigned int arg0, unsigned int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b1b8.s");
+extern int Lm936_3d84[] __asm__(".Lm936_3d84");
+extern int __TestCollision(struct Actor *, vec3_t *);
+extern void __Actor_SetAnim(struct Actor *, int);
+extern void __Actor_TravelTo(struct Actor *, int, int, int);
+extern void __Actor_WaitMovement(struct Actor *);
+extern void OvlFunc_936_200b2a4(void);
+
+void OvlFunc_936_200b1b8(void)
+{
+    struct Actor *player;
+    struct Actor *target;
+    int stk[3];
+    unsigned int idx;
+    int zero;
+
+    player = (struct Actor *)__MapActor_GetActor(0);
+    idx = player->facing >> 12;
+    target = (struct Actor *)OvlFunc_936_200b184(
+        (*(short *)((char *)player + 0xa) + (Lm936_3d84[idx] >> 16)) >> 4,
+        (*(short *)((char *)player + 0x12) + (short)Lm936_3d84[idx]) >> 4
+    );
+    if (target == NULL)
+        return;
+
+    zero = 0;
+    target->layer = 2;
+
+    stk[0] = target->pos.x + (Lm936_3d84[idx] & 0xffff0000);
+    stk[1] = target->pos.y;
+    stk[2] = target->pos.z + (Lm936_3d84[idx] << 16);
+
+    if (__TestCollision(target, (vec3_t *)stk) > 0)
+        return;
+
+    __Actor_SetAnim(player, 8);
+    API_WaitFrames(15);
+    API_PlaySound(0xb9);
+
+    target->speed = 0x3333;
+    target->accel = 0x3333;
+    API_Actor_TravelTo(target, stk[0], stk[1], stk[2]);
+
+    player->speed = 0x3333;
+    player->accel = 0x3333;
+    API_Actor_TravelTo(player, stk[0], stk[1], stk[2]);
+
+    __Actor_WaitMovement(target);
+    API_MapActor_PlayPendingSound();
+
+    target->pos.x = stk[0];
+    target->pos.z = stk[2];
+    target->motion.x = zero;
+    target->motion.z = zero;
+
+    __Actor_SetAnim(player, 1);
+    OvlFunc_936_200b2a4();
+}
 typedef struct { unsigned char _bytes[4]; } ActorCmd;
 extern ActorCmd gScript_936__0200c268[12];
 
@@ -1495,7 +1613,34 @@ void OvlFunc_936_200b768(void)
         OvlFunc_936_200b864(actor9->pos.x, actor9->pos.y, actor9->pos.z);
     }
 }
-INCLUDE_ASM("asm/maps/kalay/OvlFunc_936_200b864.s");
+extern void __Func_80929d8(struct Actor *, int);
+extern void __Actor_SetSpriteFlags(struct Actor *, int);
+extern void __Actor_SetScript(void *, void *);
+extern unsigned char gScript_936__0200d120[];
+
+void OvlFunc_936_200b864(int x, int y, int z)
+{
+    struct Actor *actor;
+
+    actor = (struct Actor *)API_CreateActor(
+        0xde,
+        x - 0x80000,
+        (((__Random() << 3) >> 16) << 16) + y + (0x80 << 13),
+        z
+    );
+    if (actor != 0) {
+        actor->__unk55 = 0;
+        actor->sprite->oam.priority = 2;
+        __Func_80929d8(actor, 9);
+        __Actor_SetSpriteFlags(actor, 0);
+        actor->motion.x = (((u32)__Random() * 2 >> 16) - 1) << 16;
+        actor->motion.y = (((u32)__Random() * 6 >> 16) - 3) << 16;
+        actor->waveCounter = 20;
+        actor->__unk61 = 1;
+        __Actor_SetAnim(actor, 1);
+        __Actor_SetScript(actor, gScript_936__0200d120);
+    }
+}
 
 void OvlFunc_936_200b90c(void)
 {

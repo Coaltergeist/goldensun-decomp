@@ -32,7 +32,24 @@ INCLUDE_ASM("asm/field/map_actor/Func_808ba38.s");
 
 INCLUDE_ASM("asm/field/map_actor/Func_808bb2c.s");
 
-INCLUDE_ASM("asm/field/map_actor/Func_808bc44.s");
+void Func_808bc44(void)
+{
+    unsigned char *base = *(unsigned char **)iwram_3001ebc;
+    int zero = 0;
+
+    *(short *)(base + 0x16c) = zero;
+    *(short *)(base + 0x16e) = zero;
+    *(short *)(base + 0x170) = zero;
+    *(short *)(base + 0x172) = zero;
+    *(short *)(base + 0x174) = zero;
+    *(short *)(base + 0x176) = zero;
+    *(short *)(base + 0x178) = zero;
+    *(short *)(base + 0x17a) = zero;
+    *(short *)(base + 0x17c) = zero;
+    *(short *)(base + 0x17e) = zero;
+    *(short *)(base + 0x180) = zero;
+    *(short *)(base + 0x182) = zero;
+}
 
 int Func_808bc9c(void)
 {
@@ -905,7 +922,34 @@ void Func_80935b0(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsig
 }
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80935d4.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_80936a0.s", ".text.map_actor_2");
+
+extern fx32 Func_80008ac(fx32 num, fx32 denom);
+extern void Func_80935d4(void);
+
+struct CameraZoomState {
+    u8 pad[0x350];
+    fx32 startZoom;
+    fx32 endZoom;
+    s16 duration;
+    s16 elapsed;
+};
+
+void Func_80936a0(fx32 zoom, s32 duration)
+{
+    struct CameraZoomState *cam = (struct CameraZoomState *)iwram_3001e70;
+    u8 *field = galloc_ewram(0x1b, 0xccc);
+
+    if (*(s16 *)(field + 0x19e) == 3) {
+        fx32 (*divide)(fx32, fx32) = Func_80008ac;
+        fx32 invZoom = divide(zoom, 0x10000);
+
+        cam->startZoom = cam->endZoom;
+        cam->endZoom = invZoom;
+        cam->duration = duration;
+        cam->elapsed = 0;
+        StartTask(Func_80935d4, 0xc94);
+    }
+}
 
 extern void WaitFrames(unsigned int nframes);
 

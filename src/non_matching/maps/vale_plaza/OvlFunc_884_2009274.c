@@ -1,6 +1,23 @@
+/*
+ * Remaining diff: 6-instruction (+0x2b4..+0x2be) `23.sched2` order diff around
+ * `CS884_State.battleMode = 2;` (`adds r3, r3, r2; movs r2, #2; strb r2, [r3, #0]`):
+ * `ldr r5, =5` (`prio = 71`, cost 2 to `adds r0, r5, #0` -> `call`) strictly outranks
+ * `adds r3, r3, r2` (`prio = 70`, cost 1 to `strb` + cost 1 `arm_adjust_cost` to `call`)
+ * and `true_dependence` skips `RTX_UNCHANGING_P` (`mem/u/f`) pool loads, so `sched2` moves
+ * `ldr r5, =5` to `+0x2b4` (before `adds r3, r3, r2`) and puts `adds r0, r5, #0` before
+ * `movs r1, #19` instead of keeping `ldr r5, =5` after `strb` with `movs r1, #19` in its
+ * load-delay slot. Note: `src/maps/vale_plaza.c` is already in `GAIA_SRCS` (`-fstrict-aliasing`),
+ * and `-fno-strict-aliasing` produces the same diff; only a forbidden `do { ... } while (0)`
+ * (`NOTE_INSN_LOOP_BEG`/`END`) barrier blocks the `ldr r5, =5` hoist.
+ * Note when integrating into `src/maps/vale_plaza.c`: `struct CS884_StateView` and
+ * `CS884_State` are already declared above `ValePlaza_MapInit`.
+ */
 #include "api.h"
 
-struct CS884_StateView { unsigned char reserved[0x22b]; unsigned char battleMode; };
+struct CS884_StateView {
+    unsigned char reserved[0x22b];
+    unsigned char battleMode;
+};
 extern struct CS884_StateView CS884_State __asm__("gState");
 extern unsigned char CS884_BattleArea[] __asm__(".Lcs884_battleArea");
 __asm__(".equ .Lcs884_battleArea, 5");
@@ -12,16 +29,15 @@ void OvlFunc_884_2009274(void)
     extern unsigned char gScript_884__0200a998[];
     extern unsigned char gScript_884__0200a9f0[];
     extern unsigned char gScript_884__0200ac00[];
-    
     extern void __Actor_SetSpriteFlags(void *, int);
     extern int __Func_8091c7c(int, int);
-    extern void __Func_8091f90(unsigned short, unsigned short);
-    extern void __Func_8091fa8(unsigned short, unsigned short);
+    extern void __Func_8091f90(int, int);
+    extern void __Func_8091fa8(int, int);
     extern void __Func_8092950(unsigned int, unsigned int);
-    extern void * __MapActor_GetActor(int);
+    extern void *__MapActor_GetActor(int);
     extern void __MapActor_RunScript(int, void *);
     extern void OvlFunc_884_200a2c8(unsigned int, unsigned int);
-    
+    extern void OvlFunc_884_200a2e0(unsigned int, unsigned int, unsigned int);
     extern int __ShowActorMessage_NoWait(int, int);
     extern void __StartMapBattle(int, int);
     unsigned char *actor;

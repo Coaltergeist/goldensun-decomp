@@ -816,7 +816,24 @@ void OvlFunc_898_200906c(void)
   OvlFunc_898_2008ef4(0x78, 0x90, 0xa);
 }
 
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_2009090.s");
+void OvlFunc_898_2009090(void)
+{
+    struct Actor *actor = (struct Actor *)__MapActor_GetActor(0);
+    struct Sprite *sprite = actor->sprite;
+
+    __PlaySound(0xbc);
+    API_CopyMapTiles(0x2a, 0x21, 0x22, 0x10, 2, 2);
+    API_CopyMapTiles(0x2a, 0x23, 0x24, 0x10, 2, 2);
+    __CutsceneWait(4);
+    API_CopyMapTiles(0x28, 0x21, 0x22, 0x10, 2, 2);
+    API_CopyMapTiles(0x28, 0x23, 0x24, 0x10, 2, 2);
+    __CutsceneWait(4);
+    API_Func_8010704(0x21, 0x15, 2, 2, 3, 0x10);
+    actor->flags &= ~1;
+    sprite->oam.priority = 3;
+    OvlFunc_898_2008ef4(0x40, 0x88 << 1, 0xb);
+}
+
 extern unsigned char L28ac[] __asm__(".Lm898_28ac");
 
 void OvlFunc_898_200913c(void)
@@ -1141,5 +1158,70 @@ void OvlFunc_898_2009754(struct Actor *actor)
         actor->accel = accel - _divsi3_RAM(accel, 28);
     }
 }
-INCLUDE_ASM("asm/maps/vault_1/OvlFunc_898_20097ac.s");
+extern unsigned int _umodsi3_RAM(unsigned int, unsigned int);
+extern void *__CreateActor(int, int, int, int);
+extern unsigned int __Random(void);
+extern void __Actor_SetScript(void *, const void *);
+extern void OvlFunc_898_2009754(struct Actor *);
+extern unsigned char gScript_898__0200a8c4[];
+extern unsigned char gScript_898__0200a8dc[];
+
+void OvlFunc_898_20097ac(int arg0)
+{
+    struct Actor *actor;
+    struct Actor *new_actor;
+    struct Sprite *sprite;
+    int dx, dz;
+    int m;
+
+    actor = (struct Actor *)__MapActor_GetActor(0x13);
+    if (actor == 0) {
+        return;
+    }
+
+    dx = (__Random() * 8 >> 16) - 4;
+    dz = (__Random() * 8 >> 16) - 4;
+    new_actor = (struct Actor *)__CreateActor(
+        0xac,
+        (dx << 16) + actor->pos.x,
+        actor->pos.y,
+        (dz << 16) + actor->pos.z);
+    if (new_actor == 0) {
+        return;
+    }
+
+    sprite = new_actor->sprite;
+    switch (__Random() & 1) {
+    case 1:
+        __Actor_SetAnim(new_actor, 3);
+        __Actor_SetScript(new_actor, gScript_898__0200a8c4);
+        break;
+    default:
+        __Actor_SetAnim(new_actor, 2);
+        __Actor_SetScript(new_actor, gScript_898__0200a8dc);
+        break;
+    }
+
+    new_actor->__unk55 = 0;
+    if (arg0 & 2) {
+        arg0 &= 1;
+        m = _umodsi3_RAM(__Random(), 10) + 5;
+        m += (arg0 ^ 1) << 2;
+        new_actor->accel = ((arg0 * 2 - 1) * 0x1999) * m;
+        m = _umodsi3_RAM(__Random(), 15) - 7;
+        new_actor->speed = 0x1999 * m;
+        new_actor->waveCounter = 0;
+    } else {
+        m = _umodsi3_RAM(__Random(), 10) + 8;
+        new_actor->speed = ((arg0 * 2 - 1) * 0x1999) * m;
+        m = _umodsi3_RAM(__Random(), 14) + 1;
+        new_actor->accel = 0x1999 * m;
+        new_actor->waveCounter = 1;
+    }
+
+    new_actor->update = OvlFunc_898_2009754;
+    sprite->flags = 0;
+    sprite->oam.priority = actor->sprite->oam.priority;
+}
+
 INCLUDE_ASM("asm/maps/vault_1/vault_1_data.s");

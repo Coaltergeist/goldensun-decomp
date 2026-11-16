@@ -1,3 +1,5 @@
+/* Remaining diff: stack spill size (`sub sp, #24` vs `#12`) and high-register
+ * allocation (`coin` in sl vs r9) across the coin physics and 4-obstacle loop. */
 #include "api.h"
 
 struct FountainVector { int x, y, z; };
@@ -22,12 +24,12 @@ extern unsigned char FountainOrbitColors[] __asm__(".Lm951_2057");
 extern int Func_8000948(int);
 extern int _divsi3_RAM(int, int);
 extern int _modsi3_RAM(int, int);
-extern unsigned char *FountainActor(int) __asm__("__MapActor_GetActor");
-extern void FountainActorAnim(unsigned char *, unsigned int) __asm__("__Actor_SetAnim");
-extern int FountainSin(int) __asm__("__sin");
-extern int FountainCos(int) __asm__("__cos");
+extern unsigned char *__MapActor_GetActor(int);
+extern void __Actor_SetAnim(unsigned char *, unsigned int);
+extern int __sin(int);
+extern int __cos(int);
+extern void OvlFunc_951_2008dd0(int, unsigned int *, int, int, int);
 extern void OvlFunc_951_2008e44(int, int);
-extern void OvlFunc_951_2008dd0(int, struct FountainVector *, int, int, int);
 
 static inline int FountainLength(int squareLength) {
     int (*fn)(int) = Func_8000948;
@@ -42,7 +44,6 @@ void OvlFunc_951_2008e5c(void)
     int minX, maxX, minZ, maxZ, speed, phase, speedMode;
 
     coin = &FountainCoinState;
-    /* Shift the three trailing positions from newest to oldest. */
     for (i = 3; i != 0; --i) {
         coin->samples[i].x = coin->samples[i - 1].x;
         coin->samples[i].y = coin->samples[i - 1].y;
@@ -58,20 +59,15 @@ void OvlFunc_951_2008e5c(void)
             if (coin->velocity.y != 0) {
                 coin->velocity.y = 0;
                 if (FountainCoinType == 1)
-                    FountainActorAnim(FountainActor(17), 1);
+                    __Actor_SetAnim(__MapActor_GetActor(17), 1);
                 else
-                    FountainActorAnim(FountainActor(12), 1);
+                    __Actor_SetAnim(__MapActor_GetActor(12), 1);
             }
-            /* Attraction and friction use signed division toward zero. */
             if (coin->attractionTime > 0) {
-                struct FountainVector attraction;
                 int attractionX, attractionZ, attractionLength, newVZ;
-                attraction.x = (0x780000 - coin->samples[0].x) >> 8;
-                attraction.z = (0x470000 - coin->samples[0].z) >> 8;
-                attraction.y = 0;
-                attractionX = attraction.x;
-                attractionZ = attraction.z;
-                attractionLength = FountainLength(attractionX * attractionX + attraction.y * attraction.y + attractionZ * attractionZ);
+                attractionX = (0x780000 - coin->samples[0].x) >> 8;
+                attractionZ = (0x470000 - coin->samples[0].z) >> 8;
+                attractionLength = FountainLength(attractionX * attractionX + attractionZ * attractionZ);
                 attractionX = coin->velocity.x + _divsi3_RAM(0x1999 * attractionX, attractionLength);
                 coin->velocity.x = attractionX;
                 newVZ = coin->velocity.z + _divsi3_RAM(0x1999 * attractionZ, attractionLength);
@@ -90,31 +86,30 @@ void OvlFunc_951_2008e5c(void)
                     coin->velocity.z = 0;
                 if (coin->velocity.x == 0 && coin->velocity.z == 0) {
                     if (FountainCoinType == 1) {
-                        FountainActorAnim(FountainActor(17), 2);
+                        __Actor_SetAnim(__MapActor_GetActor(17), 2);
                         OvlFunc_951_2008e44(15, 0);
                         OvlFunc_951_2008e44(14, 0);
                         OvlFunc_951_2008e44(13, 0);
                     } else {
-                        FountainActorAnim(FountainActor(12), 2);
+                        __Actor_SetAnim(__MapActor_GetActor(12), 2);
                         OvlFunc_951_2008e44(10, 0);
                         OvlFunc_951_2008e44(9, 0);
                         OvlFunc_951_2008e44(8, 0);
                     }
                     {
-                    int ringX, ringZ, ringDistance;
-                    ringX = (0x780000 - coin->samples[0].x) >> 16;
-                    ringZ = (0x470000 - coin->samples[0].z) >> 16;
-                    ringDistance = ringX * ringX + ringZ * ringZ;
-                    FountainStopped = 1;
-                    if (ringDistance <= 224) FountainPrizeRing = 0;
-                    else if (ringDistance <= 624) FountainPrizeRing = 1;
-                    else if (ringDistance <= 1088) FountainPrizeRing = 2;
-                    else if (ringDistance <= 1680) FountainPrizeRing = 3;
-                    else FountainPrizeRing = 4;
+                        int ringX, ringZ, ringDistance;
+                        ringX = (0x780000 - coin->samples[0].x) >> 16;
+                        ringZ = (0x470000 - coin->samples[0].z) >> 16;
+                        ringDistance = ringX * ringX + ringZ * ringZ;
+                        FountainStopped = 1;
+                        if (ringDistance <= 224) FountainPrizeRing = 0;
+                        else if (ringDistance <= 624) FountainPrizeRing = 1;
+                        else if (ringDistance <= 1088) FountainPrizeRing = 2;
+                        else if (ringDistance <= 1680) FountainPrizeRing = 3;
+                        else FountainPrizeRing = 4;
                     }
                 }
             }
-            /* Sloped corners narrow the available rectangle near each edge. */
             maxZ = 0x780000;
             maxX = 0xc00000;
             minX = 0x300000;
@@ -173,7 +168,6 @@ void OvlFunc_951_2008e5c(void)
         }
     }
 
-    /* Two straight obstacles followed by two orbiting obstacles. */
     for (i = 0; i != 4; ++i) {
         obstacle = &FountainObstacles[i];
         if (obstacle->hitTime > 0) --obstacle->hitTime;
@@ -183,11 +177,11 @@ void OvlFunc_951_2008e5c(void)
             if (obstacle->speedMode == 1) speed *= 2;
             if (obstacle->speedMode == 2) speed *= 3;
             if (obstacle->hitTime > 0) {
-                if (i == 0) FountainActorAnim(FountainActor(18), 3);
-                else FountainActorAnim(FountainActor(19), 3);
+                if (i == 0) __Actor_SetAnim(__MapActor_GetActor(18), 3);
+                else __Actor_SetAnim(__MapActor_GetActor(19), 3);
             } else {
-                if (i == 0) FountainActorAnim(FountainActor(18), 1);
-                else FountainActorAnim(FountainActor(19), 1);
+                if (i == 0) __Actor_SetAnim(__MapActor_GetActor(18), 1);
+                else __Actor_SetAnim(__MapActor_GetActor(19), 1);
                 if (obstacle->phase == 0) {
                     if (obstacle->direction == 0) obstacle->pos.x += speed;
                     else obstacle->pos.x -= speed;
@@ -208,11 +202,11 @@ void OvlFunc_951_2008e5c(void)
             if (obstacle->speedMode == 1) speed *= 2;
             if (obstacle->speedMode == 2) speed *= 3;
             if (obstacle->hitTime > 0) {
-                FountainActorAnim(FountainActor(20), 3);
+                __Actor_SetAnim(__MapActor_GetActor(20), 3);
             } else {
-                FountainActorAnim(FountainActor(20), 2);
-                obstacle->pos.x = FountainSin(obstacle->direction) * 48 + 0x700000;
-                obstacle->pos.z = FountainCos(obstacle->direction) * 40 + 0x480000;
+                __Actor_SetAnim(__MapActor_GetActor(20), 2);
+                obstacle->pos.x = __sin(obstacle->direction) * 48 + 0x700000;
+                obstacle->pos.z = __cos(obstacle->direction) * 40 + 0x480000;
                 obstacle->direction += speed;
                 ++obstacle->phase;
             }
@@ -222,14 +216,14 @@ void OvlFunc_951_2008e5c(void)
             if (obstacle->speedMode == 1) speed = 128;
             if (obstacle->speedMode == 2) speed *= 3;
             if (obstacle->hitTime > 0) {
-                FountainActorAnim(FountainActor(21), 3);
+                __Actor_SetAnim(__MapActor_GetActor(21), 3);
             } else if (phase <= 0x17f) {
-                obstacle->pos.x = FountainSin(obstacle->direction) * 52 + 0x700000;
-                obstacle->pos.z = FountainCos(obstacle->direction) * 24 + 0x480000;
+                obstacle->pos.x = __sin(obstacle->direction) * 52 + 0x700000;
+                obstacle->pos.z = __cos(obstacle->direction) * 24 + 0x480000;
                 obstacle->direction += speed;
-                FountainActorAnim(FountainActor(21), 2);
+                __Actor_SetAnim(__MapActor_GetActor(21), 2);
             } else {
-                FountainActorAnim(FountainActor(21), 3);
+                __Actor_SetAnim(__MapActor_GetActor(21), 3);
             }
             ++obstacle->phase;
         }
@@ -253,7 +247,7 @@ void OvlFunc_951_2008e5c(void)
                         }
                     }
                 } else {
-                        collisionLength = FountainLength(distance);
+                    collisionLength = FountainLength(distance);
                     coin->velocity.x = _divsi3_RAM(-dx * kickSpeed, collisionLength);
                     coin->velocity.z = _divsi3_RAM(-dz * kickSpeed, collisionLength);
                     coin->attractionTime -= 100;
@@ -267,16 +261,16 @@ void OvlFunc_951_2008e5c(void)
         }
         switch (i) {
         case 0:
-            OvlFunc_951_2008dd0(18, &obstacle->pos, 0, FountainStraightColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
+            OvlFunc_951_2008dd0(18, (unsigned int *)&obstacle->pos, 0, FountainStraightColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
             break;
         case 1:
-            OvlFunc_951_2008dd0(19, &obstacle->pos, 0, FountainStraightColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
+            OvlFunc_951_2008dd0(19, (unsigned int *)&obstacle->pos, 0, FountainStraightColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
             break;
         case 2:
-            OvlFunc_951_2008dd0(20, &obstacle->pos, 0x8000 - obstacle->direction, FountainOrbitColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
+            OvlFunc_951_2008dd0(20, (unsigned int *)&obstacle->pos, 0x8000 - obstacle->direction, FountainOrbitColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
             break;
         case 3:
-            OvlFunc_951_2008dd0(21, &obstacle->pos, 0xffff - obstacle->direction, FountainOrbitColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
+            OvlFunc_951_2008dd0(21, (unsigned int *)&obstacle->pos, 0xffff - obstacle->direction, FountainOrbitColors[obstacle->speedMode], obstacle->speedMode * 16 + 16);
             break;
         }
     }
@@ -284,23 +278,23 @@ void OvlFunc_951_2008e5c(void)
     coin->shadow.y = 0;
     coin->shadow.z = coin->samples[0].z;
     if (FountainCoinType == 1) {
-        OvlFunc_951_2008dd0(17, &coin->samples[0], 0, 0, 16);
-        OvlFunc_951_2008dd0(16, &coin->shadow, 0, 0, 16);
-        OvlFunc_951_2008dd0(15, &coin->samples[1], 0, 0, 16);
-        OvlFunc_951_2008dd0(14, &coin->samples[2], 0, 0, 16);
-        OvlFunc_951_2008dd0(13, &coin->samples[3], 0, 0, 16);
-        FountainActorAnim(FountainActor(15), 4);
-        FountainActorAnim(FountainActor(14), 4);
-        FountainActorAnim(FountainActor(13), 4);
+        OvlFunc_951_2008dd0(17, (unsigned int *)&coin->samples[0], 0, 0, 16);
+        OvlFunc_951_2008dd0(16, (unsigned int *)&coin->shadow, 0, 0, 16);
+        OvlFunc_951_2008dd0(15, (unsigned int *)&coin->samples[1], 0, 0, 16);
+        OvlFunc_951_2008dd0(14, (unsigned int *)&coin->samples[2], 0, 0, 16);
+        OvlFunc_951_2008dd0(13, (unsigned int *)&coin->samples[3], 0, 0, 16);
+        __Actor_SetAnim(__MapActor_GetActor(15), 4);
+        __Actor_SetAnim(__MapActor_GetActor(14), 4);
+        __Actor_SetAnim(__MapActor_GetActor(13), 4);
     } else {
-        OvlFunc_951_2008dd0(12, &coin->samples[0], 0, 0, 16);
-        OvlFunc_951_2008dd0(11, &coin->shadow, 0, 0, 16);
-        OvlFunc_951_2008dd0(10, &coin->samples[1], 0, 0, 16);
-        OvlFunc_951_2008dd0(9, &coin->samples[2], 0, 0, 16);
-        OvlFunc_951_2008dd0(8, &coin->samples[3], 0, 0, 16);
-        FountainActorAnim(FountainActor(10), 4);
-        FountainActorAnim(FountainActor(9), 4);
-        FountainActorAnim(FountainActor(8), 4);
+        OvlFunc_951_2008dd0(12, (unsigned int *)&coin->samples[0], 0, 0, 16);
+        OvlFunc_951_2008dd0(11, (unsigned int *)&coin->shadow, 0, 0, 16);
+        OvlFunc_951_2008dd0(10, (unsigned int *)&coin->samples[1], 0, 0, 16);
+        OvlFunc_951_2008dd0(9, (unsigned int *)&coin->samples[2], 0, 0, 16);
+        OvlFunc_951_2008dd0(8, (unsigned int *)&coin->samples[3], 0, 0, 16);
+        __Actor_SetAnim(__MapActor_GetActor(10), 4);
+        __Actor_SetAnim(__MapActor_GetActor(9), 4);
+        __Actor_SetAnim(__MapActor_GetActor(8), 4);
     }
     if (coin->frame != -1) ++coin->frame;
 }

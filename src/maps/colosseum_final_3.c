@@ -28,7 +28,63 @@ unsigned int ColosseumFinal3_GetActors(void) {
     return (unsigned int)gScript_881__0200d0a8;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200804c.s");
+extern signed char L4c20[][6] __asm__(".Lm956_4c20");
+extern int V5484 __asm__(".Lm956_5484");
+extern int V5480 __asm__(".Lm956_5480");
+extern struct Actor *__MapActor_GetActor(int);
+extern void __Func_809ad90(int);
+extern void __WaitFrames(int);
+
+void OvlFunc_956_200804c(void)
+{
+    extern unsigned char gState[];
+    extern unsigned char *iwram_3001ebc;
+    unsigned char *p;
+    unsigned int r2;
+    struct Actor *actor;
+    int r4;
+    int r6;
+    int val;
+    int idx;
+
+    p = iwram_3001ebc;
+    r2 = 0xfa;
+    r2 <<= 1;
+    actor = __MapActor_GetActor(*(int *)(gState + r2));
+    r4 = actor->pos.z >> 20;
+
+    if (V5484 == 0) {
+        V5480 = (V5480 + 1) & 3;
+        for (r6 = 0x12; r6 <= 0x16; r6++) {
+            val = L4c20[V5480][r6 - 0x12];
+            API_MapActor_SetAnim(r6, val);
+            API_MapActor_SetAnim(r6 + 5, val + 8);
+            API_Func_8010704(0x20, 0xb, 1, 2, 0x21 + (r6 - 0x12) * 2, 0xb);
+            if (val != 7) {
+                API_Func_8010704(0x4a, 0xc, 1, 1, 0x21 + (r6 - 0x12) * 2, 0xb);
+            }
+        }
+        API_MapActor_SetAnim(0x1c, L4c20[V5480][5]);
+    } else {
+        short *dst;
+        for (r6 = 0x12, idx = V5480, dst = (short *)(p + 0x182); r6 <= 0x16; r6++) {
+            val = L4c20[idx][r6 - 0x12];
+            if ((unsigned int)(actor->pos.x - (r6 << 21) + 0x31ffff) <= 0x13fffe) {
+                if (r4 == 11 && val == 4) {
+                    *dst = val;
+                }
+                if (r4 == 12 && val == 5) {
+                    *dst = val;
+                }
+            }
+        }
+    }
+
+    V5484++;
+    if ((unsigned int)V5484 > 17) {
+        V5484 = 0;
+    }
+}
 
 extern unsigned char L5484[] __asm__(".Lm956_5484");
 extern unsigned char L5480[] __asm__(".Lm956_5480");
@@ -209,7 +265,46 @@ void OvlFunc_956_2008404(void) {
     API_ClearFlag(0x367);
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20084a4.s");
+void OvlFunc_956_20084a4(void)
+{
+    struct Actor *actor;
+    int x;
+    int z;
+
+    actor = __MapActor_GetActor(0xc);
+    x = actor->pos.x >> 20;
+    if (x == 9) {
+        z = actor->pos.z >> 20;
+        if (z == 0xc) {
+            {
+                struct Actor *a = __MapActor_GetActor(0xc);
+                __Actor_SetSpriteFlags(a, 0);
+                a->flags = 2;
+                a->__unk55 = 0;
+                a->accel = 0x6666;
+                a->speed = 0xcccc;
+                API_Actor_TravelTo(a, a->pos.x, 0x80 << 11, a->pos.z);
+            }
+            {
+                struct Actor *a = __MapActor_GetActor(0xb);
+                a->flags = 2;
+                a->accel = 0x6666;
+                a->speed = 0xcccc;
+                API_Actor_TravelTo(a, a->pos.x, 0x80 << 14, a->pos.z);
+            }
+            {
+                struct Actor *a = __MapActor_GetActor(0xa);
+                a->accel = 0x6666;
+                a->speed = 0xcccc;
+                API_Actor_TravelTo(a, a->pos.x, 0x80 << 11, a->pos.z);
+            }
+
+            API_SetFlag(0xda << 2);
+            API_Func_8010704(0xf, 0xc, 1, 1, 0xd, z);
+            API_Func_8010704(1, 0x19, 1, 1, x, z);
+        }
+    }
+}
 
 extern void OvlFunc_common1_2060(void);
 extern void OvlFunc_956_20084a4(void);
@@ -329,7 +424,124 @@ int OvlFunc_956_2008714(int arg0, int arg1)
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200876c.s");
+void OvlFunc_956_200876c(void)
+{
+    extern unsigned char CS956_State[] __asm__("gState");
+    extern unsigned int CS956_Keys __asm__("gKeyHeld");
+    extern unsigned short CS956_Directions[] __asm__(".Lm956_4c38");
+    extern struct Actor *CS956_GetActor(unsigned int) __asm__("__MapActor_GetActor");
+    extern void CS956_Translate(int, unsigned int, vec3_t *) __asm__("__vec3_translate");
+    extern void CS956_SetAnim(struct Actor *, int) __asm__("__Actor_SetAnim");
+    extern void CS956_WaitMovement(struct Actor *) __asm__("__Actor_WaitMovement");
+    extern unsigned char *CS956_Alloc(int, int) __asm__("__galloc_ewram");
+    extern void CS956_CameraTarget(void *, struct Actor *) __asm__("__Camera_SetTarget");
+    extern int OvlFunc_956_2008714(int, int);
+    extern void OvlFunc_common1_2060(void);
+    extern void OvlFunc_956_20085e0(void);
+    struct Actor *leader;
+    struct Actor *block;
+    int *leaderIdField;
+    unsigned int stateBase;
+    int leaderId;
+    int x, z, nextX;
+    int distance;
+    int animation, leaderStep;
+    int direction;
+    unsigned char *scene;
+    vec3_t projected;
+
+    stateBase = (unsigned int)CS956_State;
+    leaderIdField = (int *)(stateBase + 0x1f4);
+    leader = CS956_GetActor(*leaderIdField);
+    block = CS956_GetActor(31);
+    distance = 0;
+    direction = CS956_Directions[leader->facing >> 13];
+    leaderId = *leaderIdField;
+    projected.x = (leader->pos.x & ~0xfffff) + 0x80000;
+    projected.y = leader->pos.y;
+    projected.z = (leader->pos.z & ~0xfffff) + 0x80000;
+    CS956_Translate(0x100000, direction, &projected);
+    x = block->pos.x;
+    z = block->pos.z;
+    if (((projected.x - x >= 0) ? projected.x - x : x - projected.x) > 0x80000
+        || ((projected.z - z >= 0) ? projected.z - z : z - projected.z) > 0x200000) {
+        goto fail;
+    }
+    if (CS956_Keys & 0x20) {
+        animation = 2;
+        leaderStep = -8;
+        do {
+            nextX = x - 0x100000;
+            if (OvlFunc_956_2008714(nextX, z) == 0) {
+                ++distance;
+                x = nextX;
+            } else {
+                break;
+            }
+        } while (1);
+    } else if (CS956_Keys & 0x10) {
+        animation = 3;
+        leaderStep = 8;
+        do {
+            nextX = x + 0x100000;
+            if (OvlFunc_956_2008714(nextX, z) == 0) {
+                ++distance;
+                x = nextX;
+            } else {
+                break;
+            }
+        } while (1);
+    } else {
+        return;
+    }
+    if (distance == 0) return;
+    API_Func_8010704(0x4a, 8, 1, 4, block->pos.x >> 20, 9);
+    API_Func_8010704(0x78, 0x3c, 8, 5, 0x4a, 0x3c);
+    API_CutsceneStart();
+    API_MapActor_SetAnim(leaderId, 8);
+    API_CutsceneWait(6);
+    block->speed = 0x8000;
+    block->accel = 0x3333;
+    CS956_SetAnim(block, animation);
+    API_Actor_TravelTo(block, x, 0, z);
+    API_CutsceneWait(6);
+    API_MapActor_SetAnim(leaderId, 2);
+    scene = CS956_Alloc(27, 0xccc);
+    CS956_CameraTarget(*(void **)(scene + 0x1e0), block);
+    __MapActor_SetSpeed(leaderId, 0x8000, 0x3333);
+    API_PlaySound(0xef);
+    CS956_SetAnim(leader, 2);
+    API_Actor_TravelTo(leader, leader->pos.x + (distance * leaderStep) * 0x10000, 0, leader->pos.z);
+    CS956_WaitMovement(leader);
+    CS956_SetAnim(leader, 1);
+    CS956_WaitMovement(block);
+    if (x >= 0x5300000) {
+        API_SetFlag(0x369);
+        API_MapActor_SetAnim(31, 3);
+        API_MapActor_TravelBy(31, 18, 6);
+        API_CutsceneWait(30);
+        CS956_SetAnim(block, 8);
+        CS956_WaitMovement(block);
+        block->flags = 2;
+        API_Func_8010704(0x56, 10, 1, 2, 0x54, 10);
+        API_Func_8010704(0x56, 9, 1, 1, 0x54, 12);
+        API_PlaySound(0x120);
+        API_PlaySound(0xf0);
+    } else {
+        CS956_SetAnim(block, 1);
+        API_PlaySound(0x120);
+        API_PlaySound(0xd5);
+        API_Func_8010704(0x55, 9, 1, 4, x >> 20, 9);
+        API_Func_8010704(0x55, 9, 1, 4, x >> 20, 0x3d);
+    }
+    API_CutsceneWait(15);
+    API_CutsceneEnd();
+    return;
+
+fail:
+    OvlFunc_common1_2060();
+    OvlFunc_956_20085e0();
+}
 
 extern void __Func_80118c0(unsigned int);
 extern void __Func_80118a8(unsigned int);
@@ -423,8 +635,115 @@ void OvlFunc_956_2008b30(void)
 
 void OvlFunc_956_2008ba0(void) {}
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008ba4.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2008c5c.s");
+struct CS956_BattleState {
+    unsigned char before22b[0x22b];
+    unsigned char unk22b;
+};
+extern struct CS956_BattleState CS956_Battle __asm__("gState");
+extern unsigned char Lconst_91[] __asm__(".Lconst_91");
+__asm__(".equ .Lconst_91, 0x91");
+extern void OvlFunc_common1_78(int);
+extern void OvlFunc_common1_16f8(void);
+extern int OvlFunc_common1_1814(int, int);
+extern void OvlFunc_common1_1708(void);
+extern void __StartMapBattle(int, int);
+extern void __Func_8091f90(int, int);
+extern void __Func_8091fa8(int, int);
+
+struct CS956_RoomLeaderView {
+    unsigned char pad0[0x1c2];
+    short room;
+    unsigned char pad1[0x1f4 - 0x1c4];
+    int leaderId;
+};
+
+struct CS956_TransitionView {
+    unsigned char pad0[0x1c0];
+    int unk1c0;
+    int unk1c4;
+    int unk1c8;
+};
+
+extern unsigned char CS956_Message2073[] __asm__(".Lconst_2073");
+__asm__(".equ .Lconst_2073, 0x2073");
+
+void OvlFunc_956_2008ba4(int arg0)
+{
+    extern struct CS956_RoomLeaderView CS956_RLState __asm__("gState");
+    extern struct CS956_TransitionView *iwram_3001ebc_tr __asm__("iwram_3001ebc");
+    struct CS956_TransitionView *p;
+    int id;
+    int base;
+    int offset;
+    int msg;
+
+    p = iwram_3001ebc_tr;
+    id = CS956_RLState.leaderId;
+    if (CS956_RLState.room == 2) {
+        API_CutsceneStart();
+        offset = arg0 * 3;
+        base = (int)CS956_Message2073;
+        API_MessageID(offset + base);
+        API_ShowActorMessage_NoWait(arg0, 0);
+        if (API_Func_8091c7c(id, 0) == 0) {
+            msg = base + 1;
+            API_MessageID(offset + msg);
+            API_ActorMessage(arg0, 0);
+            p->unk1c0 = 0x200;
+            p->unk1c8 = 0xf;
+            API_MapTransitionOut();
+            API_WaitMapTransition();
+            OvlFunc_common1_78(arg0);
+            API_MapTransitionIn();
+            API_WaitMapTransition();
+        } else {
+            msg = base + 2;
+            API_MessageID(offset + msg);
+            API_ActorMessage(arg0, 0);
+        }
+        API_CutsceneEnd();
+    }
+}
+
+void OvlFunc_956_2008c5c(void)
+{
+    int val;
+    int i;
+    int stage;
+
+    OvlFunc_common1_16f8();
+    API_CutsceneStart();
+    val = OvlFunc_common1_1814(3, 0x11);
+    OvlFunc_common1_1708();
+    stage = 4;
+    for (i = 0; i < 10; i++) {
+        API_MapActor_WaitScript(8);
+    }
+    API_MapActor_SetSpeed(8, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnim(8, 0xbf << 3, 0xc0);
+    API_MapActor_SetSpeed(0, 0x80 << 9, 0x80 << 8);
+    API_MapActor_TravelToAnimWait(0, 0xbb << 3, 0xc0);
+    API_MapActor_SetAnim(8, 1);
+    API_MapActor_TurnToFaceActor(0, 8, 0);
+    API_CutsceneWait(10);
+    API_MapActor_SetAnim(8, 3);
+    API_MapActor_DoAnim(0, 3);
+    API_CutsceneWait(20);
+    API_MapActor_SetSpeed(0, 0x80 << 10, 0x80 << 9);
+    API_MapActor_SetSpeed(8, 0x80 << 10, 0x80 << 9);
+    API_MapActor_TravelToAnim(0, 0xbc << 3, 0xc0);
+    API_MapActor_TravelToAnimWait(8, 0xbe << 3, 0xc0);
+    API_MapActor_SetAnim(0, 0x10);
+    API_MapActor_SetAnim(8, 9);
+    API_CutsceneWait(10);
+    __StartMapBattle(0x48, stage - val + 1);
+    do {
+        CS956_Battle.unk22b = 3;
+    } while (0);
+    __Func_8091f90((int)Lconst_91, 4);
+    __Func_8091fa8((int)Lconst_91, 5);
+    API_SetFlag(0x8d << 1);
+}
 
 extern unsigned int OvlFunc_common1_21c8(void);
 
@@ -450,7 +769,242 @@ void *ColosseumFinal3_GetEvents(void) {
     return (void *)gScript_968__0200d488;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/ColosseumFinal3_MapInit.s");
+struct ColosseumInitStateView {
+    unsigned char prefix[0x1c2];
+    short room;
+    unsigned char gap[0x1f2 - 0x1c4];
+    unsigned char partyMode;
+};
+static inline void ColosseumInitByte(unsigned char *p, int value) { *p = value; }
+__asm__(".equ .LColosseumBattleFile, 0xe6");
+extern unsigned char ColosseumBattleFile[] __asm__(".LColosseumBattleFile");
+extern void __Func_8010704(int, int, int, int, int, int);
+static inline void ColosseumCopyTiles(int srcX, int srcY, int width, int height, int dstX, int dstY)
+{
+    __Func_8010704(srcX, srcY, width, height, dstX, dstY);
+}
+static inline void ColosseumInitTiles(int a, int b, int c, int d, int e, int f)
+{
+    extern void __Func_8010788(int, int, int, int, int, int);
+    __Func_8010788(a, b, c, d, e, f);
+}
+
+int ColosseumFinal3_MapInit(void)
+{
+    extern struct ColosseumInitStateView ColosseumInitState __asm__("gState");
+    extern unsigned char *ColosseumInitField __asm__("iwram_3001ebc");
+    extern struct Actor *__MapActor_GetActor(int);
+    extern void ColosseumInitSpriteFlags(void *, int) __asm__("__Actor_SetSpriteFlags");
+    extern void ColosseumInitActorAnim(void *, int) __asm__("__Actor_SetAnim");
+    extern void ColosseumInitActorScript(void *, void *) __asm__("__Actor_SetScript");
+    extern int __GetFlagByte(int);
+    extern int __Func_8011f54(int, int, int);
+    extern void ColosseumInitLayer(int) __asm__("__Func_80118c0");
+    extern void __Func_8092950(int, int);
+    extern void __Func_809ad90(int);
+    extern void __DeleteFieldActor(int);
+    extern void __MapActor_SetExtra(int, int);
+    extern void __Func_8010788(int, int, int, int, int, int);
+    extern void OvlFunc_956_2008658(void);
+    extern void OvlFunc_956_200804c(void);
+    extern void OvlFunc_956_2009474(int);
+    extern void OvlFunc_956_2009a0c(int);
+    extern int OvlFunc_common1_1608(int, int);
+    extern int OvlFunc_common1_1ecc(int, int, int, int, int, int, int);
+    extern void OvlFunc_common1_0(void);
+    extern void OvlFunc_common1_78(int);
+    extern void OvlFunc_common1_ea0(int);
+    extern void OvlFunc_common1_1fb4(int);
+    extern void OvlFunc_common1_148(void);
+    extern void OvlFunc_common1_488(void);
+    extern unsigned char ActorCmd_ARRAY_956__0200cbec[];
+    struct Actor *actor;
+    struct ColosseumInitStateView *state;
+    int column, id, terrain;
+
+    *(int *)(ColosseumInitField + 0x1c0) = 0x100;
+    API_SetFlag(0x144);
+    API_StartTask(OvlFunc_956_2008658, 0xc80);
+    API_Func_8010704(0x4a, 0x3c, 8, 6, 0x78, 0x3c);
+    actor = __MapActor_GetActor(9);
+    ColosseumInitSpriteFlags(actor, 0);
+    actor = __MapActor_GetActor(10);
+    ColosseumInitSpriteFlags(actor, 0);
+    ColosseumInitByte(&actor->__unk55, 0);
+    actor->pos.y = 0x200000;
+    actor = __MapActor_GetActor(11);
+    ColosseumInitSpriteFlags(actor, 0);
+    ColosseumInitByte(&actor->__unk55, 0);
+    actor->pos.y = 0x40000;
+    if (API_GetFlag(0x362)) {
+        API_MapActor_SetAnim(9, 5);
+        actor = __MapActor_GetActor(10);
+        actor->pos.y = 0x40000;
+        actor = __MapActor_GetActor(11);
+        actor->pos.y = 0x200000;
+        API_Func_8010704(15, 12, 1, 1, 13, 12);
+    } else {
+        actor = __MapActor_GetActor(9);
+        actor->scale.x = 0x18000;
+        actor->scale.y = 0x18000;
+        if (API_GetFlag(0x367)) {
+            API_Func_8010704(0, 24, 1, 1, 9, 12);
+        } else {
+            API_Func_8010704(0, 25, 1, 1, 9, 12);
+        }
+    }
+    if (API_GetFlag(0x368)) {
+        API_Func_8010704(15, 12, 1, 1, 13, 12);
+        API_Func_8010704(1, 25, 1, 1, 9, 12);
+        actor = __MapActor_GetActor(12);
+        ColosseumInitSpriteFlags(actor, 0);
+        ColosseumInitByte(&actor->__unk55, 0);
+        actor->pos.y = 0x20000;
+        ColosseumInitByte(&actor->flags, 2);
+        actor = __MapActor_GetActor(10);
+        actor->pos.y = 0x40000;
+        ColosseumInitByte(&actor->flags, 2);
+        actor = __MapActor_GetActor(11);
+        actor->pos.y = 0x200000;
+    }
+    column = __GetFlagByte(0x370);
+    if (column == 0) column = 19;
+    actor = __MapActor_GetActor(13);
+    actor->pos.x = (column << 20) + 0x80000;
+    ColosseumInitByte(&actor->__unk55, 0);
+    ColosseumInitByte(&actor->flags, 2);
+    API_Func_8010704(18, 10, 3, 1, 18, 11);
+    API_Func_8010704(17, 11, 1, 1, column, 11);
+    for (id = 15; id <= 17; id++) {
+        actor = __MapActor_GetActor(id);
+        terrain = __Func_8011f54(0, actor->pos.x, actor->pos.z);
+        if (actor->pos.y == 0 && terrain == 0) {
+            ColosseumInitByte(&actor->flags, 2);
+            ColosseumInitByte(&actor->__unk55, terrain);
+            API_Func_8010704(0x53, 13, 1, 1, actor->pos.x >> 20, actor->pos.z >> 20);
+            API_Func_8010704(0x53, 13, 1, 1, actor->pos.x >> 20, (actor->pos.z >> 20) + 0x34);
+        }
+    }
+    if (API_GetFlag(0x361)) {
+        for (id = 18; id <= 22; id++) {
+            actor = __MapActor_GetActor(id);
+            actor->flags = 2;
+            ColosseumInitActorAnim(actor, 2);
+            actor = __MapActor_GetActor(id + 5);
+            actor->flags = 2;
+            actor->__unk55 = 0;
+            actor->pos.y = 0x200000;
+            ColosseumInitActorAnim(actor, 10);
+            ColosseumCopyTiles(0x4a, 12, 1, 1, 0x21 + (id - 18) * 2, 11);
+        }
+        API_MapActor_SetAnim(28, 10);
+        __Func_809ad90(28);
+    } else {
+        for (id = 18; id <= 22; id++) {
+            actor = __MapActor_GetActor(id);
+            actor->flags = 2;
+            actor = __MapActor_GetActor(id + 5);
+            actor->flags = 2;
+            actor->__unk55 = 0;
+            actor->pos.y = 0x200000;
+        }
+        API_StartTask(OvlFunc_956_200804c, 0xc80);
+    }
+    if (API_GetFlag(0x360)) {
+        API_MapActor_SetAnim(29, 4);
+        API_Func_8010704(0x2f, 0x3d, 1, 4, 0x31, 0x3d);
+    }
+    if (API_GetFlag(0x363)) {
+        ColosseumInitLayer(1);
+        actor = __MapActor_GetActor(30);
+        ColosseumInitByte(&actor->__unk55, 0);
+        actor->pos.x = 0x46a0000;
+        actor->pos.z = 0xb80000;
+        ColosseumInitSpriteFlags(actor, 0);
+        ColosseumInitActorAnim(actor, 3);
+        ColosseumInitActorScript(actor, ActorCmd_ARRAY_956__0200cbec);
+    } else {
+        ColosseumInitLayer(2);
+    }
+    if (API_GetFlag(0x369)) {
+        actor = __MapActor_GetActor(31);
+        ColosseumInitActorAnim(actor, 8);
+        ColosseumInitByte(&actor->flags, 2);
+        API_Func_8010704(0x56, 10, 1, 2, 0x54, 10);
+        API_Func_8010704(0x56, 9, 1, 1, 0x54, 12);
+    } else {
+        actor = __MapActor_GetActor(31);
+        API_Func_8010704(0x55, 9, 1, 4, actor->pos.x >> 20, 9);
+        API_Func_8010704(0x55, 9, 1, 4, actor->pos.x >> 20, 0x3d);
+    }
+    actor = __MapActor_GetActor(9);
+    ColosseumInitByte(&actor->__unk55, 0);
+    ColosseumInitByte(&actor->flags, 2);
+    actor = __MapActor_GetActor(10);
+    ColosseumInitByte(&actor->__unk55, 0);
+    ColosseumInitByte(&actor->flags, 2);
+    actor = __MapActor_GetActor(11);
+    ColosseumInitByte(&actor->__unk55, 0);
+    ColosseumInitByte(&actor->flags, 2);
+    API_MapActor_SetAnim(8, 9);
+    state = &ColosseumInitState;
+    ColosseumInitByte(&state->partyMode, 0);
+    OvlFunc_common1_1608(39, 3);
+    OvlFunc_common1_1608(40, 17);
+    __Func_8092950(8, 2);
+    switch (state->room) {
+    case 1:
+        OvlFunc_common1_1ecc(0, 8, 6, 0x5e80000, 0xc00000, 39, 40);
+        ColosseumInitTiles(0x7f, 0, 1, 2, 5, 2);
+        __DeleteFieldActor(32);
+        __DeleteFieldActor(33);
+        __DeleteFieldActor(34);
+        __DeleteFieldActor(35);
+        __DeleteFieldActor(36);
+        __DeleteFieldActor(37);
+        __DeleteFieldActor(38);
+        if (!API_GetFlag(0x109)) {
+            API_PlaySound(17);
+            OvlFunc_common1_78(0);
+            OvlFunc_common1_0();
+            __MapActor_SetExtra(1, 0);
+            OvlFunc_common1_ea0(3);
+        }
+        __MapActor_SetExtra(1, 0);
+        __MapActor_SetExtra(2, 0);
+        __MapActor_SetExtra(3, 0);
+        OvlFunc_common1_1fb4((int)ColosseumBattleFile);
+        break;
+    case 2:
+        API_StartTask(OvlFunc_common1_148, 0xc80);
+        __DeleteFieldActor(39);
+        __DeleteFieldActor(40);
+        if (!API_GetFlag(0x109)) {
+            OvlFunc_common1_0();
+            OvlFunc_common1_78(1);
+            OvlFunc_common1_ea0(0);
+        }
+        break;
+    case 3:
+        if (!API_GetFlag(0x109)) {
+            OvlFunc_956_2009a0c(32);
+            OvlFunc_common1_488();
+        }
+        break;
+    case 4:
+        OvlFunc_956_2009474(1);
+        API_Func_8091e9c(4);
+        API_SetFlag(0x950);
+        API_SetFlag(0x951);
+        break;
+    case 5:
+        OvlFunc_956_2009474(-1);
+        API_Func_8091e9c(5);
+        API_SetFlag(0x950);
+        break;
+    }
+    return 0;
+}
 
 int OvlFunc_956_200937c(struct Ovl_OvlFunc_956_200937c *obj) {
     obj->x += obj->s64 << 8;
@@ -462,7 +1016,57 @@ int OvlFunc_956_200937c(struct Ovl_OvlFunc_956_200937c *obj) {
     return 0;
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_20093c0.s");
+extern int _modsi3_RAM(int, int);
+extern int V5b80 __asm__(".Lm956_5b80");
+extern unsigned char gScript_956__0200d96c[];
+
+void OvlFunc_956_20093c0(void)
+{
+    struct Actor *actor;
+    int actorId;
+    int x;
+    int y;
+
+    actor = __MapActor_GetActor(0);
+    x = actor->pos.x;
+    actorId = 0x29;
+    y = actor->pos.y;
+
+    switch (_modsi3_RAM(++V5b80, 180)) {
+    case 10:
+        break;
+    case 20:
+        actorId = 0x2a;
+        break;
+    case 30:
+        actorId = 0x2b;
+        break;
+    default:
+        return;
+    }
+
+    actor = __MapActor_GetActor(actorId);
+    if (actor == NULL)
+        return;
+
+    {
+        struct Actor *leader = __MapActor_GetActor(0);
+        if (leader != NULL) {
+            API_MapActor_SetPos(actorId, leader->pos.x, leader->pos.z);
+        }
+    }
+
+    __Actor_SetSpriteFlags(__MapActor_GetActor(actorId), 0);
+    actor->__unk55 = 0;
+    actor->scale.x = 0x6666;
+    actor->scale.y = 0x6666;
+    actor->pos.x = x + 0x40000;
+    actor->pos.y = y + 0x40000;
+    actor->prevPos.y = y + 0x40000;
+    actor->waveCounter = 0x19;
+    actor->__unk66 = 0x80;
+    API_MapActor_SetBehavior(actorId, (int)gScript_956__0200d96c);
+}
 INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009474.s");
 void OvlFunc_956_2009a0c(int arg0)
 {
@@ -649,9 +1253,212 @@ void OvlFunc_956_2009c20(void *arg0)
     OvlFunc_common1_5e4(r6, arg0, 1);
     __CutsceneEnd();
 }
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009df8.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_2009f90.s");
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a0f0.s");
+static inline int CS956_TurnActor(int a0, int a1, int a2)
+{
+    extern int CS956_Func_8092adc(int, int, int) __asm__("__Func_8092adc");
+    return CS956_Func_8092adc(a0, a1, a2);
+}
+
+extern struct ColosseumInitStateView ColosseumInitState __asm__("gState");
+extern int CS956_1078(int, int, int) __asm__("OvlFunc_common1_1078");
+extern int CS956_15b8(int, int, int) __asm__("OvlFunc_common1_15b8");
+extern int CS956_1578(int, int, int) __asm__("OvlFunc_common1_1578");
+extern int CS956_1490(int, int, int) __asm__("OvlFunc_common1_1490");
+extern int CS956_14f4(int, int, int) __asm__("OvlFunc_common1_14f4");
+extern void OvlFunc_common1_1254(int);
+extern void OvlFunc_common1_1314(int);
+extern void __Func_8093fa0(void);
+extern int OvlFunc_common1_5e4();
+
+void OvlFunc_956_2009df8(int arg0)
+{
+    int result;
+
+    if (ColosseumInitState.room == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    API_CutsceneStart();
+    result = OvlFunc_common1_4cc((void *)arg0, 2);
+    if (result == 0) {
+        API_MessageID(0x20b7);
+        API_Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        API_Func_80933f8(0xbc << 17, -1, 0x98 << 16, 1);
+        API_Func_8093530();
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(arg0, 0);
+        CS956_1078(0, 0x8c << 1, 0xc8);
+        API_MapActor_SetSpeed(0, 0xc0 << 9, 0xc0 << 8);
+        CS956_15b8(0, 0x8c << 1, 0x98);
+        CS956_15b8(0, 0x94 << 1, 0x98);
+        API_CutsceneWait(10);
+
+        __Func_8093c00();
+        API_Func_80933f8(-1, -1, -1, 0);
+        CS956_TurnActor(0, 0xc0 << 8, 0xf);
+        __Func_8093c00();
+        API_Func_80933f8(-1, -1, -1, 0);
+        CS956_TurnActor(0, 0, 0xf);
+        __Func_8093c00();
+        API_Func_80933f8(-1, -1, -1, 0);
+        API_Func_8092adc(0, 0x80 << 7, 0xf);
+
+        API_ActorMessage(arg0, 0);
+        CS956_1490(0x60, 0x28, 0);
+        CS956_14f4(0x80, 0x28, 10);
+        API_CutsceneWait(0x1e);
+        CS956_14f4(0xa0, 0x28, 10);
+        API_CutsceneWait(0x1e);
+        CS956_14f4(0xa0, 0x48, 10);
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(arg0, 0);
+        OvlFunc_common1_1550();
+        OvlFunc_common1_1254(0);
+        API_SetCameraTarget(0, 0);
+        OvlFunc_common1_588((void *)arg0, 2);
+    } else if (result == 1) {
+        API_MessageID(0x20b6);
+        API_ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(result, arg0, 2);
+    API_CutsceneEnd();
+}
+
+static inline void CS956_Half(unsigned short *p, int v)
+{
+    *p = v;
+}
+
+void OvlFunc_956_2009f90(int arg0)
+{
+    extern unsigned char *iwram_3001ebc;
+    int r6;
+    unsigned char *p;
+
+    if (ColosseumInitState.room == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    API_CutsceneStart();
+    r6 = OvlFunc_common1_4cc((void *)arg0, 3);
+    if (r6 == 0) {
+        p = iwram_3001ebc;
+        API_MessageID(0x20bb);
+        OvlFunc_956_2008188();
+        API_Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        API_Func_80933f8(0x9a << 18, -1, 0xb8 << 16, 1);
+        API_Func_8093530();
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(arg0, 0);
+        OvlFunc_956_20081b4();
+        API_CutsceneWait(0x3c);
+        API_ActorMessage(arg0, 0);
+        CS956_1078(0, 0xfc << 1, 0xc8);
+        CS956_TurnActor(0, 0, 0);
+        OvlFunc_956_20081c8();
+        API_MapActor_SetSpeed(0, 0xc0 << 9, 0xc0 << 8);
+        CS956_1578(0, 0xaa << 2, 0xc8);
+
+        if (*(short *)(p + (0xc1 << 1)) != 5) {
+            do {
+                API_WaitFrames(1);
+                r6++;
+                if (r6 > 0xef)
+                    break;
+            } while (*(short *)(p + (0xc1 << 1)) != 5);
+        }
+
+        OvlFunc_956_2008b30();
+        API_Func_8092adc(0, 0xc0 << 8, 0x14);
+        API_MapActor_Emote(0, 0x103, 0x3c);
+        API_ActorMessage(arg0, 0);
+        OvlFunc_common1_1254(0);
+        API_SetCameraTarget(0, 0);
+        OvlFunc_common1_588((void *)arg0, 3);
+        CS956_Half((unsigned short *)(p + (0xc1 << 1)), 0);
+    } else if (r6 == 1) {
+        API_MessageID(0x20ba);
+        API_ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(r6, arg0, 3);
+    API_CutsceneEnd();
+}
+
+void OvlFunc_956_200a0f0(int arg0)
+{
+    int result;
+
+    if (ColosseumInitState.room == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    API_CutsceneStart();
+    result = OvlFunc_common1_4cc((void *)arg0, 4);
+    if (result == 0) {
+        struct Actor *a;
+        int x;
+        int y;
+        int x1;
+        int y1;
+
+        API_MessageID(0x20bf);
+        API_Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        API_Func_80933f8(0xd6 << 18, -1, 0xa8 << 16, 1);
+        API_Func_8093530();
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(arg0, 0);
+        API_ActorMessage(arg0, 0);
+        CS956_1078(0, 0xcc << 2, 0xc8);
+        API_MapActor_SetSpeed(0, 0x80 << 9, 0x80 << 8);
+        API_MapActor_TravelToAnimWait(0, 0xd2 << 2, 0xc8);
+        CS956_TurnActor(0, 0xc0 << 8, 0x14);
+        __Func_8093fa0();
+        API_Func_80933f8(-1, -1, -1, 0);
+        API_MapActor_SetSpeed(0, 0x80 << 8, 0x80 << 7);
+
+        a = __MapActor_GetActor(0);
+        y = a->pos.y;
+        x = a->pos.x;
+        API_MapActor_SetSpeed(0, 0x80 << 8, 0x80 << 7);
+
+        API_MapActor_SetAnim(0, 0xa);
+        y1 = y + (0xc0 << 11);
+        API_Actor_TravelTo(a, x, y1, a->pos.z);
+        __Actor_WaitMovement((unsigned int)a);
+
+        API_MapActor_SetAnim(0, 0xe);
+        x1 = x + (0x80 << 15);
+        API_Actor_TravelTo(a, x1, y1, a->pos.z);
+        __Actor_WaitMovement((unsigned int)a);
+
+        API_MapActor_SetAnim(0, 0xa);
+        y += 0xd8 << 14;
+        API_Actor_TravelTo(a, x1, y, a->pos.z);
+        __Actor_WaitMovement((unsigned int)a);
+
+        API_MapActor_SetAnim(0, 0xf);
+        x += 0xc0 << 14;
+        API_Actor_TravelTo(a, x, y, a->pos.z);
+        __Actor_WaitMovement((unsigned int)a);
+
+        API_MapActor_SetAnim(0, 0xc);
+        API_ActorMessage(arg0, 0);
+        OvlFunc_common1_1254(0);
+        API_SetCameraTarget(0, 0);
+        OvlFunc_common1_588((void *)arg0, 4);
+    } else if (result == 1) {
+        API_MessageID(0x20be);
+        API_ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(result, arg0, 4);
+    API_CutsceneEnd();
+}
 
 extern int __GetFieldActor(void);
 extern void __Actor_Stop(void);
@@ -679,7 +1486,64 @@ void OvlFunc_956_200a2f4(unsigned int arg0, unsigned int arg1, unsigned int arg2
     }
 }
 
-INCLUDE_ASM("asm/maps/colosseum_final_3/OvlFunc_956_200a330.s");
+void OvlFunc_956_200a330(int arg0)
+{
+    extern struct ColosseumInitStateView ColosseumInitState __asm__("gState");
+    int result;
+    int i;
+    struct Actor *actor;
+
+    if (ColosseumInitState.room == 2) {
+        OvlFunc_common1_2c4();
+        return;
+    }
+
+    API_CutsceneStart();
+    result = OvlFunc_common1_4cc((void *)arg0, 5);
+    if (result == 0) {
+        API_MessageID(0x20c3);
+        API_Func_80933d4(0xc0 << 10, 0xc0 << 7);
+        API_Func_80933f8(0x87 << 19, -1, 0xa8 << 16, 1);
+        API_Func_8093530();
+        API_CutsceneWait(0x1e);
+        API_ActorMessage(arg0, 0);
+        API_ActorMessage(arg0, 0);
+        CS956_1078(0, 0x3d8, 0xb8);
+        API_MapActor_SetSpeed(0, 0xc0 << 9, 0xc0 << 8);
+        OvlFunc_956_200a2f4(0, 0x3e0, 0xb8);
+        API_MapActor_SetSpeed(0, 0x4ccc, 0x2666);
+        OvlFunc_956_200a2c4(0, 0x460, 0xb8);
+        API_CutsceneWait(0x78);
+        API_MapActor_Surprise(0, 0x101);
+        API_CutsceneWait(0x78);
+        OvlFunc_common1_1314(0);
+        API_MapActor_SetAnim(0, 1);
+        API_MapActor_Surprise(0, 0x100);
+        API_MapActor_Emote(0, 0x105, 0);
+
+        actor = __MapActor_GetActor(0);
+        for (i = 0; i < 0x78; i++) {
+            if (actor->pos.x > (0xf8 << 18))
+                actor->pos.x -= 0x13333;
+            API_WaitFrames(1);
+        }
+
+        API_MapActor_Emote(0, 0x103, 0x3c);
+        OvlFunc_956_200a2c4(0, 0x460, 0xb8);
+        API_ActorMessage(arg0, 0);
+        OvlFunc_common1_1314(0);
+        ColosseumInitState.partyMode = 1;
+        OvlFunc_common1_1254(0);
+        API_SetCameraTarget(0, 0);
+        OvlFunc_common1_588((void *)arg0, 5);
+    } else if (result == 1) {
+        API_MessageID(0x20c2);
+        API_ActorMessage(arg0, 0);
+    }
+
+    OvlFunc_common1_5e4(result, arg0, 5);
+    API_CutsceneEnd();
+}
 INCLUDE_ASM("asm/maps/colosseum_final_3/colosseum_final_3_data.s");
 void OvlFunc_956_200a4d0(void *arg0)
 {

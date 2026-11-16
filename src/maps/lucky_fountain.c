@@ -1,6 +1,8 @@
 /* rom_7d6418 (overlay file 951): consolidated TU — lucky_fountain map overlay. */
 
 #include "nonmatching.h"
+#include "gba/types.h"
+#include "gba/io.h"
 #include "api.h"
 
 #include "state/global_state.h"
@@ -79,7 +81,7 @@ void OvlFunc_951_20080bc(int actor) {
 }
 
 extern void OvlFunc_951_2008880(void);
-extern void OvlFunc_951_2008ac8(void);
+extern int OvlFunc_951_2008ac8(void);
 
 static inline int GetFlag(int flag)
 {
@@ -136,7 +138,134 @@ int LuckyFountain_GetEvents(void)
     if (ev == (int)_EVENT_bd) return (int)Events_TolbiSpring;
     return (int)Events_GameBuildings;
 }
-INCLUDE_ASM("asm/maps/lucky_fountain/LuckyFountain_MapInit.s");
+struct CS951_StateView {
+    unsigned char beforeCoins[0x10];
+    unsigned int coins;
+    unsigned char beforeWeights[0x11d - 0x14];
+    signed char weights[0x12c - 0x11d];
+    signed char rewards[0x1c0 - 0x12c];
+    short event, room;
+};
+extern struct CS951_StateView CS951_State __asm__("gState");
+extern unsigned char *CS951_Scene __asm__("iwram_3001ebc");
+extern unsigned char CS951_Mode __asm__("iwram_3001d18");
+extern unsigned int CS951_StartCoins __asm__("ewram_2001000");
+extern unsigned char *__MapActor_GetActor(int);
+extern void __Func_8092950(int, int);
+extern void __Func_80b04c4(void);
+extern void __Func_808f1c0(int, int);
+extern int __Func_8091a58(int, int);
+extern void OvlFunc_951_20096a8(void);
+extern void OvlFunc_951_20088f8(int);
+extern int OvlFunc_951_2008d70(int);
+extern unsigned char _MSG_e30[];
+extern void __Func_8019908(int, int);
+
+int LuckyFountain_MapInit(void)
+{
+    unsigned char *actor;
+    int gained, item, i;
+    signed char *firstReward;
+    if (CS951_State.event == (int)Lconst_bd) {
+        *(int *)(CS951_Scene + 0x1c0) = 0x100;
+        SET_IO(REG_BLDCNT, 0x3f42);
+        SET_IO(REG_BLDALPHA, 0x80c);
+        API_MapActor_SetAnim(24, 2);
+        API_MapActor_SetAnim(25, 2);
+        actor = __MapActor_GetActor(24);
+        *(int *)(actor + 0x18) = -0x10000;
+        actor = __MapActor_GetActor(25);
+        *(int *)(actor + 0x18) = -0x10000;
+        actor = __MapActor_GetActor(24);
+        actor += 0x23;
+        *actor = 2;
+        actor = __MapActor_GetActor(25);
+        actor += 0x23;
+        *actor = 2;
+        API_MapTransitionIn();
+        if (CS951_State.room == 1) {
+            OvlFunc_951_20096a8();
+            if (API_GetFlag(0x200)) {
+                SET_IO(REG_BLDCNT, 0x3f42);
+                SET_IO(REG_BLDALPHA, 0x1000);
+            }
+        }
+    } else {
+        if (API_GetFlag(0x950))
+            API_MapActor_SetPos(17, 0, 0);
+        CS951_Mode = 1;
+        *(int *)(CS951_Scene + 0x1c0) = 0x209;
+        if (CS951_State.room == 10) {
+            __Func_8092950(8, 1);
+            __Func_8092950(9, 2);
+        }
+        if (CS951_State.room == 13 && !API_GetFlag(0x109)) {
+            API_CutsceneStart();
+            __Func_8092950(8, 1);
+            __Func_8092950(9, 2);
+            API_MapTransitionIn();
+            API_WaitMapTransition();
+            API_CutsceneWait(10);
+            API_MapActor_TravelToAnimWait(0, 0x78, 0x70);
+            API_CutsceneWait(20);
+            gained = (int)(CS951_State.coins - CS951_StartCoins);
+            if (gained > 0) {
+                if (gained > 19999)
+                    API_PlaySound(0x5d);
+                else if (gained > 4999)
+                    API_PlaySound(0x5c);
+                else
+                    API_PlaySound(0x5b);
+                API_CutsceneWait(20);
+                API_MessageID(0xe13);
+                __Func_8019908(gained, 5);
+                API_ActorMessage(9, 0);
+                __Func_80b04c4();
+            } else if (gained < 0) {
+                API_MessageID(0xe14);
+                __Func_8019908(-gained, 5);
+                API_ActorMessage(9, 0);
+            }
+            API_CutsceneEnd();
+        }
+        if (CS951_State.room == 12 && !API_GetFlag(0x109)) {
+            firstReward = CS951_State.rewards;
+            API_CutsceneStart();
+            API_MapTransitionIn();
+            API_WaitMapTransition();
+            API_CutsceneWait(10);
+            if (*firstReward == -1) {
+                OvlFunc_951_20088f8(1);
+            } else if (*firstReward != -2) {
+                API_MessageID(0xe2e);
+                API_ActorMessage(8, 0);
+                if (*firstReward != -1) {
+                    i = 0;
+                    do {
+                        if (i == 0)
+                            API_MessageID(0xe2f);
+                        else
+                            API_MessageID((int)_MSG_e30);
+                        item = OvlFunc_951_2008d70(firstReward[i]);
+                        __Func_8019908(item, 2);
+                        API_ActorMessage(8, 0);
+                        __Func_808f1c0(item, 3);
+                        __Func_8091a58(item, 0);
+                        API_CutsceneWait(10);
+                        API_Func_8092adc(0, 0xc000, 0);
+                        i++;
+                        API_CutsceneWait(30);
+                    } while (firstReward[i] != -1);
+                }
+                CS951_State.rewards[0] = -2;
+                API_MessageID(0xe31);
+                API_ActorMessage(8, 0);
+            }
+            API_CutsceneEnd();
+        }
+    }
+    return 0;
+}
 void OvlFunc_951_20084bc(int item)
 {
     extern void __Func_808f1c0(int, int);
@@ -243,8 +372,6 @@ void OvlFunc_951_20084bc(int item)
 extern unsigned char iwram_3001e70[];
 extern unsigned short Lm951_1fc0[] __asm__(".Lm951_1fc0");
 
-#define REG_BLDALPHA (*(volatile unsigned short *)0x04000052)
-
 void OvlFunc_951_2008880(void)
 {
     extern void __PlaySound(int);
@@ -263,7 +390,7 @@ void OvlFunc_951_2008880(void)
         __WaitFrames(4);
     }
 
-#define SetBlendAlpha(val) do { REG_BLDALPHA = (val); } while (0)
+#define SetBlendAlpha(val) do { *(volatile unsigned short *)0x04000052 = (val); } while (0)
 
     val = 0x3f42;
     reg = 0x04000050;
@@ -273,15 +400,81 @@ void OvlFunc_951_2008880(void)
         SetBlendAlpha(*src++);
         API_WaitFrames(8);
     }
+#undef SetBlendAlpha
 }
 
-#undef SetBlendAlpha
-#undef REG_BLDALPHA
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_20088f8.s");
-extern unsigned char ewram_2001000[];
-extern unsigned char iwram_3001ebc[];
+extern unsigned char Lconst_e23[] __asm__(".Lconst_e23");
+__asm__(".equ .Lconst_e23, 0xe23");
+extern unsigned char Lconst_e32[] __asm__(".Lconst_e32");
+__asm__(".equ .Lconst_e32, 0xe32");
 extern unsigned char const_89[] __asm__(".Lconst_89");
 __asm__(".equ .Lconst_89, 0x89");
+extern unsigned int __Func_8078b60(unsigned int);
+extern void __Func_808ba38(void);
+extern int __Func_8078550(void);
+extern void __SetDestMap2(int, int);
+extern void __Func_8091f90(int, int);
+
+void OvlFunc_951_20088f8(int arg0)
+{
+    int msg;
+    int outMsg;
+    int var;
+    int ret;
+
+    var = __Func_8078b60(0xe4);
+    __Func_808ba38();
+    if (arg0 == 0) {
+        msg = (int)Lconst_e23;
+        __MessageID(msg);
+        __ActorMessage(8, 0);
+        if (var == 0) {
+            __ActorMessage(8, 0);
+            return;
+        }
+        __MessageID(msg + 2);
+        __Func_8019908(var, 5);
+        __ShowActorMessage_NoWait(8, 0);
+        if (__Func_8091c7c(0, 0) != 0) {
+            __ActorMessage(8, 0);
+            return;
+        }
+        ret = __Func_8078550();
+        if (ret == 0) {
+            __MessageID(msg + 4);
+            __ShowActorMessage_NoWait(8, 0);
+        } else {
+            if (ret > 6)
+                goto fail;
+            __MessageID(msg + 5);
+            __ShowActorMessage_NoWait(8, 0);
+        }
+        if (ret > 6)
+            goto fail;
+        if (__Func_8091c7c(0, 0) == 0)
+            goto fail;
+        outMsg = 0xe29;
+    } else if (var == 0) {
+        outMsg = (int)Lconst_e32;
+    } else {
+        __MessageID(0xe33);
+        __ShowActorMessage_NoWait(8, 0);
+        if (__Func_8091c7c(0, 0) == 0)
+            goto fail;
+        outMsg = 0xe31;
+    }
+    __MessageID(outMsg);
+    __ActorMessage(8, 0);
+    return;
+
+fail:
+    __MessageID(0xe2a);
+    API_ActorMessage(8, 0);
+    __SetDestMap2(0x1fc, 0);
+    __Func_8091f90((int)const_89, 0xc);
+}
+extern unsigned char ewram_2001000[];
+extern unsigned char iwram_3001ebc[];
 
 /* Private coins view of gState; the file-scope GlobalState is opaque. */
 struct GS951 { unsigned char _pad[16]; unsigned int coins; };
@@ -370,7 +563,36 @@ int OvlFunc_951_2008d70(int idx)
     }
     return result;
 }
-INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008dd0.s");
+#include "actor.h"
+extern void __Actor_SetAnimSpeed(void *, int);
+
+void OvlFunc_951_2008dd0(int actor, int *data, int val2, int idByte, int animSpeed)
+{
+    struct Actor *p;
+    struct Sprite *sprite;
+    int count;
+    int i;
+
+    p = (struct Actor *)__MapActor_GetActor(actor);
+    if (p != 0) {
+        p->pos.x = *data++;
+        p->pos.y = *data++;
+        p->pos.z = *data;
+        p->facing = val2;
+        p->__unk55 = 0;
+        p->sprite->flags = 0;
+        __Actor_SetAnimSpeed(p, animSpeed);
+    }
+    sprite = p->sprite;
+    count = sprite->numLayers;
+    for (i = 0; i < count; i++) {
+        struct SpriteLayer *layer = sprite->layers[i];
+        if (layer->colorswap != idByte) {
+            layer->colorswap = idByte;
+            layer->frameID |= 0xff;
+        }
+    }
+}
 
 extern unsigned char *__MapActor_GetActor(int actor);
 
@@ -383,6 +605,7 @@ void OvlFunc_951_2008e44(int actor, int visible) {
     }
 }
 
+extern void __Actor_SetAnim(unsigned char *, unsigned int);
 INCLUDE_ASM("asm/maps/lucky_fountain/OvlFunc_951_2008e5c.s");
 extern unsigned char Lm951_2070[] __asm__(".Lm951_2070");
 extern unsigned char Lm951_205a[] __asm__(".Lm951_205a");
