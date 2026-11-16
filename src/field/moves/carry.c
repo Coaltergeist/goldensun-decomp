@@ -9,7 +9,31 @@ extern int cos(int);
 extern int sin(int);
 extern void Func_809a484(int, int, int, int, int, int, int, int *);
 
-INCLUDE_ASM("asm/field/moves/carry/Func_8099d18.s");
+extern unsigned char *iwram_3001f30;
+extern unsigned int Random(void);
+extern void vec3_translate(int, int, int *);
+extern void _Actor_SetAnim(struct Actor *, int);
+extern void _Actor_SetScript(void *actor, void *script);
+extern unsigned char Data_9f0b0[];
+void Func_8099d18(void)
+{
+    struct Actor *src = *(struct Actor **)(iwram_3001f30 + 0x14);
+    struct Actor *actor;
+    int v[3];
+
+    v[0] = src->pos.x;
+    v[1] = src->pos.y - (Random() << 4) + 0x180000;
+    v[2] = src->pos.z;
+    vec3_translate(Random() * 3 << 4, Random(), v);
+    actor = CreateParticleActor(0x11d, v[0], v[1], v[2]);
+    if (actor != 0) {
+        actor->__unk55 = 2;
+        actor->gravity = 0x1999;
+        _Actor_SetAnim(actor, 0);
+        actor->waitTimer = 0xc;
+        _Actor_SetScript(actor, Data_9f0b0);
+    }
+}
 
 INCLUDE_ASM("asm/field/moves/carry/Field_Carry_Target.s");
 

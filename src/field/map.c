@@ -567,7 +567,32 @@ unsigned int Func_808f304(void) {
 INCLUDE_ASM("asm/field/map/Func_808f32c.s");
 INCLUDE_ASM("asm/field/map/Func_808f498.s");
 INCLUDE_ASM("asm/field/map/Task_ScreenWindowTransition.s");
-INCLUDE_ASM("asm/field/map/Func_808fe38.s");
+extern void *galloc_ewram(int index, unsigned int size);
+extern void Task_ScreenWindowTransition(void);
+extern void Func_808f498(void);
+
+struct ScreenTrans808fe38 {
+    unsigned char pad0[0x528];
+    unsigned short unk528;
+    unsigned short unk52a;
+    unsigned char pad52c[8];
+    unsigned short unk534;
+    unsigned short unk536;
+};
+
+void Func_808fe38(unsigned int arg0)
+{
+    struct ScreenTrans808fe38 *p;
+
+    p = galloc_ewram(0x1f, 0xa8 << 3);
+    DMA3_CLEAR(p, 0xa8 << 3);
+    p->unk528 = arg0;
+    p->unk52a = 0;
+    p->unk534 = 0x3f3f;
+    p->unk536 = 1;
+    StartTask(Task_ScreenWindowTransition, 0xc8 << 4);
+    StartTask(Func_808f498, 0x90 << 3);
+}
 
 extern void Func_80042c8(void (*)(void));
 extern void Task_ScreenWindowTransition(void);
@@ -610,7 +635,25 @@ INCLUDE_ASM("asm/field/map/Func_80903bc.s");
 INCLUDE_ASM("asm/field/map/Func_8090488.s");
 INCLUDE_ASM("asm/field/map/Func_8090584.s");
 INCLUDE_ASM("asm/field/map/Task_Transition300.s");
-INCLUDE_ASM("asm/field/map/Func_80907b0.s");
+void Func_80907b0(int color)
+{
+    extern unsigned char *iwram_3001ecc;
+    unsigned char *base = iwram_3001ecc;
+    unsigned int v;
+    unsigned int *p;
+    int i;
+
+    DMA3_FILL((void *)0x6002000, 0xf000f000, 0x500);
+    if (color != -1) {
+        v = 0;
+        for (i = 0; i < 8; i++)
+            v = (v << 4) | color;
+        p = (unsigned int *)(base + 0x508);
+        for (i = 0; i < 8; i++)
+            *p++ = v;
+        DMA3_COPY(base + 0x508, (void *)0x6000000, 0x20);
+    }
+}
 
 #include "dma.h"
 extern void *galloc_ewram(int index, unsigned int size);

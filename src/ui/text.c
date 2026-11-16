@@ -1,6 +1,7 @@
 #include "nonmatching.h"
 
 extern void *alloc_ewram(unsigned int size);
+extern void free(void *);
 extern unsigned int Func_8005c68(void);
 
 extern unsigned int Func_801f704();
@@ -372,7 +373,43 @@ unsigned int Func_801fa3c(unsigned int arg0) {
     return (unsigned int)r8;
 }
 
-INCLUDE_ASM("asm/ui/text/Func_801faa8.s");
+int Func_801faa8(void)
+{
+    extern int Func_8005a78(int, int);
+    extern unsigned char ewram_20004e4[];
+    extern void *Func_8001af8(void *, const void *, unsigned int);
+    void *(*copy)(void *, const void *, unsigned int);
+    unsigned char *buf;
+    int r;
+
+    buf = alloc_ewram(0x1000);
+    r = 0;
+    if (ewram_2002004 == -1)
+        return -1;
+    if (Func_80056cc() != 0) {
+        Func_801776c((int)&_MSG_0a, 1);
+        r = -9;
+    } else {
+        if (Func_8005a78(ewram_2002004, (int)buf) != 0) {
+            Func_801776c((int)&_MSG_0b, 1);
+            r = -2;
+        }
+        {
+            unsigned char *src = ewram_20004e4;
+            unsigned char *dst = buf + (int)src;
+            dst -= (int)ewram_2000000;
+            copy = Func_8001af8;
+            copy(dst, src, 0x10);
+        }
+        if (SomethingSaveHeader(ewram_2002004, (int)buf) != 0) {
+            Func_801776c((int)&_MSG_0b, 1);
+            r = -3;
+        }
+    }
+    Func_8005cf8();
+    free(buf);
+    return r;
+}
 
 extern int Func_8017364(void);
 extern void WaitFrames(int);

@@ -386,7 +386,21 @@ int HeightTile_5(signed char *p, int param_2, int param_3)
     return b + ((c - b) * param_2) / 15;
 }
 
-INCLUDE_ASM("asm/field_engine/field/map_data/HeightTile_6.s");
+int HeightTile_6(signed char *p, int param_2, int param_3)
+{
+    int a, b, c;
+
+    a = *p++ << 19;
+    b = p[0] << 19;
+    c = p[1] << 19;
+    param_2 = param_3 - param_2 + 15;
+    if (param_2 == 15)
+        return b;
+    if ((unsigned int)param_2 < 15)
+        return a + ((b - a) * param_2) / 16;
+    param_2 -= 15;
+    return b + ((c - b) * param_2) / 16;
+}
 
 extern unsigned char gScript_080132fc[] __asm__("gScript_080132fc");
 

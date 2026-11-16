@@ -228,5 +228,19 @@ void Func_800befc(unsigned int arg0) {
     } while (i <= 0x7f);
 }
 
-INCLUDE_ASM("asm/field_engine/sprite/sprite/Func_800bf34.s");
+void Func_800bf34(unsigned int *sprites, int count)
+{
+    unsigned int i;
+    int j;
+
+    for (i = 0; i < 0x80; i += 4) {
+        for (j = 0; j < count; j++) {
+            Func_800be70(sprites[j], i);
+            Func_800be70(sprites[j], i + 1);
+            Func_800be70(sprites[j], i + 2);
+            Func_800be70(sprites[j], i + 3);
+        }
+        WaitFrames(1);
+    }
+}
 INCLUDE_ASM("asm/field_engine/sprite/sprite/rom_be70_c.rodata.s");
