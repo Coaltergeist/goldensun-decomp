@@ -663,7 +663,23 @@ unsigned int Func_80a3d9c(unsigned int unit, int itemID)
     return count;
 }
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3ddc.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a3e28.s");
+void Func_80a3e28(unsigned short *ids, int mode)
+{
+    extern int _Func_801bcd4();
+    struct PartyCursors80a3d24 *s = (struct PartyCursors80a3d24 *)iwram_3001f2c;
+    int i;
+
+    for (i = 0; i < 15; i++) {
+        int id = ids[i];
+        if (id != 0) {
+            if (mode == 0)
+                _Func_801bcd4(2, id, s->cur[i][0xe], 0);
+            else
+                _Func_801bcd4(7, id, s->cur[i][0xe], 0);
+        }
+    }
+    Func_80a3d24(ids);
+}
 
 extern unsigned char *iwram_3001f2c__a4 __asm__("iwram_3001f2c");
 extern unsigned int _GetUnit(unsigned int arg0);
@@ -1054,7 +1070,32 @@ loop:
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8914.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8b10.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a8b8c.s");
+int Func_80a8b8c(int *out, int idx)
+{
+    extern struct S80a6a00 *iwram_3001f2c__8b8c __asm__("iwram_3001f2c");
+    struct S80a6a00 *s = iwram_3001f2c__8b8c;
+    unsigned char *u = (unsigned char *)_GetUnit(s->list[idx]);
+    int total = s->count;
+    int sel = s->cursor[s->list[idx]];
+    int row, col, pages;
+
+    if (sel + 1 > total)
+        sel = total - 1;
+    if (total == 0)
+        sel = 0;
+    row = sel / 5;
+    col = sel % 5;
+    pages = total / 5;
+    if (total % 5 != 0)
+        pages++;
+    out[0] = (int)u;
+    out[2] = row;
+    out[3] = pages;
+    out[4] = col;
+    out[5] = total;
+    out[6] = sel;
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/LoadMoveRangeIcons.s");
 
 extern void _Func_8019000(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
@@ -1176,7 +1217,27 @@ int Func_80a9cf8(int arg0)
         cursors[i] = _Func_801eb64(2, i, arg0, 0xf8, 0xa8);
     return 1;
 }
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80a9d3c.s");
+void Func_80a9d84(void);
+void Func_80a9d3c(unsigned char *flags)
+{
+    unsigned char *base = (unsigned char *)iwram_3001f2c;
+    struct MenuCursor **cursors;
+    int i;
+    int n;
+
+    Func_80a9d84();
+        n = 0;
+    for (i = 0; i <= 4; i++) {
+        struct MenuCursor *cursor = ((struct MenuCursor **)(base + 0xc8))[i];
+        if (cursor != 0 && flags[i] != 0) {
+            cursor->x = 8;
+            cursor->y = n * 0x10 + 0x58;
+            ((unsigned char *)cursor)[0xf] = 0xf0;
+            Func_80a17c4(cursor);
+            n++;
+        }
+    }
+}
 void Func_80a9d84(void)
 {
     struct MenuCursor **cursors = (struct MenuCursor **)(iwram_3001f2c + 0xc8);
@@ -1334,7 +1395,20 @@ void Func_80ab2ec(unsigned int arg0, unsigned int arg1, unsigned int arg2, unsig
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ab314.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ab5e4.s");
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ac8fc.s");
-INCLUDE_ASM("asm/party_menu/party_menu/Func_80aca04.s");
+int Func_80aca04(int mode, int arg1)
+{
+    extern int Func_80acab8(int, int, int, int, int, int, int, int, int);
+    unsigned char *s = (unsigned char *)iwram_3001f2c;
+
+    if (mode == 0) {
+        Func_80acab8(*(int *)(s + 0x34), 0, 0, s[0x259], 1, 0, 2, arg1, 1);
+        Func_80acab8(*(int *)(s + 0x24), 0, 0, s[0x258], 0, 1, 2, arg1, 0);
+    } else {
+        Func_80acab8(*(int *)(s + 0x34), 0, 0, s[0x21b], 1, 0, 2, arg1, 1);
+        Func_80acab8(*(int *)(s + 0x24), 0, 0, s[0x21a], 0, 0, 1, arg1, 0);
+    }
+    return 1;
+}
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80acab8.s");
 
 INCLUDE_ASM("asm/party_menu/party_menu/Func_80ad274.s");

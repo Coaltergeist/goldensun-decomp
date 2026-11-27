@@ -336,7 +336,28 @@ int Func_8079d7c(int id)
     default: return -100;
     }
 }
-INCLUDE_ASM_SECTION("asm/rpg/pc/Func_8079e9c.s", ".text.rpg_pc_3");
+int Func_8079e9c(struct Unit *unit, int elem)
+{
+    extern unsigned char *GetClassInfo(int classID);
+    extern unsigned int GetEnemyInfo(int param);
+    unsigned char *p;
+    int i;
+
+    if (unit->curClass == 0) {
+        p = (unsigned char *)GetEnemyInfo(unit->pcID);
+        for (i = 0; i <= 2; i++) {
+            if (p[0x48 + i] == elem)
+                return 1;
+        }
+    } else {
+        p = GetClassInfo(unit->curClass);
+        for (i = 0; i <= 2; i++) {
+            if (p[0x50 + i] == elem)
+                return 1;
+        }
+    }
+    return 0;
+}
 
 int Func_8079ef8(int arg0)
 {

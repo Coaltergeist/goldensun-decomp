@@ -182,7 +182,30 @@ void Func_80b06c0(int count, int arg1, int arg2)
     while (count != 0);
   }
 }
-INCLUDE_ASM("asm/shop/shop/Func_80b06ec.s");
+void Func_80b06ec(int digit, unsigned char *dst, int slot)
+{
+    extern unsigned char GFX_PriceDigits[];
+    extern unsigned short Lb413c[] __asm__(".Lb413c");
+    unsigned char *src = GFX_PriceDigits + digit * 32;
+    int i;
+
+    dst += Lb413c[slot];
+    dst += 2;
+    for (i = 0; i < 4; i++) {
+        if (*src != 0) {
+            dst[0] = *src++;
+            if (*src != 0) {
+                dst[1] = *src++;
+                if (*src != 0) {
+                    dst[0x1e] = *src++;
+                    if (*src != 0)
+                        dst[0x1f] = *src++;
+                }
+            }
+        }
+        dst += 4;
+    }
+}
 INCLUDE_ASM("asm/shop/shop/Func_80b0744.s");
 extern unsigned char *iwram_3001ebc__s[] __asm__("iwram_3001ebc");
 void Func_80b0840(int a)
@@ -295,7 +318,31 @@ void Func_80b17e4(int unit, int item, int count)
         Func_80b196c(unit, eq);
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b1868.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b196c.s");
+extern void Func_80b1f4c(int, int, int);
+
+int Func_80b196c(int unit, int slot)
+{
+    extern unsigned char *_GetUnit(unsigned int unitID);
+    struct Unit *u;
+    unsigned int item;
+    unsigned char *info;
+    int n1;
+
+    u = (struct Unit *)_GetUnit(unit);
+    n1 = -1;
+    if (slot == n1)
+        return 0;
+    item = 0x1ff;
+    item &= u->items[slot];
+    info = _GetItemInfo(item);
+    if (info[2] == 6)
+        return 0;
+    info = _GetItemInfo(item);
+    if (info[3] & 8)
+        return 0;
+    Func_80b1f4c(unit, slot, n1);
+    return 1;
+}
 int Func_80b19cc(unsigned int item)
 {
     int price = *(short *)_GetItemInfo(item);
@@ -448,7 +495,37 @@ unsigned int Func_80b27b0(unsigned int arg0, unsigned int arg1)
 	return result;
 }
 
-INCLUDE_ASM("asm/shop/shop/Func_80b280c.s");
+int Func_80b280c(void)
+{
+  extern unsigned char iwram_3001f2c__280c[] __asm__("iwram_3001f2c");
+  unsigned char *shop;
+  int kind;
+  int partyCount;
+  int count;
+  int memberIndex;
+  int memberOffset;
+  unsigned char *members;
+  shop = *((unsigned char **) iwram_3001f2c__280c);
+  kind = *((signed char *) (shop + 0x3aa));
+  count = 0;
+  partyCount = *((signed char *) (shop + 0x3a7));
+  memberIndex = 0;
+  if (count >= ((int) partyCount))
+    goto done;
+  members = shop + 2;
+  memberOffset = 0xdb << 2;
+  do
+  {
+    if (Func_80b27b0(*((short *) (members + memberOffset)), kind))
+      count++;
+    partyCount = *((signed char *) (shop + 0x3a7));
+    memberIndex++;
+    memberOffset += 2;
+  }
+  while (memberIndex < ((int) partyCount));
+  done:
+  return count;
+}
 extern unsigned char Lconst_d24[] __asm__(".Lconst_d24");
 extern unsigned char Lconst_d2e[] __asm__(".Lconst_d2e");
 extern unsigned char Lconst_d38[] __asm__(".Lconst_d38");

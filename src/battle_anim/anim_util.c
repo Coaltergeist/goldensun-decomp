@@ -1,9 +1,24 @@
 #include "nonmatching.h"
+#include "gba/io.h"
+#include "anim.h"
 
 INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/Task_BlitAnim_BG1Wide.s");
-INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd418.s");
 extern unsigned int iwram_3001eec;
+void Func_80cd418(void)
+{
+    unsigned int base = iwram_3001eec;
+
+    REG_WIN0H = *(unsigned short *)(base + 0x77bc);
+    REG_WIN0V = *(unsigned short *)(base + 0x77be);
+    REG_WIN1H = *(unsigned short *)(base + 0x77c0);
+    REG_WIN1V = *(unsigned short *)(base + 0x77c2);
+    REG_WININ = *(unsigned short *)(base + 0x77c4);
+    REG_WINOUT = *(unsigned short *)(base + 0x77c6);
+    REG_DISPCNT = *(unsigned short *)(base + 0x77c8);
+    REG_BLDCNT = *(unsigned short *)(base + 0x77ca);
+    REG_BLDALPHA = *(unsigned short *)(base + 0x77cc);
+}
 
 void Func_80cd488(void)
 {
@@ -49,7 +64,26 @@ void Func_80cd508(void)
 
     clear(dst, 8);
 }
-INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cd52c.s");
+void Func_80cd52c(void)
+{
+    struct AnimUtil80cd52c {
+        unsigned char pad0[0x7818];
+        unsigned char timers[8];
+        unsigned char pad7820[8];
+        struct AnimContext *context;
+    };
+    extern void SetBattleActorState(int, int, int, int, int);
+    struct AnimUtil80cd52c *s = (struct AnimUtil80cd52c *)iwram_3001eec;
+    int i;
+
+    for (i = 0; i != 8; i++) {
+        if (s->timers[i] != 0) {
+            s->timers[i]--;
+            if (s->timers[i] == 0)
+                SetBattleActorState((short)s->context->targets[i], 0, -1, -1, 0);
+        }
+    }
+}
 INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/AnimStart2.s");
 INCLUDE_ASM("asm/battle_anim/anim_util/Func_80cdb24.s");

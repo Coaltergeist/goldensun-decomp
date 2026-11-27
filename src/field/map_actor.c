@@ -663,7 +663,26 @@ void Func_80929d8(struct Actor *a, int v)
         s[0x25] = 1;
     }
 }
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092a1c.s", ".text.map_actor_2");
+void Func_8092a1c(unsigned int arg0, unsigned int arg1, unsigned char *arg2)
+{
+    struct Actor *a;
+    struct Actor *b;
+    int z;
+
+    a = (struct Actor *)GetFieldActor(arg0);
+    b = (struct Actor *)GetFieldActor(arg1 & 0xff);
+    if (a != 0 && b != 0) {
+        a->linkedActor = b;
+        if ((arg1 & (0x80 << 9)) == 0) {
+            z = 0;
+            a->waveCounter = 0x28;
+            a->accel = b->accel * 2;
+            a->speed = b->speed;
+            a->collision = z;
+        }
+        _Actor_SetScript((int)a, arg2);
+    }
+}
 
 unsigned int Func_8092a74(unsigned int arg0)
 {
@@ -759,7 +778,44 @@ int GetActorSpriteID(int actorID)
     return spriteID;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092be0.s", ".text.map_actor_2");
+int Func_8092be0(int spriteID)
+{
+    unsigned int base = iwram_3001ebc__v;
+    struct Actor *actor;
+    int result;
+    int i;
+    int ofs;
+    struct SpriteLayer *layer;
+
+    actor = *(struct Actor **)(base + 0x34);
+    result = -1;
+    i = 8;
+    if (actor != 0 && actor->visible == 1) {
+        layer = actor->sprite->layers[0];
+        if ((s16)layer->spriteID == spriteID) {
+            result = 8;
+        } else {
+            goto loop;
+        }
+    } else {
+    loop:
+        i++;
+        if (i <= 0x41) {
+            ofs = (i << 2) + 0x14;
+            actor = *(struct Actor **)(base + ofs);
+            if (actor != 0 && actor->visible == 1) {
+                layer = actor->sprite->layers[0];
+                if ((s16)layer->spriteID == spriteID)
+                    result = i;
+                else
+                    goto loop;
+            } else {
+                goto loop;
+            }
+        }
+    }
+    return result;
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/ShowActorMessage_NoWait.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ActorMessage.s", ".text.map_actor_2");
 
@@ -812,7 +868,30 @@ void Func_8093304(int actor)
         *(unsigned short *)(b + 0x12f6) = v1;
     }
 }
-INCLUDE_ASM_SECTION("asm/field/map_actor/SetCameraTarget.s", ".text.map_actor_2");
+void SetCameraTarget(unsigned int actorID, int noSnap)
+{
+    extern unsigned char **iwram_3001e70__sct __asm__("iwram_3001e70");
+    extern void _Camera_SetTarget(unsigned char *ptr, int arg);
+    extern void _Func_800fe9c(void);
+    unsigned char *actor = (unsigned char *)GetFieldActor(actorID);
+    unsigned char *base = galloc_ewram(0x1b, 0xccc);
+    unsigned char *cam = *(unsigned char **)(base + 0x1e0);
+    unsigned char **target = iwram_3001e70__sct;
+
+    if (actor != 0) {
+        int *pos = (int *)(cam + 8);
+        *target = (unsigned char *)pos;
+        _Camera_SetTarget(cam, (int)actor);
+        if (noSnap == 0) {
+            pos[0] = *(int *)(actor + 8);
+            *(int *)(cam + 0xc) = *(int *)(actor + 0xc);
+            *(int *)(cam + 0x10) = *(int *)(actor + 0x10);
+            WaitFrames(1);
+            if (*(short *)(base + 0x19e) != 3)
+                _Func_800fe9c();
+        }
+    }
+}
 
 
 void Func_80933d4(unsigned int a0, unsigned int a1) {
@@ -974,7 +1053,30 @@ unsigned int Func_8093964(unsigned int arg0)
 }
 
 INCLUDE_ASM_SECTION("asm/field/map_actor/Func_809397c.s", ".text.map_actor_2");
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8093a14.s", ".text.map_actor_2");
+int Func_8093a14(unsigned char *actor)
+{
+    unsigned char *target;
+    int delta;
+    int facing;
+    int angle;
+
+    target = *(unsigned char **)(actor + 0x68);
+    if (target != 0) {
+        actor[0x5a] &= 0xfe;
+        angle = (unsigned short)atan2(*(int *)(target + 0x10) - *(int *)(actor + 0x10),
+                        *(int *)(target + 8) - *(int *)(actor + 8));
+        facing = *(unsigned short *)(actor + 6);
+        delta = (short)(angle - facing);
+        if (delta != 0) {
+            if (delta > 0x1000)
+                delta = 0x1000;
+            if (delta < -0x1000)
+                delta = -0x1000;
+            *(unsigned short *)(actor + 6) = facing + delta;
+        }
+    }
+    return 1;
+}
 extern unsigned char X9fe00[], X9fd44[], X9fe10[], X9fecc[], X9ff18[], X9ff2c[], X9fe04[];
 extern unsigned int gState__sb[] __asm__("gState");
 void Actor_SetBehavior(void *actor, int behavior)
