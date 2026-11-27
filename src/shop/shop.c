@@ -318,7 +318,31 @@ void Func_80b17e4(int unit, int item, int count)
         Func_80b196c(unit, eq);
 }
 INCLUDE_ASM("asm/shop/shop/Func_80b1868.s");
-INCLUDE_ASM("asm/shop/shop/Func_80b196c.s");
+extern void Func_80b1f4c(int, int, int);
+
+int Func_80b196c(int unit, int slot)
+{
+    extern unsigned char *_GetUnit(unsigned int unitID);
+    struct Unit *u;
+    unsigned int item;
+    unsigned char *info;
+    int n1;
+
+    u = (struct Unit *)_GetUnit(unit);
+    n1 = -1;
+    if (slot == n1)
+        return 0;
+    item = 0x1ff;
+    item &= u->items[slot];
+    info = _GetItemInfo(item);
+    if (info[2] == 6)
+        return 0;
+    info = _GetItemInfo(item);
+    if (info[3] & 8)
+        return 0;
+    Func_80b1f4c(unit, slot, n1);
+    return 1;
+}
 int Func_80b19cc(unsigned int item)
 {
     int price = *(short *)_GetItemInfo(item);

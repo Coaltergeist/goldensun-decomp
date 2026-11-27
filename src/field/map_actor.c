@@ -663,7 +663,26 @@ void Func_80929d8(struct Actor *a, int v)
         s[0x25] = 1;
     }
 }
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092a1c.s", ".text.map_actor_2");
+void Func_8092a1c(unsigned int arg0, unsigned int arg1, unsigned char *arg2)
+{
+    struct Actor *a;
+    struct Actor *b;
+    int z;
+
+    a = (struct Actor *)GetFieldActor(arg0);
+    b = (struct Actor *)GetFieldActor(arg1 & 0xff);
+    if (a != 0 && b != 0) {
+        a->linkedActor = b;
+        if ((arg1 & (0x80 << 9)) == 0) {
+            z = 0;
+            a->waveCounter = 0x28;
+            a->accel = b->accel * 2;
+            a->speed = b->speed;
+            a->collision = z;
+        }
+        _Actor_SetScript((int)a, arg2);
+    }
+}
 
 unsigned int Func_8092a74(unsigned int arg0)
 {
@@ -759,7 +778,44 @@ int GetActorSpriteID(int actorID)
     return spriteID;
 }
 
-INCLUDE_ASM_SECTION("asm/field/map_actor/Func_8092be0.s", ".text.map_actor_2");
+int Func_8092be0(int spriteID)
+{
+    unsigned int base = iwram_3001ebc__v;
+    struct Actor *actor;
+    int result;
+    int i;
+    int ofs;
+    struct SpriteLayer *layer;
+
+    actor = *(struct Actor **)(base + 0x34);
+    result = -1;
+    i = 8;
+    if (actor != 0 && actor->visible == 1) {
+        layer = actor->sprite->layers[0];
+        if ((s16)layer->spriteID == spriteID) {
+            result = 8;
+        } else {
+            goto loop;
+        }
+    } else {
+    loop:
+        i++;
+        if (i <= 0x41) {
+            ofs = (i << 2) + 0x14;
+            actor = *(struct Actor **)(base + ofs);
+            if (actor != 0 && actor->visible == 1) {
+                layer = actor->sprite->layers[0];
+                if ((s16)layer->spriteID == spriteID)
+                    result = i;
+                else
+                    goto loop;
+            } else {
+                goto loop;
+            }
+        }
+    }
+    return result;
+}
 INCLUDE_ASM_SECTION("asm/field/map_actor/ShowActorMessage_NoWait.s", ".text.map_actor_2");
 INCLUDE_ASM_SECTION("asm/field/map_actor/ActorMessage.s", ".text.map_actor_2");
 

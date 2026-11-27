@@ -1,5 +1,7 @@
 /* General-purpose field-move dispatcher. */
 #include "nonmatching.h"
+#include "actor.h"
+#include "sprite.h"
 
 extern int *iwram_3001f30;
 
@@ -83,7 +85,37 @@ int Func_8096b28(int *arg0, int arg1, int arg2)
     return 0;
 }
 
-INCLUDE_ASM("asm/field/field_move/Func_8096b88.s");
+extern unsigned int iwram_3001e40;
+
+void Func_8096b88(struct Actor *actor)
+{
+    unsigned char v;
+    struct Sprite *sprite;
+    int tmp;
+    int n;
+    unsigned int *clock;
+    struct SpriteLayer **p;
+    struct SpriteLayer *layer;
+
+    v = actor->visible;
+    if (v == 1) {
+        sprite = actor->sprite;
+        if (sprite != 0 && (sprite->__unk1D & v) == 0) {
+            tmp = sprite->numLayers;
+            if (tmp != 0) {
+                clock = &iwram_3001e40;
+                p = sprite->layers;
+                n = tmp;
+                do {
+                    layer = *p++;
+                    layer->colorswap = (*clock) % 6;
+                    n--;
+                } while (n != 0);
+            }
+            sprite->visible = 1;
+        }
+    }
+}
 
 extern int vec3_translate();
 extern int _Actor_TravelTo();
